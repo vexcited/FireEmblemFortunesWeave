@@ -13,10 +13,44 @@ struct Dense {};
 template<typename T, long Rows, long Columns, typename Storage>
 struct LMatrix;
 
+namespace detail {
+
+template<
+  typename T, long Rows, long Columns,
+  bool DynamicRows = (Rows < 0), bool DynamicColumns = (Columns < 0)
+>
+struct DenseStorage;
+
 template<typename T, long Rows, long Columns>
-struct LMatrix<T, Rows, Columns, LMatrixType::Dense<true>> {
-  static_assert(Rows > 0 && Columns > 0);
+struct DenseStorage<T, Rows, Columns, false, false> {
   T elements[Rows * Columns];
+};
+
+template<typename T, long Rows, long Columns>
+struct DenseStorage<T, Rows, Columns, false, true> {
+  size_t columns;
+  T elements[Rows * -Columns];
+};
+
+template<typename T, long Rows, long Columns>
+struct DenseStorage<T, Rows, Columns, true, false> {
+  size_t rows;
+  T elements[-Rows * Columns];
+};
+
+template<typename T, long Rows, long Columns>
+struct DenseStorage<T, Rows, Columns, true, true> {
+  size_t rows;
+  size_t columns;
+  T elements[Rows * Columns];
+};
+
+}
+
+template<typename T, long Rows, long Columns>
+struct LMatrix<T, Rows, Columns, LMatrixType::Dense<true>>
+  : detail::DenseStorage<T, Rows, Columns> {
+  static_assert(Rows != 0 && Columns != 0);
 };
 
 template<
