@@ -1,0 +1,46 @@
+#pragma once
+
+#include <stdint.h>
+
+namespace nn::mii::detail {
+
+enum class Ver3StoreDataMember : unsigned {
+#define MII_FIELD(Name, Id) Name = Id,
+#include "nn/mii/ver3_fields.inc"
+#undef MII_FIELD
+  AuthorId = 11,
+  CreateId = 12,
+  Name = 20,
+  CreatorName = 74,
+  Crc = 76
+};
+
+struct Ver3StoreDataTableElement {
+  Ver3StoreDataMember member;
+  int32_t kind;
+  int32_t offset;
+  int32_t size;
+  int32_t shift;
+  int32_t bits;
+  int32_t flag;
+};
+
+static_assert(sizeof(Ver3StoreDataTableElement) == 28);
+
+extern const Ver3StoreDataTableElement Ver3StoreDataTable[77];
+const Ver3StoreDataTableElement* GetVer3StoreDataTableElement(
+  Ver3StoreDataMember member);
+
+struct Ver3StoreDataRaw {
+  uint8_t data[96];
+
+#define MII_FIELD(Name, Id) \
+  int Get##Name() const; \
+  void Set##Name(int value);
+#include "nn/mii/ver3_fields.inc"
+#undef MII_FIELD
+};
+
+static_assert(sizeof(Ver3StoreDataRaw) == 96);
+
+}
