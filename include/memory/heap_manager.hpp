@@ -30,6 +30,8 @@ struct HeapManager {
   size_t total_free_size;
   size_t allocatable_size;
 
+  void Construct();
+  void Initialize();
   void* Allocate(size_t size, size_t alignment, uint32_t pool_index);
 
   nn::mem::StandardAllocator& GetAllocator(uint32_t pool_index) {
