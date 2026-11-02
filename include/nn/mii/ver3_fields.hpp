@@ -11,6 +11,7 @@ namespace nn::mii::detail {
 struct UtilityImpl;
 struct Ver3CreateId;
 struct Ver3AuthorId;
+struct StoreDataRaw;
 
 enum class Ver3StoreDataMember : unsigned {
 #define MII_FIELD(Name, Id) Name = Id,
@@ -43,6 +44,8 @@ struct Ver3StoreDataRaw {
   uint8_t data[96];
 
   void SetDefault(UtilityImpl* utility);
+  void BuildToStoreData(StoreDataRaw* output, UtilityImpl* utility) const;
+  void BuildFromStoreData(UtilityImpl* utility, const StoreDataRaw& source);
   int Verify() const;
   bool IsValid() const;
   void UpdateCrc();

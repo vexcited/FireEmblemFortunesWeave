@@ -8,6 +8,7 @@ struct Nickname {
   uint16_t text[11];
 
   void Set(const uint16_t* source);
+  void ReplaceQuestionMark();
   bool IsValid() const;
   bool IsEmpty() const;
   bool operator==(const Nickname& other) const;
