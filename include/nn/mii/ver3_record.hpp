@@ -10,6 +10,7 @@ struct Nickname {
   void Set(const uint16_t* source);
   bool IsValid() const;
   bool IsEmpty() const;
+  bool operator==(const Nickname& other) const;
 };
 
 static_assert(sizeof(Nickname) == 22);
