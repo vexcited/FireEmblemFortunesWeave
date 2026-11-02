@@ -2,7 +2,15 @@
 
 #include <stdint.h>
 
+namespace nn::mii {
+struct Nickname;
+}
+
 namespace nn::mii::detail {
+
+struct UtilityImpl;
+struct Ver3CreateId;
+struct Ver3AuthorId;
 
 enum class Ver3StoreDataMember : unsigned {
 #define MII_FIELD(Name, Id) Name = Id,
@@ -33,6 +41,19 @@ const Ver3StoreDataTableElement* GetVer3StoreDataTableElement(
 
 struct Ver3StoreDataRaw {
   uint8_t data[96];
+
+  void SetDefault(UtilityImpl* utility);
+  int Verify() const;
+  bool IsValid() const;
+  void UpdateCrc();
+  void GetName(Nickname* name) const;
+  void GetCreatorName(Nickname* name) const;
+  void SetName(const Nickname& name);
+  void SetCreatorName(const Nickname& name);
+  void GetCreateId(Ver3CreateId* id) const;
+  void GetAuthorId(Ver3AuthorId* id) const;
+  void SetCreateId(const Ver3CreateId& id);
+  void SetAuthorId(const Ver3AuthorId& id);
 
 #define MII_FIELD(Name, Id) \
   int Get##Name() const; \
