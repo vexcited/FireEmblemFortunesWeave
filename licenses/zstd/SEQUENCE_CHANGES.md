@@ -1,0 +1,5 @@
+The routines in `src/compression/zstd_sequence_tables.cpp`, `src/compression/zstd_sequence_copy.cpp`, `src/compression/zstd_sequences.cpp`, and `include/compression/zstd_sequences.hpp` adapt Zstandard 1.5.6 under the BSD license retained here.
+
+The reference sources are `lib/decompress/zstd_decompress_block.c`, `lib/decompress/zstd_decompress_internal.h`, `lib/common/zstd_internal.h`, and `lib/common/bitstream.h` from the [official release](https://github.com/facebook/zstd/tree/v1.5.6).
+
+The adaptation uses the recovered sequence tables and decoder context offsets. It retains default, repeated, compressed, and run-length tables, repeated offsets, dictionary spans, split literal storage, and the eight-entry prefetch queue. Shared helpers express repeated copy and decoder operations. Wide copies retain their original writes beyond individual matches. Existing literal and reverse-bit routines are reused. Assertions, logging, unused architecture paths, and unrelated frame processing are omitted.
