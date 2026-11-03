@@ -63,6 +63,10 @@ struct SdkRecursiveMutexType {
   detail::InternalCriticalSection lock;
   uint32_t count;
 
+  void Initialize();
+  void Lock();
+  bool TryLock();
+  void Unlock();
   bool IsLockedByCurrentThread() const;
 };
 
