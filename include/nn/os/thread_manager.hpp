@@ -40,6 +40,11 @@ namespace detail {
 
 struct ThreadManagerImplByHorizon {
   explicit ThreadManagerImplByHorizon(ThreadType* initial_thread);
+  bool MapAliasStack(void** output, const void* original, size_t size) const;
+  bool UnmapAliasStack(const void* alias, const void* original,
+    size_t size) const;
+  uint32_t CreateThread(ThreadType* thread, void (*entry)(ThreadType*),
+    int ideal_core);
 };
 
 struct ThreadManager {
@@ -54,6 +59,13 @@ struct ThreadManager {
 
   ThreadManager();
   void SetInitialThreadNameUnsafe(ThreadType* thread);
+  void CleanupThread(ThreadType* thread);
+  bool CreateAliasStackUnsafe(ThreadType* thread);
+  void DeleteAliasStackUnsafe(ThreadType* thread);
+  uint32_t CreateThread(ThreadType* thread, void (*entry)(void*),
+    void* argument, void* stack, size_t size, int priority, int ideal_core);
+  uint32_t CreateThread(ThreadType* thread, void (*entry)(void*),
+    void* argument, void* stack, size_t size, int priority);
 };
 
 void SetupThreadObjectUnsafe(ThreadType* thread, void (*entry)(void*),
