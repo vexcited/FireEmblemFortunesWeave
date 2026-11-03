@@ -5,6 +5,10 @@
 
 namespace nn::os {
 
+struct ThreadContextInfoAarch64;
+
+uint64_t GetThreadAvailableCoreMask();
+
 struct ThreadListNode {
   ThreadListNode* next;
   ThreadListNode* previous;
@@ -49,6 +53,19 @@ struct ThreadManagerImplByHorizon {
   void DestroyThreadUnsafe(ThreadType* thread);
   bool TryWaitForExitThread(ThreadType* thread);
   void WaitForExitThread(ThreadType* thread);
+  void YieldThread();
+  bool ChangePriority(ThreadType* thread, int priority);
+  int GetCurrentPriority(const ThreadType* thread) const;
+  void SuspendThreadUnsafe(ThreadType* thread);
+  void ResumeThreadUnsafe(ThreadType* thread);
+  void GetThreadContextUnsafe(ThreadContextInfoAarch64* output,
+    const ThreadType* thread);
+  int GetCurrentCoreNumber() const;
+  void SetThreadCoreMask(ThreadType* thread, int ideal_core,
+    uint64_t affinity) const;
+  void GetThreadCoreMask(int* ideal_core, uint64_t* affinity,
+    const ThreadType* thread) const;
+  uint64_t GetThreadAvailableCoreMask() const;
 };
 
 struct ThreadManager {
@@ -76,6 +93,10 @@ struct ThreadManager {
   void WaitThread(ThreadType* thread);
   void DestroyThread(ThreadType* thread);
   void DestroyThreadObject(ThreadType* thread);
+  int SuspendThread(ThreadType* thread);
+  int ResumeThread(ThreadType* thread);
+  void GetThreadContext(ThreadContextInfoAarch64* output,
+    const ThreadType* thread);
 };
 
 void SetupThreadObjectUnsafe(ThreadType* thread, void (*entry)(void*),
