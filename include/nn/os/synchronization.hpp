@@ -2,6 +2,17 @@
 
 #include <stdint.h>
 
+#include "nn/os/time.hpp"
+
+namespace nn::os {
+
+enum ConditionVariableStatus {
+  ConditionVariableStatus_Timeout,
+  ConditionVariableStatus_NoTimeout
+};
+
+}
+
 namespace nn::os::detail {
 
 struct InternalCriticalSectionType {
@@ -14,12 +25,19 @@ struct InternalCriticalSection {
   void Initialize();
   void Enter();
   void Leave();
+  bool IsLockedByCurrentThread() const;
 };
 
 struct InternalConditionVariableImplByHorizon {
   uint32_t value;
 
   InternalConditionVariableImplByHorizon();
+  void Initialize();
+  void Signal();
+  void Broadcast();
+  void Wait(InternalCriticalSectionType* lock);
+  ConditionVariableStatus TimedWait(InternalCriticalSectionType* lock,
+                                    const TimeoutHelper& timeout);
 };
 
 void InitializeInternalCriticalSection(InternalCriticalSectionType* state);
@@ -27,6 +45,32 @@ void InitializeInternalCriticalSection(InternalCriticalSectionType* state);
 }
 
 namespace nn::os {
+
+struct SdkMutexType {
+  detail::InternalCriticalSection lock;
+
+  bool IsLockedByCurrentThread() const;
+};
+
+struct SdkRecursiveMutexType {
+  detail::InternalCriticalSection lock;
+  uint32_t count;
+
+  bool IsLockedByCurrentThread() const;
+};
+
+struct SdkConditionVariableType {
+  detail::InternalConditionVariableImplByHorizon condition;
+
+  void Initialize();
+  void Signal();
+  void Broadcast();
+  void Wait(SdkMutexType& mutex);
+  void Wait(SdkRecursiveMutexType& mutex);
+  ConditionVariableStatus TimedWait(SdkMutexType& mutex, TimeSpan time);
+  ConditionVariableStatus TimedWait(SdkRecursiveMutexType& mutex,
+                                    TimeSpan time);
+};
 
 struct ReaderWriterLockType {
   detail::InternalCriticalSectionType lock;
