@@ -1,6 +1,8 @@
 #pragma once
 
 #include "nn/os/synchronization.hpp"
+#include "nn/result.hpp"
+#include "nn/span.hpp"
 
 namespace nn::os {
 
@@ -40,10 +42,21 @@ struct MultiWaitHolderOfThread : MultiWaitHolderBase {
   void RemoveFromObjectList();
 };
 
+struct MultiWaitHolderOfNativeHandle : MultiWaitHolderBase {
+  uint32_t handle;
+  uint32_t reserved;
+  uintptr_t user_data;
+
+  int IsSignaled() const;
+  bool GetNativeHandle(uint32_t* output) const;
+};
+
 struct MultiWaitImplByHorizon {
   uint32_t thread_handle;
 
   void CancelWait();
+  Result WaitSynchronizationN(int* output, int count, uint32_t* handles,
+                              int capacity, int64_t timeout);
 };
 
 struct MultiWaitImpl {
@@ -56,6 +69,21 @@ struct MultiWaitImpl {
   void NotifyAndWakeupThread(MultiWaitHolderBase* holder);
   MultiWaitHolderBase* AddToEachObjectListAndCheckObjectState();
   void RemoveFromEachObjectList();
+  int ConstructObjectsArray(uint32_t* handles, MultiWaitHolderBase** holders,
+                            int capacity);
+  MultiWaitHolderBase* RecalcMultiWaitTimeout(TimeSpan* output,
+                                              TimeSpan deadline);
+
+  template <bool Reply>
+  Result InternalWaitAnyImpl(MultiWaitHolderBase** output, int* output_index,
+                             bool infinite, TimeSpan time,
+                             uint32_t reply_target, Span<uint32_t> handles,
+                             int existing_count);
+
+  template <bool Reply>
+  Result WaitAnyImpl(MultiWaitHolderBase** output, int* output_index,
+                     bool infinite, TimeSpan time, uint32_t reply_target,
+                     Span<uint32_t> handles, int existing_count);
 };
 
 bool GetUserWaitNativeHandle(const MultiWaitHolderBase* holder,
@@ -76,7 +104,11 @@ struct MultiWaitHolderType {
 
 void InitializeMultiWait(MultiWaitType* wait);
 void InitializeMultiWaitHolder(MultiWaitHolderType* holder, ThreadType* thread);
+void InitializeMultiWaitHolder(MultiWaitHolderType* holder, uint32_t handle);
 void FinalizeMultiWaitHolder(MultiWaitHolderType* holder);
+MultiWaitHolderType* WaitAny(MultiWaitType* wait);
+MultiWaitHolderType* TryWaitAny(MultiWaitType* wait);
+MultiWaitHolderType* TimedWaitAny(MultiWaitType* wait, TimeSpan timeout);
 void LinkMultiWaitHolder(MultiWaitType* wait, MultiWaitHolderType* holder);
 void UnlinkMultiWaitHolder(MultiWaitHolderType* holder);
 void UnlinkAllMultiWaitHolder(MultiWaitType* wait);
