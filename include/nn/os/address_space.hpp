@@ -24,6 +24,10 @@ struct AddressSpaceAllocatorBase {
 
   AddressSpaceAllocatorBase(Address begin, Address end, Size guard_size,
     const AddressSpaceAllocatorForbiddenRegion* forbidden, size_t count);
+  Address AllocateSpace(Size size, Size alignment, Address offset,
+    Address (*generate_random)(Address));
+  Address GetNextNonOverlappedNodeUnsafe(Address page, Size pages);
+  bool CheckGuardSpace(Address address, Size size, Size guard_size);
 };
 
 using AddressAllocator = AddressSpaceAllocatorBase<uintptr_t, size_t>;
