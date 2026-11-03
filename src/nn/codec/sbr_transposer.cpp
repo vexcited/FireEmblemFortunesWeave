@@ -1,6 +1,6 @@
 /*
   Third-Party Modified Version of the Fraunhofer FDK AAC Codec Library
-  for Android. Modified 2026-11-02 for the observed SDK ABI and arithmetic.
+  for Android. Modified 2026-11-03 for the observed SDK ABI and arithmetic.
   Original license: https://android.googlesource.com/platform/external/aac/+/203e3f28fbebec7011342017fafc2a0bda0ce530/NOTICE
   Full license text: include/nn/codec/bitstream.hpp.
 */
@@ -191,7 +191,9 @@ INT autoCorr2nd_cplx(ACORR_COEFS *ac, const FIXP_DBL *reBuffer,
        len_scale);
   pReBuf = realBuf - 1, pImBuf = imagBuf - 1;
   for (j = (len - 1); j != 0; j--, pReBuf++, pImBuf++) {
-    accu1 += ((fPow2Div2(pReBuf[0]) + fPow2Div2(pImBuf[0])) >> len_scale);
+    accu1 += ((static_cast<uint32_t>(fPow2Div2(pReBuf[0])) +
+               static_cast<uint32_t>(fPow2Div2(pImBuf[0]))) >>
+              len_scale);
     accu3 +=
         ((fMultDiv2(pReBuf[0], pReBuf[1]) + fMultDiv2(pImBuf[0], pImBuf[1])) >>
          len_scale);
@@ -205,13 +207,19 @@ INT autoCorr2nd_cplx(ACORR_COEFS *ac, const FIXP_DBL *reBuffer,
         ((fMultDiv2(pImBuf[2], pReBuf[0]) - fMultDiv2(pReBuf[2], pImBuf[0])) >>
          len_scale);
   }
-  accu2 = ((fPow2Div2(realBuf[-2]) + fPow2Div2(imagBuf[-2])) >> len_scale);
+  accu2 = ((static_cast<uint32_t>(fPow2Div2(realBuf[-2])) +
+            static_cast<uint32_t>(fPow2Div2(imagBuf[-2]))) >>
+           len_scale);
   accu2 += accu1;
-  accu1 += ((fPow2Div2(realBuf[len - 2]) + fPow2Div2(imagBuf[len - 2])) >>
+  accu1 += ((static_cast<uint32_t>(fPow2Div2(realBuf[len - 2])) +
+             static_cast<uint32_t>(fPow2Div2(imagBuf[len - 2]))) >>
             len_scale);
-  accu0 = ((fPow2Div2(realBuf[len - 1]) + fPow2Div2(imagBuf[len - 1])) >>
+  accu0 = ((static_cast<uint32_t>(fPow2Div2(realBuf[len - 1])) +
+            static_cast<uint32_t>(fPow2Div2(imagBuf[len - 1]))) >>
            len_scale) -
-          ((fPow2Div2(realBuf[-1]) + fPow2Div2(imagBuf[-1])) >> len_scale);
+          ((static_cast<uint32_t>(fPow2Div2(realBuf[-1])) +
+            static_cast<uint32_t>(fPow2Div2(imagBuf[-1]))) >>
+           len_scale);
   accu0 += accu1;
   accu4 = ((fMultDiv2(realBuf[-1], realBuf[-2]) +
             fMultDiv2(imagBuf[-1], imagBuf[-2])) >>
@@ -241,9 +249,10 @@ INT autoCorr2nd_cplx(ACORR_COEFS *ac, const FIXP_DBL *reBuffer,
   ac->r12i = (FIXP_DBL)accu6 << mScale;
   ac->r02r = (FIXP_DBL)accu7 << mScale;
   ac->r02i = (FIXP_DBL)accu8 << mScale;
-  ac->det =
-      (fMultDiv2(ac->r11r, ac->r22r) >> 1) -
-      ((fMultDiv2(ac->r12r, ac->r12r) + fMultDiv2(ac->r12i, ac->r12i)) >> 1);
+  ac->det = (fMultDiv2(ac->r11r, ac->r22r) >> 1) -
+            ((static_cast<uint32_t>(fMultDiv2(ac->r12r, ac->r12r)) +
+              static_cast<uint32_t>(fMultDiv2(ac->r12i, ac->r12i))) >>
+             1);
   mScale = CountLeadingBits(fAbs(ac->det));
   ac->det <<= mScale;
   ac->det_scale = mScale - 2;
