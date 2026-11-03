@@ -23,6 +23,7 @@ struct InternalCriticalSection {
   InternalCriticalSectionType state;
 
   void Initialize();
+  void Finalize();
   void Enter();
   void Leave();
   bool IsLockedByCurrentThread() const;
@@ -41,6 +42,7 @@ struct InternalConditionVariableImplByHorizon {
 };
 
 void InitializeInternalCriticalSection(InternalCriticalSectionType* state);
+void FinalizeInternalCriticalSection(InternalCriticalSectionType* state);
 
 }
 

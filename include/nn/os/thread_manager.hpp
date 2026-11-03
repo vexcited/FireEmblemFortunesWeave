@@ -45,6 +45,10 @@ struct ThreadManagerImplByHorizon {
     size_t size) const;
   uint32_t CreateThread(ThreadType* thread, void (*entry)(ThreadType*),
     int ideal_core);
+  void StartThread(const ThreadType* thread);
+  void DestroyThreadUnsafe(ThreadType* thread);
+  bool TryWaitForExitThread(ThreadType* thread);
+  void WaitForExitThread(ThreadType* thread);
 };
 
 struct ThreadManager {
@@ -67,6 +71,11 @@ struct ThreadManager {
     void* argument, void* stack, size_t size, int priority, int ideal_core);
   uint32_t CreateThread(ThreadType* thread, void (*entry)(void*),
     void* argument, void* stack, size_t size, int priority);
+  void StartThread(ThreadType* thread);
+  bool TryWaitThread(ThreadType* thread);
+  void WaitThread(ThreadType* thread);
+  void DestroyThread(ThreadType* thread);
+  void DestroyThreadObject(ThreadType* thread);
 };
 
 void SetupThreadObjectUnsafe(ThreadType* thread, void (*entry)(void*),
