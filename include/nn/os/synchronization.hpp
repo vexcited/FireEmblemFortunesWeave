@@ -25,6 +25,7 @@ struct InternalCriticalSection {
   void Initialize();
   void Finalize();
   void Enter();
+  bool TryEnter();
   void Leave();
   bool IsLockedByCurrentThread() const;
 };
@@ -51,6 +52,10 @@ namespace nn::os {
 struct SdkMutexType {
   detail::InternalCriticalSection lock;
 
+  void Initialize();
+  void Lock();
+  bool TryLock();
+  void Unlock();
   bool IsLockedByCurrentThread() const;
 };
 
