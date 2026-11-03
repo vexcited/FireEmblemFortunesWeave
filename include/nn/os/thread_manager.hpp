@@ -58,6 +58,7 @@ struct ThreadManager {
   uint32_t reserved_1ec;
 
   ThreadManager();
+  void SetZeroToAllThreadsTlsSafe(int slot);
   void SetInitialThreadNameUnsafe(ThreadType* thread);
   void CleanupThread(ThreadType* thread);
   bool CreateAliasStackUnsafe(ThreadType* thread);

@@ -3,6 +3,14 @@
 #include "nn/os/synchronization.hpp"
 #include "nn/util/tiny_mt.hpp"
 
+namespace nn::os {
+
+struct TlsSlot {
+  uint32_t value;
+};
+
+}
+
 namespace nn::os::detail {
 
 struct RngManager {
@@ -22,6 +30,10 @@ struct TlsManager {
   InternalCriticalSection lock;
 
   TlsManager();
+  void InvokeTlsDestructors();
+  int SearchUnusedTlsSlotUnsafe(bool sdk) const;
+  bool AllocateTlsSlot(TlsSlot* output, TlsDestructor destructor, bool sdk);
+  void FreeTlsSlot(TlsSlot slot);
 };
 
 struct VammManager {
