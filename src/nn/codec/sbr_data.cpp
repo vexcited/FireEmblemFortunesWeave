@@ -1,3 +1,10 @@
+/*
+  Third-Party Modified Version of the Fraunhofer FDK AAC Codec Library
+  for Android. Modified 2026-11-03 for the observed SDK ABI and arithmetic.
+  Original license: https://android.googlesource.com/platform/external/aac/+/203e3f28fbebec7011342017fafc2a0bda0ce530/NOTICE
+  Full license text: include/nn/codec/bitstream.hpp.
+*/
+
 #include "nn/codec/sbr_data.hpp"
 #include "nn/codec/sbr_frequency.hpp"
 
@@ -582,9 +589,3 @@ static void decodeNoiseFloorlevels(HANDLE_SBR_HEADER_DATA hHeaderData,
 }
 
 }
-
-/*
-  Third-Party Modified Version of the Fraunhofer FDK AAC Codec Library
-  for Android. Modified 2026-11-03 for the observed SDK ABI and arithmetic.
-  See licenses/fdk-aac/LICENSE.txt and SBR_DATA_CHANGES.md.
-*/

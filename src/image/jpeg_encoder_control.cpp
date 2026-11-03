@@ -1,3 +1,19 @@
+/*
+  Adapted from libjpeg-turbo 1.5.0 jchuff.c and jerror.h,
+  with the natural-order table from jutils.c.
+  SDK ABI views and observed buffer initialization replace upstream details.
+  The block encoder is supplied by the recovered Huffman component.
+  Copyright (C) 1991-1997, Thomas G. Lane.
+  Copyright (C) 2009-2011, 2014-2016, D. R. Commander.
+  Copyright (C) 2015, Matthieu Darbois.
+  Copyright (C) 1994-1997, Thomas G. Lane.
+  Modified 1997-2009 by Guido Vollbeding.
+  Copyright (C) 2014, D. R. Commander.
+  Copyright (C) 1991-1996, Thomas G. Lane.
+  Original license: https://github.com/libjpeg-turbo/libjpeg-turbo/blob/1.5.0/README.ijg
+  Full license text: include/image/jpeg_transform.hpp.
+*/
+
 #include "image/jpeg_encoder_control.hpp"
 
 namespace jpeg_encoder_control {
@@ -581,19 +597,3 @@ void nndetailImageJpeg_jinit_huff_encoder(j_compress_ptr cinfo) {
 }
 
 }
-
-/*
-  Adapted from libjpeg-turbo 1.5.0 jchuff.c and jerror.h,
-  with the natural-order table from jutils.c.
-  SDK ABI views and observed buffer initialization replace upstream details.
-  The block encoder is supplied by the recovered Huffman component.
-  See licenses/libjpeg-turbo/README.ijg and ENCODER_CONTROL_CHANGES.md.
-
-  Copyright (C) 1991-1997, Thomas G. Lane.
-  Copyright (C) 2009-2011, 2014-2016, D. R. Commander.
-  Copyright (C) 2015, Matthieu Darbois.
-  Copyright (C) 1994-1997, Thomas G. Lane.
-  Modified 1997-2009 by Guido Vollbeding.
-  Copyright (C) 2014, D. R. Commander.
-  Copyright (C) 1991-1996, Thomas G. Lane.
-*/

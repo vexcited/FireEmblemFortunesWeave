@@ -1,3 +1,17 @@
+/*
+  Adapted from libjpeg-turbo 1.5.0 jdhuff.c, jdhuff.h,
+  jstdhuff.c, and the natural-order table in jutils.c.
+  ABI declarations, SDK names, and workspace clearing changed.
+  Copyright (C) 1991-1997, Thomas G. Lane.
+  Copyright (C) 2009-2011, 2016, D. R. Commander.
+  Copyright (C) 2010-2011, 2015-2016, D. R. Commander.
+  Copyright (C) 1991-1998, Thomas G. Lane.
+  Copyright (C) 2013, D. R. Commander.
+  Copyright (C) 1991-1996, Thomas G. Lane.
+  Original license: https://github.com/libjpeg-turbo/libjpeg-turbo/blob/1.5.0/README.ijg
+  Full license text: include/image/jpeg_transform.hpp.
+*/
+
 #include "image/jpeg_entropy.hpp"
 
 namespace jpeg_entropy {
@@ -1291,17 +1305,3 @@ extern "C" void nndetailImageJpeg_jinit_huff_decoder(j_decompress_ptr cinfo) {
 }
 
 }
-
-/*
-  Adapted from libjpeg-turbo 1.5.0 jdhuff.c, jdhuff.h,
-  jstdhuff.c, and the natural-order table in jutils.c.
-  ABI declarations, SDK names, and workspace clearing changed.
-  See licenses/libjpeg-turbo/README.ijg and ENTROPY_CHANGES.md.
-
-  Copyright (C) 1991-1997, Thomas G. Lane.
-  Copyright (C) 2009-2011, 2016, D. R. Commander.
-  Copyright (C) 2010-2011, 2015-2016, D. R. Commander.
-  Copyright (C) 1991-1998, Thomas G. Lane.
-  Copyright (C) 2013, D. R. Commander.
-  Copyright (C) 1991-1996, Thomas G. Lane.
-*/

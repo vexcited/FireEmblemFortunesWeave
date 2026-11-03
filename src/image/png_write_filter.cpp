@@ -1,3 +1,13 @@
+/*
+  Adapted from libpng 1.6.37 pngwutil.c.
+  Copyright (c) 2018 Cosmin Truta
+  Copyright (c) 1998-2002,2004,2006-2018 Glenn Randers-Pehrson
+  Copyright (c) 1996-1997 Andreas Dilger
+  Copyright (c) 1995-1996 Guy Eric Schalnat, Group 42, Inc.
+  Original license: https://github.com/pnggroup/libpng/blob/v1.6.37/LICENSE
+  Full license text: include/image/png_row.hpp.
+*/
+
 #include "image/png_write_filter.hpp"
 
 using png_byte = uint8_t;
@@ -295,12 +305,3 @@ static void png_write_filtered_row(png_structrp png_ptr, png_bytep filtered_row,
     nndetailImagePng_png_write_flush(png_ptr);
   }
 }
-
-/*
- * Adapted from libpng 1.6.37 pngwutil.c.
- * Copyright (c) 2018 Cosmin Truta
- * Copyright (c) 1998-2002,2004,2006-2018 Glenn Randers-Pehrson
- * Copyright (c) 1996-1997 Andreas Dilger
- * Copyright (c) 1995-1996 Guy Eric Schalnat, Group 42, Inc.
- * Distributed under the license in licenses/libpng/LICENSE.
- */

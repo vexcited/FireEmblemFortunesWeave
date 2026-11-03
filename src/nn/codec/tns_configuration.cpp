@@ -1,3 +1,10 @@
+/*
+  Third-Party Modified Version of the Fraunhofer FDK AAC Codec Library
+  for Android. Modified 2026-11-03 for the observed SDK ABI.
+  Original license: https://android.googlesource.com/platform/external/aac/+/203e3f28fbebec7011342017fafc2a0bda0ce530/NOTICE
+  Full license text: include/nn/codec/bitstream.hpp.
+*/
+
 #include "nn/codec/tns_configuration.hpp"
 
 namespace nn::codec {
@@ -409,9 +416,3 @@ int FDKaacEnc_InitTnsConfiguration(INT bitRate, INT sampleRate, INT channels,
   return 0;
 }
 }
-
-/*
-  Third-Party Modified Version of the Fraunhofer FDK AAC Codec Library
-  for Android. Modified 2026-11-03 for the observed SDK ABI.
-  See licenses/fdk-aac/LICENSE.txt and TNS_CONFIGURATION_CHANGES.md.
-*/

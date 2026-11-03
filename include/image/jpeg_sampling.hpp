@@ -1,3 +1,11 @@
+/*
+  Based in part on the work of the Independent JPEG Group.
+  Modified libjpeg-turbo 1.5.0 source for the recovered SDK ABI.
+  Copyright 1991-2016 Thomas G. Lane and Guido Vollbeding.
+  Original license: https://github.com/libjpeg-turbo/libjpeg-turbo/blob/1.5.0/README.ijg
+  Full license text: include/image/jpeg_transform.hpp.
+*/
+
 #pragma once
 
 #include <stddef.h>

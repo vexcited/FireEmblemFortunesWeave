@@ -1,3 +1,16 @@
+/*
+  Adapted from libjpeg-turbo 1.5.0 jcsample.c, jdsample.c, and jerror.h.
+  Copyright (C) 1991-1996, Thomas G. Lane.
+  Copyright 2009 Pierre Ossman <ossman@cendio.se> for Cendio AB.
+  Copyright (C) 2010, 2014-2016, D. R. Commander.
+  Copyright (C) 2014, MIPS Technologies, Inc., California.
+  Copyright (C) 2015, Google, Inc.
+  Copyright (C) 1994-1997, Thomas G. Lane.
+  Modified 1997-2009 by Guido Vollbeding.
+  Original license: https://github.com/libjpeg-turbo/libjpeg-turbo/blob/1.5.0/README.ijg
+  Full license text: include/image/jpeg_transform.hpp.
+*/
+
 #include "image/jpeg_color.hpp"
 #include "image/jpeg_sampling.hpp"
 
@@ -341,16 +354,3 @@ extern "C" void nndetailImageJpeg_jinit_downsampler(j_compress_ptr cinfo) {
 }
 
 }
-
-/*
-  Adapted from libjpeg-turbo 1.5.0 jcsample.c, jdsample.c, and jerror.h.
-  See licenses/libjpeg-turbo/README.ijg and SAMPLING_CHANGES.md.
-
-  Copyright (C) 1991-1996, Thomas G. Lane.
-  Copyright 2009 Pierre Ossman <ossman@cendio.se> for Cendio AB.
-  Copyright (C) 2010, 2014-2016, D. R. Commander.
-  Copyright (C) 2014, MIPS Technologies, Inc., California.
-  Copyright (C) 2015, Google, Inc.
-  Copyright (C) 1994-1997, Thomas G. Lane.
-  Modified 1997-2009 by Guido Vollbeding.
-*/

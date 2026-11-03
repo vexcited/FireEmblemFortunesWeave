@@ -1,3 +1,17 @@
+/*
+  Adapted from libjpeg-turbo 1.5.0 jdmarker.c and jerror.h,
+  with the natural-order table from jutils.c.
+  SDK export names and ABI declarations have been changed.
+  Copyright (C) 1991-1998, Thomas G. Lane.
+  Copyright (C) 2012, 2015, D. R. Commander.
+  Copyright (C) 1994-1997, Thomas G. Lane.
+  Modified 1997-2009 by Guido Vollbeding.
+  Copyright (C) 2014, D. R. Commander.
+  Copyright (C) 1991-1996, Thomas G. Lane.
+  Original license: https://github.com/libjpeg-turbo/libjpeg-turbo/blob/1.5.0/README.ijg
+  Full license text: include/image/jpeg_transform.hpp.
+*/
+
 #include "image/jpeg_marker.hpp"
 
 namespace jpeg_marker {
@@ -1549,17 +1563,3 @@ nndetailImageJpeg_jpeg_set_marker_processor(j_decompress_ptr cinfo,
 }
 
 }
-
-/*
-  Adapted from libjpeg-turbo 1.5.0 jdmarker.c and jerror.h,
-  with the natural-order table from jutils.c.
-  SDK export names and ABI declarations have been changed.
-  See licenses/libjpeg-turbo/README.ijg and MARKER_CHANGES.md.
-
-  Copyright (C) 1991-1998, Thomas G. Lane.
-  Copyright (C) 2012, 2015, D. R. Commander.
-  Copyright (C) 1994-1997, Thomas G. Lane.
-  Modified 1997-2009 by Guido Vollbeding.
-  Copyright (C) 2014, D. R. Commander.
-  Copyright (C) 1991-1996, Thomas G. Lane.
-*/

@@ -1,3 +1,12 @@
+/*
+  Adapted from libjpeg-turbo 1.5.0 jidctflt.c.
+  SDK names, fixed-width ABI types, and source formatting have been changed.
+  Copyright (C) 1994-1998, Thomas G. Lane.
+  Copyright (C) 2014, D. R. Commander.
+  Original license: https://github.com/libjpeg-turbo/libjpeg-turbo/blob/1.5.0/README.ijg
+  Full license text: include/image/jpeg_transform.hpp.
+*/
+
 #include "jpeg_transform_internal.hpp"
 
 #define JPEG_INTERNALS
@@ -144,12 +153,3 @@ void nndetailImageJpeg_jpeg_idct_float(j_decompress_ptr cinfo,
     wsptr += DCTSIZE;
   }
 }
-
-/*
-  Adapted from libjpeg-turbo 1.5.0 jidctflt.c.
-  SDK names, fixed-width ABI types, and source formatting have been changed.
-  See licenses/libjpeg-turbo/README.ijg and CHANGES.md.
-
-  Copyright (C) 1994-1998, Thomas G. Lane.
-  Copyright (C) 2014, D. R. Commander.
-*/

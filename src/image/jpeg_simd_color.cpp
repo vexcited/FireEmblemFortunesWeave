@@ -1,3 +1,11 @@
+/*
+  Adapted from libjpeg-turbo 1.5.0 jsimd_arm64.c and jsimd_arm64_neon.S.
+  Assembly kernels are expressed as C++ integer operations.
+  SDK export names and observed ABI offsets replace upstream declarations.
+  Original license: https://github.com/libjpeg-turbo/libjpeg-turbo/blob/1.5.0/simd/jsimd_arm64_neon.S
+  Full license text: include/image/jpeg_simd_color.hpp.
+*/
+
 #include "image/jpeg_simd_color.hpp"
 
 namespace jpeg_simd_color {
@@ -233,10 +241,3 @@ void ycc_rgb565_convert(Decoder *decoder, Planes input, uint32_t input_row,
 }
 
 }
-
-/*
-  Adapted from libjpeg-turbo 1.5.0 jsimd_arm64.c and jsimd_arm64_neon.S.
-  Assembly kernels are expressed as C++ integer operations.
-  SDK export names and observed ABI offsets replace upstream declarations.
-  See licenses/libjpeg-turbo/SIMD_LICENSE.txt and SIMD_COLOR_CHANGES.md.
-*/

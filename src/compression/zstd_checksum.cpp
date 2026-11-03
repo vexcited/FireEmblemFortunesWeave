@@ -1,3 +1,10 @@
+/*
+  Adapted from Zstandard 1.5.6 XXH64 under the BSD license.
+  Copyright Yann Collet and Meta Platforms, Inc.
+  Original license: https://github.com/facebook/zstd/blob/v1.5.6/LICENSE
+  Full license text: include/compression/zstd_bit_reader.hpp.
+*/
+
 #include "compression/zstd_checksum.hpp"
 
 namespace fw::compression {

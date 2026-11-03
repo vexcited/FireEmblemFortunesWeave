@@ -1,3 +1,10 @@
+/*
+  Third-Party Modified Version of the Fraunhofer FDK AAC Codec Library
+  for Android. Modified 2026-11-03 for the observed SDK ABI.
+  Original license: https://android.googlesource.com/platform/external/aac/+/203e3f28fbebec7011342017fafc2a0bda0ce530/NOTICE
+  Full license text: include/nn/codec/bitstream.hpp.
+*/
+
 #include "nn/codec/aac_huffman.hpp"
 #include "nn/codec/dynamic_bits.hpp"
 
@@ -475,9 +482,3 @@ INT FDKaacEnc_dynBitCount(BITCNTR_STATE* const hBC,
           sectionData->scalefacBits + sectionData->noiseNrgBits);
 }
 }
-
-/*
-  Third-Party Modified Version of the Fraunhofer FDK AAC Codec Library
-  for Android. Modified 2026-11-03 for the observed SDK ABI.
-  See licenses/fdk-aac/LICENSE.txt and DYNAMIC_BITS_CHANGES.md.
-*/

@@ -1,3 +1,14 @@
+/*
+  Adapted from libjpeg-turbo 1.5.0 jchuff.c.
+  The unrolled coefficient traversal is expressed as a loop.
+  SDK working-state offsets and the observed 512-byte staging buffer are used.
+  Copyright (C) 1991-1997, Thomas G. Lane.
+  Copyright (C) 2009-2011, 2014-2016, D. R. Commander.
+  Copyright (C) 2015, Matthieu Darbois.
+  Original license: https://github.com/libjpeg-turbo/libjpeg-turbo/blob/1.5.0/README.ijg
+  Full license text: include/image/jpeg_transform.hpp.
+*/
+
 #include "image/jpeg_huffman_encode.hpp"
 
 namespace jpeg_huffman_encode {
@@ -111,14 +122,3 @@ int encode_one_block(WorkingState *state, const int16_t *block, int last_dc_val,
 }
 
 }
-
-/*
-  Adapted from libjpeg-turbo 1.5.0 jchuff.c.
-  The unrolled coefficient traversal is expressed as a loop.
-  SDK working-state offsets and the observed 512-byte staging buffer are used.
-  See licenses/libjpeg-turbo/README.ijg and HUFFMAN_ENCODE_CHANGES.md.
-
-  Copyright (C) 1991-1997, Thomas G. Lane.
-  Copyright (C) 2009-2011, 2014-2016, D. R. Commander.
-  Copyright (C) 2015, Matthieu Darbois.
-*/

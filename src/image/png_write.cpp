@@ -1,3 +1,10 @@
+/*
+  Modified libpng source for the recovered SDK ABI.
+  Copyright 1995-2019 The PNG Reference Library Authors.
+  Original license: https://github.com/pnggroup/libpng/blob/v1.6.37/LICENSE
+  Full license text: include/image/png_row.hpp.
+*/
+
 #include "image/png_write.hpp"
 
 using fw::image::PngRowInfo;

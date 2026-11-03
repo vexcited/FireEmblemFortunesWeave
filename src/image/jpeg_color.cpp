@@ -1,3 +1,17 @@
+/*
+  Adapted from libjpeg-turbo 1.5.0 jdcolor.c, jdcolext.c, and jdcol565.c.
+  ABI declarations and SDK names have been changed.
+  Copyright (C) 1991-1997, Thomas G. Lane.
+  Modified 2011 by Guido Vollbeding.
+  Copyright 2009 Pierre Ossman <ossman@cendio.se> for Cendio AB
+  Copyright (C) 2009, 2011-2012, 2014-2015, D. R. Commander.
+  Copyright (C) 2009, 2011, 2015, D. R. Commander.
+  Copyright (C) 2014-2015, D. R. Commander.
+  Copyright (C) 2013, Linaro Limited.
+  Original license: https://github.com/libjpeg-turbo/libjpeg-turbo/blob/1.5.0/README.ijg
+  Full license text: include/image/jpeg_transform.hpp.
+*/
+
 #include "image/jpeg_color.hpp"
 
 namespace jpeg_color {
@@ -1389,17 +1403,3 @@ nndetailImageJpeg_jinit_color_deconverter(j_decompress_ptr cinfo) {
 }
 
 }
-
-/*
-  Adapted from libjpeg-turbo 1.5.0 jdcolor.c, jdcolext.c, and jdcol565.c.
-  ABI declarations and SDK names have been changed.
-  See licenses/libjpeg-turbo/README.ijg and COLOR_CHANGES.md.
-
-  Copyright (C) 1991-1997, Thomas G. Lane.
-  Modified 2011 by Guido Vollbeding.
-  Copyright 2009 Pierre Ossman <ossman@cendio.se> for Cendio AB
-  Copyright (C) 2009, 2011-2012, 2014-2015, D. R. Commander.
-  Copyright (C) 2009, 2011, 2015, D. R. Commander.
-  Copyright (C) 2014-2015, D. R. Commander.
-  Copyright (C) 2013, Linaro Limited.
-*/

@@ -1,3 +1,11 @@
+/*
+  Adapted from libjpeg-turbo 1.5.0 jfdctflt.c.
+  SDK names, fixed-width ABI types, and source formatting have been changed.
+  Copyright (C) 1994-1996, Thomas G. Lane.
+  Original license: https://github.com/libjpeg-turbo/libjpeg-turbo/blob/1.5.0/README.ijg
+  Full license text: include/image/jpeg_transform.hpp.
+*/
+
 #include "jpeg_transform_internal.hpp"
 
 #define JPEG_INTERNALS
@@ -95,11 +103,3 @@ void nndetailImageJpeg_jpeg_fdct_float(FAST_FLOAT *data) {
     dataptr++;
   }
 }
-
-/*
-  Adapted from libjpeg-turbo 1.5.0 jfdctflt.c.
-  SDK names, fixed-width ABI types, and source formatting have been changed.
-  See licenses/libjpeg-turbo/README.ijg and CHANGES.md.
-
-  Copyright (C) 1994-1996, Thomas G. Lane.
-*/

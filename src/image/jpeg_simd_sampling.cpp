@@ -1,3 +1,14 @@
+/*
+  Scalar recovery of the libjpeg-turbo ARM64 downsampling kernels.
+  Copyright (C) 2009-2011, Nokia Corporation and/or its subsidiary(-ies).
+  Copyright (C) 2013-2014, Linaro Limited.
+  Copyright (C) 2014-2016, D. R. Commander.
+  Copyright (C) 2015-2016, Matthieu Darbois.
+  Copyright (C) 2016, Siarhei Siamashka.
+  Original license: https://github.com/libjpeg-turbo/libjpeg-turbo/blob/1.5.0/simd/jsimd_arm64_neon.S
+  Full license text: include/image/jpeg_simd_color.hpp.
+*/
+
 #include "image/jpeg_sampling.hpp"
 
 namespace jpeg_sampling {
@@ -55,14 +66,3 @@ void jsimd_h2v2_downsample(Encoder *encoder, Component *component, Rows input,
 }
 
 }
-
-/*
-  Scalar recovery of the libjpeg-turbo ARM64 downsampling kernels.
-  See licenses/libjpeg-turbo/SIMD_LICENSE.txt and SAMPLING_CHANGES.md.
-
-  Copyright (C) 2009-2011, Nokia Corporation and/or its subsidiary(-ies).
-  Copyright (C) 2013-2014, Linaro Limited.
-  Copyright (C) 2014-2016, D. R. Commander.
-  Copyright (C) 2015-2016, Matthieu Darbois.
-  Copyright (C) 2016, Siarhei Siamashka.
-*/

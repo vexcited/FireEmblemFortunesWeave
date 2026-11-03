@@ -1,3 +1,13 @@
+/*
+  Adapted from libpng 1.6.37 pngrtran.c.
+  Copyright (c) 2018-2019 Cosmin Truta
+  Copyright (c) 1998-2002,2004,2006-2018 Glenn Randers-Pehrson
+  Copyright (c) 1996-1997 Andreas Dilger
+  Copyright (c) 1995-1996 Guy Eric Schalnat, Group 42, Inc.
+  Original license: https://github.com/pnggroup/libpng/blob/v1.6.37/LICENSE
+  Full license text: include/image/png_row.hpp.
+*/
+
 #include "image/png_quantize.hpp"
 
 using png_byte = uint8_t;
@@ -319,12 +329,3 @@ void nndetailImagePng_png_set_quantize(png_structrp png_ptr, png_colorp palette,
     nndetailImagePng_png_free(png_ptr, distance);
   }
 }
-
-/*
- * Adapted from libpng 1.6.37 pngrtran.c.
- * Copyright (c) 2018-2019 Cosmin Truta
- * Copyright (c) 1998-2002,2004,2006-2018 Glenn Randers-Pehrson
- * Copyright (c) 1996-1997 Andreas Dilger
- * Copyright (c) 1995-1996 Guy Eric Schalnat, Group 42, Inc.
- * Distributed under the license in licenses/libpng/LICENSE.
- */
