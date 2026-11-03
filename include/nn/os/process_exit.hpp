@@ -8,3 +8,4 @@ namespace nn::os {
 }
 
 extern "C" [[noreturn]] void nnosQuickExit();
+extern "C" [[noreturn]] void nnosExitProcess();
