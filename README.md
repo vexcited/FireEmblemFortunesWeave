@@ -9,3 +9,4 @@ No game files are included, and none ever will be. You need your own copy of Fir
 - [TotK Recomp](https://github.com/valentderah/totk-pc-recomp)
 - [BotW decompilation](https://github.com/zeldaret/botw) & [botw.link](https://botw.link)
 - [MinecraftLCE](https://github.com/GRAnimated/MinecraftLCE)
+- [Pokopia](https://github.com/drakolordx7/pokopia-recomp)
