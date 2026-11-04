@@ -1,5 +1,6 @@
 #pragma once
 
+#include "nn/fs/detail/fs_file_system_accessor.hpp"
 #include "nn/fs/fs_result.hpp"
 #include "nn/os/time.hpp"
 
@@ -22,9 +23,21 @@ void LogResultErrorMessage(Result result, const char* function);
 bool IsAbortNeeded(Result result);
 
 bool IsEnabledAccessLog();
+bool IsEnabledAccessLog(uint32_t target);
 bool IsEnabledFileSystemAccessorAccessLog(const char* name);
 void OutputAccessLog(Result result, os::Tick start, os::Tick end,
   const char* function, const void* handle, const char* format, ...);
+void OutputAccessLog(Result result, os::Tick start, os::Tick end,
+  const char* function, FileHandle handle, const char* format, ...);
+void OutputAccessLog(Result result, os::Tick start, os::Tick end,
+  const char* function, DirectoryHandle handle, const char* format, ...);
+void OutputAccessLogUnlessResultSuccess(Result result, os::Tick start,
+  os::Tick end, const char* function, const void* handle,
+  const char* format, ...);
+void OutputAccessLogToOnlySdCard(const char* format, ...);
+bool IsEnabledHandleAccessLog(FileHandle handle);
+bool IsEnabledHandleAccessLog(DirectoryHandle handle);
+bool IsEnabledHandleAccessLog(const void* handle);
 
 }
 
@@ -72,6 +85,70 @@ void OutputAccessLog(Result result, os::Tick start, os::Tick end,
   do { \
     if (::nn::fs::detail::IsEnabledAccessLog() && \
       ::nn::fs::detail::IsEnabledFileSystemAccessorAccessLog(name)) { \
+      const ::nn::os::Tick fsStart_ = ::nn::os::GetSystemTick(); \
+      result = (expression); \
+      const ::nn::os::Tick fsEnd_ = ::nn::os::GetSystemTick(); \
+      ::nn::fs::detail::OutputAccessLog(result, fsStart_, fsEnd_, \
+        __FUNCTION__, nullptr, __VA_ARGS__); \
+    } \
+    else { \
+      result = (expression); \
+    } \
+  } while (0)
+
+#define NN_FS_ACCESS_LOG_UNLESS_SUCCESS(result, expression, ...) \
+  do { \
+    if (::nn::fs::detail::IsEnabledAccessLog()) { \
+      const ::nn::os::Tick fsStart_ = ::nn::os::GetSystemTick(); \
+      result = (expression); \
+      const ::nn::os::Tick fsEnd_ = ::nn::os::GetSystemTick(); \
+      ::nn::fs::detail::OutputAccessLogUnlessResultSuccess(result, fsStart_, \
+        fsEnd_, __FUNCTION__, nullptr, __VA_ARGS__); \
+    } \
+    else { \
+      result = (expression); \
+    } \
+  } while (0)
+
+#define NN_FS_ACCESS_LOG_FILE_SYSTEM(result, accessor, handle, expression, \
+  ...) \
+  do { \
+    if (::nn::fs::detail::IsEnabledAccessLog() && \
+      (accessor)->IsEnabledAccessLog()) { \
+      const ::nn::os::Tick fsStart_ = ::nn::os::GetSystemTick(); \
+      result = (expression); \
+      const ::nn::os::Tick fsEnd_ = ::nn::os::GetSystemTick(); \
+      ::nn::fs::detail::OutputAccessLog(result, fsStart_, fsEnd_, \
+        __FUNCTION__, handle, __VA_ARGS__); \
+    } \
+    else { \
+      result = (expression); \
+    } \
+  } while (0)
+
+#define NN_FS_ACCESS_LOG_HANDLE(result, handle, expression, ...) \
+  do { \
+    if (::nn::fs::detail::IsEnabledAccessLog() && \
+      ::nn::fs::detail::IsEnabledHandleAccessLog(handle)) { \
+      const ::nn::os::Tick fsStart_ = ::nn::os::GetSystemTick(); \
+      result = (expression); \
+      const ::nn::os::Tick fsEnd_ = ::nn::os::GetSystemTick(); \
+      ::nn::fs::detail::OutputAccessLog(result, fsStart_, fsEnd_, \
+        __FUNCTION__, handle, __VA_ARGS__); \
+    } \
+    else { \
+      result = (expression); \
+    } \
+  } while (0)
+
+#define NN_FS_ACCESS_LOG_TARGET_SYSTEM 2u
+
+#define NN_FS_ACCESS_LOG_SYSTEM(result, expression, ...) \
+  do { \
+    if (::nn::fs::detail::IsEnabledAccessLog( \
+      NN_FS_ACCESS_LOG_TARGET_SYSTEM) && \
+      ::nn::fs::detail::IsEnabledHandleAccessLog( \
+        static_cast<const void*>(nullptr))) { \
       const ::nn::os::Tick fsStart_ = ::nn::os::GetSystemTick(); \
       result = (expression); \
       const ::nn::os::Tick fsEnd_ = ::nn::os::GetSystemTick(); \

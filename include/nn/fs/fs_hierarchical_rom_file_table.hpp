@@ -3,6 +3,7 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#include "nn/fs/fs_rom_path_tool.hpp"
 #include "nn/fs/fs_substorage.hpp"
 
 namespace nn::fs {
@@ -77,7 +78,19 @@ public:
     RomFileId nextFile;
   };
 
+  struct EntryKey {
+    RomEntryKey key;
+    RomPathTool::RomEntryName name;
+  };
+
   HierarchicalRomFileTable();
+
+  Result ConvertPathToDirectoryId(RomDirectoryId* outId, const char* path);
+  Result ConvertPathToFileId(RomFileId* outId, const char* path);
+  Result OpenFile(RomFileInfo* outInfo, const char* path);
+  Result OpenFile(RomFileInfo* outInfo, const EntryKey& key);
+  Result FindOpen(FindPosition* outPosition, const char* path);
+  Result FindOpen(FindPosition* outPosition, const EntryKey& key);
 
   Result OpenFile(RomFileInfo* outInfo, RomFileId id);
   Result FindOpen(FindPosition* outPosition, RomDirectoryId id);
@@ -96,6 +109,12 @@ private:
 
   __attribute__((noinline)) Result GetDirectoryEntry(
     DirectoryRomEntry* outEntry, RomDirectoryId id);
+  Result GetDirectoryEntry(RomDirectoryId* outId, DirectoryRomEntry* outEntry,
+    const EntryKey& key);
+  Result GetFileEntry(RomFileId* outId, FileRomEntry* outEntry,
+    const EntryKey& key);
+  Result FindPathRecursive(EntryKey* outKey, DirectoryRomEntry* outParent,
+    bool isDirectory, const char* path);
   __attribute__((noinline)) Result GetFileEntry(FileRomEntry* outEntry,
     RomFileId id);
 

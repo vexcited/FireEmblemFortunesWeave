@@ -15,4 +15,10 @@ private:
   char m_Buffer[32];
 };
 
+template<>
+const char* IdString::ToString<DirectoryEntryType>(DirectoryEntryType id);
+
+template<>
+const char* IdString::ToString<SaveDataSpaceId>(SaveDataSpaceId id);
+
 }

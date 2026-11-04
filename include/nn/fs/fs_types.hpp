@@ -95,6 +95,18 @@ struct MountHostOption {
   uint32_t flags;
 };
 
+enum OpenMode {
+  OpenMode_Read = 1 << 0,
+  OpenMode_Write = 1 << 1,
+  OpenMode_AllowAppend = 1 << 2,
+};
+
+enum OpenDirectoryMode {
+  OpenDirectoryMode_Directory = 1 << 0,
+  OpenDirectoryMode_File = 1 << 1,
+  OpenDirectoryMode_All = OpenDirectoryMode_Directory | OpenDirectoryMode_File,
+};
+
 enum class SaveDataFormatType : uint8_t {
   Normal,
   NoJournal,

@@ -37,6 +37,9 @@ Result KeyValueRomStorage<Key, Value>::ReadKeyValue(Element* outElement,
     sizeof(Element)));
 
   *outNameLength = outElement->size;
+  if (outElement->size == 0) {
+    return ResultSuccess();
+  }
   return m_KeyValueStorage.Read(position + sizeof(Element), outName,
     outElement->size);
 }
@@ -105,6 +108,70 @@ Result HierarchicalRomFileTable::FindOpen(FindPosition* outPosition,
   DirectoryRomEntry entry = {};
   NN_FS_RESULT_DO(GetDirectoryEntry(&entry, id));
 
+  outPosition->nextDirectory = entry.directory;
+  outPosition->nextFile = entry.file;
+  return ResultSuccess();
+}
+
+Result HierarchicalRomFileTable::ConvertPathToDirectoryId(
+  RomDirectoryId* outId, const char* path) {
+  EntryKey key = {};
+  DirectoryRomEntry parent;
+  NN_FS_RESULT_DO(FindPathRecursive(&key, &parent, true, path));
+
+  RomDirectoryId id = 0;
+  DirectoryRomEntry entry;
+  NN_FS_RESULT_DO(GetDirectoryEntry(&id, &entry, key));
+  *outId = id;
+  return ResultSuccess();
+}
+
+Result HierarchicalRomFileTable::ConvertPathToFileId(RomFileId* outId,
+  const char* path) {
+  EntryKey key = {};
+  DirectoryRomEntry parent;
+  NN_FS_RESULT_DO(FindPathRecursive(&key, &parent, true, path));
+
+  RomFileId id = 0;
+  FileRomEntry entry;
+  NN_FS_RESULT_DO(GetFileEntry(&id, &entry, key));
+  *outId = id;
+  return ResultSuccess();
+}
+
+Result HierarchicalRomFileTable::OpenFile(RomFileInfo* outInfo,
+  const char* path) {
+  EntryKey key = {};
+  DirectoryRomEntry parent;
+  NN_FS_RESULT_DO(FindPathRecursive(&key, &parent, false, path));
+  return OpenFile(outInfo, key);
+}
+
+Result HierarchicalRomFileTable::OpenFile(RomFileInfo* outInfo,
+  const EntryKey& key) {
+  RomFileId id;
+  FileRomEntry entry = {};
+  NN_FS_RESULT_DO(GetFileEntry(&id, &entry, key));
+  *outInfo = entry.info;
+  return ResultSuccess();
+}
+
+Result HierarchicalRomFileTable::FindOpen(FindPosition* outPosition,
+  const char* path) {
+  EntryKey key = {};
+  DirectoryRomEntry parent;
+  NN_FS_RESULT_DO(FindPathRecursive(&key, &parent, true, path));
+  return FindOpen(outPosition, key);
+}
+
+Result HierarchicalRomFileTable::FindOpen(FindPosition* outPosition,
+  const EntryKey& key) {
+  outPosition->nextDirectory = InvalidPosition;
+  outPosition->nextFile = InvalidPosition;
+
+  RomDirectoryId id;
+  DirectoryRomEntry entry = {};
+  NN_FS_RESULT_DO(GetDirectoryEntry(&id, &entry, key));
   outPosition->nextDirectory = entry.directory;
   outPosition->nextFile = entry.file;
   return ResultSuccess();

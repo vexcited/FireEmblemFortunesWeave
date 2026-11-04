@@ -12,6 +12,9 @@ enum OperationId {
   OperationId_DestroySignature,
   OperationId_Invalidate,
   OperationId_QueryRange,
+  OperationId_QueryUnpreparedRange,
+  OperationId_QueryLazyLoadCompletionRate,
+  OperationId_ReadyLazyLoadFile = 10001,
 };
 
 struct QueryRangeInfo {
