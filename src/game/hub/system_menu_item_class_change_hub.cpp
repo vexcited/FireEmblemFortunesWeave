@@ -1,3 +1,6 @@
+#include "game/game_hub_data.hpp"
+#include "game/game_mode_data.hpp"
+#include "game/hub/manager.hpp"
 #include "game/menu/assist_menu_item_next_timeline.hpp"
 #include "game/menu/basic_menu.hpp"
 #include "game/menu/info_sub_menu_item_dispatch.hpp"
@@ -14,9 +17,30 @@
 #include "game/menu/unit_list_param.hpp"
 #include "game/sound/se.hpp"
 
+namespace game::gmap {
+
+bool CanOpenMapFromHub();
+
+void OpenMapFromHub(menu::BasicMenu* menu);
+
+void OpenSpotList(menu::BasicMenu* menu, int unknown_1, int unknown_2);
+
+}
+
 namespace game::hub {
 
+void OpenEscape(menu::BasicMenu* menu);
+
 namespace {
+
+// Names of game variables.
+constexpr const char kVariableObeliskRoom[] =
+  "\xe6\x8b\xa0\xe7\x82\xb9_\xe6\x89\x80\xe5\x9c\xa8_"
+  "\xe6\x96\xb9\xe5\xb0\x96\xe5\xa1\x94\xe3\x81\xae\xe9\x96\x93";
+constexpr const char kVariableMapAllowed[] =
+  "\xe6\x8b\xa0\xe7\x82\xb9_\xe9\x80\xb2\xe8\xa1\x8c_"
+  "\xe6\x8b\xa0\xe7\x82\xb9\xe5\x9c\xb0\xe5\x9b\xb3"
+  "\xe8\xa1\xa8\xe7\xa4\xba\xe8\xa8\xb1\xe5\x8f\xaf";
 
 class SystemMenuItem_ClassChange_Hub : public menu::SystemMenuItem_ClassChange {
 public:
@@ -163,6 +187,111 @@ private:
 [[gnu::used]]
 SystemMenuItem_Inventory_Dungeon::SystemMenuItem_Inventory_Dungeon() = default;
 
+}
+
+const char* SystemMenuItem_Map_Hub::GetMid() {
+  if (const Manager* manager = Manager::GetInstance()) {
+    if (manager->IsActive()) {
+      if (manager->GetKind() == Manager::kKindHub) {
+        return "MID_SysMenu_Map";
+      }
+      if (manager->GetKind() == Manager::kKindDungeon) {
+        return "MID_SysMenu_GmapMap";
+      }
+    }
+  }
+  return BasicMenuItem::GetMid();
+}
+
+bool SystemMenuItem_Map_Hub::IsDecidable() {
+  if (GameModeData::IsVariableSet(kVariableObeliskRoom)) {
+    return false;
+  }
+
+  const Manager* manager = Manager::GetInstance();
+  if (manager == nullptr || !manager->IsActive()) {
+    return false;
+  }
+  if (manager->GetKind() == Manager::kKindHub) {
+    return GameModeData::IsVariableSet(kVariableMapAllowed) && decidable_;
+  }
+  if (manager->GetKind() != Manager::kKindDungeon) {
+    return false;
+  }
+
+  const GameModeData* data = GameModeData::GetInstance();
+  if (data == nullptr || !data->IsMapAvailable()) {
+    return false;
+  }
+  return decidable_;
+}
+
+int SystemMenuItem_Map_Hub::ACall() {
+  if (gmap::CanOpenMapFromHub()) {
+    if (!active_) {
+      return 1;
+    }
+  }
+  else {
+    const Manager* manager = Manager::GetInstance();
+    if (manager == nullptr || !manager->IsActive()) {
+      return 1;
+    }
+    if (manager->GetKind() != Manager::kKindDungeon || !active_) {
+      return 1;
+    }
+  }
+
+  if (gmap::CanOpenMapFromHub()) {
+    gmap::OpenMapFromHub(menu_->GetParent());
+  }
+  else {
+    const Manager* manager = Manager::GetInstance();
+    if (manager == nullptr || !manager->IsActiveKind(Manager::kKindDungeon)) {
+      return 1;
+    }
+    gmap::OpenSpotList(menu_->GetParent(), 0, 0);
+  }
+  return 9;
+}
+
+bool SystemMenuItem_Map_Hub::IsActive() {
+  if (!gmap::CanOpenMapFromHub()) {
+    const Manager* manager = Manager::GetInstance();
+    if (manager == nullptr || !manager->IsActiveKind(Manager::kKindDungeon)) {
+      return false;
+    }
+  }
+  return active_;
+}
+
+bool HubMenuItem_Escape::IsDecidable() {
+  const GameModeData* data = GameModeData::GetInstance();
+  if (data == nullptr) {
+    return false;
+  }
+
+  const int mode = data->GetMode();
+  if (mode == GameModeData::kModeNone) {
+    return false;
+  }
+  if (mode == GameModeData::kModeChapter && data->GetChapterKind() == 2 &&
+      data->GetProgress() < 2) {
+    return false;
+  }
+  return decidable_;
+}
+
+int HubMenuItem_Escape::ACall() {
+  if (!GameHubData::GetInstance()->CanEscape()) {
+    return 1;
+  }
+  OpenEscape(menu_->GetParent());
+  return 4;
+}
+
+bool HubMenuItem_Escape::IsActive() {
+  return GameHubData::GetInstance()->CanEscape();
 }
 
 }

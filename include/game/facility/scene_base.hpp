@@ -10,6 +10,8 @@ namespace game {
 
 #pragma GCC visibility push(hidden)
 
+class Stream;
+
 // The original manipulates the singleton pointers from outside the classes,
 // which the shared template only allows to derived classes.
 template<typename T>
@@ -39,6 +41,7 @@ namespace sound {
 class BgmPlayer {
 public:
   void Stop(const PlayParam& param);
+  void Serialize(Stream& stream) const;
 };
 
 }

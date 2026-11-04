@@ -38,6 +38,11 @@ T* ProcSingleton<T>::instance_ = nullptr;
 
 template<typename T, typename L>
 class ProcJumpableSingleton : public ProcSingleton<T> {
+public:
+  void SetLabel(L label) {
+    label_ = label;
+  }
+
 private:
   L label_{};
   L next_label_{};

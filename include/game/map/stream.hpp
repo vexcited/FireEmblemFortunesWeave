@@ -12,6 +12,9 @@ namespace game {
 class IStream {
 public:
   virtual bool Unknown00(int* value) = 0;
+  virtual void Unknown01(int value) = 0;
+  virtual bool Unknown02(int* value) = 0;
+  virtual void Unknown03(int value) = 0;
 };
 
 class Stream : public IStream {

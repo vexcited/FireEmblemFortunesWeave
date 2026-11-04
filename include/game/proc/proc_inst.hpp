@@ -11,6 +11,17 @@ namespace game {
 
 class ProcConst {};
 
+// One step of the command list a process runs.
+struct ProcCmd {
+  static constexpr uint8_t kEnd = 0;
+  static constexpr uint8_t kLabel = 2;
+
+  uint8_t type;
+  uint8_t unknown_01[0x1f];
+  int value;
+  uint8_t unknown_24[0x1c];
+};
+
 class ProcInst : public ProcConst {
 public:
   // The real constructor is not reconstructed yet.
@@ -45,13 +56,42 @@ public:
     return false;
   }
 
+protected:
+  // Moves to the label command unless the current one is already there.
+  void Jump(int label) {
+    bool jump = true;
+    for (const ProcCmd* cmd = current_; cmd >= commands_; --cmd) {
+      if (cmd->type == ProcCmd::kLabel) {
+        jump = cmd->value != label;
+        break;
+      }
+    }
+    if (commands_ == nullptr || !jump) {
+      return;
+    }
+
+    for (const ProcCmd* cmd = commands_;; ++cmd) {
+      if (cmd->type == ProcCmd::kLabel) {
+        if (cmd->value == label) {
+          current_ = cmd;
+          flags_ &= ~kFlagWait;
+          return;
+        }
+      }
+      else if (cmd->type == ProcCmd::kEnd) {
+        return;
+      }
+    }
+  }
+
 private:
+  static constexpr uint16_t kFlagWait = 0x80;
   static constexpr uint16_t kFlagActive = 0x100;
 
   void Unregister();
 
-  ProcInst* unknown_08;
-  ProcInst* unknown_10;
+  const ProcCmd* commands_;
+  const ProcCmd* current_;
   const char* name_;
   uint64_t unknown_20[7];
   std::deque<ProcInst*> unknown_58;

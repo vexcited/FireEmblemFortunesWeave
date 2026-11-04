@@ -38,6 +38,10 @@ public:
     return object_ground_;
   }
 
+  void BeginUpdate();
+  void EndUpdate();
+  void MarkDirty(int x, int z);
+
 private:
   uint8_t unknown_08_[0xf008];
   HeightMap* ground_;

@@ -1,8 +1,25 @@
 #include <cstdint>
 
+#include "game/gmap/gmap_situation.hpp"
+#include "game/gmap/proc_gmap_phase_seq.hpp"
 #include "game/menu/basic_menu.hpp"
 #include "game/menu/unit_command_menu_item.hpp"
 #include "game/sound/se.hpp"
+
+namespace game {
+
+namespace menu {
+
+extern const char* g_mid_cause_invalid;
+extern const char* g_mid_cause_shortage_material;
+
+}
+
+// The menu items reach the phase sequence through the global offset table.
+extern template class __attribute__((visibility("default")))
+  ProcSingleton<gmap::ProcGmapPhaseSeq>;
+
+}
 
 namespace game::gmap {
 
@@ -326,6 +343,9 @@ public:
   bool IsActive() override { return unknown_54_ == 0; }
   int Unknown71() override { return 12; }
   const char* Unknown74() override;
+
+private:
+  bool force_boost_;
 };
 
 [[gnu::used]] RecruitItem::RecruitItem() = default;
@@ -545,6 +565,136 @@ public:
 
 [[gnu::used]] TraderMenuItem::TraderMenuItem() = default;
 
+}
+
+}
+
+namespace game::gmap {
+
+using menu::g_mid_cause_invalid;
+using menu::g_mid_cause_shortage_material;
+
+const char* EnterMenuItem::GetMid() {
+  switch (unknown_56_) {
+    case 1:
+    case 2:
+    case 7:
+      return "MID_GmapMenu_MainQuest";
+    case 3:
+    case 5:
+      return "MID_GmapMenu_Enter";
+    case 4:
+      return "MID_GmapMenu_Dungeon";
+    case 6:
+      return "MID_GmapMenu_Hellgate";
+    default:
+      return nullptr;
+  }
+}
+
+const char* EnterMenuItem::GetHelpMid() {
+  return unknown_56_ == 6 ? "冥界の門" : nullptr;
+}
+
+const char* EnterMenuItem::Unknown74() {
+  switch (unknown_56_) {
+    case 1:
+    case 2:
+    case 7:
+      return "MID_GmapMenu_MainQuest_Help";
+    case 3:
+    case 5:
+      return "MID_GmapMenu_Enter_Help";
+    case 4:
+      return "MID_GmapMenu_Dungeon_Help";
+    case 6:
+      return "MID_GmapMenu_Hellgate_Help";
+    default:
+      return nullptr;
+  }
+}
+
+const char* EnterMenuItem::Unknown75() {
+  return IsActive() ? nullptr : g_mid_cause_invalid;
+}
+
+const char* RecruitItem::GetMid() {
+  return force_boost_ ? "MID_GmapMenu_Recruit_ForceBoost"
+    : "MID_GmapMenu_Recruit";
+}
+
+const char* RecruitItem::GetHelpMid() {
+  return force_boost_ ? "兵士大募集" : "兵士募集";
+}
+
+const char* RecruitItem::Unknown74() {
+  return force_boost_ ? "MID_GmapMenu_Recruit_ForceBoost_Help"
+    : "MID_GmapMenu_Recruit_Help";
+}
+
+const char* BoostFarmItem::Unknown75() {
+  if (unknown_54_ & 0x1) {
+    return "MID_Menu_Cause_InvalidBoostFarm";
+  }
+  return unknown_54_ & 0x80 ? g_mid_cause_shortage_material : nullptr;
+}
+
+const char* CorpsCreateItem::Unknown75() {
+  if (IsActive() || (unknown_54_ & 0x40) == 0) {
+    return nullptr;
+  }
+  return "MID_Menu_Cause_NotCorpsPool";
+}
+
+const char* BoostRecruitItem::Unknown75() {
+  return unknown_54_ & 0x1 ? "MID_Menu_Cause_CompletedBoostRecruit" : nullptr;
+}
+
+const char* CarriageMenuItem::Unknown75() {
+  return unknown_54_ != 0 ? g_mid_cause_invalid : nullptr;
+}
+
+const char* ReconstructionMenuItem::Unknown75() {
+  return IsActive() ? nullptr : g_mid_cause_shortage_material;
+}
+
+const char* BladeResonanceItem::Unknown75() {
+  if (unknown_54_ & 0x2000) {
+    return "MID_Menu_Cause_ShortageBlade";
+  }
+  return unknown_54_ != 0 ? g_mid_cause_invalid : nullptr;
+}
+
+const char* WarpItem::Unknown75() {
+  return IsActive() ? nullptr : g_mid_cause_invalid;
+}
+
+int DestroyMiasmaMenuItem::ACall() {
+  if (!IsActive()) {
+    return 1;
+  }
+  ProcGmapPhaseSeq::GetInstance()->RequestCommand(
+    ProcGmapPhaseSeq::kCommandDestroyMiasma);
+  return 4;
+}
+
+int ContinueMoveMenuItem::ACall() {
+  if (!IsActive()) {
+    return 1;
+  }
+  GmapSituation::GetInstance()->RequestContinueMove();
+  ProcGmapPhaseSeq::GetInstance()->RequestCommand(
+    ProcGmapPhaseSeq::kCommandMove);
+  return 4;
+}
+
+int FixMenuItem::ACall() {
+  if (!IsActive()) {
+    return 1;
+  }
+  ProcGmapPhaseSeq::GetInstance()->RequestCommand(
+    ProcGmapPhaseSeq::kCommandMove);
+  return 4;
 }
 
 }

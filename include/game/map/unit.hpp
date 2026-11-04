@@ -25,9 +25,15 @@ public:
     return force_ != nullptr ? force_->GetType() : kNoForce;
   }
 
+  uint8_t GetIndex() const {
+    return index_;
+  }
+
 private:
   uint8_t unknown_00_[0x1b8];
   const Force* force_;
+  uint8_t unknown_1c0_[0x668];
+  uint8_t index_;
 };
 
 #pragma GCC visibility pop

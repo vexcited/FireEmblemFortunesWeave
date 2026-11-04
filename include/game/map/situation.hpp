@@ -23,6 +23,8 @@ namespace map {
 struct SituationRecord {
   ~SituationRecord();
 
+  void Serialize(Stream& stream) const;
+
   void Clear() {
     name.clear();
     for (int i = 0; i < 4; ++i) {
@@ -69,7 +71,8 @@ private:
 
 class Situation : public SerializeSingleton<Situation> {
 public:
-  static constexpr uint32_t kFlagTrickHidden = 0x800;
+  // Rain puts out fire tricks.
+  static constexpr uint32_t kFlagRain = 0x800;
 
   ~Situation() override;
 
@@ -86,8 +89,36 @@ public:
 
   void Clear();
 
-  bool IsTrickHidden() const {
-    return (flags_ & kFlagTrickHidden) != 0;
+  bool IsRaining() const {
+    return (flags_ & kFlagRain) != 0;
+  }
+
+  uint8_t GetMiracleCount() const {
+    return unknown_1c_;
+  }
+
+  const BonusExpList& GetBonusExps() const {
+    return bonus_exps_;
+  }
+
+  uint8_t GetRuleFlags() const {
+    return flags_ & 0x1e;
+  }
+
+  uint8_t GetUnknown26() const {
+    return unknown_26_;
+  }
+
+  uint8_t GetUnknown27() const {
+    return unknown_27_;
+  }
+
+  const SituationRecord& GetRecord(int index) const {
+    return records_[index];
+  }
+
+  uint32_t GetHonorExp() const {
+    return unknown_140_;
   }
 
 private:
