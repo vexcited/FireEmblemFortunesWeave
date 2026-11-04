@@ -127,7 +127,7 @@ private:
     unsigned long mTrackType;
     void seekwithoutcue_l(int64_t seekTimeUs, int64_t *actualFrameTimeUs);
 
-    void advance_l();
+    int advance_l();
 
     BlockIterator(const BlockIterator &);
     BlockIterator &operator=(const BlockIterator &);
@@ -341,14 +341,17 @@ void BlockIterator::advance() {
     advance_l();
 }
 
-void BlockIterator::advance_l() {
+int BlockIterator::advance_l() {
+    // The SDK gives up after a thousand parse attempts.
+    int retries = 1000;
+
     for (;;) {
         long res = mCluster->GetEntry(mBlockEntryIndex, mBlockEntry);
         ALOGV("GetEntry returned %ld", res);
 
         long long pos;
         long len;
-        if (res < 0) {
+        while (res < 0) {
             // Need to parse this cluster some more
 
             CHECK_EQ(res, mkvparser::E_BUFFER_NOT_FULL);
@@ -361,15 +364,26 @@ void BlockIterator::advance_l() {
 
                 ALOGE("Cluster::Parse returned result %ld", res);
 
+                mCluster->DecRef();
                 mCluster = NULL;
-                break;
+                return -10007;
             }
 
-            continue;
-        } else if (res == 0) {
+            if (--retries == 0) {
+                if (mCluster != NULL) {
+                    mCluster->DecRef();
+                    mCluster = NULL;
+                }
+                return -10001;
+            }
+
+            res = mCluster->GetEntry(mBlockEntryIndex, mBlockEntry);
+        }
+
+        if (res == 0) {
             // We're done with this cluster
 
-            const mkvparser::Cluster *nextCluster;
+            const mkvparser::Cluster *nextCluster = NULL;
             res = mExtractor->mSegment->ParseNext(
                     mCluster, nextCluster, pos, len);
             ALOGV("ParseNext returned %ld", res);
@@ -377,15 +391,23 @@ void BlockIterator::advance_l() {
             if (res != 0) {
                 // EOF or error
 
+                mCluster->DecRef();
                 mCluster = NULL;
-                break;
+                return res < 0 ? -10007 : 0;
             }
 
-            CHECK_EQ(res, 0);
-            CHECK(nextCluster != NULL);
-            CHECK(!nextCluster->EOS());
+            if (nextCluster == NULL) {
+                return -10001;
+            }
 
+            if (nextCluster->EOS()) {
+                nextCluster->EOS();
+                return -10001;
+            }
+
+            mCluster->DecRef();
             mCluster = nextCluster;
+            mCluster->AddRef();
 
             res = mCluster->Parse(pos, len);
             ALOGV("Parse (2) returned %ld", res);
@@ -395,20 +417,45 @@ void BlockIterator::advance_l() {
 
                 ALOGE("Cluster::Parse returned result %ld", res);
 
+                mCluster->DecRef();
                 mCluster = NULL;
-                break;
+                return res == mkvparser::E_FILE_FORMAT_INVALID ? -10001
+                                                               : -10007;
             }
 
             mBlockEntryIndex = 0;
+
+            if (--retries == 0) {
+                if (mCluster != NULL) {
+                    mCluster->DecRef();
+                    mCluster = NULL;
+                }
+                return -10001;
+            }
             continue;
         }
 
-        CHECK(mBlockEntry != NULL);
-        CHECK(mBlockEntry->GetBlock() != NULL);
+        if (mBlockEntry == NULL) {
+            return -10001;
+        }
+
+        if (mBlockEntry->GetBlock() == NULL) {
+            mBlockEntry->GetBlock();
+            return -10001;
+        }
+
         ++mBlockEntryIndex;
 
         if (mBlockEntry->GetBlock()->GetTrackNumber() == mTrackNum) {
-            break;
+            return 0;
+        }
+
+        if (--retries == 0) {
+            if (mCluster != NULL) {
+                mCluster->DecRef();
+                mCluster = NULL;
+            }
+            return -10001;
         }
     }
 }
@@ -585,6 +632,11 @@ int64_t BlockIterator::blockTimeUs() const {
     if (mCluster == NULL || mBlockEntry == NULL) {
         return -1;
     }
+
+    if (!mExtractor->mSegment->IsInClusterTable(mCluster)) {
+        return -2;
+    }
+
     return (mBlockEntry->GetBlock()->GetTime(mCluster) + 500ll) / 1000ll;
 }
 
@@ -2304,6 +2356,16 @@ void MatroskaExtractor::findThumbnails() {
 media_status_t MatroskaExtractor::getMetaData(AMediaFormat *meta) {
     AMediaFormat_setString(meta,
             AMEDIAFORMAT_KEY_MIME, mIsWebm ? "video/webm" : MEDIA_MIMETYPE_CONTAINER_MATROSKA);
+
+    if (mSegment != NULL) {
+        const int64_t duration = mSegment->GetDuration();
+
+        if (duration >= 500) {
+            const int64_t durationUs = (duration + 500) / 1000;
+            AMediaFormat_setInt32(meta, AMEDIAFORMAT_KEY_BIT_RATE,
+                    (int32_t)((double)mSegment->m_size * 8000000.0 / durationUs));
+        }
+    }
 
     return AMEDIA_OK;
 }

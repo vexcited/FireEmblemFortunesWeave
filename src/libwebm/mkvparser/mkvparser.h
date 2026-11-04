@@ -1008,7 +1008,8 @@ class Cluster {
 
   long GetEntryCount() const;
 
-  // The SDK reference counts clusters, this vendored revision does not.
+  // The SDK reference counts clusters and tracks the live ones in the
+  // segment table, this vendored revision does neither.
   long AddRef() const;
   long DecRef() const;
 
@@ -1100,6 +1101,8 @@ class Segment {
   unsigned long GetCount() const;
   const Cluster* GetFirst() const;
   const Cluster* GetLast() const;
+  // The SDK reports whether a cluster still sits in the segment table.
+  bool IsInClusterTable(const Cluster*) const;
   const Cluster* GetNext(const Cluster*);
 
   const Cluster* FindCluster(long long time_nanoseconds) const;
