@@ -40,6 +40,8 @@
 
 #include "nn/util/tiny_mt.hpp"
 
+#include <string.h>
+
 namespace nn::util {
 
 static_assert(sizeof(TinyMt) == 16);
@@ -128,6 +130,78 @@ uint32_t TinyMt::GenerateRandomU32() {
   }
 
   return value;
+}
+
+void TinyMt::Initialize(uint32_t seed) {
+  state[0] = seed;
+  state[1] = 0x8f7011ee;
+  state[2] = 0xfc78ff1f;
+  state[3] = 0x3793fdff;
+
+  for (unsigned index = 1; index < 8; ++index) {
+    uint32_t previous = state[(index - 1) & 3];
+    state[index & 3] ^= index + 1812433253u * (previous ^ (previous >> 30));
+  }
+
+  FinalizeInitialization();
+}
+
+void TinyMt::GenerateInitialValuePlus(uint32_t* values, int index,
+  uint32_t value) {
+  int next = (index + 1) % 4;
+  int second = (index + 2) % 4;
+  int last = (index + 3) % 4;
+  uint32_t mixed = MixFirst(values[index] ^ values[next] ^ values[last]);
+  uint32_t result = mixed + value + index;
+  values[index] = result;
+  values[next] += mixed;
+  values[second] += result;
+}
+
+void TinyMt::GenerateInitialValueXor(uint32_t* values, int index) {
+  int next = (index + 1) % 4;
+  int second = (index + 2) % 4;
+  int last = (index + 3) % 4;
+  uint32_t mixed = MixSecond(values[index] + values[next] + values[last]);
+  values[index] = mixed - index;
+  values[next] ^= mixed;
+  values[second] ^= mixed - index;
+}
+
+void TinyMt::SaveState(State* saved) {
+  memcpy(saved->data, state, sizeof(state));
+}
+
+void TinyMt::RestoreState(const State* saved) {
+  memcpy(state, saved->data, sizeof(state));
+}
+
+void TinyMt::GenerateRandomBytes(void* buffer, size_t size) {
+  uint8_t* begin = static_cast<uint8_t*>(buffer);
+  uint8_t* end = begin + size;
+  uint8_t* alignedBegin = reinterpret_cast<uint8_t*>(
+    (reinterpret_cast<uintptr_t>(begin) + 3) & ~static_cast<uintptr_t>(3));
+  uint8_t* alignedEnd = reinterpret_cast<uint8_t*>(
+    reinterpret_cast<uintptr_t>(end) & ~static_cast<uintptr_t>(3));
+
+  if (alignedBegin > begin) {
+    size_t headSize = alignedBegin - begin;
+    uint32_t value = GenerateRandomU32();
+    if (headSize >= size) {
+      memcpy(begin, &value, size);
+      return;
+    }
+    memcpy(begin, &value, headSize);
+  }
+
+  for (uint8_t* current = alignedBegin; current < alignedEnd; current += 4) {
+    *reinterpret_cast<uint32_t*>(current) = GenerateRandomU32();
+  }
+
+  if (alignedEnd != end) {
+    uint32_t value = GenerateRandomU32();
+    memcpy(alignedEnd, &value, end - alignedEnd);
+  }
 }
 
 }
