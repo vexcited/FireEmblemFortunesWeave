@@ -1,4 +1,5 @@
 #include "game/facility/training_menu_item_base.hpp"
+#include "game/game_mode_data.hpp"
 #include "game/menu/top_menu_item.hpp"
 
 namespace game::facility {
@@ -21,7 +22,12 @@ public:
 
   const char* GetMid() override { return "MID_ArenaMenu_Watching"; }
   const char* GetHelpMid() override { return "闘技場"; }
-  bool IsDecidable() override;
+
+  bool IsDecidable() override {
+    GameModeData* data = GameModeData::GetInstance();
+    return data == nullptr || data->GetMode() != GameModeData::kModeClear;
+  }
+
   int ACall() override;
   bool IsActive() override;
   void Unknown73() override;

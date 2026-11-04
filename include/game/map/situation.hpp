@@ -93,6 +93,11 @@ public:
     return (flags_ & kFlagRain) != 0;
   }
 
+  // The force whose sight is shown, the player one unless it is their turn.
+  uint8_t GetViewForce() const {
+    return force_kinds_[current_force_] == 1 ? current_force_ : 0;
+  }
+
   uint8_t GetMiracleCount() const {
     return unknown_1c_;
   }
@@ -124,12 +129,10 @@ public:
 private:
   void UpdateVariables();
 
-  uint8_t unknown_10_ = 1;
-  uint8_t unknown_11_ = 2;
-  uint8_t unknown_12_ = 2;
-  uint8_t unknown_13_ = 2;
+  // Kind of each force, 1 is controlled by the player.
+  uint8_t force_kinds_[4] = {1, 2, 2, 2};
   uint32_t flags_ = 0;
-  uint8_t unknown_18_ = 0;
+  uint8_t current_force_ = 0;
   uint8_t unknown_19_ = 0;
   uint16_t unknown_1a_ = 1;
   uint8_t unknown_1c_ = 0xff;

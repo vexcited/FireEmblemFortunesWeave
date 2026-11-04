@@ -3,9 +3,11 @@
 #include <unordered_set>
 
 #include "game/data/data_files.hpp"
+#include "game/game_mode_data.hpp"
 #include "game/map/map_character.hpp"
 #include "game/map/map_singletons.hpp"
 #include "game/map/situation.hpp"
+#include "game/map/stream.hpp"
 #include "game/map/trick.hpp"
 #include "game/map/unit.hpp"
 
@@ -35,6 +37,10 @@ class TrickOwner {
 public:
   bool IsValid() const {
     return id_ != 0;
+  }
+
+  uint8_t GetId() const {
+    return id_;
   }
 
   const void* Get() const;
@@ -151,7 +157,22 @@ public:
     return item_;
   }
 
-  const ItemData* GetItemFor(const Unit* unit) const override;
+  const ItemData* GetItemFor(const Unit* unit) const override {
+    const GameModeData* mode = GameModeData::GetInstance();
+    if (mode == nullptr || unit == nullptr) {
+      return nullptr;
+    }
+    const ChapterData* chapter = mode->GetChapter();
+    if (chapter == nullptr) {
+      return nullptr;
+    }
+    // Some chapters hide trick items from other forces.
+    if (chapter->IsTrickItemPrivate() &&
+        !((1 << unit->GetForceType()) & 0xf1)) {
+      return nullptr;
+    }
+    return GetItem();
+  }
 
   const LegionData* GetLegion() const override {
     return legion_;
@@ -732,6 +753,51 @@ bool TrickEntity::Unknown76(const Unit* unit) const {
     return false;
   }
   return CanTerrainTarget(data_, unit);
+}
+
+// Data rows are written as the low 32 bits of their key hash.
+static void WriteKey(Stream& stream, const Data* data) {
+  stream.WriteU32(data != nullptr ? data->key.hash : 0);
+}
+
+void TrickEntity::Serialize(Stream& stream) const {
+  stream.WriteU8(8);
+  stream.WriteU8(type_);
+  stream.WriteU8(x_);
+  stream.WriteU8(z_);
+  stream.WriteU8(width_);
+  stream.WriteU8(height_);
+  stream.WriteU8(poss_.size());
+  for (const Pos& pos : poss_) {
+    stream.WriteU8(pos.x);
+    stream.WriteU8(pos.z);
+  }
+  stream.WriteU8(life_);
+  stream.WriteU8(max_life_);
+  stream.WriteU8(unknown_0d_);
+  stream.WriteU8(force_);
+  stream.WriteU8(status_);
+  stream.WriteU8(unknown_10_);
+  stream.WriteU8(unknown_11_);
+  stream.WriteU16(flags_);
+  stream.WriteU16(angle_);
+  WriteKey(stream, item_);
+  WriteKey(stream, legion_);
+  WriteKey(stream, data_);
+  stream.WriteU8(target_kind_);
+  switch (target_kind_) {
+    case 1:
+    case 2:
+      stream.WriteU32(target_index_);
+      break;
+    case 3:
+      stream.WriteData(PersonFile::GetInstance()->At(target_index_));
+      break;
+    case 4:
+      stream.WriteData(SkillFile::GetInstance()->At(target_index_));
+      break;
+  }
+  stream.WriteU8(owner_.GetId());
 }
 
 const char16_t* TrickEntity::GetName() const {

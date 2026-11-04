@@ -1,3 +1,7 @@
+#include <functional>
+#include <memory>
+#include <vector>
+
 #include "game/menu/game_menu.hpp"
 
 namespace game::facility {
@@ -12,7 +16,7 @@ public:
   int Unknown26() override { return 10; }
   const char* Unknown32() override { return "Layout/Obelisk.arc"; }
   const char* Unknown33() override { return "Obelisk_Resume"; }
-  int Unknown39() override { return 1; }
+  bool Unknown39() override { return true; }
   int Unknown61() override { return 3; }
   void Unknown70() override {}
   void Unknown75() override;
@@ -36,8 +40,28 @@ public:
   int InputUnknown12(int direction, bool loop) override;
 
 private:
-  uint8_t unknown_428_[0x8c];
+  // Owns a buffer it releases with delete[].
+  struct Buffer {
+    ~Buffer() { delete[] data; }
+
+    uint8_t* data;
+  };
+
+  uint8_t unknown_428_[0x18];
+  std::vector<void*> unknown_440_;
+  uint64_t unknown_458_;
+  std::function<void()> unknown_460_;
+  std::weak_ptr<void> unknown_490_;
+  uint8_t unknown_4a0_[0x14];
   int32_t part_;
+  uint64_t unknown_4b8_;
+  std::vector<void*> unknown_4c0_;
+  uint8_t unknown_4d8_[0x70];
+  Buffer unknown_548_;
+  uint8_t unknown_550_[0x10];
+  std::weak_ptr<void> unknown_560_;
+  std::weak_ptr<void> unknown_570_;
+  std::weak_ptr<void> unknown_580_;
 };
 
 [[gnu::used]] ProcObeliskResumeMenu::ProcObeliskResumeMenu() = default;

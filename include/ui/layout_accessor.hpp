@@ -16,6 +16,15 @@ public:
   void PlayAnimation(const char* name, float speed);
   bool HasAnimation(const char* name);
   void SetPaneVisible(const char* name, bool visible);
+  bool IsAnimationPlaying(const char* name, bool unknown);
+  float GetAnimationEndFrame(const char* name, bool unknown);
+  void SetAnimationFrame(const char* name, float frame);
+  void StopAnimation(const char* name, bool unknown);
+  void CopyPane(const char* source, const char* parent, const char* name);
+  std::weak_ptr<LayoutAccessor> GetPart(const char* name);
+  nn::ui2d::Pane* FindPane(const char* name);
+  void SetTranslate(const nn::util::Float3& translate);
+  void SetPaneSize(const char* name, float width, float height);
 
   void SetText(const char* name, const char16_t* text) {
     if (text == nullptr) {

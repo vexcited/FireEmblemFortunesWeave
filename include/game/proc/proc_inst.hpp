@@ -84,7 +84,57 @@ protected:
     }
   }
 
+  // Whether the last label command at or before the current one is label.
+  bool IsInLabel(int label) const {
+    if (commands_ == nullptr) {
+      return false;
+    }
+    for (const ProcCmd* cmd = current_; cmd >= commands_; --cmd) {
+      if (cmd->type == ProcCmd::kLabel) {
+        return cmd->value == label;
+      }
+    }
+    return false;
+  }
+
+  // Moves to the label command searching from the first command.
+  void JumpTo(int label) {
+    if (commands_ == nullptr) {
+      return;
+    }
+    for (const ProcCmd* cmd = commands_;; ++cmd) {
+      if (cmd->type == ProcCmd::kLabel) {
+        if (cmd->value == label) {
+          current_ = cmd;
+          flags_ &= ~kFlagWait;
+          return;
+        }
+      }
+      else if (cmd->type == ProcCmd::kEnd) {
+        return;
+      }
+    }
+  }
+
+  // Wait commands keep waiting until the process resumes.
+  void Finish() {
+    if (current_ != nullptr && current_->type <= 16 &&
+      ((1 << current_->type) & kWaitCommands) != 0) {
+      flags_ |= kFlagWait;
+    }
+    flags_ |= kFlagFinished;
+  }
+
+  bool IsUnknown8aSet() const { return unknown_8a[0] != 0; }
+
+public:
+  ProcInst* GetUnknown20() const { return unknown_20_; }
+  ProcInst* GetParentProc() const { return parent_proc_; }
+  const char* GetName() const { return name_; }
+
 private:
+  static constexpr uint32_t kWaitCommands = 0x1ce00;
+  static constexpr uint16_t kFlagFinished = 0x8;
   static constexpr uint16_t kFlagWait = 0x80;
   static constexpr uint16_t kFlagActive = 0x100;
 
@@ -93,7 +143,9 @@ private:
   const ProcCmd* commands_;
   const ProcCmd* current_;
   const char* name_;
-  uint64_t unknown_20[7];
+  ProcInst* unknown_20_;
+  ProcInst* parent_proc_;
+  uint64_t unknown_30[5];
   std::deque<ProcInst*> unknown_58;
   uint16_t flags_;
   uint8_t unknown_8a[2];

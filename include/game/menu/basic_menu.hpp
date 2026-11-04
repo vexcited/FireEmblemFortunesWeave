@@ -1,16 +1,28 @@
 #pragma once
 
 #include <cstdint>
+#include <functional>
+#include <memory>
+#include <string>
 #include <vector>
 
+#include "game/menu/basic_menu_item.hpp"
 #include "game/proc/proc_inst.hpp"
+#include "game/sound/se.hpp"
+#include "ui/layout_accessor.hpp"
 
 namespace game::menu {
 
 class BasicMenuItem;
 class BasicMenu;
 
+void UpdateAccessor(std::weak_ptr<ui::LayoutAccessor>& accessor);
+void UpdateMenuTree(BasicMenu* menu);
+
 class MenuProcInst : public ProcInst {
+public:
+  virtual void Unknown18() = 0;
+
 protected:
   BasicMenu* parent_;
   uint8_t unknown_a0_[0x10];
@@ -19,20 +31,20 @@ protected:
 // None of these slots is a destructor.
 class MenuInput {
 public:
-  virtual int InputUnknown00();
-  virtual int InputUnknown01();
-  virtual int InputUnknown02();
-  virtual void InputUnknown03();
-  virtual void InputUnknown04();
-  virtual void InputUnknown05();
-  virtual void InputUnknown06();
-  virtual void InputUnknown07();
-  virtual void InputUnknown08();
-  virtual void InputUnknown09();
-  virtual void InputUnknown10();
-  virtual void InputUnknown11();
+  virtual int InputUnknown00() { return 0; }
+  virtual int InputUnknown01() { return 12; }
+  virtual int InputUnknown02() { return 1; }
+  virtual int InputUnknown03() { return 1; }
+  virtual int InputUnknown04() { return 1; }
+  virtual int InputUnknown05(int count, bool loop);
+  virtual int InputUnknown06(int count, bool loop);
+  virtual int InputUnknown07(bool loop);
+  virtual int InputUnknown08(bool loop);
+  virtual int InputUnknown09(int count);
+  virtual int InputUnknown10(int count);
+  virtual int InputUnknown11(int direction, int count, bool loop);
   virtual int InputUnknown12(int direction, bool loop);
-  virtual void InputUnknown13();
+  virtual int InputUnknown13(int direction, int count);
   virtual void InputUnknown14();
   virtual void InputUnknown15();
   virtual void InputUnknown16();
@@ -44,11 +56,16 @@ public:
   virtual void InputUnknown22();
   virtual void InputUnknown23();
 
-private:
-  uint8_t unknown_08_[0x30];
+protected:
+  BasicMenu* menu_;
+  uint8_t unknown_10_[4];
+  int32_t unknown_14_;
+  uint8_t unknown_18_[0x20];
 };
 
 class BasicMenu : public MenuProcInst, public MenuInput {
+  friend class MenuInput;
+
 public:
   ~BasicMenu() override;
 
@@ -71,57 +88,57 @@ public:
   void Unknown09() override;
   void Unknown12() override;
 
-  virtual void Unknown18();
+  void Unknown18() override;
   virtual void Unknown19();
   virtual void Unknown20();
-  virtual void Unknown21();
-  virtual int Unknown22();
-  virtual void Unknown23();
-  virtual int Unknown24();
-  virtual void Unknown25();
-  virtual int Unknown26();
-  virtual void Unknown27();
-  virtual void Unknown28();
-  virtual void Unknown29();
-  virtual void Unknown30();
-  virtual void Unknown31();
-  virtual const char* Unknown32();
-  virtual const char* Unknown33();
-  virtual void Unknown34();
-  virtual const char* Unknown35();
-  virtual void Unknown36();
-  virtual int Unknown37();
-  virtual void Unknown38();
-  virtual int Unknown39();
-  virtual int Unknown40();
-  virtual void Unknown41();
-  virtual const char* Unknown42();
-  virtual const char* Unknown43(uint8_t kind);
+  virtual int Unknown21() { return state_; }
+  virtual int Unknown22() { return 0; }
+  virtual int Unknown23() { return 0; }
+  virtual int Unknown24() { return 2; }
+  virtual int Unknown25() { return 0; }
+  virtual int Unknown26() { return 0; }
+  virtual int Unknown27() { return 1; }
+  virtual int Unknown28() { return 1; }
+  virtual bool Unknown29(int index);
+  virtual void Unknown30(bool enable) {}
+  virtual void Unknown31(bool enable);
+  virtual const char* Unknown32() { return "Layout/CommonMenu.arc"; }
+  virtual const char* Unknown33() { return "Common_BasicMenu"; }
+  virtual const char* Unknown34() { return nullptr; }
+  virtual const char* Unknown35() { return nullptr; }
+  virtual void* Unknown36() { return nullptr; }
+  virtual bool Unknown37() { return Unknown36() != nullptr; }
+  virtual int Unknown38() { return Unknown37() ? 0x100000 : 0; }
+  virtual bool Unknown39() { return false; }
+  virtual int Unknown40() { return Unknown39() ? 48 : 16; }
+  virtual int Unknown41() { return 5; }
+  virtual const char* Unknown42() { return ""; }
+  virtual const char* Unknown43(uint8_t kind) { return ""; }
   virtual void Unknown44();
-  virtual void Unknown45();
-  virtual void Unknown46();
-  virtual void Unknown47();
-  virtual void Unknown48();
-  virtual void Unknown49();
-  virtual void Unknown50();
-  virtual void Unknown51();
-  virtual void Unknown52();
-  virtual void Unknown53();
-  virtual void Unknown54();
-  virtual int Unknown55();
-  virtual int Unknown56();
-  virtual void Unknown57();
-  virtual void Unknown58();
-  virtual void Unknown59();
-  virtual void Unknown60();
-  virtual int Unknown61();
-  virtual void Unknown62();
-  virtual int Unknown63();
-  virtual bool Unknown64();
-  virtual const char* Unknown65();
-  virtual void Unknown66();
-  virtual const char* Unknown67();
-  virtual void Unknown68();
+  virtual bool Unknown45() { return unknown_14_ > 1; }
+  virtual std::weak_ptr<ui::LayoutAccessor> Unknown46() { return {}; }
+  virtual std::weak_ptr<ui::LayoutAccessor> Unknown47() { return {}; }
+  virtual std::weak_ptr<ui::LayoutAccessor> Unknown48() { return {}; }
+  virtual std::weak_ptr<ui::LayoutAccessor> Unknown49() { return {}; }
+  virtual std::weak_ptr<ui::LayoutAccessor> Unknown50() { return {}; }
+  virtual std::weak_ptr<ui::LayoutAccessor> Unknown51() { return {}; }
+  virtual std::weak_ptr<ui::LayoutAccessor> Unknown52() { return {}; }
+  virtual std::weak_ptr<ui::LayoutAccessor> Unknown53() { return {}; }
+  virtual int Unknown54() { return 1; }
+  virtual int Unknown55() { return 0; }
+  virtual int Unknown56() { return 4; }
+  virtual void Unknown57(std::vector<int64_t>& handles);
+  virtual void Unknown58(std::vector<int64_t>& handles);
+  virtual int Unknown59() { return 0; }
+  virtual bool Unknown60() { return false; }
+  virtual int Unknown61() { return 2; }
+  virtual int Unknown62() { return 1; }
+  virtual int Unknown63() { return 1; }
+  virtual bool Unknown64() { return false; }
+  virtual const char* Unknown65() { return nullptr; }
+  virtual std::vector<std::string> Unknown66();
+  virtual const char* Unknown67() { return nullptr; }
+  virtual int Unknown68() { return 0; }
   virtual void Unknown69();
   virtual void Unknown70();
   virtual void Unknown71();
@@ -129,49 +146,88 @@ public:
   virtual void Unknown73();
   virtual void Unknown74();
   virtual void Unknown75();
-  virtual void Unknown76();
-  virtual void Unknown77();
-  virtual void Unknown78();
-  virtual void Unknown79();
+  virtual void Unknown76(int result);
+  virtual void Unknown77(int result);
+  virtual void Unknown78(int result);
+  virtual void Unknown79(int result);
   virtual void Unknown80();
   virtual void Unknown81();
   virtual void Unknown82();
-  virtual void Unknown83();
-  virtual void Unknown84();
-  virtual void Unknown85();
-  virtual void Unknown86();
-  virtual void Unknown87();
-  virtual void Unknown88();
-  virtual void Unknown89();
-  virtual void Unknown90();
+  virtual void Unknown83() {}
+  virtual void Unknown84() {}
+  virtual void Unknown85() {}
+  virtual void Unknown86() {}
+  virtual void Unknown87() {}
+  virtual void Unknown88() {}
+  virtual void Unknown89() {}
+  virtual void Unknown90() {}
   virtual void Unknown91();
-  virtual void Unknown92();
-  virtual void Unknown93();
-  virtual void Unknown94();
-  virtual void Unknown95();
+  virtual void Unknown92() {}
+  virtual void Unknown93() {}
+
+  virtual void Unknown94() {
+    if (unknown_270_ != nullptr) {
+      unknown_270_ = nullptr;
+    }
+    accessor_.SetVisible(false);
+  }
+
+  virtual void Unknown95() {}
   virtual void Unknown96();
-  virtual void Unknown97();
-  virtual void Unknown98();
-  virtual void Unknown99();
-  virtual int Unknown100();
-  virtual int Unknown101();
-  virtual int Unknown102();
-  virtual int Unknown103();
-  virtual void Unknown104();
-  virtual int Unknown105();
-  virtual void Unknown106();
-  virtual void Unknown107();
-  virtual void Unknown108();
-  virtual void Unknown109();
-  virtual void Unknown110();
-  virtual void Unknown111();
-  virtual void Unknown112();
+  virtual void Unknown97() {}
+  virtual void Unknown98() {}
+  virtual void Unknown99() {}
+
+  virtual int Unknown100() {
+    return current_ != nullptr ? current_->ACall() : 0;
+  }
+
+  virtual int Unknown101() {
+    return current_ != nullptr ? current_->BCall() : 0;
+  }
+
+  virtual int Unknown102() {
+    return current_ != nullptr ? current_->XCall() : 0;
+  }
+
+  virtual int Unknown103() {
+    return current_ != nullptr ? current_->YCall() : 0;
+  }
+
+  virtual int Unknown104(bool loop);
+
+  virtual int Unknown105() {
+    return current_ != nullptr ? current_->RCall() : 0;
+  }
+
+  virtual int Unknown106(bool loop);
+
+  virtual int Unknown107() {
+    return current_ != nullptr ? current_->ZRCall() : 0;
+  }
+
+  virtual int Unknown108(bool loop);
+
+  virtual int Unknown109() {
+    return current_ != nullptr ? current_->MinusCall() : 0;
+  }
+
+  virtual int Unknown110(bool loop);
+
+  virtual int Unknown111() {
+    return current_ != nullptr ? current_->StickRCall() : 0;
+  }
+
+  virtual int Unknown112() {
+    return current_ != nullptr ? current_->RightCall() : 0;
+  }
+
   virtual void Unknown113();
   virtual void Unknown114();
-  virtual void Unknown115();
-  virtual void Unknown116();
-  virtual int Unknown117();
-  virtual void Unknown118();
+  virtual int Unknown115() { return 0; }
+  virtual int Unknown116() { return 1; }
+  virtual int Unknown117() { return 0; }
+  virtual int Unknown118() { return 0; }
 
   // These override MenuInput and come next in the primary table.
   void InputUnknown16() override;
@@ -179,27 +235,62 @@ public:
   void InputUnknown14() override;
   void InputUnknown15() override;
 
-  virtual void Unknown123();
-  virtual void Unknown124();
+  virtual bool Unknown123();
+  virtual bool Unknown124();
   virtual void Unknown125();
   virtual void Unknown126();
   virtual void Unknown127();
-  virtual void Unknown128();
-  virtual void Unknown129();
-  virtual void Unknown130();
-  virtual void Unknown131();
+  virtual void Unknown128() {}
+  virtual void Unknown129() {}
+  virtual int Unknown130() { return 0; }
+  virtual void Unknown131() {}
   virtual void Unknown132();
-  virtual void Unknown133();
+  virtual void Unknown133() {}
   virtual void Unknown134();
 
 protected:
+  // Destroyed through its virtual destructor, its type is not recovered.
+  class Owned {
+  public:
+    virtual ~Owned();
+  };
+
+  void Unknown16dc660(bool enable);
+  void Unknown16dcb80();
+  void Unknown16de2e0(bool enable);
+  void Unknown16de4d0();
+  void Unknown16df380();
+
   std::vector<BasicMenuItem*> items_;
   std::vector<BasicMenuItem*> visible_items_;
-  uint8_t unknown_118_[0x38];
+  uint64_t unknown_118_;
+  // Plays instead of the next decide or cancel sound effect.
+  std::function<void()> se_callback_;
   BasicMenuItem* current_;
-  uint8_t unknown_158_[0xc];
+  Owned* unknown_158_;
+  int32_t state_;
   uint32_t flags_;
-  uint8_t unknown_168_[0x2b8];
+  uint8_t unknown_168_[2];
+  uint8_t unknown_16a_;
+  uint8_t unknown_16b_[0x29];
+  int32_t unknown_194_;
+  uint8_t unknown_198_[0xa8];
+  uint64_t unknown_240_;
+  uint8_t unknown_248_[0x20];
+  int32_t unknown_268_;
+  uint8_t unknown_26c_[4];
+  void* unknown_270_;
+  uint8_t unknown_278_[0xc];
+  int32_t unknown_284_;
+  uint8_t unknown_288_[0xa0];
+  std::vector<int32_t> unknown_328_;
+  uint8_t unknown_340_[0x10];
+  ui::LayoutAccessor accessor_;
+  uint8_t unknown_368_[0x50];
+  ui::LayoutAccessor accessor_3b8_;
+  uint8_t unknown_3d0_[0x50];
 };
+
+static_assert(sizeof(BasicMenu) == 0x420);
 
 }

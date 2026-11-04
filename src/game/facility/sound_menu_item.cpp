@@ -10,14 +10,19 @@ class SoundMenuItem : public menu::GameMenuItem {
 public:
   SoundMenuItem();
 
-  const char* GetMid() override;
+  const char* GetMid() override {
+    return unknown_75_ ? mid_ : "MID_Sys_Unknown";
+  }
+
   bool IsDecidable() override { return unknown_7a_; }
   bool IsActive() override { return unknown_75_; }
   void PlayIdleAnimation() override;
   void PlayCursorAnimation() override;
 
 private:
-  uint8_t unknown_53_[0x22];
+  uint8_t unknown_53_[0x15];
+  const char* mid_;
+  uint8_t unknown_70_[0x5];
   bool unknown_75_;
   uint8_t unknown_76_[0x4];
   bool unknown_7a_;

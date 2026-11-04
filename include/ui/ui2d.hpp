@@ -155,6 +155,13 @@ private:
   char name_[0x19];
 };
 
+class Picture : public Pane {
+public:
+  ~Picture() override;
+
+  void SetColor(uint32_t color);
+};
+
 class Parts : public Pane {
 public:
   static const detail::RuntimeTypeInfo* GetRuntimeTypeInfoStatic() {

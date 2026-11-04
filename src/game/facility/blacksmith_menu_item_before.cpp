@@ -43,7 +43,6 @@ public:
   const char* Unknown70() override { return ""; }
 
 private:
-  void* unknown_58_;
   std::string label_;
   std::string value_;
 };

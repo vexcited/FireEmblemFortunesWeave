@@ -1,4 +1,5 @@
 #include "game/facility/facility_equip_unit_menu_item.hpp"
+#include "game/game_mode_data.hpp"
 #include "game/menu/basic_menu.hpp"
 #include "game/menu/equip_menu_item_animal_pool.hpp"
 #include "game/menu/game_menu_item.hpp"
@@ -162,7 +163,12 @@ public:
 
   const char* GetMid() override { return "MID_StableMenu_Release"; }
   const char* GetHelpMid() override { return "厩舎②"; }
-  bool IsDecidable() override;
+
+  bool IsDecidable() override {
+    GameModeData* data = GameModeData::GetInstance();
+    return data == nullptr || data->GetMode() != GameModeData::kModeFree;
+  }
+
 
   int ACall() override {
     if (!IsActive()) {

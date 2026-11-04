@@ -1,4 +1,5 @@
 #include "game/facility/facility_unit_menu_item.hpp"
+#include "game/game_mode_data.hpp"
 #include "game/menu/basic_menu.hpp"
 #include "game/menu/top_menu_item.hpp"
 #include "game/menu/unit_menu_item.hpp"
@@ -25,12 +26,13 @@ namespace {
 
 class PerchMenuItemBase : public menu::TopMenuItem {
 public:
-  bool IsDecidable() override;
+  bool IsDecidable() override { return !(Unknown75() & 0x400000); }
   int ACall() override;
-  bool IsActive() override;
+  bool IsActive() override { return Unknown75() == 0; }
   void Unknown73() override;
   virtual const char* Unknown74() = 0;
-  virtual void Unknown75() = 0;
+  // Returns flags explaining why the perch cannot be used.
+  virtual uint32_t Unknown75() = 0;
   virtual bool Unknown76() = 0;
 };
 
@@ -38,10 +40,16 @@ class PerchMenuItem : public PerchMenuItemBase {
 public:
   PerchMenuItem();
 
-  const char* GetMid() override;
+  const char* GetMid() override {
+    GameModeData* data = GameModeData::GetInstance();
+    return data != nullptr && data->GetMode() == GameModeData::kModeClear
+      ? "MID_PerchMenu_Perch_Part3"
+      : "MID_PerchMenu_Perch";
+  }
+
   const char* GetHelpMid() override { return "白鴉の止まり木"; }
   const char* Unknown74() override { return "MID_PerchMenu_Perch_Help"; }
-  void Unknown75() override;
+  uint32_t Unknown75() override;
   bool Unknown76() override { return false; }
 };
 
@@ -51,9 +59,15 @@ class PerchOnlyGazeMenuItem : public PerchMenuItemBase {
 public:
   PerchOnlyGazeMenuItem();
 
-  const char* GetMid() override;
+  const char* GetMid() override {
+    GameModeData* data = GameModeData::GetInstance();
+    return data != nullptr && data->GetMode() == GameModeData::kModeClear
+      ? "MID_PerchMenu_Perch_Part3"
+      : "MID_PerchMenu_Perch";
+  }
+
   const char* Unknown74() override { return "MID_PerchMenu_Perch_Part3_Help"; }
-  void Unknown75() override;
+  uint32_t Unknown75() override;
   bool Unknown76() override { return true; }
 };
 

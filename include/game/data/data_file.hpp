@@ -593,6 +593,10 @@ public:
     return !sheets_.empty();
   }
 
+  T* At(size_t index) const {
+    return items_[index];
+  }
+
   [[gnu::always_inline]] T* Find(const char* name) const {
     const HashedString key(name);
 

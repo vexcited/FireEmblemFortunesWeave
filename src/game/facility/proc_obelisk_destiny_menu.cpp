@@ -19,7 +19,7 @@ public:
   void Unknown91() override;
   void Unknown93() override;
   void Unknown94() override;
-  void Unknown107() override;
+  int Unknown107() override;
   void Unknown128() override;
   void Unknown129() override;
   const char* ImplUnknown03() override { return "MID_ObeliskMenu_Destiny"; }

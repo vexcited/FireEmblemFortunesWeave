@@ -11,24 +11,24 @@ public:
   const char* Unknown32() override { return "Layout/Hub.arc"; }
   const char* Unknown33() override { return "Hub_Temple_RankSelect"; }
   const char* Unknown35() override { return "L_JobList"; }
-  int Unknown37() override { return 1; }
-  void Unknown50() override;
-  void Unknown51() override;
+  bool Unknown37() override { return true; }
+  std::weak_ptr<ui::LayoutAccessor> Unknown50() override;
+  std::weak_ptr<ui::LayoutAccessor> Unknown51() override;
 
   const char* Unknown67() override {
     return mode_ == kModeTrial ? "資格試験" : "兵種変更";
   }
 
   void Unknown75() override {}
-  void Unknown76() override;
-  void Unknown77() override;
+  void Unknown76(int result) override;
+  void Unknown77(int result) override;
   void Unknown84() override;
   void Unknown94() override;
   void Unknown96() override;
   int Unknown102() override;
   int Unknown103() override;
   int Unknown105() override;
-  void Unknown130() override;
+  int Unknown130() override;
   void Unknown131() override;
   uint8_t ImplUnknown08() override { return mode_ == kModeTrial; }
 

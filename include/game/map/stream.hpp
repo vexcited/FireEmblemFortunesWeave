@@ -17,8 +17,12 @@ public:
   virtual void Unknown03(int value) = 0;
 };
 
+struct Data;
+
 class Stream : public IStream {
 public:
+  void WriteData(const Data* data);
+
   void WriteU8(uint8_t value) {
     buffer_[position_++] = value;
   }

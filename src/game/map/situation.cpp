@@ -24,13 +24,13 @@ void Situation::UpdateVariables() {
 }
 
 void Situation::Clear() {
-  unknown_18_ = 0;
+  current_force_ = 0;
   unknown_26_ = 0;
   unknown_27_ = 0;
-  unknown_10_ = 1;
-  unknown_11_ = 2;
-  unknown_12_ = 2;
-  unknown_13_ = 2;
+  force_kinds_[0] = 1;
+  force_kinds_[1] = 2;
+  force_kinds_[2] = 2;
+  force_kinds_[3] = 2;
   unknown_1a_ = 1;
   records_[0].Clear();
   records_[1].Clear();
@@ -49,12 +49,12 @@ void Situation::Clear() {
 }
 
 void Situation::Serialize(Stream& stream) const {
-  stream.WriteU8(unknown_10_);
-  stream.WriteU8(unknown_11_);
-  stream.WriteU8(unknown_12_);
-  stream.WriteU8(unknown_13_);
+  stream.WriteU8(force_kinds_[0]);
+  stream.WriteU8(force_kinds_[1]);
+  stream.WriteU8(force_kinds_[2]);
+  stream.WriteU8(force_kinds_[3]);
   stream.WriteU32(flags_);
-  stream.WriteU8(unknown_18_);
+  stream.WriteU8(current_force_);
   stream.WriteU8(unknown_19_);
   stream.WriteU16(unknown_1a_);
   stream.WriteU8(unknown_1c_);
@@ -80,12 +80,12 @@ void Situation::Serialize(Stream& stream) const {
 }
 
 void Situation::Deserialize(Stream& stream, int version) {
-  unknown_10_ = stream.ReadU8();
-  unknown_11_ = stream.ReadU8();
-  unknown_12_ = stream.ReadU8();
-  unknown_13_ = stream.ReadU8();
+  force_kinds_[0] = stream.ReadU8();
+  force_kinds_[1] = stream.ReadU8();
+  force_kinds_[2] = stream.ReadU8();
+  force_kinds_[3] = stream.ReadU8();
   flags_ = stream.ReadU32();
-  unknown_18_ = stream.ReadU8();
+  current_force_ = stream.ReadU8();
   unknown_19_ = stream.ReadU8();
   unknown_1a_ = stream.ReadU16();
 

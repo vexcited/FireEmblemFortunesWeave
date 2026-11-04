@@ -21,8 +21,8 @@ public:
   void Unknown02() override;
   int Unknown56() override;
   int Unknown63() override;
-  void Unknown76() override;
-  void Unknown77() override;
+  void Unknown76(int result) override;
+  void Unknown77(int result) override;
   void Unknown85() override;
   void Unknown88() override;
   void Unknown92() override;
@@ -30,7 +30,7 @@ public:
   int Unknown101() override;
   int Unknown103() override;
   int Unknown105() override;
-  void Unknown112() override;
+  int Unknown112() override;
   void Unknown128() override;
   int InputUnknown01() override;
   virtual void Unknown140();

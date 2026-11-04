@@ -1,4 +1,7 @@
+#include <memory>
+
 #include "game/facility/obelisk_hero_menu.hpp"
+#include "game/menu/unit_list.hpp"
 
 namespace game::facility {
 
@@ -8,12 +11,16 @@ class ProcUnitSelectMenu : public menu::GameMenu {
 public:
   ProcUnitSelectMenu();
 
+  ~ProcUnitSelectMenu() override {
+    ResetMenuUnits();
+  }
+
   const char* Unknown32() override { return "Layout/Obelisk.arc"; }
   const char* Unknown33() override { return "Obelisk_Hero2"; }
   const char* Unknown35() override { return "L_UnitList"; }
-  int Unknown39() override { return 1; }
-  void Unknown57() override;
-  void Unknown58() override;
+  bool Unknown39() override { return true; }
+  void Unknown57(std::vector<int64_t>& handles) override;
+  void Unknown58(std::vector<int64_t>& handles) override;
   int Unknown63() override { return 0; }
   void Unknown69() override {}
   void Unknown75() override;
@@ -29,6 +36,10 @@ public:
   int InputUnknown00() override { return 1; }
   int InputUnknown02() override { return 7; }
   int InputUnknown01() override { return 1; }
+
+private:
+  uint8_t unknown_428_[0x10];
+  std::shared_ptr<void> unknown_438_;
 };
 
 [[gnu::used]] ProcUnitSelectMenu::ProcUnitSelectMenu() = default;
@@ -38,7 +49,7 @@ public:
   ProcPartSelect();
 
   const char* Unknown35() override { return "L_PartList"; }
-  void Unknown58() override;
+  void Unknown58(std::vector<int64_t>& handles) override;
   bool Unknown64() override { return true; }
   void Unknown94() override;
   void Unknown96() override;

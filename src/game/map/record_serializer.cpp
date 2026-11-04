@@ -5,6 +5,7 @@
 
 #include "game/facility/scene_base.hpp"
 #include "game/game_mode_data.hpp"
+#include "game/map/image.hpp"
 #include "game/map/map_singletons.hpp"
 #include "game/map/situation.hpp"
 #include "game/map/stream.hpp"
@@ -60,7 +61,6 @@ namespace map {
 
 class Trick : public SerializeSingleton<Trick> {};
 
-class Image : public SerializeSingleton<Image> {};
 
 class UnitFlags {
 public:

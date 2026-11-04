@@ -68,6 +68,8 @@ public:
   virtual void PlayCursorSe();
   virtual void PlayPageSe();
 
+  bool IsSelected() const { return selected_; }
+
 protected:
   ui::LayoutAccessor& GetAccessor() {
     std::shared_ptr<ui::LayoutAccessor> accessor = accessor_.lock();

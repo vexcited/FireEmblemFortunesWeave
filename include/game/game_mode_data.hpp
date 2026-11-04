@@ -18,6 +18,15 @@ public:
   const GameVariable* Find(const HashedString& key) const;
 };
 
+struct ChapterData {
+  bool IsTrickItemPrivate() const {
+    return flags & 0x80;
+  }
+
+  uint8_t unknown_00_[0xb9];
+  uint8_t flags;
+};
+
 struct MiracleState {
   uint8_t unknown_00_[0x68];
   uint16_t count;
@@ -80,6 +89,10 @@ public:
     }
   }
 
+  const ChapterData* GetChapter() const {
+    return chapter_;
+  }
+
   int GetUserData() const {
     return user_data_;
   }
@@ -99,7 +112,8 @@ private:
 
   uint8_t unknown_00_[0xf];
   uint8_t chapter_kind_;
-  uint8_t unknown_10_[0x20];
+  const ChapterData* chapter_;
+  uint8_t unknown_18_[0x18];
   GameVariableTable* variables_;
   uint8_t unknown_38_[0x4];
   int mode_;

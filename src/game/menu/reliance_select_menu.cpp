@@ -1,0 +1,35 @@
+#pragma GCC visibility push(hidden)
+#include "game/menu/game_menu.hpp"
+#pragma GCC visibility pop
+
+namespace game::menu {
+
+class RelianceSelectMenu : public GameMenu {
+public:
+  ~RelianceSelectMenu() override;
+
+  void Unknown30(bool enable) override;
+  const char* Unknown32() override { return "Layout/CommonMenu.arc"; }
+  const char* Unknown33() override { return "Common_RelianceMenu"; }
+  const char* Unknown42() override { return "L_UnitInfo/L_KeySort"; }
+  const char* Unknown43(uint8_t kind) override;
+  std::weak_ptr<ui::LayoutAccessor> Unknown50() override;
+  std::weak_ptr<ui::LayoutAccessor> Unknown51() override;
+  void Unknown69() override;
+  void Unknown76(int result) override;
+  void Unknown77(int result) override;
+  void Unknown84() override;
+  void Unknown88() override;
+  void Unknown96() override;
+  int Unknown100() override;
+  int Unknown103() override;
+  int Unknown105() override;
+  int Unknown107() override;
+  int Unknown112() override;
+  void Unknown128() override;
+  void Unknown129() override;
+};
+
+RelianceSelectMenu::~RelianceSelectMenu() = default;
+
+}

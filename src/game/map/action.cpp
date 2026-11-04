@@ -1,4 +1,5 @@
 #include <set>
+#include <string>
 
 #include "game/map/binder.hpp"
 #include "game/map/cursor.hpp"
@@ -116,6 +117,18 @@ public:
   virtual void Unknown26() = 0;
   virtual void Unknown27() = 0;
 };
+
+class ProcUnitWarp : public ProcUnitAction {
+public:
+  ProcUnitWarp();
+
+private:
+  uint8_t unknown_a0_[0x10];
+  std::string effect_;
+  std::string sound_;
+};
+
+[[gnu::used]] ProcUnitWarp::ProcUnitWarp() = default;
 
 class ProcUnitBlazeOff : public ProcUnitBlaze {
 public:
