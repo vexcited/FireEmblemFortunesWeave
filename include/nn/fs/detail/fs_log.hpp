@@ -1,0 +1,84 @@
+#pragma once
+
+#include "nn/fs/fs_result.hpp"
+#include "nn/os/time.hpp"
+
+namespace nn::os {
+
+Tick GetSystemTick();
+
+}
+
+namespace nn::diag::detail {
+
+[[noreturn]] void AbortImpl(const Result* result);
+
+}
+
+namespace nn::fs::detail {
+
+void LogErrorMessage(Result result, const char* format, ...);
+void LogResultErrorMessage(Result result, const char* function);
+bool IsAbortNeeded(Result result);
+
+bool IsEnabledAccessLog();
+bool IsEnabledFileSystemAccessorAccessLog(const char* name);
+void OutputAccessLog(Result result, os::Tick start, os::Tick end,
+  const char* function, const void* handle, const char* format, ...);
+
+}
+
+#define NN_FS_ABORT_UNLESS_RESULT_SUCCESS(expression) \
+  do { \
+    const ::nn::Result fsAbortResult_ = (expression); \
+    if (::nn::fs::IsFailure(fsAbortResult_)) { \
+      ::nn::diag::detail::AbortImpl(&fsAbortResult_); \
+    } \
+  } while (0)
+
+#define NN_FS_DETAIL_CHECK_ABORT(result, force) \
+  do { \
+    if (::nn::fs::detail::IsAbortNeeded(result) || (force)) { \
+      ::nn::fs::detail::LogResultErrorMessage(result, __FUNCTION__); \
+      NN_FS_ABORT_UNLESS_RESULT_SUCCESS(result); \
+    } \
+  } while (0)
+
+#define NN_FS_RESULT_DO_WITH_ABORT_CHECK(expression) \
+  do { \
+    const ::nn::Result fsCheckedResult_ = (expression); \
+    NN_FS_DETAIL_CHECK_ABORT(fsCheckedResult_, false); \
+    if (::nn::fs::IsFailure(fsCheckedResult_)) { \
+      return fsCheckedResult_; \
+    } \
+  } while (0)
+
+#define NN_FS_RESULT_THROW_UNLESS_WITH_ABORT_CHECK(condition, result) \
+  do { \
+    if (!(condition)) { \
+      const ::nn::Result fsCheckedResult_ = (result); \
+      NN_FS_DETAIL_CHECK_ABORT(fsCheckedResult_, false); \
+      return fsCheckedResult_; \
+    } \
+  } while (0)
+
+#define NN_FS_ABORT_UNLESS_RESULT_SUCCESS_WITH_LOG(expression) \
+  do { \
+    const ::nn::Result fsCheckedResult_ = (expression); \
+    NN_FS_DETAIL_CHECK_ABORT(fsCheckedResult_, true); \
+  } while (0)
+
+#define NN_FS_ACCESS_LOG_FILE_SYSTEM_ACCESSOR(result, expression, name, ...) \
+  do { \
+    if (::nn::fs::detail::IsEnabledAccessLog() && \
+      ::nn::fs::detail::IsEnabledFileSystemAccessorAccessLog(name)) { \
+      const ::nn::os::Tick fsStart_ = ::nn::os::GetSystemTick(); \
+      result = (expression); \
+      const ::nn::os::Tick fsEnd_ = ::nn::os::GetSystemTick(); \
+      ::nn::fs::detail::OutputAccessLog(result, fsStart_, fsEnd_, \
+        __FUNCTION__, nullptr, __VA_ARGS__); \
+    } \
+    else { \
+      result = (expression); \
+    } \
+  } while (0)

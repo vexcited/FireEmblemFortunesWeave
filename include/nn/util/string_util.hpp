@@ -1,8 +1,11 @@
 #pragma once
 
+#include <stddef.h>
 #include <string.h>
 
 namespace nn::util {
+
+int SNPrintf(char* buffer, size_t size, const char* format, ...);
 
 template<typename T>
 int Strnlen(const T* string, int count) {
