@@ -14,6 +14,9 @@ class NativeHandle {
  public:
   NativeHandle() : m_Handle(0), m_IsManaged(false) {}
 
+  NativeHandle(uint32_t handle, bool isManaged)
+    : m_Handle(handle), m_IsManaged(isManaged) {}
+
   ~NativeHandle() {
     if (m_IsManaged) {
       os::CloseNativeHandle(m_Handle);

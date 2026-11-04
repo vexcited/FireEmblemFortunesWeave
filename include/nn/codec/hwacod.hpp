@@ -49,6 +49,26 @@ struct HardwareAudioCodecManagerType;
 struct ListNode {
   ListNode() : previous(this), next(this) {}
 
+  bool IsEmpty() const { return next == this; }
+
+  // Inserts node after this one.
+  void LinkNext(ListNode* node) {
+    ListNode* last = node->previous;
+    node->previous = this;
+    last->next = next;
+    next->previous = last;
+    next = node;
+  }
+
+  void Unlink() {
+    ListNode* last = next;
+    ListNode* node = last->previous;
+    previous->next = last;
+    last->previous = previous;
+    node->next = this;
+    previous = node;
+  }
+
   ListNode* previous;
   ListNode* next;
 };
@@ -110,5 +130,14 @@ int GetHardwareAudioCodecFreeIoBufferCount(
   const HardwareAudioCodecManagerType* manager);
 int GetHardwareAudioCodecUsingIoBufferCount(
   const HardwareAudioCodecManagerType* manager);
+
+}
+
+namespace nn::codec::hwacod {
+
+Result ValidateHardwareAudioCodecInstanceParameter(
+  const InstanceParameter& parameter);
+size_t CalcHardwareAudioCodecManagerWorkBufferSize(
+  const InstanceParameter& parameter, int instanceCount, int ioBufferCount);
 
 }

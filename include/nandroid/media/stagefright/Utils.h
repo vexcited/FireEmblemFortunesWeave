@@ -22,11 +22,17 @@
 #include <stdint.h>
 #include <nandroid/utils/Errors.h>
 #include <nandroid/utils/RefBase.h>
+#ifdef NANDROID_AUDIO
 #include <nandroid/system/audio.h>
+#endif
 #include <nandroid/media/BufferingSettings.h>
+#include <nandroid/media/stagefright/MetaData.h>
+#ifdef NANDROID_AUDIO
 #include <nandroid/media/MediaPlayerInterface.h>
+#endif
 
 namespace nandroid {
+
 
 struct AMessage;
 status_t convertMetaDataToMessage(
@@ -44,21 +50,31 @@ const uint8_t *findNextNalStartCode(const uint8_t *data, size_t length);
 AString MakeUserAgent();
 
 // Convert a MIME type to a AudioSystem::audio_format
+#ifdef NANDROID_AUDIO
 status_t mapMimeToAudioFormat(audio_format_t& format, const char* mime);
+#endif
 
 // Convert a aac profile to a AudioSystem::audio_format
+#ifdef NANDROID_AUDIO
 void mapAACProfileToAudioFormat(audio_format_t& format, uint64_t eAacProfile);
+#endif
 
 // Send information from MetaData to the HAL via AudioSink
+#ifdef NANDROID_AUDIO
 status_t sendMetaDataToHal(sp<MediaPlayerBase::AudioSink>& sink, const sp<MetaData>& meta);
+#endif
 
 // Return |audio_offload_info_t| filled from given metadata
+#ifdef NANDROID_AUDIO
 status_t getAudioOffloadInfo(const sp<MetaData>& meta, bool hasVideo,
         bool isStreaming, audio_stream_type_t streamType, audio_offload_info_t *info);
+#endif
 
 // Check whether the stream defined by meta can be offloaded to hardware
+#ifdef NANDROID_AUDIO
 bool canOffloadStream(const sp<MetaData>& meta, bool hasVideo,
                       bool isStreaming, audio_stream_type_t streamType);
+#endif
 
 AString uriDebugString(const AString &uri, bool incognito = false);
 
@@ -75,12 +91,20 @@ bool operator <(const HLSTime &t0, const HLSTime &t1);
 
 // read and write various object to/from AMessage
 
+#ifdef NANDROID_AUDIO
 void writeToAMessage(const sp<AMessage> &msg, const AudioPlaybackRate &rate);
+#endif
+#ifdef NANDROID_AUDIO
 void readFromAMessage(const sp<AMessage> &msg, AudioPlaybackRate *rate /* nonnull */);
+#endif
 
+#ifdef NANDROID_AUDIO
 void writeToAMessage(const sp<AMessage> &msg, const AVSyncSettings &sync, float videoFpsHint);
+#endif
+#ifdef NANDROID_AUDIO
 void readFromAMessage(
         const sp<AMessage> &msg, AVSyncSettings *sync /* nonnull */, float *videoFps /* nonnull */);
+#endif
 
 void writeToAMessage(const sp<AMessage> &msg, const BufferingSettings &buffering);
 void readFromAMessage(const sp<AMessage> &msg, BufferingSettings *buffering /* nonnull */);

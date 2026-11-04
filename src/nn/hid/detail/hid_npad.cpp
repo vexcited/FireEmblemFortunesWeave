@@ -174,3 +174,19 @@ Result GetSceneIdForPrivateApp(int* pOutInt) {
 }
 
 }
+
+namespace nn::hid::detail {
+
+Result InitializeXpad(const BasicXpadId& basicXpadId) {
+  sf::SharedPointer<IHidServer> proxy;
+  NN_RESULT_DO(server::CreateHidServerProxy(&proxy));
+  return proxy->InitializeXpad(utility::GetAppletResourceUserId(), basicXpadId);
+}
+
+Result FinalizeXpad(const BasicXpadId& basicXpadId) {
+  sf::SharedPointer<IHidDebugServer> proxy;
+  NN_RESULT_DO(server::CreateHidDebugServerProxy(&proxy));
+  return proxy->FinalizeXpad(basicXpadId);
+}
+
+}

@@ -17,6 +17,7 @@
 //#define LOG_NDEBUG 0
 #define LOG_TAG "ALooper"
 
+#include <nandroid/MovieMemory.h>
 #include <nandroid/media/stagefright/foundation/ADebug.h>
 
 #include <nandroid/utils/Log.h>

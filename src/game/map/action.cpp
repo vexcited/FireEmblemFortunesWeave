@@ -5,14 +5,12 @@
 #include "game/map/cursor.hpp"
 #include "game/map/map_singletons.hpp"
 #include "game/proc/proc_inst.hpp"
+#include "game/unit.hpp"
 
 namespace game {
 
 #pragma GCC visibility push(hidden)
 
-class Unit;
-
-class UnitConst {};
 
 namespace map {
 

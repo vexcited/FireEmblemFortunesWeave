@@ -14,6 +14,8 @@ Modifications common to every file.
 - `include/nandroid/media/DataSource.h`, `DataSourceBase.h` and `MediaSource.h` stand for the AOSP symbolic links into `media/stagefright`.
 - Relative includes of the mp4 extractor point to `src/nandroid/libstagefright/include` and to the local headers.
 
+- The verification specs compile with `-ftrivial-auto-var-init=zero`, as the SDK zero initializes locals.
+
 Shims.
 
 - `include/nandroid/log/log.h` replaces liblog. Log macros expand to nothing and `LOG_ALWAYS_FATAL_IF` only evaluates its condition.
@@ -23,6 +25,12 @@ Shims.
 - `media/stagefright/DataSource.h` drops `getIDataSource` and `DrmInitialization`, matching the SDK vtables.
 - `media/MediaTrack.h` drops the binder memory includes.
 - `mpeg2ts/HlsSampleDecryptor.h` declares `AES_KEY` and `AES_BLOCK_SIZE` instead of including OpenSSL.
+- `media/stagefright/MediaBuffer.h` defines `NO_IMEMORY` and drops `mMemory`.
+- `media/stagefright/MediaWriter.h` has no `IMediaRecorderClient` listener, so `notify` does nothing.
+- `media/stagefright/Utils.h` drops the audio and offload helpers and includes `BufferingSettings.h` and `MetaData.h` directly.
+- `media/mediaplayer_common.h` replaces `media/mediaplayer.h` for `media_track_type`.
+- The `openmax` headers include each other with quotes.
+- `cutils/properties.h` declares the property helpers the SDK keeps, and `media/mediarecorder.h` holds the recorder event codes and output formats.
 - `utils/Unicode.h` and `Unicode.cpp` place the functions in `namespace nandroid` instead of `extern "C"`.
 
 Per file.
@@ -37,3 +45,10 @@ Per file.
 - `String8.cpp`: the empty string comes from `SharedBuffer::globalSharedBuffer`.
 - `RefBase.cpp`: `CallStack` is only used with `NANDROID_CALLSTACK`.
 - `ESQueue.cpp`: the unused `DescramblerAPI.h` include is disabled.
+- `ATSParser.cpp` and `ATSParser.h`: conditional access support is removed with `#ifdef NANDROID_CAS`, so there is no `CasManager`, descrambler or HIDL memory.
+  `parseProgramMap` reads a stream CA descriptor with `findCADescriptor` instead of the descriptor loop, `ensureBufferCapacity` allocates the exact size and `flush` drops scrambled payloads.
+- `MediaBuffer.cpp`, `MediaBufferGroup.cpp`, `MetaData.cpp` and `libmedia/BufferingSettings.cpp`: binder shared memory and parcels are disabled.
+- `Utils.cpp`: the audio, user agent and file descriptor helpers are removed, color aspects go through `ColorUtils`, `uriDebugString` returns the URI unless incognito, and the mapping tables are marked `used`.
+- `httplive/M3UParser.cpp` and `M3UParser.h`: the parser takes a fourth constructor argument and has three extra fields of unknown purpose, `MediaGroup` keeps its group ID, and the audio group always selects index 0.
+- `extractors/mkv/MatroskaExtractor.cpp`: FLAC metadata support is removed, `BlockIterator::eos` also checks the block entry and `block` returns null at the end, and libwebm is included from `src/libwebm`.
+- `libstagefright/MPEG4Writer.cpp`: the AOSP thread priority and property includes are added explicitly.

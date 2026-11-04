@@ -1,6 +1,7 @@
 #pragma once
 
 #include <sys/types.h>
+#include <sys/stat.h>
 
 // Bionic types that musl only exposes with _LARGEFILE64_SOURCE.
 typedef off_t off64_t;

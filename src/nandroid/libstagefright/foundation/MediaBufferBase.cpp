@@ -15,6 +15,7 @@
  */
 
 #define LOG_TAG "MediaBufferBase"
+#include <nandroid/MovieMemory.h>
 #include <nandroid/utils/Log.h>
 
 #include <nandroid/media/stagefright/MediaBuffer.h>

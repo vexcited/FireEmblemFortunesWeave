@@ -15,6 +15,7 @@
  */
 
 #define LOG_TAG "MediaBuffer"
+#include <nandroid/MovieMemory.h>
 #include <nandroid/utils/Log.h>
 
 #include <errno.h>
@@ -55,7 +56,7 @@ MediaBuffer::MediaBuffer(size_t size)
     if (size < kSharedMemThreshold
             || std::atomic_load_explicit(&mUseSharedMemory, std::memory_order_seq_cst) == 0) {
 #endif
-        mData = malloc(size);
+        mData = MovieMalloc(size);
 #ifndef NO_IMEMORY
     } else {
         ALOGV("creating memoryDealer");
@@ -66,7 +67,7 @@ MediaBuffer::MediaBuffer(size_t size)
         }
         if (mMemory == NULL) {
             ALOGW("Failed to allocate shared memory, trying regular allocation!");
-            mData = malloc(size);
+            mData = MovieMalloc(size);
             if (mData == NULL) {
                 ALOGE("Out of memory");
             }
@@ -160,14 +161,20 @@ void MediaBuffer::reset() {
 MediaBuffer::~MediaBuffer() {
     CHECK(mObserver == NULL);
 
+#ifndef NO_IMEMORY
     if (mOwnsData && mData != NULL && mMemory == NULL) {
-        free(mData);
+#else
+    if (mOwnsData && mData != NULL) {
+#endif
+        MovieFree(mData);
         mData = NULL;
     }
 
+#ifndef NO_IMEMORY
    if (mMemory.get() != nullptr) {
        getSharedControl()->setDeadObject();
    }
+#endif
    delete mMetaData;
 }
 

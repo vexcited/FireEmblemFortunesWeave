@@ -56,6 +56,50 @@ struct HardwareOpusMultiStreamDecoderType {
   bool isResetRequested;
 };
 
+size_t GetHardwareOpusDecoderWorkBufferSize(int sampleRate, int channelCount,
+  int option);
+size_t GetHardwareOpusDecoderWorkBufferSize(int sampleRate, int channelCount);
+OpusResult InitializeHardwareOpusDecoder(HardwareOpusDecoderType* decoder,
+  int sampleRate, int channelCount, void* workBuffer, size_t workBufferSize,
+  int option);
+void FinalizeHardwareOpusDecoder(HardwareOpusDecoderType* decoder);
+int GetHardwareOpusDecoderSampleRate(const HardwareOpusDecoderType* decoder);
+int GetHardwareOpusDecoderChannelCount(const HardwareOpusDecoderType* decoder);
+OpusResult DecodeOpusInterleavedWithHardware(HardwareOpusDecoderType* decoder,
+  size_t* consumedSize, int* sampleCount, int16_t* output, size_t outputSize,
+  const void* input, size_t inputSize);
+TimeSpan GetHardwareOpusDecoderProcessingTime(
+  const HardwareOpusDecoderType* decoder);
+void ResetHardwareOpusDecoder(HardwareOpusDecoderType* decoder);
+
+size_t GetHardwareOpusMultiStreamDecoderWorkBufferSize(int sampleRate,
+  int channelCount, int totalStreamCount, int stereoStreamCount, int option);
+size_t GetHardwareOpusMultiStreamDecoderWorkBufferSize(int sampleRate,
+  int channelCount, int totalStreamCount, int stereoStreamCount);
+OpusResult InitializeHardwareOpusMultiStreamDecoder(
+  HardwareOpusMultiStreamDecoderType* decoder, int sampleRate,
+  int channelCount, int totalStreamCount, int stereoStreamCount,
+  const uint8_t* channelMapping, void* workBuffer, size_t workBufferSize,
+  int option);
+void FinalizeHardwareOpusMultiStreamDecoder(
+  HardwareOpusMultiStreamDecoderType* decoder);
+int GetHardwareOpusMultiStreamDecoderSampleRate(
+  const HardwareOpusMultiStreamDecoderType* decoder);
+int GetHardwareOpusMultiStreamDecoderChannelCount(
+  const HardwareOpusMultiStreamDecoderType* decoder);
+int GetHardwareOpusMultiStreamDecoderTotalStreamCount(
+  const HardwareOpusMultiStreamDecoderType* decoder);
+int GetHardwareOpusMultiStreamDecoderStereoStreamCount(
+  const HardwareOpusMultiStreamDecoderType* decoder);
+OpusResult DecodeOpusMultiStreamInterleavedWithHardware(
+  HardwareOpusMultiStreamDecoderType* decoder, size_t* consumedSize,
+  int* sampleCount, int16_t* output, size_t outputSize, const void* input,
+  size_t inputSize);
+TimeSpan GetHardwareOpusMultiStreamDecoderProcessingTime(
+  const HardwareOpusMultiStreamDecoderType* decoder);
+void ResetHardwareOpusMultiStreamDecoder(
+  HardwareOpusMultiStreamDecoderType* decoder);
+
 OpusResult InitializeHardwareOpusDecoder(HardwareOpusDecoderType* decoder,
   int sampleRate, int channelCount, TimeSpan frameDuration,
   HardwareOpusDecoderManagerType* manager);

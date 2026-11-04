@@ -69,9 +69,9 @@ class GestureSharedMemoryAccessor final : public SharedMemoryAccessor {
     return Result{};
   }
 
-  Result Attach(void* address) override {
+  Result Attach(server::SharedMemoryFormat* pFormat) override {
     m_pLifo.store(reinterpret_cast<GestureLifo*>(
-      static_cast<uint8_t*>(address) + GestureLifoOffset),
+      reinterpret_cast<uint8_t*>(pFormat) + GestureLifoOffset),
       std::memory_order_release);
     return Result{};
   }

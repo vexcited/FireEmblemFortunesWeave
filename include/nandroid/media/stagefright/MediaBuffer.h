@@ -23,7 +23,13 @@
 
 #include <pthread.h>
 
+// The SDK has no binder shared memory.
+#ifndef NO_IMEMORY
+#define NO_IMEMORY
+#endif
+#ifndef NO_IMEMORY
 #include <nandroid/binder/MemoryDealer.h>
+#endif
 #include <nandroid/utils/Errors.h>
 #include <nandroid/utils/RefBase.h>
 #include <nandroid/media/stagefright/MediaBufferBase.h>
@@ -115,6 +121,7 @@ public:
 #endif
     }
 
+#ifndef NO_IMEMORY
     bool isDeadObject() const {
         return isDeadObject(mMemory);
     }
@@ -128,6 +135,7 @@ public:
         return false;
 #endif
     }
+#endif
 
     // Sticky on enabling of shared memory MediaBuffers. By default we don't use
     // shared memory for MediaBuffers, but we enable this for those processes
@@ -145,7 +153,9 @@ protected:
 
     virtual ~MediaBuffer();
 
+#ifndef NO_IMEMORY
     sp<IMemory> mMemory;
+#endif
 
 private:
     friend class MediaBufferGroup;

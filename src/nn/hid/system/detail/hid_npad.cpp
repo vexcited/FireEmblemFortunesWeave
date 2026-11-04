@@ -271,3 +271,24 @@ Result ClearConnectionLimitForSplay() {
 }
 
 }
+
+namespace nn::hid::system::detail {
+
+Result GetAnalogStickManualCalibrationStage(AnalogStickManualCalibrationStage* pOutAnalogStickManualCalibrationStage, UniquePadId uniquePadId, AnalogStickPosition analogStickPosition) {
+  sf::SharedPointer<IHidSystemServer> proxy;
+  server::CreateHidSystemServerProxy(&proxy);
+  AnalogStickManualCalibrationStage value = {};
+  const Result result = proxy->GetAnalogStickManualCalibrationStage(&value, uniquePadId, analogStickPosition);
+  if (result.IsSuccess()) {
+    *pOutAnalogStickManualCalibrationStage = value;
+  }
+  return result;
+}
+
+Result SetVibrationMasterVolume(float value) {
+  sf::SharedPointer<IHidSystemServer> proxy;
+  NN_RESULT_DO(server::CreateHidSystemServerProxy(&proxy));
+  return proxy->SetVibrationMasterVolume(value);
+}
+
+}

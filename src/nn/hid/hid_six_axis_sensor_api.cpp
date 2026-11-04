@@ -193,7 +193,7 @@ void ResetIsSixAxisSensorDeviceNewlyAssigned(
     hid::detail::ResetIsSixAxisSensorDeviceNewlyAssigned(sixAxisSensorHandle));
 }
 
-Result IsSensorFusionInitialized() {
+bool IsSensorFusionInitialized() {
   return hid::IsNpadImuEnabled();
 }
 

@@ -8,6 +8,12 @@
 #include "nn/os/synchronization.hpp"
 #include "nn/result.hpp"
 
+namespace nn::hid::server {
+
+struct SharedMemoryFormat;
+
+}
+
 namespace nn::hid::detail {
 
 class SharedMemoryAccessor {
@@ -16,7 +22,7 @@ class SharedMemoryAccessor {
   virtual ~SharedMemoryAccessor();
   virtual Result Activate();
   virtual Result Deactivate();
-  virtual Result Attach(void* address) = 0;
+  virtual Result Attach(server::SharedMemoryFormat* pFormat) = 0;
   virtual Result Detach() = 0;
 
   Result SetAppletResourceUserId(applet::AppletResourceUserId aruid);
@@ -35,10 +41,11 @@ class SharedMemoryAccessor {
 template <typename Derived, typename Lifo, size_t Offset>
 class LifoSharedMemoryAccessor : public SharedMemoryAccessor {
  public:
-  Result Attach(void* address) override {
+  Result Attach(server::SharedMemoryFormat* pFormat) override {
     NN_RESULT_DO(Derived::ActivateServer());
-    m_pLifo.store(reinterpret_cast<Lifo*>(static_cast<uint8_t*>(address) +
-      Offset), std::memory_order_release);
+    m_pLifo.store(reinterpret_cast<Lifo*>(
+      reinterpret_cast<uint8_t*>(pFormat) + Offset),
+      std::memory_order_release);
     return Result{};
   }
 

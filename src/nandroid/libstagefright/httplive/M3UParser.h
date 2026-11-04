@@ -21,13 +21,14 @@
 #include <nandroid/media/stagefright/foundation/ABase.h>
 #include <nandroid/media/stagefright/foundation/AMessage.h>
 #include <nandroid/media/stagefright/foundation/AString.h>
-#include <nandroid/media/mediaplayer.h>
+#include <nandroid/media/mediaplayer_common.h>
 #include <nandroid/utils/Vector.h>
 
 namespace nandroid {
 
 struct M3UParser : public RefBase {
-    M3UParser(const char *baseURI, const void *data, size_t size);
+    M3UParser(const char *baseURI, const void *data, size_t size,
+            size_t userData);
 
     status_t initCheck() const;
 
@@ -69,6 +70,10 @@ private:
 
     status_t mInitCheck;
 
+    // Nintendo fields of unknown purpose, only set by the constructor.
+    uint64_t mUnknown;
+    size_t mUserData;
+
     AString mBaseURI;
     bool mIsExtM3U;
     bool mIsVariantPlaylist;
@@ -82,6 +87,8 @@ private:
 
     sp<AMessage> mMeta;
     Vector<Item> mItems;
+    AString mUnknownString;
+    sp<AMessage> mUnknownMeta;
     ssize_t mSelectedIndex;
 
     // Media groups keyed by group ID.

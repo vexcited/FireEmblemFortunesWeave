@@ -3,8 +3,10 @@ This tree vendors Apache 2.0 sources of the Android Open Source Project.
 AOSP revisions:
 
 - platform/system/core at android-10.0.0_r47: libutils, libcutils, libsystem and base headers.
-- platform/frameworks/av at android-10.0.0_r47: libstagefright foundation, libstagefright headers and NDK media headers.
-- platform/frameworks/native at android-10.0.0_r47: media hardware headers.
+- platform/frameworks/av at android-10.0.0_r47: libstagefright foundation, libstagefright, mpeg2ts, httplive, id3, the mp4 and mkv extractors, libmedia headers and NDK media headers.
+- platform/frameworks/native at android-10.0.0_r47: media hardware and OpenMAX headers.
+
+The Matroska extractor uses libwebm from src/libwebm, including common/webmids.h, under its own BSD license.
 
 The headers live in include/nandroid. See MODIFIED.md for the changes.
 

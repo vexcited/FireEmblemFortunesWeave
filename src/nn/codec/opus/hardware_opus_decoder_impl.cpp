@@ -126,9 +126,8 @@ void ResetHardwareOpusDecoderImpl(HardwareOpusDecoderType* decoder) {
 
 TimeSpan GetHardwareOpusDecoderFrameDurationImpl(
   const HardwareOpusDecoderType* decoder) {
-  hwacod::InstanceParameter parameter = {};
-  parameter = hwacod::GetHardwareAudioCodecInstanceParameter(
-    GetInstance(decoder));
+  const hwacod::InstanceParameter parameter =
+    hwacod::GetHardwareAudioCodecInstanceParameter(GetInstance(decoder));
   return std::get_if<hwacod::OpusDecoderParameter>(&parameter)->frameDuration;
 }
 
@@ -309,9 +308,8 @@ void ResetHardwareOpusMultiStreamDecoderImpl(
 
 TimeSpan GetHardwareOpusMultiStreamDecoderFrameDurationImpl(
   const HardwareOpusMultiStreamDecoderType* decoder) {
-  hwacod::InstanceParameter parameter = {};
-  parameter = hwacod::GetHardwareAudioCodecInstanceParameter(
-    GetInstance(decoder));
+  const hwacod::InstanceParameter parameter =
+    hwacod::GetHardwareAudioCodecInstanceParameter(GetInstance(decoder));
   return std::get_if<hwacod::OpusMultiStreamDecoderParameter>(&parameter)
     ->frameDuration;
 }

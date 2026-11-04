@@ -79,3 +79,18 @@ Result EnableAppletToGetSixAxisSensor(
 }
 
 }
+
+namespace nn::hid::system::detail {
+
+Result GetSixAxisSensorAccurateUserCalibrationState(SixAxisSensorAccurateUserCalibrationState* pOutSixAxisSensorAccurateUserCalibrationState, const UniqueSixAxisSensorHandle& uniqueSixAxisSensorHandle) {
+  sf::SharedPointer<IHidSystemServer> proxy;
+  server::CreateHidSystemServerProxy(&proxy);
+  SixAxisSensorAccurateUserCalibrationState value = {};
+  const Result result = proxy->GetSixAxisSensorAccurateUserCalibrationState(&value, uniqueSixAxisSensorHandle, utility::GetAppletResourceUserId());
+  if (result.IsSuccess()) {
+    *pOutSixAxisSensorAccurateUserCalibrationState = value;
+  }
+  return result;
+}
+
+}

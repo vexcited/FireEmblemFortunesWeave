@@ -10,13 +10,10 @@ struct ThreadType;
 struct MutexType {
   uint8_t initialized;
   uint8_t recursive;
-  uint8_t reserved02[2];
   int32_t lock_level;
   uint32_t count;
-  uint32_t reserved0c;
   ThreadType* owner;
   detail::InternalCriticalSection lock;
-  uint32_t reserved1c;
 };
 
 void InitializeMutex(MutexType* mutex, bool recursive, int lock_level);

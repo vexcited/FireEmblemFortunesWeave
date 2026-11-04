@@ -38,9 +38,16 @@ struct AngularVelocityType {
   util::Float3 GetRadiansPerSecond() const;
 };
 
+struct SensorFusionAttribute;
+
 struct SensorFusionOrientation {
-  uint8_t reserved[0x30];
+  int64_t samplingNumber;
+  int64_t resetCount;
+  int64_t deltaTime;
+  AccelerationType acceleration;
+  AngularVelocityType angularVelocity;
   float32x4_t quaternion;
+  util::BitFlagSet<32, SensorFusionAttribute> attributes;
 
   float32x4_t GetQuaternion() const;
   util::Float3x3 GetRotationMatrix() const;

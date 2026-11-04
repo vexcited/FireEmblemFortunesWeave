@@ -13,6 +13,23 @@ class SharedPointer {
  public:
   SharedPointer() : m_Pointer(nullptr) {}
 
+  SharedPointer(const SharedPointer& other) : m_Pointer(other.m_Pointer) {
+    if (m_Pointer != nullptr) {
+      m_Pointer->AddReference();
+    }
+  }
+
+  SharedPointer& operator=(const SharedPointer& other) {
+    SharedPointer(other).Swap(*this);
+    return *this;
+  }
+
+  void Swap(SharedPointer& other) {
+    Interface* pointer = m_Pointer;
+    m_Pointer = other.m_Pointer;
+    other.m_Pointer = pointer;
+  }
+
   ~SharedPointer() {
     if (m_Pointer != nullptr) {
       m_Pointer->Release();
@@ -21,6 +38,12 @@ class SharedPointer {
 
   Interface* operator->() const {
     return m_Pointer;
+  }
+
+  Interface* Detach() {
+    Interface* pointer = m_Pointer;
+    m_Pointer = nullptr;
+    return pointer;
   }
 
   void Reset() {

@@ -109,7 +109,9 @@ struct ATSParser : public RefBase {
 
     explicit ATSParser(uint32_t flags = 0);
 
+#ifdef NANDROID_CAS
     status_t setMediaCas(const sp<ICas> &cas);
+#endif
 
     // Feed a TS packet into the parser. uninitialized event with the start
     // offset of this TS packet goes in, and if the parser detects PES with
@@ -185,7 +187,9 @@ private:
     struct Program;
     struct Stream;
     struct PSISection;
+#ifdef NANDROID_CAS
     struct CasManager;
+#endif
     struct CADescriptor {
         CADescriptor() : mPID(0), mSystemID(-1) {}
         unsigned mPID;
@@ -201,7 +205,9 @@ private:
         AudioPresentationCollection mAudioPresentations;
     };
 
+#ifdef NANDROID_CAS
     sp<CasManager> mCasManager;
+#endif
 
     uint32_t mFlags;
     Vector<sp<Program> > mPrograms;

@@ -53,3 +53,103 @@ Result EnablePalmaBoostMode(bool isEnabled) {
 }
 
 }
+
+namespace nn::hid::detail {
+
+Result InitializePalma(const PalmaConnectionHandle& palmaConnectionHandle) {
+  sf::SharedPointer<IHidServer> proxy;
+  NN_RESULT_DO(server::CreateHidServerProxy(&proxy));
+  return proxy->InitializePalma(palmaConnectionHandle);
+}
+
+Result PlayPalmaActivity(const PalmaConnectionHandle& palmaConnectionHandle, const unsigned short& value) {
+  sf::SharedPointer<IHidServer> proxy;
+  NN_RESULT_DO(server::CreateHidServerProxy(&proxy));
+  return proxy->PlayPalmaActivity(palmaConnectionHandle, value);
+}
+
+Result SetPalmaFrModeType(const PalmaConnectionHandle& palmaConnectionHandle, const PalmaFrModeType& palmaFrModeType) {
+  sf::SharedPointer<IHidServer> proxy;
+  NN_RESULT_DO(server::CreateHidServerProxy(&proxy));
+  return proxy->SetPalmaFrModeType(palmaConnectionHandle, palmaFrModeType);
+}
+
+Result ReadPalmaStep(const PalmaConnectionHandle& palmaConnectionHandle) {
+  sf::SharedPointer<IHidServer> proxy;
+  NN_RESULT_DO(server::CreateHidServerProxy(&proxy));
+  return proxy->ReadPalmaStep(palmaConnectionHandle);
+}
+
+Result EnablePalmaStep(const PalmaConnectionHandle& palmaConnectionHandle, bool isEnabled) {
+  sf::SharedPointer<IHidServer> proxy;
+  NN_RESULT_DO(server::CreateHidServerProxy(&proxy));
+  return proxy->EnablePalmaStep(palmaConnectionHandle, isEnabled);
+}
+
+Result ResetPalmaStep(const PalmaConnectionHandle& palmaConnectionHandle) {
+  sf::SharedPointer<IHidServer> proxy;
+  NN_RESULT_DO(server::CreateHidServerProxy(&proxy));
+  return proxy->ResetPalmaStep(palmaConnectionHandle);
+}
+
+Result ReadPalmaUniqueCode(const PalmaConnectionHandle& palmaConnectionHandle) {
+  sf::SharedPointer<IHidServer> proxy;
+  NN_RESULT_DO(server::CreateHidServerProxy(&proxy));
+  return proxy->ReadPalmaUniqueCode(palmaConnectionHandle);
+}
+
+Result SetPalmaUniqueCodeInvalid(const PalmaConnectionHandle& palmaConnectionHandle) {
+  sf::SharedPointer<IHidServer> proxy;
+  NN_RESULT_DO(server::CreateHidServerProxy(&proxy));
+  return proxy->SetPalmaUniqueCodeInvalid(palmaConnectionHandle);
+}
+
+Result SetPalmaDataBaseIdentificationVersion(const PalmaConnectionHandle& palmaConnectionHandle, int count) {
+  sf::SharedPointer<IHidServer> proxy;
+  NN_RESULT_DO(server::CreateHidServerProxy(&proxy));
+  return proxy->SetPalmaDataBaseIdentificationVersion(palmaConnectionHandle, count);
+}
+
+Result GetPalmaDataBaseIdentificationVersion(const PalmaConnectionHandle& palmaConnectionHandle) {
+  sf::SharedPointer<IHidServer> proxy;
+  NN_RESULT_DO(server::CreateHidServerProxy(&proxy));
+  return proxy->GetPalmaDataBaseIdentificationVersion(palmaConnectionHandle);
+}
+
+Result SuspendPalmaFeature(const PalmaConnectionHandle& palmaConnectionHandle, const util::BitFlagSet<32, PalmaFeature>& bitFlagSet) {
+  sf::SharedPointer<IHidServer> proxy;
+  NN_RESULT_DO(server::CreateHidServerProxy(&proxy));
+  return proxy->SuspendPalmaFeature(palmaConnectionHandle, bitFlagSet);
+}
+
+Result ReadPalmaPlayLog(const PalmaConnectionHandle& palmaConnectionHandle, const unsigned short& value) {
+  sf::SharedPointer<IHidServer> proxy;
+  NN_RESULT_DO(server::CreateHidServerProxy(&proxy));
+  return proxy->ReadPalmaPlayLog(palmaConnectionHandle, value);
+}
+
+Result ResetPalmaPlayLog(const PalmaConnectionHandle& palmaConnectionHandle, const unsigned short& value) {
+  sf::SharedPointer<IHidServer> proxy;
+  NN_RESULT_DO(server::CreateHidServerProxy(&proxy));
+  return proxy->ResetPalmaPlayLog(palmaConnectionHandle, value);
+}
+
+Result PairPalma(const PalmaConnectionHandle& palmaConnectionHandle) {
+  sf::SharedPointer<IHidServer> proxy;
+  NN_RESULT_DO(server::CreateHidServerProxy(&proxy));
+  return proxy->PairPalma(palmaConnectionHandle);
+}
+
+Result CancelWritePalmaWaveEntry(const PalmaConnectionHandle& palmaConnectionHandle) {
+  sf::SharedPointer<IHidServer> proxy;
+  NN_RESULT_DO(server::CreateHidServerProxy(&proxy));
+  return proxy->CancelWritePalmaWaveEntry(palmaConnectionHandle);
+}
+
+Result GetPalmaBluetoothAddress(bluetooth::Address* pOutAddress, const PalmaConnectionHandle& palmaConnectionHandle) {
+  sf::SharedPointer<IHidServer> proxy;
+  NN_RESULT_DO(server::CreateHidServerProxy(&proxy));
+  return proxy->GetPalmaBluetoothAddress(pOutAddress, palmaConnectionHandle);
+}
+
+}

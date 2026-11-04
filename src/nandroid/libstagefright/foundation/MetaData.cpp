@@ -16,8 +16,11 @@
 
 //#define LOG_NDEBUG 0
 #define LOG_TAG "MetaData"
+#include <nandroid/MovieMemory.h>
 #include <inttypes.h>
+#ifdef NANDROID_BINDER
 #include <nandroid/binder/Parcel.h>
+#endif
 #include <nandroid/utils/KeyedVector.h>
 #include <nandroid/utils/Log.h>
 
@@ -46,12 +49,14 @@ MetaData::~MetaData() {
 }
 
 /* static */
+#ifdef NANDROID_BINDER
 sp<MetaData> MetaData::createFromParcel(const Parcel &parcel) {
 
     sp<MetaData> meta = new MetaData();
     meta->updateFromParcel(parcel);
     return meta;
 }
+#endif
 
 }  // namespace nandroid
 

@@ -14,6 +14,7 @@ struct Tick {
   int64_t value;
 };
 
+Tick GetSystemTick();
 TimeSpan ConvertToTimeSpan(Tick ticks);
 Tick ConvertToTick(TimeSpan time);
 

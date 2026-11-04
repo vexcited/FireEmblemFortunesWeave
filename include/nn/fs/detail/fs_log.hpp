@@ -159,3 +159,7 @@ bool IsEnabledHandleAccessLog(const void* handle);
       result = (expression); \
     } \
   } while (0)
+
+#define NN_FS_ACCESS_LOG_APPLICATION(result, expression, ...) \
+  NN_FS_ACCESS_LOG_HANDLE(result, static_cast<const void*>(nullptr), \
+    expression, __VA_ARGS__)

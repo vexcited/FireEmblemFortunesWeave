@@ -56,3 +56,25 @@ Result EnableShowingCursor(bool isEnabled) {
 }
 
 }
+
+namespace nn::hid::detail {
+
+Result SetNmouseButtonConfigJoyLeftJcms(const NmouseButtonConfigJoyLeftJcms& nmouseButtonConfigJoyLeftJcms) {
+  sf::SharedPointer<IHidServer> proxy;
+  NN_RESULT_DO(server::CreateHidServerProxy(&proxy));
+  return proxy->SetNmouseButtonConfigJoyLeftJcms(utility::GetAppletResourceUserId(), nmouseButtonConfigJoyLeftJcms);
+}
+
+Result SetNmouseButtonConfigJoyRightJcms(const NmouseButtonConfigJoyRightJcms& nmouseButtonConfigJoyRightJcms) {
+  sf::SharedPointer<IHidServer> proxy;
+  NN_RESULT_DO(server::CreateHidServerProxy(&proxy));
+  return proxy->SetNmouseButtonConfigJoyRightJcms(utility::GetAppletResourceUserId(), nmouseButtonConfigJoyRightJcms);
+}
+
+Result RestrictNmousePointer(float value, float value2, float value3, float value4) {
+  sf::SharedPointer<IHidServer> proxy;
+  NN_RESULT_DO(server::CreateHidServerProxy(&proxy));
+  return proxy->RestrictNmousePointer(utility::GetAppletResourceUserId(), value, value2, value3, value4);
+}
+
+}

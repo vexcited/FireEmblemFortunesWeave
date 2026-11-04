@@ -124,6 +124,89 @@ void EnableControlPadRestriction(
     hid::detail::EnableControlPadRestriction(bitFlagSet, isEnabled));
 }
 
+void GetNpadState(
+  NpadFullKeyState* pOutNpadFullKeyState, const NpadIdType& id) {
+  NN_ABORT_UNLESS_RESULT_SUCCESS(detail::VerifyValidNpadId(id));
+  int count = 0;
+  NN_ABORT_UNLESS_RESULT_SUCCESS(
+    hid::detail::GetNpadStates(&count, pOutNpadFullKeyState, 1, id));
+}
+
+void GetNpadState(
+  NpadHandheldState* pOutNpadHandheldState, const NpadIdType& id) {
+  NN_ABORT_UNLESS_RESULT_SUCCESS(detail::VerifyValidNpadId(id));
+  int count = 0;
+  NN_ABORT_UNLESS_RESULT_SUCCESS(
+    hid::detail::GetNpadStates(&count, pOutNpadHandheldState, 1, id));
+}
+
+void GetNpadState(
+  NpadHandheldLarkState* pOutNpadHandheldLarkState, const NpadIdType& id) {
+  NN_ABORT_UNLESS_RESULT_SUCCESS(detail::VerifyValidNpadId(id));
+  int count = 0;
+  NN_ABORT_UNLESS_RESULT_SUCCESS(
+    hid::detail::GetNpadStates(&count, pOutNpadHandheldLarkState, 1, id));
+}
+
+void GetNpadState(
+  NpadJoyDualState* pOutNpadJoyDualState, const NpadIdType& id) {
+  NN_ABORT_UNLESS_RESULT_SUCCESS(detail::VerifyValidNpadId(id));
+  int count = 0;
+  NN_ABORT_UNLESS_RESULT_SUCCESS(
+    hid::detail::GetNpadStates(&count, pOutNpadJoyDualState, 1, id));
+}
+
+void GetNpadState(
+  NpadJoyLeftState* pOutNpadJoyLeftState, const NpadIdType& id) {
+  NN_ABORT_UNLESS_RESULT_SUCCESS(detail::VerifyValidNpadId(id));
+  int count = 0;
+  NN_ABORT_UNLESS_RESULT_SUCCESS(
+    hid::detail::GetNpadStates(&count, pOutNpadJoyLeftState, 1, id));
+}
+
+void GetNpadState(
+  NpadJoyRightState* pOutNpadJoyRightState, const NpadIdType& id) {
+  NN_ABORT_UNLESS_RESULT_SUCCESS(detail::VerifyValidNpadId(id));
+  int count = 0;
+  NN_ABORT_UNLESS_RESULT_SUCCESS(
+    hid::detail::GetNpadStates(&count, pOutNpadJoyRightState, 1, id));
+}
+
+void GetNpadState(NpadGcState* pOutNpadGcState, const NpadIdType& id) {
+  NN_ABORT_UNLESS_RESULT_SUCCESS(detail::VerifyValidNpadId(id));
+  int count = 0;
+  NN_ABORT_UNLESS_RESULT_SUCCESS(
+    hid::detail::GetNpadStates(&count, pOutNpadGcState, 1, id));
+}
+
+void GetNpadState(NpadLagerState* pOutNpadLagerState, const NpadIdType& id) {
+  NN_ABORT_UNLESS_RESULT_SUCCESS(detail::VerifyValidNpadId(id));
+  int count = 0;
+  NN_ABORT_UNLESS_RESULT_SUCCESS(
+    hid::detail::GetNpadStates(&count, pOutNpadLagerState, 1, id));
+}
+
+void GetNpadState(NpadLarkState* pOutNpadLarkState, const NpadIdType& id) {
+  NN_ABORT_UNLESS_RESULT_SUCCESS(detail::VerifyValidNpadId(id));
+  int count = 0;
+  NN_ABORT_UNLESS_RESULT_SUCCESS(
+    hid::detail::GetNpadStates(&count, pOutNpadLarkState, 1, id));
+}
+
+void GetNpadState(NpadLuciaState* pOutNpadLuciaState, const NpadIdType& id) {
+  NN_ABORT_UNLESS_RESULT_SUCCESS(detail::VerifyValidNpadId(id));
+  int count = 0;
+  NN_ABORT_UNLESS_RESULT_SUCCESS(
+    hid::detail::GetNpadStates(&count, pOutNpadLuciaState, 1, id));
+}
+
+void GetNpadState(NpadPalmaState* pOutNpadPalmaState, const NpadIdType& id) {
+  NN_ABORT_UNLESS_RESULT_SUCCESS(detail::VerifyValidNpadId(id));
+  int count = 0;
+  NN_ABORT_UNLESS_RESULT_SUCCESS(
+    hid::detail::GetNpadStates(&count, pOutNpadPalmaState, 1, id));
+}
+
 int GetNpadStates(
   NpadFullKeyState* pOutNpadFullKeyState, int count, const NpadIdType& id) {
   NN_ABORT_UNLESS_RESULT_SUCCESS(detail::VerifyValidNpadId(id));

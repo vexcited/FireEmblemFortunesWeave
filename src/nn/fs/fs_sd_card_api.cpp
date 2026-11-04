@@ -1,3 +1,4 @@
+#include "nn/fs/detail/fs_device_simulation.hpp"
 #include "nn/fs/detail/fs_file_system_proxy_service_object.hpp"
 #include "nn/fs/detail/fs_log.hpp"
 
@@ -66,6 +67,43 @@ Result SimulateSdCardDetectionEvent(SimulatingDeviceDetectionMode mode,
   NN_FS_RESULT_DO_WITH_ABORT_CHECK(
     fileSystemProxy->SimulateDeviceDetectionEvent(SdCardPort,
       static_cast<uint32_t>(mode), signalEvent));
+  return ResultSuccess();
+}
+
+Result SetSdCardSimulationEvent(SimulatingDeviceTargetOperation operation,
+  SimulatingDeviceAccessFailureEventType failureEventType) {
+  NN_FS_RESULT_DO_WITH_ABORT_CHECK(detail::SetDeviceSimulationEvent(
+    detail::DevicePort_SdCard, operation, failureEventType, ResultSuccess(),
+    false));
+  return ResultSuccess();
+}
+
+Result SetSdCardSimulationEvent(SimulatingDeviceTargetOperation operation,
+  SimulatingDeviceAccessFailureEventType failureEventType,
+  bool isPersistent) {
+  NN_FS_RESULT_DO_WITH_ABORT_CHECK(detail::SetDeviceSimulationEvent(
+    detail::DevicePort_SdCard, operation, failureEventType, ResultSuccess(),
+    isPersistent));
+  return ResultSuccess();
+}
+
+Result SetSdCardSimulationEvent(SimulatingDeviceTargetOperation operation,
+  Result respondingFailureResult, bool isPersistent) {
+  NN_FS_RESULT_DO_WITH_ABORT_CHECK(detail::SetDeviceSimulationEvent(
+    detail::DevicePort_SdCard, operation,
+    SimulatingDeviceAccessFailureEventType::AccessFailure,
+    respondingFailureResult, isPersistent));
+  return ResultSuccess();
+}
+
+Result ClearSdCardSimulationEvent() {
+  auto fileSystemProxy = detail::GetFileSystemProxyServiceObject();
+  nn::sf::SharedPointer<fssrv::sf::IDeviceOperator> deviceOperator;
+  NN_FS_RESULT_DO_WITH_ABORT_CHECK(fileSystemProxy->OpenDeviceOperator(
+    nn::sf::Out<nn::sf::SharedPointer<fssrv::sf::IDeviceOperator>>(
+      &deviceOperator)));
+  NN_FS_RESULT_DO_WITH_ABORT_CHECK(
+    deviceOperator->ClearDeviceSimulationEvent(detail::DevicePort_SdCard));
   return ResultSuccess();
 }
 

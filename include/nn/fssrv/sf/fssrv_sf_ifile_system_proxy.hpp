@@ -3,6 +3,7 @@
 #include <stdint.h>
 
 #include "nn/fs/fs_file_system_proxy_types.hpp"
+#include "nn/fssrv/sf/fssrv_sf_path.hpp"
 #include "nn/result.hpp"
 #include "nn/sf/native_handle.hpp"
 #include "nn/sf/sf_buffers.hpp"
@@ -18,7 +19,57 @@ public:
     nn::sf::Out<nn::sf::NativeHandle> outHandle) = 0;
 };
 
-class IFileSystemProxy : public nn::sf::IServiceObject {
+class IStorage : public nn::sf::IServiceObject {};
+
+class IFileSystem : public nn::sf::IServiceObject {};
+
+class IStorageDeviceOperator : public nn::sf::IServiceObject {
+public:
+  virtual void Reserved2() = 0;
+  virtual void Reserved3() = 0;
+  virtual Result Operate(int32_t operationId) = 0;
+  virtual Result OperateIn(const nn::sf::InBuffer& buffer, int64_t offset,
+    int64_t size, int32_t operationId) = 0;
+  virtual Result OperateOut(nn::sf::Out<int64_t> outSize,
+    const nn::sf::OutBuffer& buffer, int32_t operationId) = 0;
+  virtual Result OperateOut2(nn::sf::Out<int64_t> outSizeA,
+    const nn::sf::OutBuffer& bufferA, nn::sf::Out<int64_t> outSizeB,
+    const nn::sf::OutBuffer& bufferB, int32_t operationId) = 0;
+  virtual Result OperateInOut(nn::sf::Out<int64_t> outSize,
+    const nn::sf::OutBuffer& outBuffer, const nn::sf::InBuffer& inBuffer,
+    int64_t offset, int64_t size, int32_t operationId) = 0;
+  virtual Result OperateIn2Out(nn::sf::Out<int64_t> outSize,
+    const nn::sf::OutBuffer& outBuffer, const nn::sf::InBuffer& inBufferA,
+    const nn::sf::InBuffer& inBufferB, int64_t offset, int64_t size,
+    int32_t operationId) = 0;
+};
+
+class IStorageDevice : public nn::sf::IServiceObject {
+public:
+  virtual void Reserved2() = 0;
+  virtual void Reserved3() = 0;
+  virtual void Reserved4() = 0;
+  virtual void Reserved5() = 0;
+  virtual Result OpenOperator(
+    const nn::sf::Out<nn::sf::SharedPointer<IStorageDeviceOperator>>& out) = 0;
+};
+
+class IStorageDeviceManager : public nn::sf::IServiceObject {
+public:
+  virtual void Reserved2() = 0;
+  virtual void Reserved3() = 0;
+  virtual Result IsInserted(nn::sf::Out<bool> outValue) = 0;
+  virtual Result IsHandleValid(nn::sf::Out<bool> outValue, uint32_t handle) = 0;
+  virtual void Reserved6() = 0;
+  virtual void Reserved7() = 0;
+  virtual Result OpenOperator(
+    const nn::sf::Out<nn::sf::SharedPointer<IStorageDeviceOperator>>& out) = 0;
+  virtual Result OpenDevice(
+    const nn::sf::Out<nn::sf::SharedPointer<IStorageDevice>>& out,
+    uint64_t attribute) = 0;
+};
+
+class IDeviceOperator : public nn::sf::IServiceObject {
 public:
   virtual void Reserved2() = 0;
   virtual void Reserved3() = 0;
@@ -27,7 +78,30 @@ public:
   virtual void Reserved6() = 0;
   virtual void Reserved7() = 0;
   virtual void Reserved8() = 0;
-  virtual void Reserved9() = 0;
+  virtual Result SetDeviceSimulationEvent(uint32_t port, uint32_t operation,
+    uint32_t failureEventType, uint32_t respondingFailureResult,
+    bool isPersistent) = 0;
+  virtual Result ClearDeviceSimulationEvent(uint32_t port) = 0;
+  virtual Result OpenStorageDeviceManager(
+    const nn::sf::Out<nn::sf::SharedPointer<IStorageDeviceManager>>& out,
+    int32_t port) = 0;
+};
+
+class IFileSystemProxy : public nn::sf::IServiceObject {
+public:
+  virtual void Reserved2() = 0;
+  virtual void Reserved3() = 0;
+  virtual void Reserved4() = 0;
+  virtual void Reserved5() = 0;
+  virtual Result OpenFileSystemWithPatch(
+    const nn::sf::Out<nn::sf::SharedPointer<IFileSystem>>& outFileSystem,
+    uint64_t programId, uint32_t type) = 0;
+  virtual void Reserved7() = 0;
+  virtual void Reserved8() = 0;
+  virtual Result OpenFileSystemWithId(
+    const nn::sf::Out<nn::sf::SharedPointer<IFileSystem>>& outFileSystem,
+    const FspPath& path, fs::ContentAttributes attributes, uint64_t id,
+    uint32_t type) = 0;
   virtual void Reserved10() = 0;
   virtual void Reserved11() = 0;
   virtual Result InvalidateBisCache() = 0;
@@ -43,11 +117,14 @@ public:
     fs::SaveDataSpaceId spaceId, uint64_t saveDataId) = 0;
   virtual Result FormatSdCardDryRun() = 0;
   virtual Result IsExFatSupported(nn::sf::Out<bool> outSupported) = 0;
-  virtual void Reserved23() = 0;
+  virtual Result DeleteSaveDataFileSystemBySaveDataAttribute(
+    fs::SaveDataSpaceId spaceId, const fs::SaveDataAttribute& attribute) = 0;
   virtual Result IsInitializationMode(
     nn::sf::Out<bool> outIsInitializationMode) = 0;
   virtual void Reserved25() = 0;
-  virtual void Reserved26() = 0;
+  virtual Result OpenGameCardStorage(
+    const nn::sf::Out<nn::sf::SharedPointer<IStorage>>& outStorage,
+    uint32_t handle, uint32_t partition) = 0;
   virtual Result ExtendSaveDataFileSystem(fs::SaveDataSpaceId spaceId,
     uint64_t saveDataId, int64_t dataSize, int64_t journalSize) = 0;
   virtual void Reserved28() = 0;
@@ -61,7 +138,9 @@ public:
   virtual Result DetachSdCard() = 0;
   virtual void Reserved34() = 0;
   virtual void Reserved35() = 0;
-  virtual void Reserved36() = 0;
+  virtual Result OpenSaveDataFileSystem(
+    const nn::sf::Out<nn::sf::SharedPointer<IFileSystem>>& outFileSystem,
+    fs::SaveDataSpaceId spaceId, const fs::SaveDataAttribute& attribute) = 0;
   virtual void Reserved37() = 0;
   virtual void Reserved38() = 0;
   virtual Result ReadSaveDataFileSystemExtraDataBySaveDataSpaceId(
@@ -82,7 +161,9 @@ public:
     const nn::sf::InBuffer& mask) = 0;
   virtual void Reserved48() = 0;
   virtual void Reserved49() = 0;
-  virtual void Reserved50() = 0;
+  virtual Result ReadSaveDataFileSystemExtraDataBySaveDataAttribute(
+    const nn::sf::OutBuffer& outExtraData, fs::SaveDataSpaceId spaceId,
+    const fs::SaveDataAttribute& attribute) = 0;
   virtual Result WriteSaveDataFileSystemExtraDataWithMaskBySaveDataAttribute(
     const fs::SaveDataAttribute& attribute, fs::SaveDataSpaceId spaceId,
     const nn::sf::InBuffer& extraData, const nn::sf::InBuffer& mask) = 0;
@@ -98,11 +179,17 @@ public:
   virtual void Reserved59() = 0;
   virtual void Reserved60() = 0;
   virtual void Reserved61() = 0;
-  virtual void Reserved62() = 0;
-  virtual void Reserved63() = 0;
+  virtual Result OpenImageDirectoryFileSystem(
+    const nn::sf::Out<nn::sf::SharedPointer<IFileSystem>>& outFileSystem,
+    uint32_t id) = 0;
+  virtual Result OpenBaseFileSystem(
+    const nn::sf::Out<nn::sf::SharedPointer<IFileSystem>>& outFileSystem,
+    uint32_t id) = 0;
   virtual Result FormatBaseFileSystem(fs::BaseFileSystemId id) = 0;
   virtual void Reserved65() = 0;
-  virtual void Reserved66() = 0;
+  virtual Result OpenCustomStorageFileSystem(
+    const nn::sf::Out<nn::sf::SharedPointer<IFileSystem>>& outFileSystem,
+    uint32_t id) = 0;
   virtual void Reserved67() = 0;
   virtual void Reserved68() = 0;
   virtual void Reserved69() = 0;
@@ -111,7 +198,8 @@ public:
   virtual void Reserved72() = 0;
   virtual void Reserved73() = 0;
   virtual void Reserved74() = 0;
-  virtual void Reserved75() = 0;
+  virtual Result OpenDeviceOperator(
+    const nn::sf::Out<nn::sf::SharedPointer<IDeviceOperator>>& out) = 0;
   virtual void Reserved76() = 0;
   virtual Result OpenGameCardDetectionEventNotifier(
     const nn::sf::Out<nn::sf::SharedPointer<IEventNotifier>>& outNotifier) = 0;
@@ -139,10 +227,16 @@ public:
     int32_t difference) = 0;
   virtual Result GetFreeSpaceSizeForSaveData(nn::sf::Out<int64_t> outSize,
     fs::SaveDataSpaceId spaceId) = 0;
-  virtual void Reserved94() = 0;
-  virtual void Reserved95() = 0;
-  virtual void Reserved96() = 0;
-  virtual void Reserved97() = 0;
+  virtual Result VerifySaveDataFileSystemBySaveDataSpaceId(
+    fs::SaveDataSpaceId spaceId, uint64_t saveDataId,
+    const nn::sf::OutBuffer& workBuffer) = 0;
+  virtual Result CorruptSaveDataFileSystemBySaveDataSpaceId(
+    fs::SaveDataSpaceId spaceId, uint64_t saveDataId) = 0;
+  virtual Result QuerySaveDataInternalStorageTotalSize(
+    nn::sf::Out<int64_t> outSize, fs::SaveDataSpaceId spaceId,
+    uint64_t saveDataId) = 0;
+  virtual Result GetSaveDataCommitId(nn::sf::Out<int64_t> outCommitId,
+    fs::SaveDataSpaceId spaceId, uint64_t saveDataId) = 0;
   virtual Result UnregisterExternalKey(const fs::RightsId& rightsId) = 0;
   virtual void Reserved99() = 0;
   virtual Result SetSdCardEncryptionSeed(const fs::EncryptionSeed& seed) = 0;

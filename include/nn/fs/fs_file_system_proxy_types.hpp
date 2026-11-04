@@ -61,7 +61,36 @@ enum class SaveDataTransferKeyIndexForTest : uint32_t {};
 
 enum class FsStackUsageThreadType : uint32_t {};
 
+enum class SimulatingDeviceTargetOperation : uint32_t {};
+
+enum class SimulatingDeviceAccessFailureEventType : uint32_t {
+  None,
+  AccessTimeoutFailure,
+  AccessFailure,
+  DataCorruption,
+};
+
 enum class BaseFileSystemId : uint32_t {};
+
+enum ContentAttributes : uint8_t {
+  ContentAttributes_None = 0,
+};
+
+namespace detail {
+
+enum class FileSystemProxyType : uint32_t {
+  Code = 0,
+  Rom = 1,
+  Logo = 2,
+  Control = 3,
+  Manual = 4,
+  Meta = 5,
+  Data = 6,
+  Package = 7,
+  RegisteredUpdate = 8,
+};
+
+}
 
 enum class DebugOptionKey : uint32_t {};
 

@@ -26,8 +26,46 @@ inline bool IsResultIncluded(Result result, Result expected) {
   return (result.value & 0x3FFFFF) == expected.value;
 }
 
+inline bool IsResultDataCorrupted(Result result) {
+  const uint32_t module = result.value & 0x1FF;
+  const uint32_t description = (result.value >> 9) & 0x1FFF;
+  return module == 2 && description >= 4000 && description < 5000;
+}
+
 constexpr Result ResultSuccess() {
   return Result{0};
+}
+
+constexpr Result ResultGameCardNotInsertedOnGetHandle() {
+  return detail::MakeResult(2951);
+}
+
+constexpr Result ResultInvalidGameCardHandle() {
+  return detail::MakeResult(2954);
+}
+
+constexpr Result ResultAllocationMemoryFailedInApplicationA() {
+  return detail::MakeResult(3213);
+}
+
+constexpr Result ResultAllocationMemoryFailedInBcatSaveDataA() {
+  return detail::MakeResult(3214);
+}
+
+constexpr Result ResultAllocationMemoryFailedInContentA() {
+  return detail::MakeResult(3219);
+}
+
+constexpr Result ResultAllocationMemoryFailedInImageDirectoryA() {
+  return detail::MakeResult(3232);
+}
+
+constexpr Result ResultAllocationMemoryFailedInLogoA() {
+  return detail::MakeResult(3233);
+}
+
+constexpr Result ResultAllocationMemoryFailedNew() {
+  return detail::MakeResult(3420);
 }
 
 constexpr Result ResultMountNameAlreadyExists() {

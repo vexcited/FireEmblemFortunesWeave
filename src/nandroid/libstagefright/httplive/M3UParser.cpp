@@ -20,15 +20,19 @@
 #include <nandroid/utils/Log.h>
 
 #include "M3UParser.h"
+#ifdef NANDROID_BINDER
 #include <nandroid/binder/Parcel.h>
+#endif
+#ifdef NANDROID_PROPERTIES
 #include <nandroid/cutils/properties.h>
+#endif
 #include <nandroid/media/stagefright/foundation/ADebug.h>
 #include <nandroid/media/stagefright/foundation/AMessage.h>
 #include <nandroid/media/stagefright/foundation/ByteUtils.h>
 #include <nandroid/media/stagefright/MediaDefs.h>
 #include <nandroid/media/stagefright/MediaErrors.h>
 #include <nandroid/media/stagefright/Utils.h>
-#include <nandroid/media/mediaplayer.h>
+#include <nandroid/media/mediaplayer_common.h>
 
 namespace nandroid {
 
@@ -48,7 +52,7 @@ struct M3UParser::MediaGroup : public RefBase {
         FLAG_HAS_URI            = 16,
     };
 
-    explicit MediaGroup(Type type);
+    MediaGroup(Type type, const AString &groupID);
 
     Type type() const;
 
@@ -80,6 +84,7 @@ private:
         AString makeURL(const char *baseURL) const;
     };
 
+    AString mGroupID;
     Type mType;
     Vector<Media> mMediaItems;
 
@@ -88,8 +93,9 @@ private:
     DISALLOW_EVIL_CONSTRUCTORS(MediaGroup);
 };
 
-M3UParser::MediaGroup::MediaGroup(Type type)
-    : mType(type),
+M3UParser::MediaGroup::MediaGroup(Type type, const AString &groupID)
+    : mGroupID(groupID),
+      mType(type),
       mSelectedIndex(-1) {
 }
 
@@ -128,6 +134,7 @@ void M3UParser::MediaGroup::pickRandomMediaItems() {
     switch (mType) {
         case TYPE_AUDIO:
         {
+#ifdef NANDROID_PROPERTIES
             char value[PROPERTY_VALUE_MAX];
             if (property_get("media.httplive.audio-index", value, NULL)) {
                 char *end;
@@ -140,6 +147,9 @@ void M3UParser::MediaGroup::pickRandomMediaItems() {
             } else {
                 mSelectedIndex = 0;
             }
+#else
+            mSelectedIndex = 0;
+#endif
             break;
         }
 
@@ -250,8 +260,10 @@ bool M3UParser::MediaGroup::getActiveURI(AString *uri, const char *baseURL) cons
 ////////////////////////////////////////////////////////////////////////////////
 
 M3UParser::M3UParser(
-        const char *baseURI, const void *data, size_t size)
+        const char *baseURI, const void *data, size_t size, size_t userData)
     : mInitCheck(NO_INIT),
+      mUnknown(0),
+      mUserData(userData),
       mBaseURI(baseURI),
       mIsExtM3U(false),
       mIsVariantPlaylist(false),
@@ -1261,7 +1273,7 @@ status_t M3UParser::parseMedia(const AString &line) {
     sp<MediaGroup> group;
 
     if (groupIndex < 0) {
-        group = new MediaGroup(groupType);
+        group = new MediaGroup(groupType, groupID);
         mMediaGroups.add(groupID, group);
     } else {
         group = mMediaGroups.valueAt(groupIndex);

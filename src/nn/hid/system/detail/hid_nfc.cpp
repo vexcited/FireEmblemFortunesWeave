@@ -158,3 +158,19 @@ Result SetMcuStateImmediate(
 }
 
 }
+
+namespace nn::hid::system::detail {
+
+Result StartNfcDiscovery(const NfcDiscoveryParameter& nfcDiscoveryParameter, AbstractedPadId abstractedPadId) {
+  sf::SharedPointer<IHidSystemServer> proxy;
+  server::CreateHidSystemServerProxy(&proxy);
+  return proxy->StartNfcDiscovery(nfcDiscoveryParameter, abstractedPadId);
+}
+
+Result ClearMifareKey(const MifareKeyClearParameter& mifareKeyClearParameter, AbstractedPadId abstractedPadId) {
+  sf::SharedPointer<IHidSystemServer> proxy;
+  server::CreateHidSystemServerProxy(&proxy);
+  return proxy->ClearMifareKey(mifareKeyClearParameter, abstractedPadId);
+}
+
+}

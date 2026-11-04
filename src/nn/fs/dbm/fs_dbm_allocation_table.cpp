@@ -313,17 +313,8 @@ Result AllocationTable::Allocate(uint32_t* outIndex, uint32_t blockCount) {
   uint32_t remaining = blockCount;
 
   if (remaining != 0) {
-    for (;;) {
-      if (freeList.next == 0) {
-        NN_FS_RESULT_DO(UpdateChain(headSector, sector, lastSector,
-          previousSector, 0));
-        NN_FS_RESULT_THROW_UNLESS(headSector != IndexEnd,
-          ResultAllocationTableFull());
-        freeList.next = headSector;
-        NN_FS_RESULT_DO(UpdateFreeList(&freeList));
-        return ResultAllocationTableFull();
-      }
-
+    bool isSatisfied = false;
+    while (freeList.next != 0) {
       uint32_t allocatedSector = 0;
       uint32_t count = 0;
       NN_FS_RESULT_DO(AllocateFreeSector(&allocatedSector, &count, &freeList,
@@ -351,9 +342,20 @@ Result AllocationTable::Allocate(uint32_t* outIndex, uint32_t blockCount) {
       sector = current;
 
       if (remaining <= count) {
+        isSatisfied = true;
         break;
       }
       remaining -= count;
+    }
+
+    if (!isSatisfied) {
+      NN_FS_RESULT_DO(UpdateChain(headSector, sector, lastSector,
+        previousSector, 0));
+      NN_FS_RESULT_THROW_UNLESS(headSector != IndexEnd,
+        ResultAllocationTableFull());
+      freeList.next = headSector;
+      NN_FS_RESULT_DO(UpdateFreeList(&freeList));
+      return ResultAllocationTableFull();
     }
   }
 

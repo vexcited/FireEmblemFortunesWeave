@@ -60,6 +60,9 @@
 #define __predict_false(exp) __builtin_expect((exp) != 0, 0)
 #endif
 
+// musl names a stat field __unused, so its header must come first.
+#include <sys/stat.h>
+
 #ifndef __unused
 #define __unused __attribute__((__unused__))
 #endif

@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+#include <nandroid/MovieMemory.h>
 #include <nandroid/media/stagefright/foundation/MediaDefs.h>
 
 namespace nandroid {

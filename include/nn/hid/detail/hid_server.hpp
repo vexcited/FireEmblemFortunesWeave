@@ -39,7 +39,7 @@ class IHidDebugServer : public sf::IServiceObject {
   virtual Result DeactivateKeyboard() = 0;
   virtual void Reserved23() = 0;
   virtual void Reserved24() = 0;
-  virtual void Reserved25() = 0;
+  virtual Result FinalizeXpad(BasicXpadId) = 0;
   virtual void Reserved26() = 0;
   virtual void Reserved27() = 0;
   virtual void Reserved28() = 0;
@@ -203,7 +203,7 @@ class IHidServer : public sf::IServiceObject {
     util::BitFlagSet<32, KeyboardLockKeyEvent>) = 0;
   virtual void Reserved12() = 0;
   virtual void Reserved13() = 0;
-  virtual void Reserved14() = 0;
+  virtual Result InitializeXpad(applet::AppletResourceUserId, BasicXpadId) = 0;
   virtual void Reserved15() = 0;
   virtual void Reserved16() = 0;
   virtual void Reserved17() = 0;
@@ -222,19 +222,30 @@ class IHidServer : public sf::IServiceObject {
     bool*, applet::AppletResourceUserId, SixAxisSensorHandle) = 0;
   virtual Result EnableSixAxisSensorFusion(
     applet::AppletResourceUserId, SixAxisSensorHandle, bool) = 0;
-  virtual void Reserved29() = 0;
-  virtual void Reserved30() = 0;
+  virtual Result SetSixAxisSensorFusionParameters(
+    applet::AppletResourceUserId, SixAxisSensorHandle, float, float) = 0;
+  virtual Result GetSixAxisSensorFusionParameters(
+    float*, float*, applet::AppletResourceUserId, SixAxisSensorHandle) = 0;
   virtual Result ResetSixAxisSensorFusionParameters(
     applet::AppletResourceUserId, SixAxisSensorHandle) = 0;
-  virtual void Reserved32() = 0;
-  virtual void Reserved33() = 0;
-  virtual void Reserved34() = 0;
-  virtual void Reserved35() = 0;
-  virtual void Reserved36() = 0;
-  virtual void Reserved37() = 0;
-  virtual void Reserved38() = 0;
-  virtual void Reserved39() = 0;
-  virtual void Reserved40() = 0;
+  virtual Result SetAccelerometerParameters(
+    applet::AppletResourceUserId, SixAxisSensorHandle, float, float) = 0;
+  virtual Result GetAccelerometerParameters(
+    float*, float*, applet::AppletResourceUserId, SixAxisSensorHandle) = 0;
+  virtual Result ResetAccelerometerParameters(
+    applet::AppletResourceUserId, SixAxisSensorHandle) = 0;
+  virtual Result SetAccelerometerPlayMode(applet::AppletResourceUserId,
+    SixAxisSensorHandle, debug::AccelerometerPlayMode) = 0;
+  virtual Result GetAccelerometerPlayMode(debug::AccelerometerPlayMode*,
+    applet::AppletResourceUserId, SixAxisSensorHandle) = 0;
+  virtual Result ResetAccelerometerPlayMode(
+    applet::AppletResourceUserId, SixAxisSensorHandle) = 0;
+  virtual Result SetGyroscopeZeroDriftMode(applet::AppletResourceUserId,
+    SixAxisSensorHandle, GyroscopeZeroDriftMode) = 0;
+  virtual Result GetGyroscopeZeroDriftMode(GyroscopeZeroDriftMode*,
+    applet::AppletResourceUserId, SixAxisSensorHandle) = 0;
+  virtual Result ResetGyroscopeZeroDriftMode(
+    applet::AppletResourceUserId, SixAxisSensorHandle) = 0;
   virtual Result IsSixAxisSensorAtRest(
     bool*, applet::AppletResourceUserId, SixAxisSensorHandle) = 0;
   virtual void Reserved42() = 0;
@@ -324,9 +335,10 @@ class IHidServer : public sf::IServiceObject {
   virtual void Reserved99() = 0;
   virtual Result StartSevenSixAxisSensor(applet::AppletResourceUserId) = 0;
   virtual Result StopSevenSixAxisSensor(applet::AppletResourceUserId) = 0;
-  virtual void Reserved102() = 0;
-  virtual void Reserved103() = 0;
-  virtual void Reserved104() = 0;
+  virtual Result InitializeSevenSixAxisSensor(applet::AppletResourceUserId,
+    sf::NativeHandle, uint64_t, sf::NativeHandle, uint64_t) = 0;
+  virtual Result FinalizeSevenSixAxisSensor(applet::AppletResourceUserId) = 0;
+  virtual Result SetSevenSixAxisSensorFusionStrength(applet::AppletResourceUserId, float) = 0;
   virtual Result GetSevenSixAxisSensorFusionStrength(
     float*, applet::AppletResourceUserId) = 0;
   virtual Result ResetSevenSixAxisSensorTimestamp(
@@ -346,36 +358,36 @@ class IHidServer : public sf::IServiceObject {
   virtual void Reserved118() = 0;
   virtual Result GetPalmaConnectionHandle(
     PalmaConnectionHandle*, unsigned int, applet::AppletResourceUserId) = 0;
-  virtual void Reserved120() = 0;
+  virtual Result InitializePalma(PalmaConnectionHandle) = 0;
   virtual void Reserved121() = 0;
   virtual void Reserved122() = 0;
-  virtual void Reserved123() = 0;
-  virtual void Reserved124() = 0;
-  virtual void Reserved125() = 0;
-  virtual void Reserved126() = 0;
-  virtual void Reserved127() = 0;
+  virtual Result PlayPalmaActivity(PalmaConnectionHandle, unsigned short) = 0;
+  virtual Result SetPalmaFrModeType(PalmaConnectionHandle, PalmaFrModeType) = 0;
+  virtual Result ReadPalmaStep(PalmaConnectionHandle) = 0;
+  virtual Result EnablePalmaStep(PalmaConnectionHandle, bool) = 0;
+  virtual Result ResetPalmaStep(PalmaConnectionHandle) = 0;
   virtual void Reserved128() = 0;
   virtual void Reserved129() = 0;
-  virtual void Reserved130() = 0;
-  virtual void Reserved131() = 0;
+  virtual Result ReadPalmaUniqueCode(PalmaConnectionHandle) = 0;
+  virtual Result SetPalmaUniqueCodeInvalid(PalmaConnectionHandle) = 0;
   virtual void Reserved132() = 0;
   virtual void Reserved133() = 0;
   virtual void Reserved134() = 0;
-  virtual void Reserved135() = 0;
-  virtual void Reserved136() = 0;
-  virtual void Reserved137() = 0;
+  virtual Result SetPalmaDataBaseIdentificationVersion(PalmaConnectionHandle, int) = 0;
+  virtual Result GetPalmaDataBaseIdentificationVersion(PalmaConnectionHandle) = 0;
+  virtual Result SuspendPalmaFeature(PalmaConnectionHandle, util::BitFlagSet<32, PalmaFeature>) = 0;
   virtual void Reserved138() = 0;
-  virtual void Reserved139() = 0;
-  virtual void Reserved140() = 0;
+  virtual Result ReadPalmaPlayLog(PalmaConnectionHandle, unsigned short) = 0;
+  virtual Result ResetPalmaPlayLog(PalmaConnectionHandle, unsigned short) = 0;
   virtual Result EnableAnyPalmaConnection(
     applet::AppletResourceUserId, int) = 0;
   virtual Result EnablePairedPalmaConnection(
     applet::AppletResourceUserId, int) = 0;
-  virtual void Reserved143() = 0;
+  virtual Result PairPalma(PalmaConnectionHandle) = 0;
   virtual Result SetPalmaBoostMode(bool) = 0;
-  virtual void Reserved145() = 0;
+  virtual Result CancelWritePalmaWaveEntry(PalmaConnectionHandle) = 0;
   virtual Result EnablePalmaBoostMode(applet::AppletResourceUserId, bool) = 0;
-  virtual void Reserved147() = 0;
+  virtual Result GetPalmaBluetoothAddress(bluetooth::Address*, PalmaConnectionHandle) = 0;
   virtual void Reserved148() = 0;
   virtual Result GetGlGrButtonConfigState(
     bool*, bool*, unsigned int, applet::AppletResourceUserId) = 0;
@@ -419,13 +431,13 @@ class IHidServer : public sf::IServiceObject {
   virtual Result SetNmousePointerMovementArea(
     applet::AppletResourceUserId, int, int, int, int) = 0;
   virtual Result EnableShowingCursor(applet::AppletResourceUserId, bool) = 0;
-  virtual void Reserved183() = 0;
-  virtual void Reserved184() = 0;
+  virtual Result SetNmouseButtonConfigJoyLeftJcms(applet::AppletResourceUserId, NmouseButtonConfigJoyLeftJcms) = 0;
+  virtual Result SetNmouseButtonConfigJoyRightJcms(applet::AppletResourceUserId, NmouseButtonConfigJoyRightJcms) = 0;
   virtual void Reserved185() = 0;
   virtual void Reserved186() = 0;
   virtual void Reserved187() = 0;
   virtual void Reserved188() = 0;
-  virtual void Reserved189() = 0;
+  virtual Result RestrictNmousePointer(applet::AppletResourceUserId, float, float, float, float) = 0;
   virtual void Reserved190() = 0;
   virtual Result EnableMouse(applet::AppletResourceUserId, bool) = 0;
 };
@@ -458,7 +470,7 @@ class IHidSystemServer : public sf::IServiceObject {
     system::AbstractedPadId*, unsigned int, int) = 0;
   virtual void Reserved22() = 0;
   virtual Result GetNfcInfo(system::NfcInfo*, system::AbstractedPadId) = 0;
-  virtual void Reserved24() = 0;
+  virtual Result StartNfcDiscovery(system::NfcDiscoveryParameter, system::AbstractedPadId) = 0;
   virtual Result StopNfcDiscovery(system::AbstractedPadId) = 0;
   virtual Result StartNtagRead(
     const system::NtagReadParameter&, system::AbstractedPadId) = 0;
@@ -468,7 +480,7 @@ class IHidSystemServer : public sf::IServiceObject {
     const system::NfcPassThruParameter&, system::AbstractedPadId) = 0;
   virtual Result RegisterMifareKey(
     const system::MifareKeyWriteParameter&, system::AbstractedPadId) = 0;
-  virtual void Reserved30() = 0;
+  virtual Result ClearMifareKey(system::MifareKeyClearParameter, system::AbstractedPadId) = 0;
   virtual Result StartMifareRead(
     const system::MifareReadParameter&, system::AbstractedPadId) = 0;
   virtual Result StartMifareWrite(
@@ -553,7 +565,7 @@ class IHidSystemServer : public sf::IServiceObject {
     applet::AppletResourceUserId, bool) = 0;
   virtual Result EnableAppletToGetTouchScreen(
     applet::AppletResourceUserId, bool) = 0;
-  virtual void Reserved87() = 0;
+  virtual Result SetVibrationMasterVolume(float) = 0;
   virtual Result GetVibrationMasterVolume(float*) = 0;
   virtual void Reserved89() = 0;
   virtual void Reserved90() = 0;
@@ -627,7 +639,7 @@ class IHidSystemServer : public sf::IServiceObject {
   virtual Result DisconnectUniquePad(system::UniquePadId) = 0;
   virtual Result GetUniquePadType(
     system::UniquePadType*, system::UniquePadId) = 0;
-  virtual void Reserved153() = 0;
+  virtual Result GetUniquePadInterface(system::UniquePadInterface*, system::UniquePadId) = 0;
   virtual Result GetUniquePadSerialNumber(
     system::UniquePadSerialNumber*, system::UniquePadId) = 0;
   virtual Result GetUniquePadControllerNumber(int*, system::UniquePadId) = 0;
@@ -646,7 +658,7 @@ class IHidSystemServer : public sf::IServiceObject {
     system::UniquePadId, system::AnalogStickPosition) = 0;
   virtual Result GetAnalogStickState(
     AnalogStickState*, system::UniquePadId, system::AnalogStickPosition) = 0;
-  virtual void Reserved164() = 0;
+  virtual Result GetAnalogStickManualCalibrationStage(system::AnalogStickManualCalibrationStage*, system::UniquePadId, system::AnalogStickPosition) = 0;
   virtual Result IsAnalogStickButtonPressed(
     bool*, system::UniquePadId, system::AnalogStickPosition) = 0;
   virtual Result IsAnalogStickInReleasePosition(
@@ -668,11 +680,11 @@ class IHidSystemServer : public sf::IServiceObject {
   virtual Result GetAvailableFirmwareVersion(
     system::FirmwareVersion*, system::UniquePadId) = 0;
   virtual Result IsFirmwareUpdateAvailable(bool*, system::UniquePadId) = 0;
-  virtual void Reserved179() = 0;
+  virtual Result CheckFirmwareUpdateRequired(system::FirmwareUpdateRequiredReason*, system::UniquePadId) = 0;
   virtual Result StartFirmwareUpdate(
     system::FirmwareUpdateDeviceHandle*, system::UniquePadId) = 0;
   virtual Result AbortFirmwareUpdate() = 0;
-  virtual void Reserved182() = 0;
+  virtual Result GetFirmwareUpdateState(system::FirmwareUpdateState*, system::FirmwareUpdateDeviceHandle) = 0;
   virtual Result InitializeAudioControl() = 0;
   virtual void Reserved184() = 0;
   virtual void Reserved185() = 0;
@@ -685,16 +697,16 @@ class IHidSystemServer : public sf::IServiceObject {
     system::UniqueSixAxisSensorHandle, applet::AppletResourceUserId) = 0;
   virtual Result CancelSixAxisSensorAccurateUserCalibration(
     system::UniqueSixAxisSensorHandle, applet::AppletResourceUserId) = 0;
-  virtual void Reserved191() = 0;
+  virtual Result GetSixAxisSensorAccurateUserCalibrationState(system::SixAxisSensorAccurateUserCalibrationState*, system::UniqueSixAxisSensorHandle, applet::AppletResourceUserId) = 0;
   virtual void Reserved192() = 0;
   virtual Result SetFirmwareHotfixUpdateSkipEnabled(bool) = 0;
   virtual Result FinalizeUsbFirmwareUpdate(applet::AppletResourceUserId) = 0;
-  virtual void Reserved195() = 0;
+  virtual Result CheckUsbFirmwareUpdateRequired(applet::AppletResourceUserId, system::FirmwareUpdateRequiredReason*) = 0;
   virtual Result StartUsbFirmwareUpdate(applet::AppletResourceUserId) = 0;
   virtual Result GetUsbFirmwareUpdateState(
     applet::AppletResourceUserId, system::FirmwareUpdateState*, int*, int*) = 0;
   virtual Result InitializeUsbFirmwareUpdate(applet::AppletResourceUserId) = 0;
-  virtual void Reserved199() = 0;
+  virtual Result SetTouchScreenMagnification(float, float, float, float) = 0;
   virtual Result GetTouchScreenFirmwareVersion(system::FirmwareVersion*) = 0;
   virtual void Reserved201() = 0;
   virtual Result GetTouchScreenDefaultConfiguration(
@@ -757,18 +769,18 @@ class IHidSystemServer : public sf::IServiceObject {
     const hidconfig::ButtonConfigLeft&, const hidconfig::StorageName&, int) = 0;
   virtual Result SetButtonConfigStorage(const hidconfig::ButtonConfigRight&,
     const hidconfig::StorageName&, int) = 0;
-  virtual void Reserved243() = 0;
-  virtual void Reserved244() = 0;
+  virtual Result IsDefaultButtonConfig(bool*, hidconfig::ButtonConfigBack) = 0;
+  virtual Result IsDefaultButtonConfig(bool*, hidconfig::ButtonConfigJoyConGrip) = 0;
   virtual Result IsButtonConfigStorageJoyConGripEmpty(bool*, int) = 0;
   virtual Result GetButtonConfigStorage(
     hidconfig::ButtonConfigJoyConGrip*, hidconfig::StorageName*, int) = 0;
-  virtual void Reserved247() = 0;
+  virtual Result SetButtonConfigStorage(hidconfig::ButtonConfigJoyConGrip, const hidconfig::StorageName&, int) = 0;
   virtual Result DeleteButtonConfigStorageJoyConGrip(int) = 0;
-  virtual void Reserved249() = 0;
-  virtual void Reserved250() = 0;
+  virtual Result SetButtonConfig(hidconfig::ButtonConfigJoyConGrip, system::UniquePadId) = 0;
+  virtual Result GetButtonConfig(hidconfig::ButtonConfigJoyConGrip*, system::UniquePadId) = 0;
   virtual Result SetDefaultButtonConfig(unsigned int) = 0;
-  virtual void Reserved252() = 0;
-  virtual void Reserved253() = 0;
+  virtual Result SetButtonConfig(hidconfig::ButtonConfigBack, unsigned int) = 0;
+  virtual Result GetButtonConfig(hidconfig::ButtonConfigBack*, unsigned int) = 0;
   virtual Result IsUsingCustomButtonConfig(bool*, unsigned int) = 0;
   virtual Result SetButtonConfigVisible(system::UniquePadId, bool) = 0;
   virtual Result IsButtonConfigVisible(bool*, system::UniquePadId) = 0;
@@ -779,7 +791,7 @@ class IHidSystemServer : public sf::IServiceObject {
   virtual Result StartTouchScreenAutoTuneForSystemSettings() = 0;
   virtual void Reserved262() = 0;
   virtual void Reserved263() = 0;
-  virtual void Reserved264() = 0;
+  virtual Result SetTouchScreenOffset(float, float) = 0;
   virtual void Reserved265() = 0;
   virtual void Reserved266() = 0;
   virtual Result ClearDetectedEsdEvent() = 0;
@@ -805,9 +817,9 @@ class IHidSystemServer : public sf::IServiceObject {
   virtual void Reserved285() = 0;
   virtual Result SetOverlayNmousePointerRanges(
     applet::AppletResourceUserId, int, int) = 0;
-  virtual void Reserved287() = 0;
+  virtual Result SetOverlayNmouseMagnification(float, float, float, float) = 0;
   virtual void Reserved288() = 0;
-  virtual void Reserved289() = 0;
+  virtual Result SetNmousePointerSpeedScale(applet::AppletResourceUserId, float) = 0;
   virtual Result GetNmousePointerSpeedScale(
     float*, applet::AppletResourceUserId) = 0;
   virtual Result EnableNmouseMovementAdjustment(

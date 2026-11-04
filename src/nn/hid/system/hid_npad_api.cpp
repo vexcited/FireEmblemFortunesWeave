@@ -22,6 +22,39 @@ AppletDetailedUiType ConvertAppletDetailedUiTypeFromPlayReportType(
   return value;
 }
 
+void GetNpadState(NpadSystemState* pOutNpadSystemState, const NpadIdType& id) {
+  NN_ABORT_UNLESS_RESULT_SUCCESS(hid::detail::VerifyValidNpadId(id));
+  int count = 0;
+  NN_ABORT_UNLESS_RESULT_SUCCESS(
+    hid::detail::GetNpadStates(&count, pOutNpadSystemState, 1, id));
+}
+
+int GetNpadStates(
+  NpadSystemState* pOutNpadSystemState, int count, const NpadIdType& id) {
+  NN_ABORT_UNLESS_RESULT_SUCCESS(hid::detail::VerifyValidNpadId(id));
+  int value = {};
+  NN_ABORT_UNLESS_RESULT_SUCCESS(
+    hid::detail::GetNpadStates(&value, pOutNpadSystemState, count, id));
+  return value;
+}
+
+void GetNpadState(
+  NpadSystemExtState* pOutNpadSystemExtState, const NpadIdType& id) {
+  NN_ABORT_UNLESS_RESULT_SUCCESS(hid::detail::VerifyValidNpadId(id));
+  int count = 0;
+  NN_ABORT_UNLESS_RESULT_SUCCESS(
+    hid::detail::GetNpadStates(&count, pOutNpadSystemExtState, 1, id));
+}
+
+int GetNpadStates(
+  NpadSystemExtState* pOutNpadSystemExtState, int count, const NpadIdType& id) {
+  NN_ABORT_UNLESS_RESULT_SUCCESS(hid::detail::VerifyValidNpadId(id));
+  int value = {};
+  NN_ABORT_UNLESS_RESULT_SUCCESS(
+    hid::detail::GetNpadStates(&value, pOutNpadSystemExtState, count, id));
+  return value;
+}
+
 void InitializeGestureForSystemProcess(int count, int count2) {
   NN_ABORT_UNLESS_RESULT_SUCCESS(
     hid::system::detail::InitializeGestureForSystemProcess(count, count2));

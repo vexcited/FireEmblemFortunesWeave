@@ -20,15 +20,19 @@
 #include <nandroid/utils/Log.h>
 #include "ATSParser.h"
 #include "AnotherPacketSource.h"
+#ifdef NANDROID_CAS
 #include "CasManager.h"
+#endif
 #include "ESQueue.h"
 
+#ifdef NANDROID_CAS
 #include <nandroid/android/hardware/cas/native/1.0/IDescrambler.h>
 #include <nandroid/android/hidl/allocator/1.0/IAllocator.h>
 #include <nandroid/android/hidl/memory/1.0/IMemory.h>
 #include <nandroid/cutils/native_handle.h>
 #include <hidlmemory/mapping.h>
 #include <nandroid/media/cas/DescramblerAPI.h>
+#endif
 #include <nandroid/media/stagefright/foundation/ABitReader.h>
 #include <nandroid/media/stagefright/foundation/ABuffer.h>
 #include <nandroid/media/stagefright/foundation/ADebug.h>
@@ -40,13 +44,16 @@
 #include <nandroid/media/stagefright/MediaDefs.h>
 #include <nandroid/media/stagefright/MediaErrors.h>
 #include <nandroid/media/stagefright/MetaData.h>
+#ifdef NANDROID_BINDER
 #include <nandroid/media/IStreamSource.h>
+#endif
 #include <nandroid/utils/KeyedVector.h>
 #include <nandroid/utils/Vector.h>
 
 #include <inttypes.h>
 
 namespace nandroid {
+#ifdef NANDROID_CAS
 using hardware::hidl_string;
 using hardware::hidl_vec;
 using hardware::hidl_memory;
@@ -54,6 +61,7 @@ using namespace hardware::cas::V1_0;
 using namespace hardware::cas::native::V1_0;
 typedef hidl::allocator::V1_0::IAllocator TAllocator;
 typedef hidl::memory::V1_0::IMemory TMemory;
+#endif
 
 // I want the expression "y" evaluated even if verbose logging is off.
 #define MY_LOGV(x, y) \
@@ -106,15 +114,19 @@ struct ATSParser::Program : public RefBase {
         return mParser->mFlags;
     }
 
+#ifdef NANDROID_CAS
     sp<CasManager> casManager() const {
         return mParser->mCasManager;
     }
+#endif
 
     uint64_t firstPTS() const {
         return mFirstPTS;
     }
 
+#ifdef NANDROID_CAS
     void updateCasSessions();
+#endif
 
     void signalNewSampleAesKey(const sp<AMessage> &keyItem);
 
@@ -151,10 +163,12 @@ struct ATSParser::Stream : public RefBase {
         mAudioPresentations = audioPresentations;
     }
 
+#ifdef NANDROID_CAS
     void setCasInfo(
             int32_t systemId,
             const sp<IDescrambler> &descrambler,
             const std::vector<uint8_t> &sessionId);
+#endif
 
     // Parse the payload and set event when PES with a sync frame is detected.
     // This method knows when a PES starts; so record mPesStartOffsets in that
@@ -210,12 +224,16 @@ private:
     bool mScrambled;
     bool mSampleEncrypted;
     sp<AMessage> mSampleAesKeyItem;
+#ifdef NANDROID_CAS
     sp<TMemory> mHidlMemory;
     sp<TAllocator> mHidlAllocator;
     hardware::cas::native::V1_0::SharedBuffer mDescramblerSrcBuffer;
     sp<ABuffer> mDescrambledBuffer;
+#endif
     List<SubSampleInfo> mSubSamples;
+#ifdef NANDROID_CAS
     sp<IDescrambler> mDescrambler;
+#endif
     AudioPresentationCollection mAudioPresentations;
 
     // Send audio presentations along with access units.
@@ -229,7 +247,9 @@ private:
     // Flush accumulated payload for scrambled streams if necessary --- i.e. at
     // EOS or at the start of another payload. event is set if the flushed
     // payload is PES with a sync frame.
+#ifdef NANDROID_CAS
     status_t flushScrambled(SyncEvent *event);
+#endif
 
     // Check if a PES packet is scrambled at PES level.
     uint32_t getPesScramblingControl(ABitReader *br, int32_t *pesOffset);
@@ -514,10 +534,12 @@ status_t ATSParser::Program::parseProgramMap(ABitReader *br) {
     // descriptors
     CADescriptor programCA;
     bool hasProgramCA = findCADescriptor(br, program_info_length, &programCA);
+#ifdef NANDROID_CAS
     if (hasProgramCA && !mParser->mCasManager->addProgram(
             mProgramNumber, programCA)) {
         return ERROR_MALFORMED;
     }
+#endif
 
     Vector<StreamInfo> infos;
 
@@ -542,130 +564,7 @@ status_t ATSParser::Program::parseProgramMap(ABitReader *br) {
         infoBytesRemaining -= 5 + ES_info_length;
 
         CADescriptor streamCA;
-        info.mTypeExt = EXT_DESCRIPTOR_DVB_RESERVED_MAX;
-
-        info.mAudioPresentations.clear();
-        bool hasStreamCA = false;
-        while (ES_info_length > 2 && infoBytesRemaining >= 0) {
-            unsigned descriptor_tag = br->getBits(8);
-            ALOGV("      tag = 0x%02x", descriptor_tag);
-
-            unsigned descriptor_length = br->getBits(8);
-            ALOGV("      len = %u", descriptor_length);
-
-            ES_info_length -= 2;
-            if (descriptor_length > ES_info_length) {
-                return ERROR_MALFORMED;
-            }
-            if (descriptor_tag == DESCRIPTOR_CA && descriptor_length >= 4) {
-                hasStreamCA = true;
-                streamCA.mSystemID = br->getBits(16);
-                streamCA.mPID = br->getBits(16) & 0x1fff;
-                ES_info_length -= descriptor_length;
-                descriptor_length -= 4;
-                streamCA.mPrivateData.assign(br->data(), br->data() + descriptor_length);
-                br->skipBits(descriptor_length * 8);
-            } else if (info.mType == STREAMTYPE_PES_PRIVATE_DATA &&
-                       descriptor_tag == DESCRIPTOR_DVB_EXTENSION && descriptor_length >= 1) {
-                unsigned descTagExt = br->getBits(8);
-                ALOGV("      tag_ext = 0x%02x", descTagExt);
-                ES_info_length -= descriptor_length;
-                descriptor_length--;
-                // The AC4 descriptor is used in the PSI PMT to identify streams which carry AC4
-                // audio.
-                if (descTagExt == EXT_DESCRIPTOR_DVB_AC4) {
-                    info.mTypeExt = EXT_DESCRIPTOR_DVB_AC4;
-                    br->skipBits(descriptor_length * 8);
-                } else if (descTagExt == EXT_DESCRIPTOR_DVB_AUDIO_PRESELECTION &&
-                           descriptor_length >= 1) {
-                    // DVB BlueBook A038 Table 110
-                    unsigned num_preselections = br->getBits(5);
-                    br->skipBits(3);  // reserved
-                    for (unsigned i = 0; i < num_preselections; ++i) {
-                        if (br->numBitsLeft() < 16) {
-                            ALOGE("Not enough data left in bitreader!");
-                            return ERROR_MALFORMED;
-                        }
-                        AudioPresentationV1 ap;
-                        ap.mPresentationId = br->getBits(5);  // preselection_id
-
-                        // audio_rendering_indication
-                        ap.mMasteringIndication = static_cast<MasteringIndication>(br->getBits(3));
-                        ap.mAudioDescriptionAvailable = (br->getBits(1) == 1);
-                        ap.mSpokenSubtitlesAvailable = (br->getBits(1) == 1);
-                        ap.mDialogueEnhancementAvailable = (br->getBits(1) == 1);
-
-                        bool interactivity_enabled = (br->getBits(1) == 1);
-                        MY_LOGV("      interactivity_enabled = %d", interactivity_enabled);
-
-                        bool language_code_present = (br->getBits(1) == 1);
-                        bool text_label_present = (br->getBits(1) == 1);
-
-                        bool multi_stream_info_present = (br->getBits(1) == 1);
-                        bool future_extension = (br->getBits(1) == 1);
-                        if (language_code_present) {
-                            if (br->numBitsLeft() < 24) {
-                                ALOGE("Not enough data left in bitreader!");
-                                return ERROR_MALFORMED;
-                            }
-                            char language[4];
-                            language[0] = br->getBits(8);
-                            language[1] = br->getBits(8);
-                            language[2] = br->getBits(8);
-                            language[3] = 0;
-                            ap.mLanguage = String8(language);
-                        }
-
-                        // This maps the presentation id to the message id in the
-                        // EXT_DESCRIPTOR_DVB_MESSAGE so that we can get the presentation label.
-                        if (text_label_present) {
-                            if (br->numBitsLeft() < 8) {
-                                ALOGE("Not enough data left in bitreader!");
-                                return ERROR_MALFORMED;
-                            }
-                            unsigned message_id = br->getBits(8);
-                            MY_LOGV("      message_id = %u", message_id);
-                        }
-
-                        if (multi_stream_info_present) {
-                            if (br->numBitsLeft() < 8) {
-                                ALOGE("Not enough data left in bitreader!");
-                                return ERROR_MALFORMED;
-                            }
-                            unsigned num_aux_components = br->getBits(3);
-                            br->skipBits(5);  // reserved
-                            if (br->numBitsLeft() < (num_aux_components * 8)) {
-                                ALOGE("Not enough data left in bitreader!");
-                                return ERROR_MALFORMED;
-                            }
-                            br->skipBits(num_aux_components * 8);  // component_tag
-                        }
-                        if (future_extension) {
-                            if (br->numBitsLeft() < 8) {
-                                return ERROR_MALFORMED;
-                            }
-                            br->skipBits(3);  // reserved
-                            unsigned future_extension_length = br->getBits(5);
-                            if (br->numBitsLeft() < (future_extension_length * 8)) {
-                                ALOGE("Not enough data left in bitreader!");
-                                return ERROR_MALFORMED;
-                            }
-                            br->skipBits(future_extension_length * 8);  // future_extension_byte
-                        }
-                        info.mAudioPresentations.push_back(std::move(ap));
-                    }
-                } else {
-                    br->skipBits(descriptor_length * 8);
-                }
-            } else {
-                ES_info_length -= descriptor_length;
-                br->skipBits(descriptor_length * 8);
-            }
-        }
-        if (hasStreamCA && !mParser->mCasManager->addStream(
-                mProgramNumber, info.mPID, streamCA)) {
-            return ERROR_MALFORMED;
-        }
+        bool hasStreamCA = findCADescriptor(br, ES_info_length, &streamCA);
         if (hasProgramCA) {
             info.mCADescriptor = programCA;
         } else if (hasStreamCA) {
@@ -728,10 +627,12 @@ status_t ATSParser::Program::parseProgramMap(ABitReader *br) {
     for (size_t i = 0; i < infos.size(); ++i) {
         StreamInfo &info = infos.editItemAt(i);
 
+#ifdef NANDROID_CAS
         if (mParser->mCasManager->isCAPid(info.mPID)) {
             // skip CA streams (EMM/ECM)
             continue;
         }
+#endif
         ssize_t index = mStreams.indexOfKey(info.mPID);
 
         if (index < 0) {
@@ -837,6 +738,7 @@ int64_t ATSParser::Program::convertPTSToTimestamp(uint64_t PTS) {
     return timeUs;
 }
 
+#ifdef NANDROID_CAS
 void ATSParser::Program::updateCasSessions() {
     for (size_t i = 0; i < mStreams.size(); ++i) {
         sp<Stream> &stream = mStreams.editValueAt(i);
@@ -849,6 +751,7 @@ void ATSParser::Program::updateCasSessions() {
         }
     }
 }
+#endif
 
 ////////////////////////////////////////////////////////////////////////////////
 static const size_t kInitialStreamBufferSize = 192 * 1024;
@@ -978,6 +881,7 @@ bool ATSParser::Stream::ensureBufferCapacity(size_t neededSize) {
     ALOGV("ensureBufferCapacity: current size %zu, new size %zu, scrambled %d",
             mBuffer == NULL ? 0 : mBuffer->capacity(), neededSize, mScrambled);
 
+#ifdef NANDROID_CAS
     sp<ABuffer> newBuffer, newScrambledBuffer;
     sp<TMemory> newMem;
     if (mScrambled) {
@@ -1037,6 +941,9 @@ bool ATSParser::Stream::ensureBufferCapacity(size_t neededSize) {
         // Align to multiples of 64K.
         neededSize = (neededSize + 65535) & ~65535;
     }
+#else
+    sp<ABuffer> newBuffer;
+#endif
 
     newBuffer = new ABuffer(neededSize);
     if (mBuffer != NULL) {
@@ -1514,6 +1421,7 @@ uint32_t ATSParser::Stream::getPesScramblingControl(
     return 0;
 }
 
+#ifdef NANDROID_CAS
 status_t ATSParser::Stream::flushScrambled(SyncEvent *event) {
     if (mDescrambler == NULL) {
         ALOGE("received scrambled packets without descrambler!");
@@ -1689,6 +1597,7 @@ status_t ATSParser::Stream::flushScrambled(SyncEvent *event) {
 
     return err;
 }
+#endif
 
 
 status_t ATSParser::Stream::flush(SyncEvent *event) {
@@ -1700,8 +1609,10 @@ status_t ATSParser::Stream::flush(SyncEvent *event) {
 
     status_t err = OK;
     if (mScrambled) {
+#ifdef NANDROID_CAS
         err = flushScrambled(event);
         mSubSamples.clear();
+#endif
     } else {
         ABitReader br(mBuffer->data(), mBuffer->size());
         err = parsePES(&br, event);
@@ -1854,6 +1765,7 @@ sp<AnotherPacketSource> ATSParser::Stream::getSource(SourceType type) {
     return NULL;
 }
 
+#ifdef NANDROID_CAS
 void ATSParser::Stream::setCasInfo(
         int32_t systemId, const sp<IDescrambler> &descrambler,
         const std::vector<uint8_t> &sessionId) {
@@ -1865,6 +1777,7 @@ void ATSParser::Stream::setCasInfo(
         }
     }
 }
+#endif
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -1877,7 +1790,9 @@ ATSParser::ATSParser(uint32_t flags)
       mNumTSPacketsParsed(0),
       mNumPCRs(0) {
     mPSISections.add(0 /* PID */, new PSISection);
+#ifdef NANDROID_CAS
     mCasManager = new CasManager();
+#endif
 }
 
 ATSParser::~ATSParser() {
@@ -1894,6 +1809,7 @@ status_t ATSParser::feedTSPacket(const void *data, size_t size,
     return parseTS(&br, event);
 }
 
+#ifdef NANDROID_CAS
 status_t ATSParser::setMediaCas(const sp<ICas> &cas) {
     status_t err = mCasManager->setMediaCas(cas);
     if (err != OK) {
@@ -1904,6 +1820,7 @@ status_t ATSParser::setMediaCas(const sp<ICas> &cas) {
     }
     return OK;
 }
+#endif
 
 void ATSParser::signalDiscontinuity(
         DiscontinuityType type, const sp<AMessage> &extra) {
@@ -2121,9 +2038,11 @@ status_t ATSParser::parsePID(
         }
     }
 
+#ifdef NANDROID_CAS
     if (!handled) {
         handled = mCasManager->parsePID(br, PID);
     }
+#endif
 
     if (!handled) {
         ALOGV("PID 0x%04x not handled.", PID);

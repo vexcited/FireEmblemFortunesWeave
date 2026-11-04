@@ -35,10 +35,16 @@ struct Address {
 
 namespace nn::hidconfig {
 
-struct ButtonConfigBack;
+struct ButtonConfigBack {
+  uint64_t _storage;
+};
+
 struct ButtonConfigEmbedded;
 struct ButtonConfigFull;
-struct ButtonConfigJoyConGrip;
+struct ButtonConfigJoyConGrip {
+  uint64_t _storage;
+};
+
 struct ButtonConfigLeft;
 struct ButtonConfigRight;
 struct StorageName;
@@ -119,8 +125,14 @@ struct MouseHandle {
   uint32_t _storage;
 };
 
-struct PalmaConnectionHandle;
-struct BasicXpadId;
+struct PalmaConnectionHandle {
+  uint64_t _storage;
+};
+
+struct BasicXpadId {
+  uint32_t _storage;
+};
+
 
 struct AnalogStickState;
 struct DebugPadState;
@@ -130,8 +142,14 @@ struct JcmsState;
 struct KeyboardState;
 struct MouseState;
 struct NmouseState;
-struct NmouseButtonConfigJoyLeftJcms;
-struct NmouseButtonConfigJoyRightJcms;
+struct NmouseButtonConfigJoyLeftJcms {
+  uint64_t _storage;
+};
+
+struct NmouseButtonConfigJoyRightJcms {
+  uint64_t _storage;
+};
+
 struct NmouseButtonConfigStandardMouse;
 struct NpadControllerColor;
 struct NpadJoyIconDecorationColor;
@@ -151,7 +169,9 @@ struct PalmaApplicationSectionAccessBuffer;
 struct PalmaOperationInfo;
 struct PalmaWaveSet;
 struct SevenSixAxisSensorState;
-struct SixAxisSensorCalibrationParameter;
+struct SixAxisSensorCalibrationParameter {
+  uint8_t _storage[1860];
+};
 struct SixAxisSensorIcInformation;
 struct SixAxisSensorState;
 struct TouchScreenConfigurationForNx;
@@ -168,6 +188,12 @@ struct TouchScreenState;
 namespace detail {
 
 struct VibrationFileParserContextImpl;
+
+}
+
+namespace debug {
+
+enum AccelerometerPlayMode {};
 
 }
 
@@ -216,26 +242,35 @@ struct AppletResourceProperty {
 };
 
 struct NotificationLedPattern;
-struct AnalogStickManualCalibrationStage;
+enum AnalogStickManualCalibrationStage {};
 struct AudioControlState;
 struct CButtonState;
 struct CaptureButtonState;
 struct ControllerColor;
 struct ControllerColor12;
 struct DisplayStatusReport;
-struct FirmwareUpdateDeviceHandle;
-struct FirmwareUpdateRequiredReason;
+struct FirmwareUpdateDeviceHandle {
+  uint64_t _storage;
+};
+
+enum FirmwareUpdateRequiredReason : uint8_t {};
 struct FirmwareUpdateState;
 struct FirmwareVersion;
 struct FirmwareVersionString;
 struct HomeButtonState;
 struct InteractiveArea;
 struct McuVersionDataForNfc;
-struct MifareKeyClearParameter;
+struct MifareKeyClearParameter {
+  uint32_t _storage;
+};
+
 struct MifareKeyWriteParameter;
 struct MifareReadParameter;
 struct MifareWriteParameter;
-struct NfcDiscoveryParameter;
+struct NfcDiscoveryParameter {
+  uint64_t _storage;
+};
+
 struct NfcInfo;
 struct NfcPassThruParameter;
 struct NmouseMovementAdjustmentParameter;
@@ -252,11 +287,15 @@ struct NtagWritePlusParameter;
 struct PlayReportControllerUsage;
 struct RegisteredDevice;
 struct RegisteredDeviceForControllerSupport;
-struct SixAxisSensorAccurateUserCalibrationState;
+struct SixAxisSensorAccurateUserCalibrationState {
+  int32_t stage;
+  int32_t progress;
+};
+
 struct SixAxisSensorUserCalibrationStage;
 struct SleepButtonState;
 struct SystemKeyboardState;
-struct UniquePadInterface;
+enum UniquePadInterface {};
 struct UniquePadSerialNumber;
 
 }

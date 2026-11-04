@@ -11,6 +11,9 @@ public:
   const char16_t* Get(const char* mid, int index,
     const TagSelector& selector);
 
+  // Returned for messages that are not found.
+  static const char16_t* empty_text_;
+
 private:
   static MessageManager* instance_;
 };

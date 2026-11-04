@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+#include <nandroid/MovieMemory.h>
 #include <errno.h>
 #include <stdlib.h>
 #include <ctype.h>
@@ -103,7 +104,7 @@ ADebug::Level ADebug::GetDebugLevelFromProperty(
 
 //static
 char *ADebug::GetDebugName(const char *name) {
-    char *debugName = strdup(name);
+    char *debugName = MovieStrdup(name);
     const char *terms[] = { "omx", "video", "audio" };
     for (size_t i = 0; i < NELEM(terms) && debugName != NULL; i++) {
         const char *term = terms[i];

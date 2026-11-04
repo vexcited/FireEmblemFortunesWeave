@@ -57,3 +57,19 @@ Result EnableAppletToGetTouchScreen(
 }
 
 }
+
+namespace nn::hid::system::detail {
+
+Result SetTouchScreenMagnification(float value, float value2, float value3, float value4) {
+  sf::SharedPointer<IHidSystemServer> proxy;
+  NN_RESULT_DO(server::CreateHidSystemServerProxy(&proxy));
+  return proxy->SetTouchScreenMagnification(value, value2, value3, value4);
+}
+
+Result SetTouchScreenOffset(float value, float value2) {
+  sf::SharedPointer<IHidSystemServer> proxy;
+  NN_RESULT_DO(server::CreateHidSystemServerProxy(&proxy));
+  return proxy->SetTouchScreenOffset(value, value2);
+}
+
+}

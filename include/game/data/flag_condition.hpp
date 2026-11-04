@@ -23,14 +23,19 @@ class FlagCondition {
 public:
   struct Term {
     explicit Term(const char* name) : expected(true) {
+      const char* text = "";
+
       if (name != nullptr && name[0] != '\0') {
         if (name[0] == '!') {
           ++name;
           expected = false;
         }
 
-        key = HashedString(name);
+        key.hash = HashString(name);
+        text = name;
       }
+
+      key.text = text;
     }
 
     HashedString key;

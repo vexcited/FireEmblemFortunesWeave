@@ -167,3 +167,18 @@ Result GetUniquePadSkuType(
 }
 
 }
+
+namespace nn::hid::system::detail {
+
+Result GetUniquePadInterface(UniquePadInterface* pOutUniquePadInterface, UniquePadId uniquePadId) {
+  sf::SharedPointer<IHidSystemServer> proxy;
+  server::CreateHidSystemServerProxy(&proxy);
+  UniquePadInterface value = {};
+  const Result result = proxy->GetUniquePadInterface(&value, uniquePadId);
+  if (result.IsSuccess()) {
+    *pOutUniquePadInterface = value;
+  }
+  return result;
+}
+
+}

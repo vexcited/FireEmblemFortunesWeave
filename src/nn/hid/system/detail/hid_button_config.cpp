@@ -326,3 +326,69 @@ Result SetDefaultButtonConfig(unsigned int unsignedint) {
 }
 
 }
+
+namespace nn::hid::system::detail {
+
+Result IsDefaultButtonConfig(bool* pOutBool, const hidconfig::ButtonConfigJoyConGrip& buttonConfigJoyConGrip) {
+  sf::SharedPointer<IHidSystemServer> proxy;
+  server::CreateHidSystemServerProxy(&proxy);
+  bool value = {};
+  const Result result = proxy->IsDefaultButtonConfig(&value, buttonConfigJoyConGrip);
+  if (result.IsSuccess()) {
+    *pOutBool = value;
+  }
+  return result;
+}
+
+Result IsDefaultButtonConfig(bool* pOutBool, const hidconfig::ButtonConfigBack& buttonConfigBack) {
+  sf::SharedPointer<IHidSystemServer> proxy;
+  server::CreateHidSystemServerProxy(&proxy);
+  bool value = {};
+  const Result result = proxy->IsDefaultButtonConfig(&value, buttonConfigBack);
+  if (result.IsSuccess()) {
+    *pOutBool = value;
+  }
+  return result;
+}
+
+Result SetButtonConfigStorage(const hidconfig::ButtonConfigJoyConGrip& buttonConfigJoyConGrip, const hidconfig::StorageName& storageName, int count) {
+  sf::SharedPointer<IHidSystemServer> proxy;
+  server::CreateHidSystemServerProxy(&proxy);
+  return proxy->SetButtonConfigStorage(buttonConfigJoyConGrip, storageName, count);
+}
+
+Result SetButtonConfig(const hidconfig::ButtonConfigJoyConGrip& buttonConfigJoyConGrip, const UniquePadId& uniquePadId) {
+  sf::SharedPointer<IHidSystemServer> proxy;
+  server::CreateHidSystemServerProxy(&proxy);
+  return proxy->SetButtonConfig(buttonConfigJoyConGrip, uniquePadId);
+}
+
+Result GetButtonConfig(hidconfig::ButtonConfigJoyConGrip* pOutButtonConfigJoyConGrip, const UniquePadId& uniquePadId) {
+  sf::SharedPointer<IHidSystemServer> proxy;
+  server::CreateHidSystemServerProxy(&proxy);
+  hidconfig::ButtonConfigJoyConGrip value = {};
+  const Result result = proxy->GetButtonConfig(&value, uniquePadId);
+  if (result.IsSuccess()) {
+    *pOutButtonConfigJoyConGrip = value;
+  }
+  return result;
+}
+
+Result SetButtonConfig(const hidconfig::ButtonConfigBack& buttonConfigBack, unsigned int unsignedint) {
+  sf::SharedPointer<IHidSystemServer> proxy;
+  server::CreateHidSystemServerProxy(&proxy);
+  return proxy->SetButtonConfig(buttonConfigBack, unsignedint);
+}
+
+Result GetButtonConfig(hidconfig::ButtonConfigBack* pOutButtonConfigBack, unsigned int unsignedint) {
+  sf::SharedPointer<IHidSystemServer> proxy;
+  server::CreateHidSystemServerProxy(&proxy);
+  hidconfig::ButtonConfigBack value = {};
+  const Result result = proxy->GetButtonConfig(&value, unsignedint);
+  if (result.IsSuccess()) {
+    *pOutButtonConfigBack = value;
+  }
+  return result;
+}
+
+}

@@ -55,3 +55,19 @@ Result SetOverlayNmousePointerRanges(int count, int count2) {
 }
 
 }
+
+namespace nn::hid::system::detail {
+
+Result SetNmousePointerSpeedScale(float value) {
+  sf::SharedPointer<IHidSystemServer> proxy;
+  NN_RESULT_DO(server::CreateHidSystemServerProxy(&proxy));
+  return proxy->SetNmousePointerSpeedScale(utility::GetAppletResourceUserId(), value);
+}
+
+Result SetOverlayNmouseMagnification(float value, float value2, float value3, float value4) {
+  sf::SharedPointer<IHidSystemServer> proxy;
+  server::CreateHidSystemServerProxy(&proxy);
+  return proxy->SetOverlayNmouseMagnification(value, value2, value3, value4);
+}
+
+}

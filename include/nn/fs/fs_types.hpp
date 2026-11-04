@@ -22,6 +22,11 @@ enum class ImageDirectoryId {
   SdCard,
 };
 
+enum class CustomStorageId {
+  System,
+  SdCard,
+};
+
 enum class ContentStorageId {
   System,
   User,

@@ -40,4 +40,22 @@ private:
   size_t m_Size;
 };
 
+template<class T>
+class InArray {
+public:
+  InArray(const T* data, size_t count) : m_Data(data), m_Count(count) {}
+
+  const T* GetData() const {
+    return m_Data;
+  }
+
+  size_t GetLength() const {
+    return m_Count;
+  }
+
+private:
+  const T* m_Data;
+  size_t m_Count;
+};
+
 }

@@ -16,6 +16,7 @@
 
 //#define LOG_NDEBUG 0
 #define LOG_TAG "ALooperRoster"
+#include <nandroid/MovieMemory.h>
 #include <nandroid/utils/Log.h>
 #include <nandroid/utils/String8.h>
 

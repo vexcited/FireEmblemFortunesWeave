@@ -106,3 +106,35 @@ Result IsFirmwareAvailableForNotification(
 }
 
 }
+
+namespace nn::hid::system::detail {
+
+Result CheckFirmwareUpdateRequired(FirmwareUpdateRequiredReason* pOutFirmwareUpdateRequiredReason, UniquePadId uniquePadId) {
+  sf::SharedPointer<IHidSystemServer> proxy;
+  server::CreateHidSystemServerProxy(&proxy);
+  FirmwareUpdateRequiredReason value = {};
+  const Result result = proxy->CheckFirmwareUpdateRequired(&value, uniquePadId);
+  if (result.IsSuccess()) {
+    *pOutFirmwareUpdateRequiredReason = value;
+  }
+  return result;
+}
+
+Result GetFirmwareUpdateState(FirmwareUpdateState* pOutFirmwareUpdateState, const FirmwareUpdateDeviceHandle& firmwareUpdateDeviceHandle) {
+  sf::SharedPointer<IHidSystemServer> proxy;
+  server::CreateHidSystemServerProxy(&proxy);
+  return proxy->GetFirmwareUpdateState(pOutFirmwareUpdateState, firmwareUpdateDeviceHandle);
+}
+
+Result CheckUsbFirmwareUpdateRequired(FirmwareUpdateRequiredReason* pOutFirmwareUpdateRequiredReason) {
+  sf::SharedPointer<IHidSystemServer> proxy;
+  server::CreateHidSystemServerProxy(&proxy);
+  FirmwareUpdateRequiredReason value = {};
+  const Result result = proxy->CheckUsbFirmwareUpdateRequired(utility::GetAppletResourceUserId(), &value);
+  if (result.IsSuccess()) {
+    *pOutFirmwareUpdateRequiredReason = value;
+  }
+  return result;
+}
+
+}

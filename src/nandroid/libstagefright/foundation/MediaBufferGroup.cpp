@@ -15,11 +15,14 @@
  */
 
 #define LOG_TAG "MediaBufferGroup"
+#include <nandroid/MovieMemory.h>
 #include <nandroid/utils/Log.h>
 
 #include <list>
 
+#ifdef NANDROID_BINDER
 #include <nandroid/binder/MemoryDealer.h>
+#endif
 #include <nandroid/media/stagefright/foundation/ADebug.h>
 #include <nandroid/media/stagefright/MediaBuffer.h>
 #include <nandroid/media/stagefright/MediaBufferGroup.h>

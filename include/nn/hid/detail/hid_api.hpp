@@ -5,7 +5,7 @@
 namespace nn::hid {
 
 Result DisableNpadImu();
-Result IsNpadImuEnabled();
+bool IsNpadImuEnabled();
 
 }
 
@@ -88,6 +88,9 @@ Result GetNpadStates(int*, NpadLagerState*, int, const NpadIdType&);
 Result GetNpadStates(int*, NpadLarkState*, int, const NpadIdType&);
 Result GetNpadStates(int*, NpadLuciaState*, int, const NpadIdType&);
 Result GetNpadStates(int*, NpadPalmaState*, int, const NpadIdType&);
+Result GetNpadStates(int*, system::NpadSystemState*, int, const NpadIdType&);
+Result GetNpadStates(
+  int*, system::NpadSystemExtState*, int, const NpadIdType&);
 Result GetNpadStyleSet(util::BitFlagSet<32, NpadStyleTag>*, const NpadIdType&);
 Result GetPalmaDataBaseIdentificationVersion(const PalmaConnectionHandle&);
 Result GetPlayerLedPattern(unsigned char*, const NpadIdType&);
