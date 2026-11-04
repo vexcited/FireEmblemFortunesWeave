@@ -6,9 +6,15 @@
 
 #include <algorithm>
 #include <deque>
+#include <functional>
+#include <span>
 #include <string>
 #include <unordered_map>
 #include <vector>
+
+// Link time optimization internalized the game code, so its data is addressed
+// directly instead of through the global offset table.
+#pragma GCC visibility push(hidden)
 
 namespace game {
 
@@ -114,17 +120,19 @@ public:
 std::vector<std::string> ExpandDataPaths(const std::string& path);
 const char* GetDataVariant(const std::string& path);
 
-// Link time optimization internalized these so they are addressed directly.
-#pragma GCC visibility push(hidden)
+const char* FindAlias(const HashedString& key);
+const char* FindAliasSuffix(const HashedString& key);
+
+struct Data;
+
 extern std::deque<const void*> g_resource_stack;
 extern std::deque<const void*> g_sheet_stack;
-extern std::deque<void*> g_data_stack;
-#pragma GCC visibility pop
+extern std::deque<const Data*> g_data_stack;
 
-// Keeps the data being linked reachable by nested lookups.
+// Keeps the data being built reachable by nested lookups.
 class DataScope {
 public:
-  explicit DataScope(void* data) {
+  explicit DataScope(const Data* data) {
     g_data_stack.push_back(data);
   }
 
@@ -133,27 +141,7 @@ public:
   }
 };
 
-inline const char* StripPrefix(const char* name) {
-  if (name != nullptr) {
-    if (const char* separator = strchr(name, '_')) {
-      return separator + 1;
-    }
-  }
-
-  return name;
-}
-
-struct Data {
-  HashedString key;
-  uint16_t index;
-  uint16_t unknown_12;
-  uint16_t unknown_14;
-  uint16_t id;
-
-  void Link() {}
-  void Unlink() {}
-  void Relink() {}
-};
+struct SectionMap : std::unordered_map<uint32_t, int32_t> {};
 
 namespace {
 
@@ -181,39 +169,130 @@ struct CompareId {
   }
 };
 
+template<typename T>
+void SortById(std::vector<T*>& items) {
+  std::stable_sort(
+    LocalIterator(items.begin()), LocalIterator(items.end()), CompareId()
+  );
 }
 
-const char* FindAlias(const HashedString& key);
-const char* FindAliasSuffix(const HashedString& key);
+template<typename T>
+void UpdateIndices(std::vector<T*>& items) {
+  for (size_t i = 0; i < items.size(); ++i) {
+    items[i]->index = i;
+  }
+}
 
-template<typename U>
-struct DataGroup : Data {
-  void* unknown_18;
-  void* unknown_20;
-  std::vector<U*>* children;
+}
 
-  [[gnu::always_inline]] void Link() {
-    for (U* child : *children) {
-      DataScope scope(child);
-      child->Link();
+inline const char* StripPrefix(const char* name) {
+  if (name != nullptr) {
+    if (const char* separator = strchr(name, '_')) {
+      return separator + 1;
     }
   }
 
-  [[gnu::always_inline]] void Unlink() {
-    for (U* child : *children) {
-      DataScope scope(child);
-      child->Unlink();
+  return name;
+}
+
+struct Data {
+  void TryAddSection(SectionMap& sections, int section) {
+    [[clang::always_inline]] sections.emplace(id + 1, section);
+  }
+
+  void TryCreateList() {}
+
+  void Build() {}
+  void Unbuild() {}
+  void Rebuild() {}
+
+  HashedString key;
+  uint16_t index;
+  uint16_t element_count;
+  uint16_t unknown_14;
+  uint16_t id;
+};
+
+template<typename U>
+struct DataArray : Data {
+  void ForEach(const std::function<void(const U*)>& function) const {
+    for (const U& element : std::span<const U>(elements, element_count)) {
+      function(&element);
+    }
+  }
+
+  void TryAddSection(SectionMap& sections, int section) {
+    Data::TryAddSection(sections, section);
+    ForEach([&sections, section](const U* element) {
+      AddSection(sections, element, section);
+    });
+  }
+
+  // Patch sheets leave the list empty in the file.
+  void TryCreateList() {
+    if (list == nullptr) {
+      auto* created = new std::vector<U*>();
+      ForEach([created](const U* element) {
+        created->push_back(const_cast<U*>(element));
+      });
+      list = created;
+    }
+  }
+
+  [[gnu::always_inline]] void Build() {
+    for (U* element : *list) {
+      DataScope scope(element);
+      element->Build();
+    }
+  }
+
+  [[gnu::always_inline]] void Unbuild() {
+    for (U* element : *list) {
+      DataScope scope(element);
+      element->Unbuild();
+    }
+  }
+
+  void* unknown_18;
+  U* elements;
+  std::vector<U*>* list;
+
+private:
+  static void AddSection(SectionMap& sections, const U* element, int section) {
+    if (element != nullptr) {
+      sections.emplace(element->id + 1, section);
     }
   }
 };
+
+namespace {
+
+inline void MergeList(Data&, const Data&) {}
+
+template<typename U>
+void MergeList(DataArray<U>& kept, const DataArray<U>& other) {
+  for (U* element : *other.list) {
+    [[clang::always_inline]] kept.list->push_back(element);
+  }
+}
+
+inline void SortList(Data&) {}
+
+template<typename U>
+void SortList(DataArray<U>& array) {
+  SortById(*array.list);
+  UpdateIndices(*array.list);
+}
+
+}
 
 class IDataFile {
 public:
   virtual ~IDataFile();
 
-  virtual void Link() = 0;
-  virtual void Unlink() = 0;
-  virtual void Relink() = 0;
+  virtual void Build() = 0;
+  virtual void Unbuild() = 0;
+  virtual void Rebuild() = 0;
 
 protected:
   Resource* AcquireResource(const char* name);
@@ -236,8 +315,8 @@ public:
     Unload();
   }
 
-  void Link() override {
-    if (linked_) {
+  void Build() override {
+    if (built_) {
       return;
     }
 
@@ -245,42 +324,42 @@ public:
 
     for (T* item : items_) {
       DataScope scope(item);
-      item->Link();
+      item->Build();
     }
 
-    OnLinked();
-    linked_ = true;
+    OnBuild();
+    built_ = true;
     PopContext();
   }
 
-  void Unlink() override {
-    if (!linked_) {
+  void Unbuild() override {
+    if (!built_) {
       return;
     }
 
     PushContext();
-    OnUnlinking();
+    OnUnbuild();
 
     for (T* item : items_) {
       DataScope scope(item);
-      item->Unlink();
+      item->Unbuild();
     }
 
-    linked_ = false;
+    built_ = false;
     PopContext();
   }
 
-  void Relink() override {
-    if (!linked_) {
+  void Rebuild() override {
+    if (!built_) {
       return;
     }
 
     PushContext();
-    OnRelinking();
+    OnRebuild();
 
     for (T* item : items_) {
       DataScope scope(item);
-      item->Relink();
+      item->Rebuild();
     }
 
     PopContext();
@@ -302,7 +381,7 @@ public:
 
       DataSheet* sheet = resource->FindSheet(sheet_name);
 
-      if (sheet == nullptr || !sheet->IsValid(sizeof(T))) {
+      if (sheet == nullptr || !sheet->IsValid(sizeof(U))) {
         continue;
       }
 
@@ -315,9 +394,7 @@ public:
           continue;
         }
 
-        [[clang::always_inline]] sheets_by_index_.emplace(
-          item->id + 1, file_index
-        );
+        item->TryAddSection(sections_, file_index);
 
         // A later file replaces items unless it is a patch.
         if (file_index > 0 && item->key.hash != 0) {
@@ -372,7 +449,17 @@ public:
       ++file_index;
     }
 
-    if (file_index > 1) {
+    const bool merge = file_index > 1;
+
+    for (DataSheet* sheet : sheets_) {
+      if (sheet->IsPatch()) {
+        for (size_t i = 0; i < sheet->GetCount(); ++i) {
+          sheet->GetItem<T>(i)->TryCreateList();
+        }
+      }
+    }
+
+    if (merge) {
       const bool patched = std::any_of(
         sheets_.begin(), sheets_.end(),
         [](const DataSheet* sheet) { return sheet->IsPatch(); }
@@ -380,13 +467,13 @@ public:
 
       if (!patched) {
         if (sort) {
-          std::stable_sort(
-            LocalIterator(items_.begin()), LocalIterator(items_.end()),
-            CompareId()
-          );
+          SortById(items_);
         }
+
+        UpdateIndices(items_);
       }
       else if (sort) {
+        // Keeps the first item of every key, folding later lists into it.
         std::unordered_map<uint64_t, T*> first;
 
         for (T* item : items_) {
@@ -398,22 +485,28 @@ public:
         std::vector<T*> unique;
 
         for (T* item : items_) {
-          if (first.find(item->key)->second == item) {
+          T* kept = first.find(item->key)->second;
+
+          if (kept == item) {
             [[clang::always_inline]] unique.push_back(item);
+          }
+          else {
+            MergeList(*kept, *item);
           }
         }
 
-        std::stable_sort(
-          LocalIterator(unique.begin()), LocalIterator(unique.end()),
-          CompareId()
-        );
+        SortById(unique);
+
+        for (T* item : unique) {
+          SortList(*item);
+        }
+
         items_.assign(
           LocalIterator(unique.cbegin()), LocalIterator(unique.cend())
         );
       }
-
-      for (size_t i = 0; i < items_.size(); ++i) {
-        items_[i]->index = i;
+      else {
+        UpdateIndices(items_);
       }
     }
 
@@ -425,21 +518,21 @@ public:
       return;
     }
 
-    Unlink();
+    Unbuild();
     items_.clear();
     names_.clear();
     items_by_hash_.clear();
     entries_by_hash_.clear();
     sheets_.clear();
-    sheets_by_index_.clear();
+    sections_.clear();
     variants_.clear();
     ReleaseResources();
   }
 
 protected:
-  virtual void OnLinked() {}
-  virtual void OnUnlinking() {}
-  virtual void OnRelinking() {}
+  virtual void OnBuild() {}
+  virtual void OnUnbuild() {}
+  virtual void OnRebuild() {}
 
 private:
   // Link time optimization inlined these into every caller.
@@ -467,10 +560,12 @@ private:
   std::vector<T*> items_;
   std::unordered_map<uint64_t, T*> items_by_hash_;
   std::unordered_map<uint64_t, U*> entries_by_hash_;
-  std::unordered_map<uint32_t, int32_t> sheets_by_index_;
+  SectionMap sections_;
   std::vector<const char*> variants_;
   std::vector<const char*> names_;
-  bool linked_;
+  bool built_;
 };
 
 }
+
+#pragma GCC visibility pop
