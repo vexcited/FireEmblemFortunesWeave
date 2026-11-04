@@ -416,7 +416,12 @@ void BlockIterator::advance_l() {
 void BlockIterator::reset() {
     Mutex::Autolock autoLock(mExtractor->mLock);
 
+    if (mCluster != NULL) {
+        mCluster->DecRef();
+    }
+
     mCluster = mExtractor->mSegment->GetFirst();
+    mCluster->AddRef();
     mBlockEntry = NULL;
     mBlockEntryIndex = 0;
 

@@ -1008,6 +1008,10 @@ class Cluster {
 
   long GetEntryCount() const;
 
+  // The SDK reference counts clusters, this vendored revision does not.
+  long AddRef() const;
+  long DecRef() const;
+
   long Load(long long& pos, long& size) const;
 
   long Parse(long long& pos, long& size) const;
