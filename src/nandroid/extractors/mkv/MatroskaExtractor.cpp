@@ -164,6 +164,7 @@ private:
     bool mIsAudio;
     BlockIterator mBlockIter;
     ssize_t mNALSizeLen;  // for type AVC or HEVC
+    media_status_t mLastAdvanceResult;
 
     List<MediaBufferHelper *> mPendingFrames;
 
@@ -243,6 +244,7 @@ MatroskaSource::MatroskaSource(
                  mExtractor->mTracks.itemAt(index).mTrackNum,
                  index),
       mNALSizeLen(-1),
+      mLastAdvanceResult(AMEDIA_OK),
       mCurrentTS(0),
       mMP3Header(0) {
     MatroskaExtractor::TrackInfo &trackInfo = mExtractor->mTracks.editItemAt(index);
@@ -836,11 +838,16 @@ status_t MatroskaSource::setWebmBlockCryptoInfo(MediaBufferHelper *mbuf) {
 }
 
 media_status_t MatroskaSource::readBlock() {
-    CHECK(mPendingFrames.empty());
+    if (!mPendingFrames.empty()) {
+        return AMEDIA_ERROR_MALFORMED;
+    }
 
     if (mBlockIter.eos()) {
-        return AMEDIA_ERROR_END_OF_STREAM;
+        return mLastAdvanceResult == -10007 ? (media_status_t)-10007
+                                           : AMEDIA_ERROR_END_OF_STREAM;
     }
+
+    mLastAdvanceResult = AMEDIA_OK;
 
     const mkvparser::Block *block = mBlockIter.block();
 
