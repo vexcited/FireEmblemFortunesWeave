@@ -1,4 +1,5 @@
 #include "game/menu/game_menu_item.hpp"
+#include "game/sound/se.hpp"
 
 namespace game::facility {
 
@@ -9,9 +10,9 @@ public:
   ChoiceMenuItem();
 
   bool Unknown14() override { return true; }
-  void PlayDecideSe() override;
-  void PlayCursorSe() override;
-  void PlayPageSe() override;
+  void PlayDecideSe() override { sound::PlaySe("SE_SYS_Decide_L"); }
+  void PlayCursorSe() override { sound::PlayCursorSe(); }
+  void PlayPageSe() override { sound::PlayCursorSe(); }
   void PlayIdleAnimation() override;
 };
 

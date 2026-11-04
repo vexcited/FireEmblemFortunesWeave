@@ -1,9 +1,17 @@
 #include "game/facility/facility_equip_unit_menu_item.hpp"
+#include "game/menu/basic_menu.hpp"
 #include "game/menu/equip_menu_item_animal_pool.hpp"
 #include "game/menu/game_menu_item.hpp"
 #include "game/menu/top_menu_item.hpp"
+#include "game/sound/se.hpp"
 
 namespace game::facility {
+
+void OpenRelease(menu::BasicMenu* menu);
+
+void OpenNaming(menu::BasicMenu* menu);
+
+void OpenBreeding(menu::BasicMenu* menu);
 
 namespace {
 
@@ -88,7 +96,7 @@ public:
   BreedingRideMenuItem();
 
   int ACall() override;
-  void PlayDecideSe() override;
+  void PlayDecideSe() override { sound::PlaySe("SE_SYS_Decide_M"); }
   void DrawText() override;
   bool IsActive() override;
   bool Unknown71() override { return false; }
@@ -112,7 +120,15 @@ public:
   const char* GetMid() override { return "MID_StableMenu_Breeding"; }
   const char* GetHelpMid() override { return "厩舎"; }
   void OnClose() override;
-  int ACall() override;
+
+  int ACall() override {
+    if (!IsActive()) {
+      return 1;
+    }
+    OpenBreeding(menu_->GetParent());
+    return 9;
+  }
+
   bool IsActive() override { return unknown_54_ == 0; }
   void Unknown73() override;
 };
@@ -125,7 +141,15 @@ public:
 
   const char* GetMid() override { return "MID_StableMenu_Naming"; }
   const char* GetHelpMid() override { return "厩舎②"; }
-  int ACall() override;
+
+  int ACall() override {
+    if (!IsActive()) {
+      return 1;
+    }
+    OpenNaming(menu_->GetParent());
+    return 9;
+  }
+
   bool IsActive() override;
   void Unknown73() override;
 };
@@ -139,7 +163,15 @@ public:
   const char* GetMid() override { return "MID_StableMenu_Release"; }
   const char* GetHelpMid() override { return "厩舎②"; }
   bool IsDecidable() override;
-  int ACall() override;
+
+  int ACall() override {
+    if (!IsActive()) {
+      return 1;
+    }
+    OpenRelease(menu_->GetParent());
+    return 9;
+  }
+
   bool IsActive() override;
   void Unknown73() override;
 };
@@ -151,7 +183,7 @@ public:
   NamingRideMenuItem();
 
   int ACall() override;
-  void PlayDecideSe() override;
+  void PlayDecideSe() override { sound::PlaySe("SE_SYS_Decide_M"); }
   bool IsActive() override { return true; }
 };
 

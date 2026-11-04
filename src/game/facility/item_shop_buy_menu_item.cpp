@@ -1,7 +1,10 @@
 #include "game/facility/shop_top_menu_item.hpp"
 #include "game/facility/shop_unit_select_menu_item.hpp"
+#include "game/menu/basic_menu.hpp"
 
 namespace game::facility {
+
+void OpenItemShopBuy(menu::BasicMenu* menu);
 
 namespace {
 
@@ -10,7 +13,15 @@ public:
   ItemShopBuyMenuItem();
 
   const char* GetMid() override { return "MID_Shop_Buy"; }
-  int ACall() override;
+
+  int ACall() override {
+    if (!IsActive()) {
+      return 1;
+    }
+    OpenItemShopBuy(menu_->GetParent());
+    return 9;
+  }
+
   void DrawText() override;
   const char* Unknown75() override { return "MID_Shop_Buy_Help"; }
 };

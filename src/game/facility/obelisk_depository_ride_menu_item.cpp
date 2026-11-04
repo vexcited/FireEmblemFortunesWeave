@@ -1,5 +1,6 @@
 #include "game/menu/equip_menu_item_animal_pool.hpp"
 #include "game/menu/equip_unit_select_menu_item.hpp"
+#include "game/sound/se.hpp"
 
 namespace game::facility {
 
@@ -10,7 +11,7 @@ public:
   ObeliskDepositoryRideMenuItem();
 
   int ACall() override;
-  void PlayDecideSe() override;
+  void PlayDecideSe() override { sound::PlaySe("SE_SYS_Decide_M"); }
   void DrawText() override;
   bool IsActive() override { return active_; }
 };

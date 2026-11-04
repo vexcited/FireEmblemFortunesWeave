@@ -1,3 +1,5 @@
+#include <string>
+
 #include "game/menu/game_menu_item.hpp"
 
 namespace game::menu {
@@ -38,6 +40,19 @@ public:
 };
 
 [[gnu::used]] EmptyMenuItem::EmptyMenuItem() = default;
+
+class ActionMenuItem : public HonorMenuItem {
+public:
+  ActionMenuItem();
+
+  int ACall() override { return 0; }
+  void DrawText() override;
+
+private:
+  std::string label_;
+};
+
+[[gnu::used]] ActionMenuItem::ActionMenuItem() = default;
 
 }
 

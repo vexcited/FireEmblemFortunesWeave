@@ -1,9 +1,14 @@
+#include "game/menu/basic_menu.hpp"
+#include "game/menu/info_sub_menu_item_reliance.hpp"
+#include "game/menu/info_sub_menu_item_roster.hpp"
 #include "game/menu/system_menu_item.hpp"
 #include "game/menu/system_menu_item_class_change.hpp"
 #include "game/menu/system_menu_item_info.hpp"
 #include "game/menu/system_menu_item_inventory.hpp"
 #include "game/menu/system_menu_item_retired.hpp"
 #include "game/menu/system_menu_item_save.hpp"
+#include "game/menu/troop_menu_item.hpp"
+#include "game/menu/unit_list_param.hpp"
 
 namespace game::cmdbtl {
 
@@ -82,6 +87,48 @@ public:
 };
 
 [[gnu::used]] DungeonSaveMenuItem::DungeonSaveMenuItem() = default;
+
+class InfoSubMenuItem_Troop : public menu::TroopMenuItem {
+public:
+  InfoSubMenuItem_Troop();
+
+  int ACall() override;
+
+private:
+  menu::UnitListParam param_;
+};
+
+[[gnu::used]] InfoSubMenuItem_Troop::InfoSubMenuItem_Troop() = default;
+
+class InfoSubMenuItem_Roster : public menu::InfoSubMenuItem_Roster {
+public:
+  InfoSubMenuItem_Roster();
+
+  int ACall() override {
+    if (!active_) {
+      return 1;
+    }
+    menu::OpenRoster(menu_->GetParent(), param_);
+    return 9;
+  }
+
+private:
+  menu::UnitListParam param_;
+};
+
+[[gnu::used]] InfoSubMenuItem_Roster::InfoSubMenuItem_Roster() = default;
+
+class InfoSubMenuItem_Reliance : public menu::InfoSubMenuItem_Reliance {
+public:
+  InfoSubMenuItem_Reliance();
+
+  int ACall() override;
+
+private:
+  menu::UnitListParam param_;
+};
+
+[[gnu::used]] InfoSubMenuItem_Reliance::InfoSubMenuItem_Reliance() = default;
 
 }
 

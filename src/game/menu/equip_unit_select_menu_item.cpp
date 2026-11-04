@@ -1,3 +1,5 @@
+#include <string>
+
 #include "game/menu/equip_menu_info_unselectable.hpp"
 #include "game/menu/equip_unit_select_menu_item.hpp"
 #include "game/menu/unit_menu_item.hpp"
@@ -21,6 +23,27 @@ const char* EquipInfoItem_Empty::GetMid() {
 
 bool EquipInfoItem_Empty::IsEmpty() {
   return true;
+}
+
+class EquipInfoItem_Info : public EquipMenuInfo_Unselectable {
+public:
+  bool IsEnable() override;
+  void Unknown16() override;
+  int ACall() override;
+  virtual void Unknown70() = 0;
+
+private:
+  std::string label_;
+  std::string value_;
+  std::string detail_;
+};
+
+bool EquipInfoItem_Info::IsEnable() {
+  return false;
+}
+
+int EquipInfoItem_Info::ACall() {
+  return 0;
 }
 
 }

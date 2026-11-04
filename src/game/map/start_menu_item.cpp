@@ -1,9 +1,12 @@
+#include "game/menu/basic_menu.hpp"
 #include "game/menu/system_menu_item.hpp"
 #include "game/menu/system_menu_item_class_change.hpp"
 #include "game/menu/system_menu_item_info.hpp"
 #include "game/menu/system_menu_item_retired.hpp"
 
 namespace game::map {
+
+void OpenSelect(menu::BasicMenu* menu);
 
 namespace {
 
@@ -24,7 +27,12 @@ public:
 
   const char* GetMid() override { return "MID_SysMenu_UnitSelect"; }
   bool IsDecidable() override;
-  int ACall() override;
+
+  int ACall() override {
+    OpenSelect(menu_->GetParent());
+    return 9;
+  }
+
 };
 
 [[gnu::used]] SelectMenuItem::SelectMenuItem() = default;

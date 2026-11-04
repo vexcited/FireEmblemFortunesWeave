@@ -1,13 +1,17 @@
 #include "game/facility/obelisk_hero_menu_item.hpp"
 #include "game/facility/obelisk_hero_start_menu_item.hpp"
+#include "game/sound/se.hpp"
 
 namespace game::facility {
 
-void ObeliskHeroStartMenuItem::PlayDecideStrongSe() {
-}
+void ObeliskHeroStartMenuItem::PlayDecideStrongSe() {}
 
 bool ObeliskHeroStartMenuItem::Unknown70() {
   return true;
+}
+
+void ObeliskHeroStartMenuItem::PlayChangeSe() {
+  sound::PlaySe("SE_SYS_Status_Open");
 }
 
 class ObeliskHeroRestartMenuItem : public ObeliskHeroMenuItem {
@@ -15,13 +19,12 @@ public:
   void PlayDecideStrongSe() override;
   bool Unknown70() override;
   int XCall() override;
-  void PlayChangeSe() override;
+  void PlayChangeSe() override { sound::PlaySe("SE_SYS_Status_Open"); }
   void DrawText() override;
   const char* Unknown71() override;
 };
 
-void ObeliskHeroRestartMenuItem::PlayDecideStrongSe() {
-}
+void ObeliskHeroRestartMenuItem::PlayDecideStrongSe() {}
 
 bool ObeliskHeroRestartMenuItem::Unknown70() {
   return true;
@@ -31,7 +34,7 @@ class ObeliskHeroRetryMenuItem : public ObeliskHeroMenuItem {
 public:
   const char* Unknown71() override;
   int ACall() override;
-  void PlayDecideStrongSe() override;
+  void PlayDecideStrongSe() override { sound::PlaySe("SE_SYS_Decide_M"); }
   void DrawText() override;
 };
 

@@ -1,12 +1,28 @@
 #include "game/menu/assist_menu_item_next_timeline.hpp"
+#include "game/menu/basic_menu.hpp"
 #include "game/menu/info_sub_menu_item_dispatch.hpp"
+#include "game/menu/info_sub_menu_item_reliance.hpp"
+#include "game/menu/info_sub_menu_item_roster.hpp"
 #include "game/menu/sub_menu_item.hpp"
 #include "game/menu/system_menu_item.hpp"
 #include "game/menu/system_menu_item_info.hpp"
 #include "game/menu/system_menu_item_inventory.hpp"
 #include "game/menu/system_menu_item_save.hpp"
+#include "game/menu/troop_menu_item.hpp"
 
 namespace game::menu {
+
+void OpenRosterTop(BasicMenu* menu);
+
+void OpenSystemMenuItemMouseGuide(menu::BasicMenu* menu, int value);
+
+void OpenFacilityTemple(menu::BasicMenu* menu);
+
+void OpenFacilityBlacksmith(menu::BasicMenu* menu);
+
+void OpenSystemMenuItemTutorial(menu::BasicMenu* menu, int value);
+
+void OpenInfoSubMenuItemGuide(menu::BasicMenu* menu, int value);
 
 const char* SystemMenuItem_Inventory::GetMid() {
   return "MID_SysMenu_Inventory";
@@ -16,34 +32,21 @@ const char* SystemMenuItem_Info::GetMid() {
   return "MID_SysMenu_Info";
 }
 
-class TroopMenuItem : public SubMenuItem {
-public:
-  const char* GetMid() override;
-  int ACall() override;
-};
-
 const char* TroopMenuItem::GetMid() {
   return "MID_SysMenu_TroopList";
 }
-
-class InfoSubMenuItem_Roster : public SubMenuItem {
-public:
-  const char* GetMid() override;
-  bool IsDecidable() override;
-  int ACall() override;
-};
 
 const char* InfoSubMenuItem_Roster::GetMid() {
   return "MID_SysMenu_Roster";
 }
 
-class InfoSubMenuItem_Reliance : public SubMenuItem {
-public:
-  const char* GetMid() override;
-  bool IsDecidable() override;
-  int ACall() override;
-  bool IsActive() override;
-};
+int InfoSubMenuItem_Roster::ACall() {
+  if (!IsActive()) {
+    return 1;
+  }
+  OpenRosterTop(menu_->GetParent());
+  return 9;
+}
 
 const char* InfoSubMenuItem_Reliance::GetMid() {
   return "MID_SysMenu_Reliance";
@@ -65,15 +68,22 @@ public:
   const char* GetMid() override;
   void PlayDecideSe() override;
   bool IsDecidable() override;
-  int ACall() override;
+
+  int ACall() override {
+    if (!active_) {
+      return 1;
+    }
+    OpenInfoSubMenuItemGuide(menu_->GetParent(), 5);
+    return 9;
+  }
+
 };
 
 const char* InfoSubMenuItem_Guide::GetMid() {
   return "MID_SysMenu_GuideTop";
 }
 
-void InfoSubMenuItem_Guide::PlayDecideSe() {
-}
+void InfoSubMenuItem_Guide::PlayDecideSe() {}
 
 const char* InfoSubMenuItem_Dispatch::GetMid() {
   return "MID_SysMenu_LegionComback";
@@ -122,7 +132,15 @@ const char* SystemMenuItem_Save::GetMid() {
 class SystemMenuItem_Tutorial : public SystemMenuItem {
 public:
   const char* GetMid() override;
-  int ACall() override;
+
+  int ACall() override {
+    if (!active_) {
+      return 1;
+    }
+    OpenSystemMenuItemTutorial(menu_->GetParent(), 0);
+    return 9;
+  }
+
 };
 
 const char* SystemMenuItem_Tutorial::GetMid() {
@@ -170,7 +188,15 @@ public:
   FacilityBlacksmithMenuItem();
 
   const char* GetMid() override { return "MID_Shop_Blacksmith"; }
-  int ACall() override;
+
+  int ACall() override {
+    if (!active_) {
+      return 1;
+    }
+    OpenFacilityBlacksmith(menu_->GetParent());
+    return 9;
+  }
+
 };
 
 [[gnu::used]]
@@ -181,7 +207,15 @@ public:
   FacilityTempleMenuItem();
 
   const char* GetMid() override { return "MID_SysMenu_Temple"; }
-  int ACall() override;
+
+  int ACall() override {
+    if (!active_) {
+      return 1;
+    }
+    OpenFacilityTemple(menu_->GetParent());
+    return 9;
+  }
+
 };
 
 [[gnu::used]] FacilityTempleMenuItem::FacilityTempleMenuItem() = default;
@@ -201,7 +235,15 @@ public:
   SystemMenuItem_MouseGuide();
 
   const char* GetMid() override { return "MID_SysMenu_MouseGuide"; }
-  int ACall() override;
+
+  int ACall() override {
+    if (!active_) {
+      return 1;
+    }
+    OpenSystemMenuItemMouseGuide(menu_->GetParent(), 1);
+    return 9;
+  }
+
 };
 
 [[gnu::used]] SystemMenuItem_MouseGuide::SystemMenuItem_MouseGuide() = default;

@@ -21,10 +21,41 @@ void BasicMenuItem::Draw() {
   GetAccessor().SetText("T_Txt", GetText());
 }
 
+void BasicMenuItem::Update() {
+  if (!created_) {
+    return;
+  }
+  if (!GetAccessor().IsValid()) {
+    return;
+  }
+  GetAccessor().SetVisible(true);
+  if (!Unknown14()) {
+    GetAccessor().GetRootPane()->SetTranslate(position_);
+  }
+  if (dirty_) {
+    Draw();
+    dirty_ = false;
+  }
+}
+
 void BasicMenuItem::ChangeSelect(bool selected) {
   SetSelected(selected);
   menu_->SetCursorHidden(selected);
   dirty_ = true;
+}
+
+float BasicMenuItem::GetWidth() {
+  if (!GetAccessor().IsValid()) {
+    return 0.0f;
+  }
+  return GetAccessor().GetRootPane()->GetSize().width;
+}
+
+float BasicMenuItem::GetHeight() {
+  if (!GetAccessor().IsValid()) {
+    return 0.0f;
+  }
+  return GetAccessor().GetRootPane()->GetSize().height;
 }
 
 void BasicMenuItem::PlayDecideSe() {
@@ -59,7 +90,7 @@ void BasicMenuItem::PlayACallSe(int result) {
       break;
     case 2:
     case 13:
-      sound::PlayDecideSe();
+      sound::PlayCursorLeftSe();
       break;
   }
 }
@@ -72,7 +103,7 @@ void BasicMenuItem::PlayBCallSe(int result) {
       break;
     case 2:
     case 13:
-      sound::PlayCancelSe();
+      sound::PlayCursorRightSe();
       break;
   }
 }
@@ -85,7 +116,7 @@ void BasicMenuItem::PlayXCallSe(int result) {
       break;
     case 2:
     case 13:
-      sound::PlayDecideSe();
+      sound::PlayCursorLeftSe();
       break;
   }
 }
@@ -98,7 +129,7 @@ void BasicMenuItem::PlayYCallSe(int result) {
       break;
     case 2:
     case 13:
-      sound::PlayCancelSe();
+      sound::PlayCursorRightSe();
       break;
   }
 }
@@ -108,11 +139,11 @@ void BasicMenuItem::Unknown51() {}
 void BasicMenuItem::Unknown52() {}
 
 void BasicMenuItem::PlayCursorSe() {
-  sound::PlayDecideSe();
+  sound::PlayCursorLeftSe();
 }
 
 void BasicMenuItem::PlayPageSe() {
-  sound::PlayCancelSe();
+  sound::PlayCursorRightSe();
 }
 
 }

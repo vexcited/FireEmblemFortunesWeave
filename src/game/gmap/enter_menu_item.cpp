@@ -1,8 +1,16 @@
 #include <cstdint>
 
+#include "game/menu/basic_menu.hpp"
 #include "game/menu/unit_command_menu_item.hpp"
+#include "game/sound/se.hpp"
 
 namespace game::gmap {
+
+void OpenBoostFarm(menu::BasicMenu* menu);
+
+void OpenTalk(menu::BasicMenu* menu);
+
+void OpenCarriage(menu::BasicMenu* menu);
 
 namespace {
 
@@ -204,7 +212,15 @@ public:
 
   const char* GetMid() override { return "MID_GmapMenu_Carriage"; }
   bool IsDecidable() override { return (unknown_54_ & 0x4000) == 0; }
-  int ACall() override;
+
+  int ACall() override {
+    if (!IsActive()) {
+      return 1;
+    }
+    OpenCarriage(menu_->GetParent());
+    return 9;
+  }
+
   bool IsActive() override { return unknown_54_ == 0; }
   int Unknown71() override { return 6; }
   bool Unknown72() override { return true; }
@@ -220,7 +236,15 @@ public:
 
   const char* GetMid() override { return "MID_GmapMenu_Talk"; }
   bool IsDecidable() override { return (unknown_54_ & 0x4000) == 0; }
-  int ACall() override;
+
+  int ACall() override {
+    if (!IsActive()) {
+      return 1;
+    }
+    OpenTalk(menu_->GetParent());
+    return 9;
+  }
+
   bool IsActive() override { return unknown_54_ == 0; }
   int Unknown71() override { return 19; }
   const char* Unknown74() override { return "MID_GmapMenu_Talk_Help"; }
@@ -252,7 +276,7 @@ public:
   const char* GetHelpMid() override { return "おびき寄せる"; }
   bool IsDecidable() override { return (unknown_54_ & 0x4000) == 0; }
   int ACall() override;
-  void PlayDecideSe() override;
+  void PlayDecideSe() override { sound::PlaySe("SE_SYS_Decide_H"); }
   bool IsActive() override { return unknown_54_ == 0; }
   int Unknown71() override { return 9; }
   const char* Unknown74() override { return "MID_GmapMenu_CaptureAnimal_Help"; }
@@ -392,7 +416,15 @@ public:
 
   const char* GetMid() override { return "MID_GmapMenu_BoostFarm"; }
   bool IsDecidable() override { return (unknown_54_ & 0x4000) == 0; }
-  int ACall() override;
+
+  int ACall() override {
+    if (!IsActive()) {
+      return 1;
+    }
+    OpenBoostFarm(menu_->GetParent());
+    return 9;
+  }
+
   bool IsActive() override { return unknown_54_ == 0; }
   int Unknown71() override { return 10; }
   const char* Unknown74() override { return "MID_GmapMenu_BoostFarm_Help"; }

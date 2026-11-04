@@ -2,6 +2,7 @@
 
 #include <string>
 
+#include "game/menu/basic_menu.hpp"
 #include "game/menu/basic_menu_item.hpp"
 
 namespace game::menu {
@@ -14,9 +15,32 @@ public:
   bool IsDecidable() override { return decidable_; }
   void SetSelected(bool selected) override;
   void Draw() override;
-  void OnSelect() override;
-  void OnDeselect() override;
-  void OnClose() override;
+
+  // Link time optimization inlined these into other translation units.
+  void OnSelect() override {
+    if (selected_) {
+      PlaySelectedAnimation();
+    }
+    else {
+      PlayCursorAnimation();
+    }
+  }
+
+  void OnDeselect() override {
+    if (selected_) {
+      PlaySelectedAnimation();
+    }
+    else {
+      PlayIdleAnimation();
+    }
+  }
+
+  void OnClose() override {
+    if (menu_->GetCurrentItem() == this) {
+      ChangeSelect(false);
+    }
+  }
+
 
   virtual void DrawText();
   virtual void SetEnable(bool enable) { enable_ = enable; }
@@ -35,6 +59,8 @@ public:
   virtual const char* GetStateName();
 
 protected:
+  void UpdateStateAnimation();
+
   bool enable_ = true;
   bool decidable_ = true;
   bool active_ = true;

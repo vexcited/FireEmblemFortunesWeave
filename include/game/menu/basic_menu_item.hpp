@@ -22,8 +22,8 @@ public:
   virtual void SetSelected(bool selected) { selected_ = selected; }
   virtual void ChangeSelect(bool selected);
   virtual void GetCursorPosition(float* position, const void* offset);
-  virtual float GetPartsHeight();
-  virtual float GetPartsWidth();
+  virtual float GetWidth();
+  virtual float GetHeight();
   virtual void Draw();
   virtual void Unknown13() { unknown_4c_ = true; }
   virtual bool Unknown14() { return false; }
@@ -78,7 +78,7 @@ protected:
   std::string mid_;
   int index_ = 0;
   std::weak_ptr<ui::LayoutAccessor> accessor_;
-  float position_[3] = {};
+  nn::util::Float3 position_ = {};
   bool unknown_4c_ = false;
   bool created_ = false;
   bool dirty_ = false;

@@ -1,4 +1,5 @@
 #include "game/menu/game_menu_item.hpp"
+#include "game/sound/se.hpp"
 
 namespace game::menu {
 
@@ -26,7 +27,7 @@ public:
 
   const char* GetMid() override { return "MID_QuestMenu_Accept_Yes"; }
   int ACall() override;
-  void PlayDecideSe() override;
+  void PlayDecideSe() override { sound::PlaySe("SE_SYS_Decide_Quest"); }
   bool IsActive() override;
 };
 
@@ -37,7 +38,7 @@ public:
   QuestMenuItem_No();
 
   const char* GetMid() override;
-  void PlayDecideSe() override;
+  void PlayDecideSe() override { sound::PlaySe("SE_SYS_Cancel_M"); }
 };
 
 [[gnu::used]] QuestMenuItem_No::QuestMenuItem_No() = default;

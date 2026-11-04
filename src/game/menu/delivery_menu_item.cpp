@@ -1,5 +1,6 @@
 #include "game/menu/equip_menu_item_animal_pool.hpp"
 #include "game/menu/transport_menu_item.hpp"
+#include "game/sound/se.hpp"
 
 namespace game::menu {
 
@@ -9,7 +10,7 @@ class DeliveryMenuItem : public menu::EquipMenuItem_AnimalPool {
 public:
   DeliveryMenuItem();
 
-  void PlayDecideSe() override;
+  void PlayDecideSe() override { sound::PlaySe("SE_SYS_Decide_M"); }
   bool IsActive() override { return true; }
   void PlayIdleAnimation() override;
   void PlayCursorAnimation() override;

@@ -1,9 +1,14 @@
+#include "game/menu/basic_menu.hpp"
 #include "game/menu/sub_menu_item.hpp"
 #include "game/menu/system_menu_item.hpp"
 #include "game/menu/system_menu_item_info.hpp"
 #include "game/menu/system_menu_item_retired.hpp"
 
 namespace game::map {
+
+void OpenSuspend(menu::BasicMenu* menu);
+
+void OpenMiracle(menu::BasicMenu* menu);
 
 namespace {
 
@@ -13,7 +18,12 @@ public:
 
   const char* GetMid() override { return "MID_SysMenu_Miracle"; }
   bool IsDecidable() override;
-  int ACall() override;
+
+  int ACall() override {
+    OpenMiracle(menu_->GetParent());
+    return 9;
+  }
+
 };
 
 [[gnu::used]] MiracleMenuItem::MiracleMenuItem() = default;
@@ -63,7 +73,15 @@ public:
   SuspendMenuItem();
 
   const char* GetMid() override { return "MID_SysMenu_Suspend"; }
-  int ACall() override;
+
+  int ACall() override {
+    if (!active_) {
+      return 1;
+    }
+    OpenSuspend(menu_->GetParent());
+    return 12;
+  }
+
 };
 
 [[gnu::used]] SuspendMenuItem::SuspendMenuItem() = default;

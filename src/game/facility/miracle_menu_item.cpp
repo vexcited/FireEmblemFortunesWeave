@@ -1,7 +1,10 @@
 #include "game/facility/facility_unit_menu_item.hpp"
+#include "game/menu/basic_menu.hpp"
 #include "game/menu/top_menu_item.hpp"
 
 namespace game::facility {
+
+void OpenMiracle(menu::BasicMenu* menu, int value);
 
 namespace {
 
@@ -17,7 +20,15 @@ public:
 
   const char* GetMid() override { return "MID_TempleMenu_MiracleEquip"; }
   const char* GetHelpMid() override { return "加護編成"; }
-  int ACall() override;
+
+  int ACall() override {
+    if (!IsActive()) {
+      return 1;
+    }
+    OpenMiracle(menu_->GetParent(), 0);
+    return 9;
+  }
+
   void Unknown73() override;
 };
 

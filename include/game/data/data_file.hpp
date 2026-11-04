@@ -21,8 +21,16 @@ namespace game {
 uint64_t HashString(const char* text);
 
 struct HashedString {
+  HashedString() : hash(0), text("") {}
+
   explicit HashedString(const char* value)
     : hash(HashString(value)), text(value) {}
+
+  // User provided, so containers copy it member by member.
+  HashedString(const HashedString& other)
+    : hash(other.hash), text(other.text) {}
+
+  HashedString& operator=(const HashedString& other) = default;
 
   operator uint64_t() const {
     return hash;
@@ -143,6 +151,78 @@ public:
 
 struct SectionMap : std::unordered_map<uint32_t, int32_t> {};
 
+// Maps a row type to the singleton file that owns its rows.
+template<typename T>
+struct DataFileOf;
+
+// Link time optimization inlined the lookup of a file referenced only once.
+template<typename T>
+inline constexpr bool kInlineDataRef = false;
+
+// A row referenced by name, looked up once the target file is loaded.
+template<typename T>
+class DataRef {
+public:
+  [[gnu::always_inline]] void Resolve() {
+    if constexpr (kInlineDataRef<T>) {
+      Lookup();
+    }
+    else {
+      LookupShared();
+    }
+  }
+
+  const char* name_;
+  T* data_;
+
+private:
+  [[gnu::always_inline]] void Lookup() {
+    if (name_ != nullptr && name_[0] != '\0') {
+      data_ = DataFileOf<T>::type::GetInstance()->Find(name_);
+    }
+  }
+
+  [[gnu::noinline]] void LookupShared() {
+    Lookup();
+  }
+};
+
+template<typename T>
+class DataRefList {
+public:
+  static constexpr uint8_t kReferenceType = 0x10;
+
+  // An unresolved name empties the whole list.
+  [[gnu::noinline]] void Resolve() {
+    auto* file = DataFileOf<T>::type::GetInstance();
+
+    if (file == nullptr || type_ != kReferenceType) {
+      return;
+    }
+
+    for (size_t i = 0; i < count_; ++i) {
+      DataRef<T>& reference = references_[i];
+
+      if (reference.name_ == nullptr) {
+        continue;
+      }
+
+      if (T* data = file->Find(reference.name_)) {
+        reference.data_ = data;
+      }
+      else {
+        count_ = 0;
+      }
+    }
+  }
+
+private:
+  uint16_t count_;
+  uint8_t type_;
+  unsigned char unknown_03[5];
+  DataRef<T>* references_;
+};
+
 namespace {
 
 // Internal linkage lets the libc++ helpers instantiated for these be inlined
@@ -242,14 +322,14 @@ struct DataArray : Data {
   [[gnu::always_inline]] void Build() {
     for (U* element : *list) {
       DataScope scope(element);
-      element->Build();
+      [[clang::always_inline]] element->Build();
     }
   }
 
   [[gnu::always_inline]] void Unbuild() {
     for (U* element : *list) {
       DataScope scope(element);
-      element->Unbuild();
+      [[clang::always_inline]] element->Unbuild();
     }
   }
 
@@ -324,7 +404,7 @@ public:
 
     for (T* item : items_) {
       DataScope scope(item);
-      item->Build();
+      [[clang::always_inline]] item->Build();
     }
 
     OnBuild();
@@ -342,7 +422,7 @@ public:
 
     for (T* item : items_) {
       DataScope scope(item);
-      item->Unbuild();
+      [[clang::always_inline]] item->Unbuild();
     }
 
     built_ = false;
@@ -359,7 +439,7 @@ public:
 
     for (T* item : items_) {
       DataScope scope(item);
-      item->Rebuild();
+      [[clang::always_inline]] item->Rebuild();
     }
 
     PopContext();
@@ -511,6 +591,17 @@ public:
     }
 
     return !sheets_.empty();
+  }
+
+  [[gnu::always_inline]] T* Find(const char* name) const {
+    const HashedString key(name);
+
+    if (key.hash == 0) {
+      return nullptr;
+    }
+
+    const auto found = items_by_hash_.find(key);
+    return found == items_by_hash_.end() ? nullptr : found->second;
   }
 
   void Unload() {

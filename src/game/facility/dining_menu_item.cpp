@@ -1,6 +1,11 @@
+#include <functional>
+
+#include "game/menu/basic_menu.hpp"
 #include "game/menu/top_menu_item.hpp"
 
 namespace game::facility {
+
+void OpenDining(menu::BasicMenu* menu);
 
 namespace {
 
@@ -10,7 +15,15 @@ public:
 
   const char* GetMid() override { return "MID_HotelMenu_Dining"; }
   const char* GetHelpMid() override { return "食事"; }
-  int ACall() override;
+
+  int ACall() override {
+    if (!IsActive()) {
+      return 1;
+    }
+    OpenDining(menu_->GetParent());
+    return 9;
+  }
+
   void DrawText() override;
   bool IsActive() override;
   bool Unknown72() override;
@@ -46,6 +59,27 @@ public:
 };
 
 [[gnu::used]] RelianceMenuItem::RelianceMenuItem() = default;
+
+class StayMenuItem : public menu::TopMenuItem {
+public:
+  StayMenuItem();
+
+  const char* GetMid() override { return "MID_HotelMenu_Stay"; }
+  void OnSelect() override;
+  int ACall() override;
+  void DrawText() override;
+  bool IsActive() override;
+  bool Unknown70() override;
+  bool Unknown71() override;
+  bool Unknown72() override { return true; }
+  void Unknown73() override;
+
+private:
+  int32_t hotel_;
+  std::function<void()> on_stay_;
+};
+
+[[gnu::used]] StayMenuItem::StayMenuItem() = default;
 
 }
 

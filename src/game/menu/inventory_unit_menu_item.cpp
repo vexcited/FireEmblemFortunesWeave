@@ -1,6 +1,12 @@
 #include "game/menu/equip_unit_select_menu_item.hpp"
 #include "game/menu/sub_menu_item.hpp"
 
+namespace game {
+
+class Unit;
+
+}
+
 namespace game::menu {
 
 namespace {
@@ -64,7 +70,10 @@ public:
 class EquipSubMenuItem : public menu::SubMenuItem {
 public:
   virtual int Unknown71() = 0;
-  virtual void Unknown72();
+  virtual void Unknown72(Unit* unit) { unit_ = unit; }
+
+protected:
+  Unit* unit_;
 };
 
 class SubTransportMenuItem : public EquipSubMenuItem {
@@ -170,7 +179,12 @@ public:
 
   const char* GetMid() override { return "MID_AllAutoMenu_Deploy"; }
   int Unknown71() override;
-  void Unknown72() override;
+
+  void Unknown72(Unit* unit) override {
+    unit_ = unit;
+    Draw();
+  }
+
   void Unknown73() override;
 };
 

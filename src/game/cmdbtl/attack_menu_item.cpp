@@ -1,4 +1,9 @@
+#include <functional>
+#include <memory>
+
+#include "game/menu/sub_menu_item.hpp"
 #include "game/menu/unit_command_menu_item.hpp"
+#include "ui/layout_accessor.hpp"
 
 namespace game::cmdbtl {
 
@@ -92,6 +97,52 @@ public:
 };
 
 [[gnu::used]] EscapeMenuItem::EscapeMenuItem() = default;
+
+class LinkSelectMenuItem : public menu::SubMenuItem {
+public:
+  LinkSelectMenuItem();
+
+  const char* GetMid() override {
+    switch (kind_) {
+      case 0:
+        return "MID_CmdMenu_Link_Attack";
+      case 1:
+        return "MID_CmdMenu_Link_Heal";
+      case 2:
+        return "MID_CmdMenu_Link_Guard";
+    }
+    return nullptr;
+  }
+
+  void OnSelect() override {
+    GameMenuItem::OnSelect();
+    if (on_select_) {
+      on_select_(kind_);
+    }
+  }
+
+  int ACall() override;
+  bool Unknown70(void* pane) override;
+
+private:
+  int kind_;
+  std::function<void(int)> on_select_;
+};
+
+[[gnu::used]] LinkSelectMenuItem::LinkSelectMenuItem() = default;
+
+class LinkUnitMenuItem : public menu::GameMenuItem {
+public:
+  LinkUnitMenuItem();
+
+  int ACall() override;
+  void DrawText() override;
+
+private:
+  std::weak_ptr<ui::LayoutAccessor> unit_parts_;
+};
+
+[[gnu::used]] LinkUnitMenuItem::LinkUnitMenuItem() = default;
 
 }
 

@@ -1,7 +1,10 @@
+#include "game/menu/basic_menu.hpp"
 #include "game/menu/game_menu_item.hpp"
 #include "game/menu/top_menu_item.hpp"
 
 namespace game::facility {
+
+void OpenLegionShopSell(menu::BasicMenu* menu);
 
 namespace {
 
@@ -29,7 +32,15 @@ public:
 
   const char* GetMid() override { return "MID_LegionShop_Sell"; }
   const char* GetHelpMid() override { return "軍団兵舎"; }
-  int ACall() override;
+
+  int ACall() override {
+    if (!IsActive()) {
+      return 1;
+    }
+    OpenLegionShopSell(menu_->GetParent());
+    return 9;
+  }
+
   bool IsActive() override;
   void Unknown73() override;
 };

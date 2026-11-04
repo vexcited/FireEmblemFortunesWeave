@@ -1,6 +1,9 @@
 #include "game/facility/shop_unit_select_menu_item.hpp"
+#include "game/menu/basic_menu.hpp"
 
 namespace game::facility {
+
+void OpenUnitSelectMaterial(menu::BasicMenu* menu);
 
 namespace {
 
@@ -26,7 +29,14 @@ class UnitSelectMaterialMenuItem : public facility::ShopUnitSelectMenuItem {
 public:
   UnitSelectMaterialMenuItem();
 
-  int ACall() override;
+  int ACall() override {
+    if (!IsActive()) {
+      return 1;
+    }
+    OpenUnitSelectMaterial(menu_->GetParent());
+    return 9;
+  }
+
   bool Unknown84() override { return true; }
 };
 

@@ -1,8 +1,13 @@
 #include "game/facility/facility_unit_menu_item.hpp"
+#include "game/menu/basic_menu.hpp"
 #include "game/menu/top_menu_item.hpp"
 #include "game/menu/unit_menu_item.hpp"
 
 namespace game::facility {
+
+void OpenObeliskCausation(menu::BasicMenu* menu);
+
+void OpenObeliskDestiny(menu::BasicMenu* menu);
 
 void FacilityUnitMenuItem::DrawText() {
   UnitMenuItem::DrawText();
@@ -86,7 +91,12 @@ public:
 
   const char* GetMid() override { return "MID_ObeliskMenu_Destiny"; }
   const char* GetHelpMid() override { return "運命の記録・因果の扉"; }
-  int ACall() override;
+
+  int ACall() override {
+    OpenObeliskDestiny(menu_->GetParent());
+    return 9;
+  }
+
   void Unknown73() override;
 };
 
@@ -98,7 +108,12 @@ public:
 
   const char* GetMid() override { return "MID_ObeliskMenu_Causation"; }
   const char* GetHelpMid() override { return "運命の記録・因果の扉"; }
-  int ACall() override;
+
+  int ACall() override {
+    OpenObeliskCausation(menu_->GetParent());
+    return 9;
+  }
+
   void Unknown73() override;
 };
 

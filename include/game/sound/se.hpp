@@ -7,6 +7,7 @@ namespace game::sound {
 class PlayParam {
 public:
   explicit PlayParam(float fade = 0.0f);
+  explicit PlayParam(const char* fade_label);
   ~PlayParam();
 
 private:
@@ -31,7 +32,12 @@ inline void PlaySe(const char* label) {
   Play(label, label, PlayParam(), 0, 0x10001, 0, 0.0f, 1.0f);
 }
 
-void PlayDecideSe();
-void PlayCancelSe();
+void PlayCursorSe();
+void PlayCursorLeftSe();
+void PlayCursorRightSe();
+void PlayListLeftSe();
+void PlayListRightSe();
+void PlayGaugeLeftSe();
+void PlayGaugeRightSe();
 
 }
