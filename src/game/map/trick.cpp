@@ -387,7 +387,7 @@ bool TrickEntity::IsActive() const {
       if (GetLifeValue() < 1) {
         return false;
       }
-      return !Singleton<Situation>::GetInstance()->IsTrickHidden();
+      return !Singleton<Situation>::GetInstance()->IsRaining();
     default:
       return !(flags_ & 0x08);
   }
@@ -515,7 +515,7 @@ void TrickEntity::Immediate() {
 
 void TrickEntity::PlayShoot() {
   EachObject([](MapObject& object) {
-    object.Play(1);
+    object.PlayAnim(ObjectInfoState(1));
   });
 }
 
@@ -580,7 +580,7 @@ bool TrickEntity::TryUpdateObject() {
 
   EachObject([this](MapObject& object) {
     object.SetEnable(!(flags_ & kFlagDisabled))
-      .SetState(GetObjectState())
+      .SetState(ObjectInfoState(GetObjectState()))
       .Immediate();
   });
   return true;
