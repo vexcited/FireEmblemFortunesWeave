@@ -669,7 +669,7 @@ void BlockIterator::seekwithoutcue_l(int64_t seekTimeUs, int64_t *actualFrameTim
 
 ////////////////////////////////////////////////////////////////////////////////
 
-static unsigned U24_AT(const uint8_t *ptr) {
+__attribute__((always_inline)) inline unsigned U24_AT(const uint8_t *ptr) {
     return ptr[0] << 16 | ptr[1] << 8 | ptr[2];
 }
 
@@ -1296,7 +1296,7 @@ enum WaveID {
     MKV_RIFF_WAVE_FORMAT_WMAV2 = 0x0161,
 };
 
-static const char *MKVWave2MIME(uint16_t id) {
+__attribute__((always_inline)) inline const char *MKVWave2MIME(uint16_t id) {
     switch (id) {
         case  MKV_RIFF_WAVE_FORMAT_MPEGL12:
             return MEDIA_MIMETYPE_AUDIO_MPEG_LAYER_II;
@@ -1321,7 +1321,7 @@ static const char *MKVWave2MIME(uint16_t id) {
     };
 }
 
-static bool isMkvAudioCsdSizeOK(const char* mime, size_t csdSize) {
+__attribute__((always_inline)) inline bool isMkvAudioCsdSizeOK(const char* mime, size_t csdSize) {
     if ((!strcmp(mime, MEDIA_MIMETYPE_AUDIO_MS_ADPCM) && csdSize < 50) ||
         (!strcmp(mime, MEDIA_MIMETYPE_AUDIO_DVI_IMA_ADPCM) && csdSize < 20) ||
         (!strcmp(mime, MEDIA_MIMETYPE_AUDIO_WMA) && csdSize < 28) ||
@@ -1332,7 +1332,7 @@ static bool isMkvAudioCsdSizeOK(const char* mime, size_t csdSize) {
 }
 
 // trans all FOURCC  to lower char
-static uint32_t FourCCtoLower(uint32_t fourcc) {
+__attribute__((always_inline)) inline uint32_t FourCCtoLower(uint32_t fourcc) {
     uint8_t ch_1 = tolower((fourcc >> 24) & 0xff);
     uint8_t ch_2 = tolower((fourcc >> 16) & 0xff);
     uint8_t ch_3 = tolower((fourcc >> 8) & 0xff);
@@ -1342,7 +1342,7 @@ static uint32_t FourCCtoLower(uint32_t fourcc) {
     return fourcc_out;
 }
 
-static const char *MKVFourCC2MIME(uint32_t fourcc) {
+__attribute__((always_inline)) inline const char *MKVFourCC2MIME(uint32_t fourcc) {
     ALOGV("MKVFourCC2MIME fourcc 0x%8.8x", fourcc);
     uint32_t lowerFourcc = FourCCtoLower(fourcc);
     switch (lowerFourcc) {
@@ -1539,7 +1539,7 @@ bool MatroskaExtractor::isLiveStreaming() const {
     return mIsLiveStreaming;
 }
 
-static int bytesForSize(size_t size) {
+__attribute__((always_inline)) inline int bytesForSize(size_t size) {
     // use at most 28 bits (4 times 7)
     CHECK(size <= 0xfffffff);
 
@@ -1553,7 +1553,7 @@ static int bytesForSize(size_t size) {
     return 1;
 }
 
-static void storeSize(uint8_t *data, size_t &idx, size_t size) {
+__attribute__((always_inline)) inline void storeSize(uint8_t *data, size_t &idx, size_t size) {
     int numBytes = bytesForSize(size);
     idx += numBytes;
 
