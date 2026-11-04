@@ -36,6 +36,8 @@
 #undef __ANDROID__
 #include <nandroid/utils/Log.h>
 
+#include <nn/os/thread_api.hpp>
+
 #include <functional>
 
 #include <nandroid/media/MediaSource.h>
@@ -2395,8 +2397,6 @@ bool MPEG4Writer::findChunkToWrite(Chunk *chunk) {
 void MPEG4Writer::threadFunc() {
     ALOGV("threadFunc");
 
-    prctl(PR_SET_NAME, (unsigned long)"MPEG4Writer", 0, 0, 0);
-
     Mutex::Autolock autoLock(mLock);
     while (!mDone) {
         Chunk chunk;
@@ -2863,6 +2863,7 @@ status_t MPEG4Writer::Track::parseHEVCCodecSpecificData(
     return OK;
 }
 
+__attribute__((always_inline)) inline
 status_t MPEG4Writer::Track::makeHEVCCodecSpecificData(
         const uint8_t *data, size_t size) {
 
@@ -2957,16 +2958,11 @@ status_t MPEG4Writer::Track::threadEntry() {
     int32_t cttsSampleCount = 0;           // Sample count in the current ctts table entry
     uint32_t lastSamplesPerChunk = 0;
 
-    if (mIsAudio) {
-        prctl(PR_SET_NAME, (unsigned long)"AudioTrackEncoding", 0, 0, 0);
-    } else if (mIsVideo) {
-        prctl(PR_SET_NAME, (unsigned long)"VideoTrackEncoding", 0, 0, 0);
-    } else {
-        prctl(PR_SET_NAME, (unsigned long)"MetadataTrackEncoding", 0, 0, 0);
-    }
-
-    if (mOwner->isRealTimeRecording()) {
-        androidSetThreadPriority(0, ANDROID_PRIORITY_AUDIO);
+    if (mThread != 0) {
+        const char *name = mIsVideo ? "VideoTrackEncoding" :
+                mIsAudio ? "AudioTrackEncoding" : "MetadataTrackEncoding";
+        nn::os::SetThreadName(reinterpret_cast<nn::os::ThreadType *>(mThread),
+                              name);
     }
 
     sp<MetaData> meta_data;
@@ -3680,8 +3676,7 @@ status_t MPEG4Writer::Track::checkCodecSpecificData() const {
 }
 
 const char *MPEG4Writer::Track::getTrackType() const {
-    return mIsAudio ? "Audio" :
-           mIsVideo ? "Video" :
+    return mIsVideo ? "Video" :
            mIsHeic  ? "Image" :
                       "Metadata";
 }

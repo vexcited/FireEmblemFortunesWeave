@@ -22,6 +22,8 @@
 
 #include <nandroid/utils/Log.h>
 
+#include <nn/os/time.hpp>
+
 #include <sys/time.h>
 
 #include <nandroid/media/stagefright/foundation/ALooper.h>
@@ -67,7 +69,7 @@ private:
 
 // static
 int64_t ALooper::GetNowUs() {
-    return systemTime(SYSTEM_TIME_MONOTONIC) / 1000LL;
+    return nn::os::ConvertToTimeSpan(nn::os::GetSystemTick()).nanoseconds / 1000LL;
 }
 
 ALooper::ALooper()

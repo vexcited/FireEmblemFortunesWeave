@@ -30,7 +30,7 @@ Shims.
 - `media/stagefright/Utils.h` drops the audio and offload helpers and includes `BufferingSettings.h` and `MetaData.h` directly.
 - `media/mediaplayer_common.h` replaces `media/mediaplayer.h` for `media_track_type`.
 - The `openmax` headers include each other with quotes.
-- `cutils/properties.h` declares the property helpers the SDK keeps, and `media/mediarecorder.h` holds the recorder event codes and output formats.
+- `cutils/properties.h` answers every property query with the caller's default, since the SDK has no property service, and `media/mediarecorder.h` holds the recorder event codes and output formats.
 - `utils/Unicode.h` and `Unicode.cpp` place the functions in `namespace nandroid` instead of `extern "C"`.
 
 Per file.
@@ -51,4 +51,4 @@ Per file.
 - `Utils.cpp`: the audio, user agent and file descriptor helpers are removed, color aspects go through `ColorUtils`, `uriDebugString` returns the URI unless incognito, and the mapping tables are marked `used`.
 - `httplive/M3UParser.cpp` and `M3UParser.h`: the parser takes a fourth constructor argument and has three extra fields of unknown purpose, `MediaGroup` keeps its group ID, and the audio group always selects index 0.
 - `extractors/mkv/MatroskaExtractor.cpp`: FLAC metadata support is removed, `BlockIterator::eos` also checks the block entry and `block` returns null at the end, and libwebm is included from `src/libwebm`.
-- `libstagefright/MPEG4Writer.cpp`: the AOSP thread priority and property includes are added explicitly.
+- `libstagefright/MPEG4Writer.cpp`: the property include is added explicitly, the thread names go through `nn::os::SetThreadName` instead of the missing `prctl`, and the track type string carries no audio case.
