@@ -22,6 +22,7 @@ The game and its SDK statically link open-source libraries. Their upstream sourc
 | `src/llvm-libcxx`      | LLVM libc++, libc++abi and libunwind 18.1.8 | Apache 2.0 with LLVM exceptions |
 | `src/llvm-libcxx-21`   | LLVM libc++ 21.1.8 template headers         | Apache 2.0 with LLVM exceptions |
 | `src/libwebm`          | libwebm 1.0.0.29 Matroska parser            | BSD 3-Clause                    |
+| `src/nandroid`         | AOSP `android-10.0.0_r47` media, modified   | Apache 2.0                      |
 
 ## References
 
