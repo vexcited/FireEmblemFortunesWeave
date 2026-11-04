@@ -8,6 +8,8 @@ namespace game::gmap {
 
 class Camera : public SerializeSingleton<Camera> {
 public:
+  ~Camera() override;
+
   void Initialize() override;
   void Finalize() override;
   const char* GetName() const override;

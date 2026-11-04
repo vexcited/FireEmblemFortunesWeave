@@ -2,6 +2,8 @@
 
 namespace game::gmap {
 
+Camera::~Camera() = default;
+
 const char* Camera::GetName() const {
   return "GmapCamera";
 }

@@ -2,6 +2,8 @@
 
 namespace game::gmap {
 
+Cursor::~Cursor() = default;
+
 void Cursor::Finalize() {
   if (impl_ != nullptr) {
     delete impl_;

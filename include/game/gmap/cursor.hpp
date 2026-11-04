@@ -24,6 +24,8 @@ private:
 
 class Cursor : public SerializeSingleton<Cursor> {
 public:
+  ~Cursor() override;
+
   void Initialize() override;
   void Finalize() override;
   const char* GetName() const override;
