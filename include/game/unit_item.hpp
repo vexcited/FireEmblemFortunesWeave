@@ -4,6 +4,7 @@
 #include <string.h>
 
 #include "game/data/data_files.hpp"
+#include "game/unit.hpp"
 
 namespace game {
 
@@ -89,60 +90,35 @@ struct ItemRow : RowReader<ItemData> {
   }
 };
 
-// An item owned by a unit, keyed by the item row index.
-class UnitItem {
-public:
-  static constexpr uint8_t kFlagFull = 0x08;
-  static constexpr uint8_t kFlagLocked = 0x10;
-  static constexpr uint8_t kFlagBroken = 0x20;
+inline const ItemData* UnitItem::GetData() const {
+  return ItemFile::GetInstance()->At(index_);
+}
 
-  const ItemData* GetData() const {
-    return ItemFile::GetInstance()->At(index_);
+inline const ItemData* UnitItem::GetSharedData() const {
+  return g_item_file->At(index_);
+}
+
+inline bool UnitItem::IsWeapon() const {
+  return ItemRow::GetKind(GetSharedData()) < 8;
+}
+
+inline int UnitItemList::FindEquippedWeapon() const {
+  for (int i = 0; i < kCount; i++) {
+    const UnitItem& item = items[i];
+    if (item.GetIndex() != 0 && item.IsEquipped() && item.IsWeapon()) {
+      return i;
+    }
   }
+  return -1;
+}
 
-  const ItemData* GetSharedData() const {
-    return g_item_file->At(index_);
-  }
+inline int UnitItem::GetMaxUses() const {
+  return count_ * ItemRow::GetUses(GetData());
+}
 
-  uint16_t GetIndex() const {
-    return index_;
-  }
-
-  uint8_t GetUses() const {
-    return uses_;
-  }
-
-  bool IsBroken() const {
-    return flags_ & kFlagBroken;
-  }
-
-  int GetCount() const {
-    return count_;
-  }
-
-  int GetMaxUses() const {
-    return count_ * ItemRow::GetUses(GetData());
-  }
-
-  int GetSharedMaxUses() const {
-    return count_ * ItemRow::GetUses(GetSharedData());
-  }
-
-  bool CanEquip(const Unit* unit) const;
-  bool Restore(int amount);
-  bool IsUsable() const;
-  void Deserialize(Stream& stream);
-
-private:
-  uint16_t index_;
-  uint8_t uses_;
-  uint8_t flags_;
-  uint32_t count_ : 4;
-  uint32_t level_ : 10;
-  uint32_t unknown_04_ : 18;
-};
-
-static_assert(sizeof(UnitItem) == 8);
+inline int UnitItem::GetSharedMaxUses() const {
+  return count_ * ItemRow::GetUses(GetSharedData());
+}
 
 // A skill owned by a unit, keyed by the skill row index.
 class UnitSkill {
@@ -154,6 +130,8 @@ public:
   const SkillData* GetSharedData() const {
     return g_skill_file->At(index_);
   }
+
+  void Deserialize(Stream& stream);
 
 private:
   uint32_t index_ : 12;

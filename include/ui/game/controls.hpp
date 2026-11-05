@@ -552,6 +552,10 @@ public:
 
   std::shared_ptr<ui::ILayoutControl> Clone(
     nn::ui2d::Layout* layout) const override;
+  bool IsVisible() const override;
+  void SetVisible(bool visible) override;
+  nn::ui2d::Size GetSize() const override;
+  void SetSize(const nn::ui2d::Size& size) override;
 
 protected:
   JobIcon(const nn::ui2d::ControlSrc& source, nn::ui2d::Layout* layout,

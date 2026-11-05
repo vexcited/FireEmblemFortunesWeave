@@ -33,7 +33,8 @@ protected:
   TextBoxEx(const TextBoxEx& source, nn::ui2d::Layout* layout);
 
 private:
-  uint8_t unknown_48_[0x10];
+  uint8_t unknown_48_[0x8];
+  nn::ui2d::Pane* text_box_;
 };
 
 #pragma GCC visibility pop

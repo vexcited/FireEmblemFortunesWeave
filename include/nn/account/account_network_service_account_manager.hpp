@@ -100,6 +100,10 @@ class CachedNintendoAccountInfoForSystemService {
 };
 
 struct UiSettings {
+  int32_t GetUiMode() const;
+  int32_t GetNintendoAccountStartupDialogType() const;
+  int32_t GetLicenseType() const;
+
   int32_t mode;
   union {
     Uid uid;

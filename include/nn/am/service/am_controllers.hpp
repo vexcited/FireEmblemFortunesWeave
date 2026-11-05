@@ -13,6 +13,14 @@
 #include "nn/sf/native_handle.hpp"
 #include "nn/sf/shared_pointer.hpp"
 
+namespace nn::pl {
+
+struct VrLaboGoggleViewport;
+struct PanelPhysicalSize;
+struct PanelResolution;
+
+}
+
 namespace nn::am::service {
 
 class IGpuErrorHandler : public sf::IServiceObject {
@@ -42,10 +50,11 @@ class ICommonStateGetter : public sf::IServiceObject {
   virtual Result GetWakeupCount(sf::Out<int64_t> pOutCount) = 0;
   NN_AM_RESERVED(19); NN_AM_RESERVED(20); NN_AM_RESERVED(21);
   NN_AM_RESERVED(22); NN_AM_RESERVED(23); NN_AM_RESERVED(24);
-  NN_AM_RESERVED(25);
+  virtual Result IsVrModeEnabled(sf::Out<bool> pOutIsEnabled) = 0;
   virtual Result SetVrModeEnabled(bool isEnabled) = 0;
   virtual Result SetLcdBacklightOffEnabled(bool isEnabled) = 0;
-  NN_AM_RESERVED(28); NN_AM_RESERVED(29);
+  virtual Result BeginVrModeEx() = 0;
+  virtual Result EndVrModeEx() = 0;
   NN_AM_RESERVED(30); NN_AM_RESERVED(31);
   virtual Result GetDefaultDisplayResolution(sf::Out<int32_t> pOutWidth,
     sf::Out<int32_t> pOutHeight) = 0;
@@ -79,8 +88,15 @@ class ICommonStateGetter : public sf::IServiceObject {
   virtual Result EndUsingCameraResource() = 0;
   NN_AM_RESERVED(61);
   virtual Result GetLaunchRequiredTick(sf::Out<int64_t> pOutTick) = 0;
-  NN_AM_RESERVED(63); NN_AM_RESERVED(64); NN_AM_RESERVED(65);
-  NN_AM_RESERVED(66); NN_AM_RESERVED(67); NN_AM_RESERVED(68);
+  virtual Result BeginVrModeForLadybird() = 0;
+  virtual Result EndVrModeForLadybird() = 0;
+  virtual Result IsVrModeForLadybird(sf::Out<bool> pOutIsEnabled) = 0;
+  virtual Result GetVrLaboGoggleViewport(
+    sf::Out<pl::VrLaboGoggleViewport> pOutViewport) = 0;
+  virtual Result GetPanelPhysicalSizeForSpecificTitle(
+    sf::Out<pl::PanelPhysicalSize> pOutSize) = 0;
+  virtual Result GetPanelResolutionForSpecificTitle(
+    sf::Out<pl::PanelResolution> pOutResolution) = 0;
   virtual Result SetRtcModeChangedMessageEnabled(bool isEnabled) = 0;
   virtual Result GetCurrentDisplayLayoutRatio(
     sf::Out<oe::DisplayLayoutRatio> pOutRatio) = 0;
@@ -120,10 +136,13 @@ class ISelfController : public sf::IServiceObject {
     sf::Out<int32_t> pOutExtension) = 0;
   virtual Result SetInputDetectionSourceSet(uint32_t sourceSet) = 0;
   virtual Result ReportUserIsActive() = 0;
-  NN_AM_RESERVED(40); NN_AM_RESERVED(41);
+  NN_AM_RESERVED(40);
+  virtual Result IsIlluminanceAvailable(sf::Out<bool> pOutIsAvailable) = 0;
   virtual Result SetAutoSleepDisabled(bool isDisabled) = 0;
   virtual Result IsAutoSleepDisabled(sf::Out<bool> pOutIsDisabled) = 0;
-  NN_AM_RESERVED(44); NN_AM_RESERVED(45);
+  NN_AM_RESERVED(44);
+  virtual Result GetCurrentIlluminanceEx(sf::Out<float> pOutIlluminance,
+    sf::Out<bool> pOutIsOverLimit) = 0;
   virtual Result SetInputDetectionPolicy(int32_t policy) = 0;
   NN_AM_RESERVED(47);
   virtual Result SetWirelessPriorityMode(int32_t mode) = 0;
@@ -135,8 +154,11 @@ class ISelfController : public sf::IServiceObject {
   NN_AM_RESERVED(55);
   NN_AM_RESERVED(56); NN_AM_RESERVED(57); NN_AM_RESERVED(58);
   NN_AM_RESERVED(59); NN_AM_RESERVED(60); NN_AM_RESERVED(61);
-  NN_AM_RESERVED(62); NN_AM_RESERVED(63); NN_AM_RESERVED(64);
-  NN_AM_RESERVED(65);
+  virtual Result GetGraphicsSupervisor(
+    sf::Out<sf::NativeHandle> pOutHandle) = 0;
+  virtual Result SetRecordingLayerEnabled(bool isEnabled) = 0;
+  virtual Result SetSharingLayerEnabled(bool isEnabled) = 0;
+  virtual Result SetCopyrightLayerEnabled(bool isEnabled) = 0;
   virtual Result SetRtcScreenSharingAudioEnabled(bool isEnabled) = 0;
   virtual Result SetStreamPlayMirroringAudioEnabled(bool isEnabled) = 0;
 };

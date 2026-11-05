@@ -24,4 +24,24 @@ private:
   SdkMutexType m_Mutex;
 };
 
+class SdkRecursiveMutex {
+public:
+  constexpr SdkRecursiveMutex() : m_Mutex{} {}
+
+  void lock() {
+    m_Mutex.Lock();
+  }
+
+  void unlock() {
+    m_Mutex.Unlock();
+  }
+
+  bool try_lock() {
+    return m_Mutex.TryLock();
+  }
+
+private:
+  SdkRecursiveMutexType m_Mutex;
+};
+
 }

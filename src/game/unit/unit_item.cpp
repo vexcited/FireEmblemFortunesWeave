@@ -1,6 +1,6 @@
 #include "game/unit_item.hpp"
 
-#include "game/map/stream.hpp"
+#include "game/map/stream_data.hpp"
 
 namespace game {
 
@@ -8,34 +8,49 @@ namespace game {
 
 int CheckItemCondition(const UnitItem& item);
 
-template<typename T>
-const T* Stream::ReadData() {
-  const uint64_t hash = ReadU64();
-
-  if (hash == 0) {
-    return nullptr;
-  }
-
-  return DataFileOf<T>::type::GetInstance()->FindByHash(hash);
-}
-
-template<typename T>
-const T* Stream::ReadShortData() {
-  const uint32_t hash = ReadU32();
-
-  if (hash == 0) {
-    return nullptr;
-  }
-
-  return DataFileOf<T>::type::GetInstance()->FindByShortHash(hash);
-}
-
 template const JobData* Stream::ReadData<JobData>();
 template const JobData* Stream::ReadShortData<JobData>();
 template const PersonData* Stream::ReadData<PersonData>();
 template const PersonData* Stream::ReadShortData<PersonData>();
 template const ItemData* Stream::ReadData<ItemData>();
 template const ItemData* Stream::ReadShortData<ItemData>();
+template const SkillData* Stream::ReadData<SkillData>();
+template const SkillData* Stream::ReadShortData<SkillData>();
+
+// Tags below 3 hold the full key, tag 2 the raw skill first. Other tags keep
+// the record version in bits 5 and 6, version 3 adds the raw skill.
+void UnitSkill::Deserialize(Stream& stream) {
+  const uint8_t tag = stream.ReadU8();
+
+  if (tag < 3) {
+    const uint32_t raw = tag == 2 ? stream.ReadU32() : 0;
+    memcpy(this, &raw, sizeof(raw));
+    if (const SkillData* data = stream.ReadData<SkillData>()) {
+      index_ = data->index;
+    }
+    else {
+      *this = UnitSkill();
+    }
+    return;
+  }
+
+  const int version = tag >> 5 & 3;
+  *this = UnitSkill();
+
+  if (version == 2) {
+    if (const SkillData* data = stream.ReadShortData<SkillData>()) {
+      index_ = data->index;
+    }
+  }
+  else if (version == 3) {
+    const SkillData* data = stream.ReadShortData<SkillData>();
+    const uint32_t raw = stream.ReadU32();
+    if (data != nullptr) {
+      memcpy(this, &raw, sizeof(raw));
+      index_ = data->index;
+    }
+  }
+}
 
 // Only usable kinds track the full flag, the kinds 5 and 6 never do.
 static bool TracksFull(const ItemData* data) {

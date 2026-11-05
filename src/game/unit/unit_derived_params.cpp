@@ -5,17 +5,6 @@ namespace game {
 
 #pragma GCC visibility push(hidden)
 
-// A skill row index in its low 12 bits.
-struct SkillKey {
-  uint32_t index : 12;
-  uint32_t unknown_00_ : 20;
-};
-
-// The skills the engine tests by name, other units read them through the
-// global offset table.
-extern const SkillKey g_system_skills[];
-[[gnu::visibility("default")]] extern const SkillKey g_shared_system_skills[];
-
 namespace {
 
 constexpr int kSkillTechniqueBlock = 25;

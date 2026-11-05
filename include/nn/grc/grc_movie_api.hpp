@@ -7,8 +7,27 @@
 #include "nn/capsrv/capsrv_album_types.hpp"
 #include "nn/os/system_event.hpp"
 #include "nn/result.hpp"
+#include "nn/sf/native_handle.hpp"
 #include "nn/sf/sf_buffers.hpp"
 #include "nn/sf/shared_pointer.hpp"
+
+namespace nn::grc {
+
+struct OffscreenRecordingParameter {
+  uint8_t reserved0[0x18];
+  int32_t videoWidth;
+  int32_t videoHeight;
+  uint8_t reserved20[0x60];
+};
+
+struct MovieWriterParameter {
+  uint8_t reserved0[0x18];
+  int32_t videoWidth;
+  int32_t videoHeight;
+  uint8_t reserved20[0x60];
+};
+
+}
 
 namespace nn::grcsrv {
 
@@ -18,6 +37,26 @@ class IMovieMaker : public sf::IServiceObject {
   virtual void Reserved3() = 0;
   virtual void Reserved4() = 0;
   virtual Result SetShimLibraryVersion(uint64_t version) = 0;
+  virtual void Reserved6() = 0;
+  virtual void Reserved7() = 0;
+  virtual void Reserved8() = 0;
+  virtual Result AbortOffscreenRecording(uint64_t layerId) = 0;
+  virtual Result RequestOffscreenRecordingFinishReady(uint64_t layerId) = 0;
+  virtual void Reserved11() = 0;
+  virtual Result StartOffscreenRecording(uint64_t layerId,
+    grc::OffscreenRecordingParameter parameter) = 0;
+  virtual void Reserved13() = 0;
+  virtual Result CompleteOffscreenRecordingFinish(
+    capsrv::ApplicationAlbumEntry* pOutEntry, uint64_t layerId,
+    const sf::InBuffer& userData, const sf::InBuffer& thumbnail,
+    int32_t thumbnailWidth, int32_t thumbnailHeight) = 0;
+  virtual Result GetOffscreenLayerError(uint64_t layerId) = 0;
+  virtual Result EncodeOffscreenLayerAudioSample(sf::Out<uint64_t> pOutSize,
+    uint64_t layerId, const sf::InBuffer& sample) = 0;
+  virtual Result GetOffscreenLayerRecordingFinishReadyEvent(
+    sf::Out<sf::NativeHandle> pOutHandle, uint64_t layerId) = 0;
+  virtual Result GetOffscreenLayerAudioEncodeReadyEvent(
+    sf::Out<sf::NativeHandle> pOutHandle, uint64_t layerId) = 0;
 };
 
 class IMovieMakerService : public sf::IServiceObject {
@@ -34,6 +73,14 @@ class IMovieWriter : public sf::IServiceObject {
   virtual void Reserved2() = 0;
   virtual void Reserved3() = 0;
   virtual Result SetShimLibraryVersion(uint64_t version) = 0;
+  virtual Result Abort() = 0;
+  virtual Result GetError() = 0;
+  virtual Result Start(grc::MovieWriterParameter parameter) = 0;
+  virtual Result WriteMp4Data(uint64_t offset, const sf::InBuffer& data) = 0;
+  virtual Result RequestFinishReady() = 0;
+  virtual Result CompleteFinish(capsrv::ApplicationAlbumEntry* pOutEntry,
+    const sf::InBuffer& userData, const sf::InBuffer& thumbnail,
+    int32_t thumbnailWidth, int32_t thumbnailHeight) = 0;
 };
 
 class IMovieWriterService : public sf::IServiceObject {
@@ -49,20 +96,6 @@ class IMovieWriterService : public sf::IServiceObject {
 namespace nn::grc {
 
 class MovieLayer;
-
-struct OffscreenRecordingParameter {
-  uint8_t reserved0[0x18];
-  int32_t videoWidth;
-  int32_t videoHeight;
-  uint8_t reserved20[0x60];
-};
-
-struct MovieWriterParameter {
-  uint8_t reserved0[0x18];
-  int32_t videoWidth;
-  int32_t videoHeight;
-  uint8_t reserved20[0x60];
-};
 
 Result InitializeForApplication(sf::SharedPointer<grcsrv::IMovieMaker>&&
   movieMaker);
@@ -81,7 +114,7 @@ void FinalizeMovieAudioEncodeReadyEvent(os::SystemEventType* pEvent,
 Result GetVideoNativeWindow(void** pOutWindow, MovieLayer* pLayer);
 Result StartMovieFile(MovieLayer* pLayer,
   const OffscreenRecordingParameter& parameter);
-void AbortMovieFile(MovieLayer* pLayer);
+Result AbortMovieFile(MovieLayer* pLayer);
 Result CheckMovieFileError(MovieLayer* pLayer);
 Result EncodeMovieAudioSample(size_t* pOutSize, MovieLayer* pLayer,
   const void* pBuffer, size_t size);

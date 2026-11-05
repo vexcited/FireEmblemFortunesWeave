@@ -1,7 +1,15 @@
+// Files whose own destructor unloads the instance, they default to the
+// plain declaration. The custom ones also override the build hooks.
+#ifndef GAME_DATA_FILE_UNLOADING
+#define GAME_DATA_FILE_UNLOADING(T, U, V) GAME_DATA_FILE(T, U, V)
+#define GAME_DATA_FILE_UNLOADING_CUSTOM(T, U, V) GAME_DATA_FILE(T, U, V)
+#define GAME_DATA_FILE_UNLOADING_DEFAULT
+#endif
+
 GAME_DATA_FILE(GroundAttributeFile, GroundAttributeData, GroundAttributeData)
 GAME_DATA_FILE(MapSoundFile, MapSoundData, MapSoundData)
 GAME_DATA_FILE(JobFile, JobData, JobData)
-GAME_DATA_FILE(PersonFile, PersonData, PersonData)
+GAME_DATA_FILE_UNLOADING_CUSTOM(PersonFile, PersonData, PersonData)
 GAME_DATA_FILE(TerrainFile, TerrainData, TerrainData)
 GAME_DATA_FILE(TerrainCostFile, TerrainCost, TerrainCost)
 GAME_DATA_FILE(DisposFile, DisposGroup, DisposData)
@@ -28,7 +36,7 @@ GAME_DATA_FILE(RelianceSpecialFile, RelianceSpecialData, RelianceSpecialData)
 GAME_DATA_FILE(RelianceSupportFile, RelianceSupportData, RelianceSupportData)
 GAME_DATA_FILE(RelianceOffsetFile, RelianceOffsetGroup, RelianceOffsetData)
 GAME_DATA_FILE_CUSTOM(ExteriorFile, ExteriorData, ExteriorData)
-GAME_DATA_FILE(SituationFile, SituationData, SituationData)
+GAME_DATA_FILE_UNLOADING_CUSTOM(SituationFile, SituationData, SituationData)
 GAME_DATA_FILE(MiracleFile, MiracleData, MiracleData)
 GAME_DATA_FILE(ScoutFile, ScoutData, ScoutData)
 GAME_DATA_FILE(DiffFile, DiffData, DiffData)
@@ -77,20 +85,30 @@ GAME_DATA_FILE(GmapMonthTalkFile, GmapMonthTalkData, GmapMonthTalkData)
 GAME_DATA_FILE(
   GmapSpecialDisposFile, GmapSpecialDisposData, GmapSpecialDisposData
 )
-GAME_DATA_FILE(HubScriptFile, HubScriptDataArray, HubScriptData)
-GAME_DATA_FILE(
+GAME_DATA_FILE_UNLOADING(HubScriptFile, HubScriptDataArray, HubScriptData)
+GAME_DATA_FILE_UNLOADING(
   HubTimelineScriptFile, HubTimelineScriptData, HubTimelineScriptData
 )
-GAME_DATA_FILE(HubConnectFile, HubConnectData, HubConnectData)
-GAME_DATA_FILE(HubFastTravelFile, HubFastTravelDataArray, HubFastTravelData)
-GAME_DATA_FILE(HubDivisionFile, HubDivisionData, HubDivisionData)
-GAME_DATA_FILE(HubAreaFile, HubAreaData, HubAreaData)
+GAME_DATA_FILE_UNLOADING(HubConnectFile, HubConnectData, HubConnectData)
+GAME_DATA_FILE_UNLOADING(
+  HubFastTravelFile, HubFastTravelDataArray, HubFastTravelData
+)
+GAME_DATA_FILE_UNLOADING(HubDivisionFile, HubDivisionData, HubDivisionData)
+GAME_DATA_FILE_UNLOADING(HubAreaFile, HubAreaData, HubAreaData)
 GAME_DATA_FILE(HubSubquestFile, HubSubquestData, HubSubquestData)
-GAME_DATA_FILE(HubRandomDropFile, HubRandomDropDataArray, HubRandomDropData)
+GAME_DATA_FILE_UNLOADING(
+  HubRandomDropFile, HubRandomDropDataArray, HubRandomDropData
+)
 GAME_DATA_FILE(HubFacilityOpenFile, HubFacilityOpenData, HubFacilityOpenData)
-GAME_DATA_FILE(DungeonSettingFile, DungeonSettingData, DungeonSettingData)
-GAME_DATA_FILE(DungeonEachFile, DungeonEachData, DungeonEachData)
-GAME_DATA_FILE(DungeonSymbolFile, DungeonSymbolData, DungeonSymbolData)
+GAME_DATA_FILE_UNLOADING(
+  DungeonSettingFile, DungeonSettingData, DungeonSettingData
+)
+GAME_DATA_FILE_UNLOADING_CUSTOM(
+  DungeonEachFile, DungeonEachData, DungeonEachData
+)
+GAME_DATA_FILE_UNLOADING(
+  DungeonSymbolFile, DungeonSymbolData, DungeonSymbolData
+)
 GAME_DATA_FILE(
   CmdBtlPartySettingFile, CmdBtlPartySettingData, CmdBtlPartySettingData
 )
@@ -99,11 +117,13 @@ GAME_DATA_FILE(
 )
 GAME_DATA_FILE(CmdBtlFieldFile, CmdBtlFieldData, CmdBtlFieldData)
 GAME_DATA_FILE(ExSpotFile, ExSpotData, ExSpotData)
-GAME_DATA_FILE(HubMapReplaceFile, HubMapReplaceData, HubMapReplaceData)
-GAME_DATA_FILE(
+GAME_DATA_FILE_UNLOADING(
+  HubMapReplaceFile, HubMapReplaceData, HubMapReplaceData
+)
+GAME_DATA_FILE_UNLOADING(
   HubScriptExternalFile, HubScriptExternalData, HubScriptExternalData
 )
-GAME_DATA_FILE(HubAreaTagFile, HubAreaTagData, HubAreaTagData)
+GAME_DATA_FILE_UNLOADING(HubAreaTagFile, HubAreaTagData, HubAreaTagData)
 GAME_DATA_FILE(WatchingArenaFile, WatchingArenaData, WatchingArenaData)
 GAME_DATA_FILE(CmdBtlCallFile, CmdBtlCallData, CmdBtlCallData)
 GAME_DATA_FILE(DitChallengeFile, DitChallengeData, DitChallengeData)
@@ -113,11 +133,11 @@ GAME_DATA_FILE(
   CharaViewerAdjustmentsFile, CharaViewerAdjustmentsData,
   CharaViewerAdjustmentsData
 )
-GAME_DATA_FILE(AnimSetFile, AnimSetData, AnimSetData)
+GAME_DATA_FILE_UNLOADING(AnimSetFile, AnimSetData, AnimSetData)
 GAME_DATA_FILE(AnimSetFileEv, AnimSetDataEv, AnimSetDataEv)
-GAME_DATA_FILE(MotionGroupFile, MotionGroupData, MotionGroupData)
-GAME_DATA_FILE(FaceSetFile, FaceSetData, FaceSetData)
-GAME_DATA_FILE(RaceFile, RaceData, RaceData)
+GAME_DATA_FILE_UNLOADING(MotionGroupFile, MotionGroupData, MotionGroupData)
+GAME_DATA_FILE_UNLOADING(FaceSetFile, FaceSetData, FaceSetData)
+GAME_DATA_FILE_UNLOADING(RaceFile, RaceData, RaceData)
 GAME_DATA_FILE(BattleCameraFile, BattleCameraGroup, BattleCameraData)
 GAME_DATA_FILE(
   EventDemoLocationFile, EventDemoLocationData, EventDemoLocationData
@@ -144,7 +164,7 @@ GAME_DATA_FILE(EventDemoDoFFile, EventDemoDoFData, EventDemoDoFData)
 GAME_DATA_FILE(MovieDataFile, MovieData, MovieData)
 GAME_DATA_FILE(MovieCaptionDataFile, MovieCaptionData, MovieCaptionData)
 GAME_DATA_FILE(MovieBgmCtrlDataFile, MovieBgmCtrlData, MovieBgmCtrlData)
-GAME_DATA_FILE(AIFile, AISequenceData, AICommandData)
+GAME_DATA_FILE_UNLOADING(AIFile, AISequenceData, AICommandData)
 GAME_DATA_FILE(
   SubquestUnlockJobsFile, SubquestUnlockJobsArray, SubquestUnlockJobsData
 )
@@ -153,11 +173,13 @@ GAME_DATA_FILE(
   SubquestDeliveryKindFile, SubquestDeliveryKindData, SubquestDeliveryKindData
 )
 GAME_DATA_FILE(GrowthListFile, GrowthListArray, GrowthListData)
-GAME_DATA_FILE(
+GAME_DATA_FILE_UNLOADING(
   AutoGrowMasteryExpFile, AutoGrowMasteryExpArray, AutoGrowMasteryExpData
 )
 GAME_DATA_FILE_CUSTOM(SideStoryFile, SideStoryData, SideStoryData)
-GAME_DATA_FILE(AutoGrowHeroItemFile, AutoGrowHeroItemData, AutoGrowHeroItemData)
+GAME_DATA_FILE_UNLOADING(
+  AutoGrowHeroItemFile, AutoGrowHeroItemData, AutoGrowHeroItemData
+)
 GAME_DATA_FILE(AutoGrowJobFile, AutoGrowJobData, AutoGrowJobData)
 GAME_DATA_FILE(CalendarBirthdayFile, CalendarBirthdayData, CalendarBirthdayData)
 GAME_DATA_FILE(
@@ -165,7 +187,7 @@ GAME_DATA_FILE(
 )
 GAME_DATA_FILE(CalendarDetailFile, CalendarDetailData, CalendarDetailData)
 GAME_DATA_FILE(CalendarFile, CalendarData, CalendarData)
-GAME_DATA_FILE(AIIndividualFile, AIIndividualData, AIIndividualData)
+GAME_DATA_FILE_UNLOADING(AIIndividualFile, AIIndividualData, AIIndividualData)
 GAME_DATA_FILE(
   Part2SuppliedItemFile, Part2SuppliedItemData, Part2SuppliedItemData
 )
@@ -173,8 +195,10 @@ GAME_DATA_FILE(
   Part2SuppliedLegionFile, Part2SuppliedLegionData, Part2SuppliedLegionData
 )
 GAME_DATA_FILE(EntrustEquipFile, EntrustEquipData, EntrustEquipData)
-GAME_DATA_FILE(AutoGrowItemFile, AutoGrowItemData, AutoGrowItemData)
-GAME_DATA_FILE(AutoGrowLegionFile, AutoGrowLegionData, AutoGrowLegionData)
+GAME_DATA_FILE_UNLOADING(AutoGrowItemFile, AutoGrowItemData, AutoGrowItemData)
+GAME_DATA_FILE_UNLOADING(
+  AutoGrowLegionFile, AutoGrowLegionData, AutoGrowLegionData
+)
 GAME_DATA_FILE_CUSTOM(RecommendFile, RecommendData, RecommendData)
 GAME_DATA_FILE(TalkExpressionFile, TalkExpressionData, TalkExpressionData)
 GAME_DATA_FILE(TalkRestrictFile, TalkRestrictData, TalkRestrictData)
@@ -308,3 +332,9 @@ GAME_DATA_FILE(
   StaffRollMemorialImageFile, StaffRollMemorialImageData,
   StaffRollMemorialImageData
 )
+
+#ifdef GAME_DATA_FILE_UNLOADING_DEFAULT
+#undef GAME_DATA_FILE_UNLOADING
+#undef GAME_DATA_FILE_UNLOADING_CUSTOM
+#undef GAME_DATA_FILE_UNLOADING_DEFAULT
+#endif

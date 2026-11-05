@@ -331,6 +331,20 @@ std::shared_ptr<ui::ILayoutControl> JobIcon::Clone(
   return Create<JobIcon>(*this, layout);
 }
 
+bool JobIcon::IsVisible() const {
+  return layout_->GetRootPane()->IsVisible();
+}
+
+void JobIcon::SetVisible(bool visible) {
+  layout_->GetRootPane()->SetVisible(visible);
+}
+
+nn::ui2d::Size JobIcon::GetSize() const {
+  return {};
+}
+
+void JobIcon::SetSize(const nn::ui2d::Size& size) {}
+
 StatusHP::StatusHP(const StatusHP& source, nn::ui2d::Layout* layout)
   : HelpableElement(source, layout) {
   Initialize();
@@ -506,6 +520,42 @@ std::shared_ptr<ui::ILayoutControl> HPStock::Clone(
   nn::ui2d::Layout* layout) const {
   return Create<HPStock>(*this, layout);
 }
+
+void HPStock::Update() {}
+
+bool HPStock::IsVisible() const {
+  return layout_->GetRootPane()->IsVisible();
+}
+
+void HPStock::SetVisible(bool visible) {
+  layout_->GetRootPane()->SetVisible(visible);
+}
+
+nn::ui2d::Size HPStock::GetSize() const {
+  return {};
+}
+
+void HPStock::SetSize(const nn::ui2d::Size& size) {}
+
+void BattlePopup::Update() {}
+
+bool BattlePopup::IsVisible() const {
+  return layout_->GetRootPane()->IsVisible();
+}
+
+void BattlePopup::SetVisible(bool visible) {
+  layout_->GetRootPane()->SetVisible(visible);
+}
+
+nn::ui2d::Size BattlePopup::GetSize() const {
+  return layout_->GetRootPane()->GetSize();
+}
+
+void BattlePopup::SetSize(const nn::ui2d::Size& size) {
+  layout_->GetRootPane()->SetSize(size);
+}
+
+void BattlePopup::Unknown19() {}
 
 std::shared_ptr<ui::ILayoutControl> BattlePopupBlaze::CreateControl(
   const nn::ui2d::ControlSrc& source, nn::ui2d::Layout* layout,

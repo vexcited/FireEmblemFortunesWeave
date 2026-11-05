@@ -1,8 +1,30 @@
 #pragma once
 
+#include "nn/account/account_types.hpp"
 #include "nn/settings/settings_types.hpp"
+#include "nn/util/bit_flag_set.hpp"
 
 namespace nn::settings::system {
+
+struct ChatTranscriptionSettings {
+  account::Uid uid;
+  TextToSpeechVoiceTypeForChat textToSpeechVoiceType;
+  util::BitFlagSet<32, ChatTranscriptionFlag> flags;
+  uint8_t reserved18[8];
+};
+
+static_assert(sizeof(ChatTranscriptionSettings) == 0x20);
+
+struct ChatTranscriptionSettingsEx {
+  account::Uid uid;
+  TextToSpeechVoiceTypeForChat textToSpeechVoiceType;
+  util::BitFlagSet<32, ChatTranscriptionFlag> flags;
+  LanguageCode textToSpeechLanguageCode;
+  LanguageCode speechToTextLanguageCode;
+  uint8_t reserved28[0x18];
+};
+
+static_assert(sizeof(ChatTranscriptionSettingsEx) == 0x40);
 
 class ChatTranscriptionSettingsManager {
  public:

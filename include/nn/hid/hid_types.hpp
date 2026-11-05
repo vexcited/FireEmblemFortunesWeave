@@ -39,14 +39,26 @@ struct ButtonConfigBack {
   uint64_t _storage;
 };
 
-struct ButtonConfigEmbedded;
-struct ButtonConfigFull;
+struct ButtonConfigEmbedded {
+  uint32_t _storage[21];
+};
+
+struct ButtonConfigFull {
+  uint32_t _storage[21];
+};
+
 struct ButtonConfigJoyConGrip {
   uint64_t _storage;
 };
 
-struct ButtonConfigLeft;
-struct ButtonConfigRight;
+struct ButtonConfigLeft {
+  uint32_t _storage[13];
+};
+
+struct ButtonConfigRight {
+  uint32_t _storage[13];
+};
+
 struct StorageName;
 
 }
@@ -294,7 +306,10 @@ struct FirmwareUpdateDeviceHandle {
 
 enum FirmwareUpdateRequiredReason : uint8_t {};
 struct FirmwareUpdateState;
-struct FirmwareVersion;
+struct FirmwareVersion {
+  uint8_t _storage[16];
+};
+
 struct FirmwareVersionString;
 struct HomeButtonState;
 struct InteractiveArea;

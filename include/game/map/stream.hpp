@@ -57,6 +57,13 @@ public:
     }
   }
 
+  void Read(void* data, int size) {
+    if (size > 0) {
+      memmove(data, buffer_ + position_, size);
+      position_ += size;
+    }
+  }
+
   uint8_t ReadU8() {
     return buffer_[position_++];
   }

@@ -68,7 +68,11 @@ class IApplicationFunctions : public sf::IServiceObject {
   virtual Result RequestToSleep() = 0;
   virtual Result ExitAndGoBackToInStoreDemoMenu() = 0;
   virtual Result SetCrashReportEnabled(bool isEnabled) = 0;
-  NN_AM_RESERVED(40); NN_AM_RESERVED(41); NN_AM_RESERVED(42);
+  NN_AM_RESERVED(40);
+  virtual Result SetApplicationCopyrightImage(const sf::InBuffer& image,
+    int32_t x, int32_t y, int32_t width, int32_t height,
+    int32_t originMode) = 0;
+  NN_AM_RESERVED(42);
   NN_AM_RESERVED(43); NN_AM_RESERVED(44); NN_AM_RESERVED(45);
   NN_AM_RESERVED(46); NN_AM_RESERVED(47); NN_AM_RESERVED(48);
   NN_AM_RESERVED(49); NN_AM_RESERVED(50);
@@ -99,6 +103,8 @@ class IApplicationFunctions : public sf::IServiceObject {
   virtual Result CreateMovieMaker(
     const sf::Out<sf::SharedPointer<grcsrv::IMovieMakerService>>& pOutService,
     sf::NativeHandle&& transferMemory, uint64_t size) = 0;
+  NN_AM_RESERVED(74);
+  virtual Result SetMovieMakerLayerEnabled(bool isEnabled) = 0;
 };
 
 class IAudioController : public sf::IServiceObject {

@@ -141,6 +141,8 @@ private:
   static constexpr uint16_t kFlagWait = 0x80;
   static constexpr uint16_t kFlagActive = 0x100;
 
+  // Takes the next free id, ids skip zero and wrap around.
+  void Register();
   void Unregister();
 
   const ProcCmd* commands_;

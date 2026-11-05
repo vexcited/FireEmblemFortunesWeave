@@ -601,6 +601,10 @@ public:
     return items_[index];
   }
 
+  size_t GetItemCount() const {
+    return items_.size();
+  }
+
   [[gnu::always_inline]] T* Find(const char* name) const {
     const HashedString key(name);
 

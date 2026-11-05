@@ -506,7 +506,7 @@ class IHidSystemServer : public sf::IServiceObject {
   virtual Result AcquireHomeButtonEventHandle(
     sf::NativeHandle*, applet::AppletResourceUserId) = 0;
   virtual Result ActivateHomeButton() = 0;
-  virtual void Reserved9() = 0;
+  virtual Result AcquireSleepButtonEventHandle(sf::NativeHandle*, uint64_t) = 0;
   virtual Result ActivateSleepButton() = 0;
   virtual Result AcquireCaptureButtonEventHandle(
     sf::NativeHandle*, applet::AppletResourceUserId) = 0;
@@ -517,7 +517,7 @@ class IHidSystemServer : public sf::IServiceObject {
   virtual Result ActivateCButton() = 0;
   virtual Result AcquireNfcDeviceUpdateEventHandle(sf::NativeHandle*) = 0;
   virtual Result GetNpadsWithNfc(int64_t*, const sf::OutArray<NpadIdType>&) = 0;
-  virtual void Reserved18() = 0;
+  virtual Result AcquireNfcActivateEventHandle(sf::NativeHandle*, NpadIdType) = 0;
   virtual Result ActivateNfc(
     unsigned int, int, applet::AppletResourceUserId) = 0;
   virtual Result IsNfcActivated(bool*, unsigned int) = 0;
@@ -591,7 +591,8 @@ class IHidSystemServer : public sf::IServiceObject {
     unsigned char*, unsigned char*, unsigned int) = 0;
   virtual Result HasBattery(bool*, unsigned int) = 0;
   virtual Result HasBattery(bool*, bool*, unsigned int) = 0;
-  virtual void Reserved66() = 0;
+  virtual Result GetUniquePadsFromNpad(int64_t*,
+    const sf::OutArray<system::UniquePadId>&, NpadIdType) = 0;
   virtual Result EnableNpadSystemExtState(
     applet::AppletResourceUserId, int) = 0;
   virtual Result GetLastActiveUniquePad(system::UniquePadId*) = 0;
@@ -601,7 +602,8 @@ class IHidSystemServer : public sf::IServiceObject {
     system::ControllerColor*, system::UniquePadId) = 0;
   virtual Result GetAppletDetailedUiType(
     system::AppletDetailedUiType*, system::UniquePadId) = 0;
-  virtual void Reserved72() = 0;
+  virtual Result GetAbstractedPadIdDataFromNpad(int64_t*,
+    const sf::OutArray<int64_t>&, NpadIdType) = 0;
   virtual Result AttachAbstractedPadToNpad(bool*, long, unsigned int) = 0;
   virtual Result DetachAbstractedPadAll() = 0;
   virtual Result CheckAbstractedPadConnection(long) = 0;
@@ -637,9 +639,12 @@ class IHidSystemServer : public sf::IServiceObject {
   virtual Result IsHandheldHidsEnabled(bool*) = 0;
   virtual Result IsJoyAttachedOnAllRail(bool*) = 0;
   virtual Result IsInvertedControllerConnectedOnRail(bool*) = 0;
-  virtual void Reserved99() = 0;
-  virtual void Reserved100() = 0;
-  virtual void Reserved101() = 0;
+  virtual Result AcquirePlayReportControllerUsageUpdateEvent(
+    sf::NativeHandle*) = 0;
+  virtual Result GetPlayReportControllerUsages(int64_t*,
+    const sf::OutArray<system::PlayReportControllerUsage>&) = 0;
+  virtual Result AcquirePlayReportRegisteredDeviceUpdateEvent(
+    sf::NativeHandle*) = 0;
   virtual Result AcquireConnectionTriggerTimeoutEvent(sf::NativeHandle*) = 0;
   virtual Result SendConnectionTrigger(bluetooth::Address) = 0;
   virtual Result AcquireDeviceRegisteredEventForControllerSupport(
@@ -693,7 +698,8 @@ class IHidSystemServer : public sf::IServiceObject {
   virtual void Reserved141() = 0;
   virtual void Reserved142() = 0;
   virtual void Reserved143() = 0;
-  virtual void Reserved144() = 0;
+  virtual Result AcquireJoyDetachOnBluetoothOffEventHandle(
+    sf::NativeHandle*, applet::AppletResourceUserId) = 0;
   virtual Result ListSixAxisSensorHandles(
     int64_t*, const sf::OutArray<system::UniqueSixAxisSensorHandle>&,
     system::UniquePadId) = 0;
@@ -832,10 +838,14 @@ class IHidSystemServer : public sf::IServiceObject {
     const hidconfig::ButtonConfigLeft&, system::UniquePadId) = 0;
   virtual Result SetButtonConfig(
     const hidconfig::ButtonConfigRight&, system::UniquePadId) = 0;
-  virtual void Reserved231() = 0;
-  virtual void Reserved232() = 0;
-  virtual void Reserved233() = 0;
-  virtual void Reserved234() = 0;
+  virtual Result GetButtonConfigEmbedded(hidconfig::ButtonConfigEmbedded*,
+    system::UniquePadId) = 0;
+  virtual Result GetButtonConfigFull(hidconfig::ButtonConfigFull*,
+    system::UniquePadId) = 0;
+  virtual Result GetButtonConfigLeft(hidconfig::ButtonConfigLeft*,
+    system::UniquePadId) = 0;
+  virtual Result GetButtonConfigRight(hidconfig::ButtonConfigRight*,
+    system::UniquePadId) = 0;
   virtual Result GetButtonConfigStorage(
     hidconfig::ButtonConfigEmbedded*, hidconfig::StorageName*, int) = 0;
   virtual Result GetButtonConfigStorage(
@@ -948,6 +958,8 @@ class IHidSystemServer : public sf::IServiceObject {
   virtual Result AcquireAwakeRequestEventHandle(
     sf::NativeHandle*, applet::AppletResourceUserId) = 0;
   virtual Result GetInteractiveArea(system::InteractiveArea*) = 0;
+  virtual Result AcquireInteractiveAreaChangedEventHandle(sf::NativeHandle*,
+    applet::AppletResourceUserId) = 0;
 };
 
 namespace utility {

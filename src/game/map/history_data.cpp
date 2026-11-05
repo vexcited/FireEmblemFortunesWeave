@@ -23,7 +23,7 @@ bool DataAll::Unknown06() const {
 }
 
 const void* DataAll::Unknown07() const {
-  return unknown30_;
+  return &unknown30_;
 }
 
 const void* DataDiff::Unknown02() const {
@@ -47,7 +47,7 @@ bool DataDiff::Unknown06() const {
 }
 
 const void* DataDiff::Unknown07() const {
-  return unknown20_;
+  return &unknown20_;
 }
 
 const void* DataAdditionalUnit::Unknown02() const {

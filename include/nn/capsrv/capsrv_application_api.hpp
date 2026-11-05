@@ -49,7 +49,7 @@ Result LoadAlbumContentsFileThumbnailImageForApplication(int* pOutWidth,
   const ApplicationAlbumEntry& entry);
 Result OpenAlbumMovieReadStreamForApplication(
   AlbumMovieReadStreamHandle* pOutHandle, const ApplicationAlbumEntry& entry);
-Result CloseAlbumMovieReadStreamForApplication(
+void CloseAlbumMovieReadStreamForApplication(
   AlbumMovieReadStreamHandle handle);
 Result GetAlbumMovieReadStreamDataSizeForApplication(size_t* pOutSize,
   AlbumMovieReadStreamHandle handle);

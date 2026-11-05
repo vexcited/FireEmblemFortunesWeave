@@ -2,6 +2,11 @@
 
 #include <stdint.h>
 
+#include <functional>
+#include <unordered_map>
+#include <utility>
+#include <vector>
+
 #include "game/data/data_file.hpp"
 
 namespace game {
@@ -11,12 +16,48 @@ namespace game {
 struct GameVariable {
   uint8_t unknown_00_[0x20];
   int value;
+  uint8_t unknown_24_[0x34];
+  // Called with the variable after its value changed.
+  std::vector<std::function<void(GameVariable*)>> listeners;
 };
 
 class GameVariableTable {
 public:
   const GameVariable* Find(const HashedString& key) const;
+
+  GameVariable* Find(const HashedString& key) {
+    return const_cast<GameVariable*>(std::as_const(*this).Find(key));
+  }
+
+  uint8_t GetFlags() const {
+    return flags_;
+  }
+
+private:
+  uint8_t unknown_00_[0x8];
+  std::unordered_map<uint64_t, GameVariable*> variables_;
+  uint8_t unknown_30_[0x3c0230];
+  uint8_t flags_;
 };
+
+// The variables the engine reads by kind, their names are function local
+// statics hashed on first use.
+enum class SystemVariable : int {
+  kNone = 0,
+  kForceMount = 1,
+  kForceDismount = 2,
+};
+
+const HashedString& GetSystemVariable(SystemVariable kind);
+
+// The variables that ban a feature, 禁止_転職, 禁止_奇跡 and 禁止_汚染 first.
+enum class BanVariable : int {
+  kClassChange = 0,
+  kMiracle = 1,
+  kPollution = 2,
+};
+
+const HashedString& GetBanVariable(BanVariable kind);
 
 class Unit;
 struct PersonData;
@@ -78,6 +119,10 @@ public:
     return variable != nullptr && variable->value != 0;
   }
 
+  GameVariableTable* GetVariables() {
+    return variables_;
+  }
+
   static const GameVariable* FindVariable(const HashedString& key) {
     if (instance_ == nullptr) {
       return nullptr;
@@ -103,6 +148,14 @@ public:
 
   uint8_t GetChapterKind() const {
     return chapter_kind_;
+  }
+
+  const PersonData* GetLeader() const {
+    return leader_;
+  }
+
+  uint8_t GetMapKind() const {
+    return map_kind_;
   }
 
   bool IsMapAvailable() const {
@@ -155,14 +208,16 @@ private:
   const ChapterData* chapter_;
   uint8_t unknown_18_[0x18];
   GameVariableTable* variables_;
-  uint8_t unknown_38_[0x4];
+  uint8_t map_kind_;
+  uint8_t unknown_39_[0x3];
   int mode_;
   int progress_;
   uint8_t unknown_44_[0x4];
   int user_data_;
   uint8_t unknown_4c_[0x10];
   uint32_t flags_;
-  uint8_t unknown_60_[0x28];
+  const PersonData* leader_;
+  uint8_t unknown_68_[0x20];
   UnitRestriction unit_restriction_;
   uint8_t unknown_98_[0x8];
   const MiracleState* miracle_;

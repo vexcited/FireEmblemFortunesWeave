@@ -46,5 +46,8 @@ os::SystemEventType* GetPopFromInteractiveOutChannelEvent(
 bool WaitPopFromInteractiveOutChannelEvent(LibraryAppletHandle handle);
 Result ReadFromStorage(StorageHandle storage, int64_t offset, void* buffer,
   size_t size);
+bool TryPopFromOutChannel(StorageHandle* pOutStorage,
+  LibraryAppletHandle handle);
+[[noreturn]] void JumpLibraryApplet(LibraryAppletHandle handle);
 
 }

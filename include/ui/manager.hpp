@@ -47,6 +47,9 @@ public:
     return icons_;
   }
 
+  // Called by the embedded images once they are created.
+  void Unknown1367b60();
+
   void RemoveEventListener(IEventListener* listener) {
     auto found = std::find(event_listeners_.begin(), event_listeners_.end(),
       listener);

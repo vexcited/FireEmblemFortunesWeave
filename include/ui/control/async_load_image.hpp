@@ -30,8 +30,8 @@ public:
   virtual void Unknown17();
   virtual void Unknown18();
   virtual void Unknown19();
-  virtual void Unknown20();
-  virtual void Unknown21();
+  virtual bool Unknown20();
+  virtual bool Unknown21();
 
 protected:
   AsyncLoadImage(const nn::ui2d::ControlSrc& source, nn::ui2d::Layout* layout,
@@ -39,7 +39,9 @@ protected:
   AsyncLoadImage(const AsyncLoadImage& source, nn::ui2d::Layout* layout);
 
 private:
-  uint8_t unknown_48_[0xb0];
+  uint8_t unknown_48_[0x70];
+  nn::ui2d::Pane* image_pane_;
+  uint8_t unknown_c0_[0x38];
 };
 
 #pragma GCC visibility pop

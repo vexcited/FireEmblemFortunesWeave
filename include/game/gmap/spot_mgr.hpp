@@ -1,6 +1,9 @@
 #pragma once
 
+#include <stdint.h>
+
 #include <functional>
+#include <unordered_map>
 #include <vector>
 
 #include "game/gmap/spot.hpp"
@@ -25,9 +28,14 @@ public:
   static void OnEndPhase();
   static void OnProgressCycle(int cycle);
 
+  // Spots are keyed by the low 32 bits of their row key hash.
+  static Spot* FindSpot(const GmapSpotData* data);
+  static Spot* GetCurrentSpot();
+
 private:
   struct Impl {
-    uint8_t unknown_00_[0x30];
+    uint8_t unknown_00_[0x8];
+    std::unordered_map<uint32_t, Spot*> spots_by_hash;
     std::vector<Spot*> spots;
   };
 

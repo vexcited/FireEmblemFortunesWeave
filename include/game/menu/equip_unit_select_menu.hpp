@@ -3,6 +3,7 @@
 #include <cstdint>
 #include <vector>
 
+#include "game/menu/key_help_entry.hpp"
 #include "game/menu/page_tab.hpp"
 #include "game/menu/unit_grid_select_menu.hpp"
 #include "ui/ui2d.hpp"
@@ -14,17 +15,6 @@ class Unit;
 }
 
 namespace game::menu {
-
-// An entry of the key help, 40 bytes as the vectors of them show.
-struct KeyHelpEntry {
-  const char* name;
-  const char* mid;
-  bool unknown_10_;
-  int32_t unknown_14_;
-  int32_t unknown_18_;
-  bool unknown_1c_;
-  void* unknown_20_;
-};
 
 class EquipUnitSelectMenu : public UnitGridSelectMenu {
 public:

@@ -5,28 +5,12 @@
 
 #include "nn/hid/detail/hid_nmouse_accessor.hpp"
 #include "nn/hid/hid_device_states.hpp"
+#include "nn/hid/hid_npad_state.hpp"
 #include "nn/hid/hid_touch_screen.hpp"
 #include "nn/hid/hid_types.hpp"
 #include "nn/streamplay/streamplay_types.hpp"
 
 namespace nn::hid {
-
-struct NpadAttribute;
-
-struct NpadStateBase {
-  int64_t samplingNumber;
-  NpadButtonSet buttons;
-  AnalogStickState analogStickL;
-  AnalogStickState analogStickR;
-  util::BitFlagSet<32, NpadAttribute> attributes;
-  uint32_t reserved;
-};
-
-struct NpadFullKeyState : NpadStateBase {};
-struct NpadHandheldState : NpadStateBase {};
-struct NpadJoyDualState : NpadStateBase {};
-struct NpadJoyLeftState : NpadStateBase {};
-struct NpadJoyRightState : NpadStateBase {};
 
 struct SixAxisSensorState {
   int64_t deltaTime;

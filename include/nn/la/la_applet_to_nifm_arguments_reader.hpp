@@ -15,7 +15,10 @@ class AppletToNifmArgumentsReader {
   Result GetResult();
 
  private:
-  void* m_Storage;
+  bool ReadNetConnectReturnParam(applet::StorageHandle storage);
+
+  bool m_IsResultAvailable;
+  Result m_Result;
 };
 
 }

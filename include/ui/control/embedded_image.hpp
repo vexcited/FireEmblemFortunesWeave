@@ -33,7 +33,12 @@ protected:
   EmbeddedImage(const EmbeddedImage& source, nn::ui2d::Layout* layout);
 
 private:
-  uint8_t unknown_48_[0x28];
+  uint8_t unknown_48_[0x8];
+  nn::ui2d::Pane* image_pane_;
+  uint8_t unknown_58_[0x8];
+  // Added on both sides of the image width.
+  float margin_;
+  uint8_t unknown_64_[0xc];
 };
 
 #pragma GCC visibility pop
