@@ -28,6 +28,8 @@ struct SightMask {
 
 class Image : public SerializeSingleton<Image> {
 public:
+  class SightMaps;
+
   bool Contains(int x, int z) const {
     return static_cast<uint8_t>(x - left_) < width_ &&
       static_cast<uint8_t>(z - top_) < height_;

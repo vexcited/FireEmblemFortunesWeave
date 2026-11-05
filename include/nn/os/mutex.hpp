@@ -24,9 +24,25 @@ void UnlockMutex(MutexType* mutex);
 bool IsMutexLockedByCurrentThread(const MutexType* mutex);
 Result GetMutexOwnerThread(ThreadType** output, const MutexType* mutex);
 
+namespace detail {
+
+// Owners of a mutex clear it member by member before initializing it, so the
+// padding of MutexType keeps its previous contents.
+inline void ClearMutexMembers(MutexType* mutex) {
+  mutex->initialized = 0;
+  mutex->recursive = 0;
+  mutex->lock_level = 0;
+  mutex->count = 0;
+  mutex->owner = nullptr;
+  mutex->lock = {};
+}
+
+}
+
 class Mutex {
  public:
-  explicit Mutex(bool recursive) : m_Mutex() {
+  explicit Mutex(bool recursive) {
+    detail::ClearMutexMembers(&m_Mutex);
     InitializeMutex(&m_Mutex, recursive, 0);
   }
 

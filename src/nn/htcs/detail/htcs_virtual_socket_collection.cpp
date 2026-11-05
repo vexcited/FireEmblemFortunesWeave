@@ -86,7 +86,8 @@ int virtual_socket::SetSocket(sf::SharedPointer<tma::ISocket> newSocket,
   return 0;
 }
 
-virtual_socket_collection::virtual_socket_collection() : m_Mutex() {
+virtual_socket_collection::virtual_socket_collection() {
+  os::detail::ClearMutexMembers(&m_Mutex);
   os::InitializeMutex(&m_Mutex, true, 0);
   m_NextId = 1;
   m_List = nullptr;

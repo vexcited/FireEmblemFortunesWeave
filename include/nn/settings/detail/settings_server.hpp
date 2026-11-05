@@ -350,7 +350,9 @@ class ISystemSettingsServer : public sf::IServiceObject {
   virtual Result BindChatTranscriptionSettingsChangedEvent(
     sf::Out<os::SystemEventType> pOutValue,
     os::EventClearMode eventClearMode) = 0;
-  virtual void Reserved205() = 0;
+  virtual Result GetDefaultAccountIdentificationFlagSet(
+    sf::Out<util::BitFlagSet<32, system::AccountIdentificationFlag>>
+      pOutFlags) = 0;
   virtual Result GetMouseEnableFlag(sf::Out<bool> pOutValue) = 0;
   virtual Result SetMouseEnableFlag(bool value) = 0;
   virtual void Reserved208() = 0;

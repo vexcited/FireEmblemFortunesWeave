@@ -290,7 +290,8 @@ bool StatusManagerHolder::IsSharedMemoryMapped() const {
   return os::GetSharedMemoryAddress(&m_SharedMemory) != nullptr;
 }
 
-InternalErrorHandler::InternalErrorHandler() : m_Mutex() {
+InternalErrorHandler::InternalErrorHandler() {
+  os::detail::ClearMutexMembers(&m_Mutex);
   os::InitializeMutex(&m_Mutex, false, 0);
   for (IrCameraInternalStatus& status : m_Statuses) {
     status = IrCameraInternalStatus_Available;

@@ -533,7 +533,11 @@ struct GmapCommandData : Data {
 
   unsigned char unknown_18[0x8];
   DataRef<PersonData> person_20;
-  unsigned char unknown_30[0x40];
+  unsigned char unknown_30[0x10];
+  uint8_t unknown_40;
+  uint8_t unknown_41;
+  uint8_t unknown_42;
+  unsigned char unknown_43[0x2d];
 };
 
 static_assert(sizeof(GmapCommandData) == 0x70);
@@ -545,10 +549,19 @@ struct GmapConstructionData : Data {
 
   unsigned char unknown_18[0x8];
   DataRef<PersonData> person_20;
-  unsigned char unknown_30[0x30];
+  uint8_t unknown_30;
+  unsigned char unknown_31[0x2f];
 };
 
 static_assert(sizeof(GmapConstructionData) == 0x60);
+
+struct GmapConstructedObjectData : Data {
+  unsigned char unknown_18[0x8];
+  uint8_t unknown_20;
+  unsigned char unknown_21[0x27];
+};
+
+static_assert(sizeof(GmapConstructedObjectData) == 0x48);
 
 struct GmapLegionTableData : Data {
   void Build() {

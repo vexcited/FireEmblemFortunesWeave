@@ -1,6 +1,7 @@
 #pragma once
 
 #include "nn/result.hpp"
+#include "nn/sf/native_handle.hpp"
 #include "nn/sf/shared_pointer.hpp"
 #include "nn/time/time_types.hpp"
 
@@ -16,6 +17,8 @@ class ISystemClock : public sf::IServiceObject {
     sf::Out<time::SystemClockContext> pOutContext) = 0;
   virtual Result SetSystemClockContext(
     const time::SystemClockContext& context) = 0;
+  virtual Result GetOperationEventReadableHandle(
+    sf::Out<sf::NativeHandle> pOutHandle) = 0;
 };
 
 }

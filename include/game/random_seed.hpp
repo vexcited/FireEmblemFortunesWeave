@@ -9,6 +9,7 @@ namespace game {
 #pragma GCC visibility push(hidden)
 
 class Stream;
+struct HashedString;
 
 // Every random seed shares one lock.
 extern nn::os::MutexType g_random_mutex;
@@ -37,6 +38,14 @@ public:
     nn::os::UnlockMutex(&g_random_mutex);
     return value;
   }
+
+  int Get(int max);
+  int GetRange(int min, int max);
+  float GetFloat(float scale);
+  bool RollPercent(float percent);
+
+  // The chance in percent is the value of a game variable.
+  bool RollVariable(const HashedString& key);
 
   void Serialize(Stream& stream) const;
   void Deserialize(Stream& stream);

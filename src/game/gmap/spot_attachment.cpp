@@ -1,3 +1,4 @@
+#include "game/data/data_files.hpp"
 #include "game/gmap/spot_attachment.hpp"
 
 namespace game::gmap {
@@ -56,8 +57,8 @@ bool SpotAttachmentBase::Unknown14() {
 
 void SpotAttachmentBase::OnProgressCycle(int) {}
 
-int SpotAttachmentBase::Unknown18() {
-  return 0;
+bool SpotAttachmentBase::Unknown18() {
+  return false;
 }
 
 int SpotAttachmentBase::Unknown19() {
@@ -121,7 +122,7 @@ const void* SpotAttachmentBase::Unknown34() {
 void SpotAttachmentBase::Unknown35() {}
 
 int SpotAttachmentFarm::Unknown02() {
-  return 6 * GetData()->unknown20;
+  return 6 * GetData()->unknown_20;
 }
 
 GmapSpotAttachmentConst::Kind SpotAttachmentFarm::GetKind() const {
@@ -133,7 +134,7 @@ int SpotAttachmentFarm::Unknown04() {
 }
 
 int SpotAttachmentFarm::Unknown05() {
-  return 6 * GetGrowthData()->unknown30;
+  return 6 * GetGrowthData()->unknown_30;
 }
 
 uint8_t SpotAttachmentFarm::Unknown07() {
@@ -144,12 +145,12 @@ uint8_t SpotAttachmentFarm::Unknown08() {
   return 5;
 }
 
-void SpotAttachmentFarm::Unknown12() {
+int SpotAttachmentFarm::Unknown12() {
   if (unknown2a_ & 1) {
-    return;
+    return 0;
   }
 
-  SpotAttachmentBase::Unknown12();
+  return SpotAttachmentBase::Unknown12();
 }
 
 bool SpotAttachmentFarm::Unknown14() {
@@ -173,7 +174,7 @@ const void* SpotAttachmentFarm::Unknown34() {
 }
 
 int SpotAttachmentRecruit::Unknown02() {
-  return 6 * GetData()->unknown42;
+  return 6 * GetData()->unknown_42;
 }
 
 GmapSpotAttachmentConst::Kind SpotAttachmentRecruit::GetKind() const {
@@ -181,11 +182,11 @@ GmapSpotAttachmentConst::Kind SpotAttachmentRecruit::GetKind() const {
 }
 
 uint8_t SpotAttachmentRecruit::Unknown07() {
-  return GetData()->unknown40;
+  return GetData()->unknown_40;
 }
 
 uint8_t SpotAttachmentRecruit::Unknown08() {
-  return GetData()->unknown41;
+  return GetData()->unknown_41;
 }
 
 int SpotAttachmentRecruit::Unknown22() {
@@ -209,15 +210,15 @@ const void* SpotAttachmentDispatch::Unknown34() {
 }
 
 int SpotAttachmentExplore::Unknown02() {
-  return 6 * GetData()->unknown42;
+  return 6 * GetData()->unknown_42;
 }
 
 uint8_t SpotAttachmentExplore::Unknown07() {
-  return GetData()->unknown40;
+  return GetData()->unknown_40;
 }
 
 uint8_t SpotAttachmentExplore::Unknown08() {
-  return GetData()->unknown41;
+  return GetData()->unknown_41;
 }
 
 void SpotAttachmentExplore::OnEndPhase() {
@@ -229,15 +230,15 @@ int SpotAttachmentExplore::Unknown31() {
 }
 
 int SpotAttachmentDungeon::Unknown02() {
-  return 6 * GetData()->unknown42;
+  return 6 * GetData()->unknown_42;
 }
 
 uint8_t SpotAttachmentDungeon::Unknown07() {
-  return GetData()->unknown40;
+  return GetData()->unknown_40;
 }
 
 uint8_t SpotAttachmentDungeon::Unknown08() {
-  return GetData()->unknown41;
+  return GetData()->unknown_41;
 }
 
 void SpotAttachmentDungeon::OnEndPhase() {
@@ -249,15 +250,15 @@ int SpotAttachmentDungeon::Unknown31() {
 }
 
 int SpotAttachmentFort::Unknown02() {
-  return 6 * GetData()->unknown42;
+  return 6 * GetData()->unknown_42;
 }
 
 uint8_t SpotAttachmentFort::Unknown07() {
-  return GetData()->unknown40;
+  return GetData()->unknown_40;
 }
 
 uint8_t SpotAttachmentFort::Unknown08() {
-  return GetData()->unknown41;
+  return GetData()->unknown_41;
 }
 
 int SpotAttachmentFort::Unknown31() {
@@ -265,7 +266,7 @@ int SpotAttachmentFort::Unknown31() {
 }
 
 int SpotAttachmentAnimal::Unknown02() {
-  return 6 * GetData()->unknown42;
+  return 6 * GetData()->unknown_42;
 }
 
 GmapSpotAttachmentConst::Kind SpotAttachmentAnimal::GetKind() const {
@@ -273,11 +274,11 @@ GmapSpotAttachmentConst::Kind SpotAttachmentAnimal::GetKind() const {
 }
 
 uint8_t SpotAttachmentAnimal::Unknown07() {
-  return GetData()->unknown40;
+  return GetData()->unknown_40;
 }
 
 uint8_t SpotAttachmentAnimal::Unknown08() {
-  return GetData()->unknown41;
+  return GetData()->unknown_41;
 }
 
 GmapSpotAttachmentConst::Kind SpotAttachmentReconstruction::GetKind() const {

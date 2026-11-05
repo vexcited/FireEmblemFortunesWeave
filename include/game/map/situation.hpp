@@ -38,16 +38,21 @@ struct SituationRecord {
   uint16_t values[4];
 };
 
+// The defaults are the values of the original constructor.
 struct BonusExp {
-  int unknown_00;
-  int unknown_04;
-  int unknown_08;
+  int unknown_00 = 0x32000001;
+  int unknown_04 = 0xc864;
+  int unknown_08 = 0xc864;
 };
 
 class BonusExpList {
 public:
+  static constexpr int kVersion = 2;
+  static constexpr int kMaxCount = 100;
+
   void Serialize(Stream& stream) const;
   void Deserialize(Stream& stream);
+  void Add(const BonusExp& exp);
 
   void Clear() {
     list_.clear();
@@ -73,6 +78,7 @@ class Situation : public SerializeSingleton<Situation> {
 public:
   // Rain puts out fire tricks.
   static constexpr uint32_t kFlagRain = 0x800;
+  static constexpr uint32_t kFlagSight = 0x200;
 
   ~Situation() override;
 
@@ -91,6 +97,11 @@ public:
 
   bool IsRaining() const {
     return (flags_ & kFlagRain) != 0;
+  }
+
+  // The name is a guess, the sight map is only drawn with this flag.
+  bool HasSight() const {
+    return (flags_ & kFlagSight) != 0;
   }
 
   // The force whose sight is shown, the player one unless it is their turn.

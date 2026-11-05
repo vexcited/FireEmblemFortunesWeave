@@ -6,6 +6,7 @@
 #include "nn/am/interfaces.hpp"
 #include "nn/am/service/am_storage.hpp"
 #include "nn/result.hpp"
+#include "nn/sf/native_handle.hpp"
 #include "nn/sf/shared_pointer.hpp"
 
 namespace nn::am::service {
@@ -88,8 +89,10 @@ public:
   virtual void Reserved51() = 0;
   virtual void Reserved52() = 0;
   virtual void Reserved53() = 0;
-  virtual void Reserved54() = 0;
-  virtual void Reserved55() = 0;
+  virtual Result GetFriendInvitationStorageChannelEvent(
+    nn::sf::Out<nn::sf::NativeHandle> outHandle) = 0;
+  virtual Result TryPopFromFriendInvitationStorageChannel(
+    const nn::sf::Out<nn::sf::SharedPointer<IStorage>>& outStorage) = 0;
   virtual void Reserved56() = 0;
   virtual void Reserved57() = 0;
   virtual void Reserved58() = 0;

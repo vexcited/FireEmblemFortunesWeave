@@ -26,3 +26,15 @@ PosixTime ToPosixTimeFromUtc(const CalendarTime& calendarTime);
 CalendarTime ToCalendarTimeInUtc(const PosixTime& posixTime);
 
 }
+
+namespace nn::time {
+
+Result Initialize();
+Result InitializeForMenu();
+Result InitializeForSystem();
+Result InitializeForRepair();
+Result InitializeForSystemUser();
+bool IsInitialized();
+Result Finalize();
+
+}

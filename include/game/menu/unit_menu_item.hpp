@@ -43,8 +43,6 @@ public:
 protected:
   uint8_t unknown_53_[0x5];
   Unit* unit_;
-  bool unknown_60_;
-  bool unknown_61_;
 };
 
 }

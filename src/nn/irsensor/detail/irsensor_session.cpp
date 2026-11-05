@@ -4,7 +4,8 @@
 namespace nn::irsensor::detail {
 
 Session::Session()
-  : m_ActivationCountMax(0x7ffffffe), m_ActivationCount(0), m_Mutex() {
+  : m_ActivationCountMax(0x7ffffffe), m_ActivationCount(0) {
+  os::detail::ClearMutexMembers(&m_Mutex);
   os::InitializeMutex(&m_Mutex, false, 0);
 }
 

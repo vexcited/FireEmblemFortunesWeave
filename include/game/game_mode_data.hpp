@@ -78,6 +78,13 @@ public:
     return variable != nullptr && variable->value != 0;
   }
 
+  static const GameVariable* FindVariable(const HashedString& key) {
+    if (instance_ == nullptr) {
+      return nullptr;
+    }
+    return instance_->variables_->Find(key);
+  }
+
   static bool IsVariableSet(const HashedString& key) {
     if (instance_ == nullptr) {
       return false;

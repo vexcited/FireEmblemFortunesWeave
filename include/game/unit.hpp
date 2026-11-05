@@ -11,6 +11,7 @@ namespace game {
 #pragma GCC visibility push(hidden)
 
 class Unit;
+class UnitItem;
 struct ForceMask;
 
 class Force {
@@ -56,6 +57,38 @@ struct UnitParams {
   };
 
   uint16_t values[kCount];
+};
+
+// The values derived from the parameters and the equipped item. The names
+// are guesses from the parameters they start from.
+struct UnitDerivedParams {
+  enum Kind : uint8_t {
+    kAttack,
+    kTechniqueAttack,
+    kMagicAttack,
+    kMagicGuard,
+    kUnknown4,
+    kUnknown5,
+    kUnknown6,
+    kGuard,
+    kUnknown8,
+    kCount,
+  };
+};
+
+// Scales a value by a factor and caps it at 999 before the final offset.
+// Factors above one scale the value alone, the others the value and base.
+struct ParamModifier {
+  int Apply(int value) const {
+    const float scaled = scale > 1.0f ?
+      base + value * scale : scale * (value + base);
+    const int result = static_cast<int>(scaled);
+    return (result >= 999 ? 999 : result) + offset;
+  }
+
+  int16_t base;
+  int16_t offset;
+  float scale;
 };
 
 // Shared base of units and world map troops.
@@ -160,6 +193,22 @@ public:
   int GetResistance(int mode) const;
   int GetBuild(int mode) const;
   int GetSight(int mode) const;
+  int GetMaxHp(int mode) const;
+
+  // Bit 0 of the mode applies the modifiers, the values never go negative.
+  int GetAttack(bool technique, int might, int count, bool modified) const;
+  int GetMagicAttack(int mode) const;
+  int GetMagicGuard(int mode) const;
+  int GetUnknown5(int mode) const;
+  int GetUnknown6(bool modified) const;
+  int GetGuard(int mode) const;
+  int GetAttackSpeed(int mode) const;
+  int GetUnknown4(bool modified) const;
+  int GetEquippedAttack(bool modified) const;
+
+  // Items with a range skill take the range of the skill.
+  int GetMinRange(const UnitItem& item) const;
+  int GetMaxRange(const UnitItem& item) const;
 
   // Adds the bonuses of the active skills to a row value.
   int GetSkillBonus(const void* key) const {
@@ -243,12 +292,21 @@ private:
   int size_;
   uint8_t unknown_254_[0x4];
   std::vector<uint32_t> equips_;
-  uint8_t unknown_270_[0x1c0];
+  uint8_t unknown_270_[0x2];
+  int16_t derived_bonuses_[UnitDerivedParams::kCount];
+  ParamModifier derived_modifiers_[UnitDerivedParams::kCount];
+  ParamModifier param_modifiers_[UnitParams::kCount];
+  uint8_t unknown_324_[0x10c];
   SkillList skill_lists_[8];
   std::vector<uint32_t> unknown_730_;
   uint8_t unknown_748_[0x10];
   Variables variables_;
-  uint8_t unknown_798_[0x90];
+  uint8_t unknown_798_[0x8];
+  // The equipped item, laid out as a UnitItem.
+  uint16_t equipped_index_;
+  uint8_t equipped_uses_;
+  uint8_t equipped_flags_;
+  uint8_t unknown_7a4_[0x84];
   uint8_t index_;
   uint8_t unknown_829_[0xf];
   UnitEdit edit_;

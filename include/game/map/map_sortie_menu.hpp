@@ -34,7 +34,7 @@ public:
   int Unknown107() override;
   int Unknown112() override;
   void Unknown135(std::vector<int64_t>& handles) override;
-  int Unknown136(std::vector<int64_t>& handles) override;
+  void Unknown136(std::vector<int64_t>& handles) override;
   int ImplUnknown00() override { return 0; }
   int ImplUnknown10() override;
   const char* ImplUnknown03() override;

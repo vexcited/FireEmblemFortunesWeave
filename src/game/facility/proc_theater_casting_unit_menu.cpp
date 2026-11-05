@@ -17,7 +17,7 @@ public:
   int Unknown151() override { return 1; }
   void Unknown156() override;
   void Unknown157() override;
-  void Unknown158() override;
+  int Unknown158() override;
   const char* ImplUnknown03() override { return "MID_TheaterMenu_Act"; }
   const char16_t* ImplUnknown06() override;
 };

@@ -1,6 +1,9 @@
 #include <new>
 
+#include "nn/os/system_event.hpp"
 #include "nn/time/time_network_clock.hpp"
+#include "nn/time/time_standard_steady_clock.hpp"
+#include "nn/time/time_standard_user_system_clock.hpp"
 
 namespace nn::time {
 
@@ -47,6 +50,33 @@ Result EnsureNetworkClockAvailability() {
 
 void CancelEnsuringNetworkClockAvailability() {
   ntc::shim::CancelEnsuringNetworkClockAvailability();
+}
+
+Result CalibrateSystemClockWithInternalOffset() {
+  ntc::shim::SuspendAutonomicTimeCorrection();
+
+  PosixTime networkTime = {};
+  Result result = StandardNetworkSystemClock::GetCurrentTime(&networkTime);
+  if (result.IsSuccess()) {
+    ntc::shim::CorrectionNetworkClockAsyncTask task(
+      os::EventClearMode_AutoClear,
+      ntc::EnsureNetworkClockAvailabilityMode_GetServerTime);
+    result = task.StartTask();
+    if (result.IsSuccess()) {
+      os::WaitSystemEvent(task.GetFinishNotificationEvent());
+      result = task.GetResult();
+      if (result.IsSuccess()) {
+        const int64_t seconds =
+          task.GetServerPosixTime().value - networkTime.value;
+        const TimeSpan offset = GetStandardSteadyClockInternalOffset();
+        SetStandardSteadyClockInternalOffset(
+          TimeSpan{offset.nanoseconds + seconds * 1000000000});
+      }
+    }
+  }
+
+  ntc::shim::ResumeAutonomicTimeCorrection();
+  return result;
 }
 
 void SuspendAutonomicTimeCorrection() {

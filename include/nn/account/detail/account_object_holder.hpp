@@ -6,11 +6,14 @@
 #include "nn/account/account_types.hpp"
 #include "nn/result.hpp"
 #include "nn/sf/shared_pointer.hpp"
+#include "nn/util/optional.hpp"
 
 namespace nn::account {
 
 class IAccountServiceForSystemServiceWithProfileEditor
   : public IAccountServiceForSystemService {};
+
+struct UserHandle;
 
 }
 
@@ -56,6 +59,12 @@ class ObjectHolder {
 class ClientUserHandleStore {
  public:
   static void Clear();
+  static void Add(const UserHandle& handle);
+  static void Delete(const UserHandle& handle);
+  static void List(int* pOutCount, UserHandle* pOutHandles, int count);
+
+ private:
+  static util::optional<UserHandle> s_Handles[8];
 };
 
 void Finalize();

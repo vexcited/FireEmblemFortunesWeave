@@ -15,20 +15,30 @@ struct CalendarAdditionalInfo {
   TimeZone timeZone;
 };
 
-struct ClockSnapshot {
+}
+
+namespace detail {
+
+struct SfClockSnapshot {
   SystemClockContext userContext;
   SystemClockContext networkContext;
   PosixTime userPosixTime;
   PosixTime networkPosixTime;
   CalendarTime userCalendarTime;
   CalendarTime networkCalendarTime;
-  CalendarAdditionalInfo userCalendarAdditionalInfo;
-  CalendarAdditionalInfo networkCalendarAdditionalInfo;
+  sf::CalendarAdditionalInfo userCalendarAdditionalInfo;
+  sf::CalendarAdditionalInfo networkCalendarAdditionalInfo;
   SteadyClockTimePoint steadyClockTimePoint;
   LocationName locationName;
   bool isAutomaticCorrectionEnabled;
   uint8_t type;
 };
+
+}
+
+namespace sf {
+
+using ClockSnapshot = detail::SfClockSnapshot;
 
 }
 
@@ -72,6 +82,20 @@ struct PeriodicBenefitClaimContext {
 SteadyClockTimePoint GetStandardSteadyClockTimePoint(
   const ClockSnapshot& snapshot);
 
+class CheckCalendarTimeCallback;
+
+enum PeriodicBenefitClaimResult : int32_t {};
+
+PeriodicBenefitClaimResult ClaimPeriodicBenefitWithUserSystemClock(
+  PeriodicBenefitClaimContext* pContext, const ClockSnapshot& snapshot,
+  const TimeSpan& maxPenaltyTimeSpan,
+  const TimeSpan& acceptableOperationTimeSpan,
+  const CheckCalendarTimeCallback* pCallback);
+TimeSpan CalculateStandardUserSystemClockDifferenceByUser(
+  const ClockSnapshot& from, const ClockSnapshot& to);
+bool CalculateSpanBetween(TimeSpan* pOutValue, const ClockSnapshot& from,
+  const ClockSnapshot& to);
+
 bool operator==(const ClockSnapshot& lhs, const ClockSnapshot& rhs);
 bool operator==(const PeriodicBenefitClaimContext& lhs,
   const PeriodicBenefitClaimContext& rhs);
@@ -86,6 +110,11 @@ uint8_t GetClockSnapshotInitialType(const ClockSnapshot& snapshot);
 bool IsClockSnapshotAutomaticCorrectionEnabled(const ClockSnapshot& snapshot);
 bool HasLastBenefitReceivedInfo(const PeriodicBenefitClaimContext& context);
 bool HasPenaltyInfo(const PeriodicBenefitClaimContext& context);
+PeriodicBenefitClaimResult ClaimPeriodicBenefitWithUserSystemClock(
+  PeriodicBenefitClaimContext* pContext, const ClockSnapshot& snapshot,
+  const TimeSpan& maxPenaltyTimeSpan,
+  const TimeSpan& acceptableOperationTimeSpan,
+  const CheckCalendarTimeCallback* pCallback);
 
 }
 

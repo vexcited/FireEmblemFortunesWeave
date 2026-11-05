@@ -1,3 +1,8 @@
+#include "nn/diag/diag_abort.hpp"
+#include "nn/time/detail/time_shared_memory_client.hpp"
+#include "nn/time/time_adjustable_system_clock.hpp"
+
+// Included last since its time::sf namespace hides nn::sf in the headers.
 #include "nn/time/time_clock_snapshot.hpp"
 
 namespace nn::time {
@@ -19,6 +24,26 @@ ClockSnapshot::ClockSnapshot() : m_Storage() {
   pSnapshot->networkCalendarAdditionalInfo = epochInfo;
   pSnapshot->locationName = utc;
   pSnapshot->type = 0;
+}
+
+void ClockSnapshot::CreateWithStandardSystemClock(ClockSnapshot* pOutValue) {
+  NN_ABORT_UNLESS(g_pStaticService != nullptr);
+  NN_ABORT_UNLESS_RESULT_SUCCESS(g_pStaticService->GetClockSnapshot(
+    ::nn::sf::Out<detail::SfClockSnapshot>(
+      detail::GetSfClockSnapshotPtr(pOutValue)), 1));
+}
+
+void ClockSnapshot::CreateWithAdjustableSystemClock(ClockSnapshot* pOutValue) {
+  NN_ABORT_UNLESS(g_pStaticService != nullptr);
+  SystemClockContext userContext = {};
+  SystemClockContext networkContext = {};
+  AdjustableUserSystemClock::GetSystemClockContext(&userContext);
+  AdjustableNetworkSystemClock::GetSystemClockContext(&networkContext);
+  NN_ABORT_UNLESS_RESULT_SUCCESS(
+    g_pStaticService->GetClockSnapshotFromSystemClockContext(
+      ::nn::sf::Out<detail::SfClockSnapshot>(
+        detail::GetSfClockSnapshotPtr(pOutValue)),
+      userContext, networkContext, 2));
 }
 
 PosixTime ClockSnapshot::GetStandardUserSystemClockPosixTime() const {

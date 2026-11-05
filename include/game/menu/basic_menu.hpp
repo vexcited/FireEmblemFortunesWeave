@@ -91,6 +91,8 @@ public:
     return nullptr;
   }
 
+  // The nth item among the ones passing the filters.
+  BasicMenuItem* GetItem(int index, bool decidable, bool enable);
   void AddItem(BasicMenuItem* item);
   // The position of the current item among the items passing the filters.
   int GetCurrentIndex(bool decidable, bool enable);
@@ -285,6 +287,8 @@ protected:
   void Unknown16dea40(bool unknown0, bool unknown1, bool unknown2);
   void Unknown16de4d0();
   void Unknown16defa0();
+  // Moves the cursor to the next selectable item.
+  void Unknown16e2860(bool loop);
   void Unknown16df380();
   int Unknown16e1a00();
 

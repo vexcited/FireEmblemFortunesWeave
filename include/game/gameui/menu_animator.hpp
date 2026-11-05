@@ -1,6 +1,13 @@
 #pragma once
 
 #include <cstdint>
+#include <cstdio>
+
+namespace ui {
+
+class LayoutAccessor;
+
+}
 
 namespace game::gameui {
 
@@ -10,6 +17,21 @@ namespace game::gameui {
 class MenuAnimator {
 public:
   static MenuAnimator* instance_;
+
+  // Plays the animation named after a direction and `In` or `Out` on a pane,
+  // returns its handle.
+  int64_t Play(int kind, int mode, ui::LayoutAccessor& accessor,
+    const char* pane, const char* animation);
+
+  static void PlayDirection(int kind, int mode, ui::LayoutAccessor& accessor,
+    const char* pane, const char* direction, const char* suffix) {
+    if (instance_ == nullptr) {
+      return;
+    }
+    char animation[32];
+    std::sprintf(animation, "%s%s", direction, suffix);
+    instance_->Play(kind, mode, accessor, pane, animation);
+  }
 
   static bool IsPlaying(int64_t handle) {
     if (handle == -1 || instance_ == nullptr) {

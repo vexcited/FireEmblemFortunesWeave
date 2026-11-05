@@ -1,6 +1,10 @@
 #include "game/facility/facility_unit_menu.hpp"
+#include "game/facility/mind.hpp"
 
 namespace game::facility {
+
+// Starts the meal with the participants of `Mind`.
+void OpenDiningScene(menu::BasicMenu* menu);
 
 namespace {
 
@@ -14,13 +18,23 @@ public:
   const char* Unknown67() override { return "食事"; }
   void Unknown84() override;
   bool Unknown145() override { return true; }
-  int Unknown150() override { return 1; }
-  void Unknown158() override;
+  bool Unknown150() override { return true; }
+  int Unknown158() override;
   const char* ImplUnknown03() override { return "MID_HotelMenu_Dining"; }
   const char16_t* ImplUnknown06() override;
 };
 
 [[gnu::used]] ProcDiningUnitMenu::ProcDiningUnitMenu() = default;
+
+// The chosen units become the participants.
+int ProcDiningUnitMenu::Unknown158() {
+  Mind::GetInstance()->units_.clear();
+  for (Unit* unit : units_) {
+    Mind::GetInstance()->AddUnit(unit);
+  }
+  OpenDiningScene(this);
+  return 9;
+}
 
 }
 

@@ -22,12 +22,16 @@ private:
 };
 
 // The handled emitter set, the method names are guesses.
+class System;
+struct EmitterSetResource;
+
 class EmitterSet {
 public:
   void Stop();
   bool IsDone() const;
   void Release(bool immediate);
   void Start(int frames);
+  void Update(int unknown, int step, float speed, const void* view);
 
   bool HasLife() const {
     return life_ >= 1 && alive_ != 0;
@@ -39,12 +43,26 @@ public:
   uint8_t unknown0a_;
   uint8_t visible_;
   uint8_t alive_;
-  uint8_t unknown0d_[0x1f];
+  uint8_t unknown0d_[0x13];
+  System* system_;
+  uint8_t unknown28_[0x4];
   int32_t id_;
   uint8_t unknown30_[0x14c];
   int32_t life_;
   uint8_t unknown180_[0x40];
   void* owner_;
+  uint8_t unknown1c8_[0x70];
+  const EmitterSetResource* resource_;
+};
+
+struct EmitterSetResource {
+  uint8_t unknown00_[0x2a];
+  bool done;
+};
+
+class System {
+public:
+  void Release(EmitterSet* set, bool immediate);
 };
 
 // A weak handle, the set it points to stays valid while the ids match.

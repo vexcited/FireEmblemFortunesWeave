@@ -41,7 +41,7 @@ public:
   void Unknown96() override;
 
   virtual void Unknown135(std::vector<int64_t>& handles);
-  virtual int Unknown136(std::vector<int64_t>& handles);
+  virtual void Unknown136(std::vector<int64_t>& handles);
   virtual int Unknown137();
   void ImplUnknown11() override;
 

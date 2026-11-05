@@ -82,6 +82,14 @@ class SharedPointer {
     }
   }
 
+  friend bool operator==(const SharedPointer& lhs, decltype(nullptr)) {
+    return lhs.m_Pointer == nullptr;
+  }
+
+  friend bool operator!=(const SharedPointer& lhs, decltype(nullptr)) {
+    return lhs.m_Pointer != nullptr;
+  }
+
  private:
   Interface* m_Pointer;
 };

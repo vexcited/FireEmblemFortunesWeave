@@ -1,5 +1,6 @@
 #include "game/random_seed.hpp"
 
+#include "game/game_mode_data.hpp"
 #include "game/game_save_const.hpp"
 #include "game/map/stream.hpp"
 #include "nn/os/time.hpp"
@@ -15,6 +16,41 @@ namespace game {
 #pragma GCC visibility push(hidden)
 
 extern int64_t g_start_tick;
+
+int RandomSeed::Get(int max) {
+  return static_cast<int>(Next() & 0x7fffffff) % max;
+}
+
+int RandomSeed::GetRange(int min, int max) {
+  return static_cast<int>(Next() & 0x7fffffff) % (max - min + 1) + min;
+}
+
+float RandomSeed::GetFloat(float scale) {
+  return scale * (static_cast<uint16_t>(Next()) / 65535.0f);
+}
+
+// The percent is compared at a precision of one in a million.
+bool RandomSeed::RollPercent(float percent) {
+  if (percent <= 0.0f) {
+    return false;
+  }
+
+  const uint32_t value = (Next() & 0x7fffffff) % 1000000;
+  return percent * 10000.0f > value;
+}
+
+bool RandomSeed::RollVariable(const HashedString& key) {
+  const GameVariable* variable = GameModeData::FindVariable(key);
+  if (variable == nullptr || variable->value < 1) {
+    return false;
+  }
+
+  if (variable->value > 99) {
+    return true;
+  }
+
+  return RollPercent(variable->value);
+}
 
 void RandomSeed::Serialize(Stream& stream) const {
   int hash = 0;

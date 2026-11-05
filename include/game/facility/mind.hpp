@@ -5,6 +5,12 @@
 
 #include "game/singleton.hpp"
 
+namespace game {
+
+class Unit;
+
+}
+
 namespace game::map {
 
 class Unit;
@@ -18,6 +24,9 @@ namespace game::facility {
 // Facility state shared by the menus, such as the selected data row.
 class Mind : public Singleton<Mind> {
 public:
+  // Adds a unit unless it is already there.
+  bool AddUnit(Unit* unit);
+
   int32_t data_index_;
   uint8_t unknown_0c_[0x8];
   int32_t unknown_14_;

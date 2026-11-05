@@ -12,9 +12,9 @@ public:
   const char* Unknown67() override { return "観劇"; }
   void Unknown84() override;
   bool Unknown145() override { return true; }
-  int Unknown150() override { return 1; }
+  bool Unknown150() override { return true; }
   int Unknown153() override { return 1; }
-  void Unknown158() override;
+  int Unknown158() override;
   const char* ImplUnknown03() override { return "MID_TheaterMenu_Watch"; }
   const char16_t* ImplUnknown06() override;
 };

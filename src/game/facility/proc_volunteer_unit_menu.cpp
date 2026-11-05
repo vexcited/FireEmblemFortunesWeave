@@ -13,9 +13,9 @@ public:
   const char* Unknown67() override { return "奉仕活動"; }
   void Unknown84() override;
   bool Unknown145() override { return true; }
-  int Unknown150() override { return 1; }
+  bool Unknown150() override { return true; }
   uint8_t ImplUnknown08() override { return 0; }
-  void Unknown158() override;
+  int Unknown158() override;
   const char* ImplUnknown03() override { return "MID_TempleMenu_Volunteer"; }
   const char16_t* ImplUnknown06() override;
 };

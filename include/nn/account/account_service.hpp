@@ -44,16 +44,22 @@ class ISessionObject : public sf::IServiceObject {};
 
 namespace profile {
 
+struct ProfileBase;
+struct UserData;
+
 class IProfile : public sf::IServiceObject {
  public:
   virtual void Reserved2() = 0;
   virtual void Reserved3() = 0;
-  virtual void Reserved4() = 0;
-  virtual void Reserved5() = 0;
-  virtual void Reserved6() = 0;
-  virtual void Reserved7() = 0;
-  virtual void Reserved8() = 0;
-  virtual void Reserved9() = 0;
+  virtual Result Get(sf::Out<ProfileBase> pOutBase,
+    sf::Out<UserData> pOutUserData) = 0;
+  virtual Result GetBase(sf::Out<ProfileBase> pOutBase) = 0;
+  virtual Result GetImageSize(sf::Out<uint32_t> pOutSize) = 0;
+  virtual Result LoadImage(sf::Out<uint32_t> pOutSize,
+    const sf::OutBuffer& outImage) = 0;
+  virtual Result GetLargeImageSize(sf::Out<uint32_t> pOutSize) = 0;
+  virtual Result LoadLargeImage(sf::Out<uint32_t> pOutSize,
+    const sf::OutBuffer& outImage) = 0;
   virtual void Reserved10() = 0;
   virtual Result GetStableUserId(sf::Out<StableUserId> pOutId) = 0;
 };
@@ -77,11 +83,15 @@ class IAccountServiceBase : public sf::IServiceObject {
     const Uid& uid) = 0;
   virtual Result IsUserRegistrationRequestPermitted(
     sf::Out<bool> pOutIsPermitted, uint64_t processId) = 0;
+  NN_ACCOUNT_RESERVED(12);
+  virtual Result TrySelectUserWithoutInteraction(sf::Out<Uid> pOutUid,
+    bool isNetworkServiceAccountRequired, uint32_t flags) = 0;
+  virtual Result DebugActivateOpenContextRetention(
+    const sf::Out<sf::SharedPointer<detail::ISessionObject>>& pOutSession) = 0;
 };
 
 class IAccountServiceForApplication : public IAccountServiceBase {
  public:
-  NN_ACCOUNT_RESERVED(12); NN_ACCOUNT_RESERVED(13); NN_ACCOUNT_RESERVED(14);
   NN_ACCOUNT_RESERVED(15); NN_ACCOUNT_RESERVED(16); NN_ACCOUNT_RESERVED(17);
   virtual Result CheckNetworkServiceAvailabilityAsync(
     const sf::Out<sf::SharedPointer<detail::IAsyncContext>>& pOutContext) = 0;
@@ -92,7 +102,6 @@ class IAccountServiceForApplication : public IAccountServiceBase {
 
 class IAccountServiceForSystemService : public IAccountServiceBase {
  public:
-  NN_ACCOUNT_RESERVED(12); NN_ACCOUNT_RESERVED(13); NN_ACCOUNT_RESERVED(14);
   virtual Result GetUserRegistrationNotifier(
     const sf::Out<sf::SharedPointer<detail::INotifier>>& pOutNotifier) = 0;
   virtual Result GetUserStateChangeNotifier(
@@ -134,7 +143,8 @@ class IAccountServiceForSystemService : public IAccountServiceBase {
     const Uid& uid) = 0;
   virtual Result GetPinCodeParity(sf::Out<int32_t> pOutCount,
     const sf::OutArray<bool>& parities, const Uid& uid) = 0;
-  NN_ACCOUNT_RESERVED(34);
+  virtual Result VerifyPinCode(sf::Out<bool> pOutIsVerified, const Uid& uid,
+    const sf::InBuffer& pinCode) = 0;
   virtual Result IsPinCodeVerificationForbidden(sf::Out<bool> pOutIsForbidden,
     const Uid& uid) = 0;
   virtual Result DebugInvalidateUserResourceCache(const Uid& uid) = 0;
@@ -167,7 +177,9 @@ class IAccountServiceForAdministrator
   virtual Result SynchronizeNetworkServiceAccountsSnapshotAsync(
     const sf::Out<sf::SharedPointer<detail::IAsyncContext>>& pOutContext) = 0;
   NN_ACCOUNT_RESERVED(55); NN_ACCOUNT_RESERVED(56); NN_ACCOUNT_RESERVED(57);
-  NN_ACCOUNT_RESERVED(58); NN_ACCOUNT_RESERVED(59);
+  NN_ACCOUNT_RESERVED(58);
+  virtual Result SuspendBackgroundDaemon(
+    const sf::Out<sf::SharedPointer<detail::ISessionObject>>& pOutSession) = 0;
   virtual Result CreateDeviceMigrationUserExportRequest(
     const sf::Out<sf::SharedPointer<ExportRequest>>& pOutRequest,
     bool isMigrationSaveDataRequired) = 0;
@@ -179,11 +191,15 @@ class IAccountServiceForAdministrator
     sf::NativeHandle&& transferMemory, uint32_t size) = 0;
   virtual Result DeleteUserMigrationSaveData() = 0;
   virtual Result SetPinCode(const Uid& uid, const sf::InBuffer& pinCode) = 0;
-  NN_ACCOUNT_RESERVED(65);
+  virtual Result GetPinCodeErrorCount(sf::Out<uint64_t> pOutCount,
+    const Uid& uid) = 0;
   virtual Result SetPinCodeErrorCount(const Uid& uid, uint64_t count) = 0;
   virtual Result SetStartPenaltyTime(time::ClockSnapshot snapshot,
     const Uid& uid) = 0;
-  NN_ACCOUNT_RESERVED(68); NN_ACCOUNT_RESERVED(69);
+  virtual Result GetStartPenaltyTime(
+    sf::Out<time::detail::SfClockSnapshot> pOutSnapshot, const Uid& uid) = 0;
+  virtual Result SetUserUnqualifiedForDebug(uint64_t applicationId,
+    const Uid& uid) = 0;
   virtual Result UnsetUserUnqualifiedForDebug(uint64_t applicationId,
     const Uid& uid) = 0;
   virtual Result ListUsersUnqualifiedForDebug(sf::Out<int32_t> pOutCount,

@@ -2,6 +2,7 @@
 
 #include "nn/result.hpp"
 #include "nn/sf/sf_buffers.hpp"
+#include "nn/sf/native_handle.hpp"
 #include "nn/sf/shared_pointer.hpp"
 #include "nn/time/time_types.hpp"
 
@@ -43,10 +44,13 @@ class ITimeZoneService : public sf::IServiceObject {
     const time::LocationName& name) = 0;
   virtual Result GetTimeZoneRuleVersion(
     sf::Out<time::TimeZoneRuleVersion> pOutVersion) = 0;
-  virtual void Reserved10() = 0;
+  virtual Result GetDeviceLocationNameAndUpdatedTime(
+    sf::Out<time::LocationName> pOutName,
+    sf::Out<time::SteadyClockTimePoint> pOutUpdatedTime) = 0;
   virtual void Reserved11() = 0;
   virtual void Reserved12() = 0;
-  virtual void Reserved13() = 0;
+  virtual Result GetDeviceLocationNameOperationEventReadableHandle(
+    sf::Out<sf::NativeHandle> pOutHandle) = 0;
   virtual Result ToCalendarTime(sf::Out<time::CalendarTime> pOutTime,
     sf::Out<time::detail::CalendarAdditionalInfoIpc> pOutInfo,
     time::PosixTime posixTime, const time::TimeZoneRule& rule) = 0;
@@ -66,7 +70,8 @@ class ITimeZoneService : public sf::IServiceObject {
 
 namespace nn::time {
 
-extern timesrv::detail::service::ITimeZoneService* g_pTimeZoneService;
+extern sf::SharedPointer<timesrv::detail::service::ITimeZoneService>
+  g_pTimeZoneService;
 
 void GetDeviceLocationName(LocationName* pOutName);
 Result LoadTimeZoneRule(TimeZoneRule* pOutRule, const LocationName& name);

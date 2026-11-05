@@ -165,6 +165,10 @@ static_assert(sizeof(LayoutAccessor) == 0x68);
 
 // Sets a string with its message tags expanded.
 void SetTextBoxString(nn::ui2d::TextBox* box, const char16_t* text, bool keep);
+// Formats the arguments into the text box, a count below one copies the
+// format as is.
+void SetTextBoxFormat(nn::ui2d::TextBox* box, const char* format, int count,
+  ...);
 
 // Returns the text extent and writes the size of the text box for it.
 nn::util::Float2 MeasureTextBox(nn::util::Float2* origin,
