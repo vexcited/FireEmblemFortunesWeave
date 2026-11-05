@@ -43,6 +43,9 @@ public:
   bool IsPaneVisible(const char* name);
   // Restarts the animation unless it already plays from its first frame.
   void StartAnimation(const char* name);
+  void PlayAnimation(const char* name, bool unknown, float speed);
+  // The accessor of a part, or the empty accessor when it is not found.
+  LayoutAccessor& FindPart(const char* name);
 
   bool IsVisible();
   void SetPriority(int priority);

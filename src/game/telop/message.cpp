@@ -10,9 +10,13 @@ public:
 
   int Unknown23() override { return 1048576; }
   void Unknown33() override;
-  const char* Unknown53() override;
+  nn::ui2d::Pane* Unknown53() override;
 };
 
 Message::~Message() = default;
+
+nn::ui2d::Pane* Message::Unknown53() {
+  return accessor_.FindPane("L_Bg/Bg");
+}
 
 }

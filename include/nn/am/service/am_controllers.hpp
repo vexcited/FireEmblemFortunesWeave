@@ -130,7 +130,7 @@ class ISelfController : public sf::IServiceObject {
   NN_AM_RESERVED(49); NN_AM_RESERVED(50);
   virtual Result SetAlbumImageTakenNotificationEnabled(bool isEnabled) = 0;
   virtual Result SetAlbumUserData(const sf::InBuffer& userData) = 0;
-  NN_AM_RESERVED(53);
+  virtual Result SaveCurrentScreenShot(int32_t reportOption) = 0;
   virtual Result SetRecordVolumeMuted(bool isMuted) = 0;
   NN_AM_RESERVED(55);
   NN_AM_RESERVED(56); NN_AM_RESERVED(57); NN_AM_RESERVED(58);

@@ -17,4 +17,8 @@ public:
 
 TelopShowDestination::~TelopShowDestination() = default;
 
+void TelopShowDestination::Unknown39() {
+  accessor_.FindPart("L_Tlp").PlayAnimation("Out", 1.0f);
+}
+
 }

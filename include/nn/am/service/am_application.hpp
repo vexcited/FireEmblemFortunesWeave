@@ -14,6 +14,13 @@
 #include "nn/time/time_types.hpp"
 #include "nn/util/uuid.hpp"
 
+namespace nn::grcsrv {
+
+class IMovieMakerService;
+class IMovieWriterService;
+
+}
+
 namespace nn::am {
 
 Interface* GetAudioController();
@@ -81,11 +88,17 @@ class IApplicationFunctions : public sf::IServiceObject {
   NN_AM_RESERVED(63); NN_AM_RESERVED(64);
   virtual Result SetAudioOutputPolicy(int32_t policy) = 0;
   virtual Result IsTensorRtSupported(sf::Out<bool> pOutIsSupported) = 0;
-  NN_AM_RESERVED(67); NN_AM_RESERVED(68); NN_AM_RESERVED(69);
+  virtual Result CreateMovieWriter(
+    const sf::Out<sf::SharedPointer<grcsrv::IMovieWriterService>>& pOutService,
+    sf::NativeHandle&& transferMemory, uint64_t size) = 0;
+  NN_AM_RESERVED(68); NN_AM_RESERVED(69);
   NN_AM_RESERVED(70);
   virtual Result IsLanguageSelectionLimited(sf::Out<bool> pOutIsLimited) = 0;
   virtual Result SaveGamePlayRecordingForDebug(
     sf::Out<sf::NativeHandle> pOutHandle, TimeSpan timeout) = 0;
+  virtual Result CreateMovieMaker(
+    const sf::Out<sf::SharedPointer<grcsrv::IMovieMakerService>>& pOutService,
+    sf::NativeHandle&& transferMemory, uint64_t size) = 0;
 };
 
 class IAudioController : public sf::IServiceObject {

@@ -17,9 +17,28 @@ public:
   void Unknown39() override;
   bool Unknown41() override;
   const char* Unknown51() override { return "L_Merge/L_NextCursor"; }
-  const char* Unknown53() override;
+  nn::ui2d::Pane* Unknown53() override;
 };
 
 TelopCausationMerge::~TelopCausationMerge() = default;
+
+void TelopCausationMerge::Unknown35() {
+  accessor_.PlayAnimation("In", false, 1.0f);
+  accessor_.PlayAnimation("Title_In", false, 1.0f);
+}
+
+void TelopCausationMerge::Unknown36() {
+  accessor_.PlayAnimation(GetWaitAnimation(), 1.0f);
+  unknown_1a4_ = 0.0f;
+  accessor_.PlayAnimation("Title_Wait", 1.0f);
+}
+
+void TelopCausationMerge::Unknown39() {
+  accessor_.PlayAnimation("Title_Out", 1.0f);
+}
+
+nn::ui2d::Pane* TelopCausationMerge::Unknown53() {
+  return accessor_.FindPane("L_Merge/N_Contents");
+}
 
 }

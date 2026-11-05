@@ -155,6 +155,17 @@ public:
     return alpha_;
   }
 
+  // Children are kept in an intrusive list linked through link_, which
+  // directly follows the virtual table pointer.
+  template<typename Function>
+  void ForEachChild(Function function) const {
+    using Node = void* const*;
+    for (Node node = static_cast<Node>(children_[1]); node != children_;
+      node = static_cast<Node>(node[1])) {
+      function(reinterpret_cast<Pane*>(const_cast<void**>(node) - 1));
+    }
+  }
+
   void SetAlpha(uint8_t alpha) {
     alpha_ = alpha;
   }

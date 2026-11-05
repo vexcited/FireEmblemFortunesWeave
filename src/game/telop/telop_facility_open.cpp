@@ -21,4 +21,12 @@ public:
 
 TelopFacilityOpen::~TelopFacilityOpen() = default;
 
+void TelopFacilityOpen::Unknown35() {
+  accessor_.FindPart("L_Tlp").PlayAnimation("In", 1.0f);
+}
+
+void TelopFacilityOpen::Unknown39() {
+  accessor_.FindPart("L_Tlp").PlayAnimation("Out", 1.0f);
+}
+
 }

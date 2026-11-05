@@ -2,6 +2,11 @@
 #include "game/telop/telop_sequence.hpp"
 #pragma GCC visibility pop
 
+#include <algorithm>
+#include <cstring>
+
+#include "game/frame_step.hpp"
+
 namespace game::telop {
 
 // Only the member destruction is reconstructed.
@@ -47,6 +52,25 @@ void TelopSequence::Unknown42() {
   }
 }
 
+bool TelopSequence::Unknown43() {
+  if (unknown_1a4_ < unknown_148_) {
+    unknown_1a4_ = std::min(unknown_148_, unknown_1a4_ + GetFrameStep());
+    return false;
+  }
+  return !voice_.isValid();
+}
+
+bool TelopSequence::IsPartsInFinished(const PartList& parts) {
+  for (const std::weak_ptr<ui::LayoutAccessor>& part : parts) {
+    if (std::shared_ptr<ui::LayoutAccessor> locked = part.lock()) {
+      if (locked->IsAnimationPlaying("In", false)) {
+        return false;
+      }
+    }
+  }
+  return true;
+}
+
 void TelopSequence::Unknown45() {
   if (accessor_.IsAnimationPlaying(GetWaitAnimation(), false)) {
     const char* name = GetWaitAnimation();
@@ -73,6 +97,40 @@ void TelopResult::Unknown33() {
   Unknown57();
   Unknown175fac0();
   Unknown59();
+}
+
+bool TelopResult::Unknown37() {
+  Unknown175ff40();
+  return TelopSequence::Unknown37();
+}
+
+void TelopResult::Unknown38() {
+  TelopSequence::Unknown38();
+  Unknown175ff40();
+  if (title_ != nullptr) {
+    title_->Finish();
+  }
+  Unknown60();
+}
+
+void TelopResult::Unknown45() {
+  TelopSequence::Unknown45();
+  counter_.SetState(2);
+  for (size_t i = 0; i < lines_.size(); ++i) {
+    lines_[i].SetState(2);
+  }
+  Unknown61();
+}
+
+// The last shown child of the title pane, the title itself excepted.
+nn::ui2d::Pane* TelopResult::Unknown53() {
+  nn::ui2d::Pane* found = nullptr;
+  accessor_.FindPane("A_Tlp")->ForEachChild([&found](nn::ui2d::Pane* child) {
+    if (std::strcmp(child->GetName(), "L_Title") != 0 && child->IsVisible()) {
+      found = child;
+    }
+  });
+  return found;
 }
 
 void TelopResult::Unknown46() {

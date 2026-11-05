@@ -3,9 +3,11 @@
 #include <cstdint>
 #include <memory>
 #include <string>
+#include <string_view>
 #include <vector>
 
 #include "game/proc/proc_inst.hpp"
+#include "snd/fnd/weak_handle.hpp"
 #include "ui/layout.hpp"
 #include "ui/layout_accessor.hpp"
 
@@ -16,6 +18,48 @@ class TitleSystem {
 public:
   bool IsPlaying();
   void Close(bool immediate);
+  // Jumps the title animations to their last frame.
+  void Finish();
+};
+
+// Counters and lines shown by the results, their types are not recovered.
+class TelopCounter {
+public:
+  void SetState(int state);
+
+private:
+  uint8_t unknown_00_[0x90];
+};
+
+class TelopLine {
+public:
+  void SetState(int state);
+
+private:
+  uint8_t unknown_00_[0xb8];
+};
+
+// An effect handle checked against the serial of its target.
+class EffectHandle {
+public:
+  bool IsValid() const {
+    return ref_->target != nullptr && ref_->target->serial == ref_->serial;
+  }
+
+  void Stop(bool immediate);
+
+private:
+  struct Target {
+    uint8_t unknown_00_[0x10];
+    uint32_t serial;
+  };
+
+  struct Ref {
+    Target* target;
+    uint32_t serial;
+  };
+
+  Ref* ref_;
 };
 
 // Base of the on-screen captions.
@@ -58,10 +102,15 @@ public:
   virtual void Unknown50();
   virtual const char* Unknown51() { return "L_NextCursor"; }
   virtual int Unknown52() { return 0; }
-  virtual const char* Unknown53() { return nullptr; }
+  virtual nn::ui2d::Pane* Unknown53() { return nullptr; }
   virtual const char* Unknown54() { return nullptr; }
 
+  using PartList = std::vector<std::weak_ptr<ui::LayoutAccessor>>;
+
 protected:
+  // True once no part plays its In animation anymore.
+  static bool IsPartsInFinished(const PartList& parts);
+
   void Unknown1374cc0(bool unknown);
 
   std::shared_ptr<ui::Layout> layout_;
@@ -76,7 +125,8 @@ protected:
   uint8_t unknown_152_[0x4e];
   float unknown_1a0_;
   float unknown_1a4_;
-  uint8_t unknown_1a8_[0x170];
+  snd::fnd::WeakHandle voice_;
+  uint8_t unknown_1b8_[0x160];
   TitleSystem* title_;
   uint8_t unknown_320_[0x18];
 };
@@ -97,6 +147,11 @@ public:
   virtual void Unknown60() {}
   virtual void Unknown61() {}
 
+  bool Unknown37() override;
+  void Unknown38() override;
+  void Unknown45() override;
+  nn::ui2d::Pane* Unknown53() override;
+
 protected:
   // Hides the motivation gauge, its type is not recovered.
   struct Gauge {
@@ -107,9 +162,24 @@ protected:
   };
 
   void Unknown175fac0();
+  void ShowJudge(int kind, int unknown, bool unknown2);
+  void PlayJudge(int kind);
+  void ShowHeadline(int unknown, bool unknown2, const std::string_view& mid,
+    const std::string_view& se, const std::string_view& animation,
+    const std::string_view& type);
+  void ShowSkill(const void* data, const char* mid);
+  // Copies the alpha and translate of the contents and overlay panes to the
+  // numbered parts.
+  void Unknown175ff40();
 
-  uint8_t unknown_338_[0x78];
+  std::string unknown_338_;
+  uint8_t unknown_350_[0x60];
   Gauge* gauge_;
+  uint8_t unknown_3b8_[0x20];
+  TelopCounter counter_;
+  std::vector<TelopLine> lines_;
+  uint8_t unknown_480_[0x8];
+  TitleSystem* sub_title_;
 };
 
 }

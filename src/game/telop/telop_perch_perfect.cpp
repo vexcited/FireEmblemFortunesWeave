@@ -17,9 +17,29 @@ public:
   void Unknown42() override;
   bool Unknown43() override;
   void Unknown45() override;
-  const char* Unknown53() override;
+  nn::ui2d::Pane* Unknown53() override;
+
+private:
+  const void* unknown_338_;
+  TelopLine line_;
+  EffectHandle effect_;
 };
 
 TelopPerchPerfect::~TelopPerchPerfect() = default;
+
+void TelopPerchPerfect::Unknown39() {
+  if (effect_.IsValid()) {
+    effect_.Stop(true);
+  }
+}
+
+void TelopPerchPerfect::Unknown45() {
+  TelopSequence::Unknown45();
+  line_.SetState(2);
+}
+
+nn::ui2d::Pane* TelopPerchPerfect::Unknown53() {
+  return accessor_.FindPane("L_RelianceExpGet_00");
+}
 
 }
