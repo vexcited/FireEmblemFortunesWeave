@@ -1,5 +1,6 @@
 #pragma GCC visibility push(hidden)
 #include "game/character/signal.hpp"
+#include "timeline/key_io.hpp"
 #pragma GCC visibility pop
 
 namespace game::character {
@@ -66,5 +67,329 @@ GAME_CHARACTER_SIGNAL_DEFINE(Signal_TrailHandR)
 GAME_CHARACTER_SIGNAL_DEFINE(Signal_Voice)
 GAME_CHARACTER_SIGNAL_DEFINE(Signal_WeaponAnim)
 GAME_CHARACTER_SIGNAL_DEFINE(Signal_WeaponDrop)
+
+void Signal_ArmorStep::Serialize(timeline::KeyReader* reader,
+  timeline::KeyWriter* writer) {
+  SignalRoot::Serialize(reader, writer);
+}
+
+void Signal_AttackRange::Serialize(timeline::KeyReader* reader,
+  timeline::KeyWriter* writer) {
+  SignalRoot::Serialize(reader, writer);
+  timeline::Serialize(reader, writer, "Near", near_);
+  timeline::Serialize(reader, writer, "Far", far_);
+}
+
+void Signal_AttackVoice::Serialize(timeline::KeyReader* reader,
+  timeline::KeyWriter* writer) {
+  SignalRoot::Serialize(reader, writer);
+  timeline::Serialize(reader, writer, "Label", label_);
+  timeline::Serialize(reader, writer, "Volume", volume_);
+}
+
+void Signal_B_Cancel::Serialize(timeline::KeyReader* reader,
+  timeline::KeyWriter* writer) {
+  SignalRoot::Serialize(reader, writer);
+}
+
+void Signal_BeginTrail::Serialize(timeline::KeyReader* reader,
+  timeline::KeyWriter* writer) {
+  SignalRoot::Serialize(reader, writer);
+  timeline::Serialize(reader, writer, "Mute", mute_);
+  timeline::Serialize(reader, writer, "HandType", hand_type_);
+  timeline::Serialize(reader, writer, "Label", label_);
+  timeline::Serialize(reader, writer, "Sec", sec_);
+}
+
+void Signal_BlendFrames::Serialize(timeline::KeyReader* reader,
+  timeline::KeyWriter* writer) {
+  SignalRoot::Serialize(reader, writer);
+  timeline::Serialize(reader, writer, "Frames", frames_);
+}
+
+void Signal_Camera::Serialize(timeline::KeyReader* reader,
+  timeline::KeyWriter* writer) {
+  SignalRoot::Serialize(reader, writer);
+  timeline::Serialize(reader, writer, "Distance", distance_);
+}
+
+void Signal_CameraEnd::Serialize(timeline::KeyReader* reader,
+  timeline::KeyWriter* writer) {
+  SignalRoot::Serialize(reader, writer);
+}
+
+void Signal_Chant::Serialize(timeline::KeyReader* reader,
+  timeline::KeyWriter* writer) {
+  SignalRoot::Serialize(reader, writer);
+  timeline::Serialize(reader, writer, "ShootDir", shoot_dir_);
+}
+
+void Signal_ClothBlend::Serialize(timeline::KeyReader* reader,
+  timeline::KeyWriter* writer) {
+  SignalRoot::Serialize(reader, writer);
+  timeline::Serialize(reader, writer, "Percentage10x", percentage10x_);
+  timeline::Serialize(reader, writer, "Frames", frames_);
+  timeline::Serialize(reader, writer, "GroupName", group_name_);
+}
+
+void Signal_ClothCancel::Serialize(timeline::KeyReader* reader,
+  timeline::KeyWriter* writer) {
+  SignalRoot::Serialize(reader, writer);
+  timeline::Serialize(reader, writer, "ClothCancelRate", cloth_cancel_rate_);
+}
+
+void Signal_ClothWind::Serialize(timeline::KeyReader* reader,
+  timeline::KeyWriter* writer) {
+  SignalRoot::Serialize(reader, writer);
+  timeline::Serialize(reader, writer, "WindPower", wind_power_);
+  timeline::Serialize(reader, writer, "WindSpeed", wind_speed_);
+  timeline::Serialize(reader, writer, "WindFluctuation", wind_fluctuation_);
+  timeline::Serialize(reader, writer, "WindAngleX", wind_angle_x_);
+  timeline::Serialize(reader, writer, "WindAngleY", wind_angle_y_);
+  timeline::Serialize(reader, writer, "WindFrames", wind_frames_);
+}
+
+void Signal_CutIn::Serialize(timeline::KeyReader* reader,
+  timeline::KeyWriter* writer) {
+  SignalRoot::Serialize(reader, writer);
+}
+
+void Signal_DOF_C::Serialize(timeline::KeyReader* reader,
+  timeline::KeyWriter* writer) {
+  SignalRoot::Serialize(reader, writer);
+  timeline::Serialize(reader, writer, "Bool", bool_);
+  timeline::Serialize(reader, writer, "TargetNode", target_node_);
+}
+
+void Signal_DenyAutoGen::Serialize(timeline::KeyReader* reader,
+  timeline::KeyWriter* writer) {
+  SignalRoot::Serialize(reader, writer);
+}
+
+void Signal_EndTrail::Serialize(timeline::KeyReader* reader,
+  timeline::KeyWriter* writer) {
+  SignalRoot::Serialize(reader, writer);
+  timeline::Serialize(reader, writer, "FadeOut", fade_out_);
+}
+
+void Signal_Evade::Serialize(timeline::KeyReader* reader,
+  timeline::KeyWriter* writer) {
+  SignalRoot::Serialize(reader, writer);
+}
+
+void Signal_FR_Cancel::Serialize(timeline::KeyReader* reader,
+  timeline::KeyWriter* writer) {
+  SignalRoot::Serialize(reader, writer);
+}
+
+void Signal_F_Cancel::Serialize(timeline::KeyReader* reader,
+  timeline::KeyWriter* writer) {
+  SignalRoot::Serialize(reader, writer);
+}
+
+void Signal_F_Cancel_Dungeon::Serialize(timeline::KeyReader* reader,
+  timeline::KeyWriter* writer) {
+  SignalRoot::Serialize(reader, writer);
+}
+
+void Signal_Facial::Serialize(timeline::KeyReader* reader,
+  timeline::KeyWriter* writer) {
+  SignalRoot::Serialize(reader, writer);
+  timeline::Serialize(reader, writer, "ExpressionType", expression_type_);
+}
+
+void Signal_Fade::Serialize(timeline::KeyReader* reader,
+  timeline::KeyWriter* writer) {
+  SignalRoot::Serialize(reader, writer);
+  timeline::Serialize(reader, writer, "FadeType", fade_type_);
+  timeline::Serialize(reader, writer, "FadeTime", fade_time_);
+}
+
+void Signal_Flapping::Serialize(timeline::KeyReader* reader,
+  timeline::KeyWriter* writer) {
+  SignalRoot::Serialize(reader, writer);
+  timeline::Serialize(reader, writer, "FlapVec", flap_vec_);
+  timeline::Serialize(reader, writer, "FlapStrength", flap_strength_);
+  timeline::Serialize(reader, writer, "Volume", volume_);
+}
+
+void Signal_Footstep::Serialize(timeline::KeyReader* reader,
+  timeline::KeyWriter* writer) {
+  SignalRoot::Serialize(reader, writer);
+  timeline::Serialize(reader, writer, "LegType", leg_type_);
+  timeline::Serialize(reader, writer, "StepType", step_type_);
+  timeline::Serialize(reader, writer, "Volume", volume_);
+}
+
+void Signal_GroundParticle::Serialize(timeline::KeyReader* reader,
+  timeline::KeyWriter* writer) {
+  SignalRoot::Serialize(reader, writer);
+  timeline::Serialize(reader, writer, "GParticleType", g_particle_type_);
+  timeline::Serialize(reader, writer, "TargetNode", target_node_);
+}
+
+void Signal_HeadShaking::Serialize(timeline::KeyReader* reader,
+  timeline::KeyWriter* writer) {
+  SignalRoot::Serialize(reader, writer);
+  timeline::Serialize(reader, writer, "Bool", bool_);
+}
+
+void Signal_Hit::Serialize(timeline::KeyReader* reader,
+  timeline::KeyWriter* writer) {
+  SignalRoot::Serialize(reader, writer);
+  timeline::Serialize(reader, writer, "SlashType", slash_type_);
+  timeline::Serialize(reader, writer, "IsDummy", is_dummy_);
+  timeline::Serialize(reader, writer, "SlashVec", slash_vec_);
+  timeline::Serialize(reader, writer, "NoHitFX", no_hit_fx_);
+}
+
+void Signal_IK::Serialize(timeline::KeyReader* reader,
+  timeline::KeyWriter* writer) {
+  SignalRoot::Serialize(reader, writer);
+  timeline::Serialize(reader, writer, "Bool", bool_);
+}
+
+void Signal_Illusion::Serialize(timeline::KeyReader* reader,
+  timeline::KeyWriter* writer) {
+  SignalRoot::Serialize(reader, writer);
+}
+
+void Signal_IllusionEnd::Serialize(timeline::KeyReader* reader,
+  timeline::KeyWriter* writer) {
+  SignalRoot::Serialize(reader, writer);
+}
+
+void Signal_Invisible::Serialize(timeline::KeyReader* reader,
+  timeline::KeyWriter* writer) {
+  SignalRoot::Serialize(reader, writer);
+  timeline::Serialize(reader, writer, "Bool", bool_);
+  timeline::Serialize(reader, writer, "HideEnemy", hide_enemy_);
+}
+
+void Signal_Jump::Serialize(timeline::KeyReader* reader,
+  timeline::KeyWriter* writer) {
+  SignalRoot::Serialize(reader, writer);
+  timeline::Serialize(reader, writer, "LandingPoint", landing_point_);
+}
+
+void Signal_Landing::Serialize(timeline::KeyReader* reader,
+  timeline::KeyWriter* writer) {
+  SignalRoot::Serialize(reader, writer);
+}
+
+void Signal_LookAt::Serialize(timeline::KeyReader* reader,
+  timeline::KeyWriter* writer) {
+  SignalRoot::Serialize(reader, writer);
+  timeline::Serialize(reader, writer, "Percentage10x", percentage10x_);
+  timeline::Serialize(reader, writer, "UseLimit", use_limit_);
+  timeline::Serialize(reader, writer, "EyeWeight10x", eye_weight10x_);
+  timeline::Serialize(reader, writer, "HeadWeight10x", head_weight10x_);
+  timeline::Serialize(reader, writer, "SpineWeight10x", spine_weight10x_);
+  timeline::Serialize(reader, writer, "RotationLimitDeg", rotation_limit_deg_);
+}
+
+void Signal_Particle::Serialize(timeline::KeyReader* reader,
+  timeline::KeyWriter* writer) {
+  SignalRoot::Serialize(reader, writer);
+  timeline::Serialize(reader, writer, "Particle", particle_);
+  timeline::Serialize(reader, writer, "TargetNode", target_node_);
+  timeline::Serialize(reader, writer, "PoseType", pose_type_);
+  timeline::Serialize(reader, writer, "Pos3", pos3_);
+  timeline::Serialize(reader, writer, "Rot3", rot3_);
+  timeline::Serialize(reader, writer, "Scale1", scale1_);
+  timeline::Serialize(reader, writer, "OnHit", on_hit_);
+}
+
+void Signal_Quake::Serialize(timeline::KeyReader* reader,
+  timeline::KeyWriter* writer) {
+  SignalRoot::Serialize(reader, writer);
+  timeline::Serialize(reader, writer, "ShakeType", shake_type_);
+  timeline::Serialize(reader, writer, "ShakePower", shake_power_);
+}
+
+void Signal_RadialBlur::Serialize(timeline::KeyReader* reader,
+  timeline::KeyWriter* writer) {
+  SignalRoot::Serialize(reader, writer);
+  timeline::Serialize(reader, writer, "FScale", f_scale_);
+}
+
+void Signal_RootMoved::Serialize(timeline::KeyReader* reader,
+  timeline::KeyWriter* writer) {
+  SignalRoot::Serialize(reader, writer);
+  timeline::Serialize(reader, writer, "XZ", xz_);
+}
+
+void Signal_RunSpeed::Serialize(timeline::KeyReader* reader,
+  timeline::KeyWriter* writer) {
+  SignalRoot::Serialize(reader, writer);
+  timeline::Serialize(reader, writer, "Speed", speed_);
+  timeline::Serialize(reader, writer, "TimeToMax", time_to_max_);
+}
+
+void Signal_Shoot::Serialize(timeline::KeyReader* reader,
+  timeline::KeyWriter* writer) {
+  SignalRoot::Serialize(reader, writer);
+  timeline::Serialize(reader, writer, "ShootPos", shoot_pos_);
+}
+
+void Signal_SkillTiming::Serialize(timeline::KeyReader* reader,
+  timeline::KeyWriter* writer) {
+  SignalRoot::Serialize(reader, writer);
+}
+
+void Signal_Sound::Serialize(timeline::KeyReader* reader,
+  timeline::KeyWriter* writer) {
+  SignalRoot::Serialize(reader, writer);
+  timeline::Serialize(reader, writer, "Label", label_);
+  timeline::Serialize(reader, writer, "Volume", volume_);
+  timeline::Serialize(reader, writer, "PauseWithTime", pause_with_time_);
+  timeline::Serialize(reader, writer, "StaticPlay", static_play_);
+}
+
+void Signal_Stabilize::Serialize(timeline::KeyReader* reader,
+  timeline::KeyWriter* writer) {
+  SignalRoot::Serialize(reader, writer);
+}
+
+void Signal_TimeScale::Serialize(timeline::KeyReader* reader,
+  timeline::KeyWriter* writer) {
+  SignalRoot::Serialize(reader, writer);
+  timeline::Serialize(reader, writer, "Target", target_);
+  timeline::Serialize(reader, writer, "FScale", f_scale_);
+}
+
+void Signal_TrailHandL::Serialize(timeline::KeyReader* reader,
+  timeline::KeyWriter* writer) {
+  SignalRoot::Serialize(reader, writer);
+  timeline::Serialize(reader, writer, "VertexArraySize", vertex_array_size_);
+  timeline::Serialize(reader, writer, "VertexArray",
+    vertex_array_, vertex_array_size_);
+}
+
+void Signal_TrailHandR::Serialize(timeline::KeyReader* reader,
+  timeline::KeyWriter* writer) {
+  SignalRoot::Serialize(reader, writer);
+  timeline::Serialize(reader, writer, "VertexArraySize", vertex_array_size_);
+  timeline::Serialize(reader, writer, "VertexArray",
+    vertex_array_, vertex_array_size_);
+}
+
+void Signal_Voice::Serialize(timeline::KeyReader* reader,
+  timeline::KeyWriter* writer) {
+  SignalRoot::Serialize(reader, writer);
+  timeline::Serialize(reader, writer, "Label", label_);
+  timeline::Serialize(reader, writer, "Volume", volume_);
+}
+
+void Signal_WeaponAnim::Serialize(timeline::KeyReader* reader,
+  timeline::KeyWriter* writer) {
+  SignalRoot::Serialize(reader, writer);
+  timeline::Serialize(reader, writer, "WeaponAnimType", weapon_anim_type_);
+}
+
+void Signal_WeaponDrop::Serialize(timeline::KeyReader* reader,
+  timeline::KeyWriter* writer) {
+  SignalRoot::Serialize(reader, writer);
+}
 
 }

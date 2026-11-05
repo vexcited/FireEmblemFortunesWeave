@@ -99,6 +99,8 @@ public:
   int InputUnknown12(int direction, bool loop) override;
 
 private:
+  // The start of the TradeItemShopMenuInfo base.
+  uint64_t unknown_428_;
   std::vector<void*> unknown_430_;
   uint64_t unknown_448_;
   // Changes the traded count, returns whether it changed.

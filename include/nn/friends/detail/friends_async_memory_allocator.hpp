@@ -15,7 +15,10 @@ class AsyncMemoryAllocator {
 
   AsyncMemoryAllocator& operator=(AsyncMemoryAllocator&& other);
 
+  bool Allocate(size_t contextSize, size_t functionSize,
+    size_t threadStackSize, AllocateFunction allocate, FreeFunction free);
   void Deallocate();
+  FreeFunction GetDeallocateFunction() const;
   void* GetContextBuffer();
   void* GetFunctionBuffer();
   void* GetThreadStackBuffer();

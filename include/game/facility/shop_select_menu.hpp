@@ -16,7 +16,8 @@ public:
   virtual void Unknown142();
 
 protected:
-  uint64_t unknown_428_;
+  // Lists the items of an item kind.
+  void Unknown1874730(int kind);
 };
 
 class MaterialShopSelectMenu : public IShopSelectMenu {

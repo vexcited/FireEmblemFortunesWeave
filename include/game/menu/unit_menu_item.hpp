@@ -4,6 +4,12 @@
 
 #include "game/menu/game_menu_item.hpp"
 
+namespace game {
+
+class Unit;
+
+}
+
 namespace game::menu {
 
 class UnitMenuItem : public GameMenuItem {
@@ -32,8 +38,11 @@ public:
   bool IsActive() override;
   const char* GetStateName() override;
 
+  Unit* GetUnit() { return unit_; }
+
 protected:
-  uint8_t unknown_53_[0xd];
+  uint8_t unknown_53_[0x5];
+  Unit* unit_;
   bool unknown_60_;
   bool unknown_61_;
 };

@@ -69,6 +69,8 @@ class Material {
 public:
   virtual ~Material();
 
+  bool SetOption(std::string_view name, uint32_t value);
+
   virtual bool SetFloat(std::string_view name, float value);
   virtual bool SetFloat2(std::string_view name, nn::util::Vector2f value);
   virtual bool SetFloat3(std::string_view name, nn::util::Vector3f value);

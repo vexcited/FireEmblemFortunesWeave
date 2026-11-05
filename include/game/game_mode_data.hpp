@@ -18,6 +18,25 @@ public:
   const GameVariable* Find(const HashedString& key) const;
 };
 
+class Unit;
+struct PersonData;
+
+// A unit and its person, as the unit restriction checks take them.
+struct UnitRestrictionKey {
+  const Unit* unit;
+  const PersonData* person;
+};
+
+// The restrictions on the units of the current play, nonzero when a unit is
+// restricted.
+class UnitRestriction {
+public:
+  int Find(const UnitRestrictionKey& key);
+
+private:
+  uint8_t unknown_00_[0x10];
+};
+
 struct ChapterData {
   bool IsTrickItemPrivate() const {
     return flags & 0x80;
@@ -107,6 +126,10 @@ public:
     return user_data_;
   }
 
+  UnitRestriction& GetUnitRestriction() {
+    return unit_restriction_;
+  }
+
   uint16_t GetMiracleCount() const {
     return miracle_->count;
   }
@@ -132,7 +155,9 @@ private:
   int user_data_;
   uint8_t unknown_4c_[0x10];
   uint32_t flags_;
-  uint8_t unknown_60_[0x40];
+  uint8_t unknown_60_[0x28];
+  UnitRestriction unit_restriction_;
+  uint8_t unknown_98_[0x8];
   const MiracleState* miracle_;
 };
 

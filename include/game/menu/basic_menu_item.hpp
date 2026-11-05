@@ -70,6 +70,8 @@ public:
 
   bool IsSelected() const { return selected_; }
 
+  void SetIndex(int index) { index_ = index; }
+
 protected:
   ui::LayoutAccessor& GetAccessor() {
     std::shared_ptr<ui::LayoutAccessor> accessor = accessor_.lock();

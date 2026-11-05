@@ -2,6 +2,7 @@
 
 #include <cstdint>
 #include <memory>
+#include <string>
 #include <vector>
 
 namespace wld {
@@ -188,12 +189,31 @@ public:
   void Unknown09() override;
 };
 
+class LightController {
+public:
+  void Apply(int light, bool immediate);
+};
+
+// Fades named lights toward their target intensity.
 class LightingAnimModule : public ObjectModule {
 public:
+  struct Animation {
+    std::string name;
+    int light;
+    float current;
+    float target;
+  };
+
   ~LightingAnimModule() override;
   int GetPriority() const override;
   const char* GetName() const override;
   void UpdateStage1() override;
+
+private:
+  uint8_t unknown15_[0x3];
+  LightController* lights_;
+  std::vector<Animation> animations_;
+  float speed_;
 };
 
 class MaterialAnimModule : public ObjectModule {

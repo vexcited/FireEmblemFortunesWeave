@@ -40,7 +40,7 @@ public:
   int Unknown106(bool loop) override { return Unknown110(loop); }
   int Unknown108(bool loop) override;
   int Unknown110(bool loop) override;
-  void Unknown114() override;
+  int Unknown114() override;
   int Unknown117() override { return 1; }
   int Unknown118() override { return 1; }
   void Unknown128() override;
@@ -121,7 +121,7 @@ public:
     return 9;
   }
 
-  void Unknown114() override;
+  int Unknown114() override;
   void Unknown129() override {}
   int InputUnknown01() override { return 13; }
   const char* ImplUnknown03() override { return nullptr; }

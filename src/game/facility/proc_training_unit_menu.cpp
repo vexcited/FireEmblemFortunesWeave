@@ -16,7 +16,7 @@ public:
   void Unknown84() override;
   void Unknown88() override;
   int Unknown101() override;
-  int Unknown145() override { return 1; }
+  bool Unknown145() override { return true; }
   void Unknown158() override;
   const char* ImplUnknown03() override { return "MID_ArenaMenu_Training"; }
   const char16_t* ImplUnknown06() override;

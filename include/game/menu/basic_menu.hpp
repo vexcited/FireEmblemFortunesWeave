@@ -65,7 +65,7 @@ public:
 
 protected:
   BasicMenu* menu_;
-  uint8_t unknown_10_[4];
+  int32_t unknown_10_;
   int32_t unknown_14_;
   uint8_t unknown_18_[0x20];
 };
@@ -79,7 +79,21 @@ public:
   BasicMenu* GetParent() { return parent_ != nullptr ? parent_ : this; }
   BasicMenuItem* GetCurrentItem() { return current_; }
 
+  BasicMenuItem* GetItem(int index) {
+    if (index < 0) {
+      return nullptr;
+    }
+    for (auto it = items_.begin(); it != items_.end(); ++it, --index) {
+      if (index == 0) {
+        return *it;
+      }
+    }
+    return nullptr;
+  }
+
   void AddItem(BasicMenuItem* item);
+  // The position of the current item among the items passing the filters.
+  int GetCurrentIndex(bool decidable, bool enable);
 
   enum : uint32_t {
     kFlagCursorHidden = 1 << 2,
@@ -231,7 +245,7 @@ public:
   }
 
   virtual void Unknown113();
-  virtual void Unknown114();
+  virtual int Unknown114();
   virtual int Unknown115() { return 0; }
   virtual int Unknown116() { return 1; }
   virtual int Unknown117() { return 0; }
@@ -287,7 +301,9 @@ protected:
   bool unknown_16a_;
   uint8_t unknown_16b_[0x29];
   int32_t unknown_194_;
-  uint8_t unknown_198_[0xa8];
+  uint8_t unknown_198_[0x90];
+  int32_t unknown_228_;
+  uint8_t unknown_22c_[0x14];
   uint64_t unknown_240_;
   uint64_t unknown_248_;
   // Handles of the window animations still playing.

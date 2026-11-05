@@ -2,6 +2,8 @@
 
 #include "nn/friends/friends_types.hpp"
 
+#include "nn/friends/detail/friends_shim_library_global.hpp"
+
 #include "nn/diag/diag_abort.hpp"
 
 namespace nn::friends {
@@ -156,6 +158,32 @@ const char* FriendPresence::GetAppValue(const char* key) const {
 
 Profile::Profile() {
   memset(this, 0, sizeof(*this));
+}
+
+Result Friend::GetProfileImage(size_t* pOutSize, void* buffer,
+  size_t size) const {
+  detail::ipc::IFriendService* session =
+    detail::ShimLibraryGlobal::GetInstance().GetSyncSession();
+  NN_RESULT_DO(detail::CheckUserStatus(m_Uid));
+  int imageSize = 0;
+  NN_RESULT_DO(session->GetFriendProfileImage(sf::Out<int>(&imageSize),
+    m_Uid, m_AccountId, sf::OutBuffer(buffer, size)));
+  *pOutSize = imageSize;
+  return Result();
+}
+
+Result Profile::GetProfileImageUrl(Url* pOutUrl, ImageSize imageSize) const {
+  detail::ipc::IFriendService* session =
+    detail::ShimLibraryGlobal::GetInstance().GetSyncSession();
+  return session->GetProfileImageUrl(sf::Out<Url>(pOutUrl), m_ProfileImageUrl,
+    imageSize);
+}
+
+Result UserPresence::Commit() {
+  detail::ipc::IFriendService* session =
+    detail::ShimLibraryGlobal::GetInstance().GetSyncSession();
+  NN_RESULT_DO(detail::CheckUserStatus(m_Uid));
+  return session->UpdateUserPresence(m_Uid, *this, 0);
 }
 
 }

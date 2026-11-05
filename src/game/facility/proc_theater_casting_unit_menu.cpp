@@ -13,7 +13,7 @@ public:
   void Unknown84() override;
   int Unknown112() override;
   int ImplUnknown10() override;
-  int Unknown145() override { return 1; }
+  bool Unknown145() override { return true; }
   int Unknown151() override { return 1; }
   void Unknown156() override;
   void Unknown157() override;

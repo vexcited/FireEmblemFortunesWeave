@@ -1,5 +1,6 @@
 #include "nn/friends/detail/friends_async_memory_allocator.hpp"
 
+#include <stdint.h>
 #include <string.h>
 
 namespace nn::friends::detail {
@@ -63,6 +64,60 @@ void* AsyncMemoryAllocator::GetFunctionBuffer() {
 
 void* AsyncMemoryAllocator::GetThreadStackBuffer() {
   return m_ThreadStackBuffer;
+}
+
+// The thread stack is page aligned inside one buffer. The context and the
+// function go to the larger slack around it, or to a second buffer.
+bool AsyncMemoryAllocator::Allocate(size_t contextSize, size_t functionSize,
+  size_t threadStackSize, AllocateFunction allocate, FreeFunction free) {
+  m_Free = free;
+  m_BufferSize = threadStackSize + 0x1000;
+  m_Buffer = allocate(m_BufferSize);
+  if (m_Buffer == nullptr) {
+    return false;
+  }
+  uintptr_t buffer = reinterpret_cast<uintptr_t>(m_Buffer);
+  uintptr_t stack = (buffer + 0xfff) & ~uintptr_t(0xfff);
+  size_t headSize = stack - buffer;
+  m_ThreadStackBuffer = reinterpret_cast<void*>(stack);
+  size_t tailSize = m_BufferSize - threadStackSize - headSize;
+  uintptr_t slack = headSize < tailSize ? stack + threadStackSize : buffer;
+  size_t slackSize = headSize > tailSize ? headSize : tailSize;
+  size_t contextAligned = (contextSize + 15) & ~size_t(15);
+  size_t functionAligned = (functionSize + 15) & ~size_t(15);
+  if (contextAligned + functionAligned <= slackSize) {
+    m_ContextBuffer = reinterpret_cast<void*>(slack);
+    m_FunctionBuffer = reinterpret_cast<void*>(slack + contextAligned);
+  }
+  else if (contextAligned <= slackSize) {
+    m_ContextBuffer = reinterpret_cast<void*>(slack);
+  }
+  else if (functionAligned <= slackSize) {
+    m_FunctionBuffer = reinterpret_cast<void*>(slack);
+  }
+  m_ThreadStackSize = (m_ContextBuffer == nullptr ? contextAligned : 0) +
+    (m_FunctionBuffer == nullptr ? functionAligned : 0);
+  if (m_ThreadStackSize == 0) {
+    return true;
+  }
+  m_ThreadStack = allocate(m_ThreadStackSize);
+  if (m_ThreadStack == nullptr) {
+    Deallocate();
+    return false;
+  }
+  uintptr_t extra = reinterpret_cast<uintptr_t>(m_ThreadStack);
+  if (m_ContextBuffer == nullptr) {
+    m_ContextBuffer = reinterpret_cast<void*>(extra);
+    extra += contextAligned;
+  }
+  if (m_FunctionBuffer == nullptr) {
+    m_FunctionBuffer = reinterpret_cast<void*>(extra);
+  }
+  return true;
+}
+
+FreeFunction AsyncMemoryAllocator::GetDeallocateFunction() const {
+  return m_Free;
 }
 
 }

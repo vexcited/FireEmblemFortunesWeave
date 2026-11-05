@@ -16,6 +16,10 @@ void IShopSelectMenu::Unknown140() {}
 
 void IShopSelectMenu::Unknown141() {}
 
+void IShopSelectMenu::Unknown142() {
+  Unknown16defa0();
+}
+
 int MaterialShopSelectMenu::Unknown143() {
   return 0;
 }

@@ -12,7 +12,7 @@ public:
   const char* Unknown65() override { return "奉仕活動"; }
   const char* Unknown67() override { return "奉仕活動"; }
   void Unknown84() override;
-  int Unknown145() override { return 1; }
+  bool Unknown145() override { return true; }
   int Unknown150() override { return 1; }
   uint8_t ImplUnknown08() override { return 0; }
   void Unknown158() override;

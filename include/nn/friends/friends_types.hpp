@@ -11,6 +11,12 @@ namespace nn::friends {
 
 enum PresenceStatus : int32_t {};
 
+struct Url {
+  char value[160];
+};
+
+enum ImageSize : uint16_t {};
+
 struct ApplicationInfo {
   uint64_t applicationId;
   uint64_t presenceGroupId;
@@ -48,6 +54,7 @@ class Friend {
   bool IsNewly() const;
   Result Update();
   bool IsValid() const;
+  Result GetProfileImage(size_t* pOutSize, void* buffer, size_t size) const;
 
  private:
   account::Uid m_Uid;
@@ -68,11 +75,13 @@ class Profile {
   account::NetworkServiceAccountId GetAccountId() const;
   const account::Nickname& GetNickname() const;
   bool IsValid() const;
+  Result GetProfileImageUrl(Url* pOutUrl, ImageSize imageSize) const;
 
  private:
   account::NetworkServiceAccountId m_AccountId;
   account::Nickname m_Nickname;
-  uint8_t m_Reserved29[0xa7];
+  uint8_t m_Reserved29[7];
+  Url m_ProfileImageUrl;
   bool m_IsValid;
   uint8_t m_ReservedD1[0x2f];
 };
@@ -88,6 +97,7 @@ class UserPresence {
   Result SetAppValue(const char* key, const char* value);
   void DeclareOpenOnlinePlaySession();
   void DeclareCloseOnlinePlaySession();
+  Result Commit();
 
  private:
   Result SetAppValueImpl(const char* key, const char* value);

@@ -20,6 +20,9 @@ public:
   void Refresh(bool immediate);
 };
 
+// Shows or hides a key of the footer key help.
+void SetFooterKeyVisible(const char* name, bool visible);
+
 #pragma GCC visibility pop
 
 }

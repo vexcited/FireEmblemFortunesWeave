@@ -13,7 +13,7 @@ public:
   const char* Unknown65() override { return "食事"; }
   const char* Unknown67() override { return "食事"; }
   void Unknown84() override;
-  int Unknown145() override { return 1; }
+  bool Unknown145() override { return true; }
   int Unknown150() override { return 1; }
   void Unknown158() override;
   const char* ImplUnknown03() override { return "MID_HotelMenu_Dining"; }

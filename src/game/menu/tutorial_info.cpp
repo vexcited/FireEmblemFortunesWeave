@@ -20,7 +20,7 @@ public:
   void Unknown84() override;
   int Unknown100() override { return 0; }
   int Unknown101() override { return 0; }
-  void Unknown114() override;
+  int Unknown114() override;
   int Unknown115() override;
 };
 

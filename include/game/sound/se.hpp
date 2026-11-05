@@ -33,6 +33,7 @@ inline void PlaySe(const char* label) {
 }
 
 void PlayCursorSe();
+void PlayCursorCharaSe();
 // The horizontal cursor sound, with a medium vibration when enabled.
 void PlayCursorHorizontalSe();
 void PlayCursorHorizontalLeftSe();

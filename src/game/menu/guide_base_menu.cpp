@@ -20,7 +20,7 @@ public:
   int Unknown106(bool loop) override;
   int Unknown108(bool loop) override;
   int Unknown110(bool loop) override;
-  void Unknown114() override;
+  int Unknown114() override;
   int Unknown117() override { return 1; }
   int Unknown118() override { return 1; }
 };

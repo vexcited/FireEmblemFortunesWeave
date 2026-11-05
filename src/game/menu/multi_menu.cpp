@@ -14,7 +14,7 @@ public:
   int Unknown68() override;
   int Unknown101() override;
   int Unknown107() override;
-  void Unknown114() override;
+  int Unknown114() override;
   virtual void Unknown135() {}
   virtual void Unknown136() {}
   virtual void Unknown137() {}
@@ -76,7 +76,7 @@ public:
   int Unknown107() override;
   int Unknown109() override;
   int Unknown112() override;
-  void Unknown114() override;
+  int Unknown114() override;
   void Unknown134() override;
   void Unknown137() override;
   void Unknown138() override;
