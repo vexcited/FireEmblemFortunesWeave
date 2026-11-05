@@ -612,6 +612,16 @@ public:
     return found == items_by_hash_.end() ? nullptr : found->second;
   }
 
+  T* FindByHash(uint64_t hash) const {
+    const auto found = items_by_hash_.find(hash);
+    return found == items_by_hash_.end() ? nullptr : found->second;
+  }
+
+  T* FindByShortHash(uint32_t hash) const {
+    const auto found = items_by_short_hash_.find(hash);
+    return found == items_by_short_hash_.end() ? nullptr : found->second;
+  }
+
   void Unload() {
     if (resources_.empty()) {
       return;

@@ -15,8 +15,8 @@ Result CreateFactorySettingsServerProxyForIpc(
 Result CreateFirmwareDebugSettingsServerProxyForIpc(
   sf::SharedPointer<IFirmwareDebugSettingsServer>* pOutProxy);
 
-Result CopySettingsName(SettingsName*, const char*);
-Result CopySettingsItemKey(SettingsItemKey*, const char*);
+void CopySettingsName(SettingsName*, const char*);
+void CopySettingsItemKey(SettingsItemKey*, const char*);
 Result GetDebugModeFlag(bool*);
 Result GetSettingsItemValueSize(unsigned long*, const char*, const char*);
 Result GetSettingsItemValue(

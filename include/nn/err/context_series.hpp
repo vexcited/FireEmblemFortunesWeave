@@ -22,6 +22,12 @@ struct RawContext {
   uint32_t reserved04;
   void* data;
   MemoryResourceDeleter deleter;
+
+  uint8_t GetType() const;
+  const void* GetData() const;
+  size_t GetDataSize() const;
+  size_t GetSerializationSize() const;
+  size_t Serialize(void* buffer, size_t bufferSize) const;
 };
 
 struct ContextSeriesEntry {
@@ -30,11 +36,22 @@ struct ContextSeriesEntry {
   uint8_t active;
   uint8_t reserved11[7];
   RawContext context;
+
+  bool IsLinkedWithOtherEntries() const;
+  ContextSeriesEntry* Prev() const;
+  ContextSeriesEntry* Next() const;
+  void LinkNext(ContextSeriesEntry* entry);
+  const RawContext& GetRawContext() const;
 };
 
 struct ContextSeries {
   ContextSeriesEntry* first;
   ContextSeriesEntry* last;
+
+  bool IsEmpty() const;
+  size_t GetSerializationSize() const;
+  const ContextSeriesEntry* CBegin() const;
+  const ContextSeriesEntry* CEnd() const;
 };
 
 struct ContextSeriesHolder {

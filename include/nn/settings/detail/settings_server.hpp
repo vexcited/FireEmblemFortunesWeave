@@ -7,6 +7,16 @@
 
 namespace nn::settings {
 
+class ISettingsItemKeyIterator : public sf::IServiceObject {
+ public:
+  virtual void Reserved2() = 0;
+  virtual void Reserved3() = 0;
+  virtual Result GoNext() = 0;
+  virtual Result GetKeySize(sf::Out<uint64_t> pOutSize) = 0;
+  virtual Result GetKey(sf::Out<uint64_t> pOutSize,
+    const sf::OutBuffer& outBuffer) = 0;
+};
+
 class ISettingsServer : public sf::IServiceObject {
  public:
   virtual void Reserved2() = 0;
@@ -83,8 +93,11 @@ class ISystemSettingsServer : public sf::IServiceObject {
     const sf::InArray<system::AccountNotificationSettings>& values) = 0;
   virtual Result GetVibrationMasterVolume(sf::Out<float> pOutValue) = 0;
   virtual Result SetVibrationMasterVolume(float value) = 0;
-  virtual void Reserved30() = 0;
-  virtual void Reserved31() = 0;
+  virtual Result GetSettingsItemValueSize(sf::Out<uint64_t> pOutSize,
+    const SettingsName& name, const SettingsItemKey& key) = 0;
+  virtual Result GetSettingsItemValue(sf::Out<uint64_t> pOutSize,
+    const sf::OutBuffer& outBuffer, const SettingsName& name,
+    const SettingsItemKey& key) = 0;
   virtual Result GetTvSettings(sf::Out<system::TvSettings> pOutValue) = 0;
   virtual Result SetTvSettings(const system::TvSettings& value) = 0;
   virtual Result GetEdid(sf::Out<system::Edid> pOutValue) = 0;
@@ -555,9 +568,13 @@ class IFirmwareDebugSettingsServer : public sf::IServiceObject {
  public:
   virtual void Reserved2() = 0;
   virtual void Reserved3() = 0;
-  virtual void Reserved4() = 0;
-  virtual void Reserved5() = 0;
-  virtual void Reserved6() = 0;
+  virtual Result SetSettingsItemValue(const SettingsName& name,
+    const SettingsItemKey& key, const sf::InBuffer& buffer) = 0;
+  virtual Result ResetSettingsItemValue(const SettingsName& name,
+    const SettingsItemKey& key) = 0;
+  virtual Result CreateSettingsItemKeyIterator(
+    const sf::Out<sf::SharedPointer<ISettingsItemKeyIterator>>& pOutIterator,
+    const SettingsName& name) = 0;
   virtual Result ReadSettings(
     sf::Out<unsigned long> pOutValue, const sf::OutBuffer& outBuffer,
     int value) = 0;

@@ -9,6 +9,11 @@ class MediaState {
 public:
   enum State : int32_t {
     State_None,
+    State_Initialized,
+    State_MediaSet = 3,
+    State_Started,
+    State_Stopped,
+    State_MediaSourceMode = 8,
   };
 
   virtual ~MediaState();
@@ -16,8 +21,13 @@ public:
   void SetState(State state);
   State GetState() const;
 
+protected:
+  static constexpr int FunctionCountMax = 31;
+  static constexpr int ValidStateCountMax = 10;
+
+  State m_ValidStates[FunctionCountMax][ValidStateCountMax];
+
 private:
-  uint8_t m_Reserved[1240];
   std::atomic<State> m_State;
 };
 

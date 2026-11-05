@@ -103,6 +103,7 @@ bool IsDebugModeEnabled();
 unsigned long GetSettingsItemValueSize(const char* name, const char* key);
 unsigned long GetSettingsItemValue(
   void* buffer, unsigned long size, const char* name, const char* key);
+SettingsItemKeyIterator CreateSettingsItemKeyIterator(const char* name);
 void DestroySettingsItemKeyIterator(SettingsItemKeyIterator* pOutValue);
 unsigned long GetSettingsItemKeySize(
   const SettingsItemKeyIterator& settingsItemKeyIterator);

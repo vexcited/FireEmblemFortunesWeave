@@ -17,10 +17,14 @@ struct ContextSeriesArray {
     size_t context_count;
   };
 
+  struct SeriesHolder;
+
   os::SdkRecursiveMutexType mutex;
   Storage storage;
 
   void AttachStorage(Storage&& storage);
+  void lock();
+  void unlock();
 };
 
 struct ContextWriterClientResourceAccessor {

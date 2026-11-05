@@ -52,9 +52,15 @@ struct LanguageCode {
   char string[8];
 };
 
-struct SettingsItemKey;
+struct SettingsItemKey {
+  char value[72];
+};
 
-struct SettingsName;
+struct SettingsName {
+  char value[72];
+};
+
+class ISettingsItemKeyIterator;
 
 }
 
@@ -90,7 +96,10 @@ struct WlanRegulatoryDomain;
 
 namespace nn::settings::fwdbg {
 
-struct SettingsItemKeyIterator;
+struct SettingsItemKeyIterator {
+  ISettingsItemKeyIterator* _impl;
+  uint64_t _reserved;
+};
 
 enum SettingsTarget : int32_t {};
 

@@ -72,6 +72,18 @@ public:
     return low | middle << 16 | static_cast<uint32_t>(ReadU8()) << 24;
   }
 
+  uint64_t ReadU64() {
+    const uint64_t low = ReadU32();
+    return low | static_cast<uint64_t>(ReadU32()) << 32;
+  }
+
+  // Rows are stored as their key hash or as its low 32 bits.
+  template<typename T>
+  const T* ReadData();
+
+  template<typename T>
+  const T* ReadShortData();
+
   void ReadString(std::string& value) {
     const uint16_t length = ReadU16();
     if (length == 0) {

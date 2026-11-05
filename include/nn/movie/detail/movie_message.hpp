@@ -1,5 +1,6 @@
 #pragma once
 
+#include <atomic>
 #include <stddef.h>
 #include <stdint.h>
 
@@ -12,7 +13,12 @@ namespace nn::movie::detail {
 
 class Message {
 public:
+  Message()
+    : m_Result{0x3f100}, m_Waiter(nullptr), m_WaitTimeMs(0),
+      m_IsTimedOut(false), m_ReferenceCount(0) {}
+
   virtual ~Message();
+  virtual void Execute() = 0;
 
   void Reset();
   os::LightEventType* GetWaiter();
@@ -26,11 +32,20 @@ public:
   void Wait();
   bool TimedWait(int64_t waitTimeMs);
 
+  void AddReference() {
+    ++m_ReferenceCount;
+  }
+
+  bool RemoveReference() {
+    return --m_ReferenceCount == 0;
+  }
+
 private:
   Result m_Result;
   os::LightEventType* m_Waiter;
   int64_t m_WaitTimeMs;
   bool m_IsTimedOut;
+  std::atomic<uint32_t> m_ReferenceCount;
 };
 
 class MessageBufferList {

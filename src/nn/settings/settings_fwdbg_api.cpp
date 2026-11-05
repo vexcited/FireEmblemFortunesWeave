@@ -25,6 +25,13 @@ unsigned long GetSettingsItemValue(
   return value;
 }
 
+SettingsItemKeyIterator CreateSettingsItemKeyIterator(const char* name) {
+  SettingsItemKeyIterator iterator = {};
+  NN_ABORT_UNLESS_RESULT_SUCCESS(detail::CreateSettingsItemKeyIterator(
+    &iterator, name));
+  return iterator;
+}
+
 void DestroySettingsItemKeyIterator(SettingsItemKeyIterator* pOutValue) {
   NN_ABORT_UNLESS_RESULT_SUCCESS(detail::DestroySettingsItemKeyIterator(
     pOutValue));
