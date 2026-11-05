@@ -62,12 +62,36 @@ To DynamicCast(From* object) {
   return nullptr;
 }
 
+class Material {
+public:
+  void SetColor(uint32_t color) {
+    color_ = color;
+  }
+
+private:
+  uint8_t unknown_00_[0xc];
+  uint32_t color_;
+};
+
 class Pane {
 public:
   static const detail::RuntimeTypeInfo* GetRuntimeTypeInfoStatic();
 
   virtual ~Pane();
   virtual const detail::RuntimeTypeInfo* GetRuntimeTypeInfo() const;
+  virtual void Unknown18();
+  virtual void Unknown20();
+  virtual void Unknown28();
+  virtual void Unknown30();
+  virtual void Unknown38();
+  virtual void Unknown40();
+  virtual void Unknown48();
+  virtual uint8_t GetMaterialNum() const;
+  virtual Material* GetMaterial(int index) const;
+  virtual void Unknown60();
+  virtual void Unknown68();
+  virtual void Unknown70();
+  virtual Pane* FindPaneByName(const char* name, bool recursive);
 
   Pane* GetParent() const {
     return parent_;
@@ -117,6 +141,12 @@ public:
     return (flag_ & FlagVisible) != 0;
   }
 
+  Material* GetMaterial() const;
+
+  bool IsGlobalMatrixDirty() const {
+    return (flag_ & FlagGlobalMatrixDirty) != 0;
+  }
+
   void SetVisible(bool visible) {
     flag_ = static_cast<uint8_t>((flag_ & ~FlagVisible) | visible);
   }
@@ -162,14 +192,33 @@ public:
   void SetColor(uint32_t color);
 };
 
+class Alignment : public Pane {
+public:
+  ~Alignment() override;
+
+  void RequestAlignment();
+};
+
+class Layout;
+
 class Parts : public Pane {
 public:
+  Layout* GetLayout() const {
+    return layout_;
+  }
+
   static const detail::RuntimeTypeInfo* GetRuntimeTypeInfoStatic() {
     static const detail::RuntimeTypeInfo s_TypeInfo(
       Pane::GetRuntimeTypeInfoStatic());
     return &s_TypeInfo;
   }
+
+private:
+  uint8_t unknown_c9_[0x1f];
+  Layout* layout_;
 };
+
+class AnimTransform;
 
 class Layout {
 public:
@@ -177,6 +226,14 @@ public:
   static void FreeMemory(void* memory);
 
   virtual ~Layout();
+  virtual void Unknown10();
+  virtual void DeleteAnimTransform(AnimTransform* transform);
+  virtual void Unknown20();
+  virtual void Unknown28();
+  virtual void Unknown30();
+  virtual void Unknown38();
+  virtual void Unknown40();
+  virtual void UnbindAllAnimation();
 
   Pane* GetRootPane() const {
     return root_pane_;
@@ -185,6 +242,8 @@ public:
   const char* GetName() const {
     return name_;
   }
+
+  Parts* FindPartsPaneByName(const char* name);
 
 private:
   void* animation_transforms_[2];

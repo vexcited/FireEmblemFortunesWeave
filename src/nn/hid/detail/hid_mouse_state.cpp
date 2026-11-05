@@ -1,10 +1,12 @@
 #include <algorithm>
 #include <new>
 
+#include "nn/diag/unexpected_default.hpp"
 #include "nn/hid/detail/hid_abort.hpp"
 #include "nn/hid/detail/hid_ring_lifo.hpp"
 #include "nn/hid/detail/hid_server.hpp"
 #include "nn/hid/detail/hid_shared_memory_accessor.hpp"
+#include "nn/hid/detail/hid_utility.hpp"
 #include "nn/hid/hid_device_states.hpp"
 
 namespace nn::hid::detail {
@@ -88,6 +90,100 @@ Result GetMouseStates(int* pOutCount, MouseState* pOutStates, int count) {
     return ResultMouseNotInitialized;
   }
   *pOutCount = pLifo->Read(pOutStates, count);
+  return Result{};
+}
+
+}
+
+namespace nn::hid::detail {
+
+Result InitializeDebugMouse();
+Result FinalizeDebugMouse();
+Result GetDebugMouseState(MouseState* pOutState);
+Result GetDebugMouseStates(int* pOutCount, MouseState* pOutStates, int count);
+
+namespace {
+
+enum MouseType {
+  MouseType_Mouse,
+  MouseType_DebugMouse,
+};
+
+}
+
+MouseHandle GetMouseHandle() {
+  return utility::GetMouseHandle(
+    static_cast<utility::MouseTypeIdx>(MouseType_Mouse));
+}
+
+MouseHandle GetDebugMouseHandle() {
+  return utility::GetMouseHandle(
+    static_cast<utility::MouseTypeIdx>(MouseType_DebugMouse));
+}
+
+Result InitializeMouse(const MouseHandle& handle) {
+  switch (utility::GetMouseHandleTypeIdx(handle)) {
+    case MouseType_Mouse:
+      NN_RESULT_DO(InitializeMouse());
+      break;
+    case MouseType_DebugMouse:
+      NN_RESULT_DO(InitializeDebugMouse());
+      break;
+    default:
+      nn::detail::UnexpectedDefaultImpl();
+  }
+  return Result{};
+}
+
+Result FinalizeMouse(const MouseHandle& handle) {
+  switch (utility::GetMouseHandleTypeIdx(handle)) {
+    case MouseType_Mouse:
+      NN_RESULT_DO(GetMouseSharedMemoryAccessor().Deactivate());
+      break;
+    case MouseType_DebugMouse:
+      NN_RESULT_DO(FinalizeDebugMouse());
+      break;
+    default:
+      nn::detail::UnexpectedDefaultImpl();
+  }
+  return Result{};
+}
+
+Result GetMouseState(MouseState* pOutState, const MouseHandle& handle) {
+  if (pOutState == nullptr) {
+    return ResultMouseNullStateBuffer;
+  }
+  switch (utility::GetMouseHandleTypeIdx(handle)) {
+    case MouseType_Mouse:
+      NN_RESULT_DO(GetMouseState(pOutState));
+      break;
+    case MouseType_DebugMouse:
+      NN_RESULT_DO(GetDebugMouseState(pOutState));
+      break;
+    default:
+      nn::detail::UnexpectedDefaultImpl();
+  }
+  return Result{};
+}
+
+Result GetMouseStates(int* pOutCount, MouseState* pOutStates, int count,
+  const MouseHandle& handle) {
+  if (pOutStates == nullptr) {
+    return ResultMouseNullStateBuffer;
+  }
+  if (count < 0) {
+    return ResultMouseInvalidStateCount;
+  }
+  switch (utility::GetMouseHandleTypeIdx(handle)) {
+    case MouseType_Mouse:
+      NN_RESULT_DO(GetMouseStates(pOutCount, pOutStates, count));
+      break;
+    case MouseType_DebugMouse:
+      NN_RESULT_DO(GetDebugMouseStates(pOutCount, pOutStates, count));
+      break;
+    default:
+      nn::detail::UnexpectedDefaultImpl();
+  }
   return Result{};
 }
 

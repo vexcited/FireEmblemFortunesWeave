@@ -151,7 +151,7 @@ private:
 
   uint8_t unknown_08_[0x10];
   ui::LayoutAccessor layout_;
-  uint8_t unknown_30_[0x68];
+  uint8_t unknown_80_[0x18];
   const BattleInfo* info_;
   uint8_t unknown_a0_[0x21];
   bool unknown_c1_;

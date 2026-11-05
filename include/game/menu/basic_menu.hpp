@@ -294,9 +294,7 @@ protected:
   std::vector<int32_t> unknown_328_;
   uint8_t unknown_340_[0x10];
   ui::LayoutAccessor accessor_;
-  uint8_t unknown_368_[0x50];
   ui::LayoutAccessor accessor_3b8_;
-  uint8_t unknown_3d0_[0x50];
 };
 
 static_assert(sizeof(BasicMenu) == 0x420);

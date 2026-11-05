@@ -100,6 +100,11 @@ class TouchScreenSharedMemoryAccessor final : public SharedMemoryAccessor {
     return m_pLifo.load(std::memory_order_acquire);
   }
 
+  void SetResolution(int width, int height) {
+    m_Width = width;
+    m_Height = height;
+  }
+
  private:
   int m_ActivationCount;
   std::atomic<TouchScreenLifo*> m_pLifo;

@@ -14,6 +14,7 @@ public:
   ~CommonArgumentsWriter();
 
   void PushToInChannel(applet::LibraryAppletHandle handle) const;
+  void SetPlayStartupSound(bool isPlayStartupSound);
 
 private:
   char m_Storage[24];

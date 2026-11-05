@@ -11,7 +11,7 @@ class IServiceObject {
 template <typename Interface>
 class SharedPointer {
  public:
-  SharedPointer() : m_Pointer(nullptr) {}
+  constexpr SharedPointer() : m_Pointer(nullptr) {}
 
   SharedPointer(Interface* pointer, bool addReference) : m_Pointer(pointer) {
     if (m_Pointer != nullptr && addReference) {

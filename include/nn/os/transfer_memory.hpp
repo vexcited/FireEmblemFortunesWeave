@@ -7,6 +7,12 @@
 #include "nn/os/synchronization.hpp"
 #include "nn/result.hpp"
 
+namespace nn::diag::detail {
+
+[[noreturn]] void AbortImpl(const Result* result);
+
+}
+
 namespace nn::os {
 
 struct TransferMemoryType {
@@ -59,6 +65,16 @@ struct TransferMemoryImplByHorizon {
 
 class TransferMemory {
 public:
+  TransferMemory() = default;
+
+  TransferMemory(void* address, size_t size, MemoryPermission permission) {
+    const Result result =
+      CreateTransferMemory(&m_TransferMemory, address, size, permission);
+    if (result.IsFailure()) {
+      diag::detail::AbortImpl(&result);
+    }
+  }
+
   ~TransferMemory() {
     if (m_TransferMemory.state != 0) {
       DestroyTransferMemory(&m_TransferMemory);
@@ -67,6 +83,10 @@ public:
 
   TransferMemoryType* GetBase() {
     return &m_TransferMemory;
+  }
+
+  uint32_t Detach() {
+    return DetachTransferMemory(&m_TransferMemory);
   }
 
 private:

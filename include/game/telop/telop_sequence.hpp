@@ -66,7 +66,6 @@ protected:
 
   std::shared_ptr<ui::Layout> layout_;
   ui::LayoutAccessor accessor_;
-  uint8_t unknown_c0_[0x50];
   std::string unknown_110_;
   std::string unknown_128_;
   int32_t unknown_140_;

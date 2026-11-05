@@ -112,7 +112,7 @@ class VibrationMixer : public VibrationNode {
 };
 
 struct VibrationFileInfo {
-  uint16_t metaDataSize;
+  uint32_t metaDataSize;
   uint16_t formatId;
   uint16_t samplingRate;
   int32_t dataSize;

@@ -150,9 +150,21 @@ struct NmouseButtonConfigJoyRightJcms {
   uint64_t _storage;
 };
 
-struct NmouseButtonConfigStandardMouse;
-struct NpadControllerColor;
-struct NpadJoyIconDecorationColor;
+struct NmouseButtonConfigStandardMouse {
+  uint8_t _storage[5];
+};
+
+struct NpadControllerColor {
+  uint32_t main;
+  uint32_t sub;
+};
+
+struct NpadJoyIconDecorationColor {
+  uint32_t button;
+  uint32_t outline;
+  uint32_t decoration;
+};
+
 struct NpadFullKeyState;
 struct NpadHandheldState;
 struct NpadHandheldLarkState;
@@ -164,10 +176,23 @@ struct NpadLagerState;
 struct NpadLarkState;
 struct NpadLuciaState;
 struct NpadPalmaState;
-struct PalmaActivityEntry;
+enum PalmaWaveSet {};
+
+struct PalmaActivityEntry {
+  uint16_t rgbLedPatternIndex;
+  PalmaWaveSet waveSet;
+  uint16_t waveIndex;
+};
+
 struct PalmaApplicationSectionAccessBuffer;
-struct PalmaOperationInfo;
-struct PalmaWaveSet;
+enum PalmaOperationType {};
+
+struct PalmaOperationInfo {
+  PalmaOperationType type;
+  Result result;
+  uint8_t buffer[320];
+};
+
 struct SevenSixAxisSensorState;
 struct SixAxisSensorCalibrationParameter {
   uint8_t _storage[1860];
@@ -181,9 +206,19 @@ struct TouchScreenConfigurationForNx {
 struct VibrationDeviceInfo;
 struct VibrationFileInfo;
 struct VibrationFileParserContext;
-struct VibrationGcErmCommand;
+struct VibrationGcErmCommand {
+  uint64_t _storage;
+};
+
 struct VibrationValue;
-struct VibrationValueArrayInfo;
+struct VibrationValueArrayInfo {
+  int32_t count;
+  bool isLoop;
+  uint32_t loopStartPosition;
+  uint32_t loopEndPosition;
+  uint32_t loopInterval;
+};
+
 
 template <size_t N>
 struct TouchScreenState;
