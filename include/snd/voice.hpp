@@ -22,6 +22,8 @@ namespace data {
 // The per voice parameters taken from a FastAlloc pool of the manager. Only
 // the fields the voices read are named.
 struct VoiceBuffer {
+  void update();
+
   fnd::String label;
   uint32_t labelHash[2];
   fnd::String name;
@@ -32,20 +34,32 @@ struct VoiceBuffer {
   uint8_t reserved70[0x8];
   int loadState;
   int loadCount;
-  uint8_t reserved80[0xc];
+  float volume;
+  uint8_t reserved84[0x8];
   float volumeScale;
   uint8_t reserved90[0x8];
   float actorScale;
-  uint8_t reserved9c[0x28];
+  uint8_t reserved9c[0x20];
+  int priority;
+  uint8_t reservedc0[0x4];
   int sendCount;
   uint8_t reservedc8[0x20];
   float surroundPan;
   float pitch;
   float pan;
-  uint8_t reservedf4[0x8];
+  float delay;
+  uint8_t reservedf8[0x4];
   int crossFadeState;
   float length;
-  uint8_t reserved104[0x6c];
+  float envelope[5];
+  float randomVolume[2];
+  float randomSurroundPan[2];
+  float randomPitch[2];
+  float randomPan[2];
+  float randomLpf[2];
+  float volumeFluctuation[4];
+  float surroundPanFluctuation[4];
+  float panFluctuation[4];
   float lpf;
   uint32_t outputLine;
   float mainSend;

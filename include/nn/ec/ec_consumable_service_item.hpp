@@ -4,8 +4,14 @@
 #include <stdint.h>
 
 #include "nn/account/account_types.hpp"
+#include "nn/os/mutex.hpp"
+#include "nn/os/system_event.hpp"
+#include "nn/sf/native_handle.hpp"
+#include "nn/sf/sf_buffers.hpp"
+#include "nn/sf/shared_pointer.hpp"
 #include "nn/mem/standard_allocator.hpp"
 #include "nn/result.hpp"
+#include "nn/util/intrusive_list.hpp"
 
 namespace nn::err {
 
@@ -15,7 +21,37 @@ struct ErrorCode;
 
 namespace nn::os {
 
-struct SystemEvent;
+class SystemEvent;
+
+}
+
+namespace nn::ec {
+
+struct ShopService {
+  enum class Method {
+    Get,
+    Post,
+  };
+
+  uint32_t type;
+};
+
+}
+
+namespace nn::nim::detail {
+
+class IShopServiceAsync : public sf::IServiceObject {
+public:
+  virtual void Reserved2() = 0;
+  virtual void Reserved3() = 0;
+  virtual Result Cancel() = 0;
+  virtual Result GetSize(uint64_t* pOutSize) = 0;
+  virtual Result Read(
+    uint64_t* pOutSize, int64_t offset, const sf::OutBuffer& buffer) = 0;
+  virtual Result GetErrorCode(err::ErrorCode* pOutCode) = 0;
+};
+
+class IShopServiceAccessor : public sf::IServiceObject {};
 
 }
 
@@ -23,21 +59,64 @@ namespace nn::ec {
 
 class ShopServiceAccessor {
 public:
-  bool IsAvailable() const;
-
-  class AsyncResponse {
+  class AsyncResponse : public util::IntrusiveListBaseNode<AsyncResponse> {
   public:
+    AsyncResponse();
+    ~AsyncResponse();
+
+    void Finalize();
+    void Attach(ShopServiceAccessor* accessor,
+      nim::detail::IShopServiceAsync* async, const sf::NativeHandle& handle);
+    void Detach();
     void Cancel();
     Result Wait();
     bool TryWait();
     os::SystemEvent& GetEvent();
     err::ErrorCode GetErrorCode() const;
     Result GetSize(size_t* size);
+    Result GetSizeImpl(size_t* size);
     Result Get(void* buffer, size_t size);
+    Result GetImpl(void* buffer, size_t size);
 
   private:
-    uint8_t m_Storage[0x50];
+    ShopServiceAccessor* m_pAccessor;
+    nim::detail::IShopServiceAsync* m_pAsync;
+    os::SystemEventType m_Event;
   };
+
+  ShopServiceAccessor();
+  ~ShopServiceAccessor();
+
+  Result Initialize(const ShopService& service);
+  Result Finalize();
+  bool IsAvailable() const;
+  void Attach(AsyncResponse* response);
+  void Detach(AsyncResponse* response);
+
+private:
+  using ResponseList = util::IntrusiveList<AsyncResponse,
+    util::IntrusiveListBaseNodeTraits<AsyncResponse>>;
+
+  void LinkResponse(AsyncResponse* response) {
+    m_Mutex.Lock();
+    m_Responses.push_back(*response);
+    m_Mutex.Unlock();
+  }
+
+  void UnlinkResponse(AsyncResponse* response) {
+    m_Mutex.Lock();
+    util::IntrusiveListNode* node =
+      util::IntrusiveListBaseNodeTraits<AsyncResponse>::GetNode(response);
+    if (node->IsLinked() && node != m_Responses.end().GetNode()) {
+      ResponseList::erase(*response);
+    }
+    m_Mutex.Unlock();
+  }
+
+  util::IntrusiveListNode m_Node;
+  nim::detail::IShopServiceAccessor* m_pInterface;
+  mutable os::Mutex m_Mutex{true};
+  ResponseList m_Responses;
 };
 
 struct ConsumableServiceItemId {

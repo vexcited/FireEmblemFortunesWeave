@@ -26,6 +26,10 @@ public:
 
   virtual void calc() = 0;
 
+  uint16_t getSampleRate() const {
+    return sampleRate_;
+  }
+
 protected:
   void setCoef(float a0, float a1, float a2, float b0, float b1, float b2);
 
@@ -186,6 +190,10 @@ public:
   void setType(uint32_t type);
   int process(int sample, int channel);
   void setBypass(bool bypass);
+
+  BiQuadFilter* getFilter() const {
+    return filters_[type_];
+  }
 
 private:
   struct History {

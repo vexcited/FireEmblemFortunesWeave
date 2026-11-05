@@ -1,0 +1,39 @@
+#pragma once
+
+#include "snd/fnd/weak_handle.hpp"
+#include "snd/voice.hpp"
+
+namespace snd {
+
+class WaveMultiStreamPlayer;
+
+class WaveMultiVoice : public Voice {
+public:
+  bool isLoading() const override;
+  bool checkLoaded() override;
+  void prepare() override;
+  void start() override;
+  bool isPrepared() const override;
+  bool isPlaying() override;
+  void updateHandle() override;
+  void pause(const Fade& fade, bool force) override;
+  void resumePause(const Fade& fade) override;
+  void mute(const Fade& fade, bool force) override;
+  void resumeMute(const Fade& fade) override;
+  void silent(const Fade& fade, bool force) override;
+  void resumeSilent(const Fade& fade) override;
+  bool isActiveFor(Actor* actor) override;
+  bool isActive() const override;
+  float getPlayPosition(uint32_t kind) override;
+  void addToSlot() override;
+  void stopHandle(const Fade& fade) override;
+  void updatePlaying() override;
+
+private:
+  WaveMultiStreamPlayer* getPlayer() const;
+
+  fnd::WeakHandle player_;
+  int track_;
+};
+
+}

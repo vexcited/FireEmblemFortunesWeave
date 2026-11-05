@@ -2,6 +2,8 @@
 
 namespace snd {
 
+class WaveReader;
+
 // Only the parts the voices use.
 class Loader {
 public:
@@ -14,6 +16,8 @@ public:
   static void unlock();
 
   Loader* getLoader() const;
+  WaveReader* createReader();
+  void destroyReader(WaveReader* reader);
 };
 
 }
