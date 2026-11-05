@@ -97,6 +97,7 @@ enum GcStyleControllerType {};
 enum NpadLagerType {};
 enum GyroscopeZeroDriftMode {};
 enum JcmsType : uint8_t {};
+enum NmouseButtonAssignment : uint8_t {};
 enum NmousePointerType {};
 enum PalmaFrModeType {};
 

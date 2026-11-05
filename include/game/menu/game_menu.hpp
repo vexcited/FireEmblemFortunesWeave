@@ -46,6 +46,8 @@ public:
   void ImplUnknown11() override;
 
 protected:
+  void Unknown16e9cd0();
+
   // The outermost menu of the process tree, following the 0x20 links.
   MenuProcInst* GetRootMenu() {
     MenuProcInst* root = this;

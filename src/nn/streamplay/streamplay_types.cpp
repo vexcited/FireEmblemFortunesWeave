@@ -23,14 +23,14 @@ bool StreamId::operator==(const StreamId& other) const {
 }
 
 bool GuestPadId::operator<(const GuestPadId& other) const {
-  if (padIndex == other.padIndex) {
-    return guestId < other.guestId;
+  if (guestId == other.guestId) {
+    return npadId < other.npadId;
   }
-  return padIndex < other.padIndex;
+  return guestId < other.guestId;
 }
 
 bool GuestPadId::operator==(const GuestPadId& other) const {
-  return padIndex == other.padIndex && guestId == other.guestId;
+  return guestId == other.guestId && npadId == other.npadId;
 }
 
 }

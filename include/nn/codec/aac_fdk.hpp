@@ -90,4 +90,94 @@ AAC_DECODER_ERROR aacDecoder_DecodeFrame(AAC_DECODER_INSTANCE* handle,
 CStreamInfo* aacDecoder_GetStreamInfo(AAC_DECODER_INSTANCE* handle);
 int pcmDmx_SetParam(PCM_DMX_INSTANCE* handle, PCMDMX_PARAM param, int value);
 
+enum AACENC_ERROR {
+  AACENC_OK = 0x0000,
+  AACENC_INVALID_HANDLE = 0x0020,
+  AACENC_MEMORY_ERROR = 0x0021,
+  AACENC_UNSUPPORTED_PARAMETER = 0x0022,
+  AACENC_INVALID_CONFIG = 0x0023,
+  AACENC_INIT_ERROR = 0x0040,
+  AACENC_INIT_AAC_ERROR = 0x0041,
+  AACENC_INIT_SBR_ERROR = 0x0042,
+  AACENC_INIT_TP_ERROR = 0x0043,
+  AACENC_INIT_META_ERROR = 0x0044,
+  AACENC_ENCODE_ERROR = 0x0060,
+  AACENC_ENCODE_EOF = 0x0080,
+};
+
+enum AACENC_BufferIdentifier {
+  IN_AUDIO_DATA = 0,
+  OUT_BITSTREAM_DATA = 3,
+};
+
+enum AACENC_PARAM {
+  AACENC_AOT = 0x0100,
+  AACENC_BITRATE = 0x0101,
+  AACENC_BITRATEMODE = 0x0102,
+  AACENC_SAMPLERATE = 0x0103,
+  AACENC_CHANNELMODE = 0x0106,
+  AACENC_CHANNELORDER = 0x0107,
+  AACENC_TRANSMUX = 0x0300,
+  AACENC_CONTROL_STATE = 0xff00,
+};
+
+enum CHANNEL_MODE {
+  MODE_INVALID = -1,
+  MODE_1 = 1,
+  MODE_2 = 2,
+  MODE_1_2 = 3,
+  MODE_1_2_1 = 4,
+  MODE_1_2_2 = 5,
+  MODE_1_2_2_1 = 6,
+  MODE_1_2_2_2_1 = 7,
+};
+
+enum AACENC_CTRLFLAGS {
+  AACENC_INIT_ALL = 0xffff,
+};
+
+struct AACENCODER;
+
+struct AACENC_BufDesc {
+  int numBufs;
+  void** bufs;
+  int* bufferIdentifiers;
+  int* bufSizes;
+  int* bufElSizes;
+};
+
+struct AACENC_InArgs {
+  int numInSamples;
+  int numAncBytes;
+};
+
+struct AACENC_OutArgs {
+  int numOutBytes;
+  int numInSamples;
+  int numAncBytes;
+};
+
+struct AACENC_InfoStruct {
+  unsigned int maxOutBufBytes;
+  unsigned int maxAncBytes;
+  unsigned int inBufFillLevel;
+  unsigned int inputChannels;
+  unsigned int frameLength;
+  unsigned int encoderDelay;
+  uint8_t confBuf[64];
+  unsigned int confSize;
+};
+
+AACENC_ERROR aacEncOpen(AACENCODER** handle, unsigned int encModules,
+  unsigned int maxChannels);
+AACENC_ERROR aacEncInfo(AACENCODER* handle, AACENC_InfoStruct* info);
+
+AACENC_ERROR aacEncClose(AACENCODER** handle);
+AACENC_ERROR aacEncEncode(AACENCODER* handle, const AACENC_BufDesc* inBuffer,
+  const AACENC_BufDesc* outBuffer, const AACENC_InArgs* inArgs,
+  AACENC_OutArgs* outArgs);
+AACENC_ERROR aacEncoder_SetParam(AACENCODER* handle, AACENC_PARAM param,
+  unsigned int value);
+unsigned int aacEncoder_GetParam(AACENCODER* handle, AACENC_PARAM param);
+
 }

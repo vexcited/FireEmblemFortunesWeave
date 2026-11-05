@@ -27,7 +27,7 @@ public:
 
 class Model : public Object {
 public:
-  virtual void SetMaterialParam(const char* name, uint32_t value) = 0;
+  virtual void SetMaterialParam(const char* name, uint32_t value);
   virtual int GetMeshCount() const = 0;
   virtual int GetLodCount() const = 0;
   virtual Matrix44 GetMeshMatrix(int mesh) const = 0;

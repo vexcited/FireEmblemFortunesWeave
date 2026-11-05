@@ -11,7 +11,7 @@ public:
   void Unknown29() override;
   void Unknown33() override;
   int Unknown52() override { return 1; }
-  const char* Unknown53() override;
+  nn::ui2d::Pane* Unknown53() override;
 };
 
 ItemResult::~ItemResult() = default;

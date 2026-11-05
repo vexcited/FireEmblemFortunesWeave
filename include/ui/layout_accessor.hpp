@@ -67,6 +67,8 @@ public:
   nn::ui2d::Picture* FindPicture(const char* name);
   nn::ui2d::Alignment* FindAlignment(const char* name);
   void SetTextBoxString(const char* name, const char16_t* text);
+  // Sets the text of a message id.
+  void SetTextBoxMessage(const char* name, const char* mid);
   void SetTextBoxColor(const char* name, const uint32_t& color);
   void FitPaneSizeToText(const char* name);
   nn::ui2d::Size GetTextSize(const char* name);

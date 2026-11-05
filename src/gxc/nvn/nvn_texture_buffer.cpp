@@ -1,6 +1,41 @@
 #include "gxc/nvn/nvn_texture_buffer.hpp"
 
+#include <string>
+
+#include "gxc/nvn/nvn_descriptor_pool.hpp"
+
 namespace gxc {
+
+NvnColorBuffer::~NvnColorBuffer() {
+  if (registered_) {
+    NvnDescriptorPool* pool = pool_;
+    pool->Lock();
+    for (const TextureDescriptor& descriptor : descriptors_) {
+      if (descriptor.id != -1) {
+        pool_->FreeTextureDescriptor(descriptor);
+      }
+    }
+
+    for (int id : imageIds_) {
+      if (id != -1) {
+        pool_->FreeTexture(id);
+      }
+    }
+
+    pool->Unlock();
+  }
+
+  for (const RenderTargetView& view : views_) {
+    delete view.view;
+  }
+
+  nvnTextureFinalize(texture_.get());
+}
+
+void NvnColorBuffer::SetDebugLabel(std::string_view label) {
+  std::string text(label);
+  nvnTextureSetDebugLabel(texture_.get(), text.c_str());
+}
 
 RenderTargetView NvnColorBuffer::GetView(int layer, int level) const {
   if (layerCount_ == 1 && levelCount_ == 1) {
@@ -49,6 +84,31 @@ int NvnColorBuffer::GetLevelCount() const {
 
 int NvnColorBuffer::GetLayerCount() const {
   return layerCount_;
+}
+
+NvnDepthBuffer::~NvnDepthBuffer() {
+  if (registered_) {
+    NvnDescriptorPool* pool = pool_;
+    pool->Lock();
+    for (const TextureDescriptor& descriptor : descriptors_) {
+      if (descriptor.id != -1) {
+        pool_->FreeTextureDescriptor(descriptor);
+      }
+    }
+
+    pool->Unlock();
+  }
+
+  for (const RenderTargetView& view : views_) {
+    delete view.view;
+  }
+
+  nvnTextureFinalize(texture_.get());
+}
+
+void NvnDepthBuffer::SetDebugLabel(std::string_view label) {
+  std::string text(label);
+  nvnTextureSetDebugLabel(texture_.get(), text.c_str());
 }
 
 Backend NvnDepthBuffer::GetBackend() const {

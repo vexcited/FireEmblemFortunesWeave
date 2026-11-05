@@ -7,6 +7,10 @@
 
 #include "game/unit.hpp"
 
+namespace game {
+class Stream;
+}
+
 namespace game::gmap {
 
 #pragma GCC visibility push(hidden)
@@ -16,6 +20,10 @@ class Spot;
 // A world map troop, the units it carries live in the troop itself.
 class Troop {
 public:
+  ~Troop();
+
+  void Serialize(Stream& stream) const;
+
   const Spot* GetSpot() const {
     return spot_;
   }

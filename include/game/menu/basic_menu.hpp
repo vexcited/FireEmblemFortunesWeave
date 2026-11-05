@@ -23,6 +23,12 @@ void UpdateMenuTree(BasicMenu* menu);
 class MenuProcInst : public ProcInst {
 public:
   virtual void Unknown18() = 0;
+  virtual void Unknown19() = 0;
+  virtual void Unknown20() = 0;
+  virtual int Unknown21() = 0;
+  virtual int Unknown22() { return 0; }
+  virtual int Unknown23() { return 0; }
+  virtual int Unknown24() { return 2; }
 
 protected:
   BasicMenu* parent_;
@@ -90,12 +96,13 @@ public:
   void Unknown12() override;
 
   void Unknown18() override;
-  virtual void Unknown19();
-  virtual void Unknown20();
-  virtual int Unknown21() { return state_; }
-  virtual int Unknown22() { return 0; }
-  virtual int Unknown23() { return 0; }
-  virtual int Unknown24() { return 2; }
+  void Unknown19() override;
+  void Unknown20() override;
+  int Unknown21() override { return state_; }
+  // The original shares these with `MenuProcInst`.
+  int Unknown22() override { return 0; }
+  int Unknown23() override { return 0; }
+  int Unknown24() override { return 2; }
   virtual int Unknown25() { return 0; }
   virtual int Unknown26() { return 0; }
   virtual int Unknown27() { return 1; }
@@ -263,6 +270,7 @@ protected:
   void ResetTabs(int count, int index);
   void Unknown16dea40(bool unknown0, bool unknown1, bool unknown2);
   void Unknown16de4d0();
+  void Unknown16defa0();
   void Unknown16df380();
   int Unknown16e1a00();
 

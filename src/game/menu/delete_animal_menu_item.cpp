@@ -20,7 +20,7 @@ public:
 
   int ACall() override;
   bool IsActive() override { return true; }
-  void Unknown70() override;
+  const void* Unknown70() override;
 };
 
 [[gnu::used]] ReleaseAnimalMenuItem::ReleaseAnimalMenuItem() = default;

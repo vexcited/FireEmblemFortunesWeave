@@ -70,8 +70,8 @@ void ConsumableServiceItemAsyncRequestBase::Cancel() {
   m_Response.Cancel();
 }
 
-Result ConsumableServiceItemAsyncRequestBase::Wait() {
-  return m_Response.Wait();
+void ConsumableServiceItemAsyncRequestBase::Wait() {
+  m_Response.Wait();
 }
 
 bool ConsumableServiceItemAsyncRequestBase::TryWait() {

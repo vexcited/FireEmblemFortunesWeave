@@ -26,18 +26,51 @@ const GmapSpotData* FindBaseSpotData();
 
 class Spot;
 
+// A world map date, compared through its packed key.
+struct GmapTime {
+  int16_t year;
+  int16_t month;
+  int16_t day;
+  int16_t hour;
+  int16_t minute;
+  int16_t second;
+
+  uint64_t GetKey() const {
+    return (static_cast<int64_t>(year) << 32) +
+      (static_cast<int64_t>(month) << 24) +
+      (static_cast<int64_t>(day) << 18) +
+      (static_cast<int64_t>(hour) << 12) +
+      (static_cast<int64_t>(minute) << 6) + second;
+  }
+};
+
+class GmapClock {
+public:
+  virtual ~GmapClock();
+
+  static const GmapTime& GetTime() {
+    return instance_ != nullptr ? instance_->time_ : kDefaultTime;
+  }
+
+  static GmapClock* instance_;
+  [[gnu::visibility("default")]] static const GmapTime kDefaultTime;
+
+private:
+  GmapTime time_;
+};
+
 // The vtable slots without a known caller keep their index as name.
 class SpotAttachmentBase : public GmapSpotAttachmentConst {
 public:
   virtual ~SpotAttachmentBase();
 
-  virtual void Unknown02();
+  virtual int Unknown02();
   virtual Kind GetKind() const;
-  virtual void Unknown04();
-  virtual void Unknown05();
-  virtual void Unknown06();
-  virtual void Unknown07();
-  virtual void Unknown08();
+  virtual int Unknown04();
+  virtual int Unknown05();
+  virtual bool Unknown06();
+  virtual uint8_t Unknown07();
+  virtual uint8_t Unknown08();
   virtual void Unknown09();
   virtual void Unknown10();
   virtual void Unknown11();
@@ -47,22 +80,37 @@ public:
   virtual void OnStartPhase();
   virtual void OnEndPhase();
   virtual void OnProgressCycle(int cycle);
-  virtual void Unknown18();
-  virtual void Unknown19();
+  virtual int Unknown18();
+  virtual int Unknown19();
   virtual void Unknown20();
-  virtual void Unknown21();
-  virtual void Unknown22();
-  virtual void Unknown23();
-  virtual void Unknown24();
-  virtual void Unknown25();
-  virtual void Unknown26();
-  virtual void Unknown27();
+  virtual int Unknown21();
+  virtual int Unknown22();
+  virtual const void* Unknown23();
+  virtual const void* Unknown24();
+  virtual const void* Unknown25();
+  virtual bool Unknown26();
+  virtual const void* Unknown27();
   virtual void OnEnterGmap();
   virtual void Unknown29();
-  virtual void Unknown30();
-  virtual void Unknown31();
-  virtual void Unknown32();
+  virtual int Unknown30();
+  virtual int Unknown31();
+  virtual int Unknown32();
   virtual const void* GetDispatchLegion() const;
+  virtual const void* Unknown34();
+  virtual void Unknown35();
+  virtual void Unknown36();
+  virtual void Unknown37();
+  virtual void Unknown38();
+  virtual void Unknown39();
+
+protected:
+  // The start date of the attachment and the date of its last update.
+  GmapTime start_;
+  GmapTime updated_;
+  Spot* spot_;
+  bool unknown28_;
+  bool unknown29_;
+  uint8_t unknown2a_;
 };
 
 // A road from a spot to a neighbor.

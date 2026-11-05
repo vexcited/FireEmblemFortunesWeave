@@ -6,7 +6,8 @@ namespace game::menu {
 
 class EquipMenuItem_AnimalPool_Base : public EquipMenuItemBase {
 public:
-  virtual void Unknown70();
+  // The animal of the item.
+  virtual const void* Unknown70();
   virtual bool Unknown71();
 };
 

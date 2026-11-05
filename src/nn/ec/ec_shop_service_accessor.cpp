@@ -10,6 +10,7 @@ namespace {
 constexpr Result ResultNotAttached = {0x190a4};
 constexpr Result ResultShopServiceError = {0x1b8a4};
 constexpr Result ResultShopServiceUnavailable = {0x1cca4};
+constexpr Result ResultBufferTooSmall = {0x192a4};
 constexpr uint32_t ResultNimShopServiceErrorInner = 0xb5a89;
 constexpr err::ErrorCode UnavailableErrorCode = {0x905, 0x606};
 
@@ -44,6 +45,22 @@ Result QuerySize(nim::detail::IShopServiceAsync* async, size_t* size) {
   }
 
   *size = value;
+  return result;
+}
+
+Result ReadData(nim::detail::IShopServiceAsync* async, void* buffer,
+  size_t size) {
+  if (async == nullptr) {
+    return ResultNotAttached;
+  }
+
+  uint64_t readSize = 0;
+  Result result = detail::ShopServiceAccessServer::ToResult(
+    async->Read(&readSize, 0, sf::OutBuffer(buffer, size)));
+  if (result.IsFailure()
+    && result.GetInnerValueForDebug() == ResultNimShopServiceErrorInner) {
+    return ResolveShopServiceError(async);
+  }
   return result;
 }
 
@@ -186,26 +203,33 @@ Result ShopServiceAccessor::AsyncResponse::GetSize(size_t* size) {
   return QuerySize(m_pAsync, size);
 }
 
-Result ShopServiceAccessor::AsyncResponse::Wait() {
+void ShopServiceAccessor::AsyncResponse::Wait() {
   if (m_pAsync != nullptr) {
     os::WaitSystemEvent(&m_Event);
   }
-  return Result{0};
 }
 
 Result ShopServiceAccessor::AsyncResponse::GetImpl(void* buffer, size_t size) {
+  return ReadData(m_pAsync, buffer, size);
+}
+
+Result ShopServiceAccessor::AsyncResponse::Get(void* buffer, size_t size) {
   if (m_pAsync == nullptr) {
     return ResultNotAttached;
   }
 
-  uint64_t readSize = 0;
-  Result result = detail::ShopServiceAccessServer::ToResult(
-    m_pAsync->Read(&readSize, 0, sf::OutBuffer(buffer, size)));
-  if (result.IsFailure()
-    && result.GetInnerValueForDebug() == ResultNimShopServiceErrorInner) {
-    return ResolveShopServiceError(m_pAsync);
+  os::WaitSystemEvent(&m_Event);
+  size_t dataSize;
+  NN_RESULT_DO(QuerySize(m_pAsync, &dataSize));
+  if (dataSize == 0) {
+    return Result{0};
   }
-  return result;
+
+  if (size < dataSize) {
+    return ResultBufferTooSmall;
+  }
+
+  return ReadData(m_pAsync, buffer, size);
 }
 
 bool ShopServiceAccessor::AsyncResponse::TryWait() {

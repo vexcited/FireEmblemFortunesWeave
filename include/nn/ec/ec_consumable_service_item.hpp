@@ -69,7 +69,7 @@ public:
       nim::detail::IShopServiceAsync* async, const sf::NativeHandle& handle);
     void Detach();
     void Cancel();
-    Result Wait();
+    void Wait();
     bool TryWait();
     os::SystemEvent& GetEvent();
     err::ErrorCode GetErrorCode() const;
@@ -191,7 +191,7 @@ public:
   void Initialize(ShopServiceAccessor* accessor,
     ConsumableServiceItemManager* manager, const account::Uid& user);
   void Cancel();
-  Result Wait();
+  void Wait();
   bool TryWait();
   os::SystemEvent& GetEvent();
   err::ErrorCode GetErrorCode() const;
