@@ -1,6 +1,10 @@
 #pragma once
 
+#include <memory>
+#include <string>
 #include <string_view>
+#include <unordered_map>
+#include <vector>
 
 #include "game/data/flag_condition.hpp"
 
@@ -23,6 +27,21 @@ class FacilitySceneMapVariationFile;
 class FacilitySceneLocationFile;
 class SkillFile;
 class SubquestFile;
+class RecallLabelFile;
+class ShopFile;
+class GmapEncountFile;
+class CmdBtlFieldFile;
+class CmdBtlPartyMemberFile;
+class RideFile;
+class VariationFile;
+class ExteriorFile;
+class DiffFile;
+class TerrainFile;
+class FacilitySceneCameraFile;
+class RangeFile;
+class SkillMotionFile;
+class ProfileFile;
+class CategoryFile;
 
 }
 
@@ -125,6 +144,87 @@ struct DataFileOf<SkillData> {
 template<>
 struct DataFileOf<SubquestData> {
   using type = SubquestFile;
+};
+
+template<>
+struct DataFileOf<RecallLabelData> {
+  using type = RecallLabelFile;
+};
+
+template<>
+struct DataFileOf<ShopGroup> {
+  using type = ShopFile;
+};
+
+template<>
+inline constexpr bool kInlineDataRef<ShopGroup> = true;
+
+template<>
+struct DataFileOf<GmapEncountData> {
+  using type = GmapEncountFile;
+};
+
+template<>
+struct DataFileOf<CmdBtlFieldData> {
+  using type = CmdBtlFieldFile;
+};
+
+template<>
+inline constexpr bool kInlineDataRef<CmdBtlFieldData> = true;
+
+template<>
+struct DataFileOf<CmdBtlPartyMemberDataArray> {
+  using type = CmdBtlPartyMemberFile;
+};
+
+template<>
+struct DataFileOf<RideData> {
+  using type = RideFile;
+};
+
+template<>
+struct DataFileOf<VariationData> {
+  using type = VariationFile;
+};
+
+template<>
+struct DataFileOf<ExteriorData> {
+  using type = ExteriorFile;
+};
+
+template<>
+struct DataFileOf<DiffData> {
+  using type = DiffFile;
+};
+
+template<>
+struct DataFileOf<TerrainData> {
+  using type = TerrainFile;
+};
+
+template<>
+struct DataFileOf<FacilitySceneCameraData> {
+  using type = FacilitySceneCameraFile;
+};
+
+template<>
+struct DataFileOf<RangeGroup> {
+  using type = RangeFile;
+};
+
+template<>
+struct DataFileOf<SkillMotion> {
+  using type = SkillMotionFile;
+};
+
+template<>
+struct DataFileOf<ProfileData> {
+  using type = ProfileFile;
+};
+
+template<>
+struct DataFileOf<CategoryData> {
+  using type = CategoryFile;
 };
 
 struct RelianceSpecialData : Data {
@@ -1202,6 +1302,588 @@ struct FacilitySceneCameraMotionData : DataState<bool> {
 };
 
 static_assert(sizeof(FacilitySceneCameraMotionData) == 0x48);
+
+// Rows whose build code is not reconstructed yet. Their states are only known
+// from the destruction in Unbuild, so unread members are placeholders.
+struct ThermaeDataState {
+  uint64_t unknown_00;
+};
+
+struct ThermaeData : DataState<ThermaeDataState> {
+  unsigned char unknown_20[0x50];
+};
+
+static_assert(sizeof(ThermaeData) == 0x70);
+
+struct SideStoryDataState {
+  unsigned char unknown_00[0x58];
+  std::unique_ptr<unsigned char[]> unknown_58;
+};
+
+struct SideStoryData : DataState<SideStoryDataState> {
+  unsigned char unknown_20[0x160];
+};
+
+static_assert(sizeof(SideStoryData) == 0x180);
+
+struct BattleFieldDataState {
+  std::string unknown_00;
+  unsigned char unknown_18[0x58];
+  std::vector<const void*> unknown_70;
+};
+
+struct BattleFieldData : DataState<BattleFieldDataState> {
+  unsigned char unknown_20[0x1c0];
+};
+
+static_assert(sizeof(BattleFieldData) == 0x1e0);
+
+struct LegionDataState {
+  std::string unknown_00;
+  unsigned char unknown_18[0x10];
+  std::vector<const void*> unknown_28;
+  std::vector<const void*> unknown_40;
+};
+
+struct LegionData : DataState<LegionDataState> {
+  unsigned char unknown_20[0xa0];
+};
+
+static_assert(sizeof(LegionData) == 0xc0);
+
+struct HonorDataState {
+  std::vector<const void*> unknown_00;
+  std::vector<const void*> unknown_18;
+  std::vector<const void*> unknown_30;
+};
+
+struct HonorData : DataState<HonorDataState> {
+  unsigned char unknown_20[0x58];
+};
+
+static_assert(sizeof(HonorData) == 0x78);
+
+struct NoticeDataState {
+  std::vector<const void*> unknown_00;
+  std::vector<const void*> unknown_18;
+  unsigned char unknown_30[0x10];
+  std::string unknown_40;
+};
+
+struct NoticeData : DataState<NoticeDataState> {
+  unsigned char unknown_20[0xa0];
+};
+
+static_assert(sizeof(NoticeData) == 0xc0);
+
+struct ObjectInfoDataState {
+  std::unordered_map<uint64_t, const void*> unknown_00;
+  std::vector<const void*> unknown_28;
+};
+
+struct ObjectInfoData : DataState<ObjectInfoDataState> {
+  unsigned char unknown_20[0x78];
+};
+
+static_assert(sizeof(ObjectInfoData) == 0x98);
+
+struct GmapTutorialDataState {
+  std::vector<const void*> unknown_00;
+  std::vector<const void*> unknown_18;
+  std::string unknown_30;
+  std::string unknown_48;
+  std::string unknown_60;
+};
+
+struct GmapTutorialData : DataState<GmapTutorialDataState> {
+  unsigned char unknown_20[0x20];
+};
+
+static_assert(sizeof(GmapTutorialData) == 0x40);
+
+struct SubquestDataState {
+  unsigned char unknown_00[0x40];
+  std::string unknown_40;
+  std::vector<const void*> unknown_58;
+  std::vector<const void*> unknown_70;
+  std::vector<const void*> unknown_88;
+  std::vector<const void*> unknown_a0;
+  unsigned char unknown_b8[0x8];
+  std::unique_ptr<unsigned char[]> unknown_c0;
+};
+
+struct SubquestData : DataState<SubquestDataState> {
+  unsigned char unknown_20[0x218];
+};
+
+static_assert(sizeof(SubquestData) == 0x238);
+
+struct AchieveInfoDataState {
+  unsigned char unknown_00[0x30];
+  std::string unknown_30;
+  unsigned char unknown_48[0x10];
+  std::string unknown_58;
+  std::vector<const void*> unknown_70;
+  std::vector<const void*> unknown_88;
+  std::vector<const void*> unknown_a0;
+  std::vector<const void*> unknown_b8;
+};
+
+struct AchieveInfoData : DataState<AchieveInfoDataState> {
+  unsigned char unknown_20[0x48];
+};
+
+static_assert(sizeof(AchieveInfoData) == 0x68);
+
+struct RideDataState {
+  unsigned char unknown_00[0x88];
+  std::vector<const void*> unknown_88;
+  std::vector<const void*> unknown_a0;
+  std::vector<const void*> unknown_b8;
+  std::vector<const void*> unknown_d0;
+  std::vector<const void*> unknown_e8;
+  std::vector<const void*> unknown_100;
+  std::vector<const void*> unknown_118;
+};
+
+struct RideData : DataState<RideDataState> {
+  unsigned char unknown_20[0x130];
+};
+
+static_assert(sizeof(RideData) == 0x150);
+
+struct RecallCategoryDataEntry {
+  unsigned char unknown_00[0x20];
+  std::string unknown_20;
+  unsigned char unknown_38[0x10];
+  std::string unknown_48;
+  std::vector<const void*> unknown_60;
+  unsigned char unknown_78[0x8];
+};
+
+static_assert(sizeof(RecallCategoryDataEntry) == 0x80);
+
+struct RecallCategoryDataState {
+  const Data* owner;
+  std::vector<RecallCategoryDataEntry> unknown_08;
+  std::vector<const void*> unknown_20;
+};
+
+struct RecallCategoryData : DataState<RecallCategoryDataState> {
+  void Build() {
+    recall_label_20.Resolve();
+
+    if (state == nullptr) {
+      state = new RecallCategoryDataState();
+    }
+
+    state->owner = this;
+  }
+
+  DataRef<RecallLabelData> recall_label_20;
+  unsigned char unknown_30[0x8];
+};
+
+static_assert(sizeof(RecallCategoryData) == 0x38);
+
+struct JobIntroDataState {
+  virtual ~JobIntroDataState();
+};
+
+struct JobIntroData : DataState<JobIntroDataState> {
+  unsigned char unknown_20[0x68];
+};
+
+static_assert(sizeof(JobIntroData) == 0x88);
+
+struct GmapDisposDataState {
+  uint64_t unknown_00;
+};
+
+struct GmapDisposData : DataState<GmapDisposDataState> {
+  unsigned char unknown_20[0x70];
+};
+
+static_assert(sizeof(GmapDisposData) == 0x90);
+
+struct GmapFixedTalkDataState {
+  uint64_t unknown_00;
+};
+
+struct GmapFixedTalkData : DataState<GmapFixedTalkDataState> {
+  unsigned char unknown_20[0x10];
+};
+
+static_assert(sizeof(GmapFixedTalkData) == 0x30);
+
+struct FacilitySceneMobDataState {
+  uint64_t unknown_00;
+};
+
+struct FacilitySceneMobData : DataState<FacilitySceneMobDataState> {
+  unsigned char unknown_20[0x88];
+};
+
+static_assert(sizeof(FacilitySceneMobData) == 0xa8);
+
+struct VariationDataState {
+  unsigned char unknown_00[0x8];
+  std::vector<const void*> unknown_08;
+  std::vector<const void*> unknown_20;
+  std::vector<const void*> unknown_38;
+  std::vector<const void*> unknown_50;
+  std::vector<const void*> unknown_68;
+  std::vector<const void*> unknown_80;
+  std::vector<const void*> unknown_98;
+  std::vector<const void*> unknown_b0;
+  std::vector<const void*> unknown_c8;
+  std::vector<const void*> unknown_e0;
+};
+
+struct VariationData : DataState<VariationDataState> {
+  unsigned char unknown_20[0xa0];
+};
+
+static_assert(sizeof(VariationData) == 0xc0);
+
+struct FacilityOpeningHourDataState {
+  std::vector<const void*> unknown_00;
+  std::vector<const void*> unknown_18;
+};
+
+struct FacilityOpeningHourData : DataState<FacilityOpeningHourDataState> {
+  unsigned char unknown_20[0x20];
+};
+
+static_assert(sizeof(FacilityOpeningHourData) == 0x40);
+
+struct DisposDataState {
+  uint64_t unknown_00;
+};
+
+struct DisposData : DataState<DisposDataState> {
+  unsigned char unknown_20[0x128];
+};
+
+static_assert(sizeof(DisposData) == 0x148);
+
+struct TempleDataEntry {
+  std::vector<const void*> unknown_00;
+  std::vector<const void*> unknown_18;
+};
+
+struct TempleDataState {
+  std::vector<TempleDataEntry> unknown_00;
+  std::string unknown_18;
+  std::string unknown_30;
+};
+
+struct TempleData : DataState<TempleDataState> {
+  unsigned char unknown_20[0x120];
+};
+
+static_assert(sizeof(TempleData) == 0x140);
+
+struct CmdBtlPartyMemberDataEntry {
+  std::vector<const void*> unknown_00;
+  std::vector<const void*> unknown_18;
+};
+
+struct CmdBtlPartyMemberDataState {
+  std::vector<CmdBtlPartyMemberDataEntry> unknown_00;
+  std::vector<const void*> unknown_18;
+};
+
+struct CmdBtlPartyMemberData : DataState<CmdBtlPartyMemberDataState> {
+  unsigned char unknown_20[0x48];
+};
+
+static_assert(sizeof(CmdBtlPartyMemberData) == 0x68);
+
+struct TutorialDataState {
+  unsigned char unknown_00[0x10];
+  std::string unknown_10;
+  std::vector<const void*> unknown_28;
+  std::vector<const void*> unknown_40;
+  std::vector<const void*> unknown_58;
+  std::vector<const void*> unknown_70;
+};
+
+struct TutorialData : DataState<TutorialDataState> {
+  unsigned char unknown_20[0x58];
+};
+
+static_assert(sizeof(TutorialData) == 0x78);
+
+struct MiracleDataState {
+  unsigned char unknown_00[0x10];
+  std::vector<const void*> unknown_10;
+  unsigned char unknown_28[0x8];
+  std::vector<const void*> unknown_30;
+  std::vector<const void*> unknown_48;
+  unsigned char unknown_60[0x10];
+  std::vector<const void*> unknown_70;
+  unsigned char unknown_88[0x8];
+  std::vector<const void*> unknown_90;
+  std::vector<const void*> unknown_a8;
+  unsigned char unknown_c0[0x10];
+  std::vector<const void*> unknown_d0;
+  unsigned char unknown_e8[0x8];
+  std::vector<const void*> unknown_f0;
+  std::vector<const void*> unknown_108;
+  unsigned char unknown_120[0x10];
+  std::vector<const void*> unknown_130;
+  unsigned char unknown_148[0x8];
+  std::vector<const void*> unknown_150;
+  std::vector<const void*> unknown_168;
+};
+
+struct MiracleData : DataState<MiracleDataState> {
+  unsigned char unknown_20[0x90];
+};
+
+static_assert(sizeof(MiracleData) == 0xb0);
+
+struct VectorPair {
+  std::vector<const void*> first;
+  std::vector<const void*> second;
+};
+
+struct GmapSpotDataState {
+  std::vector<const void*> unknown_00;
+  std::vector<const void*> unknown_18;
+  std::vector<std::string> unknown_30;
+  std::vector<const void*> unknown_48;
+};
+
+struct GmapSpotData : DataState<GmapSpotDataState> {
+  unsigned char unknown_20[0xe8];
+};
+
+static_assert(sizeof(GmapSpotData) == 0x108);
+
+struct HubFacilityOpenDataState {
+  std::string unknown_00;
+  std::vector<VectorPair> unknown_18;
+  std::vector<const void*> unknown_30;
+};
+
+struct HubFacilityOpenData : DataState<HubFacilityOpenDataState> {
+  unsigned char unknown_20[0x30];
+};
+
+static_assert(sizeof(HubFacilityOpenData) == 0x50);
+
+struct BelongDataState {
+  std::vector<VectorPair> unknown_00;
+  std::vector<const void*> unknown_18;
+};
+
+struct BelongData : DataState<BelongDataState> {
+  unsigned char unknown_20[0x38];
+};
+
+static_assert(sizeof(BelongData) == 0x58);
+
+struct RelianceTalkDataState {
+  unsigned char unknown_00[0x10];
+  std::string unknown_10;
+  unsigned char unknown_28[0x10];
+  std::string unknown_38;
+  std::string unknown_50;
+  unsigned char unknown_68[0x28];
+  std::vector<const void*> unknown_90;
+  std::vector<const void*> unknown_a8;
+  std::vector<VectorPair> unknown_c0;
+  std::vector<const void*> unknown_d8;
+};
+
+struct RelianceTalkData : DataState<RelianceTalkDataState> {
+  unsigned char unknown_20[0x68];
+};
+
+static_assert(sizeof(RelianceTalkData) == 0x88);
+
+struct RecallLabelDataEntry {
+  unsigned char unknown_00[0x10];
+  std::string unknown_10;
+};
+
+struct RecallLabelDataState {
+  unsigned char unknown_00[0x28];
+  std::vector<const void*> unknown_28;
+  std::vector<const void*> unknown_40;
+  unsigned char unknown_58[0x10];
+  std::string unknown_68;
+  std::vector<const void*> unknown_80;
+  std::vector<const void*> unknown_98;
+  std::vector<RecallLabelDataEntry> unknown_b0;
+  std::unordered_map<uint64_t, const void*> unknown_c8;
+};
+
+struct RecallLabelData : DataState<RecallLabelDataState> {
+  unsigned char unknown_20[0x80];
+};
+
+static_assert(sizeof(RecallLabelData) == 0xa0);
+
+struct VariableDataEntry {
+  unsigned char unknown_00[0x10];
+  std::vector<VectorPair> unknown_10;
+  std::vector<const void*> unknown_28;
+  unsigned char unknown_40[0x8];
+};
+
+static_assert(sizeof(VariableDataEntry) == 0x48);
+
+struct VariableDataState {
+  unsigned char unknown_00[0x10];
+  std::vector<VariableDataEntry> unknown_10;
+};
+
+struct VariableData : DataState<VariableDataState> {
+  unsigned char unknown_20[0x48];
+};
+
+static_assert(sizeof(VariableData) == 0x68);
+
+struct FacilitySceneCameraWorkDataState {
+  ~FacilitySceneCameraWorkDataState() {
+    unknown_08.clear();
+    unknown_20.clear();
+  }
+
+  unsigned char unknown_00[0x8];
+  std::vector<const void*> unknown_08;
+  std::vector<const void*> unknown_20;
+};
+
+struct FacilitySceneCameraWorkData
+  : DataState<FacilitySceneCameraWorkDataState> {
+  unsigned char unknown_20[0xb0];
+};
+
+static_assert(sizeof(FacilitySceneCameraWorkData) == 0xd0);
+
+// Cleared on destruction without being released.
+struct LessonHandle {
+  ~LessonHandle() {
+    value = nullptr;
+  }
+
+  const void* value;
+};
+
+struct LessonDataState {
+  std::string unknown_00;
+  LessonHandle unknown_18;
+};
+
+struct LessonData : DataState<LessonDataState> {
+  unsigned char unknown_20[0x70];
+};
+
+static_assert(sizeof(LessonData) == 0x90);
+
+struct FacilitySceneCharacterMotionData : Data {
+  // Non positive values fall back to -1.
+  void Build() {
+    if (unknown_38 <= 0.0f) {
+      unknown_38 = -1.0f;
+    }
+
+    if (unknown_3c <= 0.0f) {
+      unknown_3c = -1.0f;
+    }
+  }
+
+  unsigned char unknown_18[0x20];
+  float unknown_38;
+  float unknown_3c;
+  unsigned char unknown_40[0x8];
+};
+
+static_assert(sizeof(FacilitySceneCharacterMotionData) == 0x48);
+
+struct GmapTroopData : Data {
+  void Build() {
+    shop_48.Resolve();
+    battle_field_30.Resolve();
+    persons_88.Resolve();
+    persons_98.Resolve();
+    gmap_encount_a8.Resolve();
+    gmap_encount_b8.Resolve();
+    items_58.Resolve();
+  }
+
+  unsigned char unknown_18[0x18];
+  DataRef<BattleFieldData> battle_field_30;
+  unsigned char unknown_40[0x8];
+  DataRef<ShopGroup> shop_48;
+  DataRefList<ItemData> items_58;
+  unsigned char unknown_68[0x20];
+  DataRefList<PersonData> persons_88;
+  DataRefList<PersonData> persons_98;
+  DataRef<GmapEncountData> gmap_encount_a8;
+  DataRef<GmapEncountData> gmap_encount_b8;
+};
+
+static_assert(sizeof(GmapTroopData) == 0xc8);
+
+struct CmdBtlPartySettingData : Data {
+  void Build() {
+    field_28.Resolve();
+    persons_48.Resolve();
+    party_member_58.Resolve();
+    party_member_68.Resolve();
+  }
+
+  unsigned char unknown_18[0x10];
+  DataRef<CmdBtlFieldData> field_28;
+  unsigned char unknown_38[0x10];
+  DataRefList<PersonData> persons_48;
+  DataRef<CmdBtlPartyMemberDataArray> party_member_58;
+  DataRef<CmdBtlPartyMemberDataArray> party_member_68;
+  unsigned char unknown_78[0x30];
+};
+
+static_assert(sizeof(CmdBtlPartySettingData) == 0xa8);
+
+struct TerrainDataState {
+  std::vector<const void*> unknown_00;
+  unsigned char unknown_18[0x8];
+  std::vector<const void*> unknown_20;
+  std::vector<const void*> unknown_38;
+  unsigned char unknown_50[0x10];
+  std::vector<const void*> unknown_60;
+  unsigned char unknown_78[0x8];
+  std::vector<const void*> unknown_80;
+  std::vector<const void*> unknown_98;
+  unsigned char unknown_b0[0x10];
+  std::vector<const void*> unknown_c0;
+  unsigned char unknown_d8[0x8];
+  std::vector<const void*> unknown_e0;
+  std::vector<const void*> unknown_f8;
+  unsigned char unknown_110[0x10];
+  std::vector<const void*> unknown_120;
+  unsigned char unknown_138[0x8];
+  std::vector<const void*> unknown_140;
+  std::vector<const void*> unknown_158;
+  unsigned char unknown_170[0x10];
+  std::vector<const void*> unknown_180;
+  unsigned char unknown_198[0x8];
+  std::vector<const void*> unknown_1a0;
+  std::vector<const void*> unknown_1b8;
+  unsigned char unknown_1d0[0x10];
+  std::vector<const void*> unknown_1e0;
+  std::vector<const void*> unknown_1f8;
+};
+
+struct TerrainData : DataState<TerrainDataState> {
+  unsigned char unknown_20[0x180];
+};
+
+static_assert(sizeof(TerrainData) == 0x1a0);
 
 }
 

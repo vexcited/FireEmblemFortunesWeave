@@ -130,6 +130,7 @@ const char* GetDataVariant(const std::string& path);
 
 const char* FindAlias(const HashedString& key);
 const char* FindAliasSuffix(const HashedString& key);
+uint64_t HashAlias(const HashedString& key);
 
 struct Data;
 
@@ -241,6 +242,9 @@ struct Local {
 
   T value;
 };
+
+// The short hash index hashes its keys like std::hash.
+struct ShortHash : std::hash<uint32_t> {};
 
 struct CompareId {
   template<typename T>
@@ -617,7 +621,7 @@ public:
     items_.clear();
     names_.clear();
     items_by_hash_.clear();
-    entries_by_hash_.clear();
+    items_by_short_hash_.clear();
     sheets_.clear();
     sections_.clear();
     variants_.clear();
@@ -628,6 +632,31 @@ protected:
   virtual void OnBuild() {}
   virtual void OnUnbuild() {}
   virtual void OnRebuild() {}
+
+  // Some files also index their items by the low half of the name hash.
+  void IndexShortHashes() {
+    items_by_short_hash_.clear();
+
+    for (T* item : items_) {
+      if (const uint32_t hash = item->key.hash) {
+        AddShortHash(hash, item);
+      }
+    }
+  }
+
+  void IndexShortHashesWithAliases() {
+    items_by_short_hash_.clear();
+
+    for (T* item : items_) {
+      if (const uint32_t hash = item->key.hash) {
+        AddShortHash(hash, item);
+      }
+
+      if (const uint32_t hash = HashAlias(item->key)) {
+        AddShortHash(hash, item);
+      }
+    }
+  }
 
 private:
   // Link time optimization inlined these into every caller.
@@ -651,10 +680,16 @@ private:
     }
   }
 
+  void AddShortHash(uint32_t hash, T* item) {
+    if (!items_by_short_hash_.contains(hash)) {
+      items_by_short_hash_.emplace(hash, Local<T*>{item});
+    }
+  }
+
   std::vector<DataSheet*> sheets_;
   std::vector<T*> items_;
   std::unordered_map<uint64_t, T*> items_by_hash_;
-  std::unordered_map<uint64_t, U*> entries_by_hash_;
+  std::unordered_map<uint32_t, T*, ShortHash> items_by_short_hash_;
   SectionMap sections_;
   std::vector<const char*> variants_;
   std::vector<const char*> names_;

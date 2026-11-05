@@ -28,5 +28,7 @@ Result CreateStorage(StorageHandle* pOutStorage, size_t size);
 Result WriteToStorage(StorageHandle storage, int64_t offset,
   const void* buffer, size_t size);
 void ReleaseStorage(StorageHandle storage);
+Result ReadFromStorage(StorageHandle storage, int64_t offset, void* buffer,
+  size_t size);
 
 }

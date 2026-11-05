@@ -23,6 +23,10 @@ struct StorageHandle {
   void* _p;
 };
 
+struct LibraryAppletSelfHandle {
+  void* _p;
+};
+
 AppletResourceUserId GetAppletResourceUserId();
 
 }

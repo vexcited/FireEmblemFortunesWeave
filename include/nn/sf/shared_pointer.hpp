@@ -13,6 +13,12 @@ class SharedPointer {
  public:
   SharedPointer() : m_Pointer(nullptr) {}
 
+  SharedPointer(Interface* pointer, bool addReference) : m_Pointer(pointer) {
+    if (m_Pointer != nullptr && addReference) {
+      m_Pointer->AddReference();
+    }
+  }
+
   SharedPointer(const SharedPointer& other) : m_Pointer(other.m_Pointer) {
     if (m_Pointer != nullptr) {
       m_Pointer->AddReference();

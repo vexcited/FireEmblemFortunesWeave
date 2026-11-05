@@ -15,6 +15,7 @@ Interface* GetWindowController();
 Interface* GetAppletCommonFunctions();
 Interface* GetDebugFunctions();
 Interface* GetDisplayController();
+Interface* GetLibraryAppletCreator();
 bool InitializeApplicationInterfaces();
 
 namespace detail {

@@ -3,13 +3,28 @@
 #include <stdint.h>
 
 #include "nn/am/interfaces.hpp"
+#include "nn/am/service/am_notification.hpp"
+#include "nn/am/service/am_storage.hpp"
 #include "nn/applet/applet_types.hpp"
 #include "nn/os/time.hpp"
 #include "nn/result.hpp"
 #include "nn/sf/sf_buffers.hpp"
+#include "nn/sf/native_handle.hpp"
 #include "nn/sf/shared_pointer.hpp"
 
 namespace nn::am::service {
+
+class IGpuErrorHandler : public sf::IServiceObject {
+ public:
+  virtual void Reserved2() = 0;
+  virtual void Reserved3() = 0;
+  virtual Result GetManualGpuErrorInfoSize(sf::Out<uint64_t> pOutSize) = 0;
+  virtual Result GetManualGpuErrorInfo(sf::Out<uint64_t> pOutSize,
+    const sf::OutBuffer& buffer) = 0;
+  virtual Result GetManualGpuErrorDetectionSystemEvent(
+    sf::Out<sf::NativeHandle> pOutHandle) = 0;
+  virtual Result FinishManualGpuErrorHandling() = 0;
+};
 
 #define NN_AM_RESERVED(index) virtual void Reserved##index() = 0
 
@@ -32,7 +47,8 @@ class ICommonStateGetter : public sf::IServiceObject {
   virtual Result SetCpuBoostMode(int32_t mode) = 0;
   NN_AM_RESERVED(39); NN_AM_RESERVED(40); NN_AM_RESERVED(41);
   NN_AM_RESERVED(42); NN_AM_RESERVED(43); NN_AM_RESERVED(44);
-  NN_AM_RESERVED(45);
+  virtual Result GetGpuErrorHandler(
+    const sf::Out<sf::SharedPointer<IGpuErrorHandler>>& pOutHandler) = 0;
   virtual Result GetAppletLaunchedHistory(sf::Out<int32_t> pOutCount,
     const sf::OutArray<applet::AppletId>& outAppletIds) = 0;
   NN_AM_RESERVED(47); NN_AM_RESERVED(48); NN_AM_RESERVED(49);
@@ -70,7 +86,7 @@ class ISelfController : public sf::IServiceObject {
   NN_AM_RESERVED(36); NN_AM_RESERVED(37);
   virtual Result SetInputDetectionSourceSet(uint32_t sourceSet) = 0;
   NN_AM_RESERVED(39); NN_AM_RESERVED(40); NN_AM_RESERVED(41);
-  NN_AM_RESERVED(42);
+  virtual Result SetAutoSleepDisabled(bool isDisabled) = 0;
   virtual Result IsAutoSleepDisabled(sf::Out<bool> pOutIsDisabled) = 0;
   NN_AM_RESERVED(44); NN_AM_RESERVED(45);
   virtual Result SetInputDetectionPolicy(int32_t policy) = 0;
@@ -90,7 +106,12 @@ class ISelfController : public sf::IServiceObject {
 class IAppletCommonFunctions : public sf::IServiceObject {
  public:
   NN_AM_RESERVED(2); NN_AM_RESERVED(3); NN_AM_RESERVED(4); NN_AM_RESERVED(5);
-  NN_AM_RESERVED(6); NN_AM_RESERVED(7); NN_AM_RESERVED(8); NN_AM_RESERVED(9);
+  NN_AM_RESERVED(6);
+  virtual Result PushToAppletBoundChannel(
+    sf::SharedPointer<IStorage> storage) = 0;
+  virtual Result PopFromAppletBoundChannel(
+    const sf::Out<sf::SharedPointer<IStorage>>& pOutStorage) = 0;
+  NN_AM_RESERVED(9);
   NN_AM_RESERVED(10); NN_AM_RESERVED(11); NN_AM_RESERVED(12);
   NN_AM_RESERVED(13); NN_AM_RESERVED(14); NN_AM_RESERVED(15);
   NN_AM_RESERVED(16); NN_AM_RESERVED(17); NN_AM_RESERVED(18);
@@ -102,7 +123,13 @@ class IAppletCommonFunctions : public sf::IServiceObject {
   NN_AM_RESERVED(34); NN_AM_RESERVED(35); NN_AM_RESERVED(36);
   NN_AM_RESERVED(37); NN_AM_RESERVED(38); NN_AM_RESERVED(39);
   NN_AM_RESERVED(40); NN_AM_RESERVED(41); NN_AM_RESERVED(42);
-  NN_AM_RESERVED(43); NN_AM_RESERVED(44); NN_AM_RESERVED(45);
+  NN_AM_RESERVED(43);
+  virtual Result GetNotificationReceiverService(
+    const sf::Out<sf::SharedPointer<INotificationReceiverService>>&
+      pOutService) = 0;
+  virtual Result GetNotificationSenderService(
+    const sf::Out<sf::SharedPointer<INotificationSenderService>>&
+      pOutService) = 0;
   NN_AM_RESERVED(46); NN_AM_RESERVED(47); NN_AM_RESERVED(48);
   NN_AM_RESERVED(49); NN_AM_RESERVED(50); NN_AM_RESERVED(51);
   NN_AM_RESERVED(52); NN_AM_RESERVED(53); NN_AM_RESERVED(54);
@@ -111,6 +138,12 @@ class IAppletCommonFunctions : public sf::IServiceObject {
   NN_AM_RESERVED(61); NN_AM_RESERVED(62); NN_AM_RESERVED(63);
   virtual Result RequestChatProhibition(bool isProhibited) = 0;
   virtual Result RequestChatExpirationCheckSkip(bool isSkipped) = 0;
+  NN_AM_RESERVED(66); NN_AM_RESERVED(67); NN_AM_RESERVED(68);
+  NN_AM_RESERVED(69); NN_AM_RESERVED(70); NN_AM_RESERVED(71);
+  NN_AM_RESERVED(72); NN_AM_RESERVED(73); NN_AM_RESERVED(74);
+  NN_AM_RESERVED(75); NN_AM_RESERVED(76); NN_AM_RESERVED(77);
+  virtual Result GetGpuErrorDetectedSystemEvent(
+    sf::Out<sf::NativeHandle> pOutHandle) = 0;
 };
 
 class IDebugFunctions : public sf::IServiceObject {

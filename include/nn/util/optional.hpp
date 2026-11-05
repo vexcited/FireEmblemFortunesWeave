@@ -48,6 +48,14 @@ public:
     m_HasValue = false;
   }
 
+  template <class... Args>
+  T& emplace(Args&&... args) {
+    reset();
+    new (&m_Value) T(std::forward<Args>(args)...);
+    m_HasValue = true;
+    return m_Value;
+  }
+
   constexpr bool has_value() const { return m_HasValue; }
   constexpr explicit operator bool() const { return m_HasValue; }
 
