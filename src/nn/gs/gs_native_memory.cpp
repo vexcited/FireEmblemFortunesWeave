@@ -81,8 +81,33 @@ public:
     m_Mutex.Unlock();
   }
 
+  // Entries are looked up by handle, 0 is never a valid handle.
+  void Destroy(NativeMemoryHandle handle) {
+    Lock();
+    if (handle.value != 0) {
+      for (Entry& entry : m_Entries) {
+        if (entry.handle == handle.value) {
+          DestroyUnsafe(&entry);
+          break;
+        }
+      }
+    }
+    Unlock();
+  }
+
 private:
+  struct Entry {
+    uint32_t state;
+    uint32_t handle;
+    uint8_t reserved[24];
+  };
+
+  void DestroyUnsafe(Entry* entry);
+
   os::SdkMutexType m_Mutex;
+  uint32_t m_SessionHandle;
+  uint64_t m_BlockModes;
+  Entry m_Entries[256];
 };
 
 }
@@ -168,6 +193,10 @@ Result CreateNativeMemoryWithVprMemHandleGpuShared(
     vprMemory, offset, size));
   *pOutHandle = handle;
   return Result();
+}
+
+void DestroyNativeMemory(NativeMemoryHandle handle) {
+  g_NativeMemoryManager.Destroy(handle);
 }
 
 }

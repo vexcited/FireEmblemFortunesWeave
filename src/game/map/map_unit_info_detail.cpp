@@ -1,3 +1,4 @@
+#include "game/gameui/header_footer.hpp"
 #include "game/map/map_unit_info_detail.hpp"
 #include "game/sound/se.hpp"
 
@@ -9,6 +10,12 @@ void MapUnitInfoDetail::Unknown57(std::vector<int64_t>& handles) {
   ImplUnknown12();
   BasicMenu::Unknown57(handles);
   accessor_.PlayAnimation("Bg_In", 1.0f);
+}
+
+void MapUnitInfoDetail::Unknown131() {
+  if (gameui::Footer* footer = gameui::Footer::instance_) {
+    footer->Refresh(false);
+  }
 }
 
 void MapUnitInfoDetail::Unknown72() {

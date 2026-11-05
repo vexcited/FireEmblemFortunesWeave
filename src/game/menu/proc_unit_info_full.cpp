@@ -1,6 +1,7 @@
 #include <cstdint>
 #include <vector>
 
+#include "game/gameui/header_footer.hpp"
 #include "game/sound/se.hpp"
 #include "ui/layout_accessor.hpp"
 
@@ -83,6 +84,12 @@ private:
   uint8_t unknown_7c1_[0xd3];
   bool unknown_894_;
 };
+
+void ProcUnitInfoFull::Unknown131() {
+  if (gameui::Footer* footer = gameui::Footer::instance_) {
+    footer->Refresh(false);
+  }
+}
 
 [[gnu::used]] ProcUnitInfoFull::ProcUnitInfoFull() = default;
 

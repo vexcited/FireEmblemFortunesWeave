@@ -71,5 +71,19 @@ CharacterEncodingResult PickOutCharacterFromUtf8String(char* pOutChar,
   const char** pStr);
 CharacterEncodingResult ConvertCharacterUtf8ToUtf32(uint32_t* pDst,
   const char* pSrc);
+CharacterEncodingResult ConvertCharacterUtf8ToUtf32(char32_t* pDst,
+  const char* pSrc);
+CharacterEncodingResult ConvertCharacterUtf32ToUtf8(char* pDst,
+  uint32_t src);
+CharacterEncodingResult ConvertCharacterUtf32ToUtf8(char* pDst,
+  char32_t src);
+CharacterEncodingResult ConvertCharacterUtf8ToUtf16Native(uint16_t* pDst,
+  const char* pSrc);
+CharacterEncodingResult ConvertCharacterUtf8ToUtf16Native(char16_t* pDst,
+  const char* pSrc);
+CharacterEncodingResult ConvertCharacterUtf16NativeToUtf8(char* pDst,
+  const uint16_t* pSrc);
+CharacterEncodingResult ConvertCharacterUtf16NativeToUtf8(char* pDst,
+  const char16_t* pSrc);
 
 }

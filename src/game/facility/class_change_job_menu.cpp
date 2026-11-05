@@ -3,7 +3,11 @@
 #include "game/data/data_file.hpp"
 #include "game/facility/class_change_job_menu.hpp"
 #include "game/game_mode_data.hpp"
+#include "game/gameui/header_footer.hpp"
+#include "game/gameui/message.hpp"
 #include "game/sound/se.hpp"
+#include "game/unit_list_set.hpp"
+#include "msg/message_manager.hpp"
 #include "ui/layout_accessor.hpp"
 
 namespace game {
@@ -17,6 +21,41 @@ extern const HashedString kVariableHubFacilityForced;
 
 // The highest class rank the story has opened.
 uint8_t GetOpenClassRank();
+
+}
+
+namespace game::facility {
+
+#pragma GCC visibility push(hidden)
+
+// The message ids of the class ranks.
+extern const char* const kJobRankMids[6];
+const char* const kJobRankMids[6] = {
+  "MID_ClassTrialMenu_JobRank_None",
+  "MID_ClassTrialMenu_JobRank_Novice",
+  "MID_ClassTrialMenu_JobRank_Middle",
+  "MID_ClassTrialMenu_JobRank_Higher",
+  "MID_ClassTrialMenu_JobRank_Super",
+  "MID_ClassTrialMenu_JobRank_Legend",
+};
+
+// The facility scene behind the menus, it redraws the shown unit when the
+// byte at 0xf1 is set.
+class FacilityView {
+public:
+  static FacilityView* instance_;
+
+  void SetUnitChanged() { unit_changed_ = true; }
+
+private:
+  uint8_t unknown_00_[0xf1];
+  bool unit_changed_;
+};
+
+#pragma GCC visibility pop
+
+// Makes the unit the only one of the Mind units.
+void SetMindUnit(Unit* unit);
 
 }
 
@@ -57,6 +96,74 @@ int ClassChangeJobMenu::Unknown101() {
   return GameModeData::IsVariableSet(kVariableHubFacilityForced) ? 1 : 3;
 }
 
+int ClassChangeJobMenu::Unknown103() {
+  if (GameModeData::IsVariableSet(kVariableHubFacilityForced)) {
+    return 0;
+  }
+  if (mode_ == kModeUnknown2) {
+    return 0;
+  }
+
+  Unit* start = unit_;
+  do {
+    Unit* unit = unit_;
+    if (UnitCycleList* list = UnitListSet::instance_->GetList(0)) {
+      unit = list->GetNext(unit, 2);
+    }
+    unit_ = unit;
+    if (unit != start) {
+      SetMindUnit(unit);
+      if (FacilityView::instance_ != nullptr) {
+        FacilityView::instance_->SetUnitChanged();
+      }
+      if (!Unknown148(tab_.GetCurrent())) {
+        tab_.Move(-1, true);
+      }
+    }
+  } while (!Unknown148(tab_.GetCurrent()));
+
+  if (unit_ == start) {
+    return 0;
+  }
+  Unknown16b41a0();
+  Unknown16defa0();
+  return 13;
+}
+
+int ClassChangeJobMenu::Unknown105() {
+  if (GameModeData::IsVariableSet(kVariableHubFacilityForced)) {
+    return 0;
+  }
+  if (mode_ == kModeUnknown2) {
+    return 0;
+  }
+
+  Unit* start = unit_;
+  do {
+    Unit* unit = unit_;
+    if (UnitCycleList* list = UnitListSet::instance_->GetList(0)) {
+      unit = list->GetPrevious(unit, 2);
+    }
+    unit_ = unit;
+    if (unit != start) {
+      SetMindUnit(unit);
+      if (FacilityView::instance_ != nullptr) {
+        FacilityView::instance_->SetUnitChanged();
+      }
+      if (!Unknown148(tab_.GetCurrent())) {
+        tab_.Move(1, true);
+      }
+    }
+  } while (!Unknown148(tab_.GetCurrent()));
+
+  if (unit_ == start) {
+    return 0;
+  }
+  Unknown16b41a0();
+  Unknown16defa0();
+  return 13;
+}
+
 void ClassChangeJobMenu::Unknown145() {
   accessor_.StartAnimation("JobSelect");
   accessor_3b8_.StartAnimation("JobSelect");
@@ -71,6 +178,37 @@ int ClassChangeJobMenu::InputUnknown12(int direction, bool loop) {
   }
   Unknown16de4d0();
   return 13;
+}
+
+void ClassChangeJobMenu::Unknown146(uint8_t rank) {
+  int count = 0;
+  int index = 0;
+  for (uint8_t page = 0; page < 6; page++) {
+    if (Unknown148(page)) {
+      if (rank == page) {
+        index = count;
+      }
+      tab_.Add(page);
+      count++;
+    }
+  }
+  ResetTabs(count, index);
+}
+
+void ClassChangeJobMenu::SetupRankPageTab() {
+  std::weak_ptr<ui::LayoutAccessor> part = accessor_.GetPart("L_PageTab");
+  tab_.SetupLabel(part, [this](int) -> gameui::Message::StringArg {
+    uint8_t rank = tab_.GetCurrent();
+    const char* mid = kJobRankMids[rank];
+    return *mid != '\0' ? msg::GetText(mid) :
+      msg::MessageManager::empty_text_;
+  }, Unknown24(), 14, 15);
+}
+
+void ClassChangeJobMenu::Unknown131() {
+  if (gameui::Footer* footer = gameui::Footer::instance_) {
+    footer->Refresh(false);
+  }
 }
 
 bool ClassChangeJobMenu::Unknown148(uint8_t rank) {
@@ -104,12 +242,27 @@ public:
   }
 
   void Unknown146(uint8_t rank) override;
-  void Unknown147() override;
+  void SetupRankPageTab() override;
 
   bool Unknown148(uint8_t rank) override {
     return rank != 0 && GetOpenClassRank() >= rank;
   }
 };
+
+void ProcClassTrialJobMenu::Unknown146(uint8_t rank) {
+  int count = 0;
+  int index = 0;
+  for (uint8_t page = 1; page < 6; page++) {
+    if (Unknown148(page)) {
+      if (rank == page) {
+        index = count;
+      }
+      tab_.Add(page);
+      count++;
+    }
+  }
+  ResetTabs(count, index);
+}
 
 [[gnu::used]] ProcClassTrialJobMenu::ProcClassTrialJobMenu() = default;
 

@@ -34,6 +34,7 @@ public:
   bool IsAnimationPlaying(const char* name, bool unknown);
   float GetAnimationEndFrame(const char* name, bool unknown);
   void SetAnimationFrame(const char* name, float frame);
+  void SetAnimationFrame(const char* name, bool unknown, float frame);
   void StopAnimation(const char* name, bool unknown);
   void CopyPane(const char* source, const char* parent, const char* name);
   std::weak_ptr<LayoutAccessor> GetPart(const char* name);

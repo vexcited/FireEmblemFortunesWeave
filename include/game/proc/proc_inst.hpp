@@ -125,6 +125,8 @@ protected:
     flags_ |= kFlagFinished;
   }
 
+  void SetFinished() { flags_ |= kFlagFinished; }
+
   bool IsUnknown8aSet() const { return unknown_8a[0] != 0; }
 
 public:

@@ -13,6 +13,9 @@ class Layout : public std::enable_shared_from_this<Layout> {
 public:
   virtual ~Layout();
 
+  // Loads the layout of an archive.
+  static std::shared_ptr<Layout> Load(const char* archive, const char* name);
+
   // Shared by the accessors of one layout, keyed by the layout name.
   std::shared_ptr<LayoutResource> GetResource(nn::ui2d::Layout* layout);
   void Arrange();
@@ -33,6 +36,11 @@ public:
     priority_ = priority;
   }
 
+  // Set when the process showing the layout goes away.
+  void SetReleased() {
+    released_ = true;
+  }
+
 private:
   bool loaded_;
   uint8_t unknown_19_[0x7f];
@@ -40,6 +48,7 @@ private:
   uint8_t unknown_d0_[0x870];
   bool visible_;
   int priority_;
+  bool released_;
 };
 
 }

@@ -7,7 +7,14 @@
 #include <string>
 #include <vector>
 
+#include "game/gameui/message.hpp"
 #include "ui/layout_accessor.hpp"
+
+namespace nn::ui2d {
+
+class Picture;
+
+}
 
 namespace game::menu {
 
@@ -25,10 +32,18 @@ public:
   bool Move(int direction, bool loop);
   void Add(int page);
 
+  using Label = std::function<gameui::Message::StringArg(int)>;
+  using Image = std::function<void(nn::ui2d::Picture*, int)>;
+
+  // Fills the image of every tab.
+  void SetupImage(const std::weak_ptr<ui::LayoutAccessor>& part,
+    const Image& image, int unknown0, int unknown1, int unknown2);
   // Shows the label of the current tab only.
-  void Setup(const std::weak_ptr<ui::LayoutAccessor>& part,
-    std::function<std::string(int)> label, int unknown0, int unknown1,
-    int unknown2);
+  void SetupLabel(const std::weak_ptr<ui::LayoutAccessor>& part,
+    const Label& label, int unknown0, int unknown1, int unknown2);
+  // Sets the text of every tab.
+  void SetupText(const std::weak_ptr<ui::LayoutAccessor>& part,
+    const Label& label, int unknown0, int unknown1, int unknown2);
 
   void Reset(int last, int index) {
     index_ = index;
@@ -56,6 +71,14 @@ public:
     return index_;
   }
 
+  // The page shown at a tab.
+  int GetPage(int index) const {
+    if (static_cast<size_t>(index) < order_.size()) {
+      return order_[index];
+    }
+    return index;
+  }
+
 private:
   void Refresh(int unknown0, int unknown1, int unknown2);
   void Update();
@@ -66,7 +89,7 @@ private:
   int32_t previous_;
   std::vector<int32_t> order_;
   Mode mode_;
-  std::function<std::string(int)> label_;
+  Label label_;
   std::weak_ptr<ui::LayoutAccessor> part_;
   uint8_t kind_;
   uint8_t unknown_71_[0xf];

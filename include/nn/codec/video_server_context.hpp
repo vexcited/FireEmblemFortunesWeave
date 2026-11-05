@@ -46,6 +46,33 @@ struct UserSession {
     return {result};
   }
 
+  template <typename WriteRequest, typename ReadReply>
+  [[gnu::always_inline]] Result Invoke(uint64_t requestHeader,
+    uint64_t replyHeader, WriteRequest writeRequest, ReadReply readReply) {
+    mutex.Lock();
+
+    if (session.handle == 0) {
+      mutex.Unlock();
+      return ResultNotConnected;
+    }
+
+    const tipc::SessionHandle copy = session;
+    uint8_t* message = tipc::GetMessageBuffer();
+    writeRequest(message);
+    tipc::WriteMessage<uint64_t>(message, 0, requestHeader);
+    const uint32_t result = tipc::Invoke(&copy, message, replyHeader);
+
+    if (result != 0) {
+      gsdrv::tipc1::CheckIpcResult({result});
+      mutex.Unlock();
+      return {result};
+    }
+
+    readReply(message);
+    mutex.Unlock();
+    return {0};
+  }
+
   [[gnu::noinline]] Result OpenVideoDecServiceCreator(
     const OutNativeHandle& out, const bool& isResolutionUnlimitedModeEnabled,
     const VideoDecoderLibraryVersion& version) {

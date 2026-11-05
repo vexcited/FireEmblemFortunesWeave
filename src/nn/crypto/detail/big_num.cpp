@@ -2,6 +2,8 @@
 
 #include <string.h>
 
+#include "nn/crypto/detail/clear_memory.hpp"
+
 namespace nn::crypto::detail {
 
 BigNum::BigNum()
@@ -53,6 +55,41 @@ size_t BigNum::GetSize() const {
 void BigNum::ReserveStatic(Digit* buffer, int count) {
   m_Digits = buffer;
   m_MaxCount = count;
+}
+
+// The value is taken modulo this number. The work buffer holds the value and
+// the temporaries and is cleared after use.
+bool BigNum::ModExp(void* dst, const void* src, const BigNum& exponent,
+  size_t size, uint32_t* workBuffer, size_t workBufferSize) const {
+  if (exponent.m_Count == 0 || m_Count == 0) {
+    return false;
+  }
+
+  DigitAllocator allocator;
+  allocator.Initialize(workBuffer,
+    static_cast<int>(workBufferSize / sizeof(Digit)));
+
+  BigNum value;
+  bool result = false;
+  int digits = static_cast<int>(size / sizeof(Digit));
+  Digit* buffer = allocator.Allocate(digits);
+  if (buffer != nullptr) {
+    value.ReserveStatic(buffer, digits);
+    if (value.Set(src, size)) {
+      result = ModExp(value.m_Digits, value.m_Digits, exponent.m_Digits,
+        static_cast<int>(exponent.m_Count), m_Digits,
+        static_cast<int>(m_Count), &allocator);
+      if (result) {
+        value.Recount();
+        value.Get(dst, size);
+      }
+      allocator.Free(digits);
+      ClearMemoryImpl(workBuffer,
+        allocator.GetMaxUsedCount() * static_cast<int>(sizeof(Digit)));
+    }
+  }
+
+  return result;
 }
 
 void BigNum::Recount() {

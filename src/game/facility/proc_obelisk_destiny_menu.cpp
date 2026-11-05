@@ -16,7 +16,7 @@ public:
   const char* Unknown67() override { return "運命の記録・因果の扉"; }
   void Unknown84() override;
   void Unknown85() override;
-  void Unknown91() override;
+  void Unknown91(int kind) override;
   void Unknown93() override;
   void Unknown94() override;
   int Unknown107() override;

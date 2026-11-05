@@ -137,7 +137,7 @@ public:
   virtual int Unknown56() { return 4; }
   virtual void Unknown57(std::vector<int64_t>& handles);
   virtual void Unknown58(std::vector<int64_t>& handles);
-  virtual int Unknown59() { return 0; }
+  virtual bool Unknown59() { return false; }
   virtual bool Unknown60() { return false; }
   virtual int Unknown61() { return 2; }
   virtual int Unknown62() { return 1; }
@@ -169,7 +169,7 @@ public:
   virtual void Unknown88() {}
   virtual void Unknown89() {}
   virtual void Unknown90() {}
-  virtual void Unknown91();
+  virtual void Unknown91(int kind);
   virtual void Unknown92() {}
   virtual void Unknown93() {}
 
@@ -245,7 +245,7 @@ public:
 
   virtual bool Unknown123();
   virtual bool Unknown124();
-  virtual void Unknown125();
+  virtual bool Unknown125();
   virtual void Unknown126();
   virtual void Unknown127();
   virtual void Unknown128() {}
@@ -284,12 +284,14 @@ protected:
   int32_t state_;
   uint32_t flags_;
   uint8_t unknown_168_[2];
-  uint8_t unknown_16a_;
+  bool unknown_16a_;
   uint8_t unknown_16b_[0x29];
   int32_t unknown_194_;
   uint8_t unknown_198_[0xa8];
   uint64_t unknown_240_;
-  uint8_t unknown_248_[0x20];
+  uint64_t unknown_248_;
+  // Handles of the window animations still playing.
+  std::vector<int64_t> animations_;
   int32_t unknown_268_;
   uint8_t unknown_26c_[4];
   void* unknown_270_;

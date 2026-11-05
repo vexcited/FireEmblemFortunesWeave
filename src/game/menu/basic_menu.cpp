@@ -1,4 +1,5 @@
 #pragma GCC visibility push(hidden)
+#include "game/gameui/menu_animator.hpp"
 #include "game/menu/basic_menu.hpp"
 #pragma GCC visibility pop
 
@@ -21,6 +22,26 @@ void BasicMenu::Unknown03() {
     }
   }
   Unknown90();
+}
+
+void BasicMenu::Unknown08() {
+  bool enable = true;
+  if (ProcInst* proc = GetParent()->GetParentProc()) {
+    const char* name = proc->GetName();
+    if (name != nullptr && std::strcmp(name, "ProcHelp") == 0) {
+      enable = false;
+    }
+    else if (BasicMenu* menu = dynamic_cast<BasicMenu*>(proc)) {
+      enable = !menu->Unknown64();
+    }
+  }
+
+  Unknown30(enable);
+  Unknown31(enable);
+  Unknown95();
+  if (current_ != nullptr) {
+    unknown_194_ = 2;
+  }
 }
 
 void BasicMenu::Unknown09() {
@@ -83,6 +104,28 @@ bool BasicMenu::Unknown29(int index) {
 
   BasicMenuItem* item = items_[index];
   return item->IsDecidable() && item->IsEnable() && !item->IsSelected();
+}
+
+void BasicMenu::Unknown31(bool enable) {
+  tab_.SetEnabled(enable);
+  std::weak_ptr<ui::LayoutAccessor> part = Unknown46();
+  ui::SetPartEnabled(part, enable, false);
+  part = Unknown47();
+  ui::SetPartEnabled(part, enable, false);
+  part = Unknown48();
+  ui::SetPartEnabled(part, enable, false);
+  part = Unknown49();
+  ui::SetPartEnabled(part, enable, false);
+  part = Unknown50();
+  ui::SetPartEnabled(part, enable, false);
+  part = Unknown51();
+  ui::SetPartEnabled(part, enable, false);
+  part = Unknown52();
+  ui::SetPartEnabled(part, enable, false);
+  part = Unknown53();
+  ui::SetPartEnabled(part, enable, false);
+  part = accessor_.GetPart(Unknown42());
+  ui::SetPartEnabled(part, enable, false);
 }
 
 void BasicMenu::Unknown44() {
@@ -250,6 +293,51 @@ void BasicMenu::Unknown81() {
 
 void BasicMenu::Unknown82() {}
 
+void BasicMenu::Unknown91(int kind) {
+  switch (kind) {
+    case 10:
+      if (current_ != nullptr) {
+        current_->ChangeSelect(true);
+      }
+      [[fallthrough]];
+    case 11:
+      Unknown70();
+      break;
+    case 12:
+      if (current_ != nullptr) {
+        current_->ChangeSelect(true);
+      }
+      Unknown71();
+      break;
+    default:
+      Unknown69();
+      break;
+  }
+}
+
+void BasicMenu::Unknown96() {
+  if (!unknown_16a_) {
+    for (BasicMenuItem* item : items_) {
+      item->OnClose();
+    }
+  }
+  if (state_ != 9) {
+    return;
+  }
+
+  unknown_268_ = 0;
+  Unknown16dc660(true);
+  JumpTo(3);
+  SetFinished();
+  if (ProcInst* proc = GetParent()->GetUnknown20()) {
+    if (MenuProcInst* menu = dynamic_cast<MenuProcInst*>(proc)) {
+      if (menu->Unknown21() == 10) {
+        menu->Unknown20();
+      }
+    }
+  }
+}
+
 void BasicMenu::InputUnknown16() {
   std::weak_ptr<ui::LayoutAccessor> accessor = Unknown46();
   UpdateAccessor(accessor);
@@ -278,6 +366,30 @@ void BasicMenu::InputUnknown15() {
 
 bool BasicMenu::Unknown123() {
   return !IsUnknown8aSet();
+}
+
+bool BasicMenu::Unknown124() {
+  if (Unknown59()) {
+    return false;
+  }
+  for (int64_t handle : animations_) {
+    if (gameui::MenuAnimator::IsPlaying(handle)) {
+      return false;
+    }
+  }
+  return true;
+}
+
+bool BasicMenu::Unknown125() {
+  if (Unknown59()) {
+    return false;
+  }
+  for (int64_t handle : animations_) {
+    if (gameui::MenuAnimator::IsPlaying(handle)) {
+      return false;
+    }
+  }
+  return true;
 }
 
 void BasicMenu::Unknown126() {

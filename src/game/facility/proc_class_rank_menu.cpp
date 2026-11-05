@@ -1,4 +1,5 @@
 #include "game/facility/facility_menu.hpp"
+#include "game/gameui/header_footer.hpp"
 
 namespace game::facility {
 
@@ -54,6 +55,20 @@ private:
 };
 
 [[gnu::used]] ProcClassRankMenu::ProcClassRankMenu() = default;
+
+}
+
+}
+
+namespace game::facility {
+
+namespace {
+
+void ProcClassRankMenu::Unknown131() {
+  if (gameui::Footer* footer = gameui::Footer::instance_) {
+    footer->Refresh(false);
+  }
+}
 
 }
 

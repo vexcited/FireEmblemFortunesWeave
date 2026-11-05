@@ -1,7 +1,10 @@
 #include <stddef.h>
 #include <stdint.h>
+#include <string.h>
 
 #include "nn/applet/applet_types.hpp"
+#include "nn/gs/gs_native_window.hpp"
+#include "nn/syncpt/syncpt_sdk.hpp"
 #include "nn/result.hpp"
 
 extern "C" {
@@ -12,6 +15,29 @@ struct NvRmFence {
 };
 
 struct NvRmSync;
+
+#pragma pack(push, 4)
+
+struct NvRmMemHandleAttr {
+  const uint32_t* heaps;
+  uint32_t heapCount;
+  uint32_t alignment;
+  uint32_t coherency;
+  uint32_t size;
+  uint32_t tags;
+  uint32_t reserved0[8];
+  void* allocator;
+  void* memory;
+  uint32_t reserved1[4];
+  uint32_t kind;
+  uint32_t surfaceId;
+};
+
+#pragma pack(pop)
+
+void* NvOsGetCurrentAllocator();
+int NvRmMemHandleAllocAttr(void* device, const NvRmMemHandleAttr* attr,
+  uint32_t* pOutHandle);
 
 int NvRmMemHandleFromFd(int fd, uint32_t* pOutHandle);
 void NvRmMemHandleFree(uint32_t handle);
@@ -120,6 +146,48 @@ uint64_t GetNvRmMemVprMemoryHandle(NvRmMemHandle handle) {
   return NvRmMemGetVprMemoryHandle(handle.value);
 }
 
+Result CreateNvRmMemHandle(NvRmMemHandle* pOutHandle, void* memory,
+  size_t size) {
+  NvRmMemHandleAttr attr = {};
+  attr.alignment = 0x1000;
+  attr.coherency = 1;
+  attr.size = static_cast<uint32_t>(size);
+  attr.allocator = NvOsGetCurrentAllocator();
+  attr.memory = memory;
+  attr.kind = 3;
+  attr.surfaceId = 0xffffffff;
+
+  uint32_t handle = 0;
+  if (NvRmMemHandleAllocAttr(nullptr, &attr, &handle) != 0) {
+    return ResultNvRmFailure;
+  }
+  pOutHandle->value = handle;
+  return Result();
+}
+
+// Protected memory comes from heap 5.
+Result CreateNvRmMemHandleWithProtectedMemory(NvRmMemHandle* pOutHandle,
+  void* memory, size_t size) {
+  const uint32_t heap = 5;
+  NvRmMemHandleAttr attr = {};
+  attr.heaps = &heap;
+  attr.heapCount = 1;
+  attr.alignment = 0x1000;
+  attr.coherency = 1;
+  attr.size = static_cast<uint32_t>(size);
+  attr.allocator = NvOsGetCurrentAllocator();
+  attr.memory = memory;
+  attr.kind = 3;
+  attr.surfaceId = 0xffffffff;
+
+  uint32_t handle = 0;
+  if (NvRmMemHandleAllocAttr(nullptr, &attr, &handle) != 0) {
+    return ResultNvRmFailure;
+  }
+  pOutHandle->value = handle;
+  return Result();
+}
+
 void WaitNvRmFenceRec(const NvRmFenceRec& fence) {
   NvRmFence fences[] = {{fence.syncPointId, fence.value}};
   NvRmSync* sync = NvRmSyncCreateFromSyncpoints(fences, 1);
@@ -127,6 +195,16 @@ void WaitNvRmFenceRec(const NvRmFenceRec& fence) {
     NvRmSyncWait(sync, -1);
     NvRmSyncClose(sync);
   }
+}
+
+// The native sync handle starts with the sync point handle.
+NvRmFenceRec GetNvRmFenceFromNativeSyncHandle(const NativeSyncHandle& sync) {
+  NvRmFenceRec fence = {};
+  syncpt::sdk::SyncPointHandle handle;
+  memcpy(&handle, &sync, sizeof(handle));
+  syncpt::sdk::MakeNvRmFenceFromSyncPointHandle(&fence.syncPointId,
+    &fence.value, handle);
+  return fence;
 }
 
 }

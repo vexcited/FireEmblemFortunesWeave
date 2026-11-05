@@ -34,6 +34,8 @@ public:
   size_t Update(void* dst, size_t dstSize, const void* src, size_t srcSize);
 
 private:
+  template <typename> friend class CcmModeImpl;
+
   enum State {
     State_None,
     State_Initialized,

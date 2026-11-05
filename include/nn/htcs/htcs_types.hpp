@@ -19,6 +19,11 @@ enum SocketError {
   HTCS_ENOTCONN = 56,
 };
 
+enum MessageFlag {
+  HTCS_MSG_PEEK = 1,
+  HTCS_MSG_WAITALL = 2,
+};
+
 struct HtcsPeerName {
   char name[32];
 };

@@ -279,6 +279,34 @@ GAME_SINGLETON(Time)
 #undef GAME_PROC_SINGLETON
 #undef GAME_SINGLETON
 
+// Nothing reads the registered word of these singletons, so link time
+// optimization dropped its store from their destructors.
+#define GAME_SINGLETON_UNREAD(T) \
+  template<> \
+  Singleton<T>::~Singleton() { \
+    if (instance_ == this) { \
+      instance_ = nullptr; \
+    } \
+  }
+
+GAME_SINGLETON_UNREAD(GameRestartData)
+GAME_SINGLETON_UNREAD(GameSaveData)
+GAME_SINGLETON_UNREAD(cmdbtl::Manager)
+GAME_SINGLETON_UNREAD(hub::CharacterManager)
+GAME_SINGLETON_UNREAD(hub::HubSeqAreaChange)
+GAME_SINGLETON_UNREAD(hub::HubSeqEncounter)
+GAME_SINGLETON_UNREAD(hub::HubSeqEnter)
+GAME_SINGLETON_UNREAD(hub::HubSeqExit)
+GAME_SINGLETON_UNREAD(hub::HubSeqObelisk)
+GAME_SINGLETON_UNREAD(map::MapDrawManager)
+GAME_SINGLETON_UNREAD(map::MapOnMapInfo)
+GAME_SINGLETON_UNREAD(map::Route)
+GAME_SINGLETON_UNREAD(map::history::Impl)
+GAME_SINGLETON_UNREAD(zview::Camera)
+GAME_SINGLETON_UNREAD(zview::RouteManager)
+
+#undef GAME_SINGLETON_UNREAD
+
 #define GAME_SINGLETON_CREATE(T) \
   template T* Singleton<T>::Create();
 

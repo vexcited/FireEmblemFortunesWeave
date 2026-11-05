@@ -5,6 +5,7 @@
 #include "nn/htcs/htcs_types.hpp"
 #include "nn/result.hpp"
 #include "nn/sf/native_handle.hpp"
+#include "nn/sf/sf_buffers.hpp"
 #include "nn/sf/shared_pointer.hpp"
 
 namespace nn::tma {
@@ -32,19 +33,32 @@ class ISocket : public sf::IServiceObject {
   virtual Result AcceptResults(sf::Out<int> pOutError,
     const sf::Out<sf::SharedPointer<ISocket>>& pOutSocket,
     sf::Out<htcs::SockAddrHtcs> pOutAddress, uint32_t taskId) = 0;
-  virtual Result RecvStart() = 0;
-  virtual Result RecvResults() = 0;
+  virtual Result RecvStart(sf::Out<uint32_t> pOutTaskId,
+    sf::Out<sf::NativeHandle> pOutEvent, int size, int flags) = 0;
+  virtual Result RecvResults(sf::Out<int> pOutError,
+    sf::Out<int64_t> pOutSize, const sf::OutBuffer& buffer,
+    uint32_t taskId) = 0;
   virtual Result RecvLargeStart() = 0;
   virtual Result SendStartOld() = 0;
   virtual Result SendLargeStart() = 0;
-  virtual Result SendResults() = 0;
-  virtual Result StartSend() = 0;
+  virtual Result SendResults(sf::Out<int> pOutError,
+    sf::Out<int64_t> pOutSize, uint32_t taskId) = 0;
+  virtual Result StartSend(sf::Out<uint32_t> pOutTaskId,
+    sf::Out<sf::NativeHandle> pOutEvent, sf::Out<int64_t> pOutMaxSize,
+    int64_t size, int flags) = 0;
   virtual Result ContinueSendOld() = 0;
-  virtual Result EndSend() = 0;
-  virtual Result StartRecv() = 0;
-  virtual Result EndRecv() = 0;
-  virtual Result SendStart() = 0;
-  virtual Result ContinueSend() = 0;
+  virtual Result EndSend(sf::Out<int> pOutError, sf::Out<int64_t> pOutSize,
+    uint32_t taskId) = 0;
+  virtual Result StartRecv(sf::Out<uint32_t> pOutTaskId,
+    sf::Out<sf::NativeHandle> pOutEvent, int64_t size, int flags) = 0;
+  virtual Result EndRecv(sf::Out<int> pOutError, sf::Out<int64_t> pOutSize,
+    const sf::OutBuffer& buffer, uint32_t taskId) = 0;
+  virtual Result SendStart(sf::Out<uint32_t> pOutTaskId,
+    sf::Out<sf::NativeHandle> pOutEvent, const sf::InBuffer& buffer,
+    int flags) = 0;
+  virtual Result ContinueSend(sf::Out<int64_t> pOutSize,
+    sf::Out<bool> pOutWait, const sf::InBuffer& buffer,
+    uint32_t taskId) = 0;
   virtual Result SendLargeResults() = 0;
   virtual Result GetBoundTcpPortNumberStart(sf::Out<uint32_t> pOutTaskId,
     sf::Out<sf::NativeHandle> pOutEvent) = 0;
@@ -87,6 +101,13 @@ class IHtcsManager : public sf::IServiceObject {
     uint64_t initialValue, int flags) = 0;
   virtual Result RegisterProcessId(uint64_t processId) = 0;
   virtual Result MonitorManager(uint64_t processId) = 0;
+  virtual Result StartSelect(sf::Out<uint32_t> pOutTaskId,
+    sf::Out<sf::NativeHandle> pOutEvent, const sf::InArray<int>& readFds,
+    const sf::InArray<int>& writeFds, const sf::InArray<int>& exceptFds,
+    int64_t seconds, int64_t microseconds) = 0;
+  virtual Result EndSelect(sf::Out<int> pOutError, sf::Out<int> pOutCount,
+    const sf::OutArray<int>& readFds, const sf::OutArray<int>& writeFds,
+    const sf::OutArray<int>& exceptFds, uint32_t taskId) = 0;
 };
 
 }

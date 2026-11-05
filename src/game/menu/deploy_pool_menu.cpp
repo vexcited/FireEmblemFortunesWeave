@@ -284,6 +284,12 @@ void AnimalPoolMenu::Unknown139() {
   Unknown152();
 }
 
+void LegionPoolMenu::Unknown131() {
+  if (gameui::Footer* footer = gameui::Footer::instance_) {
+    footer->Refresh(false);
+  }
+}
+
 void AnimalPoolMenu::Unknown131() {
   if (gameui::Footer* footer = gameui::Footer::instance_) {
     footer->Refresh(false);

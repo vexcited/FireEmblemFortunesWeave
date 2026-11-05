@@ -15,6 +15,7 @@ public:
   enum Mode : uint8_t {
     kModeTrial,
     kModeChange,
+    kModeUnknown2,
   };
 
   ~ClassChangeJobMenu() override;
@@ -78,11 +79,13 @@ public:
   virtual bool Unknown144() { return true; }
   virtual void Unknown145();
   virtual void Unknown146(uint8_t rank);
-  virtual void Unknown147();
+  virtual void SetupRankPageTab();
   virtual bool Unknown148(uint8_t rank);
   int InputUnknown12(int direction, bool loop) override;
 
 protected:
+  void Unknown16b41a0();
+
   game::Unit* unit_;
   game::Unit unit_430_;
   game::Unit unit_ce0_;

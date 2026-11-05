@@ -666,4 +666,263 @@ CharacterEncodingResult GetLengthOfConvertedStringUtf8ToUtf32(int* pOutLength,
   return GetLengthOfConvertedStringUtf8ToUtf32(pOutLength, src, static_cast<int>(strlen(src)));
 }
 
+// The sequence is copied out first so that the string converters see a
+// terminated single character.
+CharacterEncodingResult ConvertCharacterUtf8ToUtf16Native(uint16_t* pDst,
+  const char* pSrc) {
+  const uint8_t c = static_cast<uint8_t>(pSrc[0]);
+  char buffer[5] = {static_cast<char>(c)};
+  if (static_cast<uint32_t>(c - 0xc2) <= 0x1d) {
+    buffer[1] = pSrc[1];
+  }
+  else if ((c & 0xf0) == 0xe0) {
+    memcpy(buffer + 1, pSrc + 1, 2);
+  }
+  else if ((c & 0xf8) == 0xf0) {
+    memcpy(buffer + 1, pSrc + 1, 3);
+  }
+
+  uint16_t utf16[3] = {};
+  size_t dstCount = 0;
+  size_t srcCount;
+  const CharacterEncodingResult result = ConvertUtf8ToUtf16(&dstCount,
+    &srcCount, utf16, 2, buffer, static_cast<int>(strlen(buffer)));
+  if (result == CharacterEncodingResult_Success) {
+    utf16[dstCount] = 0;
+  }
+  memcpy(pDst, utf16, 2 * sizeof(uint16_t));
+  return result;
+}
+
+CharacterEncodingResult ConvertCharacterUtf8ToUtf16Native(char16_t* pDst,
+  const char* pSrc) {
+  const uint8_t c = static_cast<uint8_t>(pSrc[0]);
+  char buffer[5] = {static_cast<char>(c)};
+  if (static_cast<uint32_t>(c - 0xc2) <= 0x1d) {
+    buffer[1] = pSrc[1];
+  }
+  else if ((c & 0xf0) == 0xe0) {
+    memcpy(buffer + 1, pSrc + 1, 2);
+  }
+  else if ((c & 0xf8) == 0xf0) {
+    memcpy(buffer + 1, pSrc + 1, 3);
+  }
+
+  uint16_t utf16[3] = {};
+  size_t dstCount = 0;
+  size_t srcCount;
+  const CharacterEncodingResult result = ConvertUtf8ToUtf16(&dstCount,
+    &srcCount, utf16, 2, buffer, static_cast<int>(strlen(buffer)));
+  if (result == CharacterEncodingResult_Success) {
+    utf16[dstCount] = 0;
+  }
+  memcpy(pDst, utf16, 2 * sizeof(uint16_t));
+  return result;
+}
+
+CharacterEncodingResult ConvertCharacterUtf16NativeToUtf8(char* pDst,
+  const uint16_t* pSrc) {
+  uint16_t buffer[3] = {pSrc[0]};
+  if ((pSrc[0] & 0xf800) == 0xd800) {
+    buffer[1] = pSrc[1];
+  }
+
+  char utf8[5] = {};
+  size_t length = 0;
+  while (buffer[length] != 0) {
+    ++length;
+  }
+
+  size_t dstCount = 0;
+  size_t srcCount;
+  const CharacterEncodingResult result = ConvertUtf16ToUtf8(&dstCount,
+    &srcCount, utf8, 4, buffer, static_cast<int>(length));
+  if (result == CharacterEncodingResult_Success) {
+    utf8[dstCount] = 0;
+  }
+  memcpy(pDst, utf8, 4);
+  return result;
+}
+
+CharacterEncodingResult ConvertCharacterUtf16NativeToUtf8(char* pDst,
+  const char16_t* pSrc) {
+  CharacterEncodingResult result;
+  [[clang::noinline]] result = ConvertCharacterUtf16NativeToUtf8(pDst,
+    reinterpret_cast<const uint16_t*>(pSrc));
+  return result;
+}
+
+CharacterEncodingResult ConvertCharacterUtf8ToUtf32(uint32_t* pDst,
+  const char* pSrc) {
+  const uint8_t* input = reinterpret_cast<const uint8_t*>(pSrc);
+  uint32_t c = input[0];
+  switch (Utf8SequenceLength(static_cast<uint8_t>(c))) {
+    case 1:
+      break;
+    case 2:
+      if ((c & 0x1e) == 0 || Utf8SequenceLength(input[1]) != 0) {
+        return CharacterEncodingResult_InvalidFormat;
+      }
+      c = ((c & 0x1f) << 6) | (input[1] & 0x3f);
+      break;
+    case 3: {
+      if (Utf8SequenceLength(input[1]) != 0 ||
+        Utf8SequenceLength(input[2]) != 0) {
+        return CharacterEncodingResult_InvalidFormat;
+      }
+      const uint32_t value = ((c & 0xf) << 12) | ((input[1] & 0x3f) << 6);
+      if ((value & 0xf800) == 0 || (value & 0xf800) == 0xd800) {
+        return CharacterEncodingResult_InvalidFormat;
+      }
+      c = value | (input[2] & 0x3f);
+      break;
+    }
+    case 4: {
+      if (Utf8SequenceLength(input[1]) != 0 ||
+        Utf8SequenceLength(input[2]) != 0 ||
+        Utf8SequenceLength(input[3]) != 0) {
+        return CharacterEncodingResult_InvalidFormat;
+      }
+      const uint32_t value = ((c & 0x7) << 18) | ((input[1] & 0x3f) << 12);
+      if (value - 0x110000 < 0xfff00000) {
+        return CharacterEncodingResult_InvalidFormat;
+      }
+      c = value | ((input[2] & 0x3f) << 6) | (input[3] & 0x3f);
+      break;
+    }
+    default:
+      return CharacterEncodingResult_InvalidFormat;
+  }
+
+  *pDst = c;
+  return CharacterEncodingResult_Success;
+}
+
+CharacterEncodingResult ConvertCharacterUtf8ToUtf32(char32_t* pDst,
+  const char* pSrc) {
+  return ConvertCharacterUtf8ToUtf32(reinterpret_cast<uint32_t*>(pDst), pSrc);
+}
+
+CharacterEncodingResult ConvertCharacterUtf32ToUtf8(char* pDst,
+  uint32_t src) {
+  memset(pDst, 0, 4);
+  if (src <= 0x7f) {
+    pDst[0] = static_cast<char>(src);
+    return CharacterEncodingResult_Success;
+  }
+  if (src <= 0x7ff) {
+    pDst[0] = static_cast<char>((src >> 6) | 0xc0);
+    pDst[1] = static_cast<char>((src & 0x3f) | 0x80);
+    return CharacterEncodingResult_Success;
+  }
+  if ((src >> 16) == 0) {
+    if ((src & 0xf800) == 0xd800) {
+      return CharacterEncodingResult_InvalidFormat;
+    }
+    pDst[0] = static_cast<char>((src >> 12) | 0xe0);
+    pDst[1] = static_cast<char>(((src >> 6) & 0x3f) | 0x80);
+    pDst[2] = static_cast<char>((src & 0x3f) | 0x80);
+    return CharacterEncodingResult_Success;
+  }
+  if ((src >> 16) > 0x10) {
+    return CharacterEncodingResult_InvalidFormat;
+  }
+  pDst[0] = static_cast<char>((src >> 18) | 0xf0);
+  pDst[1] = static_cast<char>(((src >> 12) & 0x3f) | 0x80);
+  pDst[2] = static_cast<char>(((src >> 6) & 0x3f) | 0x80);
+  pDst[3] = static_cast<char>((src & 0x3f) | 0x80);
+  return CharacterEncodingResult_Success;
+}
+
+CharacterEncodingResult ConvertCharacterUtf32ToUtf8(char* pDst,
+  char32_t src) {
+  memset(pDst, 0, 4);
+  if (src <= 0x7f) {
+    pDst[0] = static_cast<char>(src);
+    return CharacterEncodingResult_Success;
+  }
+  if (src <= 0x7ff) {
+    pDst[0] = static_cast<char>((src >> 6) | 0xc0);
+    pDst[1] = static_cast<char>((src & 0x3f) | 0x80);
+    return CharacterEncodingResult_Success;
+  }
+  if ((src >> 16) == 0) {
+    if ((src & 0xf800) == 0xd800) {
+      return CharacterEncodingResult_InvalidFormat;
+    }
+    pDst[0] = static_cast<char>((src >> 12) | 0xe0);
+    pDst[1] = static_cast<char>(((src >> 6) & 0x3f) | 0x80);
+    pDst[2] = static_cast<char>((src & 0x3f) | 0x80);
+    return CharacterEncodingResult_Success;
+  }
+  if ((src >> 16) > 0x10) {
+    return CharacterEncodingResult_InvalidFormat;
+  }
+  pDst[0] = static_cast<char>((src >> 18) | 0xf0);
+  pDst[1] = static_cast<char>(((src >> 12) & 0x3f) | 0x80);
+  pDst[2] = static_cast<char>(((src >> 6) & 0x3f) | 0x80);
+  pDst[3] = static_cast<char>((src & 0x3f) | 0x80);
+  return CharacterEncodingResult_Success;
+}
+
+// Copies one validated character to the four byte output and advances the
+// string past it.
+CharacterEncodingResult PickOutCharacterFromUtf8String(char* pOutChar,
+  const char** pStr) {
+  memset(pOutChar, 0, 4);
+  const uint8_t* input = reinterpret_cast<const uint8_t*>(*pStr);
+  const uint8_t c = input[0];
+  int length;
+  switch (Utf8SequenceLength(c)) {
+    case 1:
+      pOutChar[0] = static_cast<char>(c);
+      length = 1;
+      break;
+    case 2:
+      if ((c & 0x1e) == 0 || Utf8SequenceLength(input[1]) != 0) {
+        return CharacterEncodingResult_InvalidFormat;
+      }
+      pOutChar[0] = static_cast<char>(c);
+      pOutChar[1] = (*pStr)[1];
+      length = 2;
+      break;
+    case 3: {
+      if (Utf8SequenceLength(input[1]) != 0 ||
+        Utf8SequenceLength(input[2]) != 0) {
+        return CharacterEncodingResult_InvalidFormat;
+      }
+      const uint16_t value = static_cast<uint16_t>(((input[1] << 6) & 0x800) |
+        (c << 12));
+      if (value == 0 || value == 0xd800) {
+        return CharacterEncodingResult_InvalidFormat;
+      }
+      pOutChar[0] = static_cast<char>(c);
+      pOutChar[1] = (*pStr)[1];
+      pOutChar[2] = (*pStr)[2];
+      length = 3;
+      break;
+    }
+    case 4: {
+      if (Utf8SequenceLength(input[1]) != 0 ||
+        Utf8SequenceLength(input[2]) != 0 ||
+        Utf8SequenceLength(input[3]) != 0 ||
+        ((((input[1] << 12) & 0x30000) | ((c & 7) << 18)) - 0x10000) >> 20 !=
+          0) {
+        return CharacterEncodingResult_InvalidFormat;
+      }
+      pOutChar[0] = static_cast<char>(c);
+      pOutChar[1] = (*pStr)[1];
+      pOutChar[2] = (*pStr)[2];
+      pOutChar[3] = (*pStr)[3];
+      length = 4;
+      break;
+    }
+    default:
+      return CharacterEncodingResult_InvalidFormat;
+  }
+
+  *pStr += length;
+  return CharacterEncodingResult_Success;
+}
+
 }

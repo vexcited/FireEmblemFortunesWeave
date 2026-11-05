@@ -25,9 +25,13 @@ private:
     State_None,
     State_Initialized,
     State_ProcessingData,
+    State_Done,
   };
 
   void GfMultH(Block* block);
+  void ProcessPartialData(const uint8_t* data, size_t size);
+  void ProcessBlocksGeneric(const uint8_t* data, int blockCount);
+  void ProcessRemainingData(const uint8_t* data, size_t size);
 
   Block m_Ghash;
   Block m_HashKeyTable[17];

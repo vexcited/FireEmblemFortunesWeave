@@ -17,7 +17,7 @@ public:
   void Unknown94() override;
   void Unknown98() override;
   void Unknown99() override;
-  void Unknown125() override;
+  bool Unknown125() override;
   void Unknown135(std::vector<int64_t>& handles) override;
   int Unknown136(std::vector<int64_t>& handles) override;
   int Unknown137() override { return 1; }

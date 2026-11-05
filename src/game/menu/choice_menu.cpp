@@ -1,3 +1,5 @@
+#include "game/gameui/header_footer.hpp"
+
 #pragma GCC visibility push(hidden)
 #include "game/menu/basic_menu.hpp"
 #pragma GCC visibility pop
@@ -26,5 +28,18 @@ public:
 };
 
 ChoiceMenu::~ChoiceMenu() = default;
+
+void ChoiceMenu::Unknown58(std::vector<int64_t>& handles) {
+  BasicMenu::Unknown58(handles);
+  if (gameui::Header* header = gameui::Header::instance_) {
+    header->Refresh(false);
+  }
+}
+
+void ChoiceMenu::Unknown92() {
+  if (gameui::Header* header = gameui::Header::instance_) {
+    header->Refresh(false);
+  }
+}
 
 }

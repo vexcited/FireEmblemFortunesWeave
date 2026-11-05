@@ -9,6 +9,7 @@
 #include "nn/os/timer_event.hpp"
 #include "nn/os/tls.hpp"
 #include "nn/sf/hipc_simple_client_session_manager.hpp"
+#include "nn/util/string_util.hpp"
 
 namespace nn::htcs {
 
@@ -103,6 +104,43 @@ sf::SharedPointer<tma::ISocket> socket(int& lastError) {
   return socket;
 }
 
+int close(sf::SharedPointer<tma::ISocket> socket, int& lastError) {
+  int result = 0;
+  NN_ABORT_UNLESS_RESULT_SUCCESS(socket->Close(sf::Out<int>(&lastError),
+    sf::Out<int>(&result)));
+  return result;
+}
+
+int connect(sf::SharedPointer<tma::ISocket> socket,
+  const SockAddrHtcs* address, int& lastError) {
+  SockAddrHtcs copy;
+  copy.family = address->family;
+  util::Strlcpy(copy.peerName.name, address->peerName.name,
+    sizeof(copy.peerName.name));
+  util::Strlcpy(copy.portName.name, address->portName.name,
+    sizeof(copy.portName.name));
+
+  int result = 0;
+  NN_ABORT_UNLESS_RESULT_SUCCESS(socket->Connect(sf::Out<int>(&lastError),
+    sf::Out<int>(&result), copy));
+  return result;
+}
+
+int bind(sf::SharedPointer<tma::ISocket> socket, const SockAddrHtcs* address,
+  int& lastError) {
+  SockAddrHtcs copy;
+  copy.family = address->family;
+  util::Strlcpy(copy.peerName.name, address->peerName.name,
+    sizeof(copy.peerName.name));
+  util::Strlcpy(copy.portName.name, address->portName.name,
+    sizeof(copy.portName.name));
+
+  int result = 0;
+  NN_ABORT_UNLESS_RESULT_SUCCESS(socket->Bind(sf::Out<int>(&lastError),
+    sf::Out<int>(&result), copy));
+  return result;
+}
+
 int listen(sf::SharedPointer<tma::ISocket> socket, int backlogCount,
   int& lastError) {
   int result = 0;
@@ -137,6 +175,183 @@ sf::SharedPointer<tma::ISocket> accept(sf::SharedPointer<tma::ISocket> socket,
 
   os::SleepThread(TimeSpan{1000000});
   return accepted;
+}
+
+namespace {
+
+constexpr size_t SmallTransferSizeMax = 0xdfe0;
+
+int64_t recvLarge(sf::SharedPointer<tma::ISocket> socket, void* buffer,
+  size_t size, int flags, int& lastError) {
+  int64_t received = 0;
+  sf::NativeHandle handle;
+  uint32_t taskId = 0;
+  lastError = HTCS_EINTR;
+  if (socket->StartRecv(sf::Out<uint32_t>(&taskId),
+    sf::Out<sf::NativeHandle>(&handle), size, flags).IsFailure()) {
+    os::SleepThread(TimeSpan{1000000});
+    return received;
+  }
+
+  os::SystemEventType event = {};
+  os::AttachReadableHandleToSystemEvent(&event, handle.GetOsHandle(),
+    handle.IsManaged(), os::EventClearMode_ManualClear);
+  handle.Detach();
+  os::WaitSystemEvent(&event);
+  os::ClearSystemEvent(&event);
+  socket->EndRecv(sf::Out<int>(&lastError), sf::Out<int64_t>(&received),
+    sf::OutBuffer(buffer, size), taskId);
+  os::DestroySystemEvent(&event);
+  return received;
+}
+
+int64_t sendLarge(sf::SharedPointer<tma::ISocket> socket, const void* buffer,
+  size_t size, int flags, int& lastError) {
+  int64_t sent = -1;
+  uint32_t taskId = 0;
+  sf::NativeHandle handle;
+  int64_t maxSize = 0;
+  lastError = HTCS_EINTR;
+  if (socket->StartSend(sf::Out<uint32_t>(&taskId),
+    sf::Out<sf::NativeHandle>(&handle), sf::Out<int64_t>(&maxSize), size,
+    flags).IsFailure()) {
+    os::SleepThread(TimeSpan{1000000});
+    return -1;
+  }
+
+  os::SystemEventType event = {};
+  os::AttachReadableHandleToSystemEvent(&event, handle.GetOsHandle(),
+    handle.IsManaged(), os::EventClearMode_ManualClear);
+  handle.Detach();
+
+  const char* bytes = static_cast<const char*>(buffer);
+  int64_t offset = 0;
+  while (true) {
+    bool wait = false;
+    int64_t chunk = 0;
+    int64_t remaining = size - offset;
+    Result result = socket->ContinueSend(sf::Out<int64_t>(&chunk),
+      sf::Out<bool>(&wait), sf::InBuffer(bytes + offset,
+        remaining < maxSize ? remaining : maxSize), taskId);
+    if (chunk < 1 || result.IsFailure()) {
+      break;
+    }
+    if (wait) {
+      os::WaitSystemEvent(&event);
+      os::ClearSystemEvent(&event);
+    }
+    offset += chunk;
+    if (offset >= static_cast<int64_t>(size)) {
+      os::WaitSystemEvent(&event);
+      break;
+    }
+  }
+
+  socket->EndSend(sf::Out<int>(&lastError), sf::Out<int64_t>(&sent), taskId);
+  os::DestroySystemEvent(&event);
+  return sent;
+}
+
+}
+
+int64_t recv(sf::SharedPointer<tma::ISocket> socket, void* buffer,
+  size_t size, int flags, int& lastError) {
+  int64_t received = -1;
+  if ((flags & (HTCS_MSG_PEEK | HTCS_MSG_WAITALL)) ==
+    (HTCS_MSG_PEEK | HTCS_MSG_WAITALL)) {
+    lastError = HTCS_EINVAL;
+    return -1;
+  }
+
+  size_t clamped = size < SmallTransferSizeMax ? size : SmallTransferSizeMax;
+  size_t recvSize = (flags & HTCS_MSG_WAITALL) != 0 ? size : clamped;
+  if (recvSize > SmallTransferSizeMax) {
+    return recvLarge(socket, buffer, recvSize, flags, lastError);
+  }
+
+  uint32_t taskId = 0;
+  sf::NativeHandle handle;
+  if (socket->RecvStart(sf::Out<uint32_t>(&taskId),
+    sf::Out<sf::NativeHandle>(&handle), static_cast<int>(recvSize),
+    flags).IsFailure()) {
+    lastError = HTCS_EINTR;
+    os::SleepThread(TimeSpan{1000000});
+    return received;
+  }
+
+  os::SystemEventType event = {};
+  os::AttachReadableHandleToSystemEvent(&event, handle.GetOsHandle(),
+    handle.IsManaged(), os::EventClearMode_ManualClear);
+  handle.Detach();
+  os::WaitSystemEvent(&event);
+  socket->RecvResults(sf::Out<int>(&lastError), sf::Out<int64_t>(&received),
+    sf::OutBuffer(buffer, recvSize), taskId);
+  os::DestroySystemEvent(&event);
+  return received;
+}
+
+int64_t send(sf::SharedPointer<tma::ISocket> socket, const void* buffer,
+  size_t size, int flags, int& lastError) {
+  int64_t sent = -1;
+  if (size > SmallTransferSizeMax) {
+    return sendLarge(socket, buffer, size, flags, lastError);
+  }
+
+  sf::NativeHandle handle;
+  uint32_t taskId = 0;
+  if (socket->SendStart(sf::Out<uint32_t>(&taskId),
+    sf::Out<sf::NativeHandle>(&handle), sf::InBuffer(buffer, size),
+    flags).IsFailure()) {
+    lastError = HTCS_EINTR;
+    os::SleepThread(TimeSpan{1000000});
+    return -1;
+  }
+
+  os::SystemEventType event = {};
+  os::AttachReadableHandleToSystemEvent(&event, handle.GetOsHandle(),
+    handle.IsManaged(), os::EventClearMode_ManualClear);
+  handle.Detach();
+  os::WaitSystemEvent(&event);
+  socket->SendResults(sf::Out<int>(&lastError), sf::Out<int64_t>(&sent),
+    taskId);
+  os::DestroySystemEvent(&event);
+  return sent;
+}
+
+int select(int* readFds, int& readCount, int* writeFds, int& writeCount,
+  int* exceptFds, int& exceptCount, TimeVal* timeout, int& lastError) {
+  sf::NativeHandle handle;
+  uint32_t taskId = 0;
+  int count = -1;
+
+  int64_t seconds = -1;
+  int64_t microseconds = -1;
+  if (timeout != nullptr) {
+    seconds = timeout->tv_sec;
+    microseconds = timeout->tv_usec;
+  }
+
+  if (g_Manager->StartSelect(sf::Out<uint32_t>(&taskId),
+    sf::Out<sf::NativeHandle>(&handle), sf::InArray<int>(readFds, readCount),
+    sf::InArray<int>(writeFds, writeCount),
+    sf::InArray<int>(exceptFds, exceptCount), seconds,
+    microseconds).IsFailure()) {
+    lastError = HTCS_EINTR;
+    os::SleepThread(TimeSpan{1000000});
+    return -1;
+  }
+
+  os::SystemEventType event = {};
+  os::AttachReadableHandleToSystemEvent(&event, handle.GetOsHandle(),
+    handle.IsManaged(), os::EventClearMode_ManualClear);
+  handle.Detach();
+  os::WaitSystemEvent(&event);
+  g_Manager->EndSelect(sf::Out<int>(&lastError), sf::Out<int>(&count),
+    sf::OutArray<int>(readFds, readCount),
+    sf::OutArray<int>(writeFds, writeCount),
+    sf::OutArray<int>(exceptFds, exceptCount), taskId);
+  os::DestroySystemEvent(&event);
+  return count;
 }
 
 int shutdown(sf::SharedPointer<tma::ISocket> socket, int how,

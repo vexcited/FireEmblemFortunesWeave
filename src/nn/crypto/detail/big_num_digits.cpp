@@ -2,6 +2,12 @@
 
 #include <string.h>
 
+namespace nn::crypto {
+
+void GenerateCryptographicallyRandomBytes(void* buffer, size_t size);
+
+}
+
 namespace nn::crypto::detail {
 
 namespace {
@@ -156,13 +162,13 @@ int BigNum::Compare(const Digit* a, const Digit* b, int digits) {
   return 0;
 }
 
-bool BigNum::IsZero(const Digit* a, int digits) {
+int BigNum::IsZero(const Digit* a, int digits) {
   for (int i = 0; i < digits; ++i) {
     if (a[i] != 0) {
-      return false;
+      return 0;
     }
   }
-  return true;
+  return 1;
 }
 
 bool BigNum::IsOne(const Digit* a, int digits) {
@@ -361,6 +367,241 @@ bool BigNum::ModMult(Digit* a, const Digit* b, const Digit* c,
     return false;
   }
   allocator->Free(2 * digits);
+  return true;
+}
+
+// Left to right exponentiation by 2 bit windows. With a single exponent
+// digit only the powers its windows use are computed.
+bool BigNum::ModExp(Digit* a, const Digit* b, const Digit* c, int cDigits,
+  const Digit* d, int dDigits, DigitAllocator* allocator) {
+  bool usesWindow[4] = {};
+  bool usesCube = false;
+  if (cDigits > 1) {
+    usesCube = true;
+    usesWindow[2] = true;
+  }
+  else {
+    for (int shift = 0; shift < DigitBits; shift += 2) {
+      usesWindow[(c[0] >> shift) & 3] = true;
+    }
+    if (usesWindow[3] == true) {
+      usesCube = true;
+      usesWindow[2] = true;
+    }
+  }
+
+  Digit* power[3];
+  power[0] = allocator->Allocate(dDigits);
+  power[1] = allocator->Allocate(dDigits);
+  power[2] = allocator->Allocate(dDigits);
+  if (power[0] == nullptr || power[1] == nullptr || power[2] == nullptr) {
+    return false;
+  }
+
+  Copy(power[0], b, dDigits);
+  if (usesWindow[2] == true &&
+    !ModMult(power[1], power[0], b, d, dDigits, allocator)) {
+    return false;
+  }
+  if (usesCube && !ModMult(power[2], power[1], b, d, dDigits, allocator)) {
+    return false;
+  }
+
+  Digit* t = allocator->Allocate(dDigits);
+  if (t == nullptr) {
+    return false;
+  }
+  AssignDigit(t, 1, dDigits);
+
+  cDigits = GetDigits(c, cDigits);
+  for (int i = cDigits - 1; i >= 0; --i) {
+    Digit ci = c[i];
+    int ciBits = DigitBits;
+    if (i == cDigits - 1) {
+      while ((ci >> (DigitBits - 2)) == 0) {
+        ci <<= 2;
+        ciBits -= 2;
+      }
+    }
+
+    for (int j = 0; j < ciBits; j += 2, ci <<= 2) {
+      if (!ModMult(t, t, t, d, dDigits, allocator) ||
+        !ModMult(t, t, t, d, dDigits, allocator)) {
+        return false;
+      }
+      Digit s = ci >> (DigitBits - 2);
+      if (s != 0 &&
+        !ModMult(t, t, power[s - 1], d, dDigits, allocator)) {
+        return false;
+      }
+    }
+  }
+
+  Copy(a, t, dDigits);
+  allocator->Free(4 * dDigits);
+  return true;
+}
+
+bool BigNum::ModInv(Digit* a, const Digit* b, int bDigits, const Digit* c,
+  int cDigits, DigitAllocator* allocator) {
+  Digit* q = allocator->Allocate(cDigits);
+  Digit* t1 = allocator->Allocate(cDigits);
+  Digit* t3 = allocator->Allocate(cDigits);
+  Digit* u1 = allocator->Allocate(cDigits);
+  Digit* u3 = allocator->Allocate(cDigits);
+  Digit* v1 = allocator->Allocate(cDigits);
+  Digit* v3 = allocator->Allocate(cDigits);
+  Digit* w = allocator->Allocate(2 * cDigits);
+  if (q == nullptr || t1 == nullptr || t3 == nullptr || u1 == nullptr ||
+    u3 == nullptr || v1 == nullptr || v3 == nullptr || w == nullptr) {
+    return false;
+  }
+
+  AssignDigit(u1, 1, cDigits);
+  SetZero(v1, cDigits);
+  SetZero(u3, cDigits);
+  Copy(u3, b, bDigits);
+  Copy(v3, c, cDigits);
+
+  int u1Sign = 1;
+  while (!IsZero(v3, cDigits)) {
+    if (!Div(q, t3, u3, cDigits, v3, cDigits, allocator) ||
+      !Mult(w, q, v1, cDigits, allocator)) {
+      return false;
+    }
+    Add(t1, u1, w, cDigits);
+    Copy(u1, v1, cDigits);
+    Copy(v1, t1, cDigits);
+    Copy(u3, v3, cDigits);
+    Copy(v3, t3, cDigits);
+    u1Sign = -u1Sign;
+  }
+
+  if (u1Sign < 0) {
+    Sub(a, c, u1, cDigits);
+  }
+  else {
+    Copy(a, u1, cDigits);
+  }
+
+  allocator->Free(9 * cDigits);
+  return true;
+}
+
+// Extended Euclid on the remainders, tracking only the coefficient of b and
+// its sign.
+void BigNum::ModInv(Digit* a, const Digit* b, const Digit* c, int digits) {
+  Digit q[MaxDigits];
+  Digit t1[MaxDigits];
+  Digit t3[MaxDigits];
+  Digit w[2 * MaxDigits];
+  Digit u1[MaxDigits];
+  Digit u3[MaxDigits];
+  Digit v1[MaxDigits];
+  Digit v3[MaxDigits];
+
+  AssignDigit(u1, 1, digits);
+  SetZero(v1, digits);
+  Copy(u3, b, digits);
+  Copy(v3, c, digits);
+
+  int u1Sign = 1;
+  while (!IsZero(v3, digits)) {
+    Div(q, t3, u3, digits, v3, digits);
+    Mult(w, q, v1, digits);
+    Add(t1, u1, w, digits);
+    Copy(u1, v1, digits);
+    Copy(v1, t1, digits);
+    Copy(u3, v3, digits);
+    Copy(v3, t3, digits);
+    u1Sign = -u1Sign;
+  }
+
+  if (u1Sign < 0) {
+    Sub(a, c, u1, digits);
+  }
+  else {
+    Copy(a, u1, digits);
+  }
+}
+
+// Miller Rabin with random bases reduced modulo n - 1, 7 rounds below 32
+// digits, 5 below 48 and 4 above.
+bool BigNum::TestPrimality(const Digit* a, int digits,
+  DigitAllocator* allocator) {
+  Digit* aMinusOne = allocator->Allocate(digits);
+  if (aMinusOne == nullptr) {
+    return false;
+  }
+  Copy(aMinusOne, a, digits);
+  Decrement(aMinusOne, digits);
+
+  Digit* m = allocator->Allocate(digits);
+  if (m == nullptr) {
+    return false;
+  }
+  Copy(m, aMinusOne, digits);
+
+  int shifts = 0;
+  while (true) {
+    RightShift(m, m, 1, digits);
+    if (IsOdd(m, digits) || IsZero(m, digits)) {
+      break;
+    }
+    ++shifts;
+  }
+
+  int rounds = digits >= 48 ? 4 : 5;
+  if (digits < 32) {
+    rounds = 7;
+  }
+
+  Digit* x = allocator->Allocate(digits);
+  if (x == nullptr) {
+    return false;
+  }
+
+  for (int round = 0; round < rounds; ++round) {
+    GenerateCryptographicallyRandomBytes(x, sizeof(Digit) * digits);
+    Digit* quotient = allocator->Allocate(digits);
+    if (quotient == nullptr) {
+      return false;
+    }
+    if (!Div(quotient, x, x, digits, aMinusOne, digits, allocator)) {
+      return false;
+    }
+    allocator->Free(digits);
+
+    if (!ModExp(x, x, m, digits, a, digits, allocator)) {
+      return false;
+    }
+    if (IsOne(x, digits) || Compare(x, aMinusOne, digits) == 0) {
+      continue;
+    }
+
+    if (shifts == 0) {
+      allocator->Free(3 * digits);
+      return false;
+    }
+    for (int j = 1; ; ++j) {
+      if (!ModMult(x, x, x, a, digits, allocator)) {
+        return false;
+      }
+      if (IsOne(x, digits)) {
+        allocator->Free(3 * digits);
+        return false;
+      }
+      if (Compare(x, aMinusOne, digits) == 0) {
+        break;
+      }
+      if (j == shifts) {
+        allocator->Free(3 * digits);
+        return false;
+      }
+    }
+  }
+
+  allocator->Free(3 * digits);
   return true;
 }
 

@@ -53,7 +53,7 @@ public:
   bool Unknown64() override { return true; }
   void Unknown94() override;
   void Unknown96() override;
-  void Unknown125() override;
+  bool Unknown125() override;
   void Unknown128() override;
   void Unknown140() override {}
   void Unknown142() override;
