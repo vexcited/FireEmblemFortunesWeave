@@ -50,6 +50,17 @@ public:
 [[gnu::used]]
 ProcStableBreedingFoodMenu::ProcStableBreedingFoodMenu() = default;
 
+int ProcStableBreedingFoodMenu::InputUnknown12(int direction, bool loop) {
+  if (tab_.GetCount() < 1) {
+    return 0;
+  }
+  if (!tab_.Move(direction, loop)) {
+    return 14;
+  }
+  Unknown16de4d0();
+  return 13;
+}
+
 }
 
 }

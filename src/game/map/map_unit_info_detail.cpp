@@ -3,6 +3,8 @@
 
 namespace game::map {
 
+int MapUnitInfoDetail::last_page_ = 12;
+
 void MapUnitInfoDetail::Unknown57(std::vector<int64_t>& handles) {
   ImplUnknown12();
   BasicMenu::Unknown57(handles);
@@ -23,6 +25,24 @@ void MapUnitInfoDetail::Unknown77(int result) {
 
 void MapUnitInfoDetail::Unknown82() {
   sound::PlaySe("SE_SYS_UnitInfo_Open");
+}
+
+int MapUnitInfoDetail::InputUnknown08(bool loop) {
+  if (!tab_.Move(1, loop)) {
+    return 14;
+  }
+  last_page_ = tab_.GetCurrent();
+  ShowPage(last_page_);
+  return 13;
+}
+
+int MapUnitInfoDetail::InputUnknown07(bool loop) {
+  if (!tab_.Move(-1, loop)) {
+    return 14;
+  }
+  last_page_ = tab_.GetCurrent();
+  ShowPage(last_page_);
+  return 13;
 }
 
 }

@@ -74,7 +74,6 @@ NpArticulationJointReducedCoordinate::NpArticulationJointReducedCoordinate(NpArt
 NpArticulationJointReducedCoordinate::~NpArticulationJointReducedCoordinate()
 {
 }
-
 void NpArticulationJointReducedCoordinate::setJointType(PxArticulationJointType::Enum jointType)
 {
 	if(getNpScene())

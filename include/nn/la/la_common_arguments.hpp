@@ -13,6 +13,8 @@ public:
   explicit CommonArgumentsWriter(uint32_t version);
   ~CommonArgumentsWriter();
 
+  void PushToInChannel(applet::LibraryAppletHandle handle) const;
+
 private:
   char m_Storage[24];
 };

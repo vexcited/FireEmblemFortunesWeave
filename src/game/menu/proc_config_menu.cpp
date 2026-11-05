@@ -56,6 +56,22 @@ protected:
 
 [[gnu::used]] ProcConfigMenu::ProcConfigMenu() = default;
 
+int ProcConfigMenu::Unknown108(bool loop) {
+  if (!tab_.Move(-1, loop)) {
+    return 0;
+  }
+  Unknown16de4d0();
+  return 13;
+}
+
+int ProcConfigMenu::Unknown110(bool loop) {
+  if (!tab_.Move(1, loop)) {
+    return 0;
+  }
+  Unknown16de4d0();
+  return 13;
+}
+
 class ProcBmapConfigMenu : public ProcConfigMenu {
 public:
   ProcBmapConfigMenu();

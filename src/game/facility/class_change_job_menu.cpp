@@ -62,6 +62,17 @@ void ClassChangeJobMenu::Unknown145() {
   accessor_3b8_.StartAnimation("JobSelect");
 }
 
+int ClassChangeJobMenu::InputUnknown12(int direction, bool loop) {
+  if (GameModeData::IsVariableSet(kVariableHubFacilityForced)) {
+    return 0;
+  }
+  if (tab_.GetCount() < 1 || !tab_.Move(direction, loop)) {
+    return 0;
+  }
+  Unknown16de4d0();
+  return 13;
+}
+
 bool ClassChangeJobMenu::Unknown148(uint8_t rank) {
   return GetOpenClassRank() >= rank;
 }

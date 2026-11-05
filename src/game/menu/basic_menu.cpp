@@ -322,4 +322,13 @@ void BasicMenu::Unknown132() {
   }
 }
 
+void BasicMenu::ResetTabs(int count, int index) {
+  tab_.Reset(count - 1, index);
+  unknown_310_.clear();
+  unknown_328_.clear();
+  int size = count > 0 ? count : 1;
+  unknown_310_.resize(size, 0);
+  unknown_328_.resize(size, 0);
+}
+
 }

@@ -7,6 +7,7 @@
 #include <vector>
 
 #include "game/menu/basic_menu_item.hpp"
+#include "game/menu/page_tab.hpp"
 #include "game/proc/proc_inst.hpp"
 #include "game/sound/se.hpp"
 #include "ui/layout_accessor.hpp"
@@ -259,6 +260,8 @@ protected:
   void Unknown16dcb80();
   void Unknown16de2e0(bool enable);
   void Unknown16dd9a0();
+  void ResetTabs(int count, int index);
+  void Unknown16dea40(bool unknown0, bool unknown1, bool unknown2);
   void Unknown16de4d0();
   void Unknown16df380();
   int Unknown16e1a00();
@@ -284,7 +287,10 @@ protected:
   void* unknown_270_;
   uint8_t unknown_278_[0xc];
   int32_t unknown_284_;
-  uint8_t unknown_288_[0xa0];
+  uint8_t unknown_288_[8];
+  PageTab tab_;
+  // The cursor index saved for each page.
+  std::vector<int32_t> unknown_310_;
   std::vector<int32_t> unknown_328_;
   uint8_t unknown_340_[0x10];
   ui::LayoutAccessor accessor_;

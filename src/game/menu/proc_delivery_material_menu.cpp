@@ -21,9 +21,21 @@ public:
   void Unknown128() override;
   void Unknown129() override;
   int Unknown137() override;
+  int InputUnknown12(int direction, bool loop) override;
 };
 
 [[gnu::used]] ProcDeliveryMaterialMenu::ProcDeliveryMaterialMenu() = default;
+
+int ProcDeliveryMaterialMenu::InputUnknown12(int direction, bool loop) {
+  if (tab_.GetCount() < 1) {
+    return 0;
+  }
+  if (!tab_.Move(direction, loop)) {
+    return 14;
+  }
+  Unknown16de4d0();
+  return 13;
+}
 
 }
 

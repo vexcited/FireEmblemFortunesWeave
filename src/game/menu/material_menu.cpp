@@ -23,4 +23,12 @@ public:
 
 MaterialMenu::~MaterialMenu() = default;
 
+int MaterialMenu::InputUnknown12(int direction, bool loop) {
+  if (!tab_.Move(direction, loop)) {
+    return 0;
+  }
+  Unknown16de4d0();
+  return 13;
+}
+
 }

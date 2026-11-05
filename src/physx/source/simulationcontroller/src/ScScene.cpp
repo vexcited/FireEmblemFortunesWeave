@@ -1730,28 +1730,21 @@ void Sc::Scene::addConstraintToMap(ConstraintCore& constraint, RigidCore* body0,
 
 	if (nodeIndex1 < nodeIndex0)
 		PxSwap(sim0, sim1);
-
 	mConstraintMap.insert(PxPair<const Sc::ActorSim*, const Sc::ActorSim*>(sim0, sim1), &constraint);
 }
-
 void Sc::Scene::removeConstraintFromMap(const ConstraintInteraction& interaction)
 {
 	PxNodeIndex nodeIndex0, nodeIndex1;
-
 	Sc::ActorSim* bSim = &interaction.getActorSim0();
 	Sc::ActorSim* bSim1 = &interaction.getActorSim1();
-
 	if (bSim)
 		nodeIndex0 = bSim->getNodeIndex();
 	if (bSim1)
 		nodeIndex1 = bSim1->getNodeIndex();
-
 	if (nodeIndex1 < nodeIndex0)
 		PxSwap(bSim, bSim1);
-
 	mConstraintMap.erase(PxPair<const Sc::ActorSim*, const Sc::ActorSim*>(bSim, bSim1));
 }
-
 void Sc::Scene::addArticulation(ArticulationCore& articulation, BodyCore& root)
 {
 	ArticulationSim* sim = PX_NEW(ArticulationSim)(articulation, *this, root);

@@ -18,8 +18,22 @@ public:
   bool Unknown64() override { return true; }
   void Unknown84() override;
   void Unknown85() override;
+  virtual int Unknown139() { return 9; }
+  virtual bool Unknown140() { return false; }
+  virtual bool Unknown141() { return true; }
+  virtual void* Unknown142() { return nullptr; }
+  virtual void Unknown143() {}
+  int InputUnknown12(int direction, bool loop) override;
 };
 
 BelongingMenu::~BelongingMenu() = default;
+
+int BelongingMenu::InputUnknown12(int direction, bool loop) {
+  if (!Unknown140() || !tab_.Move(direction, loop)) {
+    return 0;
+  }
+  Unknown16de4d0();
+  return 13;
+}
 
 }

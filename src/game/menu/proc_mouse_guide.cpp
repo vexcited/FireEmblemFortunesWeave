@@ -26,9 +26,24 @@ public:
   int Unknown102() override;
   int Unknown112() override;
   void Unknown113() override;
+  int InputUnknown12(int direction, bool loop) override;
+
+private:
+  void ShowPage(int page);
 };
 
 [[gnu::used]] ProcMouseGuide::ProcMouseGuide() = default;
+
+int ProcMouseGuide::InputUnknown12(int direction, bool loop) {
+  if (tab_.GetCount() < 1) {
+    return 0;
+  }
+  if (!tab_.Move(direction, loop)) {
+    return 14;
+  }
+  ShowPage(tab_.GetCurrent());
+  return 13;
+}
 
 }
 

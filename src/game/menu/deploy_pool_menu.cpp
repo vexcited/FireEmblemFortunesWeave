@@ -40,6 +40,7 @@ public:
   void Unknown129() override;
   void Unknown131() override;
   void Unknown139() override;
+  int InputUnknown12(int direction, bool loop) override;
 };
 
 namespace {
@@ -92,5 +93,16 @@ public:
 DeployPoolMenu::~DeployPoolMenu() = default;
 AnimalPoolMenu::~AnimalPoolMenu() = default;
 LegionPoolMenu::~LegionPoolMenu() = default;
+
+int AnimalPoolMenu::InputUnknown12(int direction, bool loop) {
+  if (tab_.GetCount() < 1) {
+    return 0;
+  }
+  if (!tab_.Move(direction, loop)) {
+    return 14;
+  }
+  Unknown16de4d0();
+  return 13;
+}
 
 }

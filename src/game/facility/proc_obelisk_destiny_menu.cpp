@@ -37,6 +37,20 @@ private:
 
 [[gnu::used]] ProcObeliskDestinyMenu::ProcObeliskDestinyMenu() = default;
 
+// Kept out of its thunk, facility-menu-obelisk-2 pairs the thunk with a plain
+// tail call.
+[[gnu::noinline]]
+int ProcObeliskDestinyMenu::InputUnknown12(int direction, bool loop) {
+  if (tab_.GetCount() < 1) {
+    return 0;
+  }
+  if (!tab_.Move(direction, loop)) {
+    return 14;
+  }
+  Unknown16de4d0();
+  return 13;
+}
+
 }
 
 }

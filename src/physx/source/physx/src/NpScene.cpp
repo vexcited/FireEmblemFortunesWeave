@@ -292,6 +292,8 @@ void NpScene::release()
 
 	if(getSimulationStage() != Sc::SimulationStage::eCOMPLETE)
 	{
+
+
 		outputError<PxErrorCode::eINVALID_OPERATION>(__LINE__, "PxScene::release(): Scene is still being simulated! PxScene::fetchResults() is called implicitly.");
 		
 		if(getSimulationStage() == Sc::SimulationStage::eCOLLIDE)
@@ -3207,6 +3209,17 @@ PxReal NpScene::getVisualizationParameter(PxVisualizationParameter::Enum param) 
 	if (param < PxVisualizationParameter::eNUM_VALUES)
 		return mScene.getVisualizationParameter(param);
 	else
+
+
+
+
+
+
+
+
+
+
+
 		outputError<PxErrorCode::eINVALID_PARAMETER>(__LINE__, "getVisualizationParameter: param is not an enum.");
 
 	return 0.0f;
@@ -4260,25 +4273,20 @@ void NpScene::scRemoveActor(NpArticulationLink& body, bool wakeOnLostTouch, bool
 
 	remove<NpArticulationLink>(this, body, wakeOnLostTouch);
 }
-
 ///////////////////////////////////////////////////////////////////////////////
-
 #ifdef NEW_DIRTY_SHADERS_CODE
 void NpScene::addDirtyConstraint(NpConstraint* constraint)
 {
 	PX_ASSERT(!constraint->isDirty());
-
 	// PT: lock needed because PxConstraint::markDirty() can be called from multiple threads.
 	// PT: TODO: consider optimizing this
 	PxMutex::ScopedLock lock(mDirtyConstraintsLock);
 	mDirtyConstraints.pushBack(constraint);
 }
 #endif
-
 void NpScene::addToConstraintList(PxConstraint& constraint)
 {
 	NpConstraint& npConstraint = static_cast<NpConstraint&>(constraint);
-
 	// AD: cannot call getFlags() directly because that clears out the GPU_COMPATIBLE flag!
 	bool gpuCompatible = npConstraint.getCore().getFlags() & PxConstraintFlag::eGPU_COMPATIBLE;
 	bool useDirectApi = getFlagsFast() & PxSceneFlag::eENABLE_DIRECT_GPU_API;

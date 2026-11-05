@@ -41,7 +41,7 @@ public:
   const char* ImplUnknown05() override { return "MID_ShopMenu_Help"; }
   int ImplUnknown00() override { return 0; }
   int ImplUnknown02() override;
-  virtual int Unknown149();
+  int InputUnknown12(int direction, bool loop) override;
   int ImplUnknown10() override;
 
 private:
@@ -53,6 +53,14 @@ private:
 
 [[gnu::used]]
 ProcMaterialItemSelectMenu::ProcMaterialItemSelectMenu() = default;
+
+int ProcMaterialItemSelectMenu::InputUnknown12(int direction, bool loop) {
+  if (!tab_.Move(direction, loop)) {
+    return 0;
+  }
+  Unknown16de4d0();
+  return 13;
+}
 
 }
 

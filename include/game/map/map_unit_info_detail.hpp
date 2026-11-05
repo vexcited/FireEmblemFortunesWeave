@@ -55,6 +55,11 @@ public:
   int InputUnknown07(bool loop) override;
 
 private:
+  // The page shown by the last opened window.
+  static int last_page_;
+
+  void ShowPage(int page);
+
   Unit* unit_;
   std::vector<Owned*> parts_;
 };

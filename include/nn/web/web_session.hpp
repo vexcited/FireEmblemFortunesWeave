@@ -3,6 +3,7 @@
 #include <stddef.h>
 
 #include "nn/web/detail/web_session_impl.hpp"
+#include "nn/web/web_page_arg.hpp"
 
 namespace nn::web {
 
@@ -12,6 +13,9 @@ class WebSession {
   ~WebSession();
 
   static size_t GetWorkBufferSize();
+  void Initialize(void* buffer, size_t size);
+  void Start(os::SystemEventType** pOutEvent, const ShowWebPageArg& arg);
+  void Finalize();
   bool NeedsWaitForExit() const;
   bool Appear();
   bool RequestExit();

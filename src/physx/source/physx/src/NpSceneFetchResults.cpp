@@ -91,12 +91,9 @@ void NpScene::fetchResultsParticleSystem()
 {
 	if (mCorruptedState) // silent if scene state is corrupted.
 		return;
-
 	if (!mScene.isUsingGpuDynamics()) // particles are only supported with GPU dynamics.
 		return;
-
 	mScene.getSimulationController()->syncParticleData();
-
 #if PX_SUPPORT_GPU_PHYSX
 	PxCUresult res = mCudaContextManager->getCudaContext()->getLastError();
 	if (res)
@@ -109,21 +106,16 @@ void NpScene::fetchResultsParticleSystem()
 	}
 #endif
 }
-
 // The order of the following operations is important!
 // 1. Mark the simulation as not running internally to allow reading data which should not be read otherwise
 // 2. Fire callbacks with latest state.
-
 void NpScene::fetchResultsPreContactCallbacks()
 {
 #if PX_SUPPORT_PVD	
 	mScenePvdClient.updateContacts();
 #endif
-
 	mScene.endSimulation();
-
 	setAPIReadToAllowed();
-
 	{
 		PX_PROFILE_ZONE("Sim.fireCallbacksPreSync", getContextId());
 		{
@@ -484,6 +476,12 @@ bool NpScene::fetchResultsStart(const PxContactPairHeader*& contactPairs, PxU32&
 		return true;
 
 	if (getSimulationStage() != Sc::SimulationStage::eADVANCE)
+
+
+
+
+
+
 		return outputError<PxErrorCode::eINVALID_OPERATION>(__LINE__, "PxScene::fetchResultsStart: fetchResultsStart() called illegally! It must be called after advance() or simulate()");
 
 	if (!checkResultsInternal(block))
