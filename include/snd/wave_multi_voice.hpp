@@ -31,6 +31,11 @@ public:
   void stopHandle(const Fade& fade) override;
   void updatePlaying() override;
 
+  static void** registry();
+
+  void startTrackVolume(int track, const Fade& fade, float target);
+  float getTrackVolume(int track);
+
 private:
   WaveMultiStreamPlayer* getPlayer() const;
 

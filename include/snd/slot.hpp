@@ -35,6 +35,7 @@ public:
   void destroyVoice(Voice* voice);
   void checkPriority(Voice* voice);
   void addVoice(SeqVoice* voice);
+  void destroyVoice(SeqVoice* voice);
   void checkPriority(SeqVoice* voice);
   void addVoice(VibVoice* voice);
   void destroyVoice(VibVoice* voice);

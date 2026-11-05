@@ -42,6 +42,7 @@ private:
 class FiberTaskCoordinatorBase {
 public:
   void Await(ResumeBlocker* blocker);
+  void YieldTask();
 };
 
 }
@@ -52,11 +53,23 @@ public:
   virtual detail::GroupWaitHolder* GetGroupWaitHolder() = 0;
 };
 
+namespace detail {
+
+class CancellationTokenAccessor;
+
+}
+
 class CancellationToken {
 public:
   CancellationToken() = default;
+  explicit CancellationToken(
+    std::shared_ptr<detail::CancellationState> state);
+
+  bool IsCancellationRequested() const;
 
 private:
+  friend class detail::CancellationTokenAccessor;
+
   std::shared_ptr<detail::CancellationState> m_State;
 };
 

@@ -202,6 +202,8 @@ public:
   void mainUnlocked() override;
   void** getRegistry() override;
 
+  static void** registry();
+
   virtual void updateActor();
   virtual void update(float ms);
   virtual void updateTarget();
@@ -311,6 +313,10 @@ public:
   uint32_t getBufferOutputLine() const;
   int getChannelId(int index) const;
   bool isDead() const;
+
+  int getOutputMode() const {
+    return outputMode_;
+  }
   void setLabel(const char* label);
   void setArchiveName(const char* name);
   const char* getBufferLabel() const;
@@ -318,6 +324,7 @@ public:
   bool isForcedFront() const;
   float calcVolumeScale() const;
   void startPitchChecked(const Fade& fade, float target);
+  float calcOwnPriorityReduction();
 
 protected:
   void stopImpl(const Fade& fade, bool force, float value);
