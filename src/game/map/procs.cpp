@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "game/proc/proc_inst.hpp"
+#include "game/proc/proc_manager.hpp"
 #include "game/proc/proc_singleton.hpp"
 #include "game/singleton.hpp"
 
@@ -151,5 +152,12 @@ public:
 }
 
 #pragma GCC visibility pop
+
+}
+
+namespace game {
+
+template void ProcManager::EachByClass<map::ProcPopup>(
+  const std::function<void(map::ProcPopup*)>& function);
 
 }

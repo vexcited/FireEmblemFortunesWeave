@@ -48,5 +48,8 @@ class ShowShopPageArg {
 Result ShowShopPage(ShopPageReturnValue* pOutValue,
   const ShowShopPageArg& arg);
 size_t NsUidToString(char* buffer, size_t size, NsUid nsUid);
+size_t GetNsUidLengthAsString(NsUid nsUid);
+size_t AppIdToString(char* buffer, size_t size, ApplicationId applicationId);
+size_t CouponIdToString(char* buffer, size_t size, CouponId couponId);
 
 }

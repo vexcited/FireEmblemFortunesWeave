@@ -62,6 +62,18 @@ public:
     return !(state_ & 0x8);
   }
 
+  bool IsInCorps() const {
+    return state_ & 0x100000;
+  }
+
+  bool IsCorpsLeader() const {
+    return state_ & 0x80000;
+  }
+
+  int GetCorps() const {
+    return IsInCorps() ? corps_ : -1;
+  }
+
   int GetX() const {
     return x_;
   }
@@ -120,7 +132,9 @@ private:
   uint32_t state_;
   uint8_t unknown_1a4_[0x14];
   const Force* force_;
-  uint8_t unknown_1c0_[0x70];
+  uint8_t unknown_1c0_[0x35];
+  uint8_t corps_;
+  uint8_t unknown_1f6_[0x3a];
   std::vector<uint32_t> items_;
   int8_t x_;
   int8_t z_;

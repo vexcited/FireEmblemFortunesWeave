@@ -8,16 +8,22 @@
 #include "nn/os/mutex.hpp"
 #include "nn/util/string_util.hpp"
 
+namespace nn::ec {
+
+NsUid MakeNsUid(const char* string) {
+  return StringToNsUid(string);
+}
+
+}
+
 namespace nn::ec::detail {
 
-size_t AppIdToString(char* buffer, size_t size, ApplicationId applicationId);
-size_t CouponIdToString(char* buffer, size_t size, CouponId couponId);
-bool EncodeUriRfc3986(char* buffer, size_t size, const char* string);
 
 void GeneratePath(ShowShopPageArg& arg, const char* path, SourceId sourceId,
   const char* parameter, const char* key, const char* value, ...);
 
 bool ShowShopPageWrapper(ShowShopPageArg& arg, const account::Uid& uid);
+ShopPageReturnValue* GetShopPageReturnValue();
 
 // Every shop page shares one argument buffer under one statically
 // initialized mutex.
@@ -48,6 +54,10 @@ void EndShopPage(ShowShopPageArg& arg, const account::Uid& uid) {
   os::UnlockMutex(&g_ShopPageArgMutex);
 }
 
+}
+
+ShopPageReturnValue* GetShopPageReturnValue() {
+  return &g_ShopPageReturnValue;
 }
 
 bool ShowShopPageWrapper(ShowShopPageArg& arg, const account::Uid& uid) {

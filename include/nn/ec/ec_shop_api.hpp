@@ -42,6 +42,14 @@ struct ConsumableId {
 
 struct AdditionalParam;
 
+struct Nonce {
+  char value[65];
+};
+
+NsUid StringToNsUid(const char* string);
+CouponId StringToCouponId(const char* string);
+NsUid MakeNsUid(const char* string);
+
 enum UpgradeEdition : int32_t {};
 enum MembershipServiceGuidedReason : int32_t {};
 
@@ -183,6 +191,8 @@ enum LaunchMode : int32_t {
 using OptionalApplicationId = util::optional<ApplicationId>;
 
 bool IsStringTerminated(const char* string, size_t size);
+bool EncodeUriRfc3986(char* buffer, size_t size, const char* string);
+bool IsValidCharacterTypeOfNonceString(const Nonce& nonce);
 bool VerifySignature(const char* format, const char* signature);
 
 void ShowShopApplicationInformationImpl(LaunchMode mode,

@@ -157,4 +157,39 @@ size_t NsUidToString(char* buffer, size_t size, NsUid nsUid) {
   return end;
 }
 
+size_t GetNsUidLengthAsString(NsUid nsUid) {
+  uint64_t value = nsUid.value;
+  size_t length = 0;
+  do {
+    length++;
+    value /= 10;
+  } while (value != 0);
+  return length;
+}
+
+size_t AppIdToString(char* buffer, size_t size, ApplicationId applicationId) {
+  const size_t AppIdStringSize = 17;
+  if (size < AppIdStringSize) {
+    return 0;
+  }
+
+  int length = util::SNPrintf(buffer, size, "%016llX", applicationId.value);
+  size_t end = size <= static_cast<size_t>(static_cast<int64_t>(length)) ?
+    size - 1 : static_cast<size_t>(static_cast<int64_t>(length));
+  buffer[end] = '\0';
+  return end;
+}
+
+size_t CouponIdToString(char* buffer, size_t size, CouponId couponId) {
+  if (size == 0) {
+    return 0;
+  }
+
+  int length = util::SNPrintf(buffer, size, "%llu", couponId.value);
+  size_t end = size <= static_cast<size_t>(static_cast<int64_t>(length)) ?
+    size - 1 : static_cast<size_t>(static_cast<int64_t>(length));
+  buffer[end] = '\0';
+  return end;
+}
+
 }
