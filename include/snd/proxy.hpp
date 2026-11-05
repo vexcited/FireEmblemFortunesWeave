@@ -56,7 +56,7 @@ public:
   virtual float getMasterVolume() = 0;
   virtual void beginFrame() = 0;
   virtual void endFrame() = 0;
-  virtual void updateFrame() = 0;
+  virtual void print(const char* message) = 0;
   virtual bool isSoundEnabled() = 0;
   virtual bool isVoiceEnabled() = 0;
   virtual bool replaceVoiceLabel(void* name, const char* label) = 0;

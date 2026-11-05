@@ -6,6 +6,7 @@
 
 #include "nn/util/math_types.hpp"
 #include "snd/manager.hpp"
+#include "snd/proxy.hpp"
 #include "snd/voice.hpp"
 
 namespace snd {
@@ -70,7 +71,7 @@ void WavePlayer::seekCache() {
     }
     block = loopBlocks_;
     samples = blockSamples_;
-    reserved15e0_ = 0;
+    positionFraction_ = 0.0f;
     seekBlock_ = block;
     position_ = samples * block;
     if (format_ == 2) {
@@ -129,7 +130,7 @@ void WavePlayer::seekStream() {
     int loopStart = loopStart_;
     WaveReader* reader = reader_;
     seekBlock_ = loopBlocks_;
-    reserved15e0_ = 0;
+    positionFraction_ = 0.0f;
     position_ = loopStart + loopStartOffset_;
     seekOffset_ += loopStart;
     reader->seekBlock(loopBlocks_);
@@ -238,6 +239,10 @@ float WavePlayer::calcOutputVolume() const {
     volume += buffer_->outputVolume;
   }
   return volume;
+}
+
+void** WavePlayer::getRegistry() const {
+  return registry();
 }
 
 void WavePlayer::initialize() {
@@ -370,8 +375,9 @@ inline void WavePlayer::setup() {
 inline void WavePlayer::locate(int sample) {
   int block = sample / blockSamples_;
   int offset = sample % blockSamples_;
+  bool stream = reader_->isStream();
   int lastBlock = lastBlock_;
-  if (reader_->isStream()) {
+  if (stream) {
     while (block > lastBlock) {
       block += loopBlocks_ - lastBlock - 1;
     }
@@ -390,7 +396,8 @@ inline void WavePlayer::locate(int sample) {
 inline void WavePlayer::restoreSeek() {
   if (format_ == 2) {
     for (int i = 0; i < channelCount_; i++) {
-      channels_[i] = loopStates_[i].state;
+      channels_[i].context = loopStates_[i].context;
+      channels_[i].parameter = loopStates_[i].parameter;
     }
   }
   else if (reader_->isStream()) {
@@ -444,8 +451,8 @@ void WavePlayer::updateScrubbing() {
     position_ = static_cast<int>(seekFraction_) + seekBlock_ * blockSamples_
       + seekOffset_;
     playedSamples_ = 0;
-    reserved15dc_ = 0;
-    reserved15e0_ = 0;
+    playedFraction_ = 0.0f;
+    positionFraction_ = 0.0f;
     startPlayerVolume(Fade(15.0f), 1.0f);
     state_ = kStatePlaying;
     if (resumeMuteRequested_ == true) {
@@ -569,10 +576,10 @@ WavePlayer::Output WavePlayer::smoothOutput() {
 void WavePlayer::reset() {
   nn::os::LockMutex(&mutex_);
   WaveReader* reader = reader_;
-  reserved15e0_ = 0;
+  positionFraction_ = 0.0f;
   loopCount_ = 0;
   position_ = 0;
-  reserved15dc_ = 0;
+  playedFraction_ = 0.0f;
   playedSamples_ = 0;
   reader->reset();
   state_ = kStateNone;
@@ -597,7 +604,7 @@ void WavePlayer::setSource(int id, int kind, const void* data) {
   sourceData_ = data;
 }
 
-int WavePlayer::load(void*, bool, bool, bool) {
+int WavePlayer::load(target::SoundHandle*, bool, bool, bool) {
   reader_->load();
   state_ = kStateLoading;
   return 0;
@@ -697,8 +704,68 @@ bool WavePlayer::isMuted() const {
   return state_ == kStateMuted;
 }
 
+bool WavePlayer::seekSample(int sample) {
+  nn::os::LockMutex(&mutex_);
+  bool result;
+  if ((state_ & ~kStatePrepared) != kStateNone) {
+    g_proxy->print("#SoundLibrary : WavePlayer can not seeking !!\n");
+    result = false;
+  }
+  else {
+    locate(sample);
+    restoreSeek();
+    position_ = static_cast<int>(seekFraction_) + seekBlock_ * blockSamples_
+      + seekOffset_;
+    playedSamples_ = 0;
+    playedFraction_ = 0.0f;
+    positionFraction_ = 0.0f;
+    loopCount_ = 0;
+    state_ = kStatePrepared;
+    result = true;
+  }
+  nn::os::UnlockMutex(&mutex_);
+  return result;
+}
+
 bool WavePlayer::seekMs(int ms) {
   return seekSample(static_cast<int64_t>(sampleRate_) * ms / 1000);
+}
+
+bool WavePlayer::seekBlock(int block) {
+  if (static_cast<unsigned>(state_ - kStateReading) >= 2) {
+    g_proxy->print("#SoundLibrary : WavePlayer can not seeking !!\n");
+    return false;
+  }
+  seekBlock_ = block;
+  seekFraction_ = 0.0f;
+  seekOffset_ = 0;
+  restoreSeek();
+  position_ = static_cast<int>(seekFraction_) + seekBlock_ * blockSamples_
+    + seekOffset_;
+  playedSamples_ = 0;
+  playedFraction_ = 0.0f;
+  positionFraction_ = 0.0f;
+  return true;
+}
+
+void WavePlayer::scrub(bool fade, float time) {
+  if (!isPlaying()) {
+    g_proxy->print("#SoundLibrary : WavePlayer can not scrub play !!\n");
+    return;
+  }
+  float fadeTime = 0.0f;
+  if (!isMuted() && fade) {
+    fadeTime = 30.0f;
+  }
+  startPlayerVolume(Fade(fadeTime), 0.0f);
+  if (time < 0.0f) {
+    time = 0.0f;
+  }
+  if (time >= getLength() / 1000.0f) {
+    time = getLength() / 1000.0f;
+  }
+  scrubTime_ = time;
+  state_ = kStateScrubbing;
 }
 
 int WavePlayer::getSampleRate() const {

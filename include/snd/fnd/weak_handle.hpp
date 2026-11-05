@@ -10,6 +10,11 @@ class HandlePtr;
 
 namespace snd::fnd {
 
+// The base of the registry chain of classes without a registered base.
+inline void** rootRegistry() {
+  return nullptr;
+}
+
 class WeakHandle {
 public:
   WeakHandle() = default;
@@ -27,6 +32,24 @@ public:
 
   template <typename T>
   T* get() const {
+    return static_cast<T*>(get());
+  }
+
+  // Only returns the object when its class registry chain reaches the one
+  // of T.
+  template <typename T>
+  [[gnu::noinline]] T* cast() const {
+    if (get() == nullptr) {
+      return nullptr;
+    }
+    void** registry = static_cast<T*>(get())->getRegistry();
+    void** target = T::registry();
+    while (registry != target) {
+      registry = static_cast<void**>(*registry);
+      if (registry == nullptr) {
+        return nullptr;
+      }
+    }
     return static_cast<T*>(get());
   }
 

@@ -10,10 +10,12 @@ class WavePlayer;
 class WaveVoice : public Voice {
 public:
   void updateTarget() override;
+  void load() override;
   bool isLoading() const override;
   bool checkLoaded() override;
   void prepare() override;
   void start() override;
+  void play() override;
   bool isPrepared() const override;
   bool isPlaying() override;
   void updateHandle() override;

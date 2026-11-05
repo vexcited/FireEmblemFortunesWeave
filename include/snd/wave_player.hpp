@@ -6,12 +6,19 @@
 #include "nn/os/mutex.hpp"
 #include "snd/coef/biquad.hpp"
 #include "snd/fade.hpp"
+#include "snd/fnd/weak_handle.hpp"
 #include "snd/handle_ptr.hpp"
 #include "snd/param.hpp"
 
 namespace snd {
 
 class Manager;
+
+namespace target {
+
+class SoundHandle;
+
+}
 
 namespace data {
 
@@ -99,10 +106,11 @@ public:
     nn::codec::AdpcmParameter parameter;
   };
 
-  // The channel state at the start, followed by the context at the loop
-  // start.
+  // The decoder state of a channel at the start of the data, followed by
+  // the context at the loop start.
   struct LoopState {
-    ChannelState state;
+    nn::codec::AdpcmParameter parameter;
+    nn::codec::AdpcmContext context;
     nn::codec::AdpcmContext loopContext;
   };
 
@@ -131,7 +139,13 @@ public:
   float calcFxSend() const override;
   float calcOutputVolume() const override;
 
-  virtual void** getRegistry();
+  // Each class keeps a static node holding the node of its base.
+  static void** registry() {
+    static void* base = fnd::rootRegistry();
+    return &base;
+  }
+
+  virtual void** getRegistry() const;
   virtual void initialize();
   virtual void finalize();
   virtual void updateState();
@@ -149,7 +163,8 @@ public:
   virtual void setAutoReset(bool autoReset);
   virtual int getState() const;
   virtual void setSource(int id, int kind, const void* data);
-  virtual int load(void* request, bool stream, bool front, bool loop);
+  virtual int load(target::SoundHandle* handle, bool stream, bool front,
+    bool scrubbable);
   virtual bool isLoaded() const;
   virtual bool isReady() const;
   virtual bool isPrepared() const;
@@ -226,8 +241,8 @@ protected:
   bool initialized_;
   uint64_t playedSamples_;
   int position_;
-  int reserved15dc_;
-  int reserved15e0_;
+  float playedFraction_;
+  float positionFraction_;
   int loopCount_;
   bool silent_;
   bool hold_;
@@ -272,7 +287,7 @@ protected:
   int loopStart_;
   uint8_t reserved2a08_[0x8];
   int seekBlock_;
-  uint8_t reserved2a14_[0x4];
+  int streamBlock_;
   float seekFraction_;
   int seekOffset_;
   int blockLength_;
@@ -280,7 +295,7 @@ protected:
   data::VoiceBuffer* buffer_;
   ChannelState channels_[kMaxChannels];
   BiQuad4* biquad_;
-  int64_t reserved2b50_[3];
+  int channelIds_[kMaxChannels];
   int state_;
   bool startRequested_;
   bool stopRequested_;

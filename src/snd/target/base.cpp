@@ -84,7 +84,7 @@ void* Base::getSoundUserParam(uint32_t, int, const char*) {
   return nullptr;
 }
 
-SoundHandle* Base::startSound(StartInfo*) {
+SoundHandle* Base::startSound(VoiceBase*) {
   return nullptr;
 }
 
@@ -92,7 +92,7 @@ SoundHandle* Base::startSound(uint32_t, int, const char*, const char*) {
   return nullptr;
 }
 
-bool Base::prepareSound(StartInfo*) {
+bool Base::prepareSound(VoiceBase*) {
   return false;
 }
 

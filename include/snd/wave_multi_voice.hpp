@@ -16,6 +16,7 @@ public:
   bool isPrepared() const override;
   bool isPlaying() override;
   void updateHandle() override;
+  void release() override;
   void pause(const Fade& fade, bool force) override;
   void resumePause(const Fade& fade) override;
   void mute(const Fade& fade, bool force) override;
@@ -24,6 +25,7 @@ public:
   void resumeSilent(const Fade& fade) override;
   bool isActiveFor(Actor* actor) override;
   bool isActive() const override;
+  void setVariable(int index, const Fade& fade, float value) override;
   float getPlayPosition(uint32_t kind) override;
   void addToSlot() override;
   void stopHandle(const Fade& fade) override;

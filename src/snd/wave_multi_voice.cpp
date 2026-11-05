@@ -68,6 +68,21 @@ void WaveMultiVoice::updateHandle() {
   }
 }
 
+// A negative track starts every track.
+void WaveMultiVoice::release() {
+  Voice::release();
+  if (player_.isValid()) {
+    int track = track_;
+    WaveMultiStreamPlayer* player = player_.cast<WaveMultiStreamPlayer>();
+    if (track < 0) {
+      player->start();
+    }
+    else {
+      player->startTrack(track_);
+    }
+  }
+}
+
 void WaveMultiVoice::pause(const Fade& fade, bool) {
   if (!dead_ && !paused_) {
     if (player_.isValid()) {
@@ -133,6 +148,18 @@ bool WaveMultiVoice::isActiveFor(Actor* actor) {
 
 bool WaveMultiVoice::isActive() const {
   return active_;
+}
+
+void WaveMultiVoice::setVariable(int index, const Fade& fade, float value) {
+  if (!dead_) {
+    variables_[index] = value;
+    fnd::WeakHandle handle = player_;
+    if (WaveMultiStreamPlayer* player =
+      handle.cast<WaveMultiStreamPlayer>())
+    {
+      player->setVariable(index, fade, value);
+    }
+  }
 }
 
 float WaveMultiVoice::getPlayPosition(uint32_t kind) {

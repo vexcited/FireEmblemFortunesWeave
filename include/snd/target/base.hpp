@@ -9,6 +9,7 @@
 namespace snd {
 
 class Manager;
+class VoiceBase;
 
 }
 
@@ -62,10 +63,10 @@ public:
     const char* addon);
   virtual void* getSoundUserParam(uint32_t id, int archive,
     const char* addon);
-  virtual SoundHandle* startSound(StartInfo* info);
+  virtual SoundHandle* startSound(VoiceBase* voice);
   virtual SoundHandle* startSound(uint32_t id, int archive, const char* addon,
     const char* name);
-  virtual bool prepareSound(StartInfo* info);
+  virtual bool prepareSound(VoiceBase* voice);
   virtual bool prepareSound(uint32_t id, int archive, const char* addon,
     const char* name);
   virtual bool isStreamSound(uint32_t id, int archive, const char* addon);

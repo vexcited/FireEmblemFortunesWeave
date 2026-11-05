@@ -53,4 +53,20 @@ struct SharedMemoryImplByHorizon {
 
 }
 
+class SharedMemory {
+public:
+  ~SharedMemory() {
+    if (m_SharedMemory.state != 0) {
+      DestroySharedMemory(&m_SharedMemory);
+    }
+  }
+
+  SharedMemoryType* GetBase() {
+    return &m_SharedMemory;
+  }
+
+private:
+  SharedMemoryType m_SharedMemory;
+};
+
 }

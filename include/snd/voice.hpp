@@ -48,8 +48,8 @@ struct VoiceBuffer {
   float pitch;
   float pan;
   float delay;
-  uint8_t reservedf8[0x4];
-  int crossFadeState;
+  float startOffsetMin;
+  float startOffsetMax;
   float length;
   float envelope[5];
   float randomVolume[2];

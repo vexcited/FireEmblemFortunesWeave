@@ -6,6 +6,7 @@
 #include "nn/am/service/am_notification.hpp"
 #include "nn/am/service/am_storage.hpp"
 #include "nn/applet/applet_types.hpp"
+#include "nn/oe/oe_types.hpp"
 #include "nn/os/time.hpp"
 #include "nn/result.hpp"
 #include "nn/sf/sf_buffers.hpp"
@@ -30,9 +31,12 @@ class IGpuErrorHandler : public sf::IServiceObject {
 
 class ICommonStateGetter : public sf::IServiceObject {
  public:
-  NN_AM_RESERVED(2); NN_AM_RESERVED(3); NN_AM_RESERVED(4); NN_AM_RESERVED(5);
-  NN_AM_RESERVED(6); NN_AM_RESERVED(7); NN_AM_RESERVED(8); NN_AM_RESERVED(9);
-  NN_AM_RESERVED(10); NN_AM_RESERVED(11); NN_AM_RESERVED(12);
+  NN_AM_RESERVED(2); NN_AM_RESERVED(3); NN_AM_RESERVED(4);
+  virtual Result ReceiveMessage(sf::Out<uint32_t> pOutMessage) = 0;
+  NN_AM_RESERVED(6); NN_AM_RESERVED(7); NN_AM_RESERVED(8);
+  virtual Result GetOperationMode(sf::Out<uint8_t> pOutMode) = 0;
+  virtual Result GetPerformanceMode(sf::Out<int32_t> pOutMode) = 0;
+  NN_AM_RESERVED(11); NN_AM_RESERVED(12);
   NN_AM_RESERVED(13); NN_AM_RESERVED(14); NN_AM_RESERVED(15);
   NN_AM_RESERVED(16); NN_AM_RESERVED(17);
   virtual Result GetWakeupCount(sf::Out<int64_t> pOutCount) = 0;
@@ -40,39 +44,67 @@ class ICommonStateGetter : public sf::IServiceObject {
   NN_AM_RESERVED(22); NN_AM_RESERVED(23); NN_AM_RESERVED(24);
   NN_AM_RESERVED(25);
   virtual Result SetVrModeEnabled(bool isEnabled) = 0;
-  NN_AM_RESERVED(27); NN_AM_RESERVED(28); NN_AM_RESERVED(29);
-  NN_AM_RESERVED(30); NN_AM_RESERVED(31); NN_AM_RESERVED(32);
-  NN_AM_RESERVED(33); NN_AM_RESERVED(34); NN_AM_RESERVED(35);
-  NN_AM_RESERVED(36); NN_AM_RESERVED(37);
+  virtual Result SetLcdBacklightOffEnabled(bool isEnabled) = 0;
+  NN_AM_RESERVED(28); NN_AM_RESERVED(29);
+  NN_AM_RESERVED(30); NN_AM_RESERVED(31);
+  virtual Result GetDefaultDisplayResolution(sf::Out<int32_t> pOutWidth,
+    sf::Out<int32_t> pOutHeight) = 0;
+  virtual Result GetDefaultDisplayResolutionChangeEvent(
+    sf::Out<sf::NativeHandle> pOutHandle) = 0;
+  virtual Result GetHdcpAuthenticationState(sf::Out<int32_t> pOutState) = 0;
+  virtual Result GetHdcpAuthenticationStateChangeEvent(
+    sf::Out<sf::NativeHandle> pOutHandle) = 0;
+  virtual Result SetTvPowerStateMatchingMode(int32_t mode) = 0;
+  NN_AM_RESERVED(37);
   virtual Result SetCpuBoostMode(int32_t mode) = 0;
-  NN_AM_RESERVED(39); NN_AM_RESERVED(40); NN_AM_RESERVED(41);
+  NN_AM_RESERVED(39); NN_AM_RESERVED(40);
+  virtual Result PerformSystemButtonPressingIfInFocus(int32_t type) = 0;
   NN_AM_RESERVED(42); NN_AM_RESERVED(43); NN_AM_RESERVED(44);
   virtual Result GetGpuErrorHandler(
     const sf::Out<sf::SharedPointer<IGpuErrorHandler>>& pOutHandler) = 0;
   virtual Result GetAppletLaunchedHistory(sf::Out<int32_t> pOutCount,
     const sf::OutArray<applet::AppletId>& outAppletIds) = 0;
-  NN_AM_RESERVED(47); NN_AM_RESERVED(48); NN_AM_RESERVED(49);
+  virtual Result EnableStartupLogoDisappearedMessage() = 0;
+  NN_AM_RESERVED(48); NN_AM_RESERVED(49);
   virtual Result ActivateMigrationService() = 0;
   virtual Result DeactivateMigrationService() = 0;
   virtual Result RestrictPowerOperationForSecureLaunchMode() = 0;
   virtual Result SuppressDisablingSleepTemporarily(TimeSpan duration) = 0;
   virtual Result IsSleepEnabled(sf::Out<bool> pOutIsEnabled) = 0;
   virtual Result IsDisablingSleepSuppressed(sf::Out<bool> pOutIsSuppressed) = 0;
-  NN_AM_RESERVED(56); NN_AM_RESERVED(57); NN_AM_RESERVED(58);
+  virtual Result SetHidInputMagnificationForApplication(
+    const oe::LayoutRect& rect) = 0;
+  NN_AM_RESERVED(57); NN_AM_RESERVED(58);
   virtual Result BeginUsingCameraResource() = 0;
   virtual Result EndUsingCameraResource() = 0;
   NN_AM_RESERVED(61);
   virtual Result GetLaunchRequiredTick(sf::Out<int64_t> pOutTick) = 0;
+  NN_AM_RESERVED(63); NN_AM_RESERVED(64); NN_AM_RESERVED(65);
+  NN_AM_RESERVED(66); NN_AM_RESERVED(67); NN_AM_RESERVED(68);
+  virtual Result SetRtcModeChangedMessageEnabled(bool isEnabled) = 0;
+  virtual Result GetCurrentDisplayLayoutRatio(
+    sf::Out<oe::DisplayLayoutRatio> pOutRatio) = 0;
 };
 
 class ISelfController : public sf::IServiceObject {
  public:
-  NN_AM_RESERVED(2); NN_AM_RESERVED(3); NN_AM_RESERVED(4); NN_AM_RESERVED(5);
-  NN_AM_RESERVED(6); NN_AM_RESERVED(7); NN_AM_RESERVED(8); NN_AM_RESERVED(9);
-  NN_AM_RESERVED(10); NN_AM_RESERVED(11); NN_AM_RESERVED(12);
-  NN_AM_RESERVED(13); NN_AM_RESERVED(14); NN_AM_RESERVED(15);
-  NN_AM_RESERVED(16); NN_AM_RESERVED(17); NN_AM_RESERVED(18);
-  NN_AM_RESERVED(19);
+  NN_AM_RESERVED(2); NN_AM_RESERVED(3);
+  virtual Result Exit() = 0;
+  virtual Result LockExit() = 0;
+  virtual Result UnlockExit() = 0;
+  NN_AM_RESERVED(7); NN_AM_RESERVED(8); NN_AM_RESERVED(9);
+  virtual Result SetScreenShotPermission(int32_t permission) = 0;
+  virtual Result SetOperationModeChangedNotification(bool isEnabled) = 0;
+  virtual Result SetPerformanceModeChangedNotification(bool isEnabled) = 0;
+  virtual Result SetFocusHandlingMode(bool notify, bool background,
+    bool suspend) = 0;
+  virtual Result SetRestartMessageEnabled(bool isEnabled) = 0;
+  NN_AM_RESERVED(15);
+  virtual Result SetOutOfFocusSuspendingEnabled(int32_t isEnabled) = 0;
+  NN_AM_RESERVED(17);
+  virtual Result SetRequiresCaptureButtonShortPressedMessage(
+    bool isRequired) = 0;
+  virtual Result SetAlbumImageOrientation(int32_t orientation) = 0;
   virtual Result SetDesirableKeyboardLayout(uint32_t layout) = 0;
   NN_AM_RESERVED(21); NN_AM_RESERVED(22); NN_AM_RESERVED(23);
   NN_AM_RESERVED(24); NN_AM_RESERVED(25); NN_AM_RESERVED(26);
@@ -83,18 +115,24 @@ class ISelfController : public sf::IServiceObject {
     int32_t autoSleepTimeForMedia, int32_t dimmingTime,
     int32_t dimmingTimeForMedia) = 0;
   virtual Result SetMediaPlaybackState(bool isPlaying) = 0;
-  NN_AM_RESERVED(36); NN_AM_RESERVED(37);
+  virtual Result SetIdleTimeDetectionExtension(int32_t extension) = 0;
+  virtual Result GetIdleTimeDetectionExtension(
+    sf::Out<int32_t> pOutExtension) = 0;
   virtual Result SetInputDetectionSourceSet(uint32_t sourceSet) = 0;
-  NN_AM_RESERVED(39); NN_AM_RESERVED(40); NN_AM_RESERVED(41);
+  virtual Result ReportUserIsActive() = 0;
+  NN_AM_RESERVED(40); NN_AM_RESERVED(41);
   virtual Result SetAutoSleepDisabled(bool isDisabled) = 0;
   virtual Result IsAutoSleepDisabled(sf::Out<bool> pOutIsDisabled) = 0;
   NN_AM_RESERVED(44); NN_AM_RESERVED(45);
   virtual Result SetInputDetectionPolicy(int32_t policy) = 0;
   NN_AM_RESERVED(47);
   virtual Result SetWirelessPriorityMode(int32_t mode) = 0;
-  NN_AM_RESERVED(49); NN_AM_RESERVED(50); NN_AM_RESERVED(51);
+  NN_AM_RESERVED(49); NN_AM_RESERVED(50);
+  virtual Result SetAlbumImageTakenNotificationEnabled(bool isEnabled) = 0;
   virtual Result SetAlbumUserData(const sf::InBuffer& userData) = 0;
-  NN_AM_RESERVED(53); NN_AM_RESERVED(54); NN_AM_RESERVED(55);
+  NN_AM_RESERVED(53);
+  virtual Result SetRecordVolumeMuted(bool isMuted) = 0;
+  NN_AM_RESERVED(55);
   NN_AM_RESERVED(56); NN_AM_RESERVED(57); NN_AM_RESERVED(58);
   NN_AM_RESERVED(59); NN_AM_RESERVED(60); NN_AM_RESERVED(61);
   NN_AM_RESERVED(62); NN_AM_RESERVED(63); NN_AM_RESERVED(64);

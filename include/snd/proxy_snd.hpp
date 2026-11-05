@@ -82,7 +82,7 @@ public:
   float getMasterVolume() override;
   void beginFrame() override;
   void endFrame() override;
-  void updateFrame() override;
+  void print(const char* message) override;
   bool isSoundEnabled() override;
   bool isVoiceEnabled() override;
   bool replaceVoiceLabel(void* name, const char* label) override;

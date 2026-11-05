@@ -212,7 +212,7 @@ void ProxySnd::beginFrame() {
 void ProxySnd::endFrame() {
 }
 
-void ProxySnd::updateFrame() {
+void ProxySnd::print(const char*) {
 }
 
 bool ProxySnd::isSoundEnabled() {

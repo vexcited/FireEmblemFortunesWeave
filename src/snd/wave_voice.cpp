@@ -1,6 +1,11 @@
 #include "snd/wave_voice.hpp"
 
+#include <algorithm>
+#include <cmath>
+#include <cstdlib>
+
 #include "snd/slot.hpp"
+#include "snd/target/base.hpp"
 #include "snd/wave_player.hpp"
 
 namespace snd {
@@ -38,6 +43,13 @@ void WaveVoice::updateTarget() {
   }
 }
 
+void WaveVoice::load() {
+  target::SoundHandle* handle = g_target->startSound(this);
+  getPlayer()->load(handle, isStream(), hasFeature4(), scrubbable_);
+  getPlayer()->setSource(soundId_, archive_, addon_);
+  loading_ = true;
+}
+
 bool WaveVoice::isLoading() const {
   return loading_;
 }
@@ -71,6 +83,27 @@ void WaveVoice::start() {
   }
   preparing_ = false;
   prepared_ = true;
+}
+
+// The start offset is picked between the two buffer bounds when the upper
+// one is set.
+void WaveVoice::play() {
+  if (buffer_->loadState == 0) {
+    if (WavePlayer* player = getPlayer()) {
+      int offset = static_cast<int>(fmaxf(buffer_->startOffsetMin, 0.0f));
+      float max = buffer_->startOffsetMax;
+      if (max > 0.0f) {
+        float range = max - static_cast<float>(offset);
+        float random = static_cast<float>(rand()) / 2147483648.0f;
+        offset += static_cast<int>(
+          (static_cast<float>(static_cast<int>(range)) + 0.9f) * random);
+      }
+      player->seekMs(std::max(kind_, 0) + offset);
+    }
+  }
+  Param& param = *this;
+  param.update(0.0f);
+  preparing_ = true;
 }
 
 bool WaveVoice::isPrepared() const {

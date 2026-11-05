@@ -11,6 +11,11 @@ class SystemEvent {
     m_SystemEvent.state = 0;
   }
 
+  SystemEvent(uint32_t handle, bool isManaged, EventClearMode clearMode) {
+    AttachReadableHandleToSystemEvent(&m_SystemEvent, handle, isManaged,
+      clearMode);
+  }
+
   ~SystemEvent() {
     if (m_SystemEvent.state == 0) {
       return;
@@ -22,6 +27,13 @@ class SystemEvent {
     EventClearMode clearMode) {
     NN_ABORT_UNLESS(m_SystemEvent.state == 0);
     AttachReadableHandleToSystemEvent(&m_SystemEvent, handle, isManaged,
+      clearMode);
+  }
+
+  void AttachWritableHandle(uint32_t handle, bool isManaged,
+    EventClearMode clearMode) {
+    NN_ABORT_UNLESS(m_SystemEvent.state == 0);
+    AttachWritableHandleToSystemEvent(&m_SystemEvent, handle, isManaged,
       clearMode);
   }
 
