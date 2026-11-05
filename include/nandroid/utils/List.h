@@ -171,7 +171,7 @@ public:
     }
     virtual ~List() {
         clear();
-        delete[] (unsigned char*) mpMiddle;
+        operator delete(mpMiddle);
     }
 
     typedef _ListIterator<T, NON_CONST_ITERATOR> iterator;
@@ -291,7 +291,7 @@ private:
      * slightly uncouth storage alloc.
      */
     void prep() {
-        mpMiddle = (_Node*) new unsigned char[sizeof(_Node)];
+        mpMiddle = (_Node*) operator new(sizeof(_Node));
         mpMiddle->setPrev(mpMiddle);
         mpMiddle->setNext(mpMiddle);
     }

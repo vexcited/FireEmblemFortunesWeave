@@ -19,6 +19,8 @@ public:
 
   static int64_t QuerySize(uint32_t blockCount);
   static Result Format(SubStorage storage, uint32_t blockCount);
+  static Result Expand(SubStorage storage, uint32_t oldBlockCount,
+    uint32_t newBlockCount);
 
   void Initialize(SubStorage storage, uint32_t blockCount);
   void Finalize();
@@ -34,6 +36,10 @@ public:
   Result ReadFreeListHead(uint32_t* outIndex);
   Result CalcFreeListLength(uint32_t* outLength);
   Result Concat(uint32_t index, uint32_t otherIndex);
+
+  Result Invalidate() {
+    return m_Storage.OperateRange(OperationId_Invalidate, 0, INT64_MAX);
+  }
 
 private:
   uint32_t ConvertSectorToIndex(uint32_t sector) const;

@@ -28,6 +28,10 @@ public:
     return reinterpret_cast<HeapContext *>(os::GetTlsValue(m_Slot));
   }
 
+  static void SetCurrentHeap(HeapContext *heap) {
+    os::SetTlsValue(GetInstance().m_Slot, reinterpret_cast<uintptr_t>(heap));
+  }
+
 private:
   os::TlsSlot m_Slot;
   bool m_IsStatisticsEnabled;

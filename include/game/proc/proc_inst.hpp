@@ -131,6 +131,7 @@ public:
   ProcInst* GetUnknown20() const { return unknown_20_; }
   ProcInst* GetParentProc() const { return parent_proc_; }
   const char* GetName() const { return name_; }
+  const ProcCmd* GetCommands() const { return commands_; }
 
 private:
   static constexpr uint32_t kWaitCommands = 0x1ce00;

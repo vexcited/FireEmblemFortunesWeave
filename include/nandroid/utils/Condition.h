@@ -81,12 +81,17 @@ public:
     void broadcast();
 
 private:
-    nn::os::ConditionVariableType mCond;
+    // The SDK initializes the condition variable only through
+    // InitializeConditionVariable, never through its member constructor.
+    union {
+        nn::os::ConditionVariableType mCond;
+    };
 };
 
 // ---------------------------------------------------------------------------
 
 inline Condition::Condition() : Condition(PRIVATE) {
+    nn::os::InitializeConditionVariable(&mCond);
 }
 inline Condition::Condition(__attribute__((unused)) int type) {
     nn::os::InitializeConditionVariable(&mCond);

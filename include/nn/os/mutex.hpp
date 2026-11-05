@@ -24,6 +24,28 @@ void UnlockMutex(MutexType* mutex);
 bool IsMutexLockedByCurrentThread(const MutexType* mutex);
 Result GetMutexOwnerThread(ThreadType** output, const MutexType* mutex);
 
+class Mutex {
+ public:
+  explicit Mutex(bool recursive) : m_Mutex() {
+    InitializeMutex(&m_Mutex, recursive, 0);
+  }
+
+  ~Mutex() {
+    FinalizeMutex(&m_Mutex);
+  }
+
+  void Lock() {
+    LockMutex(&m_Mutex);
+  }
+
+  void Unlock() {
+    UnlockMutex(&m_Mutex);
+  }
+
+ private:
+  MutexType m_Mutex;
+};
+
 namespace detail {
 
 Result GetCriticalSectionOwner(const InternalCriticalSection* lock,

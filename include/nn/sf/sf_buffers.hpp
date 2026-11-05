@@ -58,4 +58,22 @@ private:
   size_t m_Count;
 };
 
+template<class T>
+class OutArray {
+public:
+  OutArray(T* data, size_t count) : m_Data(data), m_Count(count) {}
+
+  T* GetData() const {
+    return m_Data;
+  }
+
+  size_t GetLength() const {
+    return m_Count;
+  }
+
+private:
+  T* m_Data;
+  size_t m_Count;
+};
+
 }

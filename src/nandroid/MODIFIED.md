@@ -24,7 +24,7 @@ Shims.
 - `utils/Condition.h` wraps `nn::os::ConditionVariableType` instead of a pthread condition.
 - `media/stagefright/DataSource.h` drops `getIDataSource` and `DrmInitialization`, matching the SDK vtables.
 - `media/MediaTrack.h` drops the binder memory includes.
-- `mpeg2ts/HlsSampleDecryptor.h` declares `AES_KEY` and `AES_BLOCK_SIZE` instead of including OpenSSL.
+- `mpeg2ts/HlsSampleDecryptor.h` declares `AES_KEY`, `AES_BLOCK_SIZE`, `AES_DECRYPT` and an empty `AES_cbc_encrypt` instead of including OpenSSL.
 - `media/stagefright/MediaBuffer.h` defines `NO_IMEMORY` and drops `mMemory`.
 - `media/stagefright/MediaWriter.h` has no `IMediaRecorderClient` listener, so `notify` does nothing.
 - `media/stagefright/Utils.h` drops the audio and offload helpers and includes `BufferingSettings.h` and `MetaData.h` directly.
@@ -51,4 +51,29 @@ Per file.
 - `Utils.cpp`: the audio, user agent and file descriptor helpers are removed, color aspects go through `ColorUtils`, `uriDebugString` returns the URI unless incognito, and the mapping tables are marked `used`.
 - `httplive/M3UParser.cpp` and `M3UParser.h`: the parser takes a fourth constructor argument and has three extra fields of unknown purpose, `MediaGroup` keeps its group ID, and the audio group always selects index 0.
 - `extractors/mkv/MatroskaExtractor.cpp`: FLAC metadata support is removed, `BlockIterator::eos` also checks the block entry and `block` returns null at the end, and libwebm is included from `src/libwebm`.
-- `libstagefright/MPEG4Writer.cpp`: the property include is added explicitly, the thread names go through `nn::os::SetThreadName` instead of the missing `prctl`, and the track type string carries no audio case.
+- `MovieHeap.h`: `HeapMemoryManager::SetCurrentHeap` stores the heap of the current movie thread.
+- `utils/List.h`: the sentinel node is allocated with the scalar `operator new` instead of `new unsigned char[]`, as the SDK uses the aligned movie heap for it.
+- `libstagefright/MPEG4Writer.cpp` and `MPEG4Writer.h`: the writer is built from an `nn::movie::detail::AllocatorInfo`, an `nn::movie::MediaWriter` and a thread manager instance instead of a file descriptor.
+  `MediaOpen`, `MediaSeek`, `MediaClose` and `MediaWrite` replace `dup`, `lseek64`, `close` and `write`, `reset` flushes the media writer after the moov box, `setNextFd`, `switchFd` and the looper are gone, and `dump` of the writer is removed.
+  The writer and track threads are created through `nn::movie::detail::ThreadManager` with a 32 KiB stack, `setWriterThreadPriority` and `setTrackEncodingThreadPriority` are added, and the thread entries set the heap of the writer.
+  `getMpeg4Time` returns 64 bit seconds from `nn::time::StandardUserSystemClock`, and the mvhd and tkhd boxes are written in version 1.
+  `addDeviceMeta` is empty, the HEVC codec specific data path is disabled with `NANDROID_HEVC`, and the sample tables use the global allocation functions.
+- `libstagefright/DataSourceBase.cpp`: `__unused` parameters are commented out.
+- `libstagefright/ClearFileSource.cpp`, `ClearFileSource.h`, `FileSource.cpp` and `FileSource.h`: files are read through `nn::fs::OpenFile`, `GetFileSize` and `ReadFile` with an `nn::fs::FileHandle`, there is no file descriptor constructor, and the DRM support of `FileSource` is removed.
+- `libmedia/MediaCodecBuffer.cpp`, `MediaSource.cpp`, `MediaAdapter.cpp` and `DataURISource.cpp` with their headers are unmodified apart from the common changes, and `HTTPBase.cpp` drops the `qtaguid` include.
+- `libstagefright/InMemoryFileSource.cpp` and `InMemoryFileSource.h` are Nintendo additions written from the binary.
+- `mpeg2ts/HlsSampleDecryptor.cpp`: the AES key setup is compiled out with `NANDROID_OPENSSL`, so the key never becomes valid, and `MediaErrors.h` is included for `ERROR_MALFORMED`.
+- `utils/Condition.h`: the condition variable lives in an anonymous union so that its member constructor never runs, and the default constructor initializes it a second time, as the SDK calls `InitializeConditionVariable` twice.
+- `foundation/ALooper.h` and `ALooper.cpp`: `start` takes only `runOnCallingThread` and `canCallJava`, the SDK has no priority argument.
+- `media/mediarecorder.h`: the output formats use the upstream values, so `OUTPUT_FORMAT_HEIF` is 10 and `OUTPUT_FORMAT_OGG` is 11.
+- `include/HTTPBase.h` includes `KeyedVector.h` and `String8.h` itself.
+- `libstagefright/NuCachedSource2.cpp` and `NuCachedSource2.h`: `close` also closes the source and stops the looper, deferred reads are reposted after 1 ms, there is no DRM, and three Nintendo fields keep data behind the read position.
+  Backward reads grow the kept data to 1.1 times the distance, up to half of the high watermark minus the read padding, the prefetcher releases at most up to that amount, and reads are deferred up to 16 times while the cache is smaller.
+  `getBufferedRange`, `flushCache` and `IsCacheFull` are added.
+- `httplive/LiveDataSource.cpp` and `LiveDataSource.h` are unmodified apart from the common changes.
+- `http/ClearMediaHTTP.cpp`, `media/stagefright/ClearMediaHTTP.h`, `media/MediaHTTPConnection.h` and `media/MediaHTTPService.h`: no user agent is added, as `MakeUserAgent` is missing, and `HTTPBase.h` is included from `src/nandroid/libstagefright/include`.
+- `httplive/HTTPDownloader.cpp` and `HTTPDownloader.h`: the downloader keeps the `LiveSession` and a playlist user data passed to `M3UParser`, new download buffers are limited by `LiveSession::getRemainingCacheSize`, and the playlist hash is compiled out with `NANDROID_OPENSSL`.
+- `httplive/LiveSession.h` is the upstream header with `setCacheSize` and `getRemainingCacheSize` added and the seek mode of `MediaTrack`, it does not have the SDK member layout yet.
+- `libstagefright/MediaMuxer.cpp` and `MediaMuxer.h`: the muxer is built like `MPEG4Writer` from an allocator info, a media writer and a thread manager instance, only MPEG-4, 3GPP and HEIF are supported, the codec buffer flags are local constants, and the thread priority setters forward to the writer.
+- `httplive/M3UParser.cpp` and `M3UParser.h`: the two unknown fields are the init segment URI and meta, and `MediaGroup` gains `getTrackInfo` with a base URL, `getTrackType` and `getTrackName`, the parser gains `getInitSegment`, `groupSize`, `groupAt`, `getGroupWithName` and `getGroupNamesAndTypes`.
+- `libmediaplayerservice/nuplayer/NuPlayerSource.h` and `NuPlayerSource.cpp`: `NuPlayer::Source` becomes `nandroid::Source`, `prepareAsync` takes a start time, seeking uses the `MediaTrack` seek mode, and the secure decoder notification is removed.

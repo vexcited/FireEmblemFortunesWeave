@@ -12,6 +12,17 @@ struct ApplicationSpec {
   uint32_t value;
 };
 
+enum AppletId : int32_t {};
+enum LibraryAppletMode : int32_t {};
+
+struct LibraryAppletHandle {
+  void* _p;
+};
+
+struct StorageHandle {
+  void* _p;
+};
+
 AppletResourceUserId GetAppletResourceUserId();
 
 }

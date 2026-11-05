@@ -4,9 +4,12 @@
 
 namespace nn::mii {
 
+enum FontRegion : int;
+
 struct Nickname {
   uint16_t text[11];
 
+  void ReplaceFontRegion(FontRegion region, int replacement);
   void Set(const uint16_t* source);
   void ReplaceQuestionMark();
   bool IsValid() const;

@@ -23,7 +23,9 @@ struct ChapterData {
     return flags & 0x80;
   }
 
-  uint8_t unknown_00_[0xb9];
+  uint8_t unknown_00_[0x86];
+  uint16_t minimap_scale;
+  uint8_t unknown_88_[0x31];
   uint8_t flags;
 };
 
@@ -50,6 +52,14 @@ public:
 
   static bool IsVariableSet(const char* name) {
     const HashedString key(name);
+    if (instance_ == nullptr) {
+      return false;
+    }
+    const GameVariable* variable = instance_->variables_->Find(key);
+    return variable != nullptr && variable->value != 0;
+  }
+
+  static bool IsVariableSet(const HashedString& key) {
     if (instance_ == nullptr) {
       return false;
     }

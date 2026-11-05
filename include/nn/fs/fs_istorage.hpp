@@ -31,18 +31,6 @@ struct QueryRangeInfo {
   }
 };
 
-constexpr Result ResultOutOfRange() {
-  return detail::MakeResult(3005);
-}
-
-constexpr Result ResultInvalidOffset() {
-  return detail::MakeResult(6061);
-}
-
-constexpr Result ResultInvalidSize() {
-  return detail::MakeResult(6062);
-}
-
 class IStorage {
 public:
   virtual ~IStorage() {}
@@ -55,6 +43,11 @@ public:
   virtual Result OperateRange(void* outBuffer, size_t outBufferSize,
     OperationId operationId, int64_t offset, int64_t size,
     const void* inBuffer, size_t inBufferSize) = 0;
+
+  Result OperateRange(OperationId operationId, int64_t offset,
+    int64_t size) {
+    return OperateRange(nullptr, 0, operationId, offset, size, nullptr, 0);
+  }
 
   static Result CheckAccessRange(int64_t offset, int64_t size,
     int64_t totalSize);

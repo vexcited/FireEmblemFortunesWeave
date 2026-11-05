@@ -1,7 +1,67 @@
+#include <string.h>
+
 #include "nn/audio/renderer_api.hpp"
 
 namespace nn::audio {
 namespace {
+
+bool AcquireVoiceSlotImpl(VoiceInfoManager* manager, VoiceType* voice,
+  int sampleRate, int channelCount, SampleFormat sampleFormat, int priority,
+  const void* parameter, size_t size,
+  const VoiceType::BehaviorOptions* options) {
+  VoiceInfo* info = manager->AcquireVoiceInfo(priority, channelCount);
+  voice->_pVoiceInfo = info;
+  if (info == nullptr) {
+    return false;
+  }
+  detail::CheckResourceExclusion(info);
+  info->nodeId = common::NodeIdManager::GetNodeId(
+    common::NodeIdManager::NodeIdType_Voice, info->slotIndex,
+    info->slotReserved);
+  info->playState = VoiceType::PlayState_Stop;
+  info->sampleRate = sampleRate;
+  info->priority = priority;
+  info->sampleFormat = sampleFormat;
+  info->channelCount = channelCount;
+  info->isNew = true;
+  info->isDroppedFlagReset = 0;
+  info->flushWaveBufferCount = 0;
+  info->srcQuality = 0;
+  info->slotReserved = info->slotReserved < 0xffff
+    ? info->slotReserved + 1
+    : 0;
+  info->pitch = 1.0f;
+  info->volume = 1.0f;
+  info->destinationMixId = 0x7fffffff;
+  info->destinationSplitterId = -1;
+  for (int i = 0; i < channelCount; ++i) {
+    memset(info->channelResources[i]->mixVolume, 0,
+      sizeof(info->channelResources[i]->mixVolume));
+  }
+  info->biquadFilter[0].enable = false;
+  info->biquadFilterCrossFadeCurveType = 0;
+  info->consumedWaveBufferCount = 0;
+  info->playedSampleCount = 0;
+  info->isVoiceDropped = 0;
+  for (auto& filter : info->biquadFilter) {
+    filter.enable = false;
+    filter.numerator[0] = 0.0f;
+    filter.numerator[1] = 0.0f;
+    filter.numerator[2] = 0.0f;
+    filter.denominator[0] = 0.0f;
+    filter.denominator[1] = 0.0f;
+  }
+  info->pAdditionalParameter = parameter;
+  info->additionalParameterSize = size;
+  info->behaviorFlags = {};
+  if (options != nullptr) {
+    info->behaviorFlags.isPlayedSampleCountResetAtLoopPoint =
+      options->isPlayedSampleCountResetAtLoopPoint;
+    info->behaviorFlags.isPitchAndSrcSkipped = options->isPitchAndSrcSkipped;
+    info->behaviorFlags.isLoopCountSpecified = options->isLoopCountSpecified;
+  }
+  return true;
+}
 
 void SetWaveBuffer(VoiceWaveBuffer& internal, const WaveBuffer* waveBuffer) {
   internal.buffer = waveBuffer->buffer;
@@ -14,6 +74,21 @@ void SetWaveBuffer(VoiceWaveBuffer& internal, const WaveBuffer* waveBuffer) {
   internal.contextSize = waveBuffer->contextSize;
 }
 
+}
+
+bool AcquireVoiceSlot(AudioRendererConfig* config, VoiceType* voice,
+  int sampleRate, int channelCount, SampleFormat sampleFormat, int priority,
+  const void* parameter, size_t size) {
+  return AcquireVoiceSlotImpl(config->_pVoiceInfoManager, voice, sampleRate,
+    channelCount, sampleFormat, priority, parameter, size, nullptr);
+}
+
+bool AcquireVoiceSlot(AudioRendererConfig* config, VoiceType* voice,
+  int sampleRate, int channelCount, SampleFormat sampleFormat, int priority,
+  const void* parameter, size_t size,
+  const VoiceType::BehaviorOptions* options) {
+  return AcquireVoiceSlotImpl(config->_pVoiceInfoManager, voice, sampleRate,
+    channelCount, sampleFormat, priority, parameter, size, options);
 }
 
 bool IsVoiceValid(const VoiceType* voice) {
@@ -312,11 +387,12 @@ void FlushWaveBuffers(VoiceType* voice) {
 }
 
 VoiceType::BehaviorOptions GetVoiceBehaviorOptions(const VoiceType* voice) {
-  const uint16_t flags = voice->_pVoiceInfo->behaviorFlags;
+  const auto& flags = voice->_pVoiceInfo->behaviorFlags;
   VoiceType::BehaviorOptions options;
-  options.isPlayedSampleCountResetAtLoopPoint = (flags & 1) != 0;
-  options.isPitchAndSrcSkipped = (flags & 2) != 0;
-  options.isLoopCountSpecified = (flags & 4) != 0;
+  options.isPlayedSampleCountResetAtLoopPoint =
+    flags.isPlayedSampleCountResetAtLoopPoint;
+  options.isPitchAndSrcSkipped = flags.isPitchAndSrcSkipped;
+  options.isLoopCountSpecified = flags.isLoopCountSpecified;
   return options;
 }
 

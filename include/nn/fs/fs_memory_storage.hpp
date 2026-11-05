@@ -2,6 +2,7 @@
 
 #include <string.h>
 
+#include "nn/fs/detail/fs_newable.hpp"
 #include "nn/fs/fs_istorage.hpp"
 
 namespace nn::fs {
@@ -15,7 +16,7 @@ constexpr Result ResultUnsupportedOperateRangeForMemoryStorage() {
 }
 
 template<typename BufferType, typename VoidType>
-class MemoryStorageImpl : public IStorage {
+class MemoryStorageImpl : public IStorage, public detail::Newable {
 public:
   MemoryStorageImpl(VoidType buffer, int64_t size)
     : m_Buffer(static_cast<BufferType>(buffer)), m_Size(size) {}
@@ -80,5 +81,7 @@ private:
   BufferType m_Buffer;
   int64_t m_Size;
 };
+
+typedef MemoryStorageImpl<char*, void*> MemoryStorage;
 
 }

@@ -25,10 +25,18 @@
 #include <openssl/aes.h>
 #else
 #define AES_BLOCK_SIZE 16
+#define AES_DECRYPT 0
 struct AES_KEY {
     uint32_t rd_key[4 * (14 + 1)];
     unsigned rounds;
 };
+
+// The SDK is built without the AES implementation, so the samples are left
+// encrypted.
+inline void AES_cbc_encrypt(const uint8_t * /* in */, uint8_t * /* out */,
+        size_t /* len */, const AES_KEY * /* key */, uint8_t * /* ivec */,
+        const int /* enc */) {
+}
 #endif
 
 #include <nandroid/utils/Errors.h>

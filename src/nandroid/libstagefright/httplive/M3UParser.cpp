@@ -68,6 +68,9 @@ struct M3UParser::MediaGroup : public RefBase {
     status_t selectTrack(size_t index, bool select);
     size_t countTracks() const;
     sp<AMessage> getTrackInfo(size_t index) const;
+    sp<AMessage> getTrackInfo(size_t index, const char *baseURL) const;
+    bool getTrackType(size_t index, media_track_type *type) const;
+    bool getTrackName(size_t index, AString *name) const;
 
 protected:
     virtual ~MediaGroup();
@@ -92,6 +95,8 @@ private:
 
     DISALLOW_EVIL_CONSTRUCTORS(MediaGroup);
 };
+
+static bool MakeURL(const char *baseURL, const char *url, AString *out);
 
 M3UParser::MediaGroup::MediaGroup(Type type, const AString &groupID)
     : mGroupID(groupID),
@@ -238,6 +243,86 @@ sp<AMessage> M3UParser::MediaGroup::getTrackInfo(size_t index) const {
     }
 
     return format;
+}
+
+sp<AMessage> M3UParser::MediaGroup::getTrackInfo(
+        size_t index, const char *baseURL) const {
+    if (index >= mMediaItems.size()) {
+        return NULL;
+    }
+
+    sp<AMessage> format = new AMessage();
+
+    int32_t trackType;
+    if (mType == TYPE_AUDIO) {
+        trackType = MEDIA_TRACK_TYPE_AUDIO;
+    } else if (mType == TYPE_VIDEO) {
+        trackType = MEDIA_TRACK_TYPE_VIDEO;
+    } else if (mType == TYPE_SUBS) {
+        trackType = MEDIA_TRACK_TYPE_SUBTITLE;
+    } else {
+        trackType = MEDIA_TRACK_TYPE_UNKNOWN;
+    }
+    format->setInt32("type", trackType);
+
+    const Media &item = mMediaItems.itemAt(index);
+    const char *lang = item.mLanguage.empty() ? "und" : item.mLanguage.c_str();
+    format->setString("language", lang);
+
+    if (item.mFlags & MediaGroup::FLAG_HAS_URI) {
+        AString uri;
+        MakeURL(baseURL, item.mURI.c_str(), &uri);
+        format->setString("uri", uri.c_str());
+    }
+
+    if (!item.mName.empty()) {
+        format->setString("name", item.mName.c_str());
+    }
+
+    if (mType == TYPE_SUBS) {
+        format->setString("mime", MEDIA_MIMETYPE_TEXT_VTT);
+        format->setInt32("auto", !!(item.mFlags & MediaGroup::FLAG_AUTOSELECT));
+        format->setInt32("default", !!(item.mFlags & MediaGroup::FLAG_DEFAULT));
+        format->setInt32("forced", !!(item.mFlags & MediaGroup::FLAG_FORCED));
+    }
+
+    return format;
+}
+
+bool M3UParser::MediaGroup::getTrackType(
+        size_t index, media_track_type *type) const {
+    if (index >= mMediaItems.size()) {
+        return false;
+    }
+
+    switch (mType) {
+        case TYPE_AUDIO:
+            *type = MEDIA_TRACK_TYPE_AUDIO;
+            break;
+        case TYPE_VIDEO:
+            *type = MEDIA_TRACK_TYPE_VIDEO;
+            break;
+        case TYPE_SUBS:
+            *type = MEDIA_TRACK_TYPE_SUBTITLE;
+            break;
+        default:
+            *type = MEDIA_TRACK_TYPE_UNKNOWN;
+            break;
+    }
+    return true;
+}
+
+bool M3UParser::MediaGroup::getTrackName(size_t index, AString *name) const {
+    if (name == NULL || index >= mMediaItems.size()) {
+        return false;
+    }
+
+    const AString &trackName = mMediaItems.itemAt(index).mName;
+    if (trackName.empty()) {
+        return false;
+    }
+    *name = trackName;
+    return true;
 }
 
 bool M3UParser::MediaGroup::getActiveURI(AString *uri, const char *baseURL) const {
@@ -491,6 +576,114 @@ bool M3UParser::getTypeURI(size_t index, const char *key, AString *uri) const {
 
 bool M3UParser::hasType(size_t index, const char *key) const {
     return getTypeURI(index, key, NULL /* uri */);
+}
+
+bool M3UParser::getInitSegment(AString *uri, sp<AMessage> *meta) {
+    if (uri != NULL) {
+        uri->clear();
+    }
+    if (meta != NULL) {
+        meta->clear();
+    }
+
+    if (mInitSegmentMeta == NULL) {
+        return false;
+    }
+
+    if (uri != NULL) {
+        *uri = mInitSegmentURI;
+    }
+    if (meta != NULL) {
+        *meta = mInitSegmentMeta;
+    }
+    return true;
+}
+
+size_t M3UParser::groupSize() {
+    return mMediaGroups.size();
+}
+
+bool M3UParser::groupAt(size_t index, media_track_type *type,
+        AString *groupName, Vector<sp<AMessage> > *tracks) {
+    if (index >= mMediaGroups.size()) {
+        return false;
+    }
+
+    sp<MediaGroup> group = mMediaGroups.valueAt(index);
+    if (type != NULL) {
+        if (group->mType == MediaGroup::TYPE_AUDIO) {
+            *type = MEDIA_TRACK_TYPE_AUDIO;
+        } else if (group->mType == MediaGroup::TYPE_VIDEO) {
+            *type = MEDIA_TRACK_TYPE_VIDEO;
+        } else if (group->mType == MediaGroup::TYPE_SUBS) {
+            *type = MEDIA_TRACK_TYPE_SUBTITLE;
+        } else {
+            *type = MEDIA_TRACK_TYPE_UNKNOWN;
+        }
+    }
+    if (groupName != NULL) {
+        groupName->clear();
+        *groupName = group->mGroupID;
+    }
+    if (tracks != NULL) {
+        tracks->clear();
+        tracks->setCapacity(group->mMediaItems.size());
+        for (size_t i = 0; i < group->mMediaItems.size(); ++i) {
+            tracks->push_back(group->getTrackInfo(i, mBaseURI.c_str()));
+        }
+    }
+    return true;
+}
+
+bool M3UParser::getGroupWithName(const char *groupName,
+        media_track_type *type, Vector<sp<AMessage> > *tracks) {
+    ssize_t index = mMediaGroups.indexOfKey(AString(groupName));
+    if (index < 0) {
+        return false;
+    }
+
+    sp<MediaGroup> group = mMediaGroups.valueAt(index);
+    if (type != NULL) {
+        if (group->mType == MediaGroup::TYPE_AUDIO) {
+            *type = MEDIA_TRACK_TYPE_AUDIO;
+        } else if (group->mType == MediaGroup::TYPE_VIDEO) {
+            *type = MEDIA_TRACK_TYPE_VIDEO;
+        } else if (group->mType == MediaGroup::TYPE_SUBS) {
+            *type = MEDIA_TRACK_TYPE_SUBTITLE;
+        } else {
+            *type = MEDIA_TRACK_TYPE_UNKNOWN;
+        }
+    }
+    if (tracks != NULL) {
+        tracks->clear();
+        tracks->setCapacity(group->mMediaItems.size());
+        for (size_t i = 0; i < group->mMediaItems.size(); ++i) {
+            tracks->push_back(group->getTrackInfo(i, mBaseURI.c_str()));
+        }
+    }
+    return true;
+}
+
+bool M3UParser::getGroupNamesAndTypes(Vector<AString> *names,
+        Vector<media_track_type> *types) {
+    if (names == NULL || types == NULL) {
+        return false;
+    }
+
+    names->clear();
+    for (size_t i = 0; i < mMediaGroups.size(); ++i) {
+        sp<MediaGroup> group = mMediaGroups.valueAt(i);
+        for (size_t j = 0; j < group->mMediaItems.size(); ++j) {
+            AString name;
+            media_track_type type = MEDIA_TRACK_TYPE_UNKNOWN;
+            if (group->getTrackName(j, &name)
+                    && group->getTrackType(j, &type)) {
+                names->push_back(name);
+                types->push_back(type);
+            }
+        }
+    }
+    return true;
 }
 
 static bool MakeURL(const char *baseURL, const char *url, AString *out) {

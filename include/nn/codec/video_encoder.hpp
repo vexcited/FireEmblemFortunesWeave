@@ -4,6 +4,12 @@
 
 #include "nn/codec/video_decoder.hpp"
 
+namespace nn::codec::video::ipc {
+
+struct VideoEncService : tipc::ClientSession {};
+
+}
+
 namespace nn::codec {
 
 namespace detail {
@@ -11,13 +17,13 @@ namespace detail {
 constexpr int VideoEncoderBufferCountMax = 8;
 
 struct VideoEncoderBuffer {
-  bool isRegistered;
+  uint8_t isRegistered;
   uint32_t nativeImageHandle;
   uint32_t imageIndex;
 };
 
 struct VideoEncoderStorage {
-  void* session;
+  video::ipc::VideoEncService* session;
   os::SystemEventType outputReadyEvent;
   VideoEncoderBuffer buffers[VideoEncoderBufferCountMax];
   uint32_t inputQueue[VideoEncoderBufferCountMax];

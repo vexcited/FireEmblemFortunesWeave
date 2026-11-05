@@ -129,7 +129,7 @@ Result Unmount(const char* name) {
   FileSystemAccessor* accessor = nullptr;
   NN_FS_RESULT_DO(Find(&accessor, name));
 
-  if (accessor->IsPathBasedFileDataCacheAttachable()) {
+  if (accessor->IsFileDataCacheAttachable()) {
     GlobalFileDataCacheAccessorReadableScopedPointer pointer;
     if (TryGetGlobalFileDataCacheAccessor(&pointer)) {
       accessor->PurgeFileDataCache(pointer.Get());

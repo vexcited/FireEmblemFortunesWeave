@@ -174,7 +174,10 @@ struct SixAxisSensorCalibrationParameter {
 };
 struct SixAxisSensorIcInformation;
 struct SixAxisSensorState;
-struct TouchScreenConfigurationForNx;
+struct TouchScreenConfigurationForNx {
+  uint8_t mode;
+  uint8_t reserved[15];
+};
 struct VibrationDeviceInfo;
 struct VibrationFileInfo;
 struct VibrationFileParserContext;
@@ -292,7 +295,9 @@ struct SixAxisSensorAccurateUserCalibrationState {
   int32_t progress;
 };
 
-struct SixAxisSensorUserCalibrationStage;
+struct SixAxisSensorUserCalibrationStage {
+  int32_t value;
+};
 struct SleepButtonState;
 struct SystemKeyboardState;
 enum UniquePadInterface {};

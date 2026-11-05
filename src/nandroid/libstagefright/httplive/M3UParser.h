@@ -56,6 +56,15 @@ struct M3UParser : public RefBase {
     bool getTypeURI(size_t index, const char *key, AString *uri) const;
     bool hasType(size_t index, const char *key) const;
 
+    bool getInitSegment(AString *uri, sp<AMessage> *meta);
+    size_t groupSize();
+    bool groupAt(size_t index, media_track_type *type, AString *groupName,
+            Vector<sp<AMessage> > *tracks);
+    bool getGroupWithName(const char *groupName, media_track_type *type,
+            Vector<sp<AMessage> > *tracks);
+    bool getGroupNamesAndTypes(Vector<AString> *names,
+            Vector<media_track_type> *types);
+
 protected:
     virtual ~M3UParser();
 
@@ -87,8 +96,8 @@ private:
 
     sp<AMessage> mMeta;
     Vector<Item> mItems;
-    AString mUnknownString;
-    sp<AMessage> mUnknownMeta;
+    AString mInitSegmentURI;
+    sp<AMessage> mInitSegmentMeta;
     ssize_t mSelectedIndex;
 
     // Media groups keyed by group ID.

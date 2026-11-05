@@ -12,6 +12,8 @@ namespace nn::fs {
 
 Result DeleteSaveData(uint64_t saveDataId);
 Result DeleteSaveData(SaveDataSpaceId spaceId, uint64_t saveDataId);
+Result FindSaveDataWithFilter(SaveDataInfo* outInfo, SaveDataSpaceId spaceId,
+  const SaveDataFilter& filter);
 Result DeleteSystemSaveData(SaveDataSpaceId spaceId, uint64_t saveDataId,
   const UserId& userId);
 Result DeleteDeviceSaveData(ApplicationId applicationId);
@@ -42,5 +44,12 @@ Result VerifySaveData(bool* outIsValid, SaveDataSpaceId spaceId,
   uint64_t saveDataId, void* workBuffer, size_t workBufferSize);
 Result CorruptSaveDataForDebug(uint64_t saveDataId);
 Result CorruptSaveDataForDebug(SaveDataSpaceId spaceId, uint64_t saveDataId);
+
+namespace detail {
+
+Result QuerySaveDataInternalStorageTotalSize(int64_t* outSize,
+  SaveDataSpaceId spaceId, uint64_t saveDataId);
+
+}
 
 }

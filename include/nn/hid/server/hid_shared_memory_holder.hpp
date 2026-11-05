@@ -3,33 +3,8 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#include "nn/os/shared_memory.hpp"
 #include "nn/result.hpp"
-
-namespace nn::os {
-
-enum MemoryPermission {
-  MemoryPermission_None = 0,
-  MemoryPermission_ReadOnly = 1,
-  MemoryPermission_WriteOnly = 2,
-  MemoryPermission_ReadWrite = 3,
-};
-
-struct SharedMemoryType {
-  uint64_t storage[8];
-};
-
-Result CreateSharedMemory(SharedMemoryType* sharedMemory, size_t size,
-  MemoryPermission myPermission, MemoryPermission otherPermission);
-void AttachSharedMemory(SharedMemoryType* sharedMemory, size_t size,
-  uint32_t handle, bool managed);
-void DestroySharedMemory(SharedMemoryType* sharedMemory);
-void* MapSharedMemory(SharedMemoryType* sharedMemory,
-  MemoryPermission permission);
-void UnmapSharedMemory(SharedMemoryType* sharedMemory);
-void* GetSharedMemoryAddress(const SharedMemoryType* sharedMemory);
-uint32_t GetSharedMemoryHandle(const SharedMemoryType* sharedMemory);
-
-}
 
 namespace nn::hid::server {
 

@@ -22,6 +22,7 @@
 
 #include <nandroid/media/stagefright/foundation/ABuffer.h>
 #include <nandroid/media/stagefright/foundation/ADebug.h>
+#include <nandroid/media/stagefright/MediaErrors.h>
 #include <nandroid/media/stagefright/Utils.h>
 
 
@@ -60,10 +61,12 @@ void HlsSampleDecryptor::signalNewSampleAesKey(const sp<AMessage> &sampleAesKeyI
         memcpy(KeyData, keyDataBuffer->data(), AES_BLOCK_SIZE);
         memcpy(mAESInitVec, initVecBuffer->data(), AES_BLOCK_SIZE);
 
+#ifdef NANDROID_OPENSSL
         mValidKeyInfo = (AES_set_decrypt_key(KeyData, 8*AES_BLOCK_SIZE/*128*/, &mAesKey) == 0);
         if (!mValidKeyInfo) {
             ALOGE("signalNewSampleAesKey: failed to set AES decryption key.");
         }
+#endif
 
     } else {
         // Media scanner might try extract/parse the TS files without knowing the key.

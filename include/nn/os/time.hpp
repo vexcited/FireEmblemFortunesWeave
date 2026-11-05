@@ -8,6 +8,10 @@ struct TimeSpan {
   int64_t nanoseconds;
 };
 
+struct TimeSpanType {
+  int64_t nanoseconds;
+};
+
 namespace os {
 
 struct Tick {

@@ -10,7 +10,16 @@ struct CharInfo {
 
 struct ParamCharInfoAccessor {
   detail::CharInfoRaw data;
+
+  explicit ParamCharInfoAccessor(const CharInfo& info);
   bool IsValid() const;
+  void GetNickname(Nickname* name, int replacement) const;
+  CreateId GetCreateId() const;
+  bool IsSpecial() const;
+
+#define MII_CHAR_INFO_FIELD(Name, Offset) int Get##Name() const;
+#include "nn/mii/char_info_fields.inc"
+#undef MII_CHAR_INFO_FIELD
 };
 
 struct CharInfoVisualParamAccessor {

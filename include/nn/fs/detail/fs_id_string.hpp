@@ -21,4 +21,10 @@ const char* IdString::ToString<DirectoryEntryType>(DirectoryEntryType id);
 template<>
 const char* IdString::ToString<SaveDataSpaceId>(SaveDataSpaceId id);
 
+template<>
+const char* IdString::ToString<SaveDataFormatType>(SaveDataFormatType id);
+
+template<>
+const char* IdString::ToString<MountHostOption>(MountHostOption id);
+
 }

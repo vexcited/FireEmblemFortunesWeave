@@ -12,6 +12,7 @@ void StartThread(ThreadType* thread);
 void WaitThread(ThreadType* thread);
 void SetThreadName(ThreadType* thread, const char* name);
 int GetThreadPriority(const ThreadType* thread);
+int ChangeThreadPriority(ThreadType* thread, int priority);
 void SetThreadCoreMask(ThreadType* thread, int ideal_core, uint64_t affinity);
 
 }

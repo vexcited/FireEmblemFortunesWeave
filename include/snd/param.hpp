@@ -166,7 +166,11 @@ public:
   virtual void setFrame(float frame);
   virtual float getElapsedFrame() const;
 
-private:
+  bool isEnvelopeReleased() const;
+  bool isEnvelopeFading() const;
+  bool isEnvelopeEnded() const;
+
+protected:
   float volumeScale_;
   float volumeRate_;
   Fade volume_;
@@ -211,11 +215,11 @@ private:
   Fade fxSendOffset_;
   Fade outputVolume_;
   float mixVolumes_[8];
-  uint8_t unknown_14c8_[0x80];
+  float variables_[32];
   bool channelEnabled_;
   float channelVolumes_[6];
   float time_;
-  float results_[17];
+  mutable float results_[17];
 };
 
 }

@@ -18,6 +18,14 @@ namespace nn::diag::detail {
 
 namespace nn::fs::detail {
 
+struct IdentifyAccessLogHandle {
+  const void* handle;
+
+  static IdentifyAccessLogHandle MakeValue(const void* handle) {
+    return IdentifyAccessLogHandle{handle};
+  }
+};
+
 void LogErrorMessage(Result result, const char* format, ...);
 void LogResultErrorMessage(Result result, const char* function);
 bool IsAbortNeeded(Result result);
@@ -38,6 +46,10 @@ void OutputAccessLogToOnlySdCard(const char* format, ...);
 bool IsEnabledHandleAccessLog(FileHandle handle);
 bool IsEnabledHandleAccessLog(DirectoryHandle handle);
 bool IsEnabledHandleAccessLog(const void* handle);
+bool IsEnabledHandleAccessLog(IdentifyAccessLogHandle handle);
+void OutputAccessLog(Result result, os::Tick start, os::Tick end,
+  const char* function, IdentifyAccessLogHandle handle, const char* format,
+  ...);
 
 }
 

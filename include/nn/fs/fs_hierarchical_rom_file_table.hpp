@@ -9,6 +9,10 @@
 namespace nn::fs {
 
 struct Int64 {
+  int64_t Get() const {
+    return static_cast<int64_t>(static_cast<uint64_t>(high) << 32 | low);
+  }
+
   uint32_t low;
   uint32_t high;
 };
@@ -43,6 +47,51 @@ public:
 
   Result ReadElement(Element* outElement, Position position) {
     return m_KeyValueStorage.Read(position, outElement, sizeof(Element));
+  }
+
+  void Finalize() {
+    m_BucketStorage = SubStorage();
+    m_KeyValueStorage = SubStorage();
+    m_BucketCount = 0;
+  }
+
+  Result Add(Position* outPosition, const Key& key, uint32_t hash,
+    const char* name, size_t nameLength, const Value& value);
+
+  Result Get(Position* outPosition, Value* outValue, const Key& key,
+    uint32_t hash, const char* name, size_t nameLength) {
+    Position position = 0;
+    Position previous = 0;
+    Element element = {};
+    NN_FS_RESULT_DO(FindImpl(&position, &previous, &element, key, hash,
+      name, nameLength));
+    *outPosition = position;
+    *outValue = element.value;
+    return ResultSuccess();
+  }
+
+  Result GetByPosition(Key* outKey, Value* outValue, Position position) {
+    Element element = {};
+    NN_FS_RESULT_DO(ReadElement(&element, position));
+    *outKey = element.key;
+    *outValue = element.value;
+    return ResultSuccess();
+  }
+
+  __attribute__((noinline)) Result FindImpl(Position* outPosition,
+    Position* outPrevious, Element* outElement, const Key& key,
+    uint32_t hash, const char* name, size_t nameLength);
+  __attribute__((noinline)) Result LinkEntry(Position* outNext,
+    Position position, uint32_t hash);
+
+  Result ReadBucket(Position* outPosition, int64_t index) {
+    return m_BucketStorage.Read(index * sizeof(Position), outPosition,
+      sizeof(Position));
+  }
+
+  Result WriteBucket(Position position, int64_t index) {
+    return m_BucketStorage.Write(index * sizeof(Position), &position,
+      sizeof(Position));
   }
 
 private:
@@ -81,9 +130,27 @@ public:
   struct EntryKey {
     RomEntryKey key;
     RomPathTool::RomEntryName name;
+
+    uint32_t Hash() const {
+      uint32_t hash = key.parent ^ 123456789;
+      for (size_t i = 0; i < name.length; ++i) {
+        const uint32_t c = static_cast<unsigned char>(name.path[i]);
+        hash = ((hash >> 5) | (hash << 27)) ^ c;
+      }
+      return hash;
+    }
   };
 
   HierarchicalRomFileTable();
+
+  void Finalize();
+  Result CreateRootDirectory();
+  Result CreateFile(RomFileId* outId, const char* path,
+    const RomFileInfo& info);
+
+  Result Initialize(SubStorage directoryBucketStorage,
+    SubStorage directoryEntryStorage, SubStorage fileBucketStorage,
+    SubStorage fileEntryStorage);
 
   Result ConvertPathToDirectoryId(RomDirectoryId* outId, const char* path);
   Result ConvertPathToFileId(RomFileId* outId, const char* path);
@@ -109,12 +176,27 @@ private:
 
   __attribute__((noinline)) Result GetDirectoryEntry(
     DirectoryRomEntry* outEntry, RomDirectoryId id);
-  Result GetDirectoryEntry(RomDirectoryId* outId, DirectoryRomEntry* outEntry,
-    const EntryKey& key);
-  Result GetFileEntry(RomFileId* outId, FileRomEntry* outEntry,
-    const EntryKey& key);
+  struct CacheContext;
+
+  __attribute__((noinline)) Result GetDirectoryEntry(RomDirectoryId* outId,
+    DirectoryRomEntry* outEntry, const EntryKey& key);
+  __attribute__((noinline)) Result GetFileEntry(RomFileId* outId,
+    FileRomEntry* outEntry, const EntryKey& key);
   Result FindPathRecursive(EntryKey* outKey, DirectoryRomEntry* outParent,
     bool isDirectory, const char* path);
+  Result FindDirectoryRecursive(EntryKey* outKey,
+    DirectoryRomEntry* outParent, const char* path);
+  Result FindFileRecursive(EntryKey* outKey, DirectoryRomEntry* outParent,
+    const char* path);
+  Result FindParentDirectoryRecursive(RomDirectoryId* outId,
+    EntryKey* outKey, DirectoryRomEntry* outEntry,
+    RomPathTool::PathParser* parser, const char* path);
+  Result CheckSameEntryExists(const EntryKey& key, Result ifExists);
+  Result GetParent(RomDirectoryId* outId, EntryKey* outKey,
+    DirectoryRomEntry* outEntry, RomDirectoryId id,
+    RomPathTool::RomEntryName name, const char* path);
+  Result CreateFile(RomFileId* outId, const char* path,
+    const RomFileInfo& info, CacheContext* context);
   __attribute__((noinline)) Result GetFileEntry(FileRomEntry* outEntry,
     RomFileId id);
 

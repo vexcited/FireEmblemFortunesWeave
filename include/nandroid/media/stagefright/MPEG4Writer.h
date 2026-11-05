@@ -23,8 +23,10 @@
 #include <nandroid/media/stagefright/MediaWriter.h>
 #include <nandroid/utils/List.h>
 #include <nandroid/utils/threads.h>
-#include <nandroid/media/stagefright/foundation/AHandlerReflector.h>
-#include <nandroid/media/stagefright/foundation/ALooper.h>
+#include <nandroid/MovieHeap.h>
+
+#include <nn/movie/movie_media_writer.hpp>
+#include <nn/movie/detail/movie_thread_manager.hpp>
 
 namespace nandroid {
 
@@ -34,7 +36,8 @@ struct ABuffer;
 
 class MPEG4Writer : public MediaWriter {
 public:
-    MPEG4Writer(int fd);
+    MPEG4Writer(nn::movie::detail::AllocatorInfo *allocatorInfo,
+            nn::movie::MediaWriter *mediaWriter, void *threadInstance);
 
     // Limitations
     // No more than one video and/or one audio source can be added, but
@@ -46,7 +49,6 @@ public:
     virtual status_t stop() { return reset(); }
     virtual status_t pause();
     virtual bool reachedEOS();
-    virtual status_t dump(int fd, const Vector<String16>& args);
 
     void beginBox(const char *fourcc);
     void beginBox(uint32_t id);
@@ -71,12 +73,14 @@ public:
     virtual int32_t getStartTimeOffsetMs() const { return mStartTimeOffsetMs; }
     virtual status_t setNextFd(int fd);
 
+    status_t setWriterThreadPriority(int priority);
+    status_t setTrackEncodingThreadPriority(int priority);
+
 protected:
     virtual ~MPEG4Writer();
 
 private:
     class Track;
-    friend struct AHandlerReflector<MPEG4Writer>;
 
     enum {
         kWhatSwitch                          = 'swch',
@@ -84,6 +88,9 @@ private:
 
     int  mFd;
     int mNextFd;
+    nn::movie::MediaWriter *mMediaWriter;
+    int mMediaOffset;
+    nn::movie::detail::HeapContext *mHeap;
     sp<MetaData> mStartMeta;
     status_t mInitCheck;
     bool mIsRealTimeRecording;
@@ -112,9 +119,6 @@ private:
     bool mAreGeoTagsAvailable;
     int32_t mStartTimeOffsetMs;
     bool mSwitchPending;
-
-    sp<ALooper> mLooper;
-    sp<AHandlerReflector<MPEG4Writer> > mReflector;
 
     Mutex mLock;
 
@@ -160,7 +164,12 @@ private:
 
     bool            mIsFirstChunk;
     volatile bool   mDone;                  // Writer thread is done?
-    pthread_t       mThread;                // Thread id for the writer
+    nn::movie::detail::ThreadInfo *mThread; // Thread for the writer
+    void           *mThreadStack;
+    bool            mThreadCreated;
+    void           *mThreadInstance;
+    int             mWriterThreadPriority;
+    int             mTrackEncodingThreadPriority;
     List<ChunkInfo> mChunkInfos;            // Chunk infos
     Condition       mChunkReadyCondition;   // Signal that chunks are available
 
@@ -211,7 +220,7 @@ private:
     // Writer thread handling
     status_t startWriterThread();
     void stopWriterThread();
-    static void *ThreadWrapper(void *me);
+    static void ThreadWrapper(void *me);
     void threadFunc();
 
     // Buffer a single chunk to be written out later.
@@ -301,7 +310,12 @@ private:
     status_t switchFd();
     status_t reset(bool stopSource = true);
 
-    static uint32_t getMpeg4Time();
+    void MediaOpen();
+    void MediaSeek(int position);
+    void MediaClose();
+    void MediaWrite(void *data, size_t size);
+
+    static int64_t getMpeg4Time();
 
     void onMessageReceived(const sp<AMessage> &msg);
 

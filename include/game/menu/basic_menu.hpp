@@ -258,8 +258,10 @@ protected:
   void Unknown16dc660(bool enable);
   void Unknown16dcb80();
   void Unknown16de2e0(bool enable);
+  void Unknown16dd9a0();
   void Unknown16de4d0();
   void Unknown16df380();
+  int Unknown16e1a00();
 
   std::vector<BasicMenuItem*> items_;
   std::vector<BasicMenuItem*> visible_items_;

@@ -25,6 +25,9 @@ public:
   nn::ui2d::Pane* FindPane(const char* name);
   void SetTranslate(const nn::util::Float3& translate);
   void SetPaneSize(const char* name, float width, float height);
+  bool IsPaneVisible(const char* name);
+  // Restarts the animation unless it already plays from its first frame.
+  void StartAnimation(const char* name);
 
   void SetText(const char* name, const char16_t* text) {
     if (text == nullptr) {
@@ -59,5 +62,9 @@ private:
   std::weak_ptr<Layout> owner_;
   nn::ui2d::Layout* layout_ = nullptr;
 };
+
+// Dims the root pane of the part, or makes it opaque when enabled.
+void SetPartEnabled(std::weak_ptr<LayoutAccessor>& part, bool enable,
+  bool dark);
 
 }

@@ -14,6 +14,10 @@ struct Result {
   bool IsFailure() const {
     return value != 0;
   }
+
+  uint32_t GetInnerValueForDebug() const {
+    return value & 0x3fffff;
+  }
 };
 
 }

@@ -144,6 +144,14 @@ public:
     void setState(int state);
     void release(const Fade& fade, bool force, float delay);
 
+    int getState() const {
+      return state_;
+    }
+
+    float getDelay() const {
+      return delay_;
+    }
+
     void set(float attack, float hold, float decay, float sustain,
       float release);
     void set(fnd::CurveType curve, float attack, float hold, float decay,

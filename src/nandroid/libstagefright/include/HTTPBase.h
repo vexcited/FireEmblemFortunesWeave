@@ -21,7 +21,9 @@
 #include <nandroid/media/DataSource.h>
 #include <nandroid/media/stagefright/foundation/ABase.h>
 #include <nandroid/media/stagefright/MediaErrors.h>
+#include <nandroid/utils/KeyedVector.h>
 #include <nandroid/utils/List.h>
+#include <nandroid/utils/String8.h>
 #include <nandroid/utils/threads.h>
 
 namespace nandroid {

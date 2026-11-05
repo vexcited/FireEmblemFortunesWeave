@@ -25,6 +25,57 @@ struct HashSalt {
   uint8_t value[32];
 };
 
+enum class SaveDataMetaType : uint8_t {
+  None,
+  Thumbnail,
+  ExtensionContext,
+};
+
+struct SaveDataCertificate {
+  uint8_t version;
+  uint8_t keyType;
+  uint8_t reserved1;
+  bool hasProgramId;
+  char reserved2[4];
+  uint64_t programId;
+  uint8_t reserved3;
+  bool isDevelopment;
+  char reserved4[46];
+  char signature[64];
+};
+
+static_assert(sizeof(SaveDataCertificate) == 0x80);
+
+struct SaveDataCreationInfo2 {
+  uint32_t version;
+  SaveDataAttribute attribute;
+  int64_t size;
+  int64_t journalSize;
+  int64_t blockSize;
+  uint64_t ownerId;
+  uint32_t flags;
+  SaveDataSpaceId spaceId;
+  SaveDataFormatType formatType;
+  char reserved1[2];
+  bool isHashSaltEnabled;
+  char reserved2[3];
+  HashSalt hashSalt;
+  SaveDataMetaType metaType;
+  char reserved3[3];
+  uint32_t metaSize;
+  char reserved4[4];
+  SaveDataCertificate certificate;
+  char reserved5[224];
+
+  static Result Make(SaveDataCreationInfo2* out,
+    const SaveDataAttribute& attribute, int64_t size, int64_t journalSize,
+    int64_t blockSize, uint64_t ownerId, uint32_t flags,
+    SaveDataSpaceId spaceId, SaveDataFormatType formatType,
+    const SaveDataCertificate* certificate);
+};
+
+static_assert(sizeof(SaveDataCreationInfo2) == 0x200);
+
 struct RightsId {
   uint8_t data[16];
 };
@@ -49,6 +100,10 @@ struct SaveDataExtraData {
   int64_t journalSize;
   int64_t commitId;
   uint8_t reserved3[400];
+};
+
+struct FileSystemProxyErrorInfo {
+  char data[0x80];
 };
 
 struct ApplicationInfo {
@@ -93,5 +148,26 @@ enum class FileSystemProxyType : uint32_t {
 }
 
 enum class DebugOptionKey : uint32_t {};
+
+struct ProcessEnvironmentSource {
+  uint8_t data[16];
+};
+
+struct ProgramIndexMapInfo {
+  uint64_t programId;
+  uint64_t mainProgramId;
+  uint8_t programIndex;
+  uint8_t reserved[15];
+};
+
+static_assert(sizeof(ProgramIndexMapInfo) == 0x20);
+
+enum FsAccessControlRestrictionMode : uint8_t {};
+
+struct MemoryReportInfo {
+  uint64_t values[16];
+};
+
+static_assert(sizeof(MemoryReportInfo) == 0x80);
 
 }

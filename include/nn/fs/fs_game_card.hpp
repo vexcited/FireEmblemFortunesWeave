@@ -42,6 +42,12 @@ namespace nn::fs {
 
 typedef uint32_t GameCardHandle;
 
+enum class GameCardPartitionRaw {
+  NormalReadOnly,
+  SecureReadOnly,
+  RootWriteOnly,
+};
+
 enum class GameCardSize : uint32_t {};
 
 enum GameCardAttribute : uint8_t {};

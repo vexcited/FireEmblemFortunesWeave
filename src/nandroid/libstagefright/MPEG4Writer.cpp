@@ -23,8 +23,6 @@
 #include <arpa/inet.h>
 #include <fcntl.h>
 #include <inttypes.h>
-#include <pthread.h>
-#include <sys/prctl.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <unistd.h>
@@ -37,6 +35,7 @@
 #include <nandroid/utils/Log.h>
 
 #include <nn/os/thread_api.hpp>
+#include <nn/time/time_standard_user_system_clock.hpp>
 
 #include <functional>
 
@@ -109,6 +108,30 @@ static const uint8_t kHevcNalUnitTypes[5] = {
     kHevcNalUnitTypePrefixSei,
     kHevcNalUnitTypeSuffixSei,
 };
+static const size_t kThreadStackSize = 0x8000;
+static const size_t kThreadStackAlignment = 4096;
+
+static void *allocateThreadStack(
+        nn::movie::detail::HeapContext *const &heap) {
+    using nn::movie::detail::ThreadManager;
+    if (ThreadManager::GetInstance()->_IsStackAllocatorConfigured()) {
+        return ThreadManager::GetInstance()->_StackAllocate(
+                kThreadStackSize, kThreadStackAlignment);
+    }
+    return nn::movie::detail::AllocateFromHeap(
+            kThreadStackAlignment, kThreadStackSize, heap);
+}
+
+static void freeThreadStack(
+        void *stack, nn::movie::detail::HeapContext *const &heap) {
+    using nn::movie::detail::ThreadManager;
+    if (ThreadManager::GetInstance()->_IsStackAllocatorConfigured()) {
+        ThreadManager::GetInstance()->_StackFree(stack);
+    } else {
+        nn::movie::detail::FreeToHeap(stack, heap);
+    }
+}
+
 /* uncomment to include build in meta */
 //#define SHOW_MODEL_BUILD 1
 
@@ -151,6 +174,17 @@ private:
     // ENTRY_SIZE: # of values in each entry
     struct ListTableEntries {
         static_assert(ENTRY_SIZE > 0, "ENTRY_SIZE must be positive");
+
+        // The SDK allocates the tables themselves with the global allocation
+        // functions instead of the movie heap.
+        static void *operator new(size_t size) {
+            return __builtin_operator_new(size);
+        }
+
+        static void operator delete(void *pointer, size_t size) {
+            __builtin_operator_delete(pointer, size);
+        }
+
         ListTableEntries(uint32_t elementCapacity)
             : mElementCapacity(elementCapacity),
             mTotalNumTableEntries(0),
@@ -308,7 +342,10 @@ private:
     int64_t mMdatSizeBytes;
     int32_t mTimeScale;
 
-    pthread_t mThread;
+    nn::movie::detail::ThreadInfo *mThread;
+    void *mThreadStack;
+    bool mThreadCreated;
+    bool mThreadStarted;
 
 
     List<MediaBuffer *> mChunkSamples;
@@ -383,7 +420,7 @@ private:
     int64_t getStartTimeOffsetTimeUs() const;
     int32_t getStartTimeOffsetScaledTime() const;
 
-    static void *ThreadWrapper(void *me);
+    static void ThreadWrapper(void *me);
     status_t threadEntry();
 
     const uint8_t *parseParamSet(
@@ -395,10 +432,12 @@ private:
     status_t copyAVCCodecSpecificData(const uint8_t *data, size_t size);
     status_t parseAVCCodecSpecificData(const uint8_t *data, size_t size);
 
+#ifdef NANDROID_HEVC
     status_t makeHEVCCodecSpecificData(const uint8_t *data, size_t size);
     status_t copyHEVCCodecSpecificData(const uint8_t *data, size_t size);
     status_t parseHEVCCodecSpecificData(
             const uint8_t *data, size_t size, HevcParameterSets &paramSets);
+#endif
 
     // Track authoring progress status
     void trackProgressStatus(int64_t timeUs, status_t err = OK);
@@ -443,12 +482,12 @@ private:
     void writeDrefBox();
     void writeDinfBox();
     void writeDamrBox();
-    void writeMdhdBox(uint32_t now);
+    void writeMdhdBox(int64_t now);
     void writeSmhdBox();
     void writeVmhdBox();
     void writeNmhdBox();
     void writeHdlrBox();
-    void writeTkhdBox(uint32_t now);
+    void writeTkhdBox(int64_t now);
     void writeColrBox();
     void writeMp4aEsdsBox();
     void writeMp4vEsdsBox();
@@ -462,8 +501,50 @@ private:
     Track &operator=(const Track &);
 };
 
-MPEG4Writer::MPEG4Writer(int fd) {
-    initInternal(dup(fd), true /*isFirstSession*/);
+MPEG4Writer::MPEG4Writer(nn::movie::detail::AllocatorInfo *allocatorInfo,
+        nn::movie::MediaWriter *mediaWriter, void *threadInstance)
+    : mMediaWriter(NULL),
+      mMediaOffset(0),
+      mHeap(NULL),
+      mThread(NULL),
+      mThreadStack(NULL),
+      mThreadCreated(false),
+      mThreadInstance(NULL),
+      mWriterThreadPriority(127),
+      mTrackEncodingThreadPriority(127) {
+    if (mediaWriter != NULL) {
+        mMediaWriter = mediaWriter;
+        MediaOpen();
+    }
+    // The allocator info is the heap of the threads of this writer.
+    mHeap = reinterpret_cast<nn::movie::detail::HeapContext *>(allocatorInfo);
+    mThreadInstance = threadInstance;
+    initInternal(-1, true /*isFirstSession*/);
+}
+
+void MPEG4Writer::MediaOpen() {
+    if (mMediaWriter != NULL) {
+        mMediaWriter->Open();
+    }
+}
+
+void MPEG4Writer::MediaSeek(int position) {
+    if (position >= 0) {
+        mMediaOffset = position;
+    }
+}
+
+void MPEG4Writer::MediaClose() {
+    if (mMediaWriter != NULL) {
+        mMediaWriter->Close();
+    }
+}
+
+void MPEG4Writer::MediaWrite(void *data, size_t size) {
+    if (data != NULL && size != 0 && mMediaWriter != NULL) {
+        mMediaWriter->Write(mMediaOffset, data, size);
+        mMediaOffset += size;
+    }
 }
 
 MPEG4Writer::~MPEG4Writer() {
@@ -476,17 +557,12 @@ MPEG4Writer::~MPEG4Writer() {
         mTracks.erase(it);
     }
     mTracks.clear();
-
-    if (mNextFd != -1) {
-        close(mNextFd);
-    }
 }
 
 void MPEG4Writer::initInternal(int fd, bool isFirstSession) {
     ALOGV("initInternal");
     mFd = fd;
-    mNextFd = -1;
-    mInitCheck = mFd < 0? NO_INIT: OK;
+    mInitCheck = mMediaWriter == NULL? NO_INIT: OK;
 
     mInterleaveDurationUs = 1000000;
 
@@ -532,33 +608,11 @@ void MPEG4Writer::initInternal(int fd, bool isFirstSession) {
         mIsFileSizeLimitExplicitlyRequested = false;
     }
 
-    // Verify mFd is seekable
-    off64_t off = lseek64(mFd, 0, SEEK_SET);
-    if (off < 0) {
-        ALOGE("cannot seek mFd: %s (%d) %lld", strerror(errno), errno, (long long)mFd);
-        release();
-    }
+    MediaSeek(0);
     for (List<Track *>::iterator it = mTracks.begin();
          it != mTracks.end(); ++it) {
         (*it)->resetInternal();
     }
-}
-
-status_t MPEG4Writer::dump(
-        int fd, const Vector<String16>& args) {
-    const size_t SIZE = 256;
-    char buffer[SIZE];
-    String8 result;
-    snprintf(buffer, SIZE, "   MPEG4Writer %p\n", this);
-    result.append(buffer);
-    snprintf(buffer, SIZE, "     mStarted: %s\n", mStarted? "true": "false");
-    result.append(buffer);
-    ::write(fd, result.string(), result.size());
-    for (List<Track *>::iterator it = mTracks.begin();
-         it != mTracks.end(); ++it) {
-        (*it)->dump(fd, args);
-    }
-    return OK;
 }
 
 status_t MPEG4Writer::Track::dump(
@@ -663,6 +717,7 @@ status_t MPEG4Writer::startTracks(MetaData *params) {
 }
 
 void MPEG4Writer::addDeviceMeta() {
+#ifdef NANDROID_PROPERTIES
     // add device info and estimate space in 'moov'
     char val[PROPERTY_VALUE_MAX];
     size_t n;
@@ -696,6 +751,8 @@ void MPEG4Writer::addDeviceMeta() {
         mMoovExtraSize += sizeof(kMetaKey_Build) + n + 32;
     }
 #endif
+#endif
+
 }
 
 int64_t MPEG4Writer::estimateFileLevelMetaSize(MetaData *params) {
@@ -934,7 +991,7 @@ status_t MPEG4Writer::start(MetaData *param) {
     }
     if (mStreamableFile) {
         // Reserve a 'free' box only for streamable file
-        lseek64(mFd, mFreeBoxOffset, SEEK_SET);
+        MediaSeek(mFreeBoxOffset);
         writeInt32(mInMemoryCacheSize);
         write("free", 4);
         mMdatOffset = mFreeBoxOffset + mInMemoryCacheSize;
@@ -943,7 +1000,7 @@ status_t MPEG4Writer::start(MetaData *param) {
     }
 
     mOffset = mMdatOffset;
-    lseek64(mFd, mMdatOffset, SEEK_SET);
+    MediaSeek(mMdatOffset);
     if (mUse32BitOffset) {
         write("????mdat", 8);
     } else {
@@ -986,9 +1043,18 @@ void MPEG4Writer::stopWriterThread() {
         mChunkReadyCondition.signal();
     }
 
-    void *dummy;
-    pthread_join(mThread, &dummy);
-    mWriterThreadStarted = false;
+    if (mThreadCreated) {
+        if (mWriterThreadStarted) {
+            nn::os::WaitThread(&mThread->thread);
+            mWriterThreadStarted = false;
+        }
+        nn::movie::detail::ThreadManager::GetInstance()->_Destroy(mThread);
+        mThreadCreated = false;
+    }
+    if (mThreadStack != NULL) {
+        freeThreadStack(mThreadStack, mHeap);
+        mThreadStack = NULL;
+    }
     ALOGD("Writer thread stopped");
 }
 
@@ -1045,12 +1111,8 @@ void MPEG4Writer::writeCompositionMatrix(int degrees) {
 }
 
 void MPEG4Writer::release() {
-    close(mFd);
+    MediaClose();
     mFd = -1;
-    if (mNextFd != -1) {
-        close(mNextFd);
-        mNextFd = -1;
-    }
     mInitCheck = NO_INIT;
     mStarted = false;
     MovieFree(mInMemoryCache);
@@ -1062,22 +1124,7 @@ void MPEG4Writer::finishCurrentSession() {
 }
 
 status_t MPEG4Writer::switchFd() {
-    ALOGV("switchFd");
-    Mutex::Autolock l(mLock);
-    if (mSwitchPending) {
-        return OK;
-    }
-
-    if (mNextFd == -1) {
-        ALOGW("No FileDescripter for next recording");
-        return INVALID_OPERATION;
-    }
-
-    mSwitchPending = true;
-    sp<AMessage> msg = new AMessage(kWhatSwitch, mReflector);
-    status_t err = msg->post();
-
-    return err;
+    return INVALID_OPERATION;
 }
 
 status_t MPEG4Writer::reset(bool stopSource) {
@@ -1133,16 +1180,16 @@ status_t MPEG4Writer::reset(bool stopSource) {
 
     // Fix up the size of the 'mdat' chunk.
     if (mUse32BitOffset) {
-        lseek64(mFd, mMdatOffset, SEEK_SET);
+        MediaSeek(mMdatOffset);
         uint32_t size = htonl(static_cast<uint32_t>(mOffset - mMdatOffset));
-        ::write(mFd, &size, 4);
+        MediaWrite(&size, 4);
     } else {
-        lseek64(mFd, mMdatOffset + 8, SEEK_SET);
+        MediaSeek(mMdatOffset + 8);
         uint64_t size = mOffset - mMdatOffset;
         size = hton64(size);
-        ::write(mFd, &size, 8);
+        MediaWrite(&size, 8);
     }
-    lseek64(mFd, mOffset, SEEK_SET);
+    MediaSeek(mOffset);
 
     // Construct file-level meta and moov box now
     mInMemoryCacheOffset = 0;
@@ -1172,6 +1219,9 @@ status_t MPEG4Writer::reset(bool stopSource) {
             writeCachedBoxToFile("moov");
         } else {
             ALOGI("The mp4 file will not be streamable.");
+        }
+        if (mMediaWriter != NULL) {
+            mMediaWriter->Flush();
         }
     }
     mWriteBoxToMemory = false;
@@ -1206,12 +1256,12 @@ void MPEG4Writer::writeCachedBoxToFile(const char *type) {
     CHECK_LE(mInMemoryCacheOffset + 8, mInMemoryCacheSize);
 
     // Cached box
-    lseek64(mFd, mFreeBoxOffset, SEEK_SET);
+    MediaSeek(mFreeBoxOffset);
     mOffset = mFreeBoxOffset;
     write(mInMemoryCache, 1, mInMemoryCacheOffset);
 
     // Free box
-    lseek64(mFd, mOffset, SEEK_SET);
+    MediaSeek(mOffset);
     mFreeBoxOffset = mOffset;
     writeInt32(mInMemoryCacheSize - mInMemoryCacheOffset);
     write("free", 4);
@@ -1225,28 +1275,27 @@ void MPEG4Writer::writeCachedBoxToFile(const char *type) {
             type, (long long)mInMemoryCacheSize);
 }
 
-uint32_t MPEG4Writer::getMpeg4Time() {
-    time_t now = time(NULL);
+int64_t MPEG4Writer::getMpeg4Time() {
+    nn::time::PosixTime now = {0};
+    if (nn::time::StandardUserSystemClock::GetCurrentTime(&now).IsFailure()) {
+        now.value = 0;
+    }
     // MP4 file uses time counting seconds since midnight, Jan. 1, 1904
     // while time function returns Unix epoch values which starts
     // at 1970-01-01. Lets add the number of seconds between them
-    static const uint32_t delta = (66 * 365 + 17) * (24 * 60 * 60);
-    if (now < 0 || uint32_t(now) > UINT32_MAX - delta) {
-        return 0;
-    }
-    uint32_t mpeg4Time = uint32_t(now) + delta;
-    return mpeg4Time;
+    static const int64_t delta = (66 * 365 + 17) * (24 * 60 * 60);
+    return now.value + delta;
 }
 
 void MPEG4Writer::writeMvhdBox(int64_t durationUs) {
-    uint32_t now = getMpeg4Time();
+    int64_t now = getMpeg4Time();
     beginBox("mvhd");
-    writeInt32(0);             // version=0, flags=0
-    writeInt32(now);           // creation time
-    writeInt32(now);           // modification time
+    writeInt32(0x01000000);    // version=1, flags=0
+    writeInt64(now);           // creation time
+    writeInt64(now);           // modification time
     writeInt32(mTimeScale);    // mvhd timescale
-    int32_t duration = (durationUs * mTimeScale + 5E5) / 1E6;
-    writeInt32(duration);
+    int64_t duration = (durationUs * mTimeScale + 5E5) / 1E6;
+    writeInt64(duration);
     writeInt32(0x10000);       // rate: 1.0
     writeInt16(0x100);         // volume
     writeInt16(0);             // reserved
@@ -1384,12 +1433,11 @@ off64_t MPEG4Writer::addSample_l(
     } else {
         if (tiffHdrOffset > 0) {
             tiffHdrOffset = htonl(tiffHdrOffset);
-            ::write(mFd, &tiffHdrOffset, 4); // exif_tiff_header_offset field
+            MediaWrite(&tiffHdrOffset, 4); // exif_tiff_header_offset field
             mOffset += 4;
         }
 
-        ::write(mFd,
-              (const uint8_t *)buffer->data() + buffer->range_offset(),
+        MediaWrite((uint8_t *)buffer->data() + buffer->range_offset(),
               buffer->range_length());
 
         mOffset += buffer->range_length();
@@ -1442,16 +1490,15 @@ void MPEG4Writer::addLengthPrefixedSample_l(MediaBuffer *buffer) {
 
     if (mUse4ByteNalLength) {
         uint8_t x = length >> 24;
-        ::write(mFd, &x, 1);
+        MediaWrite(&x, 1);
         x = (length >> 16) & 0xff;
-        ::write(mFd, &x, 1);
+        MediaWrite(&x, 1);
         x = (length >> 8) & 0xff;
-        ::write(mFd, &x, 1);
+        MediaWrite(&x, 1);
         x = length & 0xff;
-        ::write(mFd, &x, 1);
+        MediaWrite(&x, 1);
 
-        ::write(mFd,
-              (const uint8_t *)buffer->data() + buffer->range_offset(),
+        MediaWrite((uint8_t *)buffer->data() + buffer->range_offset(),
               length);
 
         mOffset += length + 4;
@@ -1459,10 +1506,10 @@ void MPEG4Writer::addLengthPrefixedSample_l(MediaBuffer *buffer) {
         CHECK_LT(length, 65536u);
 
         uint8_t x = length >> 8;
-        ::write(mFd, &x, 1);
+        MediaWrite(&x, 1);
         x = length & 0xff;
-        ::write(mFd, &x, 1);
-        ::write(mFd, (const uint8_t *)buffer->data() + buffer->range_offset(), length);
+        MediaWrite(&x, 1);
+        MediaWrite((uint8_t *)buffer->data() + buffer->range_offset(), length);
         mOffset += length + 2;
     }
 }
@@ -1484,9 +1531,9 @@ size_t MPEG4Writer::write(
                  it != mBoxes.end(); ++it) {
                 (*it) += mOffset;
             }
-            lseek64(mFd, mOffset, SEEK_SET);
-            ::write(mFd, mInMemoryCache, mInMemoryCacheOffset);
-            ::write(mFd, ptr, bytes);
+            MediaSeek(mOffset);
+            MediaWrite(mInMemoryCache, mInMemoryCacheOffset);
+            MediaWrite((void *)ptr, bytes);
             mOffset += (bytes + mInMemoryCacheOffset);
 
             // All subsequent boxes will be written to the end of the file.
@@ -1496,7 +1543,7 @@ size_t MPEG4Writer::write(
             mInMemoryCacheOffset += bytes;
         }
     } else {
-        ::write(mFd, ptr, size * nmemb);
+        MediaWrite((void *)ptr, size * nmemb);
         mOffset += bytes;
     }
     return bytes;
@@ -1530,10 +1577,10 @@ void MPEG4Writer::endBox() {
         int32_t x = htonl(mInMemoryCacheOffset - offset);
         memcpy(mInMemoryCache + offset, &x, 4);
     } else {
-        lseek64(mFd, offset, SEEK_SET);
+        MediaSeek(offset);
         writeInt32(mOffset - offset);
         mOffset -= 4;
-        lseek64(mFd, mOffset, SEEK_SET);
+        MediaSeek(mOffset);
     }
 }
 
@@ -1624,6 +1671,22 @@ void MPEG4Writer::writeLongitude(int degreex10000) {
  * The range for the latitude is in [-90, +90], and
  * The range for the longitude is in [-180, +180]
  */
+status_t MPEG4Writer::setWriterThreadPriority(int priority) {
+    if (priority < 0 || priority > 31) {
+        return BAD_VALUE;
+    }
+    mWriterThreadPriority = priority;
+    return OK;
+}
+
+status_t MPEG4Writer::setTrackEncodingThreadPriority(int priority) {
+    if (priority < 0 || priority > 31) {
+        return BAD_VALUE;
+    }
+    mTrackEncodingThreadPriority = priority;
+    return OK;
+}
+
 status_t MPEG4Writer::setGeoData(int latitudex10000, int longitudex10000) {
     // Is latitude or longitude out of range?
     if (latitudex10000 < -900000 || latitudex10000 > 900000 ||
@@ -1793,6 +1856,10 @@ MPEG4Writer::Track::Track(
       mTrackId(trackId),
       mTrackDurationUs(0),
       mEstimatedTrackSizeBytes(0),
+      mThread(NULL),
+      mThreadStack(NULL),
+      mThreadCreated(false),
+      mThreadStarted(false),
       mSamplesHaveSameSize(true),
       mStszTableEntries(new ListTableEntries<uint32_t, 1>(1000)),
       mStcoTableEntries(new ListTableEntries<uint32_t, 1>(1000)),
@@ -1974,22 +2041,8 @@ void MPEG4Writer::Track::addOneElstTableEntry(
     mElstTableEntries->add(htonl((((uint32_t)mediaRate) << 16) | (uint32_t)mediaRateFraction));
 }
 
-status_t MPEG4Writer::setNextFd(int fd) {
-    ALOGV("addNextFd");
-    Mutex::Autolock l(mLock);
-    if (mLooper == NULL) {
-        mReflector = new AHandlerReflector<MPEG4Writer>(this);
-        mLooper = new ALooper;
-        mLooper->registerHandler(mReflector);
-        mLooper->start();
-    }
-
-    if (mNextFd != -1) {
-        // No need to set a new FD yet.
-        return INVALID_OPERATION;
-    }
-    mNextFd = dup(fd);
-    return OK;
+status_t MPEG4Writer::setNextFd(int /* fd */) {
+    return INVALID_OPERATION;
 }
 
 bool MPEG4Writer::Track::isExifData(
@@ -2185,19 +2238,6 @@ void MPEG4Writer::Track::setTimeScale() {
 
 void MPEG4Writer::onMessageReceived(const sp<AMessage> &msg) {
     switch (msg->what()) {
-        case kWhatSwitch:
-        {
-            mLock.lock();
-            int fd = mNextFd;
-            mNextFd = -1;
-            mLock.unlock();
-            finishCurrentSession();
-            initInternal(fd, false /*isFirstSession*/);
-            start(mStartMeta.get());
-            mSwitchPending = false;
-            notify(MEDIA_RECORDER_EVENT_INFO, MEDIA_RECORDER_INFO_NEXT_OUTPUT_FILE_STARTED, 0);
-            break;
-        }
         default:
         TRESPASS();
     }
@@ -2276,11 +2316,11 @@ void MPEG4Writer::Track::initTrackingProgressStatus(MetaData *params) {
 }
 
 // static
-void *MPEG4Writer::ThreadWrapper(void *me) {
+void MPEG4Writer::ThreadWrapper(void *me) {
     ALOGV("ThreadWrapper: %p", me);
     MPEG4Writer *writer = static_cast<MPEG4Writer *>(me);
+    nn::movie::detail::HeapMemoryManager::SetCurrentHeap(writer->mHeap);
     writer->threadFunc();
-    return NULL;
 }
 
 void MPEG4Writer::bufferChunk(const Chunk& chunk) {
@@ -2439,11 +2479,37 @@ status_t MPEG4Writer::startWriterThread() {
         mChunkInfos.push_back(info);
     }
 
-    pthread_attr_t attr;
-    pthread_attr_init(&attr);
-    pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_JOINABLE);
-    pthread_create(&mThread, &attr, ThreadWrapper, this);
-    pthread_attr_destroy(&attr);
+    if (mThreadCreated) {
+        return OK;
+    }
+
+    using nn::movie::detail::ThreadInfo;
+    using nn::movie::detail::ThreadManager;
+    void *stack = allocateThreadStack(mHeap);
+    mThreadStack = stack;
+    if (stack == NULL) {
+        return NO_MEMORY;
+    }
+
+    int priority =
+            ThreadManager::GetInstance()->_GetThreadPriorityByInstance(
+                    mThreadInstance);
+    uint64_t coreMask =
+            ThreadManager::GetInstance()->_GetThreadCoreMaskByInstance(
+                    mThreadInstance);
+    if (ThreadManager::_StaticCreate(ThreadInfo::ComponentType_Muxer,
+            &mThread, ThreadWrapper, this, stack, kThreadStackSize, priority,
+            "MediaMuxerMpeg4WriterThread", coreMask, mThreadInstance) != 0) {
+        freeThreadStack(mThreadStack, mHeap);
+        return NO_MEMORY;
+    }
+
+    if (mWriterThreadPriority != 127) {
+        ThreadManager::GetInstance()->_ChangeThreadPriority(
+                mThread, mWriterThreadPriority);
+    }
+    mThreadCreated = true;
+    nn::os::StartThread(&mThread->thread);
     mWriterThreadStarted = true;
     return OK;
 }
@@ -2497,10 +2563,6 @@ status_t MPEG4Writer::Track::start(MetaData *params) {
         return err;
     }
 
-    pthread_attr_t attr;
-    pthread_attr_init(&attr);
-    pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_JOINABLE);
-
     mDone = false;
     mStarted = true;
     mTrackDurationUs = 0;
@@ -2510,8 +2572,39 @@ status_t MPEG4Writer::Track::start(MetaData *params) {
     mMaxChunkDurationUs = 0;
     mLastDecodingTimeUs = -1;
 
-    pthread_create(&mThread, &attr, ThreadWrapper, this);
-    pthread_attr_destroy(&attr);
+    if (!mThreadCreated) {
+        using nn::movie::detail::ThreadInfo;
+        using nn::movie::detail::ThreadManager;
+        void *stack = allocateThreadStack(mOwner->mHeap);
+        mThreadStack = stack;
+        if (stack == NULL) {
+            return NO_MEMORY;
+        }
+
+        void *instance = mOwner->mThreadInstance;
+        int priority =
+                ThreadManager::GetInstance()->_GetThreadPriorityByInstance(
+                        instance);
+        uint64_t coreMask =
+                ThreadManager::GetInstance()->_GetThreadCoreMaskByInstance(
+                        mOwner->mThreadInstance);
+        if (ThreadManager::_StaticCreate(ThreadInfo::ComponentType_Muxer,
+                &mThread, ThreadWrapper, this, stack, kThreadStackSize,
+                priority, "TrackEncodingThread", coreMask,
+                mOwner->mThreadInstance) != 0) {
+            freeThreadStack(mThreadStack, mOwner->mHeap);
+            return NO_MEMORY;
+        }
+
+        int trackPriority = mOwner->mTrackEncodingThreadPriority;
+        if (trackPriority != 127) {
+            ThreadManager::GetInstance()->_ChangeThreadPriority(
+                    mThread, trackPriority);
+        }
+        mThreadCreated = true;
+        nn::os::StartThread(&mThread->thread);
+        mThreadStarted = true;
+    }
 
     return OK;
 }
@@ -2542,12 +2635,21 @@ status_t MPEG4Writer::Track::stop(bool stopSource) {
     // buffers to the writer.
     mDone = true;
 
-    void *dummy;
-    pthread_join(mThread, &dummy);
-    status_t err = static_cast<status_t>(reinterpret_cast<uintptr_t>(dummy));
+    if (mThreadCreated) {
+        if (mThreadStarted) {
+            nn::os::WaitThread(&mThread->thread);
+            mThreadStarted = false;
+        }
+        nn::movie::detail::ThreadManager::GetInstance()->_Destroy(mThread);
+        mThreadCreated = false;
+    }
+    if (mThreadStack != NULL) {
+        freeThreadStack(mThreadStack, mOwner->mHeap);
+        mThreadStack = NULL;
+    }
 
     ALOGD("%s track stopped. %s source", getTrackType(), stopSource ? "Stop" : "Not Stop");
-    return err;
+    return OK;
 }
 
 bool MPEG4Writer::Track::reachedEOS() {
@@ -2555,11 +2657,12 @@ bool MPEG4Writer::Track::reachedEOS() {
 }
 
 // static
-void *MPEG4Writer::Track::ThreadWrapper(void *me) {
+void MPEG4Writer::Track::ThreadWrapper(void *me) {
     Track *track = static_cast<Track *>(me);
 
-    status_t err = track->threadEntry();
-    return (void *)(uintptr_t)err;
+    nn::movie::detail::HeapMemoryManager::SetCurrentHeap(
+            track->mOwner->mHeap);
+    track->threadEntry();
 }
 
 static void getNalUnitType(uint8_t byte, uint8_t* type) {
@@ -2618,6 +2721,7 @@ status_t MPEG4Writer::Track::copyAVCCodecSpecificData(
     return copyCodecSpecificData(data, size, 4 + 7);
 }
 
+#ifdef NANDROID_HEVC
 status_t MPEG4Writer::Track::copyHEVCCodecSpecificData(
         const uint8_t *data, size_t size) {
     ALOGV("copyHEVCCodecSpecificData");
@@ -2625,6 +2729,7 @@ status_t MPEG4Writer::Track::copyHEVCCodecSpecificData(
     // Min length of HEVC CSD is 23. (ISO/IEC 14496-15:2014 Chapter 8.3.3.1.2)
     return copyCodecSpecificData(data, size, 23);
 }
+#endif
 
 status_t MPEG4Writer::Track::copyCodecSpecificData(
         const uint8_t *data, size_t size, size_t minLength) {
@@ -2815,6 +2920,7 @@ status_t MPEG4Writer::Track::makeAVCCodecSpecificData(
 }
 
 
+#ifdef NANDROID_HEVC
 status_t MPEG4Writer::Track::parseHEVCCodecSpecificData(
         const uint8_t *data, size_t size, HevcParameterSets &paramSets) {
 
@@ -2863,7 +2969,6 @@ status_t MPEG4Writer::Track::parseHEVCCodecSpecificData(
     return OK;
 }
 
-__attribute__((always_inline)) inline
 status_t MPEG4Writer::Track::makeHEVCCodecSpecificData(
         const uint8_t *data, size_t size) {
 
@@ -2903,6 +3008,7 @@ status_t MPEG4Writer::Track::makeHEVCCodecSpecificData(
 
     return OK;
 }
+#endif
 
 /*
  * Updates the drift time from the audio track so that
@@ -2958,11 +3064,13 @@ status_t MPEG4Writer::Track::threadEntry() {
     int32_t cttsSampleCount = 0;           // Sample count in the current ctts table entry
     uint32_t lastSamplesPerChunk = 0;
 
-    if (mThread != 0) {
-        const char *name = mIsVideo ? "VideoTrackEncoding" :
-                mIsAudio ? "AudioTrackEncoding" : "MetadataTrackEncoding";
-        nn::os::SetThreadName(reinterpret_cast<nn::os::ThreadType *>(mThread),
-                              name);
+    if (mThread != NULL) {
+        const char *name =
+                mIsVideo ? "VideoTrackEncoding" : "MetadataTrackEncoding";
+        if (mIsAudio) {
+            name = "AudioTrackEncoding";
+        }
+        nn::os::SetThreadName(&mThread->thread, name);
     }
 
     sp<MetaData> meta_data;
@@ -3006,11 +3114,13 @@ status_t MPEG4Writer::Track::threadEntry() {
                             (const uint8_t *)buffer->data()
                                 + buffer->range_offset(),
                             buffer->range_length());
+#ifdef NANDROID_HEVC
                 } else if (mIsHevc || mIsHeic) {
                     err = makeHEVCCodecSpecificData(
                             (const uint8_t *)buffer->data()
                                 + buffer->range_offset(),
                             buffer->range_length());
+#endif
                 } else if (mIsMPEG4) {
                     copyCodecSpecificData((const uint8_t *)buffer->data() + buffer->range_offset(),
                             buffer->range_length());
@@ -3676,13 +3786,14 @@ status_t MPEG4Writer::Track::checkCodecSpecificData() const {
 }
 
 const char *MPEG4Writer::Track::getTrackType() const {
-    return mIsVideo ? "Video" :
+    return mIsAudio ? "Audio" :
+           mIsVideo ? "Video" :
            mIsHeic  ? "Image" :
                       "Metadata";
 }
 
 void MPEG4Writer::Track::writeTrackHeader(bool use32BitOffset) {
-    uint32_t now = getMpeg4Time();
+    int64_t now = getMpeg4Time();
     mOwner->beginBox("trak");
         writeTkhdBox(now);
         writeEdtsBox();
@@ -4012,20 +4123,20 @@ void MPEG4Writer::Track::writeMp4vEsdsBox() {
     mOwner->endBox();  // esds
 }
 
-void MPEG4Writer::Track::writeTkhdBox(uint32_t now) {
+void MPEG4Writer::Track::writeTkhdBox(int64_t now) {
     mOwner->beginBox("tkhd");
     // Flags = 7 to indicate that the track is enabled, and
     // part of the presentation
-    mOwner->writeInt32(0x07);          // version=0, flags=7
-    mOwner->writeInt32(now);           // creation time
-    mOwner->writeInt32(now);           // modification time
+    mOwner->writeInt32(0x01000007);    // version=1, flags=7
+    mOwner->writeInt64(now);           // creation time
+    mOwner->writeInt64(now);           // modification time
     mOwner->writeInt32(mTrackId);      // track id starts with 1
     mOwner->writeInt32(0);             // reserved
     int64_t trakDurationUs = getDurationUs();
     int32_t mvhdTimeScale = mOwner->getTimeScale();
-    int32_t tkhdDuration =
+    int64_t tkhdDuration =
         (trakDurationUs * mvhdTimeScale + 5E5) / 1E6;
-    mOwner->writeInt32(tkhdDuration);  // in mvhd timescale
+    mOwner->writeInt64(tkhdDuration);  // in mvhd timescale
     mOwner->writeInt32(0);             // reserved
     mOwner->writeInt32(0);             // reserved
     mOwner->writeInt16(0);             // layer
@@ -4120,7 +4231,7 @@ void MPEG4Writer::Track::writeEdtsBox(){
     mOwner->endBox(); // edts
 }
 
-void MPEG4Writer::Track::writeMdhdBox(uint32_t now) {
+void MPEG4Writer::Track::writeMdhdBox(int64_t now) {
     int64_t trakDurationUs = getDurationUs();
     int64_t mdhdDuration = (trakDurationUs * mTimeScale + 5E5) / 1E6;
     mOwner->beginBox("mdhd");

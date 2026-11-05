@@ -19,7 +19,21 @@ class SharedPointer {
     }
   }
 
+  template <typename Derived>
+  SharedPointer(const SharedPointer<Derived>& other)
+    : m_Pointer(other.Get()) {
+    if (m_Pointer != nullptr) {
+      m_Pointer->AddReference();
+    }
+  }
+
   SharedPointer& operator=(const SharedPointer& other) {
+    SharedPointer(other).Swap(*this);
+    return *this;
+  }
+
+  template <typename Derived>
+  SharedPointer& operator=(const SharedPointer<Derived>& other) {
     SharedPointer(other).Swap(*this);
     return *this;
   }
@@ -37,6 +51,14 @@ class SharedPointer {
   }
 
   Interface* operator->() const {
+    return m_Pointer;
+  }
+
+  explicit operator bool() const {
+    return m_Pointer != nullptr;
+  }
+
+  Interface* Get() const {
     return m_Pointer;
   }
 

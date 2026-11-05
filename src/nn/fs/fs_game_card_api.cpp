@@ -1,10 +1,24 @@
 #include <string.h>
 
+#include <memory>
+
 #include "nn/fs/fs_game_card.hpp"
 #include "nn/fs/detail/fs_device_simulation.hpp"
+#include "nn/fs/detail/fs_file_system_accessor.hpp"
 #include "nn/fs/detail/fs_file_system_proxy_service_object.hpp"
+#include "nn/fs/detail/fs_file_system_service_object_adapter.hpp"
 #include "nn/fs/detail/fs_log.hpp"
+#include "nn/fs/detail/fs_newable.hpp"
+#include "nn/fs/detail/fs_storage_service_object_adapter.hpp"
 #include "nn/fs/fs_istorage.hpp"
+#include "nn/fs/fsa/fs_registrar.hpp"
+#include "nn/util/string_util.hpp"
+
+namespace nn::detail {
+
+[[noreturn]] void UnexpectedDefaultImpl();
+
+}
 
 namespace nn::fs {
 
@@ -65,6 +79,51 @@ enum GameCardOperationId : int32_t {
 
 const size_t GameCardHeaderSetSize = 0x600;
 const size_t GameCardApplicationIdListSize = 0x600;
+
+constexpr Result ResultAllocationMemoryFailedInGameCardB() {
+  return detail::MakeResult(3226);
+}
+
+constexpr Result ResultAllocationMemoryFailedInGameCardC() {
+  return detail::MakeResult(3227);
+}
+
+constexpr Result ResultAllocationMemoryFailedInGameCardD() {
+  return detail::MakeResult(3228);
+}
+
+const char GameCardFileSystemMountName[] = "@Gc";
+
+inline const char* GetGameCardPartitionMountNameSuffix(
+  GameCardPartition partition) {
+  switch (partition) {
+    case GameCardPartition::Update:
+      return "U";
+    case GameCardPartition::Normal:
+      return "N";
+    case GameCardPartition::Secure:
+      return "S";
+    default:
+      nn::detail::UnexpectedDefaultImpl();
+  }
+}
+
+class GameCardCommonMountNameGenerator
+  : public fsa::ICommonMountNameGenerator, public detail::Newable {
+public:
+  GameCardCommonMountNameGenerator(GameCardHandle handle,
+    GameCardPartition partition) : m_Handle(handle), m_Partition(partition) {}
+
+  Result GenerateCommonMountName(char* name, size_t nameSize) override {
+    util::SNPrintf(name, nameSize, "%s%s%08x:", GameCardFileSystemMountName,
+      GetGameCardPartitionMountNameSuffix(m_Partition), m_Handle);
+    return ResultSuccess();
+  }
+
+private:
+  GameCardHandle m_Handle;
+  GameCardPartition m_Partition;
+};
 
 Result GetGameCardManager(StorageDeviceManager* outValue) {
   auto fileSystemProxy = detail::GetFileSystemProxyServiceObject();
@@ -588,10 +647,10 @@ Result GetGameCardDetailedErrorReportInfo(
 Result CheckGameCardPartitionAvailability(uint32_t handle,
   GameCardPartition partition) {
   auto fileSystemProxy = detail::GetFileSystemProxyServiceObject();
-  nn::sf::SharedPointer<fssrv::sf::IStorage> storage;
-  NN_FS_RESULT_DO_WITH_ABORT_CHECK(fileSystemProxy->OpenGameCardStorage(
-    nn::sf::Out<nn::sf::SharedPointer<fssrv::sf::IStorage>>(&storage), handle,
-    static_cast<uint32_t>(partition)));
+  nn::sf::SharedPointer<fssrv::sf::IFileSystem> fileSystem;
+  NN_FS_RESULT_DO_WITH_ABORT_CHECK(fileSystemProxy->OpenGameCardFileSystem(
+    nn::sf::Out<nn::sf::SharedPointer<fssrv::sf::IFileSystem>>(&fileSystem),
+    handle, static_cast<uint32_t>(partition)));
   return ResultSuccess();
 }
 
@@ -884,6 +943,43 @@ Result ClearGameCardSimulationEvent() {
       &deviceOperator)));
   NN_FS_RESULT_DO_WITH_ABORT_CHECK(
     deviceOperator->ClearDeviceSimulationEvent(detail::DevicePort_GameCard));
+  return ResultSuccess();
+}
+
+Result MountGameCardPartition(const char* name, GameCardHandle handle,
+  GameCardPartition partition) {
+  auto mount = [&]() -> Result {
+    NN_FS_RESULT_DO(detail::CheckMountNameAcceptingReservedMountName(name));
+    auto fileSystemProxy = detail::GetFileSystemProxyServiceObject();
+    nn::sf::SharedPointer<fssrv::sf::IFileSystem> fileSystem;
+    NN_FS_RESULT_DO(fileSystemProxy->OpenGameCardFileSystem(
+      nn::sf::Out<nn::sf::SharedPointer<fssrv::sf::IFileSystem>>(&fileSystem),
+      handle, static_cast<uint32_t>(partition)));
+    std::unique_ptr<detail::FileSystemServiceObjectAdapter> adapter(
+      new detail::FileSystemServiceObjectAdapter(std::move(fileSystem)));
+    NN_FS_RESULT_THROW_UNLESS(adapter != nullptr,
+      ResultAllocationMemoryFailedInGameCardC());
+    std::unique_ptr<GameCardCommonMountNameGenerator> generator(
+      new GameCardCommonMountNameGenerator(handle, partition));
+    NN_FS_RESULT_THROW_UNLESS(generator != nullptr,
+      ResultAllocationMemoryFailedInGameCardD());
+    return fsa::Register(name, std::move(adapter), std::move(generator));
+  };
+  NN_FS_RESULT_DO_WITH_ABORT_CHECK(mount());
+  return ResultSuccess();
+}
+
+Result OpenGameCardPartition(std::unique_ptr<IStorage>* outStorage,
+  GameCardHandle handle, GameCardPartitionRaw partition) {
+  auto fileSystemProxy = detail::GetFileSystemProxyServiceObject();
+  nn::sf::SharedPointer<fssrv::sf::IStorage> storage;
+  NN_FS_RESULT_DO_WITH_ABORT_CHECK(fileSystemProxy->OpenGameCardStorage(
+    nn::sf::Out<nn::sf::SharedPointer<fssrv::sf::IStorage>>(&storage), handle,
+    static_cast<uint32_t>(partition)));
+  outStorage->reset(new detail::StorageServiceObjectAdapter<
+    fssrv::sf::IStorage>(std::move(storage)));
+  NN_FS_RESULT_THROW_UNLESS_WITH_ABORT_CHECK(*outStorage != nullptr,
+    ResultAllocationMemoryFailedInGameCardB());
   return ResultSuccess();
 }
 

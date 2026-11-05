@@ -20,7 +20,13 @@ struct ThreadType {
   uintptr_t reserved_20[4];
   uint8_t state;
   uint8_t stack_is_aliased;
-  uint16_t reserved_42;
+  union {
+    uint16_t reserved_42;
+    struct {
+      uint8_t auto_registered;
+      uint8_t suspend_count;
+    };
+  };
   int16_t priority;
   uint16_t reserved_46;
   void* original_stack;

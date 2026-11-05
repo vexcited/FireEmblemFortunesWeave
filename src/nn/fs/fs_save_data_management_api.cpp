@@ -81,9 +81,9 @@ Result WriteSaveDataFileSystemExtraData(SaveDataSpaceId spaceId,
   return ResultSuccess();
 }
 
-Result WriteSaveDataFileSystemExtraData(SaveDataSpaceId spaceId,
-  uint64_t saveDataId, const SaveDataExtraData& extraData,
-  const SaveDataExtraData& mask) {
+[[gnu::noinline]] Result WriteSaveDataFileSystemExtraData(
+  SaveDataSpaceId spaceId, uint64_t saveDataId,
+  const SaveDataExtraData& extraData, const SaveDataExtraData& mask) {
   auto fileSystemProxy = GetFileSystemProxyServiceObject();
   NN_FS_RESULT_DO_WITH_ABORT_CHECK(
     fileSystemProxy->WriteSaveDataFileSystemExtraDataWithMask(saveDataId,
@@ -92,9 +92,9 @@ Result WriteSaveDataFileSystemExtraData(SaveDataSpaceId spaceId,
   return ResultSuccess();
 }
 
-Result WriteSaveDataFileSystemExtraData(SaveDataSpaceId spaceId,
-  SaveDataAttribute attribute, const SaveDataExtraData& extraData,
-  const SaveDataExtraData& mask) {
+[[gnu::noinline]] Result WriteSaveDataFileSystemExtraData(
+  SaveDataSpaceId spaceId, SaveDataAttribute attribute,
+  const SaveDataExtraData& extraData, const SaveDataExtraData& mask) {
   auto fileSystemProxy = GetFileSystemProxyServiceObject();
   NN_FS_RESULT_DO_WITH_ABORT_CHECK(fileSystemProxy
     ->WriteSaveDataFileSystemExtraDataWithMaskBySaveDataAttribute(attribute,
@@ -454,6 +454,12 @@ Result SizeCalculatorForSaveDataMover::GetFreeSpaceSize(int64_t* outSize,
       spaceId));
   *outSize = size;
   return ResultSuccess();
+}
+
+int64_t QuerySaveDataRequiredSizeForImport(const SaveDataInfo& info,
+  PlatformIdForSaveDataSizeCalculation platformId) {
+  return SaveDataTransferSizeCalculator::QuerySaveDataRequiredSizeForImport(
+    info, platformId);
 }
 
 }

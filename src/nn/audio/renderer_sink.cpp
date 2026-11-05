@@ -141,4 +141,76 @@ size_t ReadCircularBufferSink(CircularBufferSinkType* sink, void* output,
   return size;
 }
 
+void RemoveCircularBufferSink(AudioRendererConfig* config,
+  CircularBufferSinkType* sink, FinalMixType* mix) {
+  detail::CheckResourceExclusion(sink->_pSinkInfo);
+  config->_pSinkManager->Free(sink->_pSinkInfo);
+}
+
+size_t GetRequiredBufferSizeForCircularBufferSink(
+  const AudioRendererParameter* parameter, int channelCount, int frameCount,
+  SampleFormat sampleFormat) {
+  const size_t sampleCount =
+    static_cast<int64_t>(parameter->sampleCount) * channelCount;
+  return GetSampleByteSize(sampleFormat) * (frameCount + 1) * sampleCount;
+}
+
+size_t ReadCircularBufferSink(CircularBufferSinkType* sink, void* output,
+  size_t size, CircularBufferSinkType::InterleavingFormat format) {
+  SinkInfo* info = sink->_pSinkInfo;
+  detail::CheckResourceExclusion(info);
+  const int writeOffset = info->writeOffset;
+  size_t offset = info->circularBuffer.readOffset;
+  const size_t bufferSize = sink->_pSinkInfo->circularBuffer.size;
+  const size_t wrap = static_cast<uint32_t>(offset)
+    > static_cast<uint32_t>(writeOffset) ? bufferSize : 0;
+  const size_t available = wrap - offset + writeOffset;
+  size = std::min(size, available);
+
+  if (size != 0) {
+    auto* buffer =
+      static_cast<uint8_t*>(sink->_pSinkInfo->circularBuffer.buffer);
+    if (format == CircularBufferSinkType::InterleavingFormat_Interleaved) {
+      auto* destination = static_cast<int16_t*>(output);
+      size_t remaining = size;
+      do {
+        auto* source = reinterpret_cast<const int16_t*>(buffer + offset);
+        const size_t chunk = remaining + offset > bufferSize
+          ? bufferSize - offset : remaining;
+        os::FlushDataCache(buffer + offset, chunk);
+        const int channelCount = sink->_pSinkInfo->circularBuffer.channelCount;
+        const int frameCount = static_cast<int>(
+          chunk / sizeof(int16_t) / static_cast<size_t>(channelCount));
+        for (int i = 0; i < frameCount; ++i) {
+          const int sampleCount =
+            sink->_pSinkInfo->circularBuffer.sampleCount;
+          const int block = i / sampleCount;
+          const int sample = i % sampleCount;
+          for (int channel = 0; channel < channelCount; ++channel) {
+            *destination++ = source[(static_cast<int64_t>(block) *
+              channelCount + channel) * sampleCount + sample];
+          }
+        }
+        remaining -= chunk;
+        offset = (chunk + offset) % bufferSize;
+      } while (remaining != 0);
+    }
+    else {
+      auto* destination = static_cast<uint8_t*>(output);
+      size_t remaining = size;
+      do {
+        const size_t chunk = remaining + offset > bufferSize
+          ? bufferSize - offset : remaining;
+        os::FlushDataCache(buffer + offset, chunk);
+        memcpy(destination, buffer + offset, chunk);
+        destination += chunk;
+        remaining -= chunk;
+        offset = (chunk + offset) % bufferSize;
+      } while (remaining != 0);
+    }
+  }
+  info->circularBuffer.readOffset = offset;
+  return size;
+}
+
 }

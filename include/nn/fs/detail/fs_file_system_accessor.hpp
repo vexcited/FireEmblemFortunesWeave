@@ -6,11 +6,17 @@
 #include <memory>
 
 #include "nn/fs/detail/fs_memory.hpp"
+#include "nn/fs/fs_file.hpp"
 #include "nn/fs/fs_istorage.hpp"
 #include "nn/fs/fs_result.hpp"
+#include "nn/fs/fs_path_utility.hpp"
 #include "nn/fs/fs_types.hpp"
+#include "nn/fs/fsa/fs_file_system_attribute.hpp"
+#include "nn/fssrv/sf/fssrv_sf_ifile_system.hpp"
 #include "nn/os/reader_writer_lock.hpp"
+#include "nn/os/sdk_mutex.hpp"
 #include "nn/os/synchronization.hpp"
+#include "nn/sf/shared_pointer.hpp"
 #include "nn/util/intrusive_list.hpp"
 
 namespace nn::fs {
@@ -20,7 +26,9 @@ namespace fsa {
 class IFileSystem;
 class IFile;
 class IDirectory;
-struct FileSystemAttribute;
+class ICommonMountNameGenerator;
+class IMultiCommitTarget;
+class ISaveDataAttributeGetter;
 
 enum class QueryId {
   SetConcatenationFileAttribute = 0,
@@ -31,24 +39,15 @@ enum class QueryId {
 
 }
 
+struct SaveDataAttribute;
+class Path;
+
 struct FileHandle {
   void* handle;
 };
 
 struct DirectoryHandle {
   void* handle;
-};
-
-struct ReadOption {
-  int32_t value;
-};
-
-struct WriteOption {
-  int32_t flags;
-
-  bool HasFlushFlag() const {
-    return (flags & 1) != 0;
-  }
 };
 
 struct DirectoryEntry;
@@ -82,8 +81,15 @@ const size_t MountNameLengthMax = 15;
 
 class FileDataCacheAccessor;
 class FileSystemAccessor;
+struct FilePathHash;
 
-class FileAccessor {
+enum WriteState {
+  WriteState_None,
+  WriteState_NeedsFlush,
+  WriteState_Failed,
+};
+
+class FileAccessor : public util::IntrusiveListBaseNode<FileAccessor> {
 public:
   FileAccessor(std::unique_ptr<fsa::IFile>&& file,
     FileSystemAccessor* parent, int mode);
@@ -105,17 +111,44 @@ public:
   Result SetSize(int64_t size);
   Result GetSize(int64_t* outSize);
   int GetOpenMode() const;
+  WriteState GetWriteState();
   Result OperateRange(void* outBuffer, size_t outBufferSize,
     OperationId operationId,
     int64_t offset, int64_t size, const void* inBuffer, size_t inBufferSize);
+  void SetFilePathHash(std::unique_ptr<FilePathHash>&& filePathHash,
+    int index);
+  Result ReadWithoutCacheAccessLog(size_t* outSize, int64_t offset,
+    void* buffer, size_t size, const ReadOption& option);
+
+  FileSystemAccessor* GetParent() const {
+    return m_pParent;
+  }
 
 private:
-  char m_Storage[64];
+  Result ReadWithCacheAccessLog(size_t* outSize, int64_t offset,
+    void* buffer, size_t size, const ReadOption& option, bool usePathCache,
+    bool useDataCache);
+  Result UpdateLastResult(Result result);
+
+  std::unique_ptr<fsa::IFile> m_Impl;
+  FileSystemAccessor* const m_pParent;
+  WriteState m_WriteState;
+  Result m_LastResult;
+  const int m_OpenMode;
+  std::unique_ptr<FilePathHash> m_FilePathHash;
+  int m_PathHashIndex;
 };
 
-class DirectoryAccessor {
+class DirectoryAccessor
+  : public util::IntrusiveListBaseNode<DirectoryAccessor> {
 public:
+  DirectoryAccessor(std::unique_ptr<fsa::IDirectory>&& directory,
+    FileSystemAccessor& parent);
   ~DirectoryAccessor();
+
+  static void* operator new(size_t size) noexcept {
+    return Allocate(size);
+  }
 
   static void operator delete(void* pointer, size_t size) noexcept {
     Deallocate(pointer, size);
@@ -124,13 +157,31 @@ public:
   Result Read(int64_t* outCount, DirectoryEntry* entries, int64_t count);
   Result GetEntryCount(int64_t* outCount);
 
+  FileSystemAccessor& GetParent() const {
+    return m_Parent;
+  }
+
 private:
-  char m_Storage[32];
+  std::unique_ptr<fsa::IDirectory> m_Impl;
+  FileSystemAccessor& m_Parent;
 };
 
 class FileSystemAccessor {
 public:
+  FileSystemAccessor(const char* name,
+    fsa::IMultiCommitTarget* multiCommitTarget,
+    std::unique_ptr<fsa::IFileSystem>&& fileSystem,
+    std::unique_ptr<fsa::ICommonMountNameGenerator>&& generator,
+    std::unique_ptr<fsa::ISaveDataAttributeGetter>&& attributeGetter);
   virtual ~FileSystemAccessor();
+
+  static void* operator new(size_t size) noexcept {
+    return Allocate(size);
+  }
+
+  static void operator delete(void* pointer, size_t size) noexcept {
+    Deallocate(pointer, size);
+  }
 
   const char* GetName() const {
     return m_Name;
@@ -141,11 +192,25 @@ public:
   }
 
   bool IsEnabledAccessLog() const {
-    return m_IsAccessLogEnabled;
+    return m_Flags.isAccessLogEnabled;
   }
 
-  bool IsPathBasedFileDataCacheAttachable() const {
-    return m_IsPathBasedFileDataCacheAttachable;
+  void SetAccessLog(bool isEnabled) {
+    m_Flags.isAccessLogEnabled = isEnabled;
+  }
+
+  bool IsFileDataCacheAttachable() const {
+    return m_Flags.isFileDataCacheAttachable;
+  }
+
+  void SetFileDataCacheAttachable(bool isAttachable,
+    IStorage* storageForPurge) {
+    m_pStorageForPurgeFileDataCache = storageForPurge;
+    m_Flags.isFileDataCacheAttachable = isAttachable;
+  }
+
+  void SetPathBasedFileDataCacheAttachable(bool isAttachable) {
+    m_Flags.isPathBasedFileDataCacheAttachable = isAttachable;
   }
 
   void PurgeFileDataCache(FileDataCacheAccessor* accessor);
@@ -173,6 +238,11 @@ public:
     const char* inBuffer, size_t inBufferSize, fsa::QueryId queryId,
     const char* path);
   Result GetCommonMountName(char* name, size_t nameSize) const;
+  Result GetSaveDataAttribute(SaveDataAttribute* outAttribute) const;
+  nn::sf::SharedPointer<fssrv::sf::IFileSystem> GetMultiCommitTarget();
+
+  void NotifyCloseFile(FileAccessor* file);
+  void NotifyCloseDirectory(DirectoryAccessor* directory);
 
   static FileSystemAccessor* FromPoolNode(util::IntrusiveListNode* node) {
     return reinterpret_cast<FileSystemAccessor*>(
@@ -184,11 +254,39 @@ public:
   util::IntrusiveListNode m_PoolNode;
 
 private:
+  typedef util::IntrusiveList<FileAccessor,
+    util::IntrusiveListBaseNodeTraits<FileAccessor>> FileList;
+  typedef util::IntrusiveList<DirectoryAccessor,
+    util::IntrusiveListBaseNodeTraits<DirectoryAccessor>> DirectoryList;
+
+  struct Flags {
+    bool isAccessLogEnabled : 1;
+    bool isFileDataCacheAttachable;
+    bool isPathBasedFileDataCacheAttachable;
+    bool isPathBasedFileDataCacheAttached;
+  };
+
+  struct FileSystemAttributeCache {
+    bool isCached : 1;
+    fsa::FileSystemAttribute attribute;
+  };
+
+  Result SetUpPath(Path* outPath, const char* path);
+  void DumpUnclosedAccessorList(int fileOpenModeMask, int directoryMask);
+
   char m_Name[MountNameLengthMax + 1];
   std::unique_ptr<fsa::IFileSystem> m_Impl;
-  char m_Reserved[0x68 - 0x30];
-  bool m_IsAccessLogEnabled : 1;
-  bool m_IsPathBasedFileDataCacheAttachable;
+  FileList m_OpenFiles;
+  DirectoryList m_OpenDirectories;
+  os::SdkMutex m_OpenListLock;
+  os::SdkMutex m_FileSystemAttributeLock;
+  std::unique_ptr<fsa::ICommonMountNameGenerator> m_MountNameGenerator;
+  std::unique_ptr<fsa::ISaveDataAttributeGetter> m_SaveDataAttributeGetter;
+  Flags m_Flags;
+  fsa::IMultiCommitTarget* m_pMultiCommitTarget;
+  PathFlags m_PathFlags;
+  FileSystemAttributeCache m_FileSystemAttributeCache;
+  IStorage* m_pStorageForPurgeFileDataCache;
 };
 
 class GlobalFileDataCacheAccessorReadableScopedPointer {
@@ -204,6 +302,14 @@ public:
 
   FileDataCacheAccessor* Get() const {
     return m_Pointer;
+  }
+
+  void Set(FileDataCacheAccessor* pointer, os::ReaderWriterLockType* lock) {
+    if (m_pLock != nullptr && m_pLock != lock) {
+      os::ReleaseReadLock(m_pLock);
+    }
+    m_Pointer = pointer;
+    m_pLock = lock;
   }
 
 private:

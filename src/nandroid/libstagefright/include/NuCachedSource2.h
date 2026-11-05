@@ -44,7 +44,6 @@ struct NuCachedSource2 : public DataSource {
     virtual status_t getSize(off64_t *size);
     virtual uint32_t flags();
 
-    virtual sp<DecryptHandle> DrmInitialization(const char* mime);
     virtual String8 getUri();
 
     virtual String8 getMIMEType() const;
@@ -67,6 +66,10 @@ struct NuCachedSource2 : public DataSource {
     // is returned.
     status_t getEstimatedBandwidthKbps(int32_t *kbps);
     status_t setCacheStatCollectFreq(int32_t freqMs);
+
+    void getBufferedRange(off64_t *start, off64_t *end);
+    size_t flushCache();
+    bool IsCacheFull(bool *reachedEOS);
 
     static void RemoveCacheSpecificHeaders(
             KeyedVector<String8, String8> *headers,
@@ -103,6 +106,12 @@ private:
         kMaxNumRetries = 10,
     };
 
+    enum {
+        kReadPadding = 256 * 1024,
+        kReadDeferCount = 100,
+        kMaxReadDeferRetries = 16,
+    };
+
     sp<DataSource> mSource;
     sp<AHandlerReflector<NuCachedSource2> > mReflector;
     sp<ALooper> mLooper;
@@ -116,6 +125,9 @@ private:
     off64_t mCacheOffset;
     status_t mFinalStatus;
     off64_t mLastAccessPos;
+    size_t mKeepBehindBytes;
+    int32_t mReadDeferCount;
+    int32_t mReadDeferRetries;
     sp<AMessage> mAsyncResult;
     bool mFetching;
     bool mDisconnecting;

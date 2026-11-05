@@ -5,27 +5,10 @@
 
 #include <atomic>
 
+#include "nn/audio/renderer_ipc.hpp"
+#include "nn/os/synchronization.hpp"
 #include "nn/os/time.hpp"
 #include "nn/result.hpp"
-
-namespace nn::os {
-
-struct SdkMutexType {
-  uint32_t value;
-
-  void Lock();
-  void Unlock();
-};
-
-struct SdkRecursiveMutexType {
-  uint32_t value;
-  uint32_t count;
-
-  void Lock();
-  void Unlock();
-};
-
-}
 
 namespace nn::detail {
 
@@ -237,6 +220,8 @@ struct EffectInfoVersion2 {
     float channelMaxMean[6];
   };
 
+  EffectInfoVersion2();
+
   EffectType type;
   bool isNew;
   bool isEnabled;
@@ -280,8 +265,41 @@ static_assert(sizeof(EffectInfoVersion2::AuxParameter) == 112);
 static_assert(offsetof(EffectInfoVersion2, usageState) == 192);
 static_assert(offsetof(EffectInfoVersion2, resultState) == 208);
 
+struct EffectInfoVersion1 {
+  EffectInfoVersion1();
+
+  uint8_t raw[208];
+};
+
+}
+
+namespace nn::audio::renderer::ipc {
+
+template <>
+struct Effect::UpdateData<2> {
+  uint8_t raw[192];
+};
+
+template <>
+struct Effect::StatusData<1> {
+  uint8_t usageState;
+  uint8_t reserved[15];
+  uint8_t resultState[128];
+};
+
+static_assert(sizeof(Effect::StatusData<1>) == 144);
+
+}
+
+namespace nn::audio {
+
 class EffectManager {
 public:
+  EffectManager(int count, EffectInfoVersion2* infos);
+  size_t UpdateEffectsInParameter(renderer::ipc::Effect::UpdateData<2>* data);
+  size_t UpdateEffectOutStatus(
+    const renderer::ipc::Effect::StatusData<1>* status);
+  bool NeedToUpdateEffectResultStatus(const EffectInfoVersion2& info) const;
   bool IsInitialized(const EffectInfoVersion2* info) const;
   Result Add(EffectInfoVersion2** info, EffectType type, void* buffer,
     size_t size, MixInfo* mix);
@@ -298,13 +316,28 @@ struct SubMixType;
 
 class MixManager {
 public:
+  MixManager(MixInfo* infos, int count, int sampleRate, int bufferCount,
+    int sampleCount);
   bool Acquire(FinalMixType* mix, int bufferCount);
   void Release(FinalMixType* mix);
   bool Acquire(SubMixType* mix, int bufferCount);
   void Release(SubMixType* mix);
   int GetFinalMixSampleRate() const;
   int GetMixBufferSampleCount() const;
+  bool IsValidMix(const SubMixType* mix) const;
+  bool IsValidMix(const FinalMixType* mix) const;
+  size_t UpdateMixInParameter(void* data);
+
+private:
+  MixInfo* m_Infos;
+  int m_Count;
+  int m_BufferCountMax;
+  int m_SampleCount;
+  int m_BufferCount;
+  os::SdkMutexType m_Mutex;
 };
+
+static_assert(sizeof(MixManager) == 32);
 
 class VoiceInfoManager;
 class SinkManager;
@@ -322,7 +355,16 @@ struct AudioRendererConfig {
   MemoryPoolManager* _pMemoryPoolManager;
   BehaviorManager* _pBehaviorManager;
   SplitterInfoManager* _pSplitterInfoManager;
+  uint64_t* _pElapsedFrameCount;
+  void* _pInParameter;
+  size_t _inParameterSize;
+  void* _pOutStatus;
+  size_t _outStatusSize;
+  void* _pWorkBuffer;
+  size_t _workBufferSize;
 };
+
+static_assert(sizeof(AudioRendererConfig) == 120);
 
 struct FinalMixType {
   MixInfo* _pMixInfo;
@@ -340,6 +382,10 @@ extern std::atomic<bool> g_IsResourceExclusionCheckEnabled;
 
 ResourceExclusionChecker* FindResourceExclusionCheckerFromRegionInConfigImpl(
   void* region);
+ResourceExclusionChecker* FindResourceExclusionCheckerFromInternalHandleImpl(
+  void* handle);
+ResourceExclusionChecker* AcquireResourceExclusionChecker();
+void ReleaseResourceExclusionChecker(ResourceExclusionChecker* checker);
 
 // Release builds only look the checker up and drop its verdict.
 inline void CheckResourceExclusion(const void* region) {

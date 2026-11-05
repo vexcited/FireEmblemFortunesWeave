@@ -6,6 +6,8 @@
 
 namespace nn::fs::RomPathTool {
 
+const size_t MaxPathLength = 768;
+
 struct RomEntryName {
   const char* path;
   size_t length;

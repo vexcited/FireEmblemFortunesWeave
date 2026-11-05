@@ -114,4 +114,33 @@ void ClearPerformanceDetailTarget(AudioRendererConfig* config) {
     common::NodeIdManager::GetInvalidNodeId());
 }
 
+size_t GetRequiredBufferSizeForPerformanceFrames(
+  const AudioRendererParameter& parameter) {
+  constexpr size_t DetailCountMax = 100;
+  const int entryCount = parameter.subMixCount + parameter.voiceCount +
+    (parameter.sinkCount + parameter.effectCount) + 1;
+  const size_t frameSize = sizeof(PerformanceEntry) * entryCount +
+    sizeof(PerformanceFrameHeader) + sizeof(PerformanceDetail) * DetailCountMax;
+  size_t size = frameSize * parameter.performanceFrameCount;
+  size += size != 0 ? sizeof(PerformanceFrameHeader) : 0;
+  return (size + 63) & ~size_t{63};
+}
+
+size_t GetSampleByteSize(SampleFormat format) {
+  switch (format) {
+    case SampleFormat_PcmInt8:
+      return sizeof(int8_t);
+    case SampleFormat_PcmInt16:
+      return sizeof(int16_t);
+    case SampleFormat_PcmInt24:
+      return 3;
+    case SampleFormat_PcmInt32:
+      return sizeof(int32_t);
+    case SampleFormat_PcmFloat:
+      return sizeof(float);
+    default:
+      nn::detail::UnexpectedDefaultImpl();
+  }
+}
+
 }

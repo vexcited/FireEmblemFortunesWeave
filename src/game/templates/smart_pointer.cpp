@@ -1,0 +1,123 @@
+#include <memory>
+
+#include "game/templates/unrecovered.hpp"
+
+namespace game {
+
+template <unsigned N>
+using Shared = std::shared_ptr<Unrecovered<N>>;
+
+}
+
+// Link time optimization kept these destructors out of line, some of them
+// for function local statics released at exit.
+template game::Shared<0>::~shared_ptr();
+template game::Shared<1>::~shared_ptr();
+template game::Shared<2>::~shared_ptr();
+template game::Shared<3>::~shared_ptr();
+template game::Shared<4>::~shared_ptr();
+template game::Shared<5>::~shared_ptr();
+template game::Shared<6>::~shared_ptr();
+template game::Shared<7>::~shared_ptr();
+template game::Shared<8>::~shared_ptr();
+template game::Shared<9>::~shared_ptr();
+template game::Shared<10>::~shared_ptr();
+template game::Shared<11>::~shared_ptr();
+template game::Shared<12>::~shared_ptr();
+template game::Shared<13>::~shared_ptr();
+template game::Shared<14>::~shared_ptr();
+template game::Shared<15>::~shared_ptr();
+template game::Shared<16>::~shared_ptr();
+template game::Shared<17>::~shared_ptr();
+template game::Shared<18>::~shared_ptr();
+template game::Shared<19>::~shared_ptr();
+template game::Shared<20>::~shared_ptr();
+template game::Shared<21>::~shared_ptr();
+template game::Shared<22>::~shared_ptr();
+template game::Shared<23>::~shared_ptr();
+template game::Shared<24>::~shared_ptr();
+template game::Shared<25>::~shared_ptr();
+template game::Shared<26>::~shared_ptr();
+template game::Shared<27>::~shared_ptr();
+template game::Shared<28>::~shared_ptr();
+template game::Shared<29>::~shared_ptr();
+template game::Shared<30>::~shared_ptr();
+template game::Shared<31>::~shared_ptr();
+template game::Shared<32>::~shared_ptr();
+template game::Shared<33>::~shared_ptr();
+template game::Shared<34>::~shared_ptr();
+template game::Shared<35>::~shared_ptr();
+template game::Shared<36>::~shared_ptr();
+template game::Shared<37>::~shared_ptr();
+template game::Shared<38>::~shared_ptr();
+template game::Shared<39>::~shared_ptr();
+template game::Shared<40>::~shared_ptr();
+template game::Shared<41>::~shared_ptr();
+template game::Shared<42>::~shared_ptr();
+template game::Shared<43>::~shared_ptr();
+template game::Shared<44>::~shared_ptr();
+template game::Shared<45>::~shared_ptr();
+template game::Shared<46>::~shared_ptr();
+template game::Shared<47>::~shared_ptr();
+template game::Shared<48>::~shared_ptr();
+template game::Shared<49>::~shared_ptr();
+template game::Shared<50>::~shared_ptr();
+template game::Shared<51>::~shared_ptr();
+template game::Shared<52>::~shared_ptr();
+template game::Shared<53>::~shared_ptr();
+template game::Shared<54>::~shared_ptr();
+template game::Shared<55>::~shared_ptr();
+template game::Shared<56>::~shared_ptr();
+template game::Shared<57>::~shared_ptr();
+template game::Shared<58>::~shared_ptr();
+template game::Shared<59>::~shared_ptr();
+template game::Shared<60>::~shared_ptr();
+template game::Shared<61>::~shared_ptr();
+template game::Shared<62>::~shared_ptr();
+template game::Shared<63>::~shared_ptr();
+template game::Shared<64>::~shared_ptr();
+template game::Shared<65>::~shared_ptr();
+template game::Shared<66>::~shared_ptr();
+template game::Shared<67>::~shared_ptr();
+template game::Shared<68>::~shared_ptr();
+template game::Shared<69>::~shared_ptr();
+template game::Shared<70>::~shared_ptr();
+template game::Shared<71>::~shared_ptr();
+template game::Shared<72>::~shared_ptr();
+template game::Shared<73>::~shared_ptr();
+template game::Shared<74>::~shared_ptr();
+template game::Shared<75>::~shared_ptr();
+template game::Shared<76>::~shared_ptr();
+template game::Shared<77>::~shared_ptr();
+template game::Shared<78>::~shared_ptr();
+template game::Shared<79>::~shared_ptr();
+template game::Shared<80>::~shared_ptr();
+template game::Shared<81>::~shared_ptr();
+template game::Shared<82>::~shared_ptr();
+template game::Shared<83>::~shared_ptr();
+template game::Shared<84>::~shared_ptr();
+template game::Shared<85>::~shared_ptr();
+template game::Shared<86>::~shared_ptr();
+template game::Shared<87>::~shared_ptr();
+template game::Shared<88>::~shared_ptr();
+template game::Shared<89>::~shared_ptr();
+template game::Shared<90>::~shared_ptr();
+template game::Shared<91>::~shared_ptr();
+template game::Shared<92>::~shared_ptr();
+template game::Shared<93>::~shared_ptr();
+template game::Shared<94>::~shared_ptr();
+template game::Shared<95>::~shared_ptr();
+template game::Shared<96>::~shared_ptr();
+template game::Shared<97>::~shared_ptr();
+template game::Shared<98>::~shared_ptr();
+template game::Shared<99>::~shared_ptr();
+template game::Shared<100>::~shared_ptr();
+template game::Shared<101>::~shared_ptr();
+template game::Shared<102>::~shared_ptr();
+template game::Shared<103>::~shared_ptr();
+template game::Shared<104>::~shared_ptr();
+template game::Shared<105>::~shared_ptr();
+template game::Shared<106>::~shared_ptr();
+template game::Shared<107>::~shared_ptr();
+template game::Shared<108>::~shared_ptr();
+template game::Shared<109>::~shared_ptr();
