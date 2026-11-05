@@ -148,11 +148,11 @@ int SocketExempt(int domain, int type, int protocol) {
   return detail::SocketExempt(domain, type, protocol);
 }
 
-ssize_t Write(int socket, const void* buffer, size_t length) {
+int Write(int socket, const void* buffer, size_t length) {
   return detail::Write(socket, buffer, length);
 }
 
-ssize_t Read(int socket, void* buffer, size_t length) {
+int Read(int socket, void* buffer, size_t length) {
   return detail::Read(socket, buffer, length);
 }
 

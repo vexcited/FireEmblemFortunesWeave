@@ -23,6 +23,7 @@
 #include <nandroid/media/MediaTrack.h>
 #include <nandroid/media/mediaplayer_common.h>
 
+#include <nandroid/utils/Mutex.h>
 #include <nandroid/utils/String8.h>
 
 #include <nandroid/libstagefright/mpeg2ts/ATSParser.h>
@@ -72,7 +73,8 @@ struct LiveSession : public AHandler {
     LiveSession(
             const sp<AMessage> &notify,
             uint32_t flags,
-            const sp<MediaHTTPService> &httpService);
+            const sp<MediaHTTPService> &httpService,
+            int32_t cacheSize);
 
     void setBufferingSettings(const BufferingSettings &buffering);
 
@@ -104,6 +106,14 @@ struct LiveSession : public AHandler {
     bool isSeekable() const;
     bool hasDynamicDuration() const;
 
+    void getBufferedRange(int64_t *startUs, int64_t *endUs) const;
+    void setPreferredPixels(size_t pixels);
+    void setPreferredBandwidthSwitch(bool enable);
+    bool getPreferredBandwidthSwitch() const;
+    void setMinBandwidthSamples(size_t samples);
+    bool isSourcePrepared();
+    void stopLooper();
+
     static const char *getKeyForStream(StreamType type);
     static const char *getNameForStream(StreamType type);
     static ATSParser::SourceType getSourceTypeForStream(StreamType type);
@@ -126,6 +136,7 @@ protected:
 
 private:
     friend struct PlaylistFetcher;
+    friend struct HTTPLiveSource2;
 
     enum {
         kWhatConnect                    = 'conn',
@@ -153,6 +164,7 @@ private:
         size_t mPlaylistIndex;
         unsigned long mBandwidth;
         int64_t mLastFailureUs;
+        size_t mPixels = 0;
     };
 
     struct FetcherInfo {
@@ -212,6 +224,10 @@ private:
     sp<M3UParser> mPlaylist;
     int32_t mMaxWidth;
     int32_t mMaxHeight;
+    int32_t mAACObjectType;
+    size_t mPlaylistUserData;
+    size_t mPreferredPixels;
+    size_t mMinBandwidthSamples;
 
     sp<ALooper> mFetcherLooper;
     KeyedVector<AString, FetcherInfo> mFetcherInfos;
@@ -229,6 +245,12 @@ private:
     KeyedVector<StreamType, sp<AnotherPacketSource> > mPacketSources;
     // A second set of packet sources that buffer content for the variant we're switching to.
     KeyedVector<StreamType, sp<AnotherPacketSource> > mPacketSources2;
+
+    mutable Mutex mFetcherLock;
+    bool mAudioPrepared;
+    bool mVideoPrepared;
+    bool mPreferredBandwidthSwitch;
+    mutable Mutex mBandwidthSwitchLock;
 
     int32_t mSwitchGeneration;
     int32_t mSubtitleGeneration;
@@ -257,7 +279,9 @@ private:
     KeyedVector<size_t, int64_t> mDiscontinuityAbsStartTimesUs;
     KeyedVector<size_t, int64_t> mDiscontinuityOffsetTimesUs;
 
-    sp<PlaylistFetcher> addFetcher(const char *uri);
+    int64_t mCacheSize;
+
+    sp<PlaylistFetcher> addFetcher(const char *uri, bool newUri);
 
     void onConnect(const sp<AMessage> &msg);
     void onMasterPlaylistFetched(const sp<AMessage> &msg);

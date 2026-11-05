@@ -60,6 +60,10 @@ struct AnotherPacketSource : public MediaSource {
     // Returns the difference between the two largest timestamps queued
     int64_t getEstimatedBufferDurationUs();
 
+    bool isTargetDurationAvailable();
+    int64_t getEstimatedDurationUs();
+    size_t getBufferedBytes();
+
     status_t nextBufferTime(int64_t *timeUs);
 
     void queueAccessUnit(const sp<ABuffer> &buffer);

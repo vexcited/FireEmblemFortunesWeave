@@ -86,12 +86,20 @@ class SharedPointer {
   Interface* m_Pointer;
 };
 
-template <typename T>
+template <typename T, typename = void>
 class Out {
  public:
   explicit Out(T* pointer) : m_Pointer(pointer) {}
 
   T* GetPointer() const {
+    return m_Pointer;
+  }
+
+  T& operator*() const {
+    return *m_Pointer;
+  }
+
+  T* operator->() const {
     return m_Pointer;
   }
 

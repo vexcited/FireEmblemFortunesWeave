@@ -69,277 +69,277 @@ int ClampProductCount(int count) {
 
 }
 
-Result ShowShopApplicationInformation() {
-  return ShowShopApplicationInformationImpl(LaunchMode_Application,
+void ShowShopApplicationInformation() {
+  ShowShopApplicationInformationImpl(LaunchMode_Application,
     OptionalApplicationId(), InvalidUid, {}, DefaultSourceId, nullptr);
 }
 
-Result ShowShopApplicationInformation(const account::UserHandle& user) {
+void ShowShopApplicationInformation(const account::UserHandle& user) {
   const account::Uid uid = GetUid(user);
-  return ShowShopApplicationInformationImpl(LaunchMode_Application,
+  ShowShopApplicationInformationImpl(LaunchMode_Application,
     OptionalApplicationId(), uid, {}, DefaultSourceId, nullptr);
 }
 
-Result ShowShopApplicationInformation(ApplicationId applicationId) {
-  return ShowShopApplicationInformationImpl(LaunchMode_Application,
+void ShowShopApplicationInformation(ApplicationId applicationId) {
+  ShowShopApplicationInformationImpl(LaunchMode_Application,
     applicationId, InvalidUid, {}, DefaultSourceId, nullptr);
 }
 
-Result ShowShopApplicationInformation(ApplicationId applicationId,
+void ShowShopApplicationInformation(ApplicationId applicationId,
   const account::UserHandle& user) {
   const account::Uid uid = GetUid(user);
-  return ShowShopApplicationInformationImpl(LaunchMode_Application,
+  ShowShopApplicationInformationImpl(LaunchMode_Application,
     applicationId, uid, {}, DefaultSourceId, nullptr);
 }
 
-Result ShowShopApplicationInformationForUpgrade(UpgradeEdition edition) {
-  return ShowShopApplicationInformationForUpgradeImpl(LaunchMode_Application,
+void ShowShopApplicationInformationForUpgrade(UpgradeEdition edition) {
+  ShowShopApplicationInformationForUpgradeImpl(LaunchMode_Application,
     OptionalApplicationId(), InvalidUid, edition, {}, DefaultSourceId,
     nullptr);
 }
 
-Result ShowShopApplicationInformationForUpgrade(UpgradeEdition edition,
+void ShowShopApplicationInformationForUpgrade(UpgradeEdition edition,
   const account::UserHandle& user) {
   const account::Uid uid = GetUid(user);
-  return ShowShopApplicationInformationForUpgradeImpl(LaunchMode_Application,
+  ShowShopApplicationInformationForUpgradeImpl(LaunchMode_Application,
     OptionalApplicationId(), uid, edition, {}, DefaultSourceId, nullptr);
 }
 
-Result ShowShopApplicationInformationForUpgrade(ApplicationId applicationId,
+void ShowShopApplicationInformationForUpgrade(ApplicationId applicationId,
   UpgradeEdition edition) {
-  return ShowShopApplicationInformationForUpgradeImpl(LaunchMode_Application,
+  ShowShopApplicationInformationForUpgradeImpl(LaunchMode_Application,
     applicationId, InvalidUid, edition, {}, DefaultSourceId, nullptr);
 }
 
-Result ShowShopApplicationInformationForUpgrade(ApplicationId applicationId,
+void ShowShopApplicationInformationForUpgrade(ApplicationId applicationId,
   UpgradeEdition edition, const account::UserHandle& user) {
   const account::Uid uid = GetUid(user);
-  return ShowShopApplicationInformationForUpgradeImpl(LaunchMode_Application,
+  ShowShopApplicationInformationForUpgradeImpl(LaunchMode_Application,
     applicationId, uid, edition, {}, DefaultSourceId, nullptr);
 }
 
-Result ShowShopAddOnContentList() {
-  return ShowShopAddOnContentListImpl(LaunchMode_Application,
+void ShowShopAddOnContentList() {
+  ShowShopAddOnContentListImpl(LaunchMode_Application,
     OptionalApplicationId(), InvalidUid, DefaultSourceId);
 }
 
-Result ShowShopAddOnContentList(const account::UserHandle& user) {
+void ShowShopAddOnContentList(const account::UserHandle& user) {
   const account::Uid uid = GetUid(user);
-  return ShowShopAddOnContentListImpl(LaunchMode_Application,
+  ShowShopAddOnContentListImpl(LaunchMode_Application,
     OptionalApplicationId(), uid, DefaultSourceId);
 }
 
-Result ShowShopAddOnContentList(ApplicationId applicationId) {
-  return ShowShopAddOnContentListImpl(LaunchMode_Application, applicationId,
+void ShowShopAddOnContentList(ApplicationId applicationId) {
+  ShowShopAddOnContentListImpl(LaunchMode_Application, applicationId,
     InvalidUid, DefaultSourceId);
 }
 
-Result ShowShopAddOnContentList(ApplicationId applicationId,
+void ShowShopAddOnContentList(ApplicationId applicationId,
   const account::UserHandle& user) {
   const account::Uid uid = GetUid(user);
-  return ShowShopAddOnContentListImpl(LaunchMode_Application, applicationId,
+  ShowShopAddOnContentListImpl(LaunchMode_Application, applicationId,
     uid, DefaultSourceId);
 }
 
-Result ShowShopSubscriptionList() {
-  return ShowShopSubscriptionListImpl(LaunchMode_Application,
+void ShowShopSubscriptionList() {
+  ShowShopSubscriptionListImpl(LaunchMode_Application,
     OptionalApplicationId(), InvalidUid, DefaultSourceId);
 }
 
-Result ShowShopSubscriptionList(const account::UserHandle& user) {
+void ShowShopSubscriptionList(const account::UserHandle& user) {
   const account::Uid uid = GetUid(user);
-  return ShowShopSubscriptionListImpl(LaunchMode_Application,
+  ShowShopSubscriptionListImpl(LaunchMode_Application,
     OptionalApplicationId(), uid, DefaultSourceId);
 }
 
-Result ShowShopSubscriptionList(ApplicationId applicationId) {
-  return ShowShopSubscriptionListImpl(LaunchMode_Application, applicationId,
+void ShowShopSubscriptionList(ApplicationId applicationId) {
+  ShowShopSubscriptionListImpl(LaunchMode_Application, applicationId,
     InvalidUid, DefaultSourceId);
 }
 
-Result ShowShopSubscriptionList(ApplicationId applicationId,
+void ShowShopSubscriptionList(ApplicationId applicationId,
   const account::UserHandle& user) {
   const account::Uid uid = GetUid(user);
-  return ShowShopSubscriptionListImpl(LaunchMode_Application, applicationId,
+  ShowShopSubscriptionListImpl(LaunchMode_Application, applicationId,
     uid, DefaultSourceId);
 }
 
-Result ShowShopSubscriptionList(const CourseId& courseId) {
+void ShowShopSubscriptionList(const CourseId& courseId) {
   const CourseId id = CopyId(courseId);
-  return ShowShopSubscriptionListDetailImpl(LaunchMode_Application,
+  ShowShopSubscriptionListDetailImpl(LaunchMode_Application,
     OptionalApplicationId(), id, InvalidUid, DefaultSourceId);
 }
 
-Result ShowShopSubscriptionList(const CourseId& courseId,
+void ShowShopSubscriptionList(const CourseId& courseId,
   const account::UserHandle& user) {
   const CourseId id = CopyId(courseId);
   const account::Uid uid = GetUid(user);
-  return ShowShopSubscriptionListDetailImpl(LaunchMode_Application,
+  ShowShopSubscriptionListDetailImpl(LaunchMode_Application,
     OptionalApplicationId(), id, uid, DefaultSourceId);
 }
 
-Result ShowShopSubscriptionList(ApplicationId applicationId,
+void ShowShopSubscriptionList(ApplicationId applicationId,
   const CourseId& courseId) {
   const CourseId id = CopyId(courseId);
-  return ShowShopSubscriptionListDetailImpl(LaunchMode_Application,
+  ShowShopSubscriptionListDetailImpl(LaunchMode_Application,
     applicationId, id, InvalidUid, DefaultSourceId);
 }
 
-Result ShowShopSubscriptionList(ApplicationId applicationId,
+void ShowShopSubscriptionList(ApplicationId applicationId,
   const CourseId& courseId, const account::UserHandle& user) {
   const CourseId id = CopyId(courseId);
   const account::Uid uid = GetUid(user);
-  return ShowShopSubscriptionListDetailImpl(LaunchMode_Application,
+  ShowShopSubscriptionListDetailImpl(LaunchMode_Application,
     applicationId, id, uid, DefaultSourceId);
 }
 
-Result ShowShopSubscriptionDetails(const CourseId& courseId, NsUid nsUid) {
+void ShowShopSubscriptionDetails(const CourseId& courseId, NsUid nsUid) {
   const CourseId id = CopyId(courseId);
-  return ShowShopSubscriptionDetailsImpl(LaunchMode_Application,
+  ShowShopSubscriptionDetailsImpl(LaunchMode_Application,
     OptionalApplicationId(), id, nsUid, InvalidUid, DefaultSourceId);
 }
 
-Result ShowShopSubscriptionDetails(const CourseId& courseId, NsUid nsUid,
+void ShowShopSubscriptionDetails(const CourseId& courseId, NsUid nsUid,
   const account::UserHandle& user) {
   const CourseId id = CopyId(courseId);
   const account::Uid uid = GetUid(user);
-  return ShowShopSubscriptionDetailsImpl(LaunchMode_Application,
+  ShowShopSubscriptionDetailsImpl(LaunchMode_Application,
     OptionalApplicationId(), id, nsUid, uid, DefaultSourceId);
 }
 
-Result ShowShopSubscriptionDetails(ApplicationId applicationId,
+void ShowShopSubscriptionDetails(ApplicationId applicationId,
   const CourseId& courseId, NsUid nsUid) {
   const CourseId id = CopyId(courseId);
-  return ShowShopSubscriptionDetailsImpl(LaunchMode_Application,
+  ShowShopSubscriptionDetailsImpl(LaunchMode_Application,
     applicationId, id, nsUid, InvalidUid, DefaultSourceId);
 }
 
-Result ShowShopSubscriptionDetails(ApplicationId applicationId,
+void ShowShopSubscriptionDetails(ApplicationId applicationId,
   const CourseId& courseId, NsUid nsUid, const account::UserHandle& user) {
   const CourseId id = CopyId(courseId);
   const account::Uid uid = GetUid(user);
-  return ShowShopSubscriptionDetailsImpl(LaunchMode_Application,
+  ShowShopSubscriptionDetailsImpl(LaunchMode_Application,
     applicationId, id, nsUid, uid, DefaultSourceId);
 }
 
-Result ShowShopSubscriptionManagement() {
-  return ShowShopSubscriptionManagementImpl(LaunchMode_Application,
+void ShowShopSubscriptionManagement() {
+  ShowShopSubscriptionManagementImpl(LaunchMode_Application,
     OptionalApplicationId(), nullptr, 0, InvalidUid, DefaultSourceId);
 }
 
-Result ShowShopSubscriptionManagement(const account::UserHandle& user) {
+void ShowShopSubscriptionManagement(const account::UserHandle& user) {
   const account::Uid uid = GetUid(user);
-  return ShowShopSubscriptionManagementImpl(LaunchMode_Application,
+  ShowShopSubscriptionManagementImpl(LaunchMode_Application,
     OptionalApplicationId(), nullptr, 0, uid, DefaultSourceId);
 }
 
-Result ShowShopSubscriptionManagement(const CourseId* courseIds, int count) {
+void ShowShopSubscriptionManagement(const CourseId* courseIds, int count) {
   const int clamped = ClampCourseCount(courseIds, count);
-  return ShowShopSubscriptionManagementImpl(LaunchMode_Application,
+  ShowShopSubscriptionManagementImpl(LaunchMode_Application,
     OptionalApplicationId(), courseIds, clamped, InvalidUid,
     DefaultSourceId);
 }
 
-Result ShowShopSubscriptionManagement(const CourseId* courseIds, int count,
+void ShowShopSubscriptionManagement(const CourseId* courseIds, int count,
   const account::UserHandle& user) {
   const int clamped = ClampCourseCount(courseIds, count);
   const account::Uid uid = GetUid(user);
-  return ShowShopSubscriptionManagementImpl(LaunchMode_Application,
+  ShowShopSubscriptionManagementImpl(LaunchMode_Application,
     OptionalApplicationId(), courseIds, clamped, uid, DefaultSourceId);
 }
 
-Result ShowShopConsumableItemList() {
-  return ShowShopConsumableItemListImpl(LaunchMode_Application,
+void ShowShopConsumableItemList() {
+  ShowShopConsumableItemListImpl(LaunchMode_Application,
     OptionalApplicationId(), InvalidUid, DefaultSourceId);
 }
 
-Result ShowShopConsumableItemList(const account::UserHandle& user) {
+void ShowShopConsumableItemList(const account::UserHandle& user) {
   const account::Uid uid = GetUid(user);
-  return ShowShopConsumableItemListImpl(LaunchMode_Application,
+  ShowShopConsumableItemListImpl(LaunchMode_Application,
     OptionalApplicationId(), uid, DefaultSourceId);
 }
 
-Result ShowShopConsumableItemList(ApplicationId applicationId) {
-  return ShowShopConsumableItemListImpl(LaunchMode_Application, applicationId,
+void ShowShopConsumableItemList(ApplicationId applicationId) {
+  ShowShopConsumableItemListImpl(LaunchMode_Application, applicationId,
     InvalidUid, DefaultSourceId);
 }
 
-Result ShowShopConsumableItemList(ApplicationId applicationId,
+void ShowShopConsumableItemList(ApplicationId applicationId,
   const account::UserHandle& user) {
   const account::Uid uid = GetUid(user);
-  return ShowShopConsumableItemListImpl(LaunchMode_Application, applicationId,
+  ShowShopConsumableItemListImpl(LaunchMode_Application, applicationId,
     uid, DefaultSourceId);
 }
 
-Result ShowShopConsumableItemDetail(const ConsumableId& consumableId,
+void ShowShopConsumableItemDetail(const ConsumableId& consumableId,
   NsUid nsUid) {
   const ConsumableId id = CopyId(consumableId);
-  return ShowShopConsumableItemDetailImpl(LaunchMode_Application,
+  ShowShopConsumableItemDetailImpl(LaunchMode_Application,
     OptionalApplicationId(), id, nsUid, InvalidUid, DefaultSourceId);
 }
 
-Result ShowShopConsumableItemDetail(const ConsumableId& consumableId,
+void ShowShopConsumableItemDetail(const ConsumableId& consumableId,
   NsUid nsUid, const account::UserHandle& user) {
   const ConsumableId id = CopyId(consumableId);
   const account::Uid uid = GetUid(user);
-  return ShowShopConsumableItemDetailImpl(LaunchMode_Application,
+  ShowShopConsumableItemDetailImpl(LaunchMode_Application,
     OptionalApplicationId(), id, nsUid, uid, DefaultSourceId);
 }
 
-Result ShowShopConsumableItemDetail(ApplicationId applicationId,
+void ShowShopConsumableItemDetail(ApplicationId applicationId,
   const ConsumableId& consumableId, NsUid nsUid) {
   const ConsumableId id = CopyId(consumableId);
-  return ShowShopConsumableItemDetailImpl(LaunchMode_Application,
+  ShowShopConsumableItemDetailImpl(LaunchMode_Application,
     applicationId, id, nsUid, InvalidUid, DefaultSourceId);
 }
 
-Result ShowShopConsumableItemDetail(ApplicationId applicationId,
+void ShowShopConsumableItemDetail(ApplicationId applicationId,
   const ConsumableId& consumableId, NsUid nsUid,
   const account::UserHandle& user) {
   const ConsumableId id = CopyId(consumableId);
   const account::Uid uid = GetUid(user);
-  return ShowShopConsumableItemDetailImpl(LaunchMode_Application,
+  ShowShopConsumableItemDetailImpl(LaunchMode_Application,
     applicationId, id, nsUid, uid, DefaultSourceId);
 }
 
-Result ShowShopProductList(const NsUid* nsUids, int count,
+void ShowShopProductList(const NsUid* nsUids, int count,
   const char* message) {
   const char* validMessage = GetValidMessage(message);
-  return ShowShopProductListImpl(LaunchMode_Application, nsUids,
+  ShowShopProductListImpl(LaunchMode_Application, nsUids,
     ClampProductCount(count), validMessage, InvalidUid, DefaultSourceId);
 }
 
-Result ShowShopProductList(const NsUid* nsUids, int count,
+void ShowShopProductList(const NsUid* nsUids, int count,
   const char* message, const account::UserHandle& user) {
   const char* validMessage = GetValidMessage(message);
   const account::Uid uid = GetUid(user);
-  return ShowShopProductListImpl(LaunchMode_Application, nsUids,
+  ShowShopProductListImpl(LaunchMode_Application, nsUids,
     ClampProductCount(count), validMessage, uid, DefaultSourceId);
 }
 
-Result ShowShopEnterCodeScene() {
-  return ShowShopEnterCodeSceneImpl(LaunchMode_Application, InvalidUid,
+void ShowShopEnterCodeScene() {
+  ShowShopEnterCodeSceneImpl(LaunchMode_Application, InvalidUid,
     DefaultSourceId);
 }
 
-Result ShowShopEnterCodeScene(const account::UserHandle& user) {
+void ShowShopEnterCodeScene(const account::UserHandle& user) {
   const account::Uid uid = GetUid(user);
-  return ShowShopEnterCodeSceneImpl(LaunchMode_Application, uid,
+  ShowShopEnterCodeSceneImpl(LaunchMode_Application, uid,
     DefaultSourceId);
 }
 
-Result ShowShopProductDetails(NsUid nsUid) {
-  return ShowShopProductDetailsImpl(LaunchMode_Application, nsUid, InvalidUid,
+void ShowShopProductDetails(NsUid nsUid) {
+  ShowShopProductDetailsImpl(LaunchMode_Application, nsUid, InvalidUid,
     DefaultSourceId);
 }
 
-Result ShowShopProductDetails(NsUid nsUid, const account::UserHandle& user) {
+void ShowShopProductDetails(NsUid nsUid, const account::UserHandle& user) {
   const account::Uid uid = GetUid(user);
-  return ShowShopProductDetailsImpl(LaunchMode_Application, nsUid, uid,
+  ShowShopProductDetailsImpl(LaunchMode_Application, nsUid, uid,
     DefaultSourceId);
 }
 
-Result ShowShopInformationWithParams(char* buffer, size_t size,
+void ShowShopInformationWithParams(char* buffer, size_t size,
   const char* signature, const char* format, ...) {
   NN_ABORT_UNLESS(VerifySignature(format, signature));
 
@@ -349,11 +349,11 @@ Result ShowShopInformationWithParams(char* buffer, size_t size,
   va_end(args);
   NN_ABORT_UNLESS(static_cast<size_t>(length) < size);
 
-  return ShowShopInformationWithParamsImpl(LaunchMode_Application, buffer,
+  ShowShopInformationWithParamsImpl(LaunchMode_Application, buffer,
     InvalidUid, DefaultSourceId);
 }
 
-Result ShowShopInformationWithParams(char* buffer, size_t size,
+void ShowShopInformationWithParams(char* buffer, size_t size,
   const char* signature, const account::UserHandle& user,
   const char* format, ...) {
   NN_ABORT_UNLESS(VerifySignature(format, signature));
@@ -365,7 +365,7 @@ Result ShowShopInformationWithParams(char* buffer, size_t size,
   va_end(args);
   NN_ABORT_UNLESS(static_cast<size_t>(length) < size);
 
-  return ShowShopInformationWithParamsImpl(LaunchMode_Application, buffer,
+  ShowShopInformationWithParamsImpl(LaunchMode_Application, buffer,
     uid, DefaultSourceId);
 }
 
@@ -373,129 +373,129 @@ Result LaunchEShop(const account::Uid& uid, SourceId sourceId) {
   return LaunchEShopImpl(LaunchMode_Menu, uid, sourceId);
 }
 
-Result ShowShopApplicationInformationForMenu(ApplicationId applicationId,
+void ShowShopApplicationInformationForMenu(ApplicationId applicationId,
   const account::Uid& uid, SourceId sourceId) {
-  return ShowShopApplicationInformationImpl(LaunchMode_Menu, applicationId,
+  ShowShopApplicationInformationImpl(LaunchMode_Menu, applicationId,
     uid, {}, sourceId, nullptr);
 }
 
-Result ShowShopApplicationInformationForMenu(ApplicationId applicationId,
+void ShowShopApplicationInformationForMenu(ApplicationId applicationId,
   const account::Uid& uid, const AdditionalParam& param, SourceId sourceId) {
-  return ShowShopApplicationInformationImpl(LaunchMode_Menu, applicationId,
+  ShowShopApplicationInformationImpl(LaunchMode_Menu, applicationId,
     uid, {&param, 1}, sourceId, nullptr);
 }
 
-Result ShowShopApplicationInformationForMenu(ApplicationId applicationId,
+void ShowShopApplicationInformationForMenu(ApplicationId applicationId,
   const account::Uid& uid, Span<const AdditionalParam> params,
   SourceId sourceId) {
-  return ShowShopApplicationInformationImpl(LaunchMode_Menu, applicationId,
+  ShowShopApplicationInformationImpl(LaunchMode_Menu, applicationId,
     uid, params, sourceId, nullptr);
 }
 
-Result ShowShopApplicationInformationForMenu(NsUid nsUid,
+void ShowShopApplicationInformationForMenu(NsUid nsUid,
   const account::Uid& uid, SourceId sourceId) {
-  return ShowShopApplicationInformationImpl(LaunchMode_Menu, nsUid, uid,
+  ShowShopApplicationInformationImpl(LaunchMode_Menu, nsUid, uid,
     sourceId, nullptr);
 }
 
-Result ShowShopApplicationInformationForMenu(ApplicationId applicationId,
+void ShowShopApplicationInformationForMenu(ApplicationId applicationId,
   const account::Uid& uid, SourceId sourceId, const char* parameter) {
-  return ShowShopApplicationInformationImpl(LaunchMode_Menu, applicationId,
+  ShowShopApplicationInformationImpl(LaunchMode_Menu, applicationId,
     uid, {}, sourceId, parameter);
 }
 
-Result ShowShopApplicationInformationForMenu(NsUid nsUid,
+void ShowShopApplicationInformationForMenu(NsUid nsUid,
   const account::Uid& uid, SourceId sourceId, const char* parameter) {
-  return ShowShopApplicationInformationImpl(LaunchMode_Menu, nsUid, uid,
+  ShowShopApplicationInformationImpl(LaunchMode_Menu, nsUid, uid,
     sourceId, parameter);
 }
 
-Result ShowShopApplicationInformationForUpgradeForMenu(
+void ShowShopApplicationInformationForUpgradeForMenu(
   ApplicationId applicationId, const account::Uid& uid,
   UpgradeEdition edition, const AdditionalParam& param, SourceId sourceId) {
-  return ShowShopApplicationInformationForUpgradeImpl(LaunchMode_Menu,
+  ShowShopApplicationInformationForUpgradeImpl(LaunchMode_Menu,
     applicationId, uid, edition, {&param, 1}, sourceId, nullptr);
 }
 
-Result ShowShopApplicationInformationForUpgradeForMenu(
+void ShowShopApplicationInformationForUpgradeForMenu(
   ApplicationId applicationId, const account::Uid& uid,
   UpgradeEdition edition, Span<const AdditionalParam> params,
   SourceId sourceId) {
-  return ShowShopApplicationInformationForUpgradeImpl(LaunchMode_Menu,
+  ShowShopApplicationInformationForUpgradeImpl(LaunchMode_Menu,
     applicationId, uid, edition, params, sourceId, nullptr);
 }
 
-Result ShowShopAddOnContentListForMenu(ApplicationId applicationId,
+void ShowShopAddOnContentListForMenu(ApplicationId applicationId,
   const account::Uid& uid, SourceId sourceId) {
-  return ShowShopAddOnContentListImpl(LaunchMode_Menu, applicationId, uid,
+  ShowShopAddOnContentListImpl(LaunchMode_Menu, applicationId, uid,
     sourceId);
 }
 
-Result ShowShopAddOnContentDetailsForMenu(NsUid nsUid,
+void ShowShopAddOnContentDetailsForMenu(NsUid nsUid,
   const account::Uid& uid, SourceId sourceId) {
-  return ShowShopAddOnContentDetailsImpl(LaunchMode_Menu, nsUid, uid,
+  ShowShopAddOnContentDetailsImpl(LaunchMode_Menu, nsUid, uid,
     sourceId);
 }
 
-Result ShowShopConsumableItemListForMenu(ApplicationId applicationId,
+void ShowShopConsumableItemListForMenu(ApplicationId applicationId,
   const account::Uid& uid, SourceId sourceId, bool isApplicationMode) {
-  return ShowShopConsumableItemListImpl(
+  ShowShopConsumableItemListImpl(
     isApplicationMode ? LaunchMode_Application : LaunchMode_Menu,
     applicationId, uid, sourceId);
 }
 
-Result ShowShopConsumableItemDetailsForMenu(ApplicationId applicationId,
+void ShowShopConsumableItemDetailsForMenu(ApplicationId applicationId,
   const ConsumableId& consumableId, NsUid nsUid, const account::Uid& uid,
   SourceId sourceId, bool isApplicationMode) {
-  return ShowShopConsumableItemDetailImpl(
+  ShowShopConsumableItemDetailImpl(
     isApplicationMode ? LaunchMode_Application : LaunchMode_Menu,
     applicationId, consumableId, nsUid, uid, sourceId);
 }
 
-Result ShowShopCouponForMenu(CouponId couponId, const account::Uid& uid,
+void ShowShopCouponForMenu(CouponId couponId, const account::Uid& uid,
   SourceId sourceId) {
-  return ShowShopCouponImpl(LaunchMode_Menu, couponId, uid, sourceId);
+  ShowShopCouponImpl(LaunchMode_Menu, couponId, uid, sourceId);
 }
 
-Result ShowShopInformationWithParams(const char* path,
+void ShowShopInformationWithParams(const char* path,
   const account::Uid& uid, SourceId sourceId) {
   NN_ABORT_UNLESS(path != nullptr && path[0] != '\0');
-  return ShowShopInformationWithParamsImpl(LaunchMode_Menu, path, uid,
+  ShowShopInformationWithParamsImpl(LaunchMode_Menu, path, uid,
     sourceId);
 }
 
-Result ShowShopSettingsForMenu(const account::Uid& uid, SourceId sourceId) {
-  return ShowShopSettingsImpl(LaunchMode_Menu, uid, sourceId);
+void ShowShopSettingsForMenu(const account::Uid& uid, SourceId sourceId) {
+  ShowShopSettingsImpl(LaunchMode_Menu, uid, sourceId);
 }
 
-Result ShowShopMembershipServiceInformation(const account::Uid& uid,
+void ShowShopMembershipServiceInformation(const account::Uid& uid,
   SourceId sourceId) {
-  return ShowShopMembershipServiceInformationImpl(LaunchMode_Application, uid,
+  ShowShopMembershipServiceInformationImpl(LaunchMode_Application, uid,
     OptionalApplicationId(), util::optional<MembershipServiceGuidedReason>(),
     sourceId);
 }
 
-Result ShowShopMembershipServiceInformation(const account::Uid& uid,
+void ShowShopMembershipServiceInformation(const account::Uid& uid,
   ApplicationId applicationId, MembershipServiceGuidedReason reason,
   SourceId sourceId) {
-  return ShowShopMembershipServiceInformationImpl(LaunchMode_Application, uid,
+  ShowShopMembershipServiceInformationImpl(LaunchMode_Application, uid,
     applicationId.value != 0 ? OptionalApplicationId(applicationId)
       : OptionalApplicationId(),
     reason, sourceId);
 }
 
-Result ShowShopMembershipServiceInformationForMenu(const account::Uid& uid,
+void ShowShopMembershipServiceInformationForMenu(const account::Uid& uid,
   ApplicationId applicationId, MembershipServiceGuidedReason reason,
   SourceId sourceId) {
-  return ShowShopMembershipServiceInformationImpl(LaunchMode_Menu, uid,
+  ShowShopMembershipServiceInformationImpl(LaunchMode_Menu, uid,
     applicationId.value != 0 ? OptionalApplicationId(applicationId)
       : OptionalApplicationId(),
     reason, sourceId);
 }
 
-Result ShowShopMembershipServiceContractInformationForMenu(
+void ShowShopMembershipServiceContractInformationForMenu(
   const account::Uid& uid, SourceId sourceId) {
-  return ShowShopMembershipServiceContractInformationImpl(LaunchMode_Menu,
+  ShowShopMembershipServiceContractInformationImpl(LaunchMode_Menu,
     uid, sourceId);
 }
 
@@ -503,26 +503,26 @@ Result GetShopResultFromStorage(const applet::StorageHandle& storage) {
   return GetShopResultFromStorageImpl(storage);
 }
 
-Result ShowShopApplicationInformationForApplet(
+void ShowShopApplicationInformationForApplet(
   ncm::ApplicationId applicationId) {
-  return ShowShopApplicationInformationImpl(LaunchMode_Application,
+  ShowShopApplicationInformationImpl(LaunchMode_Application,
     ApplicationId{applicationId.value}, InvalidUid, {}, DefaultSourceId,
     nullptr);
 }
 
-Result ShowShopPreinstallInformationForMenu(const account::Uid& uid,
+void ShowShopPreinstallInformationForMenu(const account::Uid& uid,
   SourceId sourceId) {
-  return ShowShopPreinstallInformationImpl(LaunchMode_Menu, uid, sourceId);
+  ShowShopPreinstallInformationImpl(LaunchMode_Menu, uid, sourceId);
 }
 
-Result ShowShopRedownloadListForMenu(const account::Uid& uid,
+void ShowShopRedownloadListForMenu(const account::Uid& uid,
   SourceId sourceId) {
-  return ShowShopRedownloadListImpl(LaunchMode_Menu, uid, sourceId);
+  ShowShopRedownloadListImpl(LaunchMode_Menu, uid, sourceId);
 }
 
-Result ShowShopDigitalBundleInformationForMenu(const account::Uid& uid,
+void ShowShopDigitalBundleInformationForMenu(const account::Uid& uid,
   SourceId sourceId) {
-  return ShowShopDigitalBundleInformationImpl(LaunchMode_Menu, uid, sourceId);
+  ShowShopDigitalBundleInformationImpl(LaunchMode_Menu, uid, sourceId);
 }
 
 }

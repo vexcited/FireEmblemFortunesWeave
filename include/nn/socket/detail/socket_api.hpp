@@ -1,7 +1,14 @@
 #pragma once
 
 #include "nn/result.hpp"
+#include "nn/sf/shared_pointer.hpp"
 #include "nn/socket/socket_types.hpp"
+
+namespace nn::socket::sf {
+
+class IClient;
+
+}
 
 namespace nn::socket::detail {
 
@@ -38,9 +45,9 @@ ssize_t RecvFrom(int socket, void* buffer, size_t length, int flags,
   sockaddr* address, uint32_t* addressLength);
 ssize_t RecvMsg(int socket, MsgHdr* message, MsgFlag flags);
 ssize_t RecvMsg(int socket, msghdr* message, int flags);
-int RecvMMsg(int socket, MMsgHdr* messages, size_t count, MsgFlag flags,
-  TimeSpan* timeout);
-int RecvMMsg(int socket, mmsghdr* messages, size_t count, int flags,
+ssize_t RecvMMsg(int socket, MMsgHdr* messages, size_t count,
+  MsgFlag flags, TimeSpan* timeout);
+ssize_t RecvMMsg(int socket, mmsghdr* messages, size_t count, int flags,
   TimeSpan* timeout);
 ssize_t Send(int socket, const void* buffer, size_t length, MsgFlag flags);
 ssize_t Send(int socket, const void* buffer, size_t length, int flags);
@@ -50,8 +57,9 @@ ssize_t SendTo(int socket, const void* buffer, size_t length, int flags,
   const sockaddr* address, uint32_t addressLength);
 ssize_t SendMsg(int socket, const MsgHdr* message, MsgFlag flags);
 ssize_t SendMsg(int socket, const msghdr* message, int flags);
-int SendMMsg(int socket, MMsgHdr* messages, size_t count, MsgFlag flags);
-int SendMMsg(int socket, mmsghdr* messages, size_t count, int flags);
+ssize_t SendMMsg(int socket, MMsgHdr* messages, size_t count,
+  MsgFlag flags);
+ssize_t SendMMsg(int socket, mmsghdr* messages, size_t count, int flags);
 int Accept(int socket, SockAddr* address, uint32_t* addressLength);
 int Accept(int socket, sockaddr* address, uint32_t* addressLength);
 int Bind(int socket, const SockAddr* address, uint32_t addressLength);
@@ -77,8 +85,8 @@ int Shutdown(int socket, ShutdownMethod how);
 int Shutdown(int socket, int how);
 int ShutdownAllSockets(const SockAddr* address, uint32_t addressLength,
   ShutdownAllSocketsMask mask);
-ssize_t Write(int socket, const void* buffer, size_t length);
-ssize_t Read(int socket, void* buffer, size_t length);
+int Write(int socket, const void* buffer, size_t length);
+int Read(int socket, void* buffer, size_t length);
 int SockAtMark(int socket);
 int Ioctl(int socket, uint32_t command, void* data, size_t length);
 int Ioctl(int socket, IoctlCommand command, void* data, size_t length);
@@ -171,6 +179,16 @@ int GetNameInfo(const sockaddr* address, uint32_t addressLength, char* host,
   const ResolverOption* options, size_t optionCount);
 void FreeAddrInfo(AddrInfo* addressInfo);
 void FreeAddrInfo(addrinfo* addressInfo);
+
+::nn::sf::SharedPointer<sf::IClient> CreateClientMonitorByHipc(
+  const char* serviceName);
+::nn::sf::SharedPointer<sf::IClient> CreateClientServiceByHipc(
+  int sessionCount, const char* serviceName);
+void DestroyClientMonitorByHipc(
+  ::nn::sf::SharedPointer<sf::IClient>* pClient);
+void DestroyClientServiceByHipc(
+  ::nn::sf::SharedPointer<sf::IClient>* pClient);
+Result SetClientSessionCount(int sessionCount);
 HErrno GetHError();
 int GetHErrno();
 

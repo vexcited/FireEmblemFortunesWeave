@@ -3,6 +3,7 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#include <atomic>
 #include <cstddef>
 
 #include "nn/applet/applet_types.hpp"
@@ -10,8 +11,12 @@
 #include "nn/audio/server/behavior_info.hpp"
 #include "nn/audio/server/splitter_context.hpp"
 #include "nn/audio/server/voice_context.hpp"
+#include "nn/os/synchronization.hpp"
+#include "nn/os/thread_manager.hpp"
 #include "nn/result.hpp"
+#include "nn/sf/native_handle.hpp"
 #include "nn/sf/sf_buffers.hpp"
+#include "nn/sf/shared_pointer.hpp"
 #include "nn/span.hpp"
 #include "nn/util/intrusive_list.hpp"
 
@@ -33,6 +38,8 @@ struct AudioDeviceName;
 
 namespace dsp {
 
+Result Start();
+void Stop();
 void Sleep();
 void Wake();
 
@@ -107,6 +114,8 @@ bool IsActiveOutputDeviceEstimatedLowLatency();
 }
 
 class AudioRenderSystem {
+  friend class AudioRenderSystemManager;
+
 public:
   static constexpr float VoiceDropParameterMax = 4.0f;
   static constexpr uint32_t RenderingTimeLimitMax = 100;
@@ -162,6 +171,30 @@ public:
   Result QuerySystemEvent(uint32_t* handle);
   void SetVoiceDropParameter(float parameter);
 
+  bool IsActive() const {
+    return m_IsActive;
+  }
+
+  int GetMixBufferCount() const {
+    return m_MixBufferCount;
+  }
+
+  int GetSampleCount() const {
+    return m_SampleCount;
+  }
+
+  int GetSampleRate() const {
+    return m_SampleRate;
+  }
+
+  uint32_t GetRenderingTimeLimit() const {
+    return m_RenderingTimeLimit;
+  }
+
+  float GetVoiceDropParameter() const {
+    return m_VoiceDropParameter;
+  }
+
 private:
   struct StaticVoiceDropController {
     bool isEnabled;
@@ -179,7 +212,8 @@ private:
     bool isVoiceDumpEnabled;
   };
 
-  uint8_t reserved0[17];
+  util::IntrusiveListNode m_ListNode;
+  uint8_t reserved10;
   bool m_IsActive;
   uint8_t reserved1[38];
   int m_MixBufferCount;
@@ -218,7 +252,7 @@ private:
 };
 
 
-class AudioRendererManagerImpl {
+class AudioRendererManagerImpl : public sf::IServiceObject {
 public:
   class AudioRendererImpl {
   public:
@@ -233,6 +267,13 @@ public:
       const sf::OutBuffer& performance, const sf::InBuffer& input);
     Result SetVoiceDropParameter(float parameter);
     Result ExecuteAudioRendererRendering();
+    Result GetSampleRate(sf::Out<int> pOutSampleRate);
+    Result GetSampleCount(sf::Out<int> pOutSampleCount);
+    Result GetMixBufferCount(sf::Out<int> pOutMixBufferCount);
+    Result GetState(sf::Out<int> pOutState);
+    Result GetRenderingTimeLimit(sf::Out<int> pOutLimit);
+    Result QuerySystemEvent(sf::Out<sf::NativeHandle> pOutHandle);
+    Result GetVoiceDropParameter(sf::Out<float> pOutParameter);
 
   private:
     uint8_t reserved[96];
@@ -241,6 +282,41 @@ public:
 
   class AudioDeviceImpl {
   public:
+    AudioDeviceImpl(AudioRendererManagerImpl* parent,
+      applet::AppletResourceUserId& id, uint32_t revision);
+    ~AudioDeviceImpl();
+
+    Result ListAudioDeviceNameInternal(const sf::OutBuffer& names,
+      sf::Out<int> pOutCount);
+    Result ListAudioDeviceName(const sf::OutBuffer& names,
+      sf::Out<int> pOutCount);
+    Result ListAudioDeviceNameAuto(const sf::OutBuffer& names,
+      sf::Out<int> pOutCount);
+    Result SetAudioDeviceOutputVolumeInternal(const sf::InBuffer& name,
+      float volume);
+    Result SetAudioDeviceOutputVolume(const sf::InBuffer& name, float volume);
+    Result SetAudioDeviceOutputVolumeAuto(const sf::InBuffer& name,
+      float volume);
+    Result GetAudioDeviceOutputVolumeInternal(const sf::InBuffer& name,
+      sf::Out<float> pOutVolume);
+    Result GetAudioDeviceOutputVolume(const sf::InBuffer& name,
+      sf::Out<float> pOutVolume);
+    Result GetAudioDeviceOutputVolumeAuto(const sf::InBuffer& name,
+      sf::Out<float> pOutVolume);
+    Result QueryAudioDeviceSystemEvent(sf::Out<sf::NativeHandle> pOutHandle);
+    Result QueryAudioDeviceInputEvent(sf::Out<sf::NativeHandle> pOutHandle);
+    Result QueryAudioDeviceOutputEvent(sf::Out<sf::NativeHandle> pOutHandle);
+    Result GetActiveChannelCount(sf::Out<int> pOutCount);
+    Result ListAudioOutputDeviceName(const sf::OutBuffer& names,
+      sf::Out<int> pOutCount);
+    Result AcquireAudioInputDeviceNotification(
+      sf::Out<sf::NativeHandle> pOutHandle, uint64_t processId);
+    Result AcquireAudioOutputDeviceNotification(
+      sf::Out<sf::NativeHandle> pOutHandle, uint64_t processId);
+    Result IsAudioDeviceOutputVolumeAutoTuneEnabled(
+      sf::Out<bool> pOutIsEnabled);
+    Result IsActiveOutputDeviceEstimatedLowLatency(
+      sf::Out<bool> pOutIsLowLatency);
     Result GetActiveAudioDeviceNameInternal(const sf::OutBuffer& name);
     Result GetActiveAudioDeviceName(const sf::OutBuffer& name);
     Result GetActiveAudioDeviceNameAuto(const sf::OutBuffer& name);
@@ -250,13 +326,27 @@ public:
     Result SetAudioDeviceOutputVolumeAutoTuneEnabled(bool isEnabled);
 
   private:
-    uint8_t reserved[8];
+    sf::SharedPointer<AudioRendererManagerImpl> m_Parent;
     applet::AppletResourceUserId m_AppletResourceUserId;
     uint32_t m_Revision;
   };
 
+  int AcquireSessionId();
+  void ReleaseSessionId(int sessionId);
+  Result GetWorkBufferSize(sf::Out<int64_t> pOutSize,
+    const audio::detail::AudioRendererParameterInternal& parameter);
+
   void Sleep();
   void Wake();
+
+private:
+  static constexpr int SessionCountMax = 2;
+
+  uint8_t reserved8[0x1828];
+  void* m_Heap;
+  int m_SessionIds[SessionCountMax];
+  int m_SessionIdIndex;
+  os::SdkMutexType m_SessionIdMutex;
 };
 
 class AudioRenderSystemManager {
@@ -269,14 +359,22 @@ public:
   static void CreateInstance(void* buffer, size_t size);
   static void DeleteInstance();
   static AudioRenderSystemManager* GetInstance();
+  void InitializeUnsafe();
+  void FinalizeUnsafe();
+  bool Add(AudioRenderSystem& system);
+  void Remove(AudioRenderSystem& system);
   void Sleep();
   void Wake();
 
 private:
   static AudioRenderSystemManager* sManagerInstance;
 
-  uint8_t m_State[456];
-  bool m_IsRunning;
+  static constexpr int SystemCountMax = 2;
+
+  os::SdkMutexType m_Mutex;
+  os::SdkMutexType m_ListMutex;
+  os::ThreadType m_Thread;
+  std::atomic<bool> m_IsRunning;
   util::IntrusiveListNode m_Systems;
 };
 

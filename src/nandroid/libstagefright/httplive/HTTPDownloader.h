@@ -73,6 +73,8 @@ struct HTTPDownloader : public RefBase {
             const char *url, uint8_t *curPlaylistHash, bool *unchanged);
 
 private:
+    friend struct LiveSession;
+
     sp<HTTPBase> mHTTPDataSource;
     sp<DataSource> mDataSource;
     KeyedVector<String8, String8> mExtraHeaders;

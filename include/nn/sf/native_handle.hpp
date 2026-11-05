@@ -31,6 +31,15 @@ class NativeHandle {
     return m_IsManaged;
   }
 
+  void Swap(NativeHandle& other) {
+    uint32_t handle = m_Handle;
+    m_Handle = other.m_Handle;
+    other.m_Handle = handle;
+    bool isManaged = m_IsManaged;
+    m_IsManaged = other.m_IsManaged;
+    other.m_IsManaged = isManaged;
+  }
+
   void Detach() {
     m_IsManaged = false;
     m_Handle = 0;

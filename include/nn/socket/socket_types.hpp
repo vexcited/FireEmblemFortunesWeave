@@ -16,8 +16,22 @@ struct fd_set {
 
 struct timeval;
 struct pollfd;
-struct msghdr;
-struct mmsghdr;
+struct iovec;
+
+struct msghdr {
+  void* msg_name;
+  uint32_t msg_namelen;
+  iovec* msg_iov;
+  int msg_iovlen;
+  void* msg_control;
+  uint32_t msg_controllen;
+  int msg_flags;
+};
+
+struct mmsghdr {
+  msghdr msg_hdr;
+  uint32_t msg_len;
+};
 
 struct in_addr {
   uint32_t s_addr;
@@ -126,8 +140,22 @@ struct FdSet {
 
 struct TimeVal;
 struct PollFd;
-struct MsgHdr;
-struct MMsgHdr;
+struct IoVec;
+
+struct MsgHdr {
+  void* msg_name;
+  uint32_t msg_namelen;
+  IoVec* msg_iov;
+  int msg_iovlen;
+  void* msg_control;
+  uint32_t msg_controllen;
+  MsgFlag msg_flags;
+};
+
+struct MMsgHdr {
+  MsgHdr msg_hdr;
+  uint32_t msg_len;
+};
 
 struct AddrInfo {
   int ai_flags;
@@ -176,7 +204,45 @@ struct DnsAddress;
 struct StatisticsMemory;
 struct IfAddrs;
 struct IfMAddrs;
-class Config;
+class Config {
+ public:
+  static constexpr uint32_t DefaultVersion = 0x1000c;
+  static constexpr size_t DefaultTcpInitialSendBufferSize = 0x8000;
+  static constexpr size_t DefaultTcpInitialReceiveBufferSize = 0x10000;
+  static constexpr size_t DefaultTcpAutoSendBufferSizeMax = 0x40000;
+  static constexpr size_t DefaultTcpAutoReceiveBufferSizeMax = 0x40000;
+  static constexpr size_t DefaultUdpSendBufferSize = 0x2400;
+  static constexpr size_t DefaultUdpReceiveBufferSize = 0xa500;
+  static constexpr int DefaultSocketBufferEfficiency = 4;
+
+  Config(void* memoryPool, size_t memoryPoolSize, size_t allocatorPoolSize,
+    int concurrencyLimit)
+    : m_Version(DefaultVersion), m_IsSystemClient(false),
+      m_MemoryPool(memoryPool), m_MemoryPoolSize(memoryPoolSize),
+      m_AllocatorPoolSize(allocatorPoolSize),
+      m_TcpInitialSendBufferSize(DefaultTcpInitialSendBufferSize),
+      m_TcpInitialReceiveBufferSize(DefaultTcpInitialReceiveBufferSize),
+      m_TcpAutoSendBufferSizeMax(DefaultTcpAutoSendBufferSizeMax),
+      m_TcpAutoReceiveBufferSizeMax(DefaultTcpAutoReceiveBufferSizeMax),
+      m_UdpSendBufferSize(DefaultUdpSendBufferSize),
+      m_UdpReceiveBufferSize(DefaultUdpReceiveBufferSize),
+      m_SocketBufferEfficiency(DefaultSocketBufferEfficiency),
+      m_ConcurrencyLimit(concurrencyLimit) {}
+
+  uint32_t m_Version;
+  bool m_IsSystemClient;
+  void* m_MemoryPool;
+  size_t m_MemoryPoolSize;
+  size_t m_AllocatorPoolSize;
+  size_t m_TcpInitialSendBufferSize;
+  size_t m_TcpInitialReceiveBufferSize;
+  size_t m_TcpAutoSendBufferSizeMax;
+  size_t m_TcpAutoReceiveBufferSizeMax;
+  size_t m_UdpSendBufferSize;
+  size_t m_UdpReceiveBufferSize;
+  int m_SocketBufferEfficiency;
+  int m_ConcurrencyLimit;
+};
 
 using IoctlRequest = util::BitPack<uint32_t, anif::IoctlRequestField>;
 

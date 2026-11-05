@@ -45,8 +45,8 @@ int Socket(Family domain, Type type, Protocol protocol);
 int Socket(int domain, int type, int protocol);
 int SocketExempt(Family domain, Type type, Protocol protocol);
 int SocketExempt(int domain, int type, int protocol);
-ssize_t Write(int socket, const void* buffer, size_t length);
-ssize_t Read(int socket, void* buffer, size_t length);
+int Write(int socket, const void* buffer, size_t length);
+int Read(int socket, void* buffer, size_t length);
 int Close(int socket);
 int Select(int count, FdSet* readFds, FdSet* writeFds, FdSet* exceptFds,
   TimeVal* timeout);

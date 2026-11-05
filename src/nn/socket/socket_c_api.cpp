@@ -76,11 +76,11 @@ int nnsocketSocket(int domain, int type, int protocol) {
   return Socket(domain, type, protocol);
 }
 
-ssize_t nnsocketWrite(int socket, const void* buffer, size_t length) {
+int nnsocketWrite(int socket, const void* buffer, size_t length) {
   return Write(socket, buffer, length);
 }
 
-ssize_t nnsocketRead(int socket, void* buffer, size_t length) {
+int nnsocketRead(int socket, void* buffer, size_t length) {
   return Read(socket, buffer, length);
 }
 
