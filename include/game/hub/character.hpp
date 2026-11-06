@@ -637,13 +637,18 @@ public:
   // Disabling cancels the running action.
   void SetEnableRunning(bool isEnable);
 
+  // Starts the next stacked action when nothing runs.
+  void UpdateRunning();
+
   bool IsException() const {
     std::shared_ptr<CharacterAction> action = current_.lock();
     return action != nullptr && action->IsException();
   }
 
 private:
-  uint8_t unknown_00_[0x30];
+  uint8_t unknown_00_[0x9];
+  bool isEnableRunning_;
+  uint8_t unknown_0a_[0x26];
   std::weak_ptr<CharacterAction> current_;
 };
 

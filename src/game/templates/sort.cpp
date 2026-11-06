@@ -25,8 +25,6 @@ using KeyedRange = UnrecoveredKeyed<N>**;
 
 }
 
-// The introsort copies calling these keep their __sort3 to __sort5 helpers
-// as separate chunks the verifier cannot pair yet.
 template bool std::__insertion_sort_incomplete<std::_ClassicAlgPolicy,
   game::KeyLess&, game::KeyedRange<0>>(game::KeyedRange<0>,
     game::KeyedRange<0>, game::KeyLess&);
@@ -42,3 +40,19 @@ template bool std::__insertion_sort_incomplete<std::_ClassicAlgPolicy,
 template bool std::__insertion_sort_incomplete<std::_ClassicAlgPolicy,
   game::KeyLess&, game::KeyedRange<4>>(game::KeyedRange<4>,
     game::KeyedRange<4>, game::KeyLess&);
+
+template void std::__introsort<std::_ClassicAlgPolicy, game::KeyLess&,
+  game::KeyedRange<0>, false>(game::KeyedRange<0>, game::KeyedRange<0>,
+    game::KeyLess&, std::ptrdiff_t, bool);
+template void std::__introsort<std::_ClassicAlgPolicy, game::KeyLess&,
+  game::KeyedRange<1>, false>(game::KeyedRange<1>, game::KeyedRange<1>,
+    game::KeyLess&, std::ptrdiff_t, bool);
+template void std::__introsort<std::_ClassicAlgPolicy, game::KeyLess&,
+  game::KeyedRange<2>, false>(game::KeyedRange<2>, game::KeyedRange<2>,
+    game::KeyLess&, std::ptrdiff_t, bool);
+template void std::__introsort<std::_ClassicAlgPolicy, game::KeyLess&,
+  game::KeyedRange<3>, false>(game::KeyedRange<3>, game::KeyedRange<3>,
+    game::KeyLess&, std::ptrdiff_t, bool);
+template void std::__introsort<std::_ClassicAlgPolicy, game::KeyLess&,
+  game::KeyedRange<4>, false>(game::KeyedRange<4>, game::KeyedRange<4>,
+    game::KeyLess&, std::ptrdiff_t, bool);

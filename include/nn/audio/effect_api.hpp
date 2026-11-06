@@ -148,6 +148,28 @@ struct CaptureType {
   EffectInfoVersion2* _pEffectInfo;
 };
 
+struct AuxReverbType {
+  void* _pWorkBuffer;
+  size_t _size;
+};
+
+struct AuxDelayType {
+  void* _pWorkBuffer;
+  size_t _size;
+};
+
+struct AuxLightLimiterType {
+  void* _pWorkBuffer;
+  size_t _size;
+};
+
+void SetAuxReverbParameters(AuxReverbType* reverb,
+  const ReverbParameterSet* parameters);
+void SetAuxDelayParameters(AuxDelayType* delay,
+  const DelayParameterSet* parameters);
+void SetAuxLightLimiterParameters(AuxLightLimiterType* limiter,
+  const LightLimiterParameterSet* parameters);
+
 struct AuxBufferStatistics {
   int sendBufferLostSampleCount;
   int returnBufferLostSampleCount;

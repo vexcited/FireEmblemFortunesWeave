@@ -251,7 +251,15 @@ public:
   size_t GetRequiredMemSize();
 
 private:
-  uint8_t reserved8_[0x58];
+  uint8_t reserved8_[0x10];
+  nn::audio::AuxType m_AuxType;
+  std::atomic<uint64_t> m_RemovedFrameCount;
+  uint8_t reserved28_[0x8];
+  bool m_IsActive;
+  bool m_IsEnabled;
+  uint8_t reserved32_[0x2e];
 };
+
+static_assert(sizeof(EffectAux) == 0x60);
 
 }

@@ -105,9 +105,12 @@ public:
   void setWorkBuffer(void* buffer, size_t size);
   void updateParameters();
 
-  uint8_t unknown_60_[0x18];
+  uint8_t unknown_60_[0x8];
+  nn::audio::AuxReverbType reverb;
   nn::audio::ReverbParameterSet parameters;
-  uint8_t unknown_a4_[0x1c];
+  uint8_t unknown_a4_[0xc];
+  void* workBuffer;
+  uint8_t unknown_b8_[0x8];
   int bus;
   int sampleRate;
 };
@@ -134,9 +137,12 @@ public:
   void setWorkBuffer(void* buffer, size_t size);
   void updateParameters();
 
-  uint8_t unknown_60_[0x18];
+  uint8_t unknown_60_[0x8];
+  nn::audio::AuxDelayType delay;
   nn::audio::DelayParameterSet parameters;
-  uint8_t unknown_98_[0x18];
+  uint8_t unknown_98_[0x8];
+  void* workBuffer;
+  uint8_t unknown_a8_[0x8];
   int bus;
   int sampleRate;
   uint8_t unknown_b8_[0x8];
@@ -151,9 +157,12 @@ public:
   void setWorkBuffer(void* buffer, size_t size);
   void updateParameters();
 
-  uint8_t unknown_60_[0x18];
+  uint8_t unknown_60_[0x8];
+  nn::audio::AuxLightLimiterType limiter;
   nn::audio::LightLimiterParameterSet parameters;
-  uint8_t unknown_a0_[0x18];
+  uint8_t unknown_a0_[0x8];
+  void* workBuffer;
+  uint8_t unknown_b0_[0x8];
   int bus;
   int sampleRate;
   uint8_t unknown_c0_[0x8];
@@ -268,7 +277,9 @@ public:
   void setUnknown70(bool value);
 
 private:
-  uint8_t body_[0x38];
+  uint8_t unknown_60_[0x10];
+  bool unknown_70_;
+  uint8_t unknown_71_[0x27];
 };
 
 class MuteEffect : public nn::atk::EffectAux {
@@ -303,7 +314,9 @@ public:
   void unknown175800(int, float);
   void unknown175c20(int);
 
-  uint8_t unknown_60_[0xc];
+  uint8_t unknown_60_[0x8];
+  bool unknown_68_;
+  uint8_t unknown_69_[0x3];
   int unknown_6c_;
   int unknown_70_;
   int unknown_74_;
@@ -341,9 +354,11 @@ public:
   void disableUnknown68();
   int getUnknown1074() const;
 
-  uint8_t unknown_60_[0x1010];
+  uint8_t unknown_60_[0x8];
+  bool unknown_68_;
+  uint8_t unknown_69_[0x1007];
   float unknown_1070_;
-  uint8_t unknown_1074_[0x4];
+  int unknown_1074_;
 };
 
 class SpeakerEffect : public nn::atk::EffectAux {

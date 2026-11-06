@@ -13,27 +13,12 @@
 
 namespace nn::audio {
 
-struct AuxReverbType {
-  void* _pWorkBuffer;
-  size_t _size;
-};
-
-struct AuxDelayType {
-  void* _pWorkBuffer;
-  size_t _size;
-};
-
 struct AuxI3dl2ReverbType {
   void* _pWorkBuffer;
   size_t _size;
 };
 
 struct AuxCompressorType {
-  void* _pWorkBuffer;
-  size_t _size;
-};
-
-struct AuxLightLimiterType {
   void* _pWorkBuffer;
   size_t _size;
 };

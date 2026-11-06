@@ -22,6 +22,9 @@ void SetLightLimiterOutputGain(LightLimiterType* limiter, float gain);
 void SetLightLimiterEnabled(LightLimiterType* limiter, bool enabled);
 bool IsLightLimiterRemovable(const LightLimiterType* limiter);
 
+void SetAuxEnabled(AuxType* aux, bool enabled);
+bool IsAuxRemovable(const AuxType* aux);
+
 void SetI3dl2ReverbReflectionDelayTime(I3dl2ReverbType* reverb,
   TimeSpan time);
 void SetI3dl2ReverbLateReverbDelayTime(I3dl2ReverbType* reverb,
@@ -469,11 +472,28 @@ void EffectCompressor::SetOutGain(float gain) {
   });
 }
 
-void EffectCompressor::SetMakeupGainEnabled(bool isEnabled) {
-  m_IsMakeupGainEnabled = isEnabled;
+// The original never stores the argument, it only reapplies the current flag.
+void EffectCompressor::SetMakeupGainEnabled(bool) {
   Apply(m_IsActive, [&] {
     nn::audio::SetCompressorMakeupGainEnabled(&m_Compressor,
       m_IsMakeupGainEnabled);
+  });
+}
+
+bool EffectAux::IsEnabled() const {
+  return m_IsEnabled;
+}
+
+void EffectAux::SetEnabled(bool isEnabled) {
+  m_IsEnabled = isEnabled;
+  Apply(m_IsActive, [&] {
+    nn::audio::SetAuxEnabled(&m_AuxType, isEnabled);
+  });
+}
+
+bool EffectAux::IsRemovable() const {
+  return CheckRemovable(m_IsActive, m_RemovedFrameCount, [&] {
+    return nn::audio::IsAuxRemovable(&m_AuxType);
   });
 }
 
