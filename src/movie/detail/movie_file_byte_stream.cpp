@@ -4,6 +4,7 @@
 #include <strings.h>
 
 #include "movie/detail/movie_file_byte_stream.hpp"
+#include "movie/detail/movie_task.hpp"
 #include "movie/detail/movie_utils.hpp"
 #include "nn/diag/diag_abort.hpp"
 #include "nn/fs/fs_file.hpp"
@@ -170,6 +171,45 @@ MovieResult FileByteStream::GetLength(size_t* pOutLength) {
   return result;
 }
 
+MovieResult FileByteStream::StartAsyncRead(uint8_t* buffer, size_t size,
+  IAsyncCallback* callback) {
+  if (size == 0) {
+    return MovieResult_InvalidArgument;
+  }
+
+  m_Mutex.Lock();
+  MovieResult status;
+  if (m_IsFinalized) {
+    status = StatusFinalized;
+  }
+  else if (!m_IsFileOpen) {
+    status = StatusClosed;
+  }
+  else {
+    IAllocator* allocator = m_pAllocator;
+    void* storage = allocator->Allocate(sizeof(ReadAsyncResult));
+    if (storage == nullptr) {
+      status = MovieResult_OutOfMemory;
+    }
+    else {
+      RefPtr<ReadAsyncResult> result(new (storage) ReadAsyncResult(allocator,
+        m_Position, buffer, size, callback));
+      RefPtr<FileByteStream> self(this);
+      status = QueueTask(m_pAllocator, m_pTaskQueue.Get(),
+        [this, self, result]() {
+          ReadTask(result.Get());
+        });
+      if (IsSucceeded(status)) {
+        status = MovieResult_Success;
+        m_Position += size;
+      }
+    }
+  }
+
+  m_Mutex.Unlock();
+  return status;
+}
+
 MovieResult FileByteStream::CompleteAsyncRead(size_t* pOutReadSize,
   IAsyncResult* result) {
   *pOutReadSize = 0;
@@ -196,6 +236,7 @@ void FileByteStream::ReadTask(ReadAsyncResult* result) {
   QueueAsyncCallback(result);
 }
 
+__attribute__((noinline))
 MovieResult FileByteStream::ProcessRead(ReadAsyncResult* result) {
   m_Mutex.Lock();
   MovieResult status;

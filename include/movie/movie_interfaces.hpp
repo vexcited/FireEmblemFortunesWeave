@@ -49,8 +49,12 @@ namespace movie {
 
 class IAsyncCallback;
 class IAsyncResult;
-class ITask;
 class ITaskQueueCancellationToken;
+
+class ITask : public IMovieInterface {
+public:
+  virtual void Run() = 0;
+};
 class ITaskQueueRegistrationToken;
 
 class ITaskQueue : public IMovieObject {

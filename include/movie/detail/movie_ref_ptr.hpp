@@ -18,7 +18,12 @@ public:
     Reset();
   }
 
-  RefPtr(const RefPtr&) = delete;
+  RefPtr(const RefPtr& other) : m_p(other.m_p) {
+    if (m_p != nullptr) {
+      m_p->AddRef();
+    }
+  }
+
   RefPtr& operator=(const RefPtr&) = delete;
 
   RefPtr& operator=(T* p) {

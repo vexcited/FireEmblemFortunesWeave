@@ -3,6 +3,7 @@
 #include <new>
 
 #include "movie/detail/movie_byte_stream_on_buffer.hpp"
+#include "movie/detail/movie_task.hpp"
 
 namespace movie::detail {
 
@@ -104,6 +105,45 @@ MovieResult ByteStreamOnBuffer::GetLength(size_t* pOutLength) {
 
   m_Mutex.Unlock();
   return result;
+}
+
+MovieResult ByteStreamOnBuffer::StartAsyncRead(uint8_t* buffer, size_t size,
+  IAsyncCallback* callback) {
+  if (size == 0) {
+    return MovieResult_InvalidArgument;
+  }
+
+  m_Mutex.Lock();
+  MovieResult status;
+  if (m_IsFinalized) {
+    status = StatusFinalized;
+  }
+  else if (!m_IsOpen) {
+    status = StatusClosed;
+  }
+  else {
+    IAllocator* allocator = m_pAllocator;
+    void* storage = allocator->Allocate(sizeof(ReadAsyncResult));
+    if (storage == nullptr) {
+      status = MovieResult_OutOfMemory;
+    }
+    else {
+      RefPtr<ReadAsyncResult> result(new (storage) ReadAsyncResult(allocator,
+        m_Position, buffer, size, callback));
+      RefPtr<ByteStreamOnBuffer> self(this);
+      status = QueueTask(m_pAllocator, m_pTaskQueue.Get(),
+        [this, self, result]() {
+          ReadTask(result.Get());
+        });
+      if (IsSucceeded(status)) {
+        status = MovieResult_Success;
+        m_Position += size;
+      }
+    }
+  }
+
+  m_Mutex.Unlock();
+  return status;
 }
 
 MovieResult ByteStreamOnBuffer::CompleteAsyncRead(size_t* pOutReadSize,

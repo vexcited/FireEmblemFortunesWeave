@@ -103,6 +103,7 @@ struct MultiWaitHolderType {
 };
 
 void InitializeMultiWait(MultiWaitType* wait);
+void FinalizeMultiWait(MultiWaitType* wait);
 void InitializeMultiWaitHolder(MultiWaitHolderType* holder, ThreadType* thread);
 void InitializeMultiWaitHolder(MultiWaitHolderType* holder, uint32_t handle);
 void FinalizeMultiWaitHolder(MultiWaitHolderType* holder);

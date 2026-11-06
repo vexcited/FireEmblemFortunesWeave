@@ -155,50 +155,50 @@ MediaDecoderState::MediaDecoderState() {
   m_ValidStates[MediaDecoderFunctions_GetAudioFrameProperties][6] = State_None;
   m_ValidStates[MediaDecoderFunctions_GetAudioFrameProperties][7] = State_None;
   m_ValidStates[MediaDecoderFunctions_GetAudioFrameProperties][8] = State_None;
-  m_ValidStates[MediaDecoderFunctions_RegisterAudioFrame][0] = State_Started;
-  m_ValidStates[MediaDecoderFunctions_RegisterAudioFrame][1] = State_None;
-  m_ValidStates[MediaDecoderFunctions_RegisterAudioFrame][2] = State_None;
-  m_ValidStates[MediaDecoderFunctions_RegisterAudioFrame][3] = State_None;
+  m_ValidStates[MediaDecoderFunctions_GetAudioFrameRequirements][0] = State_Started;
+  m_ValidStates[MediaDecoderFunctions_GetAudioFrameRequirements][1] = State_None;
+  m_ValidStates[MediaDecoderFunctions_GetAudioFrameRequirements][2] = State_None;
+  m_ValidStates[MediaDecoderFunctions_GetAudioFrameRequirements][3] = State_None;
+  m_ValidStates[MediaDecoderFunctions_GetAudioFrameRequirements][4] = State_None;
+  m_ValidStates[MediaDecoderFunctions_GetAudioFrameRequirements][5] = State_None;
+  m_ValidStates[MediaDecoderFunctions_GetAudioFrameRequirements][6] = State_None;
+  m_ValidStates[MediaDecoderFunctions_GetAudioFrameRequirements][7] = State_None;
+  m_ValidStates[MediaDecoderFunctions_GetAudioFrameRequirements][8] = State_None;
+  m_ValidStates[MediaDecoderFunctions_RegisterAudioFrame][0] = State_Initialized;
+  m_ValidStates[MediaDecoderFunctions_RegisterAudioFrame][1] = State_Prepared;
+  m_ValidStates[MediaDecoderFunctions_RegisterAudioFrame][2] = State_Started;
+  m_ValidStates[MediaDecoderFunctions_RegisterAudioFrame][3] = State_Stopped;
   m_ValidStates[MediaDecoderFunctions_RegisterAudioFrame][4] = State_None;
   m_ValidStates[MediaDecoderFunctions_RegisterAudioFrame][5] = State_None;
   m_ValidStates[MediaDecoderFunctions_RegisterAudioFrame][6] = State_None;
   m_ValidStates[MediaDecoderFunctions_RegisterAudioFrame][7] = State_None;
   m_ValidStates[MediaDecoderFunctions_RegisterAudioFrame][8] = State_None;
-  m_ValidStates[MediaDecoderFunctions_AcquireAudioFrame][0] = State_Initialized;
-  m_ValidStates[MediaDecoderFunctions_AcquireAudioFrame][1] = State_Prepared;
-  m_ValidStates[MediaDecoderFunctions_AcquireAudioFrame][2] = State_Started;
-  m_ValidStates[MediaDecoderFunctions_AcquireAudioFrame][3] = State_Stopped;
+  m_ValidStates[MediaDecoderFunctions_AcquireAudioFrame][0] = State_Started;
+  m_ValidStates[MediaDecoderFunctions_AcquireAudioFrame][1] = State_None;
+  m_ValidStates[MediaDecoderFunctions_AcquireAudioFrame][2] = State_None;
+  m_ValidStates[MediaDecoderFunctions_AcquireAudioFrame][3] = State_None;
   m_ValidStates[MediaDecoderFunctions_AcquireAudioFrame][4] = State_None;
   m_ValidStates[MediaDecoderFunctions_AcquireAudioFrame][5] = State_None;
   m_ValidStates[MediaDecoderFunctions_AcquireAudioFrame][6] = State_None;
   m_ValidStates[MediaDecoderFunctions_AcquireAudioFrame][7] = State_None;
   m_ValidStates[MediaDecoderFunctions_AcquireAudioFrame][8] = State_None;
-  m_ValidStates[MediaDecoderFunctions_ReleaseAudioFrame][0] = State_Started;
-  m_ValidStates[MediaDecoderFunctions_ReleaseAudioFrame][1] = State_None;
-  m_ValidStates[MediaDecoderFunctions_ReleaseAudioFrame][2] = State_None;
-  m_ValidStates[MediaDecoderFunctions_ReleaseAudioFrame][3] = State_None;
-  m_ValidStates[MediaDecoderFunctions_ReleaseAudioFrame][4] = State_None;
-  m_ValidStates[MediaDecoderFunctions_ReleaseAudioFrame][5] = State_None;
-  m_ValidStates[MediaDecoderFunctions_ReleaseAudioFrame][6] = State_None;
-  m_ValidStates[MediaDecoderFunctions_ReleaseAudioFrame][7] = State_None;
-  m_ValidStates[MediaDecoderFunctions_ReleaseAudioFrame][8] = State_None;
-  m_ValidStates[MediaDecoderFunctions_GetAudioFrameRequirements][0] =
+  m_ValidStates[MediaDecoderFunctions_ReleaseAudioFrame][0] =
     State_Started;
-  m_ValidStates[MediaDecoderFunctions_GetAudioFrameRequirements][1] =
+  m_ValidStates[MediaDecoderFunctions_ReleaseAudioFrame][1] =
     State_None;
-  m_ValidStates[MediaDecoderFunctions_GetAudioFrameRequirements][2] =
+  m_ValidStates[MediaDecoderFunctions_ReleaseAudioFrame][2] =
     State_None;
-  m_ValidStates[MediaDecoderFunctions_GetAudioFrameRequirements][3] =
+  m_ValidStates[MediaDecoderFunctions_ReleaseAudioFrame][3] =
     State_None;
-  m_ValidStates[MediaDecoderFunctions_GetAudioFrameRequirements][4] =
+  m_ValidStates[MediaDecoderFunctions_ReleaseAudioFrame][4] =
     State_None;
-  m_ValidStates[MediaDecoderFunctions_GetAudioFrameRequirements][5] =
+  m_ValidStates[MediaDecoderFunctions_ReleaseAudioFrame][5] =
     State_None;
-  m_ValidStates[MediaDecoderFunctions_GetAudioFrameRequirements][6] =
+  m_ValidStates[MediaDecoderFunctions_ReleaseAudioFrame][6] =
     State_None;
-  m_ValidStates[MediaDecoderFunctions_GetAudioFrameRequirements][7] =
+  m_ValidStates[MediaDecoderFunctions_ReleaseAudioFrame][7] =
     State_None;
-  m_ValidStates[MediaDecoderFunctions_GetAudioFrameRequirements][8] =
+  m_ValidStates[MediaDecoderFunctions_ReleaseAudioFrame][8] =
     State_None;
   m_ValidStates[MediaDecoderFunctions_GetVideoFrameReadyEvent][0] =
     State_Prepared;
@@ -230,41 +230,32 @@ MediaDecoderState::MediaDecoderState() {
     State_None;
   m_ValidStates[MediaDecoderFunctions_GetVideoFrameFormatChangedEvent][8] =
     State_None;
-  m_ValidStates[MediaDecoderFunctions_GetVideoFrameRequirements][0] =
-    State_Prepared;
-  m_ValidStates[MediaDecoderFunctions_GetVideoFrameRequirements][1] =
-    State_Started;
-  m_ValidStates[MediaDecoderFunctions_GetVideoFrameRequirements][2] =
-    State_Stopped;
-  m_ValidStates[MediaDecoderFunctions_GetVideoFrameRequirements][3] =
-    State_None;
-  m_ValidStates[MediaDecoderFunctions_GetVideoFrameRequirements][4] =
-    State_None;
-  m_ValidStates[MediaDecoderFunctions_GetVideoFrameRequirements][5] =
-    State_None;
-  m_ValidStates[MediaDecoderFunctions_GetVideoFrameRequirements][6] =
-    State_None;
-  m_ValidStates[MediaDecoderFunctions_GetVideoFrameRequirements][7] =
-    State_None;
-  m_ValidStates[MediaDecoderFunctions_GetVideoFrameRequirements][8] =
-    State_None;
   m_ValidStates[MediaDecoderFunctions_GetVideoFrameProperties][0] =
-    State_Initialized;
-  m_ValidStates[MediaDecoderFunctions_GetVideoFrameProperties][1] =
     State_Prepared;
-  m_ValidStates[MediaDecoderFunctions_GetVideoFrameProperties][2] =
+  m_ValidStates[MediaDecoderFunctions_GetVideoFrameProperties][1] =
     State_Started;
-  m_ValidStates[MediaDecoderFunctions_GetVideoFrameProperties][3] =
+  m_ValidStates[MediaDecoderFunctions_GetVideoFrameProperties][2] =
     State_Stopped;
-  m_ValidStates[MediaDecoderFunctions_GetVideoFrameProperties][4] = State_None;
-  m_ValidStates[MediaDecoderFunctions_GetVideoFrameProperties][5] = State_None;
-  m_ValidStates[MediaDecoderFunctions_GetVideoFrameProperties][6] = State_None;
-  m_ValidStates[MediaDecoderFunctions_GetVideoFrameProperties][7] = State_None;
-  m_ValidStates[MediaDecoderFunctions_GetVideoFrameProperties][8] = State_None;
-  m_ValidStates[MediaDecoderFunctions_RegisterVideoFrame][0] = State_Started;
-  m_ValidStates[MediaDecoderFunctions_RegisterVideoFrame][1] = State_None;
-  m_ValidStates[MediaDecoderFunctions_RegisterVideoFrame][2] = State_None;
-  m_ValidStates[MediaDecoderFunctions_RegisterVideoFrame][3] = State_None;
+  m_ValidStates[MediaDecoderFunctions_GetVideoFrameProperties][3] =
+    State_None;
+  m_ValidStates[MediaDecoderFunctions_GetVideoFrameProperties][4] =
+    State_None;
+  m_ValidStates[MediaDecoderFunctions_GetVideoFrameProperties][5] =
+    State_None;
+  m_ValidStates[MediaDecoderFunctions_GetVideoFrameProperties][6] =
+    State_None;
+  m_ValidStates[MediaDecoderFunctions_GetVideoFrameProperties][7] =
+    State_None;
+  m_ValidStates[MediaDecoderFunctions_GetVideoFrameProperties][8] =
+    State_None;
+  m_ValidStates[MediaDecoderFunctions_RegisterVideoFrame][0] =
+    State_Initialized;
+  m_ValidStates[MediaDecoderFunctions_RegisterVideoFrame][1] =
+    State_Prepared;
+  m_ValidStates[MediaDecoderFunctions_RegisterVideoFrame][2] =
+    State_Started;
+  m_ValidStates[MediaDecoderFunctions_RegisterVideoFrame][3] =
+    State_Stopped;
   m_ValidStates[MediaDecoderFunctions_RegisterVideoFrame][4] = State_None;
   m_ValidStates[MediaDecoderFunctions_RegisterVideoFrame][5] = State_None;
   m_ValidStates[MediaDecoderFunctions_RegisterVideoFrame][6] = State_None;
@@ -279,15 +270,24 @@ MediaDecoderState::MediaDecoderState() {
   m_ValidStates[MediaDecoderFunctions_AcquireVideoFrame][6] = State_None;
   m_ValidStates[MediaDecoderFunctions_AcquireVideoFrame][7] = State_None;
   m_ValidStates[MediaDecoderFunctions_AcquireVideoFrame][8] = State_None;
-  m_ValidStates[MediaDecoderFunctions_ReleaseVideoFrame][0] = State_Prepared;
-  m_ValidStates[MediaDecoderFunctions_ReleaseVideoFrame][1] = State_Started;
-  m_ValidStates[MediaDecoderFunctions_ReleaseVideoFrame][2] = State_Stopped;
+  m_ValidStates[MediaDecoderFunctions_ReleaseVideoFrame][0] = State_Started;
+  m_ValidStates[MediaDecoderFunctions_ReleaseVideoFrame][1] = State_None;
+  m_ValidStates[MediaDecoderFunctions_ReleaseVideoFrame][2] = State_None;
   m_ValidStates[MediaDecoderFunctions_ReleaseVideoFrame][3] = State_None;
   m_ValidStates[MediaDecoderFunctions_ReleaseVideoFrame][4] = State_None;
   m_ValidStates[MediaDecoderFunctions_ReleaseVideoFrame][5] = State_None;
   m_ValidStates[MediaDecoderFunctions_ReleaseVideoFrame][6] = State_None;
   m_ValidStates[MediaDecoderFunctions_ReleaseVideoFrame][7] = State_None;
   m_ValidStates[MediaDecoderFunctions_ReleaseVideoFrame][8] = State_None;
+  m_ValidStates[MediaDecoderFunctions_GetVideoFrameRequirements][0] = State_Prepared;
+  m_ValidStates[MediaDecoderFunctions_GetVideoFrameRequirements][1] = State_Started;
+  m_ValidStates[MediaDecoderFunctions_GetVideoFrameRequirements][2] = State_Stopped;
+  m_ValidStates[MediaDecoderFunctions_GetVideoFrameRequirements][3] = State_None;
+  m_ValidStates[MediaDecoderFunctions_GetVideoFrameRequirements][4] = State_None;
+  m_ValidStates[MediaDecoderFunctions_GetVideoFrameRequirements][5] = State_None;
+  m_ValidStates[MediaDecoderFunctions_GetVideoFrameRequirements][6] = State_None;
+  m_ValidStates[MediaDecoderFunctions_GetVideoFrameRequirements][7] = State_None;
+  m_ValidStates[MediaDecoderFunctions_GetVideoFrameRequirements][8] = State_None;
   m_ValidStates[MediaDecoderFunctions_Start][0] = State_Prepared;
   m_ValidStates[MediaDecoderFunctions_Start][1] = State_None;
   m_ValidStates[MediaDecoderFunctions_Start][2] = State_None;

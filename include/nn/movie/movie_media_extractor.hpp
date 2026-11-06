@@ -30,6 +30,8 @@ enum ContainerType : int32_t;
 
 namespace detail {
 
+// Units that include the full declaration first keep it.
+#ifndef NN_MOVIE_DETAIL_THREAD_MANAGER_DEFINED
 class ThreadManager {
 public:
   static ThreadManager* GetInstance();
@@ -39,6 +41,7 @@ public:
   void _SetThreadPriorityByInstance(void* instance, int priority);
   int _GetThreadPriorityByInstance(void* instance);
 };
+#endif
 
 struct MediaExtractorHolder {
   MediaExtractorImpl* pImpl;
@@ -55,6 +58,12 @@ struct MediaMuxerHolder {
 
 class MediaExtractor {
 public:
+  MediaExtractor();
+  ~MediaExtractor();
+
+  Result Initialize(void* memory, size_t memorySize, size_t cacheSize);
+  void Finalize();
+  Result SetUriMedia(const char* uri, int length);
   Result SetInMemoryMedia(const void* data, size_t size);
   Result SetUpMediaSourceMode();
   Result GetEventsForMediaSourceMode(os::SystemEventType** pOutDataEvent,

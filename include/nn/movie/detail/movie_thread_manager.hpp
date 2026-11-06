@@ -57,6 +57,8 @@ struct ThreadInfo {
   ComponentType componentType;
 };
 
+#define NN_MOVIE_DETAIL_THREAD_MANAGER_DEFINED
+
 class ThreadManager {
 public:
   static constexpr int DefaultThreadPriority = 16;

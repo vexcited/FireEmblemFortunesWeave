@@ -7,8 +7,7 @@
 
 namespace movie::detail {
 
-// The functions are named after the matching methods of the decoder in
-// declaration order, which the valid states fit but do not prove.
+// The functions are named after the decoder methods that validate them.
 class MediaDecoderState : public MediaState {
 public:
   enum MediaDecoderFunctions : int32_t {
@@ -27,17 +26,17 @@ public:
     MediaDecoderFunctions_GetAudioFrameReadyEvent,
     MediaDecoderFunctions_GetAudioFrameFormatChangedEvent,
     MediaDecoderFunctions_GetAudioFrameProperties,
+    MediaDecoderFunctions_GetAudioFrameRequirements,
     MediaDecoderFunctions_RegisterAudioFrame,
     MediaDecoderFunctions_AcquireAudioFrame,
     MediaDecoderFunctions_ReleaseAudioFrame,
-    MediaDecoderFunctions_GetAudioFrameRequirements,
     MediaDecoderFunctions_GetVideoFrameReadyEvent,
     MediaDecoderFunctions_GetVideoFrameFormatChangedEvent,
-    MediaDecoderFunctions_GetVideoFrameRequirements,
     MediaDecoderFunctions_GetVideoFrameProperties,
     MediaDecoderFunctions_RegisterVideoFrame,
     MediaDecoderFunctions_AcquireVideoFrame,
     MediaDecoderFunctions_ReleaseVideoFrame,
+    MediaDecoderFunctions_GetVideoFrameRequirements,
     MediaDecoderFunctions_Start,
     MediaDecoderFunctions_Stop,
     MediaDecoderFunctions_Count,
