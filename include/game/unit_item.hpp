@@ -127,6 +127,14 @@ public:
     return index_;
   }
 
+  int GetLevel() const {
+    return level_;
+  }
+
+  int GetExtra() const {
+    return extra_;
+  }
+
   const SkillData* GetSharedData() const {
     return g_skill_file->At(index_);
   }
@@ -135,7 +143,9 @@ public:
 
 private:
   uint32_t index_ : 12;
-  uint32_t unknown_00_ : 20;
+  uint32_t level_ : 7;
+  uint32_t extra_ : 5;
+  uint32_t unknown_18_ : 8;
 };
 
 #pragma GCC visibility pop

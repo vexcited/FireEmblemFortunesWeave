@@ -57,6 +57,10 @@ public:
     pos_z_ = z;
   }
 
+  uint8_t GetCommand() const {
+    return command_;
+  }
+
   void SetCommand(uint8_t command) {
     command_ = command;
   }
@@ -71,6 +75,7 @@ public:
   }
 
   bool CanCommand(uint8_t command) const;
+  bool CanUseSkill(const SkillData* data) const;
 
   // The target cell or one of the cells of its area.
   bool IsInTargetPos(int x, int z) const {

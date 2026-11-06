@@ -15,6 +15,7 @@ namespace game {
 
 class Stream;
 class Unit;
+class UnitSkill;
 struct ForceMask;
 struct ItemData;
 
@@ -570,6 +571,10 @@ public:
     return job_;
   }
 
+  const JobData* GetClassJob() const {
+    return class_job_;
+  }
+
   int GetSize() const {
     return shape_.size;
   }
@@ -705,6 +710,12 @@ public:
 
     // Moves the bit of a skill to another, keeping the count of set bits.
     void MoveBit(const SkillKey& from, const SkillKey& to);
+
+    // Calls back the sources whose skill kind is in the mask.
+    void EachIndirectSkill(
+      const uint16_t& kinds,
+      const std::function<void(const UnitSkill&)>& callback
+    ) const;
 
     const SkillKey& GetSource(size_t i) const {
       return reinterpret_cast<const SkillKey&>(sources[i]);

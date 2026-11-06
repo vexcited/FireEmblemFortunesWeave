@@ -1,10 +1,12 @@
 #include <algorithm>
+#include <bit>
 #include <cstdint>
 #include <optional>
 #include <string>
 
 #include "game/game_mode_data.hpp"
 #include "game/map/script_singletons.hpp"
+#include "game/map/target.hpp"
 #include "game/menu/unit_command_menu_item.hpp"
 #include "game/unit_item.hpp"
 #include "game/unit_pool.hpp"
@@ -13,56 +15,15 @@ namespace game::map {
 
 #pragma GCC visibility push(hidden)
 
-// The command target the items check before they are decidable.
-class VTarget {
-public:
-  // The access info of the only target, a cell and the trick on it.
-  struct Access {
-    uint8_t kind;
-    int8_t x;
-    int8_t z;
-    uint8_t unknown_03_[0x3];
-    int16_t trick;
-    uint32_t unknown_08_;
-  };
-
-  virtual ~VTarget();
-  virtual void Unknown02();
-  virtual bool IsValid();
-
-  void Setup(Unit* unit, uint8_t command, const void* option = nullptr);
-
-  void SetKey(const Data* data) {
-    key_.index = data != nullptr ? data->index : 0;
-  }
-
-  void SetTrick(int trick) {
-    trick_ = trick;
-  }
-
-  bool HasSingleAccess() const {
-    return access_count_ == 1;
-  }
-
-  const Access& GetAccess() const {
-    return access_;
-  }
-
-  void ClearKey() {
-    key_.index = 0;
-  }
-
-private:
-  uint8_t unknown_08_[0x20];
-  SkillKey key_;
-  int trick_;
-  uint8_t unknown_30_[0xc];
-  Access access_;
-  uint8_t unknown_48_[0x2ff4];
-  int access_count_;
-};
-
-class Target : public Singleton<Target>, public VTarget {};
+// Any target of the command can be selected, the closures of this file
+// inline it.
+bool ITarget::CanSelectable() const {
+  bool found = false;
+  Each([&found](const TargetData&) {
+    found = true;
+  });
+  return found;
+}
 
 class MapDrawManager : public Singleton<MapDrawManager> {
 public:
@@ -111,6 +72,13 @@ private:
 // The index of the last decided unit menu item.
 extern int g_unit_menu_index;
 
+// Whether the unit has items to use, read out of line.
+bool Unknown15e09d0(const Unit* unit);
+bool Unknown752f80(const Unit* unit, const SkillData* data);
+
+// Direct skills wait while this variable counts turns.
+extern const HashedString g_gimmick_argument;
+
 // Some items read the instances through the global offset table.
 [[gnu::visibility("default")]] extern Mind* g_mind;
 [[gnu::visibility("default")]] extern Target* g_target;
@@ -139,8 +107,8 @@ public:
   virtual int Unknown80() { return 0; }
   virtual void Unknown81();
   virtual void Unknown82();
-  virtual bool Unknown83() { return Unknown78(); }
-  virtual bool Unknown84() { return true; }
+  virtual bool GetCheckVisible() { return Unknown78(); }
+  virtual bool GetCheckEnable() { return true; }
   virtual void Unknown85();
 
 protected:
@@ -161,7 +129,7 @@ protected:
 
   uint8_t unknown_53_;
   union {
-    SkillKey skill_;
+    UnitSkill skill_;
     VTarget::Access access_;
   };
 };
@@ -224,19 +192,27 @@ bool UnitMenuItem::Unknown77(VTarget* target) {
   return target->IsValid();
 }
 
+bool UnitMenuItem::Unknown78() {
+  ITarget target(Unknown71(), Unknown76());
+  target.SetKey(Unknown72());
+  const TrickData* trick = Unknown73();
+  target.SetTrick(trick != nullptr ? trick->GetIndex() : -1);
+  return target.IsValid();
+}
+
 bool UnitMenuItem::Unknown79() {
   return Unknown77(Target::GetInstance());
 }
 
 void UnitMenuItem::Unknown81() {
   if (Unknown76() != 0) {
-    Unknown75(Unknown83());
+    Unknown75(GetCheckVisible());
   }
 }
 
 void UnitMenuItem::Unknown82() {
   if (Unknown76() != 0) {
-    active_ = Unknown84();
+    active_ = GetCheckEnable();
   }
 }
 
@@ -308,8 +284,8 @@ public:
   const TrickData* Unknown73() override;
   uint8_t Unknown76() override { return 27; }
   int Unknown80() override { return 24; }
-  bool Unknown83() override;
-  bool Unknown84() override;
+  bool GetCheckVisible() override;
+  bool GetCheckEnable() override;
   void Unknown85() override;
 };
 
@@ -327,11 +303,61 @@ public:
 
 [[gnu::used]] AttackMenuItem::AttackMenuItem() = default;
 
+// Pollution skills are special skills of the categories 33 and 34.
+bool IsPollutionSkill(const SkillData* data) {
+  return data != nullptr && SkillRow::GetKind(data) == 3 &&
+    RowReader<SkillData>::Read<uint8_t>(data, 0xfa) - 33u < 2;
+}
+
+// The skill can still be used, skills without uses are never used up.
+bool HasUsesLeft(const UnitSkill& skill) {
+  const SkillData* data = skill.GetSharedData();
+  const uint8_t kind = SkillRow::GetKind(data);
+  const int uses = SkillRow::GetUses(data);
+  const int extra = kind - 5u < 2 ? skill.GetExtra() : 0;
+  if (extra == 0 && uses == 0) {
+    return true;
+  }
+  return uses - skill.GetLevel() + extra > 0;
+}
+
 class UnitSkillMenuItem : public UnitMenuItem {
 public:
   const Data* Unknown72() override;
-  bool Unknown84() override;
+
+  bool GetCheckEnable() override {
+    bool enable = false;
+    EachSkill([&enable, this](const UnitSkill& skill) {
+      if (enable || skill.GetIndex() == 0) {
+        return;
+      }
+      if (!g_mind->CanUseSkill(skill.GetSharedData())) {
+        return;
+      }
+      ITarget target(Unknown71(), Unknown76());
+      target.SetKey(skill.GetSharedData());
+      enable |= target.CanSelectable();
+    });
+    return enable;
+  }
+
   virtual int Unknown86() = 0;
+
+protected:
+  void EachSkill(const std::function<void(const UnitSkill&)>& callback) {
+    Unit* unit = Unknown71();
+    const uint16_t kinds = 1 << Unknown86();
+    unit->GetSkillList(4).EachIndirectSkill(kinds, callback);
+  }
+
+  // Keeps the last skill of the unit the filter accepts.
+  void GetUniqueSkill(const std::function<bool(const UnitSkill&)>& filter) {
+    EachSkill([&filter, this](const UnitSkill& skill) {
+      if (filter(skill)) {
+        skill_ = skill;
+      }
+    });
+  }
 };
 
 class SpecialMenuItem : public UnitSkillMenuItem {
@@ -343,8 +369,29 @@ public:
   void Unknown70() override;
   uint8_t Unknown76() override { return 6; }
   int Unknown80() override { return 15; }
-  bool Unknown83() override;
-  bool Unknown84() override;
+  bool GetCheckVisible() override;
+
+  // The first selectable skill becomes the skill of the item.
+  bool GetCheckEnable() override {
+    bool enable = false;
+    const SkillKey key = {g_shared_system_skills[55].index};
+    if (HasSkill(Unknown71()->GetSkillList(7), key)) {
+      EachSkill([&enable, this](const UnitSkill& skill) {
+        if (skill.GetIndex() == 0 ||
+          IsPollutionSkill(skill.GetSharedData())) {
+          return;
+        }
+        ITarget target(Unknown71(), Unknown76());
+        target.SetKey(skill.GetSharedData());
+        enable |= target.CanSelectable();
+        if (skill_.GetIndex() == 0 && enable) {
+          skill_ = skill;
+        }
+      });
+    }
+    return enable;
+  }
+
   int Unknown86() override { return 3; }
 };
 
@@ -352,20 +399,23 @@ public:
 
 class PollutionMenuItem : public UnitSkillMenuItem {
 public:
-  PollutionMenuItem();
+  [[gnu::used]] PollutionMenuItem() {
+    GetUniqueSkill([](const UnitSkill& skill) {
+      return IsPollutionSkill(skill.GetSharedData());
+    });
+  }
 
   const char* GetMid() override { return "MID_BtlMenu_SpecialGauge"; }
   void OnClose() override;
   void Unknown70() override;
   uint8_t Unknown76() override { return 6; }
   int Unknown80() override { return 24; }
-  bool Unknown83() override;
-  bool Unknown84() override { return true; }
+  bool GetCheckVisible() override;
+  bool GetCheckEnable() override { return true; }
   void Unknown85() override;
   int Unknown86() override { return 3; }
 };
 
-[[gnu::used]] PollutionMenuItem::PollutionMenuItem() = default;
 
 class ArtsMenuItem : public UnitSkillMenuItem {
 public:
@@ -375,7 +425,21 @@ public:
   int ACall() override;
   uint8_t Unknown76() override { return 5; }
   int Unknown80() override { return 14; }
-  bool Unknown83() override;
+
+  bool GetCheckVisible() override {
+    if (Unknown71()->GetSize() > 1) {
+      return false;
+    }
+    bool visible = false;
+    EachSkill([&visible](const UnitSkill& skill) {
+      if (!visible && skill.GetIndex() != 0 &&
+        g_mind->CanUseSkill(skill.GetSharedData())) {
+        visible = true;
+      }
+    });
+    return visible;
+  }
+
   int Unknown86() override { return 2; }
 };
 
@@ -397,48 +461,98 @@ class UniqueSkillMenuItem : public UnitSkillMenuItem {
 public:
   int ACall() override;
   void Unknown70() override;
+
+  bool GetCheckVisible() override {
+    bool visible = false;
+    EachSkill([&visible](const UnitSkill& skill) {
+      if (skill.GetIndex() != 0) {
+        visible |= HasUsesLeft(skill);
+      }
+    });
+    return visible;
+  }
 };
 
 class GambitMenuItem : public UniqueSkillMenuItem {
 public:
-  GambitMenuItem();
+  [[gnu::used]] GambitMenuItem() {
+    GetUniqueSkill([](const UnitSkill&) { return true; });
+  }
 
   const char* GetMid() override { return "MID_BtlMenu_Gambit"; }
   uint8_t Unknown76() override { return 8; }
-  bool Unknown83() override;
   void Unknown85() override;
   int Unknown86() override { return 5; }
 };
 
-[[gnu::used]] GambitMenuItem::GambitMenuItem() = default;
 
 class RageMenuItem : public UniqueSkillMenuItem {
 public:
-  RageMenuItem();
+  [[gnu::used]] RageMenuItem() {
+    GetUniqueSkill([](const UnitSkill&) { return true; });
+  }
 
   const char* GetMid() override { return "MID_BtlMenu_Rage"; }
   uint8_t Unknown76() override { return 9; }
-  bool Unknown83() override;
+
+  // Mounted units can't rage.
+  bool GetCheckVisible() override {
+    if (Unknown71()->HasState(0x40000)) {
+      return false;
+    }
+    return UniqueSkillMenuItem::GetCheckVisible();
+  }
+
   void Unknown85() override;
   int Unknown86() override { return 6; }
 };
 
-[[gnu::used]] RageMenuItem::RageMenuItem() = default;
 
 class MorphMenuItem : public UnitSkillMenuItem {
 public:
-  MorphMenuItem();
+  [[gnu::used]] MorphMenuItem() {
+    GetUniqueSkill([this](const UnitSkill& skill) {
+      const SkillData* data = skill.GetSharedData();
+      if (!Mind::GetInstance()->CanUseSkill(data)) {
+        return false;
+      }
+      ITarget target(Unknown71(), Unknown76());
+      target.SetKey(data);
+      const TrickData* trick = Unknown73();
+      target.SetTrick(trick != nullptr ? trick->GetIndex() : -1);
+      return target.IsValid();
+    });
+  }
 
   const char* GetMid() override { return "MID_BtlMenu_Morph"; }
   int ACall() override;
   uint8_t Unknown76() override { return 16; }
   int Unknown80() override { return 16; }
-  bool Unknown83() override;
-  bool Unknown84() override;
+
+  // Units already in a class job can't morph.
+  bool GetCheckVisible() override {
+    if (Unknown71()->GetClassJob() != nullptr) {
+      return false;
+    }
+    bool visible = false;
+    EachSkill([&visible](const UnitSkill& skill) {
+      if (skill.GetIndex() == 0) {
+        return;
+      }
+      const SkillData* data = skill.GetSharedData();
+      const int extra =
+        SkillRow::GetKind(data) - 5u < 2 ? skill.GetExtra() : 0;
+      if (extra - skill.GetLevel() + SkillRow::GetUses(data) > 0) {
+        visible = true;
+      }
+    });
+    return visible;
+  }
+
+  bool GetCheckEnable() override;
   int Unknown86() override { return 9; }
 };
 
-[[gnu::used]] MorphMenuItem::MorphMenuItem() = default;
 
 class TreasureboxMenuItem : public IAccessMenuItem {
 public:
@@ -475,7 +589,7 @@ public:
   void Unknown70() override;
   uint8_t Unknown76() override { return 28; }
   void Unknown81() override;
-  bool Unknown84() override { return unknown_60_; }
+  bool GetCheckEnable() override { return unknown_60_; }
   void Unknown85() override;
 
 private:
@@ -507,7 +621,7 @@ public:
   const char* GetMid() override { return "MID_BtlMenu_Item"; }
   int ACall() override;
   void Unknown81() override;
-  bool Unknown83() override;
+  bool GetCheckVisible() override;
   void Unknown85() override;
 };
 
@@ -554,7 +668,7 @@ public:
 
   const char* GetSkillMid() {
     return RowReader<SkillData>::Read<const char*>(
-      g_skill_file->At(skill_.index), 0x50);
+      g_skill_file->At(skill_.GetIndex()), 0x50);
   }
 
   const char* GetMid() override;
@@ -563,32 +677,42 @@ public:
   uint8_t Unknown76() override { return 18; }
   bool Unknown77(VTarget* target) override;
   int Unknown80() override { return 24; }
-  bool Unknown83() override;
-  bool Unknown84() override;
+  bool GetCheckVisible() override;
+  bool GetCheckEnable() override;
   void Unknown85() override;
 };
 
 [[gnu::used]] DirectSkillMenuItem::DirectSkillMenuItem() = default;
 
+// Talk, trade, escape and treasure chests show the mind around the unit.
 void UnitMenuItem::Unknown85() {
-  if (Unknown76() > 24 || ((1 << Unknown76()) & 0x1400404) == 0) {
-    MapDrawManager* manager = g_map_draw_manager;
-    manager->Request({
-      .unit = Unknown71(),
-      .unknown_31_ = true,
-      .unknown_34_ = 1,
-      .name = "UnitMenuNull",
-    });
-  }
-  else {
-    const uint8_t command = Unknown76();
-    MapDrawManager::GetInstance()->Request({
-      .unit = Unknown71(),
-      .command = command,
-      .unknown_31_ = true,
-      .unknown_34_ = 1,
-      .name = "UnitMenuItem_Mind",
-    });
+  switch (Unknown76()) {
+    case 2:
+    case 10:
+    case 22:
+    case 24: {
+      const uint8_t command = Unknown76();
+      const std::string name = "UnitMenuItem_Mind";
+      MapDrawManager::GetInstance()->Request({
+        .unit = Unknown71(),
+        .command = command,
+        .unknown_31_ = true,
+        .unknown_34_ = 1,
+        .name = name,
+      });
+      break;
+    }
+    default: {
+      MapDrawManager* manager = g_map_draw_manager;
+      const std::string name = "UnitMenuNull";
+      manager->Request({
+        .unit = Unknown71(),
+        .unknown_31_ = true,
+        .unknown_34_ = 1,
+        .name = name,
+      });
+      break;
+    }
   }
 }
 
@@ -612,31 +736,53 @@ const TrickData* CannonMenuItem::Unknown73() {
   return trick;
 }
 
-bool CannonMenuItem::Unknown84() {
+bool CannonMenuItem::GetCheckVisible() {
+  const TrickData* trick = Unknown73();
+  return trick != nullptr && trick->Unknown74(Unknown71());
+}
+
+bool CannonMenuItem::GetCheckEnable() {
   return Unknown78();
 }
 
 void CannonMenuItem::Unknown85() {
+  const std::string name = "CannonMenuItem";
   g_map_draw_manager->Request({
     .unit = Unknown71(),
     .trick = Unknown73(),
     .unknown_31_ = true,
     .unknown_34_ = 32,
-    .name = "CannonMenuItem",
+    .name = name,
   });
 }
 
 void AttackMenuItem::Unknown85() {
+  const std::string name = "AttackMenuItem";
   MapDrawManager::GetInstance()->Request({
     .unit = Unknown71(),
     .unknown_31_ = true,
     .unknown_34_ = 10,
-    .name = "AttackMenuItem",
+    .name = name,
   });
 }
 
 const Data* UnitSkillMenuItem::Unknown72() {
-  return g_skill_file->At(skill_.index);
+  return g_skill_file->At(skill_.GetIndex());
+}
+
+// Single cell units of the pollutable forces, unless pollution is banned.
+bool SpecialMenuItem::GetCheckVisible() {
+  if (Unknown71()->GetSize() > 1) {
+    return false;
+  }
+  const SkillKey key = {g_shared_system_skills[55].index};
+  if (!HasSkill(Unknown71()->GetSkillList(7), key)) {
+    return false;
+  }
+  if (((1 << Unknown71()->GetForceType()) & 0xf1) == 0) {
+    return false;
+  }
+  return !GameModeData::IsVariableSet(GetBanVariable(BanVariable::kPollution));
 }
 
 void PollutionMenuItem::OnClose() {
@@ -644,49 +790,53 @@ void PollutionMenuItem::OnClose() {
   Unknown82();
 }
 
-bool PollutionMenuItem::Unknown83() {
-  return skill_.index != 0 && Unknown78();
+bool PollutionMenuItem::GetCheckVisible() {
+  return skill_.GetIndex() != 0 && Unknown78();
 }
 
 void PollutionMenuItem::Unknown85() {
+  const std::string name = "PollutionMenuItem";
   MapDrawManager::GetInstance()->Request({
     .unit = Unknown71(),
-    .skill = SkillFile::GetInstance()->At(skill_.index),
+    .skill = SkillFile::GetInstance()->At(skill_.GetIndex()),
     .unknown_31_ = true,
-    .name = "PollutionMenuItem",
+    .name = name,
   });
 }
 
 void AssistMenuItem::Unknown85() {
+  const std::string name = "AssistMenuItem";
   MapDrawManager::GetInstance()->Request({
     .unit = Unknown71(),
     .unknown_31_ = true,
     .unknown_34_ = 12,
-    .name = "AssistMenuItem",
+    .name = name,
   });
 }
 
 void GambitMenuItem::Unknown85() {
+  const std::string name = "GambitMenuItem";
   MapDrawManager::GetInstance()->Request({
     .unit = Unknown71(),
-    .skill = g_skill_file->At(skill_.index),
+    .skill = g_skill_file->At(skill_.GetIndex()),
     .command = Unknown76(),
     .unknown_31_ = true,
-    .name = "GambitMenuItem",
+    .name = name,
   });
 }
 
 void RageMenuItem::Unknown85() {
+  const std::string name = "RageMenuItem";
   MapDrawManager::GetInstance()->Request({
     .unit = Unknown71(),
-    .skill = g_skill_file->At(skill_.index),
+    .skill = g_skill_file->At(skill_.GetIndex()),
     .command = Unknown76(),
     .unknown_31_ = true,
-    .name = "RageMenuItem",
+    .name = name,
   });
 }
 
-bool MorphMenuItem::Unknown84() {
+bool MorphMenuItem::GetCheckEnable() {
   return Unknown78();
 }
 
@@ -708,23 +858,25 @@ void GimmickMenuItem::Unknown82() {
 }
 
 void GimmickMenuItem::Unknown85() {
+  const std::string name = "GimmickMenuItem";
   MapDrawManager::GetInstance()->Request({
     .unit = Unknown71(),
     .trick = Unknown73(),
     .command = 30,
     .unknown_31_ = true,
     .unknown_34_ = 1,
-    .name = "GimmickMenuItem",
+    .name = name,
   });
 }
 
 void WarpMenuItem::Unknown85() {
+  const std::string name = "WarpMenuItem";
   MapDrawManager::GetInstance()->Request({
     .unit = Unknown71(),
     .command = Unknown76(),
     .unknown_31_ = true,
     .unknown_34_ = 17,
-    .name = "WarpMenuItem",
+    .name = name,
   });
 }
 
@@ -772,12 +924,35 @@ void RideMenuItem::Unknown85() {
   if (!rider->HasState(0x40000)) {
     job = dismounted;
   }
+  const std::string name = "RideMenuItem";
   MapDrawManager::GetInstance()->Request({
     .unit = unit,
     .job = dismounted != nullptr ? job : nullptr,
     .unknown_31_ = true,
     .unknown_34_ = 1,
-    .name = "RideMenuItem",
+    .name = name,
+  });
+}
+
+int ItemMenuItem::ACall() {
+  return Decide(17);
+}
+
+void ItemMenuItem::Unknown81() {
+  Unknown75(GetCheckVisible());
+}
+
+bool ItemMenuItem::GetCheckVisible() {
+  return Unknown15e09d0(Unknown71());
+}
+
+void ItemMenuItem::Unknown85() {
+  const std::string name = "UnitMenuItem_SelfPos";
+  MapDrawManager::GetInstance()->Request({
+    .unit = Unknown71(),
+    .unknown_31_ = true,
+    .unknown_34_ = 17,
+    .name = name,
   });
 }
 
@@ -786,11 +961,12 @@ int TransportMenuItem::ACall() {
 }
 
 void TransportMenuItem::Unknown85() {
+  const std::string name = "UnitMenuItem_SelfPos";
   MapDrawManager::GetInstance()->Request({
     .unit = Unknown71(),
     .unknown_31_ = true,
     .unknown_34_ = 17,
-    .name = "UnitMenuItem_SelfPos",
+    .name = name,
   });
 }
 
@@ -804,11 +980,12 @@ int FixedMenuItem::ACall() {
 }
 
 void FixedMenuItem::Unknown85() {
+  const std::string name = "UnitMenuItem_SelfPos";
   MapDrawManager::GetInstance()->Request({
     .unit = Unknown71(),
     .unknown_31_ = true,
     .unknown_34_ = 17,
-    .name = "UnitMenuItem_SelfPos",
+    .name = name,
   });
 }
 
@@ -826,30 +1003,41 @@ int DirectSkillMenuItem::ACall() {
 }
 
 bool DirectSkillMenuItem::Unknown77(VTarget* target) {
-  if (skill_.index == 0) {
+  if (skill_.GetIndex() == 0) {
     return false;
   }
   target->Setup(Unknown71(), Unknown76());
-  target->SetKey(g_skill_file->At(skill_.index));
+  target->SetKey(g_skill_file->At(skill_.GetIndex()));
   return target->IsValid();
 }
 
 // The uses left, kinds 5 and 6 add the extra levels.
-bool DirectSkillMenuItem::Unknown83() {
-  const SkillData* data = g_skill_file->At(skill_.index);
+bool DirectSkillMenuItem::GetCheckVisible() {
+  const SkillData* data = g_skill_file->At(skill_.GetIndex());
   const uint8_t kind = SkillRow::GetKind(data);
-  const int extra = kind - 5u < 2 ? skill_.extra : 0;
-  const int uses = extra - skill_.level + SkillRow::GetUses(data);
-  return skill_.index != 0 || uses > 0;
+  const int extra = kind - 5u < 2 ? skill_.GetExtra() : 0;
+  const int uses = extra - skill_.GetLevel() + SkillRow::GetUses(data);
+  return skill_.GetIndex() != 0 || uses > 0;
+}
+
+bool DirectSkillMenuItem::GetCheckEnable() {
+  const GameVariable* wait = GameModeData::FindVariable(g_gimmick_argument);
+  if (wait != nullptr && wait->value > 0) {
+    return false;
+  }
+  ITarget target(Unknown71(), Unknown76());
+  target.SetKey(g_skill_file->At(skill_.GetIndex()));
+  return target.IsValid();
 }
 
 void DirectSkillMenuItem::Unknown85() {
+  const std::string name = "DirectSkillMenuItem";
   MapDrawManager::GetInstance()->Request({
     .unit = Unknown71(),
-    .skill = g_skill_file->At(skill_.index),
+    .skill = g_skill_file->At(skill_.GetIndex()),
     .command = Unknown76(),
     .unknown_31_ = true,
-    .name = "DirectSkillMenuItem",
+    .name = name,
   });
 }
 
@@ -910,6 +1098,28 @@ void GimmickMenuItem::Unknown81() {
     found = true;
   }
   Unknown75(found);
+}
+
+// Units without the transport skill check the skill row out of line.
+void TransportMenuItem::Unknown81() {
+  const HashedString& ban = GetBanVariable(static_cast<BanVariable>(13));
+  if (!GameModeData::IsVariableSet(ban) &&
+    GameModeData::GetInstance() != nullptr &&
+    GameModeData::GetInstance()->GetMode() != GameModeData::kModeNone &&
+    (g_mind->GetFlags() & 0x8) == 0) {
+    const SkillKey key = {g_shared_system_skills[3].index};
+    if (HasSkill(Unknown71()->GetSkillList(7), key)) {
+      Unknown75(true);
+    }
+    else {
+      // The row lookup takes the whole key as its index.
+      const int raw = std::bit_cast<int>(g_shared_system_skills[3]);
+      Unknown75(Unknown752f80(Unknown71(), g_skill_file->At(raw)));
+    }
+  }
+  else {
+    decidable_ = false;
+  }
 }
 
 void TradeMenuItem::Unknown81() {
