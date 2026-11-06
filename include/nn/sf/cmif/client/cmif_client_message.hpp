@@ -12,6 +12,7 @@
 #include "nn/sf/hipc.hpp"
 #include "nn/sf/hipc/detail/hipc2_message.hpp"
 #include "nn/sf/native_handle.hpp"
+#include "nn/sf/shared_pointer.hpp"
 
 namespace nn::sf::cmif {
 
@@ -79,7 +80,23 @@ namespace nn::diag::detail {
 
 }
 
+namespace nn::sf::cmif::client {
+
+class CmifBaseObject {
+public:
+  virtual void* GetProxyKindState() = 0;
+};
+
+}
+
 namespace nn::sf::cmif::client::detail {
+
+// The first slots that every proxy object shares.
+class CmifProxyObject : public IServiceObject {
+public:
+  virtual CmifBaseObject* GetCmifBaseObject() = 0;
+  virtual const void* GetInterfaceInfo() = 0;
+};
 
 constexpr uint32_t CmifInHeaderMagic = 0x49434653;
 constexpr uint32_t CmifOutHeaderMagic = 0x4f434653;
@@ -584,6 +601,15 @@ public:
   template <bool HasProcessId, typename... Arguments>
   [[gnu::noinline]] static Result Process(const ProxyKindState* pState,
     typename Arguments::Parameter... args, int methodId);
+
+  // The out objects are proxies created by the caller, they get the object
+  // ids of the reply or are released when the server returned none.
+  template <bool HasProcessId, int ObjectCount, typename... Arguments>
+  [[gnu::noinline]] static Result ProcessWithObjects(
+    const ProxyKindState* pState,
+    SharedPointer<IServiceObject>* const* ppTargets,
+    typename Arguments::Parameter... args, int methodId,
+    detail::CmifProxyObject** ppObjects);
 };
 
 namespace detail {
@@ -680,6 +706,96 @@ Result CmifDomainProxyKind<Base>::Process(const ProxyKindState* pState,
   }
 
   pSessionAllocator->DeallocateSession(handle);
+  return result;
+}
+
+template <typename Base>
+template <bool HasProcessId, int ObjectCount, typename... Arguments>
+Result CmifDomainProxyKind<Base>::ProcessWithObjects(
+  const ProxyKindState* pState,
+  SharedPointer<IServiceObject>* const* ppTargets,
+  typename Arguments::Parameter... args, int methodId,
+  detail::CmifProxyObject** ppObjects) {
+  using Message = detail::CmifClientMessage<HasProcessId, Arguments...>;
+  using namespace detail;
+
+  hipc::client::HipcClientSessionAllocator* pSessionAllocator =
+    pState->pSessionAllocator;
+  const uint32_t objectId = pState->objectId;
+  const uint32_t handle = pSessionAllocator->AllocateSession();
+  void* buffer = hipc::GetMessageBufferOnTls();
+  CmifDomainInHeader* pDomain = reinterpret_cast<CmifDomainInHeader*>(
+    Message::SetupHeader(buffer, static_cast<uint32_t>(
+      hipc::detail::MessageType::CmifRequestWithContext),
+      sizeof(CmifDomainInHeader) / 4));
+  pDomain->type = 1;
+  pDomain->objectCount = 0;
+  pDomain->dataSize = static_cast<uint16_t>(
+    sizeof(CmifInHeader) + Message::Layout::InRawSize);
+  pDomain->objectId = objectId;
+  pDomain->reserved = 0;
+  pDomain->token = 0;
+  CmifInHeader* pIn = reinterpret_cast<CmifInHeader*>(pDomain + 1);
+  pIn->magic = CmifInHeaderMagic;
+  pIn->version = 1;
+  pIn->methodId = methodId;
+  pIn->token = 0;
+  char* inData = reinterpret_cast<char*>(pIn + 1);
+  memset(inData, 0, Message::Layout::InRawSize);
+  Message::WriteArguments(inData,
+    std::index_sequence_for<Arguments...>(), args...);
+  pDomain->token = GetInlineContext();
+
+  uint32_t objectIds[ObjectCount] = {};
+  Result result = Result{hipc::SendSyncRequest(handle, buffer,
+    MessageBufferSize)};
+  if (result.IsSuccess()) {
+    hipc::detail::Hipc2MessageReader reader;
+    reader.Initialize(buffer);
+    const CmifOutHeader* pOut = reinterpret_cast<const CmifOutHeader*>(
+      AlignUpPointer<const CmifDomainOutHeader>(reader.GetRawData(), 0x10)
+      + 1);
+    if (pOut->magic != CmifOutHeaderMagic) {
+      result = ResultInvalidCmifOutHeader();
+    }
+    else {
+      result = pOut->result;
+      if (result.IsFailure()) {
+        hipc::detail::HandleHipcErrorOnClient(result);
+      }
+      else {
+        const char* outData = reinterpret_cast<const char*>(pOut + 1);
+        Message::ReadArguments(outData,
+          std::index_sequence_for<Arguments...>(), args...);
+        memcpy(objectIds, outData + AlignUp(Message::Layout::OutRawSize, 4),
+          sizeof(objectIds));
+      }
+    }
+  }
+  pSessionAllocator->DeallocateSession(handle);
+  if (result.IsFailure()) {
+    return result;
+  }
+
+  for (int i = 0; i < ObjectCount; i++) {
+    CmifProxyObject* pObject = ppObjects[i];
+    if (objectIds[i] != 0) {
+      ProxyKindState* pObjectState = static_cast<ProxyKindState*>(
+        pObject->GetCmifBaseObject()->GetProxyKindState());
+      pObjectState->pSessionAllocator = pSessionAllocator;
+      pObjectState->objectId = objectIds[i];
+      pObjectState->isOwner = true;
+    }
+    else {
+      ppObjects[i] = nullptr;
+      if (pObject != nullptr) {
+        pObject->Release();
+      }
+    }
+    SharedPointer<IServiceObject> object(ppObjects[i], false);
+    ppObjects[i] = nullptr;
+    object.Swap(*ppTargets[i]);
+  }
   return result;
 }
 

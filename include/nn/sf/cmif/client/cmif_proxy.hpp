@@ -22,11 +22,6 @@ namespace nn::sf::cmif::client {
 
 struct DefaultProxyFilterTag;
 
-class CmifBaseObject {
-public:
-  virtual void* GetProxyKindState() = 0;
-};
-
 }
 
 namespace nn::sf::hipc::client {
