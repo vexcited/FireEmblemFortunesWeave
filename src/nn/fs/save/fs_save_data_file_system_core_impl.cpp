@@ -1,3 +1,7 @@
+#include <string.h>
+
+#include "nn/fs/fs_directory.hpp"
+#include "nn/fs/fsa/fs_file_system_attribute.hpp"
 #include "nn/fs/save/fs_save_data_file_system_core.hpp"
 
 namespace nn::fs::save {
@@ -6,7 +10,7 @@ SaveDataFileSystemCoreImpl::SaveDataFileSystemCoreImpl()
   : m_ControlAreaStorage(), m_AllocationTableMetaStorage(), m_ControlArea(),
     m_FileSystem(), m_AllocationTable(), m_DirectoryEntryStorage(),
     m_FileEntryStorage(), m_DataStorage(), m_DataOffset(0),
-    m_IsInitialized(0), m_BlockSize(0) {}
+    m_BlockCount(0), m_BlockSize(0) {}
 
 SaveDataFileSystemCoreImpl::~SaveDataFileSystemCoreImpl() {}
 
@@ -23,13 +27,13 @@ Result SaveDataFileSystemCoreImpl::ExpandMeta(SubStorage allocationTableMeta,
 }
 
 void SaveDataFileSystemCoreImpl::Finalize() {
-  if (m_IsInitialized != 0) {
+  if (m_BlockCount != 0) {
     m_FileSystem.Finalize();
     m_FileEntryStorage.Finalize();
     m_DirectoryEntryStorage.Finalize();
     m_AllocationTable.Finalize();
     m_DataOffset = 0;
-    m_IsInitialized = 0;
+    m_BlockCount = 0;
     m_BlockSize = 0;
   }
 }
@@ -289,6 +293,165 @@ Result SaveDataDirectoryImpl::DoGetEntryCount(int64_t* outCount) {
     count += fileCount;
   }
   *outCount = count;
+  return ResultSuccess();
+}
+
+}
+
+namespace nn::fs::save {
+
+namespace {
+
+constexpr Result ResultAllocationMemoryFailedInSaveDataFileSystemCoreA() {
+  return fs::detail::MakeResult(3310);
+}
+
+constexpr Result ResultAllocationMemoryFailedInSaveDataFileSystemCoreB() {
+  return fs::detail::MakeResult(3311);
+}
+
+}
+
+Result SaveDataFileSystemCoreImpl::OpenBaseFile(
+  std::unique_ptr<IExclusiveFileBase>* outFile, const Path& path,
+  OpenMode mode) {
+  NN_FS_RESULT_DO(CheckPathFormat(path));
+  NN_FS_RESULT_THROW_UNLESS((mode & (OpenMode_Read | OpenMode_Write)) != 0,
+    fsa::ResultInvalidOpenMode());
+
+  std::unique_ptr<SaveDataFileImpl> file(new SaveDataFileImpl());
+  NN_FS_RESULT_THROW_UNLESS(file != nullptr,
+    ResultAllocationMemoryFailedInSaveDataFileSystemCoreA());
+
+  uint32_t id = 0;
+  NN_FS_RESULT_DO(m_FileSystem.OpenFile(&id, &file->m_FileObject,
+    path.GetString()));
+  NN_FS_RESULT_DO(file->Initialize(mode, &m_AllocationTable, m_BlockSize,
+    m_DataStorage, m_DataOffset, m_BlockSize * m_BlockCount));
+  *outFile = std::move(file);
+  return ResultSuccess();
+}
+
+Result SaveDataFileSystemCoreImpl::OpenBaseDirectory(
+  std::unique_ptr<IExclusiveDirectoryBase>* outDirectory, const Path& path,
+  OpenDirectoryMode mode) {
+  NN_FS_RESULT_DO(CheckPathFormat(path));
+
+  std::unique_ptr<SaveDataDirectoryImpl> directory(
+    new SaveDataDirectoryImpl(mode));
+  NN_FS_RESULT_THROW_UNLESS(directory != nullptr,
+    ResultAllocationMemoryFailedInSaveDataFileSystemCoreB());
+
+  uint32_t id = 0;
+  NN_FS_RESULT_DO(m_FileSystem.OpenDirectory(&id,
+    &directory->m_DirectoryObject, path.GetString()));
+  NN_FS_RESULT_DO(directory->Initialize());
+  *outDirectory = std::move(directory);
+  return ResultSuccess();
+}
+
+Result SaveDataFileSystemCoreImpl::GetFileIdFromPath(int64_t* outId,
+  const Path& path, bool isFile) {
+  NN_FS_RESULT_DO(CheckPathFormat(path));
+
+  const char* pathString = path.GetString();
+  uint32_t id = 0;
+  if (isFile) {
+    FileSystemObject::FileObject file;
+    NN_FS_RESULT_DO(m_FileSystem.OpenFile(&id, &file, pathString));
+  }
+  else {
+    FileSystemObject::DirectoryObject directory;
+    NN_FS_RESULT_DO(m_FileSystem.OpenDirectory(&id, &directory, pathString));
+  }
+  *outId = id;
+  return ResultSuccess();
+}
+
+Result SaveDataFileSystemCoreImpl::DoGetFreeSpaceSize(int64_t* outSize,
+  const Path& path) {
+  static_cast<void>(path);
+  uint32_t freeBlockCount = 0;
+  NN_FS_RESULT_DO(m_AllocationTable.CalcFreeListLength(&freeBlockCount));
+  *outSize = m_BlockSize * freeBlockCount;
+  return ResultSuccess();
+}
+
+Result SaveDataFileSystemCoreImpl::DoGetTotalSpaceSize(int64_t* outSize,
+  const Path& path) {
+  static_cast<void>(path);
+  *outSize = m_BlockSize * m_BlockCount;
+  return ResultSuccess();
+}
+
+Result SaveDataFileSystemCoreImpl::DoGetFileSystemAttribute(
+  fsa::FileSystemAttribute* outAttribute) {
+  *outAttribute = {};
+  outAttribute->directoryEntryNameLengthMaxDefined = true;
+  outAttribute->fileEntryNameLengthMaxDefined = true;
+  outAttribute->directoryEntryNameLengthMax = dbm::MaxDirectoryNameLength;
+  outAttribute->fileEntryNameLengthMax = dbm::MaxFileNameLength;
+  outAttribute->blockSizeDefined = true;
+  outAttribute->blockSize = static_cast<int32_t>(m_BlockSize);
+  return ResultSuccess();
+}
+
+Result SaveDataDirectoryImpl::DoRead(int64_t* outCount,
+  DirectoryEntry* entries, int64_t count) {
+  int64_t readCount = 0;
+  if ((m_Mode & OpenDirectoryMode_Directory) != 0) {
+    while (m_DirectoryObject.m_NextDirectory != 0) {
+      dbm::DirectoryName name;
+      NN_FS_RESULT_DO(m_DirectoryObject.FindNextDirectory(&name));
+
+      DirectoryEntry* entry = &entries[readCount];
+      *entry = {};
+      memcpy(entry->name, &name, sizeof(name));
+      entry->type = DirectoryEntryType_Directory;
+      entry->fileSize = 0;
+      if (++readCount >= count) {
+        *outCount = count;
+        return ResultSuccess();
+      }
+    }
+  }
+  if ((m_Mode & OpenDirectoryMode_File) != 0) {
+    while (m_DirectoryObject.m_NextFile != 0) {
+      int64_t size = 0;
+      dbm::FileName name;
+      NN_FS_RESULT_DO(m_DirectoryObject.FindNextFile(&size, &name));
+
+      DirectoryEntry* entry = &entries[readCount];
+      *entry = {};
+      memcpy(entry->name, &name, sizeof(name));
+      entry->type = DirectoryEntryType_File;
+      entry->fileSize = size;
+      if (++readCount >= count) {
+        *outCount = count;
+        return ResultSuccess();
+      }
+    }
+  }
+  *outCount = readCount;
+  return ResultSuccess();
+}
+
+Result SaveDataDirectoryImpl::NotifyDelete(int64_t id, bool isFile) {
+  if (isFile) {
+    if (m_DirectoryObject.m_NextFile != 0 &&
+      id == m_DirectoryObject.m_NextFile) {
+      int64_t size;
+      dbm::FileName name;
+      return m_DirectoryObject.FindNextFile(&size, &name);
+    }
+  }
+  else {
+    if (m_DirectoryObject.m_NextDirectory != 0 &&
+      id == m_DirectoryObject.m_NextDirectory) {
+      dbm::DirectoryName name;
+      return m_DirectoryObject.FindNextDirectory(&name);
+    }
+  }
   return ResultSuccess();
 }
 

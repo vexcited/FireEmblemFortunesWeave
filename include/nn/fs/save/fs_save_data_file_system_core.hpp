@@ -4,245 +4,13 @@
 
 #include "nn/fs/dbm/fs_dbm_allocation_table.hpp"
 #include "nn/fs/dbm/fs_dbm_allocation_table_storage.hpp"
+#include "nn/fs/dbm/fs_dbm_buffered_allocation_table_storage.hpp"
 #include "nn/fs/dbm/fs_dbm_file_system_control_area.hpp"
+#include "nn/fs/dbm/fs_dbm_hierarchical_file_table.hpp"
 #include "nn/fs/dbm/fs_dbm_path_tool.hpp"
 #include "nn/fs/detail/fs_newable.hpp"
 #include "nn/fs/fs_ibuffer_manager.hpp"
 #include "nn/fs/save/fs_save_exclusive_file_system.hpp"
-#include "nn/util/intrusive_list.hpp"
-
-namespace nn::fs::dbm {
-
-namespace detail {
-
-struct DirectoryInfo {
-  char reserved[16];
-};
-
-struct FileInfo {
-  uint32_t index;
-  int64_t size;
-  uint32_t reserved[2];
-} __attribute__((packed, aligned(4)));
-
-}
-
-class BufferedAllocationTableStorage : public AllocationTableStorage {
-public:
-  struct CacheEntry {
-    uintptr_t address;
-    size_t size;
-    int64_t offset;
-    IBufferManager::CacheHandle handle;
-  };
-
-  static const int CacheEntryCountPerNode = 16;
-  static const int CacheEntriesNodeCountMax = 8;
-
-  struct CacheEntriesNode : public fs::detail::Newable,
-    public util::IntrusiveListBaseNode<CacheEntriesNode> {
-    CacheEntriesNode() {
-      for (CacheEntry& entry : entries) {
-        entry.address = 0;
-        entry.size = 0;
-        entry.offset = -1;
-        entry.handle = 0;
-      }
-    }
-
-    CacheEntry entries[CacheEntryCountPerNode];
-  };
-
-  typedef util::IntrusiveList<CacheEntriesNode,
-    util::IntrusiveListBaseNodeTraits<CacheEntriesNode, CacheEntriesNode>>
-    CacheEntriesList;
-
-  BufferedAllocationTableStorage();
-  ~BufferedAllocationTableStorage() override;
-
-  Result Read(int64_t offset, void* buffer, size_t size) override;
-  Result Write(int64_t offset, const void* buffer, size_t size) override;
-  Result OperateRange(void* outBuffer, size_t outBufferSize,
-    OperationId operationId, int64_t offset, int64_t size,
-    const void* inBuffer, size_t inBufferSize) override;
-
-  Result InitializeBuffered(AllocationTable* allocationTable,
-    uint32_t startIndex, int64_t blockSize, SubStorage dataStorage,
-    IBufferManager* bufferManager);
-  void Finalize() override;
-
-  void EnterHoldingCacheSection();
-  void LeaveHoldingCacheSection();
-
-private:
-  CacheEntriesList::iterator AllocateCacheEntries();
-  void DeallocateCache(CacheEntry* entry);
-  void AcquireCacheBuffer(CacheEntry* entry);
-  void ExtendCacheLife(const CacheEntriesList::iterator& iterator, int index);
-  void UpdateCache(int64_t offset, const void* buffer, size_t size);
-  void InvalidateCache(int64_t offset, int64_t size);
-
-  [[gnu::always_inline]] void InvalidateCacheRange(int64_t offset,
-    int64_t size) {
-    const int64_t end = offset + size;
-    const int64_t blockSize = int64_t{1} << m_BlockSizeShift;
-    for (CacheEntriesNode& node : m_CacheEntriesList) {
-      for (int i = CacheEntryCountPerNode - 1; i >= 0; --i) {
-        CacheEntry* entry = &node.entries[i];
-        if (entry->offset != -1 && offset < entry->offset + blockSize &&
-          entry->offset < end) {
-          DeallocateCache(entry);
-        }
-      }
-    }
-  }
-
-  CacheEntriesList m_CacheEntriesList;
-  int m_HoldingCacheSectionCount;
-  IBufferManager* m_pBufferManager;
-};
-
-template<typename DirectoryNameType, typename FileNameType,
-  typename DirectoryInfoType, typename FileInfoType>
-class HierarchicalFileTableTemplate {
-public:
-  struct DirectoryKey {
-    uint32_t parent;
-    DirectoryNameType name;
-  };
-
-  struct FileKey {
-    uint32_t parent;
-    FileNameType name;
-  };
-
-  struct DirectoryEntry {
-    uint32_t next;
-    uint32_t directory;
-    uint32_t file;
-    uint32_t reserved;
-  };
-
-  class ScopedHoldingCacheSection {
-  public:
-    explicit ScopedHoldingCacheSection(
-      const HierarchicalFileTableTemplate* fileTable)
-      : m_pFileTable(fileTable) {
-      m_pFileTable->m_pFileEntryStorage->EnterHoldingCacheSection();
-      m_pFileTable->m_pDirectoryEntryStorage->EnterHoldingCacheSection();
-    }
-
-    ~ScopedHoldingCacheSection() {
-      m_pFileTable->m_pFileEntryStorage->LeaveHoldingCacheSection();
-      m_pFileTable->m_pDirectoryEntryStorage->LeaveHoldingCacheSection();
-    }
-
-  private:
-    const HierarchicalFileTableTemplate* m_pFileTable;
-  };
-
-  HierarchicalFileTableTemplate()
-    : m_pDirectoryEntryStorage(nullptr), m_DirectoryEntryCount(0),
-      m_pFileEntryStorage(nullptr), m_FileEntryCount(0) {}
-
-  Result CreateDirectory(const char* path, const DirectoryInfoType& info);
-  Result DeleteDirectory(const char* path);
-  Result RenameFile(bool* outIsFile, bool* outIsSameEntry,
-    const char* newPath, const char* currentPath);
-  Result RenameDirectory(bool* outIsFile, bool* outIsSameEntry,
-    bool* outIsParentEntry, const char* newPath, const char* currentPath);
-  Result CheckSubEntry(bool* outIsSubEntry, uint32_t id, uint32_t childId,
-    bool isFile) const;
-  Result GetDirectoryEntry(uint32_t* outId, DirectoryEntry* outEntry,
-    const DirectoryKey& key) const;
-
-private:
-  BufferedAllocationTableStorage* m_pDirectoryEntryStorage;
-  uint32_t m_DirectoryEntryCount;
-  BufferedAllocationTableStorage* m_pFileEntryStorage;
-  uint32_t m_FileEntryCount;
-};
-
-template<typename DirectoryNameType, typename FileNameType>
-class FileSystemObjectTemplate {
-public:
-  typedef HierarchicalFileTableTemplate<DirectoryNameType, FileNameType,
-    detail::DirectoryInfo, detail::FileInfo> FileTable;
-
-  FileSystemObjectTemplate()
-    : m_FileTable(), m_pAllocationTable(nullptr), m_BlockSize(0),
-      m_BlockSizeShift(0) {}
-
-  void Finalize() {
-    m_pAllocationTable = nullptr;
-    m_BlockSize = 0;
-    m_BlockSizeShift = 0;
-  }
-
-  Result GetEntryType(DirectoryEntryType* outType, const char* path);
-  Result DeleteFile(const char* path);
-  Result ResizeFile(detail::FileInfo* fileInfo,
-    const typename FileTable::FileKey& key, int64_t size);
-
-  FileTable* GetFileTable() {
-    return &m_FileTable;
-  }
-
-  const FileTable* GetFileTable() const {
-    return &m_FileTable;
-  }
-
-private:
-  FileTable m_FileTable;
-  AllocationTable* m_pAllocationTable;
-  int64_t m_BlockSize;
-  uint32_t m_BlockSizeShift;
-};
-
-template<typename DirectoryNameType, typename FileNameType>
-class FileObjectTemplate {
-public:
-  FileObjectTemplate()
-    : m_pFileSystem(nullptr), m_BlockCount(0), m_FileInfo(), m_Key(),
-      m_Index(AllocationTable::IndexEnd),
-      m_NextIndex(AllocationTable::IndexEnd) {}
-
-  int64_t GetSize() const {
-    return m_FileInfo.size;
-  }
-
-  typedef FileSystemObjectTemplate<DirectoryNameType, FileNameType>
-    FileSystemObject;
-
-  FileSystemObject* m_pFileSystem;
-  uint32_t m_BlockCount;
-  detail::FileInfo m_FileInfo;
-  typename FileSystemObject::FileTable::FileKey m_Key;
-  uint32_t m_Index;
-  uint32_t m_NextIndex;
-};
-
-template<typename DirectoryNameType, typename FileNameType>
-class DirectoryObjectTemplate {
-public:
-  typedef HierarchicalFileTableTemplate<DirectoryNameType, FileNameType,
-    detail::DirectoryInfo, detail::FileInfo> FileTable;
-
-  DirectoryObjectTemplate()
-    : m_pFileTable(nullptr), m_Reserved(), m_Key(), m_NextDirectory(0),
-      m_NextFile(0) {}
-
-  Result CountDirectory(uint32_t* outCount) const;
-  Result CountFile(uint32_t* outCount) const;
-
-  FileTable* m_pFileTable;
-  uint32_t m_Reserved[3];
-  typename FileTable::DirectoryKey m_Key;
-  uint32_t m_NextDirectory;
-  uint32_t m_NextFile;
-};
-
-}
 
 namespace nn::fs {
 
@@ -322,11 +90,14 @@ private:
   dbm::BufferedAllocationTableStorage m_FileEntryStorage;
   SubStorage m_DataStorage;
   int64_t m_DataOffset;
-  uint32_t m_IsInitialized;
+  uint32_t m_BlockCount;
   int64_t m_BlockSize;
 };
 
-class SaveDataFileImpl : public IExclusiveFileBase {
+class SaveDataFileImpl : public IExclusiveFileBase,
+  public fs::detail::Newable {
+  friend class SaveDataFileSystemCoreImpl;
+
 public:
   SaveDataFileImpl();
   ~SaveDataFileImpl() override;
@@ -366,7 +137,10 @@ private:
   int64_t m_DataSize;
 };
 
-class SaveDataDirectoryImpl : public IExclusiveDirectoryBase {
+class SaveDataDirectoryImpl : public IExclusiveDirectoryBase,
+  public fs::detail::Newable {
+  friend class SaveDataFileSystemCoreImpl;
+
 public:
   explicit SaveDataDirectoryImpl(OpenDirectoryMode mode);
   ~SaveDataDirectoryImpl() override;

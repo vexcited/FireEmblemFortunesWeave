@@ -36,6 +36,7 @@ public:
   Result ReadFreeListHead(uint32_t* outIndex);
   Result CalcFreeListLength(uint32_t* outLength);
   Result Concat(uint32_t index, uint32_t otherIndex);
+  Result Split(uint32_t* outIndex, uint32_t index, uint32_t blockCount);
 
   Result Invalidate() {
     return m_Storage.OperateRange(OperationId_Invalidate, 0, INT64_MAX);

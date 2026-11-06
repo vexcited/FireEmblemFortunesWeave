@@ -296,6 +296,212 @@ Result ResultClientCreationFailed() {
   os::UnlockMutex(&g_ClientState.allocatorMutex);
 }
 
+constexpr size_t MessageBufferAlignment = 4096;
+constexpr size_t MessageDataSizeMax = 0x800000;
+constexpr uint8_t MessageBufferVersion = 8;
+constexpr int EMsgSize = 90;
+constexpr int SolSocket = 0xffff;
+constexpr int ScmRights = 1;
+
+struct CMsgHdr {
+  uint32_t cmsg_len;
+  int32_t cmsg_level;
+  int32_t cmsg_type;
+};
+
+// Descriptors cannot cross the service boundary.
+[[gnu::always_inline]] bool HasRightsControl(const MsgHdr& message) {
+  const CMsgHdr* control = static_cast<const CMsgHdr*>(message.msg_control);
+  return message.msg_controllen >= sizeof(CMsgHdr) && control != nullptr &&
+    control->cmsg_level == SolSocket && control->cmsg_type == ScmRights;
+}
+
+// The serialized size counts every field, the data size only the buffers.
+[[gnu::always_inline]] size_t CalculateMessageBufferSize(size_t* pOutDataSize,
+  const MMsgHdr* messages, size_t count) {
+  size_t size = 1;
+  size_t dataSize = 0;
+  for (size_t i = 0; i != count; ++i) {
+    const MsgHdr& message = messages[i].msg_hdr;
+    size += sizeof(uint32_t) + message.msg_namelen + sizeof(int32_t);
+    for (int j = 0; j < message.msg_iovlen; ++j) {
+      dataSize += message.msg_iov[j].iov_len;
+      size += sizeof(uint64_t) + message.msg_iov[j].iov_len;
+    }
+    size += sizeof(uint32_t) + message.msg_controllen + sizeof(uint32_t) * 2;
+  }
+  *pOutDataSize = dataSize;
+  return size;
+}
+
+void* AllocateMessageBuffer(size_t size) {
+  os::LockMutex(&g_ClientState.allocatorMutex);
+  void* pBuffer = nullptr;
+  if (g_ClientState.pAllocator == nullptr) {
+    *__errno_location() = EOpNotSupp;
+  }
+  else {
+    pBuffer = g_ClientState.pAllocator->allocate(size,
+      MessageBufferAlignment);
+    if (pBuffer == nullptr) {
+      SetLastErrorImpl(ENoMem);
+    }
+    else {
+      size_t used;
+      if (!g_ClientState.isLibraryHeapUsed) {
+        g_ClientState.allocatedSize += size;
+        used = g_ClientState.allocatedSize;
+      }
+      else {
+        lmem::detail::HeapHead* heap = g_ClientState.libraryHeapResource.heap;
+        used = lmem::GetTotalSize(heap) - lmem::GetExpHeapTotalFreeSize(heap);
+      }
+      if (g_ClientState.allocatedSizePeak < used) {
+        g_ClientState.allocatedSizePeak = used;
+      }
+      memset(pBuffer, 0xce, size);
+    }
+  }
+  os::UnlockMutex(&g_ClientState.allocatorMutex);
+  return pBuffer;
+}
+
+[[gnu::always_inline]] void FreeMessageBuffer(void* pBuffer, size_t size) {
+  os::LockMutex(&g_ClientState.allocatorMutex);
+  if (pBuffer != nullptr) {
+    if (g_ClientState.pAllocator == nullptr) {
+      *__errno_location() = EOpNotSupp;
+    }
+    else {
+      if (!g_ClientState.isLibraryHeapUsed) {
+        g_ClientState.allocatedSize -= size;
+      }
+      g_ClientState.pAllocator->deallocate(pBuffer, size,
+        MessageBufferAlignment);
+    }
+  }
+  os::UnlockMutex(&g_ClientState.allocatorMutex);
+}
+
+// Writes the headers, and the buffer contents when sending, as a version
+// byte followed by each length and its data.
+int SerializeMessages(void* pBuffer, size_t bufferSize,
+  const MMsgHdr* messages, size_t count, bool copyData) {
+  char* pBegin = static_cast<char*>(pBuffer);
+  char* p = pBegin;
+  *p++ = MessageBufferVersion;
+  size_t i = 0;
+  do {
+    const MMsgHdr& entry = messages[i];
+    const MsgHdr& message = entry.msg_hdr;
+    if (HasRightsControl(message)) {
+      SetLastErrorImpl(EOpNotSupp);
+      return -1;
+    }
+
+    *reinterpret_cast<uint32_t*>(p) = message.msg_namelen;
+    p += sizeof(uint32_t);
+    if (copyData && message.msg_name != nullptr) {
+      memcpy(p, message.msg_name, message.msg_namelen);
+    }
+    p += message.msg_namelen;
+
+    *reinterpret_cast<int32_t*>(p) = message.msg_iovlen;
+    p += sizeof(int32_t);
+    for (int j = 0; j < message.msg_iovlen; ++j) {
+      const IoVec& vector = message.msg_iov[j];
+      *reinterpret_cast<uint64_t*>(p) = vector.iov_len;
+      p += sizeof(uint64_t);
+      if (copyData) {
+        memcpy(p, vector.iov_base, vector.iov_len);
+      }
+      p += vector.iov_len;
+    }
+
+    *reinterpret_cast<uint32_t*>(p) = message.msg_controllen;
+    p += sizeof(uint32_t);
+    if (copyData && message.msg_control != nullptr) {
+      memcpy(p, message.msg_control, message.msg_controllen);
+    }
+    p += message.msg_controllen;
+
+    *reinterpret_cast<int32_t*>(p) = static_cast<int32_t>(message.msg_flags);
+    *reinterpret_cast<uint32_t*>(p + sizeof(int32_t)) = entry.msg_len;
+    p += sizeof(uint32_t) * 2;
+  } while (++i != count);
+  NN_ABORT_UNLESS(p <= pBegin + bufferSize);
+  return static_cast<int>(p - pBegin);
+}
+
+// Reads back what the service wrote, the buffer contents when receiving.
+int DeserializeMessages(MMsgHdr* messages, size_t count, const void* pBuffer,
+  size_t bufferSize, bool copyData) {
+  const char* pBegin = static_cast<const char*>(pBuffer);
+  const char* p = pBegin + 1;
+  for (size_t i = 0; i != count; ++i) {
+    MMsgHdr& entry = messages[i];
+    MsgHdr& message = entry.msg_hdr;
+
+    message.msg_namelen = *reinterpret_cast<const uint32_t*>(p);
+    p += sizeof(uint32_t);
+    if (copyData && message.msg_name != nullptr) {
+      memcpy(message.msg_name, p, message.msg_namelen);
+    }
+    p += message.msg_namelen;
+
+    message.msg_iovlen = *reinterpret_cast<const int32_t*>(p);
+    p += sizeof(int32_t);
+    for (int j = 0; j < message.msg_iovlen; ++j) {
+      IoVec& vector = message.msg_iov[j];
+      vector.iov_len = *reinterpret_cast<const uint64_t*>(p);
+      p += sizeof(uint64_t);
+      if (copyData) {
+        memcpy(vector.iov_base, p, vector.iov_len);
+      }
+      p += vector.iov_len;
+    }
+
+    message.msg_controllen = *reinterpret_cast<const uint32_t*>(p);
+    p += sizeof(uint32_t);
+    if (copyData && message.msg_control != nullptr) {
+      memcpy(message.msg_control, p, message.msg_controllen);
+    }
+    p += message.msg_controllen;
+
+    message.msg_flags = static_cast<MsgFlag>(
+      *reinterpret_cast<const int32_t*>(p));
+    entry.msg_len = *reinterpret_cast<const uint32_t*>(p + sizeof(int32_t));
+    if (HasRightsControl(message)) {
+      SetLastErrorImpl(EOpNotSupp);
+      return -1;
+    }
+    p += sizeof(uint32_t) * 2;
+  }
+  NN_ABORT_UNLESS(p <= pBegin + bufferSize);
+  return static_cast<int>(p - pBegin);
+}
+
+// Same as GetNativeSocket, but the error goes through the initialized check.
+[[gnu::always_inline]] bool GetNativeSocketForMessages(int* pOutSocket,
+  int* pOutError, int socket) {
+  os::AcquireReadLock(&g_ClientState.descriptorLock);
+  NnmuslFileDescriptor descriptor = nnmuslLookupFileDescriptor(socket);
+  if (descriptor.type == NnmuslFileDescriptorType_None) {
+    *pOutError = EBadF;
+  }
+  else if (descriptor.type != NnmuslFileDescriptorType_Socket) {
+    *pOutError = ENotSock;
+  }
+  else {
+    *pOutSocket = descriptor.native;
+    os::ReleaseReadLock(&g_ClientState.descriptorLock);
+    return true;
+  }
+  os::ReleaseReadLock(&g_ClientState.descriptorLock);
+  SetLastErrorImpl(*pOutError);
+  return false;
+}
+
 template <typename Header, typename Flags>
 ssize_t RecvMsgImpl(int socket, Header* message, Flags flags) {
   NN_ABORT_UNLESS(IsInitializedImpl());
@@ -1023,6 +1229,126 @@ int GetLastErrno() {
     return *__errno_location();
   }
   return EInval;
+}
+
+ssize_t RecvMMsg(int socket, MMsgHdr* messages, size_t count, MsgFlag flags,
+  TimeSpan* timeout) {
+  int result = 0;
+  int error = 0;
+  if (messages == nullptr || count == 0) {
+    SetLastErrorImpl(EInval);
+    return -1;
+  }
+
+  size_t dataSize;
+  size_t bufferSize = CalculateMessageBufferSize(&dataSize, messages, count);
+  void* pBuffer = nullptr;
+  if (dataSize > MessageDataSizeMax) {
+    result = -1;
+    SetLastErrorImpl(EMsgSize);
+  }
+  else {
+    bufferSize = (bufferSize + MessageBufferAlignment - 1) &
+      ~(MessageBufferAlignment - 1);
+    pBuffer = AllocateMessageBuffer(bufferSize);
+    if (pBuffer == nullptr) {
+      result = -1;
+    }
+    else {
+      memset(pBuffer, 0, bufferSize);
+      ::nn::sf::OutBuffer buffer(pBuffer, bufferSize);
+      sf::Timespec timeoutSpec = {};
+      if (timeout != nullptr) {
+        timeoutSpec.seconds = timeout->nanoseconds / 1000000000;
+        timeoutSpec.nanoseconds = timeout->nanoseconds % 1000000000;
+      }
+      int nativeSocket;
+      if (SerializeMessages(pBuffer, bufferSize, messages, count, false) ==
+        -1) {
+        result = -1;
+      }
+      else if (!GetNativeSocketForMessages(&nativeSocket, &error, socket)) {
+        result = -1;
+      }
+      else {
+        Result callResult = g_ClientState.pClient->RecvMMsg(Out(&result),
+          Out(&error), nativeSocket, buffer, static_cast<uint32_t>(count),
+          static_cast<int32_t>(flags), timeoutSpec);
+        if (callResult.IsFailure()) {
+          error = ConvertResultToErrno(callResult);
+          result = -1;
+          detail::SetLastError(static_cast<Errno>(error));
+        }
+        else if (result < 0) {
+          detail::SetLastError(static_cast<Errno>(error));
+        }
+        else if (DeserializeMessages(messages, result, pBuffer, bufferSize,
+          true) == -1) {
+          result = -1;
+        }
+      }
+    }
+  }
+  FreeMessageBuffer(pBuffer, bufferSize);
+  return result;
+}
+
+ssize_t SendMMsg(int socket, MMsgHdr* messages, size_t count,
+  MsgFlag flags) {
+  int result = 0;
+  int error = 0;
+  if (messages == nullptr) {
+    SetLastErrorImpl(EInval);
+    return -1;
+  }
+  if (count == 0) {
+    SetLastErrorImpl(EMsgSize);
+    return -1;
+  }
+
+  size_t dataSize;
+  size_t bufferSize = CalculateMessageBufferSize(&dataSize, messages, count);
+  void* pBuffer = nullptr;
+  if (dataSize > MessageDataSizeMax) {
+    result = -1;
+    SetLastErrorImpl(EMsgSize);
+  }
+  else {
+    bufferSize = (bufferSize + MessageBufferAlignment - 1) &
+      ~(MessageBufferAlignment - 1);
+    pBuffer = AllocateMessageBuffer(bufferSize);
+    int nativeSocket;
+    if (pBuffer == nullptr) {
+      result = -1;
+    }
+    else if (SerializeMessages(pBuffer, bufferSize, messages, count, true) ==
+      -1) {
+      result = -1;
+    }
+    else if (!GetNativeSocketForMessages(&nativeSocket, &error, socket)) {
+      result = -1;
+    }
+    else {
+      ::nn::sf::OutBuffer buffer(pBuffer, bufferSize);
+      Result callResult = g_ClientState.pClient->SendMMsg(Out(&result),
+        Out(&error), nativeSocket, buffer, static_cast<uint32_t>(count),
+        static_cast<int32_t>(flags));
+      if (callResult.IsFailure()) {
+        error = ConvertResultToErrno(callResult);
+        result = -1;
+        detail::SetLastError(static_cast<Errno>(error));
+      }
+      else if (result < 0) {
+        detail::SetLastError(static_cast<Errno>(error));
+      }
+      else if (DeserializeMessages(messages, result, pBuffer, bufferSize,
+        false) == -1) {
+        result = -1;
+      }
+    }
+  }
+  FreeMessageBuffer(pBuffer, bufferSize);
+  return result;
 }
 
 ssize_t RecvMMsg(int socket, mmsghdr* messages, size_t count, int flags,

@@ -147,7 +147,10 @@ struct TimeVal {
   int64_t tv_usec;
 };
 
-struct IoVec;
+struct IoVec {
+  void* iov_base;
+  size_t iov_len;
+};
 
 struct PollFd {
   int32_t fd;
