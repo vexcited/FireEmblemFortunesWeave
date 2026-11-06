@@ -108,6 +108,7 @@ public:
 
   // 1 opens an inline, brother or exit block, 3 closes it.
   virtual void SetBlockState(int state);
+  virtual bool IsSkipping();
 };
 
 class ScriptContext {

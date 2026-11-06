@@ -9,6 +9,11 @@ namespace game::hub {
 class Input : public Singleton<Input> {
 public:
   ~Input() override;
+
+  void StopPlayer();
+  void RestartPlayer();
+  void StopInput();
+  void RestartInput();
 };
 
 #pragma GCC visibility pop

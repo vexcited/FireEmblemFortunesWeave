@@ -16,13 +16,15 @@ class Vec3;
 
 namespace game::hub {
 
+class Character;
+
 // The shape of the area an event covers.
 class AreaShape {
 public:
   float GetNearLengthXZ(const math::Vec3& pos) const;
 
 private:
-  uint8_t unknown_00_[0x60];
+  uint8_t unknown_00_[0x50];
 };
 
 // The popup shown while the player can access an event.
@@ -117,6 +119,11 @@ public:
     gaya_devoice_ = isDevoice;
   }
 
+  // The character the event belongs to, if any.
+  const std::weak_ptr<Character>& GetCharacter() const {
+    return character_;
+  }
+
   const std::weak_ptr<AccessPopup>& GetPopup() const {
     return popup_;
   }
@@ -141,6 +148,7 @@ private:
   uint32_t pool_;
   uint32_t id_;
   AreaShape shape_;
+  std::weak_ptr<Character> character_;
   float front_angle_;
   bool has_front_angle_;
   uint8_t unknown_75_[0x3b];

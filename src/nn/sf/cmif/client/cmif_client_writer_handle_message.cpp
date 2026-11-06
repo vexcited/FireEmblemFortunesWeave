@@ -38,3 +38,15 @@ template Result DomainKind::ProcessWithObjects<true, 1, InRaw<uint64_t>,
   InWriterHandle<false>, InRaw<uint32_t>>(const DomainKind::ProxyKindState*,
   sf::SharedPointer<sf::IServiceObject>* const*, uint64_t, sf::NativeHandle*,
   uint64_t, int, CmifProxyObject**);
+
+// Domain layouts that close the sent handle before the session goes back,
+// also when SetHandles fails.
+
+template Result DomainKind::Process<false, InWriterHandle<false>,
+  InRaw<uint64_t>>(const DomainKind::ProxyKindState*, sf::NativeHandle*,
+  uint64_t, int);
+
+template Result DomainKind::Process<false, InWriterHandle<false>,
+  InRaw<uint64_t>, InRaw<uint32_t>, InRaw<uint32_t>>(
+  const DomainKind::ProxyKindState*, sf::NativeHandle*, uint64_t, uint64_t,
+  uint64_t, int);

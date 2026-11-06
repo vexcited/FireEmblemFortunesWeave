@@ -6,6 +6,8 @@
 #include "game/hub/area_event.hpp"
 #include "game/hub/character.hpp"
 #include "game/script/script_string.hpp"
+#include "math/vec3.hpp"
+#include "nn/util/vector.hpp"
 
 // The natives of the hub::character script namespace and the behaviors of
 // the CharacterHandle script type. Each native opens the script block, then
@@ -411,6 +413,456 @@ ScriptString GetDisposLabel(CharacterHandle handle) {
   Character* character = Open(handle);
   return ScriptString(character != nullptr ?
     character->GetDisposLabel().c_str() : "");
+}
+
+bool IsValid(const CharacterHandle* self) {
+  return self->IsValid();
+}
+
+bool IsPlayingMotion(CharacterHandle handle) {
+  Character* character = Open(handle);
+  return character != nullptr && character->GetModel()->IsPlayingOneTime();
+}
+
+bool IsBehaviorComplete(CharacterHandle handle) {
+  Character* character = Open(handle);
+  return character != nullptr && !character->GetBehavior()->IsRunning();
+}
+
+bool IsBehaviorException(CharacterHandle handle) {
+  Character* character = Open(handle);
+  return character != nullptr && character->GetBehavior()->IsException();
+}
+
+void WaitBehaviorComplete(CharacterHandle handle) {
+  if (Character* character = handle.Get()) {
+    Wait(character->GetBehavior()->IsRunning());
+  }
+}
+
+bool IsAutonomyWait(CharacterHandle handle) {
+  Character* character = Open(handle);
+  if (character == nullptr) {
+    return true;
+  }
+  game::hub::CharacterAutonomy* autonomy = character->GetAutonomy();
+  return autonomy == nullptr || autonomy->IsWaiting();
+}
+
+namespace {
+
+[[gnu::always_inline]] inline void SetAutonomy(const CharacterHandle& handle,
+  int state) {
+  OpenBlock();
+  if (handle.IsValid()) {
+    handle->SetControlMode(Character::kControlAutonomy, false);
+    if (game::hub::CharacterAutonomy* autonomy = handle->GetAutonomy()) {
+      autonomy->GetStateMachine().Request(state);
+    }
+  }
+}
+
+}
+
+void AutonomyWait(CharacterHandle handle) {
+  SetAutonomy(handle, game::hub::CharacterAutonomy::kStateWait);
+}
+
+void AutonomyFollow(CharacterHandle handle) {
+  SetAutonomy(handle, game::hub::CharacterAutonomy::kStateFollow);
+}
+
+void EndPlayerAutonomy() {
+  as::ScriptContext* context = as::GetCurrentContext();
+  context->GetRunner()->SetBlockState(1);
+  context->ClearCallback();
+  if (std::shared_ptr<Character> player = std::weak_ptr<Character>(
+    game::hub::CharacterManager::GetInstance()->GetPlayer()).lock()) {
+    player->SetControlMode(Character::kControlPlayer, false);
+  }
+}
+
+bool IsIdleMotionName(CharacterHandle handle, const std::string& name) {
+  Character* character = Open(handle);
+  return character != nullptr &&
+    character->GetModel()->GetState()->IsIdleMotion(
+      game::hub::HashMotionName(name.c_str()));
+}
+
+void CancelMotion(CharacterHandle handle, float blendSec) {
+  if (Character* character = Open(handle)) {
+    game::hub::CharacterModel* model = character->GetModel();
+    model->CancelOneTime();
+    model->GetState()->GetAnimator()->ClearHold();
+    model->GetState()->GetAnimator()->Stop(1, blendSec);
+  }
+}
+
+void PlayMotionOneTime(CharacterHandle handle, const std::string& name) {
+  if (Character* character = Open(handle)) {
+    int index = game::hub::FindMotion(name);
+    if (index != game::hub::kMotionCount) {
+      character->GetModel()->PlayOneTime(game::hub::g_motions[index].id, false,
+        std::nullopt, std::nullopt, std::nullopt, 1.0f);
+    }
+  }
+}
+
+void PlayMotionOneTime(CharacterHandle handle, const std::string& name,
+  float blendSec) {
+  if (Character* character = Open(handle)) {
+    int index = game::hub::FindMotion(name);
+    if (index != game::hub::kMotionCount) {
+      character->GetModel()->PlayOneTime(game::hub::g_motions[index].id, false,
+        blendSec, std::nullopt, std::nullopt, 1.0f);
+    }
+  }
+}
+
+void PauseMotion(CharacterHandle handle, const std::string& name,
+  float startSec) {
+  if (Character* character = Open(handle)) {
+    int index = game::hub::FindMotion(name);
+    if (index != game::hub::kMotionCount) {
+      character->GetModel()->Play(game::hub::g_motions[index].id, 0.0f,
+        startSec, 0.0f, 1.0f);
+    }
+  }
+}
+
+// The length of a motion in seconds.
+float GetMotionSec(CharacterHandle handle, const std::string& name) {
+  Character* character = Open(handle);
+  if (character == nullptr) {
+    return 0.0f;
+  }
+  int index = game::hub::FindMotion(name);
+  if (index == game::hub::kMotionCount) {
+    return 0.0f;
+  }
+  const game::hub::CharacterModelState* state =
+    character->GetModel()->GetState();
+  if (!state->IsLoaded()) {
+    return 0.0f;
+  }
+  return state->GetAnimator()->GetFrameCount(game::hub::g_motions[index].id) /
+    60.0f;
+}
+
+void SetIdleMotion(CharacterHandle handle, const std::string& name) {
+  OpenBlock();
+  if (handle.IsValid()) {
+    uint32_t motion = game::hub::HashMotionName(name.c_str());
+    handle->GetModel()->Play(motion, 0.0f, std::nullopt, std::nullopt, 1.0f);
+    handle->GetModel()->SetIdleMotion(motion);
+  }
+}
+
+void SetIdleMotionAtRandomFrame(CharacterHandle handle,
+  const std::string& name) {
+  OpenBlock();
+  if (handle.IsValid()) {
+    uint32_t motion = game::hub::HashMotionName(name.c_str());
+    handle->GetModel()->PlayAtRandomFrame(motion, 0.0f);
+    handle->GetModel()->SetIdleMotion(motion);
+  }
+}
+
+void ClearEventLookTo(CharacterHandle handle) {
+  if (Character* character = Open(handle)) {
+    game::hub::CharacterManager* manager =
+      game::hub::CharacterManager::GetInstance();
+    manager->ClearEventLookTo(manager->Find(character));
+  }
+}
+
+CharacterHandle GetHandlePlayer() {
+  OpenBlock();
+  if (std::shared_ptr<Character> player = std::weak_ptr<Character>(
+    game::hub::CharacterManager::GetInstance()->GetPlayer()).lock()) {
+    return CharacterHandle(player.get());
+  }
+  return CharacterHandle();
+}
+
+namespace {
+
+[[gnu::always_inline]] inline CharacterHandle FindHandle(
+  std::weak_ptr<Character> weak) {
+  if (std::shared_ptr<Character> character = weak.lock()) {
+    return CharacterHandle(character.get());
+  }
+  return CharacterHandle();
+}
+
+}
+
+CharacterHandle GetHandleGlobalHash(uint64_t hash) {
+  OpenBlock();
+  return FindHandle(
+    game::hub::CharacterManager::GetInstance()->FindGlobalHash(hash));
+}
+
+CharacterHandle TryGetHandleGlobalHash(uint64_t hash) {
+  OpenBlock();
+  return FindHandle(
+    game::hub::CharacterManager::GetInstance()->FindGlobalHash(hash));
+}
+
+CharacterHandle GetHandleLabel(const std::string& label) {
+  OpenBlock();
+  return FindHandle(
+    game::hub::CharacterManager::GetInstance()->FindLabel(label));
+}
+
+CharacterHandle TryGetHandleLabel(const std::string& label) {
+  OpenBlock();
+  return FindHandle(
+    game::hub::CharacterManager::GetInstance()->FindLabel(label));
+}
+
+void AutonomyCommand(CharacterHandle handle, float stickX, float stickY,
+  bool isDash, bool isForceSpeed) {
+  OpenBlock();
+  if (handle.IsValid()) {
+    handle->SetControlMode(Character::kControlAutonomy, false);
+    if (game::hub::CharacterAutonomy* autonomy = handle->GetAutonomy()) {
+      game::hub::StateMachine<game::hub::AutonomyContext>& machine =
+        autonomy->GetStateMachine();
+      machine.Request(game::hub::CharacterAutonomy::kStateCommand);
+      if (game::hub::AutonomyCommand* command =
+        machine.GetContext()->GetCommand()) {
+        command->Set(stickX, stickY, isDash, isForceSpeed);
+      }
+    }
+  }
+}
+
+void RunTalkCameraFacility(CharacterHandle handle) {
+  if (Character* character = Open(handle)) {
+    std::weak_ptr<Character> target =
+      game::hub::CharacterManager::GetInstance()->Find(character);
+    game::hub::TalkSupport::GetInstance()->RunCameraFacility(target, false);
+  }
+}
+
+void RunTalkCameraSolo(CharacterHandle handle) {
+  if (Character* character = Open(handle)) {
+    std::weak_ptr<Character> target =
+      game::hub::CharacterManager::GetInstance()->Find(character);
+    game::hub::TalkSupport::GetInstance()->RunCameraSolo(target, false,
+      std::nullopt);
+  }
+}
+
+void RunTalkCameraSoloBlendSec(CharacterHandle handle, float blendSec) {
+  if (Character* character = Open(handle)) {
+    std::weak_ptr<Character> target =
+      game::hub::CharacterManager::GetInstance()->Find(character);
+    game::hub::TalkSupport::GetInstance()->RunCameraSolo(target, false,
+      blendSec);
+  }
+}
+
+void ResetFacial(CharacterHandle handle, float sec) {
+  if (Character* character = Open(handle)) {
+    character->GetModel()->GetState()->GetFacial()->Reset(sec);
+  }
+}
+
+bool IsIdle(CharacterHandle handle) {
+  Character* character = Open(handle);
+  return character != nullptr && character->GetModel()->IsIdle();
+}
+
+void WaitIdle(CharacterHandle handle) {
+  if (Character* character = handle.Get()) {
+    Wait(!character->GetModel()->IsIdle());
+  }
+}
+
+void SetBehaviorEnableRunning(CharacterHandle handle, bool isEnable) {
+  if (Character* character = Open(handle)) {
+    character->GetBehavior()->SetEnableRunning(isEnable);
+  }
+}
+
+// Shared by the position getters of characters without a handle.
+[[gnu::always_inline]] inline const math::Vec3& ZeroVector() {
+  static const math::Vec3 zero(nn::util::Vector3f::ConstantZero);
+  return zero;
+}
+
+math::Vec3 GetPosition(CharacterHandle handle) {
+  Character* character = Open(handle);
+  return character != nullptr ?
+    character->GetModel()->GetMover()->GetPosition() : ZeroVector();
+}
+
+math::Vec3 GetDisposPosition(CharacterHandle handle) {
+  Character* character = Open(handle);
+  return character != nullptr ? character->GetDisposPosition() : ZeroVector();
+}
+
+// Without a head joint the head is guessed from the height.
+math::Vec3 GetHeadPosition(CharacterHandle handle) {
+  Character* character = Open(handle);
+  if (character == nullptr) {
+    return ZeroVector();
+  }
+  const game::hub::CharacterModel* model = character->GetModel();
+  if (const game::hub::CharacterJoint* head =
+    model->GetState()->GetHeadJoint()) {
+    return head->GetTranslation();
+  }
+  return model->GetMover()->GetPosition() +
+    math::Vec3(0.0f, model->GetHeight() * 0.8f, 0.0f);
+}
+
+void SetPosition(CharacterHandle handle, const math::Vec3& pos) {
+  if (Character* character = Open(handle)) {
+    character->GetModel()->GetMover()->SetPosition(pos, true);
+    if ((character->GetPosition() -
+      character->GetModel()->GetMover()->GetPosition()).LengthSquared() >
+      1.1920929e-7f) {
+      game::hub::CharacterManager::GetInstance()->NotifyMoved();
+    }
+    character->SetPositionValue(pos);
+    character->UpdatePosition(true);
+    handle->GetModel()->MarkDirty();
+  }
+}
+
+// The angle is given in degrees.
+void SetAngle(CharacterHandle handle, float rotY) {
+  if (Character* character = Open(handle)) {
+    character->FixAngle();
+    game::hub::CharacterMover* mover = character->GetModel()->GetMover();
+    mover->ClearLookTarget();
+    mover->GetTransform()->SetRotY(rotY * 0.017453f);
+    handle->GetModel()->MarkDirty();
+  }
+}
+
+void AutonomyMoveTo(CharacterHandle handle, const math::Vec3& pos,
+  float speed) {
+  OpenBlock();
+  if (handle.IsValid()) {
+    handle->SetControlMode(Character::kControlAutonomy, false);
+    if (game::hub::CharacterAutonomy* autonomy = handle->GetAutonomy()) {
+      game::hub::StateMachine<game::hub::AutonomyContext>& machine =
+        autonomy->GetStateMachine();
+      machine.Request(game::hub::CharacterAutonomy::kStateMoveTo);
+      if (game::hub::AutonomyMove* move = machine.GetContext()->GetMove()) {
+        move->Set(pos, speed);
+      }
+    }
+  }
+}
+
+void KeepLookTo(CharacterHandle handle, const math::Vec3& targetPos,
+  float rotateSpeedRate) {
+  if (Character* character = Open(handle)) {
+    character->GetModel()->GetLookAt()->LookTo(targetPos, rotateSpeedRate);
+    handle->GetModel()->MarkDirty();
+  }
+}
+
+void KeepLookTo(CharacterHandle handle, CharacterHandle target,
+  float rotateSpeedRate) {
+  if (Character* character = Open(handle)) {
+    if (Character* other = target.Get()) {
+      character->GetModel()->GetLookAt()->LookTo(
+        other->GetModel()->GetJointId(), rotateSpeedRate);
+      handle->GetModel()->MarkDirty();
+    }
+  }
+}
+
+void EventLookTo(CharacterHandle handle, const math::Vec3& targetPos,
+  float rotateSpeedRate) {
+  if (Character* character = Open(handle)) {
+    character->GetModel()->GetLookAt()->LookTo(targetPos, rotateSpeedRate);
+    handle->GetModel()->MarkDirty();
+    game::hub::CharacterManager* manager =
+      game::hub::CharacterManager::GetInstance();
+    manager->AddEventLookTo(manager->Find(handle.Get()));
+  }
+}
+
+void EventLookTo(CharacterHandle handle, CharacterHandle target,
+  float rotateSpeedRate) {
+  if (Character* character = Open(handle)) {
+    if (Character* other = target.Get()) {
+      character->GetModel()->GetLookAt()->LookTo(
+        other->GetModel()->GetJointId(), rotateSpeedRate);
+      handle->GetModel()->MarkDirty();
+      game::hub::CharacterManager* manager =
+        game::hub::CharacterManager::GetInstance();
+      manager->AddEventLookTo(manager->Find(handle.Get()));
+    }
+  }
+}
+
+void DefaultLookTo(CharacterHandle handle, const math::Vec3& targetPos) {
+  if (Character* character = Open(handle)) {
+    character->GetModel()->GetLookAt()->SetDefault(targetPos);
+    handle->GetModel()->MarkDirty();
+  }
+}
+
+void DefaultLookTo(CharacterHandle handle, CharacterHandle target) {
+  if (Character* character = Open(handle)) {
+    if (Character* other = target.Get()) {
+      character->GetModel()->GetLookAt()->SetDefault(
+        other->GetModel()->GetJointId());
+      handle->GetModel()->MarkDirty();
+    }
+  }
+}
+
+void WarpTo(CharacterHandle handle, const math::Vec3& pos, float angleDeg,
+  float fadeSec, bool isExitWaitVisible) {
+  if (Character* character = Open(handle)) {
+    if (game::hub::WarpRequest* request =
+      character->GetModel()->GetMover()->GetWarper()->GetRequest()) {
+      request->Set(pos, angleDeg, fadeSec, isExitWaitVisible);
+    }
+  }
+}
+
+CharacterHandle GetHandleAccessingChara() {
+  OpenBlock();
+  if (std::shared_ptr<game::hub::AreaEvent> event =
+    std::weak_ptr<game::hub::AreaEvent>(game::hub::EventManager::GetInstance()
+      ->GetAccessState()->GetEvent()).lock()) {
+    if (std::shared_ptr<Character> character =
+      std::weak_ptr<Character>(event->GetCharacter()).lock()) {
+      return CharacterHandle(character.get());
+    }
+  }
+  return CharacterHandle();
+}
+
+// A skipped script skips the talk, then the script waits for the event.
+void PreTalkEvent(CharacterHandle handle) {
+  if (!handle.IsValid()) {
+    return;
+  }
+  as::ScriptContext* running =
+    g_script_manager->GetThread(as::g_thread_info->GetIndex())->GetContext();
+  if (running->GetRunner()->IsSkipping()) {
+    handle->SkipTalk();
+  }
+  const bool busy =
+    game::hub::CharacterManager::IsTalkEventRunning("PreTalkEvent");
+  as::ScriptContext* context = GetCurrentContext();
+  if (busy) {
+    context->GetRunner()->SetBlockState(0);
+    return;
+  }
+  context->GetRunner()->SetBlockState(1);
+  context->ClearCallback();
 }
 
 #pragma GCC visibility pop

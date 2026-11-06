@@ -18,12 +18,21 @@ struct Vector4fType {
 
 class Vector2f : public Vector2fType {};
 
-class Vector3f : public Vector3fType {};
+class Vector3f : public Vector3fType {
+public:
+  static const Vector3f ConstantZero;
+};
 
 class Vector4f : public Vector4fType {};
 
 struct Color4u8Type {
   unsigned char v[4];
+};
+
+struct Float3 {
+  float x;
+  float y;
+  float z;
 };
 
 struct Float4 {

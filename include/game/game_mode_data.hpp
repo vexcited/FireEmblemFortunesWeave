@@ -24,6 +24,7 @@ struct GameVariable {
 class GameVariableTable {
 public:
   const GameVariable* Find(const HashedString& key) const;
+  bool Contains(const HashedString& key) const;
 
   GameVariable* Find(const HashedString& key) {
     return const_cast<GameVariable*>(std::as_const(*this).Find(key));
@@ -105,6 +106,7 @@ public:
   };
 
   static constexpr uint32_t kFlagGmapContinue = 0x2;
+  static constexpr uint32_t kFlagCompletedMap = 0x4;
 
   static GameModeData* GetInstance() {
     return instance_;
@@ -192,6 +194,10 @@ public:
 
   uint16_t GetMiracleCount() const {
     return miracle_->count;
+  }
+
+  bool HasFlag(uint32_t flag) const {
+    return flags_ & flag;
   }
 
   void ClearFlag(uint32_t flag) {

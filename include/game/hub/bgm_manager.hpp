@@ -15,6 +15,7 @@ public:
   ~BgmManager() override;
 
   void Stop();
+  void Play();
 
 private:
   uint32_t unknown_08_;

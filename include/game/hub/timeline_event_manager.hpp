@@ -9,6 +9,8 @@ namespace game::hub {
 class TimelineEventManager : public Singleton<TimelineEventManager> {
 public:
   ~TimelineEventManager() override;
+
+  void ImmediateJumpNext();
 };
 
 #pragma GCC visibility pop

@@ -41,10 +41,20 @@ namespace game::script::hub::event {
 using game::hub::AreaEvent;
 using game::hub::AreaEventHandle;
 
+// The script manager of as/script_context.hpp, read through the global offset
+// table by these natives.
+extern as::ScriptManager* g_script_manager;
+
 namespace {
 
+[[gnu::always_inline]] inline as::ScriptContext* GetCurrentContext() {
+  as::ScriptThread* thread =
+    g_script_manager->GetThread(as::g_thread_info->GetIndex());
+  return thread != nullptr ? thread->GetContext() : nullptr;
+}
+
 [[gnu::always_inline]] inline void OpenBlock() {
-  as::ScriptContext* context = as::GetCurrentContext();
+  as::ScriptContext* context = GetCurrentContext();
   context->GetRunner()->SetBlockState(1);
   context->ClearCallback();
 }
