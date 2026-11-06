@@ -2,11 +2,13 @@
 
 #include <cstdint>
 #include <memory>
+#include <string_view>
 
 #include "ui/ui2d.hpp"
 
 namespace ui {
 
+class ILayoutControl;
 class LayoutResource;
 
 class Layout : public std::enable_shared_from_this<Layout> {
@@ -19,6 +21,21 @@ public:
   // Shared by the accessors of one layout, keyed by the layout name.
   std::shared_ptr<LayoutResource> GetResource(nn::ui2d::Layout* layout);
   void Arrange();
+
+  // The control whose root pane, cast to a parts pane, is the pane.
+  std::weak_ptr<ILayoutControl> FindControl(nn::ui2d::Pane* pane);
+  // The control whose pane path ends with the name.
+  std::weak_ptr<ILayoutControl> FindControl(const std::string_view& name);
+
+  template <class T>
+  std::weak_ptr<T> GetControl(nn::ui2d::Pane* pane) {
+    return std::dynamic_pointer_cast<T>(FindControl(pane).lock());
+  }
+
+  template <class T>
+  std::weak_ptr<T> GetControl(const std::string_view& name) {
+    return std::dynamic_pointer_cast<T>(FindControl(name).lock());
+  }
 
   nn::ui2d::Layout* GetLayout() {
     return loaded_ ? &layout_ : nullptr;

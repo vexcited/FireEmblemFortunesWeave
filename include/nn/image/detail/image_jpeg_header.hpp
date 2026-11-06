@@ -3,16 +3,56 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#include "nn/image/image_jpeg.hpp"
 #include "nn/image/image_types.hpp"
 
 namespace nn::image::detail {
 
+struct JpegComponentInfo {
+  uint8_t id;
+  uint8_t horizontalSampling;
+  uint8_t verticalSampling;
+  uint8_t quantizationTable;
+  uint32_t horizontalScale;
+  uint32_t verticalScale;
+  uint32_t downsampledWidth;
+  uint32_t downsampledHeight;
+};
+
 struct JpegInfo {
-  uint8_t reserved0[0x80];
+  uint16_t frameMarker;
+  uint16_t frameLength;
+  uint8_t precision;
+  uint16_t imageHeight;
+  uint16_t imageWidth;
+  uint8_t componentCount;
+  uint16_t maxHorizontalSampling;
+  uint16_t maxVerticalSampling;
+  JpegComponentInfo components[4];
+  uint32_t blockSize;
+  uint8_t reserved64[4];
+  int32_t huffmanTableCount;
+  uint32_t huffmanTableMask;
+  int32_t quantizationTableCount;
+  uint32_t quantizationTableMask;
+  uint32_t horizontalScale;
+  uint32_t verticalScale;
   uint32_t width;
   uint32_t height;
-  uint8_t reserved88[0x20];
+  uint32_t spectralEnd;
+  uint8_t reserved8c[4];
+  int32_t outputComponentCount;
+  bool isMergedUpsampling;
+  int32_t outputColorSpace;
+  int32_t colorSpace;
+  bool hasJfifMarker;
+  bool hasAdobeMarker;
+  bool reservedA2;
+  uint8_t reservedA3;
+  uint8_t adobeTransform;
 };
+
+static_assert(sizeof(JpegInfo) == 0xa8);
 
 struct JpegHeader {
   Dimension dimension;
@@ -28,6 +68,10 @@ JpegStatus ReadJpegHeader(JpegInfo* pOutInfo, const uint8_t* pData,
   size_t size, unsigned int resolutionDenominator);
 bool GetExifInfo(const void** ppOutExifData, uint16_t* pOutExifSize,
   const uint8_t* pData, size_t size);
+[[gnu::visibility("hidden")]] void SetupOutputScale(JpegInfo* pInfo,
+  uint32_t scale);
+void SetJpegHeader(JpegInfo* pInfo, uint16_t width, uint16_t height,
+  JpegSamplingRatio samplingRatio);
 void WriteExifHeader(void* pOutData, size_t size);
 JpegStatus ExtractJpegHeader(JpegHeader* pOutHeader, const void* pData,
   size_t size, int resolutionDenominator);

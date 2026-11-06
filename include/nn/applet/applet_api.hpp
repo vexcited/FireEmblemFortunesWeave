@@ -31,6 +31,8 @@ LibraryAppletExitReason GetLibraryAppletExitReason(
   LibraryAppletHandle handle);
 void PushToInChannel(LibraryAppletHandle handle, StorageHandle storage);
 Result CreateStorage(StorageHandle* pOutStorage, size_t size);
+Result CreateLargeStorage(StorageHandle* pOutStorage, void* buffer,
+  size_t size, bool isWritable);
 Result WriteToStorage(StorageHandle storage, int64_t offset,
   const void* buffer, size_t size);
 void ReleaseStorage(StorageHandle storage);

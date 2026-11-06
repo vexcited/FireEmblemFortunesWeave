@@ -52,8 +52,37 @@ void ErrorViewerStartupParamForParentalControl::SetErrorContext(
   m_ErrorContext = errorContext;
 }
 
+ApplicationErrorArg::ApplicationErrorArg() : m_Number(0) {
+  m_Header.errorType = ErrorType_ApplicationError;
+  m_LanguageCode.string[0] = '\0';
+  m_DialogMessage[0] = '\0';
+  m_FullScreenMessage[0] = '\0';
+}
+
+ApplicationErrorArg::ApplicationErrorArg(uint32_t number,
+  const char* dialogMessage, const char* fullScreenMessage,
+  const settings::LanguageCode& languageCode) : m_Number(number) {
+  m_Header.errorType = ErrorType_ApplicationError;
+  CopyString(m_DialogMessage, dialogMessage);
+  CopyString(m_FullScreenMessage, fullScreenMessage);
+  CopyString(m_LanguageCode.string, languageCode.string);
+}
+
 void ApplicationErrorArg::SetApplicationErrorCodeNumber(uint32_t number) {
   m_Number = number;
+}
+
+void ApplicationErrorArg::SetDialogMessage(const char* message) {
+  CopyString(m_DialogMessage, message);
+}
+
+void ApplicationErrorArg::SetFullScreenMessage(const char* message) {
+  CopyString(m_FullScreenMessage, message);
+}
+
+void ApplicationErrorArg::SetLanguageCode(
+  const settings::LanguageCode& languageCode) {
+  CopyString(m_LanguageCode.string, languageCode.string);
 }
 
 uint32_t ApplicationErrorArg::GetApplicationErrorCodeNumber() const {
@@ -119,6 +148,28 @@ MinorsProtectionWarningForPlatformRegionChinaArg::
   memcpy(m_LanguageCode.string, "zh-Hans", 7);
 }
 
+MinorsProtectionWarningForPlatformRegionChinaArg::
+  MinorsProtectionWarningForPlatformRegionChinaArg(const char* dialogMessage,
+    const char* fullScreenMessage) {
+  memset(this, 0, sizeof(*this));
+  m_Header.errorType = 1;
+  m_Header.version = 1;
+  m_ErrorCode = ErrorCode{2899, 9000};
+  memcpy(m_LanguageCode.string, "zh-Hans", 7);
+  CopyString(m_DialogMessage, dialogMessage);
+  CopyString(m_FullScreenMessage, fullScreenMessage);
+}
+
+void MinorsProtectionWarningForPlatformRegionChinaArg::SetDialogMessage(
+  const char* message) {
+  CopyString(m_DialogMessage, message);
+}
+
+void MinorsProtectionWarningForPlatformRegionChinaArg::SetFullScreenMessage(
+  const char* message) {
+  CopyString(m_FullScreenMessage, message);
+}
+
 const char* MinorsProtectionWarningForPlatformRegionChinaArg::GetDialogMessage()
   const {
   return m_DialogMessage;
@@ -144,8 +195,38 @@ SystemErrorArg::SystemErrorArg() : m_ErrorCode(), m_pErrorContext(nullptr) {
   memset(m_ServerCode, 0, sizeof(m_ServerCode));
 }
 
+SystemErrorArg::SystemErrorArg(ErrorCode errorCode, const char* dialogMessage,
+  const char* fullScreenMessage, const settings::LanguageCode& languageCode)
+  : m_ErrorCode(errorCode), m_pErrorContext(nullptr) {
+  m_Header.errorType = 1;
+  m_Header.isJumpEnabled = true;
+  m_Header.reserved2[0] = 0;
+  m_Header.reserved2[1] = 0;
+  m_Header.version = 1;
+  m_Header.hasErrorContext = false;
+  m_Header.reserved6[0] = 0;
+  m_Header.reserved6[1] = 0;
+  memset(m_ServerCode, 0, sizeof(m_ServerCode));
+  CopyString(m_DialogMessage, dialogMessage);
+  CopyString(m_FullScreenMessage, fullScreenMessage);
+  CopyString(m_LanguageCode.string, languageCode.string);
+}
+
 void SystemErrorArg::SetErrorCode(ErrorCode errorCode) {
   m_ErrorCode = errorCode;
+}
+
+void SystemErrorArg::SetDialogMessage(const char* message) {
+  CopyString(m_DialogMessage, message);
+}
+
+void SystemErrorArg::SetFullScreenMessage(const char* message) {
+  CopyString(m_FullScreenMessage, message);
+}
+
+void SystemErrorArg::SetLanguageCode(
+  const settings::LanguageCode& languageCode) {
+  CopyString(m_LanguageCode.string, languageCode.string);
 }
 
 ErrorCode SystemErrorArg::GetErrorCode() const {

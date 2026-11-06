@@ -128,9 +128,9 @@ struct ConsumableServiceItemId {
 struct ConsumableServiceItemRightData {
   char rightsId[37];
   ConsumableServiceItemId itemId;
-  uint8_t reserved_36;
+  bool isConsumed;
   bool isServiceProvidableOnLocal;
-  uint8_t reserved_38[8];
+  int64_t purchasedDateTime;
   char serviceProvidedKey[37];
   uint8_t reserved_65[3];
 

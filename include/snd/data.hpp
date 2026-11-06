@@ -77,7 +77,9 @@ struct DefineData {
 
 struct CtrlBgmData {
   const char* name;
-  uint8_t unknown_08_[0xc8];
+  int tempo;
+  const char* tracks[6];
+  uint8_t unknown_40_[0x90];
 };
 
 struct MuseumData {

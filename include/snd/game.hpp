@@ -15,6 +15,12 @@ namespace snd {
 class Listener;
 class Manager;
 
+namespace data {
+
+struct CtrlBgmData;
+
+}
+
 // Free functions of the sound facade the game layer uses.
 bool isRunning();
 void setListenerPosition(float x, float y, float z, float angle);
@@ -54,22 +60,24 @@ public:
   // A piece of music, the last one requested plays.
   struct Entry {
     Track tracks[6];
-    bool unknown_150_;
-    bool paused;
-    bool systemPaused;
-    bool muted;
-    bool systemMuted;
-    bool stopping;
-    uint8_t unknown_156_[0xa];
-    int track;
-    int nextTrack;
-    int unknown_168_;
-    int unknown_16c_;
-    int unknown_170_;
-    uint8_t unknown_174_[8];
-    int fadeFrame;
-    bool loop;
-    uint8_t unknown_181_[0x1f];
+    bool unknown_150_ = false;
+    bool paused = false;
+    bool systemPaused = false;
+    bool muted = false;
+    bool systemMuted = false;
+    bool stopping = false;
+    bool fromData = false;
+    const data::CtrlBgmData* data = nullptr;
+    int track = 0;
+    int nextTrack = 0;
+    int unknown_168_ = 0;
+    int unknown_16c_ = 0;
+    int unknown_170_ = 0;
+    uint8_t unknown_174_[8] = {};
+    int fadeFrame = 0;
+    bool loop = false;
+    fnd::WeakHandle handle;
+    bool elevator = false;
   };
 
   using EntryList = std::vector<Entry, fnd::Allocator<Entry>>;
@@ -77,6 +85,12 @@ public:
   // The names of the tracks to start, in track order.
   struct Request {
     explicit Request(const char* name) : names{name}, count(1) {
+    }
+
+    void add(const char* name) {
+      names[count] = name;
+      names[count + 1] = nullptr;
+      count++;
     }
 
     const char* names[7];
@@ -237,6 +251,20 @@ public:
   void playHash(const uint32_t* hash, const Fade& fade, int track, int index,
     float delay, float volume);
 
+  bool isAnyDelayed() const;
+  bool isFirstActive() const;
+  fnd::WeakHandle getFirstHandle() const;
+  void startActorVolumeAll(const Fade& fade, float target);
+  bool isAudible() const;
+  float getAudibleStartOffset() const;
+  void startEntry(const Request& request, const Fade& fade, int kind,
+    int index, float delay, float volume);
+  void replaceEntry(const Request& request, const Fade& fade, int kind,
+    int index, float delay, float volume);
+  void playSingle(const char* label, const Fade& fade, int kind, float delay,
+    float volume);
+  void updateState();
+
   bool isLastStopping() const {
     return entries_.empty() ? false : entries_.back().stopping;
   }
@@ -296,22 +324,44 @@ private:
   uint8_t unknown_08_[0x158];
 };
 
+// Plays the force feedback sounds, optionally pausing or ducking the BGM
+// while they play.
 class FF {
 public:
   static FF* create();
   static void destroy();
+
+  static void play(const char* name, const Fade& fade);
+  static void playOver(const char* name, const Fade& fade);
+  static void playPausing(const char* name, const Fade& fade);
+  static void playDucking(const char* name, const Fade& fade, float volume);
+  static void stopVoice(const Fade& fade);
+  static bool isPlaying();
+  static void startVolume(const Fade& fade, float target);
+  static void startPitch(const Fade& fade, float target);
+  static void startPan(const Fade& fade, float target);
+  static void startLpfFrequency(const Fade& fade, float target);
 
   FF();
   virtual ~FF();
 
   void update();
   void stop(const Fade& fade);
+  void playOverBgm(const char* name, const Fade& fade);
+  void playPausingBgm(const char* name, const Fade& fade);
+  void playDuckingBgm(const char* name, const Fade& fade, float volume);
 
 private:
   [[gnu::visibility("hidden")]] static FF* s_instance;
 
-  uint8_t unknown_08_[0x18];
+  fnd::WeakHandle voice_;
+  bool playing_ = false;
+  bool plain_ = false;
+  bool bgmPaused_ = false;
+  bool bgmDucked_ = false;
 };
+
+static_assert(sizeof(FF) == 0x20);
 
 class Env {
 public:

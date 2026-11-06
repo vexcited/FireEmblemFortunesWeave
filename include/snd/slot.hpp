@@ -2,6 +2,7 @@
 
 #include <functional>
 
+#include "snd/fnd/weak_handle.hpp"
 #include "snd/handle_ptr.hpp"
 #include "snd/manager.hpp"
 #include "snd/obj.hpp"
@@ -61,7 +62,13 @@ public:
 private:
   uint64_t unknown_15e8_;
   Slot* next_;
-  uint8_t unknown_15f8_[0xc0];
+  uint8_t unknown_15f8_[0x30];
+  float volumeScale_;
+  float lpfBias_;
+  uint8_t unknown_1630_[0x30];
+  // The slots whose values add to the ones of this slot.
+  fnd::WeakHandle links_[4];
+  uint8_t unknown_16a0_[0x18];
   ObjList<Voice>* voices_;
   uint8_t unknown_16c0_[0x20];
   ObjList<SeqVoice>* seqVoices_;

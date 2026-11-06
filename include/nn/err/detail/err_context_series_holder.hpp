@@ -42,6 +42,8 @@ class SerializedContextSeries {
 public:
   class ConstIterator {
   public:
+    ConstIterator(const SerializedContextSeries& series, size_t position);
+
     bool operator==(const ConstIterator& other) const;
     bool operator!=(const ConstIterator& other) const;
     const RawContext& operator*() const;
@@ -54,6 +56,8 @@ public:
     RawContext m_Context;
   };
 
+  ConstIterator CBegin() const;
+  ConstIterator CEnd() const;
   const void* GetData() const;
   size_t GetSize() const;
   int GetCount() const;

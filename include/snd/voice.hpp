@@ -130,6 +130,11 @@ public:
     return listNext_;
   }
 
+  // Set on the voices of a sequence.
+  bool isSequence() const {
+    return flag1701_;
+  }
+
   // The sound frame the voice was created in.
   uint64_t getStartFrame() const {
     return listReserved_[0];

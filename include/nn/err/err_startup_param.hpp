@@ -7,15 +7,42 @@
 
 namespace nn::err {
 
+enum ErrorType : uint8_t {
+  ErrorType_SystemData,
+  ErrorType_SystemError,
+  ErrorType_ApplicationError,
+  ErrorType_Eula,
+  ErrorType_ParentalControl,
+  ErrorType_ErrorRecord,
+  ErrorType_RecordedSystemData,
+  ErrorType_RecordedApplicationError,
+  ErrorType_SystemUpdateEula,
+};
+
+struct ErrorViewerStartupParamHeader {
+  uint8_t errorType;
+  bool isJumpEnabled;
+  uint8_t reserved2[2];
+  uint8_t version;
+  bool hasErrorContext;
+  uint8_t reserved6[2];
+};
+
+// The error viewer reads these parameters as raw bytes, so the members are
+// filled in place by the show functions.
 class ErrorViewerStartupParamForSystemData {
  public:
   void SetResult(const Result& result);
   void SetErrorCode(const ErrorCode& errorCode);
   void SetCallerIdentifier(const CallerIdentifier& callerIdentifier);
 
- private:
-  uint8_t m_Header[6];
+  uint8_t m_ErrorType;
+  bool m_IsJumpEnabled;
+  uint8_t m_Version;
+  uint8_t m_Reserved[2];
+  bool m_HasResultBacktrace;
   bool m_IsErrorCode;
+  bool m_HasErrorContext;
   ErrorCode m_ErrorCode;
   Result m_Result;
   bool m_HasCallerIdentifier;
@@ -28,8 +55,8 @@ class ErrorViewerStartupParamForParentalControl {
   void SetResultBacktrace(const ResultBacktrace& resultBacktrace);
   void SetErrorContext(const ErrorContext& errorContext);
 
- private:
-  uint8_t m_Header[12];
+  ErrorViewerStartupParamHeader m_Header;
+  Result m_Result;
   bool m_HasCallerIdentifier;
   bool m_HasResultBacktrace;
   bool m_HasErrorContext;
@@ -64,18 +91,16 @@ class ErrorResultVariant {
   };
 };
 
-struct ErrorViewerStartupParamHeader {
-  uint8_t errorType;
-  bool isJumpEnabled;
-  uint8_t reserved2[2];
-  uint8_t version;
-  bool hasErrorContext;
-  uint8_t reserved6[2];
-};
-
 class ApplicationErrorArg {
  public:
+  ApplicationErrorArg();
+  ApplicationErrorArg(uint32_t number, const char* dialogMessage,
+    const char* fullScreenMessage, const settings::LanguageCode& languageCode);
+
   void SetApplicationErrorCodeNumber(uint32_t number);
+  void SetDialogMessage(const char* message);
+  void SetFullScreenMessage(const char* message);
+  void SetLanguageCode(const settings::LanguageCode& languageCode);
   uint32_t GetApplicationErrorCodeNumber() const;
   const char* GetDialogMessage() const;
   const char* GetFullScreenMessage() const;
@@ -92,8 +117,13 @@ class ApplicationErrorArg {
 class SystemErrorArg {
  public:
   SystemErrorArg();
+  SystemErrorArg(ErrorCode errorCode, const char* dialogMessage,
+    const char* fullScreenMessage, const settings::LanguageCode& languageCode);
 
   void SetErrorCode(ErrorCode errorCode);
+  void SetDialogMessage(const char* message);
+  void SetFullScreenMessage(const char* message);
+  void SetLanguageCode(const settings::LanguageCode& languageCode);
   ErrorCode GetErrorCode() const;
   const char* GetDialogMessage() const;
   const char* GetFullScreenMessage() const;
@@ -118,6 +148,11 @@ class SystemErrorArg {
 class MinorsProtectionWarningForPlatformRegionChinaArg {
  public:
   MinorsProtectionWarningForPlatformRegionChinaArg();
+  MinorsProtectionWarningForPlatformRegionChinaArg(const char* dialogMessage,
+    const char* fullScreenMessage);
+
+  void SetDialogMessage(const char* message);
+  void SetFullScreenMessage(const char* message);
 
   const char* GetDialogMessage() const;
   const char* GetFullScreenMessage() const;

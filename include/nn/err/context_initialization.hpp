@@ -1,13 +1,18 @@
 #pragma once
 
 #include "nn/lmem/exp_heap.hpp"
+#include "nn/result.hpp"
 #include "nn/sf/client_session.hpp"
 
 namespace nn::err {
 
+struct ContextDescriptor;
+
 void InitializeContextWriterApi();
 
 namespace detail {
+
+struct RawContext;
 
 struct ContextSeriesArray {
   struct Storage {
@@ -25,6 +30,10 @@ struct ContextSeriesArray {
   void AttachStorage(Storage&& storage);
   void lock();
   void unlock();
+  void AppendContext(ContextDescriptor descriptor, Result previous,
+    RawContext&& context, Result current);
+  void UpdateCurrentOriginalResult(ContextDescriptor descriptor,
+    Result previous, Result current);
 };
 
 struct ContextWriterClientResourceAccessor {

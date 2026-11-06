@@ -19,7 +19,8 @@ struct UpsamplerInfo {
   int sampleCount;
   uint8_t reserved0[4];
   bool isUsed;
-  uint8_t reserved1[39];
+  int8_t inputIndices[6];
+  uint8_t reserved1[33];
 
   UpsamplerInfo();
 };

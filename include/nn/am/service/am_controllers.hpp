@@ -140,11 +140,12 @@ class ISelfController : public sf::IServiceObject {
   virtual Result IsIlluminanceAvailable(sf::Out<bool> pOutIsAvailable) = 0;
   virtual Result SetAutoSleepDisabled(bool isDisabled) = 0;
   virtual Result IsAutoSleepDisabled(sf::Out<bool> pOutIsDisabled) = 0;
-  NN_AM_RESERVED(44);
+  virtual Result ReportMultimediaError(uint32_t result,
+    const sf::InBuffer& report) = 0;
   virtual Result GetCurrentIlluminanceEx(sf::Out<float> pOutIlluminance,
     sf::Out<bool> pOutIsOverLimit) = 0;
   virtual Result SetInputDetectionPolicy(int32_t policy) = 0;
-  NN_AM_RESERVED(47);
+  virtual Result ReportNplnError(uint32_t result) = 0;
   virtual Result SetWirelessPriorityMode(int32_t mode) = 0;
   NN_AM_RESERVED(49); NN_AM_RESERVED(50);
   virtual Result SetAlbumImageTakenNotificationEnabled(bool isEnabled) = 0;

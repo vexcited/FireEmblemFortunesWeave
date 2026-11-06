@@ -106,6 +106,18 @@ public:
     return layout_->GetRootPane();
   }
 
+  // The control of the owner layout bound to the part.
+  template <class T>
+  std::weak_ptr<T> GetControl(const std::string_view& name) {
+    if (std::shared_ptr<Layout> owner = owner_.lock()) {
+      if (nn::ui2d::Layout* layout = GetPartsLayout(name.data())) {
+        return owner->GetControl<T>(
+          nn::ui2d::DynamicCast<nn::ui2d::Parts*>(layout->GetRootPane()));
+      }
+    }
+    return {};
+  }
+
 private:
   // Names may be a path of part panes separated by slashes.
   nn::ui2d::Pane* FindPane(nn::ui2d::Layout* layout, const char* name);

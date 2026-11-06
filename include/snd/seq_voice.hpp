@@ -34,6 +34,11 @@ class WaveMultiVoice;
 // child, types 4, 7, 9 and 10 keep one child per entry of the info.
 class SeqVoice : public Voice {
 public:
+  static void** registry() {
+    static void* base = Voice::registry();
+    return &base;
+  }
+
   void destroy() override;
   void mainUnlocked() override;
   void** getRegistry() override;

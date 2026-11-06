@@ -1,6 +1,9 @@
 #include <string.h>
 
+#include "nn/diag/unexpected_default.hpp"
 #include "nn/image/detail/image_jpeg_header.hpp"
+
+extern "C" long nndetailImageJpeg_jdiv_round_up(long a, long b);
 
 namespace nn::image::detail {
 
@@ -16,6 +19,66 @@ uint16_t ReadUint16Big(const uint8_t* pData) {
   return __builtin_bswap16(*reinterpret_cast<const uint16_t*>(pData));
 }
 
+const uint32_t BlockSize = 8;
+const uint32_t SpectralEnd = 63;
+const uint32_t ScaledSizeMax = BlockSize / 2;
+const int32_t ColorSpaceYCbCr = 3;
+const int32_t ColorSpaceRgb = 2;
+const int32_t RgbComponentCount = 3;
+
+inline uint32_t CalculateScaledSize(uint32_t scale, uint16_t maxSampling,
+  uint8_t sampling) {
+  uint8_t ratio = 1;
+  while (scale * ratio <= ScaledSizeMax &&
+    maxSampling % (sampling * ratio * 2) == 0) {
+    ratio *= 2;
+  }
+  return scale * ratio;
+}
+
+}
+
+// Mirrors the output dimension setup of libjpeg without fancy upsampling.
+void SetupOutputScale(JpegInfo* pInfo, uint32_t scale) {
+  pInfo->horizontalScale = scale;
+  pInfo->verticalScale = scale;
+  for (int i = 0; i < pInfo->componentCount; i++) {
+    JpegComponentInfo& component = pInfo->components[i];
+    component.horizontalScale = CalculateScaledSize(pInfo->horizontalScale,
+      pInfo->maxHorizontalSampling, component.horizontalSampling);
+    component.verticalScale = CalculateScaledSize(pInfo->verticalScale,
+      pInfo->maxVerticalSampling, component.verticalSampling);
+    if (component.horizontalScale > component.verticalScale * 2) {
+      component.horizontalScale = component.verticalScale * 2;
+    }
+    else if (component.verticalScale > component.horizontalScale * 2) {
+      component.verticalScale = component.horizontalScale * 2;
+    }
+    component.downsampledWidth = nndetailImageJpeg_jdiv_round_up(
+      static_cast<long>(component.horizontalSampling) * pInfo->imageWidth,
+      pInfo->blockSize * pInfo->maxHorizontalSampling);
+    component.downsampledHeight = nndetailImageJpeg_jdiv_round_up(
+      static_cast<long>(component.verticalSampling) * pInfo->imageHeight,
+      pInfo->blockSize * pInfo->maxVerticalSampling);
+  }
+
+  const JpegComponentInfo* components = pInfo->components;
+  pInfo->isMergedUpsampling = pInfo->componentCount == 3 &&
+    pInfo->colorSpace == ColorSpaceYCbCr &&
+    pInfo->outputColorSpace == ColorSpaceRgb &&
+    pInfo->outputComponentCount == RgbComponentCount &&
+    components[0].horizontalSampling == 2 &&
+    components[1].horizontalSampling == 1 &&
+    components[2].horizontalSampling == 1 &&
+    components[0].verticalSampling <= 2 &&
+    components[1].verticalSampling == 1 &&
+    components[2].verticalSampling == 1 &&
+    components[0].horizontalScale == pInfo->horizontalScale &&
+    components[1].horizontalScale == pInfo->horizontalScale &&
+    components[2].horizontalScale == pInfo->horizontalScale &&
+    components[0].verticalScale == pInfo->verticalScale &&
+    components[1].verticalScale == pInfo->verticalScale &&
+    components[2].verticalScale == pInfo->verticalScale;
 }
 
 JpegStatus CheckSoi(const uint8_t* pData, size_t size) {
@@ -46,6 +109,47 @@ bool GetExifInfo(const void** ppOutExifData, uint16_t* pOutExifSize,
     }
   }
   return isValid && isExif;
+}
+
+void SetJpegHeader(JpegInfo* pInfo, uint16_t width, uint16_t height,
+  JpegSamplingRatio samplingRatio) {
+  pInfo->imageWidth = width;
+  pInfo->imageHeight = height;
+  pInfo->componentCount = 3;
+  pInfo->blockSize = BlockSize;
+  pInfo->spectralEnd = SpectralEnd;
+
+  uint8_t horizontalSampling;
+  uint8_t verticalSampling;
+  switch (samplingRatio) {
+    case JpegSamplingRatio_444:
+      horizontalSampling = 1;
+      verticalSampling = 1;
+      break;
+    case JpegSamplingRatio_422:
+      horizontalSampling = 2;
+      verticalSampling = 1;
+      break;
+    case JpegSamplingRatio_420:
+      horizontalSampling = 2;
+      verticalSampling = 2;
+      break;
+    default:
+      nn::detail::UnexpectedDefaultImpl();
+  }
+
+  pInfo->components[0].id = 1;
+  pInfo->components[0].horizontalSampling = horizontalSampling;
+  pInfo->components[0].verticalSampling = verticalSampling;
+  pInfo->components[1].id = 2;
+  pInfo->components[1].horizontalSampling = 1;
+  pInfo->components[1].verticalSampling = 1;
+  pInfo->components[2].id = 3;
+  pInfo->components[2].horizontalSampling = 1;
+  pInfo->components[2].verticalSampling = 1;
+  pInfo->maxHorizontalSampling = horizontalSampling;
+  pInfo->maxVerticalSampling = verticalSampling;
+  SetupOutputScale(pInfo, BlockSize);
 }
 
 void WriteExifHeader(void* pOutData, size_t size) {
