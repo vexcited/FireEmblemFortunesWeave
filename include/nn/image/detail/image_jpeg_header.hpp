@@ -19,6 +19,24 @@ struct JpegComponentInfo {
   uint32_t downsampledHeight;
 };
 
+struct JpegScanComponent {
+  uint8_t id;
+  uint8_t tables;
+};
+
+struct JpegScanHeader {
+  uint16_t marker;
+  uint16_t length;
+  uint8_t componentCount;
+  JpegScanComponent components[4];
+  uint8_t spectralStart;
+  uint8_t spectralEnd;
+  uint8_t approximation;
+  uint8_t reserved10[2];
+};
+
+static_assert(sizeof(JpegScanHeader) == 18);
+
 struct JpegInfo {
   uint16_t frameMarker;
   uint16_t frameLength;
@@ -40,7 +58,7 @@ struct JpegInfo {
   uint32_t width;
   uint32_t height;
   uint32_t spectralEnd;
-  uint8_t reserved8c[4];
+  int32_t scanTableCount;
   int32_t outputComponentCount;
   bool isMergedUpsampling;
   int32_t outputColorSpace;
@@ -48,8 +66,9 @@ struct JpegInfo {
   bool hasJfifMarker;
   bool hasAdobeMarker;
   bool reservedA2;
-  uint8_t reservedA3;
+  bool isPartialScan;
   uint8_t adobeTransform;
+  uint8_t scanComponentCount;
 };
 
 static_assert(sizeof(JpegInfo) == 0xa8);
@@ -70,6 +89,13 @@ bool GetExifInfo(const void** ppOutExifData, uint16_t* pOutExifSize,
   const uint8_t* pData, size_t size);
 [[gnu::visibility("hidden")]] void SetupOutputScale(JpegInfo* pInfo,
   uint32_t scale);
+[[gnu::visibility("hidden")]] bool ReadScanHeader(JpegScanHeader* pOutHeader,
+  size_t* pOutNextOffset, const uint8_t* pData, size_t size, size_t offset,
+  const JpegInfo* pInfo);
+[[gnu::visibility("hidden")]] bool SetupBlockSize(JpegInfo* pInfo,
+  const uint8_t* pData, size_t size);
+[[gnu::visibility("hidden")]] bool CountScanTables(JpegInfo* pInfo,
+  const uint8_t* pData, size_t size);
 void SetJpegHeader(JpegInfo* pInfo, uint16_t width, uint16_t height,
   JpegSamplingRatio samplingRatio);
 void WriteExifHeader(void* pOutData, size_t size);

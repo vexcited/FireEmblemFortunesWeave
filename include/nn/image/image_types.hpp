@@ -7,6 +7,7 @@ namespace nn::image {
 enum JpegStatus : int32_t {
   JpegStatus_Ok = 0,
   JpegStatus_WrongFormat = -32,
+  JpegStatus_UnsupportedFormat = -33,
   JpegStatus_OutputOverabounds = -66,
 };
 
