@@ -13,6 +13,18 @@ struct StandardAllocatorHash {
 
 class alignas(8) StandardAllocator {
 public:
+  // Opt in to the SDK constructor and the inline destructor, which
+  // finalizes an initialized allocator. Older users predate them.
+#ifdef NN_MEM_STANDARD_ALLOCATOR_LIFETIME
+  StandardAllocator();
+
+  ~StandardAllocator() {
+    if (storage[0] == 1) {
+      Finalize();
+    }
+  }
+#endif
+
   void Initialize(void* address, size_t size);
   void Initialize(void* address, size_t size, bool cache_enabled);
   void Finalize();

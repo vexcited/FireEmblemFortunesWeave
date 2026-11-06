@@ -98,6 +98,8 @@ struct AllocatorInfo {
   size_t blockSize;
   uintptr_t firstAddress;
   size_t blockCount;
+  // The movie library of subsdk2 always sets it to 1.
+  uint64_t reserved;
 
   size_t CalculateLeakedMemory();
 };
