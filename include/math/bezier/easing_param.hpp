@@ -110,5 +110,8 @@ private:
 float Evaluate(const EasingParam& param, float time, float time_s);
 Vec2 EvaluateVec2(const EasingParam& param, float time, float time_s);
 Vec3 EvaluateVec3(const EasingParam& param, float time, float time_s);
+float EvaluateList(const CScriptArray& params, float time, float time_s);
+Vec2 EvaluateVec2List(const CScriptArray& params, float time, float time_s);
+Vec3 EvaluateVec3List(const CScriptArray& params, float time, float time_s);
 
 }

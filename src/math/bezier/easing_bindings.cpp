@@ -54,6 +54,7 @@ template<typename T, T (*Evaluate)(const EasingParam&, float, float), int N>
   MATH_BEZIER_EASE(EaseOut##name, curve, kEaseOut) \
   MATH_BEZIER_EASE(EaseInOut##name, curve, kEaseInOut)
 
+MATH_BEZIER_EASE(Linear, kCurveLinear, kEaseCustom)
 MATH_BEZIER_CURVE(Quadratic, kCurveQuadratic)
 MATH_BEZIER_CURVE(Cubic, kCurveCubic)
 MATH_BEZIER_CURVE(Quartic, kCurveQuartic)
@@ -84,6 +85,7 @@ MATH_BEZIER_CURVE(Bounce, kCurveBounce)
   MATH_BEZIER_EASE_VECTOR(EaseOut##name, curve, kEaseOut) \
   MATH_BEZIER_EASE_VECTOR(EaseInOut##name, curve, kEaseInOut)
 
+MATH_BEZIER_EASE_VECTOR(Linear, kCurveLinear, kEaseCustom)
 MATH_BEZIER_CURVE_VECTOR(Quadratic, kCurveQuadratic)
 MATH_BEZIER_CURVE_VECTOR(Cubic, kCurveCubic)
 MATH_BEZIER_CURVE_VECTOR(Quartic, kCurveQuartic)
@@ -95,9 +97,61 @@ MATH_BEZIER_CURVE_VECTOR(Back, kCurveBack)
 MATH_BEZIER_CURVE_VECTOR(Elastic, kCurveElastic)
 MATH_BEZIER_CURVE_VECTOR(Bounce, kCurveBounce)
 
-// The script methods of the easing parameters.
+// Script functions evaluating parameters built by the scripts. The length
+// of a list sums the spans of its parameters. The vector versions are
+// registered as returning vectors but return the float span.
+[[gnu::used]] float Curve(float time, float time_s, const EasingParam& p) {
+  return Evaluate(p, time, time_s);
+}
+
+[[gnu::used]] float Curve(float time, float time_s,
+  const CScriptArray& p_list) {
+  return EvaluateList(p_list, time, time_s);
+}
+
+[[gnu::used]] Vec2 Vec2Curve(float time, float time_s, const EasingParam& p) {
+  return EvaluateVec2(p, time, time_s);
+}
+
+[[gnu::used]] Vec2 Vec2Curve(float time, float time_s,
+  const CScriptArray& p_list) {
+  return EvaluateVec2List(p_list, time, time_s);
+}
+
+[[gnu::used]] Vec3 Vec3Curve(float time, float time_s, const EasingParam& p) {
+  return EvaluateVec3(p, time, time_s);
+}
+
+[[gnu::used]] Vec3 Vec3Curve(float time, float time_s,
+  const CScriptArray& p_list) {
+  return EvaluateVec3List(p_list, time, time_s);
+}
+
+[[gnu::always_inline]] inline float SumSpans(CScriptArray& p_list) {
+  const asUINT count = p_list.GetSize();
+  float length = 0.0f;
+  for (asUINT i = 0; i != count; i++) {
+    length += static_cast<const EasingParam*>(p_list.At(i))->GetSpan();
+  }
+  return length;
+}
+
+#define MATH_BEZIER_CURVE_LENGTH(name) \
+  [[gnu::used]] float name(const EasingParam& p) { \
+    return p.GetSpan(); \
+  } \
+  [[gnu::used]] float name(CScriptArray& p_list) { \
+    return SumSpans(p_list); \
+  }
+
+MATH_BEZIER_CURVE_LENGTH(CurveLength)
+MATH_BEZIER_CURVE_LENGTH(Vec2CurveLength)
+MATH_BEZIER_CURVE_LENGTH(Vec3CurveLength)
+
+#undef MATH_BEZIER_CURVE_LENGTH
+
+// The script method of the easing parameters.
 [[gnu::used]] constexpr auto kUpdateSpan = &EasingParam::UpdateSpan;
-[[gnu::used]] constexpr auto kGetSpan = &EasingParam::GetSpan;
 
 #undef MATH_BEZIER_CURVE_VECTOR
 #undef MATH_BEZIER_EASE_VECTOR
