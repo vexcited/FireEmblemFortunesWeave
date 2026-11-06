@@ -39,6 +39,19 @@ public:
       }
     }
 
+    // Every index starts free, in order.
+    void initialize(uint16_t count) {
+      finalize();
+      buffer_ = static_cast<T*>(g_memory->alloc(count * sizeof(T), 32));
+      indices_ = static_cast<uint16_t*>(
+        g_memory->alloc(count * sizeof(uint16_t), 32));
+      used_ = 0;
+      capacity_ = count;
+      for (uint16_t i = 0; i < count; i++) {
+        indices_[i] = i;
+      }
+    }
+
     bool isFull() {
       nn::os::LockMutex(&mutex_);
       uint16_t used = used_;
@@ -81,6 +94,16 @@ public:
       list_.finalize();
       initialized_ = false;
     }
+  }
+
+  void initialize(uint16_t count) {
+    list_.initialize(count);
+    initialized_ = true;
+  }
+
+  void terminate() {
+    list_.finalize();
+    initialized_ = false;
   }
 
   template <typename... Args>

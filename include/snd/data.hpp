@@ -79,7 +79,13 @@ struct CtrlBgmData {
   const char* name;
   int tempo;
   const char* tracks[6];
-  uint8_t unknown_40_[0x90];
+  // Per track, the bridge played when leaving it, the beats it waits for
+  // and the beats until the old track fades out over its fade time.
+  const char* bridges[6];
+  int bridgeWaits[6];
+  int bridgeBeats[6];
+  int fadeTimes[6];
+  int changeModes[6];
 };
 
 struct MuseumData {

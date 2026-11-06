@@ -2,6 +2,9 @@
 
 namespace snd {
 
+// Pitch ratios for -7 to +7 octaves in semitone steps.
+extern float g_semitoneRatios[169];
+
 namespace {
 
 template <typename F>
@@ -57,6 +60,31 @@ float Slot::calcPan() const {
     pan_.getValue() + panFluctuation_.getValue(),
     [](Slot* slot) { return slot->calcPan(); });
   results_[2] = clamp(value, -2.0f, 2.0f);
+  return value;
+}
+
+float Slot::calcSurroundPan() const {
+  float value = addLinks(links_,
+    surroundPan_.getValue() + surroundPanFluctuation_.getValue(),
+    [](Slot* slot) { return slot->calcSurroundPan(); });
+
+  // Interpolates the semitone ratio table, clamped to seven octaves.
+  int semitone = static_cast<int>(value * 12.0f);
+  int low = semitone <= -84 ? -84 : semitone;
+  int index = low >= 84 ? 84 : low;
+  float fraction =
+    value * 12.0f - static_cast<float>(static_cast<int>(value * 12.0f));
+  float ratio = g_semitoneRatios[index + 84];
+  float delta;
+  if (fraction <= 0.0f) {
+    int previous = index <= -83 ? -83 : index;
+    delta = ratio - g_semitoneRatios[previous + 83];
+  }
+  else {
+    int next = low >= 83 ? 83 : low;
+    delta = g_semitoneRatios[next + 85] - ratio;
+  }
+  results_[3] = ratio + delta * fraction;
   return value;
 }
 

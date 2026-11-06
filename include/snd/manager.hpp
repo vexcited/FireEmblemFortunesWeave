@@ -18,6 +18,14 @@ namespace fnd {
 
 class Vec3;
 
+// The file loads queued for the sound thread.
+class AsyncLoader {
+public:
+  static AsyncLoader* getInstance();
+
+  bool isBusy(int kind, int priority);
+};
+
 }
 
 namespace data {
@@ -26,10 +34,36 @@ struct EffectData;
 
 }
 
+namespace fx {
+
+class FxBase;
+
+}
+
 // Only the parts the voices use.
 class Loader {
 public:
   bool isDone(void* request);
+  bool isIdle() const;
+  void loadGroup(const char* name);
+  void loadGroup(const char* name, bool force);
+  void unloadGroup(const char* name);
+};
+
+// The sound archives added on top of the main one.
+class AddonManager {
+public:
+  bool isIdle() const;
+  void* getActive();
+};
+
+// Loads the archive files of the data groups.
+class ArchiveLoader {
+public:
+  bool isIdle() const;
+  void load(const char* name);
+  void unload(const char* name);
+  void loadArchive(const char* path);
 };
 
 // A send the mixer counts while it is listed.
@@ -110,11 +144,18 @@ public:
   static void lock();
   static void unlock();
 
+  static Manager* getInstance();
+
   Loader* getLoader() const;
+  AddonManager* getAddonManager() const;
+  ArchiveLoader* getArchiveLoader() const;
+  void addAddon(void* addon, const char* name, const char* path);
+  void removeAddon(void* addon, const char* name);
   WaveReader* createReader();
   void destroyReader(WaveReader* reader);
 
   void unlockSlots();
+  void destroyFx(fx::FxBase* fx);
   void main();
   bool isDisabled() const;
   float getMasterVolume() const;

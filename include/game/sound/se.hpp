@@ -41,8 +41,30 @@ Handle PlayVibration(const char* label, bool system);
 Handle PlaySeAt(const char* label, const snd::fnd::Vec3& position);
 void Stop(Handle& handle);
 
+#pragma GCC visibility push(hidden)
+
+extern bool g_vibration_enabled;
+
+#pragma GCC visibility pop
+
 inline void PlaySe(const char* label) {
   Play(label, label, PlayParam(), 0, 0x10001, 0, 0.0f, 1.0f);
+}
+
+[[gnu::always_inline]] inline Handle PlayLabel(const char* label) {
+  return Play(label, label, PlayParam(), 0, 0x10001, 0, 0.0f, 1.0f);
+}
+
+// Each menu sound has a matching controller vibration.
+[[gnu::always_inline]] inline void PlaySeWithVibration(
+  const char* label, const char* vibration_label
+) {
+  PlaySe(label);
+  Handle vibration;
+
+  if (g_vibration_enabled) {
+    vibration = PlayLabel(vibration_label);
+  }
 }
 
 void PlayCursorSe();

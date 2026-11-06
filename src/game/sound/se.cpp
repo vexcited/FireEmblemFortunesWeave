@@ -3,32 +3,6 @@
 
 namespace game::sound {
 
-#pragma GCC visibility push(hidden)
-
-extern bool g_vibration_enabled;
-
-#pragma GCC visibility pop
-
-namespace {
-
-[[gnu::always_inline]] Handle PlayLabel(const char* label) {
-  return Play(label, label, PlayParam(), 0, 0x10001, 0, 0.0f, 1.0f);
-}
-
-// Each menu sound has a matching controller vibration.
-[[gnu::always_inline]] void PlaySeWithVibration(
-  const char* label, const char* vibration_label
-) {
-  PlaySe(label);
-  Handle vibration;
-
-  if (g_vibration_enabled) {
-    vibration = PlayLabel(vibration_label);
-  }
-}
-
-}
-
 // The system sounds only check the global switch, the others the setting.
 Handle PlayVibration(const char* label, bool system) {
   Handle handle;

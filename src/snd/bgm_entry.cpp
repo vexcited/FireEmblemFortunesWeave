@@ -443,6 +443,23 @@ void BGM::playSingle(const char* label, const Fade& fade, int kind,
   refreshVolume();
 }
 
+// A piece started by hash is named after the hash.
+void BGM::playHash(const uint32_t* hash, const Fade& fade, int kind,
+  int index, float delay, float volume) {
+  Entry entry;
+  Track& first = entry.tracks[0];
+  {
+    fnd::String name;
+    name.format("[ %08x:%08x ]", hash[0], hash[1]);
+    first.setName(name.c_str());
+  }
+  first.voice = playDirect("BGM", hash, fade, index <= 0 ? kind : 0, 0x10001,
+    0, delay, 1.0f);
+  setupTrack(first, volume);
+  entries_.push_back(entry);
+  refreshVolume();
+}
+
 // The new piece is pushed as stopping, so the one before it stays audible.
 void BGM::stopNamedEntry(const char* name, const Fade& fade, float delay,
   float volume) {
@@ -525,6 +542,165 @@ void BGM::update() {
       entry.elevator = false;
       refreshVolume();
     }
+  }
+}
+
+namespace {
+
+bool isAnyActive(BGM::Entry& entry) {
+  for (BGM::Track& track : entry.tracks) {
+    Voice* voice = getVoice(track);
+    if (voice != nullptr && voice->isActive()) {
+      return true;
+    }
+  }
+  return false;
+}
+
+bool isAllPlaying(BGM::Entry& entry) {
+  for (BGM::Track& track : entry.tracks) {
+    Voice* voice = getVoice(track);
+    if (voice != nullptr && !voice->isPlaying()) {
+      return false;
+    }
+  }
+  return true;
+}
+
+Param* getTrackParam(BGM::Track& track) {
+  return track.voice.get<Voice>();
+}
+
+}
+
+// Entries started by hash wait until every track is ready. A requested
+// track change waits for the beat its mode asks for, then plays the bridge
+// and fades the old track out once the bridge beats ran out.
+void BGM::updateState() {
+  if (getListenerPosition().y <= -100000.0f) {
+    return;
+  }
+  if (entries_.empty()) {
+    return;
+  }
+  Entry& entry = entries_.back();
+  if (entry.unknown_150_ == true && isAllPlaying(entry)) {
+    entry.unknown_150_ = false;
+    for (Track& track : entry.tracks) {
+      if (Voice* voice = getVoice(track)) {
+        voice->release();
+      }
+    }
+  }
+  const data::CtrlBgmData* data = entry.data;
+  if (data == nullptr || entry.fromData == true) {
+    while (!entries_.empty()) {
+      Entry& last = entries_.back();
+      if (isAnyActive(last)) {
+        break;
+      }
+      bool stopping = last.stopping;
+      entries_.pop_back();
+      if (stopping == true) {
+        resumeMuteAll(Fade(1000));
+      }
+    }
+    return;
+  }
+  if (state_ == 4) {
+    uint32_t track = entry.track;
+    Track& next = entry.tracks[static_cast<uint32_t>(entry.nextTrack)];
+    if (!next.voice.isValid()) {
+      stop(Fade(0.0f), false);
+      return;
+    }
+    Track& current = entry.tracks[track];
+    if (!entry.loop) {
+      int beat = getBeat(current.voice, entry.data->tempo);
+      if (beat >= 0) {
+        if (entry.unknown_16c_ == beat) {
+          return;
+        }
+        if (--entry.bridgeBeats == 0) {
+          getTrackParam(current)->startVolume(
+            Fade(static_cast<float>(
+              entry.data->fadeTimes[static_cast<int>(track)])), 0.0f);
+        }
+        if (--entry.bridgeWaits > 0) {
+          return;
+        }
+      }
+    }
+    getTrackParam(current)->startVolume(
+      Fade(static_cast<float>(
+        entry.data->fadeTimes[static_cast<int>(track)])), 0.0f);
+    next.voice.get<Voice>()->release();
+    getTrackParam(next)->startVolume(Fade(0.0f), 1.0f);
+    entry.track = entry.nextTrack;
+    state_ = 2;
+    return;
+  }
+  if (state_ == 3) {
+    Track& current = entry.tracks[static_cast<uint32_t>(entry.track)];
+    int beat = getBeat(current.voice, data->tempo);
+    if (beat >= 0) {
+      int track = entry.track;
+      entry.fadeFrame += 1.0f;
+      if (entry.fadeFrame < 600.0f) {
+        switch (entry.data->changeModes[track]) {
+        case 0:
+          if (beat == 3 || entry.unknown_16c_ != 3) {
+            return;
+          }
+          break;
+        case 2:
+          if ((entry.unknown_16c_ | 2) != 3 || entry.unknown_16c_ == beat) {
+            return;
+          }
+          break;
+        case 1:
+          if (entry.unknown_16c_ == beat) {
+            return;
+          }
+          break;
+        default:
+          break;
+        }
+      }
+    }
+    if (!entry.loop) {
+      fnd::WeakHandle bridge;
+      int track = entry.track;
+      if (const char* label = entry.data->bridges[track]) {
+        bridge = snd::play("BGM_Bridge", label, Fade(0.0f), 0, 0x10001, 0,
+          0.0f, 1.0f);
+      }
+      if (bridge.isValid()) {
+        bridge.get<Voice>()->setUserFlags(1);
+      }
+      entry.bridgeBeats = entry.data->bridgeBeats[track];
+      entry.bridgeWaits = entry.data->bridgeWaits[track];
+      if (entry.bridgeBeats == 0) {
+        getTrackParam(current)->startVolume(
+          Fade(static_cast<float>(entry.data->fadeTimes[track])), 0.0f);
+      }
+    }
+    state_ = 4;
+    return;
+  }
+  if (state_ == 1) {
+    for (Track& track : entry.tracks) {
+      if (track.voice.isValid() && !track.voice.get<Voice>()->isPlaying()) {
+        return;
+      }
+    }
+    Track& current = entry.tracks[static_cast<uint32_t>(entry.track)];
+    if (current.voice.isValid()) {
+      current.voice.get<Voice>()->release();
+      getTrackParam(current)->startVolume(Fade(0.0f), 1.0f);
+    }
+    entry.unknown_150_ = false;
+    state_ = 2;
   }
 }
 

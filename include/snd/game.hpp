@@ -6,6 +6,8 @@
 
 #include "nn/os/system_event_class.hpp"
 #include "snd/fade.hpp"
+#include "snd/fnd/fast_alloc.hpp"
+#include "snd/fnd/math.hpp"
 #include "snd/fnd/string.hpp"
 #include "snd/fnd/weak_handle.hpp"
 #include "snd/obj.hpp"
@@ -73,8 +75,9 @@ public:
     int unknown_168_ = 0;
     int unknown_16c_ = 0;
     int unknown_170_ = 0;
-    uint8_t unknown_174_[8] = {};
-    int fadeFrame = 0;
+    int bridgeBeats = 0;
+    int bridgeWaits = 0;
+    float fadeFrame = 0.0f;
     bool loop = false;
     fnd::WeakHandle handle;
     bool elevator = false;
@@ -284,7 +287,11 @@ static_assert(sizeof(BGM) == 0x40);
 
 class Wind {
 public:
-  class Pos;
+  // A position a wind sound is played from.
+  class Pos {
+  public:
+    uint8_t unknown_00_[0x38];
+  };
 
   // One sound of a wind group, its voice and position list.
   class Element : public Name {
@@ -321,7 +328,16 @@ public:
 private:
   [[gnu::visibility("hidden")]] static Wind* s_instance;
 
-  uint8_t unknown_08_[0x158];
+  std::vector<Group*, fnd::Allocator<Group*>> groups_;
+  fnd::FastAlloc<Pos, 0> positions_;
+  fnd::FastAlloc<Element, 0> elements_;
+  fnd::FastAlloc<Group, 0> groupPool_;
+  const void* data_ = nullptr;
+  fnd::String name_;
+  const void* unknown_130_ = nullptr;
+  float volume_ = 1.0f;
+  bool unknown_13c_ = false;
+  nn::os::MutexType mutex_ = {};
 };
 
 // Plays the force feedback sounds, optionally pausing or ducking the BGM
@@ -365,7 +381,11 @@ static_assert(sizeof(FF) == 0x20);
 
 class Env {
 public:
-  class Pos;
+  // A position an environment sound is played from.
+  class Pos {
+  public:
+    uint8_t unknown_00_[0x38];
+  };
 
   // One sound of an environment group, its voice and position list.
   class Element : public Name {
@@ -427,21 +447,42 @@ private:
   [[gnu::visibility("hidden")]] static Env* s_instance;
 
   std::vector<Group*, fnd::Allocator<Group*>> groups_;
-  uint8_t unknown_20_[0x108];
-  const void* data_;
+  std::vector<void*, fnd::Allocator<void*>> unknown_20_;
+  fnd::FastAlloc<Pos, 0> positions_;
+  fnd::FastAlloc<Element, 0> elements_;
+  fnd::FastAlloc<Group, 0> groupPool_;
+  const void* data_ = nullptr;
   fnd::String name_;
-  const void* subData_;
+  const void* subData_ = nullptr;
   fnd::String subName_;
-  const void* field_;
-  const void* fieldSub_;
-  uint8_t unknown_178_[0x28];
-  nn::os::MutexType mutex_;
+  const void* field_ = nullptr;
+  const void* fieldSub_ = nullptr;
+  int unknown_178_ = -1;
+  int unknown_17c_ = 0;
+  int unknown_180_ = 0;
+  fnd::Vec3 position_;
+  nn::os::MutexType mutex_ = {};
 };
 
 static_assert(sizeof(Env) == 0x1c0);
+static_assert(sizeof(Wind) == 0x160);
 
+// Loads the sound data groups, the boot and common ones and the one of
+// the current field.
 class GroupCtrl {
 public:
+  // A loaded name and the hash of the data it came from.
+  struct Load {
+    fnd::String name;
+    uint32_t hash = 0;
+  };
+
+  // The name and group of a loaded slot, boot, common, then the fields.
+  struct Pair {
+    fnd::String name{""};
+    fnd::String group{""};
+  };
+
   static GroupCtrl* create();
   static void destroy();
 
@@ -455,11 +496,36 @@ public:
   void loadGroup(const uint32_t* hash);
   void unloadGroup(const uint32_t* hash);
 
+  void loadBoot();
+  void unloadBoot();
+  void loadCommon();
+  void unloadCommon();
+  void unloadCurrent(const char* name);
+  void loadUserGroup(const uint32_t* hash);
+  void loadAddSoundArc(const uint32_t* hash);
+
 private:
+  void loadData(const char* name);
+  void unloadData(const char* name);
+  void unloadNamed(const char* name);
+  void unloadAddons(const char* name);
+
   [[gnu::visibility("hidden")]] static GroupCtrl* s_instance;
 
-  uint8_t unknown_08_[0x50];
+  std::vector<Load, fnd::Allocator<Load>> loads_;
+  std::vector<Load, fnd::Allocator<Load>> addons_;
+  std::vector<Pair, fnd::Allocator<Pair>> pairs_;
+  int current_ = -1;
+  bool bootLoaded_ = false;
+  bool commonLoaded_ = false;
 };
+
+static_assert(sizeof(GroupCtrl) == 0x58);
+
+// The lock of the group loads, reached directly and through the global
+// offset table.
+extern nn::os::MutexType g_groupMutex;
+[[gnu::visibility("hidden")]] extern nn::os::MutexType s_groupMutex;
 
 namespace data {
 
@@ -474,7 +540,9 @@ struct FieldData {
   uint8_t envKind;
   uint8_t unknown_3d_[3];
   uint32_t group;
-  uint8_t unknown_44_[0x10];
+  uint32_t userGroup;
+  const char* archive;
+  uint32_t addSoundArc;
   uint32_t surround;
   uint8_t unknown_58_[4];
   uint32_t vibration;
@@ -486,6 +554,15 @@ struct EffectData {
 
 struct GroupData {
   uint32_t hash;
+  const char* const* names;
+  int count;
+};
+
+// The archives of an added sound archive entry.
+struct AddSoundArcData {
+  uint32_t hash;
+  const char* const* names;
+  int count;
 };
 
 struct VoiceData {
