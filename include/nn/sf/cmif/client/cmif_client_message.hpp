@@ -67,6 +67,19 @@ Result SetBuffers(Hipc2MessageWriter* pWriter, int count,
 
 }
 
+namespace nn::sf {
+
+class NativeHandle;
+
+}
+
+namespace nn::sf::hipc::detail {
+
+[[gnu::noinline]] Result SetHandles(Hipc2MessageWriter* pWriter, int count,
+  NativeHandle* pHandles, const uint32_t* pAttributes);
+
+}
+
 namespace nn::sf::hipc::client {
 
 Result QueryPointerBufferSize(uint16_t* pOutSize, uint32_t handle) asm(
@@ -272,6 +285,34 @@ struct InHandleReference {
   static void Read(Parameter, const char*) {}
 };
 
+// A handle moved out of the caller and attached through SetHandles, as some
+// service libraries do.
+template <bool IsMove>
+struct InWriterHandle {
+  using Parameter = NativeHandle*;
+  static constexpr size_t Size = 0;
+  static constexpr size_t Alignment = 1;
+  static constexpr bool IsInRaw = false;
+  static constexpr bool IsOutRaw = false;
+  static constexpr uint32_t BufferAttribute = 0;
+  static constexpr int InHandleKind = IsMove ? 2 : 1;
+  static constexpr bool UsesWriter = true;
+
+  static void Write(char*, Parameter) {}
+
+  static void Read(Parameter, const char*) {}
+};
+
+template <typename T, typename = void>
+struct UsesHandleWriterOf {
+  static constexpr bool Value = false;
+};
+
+template <typename T>
+struct UsesHandleWriterOf<T, std::void_t<decltype(T::UsesWriter)>> {
+  static constexpr bool Value = T::UsesWriter;
+};
+
 template <typename T, typename = void>
 struct IsBorrowedHandle {
   static constexpr bool Value = false;
@@ -405,6 +446,10 @@ struct CmifClientMessage {
   }();
 
   using Holder = InHandleHolder<TakenCount>;
+
+  static constexpr bool UsesHandleWriter = (false || ... ||
+    UsesHandleWriterOf<Arguments>::Value);
+  static constexpr bool UsesWriter = BufferCount > 0 || UsesHandleWriter;
 
   static constexpr bool HasSpecialHeader = HasProcessId || InHandleCount > 0;
   static constexpr uint32_t SpecialHeader = (HasProcessId ? 1 : 0) |
@@ -566,40 +611,67 @@ struct CmifClientMessage {
         NativeHandle taken(value->GetOsHandle(), value->IsManaged());
         value->Detach();
         handle.Swap(taken);
-        *pOut = handle.GetOsHandle();
+        if constexpr (!UsesHandleWriterOf<Argument>::Value) {
+          *pOut = handle.GetOsHandle();
+        }
       }
     }
   }
 
   // Writes the header and the buffer descriptors, then returns the in header.
-  static Result SetupBufferMessage(CmifInHeader** ppOut, void* buffer,
+  [[gnu::always_inline]] static Result SetupBufferMessage(
+    CmifInHeader** ppOut, void* buffer,
     uint32_t type, size_t extraSize, size_t pointerBufferSize,
     Holder* pHolder, typename Arguments::Parameter... args) {
     using namespace hipc::detail;
     const Hipc2MessageInfo info = MakeInfo(extraSize);
-    uint32_t attributes[BufferCount];
-    BufferParameter buffers[BufferCount];
-    int index = 0;
-    for (size_t i = 0; i < sizeof...(Arguments); i++) {
-      if (Attributes[i] != 0) {
-        attributes[index++] = Attributes[i];
-      }
-    }
-    CollectBuffers(buffers, std::index_sequence_for<Arguments...>(),
-      args...);
     Hipc2MessageWriter writer = {&info, buffer};
     uint32_t* header = static_cast<uint32_t*>(buffer);
-    header[0] = type | info.header0;
-    header[1] = info.header1;
-    if (HasSpecialHeader) {
-      header[2] = SpecialHeader;
+    if constexpr (BufferCount > 0) {
+      uint32_t attributes[BufferCount];
+      BufferParameter buffers[BufferCount];
+      int index = 0;
+      for (size_t i = 0; i < sizeof...(Arguments); i++) {
+        if (Attributes[i] != 0) {
+          attributes[index++] = Attributes[i];
+        }
+      }
+      CollectBuffers(buffers, std::index_sequence_for<Arguments...>(),
+        args...);
+      header[0] = type | info.header0;
+      header[1] = info.header1;
+      if (HasSpecialHeader) {
+        header[2] = SpecialHeader;
+      }
+      const Result result = SetBuffers(&writer, BufferCount, buffers,
+        attributes, pointerBufferSize, GetPointerSizeOffset(extraSize));
+      if (result.IsFailure()) {
+        return result;
+      }
     }
-    const Result result = SetBuffers(&writer, BufferCount, buffers,
-      attributes, pointerBufferSize, GetPointerSizeOffset(extraSize));
-    if (result.IsFailure()) {
-      return result;
+    else {
+      header[0] = type | info.header0;
+      header[1] = info.header1;
+      if (HasSpecialHeader) {
+        header[2] = SpecialHeader;
+      }
     }
-    if constexpr (InHandleCount > 0) {
+    if constexpr (UsesHandleWriter) {
+      uint32_t attributes[TakenCount];
+      for (size_t i = 0, index = 0; i < sizeof...(Arguments); i++) {
+        if (InHandleKinds[i] != 0) {
+          attributes[index++] = InHandleKinds[i];
+        }
+      }
+      TakeHandles(pHolder, nullptr, nullptr,
+        std::index_sequence_for<Arguments...>(), args...);
+      const Result result = SetHandles(&writer, TakenCount,
+        pHolder->handles, attributes);
+      if (result.IsFailure()) {
+        return result;
+      }
+    }
+    else if constexpr (InHandleCount > 0) {
       uint32_t* words = static_cast<uint32_t*>(writer.buffer);
       TakeHandles(pHolder, words + writer.pInfo->copyHandleOffset,
         words + writer.pInfo->moveHandleOffset,
@@ -607,7 +679,7 @@ struct CmifClientMessage {
     }
     *ppOut = AlignUpPointer<CmifInHeader>(static_cast<uint32_t*>(
       writer.buffer) + writer.pInfo->rawDataOffset, 0x10);
-    return result;
+    return Result{0};
   }
 
   template <size_t... Indices>
@@ -731,7 +803,7 @@ Result Hipc2ProxyKindBase<Type>::ProcessImpl(const ProxyKindState* pState,
 
   typename Message::Holder holder;
   CmifInHeader* pIn;
-  if constexpr (Message::BufferCount > 0) {
+  if constexpr (Message::UsesWriter) {
     size_t pointerBufferSize = 0;
     if constexpr (Message::NeedsPointerBufferSize) {
       if (!pState->isPointerBufferSizeCached.load(std::memory_order_acquire)) {
@@ -937,8 +1009,9 @@ Result CmifDomainProxyKind<Base>::Process(const ProxyKindState* pState,
     typename Message::Holder holder;
     void* buffer;
     CmifDomainInHeader* pDomain;
-    if constexpr (Message::BufferCount > 0) {
-      const size_t pointerBufferSize = pSessionAllocator->pointerBufferSize;
+    if constexpr (Message::UsesWriter) {
+      const size_t pointerBufferSize = Message::BufferCount > 0 ?
+        pSessionAllocator->pointerBufferSize : 0;
       buffer = hipc::GetMessageBufferOnTls();
       CmifInHeader* pRaw;
       const Result setup = Message::SetupBufferMessage(&pRaw, buffer, type,
@@ -1041,8 +1114,9 @@ Result CmifDomainProxyKind<Base>::ProcessObjects(const ProxyKindState* pState,
   {
     // The sent handles are closed before the session goes back.
     typename Message::Holder holder;
-    if constexpr (Message::BufferCount > 0) {
-      const size_t pointerBufferSize = pSessionAllocator->pointerBufferSize;
+    if constexpr (Message::UsesWriter) {
+      const size_t pointerBufferSize = Message::BufferCount > 0 ?
+        pSessionAllocator->pointerBufferSize : 0;
       void* buffer = hipc::GetMessageBufferOnTls();
       CmifInHeader* pRaw;
       result = Message::SetupBufferMessage(&pRaw, buffer, type,
