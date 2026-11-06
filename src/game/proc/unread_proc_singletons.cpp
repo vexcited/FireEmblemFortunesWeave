@@ -12,6 +12,9 @@ namespace game {
   class T : public ProcJumpableSingleton<T, L> { \
   public: \
     T(); \
+  \
+  private: \
+    [[gnu::used]] static constexpr auto kApplyJump = &T::ApplyJump; \
   }; \
   [[gnu::used]] T::T() = default;
 

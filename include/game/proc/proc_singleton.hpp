@@ -43,6 +43,27 @@ public:
     label_ = label;
   }
 
+protected:
+  // Command list step taking the pending jump, then the pending call whose
+  // return command is pushed first.
+  void ApplyJump() {
+    if (label_ != L{}) {
+      if (jump_) {
+        jump_();
+      }
+      this->JumpTo(label_);
+    }
+
+    if (const L label = next_label_; label != L{}) {
+      this->PushReturn();
+      this->JumpTo(label);
+    }
+
+    label_ = {};
+    next_label_ = {};
+    jump_ = nullptr;
+  }
+
 private:
   L label_{};
   L next_label_{};

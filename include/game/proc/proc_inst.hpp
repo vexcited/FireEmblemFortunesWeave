@@ -127,6 +127,13 @@ protected:
 
   void SetFinished() { flags_ |= kFlagFinished; }
 
+  // The stack holds the commands to return to. Its element type stays the
+  // one its destructor is paired under in the singleton specs.
+  void PushReturn() {
+    unknown_58.push_back(
+      reinterpret_cast<ProcInst*>(const_cast<ProcCmd*>(current_)));
+  }
+
   bool IsUnknown8aSet() const { return unknown_8a[0] != 0; }
 
 public:
