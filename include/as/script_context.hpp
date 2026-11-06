@@ -3,22 +3,14 @@
 #include <cstdint>
 #include <functional>
 
+class CScriptAny;
+
 // The game layer over AngelScript. The class names are not recovered, the
 // slot names describe their use.
 namespace as {
 
 class Any;
 class ScriptContext;
-
-// A value a script hands over, here the argument of the exit function.
-class Variable {
-public:
-  // Holds the any after dropping the value held before.
-  void SetAny(Any* any);
-
-private:
-  uint8_t unknown_00_[0x80];
-};
 
 struct ContextSlot;
 
@@ -40,11 +32,105 @@ public:
     context_ = nullptr;
   }
 
+  // Takes the key and the slot of the other handle, then looks the context
+  // up again.
+  void Assign(const ContextHandle& other) {
+    key_ = other.key_;
+    id_ = other.id_;
+    context_ = Get();
+  }
+
 private:
   const void* key_ = nullptr;
   uint32_t id_ = kInvalidId;
   ScriptContext* context_ = nullptr;
 };
+
+class string;
+
+// The script value type as::Variable, holding a number, a string, an any,
+// a pointer or a context handle. The inline members are defined in
+// as/variable.hpp.
+class Variable {
+public:
+  enum Type {
+    kNone,
+    kInt,
+    kHex,
+    kFloat,
+    kString,
+    kBool,
+    kPointer,
+    kAny,
+    kHandle,
+  };
+
+  Variable() : pointer_(nullptr), type_(kNone) {}
+  explicit Variable(int value);
+  explicit Variable(uint32_t value);
+  explicit Variable(float value);
+  explicit Variable(bool value);
+  explicit Variable(const string& value);
+  explicit Variable(const CScriptAny& value);
+  Variable(const Variable& other);
+  Variable(void* ref, int typeId);
+  virtual ~Variable();
+
+  int getInt() const;
+  uint32_t getHex() const;
+  float getFloat() const;
+  string& getString() const;
+  bool getBool() const;
+  CScriptAny& getAny() const;
+  ContextHandle getHandle() const;
+  bool isInt() const;
+  bool isHex() const;
+  bool isFloat() const;
+  bool isString() const;
+  bool isBool() const;
+  bool isAny() const;
+
+  void setInt(int value);
+  void setHex(uint32_t value);
+  void setFloat(float value);
+  [[gnu::always_inline]] void setString(const string& value);
+  void setBool(bool value);
+  void setVariable(const Variable& other);
+  void setAny(const CScriptAny& value);
+  void setHandle(const ContextHandle& handle);
+  void store(void* ref, int typeId);
+
+  // Drops the value held before and keeps a raw pointer.
+  void*& pointerRef();
+
+  // The exit argument natives name the any of the scripts as::Any.
+  void SetAny(Any* any);
+
+  Variable& operator=(int value);
+  Variable& operator=(uint32_t value);
+  Variable& operator=(float value);
+  Variable& operator=(const string& value);
+  Variable& operator=(bool value);
+  Variable& operator=(const Variable& other);
+  Variable& operator=(const CScriptAny& value);
+
+private:
+  [[gnu::always_inline]] void reset();
+
+  union {
+    int int_;
+    uint32_t hex_;
+    float float_;
+    bool bool_;
+    string* string_;
+    CScriptAny* any_;
+    void* pointer_;
+    ContextHandle handle_;
+  };
+  Type type_;
+};
+
+static_assert(sizeof(Variable) == 0x28);
 
 // Runs the script context of a thread.
 class ScriptRunner {
@@ -181,6 +267,7 @@ private:
   uint8_t unknown_38_[0x118];
   char exit_function_[0x80];
   Variable exit_argument_;
+  uint8_t unknown_1f8_[0x58];
   uint8_t unknown_250_[0x5f4];
   int run_ctrl_;
   uint8_t unknown_848_[0x10];
@@ -331,20 +418,19 @@ extern ContextSlot g_context_slots[ContextHandle::kInvalidId];
 
 #pragma GCC visibility pop
 
+// The handle keeps the context even when its slot no longer holds it.
 inline ContextHandle::ContextHandle(ScriptContext* context) {
   if (context == nullptr) {
     return;
   }
   uint32_t id = context->GetId();
-  if (id == kInvalidId) {
-    return;
+  if (id != kInvalidId) {
+    const ContextSlot& slot = g_context_slots[id];
+    if (slot.context == context) {
+      id_ = id;
+      key_ = slot.key;
+    }
   }
-  const ContextSlot& slot = g_context_slots[id];
-  if (slot.context != context) {
-    return;
-  }
-  id_ = id;
-  key_ = slot.key;
   context_ = context;
 }
 

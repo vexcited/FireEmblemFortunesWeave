@@ -132,6 +132,13 @@ public:
     return instance_->variables_->Find(key);
   }
 
+  static bool HasVariable(const HashedString& key) {
+    if (instance_ == nullptr) {
+      return false;
+    }
+    return instance_->variables_->Contains(key);
+  }
+
   static bool IsVariableSet(const HashedString& key) {
     if (instance_ == nullptr) {
       return false;

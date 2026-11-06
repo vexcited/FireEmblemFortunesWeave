@@ -87,6 +87,9 @@ public:
 
   // The names of the tracks to start, in track order.
   struct Request {
+    Request() : names{}, count(0) {
+    }
+
     explicit Request(const char* name) : names{name}, count(1) {
     }
 
