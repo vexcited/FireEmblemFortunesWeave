@@ -172,7 +172,7 @@ GAME_DATA_FILE(SubquestFile, SubquestData, SubquestData)
 GAME_DATA_FILE(
   SubquestDeliveryKindFile, SubquestDeliveryKindData, SubquestDeliveryKindData
 )
-GAME_DATA_FILE(GrowthListFile, GrowthListArray, GrowthListData)
+GAME_DATA_FILE_CUSTOM(GrowthListFile, GrowthListArray, GrowthListData)
 GAME_DATA_FILE_UNLOADING(
   AutoGrowMasteryExpFile, AutoGrowMasteryExpArray, AutoGrowMasteryExpData
 )
@@ -191,7 +191,7 @@ GAME_DATA_FILE_UNLOADING(AIIndividualFile, AIIndividualData, AIIndividualData)
 GAME_DATA_FILE(
   Part2SuppliedItemFile, Part2SuppliedItemData, Part2SuppliedItemData
 )
-GAME_DATA_FILE(
+GAME_DATA_FILE_CUSTOM(
   Part2SuppliedLegionFile, Part2SuppliedLegionData, Part2SuppliedLegionData
 )
 GAME_DATA_FILE(EntrustEquipFile, EntrustEquipData, EntrustEquipData)

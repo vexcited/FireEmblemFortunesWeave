@@ -44,6 +44,12 @@ public:
   void destroyVoice(VibVoice* voice);
   void checkPriority(VibVoice* voice);
 
+  void fadeVoices(const Fade& fade, float target);
+  void pauseVoices(const Fade& fade, bool force);
+  void resumeVoices(const Fade& fade);
+  void muteVoices(const Fade& fade);
+  void unmuteVoices(const Fade& fade);
+
   Slot* getNext() const {
     return next_;
   }

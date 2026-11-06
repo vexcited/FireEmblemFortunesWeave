@@ -23,11 +23,46 @@ namespace game {
   };
 GAME_INDEXED_DATA_FILE(LegionFile, LegionData)
 GAME_INDEXED_DATA_FILE(BattleFieldFile, BattleFieldData)
-GAME_INDEXED_DATA_FILE(ExteriorFile, ExteriorData)
 GAME_INDEXED_DATA_FILE(GmapSpotFile, GmapSpotData)
 GAME_INDEXED_DATA_FILE(SideStoryFile, SideStoryData)
 GAME_INDEXED_DATA_FILE(RecommendFile, RecommendData)
 #undef GAME_INDEXED_DATA_FILE
+
+class ExteriorFile : public SingletonDataFile<
+  ExteriorFile, ExteriorData, ExteriorData
+> {
+public:
+  // The instance is unloaded before the data file base unloads itself.
+  ~ExteriorFile() override {
+    GetInstance()->Unload();
+  }
+
+protected:
+  void OnBuild() override;
+  void OnUnbuild() override {}
+};
+
+class GrowthListFile : public SingletonDataFile<
+  GrowthListFile, GrowthListArray, GrowthListData
+> {
+public:
+  ~GrowthListFile() override;
+
+protected:
+  void OnBuild() override {}
+  void OnUnbuild() override {}
+};
+
+class Part2SuppliedLegionFile : public SingletonDataFile<
+  Part2SuppliedLegionFile, Part2SuppliedLegionData, Part2SuppliedLegionData
+> {
+protected:
+  void OnBuild() override;
+  void OnUnbuild() override {}
+
+private:
+  std::vector<Part2SuppliedLegionData*> ordered_;
+};
 
 class ReplacementFile : public SingletonDataFile<
   ReplacementFile, ReplacementData, ReplacementData

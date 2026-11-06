@@ -419,7 +419,9 @@ struct Part2SuppliedLegionData : Data {
     legions_28.Resolve();
   }
 
-  unsigned char unknown_18[0x10];
+  unsigned char unknown_18[0x8];
+  uint16_t order;
+  unsigned char unknown_22[0x6];
   DataRefList<LegionData> legions_28;
 };
 

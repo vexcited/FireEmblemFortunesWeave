@@ -605,6 +605,10 @@ public:
     return items_.size();
   }
 
+  const std::vector<T*>& GetItems() const {
+    return items_;
+  }
+
   [[gnu::always_inline]] T* Find(const char* name) const {
     const HashedString key(name);
 

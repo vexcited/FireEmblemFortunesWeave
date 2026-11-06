@@ -8,6 +8,7 @@ class Manager;
 
 class Name {
 public:
+  Name();
   explicit Name(const char* name);
   virtual ~Name();
 

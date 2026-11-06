@@ -54,7 +54,11 @@ public:
   // A piece of music, the last one requested plays.
   struct Entry {
     Track tracks[6];
-    uint8_t unknown_150_[5];
+    bool unknown_150_;
+    bool paused;
+    bool systemPaused;
+    bool muted;
+    bool systemMuted;
     bool stopping;
     uint8_t unknown_156_[0xa];
     int track;
@@ -69,6 +73,15 @@ public:
   };
 
   using EntryList = std::vector<Entry, fnd::Allocator<Entry>>;
+
+  // The names of the tracks to start, in track order.
+  struct Request {
+    explicit Request(const char* name) : names{name}, count(1) {
+    }
+
+    const char* names[7];
+    uint32_t count;
+  };
 
   static constexpr int kStateIdle = 0;
   static constexpr int kStatePlaying = 2;
@@ -86,17 +99,147 @@ public:
   static int getUnknown170();
   static void change(int track, bool loop);
 
+  static void playData(const char* name, int track, int kind);
+  static void play(const char* name, const Fade& fade, int track,
+    float delay, float volume);
+  static void play(const Request& request, const Fade& fade, int track,
+    float delay, float volume);
+  static bool isFinished();
+  static void release();
+  static bool playNext(const char* name, const Fade& fade, int track,
+    float delay, float volume);
+  static void queue(const char* name, const Fade& fade, int track,
+    float delay, float volume);
+  static void queue(const Request& request, const Fade& fade, int track,
+    float delay, float volume);
+  static void playTrack(int track, const char* name, const Fade& fade,
+    int kind, float delay, float volume);
+  static void addTracks(const char* name, const Fade& fade, float delay,
+    float volume);
+  static void replaceTrack(int track, const char* name, const Fade& fade,
+    int kind, float delay, float volume);
+  static void stop(const Fade& fade);
+  static void stopTrack(int track, const Fade& fade);
+  static void pauseSystem(const Fade& fade);
+  static void resumeSystemPause(const Fade& fade);
+  static void mute(const Fade& fade);
+  static void muteTrack(int track, const Fade& fade);
+  static void resumeMute(const Fade& fade);
+  static void resumeMuteTrack(int track, const Fade& fade);
+  static void muteSystem(const Fade& fade);
+  static void resumeSystemMute(const Fade& fade);
+  static bool isActive();
+  static bool isActive(int track);
+  static void startVolume(const Fade& fade, float target);
+  static void startPlayerVolume(const Fade& fade, float target);
+  static float getVolume();
+  static void startTrackVolume(int track, const Fade& fade, float target);
+  static void startTrackPlayerVolume(int track, const Fade& fade,
+    float target);
+  static float getTrackVolume(int track);
+  static void startPitch(const Fade& fade, float target);
+  static void startTrackPitch(int track, const Fade& fade, float target);
+  static void startPan(const Fade& fade, float target);
+  static void startTrackPan(int track, const Fade& fade, float target);
+  static void startSurroundPan(const Fade& fade, float target);
+  static float getSurroundPan();
+  static void startTrackSurroundPan(int track, const Fade& fade,
+    float target);
+  static float getTrackSurroundPan(int track);
+  static void startLpfFrequency(const Fade& fade, float target);
+  static void startTrackLpfFrequency(int track, const Fade& fade,
+    float target);
+  static void startPitchChecked(const Fade& fade, float target);
+  static void startTrackPitchChecked(int track, const Fade& fade,
+    float target);
+  static float getPlayPosition();
+  static float getTrackPlayPosition(int track);
+  static void stopNamed(const char* name, const Fade& fade, float delay,
+    float volume);
+  static void stopPrevious(const Fade& fade);
+  static void startPreviousVolume(const Fade& fade, float target);
+  static float getPreviousVolume();
+  static void playDataFrom(const char* name, const Fade& fade);
+  static void dropPrevious();
+  static const char* getPlayingName();
+
   BGM();
   virtual ~BGM();
 
   virtual void update();
-  virtual void updateTracks();
-  virtual void updateRequests();
-  virtual void updateFade();
+  virtual void requestPlay(const char* name, const Fade& fade, int track,
+    float delay, float volume);
+  virtual bool requestNext(const char* name, const Fade& fade, int track,
+    float delay, float volume);
+  virtual bool requestPlay(const uint32_t* hash, const Fade& fade, int track,
+    float delay, float volume);
   virtual void stop(const Fade& fade, bool force);
+  virtual void pause(const Fade& fade);
+  virtual void pauseTrack(int track, const Fade& fade);
+  virtual void pauseSystemAll(const Fade& fade);
+  virtual void setVolume(const Fade& fade, bool force, float volume);
+  virtual void refreshVolume();
 
   // Stops every entry still in the list.
   void stopTracks(const Fade& fade);
+
+  void requestData(const char* name, int track, int kind);
+  void start(const Request& request, const Fade& fade, int track, int index,
+    float delay, float volume);
+  bool checkFinished() const;
+  bool enqueue(const Request& request, const Fade& fade, int track,
+    bool replace, float delay, float volume);
+  void startTrack(int track, const char* name, const Fade& fade, int kind,
+    float delay, float volume);
+  void appendTracks(const Request& request, const Fade& fade, float delay,
+    float volume);
+  void swapTrack(int track, const char* name, const Fade& fade, int kind,
+    float delay, float volume);
+  void resumeSystemPauseAll(const Fade& fade);
+  void muteAll(const Fade& fade);
+  void resumeMuteAll(const Fade& fade);
+  void muteSystemAll(const Fade& fade);
+  void resumeSystemMuteAll(const Fade& fade);
+  void startVolumeAll(const Fade& fade, float target);
+  void startPlayerVolumeAll(const Fade& fade, float target);
+  float getFirstVolume() const;
+  void startPitchAll(const Fade& fade, float target);
+  void startPanAll(const Fade& fade, float target);
+  void startSurroundPanAll(const Fade& fade, float target);
+  float getFirstSurroundPan() const;
+  void startLpfFrequencyAll(const Fade& fade, float target);
+  void startPitchCheckedAll(const Fade& fade, float target);
+  float getFirstPlayPosition() const;
+  void stopNamedEntry(const char* name, const Fade& fade, float delay,
+    float volume);
+  void stopPreviousEntry(const Fade& fade);
+  void startPreviousVolumeAll(const Fade& fade, float target);
+  float getFirstPreviousVolume() const;
+  void playDataFromEntry(const char* name, const Fade& fade, int kind,
+    float delay, float volume);
+  void dropPreviousEntries();
+  int getBeat(const fnd::WeakHandle& voice, int tempo) const;
+  bool isStoppingNow() const;
+  static bool equals(const fnd::String& string, const char* name);
+  void releaseFirst();
+  void resumePauseAll(const Fade& fade);
+  void stopTrackVoice(int track, const Fade& fade);
+  void playTrackVoice(int track, const char* label, int position,
+    const Fade& fade, float delay, float volume);
+  void playNewTrack(int track, const char* label, const Fade& fade,
+    int kind, float delay, float volume);
+  void playList(const Request& request, int position, const Fade& fade,
+    float delay, float volume);
+  float getFirstPlayerVolume() const;
+  const char* getFirstName() const;
+  fnd::String getFirstNameString() const;
+  void resetVolume();
+  void playHash(const uint32_t* hash, const Fade& fade, int track, int index,
+    float delay, float volume);
+
+  bool isLastStopping() const {
+    return entries_.empty() ? false : entries_.back().stopping;
+  }
 
 private:
   [[gnu::visibility("hidden")]] static BGM* s_instance;
@@ -113,6 +256,27 @@ static_assert(sizeof(BGM) == 0x40);
 
 class Wind {
 public:
+  class Pos;
+
+  // One sound of a wind group, its voice and position list.
+  class Element : public Name {
+  public:
+    Element() = default;
+
+    uint8_t unknown_20_[8];
+    fnd::WeakHandle voice;
+    std::vector<Pos*, fnd::Allocator<Pos*>> positions;
+    fnd::String label;
+    uint8_t unknown_68_[0x48];
+  };
+
+  class Group : public Name {
+  public:
+    Group() = default;
+
+    std::vector<Element*, fnd::Allocator<Element*>> elements;
+  };
+
   static Wind* create();
   static void destroy();
 
@@ -151,8 +315,41 @@ private:
 
 class Env {
 public:
+  class Pos;
+
+  // One sound of an environment group, its voice and position list.
+  class Element : public Name {
+  public:
+    Element() = default;
+
+    uint8_t unknown_20_[8];
+    fnd::WeakHandle voice;
+    std::vector<Pos*, fnd::Allocator<Pos*>> positions;
+    fnd::String label;
+    uint8_t unknown_68_[0x70];
+  };
+
+  class Group : public Name {
+  public:
+    Group() = default;
+
+    std::vector<Element*, fnd::Allocator<Element*>> elements;
+    bool unknown_38_;
+    bool positional;
+    uint8_t unknown_3a_[6];
+  };
+
   static Env* create();
   static void destroy();
+
+  static void stopAll(const Fade& fade);
+  static void restart();
+  static void startPitchChecked(const Fade& fade, float target);
+  static void refreshPositions(const char* name);
+  static void startElementVolume(const char* name, const Fade& fade,
+    float target);
+  static void playField(const char* name);
+  static void playFieldSub(const char* name);
 
   Env();
   virtual ~Env();
@@ -164,11 +361,34 @@ public:
   void play(const char* name, const void* data, const char* weather,
     const char* time, uint8_t kind, void* param);
 
+  Group* findGroup(const char* name);
+  void restartFields();
+  void updateGroup(Group* group);
+  void updatePositionalGroup(Group* group);
+  void removeGroup(Group* group);
+  void stopGroup(const char* name);
+  void playGroup(Group* group, const void* data, const char* weather,
+    const char* time, bool kind, const Fade& fade);
+  void refreshElementPositions(const char* name);
+  void startElementVolumeImpl(const char* name, const Fade& fade,
+    float target);
+
 private:
   [[gnu::visibility("hidden")]] static Env* s_instance;
 
-  uint8_t unknown_08_[0x1b8];
+  std::vector<Group*, fnd::Allocator<Group*>> groups_;
+  uint8_t unknown_20_[0x108];
+  const void* data_;
+  fnd::String name_;
+  const void* subData_;
+  fnd::String subName_;
+  const void* field_;
+  const void* fieldSub_;
+  uint8_t unknown_178_[0x28];
+  nn::os::MutexType mutex_;
 };
+
+static_assert(sizeof(Env) == 0x1c0);
 
 class GroupCtrl {
 public:

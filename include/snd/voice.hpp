@@ -88,7 +88,25 @@ struct VoiceInfo {
 
 }
 
-struct VoiceParam;
+// The start parameters of a voice. The facade fills it on the stack and the
+// voice constructor copies it.
+struct VoiceParam {
+  Fade fade{0.0f};
+  float delay = 0.0f;
+  float volume = 1.0f;
+  int kind = 0;
+  // Overwritten by every caller, the default packs two ones.
+  int priority = 0x10001;
+  int group = 0;
+  bool isFront = false;
+  bool reserved_dd = false;
+  bool reserved_de = false;
+  bool direct = false;
+  bool reserved_e0[3] = {};
+  void* user = nullptr;
+};
+
+static_assert(sizeof(VoiceParam) == 0xf0);
 
 // A named position in the sound, reported back while it plays.
 class Marker {

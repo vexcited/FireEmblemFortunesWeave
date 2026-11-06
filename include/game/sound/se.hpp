@@ -2,6 +2,8 @@
 
 #include <cstdint>
 
+#include "snd/fnd/math.hpp"
+
 namespace game::sound {
 
 class PlayParam {
@@ -20,6 +22,8 @@ public:
   Handle(const Handle& other);
   ~Handle() {}
 
+  Handle& operator=(const Handle& other);
+
 private:
   uint64_t id_ = 0;
   uint32_t serial_ = 0x2000;
@@ -27,6 +31,15 @@ private:
 
 Handle Play(const char* label, const char* group, const PlayParam& param,
   int priority, uint32_t flags, int delay, float start, float volume);
+
+Handle PlayAt(const char* label, const char* group,
+  const snd::fnd::Vec3& position, const PlayParam& param, int priority,
+  uint32_t flags, int delay, float start, float volume);
+void Stop(Handle& handle, const PlayParam& param);
+
+Handle PlayVibration(const char* label, bool system);
+Handle PlaySeAt(const char* label, const snd::fnd::Vec3& position);
+void Stop(Handle& handle);
 
 inline void PlaySe(const char* label) {
   Play(label, label, PlayParam(), 0, 0x10001, 0, 0.0f, 1.0f);
@@ -44,5 +57,21 @@ void PlayListLeftSe();
 void PlayListRightSe();
 void PlayGaugeLeftSe();
 void PlayGaugeRightSe();
+void PlayCursorHelpSe();
+void PlayPageSendSe();
+void PlayPageBackSe();
+void PlayCursorLeftCalendarSe();
+void PlayCursorRightCalendarSe();
+void PlayDecideSe();
+void PlayDecideLightSe();
+void PlayTalkSendSe();
+void PlayCancelSe();
+void PlayCursorTargetSe();
+void PlayNgSe();
+void PlayDangerZoneOnSe();
+void PlayDangerZoneOffSe();
+void PlayZoomViewInSe();
+void PlayZoomViewOutSe();
+void PlayCameraTurnSe();
 
 }

@@ -12,6 +12,13 @@ namespace snd {
 class Fade;
 class Slot;
 class WaveReader;
+struct VoiceParam;
+
+namespace fnd {
+
+class Vec3;
+
+}
 
 namespace data {
 
@@ -77,14 +84,20 @@ public:
   void stop(const Fade& fade, int kind, float value);
   void reset();
   void setEffect(int bus, const data::EffectData* effect);
+  void setEffect(int bus, const char* name);
+  void startVolume(int bus, const Fade& fade, int kind, float target);
 
   void clearRequest() {
     request_ = 0;
   }
 
+  void setRequest(float request) {
+    request_ = request;
+  }
+
 private:
   uint8_t unknown_00_[0x5b0];
-  int request_;
+  float request_;
 };
 
 template <typename T>
@@ -111,11 +124,58 @@ public:
   fnd::WeakHandle getListener(int index);
   fnd::WeakHandle findBus(const uint32_t* hash);
 
+  fnd::WeakHandle play(const fnd::WeakHandle& slot, const char* name,
+    const char* label, const fnd::WeakHandle& actor, const VoiceParam& param,
+    const fnd::WeakHandle& parent);
+  fnd::WeakHandle play(const fnd::WeakHandle& slot, const char* name,
+    const uint32_t* key, const fnd::WeakHandle& actor,
+    const VoiceParam& param, const fnd::WeakHandle& parent);
+  fnd::WeakHandle playAt(const fnd::WeakHandle& slot, const char* name,
+    const char* label, const VoiceParam& param, float x, float y, float z);
+  fnd::WeakHandle playAt(const fnd::WeakHandle& slot, const char* name,
+    const char* label, const fnd::Vec3& position, const VoiceParam& param);
+  fnd::WeakHandle findVoice(const char* label);
+  void stop(const fnd::WeakHandle& voice, const Fade& fade, bool force);
+  void kill(const fnd::WeakHandle& voice, const fnd::WeakHandle& actor);
+  void stopAll(const Fade& fade);
+  void stopKind(int kind, const Fade& fade);
+  bool isActive(const fnd::WeakHandle& voice);
+  bool isLoaded(const uint32_t* key);
+  uint32_t findSoundId(const uint32_t* key);
+  void setListenerPosition(int index, float x, float y, float z);
+  void setListenerDirection(int index, float x, float y, float z);
+  void setListener(const float* pose, int index);
+  void setListenerIndex(int index);
+  void setVibrationSurround(const void* data);
+  void startMasterVolume(const Fade& fade, float target);
+  void resetMasterVolume(const Fade& fade);
+  void startBgmVolume(const Fade& fade, float target);
+  void startSeVolume(const Fade& fade, float target);
+  void unloadUnused();
+  void clearStreams();
+
+  bool isRunning() const {
+    return !stopped_;
+  }
+
+  void* getUnknown10() {
+    return &unknown_10_;
+  }
+
+  void* getUnknown38() {
+    return &unknown_38_;
+  }
+
   void eachSlot(const std::function<void(Slot*)>& function);
 
 private:
-  uint8_t unknown_00_[0x28];
+  uint8_t unknown_00_[8];
+  bool stopped_;
+  uint8_t unknown_09_[7];
+  uint8_t unknown_10_[0x18];
   ObjList<Slot>* slots_;
+  uint8_t unknown_30_[8];
+  uint8_t unknown_38_[8];
 };
 
 // The manager of the sound engine, reached directly and through the global
