@@ -4,6 +4,7 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#include "nn/lmem/exp_heap.hpp"
 #include "nn/mem/standard_allocator.hpp"
 #include "nn/os/light_event.hpp"
 #include "nn/os/mutex.hpp"
@@ -66,10 +67,37 @@ private:
   os::MutexType m_Mutex;
 };
 
+enum AllocatorType : int32_t {
+  AllocatorType_StandardAllocator = 1,
+  AllocatorType_ExpHeap = 2,
+  AllocatorType_StandardLibrary = 3,
+  AllocatorType_Callback = 4,
+};
+
+struct AllocatorCallbacks {
+  void* (*allocate)(size_t size, size_t alignment, void* userData);
+  void (*free)(void* address, void* userData);
+  void* (*reallocate)(void* address, size_t size, void* userData);
+  void* userData;
+};
+
+// The allocator member is reinterpreted by type. The statistics are only
+// updated while the heap memory manager has them enabled.
 struct AllocatorInfo {
-  mem::StandardAllocator* allocator;
-  void* memory;
+  union {
+    mem::StandardAllocator* allocator;
+    lmem::detail::HeapHead** pExpHeap;
+    AllocatorCallbacks* pCallbacks;
+  };
+  AllocatorType type;
   size_t size;
+  size_t peakUsedSize;
+  size_t usedSize;
+  size_t freeSize;
+  size_t allocatableSize;
+  size_t blockSize;
+  uintptr_t firstAddress;
+  size_t blockCount;
 
   size_t CalculateLeakedMemory();
 };
