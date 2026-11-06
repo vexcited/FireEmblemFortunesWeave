@@ -1,0 +1,93 @@
+#include "nn/ui2d/runtime_type_info.hpp"
+
+// The bases whose getters are defined elsewhere, or in
+// runtime_type_info_base.cpp, are only declared.
+namespace nn::font {
+
+NN_UI2D_RUNTIME_TYPE_INFO_ROOT(Font)
+NN_UI2D_RUNTIME_TYPE_INFO_ROOT(ResFontBase)
+
+template<typename T>
+NN_UI2D_RUNTIME_TYPE_INFO_ROOT(TagProcessorBase)
+
+NN_UI2D_RUNTIME_TYPE_INFO(PairFont, Font)
+NN_UI2D_RUNTIME_TYPE_INFO(ResFont, ResFontBase)
+NN_UI2D_RUNTIME_TYPE_INFO(ScalableFont, Font)
+
+template<typename T>
+NN_UI2D_RUNTIME_TYPE_INFO(ExtendedTagProcessorBase, TagProcessorBase<T>)
+
+NN_UI2D_RUNTIME_TYPE_INFO_DEFINITION(PairFont)
+NN_UI2D_RUNTIME_TYPE_INFO_DEFINITION(ResFont)
+NN_UI2D_RUNTIME_TYPE_INFO_DEFINITION(ScalableFont)
+
+template<typename T>
+NN_UI2D_RUNTIME_TYPE_INFO_DEFINITION(ExtendedTagProcessorBase<T>)
+
+template class ExtendedTagProcessorBase<char>;
+
+}
+
+namespace nn::ui2d {
+
+NN_UI2D_RUNTIME_TYPE_INFO_ROOT(Pane)
+NN_UI2D_RUNTIME_TYPE_INFO_ROOT(AnimTransformBasic)
+NN_UI2D_RUNTIME_TYPE_INFO_ROOT(Animator)
+NN_UI2D_RUNTIME_TYPE_INFO_ROOT(ResourceAccessor)
+NN_UI2D_RUNTIME_TYPE_INFO_ROOT(Layout)
+NN_UI2D_RUNTIME_TYPE_INFO_ROOT(TextureInfo)
+NN_UI2D_RUNTIME_TYPE_INFO_ROOT(PlacementTextureInfo)
+
+namespace detail {
+
+NN_UI2D_RUNTIME_TYPE_INFO_ROOT(DynamicRenderingTexture)
+NN_UI2D_RUNTIME_TYPE_INFO(VectorGraphicsTexture, DynamicRenderingTexture)
+NN_UI2D_RUNTIME_TYPE_INFO_DEFINITION(VectorGraphicsTexture)
+
+}
+
+NN_UI2D_RUNTIME_TYPE_INFO(Alignment, Pane)
+NN_UI2D_RUNTIME_TYPE_INFO(Bounding, Pane)
+NN_UI2D_RUNTIME_TYPE_INFO(Capture, Pane)
+NN_UI2D_RUNTIME_TYPE_INFO(Parts, Pane)
+NN_UI2D_RUNTIME_TYPE_INFO(Picture, Pane)
+NN_UI2D_RUNTIME_TYPE_INFO(Scissor, Pane)
+NN_UI2D_RUNTIME_TYPE_INFO(TextBox, Pane)
+NN_UI2D_RUNTIME_TYPE_INFO(Window, Pane)
+
+NN_UI2D_RUNTIME_TYPE_INFO(PaneAnimator, Animator)
+NN_UI2D_RUNTIME_TYPE_INFO(GroupAnimator, Animator)
+NN_UI2D_RUNTIME_TYPE_INFO(GroupArrayAnimator, Animator)
+
+// The C++ base is Animator, but the type info links to AnimTransformBasic.
+NN_UI2D_RUNTIME_TYPE_INFO(AnimatorEx, AnimTransformBasic)
+
+NN_UI2D_RUNTIME_TYPE_INFO(ArcResourceAccessor, ResourceAccessor)
+NN_UI2D_RUNTIME_TYPE_INFO(MultiArcResourceAccessor, ResourceAccessor)
+NN_UI2D_RUNTIME_TYPE_INFO(CaptureTexture, detail::DynamicRenderingTexture)
+NN_UI2D_RUNTIME_TYPE_INFO(LayoutEx, Layout)
+NN_UI2D_RUNTIME_TYPE_INFO(ResourceTextureInfo, TextureInfo)
+NN_UI2D_RUNTIME_TYPE_INFO(DummyRenderTargetTextureInfo, TextureInfo)
+NN_UI2D_RUNTIME_TYPE_INFO(RenderTargetTextureInfo, PlacementTextureInfo)
+
+NN_UI2D_RUNTIME_TYPE_INFO_DEFINITION(Alignment)
+NN_UI2D_RUNTIME_TYPE_INFO_DEFINITION(Bounding)
+NN_UI2D_RUNTIME_TYPE_INFO_DEFINITION(Capture)
+NN_UI2D_RUNTIME_TYPE_INFO_DEFINITION(Parts)
+NN_UI2D_RUNTIME_TYPE_INFO_DEFINITION(Picture)
+NN_UI2D_RUNTIME_TYPE_INFO_DEFINITION(Scissor)
+NN_UI2D_RUNTIME_TYPE_INFO_DEFINITION(TextBox)
+NN_UI2D_RUNTIME_TYPE_INFO_DEFINITION(Window)
+NN_UI2D_RUNTIME_TYPE_INFO_DEFINITION(PaneAnimator)
+NN_UI2D_RUNTIME_TYPE_INFO_DEFINITION(GroupAnimator)
+NN_UI2D_RUNTIME_TYPE_INFO_DEFINITION(GroupArrayAnimator)
+NN_UI2D_RUNTIME_TYPE_INFO_DEFINITION(AnimatorEx)
+NN_UI2D_RUNTIME_TYPE_INFO_DEFINITION(ArcResourceAccessor)
+NN_UI2D_RUNTIME_TYPE_INFO_DEFINITION(MultiArcResourceAccessor)
+NN_UI2D_RUNTIME_TYPE_INFO_DEFINITION(CaptureTexture)
+NN_UI2D_RUNTIME_TYPE_INFO_DEFINITION(LayoutEx)
+NN_UI2D_RUNTIME_TYPE_INFO_DEFINITION(ResourceTextureInfo)
+NN_UI2D_RUNTIME_TYPE_INFO_DEFINITION(DummyRenderTargetTextureInfo)
+NN_UI2D_RUNTIME_TYPE_INFO_DEFINITION(RenderTargetTextureInfo)
+
+}

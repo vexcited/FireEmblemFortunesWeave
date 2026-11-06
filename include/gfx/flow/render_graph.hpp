@@ -1,5 +1,6 @@
 #pragma once
 
+#include <string_view>
 #include <utility>
 #include <vector>
 
@@ -20,6 +21,10 @@ public:
     return resource;
   }
 
+  // The graph owns the new resource, the pass records that it creates it.
+  template<typename T, typename D>
+  T* Create(const char* name, const D& desc);
+
 private:
   RenderGraph* graph_;
   PassNodeBase* pass_;
@@ -37,6 +42,9 @@ public:
     passes_.back()->Build(builder);
     return pass->GetOutput();
   }
+
+  template<typename T, typename D>
+  T* CreateResource(std::string_view name, const D& desc);
 
   SyncResource* AddFenceSyncPass(const char* name, int pool);
   void AddWaitSyncPass(const char* name, SyncResource* sync);
@@ -57,5 +65,12 @@ private:
   std::vector<Lifetime> lifetimes_;
   int queue_;
 };
+
+template<typename T, typename D>
+T* ResourceBuilder::Create(const char* name, const D& desc) {
+  T* resource = graph_->CreateResource<T>(name, desc);
+  pass_->creates_.push_back(resource);
+  return resource;
+}
 
 }
