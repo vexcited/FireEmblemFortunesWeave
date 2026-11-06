@@ -5627,6 +5627,9 @@ void asCScriptEngine::AddScriptFunction(asCScriptFunction *func)
 	}
 }
 
+int unknown_219a970;
+asBYTE unknown_219a974[8192];
+
 void asCScriptEngine::RemoveScriptFunction(asCScriptFunction *func)
 {
 	if( func == 0 || func->id < 0 ) return;
@@ -5673,9 +5676,41 @@ void asCScriptEngine::RemoveScriptFunction(asCScriptFunction *func)
 				// Remove the signature id
         signatureIds[func->signatureIdBucket].RemoveValue(func);
 
+        // Once the game sets the mode to 1, the ids shared by several
+        // functions are collected a single time. Ids outside that set are
+        // then not searched.
+        asUINT count = scriptFunctions.GetLength();
+        if (unknown_219a970 == 1) {
+          asBYTE seen[8192];
+          memset(seen, 0, sizeof(seen));
+          unknown_219a970 = 2;
+          memset(unknown_219a974, 0, sizeof(unknown_219a974));
+          seen[(asWORD)id >> 3] |= 1 << (id & 7);
+          for (asUINT n = 0; n < count; n++) {
+            asCScriptFunction *f = scriptFunctions[n];
+            if (f == 0) {
+              continue;
+            }
+
+            int s = f->signatureId;
+            asBYTE bit = 1 << (s & 7);
+            if (seen[(asWORD)s >> 3] & bit) {
+              unknown_219a974[(asWORD)s >> 3] |= bit;
+            }
+            else {
+              seen[(asWORD)s >> 3] |= bit;
+            }
+          }
+        }
+
+        if (unknown_219a970 == 2 &&
+            !((unknown_219a974[(asWORD)id >> 3] >> (id & 7)) & 1)) {
+          return;
+        }
+
 				// Update all functions using the signature id
 				int newSigId = 0;
-				for( asUINT n = 0; n < scriptFunctions.GetLength(); n++ )
+				for( asUINT n = 0; n < count; n++ )
 				{
 					if( scriptFunctions[n] && scriptFunctions[n]->signatureId == id )
 					{

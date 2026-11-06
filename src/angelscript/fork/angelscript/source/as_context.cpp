@@ -1174,6 +1174,12 @@ int asCContext::Abort()
 {
 	if( m_engine == 0 ) return asERROR;
 
+  // A system call that the game left pending is completed first.
+  if (unknown_240 && GetUnknown238() == 0) {
+    SetUnknown238(2);
+    CallSystemFunction(m_regs.programPointer[1], this);
+  }
+
 	// TODO: multithread: Make thread safe. There is a chance that the status
 	//                    changes to something else after being set to ABORTED here.
 	if( m_status == asEXECUTION_SUSPENDED )
@@ -5398,6 +5404,11 @@ int asCContext::CallGeneric(asCScriptFunction *descr)
 	}
 
 	// Clean up arguments
+  // The game keeps the arguments while its pending call hook is waiting.
+  if (unknown_240 && GetUnknown238() == 0) {
+    return popSize;
+  }
+
 	const asUINT cleanCount = sysFunc->cleanArgs.GetLength();
 	if( cleanCount )
 	{

@@ -1353,7 +1353,7 @@ int asCModule::AddScriptFunction(asCScriptFunction *func)
 }
 
 // internal
-int asCModule::AddImportedFunction(int id, const asCString &funcName, const asCDataType &returnType, const asCArray<asCDataType> &params, const asCArray<asETypeModifiers> &inOutFlags, const asCArray<asCString *> &defaultArgs, asSFunctionTraits funcTraits, asSNameSpace *ns, const asCString &moduleName)
+int asCModule::AddImportedFunction(int id, const asCString &funcName, const asCDataType &returnType, const asCArray<asCDataType> &params, const asCArray<asETypeModifiers> &inOutFlags, const asCArray<asCString *> &defaultArgs, asSFunctionTraits funcTraits, asSNameSpace *ns, const asCString &moduleName, bool isShared)
 {
 	asASSERT(id >= 0);
 
@@ -1378,6 +1378,7 @@ int asCModule::AddImportedFunction(int id, const asCString &funcName, const asCD
 	func->defaultArgs    = defaultArgs;
 	func->objectType     = 0;
 	func->traits         = funcTraits;
+  func->unknown_11c = isShared;
 
 	sBindInfo *info = asNEW(sBindInfo);
 	if( info == 0 )
@@ -1836,7 +1837,7 @@ int asCModule::RemoveFunction(asIScriptFunction *func)
 
 #ifndef AS_NO_COMPILER
 // internal
-int asCModule::AddFuncDef(const asCString &funcName, asSNameSpace *ns, asCObjectType *parent)
+int asCModule::AddFuncDef(const asCString &funcName, asSNameSpace *ns, asCObjectType *parent, bool isShared)
 {
 	// namespace and parent are mutually exclusive
 	asASSERT((ns == 0 && parent) || (ns && parent == 0));
@@ -1848,6 +1849,7 @@ int asCModule::AddFuncDef(const asCString &funcName, asSNameSpace *ns, asCObject
 	func->name      = funcName;
 	func->nameSpace = ns;
 	func->module    = this;
+  func->unknown_11c = isShared;
 
 	asCFuncdefType *fdt = asNEW(asCFuncdefType)(m_engine, func);
 	AddFuncDef(fdt); // The constructor set the refcount to 1
