@@ -43,9 +43,15 @@ public:
   string(const string &other);
   string(const char *s, unsigned int length);
 
+  // Results of the base string operators convert through the same code as
+  // the copy constructor.
+  string(const base_string &other);
+
   string &operator=(const char *s);
+  // The copy goes through the base copy assignment, not the string view
+  // overload the derived type would pick.
   string &operator=(const string &other) {
-    base_string::operator=(other);
+    base_string::operator=(static_cast<const base_string &>(other));
     return *this;
   }
 

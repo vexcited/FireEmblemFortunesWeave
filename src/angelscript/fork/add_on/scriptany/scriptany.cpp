@@ -3,8 +3,12 @@
 #include <assert.h>
 #include <string.h>
 #include "../angelscript/source/as_memory.h"
-static void RegisterScriptAny_Native(asIScriptEngine *engine);
-static void RegisterScriptAny_Generic(asIScriptEngine *engine);
+// The original keeps both registrations out of line, right after
+// RegisterScriptAny, so they share its section.
+#define AS_ANY_REGISTRATION __attribute__((noinline, \
+  section(".text._Z17RegisterScriptAnyP15asIScriptEngine")))
+AS_ANY_REGISTRATION static void RegisterScriptAny_Native(asIScriptEngine *engine);
+AS_ANY_REGISTRATION static void RegisterScriptAny_Generic(asIScriptEngine *engine);
 // The game adds 15 lines here, which only moves the assertion lines.
 #line 21
 BEGIN_AS_NAMESPACE

@@ -23,6 +23,8 @@ string::string(const char *s) : base_string(s) {}
 string::string(const string &other)
   : base_string(static_cast<const base_string &>(other)) {}
 
+string::string(const base_string &other) : base_string(other) {}
+
 string::string(const char *s, unsigned int length) : base_string(s, length) {}
 
 string &string::operator=(const char *s) {
