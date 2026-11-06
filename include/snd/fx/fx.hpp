@@ -67,6 +67,8 @@ static_assert(sizeof(FxBase) == 0x1630);
 
 class FxReverb : public FxBase {
 public:
+  static void** registry();
+
   FxReverb(Manager* manager, const char* name, int index);
   void destroy() override;
   void mainUnlocked() override;
@@ -76,6 +78,8 @@ public:
 
 class FxCpuReverb : public FxBase {
 public:
+  static void** registry();
+
   FxCpuReverb(Manager* manager, const char* name, int index,
     const void* param, int count);
   void destroy() override;
@@ -86,6 +90,8 @@ public:
 
 class FxI3dl2Reverb : public FxBase {
 public:
+  static void** registry();
+
   FxI3dl2Reverb(Manager* manager, const char* name, int index);
   void destroy() override;
   void mainUnlocked() override;
@@ -95,6 +101,8 @@ public:
 
 class FxCpuI3dl2Reverb : public FxBase {
 public:
+  static void** registry();
+
   FxCpuI3dl2Reverb(Manager* manager, const char* name, int index,
     const void* param, int count);
   void destroy() override;
@@ -105,6 +113,8 @@ public:
 
 class FxDelay : public FxBase {
 public:
+  static void** registry();
+
   FxDelay(Manager* manager, const char* name, int index);
   void destroy() override;
   void mainUnlocked() override;
@@ -114,6 +124,8 @@ public:
 
 class FxCpuDelay : public FxBase {
 public:
+  static void** registry();
+
   FxCpuDelay(Manager* manager, const char* name, int index,
     const void* param, int count);
   void destroy() override;
@@ -124,6 +136,8 @@ public:
 
 class FxLightLimiter : public FxBase {
 public:
+  static void** registry();
+
   FxLightLimiter(Manager* manager, const char* name, int index);
   void destroy() override;
   void mainUnlocked() override;
@@ -133,6 +147,8 @@ public:
 
 class FxCpuLightLimiter : public FxBase {
 public:
+  static void** registry();
+
   FxCpuLightLimiter(Manager* manager, const char* name, int index,
     const void* param, int count);
   void destroy() override;
@@ -143,6 +159,8 @@ public:
 
 class FxFFT : public FxBase {
 public:
+  static void** registry();
+
   FxFFT(Manager* manager, const char* name, fnd::WeakHandle target,
     int index, int count);
   FxFFT(Manager* manager, const char* name, fnd::WeakHandle target,
@@ -160,6 +178,8 @@ private:
 
 class FxEQ : public FxBase {
 public:
+  static void** registry();
+
   FxEQ(Manager* manager, const char* name, int index, int count);
   void destroy() override;
   void mainUnlocked() override;
@@ -172,6 +192,8 @@ public:
 
 class FxMS : public FxBase {
 public:
+  static void** registry();
+
   FxMS(Manager* manager, const char* name, int index, int count);
   void destroy() override;
   void mainUnlocked() override;
@@ -190,6 +212,8 @@ private:
 
 class FxMSCtrl : public FxBase {
 public:
+  static void** registry();
+
   FxMSCtrl(Manager* manager, const char* name, fnd::WeakHandle target,
     int index, int count);
   void destroy() override;
@@ -206,6 +230,8 @@ public:
 
 class FxMSEQ : public FxBase {
 public:
+  static void** registry();
+
   FxMSEQ(Manager* manager, const char* name, int index, int count);
   void destroy() override;
   void mainUnlocked() override;
@@ -224,6 +250,8 @@ private:
 
 class FxSpectrum : public FxBase {
 public:
+  static void** registry();
+
   void destroy() override;
   void mainUnlocked() override;
   void** getRegistry() override;
@@ -235,6 +263,8 @@ public:
 
 class FxVib : public FxBase {
 public:
+  static void** registry();
+
   FxVib(Manager* manager, const char* name, int index, int count);
   void destroy() override;
   void mainUnlocked() override;
@@ -259,6 +289,8 @@ public:
 
 class FxFinalMix : public FxBase {
 public:
+  static void** registry();
+
   FxFinalMix(Manager* manager, const char* name, int index, int count);
   void destroy() override;
   void mainUnlocked() override;
@@ -273,6 +305,8 @@ public:
 
 class FxMute : public FxBase {
 public:
+  static void** registry();
+
   FxMute(Manager* manager, const char* name, int index, int count);
   void destroy() override;
   void mainUnlocked() override;
@@ -284,6 +318,8 @@ public:
 
 class FxNone : public FxBase {
 public:
+  static void** registry();
+
   FxNone(Manager* manager, const char* name, int index, int count);
   void destroy() override;
   void mainUnlocked() override;
@@ -295,6 +331,8 @@ public:
 
 class FxSurround : public FxBase {
 public:
+  static void** registry();
+
   FxSurround(Manager* manager, const char* name, int index);
   void destroy() override;
   void mainUnlocked() override;
@@ -328,6 +366,8 @@ public:
 
 class FxLFE : public FxBase {
 public:
+  static void** registry();
+
   FxLFE(Manager* manager, const char* name, int index, int count);
   void destroy() override;
   void mainUnlocked() override;
@@ -346,6 +386,8 @@ public:
 
 class FxSimpleLimiter : public FxBase {
 public:
+  static void** registry();
+
   FxSimpleLimiter(Manager* manager, const char* name, int index, int count);
   void destroy() override;
   void mainUnlocked() override;
@@ -361,6 +403,8 @@ public:
 
 class FxWaveform : public FxBase {
 public:
+  static void** registry();
+
   FxWaveform(Manager* manager, const char* name, int index, int count);
   void destroy() override;
   void mainUnlocked() override;
@@ -373,6 +417,8 @@ public:
 
 class FxSpeaker : public FxBase {
 public:
+  static void** registry();
+
   FxSpeaker(Manager* manager, const char* name, int index, int count);
   void destroy() override;
   void mainUnlocked() override;
@@ -385,6 +431,8 @@ public:
 
 class FxMultiBridge : public FxBase {
 public:
+  static void** registry();
+
   FxMultiBridge(Manager* manager, const char* name, int index, int count,
     int bridges);
   ~FxMultiBridge() override;
@@ -401,6 +449,8 @@ public:
 
 class FxCompressor : public FxBase {
 public:
+  static void** registry();
+
   FxCompressor(Manager* manager, const char* name, int index);
   void destroy() override;
   void mainUnlocked() override;
@@ -410,6 +460,8 @@ public:
 
 class FxPCMPlayer : public FxBase {
 public:
+  static void** registry();
+
   FxPCMPlayer(Manager* manager, const char* name, int index, int count);
   void destroy() override;
   void mainUnlocked() override;

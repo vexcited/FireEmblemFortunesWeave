@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstddef>
+#include <atomic>
 #include <cstdint>
 
 #include "nn/audio/renderer_api.hpp"
@@ -102,10 +103,16 @@ public:
     nn::os::UnlockMutex(&m_RendererMutex);
   }
 
+  uint64_t GetAudioFrameCount() const {
+    return m_AudioFrameCount.load();
+  }
+
 private:
   uint8_t m_Header[24];
   nn::audio::AudioRendererConfig m_Config;
-  uint8_t m_Body0[224 - 24 - sizeof(nn::audio::AudioRendererConfig)];
+  uint8_t m_Body0[200 - 24 - sizeof(nn::audio::AudioRendererConfig)];
+  std::atomic<uint64_t> m_AudioFrameCount;
+  uint8_t m_Body0b[16];
   int m_OutputMode;
   uint8_t m_Body1[44];
   void* m_AuxBus[4];

@@ -36,6 +36,7 @@ public:
   void addToSlot() override;
   void stopHandle(const Fade& fade) override;
   void updatePlaying() override;
+  void** getRegistry() override;
   virtual void scrub(bool fade, float time);
 
 private:

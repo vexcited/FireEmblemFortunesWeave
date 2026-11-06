@@ -26,12 +26,24 @@ struct WaveSoundDataInfo {
 
 namespace detail {
 
+// Each sound class keeps one, linked to the type info of its base.
+class RuntimeTypeInfo {
+public:
+  explicit RuntimeTypeInfo(const RuntimeTypeInfo* parent)
+    : m_ParentTypeInfo(parent) {}
+
+private:
+  const RuntimeTypeInfo* m_ParentTypeInfo;
+};
+
 // Only the members the game calls.
 class BasicSound {
 public:
+  static const RuntimeTypeInfo* GetRuntimeTypeInfoStatic();
+
+  virtual const RuntimeTypeInfo* GetRuntimeTypeInfo() const;
   virtual ~BasicSound();
 
-  virtual void Unknown2();
   virtual void Unknown3();
   virtual void Unknown4();
   virtual bool IsPrepared() const;
@@ -44,13 +56,40 @@ public:
 
 class StreamSound : public BasicSound {
 public:
+  static const RuntimeTypeInfo* GetRuntimeTypeInfoStatic() {
+    static const RuntimeTypeInfo s_TypeInfo(
+      BasicSound::GetRuntimeTypeInfoStatic());
+    return &s_TypeInfo;
+  }
+
+  const RuntimeTypeInfo* GetRuntimeTypeInfo() const override;
+
   void SetTrackVolume(uint32_t trackBitFlag, float volume, int fadeFrames);
   bool ReadStreamSoundDataInfo(StreamSoundDataInfo* info) const;
   int64_t GetPlaySamplePosition(bool isOriginalSamplePosition) const;
 };
 
+class SequenceSound : public BasicSound {
+public:
+  static const RuntimeTypeInfo* GetRuntimeTypeInfoStatic() {
+    static const RuntimeTypeInfo s_TypeInfo(
+      BasicSound::GetRuntimeTypeInfoStatic());
+    return &s_TypeInfo;
+  }
+
+  const RuntimeTypeInfo* GetRuntimeTypeInfo() const override;
+};
+
 class WaveSound : public BasicSound {
 public:
+  static const RuntimeTypeInfo* GetRuntimeTypeInfoStatic() {
+    static const RuntimeTypeInfo s_TypeInfo(
+      BasicSound::GetRuntimeTypeInfoStatic());
+    return &s_TypeInfo;
+  }
+
+  const RuntimeTypeInfo* GetRuntimeTypeInfo() const override;
+
   bool ReadWaveSoundDataInfo(WaveSoundDataInfo* info) const;
   int64_t GetPlaySamplePosition(bool isOriginalSamplePosition) const;
 };

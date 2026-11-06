@@ -125,6 +125,7 @@ public:
   ~VoiceBase() override;
 
   virtual void** getRegistry();
+  static void** registry();
 
   VoiceBase* getListNext() const {
     return listNext_;

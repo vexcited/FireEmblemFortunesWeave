@@ -382,6 +382,7 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
+  void** getRegistry() override;
   void setParam(const void* param, float scale) override;
 };
 
@@ -394,6 +395,7 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
+  void** getRegistry() override;
   void setParam(const void* param, float scale) override;
 
 private:
@@ -410,6 +412,7 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
+  void** getRegistry() override;
   void setParam(const void* param, float scale) override;
 };
 
@@ -422,6 +425,7 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
+  void** getRegistry() override;
   void setParam(const void* param, float scale) override;
 
 private:
@@ -438,6 +442,7 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
+  void** getRegistry() override;
   void setParam(const void* param, float scale) override;
 };
 
@@ -450,6 +455,7 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
+  void** getRegistry() override;
   void setParam(const void* param, float scale) override;
 
 private:
@@ -466,6 +472,7 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
+  void** getRegistry() override;
   void setParam(const void* param, float scale) override;
 };
 
@@ -478,6 +485,7 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
+  void** getRegistry() override;
   void setParam(const void* param, float scale) override;
 
 private:
@@ -494,6 +502,7 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
+  void** getRegistry() override;
   void setParam(const void* param, float scale) override;
 };
 
@@ -508,6 +517,7 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
+  void** getRegistry() override;
 
 private:
   uint64_t unknown_1650_[6] = {};
@@ -524,6 +534,7 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
+  void** getRegistry() override;
   float unknown27() override;
   int unknown26() override;
   int unknown25() override;
@@ -544,6 +555,7 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
+  void** getRegistry() override;
 
 private:
   uint64_t unknown_1630_[9] = {};
@@ -558,6 +570,7 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
+  void** getRegistry() override;
   void unknown27(int, float, int) override;
   void unknown26(int) override;
   float unknown25() override;
@@ -573,6 +586,7 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
+  void** getRegistry() override;
   void unknown27(int, float, int) override;
   void unknown26(int) override;
   float unknown25() override;
@@ -593,6 +607,7 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
+  void** getRegistry() override;
   void unknown24(void* data) override;
   virtual void unknown25(int value);
   virtual void unknown26();
@@ -614,6 +629,7 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
+  void** getRegistry() override;
   void unknown36(int value) override;
   float unknown35(int) override;
   float unknown34(int) override;
@@ -638,6 +654,7 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
+  void** getRegistry() override;
   void unknown25() override;
   void unknown26() override;
 };
@@ -651,6 +668,7 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
+  void** getRegistry() override;
 };
 
 class FxNoneNX : public fx::FxNone {
@@ -662,6 +680,7 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
+  void** getRegistry() override;
 };
 
 class FxSurroundNX : public fx::FxSurround {
@@ -673,6 +692,7 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
+  void** getRegistry() override;
   int unknown45() override;
   void unknown44(int) override;
   float unknown43(int) override;
@@ -706,6 +726,7 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
+  void** getRegistry() override;
   void unknown30(bool) override;
   void unknown29(int, float, int) override;
   void unknown28(int) override;
@@ -724,6 +745,7 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
+  void** getRegistry() override;
   void unknown24() override;
   void unknown25() override;
   float unknown26() override;
@@ -739,6 +761,7 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
+  void** getRegistry() override;
 };
 
 class FxSpeakerNX : public fx::FxSpeaker {
@@ -750,6 +773,7 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
+  void** getRegistry() override;
 };
 
 class FxPCMPlayerNX : public fx::FxPCMPlayer {
@@ -761,6 +785,7 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
+  void** getRegistry() override;
   void unknown31() override;
   int unknown30() override;
   uint64_t unknown29() override;
@@ -780,6 +805,7 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
+  void** getRegistry() override;
 
 private:
   uint8_t unknown_1630_[0x38];

@@ -142,6 +142,9 @@ struct ObjList {
 
 class Manager {
 public:
+  // A queued list of voices, kept in a pool of the manager.
+  class PlayList;
+
   static void lock();
   static void unlock();
 
