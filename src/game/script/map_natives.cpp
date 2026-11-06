@@ -752,3 +752,21 @@ void EntryWarpCommandAfter(const ScriptString& funcName, int x, int z,
 #pragma GCC visibility pop
 
 }
+
+namespace game::script::map::terrain {
+
+// Some natives read the instances through the global offset table.
+template<typename T>
+extern T* g_instance;
+
+#pragma GCC visibility push(hidden)
+
+ScriptString GetTID(int x, int z) {
+  const TerrainData* terrain = g_instance<TerrainFile>->At(
+    g_instance<game::map::Image>->GetTerrainId(x, z));
+  return ScriptString(terrain != nullptr ? terrain->key.text : "");
+}
+
+#pragma GCC visibility pop
+
+}

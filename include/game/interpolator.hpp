@@ -31,6 +31,11 @@ public:
     return Calculate();
   }
 
+  // The target while it runs, computed again once it reached its end.
+  float GetSettled() const {
+    return time_ == duration_ ? Calculate() : to_;
+  }
+
   bool IsChanged(const float& value) const {
     return IsDifferent(value, to_);
   }

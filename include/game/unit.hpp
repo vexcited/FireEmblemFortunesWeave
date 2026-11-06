@@ -7,6 +7,8 @@
 #include <string>
 #include <vector>
 
+#include "game/interpolator.hpp"
+
 namespace game {
 
 #pragma GCC visibility push(hidden)
@@ -255,6 +257,11 @@ public:
     return alpha_ != target_alpha_;
   }
 
+  // The angle the unit faces in degrees.
+  float GetRotation() const {
+    return rotation_.GetSettled();
+  }
+
   // Bit 2 rebuilds the model of the unit.
   void MarkDirty(uint16_t mask) {
     dirty_ |= mask;
@@ -264,7 +271,9 @@ protected:
   uint8_t unknown_08_[0x8];
   uint32_t motion_;
   uint16_t dirty_;
-  uint8_t unknown_16_[0x8a];
+  uint8_t unknown_16_[0x5a];
+  InterpolatorFloat rotation_;
+  uint8_t unknown_98_[0x8];
   float target_alpha_;
   float alpha_;
   uint8_t unknown_a8_[0xe0];
@@ -307,6 +316,15 @@ struct UnitShape {
 
   int size;
   std::vector<Cell> cells;
+};
+
+// The argument of an AI operation, kept by name.
+class AiArgument {
+public:
+  void Set(const char* text);
+
+private:
+  const void* unknown_00_;
 };
 
 class Unit : public UnitActor, public UnitConst, public UnitStatus {
@@ -417,6 +435,10 @@ public:
 
   void SetPriority(uint8_t priority) {
     priority_ = priority;
+  }
+
+  void SetRageOpArg(const char* arg) {
+    rage_op_arg_.Set(arg);
   }
 
   void SetRageOp(uint8_t op) {
@@ -848,7 +870,8 @@ private:
   uint16_t equipped_index_;
   uint8_t equipped_uses_;
   uint8_t equipped_flags_;
-  uint8_t unknown_7a4_[0x14];
+  uint8_t unknown_7a4_[0xc];
+  AiArgument rage_op_arg_;
   uint32_t ai_flags_;
   uint8_t unknown_7bc_;
   uint8_t band_;

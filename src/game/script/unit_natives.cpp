@@ -1,3 +1,5 @@
+#include <cmath>
+
 #include "as/script_context.hpp"
 #include "game/data/data_file.hpp"
 #include "game/data/data_files.hpp"
@@ -1541,6 +1543,65 @@ int GetSequenceArgPositionZ(int index, int order, int argIndex) {
     }
   }
   return -1;
+}
+
+}
+
+namespace game::script::unit::dir {
+
+namespace {
+
+using unit::FindUnit;
+using unit::IsOnMap;
+using unit::IsValid;
+
+}
+
+// The keypad directions are bits, 1 faces 180 degrees, 2 faces 270, 4 faces
+// 0 and 8 faces 90, the diagonals combine two of them.
+int Get(int index) {
+  Unit* unit = FindUnit(index);
+  if (!IsValid(unit) || !IsOnMap(unit)) {
+    return 0;
+  }
+  const float rotation = unit->GetRotation();
+  float angle = std::fmod(rotation, 360.0f);
+  angle = rotation < 0.0f ? angle + 360.0f : angle;
+  if (angle < 22.5f) {
+    return 4;
+  }
+  if (angle < 67.5f) {
+    return 12;
+  }
+  if (angle < 112.5f) {
+    return 8;
+  }
+  if (angle < 157.5f) {
+    return 9;
+  }
+  if (angle < 202.5f) {
+    return 1;
+  }
+  if (angle < 247.5f) {
+    return 3;
+  }
+  if (angle < 292.5f) {
+    return 2;
+  }
+  return angle < 337.5f ? 6 : 4;
+}
+
+}
+
+namespace game::script::unit::ai {
+
+void SetRageOpArg(int index, const unit::ScriptString& arg) {
+  SetAi(index, [&arg](Unit* unit) { unit->SetRageOpArg(arg.GetText()); });
+}
+
+void SetRageOpArg(const unit::ScriptString& pid,
+  const unit::ScriptString& arg) {
+  SetAi(pid, [&arg](Unit* unit) { unit->SetRageOpArg(arg.GetText()); });
 }
 
 }
