@@ -13,3 +13,7 @@ The middleware build in the game passes different `__LINE__` values to the PhysX
 | `source/physx/src/NpSceneFetchResults.cpp` | 487 | 6 inserted |
 
 The exact places of these changes inside each gap between observed lines are not known. Each edit sits just before the first reporting call whose line moves. See `Private/docs/library-lto.md`.
+
+## Fork.
+
+`fork/PxsSimulationController.h` is a copy of `source/lowlevel/software/include/PxsSimulationController.h` with the vtable of the game. `setEnableOVDCollisionReadback`, both readback getters, `updateDynamic`, `addJoint` and `updateBoundsAndShapes` are plain inline members instead of virtual ones. It is force included with `-include`, so its include guard replaces the original header. See `Private/docs/physx.md`.
