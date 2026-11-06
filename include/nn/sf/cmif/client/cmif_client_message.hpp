@@ -239,6 +239,83 @@ struct Buffer {
   static void Read(Parameter, const char*) {}
 };
 
+// A handle sent in the copy or move handle list, moved out of the caller.
+template <bool IsMove>
+struct InHandle {
+  using Parameter = NativeHandle*;
+  static constexpr size_t Size = 0;
+  static constexpr size_t Alignment = 1;
+  static constexpr bool IsInRaw = false;
+  static constexpr bool IsOutRaw = false;
+  static constexpr uint32_t BufferAttribute = 0;
+  static constexpr int InHandleKind = IsMove ? 2 : 1;
+
+  static void Write(char*, Parameter) {}
+
+  static void Read(Parameter, const char*) {}
+};
+
+// A handle sent in the copy or move handle list, the caller keeps it.
+template <bool IsMove>
+struct InHandleReference {
+  using Parameter = const NativeHandle*;
+  static constexpr size_t Size = 0;
+  static constexpr size_t Alignment = 1;
+  static constexpr bool IsInRaw = false;
+  static constexpr bool IsOutRaw = false;
+  static constexpr uint32_t BufferAttribute = 0;
+  static constexpr int InHandleKind = IsMove ? 2 : 1;
+  static constexpr bool IsBorrowed = true;
+
+  static void Write(char*, Parameter) {}
+
+  static void Read(Parameter, const char*) {}
+};
+
+template <typename T, typename = void>
+struct IsBorrowedHandle {
+  static constexpr bool Value = false;
+};
+
+template <typename T>
+struct IsBorrowedHandle<T, std::void_t<decltype(T::IsBorrowed)>> {
+  static constexpr bool Value = T::IsBorrowed;
+};
+
+template <typename T, typename = void>
+struct InHandleKindOf {
+  static constexpr int Value = 0;
+};
+
+template <typename T>
+struct InHandleKindOf<T, std::void_t<decltype(T::InHandleKind)>> {
+  static constexpr int Value = T::InHandleKind;
+};
+
+// Keeps the sent handles until the request is done, then closes the managed
+// ones.
+template <int Count>
+struct InHandleHolder {
+  NativeHandle handles[Count];
+};
+
+template <>
+struct InHandleHolder<0> {};
+
+// The out objects of a message, passed as the targets of the proxies.
+struct OutObjects {
+  using Parameter = SharedPointer<IServiceObject>* const*;
+  static constexpr size_t Size = 0;
+  static constexpr size_t Alignment = 1;
+  static constexpr bool IsInRaw = false;
+  static constexpr bool IsOutRaw = false;
+  static constexpr uint32_t BufferAttribute = 0;
+
+  static void Write(char*, Parameter) {}
+
+  static void Read(Parameter, const char*) {}
+};
+
 template <typename... Arguments>
 struct RawLayout {
   static constexpr size_t Count = sizeof...(Arguments);
@@ -298,14 +375,49 @@ struct CmifClientMessage {
   static constexpr int PointerSizeCount = ReceiveListCount -
     CountBuffers(BufferAttribute_Out | BufferAttribute_HipcPointer |
       BufferAttribute_FixedSize, ~0u);
-  static constexpr bool NeedsPointerBufferSize = ReceiveListCount > 0 ||
-    CountBuffers(BufferAttribute_HipcAutoSelect, ~0u) > 0;
+  static constexpr bool NeedsPointerBufferSize = CountBuffers(0,
+    BufferAttribute_HipcPointer | BufferAttribute_HipcAutoSelect) > 0;
 
-  static constexpr size_t HeaderSize = HasProcessId ? 0x14 : 0x8;
+  static constexpr int InHandleKinds[] = {
+    InHandleKindOf<Arguments>::Value..., 0};
 
-  // The out pointer sizes follow the in raw data as 16 bit values.
+  static constexpr int CountInHandles(int kind) {
+    int count = 0;
+    for (size_t i = 0; i < sizeof...(Arguments); i++) {
+      count += InHandleKinds[i] == kind ? 1 : 0;
+    }
+    return count;
+  }
+
+  static constexpr bool Borrowed[] = {
+    IsBorrowedHandle<Arguments>::Value..., false};
+
+  static constexpr int CopyInCount = CountInHandles(1);
+  static constexpr int MoveInCount = CountInHandles(2);
+  static constexpr int InHandleCount = CopyInCount + MoveInCount;
+
+  static constexpr int TakenCount = [] {
+    int count = 0;
+    for (size_t i = 0; i < sizeof...(Arguments); i++) {
+      count += InHandleKinds[i] != 0 && !Borrowed[i] ? 1 : 0;
+    }
+    return count;
+  }();
+
+  using Holder = InHandleHolder<TakenCount>;
+
+  static constexpr bool HasSpecialHeader = HasProcessId || InHandleCount > 0;
+  static constexpr uint32_t SpecialHeader = (HasProcessId ? 1 : 0) |
+    CopyInCount << 1 | MoveInCount << 5;
+  static constexpr size_t CopyHandleWord = (HasSpecialHeader ? 3 : 2) +
+    (HasProcessId ? 2 : 0);
+  static constexpr size_t MoveHandleWord = CopyHandleWord + CopyInCount;
+  static constexpr size_t HeaderSize = (MoveHandleWord + MoveInCount) * 4;
+
+  // The out pointer sizes follow the in raw data as aligned 16 bit values.
   static constexpr size_t GetPointerSizeOffset(size_t extraSize) {
-    return 0x10 + extraSize + sizeof(CmifInHeader) + Layout::InRawSize;
+    return AlignUp(0x10 + extraSize + sizeof(CmifInHeader) +
+      Layout::InRawSize, sizeof(uint16_t));
   }
 
   static constexpr uint32_t GetRawWordCount(size_t extraSize) {
@@ -321,16 +433,26 @@ struct CmifClientMessage {
     const uint32_t rawWordCount = GetRawWordCount(extraSize);
     info.isValid = 1;
     info.hasProcessId = HasProcessId;
+    info.copyHandleCount = CopyInCount;
+    info.moveHandleCount = MoveInCount;
     info.header0 = PointerCount << 16 | SendCount << 20 |
       ReceiveCount << 24;
     info.header1 = rawWordCount |
       (ReceiveListCount > 0 ? (ReceiveListCount + 2) << 10 : 0) |
-      (HasProcessId ? 0x80000000u : 0u);
-    info.specialHeader = HasProcessId ? 1 : 0;
-    uint32_t offset = HasProcessId ? 3 : 2;
+      (HasSpecialHeader ? 0x80000000u : 0u);
+    info.specialHeader = SpecialHeader;
+    uint32_t offset = HasSpecialHeader ? 3 : 2;
     if (HasProcessId) {
       info.processIdOffset = offset;
       offset += 2;
+    }
+    if (CopyInCount > 0) {
+      info.copyHandleOffset = offset;
+      offset += CopyInCount;
+    }
+    if (MoveInCount > 0) {
+      info.moveHandleOffset = offset;
+      offset += MoveInCount;
     }
     if (PointerCount > 0) {
       info.pointerOffset = offset;
@@ -374,6 +496,29 @@ struct CmifClientMessage {
 
   static constexpr int HandleKinds[] = {HandleKindOf<Arguments>::Value..., 0};
 
+  static constexpr int MoveHandleCount = [] {
+    int count = 0;
+    for (size_t i = 0; i < sizeof...(Arguments); i++) {
+      count += HandleKinds[i] == 2 ? 1 : 0;
+    }
+    return count;
+  }();
+
+  static SharedPointer<IServiceObject>* const* FindTargets(
+    typename Arguments::Parameter... args) {
+    SharedPointer<IServiceObject>* const* ppTargets = nullptr;
+    (PickTargets<Arguments>(&ppTargets, args), ...);
+    return ppTargets;
+  }
+
+  template <typename Argument>
+  static void PickTargets(SharedPointer<IServiceObject>* const** ppOut,
+    typename Argument::Parameter value) {
+    if constexpr (std::is_same_v<Argument, OutObjects>) {
+      *ppOut = value;
+    }
+  }
+
   template <size_t... Indices>
   static void ReadHandles(const hipc::detail::Hipc2MessageReader& reader,
     std::index_sequence<Indices...>, typename Arguments::Parameter... args) {
@@ -395,10 +540,41 @@ struct CmifClientMessage {
     }
   }
 
+  template <size_t... Indices>
+  static void TakeHandles(Holder* pHolder, uint32_t* pCopy, uint32_t* pMove,
+    std::index_sequence<Indices...>, typename Arguments::Parameter... args) {
+    (TakeHandle<Arguments, Indices>(pHolder, pCopy, pMove, args), ...);
+  }
+
+  template <typename Argument, size_t Index>
+  static void TakeHandle(Holder* pHolder, uint32_t* pCopy, uint32_t* pMove,
+    typename Argument::Parameter value) {
+    if constexpr (InHandleKindOf<Argument>::Value != 0) {
+      constexpr int kind = InHandleKindOf<Argument>::Value;
+      int index = 0;
+      int slot = 0;
+      for (size_t i = 0; i < Index; i++) {
+        index += InHandleKinds[i] == kind ? 1 : 0;
+        slot += InHandleKinds[i] != 0 && !Borrowed[i] ? 1 : 0;
+      }
+      uint32_t* pOut = (kind == 2 ? pMove : pCopy) + index;
+      if constexpr (IsBorrowedHandle<Argument>::Value) {
+        *pOut = value->GetOsHandle();
+      }
+      else {
+        NativeHandle& handle = pHolder->handles[slot];
+        NativeHandle taken(value->GetOsHandle(), value->IsManaged());
+        value->Detach();
+        handle.Swap(taken);
+        *pOut = handle.GetOsHandle();
+      }
+    }
+  }
+
   // Writes the header and the buffer descriptors, then returns the in header.
   static Result SetupBufferMessage(CmifInHeader** ppOut, void* buffer,
     uint32_t type, size_t extraSize, size_t pointerBufferSize,
-    typename Arguments::Parameter... args) {
+    Holder* pHolder, typename Arguments::Parameter... args) {
     using namespace hipc::detail;
     const Hipc2MessageInfo info = MakeInfo(extraSize);
     uint32_t attributes[BufferCount];
@@ -415,13 +591,19 @@ struct CmifClientMessage {
     uint32_t* header = static_cast<uint32_t*>(buffer);
     header[0] = type | info.header0;
     header[1] = info.header1;
-    if (HasProcessId) {
-      header[2] = 1;
+    if (HasSpecialHeader) {
+      header[2] = SpecialHeader;
     }
     const Result result = SetBuffers(&writer, BufferCount, buffers,
       attributes, pointerBufferSize, GetPointerSizeOffset(extraSize));
     if (result.IsFailure()) {
       return result;
+    }
+    if constexpr (InHandleCount > 0) {
+      uint32_t* words = static_cast<uint32_t*>(writer.buffer);
+      TakeHandles(pHolder, words + writer.pInfo->copyHandleOffset,
+        words + writer.pInfo->moveHandleOffset,
+        std::index_sequence_for<Arguments...>(), args...);
     }
     *ppOut = AlignUpPointer<CmifInHeader>(static_cast<uint32_t*>(
       writer.buffer) + writer.pInfo->rawDataOffset, 0x10);
@@ -441,13 +623,18 @@ struct CmifClientMessage {
   }
 
   static CmifInHeader* SetupHeader(void* buffer, uint32_t type,
-    uint32_t extraWordCount) {
+    uint32_t extraWordCount, Holder* pHolder,
+    typename Arguments::Parameter... args) {
     uint32_t* header = static_cast<uint32_t*>(buffer);
     header[0] = type;
     header[1] = (RawWordCount + extraWordCount) |
-      (HasProcessId ? 0x80000000u : 0u);
-    if (HasProcessId) {
-      header[2] = 1;
+      (HasSpecialHeader ? 0x80000000u : 0u);
+    if (HasSpecialHeader) {
+      header[2] = SpecialHeader;
+    }
+    if constexpr (InHandleCount > 0) {
+      TakeHandles(pHolder, header + CopyHandleWord, header + MoveHandleWord,
+        std::index_sequence_for<Arguments...>(), args...);
     }
     return AlignUpPointer<CmifInHeader>(
       static_cast<char*>(buffer) + HeaderSize, 0x10);
@@ -472,11 +659,33 @@ public:
   [[gnu::noinline]] static Result Process(const ProxyKindState* pState,
     typename Arguments::Parameter... args, int methodId);
 
+  // The out objects are proxies created by the caller, they take the move
+  // handles of the reply as their sessions.
+  template <bool HasProcessId, int ObjectCount, typename... Arguments>
+  [[gnu::noinline]] static Result ProcessWithObjects(
+    const ProxyKindState* pState,
+    SharedPointer<IServiceObject>* const* ppTargets,
+    typename Arguments::Parameter... args, int methodId,
+    cmif::client::detail::CmifProxyObject** ppObjects);
+
+  // Same, with the targets passed in place of an OutObjects argument.
+  template <bool HasProcessId, int ObjectCount, typename... Arguments>
+  [[gnu::noinline]] static Result ProcessWithOutObjects(
+    const ProxyKindState* pState, typename Arguments::Parameter... args,
+    int methodId, cmif::client::detail::CmifProxyObject** ppObjects);
+
 private:
-  template <typename Message, typename... Parameters>
+  template <typename Message, int ObjectCount, typename... Parameters>
+  [[gnu::always_inline]] static Result ProcessImpl(
+    const ProxyKindState* pState,
+    SharedPointer<IServiceObject>* const* ppTargets, int methodId,
+    cmif::client::detail::CmifProxyObject** ppObjects, Parameters... args);
+
+  template <typename Message, int ObjectCount, typename... Parameters>
   [[gnu::always_inline]] static Result Finish(uint32_t handle, void* buffer,
     cmif::client::detail::CmifInHeader* pIn, int methodId,
-    Parameters... args);
+    SharedPointer<IServiceObject>* const* ppTargets,
+    cmif::client::detail::CmifProxyObject** ppObjects, Parameters... args);
 };
 
 template <detail::MessageType Type>
@@ -485,8 +694,42 @@ Result Hipc2ProxyKindBase<Type>::Process(const ProxyKindState* pState,
   typename Arguments::Parameter... args, int methodId) {
   using Message = cmif::client::detail::CmifClientMessage<HasProcessId,
     Arguments...>;
+  return ProcessImpl<Message, 0>(pState, nullptr, methodId, nullptr,
+    args...);
+}
+
+template <detail::MessageType Type>
+template <bool HasProcessId, int ObjectCount, typename... Arguments>
+Result Hipc2ProxyKindBase<Type>::ProcessWithObjects(
+  const ProxyKindState* pState,
+  SharedPointer<IServiceObject>* const* ppTargets,
+  typename Arguments::Parameter... args, int methodId,
+  cmif::client::detail::CmifProxyObject** ppObjects) {
+  using Message = cmif::client::detail::CmifClientMessage<HasProcessId,
+    Arguments...>;
+  return ProcessImpl<Message, ObjectCount>(pState, ppTargets, methodId,
+    ppObjects, args...);
+}
+
+template <detail::MessageType Type>
+template <bool HasProcessId, int ObjectCount, typename... Arguments>
+Result Hipc2ProxyKindBase<Type>::ProcessWithOutObjects(
+  const ProxyKindState* pState, typename Arguments::Parameter... args,
+  int methodId, cmif::client::detail::CmifProxyObject** ppObjects) {
+  using Message = cmif::client::detail::CmifClientMessage<HasProcessId,
+    Arguments...>;
+  return ProcessImpl<Message, ObjectCount>(pState,
+    Message::FindTargets(args...), methodId, ppObjects, args...);
+}
+
+template <detail::MessageType Type>
+template <typename Message, int ObjectCount, typename... Parameters>
+Result Hipc2ProxyKindBase<Type>::ProcessImpl(const ProxyKindState* pState,
+  SharedPointer<IServiceObject>* const* ppTargets, int methodId,
+  cmif::client::detail::CmifProxyObject** ppObjects, Parameters... args) {
   using namespace cmif::client::detail;
 
+  typename Message::Holder holder;
   CmifInHeader* pIn;
   if constexpr (Message::BufferCount > 0) {
     size_t pointerBufferSize = 0;
@@ -507,25 +750,29 @@ Result Hipc2ProxyKindBase<Type>::Process(const ProxyKindState* pState,
     const uint32_t handle = pState->handle;
     void* buffer = GetMessageBufferOnTls();
     Result result = Message::SetupBufferMessage(&pIn, buffer,
-      static_cast<uint32_t>(Type), 0, pointerBufferSize, args...);
+      static_cast<uint32_t>(Type), 0, pointerBufferSize, &holder, args...);
     if (result.IsFailure()) {
       return result;
     }
-    return Finish<Message>(handle, buffer, pIn, methodId, args...);
+    return Finish<Message, ObjectCount>(handle, buffer, pIn, methodId,
+      ppTargets, ppObjects, args...);
   }
   else {
     const uint32_t handle = pState->handle;
     void* buffer = GetMessageBufferOnTls();
-    pIn = Message::SetupHeader(buffer, static_cast<uint32_t>(Type), 0);
-    return Finish<Message>(handle, buffer, pIn, methodId, args...);
+    pIn = Message::SetupHeader(buffer, static_cast<uint32_t>(Type), 0,
+      &holder, args...);
+    return Finish<Message, ObjectCount>(handle, buffer, pIn, methodId,
+      ppTargets, ppObjects, args...);
   }
 }
 
 template <detail::MessageType Type>
-template <typename Message, typename... Parameters>
+template <typename Message, int ObjectCount, typename... Parameters>
 Result Hipc2ProxyKindBase<Type>::Finish(uint32_t handle, void* buffer,
   cmif::client::detail::CmifInHeader* pIn, int methodId,
-  Parameters... args) {
+  SharedPointer<IServiceObject>* const* ppTargets,
+  cmif::client::detail::CmifProxyObject** ppObjects, Parameters... args) {
   using namespace cmif::client::detail;
 
   pIn->magic = CmifInHeaderMagic;
@@ -561,6 +808,29 @@ Result Hipc2ProxyKindBase<Type>::Finish(uint32_t handle, void* buffer,
     std::index_sequence_for<Parameters...>(), args...);
   Message::ReadHandles(reader, std::index_sequence_for<Parameters...>(),
     args...);
+  for (int i = 0; i < ObjectCount; i++) {
+    ProxyKindState* pObjectState = static_cast<ProxyKindState*>(
+      ppObjects[i]->GetCmifBaseObject()->GetProxyKindState());
+    const uint32_t objectHandle = reader.GetMoveHandle(
+      Message::MoveHandleCount + i);
+    if (objectHandle != 0) {
+      pObjectState->isOwner = true;
+      pObjectState->isPointerBufferSizeCached.store(false,
+        std::memory_order_release);
+      pObjectState->handle = objectHandle;
+    }
+    else {
+      pObjectState->isOwner = false;
+      CmifProxyObject* pObject = ppObjects[i];
+      ppObjects[i] = nullptr;
+      if (pObject != nullptr) {
+        pObject->Release();
+      }
+    }
+    SharedPointer<IServiceObject> object(ppObjects[i], false);
+    ppObjects[i] = nullptr;
+    object.Swap(*ppTargets[i]);
+  }
   return result;
 }
 
@@ -589,6 +859,24 @@ public:
 
 namespace nn::sf::cmif::client {
 
+namespace detail {
+
+struct CmifDomainInHeader {
+  uint8_t type;
+  uint8_t objectCount;
+  uint16_t dataSize;
+  uint32_t objectId;
+  uint32_t reserved;
+  uint32_t token;
+};
+
+struct CmifDomainOutHeader {
+  uint32_t objectCount;
+  uint32_t reserved[3];
+};
+
+}
+
 template <typename Base>
 class CmifDomainProxyKind {
 public:
@@ -610,25 +898,25 @@ public:
     SharedPointer<IServiceObject>* const* ppTargets,
     typename Arguments::Parameter... args, int methodId,
     detail::CmifProxyObject** ppObjects);
+
+  // Same, with the targets passed in place of an OutObjects argument.
+  template <bool HasProcessId, int ObjectCount, typename... Arguments>
+  [[gnu::noinline]] static Result ProcessWithOutObjects(
+    const ProxyKindState* pState, typename Arguments::Parameter... args,
+    int methodId, detail::CmifProxyObject** ppObjects);
+
+private:
+  template <typename Message, int ObjectCount, typename... Parameters>
+  [[gnu::always_inline]] static Result ProcessObjects(
+    const ProxyKindState* pState,
+    SharedPointer<IServiceObject>* const* ppTargets, int methodId,
+    detail::CmifProxyObject** ppObjects, Parameters... args);
+
+  template <typename Message, int ObjectCount, typename... Parameters>
+  [[gnu::always_inline]] static Result ExchangeWithObjects(uint32_t handle,
+    void* buffer, detail::CmifDomainInHeader* pDomain, uint32_t objectId,
+    int methodId, uint32_t (&objectIds)[ObjectCount], Parameters... args);
 };
-
-namespace detail {
-
-struct CmifDomainInHeader {
-  uint8_t type;
-  uint8_t objectCount;
-  uint16_t dataSize;
-  uint32_t objectId;
-  uint32_t reserved;
-  uint32_t token;
-};
-
-struct CmifDomainOutHeader {
-  uint32_t objectCount;
-  uint32_t reserved[3];
-};
-
-}
 
 template <typename Base>
 template <bool HasProcessId, typename... Arguments>
@@ -643,64 +931,68 @@ Result CmifDomainProxyKind<Base>::Process(const ProxyKindState* pState,
   const uint32_t handle = pSessionAllocator->AllocateSession();
   constexpr uint32_t type = static_cast<uint32_t>(
     hipc::detail::MessageType::CmifRequestWithContext);
-  void* buffer;
-  CmifDomainInHeader* pDomain;
-  if constexpr (Message::BufferCount > 0) {
-    const size_t pointerBufferSize = pSessionAllocator->pointerBufferSize;
-    buffer = hipc::GetMessageBufferOnTls();
-    CmifInHeader* pRaw;
-    const Result setup = Message::SetupBufferMessage(&pRaw, buffer, type,
-      sizeof(CmifDomainInHeader), pointerBufferSize, args...);
-    if (setup.IsFailure()) {
-      pSessionAllocator->DeallocateSession(handle);
-      return setup;
-    }
-    pDomain = reinterpret_cast<CmifDomainInHeader*>(pRaw);
-  }
-  else {
-    buffer = hipc::GetMessageBufferOnTls();
-    pDomain = reinterpret_cast<CmifDomainInHeader*>(Message::SetupHeader(
-      buffer, type, sizeof(CmifDomainInHeader) / 4));
-  }
-  pDomain->type = 1;
-  pDomain->objectCount = 0;
-  pDomain->dataSize = static_cast<uint16_t>(
-    sizeof(CmifInHeader) + Message::Layout::InRawSize);
-  pDomain->objectId = objectId;
-  pDomain->reserved = 0;
-  pDomain->token = 0;
-  CmifInHeader* pIn = reinterpret_cast<CmifInHeader*>(pDomain + 1);
-  pIn->magic = CmifInHeaderMagic;
-  pIn->version = 1;
-  pIn->methodId = methodId;
-  pIn->token = 0;
-  char* inData = reinterpret_cast<char*>(pIn + 1);
-  memset(inData, 0, Message::Layout::InRawSize);
-  Message::WriteArguments(inData,
-    std::index_sequence_for<Arguments...>(), args...);
-  pDomain->token = GetInlineContext();
-
-  Result result = Result{hipc::SendSyncRequest(handle, buffer,
-    MessageBufferSize)};
-  if (result.IsSuccess()) {
-    hipc::detail::Hipc2MessageReader reader;
-    reader.Initialize(buffer);
-    const CmifOutHeader* pOut = reinterpret_cast<const CmifOutHeader*>(
-      AlignUpPointer<const CmifDomainOutHeader>(reader.GetRawData(), 0x10)
-      + 1);
-    if (pOut->magic != CmifOutHeaderMagic) {
-      result = ResultInvalidCmifOutHeader();
+  Result result;
+  {
+    // The sent handles are closed before the session goes back.
+    typename Message::Holder holder;
+    void* buffer;
+    CmifDomainInHeader* pDomain;
+    if constexpr (Message::BufferCount > 0) {
+      const size_t pointerBufferSize = pSessionAllocator->pointerBufferSize;
+      buffer = hipc::GetMessageBufferOnTls();
+      CmifInHeader* pRaw;
+      const Result setup = Message::SetupBufferMessage(&pRaw, buffer, type,
+        sizeof(CmifDomainInHeader), pointerBufferSize, &holder, args...);
+      if (setup.IsFailure()) {
+        pSessionAllocator->DeallocateSession(handle);
+        return setup;
+      }
+      pDomain = reinterpret_cast<CmifDomainInHeader*>(pRaw);
     }
     else {
-      result = pOut->result;
-      if (result.IsFailure()) {
-        hipc::detail::HandleHipcErrorOnClient(result);
+      buffer = hipc::GetMessageBufferOnTls();
+      pDomain = reinterpret_cast<CmifDomainInHeader*>(Message::SetupHeader(
+        buffer, type, sizeof(CmifDomainInHeader) / 4, &holder, args...));
+    }
+    pDomain->type = 1;
+    pDomain->objectCount = 0;
+    pDomain->dataSize = static_cast<uint16_t>(
+      sizeof(CmifInHeader) + Message::Layout::InRawSize);
+    pDomain->objectId = objectId;
+    pDomain->reserved = 0;
+    pDomain->token = 0;
+    CmifInHeader* pIn = reinterpret_cast<CmifInHeader*>(pDomain + 1);
+    pIn->magic = CmifInHeaderMagic;
+    pIn->version = 1;
+    pIn->methodId = methodId;
+    pIn->token = 0;
+    char* inData = reinterpret_cast<char*>(pIn + 1);
+    memset(inData, 0, Message::Layout::InRawSize);
+    Message::WriteArguments(inData,
+      std::index_sequence_for<Arguments...>(), args...);
+    pDomain->token = GetInlineContext();
+
+    result = Result{hipc::SendSyncRequest(handle, buffer, MessageBufferSize)};
+    if (result.IsSuccess()) {
+      hipc::detail::Hipc2MessageReader reader;
+      reader.Initialize(buffer);
+      const CmifOutHeader* pOut = reinterpret_cast<const CmifOutHeader*>(
+        AlignUpPointer<const CmifDomainOutHeader>(reader.GetRawData(), 0x10)
+        + 1);
+      if (pOut->magic != CmifOutHeaderMagic) {
+        result = ResultInvalidCmifOutHeader();
       }
       else {
-        Message::ReadArguments(reinterpret_cast<const char*>(pOut + 1),
-          std::index_sequence_for<Arguments...>(), args...);
-        Message::ReadHandles(reader, std::index_sequence_for<Arguments...>(),
-          args...);
+        result = pOut->result;
+        if (result.IsFailure()) {
+          hipc::detail::HandleHipcErrorOnClient(result);
+        }
+        else {
+          Message::ReadArguments(reinterpret_cast<const char*>(pOut + 1),
+            std::index_sequence_for<Arguments...>(), args...);
+          Message::ReadHandles(reader,
+            std::index_sequence_for<Arguments...>(), args...);
+        }
       }
     }
   }
@@ -717,59 +1009,57 @@ Result CmifDomainProxyKind<Base>::ProcessWithObjects(
   typename Arguments::Parameter... args, int methodId,
   detail::CmifProxyObject** ppObjects) {
   using Message = detail::CmifClientMessage<HasProcessId, Arguments...>;
+  return ProcessObjects<Message, ObjectCount>(pState, ppTargets, methodId,
+    ppObjects, args...);
+}
+
+template <typename Base>
+template <bool HasProcessId, int ObjectCount, typename... Arguments>
+Result CmifDomainProxyKind<Base>::ProcessWithOutObjects(
+  const ProxyKindState* pState, typename Arguments::Parameter... args,
+  int methodId, detail::CmifProxyObject** ppObjects) {
+  using Message = detail::CmifClientMessage<HasProcessId, Arguments...>;
+  return ProcessObjects<Message, ObjectCount>(pState,
+    Message::FindTargets(args...), methodId, ppObjects, args...);
+}
+
+template <typename Base>
+template <typename Message, int ObjectCount, typename... Parameters>
+Result CmifDomainProxyKind<Base>::ProcessObjects(const ProxyKindState* pState,
+  SharedPointer<IServiceObject>* const* ppTargets, int methodId,
+  detail::CmifProxyObject** ppObjects, Parameters... args) {
   using namespace detail;
 
   hipc::client::HipcClientSessionAllocator* pSessionAllocator =
     pState->pSessionAllocator;
   const uint32_t objectId = pState->objectId;
   const uint32_t handle = pSessionAllocator->AllocateSession();
-  void* buffer = hipc::GetMessageBufferOnTls();
-  CmifDomainInHeader* pDomain = reinterpret_cast<CmifDomainInHeader*>(
-    Message::SetupHeader(buffer, static_cast<uint32_t>(
-      hipc::detail::MessageType::CmifRequestWithContext),
-      sizeof(CmifDomainInHeader) / 4));
-  pDomain->type = 1;
-  pDomain->objectCount = 0;
-  pDomain->dataSize = static_cast<uint16_t>(
-    sizeof(CmifInHeader) + Message::Layout::InRawSize);
-  pDomain->objectId = objectId;
-  pDomain->reserved = 0;
-  pDomain->token = 0;
-  CmifInHeader* pIn = reinterpret_cast<CmifInHeader*>(pDomain + 1);
-  pIn->magic = CmifInHeaderMagic;
-  pIn->version = 1;
-  pIn->methodId = methodId;
-  pIn->token = 0;
-  char* inData = reinterpret_cast<char*>(pIn + 1);
-  memset(inData, 0, Message::Layout::InRawSize);
-  Message::WriteArguments(inData,
-    std::index_sequence_for<Arguments...>(), args...);
-  pDomain->token = GetInlineContext();
-
+  constexpr uint32_t type = static_cast<uint32_t>(
+    hipc::detail::MessageType::CmifRequestWithContext);
   uint32_t objectIds[ObjectCount] = {};
-  Result result = Result{hipc::SendSyncRequest(handle, buffer,
-    MessageBufferSize)};
-  if (result.IsSuccess()) {
-    hipc::detail::Hipc2MessageReader reader;
-    reader.Initialize(buffer);
-    const CmifOutHeader* pOut = reinterpret_cast<const CmifOutHeader*>(
-      AlignUpPointer<const CmifDomainOutHeader>(reader.GetRawData(), 0x10)
-      + 1);
-    if (pOut->magic != CmifOutHeaderMagic) {
-      result = ResultInvalidCmifOutHeader();
+  Result result;
+  {
+    // The sent handles are closed before the session goes back.
+    typename Message::Holder holder;
+    if constexpr (Message::BufferCount > 0) {
+      const size_t pointerBufferSize = pSessionAllocator->pointerBufferSize;
+      void* buffer = hipc::GetMessageBufferOnTls();
+      CmifInHeader* pRaw;
+      result = Message::SetupBufferMessage(&pRaw, buffer, type,
+        sizeof(CmifDomainInHeader), pointerBufferSize, &holder, args...);
+      if (result.IsSuccess()) {
+        result = ExchangeWithObjects<Message>(handle, buffer,
+          reinterpret_cast<CmifDomainInHeader*>(pRaw), objectId, methodId,
+          objectIds, args...);
+      }
     }
     else {
-      result = pOut->result;
-      if (result.IsFailure()) {
-        hipc::detail::HandleHipcErrorOnClient(result);
-      }
-      else {
-        const char* outData = reinterpret_cast<const char*>(pOut + 1);
-        Message::ReadArguments(outData,
-          std::index_sequence_for<Arguments...>(), args...);
-        memcpy(objectIds, outData + AlignUp(Message::Layout::OutRawSize, 4),
-          sizeof(objectIds));
-      }
+      void* buffer = hipc::GetMessageBufferOnTls();
+      CmifDomainInHeader* pDomain = reinterpret_cast<CmifDomainInHeader*>(
+        Message::SetupHeader(buffer, type, sizeof(CmifDomainInHeader) / 4,
+          &holder, args...));
+      result = ExchangeWithObjects<Message>(handle, buffer, pDomain,
+        objectId, methodId, objectIds, args...);
     }
   }
   pSessionAllocator->DeallocateSession(handle);
@@ -795,6 +1085,59 @@ Result CmifDomainProxyKind<Base>::ProcessWithObjects(
     SharedPointer<IServiceObject> object(ppObjects[i], false);
     ppObjects[i] = nullptr;
     object.Swap(*ppTargets[i]);
+  }
+  return result;
+}
+
+template <typename Base>
+template <typename Message, int ObjectCount, typename... Parameters>
+Result CmifDomainProxyKind<Base>::ExchangeWithObjects(uint32_t handle,
+  void* buffer, detail::CmifDomainInHeader* pDomain, uint32_t objectId,
+  int methodId, uint32_t (&objectIds)[ObjectCount], Parameters... args) {
+  using namespace detail;
+
+  pDomain->type = 1;
+  pDomain->objectCount = 0;
+  pDomain->dataSize = static_cast<uint16_t>(
+    sizeof(CmifInHeader) + Message::Layout::InRawSize);
+  pDomain->objectId = objectId;
+  pDomain->reserved = 0;
+  pDomain->token = 0;
+  CmifInHeader* pIn = reinterpret_cast<CmifInHeader*>(pDomain + 1);
+  pIn->magic = CmifInHeaderMagic;
+  pIn->version = 1;
+  pIn->methodId = methodId;
+  pIn->token = 0;
+  char* inData = reinterpret_cast<char*>(pIn + 1);
+  memset(inData, 0, Message::Layout::InRawSize);
+  Message::WriteArguments(inData,
+    std::index_sequence_for<Parameters...>(), args...);
+  pDomain->token = GetInlineContext();
+
+  Result result = Result{hipc::SendSyncRequest(handle, buffer,
+    MessageBufferSize)};
+  if (result.IsSuccess()) {
+    hipc::detail::Hipc2MessageReader reader;
+    reader.Initialize(buffer);
+    const CmifOutHeader* pOut = reinterpret_cast<const CmifOutHeader*>(
+      AlignUpPointer<const CmifDomainOutHeader>(reader.GetRawData(), 0x10)
+      + 1);
+    if (pOut->magic != CmifOutHeaderMagic) {
+      result = ResultInvalidCmifOutHeader();
+    }
+    else {
+      result = pOut->result;
+      if (result.IsFailure()) {
+        hipc::detail::HandleHipcErrorOnClient(result);
+      }
+      else {
+        const char* outData = reinterpret_cast<const char*>(pOut + 1);
+        Message::ReadArguments(outData,
+          std::index_sequence_for<Parameters...>(), args...);
+        memcpy(objectIds, outData + Message::Layout::OutRawSize,
+          sizeof(objectIds));
+      }
+    }
   }
   return result;
 }
