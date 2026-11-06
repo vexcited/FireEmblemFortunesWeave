@@ -3,6 +3,7 @@
 #include "snd/data.hpp"
 #include "snd/fnd/math.hpp"
 #include "snd/manager.hpp"
+#include "snd/proxy.hpp"
 #include "snd/target/base.hpp"
 
 namespace snd {
@@ -35,7 +36,7 @@ void GroupCtrl::unloadAddons(const char* name) {
     return;
   }
   for (size_t i = 0; i < addons_.size(); i++) {
-    Load& load = addons_[i];
+    Addon& load = addons_[i];
     if (!load.name.empty() && load.name == name) {
       const data::AddSoundArcData* data =
         static_cast<const data::AddSoundArcData*>(
@@ -107,7 +108,7 @@ void GroupCtrl::unloadCurrent(const char* name) {
 void GroupCtrl::unloadGroup(const uint32_t* hash) {
   nn::os::LockMutex(&g_groupMutex);
   if (void* addon = Manager::getInstance()->getAddonManager()->getActive()) {
-    for (Load& load : addons_) {
+    for (Addon& load : addons_) {
       if (load.name == "__nogroup") {
         if (load.hash == *hash) {
           const data::AddSoundArcData* data =
@@ -217,6 +218,125 @@ void GroupCtrl::loadCommon() {
     }
   }
   commonLoaded_ = true;
+  nn::os::UnlockMutex(&s_groupMutex);
+}
+
+// Reuses the first entry without a name.
+template <typename T>
+[[gnu::always_inline]] inline T& GroupCtrl::findFree(
+  std::vector<T, fnd::Allocator<T>>& list) {
+  for (T& entry : list) {
+    if (entry.name.empty()) {
+      return entry;
+    }
+  }
+  T entry = T();
+  list.push_back(entry);
+  return list.back();
+}
+
+void GroupCtrl::loadUserGroup(const uint32_t* hash) {
+  nn::os::LockMutex(&g_groupMutex);
+  const data::AddSoundArcData* data =
+    static_cast<const data::AddSoundArcData*>(
+      data::findUserGroupData(hash));
+  if (data == nullptr) {
+    nn::os::UnlockMutex(&s_groupMutex);
+    return;
+  }
+  for (Load& load : loads_) {
+    if (!load.name.empty() && load.hash == *hash) {
+      nn::os::UnlockMutex(&s_groupMutex);
+      return;
+    }
+  }
+  Load& load = findFree(loads_);
+  load.name = pairs_[current_].name;
+  load.hash = *hash;
+  for (int i = 0; i < data->count; i++) {
+    if (const char* name = data->names[i]) {
+      Manager::getInstance()->getLoader()->loadUserGroup(name);
+    }
+  }
+  nn::os::UnlockMutex(&s_groupMutex);
+}
+
+// Archives that fail to open more than three times reset the addons
+// before every installed one is added.
+void GroupCtrl::loadAddSoundArc(const uint32_t* hash) {
+  nn::os::LockMutex(&g_groupMutex);
+  void* addon = Manager::getInstance()->getAddonManager()->getActive();
+  if (addon == nullptr) {
+    nn::os::UnlockMutex(&s_groupMutex);
+    return;
+  }
+  const data::AddSoundArcData* data =
+    static_cast<const data::AddSoundArcData*>(
+      data::findAddSoundArcData(hash));
+  if (data == nullptr) {
+    nn::os::UnlockMutex(&s_groupMutex);
+    return;
+  }
+  for (Addon& load : addons_) {
+    if (!load.name.empty() && load.hash == *hash) {
+      nn::os::UnlockMutex(&s_groupMutex);
+      return;
+    }
+  }
+  Addon& load = findFree(addons_);
+  load.name = pairs_[current_].name;
+  load.hash = *hash;
+  int failures = 0;
+  for (int i = 0; i < data->count; i++) {
+    const char* name = data->names[i];
+    if (name != nullptr && g_proxy->isArchiveEnabled(name)) {
+      if (!Manager::getInstance()->isAddonOpen(addon, name)) {
+        failures += !Manager::getInstance()->openAddon(addon, name);
+      }
+    }
+  }
+  if (failures > 3) {
+    Manager::getInstance()->resetAddons();
+  }
+  for (int i = 0; i < data->count; i++) {
+    const char* name = data->names[i];
+    if (name != nullptr && g_proxy->isArchiveEnabled(name)) {
+      Manager::getInstance()->addAddon(addon, name, name);
+    }
+  }
+  nn::os::UnlockMutex(&s_groupMutex);
+}
+
+// Archives without a group are kept under the name __nogroup.
+void GroupCtrl::loadGroup(const uint32_t* hash) {
+  nn::os::LockMutex(&g_groupMutex);
+  void* addon = Manager::getInstance()->getAddonManager()->getActive();
+  if (addon == nullptr) {
+    nn::os::UnlockMutex(&s_groupMutex);
+    return;
+  }
+  const data::AddSoundArcData* data =
+    static_cast<const data::AddSoundArcData*>(
+      data::findAddSoundArcData(hash));
+  if (data == nullptr) {
+    nn::os::UnlockMutex(&s_groupMutex);
+    return;
+  }
+  for (Addon& load : addons_) {
+    if (load.name == "__nogroup" && load.hash == *hash) {
+      nn::os::UnlockMutex(&s_groupMutex);
+      return;
+    }
+  }
+  Addon& load = findFree(addons_);
+  load.name = "__nogroup";
+  load.hash = *hash;
+  for (int i = 0; i < data->count; i++) {
+    const char* name = data->names[i];
+    if (name != nullptr && g_proxy->isArchiveEnabled(name)) {
+      Manager::getInstance()->addAddon(addon, name, name);
+    }
+  }
   nn::os::UnlockMutex(&s_groupMutex);
 }
 

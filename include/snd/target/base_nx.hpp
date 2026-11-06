@@ -233,12 +233,16 @@ private:
     return getSoundArchive(archive);
   }
 
+  // The base slots hand the effects out as the platform type, while the
+  // objects are the effect kinds that own one.
   template <typename T, typename... Args>
   static FxBase* newFx(Args... args) {
-    return new (g_memory->alloc(sizeof(T), 32)) T(args...);
+    fx::FxBase* fx = new (g_memory->alloc(sizeof(T), 32)) T(args...);
+    return reinterpret_cast<FxBase*>(fx);
   }
 
-  static void deleteFx(FxBase* fx) {
+  static void deleteFx(FxBase* handle) {
+    fx::FxBase* fx = reinterpret_cast<fx::FxBase*>(handle);
     fx->~FxBase();
     g_memory->free(fx);
   }

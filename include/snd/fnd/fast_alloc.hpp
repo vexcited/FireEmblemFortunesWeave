@@ -106,6 +106,11 @@ public:
     initialized_ = false;
   }
 
+  // Value initializes a new object, out of line unlike alloc.
+  [[gnu::noinline]] T* create() {
+    return new (list_.pop()) T();
+  }
+
   template <typename... Args>
   [[gnu::always_inline]] T* alloc(Args... args) {
     return new (list_.pop()) T(args...);

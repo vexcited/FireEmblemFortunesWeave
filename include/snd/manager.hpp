@@ -48,6 +48,7 @@ public:
   void loadGroup(const char* name);
   void loadGroup(const char* name, bool force);
   void unloadGroup(const char* name);
+  void loadUserGroup(const char* name);
 };
 
 // The sound archives added on top of the main one.
@@ -151,6 +152,9 @@ public:
   ArchiveLoader* getArchiveLoader() const;
   void addAddon(void* addon, const char* name, const char* path);
   void removeAddon(void* addon, const char* name);
+  bool isAddonOpen(void* addon, const char* name);
+  bool openAddon(void* addon, const char* name);
+  void resetAddons();
   WaveReader* createReader();
   void destroyReader(WaveReader* reader);
 
@@ -163,6 +167,8 @@ public:
   Mixer* getMixer() const;
   BusManager* getBusManager() const;
   fnd::WeakHandle getListener(int index);
+  bool hasListenerOverride() const;
+  fnd::Vec3 getListenerOverride() const;
   fnd::WeakHandle findBus(const uint32_t* hash);
 
   fnd::WeakHandle play(const fnd::WeakHandle& slot, const char* name,

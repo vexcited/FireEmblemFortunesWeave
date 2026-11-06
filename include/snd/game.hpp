@@ -325,6 +325,15 @@ public:
   void play(const void* data, const char* weather, const char* time,
     void* param);
 
+  Group* findGroup(const char* name);
+  void stopGroup(const char* name);
+  void removeGroup(Group* group);
+  void updateElement(Element* element);
+  void mute(const Fade& fade);
+  void resumeMute(const Fade& fade);
+
+  static fnd::Vec3 getListenerPosition();
+
 private:
   [[gnu::visibility("hidden")]] static Wind* s_instance;
 
@@ -336,7 +345,7 @@ private:
   fnd::String name_;
   const void* unknown_130_ = nullptr;
   float volume_ = 1.0f;
-  bool unknown_13c_ = false;
+  bool muted_ = false;
   nn::os::MutexType mutex_ = {};
 };
 
@@ -443,6 +452,8 @@ public:
   void startElementVolumeImpl(const char* name, const Fade& fade,
     float target);
 
+  static fnd::Vec3 getListenerPosition();
+
 private:
   [[gnu::visibility("hidden")]] static Env* s_instance;
 
@@ -473,7 +484,13 @@ class GroupCtrl {
 public:
   // A loaded name and the hash of the data it came from.
   struct Load {
-    fnd::String name;
+    fnd::String name{""};
+    uint32_t hash = 0;
+  };
+
+  // An added sound archive entry, laid out like a load.
+  struct Addon {
+    fnd::String name{""};
     uint32_t hash = 0;
   };
 
@@ -509,11 +526,13 @@ private:
   void unloadData(const char* name);
   void unloadNamed(const char* name);
   void unloadAddons(const char* name);
+  template <typename T>
+  T& findFree(std::vector<T, fnd::Allocator<T>>& list);
 
   [[gnu::visibility("hidden")]] static GroupCtrl* s_instance;
 
   std::vector<Load, fnd::Allocator<Load>> loads_;
-  std::vector<Load, fnd::Allocator<Load>> addons_;
+  std::vector<Addon, fnd::Allocator<Addon>> addons_;
   std::vector<Pair, fnd::Allocator<Pair>> pairs_;
   int current_ = -1;
   bool bootLoaded_ = false;

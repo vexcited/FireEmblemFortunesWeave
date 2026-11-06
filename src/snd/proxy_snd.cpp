@@ -233,6 +233,14 @@ bool ProxySnd::getVoiceVolume(void* voice, float* volume, float* pitch) {
   return g_soundOption->isVoiceMuted();
 }
 
+// Without the option object every archive counts as installed.
+bool ProxySnd::isArchiveEnabled(const char* name) {
+  if (g_soundOption == nullptr) {
+    return true;
+  }
+  return g_soundOption->isArchiveEnabled(name);
+}
+
 const void* ProxySnd::getExtraDataList() {
   return nullptr;
 }

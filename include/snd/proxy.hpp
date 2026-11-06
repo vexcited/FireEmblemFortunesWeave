@@ -66,7 +66,8 @@ public:
   virtual void onUpdateVoice(void* voice) = 0;
   virtual float getVoiceDelay() = 0;
   virtual bool getVoiceVolume(void* voice, float* volume, float* pitch) = 0;
-  virtual void onFinishSound(void* sound) = 0;
+  // Whether the archive of an added content is installed.
+  virtual bool isArchiveEnabled(const char* name) = 0;
   virtual void onFinishVoice(void* voice) = 0;
   virtual const void* getMuseumDataList() = 0;
   virtual const void* getAnimeSoundDataList() = 0;

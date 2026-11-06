@@ -13,6 +13,7 @@ struct SoundOption {
   bool seMuted;
 
   bool isVoiceMuted();
+  bool isArchiveEnabled(const char* name);
 };
 
 struct LanguageInfo {
@@ -92,7 +93,7 @@ public:
   void onUpdateVoice(void* voice) override;
   float getVoiceDelay() override;
   bool getVoiceVolume(void* voice, float* volume, float* pitch) override;
-  void onFinishSound(void* sound) override;
+  bool isArchiveEnabled(const char* name) override;
   void onFinishVoice(void* voice) override;
   const void* getMuseumDataList() override;
   const void* getAnimeSoundDataList() override;

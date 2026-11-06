@@ -7,6 +7,12 @@
 #include "snd/obj.hpp"
 #include "snd/param.hpp"
 
+namespace snd::target {
+
+class FxBase;
+
+}
+
 namespace snd::fx {
 
 // The platform independent part of an effect. The target classes derive
@@ -35,16 +41,16 @@ public:
   virtual int getBusIndex() const;
   virtual int getIndex() const;
   virtual int getChannel() const;
-  virtual void* getImpl() const;
+  virtual target::FxBase* getImpl() const;
   virtual void reset();
   virtual int getLatency() const;
   virtual void enable();
   virtual void disable();
-  virtual bool isEnabled() const;
+  virtual bool isRemovable() const;
 
 protected:
   uint8_t unknown_15e8_[0x10];
-  void* impl_;
+  target::FxBase* impl_;
   bool active_;
   int bus_;
   int index_;
@@ -122,7 +128,7 @@ public:
   void** getRegistry() override;
   void enable() override;
   void disable() override;
-  bool isEnabled() const override;
+  bool isRemovable() const override;
 };
 
 class FxEQ : public FxBase {
@@ -132,7 +138,7 @@ public:
   void** getRegistry() override;
   void enable() override;
   void disable() override;
-  bool isEnabled() const override;
+  bool isRemovable() const override;
   virtual void unknown24();
 };
 
@@ -143,7 +149,7 @@ public:
   void** getRegistry() override;
   void enable() override;
   void disable() override;
-  bool isEnabled() const override;
+  bool isRemovable() const override;
   virtual void unknown24();
   virtual float unknown25();
   virtual void unknown26();
@@ -157,7 +163,7 @@ public:
   void** getRegistry() override;
   void enable() override;
   void disable() override;
-  bool isEnabled() const override;
+  bool isRemovable() const override;
   virtual void unknown24();
   virtual int unknown25();
   virtual void unknown26();
@@ -171,7 +177,7 @@ public:
   void** getRegistry() override;
   void enable() override;
   void disable() override;
-  bool isEnabled() const override;
+  bool isRemovable() const override;
   virtual void unknown24();
   virtual float unknown25();
   virtual void unknown26();
@@ -185,7 +191,7 @@ public:
   void** getRegistry() override;
   void enable() override;
   void disable() override;
-  bool isEnabled() const override;
+  bool isRemovable() const override;
   virtual void unknown24();
 };
 
@@ -196,7 +202,7 @@ public:
   void** getRegistry() override;
   void enable() override;
   void disable() override;
-  bool isEnabled() const override;
+  bool isRemovable() const override;
   virtual void unknown24();
   virtual void unknown25();
   virtual void unknown26();
@@ -219,7 +225,7 @@ public:
   void** getRegistry() override;
   void enable() override;
   void disable() override;
-  bool isEnabled() const override;
+  bool isRemovable() const override;
   virtual void unknown24();
   virtual void unknown25();
   virtual void unknown26();
@@ -232,7 +238,7 @@ public:
   void** getRegistry() override;
   void enable() override;
   void disable() override;
-  bool isEnabled() const override;
+  bool isRemovable() const override;
 };
 
 class FxNone : public FxBase {
@@ -242,7 +248,7 @@ public:
   void** getRegistry() override;
   void enable() override;
   void disable() override;
-  bool isEnabled() const override;
+  bool isRemovable() const override;
 };
 
 class FxSurround : public FxBase {
@@ -252,7 +258,7 @@ public:
   void** getRegistry() override;
   void enable() override;
   void disable() override;
-  bool isEnabled() const override;
+  bool isRemovable() const override;
   virtual void unknown24();
   virtual void unknown25();
   virtual void unknown26();
@@ -284,7 +290,7 @@ public:
   void** getRegistry() override;
   void enable() override;
   void disable() override;
-  bool isEnabled() const override;
+  bool isRemovable() const override;
   virtual void unknown24();
   virtual float unknown25();
   virtual void unknown26();
@@ -301,7 +307,7 @@ public:
   void** getRegistry() override;
   void enable() override;
   void disable() override;
-  bool isEnabled() const override;
+  bool isRemovable() const override;
   virtual void unknown24();
   virtual void unknown25();
   virtual float unknown26();
@@ -315,7 +321,7 @@ public:
   void** getRegistry() override;
   void enable() override;
   void disable() override;
-  bool isEnabled() const override;
+  bool isRemovable() const override;
   virtual int unknown24();
 };
 
@@ -326,18 +332,20 @@ public:
   void** getRegistry() override;
   void enable() override;
   void disable() override;
-  bool isEnabled() const override;
+  bool isRemovable() const override;
   virtual float unknown24();
 };
 
 class FxMultiBridge : public FxBase {
 public:
+  ~FxMultiBridge() override;
+
   void destroy() override;
   void mainUnlocked() override;
   void** getRegistry() override;
   void enable() override;
   void disable() override;
-  bool isEnabled() const override;
+  bool isRemovable() const override;
   virtual void unknown24();
   virtual void unknown25();
 };
@@ -357,7 +365,7 @@ public:
   void** getRegistry() override;
   void enable() override;
   void disable() override;
-  bool isEnabled() const override;
+  bool isRemovable() const override;
   virtual void unknown24();
   virtual void unknown25();
   virtual int unknown26();

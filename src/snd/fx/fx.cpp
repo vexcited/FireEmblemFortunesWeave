@@ -50,7 +50,7 @@ int FxBase::getChannel() const {
   return channel_;
 }
 
-void* FxBase::getImpl() const {
+target::FxBase* FxBase::getImpl() const {
   return impl_;
 }
 
@@ -67,7 +67,7 @@ void FxBase::enable() {
 void FxBase::disable() {
 }
 
-bool FxBase::isEnabled() const {
+bool FxBase::isRemovable() const {
   return true;
 }
 
@@ -209,7 +209,7 @@ void FxFFT::enable() {
 void FxFFT::disable() {
 }
 
-bool FxFFT::isEnabled() const {
+bool FxFFT::isRemovable() const {
   return true;
 }
 
@@ -231,7 +231,7 @@ void FxEQ::enable() {
 void FxEQ::disable() {
 }
 
-bool FxEQ::isEnabled() const {
+bool FxEQ::isRemovable() const {
   return true;
 }
 
@@ -256,7 +256,7 @@ void FxMS::enable() {
 void FxMS::disable() {
 }
 
-bool FxMS::isEnabled() const {
+bool FxMS::isRemovable() const {
   return true;
 }
 
@@ -291,7 +291,7 @@ void FxMSCtrl::enable() {
 void FxMSCtrl::disable() {
 }
 
-bool FxMSCtrl::isEnabled() const {
+bool FxMSCtrl::isRemovable() const {
   return true;
 }
 
@@ -324,7 +324,7 @@ void FxMSEQ::enable() {
 void FxMSEQ::disable() {
 }
 
-bool FxMSEQ::isEnabled() const {
+bool FxMSEQ::isRemovable() const {
   return true;
 }
 
@@ -359,7 +359,7 @@ void FxSpectrum::enable() {
 void FxSpectrum::disable() {
 }
 
-bool FxSpectrum::isEnabled() const {
+bool FxSpectrum::isRemovable() const {
   return true;
 }
 
@@ -384,7 +384,7 @@ void FxVib::enable() {
 void FxVib::disable() {
 }
 
-bool FxVib::isEnabled() const {
+bool FxVib::isRemovable() const {
   return true;
 }
 
@@ -452,7 +452,7 @@ void FxFinalMix::enable() {
 void FxFinalMix::disable() {
 }
 
-bool FxFinalMix::isEnabled() const {
+bool FxFinalMix::isRemovable() const {
   return true;
 }
 
@@ -483,7 +483,7 @@ void FxMute::enable() {
 void FxMute::disable() {
 }
 
-bool FxMute::isEnabled() const {
+bool FxMute::isRemovable() const {
   return true;
 }
 
@@ -505,7 +505,7 @@ void FxNone::enable() {
 void FxNone::disable() {
 }
 
-bool FxNone::isEnabled() const {
+bool FxNone::isRemovable() const {
   return true;
 }
 
@@ -527,7 +527,7 @@ void FxSurround::enable() {
 void FxSurround::disable() {
 }
 
-bool FxSurround::isEnabled() const {
+bool FxSurround::isRemovable() const {
   return true;
 }
 
@@ -625,7 +625,7 @@ void FxLFE::enable() {
 void FxLFE::disable() {
 }
 
-bool FxLFE::isEnabled() const {
+bool FxLFE::isRemovable() const {
   return true;
 }
 
@@ -670,7 +670,7 @@ void FxSimpleLimiter::enable() {
 void FxSimpleLimiter::disable() {
 }
 
-bool FxSimpleLimiter::isEnabled() const {
+bool FxSimpleLimiter::isRemovable() const {
   return true;
 }
 
@@ -706,7 +706,7 @@ void FxWaveform::enable() {
 void FxWaveform::disable() {
 }
 
-bool FxWaveform::isEnabled() const {
+bool FxWaveform::isRemovable() const {
   return true;
 }
 
@@ -732,7 +732,7 @@ void FxSpeaker::enable() {
 void FxSpeaker::disable() {
 }
 
-bool FxSpeaker::isEnabled() const {
+bool FxSpeaker::isRemovable() const {
   return true;
 }
 
@@ -755,7 +755,7 @@ void FxMultiBridge::enable() {
 void FxMultiBridge::disable() {
 }
 
-bool FxMultiBridge::isEnabled() const {
+bool FxMultiBridge::isRemovable() const {
   return true;
 }
 
@@ -788,7 +788,7 @@ void FxPCMPlayer::enable() {
 void FxPCMPlayer::disable() {
 }
 
-bool FxPCMPlayer::isEnabled() const {
+bool FxPCMPlayer::isRemovable() const {
   return true;
 }
 
