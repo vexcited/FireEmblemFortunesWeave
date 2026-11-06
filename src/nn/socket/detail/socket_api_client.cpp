@@ -8,13 +8,19 @@
 #include "nn/lmem/exp_heap_inspection.hpp"
 #include "nn/memory_resource.hpp"
 #include "nn/os/mutex.hpp"
+#include "nn/os/native_handle.hpp"
 #include "nn/os/reader_writer_lock.hpp"
+#include "nn/os/sleep_thread.hpp"
 #include "nn/os/system_event.hpp"
+#include "nn/os/thread_api.hpp"
 #include "nn/sf/client_session.hpp"
-#include "nn/socket/resolver/serializer/dns_serializer.hpp"
 #include "nn/socket/detail/socket_api.hpp"
+#include "nn/socket/detail/socket_initialize_handle_table.hpp"
+#include "nn/socket/resolver/resolver_client.hpp"
+#include "nn/socket/resolver/serializer/dns_serializer.hpp"
 #include "nn/socket/sf/socket_client.hpp"
 #include "nn/socket/socket_api.hpp"
+#include "nn/util/util_pmr.hpp"
 
 namespace {
 
@@ -32,11 +38,13 @@ extern "C" {
 
 // Unexported nnmusl descriptor table helpers. The lookup at 0xaf3d0 packs
 // the descriptor type and the native socket, the allocation at 0xaf300
-// returns a new descriptor for a native socket and the close at 0xaf760
-// releases a descriptor of any type.
+// returns a new descriptor for a native socket, the close at 0xaf760
+// releases a descriptor of any type and the one at 0xaf860 releases every
+// descriptor of a type.
 NnmuslFileDescriptor nnmuslLookupFileDescriptor(int fd);
 int nnmuslAllocateFileDescriptor(int type, int native);
 int nnmuslCloseFileDescriptor(int fd);
+void nnmuslCloseFileDescriptorsOfType(int type);
 
 }
 
@@ -97,26 +105,52 @@ struct NoSfEventFdEntry {
   int32_t socket;
 };
 
+// Allocates the library buffers from the exp heap built in the memory
+// given to Initialize.
+class ExpHeapMemoryResource final : public MemoryResource {
+ public:
+  lmem::detail::HeapHead* heap;
+
+ private:
+  void* do_allocate(size_t size, size_t alignment) override {
+    return lmem::AllocateFromExpHeap(heap, size,
+      static_cast<int>(alignment));
+  }
+
+  void do_deallocate(void* pointer, size_t /* size */,
+    size_t /* alignment */) override {
+    lmem::FreeToExpHeap(heap, pointer);
+  }
+};
+
+// Service types follow the service the client was opened on.
+enum ServiceType : uint8_t {
+  ServiceType_None = 0,
+  ServiceType_User = 1,
+  ServiceType_Admin = 2,
+  ServiceType_System = 3
+};
+
 struct ClientState {
   os::ReaderWriterLockType descriptorLock;
   os::MutexType mutex;
-  int32_t reserved50;
+  int32_t sessionCount;
   int32_t initializeCount;
-  uint8_t reserved58[0x80];
-  sf::IClient* pClient;
-  uint8_t reservedE0[0x8];
+  InitializeHandleTable handleTable;
+  ::nn::sf::SharedPointer<sf::IClient> monitor;
+  ::nn::sf::SharedPointer<sf::IClient> pClient;
+  ServiceType serviceType;
   os::MutexType allocatorMutex;
   bool isLibraryHeapUsed;
   MemoryResource* pAllocator;
   int32_t allocatorGeneration;
   bool isAllocatorSet;
   bool isDefaultAllocatorUsed;
-  uint8_t reserved120[0x8];
-  lmem::detail::HeapHead* libraryHeap;
+  ExpHeapMemoryResource libraryHeapResource;
   uint8_t reserved130[0x8];
   size_t allocatedSize;
   size_t allocatedSizePeak;
-  uint8_t reserved148[0x1c0];
+  os::ThreadType statisticsThread;
   os::ReaderWriterLockType eventFdLock;
   NoSfEventFdEntry eventFdEntries[6];
   bool isEventFdInitialized;
@@ -124,6 +158,9 @@ struct ClientState {
 };
 
 ClientState g_ClientState;
+
+bool g_IsStatisticsThreadRunning;
+os::MutexType g_StatisticsMutex = {true, false, 0, 0, nullptr, {}};
 
 [[gnu::always_inline]] bool IsInitializedImpl() {
   os::LockMutex(&g_ClientState.mutex);
@@ -207,6 +244,10 @@ Result ResultInvalidArgument() {
   return Result{0x61b};
 }
 
+Result ResultClientCreationFailed() {
+  return Result{0x81b};
+}
+
 // Called with the allocator mutex held. A block keeps its total size in
 // front of the returned pointer.
 [[gnu::always_inline]] void* AllocateBlock(size_t totalSize,
@@ -226,7 +267,7 @@ Result ResultInvalidArgument() {
     used = g_ClientState.allocatedSize;
   }
   else {
-    lmem::detail::HeapHead* heap = g_ClientState.libraryHeap;
+    lmem::detail::HeapHead* heap = g_ClientState.libraryHeapResource.heap;
     used = lmem::GetTotalSize(heap) - lmem::GetExpHeapTotalFreeSize(heap);
   }
   if (g_ClientState.allocatedSizePeak < used) {
@@ -1232,6 +1273,168 @@ int Ioctl(int socket, IoctlRequest command, void* data, size_t length) {
   return HandleResult(callResult, &result, &error);
 }
 
+namespace {
+
+constexpr int IoctlBufferCountMax = 4;
+constexpr uint32_t SiocGIfConf = 0xc0106924;
+
+struct IfConf {
+  int32_t ifc_len;
+  void* ifc_buf;
+};
+
+size_t GetIoctlParameterLength(uint32_t command) {
+  return (command >> 16) & 0x1fff;
+}
+
+[[gnu::always_inline]] bool IsSingleBufferIoctl(uint32_t command) {
+  switch (command) {
+    case 0x40044266:
+    case 0x4004426a:
+    case 0x40044271:
+    case 0x40046676:
+    case 0x40046677:
+    case 0x4004667f:
+    case 0x40047307:
+    case 0x80044270:
+    case 0x8010426d:
+    case 0x8020426c:
+    case 0x80206910:
+    case 0x80206918:
+    case 0x80206919:
+    case 0x80206934:
+    case 0x8020693c:
+    case 0x8044692b:
+    case 0x8088691b:
+    case 0x81206919:
+    case 0x90044267:
+    case 0xc0206911:
+    case 0xc0206917:
+    case 0xc0206920:
+    case 0xc0206921:
+    case 0xc0206925:
+    case 0xc0206933:
+    case 0xc020698b:
+    case 0xc0306938:
+    case 0xc050696c:
+    case 0xc050696d:
+    case 0xc1206949:
+      return true;
+    default:
+      return false;
+  }
+}
+
+// Returns how many buffers carry the data of a supported command, or -1.
+// SIOCGIFCONF also sends the interface list its request points to.
+[[gnu::noinline]] int GetIoctlBuffers(uint32_t command, void* data,
+  size_t length, void** buffers, size_t* sizes) {
+  buffers[0] = data;
+  sizes[0] = length;
+  if (length < GetIoctlParameterLength(command)) {
+    return -1;
+  }
+  if (IsSingleBufferIoctl(command)) {
+    return 1;
+  }
+  if (command == SiocGIfConf) {
+    NN_ABORT_UNLESS(length == sizeof(IfConf));
+    IfConf* request = static_cast<IfConf*>(data);
+    buffers[1] = request->ifc_buf;
+    sizes[1] = request->ifc_len;
+    return 2;
+  }
+  return -1;
+}
+
+// The server rewrites the request with its own view of the list, so the
+// client pointer and length are restored.
+[[gnu::noinline]] void RestoreIoctlBuffers(uint32_t command, void** buffers,
+  size_t* sizes, int count) {
+  if (sizes[0] < GetIoctlParameterLength(command)) {
+    return;
+  }
+  if (IsSingleBufferIoctl(command)) {
+    NN_ABORT_UNLESS(count == 1);
+    return;
+  }
+  if (command == SiocGIfConf) {
+    NN_ABORT_UNLESS(sizes[0] == sizeof(IfConf));
+    NN_ABORT_UNLESS(count == 2);
+    IfConf* request = static_cast<IfConf*>(buffers[0]);
+    request->ifc_buf = buffers[1];
+    request->ifc_len = static_cast<int32_t>(sizes[1]);
+  }
+}
+
+[[gnu::always_inline]] int IoctlImpl(int socket, uint32_t command,
+  void* data, size_t length) {
+  NN_ABORT_UNLESS(IsInitializedImpl());
+  int result = 0;
+  int error = 0;
+  void* buffers[IoctlBufferCountMax] = {};
+  size_t sizes[IoctlBufferCountMax] = {};
+  if (data == nullptr) {
+    SetLastErrorImpl(EInval);
+    return -1;
+  }
+  if (length > UINT32_MAX) {
+    SetLastErrorImpl(EFault);
+    return -1;
+  }
+  int count = GetIoctlBuffers(command, data, length, buffers, sizes);
+  if (count < 1 || count > IoctlBufferCountMax) {
+    SetLastErrorImpl(EInval);
+    return -1;
+  }
+  ::nn::sf::InAutoSelectBuffer inBuffer0(buffers[0], sizes[0]);
+  ::nn::sf::InAutoSelectBuffer inBuffer1(buffers[1], sizes[1]);
+  ::nn::sf::InAutoSelectBuffer inBuffer2(buffers[2], sizes[2]);
+  ::nn::sf::InAutoSelectBuffer inBuffer3(buffers[3], sizes[3]);
+  ::nn::sf::OutAutoSelectBuffer outBuffer0(buffers[0], sizes[0]);
+  ::nn::sf::OutAutoSelectBuffer outBuffer1(buffers[1], sizes[1]);
+  ::nn::sf::OutAutoSelectBuffer outBuffer2(buffers[2], sizes[2]);
+  ::nn::sf::OutAutoSelectBuffer outBuffer3(buffers[3], sizes[3]);
+  os::AcquireReadLock(&g_ClientState.descriptorLock);
+  NnmuslFileDescriptor descriptor = nnmuslLookupFileDescriptor(socket);
+  if (descriptor.type == NnmuslFileDescriptorType_None) {
+    error = EBadF;
+    os::ReleaseReadLock(&g_ClientState.descriptorLock);
+    result = -1;
+  }
+  else if (descriptor.type != NnmuslFileDescriptorType_Socket) {
+    error = ENotSock;
+    os::ReleaseReadLock(&g_ClientState.descriptorLock);
+    result = -1;
+  }
+  else {
+    os::ReleaseReadLock(&g_ClientState.descriptorLock);
+    Result callResult = g_ClientState.pClient->Ioctl(Out(&result),
+      Out(&error), descriptor.native, command, inBuffer0, inBuffer1,
+      inBuffer2, inBuffer3, outBuffer0, outBuffer1, outBuffer2, outBuffer3,
+      count);
+    if (callResult.IsFailure()) {
+      error = ConvertResultToErrno(callResult);
+      result = -1;
+    }
+  }
+  RestoreIoctlBuffers(command, buffers, sizes, count);
+  if (result < 0) {
+    SetLastErrorImpl(error);
+  }
+  return result;
+}
+
+}
+
+int Ioctl(int socket, uint32_t command, void* data, size_t length) {
+  return IoctlImpl(socket, command, data, length);
+}
+
+int Ioctl(int socket, IoctlCommand command, void* data, size_t length) {
+  return IoctlImpl(socket, static_cast<uint32_t>(command), data, length);
+}
+
 ssize_t SendMsgNoMem(int socket, const MsgHdr* message, MsgFlag flags) {
   NN_ABORT_UNLESS(IsInitializedImpl());
   MMsgHdr messages = {};
@@ -1305,7 +1508,7 @@ int GetResourceStatistics(StatisticsType type, void* buffer, size_t size,
       AllocatorStatistics* pStatistics =
         static_cast<AllocatorStatistics*>(buffer);
       if (g_ClientState.isLibraryHeapUsed) {
-        lmem::detail::HeapHead* heap = g_ClientState.libraryHeap;
+        lmem::detail::HeapHead* heap = g_ClientState.libraryHeapResource.heap;
         pStatistics->totalSize = lmem::GetTotalSize(heap);
         pStatistics->freeSize = lmem::GetExpHeapTotalFreeSize(heap);
         pStatistics->usedSize =
@@ -1436,6 +1639,692 @@ int Poll(PollFd* fds, size_t count, int timeout) {
 
 int Poll(pollfd* fds, size_t count, int timeout) {
   return PollImpl(reinterpret_cast<PollFd*>(fds), count, timeout);
+}
+
+// Remembers the descriptor of each native socket sent to the server.
+struct NativeSocketMap {
+  uint16_t* descriptors;
+  int nativeSocketMax;
+  int count;
+};
+
+// Called with the descriptor read lock held.
+[[gnu::visibility("hidden")]] void ConvertToNativeFdSet(NativeSocketMap* map,
+  const FdSet* set, FdSet* nativeSet);
+
+namespace {
+
+constexpr int FdSetWordCount = 16;
+constexpr int FdSetWordBitCount = 64;
+constexpr int SelectMappedSocketCount = 128;
+
+[[gnu::always_inline]] void AddToFdSet(FdSet* set, int fd) {
+  set->fds_bits[static_cast<unsigned>(fd) / FdSetWordBitCount] |=
+    1ull << (fd % FdSetWordBitCount);
+}
+
+// Called with the descriptor read lock held.
+[[gnu::always_inline]] int GetNativeSocketMax(const FdSet* set,
+  int nativeSocketMax) {
+  for (int word = 0; word < FdSetWordCount; ++word) {
+    if (set->fds_bits[word] == 0) {
+      continue;
+    }
+    for (int bit = 0; bit < FdSetWordBitCount; ++bit) {
+      if (((set->fds_bits[word] >> bit) & 1) == 0) {
+        continue;
+      }
+      NN_ABORT_UNLESS(os::IsReadLockHeld(&g_ClientState.descriptorLock) ||
+        os::IsWriteLockHeldByCurrentThread(&g_ClientState.descriptorLock));
+      NnmuslFileDescriptor descriptor =
+        nnmuslLookupFileDescriptor(word * FdSetWordBitCount + bit);
+      int nativeSocket = descriptor.type == NnmuslFileDescriptorType_Socket ?
+        descriptor.native : -1;
+      if (nativeSocket >= 0 && nativeSocket < SelectMappedSocketCount &&
+        nativeSocket > nativeSocketMax) {
+        nativeSocketMax = nativeSocket;
+      }
+    }
+  }
+  return nativeSocketMax;
+}
+
+// Native sockets outside the map are dropped, unmapped ones keep the all
+// ones descriptor.
+[[gnu::always_inline]] void ConvertFromNativeFdSet(const NativeSocketMap& map,
+  FdSet* set, const FdSet& nativeSet) {
+  *set = {};
+  for (size_t word = 0; word < FdSetWordCount; ++word) {
+    uint64_t bits = nativeSet.fds_bits[word];
+    if (bits == 0) {
+      continue;
+    }
+    for (size_t bit = 0; bit < FdSetWordBitCount; ++bit) {
+      size_t nativeSocket = word * FdSetWordBitCount + bit;
+      if (((bits >> bit) & 1) != 0 &&
+        nativeSocket <= static_cast<size_t>(map.nativeSocketMax)) {
+        AddToFdSet(set, map.descriptors[nativeSocket]);
+      }
+    }
+  }
+}
+
+[[gnu::always_inline]] int SelectImpl(int count, FdSet* readFds,
+  FdSet* writeFds, FdSet* exceptFds, const TimeVal* timeout) {
+  NN_ABORT_UNLESS(IsInitializedImpl());
+  int result = 0;
+  int error = 0;
+  FdSet nativeReadFds = {};
+  FdSet nativeWriteFds = {};
+  FdSet nativeExceptFds = {};
+  sf::SelectTimeout selectTimeout = {0, 0, true};
+  if (readFds == nullptr && writeFds == nullptr && exceptFds == nullptr &&
+    timeout == nullptr) {
+    SetLastErrorImpl(EInval);
+    result = -1;
+  }
+
+  os::AcquireReadLock(&g_ClientState.descriptorLock);
+  int nativeSocketMax = -1;
+  if (readFds != nullptr) {
+    nativeSocketMax = GetNativeSocketMax(readFds, nativeSocketMax);
+  }
+  if (writeFds != nullptr) {
+    nativeSocketMax = GetNativeSocketMax(writeFds, nativeSocketMax);
+  }
+  if (exceptFds != nullptr) {
+    nativeSocketMax = GetNativeSocketMax(exceptFds, nativeSocketMax);
+  }
+  uint16_t descriptors[SelectMappedSocketCount];
+  NativeSocketMap map = {descriptors, SelectMappedSocketCount - 1, 0};
+  memset(descriptors, 0xff, sizeof(descriptors));
+  int nativeCount = nativeSocketMax >= 0 ? nativeSocketMax + 1 : count;
+  if (readFds != nullptr) {
+    ConvertToNativeFdSet(&map, readFds, &nativeReadFds);
+  }
+  if (writeFds != nullptr) {
+    ConvertToNativeFdSet(&map, writeFds, &nativeWriteFds);
+  }
+  if (exceptFds != nullptr) {
+    ConvertToNativeFdSet(&map, exceptFds, &nativeExceptFds);
+  }
+  os::ReleaseReadLock(&g_ClientState.descriptorLock);
+
+  size_t readSize = readFds != nullptr ? sizeof(FdSet) : 0;
+  size_t writeSize = writeFds != nullptr ? sizeof(FdSet) : 0;
+  size_t exceptSize = exceptFds != nullptr ? sizeof(FdSet) : 0;
+  ::nn::sf::InAutoSelectBuffer inReadFds(&nativeReadFds, readSize);
+  ::nn::sf::InAutoSelectBuffer inWriteFds(&nativeWriteFds, writeSize);
+  ::nn::sf::InAutoSelectBuffer inExceptFds(&nativeExceptFds, exceptSize);
+  ::nn::sf::OutAutoSelectBuffer outReadFds(&nativeReadFds, readSize);
+  ::nn::sf::OutAutoSelectBuffer outWriteFds(&nativeWriteFds, writeSize);
+  ::nn::sf::OutAutoSelectBuffer outExceptFds(&nativeExceptFds, exceptSize);
+  if (timeout != nullptr) {
+    selectTimeout.seconds = timeout->tv_sec;
+    selectTimeout.microseconds = timeout->tv_usec;
+    selectTimeout.isNull = false;
+  }
+  Result callResult = g_ClientState.pClient->Select(Out(&result),
+    Out(&error), nativeCount, inReadFds, inWriteFds, inExceptFds, outReadFds,
+    outWriteFds, outExceptFds, selectTimeout);
+  if (callResult.IsFailure()) {
+    error = ConvertResultToErrno(callResult);
+    result = -1;
+  }
+  if (result < 0) {
+    SetLastErrorImpl(error);
+    return result;
+  }
+
+  if (readFds != nullptr) {
+    ConvertFromNativeFdSet(map, readFds, nativeReadFds);
+  }
+  if (writeFds != nullptr) {
+    ConvertFromNativeFdSet(map, writeFds, nativeWriteFds);
+  }
+  if (exceptFds != nullptr) {
+    ConvertFromNativeFdSet(map, exceptFds, nativeExceptFds);
+  }
+  return result;
+}
+
+}
+
+void ConvertToNativeFdSet(NativeSocketMap* map, const FdSet* set,
+  FdSet* nativeSet) {
+  if (map->descriptors == nullptr) {
+    return;
+  }
+  for (int word = 0; word < FdSetWordCount; ++word) {
+    if (set->fds_bits[word] == 0) {
+      continue;
+    }
+    for (int bit = 0; bit < FdSetWordBitCount; ++bit) {
+      if (((set->fds_bits[word] >> bit) & 1) == 0) {
+        continue;
+      }
+      NN_ABORT_UNLESS(os::IsReadLockHeld(&g_ClientState.descriptorLock) ||
+        os::IsWriteLockHeldByCurrentThread(&g_ClientState.descriptorLock));
+      int fd = word * FdSetWordBitCount + bit;
+      NnmuslFileDescriptor descriptor = nnmuslLookupFileDescriptor(fd);
+      if (descriptor.type != NnmuslFileDescriptorType_Socket) {
+        continue;
+      }
+      int nativeSocket = descriptor.native;
+      if (nativeSocket <= map->nativeSocketMax) {
+        AddToFdSet(nativeSet, nativeSocket);
+        map->descriptors[nativeSocket] = static_cast<uint16_t>(fd);
+      }
+    }
+  }
+}
+
+int Select(int count, FdSet* readFds, FdSet* writeFds, FdSet* exceptFds,
+  TimeVal* timeout) {
+  return SelectImpl(count, readFds, writeFds, exceptFds, timeout);
+}
+
+int Select(int count, fd_set* readFds, fd_set* writeFds, fd_set* exceptFds,
+  timeval* timeout) {
+  return SelectImpl(count, reinterpret_cast<FdSet*>(readFds),
+    reinterpret_cast<FdSet*>(writeFds), reinterpret_cast<FdSet*>(exceptFds),
+    reinterpret_cast<const TimeVal*>(timeout));
+}
+
+namespace {
+
+constexpr int ServiceTypeCount = 3;
+constexpr int SessionCountMax[ServiceTypeCount] = {28, 8, 28};
+constexpr int DefaultSessionCount[ServiceTypeCount] = {28, 8, 1};
+constexpr int UserSessionCountMax = 28;
+constexpr int AdminSessionCountMax = 8;
+constexpr int SystemSessionCountMax = 28;
+constexpr int SocketFileDescriptorType = 4;
+
+// The system service is tried first, then the admin and user ones. A zero
+// session count picks the largest one the service allows.
+[[gnu::noinline]] Result InitializeClient(int sessionCount, uint32_t version) {
+  ServiceType serviceType;
+  const char* serviceName;
+  int count;
+  ::nn::sf::SharedPointer<sf::IClient> monitor =
+    CreateClientMonitorByHipc("bsd:s");
+  if (monitor != nullptr) {
+    if (static_cast<uint32_t>(sessionCount) > SystemSessionCountMax) {
+      return ResultInvalidArgument();
+    }
+    serviceType = ServiceType_System;
+    serviceName = "bsd:s";
+    count = static_cast<uint32_t>(sessionCount) > 1 ? sessionCount : 1;
+  }
+  else {
+    CreateClientMonitorByHipc("bsd:a").Swap(monitor);
+    if (monitor != nullptr) {
+      count = sessionCount != 0 ? sessionCount : AdminSessionCountMax;
+      if (static_cast<uint32_t>(count) > AdminSessionCountMax) {
+        return ResultInvalidArgument();
+      }
+      serviceType = ServiceType_Admin;
+      serviceName = "bsd:a";
+    }
+    else {
+      CreateClientMonitorByHipc("bsd:u").Swap(monitor);
+      if (monitor == nullptr) {
+        return ResultClientCreationFailed();
+      }
+      count = sessionCount != 0 ? sessionCount : UserSessionCountMax;
+      if (static_cast<uint32_t>(count) > UserSessionCountMax) {
+        return ResultInvalidArgument();
+      }
+      serviceType = ServiceType_User;
+      serviceName = "bsd:u";
+    }
+  }
+
+  ::nn::sf::SharedPointer<sf::IClient> client =
+    CreateClientServiceByHipc(count, serviceName);
+  if (client == nullptr) {
+    return ResultClientCreationFailed();
+  }
+  uint32_t error = 0;
+  NN_ABORT_UNLESS_RESULT_SUCCESS(client->Command36(Out(&error), 0, version));
+  if (error != 0 || monitor->StartMonitoring(0).IsFailure() ||
+    resolver::InitializeClient(version).IsFailure()) {
+    return ResultClientCreationFailed();
+  }
+  resolver::EnableResolverCalls();
+  g_ClientState.monitor = monitor;
+  g_ClientState.pClient = client;
+  g_ClientState.serviceType = serviceType;
+  return Result();
+}
+
+// Called with the library mutex and the NoSf event fd write lock held.
+[[gnu::noinline]] Result FinalizeClient() {
+  os::LockMutex(&g_StatisticsMutex);
+  if (g_IsStatisticsThreadRunning) {
+    g_IsStatisticsThreadRunning = false;
+    os::UnlockMutex(&g_StatisticsMutex);
+    os::WaitThread(&g_ClientState.statisticsThread);
+    os::DestroyThread(&g_ClientState.statisticsThread);
+  }
+  else {
+    os::UnlockMutex(&g_StatisticsMutex);
+  }
+
+  if (g_ClientState.isEventFdInitialized) {
+    NN_ABORT_UNLESS(
+      os::IsWriteLockHeldByCurrentThread(&g_ClientState.eventFdLock));
+    for (NoSfEventFdEntry& entry : g_ClientState.eventFdEntries) {
+      entry.socket = -1;
+      os::DetachWritableHandleOfSystemEvent(&entry.writableEvent);
+      os::DetachReadableHandleOfSystemEvent(&entry.readableEvent);
+      uint32_t writableHandle = entry.writableHandle;
+      bool isWritableHandleManaged = entry.isWritableHandleManaged;
+      entry.writableHandle = 0;
+      entry.isWritableHandleManaged = false;
+      if (isWritableHandleManaged) {
+        os::CloseNativeHandle(writableHandle);
+      }
+      uint32_t readableHandle = entry.readableHandle;
+      bool isReadableHandleManaged = entry.isReadableHandleManaged;
+      entry.readableHandle = 0;
+      entry.isReadableHandleManaged = false;
+      if (isReadableHandleManaged) {
+        os::CloseNativeHandle(readableHandle);
+      }
+    }
+    g_ClientState.isEventFdInitialized = false;
+  }
+
+  resolver::DisableResolverCalls();
+  DestroyClientServiceByHipc(&g_ClientState.pClient);
+  DestroyClientMonitorByHipc(&g_ClientState.monitor);
+  resolver::WaitForAllResolverCallsToComplete();
+  Result result = resolver::FinalizeClient();
+  if (result.IsSuccess()) {
+    g_ClientState.pClient.Reset();
+    g_ClientState.monitor.Reset();
+    g_ClientState.serviceType = ServiceType_None;
+  }
+  return result;
+}
+
+[[gnu::always_inline]] bool IsLibraryHeapUsed() {
+  os::LockMutex(&g_ClientState.allocatorMutex);
+  bool isLibraryHeapUsed = g_ClientState.isLibraryHeapUsed;
+  os::UnlockMutex(&g_ClientState.allocatorMutex);
+  return isLibraryHeapUsed;
+}
+
+// Called with the allocator mutex held.
+[[gnu::always_inline]] void SetAllocatorLocked(MemoryResource* allocator,
+  bool isLibraryHeapUsed) {
+  g_ClientState.pAllocator = allocator;
+  g_ClientState.isAllocatorSet = true;
+  g_ClientState.allocatedSize = 0;
+  g_ClientState.allocatedSizePeak = 0;
+  g_ClientState.isLibraryHeapUsed = isLibraryHeapUsed;
+  g_ClientState.allocatorGeneration =
+    (g_ClientState.allocatorGeneration + 1) % AllocatorGenerationCount;
+}
+
+[[gnu::always_inline]] void UseDefaultAllocatorIfUnset() {
+  os::LockMutex(&g_ClientState.allocatorMutex);
+  if (g_ClientState.pAllocator == nullptr) {
+    if (!g_ClientState.isDefaultAllocatorUsed) {
+      g_ClientState.isDefaultAllocatorUsed = true;
+    }
+    g_ClientState.pAllocator = util::pmr::GetDefaultResource();
+    g_ClientState.isAllocatorSet = true;
+    g_ClientState.allocatedSize = 0;
+    g_ClientState.allocatedSizePeak = 0;
+    g_ClientState.allocatorGeneration =
+      (g_ClientState.allocatorGeneration + 1) % AllocatorGenerationCount;
+  }
+  os::UnlockMutex(&g_ClientState.allocatorMutex);
+}
+
+[[gnu::always_inline]] void ClearAllocatorSet() {
+  os::LockMutex(&g_ClientState.allocatorMutex);
+  g_ClientState.isAllocatorSet = false;
+  os::UnlockMutex(&g_ClientState.allocatorMutex);
+}
+
+// The descriptors are closed without the library locks, which their close
+// takes again.
+[[gnu::always_inline]] void CloseSocketFileDescriptors() {
+  os::UnlockMutex(&g_ClientState.mutex);
+  os::ReleaseWriteLock(&g_ClientState.eventFdLock);
+  nnmuslCloseFileDescriptorsOfType(SocketFileDescriptorType);
+  os::AcquireWriteLock(&g_ClientState.eventFdLock);
+  os::LockMutex(&g_ClientState.mutex);
+}
+
+[[gnu::always_inline]] bool IsAligned(uintptr_t value) {
+  return (value & 0xfff) == 0;
+}
+
+}
+
+Result Initialize(const Config& config) {
+  os::LockMutex(&g_ClientState.mutex);
+  Result result;
+  if (g_ClientState.pClient != nullptr) {
+    result = ResultAlreadyInitialized();
+  }
+  else {
+    os::LockMutex(&g_ClientState.allocatorMutex);
+    if (g_ClientState.pAllocator != nullptr) {
+      result = ResultAlreadyInitialized();
+    }
+    else if (config.m_MemoryPool == nullptr ||
+      !IsAligned(reinterpret_cast<uintptr_t>(config.m_MemoryPool)) ||
+      !IsAligned(config.m_MemoryPoolSize) ||
+      config.m_MemoryPoolSize < config.m_AllocatorPoolSize) {
+      result = ResultInvalidArgument();
+    }
+    else {
+      lmem::detail::HeapHead* heap = lmem::CreateExpHeap(config.m_MemoryPool,
+        config.m_MemoryPoolSize, 0);
+      if (heap == nullptr) {
+        result = ResultClientCreationFailed();
+      }
+      else {
+        g_ClientState.libraryHeapResource.heap = heap;
+        SetAllocatorLocked(&g_ClientState.libraryHeapResource, true);
+        os::UnlockMutex(&g_ClientState.allocatorMutex);
+        result = InitializeClient(config.m_ConcurrencyLimit,
+          config.m_Version);
+        if (result.IsSuccess()) {
+          os::UnlockMutex(&g_ClientState.mutex);
+          return result;
+        }
+        os::LockMutex(&g_ClientState.allocatorMutex);
+        SetAllocatorLocked(nullptr, false);
+        lmem::DestroyExpHeap(g_ClientState.libraryHeapResource.heap);
+        g_ClientState.libraryHeapResource.heap = nullptr;
+      }
+    }
+    os::UnlockMutex(&g_ClientState.allocatorMutex);
+  }
+  os::UnlockMutex(&g_ClientState.mutex);
+  return result;
+}
+
+Result Initialize(int version) {
+  os::LockMutex(&g_ClientState.mutex);
+  Result result;
+  if (IsLibraryHeapUsed()) {
+    result = ResultAlreadyInitialized();
+  }
+  else if (g_ClientState.initializeCount > 0) {
+    ++g_ClientState.initializeCount;
+    result = Result();
+  }
+  else {
+    UseDefaultAllocatorIfUnset();
+    result = InitializeClient(0, version);
+    if (result.IsSuccess()) {
+      ++g_ClientState.initializeCount;
+    }
+  }
+  os::UnlockMutex(&g_ClientState.mutex);
+  return result;
+}
+
+Result Initialize(int* pOutHandle, int concurrencyLimit, int version) {
+  os::LockMutex(&g_ClientState.mutex);
+  Result result;
+  if (IsLibraryHeapUsed()) {
+    result = ResultAlreadyInitialized();
+  }
+  else if (pOutHandle == nullptr) {
+    result = ResultInvalidArgument();
+  }
+  else if (g_ClientState.initializeCount >= 1) {
+    int typeIndex = g_ClientState.serviceType - 1;
+    int sessionCount = g_ClientState.sessionCount + concurrencyLimit;
+    if (static_cast<uint32_t>(typeIndex) >= ServiceTypeCount) {
+      result = ResultClientCreationFailed();
+    }
+    else if (sessionCount > SessionCountMax[typeIndex]) {
+      result = ResultInvalidArgument();
+    }
+    else if (SetClientSessionCount(sessionCount).IsFailure()) {
+      result = ResultClientCreationFailed();
+    }
+    else {
+      int handle =
+        g_ClientState.handleTable.AcquireHandleForConcurrency(concurrencyLimit);
+      if (handle == -1) {
+        result = ResultClientCreationFailed();
+      }
+      else {
+        *pOutHandle = handle;
+        g_ClientState.sessionCount = sessionCount;
+        ++g_ClientState.initializeCount;
+        result = Result();
+      }
+    }
+  }
+  else {
+    UseDefaultAllocatorIfUnset();
+    result = InitializeClient(concurrencyLimit, version);
+    if (result.IsSuccess()) {
+      int handle =
+        g_ClientState.handleTable.AcquireHandleForConcurrency(concurrencyLimit);
+      if (handle == -1) {
+        result = ResultClientCreationFailed();
+      }
+      else {
+        *pOutHandle = handle;
+        g_ClientState.sessionCount = concurrencyLimit;
+        ++g_ClientState.initializeCount;
+      }
+    }
+  }
+  os::UnlockMutex(&g_ClientState.mutex);
+  return result;
+}
+
+Result Finalize() {
+  os::AcquireWriteLock(&g_ClientState.eventFdLock);
+  os::LockMutex(&g_ClientState.mutex);
+  Result result;
+  if (g_ClientState.pClient == nullptr) {
+    result = ResultAlreadyInitialized();
+  }
+  else if (IsLibraryHeapUsed()) {
+    Result finalizeResult = FinalizeClient();
+    os::LockMutex(&g_ClientState.allocatorMutex);
+    SetAllocatorLocked(nullptr, false);
+    lmem::DestroyExpHeap(g_ClientState.libraryHeapResource.heap);
+    g_ClientState.libraryHeapResource.heap = nullptr;
+    os::UnlockMutex(&g_ClientState.allocatorMutex);
+    if (finalizeResult.IsSuccess()) {
+      CloseSocketFileDescriptors();
+      result = Result();
+    }
+    else {
+      result = ResultClientCreationFailed();
+    }
+  }
+  else if (g_ClientState.initializeCount >
+    g_ClientState.handleTable.GetCount()) {
+    if (g_ClientState.initializeCount >= 2) {
+      --g_ClientState.initializeCount;
+      result = Result();
+    }
+    else {
+      result = FinalizeClient();
+      g_ClientState.initializeCount = 0;
+      ClearAllocatorSet();
+      if (result.IsSuccess()) {
+        CloseSocketFileDescriptors();
+      }
+      else {
+        result = ResultClientCreationFailed();
+      }
+    }
+  }
+  else {
+    result = ResultAlreadyInitialized();
+  }
+  os::UnlockMutex(&g_ClientState.mutex);
+  os::ReleaseWriteLock(&g_ClientState.eventFdLock);
+  return result;
+}
+
+Result Finalize(int handle) {
+  os::AcquireWriteLock(&g_ClientState.eventFdLock);
+  os::LockMutex(&g_ClientState.mutex);
+  Result result;
+  if (g_ClientState.pClient == nullptr || IsLibraryHeapUsed()) {
+    result = ResultAlreadyInitialized();
+  }
+  else {
+    int concurrency =
+      g_ClientState.handleTable.GetConcurrencyAndReleaseHandle(handle);
+    if (concurrency == -1) {
+      result = ResultInvalidArgument();
+    }
+    else {
+      int sessionCount = g_ClientState.sessionCount - concurrency;
+      int typeIndex = g_ClientState.serviceType - 1;
+      bool isValid = true;
+      if (sessionCount == 0) {
+        if (static_cast<uint32_t>(typeIndex) < ServiceTypeCount) {
+          sessionCount = DefaultSessionCount[typeIndex];
+        }
+        else {
+          isValid = false;
+        }
+      }
+      else if (sessionCount < 1 || sessionCount > UserSessionCountMax) {
+        isValid = false;
+      }
+
+      if (!isValid) {
+        result = ResultClientCreationFailed();
+      }
+      else if (g_ClientState.initializeCount >= 2) {
+        if (SetClientSessionCount(sessionCount).IsSuccess()) {
+          g_ClientState.sessionCount =
+            g_ClientState.handleTable.GetCount() != 0 ? sessionCount : 0;
+          --g_ClientState.initializeCount;
+          result = Result();
+        }
+        else {
+          result = ResultClientCreationFailed();
+        }
+      }
+      else if (g_ClientState.handleTable.GetCount() != 0) {
+        result = ResultClientCreationFailed();
+      }
+      else {
+        result = FinalizeClient();
+        g_ClientState.sessionCount = 0;
+        g_ClientState.initializeCount = 0;
+        ClearAllocatorSet();
+        if (result.IsSuccess()) {
+          CloseSocketFileDescriptors();
+        }
+        else {
+          result = ResultClientCreationFailed();
+        }
+      }
+    }
+  }
+  os::UnlockMutex(&g_ClientState.mutex);
+  os::ReleaseWriteLock(&g_ClientState.eventFdLock);
+  return result;
+}
+
+namespace {
+
+constexpr size_t StatisticsNameLengthMax = 32;
+constexpr size_t StatisticsThreadStackSize = 4096;
+constexpr int StatisticsThreadPriority = 16;
+constexpr TimeSpan StatisticsInterval = {500 * 1000 * 1000};
+
+// Reports the library heap usage to the server twice a second.
+void StatisticsThread(void* /* argument */) {
+  os::LockMutex(&g_StatisticsMutex);
+  os::UnlockMutex(&g_StatisticsMutex);
+  AllocatorStatistics statistics = {};
+  os::SleepThread(StatisticsInterval);
+  os::LockMutex(&g_StatisticsMutex);
+  while (g_IsStatisticsThreadRunning) {
+    os::UnlockMutex(&g_StatisticsMutex);
+    os::LockMutex(&g_ClientState.allocatorMutex);
+    if (g_ClientState.pAllocator != nullptr) {
+      lmem::detail::HeapHead* heap = g_ClientState.libraryHeapResource.heap;
+      if (heap != nullptr) {
+        statistics.totalSize = lmem::GetTotalSize(heap);
+        statistics.freeSize = lmem::GetExpHeapTotalFreeSize(heap);
+        statistics.usedSize = statistics.totalSize - statistics.freeSize;
+        statistics.peakUsedSize = g_ClientState.allocatedSizePeak;
+      }
+      os::UnlockMutex(&g_ClientState.allocatorMutex);
+      int name[] = {10, 2};
+      Sysctl(name, 2, nullptr, nullptr, &statistics, sizeof(statistics));
+    }
+    else {
+      os::UnlockMutex(&g_ClientState.allocatorMutex);
+    }
+    os::SleepThread(StatisticsInterval);
+    os::LockMutex(&g_StatisticsMutex);
+  }
+  os::UnlockMutex(&g_StatisticsMutex);
+}
+
+// The thread reporting the heap usage starts when a stack is given.
+[[gnu::noinline]] Result RegisterForStatisticsImpl(const char* name,
+  size_t length, StatisticsMemory* memory) {
+  NN_ABORT_UNLESS(IsInitializedImpl());
+  int result = 0;
+  int error = 0;
+  if (name == nullptr || length > StatisticsNameLengthMax ||
+    length < strnlen(name, length) + 1) {
+    SetLastErrorImpl(EInval);
+    return Result{UINT32_MAX};
+  }
+  ::nn::sf::InAutoSelectBuffer inName(name, length);
+  Result callResult = g_ClientState.pClient->RegisterResourceStatisticsName(
+    Out(&result), Out(&error), 0, inName, false);
+  if (callResult.IsFailure()) {
+    error = ConvertResultToErrno(callResult);
+    result = -1;
+  }
+  if (result < 0) {
+    SetLastErrorImpl(error);
+    return Result{static_cast<uint32_t>(result)};
+  }
+  if (memory == nullptr) {
+    return Result{static_cast<uint32_t>(result)};
+  }
+  os::LockMutex(&g_StatisticsMutex);
+  if (!g_IsStatisticsThreadRunning) {
+    NN_ABORT_UNLESS_RESULT_SUCCESS(os::CreateThread(
+      &g_ClientState.statisticsThread, StatisticsThread, nullptr, memory,
+      StatisticsThreadStackSize, StatisticsThreadPriority));
+    g_IsStatisticsThreadRunning = true;
+    os::StartThread(&g_ClientState.statisticsThread);
+  }
+  os::UnlockMutex(&g_StatisticsMutex);
+  return Result{static_cast<uint32_t>(result)};
+}
+
+}
+
+Result RegisterForStatistics(const char* name, size_t length) {
+  return RegisterForStatisticsImpl(name, length, nullptr);
+}
+
+Result RegisterForStatistics(const char* name, size_t length,
+  StatisticsMemory* memory) {
+  return RegisterForStatisticsImpl(name, length, memory);
 }
 
 }

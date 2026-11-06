@@ -174,4 +174,108 @@ void BufferedAllocationTableStorage::EnterHoldingCacheSection() {
   ++m_HoldingCacheSectionCount;
 }
 
+// Leaving the last section hands every held buffer back to the buffer
+// manager as a cache that may be reclaimed.
+void BufferedAllocationTableStorage::LeaveHoldingCacheSection() {
+  if (--m_HoldingCacheSectionCount != 0) {
+    return;
+  }
+  for (CacheEntriesNode& node : m_CacheEntriesList) {
+    for (CacheEntry& entry : node.entries) {
+      if (entry.address != 0) {
+        entry.handle = m_pBufferManager->RegisterCache(entry.address,
+          entry.size, IBufferManager::BufferAttribute());
+        entry.address = 0;
+        entry.size = 0;
+      }
+    }
+  }
+}
+
+// Reads whole blocks through the cache. A block missing from the cache takes
+// a free entry, a new node or else the entry of the oldest node, and is read
+// directly when no buffer can be allocated for it.
+Result BufferedAllocationTableStorage::Read(int64_t offset, void* buffer,
+  size_t size) {
+  if (m_CacheEntriesList.empty()) {
+    return AllocationTableStorage::Read(offset, buffer, size);
+  }
+  const int64_t end = offset + static_cast<int64_t>(size);
+  if (offset >= end) {
+    return ResultSuccess();
+  }
+  const uint32_t shift = m_BlockSizeShift;
+  const int64_t blockSize = int64_t{1} << shift;
+  char* destination = static_cast<char*>(buffer) - offset;
+  int64_t current = offset;
+  do {
+    const int64_t blockOffset = current & -blockSize;
+    const size_t readSize = blockOffset + blockSize - current < end - current ?
+      blockOffset + blockSize - current : end - current;
+    const int index = static_cast<int>((blockOffset >> shift) &
+      (CacheEntryCountPerNode - 1));
+
+    bool isCached = false;
+    CacheEntriesList::iterator it = m_CacheEntriesList.begin();
+    for (; it != m_CacheEntriesList.end(); ++it) {
+      if (it->entries[index].offset == blockOffset) {
+        break;
+      }
+    }
+    if (it != m_CacheEntriesList.end()) {
+      AcquireCacheBuffer(&it->entries[index]);
+      isCached = it->entries[index].address != 0;
+    }
+    else {
+      for (it = m_CacheEntriesList.begin(); it != m_CacheEntriesList.end();
+        ++it) {
+        if (it->entries[index].offset == -1) {
+          break;
+        }
+      }
+      if (it == m_CacheEntriesList.end()) {
+        it = AllocateCacheEntries();
+        if (it == m_CacheEntriesList.end()) {
+          --it;
+          CacheEntry* entry = &it->entries[index];
+          AcquireCacheBuffer(entry);
+          if (entry->address != 0) {
+            entry->offset = blockOffset;
+          }
+        }
+      }
+    }
+
+    CacheEntry* entry = &it->entries[index];
+    if (!isCached) {
+      if (entry->address == 0) {
+        const IBufferManager::MemoryRange range =
+          m_pBufferManager->AllocateBuffer(blockSize,
+            IBufferManager::BufferAttribute());
+        if (range.first == 0) {
+          NN_FS_RESULT_DO(AllocationTableStorage::Read(current,
+            destination + current, readSize));
+          current += readSize;
+          continue;
+        }
+        entry->address = range.first;
+        entry->size = range.second;
+        entry->offset = blockOffset;
+        entry->handle = 0;
+      }
+      const Result result = AllocationTableStorage::Read(blockOffset,
+        reinterpret_cast<void*>(entry->address), blockSize);
+      if (result.IsFailure()) {
+        DeallocateCache(entry);
+        return result;
+      }
+    }
+    memcpy(destination + current, reinterpret_cast<char*>(entry->address) +
+      current - blockOffset, readSize);
+    ExtendCacheLife(it, index);
+    current += readSize;
+  } while (current < end);
+  return ResultSuccess();
+}
+
 }

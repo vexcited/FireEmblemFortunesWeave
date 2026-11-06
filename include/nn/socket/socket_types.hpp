@@ -14,7 +14,11 @@ struct fd_set {
   uint64_t fds_bits[16];
 };
 
-struct timeval;
+struct timeval {
+  int64_t tv_sec;
+  int64_t tv_usec;
+};
+
 struct pollfd;
 struct iovec;
 
@@ -138,7 +142,11 @@ struct FdSet {
   uint64_t fds_bits[16];
 };
 
-struct TimeVal;
+struct TimeVal {
+  int64_t tv_sec;
+  int64_t tv_usec;
+};
+
 struct IoVec;
 
 struct PollFd {

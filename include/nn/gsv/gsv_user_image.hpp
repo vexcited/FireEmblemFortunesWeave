@@ -5,15 +5,21 @@
 namespace nn::gsv::imgdesc::impl::user::ounce {
 
 // Linear kinds keep the pitch in the first layout word, block linear kinds
-// keep the whole layout for the block copy helpers.
-struct CpuUserImageDescriptor {
-  uint8_t kind;
-  uint8_t reserved0[7];
+// keep the width in blocks there and the block size in the second word.
+struct CpuUserImagePlane {
   uint32_t offset;
   uint32_t size;
   uint32_t pitch;
   uint32_t blockLayout;
-  uint8_t reserved1[104];
+};
+
+// Single plane kinds use the first plane, NV12 kinds two and YUV 4:4:0
+// kinds three.
+struct CpuUserImageDescriptor {
+  uint8_t kind;
+  uint8_t reserved0[7];
+  CpuUserImagePlane planes[3];
+  uint8_t reserved1[72];
 };
 
 static_assert(sizeof(CpuUserImageDescriptor) == 128);

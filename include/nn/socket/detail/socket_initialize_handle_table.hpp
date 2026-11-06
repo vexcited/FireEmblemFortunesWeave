@@ -11,6 +11,10 @@ class InitializeHandleTable {
   int AcquireHandleForConcurrency(int concurrency);
   int GetConcurrencyAndReleaseHandle(int handle);
 
+  int GetCount() const {
+    return m_Count;
+  }
+
  private:
   int32_t m_Concurrency[HandleCountMax];
   int32_t m_NextHandle;

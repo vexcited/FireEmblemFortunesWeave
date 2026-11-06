@@ -10,6 +10,9 @@ namespace nn::socket::resolver {
 
 Result InitializeClient(uint32_t sessionCount);
 Result FinalizeClient();
+void EnableResolverCalls();
+void DisableResolverCalls();
+void WaitForAllResolverCallsToComplete();
 
 const char* GetHostStringError(uint32_t error);
 const char* GetGaiStringError(uint32_t error);
