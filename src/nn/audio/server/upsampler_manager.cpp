@@ -4,7 +4,7 @@ namespace nn::audio {
 
 // The reserved tail after the input indices is left untouched.
 UpsamplerInfo::UpsamplerInfo()
-  : state(), manager(nullptr), buffer(nullptr), sampleCount(0), reserved0(),
+  : state(), manager(nullptr), buffer(nullptr), sampleCount(0), inputCount(),
     isUsed(false), inputIndices() {}
 
 }

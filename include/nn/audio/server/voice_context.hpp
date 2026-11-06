@@ -58,6 +58,8 @@ private:
 
 static_assert(sizeof(WaveBuffer) == 88);
 
+class VoiceContext;
+
 class VoiceInfo {
 public:
   static constexpr int WaveBufferCountMax = 4;
@@ -93,7 +95,12 @@ public:
   bool ShouldUpdateWaveBuffer(
     const renderer::ipc::Voice::WaveBuffer* waveBuffer) const;
   bool ShouldSkip() const;
+  bool UpdateForCommandGeneration(VoiceContext* context);
   void UpdatePlayState(uint8_t state);
+
+  uint32_t GetNodeId() const {
+    return m_NodeId;
+  }
 
 private:
   bool IsFlagSet(Flag flag) const {

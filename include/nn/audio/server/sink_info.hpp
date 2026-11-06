@@ -54,11 +54,12 @@ public:
   const void* GetState() const;
   const void* GetParameter() const;
 
-protected:
   struct DeviceState {
     UpsamplerInfo* upsampler;
     int32_t downMixParameter[4];
   };
+
+protected:
 
   Type m_Type;
   bool m_IsUsed;

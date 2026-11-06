@@ -106,6 +106,10 @@ public:
     return m_EdgeMatrix;
   }
 
+  const Span<MixInfo*>& GetSortedInfos() const {
+    return m_SortedInfos;
+  }
+
 private:
   common::NodeStates m_NodeStates;
   common::EdgeMatrix m_EdgeMatrix;

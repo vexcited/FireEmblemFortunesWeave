@@ -9,8 +9,27 @@
 
 namespace nn::audio {
 
-enum PerformanceEntryType : uint8_t {};
-enum PerformanceDetailType : uint8_t {};
+enum PerformanceEntryType {
+  PerformanceEntryType_Invalid,
+  PerformanceEntryType_Voice,
+  PerformanceEntryType_SubMix,
+  PerformanceEntryType_FinalMix,
+  PerformanceEntryType_Sink,
+};
+
+enum PerformanceDetailType {
+  PerformanceDetailType_Invalid,
+  PerformanceDetailType_Volume = 3,
+  PerformanceDetailType_BiquadFilter,
+  PerformanceDetailType_Mix,
+  PerformanceDetailType_Delay,
+  PerformanceDetailType_Aux,
+  PerformanceDetailType_Reverb,
+  PerformanceDetailType_I3dl2Reverb,
+  PerformanceDetailType_LightLimiter = 11,
+  PerformanceDetailType_Capture,
+  PerformanceDetailType_Compressor,
+};
 enum PerformanceSysDetailType : uint8_t {};
 
 struct PerformanceSysDetail {

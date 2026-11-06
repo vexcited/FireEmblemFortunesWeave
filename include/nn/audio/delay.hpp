@@ -6,7 +6,9 @@
 namespace nn::audio {
 
 struct DelayParameter {
-  unsigned char reserved[14];
+  int8_t inputs[6];
+  int8_t outputs[6];
+  uint8_t reserved_0c[2];
   uint16_t channel_count;
   int32_t maximum_delay_ms;
   int32_t delay_ms;

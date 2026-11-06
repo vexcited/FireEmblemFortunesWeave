@@ -166,6 +166,7 @@ public:
   bool UsingSplitter() const;
   void ClearAllNewConnectionFlag();
   bool Update(uintptr_t input, size_t& consumedSize);
+  void UpdateInternalState();
   int GetDestCountPerInfoForCompat() const;
   static size_t CalcWorkBufferSize(const BehaviorInfo& behavior,
     const audio::detail::AudioRendererParameterInternal& parameter);

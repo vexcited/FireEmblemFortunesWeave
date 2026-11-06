@@ -5,7 +5,9 @@
 namespace nn::audio {
 
 struct CompressorParameter {
-  uint8_t unknown_00[14];
+  int8_t inputs[6];
+  int8_t outputs[6];
+  uint8_t reserved_0c[2];
   uint16_t channel_count;
   uint8_t unknown_10[4];
   float threshold;
@@ -17,7 +19,7 @@ struct CompressorParameter {
   float output_gain;
   uint8_t unknown_34;
   uint8_t makeup_enabled;
-  uint8_t unknown_36;
+  uint8_t statistics_enabled;
   uint8_t reset_statistics;
 };
 

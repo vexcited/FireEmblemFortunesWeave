@@ -17,7 +17,7 @@ struct UpsamplerInfo {
   server::UpsamplerManager* manager;
   int32_t* buffer;
   int sampleCount;
-  uint8_t reserved0[4];
+  int inputCount;
   bool isUsed;
   int8_t inputIndices[6];
   uint8_t reserved1[33];

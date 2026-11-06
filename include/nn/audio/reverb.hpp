@@ -6,7 +6,9 @@
 namespace nn::audio {
 
 struct ReverbParameter {
-  unsigned char mapping[14];
+  int8_t inputs[6];
+  int8_t outputs[6];
+  uint8_t reserved_0c[2];
   uint16_t channel_count;
   int32_t sample_rate;
   uint32_t early_mode;

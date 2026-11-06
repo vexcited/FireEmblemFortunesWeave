@@ -6,7 +6,9 @@
 namespace nn::audio {
 
 struct I3dl2ReverbParameter {
-  unsigned char mapping[14];
+  int8_t inputs[6];
+  int8_t outputs[6];
+  uint8_t reserved_0c[2];
   uint16_t channel_count;
   uint32_t reserved;
   uint32_t sample_rate;

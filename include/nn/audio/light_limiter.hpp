@@ -6,7 +6,9 @@
 namespace nn::audio {
 
 struct LightLimiterParameter {
-  unsigned char reserved_00[14];
+  int8_t inputs[6];
+  int8_t outputs[6];
+  uint8_t reserved_0c[2];
   uint16_t channel_count;
   unsigned char reserved_10[20];
   float attack;
@@ -16,7 +18,8 @@ struct LightLimiterParameter {
   float output_gain;
   int32_t delay_length;
   int32_t capacity;
-  unsigned char reserved_40[2];
+  unsigned char reserved_40[1];
+  uint8_t statistics_enabled;
   uint8_t reset_statistics;
   uint8_t fast_reciprocal;
 };
