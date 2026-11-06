@@ -445,12 +445,9 @@ public:
 	// only deleted once the engine is destroyed
 	asCArray<asSNameSpace*> nameSpaces;
 
-  // The map count sits at 0x48, so its key and value take 32 bytes.
-  struct SUnknownValue {
-    asPWORD values[3];
-  };
+  // The constructor builds the key of the map's dummy node out of line.
   asCArray<asCString *> unknown_3480;
-  asCMap<void *, SUnknownValue> unknown_34a0;
+  asCMap<asCStringPointer, void *> unknown_34a0;
 
 	// Callbacks for context pooling
 	asREQUESTCONTEXTFUNC_t  requestCtxFunc;

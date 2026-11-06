@@ -7,7 +7,9 @@
 #include "angelscript/source/as_scriptfunction.h"
 #include "angelscript/source/as_objecttype.h"
 #include "angelscript/source/as_module.h"
+#include "angelscript/source/as_callfunc.h"
 #include "angelscript/source/as_context.h"
 #include "angelscript/source/as_scriptengine.h"
+#include "angelscript/source/as_builder.h"
 
 #endif

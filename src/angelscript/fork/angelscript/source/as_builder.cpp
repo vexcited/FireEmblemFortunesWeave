@@ -1877,7 +1877,9 @@ int asCBuilder::RegisterFuncDef(asCScriptNode *node, asCScriptCode *file, asSNam
 		if (asSUCCESS != r)
 		{
 			node->Destroy(engine);
-			return r;
+
+			// The game returns a generic error.
+			return asERROR;
 		}
 	}
 	else
@@ -1886,7 +1888,9 @@ int asCBuilder::RegisterFuncDef(asCScriptNode *node, asCScriptCode *file, asSNam
 		if (asSUCCESS != r)
 		{
 			node->Destroy(engine);
-			return r;
+
+			// The game returns a generic error.
+			return asERROR;
 		}
 	}
 

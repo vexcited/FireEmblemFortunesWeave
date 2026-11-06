@@ -1498,7 +1498,8 @@ int asCModule::BindAllImportedFunctions()
 		asCScriptFunction *importFunc = GetImportedFunction(n);
 		if( importFunc == 0 ) return asERROR;
 
-		asCString str = importFunc->GetDeclarationStr(false, true);
+		// The game includes the object name in the declaration.
+		asCString str = importFunc->GetDeclarationStr(true, true);
 
 		// Get module name from where the function should be imported
 		const char *moduleName = GetImportedFunctionSourceModule(n);

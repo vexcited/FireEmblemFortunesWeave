@@ -1177,7 +1177,7 @@ int asCContext::Abort()
   // A system call that the game left pending is completed first.
   if (unknown_240 && GetUnknown238() == 0) {
     SetUnknown238(2);
-    CallSystemFunction(m_regs.programPointer[1], this);
+    CallSystemFunction(m_regs.programPointer[1], this, true);
   }
 
 	// TODO: multithread: Make thread safe. There is a chance that the status
@@ -1327,10 +1327,7 @@ int asCContext::Execute()
 		}
 	}
 
-	asUINT gcPreObjects = 0;
-	if( m_engine->ep.autoGarbageCollect )
-		m_engine->gc.GetStatistics(&gcPreObjects, 0, 0, 0, 0);
-
+	// The game does not collect garbage automatically here.
 	while (m_status == asEXECUTION_ACTIVE)
 	{
 		ExecuteNext();
@@ -1352,22 +1349,6 @@ int asCContext::Execute()
 		m_regs.doProcessSuspend = false;
 
 	m_doSuspend = false;
-
-	if( m_engine->ep.autoGarbageCollect )
-	{
-		asUINT gcPosObjects = 0;
-		m_engine->gc.GetStatistics(&gcPosObjects, 0, 0, 0, 0);
-		if( gcPosObjects > gcPreObjects )
-		{
-			// Execute as many steps as there were new objects created
-			m_engine->GarbageCollect(asGC_ONE_STEP | asGC_DESTROY_GARBAGE | asGC_DETECT_GARBAGE, gcPosObjects - gcPreObjects);
-		}
-		else if( gcPosObjects > 0 )
-		{
-			// Execute at least one step, even if no new objects were created
-			m_engine->GarbageCollect(asGC_ONE_STEP | asGC_DESTROY_GARBAGE | asGC_DETECT_GARBAGE, 1);
-		}
-	}
 
 	// Pop the active context
 	asPopActiveContext(tld, this);
