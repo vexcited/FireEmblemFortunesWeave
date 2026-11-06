@@ -14,19 +14,11 @@ using namespace std;
 // Usually where the variables are only used in debug mode.
 #define UNUSED_VAR(x) (void)(x)
 
-#ifdef AS_CAN_USE_CPP11
-// The string factory doesn't need to keep a specific order in the
-// cache, so the unordered_map is faster than the ordinary map
-#include <unordered_map>  // std::unordered_map
-BEGIN_AS_NAMESPACE
-typedef unordered_map<as::string, int, hash<as::base_string> > map_t;
-END_AS_NAMESPACE
-#else
+// The game keeps the ordinary map, its factory is 32 bytes.
 #include <map>      // std::map
 BEGIN_AS_NAMESPACE
 typedef map<as::string, int> map_t;
 END_AS_NAMESPACE
-#endif
 
 BEGIN_AS_NAMESPACE
 class CStdStringFactory : public asIStringFactory
@@ -770,13 +762,52 @@ static bool StringEquals(const as::string& lhs, const as::string& rhs)
 
 // The game registers print functions next to the string type. The put
 // functions are empty in this build. The printf and sprintf natives lock a
-// game mutex around a formatter and are not modelled.
-void ScriptPrintf(const as::string &fmt, as::string p0, as::string p1,
+// game mutex around a formatter, and printf prints nothing.
+class GameMutex
+{
+public:
+	virtual ~GameMutex();
+	virtual void Lock() = 0;
+	virtual void Unlock() = 0;
+};
+
+extern GameMutex *unknown_219c9b8;
+
+static int printInt;
+static asUINT printHex;
+static asUINT printUInt;
+static float printFloat;
+static asQWORD printHex64;
+static char printSpec[256];
+static char printFormat[256];
+static char printArgs[10][256];
+
+static void FormatPrintArgs(const as::string &fmt, const as::string &p0,
+	const as::string &p1, const as::string &p2, const as::string &p3,
+	const as::string &p4, const as::string &p5, const as::string &p6,
+	const as::string &p7, const as::string &p8, const as::string &p9);
+
+static void ScriptPrintf(const as::string &fmt, as::string p0, as::string p1,
 	as::string p2, as::string p3, as::string p4, as::string p5, as::string p6,
-	as::string p7, as::string p8, as::string p9);
-void ScriptSprintf(as::string &str, const as::string &fmt, as::string p0,
-	as::string p1, as::string p2, as::string p3, as::string p4, as::string p5,
-	as::string p6, as::string p7, as::string p8, as::string p9);
+	as::string p7, as::string p8, as::string p9)
+{
+	unknown_219c9b8->Lock();
+	FormatPrintArgs(fmt, p0, p1, p2, p3, p4, p5, p6, p7, p8, p9);
+	unknown_219c9b8->Unlock();
+}
+
+static void ScriptSprintf(as::string &str, const as::string &fmt,
+	as::string p0, as::string p1, as::string p2, as::string p3, as::string p4,
+	as::string p5, as::string p6, as::string p7, as::string p8, as::string p9)
+{
+	unknown_219c9b8->Lock();
+	FormatPrintArgs(fmt, p0, p1, p2, p3, p4, p5, p6, p7, p8, p9);
+	sprintf(printSpec, printFormat, printArgs[0], printArgs[1], printArgs[2],
+		printArgs[3], printArgs[4], printArgs[5], printArgs[6], printArgs[7],
+		printArgs[8], printArgs[9]);
+	str = printSpec;
+	unknown_219c9b8->Unlock();
+}
 
 static void PutString(const as::string &) {}
 static void PutInt(int) {}
@@ -828,6 +859,111 @@ void RegisterScriptPrint(asIScriptEngine *engine)
 		RegisterScriptPrint_Generic(engine);
 	else
 		RegisterScriptPrint_Native(engine);
+}
+
+// The formatter follows RegisterScriptPrint in the original. Each conversion
+// reads its argument back from the string with sscanf and formats it into its
+// own buffer, and the format becomes a list of %s. The l modifier peeks at the
+// spec buffer past the current character.
+static void FormatPrintArgs(const as::string &fmt, const as::string &p0,
+	const as::string &p1, const as::string &p2, const as::string &p3,
+	const as::string &p4, const as::string &p5, const as::string &p6,
+	const as::string &p7, const as::string &p8, const as::string &p9)
+{
+	static as::string args[10];
+	args[0] = p0;
+	args[1] = p1;
+	args[2] = p2;
+	args[3] = p3;
+	args[4] = p4;
+	args[5] = p5;
+	args[6] = p6;
+	args[7] = p7;
+	args[8] = p8;
+	args[9] = p9;
+
+	const char *s = fmt.c_str();
+	char *spec = printSpec;
+	char *out = printFormat;
+	int n = 0;
+	for( ; *s; s++ )
+	{
+		if( *s != '%' )
+		{
+			*out++ = *s;
+			continue;
+		}
+
+		for( char *p = spec; *s; s++, p++ )
+		{
+			char c = *s;
+			*p = c;
+			bool done = true;
+			switch( c )
+			{
+			case 'c':
+				p[1] = 0;
+				sscanf(args[n].c_str(), "%d", &printInt);
+				sprintf(printArgs[n], printSpec, printInt);
+				break;
+			case 'd':
+				p[1] = 0;
+				sscanf(args[n].c_str(), "%d", &printInt);
+				sprintf(printArgs[n], printSpec, printInt);
+				break;
+			case 'X':
+			case 'x':
+				p[1] = 0;
+				sscanf(args[n].c_str(), "%x", &printHex);
+				sprintf(printArgs[n], printSpec, printHex);
+				break;
+			case 'u':
+				p[1] = 0;
+				sscanf(args[n].c_str(), "%u", &printUInt);
+				sprintf(printArgs[n], printSpec, printUInt);
+				break;
+			case 'f':
+				p[1] = 0;
+				sscanf(args[n].c_str(), "%f", &printFloat);
+				sprintf(printArgs[n], printSpec, printFloat);
+				break;
+			case 's':
+				p[1] = 0;
+				sprintf(printArgs[n], printSpec, args[n].c_str());
+				break;
+			case 'l':
+				if( p[1] == 'l' )
+				{
+					if( p[2] != 'x' )
+					{
+						done = false;
+						break;
+					}
+					p[1] = 0;
+					sscanf(args[n].c_str(), "%llx", &printHex64);
+					sprintf(printArgs[n], printSpec, printHex64);
+				}
+				else if( p[1] == 'x' )
+				{
+					p[1] = 0;
+					sscanf(args[n].c_str(), "%lx", &printHex);
+					sprintf(printArgs[n], printSpec, printHex);
+				}
+				else
+					done = false;
+				break;
+			default:
+				done = false;
+			}
+			if( done )
+				break;
+		}
+
+		*out++ = '%';
+		*out++ = 's';
+		n++;
+	}
+	*out = 0;
 }
 
 void RegisterStdString_Native(asIScriptEngine *engine)
