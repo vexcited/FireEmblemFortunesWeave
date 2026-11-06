@@ -260,17 +260,17 @@ bool FxMS::isRemovable() const {
   return true;
 }
 
-void FxMS::unknown24() {
+void FxMS::unknown24(float) {
 }
 
 float FxMS::unknown25() {
   return 0.0f;
 }
 
-void FxMS::unknown26() {
+void FxMS::unknown26(int) {
 }
 
-void FxMS::unknown27() {
+void FxMS::unknown27(int, float, int) {
 }
 
 void FxMSCtrl::destroy() {
@@ -295,7 +295,7 @@ bool FxMSCtrl::isRemovable() const {
   return true;
 }
 
-void FxMSCtrl::unknown24() {
+void FxMSCtrl::unknown24(int) {
 }
 
 int FxMSCtrl::unknown25() {
@@ -328,17 +328,17 @@ bool FxMSEQ::isRemovable() const {
   return true;
 }
 
-void FxMSEQ::unknown24() {
+void FxMSEQ::unknown24(float) {
 }
 
 float FxMSEQ::unknown25() {
   return 0.0f;
 }
 
-void FxMSEQ::unknown26() {
+void FxMSEQ::unknown26(int) {
 }
 
-void FxMSEQ::unknown27() {
+void FxMSEQ::unknown27(int, float, int) {
 }
 
 void FxSpectrum::destroy() {
@@ -363,7 +363,7 @@ bool FxSpectrum::isRemovable() const {
   return true;
 }
 
-void FxSpectrum::unknown24() {
+void FxSpectrum::unknown24(void* data) {
 }
 
 void FxVib::destroy() {
@@ -388,13 +388,13 @@ bool FxVib::isRemovable() const {
   return true;
 }
 
-void FxVib::unknown24() {
+void FxVib::unknown24(float) {
 }
 
-void FxVib::unknown25() {
+void FxVib::unknown25(float) {
 }
 
-void FxVib::unknown26() {
+void FxVib::unknown26(float) {
 }
 
 float FxVib::unknown27() {
@@ -409,29 +409,29 @@ float FxVib::unknown29() {
   return 0.0f;
 }
 
-void FxVib::unknown30() {
+void FxVib::unknown30(int, float, int) {
 }
 
-void FxVib::unknown31() {
+void FxVib::unknown31(int, float, int) {
 }
 
-int FxVib::unknown32() {
+int FxVib::unknown32(int) {
   return 0;
 }
 
-float FxVib::unknown33() {
+float FxVib::unknown33(int) {
   return 0.0f;
 }
 
-float FxVib::unknown34() {
+float FxVib::unknown34(int) {
   return 0.0f;
 }
 
-float FxVib::unknown35() {
+float FxVib::unknown35(int) {
   return 0.0f;
 }
 
-void FxVib::unknown36() {
+void FxVib::unknown36(int value) {
 }
 
 void FxFinalMix::destroy() {
@@ -537,22 +537,22 @@ void FxSurround::unknown24() {
 void FxSurround::unknown25() {
 }
 
-void FxSurround::unknown26() {
+void FxSurround::unknown26(int) {
 }
 
-void FxSurround::unknown27() {
+void FxSurround::unknown27(int) {
 }
 
-void FxSurround::unknown28() {
+void FxSurround::unknown28(int) {
 }
 
-void FxSurround::unknown29() {
+void FxSurround::unknown29(int) {
 }
 
-void FxSurround::unknown30() {
+void FxSurround::unknown30(int) {
 }
 
-void FxSurround::unknown31() {
+void FxSurround::unknown31(int) {
 }
 
 int FxSurround::unknown32() {
@@ -579,28 +579,28 @@ int FxSurround::unknown37() {
   return 0;
 }
 
-void FxSurround::unknown38() {
+void FxSurround::unknown38(int, float) {
 }
 
-void FxSurround::unknown39() {
+void FxSurround::unknown39(int, int) {
 }
 
-void FxSurround::unknown40() {
+void FxSurround::unknown40(int, float) {
 }
 
-float FxSurround::unknown41() {
+float FxSurround::unknown41(int) {
   return 0.0f;
 }
 
-int FxSurround::unknown42() {
+int FxSurround::unknown42(int) {
   return 0;
 }
 
-float FxSurround::unknown43() {
+float FxSurround::unknown43(int) {
   return 0.0f;
 }
 
-void FxSurround::unknown44() {
+void FxSurround::unknown44(int) {
 }
 
 int FxSurround::unknown45() {
@@ -629,27 +629,27 @@ bool FxLFE::isRemovable() const {
   return true;
 }
 
-void FxLFE::unknown24() {
+void FxLFE::unknown24(float) {
 }
 
 float FxLFE::unknown25() {
   return 0.0f;
 }
 
-void FxLFE::unknown26() {
+void FxLFE::unknown26(float) {
 }
 
 float FxLFE::unknown27() {
   return 0.0f;
 }
 
-void FxLFE::unknown28() {
+void FxLFE::unknown28(int) {
 }
 
-void FxLFE::unknown29() {
+void FxLFE::unknown29(int, float, int) {
 }
 
-void FxLFE::unknown30() {
+void FxLFE::unknown30(bool) {
 }
 
 void FxSimpleLimiter::destroy() {
@@ -792,10 +792,10 @@ bool FxPCMPlayer::isRemovable() const {
   return true;
 }
 
-void FxPCMPlayer::unknown24() {
+void FxPCMPlayer::unknown24(int) {
 }
 
-void FxPCMPlayer::unknown25() {
+void FxPCMPlayer::unknown25(const void*, int) {
 }
 
 int FxPCMPlayer::unknown26() {

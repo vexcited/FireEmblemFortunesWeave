@@ -3,6 +3,8 @@
 #include <cstdint>
 
 #include "nn/atk/effect.hpp"
+#include "nn/audio/effect_api.hpp"
+#include "nn/audio/renderer_config.hpp"
 #include "snd/fnd/weak_handle.hpp"
 #include "snd/fx/fx.hpp"
 #include "snd/memory.hpp"
@@ -14,6 +16,51 @@ class Manager;
 }
 
 namespace snd::target {
+
+// The parameter blocks of the sound data, converted to the toolkit units
+// when an effect applies them.
+struct ReverbParam {
+  int earlyMode;
+  float earlyGain;
+  int predelayTime;
+  int lateMode;
+  float lateGain;
+  float coloration;
+  float highFreqDecayRatio;
+  int decayTime;
+  float reverbGain;
+  float dryGain;
+  float outGain;
+};
+
+struct DelayParam {
+  int delayTimeMax;
+  int delayTime;
+  float feedbackGain;
+  float lowPassAmount;
+  float channelSpread;
+  float inGain;
+  float dryGain;
+  float inScale;
+};
+
+struct CompressorParam {
+  int attackTime;
+  int releaseTime;
+  float threshold;
+  float ratio;
+  float outGain;
+  bool makeupGain;
+};
+
+struct LightLimiterParam {
+  int attackTime;
+  int releaseTime;
+  int lookAheadTime;
+  float threshold;
+  float inputGain;
+  float outputGain;
+};
 
 // The platform object an effect owns at 0x15f8, the toolkit effect of the
 // built in kinds and the auxiliary effect of the others.
@@ -56,8 +103,11 @@ public:
 
   size_t getWorkBufferSize();
   void setWorkBuffer(void* buffer, size_t size);
+  void updateParameters();
 
-  uint8_t unknown_60_[0x60];
+  uint8_t unknown_60_[0x18];
+  nn::audio::ReverbParameterSet parameters;
+  uint8_t unknown_a4_[0x1c];
   int bus;
   int sampleRate;
 };
@@ -82,8 +132,11 @@ public:
 
   size_t getWorkBufferSize();
   void setWorkBuffer(void* buffer, size_t size);
+  void updateParameters();
 
-  uint8_t unknown_60_[0x50];
+  uint8_t unknown_60_[0x18];
+  nn::audio::DelayParameterSet parameters;
+  uint8_t unknown_98_[0x18];
   int bus;
   int sampleRate;
   uint8_t unknown_b8_[0x8];
@@ -96,8 +149,11 @@ public:
 
   size_t getWorkBufferSize();
   void setWorkBuffer(void* buffer, size_t size);
+  void updateParameters();
 
-  uint8_t unknown_60_[0x58];
+  uint8_t unknown_60_[0x18];
+  nn::audio::LightLimiterParameterSet parameters;
+  uint8_t unknown_a0_[0x18];
   int bus;
   int sampleRate;
   uint8_t unknown_c0_[0x8];
@@ -105,6 +161,29 @@ public:
 
 // The auxiliary effects the game implements on top of the toolkit, only
 // their sizes and constructors are known here.
+class SpectrumEffect : public nn::atk::EffectAux {
+public:
+  uint8_t unknown_60_[0x8010];
+  bool unknown_8070_;
+};
+
+class FFTEffect : public nn::atk::EffectAux {
+public:
+  FFTEffect();
+
+private:
+  uint8_t body_[0x90];
+};
+
+class MSCtrlEffect : public nn::atk::EffectAux {
+public:
+  MSCtrlEffect();
+
+  uint8_t unknown_60_[0x8];
+  int unknown_68_;
+  uint8_t unknown_6c_[0x4];
+};
+
 class MultiBridgeEffect : public nn::atk::EffectAux {
 public:
   explicit MultiBridgeEffect(int bridges);
@@ -133,29 +212,60 @@ class MSEffect : public nn::atk::EffectAux {
 public:
   MSEffect();
 
-private:
-  uint8_t body_[0x40];
+  void unknown16d9b0(int);
+  void unknown16d9d0(int, float, int);
+
+  uint8_t unknown_60_[0x10];
+  float unknown_70_;
+  float unknown_74_;
+  uint8_t unknown_78_[0x28];
 };
 
 class MSEQEffect : public nn::atk::EffectAux {
 public:
   MSEQEffect();
 
-private:
-  uint8_t body_[0x40];
+  void unknown16ed70(int);
+  void unknown16ed90(int, float, int);
+
+  uint8_t unknown_60_[0x10];
+  float unknown_70_;
+  float unknown_74_;
+  uint8_t unknown_78_[0x28];
 };
 
 class VibEffect : public nn::atk::EffectAux {
 public:
+  void unknown173230(fx::FxBase* owner, int value);
+  struct Channel {
+    float gain;
+    float pan;
+    float surroundPan;
+  };
+
   VibEffect();
 
-private:
-  uint8_t body_[0x70];
+  void unknown173100(int, float, int);
+  void unknown173180(int, float, int);
+  int unknown173210(int);
+
+  uint8_t unknown_60_[0x10];
+  float unknown_70_;
+  float unknown_74_;
+  float unknown_78_;
+  float unknown_7c_;
+  float unknown_80_;
+  float unknown_84_;
+  uint8_t unknown_88_[0x20];
+  Channel channels[3];
+  uint8_t unknown_cc_[0x4];
 };
 
 class FinalMixEffect : public nn::atk::EffectAux {
 public:
   FinalMixEffect();
+
+  void setUnknown70(bool value);
 
 private:
   uint8_t body_[0x38];
@@ -181,24 +291,59 @@ class SurroundEffect : public nn::atk::EffectAux {
 public:
   SurroundEffect();
 
-private:
-  uint8_t body_[0x6098];
+  void setUnknown175410(bool);
+  void unknown175420(int);
+  void unknown175480(int);
+  void unknown1754e0(int);
+  void unknown175540(int);
+  void unknown1755a0(int);
+  void unknown175600(int);
+  void unknown175660(int, float);
+  void unknown175740(int, int);
+  void unknown175800(int, float);
+  void unknown175c20(int);
+
+  uint8_t unknown_60_[0xc];
+  int unknown_6c_;
+  int unknown_70_;
+  int unknown_74_;
+  int unknown_78_;
+  int unknown_7c_;
+  int unknown_80_;
+  int unknown_84_;
+  uint8_t unknown_88_[0x6058];
+  uint16_t unknown_60e0_[2];
+  float unknown_60e4_[2];
+  float unknown_60ec_[2];
+  uint8_t unknown_60f4_[0x4];
 };
 
 class LFEEffect : public nn::atk::EffectAux {
 public:
   LFEEffect();
 
-private:
-  uint8_t body_[0x48];
+  void unknown176550(int);
+  void unknown176570(int, float, int);
+
+  uint8_t unknown_60_[0x14];
+  float unknown_74_;
+  uint8_t unknown_78_[0x4];
+  float unknown_7c_;
+  bool unknown_80_;
+  uint8_t unknown_81_[0x27];
 };
 
 class SimpleLimiterEffect : public nn::atk::EffectAux {
 public:
   SimpleLimiterEffect();
 
-private:
-  uint8_t body_[0x1018];
+  void enableUnknown68();
+  void disableUnknown68();
+  int getUnknown1074() const;
+
+  uint8_t unknown_60_[0x1010];
+  float unknown_1070_;
+  uint8_t unknown_1074_[0x4];
 };
 
 class SpeakerEffect : public nn::atk::EffectAux {
@@ -213,8 +358,18 @@ class PCMPlayerEffect : public nn::atk::EffectAux {
 public:
   PCMPlayerEffect();
 
-private:
-  uint8_t body_[0x88];
+  void unknown191740(int);
+  void unknown191900(const void*, int);
+  int unknown191c60();
+  void unknown190d00();
+
+  uint8_t unknown_60_[0x38];
+  int unknown_98_;
+  uint8_t unknown_9c_[0x8];
+  uint8_t unknown_a4_;
+  uint8_t unknown_a5_[0x1b];
+  uint64_t unknown_c0_;
+  uint8_t unknown_c8_[0x20];
 };
 
 
@@ -355,7 +510,9 @@ public:
   bool isRemovable() const override;
 
 private:
-  uint8_t unknown_1630_[0x118];
+  uint64_t unknown_1650_[6] = {};
+  uint16_t unknown_1680_ = 0;
+  uint64_t unknown_1688_[24] = {};
 };
 
 class FxMSCtrlNX : public fx::FxMSCtrl {
@@ -367,9 +524,15 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
+  float unknown27() override;
+  int unknown26() override;
+  int unknown25() override;
+  void unknown24(int) override;
 
 private:
-  uint8_t unknown_1630_[0x18];
+  uint8_t unknown_1630_[0x10];
+  int unknown_1640_ = -100;
+  float unknown_1644_ = 0.0f;
 };
 
 class FxEQNX : public fx::FxEQ {
@@ -383,7 +546,7 @@ public:
   bool isRemovable() const override;
 
 private:
-  uint8_t unknown_1630_[0x48];
+  uint64_t unknown_1630_[9] = {};
 };
 
 class FxMSNX : public fx::FxMS {
@@ -395,6 +558,10 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
+  void unknown27(int, float, int) override;
+  void unknown26(int) override;
+  float unknown25() override;
+  void unknown24(float) override;
 };
 
 class FxMSEQNX : public fx::FxMSEQ {
@@ -406,10 +573,19 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
+  void unknown27(int, float, int) override;
+  void unknown26(int) override;
+  float unknown25() override;
+  void unknown24(float) override;
 };
 
 class FxSpectrumNX : public fx::FxSpectrum {
 public:
+  // The spectrum the effect analyzed last.
+  struct Spectrum {
+    uint8_t data[0x1c8];
+  };
+
   FxSpectrumNX(Manager* manager, void* bus, uint32_t index,
     uint32_t channels);
   ~FxSpectrumNX() override;
@@ -417,9 +593,16 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
+  void unknown24(void* data) override;
+  virtual void unknown25(int value);
+  virtual void unknown26();
+  virtual void setUnknown8070(bool value);
+  virtual bool getUnknown8070() const;
 
 private:
-  uint8_t unknown_1630_[0x410];
+  uint8_t unknown_1630_[0x1d0];
+  Spectrum spectrum_;
+  uint8_t unknown_19c8_[0x78];
 };
 
 class FxVibNX : public fx::FxVib {
@@ -431,6 +614,19 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
+  void unknown36(int value) override;
+  float unknown35(int) override;
+  float unknown34(int) override;
+  float unknown33(int) override;
+  int unknown32(int) override;
+  void unknown31(int, float, int) override;
+  void unknown30(int, float, int) override;
+  float unknown29() override;
+  float unknown28() override;
+  float unknown27() override;
+  void unknown26(float) override;
+  void unknown25(float) override;
+  void unknown24(float) override;
 };
 
 class FxFinalMixNX : public fx::FxFinalMix {
@@ -442,6 +638,8 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
+  void unknown25() override;
+  void unknown26() override;
 };
 
 class FxMuteNX : public fx::FxMute {
@@ -475,6 +673,28 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
+  int unknown45() override;
+  void unknown44(int) override;
+  float unknown43(int) override;
+  int unknown42(int) override;
+  float unknown41(int) override;
+  void unknown40(int, float) override;
+  void unknown39(int, int) override;
+  void unknown38(int, float) override;
+  int unknown37() override;
+  int unknown36() override;
+  int unknown35() override;
+  int unknown34() override;
+  int unknown33() override;
+  int unknown32() override;
+  void unknown31(int) override;
+  void unknown30(int) override;
+  void unknown29(int) override;
+  void unknown28(int) override;
+  void unknown27(int) override;
+  void unknown26(int) override;
+  void unknown25() override;
+  void unknown24() override;
 };
 
 class FxLFENX : public fx::FxLFE {
@@ -486,6 +706,13 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
+  void unknown30(bool) override;
+  void unknown29(int, float, int) override;
+  void unknown28(int) override;
+  float unknown27() override;
+  void unknown26(float) override;
+  float unknown25() override;
+  void unknown24(float) override;
 };
 
 class FxSimpleLimiterNX : public fx::FxSimpleLimiter {
@@ -497,6 +724,10 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
+  void unknown24() override;
+  void unknown25() override;
+  float unknown26() override;
+  int unknown27() override;
 };
 
 class FxWaveformNX : public fx::FxWaveform {
@@ -530,6 +761,14 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
+  void unknown31() override;
+  int unknown30() override;
+  uint64_t unknown29() override;
+  int unknown28() override;
+  int unknown27() override;
+  int unknown26() override;
+  void unknown25(const void*, int) override;
+  void unknown24(int) override;
 };
 
 class FxMultiBridgeNX : public fx::FxMultiBridge {

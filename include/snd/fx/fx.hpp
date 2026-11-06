@@ -143,12 +143,19 @@ public:
 
 class FxFFT : public FxBase {
 public:
+  FxFFT(Manager* manager, const char* name, fnd::WeakHandle target,
+    int index, int count);
+  FxFFT(Manager* manager, const char* name, fnd::WeakHandle target,
+    fnd::WeakHandle source, int index, int count);
   void destroy() override;
   void mainUnlocked() override;
   void** getRegistry() override;
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
+
+private:
+  uint8_t unknown_1630_[0x20];
 };
 
 class FxEQ : public FxBase {
@@ -172,10 +179,10 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
-  virtual void unknown24();
+  virtual void unknown24(float);
   virtual float unknown25();
-  virtual void unknown26();
-  virtual void unknown27();
+  virtual void unknown26(int);
+  virtual void unknown27(int, float, int);
 
 private:
   bool unknown_1630_ = false;
@@ -183,15 +190,17 @@ private:
 
 class FxMSCtrl : public FxBase {
 public:
+  FxMSCtrl(Manager* manager, const char* name, fnd::WeakHandle target,
+    int index, int count);
   void destroy() override;
   void mainUnlocked() override;
   void** getRegistry() override;
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
-  virtual void unknown24();
+  virtual void unknown24(int);
   virtual int unknown25();
-  virtual void unknown26();
+  virtual int unknown26();
   virtual float unknown27();
 };
 
@@ -204,10 +213,10 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
-  virtual void unknown24();
+  virtual void unknown24(float);
   virtual float unknown25();
-  virtual void unknown26();
-  virtual void unknown27();
+  virtual void unknown26(int);
+  virtual void unknown27(int, float, int);
 
 private:
   bool unknown_1630_ = false;
@@ -221,7 +230,7 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
-  virtual void unknown24();
+  virtual void unknown24(void* data);
 };
 
 class FxVib : public FxBase {
@@ -233,19 +242,19 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
-  virtual void unknown24();
-  virtual void unknown25();
-  virtual void unknown26();
+  virtual void unknown24(float);
+  virtual void unknown25(float);
+  virtual void unknown26(float);
   virtual float unknown27();
   virtual float unknown28();
   virtual float unknown29();
-  virtual void unknown30();
-  virtual void unknown31();
-  virtual int unknown32();
-  virtual float unknown33();
-  virtual float unknown34();
-  virtual float unknown35();
-  virtual void unknown36();
+  virtual void unknown30(int, float, int);
+  virtual void unknown31(int, float, int);
+  virtual int unknown32(int);
+  virtual float unknown33(int);
+  virtual float unknown34(int);
+  virtual float unknown35(int);
+  virtual void unknown36(int value);
 };
 
 class FxFinalMix : public FxBase {
@@ -295,25 +304,25 @@ public:
   bool isRemovable() const override;
   virtual void unknown24();
   virtual void unknown25();
-  virtual void unknown26();
-  virtual void unknown27();
-  virtual void unknown28();
-  virtual void unknown29();
-  virtual void unknown30();
-  virtual void unknown31();
+  virtual void unknown26(int);
+  virtual void unknown27(int);
+  virtual void unknown28(int);
+  virtual void unknown29(int);
+  virtual void unknown30(int);
+  virtual void unknown31(int);
   virtual int unknown32();
   virtual int unknown33();
   virtual int unknown34();
   virtual int unknown35();
   virtual int unknown36();
   virtual int unknown37();
-  virtual void unknown38();
-  virtual void unknown39();
-  virtual void unknown40();
-  virtual float unknown41();
-  virtual int unknown42();
-  virtual float unknown43();
-  virtual void unknown44();
+  virtual void unknown38(int, float);
+  virtual void unknown39(int, int);
+  virtual void unknown40(int, float);
+  virtual float unknown41(int);
+  virtual int unknown42(int);
+  virtual float unknown43(int);
+  virtual void unknown44(int);
   virtual int unknown45();
 };
 
@@ -326,13 +335,13 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
-  virtual void unknown24();
+  virtual void unknown24(float);
   virtual float unknown25();
-  virtual void unknown26();
+  virtual void unknown26(float);
   virtual float unknown27();
-  virtual void unknown28();
-  virtual void unknown29();
-  virtual void unknown30();
+  virtual void unknown28(int);
+  virtual void unknown29(int, float, int);
+  virtual void unknown30(bool);
 };
 
 class FxSimpleLimiter : public FxBase {
@@ -408,12 +417,12 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
-  virtual void unknown24();
-  virtual void unknown25();
+  virtual void unknown24(int);
+  virtual void unknown25(const void*, int);
   virtual int unknown26();
   virtual int unknown27();
-  virtual void unknown28();
-  virtual void unknown29();
+  virtual int unknown28();
+  virtual uint64_t unknown29();
   virtual int unknown30();
   virtual void unknown31();
 };

@@ -1,5 +1,7 @@
 #include "snd/target/fx.hpp"
 
+#include <cstring>
+
 #include "nn/diag/diag_abort.hpp"
 #include "snd/memory.hpp"
 #include "snd/target/base.hpp"
@@ -7,6 +9,11 @@
 namespace snd::target {
 
 namespace {
+
+template <typename T>
+T* getAux(const FxBase* impl) {
+  return static_cast<T*>(impl->aux);
+}
 
 template <typename T>
 T* getEffect(const FxBase* impl) {
@@ -794,6 +801,7 @@ FxPCMPlayerNX::FxPCMPlayerNX(Manager* manager, void* bus, uint32_t index,
   bufferSize_ = impl_->aux->GetRequiredMemSize();
   buffer_ = s_platform->allocPoolMemory(bufferSize_, 0);
   NN_ABORT_UNLESS_NOT_NULL(buffer_);
+  getAux<PCMPlayerEffect>(impl_)->unknown191740(4800);
 }
 
 // Four channels select the second mode and six the third.
@@ -985,6 +993,447 @@ FxMultiBridgeNX::FxMultiBridgeNX(Manager* manager, void* bus,
   bufferSize_ = impl_->aux->GetRequiredMemSize();
   buffer_ = s_platform->allocPoolMemory(bufferSize_, 0);
   NN_ABORT_UNLESS_NOT_NULL(buffer_);
+}
+
+void FxMSNX::unknown24(float value) {
+  getAux<MSEffect>(impl_)->unknown_74_ = value;
+}
+
+float FxMSNX::unknown25() {
+  return getAux<MSEffect>(impl_)->unknown_70_;
+}
+
+void FxMSNX::unknown26(int a) {
+  getAux<MSEffect>(impl_)->unknown16d9b0(a);
+}
+
+void FxMSNX::unknown27(int a, float b, int c) {
+  getAux<MSEffect>(impl_)->unknown16d9d0(a, b, c);
+}
+
+void FxMSCtrlNX::unknown24(int value) {
+  unknown_1640_ = value;
+}
+
+int FxMSCtrlNX::unknown25() {
+  return unknown_1640_;
+}
+
+int FxMSCtrlNX::unknown26() {
+  return getAux<MSCtrlEffect>(impl_)->unknown_68_;
+}
+
+float FxMSCtrlNX::unknown27() {
+  return unknown_1644_;
+}
+
+void FxMSEQNX::unknown24(float value) {
+  getAux<MSEQEffect>(impl_)->unknown_74_ = value;
+}
+
+float FxMSEQNX::unknown25() {
+  return getAux<MSEQEffect>(impl_)->unknown_70_;
+}
+
+void FxMSEQNX::unknown26(int a) {
+  getAux<MSEQEffect>(impl_)->unknown16ed70(a);
+}
+
+void FxMSEQNX::unknown27(int a, float b, int c) {
+  getAux<MSEQEffect>(impl_)->unknown16ed90(a, b, c);
+}
+
+void FxVibNX::unknown24(float value) {
+  getAux<VibEffect>(impl_)->unknown_74_ = value;
+}
+
+void FxVibNX::unknown25(float value) {
+  getAux<VibEffect>(impl_)->unknown_7c_ = value;
+}
+
+void FxVibNX::unknown26(float value) {
+  getAux<VibEffect>(impl_)->unknown_84_ = value;
+}
+
+float FxVibNX::unknown27() {
+  return getAux<VibEffect>(impl_)->unknown_70_;
+}
+
+float FxVibNX::unknown28() {
+  return getAux<VibEffect>(impl_)->unknown_78_;
+}
+
+float FxVibNX::unknown29() {
+  return getAux<VibEffect>(impl_)->unknown_80_;
+}
+
+void FxVibNX::unknown30(int a, float b, int c) {
+  getAux<VibEffect>(impl_)->unknown173100(a, b, c);
+}
+
+void FxVibNX::unknown31(int a, float b, int c) {
+  getAux<VibEffect>(impl_)->unknown173180(a, b, c);
+}
+
+int FxVibNX::unknown32(int a) {
+  return getAux<VibEffect>(impl_)->unknown173210(a);
+}
+
+float FxVibNX::unknown33(int a) {
+  return getAux<VibEffect>(impl_)->channels[a].gain;
+}
+
+float FxVibNX::unknown34(int a) {
+  return getAux<VibEffect>(impl_)->channels[a].pan;
+}
+
+float FxVibNX::unknown35(int a) {
+  return getAux<VibEffect>(impl_)->channels[a].surroundPan;
+}
+
+void FxSurroundNX::unknown24() {
+  getAux<SurroundEffect>(impl_)->setUnknown175410(true);
+}
+
+void FxSurroundNX::unknown25() {
+  getAux<SurroundEffect>(impl_)->setUnknown175410(false);
+}
+
+void FxSurroundNX::unknown26(int a) {
+  getAux<SurroundEffect>(impl_)->unknown175420(a);
+}
+
+void FxSurroundNX::unknown27(int a) {
+  getAux<SurroundEffect>(impl_)->unknown175480(a);
+}
+
+void FxSurroundNX::unknown28(int a) {
+  getAux<SurroundEffect>(impl_)->unknown1754e0(a);
+}
+
+void FxSurroundNX::unknown29(int a) {
+  getAux<SurroundEffect>(impl_)->unknown175540(a);
+}
+
+void FxSurroundNX::unknown30(int a) {
+  getAux<SurroundEffect>(impl_)->unknown1755a0(a);
+}
+
+void FxSurroundNX::unknown31(int a) {
+  getAux<SurroundEffect>(impl_)->unknown175600(a);
+}
+
+int FxSurroundNX::unknown32() {
+  return getAux<SurroundEffect>(impl_)->unknown_6c_;
+}
+
+int FxSurroundNX::unknown33() {
+  return getAux<SurroundEffect>(impl_)->unknown_70_;
+}
+
+int FxSurroundNX::unknown34() {
+  return getAux<SurroundEffect>(impl_)->unknown_74_;
+}
+
+int FxSurroundNX::unknown35() {
+  return getAux<SurroundEffect>(impl_)->unknown_78_;
+}
+
+int FxSurroundNX::unknown36() {
+  return getAux<SurroundEffect>(impl_)->unknown_7c_;
+}
+
+int FxSurroundNX::unknown37() {
+  return getAux<SurroundEffect>(impl_)->unknown_80_;
+}
+
+void FxSurroundNX::unknown38(int a, float b) {
+  getAux<SurroundEffect>(impl_)->unknown175660(a, b);
+}
+
+void FxSurroundNX::unknown39(int a, int b) {
+  getAux<SurroundEffect>(impl_)->unknown175740(a, b);
+}
+
+void FxSurroundNX::unknown40(int a, float b) {
+  getAux<SurroundEffect>(impl_)->unknown175800(a, b);
+}
+
+float FxSurroundNX::unknown41(int a) {
+  return getAux<SurroundEffect>(impl_)->unknown_60e4_[a];
+}
+
+int FxSurroundNX::unknown42(int a) {
+  return getAux<SurroundEffect>(impl_)->unknown_60e0_[a];
+}
+
+float FxSurroundNX::unknown43(int a) {
+  return getAux<SurroundEffect>(impl_)->unknown_60ec_[a];
+}
+
+void FxSurroundNX::unknown44(int a) {
+  getAux<SurroundEffect>(impl_)->unknown175c20(a);
+}
+
+int FxSurroundNX::unknown45() {
+  return getAux<SurroundEffect>(impl_)->unknown_84_;
+}
+
+void FxLFENX::unknown24(float value) {
+  getAux<LFEEffect>(impl_)->unknown_74_ = value;
+}
+
+float FxLFENX::unknown25() {
+  return getAux<LFEEffect>(impl_)->unknown_74_;
+}
+
+void FxLFENX::unknown26(float value) {
+  getAux<LFEEffect>(impl_)->unknown_7c_ = value;
+}
+
+float FxLFENX::unknown27() {
+  return getAux<LFEEffect>(impl_)->unknown_7c_;
+}
+
+void FxLFENX::unknown28(int a) {
+  getAux<LFEEffect>(impl_)->unknown176550(a);
+}
+
+void FxLFENX::unknown29(int a, float b, int c) {
+  getAux<LFEEffect>(impl_)->unknown176570(a, b, c);
+}
+
+void FxLFENX::unknown30(bool value) {
+  getAux<LFEEffect>(impl_)->unknown_80_ = value;
+}
+
+void FxPCMPlayerNX::unknown24(int a) {
+  getAux<PCMPlayerEffect>(impl_)->unknown191740(a);
+}
+
+void FxPCMPlayerNX::unknown25(const void* a, int b) {
+  getAux<PCMPlayerEffect>(impl_)->unknown191900(a, b);
+}
+
+int FxPCMPlayerNX::unknown26() {
+  return getAux<PCMPlayerEffect>(impl_)->unknown_98_;
+}
+
+int FxPCMPlayerNX::unknown27() {
+  return getAux<PCMPlayerEffect>(impl_)->unknown191c60();
+}
+
+int FxPCMPlayerNX::unknown28() {
+  return 48000;
+}
+
+uint64_t FxPCMPlayerNX::unknown29() {
+  return getAux<PCMPlayerEffect>(impl_)->unknown_c0_;
+}
+
+int FxPCMPlayerNX::unknown30() {
+  return getAux<PCMPlayerEffect>(impl_)->unknown_a4_;
+}
+
+void FxPCMPlayerNX::unknown31() {
+  getAux<PCMPlayerEffect>(impl_)->unknown190d00();
+}
+
+void FxCpuReverbNX::setParam(const void* param, float scale) {
+  const ReverbParam* source = static_cast<const ReverbParam*>(param);
+  nn::audio::ReverbParameterSet& set =
+    getAux<CpuReverbEffect>(impl_)->parameters;
+  set.earlyMode =
+    static_cast<nn::audio::ReverbType::EarlyMode>(source->earlyMode);
+  set.earlyGain = source->earlyGain;
+  set.predelayTimeMilliSeconds = source->predelayTime;
+  set.lateMode = static_cast<nn::audio::ReverbType::LateMode>(source->lateMode);
+  set.lateGain = source->lateGain;
+  set.decayTimeSeconds = source->decayTime / 1000.0f;
+  set.highFreqDecayRatio = source->highFreqDecayRatio;
+  set.coloration = source->coloration;
+  set.reverbGain = source->reverbGain;
+  set.outGain = scale * source->outGain;
+  set.dryGain = source->dryGain;
+  getAux<CpuReverbEffect>(impl_)->updateParameters();
+}
+
+void FxCpuDelayNX::setParam(const void* param, float scale) {
+  const DelayParam* source = static_cast<const DelayParam*>(param);
+  nn::audio::DelayParameterSet& set = getAux<CpuDelayEffect>(impl_)->parameters;
+  set.delayTime = nn::audio::detail::FromMilliSeconds(source->delayTime);
+  set.inGain = scale * (source->inGain * source->inScale);
+  set.feedbackGain = source->feedbackGain;
+  set.dryGain = source->dryGain;
+  set.lowPassAmount = source->lowPassAmount;
+  set.channelSpread = source->channelSpread;
+  getAux<CpuDelayEffect>(impl_)->updateParameters();
+}
+
+void FxCpuLightLimiterNX::setParam(const void* param, float scale) {
+  const LightLimiterParam* source = static_cast<const LightLimiterParam*>(param);
+  nn::audio::LightLimiterParameterSet& set =
+    getAux<CpuLightLimiterEffect>(impl_)->parameters;
+  set.attackTime = nn::audio::detail::FromMicroSeconds(source->attackTime);
+  set.releaseTime = nn::audio::detail::FromMilliSeconds(source->releaseTime);
+  set.lookAheadTime = nn::audio::detail::FromMicroSeconds(source->lookAheadTime);
+  set.threshold = source->threshold;
+  set.inputGain = source->inputGain;
+  set.outputGain = scale * source->outputGain;
+  getAux<CpuLightLimiterEffect>(impl_)->updateParameters();
+}
+
+void FxReverbNX::setParam(const void* param, float scale) {
+  const ReverbParam* source = static_cast<const ReverbParam*>(param);
+  getEffect<nn::atk::EffectReverb>(impl_)->SetEarlyMode(source->earlyMode);
+  getEffect<nn::atk::EffectReverb>(impl_)->SetEarlyGain(source->earlyGain);
+  getEffect<nn::atk::EffectReverb>(impl_)->SetPredelayTime(
+    nn::audio::detail::FromMilliSeconds(source->predelayTime));
+  getEffect<nn::atk::EffectReverb>(impl_)->SetLateMode(source->lateMode);
+  getEffect<nn::atk::EffectReverb>(impl_)->SetLateGain(source->lateGain);
+  getEffect<nn::atk::EffectReverb>(impl_)->SetDecayTime(
+    nn::audio::detail::FromMilliSeconds(source->decayTime));
+  getEffect<nn::atk::EffectReverb>(impl_)->SetHighFrequencyDecayRatio(
+    source->highFreqDecayRatio);
+  getEffect<nn::atk::EffectReverb>(impl_)->SetColoration(source->coloration);
+  getEffect<nn::atk::EffectReverb>(impl_)->SetReverbGain(source->reverbGain);
+  getEffect<nn::atk::EffectReverb>(impl_)->SetOutGain(
+    scale * source->outGain);
+  getEffect<nn::atk::EffectReverb>(impl_)->SetDryGain(source->dryGain);
+}
+
+void FxDelayNX::setParam(const void* param, float scale) {
+  const DelayParam* source = static_cast<const DelayParam*>(param);
+  getEffect<nn::atk::EffectDelay>(impl_)->SetDelayTimeMax(
+    nn::audio::detail::FromMilliSeconds(source->delayTimeMax));
+  getEffect<nn::atk::EffectDelay>(impl_)->SetDelayTime(
+    nn::audio::detail::FromMilliSeconds(source->delayTime));
+  getEffect<nn::atk::EffectDelay>(impl_)->SetInGain(
+    scale * (source->inGain * source->inScale));
+  getEffect<nn::atk::EffectDelay>(impl_)->SetFeedbackGain(
+    source->feedbackGain);
+  getEffect<nn::atk::EffectDelay>(impl_)->SetDryGain(source->dryGain);
+  getEffect<nn::atk::EffectDelay>(impl_)->SetLowPassAmount(
+    source->lowPassAmount);
+  getEffect<nn::atk::EffectDelay>(impl_)->SetChannelSpread(
+    source->channelSpread);
+}
+
+void FxLightLimiterNX::setParam(const void* param, float scale) {
+  const LightLimiterParam* source =
+    static_cast<const LightLimiterParam*>(param);
+  getEffect<nn::atk::EffectLightLimiter>(impl_)->SetAttackTime(
+    nn::audio::detail::FromMicroSeconds(source->attackTime));
+  getEffect<nn::atk::EffectLightLimiter>(impl_)->SetReleaseTime(
+    nn::audio::detail::FromMilliSeconds(source->releaseTime));
+  getEffect<nn::atk::EffectLightLimiter>(impl_)->SetLookAheadTime(
+    nn::audio::detail::FromMicroSeconds(source->lookAheadTime));
+  getEffect<nn::atk::EffectLightLimiter>(impl_)->SetThreshold(
+    source->threshold);
+  getEffect<nn::atk::EffectLightLimiter>(impl_)->SetInputGain(
+    source->inputGain);
+  getEffect<nn::atk::EffectLightLimiter>(impl_)->SetOutputGain(
+    scale * source->outputGain);
+}
+
+void FxCompressorNX::setParam(const void* param, float scale) {
+  const CompressorParam* source = static_cast<const CompressorParam*>(param);
+  getEffect<nn::atk::EffectCompressor>(impl_)->SetAttackTime(
+    nn::audio::detail::FromMilliSeconds(source->attackTime));
+  getEffect<nn::atk::EffectCompressor>(impl_)->SetReleaseTime(
+    nn::audio::detail::FromMilliSeconds(source->releaseTime));
+  getEffect<nn::atk::EffectCompressor>(impl_)->SetThreshold(
+    source->threshold);
+  getEffect<nn::atk::EffectCompressor>(impl_)->SetRatio(source->ratio);
+  getEffect<nn::atk::EffectCompressor>(impl_)->SetOutGain(
+    scale * source->outGain);
+  getEffect<nn::atk::EffectCompressor>(impl_)->SetMakeupGainEnabled(
+    source->makeupGain);
+}
+
+FxMSCtrlNX::FxMSCtrlNX(Manager* manager, void* bus, fnd::WeakHandle target,
+  uint32_t index, uint32_t channels) : fx::FxMSCtrl(manager,
+    static_cast<const char*>(bus), target, index, channels) {
+  impl_ = snd::create<target::FxBase>();
+  impl_->setAux(snd::create<MSCtrlEffect>());
+  impl_->aux->SetChannelCount(count_);
+  impl_->aux->SetBus(channel_);
+  impl_->aux->SetEnabled(true);
+  bufferSize_ = impl_->aux->GetRequiredMemSize();
+  buffer_ = s_platform->allocPoolMemory(bufferSize_, 0);
+  NN_ABORT_UNLESS_NOT_NULL(buffer_);
+}
+
+FxFFTNX::FxFFTNX(Manager* manager, void* bus, fnd::WeakHandle target,
+  uint32_t index, uint32_t channels) : fx::FxFFT(manager,
+    static_cast<const char*>(bus), target, index, channels) {
+  impl_ = snd::create<target::FxBase>();
+  impl_->setAux(snd::create<FFTEffect>());
+  impl_->aux->SetChannelCount(count_);
+  impl_->aux->SetBus(channel_);
+  impl_->aux->SetEnabled(true);
+  bufferSize_ = impl_->aux->GetRequiredMemSize();
+  buffer_ = s_platform->allocPoolMemory(bufferSize_, 0);
+  NN_ABORT_UNLESS_NOT_NULL(buffer_);
+}
+
+// The final mix and limiter switches only apply to an enabled effect.
+void FxFinalMixNX::unknown25() {
+  if (impl_->aux->IsEnabled()) {
+    getAux<FinalMixEffect>(impl_)->setUnknown70(true);
+  }
+}
+
+void FxFinalMixNX::unknown26() {
+  if (impl_->aux->IsEnabled()) {
+    getAux<FinalMixEffect>(impl_)->setUnknown70(false);
+  }
+}
+
+void FxSimpleLimiterNX::unknown24() {
+  if (impl_->aux->IsEnabled()) {
+    getAux<SimpleLimiterEffect>(impl_)->enableUnknown68();
+  }
+}
+
+void FxSimpleLimiterNX::unknown25() {
+  if (impl_->aux->IsEnabled()) {
+    getAux<SimpleLimiterEffect>(impl_)->disableUnknown68();
+  }
+}
+
+float FxSimpleLimiterNX::unknown26() {
+  if (impl_->aux->IsEnabled()) {
+    return getAux<SimpleLimiterEffect>(impl_)->unknown_1070_;
+  }
+  return 0.0f;
+}
+
+int FxSimpleLimiterNX::unknown27() {
+  if (impl_->aux->IsEnabled()) {
+    return getAux<SimpleLimiterEffect>(impl_)->getUnknown1074();
+  }
+  return 0;
+}
+
+void FxSpectrumNX::unknown24(void* data) {
+  std::memcpy(data, &spectrum_, sizeof(spectrum_));
+}
+
+void FxSpectrumNX::unknown26() {
+}
+
+void FxSpectrumNX::setUnknown8070(bool value) {
+  getAux<SpectrumEffect>(impl_)->unknown_8070_ = value;
+}
+
+bool FxSpectrumNX::getUnknown8070() const {
+  return getAux<SpectrumEffect>(impl_)->unknown_8070_;
+}
+
+// The vibration effect is handed its owner.
+void FxVibNX::unknown36(int value) {
+  getAux<VibEffect>(impl_)->unknown173230(this, value);
 }
 
 }
