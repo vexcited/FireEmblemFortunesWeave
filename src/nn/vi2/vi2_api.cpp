@@ -6,18 +6,18 @@ using detail::g_Frontend;
 
 namespace sdk {
 
-Result SetLayerNextUserData(LayerType* a0, sdk::LayerUserDataType a1,
+void SetLayerNextUserData(LayerType* a0, sdk::LayerUserDataType a1,
   uint64_t a2) {
-  return g_Frontend.sdkSetLayerNextUserData(g_Frontend.context, a0, a1, a2);
+  g_Frontend.sdkSetLayerNextUserData(g_Frontend.context, a0, a1, a2);
 }
 
 void ClearLayerNextUserData(LayerType* a0) {
   g_Frontend.sdkClearLayerNextUserData(g_Frontend.context, a0);
 }
 
-Result SetLayerNextRotationResolveMode(LayerType* a0,
+void SetLayerNextRotationResolveMode(LayerType* a0,
   sdk::RotationResolveMode a1) {
-  return g_Frontend.sdkSetLayerNextRotationResolveMode(g_Frontend.context, a0,
+  g_Frontend.sdkSetLayerNextRotationResolveMode(g_Frontend.context, a0,
     a1);
 }
 
@@ -110,12 +110,12 @@ Result PresentLayerBuffer(LayerType* a0, uint32_t a1,
   return g_Frontend.presentLayerBuffer(g_Frontend.context, a0, a1, a2);
 }
 
-Result SetLayerNextSwapInterval(LayerType* a0, int a1) {
-  return g_Frontend.setLayerNextSwapInterval(g_Frontend.context, a0, a1);
+void SetLayerNextSwapInterval(LayerType* a0, int a1) {
+  g_Frontend.setLayerNextSwapInterval(g_Frontend.context, a0, a1);
 }
 
-Result SetLayerNextExtendedSwapInterval(LayerType* a0, int a1, int a2) {
-  return g_Frontend.setLayerNextExtendedSwapInterval(g_Frontend.context, a0, a1,
+void SetLayerNextExtendedSwapInterval(LayerType* a0, int a1, int a2) {
+  g_Frontend.setLayerNextExtendedSwapInterval(g_Frontend.context, a0, a1,
     a2);
 }
 
@@ -123,45 +123,45 @@ void ClearLayerNextExtendedSwapInterval(LayerType* a0) {
   g_Frontend.clearLayerNextExtendedSwapInterval(g_Frontend.context, a0);
 }
 
-Result SetLayerNextCrop(LayerType* a0, uint16_t a1, uint16_t a2, uint16_t a3,
+void SetLayerNextCrop(LayerType* a0, uint16_t a1, uint16_t a2, uint16_t a3,
   uint16_t a4) {
-  return g_Frontend.setLayerNextCrop(g_Frontend.context, a0, a1, a2, a3, a4);
+  g_Frontend.setLayerNextCrop(g_Frontend.context, a0, a1, a2, a3, a4);
 }
 
-Result SetLayerNextRotation(LayerType* a0, uint8_t a1) {
-  return g_Frontend.setLayerNextRotation(g_Frontend.context, a0, a1);
+void SetLayerNextRotation(LayerType* a0, uint8_t a1) {
+  g_Frontend.setLayerNextRotation(g_Frontend.context, a0, a1);
 }
 
-Result SetLayerNextPermission(LayerType* a0, BufferPermissionBits a1, bool a2) {
-  return g_Frontend.setLayerNextPermission(g_Frontend.context, a0, a1, a2);
+void SetLayerNextPermission(LayerType* a0, BufferPermissionBits a1, bool a2) {
+  g_Frontend.setLayerNextPermission(g_Frontend.context, a0, a1, a2);
 }
 
 void ClearLayerNextPermission(LayerType* a0, BufferPermissionBits a1) {
   g_Frontend.clearLayerNextPermission(g_Frontend.context, a0, a1);
 }
 
-Result SetLayerNextContent(LayerType* a0, BufferContentBits a1, bool a2) {
-  return g_Frontend.setLayerNextContent(g_Frontend.context, a0, a1, a2);
+void SetLayerNextContent(LayerType* a0, BufferContentBits a1, bool a2) {
+  g_Frontend.setLayerNextContent(g_Frontend.context, a0, a1, a2);
 }
 
 void ClearLayerNextContent(LayerType* a0, BufferContentBits a1) {
   g_Frontend.clearLayerNextContent(g_Frontend.context, a0, a1);
 }
 
-Result SetLayerNextHdrExtendedContentLuminanceRangeMetadata(LayerType* a0,
+void SetLayerNextHdrExtendedContentLuminanceRangeMetadata(LayerType* a0,
   uint16_t a1, uint16_t a2) {
-  return g_Frontend.setLayerNextHdrExtendedContentLuminanceRangeMetadata(
+  g_Frontend.setLayerNextHdrExtendedContentLuminanceRangeMetadata(
     g_Frontend.context, a0, a1, a2);
 }
 
-Result SetLayerNextHdrStandardContentLuminanceRangeMetadata(LayerType* a0,
+void SetLayerNextHdrStandardContentLuminanceRangeMetadata(LayerType* a0,
   uint16_t a1, uint16_t a2) {
-  return g_Frontend.setLayerNextHdrStandardContentLuminanceRangeMetadata(
+  g_Frontend.setLayerNextHdrStandardContentLuminanceRangeMetadata(
     g_Frontend.context, a0, a1, a2);
 }
 
-Result SetLayerNextHdrContentGamutMetadata(LayerType* a0, HdrContentGamut a1) {
-  return g_Frontend.setLayerNextHdrContentGamutMetadata(g_Frontend.context, a0,
+void SetLayerNextHdrContentGamutMetadata(LayerType* a0, HdrContentGamut a1) {
+  g_Frontend.setLayerNextHdrContentGamutMetadata(g_Frontend.context, a0,
     a1);
 }
 
@@ -169,9 +169,9 @@ void ClearLayerNextHdrContentGamutMetadata(LayerType* a0) {
   g_Frontend.clearLayerNextHdrContentGamutMetadata(g_Frontend.context, a0);
 }
 
-Result SetLayerNextHdrToSdrToneMappingMetadata(LayerType* a0,
+void SetLayerNextHdrToSdrToneMappingMetadata(LayerType* a0,
   HdrToneMapping a1) {
-  return g_Frontend.setLayerNextHdrToSdrToneMappingMetadata(g_Frontend.context,
+  g_Frontend.setLayerNextHdrToSdrToneMappingMetadata(g_Frontend.context,
     a0, a1);
 }
 
@@ -179,9 +179,9 @@ void ClearLayerNextHdrToSdrToneMappingMetadata(LayerType* a0) {
   g_Frontend.clearLayerNextHdrToSdrToneMappingMetadata(g_Frontend.context, a0);
 }
 
-Result SetLayerNextHdrAdjustableBezierMetadata(LayerType* a0, float a1,
+void SetLayerNextHdrAdjustableBezierMetadata(LayerType* a0, float a1,
   float a2, float a3) {
-  return g_Frontend.setLayerNextHdrAdjustableBezierMetadata(g_Frontend.context,
+  g_Frontend.setLayerNextHdrAdjustableBezierMetadata(g_Frontend.context,
     a0, a1, a2, a3);
 }
 
@@ -193,15 +193,15 @@ void* GetLayerNativeWindowHandle(LayerType* a0) {
   return g_Frontend.getLayerNativeWindowHandle(g_Frontend.context, a0);
 }
 
-Result SetLayerNativeWindowHdrLinearColorEncoding(LayerType* a0,
+void SetLayerNativeWindowHdrLinearColorEncoding(LayerType* a0,
   HdrColorEncoding a1, uint16_t a2) {
-  return g_Frontend.setLayerNativeWindowHdrLinearColorEncoding(
+  g_Frontend.setLayerNativeWindowHdrLinearColorEncoding(
     g_Frontend.context, a0, a1, a2);
 }
 
-Result SetLayerNextTimestampRecorder(LayerType* a0, TimestampRecorderType* a1,
+void SetLayerNextTimestampRecorder(LayerType* a0, TimestampRecorderType* a1,
   BufferCheckpointBits a2) {
-  return g_Frontend.setLayerNextTimestampRecorder(g_Frontend.context, a0, a1,
+  g_Frontend.setLayerNextTimestampRecorder(g_Frontend.context, a0, a1,
     a2);
 }
 
@@ -211,16 +211,16 @@ void ClearLayerNextTimestampRecorder(LayerType* a0) {
 
 namespace gl {
 
-Result SetLayerBufferSize(LayerType* a0, uint16_t a1, uint16_t a2) {
-  return g_Frontend.glSetLayerBufferSize(g_Frontend.context, a0, a1, a2);
+void SetLayerBufferSize(LayerType* a0, uint16_t a1, uint16_t a2) {
+  g_Frontend.glSetLayerBufferSize(g_Frontend.context, a0, a1, a2);
 }
 
 }
 
 namespace vulkan {
 
-Result SetLayerBufferSize(LayerType* a0, uint16_t a1, uint16_t a2) {
-  return g_Frontend.glSetLayerBufferSize(g_Frontend.context, a0, a1, a2);
+void SetLayerBufferSize(LayerType* a0, uint16_t a1, uint16_t a2) {
+  g_Frontend.glSetLayerBufferSize(g_Frontend.context, a0, a1, a2);
 }
 
 }
@@ -481,7 +481,7 @@ Result GetTimestampRecorderReleaseFence(const TimestampRecorderType* a0) {
   return g_Frontend.getTimestampRecorderReleaseFence(g_Frontend.context, a0);
 }
 
-Result GetRecordedTimestamp(const TimestampRecorderType* a0,
+uint64_t GetRecordedTimestamp(const TimestampRecorderType* a0,
   BufferCheckpointBits a1) {
   return g_Frontend.getRecordedTimestamp(g_Frontend.context, a0, a1);
 }

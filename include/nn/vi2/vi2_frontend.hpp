@@ -3,6 +3,7 @@
 #include <stdint.h>
 
 #include "nn/gs/gs_native_window.hpp"
+#include "nn/gs/gs_sdk_types.hpp"
 #include "nn/os/memory_permission.hpp"
 #include "nn/os/multi_wait.hpp"
 #include "nn/os/system_event.hpp"
@@ -12,11 +13,16 @@
 #include "nn/span.hpp"
 #include "nn/util/bit_flag_set.hpp"
 
+namespace nn::gsdrv {
+
+class UniqueNativeHandle;
+
+}
+
 namespace nn::vi2 {
 
 struct AvailableRefreshRate;
 struct AvailableRefreshRatesEventType;
-struct BufferDescriptor;
 struct BufferMaxResolution;
 struct BufferMaxResolutionEventType;
 struct BufferPoolType;
@@ -44,6 +50,21 @@ enum HdrToneMapping : int32_t {};
 enum RefreshRate : int32_t {};
 enum RefreshRateCapability : int32_t {};
 
+struct BufferDescriptor {
+  gs::sdk::NativeImageFormatDescriptor format;
+};
+
+// A display buffer request: the format, the size minus one and the alpha mode.
+struct BufferPreference {
+  uint32_t reserved0;
+  uint32_t format;
+  uint16_t widthMinusOne;
+  uint16_t heightMinusOne;
+  uint32_t alphaMode : 2;
+  uint32_t reserved0c : 30;
+  uint64_t reserved10[6];
+};
+
 namespace sdk {
 
 enum LayerUserDataType : int32_t {};
@@ -61,15 +82,17 @@ struct Frontend {
   void* reserved18;
   void* reserved20;
   void (*destroyDisplay)(void* context, DisplayType*);
-  void* reserved30;
+  Result (*createEndpoint)(void* context, EndpointType*, uint64_t,
+    DisplayType*);
   void (*destroyEndpoint)(void* context, EndpointType*);
-  void* reserved40;
+  void (*reserved40)(void* context);
   Result (*createLayer)(void* context, LayerType*, const EndpointType*);
   void (*destroyLayer)(void* context, LayerType*);
   uint32_t (*getLayerRegisteredBufferBits)(void* context, const LayerType*);
   gs::NativeImageHandle (*getLayerBufferNativeImageHandle)(void* context,
     const LayerType*, uint32_t);
-  void* reserved68;
+  uint32_t (*getLayerBufferNativeImageIndex)(void* context, const LayerType*,
+    uint32_t);
   Result (*registerLayerBuffer)(void* context, LayerType*, uint32_t,
     const BufferPoolType*, uint64_t);
   Result (*unregisterLayerBuffer)(void* context, LayerType*, uint32_t,
@@ -78,16 +101,18 @@ struct Frontend {
     LayerType*);
   Result (*presentLayerBuffer)(void* context, LayerType*, uint32_t,
     const gs::NativeSyncHandle&);
-  void* reserved90;
-  Result (*setLayerNextSwapInterval)(void* context, LayerType*, int);
-  Result (*setLayerNextCrop)(void* context, LayerType*, uint16_t, uint16_t,
+  uint32_t (*setLayerBufferNativeImageHandle)(void* context, LayerType*,
+    uint32_t, const BufferPoolType*, uint32_t);
+  void (*setLayerNextSwapInterval)(void* context, LayerType*, int);
+  void (*setLayerNextCrop)(void* context, LayerType*, uint16_t, uint16_t,
     uint16_t, uint16_t);
-  Result (*setLayerNextRotation)(void* context, LayerType*, uint8_t);
-  void* reservedb0;
+  void (*setLayerNextRotation)(void* context, LayerType*, uint8_t);
+  void (*setLayerNextRotationFlags)(void* context, LayerType*, bool, int);
   void* (*getLayerNativeWindowHandle)(void* context, LayerType*);
   Result (*sdkCreateBufferPool)(void* context, BufferPoolType*,
     const BufferDescriptor&, uint64_t, void*, uint64_t, os::MemoryPermission);
-  void* reservedc8;
+  Result (*sdkCreateBufferPoolForSystem)(void* context, BufferPoolType*,
+    const BufferDescriptor&, uint64_t, void*, uint64_t, os::MemoryPermission);
   Result (*sdkCreateAliasBufferPool)(void* context, BufferPoolType*,
     gs::NativeImageHandle, uint64_t);
   void (*destroyBufferPool)(void* context, BufferPoolType*);
@@ -107,18 +132,20 @@ struct Frontend {
     os::MultiWaitHolderType*, VsyncEventType*);
   Result (*sdkDuplicateVsyncEvent)(void* context, os::SystemEventType*,
     const VsyncEventType*, os::EventClearMode);
-  Result (*setLayerNextPermission)(void* context, LayerType*,
+  void (*setLayerNextPermission)(void* context, LayerType*,
     BufferPermissionBits, bool);
   void (*clearLayerNextPermission)(void* context, LayerType*,
     BufferPermissionBits);
-  Result (*setLayerNextContent)(void* context, LayerType*, BufferContentBits,
+  void (*setLayerNextContent)(void* context, LayerType*, BufferContentBits,
     bool);
   void (*clearLayerNextContent)(void* context, LayerType*, BufferContentBits);
-  void* reserved160;
+  const BufferPoolType* (*reserved160)(void* context, const BufferPoolType*);
   Result (*sdkGetBufferPoolNativeMemoryHandle)(void* context,
     const BufferPoolType*);
-  void* reserved170;
-  Result (*glSetLayerBufferSize)(void* context, LayerType*, uint16_t, uint16_t);
+  Result (*sdkCreateBufferPoolWithTransferMemory)(void* context,
+    BufferPoolType*, BufferPreference, uint32_t,
+    gsdrv::UniqueNativeHandle*, uint64_t, os::MemoryPermission);
+  void (*glSetLayerBufferSize)(void* context, LayerType*, uint16_t, uint16_t);
   Result (*setDisplayRefreshRateCapability)(void* context, DisplayType*,
     RefreshRate, RefreshRateCapability);
   Result (*queryDisplayRefreshRate)(void* context, RefreshRate*, bool*,
@@ -135,7 +162,7 @@ struct Frontend {
     os::MultiWaitHolderType*, RefreshRateEventType*);
   Result (*sdkDuplicateRefreshRateEvent)(void* context, os::SystemEventType*,
     const RefreshRateEventType*, os::EventClearMode);
-  Result (*setLayerNextExtendedSwapInterval)(void* context, LayerType*, int,
+  void (*setLayerNextExtendedSwapInterval)(void* context, LayerType*, int,
     int);
   void (*clearLayerNextExtendedSwapInterval)(void* context, LayerType*);
   Result (*setDisplayHdrOutputFormatCapability)(void* context, DisplayType*,
@@ -144,27 +171,29 @@ struct Frontend {
     const DisplayType*);
   Result (*queryDisplayHdrPaperWhite)(void* context, uint16_t*,
     const DisplayType*);
-  Result (*setLayerNextHdrExtendedContentLuminanceRangeMetadata)(void* context,
+  void (*setLayerNextHdrExtendedContentLuminanceRangeMetadata)(void* context,
     LayerType*, uint16_t, uint16_t);
-  Result (*setLayerNextHdrStandardContentLuminanceRangeMetadata)(void* context,
+  void (*setLayerNextHdrStandardContentLuminanceRangeMetadata)(void* context,
     LayerType*, uint16_t, uint16_t);
-  Result (*setLayerNextHdrContentGamutMetadata)(void* context, LayerType*,
+  void (*setLayerNextHdrContentGamutMetadata)(void* context, LayerType*,
     HdrContentGamut);
   void (*clearLayerNextHdrContentGamutMetadata)(void* context, LayerType*);
-  Result (*setLayerNextHdrToSdrToneMappingMetadata)(void* context, LayerType*,
+  void (*setLayerNextHdrToSdrToneMappingMetadata)(void* context, LayerType*,
     HdrToneMapping);
   void (*clearLayerNextHdrToSdrToneMappingMetadata)(void* context, LayerType*);
-  Result (*setLayerNextHdrAdjustableBezierMetadata)(void* context, LayerType*,
+  void (*setLayerNextHdrAdjustableBezierMetadata)(void* context, LayerType*,
     float, float, float);
   void (*clearLayerNextHdrAdjustableBezierMetadata)(void* context, LayerType*);
-  void* reserved238;
-  Result (*setLayerNativeWindowHdrLinearColorEncoding)(void* context,
+  void (*setLayerNativeWindowHdrColorEncoding)(void* context, LayerType*,
+    HdrColorEncoding);
+  void (*setLayerNativeWindowHdrLinearColorEncoding)(void* context,
     LayerType*, HdrColorEncoding, uint16_t);
   Result (*createHdrStatusEvent)(void* context, HdrStatusEventType*,
     const DisplayType*, os::EventClearMode);
   void (*destroyHdrStatusEvent)(void* context, HdrStatusEventType*);
-  void* reserved258;
-  void* reserved260;
+  void (*waitHdrStatusEvent)(void* context, HdrStatusEventType*);
+  bool (*timedWaitHdrStatusEvent)(void* context, HdrStatusEventType*,
+    TimeSpan);
   bool (*tryWaitHdrStatusEvent)(void* context, HdrStatusEventType*);
   void (*clearHdrStatusEvent)(void* context, HdrStatusEventType*);
   void (*initializeMultiWaitHolderForHdrStatusEvent)(void* context,
@@ -174,8 +203,9 @@ struct Frontend {
   Result (*createHdrPaperWhiteEvent)(void* context, HdrPaperWhiteEventType*,
     const DisplayType*, os::EventClearMode);
   void (*destroyHdrPaperWhiteEvent)(void* context, HdrPaperWhiteEventType*);
-  void* reserved298;
-  void* reserved2a0;
+  void (*waitHdrPaperWhiteEvent)(void* context, HdrPaperWhiteEventType*);
+  bool (*timedWaitHdrPaperWhiteEvent)(void* context, HdrPaperWhiteEventType*,
+    TimeSpan);
   bool (*tryWaitHdrPaperWhiteEvent)(void* context, HdrPaperWhiteEventType*);
   void (*clearHdrPaperWhiteEvent)(void* context, HdrPaperWhiteEventType*);
   void (*initializeMultiWaitHolderForHdrPaperWhiteEvent)(void* context,
@@ -214,18 +244,19 @@ struct Frontend {
   void (*destroyTimestampRecorder)(void* context, TimestampRecorderType*);
   Result (*getTimestampRecorderReleaseFence)(void* context,
     const TimestampRecorderType*);
-  Result (*getRecordedTimestamp)(void* context, const TimestampRecorderType*,
+  uint64_t (*getRecordedTimestamp)(void* context, const TimestampRecorderType*,
     BufferCheckpointBits);
-  Result (*setLayerNextTimestampRecorder)(void* context, LayerType*,
+  void (*setLayerNextTimestampRecorder)(void* context, LayerType*,
     TimestampRecorderType*, BufferCheckpointBits);
   void (*clearLayerNextTimestampRecorder)(void* context, LayerType*);
   Result (*getLayerNextFrameNumber)(void* context, uint64_t*, const LayerType*);
-  Result (*sdkSetLayerNextUserData)(void* context, LayerType*,
+  void (*sdkSetLayerNextUserData)(void* context, LayerType*,
     sdk::LayerUserDataType, uint64_t);
   void (*sdkClearLayerNextUserData)(void* context, LayerType*);
-  Result (*sdkSetLayerNextRotationResolveMode)(void* context, LayerType*,
+  void (*sdkSetLayerNextRotationResolveMode)(void* context, LayerType*,
     sdk::RotationResolveMode);
-  void* reserved388;
+  Result (*sdkCreateBufferPoolWithProtectedMemory)(void* context,
+    BufferPoolType*, BufferPreference, uint64_t, uint64_t);
   Result (*queryDisplayPanelIdentifier)(void* context, PanelIdentifier*,
     const DisplayType*);
   Result (*queryAvailableRefreshRates)(void* context,
@@ -236,6 +267,8 @@ struct Frontend {
     AvailableRefreshRatesEventType*);
   bool (*tryWaitAvailableRefreshRatesEvent)(void* context,
     AvailableRefreshRatesEventType*);
+  void (*initializeMultiWaitHolderForAvailableRefreshRatesEvent)(
+    void* context, os::MultiWaitHolderType*, AvailableRefreshRatesEventType*);
 };
 
 extern Frontend g_Frontend;

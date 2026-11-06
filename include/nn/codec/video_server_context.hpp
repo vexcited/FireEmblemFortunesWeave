@@ -148,6 +148,24 @@ struct UserSession {
     return {result};
   }
 
+  [[gnu::noinline]] Result OpenVi2Service(const OutNativeHandle& out,
+    const uint64_t& version) {
+    mutex.Lock();
+
+    if (session.handle == 0) {
+      mutex.Unlock();
+      return ResultNotConnected;
+    }
+
+    const tipc::SessionHandle copy = session;
+    uint8_t* message = tipc::GetMessageBuffer();
+    tipc::WriteMessage<uint64_t>(message, 0, 0x200000141);
+    tipc::WriteMessage<uint64_t>(message, 8, version);
+    const uint32_t result = ReceiveHandle(&copy, message, out, 0x141);
+    mutex.Unlock();
+    return {result};
+  }
+
 private:
   // Replies carry the moved handle before the result word.
   [[gnu::always_inline]] static uint32_t ReceiveHandle(

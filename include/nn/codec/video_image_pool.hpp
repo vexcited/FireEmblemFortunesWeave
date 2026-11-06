@@ -8,9 +8,14 @@
 
 namespace nn::gs {
 
+#ifndef NN_GS_NATIVE_IMAGE_HANDLE_DEFINED
+#define NN_GS_NATIVE_IMAGE_HANDLE_DEFINED
+
 struct NativeImageHandle {
   uint32_t value;
 };
+
+#endif
 
 namespace sdk {
 
