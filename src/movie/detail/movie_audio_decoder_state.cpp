@@ -125,6 +125,15 @@ AudioDecoderState::AudioDecoderState() {
   m_ValidStates[AudioDecoderFunctions_Decode][6] = State_None;
   m_ValidStates[AudioDecoderFunctions_Decode][7] = State_None;
   m_ValidStates[AudioDecoderFunctions_Decode][8] = State_None;
+  m_ValidStates[AudioDecoderFunctions_GetAudioFrameProperties][0] = State_Started;
+  m_ValidStates[AudioDecoderFunctions_GetAudioFrameProperties][1] = State_None;
+  m_ValidStates[AudioDecoderFunctions_GetAudioFrameProperties][2] = State_None;
+  m_ValidStates[AudioDecoderFunctions_GetAudioFrameProperties][3] = State_None;
+  m_ValidStates[AudioDecoderFunctions_GetAudioFrameProperties][4] = State_None;
+  m_ValidStates[AudioDecoderFunctions_GetAudioFrameProperties][5] = State_None;
+  m_ValidStates[AudioDecoderFunctions_GetAudioFrameProperties][6] = State_None;
+  m_ValidStates[AudioDecoderFunctions_GetAudioFrameProperties][7] = State_None;
+  m_ValidStates[AudioDecoderFunctions_GetAudioFrameProperties][8] = State_None;
   m_ValidStates[AudioDecoderFunctions_GetAudioFrame][0] = State_Started;
   m_ValidStates[AudioDecoderFunctions_GetAudioFrame][1] = State_None;
   m_ValidStates[AudioDecoderFunctions_GetAudioFrame][2] = State_None;
@@ -134,15 +143,6 @@ AudioDecoderState::AudioDecoderState() {
   m_ValidStates[AudioDecoderFunctions_GetAudioFrame][6] = State_None;
   m_ValidStates[AudioDecoderFunctions_GetAudioFrame][7] = State_None;
   m_ValidStates[AudioDecoderFunctions_GetAudioFrame][8] = State_None;
-  m_ValidStates[AudioDecoderFunctions_ReleaseAudioFrame][0] = State_Started;
-  m_ValidStates[AudioDecoderFunctions_ReleaseAudioFrame][1] = State_None;
-  m_ValidStates[AudioDecoderFunctions_ReleaseAudioFrame][2] = State_None;
-  m_ValidStates[AudioDecoderFunctions_ReleaseAudioFrame][3] = State_None;
-  m_ValidStates[AudioDecoderFunctions_ReleaseAudioFrame][4] = State_None;
-  m_ValidStates[AudioDecoderFunctions_ReleaseAudioFrame][5] = State_None;
-  m_ValidStates[AudioDecoderFunctions_ReleaseAudioFrame][6] = State_None;
-  m_ValidStates[AudioDecoderFunctions_ReleaseAudioFrame][7] = State_None;
-  m_ValidStates[AudioDecoderFunctions_ReleaseAudioFrame][8] = State_None;
 }
 
 MovieResult AudioDecoderState::ValidateCurrentState(

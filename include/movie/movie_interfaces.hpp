@@ -57,6 +57,19 @@ public:
 };
 class ITaskQueueRegistrationToken;
 
+class ITaskQueueCancellationToken : public IMovieInterface {
+};
+
+class ISerialTaskQueue : public IMovieInterface {
+public:
+  virtual void Finalize() = 0;
+  virtual MovieResult QueueTask(ITask* task) = 0;
+  virtual MovieResult QueueTask(ITaskQueueCancellationToken** ppOutToken,
+    ITask* task) = 0;
+  virtual void CancelTask(ITaskQueueCancellationToken* token) = 0;
+  virtual MovieResult QueueAsyncCallback(IAsyncCallback* callback) = 0;
+};
+
 class ITaskQueue : public IMovieObject {
 public:
   enum ThreadEvent : int32_t {

@@ -24,6 +24,10 @@ public:
     }
   }
 
+  RefPtr(RefPtr&& other) : m_p(other.m_p) {
+    other.m_p = nullptr;
+  }
+
   RefPtr& operator=(const RefPtr&) = delete;
 
   RefPtr& operator=(T* p) {

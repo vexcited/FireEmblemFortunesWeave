@@ -9,6 +9,7 @@
 #include "nn/movie/detail/movie_heap_memory_manager.hpp"
 #include "nn/movie/detail/movie_thread_manager.hpp"
 #include "nn/movie/movie_buffer.hpp"
+#include "nn/os/multi_wait_utility.hpp"
 #include "nn/os/sleep_thread.hpp"
 #include "nn/os/thread_api.hpp"
 
@@ -1142,6 +1143,107 @@ MovieResult MediaDecoderImpl::ProcessVideoInputBufferEvent() {
 
   m_VideoMutex.Unlock();
   return result;
+}
+
+int MediaDecoderImpl::ThreadLoopMultiwaitAudio() {
+  return nn::os::WaitAny(m_pAudioInputReadyEvent, m_pAudioSampleAvailableEvent,
+    &m_ExitEvent);
+}
+
+int MediaDecoderImpl::ThreadLoopMultiwaitVideo() {
+  return nn::os::WaitAny(m_pVideoInputReadyEvent, m_pVideoSampleAvailableEvent,
+    &m_ExitEvent);
+}
+
+int MediaDecoderImpl::ThreadLoopMultiwaitAudioVideo() {
+  return nn::os::WaitAny(m_pVideoInputReadyEvent, m_pAudioInputReadyEvent,
+    m_pAudioSampleAvailableEvent, m_pVideoSampleAvailableEvent, &m_ExitEvent);
+}
+
+void MediaDecoderImpl::ThreadLoop() {
+  enum Event {
+    Event_VideoInputReady,
+    Event_AudioInputReady,
+    Event_AudioSampleAvailable,
+    Event_VideoSampleAvailable,
+  };
+
+  m_IsThreadRunning = true;
+  do {
+    int event;
+    if (m_IsAudioTrackSelected) {
+      if (m_IsVideoTrackSelected) {
+        event = ThreadLoopMultiwaitAudioVideo();
+      }
+      else {
+        switch (ThreadLoopMultiwaitAudio()) {
+          case 0:
+            event = Event_AudioInputReady;
+            break;
+          case 1:
+            event = Event_AudioSampleAvailable;
+            break;
+          default:
+            event = -1;
+            break;
+        }
+      }
+    }
+    else if (m_IsVideoTrackSelected) {
+      switch (ThreadLoopMultiwaitVideo()) {
+        case 0:
+          event = Event_VideoInputReady;
+          break;
+        case 1:
+          event = Event_VideoSampleAvailable;
+          break;
+        default:
+          event = -1;
+          break;
+      }
+    }
+    else {
+      return;
+    }
+
+    switch (event) {
+      case Event_VideoInputReady:
+        nn::os::ClearSystemEvent(m_pVideoInputReadyEvent);
+        m_VideoInputBufferCount++;
+        if (m_VideoSampleCount >= 1) {
+          ProcessVideoInputBufferEvent();
+        }
+
+        break;
+      case Event_AudioInputReady:
+        nn::os::ClearSystemEvent(m_pAudioInputReadyEvent);
+        m_AudioInputBufferCount++;
+        if (m_AudioSampleCount >= 1) {
+          ProcessAudioInputBufferEvent();
+        }
+
+        break;
+      case Event_AudioSampleAvailable:
+        nn::os::ClearSystemEvent(m_pAudioSampleAvailableEvent);
+        m_AudioSampleCount++;
+        if (m_AudioInputBufferCount >= 1) {
+          ProcessAudioInputBufferEvent();
+        }
+
+        break;
+      case Event_VideoSampleAvailable:
+        nn::os::ClearSystemEvent(m_pVideoSampleAvailableEvent);
+        m_VideoSampleCount++;
+        if (m_VideoInputBufferCount >= 1) {
+          ProcessVideoInputBufferEvent();
+        }
+
+        break;
+      default:
+        m_IsExitRequested = true;
+        break;
+    }
+  } while (!m_IsExitRequested);
 }
 
 }

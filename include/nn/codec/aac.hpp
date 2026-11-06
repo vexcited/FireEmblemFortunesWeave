@@ -177,6 +177,10 @@ class AacDecoder : public IAacDecoder {
       outputBuffer, outputSize, inputBuffer, inputSize);
   }
 
+  AacDecoderType* GetBase() {
+    return &m_Decoder;
+  }
+
  private:
   AacDecoderType m_Decoder;
 };

@@ -7,8 +7,8 @@
 
 namespace movie::detail {
 
-// The functions are named after the matching methods of the decoder in
-// declaration order, which the valid states fit but do not prove.
+// The functions are named after the AudioDecoderImpl methods that validate
+// them.
 class AudioDecoderState : public MediaState {
 public:
   enum AudioDecoderFunctions : int32_t {
@@ -23,8 +23,8 @@ public:
     AudioDecoderFunctions_Stop,
     AudioDecoderFunctions_Flush,
     AudioDecoderFunctions_Decode,
+    AudioDecoderFunctions_GetAudioFrameProperties,
     AudioDecoderFunctions_GetAudioFrame,
-    AudioDecoderFunctions_ReleaseAudioFrame,
     AudioDecoderFunctions_Count,
   };
 
