@@ -156,6 +156,41 @@ struct ArgumentTraits<const OutBuffer&> {
   }
 };
 
+template <>
+struct ArgumentTraits<const InAutoSelectBuffer&> {
+  using Descriptor = Buffer<BufferAttribute_In |
+    BufferAttribute_HipcAutoSelect>;
+
+  static hipc::detail::BufferParameter Convert(
+    const InAutoSelectBuffer& value) {
+    return {reinterpret_cast<uintptr_t>(value.GetPointerUnsafe()),
+      value.GetSize()};
+  }
+};
+
+template <>
+struct ArgumentTraits<const OutAutoSelectBuffer&> {
+  using Descriptor = Buffer<BufferAttribute_Out |
+    BufferAttribute_HipcAutoSelect>;
+
+  static hipc::detail::BufferParameter Convert(
+    const OutAutoSelectBuffer& value) {
+    return {reinterpret_cast<uintptr_t>(value.GetPointerUnsafe()),
+      value.GetSize()};
+  }
+};
+
+// A handle given by rvalue reference is moved out of the caller and sent in
+// the copy handle list.
+template <>
+struct ArgumentTraits<NativeHandle&&> {
+  using Descriptor = InHandle<false>;
+
+  static NativeHandle* Convert(NativeHandle& value) {
+    return &value;
+  }
+};
+
 template <typename T>
 struct ArgumentTraits<const InArray<T>&> {
   using Descriptor = Buffer<BufferAttribute_In | BufferAttribute_HipcMapAlias>;

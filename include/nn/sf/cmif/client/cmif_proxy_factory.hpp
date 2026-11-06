@@ -143,6 +143,39 @@ template <typename Kind, bool HasProcessId, int MethodId, typename Interface,
     pState, out, params...);
 }
 
+// Creates the proxy of an out object from a static allocator. The original
+// instantiations have internal linkage, so the creation lost its constant
+// index and the creator keeps a null allocator. The creation itself depends
+// on the allocator of each service and is not reconstructed here.
+template <typename AllocationPolicy>
+struct StatelessOutObjectCreator {
+  MemoryResource* pAllocator;
+  CmifProxyObject** ppObjects;
+
+  template <typename Interface, typename Kind>
+  [[gnu::noinline]] void Create();
+};
+
+template <typename Kind, bool HasProcessId, int MethodId,
+  typename AllocationPolicy, typename Interface, typename... Parameters>
+[[gnu::always_inline]] inline Result InvokeWithStatelessOutObject(
+  const typename Kind::ProxyKindState* pState,
+  const Out<SharedPointer<Interface>>& out, const Parameters&... params) {
+  OutObjectHolder<1> holder;
+  StatelessOutObjectCreator<AllocationPolicy> creator = {nullptr,
+    holder.pObjects};
+  creator.template Create<Interface, Kind>();
+  if (creator.ppObjects == nullptr) {
+    return ResultOutObjectAllocationFailed();
+  }
+  SharedPointer<IServiceObject>* targets[] = {
+    reinterpret_cast<SharedPointer<IServiceObject>*>(out.GetPointer())};
+  return Kind::template ProcessWithObjects<HasProcessId, 1,
+    typename ArgumentTraits<Parameters>::Descriptor...>(pState, targets,
+    ArgumentTraits<Parameters>::Convert(params)..., MethodId,
+    holder.pObjects);
+}
+
 // Common part of the method tables, it reaches the state of the proxy and
 // the allocator of the object that holds it.
 template <typename Interface, typename Kind>

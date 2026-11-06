@@ -319,7 +319,7 @@ int OpenImpl(const char* path, Flags flags) {
     SetLastErrorImpl(EInval);
     return -1;
   }
-  ::nn::sf::InBuffer inPath(path, strnlen(path, PathLengthMax) + 1);
+  ::nn::sf::InAutoSelectBuffer inPath(path, strnlen(path, PathLengthMax) + 1);
   Result callResult = g_ClientState.pClient->Open(Out(&result), Out(&error),
     inPath, static_cast<int32_t>(flags));
   if (callResult.IsSuccess() && result >= 0) {
@@ -345,7 +345,7 @@ ssize_t RecvImpl(int socket, void* buffer, size_t length, Flags flags) {
     SetLastErrorImpl(EFault);
     return -1;
   }
-  ::nn::sf::OutBuffer outBuffer(buffer, length);
+  ::nn::sf::OutAutoSelectBuffer outBuffer(buffer, length);
   int nativeSocket;
   if (!GetNativeSocket(&nativeSocket, socket)) {
     return -1;
@@ -376,8 +376,8 @@ ssize_t RecvFromImpl(int socket, void* buffer, size_t length, Flags flags,
     *addressLength == 0) {
     return detail::Recv(socket, buffer, length, flags);
   }
-  ::nn::sf::OutBuffer outBuffer(buffer, length);
-  ::nn::sf::OutBuffer outAddress(address, *addressLength);
+  ::nn::sf::OutAutoSelectBuffer outBuffer(buffer, length);
+  ::nn::sf::OutAutoSelectBuffer outAddress(address, *addressLength);
   uint32_t outAddressLength = 0;
   int nativeSocket;
   if (!GetNativeSocket(&nativeSocket, socket)) {
@@ -409,7 +409,7 @@ ssize_t SendImpl(int socket, const void* buffer, size_t length, Flags flags) {
     SetLastErrorImpl(EFault);
     return -1;
   }
-  ::nn::sf::InBuffer inBuffer(buffer, length);
+  ::nn::sf::InAutoSelectBuffer inBuffer(buffer, length);
   int nativeSocket;
   if (!GetNativeSocket(&nativeSocket, socket)) {
     return -1;
@@ -439,8 +439,8 @@ ssize_t SendToImpl(int socket, const void* buffer, size_t length, Flags flags,
     SetLastErrorImpl(EFault);
     return -1;
   }
-  ::nn::sf::InBuffer inAddress(address, addressLength);
-  ::nn::sf::InBuffer inBuffer(buffer, length);
+  ::nn::sf::InAutoSelectBuffer inAddress(address, addressLength);
+  ::nn::sf::InAutoSelectBuffer inBuffer(buffer, length);
   int nativeSocket;
   if (!GetNativeSocket(&nativeSocket, socket)) {
     return -1;
@@ -467,7 +467,7 @@ ssize_t SendToImpl(int socket, const void* buffer, size_t length, Flags flags,
     SetLastErrorImpl(EFault);
     return -1;
   }
-  ::nn::sf::InBuffer inBuffer(buffer, length);
+  ::nn::sf::InAutoSelectBuffer inBuffer(buffer, length);
   int nativeSocket;
   if (!GetNativeSocket(&nativeSocket, socket)) {
     return -1;
@@ -492,7 +492,7 @@ ssize_t SendToImpl(int socket, const void* buffer, size_t length, Flags flags,
     SetLastErrorImpl(EFault);
     return -1;
   }
-  ::nn::sf::OutBuffer outBuffer(buffer, length);
+  ::nn::sf::OutAutoSelectBuffer outBuffer(buffer, length);
   int nativeSocket;
   if (!GetNativeSocket(&nativeSocket, socket)) {
     return -1;
@@ -511,7 +511,7 @@ int BindImpl(int socket, const Address* address, uint32_t addressLength) {
     SetLastErrorImpl(EInval);
     return -1;
   }
-  ::nn::sf::InBuffer inAddress(address, addressLength);
+  ::nn::sf::InAutoSelectBuffer inAddress(address, addressLength);
   int nativeSocket;
   if (!GetNativeSocket(&nativeSocket, socket)) {
     return -1;
@@ -530,7 +530,7 @@ int ConnectImpl(int socket, const Address* address, uint32_t addressLength) {
     SetLastErrorImpl(EInval);
     return -1;
   }
-  ::nn::sf::InBuffer inAddress(address, addressLength);
+  ::nn::sf::InAutoSelectBuffer inAddress(address, addressLength);
   int nativeSocket;
   if (!GetNativeSocket(&nativeSocket, socket)) {
     return -1;
@@ -550,7 +550,7 @@ int GetPeerNameImpl(int socket, Address* address, uint32_t* addressLength) {
     SetLastErrorImpl(EInval);
     return -1;
   }
-  ::nn::sf::OutBuffer outAddress(address, *addressLength);
+  ::nn::sf::OutAutoSelectBuffer outAddress(address, *addressLength);
   uint32_t outAddressLength = 0;
   int nativeSocket;
   if (!GetNativeSocket(&nativeSocket, socket)) {
@@ -581,7 +581,7 @@ int GetSockNameImpl(int socket, Address* address, uint32_t* addressLength) {
     SetLastErrorImpl(EInval);
     return -1;
   }
-  ::nn::sf::OutBuffer outAddress(address, *addressLength);
+  ::nn::sf::OutAutoSelectBuffer outAddress(address, *addressLength);
   uint32_t outAddressLength = 0;
   int nativeSocket;
   if (!GetNativeSocket(&nativeSocket, socket)) {
@@ -605,7 +605,7 @@ int GetSockNameImpl(int socket, Address* address, uint32_t* addressLength) {
     SetLastErrorImpl(EInval);
     return -1;
   }
-  ::nn::sf::OutBuffer outValue(value, *valueLength);
+  ::nn::sf::OutAutoSelectBuffer outValue(value, *valueLength);
   uint32_t outValueLength = 0;
   int nativeSocket;
   if (!GetNativeSocket(&nativeSocket, socket)) {
@@ -630,7 +630,7 @@ int GetSockNameImpl(int socket, Address* address, uint32_t* addressLength) {
     SetLastErrorImpl(EInval);
     return -1;
   }
-  ::nn::sf::InBuffer inValue(value, valueLength);
+  ::nn::sf::InAutoSelectBuffer inValue(value, valueLength);
   int nativeSocket;
   if (!GetNativeSocket(&nativeSocket, socket)) {
     return -1;
@@ -1114,7 +1114,7 @@ int ShutdownAllSockets(const SockAddr* address, uint32_t addressLength,
     SetLastErrorImpl(EInval);
     return -1;
   }
-  ::nn::sf::InBuffer inAddress(address, addressLength);
+  ::nn::sf::InAutoSelectBuffer inAddress(address, addressLength);
   Result callResult = g_ClientState.pClient->ShutdownAllSockets(Out(&result),
     Out(&error), inAddress, static_cast<uint32_t>(mask));
   return HandleResult(callResult, &result, &error);

@@ -40,6 +40,19 @@ private:
   size_t m_Size;
 };
 
+// Buffers that the message sends through the pointer buffer when they fit,
+// mapped otherwise.
+class InAutoSelectBuffer : public InBuffer {
+public:
+  InAutoSelectBuffer(const void* buffer, size_t size)
+    : InBuffer(buffer, size) {}
+};
+
+class OutAutoSelectBuffer : public OutBuffer {
+public:
+  OutAutoSelectBuffer(void* buffer, size_t size) : OutBuffer(buffer, size) {}
+};
+
 template<class T>
 class InArray {
 public:
