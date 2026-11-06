@@ -21,6 +21,12 @@ struct TerrainGrid {
   uint16_t ids[kGridSize * kGridSize];
 };
 
+// The unit index standing on each cell, 0 for none.
+struct UnitGrid {
+  uint8_t unknown_00_[0x8];
+  uint8_t ids[kGridSize * kGridSize];
+};
+
 struct SightMask {
   uint8_t unknown_00_[0x8];
   uint32_t rows[4][kGridSize];
@@ -29,6 +35,8 @@ struct SightMask {
 class Image : public SerializeSingleton<Image> {
 public:
   class SightMaps;
+
+  void Update();
 
   bool Contains(int x, int z) const {
     return static_cast<uint8_t>(x - left_) < width_ &&
@@ -51,8 +59,17 @@ public:
     return bounds_[3];
   }
 
+  // The cells the units may use, left, top, right then bottom.
+  uint8_t GetPlayArea(int side) const {
+    return play_area_[side];
+  }
+
   uint16_t GetTerrainId(int x, int z) const {
     return terrain_->ids[GetCellIndex(x, z)];
+  }
+
+  uint8_t GetUnitIndex(int x, int z) const {
+    return units_->ids[GetCellIndex(x, z)];
   }
 
   bool IsVisible(uint8_t force, int x, int z) const {
@@ -66,9 +83,12 @@ private:
   uint8_t height_;
   uint8_t unknown_14_[0x4];
   uint8_t bounds_[4];
-  uint8_t unknown_1c_[0x2c];
+  uint8_t play_area_[4];
+  uint8_t unknown_20_[0x28];
   const TerrainGrid* terrain_;
-  uint8_t unknown_50_[0x50];
+  uint8_t unknown_50_[0x10];
+  const UnitGrid* units_;
+  uint8_t unknown_68_[0x38];
   const SightMask* sight_;
 };
 

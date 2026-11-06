@@ -38,9 +38,26 @@ public:
   static int CountAll(const ForceMask& mask);
   static Unit* GetNext(const Unit* unit, const ForceMask& mask);
 
-private:
+  // The slots of all units, null before the pool is built.
+  static Unit* GetUnits() {
+    Impl* impl = GetInstance()->impl_;
+    return impl != nullptr ? impl->units : nullptr;
+  }
+
   static constexpr int kUnitCount = 250;
 
+  // The slot of a unit index, the indices start at 1. The address is computed
+  // as an integer since the original still tests the slot against null.
+  static Unit* GetSlot(uint8_t index) {
+    if (index > kUnitCount) {
+      return nullptr;
+    }
+    const uintptr_t units =
+      reinterpret_cast<uintptr_t>(GetInstance()->impl_->units);
+    return reinterpret_cast<Unit*>(units + sizeof(Unit) * (index - 1));
+  }
+
+private:
   struct Impl {
     Unit units[kUnitCount];
     Force forces[kForceCount];

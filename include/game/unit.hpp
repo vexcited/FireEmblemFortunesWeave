@@ -246,10 +246,28 @@ public:
     return person_;
   }
 
+  uint32_t GetMotion() const {
+    return motion_;
+  }
+
+  // A fade runs until the alpha reaches its target.
+  bool IsFading() const {
+    return alpha_ != target_alpha_;
+  }
+
+  // Bit 2 rebuilds the model of the unit.
+  void MarkDirty(uint16_t mask) {
+    dirty_ |= mask;
+  }
+
 protected:
-  uint8_t unknown_08_[0xc];
+  uint8_t unknown_08_[0x8];
+  uint32_t motion_;
   uint16_t dirty_;
-  uint8_t unknown_16_[0x172];
+  uint8_t unknown_16_[0x8a];
+  float target_alpha_;
+  float alpha_;
+  uint8_t unknown_a8_[0xe0];
 
 private:
   const PersonData* person_;
@@ -263,17 +281,32 @@ class UnitEdit {
 public:
   virtual ~UnitEdit() = default;
 
+  bool HasName() const {
+    return has_name_ != 0;
+  }
+
+  const char* GetName() const;
+
 private:
   std::string name_;
-  uint8_t unknown_20_[0x40];
+  uint8_t has_name_;
+  uint8_t unknown_21_[0x3f];
 };
 
 // The cells a unit covers, as offsets from its position.
 struct UnitShape {
+  // The cells a unit covers, barriers keep their hit points in them.
+  struct Cell {
+    int8_t x;
+    int8_t z;
+    int8_t hp;
+    uint8_t flags;
+  };
+
   void Set(int size, int a, int b);
 
   int size;
-  std::vector<uint32_t> cells;
+  std::vector<Cell> cells;
 };
 
 class Unit : public UnitActor, public UnitConst, public UnitStatus {
@@ -317,6 +350,188 @@ public:
   // The hit point stocks left, shown by the gauges.
   uint8_t GetHpStock() const {
     return unknown_1f0_;
+  }
+
+  int GetHp() const {
+    return hp_;
+  }
+
+  uint8_t GetLevel() const {
+    return unknown_1f2_;
+  }
+
+  uint8_t GetPollution() const {
+    return pollution_;
+  }
+
+  bool HasState(uint32_t mask) const {
+    return state_ & mask;
+  }
+
+  uint8_t GetLegion() const {
+    return legion_;
+  }
+
+  uint16_t GetEquippedIndex() const {
+    return equipped_index_;
+  }
+
+  const UnitItem& GetItem(int index) const {
+    return items_list_.items[index];
+  }
+
+  uint8_t GetBand() const {
+    return band_;
+  }
+
+  bool IsAiActive() const {
+    return ai_active_ != 0;
+  }
+
+  void SetState(uint32_t mask) {
+    state_ |= mask;
+    if (mask & 1) {
+      dirty_ |= 4;
+    }
+  }
+
+  void ClearState(uint32_t mask) {
+    state_ &= ~mask;
+    if (mask & 1) {
+      dirty_ |= 4;
+    }
+  }
+
+  // The AI settings the scripts change.
+  void SetAiFlag(uint32_t mask, bool enable) {
+    ai_flags_ = (ai_flags_ & ~mask) | (enable ? mask : 0);
+  }
+
+  void SetBand(uint8_t band) {
+    band_ = band;
+  }
+
+  void SetAiActive(bool active) {
+    ai_active_ = active;
+  }
+
+  void SetPriority(uint8_t priority) {
+    priority_ = priority;
+  }
+
+  void SetRageOp(uint8_t op) {
+    rage_op_ = op;
+  }
+
+  void SetRageTarget(uint8_t x, uint8_t z) {
+    rage_x_ = x;
+    rage_z_ = z;
+  }
+
+  void SetRageProhibitTurn(uint8_t turn) {
+    rage_prohibit_turn_ = turn;
+  }
+
+  void ClearMoveLimit() {
+    move_limit_ = 0;
+    for (int8_t& value : move_limit_area_) {
+      value = -1;
+    }
+  }
+
+  const UnitEdit& GetEdit() const {
+    return edit_;
+  }
+
+  // The scripts clamp the hit points before setting them.
+  void ChangeHp(int hp) {
+    SetHp(hp);
+    UpdateSkills();
+  }
+
+  // Bit 0x40000 of the state marks a dismounted unit.
+  void SetRide(bool ride) {
+    const bool can_switch = CanSwitchMount();
+    if (ride) {
+      if (can_switch && (state_ & 0x40000) != 0) {
+        state_ &= ~0x40000;
+        OnJobChanged();
+      }
+    }
+    else if (can_switch && (state_ & 0x40000) == 0) {
+      state_ |= 0x40000;
+      OnJobChanged();
+    }
+  }
+
+  // The cells of the shape keep the barrier hit points in their third byte.
+  int GetBarrierHp(int x, int z) const {
+    if (x < 0 || z < 0 || barrier_skill_.index == 0) {
+      return 0;
+    }
+    const int size = shape_.size;
+    if (x >= size || z >= size) {
+      return 0;
+    }
+    // Wraps instead of overflowing, the original still tests the sign.
+    const int cell = static_cast<int>(static_cast<unsigned>(x) + size * z);
+    if (cell < 0) {
+      return 0;
+    }
+    return shape_.cells[cell].hp;
+  }
+
+  void SetBarrierHp(int8_t hp) {
+    if (barrier_skill_.index == 0) {
+      return;
+    }
+    // Stored as plain bytes, the original reloads the cells after each one.
+    for (int i = 0; i < static_cast<int>(shape_.cells.size()); i++) {
+      int8_t* cell_hp = &shape_.cells[i].hp;
+      *cell_hp = hp;
+    }
+  }
+
+  void SetBarrierHp(int x, int z, int8_t hp);
+
+  // Breaks every cell of a barrier still standing.
+  void BreakBarrier(bool effect) {
+    if (barrier_skill_.index == 0) {
+      return;
+    }
+    int count = 0;
+    for (int i = 0; i < static_cast<int>(shape_.cells.size()); i++) {
+      if (shape_.cells[i].hp != 0) {
+        count++;
+      }
+    }
+    if (count == 0) {
+      return;
+    }
+    for (const UnitShape::Cell& cell : shape_.cells) {
+      BreakBarrier(nullptr, cell.x, cell.z, effect);
+    }
+  }
+
+  void BreakBarrier(const Unit* source, int x, int z, bool effect);
+  void RepairBarrier(const Unit* source, int x, int z, bool effect);
+
+  // The AI sequences, each with four arguments.
+  struct [[gnu::packed]] SequenceArg {
+    uint32_t type : 8;
+    int32_t unknown : 8;
+    int32_t x : 8;
+    int32_t z : 8;
+  };
+
+  static constexpr int kSequenceCount = 4;
+
+  uint8_t GetSequence(int order) const {
+    return sequences_[order];
+  }
+
+  const SequenceArg& GetSequenceArg(int order, int index) const {
+    return sequence_args_[order][index];
   }
 
   int GetX() const {
@@ -374,6 +589,11 @@ public:
   void Unknown6cdd40(int a);
   void Unknown6cdf80(int a);
   void Unknown81a240();
+  void Unknown81a990();
+  void AddEquipSkill(const SkillKey& key, bool unknown);
+  void RemoveEquipSkill(const SkillKey& key);
+  bool AddPrivateSkill(const SkillKey& key);
+  bool RemovePrivateSkill(const SkillKey& key);
   void ClearItems();
   bool EquipItem(int index);
   bool EquipItem(const ItemData* data);
@@ -618,14 +838,36 @@ private:
   uint8_t unknown_42c_[0x4];
   SkillList skill_lists_[8];
   std::vector<uint32_t> unknown_730_;
-  uint8_t unknown_748_[0x10];
+  uint8_t unknown_748_[0x8];
+  SkillKey barrier_skill_;
+  uint8_t unknown_754_[0x4];
   Variables variables_;
-  uint8_t unknown_798_[0x8];
+  uint8_t legion_;
+  uint8_t unknown_799_[0x7];
   // The equipped item, laid out as a UnitItem.
   uint16_t equipped_index_;
   uint8_t equipped_uses_;
   uint8_t equipped_flags_;
-  uint8_t unknown_7a4_[0x84];
+  uint8_t unknown_7a4_[0x14];
+  uint32_t ai_flags_;
+  uint8_t unknown_7bc_;
+  uint8_t band_;
+  uint8_t ai_active_;
+  uint8_t priority_;
+  uint8_t unknown_7c0_[0x4];
+  uint8_t rage_op_;
+  uint8_t unknown_7c5_[0x3];
+  uint8_t rage_x_;
+  uint8_t unknown_7c9_[0x7];
+  uint8_t rage_z_;
+  uint8_t unknown_7d1_[0x7];
+  uint8_t rage_prohibit_turn_;
+  uint8_t unknown_7d9_[0x4];
+  uint8_t move_limit_;
+  int8_t move_limit_area_[4];
+  uint8_t sequences_[kSequenceCount];
+  SequenceArg sequence_args_[kSequenceCount][4];
+  uint8_t unknown_826_[0x2];
   uint8_t index_;
   uint8_t unknown_829_[0xf];
   UnitEdit edit_;
@@ -639,6 +881,30 @@ bool HasActiveSkill(const SkillKey& key, const Unit::SkillList& list);
 
 // Whether the list holds the skill and the skill is active.
 bool HasSkill(const Unit::SkillList& list, const SkillKey& key);
+
+// Shared system skill 105 makes the barrier break and heal as a whole.
+inline void Unit::SetBarrierHp(int x, int z, int8_t hp) {
+  if (barrier_skill_.index == 0) {
+    return;
+  }
+  const SkillKey whole = {g_shared_system_skills[105].index};
+  if (game::HasSkill(skill_lists_[7], whole)) {
+    SetBarrierHp(hp);
+    return;
+  }
+  if (x < 0 || z < 0) {
+    return;
+  }
+  const int size = shape_.size;
+  if (x >= size || z >= size) {
+    return;
+  }
+  // Wraps instead of overflowing, the original still tests the sign.
+  const int cell = static_cast<int>(static_cast<unsigned>(x) + size * z);
+  if (cell >= 0) {
+    shape_.cells[cell].hp = hp;
+  }
+}
 
 #pragma GCC visibility pop
 

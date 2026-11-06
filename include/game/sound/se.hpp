@@ -10,7 +10,10 @@ class PlayParam {
 public:
   explicit PlayParam(float fade = 0.0f);
   explicit PlayParam(const char* fade_label);
+  explicit PlayParam(int fade_msec);
   ~PlayParam();
+
+  float GetTime() const;
 
 private:
   uint8_t data_[0xc8];

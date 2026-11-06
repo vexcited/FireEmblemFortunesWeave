@@ -31,6 +31,9 @@ private:
 
 class MapInfo : public Singleton<MapInfo> {
 public:
+  void Push(int kind);
+  void Pop();
+
   bool HasUnknown58() const {
     return !unknown_58_.empty();
   }
