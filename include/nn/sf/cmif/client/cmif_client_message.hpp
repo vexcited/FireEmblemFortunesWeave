@@ -4,6 +4,7 @@
 #include <stdint.h>
 #include <string.h>
 
+#include <atomic>
 #include <utility>
 
 #include "nn/result.hpp"
@@ -19,6 +20,60 @@ uint32_t GetInlineContext();
 namespace nn::sf::hipc::detail {
 
 void HandleHipcErrorOnClient(Result result);
+
+}
+
+namespace nn::sf::hipc::detail {
+
+struct BufferParameter {
+  uintptr_t pointer;
+  size_t size;
+};
+
+struct Hipc2MessageInfo {
+  uint8_t isValid;
+  bool hasProcessId;
+  uint8_t copyHandleCount;
+  uint8_t moveHandleCount;
+  uint32_t header0;
+  uint32_t header1;
+  uint32_t specialHeader;
+  uint8_t processIdOffset;
+  uint8_t copyHandleOffset;
+  uint8_t moveHandleOffset;
+  uint8_t pointerOffset;
+  uint8_t sendOffset;
+  uint8_t receiveOffset;
+  uint8_t exchangeOffset;
+  uint8_t rawDataOffset;
+  uint8_t receiveListOffset;
+  uint8_t reserved;
+  uint16_t messageWordCount;
+};
+
+static_assert(sizeof(Hipc2MessageInfo) == 0x1c);
+
+struct Hipc2MessageWriter {
+  const Hipc2MessageInfo* pInfo;
+  void* buffer;
+};
+
+Result SetBuffers(Hipc2MessageWriter* pWriter, int count,
+  const BufferParameter* pBuffers, const uint32_t* pAttributes,
+  size_t pointerBufferSize, size_t pointerSizeOffset);
+
+}
+
+namespace nn::sf::hipc::client {
+
+Result QueryPointerBufferSize(uint16_t* pOutSize, uint32_t handle) asm(
+  "_ZN2nn2sf4hipc6client22QueryPointerBufferSizeEPtNS_3svc6HandleE");
+
+}
+
+namespace nn::diag::detail {
+
+[[noreturn]] void AbortImpl(const Result* pResult);
 
 }
 
@@ -70,6 +125,7 @@ struct InRaw {
   static constexpr size_t Alignment = alignof(T);
   static constexpr bool IsInRaw = true;
   static constexpr bool IsOutRaw = false;
+  static constexpr uint32_t BufferAttribute = 0;
 
   // The value holds the zero extended bits of the scalar.
   static void Write(char* pOut, Parameter value) {
@@ -87,6 +143,7 @@ struct InRawReference {
   static constexpr size_t Alignment = alignof(T);
   static constexpr bool IsInRaw = true;
   static constexpr bool IsOutRaw = false;
+  static constexpr uint32_t BufferAttribute = 0;
 
   static void Write(char* pOut, Parameter value) {
     memcpy(pOut, value, sizeof(T));
@@ -102,12 +159,39 @@ struct OutRaw {
   static constexpr size_t Alignment = alignof(T);
   static constexpr bool IsInRaw = false;
   static constexpr bool IsOutRaw = true;
+  static constexpr uint32_t BufferAttribute = 0;
 
   static void Write(char*, Parameter) {}
 
   static void Read(Parameter pOut, const char* raw) {
     memcpy(pOut, raw, sizeof(T));
   }
+};
+
+enum BufferAttribute : uint32_t {
+  BufferAttribute_In = 1 << 0,
+  BufferAttribute_Out = 1 << 1,
+  BufferAttribute_HipcMapAlias = 1 << 2,
+  BufferAttribute_HipcPointer = 1 << 3,
+  BufferAttribute_FixedSize = 1 << 4,
+  BufferAttribute_HipcAutoSelect = 1 << 5,
+  BufferAttribute_HipcMapTransferAllowsNonSecure = 1 << 6,
+  BufferAttribute_HipcMapTransferAllowsNonDevice = 1 << 7,
+};
+
+// A buffer passed as its address and byte size.
+template <uint32_t Attribute>
+struct Buffer {
+  using Parameter = hipc::detail::BufferParameter;
+  static constexpr size_t Size = 0;
+  static constexpr size_t Alignment = 1;
+  static constexpr bool IsInRaw = false;
+  static constexpr bool IsOutRaw = false;
+  static constexpr uint32_t BufferAttribute = Attribute;
+
+  static void Write(char*, Parameter) {}
+
+  static void Read(Parameter, const char*) {}
 };
 
 template <typename... Arguments>
@@ -144,9 +228,137 @@ template <bool HasProcessId, typename... Arguments>
 struct CmifClientMessage {
   using Layout = RawLayout<Arguments...>;
 
+  static constexpr uint32_t Attributes[] = {Arguments::BufferAttribute..., 0};
+
+  static constexpr int CountBuffers(uint32_t required, uint32_t any) {
+    int count = 0;
+    for (size_t i = 0; i < sizeof...(Arguments); i++) {
+      const uint32_t attribute = Attributes[i];
+      if ((attribute & required) == required && (attribute & any) != 0) {
+        count++;
+      }
+    }
+    return count;
+  }
+
+  static constexpr int BufferCount = CountBuffers(0, ~0u);
+  static constexpr int PointerCount = CountBuffers(BufferAttribute_In,
+    BufferAttribute_HipcPointer | BufferAttribute_HipcAutoSelect);
+  static constexpr int SendCount = CountBuffers(BufferAttribute_In,
+    BufferAttribute_HipcMapAlias | BufferAttribute_HipcAutoSelect);
+  static constexpr int ReceiveCount = CountBuffers(BufferAttribute_Out,
+    BufferAttribute_HipcMapAlias | BufferAttribute_HipcAutoSelect);
+  static constexpr int ReceiveListCount = CountBuffers(BufferAttribute_Out,
+    BufferAttribute_HipcPointer | BufferAttribute_HipcAutoSelect);
+  static constexpr int PointerSizeCount = ReceiveListCount -
+    CountBuffers(BufferAttribute_Out | BufferAttribute_HipcPointer |
+      BufferAttribute_FixedSize, ~0u);
+  static constexpr bool NeedsPointerBufferSize = ReceiveListCount > 0 ||
+    CountBuffers(BufferAttribute_HipcAutoSelect, ~0u) > 0;
+
   static constexpr size_t HeaderSize = HasProcessId ? 0x14 : 0x8;
-  static constexpr uint32_t RawWordCount = static_cast<uint32_t>(
-    (0x10 + sizeof(CmifInHeader) + AlignUp(Layout::InRawSize, 4)) / 4);
+
+  // The out pointer sizes follow the in raw data as 16 bit values.
+  static constexpr size_t GetPointerSizeOffset(size_t extraSize) {
+    return 0x10 + extraSize + sizeof(CmifInHeader) + Layout::InRawSize;
+  }
+
+  static constexpr uint32_t GetRawWordCount(size_t extraSize) {
+    return static_cast<uint32_t>(AlignUp(GetPointerSizeOffset(extraSize) +
+      PointerSizeCount * sizeof(uint16_t), 4) / 4);
+  }
+
+  static constexpr uint32_t RawWordCount = GetRawWordCount(0);
+
+  static constexpr hipc::detail::Hipc2MessageInfo MakeInfo(
+    size_t extraSize) {
+    hipc::detail::Hipc2MessageInfo info = {};
+    const uint32_t rawWordCount = GetRawWordCount(extraSize);
+    info.isValid = 1;
+    info.hasProcessId = HasProcessId;
+    info.header0 = PointerCount << 16 | SendCount << 20 |
+      ReceiveCount << 24;
+    info.header1 = rawWordCount |
+      (ReceiveListCount > 0 ? (ReceiveListCount + 2) << 10 : 0) |
+      (HasProcessId ? 0x80000000u : 0u);
+    info.specialHeader = HasProcessId ? 1 : 0;
+    uint32_t offset = HasProcessId ? 3 : 2;
+    if (HasProcessId) {
+      info.processIdOffset = offset;
+      offset += 2;
+    }
+    if (PointerCount > 0) {
+      info.pointerOffset = offset;
+      offset += PointerCount * 2;
+    }
+    if (SendCount > 0) {
+      info.sendOffset = offset;
+      offset += SendCount * 3;
+    }
+    if (ReceiveCount > 0) {
+      info.receiveOffset = offset;
+      offset += ReceiveCount * 3;
+    }
+    info.rawDataOffset = offset;
+    offset += rawWordCount;
+    if (ReceiveListCount > 0) {
+      info.receiveListOffset = offset;
+      offset += ReceiveListCount * 2;
+    }
+    info.messageWordCount = offset;
+    return info;
+  }
+
+  template <size_t... Indices>
+  static void CollectBuffers(hipc::detail::BufferParameter* pOut,
+    std::index_sequence<Indices...>, typename Arguments::Parameter... args) {
+    (StoreBuffer<Arguments, Indices>(pOut, args), ...);
+  }
+
+  template <typename Argument, size_t Index>
+  static void StoreBuffer(hipc::detail::BufferParameter* pOut,
+    typename Argument::Parameter value) {
+    if constexpr (Argument::BufferAttribute != 0) {
+      size_t index = 0;
+      for (size_t i = 0; i < Index; i++) {
+        index += Attributes[i] != 0 ? 1 : 0;
+      }
+      pOut[index] = value;
+    }
+  }
+
+  // Writes the header and the buffer descriptors, then returns the in header.
+  static Result SetupBufferMessage(CmifInHeader** ppOut, void* buffer,
+    uint32_t type, size_t extraSize, size_t pointerBufferSize,
+    typename Arguments::Parameter... args) {
+    using namespace hipc::detail;
+    const Hipc2MessageInfo info = MakeInfo(extraSize);
+    uint32_t attributes[BufferCount];
+    BufferParameter buffers[BufferCount];
+    int index = 0;
+    for (size_t i = 0; i < sizeof...(Arguments); i++) {
+      if (Attributes[i] != 0) {
+        attributes[index++] = Attributes[i];
+      }
+    }
+    CollectBuffers(buffers, std::index_sequence_for<Arguments...>(),
+      args...);
+    Hipc2MessageWriter writer = {&info, buffer};
+    uint32_t* header = static_cast<uint32_t*>(buffer);
+    header[0] = type | info.header0;
+    header[1] = info.header1;
+    if (HasProcessId) {
+      header[2] = 1;
+    }
+    const Result result = SetBuffers(&writer, BufferCount, buffers,
+      attributes, pointerBufferSize, GetPointerSizeOffset(extraSize));
+    if (result.IsFailure()) {
+      return result;
+    }
+    *ppOut = AlignUpPointer<CmifInHeader>(static_cast<uint32_t*>(
+      writer.buffer) + writer.pInfo->rawDataOffset, 0x10);
+    return result;
+  }
 
   template <size_t... Indices>
   static void WriteArguments(char* data, std::index_sequence<Indices...>,
@@ -183,12 +395,20 @@ class Hipc2ProxyKindBase {
 public:
   struct ProxyKindState {
     bool isOwner;
+    mutable std::atomic<bool> isPointerBufferSizeCached;
+    mutable std::atomic<uint16_t> pointerBufferSize;
     uint32_t handle;
   };
 
   template <bool HasProcessId, typename... Arguments>
   [[gnu::noinline]] static Result Process(const ProxyKindState* pState,
     typename Arguments::Parameter... args, int methodId);
+
+private:
+  template <typename Message, typename... Parameters>
+  [[gnu::always_inline]] static Result Finish(uint32_t handle, void* buffer,
+    cmif::client::detail::CmifInHeader* pIn, int methodId,
+    Parameters... args);
 };
 
 template <detail::MessageType Type>
@@ -199,11 +419,47 @@ Result Hipc2ProxyKindBase<Type>::Process(const ProxyKindState* pState,
     Arguments...>;
   using namespace cmif::client::detail;
 
-  const uint32_t handle = pState->handle;
-  void* buffer = GetMessageBufferOnTls();
+  CmifInHeader* pIn;
+  if constexpr (Message::BufferCount > 0) {
+    size_t pointerBufferSize = 0;
+    if constexpr (Message::NeedsPointerBufferSize) {
+      if (!pState->isPointerBufferSizeCached.load(std::memory_order_acquire)) {
+        uint16_t size = 0;
+        const Result queried = QueryPointerBufferSize(&size, pState->handle);
+        if (queried.IsFailure()) {
+          diag::detail::AbortImpl(&queried);
+        }
+        pState->pointerBufferSize.store(size, std::memory_order_release);
+        pState->isPointerBufferSizeCached.store(true,
+          std::memory_order_release);
+      }
+      pointerBufferSize = pState->pointerBufferSize.load(
+        std::memory_order_acquire);
+    }
+    const uint32_t handle = pState->handle;
+    void* buffer = GetMessageBufferOnTls();
+    Result result = Message::SetupBufferMessage(&pIn, buffer,
+      static_cast<uint32_t>(Type), 0, pointerBufferSize, args...);
+    if (result.IsFailure()) {
+      return result;
+    }
+    return Finish<Message>(handle, buffer, pIn, methodId, args...);
+  }
+  else {
+    const uint32_t handle = pState->handle;
+    void* buffer = GetMessageBufferOnTls();
+    pIn = Message::SetupHeader(buffer, static_cast<uint32_t>(Type), 0);
+    return Finish<Message>(handle, buffer, pIn, methodId, args...);
+  }
+}
 
-  CmifInHeader* pIn = Message::SetupHeader(buffer,
-    static_cast<uint32_t>(Type), 0);
+template <detail::MessageType Type>
+template <typename Message, typename... Parameters>
+Result Hipc2ProxyKindBase<Type>::Finish(uint32_t handle, void* buffer,
+  cmif::client::detail::CmifInHeader* pIn, int methodId,
+  Parameters... args) {
+  using namespace cmif::client::detail;
+
   pIn->magic = CmifInHeaderMagic;
   pIn->version = 1;
   pIn->methodId = methodId;
@@ -211,7 +467,7 @@ Result Hipc2ProxyKindBase<Type>::Process(const ProxyKindState* pState,
   char* inData = reinterpret_cast<char*>(pIn + 1);
   memset(inData, 0, Message::Layout::InRawSize);
   Message::WriteArguments(inData,
-    std::index_sequence_for<Arguments...>(), args...);
+    std::index_sequence_for<Parameters...>(), args...);
   pIn->token = cmif::GetInlineContext();
 
   Result result = Result{SendSyncRequest(handle, buffer,
@@ -234,7 +490,7 @@ Result Hipc2ProxyKindBase<Type>::Process(const ProxyKindState* pState,
   }
 
   Message::ReadArguments(reinterpret_cast<const char*>(pOut + 1),
-    std::index_sequence_for<Arguments...>(), args...);
+    std::index_sequence_for<Parameters...>(), args...);
   return result;
 }
 
@@ -246,6 +502,8 @@ class HipcClientSessionAllocator {
 public:
   virtual uint32_t AllocateSession() = 0;
   virtual void DeallocateSession(uint32_t handle) = 0;
+
+  uint16_t pointerBufferSize;
 };
 
 template <typename Base>
@@ -304,12 +562,27 @@ Result CmifDomainProxyKind<Base>::Process(const ProxyKindState* pState,
     pState->pSessionAllocator;
   const uint32_t objectId = pState->objectId;
   const uint32_t handle = pSessionAllocator->AllocateSession();
-  void* buffer = hipc::GetMessageBufferOnTls();
-
-  CmifDomainInHeader* pDomain = reinterpret_cast<CmifDomainInHeader*>(
-    Message::SetupHeader(buffer, static_cast<uint32_t>(
-      hipc::detail::MessageType::CmifRequestWithContext),
-      sizeof(CmifDomainInHeader) / 4));
+  constexpr uint32_t type = static_cast<uint32_t>(
+    hipc::detail::MessageType::CmifRequestWithContext);
+  void* buffer;
+  CmifDomainInHeader* pDomain;
+  if constexpr (Message::BufferCount > 0) {
+    const size_t pointerBufferSize = pSessionAllocator->pointerBufferSize;
+    buffer = hipc::GetMessageBufferOnTls();
+    CmifInHeader* pRaw;
+    const Result setup = Message::SetupBufferMessage(&pRaw, buffer, type,
+      sizeof(CmifDomainInHeader), pointerBufferSize, args...);
+    if (setup.IsFailure()) {
+      pSessionAllocator->DeallocateSession(handle);
+      return setup;
+    }
+    pDomain = reinterpret_cast<CmifDomainInHeader*>(pRaw);
+  }
+  else {
+    buffer = hipc::GetMessageBufferOnTls();
+    pDomain = reinterpret_cast<CmifDomainInHeader*>(Message::SetupHeader(
+      buffer, type, sizeof(CmifDomainInHeader) / 4));
+  }
   pDomain->type = 1;
   pDomain->objectCount = 0;
   pDomain->dataSize = static_cast<uint16_t>(
