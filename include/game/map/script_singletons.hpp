@@ -2,6 +2,9 @@
 
 #include <stdint.h>
 
+#include <utility>
+#include <vector>
+
 #include "game/map/image.hpp"
 #include "game/map/trick.hpp"
 #include "game/singleton.hpp"
@@ -36,6 +39,39 @@ public:
     return target_z_;
   }
 
+  void SetTarget(int8_t x, int8_t z) {
+    target_x_ = x;
+    target_z_ = z;
+  }
+
+  int GetPosX() const {
+    return pos_x_;
+  }
+
+  int GetPosZ() const {
+    return pos_z_;
+  }
+
+  void SetPos(int x, int z) {
+    pos_x_ = x;
+    pos_z_ = z;
+  }
+
+  void SetCommand(uint8_t command) {
+    command_ = command;
+  }
+
+  uint64_t GetFlags() const {
+    return flags_;
+  }
+
+  // A command waits while the last entry of the stack still holds one.
+  bool IsCommandPending() const {
+    return !stack_.empty() && stack_.back().first != nullptr;
+  }
+
+  bool CanCommand(uint8_t command) const;
+
   // The target cell or one of the cells of its area.
   bool IsInTargetPos(int x, int z) const {
     if (x == target_x_ && z == target_z_) {
@@ -58,7 +94,11 @@ private:
   };
 
   uint8_t unit_;
-  uint8_t unknown_09_[0x2f];
+  uint8_t unknown_09_[0x3];
+  int pos_x_;
+  int pos_z_;
+  uint8_t command_;
+  uint8_t unknown_15_[0x23];
   SkillKey active_skill_;
   uint8_t unknown_3c_[0xfd];
   int8_t target_x_;
@@ -68,6 +108,9 @@ private:
   uint8_t unknown_13e_[0xe];
   Area areas_[kAreaCount];
   uint32_t area_count_;
+  uint8_t unknown_3150_[0x30];
+  uint64_t flags_;
+  std::vector<std::pair<const void*, const void*>> stack_;
 };
 
 class Zoom : public Singleton<Zoom> {
@@ -144,6 +187,20 @@ public:
     return reinterpret_cast<const TrickData*>(tricks_ + kTrickSize * index);
   }
 
+  const TrickData* Get(int index) const {
+    return reinterpret_cast<const TrickData*>(tricks_ + kTrickSize * index);
+  }
+
+  // Only the given layer, checking the tricks exist after the index.
+  const TrickData* FindOnLayer(int layer, int x, int z) const {
+    const int16_t index = layers_[layer][GetCellIndex(x, z)];
+    if (index < 0 || tricks_ == 0) {
+      return nullptr;
+    }
+    const char* tricks = reinterpret_cast<const char*>(tricks_);
+    return reinterpret_cast<const TrickData*>(tricks + kTrickSize * index);
+  }
+
 private:
   uint8_t unknown_00_[0x8];
   uintptr_t tricks_;
@@ -156,6 +213,9 @@ public:
   const TrickMap* GetMap() const {
     return map_;
   }
+
+  // The trick standing on the cell.
+  const TrickData* FindAt(int x, int z) const;
 
 private:
   TrickMap* map_;

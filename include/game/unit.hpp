@@ -566,6 +566,10 @@ public:
 
   bool IsDone() const;
 
+  const JobData* GetBaseJob() const {
+    return job_;
+  }
+
   int GetSize() const {
     return shape_.size;
   }
