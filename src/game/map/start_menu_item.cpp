@@ -6,7 +6,7 @@
 
 namespace game::map {
 
-void OpenSelect(menu::BasicMenu* menu);
+void OpenSelect(menu::BasicMenu* menu, void* context);
 
 namespace {
 
@@ -29,7 +29,7 @@ public:
   bool IsDecidable() override;
 
   int ACall() override {
-    OpenSelect(menu_->GetParent());
+    OpenSelect(menu_->GetParent(), nullptr);
     return 9;
   }
 

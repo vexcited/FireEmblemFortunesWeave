@@ -2,6 +2,7 @@
 
 #include <cstddef>
 #include <string>
+#include <type_traits>
 
 #include "snd/memory.hpp"
 
@@ -25,8 +26,12 @@ public:
     g_memory->free(memory);
   }
 
-  friend bool operator==(const Allocator&, const Allocator&) {
-    return true;
+  // Containers only reuse the storage of their own allocator, a move
+  // between two containers copies.
+  using is_always_equal = std::false_type;
+
+  friend bool operator==(const Allocator& a, const Allocator& b) {
+    return &a == &b;
   }
 };
 
@@ -39,6 +44,8 @@ public:
   String& operator=(const char* string);
 
   const char* c_str() const;
+
+  void format(const char* format, ...);
 };
 
 }

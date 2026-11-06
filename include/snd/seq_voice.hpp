@@ -91,6 +91,10 @@ public:
   float calcTotalPitch() const;
   float calcTotalSurroundPan() const;
 
+  SeqVoice* getSlotNext() const {
+    return slotNext_;
+  }
+
 private:
   struct Child {
     fnd::WeakHandle voice;
@@ -142,7 +146,8 @@ private:
   void stopImpl(const Fade& fade, bool force, float value);
   void killImpl();
 
-  uint8_t reserved17b8_[0x10];
+  SeqVoice* slotPrev_;
+  SeqVoice* slotNext_;
   data::SeqBuffer* seqBuffer_;
   const data::SeqVoiceInfo* seqInfo_;
   void* children_;

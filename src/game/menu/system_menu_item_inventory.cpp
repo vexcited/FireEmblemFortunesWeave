@@ -14,7 +14,8 @@ namespace game::menu {
 
 void OpenRosterTop(BasicMenu* menu);
 
-void OpenSystemMenuItemMouseGuide(menu::BasicMenu* menu, int value);
+void OpenSystemMenuItemMouseGuide(menu::BasicMenu* menu, bool flag,
+  int value);
 
 void OpenFacilityTemple(menu::BasicMenu* menu);
 
@@ -240,7 +241,7 @@ public:
     if (!active_) {
       return 1;
     }
-    OpenSystemMenuItemMouseGuide(menu_->GetParent(), 1);
+    OpenSystemMenuItemMouseGuide(menu_->GetParent(), true, 3);
     return 9;
   }
 

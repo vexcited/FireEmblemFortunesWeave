@@ -65,9 +65,11 @@ ClassChangeJobMenu::~ClassChangeJobMenu() = default;
 
 void ClassChangeJobMenu::Unknown30(bool enable) {
   BasicMenu::Unknown31(enable);
-  std::weak_ptr<ui::LayoutAccessor> info =
-    accessor_.GetPart("L_ClassInfo/L_KeyHelp");
-  ui::SetPartEnabled(info, enable, false);
+  {
+    std::weak_ptr<ui::LayoutAccessor> info =
+      accessor_.GetPart("L_ClassInfo/L_KeyHelp");
+    ui::SetPartEnabled(info, enable, false);
+  }
   std::weak_ptr<ui::LayoutAccessor> help = accessor_.GetPart("L_KeyHelp");
   ui::SetPartEnabled(help, enable, true);
 }

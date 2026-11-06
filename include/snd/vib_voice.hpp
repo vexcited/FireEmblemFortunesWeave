@@ -111,6 +111,10 @@ public:
   void addToSlot() override;
   void updatePlaying() override;
 
+  VibVoice* getSlotNext() const {
+    return slotNext_;
+  }
+
 private:
   bool hasVibration() const {
     return !vibBuffer_->name.empty();
@@ -120,7 +124,8 @@ private:
   void stopImpl(const Fade& fade, bool force, float value);
   void killImpl();
 
-  uint8_t reserved17b8_[0x10];
+  VibVoice* slotPrev_;
+  VibVoice* slotNext_;
   data::VibBuffer* vibBuffer_;
   const data::VibVoiceInfo* vibInfo_;
   fnd::WeakHandle vibration_;

@@ -70,10 +70,14 @@ constexpr Result ResultCapsrvInvalidFileId = {206 | 12 << 9};
 struct EntryString {
   char value[17];
 
+  // The original formats the eight bytes that follow the entry, not its own
+  // time field.
   explicit EntryString(const AlbumFileEntry& entry) : value() {
+    const auto& time =
+      *reinterpret_cast<const capsrv::AlbumFileDateTime*>(&entry + 1);
     util::SNPrintf(value, sizeof(value), "%04d%02d%02d%02d%02d%02d%02d",
-      entry.time.year, entry.time.month, entry.time.day, entry.time.hour,
-      entry.time.minute, entry.time.second, entry.time.id);
+      time.year, time.month, time.day, time.hour, time.minute, time.second,
+      time.id);
   }
 };
 

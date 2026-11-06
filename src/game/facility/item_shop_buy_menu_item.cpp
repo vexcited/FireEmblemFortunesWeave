@@ -4,7 +4,7 @@
 
 namespace game::facility {
 
-void OpenItemShopBuy(menu::BasicMenu* menu);
+void OpenItemShopBuy(menu::BasicMenu* menu, void* context);
 
 namespace {
 
@@ -18,12 +18,15 @@ public:
     if (!IsActive()) {
       return 1;
     }
-    OpenItemShopBuy(menu_->GetParent());
+    OpenItemShopBuy(menu_->GetParent(), context_);
     return 9;
   }
 
   void DrawText() override;
   const char* Unknown75() override { return "MID_Shop_Buy_Help"; }
+
+private:
+  void* context_;
 };
 
 [[gnu::used]] ItemShopBuyMenuItem::ItemShopBuyMenuItem() = default;

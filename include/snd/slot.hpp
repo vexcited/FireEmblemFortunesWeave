@@ -1,6 +1,9 @@
 #pragma once
 
+#include <functional>
+
 #include "snd/handle_ptr.hpp"
+#include "snd/manager.hpp"
 #include "snd/obj.hpp"
 #include "snd/param.hpp"
 
@@ -40,9 +43,47 @@ public:
   void addVoice(VibVoice* voice);
   void destroyVoice(VibVoice* voice);
   void checkPriority(VibVoice* voice);
+
+  Slot* getNext() const {
+    return next_;
+  }
+
+  void eachVoice(const std::function<void(Voice*)>& function);
+  void eachSeqVoice(const std::function<void(SeqVoice*)>& function);
+  void eachVibVoice(const std::function<void(VibVoice*)>& function);
+
+private:
+  uint64_t unknown_15e8_;
+  Slot* next_;
+  uint8_t unknown_15f8_[0xc0];
+  ObjList<Voice>* voices_;
+  uint8_t unknown_16c0_[0x20];
+  ObjList<SeqVoice>* seqVoices_;
+  uint8_t unknown_16e8_[0x20];
+  ObjList<VibVoice>* vibVoices_;
 };
 
 class Actor : public Obj, public Param, public HandlePtr {
 };
+
+class Listener : public Obj, public Param, public HandlePtr {
+public:
+  void setSurround(const char* name);
+  void setSurround(const void* data);
+};
+
+// A volume group found by the hash of its name.
+class Bus : public Param, public HandlePtr {
+};
+
+// The slots list their voices by kind, the next one is read before the
+// callback runs.
+inline void Manager::eachSlot(const std::function<void(Slot*)>& function) {
+  for (Slot* slot = slots_->head; slot != nullptr;) {
+    Slot* next = slot->getNext();
+    function(slot);
+    slot = next;
+  }
+}
 
 }

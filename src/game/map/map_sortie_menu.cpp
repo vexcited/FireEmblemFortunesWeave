@@ -14,9 +14,11 @@ bool HasSortieHints();
 int MapSortieMenu::last_index_ = -1;
 
 void MapSortieMenu::Unknown30(bool enable) {
-  std::weak_ptr<ui::LayoutAccessor> help =
-    accessor_.GetPart("L_KeyHelp01");
-  ui::SetPartEnabled(help, enable, false);
+  {
+    std::weak_ptr<ui::LayoutAccessor> help =
+      accessor_.GetPart("L_KeyHelp01");
+    ui::SetPartEnabled(help, enable, false);
+  }
   std::weak_ptr<ui::LayoutAccessor> help_all = accessor_.GetPart("L_KeyHelp");
   ui::SetPartEnabled(help_all, enable, false);
 }

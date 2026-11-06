@@ -15,7 +15,9 @@ namespace {
 
 class TaskExecutionContextTlsSlot {
 public:
-  [[gnu::noinline]] TaskExecutionContextTlsSlot() {
+  // Used keeps the optimizer from dropping the this argument, which the
+  // original still passes.
+  [[gnu::noinline, gnu::used]] TaskExecutionContextTlsSlot() {
     NN_ABORT_UNLESS_RESULT_SUCCESS(os::SdkAllocateTlsSlot(&m_Slot, nullptr));
   }
 

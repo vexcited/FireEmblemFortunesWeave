@@ -4,7 +4,7 @@
 
 namespace game::facility {
 
-void OpenLegionShopSell(menu::BasicMenu* menu);
+void OpenLegionShopSell(menu::BasicMenu* menu, void* context);
 
 namespace {
 
@@ -37,7 +37,7 @@ public:
     if (!IsActive()) {
       return 1;
     }
-    OpenLegionShopSell(menu_->GetParent());
+    OpenLegionShopSell(menu_->GetParent(), nullptr);
     return 9;
   }
 

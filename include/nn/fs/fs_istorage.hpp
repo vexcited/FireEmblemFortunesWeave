@@ -7,7 +7,7 @@
 
 namespace nn::fs {
 
-enum OperationId {
+enum OperationId : int64_t {
   OperationId_FillZero,
   OperationId_DestroySignature,
   OperationId_Invalidate,

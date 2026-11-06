@@ -33,7 +33,7 @@ struct SupportedRefreshRateBit;
 struct TimestampRecorderType;
 struct VsyncEventType;
 
-enum BufferCheckpointBits : int32_t {};
+enum BufferCheckpointBits : int64_t {};
 enum BufferContentBits : int32_t {};
 enum BufferPermissionBits : int32_t {};
 enum HdrColorEncoding : int32_t {};

@@ -108,6 +108,15 @@ public:
 
   virtual void** getRegistry();
 
+  VoiceBase* getListNext() const {
+    return listNext_;
+  }
+
+  // The sound frame the voice was created in.
+  uint64_t getStartFrame() const {
+    return listReserved_[0];
+  }
+
 protected:
   enum State {
     kStateNone,
