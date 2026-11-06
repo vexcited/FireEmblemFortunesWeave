@@ -71,6 +71,11 @@ public:
     return rot_y_;
   }
 
+  // Keeps the longest time the event stays disabled.
+  void ExtendDisableSec(float sec) {
+    disable_sec_ = disable_sec_ < sec ? sec : disable_sec_;
+  }
+
   void SetFrontAngle(float degree) {
     front_angle_ = degree;
     has_front_angle_ = true;
@@ -159,7 +164,8 @@ private:
   bool gaya_devoice_;
   uint8_t unknown_6c1_[0x7];
   bool has_gaya_;
-  uint8_t unknown_6c9_[0x17];
+  uint8_t unknown_6c9_[0x13];
+  float disable_sec_;
   uint32_t flags_;
 };
 
