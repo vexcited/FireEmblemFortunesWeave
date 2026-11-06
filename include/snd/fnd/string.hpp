@@ -3,6 +3,7 @@
 #include <cstddef>
 #include <string>
 #include <type_traits>
+#include <utility>
 
 #include "snd/memory.hpp"
 
@@ -24,6 +25,13 @@ public:
 
   void deallocate(T* memory, size_t) {
     g_memory->free(memory);
+  }
+
+  // Containers construct through the allocator, so their elements are
+  // copied one by one instead of with memcpy.
+  template <typename U, typename... Args>
+  void construct(U* object, Args&&... args) {
+    ::new (static_cast<void*>(object)) U(std::forward<Args>(args)...);
   }
 
   // Containers only reuse the storage of their own allocator, a move

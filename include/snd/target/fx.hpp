@@ -5,6 +5,7 @@
 #include "nn/atk/effect.hpp"
 #include "snd/fnd/weak_handle.hpp"
 #include "snd/fx/fx.hpp"
+#include "snd/memory.hpp"
 
 namespace snd {
 
@@ -23,12 +24,199 @@ class Base;
 
 class FxBase {
 public:
+  FxBase() = default;
+
   virtual void** getRegistry();
   virtual ~FxBase();
 
-  nn::atk::EffectBase* effect;
-  nn::atk::EffectAux* aux;
+  void setEffect(nn::atk::EffectBase* newEffect) {
+    nn::atk::EffectBase* old = effect;
+    effect = newEffect;
+    if (old != nullptr) {
+      snd::destroy(old);
+    }
+  }
+
+  void setAux(nn::atk::EffectAux* effect) {
+    nn::atk::EffectAux* old = aux;
+    aux = effect;
+    if (old != nullptr) {
+      snd::destroy(old);
+    }
+  }
+
+  nn::atk::EffectBase* effect = nullptr;
+  nn::atk::EffectAux* aux = nullptr;
 };
+
+// A software effect, which renders into a work buffer of its own.
+class CpuReverbEffect : public nn::atk::EffectAux {
+public:
+  CpuReverbEffect();
+
+  size_t getWorkBufferSize();
+  void setWorkBuffer(void* buffer, size_t size);
+
+  uint8_t unknown_60_[0x60];
+  int bus;
+  int sampleRate;
+};
+
+// A software effect, which renders into a work buffer of its own.
+class CpuI3dl2ReverbEffect : public nn::atk::EffectAux {
+public:
+  CpuI3dl2ReverbEffect();
+
+  size_t getWorkBufferSize();
+  void setWorkBuffer(void* buffer, size_t size);
+
+  uint8_t unknown_60_[0x60];
+  int bus;
+  int sampleRate;
+};
+
+// A software effect, which renders into a work buffer of its own.
+class CpuDelayEffect : public nn::atk::EffectAux {
+public:
+  CpuDelayEffect();
+
+  size_t getWorkBufferSize();
+  void setWorkBuffer(void* buffer, size_t size);
+
+  uint8_t unknown_60_[0x50];
+  int bus;
+  int sampleRate;
+  uint8_t unknown_b8_[0x8];
+};
+
+// A software effect, which renders into a work buffer of its own.
+class CpuLightLimiterEffect : public nn::atk::EffectAux {
+public:
+  CpuLightLimiterEffect();
+
+  size_t getWorkBufferSize();
+  void setWorkBuffer(void* buffer, size_t size);
+
+  uint8_t unknown_60_[0x58];
+  int bus;
+  int sampleRate;
+  uint8_t unknown_c0_[0x8];
+};
+
+// The auxiliary effects the game implements on top of the toolkit, only
+// their sizes and constructors are known here.
+class MultiBridgeEffect : public nn::atk::EffectAux {
+public:
+  explicit MultiBridgeEffect(int bridges);
+
+private:
+  uint8_t body_[0x40];
+};
+
+class EQEffect : public nn::atk::EffectAux {
+public:
+  EQEffect();
+
+private:
+  uint8_t body_[0x38];
+};
+
+class WaveformEffect : public nn::atk::EffectAux {
+public:
+  WaveformEffect();
+
+private:
+  uint8_t body_[0x30];
+};
+
+class MSEffect : public nn::atk::EffectAux {
+public:
+  MSEffect();
+
+private:
+  uint8_t body_[0x40];
+};
+
+class MSEQEffect : public nn::atk::EffectAux {
+public:
+  MSEQEffect();
+
+private:
+  uint8_t body_[0x40];
+};
+
+class VibEffect : public nn::atk::EffectAux {
+public:
+  VibEffect();
+
+private:
+  uint8_t body_[0x70];
+};
+
+class FinalMixEffect : public nn::atk::EffectAux {
+public:
+  FinalMixEffect();
+
+private:
+  uint8_t body_[0x38];
+};
+
+class MuteEffect : public nn::atk::EffectAux {
+public:
+  MuteEffect();
+
+private:
+  uint8_t body_[0x8];
+};
+
+class NoneEffect : public nn::atk::EffectAux {
+public:
+  NoneEffect();
+
+private:
+  uint8_t body_[0x8];
+};
+
+class SurroundEffect : public nn::atk::EffectAux {
+public:
+  SurroundEffect();
+
+private:
+  uint8_t body_[0x6098];
+};
+
+class LFEEffect : public nn::atk::EffectAux {
+public:
+  LFEEffect();
+
+private:
+  uint8_t body_[0x48];
+};
+
+class SimpleLimiterEffect : public nn::atk::EffectAux {
+public:
+  SimpleLimiterEffect();
+
+private:
+  uint8_t body_[0x1018];
+};
+
+class SpeakerEffect : public nn::atk::EffectAux {
+public:
+  SpeakerEffect();
+
+private:
+  uint8_t body_[0x1860];
+};
+
+class PCMPlayerEffect : public nn::atk::EffectAux {
+public:
+  PCMPlayerEffect();
+
+private:
+  uint8_t body_[0x88];
+};
+
 
 class FxReverbNX : public fx::FxReverb {
 public:
@@ -39,11 +227,7 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
-
-private:
-  uint8_t unknown_1610_[0x10];
-  void* buffer_;
-  uint8_t unknown_1628_[0x8];
+  void setParam(const void* param, float scale) override;
 };
 
 class FxCpuReverbNX : public fx::FxCpuReverb {
@@ -55,11 +239,10 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
+  void setParam(const void* param, float scale) override;
 
 private:
-  uint8_t unknown_1610_[0x10];
-  void* buffer_;
-  uint8_t unknown_1628_[0x10];
+  size_t workBufferSize_;
   void* buffer2_;
 };
 
@@ -72,11 +255,7 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
-
-private:
-  uint8_t unknown_1610_[0x10];
-  void* buffer_;
-  uint8_t unknown_1628_[0x8];
+  void setParam(const void* param, float scale) override;
 };
 
 class FxCpuI3dl2ReverbNX : public fx::FxCpuI3dl2Reverb {
@@ -88,11 +267,10 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
+  void setParam(const void* param, float scale) override;
 
 private:
-  uint8_t unknown_1610_[0x10];
-  void* buffer_;
-  uint8_t unknown_1628_[0x10];
+  size_t workBufferSize_;
   void* buffer2_;
 };
 
@@ -105,11 +283,7 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
-
-private:
-  uint8_t unknown_1610_[0x10];
-  void* buffer_;
-  uint8_t unknown_1628_[0x8];
+  void setParam(const void* param, float scale) override;
 };
 
 class FxCpuDelayNX : public fx::FxCpuDelay {
@@ -121,11 +295,10 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
+  void setParam(const void* param, float scale) override;
 
 private:
-  uint8_t unknown_1610_[0x10];
-  void* buffer_;
-  uint8_t unknown_1628_[0x10];
+  size_t workBufferSize_;
   void* buffer2_;
 };
 
@@ -138,11 +311,7 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
-
-private:
-  uint8_t unknown_1610_[0x10];
-  void* buffer_;
-  uint8_t unknown_1628_[0x8];
+  void setParam(const void* param, float scale) override;
 };
 
 class FxCpuLightLimiterNX : public fx::FxCpuLightLimiter {
@@ -154,11 +323,10 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
+  void setParam(const void* param, float scale) override;
 
 private:
-  uint8_t unknown_1610_[0x10];
-  void* buffer_;
-  uint8_t unknown_1628_[0x10];
+  size_t workBufferSize_;
   void* buffer2_;
 };
 
@@ -171,11 +339,7 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
-
-private:
-  uint8_t unknown_1610_[0x10];
-  void* buffer_;
-  uint8_t unknown_1628_[0x8];
+  void setParam(const void* param, float scale) override;
 };
 
 class FxFFTNX : public fx::FxFFT {
@@ -191,9 +355,7 @@ public:
   bool isRemovable() const override;
 
 private:
-  uint8_t unknown_1610_[0x10];
-  void* buffer_;
-  uint8_t unknown_1628_[0x120];
+  uint8_t unknown_1630_[0x118];
 };
 
 class FxMSCtrlNX : public fx::FxMSCtrl {
@@ -207,9 +369,7 @@ public:
   bool isRemovable() const override;
 
 private:
-  uint8_t unknown_1610_[0x10];
-  void* buffer_;
-  uint8_t unknown_1628_[0x20];
+  uint8_t unknown_1630_[0x18];
 };
 
 class FxEQNX : public fx::FxEQ {
@@ -223,9 +383,7 @@ public:
   bool isRemovable() const override;
 
 private:
-  uint8_t unknown_1610_[0x10];
-  void* buffer_;
-  uint8_t unknown_1628_[0x50];
+  uint8_t unknown_1630_[0x48];
 };
 
 class FxMSNX : public fx::FxMS {
@@ -237,11 +395,6 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
-
-private:
-  uint8_t unknown_1610_[0x10];
-  void* buffer_;
-  uint8_t unknown_1628_[0x10];
 };
 
 class FxMSEQNX : public fx::FxMSEQ {
@@ -253,11 +406,6 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
-
-private:
-  uint8_t unknown_1610_[0x10];
-  void* buffer_;
-  uint8_t unknown_1628_[0x10];
 };
 
 class FxSpectrumNX : public fx::FxSpectrum {
@@ -271,9 +419,7 @@ public:
   bool isRemovable() const override;
 
 private:
-  uint8_t unknown_1610_[0x10];
-  void* buffer_;
-  uint8_t unknown_1628_[0x418];
+  uint8_t unknown_1630_[0x410];
 };
 
 class FxVibNX : public fx::FxVib {
@@ -285,11 +431,6 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
-
-private:
-  uint8_t unknown_1610_[0x10];
-  void* buffer_;
-  uint8_t unknown_1628_[0x8];
 };
 
 class FxFinalMixNX : public fx::FxFinalMix {
@@ -301,11 +442,6 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
-
-private:
-  uint8_t unknown_1610_[0x10];
-  void* buffer_;
-  uint8_t unknown_1628_[0x8];
 };
 
 class FxMuteNX : public fx::FxMute {
@@ -317,11 +453,6 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
-
-private:
-  uint8_t unknown_1610_[0x10];
-  void* buffer_;
-  uint8_t unknown_1628_[0x8];
 };
 
 class FxNoneNX : public fx::FxNone {
@@ -333,11 +464,6 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
-
-private:
-  uint8_t unknown_1610_[0x10];
-  void* buffer_;
-  uint8_t unknown_1628_[0x8];
 };
 
 class FxSurroundNX : public fx::FxSurround {
@@ -349,11 +475,6 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
-
-private:
-  uint8_t unknown_1610_[0x10];
-  void* buffer_;
-  uint8_t unknown_1628_[0x8];
 };
 
 class FxLFENX : public fx::FxLFE {
@@ -365,11 +486,6 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
-
-private:
-  uint8_t unknown_1610_[0x10];
-  void* buffer_;
-  uint8_t unknown_1628_[0x8];
 };
 
 class FxSimpleLimiterNX : public fx::FxSimpleLimiter {
@@ -381,11 +497,6 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
-
-private:
-  uint8_t unknown_1610_[0x10];
-  void* buffer_;
-  uint8_t unknown_1628_[0x8];
 };
 
 class FxWaveformNX : public fx::FxWaveform {
@@ -397,11 +508,6 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
-
-private:
-  uint8_t unknown_1610_[0x10];
-  void* buffer_;
-  uint8_t unknown_1628_[0x8];
 };
 
 class FxSpeakerNX : public fx::FxSpeaker {
@@ -413,11 +519,6 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
-
-private:
-  uint8_t unknown_1610_[0x10];
-  void* buffer_;
-  uint8_t unknown_1628_[0x8];
 };
 
 class FxPCMPlayerNX : public fx::FxPCMPlayer {
@@ -429,11 +530,6 @@ public:
   void enable() override;
   void disable() override;
   bool isRemovable() const override;
-
-private:
-  uint8_t unknown_1610_[0x10];
-  void* buffer_;
-  uint8_t unknown_1628_[0x8];
 };
 
 class FxMultiBridgeNX : public fx::FxMultiBridge {
@@ -447,9 +543,34 @@ public:
   bool isRemovable() const override;
 
 private:
-  uint8_t unknown_1610_[0x10];
-  void* buffer_;
-  uint8_t unknown_1628_[0x40];
+  uint8_t unknown_1630_[0x38];
 };
+
+static_assert(sizeof(FxReverbNX) == 0x1630);
+static_assert(sizeof(FxCpuReverbNX) == 0x1640);
+static_assert(sizeof(FxI3dl2ReverbNX) == 0x1630);
+static_assert(sizeof(FxCpuI3dl2ReverbNX) == 0x1640);
+static_assert(sizeof(FxDelayNX) == 0x1630);
+static_assert(sizeof(FxCpuDelayNX) == 0x1640);
+static_assert(sizeof(FxLightLimiterNX) == 0x1630);
+static_assert(sizeof(FxCpuLightLimiterNX) == 0x1640);
+static_assert(sizeof(FxCompressorNX) == 0x1630);
+static_assert(sizeof(FxFFTNX) == 0x1748);
+static_assert(sizeof(FxMSCtrlNX) == 0x1648);
+static_assert(sizeof(FxEQNX) == 0x1678);
+static_assert(sizeof(FxMSNX) == 0x1638);
+static_assert(sizeof(FxMSEQNX) == 0x1638);
+static_assert(sizeof(FxSpectrumNX) == 0x1a40);
+static_assert(sizeof(FxVibNX) == 0x1630);
+static_assert(sizeof(FxFinalMixNX) == 0x1630);
+static_assert(sizeof(FxMuteNX) == 0x1630);
+static_assert(sizeof(FxNoneNX) == 0x1630);
+static_assert(sizeof(FxSurroundNX) == 0x1630);
+static_assert(sizeof(FxLFENX) == 0x1630);
+static_assert(sizeof(FxSimpleLimiterNX) == 0x1630);
+static_assert(sizeof(FxWaveformNX) == 0x1630);
+static_assert(sizeof(FxSpeakerNX) == 0x1630);
+static_assert(sizeof(FxPCMPlayerNX) == 0x1630);
+static_assert(sizeof(FxMultiBridgeNX) == 0x1668);
 
 }

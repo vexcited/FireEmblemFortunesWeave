@@ -1,5 +1,6 @@
 #include "snd/target/fx.hpp"
 
+#include "nn/diag/diag_abort.hpp"
 #include "snd/memory.hpp"
 #include "snd/target/base.hpp"
 
@@ -640,6 +641,350 @@ FxMultiBridgeNX::~FxMultiBridgeNX() {
     snd::destroy(impl);
   }
   freeBuffer(buffer_);
+}
+
+// The bus pointer is the name of the effect.
+FxMSNX::FxMSNX(Manager* manager, void* bus, uint32_t index,
+  uint32_t channels) : fx::FxMS(manager, static_cast<const char*>(bus), index,
+    channels) {
+  impl_ = snd::create<target::FxBase>();
+  impl_->setAux(snd::create<MSEffect>());
+  impl_->aux->SetChannelCount(count_);
+  impl_->aux->SetBus(channel_);
+  impl_->aux->SetEnabled(true);
+  bufferSize_ = impl_->aux->GetRequiredMemSize();
+  buffer_ = s_platform->allocPoolMemory(bufferSize_, 0);
+  NN_ABORT_UNLESS_NOT_NULL(buffer_);
+}
+
+// The bus pointer is the name of the effect.
+FxMSEQNX::FxMSEQNX(Manager* manager, void* bus, uint32_t index,
+  uint32_t channels) : fx::FxMSEQ(manager, static_cast<const char*>(bus), index,
+    channels) {
+  impl_ = snd::create<target::FxBase>();
+  impl_->setAux(snd::create<MSEQEffect>());
+  impl_->aux->SetChannelCount(count_);
+  impl_->aux->SetBus(channel_);
+  impl_->aux->SetEnabled(true);
+  bufferSize_ = impl_->aux->GetRequiredMemSize();
+  buffer_ = s_platform->allocPoolMemory(bufferSize_, 0);
+  NN_ABORT_UNLESS_NOT_NULL(buffer_);
+}
+
+// The bus pointer is the name of the effect.
+FxVibNX::FxVibNX(Manager* manager, void* bus, uint32_t index,
+  uint32_t channels) : fx::FxVib(manager, static_cast<const char*>(bus), index,
+    channels) {
+  impl_ = snd::create<target::FxBase>();
+  impl_->setAux(snd::create<VibEffect>());
+  impl_->aux->SetChannelCount(count_);
+  impl_->aux->SetBus(channel_);
+  impl_->aux->SetEnabled(true);
+  bufferSize_ = impl_->aux->GetRequiredMemSize();
+  buffer_ = s_platform->allocPoolMemory(bufferSize_, 0);
+  NN_ABORT_UNLESS_NOT_NULL(buffer_);
+}
+
+// The bus pointer is the name of the effect.
+FxFinalMixNX::FxFinalMixNX(Manager* manager, void* bus, uint32_t index,
+  uint32_t channels) : fx::FxFinalMix(manager, static_cast<const char*>(bus), index,
+    channels) {
+  impl_ = snd::create<target::FxBase>();
+  impl_->setAux(snd::create<FinalMixEffect>());
+  impl_->aux->SetChannelCount(count_);
+  impl_->aux->SetBus(channel_);
+  impl_->aux->SetEnabled(true);
+  bufferSize_ = impl_->aux->GetRequiredMemSize();
+  buffer_ = s_platform->allocPoolMemory(bufferSize_, 0);
+  NN_ABORT_UNLESS_NOT_NULL(buffer_);
+}
+
+// The bus pointer is the name of the effect.
+FxMuteNX::FxMuteNX(Manager* manager, void* bus, uint32_t index,
+  uint32_t channels) : fx::FxMute(manager, static_cast<const char*>(bus), index,
+    channels) {
+  impl_ = snd::create<target::FxBase>();
+  impl_->setAux(snd::create<MuteEffect>());
+  impl_->aux->SetChannelCount(count_);
+  impl_->aux->SetBus(channel_);
+  impl_->aux->SetEnabled(true);
+  bufferSize_ = impl_->aux->GetRequiredMemSize();
+  buffer_ = s_platform->allocPoolMemory(bufferSize_, 0);
+  NN_ABORT_UNLESS_NOT_NULL(buffer_);
+}
+
+// The bus pointer is the name of the effect.
+FxNoneNX::FxNoneNX(Manager* manager, void* bus, uint32_t index,
+  uint32_t channels) : fx::FxNone(manager, static_cast<const char*>(bus), index,
+    channels) {
+  impl_ = snd::create<target::FxBase>();
+  impl_->setAux(snd::create<NoneEffect>());
+  impl_->aux->SetChannelCount(count_);
+  impl_->aux->SetBus(channel_);
+  impl_->aux->SetEnabled(true);
+  bufferSize_ = impl_->aux->GetRequiredMemSize();
+  buffer_ = s_platform->allocPoolMemory(bufferSize_, 0);
+  NN_ABORT_UNLESS_NOT_NULL(buffer_);
+}
+
+// The bus pointer is the name of the effect.
+FxSurroundNX::FxSurroundNX(Manager* manager, void* bus, uint32_t index,
+  uint32_t channels) : fx::FxSurround(manager, static_cast<const char*>(bus), index) {
+  impl_ = snd::create<target::FxBase>();
+  impl_->setAux(snd::create<SurroundEffect>());
+  impl_->aux->SetChannelCount(count_);
+  impl_->aux->SetBus(channel_);
+  impl_->aux->SetEnabled(true);
+  bufferSize_ = impl_->aux->GetRequiredMemSize();
+  buffer_ = s_platform->allocPoolMemory(bufferSize_, 0);
+  NN_ABORT_UNLESS_NOT_NULL(buffer_);
+}
+
+// The bus pointer is the name of the effect.
+FxLFENX::FxLFENX(Manager* manager, void* bus, uint32_t index,
+  uint32_t channels) : fx::FxLFE(manager, static_cast<const char*>(bus), index,
+    channels) {
+  impl_ = snd::create<target::FxBase>();
+  impl_->setAux(snd::create<LFEEffect>());
+  impl_->aux->SetChannelCount(count_);
+  impl_->aux->SetBus(channel_);
+  impl_->aux->SetEnabled(true);
+  bufferSize_ = impl_->aux->GetRequiredMemSize();
+  buffer_ = s_platform->allocPoolMemory(bufferSize_, 0);
+  NN_ABORT_UNLESS_NOT_NULL(buffer_);
+}
+
+// The bus pointer is the name of the effect.
+FxSimpleLimiterNX::FxSimpleLimiterNX(Manager* manager, void* bus, uint32_t index,
+  uint32_t channels) : fx::FxSimpleLimiter(manager, static_cast<const char*>(bus), index,
+    channels) {
+  impl_ = snd::create<target::FxBase>();
+  impl_->setAux(snd::create<SimpleLimiterEffect>());
+  impl_->aux->SetChannelCount(count_);
+  impl_->aux->SetBus(channel_);
+  impl_->aux->SetEnabled(true);
+  bufferSize_ = impl_->aux->GetRequiredMemSize();
+  buffer_ = s_platform->allocPoolMemory(bufferSize_, 0);
+  NN_ABORT_UNLESS_NOT_NULL(buffer_);
+}
+
+// The bus pointer is the name of the effect.
+FxSpeakerNX::FxSpeakerNX(Manager* manager, void* bus, uint32_t index,
+  uint32_t channels) : fx::FxSpeaker(manager, static_cast<const char*>(bus), index,
+    channels) {
+  impl_ = snd::create<target::FxBase>();
+  impl_->setAux(snd::create<SpeakerEffect>());
+  impl_->aux->SetChannelCount(count_);
+  impl_->aux->SetBus(channel_);
+  impl_->aux->SetEnabled(true);
+  bufferSize_ = impl_->aux->GetRequiredMemSize();
+  buffer_ = s_platform->allocPoolMemory(bufferSize_, 0);
+  NN_ABORT_UNLESS_NOT_NULL(buffer_);
+}
+
+// The bus pointer is the name of the effect.
+FxPCMPlayerNX::FxPCMPlayerNX(Manager* manager, void* bus, uint32_t index,
+  uint32_t channels) : fx::FxPCMPlayer(manager, static_cast<const char*>(bus), index,
+    channels) {
+  impl_ = snd::create<target::FxBase>();
+  impl_->setAux(snd::create<PCMPlayerEffect>());
+  impl_->aux->SetChannelCount(count_);
+  impl_->aux->SetBus(channel_);
+  impl_->aux->SetEnabled(true);
+  bufferSize_ = impl_->aux->GetRequiredMemSize();
+  buffer_ = s_platform->allocPoolMemory(bufferSize_, 0);
+  NN_ABORT_UNLESS_NOT_NULL(buffer_);
+}
+
+// Four channels select the second mode and six the third.
+[[gnu::always_inline]] inline int getChannelMode(int channels) {
+  if (channels == 6) {
+    return 3;
+  }
+  return channels == 4 ? 2 : 1;
+}
+
+FxReverbNX::FxReverbNX(Manager* manager, void* bus, uint32_t index,
+  const void* param) : fx::FxReverb(manager, static_cast<const char*>(bus), index) {
+  impl_ = snd::create<target::FxBase>();
+  impl_->setEffect(snd::create<nn::atk::EffectReverb>());
+  getEffect<nn::atk::EffectReverb>(impl_)->SetEnabled(true);
+  getEffect<nn::atk::EffectReverb>(impl_)->SetChannelMode(getChannelMode(channel_));
+  impl_->effect->SetActive(true);
+  setParam(param, 1.0f);
+  bufferSize_ = impl_->effect->GetRequiredMemSize();
+  buffer_ = s_platform->allocPoolMemory(bufferSize_, 0);
+}
+
+FxI3dl2ReverbNX::FxI3dl2ReverbNX(Manager* manager, void* bus, uint32_t index,
+  const void* param) : fx::FxI3dl2Reverb(manager, static_cast<const char*>(bus), index) {
+  impl_ = snd::create<target::FxBase>();
+  impl_->setEffect(snd::create<nn::atk::EffectI3dl2Reverb>());
+  getEffect<nn::atk::EffectI3dl2Reverb>(impl_)->SetEnabled(true);
+  getEffect<nn::atk::EffectI3dl2Reverb>(impl_)->SetChannelMode(getChannelMode(channel_));
+  impl_->effect->SetActive(true);
+  setParam(param, 1.0f);
+  bufferSize_ = impl_->effect->GetRequiredMemSize();
+  buffer_ = s_platform->allocPoolMemory(bufferSize_, 0);
+}
+
+FxDelayNX::FxDelayNX(Manager* manager, void* bus, uint32_t index,
+  const void* param) : fx::FxDelay(manager, static_cast<const char*>(bus), index) {
+  impl_ = snd::create<target::FxBase>();
+  impl_->setEffect(snd::create<nn::atk::EffectDelay>());
+  getEffect<nn::atk::EffectDelay>(impl_)->SetEnabled(true);
+  getEffect<nn::atk::EffectDelay>(impl_)->SetChannelMode(getChannelMode(channel_));
+  impl_->effect->SetActive(true);
+  setParam(param, 1.0f);
+  bufferSize_ = impl_->effect->GetRequiredMemSize();
+  buffer_ = s_platform->allocPoolMemory(bufferSize_, 0);
+}
+
+FxLightLimiterNX::FxLightLimiterNX(Manager* manager, void* bus, uint32_t index,
+  const void* param) : fx::FxLightLimiter(manager, static_cast<const char*>(bus), index) {
+  impl_ = snd::create<target::FxBase>();
+  impl_->setEffect(snd::create<nn::atk::EffectLightLimiter>());
+  getEffect<nn::atk::EffectLightLimiter>(impl_)->SetEnabled(true);
+  getEffect<nn::atk::EffectLightLimiter>(impl_)->SetChannelMode(getChannelMode(channel_));
+  impl_->effect->SetActive(true);
+  setParam(param, 1.0f);
+  bufferSize_ = impl_->effect->GetRequiredMemSize();
+  buffer_ = s_platform->allocPoolMemory(bufferSize_, 0);
+}
+
+FxCompressorNX::FxCompressorNX(Manager* manager, void* bus, uint32_t index,
+  const void* param) : fx::FxCompressor(manager, static_cast<const char*>(bus), index) {
+  impl_ = snd::create<target::FxBase>();
+  impl_->setEffect(snd::create<nn::atk::EffectCompressor>());
+  getEffect<nn::atk::EffectCompressor>(impl_)->SetEnabled(true);
+  getEffect<nn::atk::EffectCompressor>(impl_)->SetChannelMode(getChannelMode(channel_));
+  impl_->effect->SetActive(true);
+  setParam(param, 1.0f);
+  bufferSize_ = impl_->effect->GetRequiredMemSize();
+  buffer_ = s_platform->allocPoolMemory(bufferSize_, 0);
+}
+
+// The software kinds render at 48 kHz into a second buffer.
+FxCpuReverbNX::FxCpuReverbNX(Manager* manager, void* bus, uint32_t index,
+  const void* param, uint32_t channels) : fx::FxCpuReverb(manager,
+  static_cast<const char*>(bus), index, param, channels) {
+  impl_ = snd::create<target::FxBase>();
+  impl_->setAux(snd::create<CpuReverbEffect>());
+  impl_->aux->SetChannelCount(count_);
+  impl_->aux->SetBus(channel_);
+  bufferSize_ = impl_->aux->GetRequiredMemSize();
+  buffer_ = s_platform->allocPoolMemory(bufferSize_, 0);
+  NN_ABORT_UNLESS_NOT_NULL(buffer_);
+  static_cast<CpuReverbEffect*>(impl_->aux)->bus = channel_;
+  static_cast<CpuReverbEffect*>(impl_->aux)->sampleRate = 48000;
+  setParam(param, 1.0f);
+  workBufferSize_ = static_cast<CpuReverbEffect*>(impl_->aux)->getWorkBufferSize();
+  buffer2_ = s_platform->allocPoolMemory(workBufferSize_, 0);
+  NN_ABORT_UNLESS_NOT_NULL(buffer2_);
+  static_cast<CpuReverbEffect*>(impl_->aux)->setWorkBuffer(buffer2_, workBufferSize_);
+  impl_->aux->SetEnabled(true);
+}
+
+// The software kinds render at 48 kHz into a second buffer.
+FxCpuI3dl2ReverbNX::FxCpuI3dl2ReverbNX(Manager* manager, void* bus, uint32_t index,
+  const void* param, uint32_t channels) : fx::FxCpuI3dl2Reverb(manager,
+  static_cast<const char*>(bus), index, param, channels) {
+  impl_ = snd::create<target::FxBase>();
+  impl_->setAux(snd::create<CpuI3dl2ReverbEffect>());
+  impl_->aux->SetChannelCount(count_);
+  impl_->aux->SetBus(channel_);
+  bufferSize_ = impl_->aux->GetRequiredMemSize();
+  buffer_ = s_platform->allocPoolMemory(bufferSize_, 0);
+  NN_ABORT_UNLESS_NOT_NULL(buffer_);
+  static_cast<CpuI3dl2ReverbEffect*>(impl_->aux)->bus = channel_;
+  static_cast<CpuI3dl2ReverbEffect*>(impl_->aux)->sampleRate = 48000;
+  setParam(param, 1.0f);
+  workBufferSize_ = static_cast<CpuI3dl2ReverbEffect*>(impl_->aux)->getWorkBufferSize();
+  buffer2_ = s_platform->allocPoolMemory(workBufferSize_, 0);
+  NN_ABORT_UNLESS_NOT_NULL(buffer2_);
+  static_cast<CpuI3dl2ReverbEffect*>(impl_->aux)->setWorkBuffer(buffer2_, workBufferSize_);
+  impl_->aux->SetEnabled(true);
+}
+
+// The software kinds render at 48 kHz into a second buffer.
+FxCpuDelayNX::FxCpuDelayNX(Manager* manager, void* bus, uint32_t index,
+  const void* param, uint32_t channels) : fx::FxCpuDelay(manager,
+  static_cast<const char*>(bus), index, param, channels) {
+  impl_ = snd::create<target::FxBase>();
+  impl_->setAux(snd::create<CpuDelayEffect>());
+  impl_->aux->SetChannelCount(count_);
+  impl_->aux->SetBus(channel_);
+  bufferSize_ = impl_->aux->GetRequiredMemSize();
+  buffer_ = s_platform->allocPoolMemory(bufferSize_, 0);
+  NN_ABORT_UNLESS_NOT_NULL(buffer_);
+  static_cast<CpuDelayEffect*>(impl_->aux)->bus = channel_;
+  static_cast<CpuDelayEffect*>(impl_->aux)->sampleRate = 48000;
+  setParam(param, 1.0f);
+  workBufferSize_ = static_cast<CpuDelayEffect*>(impl_->aux)->getWorkBufferSize();
+  buffer2_ = s_platform->allocPoolMemory(workBufferSize_, 0);
+  NN_ABORT_UNLESS_NOT_NULL(buffer2_);
+  static_cast<CpuDelayEffect*>(impl_->aux)->setWorkBuffer(buffer2_, workBufferSize_);
+  impl_->aux->SetEnabled(true);
+}
+
+// The software kinds render at 48 kHz into a second buffer.
+FxCpuLightLimiterNX::FxCpuLightLimiterNX(Manager* manager, void* bus, uint32_t index,
+  const void* param, uint32_t channels) : fx::FxCpuLightLimiter(manager,
+  static_cast<const char*>(bus), index, param, channels) {
+  impl_ = snd::create<target::FxBase>();
+  impl_->setAux(snd::create<CpuLightLimiterEffect>());
+  impl_->aux->SetChannelCount(count_);
+  impl_->aux->SetBus(channel_);
+  bufferSize_ = impl_->aux->GetRequiredMemSize();
+  buffer_ = s_platform->allocPoolMemory(bufferSize_, 0);
+  NN_ABORT_UNLESS_NOT_NULL(buffer_);
+  static_cast<CpuLightLimiterEffect*>(impl_->aux)->bus = channel_;
+  static_cast<CpuLightLimiterEffect*>(impl_->aux)->sampleRate = 48000;
+  setParam(param, 1.0f);
+  workBufferSize_ = static_cast<CpuLightLimiterEffect*>(impl_->aux)->getWorkBufferSize();
+  buffer2_ = s_platform->allocPoolMemory(workBufferSize_, 0);
+  NN_ABORT_UNLESS_NOT_NULL(buffer2_);
+  static_cast<CpuLightLimiterEffect*>(impl_->aux)->setWorkBuffer(buffer2_, workBufferSize_);
+  impl_->aux->SetEnabled(true);
+}
+
+FxEQNX::FxEQNX(Manager* manager, void* bus, uint32_t index,
+  uint32_t channels) : fx::FxEQ(manager, static_cast<const char*>(bus), index,
+    channels) {
+  impl_ = snd::create<target::FxBase>();
+  impl_->setAux(snd::create<EQEffect>());
+  impl_->aux->SetChannelCount(count_);
+  impl_->aux->SetBus(channel_);
+  impl_->aux->SetEnabled(true);
+  bufferSize_ = impl_->aux->GetRequiredMemSize();
+  buffer_ = s_platform->allocPoolMemory(bufferSize_, 0);
+  NN_ABORT_UNLESS_NOT_NULL(buffer_);
+}
+
+FxWaveformNX::FxWaveformNX(Manager* manager, void* bus, uint32_t index,
+  uint32_t channels) : fx::FxWaveform(manager, static_cast<const char*>(bus), index,
+    channels) {
+  impl_ = snd::create<target::FxBase>();
+  impl_->setAux(snd::create<WaveformEffect>());
+  impl_->aux->SetChannelCount(count_);
+  impl_->aux->SetBus(channel_);
+  impl_->aux->SetEnabled(true);
+  bufferSize_ = impl_->aux->GetRequiredMemSize();
+  buffer_ = s_platform->allocPoolMemory(bufferSize_, 0);
+  NN_ABORT_UNLESS_NOT_NULL(buffer_);
+}
+
+FxMultiBridgeNX::FxMultiBridgeNX(Manager* manager, void* bus,
+  uint32_t index, uint32_t channels, uint32_t count) : fx::FxMultiBridge(
+    manager, static_cast<const char*>(bus), index, channels, count) {
+  impl_ = snd::create<target::FxBase>();
+  impl_->setAux(snd::create<MultiBridgeEffect>(count));
+  impl_->aux->SetChannelCount(count_);
+  impl_->aux->SetBus(channel_);
+  impl_->aux->SetEnabled(true);
+  bufferSize_ = impl_->aux->GetRequiredMemSize();
+  buffer_ = s_platform->allocPoolMemory(bufferSize_, 0);
+  NN_ABORT_UNLESS_NOT_NULL(buffer_);
 }
 
 }

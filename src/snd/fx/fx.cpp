@@ -83,7 +83,7 @@ void** FxReverb::getRegistry() {
   return &base;
 }
 
-void FxReverb::unknown24() {
+void FxReverb::setParam(const void* param, float scale) {
 }
 
 void FxCpuReverb::destroy() {
@@ -98,7 +98,7 @@ void** FxCpuReverb::getRegistry() {
   return &base;
 }
 
-void FxCpuReverb::unknown24() {
+void FxCpuReverb::setParam(const void* param, float scale) {
 }
 
 void FxI3dl2Reverb::destroy() {
@@ -113,7 +113,7 @@ void** FxI3dl2Reverb::getRegistry() {
   return &base;
 }
 
-void FxI3dl2Reverb::unknown24() {
+void FxI3dl2Reverb::setParam(const void* param, float scale) {
 }
 
 void FxCpuI3dl2Reverb::destroy() {
@@ -128,7 +128,7 @@ void** FxCpuI3dl2Reverb::getRegistry() {
   return &base;
 }
 
-void FxCpuI3dl2Reverb::unknown24() {
+void FxCpuI3dl2Reverb::setParam(const void* param, float scale) {
 }
 
 void FxDelay::destroy() {
@@ -143,7 +143,7 @@ void** FxDelay::getRegistry() {
   return &base;
 }
 
-void FxDelay::unknown24() {
+void FxDelay::setParam(const void* param, float scale) {
 }
 
 void FxCpuDelay::destroy() {
@@ -158,7 +158,7 @@ void** FxCpuDelay::getRegistry() {
   return &base;
 }
 
-void FxCpuDelay::unknown24() {
+void FxCpuDelay::setParam(const void* param, float scale) {
 }
 
 void FxLightLimiter::destroy() {
@@ -173,7 +173,7 @@ void** FxLightLimiter::getRegistry() {
   return &base;
 }
 
-void FxLightLimiter::unknown24() {
+void FxLightLimiter::setParam(const void* param, float scale) {
 }
 
 void FxCpuLightLimiter::destroy() {
@@ -188,7 +188,7 @@ void** FxCpuLightLimiter::getRegistry() {
   return &base;
 }
 
-void FxCpuLightLimiter::unknown24() {
+void FxCpuLightLimiter::setParam(const void* param, float scale) {
 }
 
 void FxFFT::destroy() {
@@ -771,7 +771,7 @@ void** FxCompressor::getRegistry() {
   return &base;
 }
 
-void FxCompressor::unknown24() {
+void FxCompressor::setParam(const void* param, float scale) {
 }
 
 void FxPCMPlayer::mainUnlocked() {
@@ -811,6 +811,94 @@ int FxPCMPlayer::unknown30() {
 }
 
 void FxPCMPlayer::unknown31() {
+}
+
+FxReverb::FxReverb(Manager* manager, const char* name, int index)
+  : FxBase(manager, name, index, 5) {
+}
+
+FxI3dl2Reverb::FxI3dl2Reverb(Manager* manager, const char* name, int index)
+  : FxBase(manager, name, index, 5) {
+}
+
+FxDelay::FxDelay(Manager* manager, const char* name, int index)
+  : FxBase(manager, name, index, 5) {
+}
+
+FxLightLimiter::FxLightLimiter(Manager* manager, const char* name, int index)
+  : FxBase(manager, name, index, 5) {
+}
+
+FxCompressor::FxCompressor(Manager* manager, const char* name, int index)
+  : FxBase(manager, name, index, 5) {
+}
+
+FxSurround::FxSurround(Manager* manager, const char* name, int index)
+  : FxBase(manager, name, index, 5) {
+}
+
+FxCpuReverb::FxCpuReverb(Manager* manager, const char* name, int index,
+  const void* param, int count) : FxBase(manager, name, index, count) {
+}
+
+FxCpuI3dl2Reverb::FxCpuI3dl2Reverb(Manager* manager, const char* name, int index,
+  const void* param, int count) : FxBase(manager, name, index, count) {
+}
+
+FxCpuDelay::FxCpuDelay(Manager* manager, const char* name, int index,
+  const void* param, int count) : FxBase(manager, name, index, count) {
+}
+
+FxCpuLightLimiter::FxCpuLightLimiter(Manager* manager, const char* name, int index,
+  const void* param, int count) : FxBase(manager, name, index, count) {
+}
+
+FxEQ::FxEQ(Manager* manager, const char* name, int index,
+  int count) : FxBase(manager, name, index, count) {
+}
+
+FxVib::FxVib(Manager* manager, const char* name, int index,
+  int count) : FxBase(manager, name, index, count) {
+}
+
+FxFinalMix::FxFinalMix(Manager* manager, const char* name, int index,
+  int count) : FxBase(manager, name, index, count) {
+}
+
+FxMute::FxMute(Manager* manager, const char* name, int index,
+  int count) : FxBase(manager, name, index, count) {
+}
+
+FxNone::FxNone(Manager* manager, const char* name, int index,
+  int count) : FxBase(manager, name, index, count) {
+}
+
+FxLFE::FxLFE(Manager* manager, const char* name, int index,
+  int count) : FxBase(manager, name, index, count) {
+}
+
+FxSimpleLimiter::FxSimpleLimiter(Manager* manager, const char* name, int index,
+  int count) : FxBase(manager, name, index, count) {
+}
+
+FxWaveform::FxWaveform(Manager* manager, const char* name, int index,
+  int count) : FxBase(manager, name, index, count) {
+}
+
+FxSpeaker::FxSpeaker(Manager* manager, const char* name, int index,
+  int count) : FxBase(manager, name, index, count) {
+}
+
+FxPCMPlayer::FxPCMPlayer(Manager* manager, const char* name, int index,
+  int count) : FxBase(manager, name, index, count) {
+}
+
+FxMS::FxMS(Manager* manager, const char* name, int index,
+  int count) : FxBase(manager, name, index, count) {
+}
+
+FxMSEQ::FxMSEQ(Manager* manager, const char* name, int index,
+  int count) : FxBase(manager, name, index, count) {
 }
 
 }
