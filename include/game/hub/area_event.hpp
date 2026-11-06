@@ -61,6 +61,16 @@ public:
   }
 
   // Contact, access, surround access or forward access.
+  // The sound labels, indexed by GetSeLabelIndex.
+  struct SeLabel {
+    std::string label;
+    uint64_t unknown_18_;
+  };
+
+  const std::string& GetSeLabel(uint32_t index) const {
+    return se_labels_[index].label;
+  }
+
   uint32_t GetType() const {
     return type_;
   }
@@ -165,7 +175,8 @@ private:
   std::vector<void*> access_events_;
   uint8_t unknown_578_[0x30];
   int area_change_target_;
-  uint8_t unknown_5ac_[0x64];
+  uint8_t unknown_5ac_[0x4];
+  SeLabel se_labels_[3];
   std::weak_ptr<AccessPopup> popup_;
   uint8_t unknown_620_[0x88];
   void* gaya_[3];

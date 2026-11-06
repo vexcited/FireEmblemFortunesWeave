@@ -3,6 +3,7 @@
 #include "game/data/data_files.hpp"
 #include "game/map/command_item_menu_base.hpp"
 #include "game/map/image.hpp"
+#include "game/map/map_object.hpp"
 #include "game/map/script_singletons.hpp"
 #include "game/map/unit_flags.hpp"
 #include "game/script/script_string.hpp"
@@ -141,12 +142,12 @@ void SetBegin() {
   g_terrain_changing = true;
 }
 
-void SetSingle(int x, int z, const ScriptString& tid) {
-  ChangeTerrain(x, z, tid.GetText(), false);
+void SetSingle(int x, int z, const as::string& tid) {
+  ChangeTerrain(x, z, tid.c_str(), false);
 }
 
-void Set(int x, int z, const ScriptString& tid) {
-  ChangeTerrain(x, z, tid.GetText(), true);
+void Set(int x, int z, const as::string& tid) {
+  ChangeTerrain(x, z, tid.c_str(), true);
 }
 
 bool IsInTargetPos(int x, int z) {
@@ -170,6 +171,26 @@ bool IsTrickEnable(int x, int z) {
 int GetBullet(int x, int z) {
   const ::game::map::TrickData* trick = FindTrick(x, z);
   return trick != nullptr ? trick->GetLifeValue() : -1;
+}
+
+// The terrain of an active trick of type 2 on the lowest layer, else the
+// first terrain row.
+as::string GetOverlapTID(int x, int z) {
+  const ::game::map::TrickData* trick =
+    ::game::map::Trick::GetInstance()->GetMap()->FindOnLayer(0, x, z);
+  const TerrainData* terrain = nullptr;
+  if (trick != nullptr && trick->GetType() == 2 && trick->IsActive()) {
+    terrain = trick->GetData();
+  }
+  if (terrain == nullptr) {
+    terrain = TerrainFile::GetInstance()->At(0);
+  }
+  return as::string(terrain != nullptr ? terrain->key.text : "");
+}
+
+as::string GetTrickTID(int x, int z) {
+  const ::game::map::TrickData* trick = FindTrick(x, z);
+  return as::string(trick != nullptr ? trick->GetTid() : "");
 }
 
 }
@@ -198,15 +219,15 @@ int GetTargetUnitIndex() {
   return GetIndexOf(Mind::GetInstance()->GetTargetUnit());
 }
 
-ScriptString GetUnitPID() {
-  return ScriptString(GetPidOf(Mind::GetInstance()->GetUnit()));
+as::string GetUnitPID() {
+  return as::string(GetPidOf(Mind::GetInstance()->GetUnit()));
 }
 
-ScriptString GetTargetUnitPID() {
-  return ScriptString(GetPidOf(Mind::GetInstance()->GetTargetUnit()));
+as::string GetTargetUnitPID() {
+  return as::string(GetPidOf(Mind::GetInstance()->GetTargetUnit()));
 }
 
-ScriptString GetActiveSkill() {
+as::string GetActiveSkill() {
   const char* sid = "";
   const SkillKey& key = Mind::GetInstance()->GetActiveSkill();
   if (key.index != 0) {
@@ -214,7 +235,7 @@ ScriptString GetActiveSkill() {
       sid = skill->key.text;
     }
   }
-  return ScriptString(sid);
+  return as::string(sid);
 }
 
 }
@@ -237,15 +258,15 @@ int GetDefenceUnitIndex() {
   return events != nullptr ? GetIndexOf(events->GetDefenceUnit()) : -1;
 }
 
-ScriptString GetOffenceUnitPID() {
+as::string GetOffenceUnitPID() {
   const MapEventManager* events = MapEventManager::GetInstance();
-  return ScriptString(events != nullptr ?
+  return as::string(events != nullptr ?
     GetPidOf(events->GetOffenceUnit()) : "");
 }
 
-ScriptString GetDefenceUnitPID() {
+as::string GetDefenceUnitPID() {
   const MapEventManager* events = MapEventManager::GetInstance();
-  return ScriptString(events != nullptr ?
+  return as::string(events != nullptr ?
     GetPidOf(events->GetDefenceUnit()) : "");
 }
 
@@ -256,16 +277,16 @@ namespace game::script::map::snd {
 void StartBgm(const char* label);
 void StopBgm(const sound::PlayParam& param);
 
-void PlayBgm(const ScriptString& bgmLabel) {
-  StartBgm(bgmLabel.GetText());
+void PlayBgm(const as::string& bgmLabel) {
+  StartBgm(bgmLabel.c_str());
 }
 
 void StopBgm(int fade) {
   StopBgm(sound::PlayParam(fade));
 }
 
-int GeFadeMsec(const ScriptString& fadeName) {
-  return sound::PlayParam(fadeName.GetText()).GetTime();
+int GeFadeMsec(const as::string& fadeName) {
+  return sound::PlayParam(fadeName.c_str()).GetTime();
 }
 
 }
@@ -295,9 +316,9 @@ void LogInfoSetEscape(int unitIndex) {
   }
 }
 
-void LogInfoSetBattleSkill(int unitIndex, const ScriptString& sid) {
+void LogInfoSetBattleSkill(int unitIndex, const as::string& sid) {
   if (const Unit* unit = FindUnit(unitIndex)) {
-    const char* text = sid.GetText();
+    const char* text = sid.c_str();
     Impl* history = Impl::GetInstance();
     if (history != nullptr && history->IsRecording()) {
       history->GetLogInfo().SetBattleSkill(unit, text);
@@ -363,20 +384,20 @@ namespace {
 
 }
 
-void Play(const ScriptString& effName, int x, int z, int rotDeg) {
+void Play(const as::string& effName, int x, int z, int rotDeg) {
   if (x < 0 || z < 0) {
     return;
   }
   if (Sequence* sequence = g_sequence) {
-    const char* name = effName.GetText();
+    const char* name = effName.c_str();
     const Placement placement(name, x, z, true, rotDeg);
     Play(sequence, name, placement);
   }
 }
 
-void Delete(const ScriptString& effName) {
+void Delete(const as::string& effName) {
   if (Sequence* sequence = g_sequence) {
-    const char* name = effName.GetText();
+    const char* name = effName.c_str();
     EffectManager* manager = g_effect_manager;
     const uint64_t hash = HashString(name);
     Effect* found = nullptr;
@@ -391,9 +412,9 @@ void Delete(const ScriptString& effName) {
   }
 }
 
-void Delete(int x, int z, const ScriptString& effName) {
+void Delete(int x, int z, const as::string& effName) {
   if (Sequence* sequence = g_sequence) {
-    const char* name = effName.GetText();
+    const char* name = effName.c_str();
     EffectManager* manager = g_effect_manager;
     const uint64_t hash = HashString(name);
     Effect* found = nullptr;
@@ -409,7 +430,7 @@ void Delete(int x, int z, const ScriptString& effName) {
   }
 }
 
-void PlayUnitCenter(const ScriptString& effName, int unitIndex) {
+void PlayUnitCenter(const as::string& effName, int unitIndex) {
   if (unitIndex < 0) {
     return;
   }
@@ -419,14 +440,14 @@ void PlayUnitCenter(const ScriptString& effName, int unitIndex) {
     return;
   }
   if (Sequence* sequence = g_sequence) {
-    const char* name = effName.GetText();
+    const char* name = effName.c_str();
     PlayAtUnit(sequence, name, unit);
   }
 }
 
-void Create(const ScriptString& effName, int x, int z) {
+void Create(const as::string& effName, int x, int z) {
   if (Sequence* sequence = g_sequence) {
-    const char* name = effName.GetText();
+    const char* name = effName.c_str();
     Create(sequence, name, x, z);
     MarkChanged();
   }
@@ -459,57 +480,57 @@ enum class Timing {
 };
 
 // The registrations of the events, the argument is optional.
-void RegisterPhase(Timing timing, const ScriptString& funcName, int turnMin,
-  int turnMax, int force, const ScriptString& conditionFunc, ScriptAny* arg);
-void RegisterBattle(Timing timing, const ScriptString& funcName,
-  const ScriptString& fromPid, int fromForce, const ScriptString& toPid,
-  int toForce, bool each, const ScriptString& conditionFunc, ScriptAny* arg);
-void RegisterPickup(const ScriptString& funcName, const ScriptString& pid,
-  const ScriptString& conditionFunc, ScriptAny* arg, bool silent);
-void RegisterFixed(const ScriptString& funcName, const ScriptString& pid,
-  int force, const ScriptString& conditionFunc, ScriptAny* arg, bool silent);
-void RegisterDie(Timing timing, const ScriptString& funcName,
-  const ScriptString& pid, int force, const ScriptString& conditionFunc,
+void RegisterPhase(Timing timing, const as::string& funcName, int turnMin,
+  int turnMax, int force, const as::string& conditionFunc, ScriptAny* arg);
+void RegisterBattle(Timing timing, const as::string& funcName,
+  const as::string& fromPid, int fromForce, const as::string& toPid,
+  int toForce, bool each, const as::string& conditionFunc, ScriptAny* arg);
+void RegisterPickup(const as::string& funcName, const as::string& pid,
+  const as::string& conditionFunc, ScriptAny* arg, bool silent);
+void RegisterFixed(const as::string& funcName, const as::string& pid,
+  int force, const as::string& conditionFunc, ScriptAny* arg, bool silent);
+void RegisterDie(Timing timing, const as::string& funcName,
+  const as::string& pid, int force, const as::string& conditionFunc,
   ScriptAny* arg);
-void RegisterRevive(Timing timing, const ScriptString& funcName,
-  const ScriptString& pid, int force, const ScriptString& conditionFunc,
+void RegisterRevive(Timing timing, const as::string& funcName,
+  const as::string& pid, int force, const as::string& conditionFunc,
   ScriptAny* arg);
-void RegisterUseActiveSkill(const ScriptString& funcName,
-  const ScriptString& pid, int force, const ScriptString& sid,
-  const ScriptString& conditionFunc, ScriptAny* arg);
-void RegisterUnitCommandBefore(const ScriptString& funcName,
-  const ScriptString& pid, const ScriptString& conditionFunc, ScriptAny* arg);
-void RegisterMindComplete(const ScriptString& funcName,
-  const ScriptString& pid, int force, const ScriptString& conditionFunc,
+void RegisterUseActiveSkill(const as::string& funcName,
+  const as::string& pid, int force, const as::string& sid,
+  const as::string& conditionFunc, ScriptAny* arg);
+void RegisterUnitCommandBefore(const as::string& funcName,
+  const as::string& pid, const as::string& conditionFunc, ScriptAny* arg);
+void RegisterMindComplete(const as::string& funcName,
+  const as::string& pid, int force, const as::string& conditionFunc,
   ScriptAny* arg);
-void RegisterTalk(const ScriptString& funcName, const ScriptString& fromPid,
-  int fromForce, const ScriptString& toPid, int toForce, bool each,
-  const ScriptString& conditionFunc, ScriptAny* arg);
-void RegisterArea(const ScriptString& funcName, int minX, int minZ, int maxX,
-  int maxZ, int force, const ScriptString& conditionFunc, ScriptAny* arg);
-void RegisterTbox(const ScriptString& funcName, int x, int z, ScriptAny* arg);
-void RegisterDoor(const ScriptString& funcName, int minX, int minZ, int maxX,
+void RegisterTalk(const as::string& funcName, const as::string& fromPid,
+  int fromForce, const as::string& toPid, int toForce, bool each,
+  const as::string& conditionFunc, ScriptAny* arg);
+void RegisterArea(const as::string& funcName, int minX, int minZ, int maxX,
+  int maxZ, int force, const as::string& conditionFunc, ScriptAny* arg);
+void RegisterTbox(const as::string& funcName, int x, int z, ScriptAny* arg);
+void RegisterDoor(const as::string& funcName, int minX, int minZ, int maxX,
   int maxZ, ScriptAny* arg);
-void RegisterGimmick(const ScriptString& funcName, int x, int z,
+void RegisterGimmick(const as::string& funcName, int x, int z,
   ScriptAny* arg);
-void RegisterDestroy(const ScriptString& funcName, int minX, int minZ,
+void RegisterDestroy(const as::string& funcName, int minX, int minZ,
   int maxX, int maxZ, ScriptAny* arg);
-void RegisterBreakdown(const ScriptString& funcName, int x, int z,
+void RegisterBreakdown(const as::string& funcName, int x, int z,
   ScriptAny* arg);
-void RegisterEscape(const ScriptString& funcName, int x, int z,
-  const ScriptString& pid, const ScriptString& conditionFunc, ScriptAny* arg,
+void RegisterEscape(const as::string& funcName, int x, int z,
+  const as::string& pid, const as::string& conditionFunc, ScriptAny* arg,
   bool before);
-void RegisterWarpCommandAfter(const ScriptString& funcName, int x, int z,
-  const ScriptString& conditionFunc, ScriptAny* arg);
+void RegisterWarpCommandAfter(const as::string& funcName, int x, int z,
+  const as::string& conditionFunc, ScriptAny* arg);
 
 #define GAME_SCRIPT_PHASE(name, timing) \
-  void name(const ScriptString& funcName, int turnMin, int turnMax, \
-    int force, const ScriptString& conditionFunc) { \
+  void name(const as::string& funcName, int turnMin, int turnMax, \
+    int force, const as::string& conditionFunc) { \
     RegisterPhase(timing, funcName, turnMin, turnMax, force, conditionFunc, \
       nullptr); \
   } \
-  void name(const ScriptString& funcName, int turnMin, int turnMax, \
-    int force, const ScriptString& conditionFunc, ScriptAny& arg) { \
+  void name(const as::string& funcName, int turnMin, int turnMax, \
+    int force, const as::string& conditionFunc, ScriptAny& arg) { \
     RegisterPhase(timing, funcName, turnMin, turnMax, force, conditionFunc, \
       &arg); \
   }
@@ -521,15 +542,15 @@ GAME_SCRIPT_PHASE(EntryPhaseEnd, Timing::kPhaseEnd)
 #undef GAME_SCRIPT_PHASE
 
 #define GAME_SCRIPT_BATTLE(name, timing) \
-  void name(const ScriptString& funcName, const ScriptString& fromPid, \
-    int fromForce, const ScriptString& toPid, int toForce, bool each, \
-    const ScriptString& conditionFunc) { \
+  void name(const as::string& funcName, const as::string& fromPid, \
+    int fromForce, const as::string& toPid, int toForce, bool each, \
+    const as::string& conditionFunc) { \
     RegisterBattle(timing, funcName, fromPid, fromForce, toPid, toForce, \
       each, conditionFunc, nullptr); \
   } \
-  void name(const ScriptString& funcName, const ScriptString& fromPid, \
-    int fromForce, const ScriptString& toPid, int toForce, bool each, \
-    const ScriptString& conditionFunc, ScriptAny& arg) { \
+  void name(const as::string& funcName, const as::string& fromPid, \
+    int fromForce, const as::string& toPid, int toForce, bool each, \
+    const as::string& conditionFunc, ScriptAny& arg) { \
     RegisterBattle(timing, funcName, fromPid, fromForce, toPid, toForce, \
       each, conditionFunc, &arg); \
   }
@@ -541,25 +562,25 @@ GAME_SCRIPT_BATTLE(EntryBattleAfter, Timing::kBattleAfter)
 #undef GAME_SCRIPT_BATTLE
 
 // Any unit of any force completes the battle.
-void EntryBattleComplete(const ScriptString& funcName,
-  const ScriptString& conditionFunc) {
-  RegisterBattle(Timing::kBattleComplete, funcName, ScriptString(""), -1,
-    ScriptString(""), -1, false, conditionFunc, nullptr);
+void EntryBattleComplete(const as::string& funcName,
+  const as::string& conditionFunc) {
+  RegisterBattle(Timing::kBattleComplete, funcName, as::string(""), -1,
+    as::string(""), -1, false, conditionFunc, nullptr);
 }
 
-void EntryBattleComplete(const ScriptString& funcName,
-  const ScriptString& conditionFunc, ScriptAny& arg) {
-  RegisterBattle(Timing::kBattleComplete, funcName, ScriptString(""), -1,
-    ScriptString(""), -1, false, conditionFunc, &arg);
+void EntryBattleComplete(const as::string& funcName,
+  const as::string& conditionFunc, ScriptAny& arg) {
+  RegisterBattle(Timing::kBattleComplete, funcName, as::string(""), -1,
+    as::string(""), -1, false, conditionFunc, &arg);
 }
 
 #define GAME_SCRIPT_UNIT_EVENT(name, function, timing) \
-  void name(const ScriptString& funcName, const ScriptString& pid, \
-    int force, const ScriptString& conditionFunc) { \
+  void name(const as::string& funcName, const as::string& pid, \
+    int force, const as::string& conditionFunc) { \
     function(timing, funcName, pid, force, conditionFunc, nullptr); \
   } \
-  void name(const ScriptString& funcName, const ScriptString& pid, \
-    int force, const ScriptString& conditionFunc, ScriptAny& arg) { \
+  void name(const as::string& funcName, const as::string& pid, \
+    int force, const as::string& conditionFunc, ScriptAny& arg) { \
     function(timing, funcName, pid, force, conditionFunc, &arg); \
   }
 
@@ -573,179 +594,179 @@ GAME_SCRIPT_UNIT_EVENT(EntryReviveAfter, RegisterRevive,
 
 #undef GAME_SCRIPT_UNIT_EVENT
 
-void EntryPickup(const ScriptString& funcName, const ScriptString& pid,
-  const ScriptString& conditionFunc) {
+void EntryPickup(const as::string& funcName, const as::string& pid,
+  const as::string& conditionFunc) {
   RegisterPickup(funcName, pid, conditionFunc, nullptr, false);
 }
 
-void EntryPickup(const ScriptString& funcName, const ScriptString& pid,
-  const ScriptString& conditionFunc, ScriptAny& arg) {
+void EntryPickup(const as::string& funcName, const as::string& pid,
+  const as::string& conditionFunc, ScriptAny& arg) {
   RegisterPickup(funcName, pid, conditionFunc, &arg, false);
 }
 
-void EntryPickupSilent(const ScriptString& funcName, const ScriptString& pid,
-  const ScriptString& conditionFunc) {
+void EntryPickupSilent(const as::string& funcName, const as::string& pid,
+  const as::string& conditionFunc) {
   RegisterPickup(funcName, pid, conditionFunc, nullptr, true);
 }
 
-void EntryPickupSilent(const ScriptString& funcName, const ScriptString& pid,
-  const ScriptString& conditionFunc, ScriptAny& arg) {
+void EntryPickupSilent(const as::string& funcName, const as::string& pid,
+  const as::string& conditionFunc, ScriptAny& arg) {
   RegisterPickup(funcName, pid, conditionFunc, &arg, true);
 }
 
-void EntryFixed(const ScriptString& funcName, const ScriptString& pid,
-  int force, const ScriptString& conditionFunc) {
+void EntryFixed(const as::string& funcName, const as::string& pid,
+  int force, const as::string& conditionFunc) {
   RegisterFixed(funcName, pid, force, conditionFunc, nullptr, false);
 }
 
-void EntryFixed(const ScriptString& funcName, const ScriptString& pid,
-  int force, const ScriptString& conditionFunc, ScriptAny& arg) {
+void EntryFixed(const as::string& funcName, const as::string& pid,
+  int force, const as::string& conditionFunc, ScriptAny& arg) {
   RegisterFixed(funcName, pid, force, conditionFunc, &arg, false);
 }
 
-void EntryFixedSilent(const ScriptString& funcName, const ScriptString& pid,
-  int force, const ScriptString& conditionFunc) {
+void EntryFixedSilent(const as::string& funcName, const as::string& pid,
+  int force, const as::string& conditionFunc) {
   RegisterFixed(funcName, pid, force, conditionFunc, nullptr, true);
 }
 
-void EntryFixedSilent(const ScriptString& funcName, const ScriptString& pid,
-  int force, const ScriptString& conditionFunc, ScriptAny& arg) {
+void EntryFixedSilent(const as::string& funcName, const as::string& pid,
+  int force, const as::string& conditionFunc, ScriptAny& arg) {
   RegisterFixed(funcName, pid, force, conditionFunc, &arg, true);
 }
 
-void EntryUseActiveSkill(const ScriptString& funcName,
-  const ScriptString& pid, int force, const ScriptString& sid,
-  const ScriptString& conditionFunc) {
+void EntryUseActiveSkill(const as::string& funcName,
+  const as::string& pid, int force, const as::string& sid,
+  const as::string& conditionFunc) {
   RegisterUseActiveSkill(funcName, pid, force, sid, conditionFunc, nullptr);
 }
 
-void EntryUseActiveSkill(const ScriptString& funcName,
-  const ScriptString& pid, int force, const ScriptString& sid,
-  const ScriptString& conditionFunc, ScriptAny& arg) {
+void EntryUseActiveSkill(const as::string& funcName,
+  const as::string& pid, int force, const as::string& sid,
+  const as::string& conditionFunc, ScriptAny& arg) {
   RegisterUseActiveSkill(funcName, pid, force, sid, conditionFunc, &arg);
 }
 
-void EntryUnitCommandBefore(const ScriptString& funcName,
-  const ScriptString& pid, const ScriptString& conditionFunc) {
+void EntryUnitCommandBefore(const as::string& funcName,
+  const as::string& pid, const as::string& conditionFunc) {
   RegisterUnitCommandBefore(funcName, pid, conditionFunc, nullptr);
 }
 
-void EntryUnitCommandBefore(const ScriptString& funcName,
-  const ScriptString& pid, const ScriptString& conditionFunc,
+void EntryUnitCommandBefore(const as::string& funcName,
+  const as::string& pid, const as::string& conditionFunc,
   ScriptAny& arg) {
   RegisterUnitCommandBefore(funcName, pid, conditionFunc, &arg);
 }
 
-void EntryMindComplete(const ScriptString& funcName, const ScriptString& pid,
-  int force, const ScriptString& conditionFunc) {
+void EntryMindComplete(const as::string& funcName, const as::string& pid,
+  int force, const as::string& conditionFunc) {
   RegisterMindComplete(funcName, pid, force, conditionFunc, nullptr);
 }
 
-void EntryMindComplete(const ScriptString& funcName, const ScriptString& pid,
-  int force, const ScriptString& conditionFunc, ScriptAny& arg) {
+void EntryMindComplete(const as::string& funcName, const as::string& pid,
+  int force, const as::string& conditionFunc, ScriptAny& arg) {
   RegisterMindComplete(funcName, pid, force, conditionFunc, &arg);
 }
 
-void EntryTalk(const ScriptString& funcName, const ScriptString& fromPid,
-  int fromForce, const ScriptString& toPid, int toForce, bool each,
-  const ScriptString& conditionFunc) {
+void EntryTalk(const as::string& funcName, const as::string& fromPid,
+  int fromForce, const as::string& toPid, int toForce, bool each,
+  const as::string& conditionFunc) {
   RegisterTalk(funcName, fromPid, fromForce, toPid, toForce, each,
     conditionFunc, nullptr);
 }
 
-void EntryTalk(const ScriptString& funcName, const ScriptString& fromPid,
-  int fromForce, const ScriptString& toPid, int toForce, bool each,
-  const ScriptString& conditionFunc, ScriptAny& arg) {
+void EntryTalk(const as::string& funcName, const as::string& fromPid,
+  int fromForce, const as::string& toPid, int toForce, bool each,
+  const as::string& conditionFunc, ScriptAny& arg) {
   RegisterTalk(funcName, fromPid, fromForce, toPid, toForce, each,
     conditionFunc, &arg);
 }
 
-void EntryArea(const ScriptString& funcName, int minX, int minZ, int maxX,
-  int maxZ, int force, const ScriptString& conditionFunc) {
+void EntryArea(const as::string& funcName, int minX, int minZ, int maxX,
+  int maxZ, int force, const as::string& conditionFunc) {
   RegisterArea(funcName, minX, minZ, maxX, maxZ, force, conditionFunc,
     nullptr);
 }
 
-void EntryArea(const ScriptString& funcName, int minX, int minZ, int maxX,
-  int maxZ, int force, const ScriptString& conditionFunc, ScriptAny& arg) {
+void EntryArea(const as::string& funcName, int minX, int minZ, int maxX,
+  int maxZ, int force, const as::string& conditionFunc, ScriptAny& arg) {
   RegisterArea(funcName, minX, minZ, maxX, maxZ, force, conditionFunc, &arg);
 }
 
-void EntryTbox(const ScriptString& funcName, int x, int z) {
+void EntryTbox(const as::string& funcName, int x, int z) {
   RegisterTbox(funcName, x, z, nullptr);
 }
 
-void EntryTbox(const ScriptString& funcName, int x, int z, ScriptAny& arg) {
+void EntryTbox(const as::string& funcName, int x, int z, ScriptAny& arg) {
   RegisterTbox(funcName, x, z, &arg);
 }
 
-void EntryDoor(const ScriptString& funcName, int minX, int minZ, int maxX,
+void EntryDoor(const as::string& funcName, int minX, int minZ, int maxX,
   int maxZ) {
   RegisterDoor(funcName, minX, minZ, maxX, maxZ, nullptr);
 }
 
-void EntryDoor(const ScriptString& funcName, int minX, int minZ, int maxX,
+void EntryDoor(const as::string& funcName, int minX, int minZ, int maxX,
   int maxZ, ScriptAny& arg) {
   RegisterDoor(funcName, minX, minZ, maxX, maxZ, &arg);
 }
 
-void EntryGimmick(const ScriptString& funcName, int x, int z) {
+void EntryGimmick(const as::string& funcName, int x, int z) {
   RegisterGimmick(funcName, x, z, nullptr);
 }
 
-void EntryGimmick(const ScriptString& funcName, int x, int z,
+void EntryGimmick(const as::string& funcName, int x, int z,
   ScriptAny& arg) {
   RegisterGimmick(funcName, x, z, &arg);
 }
 
-void EntryDestroy(const ScriptString& funcName, int minX, int minZ, int maxX,
+void EntryDestroy(const as::string& funcName, int minX, int minZ, int maxX,
   int maxZ) {
   RegisterDestroy(funcName, minX, minZ, maxX, maxZ, nullptr);
 }
 
-void EntryDestroy(const ScriptString& funcName, int minX, int minZ, int maxX,
+void EntryDestroy(const as::string& funcName, int minX, int minZ, int maxX,
   int maxZ, ScriptAny& arg) {
   RegisterDestroy(funcName, minX, minZ, maxX, maxZ, &arg);
 }
 
-void EntryBreakdown(const ScriptString& funcName, int x, int z) {
+void EntryBreakdown(const as::string& funcName, int x, int z) {
   RegisterBreakdown(funcName, x, z, nullptr);
 }
 
-void EntryBreakdown(const ScriptString& funcName, int x, int z,
+void EntryBreakdown(const as::string& funcName, int x, int z,
   ScriptAny& arg) {
   RegisterBreakdown(funcName, x, z, &arg);
 }
 
-void EntryEscapeBefore(const ScriptString& funcName, int x, int z,
-  const ScriptString& pid, const ScriptString& conditionFunc) {
+void EntryEscapeBefore(const as::string& funcName, int x, int z,
+  const as::string& pid, const as::string& conditionFunc) {
   RegisterEscape(funcName, x, z, pid, conditionFunc, nullptr, true);
 }
 
-void EntryEscapeBefore(const ScriptString& funcName, int x, int z,
-  const ScriptString& pid, const ScriptString& conditionFunc,
+void EntryEscapeBefore(const as::string& funcName, int x, int z,
+  const as::string& pid, const as::string& conditionFunc,
   ScriptAny& arg) {
   RegisterEscape(funcName, x, z, pid, conditionFunc, &arg, true);
 }
 
-void EntryEscapeAfter(const ScriptString& funcName, int x, int z,
-  const ScriptString& pid, const ScriptString& conditionFunc) {
+void EntryEscapeAfter(const as::string& funcName, int x, int z,
+  const as::string& pid, const as::string& conditionFunc) {
   RegisterEscape(funcName, x, z, pid, conditionFunc, nullptr, false);
 }
 
-void EntryEscapeAfter(const ScriptString& funcName, int x, int z,
-  const ScriptString& pid, const ScriptString& conditionFunc,
+void EntryEscapeAfter(const as::string& funcName, int x, int z,
+  const as::string& pid, const as::string& conditionFunc,
   ScriptAny& arg) {
   RegisterEscape(funcName, x, z, pid, conditionFunc, &arg, false);
 }
 
-void EntryWarpCommandAfter(const ScriptString& funcName, int x, int z,
-  const ScriptString& conditionFunc) {
+void EntryWarpCommandAfter(const as::string& funcName, int x, int z,
+  const as::string& conditionFunc) {
   RegisterWarpCommandAfter(funcName, x, z, conditionFunc, nullptr);
 }
 
-void EntryWarpCommandAfter(const ScriptString& funcName, int x, int z,
-  const ScriptString& conditionFunc, ScriptAny& arg) {
+void EntryWarpCommandAfter(const as::string& funcName, int x, int z,
+  const as::string& conditionFunc, ScriptAny& arg) {
   RegisterWarpCommandAfter(funcName, x, z, conditionFunc, &arg);
 }
 
@@ -761,10 +782,63 @@ extern T* g_instance;
 
 #pragma GCC visibility push(hidden)
 
-ScriptString GetTID(int x, int z) {
+as::string GetTID(int x, int z) {
   const TerrainData* terrain = g_instance<TerrainFile>->At(
     g_instance<game::map::Image>->GetTerrainId(x, z));
-  return ScriptString(terrain != nullptr ? terrain->key.text : "");
+  return as::string(terrain != nullptr ? terrain->key.text : "");
+}
+
+#pragma GCC visibility pop
+
+}
+
+namespace game::script::map::obj {
+
+#pragma GCC visibility push(hidden)
+
+using ::game::map::MapObject;
+using ::game::map::MapObjectManager;
+
+void PlayStateWait(MapObject* object);
+
+// The objects the map history saves, the second set only while it exists.
+bool IsRecordedObject(const char* name);
+
+class ObjectRecords {
+public:
+  bool Contains(const char* name) const;
+};
+
+extern ObjectRecords* g_object_records;
+
+bool IsActive(const as::string& objName) {
+  MapObject* object = MapObjectManager::Get(objName.c_str());
+  return object->IsValid() && object->Unknown08();
+}
+
+void PlayStateWait(const as::string& objName) {
+  MapObject* object = MapObjectManager::Get(objName.c_str());
+  if (object->IsValid()) {
+    PlayStateWait(object);
+  }
+}
+
+void SetActive(const as::string& objName, bool isActive) {
+  MapObject* object = MapObjectManager::Get(objName.c_str());
+  if (!object->IsValid()) {
+    return;
+  }
+  object->Unknown21(isActive);
+  const char* name = objName.c_str();
+  ::game::map::history::Impl* history =
+    ::game::map::history::Impl::GetInstance();
+  if (history == nullptr || !history->IsRecording()) {
+    return;
+  }
+  if (MapObjectManager::Get(name)->IsValid() && (IsRecordedObject(name) ||
+    (g_object_records != nullptr && g_object_records->Contains(name)))) {
+    history->MarkChanged(0x2000);
+  }
 }
 
 #pragma GCC visibility pop

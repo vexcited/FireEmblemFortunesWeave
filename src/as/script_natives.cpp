@@ -1,6 +1,5 @@
 #include <cstdio>
 #include <cstring>
-#include <string>
 
 #include "as/script_context.hpp"
 #include "as/script_time.hpp"
@@ -14,11 +13,9 @@ public:
   int Release() const;
 };
 
-using game::script::ScriptString;
-
-ContextHandle run(const Any* classObj, const std::string& func);
-ContextHandle post_run(const Any* classObj, const std::string& func);
-ContextHandle run_brother(const Any* classObj, const std::string& func);
+ContextHandle run(const Any* classObj, const string& func);
+ContextHandle post_run(const Any* classObj, const string& func);
+ContextHandle run_brother(const Any* classObj, const string& func);
 
 namespace {
 
@@ -45,13 +42,9 @@ namespace {
 
 // The texts of print, sprint, warning and assertmsg are formatted into the
 // static buffers of the script printer, which release builds never show.
-void FormatMessage(const std::string& fmt, const std::string& p0,
-  const std::string& p1, const std::string& p2, const std::string& p3,
-  const std::string& p4, const std::string& p5, const std::string& p6,
-  const std::string& p7, const std::string& p8, const std::string& p9);
-
-// Assigns a C string, an empty one when it is null.
-void AssignText(std::string& str, const char* text);
+void FormatMessage(const string& fmt, const string& p0, const string& p1,
+  const string& p2, const string& p3, const string& p4, const string& p5,
+  const string& p6, const string& p7, const string& p8, const string& p9);
 
 #pragma GCC visibility push(hidden)
 
@@ -61,64 +54,60 @@ extern char g_format_args[10][0x100];
 
 #pragma GCC visibility pop
 
-void put_msg(const std::string&) {}
+void put_msg(const string&) {}
 void put_val(int) {}
 void put_val(uint32_t) {}
 void put_val(uint64_t) {}
 void put_val(float) {}
 void put_val(bool) {}
-void put_val(const std::string&) {}
+void put_val(const string&) {}
 
-void print(const std::string& fmt, std::string p0, std::string p1,
-  std::string p2, std::string p3, std::string p4, std::string p5,
-  std::string p6, std::string p7, std::string p8, std::string p9) {
+void print(const string& fmt, string p0, string p1, string p2, string p3,
+  string p4, string p5, string p6, string p7, string p8, string p9) {
   FormatMessage(fmt, p0, p1, p2, p3, p4, p5, p6, p7, p8, p9);
 }
 
 void assert(bool) {}
 
-void warning(bool exp, const std::string& fmt, std::string p0,
-  std::string p1, std::string p2, std::string p3, std::string p4,
-  std::string p5, std::string p6, std::string p7, std::string p8,
-  std::string p9) {
+void warning(bool exp, const string& fmt, string p0, string p1,
+  string p2, string p3, string p4, string p5, string p6, string p7,
+  string p8, string p9) {
   if (exp) {
     return;
   }
   FormatMessage(fmt, p0, p1, p2, p3, p4, p5, p6, p7, p8, p9);
 }
 
-void assertmsg(bool exp, const std::string& fmt, std::string p0,
-  std::string p1, std::string p2, std::string p3, std::string p4,
-  std::string p5, std::string p6, std::string p7, std::string p8,
-  std::string p9) {
+void assertmsg(bool exp, const string& fmt, string p0, string p1,
+  string p2, string p3, string p4, string p5, string p6, string p7,
+  string p8, string p9) {
   if (exp) {
     return;
   }
   FormatMessage(fmt, p0, p1, p2, p3, p4, p5, p6, p7, p8, p9);
 }
 
-int sprint(std::string& str, const std::string& fmt, std::string p0,
-  std::string p1, std::string p2, std::string p3, std::string p4,
-  std::string p5, std::string p6, std::string p7, std::string p8,
-  std::string p9) {
+int sprint(string& str, const string& fmt, string p0, string p1,
+  string p2, string p3, string p4, string p5, string p6, string p7,
+  string p8, string p9) {
   FormatMessage(fmt, p0, p1, p2, p3, p4, p5, p6, p7, p8, p9);
   int length = sprintf(g_format_result, g_format, g_format_args[0],
     g_format_args[1], g_format_args[2], g_format_args[3], g_format_args[4],
     g_format_args[5], g_format_args[6], g_format_args[7], g_format_args[8],
     g_format_args[9]);
-  AssignText(str, g_format_result);
+  str = g_format_result;
   return length;
 }
 
-ContextHandle run(const std::string& func) {
+ContextHandle run(const string& func) {
   return run(nullptr, func);
 }
 
-ContextHandle post_run(const std::string& func) {
+ContextHandle post_run(const string& func) {
   return post_run(nullptr, func);
 }
 
-ContextHandle run_brother(const std::string& func) {
+ContextHandle run_brother(const string& func) {
   return run_brother(nullptr, func);
 }
 
@@ -238,9 +227,9 @@ void set_skip_counter(uint32_t mask, uint32_t counter) {
 }
 
 // Only the first exit function set is kept.
-void exit(const ScriptString& func) {
+void exit(const string& func) {
   char declaration[0x100];
-  sprintf(declaration, "void %s(void)", func.GetText());
+  sprintf(declaration, "void %s(void)", func.c_str());
   ScriptContext* context = GetCurrentContext();
   if (context->GetExitFunction()[0] == '\0') {
     strcpy(context->GetExitFunction(), declaration);
@@ -250,9 +239,9 @@ void exit(const ScriptString& func) {
 
 // The argument is only kept with the first exit function, its reference
 // is dropped either way.
-void exit(const ScriptString& func, Any* arg) {
+void exit(const string& func, Any* arg) {
   char declaration[0x100];
-  sprintf(declaration, "void %s(any@ arg)", func.GetText());
+  sprintf(declaration, "void %s(any@ arg)", func.c_str());
   ScriptContext* context = GetCurrentContext();
   if (context->GetExitFunction()[0] == '\0') {
     strcpy(context->GetExitFunction(), declaration);

@@ -116,6 +116,19 @@ inline int UnitItem::GetMaxUses() const {
   return count_ * ItemRow::GetUses(GetData());
 }
 
+inline void UnitItem::SetUses(uint8_t uses) {
+  uses_ = uses;
+  const ItemData* data = GetData();
+  const uint8_t kind = ItemRow::GetKind(data);
+  if (ItemRow::GetUses(data) != 0 && kind < 8 && kind != 5 && kind != 6) {
+    flags_ = (flags_ & ~kFlagFull) |
+      (static_cast<unsigned>(GetMaxUses()) <= uses_ ? kFlagFull : 0);
+  }
+  else {
+    flags_ &= ~kFlagFull;
+  }
+}
+
 inline int UnitItem::GetSharedMaxUses() const {
   return count_ * ItemRow::GetUses(GetSharedData());
 }

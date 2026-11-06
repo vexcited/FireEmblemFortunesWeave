@@ -12,6 +12,9 @@ namespace game::hub {
 
 extern const std::string_view kAreaEventTypeNames[4];
 
+// The index of a sound label of the area events, by its name.
+uint32_t GetSeLabelIndex(std::string_view label);
+
 const std::string_view kAreaEventTypeNames[4] = {
   "Contact",
   "Access",
@@ -177,16 +180,23 @@ float GetNearLengthXZ(AreaEventHandle handle, const math::Vec3& pos) {
   return event != nullptr ? event->GetShape().GetNearLengthXZ(pos) : 0.0f;
 }
 
-ScriptString GetEventType(AreaEventHandle handle) {
+as::string GetEventType(AreaEventHandle handle) {
   OpenBlock();
   AreaEvent* event = handle.Get();
   if (event == nullptr) {
-    return ScriptString("");
+    return as::string("");
   }
   uint32_t type = event->GetType();
   const char* name =
     type < 4 ? game::hub::kAreaEventTypeNames[type].data() : nullptr;
-  return ScriptString(name);
+  return as::string(name);
+}
+
+as::string GetSeLabel(AreaEventHandle handle, const as::string& label) {
+  OpenBlock();
+  const AreaEvent* event = handle.Get();
+  return as::string(event != nullptr ?
+    event->GetSeLabel(game::hub::GetSeLabelIndex(label)).c_str() : "");
 }
 
 uint64_t GetAccessingEventHash() {

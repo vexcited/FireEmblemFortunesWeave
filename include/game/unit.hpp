@@ -113,6 +113,9 @@ public:
     }
   }
 
+  // Defined in unit_item.hpp, it also updates the full flag.
+  void SetUses(uint8_t uses);
+
   void Equip() {
     flags_ |= kFlagEquipped;
   }
@@ -397,6 +400,10 @@ public:
 
   const UnitItem& GetItem(int index) const {
     return items_list_.items[index];
+  }
+
+  UnitItemList& GetItemList() {
+    return items_list_;
   }
 
   uint8_t GetBand() const {
@@ -721,6 +728,10 @@ public:
       return reinterpret_cast<const SkillKey&>(sources[i]);
     }
 
+    SkillKey& GetSource(size_t i) {
+      return reinterpret_cast<SkillKey&>(sources[i]);
+    }
+
     // The skill indices are a bit set.
     bool Contains(uint32_t index) const {
       const uint32_t word = index >> 5;
@@ -754,6 +765,10 @@ public:
   };
 
   const SkillList& GetSkillList(int index) const {
+    return skill_lists_[index];
+  }
+
+  SkillList& GetSkillList(int index) {
     return skill_lists_[index];
   }
 

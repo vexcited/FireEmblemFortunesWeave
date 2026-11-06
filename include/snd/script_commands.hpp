@@ -1,14 +1,11 @@
 #pragma once
 
+#include "angelscript/fork/add_on/as_string.h"
 #include "as/script_context.hpp"
 
 namespace snd::debug {
 
-// The script text a command receives as its argument.
-class Text {
-public:
-  const char* c_str() const;
-};
+using Text = as::string;
 
 // Every sound command registered to the scripts opens a block once it ran.
 inline void openBlock() {

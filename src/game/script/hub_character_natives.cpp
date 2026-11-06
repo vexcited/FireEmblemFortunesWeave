@@ -403,15 +403,15 @@ void SetPathSpeed(CharacterHandle handle, float speed) {
   }
 }
 
-ScriptString GetPID(CharacterHandle handle) {
+as::string GetPID(CharacterHandle handle) {
   Character* character = Open(handle);
-  return ScriptString(character != nullptr ?
+  return as::string(character != nullptr ?
     character->GetPid().c_str() : "");
 }
 
-ScriptString GetDisposLabel(CharacterHandle handle) {
+as::string GetDisposLabel(CharacterHandle handle) {
   Character* character = Open(handle);
-  return ScriptString(character != nullptr ?
+  return as::string(character != nullptr ?
     character->GetDisposLabel().c_str() : "");
 }
 

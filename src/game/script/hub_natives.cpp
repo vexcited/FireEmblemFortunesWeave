@@ -139,19 +139,19 @@ void SetDngUnitCountOne(bool isEnable) {
   g_instance<game::GameHubData>->SetDngUnitCountOne(isEnable);
 }
 
-ScriptString GetMapName() {
+as::string GetMapName() {
   OpenBlock();
-  return ScriptString(g_instance<game::hub::Manager>->GetMapName().c_str());
+  return as::string(g_instance<game::hub::Manager>->GetMapName().c_str());
 }
 
-ScriptString GetAreaName() {
+as::string GetAreaName() {
   OpenBlock();
-  return ScriptString(g_instance<game::hub::Manager>->GetAreaName().c_str());
+  return as::string(g_instance<game::hub::Manager>->GetAreaName().c_str());
 }
 
-ScriptString GetAreaFullName() {
+as::string GetAreaFullName() {
   OpenBlock();
-  return ScriptString(
+  return as::string(
     g_instance<game::hub::Manager>->GetAreaFullName().c_str());
 }
 

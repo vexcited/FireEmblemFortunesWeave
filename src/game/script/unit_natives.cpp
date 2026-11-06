@@ -8,6 +8,7 @@
 #include "game/script/script_string.hpp"
 #include "game/sound/se.hpp"
 #include "game/unit.hpp"
+#include "game/unit_item.hpp"
 #include "game/unit_pool.hpp"
 
 // The natives of the unit script namespaces. Units are passed by index,
@@ -51,8 +52,6 @@ namespace {
 
 }
 
-using script::ScriptString;
-
 // Looks a person row up by its PID, through the hash index of the file.
 class PersonRef {
 public:
@@ -69,8 +68,8 @@ private:
 namespace {
 
 // The unit of a person still in a force, units that left keep force 9.
-[[gnu::always_inline]] inline Unit* FindUnit(const ScriptString& pid) {
-  const char* text = pid.GetText();
+[[gnu::always_inline]] inline Unit* FindUnit(const as::string& pid) {
+  const char* text = pid.c_str();
   if (text[0] == '\0') {
     return nullptr;
   }
@@ -135,35 +134,35 @@ void WaitMotion(int index) {
   WaitMotion(FindUnit(index));
 }
 
-bool IsExist(const ScriptString& pid) {
+bool IsExist(const as::string& pid) {
   return FindUnit(pid) != nullptr;
 }
 
-int GetIndexByPID(const ScriptString& pid) {
+int GetIndexByPID(const as::string& pid) {
   Unit* unit = FindUnit(pid);
   return unit != nullptr ? GetIndexOf(unit) : -1;
 }
 
-bool IsExistOnMap(const ScriptString& pid) {
+bool IsExistOnMap(const as::string& pid) {
   Unit* unit = FindUnit(pid);
   return unit != nullptr && unit->GetForceType() < 4;
 }
 
-bool IsDead(const ScriptString& pid) {
+bool IsDead(const as::string& pid) {
   Unit* unit = FindUnit(pid);
   return unit != nullptr && !unit->IsOnMap();
 }
 
-int GetForce(const ScriptString& pid) {
+int GetForce(const as::string& pid) {
   Unit* unit = FindUnit(pid);
   return unit != nullptr ? unit->GetForceType() : -1;
 }
 
-void Die(const ScriptString& pid) {
+void Die(const as::string& pid) {
   Die(FindUnit(pid));
 }
 
-void WaitMotion(const ScriptString& pid) {
+void WaitMotion(const as::string& pid) {
   WaitMotion(FindUnit(pid));
 }
 
@@ -233,30 +232,30 @@ int GetForce(int index) {
   return unit->GetForceType();
 }
 
-ScriptString GetPID(int index) {
+as::string GetPID(int index) {
   const char* pid = "";
   if (Unit* unit = FindUnit(index)) {
     if (const PersonData* person = unit->GetPerson()) {
       pid = person->key.text;
     }
   }
-  return ScriptString(pid);
+  return as::string(pid);
 }
 
-ScriptString GetJID(int index) {
+as::string GetJID(int index) {
   const char* jid = "";
   if (Unit* unit = FindUnit(index); IsValid(unit)) {
     jid = unit->GetJobId();
   }
-  return ScriptString(jid);
+  return as::string(jid);
 }
 
-ScriptString GetJID(const ScriptString& pid) {
+as::string GetJID(const as::string& pid) {
   const char* jid = "";
   if (Unit* unit = FindUnit(pid)) {
     jid = unit->GetJobId();
   }
-  return ScriptString(jid);
+  return as::string(jid);
 }
 
 const char* GetPersonName(const PersonData* person);
@@ -265,38 +264,38 @@ bool IsInAttackRange(const Unit* unit, int force);
 bool IsInAttackRange(const Unit* unit, int x, int z);
 bool IsInMoveRange(const Unit* unit, int x, int z, bool exclude_enemies);
 
-ScriptString GetLID(int index) {
+as::string GetLID(int index) {
   const char* lid = "";
   if (Unit* unit = FindUnit(index); IsValid(unit) && unit->GetLegion() != 0) {
     lid = GetRowId<LegionFile>(unit->GetLegion());
   }
-  return ScriptString(lid);
+  return as::string(lid);
 }
 
-ScriptString GetLID(const ScriptString& pid) {
+as::string GetLID(const as::string& pid) {
   const char* lid = "";
   if (Unit* unit = FindUnit(pid); unit != nullptr && unit->GetLegion() != 0) {
     lid = GetRowId<LegionFile>(unit->GetLegion());
   }
-  return ScriptString(lid);
+  return as::string(lid);
 }
 
-ScriptString GetName(int index) {
+as::string GetName(int index) {
   const char* name = "";
   if (Unit* unit = FindUnit(index); IsValid(unit)) {
     name = unit->GetEdit().HasName() ? unit->GetEdit().GetName() :
       GetPersonName(unit->GetPerson());
   }
-  return ScriptString(name);
+  return as::string(name);
 }
 
-ScriptString GetName(const ScriptString& pid) {
+as::string GetName(const as::string& pid) {
   const char* name = "";
   if (Unit* unit = FindUnit(pid)) {
     name = unit->GetEdit().HasName() ? unit->GetEdit().GetName() :
       GetPersonName(unit->GetPerson());
   }
-  return ScriptString(name);
+  return as::string(name);
 }
 
 // The player forces, 0 and 4 to 7.
@@ -311,20 +310,20 @@ bool IsForcePlayer(int index) {
   return (1 << unit->GetForceType()) & 0xf1;
 }
 
-ScriptString GetMotionName(int index) {
+as::string GetMotionName(int index) {
   const char* name = "";
   if (Unit* unit = FindUnit(index); IsValid(unit) && IsOnMap(unit)) {
     name = GetMotionName(unit->GetMotion());
   }
-  return ScriptString(name);
+  return as::string(name);
 }
 
-ScriptString GetMotionName(const ScriptString& pid) {
+as::string GetMotionName(const as::string& pid) {
   const char* name = "";
   if (Unit* unit = FindUnit(pid); unit != nullptr && IsOnMap(unit)) {
     name = GetMotionName(unit->GetMotion());
   }
-  return ScriptString(name);
+  return as::string(name);
 }
 
 bool IsAttackRangeForce(int index, int force) {
@@ -334,7 +333,7 @@ bool IsAttackRangeForce(int index, int force) {
   return false;
 }
 
-bool IsAttackRangeForce(const ScriptString& pid, int force) {
+bool IsAttackRangeForce(const as::string& pid, int force) {
   if (Unit* unit = FindUnit(pid); unit != nullptr && IsOnMap(unit)) {
     return IsInAttackRange(unit, force);
   }
@@ -348,7 +347,7 @@ bool IsAttackRangePos(int index, int x, int z) {
   return false;
 }
 
-bool IsAttackRangePos(const ScriptString& pid, int x, int z) {
+bool IsAttackRangePos(const as::string& pid, int x, int z) {
   if (Unit* unit = FindUnit(pid); unit != nullptr && IsOnMap(unit)) {
     return IsInAttackRange(unit, x, z);
   }
@@ -362,7 +361,7 @@ bool IsMoveRangePos(int index, int x, int z, bool isIncludeEnemy) {
   return false;
 }
 
-bool IsMoveRangePos(const ScriptString& pid, int x, int z,
+bool IsMoveRangePos(const as::string& pid, int x, int z,
   bool isIncludeEnemy) {
   if (Unit* unit = FindUnit(pid); unit != nullptr && IsOnMap(unit)) {
     return IsInMoveRange(unit, x, z, !isIncludeEnemy);
@@ -371,7 +370,7 @@ bool IsMoveRangePos(const ScriptString& pid, int x, int z,
 }
 
 // Registered in the unit namespace.
-bool IsFading(const ScriptString& pid) {
+bool IsFading(const as::string& pid) {
   Unit* unit = FindUnit(pid);
   return unit != nullptr && IsOnMap(unit) && unit->IsFading();
 }
@@ -392,52 +391,105 @@ namespace game::script::unit::item {
 namespace {
 
 using unit::FindUnit;
-using unit::ScriptString;
 using unit::GetRowId;
 using unit::IsValid;
 
 }
 
 // Registered in the item namespace.
-int GetSize(const ScriptString& pid) {
+int GetSize(const as::string& pid) {
   Unit* unit = FindUnit(pid);
   return unit != nullptr ? unit->GetSize() : 0;
 }
 
-ScriptString GetEquipIID(int index) {
+as::string GetEquipIID(int index) {
   const char* iid = "";
   if (Unit* unit = FindUnit(index);
     IsValid(unit) && unit->GetEquippedIndex() != 0) {
     iid = GetRowId<ItemFile>(unit->GetEquippedIndex());
   }
-  return ScriptString(iid);
+  return as::string(iid);
 }
 
-ScriptString GetEquipIID(const ScriptString& pid) {
+as::string GetEquipIID(const as::string& pid) {
   const char* iid = "";
   if (Unit* unit = FindUnit(pid);
     unit != nullptr && unit->GetEquippedIndex() != 0) {
     iid = GetRowId<ItemFile>(unit->GetEquippedIndex());
   }
-  return ScriptString(iid);
+  return as::string(iid);
 }
 
-ScriptString GetPossetionIID(int index, int unitItemIndex) {
+as::string GetPossetionIID(int index, int unitItemIndex) {
   const char* iid = "";
   if (Unit* unit = FindUnit(index);
     IsValid(unit) && unit->GetItem(unitItemIndex).GetIndex() != 0) {
     iid = GetRowId<ItemFile>(unit->GetItem(unitItemIndex).GetIndex());
   }
-  return ScriptString(iid);
+  return as::string(iid);
 }
 
-ScriptString GetPossetionIID(const ScriptString& pid, int unitItemIndex) {
+as::string GetPossetionIID(const as::string& pid, int unitItemIndex) {
   const char* iid = "";
   if (Unit* unit = FindUnit(pid);
     unit != nullptr && unit->GetItem(unitItemIndex).GetIndex() != 0) {
     iid = GetRowId<ItemFile>(unit->GetItem(unitItemIndex).GetIndex());
   }
-  return ScriptString(iid);
+  return as::string(iid);
+}
+
+namespace {
+
+[[gnu::always_inline]] inline bool HasItem(Unit* unit, const char* iid) {
+  const ItemData* data = ItemFile::GetInstance()->Find(iid);
+  return data != nullptr && unit->GetItemList().Find(data) >= 0;
+}
+
+// The count is taken from the uses the item has at most.
+[[gnu::always_inline]] inline void SetEndurance(Unit* unit, const char* iid,
+  int count) {
+  const int slot = unit->GetItemList().Find(iid);
+  if (slot < 0) {
+    return;
+  }
+  UnitItem& item = unit->GetItemList().items[slot];
+  if (item.GetIndex() != 0) {
+    const int max = item.GetMaxUses();
+    const int uses = max - count;
+    item.SetUses(uses < 0 ? 0 : (max < uses ? max : uses));
+  }
+  unit::MarkDirty(unit);
+}
+
+}
+
+bool IsPossession(int index, const as::string& iid) {
+  Unit* unit = FindUnit(index);
+  const char* text = iid.c_str();
+  return IsValid(unit) && HasItem(unit, text);
+}
+
+bool IsPossession(const as::string& pid, const as::string& iid) {
+  Unit* unit = FindUnit(pid);
+  const char* text = iid.c_str();
+  return IsValid(unit) && HasItem(unit, text);
+}
+
+void SetEnduranceItem(int index, const as::string& iid, int count) {
+  Unit* unit = FindUnit(index);
+  const char* text = iid.c_str();
+  if (IsValid(unit)) {
+    SetEndurance(unit, text, count);
+  }
+}
+
+void SetEnduranceItem(const as::string& pid, const as::string& iid,
+  int count) {
+  Unit* unit = FindUnit(pid);
+  const char* text = iid.c_str();
+  if (IsValid(unit)) {
+    SetEndurance(unit, text, count);
+  }
 }
 
 }
@@ -461,7 +513,7 @@ void FadeIn(int index) {
   }
 }
 
-void FadeIn(const unit::ScriptString& pid) {
+void FadeIn(const as::string& pid) {
   Unit* unit = FindUnit(pid);
   if (unit != nullptr && IsOnMap(unit)) {
     StartFade(unit, 0.0f);
@@ -497,7 +549,7 @@ void ActivateForBand(int index) {
   }
 }
 
-void ActivateForBand(const unit::ScriptString& pid) {
+void ActivateForBand(const as::string& pid) {
   Unit* unit = FindUnit(pid);
   if (unit != nullptr && IsOnMap(unit)) {
     Activate(unit, false);
@@ -512,7 +564,7 @@ int GetBandNo(int index) {
   return -1;
 }
 
-int GetBandNo(const unit::ScriptString& pid) {
+int GetBandNo(const as::string& pid) {
   Unit* unit = FindUnit(pid);
   if (unit != nullptr && IsOnMap(unit)) {
     return unit->GetBand();
@@ -528,7 +580,7 @@ bool IsActive(int index) {
   return unit->GetPerson() != nullptr && IsOnMap(unit) && unit->IsAiActive();
 }
 
-bool IsActive(const unit::ScriptString& pid) {
+bool IsActive(const as::string& pid) {
   Unit* unit = FindUnit(pid);
   return unit != nullptr && IsOnMap(unit) && unit->IsAiActive();
 }
@@ -560,37 +612,36 @@ namespace {
 
 using unit::FindUnit;
 using unit::GetParam;
-using unit::ScriptString;
 
 }
 
-int GetLevel(const ScriptString& pid) {
+int GetLevel(const as::string& pid) {
   Unit* unit = FindUnit(pid);
   return unit != nullptr ? unit->GetLevel() : 0;
 }
 
-int GetHp(const ScriptString& pid) {
+int GetHp(const as::string& pid) {
   Unit* unit = FindUnit(pid);
   return unit != nullptr ? unit->GetHp() : 0;
 }
 
-int GetHpStock(const ScriptString& pid) {
+int GetHpStock(const as::string& pid) {
   Unit* unit = FindUnit(pid);
   return unit != nullptr ? unit->GetHpStock() : 0;
 }
 
-int GetPollution(const ScriptString& pid) {
+int GetPollution(const as::string& pid) {
   Unit* unit = FindUnit(pid);
   return unit != nullptr ? unit->GetPollution() : 0;
 }
 
-int GetMoveType(const ScriptString& pid) {
+int GetMoveType(const as::string& pid) {
   Unit* unit = FindUnit(pid);
   return unit != nullptr ? unit->GetJobUnknown30() : 0;
 }
 
 #define GAME_SCRIPT_PARAM(name, kind) \
-  int name(const ScriptString& pid) { \
+  int name(const as::string& pid) { \
     Unit* unit = FindUnit(pid); \
     return unit != nullptr ? unit->GetParam(kind, 1) : 0; \
   }
@@ -712,7 +763,7 @@ void Move(int index, int x, int z, uint32_t moveFlag) {
   MoveTo(unit, x, z, flags, false);
 }
 
-void Move(const unit::ScriptString& pid, int x, int z, uint32_t moveFlag) {
+void Move(const as::string& pid, int x, int z, uint32_t moveFlag) {
   Unit* unit = FindUnit(pid);
   const uint8_t flags = moveFlag;
   MoveTo(unit, x, z, flags, false);
@@ -724,7 +775,7 @@ void MoveForce(int index, int x, int z, uint32_t moveFlag) {
   MoveTo(unit, x, z, flags, true);
 }
 
-void MoveForce(const unit::ScriptString& pid, int x, int z,
+void MoveForce(const as::string& pid, int x, int z,
   uint32_t moveFlag) {
   Unit* unit = FindUnit(pid);
   const uint8_t flags = moveFlag;
@@ -735,7 +786,7 @@ void Set(int index, int x, int z) {
   SetPosition(FindUnit(index), x, z);
 }
 
-void Set(const unit::ScriptString& pid, int x, int z) {
+void Set(const as::string& pid, int x, int z) {
   SetPosition(FindUnit(pid), x, z);
 }
 
@@ -747,7 +798,7 @@ int GetX(int index) {
   return -1;
 }
 
-int GetX(const unit::ScriptString& pid) {
+int GetX(const as::string& pid) {
   Unit* unit = FindUnit(pid);
   if (unit != nullptr && IsOnMap(unit)) {
     return unit->GetX();
@@ -763,7 +814,7 @@ int GetZ(int index) {
   return -1;
 }
 
-int GetZ(const unit::ScriptString& pid) {
+int GetZ(const as::string& pid) {
   Unit* unit = FindUnit(pid);
   if (unit != nullptr && IsOnMap(unit)) {
     return unit->GetZ();
@@ -781,7 +832,7 @@ using unit::FindUnit;
 
 }
 
-void Set(const unit::ScriptString& pid, uint32_t status) {
+void Set(const as::string& pid, uint32_t status) {
   if (Unit* unit = FindUnit(pid)) {
     unit->SetState(status);
     unit::MarkDirty(unit);
@@ -805,7 +856,7 @@ void Clear(int index, uint32_t status) {
 }
 
 // Registered in the status namespace.
-bool IsForcePlayer(const unit::ScriptString& pid) {
+bool IsForcePlayer(const as::string& pid) {
   Unit* unit = FindUnit(pid);
   return unit != nullptr && (1 << unit->GetForceType()) & 0xf1;
 }
@@ -818,7 +869,7 @@ bool Check(int index, uint32_t status) {
   return unit->GetPerson() != nullptr && unit->HasState(status);
 }
 
-bool Check(const unit::ScriptString& pid, uint32_t status) {
+bool Check(const as::string& pid, uint32_t status) {
   Unit* unit = FindUnit(pid);
   return unit != nullptr && unit->HasState(status);
 }
@@ -849,34 +900,34 @@ template<typename Function>
 }
 
 template<typename Function>
-[[gnu::always_inline]] inline void SetAi(const unit::ScriptString& pid,
+[[gnu::always_inline]] inline void SetAi(const as::string& pid,
   Function function) {
   SetAi(FindUnit(pid), function);
 }
 
 }
 
-void SetPriority(const unit::ScriptString& pid, int priority) {
+void SetPriority(const as::string& pid, int priority) {
   SetAi(pid, [priority](Unit* unit) { unit->SetPriority(priority); });
 }
 
-void SetBandNo(const unit::ScriptString& pid, int bandNo) {
+void SetBandNo(const as::string& pid, int bandNo) {
   SetAi(pid, [bandNo](Unit* unit) { unit->SetBand(bandNo); });
 }
 
-void SetRageOp(const unit::ScriptString& pid, int rageOp) {
+void SetRageOp(const as::string& pid, int rageOp) {
   SetAi(pid, [rageOp](Unit* unit) { unit->SetRageOp(rageOp); });
 }
 
-void SetRageMaxProhibitTurn(unit::ScriptString& pid, int turn) {
+void SetRageMaxProhibitTurn(as::string& pid, int turn) {
   SetAi(pid, [turn](Unit* unit) { unit->SetRageProhibitTurn(turn); });
 }
 
-void SetActive(const unit::ScriptString& pid, bool active) {
+void SetActive(const as::string& pid, bool active) {
   SetAi(pid, [active](Unit* unit) { unit->SetAiActive(active); });
 }
 
-void SetRageTargetPos(unit::ScriptString& pid, int x, int z) {
+void SetRageTargetPos(as::string& pid, int x, int z) {
   SetAi(pid, [x, z](Unit* unit) { unit->SetRageTarget(x, z); });
 }
 
@@ -914,7 +965,7 @@ void SetRageTargetPos(int index, int x, int z) {
       unit->SetAiFlag(mask, isEnable); \
     }); \
   } \
-  void name(const unit::ScriptString& pid, bool isEnable) { \
+  void name(const as::string& pid, bool isEnable) { \
     SetAi(pid, [isEnable](Unit* unit) { \
       unit->SetAiFlag(mask, isEnable); \
     }); \
@@ -933,7 +984,7 @@ GAME_SCRIPT_AI_FLAG(SetDisableMutationAttack, 0x800)
 namespace game::script::unit {
 
 // Registered in the unit namespace.
-void ClearMoveLimit(const ScriptString& pid) {
+void ClearMoveLimit(const as::string& pid) {
   Unit* unit = FindUnit(pid);
   if (unit != nullptr && IsOnMap(unit)) {
     unit->ClearMoveLimit();
@@ -941,7 +992,7 @@ void ClearMoveLimit(const ScriptString& pid) {
   }
 }
 
-void Clear(const ScriptString& pid, int unitStatus) {
+void Clear(const as::string& pid, int unitStatus) {
   if (Unit* unit = FindUnit(pid)) {
     unit->ClearState(unitStatus);
     MarkDirty(unit);
@@ -967,12 +1018,12 @@ int GetIndexByPos(int posX, int posZ) {
   return unit != nullptr ? GetIndexOf(unit) : -1;
 }
 
-ScriptString GetPIDByPos(int posX, int posZ) {
+as::string GetPIDByPos(int posX, int posZ) {
   const char* pid = "";
   if (const Unit* unit = FindUnitAt(posX, posZ)) {
     pid = unit->GetPerson()->key.text;
   }
-  return ScriptString(pid);
+  return as::string(pid);
 }
 
 namespace {
@@ -1042,15 +1093,15 @@ void SetRideOnOff(int index, bool isRide) {
   }
 }
 
-void SetRideOnOff(const ScriptString& pid, bool isRide) {
+void SetRideOnOff(const as::string& pid, bool isRide) {
   Unit* unit = FindUnit(pid);
   if (unit != nullptr && IsOnMap(unit)) {
     unit->SetRide(isRide);
   }
 }
 
-bool IsAttackRangeTargetUnit(const ScriptString& pid,
-  const ScriptString& targetPid) {
+bool IsAttackRangeTargetUnit(const as::string& pid,
+  const as::string& targetPid) {
   Unit* unit = FindUnit(pid);
   if (unit == nullptr || !IsOnMap(unit)) {
     return false;
@@ -1063,7 +1114,7 @@ bool IsAttackRangeTargetUnit(const ScriptString& pid,
 }
 
 // Registered without a namespace.
-void GenerateFaceTexture(const ScriptString& pid) {
+void GenerateFaceTexture(const as::string& pid) {
   Unit* unit = FindUnit(pid);
   if (unit != nullptr && IsOnMap(unit)) {
     GenerateFaceTexture(unit, true);
@@ -1078,7 +1129,7 @@ int GetBarrierHp(int index, int x, int z) {
   return unit->GetBarrierHp(x, z);
 }
 
-int GetBarrierHp(const ScriptString& pid, int x, int z) {
+int GetBarrierHp(const as::string& pid, int x, int z) {
   Unit* unit = FindUnit(pid);
   if (unit == nullptr || !IsOnMap(unit)) {
     return 0;
@@ -1094,7 +1145,7 @@ void SetBarrierHp(int index, int hp) {
   }
 }
 
-void SetBarrierHp(const ScriptString& pid, int hp) {
+void SetBarrierHp(const as::string& pid, int hp) {
   Unit* unit = FindUnit(pid);
   if (unit != nullptr && IsOnMap(unit)) {
     unit->SetBarrierHp(hp);
@@ -1110,7 +1161,7 @@ void SetBarrierHp(int index, int x, int z, int hp) {
   }
 }
 
-void SetBarrierHp(const ScriptString& pid, int x, int z, int hp) {
+void SetBarrierHp(const as::string& pid, int x, int z, int hp) {
   Unit* unit = FindUnit(pid);
   if (unit != nullptr && IsOnMap(unit)) {
     unit->SetBarrierHp(x, z, hp);
@@ -1126,7 +1177,7 @@ void BreakBarrier(int index, int x, int z, bool isEffect) {
   }
 }
 
-void BreakBarrier(const ScriptString& pid, int x, int z, bool isEffect) {
+void BreakBarrier(const as::string& pid, int x, int z, bool isEffect) {
   Unit* unit = FindUnit(pid);
   if (unit != nullptr && IsOnMap(unit)) {
     unit->BreakBarrier(nullptr, x, z, isEffect);
@@ -1142,7 +1193,7 @@ void RepairBarrier(int index, int x, int z, bool isEffect) {
   }
 }
 
-void RepairBarrier(const ScriptString& pid, int x, int z, bool isEffect) {
+void RepairBarrier(const as::string& pid, int x, int z, bool isEffect) {
   Unit* unit = FindUnit(pid);
   if (unit != nullptr && IsOnMap(unit)) {
     unit->RepairBarrier(nullptr, x, z, isEffect);
@@ -1158,7 +1209,7 @@ void BreakBarrier(int index, bool isEffect) {
   }
 }
 
-void BreakBarrier(const ScriptString& pid, bool isEffect) {
+void BreakBarrier(const as::string& pid, bool isEffect) {
   Unit* unit = FindUnit(pid);
   if (unit != nullptr && IsOnMap(unit)) {
     unit->BreakBarrier(isEffect);
@@ -1228,7 +1279,7 @@ void Reload(int index) {
   }
 }
 
-void Reload(const ScriptString& pid) {
+void Reload(const as::string& pid) {
   Unit* unit = FindUnit(pid);
   if (unit != nullptr && IsOnMap(unit)) {
     Reload(unit);
@@ -1266,7 +1317,7 @@ void DamagePopup(int index, int damage, int popupFlags) {
   }
 }
 
-void DamagePopup(const ScriptString& pid, int damage, int popupFlags) {
+void DamagePopup(const as::string& pid, int damage, int popupFlags) {
   Unit* unit = FindUnit(pid);
   if (unit != nullptr && IsOnMap(unit)) {
     ShowDamagePopup(GetCenter(unit), damage, popupFlags);
@@ -1287,7 +1338,7 @@ void SetHp(int index, int hp) {
   }
 }
 
-void SetHp(const unit::ScriptString& pid, int hp) {
+void SetHp(const as::string& pid, int hp) {
   if (Unit* unit = unit::FindUnit(pid)) {
     const int max = unit->GetParam(UnitParams::kHp, 1);
     unit->ChangeHp(hp < 0 ? 0 : (max < hp ? max : hp));
@@ -1296,7 +1347,7 @@ void SetHp(const unit::ScriptString& pid, int hp) {
   }
 }
 
-void UpdateLearn(const unit::ScriptString& pid) {
+void UpdateLearn(const as::string& pid) {
   if (Unit* unit = unit::FindUnit(pid)) {
     unit->Unknown6c4610();
     unit::MarkDirty(unit);
@@ -1312,17 +1363,16 @@ namespace {
 using unit::FindUnit;
 using unit::IsValid;
 using unit::MarkDirty;
-using unit::ScriptString;
 
-[[gnu::always_inline]] inline SkillKey GetSkillKey(const ScriptString& sid) {
+[[gnu::always_inline]] inline SkillKey GetSkillKey(const as::string& sid) {
   SkillKey key = {};
-  key.Assign(HashedString(sid.GetText()));
+  key.Assign(HashedString(sid.c_str()));
   return key;
 }
 
 }
 
-bool Has(int index, const ScriptString& sid) {
+bool Has(int index, const as::string& sid) {
   Unit* unit = FindUnit(index);
   if (!IsValid(unit)) {
     return false;
@@ -1331,15 +1381,15 @@ bool Has(int index, const ScriptString& sid) {
   return HasSkill(unit->GetSkillList(7), key);
 }
 
-void Supply(int index, const ScriptString& sid) {
+void Supply(int index, const as::string& sid) {
   Unit* unit = FindUnit(index);
   if (IsValid(unit)) {
-    unit->ResetSkillLevel(sid.GetText());
+    unit->ResetSkillLevel(sid.c_str());
     MarkDirty(unit);
   }
 }
 
-void AddEquip(int index, const ScriptString& sid) {
+void AddEquip(int index, const as::string& sid) {
   Unit* unit = FindUnit(index);
   if (IsValid(unit)) {
     const SkillKey key = GetSkillKey(sid);
@@ -1348,7 +1398,7 @@ void AddEquip(int index, const ScriptString& sid) {
   }
 }
 
-void RemoveEquip(int index, const ScriptString& sid) {
+void RemoveEquip(int index, const as::string& sid) {
   Unit* unit = FindUnit(index);
   if (IsValid(unit)) {
     const SkillKey key = GetSkillKey(sid);
@@ -1357,7 +1407,7 @@ void RemoveEquip(int index, const ScriptString& sid) {
   }
 }
 
-void AddPrivate(int index, const ScriptString& sid) {
+void AddPrivate(int index, const as::string& sid) {
   Unit* unit = FindUnit(index);
   const SkillKey key = GetSkillKey(sid);
   if (IsValid(unit) && unit->AddPrivateSkill(key)) {
@@ -1366,7 +1416,7 @@ void AddPrivate(int index, const ScriptString& sid) {
   }
 }
 
-bool Has(const ScriptString& pid, const ScriptString& sid) {
+bool Has(const as::string& pid, const as::string& sid) {
   Unit* unit = FindUnit(pid);
   if (unit == nullptr) {
     return false;
@@ -1375,14 +1425,14 @@ bool Has(const ScriptString& pid, const ScriptString& sid) {
   return HasSkill(unit->GetSkillList(7), key);
 }
 
-void Supply(const ScriptString& pid, const ScriptString& sid) {
+void Supply(const as::string& pid, const as::string& sid) {
   if (Unit* unit = FindUnit(pid)) {
-    unit->ResetSkillLevel(sid.GetText());
+    unit->ResetSkillLevel(sid.c_str());
     MarkDirty(unit);
   }
 }
 
-void AddEquip(const ScriptString& pid, const ScriptString& sid) {
+void AddEquip(const as::string& pid, const as::string& sid) {
   if (Unit* unit = FindUnit(pid)) {
     const SkillKey key = GetSkillKey(sid);
     unit->AddEquipSkill(key, true);
@@ -1390,7 +1440,7 @@ void AddEquip(const ScriptString& pid, const ScriptString& sid) {
   }
 }
 
-void RemoveEquip(ScriptString& pid, const ScriptString& sid) {
+void RemoveEquip(as::string& pid, const as::string& sid) {
   if (Unit* unit = FindUnit(pid)) {
     const SkillKey key = GetSkillKey(sid);
     unit->RemoveEquipSkill(key);
@@ -1398,7 +1448,7 @@ void RemoveEquip(ScriptString& pid, const ScriptString& sid) {
   }
 }
 
-void AddPrivate(const ScriptString& pid, const ScriptString& sid) {
+void AddPrivate(const as::string& pid, const as::string& sid) {
   Unit* unit = FindUnit(pid);
   const SkillKey key = GetSkillKey(sid);
   if (IsValid(unit) && unit->AddPrivateSkill(key)) {
@@ -1407,7 +1457,7 @@ void AddPrivate(const ScriptString& pid, const ScriptString& sid) {
   }
 }
 
-void RemovePrivate(ScriptString& pid, const ScriptString& sid) {
+void RemovePrivate(as::string& pid, const as::string& sid) {
   Unit* unit = FindUnit(pid);
   const SkillKey key = GetSkillKey(sid);
   if (IsValid(unit) && unit->RemovePrivateSkill(key)) {
@@ -1416,12 +1466,87 @@ void RemovePrivate(ScriptString& pid, const ScriptString& sid) {
   }
 }
 
-void RemovePrivate(int index, const ScriptString& sid) {
+void RemovePrivate(int index, const as::string& sid) {
   Unit* unit = FindUnit(index);
   const SkillKey key = GetSkillKey(sid);
   if (IsValid(unit) && unit->RemovePrivateSkill(key)) {
     unit->Unknown81a990();
     MarkDirty(unit);
+  }
+}
+
+namespace {
+
+// The skills with endurance are the sources of list 4, kinds 5 and 6 add
+// their extra levels to the uses of the row.
+[[gnu::always_inline]] inline int GetExtraUses(const SkillKey& source,
+  const SkillData* data) {
+  return SkillRow::GetKind(data) - 5u < 2 ? source.extra : 0;
+}
+
+[[gnu::always_inline]] inline int GetEndurance(Unit* unit,
+  const as::string& sid) {
+  const SkillKey key = GetSkillKey(sid);
+  const Unit::SkillList& list = unit->GetSkillList(4);
+  if (!list.Contains(key.index)) {
+    return -1;
+  }
+  const int i = list.FindSource(key.index);
+  if (i < 0) {
+    return -1;
+  }
+  const SkillKey& source = list.GetSource(i);
+  const SkillData* data = SkillFile::GetInstance()->At(source.index);
+  const int uses =
+    GetExtraUses(source, data) - source.level + SkillRow::GetUses(data);
+  return uses < 0 ? 0 : uses;
+}
+
+[[gnu::always_inline]] inline void SetEndurance(Unit* unit,
+  const as::string& sid, int count) {
+  const SkillKey key = GetSkillKey(sid);
+  Unit::SkillList& list = unit->GetSkillList(4);
+  if (list.Contains(key.index)) {
+    const int i = list.FindSource(key.index);
+    if (i >= 0) {
+      SkillKey& source = list.GetSource(i);
+      const SkillData* data = g_skill_file->At(source.index);
+      const int level =
+        GetExtraUses(source, data) - count + SkillRow::GetUses(data);
+      source.level = level < 0 ? 0 : level;
+    }
+  }
+  MarkDirty(unit);
+}
+
+}
+
+int GetEndurance(int index, const as::string& sid) {
+  Unit* unit = FindUnit(index);
+  if (!IsValid(unit)) {
+    return 0;
+  }
+  return GetEndurance(unit, sid);
+}
+
+int GetEndurance(const as::string& pid, const as::string& sid) {
+  Unit* unit = FindUnit(pid);
+  if (unit == nullptr) {
+    return 0;
+  }
+  return GetEndurance(unit, sid);
+}
+
+void SetEndurance(int index, const as::string& sid, int count) {
+  Unit* unit = FindUnit(index);
+  if (IsValid(unit)) {
+    SetEndurance(unit, sid, count);
+  }
+}
+
+void SetEndurance(const as::string& pid, const as::string& sid, int count) {
+  if (Unit* unit = FindUnit(pid)) {
+    SetEndurance(unit, sid, count);
   }
 }
 
@@ -1441,7 +1566,7 @@ void FadeOut(int index, bool isDeadSe) {
   }
 }
 
-void FadeOut(const unit::ScriptString& pid, bool isDeadSe) {
+void FadeOut(const as::string& pid, bool isDeadSe) {
   Unit* unit = unit::FindUnit(pid);
   if (unit != nullptr && unit::IsOnMap(unit)) {
     StartFadeOut(unit, 0.0f);
@@ -1501,7 +1626,7 @@ namespace game::script::unit::ai {
 
 [[gnu::visibility("default")]] extern AIFile* g_ai_file;
 
-ScriptString GetSequence(int index, int order) {
+as::string GetSequence(int index, int order) {
   const char* name = "";
   if (Unit* unit = FindUnit(index); IsValid(unit) && IsOnMap(unit)) {
     if (const AISequenceData* sequence =
@@ -1509,10 +1634,10 @@ ScriptString GetSequence(int index, int order) {
       name = sequence->key.text;
     }
   }
-  return ScriptString(name);
+  return as::string(name);
 }
 
-ScriptString GetSequence(const ScriptString& pid, int order) {
+as::string GetSequence(const as::string& pid, int order) {
   const char* name = "";
   if (Unit* unit = FindUnit(pid); unit != nullptr && IsOnMap(unit)) {
     if (const AISequenceData* sequence =
@@ -1520,7 +1645,7 @@ ScriptString GetSequence(const ScriptString& pid, int order) {
       name = sequence->key.text;
     }
   }
-  return ScriptString(name);
+  return as::string(name);
 }
 
 int GetSequenceArgPositionX(int index, int order, int argIndex) {
@@ -1595,13 +1720,13 @@ int Get(int index) {
 
 namespace game::script::unit::ai {
 
-void SetRageOpArg(int index, const unit::ScriptString& arg) {
-  SetAi(index, [&arg](Unit* unit) { unit->SetRageOpArg(arg.GetText()); });
+void SetRageOpArg(int index, const as::string& arg) {
+  SetAi(index, [&arg](Unit* unit) { unit->SetRageOpArg(arg.c_str()); });
 }
 
-void SetRageOpArg(const unit::ScriptString& pid,
-  const unit::ScriptString& arg) {
-  SetAi(pid, [&arg](Unit* unit) { unit->SetRageOpArg(arg.GetText()); });
+void SetRageOpArg(const as::string& pid,
+  const as::string& arg) {
+  SetAi(pid, [&arg](Unit* unit) { unit->SetRageOpArg(arg.c_str()); });
 }
 
 }
