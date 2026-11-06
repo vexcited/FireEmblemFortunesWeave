@@ -1,5 +1,11 @@
 #pragma once
 
+#include <stdint.h>
+
+#include "nn/account/account_types.hpp"
+#include "nn/bcat/bcat_types.hpp"
+#include "nn/ncm/ncm_ids.hpp"
+#include "nn/os/process_id.hpp"
 #include "nn/sf/cmif/client/cmif_proxy_factory.hpp"
 
 namespace nn::account::detail {
@@ -139,6 +145,7 @@ class IClientSession;
 
 namespace nn::bcat::ipc {
 
+class IServiceCreator;
 class IBcatService;
 class IDeliveryCacheDirectoryService;
 class IDeliveryCacheFileService;
@@ -178,12 +185,14 @@ class IShopServiceAsync;
 
 namespace nn::err::context {
 
+class IWriterForApplication;
 class IContextRegistrar;
 
 }
 
 namespace nn::friends::detail::ipc {
 
+class IServiceCreator;
 class IDaemonSuspendSessionService;
 class IFriendService;
 class INotificationService;
@@ -199,6 +208,7 @@ class IJitEnvironment;
 
 namespace nn::lm {
 
+class ILogService;
 class IDevNotificationReceiver;
 class ILogger;
 class ISharedMemoryAccessor;
@@ -207,12 +217,14 @@ class ISharedMemoryAccessor;
 
 namespace nn::mii::detail {
 
+class IStaticService;
 class IDatabaseService;
 
 }
 
 namespace nn::nifm::detail {
 
+class IStaticService;
 class IGeneralService;
 class INetworkProfile;
 class IRequest;
@@ -222,6 +234,7 @@ class IScanRequest;
 
 namespace nn::pctl::detail::ipc {
 
+class IParentalControlServiceFactory;
 class IParentalControlService;
 
 }
@@ -240,6 +253,7 @@ class ISettingsItemKeyIterator;
 
 namespace nn::timesrv::detail::service {
 
+class IStaticService;
 class ISteadyClock;
 class ISystemClock;
 class ITimeZoneService;
@@ -254,6 +268,7 @@ class IEnsureNetworkClockAvailabilityService;
 
 namespace nn::chat {
 
+class IUserService;
 class IUserLayoutCustomizationShimScopedObject;
 class IUserSelectiveTalkShimScopedObject;
 class IUserShimScopedObject;
@@ -271,6 +286,18 @@ class IAppletResource;
 namespace nn::imf {
 
 class ISession;
+
+}
+
+namespace nn::audio {
+
+class IUserClientSession;
+
+}
+
+namespace nn::audio::sysdev {
+
+class ISessionManager;
 
 }
 
@@ -866,6 +893,434 @@ struct ProxyMethodCount<nn::hid::IActiveVibrationDeviceList> {
 template <>
 struct ProxyMethodCount<nn::imf::ISession> {
   static constexpr int Value = 15;
+};
+
+}
+
+// Method tables of the proxies whose methods return objects.
+
+namespace nn::sf::cmif::client::detail {
+
+template <typename Kind>
+class CmifProxyMethods<timesrv::detail::service::IStaticService, Kind>
+  : public CmifProxyMethodsBase<
+      timesrv::detail::service::IStaticService, Kind> {
+public:
+  virtual Result GetStandardUserSystemClock(
+    const Out<SharedPointer<timesrv::detail::service::ISystemClock>>& out) {
+    return this->template ProcessWithOutObject<false, 0>(out);
+  }
+
+  virtual Result GetStandardNetworkSystemClock(
+    const Out<SharedPointer<timesrv::detail::service::ISystemClock>>& out) {
+    return this->template ProcessWithOutObject<false, 1>(out);
+  }
+
+  virtual Result GetStandardSteadyClock(
+    const Out<SharedPointer<timesrv::detail::service::ISteadyClock>>& out) {
+    return this->template ProcessWithOutObject<false, 2>(out);
+  }
+
+  virtual Result GetTimeZoneService(
+    const Out<SharedPointer<timesrv::detail::service::ITimeZoneService>>& out) {
+    return this->template ProcessWithOutObject<false, 3>(out);
+  }
+
+  virtual Result GetStandardLocalSystemClock(
+    const Out<SharedPointer<timesrv::detail::service::ISystemClock>>& out) {
+    return this->template ProcessWithOutObject<false, 4>(out);
+  }
+
+  virtual Result GetEphemeralNetworkSystemClock(
+    const Out<SharedPointer<timesrv::detail::service::ISystemClock>>& out) {
+    return this->template ProcessWithOutObject<false, 5>(out);
+  }
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(6)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(7)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(8)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(9)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(10)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(11)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(12)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(13)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(14)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(15)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(16)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(17)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(18)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(19)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(20)
+};
+
+template <typename Kind>
+class CmifProxyMethods<bcat::ipc::IBcatService, Kind>
+  : public CmifProxyMethodsBase<bcat::ipc::IBcatService, Kind> {
+public:
+  virtual Result RequestSyncDeliveryCache(
+    const Out<SharedPointer<bcat::ipc::IDeliveryCacheProgressService>>& out) {
+    return this->template ProcessWithOutObject<false, 10100>(out);
+  }
+
+  virtual Result RequestSyncDeliveryCacheWithDirectoryName(
+    const Out<SharedPointer<bcat::ipc::IDeliveryCacheProgressService>>& out,
+    const bcat::DirectoryName& directoryName) {
+    return this->template ProcessWithOutObject<false, 10101>(
+      out, directoryName);
+  }
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(2)
+
+  virtual Result RequestSyncDeliveryCacheWithApplicationId(
+    const Out<SharedPointer<bcat::ipc::IDeliveryCacheProgressService>>& out,
+    ApplicationId applicationId, uint32_t version) {
+    return this->template ProcessWithOutObject<false, 20100>(
+      out, applicationId, version);
+  }
+
+  virtual Result RequestSyncDeliveryCacheWithApplicationIdAndDirectoryName(
+    const Out<SharedPointer<bcat::ipc::IDeliveryCacheProgressService>>& out,
+    ApplicationId applicationId, uint32_t version,
+    const bcat::DirectoryName& directoryName) {
+    return this->template ProcessWithOutObject<false, 20101>(
+      out, applicationId, version, directoryName);
+  }
+
+  virtual Result GetDeliveryCacheStorageUpdateNotifier(
+    const Out<SharedPointer<bcat::ipc::INotifierService>>& out,
+    ApplicationId applicationId) {
+    return this->template ProcessWithOutObject<false, 20300>(
+      out, applicationId);
+  }
+
+  virtual Result RequestSuspendDeliveryTask(
+    const Out<SharedPointer<bcat::ipc::IDeliveryTaskSuspensionService>>& out,
+    ApplicationId applicationId) {
+    return this->template ProcessWithOutObject<false, 20301>(
+      out, applicationId);
+  }
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(7)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(8)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(9)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(10)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(11)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(12)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(13)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(14)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(15)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(16)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(17)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(18)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(19)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(20)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(21)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(22)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(23)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(24)
+};
+
+template <typename Kind>
+class CmifProxyMethods<bcat::ipc::IServiceCreator, Kind>
+  : public CmifProxyMethodsBase<bcat::ipc::IServiceCreator, Kind> {
+public:
+  virtual Result CreateBcatService(
+    const Out<SharedPointer<bcat::ipc::IBcatService>>& out,
+    os::ProcessId processId) {
+    return this->template ProcessWithOutObject<true, 0>(out, processId);
+  }
+
+  virtual Result CreateDeliveryCacheStorageService(
+    const Out<SharedPointer<bcat::ipc::IDeliveryCacheStorageService>>& out,
+    os::ProcessId processId) {
+    return this->template ProcessWithOutObject<true, 1>(out, processId);
+  }
+
+  virtual Result CreateDeliveryCacheStorageServiceWithApplicationId(
+    const Out<SharedPointer<bcat::ipc::IDeliveryCacheStorageService>>& out,
+    ApplicationId applicationId) {
+    return this->template ProcessWithOutObject<false, 2>(out, applicationId);
+  }
+};
+
+template <typename Kind>
+class CmifProxyMethods<bcat::ipc::IDeliveryCacheStorageService, Kind>
+  : public CmifProxyMethodsBase<bcat::ipc::IDeliveryCacheStorageService, Kind> {
+public:
+  virtual Result CreateFileService(
+    const Out<SharedPointer<bcat::ipc::IDeliveryCacheFileService>>& out) {
+    return this->template ProcessWithOutObject<false, 0>(out);
+  }
+
+  virtual Result CreateDirectoryService(
+    const Out<SharedPointer<bcat::ipc::IDeliveryCacheDirectoryService>>& out) {
+    return this->template ProcessWithOutObject<false, 1>(out);
+  }
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(2)
+};
+
+template <typename Kind>
+class CmifProxyMethods<friends::detail::ipc::IServiceCreator, Kind>
+  : public CmifProxyMethodsBase<friends::detail::ipc::IServiceCreator, Kind> {
+public:
+  virtual Result CreateFriendService(
+    const Out<SharedPointer<friends::detail::ipc::IFriendService>>& out) {
+    return this->template ProcessWithOutObject<false, 0>(out);
+  }
+
+  virtual Result CreateNotificationService(
+    const Out<SharedPointer<friends::detail::ipc::INotificationService>>& out,
+    const account::Uid& uid) {
+    return this->template ProcessWithOutObject<false, 1>(out, uid);
+  }
+
+  virtual Result CreateDaemonSuspendSessionService(
+    const Out<SharedPointer<
+      friends::detail::ipc::IDaemonSuspendSessionService>>& out) {
+    return this->template ProcessWithOutObject<false, 2>(out);
+  }
+};
+
+template <typename Kind>
+class CmifProxyMethods<nifm::detail::IStaticService, Kind>
+  : public CmifProxyMethodsBase<nifm::detail::IStaticService, Kind> {
+public:
+  virtual Result Command4(
+    const Out<SharedPointer<nifm::detail::IGeneralService>>& out) {
+    return this->template ProcessWithOutObject<false, 4>(out);
+  }
+
+  virtual Result CreateGeneralService(
+    const Out<SharedPointer<nifm::detail::IGeneralService>>& out,
+    uint64_t processId) {
+    return this->template ProcessWithOutObject<true, 5>(out, processId);
+  }
+};
+
+template <typename Kind>
+class CmifProxyMethods<nifm::detail::IGeneralService, Kind>
+  : public CmifProxyMethodsBase<nifm::detail::IGeneralService, Kind> {
+public:
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(0)
+
+  virtual Result CreateScanRequest(
+    const Out<SharedPointer<nifm::detail::IScanRequest>>& out) {
+    return this->template ProcessWithOutObject<false, 2>(out);
+  }
+
+  virtual Result CreateRequest(
+    const Out<SharedPointer<nifm::detail::IRequest>>& out, int32_t preset) {
+    return this->template ProcessWithOutObject<false, 4>(out, preset);
+  }
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(3)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(4)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(5)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(6)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(7)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(8)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(9)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(10)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(11)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(12)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(13)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(14)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(15)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(16)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(17)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(18)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(19)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(20)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(21)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(22)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(23)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(24)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(25)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(26)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(27)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(28)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(29)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(30)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(31)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(32)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(33)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(34)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(35)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(36)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(37)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(38)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(39)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(40)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(41)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(42)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(43)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(44)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(45)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(46)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(47)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(48)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(49)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(50)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(51)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(52)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(53)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(54)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(55)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(56)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(57)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(58)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(59)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(60)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(61)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(62)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(63)
+};
+
+template <typename Kind>
+class CmifProxyMethods<audio::IUserClientSession, Kind>
+  : public CmifProxyMethodsBase<audio::IUserClientSession, Kind> {
+public:
+  virtual Result Command0(
+    const Out<SharedPointer<audio::detail::IAudioInManager>>& out) {
+    return this->template ProcessWithOutObject<false, 0>(out);
+  }
+
+  virtual Result Command1(
+    const Out<SharedPointer<audio::detail::IAudioOutManager>>& out) {
+    return this->template ProcessWithOutObject<false, 1>(out);
+  }
+
+  virtual Result Command2(
+    const Out<SharedPointer<audio::detail::IAudioRendererManager>>& out) {
+    return this->template ProcessWithOutObject<false, 2>(out);
+  }
+
+  virtual Result Command3(
+    const Out<SharedPointer<
+      audio::detail::ISpatialDownmixOutputModeManager>>& out) {
+    return this->template ProcessWithOutObject<false, 3>(out);
+  }
+
+  virtual Result Command4(
+    const Out<SharedPointer<audio::karaoke::IKaraokeService>>& out) {
+    return this->template ProcessWithOutObject<false, 4>(out);
+  }
+};
+
+template <typename Kind>
+class CmifProxyMethods<audio::sysdev::ISessionManager, Kind>
+  : public CmifProxyMethodsBase<audio::sysdev::ISessionManager, Kind> {
+public:
+  virtual Result OpenAdspShell(
+    const Out<SharedPointer<audio::adspshell::IAdspShellSession>>& out) {
+    return this->template ProcessWithOutObject<false, 0>(out);
+  }
+
+  virtual Result Command1(
+    const Out<SharedPointer<audio::dpm::IClientManager>>& out) {
+    return this->template ProcessWithOutObject<false, 1>(out);
+  }
+};
+
+template <typename Kind>
+class CmifProxyMethods<chat::IUserService, Kind>
+  : public CmifProxyMethodsBase<chat::IUserService, Kind> {
+public:
+  virtual Result Command0(
+    const Out<SharedPointer<chat::IUserShimScopedObject>>& out) {
+    return this->template ProcessWithOutObject<false, 0>(out);
+  }
+
+  virtual Result Command2(
+    const Out<SharedPointer<
+      chat::IUserLayoutCustomizationShimScopedObject>>& out) {
+    return this->template ProcessWithOutObject<false, 2>(out);
+  }
+
+  virtual Result Command3(
+    const Out<SharedPointer<chat::IVirtualCameraShimScopedObject>>& out,
+    uint64_t processId) {
+    return this->template ProcessWithOutObject<true, 3>(out, processId);
+  }
+
+  virtual Result Command4(
+    const Out<SharedPointer<chat::IUserSelectiveTalkShimScopedObject>>& out) {
+    return this->template ProcessWithOutObject<false, 4>(out);
+  }
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(4)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(5)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(6)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(7)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(8)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(9)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(10)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(11)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(12)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(13)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(14)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(15)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(16)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(17)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(18)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(19)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(20)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(21)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(22)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(23)
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(24)
+};
+
+template <typename Kind>
+class CmifProxyMethods<pctl::detail::ipc::IParentalControlServiceFactory, Kind>
+  : public CmifProxyMethodsBase<
+      pctl::detail::ipc::IParentalControlServiceFactory, Kind> {
+public:
+  virtual Result CreateService(
+    const Out<SharedPointer<pctl::detail::ipc::IParentalControlService>>& out,
+    uint64_t processId) {
+    return this->template ProcessWithOutObject<true, 0>(out, processId);
+  }
+
+  virtual Result CreateServiceWithoutInitialize(
+    const Out<SharedPointer<pctl::detail::ipc::IParentalControlService>>& out,
+    uint64_t processId) {
+    return this->template ProcessWithOutObject<true, 1>(out, processId);
+  }
+};
+
+template <typename Kind>
+class CmifProxyMethods<lm::ILogService, Kind>
+  : public CmifProxyMethodsBase<lm::ILogService, Kind> {
+public:
+  virtual Result OpenLogger(
+    const Out<SharedPointer<lm::ILogger>>& out, uint64_t processId) {
+    return this->template ProcessWithOutObject<true, 0>(out, processId);
+  }
+};
+
+template <typename Kind>
+class CmifProxyMethods<mii::detail::IStaticService, Kind>
+  : public CmifProxyMethodsBase<mii::detail::IStaticService, Kind> {
+public:
+  virtual Result GetDatabaseService(
+    const Out<SharedPointer<mii::detail::IDatabaseService>>& out,
+    int32_t keyCode) {
+    return this->template ProcessWithOutObject<false, 0>(out, keyCode);
+  }
+};
+
+template <typename Kind>
+class CmifProxyMethods<err::context::IWriterForApplication, Kind>
+  : public CmifProxyMethodsBase<err::context::IWriterForApplication, Kind> {
+public:
+  virtual Result CreateContextRegistrar(
+    const Out<SharedPointer<err::context::IContextRegistrar>>& out) {
+    return this->template ProcessWithOutObject<false, 0>(out);
+  }
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(1)
 };
 
 }

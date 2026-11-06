@@ -47,9 +47,15 @@ public:
     void Release() override;
 
   private:
+    friend class ObjectImplFactoryWithStatefulAllocator;
+
     impl::detail::ServiceObjectImplBase2 m_Base;
     Allocator* m_Allocator;
   };
+
+  static Allocator* GetAllocator(Impl* pImpl) {
+    return static_cast<Object*>(pImpl)->m_Allocator;
+  }
 
   template <typename... Arguments>
   static Impl* Create(Allocator* pAllocator, Arguments&&... args) {

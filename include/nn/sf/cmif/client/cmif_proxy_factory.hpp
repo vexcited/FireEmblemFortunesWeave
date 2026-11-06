@@ -23,10 +23,20 @@ public:
 template <>
 class ReservedProxyMethods<0> : public CmifProxyObject {};
 
+// The method table of a proxy, specialized for the interfaces whose methods
+// are implemented here.
 template <typename Interface, typename Kind>
-class CmifProxyBase
-  : public ReservedProxyMethods<ProxyMethodCount<Interface>::Value> {
+class CmifProxyMethods
+  : public ReservedProxyMethods<ProxyMethodCount<Interface>::Value> {};
+
+template <typename Interface, typename Kind>
+class CmifProxyMethodsBase;
+
+template <typename Interface, typename Kind>
+class CmifProxyBase : public CmifProxyMethods<Interface, Kind> {
 protected:
+  friend class CmifProxyMethodsBase<Interface, Kind>;
+
   typename Kind::ProxyKindState m_State = {};
 };
 
@@ -106,8 +116,8 @@ constexpr Result ResultOutObjectAllocationFailed() {
 // object is created first, then the message moves it into the output.
 template <typename Kind, bool HasProcessId, int MethodId, typename Interface,
   typename... Parameters>
-[[gnu::noinline]] Result ProcessWithOutObject(MemoryResource* pAllocator,
-  const typename Kind::ProxyKindState* pState,
+[[gnu::always_inline]] inline Result InvokeWithOutObject(
+  MemoryResource* pAllocator, const typename Kind::ProxyKindState* pState,
   const Out<SharedPointer<Interface>>& out, const Parameters&... params) {
   OutObjectHolder<1> holder;
   OutObjectCreator creator = {pAllocator, holder.pObjects};
@@ -122,5 +132,35 @@ template <typename Kind, bool HasProcessId, int MethodId, typename Interface,
     ArgumentTraits<Parameters>::Convert(params)..., MethodId,
     holder.pObjects);
 }
+
+// The same body kept out of line, where several methods share it.
+template <typename Kind, bool HasProcessId, int MethodId, typename Interface,
+  typename... Parameters>
+[[gnu::noinline]] Result ProcessWithOutObject(MemoryResource* pAllocator,
+  const typename Kind::ProxyKindState* pState,
+  const Out<SharedPointer<Interface>>& out, const Parameters&... params) {
+  return InvokeWithOutObject<Kind, HasProcessId, MethodId>(pAllocator,
+    pState, out, params...);
+}
+
+// Common part of the method tables, it reaches the state of the proxy and
+// the allocator of the object that holds it.
+template <typename Interface, typename Kind>
+class CmifProxyMethodsBase : public CmifProxyObject {
+protected:
+  template <bool HasProcessId, int MethodId, typename Target,
+    typename... Parameters>
+  [[gnu::always_inline]] Result ProcessWithOutObject(
+    const Out<SharedPointer<Target>>& out, const Parameters&... params) {
+    DefaultProxy<Interface, Kind>* pProxy =
+      static_cast<DefaultProxy<Interface, Kind>*>(this);
+    return InvokeWithOutObject<Kind, HasProcessId, MethodId>(
+      DefaultProxyFactory<Interface, Kind>::GetAllocator(pProxy),
+      &pProxy->m_State, out, params...);
+  }
+};
+
+#define NN_SF_DETAIL_RESERVED_PROXY_METHOD(index) \
+  virtual Result ReservedMethod(std::integral_constant<int, index>);
 
 }
