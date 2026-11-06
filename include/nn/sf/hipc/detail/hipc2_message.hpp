@@ -34,13 +34,13 @@ struct Hipc2MessageHeaderInfo {
 static_assert(sizeof(Hipc2MessageHeaderInfo) == 0x12);
 
 struct Hipc2MessageOffsets {
-  uint8_t specialHeader;
   uint8_t processId;
   uint8_t copyHandles;
   uint8_t moveHandles;
   uint8_t pointers;
   uint8_t sends;
   uint8_t receives;
+  uint8_t exchanges;
   uint8_t rawData;
   uint8_t receiveList;
   uint8_t reserved;
@@ -55,6 +55,14 @@ public:
 
   uint32_t* GetRawData() const {
     return static_cast<uint32_t*>(m_Buffer) + m_Offsets.rawData;
+  }
+
+  uint32_t GetCopyHandle(int index) const {
+    return static_cast<uint32_t*>(m_Buffer)[m_Offsets.copyHandles + index];
+  }
+
+  uint32_t GetMoveHandle(int index) const {
+    return static_cast<uint32_t*>(m_Buffer)[m_Offsets.moveHandles + index];
   }
 
 private:

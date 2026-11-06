@@ -5,11 +5,13 @@
 #include <string.h>
 
 #include <atomic>
+#include <type_traits>
 #include <utility>
 
 #include "nn/result.hpp"
 #include "nn/sf/hipc.hpp"
 #include "nn/sf/hipc/detail/hipc2_message.hpp"
+#include "nn/sf/native_handle.hpp"
 
 namespace nn::sf::cmif {
 
@@ -179,6 +181,32 @@ enum BufferAttribute : uint32_t {
   BufferAttribute_HipcMapTransferAllowsNonDevice = 1 << 7,
 };
 
+// A handle returned in the copy or move handle list of the reply.
+template <bool IsMove>
+struct OutHandle {
+  using Parameter = NativeHandle*;
+  static constexpr size_t Size = 0;
+  static constexpr size_t Alignment = 1;
+  static constexpr bool IsInRaw = false;
+  static constexpr bool IsOutRaw = false;
+  static constexpr uint32_t BufferAttribute = 0;
+  static constexpr int HandleKind = IsMove ? 2 : 1;
+
+  static void Write(char*, Parameter) {}
+
+  static void Read(Parameter, const char*) {}
+};
+
+template <typename T, typename = void>
+struct HandleKindOf {
+  static constexpr int Value = 0;
+};
+
+template <typename T>
+struct HandleKindOf<T, std::void_t<decltype(T::HandleKind)>> {
+  static constexpr int Value = T::HandleKind;
+};
+
 // A buffer passed as its address and byte size.
 template <uint32_t Attribute>
 struct Buffer {
@@ -324,6 +352,29 @@ struct CmifClientMessage {
         index += Attributes[i] != 0 ? 1 : 0;
       }
       pOut[index] = value;
+    }
+  }
+
+  static constexpr int HandleKinds[] = {HandleKindOf<Arguments>::Value..., 0};
+
+  template <size_t... Indices>
+  static void ReadHandles(const hipc::detail::Hipc2MessageReader& reader,
+    std::index_sequence<Indices...>, typename Arguments::Parameter... args) {
+    (ReadHandle<Arguments, Indices>(reader, args), ...);
+  }
+
+  template <typename Argument, size_t Index>
+  static void ReadHandle(const hipc::detail::Hipc2MessageReader& reader,
+    typename Argument::Parameter value) {
+    if constexpr (HandleKindOf<Argument>::Value != 0) {
+      constexpr int kind = HandleKindOf<Argument>::Value;
+      int index = 0;
+      for (size_t i = 0; i < Index; i++) {
+        index += HandleKinds[i] == kind ? 1 : 0;
+      }
+      NativeHandle handle(kind == 2 ? reader.GetMoveHandle(index) :
+        reader.GetCopyHandle(index), true);
+      value->Swap(handle);
     }
   }
 
@@ -491,6 +542,8 @@ Result Hipc2ProxyKindBase<Type>::Finish(uint32_t handle, void* buffer,
 
   Message::ReadArguments(reinterpret_cast<const char*>(pOut + 1),
     std::index_sequence_for<Parameters...>(), args...);
+  Message::ReadHandles(reader, std::index_sequence_for<Parameters...>(),
+    args...);
   return result;
 }
 
@@ -620,6 +673,8 @@ Result CmifDomainProxyKind<Base>::Process(const ProxyKindState* pState,
       else {
         Message::ReadArguments(reinterpret_cast<const char*>(pOut + 1),
           std::index_sequence_for<Arguments...>(), args...);
+        Message::ReadHandles(reader, std::index_sequence_for<Arguments...>(),
+          args...);
       }
     }
   }
