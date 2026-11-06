@@ -47,6 +47,7 @@ struct VideoDecoderTypes {
 
   alignas(8) uint8_t storage[0x400];
   VideoDecoderType type;
+  uint32_t reserved;
 };
 
 MovieResult InitializeDecoderByTransferMemory(VideoDecoderTypes* decoder,

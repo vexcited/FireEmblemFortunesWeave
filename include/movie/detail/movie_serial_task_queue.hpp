@@ -21,7 +21,7 @@ public:
 };
 
 // Runs its tasks one after the other on another task queue.
-class SerialTaskQueue : public MovieRefBase<ISerialTaskQueue> {
+class SerialTaskQueue final : public MovieRefBase<ISerialTaskQueue> {
 public:
   SerialTaskQueue(IAllocator* allocator, ITaskQueue* taskQueue);
   ~SerialTaskQueue() override;
@@ -35,8 +35,9 @@ public:
 
   MovieResult QueueTaskInternal(ITaskQueueCancellationToken** ppOutToken,
     ITask* task);
-  MovieResult QueueNextTask();
-  void InvokeNextTask();
+  // Both are called through the PLT by the original.
+  [[gnu::noinline]] MovieResult QueueNextTask();
+  [[gnu::noinline]] void InvokeNextTask();
   void HandleAsyncError(MovieResult result);
 
 private:

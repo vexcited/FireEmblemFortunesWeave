@@ -3,6 +3,7 @@
 #include <utility>
 
 #include "movie/detail/movie_serial_task_queue.hpp"
+#include "movie/detail/movie_task.hpp"
 
 namespace nn::os {
 
@@ -114,6 +115,28 @@ MovieResult SerialTaskQueue::QueueTaskInternal(
   return MovieResult_Success;
 }
 
+MovieResult SerialTaskQueue::QueueNextTask() {
+  if (m_Entries.empty()) {
+    return MovieResult_Success;
+  }
+
+  auto function = [this, self = RefPtr<SerialTaskQueue>(this)]() {
+    InvokeNextTask();
+  };
+  RefPtr<ITask> task;
+  MovieResult result = CreateTask(&task, m_pAllocator, function);
+  if (task) {
+    Entry& entry = m_Entries.front();
+    entry.token.Reset();
+    result = m_pTaskQueue->QueueTask(entry.token.GetAddress(), task.Get());
+    if (IsSucceeded(result)) {
+      result = MovieResult_Success;
+    }
+  }
+
+  return result;
+}
+
 void SerialTaskQueue::InvokeNextTask() {
   ITask* task = nullptr;
   ITaskQueueCancellationToken* token = nullptr;
@@ -172,6 +195,30 @@ void SerialTaskQueue::CancelTask(ITaskQueueCancellationToken* token) {
   }
 
   m_Mutex.Unlock();
+}
+
+MovieResult SerialTaskQueue::QueueAsyncCallback(IAsyncCallback* callback) {
+  m_Mutex.Lock();
+  MovieResult result;
+  if (m_IsFinalized) {
+    result = ResultFinalized;
+  }
+  else {
+    result = m_Status;
+    if (IsSucceeded(result)) {
+      auto function = [callback = RefPtr<IAsyncCallback>(callback)]() {
+        callback->Invoke();
+      };
+      RefPtr<ITask> task;
+      result = CreateTask(&task, m_pAllocator, function);
+      if (task) {
+        result = QueueTaskInternal(nullptr, task.Get());
+      }
+    }
+  }
+
+  m_Mutex.Unlock();
+  return result;
 }
 
 void SerialTaskQueue::HandleAsyncError(MovieResult result) {

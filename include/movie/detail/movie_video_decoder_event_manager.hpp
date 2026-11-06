@@ -1,5 +1,6 @@
 #pragma once
 
+#include <new>
 #include <stddef.h>
 #include <stdint.h>
 
@@ -28,11 +29,24 @@ class TTrivialInplaceFunctor;
 template <typename R, typename... Args, size_t Size, size_t Alignment>
 class TTrivialInplaceFunctor<R(Args...), Size, Alignment> {
 public:
+  TTrivialInplaceFunctor() = default;
+
+  template <typename F>
+  explicit TTrivialInplaceFunctor(F function)
+    : m_pInvoke(&Invoke<F>), m_Storage() {
+    new (m_Storage) F(function);
+  }
+
   R operator()(Args... args) {
     return m_pInvoke(m_Storage, args...);
   }
 
 private:
+  template <typename F>
+  static R Invoke(void* storage, Args... args) {
+    return (*static_cast<F*>(storage))(args...);
+  }
+
   R (*m_pInvoke)(void* storage, Args... args);
   alignas(Alignment) uint8_t m_Storage[Size];
 };

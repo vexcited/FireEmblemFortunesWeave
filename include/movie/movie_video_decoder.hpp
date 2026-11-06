@@ -26,9 +26,22 @@ class VideoFrame;
 
 namespace detail {
 
-struct VideoDecoderHolder;
+class VideoDecoderImpl;
 
 }
+
+class VideoDecoder;
+
+void SetVideoDecoderLowLatencyModeRequested(VideoDecoder* decoder,
+  bool isRequested);
+void SetVideoDecoderInitializeByRemoteMemoryEnabled(VideoDecoder* decoder,
+  bool isEnabled);
+size_t CalculateVideoDecoderBufferRequirements(const VideoDecoder* decoder,
+  const nn::movie::MediaProperty* property);
+void SetVideoDecoderDonatedMemory(VideoDecoder* decoder, void* memory,
+  size_t size);
+void SetVideoDecoderAdditionalRemoteMemory(VideoDecoder* decoder,
+  size_t size);
 
 class VideoDecoder {
 public:
@@ -61,7 +74,16 @@ public:
   int GetThreadPriority();
 
 private:
-  detail::VideoDecoderHolder* m_pHolder = nullptr;
+  friend void SetVideoDecoderInitializeByRemoteMemoryEnabled(
+    VideoDecoder* decoder, bool isEnabled);
+  friend size_t CalculateVideoDecoderBufferRequirements(
+    const VideoDecoder* decoder, const nn::movie::MediaProperty* property);
+  friend void SetVideoDecoderDonatedMemory(VideoDecoder* decoder,
+    void* memory, size_t size);
+  friend void SetVideoDecoderAdditionalRemoteMemory(VideoDecoder* decoder,
+    size_t size);
+
+  detail::VideoDecoderImpl* m_pImpl = nullptr;
   nn::mem::StandardAllocator m_Allocator;
 };
 

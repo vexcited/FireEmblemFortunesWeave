@@ -14,7 +14,7 @@ void MovieDecrementObjectCount();
 
 // Runs a copy of a functor, freed through the allocator that holds it.
 template <typename F>
-class Task : public ITask {
+class Task final : public ITask {
 public:
   Task(IAllocator* allocator, F function)
     : m_RefCount(0), m_pAllocator(allocator), m_Function(function) {
@@ -64,7 +64,8 @@ MovieResult CreateTask(RefPtr<ITask>* pOutTask, IAllocator* allocator,
     return MovieResult_OutOfMemory;
   }
 
-  *pOutTask = new (storage) Task<F>(allocator, function);
+  Task<F>* task = new (storage) Task<F>(allocator, function);
+  *pOutTask = task;
   return MovieResult_Success;
 }
 

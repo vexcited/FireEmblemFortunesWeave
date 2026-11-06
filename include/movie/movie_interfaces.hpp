@@ -194,12 +194,16 @@ public:
   virtual MovieResult GetResult() const = 0;
 };
 
-// Only the invoke slot is known to be called, the two before it are not.
+// Only the two invoke slots are known to be called, the others are not.
 class IAsyncCallback : public IMovieInterface {
 public:
   virtual MovieResult Initialize() = 0;
   virtual void Finalize() = 0;
   virtual void Invoke(IAsyncResult* result) = 0;
+  virtual void Reserved5() = 0;
+  virtual void Reserved6() = 0;
+  // Queued callbacks are invoked without a result.
+  virtual void Invoke() = 0;
 };
 
 class IMovieActiveObject : public IMovieObject {
