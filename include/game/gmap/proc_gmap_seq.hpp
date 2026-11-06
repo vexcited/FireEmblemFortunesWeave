@@ -10,6 +10,7 @@ namespace game::gmap {
 namespace GmapSeq {
 
 enum Label : int {
+  kLabelCommand = 12,
   kLabelTitle = 16,
   kLabelEnd = 18,
   kLabelReset = 19,
@@ -37,6 +38,11 @@ public:
   void Serialize(Stream& stream) const override;
   void Deserialize(Stream& stream, int version) override;
 
+  void RequestCommand(int command) {
+    command_ = command;
+    SetLabel(GmapSeq::kLabelCommand);
+  }
+
 private:
   GmapSeqHook& GetHook() {
     return hook_;
@@ -46,6 +52,8 @@ private:
   std::string unknown_e0_;
   GmapSeqHook hook_;
   int hook_count_;
+  uint8_t unknown_104_[0x10];
+  int command_;
 };
 
 #pragma GCC visibility pop

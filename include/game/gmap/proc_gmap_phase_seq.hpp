@@ -1,5 +1,8 @@
 #pragma once
 
+#include <memory>
+#include <string>
+
 #include "game/proc/proc_singleton.hpp"
 
 namespace game::gmap {
@@ -21,6 +24,8 @@ public:
   enum Command : int {
     kCommandMove = 1,
     kCommandDestroyMiasma = 2,
+    kCommandExplore = 5,
+    kCommandCaptureAnimal = 13,
   };
 
   void Unknown10() override;
@@ -32,8 +37,17 @@ public:
     SetLabel(GmapPhaseSeq::kLabelCommand);
   }
 
+  void SetMid(const char* mid) {
+    mid_ = mid;
+  }
+
+  void Unknown14d5420();
+
 private:
   Command command_;
+  std::shared_ptr<void> unknown_d8_;
+  uint64_t unknown_e8_;
+  std::string mid_;
 };
 
 #pragma GCC visibility pop

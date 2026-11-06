@@ -10,7 +10,7 @@ void GmapSituation::Initialize() {
   for (uint8_t& value : unknown_30_) {
     value = 0;
   }
-  unknown_3b_ = true;
+  unknown_3b_ = 1;
 }
 
 void GmapSituation::Finalize() {}

@@ -22,6 +22,14 @@ public:
     continue_move_ = true;
   }
 
+  bool IsUnknown34() const {
+    return unknown_30_[4] != 0;
+  }
+
+  uint8_t GetUnknown3b() const {
+    return unknown_3b_;
+  }
+
 private:
   std::vector<int> unknown_08_;
   int64_t unknown_20_;
@@ -30,7 +38,7 @@ private:
   uint8_t unknown_30_[9];
   bool continue_move_;
   uint8_t unknown_3a_;
-  bool unknown_3b_;
+  uint8_t unknown_3b_;
 };
 
 #pragma GCC visibility pop

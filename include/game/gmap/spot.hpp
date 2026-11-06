@@ -83,11 +83,17 @@ public:
     return instance_ != nullptr ? instance_->time_ : kDefaultTime;
   }
 
+  // Its year, month and day stay zero until the date is set.
+  const GmapTime& GetUnknown14() const {
+    return unknown_14_;
+  }
+
   static GmapClock* instance_;
   [[gnu::visibility("default")]] static const GmapTime kDefaultTime;
 
 private:
   GmapTime time_;
+  GmapTime unknown_14_;
 };
 
 // The vtable slots without a known caller keep their index as name.
@@ -198,6 +204,12 @@ public:
 
   // The name is a guess, it looks a row up by the key at 0x60.
   const void* FindReconstruction() const;
+
+  // Whether the side story command is offered, the name is a guess.
+  bool HasSideStory() const;
+
+  // Picks the portal names of the warp command, the name is a guess.
+  bool IsExPortal() const;
 
   SpotFarm* GetFarm() const {
     return farm_;

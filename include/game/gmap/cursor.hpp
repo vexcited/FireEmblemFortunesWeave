@@ -6,6 +6,8 @@ namespace game::gmap {
 
 #pragma GCC visibility push(hidden)
 
+class Spot;
+
 class CursorModel {
 public:
   virtual ~CursorModel();
@@ -17,9 +19,15 @@ public:
     delete model_;
   }
 
+  Spot* GetSpot() const {
+    return spot_;
+  }
+
 private:
   uint8_t unknown_00_[0x30];
   CursorModel* model_;
+  uint8_t unknown_38_[0x28];
+  Spot* spot_;
 };
 
 class Cursor : public SerializeSingleton<Cursor> {
@@ -32,6 +40,10 @@ public:
   int GetVersion() const override;
   void Serialize(Stream& stream) const override;
   void Deserialize(Stream& stream, int version) override;
+
+  const CursorImpl* GetImpl() const {
+    return impl_;
+  }
 
 private:
   CursorImpl* impl_;

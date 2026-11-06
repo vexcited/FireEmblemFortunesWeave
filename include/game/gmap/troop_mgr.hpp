@@ -39,6 +39,31 @@ public:
   void Initialize() override;
   void Finalize() override;
 
+  // The troop of the selected id, or the first free troop without one.
+  static Troop* GetCurrentTroop() {
+    const Impl* impl = instance_->impl_;
+    if (impl->unknown38 < 0) {
+      for (Troop* troop : impl->troops) {
+        if (troop->IsFree()) {
+          return troop;
+        }
+      }
+    }
+    else {
+      for (Troop* troop : impl->troops) {
+        if (troop->GetId() == impl->unknown38) {
+          return troop;
+        }
+      }
+    }
+    return nullptr;
+  }
+
+  static int GetCurrentTroopId() {
+    const int id = instance_->impl_->unknown38;
+    return id >= 0 ? id : GetCurrentTroop()->GetId();
+  }
+
 private:
   // The save chunk of the troops, which owns them.
   struct Impl : public GameSaveConst::GlobalSerializer {

@@ -1,3 +1,4 @@
+#include "game/gmap/proc_gmap_event.hpp"
 #include "game/gmap/proc_gmap_seq.hpp"
 
 namespace game {
@@ -9,25 +10,6 @@ extern template class __attribute__((visibility("default")))
 }
 
 namespace game::gmap {
-
-#pragma GCC visibility push(hidden)
-
-namespace {
-
-enum Label : int {
-  kLabelEnd = 14,
-};
-
-}
-
-class ProcGmapEvent : public ProcJumpableSingleton<ProcGmapEvent, Label> {
-public:
-  void Unknown10() override;
-  void Unknown11() override;
-  void Unknown12() override;
-};
-
-#pragma GCC visibility pop
 
 // The parent sequence is told where to go, then this one ends.
 void ProcGmapEvent::Unknown10() {
