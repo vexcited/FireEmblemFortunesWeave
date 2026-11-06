@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "game/menu/basic_menu.hpp"
+#include "game/menu/key_help_entry.hpp"
 
 namespace game::menu {
 
@@ -21,12 +22,12 @@ public:
   virtual uint8_t ImplUnknown08() { return 0; }
   virtual int ImplUnknown09() { return 0; }
   virtual int ImplUnknown10();
-  virtual void ImplUnknown11();
+  virtual void ImplUnknown11(std::vector<KeyHelpEntry>& entries);
   virtual void ImplUnknown12();
   virtual void ImplUnknown13();
-  virtual int ImplUnknown14() { return 0; }
-  virtual int ImplUnknown15() { return ImplUnknown14(); }
-  virtual int ImplUnknown16() { return ImplUnknown14(); }
+  virtual bool ImplUnknown14() { return false; }
+  virtual bool ImplUnknown15() { return ImplUnknown14(); }
+  virtual bool ImplUnknown16() { return ImplUnknown14(); }
 };
 
 // The destructor is trivial, its symbol aliases the BasicMenu one.
@@ -43,7 +44,8 @@ public:
   virtual void Unknown135(std::vector<int64_t>& handles);
   virtual void Unknown136(std::vector<int64_t>& handles);
   virtual int Unknown137();
-  void ImplUnknown11() override;
+  // Adds the tutorial key while the menu names a tutorial.
+  void ImplUnknown11(std::vector<KeyHelpEntry>& entries) override;
 
 protected:
   void Unknown16e9cd0();

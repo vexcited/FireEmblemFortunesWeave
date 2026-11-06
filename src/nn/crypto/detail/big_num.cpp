@@ -97,7 +97,7 @@ void BigNum::Recount() {
 }
 
 void BigNum::Cleanse() {
-  memset(m_Digits, 0, sizeof(Digit) * static_cast<uint32_t>(m_MaxCount));
+  memset(m_Digits, 0, sizeof(Digit) * m_MaxCount);
 }
 
 void BigNum::Increment() {

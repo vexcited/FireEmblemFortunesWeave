@@ -125,7 +125,7 @@ int ClassChangeJobMenu::Unknown103() {
   if (unit_ == start) {
     return 0;
   }
-  Unknown16b41a0();
+  Unknown16b41a0(unit_);
   Unknown16defa0();
   return 13;
 }
@@ -159,7 +159,7 @@ int ClassChangeJobMenu::Unknown105() {
   if (unit_ == start) {
     return 0;
   }
-  Unknown16b41a0();
+  Unknown16b41a0(unit_);
   Unknown16defa0();
   return 13;
 }

@@ -252,15 +252,15 @@ Result GetFreeSpaceSize(int64_t* outSize, const char* path) {
 
 namespace {
 
+// The access log names the public entry point, not this helper.
 Result CommitImpl(const char* name, const char* function) {
-  (void)function;
   detail::FileSystemAccessor* fileSystem = nullptr;
   Result result;
-  NN_FS_ACCESS_LOG_UNLESS_SUCCESS(result, detail::Find(&fileSystem, name),
-    ", name: \"%s\"", name);
+  NN_FS_ACCESS_LOG_UNLESS_SUCCESS_NAMED(result, function,
+    detail::Find(&fileSystem, name), ", name: \"%s\"", name);
   NN_FS_RESULT_DO_WITH_ABORT_CHECK(result);
 
-  NN_FS_ACCESS_LOG_FILE_SYSTEM(result, fileSystem, nullptr,
+  NN_FS_ACCESS_LOG_FILE_SYSTEM_NAMED(result, function, fileSystem, nullptr,
     fileSystem->Commit(), ", name: \"%s\"", name);
   NN_FS_RESULT_DO_WITH_ABORT_CHECK(result);
   return ResultSuccess();

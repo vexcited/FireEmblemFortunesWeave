@@ -69,7 +69,7 @@ private:
   void ShowPage(int index);
   void ToggleUnknown160bd60();
   void ToggleUnknown16125c0();
-  void UpdateUnknown1614680();
+  void UpdateUnknown1614680(int index);
 
   int GetPage() const {
     return pages_[tab_.GetCurrent()];
@@ -150,7 +150,7 @@ int ProcUnitInfoFull::Unknown107() {
     unknown_894_ = !unknown_894_;
     ToggleUnknown16125c0();
   }
-  UpdateUnknown1614680();
+  UpdateUnknown1614680(tab_.GetCurrent());
   return 13;
 }
 

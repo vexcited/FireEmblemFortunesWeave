@@ -40,15 +40,15 @@ MemoryResource* MixinAllocator::SelectAllocator(size_t size) const {
   return size > m_Threshold ? m_pLargeAllocator : m_pSmallAllocator;
 }
 
-void* MixinAllocator::do_allocate(size_t size, size_t alignment) {
+// The requested alignment is dropped for a fixed one of 8 or the default.
+void* MixinAllocator::do_allocate(size_t size, size_t) {
   return (size > m_Threshold ? m_pLargeAllocator : m_pSmallAllocator)
-    ->allocate(size, alignment);
+    ->allocate(size, 8);
 }
 
-void MixinAllocator::do_deallocate(void* pointer, size_t size,
-  size_t alignment) {
+void MixinAllocator::do_deallocate(void* pointer, size_t size, size_t) {
   (size > m_Threshold ? m_pLargeAllocator : m_pSmallAllocator)
-    ->deallocate(pointer, size, alignment);
+    ->deallocate(pointer, size);
 }
 
 bool MixinAllocator::do_is_equal(const MemoryResource& other) const noexcept {

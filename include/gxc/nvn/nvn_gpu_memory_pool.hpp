@@ -1,7 +1,6 @@
 #pragma once
 
 #include "gxc/gpu_memory_pool.hpp"
-#include "gxc/mutex.hpp"
 #include "gxc/nvn/nvn.hpp"
 #include "nn/mem/number_line_allocator.hpp"
 
@@ -30,8 +29,6 @@ public:
 private:
   NVNmemoryPool pool_;
   nn::mem::NumberLineAllocator allocator_;
-  Mutex mutex_{false};
-  bool unknown140_ = false;
   void* storage_ = nullptr;
   size_t size_ = 0;
   int heap_;

@@ -49,7 +49,7 @@ public:
   int Unknown103() override;
   int Unknown105() override;
   void Unknown131() override;
-  int ImplUnknown15() override { return 1; }
+  bool ImplUnknown15() override { return true; }
   int ImplUnknown10() override;
   int InputUnknown08(bool loop) override;
   int InputUnknown07(bool loop) override;

@@ -2,7 +2,7 @@
 
 #include "nn/fontll/itype/fs_api.h"
 
-FS_LONG unload_ttf(FS_STATE* sp);
+FS_LONG unload_ttf(FS_STATE* sp, TTF* ttf);
 FS_LONG load_fnt(FS_STATE* sp, LFNT* lfnt);
 FS_LONG fix_fnt(FS_STATE* sp, LFNT* lfnt);
 FS_LONG scale_font(
@@ -42,7 +42,7 @@ void unload_fnt(FS_STATE* sp, LFNT* lfnt) {
   }
 
   if (IsTrueTypeFamily(lfnt->fnt_type)) {
-    unload_ttf(sp);
+    unload_ttf(sp, lfnt->fnt);
     if (lfnt->cmap_cache != NULL) {
       FSS_free(sp, lfnt->cmap_cache);
       lfnt->cmap_cache = NULL;

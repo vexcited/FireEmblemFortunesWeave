@@ -97,7 +97,7 @@ void MediaProperty::SetValue(Entry* entries, int* pCount, const char* key,
 }
 
 MediaProperty::MediaProperty() {
-  memset(this, 0, sizeof(*this));
+  memset(this, 0, sizeof(m_Entries) + sizeof(m_Count));
 }
 
 void MediaProperty::Clear() {
@@ -288,8 +288,8 @@ bool MediaProperty::GetString(char* pOutValue, int size,
     return false;
   }
 
-  int length = strlen(entry->stringValue);
-  if (length >= size - 1) {
+  size_t length = strlen(entry->stringValue);
+  if (length >= static_cast<size_t>(size - 1)) {
     length = size - 1;
   }
 

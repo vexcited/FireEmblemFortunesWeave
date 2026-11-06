@@ -84,7 +84,7 @@ public:
   int InputUnknown12(int direction, bool loop) override;
 
 protected:
-  void Unknown16b41a0();
+  void Unknown16b41a0(game::Unit* unit);
 
   game::Unit* unit_;
   game::Unit unit_430_;

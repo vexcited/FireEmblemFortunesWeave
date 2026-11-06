@@ -88,7 +88,7 @@ bool IsDownMixParameterEnabled(const DeviceSinkType* sink) {
 Result AddCircularBufferSink(AudioRendererConfig* config,
   CircularBufferSinkType* sink, FinalMixType* mix, const int8_t* input,
   int count, void* buffer, size_t size, SampleFormat format) {
-  memset(buffer, 0, static_cast<int>(size));
+  memset(buffer, 0, size);
   os::FlushDataCache(buffer, size);
   SinkInfo* info =
     config->_pSinkManager->Allocate(common::SinkType_CircularBuffer);

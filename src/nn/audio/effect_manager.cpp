@@ -16,7 +16,7 @@ EffectInfoVersion1::EffectInfoVersion1() {
 }
 
 EffectInfoVersion2::EffectInfoVersion2() {
-  memset(this, 0, offsetof(EffectInfoVersion2, reserved3) + 8);
+  memset(this, 0, offsetof(EffectInfoVersion2, reserved3));
 }
 
 EffectManager::EffectManager(int count, EffectInfoVersion2* infos) {

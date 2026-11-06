@@ -3,6 +3,7 @@
 #include <cstdint>
 #include <functional>
 #include <memory>
+#include <optional>
 #include <string>
 #include <vector>
 
@@ -67,7 +68,13 @@ protected:
   BasicMenu* menu_;
   int32_t unknown_10_;
   int32_t unknown_14_;
-  uint8_t unknown_18_[0x20];
+  uint8_t unknown_18_[4];
+  // The translation of the first item and the spacing of the columns and
+  // rows.
+  nn::util::Float3 origin_;
+  float column_width_;
+  float row_height_;
+  uint8_t unknown_30_[8];
 };
 
 class BasicMenu : public MenuProcInst, public MenuInput {
@@ -89,6 +96,14 @@ public:
       }
     }
     return nullptr;
+  }
+
+  int GetItemCount() const {
+    int count = 0;
+    for (auto it = items_.begin(); it != items_.end(); ++it) {
+      ++count;
+    }
+    return count;
   }
 
   // The nth item among the ones passing the filters.
@@ -279,6 +294,62 @@ protected:
     virtual ~Owned();
   };
 
+  // Remembers the cursor of the menu, offset by a page scroll.
+  struct SavedCursor {
+    // The selectable item nearest to the remembered cursor.
+    BasicMenuItem* GetItem() const;
+
+    BasicMenu* menu;
+    int32_t unknown_08;
+    int32_t offset;
+  };
+
+  bool IsSelectable(int index) {
+    BasicMenuItem* item = items_[index];
+    return item->IsDecidable() && item->IsEnable();
+  }
+
+  // The selectable item nearest to an index, searching backward first.
+  int FindSelectable(int index) {
+    for (int i = index; i >= 0; --i) {
+      if (IsSelectable(i)) {
+        return i;
+      }
+    }
+    for (size_t i = index; i < items_.size(); ++i) {
+      if (IsSelectable(i)) {
+        return i;
+      }
+    }
+    return index;
+  }
+
+  void SetCurrent(BasicMenuItem* item, bool force) {
+    if (force || current_ != item) {
+      if (current_ != nullptr) {
+        current_->OnDeselect();
+      }
+      current_ = item;
+      Unknown16dea40(true, !force, false);
+      if (current_ != nullptr) {
+        current_->OnSelect();
+      }
+    }
+    SetCursorHidden(current_ == nullptr || current_->Unknown15());
+  }
+
+  void UpdateItems() {
+    Unknown89();
+    for (BasicMenuItem* item : items_) {
+      if (item->IsDecidable()) {
+        item->Update();
+      }
+    }
+    Unknown90();
+  }
+
+  void Unknown16dbb80();
+  void Unknown16dc3e0();
   void Unknown16dc660(bool enable);
   void Unknown16dcb80();
   void Unknown16de2e0(bool enable);
@@ -307,17 +378,18 @@ protected:
   int32_t unknown_194_;
   uint8_t unknown_198_[0x90];
   int32_t unknown_228_;
-  uint8_t unknown_22c_[0x14];
+  int32_t unknown_22c_;
+  uint8_t unknown_230_[0x10];
   uint64_t unknown_240_;
-  uint64_t unknown_248_;
+  // The number of items shown at once.
+  int32_t unknown_248_;
+  uint8_t unknown_24c_[4];
   // Handles of the window animations still playing.
   std::vector<int64_t> animations_;
   int32_t unknown_268_;
   uint8_t unknown_26c_[4];
   void* unknown_270_;
-  uint8_t unknown_278_[0xc];
-  int32_t unknown_284_;
-  uint8_t unknown_288_[8];
+  std::optional<SavedCursor> saved_cursor_;
   PageTab tab_;
   // The cursor index saved for each page.
   std::vector<int32_t> unknown_310_;

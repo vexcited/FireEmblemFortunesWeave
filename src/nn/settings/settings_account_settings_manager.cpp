@@ -14,6 +14,9 @@ const Result ResultNullSettings = {(2012 << 9) | 105};
 const Result ResultSettingsFull = {(2015 << 9) | 105};
 const Result ResultSettingsAlreadyExists = {(2016 << 9) | 105};
 const Result ResultSettingsNotFound = {(2017 << 9) | 105};
+const Result ResultTooManySettings = {(2020 << 9) | 105};
+const Result ResultNullUidList = {(2021 << 9) | 105};
+const Result ResultInvalidUidCount = {(2022 << 9) | 105};
 
 const int MaxAccountCount = 8;
 
@@ -67,6 +70,39 @@ void Remove(Settings* pSettings, int* pCount, const account::Uid& uid) {
       return;
     }
   }
+}
+
+template <typename Settings>
+void RemoveExcept(Settings* pSettings, int* pCount, const account::Uid* pUids,
+  int uidCount) {
+  NN_ABORT_UNLESS_RESULT_SUCCESS(
+    pSettings != nullptr ? Result{0} : ResultNullSettings);
+  NN_ABORT_UNLESS_RESULT_SUCCESS(
+    *pCount <= MaxAccountCount ? Result{0} : ResultTooManySettings);
+  NN_ABORT_UNLESS_RESULT_SUCCESS(
+    pUids != nullptr ? Result{0} : ResultNullUidList);
+  NN_ABORT_UNLESS_RESULT_SUCCESS(
+    uidCount >= 0 ? Result{0} : ResultInvalidUidCount);
+
+  const int count = *pCount;
+  int kept = 0;
+  for (int i = 0; i < count; ++i) {
+    bool isListed = false;
+    for (int j = 0; j < uidCount; ++j) {
+      if (IsSameUser(pSettings[i].uid, pUids[j])) {
+        isListed = true;
+        break;
+      }
+    }
+    if (isListed) {
+      if (kept != i) {
+        pSettings[kept] = pSettings[i];
+      }
+      ++kept;
+    }
+  }
+  memset(&pSettings[kept], 0, sizeof(Settings) * (MaxAccountCount - kept));
+  *pCount = kept;
 }
 
 template <typename Settings>
@@ -127,6 +163,13 @@ AccountIdentificationSettingsManager::Add(const account::Uid& uid) {
 AccountIdentificationSettingsManager&
 AccountIdentificationSettingsManager::Remove(const account::Uid& uid) {
   system::Remove(m_pSettings, &m_Count, uid);
+  return *this;
+}
+
+AccountIdentificationSettingsManager&
+AccountIdentificationSettingsManager::RemoveExcept(account::Uid* pUids,
+  int count) {
+  system::RemoveExcept(m_pSettings, &m_Count, pUids, count);
   return *this;
 }
 
@@ -199,6 +242,12 @@ AccountUserSettingsManager& AccountUserSettingsManager::Add(
 AccountUserSettingsManager& AccountUserSettingsManager::Remove(
   const account::Uid& uid) {
   system::Remove(m_pSettings, &m_Count, uid);
+  return *this;
+}
+
+AccountUserSettingsManager& AccountUserSettingsManager::RemoveExcept(
+  account::Uid* pUids, int count) {
+  system::RemoveExcept(m_pSettings, &m_Count, pUids, count);
   return *this;
 }
 

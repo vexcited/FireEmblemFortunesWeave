@@ -89,7 +89,8 @@ struct PersonSkillEntry {
   uint8_t unknown_22_;
 };
 
-const PersonSkillEntry* FindPersonSkillEntry(const PersonData* person);
+const PersonSkillEntry* FindPersonSkillEntry(const PersonData* person,
+  const SkillData* skill);
 
 // Packs the row index with flags: bit 30 for marked skills, 29 without an
 // entry, 27 when the job allows the entry, the entry bytes from bit 12.
@@ -118,7 +119,7 @@ uint32_t GetSkillInfo(const SkillKey& key, const Unit* unit) {
   uint32_t flags = word + 1 <= g_marked_skills.size() &&
     (g_marked_skills[word] & 1u << (index & 31)) != 0 ? 0x40000000 : 0;
 
-  const PersonSkillEntry* entry = FindPersonSkillEntry(person);
+  const PersonSkillEntry* entry = FindPersonSkillEntry(person, data);
   if (entry == nullptr) {
     return (flags | 0x20000000) + index;
   }

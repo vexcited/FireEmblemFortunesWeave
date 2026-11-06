@@ -15,13 +15,7 @@ BasicMenu::~BasicMenu() {
 
 void BasicMenu::Unknown03() {
   Unknown16df380();
-  Unknown89();
-  for (BasicMenuItem* item : items_) {
-    if (item->IsDecidable()) {
-      item->Update();
-    }
-  }
-  Unknown90();
+  UpdateItems();
 }
 
 void BasicMenu::Unknown08() {
@@ -352,7 +346,7 @@ void BasicMenu::InputUnknown14() {
   std::weak_ptr<ui::LayoutAccessor> accessor = Unknown48();
   UpdateAccessor(accessor);
   for (int32_t& value : unknown_328_) {
-    value = unknown_284_;
+    value = saved_cursor_->offset;
   }
 }
 
@@ -360,7 +354,7 @@ void BasicMenu::InputUnknown15() {
   std::weak_ptr<ui::LayoutAccessor> accessor = Unknown49();
   UpdateAccessor(accessor);
   for (int32_t& value : unknown_328_) {
-    value = unknown_284_;
+    value = saved_cursor_->offset;
   }
 }
 

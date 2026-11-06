@@ -314,6 +314,11 @@ public:
     return IsInCorps() ? corps_ : -1;
   }
 
+  // The hit point stocks left, shown by the gauges.
+  uint8_t GetHpStock() const {
+    return unknown_1f0_;
+  }
+
   int GetX() const {
     return x_;
   }

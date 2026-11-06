@@ -32,6 +32,7 @@ public:
   bool HasAnimation(const char* name);
   void SetPaneVisible(const char* name, bool visible);
   bool IsAnimationPlaying(const char* name, bool unknown);
+  float GetAnimationFrame(const char* name, bool unknown);
   float GetAnimationEndFrame(const char* name, bool unknown);
   void SetAnimationFrame(const char* name, float frame);
   void SetAnimationFrame(const char* name, bool unknown, float frame);

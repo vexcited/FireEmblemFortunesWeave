@@ -1,4 +1,5 @@
 #include "nn/diag/diag_abort.hpp"
+#include "nn/util/string_util.hpp"
 #include "nn/time/detail/time_shared_memory_client.hpp"
 #include "nn/time/time_adjustable_system_clock.hpp"
 
@@ -107,6 +108,56 @@ SteadyClockTimePoint GetStandardSteadyClockTimePoint(
 
 LocationName ClockSnapshot::GetLocationName() const {
   return detail::GetSfClockSnapshotPtr(this)->locationName;
+}
+
+namespace {
+
+bool IsEqual(const SystemClockContext& lhs, const SystemClockContext& rhs) {
+  return lhs.offset == rhs.offset &&
+    lhs.timeStamp.value == rhs.timeStamp.value &&
+    lhs.timeStamp.sourceId == rhs.timeStamp.sourceId;
+}
+
+bool IsEqual(const CalendarTime& lhs, const CalendarTime& rhs) {
+  return lhs.year == rhs.year && lhs.month == rhs.month &&
+    lhs.day == rhs.day && lhs.hour == rhs.hour &&
+    lhs.minute == rhs.minute && lhs.second == rhs.second;
+}
+
+[[gnu::noinline]] bool IsEqual(const TimeZone& lhs, const TimeZone& rhs) {
+  return util::Strncmp(lhs.standardTimeName, rhs.standardTimeName,
+    sizeof(lhs.standardTimeName)) == 0 &&
+    lhs.isDaylightSavingTime == rhs.isDaylightSavingTime &&
+    lhs.utcOffsetSeconds == rhs.utcOffsetSeconds;
+}
+
+bool IsEqual(const sf::CalendarAdditionalInfo& lhs,
+  const sf::CalendarAdditionalInfo& rhs) {
+  return lhs.dayOfWeek == rhs.dayOfWeek && lhs.dayOfYear == rhs.dayOfYear &&
+    IsEqual(lhs.timeZone, rhs.timeZone);
+}
+
+}
+
+bool operator==(const ClockSnapshot& lhs, const ClockSnapshot& rhs) {
+  const sf::ClockSnapshot* l = detail::GetSfClockSnapshotPtr(&lhs);
+  const sf::ClockSnapshot* r = detail::GetSfClockSnapshotPtr(&rhs);
+  return IsEqual(l->userContext, r->userContext) &&
+    IsEqual(l->networkContext, r->networkContext) &&
+    l->userPosixTime.value == r->userPosixTime.value &&
+    l->networkPosixTime.value == r->networkPosixTime.value &&
+    IsEqual(l->userCalendarTime, r->userCalendarTime) &&
+    IsEqual(l->networkCalendarTime, r->networkCalendarTime) &&
+    IsEqual(l->userCalendarAdditionalInfo, r->userCalendarAdditionalInfo) &&
+    IsEqual(l->networkCalendarAdditionalInfo,
+      r->networkCalendarAdditionalInfo) &&
+    l->steadyClockTimePoint.value == r->steadyClockTimePoint.value &&
+    l->steadyClockTimePoint.sourceId == r->steadyClockTimePoint.sourceId &&
+    util::Strncmp(l->locationName.value, r->locationName.value,
+      sizeof(l->locationName.value)) == 0 &&
+    l->isAutomaticCorrectionEnabled == r->isAutomaticCorrectionEnabled &&
+    l->type == r->type && l->reserved[0] == r->reserved[0] &&
+    l->reserved[1] == r->reserved[1];
 }
 
 }

@@ -633,8 +633,7 @@ void DigitsFromOctetString(uint32_t* digits, size_t digitCount,
     digits[i] = digit;
   }
   if (i < digitCount) {
-    memset(&digits[i], 0,
-      sizeof(uint32_t) * static_cast<int>(digitCount - i));
+    memset(&digits[i], 0, sizeof(uint32_t) * (digitCount - i));
   }
 }
 

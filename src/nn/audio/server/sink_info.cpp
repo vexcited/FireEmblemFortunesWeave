@@ -9,7 +9,7 @@ namespace nn::audio::server {
 SinkInfoBase::SinkInfoBase()
   : m_Type(Type_Invalid), m_IsUsed(false), m_ShouldSkip(false) {
   memset(m_State, 0, sizeof(m_State));
-  memset(&m_Parameter, 0, sizeof(m_Parameter));
+  memset(&m_Parameter, 0, sizeof(m_Parameter.device));
 }
 
 void SinkInfoBase::Update(ErrorInfo* error, OutStatus* status,

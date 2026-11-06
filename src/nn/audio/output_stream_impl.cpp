@@ -397,3 +397,16 @@ void OutputStreamImpl::Purge() {
 }
 
 }
+
+namespace nn::audio::detail {
+
+Result IsOutputStreamFlagSetValid(OutputStreamFlagSet flags) {
+  // Only flags 0, 1 and 16 are defined.
+  constexpr uint32_t ValidFlags = 0x10003;
+  if ((flags._storage[0] & ~ValidFlags) != 0) {
+    return MakeResult(513);
+  }
+  return Result{0};
+}
+
+}

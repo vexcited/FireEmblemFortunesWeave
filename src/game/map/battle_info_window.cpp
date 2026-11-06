@@ -2,7 +2,9 @@
 
 #include "game/unit.hpp"
 #include "game/unit_item.hpp"
+#include "game/gameui/hp_stock.hpp"
 #include "ui/layout_accessor.hpp"
+#include "ui/ui2d.hpp"
 
 namespace game {
 
@@ -124,7 +126,8 @@ public:
   virtual void SetName(uint8_t index);
   virtual void SetClass(uint8_t index);
   virtual void SetStatus(uint8_t index);
-  virtual void Unknown14();
+  // Shows the hit point stocks of a side.
+  virtual void SetHpStock(uint8_t index);
   virtual void Unknown15();
   virtual void SetPlayerHp(int unknown);
   virtual void SetHp(int unknown, int count, const BattleSide* side,
@@ -196,6 +199,29 @@ bool BattleInfoWindow::IsPlayerSide(const uint8_t& index) const {
   const uint8_t second = GetForceType(info_->GetSide(1).GetUnit());
   const BattleSide& side = info_->GetSide(index);
   return side.GetPosition() == (GetForceRank(first) > GetForceRank(second));
+}
+
+void BattleInfoWindow::HideFace(uint8_t index) {
+  const bool player = IsPlayerSide(index);
+  nn::ui2d::Pane* pane = layout_.FindPane(player ? "Player_Face" :
+    "Target_Face");
+  if (pane == nullptr) {
+    return;
+  }
+  if (auto* picture = dynamic_cast<nn::ui2d::Picture*>(pane)) {
+    layout_.StartAnimation(player ? "PlayerFace_Off" : "TargetFace_Off");
+    picture->SetVisible(false);
+  }
+}
+
+void BattleInfoWindow::SetHpStock(uint8_t index) {
+  const Unit* unit = info_->GetSide(index).GetUnit();
+  const char* name = IsPlayerSide(index) ?
+    "L_PlayerHP_Gauge/L_GaugeL_HPStock" : "L_TargetHP_Gauge/L_GaugeR_HPStock";
+  layout_.SetPaneVisible(name, unit != nullptr);
+  if (unit != nullptr) {
+    gameui::SetHpStock(layout_.FindPart(name), unit);
+  }
 }
 
 void BattleInfoWindow::SetPlayerHp(int unknown) {

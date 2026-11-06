@@ -109,13 +109,18 @@ void OutputAccessLog(Result result, os::Tick start, os::Tick end,
   } while (0)
 
 #define NN_FS_ACCESS_LOG_UNLESS_SUCCESS(result, expression, ...) \
+  NN_FS_ACCESS_LOG_UNLESS_SUCCESS_NAMED(result, __FUNCTION__, expression, \
+    __VA_ARGS__)
+
+#define NN_FS_ACCESS_LOG_UNLESS_SUCCESS_NAMED(result, function, expression, \
+  ...) \
   do { \
     if (::nn::fs::detail::IsEnabledAccessLog()) { \
       const ::nn::os::Tick fsStart_ = ::nn::os::GetSystemTick(); \
       result = (expression); \
       const ::nn::os::Tick fsEnd_ = ::nn::os::GetSystemTick(); \
       ::nn::fs::detail::OutputAccessLogUnlessResultSuccess(result, fsStart_, \
-        fsEnd_, __FUNCTION__, nullptr, __VA_ARGS__); \
+        fsEnd_, function, nullptr, __VA_ARGS__); \
     } \
     else { \
       result = (expression); \
@@ -124,6 +129,11 @@ void OutputAccessLog(Result result, os::Tick start, os::Tick end,
 
 #define NN_FS_ACCESS_LOG_FILE_SYSTEM(result, accessor, handle, expression, \
   ...) \
+  NN_FS_ACCESS_LOG_FILE_SYSTEM_NAMED(result, __FUNCTION__, accessor, handle, \
+    expression, __VA_ARGS__)
+
+#define NN_FS_ACCESS_LOG_FILE_SYSTEM_NAMED(result, function, accessor, \
+  handle, expression, ...) \
   do { \
     if (::nn::fs::detail::IsEnabledAccessLog() && \
       (accessor)->IsEnabledAccessLog()) { \
@@ -131,7 +141,7 @@ void OutputAccessLog(Result result, os::Tick start, os::Tick end,
       result = (expression); \
       const ::nn::os::Tick fsEnd_ = ::nn::os::GetSystemTick(); \
       ::nn::fs::detail::OutputAccessLog(result, fsStart_, fsEnd_, \
-        __FUNCTION__, handle, __VA_ARGS__); \
+        function, handle, __VA_ARGS__); \
     } \
     else { \
       result = (expression); \

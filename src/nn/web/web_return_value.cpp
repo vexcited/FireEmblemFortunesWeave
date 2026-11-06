@@ -50,7 +50,7 @@ void SharePageReturnValue2_0::SetShareExitReason(ShareExitReason exitReason) {
 }
 
 WebPageReturnValue6_0::WebPageReturnValue6_0()
-  : m_ExitReason(0), m_LastUrl(), m_LastUrlSize(0), m_Reserved(0) {}
+  : m_ExitReason(0), m_LastUrl(), m_LastUrlSize(0) {}
 
 void WebPageReturnValue6_0::SetWebExitReason(WebExitReason exitReason) {
   m_ExitReason = static_cast<uint32_t>(exitReason);

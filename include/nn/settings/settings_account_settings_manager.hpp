@@ -33,6 +33,8 @@ class AccountIdentificationSettingsManager {
     const AccountIdentificationSettings& settings);
   AccountIdentificationSettingsManager& Add(const account::Uid& uid);
   AccountIdentificationSettingsManager& Remove(const account::Uid& uid);
+  AccountIdentificationSettingsManager& RemoveExcept(account::Uid* pUids,
+    int count);
   bool IsValid(const account::Uid& uid,
     util::BitFlagSet<32, AccountIdentificationFlag> flags);
   AccountIdentificationSettingsManager& SetValidity(const account::Uid& uid,
@@ -55,6 +57,7 @@ class AccountUserSettingsManager {
   AccountUserSettingsManager& Add(const AccountUserSettings& settings);
   AccountUserSettingsManager& Add(const account::Uid& uid);
   AccountUserSettingsManager& Remove(const account::Uid& uid);
+  AccountUserSettingsManager& RemoveExcept(account::Uid* pUids, int count);
   bool IsValid(const account::Uid& uid,
     util::BitFlagSet<32, AccountUserFlag> flags);
   AccountUserSettingsManager& SetValidity(const account::Uid& uid,

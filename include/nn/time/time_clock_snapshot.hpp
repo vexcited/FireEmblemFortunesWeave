@@ -32,6 +32,7 @@ struct SfClockSnapshot {
   LocationName locationName;
   bool isAutomaticCorrectionEnabled;
   uint8_t type;
+  uint8_t reserved[2];
 };
 
 }
