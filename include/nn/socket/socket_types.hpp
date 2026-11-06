@@ -139,8 +139,13 @@ struct FdSet {
 };
 
 struct TimeVal;
-struct PollFd;
 struct IoVec;
+
+struct PollFd {
+  int32_t fd;
+  int16_t events;
+  int16_t revents;
+};
 
 struct MsgHdr {
   void* msg_name;

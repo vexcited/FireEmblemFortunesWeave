@@ -79,6 +79,23 @@ private:
   void DeallocateCache(CacheEntry* entry);
   void AcquireCacheBuffer(CacheEntry* entry);
   void ExtendCacheLife(const CacheEntriesList::iterator& iterator, int index);
+  void UpdateCache(int64_t offset, const void* buffer, size_t size);
+  void InvalidateCache(int64_t offset, int64_t size);
+
+  [[gnu::always_inline]] void InvalidateCacheRange(int64_t offset,
+    int64_t size) {
+    const int64_t end = offset + size;
+    const int64_t blockSize = int64_t{1} << m_BlockSizeShift;
+    for (CacheEntriesNode& node : m_CacheEntriesList) {
+      for (int i = CacheEntryCountPerNode - 1; i >= 0; --i) {
+        CacheEntry* entry = &node.entries[i];
+        if (entry->offset != -1 && offset < entry->offset + blockSize &&
+          entry->offset < end) {
+          DeallocateCache(entry);
+        }
+      }
+    }
+  }
 
   CacheEntriesList m_CacheEntriesList;
   int m_HoldingCacheSectionCount;

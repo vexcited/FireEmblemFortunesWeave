@@ -5,6 +5,7 @@
 #include "nn/account/account_service.hpp"
 #include "nn/account/account_types.hpp"
 #include "nn/result.hpp"
+#include "nn/sf/client_session.hpp"
 #include "nn/sf/shared_pointer.hpp"
 #include "nn/util/optional.hpp"
 
@@ -47,13 +48,16 @@ class ObjectHolder {
   IAccountServiceForAdministrator* GetForAdministrator() const;
 
  private:
+  template <typename Interface>
+  Result AcquireImpl(Interface** pOutService, const char* serviceName);
+
   IAccountServiceBase* m_pBase;
   IAccountServiceForApplication* m_pForApplication;
   IAccountServiceForSystemService* m_pForSystemService;
   IAccountServiceForSystemServiceWithProfileEditor*
     m_pForSystemServiceWithProfileEditor;
   IAccountServiceForAdministrator* m_pForAdministrator;
-  uint8_t m_SessionManager[0x88];
+  sf::hipc::client::SessionManagerStorage m_SessionManager;
 };
 
 class ClientUserHandleStore {
@@ -67,6 +71,14 @@ class ClientUserHandleStore {
   static util::optional<UserHandle> s_Handles[8];
 };
 
+void InitializeForApplication();
+void InitializeForSystemService();
+void InitializeForAdministrator();
+void InitializeForSystemProcess();
+void InitializeForSystemProcessWithProfileEditor();
+void InitializeForSystemProcessAsAdministrator();
+void InitializeWith(
+  sf::SharedPointer<IAccountServiceForAdministrator>&& service);
 void Finalize();
 bool IsInitialized();
 InitializationInfo GetInitializationInfo();

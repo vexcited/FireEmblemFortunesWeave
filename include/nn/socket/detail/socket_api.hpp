@@ -107,11 +107,11 @@ int Close(int socket);
 int Sysctl(int* name, size_t nameLength, void* oldValue, size_t* oldLength,
   void* newValue, size_t newLength);
 ssize_t SendMsgNoMem(int socket, const MsgHdr* message, MsgFlag flags);
-int SendMMsgNoMem(int socket, MMsgHdr* messages, size_t count,
+ssize_t SendMMsgNoMem(int socket, MMsgHdr* messages, size_t count,
   MsgFlag flags);
 ssize_t RecvMsgNoMem(int socket, MsgHdr* message, MsgFlag flags);
-int RecvMMsgNoMem(int socket, MMsgHdr* messages, size_t count, MsgFlag flags,
-  TimeSpan* timeout);
+ssize_t RecvMMsgNoMem(int socket, MMsgHdr* messages, size_t count,
+  MsgFlag flags, TimeSpan* timeout);
 int DuplicateSocket(int socket, uint64_t ownerProcessId);
 int NoSfEventFd();
 int NoSfEventFdTrigger(int fd);

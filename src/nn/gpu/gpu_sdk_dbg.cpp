@@ -1,9 +1,10 @@
 #include "nn/diag/diag_abort.hpp"
 #include "nn/gpu/gpu_impl_dbg.hpp"
+#include "nn/gpu/gpu_impl_user.hpp"
 
 namespace nn::gpu::impl::dbg {
 
-struct KEventPool;
+using KEventPool = user::JobEventPool;
 
 // The debugger session caches the ranges the kernel driver reports when it
 // connects.
@@ -135,6 +136,67 @@ Result QueryGpuPageInfo(size_t* outCount, GpuAddressSpaceHandle handle,
 
 uint64_t GetComptagBackingStoreSize() {
   return GetDebuggerSession().m_ComptagBackingStoreSize;
+}
+
+
+Result QueryPageTableEntryList(size_t* outCount,
+  GpuAddressSpaceHandle handle, uint64_t addressMin, uint64_t addressMax,
+  PageTableEntryInfo* infos, size_t count) {
+  impl::dbg::DebuggerSession& session = GetDebuggerSession();
+  if (addressMin > addressMax) {
+    *outCount = 0;
+    return Result{0};
+  }
+
+  return session.Invoke(0x701002280, 0x300002280,
+    [&](uint8_t* message) {
+      impl::dbg::WriteQueryBuffer(message, infos, count);
+      tipc::WriteMessage<uint32_t>(message, 20, handle.value);
+      tipc::WriteMessage<uint64_t>(message, 24, addressMin);
+      tipc::WriteMessage<uint64_t>(message, 32, addressMax);
+      tipc::WriteMessage<uint64_t>(message, 40, sizeof(PageTableEntryInfo));
+    },
+    [&](const uint8_t* message) {
+      impl::dbg::ReadQueryCount<PageTableEntryInfo>(outCount, message);
+    });
+}
+
+// The backing store requests take a kernel event without waiting for one to
+// become free.
+Result MapComptagBackingStore(GpuAddressSpaceHandle handle, uint64_t address,
+  uint64_t size) {
+  impl::dbg::KEventPool* pool = GetDebuggerSession().m_pEventPool;
+  int index = 0;
+  NN_ABORT_UNLESS(pool->TryAcquire(&index, os::GetSystemTickOrdered()));
+  const Result result = GetDebuggerSession().Invoke(0x70000227e, 0x10000227e,
+    [&](uint8_t* message) {
+      tipc::WriteMessage<uint32_t>(message, 8, handle.value);
+      tipc::WriteMessage<uint64_t>(message, 12, address);
+      tipc::WriteMessage<uint64_t>(message, 20, size);
+      tipc::WriteMessage<uint8_t>(message, 28, 1);
+      tipc::WriteMessage<uint32_t>(message, 32, index);
+    },
+    [](const uint8_t*) {});
+  pool->Wait(index);
+  pool->Release(index);
+  return result;
+}
+
+Result UnmapComptagBackingStore(GpuAddressSpaceHandle handle,
+  uint64_t address) {
+  impl::dbg::KEventPool* pool = GetDebuggerSession().m_pEventPool;
+  int index = 0;
+  NN_ABORT_UNLESS(pool->TryAcquire(&index, os::GetSystemTickOrdered()));
+  const Result result = GetDebuggerSession().Invoke(0x40000227f, 0x10000227f,
+    [&](uint8_t* message) {
+      tipc::WriteMessage<uint32_t>(message, 8, handle.value);
+      tipc::WriteMessage<uint64_t>(message, 12, address);
+      tipc::WriteMessage<uint32_t>(message, 20, index);
+    },
+    [](const uint8_t*) {});
+  pool->Wait(index);
+  pool->Release(index);
+  return result;
 }
 
 }

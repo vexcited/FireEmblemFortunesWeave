@@ -1,3 +1,5 @@
+#include <string.h>
+
 #include "nn/fs/save/fs_save_data_file_system_core.hpp"
 
 namespace nn::fs::dbm {
@@ -96,6 +98,76 @@ void BufferedAllocationTableStorage::ExtendCacheLife(
     next->entries[index] = current->entries[index];
   } while (current != m_CacheEntriesList.begin());
   current->entries[index] = entry;
+}
+
+Result BufferedAllocationTableStorage::Write(int64_t offset,
+  const void* buffer, size_t size) {
+  if (!m_CacheEntriesList.empty()) {
+    UpdateCache(offset, buffer, size);
+  }
+  const Result result = AllocationTableStorage::Write(offset, buffer, size);
+  if (result.IsFailure()) {
+    InvalidateCacheRange(offset, size);
+  }
+  return result;
+}
+
+// Copies the written range into the cached blocks it covers and keeps those
+// blocks alive.
+void BufferedAllocationTableStorage::UpdateCache(int64_t offset,
+  const void* buffer, size_t size) {
+  const int64_t end = offset + static_cast<int64_t>(size);
+  if (offset >= end || m_CacheEntriesList.empty()) {
+    return;
+  }
+  const uint32_t shift = m_BlockSizeShift;
+  const int64_t blockSize = int64_t{1} << shift;
+  const char* source = static_cast<const char*>(buffer) - offset;
+  int64_t current = offset;
+  do {
+    const int64_t blockOffset = current & -blockSize;
+    const int index = static_cast<int>((current >> shift) &
+      (CacheEntryCountPerNode - 1));
+    for (CacheEntriesList::iterator it = m_CacheEntriesList.begin();
+      it != m_CacheEntriesList.end(); ++it) {
+      CacheEntry* entry = &it->entries[index];
+      if (entry->offset != blockOffset) {
+        continue;
+      }
+      AcquireCacheBuffer(entry);
+      if (entry->address != 0) {
+        const int64_t copyEnd = blockOffset + blockSize < end ?
+          blockOffset + blockSize : end;
+        memcpy(reinterpret_cast<char*>(entry->address) + current -
+          entry->offset, source + current, copyEnd - current);
+        ExtendCacheLife(it, index);
+      }
+      break;
+    }
+    current = blockOffset + blockSize;
+  } while (current < end);
+}
+
+void BufferedAllocationTableStorage::InvalidateCache(int64_t offset,
+  int64_t size) {
+  InvalidateCacheRange(offset, size);
+}
+
+Result BufferedAllocationTableStorage::OperateRange(void* outBuffer,
+  size_t outBufferSize, OperationId operationId, int64_t offset,
+  int64_t size, const void* inBuffer, size_t inBufferSize) {
+  if (operationId == OperationId_Invalidate) {
+    for (CacheEntriesNode& node : m_CacheEntriesList) {
+      for (int i = CacheEntryCountPerNode - 1; i >= 0; --i) {
+        CacheEntry* entry = &node.entries[i];
+        if (entry->offset != -1) {
+          DeallocateCache(entry);
+        }
+      }
+    }
+  }
+  return AllocationTableStorage::OperateRange(outBuffer, outBufferSize,
+    operationId, offset, size, inBuffer, inBufferSize);
 }
 
 void BufferedAllocationTableStorage::EnterHoldingCacheSection() {

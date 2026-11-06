@@ -679,8 +679,10 @@ void CommandGenerator::GenerateDeviceSinkCommand(int bufferOffset,
   const auto* parameter =
     static_cast<const renderer::ipc::Sink::DeviceParameter*>(
       sink->GetParameter());
-  if (parameter->isDownMixParameterEnabled &&
-    m_RendererSystemContext->channelCount <= 2) {
+  // Both values are read before the down mix decision.
+  const bool isDownMixParameterEnabled = parameter->isDownMixParameterEnabled;
+  const int channelCount = m_RendererSystemContext->channelCount;
+  if (isDownMixParameterEnabled && channelCount <= 2) {
     m_CommandBuffer->Generate<DownMix6chTo2chCommand>(InvalidNodeId,
       bufferOffset, parameter->input, parameter->input,
       state->downMixParameter);

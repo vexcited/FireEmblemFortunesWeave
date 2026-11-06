@@ -19,6 +19,7 @@ struct Tick {
 };
 
 Tick GetSystemTick();
+Tick GetSystemTickOrdered();
 TimeSpan ConvertToTimeSpan(Tick ticks);
 Tick ConvertToTick(TimeSpan time);
 

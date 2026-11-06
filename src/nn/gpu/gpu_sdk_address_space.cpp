@@ -21,8 +21,8 @@ Result CreateGpuAddressSpace(GpuAddressSpaceType* addressSpace,
   const_cast<GraphicsDeviceType*>(device)->referenceCount.fetch_add(1,
     std::memory_order_relaxed);
   addressSpace->handle.value = 0;
-  addressSpace->attachedCount = 0;
-  addressSpace->pAttachment = nullptr;
+  addressSpace->attachedCount.store(0, std::memory_order_relaxed);
+  addressSpace->mappedSize.store(0, std::memory_order_relaxed);
   addressSpace->device = device;
   addressSpace->handle.value = handle;
   return Result{0};
@@ -91,8 +91,9 @@ Result QueryUserPartitionGpuAddressRangeList(size_t* outCount,
 
 void DestroyGpuAddressSpace(GpuAddressSpaceType* addressSpace) {
   const GraphicsDeviceType* device = addressSpace->device;
-  NN_ABORT_UNLESS(addressSpace->pAttachment == nullptr &&
-    addressSpace->attachedCount == 0);
+  NN_ABORT_UNLESS(
+    addressSpace->mappedSize.load(std::memory_order_relaxed) == 0 &&
+    addressSpace->attachedCount.load(std::memory_order_relaxed) == 0);
 
   const uint32_t handle = addressSpace->handle.value;
   g_GpuAddressSpaceManager.mutex.Lock();

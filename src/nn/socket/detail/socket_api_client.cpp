@@ -1,5 +1,6 @@
 #include <stdarg.h>
 #include <stdint.h>
+#include <stdlib.h>
 #include <string.h>
 
 #include "nn/diag/diag_abort.hpp"
@@ -70,6 +71,21 @@ constexpr int EOpNotSupp = 95;
 constexpr size_t PathLengthMax = 128;
 constexpr uint32_t SiocAtMark = 0x40047307;
 constexpr uint32_t ShutdownAllSocketsMaskAll = 3;
+constexpr StatisticsType StatisticsType_Allocator =
+  static_cast<StatisticsType>(7);
+constexpr size_t SocketStatisticsSize0 = 0x9c08;
+constexpr size_t SocketStatisticsSize1 = 0x1204;
+
+// Poll hands the server native sockets. Native sockets below this count map
+// back to their descriptor, other descriptors are shifted past them.
+constexpr int PollMappedSocketCount = 128;
+
+struct AllocatorStatistics {
+  uint32_t totalSize;
+  uint32_t freeSize;
+  uint32_t usedSize;
+  uint32_t peakUsedSize;
+};
 
 struct NoSfEventFdEntry {
   os::SystemEventType writableEvent;
@@ -359,8 +375,8 @@ template <typename Flags, typename Address>
 ssize_t RecvFromImpl(int socket, void* buffer, size_t length, Flags flags,
   Address* address, uint32_t* addressLength) {
   NN_ABORT_UNLESS(IsInitializedImpl());
-  int result;
-  int error;
+  int result = 0;
+  int error = 0;
   if (length == 0) {
     return 0;
   }
@@ -390,7 +406,12 @@ ssize_t RecvFromImpl(int socket, void* buffer, size_t length, Flags flags,
     *addressLength = outAddressLength;
     return result;
   }
-  return HandleResult(callResult, &result, &error);
+  if (callResult.IsFailure()) {
+    error = ConvertResultToErrno(callResult);
+    result = -1;
+  }
+  detail::SetLastError(static_cast<Errno>(error));
+  return result;
 }
 
 template <typename Flags>
@@ -597,9 +618,9 @@ int GetSockNameImpl(int socket, Address* address, uint32_t* addressLength) {
 }
 
 [[gnu::always_inline]] int GetSockOptImpl(int socket, int level, int option,
-  void* value, uint32_t* valueLength) {
+  void* value, uint32_t* valueLength, int initialResult) {
   NN_ABORT_UNLESS(IsInitializedImpl());
-  int result = -1;
+  int result = initialResult;
   int error = 0;
   if (value == nullptr || valueLength == nullptr || *valueLength == 0) {
     SetLastErrorImpl(EInval);
@@ -881,12 +902,12 @@ int GetSockName(int socket, sockaddr* address, uint32_t* addressLength) {
 int GetSockOpt(int socket, Level level, Option option, void* value,
   uint32_t* valueLength) {
   return GetSockOptImpl(socket, static_cast<int>(level),
-    static_cast<int>(option), value, valueLength);
+    static_cast<int>(option), value, valueLength, -1);
 }
 
 int GetSockOpt(int socket, int level, int option, void* value,
   uint32_t* valueLength) {
-  return GetSockOptImpl(socket, level, option, value, valueLength);
+  return GetSockOptImpl(socket, level, option, value, valueLength, 0);
 }
 
 int Listen(int socket, int backlog) {
@@ -1118,6 +1139,303 @@ int ShutdownAllSockets(const SockAddr* address, uint32_t addressLength,
   Result callResult = g_ClientState.pClient->ShutdownAllSockets(Out(&result),
     Out(&error), inAddress, static_cast<uint32_t>(mask));
   return HandleResult(callResult, &result, &error);
+}
+
+template <typename Address>
+[[gnu::always_inline]] int AcceptImpl(int socket, Address* address,
+  uint32_t* addressLength) {
+  NN_ABORT_UNLESS(IsInitializedImpl());
+  int result = 0;
+  int error = 0;
+  uint32_t length = 0;
+  if (address == nullptr) {
+    if (addressLength != nullptr && *addressLength != 0) {
+      SetLastErrorImpl(EInval);
+      return -1;
+    }
+  }
+  else if (addressLength != nullptr) {
+    length = *addressLength;
+  }
+  uint32_t outAddressLength = length;
+  ::nn::sf::OutAutoSelectBuffer outAddress(address, length);
+  int nativeSocket;
+  if (!GetNativeSocket(&nativeSocket, socket)) {
+    return -1;
+  }
+  Result callResult = g_ClientState.pClient->Accept(Out(&result),
+    Out(&error), nativeSocket, outAddress, Out(&outAddressLength));
+  if (callResult.IsSuccess() && result >= 0) {
+    if (addressLength != nullptr) {
+      *addressLength = outAddressLength;
+    }
+    result = RegisterNativeSocket(result);
+    return result;
+  }
+  return HandleResult(callResult, &result, &error);
+}
+
+int Accept(int socket, SockAddr* address, uint32_t* addressLength) {
+  return AcceptImpl(socket, address, addressLength);
+}
+
+int Accept(int socket, sockaddr* address, uint32_t* addressLength) {
+  return AcceptImpl(socket, address, addressLength);
+}
+
+int Sysctl(int* name, size_t nameLength, void* oldValue, size_t* oldLength,
+  void* newValue, size_t newLength) {
+  NN_ABORT_UNLESS(IsInitializedImpl());
+  int result = 0;
+  int error = 0;
+  if ((newValue == nullptr && newLength != 0) || name == nullptr ||
+    (oldValue == nullptr && oldLength != nullptr && *oldLength != 0)) {
+    SetLastErrorImpl(EInval);
+    return -1;
+  }
+  size_t length = oldLength != nullptr ? *oldLength : 0;
+  if (length > UINT32_MAX || newLength > UINT32_MAX) {
+    SetLastErrorImpl(EFault);
+    return -1;
+  }
+  uint32_t outOldLength = static_cast<uint32_t>(length);
+  ::nn::sf::OutAutoSelectBuffer outOldValue(oldValue, outOldLength);
+  ::nn::sf::InAutoSelectBuffer inNewValue(newValue, newLength);
+  ::nn::sf::InAutoSelectBuffer inName(name, nameLength * sizeof(int));
+  Result callResult = g_ClientState.pClient->Sysctl(Out(&result), Out(&error),
+    inName, outOldValue, Out(&outOldLength), inNewValue);
+  if (callResult.IsSuccess() && result >= 0) {
+    if (oldLength != nullptr) {
+      *oldLength = outOldLength;
+    }
+    return result;
+  }
+  return HandleResult(callResult, &result, &error);
+}
+
+int Ioctl(int socket, IoctlRequest command, void* data, size_t length) {
+  NN_ABORT_UNLESS(IsInitializedImpl());
+  if (data == nullptr || length > UINT32_MAX) {
+    SetLastErrorImpl(EInval);
+    return -1;
+  }
+  ::nn::sf::InAutoSelectBuffer inData(data, length);
+  ::nn::sf::OutAutoSelectBuffer outData(data, length);
+  int result = 0;
+  int error = 0;
+  int nativeSocket;
+  if (!GetNativeSocket(&nativeSocket, socket)) {
+    return -1;
+  }
+  Result callResult = g_ClientState.pClient->NifIoctl(Out(&result),
+    Out(&error), nativeSocket, command._storage, inData, outData);
+  return HandleResult(callResult, &result, &error);
+}
+
+ssize_t SendMsgNoMem(int socket, const MsgHdr* message, MsgFlag flags) {
+  NN_ABORT_UNLESS(IsInitializedImpl());
+  MMsgHdr messages = {};
+  if (message == nullptr) {
+    NN_ABORT_UNLESS(IsInitializedImpl());
+    socket::SetLastError(static_cast<Errno>(EInval));
+    return -1;
+  }
+  messages.msg_hdr = *message;
+  ssize_t result = detail::SendMMsgNoMem(socket, &messages, 1, flags);
+  if (result <= 0) {
+    return result;
+  }
+  return messages.msg_len;
+}
+
+ssize_t RecvMsgNoMem(int socket, MsgHdr* message, MsgFlag flags) {
+  NN_ABORT_UNLESS(IsInitializedImpl());
+  MMsgHdr messages = {};
+  ssize_t result;
+  if (message != nullptr) {
+    messages.msg_hdr = *message;
+    result = detail::RecvMMsgNoMem(socket, &messages, 1, flags, nullptr);
+  }
+  else {
+    result = detail::RecvMMsgNoMem(socket, nullptr, 0, flags, nullptr);
+  }
+  if (result < 0) {
+    return result;
+  }
+  *message = messages.msg_hdr;
+  return messages.msg_len;
+}
+
+Result RegisterResourceStatisticsName(const char* /* name */,
+  size_t /* length */) {
+  return Result{UINT32_MAX};
+}
+
+Result RegisterResourceStatisticsName(const char* /* name */,
+  size_t /* length */, StatisticsMemory* /* memory */) {
+  return Result{UINT32_MAX};
+}
+
+int GetResourceStatistics(StatisticsType type, void* buffer, size_t size,
+  uint32_t options, const char* name, size_t length) {
+  NN_ABORT_UNLESS(IsInitializedImpl());
+  int result = -1;
+  int error = 0;
+  if (buffer == nullptr) {
+    SetLastErrorImpl(EInval);
+    return -1;
+  }
+  if (size > INT32_MAX) {
+    SetLastErrorImpl(EFault);
+    return -1;
+  }
+
+  // Allocator statistics are answered locally unless option bit 0 asks the
+  // server.
+  if (type == StatisticsType_Allocator && (options & 1) == 0) {
+    os::LockMutex(&g_ClientState.allocatorMutex);
+    int written = -1;
+    if (g_ClientState.pAllocator == nullptr) {
+      SetLastErrorImpl(EFault);
+    }
+    else if (size < sizeof(AllocatorStatistics)) {
+      SetLastErrorImpl(EInval);
+    }
+    else {
+      AllocatorStatistics* pStatistics =
+        static_cast<AllocatorStatistics*>(buffer);
+      if (g_ClientState.isLibraryHeapUsed) {
+        lmem::detail::HeapHead* heap = g_ClientState.libraryHeap;
+        pStatistics->totalSize = lmem::GetTotalSize(heap);
+        pStatistics->freeSize = lmem::GetExpHeapTotalFreeSize(heap);
+        pStatistics->usedSize =
+          pStatistics->totalSize - pStatistics->freeSize;
+      }
+      else {
+        pStatistics->totalSize = 0;
+        pStatistics->freeSize = 0;
+        pStatistics->usedSize = g_ClientState.allocatedSize;
+      }
+      pStatistics->peakUsedSize = g_ClientState.allocatedSizePeak;
+      written = sizeof(AllocatorStatistics);
+    }
+    os::UnlockMutex(&g_ClientState.allocatorMutex);
+    return written;
+  }
+
+  ::nn::sf::OutAutoSelectBuffer outStatistics(buffer, size);
+  ::nn::sf::InAutoSelectBuffer inName(name, length);
+  Result callResult = g_ClientState.pClient->GetResourceStatistics(
+    Out(&result), Out(&error), 0, static_cast<uint32_t>(type), outStatistics,
+    options, inName);
+  return HandleResult(callResult, &result, &error);
+}
+
+int GetSocketStatistics(SocketStatisticsType type, void* buffer,
+  size_t size) {
+  NN_ABORT_UNLESS(IsInitializedImpl());
+  int result = -1;
+  int error = 0;
+  if (buffer == nullptr ||
+    (static_cast<uint32_t>(type) == 0 && size < SocketStatisticsSize0) ||
+    (static_cast<uint32_t>(type) == 1 && size < SocketStatisticsSize1)) {
+    SetLastErrorImpl(EInval);
+    return -1;
+  }
+  ::nn::sf::OutAutoSelectBuffer outStatistics(buffer, size);
+  Result callResult = g_ClientState.pClient->GetSocketStatistics(
+    Out(&result), Out(&error), 0, static_cast<uint32_t>(type),
+    outStatistics);
+  return HandleResult(callResult, &result, &error);
+}
+
+Result SetSocketBufferAttribute(BufferAttribute attribute,
+  BufferDirection direction, size_t size) {
+  NN_ABORT_UNLESS(IsInitializedImpl());
+  int result = -1;
+  int error = 0;
+  Result callResult = g_ClientState.pClient->Command37(Out(&result),
+    Out(&error), static_cast<uint16_t>(attribute),
+    static_cast<uint16_t>(direction), static_cast<uint32_t>(size));
+  return Result{static_cast<uint32_t>(HandleResult(callResult, &result,
+    &error))};
+}
+
+void FreeIfAddrs(IfAddrs* addresses) {
+  free(addresses);
+}
+
+void FreeIfMAddrs(IfMAddrs* addresses) {
+  free(addresses);
+}
+
+
+[[gnu::always_inline]] int PollImpl(PollFd* fds, size_t count, int timeout) {
+  NN_ABORT_UNLESS(IsInitializedImpl());
+  int result = 0;
+  int error = 0;
+  if (fds == nullptr && count != 0) {
+    SetLastErrorImpl(EInval);
+    return -1;
+  }
+  if (count * sizeof(PollFd) > UINT32_MAX) {
+    SetLastErrorImpl(EFault);
+    return -1;
+  }
+
+  os::AcquireReadLock(&g_ClientState.descriptorLock);
+  uint16_t descriptors[PollMappedSocketCount];
+  memset(descriptors, 0xff, sizeof(descriptors));
+  const bool isMapped = count < PollMappedSocketCount;
+  if (isMapped) {
+    for (size_t i = 0; i < count; ++i) {
+      const int fd = fds[i].fd;
+      if (fd < 0) {
+        continue;
+      }
+      NN_ABORT_UNLESS(os::IsReadLockHeld(&g_ClientState.descriptorLock) ||
+        os::IsWriteLockHeldByCurrentThread(&g_ClientState.descriptorLock));
+      NnmuslFileDescriptor descriptor = nnmuslLookupFileDescriptor(fd);
+      if (descriptor.type == NnmuslFileDescriptorType_Socket &&
+        descriptor.native < PollMappedSocketCount) {
+        descriptors[descriptor.native] = fd;
+        fds[i].fd = descriptor.native;
+      }
+      else if (descriptor.type != NnmuslFileDescriptorType_Socket) {
+        fds[i].fd += PollMappedSocketCount;
+      }
+      else {
+        fds[i].fd = descriptor.native;
+      }
+    }
+  }
+  os::ReleaseReadLock(&g_ClientState.descriptorLock);
+
+  ::nn::sf::InAutoSelectBuffer inFds(fds, count * sizeof(PollFd));
+  ::nn::sf::OutAutoSelectBuffer outFds(fds, count * sizeof(PollFd));
+  Result callResult = g_ClientState.pClient->Poll(Out(&result), Out(&error),
+    inFds, outFds, static_cast<int32_t>(count), timeout);
+  HandleResult(callResult, &result, &error);
+
+  if (isMapped) {
+    for (size_t i = 0; i < count; ++i) {
+      const int fd = fds[i].fd;
+      if (fd < 0) {
+        continue;
+      }
+      fds[i].fd = fd < PollMappedSocketCount ? descriptors[fd] :
+        fd - PollMappedSocketCount;
+    }
+  }
+  return result;
+}
+
+int Poll(PollFd* fds, size_t count, int timeout) {
+  return PollImpl(fds, count, timeout);
+}
+
+int Poll(pollfd* fds, size_t count, int timeout) {
+  return PollImpl(reinterpret_cast<PollFd*>(fds), count, timeout);
 }
 
 }
