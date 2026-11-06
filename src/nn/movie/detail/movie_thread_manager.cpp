@@ -207,6 +207,31 @@ uint64_t ThreadManager::_GetThreadCoreMaskByInstance(void* instance) {
   return coreMask;
 }
 
+void ThreadManager::_Destroy(ThreadInfo* threadInfo) {
+  if (threadInfo == nullptr) {
+    return;
+  }
+
+  m_Mutex.Lock();
+  for (auto it = m_Threads.begin(); it != m_Threads.end(); ++it) {
+    if (&*it == threadInfo) {
+      os::DestroyThread(&it->thread);
+      m_Threads.erase(it);
+      for (auto instance = m_Instances.begin(); instance != m_Instances.end();
+        ++instance) {
+        if (instance->thread == &threadInfo->thread) {
+          m_Instances.erase(instance);
+          break;
+        }
+      }
+
+      break;
+    }
+  }
+
+  m_Mutex.Unlock();
+}
+
 void ThreadManager::_RemoveThreadConfigurationByInstance(void* instance) {
   m_Mutex.Lock();
 

@@ -1,6 +1,7 @@
 #include <string.h>
 
 #include "movie/detail/movie_video_decoder_impl.hpp"
+#include "nn/diag/unexpected_default.hpp"
 #include "nn/movie/detail/movie_thread_manager.hpp"
 #include "nn/movie/movie_buffer.hpp"
 #include "nn/movie/movie_media_property.hpp"
@@ -478,6 +479,103 @@ ThreadInfo* VideoDecoderImpl::CreateEventThread(void* stack,
   ThreadInfo* created = threadInfo;
   nn::os::FinalizeLightEvent(&startedEvent);
   return created;
+}
+
+}
+
+namespace movie::detail {
+
+namespace {
+
+// Decoder memory sizes in MiB of each level, by memory type.
+struct LevelMemorySizes {
+  int32_t levels[10];
+  struct Sizes {
+    uint64_t values[10];
+  } sizes[2];
+};
+
+constexpr LevelMemorySizes H264MemorySizes = {
+  {1, 2, 3, 4, 5, 6, 7, 8, 9},
+  {{{8, 9, 9, 15, 20, 23, 34, 68, 240}},
+    {{9, 10, 10, 16, 22, 25, 40, 80, 276}}},
+};
+
+constexpr LevelMemorySizes Vp8MemorySizes = {
+  {1, 3, 4, 5, 7, 8, 9},
+  {{{14, 16, 18, 24, 42, 80, 274}}, {{15, 17, 20, 26, 48, 92, 312}}},
+};
+
+constexpr LevelMemorySizes Vp9MemorySizes = {
+  {1, 3, 4, 5, 7, 8, 9},
+  {{{14, 16, 18, 24, 42, 80, 274}}, {{15, 17, 20, 26, 48, 92, 312}}},
+};
+
+constexpr LevelMemorySizes Av1MemorySizes = {
+  {1, 4, 5, 7, 8, 9},
+  {{{9, 16, 22, 40, 78, 272}}, {{10, 18, 24, 46, 90, 308}}},
+};
+
+constexpr uint32_t LevelWidths[9] = {
+  256, 384, 320, 640, 854, 960, 1280, 1920, 3840,
+};
+
+constexpr uint32_t LevelHeights[9] = {
+  144, 216, 240, 360, 480, 540, 720, 1080, 2160,
+};
+
+}
+
+// The codec types follow VideoDecoderTypes, the memory types are 1 and 2.
+size_t CalculateDecoderMemorySize(uint32_t width, uint32_t height,
+  int memoryType, int codecType) {
+  LevelMemorySizes table;
+  int count;
+  switch (codecType) {
+    case 0:
+      table = H264MemorySizes;
+      count = 9;
+      break;
+    case 1:
+      table = Vp9MemorySizes;
+      count = 7;
+      break;
+    case 3:
+      table = Av1MemorySizes;
+      count = 6;
+      break;
+    case 4:
+      table = Vp8MemorySizes;
+      count = 7;
+      break;
+    default:
+      nn::detail::UnexpectedDefaultImpl();
+  }
+
+  LevelMemorySizes::Sizes sizes;
+  switch (memoryType) {
+    case 1:
+      sizes = table.sizes[0];
+      break;
+    case 2:
+      sizes = table.sizes[1];
+      break;
+    default:
+      nn::detail::UnexpectedDefaultImpl();
+  }
+
+  for (int i = 0; i < count; i++) {
+    uint32_t level = table.levels[i] - 1;
+    if (level >= 9) {
+      nn::detail::UnexpectedDefaultImpl();
+    }
+
+    if (width <= LevelWidths[level] && height <= LevelHeights[level]) {
+      return sizes.values[i] << 20;
+    }
+  }
+
+  return sizes.values[count - 1] << 20;
 }
 
 }

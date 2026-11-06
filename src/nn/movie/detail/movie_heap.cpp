@@ -10,7 +10,8 @@
 namespace nn::movie::detail {
 
 void* AllocateMemory(size_t size, AllocatorInfo* allocatorInfo);
-void* AllocateMemory(size_t alignment, size_t size,
+// The original calls it out of line.
+[[gnu::noinline]] void* AllocateMemory(size_t alignment, size_t size,
   AllocatorInfo* allocatorInfo);
 void FreeMemory(void* address, AllocatorInfo* allocatorInfo);
 
@@ -54,6 +55,45 @@ void* AllocateMemory(size_t size, AllocatorInfo* allocatorInfo) {
       AllocatorCallbacks* callbacks = allocatorInfo->pCallbacks;
       if (callbacks->allocate != nullptr) {
         address = callbacks->allocate(size, 16, callbacks->userData);
+      }
+      break;
+    }
+    default:
+      break;
+  }
+
+  if (HeapMemoryManager::GetInstance().IsStatisticsEnabled()) {
+    const uintptr_t value = reinterpret_cast<uintptr_t>(address);
+    if (allocatorInfo->firstAddress == 0) {
+      allocatorInfo->firstAddress = value;
+    }
+    if (allocatorInfo->blockSize != 0 &&
+      allocatorInfo->blockSize == value - allocatorInfo->firstAddress) {
+      ++allocatorInfo->blockCount;
+    }
+    UpdateUsage(allocatorInfo);
+  }
+  return address;
+}
+
+void* AllocateMemory(size_t alignment, size_t size,
+  AllocatorInfo* allocatorInfo) {
+  void* address = nullptr;
+  switch (allocatorInfo->type) {
+    case AllocatorType_StandardAllocator:
+      address = allocatorInfo->allocator->Allocate(size, alignment);
+      break;
+    case AllocatorType_ExpHeap:
+      address = lmem::AllocateFromExpHeap(*allocatorInfo->pExpHeap, size,
+        static_cast<int>(alignment));
+      break;
+    case AllocatorType_StandardLibrary:
+      address = aligned_alloc(alignment, size);
+      break;
+    case AllocatorType_Callback: {
+      AllocatorCallbacks* callbacks = allocatorInfo->pCallbacks;
+      if (callbacks->allocate != nullptr) {
+        address = callbacks->allocate(size, alignment, callbacks->userData);
       }
       break;
     }

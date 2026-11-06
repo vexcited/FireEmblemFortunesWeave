@@ -22,6 +22,15 @@ public:
     m_pAllocator->AddRef();
   }
 
+  // Moving takes a reference of its own before releasing the one of the
+  // source, as the original does when the list allocates a node.
+  StdLibAllocator(StdLibAllocator&& other)
+    : m_pAllocator(other.m_pAllocator) {
+    m_pAllocator->AddRef();
+    other.m_pAllocator->Release();
+    other.m_pAllocator = nullptr;
+  }
+
   template <typename U>
   StdLibAllocator(const StdLibAllocator<U>& other)
     : m_pAllocator(other.GetAllocator()) {

@@ -14,9 +14,17 @@ namespace movie::detail {
 class TaskQueueCancellationToken
   : public MovieRefBase<ITaskQueueCancellationToken> {
 public:
-  TaskQueueCancellationToken(IAllocator* allocator, uint64_t id)
-    : MovieRefBase(allocator), m_Id(id) {}
+  // Event handler tokens cancel the timer event handler of the id.
+  enum Type : int32_t {
+    Type_Task,
+    Type_EventHandler,
+  };
 
+  TaskQueueCancellationToken(IAllocator* allocator, uint64_t id,
+    Type type = Type_Task)
+    : MovieRefBase(allocator), m_Type(type), m_Id(id) {}
+
+  Type m_Type;
   uint64_t m_Id;
 };
 

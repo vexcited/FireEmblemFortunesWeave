@@ -30,6 +30,16 @@ public:
 
   RefPtr& operator=(const RefPtr&) = delete;
 
+  RefPtr& operator=(RefPtr&& other) {
+    if (m_p != nullptr) {
+      m_p->Release();
+    }
+
+    m_p = other.m_p;
+    other.m_p = nullptr;
+    return *this;
+  }
+
   RefPtr& operator=(T* p) {
     if (p != nullptr) {
       p->AddRef();

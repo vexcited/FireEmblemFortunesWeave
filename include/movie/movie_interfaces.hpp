@@ -55,7 +55,9 @@ class ITask : public IMovieInterface {
 public:
   virtual void Run() = 0;
 };
-class ITaskQueueRegistrationToken;
+
+class ITaskQueueRegistrationToken : public IMovieInterface {
+};
 
 class ITaskQueueCancellationToken : public IMovieInterface {
 };
@@ -74,6 +76,8 @@ class ITaskQueue : public IMovieObject {
 public:
   enum ThreadEvent : int32_t {
     ThreadEvent_None,
+    ThreadEvent_Started,
+    ThreadEvent_Stopped,
   };
 
   virtual MovieResult QueueTask(ITask* task) = 0;
@@ -85,7 +89,7 @@ public:
   virtual MovieResult QueuePeriodicTimerTask(
     ITaskQueueCancellationToken** ppOutToken, nn::TimeSpan delay,
     nn::TimeSpan period, ITask* task) = 0;
-  virtual MovieResult CancelTask(ITaskQueueCancellationToken* token) = 0;
+  virtual void CancelTask(ITaskQueueCancellationToken* token) = 0;
   virtual MovieResult QueueAsyncCallback(IAsyncCallback* callback) = 0;
   virtual MovieResult RegisterEventHandler(
     ITaskQueueRegistrationToken** ppOutToken, nn::os::EventType* event,
@@ -107,9 +111,9 @@ public:
   virtual MovieResult GetSocketEventResult(bool* pOutIsSignaled,
     nn::socket::FdSet* readSet, nn::socket::FdSet* writeSet,
     nn::socket::FdSet* exceptSet, IAsyncResult* result) = 0;
-  virtual MovieResult UnregisterEventHandler(
+  virtual void UnregisterEventHandler(
     ITaskQueueRegistrationToken* token) = 0;
-  virtual MovieResult UnregisterEventHandlerAsync(
+  virtual void UnregisterEventHandlerAsync(
     ITaskQueueRegistrationToken* token) = 0;
   virtual MovieResult RegisterThreadEventHandler(
     IAsyncCallback* callback) = 0;
