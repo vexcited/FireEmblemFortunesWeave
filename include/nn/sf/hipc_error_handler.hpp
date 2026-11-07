@@ -5,7 +5,16 @@
 namespace nn::sf::hipc {
 
 using ClientErrorHandler = void (*)(Result);
+using ServerErrorHandler = void (*)(Result);
 extern ClientErrorHandler ClientErrorCallback;
+extern ServerErrorHandler ServerErrorCallback;
 ClientErrorHandler SetHipcErrorHandlerOnClient(ClientErrorHandler handler);
+
+namespace detail {
+
+void HandleHipcErrorOnClient(Result result);
+void HandleHipcErrorOnServer(Result result);
+
+}
 
 }

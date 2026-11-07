@@ -4449,6 +4449,8 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 178d30,44,verified,src/nn/sf/sf_memory_resource.cpp,_ZN2nn2sf4cmif16SetInlineContextEj
 178d60,12,verified,src/nn/sf/sf_memory_resource.cpp,_ZN2nn2sf18GetFsInlineContextEPNS_2os10ThreadTypeE
 1798f0,12,verified,src/nn/sf/hipc_error_handler.cpp,_ZN2nn2sf4hipc27SetHipcErrorHandlerOnClientEPFvNS_6ResultEE
+179910,24,verified,src/nn/sf/hipc_error_handler.cpp,_ZN2nn2sf4hipc6detail23HandleHipcErrorOnClientENS_6ResultE
+179930,24,verified,src/nn/sf/hipc_error_handler.cpp,_ZN2nn2sf4hipc6detail23HandleHipcErrorOnServerENS_6ResultE
 179950,104,verified,src/nn/sf/client_session.cpp,_ZN2nn2sf4hipc6client24HipcClientSessionManager19ConvertToDomainImplEPNS0_4cmif18CmifDomainObjectIdENS_3svc6HandleE
 1799c0,100,verified,src/nn/sf/client_session.cpp,_ZN2nn2sf4hipc6client24HipcClientSessionManager16CreateNewSessionEPNS_3svc6HandleE
 17aba0,32,verified,src/nn/sf/hipc/detail/hipc_message_buffer_accessor.cpp,_ZN2nn2sf4hipc6detail25HipcMessageBufferAccessor6GetTagEPvm
@@ -4474,6 +4476,10 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 17b2b0,8,verified,src/nn/sf/hipc/detail/hipc_message_buffer_accessor.cpp,_ZNK2nn2sf4hipc6detail25HipcMessageBufferAccessor13GetRawPointerEv
 17b2c0,28,verified,src/nn/sf/hipc/detail/hipc_message_buffer_accessor.cpp,_ZN2nn2sf4hipc6detail25HipcMessageBufferAccessor14SetReceiveListEimm
 17b2e0,32,verified,src/nn/sf/hipc/detail/hipc_message_buffer_accessor.cpp,_ZNK2nn2sf4hipc6detail25HipcMessageBufferAccessor14GetReceiveListEi
+17fae0,36,verified,src/nn/sf/hipc_client_info.cpp,_ZN2nn2sf30GetCurrentHipcClientIdOnServerEv
+17fb20,36,verified,src/nn/sf/hipc_client_info.cpp,_ZN2nn2sf4hipc6server20SetCurrentClientInfoERKNS2_10ClientInfoE
+17fb50,36,verified,src/nn/sf/hipc_client_info.cpp,_ZN2nn2sf4hipc6server20GetCurrentClientInfoEv
+17fb80,20,verified,src/nn/sf/hipc_client_info.cpp,_ZN2nn2sf4hipc6server10ClientInfo13NewClientInfoEv
 17fba0,20,verified,src/nn/sf/service_object.cpp,_ZN2nn2sf4impl6detail22ServiceObjectImplBase216AddReferenceImplEv
 17fbd0,24,verified,src/nn/sf/service_object.cpp,_ZN2nn2sf4impl6detail22ServiceObjectImplBase211ReleaseImplEv
 17fc50,52,verified,src/nn/sf/hipc.cpp,_ZN2nn2sf4hipc24CloseClientSessionHandleENS_3svc6HandleE
@@ -4484,7 +4490,9 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 180cf0,8,verified,src/nn/sf/unit_heap_memory_resource.cpp,_ZN2nn2sf22UnitHeapMemoryResource10DeallocateEPvmm
 180d00,48,verified,src/nn/sf/hipc.cpp,_ZN2nn2sf4hipc31InitializeHipcServiceResolutionEv
 180d30,48,verified,src/nn/sf/hipc.cpp,_ZN2nn2sf4hipc29FinalizeHipcServiceResolutionEv
+180e80,16,verified,src/nn/sf/hipc_client_info.cpp,_ZN2nn2sf4hipc23IsHipcServiceRegisteredEPKc
 180e90,104,verified,src/nn/sf/hipc.cpp,_ZN2nn2sf4hipc20ConnectToHipcServiceEPNS_3svc6HandleEPKc
+180f00,16,verified,src/nn/sf/hipc_client_info.cpp,_ZN2nn2sf4hipc23TryConnectToHipcServiceEPbPNS_3svc6HandleEPKc
 180f20,360,verified,src/nn/sm/initialization.cpp,_ZN2nn2sm10InitializeEv
 181090,8,verified,src/nn/sm/initialization.cpp,_ZN2nn2sm8FinalizeEv
 1810a0,372,verified,src/nn/sm/initialization.cpp,_ZN2nn2sm16GetServiceHandleEPNS_3svc6HandleEPKcm
