@@ -29,6 +29,10 @@ public:
     escape_ = true;
   }
 
+  bool IsLinkLocked() const {
+    return link_locked_;
+  }
+
   bool IsBattledWithAttack() const {
     return battled_with_attack_;
   }
@@ -38,7 +42,8 @@ private:
   bool game_over_;
   uint8_t unknown_0a_;
   bool escape_;
-  uint8_t unknown_0c_[0x18];
+  bool link_locked_;
+  uint8_t unknown_0d_[0x17];
   bool battled_with_attack_;
 };
 

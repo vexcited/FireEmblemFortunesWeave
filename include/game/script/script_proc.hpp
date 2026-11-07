@@ -117,6 +117,16 @@ public:
     return (mask & skip->flags_) == 0;
   }
 
+  // Any of the states 1 to 3 counts for the scripts.
+  static bool IsActive() {
+    const ProcGameSkipView* skip = instance_;
+    if (skip == nullptr || skip->state_ - 1u > 2) {
+      return false;
+    }
+    const uint32_t mask = (skip->flags_ & 8) != 0 ? 2 : 3;
+    return (mask & skip->flags_) == 0;
+  }
+
 private:
   uint8_t unknown_00_[0x98];
   uint8_t state_;

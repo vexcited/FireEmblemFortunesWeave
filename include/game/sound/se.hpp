@@ -27,6 +27,8 @@ public:
 
   Handle& operator=(const Handle& other);
 
+  bool IsValid() const;
+
 private:
   uint64_t id_ = 0;
   uint32_t serial_ = 0x2000;

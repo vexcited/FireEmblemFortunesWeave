@@ -6,11 +6,16 @@
 
 namespace game::sound {
 
+class PlayParam;
+
 #pragma GCC visibility push(hidden)
 
 // The game sound object, which follows the camera as its listener.
 class GameSound {
 public:
+  void PlayBgm(const char* label, const PlayParam& param, int track,
+    bool queue, float delay);
+
   void SetGameFadeVolume(bool isEnable) {
     game_fade_volume_ = isEnable;
   }

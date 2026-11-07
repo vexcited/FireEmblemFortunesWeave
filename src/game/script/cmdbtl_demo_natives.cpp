@@ -9,6 +9,7 @@
 #include "game/script/script_proc.hpp"
 #include "game/script/script_string.hpp"
 #include "game/sound/game_sound.hpp"
+#include "game/sound/se.hpp"
 #include "math/vec3.hpp"
 
 namespace game {
@@ -137,7 +138,27 @@ namespace {
   return g_instance<game::cmdbtl::CmdBtlScript>->GetCurrentProc();
 }
 
+[[gnu::always_inline]] inline game::sound::Handle PlaySe(const char* label) {
+  return label != nullptr ?
+    game::sound::PlayLabel(label) : game::sound::Handle();
 }
+
+[[gnu::always_inline]] inline game::sound::Handle PlaySeAt(
+  const char* label, const math::Vec3& pos) {
+  snd::fnd::Vec3 position;
+  position.x = pos.x();
+  position.y = pos.y();
+  position.z = pos.z();
+  return label != nullptr ?
+    game::sound::PlayAt(label, label, position, game::sound::PlayParam(), 0,
+      0x10001, 0, 0.0f, 1.0f) :
+    game::sound::Handle();
+}
+
+}
+
+// The sound the waiting natives wait for.
+extern game::sound::Handle g_wait_se;
 
 void LoadEffect(const std::string& label) {
   OpenBlock();
@@ -149,6 +170,41 @@ void PlayEffect(const std::string& label, const math::Vec3& pos,
   const math::Vec3& rot, float scale) {
   OpenBlock();
   game::cmdbtl::Effect::GetInstance()->Play(label.c_str(), pos, rot, scale);
+}
+
+void PlayBgm(as::string label) {
+  OpenBlock();
+  const std::string name = label.c_str();
+  game::sound::g_game_sound->PlayBgm(name.c_str(),
+    game::sound::PlayParam(0.0f), 0, false, 0.0f);
+}
+
+void PlaySE(as::string label) {
+  OpenBlock();
+  const std::string name = label.c_str();
+  PlaySe(name.c_str());
+}
+
+void PlaySE(as::string label, const math::Vec3& pos) {
+  OpenBlock();
+  const std::string name = label.c_str();
+  PlaySeAt(name.c_str(), pos);
+}
+
+void PlaySEWithWait(const std::string& label) {
+  if (GetRunningContext()->GetRunner()->IsSkipping()) {
+    const std::string name = label.c_str();
+    g_wait_se = PlaySe(name.c_str());
+  }
+  Wait(g_wait_se.IsValid());
+}
+
+void PlaySEWithWait(const std::string& label, const math::Vec3& pos) {
+  if (GetRunningContext()->GetRunner()->IsSkipping()) {
+    const std::string name = label.c_str();
+    g_wait_se = PlaySeAt(name.c_str(), pos);
+  }
+  Wait(g_wait_se.IsValid());
 }
 
 void HpRecoverSeq(int partyType) {

@@ -5,26 +5,8 @@
 #include "game/hub/hub_character_dispos_manager.hpp"
 #include "game/hub/locator.hpp"
 #include "game/hub/manager.hpp"
+#include "game/hub/map_manager.hpp"
 #include "game/script/script_string.hpp"
-
-namespace game::hub {
-
-#pragma GCC visibility push(hidden)
-
-class MapManager : public Singleton<MapManager> {
-public:
-  void SetOverrideLoadVariationId(const std::string& variationId) {
-    override_load_variation_id_ = variationId;
-  }
-
-private:
-  uint8_t unknown_08_[0xd8];
-  std::string override_load_variation_id_;
-};
-
-#pragma GCC visibility pop
-
-}
 
 // The natives of the hub::init script namespace.
 namespace game::script::hub::init {

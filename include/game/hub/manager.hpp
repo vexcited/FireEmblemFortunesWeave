@@ -100,6 +100,25 @@ public:
     return area_name_;
   }
 
+  static constexpr uint32_t kFlagDiscoveryNotPlayable = 0x2;
+  static constexpr uint32_t kFlagDisableEnemyTrackingUI = 0x4;
+  static constexpr uint32_t kFlagDisableEnemySilhouette = 0x8;
+  static constexpr uint32_t kFlagDisableWalkExitSound = 0x10;
+  static constexpr uint32_t kFlagTitleSeqJobIntroSignal = 0x400;
+  static constexpr uint32_t kFlagTitleSeqTransitionLocked = 0x800;
+
+  bool HasFlag(uint32_t flag) const {
+    return (flags_ & flag) != 0;
+  }
+
+  void SetFlag(uint32_t flag, bool isActive) {
+    flags_ = (flags_ & ~flag) | (isActive ? flag : 0);
+  }
+
+  void AddFlag(uint32_t flag) {
+    flags_ |= flag;
+  }
+
   // A lightweight reload asks for at least one frame.
   void ReloadLightweight() {
     reloader_->RequestFrames(1);
@@ -135,7 +154,9 @@ private:
   CountedSwitch enemy_notice_;
   uint8_t unknown_c0_[0x18];
   Reloader* reloader_;
-  uint8_t unknown_e0_[0x221];
+  uint8_t unknown_e0_[0x8];
+  uint32_t flags_;
+  uint8_t unknown_ec_[0x215];
   bool enemy_stop_on_playable_;
 };
 

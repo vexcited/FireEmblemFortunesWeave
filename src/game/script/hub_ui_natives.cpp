@@ -4,6 +4,7 @@
 #include "as/script_context.hpp"
 #include "game/hub/ui_manager.hpp"
 #include "game/script/script_string.hpp"
+#include "msg/message_manager.hpp"
 
 namespace game::hub {
 
@@ -112,6 +113,17 @@ int GetTalkMainQuestResultWithReset() {
 int GetTalkSideStoryResultWithReset() {
   OpenBlockDirect();
   return TakeTalkResult();
+}
+
+void SetMsgArg(int index, int count) {
+  OpenBlock();
+  msg::MessageManager::GetInstance()->GetArguments().Set(index, count, 0);
+}
+
+void SetMsgArg(int index, const as::string& arg) {
+  OpenBlock();
+  msg::MessageManager::GetInstance()->GetArguments().Set(index,
+    static_cast<const as::base_string&>(arg).c_str());
 }
 
 as::string GetMessageDirect(const as::string& label) {

@@ -15,9 +15,16 @@ public:
     return frame_count_ * (1000.0f / 60.0f);
   }
 
+  // The frames of the last update, scaled by the game speed.
+  float GetDeltaFrames() const {
+    return delta_frames_;
+  }
+
 private:
   uint8_t unknown_00_[0x68];
   float frame_count_;
+  uint8_t unknown_6c_[0x34];
+  float delta_frames_;
 };
 
 // The counter of the scripts, which the game speed scales.

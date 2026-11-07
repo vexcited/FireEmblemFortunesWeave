@@ -1,5 +1,7 @@
+#include <algorithm>
 #include <memory>
 #include <string>
+#include <vector>
 
 #include "as/script_context.hpp"
 #include "game/hub/character.hpp"
@@ -141,6 +143,14 @@ bool IsYesNoDialogResult() {
 int GetChoiceMenuResult() {
   OpenBlockDirect();
   return g_choice_menu_result;
+}
+
+bool IsExistEventTalkedLabels(const as::string& mid) {
+  OpenBlock();
+  const std::vector<std::string>& labels =
+    g_instance<TalkSupport>->GetEventTalkedLabels();
+  return std::find(labels.begin(), labels.end(), std::string(mid.c_str())) !=
+    labels.end();
 }
 
 void ShowYesNoDialog(const as::string& title, const as::string& decide_se) {

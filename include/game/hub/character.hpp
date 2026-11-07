@@ -1039,6 +1039,8 @@ public:
 
 class CharacterManager : public Singleton<CharacterManager> {
 public:
+  void ExitPlayerWalk(float sec);
+
   void ClearEventLookTo(std::weak_ptr<Character> character);
 
   std::weak_ptr<Character> Find(const Character* character) const {
@@ -1143,13 +1145,18 @@ public:
     return yes_no_dialog_result_;
   }
 
+  const std::vector<std::string>& GetEventTalkedLabels() const {
+    return event_talked_labels_;
+  }
+
 private:
   CountedSwitch posure_;
   uint8_t unknown_18_[0x29];
   bool hide_ui_;
   uint8_t unknown_42_[0x2];
   int camera_state_group_;
-  uint8_t unknown_48_[0x38];
+  uint8_t unknown_48_[0x20];
+  std::vector<std::string> event_talked_labels_;
   bool yes_no_dialog_result_;
   uint8_t unknown_81_[0xf];
   bool enable_bind_final_;
