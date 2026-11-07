@@ -915,8 +915,8 @@ namespace nn::sf::cmif::client::detail {
 
 template <typename Kind>
 class CmifProxyMethods<timesrv::detail::service::IStaticService, Kind>
-  : public CmifProxyMethodsBase<
-      timesrv::detail::service::IStaticService, Kind> {
+  : public CmifProxyMethodsBase<timesrv::detail::service::IStaticService,
+    Kind> {
 public:
   virtual Result GetStandardUserSystemClock(
     const Out<SharedPointer<timesrv::detail::service::ISystemClock>>& out) {
@@ -948,21 +948,92 @@ public:
     return this->template ProcessWithOutObject<false, 5>(out);
   }
 
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(6)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(7)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(8)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(9)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(10)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(11)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(12)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(13)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(14)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(15)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(16)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(17)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(18)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(19)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(20)
+  virtual Result GetSharedMemoryNativeHandle(Out<NativeHandle> argument0) {
+    return this->template InvokeMethod<false, 20, void(Out<NativeHandle>)>(
+      argument0);
+  }
+
+  virtual Result SetStandardSteadyClockInternalOffset(uint64_t argument0) {
+    return this->template InvokeMethod<false, 50, void(uint64_t)>(argument0);
+  }
+
+  virtual Result GetStandardSteadyClockRtcValue(Out<uint64_t> argument0) {
+    return this->template InvokeMethod<false, 51, void(Out<uint64_t>)>(
+      argument0);
+  }
+
+  virtual Result Command100(Out<uint8_t> argument0) {
+    return this->template InvokeMethod<false, 100, void(Out<uint8_t>)>(
+      argument0);
+  }
+
+  virtual Result SetStandardUserSystemClockAutomaticCorrectionEnabled(
+    bool argument0) {
+    return this->template InvokeMethod<false, 101, void(bool)>(argument0);
+  }
+
+  virtual Result GetStandardUserSystemClockInitialYear(
+    Out<uint32_t> argument0) {
+    return this->template InvokeMethod<false, 102, void(Out<uint32_t>)>(
+      argument0);
+  }
+
+  virtual Result IsStandardNetworkSystemClockAccuracySufficient(
+    Out<uint8_t> argument0) {
+    return this->template InvokeMethod<false, 200, void(Out<uint8_t>)>(
+      argument0);
+  }
+
+  virtual Result GetStandardUserSystemClockAutomaticCorrectionUpdatedTime(
+    Out<RawData<24, 8>> argument0) {
+    return this->template InvokeMethod<false, 201, void(Out<RawData<24, 8>>)>(
+      argument0);
+  }
+
+  virtual Result Command300(
+    Out<uint64_t> argument0, const RawData<32, 8>& argument1) {
+    return this->template InvokeMethod<false, 300, void(
+      Out<uint64_t>, const RawData<32, 8>&)>(argument0, argument1);
+  }
+
+  virtual Result GetClockSnapshot(
+    Out<LargeData<26, 208, 8>> argument0, uint8_t argument1) {
+    return this->template InvokeMethod<false, 400, void(
+      Out<LargeData<26, 208, 8>>, uint8_t)>(argument0, argument1);
+  }
+
+  virtual Result GetClockSnapshotFromSystemClockContext(
+    Out<LargeData<26, 208, 8>> argument0, const RawData<32, 8>& argument1,
+    const RawData<32, 8>& argument2, uint8_t argument3) {
+    return this->template InvokeMethod<false, 401, void(
+      Out<LargeData<26, 208, 8>>, const RawData<32, 8>&, const RawData<32, 8>&,
+      uint8_t)>(argument0, argument1, argument2, argument3);
+  }
+
+  virtual Result CalculateStandardUserSystemClockDifferenceByUser(
+    Out<uint64_t> argument0, const LargeData<25, 208, 8>& argument1,
+    const LargeData<25, 208, 8>& argument2) {
+    return this->template InvokeMethod<false, 500, void(
+      Out<uint64_t>, const LargeData<25, 208, 8>&,
+      const LargeData<25, 208, 8>&)>(argument0, argument1, argument2);
+  }
+
+  virtual Result CalculateSpanBetween(
+    Out<uint64_t> argument0, const LargeData<25, 208, 8>& argument1,
+    const LargeData<25, 208, 8>& argument2) {
+    return this->template InvokeMethod<false, 501, void(
+      Out<uint64_t>, const LargeData<25, 208, 8>&,
+      const LargeData<25, 208, 8>&)>(argument0, argument1, argument2);
+  }
+
+  virtual Result GetInitialLaunchEndTime(Out<uint64_t> argument0) {
+    return this->template InvokeMethod<false, 600, void(Out<uint64_t>)>(
+      argument0);
+  }
+
+  virtual Result NotifyInitialLaunchSettingsDone() {
+    return this->template InvokeMethod<false, 601, void()>();
+  }
 };
 
 template <typename Kind>
@@ -981,7 +1052,9 @@ public:
       out, directoryName);
   }
 
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(2)
+  virtual Result CancelSyncDeliveryCacheRequest() {
+    return this->template InvokeMethod<false, 10200, void()>();
+  }
 
   virtual Result RequestSyncDeliveryCacheWithApplicationId(
     const Out<SharedPointer<bcat::ipc::IDeliveryCacheProgressService>>& out,
@@ -1012,24 +1085,95 @@ public:
       out, applicationId);
   }
 
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(7)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(8)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(9)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(10)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(11)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(12)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(13)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(14)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(15)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(16)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(17)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(18)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(19)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(20)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(21)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(22)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(23)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(24)
+  virtual Result RegisterSystemApplicationDeliveryTask(uint64_t argument0) {
+    return this->template InvokeMethod<false, 20400, void(uint64_t)>(argument0);
+  }
+
+  virtual Result UnregisterSystemApplicationDeliveryTask(uint64_t argument0) {
+    return this->template InvokeMethod<false, 20401, void(uint64_t)>(argument0);
+  }
+
+  virtual Result SetSystemApplicationDeliveryTaskTimer(
+    uint64_t argument0, uint32_t argument1, uint32_t argument2) {
+    return this->template InvokeMethod<false, 20410, void(
+      uint64_t, uint32_t, uint32_t)>(argument0, argument1, argument2);
+  }
+
+  virtual Result StopBackgroundService() {
+    return this->template InvokeMethod<false, 20500, void()>();
+  }
+
+  virtual Result SetPassphrase(
+    uint64_t argument0, const BufferArray<9, uint8_t>& argument1) {
+    return this->template InvokeMethod<false, 30100, void(
+      uint64_t, const BufferArray<9, uint8_t>&)>(argument0, argument1);
+  }
+
+  virtual Result RegisterDeliveryTask(uint64_t argument0, uint32_t argument1) {
+    return this->template InvokeMethod<false, 30200, void(uint64_t, uint32_t)>(
+      argument0, argument1);
+  }
+
+  virtual Result UnregisterDeliveryTask(uint64_t argument0) {
+    return this->template InvokeMethod<false, 30201, void(uint64_t)>(argument0);
+  }
+
+  virtual Result BlockDeliveryTask(uint64_t argument0) {
+    return this->template InvokeMethod<false, 30202, void(uint64_t)>(argument0);
+  }
+
+  virtual Result UnblockDeliveryTask(uint64_t argument0) {
+    return this->template InvokeMethod<false, 30203, void(uint64_t)>(argument0);
+  }
+
+  virtual Result SetDeliveryTaskTimer(
+    uint64_t argument0, uint32_t argument1, uint32_t argument2) {
+    return this->template InvokeMethod<false, 30210, void(
+      uint64_t, uint32_t, uint32_t)>(argument0, argument1, argument2);
+  }
+
+  virtual Result RegisterSystemApplicationDeliveryTasks() {
+    return this->template InvokeMethod<false, 30300, void()>();
+  }
+
+  virtual Result GetDeliveryTaskList(
+    Out<uint32_t> argument0, const OutArray<RawData<64, 8>>& argument1) {
+    return this->template InvokeMethod<false, 90100, void(
+      Out<uint32_t>, const OutArray<RawData<64, 8>>&)>(argument0, argument1);
+  }
+
+  virtual Result GetDeliveryTaskListForSystem(
+    Out<uint32_t> argument0, const OutArray<RawData<64, 8>>& argument1) {
+    return this->template InvokeMethod<false, 90101, void(
+      Out<uint32_t>, const OutArray<RawData<64, 8>>&)>(argument0, argument1);
+  }
+
+  virtual Result GetDeliveryList(
+    Out<uint64_t> argument0, const OutBuffer& argument1, uint64_t argument2) {
+    return this->template InvokeMethod<false, 90200, void(
+      Out<uint64_t>, const OutBuffer&, uint64_t)>(
+      argument0, argument1, argument2);
+  }
+
+  virtual Result ClearDeliveryCacheStorage(uint64_t argument0) {
+    return this->template InvokeMethod<false, 90201, void(uint64_t)>(argument0);
+  }
+
+  virtual Result ClearDeliveryTaskSubscriptionStatus() {
+    return this->template InvokeMethod<false, 90202, void()>();
+  }
+
+  virtual Result GetPushNotificationLog(
+    Out<uint32_t> argument0, const OutArray<RawData<16, 8>>& argument1) {
+    return this->template InvokeMethod<false, 90300, void(
+      Out<uint32_t>, const OutArray<RawData<16, 8>>&)>(argument0, argument1);
+  }
+
+  virtual Result GetDeliveryCacheStorageUsage(
+    Out<RawData<48, 8>> argument0, uint64_t argument1) {
+    return this->template InvokeMethod<false, 90301, void(
+      Out<RawData<48, 8>>, uint64_t)>(argument0, argument1);
+  }
 };
 
 template <typename Kind>
@@ -1069,7 +1213,11 @@ public:
     return this->template ProcessWithOutObject<false, 1>(out);
   }
 
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(2)
+  virtual Result EnumerateDeliveryCacheDirectory(
+    Out<uint32_t> argument0, const OutArray<RawData<32, 8>>& argument1) {
+    return this->template InvokeMethod<false, 10, void(
+      Out<uint32_t>, const OutArray<RawData<32, 8>>&)>(argument0, argument1);
+  }
 };
 
 template <typename Kind>
@@ -1114,7 +1262,10 @@ template <typename Kind>
 class CmifProxyMethods<nifm::detail::IGeneralService, Kind>
   : public CmifProxyMethodsBase<nifm::detail::IGeneralService, Kind> {
 public:
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(0)
+  virtual Result GetClientId(Out<LargeData<26, 4, 4>> argument0) {
+    return this->template InvokeMethod<false, 1, void(
+      Out<LargeData<26, 4, 4>>)>(argument0);
+  }
 
   virtual Result CreateScanRequest(
     const Out<SharedPointer<nifm::detail::IScanRequest>>& out) {
@@ -1126,67 +1277,327 @@ public:
     return this->template ProcessWithOutObject<false, 4>(out, preset);
   }
 
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(3)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(4)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(5)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(6)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(7)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(8)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(9)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(10)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(11)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(12)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(13)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(14)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(15)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(16)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(17)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(18)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(19)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(20)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(21)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(22)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(23)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(24)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(25)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(26)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(27)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(28)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(29)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(30)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(31)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(32)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(33)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(34)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(35)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(36)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(37)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(38)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(39)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(40)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(41)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(42)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(43)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(44)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(45)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(46)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(47)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(48)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(49)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(50)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(51)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(52)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(53)
+  virtual Result Command5(Out<LargeData<26, 380, 4>> argument0) {
+    return this->template InvokeMethod<false, 5, void(
+      Out<LargeData<26, 380, 4>>)>(argument0);
+  }
+
+  virtual Result EnumerateNetworkInterfaces(
+    const BufferArray<10, uint64_t>& argument0, Out<uint32_t> argument1,
+    uint32_t argument2) {
+    return this->template InvokeMethod<false, 6, void(
+      const BufferArray<10, uint64_t>&, Out<uint32_t>, uint32_t)>(
+      argument0, argument1, argument2);
+  }
+
+  virtual Result EnumerateNetworkProfiles(
+    const OutArray<RawData<117, 1>>& argument0, Out<uint32_t> argument1,
+    uint8_t argument2) {
+    return this->template InvokeMethod<false, 7, void(
+      const OutArray<RawData<117, 1>>&, Out<uint32_t>, uint8_t)>(
+      argument0, argument1, argument2);
+  }
+
+  virtual Result Command8(
+    Out<LargeData<26, 380, 4>> argument0, const RawData<16, 8>& argument1) {
+    return this->template InvokeMethod<false, 8, void(
+      Out<LargeData<26, 380, 4>>, const RawData<16, 8>&)>(argument0, argument1);
+  }
+
+  virtual Result Command9(
+    Out<RawData<16, 8>> argument0, const LargeData<25, 380, 4>& argument1) {
+    return this->template InvokeMethod<false, 9, void(
+      Out<RawData<16, 8>>, const LargeData<25, 380, 4>&)>(argument0, argument1);
+  }
+
+  virtual Result RemoveNetworkProfile(const RawData<16, 8>& argument0) {
+    return this->template InvokeMethod<false, 10, void(const RawData<16, 8>&)>(
+      argument0);
+  }
+
+  virtual Result Command11(
+    const OutArray<RawData<52, 4>>& argument0, Out<uint32_t> argument1) {
+    return this->template InvokeMethod<false, 11, void(
+      const OutArray<RawData<52, 4>>&, Out<uint32_t>)>(argument0, argument1);
+  }
+
+  virtual Result GetCurrentIpAddress(Out<uint32_t> argument0) {
+    return this->template InvokeMethod<false, 12, void(Out<uint32_t>)>(
+      argument0);
+  }
+
+  virtual Result Command13(Out<LargeData<26, 52, 4>> argument0) {
+    return this->template InvokeMethod<false, 13, void(
+      Out<LargeData<26, 52, 4>>)>(argument0);
+  }
+
+  virtual Result Command14(
+    const Out<SharedPointer<nifm::detail::INetworkProfile>>& out,
+    Out<RawData<16, 8>> argument0, const LargeData<25, 380, 4>& argument1) {
+    return this->template InvokeOutObjectMethod<false, 14, void(
+      const Out<SharedPointer<nifm::detail::INetworkProfile>>&,
+      Out<RawData<16, 8>>, const LargeData<25, 380, 4>&)>(
+      out, argument0, argument1);
+  }
+
+  virtual Result GetCurrentIpConfigInfo(
+    Out<RawData<16, 8>> argument0, Out<uint64_t> argument1) {
+    return this->template InvokeMethod<false, 15, void(
+      Out<RawData<16, 8>>, Out<uint64_t>)>(argument0, argument1);
+  }
+
+  virtual Result SetWirelessCommunicationEnabled(bool argument0) {
+    return this->template InvokeMethod<false, 16, void(bool)>(argument0);
+  }
+
+  virtual Result IsWirelessCommunicationEnabled(Out<uint8_t> argument0) {
+    return this->template InvokeMethod<false, 17, void(Out<uint8_t>)>(
+      argument0);
+  }
+
+  virtual Result GetInternetConnectionStatus(Out<RawData<3, 1>> argument0) {
+    return this->template InvokeMethod<false, 18, void(Out<RawData<3, 1>>)>(
+      argument0);
+  }
+
+  virtual Result SetEthernetCommunicationEnabled(bool argument0) {
+    return this->template InvokeMethod<false, 19, void(bool)>(argument0);
+  }
+
+  virtual Result IsEthernetCommunicationEnabled(Out<uint8_t> argument0) {
+    return this->template InvokeMethod<false, 20, void(Out<uint8_t>)>(
+      argument0);
+  }
+
+  virtual Result IsAnyInternetRequestAccepted(
+    Out<uint8_t> argument0, LargeData<25, 4, 4> argument1) {
+    return this->template InvokeMethod<false, 21, void(
+      Out<uint8_t>, LargeData<25, 4, 4>)>(argument0, argument1);
+  }
+
+  virtual Result IsAnyForegroundRequestAccepted(Out<uint8_t> argument0) {
+    return this->template InvokeMethod<false, 22, void(Out<uint8_t>)>(
+      argument0);
+  }
+
+  virtual Result PutToSleep() {
+    return this->template InvokeMethod<false, 23, void()>();
+  }
+
+  virtual Result WakeUp() {
+    return this->template InvokeMethod<false, 24, void()>();
+  }
+
+  virtual Result GetSsidListVersion(Out<RawData<16, 8>> argument0) {
+    return this->template InvokeMethod<false, 25, void(Out<RawData<16, 8>>)>(
+      argument0);
+  }
+
+  virtual Result SetExclusiveClient(LargeData<25, 4, 4> argument0) {
+    return this->template InvokeMethod<false, 26, void(LargeData<25, 4, 4>)>(
+      argument0);
+  }
+
+  virtual Result Command27(Out<LargeData<26, 194, 2>> argument0) {
+    return this->template InvokeMethod<false, 27, void(
+      Out<LargeData<26, 194, 2>>)>(argument0);
+  }
+
+  virtual Result Command28(const LargeData<25, 194, 2>& argument0) {
+    return this->template InvokeMethod<false, 28, void(
+      const LargeData<25, 194, 2>&)>(argument0);
+  }
+
+  virtual Result SetWirelessCommunicationEnabledForTest(bool argument0) {
+    return this->template InvokeMethod<false, 29, void(bool)>(argument0);
+  }
+
+  virtual Result SetEthernetCommunicationEnabledForTest(bool argument0) {
+    return this->template InvokeMethod<false, 30, void(bool)>(argument0);
+  }
+
+  virtual Result GetTelemetorySystemEventReadableHandle(
+    Out<NativeHandle> argument0) {
+    return this->template InvokeMethod<false, 31, void(Out<NativeHandle>)>(
+      argument0);
+  }
+
+  virtual Result Command32(Out<LargeData<22, 1568, 8>> argument0) {
+    return this->template InvokeMethod<false, 32, void(
+      Out<LargeData<22, 1568, 8>>)>(argument0);
+  }
+
+  virtual Result ConfirmSystemAvailability() {
+    return this->template InvokeMethod<false, 33, void()>();
+  }
+
+  virtual Result SetBackgroundRequestEnabled(bool argument0) {
+    return this->template InvokeMethod<false, 34, void(bool)>(argument0);
+  }
+
+  virtual Result Command35(
+    const OutArray<RawData<52, 4>>& argument0, Out<uint32_t> argument1) {
+    return this->template InvokeMethod<false, 35, void(
+      const OutArray<RawData<52, 4>>&, Out<uint32_t>)>(argument0, argument1);
+  }
+
+  virtual Result GetCurrentAccessPoint(Out<LargeData<26, 52, 4>> argument0) {
+    return this->template InvokeMethod<false, 36, void(
+      Out<LargeData<26, 52, 4>>)>(argument0);
+  }
+
+  virtual Result Shutdown() {
+    return this->template InvokeMethod<false, 37, void()>();
+  }
+
+  virtual Result GetAllowedChannels(
+    const OutArray<uint16_t>& argument0, Out<uint32_t> argument1) {
+    return this->template InvokeMethod<false, 38, void(
+      const OutArray<uint16_t>&, Out<uint32_t>)>(argument0, argument1);
+  }
+
+  virtual Result NotifyApplicationRightsInvalidated(uint64_t argument0) {
+    return this->template InvokeMethod<false, 39, void(uint64_t)>(argument0);
+  }
+
+  virtual Result SetAcceptableNetworkTypeFlag(uint32_t argument0) {
+    return this->template InvokeMethod<false, 40, void(uint32_t)>(argument0);
+  }
+
+  virtual Result GetAcceptableNetworkTypeFlag(Out<uint32_t> argument0) {
+    return this->template InvokeMethod<false, 41, void(Out<uint32_t>)>(
+      argument0);
+  }
+
+  virtual Result NotifyConnectionStateChanged() {
+    return this->template InvokeMethod<false, 42, void()>();
+  }
+
+  virtual Result SetWowlDelayedWakeTime(uint32_t argument0) {
+    return this->template InvokeMethod<false, 43, void(uint32_t)>(argument0);
+  }
+
+  virtual Result IsWiredConnectionAvailable(Out<uint8_t> argument0) {
+    return this->template InvokeMethod<false, 44, void(Out<uint8_t>)>(
+      argument0);
+  }
+
+  virtual Result IsNetworkEmulationFeatureEnabled(Out<uint8_t> argument0) {
+    return this->template InvokeMethod<false, 45, void(Out<uint8_t>)>(
+      argument0);
+  }
+
+  virtual Result SelectActiveNetworkEmulationProfileIdForDebug(
+    uint32_t argument0) {
+    return this->template InvokeMethod<false, 46, void(uint32_t)>(argument0);
+  }
+
+  virtual Result GetScanData(
+    const OutArray<RawData<52, 4>>& argument0, Out<uint32_t> argument1,
+    uint32_t argument2) {
+    return this->template InvokeMethod<false, 47, void(
+      const OutArray<RawData<52, 4>>&, Out<uint32_t>, uint32_t)>(
+      argument0, argument1, argument2);
+  }
+
+  virtual Result ResetActiveNetworkEmulationProfileIdForDebug() {
+    return this->template InvokeMethod<false, 48, void()>();
+  }
+
+  virtual Result GetActiveNetworkEmulationProfileId(Out<uint32_t> argument0) {
+    return this->template InvokeMethod<false, 49, void(Out<uint32_t>)>(
+      argument0);
+  }
+
+  virtual Result IsRewriteFeatureEnabled(Out<uint8_t> argument0) {
+    return this->template InvokeMethod<false, 50, void(Out<uint8_t>)>(
+      argument0);
+  }
+
+  virtual Result CreateRewriteRule(
+    Out<uint64_t> argument0, const LargeData<21, 1040, 8>& argument1,
+    uint8_t argument2) {
+    return this->template InvokeMethod<false, 51, void(
+      Out<uint64_t>, const LargeData<21, 1040, 8>&, uint8_t)>(
+      argument0, argument1, argument2);
+  }
+
+  virtual Result DestroyRewriteRule(uint64_t argument0) {
+    return this->template InvokeMethod<false, 52, void(uint64_t)>(argument0);
+  }
+
+  virtual Result IsActiveNetworkEmulationProfileIdSelected(
+    Out<uint8_t> argument0) {
+    return this->template InvokeMethod<false, 53, void(Out<uint8_t>)>(
+      argument0);
+  }
+
+  virtual Result SelectDefaultNetworkEmulationProfileId(uint32_t argument0) {
+    return this->template InvokeMethod<false, 54, void(uint32_t)>(argument0);
+  }
+
+  virtual Result GetDefaultNetworkEmulationProfileId(Out<uint32_t> argument0) {
+    return this->template InvokeMethod<false, 55, void(Out<uint32_t>)>(
+      argument0);
+  }
+
   NN_SF_DETAIL_RESERVED_PROXY_METHOD(54)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(55)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(56)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(57)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(58)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(59)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(60)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(61)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(62)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(63)
+
+  virtual Result SetWowlTcpKeepAliveTimeout(uint32_t argument0) {
+    return this->template InvokeMethod<false, 57, void(uint32_t)>(argument0);
+  }
+
+  virtual Result GetCurrentIpConfig(
+    const BufferArray<10, RawData<40, 8>>& argument0, Out<uint32_t> argument1,
+    const BufferArray<10, RawData<172, 4>>& argument2,
+    Out<uint32_t> argument3) {
+    return this->template InvokeMethod<false, 100, void(
+      const BufferArray<10, RawData<40, 8>>&, Out<uint32_t>,
+      const BufferArray<10, RawData<172, 4>>&, Out<uint32_t>)>(
+      argument0, argument1, argument2, argument3);
+  }
+
+  virtual Result GetCurrentNetworkProfile(
+    Out<LargeData<26, 436, 4>> argument0) {
+    return this->template InvokeMethod<false, 101, void(
+      Out<LargeData<26, 436, 4>>)>(argument0);
+  }
+
+  virtual Result GetNetworkProfile(
+    Out<LargeData<26, 436, 4>> argument0, const RawData<16, 8>& argument1) {
+    return this->template InvokeMethod<false, 102, void(
+      Out<LargeData<26, 436, 4>>, const RawData<16, 8>&)>(argument0, argument1);
+  }
+
+  virtual Result SetNetworkProfile(
+    Out<RawData<16, 8>> argument0, const LargeData<25, 436, 4>& argument1) {
+    return this->template InvokeMethod<false, 103, void(
+      Out<RawData<16, 8>>, const LargeData<25, 436, 4>&)>(argument0, argument1);
+  }
+
+  virtual Result CreateTemporaryNetworkProfile(
+    const Out<SharedPointer<nifm::detail::INetworkProfile>>& out,
+    Out<RawData<16, 8>> argument0, const LargeData<25, 436, 4>& argument1) {
+    return this->template InvokeOutObjectMethod<false, 104, void(
+      const Out<SharedPointer<nifm::detail::INetworkProfile>>&,
+      Out<RawData<16, 8>>, const LargeData<25, 436, 4>&)>(
+      out, argument0, argument1);
+  }
+
+  virtual Result GetDefaultIpSetting(Out<LargeData<26, 248, 8>> argument0) {
+    return this->template InvokeMethod<false, 127, void(
+      Out<LargeData<26, 248, 8>>)>(argument0);
+  }
+
+  virtual Result SetDefaultIpSetting(const LargeData<25, 248, 8>& argument0) {
+    return this->template InvokeMethod<false, 128, void(
+      const LargeData<25, 248, 8>&)>(argument0);
+  }
+
+  virtual Result GetTelemetoryInfo(Out<LargeData<22, 1676, 4>> argument0) {
+    return this->template InvokeMethod<false, 132, void(
+      Out<LargeData<22, 1676, 4>>)>(argument0);
+  }
 };
 
 template <typename Kind>
@@ -1261,27 +1672,112 @@ public:
     return this->template ProcessWithOutObject<false, 4>(out);
   }
 
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(4)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(5)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(6)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(7)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(8)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(9)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(10)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(11)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(12)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(13)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(14)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(15)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(16)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(17)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(18)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(19)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(20)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(21)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(22)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(23)
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(24)
+  virtual Result Command10(Out<uint8_t> argument0) {
+    return this->template InvokeMethod<false, 10, void(Out<uint8_t>)>(
+      argument0);
+  }
+
+  virtual Result GetRoomInfo(Out<LargeData<26, 240, 8>> argument0) {
+    return this->template InvokeMethod<false, 11, void(
+      Out<LargeData<26, 240, 8>>)>(argument0);
+  }
+
+  virtual Result GetRoomInfoForTest(Out<LargeData<26, 240, 8>> argument0) {
+    return this->template InvokeMethod<false, 12, void(
+      Out<LargeData<26, 240, 8>>)>(argument0);
+  }
+
+  virtual Result GetLocalCameraImageProcessingMode(Out<uint8_t> argument0) {
+    return this->template InvokeMethod<false, 13, void(Out<uint8_t>)>(
+      argument0);
+  }
+
+  virtual Result GetLocalCameraImageProcessingModeDeprecated(
+    Out<uint8_t> argument0) {
+    return this->template InvokeMethod<false, 14, void(Out<uint8_t>)>(
+      argument0);
+  }
+
+  virtual Result SetLocalCameraZoomMagnification(float argument0) {
+    return this->template InvokeMethod<false, 15, void(float)>(argument0);
+  }
+
+  virtual Result GetLocalCameraZoomMagnification(Out<uint32_t> argument0) {
+    return this->template InvokeMethod<false, 16, void(Out<uint32_t>)>(
+      argument0);
+  }
+
+  virtual Result GetCameraImageProcessingModeForVirtualCamera(
+    Out<uint8_t> argument0) {
+    return this->template InvokeMethod<false, 17, void(Out<uint8_t>)>(
+      argument0);
+  }
+
+  virtual Result Command20(bool argument0) {
+    return this->template InvokeMethod<false, 20, void(bool)>(argument0);
+  }
+
+  virtual Result Command21(const BufferArray<33, uint64_t>& argument0) {
+    return this->template InvokeMethod<false, 21, void(
+      const BufferArray<33, uint64_t>&)>(argument0);
+  }
+
+  virtual Result Command22() {
+    return this->template InvokeMethod<false, 22, void()>();
+  }
+
+  virtual Result SetScreenSharingMode(uint32_t argument0) {
+    return this->template InvokeMethod<false, 23, void(uint32_t)>(argument0);
+  }
+
+  virtual Result SetScreenSharingDisallowList(
+    const BufferArray<33, uint64_t>& argument0) {
+    return this->template InvokeMethod<false, 24, void(
+      const BufferArray<33, uint64_t>&)>(argument0);
+  }
+
+  virtual Result ClearScreenSharingDisallowList() {
+    return this->template InvokeMethod<false, 25, void()>();
+  }
+
+  virtual Result Command40(
+    const BufferArray<34, uint32_t>& argument0,
+    const BufferArray<33, uint64_t>& argument1) {
+    return this->template InvokeMethod<false, 40, void(
+      const BufferArray<34, uint32_t>&, const BufferArray<33, uint64_t>&)>(
+      argument0, argument1);
+  }
+
+  virtual Result CalculateRequiredAudioStreamWorkBufferSize(
+    Out<uint64_t> argument0, uint32_t argument1) {
+    return this->template InvokeMethod<false, 51, void(
+      Out<uint64_t>, uint32_t)>(argument0, argument1);
+  }
+
+  virtual Result SetSharingKey(const RawData<40, 8>& argument0) {
+    return this->template InvokeMethod<false, 60, void(const RawData<40, 8>&)>(
+      argument0);
+  }
+
+  virtual Result ClearSharingKey() {
+    return this->template InvokeMethod<false, 61, void()>();
+  }
+
+  virtual Result IsChatStartAppletRequired(
+    Out<uint8_t> argument0, const RawData<16, 8>& argument1) {
+    return this->template InvokeMethod<false, 70, void(
+      Out<uint8_t>, const RawData<16, 8>&)>(argument0, argument1);
+  }
+
+  virtual Result IsCameraSharingGuideAppletRequired(Out<uint8_t> argument0) {
+    return this->template InvokeMethod<false, 71, void(Out<uint8_t>)>(
+      argument0);
+  }
+
+  virtual Result Command72(Out<uint8_t> argument0, uint8_t argument1) {
+    return this->template InvokeMethod<false, 72, void(Out<uint8_t>, uint8_t)>(
+      argument0, argument1);
+  }
 };
 
 template <typename Kind>
@@ -1332,9 +1828,34 @@ public:
     return this->template ProcessWithOutObject<false, 0>(out);
   }
 
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(1)
+  virtual Result Command1(
+    uint32_t argument0, uint32_t argument1, const InBuffer& argument2,
+    uint32_t argument3) {
+    return this->template InvokeMethod<false, 1, void(
+      uint32_t, uint32_t, const InBuffer&, uint32_t)>(
+      argument0, argument1, argument2, argument3);
+  }
 };
 
 }
 
+#include "nn/account/account_proxy_methods.hpp"
 #include "nn/am/service/am_proxy_methods.hpp"
+#include "nn/audio/detail/audio_proxy_methods.hpp"
+#include "nn/bcat/detail/bcat_proxy_methods.hpp"
+#include "nn/capsrv/capsrv_proxy_methods.hpp"
+#include "nn/chat/chat_proxy_methods.hpp"
+#include "nn/codec/codec_proxy_methods.hpp"
+#include "nn/ec/ec_proxy_methods.hpp"
+#include "nn/friends/detail/friends_proxy_methods.hpp"
+#include "nn/grc/grc_proxy_methods.hpp"
+#include "nn/hid/hidbus_proxy_methods.hpp"
+#include "nn/irsensor/detail/irsensor_proxy_methods.hpp"
+#include "nn/lm/lm_proxy_methods.hpp"
+#include "nn/mii/mii_proxy_methods.hpp"
+#include "nn/nifm/detail/nifm_proxy_methods.hpp"
+#include "nn/pctl/detail/pctl_proxy_methods.hpp"
+#include "nn/prepo/detail/prepo_proxy_methods.hpp"
+#include "nn/settings/detail/settings_proxy_methods.hpp"
+#include "nn/ssl/detail/ssl_proxy_methods.hpp"
+#include "nn/time/time_proxy_methods.hpp"

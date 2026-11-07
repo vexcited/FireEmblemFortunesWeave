@@ -23,6 +23,68 @@ struct ArgumentTraits<CmifProxyObject*> {
   }
 };
 
+// A structure sent as a buffer of its own size, with the transfer attributes
+// of its interface.
+template <uint32_t Attribute, size_t Size, size_t Alignment>
+struct LargeData : RawData<Size, Alignment> {};
+
+template <uint32_t Attribute, size_t Size, size_t Alignment>
+struct ArgumentTraits<const LargeData<Attribute, Size, Alignment>&> {
+  using Descriptor = Buffer<Attribute>;
+
+  static hipc::detail::BufferParameter Convert(
+    const LargeData<Attribute, Size, Alignment>& value) {
+    return {reinterpret_cast<uintptr_t>(&value), Size};
+  }
+};
+
+// Small structures given by value are copied on the stack and sent from
+// there.
+template <uint32_t Attribute, size_t Size, size_t Alignment>
+struct ArgumentTraits<LargeData<Attribute, Size, Alignment>>
+  : ArgumentTraits<const LargeData<Attribute, Size, Alignment>&> {};
+
+template <uint32_t Attribute, size_t Size, size_t Alignment>
+struct ArgumentTraits<Out<LargeData<Attribute, Size, Alignment>>> {
+  using Descriptor = Buffer<Attribute>;
+
+  static hipc::detail::BufferParameter Convert(
+    Out<LargeData<Attribute, Size, Alignment>> value) {
+    return {reinterpret_cast<uintptr_t>(value.GetPointer()), Size};
+  }
+};
+
+// An array sent with transfer attributes that the buffer classes do not
+// cover, a byte array stands for a plain buffer.
+template <uint32_t Attribute, typename T>
+class BufferArray {
+public:
+  BufferArray(T* data, size_t count) : m_Data(data), m_Count(count) {}
+
+  T* GetData() const {
+    return m_Data;
+  }
+
+  size_t GetLength() const {
+    return m_Count;
+  }
+
+private:
+  T* m_Data;
+  size_t m_Count;
+};
+
+template <uint32_t Attribute, typename T>
+struct ArgumentTraits<const BufferArray<Attribute, T>&> {
+  using Descriptor = Buffer<Attribute>;
+
+  static hipc::detail::BufferParameter Convert(
+    const BufferArray<Attribute, T>& value) {
+    return {reinterpret_cast<uintptr_t>(value.GetData()),
+      value.GetLength() * sizeof(T)};
+  }
+};
+
 // One vtable slot per method that the proxy does not implement here.
 template <int Count>
 class ReservedProxyMethods : public ReservedProxyMethods<Count - 1> {
@@ -186,6 +248,33 @@ template <typename Kind, bool HasProcessId, int MethodId,
     holder.pObjects);
 }
 
+// The body of a proxy method that returns one object, with the parameter
+// types of its signature.
+template <typename Kind, bool HasProcessId, typename Signature>
+struct ProxyOutObjectInvoker;
+
+template <typename Kind, bool HasProcessId, typename Interface,
+  typename... Parameters>
+struct ProxyOutObjectInvoker<Kind, HasProcessId,
+  void(const Out<SharedPointer<Interface>>&, Parameters...)> {
+  [[gnu::always_inline]] static Result Invoke(MemoryResource* pAllocator,
+    const typename Kind::ProxyKindState* pState, int methodId,
+    const Out<SharedPointer<Interface>>& out, Parameters... parameters) {
+    OutObjectHolder<1> holder;
+    OutObjectCreator creator = {pAllocator, holder.pObjects};
+    creator.Create<Interface, Kind>(0);
+    if (creator.ppObjects == nullptr) {
+      return ResultOutObjectAllocationFailed();
+    }
+    SharedPointer<IServiceObject>* targets[] = {
+      reinterpret_cast<SharedPointer<IServiceObject>*>(out.GetPointer())};
+    return Kind::template ProcessWithObjects<HasProcessId, 1,
+      typename ArgumentTraits<Parameters>::Descriptor...>(pState, targets,
+      ArgumentTraits<Parameters>::Convert(parameters)..., methodId,
+      holder.pObjects);
+  }
+};
+
 // Common part of the method tables, it reaches the state of the proxy and
 // the allocator of the object that holds it.
 template <typename Interface, typename Kind>
@@ -220,6 +309,17 @@ protected:
     DefaultProxy<Interface, Kind>* pProxy =
       static_cast<DefaultProxy<Interface, Kind>*>(this);
     return ProxyMethodInvoker<Kind, HasProcessId, Signature>::Invoke(
+      &pProxy->m_State, MethodId, static_cast<Arguments&&>(arguments)...);
+  }
+
+  template <bool HasProcessId, int MethodId, typename Signature,
+    typename... Arguments>
+  [[gnu::always_inline]] Result InvokeOutObjectMethod(
+    Arguments&&... arguments) {
+    DefaultProxy<Interface, Kind>* pProxy =
+      static_cast<DefaultProxy<Interface, Kind>*>(this);
+    return ProxyOutObjectInvoker<Kind, HasProcessId, Signature>::Invoke(
+      DefaultProxyFactory<Interface, Kind>::GetAllocator(pProxy),
       &pProxy->m_State, MethodId, static_cast<Arguments&&>(arguments)...);
   }
 };
