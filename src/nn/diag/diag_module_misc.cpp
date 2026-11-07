@@ -4,7 +4,7 @@
 #include <string.h>
 #include <utility>
 
-#include "nn/diag/detail/diag_memory_block_parser.hpp"
+#include "nn/diag/detail/diag_module_parser.hpp"
 #include "nn/diag/diag_abort.hpp"
 #include "nn/result.hpp"
 
@@ -26,8 +26,6 @@ size_t GetProcessName(char* pOutName, size_t size);
 
 namespace detail {
 
-struct ModuleInfoImpl;
-
 void GetProcessNamePointer(const char** ppOutName, size_t* pOutLength);
 const char* Translate(const uint8_t* pCatalog, const char* pText);
 bool DevNotifyImpl(DevNotificationHeader&& header, const char* pFormat, ...);
@@ -39,17 +37,7 @@ int GetValidSizeAsUtf8String(const char* pText, size_t size);
 uintptr_t GetModulePathImpl(char* pOutPath, size_t size, uintptr_t address);
 bool IsSystemSymbolImpl(uintptr_t address);
 size_t GetSymbolSizeImpl(uintptr_t address);
-bool GetModuleInfoImpl(ModuleInfoImpl* pOutInfo, uintptr_t address,
-  char* pOutName, size_t nameSize);
-
-class ModuleParser : public MemoryBlockParser {
- public:
-  bool MoveToCodeSection();
-  bool MoveNext(char* pOutName, size_t nameSize);
-
- private:
-  alignas(8) uint8_t m_ModuleInfo[0x20];
-};
+uintptr_t GetSymbolNameImpl(char* pOutName, size_t size, uintptr_t address);
 
 namespace {
 
@@ -134,28 +122,31 @@ bool DevNotifyImpl(DevNotificationHeader&& header, const char* pFormat, ...) {
   return result;
 }
 
-// The name runs from the last backslash to the last dot after it.
+// The name runs from the last backslash to the last dot after it. The scan
+// compares raw addresses, so an empty path at address zero still reads.
 void GetFileNameWithoutExtension(const char** ppOutName,
   size_t* pOutLength, const char* pPath, size_t length) {
-  const char* pEnd = pPath + length;
-  const char* pSeparator = nullptr;
-  for (const char* p = pEnd - 1; p >= pPath; p--) {
-    if (*p == '\\') {
-      pSeparator = p;
+  const uintptr_t begin = reinterpret_cast<uintptr_t>(pPath);
+  const uintptr_t end = begin + length;
+  uintptr_t separator = 0;
+  for (uintptr_t p = end - 1; p >= begin; p--) {
+    if (*reinterpret_cast<const char*>(p) == '\\') {
+      separator = p;
       break;
     }
   }
-  const char* pDot = nullptr;
-  for (const char* p = pEnd - 1; p >= pPath; p--) {
-    if (*p == '.') {
-      pDot = p;
+  const uintptr_t start = separator != 0 ? separator + 1 : begin;
+  uintptr_t stop = end;
+  for (uintptr_t p = end - 1; p >= begin; p--) {
+    if (*reinterpret_cast<const char*>(p) == '.') {
+      if (p >= start) {
+        stop = p;
+      }
       break;
     }
   }
-  const char* pStart = pSeparator != nullptr ? pSeparator + 1 : pPath;
-  const char* pStop = pDot != nullptr && pDot >= pStart ? pDot : pEnd;
-  *ppOutName = pStart;
-  *pOutLength = pStop - pStart;
+  *ppOutName = reinterpret_cast<const char*>(start);
+  *pOutLength = stop - start;
 }
 
 // A trailing incomplete character is cut, a malformed one fails.
@@ -205,6 +196,22 @@ bool IsSystemSymbolImpl(uintptr_t address) {
   return base <= address && address < base + size;
 }
 
+// Symbols of the system module are not named.
+uintptr_t GetSymbolNameImpl(char* pOutName, size_t size, uintptr_t address) {
+  if (IsSystemSymbolImpl(address)) {
+    return 0;
+  }
+  uintptr_t symbolAddress = 0;
+  uintptr_t symbolSize = 0;
+  const Result result = ro::GetUpperBoundSymbol(&symbolAddress, &symbolSize,
+    pOutName, size, address);
+  if (result.IsSuccess() ||
+      result.GetInnerValueForDebug() == ResultModuleNameTruncated) {
+    return symbolAddress;
+  }
+  return 0;
+}
+
 size_t GetSymbolSizeImpl(uintptr_t address) {
   uintptr_t symbolAddress = 0;
   uintptr_t size = 0;
@@ -220,8 +227,8 @@ bool ModuleParser::MoveNext(char* pOutName, size_t nameSize) {
   if (!MoveToCodeSection()) {
     return false;
   }
-  return GetModuleInfoImpl(reinterpret_cast<ModuleInfoImpl*>(m_ModuleInfo),
-    GetInfo()->baseAddress, pOutName, nameSize);
+  return GetModuleInfoImpl(&m_ModuleInfo,
+    MemoryBlockParser::GetInfo()->baseAddress, pOutName, nameSize);
 }
 
 }
