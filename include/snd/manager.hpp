@@ -14,6 +14,12 @@ class Slot;
 class WaveReader;
 struct VoiceParam;
 
+namespace target {
+
+class Sound3DListener;
+
+}
+
 namespace fnd {
 
 class Vec3;
@@ -96,16 +102,10 @@ public:
   void addVoiceSend(const uint32_t* ids);
   void addBgmSend(const uint32_t* ids);
   void addSeSend(const uint32_t* ids);
+  void clearVoiceSends();
   void clearBgmSends();
+  void clearSeSends();
   void update();
-
-  void clearVoiceSends() {
-    MixerSends::clear(sends_->voices);
-  }
-
-  void clearSeSends() {
-    MixerSends::clear(sends_->ses);
-  }
 
 private:
   uint8_t unknown_00_[0x50];
@@ -138,6 +138,17 @@ private:
 template <typename T>
 struct ObjList {
   T* head;
+};
+
+// The names of the two caches of the manager are guesses.
+class StreamCache {
+public:
+  void clear();
+};
+
+class DataCache {
+public:
+  void unloadUnused();
 };
 
 class Manager {
@@ -203,6 +214,8 @@ public:
   void startSeVolume(const Fade& fade, float target);
   void unloadUnused();
   void clearStreams();
+  void attachSound3DListener(target::Sound3DListener* listener, int archive,
+    int index);
 
   bool isRunning() const {
     return !stopped_;
@@ -226,6 +239,11 @@ private:
   ObjList<Slot>* slots_;
   uint8_t unknown_30_[8];
   uint8_t unknown_38_[8];
+  uint8_t unknown_40_[0x818];
+  StreamCache* streams_;
+  DataCache* cache_;
+  uint8_t unknown_868_[0x3d0];
+  int listenerIndex_;
 };
 
 // The manager of the sound engine, reached directly and through the global

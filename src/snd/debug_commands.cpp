@@ -2,12 +2,6 @@
 #include "snd/script_commands.hpp"
 #include "snd/game.hpp"
 
-namespace snd {
-
-void clearBgmSends();
-
-}
-
 namespace snd::debug {
 
 void clearVoiceSends() {

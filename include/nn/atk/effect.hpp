@@ -7,6 +7,13 @@
 #include "nn/audio/effect_api.hpp"
 #include "nn/audio/renderer_config.hpp"
 
+namespace nn::audio {
+
+size_t GetRequiredBufferSizeForAuxSendReturnBuffer(
+  const AudioRendererParameter* parameter, int frameCount, int channelCount);
+
+}
+
 namespace nn::atk {
 
 class OutputReceiver {
@@ -249,12 +256,15 @@ public:
   void SetChannelCount(int count);
   void SetBus(int bus);
   size_t GetRequiredMemSize();
+  size_t GetRequiredMemSize(
+    const nn::audio::AudioRendererParameter* parameter) const;
 
 private:
   uint8_t reserved8_[0x10];
   nn::audio::AuxType m_AuxType;
   std::atomic<uint64_t> m_RemovedFrameCount;
-  uint8_t reserved28_[0x8];
+  int m_FrameCount;
+  int m_ChannelCount;
   bool m_IsActive;
   bool m_IsEnabled;
   uint8_t reserved32_[0x2e];

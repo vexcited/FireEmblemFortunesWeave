@@ -54,7 +54,7 @@ target::FxBase* FxBase::getImpl() const {
   return impl_;
 }
 
-void FxBase::reset() {
+void FxBase::setLatency(int latency) {
 }
 
 int FxBase::getLatency() const {

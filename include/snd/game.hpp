@@ -44,6 +44,7 @@ void loadSoundData(const char* label);
 void addVoiceSend(const char* name);
 void clearVoiceSends();
 void addBgmSend(const char* name);
+void clearBgmSends();
 void addSeSend(const char* name);
 void clearSeSends();
 void updateMixer();

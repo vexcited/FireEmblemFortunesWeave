@@ -22,6 +22,8 @@ struct Matrix4x3fType;
 
 namespace nn::atk {
 
+class EffectAux;
+
 namespace detail {
 
 class FrameHeap {
@@ -78,6 +80,7 @@ public:
   static HardwareManager& GetInstance();
 
   void SetOutputMode(int mode, int device);
+  size_t GetRequiredEffectAuxBufferSize(const EffectAux* effect) const;
 
   int GetOutputMode() const {
     return m_OutputMode;
@@ -118,7 +121,9 @@ private:
   void* m_AuxBus[4];
   uint8_t m_Body2[1384 - 304];
   FinalMix m_FinalMix;
-  uint8_t m_Body3[1720 - 1385];
+  uint8_t m_Body3[0x610 - 1385];
+  nn::audio::AudioRendererParameter m_Parameter;
+  uint8_t m_Body4[1720 - 0x610 - sizeof(nn::audio::AudioRendererParameter)];
   nn::os::MutexType m_RendererMutex;
 };
 

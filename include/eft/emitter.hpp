@@ -7,6 +7,7 @@
 #include <optional>
 #include <vector>
 
+#include "nn/os/mutex.hpp"
 #include "nn/util/intrusive_list.hpp"
 
 namespace eft {
@@ -63,7 +64,16 @@ struct EmitterSetResource {
 class System {
 public:
   void Release(EmitterSet* set, bool immediate);
+
+private:
+  uint8_t unknown00_[0x8b0];
+  EmitterSet** killList_;
+  int32_t killCount_;
+  uint8_t unknown8bc_[0xe04];
+  nn::os::MutexType mutex_;
 };
+
+void OutputWarning(const char* format, ...);
 
 // A weak handle, the set it points to stays valid while the ids match.
 class EmitterSetHandle {

@@ -44,7 +44,7 @@ public:
   virtual int getIndex() const;
   virtual int getChannel() const;
   virtual target::FxBase* getImpl() const;
-  virtual void reset();
+  virtual void setLatency(int latency);
   virtual int getLatency() const;
   virtual void enable();
   virtual void disable();

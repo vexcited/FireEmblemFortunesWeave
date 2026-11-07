@@ -666,6 +666,11 @@ void addBgmSend(const char* name) {
   }
 }
 
+// Clears the voice sends like clearVoiceSends.
+void clearBgmSends() {
+  s_manager->getMixer()->clearVoiceSends();
+}
+
 void addSeSend(const char* name) {
   uint32_t key[2] = {
     fnd::calcCrc32(name, 0), fnd::calcCrc32Reverse(name, 0),

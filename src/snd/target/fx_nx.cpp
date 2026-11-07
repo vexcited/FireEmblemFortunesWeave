@@ -194,6 +194,10 @@ void FxEQNX::disable() {
   }
 }
 
+int FxEQNX::getLatency() const {
+  return getAux<EQEffect>(impl_)->getLatency();
+}
+
 bool FxEQNX::isRemovable() const {
   return impl_->aux->IsRemovable();
 }
@@ -1229,6 +1233,14 @@ int FxPCMPlayerNX::unknown28() {
 
 uint64_t FxPCMPlayerNX::unknown29() {
   return getAux<PCMPlayerEffect>(impl_)->unknown_c0_;
+}
+
+void FxPCMPlayerNX::setLatency(int latency) {
+  getAux<PCMPlayerEffect>(impl_)->setLatency(latency);
+}
+
+int FxPCMPlayerNX::getLatency() const {
+  return getAux<PCMPlayerEffect>(impl_)->getLatency();
 }
 
 int FxPCMPlayerNX::unknown30() {

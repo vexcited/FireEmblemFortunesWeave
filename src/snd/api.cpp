@@ -591,7 +591,7 @@ void unloadUnused() {
 }
 
 void clearStreams() {
-  g_manager->clearStreams();
+  s_manager->clearStreams();
 }
 
 void setListenerPosition(float x, float y, float z, float angle) {
@@ -626,7 +626,7 @@ bool isLoaded(const char* label) {
 
 void attachSound3DListener(target::Sound3DListener* listener, int archive,
   int index) {
-  s_target->attachSound3DListener(listener, archive, index);
+  g_manager->attachSound3DListener(listener, archive, index);
 }
 
 bool isDisabled() {

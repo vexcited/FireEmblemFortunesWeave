@@ -491,6 +491,16 @@ void EffectAux::SetEnabled(bool isEnabled) {
   });
 }
 
+size_t EffectAux::GetRequiredMemSize() {
+  return HardwareManager::GetInstance().GetRequiredEffectAuxBufferSize(this);
+}
+
+size_t EffectAux::GetRequiredMemSize(
+  const nn::audio::AudioRendererParameter* parameter) const {
+  return nn::audio::GetRequiredBufferSizeForAuxSendReturnBuffer(parameter,
+    m_FrameCount, m_ChannelCount) * 3;
+}
+
 bool EffectAux::IsRemovable() const {
   return CheckRemovable(m_IsActive, m_RemovedFrameCount, [&] {
     return nn::audio::IsAuxRemovable(&m_AuxType);

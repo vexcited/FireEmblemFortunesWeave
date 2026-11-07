@@ -205,8 +205,12 @@ class EQEffect : public nn::atk::EffectAux {
 public:
   EQEffect();
 
+  int getLatency() const;
+
 private:
-  uint8_t body_[0x38];
+  uint8_t body_[0x30];
+  uint8_t latency_;
+  uint8_t unknown_91_[0x7];
 };
 
 class WaveformEffect : public nn::atk::EffectAux {
@@ -377,12 +381,15 @@ public:
   void unknown191900(const void*, int);
   int unknown191c60();
   void unknown190d00();
+  void setLatency(int latency);
+  int getLatency() const;
 
   uint8_t unknown_60_[0x38];
   int unknown_98_;
   uint8_t unknown_9c_[0x8];
   uint8_t unknown_a4_;
-  uint8_t unknown_a5_[0x1b];
+  uint8_t latency_;
+  uint8_t unknown_a6_[0x1a];
   uint64_t unknown_c0_;
   uint8_t unknown_c8_[0x20];
 };
@@ -569,6 +576,7 @@ public:
 
   void enable() override;
   void disable() override;
+  int getLatency() const override;
   bool isRemovable() const override;
   void** getRegistry() override;
 
@@ -799,6 +807,8 @@ public:
 
   void enable() override;
   void disable() override;
+  void setLatency(int latency) override;
+  int getLatency() const override;
   bool isRemovable() const override;
   void** getRegistry() override;
   void unknown31() override;
