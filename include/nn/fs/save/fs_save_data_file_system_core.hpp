@@ -79,6 +79,10 @@ private:
   Result DoGetFileSystemAttribute(
     fsa::FileSystemAttribute* outAttribute) override;
 
+  static Result FormatDbmLayer(SubStorage controlArea,
+    SubStorage allocationTableMeta, SubStorage data, int64_t blockSize,
+    uint32_t blockCount, IBufferManager* bufferManager);
+
   Result CheckPathFormat(const Path& path);
 
   SubStorage m_ControlAreaStorage;

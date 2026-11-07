@@ -17,7 +17,8 @@ using sdk::GpuAddressRange;
 // server reported when the address space was created.
 struct GpuAddressSpaceManager {
   os::SdkMutexType mutex;
-  uint8_t reserved0[0xc];
+  uint8_t reserved0[4];
+  gpuk::impl::kuser::KUserWorkerSession* pDeviceSession;
   bool isUsed[GpuAddressSpaceCountMax];
   uint32_t handles[GpuAddressSpaceCountMax];
   uint8_t reserved1[0x20];
@@ -43,13 +44,17 @@ struct GpuAddressSpaceManager {
 struct JobEventPool {
   static constexpr int EventCountMax = 64;
 
-  Result (*createEvent)(void* context, uint32_t* pOutHandle, int index);
+  // The callback receives the address of the context.
+  Result (*createEvent)(void* context, gsdrv::UniqueNativeHandle* pOutHandle,
+    int index);
   void* context;
   os::SdkMutexType mutex;
   os::SdkConditionVariableType condition;
   std::atomic<uint64_t> usedMask;
   std::atomic<uint64_t> createdMask;
   os::SystemEventType events[EventCountMax];
+
+  void Initialize(gpuk::impl::kuser::KUserWorkerSession* session);
 
   // Creates the event on first use. Returns false once the deadline passed.
   bool TryAcquire(int* pOutIndex, os::Tick deadline);

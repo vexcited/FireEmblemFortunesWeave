@@ -29,6 +29,11 @@ public:
     : m_pStorage(storage), m_Offset(offset), m_Size(size),
       m_IsResizable(false), m_SharedStorage() {}
 
+  SubStorage(const SubStorage& other, int64_t offset, int64_t size)
+    : m_pStorage(other.m_pStorage), m_Offset(other.m_Offset + offset),
+      m_Size(size), m_IsResizable(false),
+      m_SharedStorage(other.m_SharedStorage) {}
+
   SubStorage& operator=(const SubStorage& other) {
     if (this != &other) {
       m_pStorage = other.m_pStorage;

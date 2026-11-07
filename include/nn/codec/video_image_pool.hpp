@@ -4,6 +4,7 @@
 #include <stdint.h>
 
 #include "nn/codec/video_image.hpp"
+#include "nn/gsdrv/gsdrv_unique_native_handle.hpp"
 #include "nn/result.hpp"
 
 namespace nn::gs {
@@ -23,14 +24,6 @@ NativeImageHandle CalculateNativeImageHandle(NativeImageHandle base,
   uint32_t index);
 
 }
-}
-
-namespace nn::gsdrv {
-
-struct WeakNativeHandle {
-  uint32_t value;
-};
-
 }
 
 namespace nn::codec {

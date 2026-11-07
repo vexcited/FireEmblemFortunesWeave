@@ -6,15 +6,12 @@
 
 #include "nn/codec/video_shim.hpp"
 #include "nn/gsdrv/gsdrv_tipc1.hpp"
+#include "nn/gsv/gsv_native_handle.hpp"
 #include "nn/os/synchronization.hpp"
 #include "nn/result.hpp"
 #include "nn/tipc/tipc_message.hpp"
 
 namespace nn::gsv {
-
-struct OutNativeHandle {
-  gsdrv::UniqueNativeHandle* pointer;
-};
 
 // Requests to the user session are serialized by its mutex and report
 // failures to the gsdrv result hook before returning them.
@@ -166,36 +163,51 @@ struct UserSession {
     return {result};
   }
 
+  [[gnu::noinline]] Result OpenGpuDeviceSession(const OutNativeHandle& out,
+    const uint64_t& version, const gsdrv::WeakNativeHandle& transferMemory,
+    const uint64_t& size) {
+    mutex.Lock();
+
+    if (session.handle == 0) {
+      mutex.Unlock();
+      return ResultNotConnected;
+    }
+
+    const tipc::SessionHandle copy = session;
+    uint8_t* message = tipc::GetMessageBuffer();
+    tipc::WriteMessage<uint64_t>(message, 0, 0x8000000400000200);
+    tipc::WriteMessage<uint32_t>(message, 8, 2);
+    tipc::WriteMessage<uint32_t>(message, 12, transferMemory.value);
+    tipc::WriteMessage<uint64_t>(message, 16, version);
+    tipc::WriteMessage<uint64_t>(message, 24, size);
+    const uint32_t result = ReceiveHandle(&copy, message, out, 0x200);
+    mutex.Unlock();
+    return {result};
+  }
+
+  [[gnu::noinline]] Result OpenGpuDeviceSession(const OutNativeHandle& out,
+    const uint64_t& version) {
+    mutex.Lock();
+
+    if (session.handle == 0) {
+      mutex.Unlock();
+      return ResultNotConnected;
+    }
+
+    const tipc::SessionHandle copy = session;
+    uint8_t* message = tipc::GetMessageBuffer();
+    tipc::WriteMessage<uint64_t>(message, 0, 0x200000201);
+    tipc::WriteMessage<uint64_t>(message, 8, version);
+    const uint32_t result = ReceiveHandle(&copy, message, out, 0x201);
+    mutex.Unlock();
+    return {result};
+  }
+
 private:
-  // Replies carry the moved handle before the result word.
   [[gnu::always_inline]] static uint32_t ReceiveHandle(
     const tipc::SessionHandle* copy,
     uint8_t* message, const OutNativeHandle& out, uint32_t command) {
-    uint32_t result;
-
-    {
-      tipc::UniqueHandle handle;
-      result = tipc::SendSyncRequest(copy);
-
-      if (result == 0) {
-        tipc::WriteMessage<uint64_t>(message, 0,
-          0x8000000100000000 | command);
-        tipc::WriteMessage<uint32_t>(message, 8, 0x20);
-        handle =
-          tipc::UniqueHandle(tipc::ReadMessage<uint32_t>(message, 12));
-        result = tipc::ReadMessage<uint32_t>(message, 16);
-
-        if (result == 0) {
-          *out.pointer = static_cast<tipc::UniqueHandle&&>(handle);
-        }
-      }
-    }
-
-    if (result != 0) {
-      gsdrv::tipc1::CheckIpcResult({result});
-    }
-
-    return result;
+    return ReceiveNativeHandle(copy, message, out, command);
   }
 };
 

@@ -19,6 +19,10 @@ constexpr Result ResultInvalidKeyValueListNextIndex() {
   return fs::detail::MakeResult(4723);
 }
 
+constexpr Result ResultInvalidFileObjectBlockOffset() {
+  return fs::detail::MakeResult(4726);
+}
+
 constexpr Result ResultKeyValueListIndexOutOfRange() {
   return fs::detail::MakeResult(4727);
 }
@@ -453,6 +457,25 @@ public:
   Result ResizeFile(detail::FileInfo* fileInfo,
     const typename FileTable::FileKey& key, int64_t size);
 
+  Result Initialize(AllocationTable* allocationTable, int64_t blockSize,
+    BufferedAllocationTableStorage* directoryStorage,
+    BufferedAllocationTableStorage* fileStorage) {
+    m_pAllocationTable = allocationTable;
+    m_BlockSize = blockSize;
+    m_BlockSizeShift = __builtin_ctzll(blockSize);
+    const Result result = m_FileTable.Initialize(directoryStorage,
+      fileStorage);
+    if (IsFailure(result)) {
+      Finalize();
+      return result;
+    }
+    return ResultSuccess();
+  }
+
+  AllocationTable* GetAllocationTable() const {
+    return m_pAllocationTable;
+  }
+
   FileTable* GetFileTable() {
     return &m_FileTable;
   }
@@ -478,6 +501,30 @@ public:
 
   int64_t GetSize() const {
     return m_FileInfo.size;
+  }
+
+  Result SeekTo(uint32_t* outIndex, uint32_t blockOffset) {
+    m_Index = m_FileInfo.index;
+    if (m_Index == AllocationTable::IndexEnd) {
+      *outIndex = 0;
+      return ResultSuccess();
+    }
+    NN_FS_RESULT_DO(m_pFileSystem->GetAllocationTable()->ReadNext(
+      &m_NextIndex, &m_BlockCount, m_Index));
+    while (blockOffset >= m_BlockCount) {
+      NN_FS_RESULT_THROW_UNLESS(m_Index != AllocationTable::IndexEnd,
+        ResultInvalidFileObjectBlockOffset());
+      m_Index = m_NextIndex;
+      uint32_t nextIndex = 0;
+      uint32_t blockCount = 0;
+      NN_FS_RESULT_DO(m_pFileSystem->GetAllocationTable()->ReadNext(
+        &nextIndex, &blockCount, m_Index));
+      m_NextIndex = nextIndex;
+      blockOffset -= m_BlockCount;
+      m_BlockCount = blockCount;
+    }
+    *outIndex = m_Index + blockOffset;
+    return ResultSuccess();
   }
 
   typedef FileSystemObjectTemplate<DirectoryNameType, FileNameType>

@@ -8,6 +8,12 @@ namespace nn::fs::dbm {
 
 class FileSystemControlArea {
 public:
+  static const int64_t BlockSizePosition = 0;
+  static const int64_t AllocationTableInfoPosition = 8;
+  static const int64_t DataInfoPosition = 24;
+  static const int64_t DirectoryEntryInfoPosition = 40;
+  static const int64_t FileEntryInfoPosition = 44;
+
   FileSystemControlArea();
 
   void Initialize(SubStorage storage);
@@ -20,16 +26,21 @@ public:
   Result WriteAllocationInfo(uint32_t index, uint32_t position);
   Result ReadAllocationInfo(uint32_t* outIndex, uint32_t position);
 
+  Result WriteBlockSize(int64_t blockSize) {
+    return m_Storage.Write(BlockSizePosition, &blockSize, sizeof(blockSize));
+  }
+
+  Result ReadBlockSize(int64_t* outBlockSize) {
+    return m_Storage.Read(BlockSizePosition, outBlockSize,
+      sizeof(*outBlockSize));
+  }
+
 private:
   struct StorageInfo {
     int64_t offset;
     uint32_t size;
     uint32_t reserved;
   };
-
-  static const int64_t BlockSizePosition = 0;
-  static const int64_t AllocationTableInfoPosition = 8;
-  static const int64_t DataInfoPosition = 24;
 
   SubStorage m_Storage;
 };

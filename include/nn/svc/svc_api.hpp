@@ -23,5 +23,7 @@ static_assert(sizeof(MemoryInfo) == 40);
 Result QueryMemory(MemoryInfo* pOutInfo, uint32_t* pOutPageInfo,
   uintptr_t address);
 Result OutputDebugString(const char* string, size_t length);
+Result SetMemoryAttribute(uintptr_t address, size_t size, uint32_t mask,
+  uint32_t attribute);
 
 }

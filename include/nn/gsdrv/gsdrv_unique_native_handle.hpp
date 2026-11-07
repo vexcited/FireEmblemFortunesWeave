@@ -6,13 +6,18 @@
 
 namespace nn::gsdrv {
 
-class UniqueNativeHandle {
+struct WeakNativeHandle {
+  uint32_t value;
+};
+
+// The owning handle is passed to the weak handle interfaces as its base.
+class UniqueNativeHandle : public WeakNativeHandle {
 public:
-  UniqueNativeHandle() = default;
+  UniqueNativeHandle() : WeakNativeHandle{0} {}
 
   ~UniqueNativeHandle() {
-    if (m_Handle != 0) {
-      os::CloseNativeHandle(m_Handle);
+    if (value != 0) {
+      os::CloseNativeHandle(value);
     }
   }
 
@@ -21,18 +26,18 @@ public:
   }
 
   uint32_t Release() {
-    const uint32_t handle = m_Handle;
-    m_Handle = 0;
+    const uint32_t handle = value;
+    value = 0;
     return handle;
   }
 
   uint32_t GetHandle() const {
-    return m_Handle;
+    return value;
   }
 
   UniqueNativeHandle& operator=(uint32_t handle) {
-    const uint32_t previous = m_Handle;
-    m_Handle = handle;
+    const uint32_t previous = value;
+    value = handle;
 
     if (previous != 0) {
       os::CloseNativeHandle(previous);
@@ -40,9 +45,6 @@ public:
 
     return *this;
   }
-
-private:
-  uint32_t m_Handle = 0;
 };
 
 }

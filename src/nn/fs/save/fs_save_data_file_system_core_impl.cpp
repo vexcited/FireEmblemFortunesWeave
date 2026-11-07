@@ -3,6 +3,7 @@
 #include "nn/fs/fs_directory.hpp"
 #include "nn/fs/fsa/fs_file_system_attribute.hpp"
 #include "nn/fs/save/fs_save_data_file_system_core.hpp"
+#include "nn/util/util_scope_exit.hpp"
 
 namespace nn::fs::save {
 
@@ -452,6 +453,331 @@ Result SaveDataDirectoryImpl::NotifyDelete(int64_t id, bool isFile) {
       return m_DirectoryObject.FindNextDirectory(&name);
     }
   }
+  return ResultSuccess();
+}
+
+}
+
+namespace nn::fs::save {
+
+namespace {
+
+constexpr uint32_t SaveDataFileSystemSignature = 0x45564153;
+constexpr uint32_t SaveDataFileSystemVersion = 0x60000;
+constexpr uint32_t SaveDataFileSystemVersionMask = 0xFFFF0000;
+constexpr int64_t DirectoryEntryStorageInitialSize = 288;
+constexpr int64_t FileEntryStorageInitialSize = 192;
+
+struct SaveDataFileSystemHeader {
+  uint32_t signature;
+  uint32_t version;
+  int64_t blockCount;
+  int64_t blockSize;
+};
+
+struct SaveDataFileSystemControlArea {
+  SaveDataFileSystemHeader header;
+  uint8_t fileSystemControlArea[48];
+};
+
+constexpr Result ResultIncorrectSaveDataFileSystemMagic() {
+  return fs::detail::MakeResult(4412);
+}
+
+constexpr Result ResultUnsupportedSaveDataFileSystemVersion() {
+  return fs::detail::MakeResult(3002);
+}
+
+constexpr Result ResultInvalidSaveDataFileSystemDataSize() {
+  return fs::detail::MakeResult(4414);
+}
+
+constexpr Result ResultInvalidSaveDataFileSystemBlockCount() {
+  return fs::detail::MakeResult(6700);
+}
+
+constexpr Result ResultInvalidSaveDataFileSystemMetaSize() {
+  return fs::detail::MakeResult(5333);
+}
+
+Result CheckHeader(const SaveDataFileSystemHeader& header) {
+  NN_FS_RESULT_THROW_UNLESS(header.signature == SaveDataFileSystemSignature,
+    ResultIncorrectSaveDataFileSystemMagic());
+  NN_FS_RESULT_THROW_UNLESS(
+    (header.version & SaveDataFileSystemVersionMask) ==
+      SaveDataFileSystemVersion,
+    ResultUnsupportedSaveDataFileSystemVersion());
+  return ResultSuccess();
+}
+
+}
+
+Result SaveDataFileImpl::InitializeTable() {
+  uint32_t index = 0;
+  NN_FS_RESULT_DO(m_FileObject.SeekTo(&index, 0));
+  return m_Storage.Initialize(m_pAllocationTable, index, m_BlockSize,
+    SubStorage(m_DataStorage, m_DataOffset, m_DataSize));
+}
+
+Result SaveDataFileSystemCoreImpl::Format(SubStorage controlArea,
+  SubStorage allocationTableMeta, SubStorage data, int64_t blockSize,
+  IBufferManager* bufferManager) {
+  int64_t controlAreaSize = 0;
+  NN_FS_RESULT_DO(controlArea.GetSize(&controlAreaSize));
+  int64_t allocationTableMetaSize = 0;
+  NN_FS_RESULT_DO(allocationTableMeta.GetSize(&allocationTableMetaSize));
+  int64_t dataSize = 0;
+  NN_FS_RESULT_DO(data.GetSize(&dataSize));
+
+  SaveDataFileSystemControlArea area = {};
+  area.header.signature = SaveDataFileSystemSignature;
+  area.header.version = SaveDataFileSystemVersion;
+  area.header.blockCount = dataSize / blockSize;
+  area.header.blockSize = blockSize;
+  NN_FS_RESULT_THROW_UNLESS(area.header.blockCount >= 2,
+    ResultInvalidSaveDataFileSystemBlockCount());
+  const uint32_t blockCount = static_cast<uint32_t>(area.header.blockCount);
+  NN_FS_RESULT_THROW_UNLESS(
+    dbm::AllocationTable::QuerySize(blockCount) <= allocationTableMetaSize,
+    ResultInvalidSaveDataFileSystemMetaSize());
+
+  const uint32_t invalidSignature = 0;
+  NN_FS_RESULT_DO(controlArea.Write(0, &invalidSignature,
+    sizeof(invalidSignature)));
+  NN_FS_RESULT_DO(controlArea.Flush());
+
+  NN_FS_RESULT_DO(FormatDbmLayer(
+    SubStorage(controlArea, sizeof(SaveDataFileSystemHeader),
+      controlAreaSize - sizeof(SaveDataFileSystemHeader)),
+    allocationTableMeta, data, blockSize, blockCount, bufferManager));
+
+  NN_FS_RESULT_DO(controlArea.Write(0, &area.header, sizeof(area.header)));
+  return controlArea.Flush();
+}
+
+Result SaveDataFileSystemCoreImpl::FormatDbmLayer(SubStorage controlArea,
+  SubStorage allocationTableMeta, SubStorage data, int64_t blockSize,
+  uint32_t blockCount, IBufferManager* bufferManager) {
+  dbm::FileSystemControlArea fileSystemControlArea;
+  fileSystemControlArea.Initialize(controlArea);
+  NN_UTIL_SCOPE_EXIT {
+    fileSystemControlArea.Finalize();
+  };
+
+  NN_FS_RESULT_DO(fileSystemControlArea.WriteBlockSize(blockSize));
+  NN_FS_RESULT_DO(fileSystemControlArea.WriteStorageInfo(0, blockCount,
+    dbm::FileSystemControlArea::AllocationTableInfoPosition));
+  NN_FS_RESULT_DO(fileSystemControlArea.WriteStorageInfo(0, blockCount,
+    dbm::FileSystemControlArea::DataInfoPosition));
+
+  NN_FS_RESULT_DO(dbm::AllocationTable::Format(allocationTableMeta,
+    blockCount));
+
+  dbm::AllocationTable allocationTable;
+  allocationTable.Initialize(allocationTableMeta, blockCount);
+
+  uint32_t directoryEntryIndex = dbm::AllocationTableStorage::InvalidIndex;
+  NN_FS_RESULT_DO(allocationTable.Allocate(&directoryEntryIndex,
+    (DirectoryEntryStorageInitialSize + blockSize - 1) / blockSize));
+  NN_FS_RESULT_DO(fileSystemControlArea.WriteAllocationInfo(
+    directoryEntryIndex,
+    dbm::FileSystemControlArea::DirectoryEntryInfoPosition));
+
+  uint32_t fileEntryIndex = dbm::AllocationTableStorage::InvalidIndex;
+  NN_FS_RESULT_DO(allocationTable.Allocate(&fileEntryIndex,
+    (FileEntryStorageInitialSize + blockSize - 1) / blockSize));
+  NN_FS_RESULT_DO(fileSystemControlArea.WriteAllocationInfo(fileEntryIndex,
+    dbm::FileSystemControlArea::FileEntryInfoPosition));
+
+  dbm::BufferedAllocationTableStorage directoryEntryStorage;
+  NN_UTIL_SCOPE_EXIT {
+    directoryEntryStorage.Finalize();
+  };
+  dbm::BufferedAllocationTableStorage fileEntryStorage;
+  NN_UTIL_SCOPE_EXIT {
+    fileEntryStorage.Finalize();
+  };
+
+  const int64_t dataSize = blockSize * blockCount;
+  if (bufferManager != nullptr) {
+    NN_FS_RESULT_DO(directoryEntryStorage.InitializeBuffered(
+      &allocationTable, directoryEntryIndex, blockSize,
+      SubStorage(data, 0, dataSize), bufferManager));
+    NN_FS_RESULT_DO(fileEntryStorage.InitializeBuffered(&allocationTable,
+      fileEntryIndex, blockSize, SubStorage(data, 0, dataSize),
+      bufferManager));
+  }
+  else {
+    NN_FS_RESULT_DO(directoryEntryStorage.Initialize(&allocationTable,
+      directoryEntryIndex, blockSize, SubStorage(data, 0, dataSize)));
+    NN_FS_RESULT_DO(fileEntryStorage.Initialize(&allocationTable,
+      fileEntryIndex, blockSize, SubStorage(data, 0, dataSize)));
+  }
+
+  return FileSystemObject::FileTable::Format(&directoryEntryStorage,
+    &fileEntryStorage);
+}
+
+Result SaveDataFileSystemCoreImpl::ExpandControlArea(SubStorage controlArea,
+  int64_t size) {
+  SaveDataFileSystemControlArea area;
+  NN_FS_RESULT_DO(controlArea.Read(0, &area, sizeof(area)));
+  NN_FS_RESULT_DO(CheckHeader(area.header));
+
+  const int64_t blockCount = size / area.header.blockSize;
+  NN_FS_RESULT_THROW_UNLESS(blockCount <= UINT32_MAX, ResultInvalidSize());
+  if (area.header.blockCount == blockCount) {
+    return ResultSuccess();
+  }
+  NN_FS_RESULT_THROW_UNLESS(blockCount >= area.header.blockCount,
+    ResultInvalidSize());
+
+  int64_t controlAreaSize = 0;
+  NN_FS_RESULT_DO(controlArea.GetSize(&controlAreaSize));
+
+  dbm::FileSystemControlArea fileSystemControlArea;
+  fileSystemControlArea.Initialize(SubStorage(controlArea,
+    sizeof(SaveDataFileSystemHeader),
+    controlAreaSize - sizeof(SaveDataFileSystemHeader)));
+  NN_UTIL_SCOPE_EXIT {
+    fileSystemControlArea.Finalize();
+  };
+  NN_FS_RESULT_DO(fileSystemControlArea.ExpandAllocationTableInfo(
+    static_cast<uint32_t>(blockCount)));
+  return ResultSuccess();
+}
+
+Result SaveDataFileSystemCoreImpl::Initialize(SubStorage controlArea,
+  SubStorage allocationTableMeta, SubStorage data,
+  IBufferManager* bufferManager) {
+  int64_t controlAreaSize = 0;
+  NN_FS_RESULT_DO(controlArea.GetSize(&controlAreaSize));
+  NN_FS_RESULT_THROW_UNLESS(
+    controlAreaSize >= static_cast<int64_t>(
+      sizeof(SaveDataFileSystemControlArea)),
+    ResultInvalidSize());
+
+  m_ControlAreaStorage = controlArea;
+  m_AllocationTableMetaStorage = allocationTableMeta;
+
+  SaveDataFileSystemControlArea area;
+  NN_FS_RESULT_DO(m_ControlAreaStorage.Read(0, &area, sizeof(area)));
+  NN_FS_RESULT_DO(CheckHeader(area.header));
+
+  m_DataStorage = data;
+
+  m_ControlArea.Initialize(SubStorage(m_ControlAreaStorage,
+    sizeof(SaveDataFileSystemHeader), sizeof(area.fileSystemControlArea)));
+  NN_UTIL_SCOPE_EXIT {
+    m_ControlArea.Finalize();
+  };
+
+  int64_t blockSize = 0;
+  NN_FS_RESULT_DO(m_ControlArea.ReadBlockSize(&blockSize));
+
+  int64_t allocationTableOffset = 0;
+  uint32_t allocationTableBlockCount = 0;
+  NN_FS_RESULT_DO(m_ControlArea.ReadStorageInfo(&allocationTableOffset,
+    &allocationTableBlockCount,
+    dbm::FileSystemControlArea::AllocationTableInfoPosition));
+
+  int64_t dataOffset = 0;
+  uint32_t blockCount = 0;
+  NN_FS_RESULT_DO(m_ControlArea.ReadStorageInfo(&dataOffset, &blockCount,
+    dbm::FileSystemControlArea::DataInfoPosition));
+
+  uint32_t directoryEntryIndex = 0;
+  NN_FS_RESULT_DO(m_ControlArea.ReadAllocationInfo(&directoryEntryIndex,
+    dbm::FileSystemControlArea::DirectoryEntryInfoPosition));
+
+  uint32_t fileEntryIndex = 0;
+  NN_FS_RESULT_DO(m_ControlArea.ReadAllocationInfo(&fileEntryIndex,
+    dbm::FileSystemControlArea::FileEntryInfoPosition));
+
+  bool isSuccess = false;
+  m_AllocationTable.Initialize(m_AllocationTableMetaStorage,
+    allocationTableBlockCount);
+  NN_UTIL_SCOPE_EXIT {
+    if (!isSuccess) {
+      m_AllocationTable.Finalize();
+    }
+  };
+
+  const int64_t dataSize = blockSize * blockCount;
+  int64_t dataStorageSize = 0;
+  NN_FS_RESULT_DO(m_DataStorage.GetSize(&dataStorageSize));
+  NN_FS_RESULT_THROW_UNLESS(dataOffset + dataSize <= dataStorageSize,
+    ResultInvalidSaveDataFileSystemDataSize());
+
+  NN_UTIL_SCOPE_EXIT {
+    if (!isSuccess) {
+      m_FileEntryStorage.Finalize();
+      m_DirectoryEntryStorage.Finalize();
+    }
+  };
+
+  if (bufferManager != nullptr) {
+    NN_FS_RESULT_DO(m_DirectoryEntryStorage.InitializeBuffered(
+      &m_AllocationTable, directoryEntryIndex, blockSize,
+      SubStorage(m_DataStorage, dataOffset, dataSize), bufferManager));
+    NN_FS_RESULT_DO(m_FileEntryStorage.InitializeBuffered(&m_AllocationTable,
+      fileEntryIndex, blockSize,
+      SubStorage(m_DataStorage, dataOffset, dataSize), bufferManager));
+  }
+  else {
+    NN_FS_RESULT_DO(m_DirectoryEntryStorage.Initialize(&m_AllocationTable,
+      directoryEntryIndex, blockSize,
+      SubStorage(m_DataStorage, dataOffset, dataSize)));
+    NN_FS_RESULT_DO(m_FileEntryStorage.Initialize(&m_AllocationTable,
+      fileEntryIndex, blockSize,
+      SubStorage(m_DataStorage, dataOffset, dataSize)));
+  }
+
+  NN_FS_RESULT_DO(m_FileSystem.Initialize(&m_AllocationTable, blockSize,
+    &m_DirectoryEntryStorage, &m_FileEntryStorage));
+
+  m_DataOffset = dataOffset;
+  m_BlockCount = blockCount;
+  m_BlockSize = blockSize;
+  isSuccess = true;
+  return ResultSuccess();
+}
+
+Result SaveDataFileSystemCoreImpl::DoCreateFile(const Path& path,
+  int64_t size, int option) {
+  static_cast<void>(option);
+  NN_FS_RESULT_DO(CheckPathFormat(path));
+
+  uint32_t id = 0;
+  dbm::detail::FileInfo info = {};
+  info.index = dbm::AllocationTable::IndexEnd;
+  NN_FS_RESULT_DO(m_FileSystem.GetFileTable()->CreateFile(&id,
+    path.GetString(), info));
+
+  FileSystemObject::FileObject file;
+  uint32_t fileId = 0;
+  Result result = m_FileSystem.OpenFile(&fileId, &file, path.GetString());
+  if (IsSuccess(result)) {
+    result = file.m_pFileSystem->ResizeFile(&file.m_FileInfo, file.m_Key,
+      size);
+  }
+  if (IsFailure(result)) {
+    m_FileSystem.DeleteFile(path.GetString());
+    return result;
+  }
+  if (size <= 0) {
+    return ResultSuccess();
+  }
+
+  dbm::AllocationTableStorage storage;
+  uint32_t index = 0;
+  NN_FS_RESULT_DO(file.SeekTo(&index, 0));
+  NN_FS_RESULT_DO(storage.Initialize(&m_AllocationTable, index, m_BlockSize,
+    SubStorage(m_DataStorage, m_DataOffset, m_BlockSize * m_BlockCount)));
+  const Result fillResult = storage.OperateRange(OperationId_FillZero, 0,
+    size);
+  storage.Finalize();
+  NN_FS_RESULT_DO(fillResult);
   return ResultSuccess();
 }
 
