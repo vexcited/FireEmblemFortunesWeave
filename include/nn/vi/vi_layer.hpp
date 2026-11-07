@@ -146,8 +146,9 @@ class INativeWindowListener {
   virtual void OnSetNextOriginMode(gs::sdk::OriginMode mode) = 0;
 };
 
-// The gs native window lives at the start of this object.
-class LayerNativeWindow {
+// Forwards the gs native window calls to the window handle it wraps, and
+// tells the layer about connection, presents and origin changes.
+class LayerNativeWindow : public gs::sdk::INativeWindow {
  public:
   explicit LayerNativeWindow(INativeWindowListener* pListener);
 
@@ -159,13 +160,66 @@ class LayerNativeWindow {
   }
 
   const gs::sdk::INativeWindow* GetNativeWindow() const {
-    return reinterpret_cast<const gs::sdk::INativeWindow*>(this);
+    return this;
   }
 
+  int Connect(const char* pName,
+    gs::sdk::NativeWindowAttribute attribute) override;
+  void Disconnect() override;
+  bool IsConnected() override;
+  void* GetHandle() override;
+  int CreateAliasImagePool(gs::NativeImageHandle image,
+    uint32_t count) override;
+  int DestroyAliasImagePool(gs::NativeImageHandle image) override;
+  int RegisterAliasBuffer(uint32_t index, gs::NativeImageHandle image)
+    override;
+  int UnregisterAliasBuffer(uint32_t index) override;
+  int CreateBuffer(uint32_t* pOutIndex,
+    gs::sdk::NativeWindowImageType** ppOutImage,
+    const gs::sdk::NativeWindowImagePreference& preference,
+    gs::sdk::AllocateFunction allocate, gs::sdk::FreeFunction free,
+    void* pUser) override;
+  int DestroyBuffer(uint32_t index, gs::sdk::NativeWindowImageType* pImage)
+    override;
+  int QueryImageHandle(gs::NativeImageHandle* pOutImage, uint32_t index)
+    override;
+  int AcquireBuffer(uint32_t* pOutIndex, gs::NativeSyncHandle* pOutSync)
+    override;
+  int PresentBuffer(uint32_t index, const gs::NativeSyncHandle& sync)
+    override;
+  int ForceAcquireBuffer(uint32_t* pOutIndex,
+    gs::NativeSyncHandle* pOutSync) override;
+  bool IsSwapIntervalSupported() override;
+  int SetNextSwapInterval(int interval) override;
+  bool IsCropSupported() override;
+  int SetNextCrop(int left, int top, int right, int bottom) override;
+  bool IsOriginModeSupported() override;
+  void SetNextOriginMode(gs::sdk::OriginMode mode) override;
+  int SetNextHdrExtendedContentLuminanceRangeMetadata(uint16_t minimum,
+    uint16_t maximum) override;
+  int SetNextHdrStandardContentLuminanceRangeMetadata(uint16_t minimum,
+    uint16_t maximum) override;
+  int SetNextHdrContentGamutMetadata(gs::sdk::NativeImageContentGamut gamut)
+    override;
+  int ClearNextHdrContentGamutMetadata() override;
+  int SetNextHdrToSdrToneMappingMetadata(
+    gs::sdk::NativeImageToneMapping mapping) override;
+  int ClearNextHdrToSdrToneMappingMetadata() override;
+  int SetNextHdrAdjustableBezierMetadata(float a, float b, float c)
+    override;
+  int ClearNextHdrAdjustableBezierMetadata() override;
+  int GetBufferSize(uint16_t* pOutWidth, uint16_t* pOutHeight) override;
+  bool TryGetNextCrop(uint16_t* pOutLeft, uint16_t* pOutTop,
+    uint16_t* pOutRight, uint16_t* pOutBottom) override;
+  gs::sdk::NativeImageColorSpace GetColorSpace() override;
+  uint16_t GetLinearUnitLuminance() override;
+  int SetColorSpace(gs::sdk::NativeImageColorSpace colorSpace) override;
+  int SetLinearUnitLuminance(uint16_t luminance) override;
+
  private:
-  uint8_t m_Reserved[0x10];
+  void* m_pHandle;
   bool m_IsBufferAcquired;
-  uint8_t m_Reserved11[0xf];
+  INativeWindowListener* m_pListener;
 };
 
 static_assert(sizeof(LayerNativeWindow) == 0x20);

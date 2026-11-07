@@ -32,9 +32,9 @@ public:
   virtual ~INativeWindow() = default;
 
   virtual int Connect(const char *name, NativeWindowAttribute attribute) = 0;
-  virtual int Disconnect() = 0;
-  virtual void Reserved0() = 0;
-  virtual void Reserved1() = 0;
+  virtual void Disconnect() = 0;
+  virtual bool IsConnected() = 0;
+  virtual void* GetHandle() = 0;
   virtual int CreateAliasImagePool(NativeImageHandle image, uint32_t count) = 0;
   virtual int DestroyAliasImagePool(NativeImageHandle image) = 0;
   virtual int RegisterAliasBuffer(uint32_t index, NativeImageHandle image) = 0;
@@ -62,7 +62,7 @@ public:
   virtual bool IsCropSupported() = 0;
   virtual int SetNextCrop(int left, int top, int right, int bottom) = 0;
   virtual bool IsOriginModeSupported() = 0;
-  virtual int SetNextOrigin(OriginMode mode) = 0;
+  virtual void SetNextOriginMode(OriginMode mode) = 0;
 
   virtual int SetNextHdrExtendedContentLuminanceRangeMetadata(
     uint16_t min, uint16_t max
@@ -104,7 +104,7 @@ int ConnectNativeWindow(
   void *window, const char *name, NativeWindowAttribute attribute
 );
 
-int DisconnectNativeWindow(void *window);
+void DisconnectNativeWindow(void *window);
 
 int CreateNativeWindowAliasImagePool(
   void *window, NativeImageHandle image, uint32_t count
@@ -153,7 +153,7 @@ int SetNativeWindowNextCrop(
 );
 
 bool IsNativeWindowOriginModeSupported(void *window);
-int SetNativeWindowNextOrigin(void *window, OriginMode mode);
+void SetNativeWindowNextOrigin(void *window, OriginMode mode);
 
 int SetNativeWindowNextHdrExtendedContentLuminanceRangeMetadata(
   void *window, uint16_t min, uint16_t max

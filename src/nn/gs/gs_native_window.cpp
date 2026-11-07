@@ -16,8 +16,8 @@ int ConnectNativeWindow(
   return ToWindow(window)->Connect(name, attribute);
 }
 
-int DisconnectNativeWindow(void *window) {
-  return ToWindow(window)->Disconnect();
+void DisconnectNativeWindow(void *window) {
+  ToWindow(window)->Disconnect();
 }
 
 int CreateNativeWindowAliasImagePool(
@@ -102,8 +102,8 @@ bool IsNativeWindowOriginModeSupported(void *window) {
   return ToWindow(window)->IsOriginModeSupported();
 }
 
-int SetNativeWindowNextOrigin(void *window, OriginMode mode) {
-  return ToWindow(window)->SetNextOrigin(mode);
+void SetNativeWindowNextOrigin(void *window, OriginMode mode) {
+  ToWindow(window)->SetNextOriginMode(mode);
 }
 
 int SetNativeWindowNextHdrExtendedContentLuminanceRangeMetadata(
