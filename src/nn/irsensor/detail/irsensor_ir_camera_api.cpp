@@ -14,6 +14,53 @@ enum ImageProcessorStatus : int32_t {
   ImageProcessorStatus_Running,
 };
 
+struct ImageProcessorConfig {
+  int64_t exposureTime;
+  int32_t lightTarget;
+  int32_t gain;
+  bool isNegativeImageUsed;
+};
+
+struct MomentProcessorConfig {
+  ImageProcessorConfig base;
+  Rect windowOfInterest;
+  int32_t preprocess;
+  int32_t preprocessIntensityThreshold;
+};
+
+struct ClusteringProcessorConfig {
+  ImageProcessorConfig base;
+  Rect windowOfInterest;
+  int32_t objectPixelCountMin;
+  int32_t objectPixelCountMax;
+  int32_t objectIntensityMin;
+  bool isExternalLightFilterEnabled;
+};
+
+struct ImageTransferProcessorConfig {
+  ImageProcessorConfig base;
+  int32_t format;
+};
+
+struct ImageTransferProcessorExConfig {
+  ImageProcessorConfig base;
+  int32_t origFormat;
+  int32_t trimmingFormat;
+  uint16_t trimmingStartX;
+  uint16_t trimmingStartY;
+  bool isExternalLightFilterEnabled;
+};
+
+struct TeraPluginProcessorConfig {
+  uint8_t modeOffset;
+  bool isParameterEnabled;
+  uint16_t parameterValue;
+};
+
+struct IrLedProcessorConfig {
+  int32_t lightTarget;
+};
+
 }
 
 namespace nn::irsensor::detail {
@@ -54,7 +101,69 @@ constexpr int StopRetryCount = 334;
 constexpr int64_t StopRetryIntervalNs = 15 * 1000 * 1000;
 constexpr PackedMcuVersion RequiredMcuVersion = {0x1b0008};
 
+constexpr Rect PointingWindowOfInterest = {0, 0, 320, 240};
+constexpr uint8_t TeraPluginParameterFlag = 2;
+
 std::atomic<int> g_IrCameraInitializedCount;
+
+// The packed configs carry the firmware version the processor expects.
+struct PackedMomentLayout {
+  PackedImageProcessorConfig base;
+  Rect windowOfInterest;
+  PackedMcuVersion requiredVersion;
+  uint8_t preprocess;
+  uint8_t preprocessIntensityThreshold;
+  uint8_t reserved[2];
+};
+
+struct PackedClusteringLayout {
+  PackedImageProcessorConfig base;
+  Rect windowOfInterest;
+  PackedMcuVersion requiredVersion;
+  uint32_t objectPixelCountMin;
+  uint32_t objectPixelCountMax;
+  uint8_t objectIntensityMin;
+  bool isExternalLightFilterEnabled;
+  uint8_t reserved[2];
+};
+
+struct PackedImageTransferLayout {
+  PackedImageProcessorConfig base;
+  PackedMcuVersion requiredVersion;
+  uint8_t format;
+  uint8_t reserved[3];
+};
+
+struct PackedImageTransferExLayout {
+  PackedImageProcessorConfig base;
+  PackedMcuVersion requiredVersion;
+  uint8_t origFormat;
+  uint8_t trimmingFormat;
+  uint16_t trimmingStartX;
+  uint16_t trimmingStartY;
+  bool isExternalLightFilterEnabled;
+  uint8_t reserved[5];
+};
+
+struct PackedPointingLayout {
+  Rect windowOfInterest;
+  PackedMcuVersion requiredVersion;
+};
+
+struct PackedSmallLayout {
+  PackedMcuVersion requiredVersion;
+  uint8_t value[4];
+};
+
+[[gnu::always_inline]] PackedImageProcessorConfig PackImageProcessorConfig(
+  const ImageProcessorConfig& config) {
+  PackedImageProcessorConfig packed = {};
+  packed.exposureTime = config.exposureTime;
+  packed.lightTarget = config.lightTarget;
+  packed.gain = config.gain;
+  packed.isNegativeImageUsed = config.isNegativeImageUsed;
+  return packed;
+}
 
 [[gnu::always_inline]] IrSensorSession* GetSession() {
   SessionManager& manager = GetSessionManager();
@@ -282,6 +391,117 @@ Result StopImageProcessorAsync(const IrCameraHandle& handle) {
   pSession->ResetInternalStatusForLibraryAppletCall(handle);
   pSession->SetVersionCheckRequestEnableFlag(handle, true);
   return pSession->StopImageProcessorAsync(handle);
+}
+
+Result RunMomentProcessor(const IrCameraHandle& handle,
+  const MomentProcessorConfig& config) {
+  PackedMomentLayout packed = {};
+  packed.base = PackImageProcessorConfig(config.base);
+  packed.windowOfInterest = config.windowOfInterest;
+  packed.requiredVersion = RequiredMcuVersion;
+  packed.preprocess = config.preprocess;
+  packed.preprocessIntensityThreshold = config.preprocessIntensityThreshold;
+  IrSensorSession* pSession = GetSession();
+  if (pSession == nullptr) {
+    return ResultNotInitialized;
+  }
+  return pSession->RunMomentProcessor(handle,
+    reinterpret_cast<const PackedMomentProcessorConfig&>(packed));
+}
+
+Result RunClusteringProcessor(const IrCameraHandle& handle,
+  const ClusteringProcessorConfig& config) {
+  PackedClusteringLayout packed = {};
+  packed.base = PackImageProcessorConfig(config.base);
+  packed.windowOfInterest = config.windowOfInterest;
+  packed.requiredVersion = RequiredMcuVersion;
+  packed.objectPixelCountMin = config.objectPixelCountMin;
+  packed.objectPixelCountMax = config.objectPixelCountMax;
+  packed.objectIntensityMin = config.objectIntensityMin;
+  packed.isExternalLightFilterEnabled = config.isExternalLightFilterEnabled;
+  IrSensorSession* pSession = GetSession();
+  if (pSession == nullptr) {
+    return ResultNotInitialized;
+  }
+  return pSession->RunClusteringProcessor(handle,
+    reinterpret_cast<const PackedClusteringProcessorConfig&>(packed));
+}
+
+Result RunImageTransferProcessor(const IrCameraHandle& handle,
+  const ImageTransferProcessorConfig& config, void* pWorkBuffer,
+  size_t workBufferSize) {
+  PackedImageTransferLayout packed = {};
+  packed.base = PackImageProcessorConfig(config.base);
+  packed.requiredVersion = RequiredMcuVersion;
+  packed.format = config.format;
+  IrSensorSession* pSession = GetSession();
+  if (pSession == nullptr) {
+    return ResultNotInitialized;
+  }
+  return pSession->RunImageTransferProcessor(handle,
+    reinterpret_cast<const PackedImageTransferProcessorConfig&>(packed),
+    pWorkBuffer, workBufferSize);
+}
+
+Result RunImageTransferProcessor(const IrCameraHandle& handle,
+  const ImageTransferProcessorExConfig& config, void* pWorkBuffer,
+  size_t workBufferSize) {
+  PackedImageTransferExLayout packed = {};
+  packed.base = PackImageProcessorConfig(config.base);
+  packed.requiredVersion = RequiredMcuVersion;
+  packed.origFormat = config.origFormat;
+  packed.trimmingFormat = config.trimmingFormat;
+  packed.trimmingStartX = config.trimmingStartX;
+  packed.trimmingStartY = config.trimmingStartY;
+  packed.isExternalLightFilterEnabled = config.isExternalLightFilterEnabled;
+  IrSensorSession* pSession = GetSession();
+  if (pSession == nullptr) {
+    return ResultNotInitialized;
+  }
+  return pSession->RunImageTransferProcessor(handle,
+    reinterpret_cast<const PackedImageTransferProcessorExConfig&>(packed),
+    pWorkBuffer, workBufferSize);
+}
+
+Result RunPointingProcessor(const IrCameraHandle& handle) {
+  PackedPointingLayout packed = {};
+  packed.windowOfInterest = PointingWindowOfInterest;
+  packed.requiredVersion = RequiredMcuVersion;
+  IrSensorSession* pSession = GetSession();
+  if (pSession == nullptr) {
+    return ResultNotInitialized;
+  }
+  return pSession->RunPointingProcessor(handle,
+    reinterpret_cast<const PackedPointingProcessorConfig&>(packed));
+}
+
+Result RunTeraPluginProcessor(const IrCameraHandle& handle,
+  const TeraPluginProcessorConfig& config) {
+  PackedSmallLayout packed = {};
+  packed.requiredVersion = RequiredMcuVersion;
+  packed.value[0] = config.modeOffset;
+  packed.value[1] = TeraPluginParameterFlag |
+    (config.isParameterEnabled << 7);
+  *reinterpret_cast<uint16_t*>(&packed.value[2]) = config.parameterValue;
+  IrSensorSession* pSession = GetSession();
+  if (pSession == nullptr) {
+    return ResultNotInitialized;
+  }
+  return pSession->RunTeraPluginProcessor(handle,
+    reinterpret_cast<const PackedTeraPluginProcessorConfig&>(packed));
+}
+
+Result RunIrLedProcessor(const IrCameraHandle& handle,
+  const IrLedProcessorConfig& config) {
+  PackedSmallLayout packed = {};
+  packed.requiredVersion = RequiredMcuVersion;
+  packed.value[0] = config.lightTarget;
+  IrSensorSession* pSession = GetSession();
+  if (pSession == nullptr) {
+    return ResultNotInitialized;
+  }
+  return pSession->RunIrLedProcessor(handle,
+    reinterpret_cast<const PackedIrLedProcessorConfig&>(packed));
 }
 
 }
