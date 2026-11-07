@@ -3,6 +3,7 @@
 
 #pragma GCC visibility push(hidden)
 #include "game/menu/game_menu.hpp"
+#include "game/sound/se.hpp"
 #pragma GCC visibility pop
 
 namespace game::gmap {
@@ -34,6 +35,7 @@ public:
   const char* Unknown32() override { return "Layout/Gmap.arc"; }
   const char* Unknown33() override { return "Gmap_SpotList"; }
   int Unknown61() override { return 3; }
+  void Unknown78(int result) override;
   void Unknown79(int result) override {}
   void Unknown93() override;
   int Unknown107() override;
@@ -66,6 +68,10 @@ private:
 #pragma GCC visibility pop
 
 GmapSpotList::~GmapSpotList() = default;
+
+void GmapSpotList::Unknown78(int /* result */) {
+  sound::PlaySe("SE_SYS_List_Change_H");
+}
 
 void GmapSpotList::Unknown93() {
   if (unknown_4a8_) {
