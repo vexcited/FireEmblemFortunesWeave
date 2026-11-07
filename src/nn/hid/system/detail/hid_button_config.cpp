@@ -70,7 +70,7 @@ Result IsDefaultButtonConfig(
 Result IsButtonConfigStorageEmbeddedEmpty(bool* pOutBool, int count) {
   sf::SharedPointer<IHidSystemServer> proxy;
   server::CreateHidSystemServerProxy(&proxy);
-  bool value;
+  bool value = true;
   const Result result =
     proxy->IsButtonConfigStorageEmbeddedEmpty(&value, count);
   if (result.IsSuccess()) {
@@ -82,7 +82,7 @@ Result IsButtonConfigStorageEmbeddedEmpty(bool* pOutBool, int count) {
 Result IsButtonConfigStorageFullEmpty(bool* pOutBool, int count) {
   sf::SharedPointer<IHidSystemServer> proxy;
   server::CreateHidSystemServerProxy(&proxy);
-  bool value;
+  bool value = true;
   const Result result = proxy->IsButtonConfigStorageFullEmpty(&value, count);
   if (result.IsSuccess()) {
     *pOutBool = value;
@@ -93,7 +93,7 @@ Result IsButtonConfigStorageFullEmpty(bool* pOutBool, int count) {
 Result IsButtonConfigStorageLeftEmpty(bool* pOutBool, int count) {
   sf::SharedPointer<IHidSystemServer> proxy;
   server::CreateHidSystemServerProxy(&proxy);
-  bool value;
+  bool value = true;
   const Result result = proxy->IsButtonConfigStorageLeftEmpty(&value, count);
   if (result.IsSuccess()) {
     *pOutBool = value;
@@ -104,7 +104,7 @@ Result IsButtonConfigStorageLeftEmpty(bool* pOutBool, int count) {
 Result IsButtonConfigStorageRightEmpty(bool* pOutBool, int count) {
   sf::SharedPointer<IHidSystemServer> proxy;
   server::CreateHidSystemServerProxy(&proxy);
-  bool value;
+  bool value = true;
   const Result result = proxy->IsButtonConfigStorageRightEmpty(&value, count);
   if (result.IsSuccess()) {
     *pOutBool = value;
@@ -115,7 +115,7 @@ Result IsButtonConfigStorageRightEmpty(bool* pOutBool, int count) {
 Result IsButtonConfigStorageJoyConGripEmpty(bool* pOutBool, int count) {
   sf::SharedPointer<IHidSystemServer> proxy;
   server::CreateHidSystemServerProxy(&proxy);
-  bool value;
+  bool value = true;
   const Result result =
     proxy->IsButtonConfigStorageJoyConGripEmpty(&value, count);
   if (result.IsSuccess()) {
