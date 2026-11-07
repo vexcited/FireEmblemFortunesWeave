@@ -20,29 +20,31 @@ int Min(int lhs, int rhs) {
 // Composition goes through the UTF-8 composer, outputs already queued here
 // stay in front of the new ones.
 template <typename Process>
-[[gnu::always_inline]] void ProcessAsUtf8(KeyCodeComposerStorage* storage,
-  Process process) {
+[[gnu::always_inline]] KeyCodeComposerStorage ProcessAsUtf8(
+  const KeyCodeComposerStorage& storage, Process process) {
   Utf8CodeComposerStorage utf8 = {};
-  if (!Utf16NativeToUtf8(&utf8, *storage)) {
-    return;
+  if (!Utf16NativeToUtf8(&utf8, storage)) {
+    return storage;
   }
   process(&utf8);
   KeyCodeComposerStorage converted = {};
   if (!Utf8ToUtf16Native(&converted, utf8)) {
-    return;
+    return storage;
   }
-  const int dequeueableCount = storage->dequeueableCount;
+  const int dequeueableCount = storage.dequeueableCount;
   if (dequeueableCount >= 1) {
-    const int total = converted.compositionCount + converted.dequeueableCount;
-    if (total != 0) {
+    // The size widens both counts, only its low half is tested.
+    const int64_t total = static_cast<int64_t>(converted.compositionCount) +
+      converted.dequeueableCount;
+    if (static_cast<int32_t>(total) != 0) {
       memmove(converted.buffer + dequeueableCount, converted.buffer,
         sizeof(uint16_t) * total);
     }
-    memcpy(converted.buffer, storage->buffer,
+    memcpy(converted.buffer, storage.buffer,
       sizeof(uint16_t) * dequeueableCount);
     converted.dequeueableCount += dequeueableCount;
   }
-  *storage = converted;
+  return converted;
 }
 
 }
@@ -146,10 +148,10 @@ int EnqueueKeyCodeComposer(KeyCodeComposerStorage* storage,
     switch (mode) {
       case KeyCodeComposerMode_RomajiHiragana:
       case KeyCodeComposerMode_RomajiKatakana:
-        ProcessAsUtf8(storage, ProcessRomaji);
+        *storage = ProcessAsUtf8(*storage, ProcessRomaji);
         break;
       case KeyCodeComposerMode_DeadKey:
-        ProcessAsUtf8(storage, ProcessDeadKey);
+        *storage = ProcessAsUtf8(*storage, ProcessDeadKey);
         break;
       case KeyCodeComposerMode_Default:
         storage->dequeueableCount += storage->compositionCount;
@@ -200,10 +202,10 @@ void FlushKeyCodeComposer(KeyCodeComposerStorage* storage) {
   switch (storage->mode) {
     case KeyCodeComposerMode_RomajiHiragana:
     case KeyCodeComposerMode_RomajiKatakana:
-      ProcessAsUtf8(storage, ProcessRomajiForcibly);
+      *storage = ProcessAsUtf8(*storage, ProcessRomajiForcibly);
       break;
     case KeyCodeComposerMode_DeadKey:
-      ProcessAsUtf8(storage, ProcessDeadKeyForcibly);
+      *storage = ProcessAsUtf8(*storage, ProcessDeadKeyForcibly);
       break;
     case KeyCodeComposerMode_Default:
       storage->dequeueableCount += storage->compositionCount;

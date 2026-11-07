@@ -4,6 +4,10 @@
 
 namespace nn::settings {
 
+void GetDebugPadGenericPadMap(DebugPadGenericPadMap* pOutValue);
+void SetDebugPadGenericPadMap(const DebugPadGenericPadMap& value);
+void GetDebugPadKeyboardMap(DebugPadKeyboardMap* pOutValue);
+void SetDebugPadKeyboardMap(const DebugPadKeyboardMap& value);
 void GetDebugPadGenericPadMap(DebugPadGenericPadMapV2* pOutValue);
 void SetDebugPadGenericPadMap(const DebugPadGenericPadMapV2& value);
 void ResetDebugPadGenericPadMap();

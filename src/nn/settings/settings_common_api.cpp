@@ -1,8 +1,34 @@
+#include <string.h>
+
 #include "nn/diag/diag_abort.hpp"
 #include "nn/settings/detail/settings_api.hpp"
 #include "nn/settings/settings_api.hpp"
 
 namespace nn::settings {
+
+void GetDebugPadGenericPadMap(DebugPadGenericPadMap* pOutValue) {
+  DebugPadGenericPadMapV2 value = {};
+  NN_ABORT_UNLESS_RESULT_SUCCESS(detail::GetDebugPadGenericPadMap(&value));
+  memcpy(pOutValue, &value, sizeof(*pOutValue));
+}
+
+void SetDebugPadGenericPadMap(const DebugPadGenericPadMap& value) {
+  DebugPadGenericPadMapV2 converted = {};
+  memcpy(&converted, &value, sizeof(value));
+  NN_ABORT_UNLESS_RESULT_SUCCESS(detail::SetDebugPadGenericPadMap(converted));
+}
+
+void GetDebugPadKeyboardMap(DebugPadKeyboardMap* pOutValue) {
+  DebugPadKeyboardMapV2 value = {};
+  NN_ABORT_UNLESS_RESULT_SUCCESS(detail::GetDebugPadKeyboardMap(&value));
+  memcpy(pOutValue, &value, sizeof(*pOutValue));
+}
+
+void SetDebugPadKeyboardMap(const DebugPadKeyboardMap& value) {
+  DebugPadKeyboardMapV2 converted = {};
+  memcpy(&converted, &value, sizeof(value));
+  NN_ABORT_UNLESS_RESULT_SUCCESS(detail::SetDebugPadKeyboardMap(converted));
+}
 
 void GetDebugPadGenericPadMap(DebugPadGenericPadMapV2* pOutValue) {
   NN_ABORT_UNLESS_RESULT_SUCCESS(detail::GetDebugPadGenericPadMap(pOutValue));

@@ -32,19 +32,38 @@ struct BatteryLot;
 
 enum ChineseTraditionalInputMethod : int32_t {};
 
-struct DebugPadGenericPadMap;
+// The first versions of the debug pad maps are the leading part of the
+// second ones.
+struct DebugPadGenericPadMap {
+  int32_t genericPadId;
+  int32_t mappings[19];
+};
 
-struct DebugPadGenericPadMapV2;
+struct DebugPadGenericPadMapV2 {
+  int32_t genericPadId;
+  int32_t mappings[23];
+  int32_t reserved[8];
+};
 
-struct DebugPadKeyboardMap;
+struct DebugPadKeyboardMap {
+  int32_t mappings[14];
+};
 
-struct DebugPadKeyboardMapV2;
+struct DebugPadKeyboardMapV2 {
+  int32_t mappings[18];
+  int32_t reserved[8];
+};
 
-struct FullKeyGenericPadMap;
+struct FullKeyGenericPadMap {
+  int32_t genericPadId;
+  int32_t mappings[21];
+};
 
 enum FullKeyIndex : int32_t {};
 
-struct FullKeyKeyboardMap;
+struct FullKeyKeyboardMap {
+  int32_t mappings[16];
+};
 
 enum KeyboardLayout : int32_t {};
 

@@ -10,7 +10,7 @@
   },
   "sdk": {
    "text": 8902192,
-   "functions": 45139
+   "functions": 45322
   },
   "subsdk0": {
    "text": 932432,
@@ -22,7 +22,7 @@
   },
   "subsdk2": {
    "text": 542576,
-   "functions": 1529
+   "functions": 1530
   }
  }
 }
