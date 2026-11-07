@@ -1134,4 +1134,117 @@ void SetZoomEnabled(bool isEnabled) {
   NN_ABORT_UNLESS_RESULT_SUCCESS(detail::SetZoomFlag(isEnabled));
 }
 
+
+int GetAccountIdentificationSettings(AccountIdentificationSettings* pOutValues,
+  int count) {
+  int value = {};
+  NN_ABORT_UNLESS_RESULT_SUCCESS(detail::GetAccountIdentificationSettings(
+    &value, pOutValues, count));
+  return value;
+}
+
+void SetAccountIdentificationSettings(
+  const AccountIdentificationSettings* pValues, int count) {
+  NN_ABORT_UNLESS_RESULT_SUCCESS(detail::SetAccountIdentificationSettings(
+    pValues, count));
+}
+
+int GetPinCodeReregistrationGuideAccounts(
+  account::NetworkServiceAccountId* pOutValues, int count) {
+  int value = {};
+  NN_ABORT_UNLESS_RESULT_SUCCESS(detail::GetPinCodeReregistrationGuideAccounts(
+    &value, pOutValues, count));
+  return value;
+}
+
+void SetPinCodeReregistrationGuideAccounts(
+  const account::NetworkServiceAccountId* pValues, int count) {
+  NN_ABORT_UNLESS_RESULT_SUCCESS(detail::SetPinCodeReregistrationGuideAccounts(
+    pValues, count));
+}
+
+int GetDeviceLockPinCode(char* buffer, int size) {
+  int value = {};
+  NN_ABORT_UNLESS_RESULT_SUCCESS(detail::GetDeviceLockPinCode(
+    buffer, &value, size));
+  return value;
+}
+
+void SetLcdFlags(const util::BitFlagSet<32, LcdFlag>& flags) {
+  NN_ABORT_UNLESS_RESULT_SUCCESS(detail::SetLcdFlags(flags));
+}
+
+int GetAccountNotificationSettings(AccountNotificationSettings* pOutValues,
+  int count) {
+  int value = {};
+  NN_ABORT_UNLESS_RESULT_SUCCESS(detail::GetAccountNotificationSettings(
+    &value, pOutValues, count));
+  return value;
+}
+
+void SetAccountNotificationSettings(
+  const AccountNotificationSettings* pValues, int count) {
+  NN_ABORT_UNLESS_RESULT_SUCCESS(detail::SetAccountNotificationSettings(
+    pValues, count));
+}
+
+int GetTvHdrSettings(TvHdrSettings* pOutValues, int count) {
+  int value = {};
+  NN_ABORT_UNLESS_RESULT_SUCCESS(detail::GetTvHdrSettings(
+    &value, pOutValues, count));
+  return value;
+}
+
+void SetTvHdrSettings(const TvHdrSettings* pValues, int count) {
+  NN_ABORT_UNLESS_RESULT_SUCCESS(detail::SetTvHdrSettings(pValues, count));
+}
+
+int GetTvHdrSettingsEx(TvHdrSettingsEx* pOutValues, int count) {
+  int value = {};
+  NN_ABORT_UNLESS_RESULT_SUCCESS(detail::GetTvHdrSettingsEx(
+    &value, pOutValues, count));
+  return value;
+}
+
+void SetTvHdrSettingsEx(const TvHdrSettingsEx* pValues, int count) {
+  NN_ABORT_UNLESS_RESULT_SUCCESS(detail::SetTvHdrSettingsEx(pValues, count));
+}
+
+int GetAllowedSslHosts(AllowedSslHost* pOutValues, unsigned long count) {
+  int value = {};
+  NN_ABORT_UNLESS_RESULT_SUCCESS(detail::GetAllowedSslHosts(
+    &value, pOutValues, count));
+  return value;
+}
+
+int GetHttpAuthConfigs(HttpAuthConfig* pOutValues, unsigned long count) {
+  int value = {};
+  NN_ABORT_UNLESS_RESULT_SUCCESS(detail::GetHttpAuthConfigs(
+    &value, pOutValues, count));
+  return value;
+}
+
+void SetInputNoiseReductionEnabledForCommunication(bool isEnabled) {
+  NN_ABORT_UNLESS_RESULT_SUCCESS(
+    detail::SetInputNoiseReductionForCommunicationFlag(isEnabled));
+}
+
+// The scheme model falls back to the default without calibration data.
+Result GetHomeMenuSchemeModel(unsigned int* pOutValue) {
+  const Result result = detail::GetHomeMenuSchemeModel(pOutValue);
+  const uint32_t value = result.value & 0x3fffff;
+  if (value == 0x48a69 || value == 0x48c69) {
+    return Result{0x3e69};
+  }
+  NN_ABORT_UNLESS_RESULT_SUCCESS(result);
+  return result;
+}
+
+void GetRegionCode(RegionCode* pOutValue) {
+  NN_ABORT_UNLESS_NOT_NULL(pOutValue);
+  int value = {};
+  NN_ABORT_UNLESS_RESULT_SUCCESS(detail::GetRegionCode(&value));
+  *pOutValue = static_cast<RegionCode>(value);
+}
+
 }
