@@ -87,9 +87,7 @@ Result GetSixAxisSensorAccurateUserCalibrationState(SixAxisSensorAccurateUserCal
   server::CreateHidSystemServerProxy(&proxy);
   SixAxisSensorAccurateUserCalibrationState value = {};
   const Result result = proxy->GetSixAxisSensorAccurateUserCalibrationState(&value, uniqueSixAxisSensorHandle, utility::GetAppletResourceUserId());
-  if (result.IsSuccess()) {
-    *pOutSixAxisSensorAccurateUserCalibrationState = value;
-  }
+  *pOutSixAxisSensorAccurateUserCalibrationState = value;
   return result;
 }
 
