@@ -145,7 +145,7 @@ public:
   virtual const char* Unknown33() { return "Common_BasicMenu"; }
   virtual const char* Unknown34() { return nullptr; }
   virtual const char* Unknown35() { return nullptr; }
-  virtual void* Unknown36() { return nullptr; }
+  virtual const char* Unknown36() { return nullptr; }
   virtual bool Unknown37() { return Unknown36() != nullptr; }
   virtual int Unknown38() { return Unknown37() ? 0x100000 : 0; }
   virtual bool Unknown39() { return false; }

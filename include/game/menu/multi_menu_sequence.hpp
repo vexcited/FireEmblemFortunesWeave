@@ -43,7 +43,7 @@ public:
   virtual void Unknown33();
   virtual void Unknown34();
   virtual void* Unknown35() { return nullptr; }
-  virtual void* Unknown36() { return nullptr; }
+  virtual const char* Unknown36() { return nullptr; }
   virtual void* Unknown37() { return nullptr; }
   virtual void Unknown38() {}
   virtual void Unknown39() {}

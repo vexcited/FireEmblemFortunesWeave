@@ -11,7 +11,7 @@ public:
   const char* GetLayoutName() override { return "Hub_Individual"; }
   void Unknown33() override;
   void* Unknown35() override;
-  void* Unknown36() override;
+  const char* Unknown36() override;
   void Unknown39() override;
   int ImplUnknown00() override { return 1; }
   const char* ImplUnknown03() override { return "MID_HotelMenu_Individual"; }

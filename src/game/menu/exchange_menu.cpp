@@ -10,7 +10,7 @@ public:
   void Unknown05() override;
   const char* GetLayoutName() override { return "Common_Equip_ItemExchange"; }
   void* Unknown35() override;
-  void* Unknown36() override;
+  const char* Unknown36() override;
   void Unknown39() override;
   bool Unknown40() override;
 
@@ -31,7 +31,7 @@ public:
 
   const char* GetLayoutName() override { return "Common_Equip_Skill"; }
   void* Unknown35() override;
-  void* Unknown36() override;
+  const char* Unknown36() override;
   void Unknown41() override;
   bool Unknown46() override { return (flags_ & 1) == 0; }
   int Unknown47() override;
@@ -51,7 +51,7 @@ public:
   }
 
   void* Unknown35() override;
-  void* Unknown36() override;
+  const char* Unknown36() override;
   bool Unknown40() override;
   void Unknown41() override;
   bool Unknown46() override { return (flags_ & 1) == 0 && unknown_184_; }

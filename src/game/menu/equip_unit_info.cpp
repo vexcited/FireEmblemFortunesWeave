@@ -19,7 +19,7 @@ class DeployUnitInfo : public EquipUnitInfo {
 public:
   ~DeployUnitInfo() override;
 
-  void* Unknown36() override;
+  const char* Unknown36() override;
   int Unknown135() override { return 2; }
 };
 

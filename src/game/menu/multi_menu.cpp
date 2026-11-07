@@ -65,6 +65,22 @@ void UnitTroopMenu::Unknown78(int /* result */) {
   sound::PlaySe("SE_SYS_List_Change_H");
 }
 
+std::weak_ptr<ui::LayoutAccessor> UnitTroopMenu::Unknown50() {
+  return accessor_.GetPart("L_ArrowL");
+}
+
+std::weak_ptr<ui::LayoutAccessor> UnitTroopMenu::Unknown51() {
+  return accessor_.GetPart("L_ArrowR");
+}
+
+void UnitTroopMenu::Unknown76(int /* result */) {
+  sound::PlayCursorHorizontalLeftSe();
+}
+
+void UnitTroopMenu::Unknown77(int /* result */) {
+  sound::PlayCursorHorizontalRightSe();
+}
+
 namespace {
 
 class UnitTroopItemMenu : public UnitTroopMenu {
@@ -122,7 +138,7 @@ class SkillPoolMenu : public EquipMenu {
 public:
   SkillPoolMenu();
 
-  void* Unknown36() override;
+  const char* Unknown36() override;
   std::weak_ptr<ui::LayoutAccessor> Unknown50() override;
   std::weak_ptr<ui::LayoutAccessor> Unknown51() override;
   void Unknown84() override;
@@ -136,6 +152,26 @@ public:
 };
 
 [[gnu::used]] SkillPoolMenu::SkillPoolMenu() = default;
+
+const char* SkillPoolMenu::Unknown36() {
+  return "L_MenuItem_Skill";
+}
+
+std::weak_ptr<ui::LayoutAccessor> SkillPoolMenu::Unknown50() {
+  return accessor_.GetPart("L_UnitInfo/L_ArrowL");
+}
+
+std::weak_ptr<ui::LayoutAccessor> SkillPoolMenu::Unknown51() {
+  return accessor_.GetPart("L_UnitInfo/L_ArrowR");
+}
+
+void SkillPoolMenu::Unknown135() {
+  Unknown16dd9a0();
+}
+
+void SkillPoolMenu::Unknown136() {
+  Unknown16defa0();
+}
 
 class TransporterPoolMenu : public EquipMenu {
 public:
@@ -159,6 +195,22 @@ public:
 
 [[gnu::used]] TransporterPoolMenu::TransporterPoolMenu() = default;
 
+std::weak_ptr<ui::LayoutAccessor> TransporterPoolMenu::Unknown50() {
+  return accessor_.GetPart("L_UnitInfo/L_ArrowL");
+}
+
+std::weak_ptr<ui::LayoutAccessor> TransporterPoolMenu::Unknown51() {
+  return accessor_.GetPart("L_UnitInfo/L_ArrowR");
+}
+
+void TransporterPoolMenu::Unknown135() {
+  Unknown136();
+}
+
+void TransporterPoolMenu::Unknown136() {
+  Unknown16defa0();
+}
+
 }
 
 class EquipUnitMenu : public EquipMenu {
@@ -174,10 +226,14 @@ class ItemUnitMenu : public EquipUnitMenu {
 public:
   ~ItemUnitMenu() override;
 
-  void* Unknown36() override;
+  const char* Unknown36() override;
   void Unknown128() override;
   virtual void* Unknown162() { return nullptr; }
 };
+
+const char* ItemUnitMenu::Unknown36() {
+  return "L_MenuItem_Item";
+}
 
 namespace {
 
@@ -197,11 +253,15 @@ public:
 
 [[gnu::used]] ExchangeUnitMenu::ExchangeUnitMenu() = default;
 
+void ExchangeUnitMenu::Unknown136() {
+  Unknown16defa0();
+}
+
 class SkillUnitMenu : public EquipUnitMenu {
 public:
   SkillUnitMenu();
 
-  void* Unknown36() override;
+  const char* Unknown36() override;
   std::weak_ptr<ui::LayoutAccessor> Unknown50() override;
   std::weak_ptr<ui::LayoutAccessor> Unknown51() override;
   void Unknown85() override;
@@ -220,6 +280,26 @@ private:
 };
 
 [[gnu::used]] SkillUnitMenu::SkillUnitMenu() = default;
+
+const char* SkillUnitMenu::Unknown36() {
+  return "L_MenuItem_Skill";
+}
+
+std::weak_ptr<ui::LayoutAccessor> SkillUnitMenu::Unknown50() {
+  return accessor_.GetPart("L_UnitInfo/L_ArrowL");
+}
+
+std::weak_ptr<ui::LayoutAccessor> SkillUnitMenu::Unknown51() {
+  return accessor_.GetPart("L_UnitInfo/L_ArrowR");
+}
+
+void SkillUnitMenu::Unknown135() {
+  Unknown136();
+}
+
+void SkillUnitMenu::Unknown136() {
+  Unknown16defa0();
+}
 
 }
 

@@ -12,7 +12,7 @@ public:
   const char* Unknown32() override { return "Layout/CommonMenu.arc"; }
   const char* Unknown33() override { return "Common_SendUnitItem"; }
   const char* Unknown35() override { return "L_EquipList"; }
-  void* Unknown36() override;
+  const char* Unknown36() override;
   void Unknown84() override;
   void Unknown88() override;
   int Unknown100() override;

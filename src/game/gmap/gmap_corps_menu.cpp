@@ -28,7 +28,7 @@ public:
   const char* GetLayoutArchive() override { return "Layout/Gmap.arc"; }
   const char* GetLayoutName() override { return "Gmap_Troop_Exchange"; }
   void* Unknown35() override;
-  void* Unknown36() override;
+  const char* Unknown36() override;
   void* Unknown37() override;
   void Unknown38() override;
   void Unknown41() override;
@@ -52,7 +52,7 @@ public:
   const char* GetLayoutArchive() override { return "Layout/Gmap.arc"; }
   const char* GetLayoutName() override { return "Gmap_Banquet"; }
   void* Unknown35() override;
-  void* Unknown36() override;
+  const char* Unknown36() override;
   void* Unknown37() override;
   void Unknown39() override;
   void Unknown41() override;

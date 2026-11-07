@@ -12,7 +12,7 @@ public:
   const char* GetLayoutArchive() override { return "Layout/CommonMenu.arc"; }
   const char* GetLayoutName() override { return "Common_TroopMenu"; }
   void* Unknown35() override;
-  void* Unknown36() override;
+  const char* Unknown36() override;
   void Unknown39() override;
   void Unknown41() override { Unknown48(); }
   void Unknown45(bool enable) override { tab_.SetEnabled(enable); }
@@ -31,7 +31,7 @@ class InfoUnitTroopSequence : public UnitTroopSequence {
 public:
   ~InfoUnitTroopSequence() override;
 
-  void* Unknown36() override;
+  const char* Unknown36() override;
   int Unknown46() override { return 1; }
 };
 
@@ -39,7 +39,7 @@ class InventoryUnitTroopSequence : public UnitTroopSequence {
 public:
   ~InventoryUnitTroopSequence() override;
 
-  void* Unknown36() override;
+  const char* Unknown36() override;
   int Unknown46() override { return (flags_ & 1) == 0; }
   const char* ImplUnknown03() override { return "MID_SysMenu_Inventory"; }
   int ImplUnknown10() override;
