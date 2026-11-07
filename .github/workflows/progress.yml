@@ -1,0 +1,61 @@
+name: Progress
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - data/**
+      - tools/**
+      - .github/workflows/progress.yml
+  pull_request:
+    paths:
+      - data/**
+      - tools/**
+      - .github/workflows/progress.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  OBJDIFF_URL: https://github.com/encounter/objdiff/releases/download/v3.8.2
+  OBJDIFF_SHA256: >-
+    e5445089a6f707e30cb5e02992451b604619cedfd2660ee2373a86bfefd9e718
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Generate report
+        run: |
+          percent=$(python -B tools/objdiff_report.py)
+          echo "Behavior-verified text coverage: **$percent**." \
+            >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Validate with objdiff-cli
+        run: |
+          curl -fsSL -o objdiff-cli "$OBJDIFF_URL/objdiff-cli-linux-x86_64"
+          echo "$OBJDIFF_SHA256  objdiff-cli" | sha256sum -c -
+          chmod +x objdiff-cli
+          ./objdiff-cli report changes build/report.json build/report.json \
+            -o build/changes.json
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: 04007EF01F8AE000_report
+          path: build/report.json
+          if-no-files-found: error
+
+      - name: Update decomp.fun
+        if: >-
+          github.event_name != 'pull_request' &&
+          github.ref_name == github.event.repository.default_branch
+        run: |
+          curl -fsS "https://decomp.fun/api/fresh?repo=$GITHUB_REPOSITORY" \
+            || true
