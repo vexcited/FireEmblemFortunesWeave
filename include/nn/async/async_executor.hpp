@@ -46,7 +46,7 @@ public:
     const CancellationToken& token, ExecutionBlocker blocker) = 0;
 };
 
-class QueuingExecutor : public Executor {
+class QueuingExecutor final : public Executor {
 public:
   explicit QueuingExecutor(MemoryResource* resource);
   ~QueuingExecutor() override;

@@ -53747,7 +53747,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 19f3a60,8,verified,src/game/map/map_combat_prediction.cpp,_ZNK4game20CombatPredictionBase14IsSkillInRangeERKNS_9UnitSkillE
 19f3ff0,244,verified,src/game/map/map_combat_prediction.cpp,_ZNK4game3map19MapCombatPrediction11PredictItemERKNS_8UnitItemE
 19f4140,420,verified,src/game/map/map_combat_prediction.cpp,_ZNK4game3map19MapCombatPrediction13IsItemInRangeERKNS_8UnitItemE
-19f4300,304,verified,src/game/map/map_combat_prediction.cpp,_ZNK4game3map19MapCombatPrediction14IsSkillInRangeERKNS_9UnitSkillE
+19f4300,308,verified,src/game/map/map_combat_prediction.cpp,_ZNK4game3map19MapCombatPrediction14IsSkillInRangeERKNS_9UnitSkillE
 19f4b50,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::(anonymous namespace)::CanSelectAfterMindReset(game::Unit const*, game::map::TargetData const*, int, game::map::MindConst::Type)::$_0, void (game::map::TargetData const&)>::deleting destructor"
 19f4b80,84,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::(anonymous namespace)::CanSelectAfterMindReset(game::Unit const*, game::map::TargetData const*, int, game::map::MindConst::Type)::$_0, void (game::map::TargetData const&)>::__clone()"
 19f4be0,32,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::(anonymous namespace)::CanSelectAfterMindReset(game::Unit const*, game::map::TargetData const*, int, game::map::MindConst::Type)::$_0, void (game::map::TargetData const&)>::__clone(__base*)"
