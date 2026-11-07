@@ -457,13 +457,13 @@ FxBase* Base::createFxPCMPlayer(void*, uint32_t, uint32_t) {
 void Base::destroyFxPCMPlayer(FxBase*) {
 }
 
-void Base::setAuxBusVolume(uint32_t, void*) {
+void Base::appendEffect(int, fx::FxBase*) {
 }
 
-void Base::clearEffect(void*) {
+void Base::clearEffect(int) {
 }
 
-void Base::appendEffect(uint32_t, void*) {
+void Base::removeEffect(int, fx::FxBase*) {
 }
 
 void Base::beginEffect() {
@@ -475,16 +475,16 @@ void Base::endEffect() {
 void Base::updateEffect() {
 }
 
-void Base::appendFx(FxBase*) {
+void Base::appendFinalMixEffect(fx::FxBase*) {
 }
 
-void Base::clearAllEffect(void*) {
+void Base::clearFinalMixEffect() {
 }
 
-void Base::removeFx(FxBase*) {
+void Base::removeFinalMixEffect(fx::FxBase*) {
 }
 
-void Base::setEffectVolume(void*, uint32_t, float) {
+void Base::setAuxBusVolume(int, float, int) {
 }
 
 void Base::resetEffect() {

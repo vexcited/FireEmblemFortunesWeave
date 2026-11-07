@@ -4,6 +4,7 @@
 #include <atomic>
 #include <cstdint>
 
+#include "nn/atk/effect.hpp"
 #include "nn/audio/renderer_api.hpp"
 #include "nn/audio/renderer_config.hpp"
 #include "nn/os/mutex.hpp"
@@ -70,11 +71,6 @@ public:
   }
 };
 
-class FinalMix {
-public:
-  void SetVolume(float volume);
-};
-
 class HardwareManager {
 public:
   static HardwareManager& GetInstance();
@@ -86,9 +82,8 @@ public:
     return m_OutputMode;
   }
 
-  void SetAuxBus(int index, void* bus) {
-    m_AuxBus[index] = bus;
-  }
+  void SetAuxBus(int index, void* bus);
+  SubMix& GetSubMix(int index);
 
   FinalMix& GetFinalMix() {
     return m_FinalMix;
@@ -121,7 +116,7 @@ private:
   void* m_AuxBus[4];
   uint8_t m_Body2[1384 - 304];
   FinalMix m_FinalMix;
-  uint8_t m_Body3[0x610 - 1385];
+  uint8_t m_Body3[0x610 - 1384 - sizeof(FinalMix)];
   nn::audio::AudioRendererParameter m_Parameter;
   uint8_t m_Body4[1720 - 0x610 - sizeof(nn::audio::AudioRendererParameter)];
   nn::os::MutexType m_RendererMutex;

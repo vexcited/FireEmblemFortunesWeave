@@ -186,6 +186,18 @@ public:
     uint32_t channels) override;
   void destroyFxPCMPlayer(FxBase* fx) override;
 
+  void appendEffect(int bus, fx::FxBase* fx) override;
+  void clearEffect(int bus) override;
+  void removeEffect(int bus, fx::FxBase* fx) override;
+  void beginEffect() override;
+  void endEffect() override;
+  void updateEffect() override;
+  void appendFinalMixEffect(fx::FxBase* fx) override;
+  void clearFinalMixEffect() override;
+  void removeFinalMixEffect(fx::FxBase* fx) override;
+  void setAuxBusVolume(int bus, float volume, int subMix) override;
+  void resetEffect() override;
+
   void setOutputMode(uint32_t mode) override;
   int getOutputMode() override;
   void setOutputVolume(float volume) override;

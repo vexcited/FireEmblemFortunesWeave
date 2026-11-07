@@ -2,6 +2,8 @@
 
 #include <stdint.h>
 
+#include <string>
+
 #include "game/data/data_file.hpp"
 #include "game/singleton.hpp"
 
@@ -42,42 +44,61 @@ private:
 
 namespace history {
 
+// The notes on the current action kept with its record.
+class LogInfo {
+public:
+  void SetEscape(const Unit* unit);
+  void SetBattleSkill(const Unit* unit, const char* sid);
+
+  // The rewind message of the action, by kind.
+  std::string CreateText() const;
+
+  LogInfo() = default;
+  LogInfo(const LogInfo& other) = default;
+
+  // The original copies member by member.
+  LogInfo& operator=(const LogInfo& other) {
+    kind_ = other.kind_;
+    unknown_01_ = other.unknown_01_;
+    unknown_02_ = other.unknown_02_;
+    unknown_03_ = other.unknown_03_;
+    unknown_04_ = other.unknown_04_;
+    value_ = other.value_;
+    for (int i = 0; i < 4; i++) {
+      names_[i] = other.names_[i];
+    }
+    return *this;
+  }
+
+private:
+  std::string CreateTextFixed() const;
+  std::string CreateTextAttack() const;
+  std::string CreateTextHeal() const;
+  std::string CreateTextAssist() const;
+  std::string CreateTextArts() const;
+  std::string CreateTextSpecial() const;
+  std::string CreateTextGambit() const;
+  std::string CreateTextRage() const;
+  std::string CreateTextItemUse() const;
+  std::string CreateTextEscape() const;
+  std::string CreateTextTreasureBox() const;
+  std::string CreateTextMiracle() const;
+  std::string CreateTextSkill() const;
+  std::string CreateTextKilledByRevenge() const;
+  std::string CreateTextGeneral() const;
+
+  uint8_t kind_ = 0;
+  uint8_t unknown_01_ = 0;
+  uint8_t unknown_02_ = 0;
+  int8_t unknown_03_ = -1;
+  int8_t unknown_04_ = -1;
+  int value_ = 0;
+  HashedString names_[4];
+};
+
 // The map history, recording while its state is 1 and it isn't paused.
 class Impl : public Singleton<Impl> {
 public:
-  // The notes on the current action kept with its record.
-  class LogInfo {
-  public:
-    void SetEscape(const Unit* unit);
-    void SetBattleSkill(const Unit* unit, const char* sid);
-
-    LogInfo() = default;
-    LogInfo(const LogInfo& other) = default;
-
-    // The original copies member by member.
-    LogInfo& operator=(const LogInfo& other) {
-      kind_ = other.kind_;
-      unknown_01_ = other.unknown_01_;
-      unknown_02_ = other.unknown_02_;
-      unknown_03_ = other.unknown_03_;
-      unknown_04_ = other.unknown_04_;
-      value_ = other.value_;
-      for (int i = 0; i < 4; i++) {
-        names_[i] = other.names_[i];
-      }
-      return *this;
-    }
-
-  private:
-    uint8_t kind_ = 0;
-    uint8_t unknown_01_ = 0;
-    uint8_t unknown_02_ = 0;
-    int8_t unknown_03_ = -1;
-    int8_t unknown_04_ = -1;
-    int value_ = 0;
-    HashedString names_[4];
-  };
-
   // The record kept for the mind of the acting unit, picked once.
   struct MindUnit {
     void Clear() {

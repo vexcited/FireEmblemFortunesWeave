@@ -2,6 +2,7 @@
 
 #include <cstring>
 
+#include "nn/atk/sound_system.hpp"
 #include "nn/os/timer_event.hpp"
 #include "snd/target/fx.hpp"
 
@@ -510,6 +511,88 @@ FxBase* BaseNX::createFxPCMPlayer(void* bus, uint32_t index,
 
 void BaseNX::destroyFxPCMPlayer(FxBase* fx) {
   deleteFx(fx);
+}
+
+void BaseNX::appendEffect(int bus, fx::FxBase* fx) {
+  const auto auxBus = static_cast<nn::atk::AuxBus>(bus);
+  if (fx->getImpl()->effect != nullptr) {
+    nn::atk::SoundSystem::AppendEffect(auxBus, fx->getImpl()->effect,
+      fx->getBuffer(), fx->getBufferSize());
+  }
+  else if (fx->getImpl()->aux != nullptr) {
+    nn::atk::SoundSystem::AppendEffect(auxBus, fx->getImpl()->aux,
+      fx->getBuffer(), fx->getBufferSize());
+  }
+}
+
+// Waits for the sound thread to drop the effects.
+void BaseNX::clearEffect(int bus) {
+  const auto auxBus = static_cast<nn::atk::AuxBus>(bus);
+  {
+    nn::atk::detail::driver::SoundThreadLock lock;
+    nn::atk::SoundSystem::ClearEffect(auxBus);
+  }
+  while (!nn::atk::SoundSystem::IsClearEffectFinished(auxBus)) {
+    sleep(1);
+  }
+}
+
+void BaseNX::removeEffect(int bus, fx::FxBase* fx) {
+  const auto auxBus = static_cast<nn::atk::AuxBus>(bus);
+  if (fx->getImpl()->effect != nullptr) {
+    nn::atk::SoundSystem::RemoveEffect(auxBus, fx->getImpl()->effect);
+  }
+  else if (fx->getImpl()->aux != nullptr) {
+    nn::atk::SoundSystem::RemoveEffect(auxBus, fx->getImpl()->aux);
+  }
+}
+
+void BaseNX::beginEffect() {
+}
+
+void BaseNX::endEffect() {
+}
+
+void BaseNX::updateEffect() {
+}
+
+// Only auxiliary effects go to the final mix.
+void BaseNX::appendFinalMixEffect(fx::FxBase* fx) {
+  if (fx->getImpl()->effect != nullptr) {
+    return;
+  }
+  if (fx->getImpl()->aux != nullptr) {
+    nn::atk::SoundSystem::AppendEffectToFinalMix(fx->getImpl()->aux,
+      fx->getBuffer(), fx->getBufferSize());
+  }
+}
+
+void BaseNX::clearFinalMixEffect() {
+  {
+    nn::atk::detail::driver::SoundThreadLock lock;
+    nn::atk::SoundSystem::ClearEffectFromFinalMix();
+  }
+  while (!nn::atk::SoundSystem::IsClearEffectFromFinalMixFinished()) {
+    sleep(1);
+  }
+}
+
+void BaseNX::removeFinalMixEffect(fx::FxBase* fx) {
+  if (fx->getImpl()->effect != nullptr) {
+    return;
+  }
+  if (fx->getImpl()->aux != nullptr) {
+    nn::atk::SoundSystem::RemoveEffectFromFinalMix(fx->getImpl()->aux);
+  }
+}
+
+void BaseNX::setAuxBusVolume(int bus, float volume, int subMix) {
+  nn::atk::detail::driver::SoundThreadLock lock;
+  nn::atk::SoundSystem::SetAuxBusVolume(static_cast<nn::atk::AuxBus>(bus),
+    volume, nn::TimeSpan{0}, subMix);
+}
+
+void BaseNX::resetEffect() {
 }
 
 void BaseNX::setOutputMode(uint32_t mode) {

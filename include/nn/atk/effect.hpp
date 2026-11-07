@@ -26,11 +26,27 @@ public:
   virtual ReceiverType GetReceiverType() const;
 };
 
+class EffectBase;
+class EffectAux;
+
 class OutputMixer : public OutputReceiver {
+public:
+  bool AppendEffect(EffectBase* effect, int bus, void* buffer, size_t size);
+  bool AppendEffect(EffectAux* effect, int bus, void* buffer, size_t size);
+  void RemoveEffect(EffectBase* effect, int bus);
+  void RemoveEffect(EffectAux* effect, int bus);
+  void ClearEffect(int bus);
+  bool HasEffect(int bus) const;
 };
 
 class SubMix : public OutputMixer {
 public:
+  bool AppendEffect(EffectBase* effect, int bus, void* buffer, size_t size);
+  bool AppendEffect(EffectAux* effect, int bus, void* buffer, size_t size);
+  void RemoveEffect(EffectBase* effect, int bus);
+  void RemoveEffect(EffectAux* effect, int bus);
+  void ClearEffect(int bus);
+
   nn::audio::SubMixType* GetSubMix() {
     return &m_SubMix;
   }
@@ -42,6 +58,13 @@ private:
 
 class FinalMix : public OutputMixer {
 public:
+  void SetVolume(float volume);
+
+  // The final mix has a single bus.
+  bool AppendEffect(EffectAux* effect, void* buffer, size_t size);
+  void RemoveEffect(EffectAux* effect);
+  void ClearEffect();
+
   nn::audio::FinalMixType* GetFinalMix() {
     return &m_FinalMix;
   }

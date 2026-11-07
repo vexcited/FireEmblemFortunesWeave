@@ -13,6 +13,12 @@ class VoiceBase;
 
 }
 
+namespace snd::fx {
+
+class FxBase;
+
+}
+
 namespace snd::target {
 
 class FxBase;
@@ -205,16 +211,16 @@ public:
     uint32_t channels);
   virtual void destroyFxPCMPlayer(FxBase* fx);
 
-  virtual void setAuxBusVolume(uint32_t bus, void* fx);
-  virtual void clearEffect(void* bus);
-  virtual void appendEffect(uint32_t bus, void* fx);
+  virtual void appendEffect(int bus, fx::FxBase* fx);
+  virtual void clearEffect(int bus);
+  virtual void removeEffect(int bus, fx::FxBase* fx);
   virtual void beginEffect();
   virtual void endEffect();
   virtual void updateEffect();
-  virtual void appendFx(FxBase* fx);
-  virtual void clearAllEffect(void* bus);
-  virtual void removeFx(FxBase* fx);
-  virtual void setEffectVolume(void* bus, uint32_t index, float volume);
+  virtual void appendFinalMixEffect(fx::FxBase* fx);
+  virtual void clearFinalMixEffect();
+  virtual void removeFinalMixEffect(fx::FxBase* fx);
+  virtual void setAuxBusVolume(int bus, float volume, int subMix);
   virtual void resetEffect();
   virtual void setAuxBus(int index, void* bus);
   virtual void setOutputMode(uint32_t mode);

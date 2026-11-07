@@ -50,6 +50,14 @@ public:
   virtual void disable();
   virtual bool isRemovable() const;
 
+  size_t getBufferSize() const {
+    return bufferSize_;
+  }
+
+  void* getBuffer() const {
+    return buffer_;
+  }
+
 protected:
   uint8_t unknown_15e8_[0x10];
   target::FxBase* impl_;
