@@ -1119,7 +1119,7 @@ public:
     std::optional<float> blendSec);
 
   void StorePosure(std::weak_ptr<Character> target, bool unknown);
-  void CommitRestore(float endCameraSec);
+  void CommitRestore(std::optional<float> endCameraSec);
 
   bool IsEnableBindFinal() const {
     return enable_bind_final_;
@@ -1157,7 +1157,8 @@ public:
 private:
   CountedSwitch posure_;
   uint8_t unknown_18_[0x29];
-  bool hide_ui_;
+  // Read as a byte, any nonzero value hides the UI.
+  uint8_t hide_ui_;
   uint8_t unknown_42_[0x2];
   int camera_state_group_;
   uint8_t unknown_48_[0x20];

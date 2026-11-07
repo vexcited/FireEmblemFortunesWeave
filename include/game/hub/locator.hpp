@@ -166,8 +166,9 @@ private:
 
 class Destination : public Singleton<Destination> {
 public:
+  // The original copies the list through an out of line assignment.
   void SetOverride(std::optional<std::vector<uint64_t>> hashes) {
-    override_ = std::move(hashes);
+    [[clang::noinline]] override_ = hashes;
   }
 
   void SetShowQuestion(bool isQuestion) {

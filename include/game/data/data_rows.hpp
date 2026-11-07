@@ -7,6 +7,7 @@
 #include <vector>
 
 #include "game/data/flag_condition.hpp"
+#include "game/data/prefixed_label.hpp"
 
 namespace game {
 
@@ -42,6 +43,7 @@ class RangeFile;
 class SkillMotionFile;
 class ProfileFile;
 class CategoryFile;
+class TutorialFile;
 
 }
 
@@ -130,6 +132,14 @@ inline constexpr bool kInlineDataRef<FacilitySceneMapVariationGroup> = true;
 
 template<>
 inline constexpr bool kInlineDataRef<FacilitySceneLocationData> = true;
+
+template<>
+struct DataFileOf<TutorialGroup> {
+  using type = TutorialFile;
+};
+
+template<>
+inline constexpr bool kInlineDataRef<TutorialGroup> = true;
 
 template<>
 struct DataFileOf<PerchAnswerData> {
@@ -1392,14 +1402,37 @@ struct HonorData : DataState<HonorDataState> {
 static_assert(sizeof(HonorData) == 0x78);
 
 struct NoticeDataState {
-  std::vector<const void*> unknown_00;
-  std::vector<const void*> unknown_18;
-  unsigned char unknown_30[0x10];
-  std::string unknown_40;
+  FlagCondition condition;
+  PrefixedLabel label;
+  HashedString text;
 };
 
+static_assert(sizeof(NoticeDataState) == 0x68);
+
 struct NoticeData : DataState<NoticeDataState> {
-  unsigned char unknown_20[0xa0];
+  void Build() {
+    tutorial_60.Resolve();
+    persons_78.Resolve();
+    items_a8.Resolve();
+
+    if (state == nullptr) {
+      state = new NoticeDataState();
+    }
+
+    state->condition.Set(conditions);
+    state->label.Set("通知", key.text);
+    state->text = HashedString(text);
+  }
+
+  unsigned char unknown_20[0x8];
+  NameList conditions;
+  unsigned char unknown_38[0x28];
+  DataRef<TutorialGroup> tutorial_60;
+  unsigned char unknown_70[0x8];
+  DataRefList<PersonData> persons_78;
+  unsigned char unknown_88[0x20];
+  DataRefList<ItemData> items_a8;
+  const char* text;
 };
 
 static_assert(sizeof(NoticeData) == 0xc0);

@@ -385,7 +385,7 @@ fff0,88,verified,src/movie/detail/movie_video_decoder_event_manager.cpp,_ZN5movi
 10c20,112,verified,src/movie/detail/movie_buffer_reader.cpp,_ZN5movie6detail9BitReader9ReadBytesEPhm
 10ca0,288,verified,src/movie/detail/movie_buffer_reader.cpp,_ZN5movie6detail9BitReader7ParseUEEPj
 10de0,224,verified,src/movie/detail/movie_buffer_reader.cpp,_ZN5movie6detail9BitReader6SkipUEEv
-10ee0,288,verified,src/movie/detail/movie_buffer_reader.cpp,_ZN5movie6detail9BitReader7ParseSEEPi
+10ee0,328,verified,src/movie/detail/movie_buffer_reader.cpp,_ZN5movie6detail9BitReader7ParseSEEPi
 11030,36,verified,src/movie/detail/movie_buffer_reader.cpp,_ZN5movie6detail9BitReader6SkipSEEv
 11060,120,verified,src/movie/detail/movie_buffer_reader.cpp,_ZN5movie6detail9BitReader15SkipScalingListEj
 110e0,152,verified,src/movie/detail/movie_buffer_reader.cpp,_ZN5movie6detail9BitReader8SkipBitsEj

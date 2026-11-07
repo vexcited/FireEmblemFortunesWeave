@@ -33,7 +33,8 @@ void Variable::setVariable(const Variable& other) {
   }
 }
 
-void Variable::setHandle(const ContextHandle& handle) {
+// The original keeps this out of line in setVariable.
+[[gnu::noinline]] void Variable::setHandle(const ContextHandle& handle) {
   reset();
   type_ = kHandle;
   handle_.Assign(handle);

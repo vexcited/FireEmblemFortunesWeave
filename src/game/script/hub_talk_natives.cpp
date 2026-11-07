@@ -239,7 +239,8 @@ void ShowChoiceMenu(CScriptArray& mids) {
   if (GetRunningContext()->GetRunner()->IsSkipping()) {
     std::vector<const char*> labels;
     for (unsigned int i = 0; i < mids.GetSize(); ++i) {
-      labels.push_back(static_cast<const as::string*>(mids.At(i))->c_str());
+      const char* label = static_cast<const as::string*>(mids.At(i))->c_str();
+      [[clang::always_inline]] labels.push_back(label);
     }
     if (game::menu::CreateChoiceMenu(ProcHubSeqView::GetLeafProc(), labels)
       != nullptr) {
