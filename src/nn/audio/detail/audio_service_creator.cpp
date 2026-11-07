@@ -1,7 +1,6 @@
 #include "nn/audio/audio_system.hpp"
 #include "nn/diag/diag_abort.hpp"
-#include "nn/lmem/exp_heap.hpp"
-#include "nn/os/mutex.hpp"
+#include "nn/sf/exp_heap_proxy.hpp"
 #include "nn/sf/hipc.hpp"
 
 namespace nn::audio {
@@ -14,18 +13,11 @@ class IAudioOutManager : public sf::IServiceObject {};
 
 class IAudioSnoopManager : public sf::IServiceObject {};
 
-// Each service tag owns an expanded heap that is set up when the module
-// loads.
-struct ProxyHeap {
-  lmem::detail::HeapHead* heap;
-  os::MutexType mutex;
-};
-
-extern ProxyHeap g_AudioInManagerProxyHeap;
-extern ProxyHeap g_AudioOutManagerProxyHeap;
-extern ProxyHeap g_AudioSnoopManagerProxyHeap;
-extern ProxyHeap g_AudioSystemManagerForAppletProxyHeap;
-extern ProxyHeap g_AudioSystemManagerForDebuggerProxyHeap;
+extern sf::ExpHeapAllocator g_AudioInManagerProxyHeap;
+extern sf::ExpHeapAllocator g_AudioOutManagerProxyHeap;
+extern sf::ExpHeapAllocator g_AudioSnoopManagerProxyHeap;
+extern sf::ExpHeapAllocator g_AudioSystemManagerForAppletProxyHeap;
+extern sf::ExpHeapAllocator g_AudioSystemManagerForDebuggerProxyHeap;
 
 extern uintptr_t AudioInManagerProxyVtable[];
 extern uintptr_t AudioOutManagerProxyVtable[];
@@ -35,40 +27,18 @@ extern uintptr_t AudioSystemManagerForDebuggerProxyVtable[];
 
 namespace {
 
-struct Proxy {
-  uintptr_t* vtable;
-  uint32_t handleKind;
-  uint32_t handle;
-  uintptr_t* referenceVtable;
-  uint32_t references;
-};
-
-// The reference counter sits behind the methods of the interface, so its
-// vtable starts further in for larger interfaces.
 template <typename Interface>
 [[gnu::always_inline]] sf::SharedPointer<Interface> CreateProxyByHipc(
-  const char* pServiceName, ProxyHeap& heap, uintptr_t* pVtable,
-  size_t referenceVtableOffset) {
+  const char* pServiceName, sf::ExpHeapAllocator& allocator,
+  uintptr_t* pVtable, size_t referenceVtableOffset) {
   sf::SharedPointer<Interface> proxy;
   uint32_t handle = 0;
   sf::hipc::InitializeHipcServiceResolution();
   const Result result{sf::hipc::ConnectToHipcService(&handle, pServiceName)};
   sf::hipc::FinalizeHipcServiceResolution();
   NN_ABORT_UNLESS_RESULT_SUCCESS(result);
-
-  os::LockMutex(&heap.mutex);
-  auto* pProxy =
-    static_cast<Proxy*>(lmem::AllocateFromExpHeap(heap.heap, sizeof(Proxy)));
-  os::UnlockMutex(&heap.mutex);
-  if (pProxy != nullptr) {
-    pProxy->references = 1;
-    pProxy->handleKind = 1;
-    pProxy->handle = handle;
-    pProxy->vtable = pVtable;
-    pProxy->referenceVtable = pVtable + referenceVtableOffset;
-  }
-  sf::SharedPointer<Interface>(reinterpret_cast<Interface*>(pProxy), false)
-    .Swap(proxy);
+  sf::SharedPointer<Interface>(sf::detail::CreateExpHeapProxy<Interface>(
+    allocator, handle, pVtable, referenceVtableOffset), false).Swap(proxy);
   return proxy;
 }
 
