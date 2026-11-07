@@ -188,7 +188,14 @@ class IClient : public ::nn::sf::IServiceObject {
   virtual Result ShutdownAllSockets(::nn::sf::Out<int32_t> pOutResult,
     ::nn::sf::Out<int32_t> pOutErrno,
     const ::nn::sf::InAutoSelectBuffer& address, uint32_t mask) = 0;
-  virtual Result CreateNoSfEventFdPair() = 0;
+  virtual Result CreateNoSfEventFdPair(::nn::sf::Out<int32_t> pOutResult,
+    ::nn::sf::Out<int32_t> pOutErrno, int32_t pairIndex,
+    ::nn::sf::Out<::nn::sf::NativeHandle> pOutWritableHandle0,
+    ::nn::sf::Out<::nn::sf::NativeHandle> pOutReadableHandle0,
+    ::nn::sf::Out<::nn::sf::NativeHandle> pOutWritableHandle1,
+    ::nn::sf::Out<::nn::sf::NativeHandle> pOutReadableHandle1,
+    ::nn::sf::Out<::nn::sf::NativeHandle> pOutWritableHandle2,
+    ::nn::sf::Out<::nn::sf::NativeHandle> pOutReadableHandle2) = 0;
   virtual Result Command42(::nn::sf::Out<int32_t> pOutResult,
     ::nn::sf::Out<int32_t> pOutErrno,
     ::nn::sf::Out<ExtendedResult> pOutExtended,

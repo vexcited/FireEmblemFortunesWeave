@@ -98,10 +98,8 @@ struct AllocatorStatistics {
 struct NoSfEventFdEntry {
   os::SystemEventType writableEvent;
   os::SystemEventType readableEvent;
-  uint32_t writableHandle;
-  bool isWritableHandleManaged;
-  uint32_t readableHandle;
-  bool isReadableHandleManaged;
+  ::nn::sf::NativeHandle writableHandle;
+  ::nn::sf::NativeHandle readableHandle;
   int32_t socket;
 };
 
@@ -1761,6 +1759,527 @@ int Ioctl(int socket, IoctlCommand command, void* data, size_t length) {
   return IoctlImpl(socket, static_cast<uint32_t>(command), data, length);
 }
 
+namespace {
+
+// The NoMem variants send the message headers in one fixed request and the
+// data through the buffers of the call, at most seven of each per call.
+constexpr int NoMemBatchSize = 7;
+constexpr size_t NoMemNameSize = 28;
+constexpr int SolSocketLevel = 0xffff;
+constexpr uint32_t SoProtocol = 0x1016;
+constexpr int IpProtoTcp = 6;
+constexpr int32_t MsgDontWait = 0x80;
+
+struct NoMemMessageHeader {
+  uint8_t name[NoMemNameSize];
+  uint32_t nameLength;
+  int32_t vectorCount;
+  uint32_t controlLength;
+  int32_t flags;
+};
+
+struct NoMemRequest {
+  int32_t socket;
+  int32_t protocol;
+  int32_t flags;
+  NoMemMessageHeader messages[NoMemBatchSize];
+};
+
+struct NoMemName {
+  uint8_t data[NoMemNameSize];
+};
+
+// A message split over several requests is first in the request carrying
+// its start and last in the one carrying its end.
+struct NoMemMessageEntry {
+  MMsgHdr* message;
+  bool isFirst;
+  bool isLast;
+};
+
+struct NoMemBatch {
+  NoMemRequest request;
+  void* bases[NoMemBatchSize];
+  int32_t lengths[NoMemBatchSize];
+  NoMemMessageEntry entries[NoMemBatchSize];
+};
+
+[[gnu::always_inline]] int GetNoMemVectorCount(const MsgHdr& message) {
+  return message.msg_iovlen + (message.msg_control != nullptr ? 1 : 0);
+}
+
+[[gnu::always_inline]] bool GetSocketProtocol(int* pOutProtocol,
+  int socket) {
+  uint32_t length = sizeof(int);
+  *pOutProtocol = 0;
+  if (socket::GetSockOpt(socket, static_cast<Level>(SolSocketLevel),
+    static_cast<Option>(SoProtocol), pOutProtocol, &length) < 0) {
+    switch (static_cast<int>(socket::GetLastError())) {
+      case EBadF:
+      case EAgain:
+      case EFault:
+      case EInval:
+      case ENotSock:
+        break;
+      default:
+        socket::SetLastError(static_cast<Errno>(EInval));
+        break;
+    }
+    return false;
+  }
+  return true;
+}
+
+[[gnu::always_inline]] void ResetBatch(NoMemBatch* batch, int nativeSocket,
+  int protocol, MsgFlag flags) {
+  memset(batch->request.messages, 0xff, sizeof(batch->request.messages));
+  batch->request.flags = static_cast<int32_t>(flags);
+  batch->request.socket = nativeSocket;
+  batch->request.protocol = protocol;
+  memset(batch->bases, 0, sizeof(batch->bases));
+  memset(batch->lengths, 0, sizeof(batch->lengths));
+  memset(batch->entries, 0, sizeof(batch->entries));
+}
+
+// Fills the header of a whole message and its control and data vectors.
+[[gnu::always_inline]] void AddWholeMessage(NoMemBatch* batch,
+  int* pVectorCount, int entryCount, MMsgHdr* message) {
+  const MsgHdr& header = message->msg_hdr;
+  NoMemMessageEntry& entry = batch->entries[entryCount];
+  entry.message = message;
+  entry.isFirst = true;
+  entry.isLast = true;
+  NoMemMessageHeader& requestHeader = batch->request.messages[entryCount];
+  memcpy(requestHeader.name, header.msg_name, header.msg_namelen);
+  requestHeader.nameLength = header.msg_namelen;
+  requestHeader.vectorCount = header.msg_iovlen;
+  requestHeader.controlLength = header.msg_controllen;
+  requestHeader.flags = static_cast<int32_t>(header.msg_flags);
+  int vectorCount = *pVectorCount;
+  if (header.msg_control != nullptr) {
+    batch->bases[vectorCount] = header.msg_control;
+    batch->lengths[vectorCount] = header.msg_controllen;
+    ++vectorCount;
+  }
+  for (int i = 0; i < header.msg_iovlen; ++i) {
+    batch->bases[vectorCount] = header.msg_iov[i].iov_base;
+    batch->lengths[vectorCount] =
+      static_cast<int32_t>(header.msg_iov[i].iov_len);
+    ++vectorCount;
+  }
+  if (GetNoMemVectorCount(header) == 0) {
+    batch->bases[vectorCount] = nullptr;
+    batch->lengths[vectorCount] = 0;
+    ++vectorCount;
+  }
+  *pVectorCount = vectorCount;
+}
+
+// Fills the header of the next part of a stream message, as many data
+// vectors as the request still takes. Returns whether the message is done.
+[[gnu::always_inline]] bool AddMessagePart(NoMemBatch* batch,
+  int* pVectorCount, int* pConsumed, int entryCount, MMsgHdr* message,
+  bool isReceive) {
+  const MsgHdr& header = message->msg_hdr;
+  int needed = GetNoMemVectorCount(header);
+  NoMemMessageEntry& entry = batch->entries[entryCount];
+  entry.message = message;
+  NoMemMessageHeader& requestHeader = batch->request.messages[entryCount];
+  memcpy(requestHeader.name, header.msg_name, header.msg_namelen);
+  int vectorCount = *pVectorCount;
+  int consumed = *pConsumed;
+  int partCount = header.msg_iovlen - consumed;
+  if (NoMemBatchSize - vectorCount < partCount) {
+    partCount = NoMemBatchSize - vectorCount;
+  }
+  requestHeader.nameLength = header.msg_namelen;
+  requestHeader.vectorCount = partCount;
+  requestHeader.controlLength = 0;
+  if (consumed == 0) {
+    entry.isFirst = true;
+    requestHeader.flags = static_cast<int32_t>(header.msg_flags);
+  }
+  else {
+    requestHeader.flags = isReceive ?
+      static_cast<int32_t>(header.msg_flags) | MsgDontWait :
+      static_cast<int32_t>(header.msg_flags);
+  }
+  for (int i = 0; i < partCount; ++i) {
+    batch->bases[vectorCount] = header.msg_iov[consumed].iov_base;
+    batch->lengths[vectorCount] =
+      static_cast<int32_t>(header.msg_iov[consumed].iov_len);
+    ++consumed;
+    ++vectorCount;
+  }
+  if (needed == 0) {
+    batch->bases[vectorCount] = nullptr;
+    batch->lengths[vectorCount] = 0;
+    ++vectorCount;
+  }
+  *pVectorCount = vectorCount;
+  bool isDone = needed == consumed;
+  if (isDone) {
+    consumed = 0;
+    entry.isLast = true;
+  }
+  *pConsumed = consumed;
+  return isDone;
+}
+
+// Returns the server result. A partial write of a message reports EAGAIN.
+[[gnu::noinline]] int SendMessageBatch(int* pOutError, int* pSentCount,
+  const NoMemRequest* request, void* const* bases, const int32_t* lengths,
+  NoMemMessageEntry* entries) {
+  *pOutError = 0;
+  int result = 0;
+  sf::ExtendedResult sent = {};
+  ::nn::sf::InAutoSelectBuffer inRequest(request, sizeof(NoMemRequest));
+  ::nn::sf::InAutoSelectBuffer inVector0(bases[0], lengths[0]);
+  ::nn::sf::InAutoSelectBuffer inVector1(bases[1], lengths[1]);
+  ::nn::sf::InAutoSelectBuffer inVector2(bases[2], lengths[2]);
+  ::nn::sf::InAutoSelectBuffer inVector3(bases[3], lengths[3]);
+  ::nn::sf::InAutoSelectBuffer inVector4(bases[4], lengths[4]);
+  ::nn::sf::InAutoSelectBuffer inVector5(bases[5], lengths[5]);
+  ::nn::sf::InAutoSelectBuffer inVector6(bases[6], lengths[6]);
+  Result callResult = g_ClientState.pClient->Command42(Out(&result),
+    Out(pOutError), Out(&sent), inRequest, inVector0, inVector1, inVector2,
+    inVector3, inVector4, inVector5, inVector6);
+  if (callResult.IsFailure()) {
+    *pOutError = ConvertResultToErrno(callResult);
+    result = -1;
+  }
+  else if (result >= 0) {
+    int vectorIndex = 0;
+    for (int i = 0; i < result; ++i) {
+      int vectorEnd = vectorIndex + request->messages[i].vectorCount;
+      uint32_t expected = 0;
+      for (int j = vectorIndex; j < vectorEnd; ++j) {
+        expected += lengths[j];
+      }
+      NoMemMessageEntry& entry = entries[i];
+      NN_ABORT_UNLESS(entry.message != nullptr);
+      if (entry.isFirst) {
+        entry.message->msg_len = sent.data[i];
+      }
+      else {
+        entry.message->msg_len += sent.data[i];
+      }
+      if (entry.isLast) {
+        ++*pSentCount;
+      }
+      if (sent.data[i] < expected) {
+        result = -1;
+        *pOutError = EAgain;
+      }
+      vectorIndex = vectorEnd;
+    }
+    return result;
+  }
+  if (*pOutError != EAgain) {
+    for (int i = 0; i < NoMemBatchSize; ++i) {
+      if (entries[i].message != nullptr) {
+        entries[i].message->msg_len = 0;
+      }
+    }
+  }
+  return result;
+}
+
+// Datagram sockets receive the source addresses in the first vector. The
+// time spent is taken from the timeout.
+[[gnu::noinline]] int RecvMessageBatch(const NoMemRequest* request,
+  void* const* bases, const int32_t* lengths, NoMemMessageEntry* entries,
+  int* pReceivedCount, TimeSpan* pTimeout, const NoMemName* names) {
+  int result = 0;
+  int error = 0;
+  sf::ExtendedResult received = {};
+  ::nn::sf::InAutoSelectBuffer inRequest(request, sizeof(NoMemRequest));
+  ::nn::sf::OutAutoSelectBuffer outVector0(bases[0], lengths[0]);
+  ::nn::sf::OutAutoSelectBuffer outVector1(bases[1], lengths[1]);
+  ::nn::sf::OutAutoSelectBuffer outVector2(bases[2], lengths[2]);
+  ::nn::sf::OutAutoSelectBuffer outVector3(bases[3], lengths[3]);
+  ::nn::sf::OutAutoSelectBuffer outVector4(bases[4], lengths[4]);
+  ::nn::sf::OutAutoSelectBuffer outVector5(bases[5], lengths[5]);
+  ::nn::sf::OutAutoSelectBuffer outVector6(bases[6], lengths[6]);
+  sf::Timespec timeout = {pTimeout->nanoseconds / 1000000000,
+    pTimeout->nanoseconds % 1000000000};
+  os::Tick start = os::GetSystemTick();
+  Result callResult = g_ClientState.pClient->Command43(Out(&result),
+    Out(&error), Out(&received), inRequest, outVector0, outVector1,
+    outVector2, outVector3, outVector4, outVector5, outVector6, timeout);
+  os::Tick end = os::GetSystemTick();
+  pTimeout->nanoseconds -=
+    os::ConvertToTimeSpan(os::Tick{end.value - start.value}).nanoseconds;
+  if (callResult.IsFailure()) {
+    error = ConvertResultToErrno(callResult);
+    result = -1;
+  }
+  else if (result >= 0) {
+    for (int i = 0; i < result; ++i) {
+      NoMemMessageEntry& entry = entries[i];
+      NN_ABORT_UNLESS(entry.message != nullptr);
+      if (entry.isFirst) {
+        ++*pReceivedCount;
+        entry.message->msg_len = received.data[i];
+      }
+      else {
+        entry.message->msg_len += received.data[i];
+      }
+      MsgHdr& header = entry.message->msg_hdr;
+      if (request->protocol != IpProtoTcp && header.msg_name != nullptr) {
+        memcpy(header.msg_name, names[i].data, header.msg_namelen);
+      }
+    }
+    return result;
+  }
+  if (*pReceivedCount == 0) {
+    *pReceivedCount = -1;
+  }
+  SetLastErrorImpl(error);
+  return result;
+}
+
+}
+
+ssize_t SendMMsgNoMem(int socket, MMsgHdr* messages, size_t count,
+  MsgFlag flags) {
+  NN_ABORT_UNLESS(IsInitializedImpl());
+  if (messages == nullptr) {
+    socket::SetLastError(static_cast<Errno>(EInval));
+    return -1;
+  }
+  if (count == 0) {
+    socket::SetLastError(static_cast<Errno>(EMsgSize));
+    return -1;
+  }
+  int protocol;
+  if (!GetSocketProtocol(&protocol, socket)) {
+    return -1;
+  }
+
+  // Stream messages with more vectors than a request takes are split.
+  bool isSplit = false;
+  if (protocol == IpProtoTcp) {
+    for (size_t i = 0; i != count; ++i) {
+      const MsgHdr& header = messages[i].msg_hdr;
+      if (HasRightsControl(header)) {
+        SetLastErrorImpl(EOpNotSupp);
+        return -1;
+      }
+      isSplit |= GetNoMemVectorCount(header) > NoMemBatchSize;
+    }
+  }
+  else {
+    for (size_t i = 0; i != count; ++i) {
+      const MsgHdr& header = messages[i].msg_hdr;
+      if (GetNoMemVectorCount(header) > NoMemBatchSize) {
+        socket::SetLastError(static_cast<Errno>(ENoMem));
+        return -1;
+      }
+      if (HasRightsControl(header)) {
+        SetLastErrorImpl(EOpNotSupp);
+        return -1;
+      }
+    }
+  }
+  int nativeSocket;
+  if (!GetNativeSocket(&nativeSocket, socket)) {
+    return -1;
+  }
+
+  NoMemBatch batch;
+  int sentCount = 0;
+  int vectorCount = 0;
+  int entryCount = 0;
+  ResetBatch(&batch, nativeSocket, protocol, flags);
+  if (isSplit) {
+    int consumed = 0;
+    for (int i = 0; static_cast<size_t>(i) <= count;) {
+      if (static_cast<size_t>(i) != count && vectorCount < NoMemBatchSize) {
+        if (AddMessagePart(&batch, &vectorCount, &consumed, entryCount,
+          &messages[i], false)) {
+          ++i;
+        }
+        ++entryCount;
+        continue;
+      }
+      if (static_cast<size_t>(i) == count) {
+        ++i;
+        if (vectorCount == 0) {
+          break;
+        }
+      }
+      int previousCount = sentCount;
+      int error = 0;
+      if (SendMessageBatch(&error, &sentCount, &batch.request, batch.bases,
+        batch.lengths, batch.entries) <= 0) {
+        if (sentCount < 1) {
+          if (error == EAgain &&
+            batch.entries[sentCount - previousCount].message->msg_len != 0) {
+            return sentCount + 1;
+          }
+          socket::SetLastError(static_cast<Errno>(error));
+          return -1;
+        }
+        return sentCount;
+      }
+      ResetBatch(&batch, nativeSocket, protocol, flags);
+      entryCount = 0;
+      vectorCount = 0;
+    }
+  }
+  else {
+    for (int i = 0; static_cast<size_t>(i) <= count;) {
+      if (static_cast<size_t>(i) != count) {
+        int needed = GetNoMemVectorCount(messages[i].msg_hdr);
+        int slots = needed != 0 ? needed : 1;
+        if (slots + vectorCount < NoMemBatchSize + 1) {
+          AddWholeMessage(&batch, &vectorCount, entryCount, &messages[i]);
+          ++entryCount;
+          ++i;
+          continue;
+        }
+      }
+      else {
+        ++i;
+        if (vectorCount == 0) {
+          break;
+        }
+      }
+      int error = 0;
+      if (SendMessageBatch(&error, &sentCount, &batch.request, batch.bases,
+        batch.lengths, batch.entries) <= 0) {
+        if (sentCount < 1) {
+          socket::SetLastError(static_cast<Errno>(error));
+          return -1;
+        }
+        return sentCount;
+      }
+      ResetBatch(&batch, nativeSocket, protocol, flags);
+      entryCount = 0;
+      vectorCount = 0;
+    }
+  }
+  return sentCount != 0 ? sentCount : -1;
+}
+
+ssize_t RecvMMsgNoMem(int socket, MMsgHdr* messages, size_t count,
+  MsgFlag flags, TimeSpan* pTimeout) {
+  NN_ABORT_UNLESS(IsInitializedImpl());
+  if (messages == nullptr || count == 0) {
+    SetLastErrorImpl(EInval);
+    return -1;
+  }
+  int protocol;
+  if (!GetSocketProtocol(&protocol, socket)) {
+    return -1;
+  }
+
+  // Datagram messages leave one vector for the source addresses.
+  bool isSplit = false;
+  if (protocol == IpProtoTcp) {
+    for (size_t i = 0; i != count; ++i) {
+      const MsgHdr& header = messages[i].msg_hdr;
+      if (HasRightsControl(header)) {
+        SetLastErrorImpl(EOpNotSupp);
+        return -1;
+      }
+      isSplit |= GetNoMemVectorCount(header) > NoMemBatchSize;
+    }
+  }
+  else {
+    for (size_t i = 0; i != count; ++i) {
+      const MsgHdr& header = messages[i].msg_hdr;
+      if (GetNoMemVectorCount(header) > NoMemBatchSize - 1) {
+        socket::SetLastError(static_cast<Errno>(ENoMem));
+        return -1;
+      }
+      if (HasRightsControl(header)) {
+        SetLastErrorImpl(EOpNotSupp);
+        return -1;
+      }
+    }
+  }
+  int nativeSocket;
+  if (!GetNativeSocket(&nativeSocket, socket)) {
+    return -1;
+  }
+
+  NoMemBatch batch;
+  NoMemName names[NoMemBatchSize];
+  int receivedCount = 0;
+  int vectorCount = 0;
+  int entryCount = 0;
+  ResetBatch(&batch, nativeSocket, protocol, flags);
+  memset(names, 0, sizeof(names));
+  TimeSpan timeout = pTimeout != nullptr ? *pTimeout : TimeSpan{0};
+  if (isSplit) {
+    int consumed = 0;
+    for (int i = 0; static_cast<size_t>(i) <= count;) {
+      if (static_cast<size_t>(i) != count && vectorCount < NoMemBatchSize) {
+        if (AddMessagePart(&batch, &vectorCount, &consumed, entryCount,
+          &messages[i], true)) {
+          ++i;
+        }
+        ++entryCount;
+        continue;
+      }
+      if (static_cast<size_t>(i) == count) {
+        ++i;
+        if (vectorCount == 0) {
+          break;
+        }
+      }
+      if (RecvMessageBatch(&batch.request, batch.bases, batch.lengths,
+        batch.entries, &receivedCount, &timeout, names) < 0) {
+        break;
+      }
+      if (pTimeout == nullptr) {
+        timeout = TimeSpan{0};
+      }
+      ResetBatch(&batch, nativeSocket, protocol, flags);
+      entryCount = 0;
+      vectorCount = 0;
+    }
+  }
+  else {
+    for (int i = 0; static_cast<size_t>(i) <= count;) {
+      if (static_cast<size_t>(i) != count) {
+        int needed = GetNoMemVectorCount(messages[i].msg_hdr);
+        int slots = needed != 0 ? needed : 1;
+        if (slots + vectorCount < NoMemBatchSize + 1) {
+          if (protocol != IpProtoTcp && vectorCount == 0) {
+            batch.bases[0] = names;
+            batch.lengths[0] = sizeof(names);
+            vectorCount = 1;
+          }
+          AddWholeMessage(&batch, &vectorCount, entryCount, &messages[i]);
+          ++entryCount;
+          ++i;
+          continue;
+        }
+      }
+      else {
+        ++i;
+        if (vectorCount == 0) {
+          break;
+        }
+      }
+      if (RecvMessageBatch(&batch.request, batch.bases, batch.lengths,
+        batch.entries, &receivedCount, &timeout, names) < 0) {
+        break;
+      }
+      if (pTimeout == nullptr) {
+        timeout = TimeSpan{0};
+      }
+      ResetBatch(&batch, nativeSocket, protocol, flags);
+      entryCount = 0;
+      vectorCount = 0;
+    }
+  }
+  return receivedCount;
+}
+
 ssize_t SendMsgNoMem(int socket, const MsgHdr* message, MsgFlag flags) {
   NN_ABORT_UNLESS(IsInitializedImpl());
   MMsgHdr messages = {};
@@ -1793,6 +2312,172 @@ ssize_t RecvMsgNoMem(int socket, MsgHdr* message, MsgFlag flags) {
   }
   *message = messages.msg_hdr;
   return messages.msg_len;
+}
+
+namespace {
+
+constexpr int NoSfEventFdCount = 6;
+constexpr int NoSfEventFdPairCount = 3;
+constexpr int NoSfEventFdSocketNone = -1;
+constexpr int NoSfEventFdSocketClosing = -2;
+
+[[gnu::always_inline]] void AbortUnlessEventFdLockHeld() {
+  NN_ABORT_UNLESS(os::IsReadLockHeld(&g_ClientState.eventFdLock) ||
+    os::IsWriteLockHeldByCurrentThread(&g_ClientState.eventFdLock));
+}
+
+[[gnu::always_inline]] int FindEventFdEntry(int socket) {
+  for (int i = 0; i < NoSfEventFdCount; ++i) {
+    if (g_ClientState.eventFdEntries[i].socket == socket) {
+      return i;
+    }
+  }
+  return -1;
+}
+
+// The service creates the event pairs three entries at a time.
+[[gnu::always_inline]] void InitializeEventFdEntries() {
+  NN_ABORT_UNLESS(
+    os::IsWriteLockHeldByCurrentThread(&g_ClientState.eventFdLock));
+  for (int i = 0; i < NoSfEventFdCount; i += NoSfEventFdPairCount) {
+    NoSfEventFdEntry* entries = &g_ClientState.eventFdEntries[i];
+    int result = 0;
+    int error = 0;
+    Result callResult = g_ClientState.pClient->CreateNoSfEventFdPair(
+      Out(&result), Out(&error), i / NoSfEventFdPairCount,
+      Out(&entries[0].writableHandle), Out(&entries[0].readableHandle),
+      Out(&entries[1].writableHandle), Out(&entries[1].readableHandle),
+      Out(&entries[2].writableHandle), Out(&entries[2].readableHandle));
+    if (callResult.IsFailure() || result != 0) {
+      if (callResult.IsFailure()) {
+        AbortUnlessResultSuccess(&callResult);
+      }
+      socket::SetLastError(static_cast<Errno>(error));
+      nn::diag::detail::AbortImpl();
+    }
+    for (int j = 0; j < NoSfEventFdPairCount; ++j) {
+      NoSfEventFdEntry& entry = entries[j];
+      os::AttachWritableHandleToSystemEvent(&entry.writableEvent,
+        entry.writableHandle.GetOsHandle(), entry.writableHandle.IsManaged(),
+        os::EventClearMode_AutoClear);
+      os::AttachReadableHandleToSystemEvent(&entry.readableEvent,
+        entry.readableHandle.GetOsHandle(), entry.readableHandle.IsManaged(),
+        os::EventClearMode_AutoClear);
+    }
+    for (int j = 0; j < NoSfEventFdPairCount; ++j) {
+      entries[j].socket = NoSfEventFdSocketNone;
+    }
+  }
+  g_ClientState.isEventFdInitialized = true;
+}
+
+}
+
+int NoSfEventFd() {
+  os::AcquireWriteLock(&g_ClientState.eventFdLock);
+  NN_ABORT_UNLESS(IsInitializedImpl());
+  int result = 0;
+  int error = 0;
+  if (!g_ClientState.isEventFdInitialized) {
+    InitializeEventFdEntries();
+  }
+  AbortUnlessEventFdLockHeld();
+  int index = FindEventFdEntry(NoSfEventFdSocketNone);
+  if (index < 0) {
+    SetLastErrorImpl(ENoMem);
+    result = -1;
+  }
+  else {
+    Result callResult = g_ClientState.pClient->Command39(Out(&result),
+      Out(&error), 0, 0, index);
+    if (callResult.IsSuccess() && result >= 0) {
+      NoSfEventFdEntry& entry = g_ClientState.eventFdEntries[index];
+      entry.socket = result;
+      os::ReleaseWriteLock(&g_ClientState.eventFdLock);
+      int nativeSocket = result;
+      NN_ABORT_UNLESS(
+        !os::IsWriteLockHeldByCurrentThread(&g_ClientState.descriptorLock));
+      int fd = nnmuslAllocateFileDescriptor(NnmuslFileDescriptorType_Socket,
+        nativeSocket);
+      if (fd < 0) {
+        os::AcquireWriteLock(&g_ClientState.eventFdLock);
+        entry.socket = NoSfEventFdSocketNone;
+        CloseNativeSocket(result);
+        fd = -1;
+      }
+      result = fd;
+    }
+    else {
+      HandleResult(callResult, &result, &error);
+    }
+  }
+  int fd = result;
+  if (os::IsWriteLockHeldByCurrentThread(&g_ClientState.eventFdLock)) {
+    os::ReleaseWriteLock(&g_ClientState.eventFdLock);
+  }
+  return fd;
+}
+
+int NoSfEventFdTrigger(int fd) {
+  os::AcquireWriteLock(&g_ClientState.eventFdLock);
+  NN_ABORT_UNLESS(IsInitializedImpl());
+  int result = -1;
+  int nativeSocket;
+  if (GetNativeSocket(&nativeSocket, fd)) {
+    AbortUnlessEventFdLockHeld();
+    int index = FindEventFdEntry(nativeSocket);
+    if (index < 0) {
+      SetLastErrorImpl(EBadF);
+    }
+    else {
+      NoSfEventFdEntry& entry = g_ClientState.eventFdEntries[index];
+      os::SignalSystemEvent(&entry.writableEvent);
+      os::WaitSystemEvent(&entry.readableEvent);
+      result = 0;
+    }
+  }
+  os::ReleaseWriteLock(&g_ClientState.eventFdLock);
+  return result;
+}
+
+// The entry is marked as closing so that closing the descriptor reaches the
+// native socket.
+int NoSfEventFdClose(int fd) {
+  os::AcquireWriteLock(&g_ClientState.eventFdLock);
+  NN_ABORT_UNLESS(IsInitializedImpl());
+  int result = -1;
+  int nativeSocket;
+  if (fd < 0) {
+    SetLastErrorImpl(EBadF);
+  }
+  else if (GetNativeSocket(&nativeSocket, fd)) {
+    AbortUnlessEventFdLockHeld();
+    NoSfEventFdEntry* entry = nullptr;
+    for (NoSfEventFdEntry& candidate : g_ClientState.eventFdEntries) {
+      if (candidate.socket == nativeSocket) {
+        entry = &candidate;
+        break;
+      }
+    }
+    if (entry == nullptr) {
+      SetLastErrorImpl(EBadF);
+    }
+    else {
+      entry->socket = NoSfEventFdSocketClosing;
+      os::ReleaseWriteLock(&g_ClientState.eventFdLock);
+      result = nnmuslCloseFileDescriptor(fd);
+      os::AcquireWriteLock(&g_ClientState.eventFdLock);
+      if (result >= 0) {
+        entry->socket = NoSfEventFdSocketNone;
+      }
+      else {
+        entry->socket = nativeSocket;
+        result = -1;
+      }
+    }
+  }
+  os::ReleaseWriteLock(&g_ClientState.eventFdLock);
+  return result;
 }
 
 Result RegisterResourceStatisticsName(const char* /* name */,
@@ -2245,17 +2930,15 @@ constexpr int SocketFileDescriptorType = 4;
       entry.socket = -1;
       os::DetachWritableHandleOfSystemEvent(&entry.writableEvent);
       os::DetachReadableHandleOfSystemEvent(&entry.readableEvent);
-      uint32_t writableHandle = entry.writableHandle;
-      bool isWritableHandleManaged = entry.isWritableHandleManaged;
-      entry.writableHandle = 0;
-      entry.isWritableHandleManaged = false;
+      uint32_t writableHandle = entry.writableHandle.GetOsHandle();
+      bool isWritableHandleManaged = entry.writableHandle.IsManaged();
+      entry.writableHandle.Detach();
       if (isWritableHandleManaged) {
         os::CloseNativeHandle(writableHandle);
       }
-      uint32_t readableHandle = entry.readableHandle;
-      bool isReadableHandleManaged = entry.isReadableHandleManaged;
-      entry.readableHandle = 0;
-      entry.isReadableHandleManaged = false;
+      uint32_t readableHandle = entry.readableHandle.GetOsHandle();
+      bool isReadableHandleManaged = entry.readableHandle.IsManaged();
+      entry.readableHandle.Detach();
       if (isReadableHandleManaged) {
         os::CloseNativeHandle(readableHandle);
       }

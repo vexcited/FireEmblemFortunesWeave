@@ -218,8 +218,24 @@ struct ResolverOption {
 
 struct DnsAddress;
 struct StatisticsMemory;
-struct IfAddrs;
-struct IfMAddrs;
+
+struct IfAddrs {
+  IfAddrs* ifa_next;
+  char* ifa_name;
+  uint16_t ifa_flags;
+  SockAddr* ifa_addr;
+  SockAddr* ifa_netmask;
+  SockAddr* ifa_dstaddr;
+  void* ifa_data;
+};
+
+struct IfMAddrs {
+  IfMAddrs* ifma_next;
+  SockAddr* ifma_name;
+  SockAddr* ifma_addr;
+  SockAddr* ifma_lladdr;
+};
+
 class Config {
  public:
   static constexpr uint32_t DefaultVersion = 0x1000c;
