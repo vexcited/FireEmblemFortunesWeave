@@ -25,6 +25,9 @@ struct RawContext {
   void* data;
   MemoryResourceDeleter deleter;
 
+  static RawContext Deserialize(const void* pData, size_t size);
+  static bool IsDeserializable(const void* pData, size_t size);
+
   uint8_t GetType() const;
   const void* GetData() const;
   size_t GetDataSize() const;
@@ -39,6 +42,7 @@ struct ContextSeriesEntry {
   uint8_t reserved11[7];
   RawContext context;
 
+  void Reset();
   bool IsLinkedWithOtherEntries() const;
   ContextSeriesEntry* Prev() const;
   ContextSeriesEntry* Next() const;
@@ -91,6 +95,9 @@ void CreateContextSeries(ContextSeriesArray* array,
 
 void ResetContextSeries(ContextSeries* series) asm(
   "_ZN2nn3err6detail13ContextSeries5ResetEv");
+
+void DestroyContextSeries(ContextSeries* series) asm(
+  "_ZN2nn3err6detail13ContextSeriesD2Ev");
 
 void MoveRawContext(RawContext* output, RawContext* input) asm(
   "_ZN2nn3err6detail10RawContextC1EOS2_");

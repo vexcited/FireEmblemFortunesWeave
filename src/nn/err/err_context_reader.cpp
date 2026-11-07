@@ -15,6 +15,11 @@ SerializedContextSeries::ConstIterator SerializedContextSeries::CEnd() const {
 
 }
 
+void ContextReader::SetSerializedContextSeries(
+  detail::SerializedContextSeries&& series) {
+  m_Series.emplace(static_cast<detail::SerializedContextSeries&&>(series));
+}
+
 uint8_t ContextReader::GetType() const {
   return (*m_Iterator)->GetType();
 }

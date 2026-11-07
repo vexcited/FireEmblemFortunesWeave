@@ -9,6 +9,7 @@ namespace nn::err {
 
 class ContextReader {
  public:
+  void SetSerializedContextSeries(detail::SerializedContextSeries&& series);
   uint8_t GetType() const;
   void SetTotalCount(int count);
   int GetTotalCount() const;

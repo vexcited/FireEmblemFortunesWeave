@@ -44,6 +44,8 @@ public:
   public:
     ConstIterator(const SerializedContextSeries& series, size_t position);
 
+    ConstIterator& operator++();
+
     bool operator==(const ConstIterator& other) const;
     bool operator!=(const ConstIterator& other) const;
     const RawContext& operator*() const;
@@ -56,6 +58,19 @@ public:
     RawContext m_Context;
   };
 
+  SerializedContextSeries(SerializedContextSeries&& other);
+
+  // Only the data is owned, the rest is left as it was.
+  ~SerializedContextSeries() {
+    void* pData = m_pData;
+    m_pData = nullptr;
+    if (pData != nullptr) {
+      m_Deleter(pData);
+    }
+  }
+
+  SerializedContextSeries& operator=(SerializedContextSeries&& other);
+  void Reset();
   ConstIterator CBegin() const;
   ConstIterator CEnd() const;
   const void* GetData() const;
