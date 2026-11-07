@@ -1,6 +1,7 @@
 #include "game/sound/se.hpp"
 
 #pragma GCC visibility push(hidden)
+#include "game/map/command_item_menu_base.hpp"
 #include "game/menu/game_menu.hpp"
 #pragma GCC visibility pop
 
@@ -75,6 +76,13 @@ int ProcConfigMenu::Unknown110(bool loop) {
 class ProcBmapConfigMenu : public ProcConfigMenu {
 public:
   ProcBmapConfigMenu();
+
+  // Restores the key help of the terrain window.
+  ~ProcBmapConfigMenu() override {
+    if (map::MapTerrainInfo* info = map::MapTerrainInfo::GetInstance()) {
+      info->GetAccessor().FindPart("L_KeyHelp").SetAlpha(255);
+    }
+  }
 
   int Unknown24() override { return 5; }
   const char* Unknown32() override { return "Layout/Battle.arc"; }

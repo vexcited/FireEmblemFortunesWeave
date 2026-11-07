@@ -1,8 +1,8 @@
 #include "game/gameui/header_footer.hpp"
+#include "game/talk/seq.hpp"
 
 #pragma GCC visibility push(hidden)
 #include "game/menu/basic_menu.hpp"
-#pragma GCC visibility pop
 
 namespace game::menu {
 
@@ -27,7 +27,14 @@ public:
   int Unknown103() override;
 };
 
-ChoiceMenu::~ChoiceMenu() = default;
+ChoiceMenu::~ChoiceMenu() {
+  gameui::SetFooterKeyVisible("WindowHide", false);
+  gameui::SetFooterKeyVisible("AutoPlay", false);
+
+  if (talk::Seq* seq = talk::Seq::GetInstance(); seq && seq->IsAutoPlay()) {
+    talk::g_window_layout.SetPaneVisible("N_Auto", true);
+  }
+}
 
 void ChoiceMenu::Unknown58(std::vector<int64_t>& handles) {
   BasicMenu::Unknown58(handles);
@@ -43,3 +50,5 @@ void ChoiceMenu::Unknown92() {
 }
 
 }
+
+#pragma GCC visibility pop

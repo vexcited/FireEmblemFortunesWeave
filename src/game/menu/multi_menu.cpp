@@ -82,6 +82,15 @@ public:
   void Unknown138() override;
   int InputUnknown07(bool loop) override;
   int InputUnknown08(bool loop) override;
+  virtual void Unknown161(int page);
+  virtual void Unknown162();
+
+private:
+  int unknown_428_;
+  int page_;
+  std::weak_ptr<ui::LayoutAccessor> page_layout_;
+  int unknown_440_;
+  int unknown_444_;
 };
 
 [[gnu::used]] UnitTroopItemMenu::UnitTroopItemMenu() = default;
@@ -196,6 +205,10 @@ public:
   void Unknown139() override;
   const char* Unknown161() override { return "Menu_12"; }
   int InputUnknown01() override { return 11; }
+
+private:
+  uint8_t unknown_428_[0x18];
+  std::vector<int> unknown_440_;
 };
 
 [[gnu::used]] SkillUnitMenu::SkillUnitMenu() = default;

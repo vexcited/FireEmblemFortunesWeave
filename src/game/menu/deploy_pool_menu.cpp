@@ -152,7 +152,7 @@ public:
   }
 
 private:
-  uint8_t unknown_428_[0x18];
+  uint8_t unknown_430_[0x10];
   std::vector<const void*> unknown_440_;
 };
 

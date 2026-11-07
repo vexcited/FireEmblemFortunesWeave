@@ -6,7 +6,7 @@ namespace game::menu {
 
 namespace {
 
-class ProcTalkSelectGiftMenu : public MaterialMenu {
+class ProcTalkSelectGiftMenu final : public MaterialMenu {
 public:
   ProcTalkSelectGiftMenu();
 

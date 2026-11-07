@@ -1,6 +1,9 @@
+#include <string>
+#include <vector>
+
 #pragma GCC visibility push(hidden)
 #include "game/menu/dialog.hpp"
-#pragma GCC visibility pop
+#include "game/menu/item_result_entry.hpp"
 
 namespace game::menu {
 
@@ -11,6 +14,12 @@ public:
   const char* Unknown33() override { return "Common_DialogExchange"; }
   void Unknown135() override;
   virtual void Unknown136();
+
+private:
+  uint8_t unknown_5c8_[0x10];
+  std::string unknown_5d8_;
+  std::vector<ItemResultEntry> unknown_5f0_;
+  std::vector<ItemResultEntry> unknown_608_;
 };
 
 class ChangeDialog : public ExchangeDialog {
@@ -46,3 +55,5 @@ LegionDialog::~LegionDialog() = default;
 ExchangeNumDialog::~ExchangeNumDialog() = default;
 
 }
+
+#pragma GCC visibility pop

@@ -1,10 +1,33 @@
+#include <memory>
+
 #pragma GCC visibility push(hidden)
 #include "game/menu/game_menu.hpp"
 #pragma GCC visibility pop
 
 namespace game::menu {
 
-class RelianceSelectMenu : public GameMenu {
+#pragma GCC visibility push(hidden)
+
+// A resource owned by the reliance menu, its type is not recovered.
+class RelianceResource {
+public:
+  ~RelianceResource();
+};
+
+// Resets its resource before the pointer itself is destroyed.
+class RelianceResourceOwner {
+public:
+  ~RelianceResourceOwner() {
+    resource_.reset();
+  }
+
+private:
+  std::unique_ptr<RelianceResource> resource_;
+};
+
+#pragma GCC visibility pop
+
+class RelianceSelectMenu final : public GameMenu {
 public:
   ~RelianceSelectMenu() override;
 
@@ -28,6 +51,11 @@ public:
   int Unknown112() override;
   void Unknown128() override;
   void Unknown129() override;
+
+private:
+  uint8_t unknown_428_[0x18];
+  RelianceResourceOwner unknown_440_;
+  RelianceResourceOwner unknown_448_;
 };
 
 RelianceSelectMenu::~RelianceSelectMenu() = default;

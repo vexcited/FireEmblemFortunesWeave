@@ -4,20 +4,10 @@
 
 #pragma GCC visibility push(hidden)
 #include "game/menu/game_menu.hpp"
+#include "game/menu/tutorial_scroll.hpp"
 #pragma GCC visibility pop
 
 namespace game::menu {
-
-#pragma GCC visibility push(hidden)
-
-// Scrolled text page of the tutorial menu, its class name is unknown.
-class TutorialScroll {
-public:
-  void ScrollUp(bool loop);
-  void ScrollDown(bool loop, bool unknown);
-};
-
-#pragma GCC visibility pop
 
 class TutorialMenu : public GameMenu {
 public:

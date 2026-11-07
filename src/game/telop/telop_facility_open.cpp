@@ -1,8 +1,20 @@
+#include <memory>
+
 #pragma GCC visibility push(hidden)
 #include "game/telop/telop_sequence.hpp"
-#pragma GCC visibility pop
 
 namespace game::telop {
+
+// The owned members of the telop, their types are not recovered.
+class FacilityOpenEffect {
+public:
+  virtual ~FacilityOpenEffect();
+};
+
+class FacilityOpenList {
+public:
+  ~FacilityOpenList();
+};
 
 class TelopFacilityOpen : public TelopSequence {
 public:
@@ -17,6 +29,10 @@ public:
   void Unknown39() override;
   bool Unknown43() override;
   const char* Unknown54() override { return "L_TlpTitle"; }
+
+private:
+  std::unique_ptr<FacilityOpenEffect> effect_;
+  FacilityOpenList list_;
 };
 
 TelopFacilityOpen::~TelopFacilityOpen() = default;
@@ -30,3 +46,5 @@ void TelopFacilityOpen::Unknown39() {
 }
 
 }
+
+#pragma GCC visibility pop

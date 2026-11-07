@@ -7,7 +7,7 @@ namespace game::telop {
 
 class Message : public TelopSequence {
 public:
-  ~Message() override;
+  [[gnu::always_inline]] ~Message() override;
 
   int Unknown23() override { return 1048576; }
   void Unknown33() override;

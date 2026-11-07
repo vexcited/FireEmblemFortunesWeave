@@ -1,3 +1,7 @@
+#include <functional>
+
+#include "game/gameui/help_quest_info.hpp"
+
 #pragma GCC visibility push(hidden)
 #include "game/menu/game_menu.hpp"
 #include "game/proc/proc_game_skip_view.hpp"
@@ -37,9 +41,11 @@ BaseQuestMenu::~BaseQuestMenu() {
   }
 }
 
-class ProcSideStoryInfo : public BaseQuestMenu {
+class ProcSideStoryInfo : public BaseQuestMenu,
+  public gameui::Help::SideStoryInfo {
 public:
-  ProcSideStoryInfo();
+  explicit ProcSideStoryInfo(const SideStory* story);
+  [[gnu::always_inline]] ~ProcSideStoryInfo() override = default;
 
   void Unknown69() override;
   void Unknown85() override;
@@ -47,11 +53,13 @@ public:
   int Unknown101() override { return 0; }
 };
 
-[[gnu::used]] ProcSideStoryInfo::ProcSideStoryInfo() = default;
+[[gnu::used]] ProcSideStoryInfo::ProcSideStoryInfo(const SideStory* story)
+  : SideStoryInfo(story) {}
 
-class ProcTalkSelectQuestMenu : public BaseQuestMenu {
+class ProcTalkSelectQuestMenu : public BaseQuestMenu,
+  public gameui::Help::SubQuestInfo {
 public:
-  ProcTalkSelectQuestMenu();
+  explicit ProcTalkSelectQuestMenu(const Subquest* quest);
 
   void Unknown85() override;
   void Unknown93() override;
@@ -59,18 +67,24 @@ public:
   void ImplUnknown13() override {}
 };
 
-[[gnu::used]] ProcTalkSelectQuestMenu::ProcTalkSelectQuestMenu() = default;
+[[gnu::used]] ProcTalkSelectQuestMenu::ProcTalkSelectQuestMenu(
+  const Subquest* quest) : SubQuestInfo(quest) {}
 
 class ProcTalkQuestInfo : public ProcTalkSelectQuestMenu {
 public:
-  ProcTalkQuestInfo();
+  explicit ProcTalkQuestInfo(const Subquest* quest);
 
   void Unknown69() override;
   int Unknown100() override;
   int Unknown101() override { return 0; }
+
+private:
+  uint64_t unknown_440_;
+  std::function<void()> unknown_450_;
 };
 
-[[gnu::used]] ProcTalkQuestInfo::ProcTalkQuestInfo() = default;
+[[gnu::used]] ProcTalkQuestInfo::ProcTalkQuestInfo(const Subquest* quest)
+  : ProcTalkSelectQuestMenu(quest) {}
 
 }
 

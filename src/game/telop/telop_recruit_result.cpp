@@ -1,12 +1,11 @@
 #pragma GCC visibility push(hidden)
 #include "game/telop/telop_sequence.hpp"
-#pragma GCC visibility pop
 
 namespace game::telop {
 
 class TelopRecruitResult : public TelopResult {
 public:
-  ~TelopRecruitResult() override;
+  [[gnu::always_inline]] ~TelopRecruitResult() override;
 
   void Unknown36() override;
   void Unknown39() override;
@@ -24,3 +23,5 @@ private:
 TelopRecruitResult::~TelopRecruitResult() = default;
 
 }
+
+#pragma GCC visibility pop

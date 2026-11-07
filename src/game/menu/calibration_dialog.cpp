@@ -19,6 +19,10 @@ public:
   int Unknown100() override { return 0; }
   int Unknown101() override { return 3; }
   void Unknown135() override;
+
+private:
+  uint8_t unknown_5c8_[0x18];
+  ui::AnimationAccessor cursor_animation_;
 };
 
 [[gnu::used]] CalibrationDialog::CalibrationDialog() = default;

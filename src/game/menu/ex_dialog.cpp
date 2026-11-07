@@ -1,6 +1,10 @@
+#include <functional>
+#include <memory>
+#include <string>
+#include <vector>
+
 #pragma GCC visibility push(hidden)
 #include "game/menu/basic_menu.hpp"
-#pragma GCC visibility pop
 
 namespace game::menu {
 
@@ -20,8 +24,22 @@ public:
   void Unknown84() override;
   int Unknown100() override;
   int Unknown101() override { return 3; }
+  virtual int Unknown135(int count, bool loop);
+  virtual void Unknown136();
+  virtual void Unknown137();
+
+private:
+  uint8_t unknown_420_[0x10];
+  std::vector<int> unknown_430_;
+  uint64_t unknown_448_;
+  std::function<void(int)> unknown_450_;
+  std::weak_ptr<ui::LayoutAccessor> unknown_480_;
+  uint8_t unknown_490_[0x10];
+  std::string unknown_4a0_;
 };
 
 ExDialog::~ExDialog() = default;
 
 }
+
+#pragma GCC visibility pop

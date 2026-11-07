@@ -9,6 +9,7 @@
 #include "ui/control/element.hpp"
 #include "ui/control/menu_item.hpp"
 #include "ui/layout.hpp"
+#include "ui/layout_accessor.hpp"
 #include "ui/layout_control.hpp"
 #include "ui/manager.hpp"
 
@@ -710,6 +711,8 @@ private:
 
 class MenuItemAnimal : public ui::control::MenuItem {
 public:
+  [[gnu::always_inline]] ~MenuItemAnimal() override = default;
+
   static std::shared_ptr<ui::ILayoutControl> CreateControl(
     const nn::ui2d::ControlSrc& source, nn::ui2d::Layout* layout,
     ui::Layout* owner);
@@ -771,7 +774,7 @@ public:
     const nn::ui2d::ControlSrc& source, nn::ui2d::Layout* layout,
     ui::Layout* owner);
 
-  ~HPStock() override;
+  [[gnu::always_inline]] ~HPStock() override = default;
 
   std::shared_ptr<ui::ILayoutControl> Clone(
     nn::ui2d::Layout* layout) const override;
@@ -787,7 +790,7 @@ protected:
   HPStock(const HPStock& source, nn::ui2d::Layout* layout);
 
 private:
-  uint8_t unknown_48_[0x68];
+  ui::LayoutAccessor accessor_;
 };
 
 class BattlePopupBlaze : public BattlePopup {

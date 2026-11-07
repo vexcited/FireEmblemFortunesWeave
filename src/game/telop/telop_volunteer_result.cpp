@@ -1,13 +1,16 @@
+// The deleting destructors reach the gauge vtables through the global offset
+// table.
+#include "game/gameui/gauge_util.hpp"
+
 #pragma GCC visibility push(hidden)
 #include "game/facility/scene_args.hpp"
 #include "game/telop/telop_sequence.hpp"
-#pragma GCC visibility pop
 
 namespace game::telop {
 
 class TelopVolunteerResult : public TelopResult {
 public:
-  ~TelopVolunteerResult() override;
+  [[gnu::always_inline]] ~TelopVolunteerResult() override;
 
   bool Unknown43() override;
   void Unknown56() override;
@@ -18,16 +21,9 @@ public:
   virtual int Unknown62() { return 1; }
 
 private:
-  // The unit lines of the result, their type is not recovered.
-  class Units {
-  public:
-    // Returns true while the given phase still runs.
-    bool Update(int phase);
-  };
-
   facility::IVolunteerArgs* args_;
   uint8_t unknown_498_[0x10];
-  Units units_;
+  gameui::GaugeUtil::MiracleExpChange units_;
 };
 
 class TelopSortieVolunteerResult : public TelopVolunteerResult {
@@ -65,3 +61,5 @@ void TelopVolunteerResult::Unknown61() {
 }
 
 }
+
+#pragma GCC visibility pop

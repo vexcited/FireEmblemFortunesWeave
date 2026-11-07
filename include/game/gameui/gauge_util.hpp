@@ -53,9 +53,24 @@ public:
   private:
     std::weak_ptr<void> unknown_80_;
   };
+
+  class MiracleExpChange : public ExpChange {
+  public:
+    // Returns true while the given phase still runs.
+    bool Update(int phase);
+
+    void Unknown00() override;
+    void Unknown02() override;
+    void Unknown05() override;
+    void Unknown06() override;
+
+  private:
+    std::weak_ptr<void> unknown_80_;
+  };
 };
 
 static_assert(sizeof(GaugeUtil::RelianceExpChange) == 0xb8);
 static_assert(sizeof(GaugeUtil::HonorExpChange) == 0x90);
+static_assert(sizeof(GaugeUtil::MiracleExpChange) == 0x90);
 
 }
