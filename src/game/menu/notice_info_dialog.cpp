@@ -28,7 +28,9 @@ public:
   virtual void Unknown138();
 
 private:
-  uint8_t unknown_420_[0x10];
+  int32_t page_count_;
+  int32_t page_;
+  uint8_t unknown_428_[0x8];
   std::vector<int> unknown_430_;
   uint64_t unknown_448_;
   std::function<void(int)> unknown_450_;
@@ -47,6 +49,24 @@ void NoticeInfoDialog::Unknown82() {
 
 void NoticeInfoDialog::Unknown138() {
   sound::PlaySe("SE_SYS_Page_Stop");
+}
+
+int NoticeInfoDialog::Unknown100() {
+  if (page_ >= page_count_) {
+    return 4;
+  }
+  Unknown135(1, false);
+  Unknown137();
+  return 13;
+}
+
+int NoticeInfoDialog::Unknown101() {
+  if (page_ == 0) {
+    return 0;
+  }
+  Unknown135(-1, false);
+  Unknown136();
+  return 13;
 }
 
 }

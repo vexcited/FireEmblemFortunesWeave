@@ -30,9 +30,26 @@ public:
 
 private:
   void ShowPage(int page);
+
+  bool unknown_428_;
+  bool unknown_429_;
 };
 
 [[gnu::used]] ProcMouseGuide::ProcMouseGuide() = default;
+
+int ProcMouseGuide::Unknown26() {
+  return unknown_429_ ? 0 : 105;
+}
+
+int ProcMouseGuide::Unknown61() {
+  return unknown_429_ ? 2 : 3;
+}
+
+int ProcMouseGuide::Unknown102() {
+  unknown_428_ = !unknown_428_;
+  ShowPage(tab_.GetCurrent());
+  return 13;
+}
 
 int ProcMouseGuide::InputUnknown12(int direction, bool loop) {
   if (tab_.GetCount() < 1) {
