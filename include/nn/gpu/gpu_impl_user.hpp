@@ -74,7 +74,7 @@ struct JobEventPool {
     return index;
   }
 
-  [[gnu::always_inline]] void Wait(int index) {
+  [[gnu::always_inline]] void Wait(uint32_t index) {
     while (!os::TimedWaitSystemEvent(&events[index], TimeSpan{1000000000})) {
     }
   }
