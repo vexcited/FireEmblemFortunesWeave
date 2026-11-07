@@ -18,7 +18,7 @@ public:
   int GetDequeueableCount() const;
   int Dequeue(uint16_t* output, int count);
   int Remove(uint16_t* output, int count);
-  int Flush();
+  void Flush();
   void Clear();
 
 private:

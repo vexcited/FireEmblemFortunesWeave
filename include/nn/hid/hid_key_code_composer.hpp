@@ -40,10 +40,10 @@ int EnqueueKeyCodeComposer(KeyCodeComposerStorage* storage,
   const uint16_t* input, int count);
 int RemoveKeyCodeComposer(KeyCodeComposerStorage* storage, uint16_t* output,
   int count);
-int FlushKeyCodeComposer(KeyCodeComposerStorage* storage);
+void FlushKeyCodeComposer(KeyCodeComposerStorage* storage);
 int EnqueueKeyCodeComposerAltCodes(KeyCodeComposerStorage* storage,
   const int* codes, int count);
-int FlushKeyCodeComposerAltCodes(KeyCodeComposerStorage* storage);
+void FlushKeyCodeComposerAltCodes(KeyCodeComposerStorage* storage);
 void ClearKeyCodeComposer(KeyCodeComposerStorage* storage);
 
 }
@@ -66,9 +66,9 @@ public:
   int DequeueOutputs(uint16_t* output, int count);
   int EnqueueKeyCodes(const uint16_t* input, int count);
   int RemoveKeyCodes(uint16_t* output, int count);
-  int FlushKeyCodes();
+  void FlushKeyCodes();
   int EnqueueAltCodes(const int* codes, int count);
-  int FlushAltCodes();
+  void FlushAltCodes();
   void Clear();
 
 private:

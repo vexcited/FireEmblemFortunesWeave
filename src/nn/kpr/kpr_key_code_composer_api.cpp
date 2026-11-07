@@ -57,8 +57,8 @@ int KeyCodeComposer::Remove(uint16_t* output, int count) {
   return detail::RemoveKeyCodeComposer(&m_Storage, output, count);
 }
 
-int KeyCodeComposer::Flush() {
-  return detail::FlushKeyCodeComposer(&m_Storage);
+void KeyCodeComposer::Flush() {
+  detail::FlushKeyCodeComposer(&m_Storage);
 }
 
 void KeyCodeComposer::Clear() {

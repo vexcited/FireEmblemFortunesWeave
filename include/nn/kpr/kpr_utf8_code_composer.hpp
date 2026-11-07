@@ -3,6 +3,7 @@
 #include <stdint.h>
 
 #include "nn/hid/hid_key_code_composer.hpp"
+#include "nn/util/bit_flag_set.hpp"
 
 namespace nn::kpr {
 
@@ -60,6 +61,11 @@ void RemoveQueueNativeHead(Utf8CodeComposerStorage* storage);
 void AddQueueNativeTail(Utf8CodeComposerStorage* storage, const char* code,
   int length);
 void RemoveQueueNativeTail(Utf8CodeComposerStorage* storage);
+
+struct AltCodeField;
+
+int InterpretAltCode(char* pOut, int size,
+  util::BitPack<uint32_t, AltCodeField> altCode);
 
 void ProcessAltCode(Utf8CodeComposerStorage* storage);
 void ProcessDeadKey(Utf8CodeComposerStorage* storage);

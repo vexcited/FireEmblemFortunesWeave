@@ -68,8 +68,8 @@ int KeyCodeComposer::RemoveKeyCodes(uint16_t* output, int count) {
   return kpr::detail::RemoveKeyCodeComposer(&m_Storage, output, count);
 }
 
-int KeyCodeComposer::FlushKeyCodes() {
-  return kpr::detail::FlushKeyCodeComposer(&m_Storage);
+void KeyCodeComposer::FlushKeyCodes() {
+  kpr::detail::FlushKeyCodeComposer(&m_Storage);
 }
 
 int KeyCodeComposer::EnqueueAltCodes(const int* codes, int count) {
@@ -77,8 +77,8 @@ int KeyCodeComposer::EnqueueAltCodes(const int* codes, int count) {
     count);
 }
 
-int KeyCodeComposer::FlushAltCodes() {
-  return kpr::detail::FlushKeyCodeComposerAltCodes(&m_Storage);
+void KeyCodeComposer::FlushAltCodes() {
+  kpr::detail::FlushKeyCodeComposerAltCodes(&m_Storage);
 }
 
 void KeyCodeComposer::Clear() {
