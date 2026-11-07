@@ -1090,7 +1090,10 @@ void CommandGenerator::GenerateVoiceMixCommandsWithSplitter(
   const auto* filters = static_cast<const TBiquadFilterParameter<float>*>(
     data->SplitterDestinationDataVer2::GetBiquadFilterParameter());
   bool isFirst = true;
-  if (filters[0].enable && filters[1].enable) {
+  // The second flag is only tested on its low bit.
+  const bool isSecondEnabled =
+    (*reinterpret_cast<const uint8_t*>(&filters[1].enable) & 1) != 0;
+  if (filters[0].enable && isSecondEnabled) {
     for (int i = 0; i < bufferCount; i++) {
       int output = bufferOffset + i;
       int source = input;
@@ -1109,7 +1112,8 @@ void CommandGenerator::GenerateVoiceMixCommandsWithSplitter(
       DetailAspect({this, PerformanceEntryType_Voice,
         PerformanceDetailType_BiquadFilterAndMix, nodeId})
         ->m_CommandBuffer->Generate<MultiTapBiquadFilterAndMixCommand>(
-        nodeId, filters, data->m_BiquadFilterState, lastSample, source,
+        nodeId, filters, static_cast<uint8_t*>(data->m_BiquadFilterState),
+        lastSample, source,
         output, needInitialization, previousVolume, volume, true, isFirst);
       isFirst = false;
       data->m_IsBiquadFilterEnabledPrev[0] = filters[0].enable;
