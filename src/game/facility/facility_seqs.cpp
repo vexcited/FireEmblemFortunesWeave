@@ -21,6 +21,7 @@ namespace game::facility {
 namespace {
 
 enum Label : int {};
+enum LessonLabel : int {};
 enum EducateLabel : int {};
 enum ReinforceLabel : int {};
 
@@ -31,14 +32,12 @@ enum ReinforceLabel : int {};
 
 namespace {
 
-// The destructor bodies leave no code in the original, but they are not
-// empty since the vtable stores are kept, so a no-op statement stands in.
 #define GAME_FACILITY_SEQ(T, L) \
   class T : public ProcJumpableSingleton<T, L>, public FacilitySeq { \
   public: \
     T(); \
     ~T() override { \
-      static_cast<void>(0); \
+      Leave(); \
     } \
     void Unknown00() override; \
   }; \
@@ -87,7 +86,7 @@ public:
   ProcDivinationSeq();
 
   ~ProcDivinationSeq() override {
-    static_cast<void>(0);
+    Leave();
   }
 };
 
@@ -100,12 +99,29 @@ public:
 
   ~ProcPerchSeq() override {
     g_perch_view = -1;
+    Leave();
   }
 
   void Unknown00() override;
 };
 
 [[gnu::used]] ProcPerchSeq::ProcPerchSeq() = default;
+
+// These two list the facility base first.
+#define GAME_FACILITY_SEQ(T, L) \
+  class T : public FacilitySeq, public ProcJumpableSingleton<T, L> { \
+  public: \
+    T(); \
+    ~T() override { \
+      Leave(); \
+    } \
+  }; \
+  [[gnu::used]] T::T() = default;
+
+GAME_FACILITY_SEQ(ProcLessonSeq, LessonLabel)
+GAME_FACILITY_SEQ(ProcSortiePlanSeq, Label)
+
+#undef GAME_FACILITY_SEQ
 
 }
 

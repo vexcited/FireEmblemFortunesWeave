@@ -1,24 +1,11 @@
 #pragma once
 
-#include <memory>
-
 #include "game/singleton.hpp"
+#include "game/zview/area_barrier_base.hpp"
 
 namespace game {
 
 #pragma GCC visibility push(hidden)
-
-namespace zview {
-
-class AreaBarrierBase {
-public:
-  virtual ~AreaBarrierBase() = default;
-
-private:
-  std::shared_ptr<void> barrier_;
-};
-
-}
 
 namespace hub {
 

@@ -2,13 +2,16 @@
 
 namespace game::facility {
 
-// The second base of the facility sequences. Its destructor is not virtual
-// and lives in another unit.
+// The facility base of the sequences. The sequence destructors end the visit
+// themselves, at different points of their bodies.
 class FacilitySeq {
 public:
-  ~FacilitySeq();
-
   virtual void Unknown00() {}
+
+protected:
+  // Frees the shared buffer, clears the forced facility variable and
+  // releases the facility mind.
+  void Leave();
 };
 
 // Rebuilds the unit lists of the temple.

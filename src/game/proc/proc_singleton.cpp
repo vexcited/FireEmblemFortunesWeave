@@ -283,7 +283,38 @@ GAME_PROC_JUMPABLE(ProcHubSeqEnter, Label)
 
 namespace map {
 
-GAME_PROC_JUMPABLE(ProcMapSeqZoomViewer, Label)
+// Attached to an owner that lists it, its type is not recovered.
+class ViewerObject {};
+
+// Removes the object from the list of its owner.
+void DetachViewerObject(ViewerObject* const& object);
+
+class ViewerModel : public ViewerObject {};
+
+class ProcMapSeqZoomViewer : public ProcJumpableSingleton<
+  ProcMapSeqZoomViewer, Label
+> {
+public:
+  ProcMapSeqZoomViewer();
+
+  [[gnu::always_inline]] ~ProcMapSeqZoomViewer() override {
+    if (model_ != nullptr) {
+      DetachViewerObject(model_);
+      model_ = nullptr;
+    }
+  }
+
+private:
+  [[gnu::used]] static constexpr auto kApplyJump =
+    &ProcMapSeqZoomViewer::ApplyJump;
+
+  uint8_t unknown_d0_[0x18];
+  ViewerModel* model_;
+  uint64_t unknown_f0_;
+  std::vector<uint32_t> unknown_f8_;
+};
+
+[[gnu::used]] ProcMapSeqZoomViewer::ProcMapSeqZoomViewer() = default;
 
 namespace {
 

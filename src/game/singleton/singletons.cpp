@@ -1,4 +1,5 @@
 #include <cstdint>
+#include <functional>
 #include <list>
 #include <map>
 #include <memory>
@@ -14,6 +15,8 @@
 #include "game/proc/proc_inst.hpp"
 #include "game/singleton.hpp"
 #include "game/variable_manager.hpp"
+#include "game/zview/area_barrier_base.hpp"
+#include "hub/lifecycle.hpp"
 
 namespace game {
 
@@ -21,8 +24,6 @@ namespace game {
 // enough to instantiate it through the creation path.
 #define GAME_SINGLETON(T) \
   class T : public Singleton<T> {};
-#define GAME_PROC_SINGLETON(T) \
-  class T : public ProcInst, public Singleton<T> {};
 
 GAME_SINGLETON(AI)
 class AIEntrustImage : public Singleton<AIEntrustImage> {
@@ -124,7 +125,20 @@ private:
 
 OwnedObject* GameUserData::unknown_ = nullptr;
 
-GAME_SINGLETON(HubDisposFileLoader)
+class HubDisposFileLoader : public Singleton<HubDisposFileLoader> {
+public:
+  ~HubDisposFileLoader() override {
+    for (auto& [name, disposition] : dispositions_) {
+      fw::hub::ResetDisposition(disposition.get());
+    }
+
+    dispositions_.clear();
+  }
+
+private:
+  std::map<std::string, std::shared_ptr<fw::hub::Disposition>> dispositions_;
+};
+
 GAME_SINGLETON(KnownManager)
 class MapTerrainFile : public Singleton<MapTerrainFile> {
 public:
@@ -214,7 +228,47 @@ private:
   std::string unknown_38_;
 };
 
-GAME_SINGLETON(CombatSettings)
+class CombatSettings : public Singleton<CombatSettings> {
+private:
+  // The owned capture, its type is not recovered.
+  class Capture {
+  public:
+    ~Capture() {
+      if (active_ == true) {
+        Stop();
+      }
+    }
+
+  private:
+    class Handle {
+    public:
+      virtual void Unknown00();
+      virtual void Unknown01();
+      virtual void Unknown02();
+      virtual void Unknown03();
+      virtual void Unknown04();
+      virtual void Destroy();
+    };
+
+    struct HandleDeleter {
+      void operator()(Handle* handle) const {
+        handle->Destroy();
+      }
+    };
+
+    void Stop();
+
+    uint64_t unknown_00_;
+    std::unique_ptr<Handle, HandleDeleter> handle_;
+    std::function<void()> callback_;
+    uint8_t unknown_40_;
+    bool active_;
+  };
+
+  uint8_t unknown_08_[0x2a8];
+  std::unique_ptr<Capture> capture_;
+};
+
 GAME_SINGLETON(CombatUniverse)
 GAME_SINGLETON(JostleManager)
 GAME_SINGLETON(MagicCatalog)
@@ -442,7 +496,22 @@ private:
 
 GAME_SINGLETON(Camera)
 GAME_SINGLETON(Cursor)
-GAME_SINGLETON(CursorDrawInfo)
+
+class MapDrawConst {};
+
+// Addressed directly, its destructor stores its own vtable.
+#pragma GCC visibility push(hidden)
+
+class CursorDrawInfo : public Singleton<CursorDrawInfo>, public MapDrawConst {
+private:
+  uint8_t unknown_08_[0x50];
+  std::vector<uint32_t> unknown_58_;
+  uint8_t unknown_70_[0x30];
+  zview::AreaBarrierBase barrier_;
+};
+
+#pragma GCC visibility pop
+
 GAME_SINGLETON(Height)
 GAME_SINGLETON(Image)
 GAME_SINGLETON(MapBattleHUD)
@@ -503,7 +572,10 @@ class Transition : public Singleton<Transition> {
 public:
   ~Transition() override {
     if (transition_ != nullptr) {
-      delete transition_;
+      // The final link devirtualized this delete, while the transition
+      // destructor still stores its own vtable.
+      transition_->MapTransition::~MapTransition();
+      operator delete(transition_);
       transition_ = nullptr;
     }
   }
@@ -532,7 +604,27 @@ GAME_SINGLETON(Manager)
 
 namespace spine {
 
-GAME_PROC_SINGLETON(SpineFace)
+// Releases its resources once the frame that used them is done.
+class ResourceReleaser {
+public:
+  void Release(std::shared_ptr<void> resource);
+};
+
+[[gnu::visibility("hidden")]] extern ResourceReleaser* g_resource_releaser;
+
+class SpineFace : public ProcInst, public Singleton<SpineFace> {
+public:
+  ~SpineFace() override {
+    if (resource_ != nullptr) {
+      g_resource_releaser->Release(resource_);
+      resource_ = nullptr;
+    }
+  }
+
+private:
+  uint64_t unknown_a0_;
+  std::shared_ptr<void> resource_;
+};
 
 }
 
@@ -592,7 +684,6 @@ GAME_SINGLETON(Time)
 
 }
 
-#undef GAME_PROC_SINGLETON
 #undef GAME_SINGLETON
 
 // Nothing reads the registered word of these singletons, so link time
