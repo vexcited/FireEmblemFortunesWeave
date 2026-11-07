@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cstring>
 #include <memory>
 #include <string>
 #include <string_view>
@@ -1272,7 +1273,23 @@ struct DramaHighlightData : DataState<std::string> {
 static_assert(sizeof(DramaHighlightData) == 0x48);
 
 struct ExSpotData : DataState<std::string> {
-  unsigned char unknown_20[0x30];
+  // The appends call the SDK library out of line.
+  void Build() {
+    static constexpr char kPrefix[] = "EXスポット_転移_";
+
+    gmap_spot_20.Resolve();
+
+    if (state == nullptr) {
+      state = new std::string();
+    }
+
+    state->clear();
+    [[clang::noinline]] state->append(kPrefix, sizeof(kPrefix) - 1);
+    [[clang::noinline]] state->append(key.text, std::strlen(key.text));
+  }
+
+  DataRef<GmapSpotData> gmap_spot_20;
+  unsigned char unknown_30[0x20];
 };
 
 static_assert(sizeof(ExSpotData) == 0x50);
