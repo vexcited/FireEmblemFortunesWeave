@@ -18444,6 +18444,9 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 5deb40,8,verified,src/nn/vi/vi_layer_native_window.cpp,_ZN2nn2vi6detail17LayerNativeWindow22GetLinearUnitLuminanceEv
 5deb50,8,verified,src/nn/vi/vi_layer_native_window.cpp,_ZN2nn2vi6detail17LayerNativeWindow13SetColorSpaceENS_2gs3sdk21NativeImageColorSpaceE
 5deb60,8,verified,src/nn/vi/vi_layer_native_window.cpp,_ZN2nn2vi6detail17LayerNativeWindow22SetLinearUnitLuminanceEt
+5deb70,540,verified,src/nn/vi/vi_copyright_framebuffer.cpp,_ZN2nn2vi20CopyrightFramebuffer10InitializeEPvmii
+5ded90,168,verified,src/nn/vi/vi_copyright_framebuffer.cpp,_ZN2nn2vi20CopyrightFramebuffer8FinalizeEv
+5dee40,396,verified,src/nn/vi/vi_copyright_framebuffer.cpp,_ZN2nn2vi20CopyrightFramebuffer10WriteImageEPKvmiiiiNS_2gs3sdk10OriginModeE
 5defd0,124,verified,src/nn/vi/vi_layer.cpp,_ZN2nn2vi7Display4OpenEPKc
 5df050,124,verified,src/nn/vi/vi_layer.cpp,_ZN2nn2vi7Display5CloseEb
 5df0d0,16,verified,src/nn/vi/vi_layer.cpp,_ZNK2nn2vi7Display6IsOpenEv

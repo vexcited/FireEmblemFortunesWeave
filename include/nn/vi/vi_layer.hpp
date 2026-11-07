@@ -5,6 +5,7 @@
 
 #include "nn/gs/gs_native_window.hpp"
 #include "nn/os/mutex.hpp"
+#include "nn/os/synchronization.hpp"
 #include "nn/result.hpp"
 #include "nn/span.hpp"
 
@@ -61,6 +62,10 @@ struct AvailableRefreshRate {
   uint32_t data[13];
 };
 
+struct BufferPoolType {
+  alignas(8) uint8_t storage[0x40];
+};
+
 }
 
 namespace nn::vi {
@@ -92,6 +97,33 @@ struct DisplayInfo {
   int64_t layerCountMax;
   int64_t layerWidthPixelCountMax;
   int64_t layerHeightPixelCountMax;
+};
+
+// A two buffer layer the copyright notice is drawn into.
+class CopyrightFramebuffer {
+ public:
+  void Initialize(void* pMemory, size_t size, int width, int height);
+  void Finalize();
+  void WriteImage(const void* pImage, size_t size, int x, int y, int width,
+    int height, gs::sdk::OriginMode mode);
+
+ private:
+  static constexpr int BufferCount = 2;
+
+  struct SyncHandle {
+    uint64_t value[2];
+  };
+
+  vi2::DisplayType m_Display;
+  vi2::LayerType m_Layer;
+  vi2::EndpointType m_Endpoint;
+  vi2::BufferPoolType m_BufferPool;
+  SyncHandle m_Syncs[BufferCount];
+  uint32_t m_Index;
+  int32_t m_Width;
+  int32_t m_Height;
+  bool m_IsInitialized;
+  os::SdkMutexType m_Mutex;
 };
 
 class LayerCreationSettings {

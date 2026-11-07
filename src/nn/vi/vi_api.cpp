@@ -40,14 +40,6 @@ enum OriginMode : int32_t {
   OriginMode_BottomLeft,
 };
 
-class CopyrightFramebuffer {
- public:
-  Result Initialize(void* pMemory, size_t size, int width, int height);
-  Result WriteImage(const void* pImage, size_t size, int x, int y, int width,
-    int height, gs::sdk::OriginMode mode);
-  void Finalize();
-};
-
 }
 
 namespace nn::vi {
@@ -276,21 +268,23 @@ void SetCopyrightCompositionEnabled(bool isEnabled) {
   NN_ABORT_UNLESS_RESULT_SUCCESS(am::SetCopyrightLayerEnabled(isEnabled));
 }
 
-Result InitializeCopyrightFramebuffer(void* pMemory, size_t size) {
-  return detail::g_CopyrightFramebuffer.Initialize(pMemory, size,
+void InitializeCopyrightFramebuffer(void* pMemory, size_t size) {
+  detail::g_CopyrightFramebuffer.Initialize(pMemory, size,
     CopyrightFramebufferWidth, CopyrightFramebufferHeight);
 }
 
 // The framebuffer counts rows the other way around.
-Result WriteToCopyrightFramebuffer(const void* pImage, size_t size, int x,
+void WriteToCopyrightFramebuffer(const void* pImage, size_t size, int x,
   int y, int width, int height, OriginMode mode) {
   switch (mode) {
     case OriginMode_TopLeft:
-      return detail::g_CopyrightFramebuffer.WriteImage(pImage, size, x, y,
-        width, height, gs::sdk::OriginMode(1));
+      detail::g_CopyrightFramebuffer.WriteImage(pImage, size, x, y, width,
+        height, gs::sdk::OriginMode(1));
+      return;
     case OriginMode_BottomLeft:
-      return detail::g_CopyrightFramebuffer.WriteImage(pImage, size, x, y,
-        width, height, gs::sdk::OriginMode(0));
+      detail::g_CopyrightFramebuffer.WriteImage(pImage, size, x, y, width,
+        height, gs::sdk::OriginMode(0));
+      return;
     default:
       nn::detail::UnexpectedDefaultImpl();
   }
