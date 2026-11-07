@@ -1,5 +1,6 @@
 #pragma once
 
+#include "nn/applet/applet_types.hpp"
 #include "nn/mii/store_data.hpp"
 #include "nn/result.hpp"
 #include "nn/util/uuid.hpp"
@@ -35,6 +36,11 @@ class AppletInput {
 public:
   void InitializeImpl(AppletMode mode, int specialKeyCode);
   void Initialize(AppletMode mode, int specialKeyCode);
+  void InitializeForAppendMiiImage(const util::Uuid* pUuids, int count,
+    int specialKeyCode);
+  void InitializeForUpdateMiiImage(const util::Uuid& usedUuid,
+    const util::Uuid* pUuids, int count, int specialKeyCode);
+  void InitializeForEditCharInfo(const CharInfo& info, int specialKeyCode);
   bool IsValid(bool isCharInfoEditing) const;
   AppletMode GetMode() const;
   const util::Uuid* GetUsedUuid() const;
@@ -87,12 +93,17 @@ private:
 
   int32_t m_Result;
   CharInfo m_CharInfo;
+  uint8_t m_Reserved[0x24];
 };
+
+static_assert(sizeof(AppletOutputForCharInfoEditing) == 0x80);
 
 class AppletManager {
 public:
   AppletManager();
   ~AppletManager();
+  void Initialize(applet::StorageHandle storage, bool isCharInfoEditing);
+  void Finalize(applet::StorageHandle* pStorage);
   bool IsInitialized() const;
   AppletMode GetMode() const;
   bool IsEnabledSpecialMii() const;
@@ -105,6 +116,8 @@ public:
   void SetResultSuccessAppendMii(int index);
   void SetResultSuccessAppendMiiImage(int index);
   void SetResultSuccessUpdateMiiImage(int index);
+  void SetResultSuccessCreateCharInfo(const CharInfo& info);
+  void SetResultSuccessEditCharInfo(const CharInfo& info);
 
 private:
   bool m_IsInitialized;
@@ -129,5 +142,15 @@ Result StartAppletForCharInfoEditing(AppletOutputForCharInfoEditing* output,
 Result AppendMiiImage(int* index, const util::Uuid* uuids, int count);
 Result UpdateMiiImage(int* index, const util::Uuid& uuid,
   const util::Uuid* uuids, int count);
+Result AppendMii(int* pOutIndex);
+Result ShowMiiEdit();
+Result CreateMii(CharInfo* pOutInfo);
+Result EditMii(CharInfo* pOutInfo, const CharInfo& info);
+Result GetShowMiiEditResult(applet::StorageHandle storage);
+Result GetAppendMiiResult(int* pOutIndex, applet::StorageHandle storage);
+Result GetAppendMiiImageResult(int* pOutIndex,
+  applet::StorageHandle storage);
+Result GetUpdateMiiImageResult(int* pOutIndex,
+  applet::StorageHandle storage);
 
 }

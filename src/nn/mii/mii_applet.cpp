@@ -2,7 +2,10 @@
 
 #include <string.h>
 
+#include "nn/applet/applet_api.hpp"
+#include "nn/diag/diag_abort.hpp"
 #include "nn/diag/unexpected_default.hpp"
+#include "nn/mii/mii_color.hpp"
 
 namespace nn::mii {
 
@@ -79,6 +82,30 @@ void AppletInput::Initialize(AppletMode mode, int specialKeyCode) {
   InitializeImpl(mode, specialKeyCode);
 }
 
+// The unused uuid slots are cleared.
+void AppletInput::InitializeForAppendMiiImage(const util::Uuid* pUuids,
+  int count, int specialKeyCode) {
+  InitializeImpl(AppletMode(2), specialKeyCode);
+  for (int i = 0; i < AppletValidUuidCountMax; i++) {
+    m_ValidUuids[i] = i < count ? pUuids[i] : util::Uuid{};
+  }
+}
+
+void AppletInput::InitializeForUpdateMiiImage(const util::Uuid& usedUuid,
+  const util::Uuid* pUuids, int count, int specialKeyCode) {
+  InitializeImpl(AppletMode(3), specialKeyCode);
+  m_UsedUuid = usedUuid;
+  for (int i = 0; i < AppletValidUuidCountMax; i++) {
+    m_ValidUuids[i] = i < count ? pUuids[i] : util::Uuid{};
+  }
+}
+
+void AppletInput::InitializeForEditCharInfo(const CharInfo& info,
+  int specialKeyCode) {
+  InitializeImpl(AppletMode(5), specialKeyCode);
+  m_CharInfo = info;
+}
+
 bool AppletInput::IsValid(bool isCharInfoEditing) const {
   const int versionMax = isCharInfoEditing ? 0 : 4;
   return m_Version <= versionMax && static_cast<unsigned>(m_Mode) < 7;
@@ -94,6 +121,16 @@ const util::Uuid* AppletInput::GetUsedUuid() const {
 
 const util::Uuid* AppletInput::GetValidUuidArray() const {
   return m_ValidUuids;
+}
+
+// The manager reaches this through a call the original keeps.
+[[gnu::noinline]] int AppletInput::GetValidUuidArrayCount() const {
+  for (int i = 0; i < AppletValidUuidCountMax; i++) {
+    if (m_ValidUuids[i] == util::InvalidUuid) {
+      return i;
+    }
+  }
+  return AppletValidUuidCountMax;
 }
 
 const CharInfo* AppletInput::GetCharInfo() const {
@@ -135,6 +172,33 @@ const CharInfo* AppletOutputForCharInfoEditing::GetCharInfo() const {
 AppletManager::AppletManager() : m_IsInitialized(false) {}
 
 AppletManager::~AppletManager() {}
+
+// A broken input falls back to the default mode.
+void AppletManager::Initialize(applet::StorageHandle storage,
+  bool isCharInfoEditing) {
+  if (applet::ReadFromStorage(storage, 0, &m_Input, sizeof(m_Input))
+        .IsFailure() ||
+      !m_Input.IsValid(isCharInfoEditing)) {
+    m_Input.InitializeImpl(AppletMode(0), GetSpecialMiiKeyCode());
+  }
+  m_IsInitialized = true;
+}
+
+void AppletManager::Finalize(applet::StorageHandle* pStorage) {
+  if (IsCharInfoEditingMode(m_Input.GetMode())) {
+    NN_ABORT_UNLESS_RESULT_SUCCESS(applet::CreateStorage(pStorage,
+      sizeof(m_OutputForCharInfoEditing)));
+    NN_ABORT_UNLESS_RESULT_SUCCESS(applet::WriteToStorage(*pStorage, 0,
+      &m_OutputForCharInfoEditing, sizeof(m_OutputForCharInfoEditing)));
+  }
+  else {
+    NN_ABORT_UNLESS_RESULT_SUCCESS(applet::CreateStorage(pStorage,
+      sizeof(m_Output)));
+    NN_ABORT_UNLESS_RESULT_SUCCESS(applet::WriteToStorage(*pStorage, 0,
+      &m_Output, sizeof(m_Output)));
+  }
+  m_IsInitialized = false;
+}
 
 bool AppletManager::IsInitialized() const {
   return m_IsInitialized;
@@ -190,6 +254,16 @@ void AppletManager::SetResultSuccessAppendMiiImage(int index) {
 void AppletManager::SetResultSuccessUpdateMiiImage(int index) {
   m_Output.m_Result = AppletResult_Success;
   m_Output.m_Index = index;
+}
+
+void AppletManager::SetResultSuccessCreateCharInfo(const CharInfo& info) {
+  m_OutputForCharInfoEditing.m_Result = AppletResult_Success;
+  m_OutputForCharInfoEditing.m_CharInfo = info;
+}
+
+void AppletManager::SetResultSuccessEditCharInfo(const CharInfo& info) {
+  m_OutputForCharInfoEditing.m_Result = AppletResult_Success;
+  m_OutputForCharInfoEditing.m_CharInfo = info;
 }
 
 Result StartApplet(AppletOutput* output, const AppletInput& input,
