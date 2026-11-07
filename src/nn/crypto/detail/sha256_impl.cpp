@@ -137,8 +137,10 @@ void Sha256Impl::ProcessBlocks(const uint8_t* data, size_t blockCount) {
   vst1q_u32(m_IntermediateHash + 4, hash1);
 }
 
-void Sha256Impl::ProcessLastBlock() {
-  m_Buffer[m_BufferedBytes++] = 0x80;
+[[gnu::always_inline]] void Sha256Impl::ProcessLastBlock() {
+  // The count is read again after the store, which may alias it.
+  m_Buffer[m_BufferedBytes] = 0x80;
+  ++m_BufferedBytes;
 
   constexpr size_t LengthOffset = BlockSize - sizeof(uint64_t);
   if (m_BufferedBytes > LengthOffset) {
