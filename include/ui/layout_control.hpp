@@ -125,7 +125,8 @@ protected:
     path_.insert(0, "/");
 
     nn::ui2d::Pane* pane = layout_->GetRootPane();
-    while ((pane = pane->GetParent()) != nullptr) {
+    while (pane != nullptr) {
+      pane = pane->GetParent();
       if (nn::ui2d::DynamicCast<nn::ui2d::Parts*>(pane) != nullptr) {
         path_.insert(0, pane->GetName());
         path_.insert(0, "/");

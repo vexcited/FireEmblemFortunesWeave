@@ -178,11 +178,11 @@ private:
         // The SDK allocates the tables themselves with the global allocation
         // functions instead of the movie heap.
         static void *operator new(size_t size) {
-            return __builtin_operator_new(size);
+            return GlobalOperatorNew(size);
         }
 
         static void operator delete(void *pointer, size_t size) {
-            __builtin_operator_delete(pointer, size);
+            GlobalOperatorDelete(pointer, size);
         }
 
         ListTableEntries(uint32_t elementCapacity)

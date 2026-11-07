@@ -12,14 +12,6 @@
 #include "nn/os/semaphore.hpp"
 #include "nn/syncpt/syncpt_sdk.hpp"
 
-namespace nn::syncpt::sdk {
-
-struct SyncPointEventType {
-  alignas(8) uint8_t storage[128];
-};
-
-}
-
 namespace nn::gsdrv::function {
 
 template <typename Signature, size_t Size, size_t Alignment>

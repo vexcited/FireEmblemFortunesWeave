@@ -727,9 +727,9 @@ void SetAuxLimiterParameters(AuxLimiterType* aux,
     * sampleRateKhz));
 
   const float attackRatio =
-    (detail::Pow(10.0f, -2.0043f / (delayLength + 1)) - 1.0f) + 1.0f;
+    (detail::Pow(10.0f, -2.0043218f / (delayLength + 1)) - 1.0f) + 1.0f;
   const float releaseBase =
-    detail::Pow(10.0f, -2.0043f / (releaseSampleCount + 1));
+    detail::Pow(10.0f, -2.0043218f / (releaseSampleCount + 1));
   for (int i = delayLength; i > 0; --i) {
     info.attackPrediction +=
       detail::Pow(attackRatio, static_cast<float>(i + 1));

@@ -821,10 +821,6 @@ sp<AMessage> AMessage::changesFrom(const sp<const AMessage> &other, bool deep) c
     if (mWhat != other->mWhat) {
         diff->setWhat(mWhat);
     }
-    if (mHandler != other->mHandler) {
-        diff->setTarget(mHandler.promote());
-    }
-
     for (size_t i = 0; i < mNumItems; ++i) {
         const Item &item = mItems[i];
         const Item *oitem = other->findItem(item.mName, item.mType);

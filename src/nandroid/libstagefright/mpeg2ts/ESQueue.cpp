@@ -1171,8 +1171,10 @@ sp<ABuffer> ElementaryStreamQueue::dequeueAccessUnitAAC() {
     // having to interpolate.
     // The final AAC frame may well extend into the next RangeInfo but
     // that's ok.
+    // The SDK dequeues a single AAC frame and strips its ADTS header.
     size_t offset = 0;
-    while (offset < info.mLength) {
+    size_t headerSize = 0;
+    if (offset < info.mLength) {
         if (offset + 7 > mBuffer->size()) {
             return NULL;
         }
@@ -1240,7 +1242,7 @@ sp<ABuffer> ElementaryStreamQueue::dequeueAccessUnitAAC() {
             return NULL;
         }
 
-        size_t headerSize = protection_absent ? 7 : 9;
+        headerSize = protection_absent ? 7 : 9;
 
         // tracking the frame positions first then decrypt only if an accessUnit to be generated
         if (mSampleDecryptor != NULL) {
@@ -1270,7 +1272,7 @@ sp<ABuffer> ElementaryStreamQueue::dequeueAccessUnitAAC() {
     }
     mAUIndex++;
 
-    int64_t timeUs = fetchTimestamp(offset);
+    int64_t timeUs = fetchTimestampAAC(offset);
 
     sp<ABuffer> accessUnit = new ABuffer(offset);
     memcpy(accessUnit->data(), mBuffer->data(), offset);
@@ -1281,8 +1283,41 @@ sp<ABuffer> ElementaryStreamQueue::dequeueAccessUnitAAC() {
 
     accessUnit->meta()->setInt64("timeUs", timeUs);
     accessUnit->meta()->setInt32("isSync", 1);
+    accessUnit->setRange(headerSize, offset - headerSize);
 
     return accessUnit;
+}
+
+// The SDK version reads the first range without checking that the list is
+// empty.
+int64_t ElementaryStreamQueue::fetchTimestampAAC(size_t size) {
+    int64_t timeUs = -1;
+    bool first = true;
+    size_t samplesize = size;
+
+    while (size > 0) {
+        RangeInfo *info = &*mRangeInfos.begin();
+
+        if (first) {
+            timeUs = info->mTimestampUs;
+            first = false;
+        }
+
+        if (info->mLength > size) {
+            int32_t sampleRate = 0;
+            CHECK(mFormat->findInt32(kKeySampleRate, &sampleRate));
+            info->mLength -= size;
+            size_t numSamples = 1024 * size / samplesize;
+            info->mTimestampUs += numSamples * 1000000ll / sampleRate;
+            size = 0;
+        } else {
+            size -= info->mLength;
+            mRangeInfos.erase(mRangeInfos.begin());
+            info = NULL;
+        }
+    }
+
+    return timeUs;
 }
 
 int64_t ElementaryStreamQueue::fetchTimestamp(

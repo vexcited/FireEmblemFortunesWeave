@@ -513,11 +513,15 @@ status_t PlaylistFetcher::checkDecryptPadding(const sp<ABuffer> &buffer) {
 }
 
 void PlaylistFetcher::postMonitorQueue(int64_t delayUs, int64_t minDelayUs) {
+    // The SDK drops negative delays and clamps the delay as unsigned.
+    if (delayUs < 0) {
+        return;
+    }
     int64_t maxDelayUs = delayUsToRefreshPlaylist();
     if (maxDelayUs < minDelayUs) {
         maxDelayUs = minDelayUs;
     }
-    if (delayUs > maxDelayUs) {
+    if ((uint64_t)delayUs > (uint64_t)maxDelayUs) {
         FLOGV("Need to refresh playlist in %lld", (long long)maxDelayUs);
         delayUs = maxDelayUs;
     }

@@ -477,6 +477,8 @@ void BlockIterator::reset() {
     do {
         advance_l();
     } while (!eos() && block()->GetTrackNumber() != mTrackNum);
+
+    mExtractor->mSegment->ResetClusterTable();
 }
 
 void BlockIterator::seek(
@@ -643,10 +645,15 @@ int64_t BlockIterator::blockTimeUs() const {
 }
 
 void BlockIterator::seekwithoutcue_l(int64_t seekTimeUs, int64_t *actualFrameTimeUs) {
+    if (mCluster != NULL) {
+        mCluster->DecRef();
+    }
     mCluster = mExtractor->mSegment->FindCluster(seekTimeUs * 1000ll);
+    mCluster->AddRef();
     const long status = mCluster->GetFirst(mBlockEntry);
     if (status < 0) {  // error
         ALOGE("get last blockenry failed!");
+        mCluster->DecRef();
         mCluster = NULL;
         return;
     }
@@ -1112,6 +1119,7 @@ media_status_t MatroskaSource::read(
             return AMEDIA_ERROR_UNSUPPORTED;
         }
 
+        mExtractor->CreateSeekTable();
         if (!mExtractor->isLiveStreaming()) {
             clearPendingFrames();
 

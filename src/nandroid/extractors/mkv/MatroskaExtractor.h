@@ -100,6 +100,8 @@ private:
             AMediaFormat *meta,
             TrackInfo *trackInfo);
     void addTracks();
+    // The SDK builds the seek table lazily on the first seek.
+    void CreateSeekTable();
     void findThumbnails();
     void getColorInformation(
             const mkvparser::VideoTrack *vtrack,

@@ -132,6 +132,10 @@ private:
             int32_t *pesOffset = NULL,
             int32_t *pesScramblingControl = NULL);
 
+    // consume a logical (compressed) AAC access unit of size "size" and
+    // move the timestamp of a partly consumed range past it.
+    int64_t fetchTimestampAAC(size_t size);
+
     sp<ABuffer> dequeueScrambledAccessUnit();
 
     DISALLOW_EVIL_CONSTRUCTORS(ElementaryStreamQueue);

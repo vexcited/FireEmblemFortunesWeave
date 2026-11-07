@@ -131,13 +131,13 @@ Result KeyValueRomStorage<Key, Value>::Add(Position* outPosition,
 
   int64_t storageSize = 0;
   NN_FS_RESULT_DO(m_KeyValueStorage.GetSize(&storageSize));
-  position = static_cast<Position>(m_TotalEntrySize);
-  NN_FS_RESULT_THROW_UNLESS(
-    position + sizeof(Element) + nameLength <=
-      static_cast<uint64_t>(storageSize),
+  // The bound and the new total use the name length as 32 bits.
+  const uint64_t end = m_TotalEntrySize + sizeof(Element) +
+    static_cast<uint32_t>(nameLength);
+  NN_FS_RESULT_THROW_UNLESS(end <= static_cast<uint64_t>(storageSize),
     ResultDbmKeyFull());
-  m_TotalEntrySize = (position + sizeof(Element) + nameLength + 3) &
-    ~static_cast<uint64_t>(3);
+  position = static_cast<Position>(m_TotalEntrySize);
+  m_TotalEntrySize = (end + 3) & ~static_cast<uint64_t>(3);
 
   element.next = 0;
   NN_FS_RESULT_DO(LinkEntry(&element.next, position, hash));

@@ -39,7 +39,9 @@ void RunPosixThread(void* argument) {
   thread->tls.reserved02 = 0;
 }
 
-void JoinAndFreePosixThread(PosixThread* thread, void** result) {
+// The original calls it out of line.
+[[gnu::noinline]] void JoinAndFreePosixThread(PosixThread* thread,
+  void** result) {
   os::WaitThread(&thread->thread);
   thread->tls.state = 7;
 

@@ -1103,6 +1103,8 @@ class Segment {
   const Cluster* GetLast() const;
   // The SDK reports whether a cluster still sits in the segment table.
   bool IsInClusterTable(const Cluster*) const;
+  // The SDK drops the clusters nothing references anymore from the table.
+  void ResetClusterTable();
   const Cluster* GetNext(const Cluster*);
 
   const Cluster* FindCluster(long long time_nanoseconds) const;

@@ -470,7 +470,7 @@ sp<AMessage> M3UParser::getTrackInfo(size_t index) const {
         sp<MediaGroup> group = mMediaGroups.valueAt(i);
         size_t tracks = group->countTracks();
         if (ii < tracks) {
-            return group->getTrackInfo(ii);
+            return group->getTrackInfo(ii, mBaseURI.c_str());
         }
         ii -= tracks;
     }
@@ -1190,12 +1190,15 @@ status_t M3UParser::parseCipherInfo(
                     val = tmp;
                 }
 
-                AString absURI;
-                if (MakeURL(baseURI.c_str(), val.c_str(), &absURI)) {
-                    val = absURI;
-                } else {
-                    ALOGE("failed to make absolute url for %s.",
-                            uriDebugString(baseURI).c_str());
+                // The SDK keeps data URIs as they are.
+                if (!val.startsWith("data:")) {
+                    AString absURI;
+                    if (MakeURL(baseURI.c_str(), val.c_str(), &absURI)) {
+                        val = absURI;
+                    } else {
+                        ALOGE("failed to make absolute url for %s.",
+                                uriDebugString(baseURI).c_str());
+                    }
                 }
             }
 
