@@ -18,7 +18,10 @@ IDataFile::~IDataFile() {
   template class DataFile<T, U>;
 #define GAME_DATA_ARRAY_ROW(T, U) \
   template class DataFile<T, U>;
+#define GAME_DATA_ARRAY_ROW_CUSTOM(T, U) \
+  template class DataFile<T, U>;
 #include "game/data/data_types.inc"
+#undef GAME_DATA_ARRAY_ROW_CUSTOM
 #undef GAME_DATA_ARRAY_ROW
 #undef GAME_DATA_ARRAY
 #undef GAME_DATA_ROW

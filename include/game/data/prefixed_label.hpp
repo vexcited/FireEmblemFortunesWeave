@@ -26,6 +26,11 @@ public:
     return *this;
   }
 
+  void Clear() {
+    key_ = HashedString();
+    text_.clear();
+  }
+
   const HashedString& GetKey() const {
     return key_;
   }

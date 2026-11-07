@@ -44,6 +44,11 @@ class SkillMotionFile;
 class ProfileFile;
 class CategoryFile;
 class TutorialFile;
+class FacilitySceneCharacterMotionFile;
+class TrainingFile;
+class ThermaeFile;
+class CookingFile;
+class DramaFile;
 
 }
 
@@ -140,6 +145,46 @@ struct DataFileOf<TutorialGroup> {
 
 template<>
 inline constexpr bool kInlineDataRef<TutorialGroup> = true;
+
+template<>
+struct DataFileOf<FacilitySceneCharacterMotionData> {
+  using type = FacilitySceneCharacterMotionFile;
+};
+
+template<>
+inline constexpr bool kInlineDataRef<FacilitySceneCharacterMotionData> = true;
+
+template<>
+struct DataFileOf<TrainingData> {
+  using type = TrainingFile;
+};
+
+template<>
+inline constexpr bool kInlineDataRef<TrainingData> = true;
+
+template<>
+struct DataFileOf<ThermaeData> {
+  using type = ThermaeFile;
+};
+
+template<>
+inline constexpr bool kInlineDataRef<ThermaeData> = true;
+
+template<>
+struct DataFileOf<CookingData> {
+  using type = CookingFile;
+};
+
+template<>
+inline constexpr bool kInlineDataRef<CookingData> = true;
+
+template<>
+struct DataFileOf<DramaData> {
+  using type = DramaFile;
+};
+
+template<>
+inline constexpr bool kInlineDataRef<DramaData> = true;
 
 template<>
 struct DataFileOf<PerchAnswerData> {
@@ -1578,11 +1623,43 @@ struct GmapFixedTalkData : DataState<GmapFixedTalkDataState> {
 static_assert(sizeof(GmapFixedTalkData) == 0x30);
 
 struct FacilitySceneMobDataState {
-  uint64_t unknown_00;
+  uint32_t motion_hash;
 };
 
 struct FacilitySceneMobData : DataState<FacilitySceneMobDataState> {
-  unsigned char unknown_20[0x88];
+  void Build() {
+    person_28.ResolveInline();
+    motion_58.Resolve();
+    motion_68.Resolve();
+    motion_78.Resolve();
+    motion_88.Resolve();
+    motion_98.Resolve();
+
+    if (state == nullptr) {
+      state = new FacilitySceneMobDataState();
+    }
+
+    // Hashed like the names of hub motions.
+    if (motion_name != nullptr && motion_name[0] != '\0') {
+      uint32_t hash = 0;
+
+      for (const char* c = motion_name; *c != '\0'; ++c) {
+        hash = hash * 31 + static_cast<uint8_t>(*c);
+      }
+
+      state->motion_hash = hash;
+    }
+  }
+
+  unsigned char unknown_20[0x8];
+  DataRef<PersonData> person_28;
+  unsigned char unknown_38[0x18];
+  const char* motion_name;
+  DataRef<FacilitySceneCharacterMotionData> motion_58;
+  DataRef<FacilitySceneCharacterMotionData> motion_68;
+  DataRef<FacilitySceneCharacterMotionData> motion_78;
+  DataRef<FacilitySceneCharacterMotionData> motion_88;
+  DataRef<FacilitySceneCharacterMotionData> motion_98;
 };
 
 static_assert(sizeof(FacilitySceneMobData) == 0xa8);
@@ -1647,36 +1724,84 @@ struct TempleData : DataState<TempleDataState> {
 
 static_assert(sizeof(TempleData) == 0x140);
 
-struct CmdBtlPartyMemberDataEntry {
-  std::vector<const void*> unknown_00;
-  std::vector<const void*> unknown_18;
-};
+struct CmdBtlPartyMemberData : DataState<FlagConditionList> {
+  void Build() {
+    person_20.ResolveInline();
+    persons_30.ResolveInline();
+    persons_40.ResolveInline();
 
-struct CmdBtlPartyMemberDataState {
-  std::vector<CmdBtlPartyMemberDataEntry> unknown_00;
-  std::vector<const void*> unknown_18;
-};
+    if (state == nullptr) {
+      state = new FlagConditionList();
+    }
 
-struct CmdBtlPartyMemberData : DataState<CmdBtlPartyMemberDataState> {
-  unsigned char unknown_20[0x48];
+    state->Assign(conditions);
+  }
+
+  DataRef<PersonData> person_20;
+  DataRefList<PersonData> persons_30;
+  DataRefList<PersonData> persons_40;
+  NameListArray conditions;
+  unsigned char unknown_60[0x8];
 };
 
 static_assert(sizeof(CmdBtlPartyMemberData) == 0x68);
 
 struct TutorialDataState {
-  unsigned char unknown_00[0x10];
-  std::string unknown_10;
-  std::vector<const void*> unknown_28;
-  std::vector<const void*> unknown_40;
-  std::vector<const void*> unknown_58;
-  std::vector<const void*> unknown_70;
+  PrefixedLabel label;
+  FlagCondition conditions;
+  FlagCondition alternative_conditions;
 };
 
+static_assert(sizeof(TutorialDataState) == 0x88);
+
 struct TutorialData : DataState<TutorialDataState> {
-  unsigned char unknown_20[0x58];
+  void Build() {
+    if (state == nullptr) {
+      state = new TutorialDataState();
+    }
+
+    if (is_labeled) {
+      state->label.Set(key.text, "注目");
+    }
+    else {
+      state->label.Clear();
+    }
+
+    state->conditions.Clear();
+    state->alternative_conditions.Clear();
+    FlagCondition& chosen = is_alternative ? state->alternative_conditions :
+      state->conditions;
+    chosen.Set(conditions);
+  }
+
+  unsigned char unknown_20[0x40];
+  bool is_alternative;
+  unsigned char unknown_61[0x2];
+  bool is_labeled;
+  unsigned char unknown_64[0x4];
+  NameList conditions;
 };
 
 static_assert(sizeof(TutorialData) == 0x78);
+
+// The group keeps an empty marker, created on build and freed first on unbuild.
+struct TutorialGroupState {};
+
+struct TutorialGroup : DataArray<TutorialData> {
+  [[gnu::always_inline]] void Build() {
+    DataArray::Build();
+
+    if (unknown_18 == nullptr) {
+      unknown_18 = new TutorialGroupState();
+    }
+  }
+
+  [[gnu::always_inline]] void Unbuild() {
+    delete static_cast<TutorialGroupState*>(unknown_18);
+    unknown_18 = nullptr;
+    DataArray::Unbuild();
+  }
+};
 
 struct MiracleDataState {
   unsigned char unknown_00[0x10];
@@ -1847,6 +1972,24 @@ struct LessonData : DataState<LessonDataState> {
 };
 
 static_assert(sizeof(LessonData) == 0x90);
+
+struct CalendarDetailData : Data {
+  void Build() {
+    training_58.Resolve();
+    thermae_68.Resolve();
+    cooking_78.Resolve();
+    drama_88.Resolve();
+  }
+
+  unsigned char unknown_18[0x40];
+  DataRef<TrainingData> training_58;
+  DataRef<ThermaeData> thermae_68;
+  DataRef<CookingData> cooking_78;
+  DataRef<DramaData> drama_88;
+  unsigned char unknown_98[0xa8];
+};
+
+static_assert(sizeof(CalendarDetailData) == 0x140);
 
 struct FacilitySceneCharacterMotionData : Data {
   // Non positive values fall back to -1.

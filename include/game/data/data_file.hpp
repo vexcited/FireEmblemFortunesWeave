@@ -173,6 +173,11 @@ public:
     }
   }
 
+  // Some rows inline the lookup of a file that others call out of line.
+  [[gnu::always_inline]] void ResolveInline() {
+    Lookup();
+  }
+
   const char* name_;
   T* data_;
 
@@ -193,8 +198,12 @@ class DataRefList {
 public:
   static constexpr uint8_t kReferenceType = 0x10;
 
-  // An unresolved name empties the whole list.
   [[gnu::noinline]] void Resolve() {
+    ResolveInline();
+  }
+
+  // An unresolved name empties the whole list.
+  [[gnu::always_inline]] void ResolveInline() {
     auto* file = DataFileOf<T>::type::GetInstance();
 
     if (file == nullptr || type_ != kReferenceType) {

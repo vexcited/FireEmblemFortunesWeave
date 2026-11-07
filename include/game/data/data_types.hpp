@@ -8,7 +8,9 @@ namespace game {
 #define GAME_DATA_ROW(T) struct T;
 #define GAME_DATA_ARRAY(T, U, size) struct T; struct U;
 #define GAME_DATA_ARRAY_ROW(T, U) struct T; struct U;
+#define GAME_DATA_ARRAY_ROW_CUSTOM(T, U) struct T; struct U;
 #include "game/data/data_types.inc"
+#undef GAME_DATA_ARRAY_ROW_CUSTOM
 #undef GAME_DATA_ARRAY_ROW
 #undef GAME_DATA_ARRAY
 #undef GAME_DATA_ROW
@@ -29,7 +31,7 @@ struct DataBody : Data {
 template<>
 struct DataBody<0> : Data {};
 
-// Rows with their own build code are defined in data_rows.hpp.
+// Rows and arrays with their own build code are defined in data_rows.hpp.
 #define GAME_DATA(T, size) \
   struct T : DataBody<size> {}; \
   static_assert(size == 0 || sizeof(T) == size);
@@ -39,7 +41,9 @@ struct DataBody<0> : Data {};
   struct T : DataArray<U> {};
 #define GAME_DATA_ARRAY_ROW(T, U) \
   struct T : DataArray<U> {};
+#define GAME_DATA_ARRAY_ROW_CUSTOM(T, U)
 #include "game/data/data_types.inc"
+#undef GAME_DATA_ARRAY_ROW_CUSTOM
 #undef GAME_DATA_ARRAY_ROW
 #undef GAME_DATA_ARRAY
 #undef GAME_DATA_ROW

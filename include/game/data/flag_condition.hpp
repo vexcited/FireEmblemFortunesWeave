@@ -60,9 +60,13 @@ public:
     return *this;
   }
 
-  FlagCondition& Set(const NameList& names) {
+  void Clear() {
     terms_.clear();
     keys_.clear();
+  }
+
+  FlagCondition& Set(const NameList& names) {
+    Clear();
     return Append(names);
   }
 
