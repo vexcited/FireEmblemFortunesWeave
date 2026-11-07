@@ -30,7 +30,6 @@ public:
   bool IsEnable() override;
   void Unknown16() override;
   int ACall() override;
-  virtual void Unknown70() = 0;
 
 private:
   std::string label_;

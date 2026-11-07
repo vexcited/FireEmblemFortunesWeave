@@ -43,7 +43,8 @@ struct MediaBufferGroup::InternalData {
     Mutex mLock;
     Condition mCondition;
     size_t mGrowthLimit;  // Do not automatically grow group larger than this.
-    std::list<MediaBufferBase *> mBuffers;
+    std::list<MediaBufferBase *,
+            nn::movie::detail::HeapAllocator<MediaBufferBase *>> mBuffers;
 };
 
 MediaBufferGroup::MediaBufferGroup(size_t growthLimit)

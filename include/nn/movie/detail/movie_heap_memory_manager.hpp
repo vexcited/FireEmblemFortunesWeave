@@ -41,4 +41,37 @@ private:
   bool m_IsStatisticsEnabled;
 };
 
+// Standard containers of the AOSP code keep the heap that was current when
+// they were built.
+template <typename T>
+class HeapAllocator {
+public:
+  using value_type = T;
+
+  HeapAllocator() : m_pHeap(HeapMemoryManager::GetInstance().GetCurrentHeap()) {
+  }
+
+  template <typename U>
+  HeapAllocator(const HeapAllocator<U>& other) : m_pHeap(other.GetHeap()) {}
+
+  T* allocate(size_t count) {
+    return static_cast<T*>(AllocateFromHeap(count * sizeof(T), m_pHeap));
+  }
+
+  void deallocate(T* pointer, size_t) {
+    FreeToHeap(pointer, m_pHeap);
+  }
+
+  HeapContext* GetHeap() const {
+    return m_pHeap;
+  }
+
+  bool operator==(const HeapAllocator& other) const {
+    return m_pHeap == other.m_pHeap;
+  }
+
+private:
+  HeapContext* m_pHeap;
+};
+
 }

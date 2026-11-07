@@ -1,49 +1,8 @@
 #include "nn/mii/store_data.hpp"
 
-namespace nn::util {
-
-struct Uuid {
-  uint8_t data[16];
-};
-
-Uuid GenerateUuid();
-
-}
+#include "nn/mii/mii_utility.hpp"
 
 namespace nn::mii::detail {
-
-uint16_t CalculateCrc16(const void* data, int size, uint16_t initial) {
-  const auto* bytes = static_cast<const uint8_t*>(data);
-  uint16_t value = initial;
-
-  for (int i = 0; i < size; ++i) {
-    for (unsigned bit = 0; bit < 8; ++bit) {
-      value = (value << 1) ^ ((value & 0x8000) ? 0x1021 : 0);
-    }
-
-    value ^= bytes[i];
-  }
-
-  return value;
-}
-
-void CalculateAndSetCrc16(void* data, int size, uint16_t initial) {
-  auto* bytes = static_cast<uint8_t*>(data);
-  bytes[size - 2] = 0;
-  bytes[size - 1] = 0;
-  const uint16_t crc = CalculateCrc16(data, size, initial);
-  bytes[size - 2] = crc >> 8;
-  bytes[size - 1] = crc;
-}
-
-bool IsValidCrc16(const void* data, int size, uint16_t initial) {
-  return CalculateCrc16(data, size, initial) == 0;
-}
-
-void MakeStoreCreateId(UtilityImpl*, CreateId* id) {
-  const auto value = nn::util::GenerateUuid();
-  __builtin_memcpy(id, &value, sizeof(value));
-}
 
 static uint16_t DeviceCrcSeed() {
   DeviceId device = {};
@@ -85,8 +44,27 @@ bool StoreDataRaw::IsValidWithoutEmptyNickname() const {
 }
 
 bool StoreDataRaw::operator==(const StoreDataRaw& other) const {
-  return other.IsValid() && id == other.id && core == other.core &&
-         data_crc == other.data_crc && device_crc == other.device_crc;
+  if (!other.IsValid() || GetCreateId() != other.GetCreateId()) {
+    return false;
+  }
+
+#define MII_CORE_FIELD(Name, Index, Order, Error)                              \
+  if (Get##Name() != other.Get##Name()) {                                      \
+    return false;                                                              \
+  }
+#include "nn/mii/core_fields.inc"
+#undef MII_CORE_FIELD
+
+  Nickname left{};
+  Nickname right{};
+  GetNickname(&left);
+  other.GetNickname(&right);
+
+  if (!(left == right)) {
+    return false;
+  }
+
+  return data_crc == other.data_crc && device_crc == other.device_crc;
 }
 
 CreateId StoreDataRaw::GetCreateId() const {
@@ -118,7 +96,7 @@ void StoreDataRaw::SetNickname(const Nickname& name) {
 void StoreDataRaw::BuildWithCoreData(UtilityImpl* utility,
                                      const CoreDataRaw& data) {
   core = data;
-  MakeStoreCreateId(utility, &id);
+  utility->MakeCreateId(&id);
   UpdateDataCrc();
   UpdateDeviceCrc();
 }
@@ -205,7 +183,7 @@ void BuildStoreFromDefault(StoreDataRaw* store, UtilityImpl* utility,
   Nickname name = {};
   name.Set(reinterpret_cast<const uint16_t*>(defaults->words + 49));
   store->SetNickname(name);
-  MakeStoreCreateId(utility, &store->id);
+  utility->MakeCreateId(&store->id);
   store->UpdateDataCrc();
   store->UpdateDeviceCrc();
 }

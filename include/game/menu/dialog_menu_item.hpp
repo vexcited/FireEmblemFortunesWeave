@@ -17,6 +17,7 @@ public:
   bool Unknown14() override { return true; }
 
 protected:
+  uint8_t unknown_53_;
   bool icon_state_;
   Callback on_decide_;
   Callback on_cancel_;

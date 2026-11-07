@@ -1,6 +1,7 @@
 #include "nn/mii/ver3_record.hpp"
 
 #include <stddef.h>
+#include <string.h>
 
 namespace nn::os {
 void GenerateRandomBytes(void*, size_t);
@@ -8,71 +9,10 @@ void GenerateRandomBytes(void*, size_t);
 
 namespace nn::mii {
 
-void Nickname::Set(const uint16_t* source) {
-  for (auto& value : text) {
-    value = 0;
-  }
-
-  for (unsigned i = 0; i < 10 && source[i] != 0; ++i) {
-    text[i] = source[i];
-  }
-}
-
-bool Nickname::IsValid() const {
-  if (text[0] == 0 || text[10] != 0) {
-    return false;
-  }
-
-  unsigned end = 1;
-
-  while (end < 10 && text[end] != 0) {
-    ++end;
-  }
-
-  for (; end <= 10; ++end) {
-    if (text[end] != 0) {
-      return false;
-    }
-  }
-
-  return true;
-}
-
-bool Nickname::IsEmpty() const {
-  uint16_t combined = 0;
-
-  for (auto value : text) {
-    combined |= value;
-  }
-
-  return combined == 0;
-}
-
 namespace detail {
 
 static void Copy(void* destination, const void* source, int size) {
-  auto* output = static_cast<uint8_t*>(destination);
-  const auto* input = static_cast<const uint8_t*>(source);
-
-  for (int i = 0; i < size; ++i) {
-    output[i] = input[i];
-  }
-}
-
-void StoreLittleEndianNickname(uint16_t* output, int count,
-                               const Nickname& name) {
-  for (int i = 0; i < count; ++i) {
-    output[i] = name.text[i];
-  }
-}
-
-void LoadLittleEndianNickname(Nickname* output, const uint16_t* input,
-                              int count) {
-  for (int i = 0; i < count; ++i) {
-    output->text[i] = input[i];
-  }
-
-  output->text[count] = 0;
+  memcpy(destination, source, size);
 }
 
 void ModifyVer3StoreDataNicknameInvalid(Nickname* name) {
@@ -130,33 +70,6 @@ static void MakeCreateId(UtilityImpl*, Ver3CreateId* id) {
 
 static void MakeAuthorId(UtilityImpl*, Ver3AuthorId* id) {
   nn::os::GenerateRandomBytes(id, 8);
-}
-
-static uint16_t Crc16(const uint8_t* data, int size) {
-  uint16_t value = 0;
-
-  for (int i = 0; i < size; ++i) {
-    for (unsigned bit = 0; bit < 8; ++bit) {
-      value = (value << 1) ^ ((value & 0x8000) ? 0x1021 : 0);
-    }
-
-    value ^= data[i];
-  }
-
-  return value;
-}
-
-void CalculateAndSetCrc16(void* data, int size) {
-  auto* bytes = static_cast<uint8_t*>(data);
-  bytes[size - 2] = 0;
-  bytes[size - 1] = 0;
-  const uint16_t crc = Crc16(bytes, size);
-  bytes[size - 2] = crc >> 8;
-  bytes[size - 1] = crc;
-}
-
-bool IsValidCrc16(const void* data, int size) {
-  return Crc16(static_cast<const uint8_t*>(data), size) == 0;
 }
 
 void Ver3StoreDataRaw::UpdateCrc() {

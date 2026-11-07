@@ -1,6 +1,7 @@
 #include "nn/mii/mii_utility.hpp"
 
 #include "nn/os/time.hpp"
+#include "nn/util/uuid.hpp"
 
 namespace nn::mii::detail {
 
@@ -28,6 +29,11 @@ UtilityImpl::~UtilityImpl() {}
 
 int64_t UtilityImpl::GetRandomSeedBySystemTick() {
   return os::GetSystemTick().value;
+}
+
+void UtilityImpl::MakeCreateId(CreateId* id) {
+  const auto value = nn::util::GenerateUuid();
+  __builtin_memcpy(id, &value, sizeof(value));
 }
 
 void UtilityImpl::MakeInvalidCreateId(CreateId* id) {

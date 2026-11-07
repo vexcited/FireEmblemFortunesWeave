@@ -25,7 +25,7 @@ namespace nandroid {
 
 //static
 MediaBufferBase *MediaBufferBase::Create(size_t size) {
-    return new (std::nothrow) MediaBuffer(size);
+    return new MediaBuffer(size);
 }
 
 }  // android

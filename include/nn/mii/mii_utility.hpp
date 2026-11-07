@@ -12,6 +12,7 @@ public:
   UtilityImpl();
   ~UtilityImpl();
   static int64_t GetRandomSeedBySystemTick();
+  void MakeCreateId(CreateId* id);
   void MakeInvalidCreateId(CreateId* id);
   int GetRandomRange(int minimum, int maximum);
   int GetRandom(int minimum, int end);

@@ -68,6 +68,11 @@ class SceneCharacterBehaviorTurn : public SceneCharacterBehaviorBase {
 public:
   SceneCharacterBehaviorTurn();
 
+  // The original keeps the vtable store, so the body is not empty.
+  ~SceneCharacterBehaviorTurn() override {
+    static_cast<void>(0);
+  }
+
   int GetType() override { return 0; }
   inline void Start() override;
   inline void Update() override;
