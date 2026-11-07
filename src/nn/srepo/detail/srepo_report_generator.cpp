@@ -337,3 +337,133 @@ Result ReportGenerator::AddKeyValue(size_t* pOutPosition, const char* key,
 }
 
 }
+
+namespace nn::srepo::detail {
+
+namespace {
+
+[[gnu::always_inline]] inline Result AddStructKey(size_t* pOutPosition,
+  const char* key, uint8_t* buffer, size_t size, size_t position) {
+  size_t length = 0;
+  if (!VerifyKey(&length, key)) {
+    return ResultInvalidKey;
+  }
+  if (StructGenerator::CheckKeyDuplication(buffer, position, key)) {
+    return ResultDuplicatedKey;
+  }
+  util::MessagePackWriter::StreamParam stream = {buffer, size, position};
+  util::MessagePackWriter writer(&stream);
+  const uint32_t keyLength = static_cast<uint32_t>(length);
+  if (keyLength + GetStringHeaderSize(keyLength) >
+    stream.size - stream.position) {
+    return ResultBufferFull;
+  }
+  if (!writer.WriteString(key, keyLength)) {
+    return ResultInvalidKey;
+  }
+  *pOutPosition = stream.position;
+  return Result{0};
+}
+
+}
+
+Result StructGenerator::AddKey(size_t* pOutPosition, const char* key,
+  uint8_t* buffer, size_t size, size_t position) {
+  return AddStructKey(pOutPosition, key, buffer, size, position);
+}
+
+Result StructGenerator::AddKeyValue(size_t* pOutPosition, const char* key,
+  long value, uint8_t* buffer, size_t size, size_t position) {
+  size_t keyEnd = 0;
+  NN_RESULT_DO(AddStructKey(&keyEnd, key, buffer, size, position));
+  util::MessagePackWriter::StreamParam stream = {buffer, size, keyEnd};
+  util::MessagePackWriter writer(&stream);
+  if (!writer.WriteSignedIntegerAutoSize(value)) {
+    return ResultBufferFull;
+  }
+  *pOutPosition = stream.position;
+  return Result{0};
+}
+
+Result StructGenerator::AddKeyValue(size_t* pOutPosition, const char* key,
+  const Any64BitId& value, uint8_t* buffer, size_t size, size_t position) {
+  size_t keyEnd = 0;
+  NN_RESULT_DO(AddStructKey(&keyEnd, key, buffer, size, position));
+  util::MessagePackWriter::StreamParam stream = {buffer, size, keyEnd};
+  util::MessagePackWriter writer(&stream);
+  const uint64_t id = __builtin_bswap64(value.id);
+  if (!writer.WriteExtension(MsgpackExtensionType_Any64BitId, &id,
+    sizeof(id))) {
+    return ResultBufferFull;
+  }
+  *pOutPosition = stream.position;
+  return Result{0};
+}
+
+Result StructGenerator::AddKeyValue(size_t* pOutPosition, const char* key,
+  float value, uint8_t* buffer, size_t size, size_t position) {
+  if (!VerifyFloatValue(value)) {
+    return ResultInvalidValue;
+  }
+  size_t keyEnd = 0;
+  NN_RESULT_DO(AddStructKey(&keyEnd, key, buffer, size, position));
+  util::MessagePackWriter::StreamParam stream = {buffer, size, keyEnd};
+  util::MessagePackWriter writer(&stream);
+  if (!writer.WriteFloat32(value)) {
+    return ResultBufferFull;
+  }
+  *pOutPosition = stream.position;
+  return Result{0};
+}
+
+Result StructGenerator::AddKeyValue(size_t* pOutPosition, const char* key,
+  double value, uint8_t* buffer, size_t size, size_t position) {
+  if (!VerifyDoubleValue(value)) {
+    return ResultInvalidValue;
+  }
+  size_t keyEnd = 0;
+  NN_RESULT_DO(AddStructKey(&keyEnd, key, buffer, size, position));
+  util::MessagePackWriter::StreamParam stream = {buffer, size, keyEnd};
+  util::MessagePackWriter writer(&stream);
+  if (!writer.WriteFloat64(value)) {
+    return ResultBufferFull;
+  }
+  *pOutPosition = stream.position;
+  return Result{0};
+}
+
+Result StructGenerator::AddKeyValue(size_t* pOutPosition, const char* key,
+  const char* value, uint8_t* buffer, size_t size, size_t position) {
+  if (value == nullptr) {
+    return ResultInvalidValue;
+  }
+  size_t keyEnd = 0;
+  NN_RESULT_DO(AddStructKey(&keyEnd, key, buffer, size, position));
+  util::MessagePackWriter::StreamParam stream = {buffer, size, keyEnd};
+  util::MessagePackWriter writer(&stream);
+  size_t length = 0;
+  if (!VerifyStringValueLength(&length, value,
+    stream.size - stream.position)) {
+    return ResultBufferFull;
+  }
+  if (!writer.WriteString(value, static_cast<uint32_t>(length))) {
+    return ResultInvalidValue;
+  }
+  *pOutPosition = stream.position;
+  return Result{0};
+}
+
+Result StructGenerator::AddKeyValue(size_t* pOutPosition, const char* key,
+  bool value, uint8_t* buffer, size_t size, size_t position) {
+  size_t keyEnd = 0;
+  NN_RESULT_DO(AddStructKey(&keyEnd, key, buffer, size, position));
+  util::MessagePackWriter::StreamParam stream = {buffer, size, keyEnd};
+  util::MessagePackWriter writer(&stream);
+  if (!writer.WriteBool(value)) {
+    return ResultBufferFull;
+  }
+  *pOutPosition = stream.position;
+  return Result{0};
+}
+
+}
