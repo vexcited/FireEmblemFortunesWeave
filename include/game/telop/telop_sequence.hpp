@@ -6,6 +6,7 @@
 #include <string_view>
 #include <vector>
 
+#include "game/gameui/gauge_util.hpp"
 #include "game/proc/proc_inst.hpp"
 #include "snd/fnd/weak_handle.hpp"
 #include "ui/layout.hpp"
@@ -22,22 +23,6 @@ public:
   void Finish();
 };
 
-// Counters and lines shown by the results, their types are not recovered.
-class TelopCounter {
-public:
-  void SetState(int state);
-
-private:
-  uint8_t unknown_00_[0x90];
-};
-
-class TelopLine {
-public:
-  void SetState(int state);
-
-private:
-  uint8_t unknown_00_[0xb8];
-};
 
 // An effect handle checked against the serial of its target.
 class EffectHandle {
@@ -59,7 +44,7 @@ private:
     uint32_t serial;
   };
 
-  Ref* ref_;
+  std::shared_ptr<Ref> ref_;
 };
 
 // Base of the on-screen captions.
@@ -136,6 +121,8 @@ static_assert(sizeof(TelopSequence) == 0x338);
 // Telops reporting the result of an activity.
 class TelopResult : public TelopSequence {
 public:
+  ~TelopResult() override;
+
   void Unknown33() override;
   void Unknown46() override;
 
@@ -173,11 +160,13 @@ protected:
   void Unknown175ff40();
 
   std::string unknown_338_;
-  uint8_t unknown_350_[0x60];
+  EffectHandle effect_;
+  uint8_t unknown_360_[0x50];
   Gauge* gauge_;
-  uint8_t unknown_3b8_[0x20];
-  TelopCounter counter_;
-  std::vector<TelopLine> lines_;
+  uint64_t unknown_3b8_;
+  std::string unknown_3c0_;
+  gameui::GaugeUtil::HonorExpChange counter_;
+  std::vector<gameui::GaugeUtil::RelianceExpChange> lines_;
   uint8_t unknown_480_[0x8];
   TitleSystem* sub_title_;
 };

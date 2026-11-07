@@ -91,6 +91,12 @@ void TelopSequence::Unknown49() {
   Finish();
 }
 
+TelopResult::~TelopResult() {
+  if (effect_.IsValid()) {
+    effect_.Stop(true);
+  }
+}
+
 void TelopResult::Unknown33() {
   accessor_.SetPaneVisible("L_MotivationGauge", false);
   Unknown56();

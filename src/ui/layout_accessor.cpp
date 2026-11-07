@@ -49,10 +49,6 @@ nn::ui2d::Layout* LayoutAccessor::FindPartsLayout(nn::ui2d::Layout* layout,
   return found;
 }
 
-LayoutAccessor::~LayoutAccessor() {
-  Reset();
-}
-
 void LayoutAccessor::Setup(const std::shared_ptr<Layout>& owner) {
   Reset();
   owner_ = owner;

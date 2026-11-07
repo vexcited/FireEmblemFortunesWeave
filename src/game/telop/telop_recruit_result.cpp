@@ -14,6 +14,11 @@ public:
   nn::ui2d::Pane* Unknown53() override;
   void Unknown56() override;
   void Unknown57() override;
+
+private:
+  uint64_t unknown_490_;
+  std::shared_ptr<void> unknown_498_;
+  std::shared_ptr<void> unknown_4a8_;
 };
 
 TelopRecruitResult::~TelopRecruitResult() = default;

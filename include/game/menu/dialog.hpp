@@ -2,8 +2,10 @@
 
 #include <cstdint>
 #include <functional>
+#include <string>
 
 #include "game/menu/basic_menu.hpp"
+#include "ui/animation_accessor.hpp"
 
 namespace game::menu {
 
@@ -32,13 +34,22 @@ protected:
   void Unknown1647ee0();
   void Unknown1648380();
 
-  uint8_t unknown_420_[0x60];
+  std::string unknown_420_;
+  uint64_t unknown_438_;
+  std::string unknown_440_;
+  uint64_t unknown_458_;
+  std::string unknown_460_;
+  uint64_t unknown_478_;
   std::function<void()> decide_callback_;
   std::function<void()> unknown_4b0_;
   std::function<int(Dialog*)> unknown_4e0_;
   int32_t result_;
   bool unknown_514_;
   bool unknown_515_;
+  uint8_t unknown_516_[0xa];
+  ui::AnimationAccessor animation_;
 };
+
+static_assert(sizeof(Dialog) == 0x5d0);
 
 }

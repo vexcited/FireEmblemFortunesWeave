@@ -21,11 +21,15 @@ public:
 
 private:
   const void* unknown_338_;
-  TelopLine line_;
+  gameui::GaugeUtil::RelianceExpChange line_;
   EffectHandle effect_;
 };
 
-TelopPerchPerfect::~TelopPerchPerfect() = default;
+TelopPerchPerfect::~TelopPerchPerfect() {
+  if (effect_.IsValid()) {
+    effect_.Stop(true);
+  }
+}
 
 void TelopPerchPerfect::Unknown39() {
   if (effect_.IsValid()) {

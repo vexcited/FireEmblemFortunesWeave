@@ -21,10 +21,22 @@ public:
   void Unknown128() override;
   void Unknown129() override;
   bool Unknown137() override;
+
+  const char* ImplUnknown03() override {
+    return unknown_428_ == nullptr ? "MID_HubMenu_Scout"
+      : "MID_DeliveryMenu_Title";
+  }
+
+  const char* ImplUnknown05() override {
+    return unknown_428_ == nullptr ? "MID_ScoutMenu_Give_Help"
+      : "MID_DeliveryMenu_ItemSelect_Help";
+  }
+
   int InputUnknown12(int direction, bool loop) override;
 
 private:
-  uint8_t unknown_428_[0x10];
+  const void* unknown_428_;
+  uint8_t unknown_430_[0x8];
   std::vector<const void*> unknown_438_;
   std::vector<const void*> unknown_450_;
 };

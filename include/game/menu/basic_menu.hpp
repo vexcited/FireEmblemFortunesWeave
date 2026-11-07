@@ -376,7 +376,8 @@ protected:
   bool unknown_16a_;
   uint8_t unknown_16b_[0x29];
   int32_t unknown_194_;
-  uint8_t unknown_198_[0x90];
+  ui::LayoutAccessor accessor_198_;
+  uint8_t unknown_200_[0x28];
   int32_t unknown_228_;
   int32_t unknown_22c_;
   uint8_t unknown_230_[0x10];
@@ -394,7 +395,7 @@ protected:
   // The cursor index saved for each page.
   std::vector<int32_t> unknown_310_;
   std::vector<int32_t> unknown_328_;
-  uint8_t unknown_340_[0x10];
+  std::shared_ptr<void> unknown_340_;
   ui::LayoutAccessor accessor_;
   ui::LayoutAccessor accessor_3b8_;
 };

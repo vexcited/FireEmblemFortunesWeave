@@ -21,7 +21,7 @@ public:
 
 private:
   uint8_t unknown_338_[0x10];
-  TelopCounter counter_;
+  gameui::GaugeUtil::HonorExpChange counter_;
 };
 
 class TelopLevelUp : public TelopSequence {

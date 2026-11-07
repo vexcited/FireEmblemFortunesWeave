@@ -23,6 +23,13 @@ public:
   int Unknown114() override;
   int Unknown117() override { return 1; }
   int Unknown118() override { return 1; }
+  int ImplUnknown10() override;
+  uint8_t ImplUnknown08() override { return 1; }
+  int ImplUnknown00() override { return unknown_42d_; }
+
+protected:
+  uint8_t unknown_428_[5];
+  bool unknown_42d_;
 };
 
 namespace {
@@ -35,11 +42,13 @@ public:
   const char* Unknown33() override { return "Common_HonorList"; }
   void Unknown85() override;
   void Unknown93() override;
+  int ImplUnknown10() override;
+  int InputUnknown01() override { return 16; }
 };
 
 [[gnu::used]] ProcHonorMenu::ProcHonorMenu() = default;
 
-class ProcQuestMenu : public GuideBaseMenu {
+class ProcQuestMenu final : public GuideBaseMenu {
 public:
   ProcQuestMenu();
 
@@ -51,10 +60,11 @@ public:
   int Unknown102() override;
   void Unknown128() override;
   void Unknown129() override;
+  int ImplUnknown10() override;
+  int InputUnknown01() override { return 15; }
   int InputUnknown12(int direction, bool loop) override;
 
 private:
-  uint64_t unknown_428_;
   std::vector<const void*> unknown_430_;
 };
 

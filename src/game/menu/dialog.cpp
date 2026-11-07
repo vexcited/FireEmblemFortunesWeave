@@ -1,8 +1,17 @@
 #pragma GCC visibility push(hidden)
+#include "game/map/map_unit_info.hpp"
 #include "game/menu/dialog.hpp"
+#include "game/proc/proc_game_skip_view.hpp"
 #pragma GCC visibility pop
 
 namespace game::menu {
+
+Dialog::~Dialog() {
+  ProcGameSkipView::PopState();
+  if (map::MapUnitInfo* info = map::MapUnitInfo::GetInstance()) {
+    info->SetUnknown16c();
+  }
+}
 
 int Dialog::Unknown61() {
   return result_ == 5 ? 1 : result_;

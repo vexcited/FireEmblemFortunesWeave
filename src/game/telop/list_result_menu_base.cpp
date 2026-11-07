@@ -2,6 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 #include "game/menu/basic_menu.hpp"
+#include "game/proc/proc_game_skip_view.hpp"
 #include "game/sound/se.hpp"
 #include "game/telop/telop_sequence.hpp"
 
@@ -76,7 +77,10 @@ public:
   int Unknown139() override { return 1; }
 };
 
-ListResultMenuBase::~ListResultMenuBase() = default;
+ListResultMenuBase::~ListResultMenuBase() {
+  ProcGameSkipView::PopState();
+}
+
 ExpListResultMenu::~ExpListResultMenu() = default;
 RestListResultMenu::~RestListResultMenu() = default;
 TrainingListResult::~TrainingListResult() = default;

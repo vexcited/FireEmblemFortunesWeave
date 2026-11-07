@@ -19,7 +19,11 @@ public:
 
   // User provided, make_shared stores each member instead of zeroing.
   LayoutAccessor() {}
-  ~LayoutAccessor();
+  // The link time optimized original inlines it into every owner, the out
+  // of line copy stays for its own translation unit.
+  [[gnu::used]] ~LayoutAccessor() {
+    Reset();
+  }
 
   void Setup(const std::shared_ptr<Layout>& owner);
   void Setup(const std::shared_ptr<Layout>& owner, nn::ui2d::Layout* layout);
