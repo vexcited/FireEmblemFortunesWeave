@@ -1,3 +1,4 @@
+#include "nn/diag/diag_abort.hpp"
 #include "nn/srepo/detail/srepo_generator.hpp"
 #include "nn/srepo/detail/srepo_verifier.hpp"
 #include "nn/util/message_pack.hpp"
@@ -11,8 +12,19 @@ const size_t MapHeaderSize = 3;
 
 // The srepo results of a mixed array, an invalid value and a full buffer.
 constexpr Result ResultValueTypeMismatch = {0x2b4};
+constexpr Result ResultInvalidKey = {0x4b4};
+constexpr Result ResultDuplicatedKey = {0x6b4};
 constexpr Result ResultInvalidValue = {0x8b4};
 constexpr Result ResultBufferFull = {0xcb4};
+constexpr Result ResultTooManyKeys = {0xeb4};
+constexpr Result ResultReportTooLarge = {0x14b4};
+
+constexpr int KeyValueCountMax = 100;
+
+// The bytes of the msgpack header of a string of the length.
+size_t GetStringHeaderSize(uint32_t length) {
+  return length < 0x20 ? 1 : length < 0x100 ? 2 : length < 0x10000 ? 3 : 5;
+}
 
 using AnyDataType = util::MessagePackReader::AnyDataType;
 
@@ -171,6 +183,157 @@ void ReportGenerator::IncrementKeyValueCount(uint8_t* buffer, size_t size) {
     static_cast<uint16_t>((buffer[1] << 8 | buffer[2]) + 1);
   buffer[1] = static_cast<uint8_t>(count >> 8);
   buffer[2] = static_cast<uint8_t>(count);
+}
+
+}
+
+namespace nn::srepo::detail {
+
+namespace {
+
+[[gnu::always_inline]] inline Result FinishKeyValue(size_t* pOutPosition,
+  uint8_t* buffer, size_t size, size_t position, size_t sizeMax) {
+  if (position > sizeMax) {
+    return ResultReportTooLarge;
+  }
+  ReportGenerator::IncrementKeyValueCount(buffer, size);
+  *pOutPosition = position;
+  return Result{0};
+}
+
+}
+
+Result ReportGenerator::AddKey(size_t* pOutPosition, const char* key,
+  uint8_t* buffer, size_t size, size_t position) {
+  size_t length = 0;
+  if (!VerifyKey(&length, key)) {
+    return ResultInvalidKey;
+  }
+  if (CheckKeyDuplication(buffer, position, key)) {
+    return ResultDuplicatedKey;
+  }
+  if (GetKeyValueCount(buffer, size) >= KeyValueCountMax) {
+    return ResultTooManyKeys;
+  }
+  util::MessagePackWriter::StreamParam stream = {buffer, size, position};
+  util::MessagePackWriter writer(&stream);
+  const uint32_t keyLength = static_cast<uint32_t>(length);
+  if (keyLength + GetStringHeaderSize(keyLength) >
+    stream.size - stream.position) {
+    return ResultBufferFull;
+  }
+  if (!writer.WriteString(key, keyLength)) {
+    return ResultInvalidKey;
+  }
+  *pOutPosition = stream.position;
+  return Result{0};
+}
+
+Result ReportGenerator::AddKeyValue(size_t* pOutPosition, const char* key,
+  long value, uint8_t* buffer, size_t size, size_t position, size_t sizeMax) {
+  size_t keyEnd = 0;
+  NN_RESULT_DO(AddKey(&keyEnd, key, buffer, size, position));
+  util::MessagePackWriter::StreamParam stream = {buffer, size, keyEnd};
+  util::MessagePackWriter writer(&stream);
+  if (!writer.WriteIntegerAutoSize(value)) {
+    return ResultBufferFull;
+  }
+  return FinishKeyValue(pOutPosition, buffer, size, stream.position, sizeMax);
+}
+
+Result ReportGenerator::AddKeyValue(size_t* pOutPosition, const char* key,
+  const Any64BitId& value, uint8_t* buffer, size_t size, size_t position,
+  size_t sizeMax) {
+  size_t keyEnd = 0;
+  NN_RESULT_DO(AddKey(&keyEnd, key, buffer, size, position));
+  util::MessagePackWriter::StreamParam stream = {buffer, size, keyEnd};
+  util::MessagePackWriter writer(&stream);
+  const uint64_t id = __builtin_bswap64(value.id);
+  if (!writer.WriteExtension(MsgpackExtensionType_Any64BitId, &id,
+    sizeof(id))) {
+    return ResultBufferFull;
+  }
+  return FinishKeyValue(pOutPosition, buffer, size, stream.position, sizeMax);
+}
+
+Result ReportGenerator::AddKeyValue(size_t* pOutPosition, const char* key,
+  float value, uint8_t* buffer, size_t size, size_t position, size_t sizeMax) {
+  if (!VerifyFloatValue(value)) {
+    return ResultInvalidValue;
+  }
+  size_t keyEnd = 0;
+  NN_RESULT_DO(AddKey(&keyEnd, key, buffer, size, position));
+  util::MessagePackWriter::StreamParam stream = {buffer, size, keyEnd};
+  util::MessagePackWriter writer(&stream);
+  if (!writer.WriteFloat32(value)) {
+    return ResultBufferFull;
+  }
+  return FinishKeyValue(pOutPosition, buffer, size, stream.position, sizeMax);
+}
+
+Result ReportGenerator::AddKeyValue(size_t* pOutPosition, const char* key,
+  double value, uint8_t* buffer, size_t size, size_t position,
+  size_t sizeMax) {
+  if (!VerifyDoubleValue(value)) {
+    return ResultInvalidValue;
+  }
+  size_t keyEnd = 0;
+  NN_RESULT_DO(AddKey(&keyEnd, key, buffer, size, position));
+  util::MessagePackWriter::StreamParam stream = {buffer, size, keyEnd};
+  util::MessagePackWriter writer(&stream);
+  if (!writer.WriteFloat64(value)) {
+    return ResultBufferFull;
+  }
+  return FinishKeyValue(pOutPosition, buffer, size, stream.position, sizeMax);
+}
+
+Result ReportGenerator::AddKeyValue(size_t* pOutPosition, const char* key,
+  const char* value, uint8_t* buffer, size_t size, size_t position,
+  size_t sizeMax) {
+  if (value == nullptr) {
+    return ResultInvalidValue;
+  }
+  size_t keyEnd = 0;
+  NN_RESULT_DO(AddKey(&keyEnd, key, buffer, size, position));
+  util::MessagePackWriter::StreamParam stream = {buffer, size, keyEnd};
+  util::MessagePackWriter writer(&stream);
+  size_t length = 0;
+  if (!VerifyStringValueLength(&length, value,
+    stream.size - stream.position)) {
+    return ResultBufferFull;
+  }
+  if (!writer.WriteString(value, static_cast<uint32_t>(length))) {
+    return ResultInvalidValue;
+  }
+  return FinishKeyValue(pOutPosition, buffer, size, stream.position, sizeMax);
+}
+
+Result ReportGenerator::AddKeyValue(size_t* pOutPosition, const char* key,
+  const void* value, size_t valueSize, uint8_t* buffer, size_t size,
+  size_t position, size_t sizeMax) {
+  if (!VerifyBinaryValue(value, valueSize)) {
+    return ResultInvalidValue;
+  }
+  size_t keyEnd = 0;
+  NN_RESULT_DO(AddKey(&keyEnd, key, buffer, size, position));
+  util::MessagePackWriter::StreamParam stream = {buffer, size, keyEnd};
+  util::MessagePackWriter writer(&stream);
+  if (!writer.WriteBinary(value, static_cast<uint32_t>(valueSize))) {
+    return ResultBufferFull;
+  }
+  return FinishKeyValue(pOutPosition, buffer, size, stream.position, sizeMax);
+}
+
+Result ReportGenerator::AddKeyValue(size_t* pOutPosition, const char* key,
+  bool value, uint8_t* buffer, size_t size, size_t position, size_t sizeMax) {
+  size_t keyEnd = 0;
+  NN_RESULT_DO(AddKey(&keyEnd, key, buffer, size, position));
+  util::MessagePackWriter::StreamParam stream = {buffer, size, keyEnd};
+  util::MessagePackWriter writer(&stream);
+  if (!writer.WriteBool(value)) {
+    return ResultBufferFull;
+  }
+  return FinishKeyValue(pOutPosition, buffer, size, stream.position, sizeMax);
 }
 
 }

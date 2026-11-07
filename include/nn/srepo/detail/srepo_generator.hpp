@@ -28,6 +28,10 @@ struct ReportGenerator {
   static void Initialize(size_t* pOutPosition, uint8_t* buffer, size_t size);
   static int GetKeyValueCount(const uint8_t* buffer, size_t size);
   static void IncrementKeyValueCount(uint8_t* buffer, size_t size);
+  static Result AddKey(size_t* pOutPosition, const char* key, uint8_t* buffer,
+    size_t size, size_t position);
+  static bool CheckKeyDuplication(const uint8_t* buffer, size_t size,
+    const char* key);
   static Result AddKeyValue(size_t* pOutPosition, const char* key, long value,
     uint8_t* buffer, size_t size, size_t position, size_t sizeMax);
   static Result AddKeyValue(size_t* pOutPosition, const char* key,
