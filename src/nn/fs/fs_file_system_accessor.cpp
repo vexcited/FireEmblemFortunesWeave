@@ -300,7 +300,7 @@ Result FileSystemAccessor::OpenFile(std::unique_ptr<FileAccessor>* outFile,
     ResultAllocationMemoryFailedInFileSystemAccessorA());
   {
     std::lock_guard<os::SdkMutex> lock(m_OpenListLock);
-    m_OpenFiles.push_front(*accessor);
+    m_OpenFiles.push_back(*accessor);
   }
 
   if (m_Flags.isPathBasedFileDataCacheAttached) {
@@ -339,7 +339,7 @@ Result FileSystemAccessor::OpenDirectory(
     ResultAllocationMemoryFailedInFileSystemAccessorB());
   {
     std::lock_guard<os::SdkMutex> lock(m_OpenListLock);
-    m_OpenDirectories.push_front(*accessor);
+    m_OpenDirectories.push_back(*accessor);
   }
 
   outDirectory->reset(accessor);
