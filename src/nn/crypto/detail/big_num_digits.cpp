@@ -527,6 +527,15 @@ void BigNum::ModInv(Digit* a, const Digit* b, const Digit* c, int digits) {
 
 // Miller Rabin with random bases reduced modulo n - 1, 7 rounds below 32
 // digits, 5 below 48 and 4 above.
+// The three work buffers are given back one by one, so a huge count wraps
+// per buffer.
+[[gnu::always_inline]] inline void FreeWorkDigits(
+  BigNum::DigitAllocator* allocator, int digits) {
+  allocator->Free(digits);
+  allocator->Free(digits);
+  allocator->Free(digits);
+}
+
 bool BigNum::TestPrimality(const Digit* a, int digits,
   DigitAllocator* allocator) {
   Digit* aMinusOne = allocator->Allocate(digits);
@@ -580,7 +589,7 @@ bool BigNum::TestPrimality(const Digit* a, int digits,
     }
 
     if (shifts == 0) {
-      allocator->Free(3 * digits);
+      FreeWorkDigits(allocator, digits);
       return false;
     }
     for (int j = 1; ; ++j) {
@@ -588,20 +597,20 @@ bool BigNum::TestPrimality(const Digit* a, int digits,
         return false;
       }
       if (IsOne(x, digits)) {
-        allocator->Free(3 * digits);
+        FreeWorkDigits(allocator, digits);
         return false;
       }
       if (Compare(x, aMinusOne, digits) == 0) {
         break;
       }
       if (j == shifts) {
-        allocator->Free(3 * digits);
+        FreeWorkDigits(allocator, digits);
         return false;
       }
     }
   }
 
-  allocator->Free(3 * digits);
+  FreeWorkDigits(allocator, digits);
   return true;
 }
 
