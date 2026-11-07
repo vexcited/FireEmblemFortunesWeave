@@ -2,6 +2,7 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#include "nn/nlibsdk/nlib_globals.hpp"
 #include "nn/os/managers.hpp"
 #include "nn/os/memory_permission.hpp"
 #include "nn/os/memory_queries.hpp"
@@ -32,12 +33,8 @@ void SetMemoryPermission(uintptr_t address, size_t size,
 
 namespace nn::nlibsdk {
 
-// The log writer, not reconstructed yet.
 int WriteLog(int priority, const char* prefix, const char* format,
   va_list arguments);
-
-// One bit per priority level, set through the log attributes.
-[[gnu::visibility("hidden")]] uint32_t g_LogLevelMask;
 
 namespace heap {
 
@@ -215,8 +212,10 @@ int ConvertResultToErrno(nn::Result result) {
   return EIo;
 }
 
+// One bit per priority level, set through the log attributes.
 bool IsLogLevelEnabled(int priority) {
-  return ((nn::nlibsdk::g_LogLevelMask >> (priority & 7)) & 1) != 0;
+  return ((nn::nlibsdk::detail::g_LogTimerState.logLevelMask >>
+    (priority & 7)) & 1) != 0;
 }
 
 }
