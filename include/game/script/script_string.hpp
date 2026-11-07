@@ -7,7 +7,10 @@ namespace game::script {
 #pragma GCC visibility push(hidden)
 
 // The any type of the scripts, passed by reference to the event entries.
-class ScriptAny;
+class ScriptAny {
+public:
+  int Release() const;
+};
 
 #pragma GCC visibility pop
 

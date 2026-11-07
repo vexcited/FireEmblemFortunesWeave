@@ -5,6 +5,7 @@
 #include <utility>
 #include <vector>
 
+#include "game/evt/event_object.hpp"
 #include "game/map/image.hpp"
 #include "game/map/trick.hpp"
 #include "game/singleton.hpp"
@@ -153,8 +154,9 @@ private:
   CameraControl* control_;
 };
 
-// The units of the battle the events run for.
-class MapEventManager : public Singleton<MapEventManager> {
+// Keeps the map events and the units of the battle they run for.
+class MapEventManager : public Singleton<MapEventManager>,
+  public evt::EventManagerBase {
 public:
   const uint8_t& GetOffenceUnit() const {
     return offence_unit_;
@@ -165,7 +167,7 @@ public:
   }
 
 private:
-  uint8_t unknown_08_[0x620];
+  uint8_t unknown_28_[0x600];
   uint8_t offence_unit_;
   uint8_t defence_unit_;
 };

@@ -159,6 +159,14 @@ public:
     return chapter_kind_;
   }
 
+  uint8_t GetGameMode() const {
+    return game_mode_;
+  }
+
+  uint8_t GetDifficulty() const {
+    return difficulty_;
+  }
+
   const PersonData* GetLeader() const {
     return leader_;
   }
@@ -216,7 +224,11 @@ public:
 private:
   static GameModeData* instance_;
 
-  uint8_t unknown_00_[0xf];
+  uint8_t unknown_00_[0xc];
+  uint8_t game_mode_;
+  uint8_t difficulty_;
+  uint8_t unknown_0e_;
+  // The scripts read it as the route.
   uint8_t chapter_kind_;
   const ChapterData* chapter_;
   uint8_t unknown_18_[0x18];

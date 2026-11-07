@@ -74,6 +74,16 @@ void bgmQueue(CScriptArray& names, int track, float time, float delay,
   openBlock();
 }
 
+void envStartElementVolume(const Text& name, float time) {
+  Env::startElementVolume(name.c_str(), Fade(time));
+  openBlock();
+}
+
+void envRefreshPositions(const Text& name, float time) {
+  Env::refreshPositions(name.c_str(), Fade(time));
+  openBlock();
+}
+
 Text bgmGetPlayingName() {
   openBlock();
   const char* name = BGM::getPlayingName();

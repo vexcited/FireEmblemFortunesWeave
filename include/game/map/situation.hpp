@@ -69,9 +69,17 @@ public:
   }
 
   void Refresh();
+  void ShowScoreInfo(bool isPlayerOnly);
+
+  bool IsPlayerOnly() const {
+    return player_only_;
+  }
 
 private:
   static SituationObserver* instance_;
+
+  uint8_t unknown_00_[0x90];
+  bool player_only_;
 };
 
 class Situation : public SerializeSingleton<Situation> {
@@ -121,6 +129,18 @@ public:
     return flags_ & 0x1e;
   }
 
+  void SetFlag(uint32_t flag, bool enable) {
+    flags_ = (flags_ & ~flag) | (enable ? flag : 0);
+  }
+
+  uint16_t GetTurn() const {
+    return unknown_1a_;
+  }
+
+  uint8_t GetCurrentForce() const {
+    return current_force_;
+  }
+
   uint8_t GetUnknown26() const {
     return unknown_26_;
   }
@@ -129,7 +149,19 @@ public:
     return unknown_27_;
   }
 
+  void SetUnknown26(uint8_t value) {
+    unknown_26_ = value;
+  }
+
+  void SetUnknown27(uint8_t value) {
+    unknown_27_ = value;
+  }
+
   const SituationRecord& GetRecord(int index) const {
+    return records_[index];
+  }
+
+  SituationRecord& GetRecord(int index) {
     return records_[index];
   }
 

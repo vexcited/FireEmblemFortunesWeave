@@ -117,13 +117,13 @@ void Env::startPitchChecked(const Fade& fade, float target) {
   nn::os::UnlockMutex(&env->mutex_);
 }
 
-void Env::refreshPositions(const char* name) {
+// The fade is ignored.
+void Env::refreshPositions(const char* name, const Fade&) {
   s_instance->refreshElementPositions(name);
 }
 
-void Env::startElementVolume(const char* name, const Fade& fade,
-  float target) {
-  s_instance->startElementVolumeImpl(name, fade, target);
+void Env::startElementVolume(const char* name, const Fade& fade) {
+  s_instance->startElementVolumeImpl(name, fade);
 }
 
 void Env::playField(const char* name) {

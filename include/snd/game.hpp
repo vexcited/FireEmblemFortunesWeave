@@ -427,9 +427,8 @@ public:
   static void stopAll(const Fade& fade);
   static void restart();
   static void startPitchChecked(const Fade& fade, float target);
-  static void refreshPositions(const char* name);
-  static void startElementVolume(const char* name, const Fade& fade,
-    float target);
+  static void refreshPositions(const char* name, const Fade& fade);
+  static void startElementVolume(const char* name, const Fade& fade);
   static void playField(const char* name);
   static void playFieldSub(const char* name);
 
@@ -452,8 +451,7 @@ public:
   void playGroup(Group* group, const void* data, const char* weather,
     const char* time, bool kind, const Fade& fade);
   void refreshElementPositions(const char* name);
-  void startElementVolumeImpl(const char* name, const Fade& fade,
-    float target);
+  void startElementVolumeImpl(const char* name, const Fade& fade);
 
   static fnd::Vec3 getListenerPosition();
 
