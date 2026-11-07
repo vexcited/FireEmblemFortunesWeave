@@ -17,11 +17,14 @@ public:
   int ImplUnknown01() override { return 1; }
   int ImplUnknown09() override { return 0; }
   int ImplUnknown02() override { return 1; }
-  virtual void Unknown142() {}
+  // Called with the item selected once the menu opened.
+  virtual void Unknown142(BasicMenuItem* item) {}
 
 private:
-  uint8_t unknown_428_[0x18];
-  std::function<void()> unknown_440_;
+  BasicMenuItem* selected_;
+  uint8_t unknown_430_[0x10];
+  // Picks the item to select once the menu opened.
+  std::function<BasicMenuItem*()> select_;
 };
 
 class TitleSubMenu : public SubMenu {
@@ -56,6 +59,27 @@ private:
 }
 
 SubMenu::~SubMenu() = default;
+
+void SubMenu::Unknown96() {
+  BasicMenu::Unknown96();
+  const int state = Unknown21();
+  if (state < 2 || state > 7) {
+    ImplUnknown12();
+  }
+  if (!select_) {
+    return;
+  }
+  if (BasicMenuItem* item = select_()) {
+    if (selected_ != nullptr) {
+      selected_->SetSelected(false);
+      selected_ = item;
+      item->ChangeSelect(true);
+      Unknown85();
+      Unknown142(item);
+    }
+  }
+  select_ = nullptr;
+}
 TitleSubMenu::~TitleSubMenu() = default;
 
 }

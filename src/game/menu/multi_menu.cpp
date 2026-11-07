@@ -74,7 +74,6 @@ private:
     return 13;
   }
 
-  int unknown_428_;
   int page_;
   std::weak_ptr<ui::LayoutAccessor> page_layout_;
   int unknown_440_;
@@ -271,7 +270,7 @@ public:
   int InputUnknown01() override { return 11; }
 
 private:
-  uint8_t unknown_428_[0x18];
+  uint8_t unknown_42c_[0x14];
   std::vector<int> unknown_440_;
 };
 

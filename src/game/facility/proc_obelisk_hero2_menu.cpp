@@ -3,6 +3,7 @@
 #include "game/facility/obelisk_hero_menu.hpp"
 #include "game/menu/unit_list.hpp"
 #include "game/sound/se.hpp"
+#include "game/util/format.hpp"
 
 namespace game::facility {
 
@@ -49,6 +50,12 @@ void ProcUnitSelectMenu::Unknown75() {
   sound::PlaySe("SE_SYS_Status_Open");
 }
 
+void ProcUnitSelectMenu::Unknown94() {
+  GameMenu::Unknown94();
+  accessor_.SetVisible(true);
+  accessor_3b8_.SetVisible(false);
+}
+
 class ProcPartSelect : public ObeliskHeroMenu {
 public:
   ProcPartSelect();
@@ -66,6 +73,17 @@ public:
 };
 
 [[gnu::used]] ProcPartSelect::ProcPartSelect() = default;
+
+// Lays the first item, the next column and the next row out from the origin.
+void ProcPartSelect::Unknown94() {
+  GameMenu::Unknown94();
+  accessor_.SetVisible(true);
+  accessor_3b8_.SetPaneTranslate("L_MenuItem00", origin_);
+  accessor_3b8_.SetPaneTranslate("L_MenuItem01",
+    {origin_.x + column_width_, origin_.y, 0.0f});
+  accessor_3b8_.SetPaneTranslate(util::Format("L_MenuItem%02d",
+    InputUnknown02()), {origin_.x, origin_.y + row_height_, 0.0f});
+}
 
 }
 

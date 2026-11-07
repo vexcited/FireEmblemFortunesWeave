@@ -213,6 +213,8 @@ class SubQuestInfo : public ICommonQuestInfo {
 public:
   explicit SubQuestInfo(const Subquest* quest) : quest_(quest) {}
 
+  const Subquest* GetQuest() const { return quest_; }
+
   const QuestIcon* GetIcon() override;
   const char16_t* GetName() override;
   const char* GetNameMid() override;

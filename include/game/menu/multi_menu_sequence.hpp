@@ -3,6 +3,7 @@
 #include <cstdint>
 
 #include "game/menu/game_menu.hpp"
+#include "game/unit.hpp"
 #include "ui/layout_accessor.hpp"
 
 namespace game::menu {
@@ -47,7 +48,7 @@ public:
   virtual void* Unknown37() { return nullptr; }
   virtual void Unknown38() {}
   virtual void Unknown39() {}
-  virtual bool Unknown40() { return menus_[index_]->Unknown137(); }
+  virtual void Unknown40() { menus_[index_]->Unknown137(); }
   virtual void Unknown41() {}
   virtual int Unknown42() { return 2; }
   virtual int Unknown43() { return 1; }
@@ -76,13 +77,15 @@ class EquipChangeMenu : public MultiMenuSequence {
 public:
   const char* GetLayoutArchive() override { return "Layout/CommonMenu.arc"; }
   virtual bool Unknown46() = 0;
-  virtual int Unknown47() = 0;
+  // Whether the unit can be switched to.
+  virtual bool Unknown47(Unit* unit) = 0;
   virtual void Unknown48() = 0;
   const char* ImplUnknown03() override = 0;
   const char* ImplUnknown05() override = 0;
 
 protected:
-  uint8_t unknown_168_[0x10];
+  // The two units of the exchange.
+  Unit* units_[2];
   int32_t unknown_178_;
 };
 

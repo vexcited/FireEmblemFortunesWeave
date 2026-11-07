@@ -1,4 +1,5 @@
 #pragma GCC visibility push(hidden)
+#include "game/game_mode_data.hpp"
 #include "game/menu/game_menu.hpp"
 #pragma GCC visibility pop
 
@@ -45,6 +46,30 @@ public:
 };
 
 [[gnu::used]] ProcProcurement::ProcProcurement() = default;
+
+}
+
+[[gnu::visibility("hidden")]] extern const char* const kRouteQuestLabels[4];
+
+const char* const kRouteQuestLabels[4] = {
+  "MID_QuestMenu_RouteQuest_Kindness",
+  "MID_QuestMenu_RouteQuest_Challenge",
+  "MID_QuestMenu_RouteQuest_Procurement",
+  "MID_QuestMenu_RouteQuest_Show",
+};
+
+namespace {
+
+// Names the quests of the route of the current chapter.
+const char* ProcProcurement::Unknown142() {
+  if (const GameModeData* data = GameModeData::GetInstance()) {
+    const uint8_t kind = data->GetChapterKind() - 1;
+    if (kind <= 3) {
+      return kRouteQuestLabels[kind];
+    }
+  }
+  return "MID_QuestMenu_RouteQuest";
+}
 
 }
 

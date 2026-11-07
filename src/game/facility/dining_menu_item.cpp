@@ -1,5 +1,6 @@
 #include <functional>
 
+#include "game/game_mode_data.hpp"
 #include "game/menu/basic_menu.hpp"
 #include "game/menu/top_menu_item.hpp"
 
@@ -70,7 +71,7 @@ public:
   void DrawText() override;
   bool IsActive() override;
   bool Unknown70() override;
-  bool Unknown71() override;
+  int Unknown71() override;
   bool Unknown72() override { return true; }
   void Unknown73() override;
 
@@ -80,6 +81,19 @@ private:
 };
 
 [[gnu::used]] StayMenuItem::StayMenuItem() = default;
+
+bool IsClearMode() {
+  const GameModeData* data = GameModeData::GetInstance();
+  return data != nullptr && data->GetMode() == GameModeData::kModeClear;
+}
+
+bool StayMenuItem::Unknown70() {
+  return !IsClearMode() && unknown_53_;
+}
+
+int StayMenuItem::Unknown71() {
+  return IsClearMode() ? -1 : 1;
+}
 
 }
 

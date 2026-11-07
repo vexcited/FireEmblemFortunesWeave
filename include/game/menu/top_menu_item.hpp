@@ -11,11 +11,12 @@ public:
   void OnSelect() override;
   void DrawText() override;
   virtual bool Unknown70() { return false; }
-  virtual bool Unknown71() { return true; }
+  virtual int Unknown71() { return 1; }
   virtual bool Unknown72() { return true; }
   virtual void Unknown73() = 0;
 
 protected:
+  bool unknown_53_;
   uint32_t unknown_54_;
 };
 

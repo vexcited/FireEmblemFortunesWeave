@@ -28,6 +28,30 @@ private:
 
 [[gnu::used]] ProcObeliskCausationMenu::ProcObeliskCausationMenu() = default;
 
+// Takes the mode of the menu that opened this one.
+void ProcObeliskCausationMenu::Unknown84() {
+  Unknown16de4d0();
+  BasicMenu* opener = nullptr;
+  if (ProcInst* proc = GetParent()->GetUnknown20()) {
+    if (auto* menu = dynamic_cast<menu::MenuProcInst*>(proc)) {
+      opener = dynamic_cast<BasicMenu*>(menu);
+    }
+  }
+  BasicMenu* source = opener != nullptr ? opener : this;
+  auto* game = dynamic_cast<GameMenu*>(source);
+  unknown_428_ = game != nullptr ? game->ImplUnknown07() : 0;
+}
+
+void ProcObeliskCausationMenu::Unknown96() {
+  BasicMenu::Unknown96();
+  const int state = Unknown21();
+  if (state < 2 || state > 7) {
+    ImplUnknown12();
+  }
+  Unknown16dd9a0();
+  Unknown88();
+}
+
 }
 
 }

@@ -37,6 +37,13 @@ private:
 
 [[gnu::used]] ProcMouseGuide::ProcMouseGuide() = default;
 
+// Only the outermost menu refreshes the footer.
+void ProcMouseGuide::Unknown92() {
+  if (unknown_429_ && GetRootMenu() == this) {
+    ImplUnknown13();
+  }
+}
+
 int ProcMouseGuide::Unknown26() {
   return unknown_429_ ? 0 : 105;
 }

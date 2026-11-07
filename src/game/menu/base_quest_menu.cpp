@@ -81,7 +81,8 @@ public:
 
 private:
   uint64_t unknown_440_;
-  std::function<void()> unknown_450_;
+  // Runs when the quest gets accepted.
+  std::function<void(ProcInst*, const Subquest*)> on_accept_;
 };
 
 [[gnu::used]] ProcTalkQuestInfo::ProcTalkQuestInfo(const Subquest* quest)
@@ -89,6 +90,13 @@ private:
 
 void ProcTalkQuestInfo::Unknown69() {
   sound::PlaySe("SE_SYS_Decide_Quest");
+}
+
+int ProcTalkQuestInfo::Unknown100() {
+  if (on_accept_) {
+    on_accept_(GetParent()->GetUnknown20(), GetQuest());
+  }
+  return 2;
 }
 
 void ProcSideStoryInfo::Unknown69() {

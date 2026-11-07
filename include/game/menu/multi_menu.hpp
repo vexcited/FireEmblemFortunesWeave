@@ -41,6 +41,8 @@ public:
   virtual void Unknown159() {}
   virtual void Unknown160() {}
 
+  int GetUnknown428() const { return unknown_428_; }
+
 protected:
   // The sequence stores its menus with their `MultiMenu` type.
   MultiMenu* GetSiblingMenu(int index) {
@@ -49,6 +51,7 @@ protected:
 
   // The sequence running this menu.
   MultiMenuSequence* sub_menu_;
+  int32_t unknown_428_;
 };
 
 class UnitTroopMenu : public MultiMenu {
