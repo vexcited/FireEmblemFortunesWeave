@@ -47,6 +47,12 @@ const std::optional<NmouseHandle>* GetHandles(const uint8_t* pMemory) {
   return reinterpret_cast<const std::optional<NmouseHandle>*>(pMemory);
 }
 
+// The engaged flags of the shared optionals are tested on their low bit.
+template <typename T>
+[[gnu::always_inline]] inline bool IsEngaged(const std::optional<T>& value) {
+  return (reinterpret_cast<const uint8_t*>(&value)[sizeof(T)] & 1) != 0;
+}
+
 const server::NmouseInfo* GetInfos(const uint8_t* pMemory) {
   return reinterpret_cast<const server::NmouseInfo*>(pMemory + InfoOffset);
 }
@@ -114,9 +120,9 @@ Result NmouseTransferMemoryAccessor::GetMergedHandle(
   for (int i = 0; i < NmouseCountMax; ++i) {
     const server::NmouseInfo& info = GetInfos(m_pMemory)[i];
     const std::optional<NmouseHandle>& handle = GetHandles(m_pMemory)[i];
-    if (info.types.has_value() &&
+    if (IsEngaged(info.types) &&
       (info.types->_storage[0] & NmouseTypeMerged) != 0 &&
-      handle.has_value()) {
+      IsEngaged(handle)) {
       *pOutHandle = *handle;
       return Result{};
     }
@@ -130,8 +136,8 @@ Result NmouseTransferMemoryAccessor::GetNpadNmouseHandle(
   for (int i = 0; i < NmouseCountMax; ++i) {
     const std::optional<NmouseHandle>& handle = GetHandles(m_pMemory)[i];
     const server::NmouseInfo& info = GetInfos(m_pMemory)[i];
-    if (handle.has_value() && info.npadId.has_value() &&
-      *info.npadId == id && info.types.has_value() &&
+    if (IsEngaged(handle) && IsEngaged(info.npadId) &&
+      *info.npadId == id && IsEngaged(info.types) &&
       info.types->_storage[0] == types._storage[0]) {
       *pOutHandle = *handle;
       return Result{};
@@ -145,9 +151,9 @@ Result NmouseTransferMemoryAccessor::GetStandardMouseNmouseHandle(
   for (int i = 0; i < NmouseCountMax; ++i) {
     const server::NmouseInfo& info = GetInfos(m_pMemory)[i];
     const std::optional<NmouseHandle>& handle = GetHandles(m_pMemory)[i];
-    if (info.types.has_value() &&
+    if (IsEngaged(info.types) &&
       (info.types->_storage[0] & NmouseTypeStandardMouse) != 0 &&
-      handle.has_value()) {
+      IsEngaged(handle)) {
       *pOutHandle = *handle;
       return Result{};
     }
@@ -241,7 +247,7 @@ Result NmouseTransferMemoryAccessor::GetNpadIdType(NpadIdType* pOutId,
   uint8_t index = 0;
   NN_RESULT_DO(GetIndexFromHandle(&index, handle));
   const server::NmouseInfo& info = GetInfos(m_pMemory)[index];
-  if (!info.npadId.has_value()) {
+  if (!IsEngaged(info.npadId)) {
     return ResultNmouseInvalidHandle;
   }
   *pOutId = *info.npadId;
