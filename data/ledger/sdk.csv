@@ -5416,6 +5416,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 1acf90,124,verified,src/nn/account/account_async_context.cpp,_ZN2nn7account12AsyncContextD2Ev
 1ad010,16,verified,src/nn/account/account_async_context.cpp,_ZNK2nn7account12AsyncContextcvbEv
 1ad020,48,verified,src/nn/account/account_async_context.cpp,_ZN2nn7account12AsyncContextD0Ev
+1ad050,156,verified,src/nn/account/account_async_context.cpp,_ZN2nn7account12AsyncContext14GetSystemEventEPNS_2os11SystemEventE
 1ad0f0,16,verified,src/nn/account/account_async_context.cpp,_ZN2nn7account12AsyncContext6CancelEv
 1ad100,16,verified,src/nn/account/account_async_context.cpp,_ZNK2nn7account12AsyncContext7HasDoneEPb
 1ad110,16,verified,src/nn/account/account_async_context.cpp,_ZN2nn7account12AsyncContext7HasDoneEPb

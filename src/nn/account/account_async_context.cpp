@@ -2,6 +2,8 @@
 
 #include "nn/account/account_async_context.hpp"
 #include "nn/diag/diag_abort.hpp"
+#include "nn/os/system_event_class.hpp"
+#include "nn/sf/native_handle.hpp"
 
 namespace nn::account {
 
@@ -67,4 +69,14 @@ Result AsyncContext::GetResult() {
   return m_pContext->GetResult();
 }
 
+
+Result AsyncContext::GetSystemEvent(os::SystemEvent* pOutEvent) {
+  sf::NativeHandle handle;
+  NN_RESULT_DO(m_pContext->GetSystemEvent(
+    sf::Out<sf::NativeHandle>(&handle)));
+  pOutEvent->AttachReadableHandle(handle.GetOsHandle(), handle.IsManaged(),
+    os::EventClearMode_ManualClear);
+  handle.Detach();
+  return Result{0};
+}
 }
