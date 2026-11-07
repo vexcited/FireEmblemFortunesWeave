@@ -139,7 +139,7 @@ void GetActiveAudioOutputDeviceName(AudioDeviceName* name) {
 
 Result AcquireAudioDeviceNotificationForInput(os::SystemEvent* event) {
   g_DeviceNotificationState.inputMutex.Lock();
-  Result result;
+  Result result = {};
   if (g_DeviceNotificationState.isInputAcquired) {
     result = detail::MakeResult(2);
   }
@@ -160,7 +160,7 @@ Result AcquireAudioDeviceNotificationForInput(os::SystemEvent* event) {
 
 Result AcquireAudioDeviceNotificationForOutput(os::SystemEvent* event) {
   g_DeviceNotificationState.outputMutex.Lock();
-  Result result;
+  Result result = {};
   if (g_DeviceNotificationState.isOutputAcquired) {
     result = detail::MakeResult(2);
   }
@@ -182,17 +182,20 @@ Result AcquireAudioDeviceNotificationForOutput(os::SystemEvent* event) {
 Result AcquireAudioOutputDeviceNotification(os::SystemEvent* event) {
   sf::SharedPointer<detail::IAudioDevice> session =
     detail::GetDeviceSessionCoordinator().Acquire();
-  sf::NativeHandle handle;
-  Result result = session->AcquireAudioOutputDeviceNotification(
-    sf::Out<sf::NativeHandle>(&handle), reinterpret_cast<uint64_t>(event));
-  if (result.IsFailure()) {
-    detail::GetDeviceSessionCoordinator().Release();
-    return result;
+  Result result;
+  {
+    sf::NativeHandle handle;
+    result = session->AcquireAudioOutputDeviceNotification(
+      sf::Out<sf::NativeHandle>(&handle), reinterpret_cast<uint64_t>(event));
+    if (result.IsSuccess()) {
+      // The session reference is kept until the notification is released.
+      event->AttachReadableHandle(handle.GetOsHandle(), handle.IsManaged(),
+        os::EventClearMode_AutoClear);
+      handle.Detach();
+      return result;
+    }
   }
-  // The session reference is kept until the notification is released.
-  event->AttachReadableHandle(handle.GetOsHandle(), handle.IsManaged(),
-    os::EventClearMode_AutoClear);
-  handle.Detach();
+  detail::GetDeviceSessionCoordinator().Release();
   return result;
 }
 
@@ -208,16 +211,19 @@ void ReleaseAudioOutputDeviceNotification(os::SystemEvent* event) {
 Result AcquireAudioInputDeviceNotification(os::SystemEvent* event) {
   sf::SharedPointer<detail::IAudioDevice> session =
     detail::GetDeviceSessionCoordinator().Acquire();
-  sf::NativeHandle handle;
-  Result result = session->AcquireAudioInputDeviceNotification(
-    sf::Out<sf::NativeHandle>(&handle), reinterpret_cast<uint64_t>(event));
-  if (result.IsFailure()) {
-    detail::GetDeviceSessionCoordinator().Release();
-    return result;
+  Result result;
+  {
+    sf::NativeHandle handle;
+    result = session->AcquireAudioInputDeviceNotification(
+      sf::Out<sf::NativeHandle>(&handle), reinterpret_cast<uint64_t>(event));
+    if (result.IsSuccess()) {
+      event->AttachReadableHandle(handle.GetOsHandle(), handle.IsManaged(),
+        os::EventClearMode_AutoClear);
+      handle.Detach();
+      return result;
+    }
   }
-  event->AttachReadableHandle(handle.GetOsHandle(), handle.IsManaged(),
-    os::EventClearMode_AutoClear);
-  handle.Detach();
+  detail::GetDeviceSessionCoordinator().Release();
   return result;
 }
 
