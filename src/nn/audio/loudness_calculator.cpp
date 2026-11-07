@@ -108,8 +108,8 @@ void LoudnessCalculatorImpl::Analyze(const int16_t* samples,
     + m_MomentaryCoefficient * (total - m_MomentaryPower);
   m_MomentaryLoudness = ToClampedLoudness(m_MomentaryPower);
   m_ShortTermPower[m_ShortTermIndex] = total;
-  m_ShortTermIndex = m_ShortTermIndex + 1 < ShortTermBlockCount
-    ? m_ShortTermIndex + 1 : 0;
+  m_ShortTermIndex = static_cast<uint32_t>(m_ShortTermIndex + 1)
+    < ShortTermBlockCount ? m_ShortTermIndex + 1 : 0;
 
   for (int i = 0; i < BlockPhaseCount; ++i) {
     const int counter = m_BlockCounter[i];

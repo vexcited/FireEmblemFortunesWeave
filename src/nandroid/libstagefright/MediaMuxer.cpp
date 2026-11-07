@@ -157,6 +157,8 @@ status_t MediaMuxer::stop() {
             }
         }
         return mWriter->stop();
+    } else if (mState == STOPPED) {
+        return OK;
     } else {
         ALOGE("stop() is called in invalid state %d", mState);
         return INVALID_OPERATION;

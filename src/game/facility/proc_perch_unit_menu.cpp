@@ -76,8 +76,8 @@ void ProcPerchUnitMenu::Unknown88() {
 
   FacilityUnitMenu::Unknown88();
   Unit* unit = item->GetUnit();
-  if (std::shared_ptr<ui::LayoutAccessor> part =
-        accessor_.GetPart("L_Reliance").lock()) {
+  std::weak_ptr<ui::LayoutAccessor> reliance = accessor_.GetPart("L_Reliance");
+  if (std::shared_ptr<ui::LayoutAccessor> part = reliance.lock()) {
     gameui::Unknown157de20(*part, "PID_イシュマール", unit);
   }
 }

@@ -11,10 +11,13 @@ Modifications common to every file.
 - Binder `Parcel` support is disabled with `#ifdef NANDROID_BINDER`.
 - `operator new[]` uses the movie heap allocator without an alignment argument.
 - `nandroid/Platform.h` provides the bionic `off64_t`, `__BEGIN_DECLS`, `__END_DECLS`, `__INTRODUCED_IN` and `__ANDROID_API__`, and replaces `<sys/cdefs.h>` in the NDK headers.
+  It also makes `ntohl` an inline byte swap, as the SDK swaps 32 bit values inline but calls `ntohs`, `htonl` and `htons`.
+- `heapbuffer` in `ExtractorUtils.h` allocates with `new T[size]` and frees through a `std::function` deleter.
 - `include/nandroid/media/DataSource.h`, `DataSourceBase.h` and `MediaSource.h` stand for the AOSP symbolic links into `media/stagefright`.
 - Relative includes of the mp4 extractor point to `src/nandroid/libstagefright/include` and to the local headers.
 
 - The verification specs compile with `-ftrivial-auto-var-init=zero`, as the SDK zero initializes locals.
+  `sdk-nandroid-livesession` and `sdk-nandroid-avcutils` also use `-fno-strict-aliasing`, which the AOSP build sets, since their originals reload values that type based alias analysis would keep in registers.
 
 Shims.
 
@@ -75,9 +78,11 @@ Per file.
 - `httplive/HTTPDownloader.cpp` and `HTTPDownloader.h`: the downloader keeps the `LiveSession` and a playlist user data passed to `M3UParser`, new download buffers are limited by `LiveSession::getRemainingCacheSize`, and the playlist hash is compiled out with `NANDROID_OPENSSL`.
 - `httplive/LiveSession.cpp` and `LiveSession.h`: the session follows the SDK member layout, takes a cache size, keeps a playlist user data for its downloaders, prefers streams below a pixel count, counts a minimum of bandwidth samples, guards the fetcher infos with a mutex and adds `stopLooper`, `getBufferedRange`, `isSourcePrepared` and the cache size accessors.
   `addFetcher` passes the preferred bandwidth switch flag to the fetcher, the switch marks are 8 and 11 seconds and the maximum size defaults to 1920 by 1080.
+  `onPollBuffering` posts the prepared message only once `isSourcePrepared` holds, and `dequeueAccessUnit` reports `ERROR_BUFFER_TOO_SMALL` from a packet source as `ERROR_END_OF_STREAM`.
+  `switchBandwidthIfNeeded` also switches on any large bandwidth change when preferred pixels are set, and a switch in progress while buffering only tries the bandwidth fallback once a new index is picked.
 - `httplive/PlaylistFetcher.cpp` and `PlaylistFetcher.h`: three Nintendo fields are added, `containsSourceType`, `isPacketSourcesPrepared` and `isLiveStream` are added, and the AES key never becomes valid without OpenSSL.
 - `libmediaplayerservice/nuplayer/HTTPLiveSource2.cpp` and `HTTPLiveSource2.h` are the upstream `HTTPLiveSource` renamed, with the cache configuration header, the pixel and bandwidth sample settings, `getBufferedRange` and `finalize`.
 - `mpeg2ts/AnotherPacketSource.h` declares `isTargetDurationAvailable`, `getEstimatedDurationUs` and `getBufferedBytes`, and `httplive/HTTPDownloader.h` makes `LiveSession` a friend.
-- `libstagefright/MediaMuxer.cpp` and `MediaMuxer.h`: the muxer is built like `MPEG4Writer` from an allocator info, a media writer and a thread manager instance, only MPEG-4, 3GPP and HEIF are supported, the codec buffer flags are local constants, and the thread priority setters forward to the writer.
+- `libstagefright/MediaMuxer.cpp` and `MediaMuxer.h`: the muxer is built like `MPEG4Writer` from an allocator info, a media writer and a thread manager instance, only MPEG-4, 3GPP and HEIF are supported, the codec buffer flags are local constants, the thread priority setters forward to the writer, and `stop` succeeds on a stopped muxer.
 - `httplive/M3UParser.cpp` and `M3UParser.h`: the two unknown fields are the init segment URI and meta, and `MediaGroup` gains `getTrackInfo` with a base URL, `getTrackType` and `getTrackName`, the parser gains `getInitSegment`, `groupSize`, `groupAt`, `getGroupWithName` and `getGroupNamesAndTypes`.
 - `libmediaplayerservice/nuplayer/NuPlayerSource.h` and `NuPlayerSource.cpp`: `NuPlayer::Source` becomes `nandroid::Source`, `prepareAsync` takes a start time, seeking uses the `MediaTrack` seek mode, and the secure decoder notification is removed.

@@ -166,8 +166,8 @@ __attribute__((noinline)) Result Register(const char* name,
   bool usePathCache,
   std::unique_ptr<IUnmountHookInvoker>&& unmountHookInvoker) {
   if (unmountHookInvoker != nullptr) {
-    std::unique_ptr<IFileSystem> baseFileSystem = std::move(fileSystem);
-    fileSystem.reset(new UnmountHookFileSystem(std::move(baseFileSystem),
+    fileSystem.reset(new UnmountHookFileSystem(
+      std::unique_ptr<IFileSystem>(std::move(fileSystem)),
       std::move(unmountHookInvoker)));
     NN_FS_RESULT_THROW_UNLESS(fileSystem != nullptr,
       ResultAllocationMemoryFailedInRegisterB());

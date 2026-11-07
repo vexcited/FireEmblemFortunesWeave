@@ -23,8 +23,8 @@ void EdgeMatrix::Initialize(void* buffer, size_t size, int nodeCount) {
   if (nodeCount != 0 && (m_BitCount + 63) >> 6 > 0) {
     memset(m_pBuffer, 0, sizeof(uint64_t) * ((m_BitCount + 63) >> 6));
   }
-  for (int i = 0; i < (m_BitCount + 63) >> 6; ++i) {
-    m_pBuffer[i] = 0;
+  if ((m_BitCount + 63) >> 6 > 0) {
+    memset(m_pBuffer, 0, sizeof(uint64_t) * ((m_BitCount + 63) >> 6));
   }
 }
 

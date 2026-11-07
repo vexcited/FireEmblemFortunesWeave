@@ -35,7 +35,7 @@ public:
   float m_FilterState[ChannelCountMax][4];
   float m_MomentaryPower;
   float m_ShortTermPower[ShortTermBlockCount];
-  uint32_t m_ShortTermIndex;
+  int m_ShortTermIndex;
   float m_RangePowerSum;
   int m_RangeBlockCount;
   uint32_t m_RangeHistogram[HistogramSize];

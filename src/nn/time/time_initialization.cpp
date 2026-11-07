@@ -63,9 +63,8 @@ void DestroySharedMemoryClient() {
 }
 
 Result GetStaticService(sf::SharedPointer<IStaticService>* pOutService,
+  detail::service::StaticServiceProviderClient& provider,
   InitializeMode mode) {
-  detail::service::StaticServiceProviderClient& provider =
-    GetServiceProvider();
   switch (mode) {
     case InitializeMode_User:
       return provider.GetUserStaticServiceSharedPointer(pOutService);
@@ -82,11 +81,19 @@ Result GetStaticService(sf::SharedPointer<IStaticService>* pOutService,
 
 class ProviderFinalizer {
  public:
+  explicit ProviderFinalizer(
+    detail::service::StaticServiceProviderClient& provider)
+    : m_Provider(provider) {
+  }
+
   ~ProviderFinalizer() {
     if (g_pTimeZoneService == nullptr) {
-      GetServiceProvider().Finalize();
+      m_Provider.Finalize();
     }
   }
+
+ private:
+  detail::service::StaticServiceProviderClient& m_Provider;
 };
 
 Result InitializeImpl(InitializeMode mode) {
@@ -98,10 +105,12 @@ Result InitializeImpl(InitializeMode mode) {
     return Result{0};
   }
 
+  detail::service::StaticServiceProviderClient& provider =
+    GetServiceProvider();
   sf::SharedPointer<IStaticService> staticService;
-  NN_RESULT_DO(GetStaticService(&staticService, mode));
+  NN_RESULT_DO(GetStaticService(&staticService, provider, mode));
 
-  ProviderFinalizer finalizer;
+  ProviderFinalizer finalizer(provider);
   sf::SharedPointer<ITimeZoneService> timeZoneService;
   NN_RESULT_DO(staticService->GetTimeZoneService(
     sf::Out<sf::SharedPointer<ITimeZoneService>>(&timeZoneService)));

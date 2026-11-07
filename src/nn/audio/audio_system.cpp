@@ -18,7 +18,7 @@ public:
       g_AppletManagerMutex.Lock();
       if (s_Manager.operator->() == nullptr) {
         AppletManager manager = CreateAudioSystemManagerForAppletByHipc();
-        s_Manager.Swap(manager);
+        AppletManager(manager.Detach(), false).Swap(s_Manager);
       }
       g_AppletManagerMutex.Unlock();
     }
@@ -38,41 +38,6 @@ public:
 
 private:
   detail::IAudioSystemManagerForApplet* m_pManager;
-};
-
-using DebuggerManager =
-  sf::SharedPointer<detail::IAudioSystemManagerForDebugger>;
-
-os::SdkMutexType g_DebuggerManagerMutex;
-
-class DebuggerManagerHolder {
-public:
-  DebuggerManagerHolder() {
-    static DebuggerManager s_Manager;
-    if (s_Manager.operator->() == nullptr) {
-      g_DebuggerManagerMutex.Lock();
-      if (s_Manager.operator->() == nullptr) {
-        DebuggerManager manager = CreateAudioSystemManagerForDebuggerByHipc();
-        s_Manager.Swap(manager);
-      }
-      g_DebuggerManagerMutex.Unlock();
-    }
-    m_pManager = s_Manager.operator->();
-    if (m_pManager != nullptr) {
-      m_pManager->AddReference();
-    }
-  }
-
-  ~DebuggerManagerHolder() {
-    m_pManager->Release();
-  }
-
-  detail::IAudioSystemManagerForDebugger* operator->() const {
-    return m_pManager;
-  }
-
-private:
-  detail::IAudioSystemManagerForDebugger* m_pManager;
 };
 
 }
@@ -185,16 +150,6 @@ Result GetLoudnessNormalization(bool* isEnabled,
   applet::AppletResourceUserId aruid) {
   AppletManagerHolder manager;
   return manager->GetLoudnessNormalization(sf::Out<bool>(isEnabled), aruid);
-}
-
-Result RequestSuspendAudioForDebug(applet::AppletResourceUserId aruid) {
-  DebuggerManagerHolder manager;
-  return manager->RequestSuspendAudioForDebug(aruid);
-}
-
-Result RequestResumeAudioForDebug(applet::AppletResourceUserId aruid) {
-  DebuggerManagerHolder manager;
-  return manager->RequestResumeAudioForDebug(aruid);
 }
 
 }

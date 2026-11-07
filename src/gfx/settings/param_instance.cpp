@@ -127,9 +127,9 @@ void TParamInstance<T>::ApplyLayered(BaseParamInstance& dst,
   const auto& over = static_cast<const TParamInstance&>(layer);
   T current = out.value_.value_or(out.default_);
 
-  T value = over.EvaluateOver(current,
-    static_cast<const TParamInstance&>(base), frame);
-  out.value_ = over.Lerp(current, value, weight);
+  // The base copy lives until the store, so it is one full expression.
+  out.value_ = over.Lerp(current, over.EvaluateOver(current,
+    static_cast<const TParamInstance&>(base), frame), weight);
 }
 
 template <class T>

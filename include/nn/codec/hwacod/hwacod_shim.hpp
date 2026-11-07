@@ -304,8 +304,8 @@ struct ResultEntry {
   uint16_t value;
   uint16_t reserved6;
   TimeSpan processingTime;
-  Result result;
   uint32_t outputSize;
+  Result result;
   uint8_t reserved24[40];
 };
 

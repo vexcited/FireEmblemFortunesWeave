@@ -29,8 +29,8 @@ public:
   }
 
   void Reset() {
-    for (int i = 0; i < GetWordCount(); ++i) {
-      m_pBuffer[i] = 0;
+    if (GetWordCount() > 0) {
+      memset(m_pBuffer, 0, sizeof(uint64_t) * GetWordCount());
     }
   }
 

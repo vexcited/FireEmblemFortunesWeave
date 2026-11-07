@@ -331,7 +331,7 @@ void ReadClass1(
     uint16_t glyphCount = Read16(pClassDef + 4);
     for (uint16_t i = 0; i < glyphCount; ++i) {
       if (Read16(pClassDef + 6 + 2 * i) == class1) {
-        AddClassPairs(
+        ReadClass2(
           pCount, pTable, pBase, startGlyph + i, classDef2Offset, class2,
           xAdvance, xPlacement);
       }

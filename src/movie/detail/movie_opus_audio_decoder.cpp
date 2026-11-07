@@ -53,8 +53,9 @@ void OpusAudioDecoder::Finalize() {
   m_IsConfigured = false;
 }
 
-MovieResult OpusAudioDecoder::ConvertOpusDecoderErrorCodeToResult(
-  int error) const {
+// The SDK inlines every call of this conversion.
+[[gnu::always_inline]] MovieResult
+OpusAudioDecoder::ConvertOpusDecoderErrorCodeToResult(int error) const {
   switch (error) {
     case OPUS_OK:
       return MovieResult_Success;

@@ -29,7 +29,9 @@ inline void AbortUnlessSuccess(Result result) {
 
 }
 
-sf::SharedPointer<IHardwareAudioCodecService> GetClientHipcSession() {
+// The SDK calls this through its exported symbol, so it is never inlined.
+[[gnu::noinline]] sf::SharedPointer<IHardwareAudioCodecService>
+GetClientHipcSession() {
   sf::SharedPointer<codec::detail::IHardwareOpusDecoderManager> manager =
     opus::hw::server::GetHardwareOpusDecoderManagerByHipc();
   sf::SharedPointer<IHardwareAudioCodecService> service;

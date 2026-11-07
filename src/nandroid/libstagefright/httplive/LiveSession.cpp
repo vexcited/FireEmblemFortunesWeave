@@ -378,6 +378,9 @@ status_t LiveSession::dequeueAccessUnit(
 
         if (finalResult == OK) {
             return -EAGAIN;
+        } else if (finalResult == ERROR_BUFFER_TOO_SMALL) {
+            // A full download cache ends the stream for the client.
+            return ERROR_END_OF_STREAM;
         } else {
             return finalResult;
         }
@@ -1379,7 +1382,9 @@ ssize_t LiveSession::getLowestValidBandwidthIndex() const {
     return 0;
 }
 
-size_t LiveSession::getBandwidthIndex(int32_t bandwidthBps) {
+// The SDK inlines this into switchBandwidthIfNeeded, its only caller.
+[[gnu::always_inline]] size_t LiveSession::getBandwidthIndex(
+        int32_t bandwidthBps) {
     if (mBandwidthItems.size() < 2) {
         // shouldn't be here if we only have 1 bandwidth, check
         // logic to get rid of redundant bandwidth polling
@@ -2137,7 +2142,8 @@ void LiveSession::onPollBuffering() {
             // to ready mark, then it immediately pauses after start
             // as we have to do a down switch. It's better experience
             // to restart from a lower index, if we detect low bw.
-            if (!switchBandwidthIfNeeded(false /* up */, down) && ready) {
+            if (!switchBandwidthIfNeeded(false /* up */, down) && ready
+                    && isSourcePrepared()) {
                 postPrepared(OK);
             }
         }
@@ -2364,12 +2370,8 @@ bool LiveSession::switchBandwidthIfNeeded(bool bufferHigh, bool bufferLow) {
         return false;
     }
 
-    if (mSwitchInProgress) {
-        if (mBuffering) {
-            tryBandwidthFallback();
-        }
-        return false;
-    }
+    // A switch in progress falls back once a new switch is decided.
+    bool fallback = mSwitchInProgress && mBuffering;
 
     int32_t bandwidthBps, shortTermBps;
     bool isStable;
@@ -2393,8 +2395,12 @@ bool LiveSession::switchBandwidthIfNeeded(bool bufferHigh, bool bufferLow) {
             && (bandwidthBps < (int32_t)curBandwidth);
     bool canSwitchUp = bufferHigh
             && (bandwidthBps > (int32_t)curBandwidth * 12 / 10);
+    // With preferred pixels, the stream may change regardless of the buffer.
+    bool canSwitchSize = mPreferredPixels != 0
+            && (bandwidthBps < (int32_t)curBandwidth
+                || bandwidthBps > (int32_t)curBandwidth * 12 / 10);
 
-    if (canSwitchDown || canSwitchUp) {
+    if (canSwitchDown || canSwitchUp || canSwitchSize) {
         // bandwidth estimating has some delay, if we have to downswitch when
         // it hasn't stabilized, use the short term to guess real bandwidth,
         // since it may be dropping too fast.
@@ -2412,11 +2418,16 @@ bool LiveSession::switchBandwidthIfNeeded(bool bufferHigh, bool bufferLow) {
         // of measured bw. In that case we don't want to do anything, since we have
         // both enough buffer and enough bw.
         if ((canSwitchUp && bandwidthIndex > mCurBandwidthIndex)
+         || (canSwitchSize && bandwidthIndex != mCurBandwidthIndex)
          || (canSwitchDown && bandwidthIndex < mCurBandwidthIndex)) {
-            // if not yet prepared, just restart again with new bw index.
-            // this is faster and playback experience is cleaner.
-            changeConfiguration(
-                    mInPreparationPhase ? 0 : -1LL, bandwidthIndex);
+            if (fallback) {
+                tryBandwidthFallback();
+            } else {
+                // if not yet prepared, just restart again with new bw index.
+                // this is faster and playback experience is cleaner.
+                changeConfiguration(
+                        mInPreparationPhase ? 0 : -1LL, bandwidthIndex);
+            }
             return true;
         }
     }
