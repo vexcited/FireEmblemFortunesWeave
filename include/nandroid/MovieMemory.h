@@ -19,6 +19,8 @@ namespace nandroid {
 // the inline movie heap versions hide in units that include MovieHeap.h.
 void *GlobalOperatorNew(size_t size);
 void GlobalOperatorDelete(void *pointer, size_t size) noexcept;
+void *GlobalOperatorNewArray(size_t size);
+void GlobalOperatorDeleteArray(void *pointer) noexcept;
 
 }
 

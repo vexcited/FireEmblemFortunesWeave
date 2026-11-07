@@ -341,7 +341,8 @@ ssize_t DNSSerializer::FromBufferInternal(AddrInfo& out, const uint8_t* pBuffer,
           goto bail;
         }
 
-        memcpy(out.ai_addr, pCursor, out.ai_addrlen);
+        // The original copies into the ai_addr field itself.
+        memcpy(&out.ai_addr, pCursor, out.ai_addrlen);
         total += rc;
         rc = out.ai_addrlen;
         break;
@@ -716,7 +717,8 @@ ssize_t DNSSerializer::FromBufferInternal(addrinfo& out, const uint8_t* pBuffer,
           goto bail;
         }
 
-        memcpy(out.ai_addr, pCursor, out.ai_addrlen);
+        // The original copies into the ai_addr field itself.
+        memcpy(&out.ai_addr, pCursor, out.ai_addrlen);
         total += rc;
         rc = out.ai_addrlen;
         break;

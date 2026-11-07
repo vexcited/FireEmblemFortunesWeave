@@ -167,7 +167,7 @@ void encodeBase64Url(
 
     if ((-1 != out->find("+")) || (-1 != out->find("/"))) {
         size_t outLen = out->size();
-        char *base64url = new char[outLen];
+        char *base64url = static_cast<char *>(GlobalOperatorNewArray(outLen));
         for (size_t i = 0; i < outLen; ++i) {
             if (out->c_str()[i] == '+')
                 base64url[i] = '-';
@@ -178,7 +178,7 @@ void encodeBase64Url(
         }
 
         out->setTo(base64url, outLen);
-        delete[] base64url;
+        GlobalOperatorDeleteArray(base64url);
     }
 }
 

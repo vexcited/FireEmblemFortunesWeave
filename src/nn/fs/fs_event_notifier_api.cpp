@@ -12,6 +12,10 @@ constexpr Result ResultAllocationMemoryFailedInEventNotifier() {
   return detail::MakeResult(3225);
 }
 
+constexpr Result ResultAllocationMemoryFailedInAccessFailureDetection() {
+  return detail::MakeResult(3245);
+}
+
 typedef nn::sf::SharedPointer<fssrv::sf::IEventNotifier> EventNotifierObject;
 
 }
@@ -89,7 +93,7 @@ Result OpenAccessFailureDetectionEventNotifier(
     new detail::EventNotifierObjectAdapter(static_cast<EventNotifierObject&&>(
       notifier)));
   NN_FS_RESULT_THROW_UNLESS_WITH_ABORT_CHECK(*outNotifier != nullptr,
-    ResultAllocationMemoryFailedInEventNotifier());
+    ResultAllocationMemoryFailedInAccessFailureDetection());
   return ResultSuccess();
 }
 

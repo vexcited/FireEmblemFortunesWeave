@@ -133,10 +133,12 @@ Result MediaMuxerImpl::Configure(const MediaProperty* property) {
   }
 
   auto message = AcquireMessage<MuxerConfigure>();
+
+  message->AddReference();
   message->Reset();
   message->SetWaiter(&m_Waiter);
   message->m_pProperty = property;
-  return ToPublicResult(SendAndWait(message));
+  return ToPublicResult(PostMessage(message));
 }
 
 Result MediaMuxerImpl::AddTrack(int* pOutIndex, const MediaProperty* property,
@@ -152,13 +154,15 @@ Result MediaMuxerImpl::AddTrack(int* pOutIndex, const MediaProperty* property,
   }
 
   auto message = AcquireMessage<MuxerAddTrack>();
+
+  message->AddReference();
   message->Reset();
   message->SetWaiter(&m_Waiter);
   message->m_pProperty = property;
   message->m_pOutIndex = pOutIndex;
   message->m_pConfiguration = configuration;
   message->m_ConfigurationSize = configurationSize;
-  result = SendAndWait(message);
+  result = PostMessage(message);
   if (!IsSucceeded(result)) {
     return result;
   }
@@ -175,10 +179,12 @@ Result MediaMuxerImpl::GetTrackCount(int* pOutCount) {
   }
 
   auto message = AcquireMessage<MuxerGetTrackCount>();
+
+  message->AddReference();
   message->Reset();
   message->SetWaiter(&m_Waiter);
   message->m_pOutCount = pOutCount;
-  return ToPublicResult(SendAndWait(message));
+  return ToPublicResult(PostMessage(message));
 }
 
 Result MediaMuxerImpl::Start() {
@@ -189,9 +195,11 @@ Result MediaMuxerImpl::Start() {
   }
 
   auto message = AcquireMessage<MuxerStart>();
+
+  message->AddReference();
   message->Reset();
   message->SetWaiter(&m_Waiter);
-  result = SendAndWait(message);
+  result = PostMessage(message);
   if (!IsSucceeded(result)) {
     return result;
   }
@@ -208,9 +216,11 @@ Result MediaMuxerImpl::Stop() {
   }
 
   auto message = AcquireMessage<MuxerStop>();
+
+  message->AddReference();
   message->Reset();
   message->SetWaiter(&m_Waiter);
-  result = SendAndWait(message);
+  result = PostMessage(message);
   if (!IsSucceeded(result)) {
     return result;
   }
@@ -231,11 +241,13 @@ Result MediaMuxerImpl::WriteAsync(const Buffer* buffer, int index) {
   }
 
   auto message = AcquireMessage<MuxerWriteAsync>();
+
+  message->AddReference();
   message->Reset();
   message->SetWaiter(&m_Waiter);
   message->m_pBuffer = buffer;
   message->m_Index = index;
-  return ToPublicResult(SendAndWait(message));
+  return ToPublicResult(PostMessage(message));
 }
 
 void* MediaMuxerImpl::Allocate(size_t size) {
@@ -324,9 +336,10 @@ Result MediaMuxerImpl::FinalizeMediaMuxerThread() {
   if (m_IsThreadCreated) {
     if (m_IsThreadRunning) {
       auto message = AcquireMessage<MuxerThreadExit>();
+      message->AddReference();
       message->Reset();
       message->SetWaiter(&m_Waiter);
-      Result result = SendAndWait(message);
+      Result result = PostMessage(message);
       if (!IsSucceeded(result)) {
         return result;
       }

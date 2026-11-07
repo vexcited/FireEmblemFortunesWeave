@@ -360,9 +360,15 @@ Result PathFormatter::IsNormalized(bool* outNormalized, size_t* outLength,
   if (windowsPathLength != 0) {
     NN_FS_RESULT_THROW_UNLESS(flags.IsWindowsPathAllowed() &&
       !isRelativePath, ResultInvalidPathFormat());
-    if (current[0] == '\0' || strchr(current, '\\') != nullptr) {
+    if (current[0] == '\0') {
       *outNormalized = false;
       return ResultSuccess();
+    }
+    for (const char* c = current; *c != '\0'; ++c) {
+      if (*c == '\\') {
+        *outNormalized = false;
+        return ResultSuccess();
+      }
     }
     length += windowsPathLength;
   }

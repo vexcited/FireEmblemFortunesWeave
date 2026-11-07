@@ -40,7 +40,8 @@ ESDS::ESDS(const void *data, size_t size)
 }
 
 ESDS::~ESDS() {
-    delete[] mData;
+    // The original frees without the null check of a delete expression.
+    operator delete[](mData);
     mData = NULL;
 }
 

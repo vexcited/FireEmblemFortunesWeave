@@ -156,6 +156,7 @@ private:
     status_t parseChunk(off64_t *offset);
     status_t parseTrackFragmentHeader(off64_t offset, off64_t size);
     status_t parseTrackFragmentRun(off64_t offset, off64_t size);
+    status_t parseTrackFragmentBaseMediaDecodeTime(off64_t offset, off64_t size);
     status_t parseSampleAuxiliaryInformationSizes(off64_t offset, off64_t size);
     status_t parseSampleAuxiliaryInformationOffsets(off64_t offset, off64_t size);
     status_t parseClearEncryptedSizes(off64_t offset, bool isSubsampleEncryption, uint32_t flags);
@@ -182,6 +183,8 @@ private:
         uint32_t mDefaultSampleFlags;
 
         uint64_t mDataOffset;
+        bool mHasBaseMediaDecodeTime;
+        uint64_t mBaseMediaDecodeTime;
     };
     TrackFragmentHeaderInfo mTrackFragmentHeaderInfo;
 
@@ -4773,6 +4776,10 @@ status_t MPEG4Source::init() {
     if (!strncasecmp("video/", mime, 6)) {
         uint64_t firstSampleCTS = 0;
         err = mSampleTable->getMetaDataForSample(0, NULL, NULL, &firstSampleCTS);
+        if (err != OK) {
+            // A track without samples is not an error.
+            return err == ERROR_END_OF_STREAM ? OK : err;
+        }
         // Start offset should be less or equal to composition time of first sample.
         // Composition time stamp of first sample cannot be negative.
         mElstShiftStartTicks = std::min(mElstShiftStartTicks, firstSampleCTS);
@@ -4836,7 +4843,8 @@ media_status_t MPEG4Source::stop() {
         mBuffer = NULL;
     }
 
-    delete[] mSrcBuffer;
+    // The original frees without the null check of a delete expression.
+    operator delete[](mSrcBuffer);
     mSrcBuffer = NULL;
 
     mStarted = false;
@@ -4942,6 +4950,19 @@ status_t MPEG4Source::parseChunk(off64_t *offset) {
                 status_t err;
                 if (mLastParsedTrackId == mTrackId) {
                     if ((err = parseTrackFragmentRun(data_offset, chunk_data_size)) != OK) {
+                        return err;
+                    }
+                }
+
+                *offset += chunk_size;
+                break;
+        }
+
+        case FOURCC("tfdt"): {
+                status_t err;
+                if (mLastParsedTrackId == mTrackId) {
+                    if ((err = parseTrackFragmentBaseMediaDecodeTime(
+                            data_offset, chunk_data_size)) != OK) {
                         return err;
                     }
                 }
@@ -5316,6 +5337,44 @@ status_t MPEG4Source::parseTrackFragmentHeader(off64_t offset, off64_t size) {
     }
 
     mTrackFragmentHeaderInfo.mDataOffset = 0;
+    return OK;
+}
+
+status_t MPEG4Source::parseTrackFragmentBaseMediaDecodeTime(
+        off64_t offset, off64_t size) {
+    if (size < 8) {
+        return -EINVAL;
+    }
+
+    uint32_t flags;
+    if (!mDataSource->getUInt32(offset, &flags)) {
+        return ERROR_MALFORMED;
+    }
+
+    uint8_t version = flags >> 24;
+    if (version == 1) {
+        if (size < 12) {
+            return -EINVAL;
+        }
+
+        if (!mDataSource->getUInt64(offset + 4,
+                &mTrackFragmentHeaderInfo.mBaseMediaDecodeTime)) {
+            return ERROR_MALFORMED;
+        }
+    }
+    else if (version == 0) {
+        uint32_t decodeTime;
+        if (!mDataSource->getUInt32(offset + 4, &decodeTime)) {
+            return ERROR_MALFORMED;
+        }
+
+        mTrackFragmentHeaderInfo.mBaseMediaDecodeTime = decodeTime;
+    }
+    else {
+        return ERROR_UNSUPPORTED;
+    }
+
+    mTrackFragmentHeaderInfo.mHasBaseMediaDecodeTime = true;
     return OK;
 }
 

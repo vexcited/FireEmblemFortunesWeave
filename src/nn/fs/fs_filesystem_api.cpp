@@ -1,3 +1,4 @@
+#include <cstring>
 #include <memory>
 
 #include "nn/fs/detail/fs_file_system_accessor.hpp"
@@ -241,9 +242,13 @@ Result GetFreeSpaceSize(int64_t* outSize, const char* path) {
     outSize != nullptr && IsSuccess(result) ? *outSize : 0);
   NN_FS_RESULT_DO_WITH_ABORT_CHECK(result);
 
-  NN_FS_ACCESS_LOG_FILE_SYSTEM(result, fileSystem, nullptr,
-    fileSystem->GetFreeSpaceSize(outSize,
-      subPath != nullptr ? subPath : "/"),
+  auto get = [&]() -> Result {
+    NN_FS_RESULT_THROW_UNLESS(
+      subPath == nullptr || std::strcmp(subPath, "/") == 0,
+      ResultInvalidMountName());
+    return fileSystem->GetFreeSpaceSize(outSize, "/");
+  };
+  NN_FS_ACCESS_LOG_FILE_SYSTEM(result, fileSystem, nullptr, get(),
     ", name: \"%s\", size: %ld", path,
     outSize != nullptr && IsSuccess(result) ? *outSize : 0);
   NN_FS_RESULT_DO_WITH_ABORT_CHECK(result);

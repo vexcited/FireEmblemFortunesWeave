@@ -407,7 +407,8 @@ AString AStringPrintf(const char *format, ...) {
 
     va_end(ap);
 
-    return AString(buffer);
+    AString result(buffer);
+    return result;
 }
 
 }  // namespace nandroid

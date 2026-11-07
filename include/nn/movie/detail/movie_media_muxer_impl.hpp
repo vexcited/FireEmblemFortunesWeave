@@ -181,17 +181,6 @@ private:
     return result;
   }
 
-  Result SendAndWait(Message* message) {
-    os::SendMessageQueue(&m_MessageQueue, reinterpret_cast<uintptr_t>(message));
-    message->Wait();
-    Result result = message->GetResult();
-    if (message->RemoveReference()) {
-      m_MessageBufferList.ReleaseBuffer(message);
-    }
-
-    return result;
-  }
-
   AndroidMediaMuxer* m_pMuxer;
   MediaMuxerState m_State;
   int m_TrackCount;

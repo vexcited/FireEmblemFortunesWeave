@@ -515,9 +515,9 @@ Result AsyncRecoverRightDataRequest::End() {
   Result result = EndImpl(&count, data, m_Count);
   if (result.IsSuccess()) {
     GetRightDataManager()->SetRightData(data, count);
-    bool providable = std::all_of(data, data + count,
+    bool providable = std::none_of(data, data + count,
       [](const ConsumableServiceItemRightData& rightData) {
-        return rightData.isServiceProvidableOnLocal;
+        return rightData.isServiceProvidableOnLocal == false;
       });
     if (providable) {
       GetRightDataManager()->SetRecoverDone();
