@@ -44,6 +44,19 @@ struct ContextApiImpl {
   static void CommitContext(T& writer,
     ContextWriterClientResourceAccessor& accessor,
     ContextDescriptor descriptor, Result result);
+  template <typename T>
+  static Result UpdateResultWithContext(T& writer,
+    ContextWriterClientResourceAccessor& accessor,
+    ContextDescriptor descriptor, Result result,
+    util::optional<RawContext>&& context, util::optional<Result> current);
+  template <typename T>
+  static ContextDescriptor RegisterContext(T& writer,
+    ContextWriterClientResourceAccessor& accessor,
+    util::optional<RawContext>&& context, Result result);
 };
+
+template <typename T>
+util::optional<RawContext> CreateRawContext(const T& context,
+  MemoryResource* pAllocator);
 
 }

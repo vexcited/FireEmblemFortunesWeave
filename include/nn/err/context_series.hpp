@@ -6,6 +6,8 @@
 namespace nn::err::detail {
 
 struct MemoryResourceDeleter {
+  void operator()(void* pointer);
+
   void* resource;
   size_t size;
 };
