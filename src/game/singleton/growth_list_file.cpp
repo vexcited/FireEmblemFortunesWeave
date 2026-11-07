@@ -11,7 +11,7 @@ Singleton<GrowthListFile>::~Singleton() {
 }
 
 // The arrays own a buffer at 0x18 that the unload does not free.
-GrowthListFile::~GrowthListFile() {
+[[gnu::noinline]] GrowthListFile::~GrowthListFile() {
   const int count = GetInstance()->GetItemCount();
 
   for (int i = 0; i < count; i++) {

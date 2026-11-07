@@ -6,6 +6,12 @@
 #define GAME_DATA_FILE_UNLOADING_DEFAULT
 #endif
 
+// Files whose registered word is never read.
+#ifndef GAME_DATA_FILE_UNREAD
+#define GAME_DATA_FILE_UNREAD(T, U, V) GAME_DATA_FILE(T, U, V)
+#define GAME_DATA_FILE_UNREAD_DEFAULT
+#endif
+
 GAME_DATA_FILE(GroundAttributeFile, GroundAttributeData, GroundAttributeData)
 GAME_DATA_FILE(MapSoundFile, MapSoundData, MapSoundData)
 GAME_DATA_FILE(JobFile, JobData, JobData)
@@ -27,7 +33,7 @@ GAME_DATA_FILE(LearnFile, LearnGroup, LearnData)
 GAME_DATA_FILE(VariationFile, VariationData, VariationData)
 GAME_DATA_FILE_CUSTOM(BattleFieldFile, BattleFieldData, BattleFieldData)
 GAME_DATA_FILE(BattleLevelFile, BattleLevelData, BattleLevelData)
-GAME_DATA_FILE(TimelineFile, TimelineGroup, TimelineData)
+GAME_DATA_FILE_UNREAD(TimelineFile, TimelineGroup, TimelineData)
 GAME_DATA_FILE(ShopFile, ShopGroup, ShopData)
 GAME_DATA_FILE(AssetInfoFile, AssetInfoData, AssetInfoData)
 GAME_DATA_FILE(RelianceFile, RelianceData, RelianceData)
@@ -180,21 +186,23 @@ GAME_DATA_FILE_CUSTOM(SideStoryFile, SideStoryData, SideStoryData)
 GAME_DATA_FILE_UNLOADING(
   AutoGrowHeroItemFile, AutoGrowHeroItemData, AutoGrowHeroItemData
 )
-GAME_DATA_FILE(AutoGrowJobFile, AutoGrowJobData, AutoGrowJobData)
+GAME_DATA_FILE_CUSTOM(AutoGrowJobFile, AutoGrowJobData, AutoGrowJobData)
 GAME_DATA_FILE(CalendarBirthdayFile, CalendarBirthdayData, CalendarBirthdayData)
 GAME_DATA_FILE(
   CalendarSideStoryFile, CalendarSideStoryData, CalendarSideStoryData
 )
-GAME_DATA_FILE(CalendarDetailFile, CalendarDetailData, CalendarDetailData)
+GAME_DATA_FILE_CUSTOM(
+  CalendarDetailFile, CalendarDetailData, CalendarDetailData
+)
 GAME_DATA_FILE(CalendarFile, CalendarData, CalendarData)
 GAME_DATA_FILE_UNLOADING(AIIndividualFile, AIIndividualData, AIIndividualData)
-GAME_DATA_FILE(
+GAME_DATA_FILE_CUSTOM(
   Part2SuppliedItemFile, Part2SuppliedItemData, Part2SuppliedItemData
 )
 GAME_DATA_FILE_CUSTOM(
   Part2SuppliedLegionFile, Part2SuppliedLegionData, Part2SuppliedLegionData
 )
-GAME_DATA_FILE(EntrustEquipFile, EntrustEquipData, EntrustEquipData)
+GAME_DATA_FILE_CUSTOM(EntrustEquipFile, EntrustEquipData, EntrustEquipData)
 GAME_DATA_FILE_UNLOADING(AutoGrowItemFile, AutoGrowItemData, AutoGrowItemData)
 GAME_DATA_FILE_UNLOADING(
   AutoGrowLegionFile, AutoGrowLegionData, AutoGrowLegionData
@@ -337,4 +345,9 @@ GAME_DATA_FILE(
 #undef GAME_DATA_FILE_UNLOADING
 #undef GAME_DATA_FILE_UNLOADING_CUSTOM
 #undef GAME_DATA_FILE_UNLOADING_DEFAULT
+#endif
+
+#ifdef GAME_DATA_FILE_UNREAD_DEFAULT
+#undef GAME_DATA_FILE_UNREAD
+#undef GAME_DATA_FILE_UNREAD_DEFAULT
 #endif

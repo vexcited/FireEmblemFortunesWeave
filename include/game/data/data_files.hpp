@@ -1,5 +1,10 @@
 #pragma once
 
+#include <cstdint>
+#include <memory>
+#include <unordered_map>
+#include <vector>
+
 #include "game/data/data_types.hpp"
 #include "game/singleton_data_file.hpp"
 
@@ -62,6 +67,69 @@ protected:
 
 private:
   std::vector<Part2SuppliedLegionData*> ordered_;
+};
+
+// The instance is unloaded before the data file base unloads itself.
+class AutoGrowJobFile : public SingletonDataFile<
+  AutoGrowJobFile, AutoGrowJobData, AutoGrowJobData
+> {
+public:
+  ~AutoGrowJobFile() override;
+
+protected:
+  void OnBuild() override;
+  void OnUnbuild() override {}
+
+private:
+  std::unordered_map<uint32_t, const AutoGrowJobData*> unknown_108_;
+};
+
+class EntrustEquipFile : public SingletonDataFile<
+  EntrustEquipFile, EntrustEquipData, EntrustEquipData
+> {
+public:
+  ~EntrustEquipFile() override;
+
+protected:
+  void OnBuild() override;
+  void OnUnbuild() override;
+
+private:
+  std::unordered_map<uint32_t, const EntrustEquipData*> unknown_108_;
+};
+
+class CalendarDetailFile : public SingletonDataFile<
+  CalendarDetailFile, CalendarDetailData, CalendarDetailData
+> {
+public:
+  ~CalendarDetailFile() override;
+
+protected:
+  void OnBuild() override;
+  void OnUnbuild() override;
+
+private:
+  // Built by OnBuild, its type is not recovered.
+  class Details {
+  public:
+    ~Details();
+  };
+
+  std::unique_ptr<Details> details_;
+};
+
+class Part2SuppliedItemFile : public SingletonDataFile<
+  Part2SuppliedItemFile, Part2SuppliedItemData, Part2SuppliedItemData
+> {
+public:
+  ~Part2SuppliedItemFile() override;
+
+protected:
+  void OnBuild() override;
+  void OnUnbuild() override;
+
+private:
+  std::vector<const Part2SuppliedItemData*> unknown_108_[15];
 };
 
 class ReplacementFile : public SingletonDataFile<

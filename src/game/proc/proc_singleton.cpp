@@ -1,3 +1,10 @@
+#include <cstdint>
+#include <memory>
+#include <string>
+#include <vector>
+
+#include "game/cmdbtl/auto_play.hpp"
+#include "game/hub/input.hpp"
 #include "game/proc/proc_singleton.hpp"
 
 namespace game {
@@ -141,7 +148,23 @@ namespace cmdbtl {
 namespace {
 
 GAME_PROC_JUMPABLE(ProcCmdBtlSeq, CmdBtlSeq::Label)
-GAME_PROC_JUMPABLE(ProcCmdBtlSeqHuman, CmdBtlSeqHuman::Label)
+
+class ProcCmdBtlSeqHuman : public ProcJumpableSingleton<
+  ProcCmdBtlSeqHuman, CmdBtlSeqHuman::Label
+> {
+public:
+  ProcCmdBtlSeqHuman();
+
+  ~ProcCmdBtlSeqHuman() override {
+    AutoPlay::GetInstance()->SetUnknown0a(true);
+  }
+
+private:
+  [[gnu::used]] static constexpr auto kApplyJump =
+    &ProcCmdBtlSeqHuman::ApplyJump;
+};
+
+[[gnu::used]] ProcCmdBtlSeqHuman::ProcCmdBtlSeqHuman() = default;
 
 }
 
@@ -175,9 +198,41 @@ namespace gmap {
 
 GAME_PROC_JUMPABLE(ProcGmapEvent, Label)
 GAME_PROC_JUMPABLE(ProcGmapMove, Label)
-GAME_PROC_JUMPABLE(ProcGmapPhaseSeq, GmapPhaseSeq::Label)
+
+class ProcGmapPhaseSeq : public ProcJumpableSingleton<
+  ProcGmapPhaseSeq, GmapPhaseSeq::Label
+> {
+public:
+  ProcGmapPhaseSeq();
+
+private:
+  [[gnu::used]] static constexpr auto kApplyJump =
+    &ProcGmapPhaseSeq::ApplyJump;
+
+  // Mirrors include/game/gmap/proc_gmap_phase_seq.hpp, whose labels clash
+  // with the stand-in ones here.
+  int command_;
+  std::shared_ptr<void> unknown_d8_;
+  uint64_t unknown_e8_;
+  std::string mid_;
+};
+
+[[gnu::used]] ProcGmapPhaseSeq::ProcGmapPhaseSeq() = default;
+
 GAME_PROC_JUMPABLE(ProcGmapSeq, GmapSeq::Label)
-GAME_PROC_JUMPABLE(ProcGmapTalkSeq, Label)
+
+class ProcGmapTalkSeq : public ProcJumpableSingleton<ProcGmapTalkSeq, Label> {
+public:
+  ProcGmapTalkSeq();
+
+private:
+  [[gnu::used]] static constexpr auto kApplyJump = &ProcGmapTalkSeq::ApplyJump;
+
+  uint64_t unknown_d0_;
+  std::string unknown_d8_;
+};
+
+[[gnu::used]] ProcGmapTalkSeq::ProcGmapTalkSeq() = default;
 
 namespace {
 
@@ -190,7 +245,31 @@ GAME_PROC(ProcHeroWarp)
 
 namespace hub {
 
-GAME_PROC_JUMPABLE(ProcRunFacilityScript, Label)
+class ProcRunFacilityScript : public ProcJumpableSingleton<
+  ProcRunFacilityScript, Label
+> {
+public:
+  ProcRunFacilityScript();
+
+  [[gnu::always_inline]] ~ProcRunFacilityScript() override {
+    if (input_stopped_ == true) {
+      input_stopped_ = false;
+
+      if (Input* input = Input::GetInstance()) {
+        input->RestartInput();
+      }
+    }
+  }
+
+private:
+  [[gnu::used]] static constexpr auto kApplyJump =
+    &ProcRunFacilityScript::ApplyJump;
+
+  bool input_stopped_;
+  std::string unknown_d8_;
+};
+
+[[gnu::used]] ProcRunFacilityScript::ProcRunFacilityScript() = default;
 
 namespace {
 
@@ -209,7 +288,25 @@ GAME_PROC_JUMPABLE(ProcMapSeqZoomViewer, Label)
 namespace {
 
 GAME_PROC_JUMPABLE(ProcMapSeq, MapSeq::Label)
-GAME_PROC_JUMPABLE(ProcMapSeqHuman, MapSeqHuman::Label)
+
+class ProcMapSeqHuman : public ProcJumpableSingleton<
+  ProcMapSeqHuman, MapSeqHuman::Label
+> {
+public:
+  ProcMapSeqHuman();
+
+  ~ProcMapSeqHuman() override { Finish(); }
+
+private:
+  [[gnu::used]] static constexpr auto kApplyJump = &ProcMapSeqHuman::ApplyJump;
+
+  void Finish();
+
+  std::vector<uint32_t> unknown_d0_;
+};
+
+[[gnu::used]] ProcMapSeqHuman::ProcMapSeqHuman() = default;
+
 GAME_PROC_JUMPABLE(ProcMapSeqSortie, MapSeqSortie::Label)
 GAME_PROC_JUMPABLE(ProcMapSeqTargetSelect, TargetSelectLabel)
 
@@ -221,7 +318,26 @@ namespace menu {
 
 namespace {
 
-GAME_PROC_JUMPABLE(TalkSelectSeqProc, TalkSelectSeq::Label)
+class TalkSelectSeqProc : public ProcJumpableSingleton<
+  TalkSelectSeqProc, TalkSelectSeq::Label
+> {
+public:
+  TalkSelectSeqProc();
+
+private:
+  // The talk choices, their container type is not recovered.
+  class Choices {
+  public:
+    ~Choices();
+  };
+
+  [[gnu::used]] static constexpr auto kApplyJump =
+    &TalkSelectSeqProc::ApplyJump;
+
+  Choices choices_;
+};
+
+[[gnu::used]] TalkSelectSeqProc::TalkSelectSeqProc() = default;
 
 }
 

@@ -1,11 +1,19 @@
 #include <cstdint>
+#include <list>
+#include <map>
 #include <memory>
 #include <optional>
 #include <string>
+#include <string_view>
 #include <vector>
 
+#include "game/data/data_file.hpp"
+#include "game/game_mode_data.hpp"
+#include "game/map/binder.hpp"
+#include "nn/os/mutex.hpp"
 #include "game/proc/proc_inst.hpp"
 #include "game/singleton.hpp"
+#include "game/variable_manager.hpp"
 
 namespace game {
 
@@ -36,16 +44,86 @@ private:
 GAME_SINGLETON(AIValuePosLists)
 GAME_SINGLETON(AIWorkImage)
 GAME_SINGLETON(GameCalendar)
-GAME_SINGLETON(GameGlobalData)
+class GameGlobalData : public Singleton<GameGlobalData> {
+public:
+  ~GameGlobalData() override {
+    if (unknown_ != nullptr) {
+      delete unknown_;
+      unknown_ = nullptr;
+    }
+  }
+
+private:
+  struct Data {
+    uint8_t unknown_00_[0x10];
+  };
+
+  static Data* unknown_;
+};
+
+GameGlobalData::Data* GameGlobalData::unknown_ = nullptr;
+
 GAME_SINGLETON(GameGmapData)
 GAME_SINGLETON(GameHubData)
 GAME_SINGLETON(GameRecommendData)
-GAME_SINGLETON(GameRestartData)
+
+// Deleted through the virtual destructor in its first slot.
+class OwnedObject {
+public:
+  virtual ~OwnedObject();
+};
+
+class GameRestartData : public Singleton<GameRestartData> {
+public:
+  ~GameRestartData() override {
+    if (unknown_ != nullptr) {
+      delete unknown_;
+      unknown_ = nullptr;
+    }
+  }
+
+private:
+  static OwnedObject* unknown_;
+};
+
+OwnedObject* GameRestartData::unknown_ = nullptr;
+
 GAME_SINGLETON(GameSaveData)
-GAME_SINGLETON(GameSchedule)
+class GameSchedule : public Singleton<GameSchedule>, public Binder {
+public:
+  ~GameSchedule() override {
+    if (unknown_ != nullptr) {
+      delete unknown_;
+      unknown_ = nullptr;
+    }
+  }
+
+private:
+  static OwnedObject* unknown_;
+};
+
+OwnedObject* GameSchedule::unknown_ = nullptr;
+
 GAME_SINGLETON(GameSideStoryData)
 GAME_SINGLETON(GameSubquestData)
-GAME_SINGLETON(GameUserData)
+
+class GameUserConst {};
+
+class GameUserData : public Singleton<GameUserData>, public GameUserConst {
+public:
+  ~GameUserData() override {
+    if (unknown_ != nullptr) {
+      delete unknown_;
+      unknown_ = nullptr;
+    }
+  }
+
+private:
+  static OwnedObject* unknown_;
+};
+
+OwnedObject* GameUserData::unknown_ = nullptr;
+
 GAME_SINGLETON(HubDisposFileLoader)
 GAME_SINGLETON(KnownManager)
 class MapTerrainFile : public Singleton<MapTerrainFile> {
@@ -56,7 +134,20 @@ private:
   void Unload();
 };
 
-GAME_SINGLETON(RelianceCheck)
+class RelianceCheck : public Singleton<RelianceCheck> {
+public:
+  ~RelianceCheck() override {
+    if (unknown_ != nullptr) {
+      delete unknown_;
+      unknown_ = nullptr;
+    }
+  }
+
+private:
+  static std::vector<uint32_t>* unknown_;
+};
+
+std::vector<uint32_t>* RelianceCheck::unknown_ = nullptr;
 
 namespace character {
 
@@ -85,7 +176,18 @@ GAME_SINGLETON(CmdBtlEventManager)
 GAME_SINGLETON(CmdBtlGrow)
 GAME_SINGLETON(CmdBtlInput)
 GAME_SINGLETON(CmdBtlScript)
-GAME_SINGLETON(CmdBtlSituation)
+class CmdBtlSituation : public Singleton<CmdBtlSituation> {
+public:
+  ~CmdBtlSituation() override {
+    VariableManager::SetFlag(
+      GetSystemVariable(SystemVariable::kForceMount), 0
+    );
+  }
+
+private:
+  uint8_t unknown_08_[0x20];
+  std::vector<uint32_t> unknown_28_;
+};
 class CmdBtlSkipInput : public Singleton<CmdBtlSkipInput> {
 public:
   ~CmdBtlSkipInput() override { Release(); }
@@ -153,13 +255,42 @@ GAME_SINGLETON(VolunteerSceneDiff)
 
 namespace SceneEffectManager {
 
-GAME_SINGLETON(Impl)
+class Impl : public Singleton<Impl> {
+public:
+  ~Impl() override {
+    Clear(0);
+    Clear(1);
+  }
+
+private:
+  // The effects, their container type is not recovered.
+  class Effects {
+  public:
+    ~Effects();
+  };
+
+  void Clear(int layer);
+
+  Effects effects_;
+};
 
 }
 
 namespace SceneSoundManager {
 
-GAME_SINGLETON(Impl)
+class Impl : public Singleton<Impl> {
+public:
+  ~Impl() override {
+    Stop(0);
+    Stop(1);
+  }
+
+private:
+  void Stop(int channel);
+
+  std::vector<uint32_t> unknown_08_;
+  std::vector<uint32_t> unknown_20_;
+};
 
 }
 
@@ -185,7 +316,18 @@ GAME_SINGLETON(GmapDrawerSettings)
 GAME_SINGLETON(GmapHadesLoader)
 GAME_SINGLETON(GmapSituation)
 GAME_SINGLETON(GmapSound)
-GAME_SINGLETON(GmapSpotNameManager)
+class GmapSpotNameManager final : public Singleton<GmapSpotNameManager> {
+private:
+  // The spot names, their container type is not recovered.
+  class Names {
+  public:
+    ~Names();
+  };
+
+  std::shared_ptr<void> unknown_08_;
+  Names names_;
+};
+
 GAME_SINGLETON(GmapSpotPin)
 GAME_SINGLETON(GmapUI)
 GAME_SINGLETON(MiasmaManager)
@@ -277,14 +419,56 @@ GAME_SINGLETON(UIManager)
 namespace map {
 
 GAME_SINGLETON(Action)
-GAME_SINGLETON(Actor)
+class Actor : public Singleton<Actor> {
+public:
+  ~Actor() override {
+    if (unknown_08_ != nullptr) {
+      unknown_08_->Release();
+      unknown_08_ = nullptr;
+    }
+  }
+
+private:
+  class Instance {
+  public:
+    virtual void Unknown00();
+    virtual void Unknown01();
+    virtual void Unknown02();
+    virtual void Release();
+  };
+
+  Instance* unknown_08_;
+};
+
 GAME_SINGLETON(Camera)
 GAME_SINGLETON(Cursor)
 GAME_SINGLETON(CursorDrawInfo)
 GAME_SINGLETON(Height)
 GAME_SINGLETON(Image)
 GAME_SINGLETON(MapBattleHUD)
-GAME_SINGLETON(MapColorPalette)
+class MapColorPalette : public Singleton<MapColorPalette> {
+public:
+  ~MapColorPalette() override {
+    if (resource_ != nullptr) {
+      resource_->GetManager()->Release(resource_);
+      resource_ = nullptr;
+    }
+
+    g_texture_archives->Release("UI/Bmap/bmap_textures.bntx");
+    g_texture_archives->Release("UI/Common/common_textures.bntx");
+  }
+
+private:
+  class TextureArchives {
+  public:
+    void Release(std::string_view path);
+  };
+
+  static TextureArchives* g_texture_archives;
+
+  Resource* resource_;
+};
+
 GAME_SINGLETON(MapDrawDebug)
 GAME_SINGLETON(MapDrawManager)
 GAME_SINGLETON(MapEventManager)
@@ -302,7 +486,32 @@ GAME_SINGLETON(PrimitiveDrawStack)
 GAME_SINGLETON(Route)
 GAME_SINGLETON(Situation)
 GAME_SINGLETON(Target)
-GAME_SINGLETON(Transition)
+
+namespace {
+
+class MapTransition {
+public:
+  virtual ~MapTransition() = default;
+
+private:
+  std::map<uint32_t, uint32_t> unknown_08_;
+};
+
+}
+
+class Transition : public Singleton<Transition> {
+public:
+  ~Transition() override {
+    if (transition_ != nullptr) {
+      delete transition_;
+      transition_ = nullptr;
+    }
+  }
+
+private:
+  MapTransition* transition_;
+};
+
 GAME_SINGLETON(Transparent)
 GAME_SINGLETON(Trick)
 GAME_SINGLETON(Zoom)
@@ -329,7 +538,16 @@ GAME_PROC_SINGLETON(SpineFace)
 
 namespace talk {
 
-GAME_SINGLETON(Log)
+class Log : public Singleton<Log> {
+public:
+  ~Log() override { Clear(); }
+
+private:
+  void Clear();
+
+  uint64_t unknown_08_;
+  std::list<uint64_t> entries_;
+};
 
 }
 
@@ -347,9 +565,25 @@ private:
   std::vector<std::unique_ptr<Shape>> shapes_;
 };
 
-GAME_SINGLETON(Cursor)
+class Cursor : public Singleton<Cursor> {
+private:
+  class Model {
+  public:
+    virtual ~Model();
+  };
+
+  std::unique_ptr<Model> model_;
+};
+
 GAME_SINGLETON(Debug)
-GAME_SINGLETON(HitboxManager)
+class HitboxManager : public Singleton<HitboxManager> {
+private:
+  uint64_t unknown_08_;
+  std::vector<uint32_t> unknown_10_;
+  uint64_t unknown_28_;
+  nn::os::Mutex mutex_{false};
+};
+
 GAME_SINGLETON(Input)
 GAME_SINGLETON(Manager)
 GAME_SINGLETON(RouteManager)
