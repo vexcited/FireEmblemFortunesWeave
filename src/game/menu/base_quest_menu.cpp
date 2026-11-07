@@ -3,10 +3,21 @@
 #include "game/gameui/help_quest_info.hpp"
 
 #pragma GCC visibility push(hidden)
+#include "game/menu/belonging_menu.hpp"
 #include "game/menu/game_menu.hpp"
 #include "game/proc/proc_game_skip_view.hpp"
 #include "game/sound/se.hpp"
 #pragma GCC visibility pop
+
+namespace game::gmap {
+
+// The talk menu of the world map, final so casts compare its table.
+class GmapTalkMenu final : public menu::BelongingMenu {
+public:
+  ~GmapTalkMenu() override;
+};
+
+}
 
 namespace game::menu {
 
@@ -39,6 +50,42 @@ BaseQuestMenu::~BaseQuestMenu() {
   if (skip_state_pushed_) {
     ProcGameSkipView::PopState();
     skip_state_pushed_ = false;
+  }
+}
+
+// Quests stay shown under the talk menu of the world map.
+bool BaseQuestMenu::Unknown137() {
+  for (ProcInst* proc = GetUnknown20(); proc != nullptr;
+    proc = proc->GetUnknown20()) {
+    if (dynamic_cast<gmap::GmapTalkMenu*>(proc) != nullptr) {
+      return true;
+    }
+  }
+  const int state = Unknown21();
+  if (state == 9) {
+    return false;
+  }
+  if ((state & ~2) == 4) {
+    return true;
+  }
+  return GetRootMenu() == this;
+}
+
+// Restores the game skip state once the menu starts closing.
+void BaseQuestMenu::Unknown58(std::vector<int64_t>& handles) {
+  const int state = Unknown21();
+  if (state != 9 && ((state & ~2) == 4 || GetRootMenu() == this)) {
+    ImplUnknown13();
+  }
+  if (Unknown137()) {
+    Unknown136(handles);
+  }
+  if (skip_state_pushed_) {
+    const int now = Unknown21();
+    if (now >= 2 && now <= 8) {
+      ProcGameSkipView::PopState();
+      skip_state_pushed_ = false;
+    }
   }
 }
 

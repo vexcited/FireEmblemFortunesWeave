@@ -22,9 +22,12 @@ void eachParam(BGM::Entry& entry, F function) {
   }
 }
 
+// The early returns keep each flag a bit test like the original.
 bool isHeld(const BGM::Entry& entry) {
-  return entry.paused || entry.systemPaused || entry.muted ||
-    entry.systemMuted;
+  if (entry.paused || entry.systemPaused || entry.muted || entry.systemMuted) {
+    return true;
+  }
+  return false;
 }
 
 

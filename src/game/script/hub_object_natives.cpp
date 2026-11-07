@@ -131,10 +131,8 @@ void SetPos(ObjectHandle handle, const math::Vec3& pos) {
 
 math::Vec3 GetPos(ObjectHandle handle) {
   Object* object = Open(handle);
-  if (object != nullptr && object->GetPosition().has_value()) {
-    return *object->GetPosition();
-  }
-  return math::Vec3::Zero();
+  return object != nullptr && object->GetPosition().has_value() ?
+    *object->GetPosition() : math::Vec3::Zero();
 }
 
 void SetRot(ObjectHandle handle, const math::Vec3& rot) {
@@ -145,10 +143,8 @@ void SetRot(ObjectHandle handle, const math::Vec3& rot) {
 
 math::Vec3 GetRot(ObjectHandle handle) {
   Object* object = Open(handle);
-  if (object != nullptr && object->GetRotation().has_value()) {
-    return *object->GetRotation();
-  }
-  return math::Vec3::Zero();
+  return object != nullptr && object->GetRotation().has_value() ?
+    *object->GetRotation() : math::Vec3::Zero();
 }
 
 void SetScale(ObjectHandle handle, const math::Vec3& scale) {
