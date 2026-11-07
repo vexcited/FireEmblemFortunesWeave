@@ -11870,7 +11870,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 675b20,72,verified,src/game/data/data_file.cpp,_ZN4game11DataRefListINS_8ItemDataEE7ResolveEv
 675ca0,72,verified,src/game/data/data_rows.cpp,_ZN4game11DataRefListINS_9SkillDataEE7ResolveEv
 675e20,284,verified,src/game/data/data_rows.cpp,_ZN4game7DataRefINS_8DiffDataEE12LookupSharedEv
-675f60,276,verified,src/game/data/data_file.cpp,_ZN4game7DataRefINS_8ItemDataEE12LookupSharedEv
+675f60,284,verified,src/game/data/data_file.cpp,_ZN4game7DataRefINS_8ItemDataEE12LookupSharedEv
 6760a0,72,verified,src/game/data/data_file.cpp,_ZN4game11DataRefListINS_10PersonDataEE7ResolveEv
 676220,284,verified,src/game/data/data_rows.cpp,_ZN4game7DataRefINS_8RideDataEE12LookupSharedEv
 6775b0,148,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game7JobFileD0Ev
@@ -11915,9 +11915,9 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 67ea80,172,verified,src/game/templates/hash_table.cpp,_ZNSt3__113unordered_mapImPN4game11UnrecoveredILj3EEENS_4hashImEENS_8equal_toImEENS_9allocatorINS_4pairIKmS4_EEEEED2B8nn210108Ev
 67eb40,56,verified,src/game/templates/vector.cpp,_ZNSt3__16vectorIPN4game11UnrecoveredILj1EEENS_9allocatorIS4_EEED2B8nn210108Ev
 67eb80,172,verified,src/game/templates/hash_table.cpp,_ZNSt3__113unordered_mapImPN4game11UnrecoveredILj4EEENS_4hashImEENS_8equal_toImEENS_9allocatorINS_4pairIKmS4_EEEEED2B8nn210108Ev
-67f5a0,220,verified,src/game/data/data_file.cpp,_ZN4game7DataRefINS_7JobDataEE12LookupSharedEv
+67f5a0,284,verified,src/game/data/data_file.cpp,_ZN4game7DataRefINS_7JobDataEE12LookupSharedEv
 67f6e0,340,verified,src/game/data/data_rows.cpp,_ZN4game11DataRefListINS_7JobDataEE7ResolveEv
-67f860,248,verified,src/game/data/data_file.cpp,_ZN4game7DataRefINS_12LotteryGroupEE12LookupSharedEv
+67f860,284,verified,src/game/data/data_file.cpp,_ZN4game7DataRefINS_12LotteryGroupEE12LookupSharedEv
 67f9a0,284,verified,src/game/data/data_rows.cpp,_ZN4game7DataRefINS_11ProfileDataEE12LookupSharedEv
 67fae0,284,verified,src/game/data/data_file.cpp,_ZN4game7DataRefINS_10PersonDataEE12LookupSharedEv
 67fc20,284,verified,src/game/data/data_rows.cpp,_ZN4game7DataRefINS_13VariationDataEE12LookupSharedEv
@@ -11970,7 +11970,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 68d980,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::PersonFile::OnBuild()::$_1, void (game::GameRoute)>::target_type()"
 68dee0,368,verified,src/game/templates/hash_table.cpp,_ZNSt3__112__hash_tableINS_17__hash_value_typeINS_12basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEEPN4game11UnrecoveredILj1EEEEENS_22__unordered_map_hasherIS7_NS_4pairIKS7_SB_EENS_4hashIS7_EENS_8equal_toIS7_EELb1EEENS_21__unordered_map_equalIS7_SG_SK_SI_Lb1EEENS5_ISG_EEE4findIS7_EENS_15__hash_iteratorIPNS_11__hash_nodeISC_PvEEEERKT_
 68f100,284,verified,src/game/data/data_rows.cpp,_ZN4game7DataRefINS_11TerrainDataEE12LookupSharedEv
-68f240,248,verified,src/game/data/data_file.cpp,_ZN4game7DataRefINS_9SkillDataEE12LookupSharedEv
+68f240,284,verified,src/game/data/data_file.cpp,_ZN4game7DataRefINS_9SkillDataEE12LookupSharedEv
 68f380,72,verified,src/game/data/data_rows.cpp,_ZN4game11DataRefListINS_11TerrainDataEE7ResolveEv
 6900e0,148,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game11TerrainFileD0Ev
 690180,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonINS_11TerrainFileELb0EE10InitializeEv
@@ -12052,7 +12052,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 6b7e60,52,verified,src/game/singleton/singletons.cpp,_ZN4game9SingletonINS_14MapTerrainFileELb0EED2Ev
 6b7ea0,88,verified,src/game/singleton/singletons.cpp,_ZN4game9SingletonINS_14MapTerrainFileELb0EED0Ev
 6b87d0,432,verified,src/game/templates/vector.cpp,_ZNSt3__16vectorIN4game16UnrecoveredValueILj0ELm24ELm8EEENS_9allocatorIS3_EEE8__appendEm
-6b9680,252,verified,src/game/data/data_file.cpp,_ZN4game7DataRefINS_10LegionDataEE12LookupSharedEv
+6b9680,284,verified,src/game/data/data_file.cpp,_ZN4game7DataRefINS_10LegionDataEE12LookupSharedEv
 6b97c0,220,verified,src/game/templates/hash_table.cpp,_ZNSt3__113unordered_mapImNS_6vectorIPN4game11UnrecoveredILj0EEENS_9allocatorIS5_EEEENS_4hashImEENS_8equal_toImEENS6_INS_4pairIKmS8_EEEEED2B8nn210108Ev
 6bc340,152,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game10DisposFileD0Ev
 6bc3e0,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonINS_10DisposFileELb0EE10InitializeEv
@@ -14064,7 +14064,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 7dd260,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonINS_11ExpCalcFileELb0EE8FinalizeEv
 7dd270,112,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game11ExpCalcFileD1Ev
 7dd2e0,144,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game11ExpCalcFileD0Ev
-7dd380,732,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_11ExpCalcDataES1_E5BuildEv
+7dd380,1136,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_11ExpCalcDataES1_E5BuildEv
 7dd820,724,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_11ExpCalcDataES1_E7UnbuildEv
 7ddba0,800,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_11ExpCalcDataES1_E7RebuildEv
 7ddf00,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_11ExpCalcDataES1_E9OnRebuildEv
@@ -14920,7 +14920,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 83da60,112,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game9LearnFileD1Ev
 83dad0,144,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game9LearnFileD0Ev
 83db60,972,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_10LearnGroupENS_9LearnDataEE5BuildEv
-83e040,204,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_10LearnGroupENS_9LearnDataEE7UnbuildEv
+83e040,1108,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_10LearnGroupENS_9LearnDataEE7UnbuildEv
 83e540,800,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_10LearnGroupENS_9LearnDataEE7RebuildEv
 83e8a0,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_10LearnGroupENS_9LearnDataEE9OnRebuildEv
 83e8c0,116,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_10LearnGroupENS_9LearnDataEE6UnloadEv
@@ -15713,7 +15713,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 8899c0,188,verified,src/game/proc/proc_singleton.cpp,_ZN4game21ProcJumpableSingletonINS_4gmap11ProcGmapSeqENS1_7GmapSeq5LabelEED0Ev
 889a80,172,verified,src/game/templates/hash_table.cpp,_ZNSt3__113unordered_mapImPN4game11UnrecoveredILj8EEENS_4hashImEENS_8equal_toImEENS_9allocatorINS_4pairIKmS4_EEEEED2B8nn210108Ev
 88cc60,284,verified,src/game/data/data_file.cpp,_ZN4game7DataRefINS_12GmapSpotDataEE12LookupSharedEv
-88cda0,232,verified,src/game/data/data_file.cpp,_ZN4game7DataRefINS_15BattleFieldDataEE12LookupSharedEv
+88cda0,284,verified,src/game/data/data_file.cpp,_ZN4game7DataRefINS_15BattleFieldDataEE12LookupSharedEv
 890d10,140,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game12TimelineFileD0Ev
 890da0,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonINS_12TimelineFileELb0EE10InitializeEv
 890db0,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonINS_12TimelineFileELb0EE8FinalizeEv
@@ -16765,7 +16765,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 8f9d80,4,verified,src/game/data/data_files.cpp,_ZThn8_N4game12ExteriorFile9OnUnbuildEv
 8f9d90,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonINS_12ExteriorFileELb0EE10InitializeEv
 8f9da0,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonINS_12ExteriorFileELb0EE8FinalizeEv
-8f9dc0,768,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_12ExteriorDataES1_E5BuildEv
+8f9dc0,960,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_12ExteriorDataES1_E5BuildEv
 8fa1c0,812,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_12ExteriorDataES1_E7UnbuildEv
 8fa540,800,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_12ExteriorDataES1_E7RebuildEv
 8fa8a0,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_12ExteriorDataES1_E9OnRebuildEv
@@ -16812,7 +16812,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 901f20,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonINS_13SituationFileELb0EE10InitializeEv
 901f30,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonINS_13SituationFileELb0EE8FinalizeEv
 901f40,1028,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_13SituationDataES1_E5BuildEv
-902360,1004,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_13SituationDataES1_E7UnbuildEv
+902360,1188,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_13SituationDataES1_E7UnbuildEv
 902820,856,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_13SituationDataES1_E7RebuildEv
 902b80,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_13SituationDataES1_E9OnRebuildEv
 902b90,24,verified,src/llvm-libcxx-21/libcxx/include/__vector/vector.h,std::vector<T>::__throw_out_of_range()
@@ -16960,7 +16960,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 91c8e0,112,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game9ScoutFileD1Ev
 91c950,144,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game9ScoutFileD0Ev
 91c9e0,776,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_9ScoutDataES1_E5BuildEv
-91cf20,796,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_9ScoutDataES1_E7UnbuildEv
+91cf20,1100,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_9ScoutDataES1_E7UnbuildEv
 91d380,800,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_9ScoutDataES1_E7RebuildEv
 91d6e0,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_9ScoutDataES1_E7OnBuildEv
 91d6f0,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_9ScoutDataES1_E9OnUnbuildEv
@@ -17127,7 +17127,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 942390,112,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game12TrainingFileD1Ev
 942400,144,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game12TrainingFileD0Ev
 9424a0,792,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_12TrainingDataES1_E5BuildEv
-942c00,204,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_12TrainingDataES1_E7UnbuildEv
+942c00,1072,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_12TrainingDataES1_E7UnbuildEv
 943060,800,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_12TrainingDataES1_E7RebuildEv
 9433c0,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_12TrainingDataES1_E9OnRebuildEv
 9433d0,24,verified,src/llvm-libcxx-21/libcxx/include/__vector/vector.h,std::vector<T>::__throw_length_error()
@@ -17543,14 +17543,14 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 974c60,320,verified,src/game/data/data_file.cpp,_ZNSt3__16vectorIN4game13FlagCondition4TermENS_9allocatorIS3_EEE24__emplace_back_slow_pathIJRKS3_EEEPS3_DpOT_
 974dc0,24,verified,src/llvm-libcxx-21/libcxx/include/__vector/vector.h,std::vector<T>::__throw_length_error()
 974de0,432,verified,src/game/data/data_file.cpp,_ZNSt3__16vectorIN4game13FlagConditionENS_9allocatorIS2_EEE24__emplace_back_slow_pathIJRKS2_EEEPS2_DpOT_
-974fa0,212,verified,src/game/data/data_file.cpp,_ZN4game13FlagConditionC2ERKS0_
+974fa0,280,verified,src/game/data/data_file.cpp,_ZN4game13FlagConditionC2ERKS0_
 9767a0,148,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game11ProfileFileD0Ev
 976840,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonINS_11ProfileFileELb0EE10InitializeEv
 976850,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonINS_11ProfileFileELb0EE8FinalizeEv
 976860,112,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game11ProfileFileD1Ev
 9768d0,144,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game11ProfileFileD0Ev
 976960,820,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_11ProfileDataES1_E5BuildEv
-977340,796,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_11ProfileDataES1_E7UnbuildEv
+977340,860,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_11ProfileDataES1_E7UnbuildEv
 9777a0,800,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_11ProfileDataES1_E7RebuildEv
 977b00,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_11ProfileDataES1_E9OnRebuildEv
 977b20,24,verified,src/llvm-libcxx-21/libcxx/include/__vector/vector.h,std::vector<T>::__throw_length_error()
@@ -17823,8 +17823,8 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 9972a0,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonINS_11LotteryFileELb0EE8FinalizeEv
 9972b0,112,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game11LotteryFileD1Ev
 997320,144,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game11LotteryFileD0Ev
-9973c0,792,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_12LotteryGroupENS_11LotteryDataEE5BuildEv
-9978a0,1140,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_12LotteryGroupENS_11LotteryDataEE7UnbuildEv
+9973c0,928,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_12LotteryGroupENS_11LotteryDataEE5BuildEv
+9978a0,1160,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_12LotteryGroupENS_11LotteryDataEE7UnbuildEv
 997da0,800,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_12LotteryGroupENS_11LotteryDataEE7RebuildEv
 998100,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_12LotteryGroupENS_11LotteryDataEE7OnBuildEv
 998110,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_12LotteryGroupENS_11LotteryDataEE9OnUnbuildEv
@@ -17887,7 +17887,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 9a7060,112,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game15IndependentFileD1Ev
 9a70d0,144,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game15IndependentFileD0Ev
 9a7160,936,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_15IndependentDataES1_E5BuildEv
-9a7520,436,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_15IndependentDataES1_E7UnbuildEv
+9a7520,760,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_15IndependentDataES1_E7UnbuildEv
 9a78e0,800,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_15IndependentDataES1_E7RebuildEv
 9a7c40,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_15IndependentDataES1_E7OnBuildEv
 9a7c50,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_15IndependentDataES1_E9OnUnbuildEv
@@ -18565,8 +18565,8 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 9db640,172,verified,src/game/templates/hash_table.cpp,_ZNSt3__113unordered_mapImPN4game11UnrecoveredILj12EEENS_4hashImEENS_8equal_toImEENS_9allocatorINS_4pairIKmS4_EEEEED2B8nn210108Ev
 9dceb0,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonINS_13CausationFileELb0EE10InitializeEv
 9dcec0,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonINS_13CausationFileELb0EE8FinalizeEv
-9dcfe0,904,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_13CausationDataES1_E5BuildEv
-9dd3a0,724,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_13CausationDataES1_E7UnbuildEv
+9dcfe0,944,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_13CausationDataES1_E5BuildEv
+9dd3a0,916,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_13CausationDataES1_E7UnbuildEv
 9dd760,212,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_13CausationDataES1_E7RebuildEv
 9ddac0,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_13CausationDataES1_E9OnRebuildEv
 9ddeb0,24,verified,src/llvm-libcxx-21/libcxx/include/__vector/vector.h,std::vector<T>::__throw_length_error()
@@ -18829,7 +18829,7 @@ a03b80,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonI
 a03b90,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonINS_18AssetConditionFileELb0EE8FinalizeEv
 a03ba0,112,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game18AssetConditionFileD1Ev
 a03c10,144,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game18AssetConditionFileD0Ev
-a03ca0,876,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_18AssetConditionDataES1_E5BuildEv
+a03ca0,956,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_18AssetConditionDataES1_E5BuildEv
 a04060,1072,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_18AssetConditionDataES1_E7UnbuildEv
 a04520,856,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_18AssetConditionDataES1_E7RebuildEv
 a04880,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_18AssetConditionDataES1_E9OnRebuildEv
@@ -19953,7 +19953,7 @@ ae6420,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonI
 ae6430,112,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game17GmapHubSimpleFileD1Ev
 ae64a0,144,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game17GmapHubSimpleFileD0Ev
 ae6540,984,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_17GmapHubSimpleDataES1_E5BuildEv
-ae6ba0,796,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_17GmapHubSimpleDataES1_E7UnbuildEv
+ae6ba0,992,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_17GmapHubSimpleDataES1_E7UnbuildEv
 ae6fa0,800,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_17GmapHubSimpleDataES1_E7RebuildEv
 ae7300,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_17GmapHubSimpleDataES1_E9OnRebuildEv
 ae7310,148,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game12GmapGateFileD0Ev
@@ -19979,8 +19979,8 @@ ae9110,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonI
 ae9120,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonINS_16GmapCarriageFileELb0EE8FinalizeEv
 ae9130,112,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game16GmapCarriageFileD1Ev
 ae91a0,144,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game16GmapCarriageFileD0Ev
-ae9240,352,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_17GmapCarriageGroupENS_16GmapCarriageDataEE5BuildEv
-ae9720,856,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_17GmapCarriageGroupENS_16GmapCarriageDataEE7UnbuildEv
+ae9240,1132,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_17GmapCarriageGroupENS_16GmapCarriageDataEE5BuildEv
+ae9720,900,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_17GmapCarriageGroupENS_16GmapCarriageDataEE7UnbuildEv
 ae9c20,800,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_17GmapCarriageGroupENS_16GmapCarriageDataEE7RebuildEv
 ae9f80,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_17GmapCarriageGroupENS_16GmapCarriageDataEE9OnRebuildEv
 ae9f90,148,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game13GmapTroopFileD0Ev
@@ -20015,7 +20015,7 @@ aed010,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonI
 aed020,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonINS_22GmapReconstructionFileELb0EE8FinalizeEv
 aed030,112,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game22GmapReconstructionFileD1Ev
 aed0a0,144,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game22GmapReconstructionFileD0Ev
-aed140,712,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_22GmapReconstructionDataES1_E5BuildEv
+aed140,868,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_22GmapReconstructionDataES1_E5BuildEv
 aed520,812,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_22GmapReconstructionDataES1_E7UnbuildEv
 aed8a0,800,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_22GmapReconstructionDataES1_E7RebuildEv
 aedc00,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_22GmapReconstructionDataES1_E9OnRebuildEv
@@ -20025,7 +20025,7 @@ aedd30,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonI
 aedd40,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonINS_15GmapEncountFileELb0EE8FinalizeEv
 aedd50,112,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game15GmapEncountFileD1Ev
 aeddc0,144,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game15GmapEncountFileD0Ev
-aede60,844,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_15GmapEncountDataES1_E5BuildEv
+aede60,900,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_15GmapEncountDataES1_E5BuildEv
 aee200,868,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_15GmapEncountDataES1_E7UnbuildEv
 aee580,712,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_15GmapEncountDataES1_E7RebuildEv
 aee8e0,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_15GmapEncountDataES1_E7OnBuildEv
@@ -20037,7 +20037,7 @@ aeea30,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonI
 aeea40,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonINS_12GmapTalkFileELb0EE8FinalizeEv
 aeea50,112,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game12GmapTalkFileD1Ev
 aeeac0,144,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game12GmapTalkFileD0Ev
-aeeb60,788,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_12GmapTalkDataES1_E5BuildEv
+aeeb60,972,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_12GmapTalkDataES1_E5BuildEv
 aeef40,1028,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_12GmapTalkDataES1_E7UnbuildEv
 aef360,856,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_12GmapTalkDataES1_E7RebuildEv
 aef6c0,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_12GmapTalkDataES1_E7OnBuildEv
@@ -25994,8 +25994,8 @@ dc32b0,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_14HubConnectD
 dc32c0,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_14HubConnectDataES1_E9OnRebuildEv
 dc32d0,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonINS_17HubFastTravelFileELb0EE10InitializeEv
 dc32e0,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonINS_17HubFastTravelFileELb0EE8FinalizeEv
-dc3300,844,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_22HubFastTravelDataArrayENS_17HubFastTravelDataEE5BuildEv
-dc39a0,452,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_22HubFastTravelDataArrayENS_17HubFastTravelDataEE7UnbuildEv
+dc3300,1112,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_22HubFastTravelDataArrayENS_17HubFastTravelDataEE5BuildEv
+dc39a0,1156,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_22HubFastTravelDataArrayENS_17HubFastTravelDataEE7UnbuildEv
 dc3ea0,856,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_22HubFastTravelDataArrayENS_17HubFastTravelDataEE7RebuildEv
 dc4200,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_22HubFastTravelDataArrayENS_17HubFastTravelDataEE7OnBuildEv
 dc4210,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_22HubFastTravelDataArrayENS_17HubFastTravelDataEE9OnUnbuildEv
@@ -27981,7 +27981,7 @@ ec1f30,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonI
 ec1f40,112,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game10ExSpotFileD1Ev
 ec1fb0,144,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game10ExSpotFileD0Ev
 ec2040,1028,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_10ExSpotDataES1_E5BuildEv
-ec2460,656,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_10ExSpotDataES1_E7UnbuildEv
+ec2460,1024,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_10ExSpotDataES1_E7UnbuildEv
 ec2880,800,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_10ExSpotDataES1_E7RebuildEv
 ec2be0,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_10ExSpotDataES1_E7OnBuildEv
 ec2bf0,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_10ExSpotDataES1_E9OnUnbuildEv
@@ -28239,7 +28239,7 @@ eee470,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_21HubScriptEx
 eee480,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_21HubScriptExternalDataES1_E9OnRebuildEv
 eee490,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonINS_14HubAreaTagFileELb0EE10InitializeEv
 eee4a0,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonINS_14HubAreaTagFileELb0EE8FinalizeEv
-eee4c0,780,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_14HubAreaTagDataES1_E5BuildEv
+eee4c0,948,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_14HubAreaTagDataES1_E5BuildEv
 eee880,640,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_14HubAreaTagDataES1_E7UnbuildEv
 eeec20,800,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_14HubAreaTagDataES1_E7RebuildEv
 eeef80,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_14HubAreaTagDataES1_E7OnBuildEv
@@ -30004,8 +30004,8 @@ fd0170,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonI
 fd0180,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonINS_19ChapterVariableFileELb0EE8FinalizeEv
 fd0190,112,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game19ChapterVariableFileD1Ev
 fd0200,144,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game19ChapterVariableFileD0Ev
-fd02a0,780,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_19ChapterVariableDataES1_E5BuildEv
-fd0680,204,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_19ChapterVariableDataES1_E7UnbuildEv
+fd02a0,964,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_19ChapterVariableDataES1_E5BuildEv
+fd0680,1028,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_19ChapterVariableDataES1_E7UnbuildEv
 fd0aa0,800,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_19ChapterVariableDataES1_E7RebuildEv
 fd0e00,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_19ChapterVariableDataES1_E9OnRebuildEv
 fd0e10,24,verified,src/llvm-libcxx-21/libcxx/include/__vector/vector.h,std::vector<T>::__throw_length_error()
@@ -30131,7 +30131,7 @@ fec2a0,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonI
 fec2b0,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonINS_12ScoutTobFileELb0EE8FinalizeEv
 fec2c0,112,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game12ScoutTobFileD1Ev
 fec330,144,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game12ScoutTobFileD0Ev
-fec3c0,844,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_12ScoutTobDataES1_E5BuildEv
+fec3c0,900,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_12ScoutTobDataES1_E5BuildEv
 fec760,812,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_12ScoutTobDataES1_E7UnbuildEv
 fecae0,772,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_12ScoutTobDataES1_E7RebuildEv
 fece40,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_12ScoutTobDataES1_E7OnBuildEv
@@ -34883,7 +34883,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 12449f0,112,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game22SubquestUnlockJobsFileD1Ev
 1244a60,160,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game22SubquestUnlockJobsFileD0Ev
 1244b00,156,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game22SubquestUnlockJobsFileD0Ev
-1244ca0,172,verified,src/game/data/data_file.cpp,_ZN4game7DataRefINS_12SubquestDataEE12LookupSharedEv
+1244ca0,284,verified,src/game/data/data_file.cpp,_ZN4game7DataRefINS_12SubquestDataEE12LookupSharedEv
 1244de0,72,verified,src/game/data/data_file.cpp,_ZN4game11DataRefListINS_10LegionDataEE7ResolveEv
 1245250,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonINS_22SubquestUnlockJobsFileELb0EE10InitializeEv
 1245260,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonINS_22SubquestUnlockJobsFileELb0EE8FinalizeEv
@@ -35764,7 +35764,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 12c9e40,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonINS_21CalendarSideStoryFileELb0EE8FinalizeEv
 12c9e50,112,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game21CalendarSideStoryFileD1Ev
 12c9ec0,144,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game21CalendarSideStoryFileD0Ev
-12c9f60,624,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_21CalendarSideStoryDataES1_E5BuildEv
+12c9f60,1136,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_21CalendarSideStoryDataES1_E5BuildEv
 12ca400,812,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_21CalendarSideStoryDataES1_E7UnbuildEv
 12ca780,800,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_21CalendarSideStoryDataES1_E7RebuildEv
 12caae0,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_21CalendarSideStoryDataES1_E9OnRebuildEv
@@ -35783,7 +35783,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 12cbde0,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonINS_12CalendarFileELb0EE8FinalizeEv
 12cbdf0,112,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game12CalendarFileD1Ev
 12cbe60,144,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game12CalendarFileD0Ev
-12cbf00,884,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_12CalendarDataES1_E5BuildEv
+12cbf00,940,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_12CalendarDataES1_E5BuildEv
 12cc2c0,812,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_12CalendarDataES1_E7UnbuildEv
 12cc640,800,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_12CalendarDataES1_E7RebuildEv
 12cc9a0,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_12CalendarDataES1_E9OnRebuildEv
@@ -36219,7 +36219,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 12fde10,200,verified,src/game/singleton/unloading_data_files.cpp,_ZThn8_N4game18AutoGrowLegionFileD0Ev
 12fe080,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonINS_18AutoGrowLegionFileELb0EE10InitializeEv
 12fe090,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonINS_18AutoGrowLegionFileELb0EE8FinalizeEv
-12fe0a0,724,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_18AutoGrowLegionDataES1_E5BuildEv
+12fe0a0,940,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_18AutoGrowLegionDataES1_E5BuildEv
 12fe460,812,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_18AutoGrowLegionDataES1_E7UnbuildEv
 12fe7e0,800,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_18AutoGrowLegionDataES1_E7RebuildEv
 12feb40,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_18AutoGrowLegionDataES1_E7OnBuildEv
@@ -37716,7 +37716,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 13936a0,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonINS_23FacilitySceneObjectFileELb0EE8FinalizeEv
 13936b0,112,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game23FacilitySceneObjectFileD1Ev
 1393720,144,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game23FacilitySceneObjectFileD0Ev
-13937c0,844,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_23FacilitySceneObjectDataES1_E5BuildEv
+13937c0,900,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_23FacilitySceneObjectDataES1_E5BuildEv
 1393b60,812,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_23FacilitySceneObjectDataES1_E7UnbuildEv
 1393ee0,800,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_23FacilitySceneObjectDataES1_E7RebuildEv
 1394240,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_23FacilitySceneObjectDataES1_E9OnRebuildEv
@@ -37726,7 +37726,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 1394380,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonINS_20FacilitySceneMapFileELb0EE8FinalizeEv
 1394390,112,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game20FacilitySceneMapFileD1Ev
 1394400,144,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game20FacilitySceneMapFileD0Ev
-13944a0,996,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_20FacilitySceneMapDataES1_E5BuildEv
+13944a0,1028,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_20FacilitySceneMapDataES1_E5BuildEv
 1394940,812,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_20FacilitySceneMapDataES1_E7UnbuildEv
 1394cc0,856,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_20FacilitySceneMapDataES1_E7RebuildEv
 1395020,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_20FacilitySceneMapDataES1_E7OnBuildEv
@@ -37750,7 +37750,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 1396040,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonINS_25FacilitySceneLocationFileELb0EE8FinalizeEv
 1396050,112,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game25FacilitySceneLocationFileD1Ev
 13960c0,144,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game25FacilitySceneLocationFileD0Ev
-1396160,624,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_25FacilitySceneLocationDataES1_E5BuildEv
+1396160,1116,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_25FacilitySceneLocationDataES1_E5BuildEv
 1396600,812,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_25FacilitySceneLocationDataES1_E7UnbuildEv
 1396980,800,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_25FacilitySceneLocationDataES1_E7RebuildEv
 1396ce0,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_25FacilitySceneLocationDataES1_E7OnBuildEv
@@ -37786,7 +37786,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 1398800,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonINS_29FacilitySceneCameraMotionFileELb0EE8FinalizeEv
 1398810,112,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game29FacilitySceneCameraMotionFileD1Ev
 1398880,144,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game29FacilitySceneCameraMotionFileD0Ev
-1398920,780,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_29FacilitySceneCameraMotionDataES1_E5BuildEv
+1398920,1020,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_29FacilitySceneCameraMotionDataES1_E5BuildEv
 1398d40,936,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_29FacilitySceneCameraMotionDataES1_E7UnbuildEv
 1399100,800,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_29FacilitySceneCameraMotionDataES1_E7RebuildEv
 1399460,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_29FacilitySceneCameraMotionDataES1_E7OnBuildEv
@@ -38416,8 +38416,8 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 13e70c0,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonINS_17DramaScenarioFileELb0EE8FinalizeEv
 13e70d0,112,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game17DramaScenarioFileD1Ev
 13e7140,144,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game17DramaScenarioFileD0Ev
-13e71e0,860,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_18DramaScenarioArrayENS_17DramaScenarioDataEE5BuildEv
-13e76c0,856,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_18DramaScenarioArrayENS_17DramaScenarioDataEE7UnbuildEv
+13e71e0,904,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_18DramaScenarioArrayENS_17DramaScenarioDataEE5BuildEv
+13e76c0,1156,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_18DramaScenarioArrayENS_17DramaScenarioDataEE7UnbuildEv
 13e7bc0,800,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_18DramaScenarioArrayENS_17DramaScenarioDataEE7RebuildEv
 13e7f20,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_18DramaScenarioArrayENS_17DramaScenarioDataEE9OnRebuildEv
 13e7f30,116,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game17SingletonDataFileINS_18DramaHighlightFileENS_19DramaHighlightArrayENS_18DramaHighlightDataEED2Ev
@@ -38426,8 +38426,8 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 13e8060,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonINS_18DramaHighlightFileELb0EE8FinalizeEv
 13e8070,112,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game18DramaHighlightFileD1Ev
 13e80e0,144,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game18DramaHighlightFileD0Ev
-13e8180,840,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_19DramaHighlightArrayENS_18DramaHighlightDataEE5BuildEv
-13e8900,984,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_19DramaHighlightArrayENS_18DramaHighlightDataEE7UnbuildEv
+13e8180,908,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_19DramaHighlightArrayENS_18DramaHighlightDataEE5BuildEv
+13e8900,1100,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_19DramaHighlightArrayENS_18DramaHighlightDataEE7UnbuildEv
 13e8e00,800,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_19DramaHighlightArrayENS_18DramaHighlightDataEE7RebuildEv
 13e9160,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_19DramaHighlightArrayENS_18DramaHighlightDataEE7OnBuildEv
 13e9170,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_19DramaHighlightArrayENS_18DramaHighlightDataEE9OnUnbuildEv
@@ -39809,8 +39809,8 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 147edb0,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonINS_17PerchQuestionFileELb0EE8FinalizeEv
 147edc0,112,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game17PerchQuestionFileD1Ev
 147ee30,144,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game17PerchQuestionFileD0Ev
-147eec0,864,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_17PerchQuestionDataES1_E5BuildEv
-147f320,796,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_17PerchQuestionDataES1_E7UnbuildEv
+147eec0,1084,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_17PerchQuestionDataES1_E5BuildEv
+147f320,1028,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_17PerchQuestionDataES1_E7UnbuildEv
 147f740,800,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_17PerchQuestionDataES1_E7RebuildEv
 147faa0,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_17PerchQuestionDataES1_E9OnRebuildEv
 147fab0,116,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game17SingletonDataFileINS_15PerchAnswerFileENS_15PerchAnswerDataES2_ED2Ev
@@ -40133,7 +40133,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 14ba2e0,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonINS_14GmapRegionFileELb0EE8FinalizeEv
 14ba2f0,112,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game14GmapRegionFileD1Ev
 14ba360,144,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game14GmapRegionFileD0Ev
-14ba400,876,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_14GmapRegionDataES1_E5BuildEv
+14ba400,932,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_14GmapRegionDataES1_E5BuildEv
 14ba7c0,812,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_14GmapRegionDataES1_E7UnbuildEv
 14bab40,800,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_14GmapRegionDataES1_E7RebuildEv
 14baea0,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_14GmapRegionDataES1_E9OnRebuildEv
@@ -40528,7 +40528,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 14e2620,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonINS_19GmapLegionTableFileELb0EE8FinalizeEv
 14e2640,112,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game19GmapLegionTableFileD1Ev
 14e26b0,144,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game19GmapLegionTableFileD0Ev
-14e2740,668,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_20GmapLegionTableGroupENS_19GmapLegionTableDataEE5BuildEv
+14e2740,1088,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_20GmapLegionTableGroupENS_19GmapLegionTableDataEE5BuildEv
 14e2c00,848,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_20GmapLegionTableGroupENS_19GmapLegionTableDataEE7UnbuildEv
 14e3060,800,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_20GmapLegionTableGroupENS_19GmapLegionTableDataEE7RebuildEv
 14e33d0,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_20GmapLegionTableGroupENS_19GmapLegionTableDataEE9OnRebuildEv
@@ -41075,7 +41075,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 1531a80,112,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game13GmapHadesFileD1Ev
 1531af0,144,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game13GmapHadesFileD0Ev
 1531b80,964,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_13GmapHadesDataES1_E5BuildEv
-1531f60,796,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_13GmapHadesDataES1_E7UnbuildEv
+1531f60,1028,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_13GmapHadesDataES1_E7UnbuildEv
 1532380,800,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_13GmapHadesDataES1_E7RebuildEv
 1532700,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_13GmapHadesDataES1_E9OnRebuildEv
 1532720,768,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_13GmapHadesDataES1_E4LoadEPKcS4_b
@@ -52792,7 +52792,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 1970020,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonINS_20FacilityUsedDemoFileELb0EE8FinalizeEv
 1970030,112,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game20FacilityUsedDemoFileD1Ev
 19700a0,144,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game20FacilityUsedDemoFileD0Ev
-1970140,804,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_20FacilityUsedDemoDataES1_E5BuildEv
+1970140,1048,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_20FacilityUsedDemoDataES1_E5BuildEv
 19705a0,1028,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_20FacilityUsedDemoDataES1_E7UnbuildEv
 19709c0,800,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_20FacilityUsedDemoDataES1_E7RebuildEv
 1970d20,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_20FacilityUsedDemoDataES1_E7OnBuildEv

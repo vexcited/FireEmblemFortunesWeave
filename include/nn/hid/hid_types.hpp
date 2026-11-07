@@ -312,7 +312,12 @@ struct FirmwareVersion {
 
 struct FirmwareVersionString;
 struct HomeButtonState;
-struct InteractiveArea;
+struct InteractiveArea {
+  float x;
+  float y;
+  float width;
+  float height;
+};
 struct McuVersionDataForNfc;
 struct MifareKeyClearParameter {
   uint32_t _storage;

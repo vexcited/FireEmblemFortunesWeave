@@ -27,6 +27,23 @@ Result GetAnalogStickManualCalibrationStage(
     pOutAnalogStickManualCalibrationStage, uniquePadId, analogStickPosition);
 }
 
+// Only a busy calibration aborts, other failures are ignored.
+void StartAnalogStickManualCalibration(
+  UniquePadId uniquePadId, AnalogStickPosition analogStickPosition) {
+  const Result result = hid::system::detail::StartAnalogStickManualCalibration(
+    uniquePadId, analogStickPosition);
+  NN_ABORT_UNLESS(
+    result.IsSuccess() || (result.value & 0x3fffff) != 0x14cca);
+}
+
+void ResetAnalogStickManualCalibration(
+  UniquePadId uniquePadId, AnalogStickPosition analogStickPosition) {
+  const Result result = hid::system::detail::ResetAnalogStickManualCalibration(
+    uniquePadId, analogStickPosition);
+  NN_ABORT_UNLESS(
+    result.IsSuccess() || (result.value & 0x3fffff) != 0x14cca);
+}
+
 void RetryCurrentAnalogStickManualCalibrationStage(
   UniquePadId uniquePadId, AnalogStickPosition analogStickPosition) {
   NN_ABORT_UNLESS_RESULT_SUCCESS(

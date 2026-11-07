@@ -243,6 +243,8 @@ Result BindUniquePadConnectionEventOnHandheldForNs(
 Result BindWirelessRegistrationStateChangedEvent(os::SystemEventType*,
   os::EventClearMode, const applet::AppletResourceUserId&);
 Result CancelAnalogStickManualCalibration(UniquePadId, AnalogStickPosition);
+Result StartAnalogStickManualCalibration(UniquePadId, AnalogStickPosition);
+Result ResetAnalogStickManualCalibration(UniquePadId, AnalogStickPosition);
 Result CancelConnectionTrigger(const bluetooth::Address&);
 Result CancelSixAxisSensorAccurateUserCalibration(
   const UniqueSixAxisSensorHandle&);
@@ -363,6 +365,14 @@ Result InitializeCButton();
 Result InitializeCaptureButton();
 Result InitializeFirmwareUpdate();
 Result InitializeGestureForSystemProcess(int, int);
+Result GetInteractiveArea(InteractiveArea*);
+Result GetTouchScreenDefaultConfiguration(TouchScreenConfigurationForNx*);
+Result GetUniquePadBluetoothAddress(bluetooth::Address*, UniquePadId);
+Result GetUniquePadButtonSet(
+  util::BitFlagSet<64, UniquePadButton>*, const UniquePadId&);
+Result IsEnabledShowingCursor(bool*);
+Result SendVibrationNotificationPattern(const VibrationDeviceHandle&, int);
+Result SetIsWiredPairingEnabled(bool, const applet::AppletResourceUserId&);
 Result InitializeHomeButton();
 Result InitializeMainUnitFunctionPolicy();
 Result InitializeOverlayNmouse(void*, unsigned long, int, int);
