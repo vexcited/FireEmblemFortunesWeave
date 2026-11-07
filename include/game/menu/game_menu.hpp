@@ -50,6 +50,18 @@ public:
 protected:
   void Unknown16e9cd0();
 
+  // The state check of `Unknown137`, the overrides inline it.
+  bool IsShown() {
+    const int state = Unknown21();
+    if (state == 9) {
+      return false;
+    }
+    if ((state & ~2) == 4) {
+      return true;
+    }
+    return GetRootMenu() == this;
+  }
+
   // The outermost menu of the process tree, following the 0x20 links.
   MenuProcInst* GetRootMenu() {
     MenuProcInst* root = this;

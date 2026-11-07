@@ -53,14 +53,7 @@ void GameMenu::Unknown96() {
 }
 
 bool GameMenu::Unknown137() {
-  int state = Unknown21();
-  if (state == 9) {
-    return false;
-  }
-  if ((state & ~2) == 4) {
-    return true;
-  }
-  return GetRootMenu() == this;
+  return IsShown();
 }
 
 }

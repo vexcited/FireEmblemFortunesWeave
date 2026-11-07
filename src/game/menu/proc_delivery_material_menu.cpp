@@ -1,4 +1,5 @@
 #pragma GCC visibility push(hidden)
+#include "game/gmap/gmap_talk_menu.hpp"
 #include "game/menu/game_menu.hpp"
 #pragma GCC visibility pop
 
@@ -42,6 +43,11 @@ private:
 };
 
 [[gnu::used]] ProcDeliveryMaterialMenu::ProcDeliveryMaterialMenu() = default;
+
+// Stays shown under the talk menu of the world map.
+bool ProcDeliveryMaterialMenu::Unknown137() {
+  return gmap::IsUnderTalkMenu(this) || IsShown();
+}
 
 int ProcDeliveryMaterialMenu::InputUnknown12(int direction, bool loop) {
   if (tab_.GetCount() < 1) {
