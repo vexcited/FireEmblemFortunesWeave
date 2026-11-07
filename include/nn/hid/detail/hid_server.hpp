@@ -577,7 +577,8 @@ class IHidSystemServer : public sf::IServiceObject {
     applet::AppletResourceUserId) = 0;
   virtual Result GetNpadFullKeyGripColor(
     util::Unorm8x4*, util::Unorm8x4*, unsigned int) = 0;
-  virtual void Reserved56() = 0;
+  virtual Result GetSupportedNpadStyleSetOfCallerApplet(
+    util::BitFlagSet<32, NpadStyleTag>*, applet::AppletResourceUserId) = 0;
   virtual Result SetNpadPlayerLedBlinkingDevice(applet::AppletResourceUserId,
     unsigned int, util::BitFlagSet<32, system::DeviceType>) = 0;
   virtual Result SetSupportedNpadStyleSetAll(applet::AppletResourceUserId) = 0;
@@ -693,7 +694,7 @@ class IHidSystemServer : public sf::IServiceObject {
   virtual void Reserved136() = 0;
   virtual void Reserved137() = 0;
   virtual void Reserved138() = 0;
-  virtual void Reserved139() = 0;
+  virtual Result IsAnyWirelessControllerStreaming(bool*) = 0;
   virtual void Reserved140() = 0;
   virtual void Reserved141() = 0;
   virtual void Reserved142() = 0;
@@ -750,7 +751,8 @@ class IHidSystemServer : public sf::IServiceObject {
     const system::NotificationLedPattern&, system::UniquePadId) = 0;
   virtual Result SetNotificationLedPatternWithTimeout(
     const system::NotificationLedPattern&, system::UniquePadId, TimeSpan) = 0;
-  virtual void Reserved170() = 0;
+  virtual Result PrepareHidsForNotificationWake(
+    const sf::InArray<system::UniquePadId>&) = 0;
   virtual Result IsUsbFullKeyControllerEnabled(bool*) = 0;
   virtual Result EnableUsbFullKeyController(bool) = 0;
   virtual Result IsUsbConnected(bool*, system::UniquePadId) = 0;
