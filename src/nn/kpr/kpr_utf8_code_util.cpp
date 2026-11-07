@@ -229,6 +229,72 @@ void ProcessAltCode(Utf8CodeComposerStorage* storage) {
   storage->altCode = 0;
 }
 
+namespace {
+
+[[gnu::always_inline]] bool IsSameKey(const char* code, int length,
+  const char* key) {
+  return GetUtf8CodeLength(key[0]) == length &&
+    IsSameCode(code, key, length);
+}
+
+}
+
+// A lone dead key waits for the next character. A dead key and a base
+// character found in the table compose, otherwise both are output, a dead
+// key as if pressed twice.
+void ProcessDeadKey(Utf8CodeComposerStorage* storage) {
+  const char* first = storage->buffer + storage->outputCount;
+  const int firstLength = GetUtf8CodeLength(first[0]);
+  if (storage->compositionCount < firstLength) {
+    return;
+  }
+  if (storage->compositionCount == firstLength) {
+    for (int i = 0; i < DeadKeyEntryCount; i++) {
+      if (IsSameKey(first, firstLength, DeadKeyTable[i].deadKey)) {
+        return;
+      }
+    }
+    storage->outputCount += firstLength;
+    storage->compositionCount = 0;
+    return;
+  }
+
+  const char* second = first + firstLength;
+  const int secondLength = GetUtf8CodeLength(second[0]);
+  if (storage->compositionCount != firstLength + secondLength) {
+    return;
+  }
+  const char* firstSpacing = nullptr;
+  const char* secondSpacing = nullptr;
+  for (int i = 0; i < DeadKeyEntryCount; i++) {
+    const DeadKeyEntry& entry = DeadKeyTable[i];
+    if (IsSameKey(first, firstLength, entry.deadKey) &&
+        IsSameKey(second, secondLength, entry.base)) {
+      storage->compositionCount = 0;
+      AddQueueNativeTail(storage, entry.composed,
+        GetUtf8CodeLength(entry.composed[0]));
+      storage->outputCount += storage->compositionCount;
+      storage->compositionCount = 0;
+      return;
+    }
+    if (IsSameKey(first, firstLength, entry.deadKey) &&
+        IsSameKey(first, firstLength, entry.base)) {
+      firstSpacing = entry.composed;
+    }
+    if (IsSameKey(second, secondLength, entry.deadKey) &&
+        IsSameKey(second, secondLength, entry.base)) {
+      secondSpacing = entry.composed;
+    }
+  }
+  storage->compositionCount = 0;
+  AddQueueNativeTail(storage, firstSpacing,
+    GetUtf8CodeLength(firstSpacing[0]));
+  const char* tail = secondSpacing != nullptr ? secondSpacing : second;
+  AddQueueNativeTail(storage, tail, GetUtf8CodeLength(tail[0]));
+  storage->outputCount += storage->compositionCount;
+  storage->compositionCount = 0;
+}
+
 // A lone dead key is looked up as pressed twice, the rest is kept as is.
 void ProcessDeadKeyForcibly(Utf8CodeComposerStorage* storage) {
   char output[20] = {};
