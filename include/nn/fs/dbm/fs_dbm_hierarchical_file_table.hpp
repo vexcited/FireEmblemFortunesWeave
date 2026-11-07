@@ -462,7 +462,7 @@ public:
     BufferedAllocationTableStorage* fileStorage) {
     m_pAllocationTable = allocationTable;
     m_BlockSize = blockSize;
-    m_BlockSizeShift = __builtin_ctzll(blockSize);
+    m_BlockSizeShift = __builtin_ctz(static_cast<uint32_t>(blockSize));
     const Result result = m_FileTable.Initialize(directoryStorage,
       fileStorage);
     if (IsFailure(result)) {

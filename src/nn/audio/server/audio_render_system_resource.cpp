@@ -56,7 +56,7 @@ size_t GetEffectResultStateBufferSize(
     static_cast<uint32_t>(std::max(parameter.effectCount, 0));
 }
 
-size_t GetSplitterDestinationStateBufferSize(
+[[gnu::always_inline]] size_t GetSplitterDestinationStateBufferSize(
   const renderer::server::RendererParameter& parameter) {
   if (!parameter.behavior->IsSplitterSupported() ||
     !parameter.behavior->IsBiquadFilterParameterForSplitterEnabled() ||
