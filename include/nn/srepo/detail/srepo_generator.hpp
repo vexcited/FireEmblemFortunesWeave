@@ -4,6 +4,7 @@
 #include <stdint.h>
 
 #include "nn/result.hpp"
+#include "nn/util/message_pack.hpp"
 
 namespace nn::srepo {
 
@@ -17,6 +18,11 @@ class Struct;
 namespace detail {
 
 bool VerifyEventId(size_t* pOutLength, const char* eventId);
+
+// The extension types the reports store, after the msgpack extension tag.
+enum MsgpackExtensionType : uint8_t {
+  MsgpackExtensionType_Any64BitId,
+};
 
 struct ReportGenerator {
   static void Initialize(size_t* pOutPosition, uint8_t* buffer, size_t size);
@@ -52,6 +58,10 @@ struct ReportGenerator {
 };
 
 struct ArrayGenerator {
+  static bool IsSameValueType(util::MessagePackReader::AnyDataType type,
+    uint8_t* buffer, size_t size);
+  static bool IsSameExtensionType(MsgpackExtensionType type, uint8_t* buffer,
+    size_t size);
   static Result AddValue(size_t* pOutPosition, long value, uint8_t* buffer,
     size_t size, size_t position);
   static Result AddValue(size_t* pOutPosition, const Any64BitId& value,
