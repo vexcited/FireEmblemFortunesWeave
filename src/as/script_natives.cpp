@@ -129,19 +129,19 @@ float get_base_msec_count() {
 // The counter is read once the context of the caller was looked up again.
 float get_frame_count() {
   SetBlockState(1);
-  GetRunningContext();
+  GetCurrentContext();
   return g_frame_counter->GetFrameCount();
 }
 
 float get_msec_count() {
   SetBlockState(1);
-  GetRunningContext();
+  GetCurrentContext();
   return g_frame_counter->GetMsecCount();
 }
 
 // Waits for the next frame while the counter runs.
 void next_frame() {
-  GetRunningContext();
+  GetCurrentContext();
   float frame = g_frame_counter->GetFrameCount();
   ScriptContext* context = GetCurrentContext();
   if (frame > 0.0f) {

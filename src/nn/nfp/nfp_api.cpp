@@ -448,12 +448,16 @@ Result GetExtendedApplicationArea(void* pBuffer, size_t* pOutSize,
 Result SetExtendedApplicationArea(const DeviceHandle& handle,
   const void* pData, size_t size) {
   const sf::InBuffer data(pData, size);
+  Result result;
   if (client::IsCreatedDebugInterface()) {
-    return detail::CheckError(
-      client::GetDebugInterface()->SetExtendedApplicationArea(handle, data));
+    result = client::GetDebugInterface()->SetExtendedApplicationArea(handle,
+      data);
   }
-  return detail::CheckError(
-    client::GetUserInterface()->SetExtendedApplicationArea(handle, data));
+  else {
+    result = client::GetUserInterface()->SetExtendedApplicationArea(handle,
+      data);
+  }
+  return detail::CheckError(result);
 }
 
 }
