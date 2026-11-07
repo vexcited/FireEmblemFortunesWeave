@@ -36,6 +36,13 @@ enum HdrToneMapping : uint8_t {};
 
 struct FrameInfo;
 struct AvailableRefreshRate;
+struct BufferMaxResolution;
+
+struct RefreshRate {
+  int32_t value;
+};
+
+enum HdrOutputFormat : int32_t {};
 
 struct DisplayInfo {
   char name[64];
@@ -143,6 +150,12 @@ class DefaultDisplay : public Display {
   Result DuplicateVsyncEvent(os::SystemEventType* pOutEvent);
   Result QueryAvailableRefreshRates(Span<AvailableRefreshRate> outRates,
     int* pOutCount);
+  Result QueryRefreshRate(RefreshRate* pOutRate, bool* pOutIsVariable) const;
+  Result QueryHdrStatus(bool* pOutIsEnabled, HdrOutputFormat* pOutFormat,
+    uint16_t* pOutLuminance) const;
+  Result QueryHdrPaperWhite(uint16_t* pOutLuminance) const;
+  Result QueryBufferMaxResolution(BufferMaxResolution* pOutResolution) const;
+  Result QueryVrrSupported(bool* pOutIsSupported) const;
 
  protected:
   Result OnOpen(const char* pName) override;

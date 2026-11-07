@@ -2,6 +2,7 @@
 #include <strings.h>
 
 #include "nn/diag/diag_abort.hpp"
+#include "nn/diag/unexpected_default.hpp"
 #include "nn/vi/vi_layer.hpp"
 
 namespace nn::gs::sdk {
@@ -11,9 +12,41 @@ void CheckGraphicsSystemInitialized(const char* pFunctionName,
 
 }
 
+namespace nn::am {
+
+Result SetCopyrightLayerEnabled(bool isEnabled);
+
+}
+
 namespace nn::vi2 {
 
+enum RefreshRate : int32_t {};
+enum RefreshRateCapability : int32_t {};
+enum HdrOutputFormat : int32_t {};
+enum HdrOutputFormatCapability : int32_t {};
+
 void Initialize();
+void SetDisplayRefreshRateCapability(DisplayType* pDisplay, RefreshRate rate,
+  RefreshRateCapability capability);
+void SetDisplayHdrOutputFormatCapability(DisplayType* pDisplay,
+  HdrOutputFormat format, HdrOutputFormatCapability capability);
+
+}
+
+namespace nn::vi {
+
+enum OriginMode : int32_t {
+  OriginMode_TopLeft,
+  OriginMode_BottomLeft,
+};
+
+class CopyrightFramebuffer {
+ public:
+  Result Initialize(void* pMemory, size_t size, int width, int height);
+  Result WriteImage(const void* pImage, size_t size, int x, int y, int width,
+    int height, gs::sdk::OriginMode mode);
+  void Finalize();
+};
 
 }
 
@@ -25,6 +58,28 @@ extern os::MutexType g_InitializeMutex;
 extern uint64_t g_InitializeCount;
 extern DefaultDisplay g_DefaultDisplay;
 extern LayerWithHistory g_Layer;
+extern Layer g_RecordingLayer;
+extern Layer g_MovieMakerLayer;
+extern Layer g_SharingLayer;
+extern CopyrightFramebuffer g_CopyrightFramebuffer;
+
+bool IsInitialized() {
+  return g_InitializeCount != 0;
+}
+
+bool IsDefaultDisplay(const Display* pDisplay) {
+  return pDisplay == &g_DefaultDisplay;
+}
+
+DefaultDisplay* ToDefaultDisplay(Display* pDisplay) {
+  NN_ABORT_UNLESS(pDisplay == &g_DefaultDisplay);
+  return &g_DefaultDisplay;
+}
+
+const DefaultDisplay* ToDefaultDisplay(const Display* pDisplay) {
+  NN_ABORT_UNLESS(pDisplay == &g_DefaultDisplay);
+  return &g_DefaultDisplay;
+}
 
 }
 
@@ -35,6 +90,28 @@ constexpr Result ResultInvalidDisplay = {0xc72};
 constexpr Result ResultDisplayNotFound = {0xe72};
 constexpr int LayerWidthMax = 3840;
 constexpr int LayerHeightMax = 2160;
+constexpr int CopyrightFramebufferWidth = 1920;
+constexpr int CopyrightFramebufferHeight = 1080;
+constexpr vi2::RefreshRate VariableRefreshRate = vi2::RefreshRate(-1);
+constexpr vi2::RefreshRate RefreshRate120Hz = vi2::RefreshRate(120);
+constexpr vi2::HdrOutputFormat HdrOutputFormatPrivate =
+  vi2::HdrOutputFormat(1);
+
+// The extra layers only differ by their object and their name.
+inline Result CreateNamedLayerImpl(Layer** pOutLayer, Layer* pLayer,
+  Display* pDisplay, const LayerCreationSettings* pSettings,
+  const char* pName) {
+  *pOutLayer = nullptr;
+  if (pLayer->IsOpen()) {
+    return ResultAlreadyOpened;
+  }
+  if (pDisplay != &detail::g_DefaultDisplay) {
+    return ResultInvalidDisplay;
+  }
+  NN_RESULT_DO(pLayer->Open(pSettings, &detail::g_DefaultDisplay, pName));
+  *pOutLayer = pLayer;
+  return Result();
+}
 
 inline Result OpenDisplayImpl(Display** pOutDisplay, const char* pName) {
   *pOutDisplay = nullptr;
@@ -181,6 +258,125 @@ Result GetLatestFrameNumber(uint64_t* pOutNumber, const Layer*) {
 
 int ListFrameHistory(FrameInfo* pOutInfos, int count, const Layer*) {
   return detail::g_Layer.ListFrameHistory(pOutInfos, count);
+}
+
+Result CreateRecordingLayer(Layer** pOutLayer, Display* pDisplay,
+  const LayerCreationSettings* pSettings) {
+  return CreateNamedLayerImpl(pOutLayer, &detail::g_RecordingLayer, pDisplay,
+    pSettings, "capture");
+}
+
+Result CreateSharingLayer(Layer** pOutLayer, Display* pDisplay,
+  const LayerCreationSettings* pSettings) {
+  return CreateNamedLayerImpl(pOutLayer, &detail::g_SharingLayer, pDisplay,
+    pSettings, "share");
+}
+
+void SetCopyrightCompositionEnabled(bool isEnabled) {
+  NN_ABORT_UNLESS_RESULT_SUCCESS(am::SetCopyrightLayerEnabled(isEnabled));
+}
+
+Result InitializeCopyrightFramebuffer(void* pMemory, size_t size) {
+  return detail::g_CopyrightFramebuffer.Initialize(pMemory, size,
+    CopyrightFramebufferWidth, CopyrightFramebufferHeight);
+}
+
+// The framebuffer counts rows the other way around.
+Result WriteToCopyrightFramebuffer(const void* pImage, size_t size, int x,
+  int y, int width, int height, OriginMode mode) {
+  switch (mode) {
+    case OriginMode_TopLeft:
+      return detail::g_CopyrightFramebuffer.WriteImage(pImage, size, x, y,
+        width, height, gs::sdk::OriginMode(1));
+    case OriginMode_BottomLeft:
+      return detail::g_CopyrightFramebuffer.WriteImage(pImage, size, x, y,
+        width, height, gs::sdk::OriginMode(0));
+    default:
+      nn::detail::UnexpectedDefaultImpl();
+  }
+}
+
+Result CreateMovieMakerLayer(Layer** pOutLayer, Display* pDisplay,
+  const LayerCreationSettings* pSettings) {
+  return CreateNamedLayerImpl(pOutLayer, &detail::g_MovieMakerLayer,
+    pDisplay, pSettings, "mvmaker");
+}
+
+// The variable rate is hidden from callers that do not ask for it.
+Result QueryDisplayCurrentRefreshRate(RefreshRate* pOutRate,
+  const Display* pDisplay) {
+  if (pDisplay != &detail::g_DefaultDisplay) {
+    return ResultAlreadyOpened;
+  }
+  bool isVariable = false;
+  const Result result = detail::g_DefaultDisplay.QueryRefreshRate(pOutRate,
+    &isVariable);
+  if (result.IsSuccess() && isVariable) {
+    *pOutRate = RefreshRate{};
+  }
+  return result;
+}
+
+Result QueryDisplayCurrentRefreshRate(RefreshRate* pOutRate,
+  bool* pOutIsVariable, const Display* pDisplay) {
+  if (pDisplay != &detail::g_DefaultDisplay) {
+    return ResultAlreadyOpened;
+  }
+  return detail::g_DefaultDisplay.QueryRefreshRate(pOutRate, pOutIsVariable);
+}
+
+void SetDisplayVrrCapability(Display* pDisplay, bool isEnabled) {
+  if (pDisplay == &detail::g_DefaultDisplay) {
+    vi2::SetDisplayRefreshRateCapability(detail::g_DefaultDisplay.Get(),
+      VariableRefreshRate, vi2::RefreshRateCapability(isEnabled));
+  }
+}
+
+void SetDisplay120HzRefreshRateCapability(Display* pDisplay, bool isEnabled) {
+  if (pDisplay == &detail::g_DefaultDisplay) {
+    vi2::SetDisplayRefreshRateCapability(detail::g_DefaultDisplay.Get(),
+      RefreshRate120Hz, vi2::RefreshRateCapability(isEnabled));
+  }
+}
+
+Result QueryDisplayHdrStatus(bool* pOutIsEnabled, HdrOutputFormat* pOutFormat,
+  uint16_t* pOutLuminance, const Display* pDisplay) {
+  if (pDisplay != &detail::g_DefaultDisplay) {
+    return ResultAlreadyOpened;
+  }
+  return detail::g_DefaultDisplay.QueryHdrStatus(pOutIsEnabled, pOutFormat,
+    pOutLuminance);
+}
+
+Result QueryDisplayHdrPaperWhite(uint16_t* pOutLuminance,
+  const Display* pDisplay) {
+  if (pDisplay != &detail::g_DefaultDisplay) {
+    return ResultAlreadyOpened;
+  }
+  return detail::g_DefaultDisplay.QueryHdrPaperWhite(pOutLuminance);
+}
+
+void SetDisplayHdrCapabilityPrivate(Display* pDisplay, bool isEnabled) {
+  if (pDisplay == &detail::g_DefaultDisplay) {
+    vi2::SetDisplayHdrOutputFormatCapability(detail::g_DefaultDisplay.Get(),
+      HdrOutputFormatPrivate, vi2::HdrOutputFormatCapability(isEnabled));
+  }
+}
+
+Result QueryDisplayBufferMaxResolution(BufferMaxResolution* pOutResolution,
+  const Display* pDisplay) {
+  if (pDisplay != &detail::g_DefaultDisplay) {
+    return ResultAlreadyOpened;
+  }
+  return detail::g_DefaultDisplay.QueryBufferMaxResolution(pOutResolution);
+}
+
+Result QueryDisplayVrrSupported(bool* pOutIsSupported,
+  const Display* pDisplay) {
+  if (pDisplay != &detail::g_DefaultDisplay) {
+    return ResultAlreadyOpened;
+  }
+  return detail::g_DefaultDisplay.QueryVrrSupported(pOutIsSupported);
 }
 
 }
