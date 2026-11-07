@@ -88,6 +88,11 @@ public:
     return unknown_14_;
   }
 
+  void SetTime(const GmapTime& time);
+
+  // Moves the clock on to the next time zone.
+  static void ProgressCycle();
+
   static GmapClock* instance_;
   [[gnu::visibility("default")]] static const GmapTime kDefaultTime;
 

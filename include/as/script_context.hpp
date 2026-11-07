@@ -13,6 +13,13 @@ namespace as {
 
 class Any;
 class ScriptContext;
+class Variable;
+
+namespace common {
+
+class Work;
+
+}
 
 struct ContextSlot;
 
@@ -44,6 +51,9 @@ public:
 
   // The context the slot holds, without checking the key.
   ScriptContext* GetSlotContext() const;
+
+  // The variable of the context the slot holds, without any check.
+  Variable& getLW(int no) const;
 
 private:
   const void* key_ = nullptr;
@@ -283,6 +293,11 @@ public:
     return variables_[index];
   }
 
+  // The work of the native waiting in the context.
+  common::Work*& GetWork() {
+    return work_;
+  }
+
 private:
   static constexpr uint16_t kFlagExit = 0x100;
 
@@ -310,6 +325,7 @@ private:
   ContextHandle parent_;
   uint8_t unknown_898_[0x8];
   std::function<void()> callback_;
+  common::Work* work_;
 };
 
 class ScriptThread {
@@ -421,6 +437,17 @@ public:
   ContextHandle RunBrother(const ContextHandle& owner,
     const ContextHandle& parent, const char* declaration,
     asIScriptFunction* function, int priority, int runCtrl, int kind);
+
+  // The method of the declaration in the class of the namespace and name,
+  // null when the context or the class lacks it.
+  asIScriptFunction* FindMethod(ScriptContext* context, const char* ns,
+    const char* name, const char* declaration);
+
+  // Starts the method of the declaration on the object, as Run does.
+  ContextHandle RunMethod(const ContextHandle& owner,
+    const ContextHandle& parent, void* object, const char* ns,
+    const char* name, const char* declaration, int priority, int runCtrl,
+    int kind);
 
   // Building threads stays off while it is locked.
   bool EnableThreadBuild() {

@@ -120,6 +120,17 @@ public:
     flags_ |= kFlagEquipped;
   }
 
+  // Looks the item up by its name, the item stays empty when it is unknown.
+  void Assign(const HashedString& name);
+
+  void SetDiscarded(bool discarded) {
+    flags_ = (flags_ & ~kFlagDiscarded) | (discarded ? kFlagDiscarded : 0);
+  }
+
+  void SetLocked(bool locked) {
+    flags_ = (flags_ & ~kFlagLocked) | (locked ? kFlagLocked : 0);
+  }
+
   void Unequip() {
     if (flags_ & kFlagEquipped) {
       flags_ &= ~kFlagEquipped;

@@ -142,6 +142,14 @@ public:
   const char* GetName() const { return name_; }
   const ProcCmd* GetCommands() const { return commands_; }
 
+  bool IsUnknownFlag01Set() const { return flags_ & 1; }
+
+  // Wakes the process, at least at the normal speed.
+  void Wake() {
+    flags_ = (flags_ & ~0x68) | 0x20;
+    speed_ = speed_ < 1.0f ? 1.0f : speed_;
+  }
+
 private:
   static constexpr uint32_t kWaitCommands = 0x1ce00;
   static constexpr uint16_t kFlagFinished = 0x8;
@@ -162,7 +170,7 @@ private:
   uint16_t flags_;
   uint8_t unknown_8a[2];
   uint32_t name_hash_;
-  uint32_t unknown_90;
+  float speed_;
   // Key of the global registry Unregister removes this process from.
   uint32_t id_;
 };

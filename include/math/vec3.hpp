@@ -22,6 +22,14 @@ public:
   float y() const { return v_[1]; }
   float z() const { return v_[2]; }
 
+  void SetX(float x) { v_[0] = x; }
+
+  // The fourth lane is cleared with the third.
+  void SetZ(float z) {
+    v_[2] = z;
+    v_[3] = 0.0f;
+  }
+
   Vec3& operator=(const Vec3& other) {
     v_[0] = other.v_[0];
     v_[1] = other.v_[1];

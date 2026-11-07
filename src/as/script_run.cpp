@@ -23,7 +23,13 @@ namespace as {
 class Any {
 public:
   int Release() const;
+  int GetTypeId() const;
+
+  // The object held, for the class types.
+  void* GetObject() const;
 };
+
+[[gnu::visibility("default")]] extern asIScriptEngine* g_engine;
 
 namespace {
 
@@ -41,6 +47,13 @@ namespace {
   return function;
 }
 
+// The context running the module of the calling function.
+[[gnu::always_inline]] inline ContextHandle FindModuleContext() {
+  const char* module =
+    GetRunningContext()->GetRunner()->GetFunction()->GetModuleName();
+  return g_script_manager->FindContext(module);
+}
+
 // The owner of the calling context when it has the function, else the
 // context running the module of the calling function. Gives the function
 // found in the owner.
@@ -54,10 +67,25 @@ namespace {
       return function;
     }
   }
-  const char* module =
-    GetRunningContext()->GetRunner()->GetFunction()->GetModuleName();
-  target.Assign(g_script_manager->FindContext(module));
+  target.Assign(FindModuleContext());
   return nullptr;
+}
+
+[[gnu::always_inline]] inline void EndBlock() {
+  ScriptContext* context = GetCurrentContext();
+  context->GetRunner()->SetBlockState(1);
+  context->ClearCallback();
+}
+
+// The new context takes the variables of the calling one.
+[[gnu::always_inline]] inline ScriptContext* Inherit(
+  const ContextHandle& result) {
+  GetCurrentContext();
+  for (int i = 0; i < ScriptContext::kVariableCount; i++) {
+    result.GetSlotContext()->GetVariable(i).setVariable(
+      GetRunningContext()->GetVariable(i));
+  }
+  return result.GetSlotContext();
 }
 
 enum class RunKind {
@@ -90,12 +118,7 @@ template<RunKind kind, bool hasArgument>
         declaration, priority, GetRunningContext()->GetRunCtrl(),
         kind == RunKind::kRun ? 2 : 3));
     }
-    GetCurrentContext();
-    for (int i = 0; i < ScriptContext::kVariableCount; i++) {
-      result.GetSlotContext()->GetVariable(i).setVariable(
-        GetRunningContext()->GetVariable(i));
-    }
-    ScriptContext* context = result.GetSlotContext();
+    ScriptContext* context = Inherit(result);
     if (hasArgument && kind != RunKind::kRunBrother) {
       context->GetRunner()->SetArgObject(0, arg);
     }
@@ -110,12 +133,71 @@ template<RunKind kind, bool hasArgument>
   if (hasArgument) {
     arg->Release();
   }
-  ScriptContext* context = GetCurrentContext();
-  context->GetRunner()->SetBlockState(1);
-  context->ClearCallback();
+  EndBlock();
   return result;
 }
 
+// Runs the method of the class object when the target has it, else the
+// function as the runs without one. The brother runs start as plain runs.
+template<RunKind kind>
+[[gnu::always_inline]] inline ContextHandle StartMethod(const Any* classObj,
+  const string& func) {
+  ContextHandle target(GetRunningContext()->GetOwner().Get());
+  ContextHandle result;
+  char declaration[0x100];
+  sprintf(declaration, "void %s(void)", func.c_str());
+  const int runKind = kind == RunKind::kPost ? 3 : 2;
+  ScriptContext* owner;
+  if (classObj != nullptr) {
+    asITypeInfo* type = g_engine->GetTypeInfoById(classObj->GetTypeId());
+    const char* ns = type->GetNamespace();
+    const char* name = type->GetName();
+    if (g_script_manager->FindMethod(target.Get(), ns, name,
+      declaration) == nullptr) {
+      target.Assign(FindModuleContext());
+    }
+    owner = target.Get();
+    if (owner == nullptr) {
+      EndBlock();
+      return result;
+    }
+    result.Assign(g_script_manager->RunMethod(owner->GetOwner(), target,
+      classObj->GetObject(), type->GetNamespace(), type->GetName(),
+      declaration, GetRunningContext()->GetPriority(),
+      GetRunningContext()->GetRunCtrl(), runKind));
+  }
+  else {
+    FindTarget(target, declaration);
+    owner = target.Get();
+    if (owner == nullptr) {
+      EndBlock();
+      return result;
+    }
+    const int priority = GetRunningContext()->GetPriority();
+    result.Assign(g_script_manager->Run(owner->GetOwner(), target,
+      declaration, priority, GetRunningContext()->GetRunCtrl(), runKind));
+  }
+  ScriptContext* context = Inherit(result);
+  context->GetParent().Assign(ContextHandle(GetCurrentContext()));
+  if (kind == RunKind::kRunBrother) {
+    context->GetBrother().Assign(ContextHandle(GetCurrentContext()));
+  }
+  EndBlock();
+  return result;
+}
+
+}
+
+ContextHandle run(const Any* classObj, const string& func) {
+  return StartMethod<RunKind::kRun>(classObj, func);
+}
+
+ContextHandle post_run(const Any* classObj, const string& func) {
+  return StartMethod<RunKind::kPost>(classObj, func);
+}
+
+ContextHandle run_brother(const Any* classObj, const string& func) {
+  return StartMethod<RunKind::kRunBrother>(classObj, func);
 }
 
 ContextHandle run(const string& func, Any* arg) {

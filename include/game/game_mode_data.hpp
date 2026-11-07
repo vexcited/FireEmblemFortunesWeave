@@ -111,6 +111,13 @@ struct ChapterData {
   uint8_t flags;
 };
 
+// The scenario row of the current progress, as the hub schedule reads it.
+struct ScenarioData {
+  uint8_t unknown_00_[0x58];
+  int8_t part;
+  int8_t chapter;
+};
+
 struct MiracleState {
   uint8_t unknown_00_[0x68];
   uint16_t count;
@@ -224,8 +231,19 @@ public:
     return chapter_;
   }
 
+  const ScenarioData* GetScenario() const {
+    return scenario_;
+  }
+
   int GetUserData() const {
     return user_data_;
+  }
+
+  // The scripts keep their gold in the user data, between 0 and 9999999.
+  void AddGold(int gold) {
+    int total = user_data_ + gold;
+    total = total < 0 ? 0 : total;
+    user_data_ = total < kMaxGold ? total : kMaxGold;
   }
 
   UnitRestriction& GetUnitRestriction() {
@@ -249,6 +267,8 @@ public:
 private:
   static GameModeData* instance_;
 
+  static constexpr int kMaxGold = 9999999;
+
   uint8_t unknown_00_[0xc];
   uint8_t game_mode_;
   uint8_t difficulty_;
@@ -256,7 +276,8 @@ private:
   // The scripts read it as the route.
   uint8_t chapter_kind_;
   const ChapterData* chapter_;
-  uint8_t unknown_18_[0x10];
+  const ScenarioData* scenario_;
+  uint8_t unknown_20_[0x8];
   VariableRegistry registry_;
   uint8_t map_kind_;
   uint8_t unknown_39_[0x3];

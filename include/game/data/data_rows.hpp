@@ -1542,6 +1542,8 @@ struct FacilitySceneMobData : DataState<FacilitySceneMobDataState> {
 static_assert(sizeof(FacilitySceneMobData) == 0xa8);
 
 struct VariationDataState {
+  [[gnu::always_inline]] ~VariationDataState() = default;
+
   unsigned char unknown_00[0x8];
   std::vector<const void*> unknown_08;
   std::vector<const void*> unknown_20;
