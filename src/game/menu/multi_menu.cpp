@@ -1,65 +1,10 @@
 #pragma GCC visibility push(hidden)
-#include "game/menu/basic_menu.hpp"
-#include "game/menu/multi_menu_sequence.hpp"
+#include "game/menu/multi_menu.hpp"
+#include "game/menu/unit_troop_sequence.hpp"
 #include "game/sound/se.hpp"
 #pragma GCC visibility pop
 
 namespace game::menu {
-
-class MultiMenu : public BasicMenu {
-public:
-  ~MultiMenu() override;
-
-  int Unknown24() override;
-  int Unknown68() override;
-  int Unknown101() override;
-  int Unknown107() override;
-  int Unknown114() override;
-  virtual void Unknown135() {}
-  virtual void Unknown136() {}
-  virtual void Unknown137() {}
-  virtual void Unknown138() {}
-  virtual void Unknown139() {}
-  virtual int Unknown140() = 0;
-  virtual int Unknown141() { return 3; }
-  virtual bool Unknown142();
-  virtual int Unknown143();
-  int InputUnknown07(bool loop) override;
-  int InputUnknown08(bool loop) override;
-  virtual void Unknown146();
-  virtual bool Unknown147(bool enable);
-  virtual bool Unknown148(bool enable);
-  virtual void Unknown149() {}
-  virtual void Unknown150() {}
-  int InputUnknown06(int count, bool loop) override;
-  int InputUnknown05(int count, bool loop) override;
-  int InputUnknown09(int count) override;
-  int InputUnknown10(int count) override;
-  virtual void Unknown155();
-  virtual void Unknown156();
-  virtual void Unknown157() {}
-  virtual void Unknown158() {}
-  virtual void Unknown159() {}
-  virtual void Unknown160() {}
-
-protected:
-  // The sequence running this menu.
-  MultiMenuSequence* sub_menu_;
-};
-
-class UnitTroopMenu : public MultiMenu {
-public:
-  ~UnitTroopMenu() override;
-
-  std::weak_ptr<ui::LayoutAccessor> Unknown50() override;
-  std::weak_ptr<ui::LayoutAccessor> Unknown51() override;
-  void Unknown76(int result) override;
-  void Unknown77(int result) override;
-  void Unknown78(int result) override;
-  void Unknown88() override;
-  void Unknown99() override {}
-  int Unknown140() override { return 0; }
-};
 
 void UnitTroopMenu::Unknown78(int /* result */) {
   sound::PlaySe("SE_SYS_List_Change_H");
@@ -79,6 +24,10 @@ void UnitTroopMenu::Unknown76(int /* result */) {
 
 void UnitTroopMenu::Unknown77(int /* result */) {
   sound::PlayCursorHorizontalRightSe();
+}
+
+void UnitTroopMenu::Unknown88() {
+  dynamic_cast<UnitTroopSequence*>(sub_menu_)->Unknown48();
 }
 
 namespace {
@@ -106,6 +55,25 @@ public:
   virtual void Unknown162();
 
 private:
+  UnitTroopListMenu* GetList() {
+    return dynamic_cast<UnitTroopListMenu*>(GetSiblingMenu(1));
+  }
+
+  UnitTroopItemMenu* GetItemMenu() {
+    return dynamic_cast<UnitTroopItemMenu*>(GetSiblingMenu(0));
+  }
+
+  [[gnu::always_inline]] int MovePage(int direction, bool loop) {
+    auto* sequence = dynamic_cast<UnitTroopSequence*>(sub_menu_);
+    if (sequence->Unknown178bdb0(direction, loop) != 13) {
+      return 0;
+    }
+    GetItemMenu()->Unknown16de600();
+    GetItemMenu()->Unknown137();
+    GetItemMenu()->Unknown16dea40(true, true, false);
+    return 13;
+  }
+
   int unknown_428_;
   int page_;
   std::weak_ptr<ui::LayoutAccessor> page_layout_;
@@ -117,6 +85,34 @@ private:
 
 void UnitTroopItemMenu::Unknown75() {
   sound::PlaySe("SE_SYS_NG");
+}
+
+int UnitTroopItemMenu::Unknown101() {
+  return GetList()->Unknown101();
+}
+
+int UnitTroopItemMenu::Unknown104(bool loop) {
+  return MovePage(-1, loop);
+}
+
+int UnitTroopItemMenu::Unknown106(bool loop) {
+  return MovePage(1, loop);
+}
+
+int UnitTroopItemMenu::Unknown107() {
+  return GetList()->Unknown107();
+}
+
+int UnitTroopItemMenu::Unknown109() {
+  return GetList()->Unknown109();
+}
+
+int UnitTroopItemMenu::Unknown112() {
+  return GetList()->Unknown112();
+}
+
+int UnitTroopItemMenu::Unknown114() {
+  return GetList()->Unknown114();
 }
 
 }

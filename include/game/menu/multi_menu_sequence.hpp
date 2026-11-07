@@ -55,6 +55,7 @@ public:
   virtual void Unknown45(bool enable) {}
 
   uint32_t GetFlags() const { return flags_; }
+  GameMenu* GetMenu(int index) const { return menus_[index]; }
 
   // Called by the menus once their input moved the cursor.
   void Unknown1787b80();

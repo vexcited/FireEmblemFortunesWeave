@@ -30,7 +30,7 @@ public:
   // Whether the facility counts one more participant than the units.
   virtual bool Unknown149();
   virtual bool Unknown150();
-  virtual int Unknown151();
+  virtual bool Unknown151();
   virtual int Unknown152();
   virtual int Unknown153();
   uint8_t ImplUnknown08() override;

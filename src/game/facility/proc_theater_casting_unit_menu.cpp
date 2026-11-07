@@ -14,7 +14,7 @@ public:
   int Unknown112() override;
   int ImplUnknown10() override;
   bool Unknown145() override { return true; }
-  int Unknown151() override { return 1; }
+  bool Unknown151() override { return true; }
   void Unknown156() override;
   void Unknown157() override;
   int Unknown158() override;

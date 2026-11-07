@@ -56,7 +56,7 @@ public:
   int BCall() override;
   int ZRCall() override;
   void PlayCancelSe() override;
-  void Unknown70() override;
+  void Unknown70(menu::InfoDetailArgs* args) override;
   virtual int Unknown71() = 0;
   virtual bool Unknown72() { return false; }
   virtual bool Unknown73() { return true; }
@@ -109,7 +109,7 @@ public:
   bool IsDecidable() override { return (unknown_54_ & 0x4000) == 0; }
   int ACall() override;
   bool IsActive() override { return unknown_54_ == 0; }
-  void Unknown70() override;
+  void Unknown70(menu::InfoDetailArgs* args) override;
   int Unknown71() override { return 24; }
   bool Unknown72() override { return true; }
   const char* Unknown74() override { return "MID_GmapMenu_CorpsCreate_Help"; }
@@ -155,7 +155,7 @@ public:
   bool IsDecidable() override { return (unknown_54_ & 0x4000) == 0; }
   int ACall() override;
   bool IsActive() override { return unknown_54_ == 0; }
-  void Unknown70() override;
+  void Unknown70(menu::InfoDetailArgs* args) override;
   int Unknown71() override { return 27; }
   bool Unknown72() override { return true; }
   const char* Unknown74() override { return "MID_GmapMenu_CorpsDivide_Help"; }
@@ -330,7 +330,7 @@ public:
   bool IsDecidable() override { return (unknown_54_ & 0x4000) == 0; }
   int ACall() override;
   bool IsActive() override { return unknown_54_ == 0; }
-  void Unknown70() override;
+  void Unknown70(menu::InfoDetailArgs* args) override;
   int Unknown71() override { return 11; }
   const char* Unknown74() override;
 };
@@ -379,7 +379,7 @@ public:
   bool IsDecidable() override { return (unknown_54_ & 0x4000) == 0; }
   int ACall() override;
   bool IsActive() override { return unknown_54_ == 0; }
-  void Unknown70() override;
+  void Unknown70(menu::InfoDetailArgs* args) override;
   int Unknown71() override { return 14; }
 };
 

@@ -13,9 +13,9 @@ public:
   void OnDeselect() override;
   bool IsActive() override;
   bool Unknown72() override;
-  void Unknown74() override;
+  bool Unknown74() override;
   bool Unknown77() override;
-  bool Unknown81() override;
+  int Unknown81() override;
   bool Unknown83() override;
   bool Unknown85() override;
   bool Unknown86() override;

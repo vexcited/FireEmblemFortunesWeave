@@ -113,7 +113,7 @@ public:
   const char* GetMid() override;
   int ACall() override;
   bool IsActive() override { return unknown_54_; }
-  void Unknown70() override;
+  void Unknown70(menu::InfoDetailArgs* args) override;
 
 private:
   uint8_t unknown_53_[0x1];
@@ -131,7 +131,7 @@ public:
   bool IsDecidable() override;
   int ACall() override;
   bool IsActive() override;
-  void Unknown70() override;
+  void Unknown70(menu::InfoDetailArgs* args) override;
 };
 
 [[gnu::used]] GiftUnitMenuItem::GiftUnitMenuItem() = default;
@@ -144,7 +144,7 @@ public:
   const char* GetHelpMid() override { return "スカウト"; }
   int ACall() override;
   bool IsActive() override;
-  void Unknown70() override;
+  void Unknown70(menu::InfoDetailArgs* args) override;
 };
 
 [[gnu::used]] ScoutUnitMenuItem::ScoutUnitMenuItem() = default;
@@ -156,7 +156,7 @@ public:
 
   const char* GetMid() override { return "MID_HubMenu_ScoutInfo"; }
   int ACall() override;
-  void Unknown70() override;
+  void Unknown70(menu::InfoDetailArgs* args) override;
 };
 
 [[gnu::used]] PersonInfoUnitMenuItem::PersonInfoUnitMenuItem() = default;
@@ -170,7 +170,7 @@ public:
   bool IsDecidable() override;
   int ACall() override;
   bool IsActive() override;
-  void Unknown70() override;
+  void Unknown70(menu::InfoDetailArgs* args) override;
 };
 
 [[gnu::used]] LessonUnitMenuItem::LessonUnitMenuItem() = default;
@@ -185,7 +185,7 @@ public:
   bool IsDecidable() override;
   int ACall() override;
   bool IsActive() override;
-  void Unknown70() override;
+  void Unknown70(menu::InfoDetailArgs* args) override;
 };
 
 [[gnu::used]] ProcurementUnitMenuItem::ProcurementUnitMenuItem() = default;

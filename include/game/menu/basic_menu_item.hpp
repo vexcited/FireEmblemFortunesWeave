@@ -41,13 +41,13 @@ public:
   virtual int BCall() { return 3; }
   virtual int XCall() { return 0; }
   virtual int YCall() { return 0; }
-  virtual int LCall() { return 0; }
+  virtual int LCall(bool loop) { return 0; }
   virtual int RCall() { return 0; }
-  virtual int ZLCall() { return 0; }
+  virtual int ZLCall(bool loop) { return 0; }
   virtual int ZRCall() { return 0; }
-  virtual int PlusCall() { return 0; }
+  virtual int PlusCall(bool loop) { return 0; }
   virtual int MinusCall() { return 0; }
-  virtual int StickLCall() { return 0; }
+  virtual int StickLCall(bool loop) { return 0; }
   virtual int StickRCall() { return 0; }
   virtual int LeftCall() { return 0; }
   virtual int RightCall() { return 0; }

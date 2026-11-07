@@ -366,7 +366,7 @@ public:
 
   const char* GetMid() override { return "MID_BtlMenu_Special"; }
   int ACall() override;
-  void Unknown70() override;
+  void Unknown70(menu::InfoDetailArgs* args) override;
   uint8_t Unknown76() override { return 6; }
   int Unknown80() override { return 15; }
   bool GetCheckVisible() override;
@@ -407,7 +407,7 @@ public:
 
   const char* GetMid() override { return "MID_BtlMenu_SpecialGauge"; }
   void OnClose() override;
-  void Unknown70() override;
+  void Unknown70(menu::InfoDetailArgs* args) override;
   uint8_t Unknown76() override { return 6; }
   int Unknown80() override { return 24; }
   bool GetCheckVisible() override;
@@ -460,7 +460,7 @@ public:
 class UniqueSkillMenuItem : public UnitSkillMenuItem {
 public:
   int ACall() override;
-  void Unknown70() override;
+  void Unknown70(menu::InfoDetailArgs* args) override;
 
   bool GetCheckVisible() override {
     bool visible = false;
@@ -569,7 +569,7 @@ public:
   GimmickMenuItem();
 
   const char* GetMid() override;
-  void Unknown70() override;
+  void Unknown70(menu::InfoDetailArgs* args) override;
   uint8_t Unknown76() override { return 26; }
   void Unknown81() override;
   void Unknown82() override;
@@ -586,7 +586,7 @@ public:
   WarpMenuItem();
 
   const char* GetMid() override { return "MID_BtlMenu_Warp"; }
-  void Unknown70() override;
+  void Unknown70(menu::InfoDetailArgs* args) override;
   uint8_t Unknown76() override { return 28; }
   void Unknown81() override;
   bool GetCheckEnable() override { return unknown_60_; }
@@ -673,7 +673,7 @@ public:
 
   const char* GetMid() override;
   int ACall() override;
-  void Unknown70() override;
+  void Unknown70(menu::InfoDetailArgs* args) override;
   uint8_t Unknown76() override { return 18; }
   bool Unknown77(VTarget* target) override;
   int Unknown80() override { return 24; }
@@ -783,6 +783,34 @@ bool SpecialMenuItem::GetCheckVisible() {
     return false;
   }
   return !GameModeData::IsVariableSet(GetBanVariable(BanVariable::kPollution));
+}
+
+// Units that would end their turn get warned first.
+void SpecialMenuItem::Unknown70(menu::InfoDetailArgs* args) {
+  const SkillKey key = {g_shared_system_skills[143].index};
+  if (HasSkill(Unknown71()->GetSkillList(7), key)) {
+    args->warning.Assign("MID_BtlMenu_Warning_TurnEnd");
+  }
+}
+
+void PollutionMenuItem::Unknown70(menu::InfoDetailArgs* args) {
+  if (skill_.GetIndex() == 0) {
+    return;
+  }
+  args->unit = Unknown71();
+  args->skill = skill_;
+  args->kind = 3;
+}
+
+void UniqueSkillMenuItem::Unknown70(menu::InfoDetailArgs* args) {
+  if (skill_.GetIndex() == 0) {
+    return;
+  }
+  const Unit* unit = Unknown71();
+  const int kind = Unknown86();
+  args->unit = unit;
+  args->skill = skill_;
+  args->kind = kind;
 }
 
 void PollutionMenuItem::OnClose() {

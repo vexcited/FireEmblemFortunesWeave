@@ -233,25 +233,33 @@ public:
     return current_ != nullptr ? current_->YCall() : 0;
   }
 
-  virtual int Unknown104(bool loop);
+  virtual int Unknown104(bool loop) {
+    return current_ != nullptr ? current_->LCall(loop) : 0;
+  }
 
   virtual int Unknown105() {
     return current_ != nullptr ? current_->RCall() : 0;
   }
 
-  virtual int Unknown106(bool loop);
+  virtual int Unknown106(bool loop) {
+    return current_ != nullptr ? current_->ZLCall(loop) : 0;
+  }
 
   virtual int Unknown107() {
     return current_ != nullptr ? current_->ZRCall() : 0;
   }
 
-  virtual int Unknown108(bool loop);
+  virtual int Unknown108(bool loop) {
+    return current_ != nullptr ? current_->PlusCall(loop) : 0;
+  }
 
   virtual int Unknown109() {
     return current_ != nullptr ? current_->MinusCall() : 0;
   }
 
-  virtual int Unknown110(bool loop);
+  virtual int Unknown110(bool loop) {
+    return current_ != nullptr ? current_->StickLCall(loop) : 0;
+  }
 
   virtual int Unknown111() {
     return current_ != nullptr ? current_->StickRCall() : 0;
@@ -354,6 +362,7 @@ protected:
   void Unknown16dcb80();
   void Unknown16de2e0(bool enable);
   void Unknown16dd9a0();
+  void Unknown16de600();
   void ResetTabs(int count, int index);
   void Unknown16dea40(bool unknown0, bool unknown1, bool unknown2);
   void Unknown16de4d0();

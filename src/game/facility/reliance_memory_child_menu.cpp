@@ -44,9 +44,27 @@ public:
   uint8_t ImplUnknown07() override { return 1; }
   int InputUnknown07(bool loop) override;
   int InputUnknown08(bool loop) override;
+
+private:
+  uint8_t unknown_428_[0x28];
+  uint8_t unknown_450_;
+  uint8_t unknown_451_;
+  bool unknown_452_;
 };
 
 [[gnu::used]] RelianceMemoryChildMenu::RelianceMemoryChildMenu() = default;
+
+const char* RelianceMemoryChildMenu::Unknown43(uint8_t kind) {
+  return kind == 2 ? "MID_HotelMenu_Reliance"
+    : kind == 1 ? "MID_Sys_RelianceLv" : "MID_Menu_Default";
+}
+
+void RelianceMemoryChildMenu::Unknown85() {
+  if (!unknown_452_) {
+    unknown_451_ = unknown_450_;
+    unknown_452_ = true;
+  }
+}
 
 }
 

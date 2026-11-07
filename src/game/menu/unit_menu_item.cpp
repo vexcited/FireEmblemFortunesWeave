@@ -4,8 +4,21 @@
 #include "game/menu/equip_menu_item_empty.hpp"
 #include "game/menu/game_menu_item.hpp"
 #include "game/menu/unit_menu_item.hpp"
+#include "game/unit.hpp"
 
 namespace game::menu {
+
+bool UnitMenuItem::Unknown74() {
+  const Unit* unit = unit_;
+  if (unit == nullptr) {
+    return false;
+  }
+  const SkillKey key = {g_shared_system_skills[0].index};
+  if (!HasSkill(unit->GetSkillList(7), key)) {
+    return false;
+  }
+  return (1 << unit->GetForceType()) & 0xf1;
+}
 
 bool UnitMenuItem::Unknown78() {
   return false;

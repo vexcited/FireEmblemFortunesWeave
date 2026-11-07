@@ -1,8 +1,10 @@
+#include "game/facility/facility_unit_menu.hpp"
 #include "game/facility/facility_unit_menu_item.hpp"
 #include "game/game_mode_data.hpp"
 #include "game/menu/basic_menu.hpp"
 #include "game/menu/top_menu_item.hpp"
 #include "game/menu/unit_menu_item.hpp"
+#include "game/unit.hpp"
 
 namespace game::facility {
 
@@ -16,6 +18,24 @@ void FacilityUnitMenuItem::DrawText() {
 
 bool FacilityUnitMenuItem::Unknown82() {
   return false;
+}
+
+bool FacilityUnitMenuItem::Unknown74() {
+  return unit_ != nullptr && unit_->GetForceType() == 8;
+}
+
+int FacilityUnitMenuItem::Unknown81() {
+  if (!selected_) {
+    return 0;
+  }
+  if (!dynamic_cast<FacilityUnitMenu*>(menu_)->Unknown151()) {
+    return 0;
+  }
+  return index_;
+}
+
+bool FacilityUnitMenuItem::Unknown88() {
+  return !Unknown72();
 }
 
 }

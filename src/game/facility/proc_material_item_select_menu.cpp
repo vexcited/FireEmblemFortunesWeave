@@ -121,11 +121,33 @@ private:
   std::vector<void*> unknown_450_;
   // Set while the count of the selected material is chosen.
   bool selecting_;
-  std::function<void()> unknown_470_;
+  // Steps the chosen count, true once it changed.
+  std::function<bool(int, bool)> step_count_;
 };
 
 [[gnu::used]]
 ProcMaterialItemSelectMenu::ProcMaterialItemSelectMenu() = default;
+
+int ProcMaterialItemSelectMenu::Unknown104(bool loop) {
+  if (selecting_) {
+    return step_count_ && step_count_(-1, loop) ? 2 : 0;
+  }
+  return loop ? BasicMenu::Unknown103() : 0;
+}
+
+int ProcMaterialItemSelectMenu::Unknown106(bool loop) {
+  if (selecting_) {
+    return step_count_ && step_count_(1, loop) ? 2 : 0;
+  }
+  return loop ? BasicMenu::Unknown105() : 0;
+}
+
+int ProcMaterialItemSelectMenu::Unknown108(bool loop) {
+  if (selecting_) {
+    return Unknown104(loop);
+  }
+  return loop ? BasicMenu::Unknown107() : 0;
+}
 
 int ProcMaterialItemSelectMenu::InputUnknown12(int direction, bool loop) {
   if (!tab_.Move(direction, loop)) {

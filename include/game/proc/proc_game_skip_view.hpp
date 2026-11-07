@@ -32,6 +32,8 @@ public:
     return (mask & skip->flags_) == 0;
   }
 
+  uint32_t GetFlags() const { return flags_; }
+
   // Restores the state saved by the last menu, the second flag stays.
   static void PopState() {
     if (ProcGameSkipView* skip = instance_) {

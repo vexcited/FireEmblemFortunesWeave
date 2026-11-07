@@ -1,4 +1,5 @@
 #pragma GCC visibility push(hidden)
+#include "game/proc/proc_game_skip_view.hpp"
 #include "game/telop/telop_sequence.hpp"
 
 namespace game::telop {
@@ -14,6 +15,7 @@ public:
 
   bool Unknown43() override;
   void Unknown45() override { counter_.SetState(2); }
+  void Unknown50() override;
 
   nn::ui2d::Pane* Unknown53() override {
     return accessor_.FindPane("N_Contents");
@@ -35,6 +37,8 @@ public:
 private:
   uint8_t unknown_338_[0x1e8];
   bool skipped_;
+  uint8_t unknown_521_[0x3f];
+  bool unknown_560_;
 };
 
 class TelopStatusChange : public TelopSequence {
@@ -98,6 +102,21 @@ public:
 
 TelopHonorExp::~TelopHonorExp() = default;
 TelopLevelUp::~TelopLevelUp() = default;
+
+// A skipped game ends the telop at once.
+void TelopHonorExp::Unknown50() {
+  if (ProcGameSkipView::IsSkipping()) {
+    JumpTo(8);
+  }
+}
+
+void TelopLevelUp::Unknown50() {
+  if (!ProcGameSkipView::IsSkipping()) {
+    return;
+  }
+  const uint32_t flags = ProcGameSkipView::instance_->GetFlags();
+  JumpTo((flags & 1) != 0 || unknown_560_ ? 8 : 6);
+}
 TelopStatusChange::~TelopStatusChange() = default;
 TelopPhase::~TelopPhase() = default;
 TelopCmdbtlStart::~TelopCmdbtlStart() = default;

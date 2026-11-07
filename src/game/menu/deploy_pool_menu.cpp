@@ -1,4 +1,5 @@
 #pragma GCC visibility push(hidden)
+#include "game/game_mode_data.hpp"
 #include "game/menu/equip_menu_item_animal_pool_base.hpp"
 #include "game/menu/game_menu.hpp"
 #include "game/sound/se.hpp"
@@ -246,6 +247,33 @@ const char* const kRideLabels[5] = {
   "MID_Sys_Ride_Dragon",
   "MID_Sys_Ride_Elephant",
 };
+
+[[gnu::visibility("hidden")]] extern const char* const kLegionStatusLabels[10];
+
+const char* const kLegionStatusLabels[10] = {
+  "MID_DeployMenu_Command",
+  "MID_Sys_Str",
+  "MID_Sys_Mag",
+  "MID_Sys_Spd",
+  "MID_Sys_Lck",
+  "MID_Sys_Def",
+  "MID_Sys_Res",
+  "MID_Sys_Tec",
+  "MID_Sys_Cha",
+  "MID_Sys_Award",
+};
+
+const char* LegionPoolMenu::Unknown43(uint8_t kind) {
+  if (static_cast<uint8_t>(kind - 1) > 9) {
+    return "MID_Menu_Default";
+  }
+  return kLegionStatusLabels[kind - 1];
+}
+
+// The legions stay locked during the first restricted chapter.
+bool LegionPoolMenu::Unknown143() {
+  return !GameModeData::IsVariableSet("拠点_セオドラ篇1部4章_行動制限1");
+}
 
 const char* AnimalPoolMenu::Unknown43(uint8_t kind) {
   if (static_cast<uint8_t>(kind - 1) > 6) {

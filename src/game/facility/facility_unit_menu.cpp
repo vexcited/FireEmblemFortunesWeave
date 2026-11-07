@@ -91,8 +91,8 @@ bool FacilityUnitMenu::Unknown150() {
   return false;
 }
 
-int FacilityUnitMenu::Unknown151() {
-  return 0;
+bool FacilityUnitMenu::Unknown151() {
+  return false;
 }
 
 int FacilityUnitMenu::Unknown152() {
