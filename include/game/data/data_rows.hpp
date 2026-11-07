@@ -8,6 +8,7 @@
 
 #include "game/data/flag_condition.hpp"
 #include "game/data/prefixed_label.hpp"
+#include "game/util/format.hpp"
 
 namespace game {
 
@@ -1594,10 +1595,33 @@ static_assert(sizeof(RecallCategoryData) == 0x38);
 
 struct JobIntroDataState {
   virtual ~JobIntroDataState();
+
+  std::string description;
 };
 
 struct JobIntroData : DataState<JobIntroDataState> {
-  unsigned char unknown_20[0x68];
+  void Build() {
+    person_20.ResolveInline();
+    job_30.ResolveInline();
+    item_40.ResolveInline();
+    battle_field_70.ResolveInline();
+
+    if (state == nullptr) {
+      state = new JobIntroDataState();
+    }
+
+    if (index != 0) {
+      state->description = util::Format("%s[%d](%s, %s, %s)", key.text,
+        index, person_20.name_, job_30.name_, item_40.name_);
+    }
+  }
+
+  DataRef<PersonData> person_20;
+  DataRef<JobData> job_30;
+  DataRef<ItemData> item_40;
+  unsigned char unknown_50[0x20];
+  DataRef<BattleFieldData> battle_field_70;
+  unsigned char unknown_80[0x8];
 };
 
 static_assert(sizeof(JobIntroData) == 0x88);
