@@ -91,6 +91,32 @@ bool VerifyKey(const char* key, size_t length) {
   return i == length;
 }
 
+// The length fits the remaining size once the msgpack header is added.
+bool VerifyStringValueLength(size_t* pOutLength, const char* value,
+  size_t sizeMax) {
+  if (sizeMax == 0) {
+    return false;
+  }
+  const uint32_t header = sizeMax < 0x21 ? 1 : sizeMax < 0x102 ? 2 :
+    sizeMax < 0x10003 ? 3 : sizeMax == 0x10003 ? 4 : 5;
+  const uint32_t lengthMax = static_cast<uint32_t>(sizeMax) - header;
+  const uint32_t limit = lengthMax + 1;
+  if (limit == 0) {
+    *pOutLength = 0;
+    return true;
+  }
+  uint32_t length = 0;
+  while (length != limit && value[length] != '\0') {
+    length++;
+  }
+  const size_t result = static_cast<size_t>(static_cast<int>(length));
+  if (result > lengthMax) {
+    return false;
+  }
+  *pOutLength = result;
+  return true;
+}
+
 bool VerifyFloatValue(float value) {
   return isfinite(value);
 }
