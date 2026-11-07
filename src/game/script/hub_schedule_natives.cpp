@@ -13,6 +13,7 @@ class ScriptManager;
 #include "as/script_context.hpp"
 #include "game/game_mode_data.hpp"
 #include "game/gmap/spot.hpp"
+#include "game/hub/hub_seq_enter.hpp"
 #include "game/singleton.hpp"
 
 namespace game {
@@ -22,11 +23,6 @@ namespace game {
 class GameSchedule : public Singleton<GameSchedule> {};
 
 namespace hub {
-
-class HubSeqEnter : public Singleton<HubSeqEnter> {
-public:
-  void ProgressMinute(int minute);
-};
 
 // The views of the progress processes a cancel stops.
 class ProgressEventView {
@@ -98,6 +94,13 @@ namespace {
   as::ScriptContext* context = as::GetCurrentContext();
   context->GetRunner()->SetBlockState(1);
   context->ClearCallback();
+}
+
+// The noon runs from six to eighteen.
+[[gnu::always_inline]] inline bool IsNoon() {
+  const gmap::GmapClock* clock = gmap::GmapClock::instance_;
+  return clock != nullptr &&
+    static_cast<uint16_t>(gmap::GmapClock::GetTime().hour % 24 - 6) < 12;
 }
 
 }
@@ -212,6 +215,16 @@ int GetMonth() {
 void ProgressCycle() {
   EndBlock();
   gmap::GmapClock::ProgressCycle();
+}
+
+bool IsZoneNoon() {
+  EndBlock();
+  return IsNoon();
+}
+
+bool IsZoneNight() {
+  EndBlock();
+  return !IsNoon();
 }
 
 #pragma GCC visibility pop

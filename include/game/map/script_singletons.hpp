@@ -32,6 +32,10 @@ public:
     return active_skill_;
   }
 
+  const UnitItem& GetUseItem() const {
+    return use_item_;
+  }
+
   int GetTargetX() const {
     return target_x_;
   }
@@ -104,7 +108,9 @@ private:
   int pos_x_;
   int pos_z_;
   uint8_t command_;
-  uint8_t unknown_15_[0x23];
+  uint8_t unknown_15_[0x17];
+  UnitItem use_item_;
+  uint8_t unknown_34_[0x4];
   SkillKey active_skill_;
   uint8_t unknown_3c_[0xfd];
   int8_t target_x_;

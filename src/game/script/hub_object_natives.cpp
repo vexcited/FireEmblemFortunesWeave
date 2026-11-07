@@ -262,12 +262,26 @@ void SetAlphaOut(ObjectHandle handle, float sec) {
 
 math::Vec3 GetSmoothPoint3(const uint64_t id, const float rate01) {
   OpenBlock();
-  const game::hub::SmoothPoint3* path =
+  const game::zview::SmoothPath* path =
     g_instance<ObjectManager>->FindSmoothPoint3(id);
   if (path != nullptr && path->count() >= 2) {
     return path->Get(rate01);
   }
   return math::Vec3::Zero();
+}
+
+void CreateSmoothPoint3(const uint64_t id, const math::Vec3& p0,
+  const math::Vec3& p1, const math::Vec3& p2) {
+  game::zview::SmoothPath& path =
+    g_instance<ObjectManager>->CreateSmoothPoint3(id);
+  path.Clear();
+  path.SetRound(false);
+  game::zview::SmoothPathWayPoint* first = path.Add();
+  game::zview::SmoothPathWayPoint* second = path.Add();
+  game::zview::SmoothPathWayPoint* third = path.Add();
+  first->SetPosition(p0);
+  second->SetPosition(p1);
+  third->SetPosition(p2);
 }
 
 void BindDngBanquet(ObjectHandle handle) {
@@ -279,6 +293,25 @@ void BindDngBanquet(ObjectHandle handle) {
 void SetRunAccessScript(ObjectHandle handle, const std::string& script) {
   if (Object* object = Open(handle)) {
     object->SetRunAccessScript(script.c_str());
+  }
+}
+
+void SetRunAccessScript(ObjectHandle handle, const std::string& script,
+  const std::string& arg1) {
+  if (Open(handle) != nullptr) {
+    std::vector<std::string> args;
+    args.push_back(arg1.c_str());
+    handle.Get()->SetRunAccessScript(script.c_str(), args);
+  }
+}
+
+void SetRunAccessScript(ObjectHandle handle, const std::string& script,
+  const std::string& arg1, const std::string& arg2) {
+  if (Open(handle) != nullptr) {
+    std::vector<std::string> args;
+    args.push_back(arg1.c_str());
+    args.push_back(arg2.c_str());
+    handle.Get()->SetRunAccessScript(script.c_str(), args);
   }
 }
 

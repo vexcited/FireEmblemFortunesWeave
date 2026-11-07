@@ -2,10 +2,14 @@
 
 #include "as/script_context.hpp"
 #include "game/game_hub_data.hpp"
+#include "angelscript/angelscript/include/angelscript.h"
+#include "angelscript/add_on/scriptarray/scriptarray.h"
 #include "game/hub/hub_character_dispos_manager.hpp"
+#include "game/hub/hub_seq_enter.hpp"
 #include "game/hub/locator.hpp"
 #include "game/hub/manager.hpp"
 #include "game/hub/map_manager.hpp"
+#include "game/hub/timeline_event_manager.hpp"
 #include "game/script/script_string.hpp"
 
 // The natives of the hub::init script namespace.
@@ -92,6 +96,19 @@ void SetOverrideLoadVariationId(const std::string& variationId) {
 void ChangeExLightingHades() {
   OpenBlockDirect();
   g_instance<game::GameHubData>->ChangeExLighting(1);
+}
+
+// The functions are ignored while the timeline is locked.
+void RegisterTimelineEventFunc(CScriptArray& arg) {
+  OpenBlock();
+  if (game::hub::TimelineEventManager::GetInstance()->IsUnknown08()) {
+    return;
+  }
+  std::vector<std::string> funcs;
+  for (unsigned int i = 0; i < arg.GetSize(); ++i) {
+    funcs.push_back(static_cast<const as::string*>(arg.At(i))->data());
+  }
+  g_instance<game::hub::HubSeqEnter>->RegisterTimelineEventFunc(funcs);
 }
 
 #pragma GCC visibility pop

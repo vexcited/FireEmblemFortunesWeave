@@ -3,10 +3,13 @@
 #include <string>
 #include <vector>
 
+#include "angelscript/angelscript/include/angelscript.h"
+#include "angelscript/add_on/scriptarray/scriptarray.h"
 #include "as/script_context.hpp"
 #include "game/hub/character.hpp"
 #include "game/hub/manager.hpp"
 #include "game/hub/ui_manager.hpp"
+#include "game/script/script_proc.hpp"
 #include "game/script/script_string.hpp"
 
 namespace game::hub {
@@ -26,6 +29,22 @@ private:
   uint8_t unknown_00_[0x98];
   int request_;
 };
+
+// The text itself, or the message when it names one.
+std::string GetTextOrMessage(std::string_view text);
+
+#pragma GCC visibility pop
+
+}
+
+namespace game::menu {
+
+#pragma GCC visibility push(hidden)
+
+// Opens the choice menu of the messages under the parent, null when it
+// shows nothing.
+ProcInst* CreateChoiceMenu(ProcInst* parent,
+  const std::vector<const char*>& mids);
 
 #pragma GCC visibility pop
 
@@ -69,6 +88,24 @@ namespace {
   as::ScriptThread* thread =
     g_script_manager->GetThread(as::g_thread_info->GetIndex());
   return thread != nullptr ? thread->GetContext() : nullptr;
+}
+
+// The second lookup of the waiting natives skips the null check.
+[[gnu::always_inline]] inline as::ScriptContext* GetRunningContext() {
+  return g_script_manager->GetThread(as::g_thread_info->GetIndex())
+    ->GetContext();
+}
+
+// Runs the native again while the talk event runs.
+[[gnu::always_inline]] inline void WaitTalkEvent(const std::string& name) {
+  const bool busy = game::hub::CharacterManager::IsTalkEventRunning(name);
+  as::ScriptContext* context = GetCurrentContext();
+  if (busy) {
+    context->GetRunner()->SetBlockState(0);
+    return;
+  }
+  context->GetRunner()->SetBlockState(1);
+  context->ClearCallback();
 }
 
 [[gnu::always_inline]] inline void OpenBlock() {
@@ -183,6 +220,33 @@ void ShowYesNoDialogWithYesNoLabel(const as::string& title,
   param.yes_label = yesLabel;
   param.no_label = noLabel;
   ShowYesNoDialog(param);
+}
+
+void CreateTalkWindow(const std::string& text) {
+  using game::hub::ProcHubSeqView;
+  if (GetRunningContext()->GetRunner()->IsSkipping()) {
+    const std::string message = game::hub::GetTextOrMessage(text);
+    game::ProcInst* parent = ProcHubSeqView::GetLeafProc();
+    g_instance<TalkSupport>->CreateTalkWindow(parent, message.c_str());
+    ProcHubSeqView::BeginTalkEvent("TalkWindow");
+  }
+  WaitTalkEvent("TalkWindow");
+}
+
+void ShowChoiceMenu(CScriptArray& mids) {
+  using game::hub::ProcHubSeqView;
+  OpenBlock();
+  if (GetRunningContext()->GetRunner()->IsSkipping()) {
+    std::vector<const char*> labels;
+    for (unsigned int i = 0; i < mids.GetSize(); ++i) {
+      labels.push_back(static_cast<const as::string*>(mids.At(i))->c_str());
+    }
+    if (game::menu::CreateChoiceMenu(ProcHubSeqView::GetLeafProc(), labels)
+      != nullptr) {
+      ProcHubSeqView::BeginTalkEvent("ChoiceMenu");
+    }
+  }
+  WaitTalkEvent("ChoiceMenu");
 }
 
 #pragma GCC visibility pop

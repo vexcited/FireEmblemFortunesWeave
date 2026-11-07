@@ -7,6 +7,7 @@
 #include "game/game_mode_data.hpp"
 #include "game/hub/bgm_manager.hpp"
 #include "game/hub/character.hpp"
+#include "game/hub/hub_seq_enter.hpp"
 #include "game/hub/input.hpp"
 #include "game/hub/manager.hpp"
 #include "game/hub/map_manager.hpp"
@@ -358,6 +359,17 @@ bool IsOpeningHourFacility(const std::string& tableName) {
   OpenBlockGot();
   return game::hub::IsOpeningHour(tableName.c_str(),
     game::gmap::GmapClock::GetTime());
+}
+
+void SetEnableExitHubBgm(bool isEnable) {
+  OpenBlockGot();
+  g_instance<game::hub::BgmManager>->SetEnableExitHub(isEnable);
+}
+
+bool IsSkipFadeInEventEndCamera() {
+  OpenBlock();
+  return game::hub::HubSeqEnter::GetInstance()->IsSkippingFadeIn() ||
+    game::hub::ProcHubSeqView::instance_->IsUnknown170();
 }
 
 #pragma GCC visibility pop

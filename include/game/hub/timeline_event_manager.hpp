@@ -11,6 +11,13 @@ public:
   ~TimelineEventManager() override;
 
   void ImmediateJumpNext();
+
+  bool IsUnknown08() const {
+    return unknown_08_;
+  }
+
+private:
+  bool unknown_08_;
 };
 
 #pragma GCC visibility pop

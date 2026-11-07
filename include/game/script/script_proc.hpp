@@ -4,8 +4,11 @@
 #include <stdint.h>
 
 #include <deque>
+#include <map>
 #include <new>
+#include <string>
 
+#include "game/proc/proc_game_skip_view.hpp"
 #include "game/proc/proc_inst.hpp"
 #include "game/singleton.hpp"
 
@@ -95,44 +98,55 @@ public:
     return event_proc_;
   }
 
+  // The last process of the chain from the root, null without a sequence.
+  static ProcInst* GetLeafProc() {
+    const ProcHubSeqView* seq = instance_;
+    if (seq == nullptr) {
+      return nullptr;
+    }
+    ProcInst* proc = seq->root_proc_;
+    ProcInst* leaf;
+    do {
+      leaf = proc;
+      proc = proc->GetParentProc();
+    } while (proc != nullptr);
+    return leaf;
+  }
+
+  // Keeps the depth the talk event starts at, CharacterManager reads it
+  // back to tell whether the event still runs.
+  static void BeginTalkEvent(const std::string& name) {
+    ProcHubSeqView* seq = instance_;
+    if (seq == nullptr) {
+      return;
+    }
+    // Release builds drop the warning for a running name but keep its
+    // lookup.
+    [[maybe_unused]] const bool running = seq->talk_events_.contains(name);
+    int depth = 0;
+    for (ProcInst* proc = seq->root_proc_->GetParentProc(); proc != nullptr;
+      proc = proc->GetParentProc()) {
+      ++depth;
+    }
+    if (depth != 0) {
+      seq->talk_events_[name] = depth;
+    }
+  }
+
+  bool IsUnknown170() const {
+    return unknown_170_;
+  }
+
 private:
-  uint8_t unknown_00_[0x198];
+  uint8_t unknown_00_[0x170];
+  bool unknown_170_;
+  uint8_t unknown_171_[0x27];
   ProcInst* event_proc_;
+  ProcInst* root_proc_;
+  std::map<std::string, int> talk_events_;
 };
 
 }
-
-// The view of the game skip process.
-class ProcGameSkipView {
-public:
-  static ProcGameSkipView* instance_;
-
-  // The waking processes stay asleep while the game skips.
-  static bool IsSkipping() {
-    const ProcGameSkipView* skip = instance_;
-    if (skip == nullptr || skip->state_ != 3) {
-      return false;
-    }
-    const uint32_t mask = (skip->flags_ & 8) != 0 ? 2 : 3;
-    return (mask & skip->flags_) == 0;
-  }
-
-  // Any of the states 1 to 3 counts for the scripts.
-  static bool IsActive() {
-    const ProcGameSkipView* skip = instance_;
-    if (skip == nullptr || skip->state_ - 1u > 2) {
-      return false;
-    }
-    const uint32_t mask = (skip->flags_ & 8) != 0 ? 2 : 3;
-    return (mask & skip->flags_) == 0;
-  }
-
-private:
-  uint8_t unknown_00_[0x98];
-  uint8_t state_;
-  uint8_t unknown_99_[0x3];
-  uint32_t flags_;
-};
 
 #pragma GCC visibility pop
 

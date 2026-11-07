@@ -12,6 +12,7 @@
 #include "game/script/script_string.hpp"
 #include "game/sound/se.hpp"
 #include "game/unit.hpp"
+#include "game/unit_item.hpp"
 #include "game/unit_pool.hpp"
 
 // The natives of the map script namespaces.
@@ -198,12 +199,82 @@ as::string GetTrickTID(int x, int z) {
 
 }
 
+namespace game {
+
+#pragma GCC visibility push(hidden)
+
+// The item a unit without one uses, read through the global offset table.
+[[gnu::visibility("default")]] extern const UnitItem g_empty_item;
+
+namespace map {
+
+// The battle process of the map sequence, with both sides of the battle.
+class ProcMapSeqBattleView {
+public:
+  static ProcMapSeqBattleView* instance_;
+
+  // The unit of the first side that died, null without one.
+  const Unit* GetDeadUnit() const {
+    const Side* side;
+    if (battle_.sides[0].IsDead()) {
+      side = &battle_.sides[0];
+    }
+    else if (battle_.sides[1].IsDead()) {
+      side = &battle_.sides[1];
+    }
+    else {
+      return nullptr;
+    }
+    return side->unit;
+  }
+
+private:
+  struct Result {
+    uint8_t unknown_0000_[0x2c0c];
+    bool unknown_2c0c_;
+  };
+
+  struct Side {
+    bool IsDead() const {
+      return !result->unknown_2c0c_ && dead;
+    }
+
+    uint8_t unknown_00_[0x8];
+    const Result* result;
+    uint8_t unknown_10_[0x8];
+    const Unit* unit;
+    uint8_t unknown_20_[0x5c];
+    bool dead;
+    uint8_t unknown_7d_[0x27b];
+  };
+
+  struct Battle {
+    uint8_t unknown_00_[0x10];
+    Side sides[2];
+  };
+
+  uint8_t unknown_00_[0xb0];
+  Battle battle_;
+};
+
+}
+
+#pragma GCC visibility pop
+
+}
+
 namespace game::script::map::mind {
 
 namespace {
 
 using Mind = ::game::map::Mind;
 
+}
+
+as::string GetUseItem() {
+  const UnitItem& use = Mind::GetInstance()->GetUseItem();
+  const UnitItem& item = use.GetIndex() != 0 ? use : g_empty_item;
+  return as::string(item.GetSharedData()->key.text);
 }
 
 int GetTargetPosX() {
@@ -271,6 +342,27 @@ as::string GetDefenceUnitPID() {
   const MapEventManager* events = MapEventManager::GetInstance();
   return as::string(events != nullptr ?
     GetPidOf(events->GetDefenceUnit()) : "");
+}
+
+int GetDeadUnitIndex() {
+  const ::game::map::ProcMapSeqBattleView* proc =
+    ::game::map::ProcMapSeqBattleView::instance_;
+  if (proc == nullptr) {
+    return -1;
+  }
+  const Unit* unit = proc->GetDeadUnit();
+  return unit != nullptr ? GetIndexOf(unit) : -1;
+}
+
+as::string GetDeadUnitPID() {
+  const ::game::map::ProcMapSeqBattleView* proc =
+    ::game::map::ProcMapSeqBattleView::instance_;
+  const Unit* unit = proc != nullptr ? proc->GetDeadUnit() : nullptr;
+  if (unit == nullptr) {
+    return as::string("");
+  }
+  const PersonData* person = unit->GetPerson();
+  return as::string(person != nullptr ? person->key.text : nullptr);
 }
 
 }

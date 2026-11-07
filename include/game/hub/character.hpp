@@ -13,6 +13,12 @@
 #include "math/vec3.hpp"
 #include "nn/util/vector.hpp"
 
+namespace game {
+
+class ProcInst;
+
+}
+
 namespace game::hub {
 
 class AccessPopup;
@@ -1109,6 +1115,7 @@ private:
 
 class TalkSupport : public Singleton<TalkSupport> {
 public:
+  void CreateTalkWindow(ProcInst* parent, std::string text);
   void RunCameraFacility(std::weak_ptr<Character> target, bool unknown);
   void RunCameraSolo(std::weak_ptr<Character> target, bool unknown,
     std::optional<float> blendSec);

@@ -5,6 +5,7 @@
 #include "game/data/data_files.hpp"
 #include "game/map/image.hpp"
 #include "game/map/unit_flags.hpp"
+#include "game/script/script_proc.hpp"
 #include "game/script/script_string.hpp"
 #include "game/sound/se.hpp"
 #include "game/unit.hpp"
@@ -115,6 +116,25 @@ template<typename File>
 // Out of line actions taking the unit, null for an unknown index.
 void Die(Unit* unit);
 void WaitMotion(Unit* unit);
+void PlayMotion(ProcInst* proc, Unit* unit, const as::string& motionName,
+  bool isEndToIdleMotion);
+
+// The process of the event running, else the one of the hub sequence.
+[[gnu::always_inline]] inline ProcInst* GetCurrentProc() {
+  if (map::MapScript* script = map::MapScript::GetInstance()) {
+    return script->GetCurrentProc();
+  }
+  if (UnusedScript* script = UnusedScript::GetInstance()) {
+    return script->GetCurrentProc();
+  }
+  if (cmdbtl::CmdBtlScript* script = cmdbtl::CmdBtlScript::GetInstance()) {
+    return script->GetCurrentProc();
+  }
+  if (hub::ProcHubSeqView* seq = hub::ProcHubSeqView::instance_) {
+    return seq->GetEventProc();
+  }
+  return nullptr;
+}
 
 }
 
@@ -132,6 +152,12 @@ void Die(int index) {
 
 void WaitMotion(int index) {
   WaitMotion(FindUnit(index));
+}
+
+void PlayMotion(int unitIndex, const as::string& motionName,
+  bool isEndToIdleMotion) {
+  Unit* unit = FindUnit(unitIndex);
+  PlayMotion(GetCurrentProc(), unit, motionName, isEndToIdleMotion);
 }
 
 bool IsExist(const as::string& pid) {

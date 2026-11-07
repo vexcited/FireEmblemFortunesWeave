@@ -17,10 +17,14 @@ public:
   void Stop();
   void Play();
 
+  void SetEnableExitHub(bool isEnable) {
+    enable_exit_hub_ = isEnable;
+  }
+
 private:
   uint32_t unknown_08_;
   bool stopped_;
-  bool playing_;
+  bool enable_exit_hub_;
   std::string name_;
   std::string next_name_;
 };

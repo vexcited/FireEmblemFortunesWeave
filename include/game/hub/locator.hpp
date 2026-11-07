@@ -16,23 +16,13 @@ namespace game::hub {
 
 #pragma GCC visibility push(hidden)
 
-// Where a locator may place its characters.
+// Where a locator may place its characters, copied whole by the scripts.
 class LocatorPlacement {
 public:
+  LocatorPlacement(const LocatorPlacement& other);
+  ~LocatorPlacement();
+
   bool IsPlaceable() const;
-};
-
-class Locator : public HandlePtr {
-public:
-  void ReserveErase();
-
-  bool IsErased() const {
-    return erased_;
-  }
-
-  bool IsPlaceable() const {
-    return placement_.IsPlaceable();
-  }
 
   uint64_t GetGlobalHash() const {
     return global_hash_;
@@ -50,6 +40,53 @@ public:
     return dispos_angle_;
   }
 
+private:
+  uint8_t unknown_00_[0x38];
+  uint64_t global_hash_;
+  uint8_t unknown_40_[0x18];
+  std::string label_;
+  uint8_t unknown_70_[0x18];
+  float dispos_position_[3];
+  float dispos_angle_;
+  uint8_t unknown_98_[0x1b8];
+};
+
+class Locator : public HandlePtr {
+public:
+  void ReserveErase();
+
+  bool IsErased() const {
+    return erased_;
+  }
+
+  bool IsPlaceable() const {
+    return placement_.IsPlaceable();
+  }
+
+  uint64_t GetGlobalHash() const {
+    return placement_.GetGlobalHash();
+  }
+
+  const std::string& GetLabel() const {
+    return placement_.GetLabel();
+  }
+
+  math::Vec3 GetDisposPosition() const {
+    return placement_.GetDisposPosition();
+  }
+
+  float GetDisposAngle() const {
+    return placement_.GetDisposAngle();
+  }
+
+  const LocatorPlacement& GetPlacement() const {
+    return placement_;
+  }
+
+  const std::string& GetName() const {
+    return name_;
+  }
+
   void RegisterLabel(const std::string& label) {
     register_label_ = label;
   }
@@ -58,14 +95,8 @@ private:
   bool erased_;
   uint8_t unknown_11_[0x7];
   LocatorPlacement placement_;
-  uint8_t unknown_19_[0x37];
-  uint64_t global_hash_;
-  uint8_t unknown_58_[0x18];
-  std::string label_;
-  uint8_t unknown_88_[0x18];
-  float dispos_position_[3];
-  float dispos_angle_;
-  uint8_t unknown_b0_[0x210];
+  std::string name_;
+  uint8_t unknown_280_[0x40];
   std::string register_label_;
 };
 

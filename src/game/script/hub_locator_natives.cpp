@@ -49,6 +49,12 @@ namespace {
 
 }
 
+// Places a copy of the locator at the distance and angle around the base,
+// facing the second angle.
+void CopyLocator(const game::hub::LocatorPlacement& placement,
+  const std::string& name, std::shared_ptr<Locator> base, float distance,
+  float angle, float faceAngle);
+
 // The behaviors of the script type.
 void Construct(void* memory) {
   new (memory) LocatorHandle();
@@ -132,6 +138,27 @@ void SetDestinationOverride(LocatorHandle handle) {
     g_instance<game::hub::Destination>->SetOverride(
       std::vector<uint64_t>{locator->GetGlobalHash()});
   }
+}
+
+// The five copies stand around the base for the main scene.
+void LctCopyForMain(LocatorHandle handle) {
+  if (Open(handle) == nullptr) {
+    return;
+  }
+  std::string name = handle.Get()->GetName();
+  game::hub::LocatorPlacement placement = handle.Get()->GetPlacement();
+  std::shared_ptr<Locator> base =
+    LocatorDispos::GetInstance()->FindGlobalHash(handle.Get()->GetGlobalHash());
+  CopyLocator(placement, name, base, 1.9f, placement.GetDisposAngle(),
+    placement.GetDisposAngle() - 180.0f);
+  CopyLocator(placement, name, base, 2.09f,
+    placement.GetDisposAngle() - 65.0f, placement.GetDisposAngle() - 225.0f);
+  CopyLocator(placement, name, base, 2.28f,
+    placement.GetDisposAngle() + 65.0f, placement.GetDisposAngle() - 135.0f);
+  CopyLocator(placement, name, base, 2.28f,
+    placement.GetDisposAngle() - 125.0f, placement.GetDisposAngle() - 280.0f);
+  CopyLocator(placement, name, base, 2.28f,
+    placement.GetDisposAngle() + 125.0f, placement.GetDisposAngle() - 112.0f);
 }
 
 #pragma GCC visibility pop

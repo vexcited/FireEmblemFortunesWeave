@@ -10,6 +10,7 @@
 
 #include "game/hub/handle.hpp"
 #include "game/singleton.hpp"
+#include "game/zview/smooth_path.hpp"
 #include "math/vec3.hpp"
 
 namespace game::hub {
@@ -40,6 +41,12 @@ private:
 class Object : public HandlePtr {
 public:
   void SetRunAccessScript(std::string script);
+
+  void SetRunAccessScript(std::string script,
+    const std::vector<std::string>& args) {
+    run_access_script_ = script;
+    run_access_args_ = args;
+  }
   void Destroy();
   void RefreshActive();
   void RefreshTransform();
@@ -115,7 +122,10 @@ private:
   uint64_t global_hash_;
   uint8_t unknown_50_[0x290];
   ObjectDone* done_;
-  uint8_t unknown_2e8_[0xc9];
+  uint8_t unknown_2e8_[0x80];
+  std::string run_access_script_;
+  std::vector<std::string> run_access_args_;
+  uint8_t unknown_398_[0x19];
   bool active_;
   bool visible_;
   bool has_done_;
@@ -138,28 +148,6 @@ public:
   ObjectHandle& operator=(const ObjectHandle& other) = default;
 };
 
-// A path of smoothed points, picked by a rate.
-class SmoothPoint3 {
-public:
-  math::Vec3 GetRoundPoint(float t) const;
-  math::Vec3 GetPoint(float t) const;
-
-  math::Vec3 Get(float rate01) const {
-    return round_ ? GetRoundPoint(rate01 * static_cast<float>(count() - 1)) :
-      GetPoint(rate01 * static_cast<float>(count() - 1));
-  }
-
-  int count() const {
-    return static_cast<int>(points_.size());
-  }
-
-private:
-  uint8_t unknown_00_[0xd];
-  bool round_;
-  uint8_t unknown_0e_[0x2a];
-  std::vector<math::Vec3> points_;
-};
-
 class ObjectManager : public Singleton<ObjectManager> {
 public:
   Object* FindLabel(std::string_view label) const;
@@ -178,9 +166,15 @@ public:
     return nullptr;
   }
 
-  const SmoothPoint3* FindSmoothPoint3(uint64_t id) const {
+  const zview::SmoothPath* FindSmoothPoint3(uint64_t id) const {
     auto found = smooth_points_.find(id);
     return found != smooth_points_.end() ? &found->second : nullptr;
+  }
+
+  // Replaces the path of the id by an empty one.
+  [[gnu::always_inline]] zview::SmoothPath& CreateSmoothPoint3(uint64_t id) {
+    smooth_points_[id] = zview::SmoothPath();
+    return smooth_points_[id];
   }
 
 private:
@@ -188,7 +182,7 @@ private:
   std::vector<std::shared_ptr<Object>> objects_;
   std::vector<std::shared_ptr<Object>> dynamic_objects_;
   uint8_t unknown_58_[0x8];
-  std::map<uint64_t, SmoothPoint3> smooth_points_;
+  std::map<uint64_t, zview::SmoothPath> smooth_points_;
 };
 
 #pragma GCC visibility pop
