@@ -3,6 +3,7 @@
 #include <stdint.h>
 
 #include "nn/os/time.hpp"
+#include "nn/result.hpp"
 
 namespace nn::syncpt::sdk {
 
@@ -25,7 +26,10 @@ enum SyncValueMode : uint8_t {
 
 enum LibraryOptions : int32_t {};
 
-struct SyncPointEventType;
+struct SyncPointEventType {
+  alignas(8) uint8_t storage[128];
+};
+
 struct DebugSyncCounterType;
 struct DebugSyncDeviceType;
 
@@ -35,5 +39,11 @@ bool TryWaitSyncPoint(const SyncPointHandle& handle);
 void MakeNvRmFenceFromSyncPointHandle(uint32_t* pOutId, uint32_t* pOutValue,
   const SyncPointHandle& handle);
 SyncPointHandle MakeSyncPointHandleFromNvRmFence(uint32_t id, uint32_t value);
+Result CreateSyncPointEvent(SyncPointEventType* event);
+void DestroySyncPointEvent(SyncPointEventType* event);
+void RequestSyncPointEvent(SyncPointEventType* event,
+  const SyncPointHandle& handle);
+void CancelSyncPointEvent(SyncPointEventType* event);
+bool TryWaitSyncPointEvent(const SyncPointEventType* event);
 
 }

@@ -16,6 +16,7 @@ class IAsyncContext;
 
 namespace nn::am::service {
 
+class IAllSystemAppletProxiesService;
 class IAppletAccessor;
 class IAppletAlternativeFunctions;
 class IAppletCommonFunctions;
@@ -24,6 +25,7 @@ class IApplicationCreator;
 class IApplicationFunctions;
 class IApplicationObserver;
 class IApplicationProxy;
+class IApplicationProxyService;
 class IAudioController;
 class ICMenuFunctions;
 class ICMenuProxy;
@@ -336,6 +338,16 @@ struct ProxyMethodCount<nn::am::service::ISelfController> {
 template <>
 struct ProxyMethodCount<nn::am::service::IStorageChannel> {
   static constexpr int Value = 5;
+};
+
+template <>
+struct ProxyMethodCount<nn::am::service::IAllSystemAppletProxiesService> {
+  static constexpr int Value = 13;
+};
+
+template <>
+struct ProxyMethodCount<nn::am::service::IApplicationProxyService> {
+  static constexpr int Value = 3;
 };
 
 template <>

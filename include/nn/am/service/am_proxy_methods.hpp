@@ -51,7 +51,9 @@ template <typename Kind>
 class CmifProxyMethods<am::service::IAppletCommonFunctions, Kind>
   : public CmifProxyMethodsBase<am::service::IAppletCommonFunctions, Kind> {
 public:
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(0)
+  virtual Result Command0(uint32_t argument0) {
+    return this->template InvokeMethod<false, 0, void(uint32_t)>(argument0);
+  }
 
   virtual Result Command10(Out<uint64_t> argument0, uint64_t argument1,
     const OutAutoSelectBuffer& argument2) {
@@ -61,7 +63,11 @@ public:
 
   NN_SF_DETAIL_RESERVED_PROXY_METHOD(2)
 
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(3)
+  virtual Result Command20(SharedPointer<CmifProxyObject> argument0) {
+    SharedPointer<CmifProxyObject> object(argument0.Detach(), false);
+    return this->template InvokeMethod<false, 20,
+      void(CmifProxyObject*)>(object.Get());
+  }
 
   virtual Result PopFromAppletBoundChannel(
     const Out<SharedPointer<nn::am::service::IStorage>>& out) {
@@ -124,9 +130,17 @@ public:
     return this->template InvokeMethod<false, 82, void(bool)>(argument0);
   }
 
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(17)
+  virtual Result Command90(
+    const Out<SharedPointer<am::service::IStorageChannel>>& out,
+    const RawData<16, 4>& argument0) {
+    return this->template ProcessWithSharedOutObject<false, 90>(out, argument0);
+  }
 
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(18)
+  virtual Result Command91(
+    const Out<SharedPointer<am::service::IStorageChannel>>& out,
+    const RawData<16, 4>& argument0) {
+    return this->template ProcessWithSharedOutObject<false, 91>(out, argument0);
+  }
 
   virtual Result Command100(uint32_t argument0) {
     return this->template InvokeMethod<false, 100, void(uint32_t)>(argument0);
@@ -214,7 +228,10 @@ public:
       argument0);
   }
 
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(39)
+  virtual Result Command150(Out<uint8_t> argument0) {
+    return this->template InvokeMethod<false, 150,
+      void(Out<uint8_t>)>(argument0);
+  }
 
   virtual Result GetNotificationReceiverService(
     const Out<SharedPointer<nn::am::service::IReceiverService>>& out) {
@@ -452,7 +469,10 @@ public:
       argument0);
   }
 
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(10)
+  virtual Result Command112(
+    const Out<SharedPointer<am::service::IAppletAccessor>>& out) {
+    return this->template ProcessWithOutObject<false, 112>(out);
+  }
 
   NN_SF_DETAIL_RESERVED_PROXY_METHOD(11)
 
@@ -534,14 +554,22 @@ template <typename Kind>
 class CmifProxyMethods<am::service::IApplicationCreator, Kind>
   : public CmifProxyMethodsBase<am::service::IApplicationCreator, Kind> {
 public:
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(0)
+  virtual Result Command0(
+    const Out<SharedPointer<am::service::IApplicationAccessor>>& out,
+    uint64_t argument0) {
+    return this->template ProcessWithSharedOutObject<false, 0>(out, argument0);
+  }
 
   virtual Result Command1(
     const Out<SharedPointer<nn::am::service::IApplicationAccessor>>& out) {
     return this->template ProcessWithSharedOutObject<false, 1>(out);
   }
 
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(2)
+  virtual Result Command10(
+    const Out<SharedPointer<am::service::IApplicationAccessor>>& out,
+    uint64_t argument0) {
+    return this->template ProcessWithSharedOutObject<false, 10>(out, argument0);
+  }
 
   virtual Result Command100(
     const Out<SharedPointer<nn::am::service::IApplicationAccessor>>& out) {
@@ -553,11 +581,26 @@ template <typename Kind>
 class CmifProxyMethods<am::service::IApplicationFunctions, Kind>
   : public CmifProxyMethodsBase<am::service::IApplicationFunctions, Kind> {
 public:
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(0)
+  virtual Result Command1(const Out<SharedPointer<am::service::IStorage>>& out,
+    uint32_t argument0) {
+    return this->template ProcessWithSharedOutObject<false, 1>(out, argument0);
+  }
 
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(1)
+  virtual Result Command10(uint64_t argument0,
+    SharedPointer<CmifProxyObject> argument1) {
+    SharedPointer<CmifProxyObject> object(argument1.Detach(), false);
+    return this->template InvokeMethod<false, 10, void(uint64_t,
+      CmifProxyObject*)>(argument0, object.Get());
+  }
 
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(2)
+  virtual Result Command11(uint64_t argument0,
+    SharedPointer<CmifProxyObject> argument1, uint32_t argument2,
+    uint32_t argument3) {
+    SharedPointer<CmifProxyObject> object(argument1.Detach(), false);
+    return this->template InvokeMethod<false, 11, void(uint64_t,
+      CmifProxyObject*, uint32_t, uint32_t)>(argument0, object.Get(), argument2,
+      argument3);
+  }
 
   virtual Result Command12(uint64_t argument0) {
     return this->template InvokeMethod<false, 12, void(uint64_t)>(argument0);
@@ -641,7 +684,9 @@ public:
     return this->template InvokeMethod<false, 32, void(uint64_t)>(argument0);
   }
 
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(20)
+  virtual Result Command33() {
+    return this->template InvokeMethod<false, 33, void()>();
+  }
 
   virtual Result Command35(Out<uint64_t> argument0, Out<uint64_t> argument1) {
     return this->template InvokeMethod<false, 35, void(Out<uint64_t>,
@@ -695,7 +740,9 @@ public:
     return this->template InvokeMethod<false, 71, void()>();
   }
 
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(33)
+  virtual Result Command72() {
+    return this->template InvokeMethod<false, 72, void()>();
+  }
 
   virtual Result ExitAndGoBackToInStoreDemoMenu() {
     return this->template InvokeMethod<false, 80, void()>();
@@ -713,13 +760,37 @@ public:
     return this->template InvokeMethod<false, 102, void(bool)>(argument0);
   }
 
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(39)
+  virtual Result Command110(Out<uint32_t> argument0,
+    const OutArray<RawData<24, 8>>& argument1,
+    const InArray<uint64_t>& argument2) {
+    return this->template InvokeMethod<false, 110, void(Out<uint32_t>,
+      const OutArray<RawData<24, 8>>&, const InArray<uint64_t>&)>(argument0,
+      argument1, argument2);
+  }
 
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(40)
+  virtual Result Command111(Out<uint32_t> argument0,
+    const OutArray<RawData<24, 8>>& argument1, const RawData<16, 8>& argument2,
+    const InArray<uint64_t>& argument3) {
+    return this->template InvokeMethod<false, 111, void(Out<uint32_t>,
+      const OutArray<RawData<24, 8>>&, const RawData<16, 8>&,
+      const InArray<uint64_t>&)>(argument0, argument1, argument2, argument3);
+  }
 
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(41)
+  virtual Result Command112(Out<uint32_t> argument0,
+    const OutArray<RawData<24, 8>>& argument1,
+    const InArray<uint64_t>& argument2) {
+    return this->template InvokeMethod<false, 112, void(Out<uint32_t>,
+      const OutArray<RawData<24, 8>>&, const InArray<uint64_t>&)>(argument0,
+      argument1, argument2);
+  }
 
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(42)
+  virtual Result Command113(Out<uint32_t> argument0,
+    const OutArray<RawData<24, 8>>& argument1, const RawData<16, 8>& argument2,
+    const InArray<uint64_t>& argument3) {
+    return this->template InvokeMethod<false, 113, void(Out<uint32_t>,
+      const OutArray<RawData<24, 8>>&, const RawData<16, 8>&,
+      const InArray<uint64_t>&)>(argument0, argument1, argument2, argument3);
+  }
 
   virtual Result Command120(uint32_t argument0, uint64_t argument1) {
     return this->template InvokeMethod<false, 120, void(uint32_t, uint64_t)>(
@@ -811,7 +882,13 @@ public:
 
   NN_SF_DETAIL_RESERVED_PROXY_METHOD(63)
 
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(64)
+  virtual Result Command310(uint8_t argument0, const RawData<16, 8>& argument1,
+    SharedPointer<CmifProxyObject> argument2) {
+    SharedPointer<CmifProxyObject> object(argument2.Detach(), false);
+    return this->template InvokeMethod<false, 310, void(uint8_t,
+      const RawData<16, 8>&, CmifProxyObject*)>(argument0, argument1,
+      object.Get());
+  }
 
   virtual Result Command320(Out<uint8_t> argument0, Out<uint8_t> argument1) {
     return this->template InvokeMethod<false, 320, void(Out<uint8_t>,
@@ -877,7 +954,10 @@ template <typename Kind>
 class CmifProxyMethods<am::service::IAudioController, Kind>
   : public CmifProxyMethodsBase<am::service::IAudioController, Kind> {
 public:
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(0)
+  virtual Result Command0(float argument0, float argument1) {
+    return this->template InvokeMethod<false, 0, void(float, float)>(argument0,
+      argument1);
+  }
 
   virtual Result GetMainAppletExpectedMasterVolume(Out<uint32_t> argument0) {
     return this->template InvokeMethod<false, 1, void(Out<uint32_t>)>(
@@ -1007,7 +1087,10 @@ public:
     return this->template InvokeMethod<false, 1000, void(bool)>(argument0);
   }
 
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(25)
+  virtual Result Command200(
+    const Out<SharedPointer<am::service::ILibraryAppletAgent>>& out) {
+    return this->template ProcessWithOutObject<false, 200>(out);
+  }
 
   NN_SF_DETAIL_RESERVED_PROXY_METHOD(26)
 
@@ -1177,7 +1260,11 @@ public:
 
   NN_SF_DETAIL_RESERVED_PROXY_METHOD(18)
 
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(19)
+  virtual Result Command32(
+    const Out<SharedPointer<am::service::ILockAccessor>>& out,
+    uint32_t argument0) {
+    return this->template ProcessWithSharedOutObject<false, 32>(out, argument0);
+  }
 
   virtual Result Command40(Out<uint32_t> argument0, Out<uint32_t> argument1,
     Out<uint32_t> argument2, Out<uint32_t> argument3) {
@@ -1841,7 +1928,10 @@ public:
       argument0);
   }
 
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(12)
+  virtual Result Command30(
+    const Out<SharedPointer<am::service::ICradleFirmwareUpdater>>& out) {
+    return this->template ProcessWithOutObject<false, 30>(out);
+  }
 
   NN_SF_DETAIL_RESERVED_PROXY_METHOD(13)
 
@@ -1887,7 +1977,10 @@ public:
       argument0);
   }
 
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(1)
+  virtual Result Command1000(const InArray<RawData<12, 4>>& argument0) {
+    return this->template InvokeMethod<false, 1000,
+      void(const InArray<RawData<12, 4>>&)>(argument0);
+  }
 
   virtual Result SetGpuQuotaForDebug(Out<uint8_t> argument0,
     uint32_t argument1) {
@@ -1933,7 +2026,11 @@ public:
     return this->template ProcessWithSharedOutObject<false, 30>(out);
   }
 
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(6)
+  virtual Result Command31(
+    const Out<SharedPointer<am::service::ILockAccessor>>& out,
+    uint32_t argument0) {
+    return this->template ProcessWithSharedOutObject<false, 31>(out, argument0);
+  }
 
   virtual Result Command40(Out<uint8_t> argument0) {
     return this->template InvokeMethod<false, 40, void(Out<uint8_t>)>(
@@ -1987,7 +2084,9 @@ public:
 
   NN_SF_DETAIL_RESERVED_PROXY_METHOD(1)
 
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(2)
+  virtual Result Command1(Out<uint8_t> argument0) {
+    return this->template InvokeMethod<false, 1, void(Out<uint8_t>)>(argument0);
+  }
 
   NN_SF_DETAIL_RESERVED_PROXY_METHOD(3)
 
@@ -2011,13 +2110,20 @@ public:
     return this->template InvokeMethod<false, 60, void()>();
   }
 
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(9)
+  virtual Result Command70(SharedPointer<CmifProxyObject> argument0) {
+    SharedPointer<CmifProxyObject> object(argument0.Detach(), false);
+    return this->template InvokeMethod<false, 70,
+      void(CmifProxyObject*)>(object.Get());
+  }
 
   virtual Result Command80() {
     return this->template InvokeMethod<false, 80, void()>();
   }
 
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(11)
+  virtual Result Command81(
+    const Out<SharedPointer<am::service::IAppletAccessor>>& out) {
+    return this->template ProcessWithOutObject<false, 81>(out);
+  }
 
   virtual Result Command90(const RawData<32, 8>& argument0) {
     return this->template InvokeMethod<false, 90, void(const RawData<32, 8>&)>(
@@ -2073,7 +2179,10 @@ public:
 
   NN_SF_DETAIL_RESERVED_PROXY_METHOD(5)
 
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(6)
+  virtual Result Command10(
+    const Out<SharedPointer<am::service::IStorage>>& out) {
+    return this->template ProcessWithOutObject<false, 10>(out);
+  }
 
   NN_SF_DETAIL_RESERVED_PROXY_METHOD(7)
 
@@ -2116,11 +2225,21 @@ template <typename Kind>
 class CmifProxyMethods<am::service::ILibraryAppletSelfAccessor, Kind>
   : public CmifProxyMethodsBase<am::service::ILibraryAppletSelfAccessor, Kind> {
 public:
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(0)
+  virtual Result Command0(
+    const Out<SharedPointer<am::service::IStorage>>& out) {
+    return this->template ProcessWithOutObject<false, 0>(out);
+  }
 
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(1)
+  virtual Result Command1(SharedPointer<CmifProxyObject> argument0) {
+    SharedPointer<CmifProxyObject> object(argument0.Detach(), false);
+    return this->template InvokeMethod<false, 1,
+      void(CmifProxyObject*)>(object.Get());
+  }
 
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(2)
+  virtual Result Command2(
+    const Out<SharedPointer<am::service::IStorage>>& out) {
+    return this->template ProcessWithOutObject<false, 2>(out);
+  }
 
   NN_SF_DETAIL_RESERVED_PROXY_METHOD(3)
 
@@ -2170,7 +2289,10 @@ public:
 
   NN_SF_DETAIL_RESERVED_PROXY_METHOD(15)
 
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(16)
+  virtual Result Command20(
+    const Out<SharedPointer<am::service::IStorage>>& out) {
+    return this->template ProcessWithOutObject<false, 20>(out);
+  }
 
   NN_SF_DETAIL_RESERVED_PROXY_METHOD(17)
 
@@ -2260,7 +2382,10 @@ template <typename Kind>
 class CmifProxyMethods<am::service::INotificationReceiver, Kind>
   : public CmifProxyMethodsBase<am::service::INotificationReceiver, Kind> {
 public:
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(0)
+  virtual Result Command0(const RawData<16, 8>& argument0) {
+    return this->template InvokeMethod<false, 0,
+      void(const RawData<16, 8>&)>(argument0);
+  }
 
   virtual Result RemoveSource(const RawData<16, 8>& argument0) {
     return this->template InvokeMethod<false, 1, void(const RawData<16, 8>&)>(
@@ -2448,7 +2573,9 @@ template <typename Kind>
 class CmifProxyMethods<am::service::IPerformanceFunctions, Kind>
   : public CmifProxyMethodsBase<am::service::IPerformanceFunctions, Kind> {
 public:
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(0)
+  virtual Result Command0(Out<uint8_t> argument0) {
+    return this->template InvokeMethod<false, 0, void(Out<uint8_t>)>(argument0);
+  }
 
   virtual Result SetCpuOverclockEnabled(bool argument0) {
     return this->template InvokeMethod<false, 1, void(bool)>(argument0);
@@ -2461,7 +2588,10 @@ class CmifProxyMethods<am::service::IProcessWindingController, Kind>
 public:
   NN_SF_DETAIL_RESERVED_PROXY_METHOD(0)
 
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(1)
+  virtual Result Command11(
+    const Out<SharedPointer<am::service::ILibraryAppletAccessor>>& out) {
+    return this->template ProcessWithOutObject<false, 11>(out);
+  }
 
   NN_SF_DETAIL_RESERVED_PROXY_METHOD(2)
 
@@ -2754,7 +2884,10 @@ template <typename Kind>
 class CmifProxyMethods<am::service::IStorageAccessor, Kind>
   : public CmifProxyMethodsBase<am::service::IStorageAccessor, Kind> {
 public:
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(0)
+  virtual Result Command0(Out<uint64_t> argument0) {
+    return this->template InvokeMethod<false, 0,
+      void(Out<uint64_t>)>(argument0);
+  }
 
   NN_SF_DETAIL_RESERVED_PROXY_METHOD(1)
 
@@ -2769,7 +2902,11 @@ template <typename Kind>
 class CmifProxyMethods<am::service::IStorageChannel, Kind>
   : public CmifProxyMethodsBase<am::service::IStorageChannel, Kind> {
 public:
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(0)
+  virtual Result Command0(SharedPointer<CmifProxyObject> argument0) {
+    SharedPointer<CmifProxyObject> object(argument0.Detach(), false);
+    return this->template InvokeMethod<false, 0,
+      void(CmifProxyObject*)>(object.Get());
+  }
 
   NN_SF_DETAIL_RESERVED_PROXY_METHOD(1)
 
@@ -2793,7 +2930,10 @@ public:
       const InArray<RawData<16, 8>>&)>(argument0, argument1);
   }
 
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(1)
+  virtual Result Command2(
+    const Out<SharedPointer<am::service::IStorageChannel>>& out) {
+    return this->template ProcessWithOutObject<false, 2>(out);
+  }
 
   NN_SF_DETAIL_RESERVED_PROXY_METHOD(2)
 
@@ -2804,7 +2944,10 @@ template <typename Kind>
 class CmifProxyMethods<am::service::IWindowController, Kind>
   : public CmifProxyMethodsBase<am::service::IWindowController, Kind> {
 public:
-  NN_SF_DETAIL_RESERVED_PROXY_METHOD(0)
+  virtual Result Command0(const Out<SharedPointer<am::service::IWindow>>& out,
+    uint32_t argument0) {
+    return this->template ProcessWithSharedOutObject<false, 0>(out, argument0);
+  }
 
   NN_SF_DETAIL_RESERVED_PROXY_METHOD(1)
 
@@ -2829,6 +2972,323 @@ public:
   }
 
   NN_SF_DETAIL_RESERVED_PROXY_METHOD(7)
+};
+
+
+template <typename Kind>
+class CmifProxyMethods<am::service::ISystemAppletProxy, Kind>
+  : public CmifProxyMethodsBase<am::service::ISystemAppletProxy, Kind> {
+public:
+  virtual Result Command0(
+    const Out<SharedPointer<am::service::ICommonStateGetter>>& out) {
+    return this->template ProcessWithOutObject<false, 0>(out);
+  }
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(1)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(2)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(3)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(4)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(5)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(6)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(7)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(8)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(9)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(10)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(11)
+};
+
+template <typename Kind>
+class CmifProxyMethods<am::service::IMovieMaker, Kind>
+  : public CmifProxyMethodsBase<am::service::IMovieMaker, Kind> {
+public:
+  virtual Result Command0(const Out<SharedPointer<grcsrv::IMovieMaker>>& out) {
+    return this->template ProcessWithOutObject<false, 0>(out);
+  }
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(1)
+};
+
+template <typename Kind>
+class CmifProxyMethods<am::service::IStorage, Kind>
+  : public CmifProxyMethodsBase<am::service::IStorage, Kind> {
+public:
+  virtual Result Command0(
+    const Out<SharedPointer<am::service::IStorageAccessor>>& out) {
+    return this->template ProcessWithOutObject<false, 0>(out);
+  }
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(1)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(2)
+};
+
+template <typename Kind>
+class CmifProxyMethods<am::service::IMovieWriter, Kind>
+  : public CmifProxyMethodsBase<am::service::IMovieWriter, Kind> {
+public:
+  virtual Result Command0(const Out<SharedPointer<grcsrv::IMovieWriter>>& out) {
+    return this->template ProcessWithOutObject<false, 0>(out);
+  }
+};
+
+template <typename Kind>
+class CmifProxyMethods<am::service::IChatProxy, Kind>
+  : public CmifProxyMethodsBase<am::service::IChatProxy, Kind> {
+public:
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(0)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(1)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(2)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(3)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(4)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(5)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(6)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(7)
+
+  virtual Result Command20(
+    const Out<SharedPointer<am::service::IChatFunctions>>& out) {
+    return this->template ProcessWithOutObject<false, 20>(out);
+  }
+};
+
+template <typename Kind>
+class CmifProxyMethods<am::service::ICMenuProxy, Kind>
+  : public CmifProxyMethodsBase<am::service::ICMenuProxy, Kind> {
+public:
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(0)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(1)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(2)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(3)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(4)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(5)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(6)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(7)
+
+  virtual Result Command20(
+    const Out<SharedPointer<am::service::IOverlayFunctions>>& out) {
+    return this->template ProcessWithOutObject<false, 20>(out);
+  }
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(9)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(10)
+
+  virtual Result Command24(
+    const Out<SharedPointer<am::service::ICMenuFunctions>>& out) {
+    return this->template ProcessWithOutObject<false, 24>(out);
+  }
+};
+
+template <typename Kind>
+class CmifProxyMethods<am::service::ISystemProcessCommonFunctions, Kind>
+  : public CmifProxyMethodsBase<am::service::ISystemProcessCommonFunctions,
+    Kind> {
+public:
+  virtual Result Command1(
+    const Out<SharedPointer<am::service::IApplicationObserver>>& out) {
+    return this->template ProcessWithOutObject<false, 1>(out);
+  }
+};
+
+template <typename Kind>
+class CmifProxyMethods<am::service::ILibraryAppletProxy, Kind>
+  : public CmifProxyMethodsBase<am::service::ILibraryAppletProxy, Kind> {
+public:
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(0)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(1)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(2)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(3)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(4)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(5)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(6)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(7)
+
+  virtual Result Command20(
+    const Out<SharedPointer<am::service::ILibraryAppletSelfAccessor>>& out) {
+    return this->template ProcessWithOutObject<false, 20>(out);
+  }
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(9)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(10)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(11)
+};
+
+template <typename Kind>
+class CmifProxyMethods<am::service::IApplicationProxy, Kind>
+  : public CmifProxyMethodsBase<am::service::IApplicationProxy, Kind> {
+public:
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(0)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(1)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(2)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(3)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(4)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(5)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(6)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(7)
+
+  virtual Result Command20(
+    const Out<SharedPointer<am::service::IApplicationFunctions>>& out) {
+    return this->template ProcessWithOutObject<false, 20>(out);
+  }
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(9)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(10)
+};
+
+template <typename Kind>
+class CmifProxyMethods<am::service::IReceiverService, Kind>
+  : public CmifProxyMethodsBase<am::service::IReceiverService, Kind> {
+public:
+  virtual Result Command0(
+    const Out<SharedPointer<am::service::INotificationReceiver>>& out) {
+    return this->template ProcessWithOutObject<false, 0>(out);
+  }
+};
+
+template <typename Kind>
+class CmifProxyMethods<am::service::ILibraryAppletCreator, Kind>
+  : public CmifProxyMethodsBase<am::service::ILibraryAppletCreator, Kind> {
+public:
+  virtual Result Command0(
+    const Out<SharedPointer<am::service::ILibraryAppletAccessor>>& out,
+    uint32_t argument0, uint32_t argument1) {
+    return this->template ProcessWithSharedOutObject<false, 0>(out, argument0,
+      argument1);
+  }
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(1)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(2)
+
+  virtual Result Command3(
+    const Out<SharedPointer<am::service::ILibraryAppletAccessor>>& out,
+    uint32_t argument0, uint32_t argument1, uint64_t argument2) {
+    return this->template ProcessWithSharedOutObject<false, 3>(out, argument0,
+      argument1, argument2);
+  }
+
+  virtual Result Command10(const Out<SharedPointer<am::service::IStorage>>& out,
+    uint64_t argument0) {
+    return this->template ProcessWithSharedOutObject<false, 10>(out, argument0);
+  }
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(5)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(6)
+};
+
+template <typename Kind>
+class CmifProxyMethods<am::service::ISenderService, Kind>
+  : public CmifProxyMethodsBase<am::service::ISenderService, Kind> {
+public:
+  virtual Result Command0(
+    const Out<SharedPointer<am::service::INotificationSender>>& out,
+    const RawData<16, 4>& argument0, uint64_t argument1) {
+    return this->template ProcessWithSharedOutObject<false, 0>(out, argument0,
+      argument1);
+  }
+};
+
+template <typename Kind>
+class CmifProxyMethods<am::service::IApplicationProxyService, Kind>
+  : public CmifProxyMethodsBase<am::service::IApplicationProxyService, Kind> {
+public:
+  virtual Result Command2000(
+    const Out<SharedPointer<am::service::INxCompatApplicationFunctions>>& out,
+    uint64_t argument0) {
+    return this->template ProcessWithSharedOutObject<true, 2000>(out,
+      argument0);
+  }
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(1)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(2)
+};
+
+template <typename Kind>
+class CmifProxyMethods<am::service::IAllSystemAppletProxiesService, Kind>
+  : public CmifProxyMethodsBase<am::service::IAllSystemAppletProxiesService,
+    Kind> {
+public:
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(0)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(1)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(2)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(3)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(4)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(5)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(6)
+
+  virtual Result Command400(
+    const Out<SharedPointer<am::service::ILibraryAppletCreator>>& out,
+    uint64_t argument0) {
+    return this->template ProcessWithSharedOutObject<true, 400>(out, argument0);
+  }
+
+  virtual Result Command410(
+    const Out<SharedPointer<am::service::ISystemAppletControllerForDebug>>&
+      out) {
+    return this->template ProcessWithSharedOutObject<false, 410>(out);
+  }
+
+  virtual Result Command450(
+    const Out<SharedPointer<am::service::ISystemProcessCommonFunctions>>& out) {
+    return this->template ProcessWithSharedOutObject<false, 450>(out);
+  }
+
+  virtual Result Command460(
+    const Out<SharedPointer<am::service::IAppletAlternativeFunctions>>& out) {
+    return this->template ProcessWithSharedOutObject<false, 460>(out);
+  }
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(11)
+
+  NN_SF_DETAIL_RESERVED_PROXY_METHOD(12)
 };
 
 }

@@ -71,4 +71,33 @@ template class CmifProxyMethods<am::service::ISystemAppletControllerForDebug,
 template class CmifProxyMethods<am::service::IWindowController,
   DomainKind>;
 
+template class CmifProxyMethods<am::service::IAllSystemAppletProxiesService,
+  DomainKind>;
+template class CmifProxyMethods<am::service::IApplicationProxy,
+  DomainKind>;
+template class CmifProxyMethods<am::service::IApplicationProxyService,
+  DomainKind>;
+template class CmifProxyMethods<am::service::IChatProxy,
+  DomainKind>;
+template class CmifProxyMethods<am::service::ICMenuProxy,
+  DomainKind>;
+template class CmifProxyMethods<am::service::ILibraryAppletCreator,
+  DomainKind>;
+template class CmifProxyMethods<am::service::ILibraryAppletProxy,
+  DomainKind>;
+template class CmifProxyMethods<am::service::IMovieMaker,
+  DomainKind>;
+template class CmifProxyMethods<am::service::IMovieWriter,
+  DomainKind>;
+template class CmifProxyMethods<am::service::IReceiverService,
+  DomainKind>;
+template class CmifProxyMethods<am::service::ISenderService,
+  DomainKind>;
+template class CmifProxyMethods<am::service::IStorage,
+  DomainKind>;
+template class CmifProxyMethods<am::service::ISystemAppletProxy,
+  DomainKind>;
+template class CmifProxyMethods<am::service::ISystemProcessCommonFunctions,
+  DomainKind>;
+
 }

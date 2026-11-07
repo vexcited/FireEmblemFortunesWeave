@@ -178,68 +178,11 @@ void AddressSpaceRegion::Initialize(uint64_t begin, uint64_t end) {
 
 bool MappingMap::Find(MappingEntry** pOut, uint8_t kind, uint64_t first,
   uint64_t last) {
-  mutex.Lock();
-  if (first <= last && !tree.IsEmpty()) {
-    MappingEntry* entry;
-    do {
-      uint64_t key = MakeMappingKey(kind, first);
-      nn::util::IntrusiveRbTreeNode* node = tree.FindNotLess(
-        [key](nn::util::IntrusiveRbTreeNode* node) {
-          return CompareValue(key, MappingEntry::FromTreeNode(node)->key);
-        });
-      if (node == nullptr) {
-        break;
-      }
-      entry = MappingEntry::FromTreeNode(node);
-      if (entry->GetKind() != kind || entry->address > last) {
-        break;
-      }
-      if (entry->isValid) {
-        NN_ABORT_UNLESS(++entry->referenceCount != 0);
-        *pOut = entry;
-        mutex.Unlock();
-        return true;
-      }
-      first = (entry->key << 12) + 0x1000;
-    } while (entry->GetLastAddress() < last && first <= last);
-  }
-  mutex.Unlock();
-  return false;
+  return FindEntry(pOut, kind, first, last);
 }
 
 void MappingMap::Release(MappingEntry* entry) {
-  mutex.Lock();
-  NN_ABORT_UNLESS(entry->referenceCount != 0);
-  if (--entry->referenceCount == 0 && entry->jobCount == 0) {
-    tree.Remove(&entry->node);
-    MappingWaiter* woken = nullptr;
-    MappingWaiter** link = &waiters;
-    for (MappingWaiter* waiter = *link; waiter != nullptr;) {
-      MappingWaiter* next = waiter->next;
-      if (waiter->entry == entry) {
-        *link = next;
-        waiter->next = woken;
-        woken = waiter;
-      }
-      else {
-        link = &waiter->next;
-      }
-      waiter = next;
-    }
-    MappingReleaseFunction release = entry->release;
-    VirtualMachineType* machine = entry->machine;
-    if (release != nullptr) {
-      release(&machine, entry);
-    }
-    while (woken != nullptr) {
-      MappingWaiter* next = woken->next;
-      woken->next = nullptr;
-      woken->entry = nullptr;
-      os::SignalEvent(&woken->event);
-      woken = next;
-    }
-  }
-  mutex.Unlock();
+  ReleaseEntry(entry);
 }
 
 void SparseSpace::ReleaseWithRegion(VirtualMachineType* const* pMachine,

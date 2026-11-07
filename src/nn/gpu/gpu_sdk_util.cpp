@@ -23,15 +23,6 @@ int ModifySparseMapping(VirtualMachineType* machine,
 int ModifyNormalMapping(VirtualMachineType* machine,
   nvgpu_as_mapping_modify_args* args);
 int Remap(VirtualMachineType* machine, nvgpu_as_remap_op* ops, size_t count);
-void DetachTracker(os::SdkMutexType* mutex, void* jobQueue,
-  JobTrackerType* tracker);
-int PrepareTracking(VirtualMachineType* machine, JobTrackerType* tracker);
-void CancelTracking(os::SdkMutexType* mutex, void* jobQueue,
-  JobTrackerType* tracker);
-int StartTracking(os::SdkMutexType* mutex, JobTrackerType* tracker,
-  uint32_t syncPointId, uint32_t value);
-void ProcessTracking(void* jobQueue, JobTrackerType* tracker,
-  os::SdkMutexType* mutex);
 
 }
 
@@ -116,8 +107,8 @@ int AttachVirtualMachineJobTracker(VirtualMachineType* machine,
   }
   uint64_t mask = uint64_t(1) << index;
   manager->freeSlotMask &= ~mask;
-  tracker->slotIndex = index;
-  tracker->slotMask = mask;
+  JobSlot slot = {int32_t(index), mask};
+  __builtin_memcpy(&tracker->slot, &slot, sizeof(slot));
 
   ListNode* node = &tracker->node;
   ListNode* last = node->previous;
@@ -133,8 +124,7 @@ int AttachVirtualMachineJobTracker(VirtualMachineType* machine,
 
 void DetachVirtualMachineJobTracker(VirtualMachineType* machine,
   JobTrackerType* tracker) {
-  detail::DetachTracker(&machine->mappings.mutex, &machine->allocator,
-    tracker);
+  detail::DetachTracker(&machine->mappings, &machine->allocator, tracker);
   tracker->machine = nullptr;
 }
 
@@ -171,21 +161,19 @@ int PrepareJobTracking(JobTrackerType* tracker) {
 
 void CancelJobTracking(JobTrackerType* tracker) {
   VirtualMachineType* machine = tracker->machine;
-  detail::CancelTracking(&machine->mappings.mutex, &machine->allocator,
-    tracker);
+  detail::CancelTracking(&machine->mappings, &machine->allocator, tracker);
 }
 
-int StartJobTracking(JobTrackerType* tracker, uint32_t syncPointId,
+void StartJobTracking(JobTrackerType* tracker, uint32_t syncPointId,
   uint32_t value) {
-  return detail::StartTracking(&tracker->machine->mappings.mutex, tracker,
-    syncPointId, value);
+  detail::StartTracking(&tracker->machine->mappings, tracker, syncPointId,
+    value);
 }
 
 void ProcessJobTracking(JobTrackerType* tracker) {
   VirtualMachineType* machine = tracker->machine;
   machine->mappings.mutex.Lock();
-  detail::ProcessTracking(&machine->allocator, tracker,
-    &machine->mappings.mutex);
+  detail::ProcessTracking(&machine->allocator, tracker, &machine->mappings);
   machine->mappings.mutex.Unlock();
 }
 

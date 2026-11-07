@@ -13,6 +13,16 @@ namespace nn::sf::cmif::client::detail {
 template <typename Interface>
 struct ProxyMethodCount;
 
+// A proxy of the same domain sent as an argument.
+template <>
+struct ArgumentTraits<CmifProxyObject*> {
+  using Descriptor = InObject;
+
+  static CmifProxyObject* Convert(CmifProxyObject* value) {
+    return value;
+  }
+};
+
 // One vtable slot per method that the proxy does not implement here.
 template <int Count>
 class ReservedProxyMethods : public ReservedProxyMethods<Count - 1> {

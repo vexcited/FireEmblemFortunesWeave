@@ -50,10 +50,7 @@ struct GpuMemoryHandle {
 
 namespace util {
 
-struct VirtualMachineType;
 struct JobTrackerType;
-
-void FinalizeVirtualMachine(VirtualMachineType* /* machine */) {}
 
 void FinalizeJobTracker(JobTrackerType* /* tracker */) {}
 
