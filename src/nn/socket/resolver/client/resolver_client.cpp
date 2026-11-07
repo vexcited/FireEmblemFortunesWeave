@@ -1,6 +1,8 @@
 #include <errno.h>
 #include <string.h>
 
+#include <type_traits>
+
 #include "nn/os/sdk_mutex.hpp"
 #include "nn/socket/detail/socket_api.hpp"
 #include "nn/socket/resolver/resolver_alloc_tracker.hpp"
@@ -509,8 +511,12 @@ template <typename AddrInfoType>
         else {
           uint32_t outSize = 0;
           int hostError = 0;
-          if (hints != nullptr &&
-            serializer.ToBuffer(hintsBuffer, hintsSize, *hints) == -1) {
+          if (hints != nullptr && static_cast<int>(
+            serializer.ToBuffer(hintsBuffer, hintsSize, *hints)) == -1) {
+            // Only the BSD variant reports the overflow as a host error.
+            if constexpr (std::is_same_v<AddrInfoType, addrinfo>) {
+              pLocals->m_HostErrno = HostErrorInternal;
+            }
             error = AiErrorOverflow;
           }
           else if ((*pOutResult = static_cast<AddrInfoType*>(
@@ -531,8 +537,8 @@ template <typename AddrInfoType>
             pLocals->m_HostErrno = hostError;
             bool isFreed = true;
             if (result.IsSuccess() && error == 0 && outSize != 0) {
-              if (serializer.FromBuffer(**pOutResult, resultBuffer,
-                outSize) != -1) {
+              if (static_cast<int>(serializer.FromBuffer(**pOutResult,
+                resultBuffer, outSize)) != -1) {
                 FixAddressLengths(*pOutResult);
                 isFreed = false;
               }
