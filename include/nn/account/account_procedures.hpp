@@ -96,6 +96,8 @@ class NintendoAccountLinkageProcedure : public detail::OAuthProcedureBase {
   NintendoAccountLinkageProcedure(const Uid& uid,
     nas::IOAuthProcedureForNintendoAccountLinkage* pProcedure);
   NintendoAccountLinkageProcedure(NintendoAccountLinkageProcedure&& other);
+  NintendoAccountLinkageProcedure& operator=(
+    NintendoAccountLinkageProcedure&& other);
 
   void Swap(NintendoAccountLinkageProcedure& other);
   Result GetRequest(RequestUrl* pOutRequestUrl, CallbackUri* pOutCallbackUri,
@@ -111,6 +113,8 @@ class NintendoAccountLinkageStateUpdateProcedure
     http::IOAuthProcedure* pProcedure);
   NintendoAccountLinkageStateUpdateProcedure(
     NintendoAccountLinkageStateUpdateProcedure&& other);
+  NintendoAccountLinkageStateUpdateProcedure& operator=(
+    NintendoAccountLinkageStateUpdateProcedure&& other);
 
   void Swap(NintendoAccountLinkageStateUpdateProcedure& other);
 };
@@ -123,6 +127,8 @@ class NintendoAccountApplicationAuthorizationProcedure
     http::IOAuthProcedure* pProcedure);
   NintendoAccountApplicationAuthorizationProcedure(
     NintendoAccountApplicationAuthorizationProcedure&& other);
+  NintendoAccountApplicationAuthorizationProcedure& operator=(
+    NintendoAccountApplicationAuthorizationProcedure&& other);
 
   void Swap(NintendoAccountApplicationAuthorizationProcedure& other);
 };
@@ -134,6 +140,8 @@ class NintendoAccountReauthenticationProcedure
   NintendoAccountReauthenticationProcedure(const Uid& uid,
     nas::IOAuthProcedureForNintendoAccountReauthentication* pProcedure);
   NintendoAccountReauthenticationProcedure(
+    NintendoAccountReauthenticationProcedure&& other);
+  NintendoAccountReauthenticationProcedure& operator=(
     NintendoAccountReauthenticationProcedure&& other);
 
   void Swap(NintendoAccountReauthenticationProcedure& other);
@@ -149,6 +157,8 @@ class ExternalNetworkServiceAccountIntroducingProcedure
   explicit ExternalNetworkServiceAccountIntroducingProcedure(
     nas::IOAuthProcedureForExternalNsa* pProcedure);
   ExternalNetworkServiceAccountIntroducingProcedure(
+    ExternalNetworkServiceAccountIntroducingProcedure&& other);
+  ExternalNetworkServiceAccountIntroducingProcedure& operator=(
     ExternalNetworkServiceAccountIntroducingProcedure&& other);
 
   void Swap(ExternalNetworkServiceAccountIntroducingProcedure& other);
@@ -173,6 +183,8 @@ class DeviceMigrationOperatingUserAuthenticationProcedure
     Interface* pProcedure);
   DeviceMigrationOperatingUserAuthenticationProcedure(
     DeviceMigrationOperatingUserAuthenticationProcedure&& other);
+  DeviceMigrationOperatingUserAuthenticationProcedure& operator=(
+    DeviceMigrationOperatingUserAuthenticationProcedure&& other);
 
   void Swap(DeviceMigrationOperatingUserAuthenticationProcedure& other);
   Result GetTemporaryUserIdForTemporarySession(uint64_t* pOutId) const;
@@ -184,6 +196,8 @@ class DeviceMigrationDownloadProcedure : public detail::OAuthProcedureBase {
   explicit DeviceMigrationDownloadProcedure(
     nas::IOAuthProcedureForDeviceMigrationDownload* pProcedure);
   DeviceMigrationDownloadProcedure(DeviceMigrationDownloadProcedure&& other);
+  DeviceMigrationDownloadProcedure& operator=(
+    DeviceMigrationDownloadProcedure&& other);
 
   void Swap(DeviceMigrationDownloadProcedure& other);
   Result GetTemporaryUserIdForTemporarySession(uint64_t* pOutId) const;
@@ -195,6 +209,7 @@ class UserRegistrationProcedure : public detail::OAuthProcedureBase {
   explicit UserRegistrationProcedure(
     nas::IOAuthProcedureForUserRegistration* pProcedure);
   UserRegistrationProcedure(UserRegistrationProcedure&& other);
+  UserRegistrationProcedure& operator=(UserRegistrationProcedure&& other);
 
   void Swap(UserRegistrationProcedure& other);
   Result GetNickname(Nickname* pOutNickname) const;
@@ -213,6 +228,7 @@ class UserCreationProcedure : public detail::OAuthProcedureBase {
   explicit UserCreationProcedure(
     nas::IOAuthProcedureForUserRegistration* pProcedure);
   UserCreationProcedure(UserCreationProcedure&& other);
+  UserCreationProcedure& operator=(UserCreationProcedure&& other);
 
   void Swap(UserCreationProcedure& other);
   Result ApplyResponseAsync(AsyncContext* pOutContext, const char* response,

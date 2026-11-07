@@ -35,7 +35,7 @@ NintendoAccountLinkageProcedure::
     nas::IOAuthProcedureForNintendoAccountLinkage* pProcedure)
   : OAuthProcedureBase(uid, pProcedure) {}
 
-NintendoAccountLinkageProcedure::
+[[gnu::noinline]] NintendoAccountLinkageProcedure::
   NintendoAccountLinkageProcedure(
     NintendoAccountLinkageProcedure&& other)
   : OAuthProcedureBase(static_cast<OAuthProcedureBase&&>(other)) {}
@@ -54,7 +54,7 @@ NintendoAccountLinkageStateUpdateProcedure::
     http::IOAuthProcedure* pProcedure)
   : OAuthProcedureBase(uid, pProcedure) {}
 
-NintendoAccountLinkageStateUpdateProcedure::
+[[gnu::noinline]] NintendoAccountLinkageStateUpdateProcedure::
   NintendoAccountLinkageStateUpdateProcedure(
     NintendoAccountLinkageStateUpdateProcedure&& other)
   : OAuthProcedureBase(static_cast<OAuthProcedureBase&&>(other)) {}
@@ -73,7 +73,7 @@ NintendoAccountApplicationAuthorizationProcedure::
     http::IOAuthProcedure* pProcedure)
   : OAuthProcedureBase(uid, pProcedure) {}
 
-NintendoAccountApplicationAuthorizationProcedure::
+[[gnu::noinline]] NintendoAccountApplicationAuthorizationProcedure::
   NintendoAccountApplicationAuthorizationProcedure(
     NintendoAccountApplicationAuthorizationProcedure&& other)
   : OAuthProcedureBase(static_cast<OAuthProcedureBase&&>(other)) {}
@@ -92,7 +92,7 @@ NintendoAccountReauthenticationProcedure::
     nas::IOAuthProcedureForNintendoAccountReauthentication* pProcedure)
   : OAuthProcedureBase(uid, pProcedure) {}
 
-NintendoAccountReauthenticationProcedure::
+[[gnu::noinline]] NintendoAccountReauthenticationProcedure::
   NintendoAccountReauthenticationProcedure(
     NintendoAccountReauthenticationProcedure&& other)
   : OAuthProcedureBase(static_cast<OAuthProcedureBase&&>(other)) {}
@@ -111,7 +111,7 @@ ExternalNetworkServiceAccountIntroducingProcedure::
     nas::IOAuthProcedureForExternalNsa* pProcedure)
   : OAuthProcedureBase(InvalidUid, pProcedure) {}
 
-ExternalNetworkServiceAccountIntroducingProcedure::
+[[gnu::noinline]] ExternalNetworkServiceAccountIntroducingProcedure::
   ExternalNetworkServiceAccountIntroducingProcedure(
     ExternalNetworkServiceAccountIntroducingProcedure&& other)
   : OAuthProcedureBase(static_cast<OAuthProcedureBase&&>(other)) {}
@@ -130,7 +130,7 @@ DeviceMigrationOperatingUserAuthenticationProcedure::
     DeviceMigrationOperatingUserAuthenticationProcedure::Interface* pProcedure)
   : OAuthProcedureBase(InvalidUid, pProcedure) {}
 
-DeviceMigrationOperatingUserAuthenticationProcedure::
+[[gnu::noinline]] DeviceMigrationOperatingUserAuthenticationProcedure::
   DeviceMigrationOperatingUserAuthenticationProcedure(
     DeviceMigrationOperatingUserAuthenticationProcedure&& other)
   : OAuthProcedureBase(static_cast<OAuthProcedureBase&&>(other)) {}
@@ -149,7 +149,7 @@ DeviceMigrationDownloadProcedure::
     nas::IOAuthProcedureForDeviceMigrationDownload* pProcedure)
   : OAuthProcedureBase(InvalidUid, pProcedure) {}
 
-DeviceMigrationDownloadProcedure::
+[[gnu::noinline]] DeviceMigrationDownloadProcedure::
   DeviceMigrationDownloadProcedure(
     DeviceMigrationDownloadProcedure&& other)
   : OAuthProcedureBase(static_cast<OAuthProcedureBase&&>(other)) {}
@@ -168,7 +168,7 @@ UserRegistrationProcedure::
     nas::IOAuthProcedureForUserRegistration* pProcedure)
   : OAuthProcedureBase(InvalidUid, pProcedure) {}
 
-UserRegistrationProcedure::
+[[gnu::noinline]] UserRegistrationProcedure::
   UserRegistrationProcedure(
     UserRegistrationProcedure&& other)
   : OAuthProcedureBase(static_cast<OAuthProcedureBase&&>(other)) {}
@@ -187,7 +187,7 @@ UserCreationProcedure::
     nas::IOAuthProcedureForUserRegistration* pProcedure)
   : OAuthProcedureBase(InvalidUid, pProcedure) {}
 
-UserCreationProcedure::
+[[gnu::noinline]] UserCreationProcedure::
   UserCreationProcedure(
     UserCreationProcedure&& other)
   : OAuthProcedureBase(static_cast<OAuthProcedureBase&&>(other)) {}
@@ -457,6 +457,86 @@ Uid UserCreationProcedure::GetUid() const {
   NN_ABORT_UNLESS_RESULT_SUCCESS(
     GetProcedure<RegistrationApi>(*this)->GetUid(sf::Out<Uid>(&uid)));
   return uid;
+}
+
+
+// Lives apart from the base class, so its calls go through the export table.
+detail::OAuthProcedureBase& detail::OAuthProcedureBase::operator=(
+  OAuthProcedureBase&& other) {
+  OAuthProcedureBase temporary(std::move(other));
+  std::swap(m_Uid, temporary.m_Uid);
+  std::swap(m_pProcedure, temporary.m_pProcedure);
+  return *this;
+}
+
+// Each move assignment swaps with a temporary built from the source.
+NintendoAccountLinkageProcedure& NintendoAccountLinkageProcedure::operator=(
+  NintendoAccountLinkageProcedure&& other) {
+  NintendoAccountLinkageProcedure temporary(std::move(other));
+  Swap(temporary);
+  return *this;
+}
+
+NintendoAccountLinkageStateUpdateProcedure&
+NintendoAccountLinkageStateUpdateProcedure::operator=(
+  NintendoAccountLinkageStateUpdateProcedure&& other) {
+  NintendoAccountLinkageStateUpdateProcedure temporary(std::move(other));
+  Swap(temporary);
+  return *this;
+}
+
+NintendoAccountApplicationAuthorizationProcedure&
+NintendoAccountApplicationAuthorizationProcedure::operator=(
+  NintendoAccountApplicationAuthorizationProcedure&& other) {
+  NintendoAccountApplicationAuthorizationProcedure temporary(std::move(other));
+  Swap(temporary);
+  return *this;
+}
+
+NintendoAccountReauthenticationProcedure&
+NintendoAccountReauthenticationProcedure::operator=(
+  NintendoAccountReauthenticationProcedure&& other) {
+  NintendoAccountReauthenticationProcedure temporary(std::move(other));
+  Swap(temporary);
+  return *this;
+}
+
+ExternalNetworkServiceAccountIntroducingProcedure&
+ExternalNetworkServiceAccountIntroducingProcedure::operator=(
+  ExternalNetworkServiceAccountIntroducingProcedure&& other) {
+  ExternalNetworkServiceAccountIntroducingProcedure temporary(std::move(other));
+  Swap(temporary);
+  return *this;
+}
+
+DeviceMigrationOperatingUserAuthenticationProcedure&
+DeviceMigrationOperatingUserAuthenticationProcedure::operator=(
+  DeviceMigrationOperatingUserAuthenticationProcedure&& other) {
+  DeviceMigrationOperatingUserAuthenticationProcedure temporary(
+    std::move(other));
+  Swap(temporary);
+  return *this;
+}
+
+DeviceMigrationDownloadProcedure& DeviceMigrationDownloadProcedure::operator=(
+  DeviceMigrationDownloadProcedure&& other) {
+  DeviceMigrationDownloadProcedure temporary(std::move(other));
+  Swap(temporary);
+  return *this;
+}
+
+UserRegistrationProcedure& UserRegistrationProcedure::operator=(
+  UserRegistrationProcedure&& other) {
+  UserRegistrationProcedure temporary(std::move(other));
+  Swap(temporary);
+  return *this;
+}
+
+UserCreationProcedure& UserCreationProcedure::operator=(
+  UserCreationProcedure&& other) {
+  UserCreationProcedure temporary(std::move(other));
+  Swap(temporary);
+  return *this;
 }
 
 }

@@ -24,9 +24,10 @@ OAuthProcedureBase::OAuthProcedureBase(OAuthProcedureBase&& other)
   other.m_pProcedure = nullptr;
 }
 
-OAuthProcedureBase& OAuthProcedureBase::operator=(OAuthProcedureBase&& other) {
-  OAuthProcedureBase(std::move(other)).Swap(*this);
-  return *this;
+OAuthProcedureBase::~OAuthProcedureBase() {
+  if (m_pProcedure != nullptr) {
+    m_pProcedure->Release();
+  }
 }
 
 void OAuthProcedureBase::Swap(OAuthProcedureBase& other) {

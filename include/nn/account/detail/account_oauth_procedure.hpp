@@ -44,11 +44,7 @@ class OAuthProcedureBase {
   OAuthProcedureBase(const Uid& uid, http::IOAuthProcedure* pProcedure);
   OAuthProcedureBase(OAuthProcedureBase&& other);
 
-  virtual ~OAuthProcedureBase() {
-    if (m_pProcedure != nullptr) {
-      m_pProcedure->Release();
-    }
-  }
+  virtual ~OAuthProcedureBase();
 
   OAuthProcedureBase& operator=(OAuthProcedureBase&& other);
   void Swap(OAuthProcedureBase& other);
