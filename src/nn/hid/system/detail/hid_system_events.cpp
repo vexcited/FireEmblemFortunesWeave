@@ -215,11 +215,11 @@ Result GetNpadsWithNfc(int* pOutCount, NpadIdType* pOutIds, int count) {
 
 Result SetNfcEvent(os::SystemEventType* pActivateEvent,
   os::SystemEventType* pDeactivateEvent, AbstractedPadId id) {
+  sf::NativeHandle deactivateHandle;
+  sf::NativeHandle activateHandle;
   sf::SharedPointer<IHidSystemServer> proxy;
   server::CreateHidSystemServerProxy(&proxy);
 
-  sf::NativeHandle deactivateHandle;
-  sf::NativeHandle activateHandle;
   NN_RESULT_DO(proxy->AcquireNfcActivateEventHandle(&activateHandle,
     &deactivateHandle, id));
 
