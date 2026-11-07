@@ -2,6 +2,7 @@
 
 #include "nn/result.hpp"
 #include "nn/settings/settings_types.hpp"
+#include "nn/sf/native_handle.hpp"
 #include "nn/sf/sf_buffers.hpp"
 #include "nn/sf/shared_pointer.hpp"
 
@@ -135,8 +136,7 @@ class ISystemSettingsServer : public sf::IServiceObject {
   virtual Result SetDeviceNickName(const system::DeviceNickName& value) = 0;
   virtual Result GetProductModel(sf::Out<int> pOutValue) = 0;
   virtual Result BindTelemetryDirtyFlagEvent(
-    sf::Out<os::SystemEventType> pOutValue,
-    os::EventClearMode eventClearMode) = 0;
+    sf::Out<sf::NativeHandle> pOutHandle) = 0;
   virtual Result GetTelemetryDirtyFlags(
     sf::Out<util::BitFlagSet<128, system::TelemetryDirtyFlag>> pOutValue) = 0;
   virtual Result GetPtmBatteryLot(sf::Out<BatteryLot> pOutValue) = 0;
@@ -151,8 +151,7 @@ class ISystemSettingsServer : public sf::IServiceObject {
   virtual Result SetShutdownRtcValue(long value) = 0;
   virtual Result GetShutdownRtcValue(sf::Out<long> pOutValue) = 0;
   virtual Result BindFatalDirtyFlagEvent(
-    sf::Out<os::SystemEventType> pOutValue,
-    os::EventClearMode eventClearMode) = 0;
+    sf::Out<sf::NativeHandle> pOutHandle) = 0;
   virtual Result GetFatalDirtyFlags(
     sf::Out<util::BitFlagSet<128, system::FatalDirtyFlag>> pOutValue) = 0;
   virtual Result GetAutoUpdateEnableFlag(sf::Out<bool> pOutValue) = 0;
@@ -302,8 +301,7 @@ class ISystemSettingsServer : public sf::IServiceObject {
   virtual Result GetBatteryCareModeEnableFlag(sf::Out<bool> pOutValue) = 0;
   virtual Result SetBatteryCareModeEnableFlag(bool value) = 0;
   virtual Result BindVphymDirtyFlagEvent(
-    sf::Out<os::SystemEventType> pOutValue,
-    os::EventClearMode eventClearMode) = 0;
+    sf::Out<sf::NativeHandle> pOutHandle) = 0;
   virtual Result GetVphymDirtyFlags(
     sf::Out<util::BitFlagSet<128, system::VphymDirtyFlag>> pOutValue) = 0;
   virtual Result GetInitialLaunchSettings(
@@ -337,7 +335,7 @@ class ISystemSettingsServer : public sf::IServiceObject {
   virtual Result SetHidDebugRailFlag(bool value) = 0;
   virtual Result ConvertToProductModel(
     sf::Out<system::ProductModel> pOutValue,
-    const system::ProductModelName& value) = 0;
+    system::ProductModelName value) = 0;
   virtual Result ConvertToProductModelName(
     sf::Out<system::ProductModelName> pOutValue,
     system::ProductModel productModel) = 0;
@@ -348,8 +346,7 @@ class ISystemSettingsServer : public sf::IServiceObject {
   virtual Result SetAppletParameterSet(
     const system::AppletParameterSet& value) = 0;
   virtual Result BindChatTranscriptionSettingsChangedEvent(
-    sf::Out<os::SystemEventType> pOutValue,
-    os::EventClearMode eventClearMode) = 0;
+    sf::Out<sf::NativeHandle> pOutHandle) = 0;
   virtual Result GetDefaultAccountIdentificationFlagSet(
     sf::Out<util::BitFlagSet<32, system::AccountIdentificationFlag>>
       pOutFlags) = 0;
@@ -365,8 +362,7 @@ class ISystemSettingsServer : public sf::IServiceObject {
   virtual Result GetMousePointerSpeedScale(sf::Out<float> pOutValue) = 0;
   virtual Result SetMousePointerSpeedScale(float value) = 0;
   virtual Result BindPushNotificationDirtyFlagEvent(
-    sf::Out<os::SystemEventType> pOutValue,
-    os::EventClearMode eventClearMode) = 0;
+    sf::Out<sf::NativeHandle> pOutHandle) = 0;
   virtual Result GetPushNotificationDirtyFlags(
     sf::Out<util::BitFlagSet<64, system::PushNotificationDirtyFlag>> pOutValue) = 0;
   virtual Result GetTvHdrSettingsEx(
@@ -405,8 +401,7 @@ class ISystemSettingsServer : public sf::IServiceObject {
   virtual Result SetOunceProControllerAudioLowLatencyModeEnabled(
     bool value) = 0;
   virtual Result BindChatTranscriptionSettingsChangedEventForSettingApplet(
-    sf::Out<os::SystemEventType> pOutValue,
-    os::EventClearMode eventClearMode) = 0;
+    sf::Out<sf::NativeHandle> pOutHandle) = 0;
   virtual Result GetAccountUserSettings(
     sf::Out<int> pOutValue,
     const sf::OutArray<system::AccountUserSettings>& outValues) = 0;

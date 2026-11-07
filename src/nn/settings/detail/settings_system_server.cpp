@@ -3,6 +3,7 @@
 
 #include "nn/applet/applet_keyboard_layout.hpp"
 #include "nn/diag/diag_abort.hpp"
+#include "nn/os/system_event.hpp"
 #include "nn/settings/detail/settings_api.hpp"
 #include "nn/settings/detail/settings_result.hpp"
 
@@ -427,16 +428,26 @@ Result BindChatTranscriptionSettingsChangedEvent(
   os::SystemEventType* pOutValue, os::EventClearMode eventClearMode) {
   sf::SharedPointer<ISystemSettingsServer> proxy;
   NN_RESULT_DO(CreateSystemSettingsServerProxyForIpc(&proxy));
-  return proxy->BindChatTranscriptionSettingsChangedEvent(
-    sf::Out<os::SystemEventType>(pOutValue), eventClearMode);
+  sf::NativeHandle handle;
+  NN_RESULT_DO(proxy->BindChatTranscriptionSettingsChangedEvent(
+    sf::Out<sf::NativeHandle>(&handle)));
+  os::AttachReadableHandleToSystemEvent(pOutValue, handle.GetOsHandle(),
+    handle.IsManaged(), eventClearMode);
+  handle.Detach();
+  return Result();
 }
 
 Result BindChatTranscriptionSettingsChangedEventForSettingApplet(
   os::SystemEventType* pOutValue, os::EventClearMode eventClearMode) {
   sf::SharedPointer<ISystemSettingsServer> proxy;
   NN_RESULT_DO(CreateSystemSettingsServerProxyForIpc(&proxy));
-  return proxy->BindChatTranscriptionSettingsChangedEventForSettingApplet(
-    sf::Out<os::SystemEventType>(pOutValue), eventClearMode);
+  sf::NativeHandle handle;
+  NN_RESULT_DO(proxy->BindChatTranscriptionSettingsChangedEventForSettingApplet(
+    sf::Out<sf::NativeHandle>(&handle)));
+  os::AttachReadableHandleToSystemEvent(pOutValue, handle.GetOsHandle(),
+    handle.IsManaged(), eventClearMode);
+  handle.Detach();
+  return Result();
 }
 
 Result GetExternalSteadyClockSourceId(util::Uuid* pOutValue) {
@@ -713,8 +724,13 @@ Result BindFatalDirtyFlagEvent(
   os::SystemEventType* pOutValue, os::EventClearMode eventClearMode) {
   sf::SharedPointer<ISystemSettingsServer> proxy;
   NN_RESULT_DO(CreateSystemSettingsServerProxyForIpc(&proxy));
-  return proxy->BindFatalDirtyFlagEvent(
-    sf::Out<os::SystemEventType>(pOutValue), eventClearMode);
+  sf::NativeHandle handle;
+  NN_RESULT_DO(proxy->BindFatalDirtyFlagEvent(
+    sf::Out<sf::NativeHandle>(&handle)));
+  os::AttachReadableHandleToSystemEvent(pOutValue, handle.GetOsHandle(),
+    handle.IsManaged(), eventClearMode);
+  handle.Detach();
+  return Result();
 }
 
 Result GetFatalDirtyFlags(
@@ -1048,8 +1064,11 @@ Result ConvertToProductModel(
   system::ProductModel* pOutValue, const system::ProductModelName& value) {
   sf::SharedPointer<ISystemSettingsServer> proxy;
   NN_RESULT_DO(CreateSystemSettingsServerProxyForIpc(&proxy));
-  return proxy->ConvertToProductModel(
-    sf::Out<system::ProductModel>(pOutValue), value);
+  system::ProductModel productModel = {};
+  NN_RESULT_DO(proxy->ConvertToProductModel(
+    sf::Out<system::ProductModel>(&productModel), value));
+  *pOutValue = productModel;
+  return Result();
 }
 
 Result GetPtmBatteryLot(BatteryLot* pOutValue) {
@@ -1450,8 +1469,13 @@ Result BindTelemetryDirtyFlagEvent(
   os::SystemEventType* pOutValue, os::EventClearMode eventClearMode) {
   sf::SharedPointer<ISystemSettingsServer> proxy;
   NN_RESULT_DO(CreateSystemSettingsServerProxyForIpc(&proxy));
-  return proxy->BindTelemetryDirtyFlagEvent(
-    sf::Out<os::SystemEventType>(pOutValue), eventClearMode);
+  sf::NativeHandle handle;
+  NN_RESULT_DO(proxy->BindTelemetryDirtyFlagEvent(
+    sf::Out<sf::NativeHandle>(&handle)));
+  os::AttachReadableHandleToSystemEvent(pOutValue, handle.GetOsHandle(),
+    handle.IsManaged(), eventClearMode);
+  handle.Detach();
+  return Result();
 }
 
 Result GetTelemetryDirtyFlags(
@@ -1576,8 +1600,13 @@ Result BindVphymDirtyFlagEvent(
   os::SystemEventType* pOutValue, os::EventClearMode eventClearMode) {
   sf::SharedPointer<ISystemSettingsServer> proxy;
   NN_RESULT_DO(CreateSystemSettingsServerProxyForIpc(&proxy));
-  return proxy->BindVphymDirtyFlagEvent(
-    sf::Out<os::SystemEventType>(pOutValue), eventClearMode);
+  sf::NativeHandle handle;
+  NN_RESULT_DO(proxy->BindVphymDirtyFlagEvent(
+    sf::Out<sf::NativeHandle>(&handle)));
+  os::AttachReadableHandleToSystemEvent(pOutValue, handle.GetOsHandle(),
+    handle.IsManaged(), eventClearMode);
+  handle.Detach();
+  return Result();
 }
 
 Result GetVphymDirtyFlags(

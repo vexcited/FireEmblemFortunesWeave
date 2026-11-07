@@ -694,7 +694,7 @@ private:
 
   void AddKey(const HashedString& key, T* item) {
     if (!items_by_hash_.contains(key)) {
-      items_by_hash_.emplace(key, Local<T*>{item});
+      items_by_hash_.emplace(Local<uint64_t>{key}, Local<T*>{item});
     }
   }
 

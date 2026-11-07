@@ -395,16 +395,20 @@ Result CreateApplicationArea(const DeviceHandle& handle,
 
 Result GetExtendedApplicationAreaInfo(ExtendedApplicationAreaInfo* pOutInfo,
   const DeviceHandle& handle) {
+  Result result;
   if (client::IsCreatedDebugInterface()) {
-    return detail::CheckError(client::GetDebugInterface()->
-      GetExtendedApplicationAreaInfo(pOutInfo, handle));
+    result = client::GetDebugInterface()->GetExtendedApplicationAreaInfo(
+      pOutInfo, handle);
   }
-  if (client::IsCreatedSystemInterface()) {
-    return detail::CheckError(client::GetSystemInterface()->
-      GetExtendedApplicationAreaInfo(pOutInfo, handle));
+  else if (client::IsCreatedSystemInterface()) {
+    result = client::GetSystemInterface()->GetExtendedApplicationAreaInfo(
+      pOutInfo, handle);
   }
-  return detail::CheckError(client::GetUserInterfaceForCommon()->
-    GetExtendedApplicationAreaInfo(pOutInfo, handle));
+  else {
+    result = client::GetUserInterfaceForCommon()->
+      GetExtendedApplicationAreaInfo(pOutInfo, handle);
+  }
+  return detail::CheckError(result);
 }
 
 Result GetExtendedApplicationArea(void* pBuffer, size_t* pOutSize,

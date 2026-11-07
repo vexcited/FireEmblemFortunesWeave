@@ -189,7 +189,9 @@ struct PrioritizedOutputAudioDeviceSettings;
 
 enum ProductModel : int32_t {};
 
-struct ProductModelName;
+struct ProductModelName {
+  char string[8];
+};
 
 enum PtmCycleCountReliability : int32_t {};
 

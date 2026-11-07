@@ -144,6 +144,12 @@ constexpr Result ResultNfcNotAvailable = {0x807f};
 constexpr uint32_t ResultInvalidDeviceState = 0xd201;
 constexpr TimeSpan RetryWaitTime = {50000000};
 
+[[gnu::always_inline]] inline void AbortUnlessSuccess(Result result) {
+  if (result.IsFailure()) {
+    diag::detail::AbortImpl(&result);
+  }
+}
+
 bool IsCreatedInterface() {
   return client::IsCreatedSystemInterface() ||
     client::IsCreatedUserInterface();
@@ -199,8 +205,7 @@ State GetState() {
   }
 
   State state = State_None;
-  NN_ABORT_UNLESS_RESULT_SUCCESS(NN_NFC_CALL(GetState,
-    sf::Out<State>(&state)));
+  AbortUnlessSuccess(NN_NFC_CALL(GetState, sf::Out<State>(&state)));
   return state;
 }
 
@@ -211,15 +216,14 @@ DeviceState GetDeviceState(const DeviceHandle& handle) {
   }
 
   DeviceState state = {};
-  NN_ABORT_UNLESS_RESULT_SUCCESS(NN_NFC_CALL(GetDeviceState,
+  AbortUnlessSuccess(NN_NFC_CALL(GetDeviceState,
     sf::Out<DeviceState>(&state), handle));
   return state;
 }
 
 bool IsNfcEnabled() {
   bool isEnabled = false;
-  NN_ABORT_UNLESS_RESULT_SUCCESS(NN_NFC_CALL(IsNfcEnabled,
-    sf::Out<bool>(&isEnabled)));
+  AbortUnlessSuccess(NN_NFC_CALL(IsNfcEnabled, sf::Out<bool>(&isEnabled)));
   return isEnabled;
 }
 
@@ -254,7 +258,7 @@ void AttachAvailabilityChangeEvent(os::SystemEventType* pEvent) {
   const Result result = NN_NFC_CALL(AttachAvailabilityChangeEvent,
     sf::Out<sf::NativeHandle>(&eventHandle));
   NN_ABORT_UNLESS(result.GetInnerValueForDebug() != ResultInvalidDeviceState);
-  NN_ABORT_UNLESS_RESULT_SUCCESS(result);
+  AbortUnlessSuccess(result);
   os::AttachReadableHandleToSystemEvent(pEvent, eventHandle.GetOsHandle(),
     eventHandle.IsManaged(), os::EventClearMode_AutoClear);
   eventHandle.Detach();
@@ -268,21 +272,22 @@ void Initialize() {
     2);
   const applet::AppletResourceUserId aruid =
     applet::GetAppletResourceUserId();
-  NN_ABORT_UNLESS_RESULT_SUCCESS(
+  AbortUnlessSuccess(
     client::GetUserInterface()->Initialize(aruid, 0, versions));
   SetErrorVisible(true);
 }
 
 void Finalize() {
-  NN_ABORT_UNLESS_RESULT_SUCCESS(client::GetUserInterface()->Finalize());
+  AbortUnlessSuccess(client::GetUserInterface()->Finalize());
   client::DestroyUserInterface();
 }
 
 Result ReadMifare(MifareReadBlockData* pOutData, const DeviceHandle& handle,
   const MifareReadBlockParameter* pParameters, size_t count) {
-  return detail::CheckError(NN_NFC_CALL(ReadMifare,
-    sf::OutArray<MifareReadBlockData>(pOutData, count), handle,
-    sf::InArray<MifareReadBlockParameter>(pParameters, count)));
+  const sf::OutArray<MifareReadBlockData> outData(pOutData, count);
+  const sf::InArray<MifareReadBlockParameter> parameters(pParameters, count);
+  return detail::CheckError(NN_NFC_CALL(ReadMifare, outData, handle,
+    parameters));
 }
 
 Result WriteMifare(const DeviceHandle& handle,
@@ -323,23 +328,22 @@ void InitializeSystem() {
     client::RequiredMcuVersionDataCount);
   const applet::AppletResourceUserId aruid =
     applet::GetAppletResourceUserId();
-  NN_ABORT_UNLESS_RESULT_SUCCESS(
+  AbortUnlessSuccess(
     client::GetSystemInterface()->Initialize(aruid, 0, versions));
   SetErrorVisible(true);
 }
 
 void FinalizeSystem() {
-  NN_ABORT_UNLESS_RESULT_SUCCESS(client::GetSystemInterface()->Finalize());
+  AbortUnlessSuccess(client::GetSystemInterface()->Finalize());
   client::DestroySystemInterface();
 }
 
 void SetNfcEnabled(bool isEnabled) {
-  NN_ABORT_UNLESS_RESULT_SUCCESS(
-    client::GetSystemInterface()->SetNfcEnabled(isEnabled));
+  AbortUnlessSuccess(client::GetSystemInterface()->SetNfcEnabled(isEnabled));
 }
 
 void OutputTestWave(bool isEnabled, TestWaveType type) {
-  NN_ABORT_UNLESS_RESULT_SUCCESS(
+  AbortUnlessSuccess(
     client::GetSystemInterface()->OutputTestWave(isEnabled, type));
 }
 
