@@ -239,7 +239,7 @@ public:
   MixBusStream* DestroyStream(MixBusStream* pStream);
 
   // Unexported helper that connects every line to the interface channels.
-  bool AttachInterface(MixBusInterface* pInterface,
+  [[gnu::visibility("hidden")]] bool AttachInterface(MixBusInterface* pInterface,
     MixBusInterfaceList* pList, bool isInput);
 
   MixBusMatrix* m_pMatrix;

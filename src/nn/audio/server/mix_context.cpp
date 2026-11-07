@@ -1,6 +1,9 @@
 #include <string.h>
 
+#include <algorithm>
+
 #include "nn/audio/server/mix_context.hpp"
+#include "nn/audio/server/span_iterator.hpp"
 
 namespace nn::audio::server {
 
@@ -168,7 +171,7 @@ void MixContext::UpdateDistancesFromFinalMix() {
   for (int i = 0; i < GetCount(); i++) {
     MixInfo* info = GetInfo(i);
     m_SortedInfos.data[i] = info;
-    if (info->m_IsInUse != true) {
+    if (!info->m_IsInUse) {
       continue;
     }
     int mixId = info->m_MixId;
@@ -218,6 +221,17 @@ bool MixContext::SortForSplitter(const SplitterContext& splitters) {
   }
   CalcMixBufferOffset();
   return true;
+}
+
+void MixContext::SortForNonSplitter() {
+  UpdateDistancesFromFinalMix();
+  SpanIterator<MixInfo*> begin(&m_SortedInfos, 0);
+  SpanIterator<MixInfo*> end(&m_SortedInfos,
+    static_cast<ptrdiff_t>(m_SortedInfos.size));
+  std::stable_sort(begin, end, [](const MixInfo* lhs, const MixInfo* rhs) {
+    return lhs->m_DistanceFromFinalMix > rhs->m_DistanceFromFinalMix;
+  });
+  CalcMixBufferOffset();
 }
 
 void MixContext::CalcMixBufferOffset() {

@@ -1,6 +1,9 @@
 #include <string.h>
 
+#include <algorithm>
+
 #include "nn/audio/renderer_config.hpp"
+#include "nn/audio/server/span_iterator.hpp"
 #include "nn/audio/server/voice_context.hpp"
 
 namespace nn::audio::server {
@@ -33,7 +36,7 @@ void VoiceInfo::Initialize() {
   m_SampleRate = 0;
   m_Id = 0;
   m_SrcQuality = 0;
-  m_IsNew = false;
+  m_ChannelCount = 0;
   m_WasPlaying = false;
   m_Pitch = 0.0f;
   m_Volume = 0.0f;
@@ -42,7 +45,7 @@ void VoiceInfo::Initialize() {
   m_Priority = LowestPriority;
   memset(m_Parameter, 0, sizeof(m_Parameter));
   m_WaveBufferCount = 0;
-  m_SampleFormat = 0;
+  m_WaveBufferHead = 0;
   m_DataAddress.Setup(CpuAddr(), 0);
   m_DestinationMixId = UnusedMixId;
   m_DestinationSplitterId = UnusedSplitterId;
@@ -86,6 +89,51 @@ void VoiceInfo::UpdatePlayState(uint8_t state) {
   }
 }
 
+bool VoiceInfo::UpdateForCommandGeneration(VoiceContext* context) {
+  VoiceState* states[ChannelCountMax] = {};
+  if (IsFlagSet(Flag_IsNew)) {
+    ResetResources(context);
+    m_PrevVolume = m_Volume;
+    m_Flags &= ~Flag_IsNew;
+  }
+
+  const int channelCount = m_ChannelCount;
+  for (int i = 0; i < channelCount; i++) {
+    states[i] = context->GetDspSharedState(m_ChannelResourceIds[i]);
+  }
+  return UpdateParametersForCommandGeneration(states);
+}
+
+void VoiceInfo::ResetResources(VoiceContext* context) {
+  const int channelCount = m_ChannelCount;
+  for (int i = 0; i < channelCount; i++) {
+    const int id = m_ChannelResourceIds[i];
+    memset(context->GetDspSharedState(id), 0, sizeof(VoiceState));
+    VoiceChannelResource* resource = context->GetChannelResource(id);
+    memcpy(resource->mixVolumePrev, resource->mixVolume,
+      sizeof(resource->mixVolumePrev));
+  }
+}
+
+void VoiceInfo::FlushWaveBuffers(int flushCount, VoiceState** states,
+  int channelCount) {
+  int8_t index = m_WaveBufferHead;
+  for (int i = 0; i < flushCount; i++) {
+    for (int channel = 0; channel < channelCount; channel++) {
+      VoiceState* state = states[channel];
+      if (!m_WaveBuffers[index].m_IsSentToServer ||
+        state->isWaveBufferValid[index] == true) {
+        state->waveBufferIndex =
+          (state->waveBufferIndex + 1) % WaveBufferCountMax;
+        state->waveBufferConsumed++;
+      }
+      state->isWaveBufferValid[index] = false;
+    }
+    m_WaveBuffers[index].m_IsSentToServer = true;
+    index = static_cast<int8_t>((index + 1) % WaveBufferCountMax);
+  }
+}
+
 VoiceContext::VoiceContext()
   : m_Infos{nullptr, 0}, m_SortedInfos{nullptr, 0},
     m_ChannelResources{nullptr, 0}, m_States{nullptr, 0},
@@ -126,6 +174,31 @@ VoiceState* VoiceContext::GetState(int index) const {
 
 int VoiceContext::GetCount() const {
   return static_cast<int>(m_Infos.size);
+}
+
+void VoiceContext::SortInfo() {
+  for (size_t i = 0; i < m_Infos.size; i++) {
+    m_SortedInfos.data[i] = &m_Infos.data[i];
+  }
+
+  SpanIterator<VoiceInfo*> begin(&m_SortedInfos, 0);
+  SpanIterator<VoiceInfo*> end(&m_SortedInfos,
+    static_cast<ptrdiff_t>(m_SortedInfos.size));
+  const int usedCount = static_cast<int>(std::partition(begin, end,
+    [](const VoiceInfo* info) { return info->IsInUse(); }) - begin);
+  m_ActiveCount = std::max(m_ActiveCount, usedCount);
+
+  const int count =
+    std::min(m_ActiveCount, static_cast<int>(m_SortedInfos.size));
+  if (count != 0) {
+    std::sort(begin, begin + count,
+      [](const VoiceInfo* lhs, const VoiceInfo* rhs) {
+        if (lhs->GetPriority() != rhs->GetPriority()) {
+          return lhs->GetPriority() > rhs->GetPriority();
+        }
+        return lhs->GetSortingOrder() > rhs->GetSortingOrder();
+      });
+  }
 }
 
 void VoiceContext::UpdateStateByDspShared() {

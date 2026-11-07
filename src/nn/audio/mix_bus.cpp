@@ -254,6 +254,68 @@ void MixBus::RunCompleteBusMixCycle(MixBusLineScratch* pScratch,
   m_MixedStreamCount = 0;
 }
 
+bool MixBus::AttachInterface(MixBusInterface* pInterface,
+  MixBusInterfaceList* pList, bool isInput) {
+  if (pInterface == nullptr) {
+    return false;
+  }
+
+  pInterface->m_pBusNext = pList->head;
+  if (pList->head != nullptr) {
+    pList->head->m_pBusPrev = pInterface;
+  }
+  pList->head = pInterface;
+  pInterface->m_pBusPrev = nullptr;
+  ++pList->count;
+
+  const int lineCount = m_Lines.count;
+  const int channelCount = pInterface->GetChannelCount();
+  int lineIndex = 0;
+  for (MixBusLineElement* pLine = m_Lines.head; pLine != nullptr;
+    pLine = pLine->next, ++lineIndex) {
+    List<MixBusJunctionElement>* pJunctions =
+      pLine->GetJunctionList(isInput);
+    for (int channel = 0; channel < channelCount; ++channel) {
+      const JunctionWeightProvider* pProvider = isInput ?
+        m_pInputWeightProvider : m_pOutputWeightProvider;
+      const float weight = pProvider->GetWeight(channelCount, channel,
+        lineCount, lineIndex);
+      if (weight != 0.0f && pLine->CreateJunction(pJunctions, pInterface,
+        channel, weight) == nullptr) {
+        for (MixBusLineElement* pOther = m_Lines.head; pOther != nullptr;
+          pOther = pOther->next) {
+          List<MixBusJunctionElement>* pOtherJunctions =
+            pOther->GetJunctionList(isInput);
+          MixBusJunctionElement* pJunction = pOtherJunctions->head;
+          while (pJunction != nullptr) {
+            MixBusJunctionElement* pNext = pJunction->next;
+            if (pJunction->GetAttachedInterface() == pInterface) {
+              pOther->DestroyJunction(pOtherJunctions, pJunction);
+            }
+            pJunction = pNext;
+          }
+        }
+
+        if (pInterface->m_pBusPrev != nullptr) {
+          pInterface->m_pBusPrev->m_pBusNext = pInterface->m_pBusNext;
+        }
+        else {
+          pList->head = pInterface->m_pBusNext;
+        }
+        if (pInterface->m_pBusNext != nullptr) {
+          pInterface->m_pBusNext->m_pBusPrev = pInterface->m_pBusPrev;
+        }
+        --pList->count;
+        pInterface->m_pBus = nullptr;
+        return false;
+      }
+    }
+  }
+
+  pInterface->m_pBus = this;
+  return true;
+}
+
 bool MixBus::AttachInputStream(MixBusStream* pStream) {
   MixBusInterface* pInterface = pStream->CreateOutputInterface();
   const bool isAttached = AttachInterface(pInterface, &m_InputInterfaces,

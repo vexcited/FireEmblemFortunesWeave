@@ -1,8 +1,55 @@
 #include <string.h>
 
+#include <algorithm>
+#include <new>
+
+#include "nn/audio/common/revision.hpp"
 #include "nn/audio/server/splitter_context.hpp"
 
+namespace nn::audio::common {
+
+uint32_t GetSplitterInfoMagic();
+
+}
+
 namespace nn::audio::server {
+namespace {
+
+struct DestinationHeader {
+  uint32_t magic;
+  int id;
+};
+
+template<class Parameter>
+void CopyBiquadFilter(TBiquadFilterParameter<float>& out,
+  const Parameter& in);
+
+template<>
+void CopyBiquadFilter(TBiquadFilterParameter<float>& out,
+  const renderer::ipc::SplitterDestination::BiquadFilterParameter& in) {
+  out.enable = in.enable;
+  for (int i = 0; i < 3; i++) {
+    out.numerator[i] = in.numerator[i];
+  }
+  for (int i = 0; i < 2; i++) {
+    out.denominator[i] = in.denominator[i];
+  }
+}
+
+// Fixed point coefficients are Q14.
+template<>
+void CopyBiquadFilter(TBiquadFilterParameter<float>& out,
+  const renderer::ipc::SplitterDestinationFixedBiquadFilterParameter& in) {
+  out.enable = in.enable;
+  for (int i = 0; i < 3; i++) {
+    out.numerator[i] = static_cast<float>(in.numerator[i]) / 16384.0f;
+  }
+  for (int i = 0; i < 2; i++) {
+    out.denominator[i] = static_cast<float>(in.denominator[i]) / 16384.0f;
+  }
+}
+
+}
 
 ISplitterDestinationData::ISplitterDestinationData(int id)
   : m_Id(id), m_MixId(UnusedMixId), m_Next(nullptr), m_IsInUse(false),
@@ -107,6 +154,53 @@ SplitterDestinationDataVer2::SplitterDestinationDataVer2(int id)
   : ISplitterDestinationData(id), m_BiquadFilterState(nullptr), reserved{},
     m_BiquadFilter{}, m_IsBiquadFilterEnabledPrev{},
     m_IsBiquadFilterStateResetRequired(false), reserved2{} {
+}
+
+template<class Parameter>
+size_t SplitterDestinationDataVer2::UpdateImpl(const Parameter* in,
+  bool isPrevVolumeResetSupported) {
+  if (in == nullptr || in->magic != common::GetSplitterSendDataMagic() ||
+    in->id != m_Id) {
+    return sizeof(Parameter);
+  }
+
+  if (m_MixId != in->destinationId) {
+    m_MixId = in->destinationId;
+    m_IsBiquadFilterStateResetRequired = true;
+  }
+  if (m_MixId == -1) {
+    m_MixId = UnusedMixId;
+  }
+  for (int i = 0; i < MixVolumeCountMax; i++) {
+    m_MixVolume[i] = in->mixVolume[i];
+  }
+  for (int i = 0; i < BiquadFilterCount; i++) {
+    CopyBiquadFilter(m_BiquadFilter[i], in->biquadFilter[i]);
+  }
+
+  const bool isResetRequired = isPrevVolumeResetSupported
+    ? in->isPrevVolumeResetRequired
+    : !m_IsInUse && in->isInUse == true;
+  if (isResetRequired) {
+    ResetMixVolumePrev();
+    m_NeedToUpdateInternalState = false;
+    m_IsBiquadFilterStateResetRequired = true;
+    SplitterDestinationDataVer2::ClearBiquadFilterState();
+  }
+  m_IsInUse = in->isInUse;
+  return sizeof(Parameter);
+}
+
+size_t SplitterDestinationDataVer2::Update(const void* data,
+  bool isPrevVolumeResetSupported, bool isBiquadFilterParameterFloat) {
+  if (isBiquadFilterParameterFloat) {
+    return UpdateImpl(
+      static_cast<const renderer::ipc::SplitterDestination::UpdateData<2>*>(
+        data), isPrevVolumeResetSupported);
+  }
+  return UpdateImpl(
+    static_cast<const renderer::ipc::SplitterDestination::UpdateData<1>*>(
+      data), isPrevVolumeResetSupported);
 }
 
 bool SplitterDestinationDataVer2::IsBiquadFilterEnabled() {
@@ -217,6 +311,169 @@ void SplitterContext::ClearAllNewConnectionFlag() {
   for (size_t i = 0; i < m_InfoCount; i++) {
     m_Infos[i].ClearNewConnectionFlag();
   }
+}
+
+bool SplitterContext::Initialize(const BehaviorInfo& behavior,
+  const audio::detail::AudioRendererParameterInternal& parameter,
+  void* buffer, size_t size, SplitterDestinationState* states) {
+  m_DataCount = 0;
+  m_InfoCount = 0;
+  m_Data = nullptr;
+  m_Infos = nullptr;
+  common::WorkBufferAllocator allocator(buffer, size);
+
+  if (!behavior.IsSplitterSupported() || parameter.splitterCount <= 0 ||
+    parameter.splitterSendChannelCount <= 0) {
+    return true;
+  }
+
+  m_IsSplitterBugFixed = behavior.IsSplitterBugFixed();
+  m_IsBiquadFilterParameterSupported =
+    behavior.IsBiquadFilterParameterForSplitterEnabled();
+  m_IsPrevVolumeResetSupported =
+    behavior.IsSplitterPrevVolumeResetSupported();
+  m_IsBiquadFilterParameterFloatSupported =
+    behavior.IsBiquadFilterParameterFloatSupported();
+  if (states == nullptr && m_IsBiquadFilterParameterSupported) {
+    return false;
+  }
+
+  const int infoCount = parameter.splitterCount;
+  SplitterInfo* infos = static_cast<SplitterInfo*>(
+    allocator.Allocate(infoCount * sizeof(SplitterInfo), 16));
+  for (int i = 0; i < infoCount; i++) {
+    new (&infos[i]) SplitterInfo(i);
+  }
+  if (infos == nullptr) {
+    return false;
+  }
+
+  const int dataCount = parameter.splitterSendChannelCount;
+  void* data;
+  if (m_IsBiquadFilterParameterSupported == true) {
+    SplitterDestinationDataVer2* entries =
+      static_cast<SplitterDestinationDataVer2*>(allocator.Allocate(
+        dataCount * sizeof(SplitterDestinationDataVer2), 16));
+    for (int i = 0; i < dataCount; i++) {
+      new (&entries[i]) SplitterDestinationDataVer2(i);
+    }
+    data = entries;
+  }
+  else {
+    SplitterDestinationDataVer1* entries =
+      static_cast<SplitterDestinationDataVer1*>(allocator.Allocate(
+        dataCount * sizeof(SplitterDestinationDataVer1), 16));
+    for (int i = 0; i < dataCount; i++) {
+      new (&entries[i]) SplitterDestinationDataVer1(i);
+    }
+    data = entries;
+  }
+  if (data == nullptr) {
+    return false;
+  }
+
+  if (m_IsBiquadFilterParameterSupported == true) {
+    SplitterDestinationDataVer2* entries =
+      static_cast<SplitterDestinationDataVer2*>(data);
+    for (int i = 0; i < parameter.splitterSendChannelCount; i++) {
+      entries[i].m_BiquadFilterState = states[i].data;
+    }
+  }
+  for (int i = 0; i < infoCount; i++) {
+    infos[i].m_DestinationCount = 0;
+    infos[i].m_Data = nullptr;
+    infos[i].m_HasNewConnection = true;
+  }
+
+  m_Infos = infos;
+  m_InfoCount = infoCount;
+  m_Data = data;
+  m_DataCount = dataCount;
+  return true;
+}
+
+bool SplitterContext::Update(uintptr_t input, size_t& consumedSize) {
+  if (m_DataCount <= 0 || static_cast<int>(m_InfoCount) <= 0) {
+    consumedSize = 0;
+    return true;
+  }
+
+  ClearAllNewConnectionFlag();
+  nn::util::ConstBytePtr ptr(reinterpret_cast<const void*>(input));
+  const auto* header =
+    reinterpret_cast<const renderer::ipc::SplitterInParameterHeader*>(input);
+  size_t offset = UpdateInfo(ptr, sizeof(*header), header->infoCount);
+  offset = UpdateData(ptr, offset, header->dataCount);
+  consumedSize = (offset + 15) & ~size_t{15};
+  return true;
+}
+
+size_t SplitterContext::UpdateInfo(nn::util::ConstBytePtr& input,
+  size_t offset, int count) {
+  for (int i = 0; i < count; i++) {
+    const auto* in =
+      static_cast<const renderer::ipc::Splitter::UpdateData<0>*>(
+        input.Get(offset));
+    if (in->magic != common::GetSplitterInfoMagic()) {
+      continue;
+    }
+    if (in->id < 0 || in->id >= static_cast<int>(m_InfoCount)) {
+      continue;
+    }
+    SplitterInfo& info = m_Infos[in->id];
+    RecomposeDestination(info, in);
+    offset += info.Update(in);
+  }
+  return offset;
+}
+
+size_t SplitterContext::UpdateData(nn::util::ConstBytePtr& input,
+  size_t offset, int count) {
+  for (int i = 0; i < count; i++) {
+    const void* in = input.Get(offset);
+    const int id = static_cast<const DestinationHeader*>(in)->id;
+    if (0 <= id && id < m_DataCount) {
+      offset += GetData(id)->Update(in, m_IsPrevVolumeResetSupported,
+        m_IsBiquadFilterParameterFloatSupported);
+    }
+  }
+  return offset;
+}
+
+void SplitterContext::UpdateInternalState() {
+  for (size_t i = 0; i < m_InfoCount; i++) {
+    m_Infos[i].UpdateInternalState();
+  }
+}
+
+void SplitterContext::RecomposeDestination(SplitterInfo& info,
+  const renderer::ipc::Splitter::UpdateData<0>* in) {
+  ISplitterDestinationData* data = info.m_Data;
+  while (data != nullptr) {
+    ISplitterDestinationData* next = data->m_Next;
+    data->m_Next = nullptr;
+    data = next;
+  }
+  info.m_Data = nullptr;
+
+  int destinationCount = in->destinationCount;
+  if (!m_IsSplitterBugFixed) {
+    destinationCount = std::min(destinationCount,
+      GetDestCountPerInfoForCompat());
+  }
+  if (destinationCount <= 0) {
+    return;
+  }
+
+  ISplitterDestinationData* head = GetData(in->destinationIds[0]);
+  ISplitterDestinationData* last = head;
+  for (int i = 1; i < destinationCount; i++) {
+    ISplitterDestinationData* next = GetData(in->destinationIds[i]);
+    last->m_Next = next;
+    last = next;
+  }
+  info.m_Data = head;
+  info.m_DestinationCount = destinationCount;
 }
 
 int SplitterContext::GetDestCountPerInfoForCompat() const {

@@ -9,8 +9,16 @@
 namespace nn::audio {
 
 struct VoiceState {
-  uint8_t state[256];
+  int64_t playedSampleCount;
+  int offset;
+  int waveBufferIndex;
+  uint8_t reserved0[36];
+  bool isWaveBufferValid[4];
+  int waveBufferConsumed;
+  uint8_t reserved1[196];
 };
+
+static_assert(sizeof(VoiceState) == 256);
 
 namespace server {
 
@@ -35,6 +43,8 @@ static_assert(sizeof(VoiceChannelResource) == 208);
 static_assert(sizeof(VoiceChannelResource::InParameter) == 112);
 
 class WaveBuffer {
+  friend class VoiceInfo;
+
 public:
   WaveBuffer();
 
@@ -63,6 +73,7 @@ class VoiceContext;
 class VoiceInfo {
 public:
   static constexpr int WaveBufferCountMax = 4;
+  static constexpr int ChannelCountMax = 6;
   static constexpr int UnusedMixId = 0x7fffffff;
   static constexpr int UnusedSplitterId = -1;
   static constexpr int LowestPriority = 0xff;
@@ -82,7 +93,7 @@ public:
 
   enum Flag : uint16_t {
     Flag_IsInUse = 1 << 0,
-    Flag_IsPitchAndSrcSkipped = 1 << 1,
+    Flag_IsNew = 1 << 1,
     Flag_IsBiquadFilterEnabled = 1 << 2,
     Flag_IsVoiceDropped = 1 << 3,
     Flag_IsDataUnmapped = 1 << 4,
@@ -96,10 +107,26 @@ public:
     const renderer::ipc::Voice::WaveBuffer* waveBuffer) const;
   bool ShouldSkip() const;
   bool UpdateForCommandGeneration(VoiceContext* context);
+  bool UpdateParametersForCommandGeneration(VoiceState** states);
+  void ResetResources(VoiceContext* context);
+  void FlushWaveBuffers(int flushCount, VoiceState** states,
+    int channelCount);
   void UpdatePlayState(uint8_t state);
 
   uint32_t GetNodeId() const {
     return m_NodeId;
+  }
+
+  bool IsInUse() const {
+    return IsFlagSet(Flag_IsInUse);
+  }
+
+  int GetPriority() const {
+    return m_Priority;
+  }
+
+  int GetSortingOrder() const {
+    return m_SortingOrder;
   }
 
 private:
@@ -108,9 +135,9 @@ private:
   }
 
   int m_Id;
-  bool m_IsNew;
+  int8_t m_ChannelCount;
   bool m_WasPlaying;
-  uint8_t m_SampleFormat;
+  int8_t m_WaveBufferHead;
   uint8_t reserved0;
   uint32_t m_NodeId;
   uint32_t m_SampleRate;
@@ -136,7 +163,7 @@ private:
   AddressInfo m_DataAddress;
   uint8_t reserved2[8];
   WaveBuffer m_WaveBuffers[WaveBufferCountMax];
-  uint8_t reserved3[24];
+  int m_ChannelResourceIds[ChannelCountMax];
 };
 
 static_assert(sizeof(VoiceInfo) == 568);
@@ -154,6 +181,7 @@ public:
   VoiceInfo* GetInfo(int index) const;
   VoiceState* GetState(int index) const;
   int GetCount() const;
+  void SortInfo();
   void UpdateStateByDspShared();
 
 private:

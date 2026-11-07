@@ -70,20 +70,43 @@ struct PerformanceFrameHeaderVersion2 {
 };
 
 struct PerformanceEntryVersion1 {
-  uint8_t data[16];
+  uint32_t nodeId;
+  uint32_t startTime;
+  uint32_t processingTime;
+  uint8_t entryType;
+  uint8_t reserved[3];
 };
 
 struct PerformanceEntryVersion2 {
-  uint8_t data[24];
+  uint32_t nodeId;
+  uint32_t startTime;
+  uint32_t processingTime;
+  uint8_t entryType;
+  uint8_t reserved[11];
 };
 
 struct PerformanceDetailVersion1 {
-  uint8_t data[16];
+  uint32_t nodeId;
+  uint32_t startTime;
+  uint32_t processingTime;
+  uint8_t detailType;
+  uint8_t entryType;
+  uint8_t reserved[2];
 };
 
 struct PerformanceDetailVersion2 {
-  uint8_t data[24];
+  uint32_t nodeId;
+  uint32_t startTime;
+  uint32_t processingTime;
+  uint8_t detailType;
+  uint8_t entryType;
+  uint8_t reserved[10];
 };
+
+static_assert(sizeof(PerformanceEntryVersion1) == 16);
+static_assert(sizeof(PerformanceEntryVersion2) == 24);
+static_assert(sizeof(PerformanceDetailVersion1) == 16);
+static_assert(sizeof(PerformanceDetailVersion2) == 24);
 
 static_assert(sizeof(PerformanceFrameHeaderVersion1) == 24);
 static_assert(sizeof(PerformanceFrameHeaderVersion2) == 48);
@@ -138,6 +161,8 @@ class PerformanceManagerImpl : public IPerformanceManagerImpl {
 public:
   static constexpr int SysDetailCountMax = 100;
 
+  PerformanceManagerImpl() = default;
+
   void Initialize(void* buffer, size_t size,
     const audio::detail::AudioRendererParameterInternal& parameter,
     const BehaviorInfo& behavior, const MemoryPoolInfo& pool) override;
@@ -166,20 +191,44 @@ public:
     int64_t startTime);
 
 private:
-  uint8_t* m_FrameBuffer;
-  void* m_TranslatedFrameBuffer;
-  uint32_t m_FrameIndex;
-  uint8_t reserved0[4];
-  FrameHeader* m_FrameHeader;
-  Entry* m_Entries;
-  SysDetail* m_SysDetails;
-  int m_EntryCount;
-  int m_SysDetailCount;
-  uint8_t reserved1[56];
-  size_t m_FrameSize;
-  bool m_IsInitialized;
-  uint8_t reserved2[31];
+  struct Frame {
+    FrameHeader* header;
+    Entry* entries;
+    Detail* details;
+  };
+
+  Frame GetHistoryFrame(int index) const;
+
+  uint8_t* m_FrameBuffer = nullptr;
+  void* m_TranslatedFrameBuffer = nullptr;
+  uint32_t m_FrameIndex = 0;
+  FrameHeader* m_FrameHeader = nullptr;
+  Entry* m_Entries = nullptr;
+  Detail* m_Details = nullptr;
+  int m_EntryCount = 0;
+  int m_DetailCount = 0;
+  uint8_t* m_HistoryFrameBuffer = nullptr;
+  FrameHeader* m_HistoryFrameHeader = nullptr;
+  Entry* m_HistoryEntries = nullptr;
+  Detail* m_HistoryDetails = nullptr;
+  int m_HistoryWriteIndex = 0;
+  int m_HistoryReadIndex = 0;
+  int m_HistoryFrameCount = 0;
+  int m_EntryCountMax = 0;
+  int m_DetailCountMax = 0;
+  size_t m_FrameSize = 0;
+  bool m_IsInitialized = false;
+  uint32_t m_DetailTarget = 0;
+  PerformanceMetricsDataFormat m_DataFormat =
+    PerformanceMetricsDataFormat_Invalid;
+  int m_VoiceDropCount = 0;
+  int64_t m_StartTime = 0;
+  bool m_IsRenderingTimeLimitExceeded = false;
 };
+
+static_assert(sizeof(PerformanceManagerImpl<PerformanceManagerImplVersion1Tag,
+  common::PerformanceFrameHeaderVersion1, common::PerformanceEntryVersion1,
+  common::PerformanceDetailVersion1, PerformanceSysDetail>) == 160);
 
 using PerformanceManagerImplVersion1 = PerformanceManagerImpl<
   PerformanceManagerImplVersion1Tag, common::PerformanceFrameHeaderVersion1,
@@ -193,6 +242,9 @@ using PerformanceManagerImplVersion2 = PerformanceManagerImpl<
 
 class PerformanceManager {
 public:
+  void Initialize(void* buffer, size_t size,
+    const audio::detail::AudioRendererParameterInternal& parameter,
+    const BehaviorInfo& behavior, const MemoryPoolInfo& pool);
   static size_t GetRequiredBufferSizeForPerformanceMetricsPerFrame(
     const BehaviorInfo& behavior,
     const audio::detail::AudioRendererParameterInternal& parameter);

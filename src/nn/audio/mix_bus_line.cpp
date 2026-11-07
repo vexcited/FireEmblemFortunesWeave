@@ -1,17 +1,33 @@
 #include "nn/audio/mix_bus.hpp"
 
 #include "nn/audio/vector_fill.hpp"
+#include "nn/audio/vector_ramp.hpp"
 
 namespace nn::audio::util {
-
-// The per sample mixing kernel of the line, kept out of line.
-[[gnu::visibility("hidden")]] void MixSignal(MixBusSignalBuffer* pOutput,
-  const MixBusSignalBuffer* pInput, int sampleCount, bool isOverwrite,
-  float startGain, float endGain);
 
 namespace {
 
 constexpr float MaxGain = 128.0f;
+constexpr int FloatFormat = 754;
+
+struct FixedRamp {
+  int gain;
+  int step;
+};
+
+FixedRamp GetFixedRamp(float startGain, float endGain, int sampleCount) {
+  const NintType<int> start = NormalizeFloat<NintType<int>, 23>(startGain);
+  if (endGain == startGain) {
+    return { start.value, 0 };
+  }
+
+  const NintType<int> end = NormalizeFloat<NintType<int>, 23>(endGain);
+  const int difference = start.exponent - end.exponent;
+  const int gain = start.value >> (difference > 0 ? difference : 0);
+  const int endValue = end.value >> (difference < 0 ? -difference : 0);
+
+  return { gain, (endValue - gain) / sampleCount };
+}
 
 bool IsUsable(const MixBusSignalBuffer& buffer, int sampleCount) {
   return buffer.buffer != nullptr && buffer.sampleCount >= sampleCount;
@@ -28,6 +44,49 @@ void ZeroFill(const MixBusSignalBuffer& buffer) {
   }
 }
 
+}
+
+// The per sample mixing kernel of the line, kept out of line.
+[[gnu::visibility("hidden"), gnu::noinline]] void MixSignal(
+  MixBusSignalBuffer* pOutput, const MixBusSignalBuffer* pInput,
+  int sampleCount, bool isOverwrite, float startGain, float endGain) {
+  if (pInput->sampleSize == sizeof(int16_t) &&
+    pOutput->sampleSize == sizeof(int32_t)) {
+    const FixedRamp ramp = GetFixedRamp(startGain, endGain, sampleCount);
+    VecMacRamped<int64_t, int32_t, int16_t, int32_t, 15>(
+      static_cast<int32_t*>(pOutput->buffer),
+      static_cast<const int16_t*>(pInput->buffer), ramp.gain, ramp.step,
+      sampleCount, isOverwrite);
+    return;
+  }
+
+  if (pInput->format == FloatFormat && pOutput->format == FloatFormat) {
+    float step = 0.0f;
+    if (startGain != endGain) {
+      step = (endGain - startGain) / static_cast<float>(sampleCount);
+    }
+    VecMacRamped<float>(static_cast<float*>(pOutput->buffer),
+      static_cast<const float*>(pInput->buffer), startGain, step,
+      sampleCount, isOverwrite);
+    return;
+  }
+
+  if (pInput->sampleSize == sizeof(int32_t) &&
+    pOutput->sampleSize == sizeof(int32_t)) {
+    const FixedRamp ramp = GetFixedRamp(startGain, endGain, sampleCount);
+    if (pInput->format == 31) {
+      VecMacRamped<int64_t, int32_t, int32_t, int32_t, 31>(
+        static_cast<int32_t*>(pOutput->buffer),
+        static_cast<const int32_t*>(pInput->buffer), ramp.gain, ramp.step,
+        sampleCount, isOverwrite);
+    }
+    else if (pInput->format == 23) {
+      VecMacRamped<int64_t, int32_t, int32_t, int32_t, 23>(
+        static_cast<int32_t*>(pOutput->buffer),
+        static_cast<const int32_t*>(pInput->buffer), ramp.gain, ramp.step,
+        sampleCount, isOverwrite);
+    }
+  }
 }
 
 void MixBusLine::Initialize(MixBus* pBus) {

@@ -6,8 +6,43 @@
 #include "nn/audio/effect_api.hpp"
 #include "nn/audio/renderer_ipc.hpp"
 #include "nn/audio/server/behavior_info.hpp"
+#include "nn/util/byte_ptr.hpp"
 
 namespace nn::audio {
+
+namespace renderer::ipc {
+
+struct SplitterInParameterHeader {
+  uint32_t magic;
+  int infoCount;
+  int dataCount;
+  uint8_t reserved[20];
+};
+
+static_assert(sizeof(SplitterInParameterHeader) == 32);
+
+struct SplitterDestinationFixedBiquadFilterParameter {
+  bool enable;
+  uint8_t reserved;
+  int16_t numerator[3];
+  int16_t denominator[2];
+};
+
+template <>
+struct SplitterDestination::UpdateData<1> {
+  uint32_t magic;
+  int id;
+  float mixVolume[24];
+  int destinationId;
+  SplitterDestinationFixedBiquadFilterParameter biquadFilter[2];
+  bool isInUse;
+  bool isPrevVolumeResetRequired;
+  uint8_t reserved[10];
+};
+
+static_assert(sizeof(SplitterDestination::UpdateData<1>) == 144);
+
+}
 
 namespace detail {
 
@@ -43,6 +78,8 @@ uint32_t GetSplitterSendDataMagic();
 namespace server {
 
 class ISplitterDestinationData {
+  friend class SplitterContext;
+
 public:
   static constexpr int MixVolumeCountMax = 24;
   static constexpr int UnusedMixId = 0x7fffffff;
@@ -103,6 +140,8 @@ public:
 };
 
 class SplitterDestinationDataVer2 : public ISplitterDestinationData {
+  friend class SplitterContext;
+
 public:
   static constexpr int BiquadFilterCount = 2;
 
@@ -120,6 +159,10 @@ public:
   bool IsBiquadFilterEnabledPrev(int index) const;
 
 private:
+  template<class Parameter>
+  [[gnu::always_inline]] size_t UpdateImpl(const Parameter* in,
+    bool isPrevVolumeResetSupported);
+
   uint8_t* m_BiquadFilterState;
   uint8_t reserved[8];
   TBiquadFilterParameter<float> m_BiquadFilter[BiquadFilterCount];
@@ -132,6 +175,8 @@ private:
 static_assert(sizeof(SplitterDestinationDataVer2) == 304);
 
 class SplitterInfo {
+  friend class SplitterContext;
+
 public:
   explicit SplitterInfo(int id);
 
@@ -154,8 +199,19 @@ private:
 
 static_assert(sizeof(SplitterInfo) == 32);
 
+struct SplitterDestinationState {
+  uint8_t data[224];
+};
+
 class SplitterContext {
 public:
+  bool Initialize(const BehaviorInfo& behavior,
+    const audio::detail::AudioRendererParameterInternal& parameter,
+    void* buffer, size_t size, SplitterDestinationState* states);
+  size_t UpdateInfo(nn::util::ConstBytePtr& input, size_t offset, int count);
+  size_t UpdateData(nn::util::ConstBytePtr& input, size_t offset, int count);
+  void RecomposeDestination(SplitterInfo& info,
+    const renderer::ipc::Splitter::UpdateData<0>* in);
   ISplitterDestinationData* GetDestinationData(int splitterId,
     int index) const;
   SplitterInfo* GetInfo(int index) const;
@@ -180,7 +236,8 @@ private:
   int m_DataCount;
   bool m_IsSplitterBugFixed;
   bool m_IsBiquadFilterParameterSupported;
-  uint8_t reserved[2];
+  bool m_IsPrevVolumeResetSupported;
+  bool m_IsBiquadFilterParameterFloatSupported;
 };
 
 }
