@@ -4,6 +4,7 @@
 
 #pragma GCC visibility push(hidden)
 #include "game/menu/basic_menu.hpp"
+#include "game/sound/se.hpp"
 
 namespace game::menu {
 
@@ -35,6 +36,18 @@ private:
 };
 
 NoticeInfoDialog::~NoticeInfoDialog() = default;
+
+void NoticeInfoDialog::Unknown69() {
+  sound::PlaySe("SE_SYS_NoticeDialogWindow_Close");
+}
+
+void NoticeInfoDialog::Unknown82() {
+  sound::PlaySe("SE_SYS_NoticeDialogWindow_Open");
+}
+
+void NoticeInfoDialog::Unknown138() {
+  sound::PlaySe("SE_SYS_Page_Stop");
+}
 
 }
 

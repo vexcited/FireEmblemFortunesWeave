@@ -5,6 +5,7 @@
 #include "game/menu/basic_menu.hpp"
 #include "game/menu/tutorial_scroll.hpp"
 #include "game/proc/proc_game_skip_view.hpp"
+#include "game/sound/se.hpp"
 
 namespace game::menu {
 
@@ -47,6 +48,14 @@ TutorialInfo::~TutorialInfo() {
   if (map::MapUnitInfo* info = map::MapUnitInfo::GetInstance()) {
     info->SetUnknown16c();
   }
+}
+
+void TutorialInfo::Unknown72() {
+  sound::PlaySe("SE_SYS_TutorialWindow_Close");
+}
+
+void TutorialInfo::Unknown82() {
+  sound::PlaySe("SE_SYS_TutorialWindow_Open");
 }
 
 }

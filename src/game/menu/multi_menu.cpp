@@ -61,6 +61,10 @@ public:
   int Unknown140() override { return 0; }
 };
 
+void UnitTroopMenu::Unknown78(int /* result */) {
+  sound::PlaySe("SE_SYS_List_Change_H");
+}
+
 namespace {
 
 class UnitTroopItemMenu : public UnitTroopMenu {
@@ -94,6 +98,10 @@ private:
 };
 
 [[gnu::used]] UnitTroopItemMenu::UnitTroopItemMenu() = default;
+
+void UnitTroopItemMenu::Unknown75() {
+  sound::PlaySe("SE_SYS_NG");
+}
 
 }
 

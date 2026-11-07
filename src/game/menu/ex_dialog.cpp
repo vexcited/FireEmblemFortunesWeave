@@ -5,6 +5,7 @@
 
 #pragma GCC visibility push(hidden)
 #include "game/menu/basic_menu.hpp"
+#include "game/sound/se.hpp"
 
 namespace game::menu {
 
@@ -39,6 +40,10 @@ private:
 };
 
 ExDialog::~ExDialog() = default;
+
+void ExDialog::Unknown72() {
+  sound::PlaySe("SE_SYS_Cancel_M_EX");
+}
 
 }
 
