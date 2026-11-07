@@ -10,6 +10,7 @@ namespace game::facility {
 
 // Set while a sound of the memory sound menu plays.
 [[gnu::visibility("hidden")]] extern bool g_memory_sound_playing;
+[[gnu::visibility("hidden")]] extern int g_obelisk_menu_count;
 
 namespace {
 
@@ -65,6 +66,11 @@ private:
 
 [[gnu::used]]
 ProcObeliskMemorySoundMenu::ProcObeliskMemorySoundMenu() = default;
+
+void ProcObeliskMemorySoundMenu::Unknown93() {
+  g_memory_sound_playing = true;
+  ++g_obelisk_menu_count;
+}
 
 }
 

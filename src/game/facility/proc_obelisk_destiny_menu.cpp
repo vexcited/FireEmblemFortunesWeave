@@ -2,10 +2,10 @@
 
 namespace game::facility {
 
-namespace {
+// Obelisk menus currently shown, shared by the obelisk menu units.
+[[gnu::visibility("hidden")]] int g_obelisk_menu_count;
 
-// Open destiny menus, raised while one shows.
-int g_destiny_menu_count;
+namespace {
 
 class ProcObeliskDestinyMenu : public menu::GameMenu {
 public:
@@ -41,11 +41,11 @@ private:
 [[gnu::used]] ProcObeliskDestinyMenu::ProcObeliskDestinyMenu() = default;
 
 void ProcObeliskDestinyMenu::Unknown93() {
-  ++g_destiny_menu_count;
+  ++g_obelisk_menu_count;
 }
 
 void ProcObeliskDestinyMenu::Unknown94() {
-  --g_destiny_menu_count;
+  --g_obelisk_menu_count;
   GameMenu::Unknown94();
 }
 
