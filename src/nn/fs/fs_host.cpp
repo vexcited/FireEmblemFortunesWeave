@@ -150,11 +150,11 @@ inline Result MountHostImpl(const char* name, const char* rootPath,
   MountHostOption option) {
   NN_FS_RESULT_DO(detail::CheckMountName(name));
   NN_FS_RESULT_THROW_UNLESS(rootPath != nullptr, ResultNullptrArgument());
+  std::unique_ptr<fsa::IFileSystem> fileSystem;
   std::unique_ptr<fsa::ICommonMountNameGenerator> generator(
     new HostCommonMountNameGenerator(rootPath));
   NN_FS_RESULT_THROW_UNLESS(generator != nullptr,
     ResultAllocationMemoryFailedInHostB());
-  std::unique_ptr<fsa::IFileSystem> fileSystem;
   NN_FS_RESULT_DO(OpenHostFileSystemImpl(&fileSystem, name, rootPath,
     option));
   return fsa::Register(name, std::move(fileSystem), std::move(generator));

@@ -183,14 +183,16 @@ Result GetFunctionBlackListSystemVersionToAuthorize(
 }
 
 void RefreshApplicationFunctionBlackListDebugRecord() {
-  NN_ABORT_UNLESS_RESULT_SUCCESS(GetPlatformServiceManagerForSystem()
-    ->RefreshApplicationFunctionBlackListDebugRecord());
+  auto manager = GetPlatformServiceManagerForSystem();
+  NN_ABORT_UNLESS_RESULT_SUCCESS(
+    manager->RefreshApplicationFunctionBlackListDebugRecord());
 }
 
 uint32_t GetFunctionBlackListVersion() {
   uint32_t version = 0;
-  NN_ABORT_UNLESS_RESULT_SUCCESS(GetPlatformServiceManagerForSystem()
-    ->GetFunctionBlackListVersion(sf::Out<uint32_t>(&version)));
+  auto manager = GetPlatformServiceManagerForSystem();
+  NN_ABORT_UNLESS_RESULT_SUCCESS(
+    manager->GetFunctionBlackListVersion(sf::Out<uint32_t>(&version)));
   return version;
 }
 

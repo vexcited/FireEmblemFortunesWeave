@@ -976,10 +976,11 @@ Result OpenGameCardPartition(std::unique_ptr<IStorage>* outStorage,
   NN_FS_RESULT_DO_WITH_ABORT_CHECK(fileSystemProxy->OpenGameCardStorage(
     nn::sf::Out<nn::sf::SharedPointer<fssrv::sf::IStorage>>(&storage), handle,
     static_cast<uint32_t>(partition)));
-  outStorage->reset(new detail::StorageServiceObjectAdapter<
-    fssrv::sf::IStorage>(std::move(storage)));
-  NN_FS_RESULT_THROW_UNLESS_WITH_ABORT_CHECK(*outStorage != nullptr,
+  IStorage* adapter = new detail::StorageServiceObjectAdapter<
+    fssrv::sf::IStorage>(std::move(storage));
+  NN_FS_RESULT_THROW_UNLESS_WITH_ABORT_CHECK(adapter != nullptr,
     ResultAllocationMemoryFailedInGameCardB());
+  outStorage->reset(adapter);
   return ResultSuccess();
 }
 
