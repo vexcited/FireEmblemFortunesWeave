@@ -21,9 +21,26 @@ class Vector2f : public Vector2fType {};
 class Vector3f : public Vector3fType {
 public:
   static const Vector3f ConstantZero;
+  static const Vector3f ConstantOne;
+  static const Vector3f ConstantUnitX;
+  static const Vector3f ConstantUnitY;
+  static const Vector3f ConstantUnitZ;
 };
 
-class Vector4f : public Vector4fType {};
+class Vector4f : public Vector4fType {
+public:
+  static const Vector4f ConstantZero;
+  static const Vector4f ConstantOne;
+  static const Vector4f ConstantUnitX;
+  static const Vector4f ConstantUnitY;
+  static const Vector4f ConstantUnitZ;
+  static const Vector4f ConstantUnitW;
+};
+
+class Quaternion : public Vector4fType {
+public:
+  static const Quaternion ConstantIdentity;
+};
 
 struct Color4u8Type {
   unsigned char v[4];

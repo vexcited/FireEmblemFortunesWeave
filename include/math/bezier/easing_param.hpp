@@ -54,6 +54,20 @@ public:
     UpdateSpan();
   }
 
+  // The extra parameter of the curve is kept with its flag.
+  EasingParam(CurveType curve, EaseType ease, CScriptArray* points,
+    int dimension, float custom)
+    : curve_(curve), ease_(ease), dimension_(dimension), points_(points),
+      custom_(custom), has_custom_(true) {
+    if (points_ != nullptr) {
+      points_->AddRef();
+    }
+    else {
+      dimension_ = 0;
+    }
+    UpdateSpan();
+  }
+
   virtual ~EasingParam() {
     if (points_ != nullptr) {
       points_->Release();
@@ -61,41 +75,48 @@ public:
     }
   }
 
+  EasingParam& operator=(const EasingParam& other) {
+    Set(other.curve_, other.ease_, other.points_, other.dimension_,
+      other.custom_, other.has_custom_);
+    return *this;
+  }
+
+  // Takes a reference to the new values after releasing the old ones.
+  void Set(CurveType curve, EaseType ease, CScriptArray* points,
+    int dimension, float custom, bool hasCustom) {
+    curve_ = curve;
+    ease_ = ease;
+    if (points_ != nullptr) {
+      points_->Release();
+    }
+    points_ = points;
+    if (points != nullptr) {
+      dimension_ = dimension;
+      points->AddRef();
+    }
+    else {
+      dimension_ = 0;
+    }
+    custom_ = custom;
+    has_custom_ = hasCustom;
+    UpdateSpan();
+  }
+
+  void SetCustom(float custom) {
+    custom_ = custom;
+    has_custom_ = true;
+  }
+
+  void ClearCustom() {
+    has_custom_ = false;
+  }
+
   float GetSpan() const {
     return span_;
   }
 
   // The distance between the first two control values, 1 with fewer values.
-  void UpdateSpan() {
-    float span = 1.0f;
-    if (points_ != nullptr && points_->GetSize() >= 2) {
-      if (dimension_ == 3) {
-        const float32x4_t first =
-          *static_cast<const float32x4_t*>(points_->At(0));
-        const float32x4_t delta = vsubq_f32(
-          *static_cast<const float32x4_t*>(points_->At(1)), first);
-        const float32x4_t square = vmulq_f32(delta, delta);
-        float32x2_t sum =
-          vadd_f32(vget_high_f32(square), vget_low_f32(square));
-        sum = vpadd_f32(sum, sum);
-        span = vget_lane_f32(vsqrt_f32(sum), 0);
-      }
-      else if (dimension_ == 2) {
-        const float32x2_t first =
-          *static_cast<const float32x2_t*>(points_->At(0));
-        const float32x2_t delta = vsub_f32(
-          *static_cast<const float32x2_t*>(points_->At(1)), first);
-        const float32x2_t square = vmul_f32(delta, delta);
-        span = std::sqrt(vget_lane_f32(square, 0) +
-          vget_lane_f32(square, 1));
-      }
-      else if (dimension_ == 1) {
-        const float first = *static_cast<const float*>(points_->At(0));
-        span = std::fabs(*static_cast<const float*>(points_->At(1)) - first);
-      }
-    }
-    span_ = span;
-  }
+  void UpdateSpan();
 
 private:
   CurveType curve_;
