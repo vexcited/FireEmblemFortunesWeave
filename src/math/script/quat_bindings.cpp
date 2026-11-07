@@ -1,5 +1,6 @@
 #include <new>
 
+#include "nn/util/math_types.hpp"
 #include "nn/util/vector.hpp"
 
 #pragma GCC visibility push(hidden)
@@ -161,11 +162,20 @@ namespace quat {
 }
 
 [[gnu::used]] Quat FromEulerianAngle(const Vec3& rot) {
-  return Quat::FromEulerianAngle(rot);
+  return Quat::FromEulerianAngle(rot.z(), rot.y(), rot.x());
 }
 
 [[gnu::used]] Quat FromRotationMatrix(const Mtx43& value) {
   return Quat::FromRotationMatrix(value);
+}
+
+// The original inlines the out of line member here.
+[[gnu::used]] Quat FromAxisAngle(const Vec3& axis, float radian) {
+  return Quat::AxisAngleRotation(axis, radian);
+}
+
+[[gnu::used]] Quat MakeVectorRotation(const Vec3& from, const Vec3& to) {
+  return Quat::MakeVectorRotation(from, to);
 }
 
 [[gnu::used]] const Quat& Zero() {

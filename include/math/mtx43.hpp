@@ -2,14 +2,13 @@
 
 #include <arm_neon.h>
 
+#include "math/quat.hpp"
 #include "math/vec3.hpp"
 #include "nn/util/util_matrix.hpp"
 
 namespace math {
 
 class Mtx44;
-class Quat;
-
 // A 4x3 matrix of four NEON rows, the axes followed by the translation. The
 // fourth lane of a row is kept zero.
 class Mtx43 {
@@ -66,6 +65,34 @@ public:
 
   Vec3 Transform(const Vec3& v) const;
   Vec3 TransformNormal(const Vec3& v) const;
+
+  // A singular matrix becomes zero and is reported.
+  bool Inverse() {
+    const Mtx43 m(*this);
+    float32x4_t axes[3];
+    const float32x2_t det = m.InverseAxes(axes);
+    const uint32x4_t singular = vceqzq_f32(vdupq_lane_f32(det, 0));
+    float32x4_t w = vmulq_n_f32(vnegq_f32(axes[0]), m.m_[3][0]);
+    w = vmlsq_n_f32(w, axes[1], m.m_[3][1]);
+    w = vmlsq_n_f32(w, axes[2], m.m_[3][2]);
+    for (int i = 0; i < 3; i++) {
+      m_[i] = ClearLanes(axes[i], singular);
+    }
+    m_[3] = ClearLanes(w, singular);
+    return vget_lane_f32(det, 0) != 0.0f;
+  }
+
+  // The transposed inverse of the 3x3 part, the translation becomes zero.
+  bool InverseTranspose() {
+    float32x4_t axes[3];
+    const float32x2_t det = InverseAxes(axes);
+    const uint32x4_t singular = vceqzq_f32(vdupq_lane_f32(det, 0));
+    for (int i = 0; i < 3; i++) {
+      m_[i] = ClearLanes(axes[i], singular);
+    }
+    Transpose();
+    return vget_lane_f32(det, 0) != 0.0f;
+  }
 
   Mtx43& operator=(const Mtx43& other);
   bool operator==(const Mtx43& other) const;
@@ -146,6 +173,55 @@ public:
   }
 
   static Mtx43 MakeRotation(const Vec3& radian);
+  static Mtx43 MakeRotation(const Quat& value);
+
+  // The rotation about x, then y, then z with a zero translation. The sines
+  // and cosines of the three angles come from one vector estimate.
+  static Mtx43 RotationOf(const Vec3& radian) {
+    float32x4_t s;
+    float32x4_t c;
+    SinCosLanes(&s, &c, radian.v());
+    const float32x2_t cz = {c[2], s[2]};
+    const float32x2_t sz = {s[2], c[2]};
+    const float32x4_t x = vmulq_f32(
+      vcombine_f32(vdup_n_f32(c[1]), float32x2_t{s[1], 0.0f}),
+      vcombine_f32(cz, float32x2_t{-1.0f, 0.0f}));
+    const float32x4_t a = vmulq_f32(
+      vcombine_f32(vdup_n_f32(s[1]), float32x2_t{c[1], 0.0f}),
+      vcombine_f32(cz, float32x2_t{1.0f, 0.0f}));
+    const float32x4_t b = vcombine_f32(sz, vdup_n_f32(0.0f));
+    const float32x4_t y = vaddq_f32(vmulq_n_f32(a, s[0]),
+      vmulq_f32(vmulq_n_f32(b, c[0]), float32x4_t{-1.0f, 1.0f, 0.0f, 0.0f}));
+    const float32x4_t z = vaddq_f32(vmulq_n_f32(a, c[0]),
+      vmulq_f32(vmulq_n_f32(b, s[0]), float32x4_t{1.0f, -1.0f, 0.0f, 0.0f}));
+    return Mtx43(x, y, z, vdupq_n_f32(0.0f));
+  }
+
+  // The rotation of the quaternion with a zero translation.
+  static Mtx43 RotationOf(const Quat& value) {
+    float32x4_t q = value.v();
+    q[3] = 0.0f;
+    float32x4_t a = Vec3::Swizzle<1, 0, 0, 3>(q);
+    float32x4_t b = Vec3::Swizzle<2, 2, 1, 3>(q);
+    a = vmulq_f32(a, a);
+    b = vmulq_f32(b, b);
+    a = vaddq_f32(a, a);
+    b = vaddq_f32(b, b);
+    const float32x4_t diagonal =
+      vsubq_f32(float32x4_t{1.0f, 1.0f, 1.0f, 0.0f}, vaddq_f32(b, a));
+    float32x4_t c = vmulq_f32(Vec3::Swizzle<1, 2, 0, 3>(q), q);
+    c = vaddq_f32(c, c);
+    const float32x4_t zxy = Vec3::Swizzle<2, 0, 1, 3>(q);
+    float32x4_t d = vmulq_laneq_f32(zxy, value.v(), 3);
+    d = vaddq_f32(d, d);
+    const float32x4_t sum = vaddq_f32(c, d);
+    const float32x4_t difference = vsubq_f32(c, d);
+    const float32x4_t xy = Vec3::Permute<0, 6, 4, 1>(sum, difference);
+    const float32x4_t z = Vec3::Permute<2, 5, 7, 7>(sum, difference);
+    return Mtx43(Vec3::Permute<0, 4, 5, 3>(diagonal, xy),
+      Vec3::Permute<6, 1, 7, 3>(diagonal, xy),
+      Vec3::Permute<4, 5, 2, 3>(diagonal, z), vdupq_n_f32(0.0f));
+  }
 
   static Mtx43 MakeTranspose(const Mtx43& value) {
     Mtx43 m(value);
@@ -183,6 +259,61 @@ public:
 private:
   Mtx43(float32x4_t x, float32x4_t y, float32x4_t z, float32x4_t w)
     : m_{x, y, z, w} {}
+
+  // The four lanes of nn::util::SinCosEst at once.
+  static void SinCosLanes(float32x4_t* pSin, float32x4_t* pCos,
+    float32x4_t radian) {
+    using namespace nn::util;
+    const float32x4_t turns =
+      vrndnq_f32(vmulq_f32(radian, vdupq_n_f32(Float1Divided2Pi)));
+    float32x4_t x = vmlaq_f32(radian, vdupq_n_f32(-Float2Pi), turns);
+    const uint32x4_t above = vcgtq_f32(x, vdupq_n_f32(FloatPiDivided2));
+    x = vbslq_f32(above, vsubq_f32(vdupq_n_f32(FloatPi), x), x);
+    const uint32x4_t below = vcgtq_f32(vdupq_n_f32(-FloatPiDivided2), x);
+    x = vbslq_f32(below, vsubq_f32(vdupq_n_f32(-FloatPi), x), x);
+    const uint32x4_t positive = vbicq_u32(vmvnq_u32(above), below);
+
+    const float32x4_t x2 = vmulq_f32(x, x);
+    *pSin = vmulq_f32(x, PolynomialLanes(x2, detail::SinCoefficients));
+    const float32x4_t cosine = PolynomialLanes(x2, detail::CosCoefficients);
+    *pCos = vbslq_f32(positive, cosine, vnegq_f32(cosine));
+  }
+
+  static float32x4_t PolynomialLanes(float32x4_t x2, const float* k) {
+    float32x4_t p = vmlsq_n_f32(vdupq_n_f32(k[1]), x2, k[0]);
+    p = vmlaq_f32(vdupq_n_f32(-k[2]), x2, p);
+    p = vmlaq_f32(vdupq_n_f32(k[3]), x2, p);
+    p = vmlaq_f32(vdupq_n_f32(-k[4]), x2, p);
+    return vmlaq_f32(vdupq_n_f32(1.0f), x2, p);
+  }
+
+  static float32x4_t ClearLanes(float32x4_t v, uint32x4_t mask) {
+    return vreinterpretq_f32_u32(vbicq_u32(vreinterpretq_u32_f32(v), mask));
+  }
+
+  // The cofactor axes of the 3x3 part over its determinant, which the
+  // reciprocal estimate refines by two Newton steps. Returns the
+  // determinant.
+  float32x2_t InverseAxes(float32x4_t* axes) const {
+    const float32x4_t triple = vsubq_f32(
+      vmulq_f32(vmulq_f32(m_[0], Vec3::Swizzle<1, 2, 0, 3>(m_[1])),
+        Vec3::Swizzle<2, 0, 1, 3>(m_[2])),
+      vmulq_f32(vmulq_f32(m_[0], Vec3::Swizzle<2, 0, 1, 3>(m_[1])),
+        Vec3::Swizzle<1, 2, 0, 3>(m_[2])));
+    const float32x4_t pair = vpaddq_f32(triple, triple);
+    const float32x2_t det =
+      vadd_f32(vget_low_f32(pair), vdup_laneq_f32(pair, 1));
+    const float32x4_t square = vdupq_lane_f32(det, 0);
+    float32x4_t estimate = vrecpeq_f32(square);
+    estimate = vmulq_f32(estimate, vrecpsq_f32(estimate, square));
+    estimate = vmulq_f32(estimate, vrecpsq_f32(estimate, square));
+    Mtx43 t(*this);
+    t.Transpose();
+    axes[0] = vmulq_f32(estimate, Vec3::CrossLanes(t.m_[1], t.m_[2]));
+    axes[1] = vmulq_f32(estimate, Vec3::CrossLanes(t.m_[2], t.m_[0]));
+    axes[2] = vmulq_f32(estimate, Vec3::CrossLanes(t.m_[0], t.m_[1]));
+    return det;
+  }
 
   float32x4_t m_[4];
 };

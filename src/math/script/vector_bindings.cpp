@@ -355,7 +355,8 @@ namespace vec3 {
 }
 
 [[gnu::used]] Vec3 Rotate(const Vec3& value, const Vec3& rotation) {
-  return Quat::FromEulerianAngle(rotation).RotateVector(value);
+  return Quat::FromEulerianAngle(rotation.z(), rotation.y(), rotation.x())
+    .RotateVector(value);
 }
 
 [[gnu::used]] Vec3 Transform(const Vec3& value, const Mtx43& transform) {

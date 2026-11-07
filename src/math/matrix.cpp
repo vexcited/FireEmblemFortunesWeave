@@ -1,4 +1,6 @@
+#include "nn/util/math_types.hpp"
 #include "nn/util/util_matrix.hpp"
+#include "nn/util/vector.hpp"
 
 #pragma GCC visibility push(hidden)
 
@@ -59,6 +61,58 @@ void Mtx43::SetScale(const Vec3& v) {
 
 void Mtx43::SetTranslate(const Vec3& v) {
   m_[3] = v.v();
+}
+
+// The translation is kept.
+void Mtx43::SetRotate(const Quat& v) {
+  const Mtx43 rotation = RotationOf(v);
+  for (int i = 0; i < 3; i++) {
+    m_[i] = rotation.m_[i];
+  }
+}
+
+Mtx43 Mtx43::MakeRotation(const Quat& value) {
+  return RotationOf(value);
+}
+
+// The translation is kept.
+void Mtx43::SetRotate(const Vec3& v) {
+  const Mtx43 rotation = RotationOf(v);
+  for (int i = 0; i < 3; i++) {
+    m_[i] = rotation.m_[i];
+  }
+}
+
+Mtx43 Mtx43::MakeRotation(const Vec3& radian) {
+  return RotationOf(radian);
+}
+
+// The axes come as the columns, the translation as their dot products with
+// the negated position.
+Mtx43 Mtx43::LookAtRightHanded(const Vec3& position, const Vec3& target,
+  const Vec3& upward) {
+  const float32x4_t eye = position.v();
+  const float32x4_t at = target.v();
+  const float32x4_t top = upward.v();
+  const float32x4_t back = Vec3::Normalize(Vec3(vsubq_f32(eye, at))).v();
+  const float32x4_t right =
+    Vec3::Normalize(Vec3(Vec3::CrossLanes(top, back))).v();
+  const float32x4_t up = Vec3::CrossLanes(back, right);
+  const float32x4_t negated = vnegq_f32(eye);
+  float32x4_t x = right;
+  float32x4_t y = up;
+  float32x4_t z = back;
+  x[3] = vget_lane_f32(Vec3::SumLanes(vmulq_f32(right, negated)), 0);
+  y[3] = vget_lane_f32(Vec3::SumLanes(vmulq_f32(up, negated)), 0);
+  z[3] = vget_lane_f32(Vec3::SumLanes(vmulq_f32(back, negated)), 0);
+  Mtx43 m(x, y, z, vdupq_n_f32(0.0f));
+  m.Transpose();
+  return m;
+}
+
+Mtx43 Mtx43::LookToRightHanded(const Vec3& position, const Vec3& direction,
+  const Vec3& upward) {
+  return LookAtRightHanded(position, -direction + position, upward);
 }
 
 Vec3 Mtx43::Transform(const Vec3& v) const {

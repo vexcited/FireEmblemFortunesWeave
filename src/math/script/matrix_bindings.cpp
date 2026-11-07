@@ -1,11 +1,13 @@
 #include <new>
 
+#include "nn/util/math_types.hpp"
 #include "nn/util/util_matrix.hpp"
 
 #pragma GCC visibility push(hidden)
 
 #include "math/mtx43.hpp"
 #include "math/mtx44.hpp"
+#include "math/quat.hpp"
 #include "math/vec3.hpp"
 #include "math/vec4.hpp"
 
@@ -40,6 +42,14 @@ namespace mtx43_type {
 
 [[gnu::used]] void Transpose(Mtx43& self) {
   self.Transpose();
+}
+
+[[gnu::used]] bool Inverse(Mtx43& self) {
+  return self.Inverse();
+}
+
+[[gnu::used]] bool InverseTranspose(Mtx43& self) {
+  return self.InverseTranspose();
 }
 
 [[gnu::used]] Mtx43 opNeg(const Mtx43& self) {
@@ -100,6 +110,11 @@ namespace mtx43 {
 
 [[gnu::used]] Mtx43 MakeRotation(const Vec3& radian) {
   return Mtx43::MakeRotation(radian);
+}
+
+// The original inlines the out of line member here.
+[[gnu::used]] Mtx43 MakeRotation(const Quat& value) {
+  return Mtx43::RotationOf(value);
 }
 
 [[gnu::used]] Mtx43 MakeTranspose(const Mtx43& value) {
@@ -211,6 +226,34 @@ namespace mtx44 {
 
 [[gnu::used]] Mtx44 MakeTranspose(const Mtx44& value) {
   return Mtx44::MakeTranspose(value);
+}
+
+[[gnu::used]] Mtx44 PerspectiveRightHanded(float width, float height,
+  float nearClip, float farClip) {
+  return Mtx44::PerspectiveRightHanded(width, height, nearClip, farClip);
+}
+
+[[gnu::used]] Mtx44 PerspectiveFieldOfViewRightHanded(float fieldOfView,
+  float aspectRatio, float nearClip, float farClip) {
+  return Mtx44::PerspectiveFieldOfViewRightHanded(fieldOfView, aspectRatio,
+    nearClip, farClip);
+}
+
+[[gnu::used]] Mtx44 PerspectiveOffCenterRightHanded(float left, float right,
+  float bottom, float top, float nearClip, float farClip) {
+  return Mtx44::PerspectiveOffCenterRightHanded(left, right, bottom, top,
+    nearClip, farClip);
+}
+
+[[gnu::used]] Mtx44 OrthographicRightHanded(float width, float height,
+  float nearClip, float farClip) {
+  return Mtx44::OrthographicRightHanded(width, height, nearClip, farClip);
+}
+
+[[gnu::used]] Mtx44 OrthographicOffCenterRightHanded(float left, float right,
+  float bottom, float top, float nearClip, float farClip) {
+  return Mtx44::OrthographicOffCenterRightHanded(left, right, bottom, top,
+    nearClip, farClip);
 }
 
 // The fourth lanes are cleared.

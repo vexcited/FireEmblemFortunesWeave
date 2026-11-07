@@ -4,6 +4,7 @@
 
 #include "math/vec3.hpp"
 #include "math/vec4.hpp"
+#include "nn/util/math_types.hpp"
 #include "nn/util/util_matrix.hpp"
 
 namespace math {
@@ -133,6 +134,52 @@ public:
     Mtx44 m(value);
     m.Transpose();
     return m;
+  }
+
+  static Mtx44 PerspectiveRightHanded(float width, float height,
+    float nearClip, float farClip) {
+    const float range = farClip - nearClip;
+    return Mtx44(2.0f * nearClip / width, 0.0f, 0.0f, 0.0f, 0.0f,
+      2.0f * nearClip / height, 0.0f, 0.0f, 0.0f, 0.0f, -farClip / range,
+      -1.0f, 0.0f, 0.0f, -(farClip * nearClip) / range, 0.0f);
+  }
+
+  static Mtx44 PerspectiveFieldOfViewRightHanded(float fieldOfView,
+    float aspectRatio, float nearClip, float farClip) {
+    const float scale = 1.0f / nn::util::TanEst(fieldOfView * 0.5f);
+    const float depth = -1.0f / (farClip - nearClip);
+    return Mtx44(scale / aspectRatio, 0.0f, 0.0f, 0.0f, 0.0f, scale, 0.0f,
+      0.0f, 0.0f, 0.0f, farClip * depth, -1.0f, 0.0f, 0.0f,
+      nearClip * farClip * depth, 0.0f);
+  }
+
+  static Mtx44 PerspectiveOffCenterRightHanded(float left, float right,
+    float bottom, float top, float nearClip, float farClip) {
+    const float width = 1.0f / (right - left);
+    const float height = 1.0f / (top - bottom);
+    const float depth = -1.0f / (farClip - nearClip);
+    return Mtx44(2.0f * nearClip * width, 0.0f, 0.0f, 0.0f, 0.0f,
+      2.0f * nearClip * height, 0.0f, 0.0f, (left + right) * width,
+      (bottom + top) * height, farClip * depth, -1.0f, 0.0f, 0.0f,
+      nearClip * farClip * depth, 0.0f);
+  }
+
+  static Mtx44 OrthographicRightHanded(float width, float height,
+    float nearClip, float farClip) {
+    const float range = farClip - nearClip;
+    return Mtx44(2.0f / width, 0.0f, 0.0f, 0.0f, 0.0f, 2.0f / height, 0.0f,
+      0.0f, 0.0f, 0.0f, -1.0f / range, 0.0f, 0.0f, 0.0f, -nearClip / range,
+      1.0f);
+  }
+
+  static Mtx44 OrthographicOffCenterRightHanded(float left, float right,
+    float bottom, float top, float nearClip, float farClip) {
+    const float width = 1.0f / (right - left);
+    const float height = 1.0f / (top - bottom);
+    const float depth = -1.0f / (farClip - nearClip);
+    return Mtx44(2.0f * width, 0.0f, 0.0f, 0.0f, 0.0f, 2.0f * height, 0.0f,
+      0.0f, 0.0f, 0.0f, depth, 0.0f, -((left + right) * width),
+      -((bottom + top) * height), nearClip * depth, 1.0f);
   }
 
   static const Mtx44& Zero() {

@@ -244,6 +244,21 @@ public:
     return vcombine_f32(PickLanes<X, Y>(v), PickLanes<Z, W>(v));
   }
 
+  // Picks two lanes of the pair of vectors, the lanes of b numbered from 4.
+  template<int X, int Y>
+  static float32x2_t PickLanes(float32x4_t a, float32x4_t b) {
+    const uint8x16x2_t table = {{vreinterpretq_u8_f32(a),
+      vreinterpretq_u8_f32(b)}};
+    const uint8x8_t index = {X * 4, X * 4 + 1, X * 4 + 2, X * 4 + 3, Y * 4,
+      Y * 4 + 1, Y * 4 + 2, Y * 4 + 3};
+    return vreinterpret_f32_u8(vqtbl2_u8(table, index));
+  }
+
+  template<int X, int Y, int Z, int W>
+  static float32x4_t Permute(float32x4_t a, float32x4_t b) {
+    return vcombine_f32(PickLanes<X, Y>(a, b), PickLanes<Z, W>(a, b));
+  }
+
   static float32x4_t CrossLanes(float32x4_t a, float32x4_t b) {
     return vmlsq_f32(
       vmulq_f32(Swizzle<1, 2, 0, 3>(a), Swizzle<2, 0, 1, 3>(b)),

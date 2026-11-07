@@ -2,9 +2,11 @@
 
 #include <arm_neon.h>
 
+#include <cfloat>
 #include <cmath>
 
 #include "math/vec3.hpp"
+#include "nn/util/math_types.hpp"
 #include "nn/util/vector.hpp"
 
 namespace math {
@@ -158,11 +160,36 @@ public:
     return q;
   }
 
-  static Quat FromEulerianAngle(const Vec3& rot) {
-    return FromEulerianAngle(rot.z(), rot.y(), rot.x());
-  }
+  // Takes z, y and x as the yaw, pitch and roll.
+  static Quat FromEulerianAngle(const Vec3& rot);
 
   static Quat FromRotationMatrix(const Mtx43& value);
+
+  static Quat FromAxisAngle(const Vec3& axis, float radian);
+
+  // The cosine of the half angle keeps the sign of the reduction.
+  static Quat AxisAngleRotation(const Vec3& axis, float radian) {
+    float s;
+    float c;
+    nn::util::SinCosEst(&s, &c, radian * 0.5f);
+    float32x4_t v = vmulq_n_f32(Vec3::Normalize(axis).v(), s);
+    v[3] = c;
+    return Quat(v);
+  }
+
+  // The rotation between two unit vectors. Opposite vectors give the half
+  // turn around the x axis.
+  static Quat MakeVectorRotation(const Vec3& from, const Vec3& to) {
+    const float32x4_t cross = Vec3::CrossLanes(from.v(), to.v());
+    const float32x2_t dot = Vec3::SumLanes(vmulq_f32(from.v(), to.v()));
+    const float32x4_t d = vaddq_f32(vcombine_f32(dot, dot), vdupq_n_f32(1.0f));
+    const float32x4_t s = vsqrtq_f32(vaddq_f32(d, d));
+    float32x4_t q = vdivq_f32(cross, s);
+    q[3] = vmulq_n_f32(s, 0.5f)[3];
+    const float32x4_t halfTurn = {1.0f, 0.0f, 0.0f, 0.0f};
+    return Quat(vbslq_f32(vcgeq_f32(vdupq_n_f32(FLT_EPSILON), d), halfTurn,
+      q));
+  }
 
   static const Quat& Zero() {
     static const Quat zero(nn::util::Quaternion::ConstantIdentity);
