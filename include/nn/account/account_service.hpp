@@ -23,6 +23,12 @@ struct ApplicationInstanceId {
 
 namespace nn::account {
 
+namespace baas {
+
+class IManagerForApplication;
+
+}
+
 struct ProfileDigest;
 struct SignedDeviceIdentifier;
 
@@ -93,7 +99,11 @@ class IAccountServiceBase : public sf::IServiceObject {
 
 class IAccountServiceForApplication : public IAccountServiceBase {
  public:
-  NN_ACCOUNT_RESERVED(15); NN_ACCOUNT_RESERVED(16); NN_ACCOUNT_RESERVED(17);
+  NN_ACCOUNT_RESERVED(15);
+  virtual Result GetBaasAccountManagerForApplication(
+    const sf::Out<sf::SharedPointer<baas::IManagerForApplication>>& pOutManager,
+    const Uid& uid) = 0;
+  NN_ACCOUNT_RESERVED(17);
   virtual Result CheckNetworkServiceAvailabilityAsync(
     const sf::Out<sf::SharedPointer<detail::IAsyncContext>>& pOutContext) = 0;
   virtual Result StoreSaveDataThumbnail(const Uid& uid,

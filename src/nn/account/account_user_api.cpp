@@ -6,14 +6,23 @@
 #include "nn/account/detail/account_object_holder.hpp"
 #include "nn/diag/diag_abort.hpp"
 
+namespace nn::aoc {
+
+Result CheckAddOnContentMountStatus();
+
+}
+
 namespace nn::account {
 
 Result OpenUser(UserHandle* pOutHandle, const Uid& uid);
+Result ListQualifiedUsers(int* pOutActualLength, Uid* pOutUsers, int count);
+Result ShowUserQualificationPromoter(const Uid& uid);
 
 namespace {
 
 using detail::GetAccountServiceObjectBase;
 using detail::GetAccountServiceObjectForAdministrator;
+using detail::GetAccountServiceObjectForApplication;
 
 Result GetProfile(sf::SharedPointer<profile::IProfile>* pOutProfile,
   const Uid& uid) {
@@ -75,6 +84,59 @@ Result GetProfileUserData(char* buffer, size_t size, const Uid& uid) {
     sf::Out<profile::UserData>(&userData)));
   memcpy(buffer, &userData, sizeof(userData));
   return Result{0};
+}
+
+Result OpenUser(UserHandle* pOutHandle, const Uid& uid) {
+  NN_ABORT_UNLESS_RESULT_SUCCESS(aoc::CheckAddOnContentMountStatus());
+  const detail::InitializationInfo info = detail::GetInitializationInfo();
+  if (info.isPreselectionEnforced) {
+    NN_ABORT_UNLESS(info.preselectedUser.value[0] == uid.value[0] &&
+      info.preselectedUser.value[1] == uid.value[1]);
+  }
+  sf::SharedPointer<baas::IManagerForApplication> manager;
+  const Result result =
+    GetAccountServiceObjectForApplication()->GetBaasAccountManagerForApplication(
+      sf::Out<sf::SharedPointer<baas::IManagerForApplication>>(&manager), uid);
+  if (result.IsFailure()) {
+    // The account descriptions 104 and 105 abort, the others return.
+    if ((result.value & 0x3fffff & ~0x200u) == 0xd07c) {
+      NN_ABORT_UNLESS_RESULT_SUCCESS(result);
+    }
+    return result;
+  }
+  const UserHandle handle = detail::MakeUserHandle(uid, manager.Detach());
+  detail::ClientUserHandleStore::Add(handle);
+  *pOutHandle = handle;
+  return Result{0};
+}
+
+Result PromoteQualification(const Uid& uid) {
+  int count = 0;
+  Uid users[8] = {};
+  NN_ABORT_UNLESS_RESULT_SUCCESS(ListQualifiedUsers(&count, users, 8));
+  const Uid* end = users + count;
+  const Uid* it = users;
+  for (; it != end; ++it) {
+    if (it->value[0] == uid.value[0] && it->value[1] == uid.value[1]) {
+      break;
+    }
+  }
+  if (it != end) {
+    return Result{0};
+  }
+  return ShowUserQualificationPromoter(uid);
+}
+
+// Stores every open user for the next program and closes it.
+void PushOpenUsers() {
+  int count = 0;
+  UserHandle handles[8] = {};
+  detail::ClientUserHandleStore::List(&count, handles, 8);
+  for (int i = 0; i < count; i++) {
+    NN_ABORT_UNLESS_RESULT_SUCCESS(handles[i].pManager->StoreOpenContext());
+    detail::ClientUserHandleStore::Delete(handles[i]);
+    handles[i].pManager->Release();
+  }
 }
 
 bool TryOpenPreselectedUser(UserHandle* pOutHandle) {

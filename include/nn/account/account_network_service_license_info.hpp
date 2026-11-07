@@ -32,7 +32,8 @@ class IManagerForApplication : public sf::IServiceObject {
     sf::Out<CachedNintendoAccountInfo> pOutInfo,
     const sf::OutBuffer& buffer) = 0;
   virtual void Reserved10() = 0;
-  virtual void Reserved11() = 0;
+  // Keeps the user open for the next program.
+  virtual Result StoreOpenContext() = 0;
   virtual Result LoadNetworkServiceLicenseKindAsync(
     const sf::Out<sf::SharedPointer<IAsyncContextForLoginForOnlinePlay>>&
       pOutContext) = 0;

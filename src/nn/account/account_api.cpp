@@ -39,6 +39,7 @@ Result ListOpenUsers(int* pOutActualLength, Uid* pOutUsers, int count);
 Result ListOpenUsers(int* pOutActualLength, Uid* pOutUsers, int count,
   const arp::ApplicationInstanceId& applicationInstanceId);
 Result ListQualifiedUsers(int* pOutActualLength, Uid* pOutUsers, int count);
+void ListPushedOpenUsers(Uid* pOutUsers, int count);
 Result ListQualifiedUsers(int* pOutActualLength, Uid* pOutUsers, int count,
   const ApplicationId& applicationId);
 Result GetUserCount(int* pOutCount);
@@ -159,8 +160,8 @@ namespace {
 constexpr int kUserCountMax = 8;
 
 // The service lists the valid users first, the rest of the copy is invalid.
-[[gnu::always_inline]] inline void CopyUsers(int* pOutActualLength,
-  Uid* pOutUsers, int count, const Uid (&users)[kUserCountMax]) {
+[[gnu::always_inline]] inline int CopyValidUsers(Uid* pOutUsers, int count,
+  const Uid (&users)[kUserCountMax]) {
   int actual = 0;
   while (actual < kUserCountMax &&
     (users[actual].value[0] | users[actual].value[1]) != 0) {
@@ -170,7 +171,12 @@ constexpr int kUserCountMax = 8;
   for (int i = 0; i < count; i++) {
     pOutUsers[i] = i < actual ? users[i] : invalid;
   }
-  *pOutActualLength = actual;
+  return actual;
+}
+
+[[gnu::always_inline]] inline void CopyUsers(int* pOutActualLength,
+  Uid* pOutUsers, int count, const Uid (&users)[kUserCountMax]) {
+  *pOutActualLength = CopyValidUsers(pOutUsers, count, users);
 }
 
 }
@@ -216,6 +222,14 @@ Result ListQualifiedUsers(int* pOutActualLength, Uid* pOutUsers, int count,
     sf::OutArray<Uid>(users, kUserCountMax), applicationId.value));
   CopyUsers(pOutActualLength, pOutUsers, count, users);
   return Result{0};
+}
+
+void ListPushedOpenUsers(Uid* pOutUsers, int count) {
+  Uid users[kUserCountMax] = {};
+  NN_ABORT_UNLESS_RESULT_SUCCESS(
+    GetAccountServiceObjectForApplication()->ListOpenContextStoredUsers(
+      sf::OutArray<Uid>(users, kUserCountMax)));
+  CopyValidUsers(pOutUsers, count, users);
 }
 
 Result GetUserCount(int* pOutCount) {

@@ -22,7 +22,9 @@ namespace nn::account::detail {
 
 struct InitializationInfo {
   Uid preselectedUser;
-  uint64_t reserved;
+  // Only the preselected user may be opened.
+  bool isPreselectionEnforced;
+  uint8_t reserved[7];
 };
 
 class ObjectHolder {
@@ -70,6 +72,9 @@ class ClientUserHandleStore {
  private:
   static util::optional<UserHandle> s_Handles[8];
 };
+
+UserHandle MakeUserHandle(const Uid& uid,
+  const baas::IManagerForApplication* pManager);
 
 void InitializeForApplication();
 void InitializeForSystemService();
