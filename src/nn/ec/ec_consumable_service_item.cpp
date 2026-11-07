@@ -342,7 +342,9 @@ Result ConsumableServiceItemManager::MarkServiceProvided(uint64_t* count,
   ConsumableServiceItemRightData* end = begin + m_RightDataCount;
   ConsumableServiceItemRightData* found = std::find_if(begin, end,
     [&id](const ConsumableServiceItemRightData& data) {
-      if (data.isServiceProvidableOnLocal != true) {
+      // The flag byte is compared against one, not tested for zero.
+      if (*reinterpret_cast<const uint8_t*>(
+            &data.isServiceProvidableOnLocal) != 1) {
         return false;
       }
       ConsumableServiceItemId itemId = data.itemId;

@@ -78,7 +78,8 @@ void RemoveExcept(Settings* pSettings, int* pCount, const account::Uid* pUids,
   NN_ABORT_UNLESS_RESULT_SUCCESS(
     pSettings != nullptr ? Result{0} : ResultNullSettings);
   NN_ABORT_UNLESS_RESULT_SUCCESS(
-    *pCount <= MaxAccountCount ? Result{0} : ResultTooManySettings);
+    static_cast<uint32_t>(*pCount) <= MaxAccountCount ? Result{0}
+      : ResultTooManySettings);
   NN_ABORT_UNLESS_RESULT_SUCCESS(
     pUids != nullptr ? Result{0} : ResultNullUidList);
   NN_ABORT_UNLESS_RESULT_SUCCESS(
