@@ -4,6 +4,7 @@
 #include <stdint.h>
 
 #include "nn/account/account_types.hpp"
+#include "nn/applet/applet_types.hpp"
 #include "nn/os/sdk_mutex.hpp"
 #include "nn/os/system_event_class.hpp"
 #include "nn/result.hpp"
@@ -106,6 +107,12 @@ class IUserShimScopedObject : public sf::IServiceObject {
     const sf::OutBuffer& outBuffer, account::NetworkServiceAccountId id) = 0;
 };
 
+namespace detail {
+
+class IVirtualCameraShimScopedObject;
+
+}
+
 class IUserLayoutCustomizationShimScopedObject : public sf::IServiceObject {
  public:
   virtual void Reserved2() = 0;
@@ -123,7 +130,10 @@ class IUserService : public sf::IServiceObject {
   virtual void Reserved3() = 0;
   virtual void Reserved4() = 0;
   virtual void Reserved5() = 0;
-  virtual void Reserved6() = 0;
+  virtual Result CreateVirtualCameraShimScopedObject(
+    sf::Out<sf::SharedPointer<detail::IVirtualCameraShimScopedObject>>
+      pOutObject,
+    applet::AppletResourceUserId aruid) = 0;
   virtual void Reserved7() = 0;
   virtual void Reserved8() = 0;
   virtual Result GetRoomInfo(sf::Out<RoomInfo> pOutInfo) = 0;
