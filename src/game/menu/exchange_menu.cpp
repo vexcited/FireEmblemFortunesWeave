@@ -12,7 +12,7 @@ public:
   void* Unknown35() override;
   void* Unknown36() override;
   void Unknown39() override;
-  int Unknown40() override;
+  bool Unknown40() override;
 
   // Not while the menus are locked or during the steps one to three.
   bool Unknown46() override {
@@ -52,7 +52,7 @@ public:
 
   void* Unknown35() override;
   void* Unknown36() override;
-  int Unknown40() override;
+  bool Unknown40() override;
   void Unknown41() override;
   bool Unknown46() override { return (flags_ & 1) == 0 && unknown_184_; }
   int Unknown47() override { return 1; }

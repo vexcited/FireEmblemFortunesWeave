@@ -84,10 +84,10 @@ namespace {
 using hid::system::UniquePadId;
 
 constexpr uint32_t ResultDeviceNotConnected = 0x642ca;
-constexpr uint32_t ResultButtonConfigNotSupported = 0x20aca;
-constexpr uint32_t ResultButtonConfigNotChanged = 0x20cca;
-constexpr uint32_t ResultUniquePadDisconnected = 0x20eca;
-constexpr uint32_t ResultButtonConfigInvalidDevice = 0x210ca;
+constexpr uint32_t ResultButtonConfigNotSupported = 0x200aca;
+constexpr uint32_t ResultButtonConfigNotChanged = 0x200cca;
+constexpr uint32_t ResultUniquePadDisconnected = 0x200eca;
+constexpr uint32_t ResultButtonConfigInvalidDevice = 0x2010ca;
 constexpr uint32_t ResultButtonConfigStorageEmpty = 0x2032ca;
 
 bool Includes(Result result, uint32_t value) {

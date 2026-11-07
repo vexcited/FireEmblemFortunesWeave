@@ -20,7 +20,7 @@ public:
   int Unknown101() override;
   void Unknown128() override;
   void Unknown129() override;
-  int Unknown137() override;
+  bool Unknown137() override;
   int InputUnknown12(int direction, bool loop) override;
 };
 

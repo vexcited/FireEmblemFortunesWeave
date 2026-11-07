@@ -42,7 +42,7 @@ public:
   int Unknown100() override;
   int Unknown101() override;
   void Unknown128() override;
-  int Unknown137() override;
+  bool Unknown137() override;
 };
 
 [[gnu::used]] ProcDeliveryTransportMenu::ProcDeliveryTransportMenu() = default;

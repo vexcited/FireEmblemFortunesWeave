@@ -38,8 +38,8 @@ void Path::ClearBuffer() {
 
 void Path::SetModifiableBuffer(WriteBuffer&& buffer, size_t length) {
   m_WriteBuffer = std::move(buffer);
-  m_Str = m_WriteBuffer.get();
   m_WriteBufferLength = length;
+  m_Str = m_WriteBuffer.get();
 }
 
 void Path::SetReadOnlyBuffer(const char* buffer) {

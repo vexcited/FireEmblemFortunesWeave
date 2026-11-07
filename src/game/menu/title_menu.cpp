@@ -20,7 +20,7 @@ public:
   bool Unknown125() override;
   void Unknown135(std::vector<int64_t>& handles) override;
   void Unknown136(std::vector<int64_t>& handles) override;
-  int Unknown137() override { return 1; }
+  bool Unknown137() override { return true; }
 };
 
 TitleMenu::~TitleMenu() = default;

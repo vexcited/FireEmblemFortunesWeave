@@ -93,13 +93,13 @@ Result MountAddOnContent(const char* name, int index, void* cacheBuffer,
     std::lock_guard<os::SdkMutex> lock(g_AddOnContentMutex);
     NN_FS_RESULT_DO(PrepareAddOnContent(index));
     const ncm::DataId dataId = GetAddOnContentDataId(index);
-    std::unique_ptr<fsa::IUnmountHookInvoker> unmountHookInvoker(
-      new AddOnContentUnmountHookInvoker(dataId));
+    fsa::IUnmountHookInvoker* unmountHookInvoker =
+      new AddOnContentUnmountHookInvoker(dataId);
     NN_FS_RESULT_THROW_UNLESS(unmountHookInvoker != nullptr,
       ResultAllocationMemoryFailedNew());
     NN_FS_RESULT_DO(detail::MountData(name, dataId, ncm::StorageId::None,
       cacheBuffer, cacheBufferSize, true, true,
-      std::move(unmountHookInvoker)));
+      std::unique_ptr<fsa::IUnmountHookInvoker>(unmountHookInvoker)));
     NN_FS_ABORT_UNLESS_RESULT_SUCCESS(aoc::NotifyMountAddOnContent(dataId));
     return ResultSuccess();
   };

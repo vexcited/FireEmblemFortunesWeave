@@ -14,7 +14,7 @@ public:
   const char* Unknown67() override { return "贈り物"; }
   int Unknown101() override;
   void Unknown128() override;
-  int Unknown137() override;
+  bool Unknown137() override;
 };
 
 [[gnu::used]] ProcTalkSelectGiftMenu::ProcTalkSelectGiftMenu() = default;

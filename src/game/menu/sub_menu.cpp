@@ -29,7 +29,7 @@ public:
   int Unknown56() override { return 7; }
   bool Unknown60() override { return false; }
   void Unknown96() override;
-  int Unknown137() override { return 1; }
+  bool Unknown137() override { return true; }
 };
 
 namespace {

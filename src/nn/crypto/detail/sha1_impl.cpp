@@ -128,8 +128,10 @@ void Sha1Impl::ProcessBlocks(const uint8_t* data, int blockCount) {
   m_IntermediateHash[4] = e;
 }
 
-void Sha1Impl::ProcessLastBlock() {
-  m_Buffer[m_BufferedBytes++] = 0x80;
+// GetHash inlines this copy and keeps the out of line one.
+[[gnu::always_inline]] void Sha1Impl::ProcessLastBlock() {
+  m_Buffer[m_BufferedBytes] = 0x80;
+  ++m_BufferedBytes;
 
   constexpr size_t LengthOffset = BlockSize - sizeof(uint64_t);
   if (m_BufferedBytes > LengthOffset) {

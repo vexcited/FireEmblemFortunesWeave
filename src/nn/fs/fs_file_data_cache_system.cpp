@@ -88,7 +88,9 @@ Result FileDataCacheSystem::CalculateAvailableCount(size_t* outPageCount,
     ResultFileDataCacheMemorySizeTooSmall());
   restSize -= PageRegionPoolSize;
   const size_t estimatedPageCount = restSize / PageCostSize;
-  restSize -= GetHashBucketCount(estimatedPageCount) * HashBucketSize;
+  NN_FS_RESULT_THROW_UNLESS(estimatedPageCount > 0,
+    ResultFileDataCacheMemorySizeTooSmall());
+  restSize -=GetHashBucketCount(estimatedPageCount) * HashBucketSize;
   const size_t pageCount = restSize / PageCostSize;
   const size_t hashCount = GetHashBucketCount(pageCount);
   NN_FS_RESULT_THROW_UNLESS(pageCount > 0 && hashCount > 0,

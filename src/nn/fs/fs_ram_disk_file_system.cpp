@@ -199,6 +199,8 @@ Result RamDiskFileSystem::FormatAndMount() {
 
 Result RamDiskFileSystem::DoCreateFile(const Path& path, int64_t size,
   int option) {
+  // The original folds ConvertResult for the size check of CreateFile.
+  NN_FS_RESULT_THROW_UNLESS(size >= 0, ResultInvalidSize());
   return ConvertResult(m_Core.CreateFile(path, size, option));
 }
 

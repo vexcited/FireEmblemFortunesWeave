@@ -43,7 +43,7 @@ public:
 
   virtual void Unknown135(std::vector<int64_t>& handles);
   virtual void Unknown136(std::vector<int64_t>& handles);
-  virtual int Unknown137();
+  virtual bool Unknown137();
   // Adds the tutorial key while the menu names a tutorial.
   void ImplUnknown11(std::vector<KeyHelpEntry>& entries) override;
 

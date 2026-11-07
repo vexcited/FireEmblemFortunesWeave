@@ -35,7 +35,7 @@ public:
   int Unknown101() override;
   void Unknown128() override;
   void Unknown129() override;
-  int Unknown137() override { return 1; }
+  bool Unknown137() override { return true; }
   uint8_t ImplUnknown08() override { return 0; }
   int InputUnknown01() override { return 11; }
   const char* ImplUnknown03() override { return "MID_StableMenu_Breeding"; }

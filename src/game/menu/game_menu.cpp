@@ -52,7 +52,7 @@ void GameMenu::Unknown96() {
   }
 }
 
-int GameMenu::Unknown137() {
+bool GameMenu::Unknown137() {
   int state = Unknown21();
   if (state == 9) {
     return false;

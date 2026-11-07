@@ -47,7 +47,7 @@ public:
   virtual void* Unknown37() { return nullptr; }
   virtual void Unknown38() {}
   virtual void Unknown39() {}
-  virtual int Unknown40() { return menus_[index_]->Unknown137(); }
+  virtual bool Unknown40() { return menus_[index_]->Unknown137(); }
   virtual void Unknown41() {}
   virtual int Unknown42() { return 2; }
   virtual int Unknown43() { return 1; }

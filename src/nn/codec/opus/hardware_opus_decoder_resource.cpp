@@ -18,7 +18,7 @@ hwacod::HardwareAudioCodecInstanceType* AcquireInstanceType(
   storage->mutex.Lock();
 
   hwacod::HardwareAudioCodecInstanceType* instance = nullptr;
-  for (size_t i = 0; i < storage->instanceCount; ++i) {
+  for (uint32_t i = 0; i < storage->instanceCount; ++i) {
     if (!storage->isInstanceUsed[i]) {
       instance = &storage->instances[i];
       storage->isInstanceUsed[i] = true;
@@ -35,7 +35,7 @@ void ReleaseInstanceType(HardwareOpusDecoderManagerType* manager,
   DecoderManagerStorage* storage = manager->storage;
   storage->mutex.Lock();
 
-  for (size_t i = 0; i < storage->instanceCount; ++i) {
+  for (uint32_t i = 0; i < storage->instanceCount; ++i) {
     if (&storage->instances[i] == instance) {
       storage->isInstanceUsed[i] = false;
       break;
@@ -61,7 +61,7 @@ hwacod::HardwareAudioCodecInstanceType* AcquireInstanceType(
   storage->mutex.Lock();
 
   hwacod::HardwareAudioCodecInstanceType* instance = nullptr;
-  for (size_t i = 0; i < storage->instanceCount; ++i) {
+  for (uint32_t i = 0; i < storage->instanceCount; ++i) {
     if (!storage->isInstanceUsed[i]) {
       instance = &storage->instances[i];
       storage->isInstanceUsed[i] = true;
@@ -78,7 +78,7 @@ void ReleaseInstanceType(HardwareOpusMultiStreamDecoderManagerType* manager,
   DecoderManagerStorage* storage = manager->storage;
   storage->mutex.Lock();
 
-  for (size_t i = 0; i < storage->instanceCount; ++i) {
+  for (uint32_t i = 0; i < storage->instanceCount; ++i) {
     if (&storage->instances[i] == instance) {
       storage->isInstanceUsed[i] = false;
       break;

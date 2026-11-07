@@ -85,10 +85,15 @@ void PageTab::SetEnabled(bool enable) {
   }
 
   if (std::shared_ptr<ui::LayoutAccessor> part = part_.lock()) {
-    std::weak_ptr<ui::LayoutAccessor> left = part->GetPart("L_ArrowL");
-    ui::SetPartEnabled(left, enable, false);
-    std::weak_ptr<ui::LayoutAccessor> right = part->GetPart("L_ArrowR");
-    ui::SetPartEnabled(right, enable, false);
+    {
+      std::weak_ptr<ui::LayoutAccessor> left = part->GetPart("L_ArrowL");
+      ui::SetPartEnabled(left, enable, false);
+    }
+
+    {
+      std::weak_ptr<ui::LayoutAccessor> right = part->GetPart("L_ArrowR");
+      ui::SetPartEnabled(right, enable, false);
+    }
   }
 }
 
