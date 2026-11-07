@@ -84,7 +84,10 @@ struct DisplayModuleId;
 
 struct MacAddress;
 
-struct RegionCode;
+// The factory stores the region as a 32-bit code.
+struct RegionCode {
+  int32_t value;
+};
 
 struct SerialNumber;
 

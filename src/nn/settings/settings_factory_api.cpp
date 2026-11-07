@@ -377,4 +377,129 @@ unsigned long GetEncryptedSecretDeviceIdEncryptionKeyFile(
   return value;
 }
 
+
+
+namespace {
+
+// The calibration data may be missing or broken on the console.
+bool IsCalibrationMissing(Result result) {
+  const uint32_t value = result.value & 0x3fffff;
+  return value == 0x48a69 || value == 0x48c69;
+}
+
+void CheckCalibrationResult(Result result) {
+  if (!IsCalibrationMissing(result)) {
+    NN_ABORT_UNLESS_RESULT_SUCCESS(result);
+  }
+}
+
+}
+
+void GetAnalogStickModuleTypeL(unsigned char* pOutValue) {
+  CheckCalibrationResult(detail::GetAnalogStickModuleTypeL(pOutValue));
+}
+
+void GetAnalogStickModelParameterL(AnalogStickModelParameter* pOutValue) {
+  CheckCalibrationResult(detail::GetAnalogStickModelParameterL(pOutValue));
+}
+
+void GetAnalogStickFactoryCalibrationL(
+  AnalogStickFactoryCalibration* pOutValue) {
+  CheckCalibrationResult(detail::GetAnalogStickFactoryCalibrationL(pOutValue));
+}
+
+void GetAnalogStickModuleTypeR(unsigned char* pOutValue) {
+  CheckCalibrationResult(detail::GetAnalogStickModuleTypeR(pOutValue));
+}
+
+void GetAnalogStickModelParameterR(AnalogStickModelParameter* pOutValue) {
+  CheckCalibrationResult(detail::GetAnalogStickModelParameterR(pOutValue));
+}
+
+void GetAnalogStickFactoryCalibrationR(
+  AnalogStickFactoryCalibration* pOutValue) {
+  CheckCalibrationResult(detail::GetAnalogStickFactoryCalibrationR(pOutValue));
+}
+
+void GetBatteryLot(BatteryLot* pOutValue) {
+  CheckCalibrationResult(detail::GetBatteryLotForFactory(pOutValue));
+}
+
+void GetBluetoothBdAddressSet(BdAddressSet* pOutValue) {
+  CheckCalibrationResult(detail::GetBluetoothBdAddressSet(pOutValue));
+}
+
+void GetCalibrationTimeStampUtc(time::PosixTime* pOutValue) {
+  CheckCalibrationResult(detail::GetCalibrationTimeStampUtc(pOutValue));
+}
+
+void GetConsoleSixAxisSensorModuleType(unsigned char* pOutValue) {
+  CheckCalibrationResult(detail::GetConsoleSixAxisSensorModuleType(pOutValue));
+}
+
+void GetConsoleSixAxisSensorMountType(unsigned char* pOutValue) {
+  CheckCalibrationResult(detail::GetConsoleSixAxisSensorMountType(pOutValue));
+}
+
+void GetConsoleSixAxisSensorFactoryCalibration(
+  ConsoleSixAxisSensorFactoryCalibration* pOutValue) {
+  CheckCalibrationResult(
+    detail::GetConsoleSixAxisSensorFactoryCalibration(pOutValue));
+}
+
+void GetConsoleSixAxisSensorFactoryAccelerationLog(
+  ConsoleSixAxisSensorFactoryAccelerationLog* pOutValue) {
+  CheckCalibrationResult(
+    detail::GetConsoleSixAxisSensorFactoryAccelerationLog(pOutValue));
+}
+
+void GetSerialNumber(SerialNumber* pOutValue) {
+  CheckCalibrationResult(detail::GetSerialNumber(pOutValue));
+}
+
+void GetToolModel(int* pOutValue) {
+  CheckCalibrationResult(detail::GetToolModel(pOutValue));
+}
+
+void GetWirelessLanMacAddress(MacAddress* pOutValue) {
+  CheckCalibrationResult(detail::GetWirelessLanMacAddress(pOutValue));
+}
+
+void GetWirelessLanRegulatoryDomain(WlanRegulatoryDomain* pOutValue) {
+  CheckCalibrationResult(detail::GetWirelessLanRegulatoryDomain(pOutValue));
+}
+
+void GetWirelessLanPowerTable(WlanPowerTable* pOutValue) {
+  CheckCalibrationResult(detail::GetWirelessLanPowerTable(pOutValue));
+}
+
+bool IsRadioForbidden() {
+  bool value = false;
+  NN_ABORT_UNLESS_RESULT_SUCCESS(detail::GetRadioForbidden(&value));
+  return value;
+}
+
+void GetDeviceId(DeviceId* pOutValue) {
+  const Result result = detail::GetDeviceId(pOutValue);
+  if (IsCalibrationMissing(result) ||
+    (result.value & 0x3fffff) == 0x49069) {
+    return;
+  }
+  NN_ABORT_UNLESS_RESULT_SUCCESS(result);
+}
+
+void GetRegionCode(RegionCode* pOutValue) {
+  int value = 0;
+  const Result result = detail::GetRegionCodeForFactory(&value);
+  if (IsCalibrationMissing(result)) {
+    if (result.IsFailure()) {
+      return;
+    }
+  }
+  else {
+    NN_ABORT_UNLESS_RESULT_SUCCESS(result);
+  }
+  pOutValue->value = value;
+}
+
 }
