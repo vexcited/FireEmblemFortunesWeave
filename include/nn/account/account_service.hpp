@@ -74,7 +74,8 @@ class IAccountServiceBase : public sf::IServiceObject {
   virtual Result GetUserCount(sf::Out<int32_t> pOutCount) = 0;
   virtual Result GetUserExistence(sf::Out<bool> pOutExistence,
     const Uid& uid) = 0;
-  NN_ACCOUNT_RESERVED(6); NN_ACCOUNT_RESERVED(7);
+  virtual Result ListAllUsers(const sf::OutArray<Uid>& pOutUsers) = 0;
+  virtual Result ListOpenUsers(const sf::OutArray<Uid>& pOutUsers) = 0;
   virtual Result GetLastOpenedUser(sf::Out<Uid> pOutUid) = 0;
   virtual Result GetProfile(
     const sf::Out<sf::SharedPointer<profile::IProfile>>& pOutProfile,
@@ -98,6 +99,11 @@ class IAccountServiceForApplication : public IAccountServiceBase {
   virtual Result StoreSaveDataThumbnail(const Uid& uid,
     const sf::InBuffer& image) = 0;
   virtual Result DeleteSaveDataThumbnail(const Uid& uid) = 0;
+  NN_ACCOUNT_RESERVED(21); NN_ACCOUNT_RESERVED(22);
+  virtual Result ListOpenContextStoredUsers(
+    const sf::OutArray<Uid>& pOutUsers) = 0;
+  NN_ACCOUNT_RESERVED(24);
+  virtual Result ListQualifiedUsers(const sf::OutArray<Uid>& pOutUsers) = 0;
 };
 
 class IAccountServiceForSystemService : public IAccountServiceBase {
@@ -128,11 +134,13 @@ class IAccountServiceForSystemService : public IAccountServiceBase {
     const sf::OutBuffer& image, const Uid& uid, uint64_t applicationId) = 0;
   virtual Result GetSaveDataThumbnailExistence(sf::Out<bool> pOutExistence,
     const Uid& uid, uint64_t applicationId) = 0;
-  NN_ACCOUNT_RESERVED(26);
+  virtual Result ListOpenUsersInApplication(const sf::OutArray<Uid>& pOutUsers,
+    uint64_t applicationInstanceId) = 0;
   virtual Result ActivateOpenContextRetention(
     const sf::Out<sf::SharedPointer<detail::ISessionObject>>& pOutSession,
     uint64_t applicationInstanceId) = 0;
-  NN_ACCOUNT_RESERVED(28);
+  virtual Result ListQualifiedUsers(const sf::OutArray<Uid>& pOutUsers,
+    uint64_t applicationId) = 0;
   virtual Result EnsureSignedDeviceIdentifierCacheAsync(
     const sf::Out<sf::SharedPointer<detail::IAsyncContext>>& pOutContext) = 0;
   virtual Result LoadSignedDeviceIdentifierCache(

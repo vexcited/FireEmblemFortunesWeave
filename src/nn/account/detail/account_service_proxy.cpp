@@ -54,6 +54,33 @@ public:
       pOutExistence, uid);
   }
 
+  Result ListAllUsers(const sf::OutArray<account::Uid>& pOutUsers) override {
+    return ProxyMethodInvoker<Kind, false,
+      void(const sf::OutArray<account::Uid>&)>::Invoke(&this->m_State, 2,
+      pOutUsers);
+  }
+
+  Result ListOpenUsers(const sf::OutArray<account::Uid>& pOutUsers) override {
+    return ProxyMethodInvoker<Kind, false,
+      void(const sf::OutArray<account::Uid>&)>::Invoke(&this->m_State, 3,
+      pOutUsers);
+  }
+
+  Result ListOpenUsersInApplication(
+    const sf::OutArray<account::Uid>& pOutUsers,
+    uint64_t applicationInstanceId) override {
+    return ProxyMethodInvoker<Kind, false,
+      void(const sf::OutArray<account::Uid>&, uint64_t)>::Invoke(
+      &this->m_State, 120, pOutUsers, applicationInstanceId);
+  }
+
+  Result ListQualifiedUsers(const sf::OutArray<account::Uid>& pOutUsers,
+    uint64_t applicationId) override {
+    return ProxyMethodInvoker<Kind, false,
+      void(const sf::OutArray<account::Uid>&, uint64_t)>::Invoke(
+      &this->m_State, 140, pOutUsers, applicationId);
+  }
+
   Result GetLastOpenedUser(sf::Out<account::Uid> pOutUid) override {
     return ProxyMethodInvoker<Kind, false,
       void(sf::Out<account::Uid>)>::Invoke(&this->m_State, 4, pOutUid);
@@ -376,6 +403,18 @@ public:
       pOutExistence, uid);
   }
 
+  Result ListAllUsers(const sf::OutArray<account::Uid>& pOutUsers) override {
+    return ProxyMethodInvoker<Kind, false,
+      void(const sf::OutArray<account::Uid>&)>::Invoke(&this->m_State, 2,
+      pOutUsers);
+  }
+
+  Result ListOpenUsers(const sf::OutArray<account::Uid>& pOutUsers) override {
+    return ProxyMethodInvoker<Kind, false,
+      void(const sf::OutArray<account::Uid>&)>::Invoke(&this->m_State, 3,
+      pOutUsers);
+  }
+
   Result GetLastOpenedUser(sf::Out<account::Uid> pOutUid) override {
     return ProxyMethodInvoker<Kind, false,
       void(sf::Out<account::Uid>)>::Invoke(&this->m_State, 4, pOutUid);
@@ -444,6 +483,18 @@ public:
     return ProxyMethodInvoker<Kind, false,
       void(sf::Out<bool>, const account::Uid&)>::Invoke(&this->m_State, 1,
       pOutExistence, uid);
+  }
+
+  Result ListAllUsers(const sf::OutArray<account::Uid>& pOutUsers) override {
+    return ProxyMethodInvoker<Kind, false,
+      void(const sf::OutArray<account::Uid>&)>::Invoke(&this->m_State, 2,
+      pOutUsers);
+  }
+
+  Result ListOpenUsers(const sf::OutArray<account::Uid>& pOutUsers) override {
+    return ProxyMethodInvoker<Kind, false,
+      void(const sf::OutArray<account::Uid>&)>::Invoke(&this->m_State, 3,
+      pOutUsers);
   }
 
   Result GetLastOpenedUser(sf::Out<account::Uid> pOutUid) override {
@@ -640,6 +691,18 @@ public:
     return ProxyMethodInvoker<Kind, false,
       void(sf::Out<bool>, const account::Uid&)>::Invoke(&this->m_State, 1,
       pOutExistence, uid);
+  }
+
+  Result ListAllUsers(const sf::OutArray<account::Uid>& pOutUsers) override {
+    return ProxyMethodInvoker<Kind, false,
+      void(const sf::OutArray<account::Uid>&)>::Invoke(&this->m_State, 2,
+      pOutUsers);
+  }
+
+  Result ListOpenUsers(const sf::OutArray<account::Uid>& pOutUsers) override {
+    return ProxyMethodInvoker<Kind, false,
+      void(const sf::OutArray<account::Uid>&)>::Invoke(&this->m_State, 3,
+      pOutUsers);
   }
 
   Result GetLastOpenedUser(sf::Out<account::Uid> pOutUid) override {

@@ -34,6 +34,13 @@ void InitializeWith(
   sf::SharedPointer<IAccountServiceForAdministrator>&& service);
 void Finalize();
 Result GetUserId(Uid* pOutUid, const UserHandle& handle);
+Result ListAllUsers(int* pOutActualLength, Uid* pOutUsers, int count);
+Result ListOpenUsers(int* pOutActualLength, Uid* pOutUsers, int count);
+Result ListOpenUsers(int* pOutActualLength, Uid* pOutUsers, int count,
+  const arp::ApplicationInstanceId& applicationInstanceId);
+Result ListQualifiedUsers(int* pOutActualLength, Uid* pOutUsers, int count);
+Result ListQualifiedUsers(int* pOutActualLength, Uid* pOutUsers, int count,
+  const ApplicationId& applicationId);
 Result GetUserCount(int* pOutCount);
 Result GetUserExistence(bool* pOutExistence, const Uid& uid);
 Result GetLastOpenedUser(Uid* pOutUid);
@@ -145,6 +152,70 @@ void InitializeWith(
 
 void Finalize() {
   detail::Finalize();
+}
+
+namespace {
+
+constexpr int kUserCountMax = 8;
+
+// The service lists the valid users first, the rest of the copy is invalid.
+[[gnu::always_inline]] inline void CopyUsers(int* pOutActualLength,
+  Uid* pOutUsers, int count, const Uid (&users)[kUserCountMax]) {
+  int actual = 0;
+  while (actual < kUserCountMax &&
+    (users[actual].value[0] | users[actual].value[1]) != 0) {
+    actual++;
+  }
+  const Uid invalid = {};
+  for (int i = 0; i < count; i++) {
+    pOutUsers[i] = i < actual ? users[i] : invalid;
+  }
+  *pOutActualLength = actual;
+}
+
+}
+
+Result ListAllUsers(int* pOutActualLength, Uid* pOutUsers, int count) {
+  Uid users[kUserCountMax] = {};
+  NN_RESULT_DO(GetAccountServiceObjectBase()->ListAllUsers(
+    sf::OutArray<Uid>(users, kUserCountMax)));
+  CopyUsers(pOutActualLength, pOutUsers, count, users);
+  return Result{0};
+}
+
+Result ListOpenUsers(int* pOutActualLength, Uid* pOutUsers, int count) {
+  Uid users[kUserCountMax] = {};
+  NN_RESULT_DO(GetAccountServiceObjectBase()->ListOpenUsers(
+    sf::OutArray<Uid>(users, kUserCountMax)));
+  CopyUsers(pOutActualLength, pOutUsers, count, users);
+  return Result{0};
+}
+
+Result ListOpenUsers(int* pOutActualLength, Uid* pOutUsers, int count,
+  const arp::ApplicationInstanceId& applicationInstanceId) {
+  Uid users[kUserCountMax] = {};
+  NN_RESULT_DO(
+    GetAccountServiceObjectForSystemService()->ListOpenUsersInApplication(
+      sf::OutArray<Uid>(users, kUserCountMax), applicationInstanceId.value));
+  CopyUsers(pOutActualLength, pOutUsers, count, users);
+  return Result{0};
+}
+
+Result ListQualifiedUsers(int* pOutActualLength, Uid* pOutUsers, int count) {
+  Uid users[kUserCountMax] = {};
+  NN_RESULT_DO(GetAccountServiceObjectForApplication()->ListQualifiedUsers(
+    sf::OutArray<Uid>(users, kUserCountMax)));
+  CopyUsers(pOutActualLength, pOutUsers, count, users);
+  return Result{0};
+}
+
+Result ListQualifiedUsers(int* pOutActualLength, Uid* pOutUsers, int count,
+  const ApplicationId& applicationId) {
+  Uid users[kUserCountMax] = {};
+  NN_RESULT_DO(GetAccountServiceObjectForSystemService()->ListQualifiedUsers(
+    sf::OutArray<Uid>(users, kUserCountMax), applicationId.value));
+  CopyUsers(pOutActualLength, pOutUsers, count, users);
+  return Result{0};
 }
 
 Result GetUserCount(int* pOutCount) {
