@@ -1,3 +1,4 @@
+#include "nn/account/account_baas_access_token.hpp"
 #include "nn/account/account_network_service_account_administrator.hpp"
 #include "nn/account/account_network_service_account_manager.hpp"
 #include "nn/account/account_network_service_license_info.hpp"
@@ -224,6 +225,36 @@ Result ListQualifiedUsers(int* pOutActualLength, Uid* pOutUsers, int count,
   return Result{0};
 }
 
+namespace detail {
+
+// Set by InitializeBaasAccessTokenAccessor, which is not recovered yet.
+extern sf::SharedPointer<IBaasAccessTokenAccessor> g_BaasAccessTokenAccessor;
+
+}
+
+namespace {
+
+sf::SharedPointer<IBaasAccessTokenAccessor> GetBaasAccessTokenAccessor() {
+  return detail::g_BaasAccessTokenAccessor;
+}
+
+}
+
+Result GetBaasDeviceAccountId(uint64_t* pOutId, const Uid& uid) {
+  return GetBaasAccessTokenAccessor()->GetDeviceAccountId(
+    sf::Out<uint64_t>(pOutId), uid);
+}
+
+Result LoadBaasAccessTokenCache(size_t* pOutSize, char* buffer, size_t size,
+  const Uid& uid) {
+  uint32_t loaded = 0;
+  const Result result = GetBaasAccessTokenAccessor()->LoadCache(
+    sf::Out<uint32_t>(&loaded), sf::OutBuffer(buffer, size), uid);
+  NN_RESULT_DO(result);
+  *pOutSize = loaded;
+  return Result{0};
+}
+
 void ListPushedOpenUsers(Uid* pOutUsers, int count) {
   Uid users[kUserCountMax] = {};
   NN_ABORT_UNLESS_RESULT_SUCCESS(
@@ -281,6 +312,16 @@ Result CheckNetworkServiceAvailabilityAsync(AsyncContext* pOutContext) {
     GetAccountServiceObjectForApplication()
       ->CheckNetworkServiceAvailabilityAsync(AsyncContextOut(&context)));
   *pOutContext = AsyncContext(context.Detach());
+  return Result{0};
+}
+
+Result EnsureBaasAccessTokenCacheAsync(AsyncContext* pOutContext,
+  const Uid& uid) {
+  sf::SharedPointer<detail::IAsyncContext> context;
+  const Result result = GetBaasAccessTokenAccessor()->EnsureCacheAsync(
+    AsyncContextOut(&context), uid);
+  NN_RESULT_DO(result);
+  *pOutContext = AsyncContext(context.Detach(), uid);
   return Result{0};
 }
 

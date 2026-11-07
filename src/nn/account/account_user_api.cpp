@@ -94,9 +94,10 @@ Result OpenUser(UserHandle* pOutHandle, const Uid& uid) {
       info.preselectedUser.value[1] == uid.value[1]);
   }
   sf::SharedPointer<baas::IManagerForApplication> manager;
-  const Result result =
-    GetAccountServiceObjectForApplication()->GetBaasAccountManagerForApplication(
-      sf::Out<sf::SharedPointer<baas::IManagerForApplication>>(&manager), uid);
+  IAccountServiceForApplication* service =
+    GetAccountServiceObjectForApplication();
+  const Result result = service->GetBaasAccountManagerForApplication(
+    sf::Out<sf::SharedPointer<baas::IManagerForApplication>>(&manager), uid);
   if (result.IsFailure()) {
     // The account descriptions 104 and 105 abort, the others return.
     if ((result.value & 0x3fffff & ~0x200u) == 0xd07c) {
