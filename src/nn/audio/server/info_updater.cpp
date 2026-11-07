@@ -92,7 +92,8 @@ Result InfoUpdater::UpdateEffectsImpl(bool isForceUpdate) {
       out[i].usageState = EffectOutUsageState_Removable;
     }
     if constexpr (HasEffectResultState<Out>) {
-      if (in[i].isNew == true) {
+      // Every effect is checked against the flag of the first one.
+      if (in[0].isNew == true) {
         info->InitializeResultState(
           m_EffectContext->GetDspSharedResultState(i));
         info->InitializeResultState(m_EffectContext->GetResultState(i));
