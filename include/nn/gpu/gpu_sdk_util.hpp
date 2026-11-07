@@ -15,7 +15,11 @@ struct nvgpu_as_alloc_space_args {
   uint64_t offset;
 };
 
-struct nvgpu_as_free_space_args;
+struct nvgpu_as_free_space_args {
+  uint64_t offset;
+  uint32_t pages;
+  uint32_t page_size;
+};
 struct nvgpu_as_map_buffer_ex_args;
 
 struct nvgpu_as_unmap_buffer_args {
@@ -39,8 +43,9 @@ struct ListNode {
 };
 
 struct JobManagerType {
-  uint64_t reserved00;
-  ListNode jobList;
+  // Bit n is set while tracker slot n is free.
+  uint64_t freeSlotMask;
+  ListNode trackerList;
   // The condition variable slot is cleared as a whole 8 byte word.
   union {
     os::SdkConditionVariableType condition;
@@ -64,26 +69,9 @@ struct JobTrackerType {
   VirtualMachineType* machine;
 };
 
-struct JobTrackerSlotPool {
-  uint64_t freeMask;
-  ListNode trackerList;
-};
-
 struct AddressRange {
   uint64_t begin;
   uint64_t end;
-};
-
-struct VirtualMachineType {
-  uint8_t reserved00[0x10];
-  uint8_t jobQueue[0x20];
-  os::SdkMutexType mutex;
-  JobTrackerSlotPool* slotPool;
-  uint8_t reserved40[0x18];
-  AddressRange sparseRange;
-  uint8_t reserved68[0x70];
-  AddressRange normalRange;
-  uint8_t reservedE8[0x8];
 };
 
 }

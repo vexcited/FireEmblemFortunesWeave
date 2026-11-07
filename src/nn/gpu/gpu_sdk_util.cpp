@@ -1,4 +1,5 @@
 #include "nn/gpu/gpu_sdk_util.hpp"
+#include "nn/gpu/gpu_sdk_util_detail.hpp"
 
 #include <bit>
 
@@ -40,8 +41,8 @@ const int ErrorInvalidAddress = 11;
 const int ErrorNoSlotPool = 3;
 const int ErrorNoFreeSlot = 6;
 
-bool Contains(const AddressRange& range, uint64_t address) {
-  return address >= range.begin && address <= range.end;
+bool Contains(uint64_t begin, uint64_t end, uint64_t address) {
+  return address >= begin && address <= end;
 }
 
 }
@@ -70,10 +71,12 @@ int ExecuteVirtualMachineMapBufferEx(VirtualMachineType* machine,
 
 int ExecuteVirtualMachineUnmapBuffer(VirtualMachineType* machine,
   nvgpu_as_unmap_buffer_args* args) {
-  if (Contains(machine->sparseRange, args->offset)) {
+  if (Contains(machine->sparseRegion.m_Begin, machine->sparseRegion.m_End,
+    args->offset)) {
     detail::UnmapSparseBuffer(machine, args);
   }
-  else if (Contains(machine->normalRange, args->offset)) {
+  else if (Contains(machine->normalRange.begin, machine->normalRange.end,
+    args->offset)) {
     detail::UnmapNormalBuffer(machine, args);
   }
   return 0;
@@ -81,10 +84,12 @@ int ExecuteVirtualMachineUnmapBuffer(VirtualMachineType* machine,
 
 int ExecuteVirtualMachineMappingModify(VirtualMachineType* machine,
   nvgpu_as_mapping_modify_args* args) {
-  if (Contains(machine->sparseRange, args->map_address)) {
+  if (Contains(machine->sparseRegion.m_Begin, machine->sparseRegion.m_End,
+    args->map_address)) {
     return detail::ModifySparseMapping(machine, args);
   }
-  if (Contains(machine->normalRange, args->map_address)) {
+  if (Contains(machine->normalRange.begin, machine->normalRange.end,
+    args->map_address)) {
     return detail::ModifyNormalMapping(machine, args);
   }
   return ErrorInvalidAddress;
@@ -97,44 +102,46 @@ int ExecuteVirtualMachineRemap(VirtualMachineType* machine,
 
 int AttachVirtualMachineJobTracker(VirtualMachineType* machine,
   JobTrackerType* tracker) {
-  machine->mutex.Lock();
-  JobTrackerSlotPool* pool = machine->slotPool;
-  if (pool == nullptr) {
-    machine->mutex.Unlock();
+  os::SdkMutexType& mutex = machine->mappings.mutex;
+  mutex.Lock();
+  JobManagerType* manager = machine->mappings.manager;
+  if (manager == nullptr) {
+    mutex.Unlock();
     return ErrorNoSlotPool;
   }
-  uint64_t index = std::countr_zero(pool->freeMask);
+  uint64_t index = std::countr_zero(manager->freeSlotMask);
   if (index >= 64) {
-    machine->mutex.Unlock();
+    mutex.Unlock();
     return ErrorNoFreeSlot;
   }
   uint64_t mask = uint64_t(1) << index;
-  pool->freeMask &= ~mask;
+  manager->freeSlotMask &= ~mask;
   tracker->slotIndex = index;
   tracker->slotMask = mask;
 
   ListNode* node = &tracker->node;
   ListNode* last = node->previous;
-  ListNode* list = &pool->trackerList;
+  ListNode* list = &manager->trackerList;
   node->previous = list->previous;
   last->next = list;
   list->previous->next = node;
   list->previous = last;
-  machine->mutex.Unlock();
+  mutex.Unlock();
   tracker->machine = machine;
   return 0;
 }
 
 void DetachVirtualMachineJobTracker(VirtualMachineType* machine,
   JobTrackerType* tracker) {
-  detail::DetachTracker(&machine->mutex, machine->jobQueue, tracker);
+  detail::DetachTracker(&machine->mappings.mutex, &machine->allocator,
+    tracker);
   tracker->machine = nullptr;
 }
 
 void InitializeJobManager(JobManagerType* manager) {
-  manager->reserved00 = 0;
-  manager->jobList.previous = &manager->jobList;
-  manager->jobList.next = &manager->jobList;
+  manager->freeSlotMask = 0;
+  manager->trackerList.previous = &manager->trackerList;
+  manager->trackerList.next = &manager->trackerList;
   manager->conditionStorage = 0;
   manager->serial = 0;
   manager->pendingCount = 0;
@@ -164,20 +171,22 @@ int PrepareJobTracking(JobTrackerType* tracker) {
 
 void CancelJobTracking(JobTrackerType* tracker) {
   VirtualMachineType* machine = tracker->machine;
-  detail::CancelTracking(&machine->mutex, machine->jobQueue, tracker);
+  detail::CancelTracking(&machine->mappings.mutex, &machine->allocator,
+    tracker);
 }
 
 int StartJobTracking(JobTrackerType* tracker, uint32_t syncPointId,
   uint32_t value) {
-  return detail::StartTracking(&tracker->machine->mutex, tracker,
+  return detail::StartTracking(&tracker->machine->mappings.mutex, tracker,
     syncPointId, value);
 }
 
 void ProcessJobTracking(JobTrackerType* tracker) {
   VirtualMachineType* machine = tracker->machine;
-  machine->mutex.Lock();
-  detail::ProcessTracking(machine->jobQueue, tracker, &machine->mutex);
-  machine->mutex.Unlock();
+  machine->mappings.mutex.Lock();
+  detail::ProcessTracking(&machine->allocator, tracker,
+    &machine->mappings.mutex);
+  machine->mappings.mutex.Unlock();
 }
 
 }

@@ -191,6 +191,27 @@ protected:
       DefaultProxyFactory<Interface, Kind>::GetAllocator(pProxy),
       &pProxy->m_State, out, params...);
   }
+
+  // The same through the out of line body shared by several methods.
+  template <bool HasProcessId, int MethodId, typename Target,
+    typename... Parameters>
+  [[gnu::always_inline]] Result ProcessWithSharedOutObject(
+    const Out<SharedPointer<Target>>& out, const Parameters&... params) {
+    DefaultProxy<Interface, Kind>* pProxy =
+      static_cast<DefaultProxy<Interface, Kind>*>(this);
+    return detail::ProcessWithOutObject<Kind, HasProcessId, MethodId>(
+      DefaultProxyFactory<Interface, Kind>::GetAllocator(pProxy),
+      &pProxy->m_State, out, params...);
+  }
+
+  template <bool HasProcessId, int MethodId, typename Signature,
+    typename... Arguments>
+  [[gnu::always_inline]] Result InvokeMethod(Arguments&&... arguments) {
+    DefaultProxy<Interface, Kind>* pProxy =
+      static_cast<DefaultProxy<Interface, Kind>*>(this);
+    return ProxyMethodInvoker<Kind, HasProcessId, Signature>::Invoke(
+      &pProxy->m_State, MethodId, static_cast<Arguments&&>(arguments)...);
+  }
 };
 
 #define NN_SF_DETAIL_RESERVED_PROXY_METHOD(index) \

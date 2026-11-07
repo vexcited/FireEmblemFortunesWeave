@@ -1324,3 +1324,5 @@ public:
 };
 
 }
+
+#include "nn/am/service/am_proxy_methods.hpp"
