@@ -44,7 +44,10 @@ private:
   UpsamplerInfo* m_Infos;
   int8_t* m_Buffer;
   os::SdkRecursiveMutexType m_Mutex;
+  uint8_t m_Reserved[0x28];
 };
+
+static_assert(sizeof(UpsamplerManager) == 0x48);
 
 }
 }
