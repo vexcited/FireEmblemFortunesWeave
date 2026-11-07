@@ -51,11 +51,18 @@ class LayerCreationSettings {
   LayerCreationSettings(int width, int height);
 
   int GetWidth() const;
+  void SetWidth(int width);
   int GetHeight() const;
+  void SetHeight(int height);
+  void SetFullscreen(bool isFullscreen);
+  bool IsFullscreen() const;
+  void SetVisibility(bool isVisible);
+  bool IsVisible() const;
 
  private:
-  uint64_t m_Reserved;
-  uint32_t m_Reserved8;
+  int32_t m_Width;
+  int32_t m_Height;
+  uint32_t m_Flags;
 };
 
 class Display {

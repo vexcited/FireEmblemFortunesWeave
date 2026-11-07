@@ -18247,6 +18247,16 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 5dfe00,48,verified,src/nn/vi/vi_api.cpp,_ZN2nn2vi15GetNativeWindowEPPvPNS0_5LayerE
 5dfe30,16,verified,src/nn/vi/vi_api.cpp,_ZN2nn2vi20GetLatestFrameNumberEPmPKNS0_5LayerE
 5dfe40,20,verified,src/nn/vi/vi_api.cpp,_ZN2nn2vi16ListFrameHistoryEPNS0_9FrameInfoEiPKNS0_5LayerE
+5e06a0,24,verified,src/nn/vi/vi_layer_creation_settings.cpp,_ZN2nn2vi21LayerCreationSettingsC2Ev
+5e06c0,16,verified,src/nn/vi/vi_layer_creation_settings.cpp,_ZN2nn2vi21LayerCreationSettingsC2Eii
+5e06d0,8,verified,src/nn/vi/vi_layer_creation_settings.cpp,_ZNK2nn2vi21LayerCreationSettings8GetWidthEv
+5e06e0,8,verified,src/nn/vi/vi_layer_creation_settings.cpp,_ZN2nn2vi21LayerCreationSettings8SetWidthEi
+5e06f0,8,verified,src/nn/vi/vi_layer_creation_settings.cpp,_ZNK2nn2vi21LayerCreationSettings9GetHeightEv
+5e0700,8,verified,src/nn/vi/vi_layer_creation_settings.cpp,_ZN2nn2vi21LayerCreationSettings9SetHeightEi
+5e0710,16,verified,src/nn/vi/vi_layer_creation_settings.cpp,_ZN2nn2vi21LayerCreationSettings13SetFullscreenEb
+5e0720,12,verified,src/nn/vi/vi_layer_creation_settings.cpp,_ZNK2nn2vi21LayerCreationSettings12IsFullscreenEv
+5e0730,32,verified,src/nn/vi/vi_layer_creation_settings.cpp,_ZN2nn2vi21LayerCreationSettings13SetVisibilityEb
+5e0750,12,verified,src/nn/vi/vi_layer_creation_settings.cpp,_ZNK2nn2vi21LayerCreationSettings9IsVisibleEv
 5e0760,12,verified,src/nn/vi2/vi2_sdk_api.cpp,_ZN2nn3vi23sdk18GetFrontendVersionEv
 5e0770,12,verified,src/nn/vi2/vi2_sdk_api.cpp,_ZN2nn3vi23sdk17GetLibraryVersionEv
 5e0780,12,verified,src/nn/vi2/vi2_sdk_api.cpp,_ZN2nn3vi23sdk17GetInitializeLockEv
