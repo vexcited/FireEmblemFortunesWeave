@@ -36,6 +36,22 @@ void ScaleTouchScreenState(TouchScreenState<N>* pState) {
 
 }
 
+Result InitializeTouchScreenForSystemProcess(int width, int height) {
+  hid::detail::TouchScreenSharedMemoryAccessor& accessor =
+    hid::detail::GetTouchScreenSharedMemoryAccessor();
+  NN_RESULT_DO(
+    accessor.SetAppletResourceUserId(utility::GetAppletResourceUserId()));
+  accessor.SetResolution(DefaultTouchScreenWidth, DefaultTouchScreenHeight);
+  NN_RESULT_DO(accessor.Activate());
+  g_TouchScreenOutputWidth = width;
+  g_TouchScreenOutputHeight = height;
+  return Result{};
+}
+
+Result FinalizeTouchScreenForSystemProcess() {
+  return hid::detail::GetTouchScreenSharedMemoryAccessor().Deactivate();
+}
+
 int GetTouchScreenOutputWidthForSystemProcess() {
   return g_TouchScreenOutputWidth;
 }

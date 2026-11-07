@@ -108,6 +108,20 @@ void SetAuxInputOutput(Info& info, const int8_t* input, const int8_t* output,
   detail::SetEffectInputOutput(info, input, output, count);
 }
 
+// Unlike the shared helper, the reported count is the full channel count
+// even when countMax clamps the copy.
+template<class Info>
+void GetAuxInputOutput(const Info& info, int8_t* input, int8_t* output,
+  int* count, int countMax) {
+  const int channelCount = std::min(info.channelCount,
+    static_cast<uint16_t>(countMax));
+  for (int i = 0; i < channelCount; ++i) {
+    input[i] = info.input[i];
+    output[i] = info.output[i];
+  }
+  *count = info.channelCount;
+}
+
 float CalculateLimiterCoefficient(int microSeconds, int sampleRate) {
   if (microSeconds < 1) {
     return 1.0f;
@@ -189,8 +203,7 @@ int GetAuxReverbChannelCountMax(const AuxReverbType* aux) {
 
 void GetAuxReverbInputOutput(int8_t* input, int8_t* output, int* count,
   const AuxReverbType* aux, int countMax) {
-  detail::GetEffectInputOutput(GetInfo<ReverbInfo>(aux), input, output,
-    count, countMax);
+  GetAuxInputOutput(GetInfo<ReverbInfo>(aux), input, output, count, countMax);
 }
 
 void SetAuxReverbInputOutput(AuxReverbType* aux, const int8_t* input,
@@ -289,8 +302,7 @@ int GetAuxDelayChannelCountMax(const AuxDelayType* aux) {
 
 void GetAuxDelayInputOutput(int8_t* input, int8_t* output, int* count,
   const AuxDelayType* aux, int countMax) {
-  detail::GetEffectInputOutput(GetInfo<DelayInfo>(aux), input, output,
-    count, countMax);
+  GetAuxInputOutput(GetInfo<DelayInfo>(aux), input, output, count, countMax);
 }
 
 void SetAuxDelayInputOutput(AuxDelayType* aux, const int8_t* input,
@@ -387,8 +399,8 @@ void SetAuxI3dl2ReverbInputOutput(AuxI3dl2ReverbType* aux,
 
 void GetAuxI3dl2ReverbInputOutput(int8_t* input, int8_t* output, int* count,
   const AuxI3dl2ReverbType* aux, int countMax) {
-  detail::GetEffectInputOutput(GetInfo<I3dl2ReverbInfo>(aux), input, output,
-    count, countMax);
+  GetAuxInputOutput(GetInfo<I3dl2ReverbInfo>(aux), input, output, count,
+    countMax);
 }
 
 void SetAuxI3dl2ReverbParameters(AuxI3dl2ReverbType* aux,
@@ -488,8 +500,8 @@ void SetAuxCompressorInputOutput(AuxCompressorType* aux, const int8_t* input,
 
 void GetAuxCompressorInputOutput(int8_t* input, int8_t* output, int* count,
   const AuxCompressorType* aux, int countMax) {
-  detail::GetEffectInputOutput(GetInfo<CompressorInfo>(aux), input, output,
-    count, countMax);
+  GetAuxInputOutput(GetInfo<CompressorInfo>(aux), input, output, count,
+    countMax);
 }
 
 void SetAuxCompressorParameters(AuxCompressorType* aux,

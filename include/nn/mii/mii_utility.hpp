@@ -6,6 +6,9 @@
 
 namespace nn::mii::detail {
 
+struct Ver3CreateId;
+struct Ver3AuthorId;
+
 // Xorshift128 random generator seeded from the system tick.
 class UtilityImpl {
 public:
@@ -14,6 +17,8 @@ public:
   static int64_t GetRandomSeedBySystemTick();
   void MakeCreateId(CreateId* id);
   void MakeInvalidCreateId(CreateId* id);
+  void MakeVer3CreateId(Ver3CreateId* id);
+  void MakeVer3AuthorId(Ver3AuthorId* id);
   int GetRandomRange(int minimum, int maximum);
   int GetRandom(int minimum, int end);
   uint32_t GetRandomUint32(uint32_t end);

@@ -661,7 +661,7 @@ Result GetLoudnessNormalizationStatistics(int* count,
   if (!detail::IsSystemInitializedImpl()) {
     return ResultNotInitialized;
   }
-  if (count == nullptr || functionality == 0 || statistics.data == nullptr) {
+  if (count == nullptr || functionality == 0 || statistics.size == 0) {
     return ResultInvalidArgument;
   }
   return detail::GetLoudnessNormalizationStatistics(count, statistics, name,

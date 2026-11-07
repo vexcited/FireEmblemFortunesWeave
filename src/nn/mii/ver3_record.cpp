@@ -1,4 +1,6 @@
 #include "nn/mii/ver3_record.hpp"
+#include "nn/mii/mii_utility.hpp"
+#include "nn/mii/ver3_field_access.hpp"
 
 #include <stddef.h>
 #include <string.h>
@@ -63,12 +65,12 @@ void ModifyVer3CreateIdWiiUAndNormal(Ver3CreateId* id) {
   id->data[0] = (id->data[0] & 15) | 0xD0;
 }
 
-static void MakeCreateId(UtilityImpl*, Ver3CreateId* id) {
+void UtilityImpl::MakeVer3CreateId(Ver3CreateId* id) {
   nn::os::GenerateRandomBytes(id, 10);
   ModifyVer3CreateIdWiiUAndNormal(id);
 }
 
-static void MakeAuthorId(UtilityImpl*, Ver3AuthorId* id) {
+void UtilityImpl::MakeVer3AuthorId(Ver3AuthorId* id) {
   nn::os::GenerateRandomBytes(id, 8);
 }
 
@@ -132,106 +134,123 @@ void Ver3StoreDataRaw::SetCreatorName(const Nickname& name) {
 
 void Ver3StoreDataRaw::SetDefault(UtilityImpl* utility) {
   SetMiiVersion(3);
-  SetCopyable(0);
-  SetNgWord(0);
-  SetRegionMove(0);
-  SetFontRegion(0);
-  SetRoomIndex(0);
-  SetPositionInRoom(0);
-  SetAuthorType(0);
-  SetGender(0);
-  SetBirthMonth(0);
-  SetBirthDay(0);
-  SetFavoriteColor(0);
-  SetFavorite(0);
-  SetHeight(0);
-  SetBuild(0);
-  SetLocalonly(0);
-  SetFaceType(0);
-  SetFaceColor(0);
-  SetFaceTex(0);
-  SetFaceMake(0);
-  SetHairType(0);
-  SetHairColor(0);
-  SetHairFlip(0);
-  SetEyeType(0);
-  SetEyeColor(0);
-  SetEyeScale(0);
-  SetEyeAspect(0);
-  SetEyeRotate(0);
-  SetEyeX(0);
-  SetEyeY(0);
-  SetEyebrowType(0);
-  SetEyebrowColor(0);
-  SetEyebrowScale(0);
-  SetEyebrowAspect(0);
-  SetEyebrowRotate(0);
-  SetEyebrowX(0);
+  Set(this, Ver3StoreDataMember::Copyable, 0);
+  Set(this, Ver3StoreDataMember::NgWord, 0);
+  Set(this, Ver3StoreDataMember::RegionMove, 0);
+  Set(this, Ver3StoreDataMember::FontRegion, 0);
+  Set(this, Ver3StoreDataMember::RoomIndex, 0);
+  Set(this, Ver3StoreDataMember::PositionInRoom, 0);
+  Set(this, Ver3StoreDataMember::AuthorType, 0);
+  Set(this, Ver3StoreDataMember::Gender, 0);
+  Set(this, Ver3StoreDataMember::BirthMonth, 0);
+  Set(this, Ver3StoreDataMember::BirthDay, 0);
+  Set(this, Ver3StoreDataMember::FavoriteColor, 0);
+  Set(this, Ver3StoreDataMember::Favorite, 0);
+  Set(this, Ver3StoreDataMember::Height, 0);
+  Set(this, Ver3StoreDataMember::Build, 0);
+  Set(this, Ver3StoreDataMember::Localonly, 0);
+  Set(this, Ver3StoreDataMember::FaceType, 0);
+  Set(this, Ver3StoreDataMember::FaceColor, 0);
+  Set(this, Ver3StoreDataMember::FaceTex, 0);
+  Set(this, Ver3StoreDataMember::FaceMake, 0);
+  Set(this, Ver3StoreDataMember::HairType, 0);
+  Set(this, Ver3StoreDataMember::HairColor, 0);
+  Set(this, Ver3StoreDataMember::HairFlip, 0);
+  Set(this, Ver3StoreDataMember::EyeType, 0);
+  Set(this, Ver3StoreDataMember::EyeColor, 0);
+  Set(this, Ver3StoreDataMember::EyeScale, 0);
+  Set(this, Ver3StoreDataMember::EyeAspect, 0);
+  Set(this, Ver3StoreDataMember::EyeRotate, 0);
+  Set(this, Ver3StoreDataMember::EyeX, 0);
+  Set(this, Ver3StoreDataMember::EyeY, 0);
+  Set(this, Ver3StoreDataMember::EyebrowType, 0);
+  Set(this, Ver3StoreDataMember::EyebrowColor, 0);
+  Set(this, Ver3StoreDataMember::EyebrowScale, 0);
+  Set(this, Ver3StoreDataMember::EyebrowAspect, 0);
+  Set(this, Ver3StoreDataMember::EyebrowRotate, 0);
+  Set(this, Ver3StoreDataMember::EyebrowX, 0);
   SetEyebrowY(3);
-  SetNoseType(0);
-  SetNoseScale(0);
-  SetNoseY(0);
-  SetMouthType(0);
-  SetMouthColor(0);
-  SetMouthScale(0);
-  SetMouthAspect(0);
-  SetMouthY(0);
-  SetMustacheType(0);
-  SetBeardType(0);
-  SetBeardColor(0);
-  SetBeardScale(0);
-  SetBeardY(0);
-  SetGlassType(0);
-  SetGlassColor(0);
-  SetGlassScale(0);
-  SetGlassY(0);
-  SetMoleType(0);
-  SetMoleScale(0);
-  SetMoleX(0);
-  SetMoleY(0);
-  SetReserved0(0);
-  SetReserved1(0);
-  SetReserved2(0);
-  SetPadding0(0);
-  SetPadding1(0);
-  SetPadding2(0);
-  SetPadding3(0);
-  SetPadding4(0);
-  SetPadding5(0);
-  SetPadding6(0);
-  SetPadding7(0);
-  SetPadding8(0);
-  SetPadding9(0);
+  Set(this, Ver3StoreDataMember::NoseType, 0);
+  Set(this, Ver3StoreDataMember::NoseScale, 0);
+  Set(this, Ver3StoreDataMember::NoseY, 0);
+  Set(this, Ver3StoreDataMember::MouthType, 0);
+  Set(this, Ver3StoreDataMember::MouthColor, 0);
+  Set(this, Ver3StoreDataMember::MouthScale, 0);
+  Set(this, Ver3StoreDataMember::MouthAspect, 0);
+  Set(this, Ver3StoreDataMember::MouthY, 0);
+  Set(this, Ver3StoreDataMember::MustacheType, 0);
+  Set(this, Ver3StoreDataMember::BeardType, 0);
+  Set(this, Ver3StoreDataMember::BeardColor, 0);
+  Set(this, Ver3StoreDataMember::BeardScale, 0);
+  Set(this, Ver3StoreDataMember::BeardY, 0);
+  Set(this, Ver3StoreDataMember::GlassType, 0);
+  Set(this, Ver3StoreDataMember::GlassColor, 0);
+  Set(this, Ver3StoreDataMember::GlassScale, 0);
+  Set(this, Ver3StoreDataMember::GlassY, 0);
+  Set(this, Ver3StoreDataMember::MoleType, 0);
+  Set(this, Ver3StoreDataMember::MoleScale, 0);
+  Set(this, Ver3StoreDataMember::MoleX, 0);
+  Set(this, Ver3StoreDataMember::MoleY, 0);
+  Set(this, Ver3StoreDataMember::Reserved0, 0);
+  Set(this, Ver3StoreDataMember::Reserved1, 0);
+  Set(this, Ver3StoreDataMember::Reserved2, 0);
+  Set(this, Ver3StoreDataMember::Padding0, 0);
+  Set(this, Ver3StoreDataMember::Padding1, 0);
+  Set(this, Ver3StoreDataMember::Padding2, 0);
+  Set(this, Ver3StoreDataMember::Padding3, 0);
+  Set(this, Ver3StoreDataMember::Padding4, 0);
+  Set(this, Ver3StoreDataMember::Padding5, 0);
+  Set(this, Ver3StoreDataMember::Padding6, 0);
+  Set(this, Ver3StoreDataMember::Padding7, 0);
+  Set(this, Ver3StoreDataMember::Padding8, 0);
+  Set(this, Ver3StoreDataMember::Padding9, 0);
 
   Nickname name{};
   GetVer3StoreDataDefaultName(&name);
-  SetName(name);
+  const auto* name_field =
+    GetVer3StoreDataTableElement(Ver3StoreDataMember::Name);
+  StoreLittleEndianNickname(
+    reinterpret_cast<uint16_t*>(data + name_field->offset),
+    name_field->size / 2, name);
   name = {};
   GetVer3StoreDataDefaultCreatorName(&name);
-  SetCreatorName(name);
+  const auto* creator_field =
+    GetVer3StoreDataTableElement(Ver3StoreDataMember::CreatorName);
+  StoreLittleEndianNickname(
+    reinterpret_cast<uint16_t*>(data + creator_field->offset),
+    creator_field->size / 2, name);
   SetBirthPlatform(4);
 
   Ver3CreateId create_id{};
-  MakeCreateId(utility, &create_id);
-  SetCreateId(create_id);
+  utility->MakeVer3CreateId(&create_id);
+  const auto* create_field =
+    GetVer3StoreDataTableElement(Ver3StoreDataMember::CreateId);
+  Copy(data + create_field->offset, &create_id, create_field->size);
 
   Ver3AuthorId author_id{};
-  MakeAuthorId(utility, &author_id);
-  SetAuthorId(author_id);
-  UpdateCrc();
+  utility->MakeVer3AuthorId(&author_id);
+  const auto* author_field =
+    GetVer3StoreDataTableElement(Ver3StoreDataMember::AuthorId);
+  Copy(data + author_field->offset, &author_id, author_field->size);
+  CalculateAndSetCrc16(this, 96);
 }
 
 int Ver3StoreDataRaw::Verify() const {
+#define CHECK_RAW(Field, Minimum, Maximum, Error)                              \
+  if (uint32_t(Get(this, Ver3StoreDataMember::Field)) - Minimum >              \
+    Maximum - Minimum) {                                                       \
+    return Error;                                                              \
+  }
 #define CHECK(Field, Minimum, Maximum, Error)                                  \
   if (uint32_t(Get##Field()) - Minimum > Maximum - Minimum) {                  \
     return Error;                                                              \
   }
-  CHECK(MiiVersion, 0, 3, 1)
-  CHECK(Copyable, 0, 1, 2)
-  CHECK(NgWord, 0, 1, 3)
-  CHECK(RegionMove, 0, 3, 4)
-  CHECK(FontRegion, 0, 3, 5)
-  CHECK(RoomIndex, 0, 9, 6)
+  CHECK_RAW(MiiVersion, 0, 3, 1)
+  CHECK_RAW(Copyable, 0, 1, 2)
+  CHECK_RAW(NgWord, 0, 1, 3)
+  CHECK_RAW(RegionMove, 0, 3, 4)
+  CHECK_RAW(FontRegion, 0, 3, 5)
+  CHECK_RAW(RoomIndex, 0, 9, 6)
   CHECK(PositionInRoom, 0, 9, 7)
   CHECK(AuthorType, 0, 0, 8)
   CHECK(BirthPlatform, 1, 7, 9)
@@ -295,16 +314,21 @@ int Ver3StoreDataRaw::Verify() const {
   CHECK(MoleX, 0, 16, 60)
   CHECK(MoleY, 0, 30, 61)
 #undef CHECK
+#undef CHECK_RAW
 
   Ver3AuthorId author{};
-  GetAuthorId(&author);
+  const auto* author_field =
+    GetVer3StoreDataTableElement(Ver3StoreDataMember::AuthorId);
+  Copy(&author, data + author_field->offset, author_field->size);
 
   if (!author.IsValid()) {
     return 10;
   }
 
   Ver3CreateId create{};
-  GetCreateId(&create);
+  const auto* create_field =
+    GetVer3StoreDataTableElement(Ver3StoreDataMember::CreateId);
+  Copy(&create, data + create_field->offset, create_field->size);
 
   if (!create.IsValid()) {
     return 11;

@@ -3,6 +3,8 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#include <new>
+
 #include "nn/movie/detail/movie_heap_memory_manager.hpp"
 
 // The SDK replaces the global allocation functions of its AOSP code with
@@ -17,6 +19,16 @@ inline void *operator new(size_t size) {
 }
 
 inline void *operator new[](size_t size) {
+  using nn::movie::detail::HeapMemoryManager;
+  return nn::movie::detail::AllocateFromHeap(size,
+    HeapMemoryManager::GetInstance().GetCurrentHeap());
+}
+
+inline void *operator new(size_t size, const std::nothrow_t &) noexcept {
+  return operator new(size);
+}
+
+inline void *operator new[](size_t size, const std::nothrow_t &) noexcept {
   using nn::movie::detail::HeapMemoryManager;
   return nn::movie::detail::AllocateFromHeap(size,
     HeapMemoryManager::GetInstance().GetCurrentHeap());
