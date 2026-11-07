@@ -30,10 +30,12 @@ Result IsVirtualCaptureDeviceStreamFormatSupported(const AudioDeviceName& name,
   return result;
 }
 
+// Only the first name byte is cleared, the context storage is left as it
+// was until the context is built in it.
 OutputRecorderImpl::OutputRecorderImpl()
-  : m_Id(), m_DeviceName(), m_pEvent(nullptr), m_State(0), m_Format(),
-    m_CapacityFrameCount(0), m_ContextStorage() {
-  m_Id = -1;
+  : m_Id(-1), m_pEvent(nullptr), m_State(0), m_Format(),
+    m_CapacityFrameCount(0) {
+  m_DeviceName.name[0] = '\0';
   uintptr_t storage = reinterpret_cast<uintptr_t>(m_ContextStorage);
   m_pContext = new (reinterpret_cast<void*>((storage + 7) & ~uintptr_t(7)))
     sysmix::StreamContext();
