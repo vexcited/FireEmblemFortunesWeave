@@ -65,4 +65,20 @@ void RelianceSelectMenu::Unknown69() {
   sound::PlaySe("SE_SYS_Decide_H_Light");
 }
 
+void RelianceSelectMenu::Unknown76(int result) {
+  if (result != 13) {
+    GameMenu::Unknown76(result);
+    return;
+  }
+  sound::PlaySe("SE_SYS_UnitChange_Left");
+}
+
+void RelianceSelectMenu::Unknown77(int result) {
+  if (result != 13) {
+    GameMenu::Unknown77(result);
+    return;
+  }
+  sound::PlaySe("SE_SYS_UnitChange_Right");
+}
+
 }

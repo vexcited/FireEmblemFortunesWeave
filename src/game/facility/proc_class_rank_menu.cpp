@@ -1,5 +1,6 @@
 #include "game/facility/facility_menu.hpp"
 #include "game/gameui/header_footer.hpp"
+#include "game/sound/se.hpp"
 
 namespace game::facility {
 
@@ -55,6 +56,22 @@ private:
 };
 
 [[gnu::used]] ProcClassRankMenu::ProcClassRankMenu() = default;
+
+void ProcClassRankMenu::Unknown76(int result) {
+  if (result != 13) {
+    FacilityMenu::Unknown76(result);
+    return;
+  }
+  sound::PlaySe("SE_SYS_UnitChange_Left");
+}
+
+void ProcClassRankMenu::Unknown77(int result) {
+  if (result != 13) {
+    FacilityMenu::Unknown77(result);
+    return;
+  }
+  sound::PlaySe("SE_SYS_UnitChange_Right");
+}
 
 }
 
