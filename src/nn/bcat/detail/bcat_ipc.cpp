@@ -14,8 +14,8 @@ Result CreateBcatService(IBcatService** pOutService) {
   g_Mutex.Lock();
   Result result;
   {
-    sf::SharedPointer<IServiceCreator> creator = g_ServiceCreator;
     sf::SharedPointer<IBcatService> service;
+    sf::SharedPointer<IServiceCreator> creator = g_ServiceCreator;
     result = creator->CreateBcatService(sf::Out(&service), os::ProcessId{});
     if (result.IsSuccess()) {
       *pOutService = service.Detach();
@@ -30,8 +30,8 @@ Result CreateDeliveryCacheStorageService(
   g_Mutex.Lock();
   Result result;
   {
-    sf::SharedPointer<IServiceCreator> creator = g_ServiceCreator;
     sf::SharedPointer<IDeliveryCacheStorageService> service;
+    sf::SharedPointer<IServiceCreator> creator = g_ServiceCreator;
     result = creator->CreateDeliveryCacheStorageService(sf::Out(&service),
       os::ProcessId{});
     if (result.IsSuccess()) {
@@ -47,8 +47,8 @@ Result CreateDeliveryCacheStorageService(
   g_Mutex.Lock();
   Result result;
   {
-    sf::SharedPointer<IServiceCreator> creator = g_ServiceCreator;
     sf::SharedPointer<IDeliveryCacheStorageService> service;
+    sf::SharedPointer<IServiceCreator> creator = g_ServiceCreator;
     result = creator->CreateDeliveryCacheStorageServiceWithApplicationId(
       sf::Out(&service), applicationId);
     if (result.IsSuccess()) {
