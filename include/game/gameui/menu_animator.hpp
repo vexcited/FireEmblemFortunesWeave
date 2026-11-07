@@ -47,12 +47,12 @@ public:
     if (handle == -1 || instance_ == nullptr) {
       return false;
     }
+    // Every slot is compared, the original reads them all.
+    int matches = 0;
     for (const Slot& slot : instance_->slots_) {
-      if (slot.handle == handle) {
-        return true;
-      }
+      matches += slot.handle == handle;
     }
-    return false;
+    return matches != 0;
   }
 
 private:

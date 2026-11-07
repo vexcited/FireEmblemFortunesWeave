@@ -2,6 +2,8 @@
 
 #include <cstdint>
 #include <functional>
+#include <memory>
+#include <vector>
 
 namespace game {
 
@@ -27,6 +29,16 @@ public:
   void Build(const facility::FacilityUnitListBuildArgs& args);
 };
 
+// The facility state of a unit in a list.
+struct UnitListEntry {
+  Unit* unit;
+  uint8_t unknown_08_[0x28];
+  uint16_t flags;
+};
+
+// The flags of the units missing from the lists.
+[[gnu::visibility("default")]] extern const uint16_t kNoUnitListFlags;
+
 // The unit lists of the hub facilities, owned by a global pointer.
 class UnitListSet {
 public:
@@ -36,8 +48,21 @@ public:
     return lists_[index];
   }
 
+  std::shared_ptr<UnitListEntry> Find(int kind, const Unit* unit) const {
+    for (const std::shared_ptr<UnitListEntry>& entry : entries_[kind]->list) {
+      if (entry->unit == unit) {
+        return entry;
+      }
+    }
+    return nullptr;
+  }
+
 private:
-  uint8_t unknown_00_[0x18];
+  struct Entries {
+    std::vector<std::shared_ptr<UnitListEntry>> list;
+  };
+
+  Entries* entries_[3];
   UnitCycleList* lists_[3];
 };
 

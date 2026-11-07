@@ -1,6 +1,7 @@
 #pragma once
 
 #include "game/menu/unit_menu_item.hpp"
+#include "game/unit_list_set.hpp"
 
 namespace game::facility {
 
@@ -20,6 +21,18 @@ public:
   bool Unknown85() override;
   bool Unknown86() override;
   bool Unknown88() override;
+
+protected:
+  // The list flags of the unit, the defaults when it is not listed.
+  uint16_t GetListFlags() const {
+    const UnitListEntry* entry = unit_ != nullptr ?
+      UnitListSet::instance_->Find(list_kind_, unit_).get() : nullptr;
+    const uint16_t& flags = entry != nullptr ? entry->flags : kNoUnitListFlags;
+    return flags;
+  }
+
+  uint8_t list_kind_;
+  bool unknown_61_;
 };
 
 }

@@ -52,6 +52,8 @@ public:
   GameVariable* Entry(int type, const HashedString& key, int value,
     int unknown, int min, int max, bool flag);
   GameVariable* FindByKey(uint32_t key) const;
+  // Stores the variable the scripts read the chosen answer from.
+  void SetChoiceResult(int value);
 
   GameVariableTable* GetVariables() const {
     return variables_;

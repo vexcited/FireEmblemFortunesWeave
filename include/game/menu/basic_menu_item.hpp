@@ -70,6 +70,7 @@ public:
 
   bool IsSelected() const { return selected_; }
 
+  int GetIndex() const { return index_; }
   void SetIndex(int index) { index_ = index; }
 
 protected:

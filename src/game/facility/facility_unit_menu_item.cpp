@@ -1,6 +1,7 @@
 #include "game/facility/facility_unit_menu.hpp"
 #include "game/facility/facility_unit_menu_item.hpp"
 #include "game/game_mode_data.hpp"
+#include "game/unit_pool.hpp"
 #include "game/menu/basic_menu.hpp"
 #include "game/menu/top_menu_item.hpp"
 #include "game/menu/unit_menu_item.hpp"
@@ -36,6 +37,53 @@ int FacilityUnitMenuItem::Unknown81() {
 
 bool FacilityUnitMenuItem::Unknown88() {
   return !Unknown72();
+}
+
+namespace {
+
+// Whether the facility lists the leader and the unit is the leader.
+bool IsListedLeader(menu::BasicMenu* menu, const Unit* unit) {
+  if (!dynamic_cast<FacilityUnitMenu*>(menu)->Unknown149()) {
+    return false;
+  }
+  const GameModeData* data = GameModeData::GetInstance();
+  const PersonData* leader = data != nullptr ? data->GetLeader() : nullptr;
+  const ForceMask mask = {0xf1};
+  return unit == UnitPool::Find(leader, mask);
+}
+
+}
+
+void FacilityUnitMenuItem::Unknown17() {
+  if (IsListedLeader(menu_, unit_)) {
+    SetSelected(true);
+  }
+}
+
+bool FacilityUnitMenuItem::Unknown72() {
+  if (IsListedLeader(menu_, unit_)) {
+    return true;
+  }
+  return unit_ != nullptr && unit_->HasState(0x80);
+}
+
+bool FacilityUnitMenuItem::Unknown77() {
+  return ((GetListFlags() & 1) == 0) & unknown_61_;
+}
+
+bool FacilityUnitMenuItem::Unknown83() {
+  if (Unknown72()) {
+    return false;
+  }
+  return (GetListFlags() & 0x3b) != 0;
+}
+
+bool FacilityUnitMenuItem::Unknown85() {
+  return GetListFlags() & 1;
+}
+
+bool FacilityUnitMenuItem::Unknown86() {
+  return (GetListFlags() & 0x1a) != 0;
 }
 
 }
