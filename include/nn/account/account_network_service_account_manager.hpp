@@ -42,6 +42,13 @@ struct CachedNetworkServiceLicenseInfo {
 struct NintendoAccountAnalyticsPermissionState;
 
 class NetworkServiceAccountManager;
+class NintendoAccountReauthenticationProcedure;
+
+namespace nas {
+
+class IOAuthProcedureForNintendoAccountReauthentication;
+
+}
 
 class CachedNintendoAccountInfoForSystemService {
  public:
@@ -180,6 +187,14 @@ class IManagerForSystemService : public sf::IServiceObject {
   virtual void Reserved27() = 0;
   virtual Result RequiresUpdateNetworkServiceAccountIdTokenCache() = 0;
   virtual Result RequireReauthenticationOfNetworkServiceAccount() = 0;
+  virtual void Reserved30() = 0;
+  virtual Result CreateProcedureToReauthenticateNintendoAccount(
+    const sf::Out<sf::SharedPointer<
+      nas::IOAuthProcedureForNintendoAccountReauthentication>>& pOut) = 0;
+  virtual Result ResumeProcedureToReauthenticateNintendoAccount(
+    const sf::Out<sf::SharedPointer<
+      nas::IOAuthProcedureForNintendoAccountReauthentication>>& pOut,
+    const SessionId& sessionId) = 0;
 };
 
 }
@@ -223,6 +238,11 @@ class NetworkServiceAccountManager {
     char* buffer, size_t size);
   void RequiresUpdateNetworkServiceAccountIdTokenCache();
   void RequireReauthenticationOfNetworkServiceAccount();
+  Result CreateProcedureToReauthenticateNintendoAccount(
+    NintendoAccountReauthenticationProcedure* pOutProcedure);
+  Result ResumeProcedureToReauthenticateNintendoAccount(
+    NintendoAccountReauthenticationProcedure* pOutProcedure,
+    const SessionId& sessionId);
   Result RefreshNotificationTokenAsync(AsyncContext* pOutContext);
   Result CalculateNintendoAccountAuthenticationFingerprint(
     NintendoAccountAuthenticationFingerprint* pOutFingerprint);

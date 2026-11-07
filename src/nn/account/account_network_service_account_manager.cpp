@@ -427,4 +427,62 @@ Result NetworkServiceAccountAdministrator::ImportAsyncForWin(
   return Result{0};
 }
 
+
+// Each procedure takes the service object and the user of this manager.
+#define NN_ACCOUNT_DEFINE_CREATE(owner, service, name, Procedure, Interface) \
+  Result owner::name(Procedure* pOutProcedure) { \
+    sf::SharedPointer<Interface> procedure; \
+    NN_RESULT_DO(service->name( \
+      sf::Out<sf::SharedPointer<Interface>>(&procedure))); \
+    const Uid uid = m_Uid; \
+    *pOutProcedure = Procedure(uid, procedure.Detach()); \
+    return Result{0}; \
+  }
+
+#define NN_ACCOUNT_DEFINE_RESUME(owner, service, name, Procedure, Interface) \
+  Result owner::name(Procedure* pOutProcedure, const SessionId& sessionId) { \
+    sf::SharedPointer<Interface> procedure; \
+    const SessionId id = sessionId; \
+    NN_RESULT_DO(service->name( \
+      sf::Out<sf::SharedPointer<Interface>>(&procedure), id)); \
+    const Uid uid = m_Uid; \
+    *pOutProcedure = Procedure(uid, procedure.Detach()); \
+    return Result{0}; \
+  }
+
+NN_ACCOUNT_DEFINE_CREATE(NetworkServiceAccountManager, m_pManager,
+  CreateProcedureToReauthenticateNintendoAccount,
+  NintendoAccountReauthenticationProcedure,
+  nas::IOAuthProcedureForNintendoAccountReauthentication)
+NN_ACCOUNT_DEFINE_RESUME(NetworkServiceAccountManager, m_pManager,
+  ResumeProcedureToReauthenticateNintendoAccount,
+  NintendoAccountReauthenticationProcedure,
+  nas::IOAuthProcedureForNintendoAccountReauthentication)
+NN_ACCOUNT_DEFINE_CREATE(NetworkServiceAccountAdministrator,
+  GetAdministrator(), CreateProcedureToLinkWithNintendoAccount,
+  NintendoAccountLinkageProcedure,
+  nas::IOAuthProcedureForNintendoAccountLinkage)
+NN_ACCOUNT_DEFINE_RESUME(NetworkServiceAccountAdministrator,
+  GetAdministrator(), ResumeProcedureToLinkWithNintendoAccount,
+  NintendoAccountLinkageProcedure,
+  nas::IOAuthProcedureForNintendoAccountLinkage)
+NN_ACCOUNT_DEFINE_CREATE(NetworkServiceAccountAdministrator,
+  GetAdministrator(), CreateProcedureToUpdateLinkageStateOfNintendoAccount,
+  NintendoAccountLinkageStateUpdateProcedure, http::IOAuthProcedure)
+NN_ACCOUNT_DEFINE_RESUME(NetworkServiceAccountAdministrator,
+  GetAdministrator(), ResumeProcedureToUpdateLinkageStateOfNintendoAccount,
+  NintendoAccountLinkageStateUpdateProcedure, http::IOAuthProcedure)
+NN_ACCOUNT_DEFINE_CREATE(NetworkServiceAccountAdministrator,
+  GetAdministrator(), CreateProcedureToLinkNnidWithNintendoAccount,
+  detail::SimpleOAuthProcedureBase, http::IOAuthProcedure)
+NN_ACCOUNT_DEFINE_RESUME(NetworkServiceAccountAdministrator,
+  GetAdministrator(), ResumeProcedureToLinkNnidWithNintendoAccount,
+  detail::SimpleOAuthProcedureBase, http::IOAuthProcedure)
+NN_ACCOUNT_DEFINE_RESUME(NetworkServiceAccountAdministrator,
+  GetAdministrator(),
+  ProxyProcedureToAcquireApplicationAuthorizationForNintendoAccount,
+  NintendoAccountApplicationAuthorizationProcedure, http::IOAuthProcedure)
+
+#undef NN_ACCOUNT_DEFINE_RESUME
+#undef NN_ACCOUNT_DEFINE_CREATE
 }

@@ -3,6 +3,7 @@
 #include <stdint.h>
 
 #include "nn/account/account_network_service_account_manager.hpp"
+#include "nn/account/account_procedures.hpp"
 
 namespace nn {
 
@@ -33,9 +34,6 @@ namespace baas {
 
 class IAdministrator : public IManagerForSystemService {
  public:
-  virtual void Reserved30() = 0;
-  virtual void Reserved31() = 0;
-  virtual void Reserved32() = 0;
   virtual Result IsRegistered(sf::Out<bool> pOutIsRegistered) = 0;
   virtual Result RegisterAsync(
     const sf::Out<sf::SharedPointer<detail::IAsyncContext>>& pOutContext) = 0;
@@ -53,13 +51,27 @@ class IAdministrator : public IManagerForSystemService {
   virtual Result DownloadProfileAsync(
     const sf::Out<sf::SharedPointer<detail::IAsyncContext>>& pOutContext) = 0;
   virtual Result IsLinkedWithNintendoAccount(sf::Out<bool> pOutIsLinked) = 0;
-  virtual void Reserved42() = 0;
-  virtual void Reserved43() = 0;
-  virtual void Reserved44() = 0;
-  virtual void Reserved45() = 0;
-  virtual void Reserved46() = 0;
-  virtual void Reserved47() = 0;
-  virtual void Reserved48() = 0;
+  virtual Result CreateProcedureToLinkWithNintendoAccount(
+    const sf::Out<sf::SharedPointer<
+      nas::IOAuthProcedureForNintendoAccountLinkage>>& pOut) = 0;
+  virtual Result ResumeProcedureToLinkWithNintendoAccount(
+    const sf::Out<sf::SharedPointer<
+      nas::IOAuthProcedureForNintendoAccountLinkage>>& pOut,
+    const SessionId& sessionId) = 0;
+  virtual Result CreateProcedureToUpdateLinkageStateOfNintendoAccount(
+    const sf::Out<sf::SharedPointer<http::IOAuthProcedure>>& pOut) = 0;
+  virtual Result ResumeProcedureToUpdateLinkageStateOfNintendoAccount(
+    const sf::Out<sf::SharedPointer<http::IOAuthProcedure>>& pOut,
+    const SessionId& sessionId) = 0;
+  virtual Result CreateProcedureToLinkNnidWithNintendoAccount(
+    const sf::Out<sf::SharedPointer<http::IOAuthProcedure>>& pOut) = 0;
+  virtual Result ResumeProcedureToLinkNnidWithNintendoAccount(
+    const sf::Out<sf::SharedPointer<http::IOAuthProcedure>>& pOut,
+    const SessionId& sessionId) = 0;
+  virtual Result
+    ProxyProcedureToAcquireApplicationAuthorizationForNintendoAccount(
+    const sf::Out<sf::SharedPointer<http::IOAuthProcedure>>& pOut,
+    const SessionId& sessionId) = 0;
   virtual Result GetRequestForNintendoAccountInfoView(
     sf::Out<RequestUrl> pOutRequest) = 0;
   virtual Result GetRequestForAnalyticsOptIn(sf::Out<RequestUrl> pOutRequest,
@@ -118,6 +130,23 @@ class NetworkServiceAccountAdministrator : public NetworkServiceAccountManager {
     NetworkServiceAccountAuthenticationInfo* pOutInfo) const;
   Result ImportAsyncForWin(AsyncContext* pOutContext,
     const NetworkServiceAccountAuthenticationInfo& info);
+  Result CreateProcedureToLinkWithNintendoAccount(
+    NintendoAccountLinkageProcedure* pOutProcedure);
+  Result ResumeProcedureToLinkWithNintendoAccount(
+    NintendoAccountLinkageProcedure* pOutProcedure, const SessionId& sessionId);
+  Result CreateProcedureToUpdateLinkageStateOfNintendoAccount(
+    NintendoAccountLinkageStateUpdateProcedure* pOutProcedure);
+  Result ResumeProcedureToUpdateLinkageStateOfNintendoAccount(
+    NintendoAccountLinkageStateUpdateProcedure* pOutProcedure,
+    const SessionId& sessionId);
+  Result CreateProcedureToLinkNnidWithNintendoAccount(
+    detail::SimpleOAuthProcedureBase* pOutProcedure);
+  Result ResumeProcedureToLinkNnidWithNintendoAccount(
+    detail::SimpleOAuthProcedureBase* pOutProcedure,
+    const SessionId& sessionId);
+  Result ProxyProcedureToAcquireApplicationAuthorizationForNintendoAccount(
+    NintendoAccountApplicationAuthorizationProcedure* pOutProcedure,
+    const SessionId& sessionId);
 
  private:
   baas::IAdministrator* GetAdministrator() const {
