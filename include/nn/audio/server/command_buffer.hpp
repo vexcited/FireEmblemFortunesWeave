@@ -7,6 +7,7 @@
 
 #include "nn/audio/compressor.hpp"
 #include "nn/audio/delay.hpp"
+#include "nn/audio/effect_api.hpp"
 #include "nn/audio/i3dl2_reverb.hpp"
 #include "nn/audio/light_limiter.hpp"
 #include "nn/audio/reverb.hpp"
@@ -45,6 +46,8 @@ enum CommandId : uint8_t {
   CommandId_Volume = 7,
   CommandId_BiquadFilterFloatCoeff = 10,
   CommandId_Mix = 11,
+  CommandId_MixRamp = 12,
+  CommandId_MixRampGrouped = 13,
   CommandId_DepopForMixBuffers = 15,
   CommandId_Delay = 16,
   CommandId_Upsample = 17,
@@ -61,6 +64,8 @@ enum CommandId : uint8_t {
   CommandId_LightLimiterVersion2 = 28,
   CommandId_Capture = 31,
   CommandId_Compressor = 32,
+  CommandId_BiquadFilterAndMix = 34,
+  CommandId_MultiTapBiquadFilterAndMix = 36,
   CommandId_AuxGrouped = 37,
 };
 
@@ -95,6 +100,38 @@ struct MixCommand {
   int16_t output;
   float volume;
 };
+
+struct MixRampCommand {
+  static constexpr CommandId Id = CommandId_MixRamp;
+
+  CommandHeader header;
+  DspAddr lastSampleAddress;
+  uint8_t reserved[3];
+  bool isHighPrecision;
+  int16_t input;
+  int16_t output;
+  float volume0;
+  float volume1;
+};
+
+static_assert(sizeof(MixRampCommand) == 40);
+
+struct MixRampGroupedCommand {
+  static constexpr CommandId Id = CommandId_MixRampGrouped;
+  static constexpr int BufferCountMax = 24;
+
+  CommandHeader header;
+  DspAddr lastSampleAddress;
+  uint8_t reserved[3];
+  bool isHighPrecision;
+  int count;
+  int16_t inputs[BufferCountMax];
+  int16_t outputs[BufferCountMax];
+  float volume0[BufferCountMax];
+  float volume1[BufferCountMax];
+};
+
+static_assert(sizeof(MixRampGroupedCommand) == 320);
 
 struct CopyMixBufferCommand {
   static constexpr CommandId Id = CommandId_CopyMixBuffer;
@@ -339,6 +376,49 @@ static_assert(sizeof(AuxCommand) == 80);
 static_assert(sizeof(AuxGroupedCommand) == 104);
 static_assert(sizeof(CaptureCommand) == 64);
 
+struct BiquadFilterAndMixCommand {
+  static constexpr CommandId Id = CommandId_BiquadFilterAndMix;
+
+  CommandHeader header;
+  uint8_t reserved0[8];
+  int16_t input;
+  int16_t output;
+  BiquadFilterCoefficients coefficients;
+  uint8_t reserved1[8];
+  DspAddr state;
+  DspAddr previousState;
+  DspAddr lastSample;
+  float previousVolume;
+  float volume;
+  bool needInitialization;
+  bool hasVolumeRamp;
+  bool isFirstMixBuffer;
+};
+
+static_assert(sizeof(BiquadFilterAndMixCommand) == 96);
+
+struct MultiTapBiquadFilterAndMixCommand {
+  static constexpr CommandId Id = CommandId_MultiTapBiquadFilterAndMix;
+  static constexpr int FilterCount = 2;
+
+  CommandHeader header;
+  uint8_t reserved0[12];
+  int16_t input;
+  int16_t output;
+  float numerator[FilterCount][3];
+  float denominator[FilterCount][2];
+  DspAddr states[FilterCount];
+  DspAddr previousStates[FilterCount];
+  DspAddr lastSample;
+  float previousVolume;
+  float volume;
+  bool needInitialization[FilterCount];
+  bool hasVolumeRamp;
+  bool isFirstMixBuffer;
+};
+
+static_assert(sizeof(MultiTapBiquadFilterAndMixCommand) == 128);
+
 template<int Slot>
 struct UnknownCommand;
 
@@ -356,8 +436,8 @@ public:
   virtual uint32_t Estimate(const UnknownCommand<8>& command) const = 0;
   virtual uint32_t Estimate(const UnknownCommand<9>& command) const = 0;
   virtual uint32_t Estimate(const MixCommand& command) const = 0;
-  virtual uint32_t Estimate(const UnknownCommand<11>& command) const = 0;
-  virtual uint32_t Estimate(const UnknownCommand<12>& command) const = 0;
+  virtual uint32_t Estimate(const MixRampCommand& command) const = 0;
+  virtual uint32_t Estimate(const MixRampGroupedCommand& command) const = 0;
   virtual uint32_t Estimate(const UnknownCommand<13>& command) const = 0;
   virtual uint32_t Estimate(const DepopForMixBuffersCommand& command) const = 0;
   virtual uint32_t Estimate(const DelayCommand& command) const = 0;
@@ -383,6 +463,11 @@ public:
   virtual uint32_t Estimate(const AuxGroupedCommand& command) const = 0;
   virtual uint32_t Estimate(
     const BiquadFilterFloatCoeffCommand& command) const = 0;
+  virtual uint32_t Estimate(const UnknownCommand<35>& command) const = 0;
+  virtual uint32_t Estimate(
+    const BiquadFilterAndMixCommand& command) const = 0;
+  virtual uint32_t Estimate(
+    const MultiTapBiquadFilterAndMixCommand& command) const = 0;
 };
 
 template<class Derived>
@@ -404,6 +489,16 @@ public:
 
 class CommandBuffer : public ICommandBuffer<CommandBuffer> {
 public:
+  CommandBuffer(void* buffer, size_t size, size_t offset,
+    const MemoryPoolInfo* memoryPool,
+    const ICommandProcessingTimeEstimator* estimator,
+    const BehaviorInfo* behavior, float processingTimeRatio)
+    : m_Buffer(static_cast<uint8_t*>(buffer)), m_Size(size),
+      m_Offset(offset), m_Count(0), m_EstimatedProcessingTime(0),
+      m_MemoryPool(memoryPool), m_Estimator(estimator), m_Behavior(behavior),
+      m_ProcessingTimeRatio(processingTimeRatio) {
+  }
+
   template<class Command>
   Command* AllocateImpl(uint32_t nodeId) {
     auto* command = reinterpret_cast<Command*>(m_Buffer + m_Offset);
@@ -429,6 +524,10 @@ public:
     return m_Count;
   }
 
+  size_t GetUsedSize() const {
+    return m_Offset;
+  }
+
   uint32_t GetEstimatedProcessingTime() const {
     return m_EstimatedProcessingTime;
   }
@@ -443,7 +542,12 @@ public:
 
   void Setup(ClearMixBufferCommand* command);
   void Setup(MixCommand* command, int input, int output, float volume,
-    bool isHighPrecision);
+    bool isHighPrecision) {
+    command->input = input;
+    command->output = output;
+    command->volume = volume;
+    command->isHighPrecision = isHighPrecision;
+  }
   void Setup(CopyMixBufferCommand* command, int input, int output);
   void Setup(DelayCommand* command, int bufferOffset,
     const EffectParameter<DelayParameter>* parameter, DelayState* state,
@@ -490,6 +594,21 @@ public:
     int bufferCount, int sampleRate, int32_t* depopBuffer);
   void Setup(PerformanceCommand* command,
     const PerformanceEntryAddresses* entry, PerformanceCommandType type);
+  void Setup(MixRampCommand* command, int input, int output,
+    float previousVolume, float volume, DspAddr lastSampleAddress,
+    bool isHighPrecision);
+  void Setup(MixRampGroupedCommand* command, int count, int input,
+    int bufferOffset, const float* volumes, const float* previousVolumes,
+    DspAddr lastSampleAddress, bool isHighPrecision);
+  void Setup(BiquadFilterAndMixCommand* command, int input, int output,
+    const TBiquadFilterParameter<float>& filter, uint8_t* state,
+    DspAddr lastSample, float previousVolume, float volume,
+    bool needInitialization, bool hasVolumeRamp, bool isFirstMixBuffer);
+  void Setup(MultiTapBiquadFilterAndMixCommand* command,
+    const TBiquadFilterParameter<float>* filters, uint8_t* states,
+    DspAddr lastSample, int input, int output,
+    const bool (&needInitialization)[2], float previousVolume, float volume,
+    bool hasVolumeRamp, bool isFirstMixBuffer);
 
 private:
   uint8_t* m_Buffer;
@@ -499,7 +618,7 @@ private:
   uint32_t m_EstimatedProcessingTime;
   const MemoryPoolInfo* m_MemoryPool;
   const ICommandProcessingTimeEstimator* m_Estimator;
-  uint8_t reserved[8];
+  const BehaviorInfo* m_Behavior;
   float m_ProcessingTimeRatio;
 };
 

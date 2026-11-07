@@ -75,6 +75,26 @@ public:
     uint8_t reserved[8];
   };
 
+  InfoUpdater(VoiceContext* voices, EffectContext* effects, MixContext* mixes,
+    SinkContext* sinks, PerformanceManager* performanceManager,
+    SplitterContext* splitters, BehaviorInfo* behavior,
+    Span<MemoryPoolInfo> memoryPools, int mixBufferCount)
+    : m_VoiceContext(voices), m_EffectContext(effects), m_MixContext(mixes),
+      m_SinkContext(sinks), m_PerformanceManager(performanceManager),
+      m_SplitterContext(splitters), m_BehaviorInfo(behavior),
+      m_MemoryPools(memoryPools), m_Input(nullptr), m_InputBase(nullptr),
+      m_InputSize(0), m_InHeader(nullptr), m_OutHeader(nullptr),
+      m_Output(nullptr), m_OutputBase(nullptr), m_OutputSize(0),
+      m_MixBufferCount(mixBufferCount), m_IsMixUpdated(false),
+      m_UpdatedMixCount(0) {
+  }
+
+  Result Update(void* output, size_t outputSize, void* performance,
+    size_t performanceSize, const void* input, size_t inputSize,
+    int64_t elapsedFrameCount, bool isRendererActive);
+  Result UpdateMemoryPools();
+  template <typename BiquadFilterCoefficient>
+  Result UpdateVoices();
   Result UpdateVoiceChannelResources();
   Result UpdateEffects(bool isForceUpdate);
   template <typename In, typename Out>
@@ -87,6 +107,14 @@ public:
   Result CheckConsumedSize();
   Result UpdateSplitterInfo();
   Result UpdateRendererInfo(int64_t elapsedFrameCount);
+
+  bool IsMixUpdated() const {
+    return m_IsMixUpdated;
+  }
+
+  int GetUpdatedMixCount() const {
+    return m_UpdatedMixCount;
+  }
 
 private:
   VoiceContext* m_VoiceContext;

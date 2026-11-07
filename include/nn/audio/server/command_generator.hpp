@@ -48,11 +48,14 @@ struct AuxParameter {
 };
 
 struct CommandGeneratorProfileData {
-  uint8_t reserved0[16];
+  uint32_t voiceCount;
+  uint32_t voiceChannelCount;
+  uint32_t splitterMixCount;
+  uint32_t splitterMixBufferCount;
   uint32_t effectCount;
   uint32_t mixCount;
   uint32_t sinkCount;
-  uint8_t reserved1[4];
+  uint32_t topPriorityVoiceCount;
   uint32_t commandCount;
   uint32_t voiceCommandCount;
   uint32_t mixCommandCount;
@@ -66,6 +69,16 @@ struct CommandGeneratorProfileData {
 
 class UpsamplerManager;
 
+}
+
+namespace nn::audio::renderer::server {
+
+struct SystemDebugControl;
+
+}
+
+namespace nn::audio::server {
+
 struct RendererSystemContext {
   int sessionId;
   int channelCount;
@@ -74,6 +87,8 @@ struct RendererSystemContext {
   const BehaviorInfo* behavior;
   int32_t* depopBuffer;
   UpsamplerManager* upsamplerManager;
+  MemoryPoolInfo* memoryPool;
+  renderer::server::SystemDebugControl* debugControl;
 };
 
 class CommandGenerator {
@@ -95,6 +110,10 @@ public:
   int GetQForMixAndVolume() const;
   PerformanceManager* GetPerformanceManager() const {
     return m_PerformanceManager;
+  }
+
+  const CommandGeneratorProfileData& GetProfileData() const {
+    return m_ProfileData;
   }
 
   void GenerateCommands();
@@ -129,6 +148,14 @@ public:
     uint32_t nodeId, int effectIndex);
   void GenerateEffectCommand(const MixInfo& mix);
   void GenerateMixCommands(MixInfo& mix);
+  void GenerateMixCommandsWithSplitter(int input, int output, float volume,
+    ISplitterDestinationData* destination, bool& isFirst, uint32_t nodeId);
+  void GenerateVoiceMixCommand(const float* volumes,
+    const float* previousVolumes, int* lastSamples, int bufferOffset,
+    int bufferCount, int input, uint32_t nodeId);
+  void GenerateVoiceMixCommandsWithSplitter(
+    ISplitterDestinationData* destination, int bufferOffset, int bufferCount,
+    int input, uint32_t nodeId);
   void GenerateSinkCommand(int bufferOffset, SinkInfoBase* sink);
   void GenerateDeviceSinkCommand(int bufferOffset, SinkInfoBase* sink);
   void GenerateCircularBufferSinkCommand(int bufferOffset,

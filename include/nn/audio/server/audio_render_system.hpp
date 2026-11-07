@@ -3,6 +3,7 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#include <algorithm>
 #include <atomic>
 #include <cstddef>
 #include <optional>
@@ -10,11 +11,17 @@
 #include "nn/applet/applet_types.hpp"
 #include "nn/audio/renderer_config.hpp"
 #include "nn/audio/server/behavior_info.hpp"
+#include "nn/audio/server/command_buffer.hpp"
+#include "nn/audio/server/effect_context.hpp"
 #include "nn/audio/server/memory_pool_info.hpp"
+#include "nn/audio/server/mix_context.hpp"
 #include "nn/audio/server/performance_manager.hpp"
+#include "nn/audio/server/sink_info.hpp"
 #include "nn/audio/server/splitter_context.hpp"
+#include "nn/audio/server/upsampler_manager.hpp"
 #include "nn/audio/server/voice_context.hpp"
 #include "nn/os/event.hpp"
+#include "nn/os/event_class.hpp"
 #include "nn/os/synchronization.hpp"
 #include "nn/os/thread_manager.hpp"
 #include "nn/result.hpp"
@@ -27,12 +34,14 @@
 
 namespace nn::os {
 
+class SystemEvent;
 struct SystemEventType;
 struct EventType;
 
 void WaitEvent(EventType* event);
 
 void SignalSystemEvent(SystemEventType* event);
+void ClearSystemEvent(SystemEventType* event);
 uint32_t GetReadableHandleOfSystemEvent(const SystemEventType* event);
 
 }
@@ -41,10 +50,19 @@ namespace nn::audio {
 
 struct AudioDeviceName;
 
+namespace detail {
+
+class IAudioDevice;
+
+}
+
 namespace dsp {
 
 Result Start();
 void Stop();
+void InitializeProcessSession(uint32_t processHandle, int sessionId,
+  bool isUserProcess);
+void FlushDataCache(const void* address, size_t size);
 void Sleep();
 void Wake();
 void Wait();
@@ -52,6 +70,7 @@ void Signal();
 void FinalizeProcessSession(uint32_t processHandle, int sessionId);
 int GetRemainCommandCount(int sessionId);
 void ClearRemainCommandCount(int sessionId);
+os::Tick GetRenderingStartTick(int sessionId);
 void SendCommandBuffer(int sessionId, DspAddr address, size_t size,
   int timeLimit, bool isResetRequired, uint64_t appletResourceUserId);
 
@@ -72,25 +91,40 @@ private:
 namespace renderer::server {
 
 struct RendererParameter {
-  uint8_t reserved0[36];
-  int sampleCount;
-  int sampleRate;
-  uint8_t reserved1[44];
-  bool isVoiceDropEnabled;
-  uint8_t reserved2;
-  uint8_t executionMode;
-  uint8_t reserved3[17];
-  int renderingTimeLimit;
-  uint8_t reserved4[8];
-  const audio::server::BehaviorInfo* behavior;
+  RendererParameter() = default;
+
+  int voiceCount = 0;
+  int subMixCount = 0;
+  int sinkCount = 0;
+  int effectCount = 0;
+  int performanceFrameCount = 0;
+  int splitterCount = 0;
+  int splitterSendChannelCount = 0;
+  bool isVoiceDropEnabled = false;
+  int mixBufferCount = 0;
+  int sampleCount = 0;
+  int sampleRate = 0;
+  int memoryPoolCount = 0;
+  int executionMode = 0;
+  int renderingDevice = 0;
+  audio::detail::AudioRendererParameterInternal parameter{};
+  int renderingTimeLimit = 100;
+  float voiceDropParameter = 1.0f;
+  const audio::server::BehaviorInfo* behavior = nullptr;
+
+  audio::detail::AudioRendererParameterInternal GetParameterInternal() const {
+    return parameter;
+  }
 };
 
+static_assert(sizeof(RendererParameter) == 128);
+
 struct DspRenderingTimeBudgetInfo {
-  uint32_t cycleTime;
-  uint32_t renderingTimeMax;
-  uint32_t renderingTimeDefault;
-  uint32_t renderingTimeBudget;
-  float renderingTimeLimitRatio;
+  uint32_t cycleTime = 0;
+  uint32_t renderingTimeMax = 0;
+  uint32_t renderingTimeDefault = 0;
+  uint32_t renderingTimeBudget = 0;
+  float renderingTimeLimitRatio = 1.0f;
 };
 
 template <bool IsServer>
@@ -102,11 +136,17 @@ struct TClientInfo<false> {
   audio::server::BehaviorInfo behavior;
 };
 
-struct SystemDebugControl;
+struct SystemDebugControl {
+  bool isPerformanceDumpEnabled = false;
+  bool isCommandDumpEnabled = false;
+  bool isVoiceDumpEnabled = false;
+};
 
 }
 
 namespace server {
+
+struct CommandGeneratorProfileData;
 
 namespace detail {
 
@@ -155,6 +195,8 @@ public:
     RenderingDevice_Cpu,
   };
 
+  explicit AudioRenderSystem(os::SystemEvent& event);
+
   static Result GetWorkBufferSize(size_t* size,
     const audio::detail::AudioRendererParameterInternal& parameter);
   static size_t GetWorkBufferSizeImpl(
@@ -174,6 +216,12 @@ public:
   void SetUpDspRenderingTimeBudgetInfo(
     const renderer::server::RendererParameter& parameter,
     const renderer::server::TClientInfo<false>& client);
+  void SetUpRendererParameter(
+    const audio::detail::AudioRendererParameterInternal& parameter,
+    BehaviorInfo* behavior);
+  Result SetUpRenderResourceSet(
+    const renderer::server::RendererParameter& parameter,
+    uint32_t processHandle, void* workBuffer, size_t workBufferSize);
   void SetUpStaticVoiceDropController(
     const renderer::server::RendererParameter& parameter,
     const renderer::server::DspRenderingTimeBudgetInfo& budget,
@@ -204,6 +252,9 @@ public:
     size_t performanceSize, const void* input, size_t inputSize);
   Span<std::byte> GenerateCommand(Span<std::byte> buffer);
   Span<std::byte> GenerateCommandImpl(Span<std::byte> buffer);
+  void RecordStatisticsOnPostGenerateCommand(
+    const CommandGeneratorProfileData& profile, size_t commandBufferSize,
+    int droppedVoiceCount);
   Result ExecuteAudioRendererRendering();
   void SendCommandToDsp();
   int GetOutputChannelCount();
@@ -217,93 +268,129 @@ public:
   }
 
   int GetMixBufferCount() const {
-    return m_MixBufferCount;
+    return m_Parameter.mixBufferCount;
   }
 
   int GetSampleCount() const {
-    return m_SampleCount;
+    return m_Parameter.sampleCount;
   }
 
   int GetSampleRate() const {
-    return m_SampleRate;
+    return m_Parameter.sampleRate;
   }
 
   uint32_t GetRenderingTimeLimit() const {
-    return m_RenderingTimeLimit;
+    return m_Parameter.renderingTimeLimit;
   }
 
   float GetVoiceDropParameter() const {
-    return m_VoiceDropParameter;
+    return m_Parameter.voiceDropParameter;
   }
 
 private:
   struct StaticVoiceDropController {
-    bool isEnabled;
-    bool isAutomatic;
+    bool isEnabled = false;
+    bool isAutomatic = false;
     uint8_t reserved0[2];
-    int renderingTimeBudget;
-    uint64_t droppedVoiceCount;
-    VoiceContext* voices;
-    renderer::server::SystemDebugControl* debug;
+    int renderingTimeBudget = 0;
+    const ICommandProcessingTimeEstimator* estimator = nullptr;
+    VoiceContext* voices = nullptr;
+    renderer::server::SystemDebugControl* debug = nullptr;
+
+    int DropVoices(CommandBuffer& commandBuffer, uint32_t timeBudget);
   };
 
-  struct SystemDebugControlState {
-    bool isPerformanceDumpEnabled;
-    bool isCommandDumpEnabled;
-    bool isVoiceDumpEnabled;
+  template <class T>
+  struct StatisticsValue {
+    T max = 0;
+    T current = 0;
+
+    void Record(T value) {
+      current = value;
+      max = std::max(max, value);
+    }
   };
+
+  struct Statistics {
+    StatisticsValue<int> commandCount;
+    StatisticsValue<int> voiceCommandCount;
+    StatisticsValue<int> mixCommandCount;
+    StatisticsValue<int> sinkCommandCount;
+    StatisticsValue<size_t> commandBufferSize;
+    StatisticsValue<int> voiceCount;
+    StatisticsValue<int> voiceChannelCount;
+    StatisticsValue<int> topPriorityVoiceCount;
+    StatisticsValue<int> splitterMixCount;
+    StatisticsValue<int> splitterMixBufferCount;
+    StatisticsValue<int> effectCount;
+    StatisticsValue<int> mixCount;
+    StatisticsValue<int> sinkCount;
+    StatisticsValue<int> mappedMemoryPoolCount;
+    StatisticsValue<size_t> mappedMemoryPoolSize;
+    StatisticsValue<int> usedMemoryPoolCount;
+    StatisticsValue<int> performanceEntryCount;
+    StatisticsValue<int> performanceDetailCount;
+    StatisticsValue<uint32_t> estimatedProcessingTime;
+    StatisticsValue<uint32_t> voiceProcessingTime;
+    StatisticsValue<uint32_t> finalMixProcessingTime;
+    StatisticsValue<uint32_t> otherProcessingTime;
+    uint64_t mixUpdateCount = 0;
+    StatisticsValue<uint64_t> updatedMixCount;
+    StatisticsValue<int> droppedVoiceCount;
+  };
+
+  static_assert(sizeof(Statistics) == 224);
 
   util::IntrusiveListNode m_ListNode;
-  bool m_IsInitialized;
-  bool m_IsActive;
-  uint8_t reserved1[38];
-  int m_MixBufferCount;
-  int m_SampleCount;
-  int m_SampleRate;
-  uint8_t reserved2[4];
-  int m_ExecutionMode;
-  int m_RenderingDevice;
-  uint8_t reserved3[52];
-  uint32_t m_RenderingTimeLimit;
-  float m_VoiceDropParameter;
-  uint8_t reserved4[12];
-  void* m_WorkBuffer;
-  size_t m_WorkBufferSize;
-  uint8_t reserved12[64];
-  Span<std::byte> m_CommandList;
-  Span<std::byte> m_CommandBuffer;
-  Span<MemoryPoolInfo> m_MemoryPools;
+  bool m_IsInitialized = false;
+  bool m_IsActive = false;
+  renderer::server::RendererParameter m_Parameter{};
+  void* m_WorkBuffer = nullptr;
+  size_t m_WorkBufferSize = 0;
+  Span<std::byte> m_DspSharedWorkBuffer{};
+  Span<int32_t> m_MixBuffer{};
+  Span<int32_t> m_DepopBuffer{};
+  Span<std::byte> m_PerformanceBuffer{};
+  Span<std::byte> m_CommandList{};
+  Span<std::byte> m_CommandBuffer{};
+  Span<MemoryPoolInfo> m_MemoryPools{};
   uint8_t reserved5[8];
   MemoryPoolInfo m_MemoryPool;
-  uint8_t reserved14[336];
-  int m_SessionId;
+  UpsamplerManager* m_UpsamplerManager = nullptr;
+  Span<UpsamplerInfo> m_UpsamplerInfos{};
+  VoiceContext m_VoiceContext;
+  MixContext m_MixContext;
+  EffectContext m_EffectContext;
+  SinkContext m_SinkContext;
+  SplitterContext m_SplitterContext;
+  int m_SessionId = -1;
   uint8_t reserved6[4];
   os::SystemEventType* m_SystemEvent;
-  alignas(8) uint8_t m_TerminateEvent[40];
-  os::SdkMutexType m_Mutex;
+  os::Event m_TerminateEvent{os::EventClearMode_AutoClear};
+  os::SdkMutexType m_Mutex{};
   uint8_t reserved7[4];
   PerformanceManager m_PerformanceManager;
-  bool m_IsCommandBufferResetRequired;
+  bool m_IsCommandBufferResetRequired = false;
   uint8_t reserved13[7];
   std::optional<uint32_t> m_ProcessHandle;
   std::optional<applet::AppletResourceUserId> m_AppletResourceUserId;
   std::optional<BehaviorInfo> m_Behavior;
   renderer::server::DspRenderingTimeBudgetInfo m_RenderingTimeBudget;
   renderer::server::DspRenderingTimeBudgetInfo m_VoiceDropTimeBudget;
-  os::Tick m_ProcessStartTick;
-  uint64_t m_GenerateCommandCount;
-  uint64_t m_UpdateCount;
-  uint64_t m_SignalCount;
-  int64_t m_GenerateCommandTimeMax;
-  int64_t m_GenerateCommandTime;
-  int64_t m_UpdateTimeMax;
-  int64_t m_UpdateTime;
-  uint8_t reserved8[224];
-  uint64_t m_DspBusyCount;
+  os::Tick m_ProcessStartTick{};
+  uint64_t m_GenerateCommandCount = 0;
+  uint64_t m_UpdateCount = 0;
+  uint64_t m_SignalCount = 0;
+  int64_t m_GenerateCommandTimeMax = 0;
+  int64_t m_GenerateCommandTime = 0;
+  int64_t m_UpdateTimeMax = 0;
+  int64_t m_UpdateTime = 0;
+  Statistics m_Statistics;
+  uint64_t m_DspBusyCount = 0;
   StaticVoiceDropController m_VoiceDropController;
-  SystemDebugControlState m_SystemDebugControl;
+  renderer::server::SystemDebugControl m_SystemDebugControl;
   uint8_t reserved9[5];
-  uint64_t m_RenderingTime;
+  uint64_t m_ElapsedFrameCount = 0;
 };
 
 class AudioRenderSystemManager {
@@ -417,6 +504,12 @@ public:
     uint32_t m_Revision;
   };
 
+  Result GetAudioDeviceService(
+    sf::Out<sf::SharedPointer<audio::detail::IAudioDevice>> pOutDevice,
+    applet::AppletResourceUserId& id);
+  Result GetAudioDeviceServiceWithRevisionInfo(
+    sf::Out<sf::SharedPointer<audio::detail::IAudioDevice>> pOutDevice,
+    applet::AppletResourceUserId& id, uint32_t revision);
   int AcquireSessionId();
   void ReleaseSessionId(int sessionId);
   Result GetWorkBufferSize(sf::Out<int64_t> pOutSize,

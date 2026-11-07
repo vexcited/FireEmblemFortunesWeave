@@ -108,8 +108,8 @@ void AudioRenderSystem::FinalizeImpl() {
   else {
     m_IsActive = false;
     m_Mutex.Unlock();
-    if (m_ExecutionMode == ExecutionMode_Auto) {
-      os::WaitEvent(reinterpret_cast<os::EventType*>(m_TerminateEvent));
+    if (m_Parameter.executionMode == ExecutionMode_Auto) {
+      m_TerminateEvent.Wait();
     }
   }
   TeardownRenderResourceSet();
@@ -122,7 +122,7 @@ void AudioRenderSystem::FinalizeImpl() {
 void AudioRenderSystem::SendCommandToDsp() {
   m_Mutex.Lock();
   if (m_IsInitialized) {
-    os::EventType* event = reinterpret_cast<os::EventType*>(m_TerminateEvent);
+    os::EventType* event = m_TerminateEvent.GetBase();
     if (!m_IsActive) {
       dsp::ClearRemainCommandCount(m_SessionId);
       os::SignalEvent(event);

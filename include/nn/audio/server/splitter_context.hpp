@@ -56,16 +56,16 @@ struct AudioRendererParameterInternal {
   int effectCount;
   int performanceFrameCount;
   bool isVoiceDropEnabled;
+  uint8_t reserved0;
+  uint8_t renderingDevice;
+  uint8_t executionMode;
   int splitterCount;
   int splitterSendChannelCount;
-  uint8_t executionMode;
-  uint8_t renderingDevice;
-  uint8_t reserved0[2];
+  uint32_t externalContextSize;
   uint32_t revision;
-  uint8_t reserved1[4];
 };
 
-static_assert(sizeof(AudioRendererParameterInternal) == 56);
+static_assert(sizeof(AudioRendererParameterInternal) == 52);
 
 }
 
@@ -140,6 +140,7 @@ public:
 };
 
 class SplitterDestinationDataVer2 : public ISplitterDestinationData {
+  friend class CommandGenerator;
   friend class SplitterContext;
 
 public:
@@ -230,8 +231,8 @@ public:
     const audio::detail::AudioRendererParameterInternal& parameter);
 
 private:
-  SplitterInfo* m_Infos;
-  size_t m_InfoCount;
+  SplitterInfo* m_Infos = nullptr;
+  size_t m_InfoCount = 0;
   void* m_Data;
   int m_DataCount;
   bool m_IsSplitterBugFixed;

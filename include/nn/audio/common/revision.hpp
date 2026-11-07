@@ -36,6 +36,14 @@ public:
   WorkBufferAllocator(void* buffer, size_t size);
   void* Allocate(size_t size, size_t alignment);
 
+  size_t GetUsedSize() const {
+    return m_Offset;
+  }
+
+  size_t GetFreeSize() const {
+    return m_Size - m_Offset;
+  }
+
 private:
   uintptr_t m_Buffer;
   size_t m_Size;

@@ -12,7 +12,8 @@ struct VoiceState {
   int64_t playedSampleCount;
   int offset;
   int waveBufferIndex;
-  uint8_t reserved0[36];
+  int sampleHistory[8];
+  int fraction;
   bool isWaveBufferValid[4];
   int waveBufferConsumed;
   uint8_t reserved1[196];
@@ -31,6 +32,10 @@ struct VoiceChannelResource {
     bool isUsed;
     uint8_t reserved[11];
   };
+
+  explicit VoiceChannelResource(int id)
+    : mixVolume{}, mixVolumePrev{}, id(id), isUsed(false) {
+  }
 
   float mixVolume[MixVolumeCountMax];
   float mixVolumePrev[MixVolumeCountMax];
@@ -92,7 +97,7 @@ public:
   enum Flag : uint16_t {
     Flag_IsInUse = 1 << 0,
     Flag_IsNew = 1 << 1,
-    Flag_IsBiquadFilterEnabled = 1 << 2,
+    Flag_WasPlaying = 1 << 2,
     Flag_IsVoiceDropped = 1 << 3,
     Flag_IsDataUnmapped = 1 << 4,
     Flag_IsBufferUnmapped = 1 << 5,
@@ -142,7 +147,7 @@ private:
 
   int m_Id;
   int8_t m_ChannelCount;
-  bool m_WasPlaying;
+  uint8_t m_SrcQuality;
   int8_t m_WaveBufferHead;
   uint8_t reserved0;
   uint32_t m_NodeId;
@@ -153,7 +158,7 @@ private:
   int m_Priority;
   int m_SortingOrder;
   uint16_t m_Flags;
-  uint8_t m_SrcQuality;
+  uint8_t m_SampleFormat;
   uint8_t m_FlushWaveBufferCount;
   int m_WaveBufferCount;
   float m_Pitch;

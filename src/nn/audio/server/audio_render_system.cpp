@@ -34,15 +34,15 @@ void AudioRenderSystem::SetUpStaticVoiceDropController(
   const renderer::server::DspRenderingTimeBudgetInfo& budget,
   const renderer::server::TClientInfo<false>& client, VoiceContext* voices,
   renderer::server::SystemDebugControl* debug) {
-  bool isEnabled = parameter.isVoiceDropEnabled;
-  uint8_t executionMode = parameter.executionMode;
+  bool isEnabled = parameter.parameter.isVoiceDropEnabled;
+  uint8_t renderingDevice = parameter.parameter.renderingDevice;
   StaticVoiceDropController& controller = m_VoiceDropController;
   controller.isEnabled = isEnabled;
-  controller.isAutomatic = executionMode == 0;
+  controller.isAutomatic = renderingDevice == 0;
   controller.renderingTimeBudget = budget.renderingTimeBudget;
   controller.voices = voices;
-  if (!isEnabled || executionMode != 0) {
-    controller.droppedVoiceCount = 0;
+  if (!isEnabled || renderingDevice != 0) {
+    controller.estimator = nullptr;
   }
   controller.debug = debug;
 }
@@ -59,7 +59,7 @@ void AudioRenderSystem::TeardownDependencies() {
 
 Result AudioRenderSystem::Start() {
   m_Mutex.Lock();
-  m_RenderingTime = 0;
+  m_ElapsedFrameCount = 0;
   m_IsActive = true;
   m_Mutex.Unlock();
   return {0};
@@ -80,7 +80,7 @@ int AudioRenderSystem::GetSessionId() const {
 
 Result AudioRenderSystem::QuerySystemEvent(uint32_t* handle) {
   // Manual execution mode renders without a system event.
-  if (m_ExecutionMode != 0) {
+  if (m_Parameter.executionMode != 0) {
     return {0x40299};
   }
   *handle = os::GetReadableHandleOfSystemEvent(m_SystemEvent);
@@ -88,7 +88,8 @@ Result AudioRenderSystem::QuerySystemEvent(uint32_t* handle) {
 }
 
 void AudioRenderSystem::SetVoiceDropParameter(float parameter) {
-  m_VoiceDropParameter = std::clamp(parameter, 0.0f, VoiceDropParameterMax);
+  m_Parameter.voiceDropParameter =
+    std::clamp(parameter, 0.0f, VoiceDropParameterMax);
 }
 
 Result AudioRenderSystem::GetWorkBufferSize(size_t* size,
@@ -117,15 +118,15 @@ void AudioRenderSystem::Stop() {
   }
   m_IsActive = false;
   m_Mutex.Unlock();
-  if (m_ExecutionMode == ExecutionMode_Auto) {
-    os::WaitEvent(reinterpret_cast<os::EventType*>(m_TerminateEvent));
+  if (m_Parameter.executionMode == ExecutionMode_Auto) {
+    m_TerminateEvent.Wait();
   }
 }
 
 void AudioRenderSystem::SetRenderingTimeLimit(int limit) {
-  m_RenderingTimeLimit = std::min(static_cast<uint32_t>(std::max(limit, 0)),
-    RenderingTimeLimitMax);
-  float ratio = m_RenderingTimeLimit / 100.0f;
+  m_Parameter.renderingTimeLimit = std::min(
+    static_cast<uint32_t>(std::max(limit, 0)), RenderingTimeLimitMax);
+  float ratio = m_Parameter.renderingTimeLimit / 100.0f;
   m_RenderingTimeBudget.renderingTimeLimitRatio = ratio;
   m_VoiceDropTimeBudget.renderingTimeLimitRatio = ratio;
   m_RenderingTimeBudget.renderingTimeBudget = static_cast<uint32_t>(
@@ -160,8 +161,8 @@ Span<std::byte> AudioRenderSystem::GenerateCommand(Span<std::byte> buffer) {
 }
 
 Result AudioRenderSystem::ExecuteAudioRendererRendering() {
-  if (m_ExecutionMode != ExecutionMode_Manual ||
-    m_RenderingDevice != RenderingDevice_Cpu) {
+  if (m_Parameter.executionMode != ExecutionMode_Manual ||
+    m_Parameter.renderingDevice != RenderingDevice_Cpu) {
     return {0x40299};
   }
   dsp::CommandListProcessor processor;

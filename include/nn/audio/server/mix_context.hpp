@@ -5,42 +5,12 @@
 
 #include <iterator>
 
+#include "nn/audio/common/node_states.hpp"
 #include "nn/audio/renderer_config.hpp"
 #include "nn/audio/server/behavior_info.hpp"
 #include "nn/audio/server/effect_context.hpp"
 #include "nn/audio/server/splitter_context.hpp"
 #include "nn/span.hpp"
-
-namespace nn::audio::common {
-
-class EdgeMatrix {
-public:
-  EdgeMatrix();
-
-  void Initialize(void* buffer, size_t size, int nodeCount);
-  void Connect(int from, int to);
-  void RemoveEdges(int node);
-
-private:
-  uint8_t reserved[16];
-};
-
-class NodeStates {
-public:
-  using ResultIterator = std::reverse_iterator<const int*>;
-
-  NodeStates();
-
-  void Initialize(void* buffer, size_t size, int nodeCount);
-  bool Tsort(EdgeMatrix& edges);
-  ResultIterator ResultBegin() const;
-  ResultIterator ResultEnd() const;
-
-private:
-  uint8_t reserved[80];
-};
-
-}
 
 namespace nn::audio::server {
 

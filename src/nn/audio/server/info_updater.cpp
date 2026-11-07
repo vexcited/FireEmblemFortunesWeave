@@ -115,6 +115,31 @@ Result InfoUpdater::UpdateEffectsImpl(bool isForceUpdate) {
   return {0};
 }
 
+Result InfoUpdater::UpdateMemoryPools() {
+  PoolMapper mapper(m_BehaviorInfo);
+  const auto* in =
+    reinterpret_cast<const audio::MemoryPoolInfo::InParameter*>(m_Input);
+  auto* out = reinterpret_cast<audio::MemoryPoolInfo::OutStatus*>(m_Output);
+  for (size_t i = 0; i < m_MemoryPools.size; i++) {
+    Result result = mapper.Update(&m_MemoryPools.data[i], &in[i], &out[i]);
+    if (result.IsFailure()) {
+      return result;
+    }
+  }
+  const size_t consumedSize =
+    m_MemoryPools.size * sizeof(audio::MemoryPoolInfo::InParameter);
+  if (consumedSize != m_InHeader->memoryPoolSize) {
+    return ResultInvalidUpdateInfo();
+  }
+  const size_t outSize =
+    m_MemoryPools.size * sizeof(audio::MemoryPoolInfo::OutStatus);
+  m_OutHeader->memoryPoolSize = outSize;
+  m_OutHeader->totalSize += outSize;
+  m_Input += consumedSize;
+  m_Output += outSize;
+  return {0};
+}
+
 Result InfoUpdater::UpdateVoiceChannelResources() {
   const VoiceChannelResource::InParameter* in =
     reinterpret_cast<const VoiceChannelResource::InParameter*>(m_Input);

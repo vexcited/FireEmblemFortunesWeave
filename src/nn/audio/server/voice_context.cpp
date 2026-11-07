@@ -35,9 +35,9 @@ void VoiceInfo::Initialize() {
   m_NodeId = 0;
   m_SampleRate = 0;
   m_Id = 0;
-  m_SrcQuality = 0;
+  m_SampleFormat = 0;
   m_ChannelCount = 0;
-  m_WasPlaying = false;
+  m_SrcQuality = 0;
   m_Pitch = 0.0f;
   m_Volume = 0.0f;
   m_PrevVolume = 0.0f;
@@ -201,6 +201,76 @@ void VoiceInfo::FlushWaveBuffers(int flushCount, VoiceState** states,
     m_WaveBuffers[index].m_IsSentToServer = true;
     index = static_cast<int8_t>((index + 1) % WaveBufferCountMax);
   }
+}
+
+bool VoiceInfo::UpdateParametersForCommandGeneration(VoiceState** states) {
+  const int8_t channelCount = m_ChannelCount;
+  if (m_FlushWaveBufferCount != 0) {
+    FlushWaveBuffers(m_FlushWaveBufferCount, states, channelCount);
+    m_FlushWaveBufferCount = 0;
+  }
+
+  switch (m_PlayState) {
+    case ServerPlayState_Started:
+      for (int i = 0; i < WaveBufferCountMax; i++) {
+        if (!m_WaveBuffers[i].m_IsSentToServer) {
+          for (int channel = 0; channel < channelCount; channel++) {
+            states[channel]->isWaveBufferValid[i] = true;
+          }
+          m_WaveBuffers[i].m_IsSentToServer = true;
+        }
+      }
+      SetFlag(Flag_WasPlaying, false);
+      for (int i = 0; i < WaveBufferCountMax; i++) {
+        if (states[0]->isWaveBufferValid[i]) {
+          return true;
+        }
+      }
+      break;
+
+    case ServerPlayState_Stopped:
+    case ServerPlayState_Paused:
+      for (int i = 0; i < WaveBufferCountMax; i++) {
+        if (!m_WaveBuffers[i].m_IsSentToServer) {
+          m_WaveBuffers[i].m_Buffer.GetReference(true);
+          m_WaveBuffers[i].m_Context.GetReference(true);
+        }
+      }
+      if (m_SampleFormat == SampleFormat_Adpcm &&
+        m_DataAddress.GetCpuAddr() != 0) {
+        m_DataAddress.GetReference(true);
+      }
+      SetFlag(Flag_WasPlaying, m_PrevPlayState == ServerPlayState_Started);
+      break;
+
+    case ServerPlayState_RequestStop:
+      for (int i = 0; i < WaveBufferCountMax; i++) {
+        m_WaveBuffers[i].m_IsSentToServer = true;
+        for (int channel = 0; channel < channelCount; channel++) {
+          VoiceState* state = states[channel];
+          if (state->isWaveBufferValid[i] == true) {
+            state->waveBufferIndex =
+              (state->waveBufferIndex + 1) % WaveBufferCountMax;
+            state->waveBufferConsumed++;
+          }
+          state->isWaveBufferValid[i] = false;
+        }
+      }
+      for (int channel = 0; channel < channelCount; channel++) {
+        VoiceState* state = states[channel];
+        state->offset = 0;
+        state->playedSampleCount = 0;
+        memset(state->sampleHistory, 0, sizeof(state->sampleHistory));
+        state->fraction = 0;
+      }
+      m_PlayState = ServerPlayState_Stopped;
+      SetFlag(Flag_WasPlaying, m_PrevPlayState == ServerPlayState_Started);
+      break;
+
+    default:
+      nn::detail::UnexpectedDefaultImpl();
+  }
+  return IsFlagSet(Flag_WasPlaying);
 }
 
 VoiceContext::VoiceContext()

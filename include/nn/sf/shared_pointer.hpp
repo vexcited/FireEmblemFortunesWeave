@@ -115,4 +115,28 @@ class Out {
   T* m_Pointer;
 };
 
+// Object outputs are not trivially copyable, so calls pass them in memory.
+template <typename Interface>
+class Out<SharedPointer<Interface>> {
+ public:
+  explicit Out(SharedPointer<Interface>* pointer) : m_Pointer(pointer) {}
+
+  Out(const Out& other) : m_Pointer(other.m_Pointer) {}
+
+  SharedPointer<Interface>* GetPointer() const {
+    return m_Pointer;
+  }
+
+  SharedPointer<Interface>& operator*() const {
+    return *m_Pointer;
+  }
+
+  SharedPointer<Interface>* operator->() const {
+    return m_Pointer;
+  }
+
+ private:
+  SharedPointer<Interface>* m_Pointer;
+};
+
 }

@@ -29,6 +29,7 @@ enum PerformanceDetailType {
   PerformanceDetailType_LightLimiter = 11,
   PerformanceDetailType_Capture,
   PerformanceDetailType_Compressor,
+  PerformanceDetailType_BiquadFilterAndMix,
 };
 enum PerformanceSysDetailType : uint8_t {};
 
@@ -269,7 +270,7 @@ public:
 private:
   IPerformanceManagerImpl* CreateImpl(PerformanceMetricsDataFormat format);
 
-  IPerformanceManagerImpl* m_Impl;
+  IPerformanceManagerImpl* m_Impl = nullptr;
   alignas(8) uint8_t m_ImplStorage[168];
 };
 

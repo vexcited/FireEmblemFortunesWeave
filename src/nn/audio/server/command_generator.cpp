@@ -19,6 +19,12 @@ namespace {
 
 const uint32_t InvalidNodeId = common::NodeIdManager::GetInvalidNodeId();
 
+// The splitter biquad states keep the last mixed sample of each buffer here.
+constexpr size_t BiquadFilterLastSampleOffset = 128;
+
+// Voices with more destination buffers mix through one grouped command.
+constexpr int VoiceMixRampCountMax = 8;
+
 CpuAddr ToCpuAddr(const void* address) {
   return CpuAddr(reinterpret_cast<uintptr_t>(address));
 }
@@ -248,11 +254,86 @@ size_t CommandGenerator::CalculateCommandBufferSize(
 
 namespace nn::audio::server {
 
-inline void CommandBuffer::Setup(MixCommand* command, int input, int output,
-  float volume, bool isHighPrecision) {
+inline void CommandBuffer::Setup(BiquadFilterAndMixCommand* command,
+  int input, int output, const TBiquadFilterParameter<float>& filter,
+  uint8_t* state, DspAddr lastSample,
+  float previousVolume, float volume, bool needInitialization,
+  bool hasVolumeRamp, bool isFirstMixBuffer) {
   command->input = input;
   command->output = output;
+  for (int i = 0; i < 3; i++) {
+    command->coefficients.numerator[i] = filter.numerator[i];
+  }
+  for (int i = 0; i < 2; i++) {
+    command->coefficients.denominator[i] = filter.denominator[i];
+  }
+  command->state = m_MemoryPool->Translate(ToCpuAddr(state),
+    sizeof(BiquadFilterState));
+  command->previousState = m_MemoryPool->Translate(
+    ToCpuAddr(state + sizeof(BiquadFilterState) * 2),
+    sizeof(BiquadFilterState));
+  command->lastSample = lastSample;
+  command->previousVolume = previousVolume;
   command->volume = volume;
+  command->needInitialization = needInitialization;
+  command->hasVolumeRamp = hasVolumeRamp;
+  command->isFirstMixBuffer = isFirstMixBuffer;
+}
+
+inline void CommandBuffer::Setup(MultiTapBiquadFilterAndMixCommand* command,
+  const TBiquadFilterParameter<float>* filters, uint8_t* states,
+  DspAddr lastSample, int input, int output,
+  const bool (&needInitialization)[2], float previousVolume, float volume,
+  bool hasVolumeRamp, bool isFirstMixBuffer) {
+  command->input = input;
+  command->output = output;
+  command->isFirstMixBuffer = isFirstMixBuffer;
+  for (int i = 0; i < MultiTapBiquadFilterAndMixCommand::FilterCount; i++) {
+    for (int j = 0; j < 3; j++) {
+      command->numerator[i][j] = filters[i].numerator[j];
+    }
+    for (int j = 0; j < 2; j++) {
+      command->denominator[i][j] = filters[i].denominator[j];
+    }
+    command->states[i] = m_MemoryPool->Translate(
+      ToCpuAddr(states + sizeof(BiquadFilterState) * i),
+      sizeof(BiquadFilterState));
+    command->previousStates[i] = m_MemoryPool->Translate(
+      ToCpuAddr(states + sizeof(BiquadFilterState) * (i + 2)),
+      sizeof(BiquadFilterState));
+    command->needInitialization[i] = needInitialization[i];
+  }
+  command->hasVolumeRamp = hasVolumeRamp;
+  command->previousVolume = hasVolumeRamp ? previousVolume : 0.0f;
+  command->volume = volume;
+  command->lastSample = hasVolumeRamp ? lastSample : 0;
+}
+
+inline void CommandBuffer::Setup(MixRampCommand* command, int input,
+  int output, float previousVolume, float volume, DspAddr lastSampleAddress,
+  bool isHighPrecision) {
+  command->input = input;
+  command->output = output;
+  command->volume0 = previousVolume;
+  // Equal volumes keep the previous one, which only differs for signed zeros.
+  command->volume1 = previousVolume == volume ? previousVolume : volume;
+  command->lastSampleAddress = lastSampleAddress;
+  command->isHighPrecision = isHighPrecision;
+}
+
+inline void CommandBuffer::Setup(MixRampGroupedCommand* command, int count,
+  int input, int bufferOffset, const float* volumes,
+  const float* previousVolumes, DspAddr lastSampleAddress,
+  bool isHighPrecision) {
+  command->count = count;
+  for (int i = 0; i < count; i++) {
+    command->inputs[i] = input;
+    command->outputs[i] = bufferOffset + i;
+    command->volume0[i] = previousVolumes[i];
+    command->volume1[i] = previousVolumes[i] == volumes[i]
+      ? previousVolumes[i] : volumes[i];
+  }
+  command->lastSampleAddress = lastSampleAddress;
   command->isHighPrecision = isHighPrecision;
 }
 
@@ -901,6 +982,194 @@ void CommandGenerator::GenerateFinalMixCommand() {
       precision);
   }
   m_ProfileData.mixCount++;
+}
+
+void CommandGenerator::GenerateMixCommands(MixInfo& mix) {
+  const bool isHighPrecision = m_RendererSystemContext->behavior->
+    IsVolumeMixParameterPrecisionQ23Supported();
+  if (!mix.HasAnyConnection()) {
+    return;
+  }
+
+  if (mix.m_DestinationSplitterId == MixInfo::UnusedSplitterId) {
+    for (int i = 0; i < mix.m_BufferCount; i++) {
+      MixInfo* destination = m_MixContext->GetInfo(mix.m_DestinationMixId);
+      for (int j = 0; j < destination->m_BufferCount; j++) {
+        const float volume = mix.m_Volume * mix.m_MixVolume[i][j];
+        if (volume != 0.0f) {
+          m_CommandBuffer->Generate<MixCommand>(mix.m_NodeId,
+            mix.m_BufferOffset + i, destination->m_BufferOffset + j, volume,
+            isHighPrecision);
+        }
+      }
+    }
+    return;
+  }
+
+  for (int i = 0; mix.m_DestinationSplitterId != MixInfo::UnusedSplitterId;
+    i++) {
+    ISplitterDestinationData* destination =
+      m_SplitterContext->GetDestinationData(mix.m_DestinationSplitterId, i);
+    if (destination == nullptr) {
+      break;
+    }
+    if (!destination->IsConfigured()) {
+      continue;
+    }
+    if (destination->GetMixId() >= m_MixContext->GetCount() ||
+      destination->GetMixId() == MixInfo::UnusedMixId) {
+      continue;
+    }
+    MixInfo* destinationMix = m_MixContext->GetInfo(destination->GetMixId());
+    const int input = mix.m_BufferOffset + i % mix.m_BufferCount;
+    bool isFirst = true;
+    for (int j = 0; j < destinationMix->m_BufferCount; j++) {
+      const float volume = mix.m_Volume * destination->GetMixVolume(j);
+      if (volume != 0.0f) {
+        const int output = j + destinationMix->m_BufferOffset;
+        if (destination->IsBiquadFilterEnabled()) {
+          GenerateMixCommandsWithSplitter(input, output, volume, destination,
+            isFirst, mix.m_NodeId);
+        }
+        else {
+          m_CommandBuffer->Generate<MixCommand>(mix.m_NodeId, input, output,
+            volume, isHighPrecision);
+        }
+      }
+      m_ProfileData.splitterMixBufferCount++;
+    }
+  }
+  m_ProfileData.splitterMixCount++;
+}
+
+void CommandGenerator::GenerateMixCommandsWithSplitter(int input, int output,
+  float volume, ISplitterDestinationData* destination, bool& isFirst,
+  uint32_t nodeId) {
+  auto* data = static_cast<SplitterDestinationDataVer2*>(destination);
+  const auto* filters = static_cast<const TBiquadFilterParameter<float>*>(
+    data->SplitterDestinationDataVer2::GetBiquadFilterParameter());
+  if (filters[0].enable && filters[1].enable) {
+    const bool needInitialization[] = {
+      !data->IsBiquadFilterEnabledPrev(0),
+      !data->IsBiquadFilterEnabledPrev(1),
+    };
+    DetailAspect({this, PerformanceEntryType_SubMix,
+      PerformanceDetailType_BiquadFilterAndMix, nodeId})
+      ->m_CommandBuffer->Generate<MultiTapBiquadFilterAndMixCommand>(
+      nodeId, filters, data->m_BiquadFilterState, 0,
+      static_cast<int8_t>(input), static_cast<int8_t>(output),
+      needInitialization, 0.0f, volume, false, isFirst);
+    data->m_IsBiquadFilterEnabledPrev[0] = filters[0].enable;
+    data->m_IsBiquadFilterEnabledPrev[1] = filters[1].enable;
+    isFirst = false;
+    return;
+  }
+
+  for (int i = 0; i < SplitterDestinationDataVer2::BiquadFilterCount; i++) {
+    if (filters[i].enable) {
+      const bool needInitialization = !data->IsBiquadFilterEnabledPrev(i);
+      uint8_t* state =
+        data->m_BiquadFilterState + sizeof(BiquadFilterState) * i;
+      DetailAspect({this, PerformanceEntryType_SubMix,
+        PerformanceDetailType_BiquadFilterAndMix, nodeId})
+        ->m_CommandBuffer->Generate<BiquadFilterAndMixCommand>(nodeId,
+        input, output, filters[i], state, 0, 0.0f, volume,
+        needInitialization, false, isFirst);
+      isFirst = false;
+    }
+    data->m_IsBiquadFilterEnabledPrev[i] = filters[i].enable;
+  }
+}
+
+void CommandGenerator::GenerateVoiceMixCommandsWithSplitter(
+  ISplitterDestinationData* destination, int bufferOffset, int bufferCount,
+  int input, uint32_t nodeId) {
+  const float* volumes = destination->GetMixVolume();
+  const float* previousVolumes = destination->GetMixVolumePrev();
+  auto* data = static_cast<SplitterDestinationDataVer2*>(destination);
+  const auto* filters = static_cast<const TBiquadFilterParameter<float>*>(
+    data->SplitterDestinationDataVer2::GetBiquadFilterParameter());
+  bool isFirst = true;
+  if (filters[0].enable && filters[1].enable) {
+    for (int i = 0; i < bufferCount; i++) {
+      int output = bufferOffset + i;
+      int source = input;
+      float previousVolume = previousVolumes[i];
+      float volume = volumes[i];
+      DspAddr lastSample = m_RendererSystemContext->memoryPool->Translate(
+        ToCpuAddr(data->m_BiquadFilterState + BiquadFilterLastSampleOffset +
+          sizeof(float) * i), sizeof(float));
+      if (previousVolume == 0.0f && volume == 0.0f) {
+        continue;
+      }
+      bool needInitialization[] = {
+        !data->IsBiquadFilterEnabledPrev(0),
+        !data->IsBiquadFilterEnabledPrev(1),
+      };
+      DetailAspect({this, PerformanceEntryType_Voice,
+        PerformanceDetailType_BiquadFilterAndMix, nodeId})
+        ->m_CommandBuffer->Generate<MultiTapBiquadFilterAndMixCommand>(
+        nodeId, filters, data->m_BiquadFilterState, lastSample, source,
+        output, needInitialization, previousVolume, volume, true, isFirst);
+      isFirst = false;
+      data->m_IsBiquadFilterEnabledPrev[0] = filters[0].enable;
+      data->m_IsBiquadFilterEnabledPrev[1] = filters[1].enable;
+    }
+    return;
+  }
+
+  for (int i = 0; i < bufferCount; i++) {
+    const float volume = volumes[i];
+    const float previousVolume = previousVolumes[i];
+    const DspAddr lastSample = m_RendererSystemContext->memoryPool->Translate(
+      ToCpuAddr(data->m_BiquadFilterState + BiquadFilterLastSampleOffset +
+        sizeof(float) * i), sizeof(float));
+    if (previousVolume == 0.0f && volume == 0.0f) {
+      continue;
+    }
+    for (int j = 0; j < SplitterDestinationDataVer2::BiquadFilterCount; j++) {
+      if (!filters[j].enable) {
+        data->m_IsBiquadFilterEnabledPrev[j] = false;
+        continue;
+      }
+      const bool needInitialization = !data->IsBiquadFilterEnabledPrev(j);
+      uint8_t* state =
+        data->m_BiquadFilterState + sizeof(BiquadFilterState) * j;
+      DetailAspect({this, PerformanceEntryType_Voice,
+        PerformanceDetailType_BiquadFilterAndMix, nodeId})
+        ->m_CommandBuffer->Generate<BiquadFilterAndMixCommand>(nodeId,
+        input, bufferOffset + i, filters[j], state, lastSample,
+        previousVolume, volume, needInitialization, true, isFirst);
+      isFirst = false;
+      data->m_IsBiquadFilterEnabledPrev[j] = filters[j].enable;
+    }
+  }
+}
+
+void CommandGenerator::GenerateVoiceMixCommand(const float* volumes,
+  const float* previousVolumes, int* lastSamples, int bufferOffset,
+  int bufferCount, int input, uint32_t nodeId) {
+  const bool isHighPrecision = m_RendererSystemContext->behavior->
+    IsVolumeMixParameterPrecisionQ23Supported();
+  if (bufferCount > VoiceMixRampCountMax) {
+    const DspAddr address = m_RendererSystemContext->memoryPool->Translate(
+      ToCpuAddr(lastSamples), sizeof(int32_t) * bufferCount);
+    m_CommandBuffer->Generate<MixRampGroupedCommand>(nodeId, bufferCount,
+      input, bufferOffset, volumes, previousVolumes, address,
+      isHighPrecision);
+    return;
+  }
+
+  for (int i = 0; i < bufferCount; i++) {
+    const float previousVolume = previousVolumes[i];
+    const float volume = volumes[i];
+    const DspAddr address = m_RendererSystemContext->memoryPool->Translate(
+      ToCpuAddr(&lastSamples[i]), sizeof(int32_t));
+    if (previousVolume != 0.0f || volume != 0.0f) {
+      m_CommandBuffer->Generate<MixRampCommand>(nodeId, input,
+        bufferOffset + i, previousVolume, volume, address, isHighPrecision);
+    }
+  }
 }
 
 }

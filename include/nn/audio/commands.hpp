@@ -2,6 +2,7 @@
 
 #include <stdint.h>
 
+#include "nn/audio/command_list_header.hpp"
 #include "nn/audio/depop.hpp"
 
 namespace nn::audio {
@@ -13,16 +14,6 @@ struct CommandHeader {
   uint32_t estimated_ticks;
   int32_t node_id;
   uint8_t reserved_0c[4];
-};
-
-struct CommandListHeader {
-  uint32_t reserved_00;
-  int32_t command_count;
-  int32_t* mix_buffers;
-  int32_t mix_buffer_count;
-  int32_t sample_count;
-  int32_t sample_rate;
-  uint32_t reserved_1c;
 };
 
 struct VolumeCommand {
