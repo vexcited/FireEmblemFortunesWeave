@@ -52,6 +52,10 @@ public:
   void Unknown128() override;
   void Unknown129() override;
   int InputUnknown12(int direction, bool loop) override;
+
+private:
+  uint64_t unknown_428_;
+  std::vector<const void*> unknown_430_;
 };
 
 [[gnu::used]] ProcQuestMenu::ProcQuestMenu() = default;

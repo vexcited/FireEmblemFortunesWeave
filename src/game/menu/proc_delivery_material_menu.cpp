@@ -22,6 +22,11 @@ public:
   void Unknown129() override;
   bool Unknown137() override;
   int InputUnknown12(int direction, bool loop) override;
+
+private:
+  uint8_t unknown_428_[0x10];
+  std::vector<const void*> unknown_438_;
+  std::vector<const void*> unknown_450_;
 };
 
 [[gnu::used]] ProcDeliveryMaterialMenu::ProcDeliveryMaterialMenu() = default;

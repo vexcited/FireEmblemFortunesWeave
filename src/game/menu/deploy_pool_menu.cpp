@@ -150,6 +150,10 @@ public:
   const char* ImplUnknown05() override {
     return "MID_DeliveryMenu_AnimalSelect_Help";
   }
+
+private:
+  uint8_t unknown_428_[0x18];
+  std::vector<const void*> unknown_440_;
 };
 
 [[gnu::used]] ProcDeliveryAnimalMenu::ProcDeliveryAnimalMenu() = default;

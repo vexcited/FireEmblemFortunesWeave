@@ -93,10 +93,9 @@ private:
     sound::PlayCursorRightSe();
   }
 
-  const uint8_t* pages_;
-  uint8_t unknown_430_[0x10];
-  TutorialScroll* scroll_;
-  uint8_t unknown_448_[0xa];
+  std::vector<uint8_t> pages_;
+  std::shared_ptr<TutorialScroll> scroll_;
+  uint8_t unknown_450_[0x2];
   bool unknown_452_;
 };
 

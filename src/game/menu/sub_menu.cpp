@@ -18,6 +18,10 @@ public:
   int ImplUnknown09() override { return 0; }
   int ImplUnknown02() override { return 1; }
   virtual void Unknown142() {}
+
+private:
+  uint8_t unknown_428_[0x18];
+  std::function<void()> unknown_440_;
 };
 
 class TitleSubMenu : public SubMenu {
@@ -41,6 +45,10 @@ public:
   int Unknown26() override { return 10; }
   void Unknown85() override;
   int Unknown100() override;
+
+private:
+  uint8_t unknown_470_[0x10];
+  std::function<void()> unknown_480_;
 };
 
 [[gnu::used]] AllAutoMenu::AllAutoMenu() = default;

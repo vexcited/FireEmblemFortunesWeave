@@ -1,14 +1,15 @@
+#include <functional>
+
 #pragma GCC visibility push(hidden)
 #include "game/menu/basic_menu.hpp"
 #include "game/sound/se.hpp"
 #include "game/telop/telop_sequence.hpp"
-#pragma GCC visibility pop
 
 namespace game::telop {
 
 class ListResultMenuBase : public menu::BasicMenu {
 public:
-  ~ListResultMenuBase() override;
+  [[gnu::noinline]] ~ListResultMenuBase() override;
 
   void Unknown02() override;
   int Unknown24() override { return 10; }
@@ -41,6 +42,9 @@ public:
   void Unknown82() override;
   void Unknown96() override;
   int Unknown139() override { return 1; }
+
+private:
+  std::function<void()> unknown_430_;
 };
 
 class RestListResultMenu : public ListResultMenuBase {
@@ -98,3 +102,5 @@ void ExpListResultMenu::Unknown82() {
 }
 
 }
+
+#pragma GCC visibility pop

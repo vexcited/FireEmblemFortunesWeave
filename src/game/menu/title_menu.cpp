@@ -21,6 +21,11 @@ public:
   void Unknown135(std::vector<int64_t>& handles) override;
   void Unknown136(std::vector<int64_t>& handles) override;
   bool Unknown137() override { return true; }
+  void InputUnknown18() override;
+
+private:
+  uint64_t unknown_428_;
+  std::function<void()> unknown_430_;
 };
 
 TitleMenu::~TitleMenu() = default;

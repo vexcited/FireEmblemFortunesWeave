@@ -41,7 +41,7 @@ class ProcSkillReinforceScene : public ProcFacilityScene {
 public:
   ProcSkillReinforceScene();
 
-  ~ProcSkillReinforceScene() override {
+  [[gnu::always_inline]] ~ProcSkillReinforceScene() override {
     SingletonControl<SkillReinforceSceneDiff>::Destroy();
   }
 
@@ -62,7 +62,7 @@ class ProcSkillEducateScene : public ProcFacilityScene {
 public:
   ProcSkillEducateScene();
 
-  ~ProcSkillEducateScene() override {
+  [[gnu::always_inline]] ~ProcSkillEducateScene() override {
     SingletonControl<SkillReinforceSceneDiff>::Destroy();
   }
 
@@ -83,7 +83,7 @@ class ProcShowmanScene : public ProcFacilityScene {
 public:
   ProcShowmanScene();
 
-  ~ProcShowmanScene() override {
+  [[gnu::always_inline]] ~ProcShowmanScene() override {
     SingletonControl<ShowmanSceneDiff>::Destroy();
   }
 
@@ -102,6 +102,7 @@ private:
 class ProcOpening : public ProcFacilityScene, public TheaterConst {
 public:
   ProcOpening();
+  [[gnu::always_inline]] ~ProcOpening() override = default;
 
 private:
   uint64_t unknown_b8_;
@@ -113,6 +114,7 @@ private:
 class ProcDivinePerformance : public ProcFacilityScene, public TheaterConst {
 public:
   ProcDivinePerformance();
+  [[gnu::always_inline]] ~ProcDivinePerformance() override = default;
 
 private:
   std::shared_ptr<void> unknown_b8_;
@@ -124,7 +126,7 @@ class ProcDiningScene : public ProcFacilityScene {
 public:
   ProcDiningScene();
 
-  ~ProcDiningScene() override {
+  [[gnu::always_inline]] ~ProcDiningScene() override {
     SingletonControl<DiningSceneDiff>::Destroy();
   }
 
@@ -146,7 +148,7 @@ class ProcVolunteerScene : public ProcFacilityScene {
 public:
   ProcVolunteerScene();
 
-  ~ProcVolunteerScene() override {
+  [[gnu::always_inline]] ~ProcVolunteerScene() override {
     SingletonControl<VolunteerSceneDiff>::Destroy();
   }
 
@@ -163,7 +165,7 @@ class ProcTrainingScene : public ProcFacilityScene {
 public:
   ProcTrainingScene();
 
-  ~ProcTrainingScene() override {
+  [[gnu::always_inline]] ~ProcTrainingScene() override {
     SingletonControl<TrainingSceneDiff>::Destroy();
   }
 
@@ -186,7 +188,7 @@ class ProcTheaterSceneWatch : public ProcFacilityScene {
 public:
   ProcTheaterSceneWatch();
 
-  ~ProcTheaterSceneWatch() override {
+  [[gnu::always_inline]] ~ProcTheaterSceneWatch() override {
     SingletonControl<TheaterSceneDiff>::Destroy();
   }
 

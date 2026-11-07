@@ -1,7 +1,6 @@
 #pragma GCC visibility push(hidden)
 #include "game/game_mode_data.hpp"
 #include "game/telop/telop_sequence.hpp"
-#pragma GCC visibility pop
 
 namespace game::telop {
 
@@ -13,6 +12,10 @@ public:
   const char* GetInAnimation() override;
   void Unknown33() override;
   void Unknown35() override;
+
+private:
+  std::string unknown_338_;
+  std::string unknown_350_;
 };
 
 TelopReminder::~TelopReminder() = default;
@@ -31,3 +34,5 @@ void TelopReminder::Unknown35() {
 }
 
 }
+
+#pragma GCC visibility pop

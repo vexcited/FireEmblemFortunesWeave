@@ -16,7 +16,7 @@ public:
     const nn::ui2d::ControlSrc& source, nn::ui2d::Layout* layout,
     Layout* owner);
 
-  ~TextBoxEx() override;
+  ~TextBoxEx() override = default;
 
   std::shared_ptr<ILayoutControl> Clone(
     nn::ui2d::Layout* layout) const override;

@@ -43,6 +43,10 @@ public:
   int Unknown101() override;
   void Unknown128() override;
   bool Unknown137() override;
+
+private:
+  uint8_t unknown_428_[0x10];
+  std::vector<const void*> unknown_438_;
 };
 
 [[gnu::used]] ProcDeliveryTransportMenu::ProcDeliveryTransportMenu() = default;

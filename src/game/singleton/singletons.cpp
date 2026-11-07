@@ -1,3 +1,9 @@
+#include <cstdint>
+#include <memory>
+#include <optional>
+#include <string>
+#include <vector>
+
 #include "game/proc/proc_inst.hpp"
 #include "game/singleton.hpp"
 
@@ -11,11 +17,22 @@ namespace game {
   class T : public ProcInst, public Singleton<T> {};
 
 GAME_SINGLETON(AI)
-GAME_SINGLETON(AIEntrustImage)
+class AIEntrustImage : public Singleton<AIEntrustImage> {
+private:
+  uint8_t unknown_08_[0x18];
+  std::vector<uint32_t> unknown_20_;
+  uint8_t unknown_38_[0xa20];
+  std::vector<uint32_t> unknown_a58_;
+};
+
 GAME_SINGLETON(AIHistory)
 GAME_SINGLETON(AIRageImage)
 GAME_SINGLETON(AIUnitArea)
-GAME_SINGLETON(AIValueFlags)
+class AIValueFlags final : public Singleton<AIValueFlags> {
+private:
+  std::vector<uint32_t> flags_;
+};
+
 GAME_SINGLETON(AIValuePosLists)
 GAME_SINGLETON(AIWorkImage)
 GAME_SINGLETON(GameCalendar)
@@ -31,12 +48,29 @@ GAME_SINGLETON(GameSubquestData)
 GAME_SINGLETON(GameUserData)
 GAME_SINGLETON(HubDisposFileLoader)
 GAME_SINGLETON(KnownManager)
-GAME_SINGLETON(MapTerrainFile)
+class MapTerrainFile : public Singleton<MapTerrainFile> {
+public:
+  ~MapTerrainFile() override { Unload(); }
+
+private:
+  void Unload();
+};
+
 GAME_SINGLETON(RelianceCheck)
 
 namespace character {
 
-GAME_SINGLETON(CharacterAssetCache)
+class CharacterAssetCache : public Singleton<CharacterAssetCache> {
+private:
+  // The cached assets, their container type is not recovered.
+  class Entries {
+  public:
+    ~Entries();
+  };
+
+  Entries entries_;
+};
+
 GAME_SINGLETON(CharacterTrailResources)
 
 }
@@ -52,7 +86,14 @@ GAME_SINGLETON(CmdBtlGrow)
 GAME_SINGLETON(CmdBtlInput)
 GAME_SINGLETON(CmdBtlScript)
 GAME_SINGLETON(CmdBtlSituation)
-GAME_SINGLETON(CmdBtlSkipInput)
+class CmdBtlSkipInput : public Singleton<CmdBtlSkipInput> {
+public:
+  ~CmdBtlSkipInput() override { Release(); }
+
+private:
+  void Release();
+};
+
 GAME_SINGLETON(CmdBtlSkipWrapper)
 GAME_SINGLETON(CmdBtlWindow)
 GAME_SINGLETON(Effect)
@@ -65,7 +106,12 @@ GAME_SINGLETON(Sound)
 namespace combat {
 
 GAME_SINGLETON(CinematicZoom)
-GAME_SINGLETON(CombatConfig)
+class CombatConfig final : public Singleton<CombatConfig> {
+private:
+  uint8_t unknown_08_[0x30];
+  std::string unknown_38_;
+};
+
 GAME_SINGLETON(CombatSettings)
 GAME_SINGLETON(CombatUniverse)
 GAME_SINGLETON(JostleManager)
@@ -175,9 +221,28 @@ GAME_SINGLETON(GlobalMapData)
 GAME_SINGLETON(HubCharacterDisposManager)
 GAME_SINGLETON(HubDebug)
 GAME_SINGLETON(HubSeqAreaChange)
-GAME_SINGLETON(HubSeqEncounter)
+class HubSeqEncounter : public Singleton<HubSeqEncounter> {
+private:
+  struct Entries {
+    std::vector<uint32_t> list;
+    uint8_t unknown_18_[0x10];
+  };
+
+  uint8_t unknown_08_[0x10];
+  std::optional<Entries> unknown_18_;
+  uint64_t unknown_48_;
+  std::string unknown_50_;
+};
+
 GAME_SINGLETON(HubSeqEnter)
-GAME_SINGLETON(HubSeqExit)
+class HubSeqExit : public Singleton<HubSeqExit> {
+private:
+  uint8_t unknown_08_[0x20];
+  std::string unknown_28_;
+  uint8_t unknown_40_[0x18];
+  std::string unknown_58_;
+};
+
 GAME_SINGLETON(HubSeqObelisk)
 GAME_SINGLETON(Input)
 GAME_SINGLETON(ItemSupport)
@@ -188,7 +253,16 @@ GAME_SINGLETON(MapManager)
 GAME_SINGLETON(ObeliskSupport)
 GAME_SINGLETON(ObjectManager)
 GAME_SINGLETON(PathManager)
-GAME_SINGLETON(PlayStartPos)
+class PlayStartPos : public Singleton<PlayStartPos> {
+public:
+  ~PlayStartPos() override { Clear(); }
+
+private:
+  void Clear();
+
+  std::weak_ptr<void> unknown_08_;
+};
+
 GAME_SINGLETON(QuestSupport)
 GAME_SINGLETON(ReadWrite)
 GAME_SINGLETON(ScheduleManager)
@@ -264,7 +338,15 @@ namespace zview {
 GAME_SINGLETON(ActionManager)
 GAME_SINGLETON(Camera)
 GAME_SINGLETON(CharacterManager)
-GAME_SINGLETON(Collision)
+class Collision : public Singleton<Collision> {
+private:
+  struct Shape {
+    uint8_t unknown_00_[0x10];
+  };
+
+  std::vector<std::unique_ptr<Shape>> shapes_;
+};
+
 GAME_SINGLETON(Cursor)
 GAME_SINGLETON(Debug)
 GAME_SINGLETON(HitboxManager)

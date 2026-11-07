@@ -96,7 +96,7 @@ protected:
 
 class ProcFacilityScene : public ProcInst, public FacilitySceneBase {
 public:
-  ~ProcFacilityScene() override {
+  [[gnu::always_inline]] ~ProcFacilityScene() override {
     Detach(this);
   }
 

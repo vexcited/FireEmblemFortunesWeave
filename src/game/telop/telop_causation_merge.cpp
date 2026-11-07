@@ -1,6 +1,6 @@
 #pragma GCC visibility push(hidden)
 #include "game/telop/telop_sequence.hpp"
-#pragma GCC visibility pop
+#include "game/unit.hpp"
 
 namespace game::telop {
 
@@ -18,6 +18,10 @@ public:
   bool Unknown41() override;
   const char* Unknown51() override { return "L_Merge/L_NextCursor"; }
   nn::ui2d::Pane* Unknown53() override;
+
+private:
+  uint64_t unknown_338_;
+  Unit unit_;
 };
 
 TelopCausationMerge::~TelopCausationMerge() = default;
@@ -42,3 +46,5 @@ nn::ui2d::Pane* TelopCausationMerge::Unknown53() {
 }
 
 }
+
+#pragma GCC visibility pop

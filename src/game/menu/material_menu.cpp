@@ -15,6 +15,10 @@ public:
   int Unknown101() override;
   void Unknown128() override;
   bool Unknown137() override;
+
+private:
+  uint64_t unknown_428_;
+  std::vector<const void*> unknown_430_;
 };
 
 [[gnu::used]] ProcTalkSelectGiftMenu::ProcTalkSelectGiftMenu() = default;
