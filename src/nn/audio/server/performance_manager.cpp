@@ -27,6 +27,18 @@ size_t PerformanceManager::GetRequiredBufferSizeForPerformanceMetricsPerFrame(
   }
 }
 
+IPerformanceManagerImpl* PerformanceManager::CreateImpl(
+  PerformanceMetricsDataFormat format) {
+  switch (format) {
+    case PerformanceMetricsDataFormat_Version1:
+      return new (m_ImplStorage) PerformanceManagerImplVersion1();
+    case PerformanceMetricsDataFormat_Version2:
+      return new (m_ImplStorage) PerformanceManagerImplVersion2();
+    default:
+      nn::detail::UnexpectedDefaultImpl();
+  }
+}
+
 void PerformanceManager::Initialize(void* buffer, size_t size,
   const audio::detail::AudioRendererParameterInternal& parameter,
   const BehaviorInfo& behavior, const MemoryPoolInfo& pool) {

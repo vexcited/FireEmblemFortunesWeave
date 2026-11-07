@@ -52,9 +52,7 @@ public:
 
 private:
   AddressInfo m_Buffer;
-  uint8_t reserved0[8];
   AddressInfo m_Context;
-  uint8_t reserved1[8];
   int m_StartSampleOffset;
   int m_EndSampleOffset;
   bool m_IsLoop;
@@ -111,6 +109,10 @@ public:
   void ResetResources(VoiceContext* context);
   void FlushWaveBuffers(int flushCount, VoiceState** states,
     int channelCount);
+  void UpdateWaveBuffer(common::BehaviorParameter::ErrorInfo* errors,
+    WaveBuffer* waveBuffer, const renderer::ipc::Voice::WaveBuffer* in,
+    uint8_t sampleFormat, bool isValid, PoolMapper& mapper,
+    const BehaviorInfo& behavior);
   void UpdatePlayState(uint8_t state);
 
   uint32_t GetNodeId() const {
@@ -132,6 +134,10 @@ public:
 private:
   bool IsFlagSet(Flag flag) const {
     return (m_Flags & flag) != 0;
+  }
+
+  void SetFlag(Flag flag, bool isSet) {
+    m_Flags = (m_Flags & ~flag) | (isSet ? flag : 0);
   }
 
   int m_Id;
@@ -161,7 +167,6 @@ private:
   uint8_t reserved1;
   uint8_t m_Parameter[88];
   AddressInfo m_DataAddress;
-  uint8_t reserved2[8];
   WaveBuffer m_WaveBuffers[WaveBufferCountMax];
   int m_ChannelResourceIds[ChannelCountMax];
 };

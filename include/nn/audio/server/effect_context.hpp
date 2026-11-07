@@ -2,8 +2,12 @@
 
 #include <stddef.h>
 #include <stdint.h>
+#include <string.h>
 
+#include "nn/audio/server/behavior_info.hpp"
+#include "nn/audio/server/memory_pool_info.hpp"
 #include "nn/span.hpp"
+#include "nn/util/string_util.hpp"
 
 namespace nn::audio {
 
@@ -21,6 +25,8 @@ namespace server {
 
 class EffectInfoBase {
 public:
+  using ErrorInfo = common::BehaviorParameter::ErrorInfo;
+
   enum Type : uint8_t {
     Type_Invalid,
     Type_BufferMixer,
@@ -34,18 +40,76 @@ public:
     Type_Compressor,
   };
 
-  virtual uint8_t GetType() const;
-  virtual const char* GetTypeName() const;
-  virtual void Dump(char* buffer, int size) const;
-  virtual int GetChannelCount() const;
-  virtual int GetInput(int index) const;
-  virtual int GetOutput(int index) const;
-  virtual void InitializeResultState(EffectResultState* state);
-  virtual void UpdateForCommandGeneration();
-  virtual void UpdateResultState(EffectResultState* cpu,
-    EffectResultState* dsp);
-  virtual bool ShouldUpdateResultState() const;
-  virtual void* GetWorkBuffer(int index);
+  enum UsageState : uint8_t {
+    UsageState_Invalid,
+    UsageState_New,
+    UsageState_Enabled,
+    UsageState_Disabled,
+  };
+
+  enum ParameterStatus : uint8_t {
+    ParameterStatus_Initialized,
+    ParameterStatus_Updating,
+    ParameterStatus_Updated,
+  };
+
+  static constexpr int UnusedMixId = 0x7fffffff;
+  static constexpr int WorkBufferCountMax = 2;
+
+  EffectInfoBase()
+    : m_WorkBuffers{AddressInfo(CpuAddr(), 0), AddressInfo(CpuAddr(), 0)},
+      m_Parameter{} {
+    m_MixId = UnusedMixId;
+    m_ProcessingOrder = -1;
+    m_IsEnabled = false;
+    m_ShouldSkip = false;
+    for (AddressInfo& buffer : m_WorkBuffers) {
+      buffer.Setup(CpuAddr(), 0);
+    }
+  }
+
+  virtual uint8_t GetType() const {
+    return Type_Invalid;
+  }
+
+  virtual const char* GetTypeName() const {
+    return "Invalid";
+  }
+
+  virtual void Dump(char* buffer, int size) const {
+    util::Strlcpy(buffer, "Invalid", size);
+  }
+
+  virtual int GetChannelCount() const {
+    return 0;
+  }
+
+  virtual int GetInput(int index) const {
+    return 0;
+  }
+
+  virtual int GetOutput(int index) const {
+    return 0;
+  }
+
+  virtual void Update(ErrorInfo* error, const void* in, PoolMapper& mapper) {
+    *error = {};
+  }
+
+  virtual void UpdateForCommandGeneration() {
+    UpdateUsageState();
+  }
+
+  virtual void InitializeResultState(EffectResultState* state) {
+  }
+
+  virtual bool ShouldUpdateResultState() const {
+    return false;
+  }
+
+  virtual void* GetWorkBuffer(int index) {
+    return nullptr;
+  }
 
   int GetMixId() const {
     return m_MixId;
@@ -61,6 +125,10 @@ public:
 
   bool ShouldSkip() const {
     return m_ShouldSkip;
+  }
+
+  UsageState GetUsageState() const {
+    return static_cast<UsageState>(m_UsageState);
   }
 
   template<class Parameter>
@@ -89,7 +157,26 @@ public:
     return m_ReturnBuffer;
   }
 
-private:
+protected:
+  template<class Parameter>
+  Parameter& EditParameter() {
+    return *reinterpret_cast<Parameter*>(m_Parameter);
+  }
+
+  void UpdateUsageState() {
+    m_UsageState = m_IsEnabled ? UsageState_Enabled : UsageState_Disabled;
+  }
+
+  void* GetSingleWorkBuffer() {
+    if (m_IsEnabled) {
+      return reinterpret_cast<void*>(m_WorkBuffers[0].GetReference(true));
+    }
+    if (m_UsageState != UsageState_Disabled) {
+      m_WorkBuffers[0].InvalidateDspCache();
+    }
+    return nullptr;
+  }
+
   DspAddr m_SendBufferInfo;
   DspAddr m_SendBuffer;
   DspAddr m_ReturnBufferInfo;
@@ -97,9 +184,11 @@ private:
   uint8_t reserved0[4];
   bool m_IsEnabled;
   bool m_ShouldSkip;
+  uint8_t m_UsageState;
   int m_MixId;
   int m_ProcessingOrder;
-  uint8_t reserved1[72];
+  uint8_t reserved1[8];
+  AddressInfo m_WorkBuffers[WorkBufferCountMax];
   alignas(8) uint8_t m_Parameter[192];
   alignas(8) uint8_t m_State[896];
 };

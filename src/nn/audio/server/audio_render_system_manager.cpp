@@ -3,7 +3,9 @@
 #include "nn/audio/server/audio_render_system.hpp"
 #include "nn/diag/diag_abort.hpp"
 #include "nn/os/thread_api.hpp"
+#include "nn/os/sleep_thread.hpp"
 #include "nn/os/thread_info.hpp"
+#include "nn/os/time.hpp"
 
 namespace nn::audio::server {
 
@@ -13,6 +15,10 @@ constexpr size_t ThreadStackSize = 0x3000;
 constexpr int ThreadPriority = -7;
 
 alignas(4096) uint8_t g_ThreadStack[ThreadStackSize];
+
+constexpr uint64_t RenderingCycleTime = 4500000;
+
+os::Tick g_LastCycleTick;
 
 }
 
@@ -25,6 +31,39 @@ AudioRenderSystemManager::~AudioRenderSystemManager() {
 
 void AudioRenderSystemManager::ThreadFunction(void* argument) {
   static_cast<AudioRenderSystemManager*>(argument)->ThreadFunctionImpl();
+}
+
+void AudioRenderSystemManager::ThreadFunctionImpl() {
+  while (true) {
+    dsp::Wait();
+    m_Mutex.Lock();
+    for (util::IntrusiveListNode* node = m_Systems.GetNext();
+      node != &m_Systems; node = node->GetNext()) {
+      AudioRenderSystem& system = *reinterpret_cast<AudioRenderSystem*>(node);
+      if (system.IsActive() &&
+        system.m_Behavior->IsStabilizeAudioRendererCycleEnabled()) {
+        const os::Tick now = os::GetSystemTick();
+        const uint64_t elapsed = os::ConvertToTimeSpan(
+          {now.value - g_LastCycleTick.value}).nanoseconds;
+        if (elapsed < RenderingCycleTime) {
+          os::SleepThread({static_cast<int64_t>(RenderingCycleTime - elapsed)});
+        }
+        g_LastCycleTick = os::GetSystemTick();
+        break;
+      }
+    }
+    m_Mutex.Unlock();
+    if (m_IsRunning != true) {
+      break;
+    }
+    m_Mutex.Lock();
+    for (util::IntrusiveListNode* node = m_Systems.GetNext();
+      node != &m_Systems; node = node->GetNext()) {
+      reinterpret_cast<AudioRenderSystem*>(node)->SendCommandToDsp();
+    }
+    m_Mutex.Unlock();
+    dsp::Signal();
+  }
 }
 
 void AudioRenderSystemManager::CreateInstance(void* buffer, size_t size) {

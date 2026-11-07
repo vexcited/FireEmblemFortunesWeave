@@ -6,6 +6,8 @@ namespace {
 
 constexpr size_t AudioDeviceNameSize = 256;
 constexpr float AudioDeviceOutputVolumeMax = 128.0f;
+constexpr int HeapOption_DebugFill = 2;
+constexpr int HeapOption_ThreadSafe = 4;
 
 enum AudioRendererState {
   AudioRendererState_Started,
@@ -384,6 +386,23 @@ Result AudioRendererManagerImpl::AudioRendererImpl::GetVoiceDropParameter(
   sf::Out<float> pOutParameter) {
   *pOutParameter = m_System.GetVoiceDropParameter();
   return {0};
+}
+
+AudioRendererManagerImpl::AudioRendererManagerImpl()
+  : m_SessionIdIndex(0), m_SessionIdMutex{} {
+  m_Heap = lmem::CreateExpHeap(m_HeapBuffer, sizeof(m_HeapBuffer),
+    HeapOption_DebugFill | HeapOption_ThreadSafe);
+  m_Allocator.Attach(m_Heap);
+  for (int i = 0; i < SessionCountMax; i++) {
+    m_SessionIds[i] = i;
+  }
+  AudioRenderSystemManager::CreateInstance(m_SystemManagerBuffer,
+    sizeof(m_SystemManagerBuffer));
+}
+
+AudioRendererManagerImpl::~AudioRendererManagerImpl() {
+  AudioRenderSystemManager::DeleteInstance();
+  lmem::DestroyExpHeap(m_Heap);
 }
 
 int AudioRendererManagerImpl::AcquireSessionId() {

@@ -59,6 +59,75 @@ void VoiceInfo::Initialize() {
   m_FlushWaveBufferCount = 0;
 }
 
+namespace {
+
+constexpr int AdpcmFrameSampleCount = 14;
+constexpr size_t AdpcmFrameSize = 8;
+
+size_t GetAdpcmDataSize(int sampleCount) {
+  const int frameCount = sampleCount / AdpcmFrameSampleCount;
+  const int8_t remainder = sampleCount % AdpcmFrameSampleCount;
+  const size_t tail = remainder != 0
+    ? static_cast<int>(remainder / 2 + (remainder & 1) + 1) : 0;
+  return tail + frameCount * AdpcmFrameSize;
+}
+
+size_t GetWaveBufferDataSize(uint8_t sampleFormat, int sampleCount) {
+  switch (sampleFormat) {
+    case SampleFormat_PcmInt16:
+      return sampleCount * sizeof(int16_t);
+    case SampleFormat_PcmFloat:
+      return sampleCount * sizeof(float);
+    case SampleFormat_Adpcm:
+      return GetAdpcmDataSize(sampleCount);
+    default:
+      nn::detail::UnexpectedDefaultImpl();
+  }
+}
+
+}
+
+void VoiceInfo::UpdateWaveBuffer(common::BehaviorParameter::ErrorInfo* errors,
+  WaveBuffer* waveBuffer, const renderer::ipc::Voice::WaveBuffer* in,
+  uint8_t sampleFormat, bool isValid, PoolMapper& mapper,
+  const BehaviorInfo& behavior) {
+  if (!isValid && waveBuffer->m_IsSentToServer) {
+    if (waveBuffer->m_Buffer.GetCpuAddr() != 0) {
+      waveBuffer->m_Buffer.Setup(CpuAddr(), 0);
+    }
+  }
+  if (in->isSentToServer != 0 && !IsFlagSet(Flag_IsBufferUnmapped)) {
+    return;
+  }
+  if (in->size < GetWaveBufferDataSize(sampleFormat, in->startSampleOffset) ||
+    in->size < GetWaveBufferDataSize(sampleFormat, in->endSampleOffset) ||
+    in->startSampleOffset < 0 || in->endSampleOffset < 0) {
+    errors[0].result = {0x5299};
+    errors[0].info = in->address;
+    return;
+  }
+  waveBuffer->m_IsSentToServer = false;
+  waveBuffer->m_StartSampleOffset = in->startSampleOffset;
+  waveBuffer->m_EndSampleOffset = in->endSampleOffset;
+  waveBuffer->m_IsLoop = in->isLoop;
+  waveBuffer->m_IsEndOfStream = in->isEndOfStream;
+  waveBuffer->m_LoopCount = in->loopCount;
+  waveBuffer->m_LoopStartSampleOffset = in->loopStartSampleOffset;
+  waveBuffer->m_LoopEndSampleOffset = in->loopEndSampleOffset;
+  SetFlag(Flag_IsBufferUnmapped, !mapper.TryAttachBuffer(&errors[0],
+    &waveBuffer->m_Buffer, in->address, in->size));
+  if (behavior.IsAdpcmLoopContextBugFixed() &&
+    sampleFormat == SampleFormat_Adpcm && in->contextAddress != 0) {
+    const bool isAttached = mapper.TryAttachBuffer(&errors[1],
+      &waveBuffer->m_Context, in->contextAddress, in->contextSize);
+    SetFlag(Flag_IsBufferUnmapped,
+      IsFlagSet(Flag_IsBufferUnmapped) || !isAttached);
+  }
+  else {
+    waveBuffer->m_Context.Setup(CpuAddr(), 0);
+  }
+}
+
 bool VoiceInfo::ShouldUpdateWaveBuffer(
   const renderer::ipc::Voice::WaveBuffer* waveBuffer) const {
   return !waveBuffer->isSentToServer || IsFlagSet(Flag_IsBufferUnmapped);

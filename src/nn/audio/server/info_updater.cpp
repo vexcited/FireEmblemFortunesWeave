@@ -1,7 +1,9 @@
 #include <string.h>
 
 #include <new>
+#include <type_traits>
 
+#include "nn/audio/server/effect_info.hpp"
 #include "nn/audio/server/info_updater.hpp"
 
 namespace nn::audio::server {
@@ -11,6 +13,106 @@ constexpr Result ResultInvalidUpdateInfo() {
   return {0x5299};
 }
 
+enum EffectOutUsageState : uint8_t {
+  EffectOutUsageState_Used = 3,
+  EffectOutUsageState_Removable = 4,
+};
+
+template <typename Out>
+constexpr bool HasEffectResultState =
+  std::is_same_v<Out, renderer::ipc::Effect::StatusData<1>>;
+
+}
+
+template <typename In, typename Out>
+Result InfoUpdater::UpdateEffectsImpl(bool isForceUpdate) {
+  using InParameter = EffectInParameterOf<In>;
+  PoolMapper mapper(m_MemoryPools.data, static_cast<int>(m_MemoryPools.size),
+    m_BehaviorInfo);
+  const InParameter* in = reinterpret_cast<const InParameter*>(m_Input);
+  Out* out = reinterpret_cast<Out*>(m_Output);
+  for (int i = 0; i < m_EffectContext->GetCount(); i++) {
+    EffectInfoBase* info = m_EffectContext->GetInfo(i);
+    if (in[i].type != info->GetType()) {
+      switch (in[i].type) {
+        case EffectInfoBase::Type_Invalid:
+          new (info) EffectInfoBase();
+          break;
+        case EffectInfoBase::Type_BufferMixer:
+          memset(info, 0, sizeof(BufferMixerInfo<In>));
+          new (info) BufferMixerInfo<In>;
+          break;
+        case EffectInfoBase::Type_Aux:
+          memset(info, 0, sizeof(AuxInfo<In>));
+          new (info) AuxInfo<In>;
+          break;
+        case EffectInfoBase::Type_Delay:
+          memset(info, 0, sizeof(DelayInfo<In>));
+          new (info) DelayInfo<In>;
+          break;
+        case EffectInfoBase::Type_Reverb:
+          memset(info, 0, sizeof(ReverbInfo<In>));
+          new (info) ReverbInfo<In>;
+          break;
+        case EffectInfoBase::Type_I3dl2Reverb:
+          memset(info, 0, sizeof(I3dl2ReverbInfo<In>));
+          new (info) I3dl2ReverbInfo<In>;
+          break;
+        case EffectInfoBase::Type_BiquadFilter:
+          memset(info, 0, sizeof(BiquadFilterInfo<In>));
+          new (info) BiquadFilterInfo<In>;
+          break;
+        case EffectInfoBase::Type_LightLimiter:
+          memset(info, 0, sizeof(LightLimiterInfo<In>));
+          new (info) LightLimiterInfo<In>;
+          break;
+        case EffectInfoBase::Type_Capture:
+          memset(info, 0, sizeof(CaptureInfo<In>));
+          new (info) CaptureInfo<In>;
+          break;
+        case EffectInfoBase::Type_Compressor:
+          memset(info, 0, sizeof(CompressorInfo<In>));
+          new (info) CompressorInfo<In>;
+          break;
+        default:
+          nn::detail::UnexpectedDefaultImpl();
+      }
+    }
+    common::BehaviorParameter::ErrorInfo error{};
+    info->Update(&error, &in[i], mapper);
+    if (error.result.IsFailure()) {
+      m_BehaviorInfo->AppendError(error);
+    }
+    const EffectInfoBase::UsageState state = info->GetUsageState();
+    if (isForceUpdate || state == EffectInfoBase::UsageState_New) {
+      out[i].usageState = state == EffectInfoBase::UsageState_Disabled
+        ? EffectOutUsageState_Removable : EffectOutUsageState_Used;
+    }
+    else {
+      out[i].usageState = EffectOutUsageState_Removable;
+    }
+    if constexpr (HasEffectResultState<Out>) {
+      if (in[i].isNew == true) {
+        info->InitializeResultState(
+          m_EffectContext->GetDspSharedResultState(i));
+        info->InitializeResultState(m_EffectContext->GetResultState(i));
+      }
+      if (info->ShouldUpdateResultState()) {
+        memcpy(out[i].resultState, m_EffectContext->GetResultState(i),
+          sizeof(out[i].resultState));
+      }
+    }
+  }
+  size_t consumedSize = m_EffectContext->GetCount() * sizeof(InParameter);
+  if (consumedSize != m_InHeader->effectSize) {
+    return ResultInvalidUpdateInfo();
+  }
+  size_t outSize = m_EffectContext->GetCount() * sizeof(Out);
+  m_OutHeader->effectSize = outSize;
+  m_OutHeader->totalSize += outSize;
+  m_Input += consumedSize;
+  m_Output += outSize;
+  return {0};
 }
 
 Result InfoUpdater::UpdateVoiceChannelResources() {

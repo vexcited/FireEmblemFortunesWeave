@@ -97,7 +97,10 @@ private:
   CpuAddr m_CpuAddress;
   size_t m_Size;
   MemoryPoolInfo* m_Pool;
+  uint8_t reserved[8];
 };
+
+static_assert(sizeof(AddressInfo) == 32);
 
 class PoolMapper {
 public:

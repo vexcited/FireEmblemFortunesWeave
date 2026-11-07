@@ -267,6 +267,8 @@ public:
   void RecordRenderingTimeLimitExceeded();
 
 private:
+  IPerformanceManagerImpl* CreateImpl(PerformanceMetricsDataFormat format);
+
   IPerformanceManagerImpl* m_Impl;
   alignas(8) uint8_t m_ImplStorage[168];
 };
