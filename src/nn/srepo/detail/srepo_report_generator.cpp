@@ -229,6 +229,28 @@ Result ReportGenerator::AddKey(size_t* pOutPosition, const char* key,
   return Result{0};
 }
 
+// The payload bytes the service fills in for the placeholder types 0x40
+// to 0x42.
+constexpr size_t PlaceholderSizes[] = {16, 1, 10};
+
+Result ReportGenerator::AddPlaceholder(size_t* pOutPosition, const char* key,
+  int8_t type, uint8_t* buffer, size_t size, size_t position,
+  size_t sizeMax) {
+  if (static_cast<uint8_t>(type - 0x40) > 2) {
+    return ResultValueTypeMismatch;
+  }
+  size_t keyEnd = 0;
+  NN_RESULT_DO(AddKey(&keyEnd, key, buffer, size, position));
+  util::MessagePackWriter::StreamParam stream = {buffer, size, keyEnd};
+  util::MessagePackWriter writer(&stream);
+  const size_t length = PlaceholderSizes[static_cast<uint8_t>(type - 0x40)];
+  if (!writer.WriteExtensionHeader(type, static_cast<uint32_t>(length))) {
+    return ResultBufferFull;
+  }
+  return FinishKeyValue(pOutPosition, buffer, size, stream.position + length,
+    sizeMax);
+}
+
 Result ReportGenerator::AddKeyValue(size_t* pOutPosition, const char* key,
   long value, uint8_t* buffer, size_t size, size_t position, size_t sizeMax) {
   size_t keyEnd = 0;
