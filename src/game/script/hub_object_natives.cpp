@@ -155,10 +155,8 @@ void SetScale(ObjectHandle handle, const math::Vec3& scale) {
 
 math::Vec3 GetScale(ObjectHandle handle) {
   Object* object = Open(handle);
-  if (object != nullptr && object->GetScale().has_value()) {
-    return *object->GetScale();
-  }
-  return math::Vec3::One();
+  return object != nullptr && object->GetScale().has_value() ?
+    *object->GetScale() : math::Vec3::One();
 }
 
 void PlayAnim(ObjectHandle handle, const as::string& animName) {

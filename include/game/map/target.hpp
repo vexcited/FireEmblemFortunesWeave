@@ -83,7 +83,8 @@ public:
   }
 
 private:
-  uint8_t unknown_38_[0x4];
+  // Starts in the tail padding of the base, the access info lands at 0x3c.
+  uint8_t unknown_31_[0xb];
   Access access_;
   uint8_t unknown_48_[0x2ff4];
   int access_count_;

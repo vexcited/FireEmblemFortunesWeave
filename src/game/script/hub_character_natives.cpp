@@ -739,7 +739,7 @@ void SetAngle(CharacterHandle handle, float rotY) {
     character->FixAngle();
     game::hub::CharacterMover* mover = character->GetModel()->GetMover();
     mover->ClearLookTarget();
-    mover->GetTransform()->SetRotY(rotY * 0.017453f);
+    mover->GetTransform()->SetRotY(rotY * 0.017453292f);
     handle->GetModel()->MarkDirty();
   }
 }

@@ -479,7 +479,9 @@ bool Voice::isLoopEnded() {
   if (!handle_->isAttached()) {
     return false;
   }
-  return buffer_->length < 0.0f && (handle_->isLooped() | looped_);
+  // The handle is asked even when the length already decides.
+  const bool looped = handle_->isLooped() | looped_;
+  return (buffer_->length < 0.0f) & looped;
 }
 
 float Voice::calcPitch() const {

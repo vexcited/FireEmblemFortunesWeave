@@ -38,7 +38,7 @@ private:
   uint8_t unknown_338_[0x1e8];
   bool skipped_;
   uint8_t unknown_521_[0x3f];
-  bool unknown_560_;
+  uint8_t unknown_560_;
 };
 
 class TelopStatusChange : public TelopSequence {
@@ -115,7 +115,7 @@ void TelopLevelUp::Unknown50() {
     return;
   }
   const uint32_t flags = ProcGameSkipView::instance_->GetFlags();
-  JumpTo((flags & 1) != 0 || unknown_560_ ? 8 : 6);
+  JumpTo(((flags | unknown_560_) & 1) != 0 ? 8 : 6);
 }
 TelopStatusChange::~TelopStatusChange() = default;
 TelopPhase::~TelopPhase() = default;
