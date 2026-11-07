@@ -160,9 +160,11 @@ Result GetUsbAudioVolumeSettings(
   int* pOutValue, system::UsbAudioVolumeSettings* pOutValue2, int count) {
   sf::SharedPointer<ISystemSettingsServer> proxy;
   NN_RESULT_DO(CreateSystemSettingsServerProxyForIpc(&proxy));
-  return proxy->GetUsbAudioVolumeSettings(
-    sf::Out<int>(pOutValue),
-    sf::OutArray<system::UsbAudioVolumeSettings>(pOutValue2, count));
+  int value = 0;
+  NN_RESULT_DO(proxy->GetUsbAudioVolumeSettings(sf::Out<int>(&value),
+    sf::OutArray<system::UsbAudioVolumeSettings>(pOutValue2, count)));
+  *pOutValue = value;
+  return ResultSuccess;
 }
 
 Result SetUsbAudioVolumeSettings(
@@ -245,9 +247,11 @@ Result GetUsbAudioInputDeviceGainSettings(
   int count) {
   sf::SharedPointer<ISystemSettingsServer> proxy;
   NN_RESULT_DO(CreateSystemSettingsServerProxyForIpc(&proxy));
-  return proxy->GetUsbAudioInputDeviceGainSettings(
-    sf::Out<int>(pOutValue),
-    sf::OutArray<system::UsbAudioInputDeviceGainSettings>(pOutValue2, count));
+  int value = 0;
+  NN_RESULT_DO(proxy->GetUsbAudioInputDeviceGainSettings(sf::Out<int>(&value),
+    sf::OutArray<system::UsbAudioInputDeviceGainSettings>(pOutValue2, count)));
+  *pOutValue = value;
+  return ResultSuccess;
 }
 
 Result SetUsbAudioInputDeviceGainSettings(
