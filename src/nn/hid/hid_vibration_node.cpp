@@ -69,7 +69,8 @@ bool VibrationNodeConnection::Connect(VibrationNode* pSource,
   return true;
 }
 
-void VibrationNodeConnection::Disconnect() {
+// The original calls this one through its exported symbol.
+[[gnu::noinline]] void VibrationNodeConnection::Disconnect() {
   ScopedLock graphLock(g_GraphMutex);
   ScopedLock valueLock(g_ValueMutex);
   if (IsConnected()) {

@@ -19510,6 +19510,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 6cc330,60,verified,src/nn/hid/hid_vibration_api.cpp,_ZN2nn3hid20IsVibrationPermittedEv
 6cc370,48,verified,src/nn/hid/hid_vibration_api.cpp,_ZN2nn3hid27BeginForcedVibrationSessionEv
 6cc3a0,48,verified,src/nn/hid/hid_vibration_api.cpp,_ZN2nn3hid25EndForcedVibrationSessionEv
+6cc3d0,156,verified,src/nn/hid/hid_vibration_device_api.cpp,_ZN2nn3hid25GetVibrationDeviceHandlesEPNS0_21VibrationDeviceHandleEiRKjNS_4util10BitFlagSetILi32ENS0_12NpadStyleTagEEE
 6cc470,48,verified,src/nn/hid/hid_vibration_api.cpp,_ZN2nn3hid25InitializeVibrationDeviceERKNS0_21VibrationDeviceHandleE
 6cc4a0,84,verified,src/nn/hid/hid_misc_api.cpp,_ZN2nn3hid22GetVibrationDeviceInfoEPNS0_19VibrationDeviceInfoERKNS0_21VibrationDeviceHandleE
 6cc500,48,verified,src/nn/hid/hid_vibration_api.cpp,_ZN2nn3hid18SendVibrationValueERKNS0_21VibrationDeviceHandleERKNS0_14VibrationValueE
@@ -19534,6 +19535,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 6cce40,120,verified,src/nn/hid/hid_vibration_node.cpp,_ZN2nn3hid13VibrationNodeD2Ev
 6ccec0,4,verified,src/nn/hid/hid_vibration_node.cpp,_ZN2nn3hid13VibrationNodeD0Ev
 6cced0,96,verified,src/nn/hid/hid_vibration_node.cpp,_ZNK2nn3hid13VibrationNode19GetCurrentVibrationEv
+6ccf40,172,verified,src/nn/hid/hid_vibration_node.cpp,_ZN2nn3hid13VibrationNode14DisconnectFromEPS1_
 6cd000,116,verified,src/nn/hid/hid_vibration_node.cpp,_ZNK2nn3hid13VibrationNode15GetConnectionToEPKS1_
 6cd080,156,verified,src/nn/hid/hid_vibration_node.cpp,_ZN2nn3hid23VibrationNodeConnection10DisconnectEv
 6cd120,116,verified,src/nn/hid/hid_vibration_node.cpp,_ZNK2nn3hid13VibrationNode13IsConnectedToEPKS1_
