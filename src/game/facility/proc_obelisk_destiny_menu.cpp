@@ -4,6 +4,9 @@ namespace game::facility {
 
 namespace {
 
+// Open destiny menus, raised while one shows.
+int g_destiny_menu_count;
+
 class ProcObeliskDestinyMenu : public menu::GameMenu {
 public:
   ProcObeliskDestinyMenu();
@@ -36,6 +39,15 @@ private:
 };
 
 [[gnu::used]] ProcObeliskDestinyMenu::ProcObeliskDestinyMenu() = default;
+
+void ProcObeliskDestinyMenu::Unknown93() {
+  ++g_destiny_menu_count;
+}
+
+void ProcObeliskDestinyMenu::Unknown94() {
+  --g_destiny_menu_count;
+  GameMenu::Unknown94();
+}
 
 // Kept out of its thunk, facility-menu-obelisk-2 pairs the thunk with a plain
 // tail call.

@@ -19,9 +19,20 @@ public:
   void Unknown88() override;
   int Unknown100() override;
   int Unknown101() override { return 3; }
+
+private:
+  bool unknown_428_;
 };
 
 [[gnu::used]] ProcTempleMiracleMenu::ProcTempleMiracleMenu() = default;
+
+const char* ProcTempleMiracleMenu::Unknown65() {
+  return unknown_428_ ? nullptr : "加護編成";
+}
+
+const char* ProcTempleMiracleMenu::Unknown67() {
+  return unknown_428_ ? nullptr : "加護編成";
+}
 
 }
 
