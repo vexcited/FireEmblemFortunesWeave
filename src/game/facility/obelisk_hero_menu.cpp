@@ -1,5 +1,6 @@
 #pragma GCC visibility push(hidden)
 #include "game/facility/obelisk_hero_menu.hpp"
+#include "game/sound/se.hpp"
 #pragma GCC visibility pop
 
 namespace game::facility {
@@ -22,6 +23,14 @@ int ObeliskHeroMenu::Unknown63() {
 
 int ObeliskHeroMenu::InputUnknown01() {
   return 4;
+}
+
+void ObeliskHeroMenu::Unknown76(int /* result */) {
+  sound::PlaySe("SE_SYS_Select_Obelisk_L");
+}
+
+void ObeliskHeroMenu::Unknown77(int /* result */) {
+  sound::PlaySe("SE_SYS_Select_Obelisk_R");
 }
 
 }

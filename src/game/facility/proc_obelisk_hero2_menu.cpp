@@ -2,6 +2,7 @@
 
 #include "game/facility/obelisk_hero_menu.hpp"
 #include "game/menu/unit_list.hpp"
+#include "game/sound/se.hpp"
 
 namespace game::facility {
 
@@ -43,6 +44,10 @@ private:
 };
 
 [[gnu::used]] ProcUnitSelectMenu::ProcUnitSelectMenu() = default;
+
+void ProcUnitSelectMenu::Unknown75() {
+  sound::PlaySe("SE_SYS_Status_Open");
+}
 
 class ProcPartSelect : public ObeliskHeroMenu {
 public:

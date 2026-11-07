@@ -3,6 +3,7 @@
 #include <vector>
 
 #include "game/menu/game_menu.hpp"
+#include "game/sound/se.hpp"
 
 namespace game::facility {
 
@@ -65,6 +66,10 @@ private:
 };
 
 [[gnu::used]] ProcObeliskResumeMenu::ProcObeliskResumeMenu() = default;
+
+void ProcObeliskResumeMenu::Unknown75() {
+  sound::PlaySe("SE_SYS_Status_Open");
+}
 
 }
 

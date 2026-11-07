@@ -2,6 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 #include "game/menu/game_menu.hpp"
+#include "game/sound/se.hpp"
 #pragma GCC visibility pop
 
 namespace game::menu {
@@ -59,5 +60,9 @@ private:
 };
 
 RelianceSelectMenu::~RelianceSelectMenu() = default;
+
+void RelianceSelectMenu::Unknown69() {
+  sound::PlaySe("SE_SYS_Decide_H_Light");
+}
 
 }

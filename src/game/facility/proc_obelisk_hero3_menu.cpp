@@ -1,4 +1,5 @@
 #include "game/facility/obelisk_hero_menu.hpp"
+#include "game/sound/se.hpp"
 
 namespace game::facility {
 
@@ -20,6 +21,10 @@ public:
 };
 
 [[gnu::used]] ProcObeliskHero3Menu::ProcObeliskHero3Menu() = default;
+
+void ProcObeliskHero3Menu::Unknown75() {
+  sound::PlaySe("SE_SYS_Status_Open");
+}
 
 }
 

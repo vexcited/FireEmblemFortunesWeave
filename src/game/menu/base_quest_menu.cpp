@@ -5,6 +5,7 @@
 #pragma GCC visibility push(hidden)
 #include "game/menu/game_menu.hpp"
 #include "game/proc/proc_game_skip_view.hpp"
+#include "game/sound/se.hpp"
 #pragma GCC visibility pop
 
 namespace game::menu {
@@ -85,6 +86,14 @@ private:
 
 [[gnu::used]] ProcTalkQuestInfo::ProcTalkQuestInfo(const Subquest* quest)
   : ProcTalkSelectQuestMenu(quest) {}
+
+void ProcTalkQuestInfo::Unknown69() {
+  sound::PlaySe("SE_SYS_Decide_Quest");
+}
+
+void ProcSideStoryInfo::Unknown69() {
+  sound::PlaySe("SE_SYS_Decide_Quest");
+}
 
 }
 
