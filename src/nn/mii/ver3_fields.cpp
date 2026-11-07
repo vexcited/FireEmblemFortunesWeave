@@ -6,8 +6,9 @@ const Ver3StoreDataTableElement Ver3StoreDataTable[77] = {
 #include "ver3_table.inc"
 };
 
-const Ver3StoreDataTableElement* GetVer3StoreDataTableElement(
-  Ver3StoreDataMember member) {
+// Exported, so the field accessors reach it through its PLT stub.
+[[gnu::noinline]] const Ver3StoreDataTableElement*
+GetVer3StoreDataTableElement(Ver3StoreDataMember member) {
   return Ver3StoreDataTable + static_cast<unsigned>(member);
 }
 
