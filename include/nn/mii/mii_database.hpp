@@ -68,6 +68,9 @@ public:
   virtual Result SetInterfaceVersion(uint32_t version) = 0;
   virtual Result Convert(sf::Out<CharInfo> pOut,
     const Ver3StoreData& data) = 0;
+  virtual void Reserved28() = 0;
+  virtual void Reserved29() = 0;
+  virtual Result Append(const CharInfo& info) = 0;
 };
 
 class ServiceProviderClient {
@@ -102,6 +105,8 @@ public:
   Result Format();
   Result Import(const void* buffer, size_t size);
   Result Export(void* buffer, size_t size) const;
+
+  const sf::SharedPointer<detail::IDatabaseService>* GetHandle() const;
 
 private:
   sf::SharedPointer<detail::IDatabaseService> service_;
