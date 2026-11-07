@@ -12179,7 +12179,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 6de950,324,verified,src/game/unit/unit_derived_params.cpp,_ZNK4game4Unit9GetAttackEbiib
 6deaa0,192,verified,src/game/unit/unit_derived_params.cpp,_ZNK4game4Unit13GetMagicGuardEi
 6deb60,192,verified,src/game/unit/unit_derived_params.cpp,_ZNK4game4Unit14GetMagicAttackEi
-6dec20,372,verified,src/game/unit/unit_derived_params.cpp,_ZNK4game4Unit11GetUnknown4Eb
+6dec20,392,verified,src/game/unit/unit_derived_params.cpp,_ZNK4game4Unit11GetUnknown4Eb
 6dedb0,256,verified,src/game/unit/unit_derived_params.cpp,_ZNK4game4Unit11GetUnknown6Eb
 6df0f0,168,verified,src/game/unit/unit_derived_params.cpp,_ZNK4game4Unit11GetUnknown5Ei
 6df1a0,192,verified,src/game/unit/unit_derived_params.cpp,_ZNK4game4Unit8GetGuardEi
@@ -12363,7 +12363,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 6e86a0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::Unit::LevelUp(int)::$_1, void (game::CapabilityArg const&, int, int)>::destroy_deallocate()"
 6e86f0,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::Unit::LevelUp(int)::$_1, void (game::CapabilityArg const&, int, int)>::target(std::type_info const&)"
 6e8710,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::Unit::LevelUp(int)::$_1, void (game::CapabilityArg const&, int, int)>::target_type()"
-6e8a40,124,verified,src/game/unit/unit_item.cpp,_ZN4game8UnitItem7RestoreEi
+6e8a40,168,verified,src/game/unit/unit_item.cpp,_ZN4game8UnitItem7RestoreEi
 6e9060,216,verified,src/game/unit/unit_item.cpp,_ZNK4game8UnitItem8IsUsableEv
 6e9580,480,verified,src/game/unit/unit_item.cpp,_ZN4game8UnitItem11DeserializeERNS_6StreamE
 6e9760,304,verified,src/game/unit/unit_item.cpp,_ZN4game6Stream13ReadShortDataINS_8ItemDataEEEPKT_v
@@ -38621,7 +38621,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 13fbc50,8,verified,src/game/facility/facility_unit_menu.cpp,_ZN4game8facility16FacilityUnitMenu13ImplUnknown08Ev
 13fbc60,4,verified,src/game/facility/facility_unit_menu.cpp,_ZN4game8facility16FacilityUnitMenu10Unknown156Ev
 13fbc70,4,verified,src/game/facility/facility_unit_menu.cpp,_ZN4game8facility16FacilityUnitMenu10Unknown157Ev
-13fbc80,100,verified,src/game/facility/proc_dining_unit_menu.cpp,_ZN4game8facility12_GLOBAL__N_118ProcDiningUnitMenu10Unknown158Ev
+13fbc80,108,verified,src/game/facility/proc_dining_unit_menu.cpp,_ZN4game8facility12_GLOBAL__N_118ProcDiningUnitMenu10Unknown158Ev
 13fbcf0,12,verified,src/game/facility/proc_dining_unit_menu.cpp,_ZN4game8facility12_GLOBAL__N_118ProcDiningUnitMenu13ImplUnknown03Ev
 13fbdc0,12,verified,src/game/facility/proc_dining_unit_menu.cpp,_ZThn1056_N4game8facility12_GLOBAL__N_118ProcDiningUnitMenu13ImplUnknown03Ev
 13fbe90,8,verified,src/game/facility/facility_unit_menu.cpp,_ZThn1056_N4game8facility16FacilityUnitMenu13ImplUnknown08Ev

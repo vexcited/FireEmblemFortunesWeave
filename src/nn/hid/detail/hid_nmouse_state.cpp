@@ -1,6 +1,8 @@
 #include <new>
 
+#include "nn/hid/detail/hid_applet_resource_holder.hpp"
 #include "nn/hid/detail/hid_nmouse_accessor.hpp"
+#include "nn/hid/detail/hid_server.hpp"
 #include "nn/hid/detail/hid_ring_lifo.hpp"
 
 namespace nn::hid::detail {
@@ -70,6 +72,22 @@ Result GetNmouseStatesWithDelta(int* pOutCount,
   NmouseStateWithDelta* pOutStates, int count, NmouseHandle handle) {
   return GetNmouseTransferMemoryAccessor().GetNmouseStatesWithDelta(
     pOutCount, pOutStates, count, handle);
+}
+
+// The overlay is released in the server first, then the local memory and the
+// applet resource.
+Result FinalizeOverlayNmouse() {
+  sf::SharedPointer<IHidSystemServer> proxy;
+  server::CreateHidSystemServerProxy(&proxy);
+  Result result =
+    proxy->FinalizeOverlayNmouse(utility::GetAppletResourceUserId());
+  if (result.IsSuccess()) {
+    result = g_OverlayNmouseAccessor.FinalizeTransferMemory();
+    if (result.IsSuccess()) {
+      result = hid::detail::GetAppletResourceHolder().Deactivate();
+    }
+  }
+  return result;
 }
 
 Result ListOverlayNmouseHandles(int* pOutCount, NmouseHandle* pOutHandles,

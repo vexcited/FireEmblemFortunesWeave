@@ -924,7 +924,7 @@ class IHidSystemServer : public sf::IServiceObject {
   virtual Result GetAppletResourceProperty(
     system::AppletResourceProperty*, applet::AppletResourceUserId) = 0;
   virtual void Reserved284() = 0;
-  virtual void Reserved285() = 0;
+  virtual Result FinalizeOverlayNmouse(applet::AppletResourceUserId) = 0;
   virtual Result SetOverlayNmousePointerRanges(
     applet::AppletResourceUserId, int, int) = 0;
   virtual Result SetOverlayNmouseMagnification(float, float, float, float) = 0;
