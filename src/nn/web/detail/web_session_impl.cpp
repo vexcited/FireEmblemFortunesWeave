@@ -142,7 +142,7 @@ bool WebSessionImpl::appear() {
   return isSent;
 }
 
-bool WebSessionImpl::requestExit() {
+void WebSessionImpl::requestExit() {
   m_Mutex.Lock();
 
   if (isAvaliable()) {
@@ -150,7 +150,6 @@ bool WebSessionImpl::requestExit() {
   }
 
   m_Mutex.Unlock();
-  return true;
 }
 
 bool WebSessionImpl::isAvaliable() {

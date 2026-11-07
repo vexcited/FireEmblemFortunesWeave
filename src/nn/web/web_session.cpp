@@ -25,8 +25,8 @@ bool WebSession::Appear() {
   return m_pImpl->appear();
 }
 
-bool WebSession::RequestExit() {
-  return m_pImpl->requestExit();
+void WebSession::RequestExit() {
+  m_pImpl->requestExit();
 }
 
 bool WebSession::TrySendContentMessage(const char* content, size_t size) {

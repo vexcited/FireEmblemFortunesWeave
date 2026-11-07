@@ -19,7 +19,7 @@ class OfflineWebSession {
   void Finalize();
   bool NeedsWaitForExit() const;
   bool Appear();
-  bool RequestExit();
+  void RequestExit();
   bool TrySendContentMessage(const char* content, size_t size);
   bool TryReceiveContentMessage(size_t* pOutSize, char* buffer, size_t size);
 

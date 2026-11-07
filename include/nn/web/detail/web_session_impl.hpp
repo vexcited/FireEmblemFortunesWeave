@@ -66,7 +66,7 @@ class WebSessionImpl {
   WebSessionImpl();
 
   bool appear();
-  bool requestExit();
+  void requestExit();
   bool trySendContentMessage(const char* content, uint32_t size);
   bool tryReceiveContentMessage(size_t* pOutSize, char* buffer, size_t size);
   bool trySend(const WebSessionMessageHeader& header, const void* data);

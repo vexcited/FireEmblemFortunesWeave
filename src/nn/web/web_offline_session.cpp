@@ -25,8 +25,8 @@ bool OfflineWebSession::Appear() {
   return m_pImpl->appear();
 }
 
-bool OfflineWebSession::RequestExit() {
-  return m_pImpl->requestExit();
+void OfflineWebSession::RequestExit() {
+  m_pImpl->requestExit();
 }
 
 bool OfflineWebSession::TrySendContentMessage(

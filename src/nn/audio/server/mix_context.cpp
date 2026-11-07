@@ -210,7 +210,9 @@ Result MixContext::Sort(const SplitterContext& splitters,
   return {0};
 }
 
-bool MixContext::SortForSplitter(const SplitterContext& splitters) {
+// The sorts are reached through their exported symbols.
+[[gnu::noinline]] bool MixContext::SortForSplitter(
+  const SplitterContext& splitters) {
   if (!m_NodeStates.Tsort(m_EdgeMatrix)) {
     return false;
   }
@@ -223,7 +225,7 @@ bool MixContext::SortForSplitter(const SplitterContext& splitters) {
   return true;
 }
 
-void MixContext::SortForNonSplitter() {
+[[gnu::noinline]] void MixContext::SortForNonSplitter() {
   UpdateDistancesFromFinalMix();
   SpanIterator<MixInfo*> begin(&m_SortedInfos, 0);
   SpanIterator<MixInfo*> end(&m_SortedInfos,
