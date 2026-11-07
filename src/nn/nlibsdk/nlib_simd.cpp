@@ -251,6 +251,55 @@ const void* nnmem_nlib_memchr_mb_simd(const void* data, size_t size) {
   return nullptr;
 }
 
+// Finds the terminator or the first unit outside ASCII. The bias turns the
+// unsigned test of the unit minus one above 0x7e into a signed one.
+const uint16_t* nnmem_utf16chr_mb_simd(const uint16_t* string) {
+  const int16x8_t bias = vdupq_n_s16(0x7fff);
+  const int16x8_t limit = vdupq_n_s16(static_cast<int16_t>(0x807e));
+  const uint8_t* p = reinterpret_cast<const uint8_t*>(string);
+  size_t misalignment = reinterpret_cast<uintptr_t>(p) & 15;
+  if (misalignment != 0) {
+    const uint8_t* block = p - misalignment;
+    uint8x16_t found = vandq_u8(I128::SetMask8HigherLanes(16 - misalignment),
+      vreinterpretq_u8_u16(vcgtq_s16(vaddq_s16(vld1q_s16(
+      reinterpret_cast<const int16_t*>(block)), bias), limit)));
+    if (!I128::IsZero(found)) {
+      return reinterpret_cast<const uint16_t*>(block +
+        I128::FindFirstLane(found));
+    }
+    p += 16 - misalignment;
+  }
+  if ((reinterpret_cast<uintptr_t>(p) & 0x1f) != 0) {
+    uint16x8_t found = vcgtq_s16(vaddq_s16(vld1q_s16(
+      reinterpret_cast<const int16_t*>(p)), bias), limit);
+    if (!I128::IsZero(vreinterpretq_u8_u16(found))) {
+      return reinterpret_cast<const uint16_t*>(p + (__clzll(__rbitll(
+        vget_lane_u64(vreinterpret_u64_u8(vmovn_u16(found)), 0))) >> 2));
+    }
+    p += 16;
+  }
+  int16x8_t first;
+  int16x8_t second;
+  for (;; p += 32) {
+    __builtin_prefetch(p + 32);
+    first = vaddq_s16(vld1q_s16(reinterpret_cast<const int16_t*>(p)), bias);
+    second = vaddq_s16(vld1q_s16(reinterpret_cast<const int16_t*>(p + 16)),
+      bias);
+    if (!I128::IsZero(vreinterpretq_u8_u16(vcgtq_s16(vmaxq_s16(first,
+      second), limit)))) {
+      break;
+    }
+  }
+  uint16x8_t found = vcgtq_s16(first, limit);
+  if (!I128::IsZero(vreinterpretq_u8_u16(found))) {
+    return reinterpret_cast<const uint16_t*>(p + (__clzll(__rbitll(
+      vget_lane_u64(vreinterpret_u64_u8(vmovn_u16(found)), 0))) >> 2));
+  }
+  found = vcgtq_s16(second, limit);
+  return reinterpret_cast<const uint16_t*>(p + 16 + (__clzll(__rbitll(
+    vget_lane_u64(vreinterpret_u64_u8(vmovn_u16(found)), 0))) >> 2));
+}
+
 size_t nnmem_nlib_strlen_simd(const char* string) {
   if (string == nullptr) {
     return 0;
