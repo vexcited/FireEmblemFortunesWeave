@@ -150,7 +150,8 @@ class IManagerForSystemService : public sf::IServiceObject {
   virtual Result GetRequiredLicenseCacheForLogin(sf::Out<uint32_t> pOutKind,
     uint64_t applicationId) = 0;
   virtual Result InvalidateRequiredLicenseCache(uint64_t applicationId) = 0;
-  virtual void Reserved13() = 0;
+  virtual Result GetRequiredLicenseCacheForOnlinePlay(
+    sf::Out<uint32_t> pOutKind, uint64_t applicationId) = 0;
   virtual Result GetNintendoAccountId(sf::Out<NintendoAccountId> pOutId) = 0;
   virtual Result CalculateNintendoAccountAuthenticationFingerprint(
     sf::Out<NintendoAccountAuthenticationFingerprint> pOutFingerprint) = 0;
@@ -238,6 +239,8 @@ class NetworkServiceAccountManager {
     char* buffer, size_t size);
   void RequiresUpdateNetworkServiceAccountIdTokenCache();
   void RequireReauthenticationOfNetworkServiceAccount();
+  Result RefreshCachedNetworkServiceLicenseInfoAsync(
+    AsyncContext* pOutContext);
   Result CreateProcedureToReauthenticateNintendoAccount(
     NintendoAccountReauthenticationProcedure* pOutProcedure);
   Result ResumeProcedureToReauthenticateNintendoAccount(

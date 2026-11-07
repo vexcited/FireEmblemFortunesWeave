@@ -78,7 +78,8 @@ class IAdministrator : public IManagerForSystemService {
     NintendoAccountAnalyticsOptInTarget target) = 0;
   virtual Result TryRecoverNintendoAccountUserStateAsync(
     const sf::Out<sf::SharedPointer<detail::IAsyncContext>>& pOutContext) = 0;
-  virtual void Reserved52() = 0;
+  virtual Result IsRequiredLicenseCacheRefreshRequiredForOnlinePlay(
+    sf::Out<bool> pOutIsRequired, uint64_t applicationId) = 0;
   virtual Result RefreshRequiredLicenseCacheForOnlinePlayAsync(
     const sf::Out<sf::SharedPointer<detail::IAsyncContext>>& pOutContext,
     uint64_t applicationId) = 0;
@@ -130,6 +131,11 @@ class NetworkServiceAccountAdministrator : public NetworkServiceAccountManager {
     NetworkServiceAccountAuthenticationInfo* pOutInfo) const;
   Result ImportAsyncForWin(AsyncContext* pOutContext,
     const NetworkServiceAccountAuthenticationInfo& info);
+  Result GetRequiredLicenseCacheForOnlinePlay(
+    NetworkServiceLicenseKind* pOutKind,
+    const ApplicationId& applicationId) const;
+  Result IsRequiredLicenseCacheRefreshRequiredForOnlinePlay(
+    bool* pOutIsRequired, const ApplicationId& applicationId) const;
   Result CreateProcedureToLinkWithNintendoAccount(
     NintendoAccountLinkageProcedure* pOutProcedure);
   Result ResumeProcedureToLinkWithNintendoAccount(

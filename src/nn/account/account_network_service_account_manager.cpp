@@ -355,6 +355,33 @@ Result NetworkServiceAccountAdministrator::GetRequestForAnalyticsOptIn(
     sf::Out<RequestUrl>(pOutRequest), target);
 }
 
+Result
+  NetworkServiceAccountAdministrator::GetRequiredLicenseCacheForOnlinePlay(
+  NetworkServiceLicenseKind* pOutKind,
+  const ApplicationId& applicationId) const {
+  uint32_t kind = 0;
+  NN_RESULT_DO(GetAdministrator()->GetRequiredLicenseCacheForOnlinePlay(
+    sf::Out<uint32_t>(&kind), applicationId.value));
+  switch (kind) {
+    case 0:
+      *pOutKind = NetworkServiceLicenseKind_None;
+      break;
+    case 1:
+      *pOutKind = NetworkServiceLicenseKind_Common;
+      break;
+    default:
+      nn::detail::UnexpectedDefaultImpl();
+  }
+  return Result{0};
+}
+
+Result NetworkServiceAccountAdministrator::
+  IsRequiredLicenseCacheRefreshRequiredForOnlinePlay(bool* pOutIsRequired,
+  const ApplicationId& applicationId) const {
+  return GetAdministrator()->IsRequiredLicenseCacheRefreshRequiredForOnlinePlay(
+    sf::Out<bool>(pOutIsRequired), applicationId.value);
+}
+
 Result NetworkServiceAccountAdministrator::GetRequiredLicenseCacheForLogin(
   NetworkServiceLicenseKind* pOutKind,
   const ApplicationId& applicationId) const {
@@ -485,4 +512,14 @@ NN_ACCOUNT_DEFINE_RESUME(NetworkServiceAccountAdministrator,
 
 #undef NN_ACCOUNT_DEFINE_RESUME
 #undef NN_ACCOUNT_DEFINE_CREATE
+
+Result
+  NetworkServiceAccountManager::RefreshCachedNetworkServiceLicenseInfoAsync(
+  AsyncContext* pOutContext) {
+  sf::SharedPointer<detail::IAsyncContext> context;
+  NN_RESULT_DO(m_pManager->RefreshCachedNetworkServiceLicenseInfoAsync(
+    sf::Out<sf::SharedPointer<detail::IAsyncContext>>(&context)));
+  *pOutContext = AsyncContext(context.Detach(), m_Uid);
+  return Result{0};
+}
 }
