@@ -1278,7 +1278,7 @@ dcf90,116,verified,src/snd/bgm.cpp,_ZN3snd3BGM14getPlayingNameEv
 dd010,36,verified,src/snd/bgm.cpp,_ZN3snd3BGM13getUnknown170Ev
 dd040,36,verified,src/snd/bgm.cpp,_ZN3snd3BGM13getUnknown16cEv
 dd070,36,verified,src/snd/bgm.cpp,_ZN3snd3BGM13getUnknown168Ev
-dd0a0,36,verified,src/snd/bgm.cpp,_ZNSt3__16vectorIN3snd3BGM5EntryENS1_3fnd9AllocatorIS3_EEE16__destroy_vectorclB8nn210108Ev
+dd0a0,128,verified,src/snd/bgm.cpp,_ZNSt3__16vectorIN3snd3BGM5EntryENS1_3fnd9AllocatorIS3_EEE16__destroy_vectorclB8nn210108Ev
 dd170,48,verified,src/memory/new_delete.cpp,deleting destructor at 0xdd170
 dd1a0,8,verified,src/snd/name.cpp,_ZNK3snd4Name7getNameEv
 dd1b0,44,verified,src/snd/name.cpp,_ZNK3snd4Name13getNameStringEv
@@ -1300,7 +1300,7 @@ dfb00,280,verified,src/snd/env.cpp,_ZN3snd3Env9findGroupEPKc
 dfc30,196,verified,src/snd/env_wind.cpp,_ZN3snd3fnd9FastAllocINS_3Env5GroupELj0EE6createEv
 dff40,80,verified,src/snd/env.cpp,_ZN3snd3Env5resetEv
 dffb0,136,verified,src/snd/env.cpp,_ZN3snd3Env4playEPKcPKvS2_S2_hPv
-e18a0,448,verified,src/snd/env_wind.cpp,_ZN3snd3Env11removeGroupEPNS0_5GroupE
+e18a0,468,verified,src/snd/env_wind.cpp,_ZN3snd3Env11removeGroupEPNS0_5GroupE
 e1ab0,224,verified,src/snd/env.cpp,_ZN3snd3Env13restartFieldsEv
 e2ab0,212,verified,src/snd/env_wind.cpp,_ZN3snd3Env19getListenerPositionEv
 e2e30,164,verified,src/snd/env.cpp,_ZN3snd3Env9playFieldEPKc
@@ -1338,8 +1338,8 @@ e4830,56,verified,src/snd/game_ctrl.cpp,_ZN3snd4Wind7destroyEv
 e4880,120,verified,src/snd/env_wind.cpp,_ZN3snd4Wind6updateEv
 e4920,292,verified,src/snd/env_wind.cpp,_ZN3snd4Wind4stopEPKc
 e4a80,280,verified,src/snd/env_wind.cpp,_ZN3snd4Wind9findGroupEPKc
-e4bb0,128,verified,src/snd/env_wind.cpp,_ZN3snd3fnd9FastAllocINS_4Wind5GroupELj0EE6createEv
-e4c80,288,verified,src/snd/env_wind.cpp,_ZN3snd4Wind9stopGroupEPKc
+e4bb0,196,verified,src/snd/env_wind.cpp,_ZN3snd3fnd9FastAllocINS_4Wind5GroupELj0EE6createEv
+e4c80,384,verified,src/snd/env_wind.cpp,_ZN3snd4Wind9stopGroupEPKc
 e4ec0,80,verified,src/snd/env_wind.cpp,_ZN3snd4Wind5resetEv
 e5580,468,verified,src/snd/env_wind.cpp,_ZN3snd4Wind11removeGroupEPNS0_5GroupE
 e57a0,184,verified,src/snd/env_wind.cpp,_ZN3snd4Wind4muteERKNS_4FadeE
@@ -1617,7 +1617,7 @@ fd6a0,832,verified,src/game/templates/sort.cpp,_ZNSt3__127__insertion_sort_incom
 fdf60,100,verified,src/snd/fnd/math.cpp,_ZN3snd3fnd9calcCrc32EPKcj
 fdfe0,164,verified,src/snd/fnd/math.cpp,_ZN3snd3fnd16calcCrc32ReverseEPKcj
 fe090,48,verified,src/snd/fnd/math.cpp,_ZN3snd3fnd12calcDistanceERKNS0_4Vec3ES3_
-fe0c0,108,verified,src/snd/fnd/math.cpp,_ZN3snd3fnd9calcCurveENS0_9CurveTypeEffff
+fe0c0,144,verified,src/snd/fnd/math.cpp,_ZN3snd3fnd9calcCurveENS0_9CurveTypeEffff
 fec10,24,verified,src/snd/fnd/math.cpp,_ZN3snd3fnd12calcDistanceEffff
 fec30,32,verified,src/snd/fnd/math.cpp,_ZN3snd3fnd12calcDistanceEffffff
 fec50,48,verified,src/snd/fnd/math.cpp,_ZN3snd3fnd14calcDistanceToERKNS0_4Vec3ES3_
@@ -3314,7 +3314,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 151680,76,verified,src/snd/target/fx_nx.cpp,_ZN3snd6target19FxCpuLightLimiterNX6enableEv
 1516d0,76,verified,src/snd/target/fx_nx.cpp,_ZN3snd6target19FxCpuLightLimiterNX7disableEv
 151720,12,verified,src/snd/target/fx_nx.cpp,_ZNK3snd6target19FxCpuLightLimiterNX11isRemovableEv
-151730,288,verified,src/snd/target/fx_nx.cpp,_ZN3snd6target14FxCompressorNXC2EPNS_7ManagerEPvjPKv
+151730,288,disputed,src/snd/target/fx_nx.cpp,_ZN3snd6target14FxCompressorNXC2EPNS_7ManagerEPvjPKv
 1518b0,160,verified,src/snd/target/fx_nx.cpp,_ZN3snd6target14FxCompressorNXD2Ev
 151950,8,verified,src/snd/target/fx_nx.cpp,_ZThn40_N3snd6target14FxCompressorNXD1Ev
 151960,12,verified,src/snd/target/fx_nx.cpp,_ZThn5592_N3snd6target14FxCompressorNXD1Ev
@@ -14893,7 +14893,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 8391a0,112,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game12VariableFileD1Ev
 839210,144,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game12VariableFileD0Ev
 8392a0,800,verified,src/game/data/data_rows.cpp,_ZN4game8DataFileINS_12VariableDataES1_E5BuildEv
-8396e0,952,verified,src/game/data/data_rows.cpp,_ZN4game8DataFileINS_12VariableDataES1_E7UnbuildEv
+8396e0,1176,verified,src/game/data/data_rows.cpp,_ZN4game8DataFileINS_12VariableDataES1_E7UnbuildEv
 839c00,800,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_12VariableDataES1_E7RebuildEv
 839f60,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_12VariableDataES1_E9OnRebuildEv
 83a160,24,verified,src/llvm-libcxx-21/libcxx/include/__vector/vector.h,std::vector<T>::__throw_out_of_range()
@@ -15239,7 +15239,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 85aa00,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonINS_13VariationFileELb0EE8FinalizeEv
 85aa10,112,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game13VariationFileD1Ev
 85aa80,144,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game13VariationFileD0Ev
-85ab20,508,verified,src/game/data/data_rows.cpp,_ZN4game8DataFileINS_13VariationDataES1_E5BuildEv
+85ab20,800,verified,src/game/data/data_rows.cpp,_ZN4game8DataFileINS_13VariationDataES1_E5BuildEv
 85b360,1316,verified,src/game/data/data_rows.cpp,_ZN4game8DataFileINS_13VariationDataES1_E7UnbuildEv
 85b8a0,436,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_13VariationDataES1_E7RebuildEv
 85bc00,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_13VariationDataES1_E7OnBuildEv
@@ -17639,7 +17639,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 980cc0,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonINS_12TutorialFileELb0EE8FinalizeEv
 980cd0,112,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game12TutorialFileD1Ev
 980d40,144,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game12TutorialFileD0Ev
-980de0,824,verified,src/game/data/data_rows.cpp,_ZN4game8DataFileINS_13TutorialGroupENS_12TutorialDataEE5BuildEv
+980de0,1156,verified,src/game/data/data_rows.cpp,_ZN4game8DataFileINS_13TutorialGroupENS_12TutorialDataEE5BuildEv
 9813c0,1316,verified,src/game/data/data_rows.cpp,_ZN4game8DataFileINS_13TutorialGroupENS_12TutorialDataEE7UnbuildEv
 981960,800,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_13TutorialGroupENS_12TutorialDataEE7RebuildEv
 981cc0,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_13TutorialGroupENS_12TutorialDataEE9OnRebuildEv
@@ -18328,7 +18328,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 9cb570,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonINS_10NoticeFileELb0EE8FinalizeEv
 9cb580,112,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game10NoticeFileD1Ev
 9cb5f0,144,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game10NoticeFileD0Ev
-9cb680,640,verified,src/game/data/data_rows.cpp,_ZN4game8DataFileINS_10NoticeDataES1_E5BuildEv
+9cb680,1252,verified,src/game/data/data_rows.cpp,_ZN4game8DataFileINS_10NoticeDataES1_E5BuildEv
 9cbbc0,1068,verified,src/game/data/data_rows.cpp,_ZN4game8DataFileINS_10NoticeDataES1_E7UnbuildEv
 9cc000,800,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_10NoticeDataES1_E7RebuildEv
 9cc360,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_10NoticeDataES1_E9OnRebuildEv
@@ -18645,7 +18645,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 9ed5b0,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonINS_15RecallLabelFileELb0EE8FinalizeEv
 9ed5c0,112,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game15RecallLabelFileD1Ev
 9ed630,144,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game15RecallLabelFileD0Ev
-9ed6c0,740,verified,src/game/data/data_rows.cpp,_ZN4game8DataFileINS_15RecallLabelDataES1_E5BuildEv
+9ed6c0,808,verified,src/game/data/data_rows.cpp,_ZN4game8DataFileINS_15RecallLabelDataES1_E5BuildEv
 9edcc0,920,verified,src/game/data/data_rows.cpp,_ZN4game8DataFileINS_15RecallLabelDataES1_E7UnbuildEv
 9ee260,800,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_15RecallLabelDataES1_E7RebuildEv
 9ee5c0,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_15RecallLabelDataES1_E9OnRebuildEv
@@ -19188,7 +19188,7 @@ a3b8b0,192,verified,src/snd/debug_commands_3.cpp,_ZN3snd5debug13findSlotBlockERK
 a3ba60,184,verified,src/snd/debug_commands_2.cpp,_ZN3snd5debug12addVoiceSendERKN2as6stringE
 a3bb20,180,verified,src/snd/debug_commands.cpp,_ZN3snd5debug15clearVoiceSendsEv
 a3bbe0,184,verified,src/snd/debug_commands_2.cpp,_ZN3snd5debug10addBgmSendERKN2as6stringE
-a3bca0,108,verified,src/snd/debug_commands.cpp,_ZN3snd5debug13clearBgmSendsEv
+a3bca0,180,verified,src/snd/debug_commands.cpp,_ZN3snd5debug13clearBgmSendsEv
 a3bd60,184,verified,src/snd/debug_commands_2.cpp,_ZN3snd5debug9addSeSendERKN2as6stringE
 a3be20,180,verified,src/snd/debug_commands.cpp,_ZN3snd5debug12clearSeSendsEv
 a3bee0,168,verified,src/snd/debug_commands_2.cpp,_ZN3snd5debug11updateMixerEv
@@ -19225,7 +19225,7 @@ a3e430,204,verified,src/snd/debug_commands_2.cpp,_ZN3snd5debug12bgmMuteTrackEif
 a3e500,196,verified,src/snd/debug_commands_2.cpp,_ZN3snd5debug13bgmResumeMuteEf
 a3e5d0,204,verified,src/snd/debug_commands_2.cpp,_ZN3snd5debug18bgmResumeMuteTrackEif
 a3e6a0,196,verified,src/snd/debug_commands_2.cpp,_ZN3snd5debug13bgmMuteSystemEf
-a3e770,132,verified,src/snd/debug_commands_2.cpp,_ZN3snd5debug19bgmResumeSystemMuteEf
+a3e770,196,verified,src/snd/debug_commands_2.cpp,_ZN3snd5debug19bgmResumeSystemMuteEf
 a3e840,196,verified,src/snd/debug_commands_2.cpp,_ZN3snd5debug14bgmPauseSystemEf
 a3e910,196,verified,src/snd/debug_commands_2.cpp,_ZN3snd5debug20bgmResumeSystemPauseEf
 a3e9e0,168,verified,src/snd/debug_commands_2.cpp,_ZN3snd5debug11bgmIsActiveEv
@@ -19257,7 +19257,7 @@ a3fe40,168,verified,src/snd/debug_commands_2.cpp,_ZN3snd5debug13bgmIsStoppingEv
 a3fef0,216,verified,src/snd/debug_commands_2.cpp,_ZN3snd5debug22bgmStartPreviousVolumeEff
 a3ffd0,168,verified,src/snd/debug_commands_2.cpp,_ZN3snd5debug20bgmGetPreviousVolumeEv
 a40080,168,verified,src/snd/debug_commands_2.cpp,_ZN3snd5debug16bgmGetUnknown170Ev
-a40130,104,verified,src/snd/debug_commands_2.cpp,_ZN3snd5debug16bgmGetUnknown16cEv
+a40130,168,verified,src/snd/debug_commands_2.cpp,_ZN3snd5debug16bgmGetUnknown16cEv
 a401e0,168,verified,src/snd/debug_commands_2.cpp,_ZN3snd5debug16bgmGetUnknown168Ev
 a40290,248,verified,src/snd/debug_commands_2.cpp,_ZN3snd5debug15bgmPlayDataFromERKN2as6stringEf
 a40f80,176,verified,src/snd/debug_commands.cpp,_ZN3snd5debug6block0Ev
@@ -19276,8 +19276,8 @@ a41bf0,180,verified,src/snd/debug_commands.cpp,_ZN3snd5debug10restartEnvEv
 a41cb0,216,verified,src/snd/debug_commands_2.cpp,_ZN3snd5debug20envStartPitchCheckedEff
 a41d90,224,verified,src/snd/debug_commands_3.cpp,_ZN3snd5debug21envStartElementVolumeERKN2as6stringEf
 a41e70,224,verified,src/snd/debug_commands_3.cpp,_ZN3snd5debug19envRefreshPositionsERKN2as6stringEf
-a420f0,176,verified,src/snd/debug_commands_2.cpp,_ZN3snd5debug10ffPlayOverERKN2as6stringEf
-a421f0,176,verified,src/snd/debug_commands_2.cpp,_ZN3snd5debug13ffPlayPausingERKN2as6stringEf
+a420f0,248,verified,src/snd/debug_commands_2.cpp,_ZN3snd5debug10ffPlayOverERKN2as6stringEf
+a421f0,248,verified,src/snd/debug_commands_2.cpp,_ZN3snd5debug13ffPlayPausingERKN2as6stringEf
 a422f0,256,verified,src/snd/debug_commands_2.cpp,_ZN3snd5debug13ffPlayDuckingERKN2as6stringEff
 a423f0,248,verified,src/snd/debug_commands_2.cpp,_ZN3snd5debug6ffPlayERKN2as6stringEf
 a424f0,168,verified,src/snd/debug_commands_2.cpp,_ZN3snd5debug11ffIsPlayingEv
@@ -19997,7 +19997,7 @@ aeadb0,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonI
 aeadc0,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonINS_14GmapDisposFileELb0EE8FinalizeEv
 aeadd0,112,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game14GmapDisposFileD1Ev
 aeae40,144,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game14GmapDisposFileD0Ev
-aeaee0,804,verified,src/game/data/data_rows.cpp,_ZN4game8DataFileINS_15GmapDisposGroupENS_14GmapDisposDataEE5BuildEv
+aeaee0,892,verified,src/game/data/data_rows.cpp,_ZN4game8DataFileINS_15GmapDisposGroupENS_14GmapDisposDataEE5BuildEv
 aebb00,892,verified,src/game/data/data_rows.cpp,_ZN4game8DataFileINS_15GmapDisposGroupENS_14GmapDisposDataEE7UnbuildEv
 aebfa0,800,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_15GmapDisposGroupENS_14GmapDisposDataEE7RebuildEv
 aec300,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_15GmapDisposGroupENS_14GmapDisposDataEE9OnRebuildEv
@@ -32528,7 +32528,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 1127c90,140,verified,src/game/map/map_chip.cpp,_ZN4game3map13QuicksandChipD0Ev
 1127d20,312,verified,src/game/map/map_chip.cpp,_ZN4game3map8UnitChip5SetupERKNSt3__18weak_ptrIN2ui14LayoutAccessorEEEi
 1127e60,732,verified,src/game/map/map_chip.cpp,_ZN4game3map8UnitChip5PlaceERKNSt3__18weak_ptrIN2ui14LayoutAccessorEEERifff
-1128140,716,disputed,src/game/map/map_chip.cpp,_ZN4game3map8UnitChip6UpdateERKNSt3__18weak_ptrIN2ui14LayoutAccessorEEE
+1128140,716,verified,src/game/map/map_chip.cpp,_ZN4game3map8UnitChip6UpdateERKNSt3__18weak_ptrIN2ui14LayoutAccessorEEE
 11284c0,236,verified,src/game/map/map_chip.cpp,_ZN4game3map10PlayerChip7SetIconEPN2nn4ui2d4PaneE
 11288e0,332,verified,src/game/map/map_chip.cpp,_ZN4game3map15EnemyLeaderChip5SetupERKNSt3__18weak_ptrIN2ui14LayoutAccessorEEEi
 1128e50,308,verified,src/game/map/map_chip.cpp,_ZN4game3map15ThirdLeaderChip5SetupERKNSt3__18weak_ptrIN2ui14LayoutAccessorEEEi
@@ -33538,7 +33538,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 11c0200,532,verified,src/game/script/game_natives.cpp,_ZN4game6script4item13HasEquipSkillERKN2as6stringES5_
 11c0440,388,verified,src/game/script/game_natives.cpp,_ZN4game6script4item13IsMagicAttackERKN2as6stringE
 11c05d0,620,verified,src/game/script/schedule_natives.cpp,_ZN4game6script4item8ItemGainEiRKN2as6stringEbbS5_
-11c0b80,392,disputed,src/game/script/schedule_natives.cpp,_ZN4game6script4item8ItemGainERKN2as6stringES5_bbS5_
+11c0b80,392,verified,src/game/script/schedule_natives.cpp,_ZN4game6script4item8ItemGainERKN2as6stringES5_bbS5_
 11c14a0,872,verified,src/game/script/schedule_natives.cpp,_ZN4game6script4item8GoldGainEiRKN2as6stringE
 11c1820,972,verified,src/game/script/schedule_natives.cpp,_ZN4game6script4item10ItemChangeERKN2as6stringE
 11c1c10,44,verified,src/game/script/game_natives.cpp,_ZN4game6script4hero6GetPIDEv
@@ -37798,7 +37798,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 13995c0,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonINS_27FacilitySceneCameraWorkFileELb0EE8FinalizeEv
 13995d0,112,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game27FacilitySceneCameraWorkFileD1Ev
 1399640,144,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game27FacilitySceneCameraWorkFileD0Ev
-13996e0,996,verified,src/game/data/data_rows.cpp,_ZN4game8DataFileINS_28FacilitySceneCameraWorkArrayENS_27FacilitySceneCameraWorkDataEE5BuildEv
+13996e0,1036,verified,src/game/data/data_rows.cpp,_ZN4game8DataFileINS_28FacilitySceneCameraWorkArrayENS_27FacilitySceneCameraWorkDataEE5BuildEv
 139a1e0,1172,verified,src/game/data/data_rows.cpp,_ZN4game8DataFileINS_28FacilitySceneCameraWorkArrayENS_27FacilitySceneCameraWorkDataEE7UnbuildEv
 139a700,800,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_28FacilitySceneCameraWorkArrayENS_27FacilitySceneCameraWorkDataEE7RebuildEv
 139aa60,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_28FacilitySceneCameraWorkArrayENS_27FacilitySceneCameraWorkDataEE7OnBuildEv
@@ -37858,7 +37858,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 139df60,4,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonINS_20FacilitySceneMobFileELb0EE8FinalizeEv
 139df70,112,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game20FacilitySceneMobFileD1Ev
 139dfe0,144,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game20FacilitySceneMobFileD0Ev
-139e080,808,verified,src/game/data/data_rows.cpp,_ZN4game8DataFileINS_21FacilitySceneMobArrayENS_20FacilitySceneMobDataEE5BuildEv
+139e080,2456,verified,src/game/data/data_rows.cpp,_ZN4game8DataFileINS_21FacilitySceneMobArrayENS_20FacilitySceneMobDataEE5BuildEv
 139eba0,1024,verified,src/game/data/data_rows.cpp,_ZN4game8DataFileINS_21FacilitySceneMobArrayENS_20FacilitySceneMobDataEE7UnbuildEv
 139f040,800,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_21FacilitySceneMobArrayENS_20FacilitySceneMobDataEE7RebuildEv
 139f3a0,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_21FacilitySceneMobArrayENS_20FacilitySceneMobDataEE7OnBuildEv
@@ -47308,7 +47308,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 178aaf0,4,verified,src/game/menu/unit_grid_select_menu.cpp,_ZN4game4menu18UnitGridSelectMenu14InputUnknown18Ev
 178ab00,4,verified,src/game/menu/unit_grid_select_menu.cpp,_ZThn176_N4game4menu18UnitGridSelectMenu14InputUnknown18Ev
 178ab20,232,verified,src/game/menu/unit_grid_select_menu.cpp,_ZN4game4menu18UnitGridSelectMenu16SortUnitItemListEv
-178ac40,324,disputed,src/game/menu/unit_grid_select_menu.cpp,_ZN4game4menu18UnitGridSelectMenu10Unknown146Eib
+178ac40,324,verified,src/game/menu/unit_grid_select_menu.cpp,_ZN4game4menu18UnitGridSelectMenu10Unknown146Eib
 178ada0,204,verified,src/game/menu/unit_grid_select_menu.cpp,_ZN4game4menu18UnitGridSelectMenu10Unknown147Ev
 178aea0,212,verified,src/game/menu/unit_grid_select_menu.cpp,_ZN4game4menu18UnitGridSelectMenu10Unknown148Ev
 178afa0,428,verified,src/game/menu/unit_grid_select_menu.cpp,_ZN4game4menu18UnitGridSelectMenuD0Ev

@@ -2,6 +2,7 @@
 
 #include <stdint.h>
 
+#include "nn/os/synchronization.hpp"
 #include "nn/result.hpp"
 #include "nn/sf/sf_buffers.hpp"
 #include "nn/sf/shared_pointer.hpp"
@@ -55,6 +56,10 @@ class IPrepoService : public sf::IServiceObject {
     sf::Out<uint64_t> pOutSize, const sf::OutBuffer& outBuffer) = 0;
 };
 
+void Initialize();
+void Finalize();
+IPrepoService* GetPrepoService();
+
 }
 
 class ShimLibraryGlobal {
@@ -65,7 +70,12 @@ class ShimLibraryGlobal {
   }
 
   void Initialize();
+  void GetIpcSession();
   ipc::IPrepoService* GetSession();
+
+ private:
+  os::SdkMutexType m_Mutex;
+  ipc::IPrepoService* m_pSession;
 };
 
 }
