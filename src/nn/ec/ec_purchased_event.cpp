@@ -1,5 +1,7 @@
 #include "nn/ec/ec_purchased_event.hpp"
 
+#include "nn/aoc/aoc_add_on_content.hpp"
+#include "nn/aoc/aoc_service.hpp"
 #include "nn/aoc/initialization.hpp"
 #include "nn/diag/diag_abort.hpp"
 #include "nn/os/system_event_class.hpp"
@@ -8,12 +10,7 @@
 #include "nn/sf/shared_pointer.hpp"
 #include "nn/util/optional.hpp"
 
-namespace nn::aoc {
-
-Result SetRequiredAddOnContentsOnContentsAvailabilityTransition(
-  Span<const int> indices);
-
-namespace detail {
+namespace nn::aoc::detail {
 
 struct PurchasedProductInfo {
   uint64_t applicationId;
@@ -38,31 +35,6 @@ public:
   virtual Result PopPurchasedProductInfoWithUid(
     sf::Out<PurchasedProductInfo> info, const account::Uid& user) = 0;
 };
-
-// Only the purchase event factories of the add-on content manager are used.
-class IAddOnContentManager : public sf::IServiceObject {
-public:
-  virtual void Reserved2() = 0;
-  virtual void Reserved3() = 0;
-  virtual void Reserved4() = 0;
-  virtual void Reserved5() = 0;
-  virtual void Reserved6() = 0;
-  virtual void Reserved7() = 0;
-  virtual void Reserved8() = 0;
-  virtual void Reserved9() = 0;
-  virtual void Reserved10() = 0;
-  virtual void Reserved11() = 0;
-  virtual void Reserved12() = 0;
-  virtual void Reserved13() = 0;
-  virtual void Reserved14() = 0;
-  virtual Result CreateEcPurchasedEventManager(
-    const sf::Out<sf::SharedPointer<IPurchaseEventManager>>& manager) = 0;
-  virtual Result CreatePermanentEcPurchasedEventManager(
-    const sf::Out<sf::SharedPointer<IPurchaseEventManager>>& manager,
-    uint64_t processId) = 0;
-};
-
-}
 
 }
 
