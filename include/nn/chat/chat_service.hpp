@@ -45,10 +45,25 @@ struct ChatStartArgument {
 
 // The layer and native window live at fixed offsets of the camera storage.
 struct VirtualCameraType {
-  uint8_t reserved[0x180];
+  uint8_t displayStorage[0x100];
+  uint8_t endpointStorage[0x80];
   uint8_t layerStorage[0x400];
   void* nativeWindowHandle;
+  bool isInitialized;
 };
+
+namespace gsv {
+
+struct ImagePoolType;
+
+uint32_t GetImagePoolImageHandle(const ImagePoolType* pPool, uint32_t index);
+
+}
+
+// The video storages start with the image pool their frames come from.
+struct LocalCameraVideoType;
+
+struct RemoteCameraVideoType;
 
 class IUserShimScopedObject : public sf::IServiceObject {
  public:
@@ -89,6 +104,17 @@ class IUserShimScopedObject : public sf::IServiceObject {
     account::NetworkServiceAccountId id) = 0;
   virtual Result ReadAudioStream(sf::Out<uint64_t> pOutSize,
     const sf::OutBuffer& outBuffer, account::NetworkServiceAccountId id) = 0;
+};
+
+class IUserLayoutCustomizationShimScopedObject : public sf::IServiceObject {
+ public:
+  virtual void Reserved2() = 0;
+  virtual void Reserved3() = 0;
+  virtual void Reserved4() = 0;
+  virtual void Reserved5() = 0;
+  virtual void Reserved6() = 0;
+  virtual void Reserved7() = 0;
+  virtual Result EndFullScreenWithLocalCameraAvailableSection() = 0;
 };
 
 class IUserService : public sf::IServiceObject {
@@ -133,6 +159,8 @@ extern sf::SharedPointer<IUserService> g_UserService;
 extern os::SdkRecursiveMutex g_Mutex;
 extern os::SystemEvent g_ChattingEvent;
 extern sf::SharedPointer<IUserShimScopedObject> g_UserShimScopedObject;
+extern sf::SharedPointer<IUserLayoutCustomizationShimScopedObject>
+  g_UserLayoutCustomizationShimScopedObject;
 extern int g_InitializeCount;
 extern bool g_IsAudioStreamWorkBufferCreated;
 
@@ -144,6 +172,8 @@ class IVirtualCameraShimScopedObject : public sf::IServiceObject {
   virtual void Reserved3() = 0;
   virtual Result EnableVirtualCamera() = 0;
   virtual Result DisableVirtualCamera() = 0;
+  virtual void Reserved6() = 0;
+  virtual Result FinalizeVirtualCamera() = 0;
 };
 
 extern sf::SharedPointer<IVirtualCameraShimScopedObject>
@@ -152,6 +182,7 @@ extern sf::SharedPointer<IVirtualCameraShimScopedObject>
 void InitializeUserService();
 void FinalizeUserService();
 void InitializeUserSelectiveTalkShimScopedObject();
+void InitializeUserLayoutCustomizationShimScopedObject();
 void InitializeVirtualCameraService(sf::SharedPointer<IUserService> service);
 void FinalizeVirtualCameraService();
 Result ShowAppletForChatStart(const ChatStartArgument& argument);

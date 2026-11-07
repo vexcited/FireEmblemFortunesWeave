@@ -403,6 +403,32 @@ void StartLocalCameraStreaming() {
     g_UserShimScopedObject->StartLocalCameraStreaming());
 }
 
+void EndFullScreenWithLocalCameraAvailableSection() {
+  Lock lock(g_Mutex);
+  NN_ABORT_UNLESS(g_UserService != nullptr);
+  detail::InitializeUserLayoutCustomizationShimScopedObject();
+  NN_ABORT_UNLESS_RESULT_SUCCESS(g_UserLayoutCustomizationShimScopedObject
+    ->EndFullScreenWithLocalCameraAvailableSection());
+}
+
+uint32_t GetLocalCameraImageHandle(const LocalCameraVideoType* pVideo,
+  int index) {
+  Lock lock(g_Mutex);
+  AbortUnlessInitialized();
+  NN_ABORT_UNLESS_NOT_NULL(pVideo);
+  NN_ABORT_UNLESS(index >= 0);
+  return gsv::GetImagePoolImageHandle(
+    reinterpret_cast<const gsv::ImagePoolType*>(pVideo), index);
+}
+
+uint32_t GetRemoteCameraImageHandle(const RemoteCameraVideoType* pVideo,
+  int index) {
+  Lock lock(g_Mutex);
+  AbortUnlessInitialized();
+  return gsv::GetImagePoolImageHandle(
+    reinterpret_cast<const gsv::ImagePoolType*>(pVideo), index);
+}
+
 void StopLocalCameraStreaming() {
   Lock lock(g_Mutex);
   AbortUnlessInitialized();
