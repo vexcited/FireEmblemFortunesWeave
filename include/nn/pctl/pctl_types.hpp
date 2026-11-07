@@ -12,6 +12,7 @@ enum RestrictedScene : int32_t {};
 enum PairingState : int32_t {};
 enum PairingAccountState : int32_t {};
 
+struct ConnectionId;
 struct InquiryCode;
 struct ExemptApplicationInfo;
 struct FreeCommunicationApplicationInfo;

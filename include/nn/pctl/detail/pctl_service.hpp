@@ -1,5 +1,6 @@
 #pragma once
 
+#include "nn/account/account_types.hpp"
 #include "nn/ncm/ncm_ids.hpp"
 #include "nn/os/time.hpp"
 #include "nn/pctl/initialization.hpp"
@@ -80,7 +81,8 @@ class IParentalControlService : public sf::IServiceObject {
   virtual void Reserved49() = 0;
   virtual Result IsStereoVisionPermitted(sf::Out<bool> pOutValue) = 0;
   virtual void Reserved51() = 0;
-  virtual void Reserved52() = 0;
+  virtual Result IsCameraPermissionRequesting(sf::Out<bool> pOutIsRequesting,
+    const account::Uid& uid) = 0;
   virtual void Reserved53() = 0;
   virtual Result UnlockRestriction(const sf::InArray<char>& pinCode) = 0;
   virtual void Reserved55() = 0;
@@ -191,16 +193,26 @@ class IParentalControlService : public sf::IServiceObject {
   virtual void Reserved123() = 0;
   virtual void Reserved124() = 0;
   virtual void Reserved125() = 0;
-  virtual void Reserved126() = 0;
-  virtual void Reserved127() = 0;
-  virtual void Reserved128() = 0;
-  virtual void Reserved129() = 0;
-  virtual void Reserved130() = 0;
+  virtual Result BeginSystemChat(const account::Uid& uid,
+    const ConnectionId& connection,
+    const sf::InArray<account::NetworkServiceAccountId>& members) = 0;
+  virtual Result EndSystemChat(const account::Uid& uid,
+    const ConnectionId& connection) = 0;
+  virtual Result UpdateSystemChatMemberList(const account::Uid& uid,
+    const ConnectionId& connection,
+    const sf::InArray<account::NetworkServiceAccountId>& members) = 0;
+  virtual Result NotifyLocalCameraTurnOn(const account::Uid& uid,
+    const ConnectionId& connection) = 0;
+  virtual Result NotifyRemoteCameraTurnOn(const account::Uid& uid,
+    const ConnectionId& connection) = 0;
   virtual void Reserved131() = 0;
-  virtual void Reserved132() = 0;
-  virtual void Reserved133() = 0;
-  virtual void Reserved134() = 0;
-  virtual void Reserved135() = 0;
+  virtual Result IsCameraPermissionGranted(sf::Out<bool> pOutIsGranted,
+    const ConnectionId& connection) = 0;
+  virtual Result GetPairingAccountId(sf::Out<uint64_t> pOutId) = 0;
+  virtual Result GetVisibleRange(sf::Out<int32_t> pOutRange,
+    const ConnectionId& connection) = 0;
+  virtual Result DisableCameraPermissionForce(
+    const ConnectionId& connection) = 0;
   virtual void Reserved136() = 0;
   virtual void Reserved137() = 0;
   virtual Result GetErrorContextChangedEvent(
