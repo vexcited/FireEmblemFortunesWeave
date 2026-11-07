@@ -591,4 +591,32 @@ void Declaration::Swap(Declaration& other) {
   other.m_pSession = pSession;
 }
 
+
+// The service hands over the procedure, which needs no user here.
+#define NN_ACCOUNT_DEFINE_PROXY(name, Procedure, Interface) \
+  Result name(Procedure* pOutProcedure, const SessionId& sessionId) { \
+    sf::SharedPointer<Interface> procedure; \
+    const SessionId id = sessionId; \
+    NN_RESULT_DO(detail::GetAccountServiceObjectForAdministrator()->name( \
+      sf::Out<sf::SharedPointer<Interface>>(&procedure), id)); \
+    *pOutProcedure = Procedure(procedure.Detach()); \
+    return Result{0}; \
+  }
+
+NN_ACCOUNT_DEFINE_PROXY(
+  ProxyProcedureToIntroduceExternalNetworkServiceAccountForRegistration,
+  ExternalNetworkServiceAccountIntroducingProcedure,
+  nas::IOAuthProcedureForExternalNsa)
+NN_ACCOUNT_DEFINE_PROXY(ProxyProcedureToIntroduceExternalNetworkServiceAccount,
+  ExternalNetworkServiceAccountIntroducingProcedure,
+  nas::IOAuthProcedureForExternalNsa)
+NN_ACCOUNT_DEFINE_PROXY(
+  ProxyProcedureToAuthenticateOperatingUserForDeviceMigration,
+  DeviceMigrationOperatingUserAuthenticationProcedure,
+  nas::IOAuthProcedureForDeviceMigrationOperatingUserAuthentication)
+NN_ACCOUNT_DEFINE_PROXY(ProxyProcedureToDownloadForDeviceMigration,
+  DeviceMigrationDownloadProcedure,
+  nas::IOAuthProcedureForDeviceMigrationDownload)
+
+#undef NN_ACCOUNT_DEFINE_PROXY
 }

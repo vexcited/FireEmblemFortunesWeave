@@ -194,8 +194,22 @@ class IAccountServiceForAdministrator
     const Uid& uid) = 0;
   virtual Result SynchronizeNetworkServiceAccountsSnapshotAsync(
     const sf::Out<sf::SharedPointer<detail::IAsyncContext>>& pOutContext) = 0;
-  NN_ACCOUNT_RESERVED(55); NN_ACCOUNT_RESERVED(56); NN_ACCOUNT_RESERVED(57);
-  NN_ACCOUNT_RESERVED(58);
+  virtual Result ProxyProcedureToIntroduceExternalNetworkServiceAccount(
+    const sf::Out<sf::SharedPointer<nas::IOAuthProcedureForExternalNsa>>& pOut,
+    const SessionId& sessionId) = 0;
+  virtual Result
+    ProxyProcedureToIntroduceExternalNetworkServiceAccountForRegistration(
+      const sf::Out<sf::SharedPointer<nas::IOAuthProcedureForExternalNsa>>&
+        pOut,
+      const SessionId& sessionId) = 0;
+  virtual Result ProxyProcedureToAuthenticateOperatingUserForDeviceMigration(
+    const sf::Out<sf::SharedPointer<
+      nas::IOAuthProcedureForDeviceMigrationOperatingUserAuthentication>>& pOut,
+    const SessionId& sessionId) = 0;
+  virtual Result ProxyProcedureToDownloadForDeviceMigration(
+    const sf::Out<sf::SharedPointer<
+      nas::IOAuthProcedureForDeviceMigrationDownload>>& pOut,
+    const SessionId& sessionId) = 0;
   virtual Result SuspendBackgroundDaemon(
     const sf::Out<sf::SharedPointer<detail::ISessionObject>>& pOutSession) = 0;
   virtual Result CreateDeviceMigrationUserExportRequest(
