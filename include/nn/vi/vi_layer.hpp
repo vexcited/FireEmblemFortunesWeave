@@ -24,7 +24,42 @@ struct EndpointType {
   alignas(8) uint8_t storage[0x80];
 };
 
-struct DisplayType;
+struct DisplayType {
+  alignas(8) uint8_t storage[0x100];
+};
+
+struct VsyncEventType {
+  alignas(8) uint8_t storage[0x40];
+};
+
+struct RefreshRateEventType {
+  alignas(8) uint8_t storage[0x40];
+};
+
+struct HdrStatusEventType {
+  alignas(8) uint8_t storage[0x40];
+};
+
+struct HdrPaperWhiteEventType {
+  alignas(8) uint8_t storage[0x40];
+};
+
+struct BufferMaxResolutionEventType {
+  alignas(8) uint8_t storage[0x40];
+};
+
+struct ModeCapabilityEventType {
+  alignas(8) uint8_t storage[0x40];
+};
+
+struct AvailableRefreshRatesEventType {
+  alignas(8) uint8_t storage[0x40];
+};
+
+struct AvailableRefreshRate {
+  int32_t rate;
+  uint32_t data[13];
+};
 
 }
 
@@ -35,11 +70,18 @@ enum HdrContentGamut : uint8_t {};
 enum HdrToneMapping : uint8_t {};
 
 struct FrameInfo;
-struct AvailableRefreshRate;
-struct BufferMaxResolution;
 
 struct RefreshRate {
   int32_t value;
+};
+
+struct BufferMaxResolution {
+  int32_t value;
+};
+
+struct AvailableRefreshRate {
+  RefreshRate rate;
+  uint32_t data[13];
 };
 
 enum HdrOutputFormat : int32_t {};
@@ -156,11 +198,60 @@ class DefaultDisplay : public Display {
   Result QueryHdrPaperWhite(uint16_t* pOutLuminance) const;
   Result QueryBufferMaxResolution(BufferMaxResolution* pOutResolution) const;
   Result QueryVrrSupported(bool* pOutIsSupported) const;
+  Result DuplicateRefreshRateEvent(os::SystemEventType* pOutEvent);
+  Result DuplicateHdrStatusEvent(os::SystemEventType* pOutEvent);
+  const vi2::DisplayType* Get() const;
+
+  bool TryEnsureInternalRefreshRateEventInitialized() const;
+  bool TryEnsureInternalHdrStatusEventInitialized() const;
+  bool TryEnsureInternalHdrPaperWhiteEventInitialized() const;
+  bool TryEnsureInternalBufferMaxResolutionEventInitialized() const;
+  bool TryEnsureInternalModeCapabilityEventInitialized() const;
+  bool TryEnsureInternalAvailableRefreshRatesEventInitialized();
 
  protected:
   Result OnOpen(const char* pName) override;
   void OnClose() override;
+
+ private:
+  static constexpr int AvailableRefreshRateCountMax = 2;
+
+  vi2::DisplayType m_Display;
+  vi2::VsyncEventType m_VsyncEvent;
+  bool m_IsVsyncEventInitialized;
+  vi2::RefreshRateEventType m_RefreshRateEvent;
+  bool m_IsRefreshRateEventInitialized;
+  vi2::HdrStatusEventType m_HdrStatusEvent;
+  bool m_IsHdrStatusEventInitialized;
+
+  // The queries keep their last answer until the display signals a change.
+  mutable os::MutexType m_Mutex;
+  mutable bool m_IsInternalRefreshRateEventInitialized;
+  mutable vi2::RefreshRateEventType m_InternalRefreshRateEvent;
+  mutable RefreshRate m_RefreshRate;
+  mutable bool m_IsVariableRefreshRate;
+  mutable bool m_IsInternalHdrStatusEventInitialized;
+  mutable vi2::HdrStatusEventType m_InternalHdrStatusEvent;
+  mutable bool m_IsHdrEnabled;
+  mutable HdrOutputFormat m_HdrOutputFormat;
+  mutable uint16_t m_HdrLuminance;
+  mutable bool m_IsInternalHdrPaperWhiteEventInitialized;
+  mutable vi2::HdrPaperWhiteEventType m_InternalHdrPaperWhiteEvent;
+  mutable uint16_t m_HdrPaperWhite;
+  mutable bool m_IsInternalBufferMaxResolutionEventInitialized;
+  mutable vi2::BufferMaxResolutionEventType m_InternalBufferMaxResolutionEvent;
+  mutable BufferMaxResolution m_BufferMaxResolution;
+  mutable bool m_IsInternalModeCapabilityEventInitialized;
+  mutable vi2::ModeCapabilityEventType m_InternalModeCapabilityEvent;
+  mutable bool m_IsVrrSupported;
+  uint8_t m_AvailableRefreshRateCount;
+  vi2::AvailableRefreshRate
+    m_AvailableRefreshRates[AvailableRefreshRateCountMax];
+  bool m_IsInternalAvailableRefreshRatesEventInitialized;
+  vi2::AvailableRefreshRatesEventType m_InternalAvailableRefreshRatesEvent;
 };
+
+static_assert(sizeof(DefaultDisplay) == 0x450);
 
 }
 
