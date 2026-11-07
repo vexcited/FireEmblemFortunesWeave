@@ -79,7 +79,7 @@ class RingLifo {
       }
       const int latest =
         static_cast<int>(m_Count.load(std::memory_order_acquire));
-      if (readCount > latest) {
+      if (readCount <= latest) {
         readCount = std::min(count, latest);
       }
     }
