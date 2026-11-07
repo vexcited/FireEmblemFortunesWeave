@@ -1100,8 +1100,21 @@ struct SituationData : DataState<SituationState> {
 static_assert(sizeof(SituationData) == 0x60);
 
 
-struct GmapExploreData : DataState<FlagCondition> {
-  unsigned char unknown_20[0x30];
+// The conditions of an exploration and the flag of the item it finds.
+struct GmapExploreState : FlagCondition {
+  uint32_t flag;
+};
+
+struct GmapExploreData : DataState<GmapExploreState> {
+  void Build();
+
+  // A row without a key belongs to the closest keyed row above it.
+  int GetGroup() const;
+
+  unsigned char unknown_20[0x8];
+  DataRef<ItemData> item_28;
+  unsigned char unknown_38[0x8];
+  NameList conditions;
 };
 
 static_assert(sizeof(GmapExploreData) == 0x50);

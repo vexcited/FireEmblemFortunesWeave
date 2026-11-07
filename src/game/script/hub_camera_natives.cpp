@@ -141,7 +141,7 @@ SpotCameraData GetSpotCameraData() {
 
 void SpotCameraStart(SpotCameraData& data) {
   OpenBlock();
-  std::shared_ptr<Camera::SpotParam> param(new Camera::SpotParam());
+  std::shared_ptr<Camera::SpotParam> param(new Camera::SpotParam);
   param->position.SetX(data.px);
   param->position.SetY(data.py);
   param->position.SetZ(data.pz);

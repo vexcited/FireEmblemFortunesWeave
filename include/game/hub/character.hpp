@@ -299,7 +299,7 @@ public:
 private:
   uint8_t unknown_00_[0x10];
   StateMachine<WarperContext> state_machine_;
-  uint8_t unknown_72_[0x2de];
+  uint8_t unknown_78_[0x2d8];
   bool locked_;
 };
 
@@ -448,10 +448,8 @@ private:
 
 // Where a character looks, a joint of another model or a position.
 struct LookTarget {
-  LookTarget() : speed(0.0f), unknown_04(false) {}
-
-  float speed;
-  bool unknown_04;
+  float speed = 0.0f;
+  bool unknown_04 = false;
   std::optional<uint32_t> joint;
   std::optional<math::Vec3> pos;
   std::optional<float> unknown_30;
@@ -459,7 +457,7 @@ struct LookTarget {
 
 class CharacterLookAt {
 public:
-  static constexpr float kTurnSpeed = 6.2832f;
+  static constexpr float kTurnSpeed = 6.28318f;
 
   void ClearKeep() {
     script_.reset();
@@ -469,7 +467,7 @@ public:
   // The look the scripts set turns the rate of a full turn a second.
   void LookTo(const math::Vec3& pos, float rate) {
     keep_ = false;
-    script_.emplace();
+    script_.emplace(LookTarget());
     script_->speed = rate * kTurnSpeed;
     script_->pos = pos;
     mover_->GetTransform()->ResetLook();
@@ -477,7 +475,7 @@ public:
 
   void LookTo(uint32_t joint, float rate) {
     keep_ = false;
-    script_.emplace();
+    script_.emplace(LookTarget());
     script_->speed = rate * kTurnSpeed;
     script_->joint = joint;
     mover_->GetTransform()->ResetLook();

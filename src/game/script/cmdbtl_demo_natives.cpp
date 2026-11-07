@@ -135,7 +135,9 @@ namespace {
 }
 
 [[gnu::always_inline]] inline ProcInst* GetCurrentProc() {
-  return g_instance<game::cmdbtl::CmdBtlScript>->GetCurrentProc();
+  const game::cmdbtl::CmdBtlScript* script =
+    g_instance<game::cmdbtl::CmdBtlScript>;
+  return script != nullptr ? script->GetCurrentProc() : nullptr;
 }
 
 [[gnu::always_inline]] inline game::sound::Handle PlaySe(const char* label) {

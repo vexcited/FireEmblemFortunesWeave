@@ -36,7 +36,7 @@ enum class PlatformIdForSaveDataSizeCalculation {
 
 class SaveDataTransferSizeCalculator {
 public:
-  Result GetFreeSpaceSize(int64_t* outSize, SaveDataSpaceId spaceId);
+  static Result GetFreeSpaceSize(int64_t* outSize, SaveDataSpaceId spaceId);
 
   static Result QuerySaveDataExportSize(int64_t* outSize,
     const SaveDataInfo& info);
@@ -56,7 +56,7 @@ class SizeCalculatorForSaveDataMover {
 public:
   void Add(const SaveDataInfo& info);
   int64_t GetTotalSize();
-  Result GetFreeSpaceSize(int64_t* outSize, SaveDataSpaceId spaceId);
+  static Result GetFreeSpaceSize(int64_t* outSize, SaveDataSpaceId spaceId);
 
 private:
   int64_t m_TotalSize;

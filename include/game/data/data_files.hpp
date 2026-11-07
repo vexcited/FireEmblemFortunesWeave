@@ -7,6 +7,7 @@
 
 #include "game/data/data_types.hpp"
 #include "game/singleton_data_file.hpp"
+#include "game/util/format.hpp"
 
 #pragma GCC visibility push(hidden)
 
@@ -139,6 +140,77 @@ protected:
   void OnBuild() override;
   void OnUnbuild() override {}
 };
+
+inline int GmapExploreData::GetGroup() const {
+  int group = static_cast<int>(key.hash);
+
+  if (group == 0) {
+    const GmapExploreFile* file = GmapExploreFile::GetInstance();
+
+    for (int i = index; i >= 0; --i) {
+      group = static_cast<int>(file->At(i)->key.hash);
+
+      if (group != 0) {
+        break;
+      }
+    }
+  }
+
+  return group;
+}
+
+// Link time optimization inlined HashString32 here and dropped its null
+// check, the formatted text is never null.
+[[gnu::always_inline]] inline uint32_t HashFormatted32(const char* text) {
+  uint32_t hash = 0x811c9dc5;
+  const uint32_t prime = 0x1000193;
+  int length = strlen(text);
+  int i = 0;
+
+  for (; i + 7 < length; i += 8) {
+    hash = (hash * prime) ^ static_cast<uint8_t>(text[i]);
+    hash = (hash * prime) ^ static_cast<uint8_t>(text[i + 1]);
+    hash = (hash * prime) ^ static_cast<uint8_t>(text[i + 2]);
+    hash = (hash * prime) ^ static_cast<uint8_t>(text[i + 3]);
+    hash = (hash * prime) ^ static_cast<uint8_t>(text[i + 4]);
+    hash = (hash * prime) ^ static_cast<uint8_t>(text[i + 5]);
+    hash = (hash * prime) ^ static_cast<uint8_t>(text[i + 6]);
+    hash = (hash * prime) ^ static_cast<uint8_t>(text[i + 7]);
+  }
+
+  for (; i < length; ++i) {
+    hash = (hash * prime) ^ static_cast<uint8_t>(text[i]);
+  }
+
+  return hash != 0 ? hash : ~0u;
+}
+
+// The flag is named by the group and the item name without its prefix.
+inline void GmapExploreData::Build() {
+  item_28.Resolve();
+
+  if (state == nullptr) {
+    state = new GmapExploreState();
+  }
+
+  uint32_t flag = 0;
+
+  if (const ItemData* item = item_28.data_) {
+    const int group = GetGroup();
+    const char* name = item->key.text;
+
+    if (name != nullptr) {
+      if (const char* suffix = strchr(name, '_')) {
+        name = suffix + 1;
+      }
+    }
+
+    flag = HashFormatted32(util::Format("%d_%s", group, name));
+  }
+
+  state->flag = flag;
+  state->Set(conditions);
+}
 
 }
 

@@ -26,7 +26,8 @@ namespace nandroid {
 // The SDK allocates from the movie heap and frees through a function deleter.
 template <class T>
 std::unique_ptr<T[], std::function<void(T*)>> heapbuffer(size_t size) {
-    return std::unique_ptr<T[], std::function<void(T*)>>(new T[size],
+    return std::unique_ptr<T[], std::function<void(T*)>>(
+            new (std::nothrow) T[size],
             [](T* p) { operator delete[](p); });
 }
 

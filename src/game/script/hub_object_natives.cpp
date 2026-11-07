@@ -265,7 +265,9 @@ math::Vec3 GetSmoothPoint3(const uint64_t id, const float rate01) {
   const game::zview::SmoothPath* path =
     g_instance<ObjectManager>->FindSmoothPoint3(id);
   if (path != nullptr && path->count() >= 2) {
-    return path->Get(rate01);
+    // The original copies the point out of a temporary.
+    const math::Vec3& point = path->Get(rate01);
+    return point;
   }
   return math::Vec3::Zero();
 }

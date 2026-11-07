@@ -149,7 +149,9 @@ template<RunKind kind>
   const int runKind = kind == RunKind::kPost ? 3 : 2;
   ScriptContext* owner;
   if (classObj != nullptr) {
-    asITypeInfo* type = g_engine->GetTypeInfoById(classObj->GetTypeId());
+    // The original passes the type id to the lookup by index.
+    const int typeId = classObj->GetTypeId();
+    asITypeInfo* type = g_engine->GetObjectTypeByIndex(typeId);
     const char* ns = type->GetNamespace();
     const char* name = type->GetName();
     if (g_script_manager->FindMethod(target.Get(), ns, name,

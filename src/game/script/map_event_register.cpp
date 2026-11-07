@@ -247,22 +247,24 @@ void RegisterBattle(Timing timing, const as::string& funcName,
   if (!AddArgument(desc, arg)) {
     return;
   }
-  evt::EventObjectBase* event;
   switch (timing) {
     case Timing::kBattleBefore:
-      event = new MapBattleBeforeEvent(desc);
+      g_map_event_manager->Add(new MapBattleBeforeEvent(desc));
       break;
     case Timing::kBattleTalk:
-      event = new MapBattleTalkEvent(desc);
+      g_map_event_manager->Add(new MapBattleTalkEvent(desc));
       break;
     case Timing::kBattleAfter:
-      event = new MapBattleAfterEvent(desc);
+      g_map_event_manager->Add(new MapBattleAfterEvent(desc));
       break;
     case Timing::kBattleComplete:
-      event = new MapBattleCompleteEvent(desc);
+      g_map_event_manager->Add(new MapBattleCompleteEvent(desc));
       break;
+    // The original builds an event for every timing, it assumes one of
+    // the four battle timings.
+    default:
+      __builtin_unreachable();
   }
-  g_map_event_manager->Add(event);
 }
 
 void RegisterTalk(const as::string& funcName, const as::string& fromPid,

@@ -88,8 +88,8 @@ public:
   void StartSpot(std::shared_ptr<SpotParam> param, bool immediate);
   void EndSpot(const SpotEndParam& param);
   void ResetState(bool immediate);
-  void BeginFirstPerson();
-  void EndFirstPerson();
+  void BeginFirstPerson(const std::optional<float>& blendSec);
+  void EndFirstPerson(const std::optional<float>& blendSec);
 
   const gfx::render::Camera& GetView() const {
     return view_;
@@ -135,7 +135,7 @@ public:
     if (!first_person_) {
       first_person_blend_ = blendSec;
       first_person_ = true;
-      BeginFirstPerson();
+      BeginFirstPerson(blendSec);
     }
   }
 
@@ -143,7 +143,7 @@ public:
     if (first_person_) {
       first_person_ = false;
       first_person_blend_ = blendSec;
-      EndFirstPerson();
+      EndFirstPerson(blendSec);
     }
   }
 

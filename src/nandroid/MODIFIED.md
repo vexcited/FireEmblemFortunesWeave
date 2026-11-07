@@ -12,7 +12,7 @@ Modifications common to every file.
 - `operator new[]` uses the movie heap allocator without an alignment argument.
 - `nandroid/Platform.h` provides the bionic `off64_t`, `__BEGIN_DECLS`, `__END_DECLS`, `__INTRODUCED_IN` and `__ANDROID_API__`, and replaces `<sys/cdefs.h>` in the NDK headers.
   It also makes `ntohl` an inline byte swap, as the SDK swaps 32 bit values inline but calls `ntohs`, `htonl` and `htons`.
-- `heapbuffer` in `ExtractorUtils.h` allocates with `new T[size]` and frees through a `std::function` deleter.
+- `heapbuffer` in `ExtractorUtils.h` allocates with `new (std::nothrow) T[size]` and frees through a `std::function` deleter.
 - `include/nandroid/media/DataSource.h`, `DataSourceBase.h` and `MediaSource.h` stand for the AOSP symbolic links into `media/stagefright`.
 - Relative includes of the mp4 extractor point to `src/nandroid/libstagefright/include` and to the local headers.
 
