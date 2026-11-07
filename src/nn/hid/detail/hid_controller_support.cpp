@@ -3,6 +3,7 @@
 
 #include "nn/applet/applet_api.hpp"
 #include "nn/hid/detail/hid_abort.hpp"
+#include "nn/hid/hid_controller_support.hpp"
 #include "nn/la/la_common_arguments.hpp"
 
 namespace nn::la {
@@ -16,48 +17,6 @@ void PopFromOutChannel(applet::LibraryAppletHandle handle, void* buffer,
 
 }
 
-namespace nn::hid {
-
-struct ControllerSupportArg {
-  uint8_t _storage[1072];
-};
-
-struct ControllerSupportResultInfo {
-  int32_t playerCount;
-  uint32_t selectedId;
-};
-
-struct ControllerFirmwareUpdateArg {
-  uint8_t _storage[4];
-};
-
-}
-
-namespace nn::hid::system {
-
-enum ControllerSupportMode : uint8_t {
-  ControllerSupportMode_ShowControllerSupport,
-  ControllerSupportMode_Reserved,
-  ControllerSupportMode_ShowControllerFirmwareUpdate,
-  ControllerSupportMode_Reserved3,
-  ControllerSupportMode_ShowControllerKeyRemapping,
-};
-
-struct ControllerSupportArgPrivate {
-  uint32_t argPrivateSize;
-  uint32_t argSize;
-  bool isSystem;
-  bool isPlayStartupSound;
-  ControllerSupportMode mode;
-  uint8_t reserved[9];
-};
-
-struct ControllerKeyRemappingArg {
-  uint8_t _storage[16];
-};
-
-}
-
 namespace nn::hid::detail {
 
 namespace {
@@ -68,14 +27,7 @@ constexpr applet::LibraryAppletMode LibraryAppletMode_AllForeground =
   static_cast<applet::LibraryAppletMode>(0);
 constexpr uint32_t CommonArgumentsVersion = 9;
 
-constexpr Result ResultControllerSupportCanceled = {0x183aca};
-constexpr Result ResultControllerSupportNotSupportedNpadStyle = {0x183cca};
 constexpr Result ResultControllerFirmwareUpdateFailed = {0x1902ca};
-
-struct ControllerSupportResultInfoInternal {
-  ControllerSupportResultInfo info;
-  int32_t result;
-};
 
 struct ControllerSupportResultInternal {
   uint8_t reserved[8];
