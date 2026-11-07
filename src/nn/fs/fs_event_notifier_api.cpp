@@ -12,6 +12,11 @@ constexpr Result ResultAllocationMemoryFailedInEventNotifier() {
   return detail::MakeResult(3225);
 }
 
+// The awaken and system data update notifiers report their own result.
+constexpr Result ResultAllocationMemoryFailedInNewEventNotifier() {
+  return detail::MakeResult(3420);
+}
+
 constexpr Result ResultAllocationMemoryFailedInAccessFailureDetection() {
   return detail::MakeResult(3245);
 }
@@ -46,7 +51,7 @@ Result OpenGameCardAwakenReadyEventNotifier(
     new detail::EventNotifierObjectAdapter(static_cast<EventNotifierObject&&>(
       notifier)));
   NN_FS_RESULT_THROW_UNLESS_WITH_ABORT_CHECK(*outNotifier != nullptr,
-    ResultAllocationMemoryFailedInEventNotifier());
+    ResultAllocationMemoryFailedInNewEventNotifier());
   return ResultSuccess();
 }
 
@@ -61,7 +66,7 @@ Result OpenSdCardAwakenReadyEventNotifier(
     new detail::EventNotifierObjectAdapter(static_cast<EventNotifierObject&&>(
       notifier)));
   NN_FS_RESULT_THROW_UNLESS_WITH_ABORT_CHECK(*outNotifier != nullptr,
-    ResultAllocationMemoryFailedInEventNotifier());
+    ResultAllocationMemoryFailedInNewEventNotifier());
   return ResultSuccess();
 }
 
@@ -76,7 +81,7 @@ Result OpenSystemDataUpdateEventNotifier(
     new detail::EventNotifierObjectAdapter(static_cast<EventNotifierObject&&>(
       notifier)));
   NN_FS_RESULT_THROW_UNLESS_WITH_ABORT_CHECK(*outNotifier != nullptr,
-    ResultAllocationMemoryFailedInEventNotifier());
+    ResultAllocationMemoryFailedInNewEventNotifier());
   return ResultSuccess();
 }
 
