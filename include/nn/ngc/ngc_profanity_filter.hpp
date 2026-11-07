@@ -13,11 +13,27 @@ namespace nn::ngc {
 
 namespace detail {
 
+struct ProfanityFilterOption {
+  int32_t skipAtSignCheck;
+  int32_t maskMode;
+  int32_t normalizationOption;
+  uint32_t languages;
+  uint32_t reserved;
+};
+
 class IService : public sf::IServiceObject {
  public:
   virtual void Reserved2() = 0;
   virtual void Reserved3() = 0;
   virtual Result GetContentVersion(sf::Out<uint32_t> pOutVersion) = 0;
+  virtual void Reserved5() = 0;
+  virtual void Reserved6() = 0;
+  virtual void Reserved7() = 0;
+  virtual Result Check(sf::Out<uint32_t> pOutCheck, const sf::InBuffer& word,
+    uint32_t patterns, const ProfanityFilterOption& option) = 0;
+  virtual Result Mask(sf::Out<int32_t> pOutCount, const sf::OutBuffer& text,
+    const sf::InBuffer& source, uint32_t patterns,
+    const ProfanityFilterOption& option) = 0;
 };
 
 sf::SharedPointer<IService> CreateServiceByHipc();
@@ -86,6 +102,7 @@ class ProfanityFilter : public ProfanityFilterBase {
     size_t wordCount) const;
   Result CheckArgumentsText(const char16_t* pText) const;
   Result CheckArgumentsText(const char* pText) const;
+  detail::ProfanityFilterOption MakeOption() const;
 
   bool m_CheckDesiredLanguage;
   bool m_IsInitialized;
