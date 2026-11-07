@@ -281,13 +281,14 @@ Result FrontendImpl::CreateTimestampRecorder(
       return result;
     }
 
-    m_TimestampRecorderUsedBits.fetch_and(~1u << maxIndex,
+    m_TimestampRecorderUsedBits[0].fetch_and(~1u << maxIndex,
       std::memory_order_release);
     m_IsTimestampRecorderInitialized = 1;
   }
 
   ++m_TimestampRecorderCount;
-  uint32_t bits = m_TimestampRecorderUsedBits.load(std::memory_order_relaxed);
+  uint32_t bits = m_TimestampRecorderUsedBits[0].load(
+    std::memory_order_relaxed);
   uint32_t id;
 
   for (;;) {
@@ -299,7 +300,7 @@ Result FrontendImpl::CreateTimestampRecorder(
 
     id = __builtin_ctz(~bits);
 
-    if (m_TimestampRecorderUsedBits.compare_exchange_strong(bits,
+    if (m_TimestampRecorderUsedBits[0].compare_exchange_strong(bits,
       bits | (1u << id), std::memory_order_acquire)) {
       break;
     }
@@ -329,7 +330,7 @@ void FrontendImpl::DestroyTimestampRecorder(
   const TimestampRecorderFlusher flush = {recorder};
   NN_ABORT_UNLESS_RESULT_SUCCESS(flush(this));
   m_TimestampRecorderMutex.Lock();
-  m_TimestampRecorderUsedBits.fetch_and(~(1u << id),
+  m_TimestampRecorderUsedBits[id / 32].fetch_and(~(1u << id % 32),
     std::memory_order_release);
   --m_TimestampRecorderCount;
   m_TimestampRecorderMutex.Unlock();

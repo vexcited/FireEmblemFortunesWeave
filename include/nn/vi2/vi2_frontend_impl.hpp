@@ -354,7 +354,8 @@ public:
   os::SdkMutexType m_TimestampRecorderMutex;
   uint8_t m_IsTimestampRecorderInitialized;
   uint32_t m_TimestampRecorderCount;
-  std::atomic<uint32_t> m_TimestampRecorderUsedBits;
+  // Indexed by word, the recorder ids all fit the first one.
+  std::atomic<uint32_t> m_TimestampRecorderUsedBits[1];
 };
 
 void SetUpFrontend(Frontend* pFrontend);
