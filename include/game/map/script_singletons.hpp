@@ -194,6 +194,10 @@ public:
     return reinterpret_cast<const TrickData*>(tricks_ + kTrickSize * index);
   }
 
+  TrickData* Find(int x, int z) {
+    return const_cast<TrickData*>(std::as_const(*this).Find(x, z));
+  }
+
   const TrickData* Get(int index) const {
     return reinterpret_cast<const TrickData*>(tricks_ + kTrickSize * index);
   }
@@ -218,6 +222,10 @@ private:
 class Trick : public SerializeSingleton<Trick> {
 public:
   const TrickMap* GetMap() const {
+    return map_;
+  }
+
+  TrickMap* GetMap() {
     return map_;
   }
 

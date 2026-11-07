@@ -135,11 +135,11 @@ public:
     return &poss_[index];
   }
 
-  uint8_t GetLife() const override {
+  int GetLife() const override {
     return life_;
   }
 
-  uint8_t GetMaxLife() const override {
+  int GetMaxLife() const override {
     return max_life_;
   }
 

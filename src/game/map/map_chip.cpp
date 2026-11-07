@@ -148,7 +148,7 @@ class UnitChip : public MapChip {
 public:
   void Update(const std::weak_ptr<ui::LayoutAccessor>& layout) override;
 
-  virtual int GetForce() const {
+  virtual uint8_t GetForce() const {
     return 9;
   }
 
@@ -474,7 +474,7 @@ public:
 
 class PlayerChip : public UnitChip {
 public:
-  int GetForce() const override {
+  uint8_t GetForce() const override {
     return 0;
   }
 
@@ -497,7 +497,7 @@ public:
 
 class AllyChip : public UnitChip {
 public:
-  int GetForce() const override {
+  uint8_t GetForce() const override {
     return 3;
   }
 
@@ -520,7 +520,7 @@ public:
 
 class GuestChip : public UnitChip {
 public:
-  int GetForce() const override {
+  uint8_t GetForce() const override {
     return 0;
   }
 
@@ -543,7 +543,7 @@ public:
 
 class EnemyChip : public UnitChip {
 public:
-  int GetForce() const override {
+  uint8_t GetForce() const override {
     return 1;
   }
 
@@ -562,7 +562,7 @@ protected:
 
 class ThirdChip : public UnitChip {
 public:
-  int GetForce() const override {
+  uint8_t GetForce() const override {
     return 2;
   }
 
@@ -581,7 +581,7 @@ protected:
 
 class EnemyLeaderChip : public UnitChip {
 public:
-  int GetForce() const override {
+  uint8_t GetForce() const override {
     return 1;
   }
 
@@ -612,7 +612,7 @@ public:
 
 class ThirdLeaderChip : public UnitChip {
 public:
-  int GetForce() const override {
+  uint8_t GetForce() const override {
     return 2;
   }
 

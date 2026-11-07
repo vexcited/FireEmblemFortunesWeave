@@ -1,7 +1,9 @@
+#include <algorithm>
 #include <vector>
 
 #include "game/data/data_files.hpp"
 #include "game/map/command_item_menu_base.hpp"
+#include "game/map/cursor.hpp"
 #include "game/map/image.hpp"
 #include "game/map/map_object.hpp"
 #include "game/map/script_singletons.hpp"
@@ -781,6 +783,238 @@ void SetActive(const as::string& objName, bool isActive) {
     (g_object_records != nullptr && g_object_records->Contains(name)))) {
     history->MarkChanged(0x2000);
   }
+}
+
+#pragma GCC visibility pop
+
+}
+
+// The trick natives below read the tricks and the history through the
+// global offset table. The visibility is explicit, the hidden classes would
+// hide them.
+[[gnu::visibility("default")]] extern game::map::Trick* g_trick;
+[[gnu::visibility("default")]] extern game::map::history::Impl*
+  g_map_history;
+
+namespace game::script::map::terrain {
+
+#pragma GCC visibility push(hidden)
+
+namespace {
+
+using ::game::map::TrickData;
+
+[[gnu::always_inline]] inline TrickData* FindTrickAt(int x, int z) {
+  return g_trick->GetMap()->Find(x, z);
+}
+
+// A change of a trick is saved with the map and its tricks.
+[[gnu::always_inline]] inline void MarkTrickChanged() {
+  ::game::map::history::Impl* history = g_map_history;
+  if (history != nullptr && history->IsRecording()) {
+    history->MarkChanged(0x402);
+  }
+}
+
+}
+
+void SetTrickEnable(int x, int z, bool isEnable) {
+  if (TrickData* trick = FindTrickAt(x, z)) {
+    trick->SetEnable(isEnable);
+    MarkTrickChanged();
+  }
+}
+
+// Done tricks carry flag 4.
+bool IsTrickDone(int x, int z) {
+  const TrickData* trick = FindTrickAt(x, z);
+  return trick != nullptr && trick->HasFlag(::game::map::TrickFlags{4});
+}
+
+int GetOccupation(int x, int z) {
+  const TrickData* trick = FindTrickAt(x, z);
+  return trick != nullptr ? trick->GetStatus() : -1;
+}
+
+void SetOccupation(int x, int z, int force) {
+  if (TrickData* trick = FindTrickAt(x, z)) {
+    trick->SetStatus(force);
+    MarkTrickChanged();
+  }
+}
+
+void SetPhase(int x, int z, int forceType) {
+  if (TrickData* trick = FindTrickAt(x, z)) {
+    trick->SetForce(forceType);
+    MarkTrickChanged();
+  }
+}
+
+int GetHp(int x, int z) {
+  const TrickData* trick = FindTrickAt(x, z);
+  return trick != nullptr ? trick->GetLife() : -1;
+}
+
+void SetHp(int x, int z, int hp) {
+  if (TrickData* trick = FindTrickAt(x, z)) {
+    trick->SetLife(hp);
+    MarkTrickChanged();
+  }
+}
+
+int GetMaxHp(int x, int z) {
+  const TrickData* trick = FindTrickAt(x, z);
+  return trick != nullptr ? trick->GetMaxLife() : -1;
+}
+
+void SetMaxHp(int x, int z, int maxHp) {
+  if (TrickData* trick = FindTrickAt(x, z)) {
+    trick->SetMaxLife(maxHp);
+    MarkTrickChanged();
+  }
+}
+
+void SetExclude(int x, int z, bool isExclude) {
+  if (TrickData* trick = FindTrickAt(x, z)) {
+    trick->Unknown48(isExclude);
+    MarkTrickChanged();
+  }
+}
+
+#pragma GCC visibility pop
+
+}
+
+[[gnu::visibility("default")]] extern game::map::Mind* g_mind;
+
+namespace game::script::map::history {
+
+#pragma GCC visibility push(hidden)
+
+// Only the unit acting in the mind gets its record reserved.
+void ReserveToRecordMind(int unitIndex) {
+  if (unitIndex < 0) {
+    return;
+  }
+  const uint8_t index = unitIndex;
+  const Unit* unit = UnitPool::Get(index);
+  if (unit == nullptr) {
+    return;
+  }
+  ::game::map::history::Impl* history = g_map_history;
+  if (history == nullptr) {
+    return;
+  }
+  const uint8_t& acting = g_mind->GetUnit();
+  if (acting == 0) {
+    return;
+  }
+  const Unit* current = UnitPool::Get(acting);
+  if (current != nullptr && unit->GetIndex() == current->GetIndex()) {
+    history->ReserveMindRecord(unit);
+  }
+}
+
+void Backup() {
+  if (::game::map::history::Impl* history = g_map_history) {
+    history->Backup();
+  }
+}
+
+void Restore() {
+  if (::game::map::history::Impl* history = g_map_history) {
+    history->Restore();
+  }
+}
+
+#pragma GCC visibility pop
+
+}
+
+// The cursor natives read the cursor through the global offset table. The
+// visibility is explicit, the hidden class would hide it.
+[[gnu::visibility("default")]] extern game::map::Cursor* g_cursor;
+
+namespace game::script::unit {
+
+#pragma GCC visibility push(hidden)
+
+// Looks a person row up by its PID, through the hash index of the file.
+class PersonRef {
+public:
+  explicit PersonRef(const char* pid);
+
+  const PersonData* Get() const {
+    return person_;
+  }
+
+private:
+  const PersonData* person_;
+};
+
+#pragma GCC visibility pop
+
+}
+
+namespace game::script::map::cursor {
+
+#pragma GCC visibility push(hidden)
+
+using ::game::map::Cursor;
+
+int GetX() {
+  const Cursor* cursor = g_cursor;
+  return cursor != nullptr ? cursor->GetImpl()->GetX() : 0;
+}
+
+int GetZ() {
+  const Cursor* cursor = g_cursor;
+  return cursor != nullptr ? cursor->GetImpl()->GetZ() : 0;
+}
+
+// The cell is kept in the play area when the map has one.
+void SetPos(int x, int z) {
+  Cursor* cursor = g_cursor;
+  const ::game::map::Image* image = terrain::g_instance<::game::map::Image>;
+  if (image != nullptr) {
+    const int minX = image->GetPlayArea(0);
+    const int minZ = image->GetPlayArea(1);
+    const int maxX = image->GetPlayArea(2);
+    const int maxZ = image->GetPlayArea(3);
+    if (minX < maxX && minZ < maxZ) {
+      x = std::clamp(x, minX, maxX);
+      z = std::clamp(z, minZ, maxZ);
+    }
+  }
+  if (cursor != nullptr) {
+    cursor->SetPos(x, z);
+  }
+}
+
+// The unit of a person still in a force, units that left keep force 9.
+void SetPosByPID(const as::string& pid) {
+  Cursor* cursor = g_cursor;
+  if (cursor == nullptr) {
+    return;
+  }
+  const unit::PersonRef person(pid.c_str());
+  const Unit* found = nullptr;
+  if (person.Get() != nullptr) {
+    if (Unit* units = UnitPool::GetUnits()) {
+      // The original unrolls the scan five times.
+#pragma clang loop unroll_count(5)
+      for (int i = 0; i < UnitPool::kUnitCount; i++) {
+        Unit& unit = units[i];
+        if (unit.GetForce() != nullptr &&
+          unit.GetForceType() != Unit::kNoForce &&
+          unit.GetPerson() == person.Get()) {
+          found = &unit;
+          break;
+        }
+      }
+    }
+  }
+  cursor->GetImpl()->SetPos(found);
 }
 
 #pragma GCC visibility pop

@@ -78,8 +78,8 @@ public:
   virtual const std::vector<Pos>& GetPoss() const = 0;
   virtual int GetPosCount() const = 0;
   virtual const Pos* GetPos(int index) const = 0;
-  virtual uint8_t GetLife() const = 0;
-  virtual uint8_t GetMaxLife() const = 0;
+  virtual int GetLife() const = 0;
+  virtual int GetMaxLife() const = 0;
   virtual uint8_t GetForce() const = 0;
   virtual uint8_t GetStatus() const = 0;
   virtual uint8_t Unknown23() const = 0;

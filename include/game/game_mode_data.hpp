@@ -3,6 +3,7 @@
 #include <stdint.h>
 
 #include <functional>
+#include <string>
 #include <unordered_map>
 #include <utility>
 #include <vector>
@@ -14,9 +15,13 @@ namespace game {
 #pragma GCC visibility push(hidden)
 
 struct GameVariable {
-  uint8_t unknown_00_[0x20];
+  uint8_t unknown_00_[0x10];
+  uint8_t type;
+  uint8_t unknown_11_[0xf];
   int value;
-  uint8_t unknown_24_[0x34];
+  uint8_t unknown_24_[0xc];
+  std::string name;
+  uint8_t unknown_48_[0x10];
   // Called with the variable after its value changed.
   std::vector<std::function<void(GameVariable*)>> listeners;
 };
@@ -39,6 +44,22 @@ private:
   std::unordered_map<uint64_t, GameVariable*> variables_;
   uint8_t unknown_30_[0x3c0230];
   uint8_t flags_;
+};
+
+// Registers the script variables in the table it keeps.
+class VariableRegistry {
+public:
+  GameVariable* Entry(int type, const HashedString& key, int value,
+    int unknown, int min, int max, bool flag);
+  GameVariable* FindByKey(uint32_t key) const;
+
+  GameVariableTable* GetVariables() const {
+    return variables_;
+  }
+
+private:
+  uint8_t unknown_00_[0x8];
+  GameVariableTable* variables_;
 };
 
 // The variables the engine reads by kind, their names are function local
@@ -117,33 +138,37 @@ public:
     if (instance_ == nullptr) {
       return false;
     }
-    const GameVariable* variable = instance_->variables_->Find(key);
+    const GameVariable* variable = instance_->GetVariables()->Find(key);
     return variable != nullptr && variable->value != 0;
   }
 
   GameVariableTable* GetVariables() {
-    return variables_;
+    return registry_.GetVariables();
+  }
+
+  VariableRegistry& GetRegistry() {
+    return registry_;
   }
 
   static const GameVariable* FindVariable(const HashedString& key) {
     if (instance_ == nullptr) {
       return nullptr;
     }
-    return instance_->variables_->Find(key);
+    return instance_->GetVariables()->Find(key);
   }
 
   static bool HasVariable(const HashedString& key) {
     if (instance_ == nullptr) {
       return false;
     }
-    return instance_->variables_->Contains(key);
+    return instance_->GetVariables()->Contains(key);
   }
 
   static bool IsVariableSet(const HashedString& key) {
     if (instance_ == nullptr) {
       return false;
     }
-    const GameVariable* variable = instance_->variables_->Find(key);
+    const GameVariable* variable = instance_->GetVariables()->Find(key);
     return variable != nullptr && variable->value != 0;
   }
 
@@ -231,8 +256,8 @@ private:
   // The scripts read it as the route.
   uint8_t chapter_kind_;
   const ChapterData* chapter_;
-  uint8_t unknown_18_[0x18];
-  GameVariableTable* variables_;
+  uint8_t unknown_18_[0x10];
+  VariableRegistry registry_;
   uint8_t map_kind_;
   uint8_t unknown_39_[0x3];
   int mode_;

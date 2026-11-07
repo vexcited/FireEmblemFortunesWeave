@@ -1,8 +1,13 @@
+#include <algorithm>
+#include <functional>
+#include <vector>
+
 #include "game/data/data_files.hpp"
 #include "game/game_mode_data.hpp"
 #include "game/map/history_data.hpp"
 #include "game/map/situation.hpp"
 #include "game/map/unit_flags.hpp"
+#include "game/singleton.hpp"
 #include "game/unit.hpp"
 #include "game/unit_item.hpp"
 #include "game/script/script_string.hpp"
@@ -28,7 +33,45 @@ namespace map {
 extern const HashedString kVariablePlayerScore;
 extern const HashedString kVariableEnemyScore;
 
+namespace history {
+
+// The variables the map history keeps, with the keys entered while it
+// records.
+class VariableHistory : public Singleton<VariableHistory> {
+public:
+  static bool IsIgnored(const HashedString& key);
+  static void Record(uint8_t kind, const HashedString& key);
+
+  bool HasEntry(const HashedString& key) const {
+    return std::find(entries_.begin(), entries_.end(), key.hash) !=
+      entries_.end();
+  }
+
+  void MarkEntered() {
+    flags_ |= 1;
+  }
+
+private:
+  uint8_t unknown_08_[0x21];
+  uint8_t flags_;
+  uint8_t unknown_2a_[0x6];
+  std::vector<uint64_t> entries_;
+};
+
 }
+
+}
+
+namespace UnitUtil {
+
+// Calls the callback on the units the flag of the key concerns.
+void EachFlagUnit(const HashedString& key,
+  const std::function<void(Unit*)>& callback);
+
+}
+
+// Changes the value of a known variable, true when it changed.
+bool SetVariable(const HashedString& key, int value);
 
 #pragma GCC visibility pop
 
@@ -271,6 +314,32 @@ int GetAssistAnimeType() {
 
 namespace variable {
 
+// Enters the variable while the map history records, once per key.
+void Entry(as::string& name, int value) {
+  if (name.empty()) {
+    return;
+  }
+  GameModeData::GetInstance()->GetRegistry().Entry(1,
+    HashedString(name.c_str()), value, 0, -99999, 99999, false);
+  const HashedString key(name.c_str());
+  ::game::map::history::Impl* history = g_map_history;
+  if (history == nullptr || key.hash == 0 || !history->IsRecording()) {
+    return;
+  }
+  using ::game::map::history::VariableHistory;
+  if (VariableHistory::IsIgnored(key)) {
+    return;
+  }
+  VariableHistory* variables = VariableHistory::GetInstance();
+  if (variables == nullptr || !variables->HasEntry(key)) {
+    VariableHistory::Record(1, key);
+    variables = VariableHistory::GetInstance();
+  }
+  if (variables != nullptr) {
+    variables->MarkEntered();
+  }
+}
+
 int Get(as::string& name) {
   if (!GameModeData::HasVariable(HashedString(name.c_str()))) {
     return 0;
@@ -351,6 +420,16 @@ as::string GetPID() {
 
 namespace data {
 
+// The variable of the key names a flag unless it is of kind 1 or 2.
+as::string GetFlagByKey(uint32_t key) {
+  const GameVariable* found =
+    GameModeData::GetInstance()->GetRegistry().FindByKey(key);
+  if (found == nullptr || found->type == 1 || found->type == 2) {
+    return as::string("");
+  }
+  return as::string(found->name.c_str());
+}
+
 as::string GetPidByKey(uint32_t key) {
   return as::string(game::GetPidByKey(key));
 }
@@ -360,3 +439,28 @@ as::string GetPidByKey(uint32_t key) {
 #pragma GCC visibility pop
 
 }
+
+#pragma GCC visibility push(hidden)
+
+// The closure type of the RTTI names this native at file scope.
+[[gnu::used]] static void Set(as::string& name, int value) {
+  using namespace game;
+  const HashedString key(name.c_str());
+  if (!GameModeData::HasVariable(key) || !SetVariable(key, value)) {
+    return;
+  }
+  if (map::history::Impl* history = g_map_history) {
+    history->RecordVariable(key);
+  }
+  UnitUtil::EachFlagUnit(key, [](Unit* unit) {
+    unit->Unknown6c4610();
+    const map::history::Impl* history = g_map_history;
+    if (history != nullptr && history->IsRecording() &&
+      unit->GetForce() != nullptr && unit->GetForceType() <= 8 &&
+      map::UnitFlags::instance_ != nullptr) {
+      map::UnitFlags::instance_->MarkDirty(unit->GetIndex());
+    }
+  });
+}
+
+#pragma GCC visibility pop

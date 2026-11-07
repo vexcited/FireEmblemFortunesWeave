@@ -258,7 +258,7 @@ void RegisterBattle(Timing timing, const as::string& funcName,
     case Timing::kBattleAfter:
       event = new MapBattleAfterEvent(desc);
       break;
-    default:
+    case Timing::kBattleComplete:
       event = new MapBattleCompleteEvent(desc);
       break;
   }

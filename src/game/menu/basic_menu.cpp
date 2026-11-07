@@ -102,24 +102,20 @@ bool BasicMenu::Unknown29(int index) {
 
 void BasicMenu::Unknown31(bool enable) {
   tab_.SetEnabled(enable);
-  std::weak_ptr<ui::LayoutAccessor> part = Unknown46();
-  ui::SetPartEnabled(part, enable, false);
-  part = Unknown47();
-  ui::SetPartEnabled(part, enable, false);
-  part = Unknown48();
-  ui::SetPartEnabled(part, enable, false);
-  part = Unknown49();
-  ui::SetPartEnabled(part, enable, false);
-  part = Unknown50();
-  ui::SetPartEnabled(part, enable, false);
-  part = Unknown51();
-  ui::SetPartEnabled(part, enable, false);
-  part = Unknown52();
-  ui::SetPartEnabled(part, enable, false);
-  part = Unknown53();
-  ui::SetPartEnabled(part, enable, false);
-  part = accessor_.GetPart(Unknown42());
-  ui::SetPartEnabled(part, enable, false);
+
+  auto apply = [enable](std::weak_ptr<ui::LayoutAccessor> part) {
+    ui::SetPartEnabled(part, enable, false);
+  };
+
+  apply(Unknown46());
+  apply(Unknown47());
+  apply(Unknown48());
+  apply(Unknown49());
+  apply(Unknown50());
+  apply(Unknown51());
+  apply(Unknown52());
+  apply(Unknown53());
+  apply(accessor_.GetPart(Unknown42()));
 }
 
 void BasicMenu::Unknown44() {

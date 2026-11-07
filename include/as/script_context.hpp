@@ -4,6 +4,8 @@
 #include <functional>
 
 class CScriptAny;
+class asIScriptFunction;
+class asIScriptModule;
 
 // The game layer over AngelScript. The class names are not recovered, the
 // slot names describe their use.
@@ -39,6 +41,9 @@ public:
     id_ = other.id_;
     context_ = Get();
   }
+
+  // The context the slot holds, without checking the key.
+  ScriptContext* GetSlotContext() const;
 
 private:
   const void* key_ = nullptr;
@@ -155,7 +160,7 @@ public:
   virtual void Unknown17();
   virtual void Unknown18();
   virtual void Unknown19();
-  virtual void Unknown20();
+  virtual int SetArgObject(uint32_t arg, void* object);
   virtual void Unknown21();
   virtual void Unknown22();
   virtual void Unknown23();
@@ -177,7 +182,7 @@ public:
   virtual void Unknown39();
   virtual void Unknown40();
   virtual void Unknown41();
-  virtual void Unknown42();
+  virtual asIScriptFunction* GetFunction(uint32_t stackLevel = 0);
   virtual void Unknown43();
   virtual void Unknown44();
   virtual void Unknown45();
@@ -255,6 +260,29 @@ public:
     return parent_;
   }
 
+  ContextHandle& GetBrother() {
+    return brother_;
+  }
+
+  asIScriptModule* GetModule() const {
+    return module_;
+  }
+
+  int GetPriority() const {
+    return priority_;
+  }
+
+  const ContextHandle& GetOwner() const {
+    return owner_;
+  }
+
+  static constexpr int kVariableCount = 16;
+
+  // The variables a context hands to the contexts it runs.
+  Variable& GetVariable(int index) {
+    return variables_[index];
+  }
+
 private:
   static constexpr uint16_t kFlagExit = 0x100;
 
@@ -262,19 +290,23 @@ private:
   uint32_t id_;
   uint8_t unknown_0c_[0xc];
   ScriptRunner* runner_;
-  uint8_t unknown_20_[0x14];
+  uint8_t unknown_20_[0x8];
+  asIScriptModule* module_;
+  int priority_;
   int state_;
-  uint8_t unknown_38_[0x118];
+  ContextHandle owner_;
+  uint8_t unknown_50_[0x100];
   char exit_function_[0x80];
   Variable exit_argument_;
-  uint8_t unknown_1f8_[0x58];
-  uint8_t unknown_250_[0x5f4];
+  Variable variables_[kVariableCount];
+  uint8_t unknown_478_[0x3cc];
   int run_ctrl_;
   uint8_t unknown_848_[0x10];
   uint32_t skip_counter_;
   uint32_t skip_mask_;
   uint16_t flags_;
-  uint8_t unknown_862_[0x1e];
+  uint8_t unknown_862_[0x6];
+  ContextHandle brother_;
   ContextHandle parent_;
   uint8_t unknown_898_[0x8];
   std::function<void()> callback_;
@@ -361,8 +393,34 @@ public:
 class ScriptManager {
 public:
   ScriptThread* GetThread(uint32_t index) const {
-    return threads_[index];
+    return current_[index];
   }
+
+  // Each thread keeps a stack of the threads it runs, the top is the
+  // current one.
+  void PushThread(uint32_t index, ScriptThread* thread) {
+    stack_[index][++depth_[index]] = thread;
+    current_[index] = thread;
+  }
+
+  void PopThread(uint32_t index) {
+    stack_[index][depth_[index]--] = nullptr;
+    current_[index] = stack_[index][depth_[index]];
+  }
+
+  // The context running the functions of the module.
+  ContextHandle FindContext(const char* moduleName);
+
+  // Starts the function of the declaration in a new context of the owner,
+  // with the parent and the kind of the run, 2 to run and 3 to post.
+  ContextHandle Run(const ContextHandle& owner, const ContextHandle& parent,
+    const char* declaration, int priority, int runCtrl, int kind);
+
+  // Starts the function as a brother of the parent, the function is null
+  // when the owner lacks it.
+  ContextHandle RunBrother(const ContextHandle& owner,
+    const ContextHandle& parent, const char* declaration,
+    asIScriptFunction* function, int priority, int runCtrl, int kind);
 
   // Building threads stays off while it is locked.
   bool EnableThreadBuild() {
@@ -391,8 +449,14 @@ public:
   }
 
 private:
-  uint8_t unknown_00_[0x1120];
-  ScriptThread* threads_[50];
+  static constexpr int kThreadCount = 32;
+  static constexpr int kStackDepth = 16;
+
+  uint8_t unknown_00_[0x120];
+  ScriptThread* stack_[kThreadCount][kStackDepth];
+  ScriptThread* current_[kThreadCount];
+  int depth_[kThreadCount];
+  uint8_t unknown_12a0_[0x10];
   bool thread_build_locked_;
   bool thread_build_enabled_;
 };
@@ -432,6 +496,10 @@ inline ContextHandle::ContextHandle(ScriptContext* context) {
     }
   }
   context_ = context;
+}
+
+inline ScriptContext* ContextHandle::GetSlotContext() const {
+  return id_ != kInvalidId ? g_context_slots[id_].context : nullptr;
 }
 
 inline ScriptContext* ContextHandle::Get() const {

@@ -2,6 +2,7 @@
 
 #include <stdint.h>
 
+#include "game/data/data_file.hpp"
 #include "game/singleton.hpp"
 
 namespace game {
@@ -49,7 +50,52 @@ public:
   public:
     void SetEscape(const Unit* unit);
     void SetBattleSkill(const Unit* unit, const char* sid);
+
+    LogInfo() = default;
+    LogInfo(const LogInfo& other) = default;
+
+    // The original copies member by member.
+    LogInfo& operator=(const LogInfo& other) {
+      kind_ = other.kind_;
+      unknown_01_ = other.unknown_01_;
+      unknown_02_ = other.unknown_02_;
+      unknown_03_ = other.unknown_03_;
+      unknown_04_ = other.unknown_04_;
+      value_ = other.value_;
+      for (int i = 0; i < 4; i++) {
+        names_[i] = other.names_[i];
+      }
+      return *this;
+    }
+
+  private:
+    uint8_t kind_ = 0;
+    uint8_t unknown_01_ = 0;
+    uint8_t unknown_02_ = 0;
+    int8_t unknown_03_ = -1;
+    int8_t unknown_04_ = -1;
+    int value_ = 0;
+    HashedString names_[4];
   };
+
+  // The record kept for the mind of the acting unit, picked once.
+  struct MindUnit {
+    void Clear() {
+      reserved = false;
+    }
+
+    bool reserved;
+    uint8_t record;
+  };
+
+  // The record the mind of the unit needs, 0 for none.
+  static uint8_t PickMindRecord(const Unit* unit);
+
+  void ReserveMindRecord(const Unit* unit) {
+    if (mind_unit_.record == 0) {
+      mind_unit_.record = PickMindRecord(unit);
+    }
+  }
 
   bool IsRecording() const {
     return state_ == 1 && !(flags_ & 1);
@@ -63,13 +109,34 @@ public:
     return log_info_;
   }
 
+  // Keeps the mind unit and the log while the scripts try something, until
+  // they bring them back.
+  void Backup() {
+    backup_mind_unit_ = mind_unit_;
+    backup_log_info_ = log_info_;
+  }
+
+  void Restore() {
+    mind_unit_ = backup_mind_unit_;
+    backup_mind_unit_.Clear();
+    log_info_ = backup_log_info_;
+    backup_log_info_ = LogInfo();
+  }
+
+  void RecordVariable(const HashedString& key);
+
 private:
   uint8_t state_;
   uint8_t flags_;
   uint8_t unknown_0a_[0x2];
   uint32_t changes_;
-  uint8_t unknown_10_[0x350];
+  MindUnit mind_unit_;
+  uint8_t unknown_12_[0x34e];
   LogInfo log_info_;
+  uint8_t unknown_3b0_[0x80];
+  MindUnit backup_mind_unit_;
+  uint8_t unknown_432_[0x6];
+  LogInfo backup_log_info_;
 };
 
 }
