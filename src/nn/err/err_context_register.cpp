@@ -51,6 +51,34 @@ template <typename T>
 
 }
 
+void UpdateResult(ContextDescriptor descriptor, Result previous,
+  Result current) {
+  if (!IsWriterInitialized()) {
+    return;
+  }
+  detail::ContextApiImpl::UpdateResult(detail::WriterState.accessor,
+    descriptor, previous, current);
+}
+
+Result ConvertResultWithContext(Result previous, Result current) {
+  if (!IsWriterInitialized()) {
+    return current;
+  }
+  return detail::ContextApiImpl::ConvertResult(detail::WriterState.accessor,
+    {detail::GetContextDescriptor(previous)}, previous, current);
+}
+
+void CommitContext(ContextDescriptor descriptor, Result result) {
+  if (!IsWriterInitialized()) {
+    return;
+  }
+  sf::SharedPointer<sf::IServiceObject> writer(
+    reinterpret_cast<sf::IServiceObject*>(detail::WriterState.writer), true);
+  detail::ContextApiImpl::CommitContext(
+    *reinterpret_cast<context::IWriterForApplication*>(writer.Get()),
+    detail::WriterState.accessor, descriptor, result);
+}
+
 template <typename T>
 ContextDescriptor RegisterContext(const T& context, Result result) {
   if (!IsWriterInitialized()) {
