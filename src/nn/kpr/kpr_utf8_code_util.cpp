@@ -1,15 +1,39 @@
 #include <string.h>
 
+#include "nn/diag/unexpected_default.hpp"
 #include "nn/kpr/kpr_utf8_code_composer.hpp"
 #include "nn/util/utf.hpp"
 
 namespace nn::kpr::detail {
+
+// A dead key followed by a base character gives the composed character.
+struct DeadKeyEntry {
+  char deadKey[4];
+  char base[4];
+  char composed[4];
+};
+
+[[gnu::visibility("hidden")]] extern const DeadKeyEntry DeadKeyTable[107];
 
 namespace {
 
 const uint32_t AltCodeValueMask = 0x7fffffff;
 const uint32_t AltCodeLeadingZero = 0x80000000;
 const uint32_t MaxAltCodeValue = 0x6666666;
+const int DeadKeyEntryCount = 107;
+
+[[gnu::always_inline]] bool IsSameCode(const char* lhs, const char* rhs,
+  int length) {
+  for (int i = 0; i < length; i++) {
+    if (lhs[i] != rhs[i]) {
+      return false;
+    }
+    if (lhs[i] == '\0') {
+      return true;
+    }
+  }
+  return true;
+}
 
 // Alt codes 128 to 255 use code page 437.
 const char Cp437Table[128][4] = {
@@ -203,6 +227,62 @@ void ProcessAltCode(Utf8CodeComposerStorage* storage) {
     storage->compositionCount -= head;
   }
   storage->altCode = 0;
+}
+
+// A lone dead key is looked up as pressed twice, the rest is kept as is.
+void ProcessDeadKeyForcibly(Utf8CodeComposerStorage* storage) {
+  char output[20] = {};
+  int outputLength = 0;
+  const int compositionCount = storage->compositionCount;
+  for (int offset = 0; offset < compositionCount;) {
+    const char* code = storage->buffer + storage->outputCount + offset;
+    const int length = GetUtf8CodeLength(code[0]);
+    if (length == 0) {
+      break;
+    }
+    const char* replacement = code;
+    for (int i = 0; i < DeadKeyEntryCount; i++) {
+      const DeadKeyEntry& entry = DeadKeyTable[i];
+      if (GetUtf8CodeLength(entry.deadKey[0]) == length &&
+          IsSameCode(code, entry.deadKey, length) &&
+          GetUtf8CodeLength(entry.base[0]) == length &&
+          IsSameCode(code, entry.base, length)) {
+        replacement = entry.composed;
+        break;
+      }
+    }
+    const int replacementLength = GetUtf8CodeLength(replacement[0]);
+    memcpy(output + outputLength, replacement, replacementLength);
+    outputLength += replacementLength;
+    offset += length;
+  }
+  storage->compositionCount = 0;
+  AddQueueNativeTail(storage, output, outputLength);
+  storage->outputCount += storage->compositionCount;
+  storage->compositionCount = 0;
+}
+
+// A trailing n becomes the syllabic n of the current kana.
+void ProcessRomajiForcibly(Utf8CodeComposerStorage* storage) {
+  const int total = GetUtf8CodeComposerCompositionCount(*storage);
+  if (storage->compositionCount >= 1 && storage->buffer[total - 1] == 'n') {
+    const char* syllabicN = nullptr;
+    switch (GetUtf8CodeComposerMode(*storage)) {
+      case Utf8CodeComposerMode_RomajiKatakana:
+        syllabicN = "\u30f3";
+        break;
+      case Utf8CodeComposerMode_RomajiHiragana:
+        syllabicN = "\u3093";
+        break;
+      default:
+        nn::detail::UnexpectedDefaultImpl();
+    }
+    const int length = GetUtf8CodeLength(syllabicN[0]);
+    RemoveQueueNativeTail(storage);
+    AddQueueNativeTail(storage, syllabicN, length);
+  }
+  storage->outputCount += storage->compositionCount;
+  storage->compositionCount = 0;
 }
 
 }
