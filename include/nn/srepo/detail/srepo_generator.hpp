@@ -66,6 +66,8 @@ struct ArrayGenerator {
     uint8_t* buffer, size_t size);
   static bool IsSameExtensionType(MsgpackExtensionType type, uint8_t* buffer,
     size_t size);
+  static bool IsSameStructType(const Struct& value, uint8_t* buffer,
+    size_t size);
   static Result AddValue(size_t* pOutPosition, long value, uint8_t* buffer,
     size_t size, size_t position);
   static Result AddValue(size_t* pOutPosition, const Any64BitId& value,

@@ -1,6 +1,9 @@
+#include <string.h>
+
 #include "nn/diag/diag_abort.hpp"
 #include "nn/srepo/detail/srepo_generator.hpp"
 #include "nn/srepo/detail/srepo_verifier.hpp"
+#include "nn/srepo/srepo_report.hpp"
 #include "nn/util/message_pack.hpp"
 
 namespace nn::srepo::detail {
@@ -157,6 +160,40 @@ Result ArrayGenerator::AddValue(size_t* pOutPosition, bool value,
     return ResultBufferFull;
   }
   *pOutPosition = stream.position;
+  return Result{0};
+}
+
+// The original keeps it out of line where the generators inline the others.
+[[gnu::noinline]] bool ArrayGenerator::IsSameStructType(const Struct& value,
+  uint8_t* buffer, size_t size) {
+  util::MessagePackReader::StreamParam stream = {buffer, size, 0};
+  util::MessagePackReader reader(&stream);
+  util::MessagePackReader::AnyData data = {};
+  if (!reader.ReadCurrent(&data) ||
+    data.type != AnyDataType::AnyDataType_Map) {
+    return false;
+  }
+  return IsSameNestedType(static_cast<const uint8_t*>(value.GetBuffer()),
+    value.GetSize(), value.GetCount(), stream.buffer + stream.position,
+    stream.size - stream.position, data.count, true, 1);
+}
+
+Result ArrayGenerator::AddValue(size_t* pOutPosition, const Struct& value,
+  uint8_t* buffer, size_t size, size_t position) {
+  if (position != 0 && !IsSameStructType(value, buffer, size)) {
+    return ResultValueTypeMismatch;
+  }
+  util::MessagePackWriter::StreamParam stream = {buffer, size, position};
+  util::MessagePackWriter writer(&stream);
+  if (!writer.WriteMapAutoSize(value.GetCount())) {
+    return ResultBufferFull;
+  }
+  if (value.GetSize() > writer.GetRemainSize()) {
+    return ResultBufferFull;
+  }
+  memcpy(stream.buffer + stream.position, value.GetBuffer(),
+    static_cast<uint32_t>(value.GetSize()));
+  *pOutPosition = stream.position + value.GetSize();
   return Result{0};
 }
 
@@ -347,6 +384,54 @@ Result ReportGenerator::AddKeyValue(size_t* pOutPosition, const char* key,
 }
 
 Result ReportGenerator::AddKeyValue(size_t* pOutPosition, const char* key,
+  const Array& value, uint8_t* buffer, size_t size, size_t position,
+  size_t sizeMax) {
+  size_t keyEnd = 0;
+  NN_RESULT_DO(AddKey(&keyEnd, key, buffer, size, position));
+  util::MessagePackWriter::StreamParam stream = {buffer, size, keyEnd};
+  util::MessagePackWriter writer(&stream);
+  if (!writer.WriteArrayAutoSize(value.GetCount())) {
+    return ResultBufferFull;
+  }
+  if (value.GetSize() > writer.GetRemainSize()) {
+    return ResultBufferFull;
+  }
+  if (stream.position + value.GetSize() > sizeMax) {
+    return ResultReportTooLarge;
+  }
+  memcpy(stream.buffer + stream.position, value.GetBuffer(),
+    static_cast<uint32_t>(value.GetSize()));
+  const size_t end = stream.position + value.GetSize();
+  IncrementKeyValueCount(buffer, size);
+  *pOutPosition = end;
+  return Result{0};
+}
+
+Result ReportGenerator::AddKeyValue(size_t* pOutPosition, const char* key,
+  const Struct& value, uint8_t* buffer, size_t size, size_t position,
+  size_t sizeMax) {
+  size_t keyEnd = 0;
+  NN_RESULT_DO(AddKey(&keyEnd, key, buffer, size, position));
+  util::MessagePackWriter::StreamParam stream = {buffer, size, keyEnd};
+  util::MessagePackWriter writer(&stream);
+  if (!writer.WriteMapAutoSize(value.GetCount())) {
+    return ResultBufferFull;
+  }
+  if (value.GetSize() > writer.GetRemainSize()) {
+    return ResultBufferFull;
+  }
+  if (stream.position + value.GetSize() > sizeMax) {
+    return ResultReportTooLarge;
+  }
+  memcpy(stream.buffer + stream.position, value.GetBuffer(),
+    static_cast<uint32_t>(value.GetSize()));
+  const size_t end = stream.position + value.GetSize();
+  IncrementKeyValueCount(buffer, size);
+  *pOutPosition = end;
+  return Result{0};
+}
+
+Result ReportGenerator::AddKeyValue(size_t* pOutPosition, const char* key,
   bool value, uint8_t* buffer, size_t size, size_t position, size_t sizeMax) {
   size_t keyEnd = 0;
   NN_RESULT_DO(AddKey(&keyEnd, key, buffer, size, position));
@@ -472,6 +557,42 @@ Result StructGenerator::AddKeyValue(size_t* pOutPosition, const char* key,
     return ResultInvalidValue;
   }
   *pOutPosition = stream.position;
+  return Result{0};
+}
+
+Result StructGenerator::AddValue(size_t* pOutPosition, const char* key,
+  const Array& value, uint8_t* buffer, size_t size, size_t position) {
+  size_t keyEnd = 0;
+  NN_RESULT_DO(AddStructKey(&keyEnd, key, buffer, size, position));
+  util::MessagePackWriter::StreamParam stream = {buffer, size, keyEnd};
+  util::MessagePackWriter writer(&stream);
+  if (!writer.WriteArrayAutoSize(value.GetCount())) {
+    return ResultBufferFull;
+  }
+  if (value.GetSize() > writer.GetRemainSize()) {
+    return ResultBufferFull;
+  }
+  memcpy(stream.buffer + stream.position, value.GetBuffer(),
+    static_cast<uint32_t>(value.GetSize()));
+  *pOutPosition = stream.position + value.GetSize();
+  return Result{0};
+}
+
+Result StructGenerator::AddValue(size_t* pOutPosition, const char* key,
+  const Struct& value, uint8_t* buffer, size_t size, size_t position) {
+  size_t keyEnd = 0;
+  NN_RESULT_DO(AddStructKey(&keyEnd, key, buffer, size, position));
+  util::MessagePackWriter::StreamParam stream = {buffer, size, keyEnd};
+  util::MessagePackWriter writer(&stream);
+  if (!writer.WriteMapAutoSize(value.GetCount())) {
+    return ResultBufferFull;
+  }
+  if (value.GetSize() > writer.GetRemainSize()) {
+    return ResultBufferFull;
+  }
+  memcpy(stream.buffer + stream.position, value.GetBuffer(),
+    static_cast<uint32_t>(value.GetSize()));
+  *pOutPosition = stream.position + value.GetSize();
   return Result{0};
 }
 
