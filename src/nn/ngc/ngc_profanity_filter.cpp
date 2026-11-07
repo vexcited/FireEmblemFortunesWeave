@@ -218,12 +218,12 @@ Result ProfanityFilter::CheckProfanityWords(uint32_t* pOutChecks,
       }
       ::memcpy(pCopy, ppWords[i], length);
       pCopy[length] = '\0';
-      result = g_Service->Check(sf::Out<uint32_t>(&pOutChecks[i]),
+      result = g_Service->Check2(sf::Out<uint32_t>(&pOutChecks[i]),
         sf::InBuffer(pCopy, size), patterns & AllPatterns, option);
       lmem::FreeToExpHeap(m_pHeap, pCopy);
     }
     else {
-      result = g_Service->Check(sf::Out<uint32_t>(&pOutChecks[i]),
+      result = g_Service->Check2(sf::Out<uint32_t>(&pOutChecks[i]),
         sf::InBuffer(pWord, ::strlen(pWord) + 1), patterns & AllPatterns,
         option);
     }
@@ -341,7 +341,7 @@ Result ProfanityFilter::MaskProfanityWordsInText(int* pOutCount, char* pText,
     const char saved = pText[length];
     pText[length] = '\0';
     int32_t maskedCount = 0;
-    result = g_Service->Mask(sf::Out<int32_t>(&maskedCount),
+    result = g_Service->Mask2(sf::Out<int32_t>(&maskedCount),
       sf::OutBuffer(pMasked, size), sf::InBuffer(pText, size),
       patterns & AllPatterns, option);
     if (result.IsFailure()) {
@@ -372,7 +372,7 @@ Result ProfanityFilter::MaskProfanityWordsInText(int* pOutCount, char* pText,
     }
     ::memcpy(pSource, pText, size);
     int32_t maskedCount = 0;
-    result = g_Service->Mask(sf::Out<int32_t>(&maskedCount),
+    result = g_Service->Mask2(sf::Out<int32_t>(&maskedCount),
       sf::OutBuffer(pText, size), sf::InBuffer(pSource, size),
       patterns & AllPatterns, option);
     if (result.IsFailure()) {

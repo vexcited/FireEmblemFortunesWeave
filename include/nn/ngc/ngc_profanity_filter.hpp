@@ -26,12 +26,12 @@ class IService : public sf::IServiceObject {
   virtual void Reserved2() = 0;
   virtual void Reserved3() = 0;
   virtual Result GetContentVersion(sf::Out<uint32_t> pOutVersion) = 0;
-  virtual void Reserved5() = 0;
-  virtual void Reserved6() = 0;
-  virtual void Reserved7() = 0;
-  virtual Result Check(sf::Out<uint32_t> pOutCheck, const sf::InBuffer& word,
+  virtual void Check() = 0;
+  virtual void Mask() = 0;
+  virtual void Reload() = 0;
+  virtual Result Check2(sf::Out<uint32_t> pOutCheck, const sf::InBuffer& word,
     uint32_t patterns, const ProfanityFilterOption& option) = 0;
-  virtual Result Mask(sf::Out<int32_t> pOutCount, const sf::OutBuffer& text,
+  virtual Result Mask2(sf::Out<int32_t> pOutCount, const sf::OutBuffer& text,
     const sf::InBuffer& source, uint32_t patterns,
     const ProfanityFilterOption& option) = 0;
 };
