@@ -11,6 +11,7 @@ class ScriptManager;
 }
 
 #include "as/script_context.hpp"
+#include "game/cmdbtl/manager.hpp"
 
 namespace game::cmdbtl {
 
@@ -64,6 +65,37 @@ void SetSimplePower(int force, int powerMain) {
 void SetSimplePower(int force, int powerMain, int powerLink) {
   EndBlock();
   g_cmdbtl_simple_power->SetPower(force, powerMain, powerLink);
+}
+
+namespace {
+
+[[gnu::always_inline]] inline void NewRecord(bool viewer, int force,
+  int kind) {
+  EndBlock();
+  game::cmdbtl::BattleRecord& record =
+    game::cmdbtl::Manager::GetInstance()->GetRecord();
+  record.New();
+  if (game::cmdbtl::BattleRecord::Entry* entry = record.GetLast()) {
+    entry->Set(viewer, force, kind);
+  }
+}
+
+}
+
+void NewBtlInfoAttack(int force) {
+  NewRecord(false, force, 1);
+}
+
+void NewBtlInfoAssist(int force) {
+  NewRecord(false, force, 2);
+}
+
+void NewViewerAttack(int force) {
+  NewRecord(true, force, 1);
+}
+
+void NewViewerAssist(int force) {
+  NewRecord(true, force, 2);
 }
 
 #pragma GCC visibility pop

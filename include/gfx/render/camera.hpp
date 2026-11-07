@@ -66,8 +66,18 @@ public:
 
   Vector4 CalcPosition() const;
 
+  float GetYawDeg() const {
+    return yawDeg_;
+  }
+
+  float GetPitchDeg() const {
+    return pitchDeg_;
+  }
+
 private:
-  uint8_t unknown08_[0x54];
+  uint8_t unknown08_[0x4c];
+  float yawDeg_;
+  float pitchDeg_;
   Projection projection_;
   float fovY_;
   float focalLength_;

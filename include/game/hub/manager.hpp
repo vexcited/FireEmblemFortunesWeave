@@ -29,6 +29,10 @@ public:
     }
   }
 
+  int GetCount() const {
+    return count_;
+  }
+
 private:
   int count_;
 };

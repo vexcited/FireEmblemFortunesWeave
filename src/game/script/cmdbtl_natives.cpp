@@ -10,6 +10,7 @@ class ScriptManager;
 
 #include "as/script_context.hpp"
 #include "game/cmdbtl/manager.hpp"
+#include "game/cmdbtl/situation.hpp"
 #include "game/data/data_file.hpp"
 #include "game/item_seq.hpp"
 #include "game/script/script_string.hpp"
@@ -18,34 +19,6 @@ class ScriptManager;
 namespace game::cmdbtl {
 
 #pragma GCC visibility push(hidden)
-
-// The ends of the battle the scripts ask for.
-class CmdBtlSituation : public Singleton<CmdBtlSituation> {
-public:
-  void SetComplete() {
-    complete_ = true;
-  }
-
-  void SetGameOver() {
-    game_over_ = true;
-  }
-
-  void SetEscape() {
-    escape_ = true;
-  }
-
-private:
-  bool complete_;
-  bool game_over_;
-  uint8_t unknown_0a_;
-  bool escape_;
-};
-
-// The view of the command battle sequence process.
-class ProcCmdBtlSeqView {
-public:
-  static ProcCmdBtlSeqView* instance_;
-};
 
 void ExitGmap();
 

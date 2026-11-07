@@ -8,6 +8,7 @@
 #include <string_view>
 #include <vector>
 
+#include "game/hub/manager.hpp"
 #include "game/singleton.hpp"
 #include "math/vec3.hpp"
 #include "nn/util/vector.hpp"
@@ -951,14 +952,18 @@ extern CharacterSlot* g_character_slots[];
 
 #pragma GCC visibility push(hidden)
 
-// The handle base of the hub objects, naming one by its pool and slot.
-class ObjectHandle {
+template<typename T>
+class Handle;
+
+// The handle base of the characters, naming one by its pool and slot.
+template<>
+class Handle<Character> {
 public:
   static constexpr uint32_t kInvalidId = 0x4000;
 
-  ObjectHandle() = default;
+  Handle() = default;
 
-  explicit ObjectHandle(Character* character) {
+  explicit Handle(Character* character) {
     if (character == nullptr) {
       return;
     }
@@ -976,7 +981,7 @@ public:
     pool_ = character->GetPool();
   }
 
-  virtual ~ObjectHandle();
+  virtual ~Handle();
 
   bool IsValid() const {
     return Get() != nullptr;
@@ -1006,12 +1011,12 @@ protected:
   Character* object_ = nullptr;
 };
 
-class CharacterHandle : public ObjectHandle {
+class CharacterHandle : public Handle<Character> {
 public:
   CharacterHandle() = default;
 
   explicit CharacterHandle(Character* character)
-    : ObjectHandle(character) {}
+    : Handle(character) {}
 
   ~CharacterHandle() override;
 
@@ -1106,6 +1111,9 @@ public:
   void RunCameraSolo(std::weak_ptr<Character> target, bool unknown,
     std::optional<float> blendSec);
 
+  void StorePosure(std::weak_ptr<Character> target, bool unknown);
+  void CommitRestore(float endCameraSec);
+
   bool IsEnableBindFinal() const {
     return enable_bind_final_;
   }
@@ -1114,8 +1122,36 @@ public:
     enable_bind_final_ = isEnable;
   }
 
+  CountedSwitch& GetPosure() {
+    return posure_;
+  }
+
+  // Clears the flag of the interface the posure hid.
+  bool TakeHideUi() {
+    if (!hide_ui_) {
+      return false;
+    }
+    hide_ui_ = false;
+    return true;
+  }
+
+  void SetCameraStateGroup(int group) {
+    camera_state_group_ = group;
+  }
+
+  bool IsYesNoDialogResult() const {
+    return yes_no_dialog_result_;
+  }
+
 private:
-  uint8_t unknown_08_[0x88];
+  CountedSwitch posure_;
+  uint8_t unknown_18_[0x29];
+  bool hide_ui_;
+  uint8_t unknown_42_[0x2];
+  int camera_state_group_;
+  uint8_t unknown_48_[0x38];
+  bool yes_no_dialog_result_;
+  uint8_t unknown_81_[0xf];
   bool enable_bind_final_;
 };
 

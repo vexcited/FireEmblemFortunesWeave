@@ -767,6 +767,43 @@ void PlayStateWait(const as::string& objName) {
   }
 }
 
+// The object of a cell as the history looks it up.
+MapObject* FindRecordedObject(int x, int z);
+
+// The objects of the cells the map history saves, the second set only while
+// it exists.
+bool IsRecordedObject(int x, int z);
+bool IsRecordedObjectSecond(int x, int z);
+
+bool IsActive(int x, int z) {
+  MapObject* object = MapObjectManager::Get(x, z);
+  return object->IsValid() && object->Unknown08();
+}
+
+void PlayStateWait(int x, int z) {
+  MapObject* object = MapObjectManager::Get(x, z);
+  if (object->IsValid()) {
+    PlayStateWait(object);
+  }
+}
+
+void SetActive(int x, int z, bool isActive) {
+  MapObject* object = MapObjectManager::Get(x, z);
+  if (!object->IsValid()) {
+    return;
+  }
+  object->Unknown21(isActive);
+  ::game::map::history::Impl* history =
+    ::game::map::history::Impl::GetInstance();
+  if (history == nullptr || !history->IsRecording()) {
+    return;
+  }
+  if (FindRecordedObject(x, z)->IsValid() && (IsRecordedObject(x, z) ||
+    IsRecordedObjectSecond(x, z))) {
+    history->MarkChanged(0x2000);
+  }
+}
+
 void SetActive(const as::string& objName, bool isActive) {
   MapObject* object = MapObjectManager::Get(objName.c_str());
   if (!object->IsValid()) {
