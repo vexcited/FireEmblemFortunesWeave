@@ -199,6 +199,7 @@ void DisableNpadSystemExtState() {
 
 int GetAbstractedPadIdDataFromNpad(
   long* pOutLong, int count, unsigned int unsignedint) {
+  NN_ABORT_UNLESS_RESULT_SUCCESS(hid::detail::VerifyValidNpadId(unsignedint));
   int value = {};
   NN_ABORT_UNLESS_RESULT_SUCCESS(
     hid::system::detail::GetAbstractedPadIdDataFromNpad(

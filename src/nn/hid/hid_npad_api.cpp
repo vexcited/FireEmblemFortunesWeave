@@ -5,6 +5,22 @@
 
 namespace nn::hid {
 
+namespace {
+
+// A missing or invalid color goes back to the caller, any other failure
+// aborts.
+[[gnu::always_inline]] inline Result CheckColorResult(Result result) {
+  const uint32_t value = result.value & 0x3fffff;
+  if (value == 0x4b6ca || value == 0x4b8ca) {
+    return result;
+  }
+  NN_ABORT_UNLESS_RESULT_SUCCESS(result);
+  return result;
+}
+
+}
+
+
 bool IsFirmwareUpdateNeededForNotification() {
   bool value = {};
   NN_ABORT_UNLESS_RESULT_SUCCESS(
@@ -81,34 +97,34 @@ void ClearNpadCaptureButtonAssignment() {
     hid::detail::ClearNpadCaptureButtonAssignment());
 }
 
-void GetNpadControllerColor(
+Result GetNpadControllerColor(
   NpadControllerColor* pOutNpadControllerColor, const NpadIdType& id) {
   NN_ABORT_UNLESS_RESULT_SUCCESS(detail::VerifyValidNpadId(id));
-  NN_ABORT_UNLESS_RESULT_SUCCESS(
+  return CheckColorResult(
     hid::detail::GetNpadControllerColor(pOutNpadControllerColor, id));
 }
 
-void GetNpadControllerColor(NpadControllerColor* pOutNpadControllerColor,
+Result GetNpadControllerColor(NpadControllerColor* pOutNpadControllerColor,
   NpadControllerColor* pOutNpadControllerColor2, const NpadIdType& id) {
   NN_ABORT_UNLESS_RESULT_SUCCESS(detail::VerifyValidNpadId(id));
-  NN_ABORT_UNLESS_RESULT_SUCCESS(hid::detail::GetNpadControllerColor(
+  return CheckColorResult(hid::detail::GetNpadControllerColor(
     pOutNpadControllerColor, pOutNpadControllerColor2, id));
 }
 
-void GetNpadJoyIconDecorationColor(
+Result GetNpadJoyIconDecorationColor(
   NpadJoyIconDecorationColor* pOutNpadJoyIconDecorationColor,
   const NpadIdType& id) {
   NN_ABORT_UNLESS_RESULT_SUCCESS(detail::VerifyValidNpadId(id));
-  NN_ABORT_UNLESS_RESULT_SUCCESS(hid::detail::GetNpadJoyIconDecorationColor(
+  return CheckColorResult(hid::detail::GetNpadJoyIconDecorationColor(
     pOutNpadJoyIconDecorationColor, id));
 }
 
-void GetNpadJoyIconDecorationColor(
+Result GetNpadJoyIconDecorationColor(
   NpadJoyIconDecorationColor* pOutNpadJoyIconDecorationColor,
   NpadJoyIconDecorationColor* pOutNpadJoyIconDecorationColor2,
   const NpadIdType& id) {
   NN_ABORT_UNLESS_RESULT_SUCCESS(detail::VerifyValidNpadId(id));
-  NN_ABORT_UNLESS_RESULT_SUCCESS(hid::detail::GetNpadJoyIconDecorationColor(
+  return CheckColorResult(hid::detail::GetNpadJoyIconDecorationColor(
     pOutNpadJoyIconDecorationColor, pOutNpadJoyIconDecorationColor2, id));
 }
 
@@ -268,13 +284,22 @@ void SetNpadJoyAssignmentModeDual(const NpadIdType& id) {
   NN_ABORT_UNLESS_RESULT_SUCCESS(hid::detail::SetNpadJoyAssignmentModeDual(id));
 }
 
-void MergeSingleJoyAsDualJoy(const NpadIdType& id, const NpadIdType& id2) {
+Result MergeSingleJoyAsDualJoy(const NpadIdType& id, const NpadIdType& id2) {
   NN_ABORT_UNLESS_RESULT_SUCCESS(detail::VerifyValidNpadId(id));
-  NN_ABORT_UNLESS_RESULT_SUCCESS(hid::detail::MergeSingleJoyAsDualJoy(id, id2));
+  NN_ABORT_UNLESS_RESULT_SUCCESS(detail::VerifyValidNpadId(id2));
+  const Result result = hid::detail::MergeSingleJoyAsDualJoy(id, id2);
+  // Joys that cannot merge go back to the caller.
+  const uint32_t value = result.value & 0x3fffff;
+  if (value == 0x4b2ca || value == 0x4b4ca) {
+    return result;
+  }
+  NN_ABORT_UNLESS_RESULT_SUCCESS(result);
+  return result;
 }
 
 void SwapNpadAssignment(const NpadIdType& id, const NpadIdType& id2) {
   NN_ABORT_UNLESS_RESULT_SUCCESS(detail::VerifyValidNpadId(id));
+  NN_ABORT_UNLESS_RESULT_SUCCESS(detail::VerifyValidNpadId(id2));
   NN_ABORT_UNLESS_RESULT_SUCCESS(hid::detail::SwapNpadAssignment(id, id2));
 }
 
