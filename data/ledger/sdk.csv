@@ -19980,7 +19980,9 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 6ee0d0,68,verified,src/nn/hid/system/hid_npad_api.cpp,_ZN2nn3hid6system15GetNpadsWithNfcEPji
 6ee120,56,verified,src/nn/hid/system/hid_nfc_api.cpp,_ZN2nn3hid6system20BindNfcActivateEventEjPNS_2os15SystemEventTypeENS2_14EventClearModeE
 6ee160,68,verified,src/nn/hid/system/hid_nfc_api.cpp,_ZN2nn3hid6system14IsNfcActivatedEj
-6ee220,44,disputed,src/nn/hid/system/hid_nfc_api.cpp,_ZN2nn3hid6system11ActivateNfcEjNS_6applet20AppletResourceUserIdE
+6ee1b0,104,verified,src/nn/hid/system/hid_nfc_api.cpp,_ZN2nn3hid6system11ActivateNfcEj
+6ee220,100,verified,src/nn/hid/system/hid_nfc_api.cpp,_ZN2nn3hid6system11ActivateNfcEjNS_6applet20AppletResourceUserIdE
+6ee290,76,verified,src/nn/hid/system/hid_nfc_api.cpp,_ZN2nn3hid6system13DeactivateNfcEj
 6ee2e0,72,verified,src/nn/hid/system/hid_nfc_api.cpp,_ZN2nn3hid6system13DeactivateNfcEjNS_6applet20AppletResourceUserIdE
 6ee330,4,verified,src/nn/hid/system/hid_npad_api.cpp,_ZN2nn3hid6system32GetAbstractedPadIdForNpadWithNfcEPNS1_15AbstractedPadIdEj
 6ee340,4,verified,src/nn/hid/system/hid_nfc_api.cpp,_ZN2nn3hid6system19GetMcuVersionForNfcEPNS1_20McuVersionDataForNfcENS1_15AbstractedPadIdE

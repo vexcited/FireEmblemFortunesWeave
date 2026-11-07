@@ -26,14 +26,31 @@ bool IsNfcActivated(unsigned int unsignedint) {
 
 void ActivateNfc(
   unsigned int unsignedint, applet::AppletResourceUserId appletResourceUserId) {
-  NN_ABORT_UNLESS_RESULT_SUCCESS(
-    hid::system::detail::ActivateNfc(unsignedint, appletResourceUserId));
+  const Result result =
+    hid::system::detail::ActivateNfc(unsignedint, appletResourceUserId);
+  if (result.IsFailure()) {
+    const uint32_t value = result.value & 0x3fffff;
+    if (value != 0x39aca && value != 0x39cca && value != 0x39eca) {
+      diag::detail::AbortImpl(&result);
+    }
+  }
+}
+
+void ActivateNfc(unsigned int unsignedint) {
+  ActivateNfc(unsignedint, applet::AppletResourceUserId{});
 }
 
 void DeactivateNfc(
   unsigned int unsignedint, applet::AppletResourceUserId appletResourceUserId) {
-  NN_ABORT_UNLESS_RESULT_SUCCESS(
-    hid::system::detail::DeactivateNfc(unsignedint, appletResourceUserId));
+  const Result result =
+    hid::system::detail::DeactivateNfc(unsignedint, appletResourceUserId);
+  if (result.IsFailure() && (result.value & 0x3fffff) != 0x39aca) {
+    diag::detail::AbortImpl(&result);
+  }
+}
+
+void DeactivateNfc(unsigned int unsignedint) {
+  DeactivateNfc(unsignedint, applet::AppletResourceUserId{});
 }
 
 Result GetMcuVersionForNfc(McuVersionDataForNfc* pOutMcuVersionDataForNfc,
