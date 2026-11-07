@@ -3,6 +3,7 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#include "nn/account/account_types.hpp"
 #include "nn/result.hpp"
 #include "nn/sf/native_handle.hpp"
 #include "nn/sf/sf_buffers.hpp"
@@ -14,12 +15,62 @@ class SystemEvent;
 
 }
 
-namespace nn::notification {
+namespace nn::time {
 
-struct AlarmSetting;
+enum DayOfWeek : int32_t {};
+
+}
+
+namespace nn::notification {
 
 struct AlarmSettingId {
   uint16_t value;
+};
+
+struct AlarmTime {
+  int32_t hour;
+  int32_t minute;
+};
+
+// A day keeps its hour in the high byte, all bits set disables it.
+class WeeklyScheduleAlarmSetting {
+public:
+  static constexpr uint16_t DisabledDay = 0xffff;
+
+  bool IsEnabled(time::DayOfWeek day) const;
+  AlarmTime GetSetting(time::DayOfWeek day) const;
+
+  uint8_t reserved[0xa];
+  uint16_t days[7];
+};
+
+struct AlarmSetting {
+  WeeklyScheduleAlarmSetting* GetWeeklyScheduleAlarmSetting() const;
+
+  AlarmSettingId id;
+  uint8_t unknown2;
+  uint8_t unknown3;
+  uint8_t reserved4[4];
+  account::Uid uid;
+  uint64_t unknown18;
+  uint8_t reserved20[8];
+  WeeklyScheduleAlarmSetting weekly;
+};
+
+static_assert(sizeof(AlarmSetting) == 0x40);
+
+class WeeklyScheduleAlarmSettingBuilder {
+public:
+  WeeklyScheduleAlarmSettingBuilder();
+  explicit WeeklyScheduleAlarmSettingBuilder(const AlarmSetting& setting);
+
+  void SetUid(account::Uid uid);
+  void Enable(time::DayOfWeek day, int hour, int minute);
+  void Disable(time::DayOfWeek day);
+  AlarmSetting Get() const;
+
+private:
+  AlarmSetting m_Setting;
 };
 
 namespace detail {
