@@ -18,7 +18,7 @@ int socketAton(const char* source, InAddr* destination) {
   const char* pCurrent = source;
   for (;;) {
     parts[count] = strtoull(pCurrent, &pEnd, 0);
-    if (parts[count] > 0xffffffff || (count != 0 && pEnd == pCurrent)) {
+    if (parts[count] > 0xffffffff || pEnd == pCurrent) {
       socket::SetLastError(static_cast<Errno>(97));
       return 0;
     }
@@ -93,7 +93,7 @@ int socketAton(const char* source, in_addr* destination) {
   const char* pCurrent = source;
   for (;;) {
     parts[count] = strtoull(pCurrent, &pEnd, 0);
-    if (parts[count] > 0xffffffff || (count != 0 && pEnd == pCurrent)) {
+    if (parts[count] > 0xffffffff || pEnd == pCurrent) {
       socket::SetLastError(static_cast<Errno>(97));
       return 0;
     }
