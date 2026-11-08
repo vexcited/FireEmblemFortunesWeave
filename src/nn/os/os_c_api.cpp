@@ -538,3 +538,15 @@ extern "C" auto nnosNotifyDebugger(
 extern "C" auto nnosGetUsedTlsSlotCount() {
   return nn::os::GetUsedTlsSlotCount();
 }
+
+extern "C" auto nnosFreeTlsSlot(nn::os::TlsSlot slot) {
+  return nn::os::FreeTlsSlot(slot);
+}
+
+extern "C" auto nnosGetTlsValue(nn::os::TlsSlot slot) {
+  return nn::os::GetTlsValue(slot);
+}
+
+extern "C" auto nnosSetTlsValue(nn::os::TlsSlot slot, uintptr_t value) {
+  return nn::os::SetTlsValue(slot, value);
+}

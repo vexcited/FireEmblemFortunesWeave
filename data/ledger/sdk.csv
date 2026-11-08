@@ -4538,6 +4538,9 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 16a260,24,verified,src/nn/os/virtual_memory_pages.cpp,_ZN2nn2os15FreeMemoryPagesEmm
 16a280,16,verified,src/nn/os/memory_queries.cpp,_ZN2nn2os36GetVirtualAddressMemoryResourceUsageEv
 16a290,16,verified,src/nn/os/memory_queries.cpp,_ZN2nn2os29IsVirtualAddressMemoryEnabledEv
+16a2c0,8,verified,src/nn/os/os_c_api.cpp,nnosFreeTlsSlot
+16a2d0,8,verified,src/nn/os/os_c_api.cpp,nnosGetTlsValue
+16a2e0,8,verified,src/nn/os/os_c_api.cpp,nnosSetTlsValue
 16a2f0,4,verified,src/nn/os/os_c_api.cpp,nnosGetUsedTlsSlotCount
 16a300,232,verified,src/nn/os/stack_guard.cpp,_ZN2nn2os6detail17StackGuardManager18MapAtRandomAddressEPPvPFbPKvS6_mEPFvS6_S6_mES6_m
 16a400,644,verified,src/nn/os/tls_manager.cpp,_ZNK2nn2os6detail10TlsManager25SearchUnusedTlsSlotUnsafeEb
@@ -19754,6 +19757,9 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 6b3a50,92,verified,src/nn/chat/chat_api.cpp,_ZN2nn4chat15ClearSharingKeyEv
 6b3ab0,164,verified,src/nn/chat/chat_api.cpp,_ZN2nn4chat13ShowChatStartERKNS_7account3UidE
 6b3b60,116,verified,src/nn/chat/chat_api.cpp,_ZN2nn4chat22ShowCameraSharingGuideEv
+6b3be0,8,verified,src/nn/chat/chat_api.cpp,_ZN2nn4chat28ShowLocalCameraConfigurationENS0_25CameraImageProcessingModeE
+6b3cd0,8,verified,src/nn/chat/chat_api.cpp,_ZN2nn4chat36ShowLocalCameraConfigurationVersion0ENS0_25CameraImageProcessingModeE
+6b3ef0,8,verified,src/nn/chat/chat_api.cpp,_ZN2nn4chat46BeginFullScreenWithLocalCameraAvailableSectionEb
 6b3f00,116,verified,src/nn/chat/chat_api.cpp,_ZN2nn4chat44EndFullScreenWithLocalCameraAvailableSectionEv
 6b3f80,96,verified,src/nn/chat/chat_api.cpp,_ZN2nn5chat026CreateSelectiveTalkSessionENS_4SpanINS0_18SelectiveTalkEntryEEE
 6b3fe0,48,verified,src/nn/chat/chat_api.cpp,_ZN2nn5chat018EnterSelectiveTalkEv
@@ -19764,6 +19770,10 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 6b41e0,116,verified,src/nn/chat/chat_api.cpp,_ZN2nn4chat25StartLocalCameraStreamingEv
 6b4260,116,verified,src/nn/chat/chat_api.cpp,_ZN2nn4chat24StopLocalCameraStreamingEv
 6b4690,128,verified,src/nn/chat/chat_api.cpp,_ZN2nn4chat25GetLocalCameraImageHandleEPKNS0_20LocalCameraVideoTypeEi
+6b4840,8,verified,src/nn/chat/chat_api.cpp,_ZN2nn4chat26StartRemoteCameraStreamingERKNS_7account23NetworkServiceAccountIdE
+6b4990,8,verified,src/nn/chat/chat_api.cpp,_ZN2nn4chat33StartRemoteCameraStreamingForTestERKNS_7account23NetworkServiceAccountIdE
+6b49a0,8,verified,src/nn/chat/chat_api.cpp,_ZN2nn4chat25StopRemoteCameraStreamingERKNS_7account23NetworkServiceAccountIdE
+6b4ae0,8,verified,src/nn/chat/chat_api.cpp,_ZN2nn4chat32StopRemoteCameraStreamingForTestERKNS_7account23NetworkServiceAccountIdE
 6b4e90,104,verified,src/nn/chat/chat_api.cpp,_ZN2nn4chat26GetRemoteCameraImageHandleEPKNS0_21RemoteCameraVideoTypeEi
 6b50a0,48,verified,src/nn/chat/chat_api.cpp,_ZN2nn4chat39SetAlternativeScreenSharingLayerEnabledEb
 6b50d0,48,verified,src/nn/chat/chat_api.cpp,_ZN2nn4chat35CreateAlternativeScreenSharingLayerEPPNS_2vi5LayerEPNS1_7DisplayEPKNS1_21LayerCreationSettingsE

@@ -396,6 +396,51 @@ void ShowCameraSharingGuide() {
   }
 }
 
+namespace detail {
+
+[[gnu::visibility("hidden")]] void ShowLocalCameraConfigurationImpl(
+  CameraImageProcessingMode mode, bool isCurrentVersion);
+[[gnu::visibility("hidden")]] void StartRemoteCameraStreamingImpl(
+  const account::NetworkServiceAccountId& id, bool isForTest);
+[[gnu::visibility("hidden")]] void StopRemoteCameraStreamingImpl(
+  const account::NetworkServiceAccountId& id, bool isForTest);
+
+}
+
+void ShowLocalCameraConfiguration(CameraImageProcessingMode mode) {
+  detail::ShowLocalCameraConfigurationImpl(mode, true);
+}
+
+void ShowLocalCameraConfigurationVersion0(CameraImageProcessingMode mode) {
+  detail::ShowLocalCameraConfigurationImpl(mode, false);
+}
+
+void BeginFullScreenWithLocalCameraAvailableSection(bool isLocalCameraVisible,
+  bool isForced);
+
+void BeginFullScreenWithLocalCameraAvailableSection(
+  bool isLocalCameraVisible) {
+  BeginFullScreenWithLocalCameraAvailableSection(isLocalCameraVisible, true);
+}
+
+void StartRemoteCameraStreaming(const account::NetworkServiceAccountId& id) {
+  detail::StartRemoteCameraStreamingImpl(id, false);
+}
+
+void StartRemoteCameraStreamingForTest(
+  const account::NetworkServiceAccountId& id) {
+  detail::StartRemoteCameraStreamingImpl(id, true);
+}
+
+void StopRemoteCameraStreaming(const account::NetworkServiceAccountId& id) {
+  detail::StopRemoteCameraStreamingImpl(id, false);
+}
+
+void StopRemoteCameraStreamingForTest(
+  const account::NetworkServiceAccountId& id) {
+  detail::StopRemoteCameraStreamingImpl(id, true);
+}
+
 void StartLocalCameraStreaming() {
   Lock lock(g_Mutex);
   AbortUnlessInitialized();
