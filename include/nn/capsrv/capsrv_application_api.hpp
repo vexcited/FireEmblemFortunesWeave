@@ -61,12 +61,26 @@ Result ReadDataFromAlbumMovieReadStreamForApplication(size_t* pOutSize,
 
 namespace nn::capsrv::detail {
 
+class ScreenShotAttributeEx0Base;
+
+// The application form keeps the size and orientation in single bytes.
 class ScreenShotAttributeForApplicationBase {
  public:
   void SetDefault();
+  void CopyFromScreenShotAttribute(const ScreenShotAttributeEx0Base& source);
 
   uint32_t dynamicRange;
-  uint8_t reserved[0x3c];
+  uint8_t size;
+  uint8_t unknown5;
+  uint8_t orientation;
+  uint8_t reserved7;
+  uint32_t unknown8;
+  uint32_t frameCount;
+  uint32_t unknown10[4];
+  uint16_t unknown20[4];
+  uint8_t isUnknown28;
+  uint8_t isUnknown29;
+  uint8_t reserved2a[0x16];
 };
 
 }
@@ -86,7 +100,15 @@ class ScreenShotAttributeEx0Base {
 
   int32_t size;
   int32_t orientation;
-  uint8_t reserved[0x38];
+  uint32_t dynamicRange;
+  uint32_t frameCount;
+  uint32_t unknown10[4];
+  uint16_t unknown20[4];
+  uint32_t unknown28;
+  uint32_t unknown2c;
+  uint8_t isUnknown30;
+  uint8_t isUnknown31;
+  uint8_t reserved32[0xe];
 };
 
 }
