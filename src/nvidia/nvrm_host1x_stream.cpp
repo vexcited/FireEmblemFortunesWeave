@@ -34,6 +34,9 @@ NvError NvRmChannelNumSyncPoints(uint32_t* pOutCount);
 NvError NvRmHost1xChannelGetPinAddressPRIVATE(void* memory, uint64_t offset,
   uint64_t* pOutAddress);
 uint32_t NvRmHost1xChannelPinGetUIdPRIVATE(void* memory);
+NvError NvRmHost1xChannelIsSyncpointAttachedPRIVATE(void* channel,
+  void* syncpoint, uint8_t* pOutIsAttached);
+uint32_t NvRmHost1xSyncpointGetId(void* syncpoint);
 
 }
 
@@ -59,6 +62,10 @@ uint32_t NvRmHost1xChannelPinGetUIdPRIVATE(void* memory);
   NvRmHost1xStream* stream, void* sync, void* fence);
 [[gnu::visibility("hidden")]] void NvRmHost1xStreamReset(
   NvRmHost1xStream* stream);
+[[gnu::visibility("hidden")]] void* NvRmHost1xStreamGetChannel(
+  NvRmHost1xStream* stream);
+[[gnu::visibility("hidden")]] NvError NvRmHost1xStreamAddIncrement(
+  NvRmHost1xStream* stream, uint32_t id, uint32_t count);
 
 namespace {
 
@@ -69,6 +76,9 @@ const uint32_t Host1xOpcodeMask = 3;
 const uint32_t Host1xOpcodeImm = 4;
 const uint32_t Host1xMaxOffset = 0xfff;
 const uint64_t Host1xAddressHighBit = 1ull << 39;
+const uint32_t Host1xClassHost = 1;
+const uint32_t Host1xWaitSyncpointMask = 0x304e0005;
+const uint32_t Host1xIncrementSyncpoint = 0x20000001;
 
 // Streams belong to the process that created them.
 [[gnu::always_inline]] inline bool IsOwner(NvRmHost1xStream* stream) {
@@ -102,6 +112,33 @@ const uint64_t Host1xAddressHighBit = 1ull << 39;
   }
 
   return result;
+}
+
+[[gnu::always_inline]] inline NvError EndBlockInline(
+  NvRmHost1xStream* stream, uint32_t classId) {
+  if (stream->isInBegin == 0 || stream->remainingCommands != 0 ||
+    stream->remainingWords != 0 || stream->remainingRelocs != 0 ||
+    stream->remainingIncrements != 0) {
+    return NvError_InvalidState;
+  }
+
+  const NvError result = NvRmHost1xStreamSetClass(stream, classId,
+    UINT32_MAX);
+  if (result != NvSuccess) {
+    return result;
+  }
+
+  stream->isInBegin = 0;
+  stream->remainingCommands = 0;
+  stream->remainingWords = 0;
+  stream->remainingRelocs = 0;
+  stream->remainingIncrements = 0;
+  return NvSuccess;
+}
+
+[[gnu::noinline]] NvError EndBlock(NvRmHost1xStream* stream,
+  uint32_t classId) {
+  return EndBlockInline(stream, classId);
 }
 
 }
@@ -157,7 +194,8 @@ extern "C" NvError NvRmHost1xStreamFree(NvRmHost1xStream* stream) {
   return result;
 }
 
-extern "C" NvError NvRmHost1xStreamBegin(NvRmHost1xStream* stream,
+extern "C" [[gnu::noinline]] NvError NvRmHost1xStreamBegin(
+  NvRmHost1xStream* stream,
   uint32_t commands, uint32_t words, uint32_t relocs, int32_t increments) {
   if (stream == nullptr) {
     return NvError_BadParameter;
@@ -210,24 +248,7 @@ extern "C" NvError NvRmHost1xStreamEnd(NvRmHost1xStream* stream) {
     return NvError_BadParameter;
   }
 
-  if (stream->isInBegin == 0 || stream->remainingCommands != 0 ||
-    stream->remainingWords != 0 || stream->remainingRelocs != 0 ||
-    stream->remainingIncrements != 0) {
-    return NvError_InvalidState;
-  }
-
-  const NvError result = NvRmHost1xStreamSetClass(stream, stream->classId,
-    UINT32_MAX);
-  if (result != NvSuccess) {
-    return result;
-  }
-
-  stream->isInBegin = 0;
-  stream->remainingCommands = 0;
-  stream->remainingWords = 0;
-  stream->remainingRelocs = 0;
-  stream->remainingIncrements = 0;
-  return NvSuccess;
+  return EndBlockInline(stream, stream->classId);
 }
 
 extern "C" NvError NvRmHost1xStreamPushIncr(NvRmHost1xStream* stream,
@@ -361,4 +382,131 @@ extern "C" NvError NvRmHost1xStreamFlush(NvRmHost1xStream* stream,
 
   NvRmHost1xStreamReset(stream);
   return NvSuccess;
+}
+
+// Only syncpoints attached to the stream channel can be incremented.
+extern "C" [[gnu::noinline]] NvError NvRmHost1xStreamPushSyncpointIncrement(
+  NvRmHost1xStream* stream, void* syncpoint, uint32_t condition) {
+  uint8_t isAttached = 0;
+  if (stream == nullptr) {
+    return NvError_BadParameter;
+  }
+
+  const bool isOwner = IsOwner(stream);
+  if (syncpoint == nullptr || !isOwner) {
+    return NvError_BadParameter;
+  }
+
+  if (stream->isInBegin == 0) {
+    return NvError_InvalidState;
+  }
+
+  if (stream->remainingIncrements == 0) {
+    return NvError_BadParameter;
+  }
+
+  if (NvRmHost1xChannelIsSyncpointAttachedPRIVATE(
+    NvRmHost1xStreamGetChannel(stream), syncpoint, &isAttached) !=
+    NvSuccess || isAttached == 0) {
+    return NvError_BadParameter;
+  }
+
+  const uint32_t id = NvRmHost1xSyncpointGetId(syncpoint);
+  const uint32_t shift = stream->syncpointShift;
+
+  NvError result = NvRmHost1xStreamPushWord(stream, Host1xIncrementSyncpoint);
+  if (result != NvSuccess) {
+    return result;
+  }
+
+  result = NvRmHost1xStreamPushWord(stream,
+    (condition & 0xffff) << shift | id);
+  if (result != NvSuccess) {
+    return result;
+  }
+
+  stream->remainingIncrements--;
+  return NvRmHost1xStreamAddIncrement(stream, id, 1);
+}
+
+// Each wait is a host class mask write of the threshold and syncpoint id,
+// followed by one increment of the fence syncpoint.
+extern "C" NvError NvRmHost1xStreamAddWaits(NvRmHost1xStream* stream,
+  void* syncpoint, int32_t count, const uint32_t* ids,
+  const uint32_t* thresholds) {
+  if (stream == nullptr || !IsOwner(stream)) {
+    return NvError_BadParameter;
+  }
+
+  if (ids == nullptr || thresholds == nullptr) {
+    return NvError_BadParameter;
+  }
+
+  if (stream->isInBegin == 1) {
+    return NvError_InvalidState;
+  }
+
+  if (count < 0) {
+    return NvError_Overflow;
+  }
+
+  NvError result = NvRmHost1xStreamBegin(stream, count, count * 2, 0, 1);
+  if (result != NvSuccess) {
+    return result;
+  }
+
+  for (uint64_t i = static_cast<uint32_t>(count); i != 0; i--) {
+    const uint32_t threshold = *thresholds++;
+    const uint32_t id = *ids++;
+
+    if (!IsOwner(stream)) {
+      return NvError_BadParameter;
+    }
+
+    if (stream->isInBegin == 0) {
+      return NvError_InvalidState;
+    }
+
+    if (stream->remainingCommands == 0) {
+      return NvError_BadParameter;
+    }
+
+    result = NvRmHost1xStreamPushWord(stream, Host1xWaitSyncpointMask);
+    if (result != NvSuccess) {
+      return result;
+    }
+
+    stream->remainingCommands--;
+
+    if (!IsOwner(stream)) {
+      return NvError_BadParameter;
+    }
+
+    if (stream->isInBegin == 0) {
+      return NvError_InvalidState;
+    }
+
+    if (stream->remainingWords < 2) {
+      return NvError_BadParameter;
+    }
+
+    result = NvRmHost1xStreamPushWord(stream, threshold);
+    stream->remainingWords--;
+    if (result != NvSuccess) {
+      return result;
+    }
+
+    result = NvRmHost1xStreamPushWord(stream, id);
+    stream->remainingWords--;
+    if (result != NvSuccess) {
+      return result;
+    }
+  }
+
+  result = NvRmHost1xStreamPushSyncpointIncrement(stream, syncpoint, 0);
+  if (result != NvSuccess) {
+    return result;
+  }
+
+  return EndBlock(stream, Host1xClassHost);
 }
