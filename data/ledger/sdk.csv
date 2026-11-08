@@ -13531,6 +13531,8 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 4ad010,8,verified,src/nn/mii/char_info_accessor.cpp,_ZN2nn3mii6detail24NfpStoreDataExtentionRaw13SetBeardColorEi
 4ad020,8,verified,src/nn/mii/char_info_accessor.cpp,_ZN2nn3mii6detail24NfpStoreDataExtentionRaw13SetGlassColorEi
 4ad030,8,verified,src/nn/mii/char_info_accessor.cpp,_ZN2nn3mii6detail24NfpStoreDataExtentionRaw12SetGlassTypeEi
+4ad040,136,verified,src/nn/mii/mii_detail_misc.cpp,_ZN2nn3mii6detail24NfpStoreDataExtentionRaw16SetFromStoreDataERKNS1_12StoreDataRawE
+4ad0d0,148,verified,src/nn/mii/mii_detail_misc.cpp,_ZNK2nn3mii6detail24NfpStoreDataExtentionRaw11ToStoreDataEPNS1_12StoreDataRawE
 4ad170,4,verified,src/nn/mii/store_data.cpp,_ZN2nn3mii6detail11GetDeviceIdEPNS1_8DeviceIdE
 4ad180,196,verified,src/nn/mii/store_data.cpp,_ZN2nn3mii6detail14CalculateCrc16EPKvit
 4ad260,232,verified,src/nn/mii/ver3_record.cpp,_ZN2nn3mii6detail20CalculateAndSetCrc16EPvi
@@ -13540,6 +13542,8 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 4ad620,172,verified,src/nn/mii/ver3_record.cpp,_ZN2nn3mii6detail25StoreLittleEndianNicknameEPtiRKNS0_8NicknameE
 4ad6e0,176,verified,src/nn/mii/ver3_record.cpp,_ZN2nn3mii6detail24LoadLittleEndianNicknameEPNS0_8NicknameEPKti
 4ad7a0,64,verified,src/nn/mii/core_data.cpp,_ZN2nn3mii6detail18GetDefaultNicknameEPNS0_8NicknameE
+4ad7e0,52,verified,src/nn/mii/mii_detail_misc.cpp,_ZN2nn3mii6detail19GetReplacedNicknameEPNS0_8NicknameE
+4ad820,12,verified,src/nn/mii/mii_detail_misc.cpp,_ZN2nn3mii6detail19GetNicknameQuestionEPNS0_8NicknameE
 4ad830,176,verified,src/nn/mii/mii_region_util.cpp,_ZN2nn3mii6detail26UpdateNicknameIfInvalidUgcEPNS0_8NicknameE
 4adb10,44,verified,src/nn/mii/mii_region_util.cpp,_ZN2nn3mii6detail13GetRegionCodeEv
 4adb40,80,verified,src/nn/mii/mii_region_util.cpp,_ZN2nn3mii6detail19GetMergedRegionCodeEv
@@ -13605,6 +13609,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 4af060,60,verified,src/nn/mii/store_data.cpp,_ZN2nn3mii6detail12StoreDataRaw12BuildDefaultEPNS1_11UtilityImplEi
 4af0a0,804,verified,src/nn/mii/store_data.cpp,_ZN2nn3mii6detail21BuildStoreFromDefaultEPNS1_12StoreDataRawEPNS1_11UtilityImplEPKNS1_10DefaultMiiE
 4af470,136,verified,src/nn/mii/store_data.cpp,_ZN2nn3mii6detail12StoreDataRaw17BuildWithCoreDataEPNS1_11UtilityImplERKNS1_11CoreDataRawE
+4af500,60,verified,src/nn/mii/mii_detail_misc.cpp,_ZN2nn3mii6detail12StoreDataRaw14BuildMiiEditorEPNS1_11UtilityImplENS0_6GenderE
 4af540,208,verified,src/nn/mii/store_data.cpp,_ZN2nn3mii6detail12StoreDataRaw17BuildWithCharInfoEPNS1_11UtilityImplERKNS0_8CharInfoE
 4af610,4,verified,src/nn/mii/store_data.cpp,_ZN2nn3mii6detail12StoreDataRaw11SetNicknameERKNS0_8NicknameE
 4af620,4,verified,src/nn/mii/store_data.cpp,_ZN2nn3mii6detail12StoreDataRaw13SetFontRegionEi
