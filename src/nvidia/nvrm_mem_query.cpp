@@ -25,13 +25,41 @@ Result QueryNativeMemoryNvRmMemIdForDebug(uint32_t* pOutId,
   gs::NativeMemoryHandle memory);
 void DestroyNativeMemoryForDebug(gs::NativeMemoryHandle memory);
 
+enum ComptagAllocMode : int32_t {
+  ComptagAllocMode_None,
+};
+
+}
+
+namespace nn::os {
+
+enum MemoryAttribute : int32_t {
+  MemoryAttribute_Normal,
+  MemoryAttribute_Uncached,
+};
+
+}
+
+namespace nn::gpu::sdk {
+
+Result CreateGpuAccessibleMemory(GpuMemoryHandle* pOutMemory,
+  const GraphicsDeviceType* device, void* address, size_t size,
+  ComptagAllocMode comptagMode, os::MemoryAttribute attribute);
+void DestroyGpuAccessibleMemory(const GraphicsDeviceType* device,
+  GpuMemoryHandle memory, void* address, size_t size,
+  os::MemoryAttribute attribute);
+
 }
 
 enum NvError : int32_t {
   NvSuccess = 0,
   NvError_BadAddress = 3,
+  NvError_NotImplemented = 2,
   NvError_BadParameter = 4,
+  NvError_InsufficientMemory = 6,
   NvError_AccessDenied = 9,
+  NvError_BadSize = 10,
+  NvError_BadValue = 11,
 };
 
 enum NvRmHeap : uint32_t {
@@ -49,12 +77,16 @@ enum NvRmMemKind : uint32_t {
 struct NvRmMemObject;
 
 struct NvRmMemAllocator {
-  uint8_t reserved[0x18];
+  void* (*alloc)(NvRmMemAllocator* allocator, size_t size);
+  uint8_t reserved08[0x10];
   void (*free)(NvRmMemAllocator* allocator, NvRmMemObject* object);
 };
 
 struct NvRmMemObject {
-  uint8_t reserved[0x50];
+  NvRmMemObject* self;
+  uint64_t handle;
+  uint64_t key;
+  uint8_t reserved18[0x38];
   NvRmMemAllocator* allocator;
   std::atomic<int32_t> referenceCount;
   uint32_t reserved5c;
@@ -66,6 +98,20 @@ struct NvRmMemObject {
   uint32_t gpukHandle;
   nn::gs::NativeMemoryHandle debugMemory;
   uint32_t debugId;
+  uint8_t reserved88[8];
+};
+
+static_assert(sizeof(NvRmMemObject) == 0x90);
+
+struct [[gnu::packed]] NvRmMemAllocAttributes {
+  const uint32_t* heaps;
+  uint32_t heapCount;
+  uint32_t alignment;
+  uint32_t coherency;
+  uint64_t size;
+  uint8_t reserved1c[0x20];
+  NvRmMemAllocator* allocator;
+  void* userBuffer;
 };
 
 struct NvRmMemHandleParams {
@@ -86,11 +132,16 @@ struct NvRmMemHeapParams {
 
 void* NvOsDrvGpuGetGpukDevice();
 
+extern "C" NvRmMemAllocator* NvOsGetCurrentAllocator();
+extern "C" void NvOsMemset(void* destination, uint8_t value, uint64_t size);
+extern "C" int puts(const char* string);
+
 [[gnu::visibility("hidden")]] extern nn::os::MutexType g_NvRmMemmgrMutex;
 [[gnu::visibility("hidden")]] extern void* g_NvRmMemGpukDevice;
 [[gnu::visibility("hidden")]] extern nn::os::MutexType g_NvRmMemHandleMutex;
 [[gnu::visibility("hidden")]] extern void* g_NvRmMemHandleTable;
 [[gnu::visibility("hidden")]] extern int64_t g_NvRmMemVprHeapSize;
+[[gnu::visibility("hidden")]] extern std::atomic<uint32_t> g_NvRmMemNextHandle;
 
 [[gnu::visibility("hidden")]] void NvRmMemLookupHandle(uint32_t handle,
   NvRmMemObject*** pOutSlot, void* table);
@@ -99,12 +150,19 @@ void* NvOsDrvGpuGetGpukDevice();
 [[gnu::visibility("hidden")]] void NvRmMemRemoveHandle(NvRmMemObject* object,
   void** pTable);
 [[gnu::visibility("hidden")]] void NvRmMemDestroyObject(NvRmMemObject* object);
+[[gnu::visibility("hidden")]] NvError NvRmMemInsertHandle(
+  NvRmMemObject* object, void** pTable);
+[[gnu::visibility("hidden")]] NvError NvRmMemAllocGpuk(NvRmMemObject* object,
+  uint64_t size, uint32_t alignment, uint32_t coherency);
+[[gnu::visibility("hidden")]] NvError NvRmMemAllocVpr(NvRmMemObject* object,
+  uint64_t size);
 
 namespace {
 
 const uint64_t NvRmMemHeapAlignment = 0x1000;
 const uint32_t NvRmMemMapFlag_Fixed = 1 << 6;
 const uint64_t NvRmMemPageMask = 0xfffff000;
+const uint64_t NvRmMemPageOffsetMask = 0xfff;
 
 void OpenGpukDevice() {
   if (g_NvRmMemGpukDevice != nullptr) {
@@ -140,6 +198,25 @@ bool TryRetain(NvRmMemObject* object) {
   }
 
   return false;
+}
+
+// Handle ids are never zero and retried until the table takes them.
+[[gnu::always_inline]] inline uint32_t Publish(NvRmMemObject* object) {
+  nn::os::LockMutex(&g_NvRmMemHandleMutex);
+
+  uint32_t handle;
+  do {
+    do {
+      handle = g_NvRmMemNextHandle.fetch_add(1);
+    } while (handle == 0);
+
+    object->handle = handle;
+    object->key = handle;
+    object->self = object;
+  } while (NvRmMemInsertHandle(object, &g_NvRmMemHandleTable) != NvSuccess);
+
+  nn::os::UnlockMutex(&g_NvRmMemHandleMutex);
+  return handle;
 }
 
 uint64_t GetHeapSize(uint32_t heap) {
@@ -424,4 +501,130 @@ extern "C" NvError NvRmMemQueryHandleParams(uint32_t handle, uint32_t,
     default:
       return NvSuccess;
   }
+}
+
+// Native images wrap memory the graphics server owns.
+extern "C" NvError NvRmMemHandleAllocNativeImage(void*, uint32_t nativeHandle,
+  uint64_t size, uint32_t* pOutHandle) {
+  NvRmMemAllocator* allocator = NvOsGetCurrentAllocator();
+  OpenGpukDevice();
+  if (pOutHandle == nullptr || g_NvRmMemGpukDevice == nullptr) {
+    puts("not initialized!!");
+    return NvError_BadAddress;
+  }
+
+  auto* object = static_cast<NvRmMemObject*>(
+    allocator->alloc(allocator, sizeof(NvRmMemObject)));
+  if (object == nullptr) {
+    puts("no memory!!");
+    return NvError_InsufficientMemory;
+  }
+
+  NvOsMemset(object, 0, sizeof(NvRmMemObject));
+  object->allocator = allocator;
+  if (nativeHandle == 0) {
+    NvRmMemDestroyObject(object);
+    allocator->free(allocator, object);
+    return NvError_BadParameter;
+  }
+
+  object->address = nullptr;
+  object->size = size;
+  object->attributes = 0;
+  object->kind = NvRmMemKind_NativeImage;
+  object->nativeHandle = nativeHandle;
+  object->referenceCount.store(1, std::memory_order_release);
+  *pOutHandle = Publish(object);
+  return NvSuccess;
+}
+
+extern "C" NvError NvRmMemHandleAllocAttr(void*,
+  const NvRmMemAllocAttributes* attributes, uint32_t* pOutHandle) {
+  OpenGpukDevice();
+  if (pOutHandle == nullptr || g_NvRmMemGpukDevice == nullptr) {
+    puts("not initialized!!");
+    return NvError_BadAddress;
+  }
+
+  const uint64_t size = (attributes->size + 0xfff) & ~NvRmMemPageOffsetMask;
+  if (size == 0) {
+    return NvError_BadSize;
+  }
+
+  const uint32_t alignment = (attributes->alignment + 0xfff) & 0xfffff000;
+  if ((alignment & (alignment - 1)) != 0) {
+    return NvError_BadValue;
+  }
+
+  NvRmMemAllocator* allocator = attributes->allocator;
+  auto* object = static_cast<NvRmMemObject*>(
+    allocator->alloc(allocator, sizeof(NvRmMemObject)));
+  if (object == nullptr) {
+    puts("no memory!!");
+    return NvError_InsufficientMemory;
+  }
+
+  NvOsMemset(object, 0, sizeof(NvRmMemObject));
+  object->allocator = attributes->allocator;
+
+  NvError result;
+  void* userBuffer = attributes->userBuffer;
+  if (userBuffer != nullptr) {
+    const uint32_t coherency = attributes->coherency;
+    nn::gpu::sdk::GpuMemoryHandle gpukMemory = {};
+    const auto attribute = (coherency & ~2u) != 1 ?
+      nn::os::MemoryAttribute_Uncached : nn::os::MemoryAttribute_Normal;
+    auto* device = static_cast<const nn::gpu::sdk::GraphicsDeviceType*>(
+      g_NvRmMemGpukDevice);
+
+    if (nn::gpu::sdk::CreateGpuAccessibleMemory(&gpukMemory, device,
+      userBuffer, size, nn::gpu::sdk::ComptagAllocMode_None, attribute)
+      .IsFailure()) {
+      if (gpukMemory.value != 0) {
+        nn::gpu::sdk::DestroyGpuAccessibleMemory(
+          static_cast<const nn::gpu::sdk::GraphicsDeviceType*>(
+            g_NvRmMemGpukDevice), gpukMemory, userBuffer, size, attribute);
+      }
+
+      result = NvError_BadParameter;
+    }
+    else {
+      object->address = userBuffer;
+      object->size = size;
+      object->nativeHandle = alignment;
+      object->gpukHandle = gpukMemory.value;
+      object->debugMemory = {};
+      object->debugId = 0;
+      object->attributes = coherency;
+      object->kind = NvRmMemKind_User;
+      result = NvSuccess;
+    }
+  }
+  else if (attributes->heapCount != 0) {
+    const uint32_t heap = attributes->heaps[0];
+    if (heap == NvRmHeap_Vpr) {
+      result = NvRmMemAllocVpr(object, size);
+    }
+    else if (heap == NvRmHeap_External) {
+      result = NvRmMemAllocGpuk(object, size, alignment,
+        attributes->coherency);
+    }
+    else {
+      result = NvError_NotImplemented;
+    }
+  }
+  else {
+    result = NvRmMemAllocGpuk(object, size, alignment, attributes->coherency);
+  }
+
+  if (result != NvSuccess) {
+    NvRmMemDestroyObject(object);
+    NvRmMemAllocator* owner = attributes->allocator;
+    owner->free(owner, object);
+    return result;
+  }
+
+  object->referenceCount.store(1, std::memory_order_release);
+  *pOutHandle = Publish(object);
+  return NvSuccess;
 }

@@ -20137,6 +20137,8 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 600890,4,verified,src/nvidia/nvos_stubs.cpp,NvRmMemGetFd
 6008a0,24,verified,src/nvidia/nvrm_mem.cpp,NvRmMemHandleDuplicate
 6008c0,216,verified,src/nvidia/nvrm_mem_query.cpp,NvRmMemHandleFree
+600b20,628,verified,src/nvidia/nvrm_mem_query.cpp,NvRmMemHandleAllocAttr
+600f20,428,verified,src/nvidia/nvrm_mem_query.cpp,NvRmMemHandleAllocNativeImage
 6010d0,4,verified,src/nvidia/nvos_stubs.cpp,NvRmMemGetId
 6010e0,8,verified,src/nvidia/nvos_stubs.cpp,NvRmMemGetIVCId
 6010f0,8,verified,src/nvidia/nvos_stubs.cpp,NvRmMemHandleFromIVCId
