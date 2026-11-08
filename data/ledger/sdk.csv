@@ -19840,6 +19840,9 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 5ee9d0,4,verified,src/nvidia/nvos_stubs.cpp,NvOsSetResourceAllocFileLine
 5ee9f0,36,verified,src/nvidia/nvos_misc.cpp,NvOsSetVerboseLevel
 5eea20,36,verified,src/nvidia/nvos_misc.cpp,NvOsGetVerboseLevel
+5eea50,148,verified,src/nvidia/nvos_alloc_leak.cpp,NvOsAllocLeak
+5eeaf0,228,verified,src/nvidia/nvos_alloc_leak.cpp,NvOsAllocAlignLeak
+5eebe0,108,verified,src/nvidia/nvos_alloc_leak.cpp,NvOsReallocLeak
 5eec50,44,verified,src/nvidia/nvos_file_misc.cpp,NvOsFreeLeak
 5eec80,4,verified,src/nvidia/nvos_allocators.cpp,NvOsAlloc
 5eec90,4,verified,src/nvidia/nvos_allocators.cpp,NvOsAllocAlign
@@ -19865,6 +19868,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 5eeef0,4,verified,src/nvidia/nvos_misc.cpp,NvOsFtruncate
 5eef00,4,verified,src/nvidia/nvos_config.cpp,NvOsReaddir
 5eef10,4,verified,src/nvidia/nvos_config.cpp,NvOsMkdir
+5eef20,176,verified,src/nvidia/nvos_config.cpp,NvOsGetConfigU32
 5eefd0,92,verified,src/nvidia/nvos_config.cpp,NvOsGetConfigString
 5ef4b0,92,verified,src/nvidia/nvos_config.cpp,NvOsGetSysConfigString
 5ef510,28,verified,src/nvidia/nvos_misc.cpp,NvUHashInit
