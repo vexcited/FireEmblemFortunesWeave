@@ -23618,6 +23618,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 79c000,20,verified,src/musl/src/misc/ffsl.c,ffsl
 79c020,20,verified,src/musl/src/misc/ffsll.c,ffsll
 79c040,268,verified,src/nnmusl/stdio/getopt_msg.c,__getopt_msg
+79c160,168,verified,src/nnmusl/misc/getopt.c,getopt
 79c400,8,verified,src/musl/src/misc/getopt_long.c,getopt_long
 79c420,224,verified,src/musl/src/misc/getopt_long.c,__getopt_long
 79c9c0,8,verified,src/musl/src/misc/getopt_long.c,getopt_long_only
