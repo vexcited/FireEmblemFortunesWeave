@@ -47,6 +47,7 @@ enum HdrContentGamut : int32_t {};
 enum HdrOutputFormat : int32_t {};
 enum HdrOutputFormatCapability : int32_t {};
 enum HdrToneMapping : int32_t {};
+enum ImageTransform : int32_t {};
 enum RefreshRate : int32_t {};
 enum RefreshRateCapability : int32_t {};
 
@@ -60,8 +61,13 @@ struct BufferPreference {
   uint32_t format;
   uint16_t widthMinusOne;
   uint16_t heightMinusOne;
-  uint32_t alphaMode : 2;
-  uint32_t reserved0c : 30;
+  union {
+    struct {
+      uint32_t alphaMode : 2;
+      uint32_t reserved0c : 30;
+    };
+    HdrColorEncoding colorEncoding;
+  };
   uint64_t reserved10[6];
 };
 
@@ -80,7 +86,7 @@ struct Frontend {
   void* reserved8;
   void* reserved10;
   void* reserved18;
-  void* reserved20;
+  Result (*createDisplay)(void* context, DisplayType*, uint64_t);
   void (*destroyDisplay)(void* context, DisplayType*);
   Result (*createEndpoint)(void* context, EndpointType*, uint64_t,
     DisplayType*);
@@ -118,8 +124,11 @@ struct Frontend {
   void (*destroyBufferPool)(void* context, BufferPoolType*);
   gs::NativeImageHandle (*getBufferPoolNativeImageHandle)(void* context,
     const BufferPoolType*, uint64_t);
-  void* reservede8;
-  void* reservedf0;
+  Result (*readBufferPoolImage)(void* context, void*, uint64_t,
+    const BufferPoolType*, uint64_t, uint16_t, uint16_t, uint16_t, uint16_t);
+  Result (*writeBufferPoolImage)(void* context, BufferPoolType*, uint64_t,
+    uint16_t, uint16_t, uint16_t, uint16_t, const void*, uint64_t,
+    ImageTransform);
   Result (*blankBufferPoolImage)(void* context, BufferPoolType*, uint64_t);
   Result (*createVsyncEvent)(void* context, VsyncEventType*,
     const DisplayType*, os::EventClearMode);

@@ -73,6 +73,21 @@ void ResetBits(std::atomic<uint32_t>* pBits, uint32_t bits) {
 
 namespace sdk {
 
+Result Initialize();
+
+}
+
+Result Initialize() {
+  return sdk::Initialize();
+}
+
+void Finalize() {
+  os::LockMutex(&detail::g_InitializeLock);
+  os::UnlockMutex(&detail::g_InitializeLock);
+}
+
+namespace sdk {
+
 const detail::ServiceFunctions* GetFrontendVersion() {
   return &detail::g_ServiceFunctions;
 }

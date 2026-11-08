@@ -1,8 +1,137 @@
+#include <string.h>
+
+#include "nn/diag/unexpected_default.hpp"
 #include "nn/vi2/vi2_frontend.hpp"
 
 namespace nn::vi2 {
 
+namespace detail {
+
+extern char g_DefaultDisplayName[8];
+
+}
+
 using detail::g_Frontend;
+
+namespace {
+
+constexpr uint32_t BufferFormatRgba8 = 1;
+constexpr uint32_t BufferFormatHdr = 0x11;
+constexpr HdrColorEncoding HdrColorEncodingNone = HdrColorEncoding{0};
+constexpr HdrColorEncoding HdrColorEncodingPq = HdrColorEncoding{1};
+constexpr HdrColorEncoding HdrColorEncodingLinear = HdrColorEncoding{0x40};
+
+// The linear encoding also takes its reference level in nits.
+constexpr uint16_t HdrLinearReferenceLevel = 0x50;
+
+// Names are packed in eight bytes and stop at the first terminator.
+uint64_t MakeName(const char* pName) {
+  char buffer[8] = {};
+  if (pName != nullptr) {
+    for (int i = 0; i < 8 && pName[i] != '\0'; ++i) {
+      buffer[i] = pName[i];
+    }
+  }
+  uint64_t name;
+  memcpy(&name, buffer, sizeof(name));
+  return name;
+}
+
+uint64_t GetDefaultDisplayName() {
+  uint64_t name;
+  memcpy(&name, detail::g_DefaultDisplayName, sizeof(name));
+  return name;
+}
+
+}
+
+// The default display may be renamed, so its literal name maps to the
+// current one.
+Result CreateDisplay(DisplayType* pDisplay, const char* pName) {
+  uint64_t name = MakeName(pName);
+  if (name == MakeName("default")) {
+    name = GetDefaultDisplayName();
+  }
+  return g_Frontend.createDisplay(g_Frontend.context, pDisplay, name);
+}
+
+Result CreateDefaultDisplay(DisplayType* pDisplay) {
+  return g_Frontend.createDisplay(g_Frontend.context, pDisplay,
+    GetDefaultDisplayName());
+}
+
+Result CreateEndpoint(EndpointType* pEndpoint, const char* pName,
+  const DisplayType* pDisplay) {
+  return g_Frontend.createEndpoint(g_Frontend.context, pEndpoint,
+    MakeName(pName), const_cast<DisplayType*>(pDisplay));
+}
+
+uint64_t GetLayerBufferImageIndex(const LayerType* pLayer, uint32_t index) {
+  return g_Frontend.getLayerBufferNativeImageIndex(g_Frontend.context, pLayer,
+    index);
+}
+
+void SetLayerNativeWindowHdrColorEncoding(LayerType* pLayer,
+  HdrColorEncoding encoding) {
+  if (encoding == HdrColorEncodingLinear) {
+    g_Frontend.setLayerNativeWindowHdrLinearColorEncoding(g_Frontend.context,
+      pLayer, encoding, HdrLinearReferenceLevel);
+    return;
+  }
+  g_Frontend.setLayerNativeWindowHdrColorEncoding(g_Frontend.context, pLayer,
+    encoding);
+}
+
+Result CreateBufferPool(BufferPoolType* pPool,
+  const BufferPreference& preference, uint64_t count, void* pMemory,
+  uint64_t memorySize, os::MemoryPermission permission) {
+  static_assert(sizeof(BufferDescriptor) == sizeof(BufferPreference));
+  BufferDescriptor descriptor;
+  memcpy(&descriptor, &preference, sizeof(descriptor));
+  return g_Frontend.sdkCreateBufferPool(g_Frontend.context, pPool, descriptor,
+    count, pMemory, memorySize, permission);
+}
+
+Result ReadBufferPoolImage(void* pBuffer, uint64_t bufferSize,
+  const BufferPoolType* pPool, uint64_t index, uint16_t x, uint16_t y,
+  uint16_t width, uint16_t height) {
+  return g_Frontend.readBufferPoolImage(g_Frontend.context, pBuffer,
+    bufferSize, pPool, index, x, y, width, height);
+}
+
+Result WriteBufferPoolImage(BufferPoolType* pPool, uint64_t index, uint16_t x,
+  uint16_t y, uint16_t width, uint16_t height, const void* pBuffer,
+  uint64_t bufferSize, ImageTransform transform) {
+  return g_Frontend.writeBufferPoolImage(g_Frontend.context, pPool, index, x,
+    y, width, height, pBuffer, bufferSize, transform);
+}
+
+BufferPreference MakeBufferPreference(uint16_t width, uint16_t height) {
+  BufferPreference preference = {};
+  preference.format = BufferFormatRgba8;
+  preference.widthMinusOne = uint16_t(width - 1);
+  preference.heightMinusOne = uint16_t(height - 1);
+  return preference;
+}
+
+BufferPreference MakeBufferPreference(uint16_t width, uint16_t height,
+  HdrColorEncoding encoding) {
+  switch (encoding) {
+    case HdrColorEncodingNone:
+      return MakeBufferPreference(width, height);
+    case HdrColorEncodingPq:
+    case HdrColorEncodingLinear: {
+      BufferPreference preference = {};
+      preference.format = BufferFormatHdr;
+      preference.widthMinusOne = uint16_t(width - 1);
+      preference.heightMinusOne = uint16_t(height - 1);
+      preference.colorEncoding = encoding;
+      return preference;
+    }
+    default:
+      nn::detail::UnexpectedDefaultImpl();
+  }
+}
 
 namespace sdk {
 

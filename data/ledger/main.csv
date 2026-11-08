@@ -30524,7 +30524,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 1023940,24,verified,src/llvm-libcxx-21/libcxx/include/__vector/vector.h,std::vector<T>::__throw_length_error()
 1023a80,80,verified,src/memory/new_delete.cpp,deleting destructor at 0x1023a80
 1025e00,24,verified,src/llvm-libcxx-21/libcxx/include/__vector/vector.h,std::vector<T>::__throw_length_error()
-1027620,328,verified,src/game/singleton/singletons.cpp,_ZN4game5spine9SpineFaceD2Ev
+1027620,352,verified,src/game/singleton/singletons.cpp,_ZN4game5spine9SpineFaceD2Ev
 1027860,80,verified,src/memory/new_delete.cpp,deleting destructor at 0x1027860
 1028190,4,verified,src/game/singleton/singletons.cpp,_ZN4game9SingletonINS_5spine9SpineFaceELb0EE10InitializeEv
 10281a0,4,verified,src/game/singleton/singletons.cpp,_ZN4game9SingletonINS_5spine9SpineFaceELb0EE8FinalizeEv
