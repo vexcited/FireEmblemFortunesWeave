@@ -50,6 +50,32 @@ using Visitor = U32 (*)(U64, U64, U32*);
 [[gnu::visibility("hidden")]] void CudaDriverRoutine_25d640(U64);
 [[gnu::visibility("hidden")]] void CudaDriverRoutine_25d650(U64);
 
+[[gnu::visibility("hidden")]] U64 CudaDriverRoutine_25d080(U64, U32);
+[[gnu::visibility("hidden")]] U64 CudaDriverRoutine_25d090(U64, U32);
+[[gnu::visibility("hidden")]] U64 CudaDriverRoutine_25d0a0(U64, U32);
+[[gnu::visibility("hidden")]] U64 CudaDriverRoutine_25d0b0(U64, U32, U64*,
+  U64);
+[[gnu::visibility("hidden")]] U64 CudaDriverRoutine_25d100(U64*, U32);
+[[gnu::visibility("hidden")]] void CudaDriverRoutine_25d160(U64);
+[[gnu::visibility("hidden")]] void CudaDriverRoutine_25d170(U64);
+[[gnu::visibility("hidden")]] void CudaDriverRoutine_25d180(U64);
+[[gnu::visibility("hidden")]] void CudaDriverRoutine_25d190(U64);
+[[gnu::visibility("hidden")]] U64 CudaDriverRoutine_25d1a0(U64);
+[[gnu::visibility("hidden")]] U64 CudaDriverRoutine_25d1b0(U64);
+[[gnu::visibility("hidden")]] U64 CudaDriverRoutine_25d200(U64, U64, U64*,
+  U64);
+[[gnu::visibility("hidden")]] U64 CudaDriverRoutine_25d290(U64*);
+[[gnu::visibility("hidden")]] void CudaDriverRoutine_25d2c0(U64, U64, U64,
+  U32, U32);
+[[gnu::visibility("hidden")]] U32 CudaDriverRoutine_25d2d0(U64, U64*);
+[[gnu::visibility("hidden")]] U64 CudaDriverRoutine_25d300(U64);
+[[gnu::visibility("hidden")]] U64 CudaDriverRoutine_25d340(U64, U32);
+[[gnu::visibility("hidden")]] U64 CudaDriverRoutine_25d350(U64, U32);
+[[gnu::visibility("hidden")]] U64 CudaDriverRoutine_25d3d0(U64, U32, U32,
+  U32);
+[[gnu::visibility("hidden")]] U64 CudaDriverRoutine_25d4c0(U64, U32, U64*);
+[[gnu::visibility("hidden")]] extern const U32 CudaDriverData_1130d58[3];
+
 [[gnu::visibility("hidden")]] U32 CudaDriverRoutine_222b80(U64, Visitor,
   U32*);
 [[gnu::visibility("hidden")]] U32 CudaDriverRoutine_76a00(U64, U64, U32*);
@@ -467,4 +493,201 @@ template <U64 kOffset, Visitor kVisit, U32 kMissing>
   At<U32>(out, 4) = address >> 8;
   At<U64>(out, 8) = 0x3200120b0;
   return out + 0x10;
+}
+
+namespace {
+
+// Two state enumerations map 1 and 2 to false and true.
+template <U64 (*Set)(U64, U32)>
+[[gnu::always_inline]] inline U64 SetSwitch(U64 request) {
+  if (Size(request) < 0x10) {
+    return kTooSmall;
+  }
+
+  const U32 state = At<U32>(request, 0xc);
+  if (state == 1) {
+    return Set(At<U64>(request, 4), 0);
+  }
+
+  if (state == 2) {
+    return Set(At<U64>(request, 4), 1);
+  }
+
+  return 4;
+}
+
+template <void (*Release)(U64)>
+[[gnu::always_inline]] inline U32 ReleaseHandle(U64 request) {
+  if (Size(request) < 0xc) {
+    return kTooSmall;
+  }
+
+  Release(At<U64>(request, 4));
+  At<U64>(request, 4) = 0;
+  return 0;
+}
+
+template <U64 (*Run)(U64), U32 kLast>
+[[gnu::always_inline]] inline U64 RunWithMode(U64 request) {
+  if (Size(request) < 0x10) {
+    return kTooSmall;
+  }
+
+  if (At<U32>(request, 0xc) - 1 > kLast - 1) {
+    return 4;
+  }
+
+  return Run(At<U64>(request, 4));
+}
+
+}
+
+[[gnu::visibility("hidden")]] U64 CudaDriverRoutine_65900(U64 request) {
+  return SetSwitch<CudaDriverRoutine_25d080>(request);
+}
+
+[[gnu::visibility("hidden")]] U64 CudaDriverRoutine_65950(U64 request) {
+  return SetSwitch<CudaDriverRoutine_25d090>(request);
+}
+
+[[gnu::visibility("hidden")]] U64 CudaDriverRoutine_659a0(U64 request) {
+  return SetSwitch<CudaDriverRoutine_25d0a0>(request);
+}
+
+[[gnu::visibility("hidden")]] U64 CudaDriverRoutine_677a0(U64 request) {
+  return SetSwitch<CudaDriverRoutine_25d350>(request);
+}
+
+[[gnu::visibility("hidden")]] U32 CudaDriverRoutine_66e10(U64 request) {
+  return ReleaseHandle<CudaDriverRoutine_25d160>(request);
+}
+
+[[gnu::visibility("hidden")]] U32 CudaDriverRoutine_66e60(U64 request) {
+  return ReleaseHandle<CudaDriverRoutine_25d170>(request);
+}
+
+[[gnu::visibility("hidden")]] U32 CudaDriverRoutine_66eb0(U64 request) {
+  return ReleaseHandle<CudaDriverRoutine_25d180>(request);
+}
+
+[[gnu::visibility("hidden")]] U32 CudaDriverRoutine_66f00(U64 request) {
+  return ReleaseHandle<CudaDriverRoutine_25d190>(request);
+}
+
+[[gnu::visibility("hidden")]] U64 CudaDriverRoutine_66f50(U64 request) {
+  return RunWithMode<CudaDriverRoutine_25d1a0, 3>(request);
+}
+
+[[gnu::visibility("hidden")]] U64 CudaDriverRoutine_66f90(U64 request) {
+  return RunWithMode<CudaDriverRoutine_25d1b0, 4>(request);
+}
+
+[[gnu::visibility("hidden")]] U64 CudaDriverRoutine_676a0(U64 request) {
+  return RunWithMode<CudaDriverRoutine_25d300, 3>(request);
+}
+
+[[gnu::visibility("hidden")]] U32 CudaDriverRoutine_659f0(U64 request) {
+  if (Size(request) < 0xc) {
+    return kTooSmall;
+  }
+
+  *At<U64*>(request, 4) = 1;
+  return 0;
+}
+
+[[gnu::visibility("hidden")]] U64 CudaDriverRoutine_65a40(U64 request) {
+  if (Size(request) < 0x18) {
+    return kTooSmall;
+  }
+
+  U64 output = 0;
+  return CudaDriverRoutine_25d0b0(At<U64>(request, 4), At<U32>(request, 0xc),
+    &output, At<U64>(request, 0x10));
+}
+
+[[gnu::visibility("hidden")]] U32 CudaDriverRoutine_66bb0(U64 request) {
+  if (Size(request) < 0x18) {
+    return kTooSmall;
+  }
+
+  U64 handle = At<U64>(request, 4);
+  At<U64>(request, 0x10) = CudaDriverRoutine_25d100(&handle,
+    At<U32>(request, 0xc));
+  return 0;
+}
+
+[[gnu::visibility("hidden")]] U64 CudaDriverRoutine_67150(U64 request) {
+  if (Size(request) < 0x1c) {
+    return kTooSmall;
+  }
+
+  U64 output = 0;
+  return CudaDriverRoutine_25d200(At<U64>(request, 4), At<U64>(request, 0xc),
+    &output, At<U64>(request, 0x14));
+}
+
+[[gnu::visibility("hidden")]] U32 CudaDriverRoutine_67460(U64 request) {
+  if (Size(request) < 0x10) {
+    return kTooSmall;
+  }
+
+  U64 output = 0;
+  At<U64>(request, 8) = CudaDriverRoutine_25d290(&output);
+  return 0;
+}
+
+[[gnu::visibility("hidden")]] U32 CudaDriverRoutine_67570(U64 request) {
+  if (Size(request) < 0x28) {
+    return kTooSmall;
+  }
+
+  const U32 mode = (At<U32>(request, 0x24) & 3) != 0 ? 3 : 0;
+  CudaDriverRoutine_25d2c0(At<U64>(request, 4), At<U64>(request, 0xc),
+    At<U64>(request, 0x14), 1, mode);
+  return 0;
+}
+
+[[gnu::visibility("hidden")]] U32 CudaDriverRoutine_675d0(U64 request) {
+  if (Size(request) < 0x14) {
+    return kTooSmall;
+  }
+
+  U64 output;
+  const U32 result = CudaDriverRoutine_25d2d0(At<U64>(request, 4), &output);
+  At<U64>(request, 0xc) = output;
+  return result;
+}
+
+[[gnu::visibility("hidden")]] U64 CudaDriverRoutine_67760(U64 request) {
+  if (Size(request) < 0x10) {
+    return kTooSmall;
+  }
+
+  const U32 index = At<U32>(request, 0xc) - 1;
+  if (index > 2) {
+    return 4;
+  }
+
+  return CudaDriverRoutine_25d340(At<U64>(request, 4),
+    CudaDriverData_1130d58[index]);
+}
+
+[[gnu::visibility("hidden")]] U64 CudaDriverRoutine_67960(U64 request) {
+  if (Size(request) < 0x18) {
+    return kTooSmall;
+  }
+
+  return CudaDriverRoutine_25d3d0(At<U64>(request, 4), At<U32>(request, 0xc),
+    At<U32>(request, 0x10), At<U32>(request, 0x14));
+}
+
+[[gnu::visibility("hidden")]] U64 CudaDriverRoutine_680e0(U64 request) {
+  if (Size(request) < 0x14) {
+    return kTooSmall;
+  }
+
+  U64 flags;
+  reinterpret_cast<U8*>(&flags)[0] = At<U8>(request, 0xc);
+  return CudaDriverRoutine_25d4c0(At<U64>(request, 4), At<U32>(request, 0x10),
+    &flags);
 }
