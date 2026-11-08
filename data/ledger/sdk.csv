@@ -1811,6 +1811,7 @@ b22b0,72,verified,src/musl/src/dirent/seekdir.c,seekdir
 b2300,8,verified,src/musl/src/dirent/telldir.c,telldir
 b2310,20,verified,src/nnmusl/nnmusl_libc_misc2.cpp,versionsort
 b2330,12,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,creat
+b23b0,280,verified,src/nnmusl/fcntl/open.c,open
 b2580,4,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,accept
 b2590,4,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,bind
 b25a0,4,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,connect
