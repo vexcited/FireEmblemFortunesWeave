@@ -24,6 +24,7 @@ public:
     const uint8_t& type);
   void Attach(ShopServiceAccessor* accessor);
   void Detach(ShopServiceAccessor* accessor);
+  nim::detail::IShopServiceAccessServer* AcquireImpl();
 
 private:
   os::Mutex m_Mutex{true};
@@ -35,9 +36,13 @@ private:
 
 class ProxyStore {
 public:
+  ProxyStore() : m_pProxy(nullptr) {}
   ~ProxyStore();
 
   static ProxyStore& GetInstance();
+
+  void Initialize(Proxy* proxy);
+  Result Finalize();
 
   Proxy* m_pProxy;
 };

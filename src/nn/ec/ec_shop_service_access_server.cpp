@@ -69,10 +69,37 @@ void Proxy::Detach(ShopServiceAccessor* accessor) {
 }
 
 // A proxy that fails to finalize stays registered.
+nim::detail::IShopServiceAccessServer* Proxy::AcquireImpl() {
+  return m_Service.Get();
+}
+
 ProxyStore::~ProxyStore() {
   if (m_pProxy != nullptr && m_pProxy->Finalize().IsSuccess()) {
     m_pProxy = nullptr;
   }
+}
+
+ProxyStore& ProxyStore::GetInstance() {
+  static ProxyStore s_Instance;
+  return s_Instance;
+}
+
+void ProxyStore::Initialize(Proxy* proxy) {
+  m_pProxy = proxy;
+}
+
+Result ProxyStore::Finalize() {
+  if (m_pProxy == nullptr) {
+    return {};
+  }
+
+  const Result result = m_pProxy->Finalize();
+  if (result.IsFailure()) {
+    return result;
+  }
+
+  m_pProxy = nullptr;
+  return {};
 }
 
 SpecialClientRegister::~SpecialClientRegister() {
