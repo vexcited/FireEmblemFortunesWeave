@@ -2,6 +2,8 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#include <atomic>
+
 #include "nn/diag/diag_abort.hpp"
 #include "nn/os/mutex.hpp"
 #include "nn/os/startup_support.hpp"
@@ -117,6 +119,7 @@ void NvOsHosSdkLog(const char* module, int line, const char* file,
 [[gnu::visibility("hidden")]] extern NvOsTlsState g_NvOsTls;
 [[gnu::visibility("hidden")]] void NvOsTlsDestroy(uintptr_t values);
 [[gnu::visibility("hidden")]] extern NvOsDrvService* g_NvOsDrvServices[4];
+[[gnu::visibility("hidden")]] extern std::atomic<int32_t> g_NvOsTelemetryFd;
 
 [[gnu::visibility("hidden")]] NvOsDrvEntry* NvOsDrvFindFd(int32_t fd);
 [[gnu::visibility("hidden")]] void NvOsDrvRemoveEntry(NvOsDrvEntry* entry);
@@ -305,7 +308,7 @@ extern "C" void NvOsTlsFree(uint32_t index) {
   }
 }
 
-extern "C" int32_t NvOsDrvOpen(const char* path) {
+extern "C" [[gnu::noinline]] int32_t NvOsDrvOpen(const char* path) {
   int32_t fd = 0;
   const size_t length = strlen(path);
   NvOsDrvEntry* entry = nullptr;
@@ -337,7 +340,7 @@ extern "C" int32_t NvOsDrvOpen(const char* path) {
   return -1;
 }
 
-extern "C" void NvOsDrvClose(int32_t fd) {
+extern "C" [[gnu::noinline]] void NvOsDrvClose(int32_t fd) {
   uint32_t status = 0;
   NvOsDrvEntry* entry = NvOsDrvFindFd(fd);
 
@@ -372,8 +375,8 @@ extern "C" void NvOsDrvClose(int32_t fd) {
   return (request & direction) != 0 ? (request >> 16) & 0x3fff : 0;
 }
 
-extern "C" uint32_t NvOsDrvIoctl(int32_t fd, uint32_t request,
-  void* argument, uint64_t size) {
+extern "C" [[gnu::noinline]] uint32_t NvOsDrvIoctl(int32_t fd,
+  uint32_t request, void* argument, uint64_t size) {
   uint32_t status = 0;
   uint8_t proceed = 1;
   NvOsDrvBuffer input = {argument, DrvSize(request, 1u << 30)};
@@ -461,4 +464,28 @@ extern "C" uint32_t NvOsDrvIoctl3(int32_t fd, uint32_t request,
   void* argument, uint64_t size, void* extra, uint64_t extraSize) {
   return DrvIoctlExtra(fd, request, argument, size, extra, extraSize, 3,
     11);
+}
+
+// Reports go through the error report control device, opened once.
+extern "C" uint32_t NvOsTelemetrySubmitData(uint32_t kind, void* data) {
+  if (g_NvOsTelemetryFd == -1) {
+    const int32_t fd = NvOsDrvOpen("/dev/nverpt-ctrl");
+    if (fd < 0) {
+      return 15;
+    }
+
+    int32_t expected = -1;
+    if (!g_NvOsTelemetryFd.compare_exchange_strong(expected, fd)) {
+      NvOsDrvClose(fd);
+    }
+  }
+
+  switch (kind) {
+    case 0:
+      return NvOsDrvIoctl(g_NvOsTelemetryFd, 0xc1280701, data, 0x128);
+    case 1:
+      return NvOsDrvIoctl(g_NvOsTelemetryFd, 0xcf580702, data, 0xf58);
+    default:
+      return 4;
+  }
 }

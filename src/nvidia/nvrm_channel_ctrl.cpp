@@ -2,6 +2,7 @@
 
 enum NvError : int32_t {
   NvSuccess = 0,
+  NvError_BadAddress = 3,
   NvError_BadParameter = 4,
 };
 
@@ -61,6 +62,7 @@ const char NvRmControlPath[] = "/dev/nvhost-ctrl";
 const uint32_t NvHostIoctlGetCharacteristics = 0xc010002a;
 const uint32_t NvHostIoctlSyncptRead = 0xc0080014;
 const uint32_t NvHostIoctlSyncptIncr = 0x40040015;
+const uint32_t NvHostIoctlModuleCheck = 0xc008002b;
 
 struct NvHostCharacteristicsArguments {
   uint64_t size;
@@ -153,5 +155,25 @@ extern "C" NvError NvRmFenceGetFromFile(int32_t fd, NvRmFence* pOutFences,
 
   *pCount = info.count;
   memcpy(pOutFences, info.fences, info.count * sizeof(NvRmFence));
+  return NvSuccess;
+}
+
+extern "C" NvError NvRmHostModuleCheck(void*, uint32_t module,
+  uint8_t* pOutIsPresent) {
+  if (pOutIsPresent == nullptr) {
+    return NvError_BadAddress;
+  }
+
+  uint32_t arguments[2] = {};
+  OpenControl();
+
+  arguments[0] = module;
+  const NvError result = NvRmChannelIoctl(g_NvRmControlFd,
+    NvHostIoctlModuleCheck, arguments, sizeof(arguments));
+  if (result != NvSuccess) {
+    return result;
+  }
+
+  *pOutIsPresent = arguments[1] != 0;
   return NvSuccess;
 }
