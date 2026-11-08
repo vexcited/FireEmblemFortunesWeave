@@ -1881,7 +1881,7 @@ b2820,4,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,rename
 b2830,148,verified,src/musl/src/time/clock.c,clock
 b28e0,4,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,clock_getres
 b28f0,4,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,clock_gettime
-b2900,292,verified,src/nnmusl/time/clock_nanosleep.c,clock_nanosleep
+b2900,292,disputed,src/nnmusl/time/clock_nanosleep.c,clock_nanosleep
 b2a40,4,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,clock_setclockbase_np
 b2a50,104,verified,src/musl/src/time/gettimeofday.c,gettimeofday
 b2ac0,52,verified,src/nnmusl/nnmusl_libc_misc3.cpp,nanosleep
@@ -1918,9 +1918,12 @@ b52a0,112,verified,src/nnmusl/time/clock.c,__nnmusl_clock_gettime
 b5310,104,verified,src/nnmusl/fcntl/fs_sleep_fcntl.c,__nnmusl_sleep
 b54d0,36,verified,src/nnmusl/nnmusl_socket_table.cpp,_nnmusl_socket_IsNnmuslFileDescriptor
 b5500,4,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,_nnmusl_socket_TranslateNnmuslFileDescriptorOrPassThrough
+b5510,80,verified,src/nnmusl/network/socket_fd.c,_nnmusl_socket_TranslateFileDescriptorFromNnmuslToNative
 b5560,44,verified,src/nnmusl/nnmusl_socket_table.cpp,_nnmusl_socket_TranslateFileDescriptorFromNativeToNnmusl
+b5590,68,verified,src/nnmusl/network/socket_fd.c,_nnmusl_socket_poll_TranslateFileDescriptorFromNnmuslToNative
 b55e0,4,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,_nnmusl_socket_poll_TranslateFileDescriptorFromNativeToNnmusl
 b55f0,44,verified,src/nnmusl/nnmusl_socket_table.cpp,_nnmusl_socket_AddNativeSocketFileDescriptorToNnmuslTable
+b5620,88,verified,src/nnmusl/network/socket_fd.c,_nnmusl_socket_RemoveNnmuslSocketFileDescriptorFromNnmuslTable
 b5680,48,verified,src/nnmusl/nnmusl_socket_table.cpp,_nnmusl_socket_RemoveNativeSocketFileDescriptorFromNnmuslTable
 b59f0,124,verified,src/nnmusl/fcntl/fs_sleep_fcntl.c,__nnmusl_socket_fcntl
 b5aa0,92,verified,src/nnmusl/fcntl/fd_open.c,__nnmusl_stat_path
