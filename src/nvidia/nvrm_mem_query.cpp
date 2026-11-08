@@ -31,6 +31,7 @@ enum NvError : int32_t {
   NvSuccess = 0,
   NvError_BadAddress = 3,
   NvError_BadParameter = 4,
+  NvError_AccessDenied = 9,
 };
 
 enum NvRmHeap : uint32_t {
@@ -59,12 +60,22 @@ struct NvRmMemObject {
   uint32_t reserved5c;
   void* address;
   uint64_t size;
-  uint32_t reserved70;
+  uint32_t attributes;
   uint32_t kind;
   uint32_t nativeHandle;
   uint32_t gpukHandle;
   nn::gs::NativeMemoryHandle debugMemory;
   uint32_t debugId;
+};
+
+struct NvRmMemHandleParams {
+  uint64_t heap;
+  uint64_t size;
+  uint8_t isCached;
+  uint64_t alignment;
+  uint64_t reserved20;
+  uint32_t coherency;
+  uint32_t attributes;
 };
 
 struct NvRmMemHeapParams {
@@ -92,6 +103,8 @@ void* NvOsDrvGpuGetGpukDevice();
 namespace {
 
 const uint64_t NvRmMemHeapAlignment = 0x1000;
+const uint32_t NvRmMemMapFlag_Fixed = 1 << 6;
+const uint64_t NvRmMemPageMask = 0xfffff000;
 
 void OpenGpukDevice() {
   if (g_NvRmMemGpukDevice != nullptr) {
@@ -333,4 +346,82 @@ extern "C" uint32_t NvRmMemGetNvRmMemIdForDebug(uint32_t handle) {
   }
 
   return 0;
+}
+
+// Mappings cover whole pages, a fixed mapping needs an address to start
+// with.
+extern "C" NvError NvRmMemMap(uint32_t handle, uint64_t offset, uint64_t size,
+  uint32_t flags, void** pOutAddress) {
+  if (handle == 0 || pOutAddress == nullptr) {
+    return NvError_BadParameter;
+  }
+
+  OpenGpukDevice();
+  if ((flags & NvRmMemMapFlag_Fixed) != 0 && *pOutAddress == nullptr) {
+    return NvError_AccessDenied;
+  }
+
+  NvRmMemObject* object = LookupObject(handle);
+  if (object == nullptr) {
+    *pOutAddress = nullptr;
+    return NvError_AccessDenied;
+  }
+
+  auto* base = static_cast<uint8_t*>(object->address);
+  if (base == nullptr) {
+    *pOutAddress = nullptr;
+    return NvSuccess;
+  }
+
+  const uint64_t pageOffset = offset & NvRmMemPageMask;
+  const uint32_t span = (static_cast<uint32_t>(offset & 0xfff) +
+    static_cast<uint32_t>(size) + 0xfff) & NvRmMemPageMask;
+  if (span + pageOffset > object->size) {
+    *pOutAddress = nullptr;
+    return NvError_AccessDenied;
+  }
+
+  *pOutAddress = base + pageOffset;
+  return NvSuccess;
+}
+
+extern "C" NvError NvRmMemQueryHandleParams(uint32_t handle, uint32_t,
+  NvRmMemHandleParams* pOutParams) {
+  if (handle == 0 || pOutParams == nullptr) {
+    return NvError_BadParameter;
+  }
+
+  NvRmMemObject* object = LookupObject(handle);
+  if (object == nullptr) {
+    return NvError_BadParameter;
+  }
+
+  switch (object->kind) {
+    case 0:
+      return NvError_BadParameter;
+    case NvRmMemKind_Gpuk:
+    case NvRmMemKind_User:
+      pOutParams->isCached = 0;
+      pOutParams->reserved20 = 0;
+      pOutParams->heap = NvRmHeap_External;
+      pOutParams->coherency = 3;
+      pOutParams->size = object->size;
+      pOutParams->alignment = object->nativeHandle;
+      pOutParams->attributes = object->attributes;
+      return NvSuccess;
+    case 3:
+    case NvRmMemKind_NativeImage:
+    case NvRmMemKind_Vpr:
+      pOutParams->heap = object->kind == NvRmMemKind_Vpr ? NvRmHeap_Vpr :
+        NvRmHeap_External;
+      pOutParams->isCached = 0;
+      pOutParams->coherency = 0;
+      pOutParams->size = object->size;
+      pOutParams->alignment = NvRmMemHeapAlignment;
+      pOutParams->reserved20 = 0;
+      pOutParams->attributes = 1;
+      return NvSuccess;
+    default:
+      return NvSuccess;
+  }
 }

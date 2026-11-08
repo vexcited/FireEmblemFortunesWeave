@@ -20025,9 +20025,9 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 5f9ed0,296,verified,src/nn/sf/cmif/client/cmif_client_extra_message.cpp,_ZN2nn2sf4hipc6client18Hipc2ProxyKindBaseILNS1_6detail11MessageTypeE6EE7ProcessILb0EJNS0_4cmif6client6detail8InHandleILb0EEENSA_5InRawIjEENSA_6OutRawIjEEEEENS_6ResultEPKNS6_14ProxyKindStateEDpNT0_9ParameterEi
 5fa8b0,208,verified,src/nvidia/nvos_log.cpp,NvOsDrvOpen
 5fa980,124,verified,src/nvidia/nvos_log.cpp,NvOsDrvClose
-5faa00,428,verified,src/nvidia/nvos_log.cpp,NvOsDrvIoctl
-5fac00,512,verified,src/nvidia/nvos_log.cpp,NvOsDrvIoctl2
-5fae30,480,verified,src/nvidia/nvos_log.cpp,NvOsDrvIoctl3
+5faa00,492,verified,src/nvidia/nvos_log.cpp,NvOsDrvIoctl
+5fac00,552,verified,src/nvidia/nvos_log.cpp,NvOsDrvIoctl2
+5fae30,552,verified,src/nvidia/nvos_log.cpp,NvOsDrvIoctl3
 5fb060,8,verified,src/nvidia/nvos_stubs.cpp,NvOsDrvMapSharedMem
 5fb910,4,verified,src/nvidia/nv_misc.cpp,_Z23hosGetSystemEventHandleijPN2nn2os15SystemEventTypeE
 5fd330,8,verified,src/nvidia/nvos_stubs.cpp,NvRmIsOnHypervisor
@@ -20132,6 +20132,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 6010f0,8,verified,src/nvidia/nvos_stubs.cpp,NvRmMemHandleFromIVCId
 601100,8,verified,src/nvidia/nvos_stubs.cpp,NvRmMemPin
 601110,4,verified,src/nvidia/nvos_stubs.cpp,NvRmMemUnpin
+601120,304,verified,src/nvidia/nvrm_mem_query.cpp,NvRmMemMap
 601380,12,verified,src/nvidia/nvrm_mem.cpp,NvRmMemCacheSyncForCpu
 601390,12,verified,src/nvidia/nvrm_mem.cpp,NvRmMemCacheSyncForDevice
 6013a0,8,verified,src/nvidia/nvos_stubs.cpp,NvRmMemUnmap
@@ -20143,6 +20144,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 601680,8,verified,src/nvidia/nvos_stubs.cpp,NvRmMemHandleExportForAruid
 601690,8,verified,src/nvidia/nvos_stubs.cpp,NvRmMemHandleRemoveExportForAruid
 6016a0,8,verified,src/nvidia/nvos_stubs.cpp,NvRmMemGetImportIdMult
+6016b0,316,verified,src/nvidia/nvrm_mem_query.cpp,NvRmMemQueryHandleParams
 601800,8,verified,src/nvidia/nvos_stubs.cpp,NvRmMemGetImportId
 601810,8,verified,src/nvidia/nvos_stubs.cpp,NvRmMemHandleFromImportId
 601820,156,verified,src/nvidia/nvrm_mem_query.cpp,NvRmMemQueryHeaps
