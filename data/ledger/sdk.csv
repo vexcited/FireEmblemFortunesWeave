@@ -23607,9 +23607,10 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 7a0460,384,verified,src/nnmusl/stdio/fgets.c,fgets_unlocked
 7a0840,180,verified,src/nnmusl/stdio/fgetws.c,fgetws_unlocked
 7a0910,112,verified,src/nnmusl/nnmusl_libc_misc3.cpp,fileno_unlocked
-7a0b40,176,verified,src/musl/src/stdio/fmemopen.c,mread
-7a0bf0,112,verified,src/musl/src/stdio/fmemopen.c,mwrite
-7a0d10,120,verified,src/musl/src/stdio/fmemopen.c,mseek
+7a0980,428,verified,src/nnmusl/stdio/fmemopen.c,fmemopen
+7a0b40,176,verified,src/nnmusl/stdio/fmemopen.c,mread
+7a0bf0,288,verified,src/musl/src/stdio/fmemopen.c,mwrite
+7a0d10,120,verified,src/nnmusl/stdio/fmemopen.c,mseek
 7a0d90,8,verified,src/musl/src/stdio/fmemopen.c,mclose
 7a0da0,260,verified,src/musl/src/stdio/fopencookie.c,fopencookie
 7a0ec0,296,verified,src/musl/src/stdio/fopencookie.c,cookieread
