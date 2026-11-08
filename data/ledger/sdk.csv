@@ -7856,13 +7856,13 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 1f7090,148,verified,src/nn/audio/loudness_calculator.cpp,_ZN2nn5audio6detail22LoudnessCalculatorImpl20CalcKWeightingFilterEif
 1f7140,1396,verified,src/nn/audio/loudness_calculator.cpp,_ZN2nn5audio6detail22LoudnessCalculatorImpl4CalcEv
 1f7700,780,verified,src/nn/audio/ne10/modules/dsp/NE10_fft.c,nnaudiodetail_ne10_factor
-1f7a60,616,disputed,src/nn/audio/ne10/modules/dsp/NE10_fft.c,nnaudiodetail_ne10_fft_generate_twiddles_int32
+1f7a60,652,disputed,src/nn/audio/ne10/modules/dsp/NE10_fft.c,nnaudiodetail_ne10_fft_generate_twiddles_int32
 1f7e80,668,verified,src/nn/audio/ne10/modules/dsp/NE10_fft.c,nnaudiodetail_ne10_fft_generate_twiddles_float32
 1f8240,728,verified,src/nn/audio/ne10/modules/dsp/NE10_fft.c,nnaudiodetail_ne10_fft_generate_twiddles_transposed_float32
 1f8620,24,verified,src/nn/audio/ne10/modules/dsp/NE10_fft.c,nnaudiodetail_ne10_fft_sizeof_c2c_float32_neon
 1f8640,60,disputed,src/nn/audio/ne10/modules/dsp/NE10_fft.c,nnaudiodetail_ne10_fft_init_c2c_float32_neon
 1f8990,24,verified,src/nn/audio/ne10/modules/dsp/NE10_fft.c,nnaudiodetail_ne10_fft_sizeof_c2c_int32_neon
-1f89c0,960,verified,src/nn/audio/ne10/modules/dsp/NE10_fft.c,nnaudiodetail_ne10_fft_init_c2c_int32_neon
+1f89c0,1072,verified,src/nn/audio/ne10/modules/dsp/NE10_fft.c,nnaudiodetail_ne10_fft_init_c2c_int32_neon
 1f8e10,4,verified,src/ne10/modules/dsp/NE10_fft.c,ne10_fft_destroy_c2c_float32
 1f8e20,4,verified,src/ne10/modules/dsp/NE10_fft.c,ne10_fft_destroy_c2c_int32
 1f8e30,4,verified,src/ne10/modules/dsp/NE10_fft.c,ne10_fft_destroy_c2c_int16
@@ -7967,7 +7967,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 21fe30,488,verified,src/nn/audio/ne10/modules/dsp/NE10_fft_int32.neonintrinsic.c,nnaudiodetail_ne10_fft_c2c_1d_int32_neon
 220420,852,verified,src/ne10/modules/dsp/NE10_fft_int32.neonintrinsic.c,ne10_fft_r2c_1d_int32_neon
 2207a0,844,verified,src/ne10/modules/dsp/NE10_fft_int32.neonintrinsic.c,ne10_fft_c2r_1d_int32_neon
-220b00,3484,verified,src/nn/audio/ne10/modules/dsp/NE10_rfft_float32.neonintrinsic.c,nnaudiodetail_ne10_fft_r2c_1d_float32_neon
+220b00,3588,verified,src/nn/audio/ne10/modules/dsp/NE10_rfft_float32.neonintrinsic.c,nnaudiodetail_ne10_fft_r2c_1d_float32_neon
 221aa0,1988,verified,src/nn/audio/ne10/modules/dsp/NE10_rfft_float32.neonintrinsic.c,nnaudiodetail_ne10_fft_c2r_1d_float32_neon
 222880,36,verified,src/nn/audio/output_recorder.cpp,_ZN2nn5audio43IsVirtualCaptureDeviceStreamFormatSupportedERKNS0_15AudioDeviceNameERKNS0_12StreamFormatE
 2228b0,124,verified,src/nn/audio/output_recorder.cpp,_ZN2nn5audio18OpenOutputRecorderEPNS0_18OutputRecorderTypeEPvmRKNS0_15AudioDeviceNameERKNS0_12StreamFormatEi
