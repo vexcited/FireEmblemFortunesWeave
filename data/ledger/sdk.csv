@@ -23725,11 +23725,12 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 7a99b0,504,verified,src/nnmusl/math/acos.c,acos
 7a9c90,520,disputed,src/musl/src/math/acosf.c,acosf
 7a9eb0,540,verified,src/nnmusl/math/asin.c,asin
-7aa120,316,verified,src/nnmusl/math/cosf.c,cosf
+7aa120,412,verified,src/nnmusl/math/cosf.c,cosf
 7aa390,104,verified,src/nnmusl/math/sincosf_reduce.c,__sincosf_reduce_large
 7aa400,340,verified,src/musl/src/math/erf.c,erf
 7aa9a0,384,verified,src/musl/src/math/erf.c,erfc
-7aab20,388,verified,src/nnmusl/math/exp.c,exp
+7aab20,312,verified,src/nnmusl/math/exp.c,exp
+7aac80,368,verified,src/nnmusl/math/exp.c,__exp_dd
 7aae80,508,verified,src/nnmusl/math/exp2.c,exp2
 7ab090,244,verified,src/libm/exp_power.cpp,expf
 7ab190,620,verified,src/musl/src/math/expm1.c,expm1
@@ -23819,6 +23820,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 7b3c60,8,verified,src/musl/src/math/aarch64/trunc.c,trunc
 7b3c70,8,verified,src/musl/src/math/aarch64/truncf.c,truncf
 7b3c80,160,verified,src/musl/src/math/acosh.c,acosh
+7b3d20,160,verified,src/nnmusl/math/acoshf.c,acoshf
 7b3dc0,32,verified,src/nnmusl/nnmusl_math_ld.c,acoshl
 7b3de0,348,verified,src/musl/src/math/acosl.c,acosl
 7b4060,400,verified,src/musl/src/math/asinf.c,asinf
@@ -23854,6 +23856,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 7b6920,32,verified,src/nnmusl/nnmusl_math_ld.c,erfcl
 7b6940,112,verified,src/musl/src/math/exp10.c,pow10
 7b69f0,116,verified,src/musl/src/math/exp10f.c,pow10f
+7b6b80,140,verified,src/nnmusl/math/exp2f.c,exp2f
 7b6c30,696,verified,src/musl/src/math/exp2l.c,exp2l
 7b6f10,32,verified,src/nnmusl/nnmusl_math_ld.c,expl
 7b6f30,32,verified,src/nnmusl/nnmusl_math_ld.c,expm1l

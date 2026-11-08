@@ -48,7 +48,7 @@ static inline uint32_t top12(double x)
   return asuint64(x) >> 52;
 }
 
-double exp(double x)
+static inline double exp_inline(double x, double xtail, int has_tail)
 {
   uint32_t abstop = top12(x) & 0x7ff;
 
@@ -82,6 +82,11 @@ double exp(double x)
   double kd = roundtoint(z);
   uint64_t ki = converttoint(z);
   double r = x + kd * NegLn2hiN + kd * NegLn2loN;
+
+  if (has_tail) {
+    r += xtail;
+  }
+
   uint64_t idx = 2 * (ki % N);
   uint64_t top = ki << (52 - EXP_TABLE_BITS);
   double tail = asdouble(T[idx]);
@@ -95,4 +100,14 @@ double exp(double x)
 
   double scale = asdouble(sbits);
   return eval_as_double(scale + scale * tmp);
+}
+
+double exp(double x)
+{
+  return exp_inline(x, 0, 0);
+}
+
+NNMUSL_LIBM_HIDDEN double __exp_dd(double x, double xtail)
+{
+  return exp_inline(x, xtail, 1);
 }

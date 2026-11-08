@@ -25,6 +25,20 @@ struct exp_data {
 
 NNMUSL_LIBM_HIDDEN extern const struct exp_data __exp_data;
 
+#define EXP2F_TABLE_BITS 5
+#define EXP2F_POLY_ORDER 3
+
+struct exp2f_data {
+  uint64_t tab[1 << EXP2F_TABLE_BITS];
+  double shift_scaled;
+  double poly[EXP2F_POLY_ORDER];
+  double shift;
+  double invln2_scaled;
+  double poly_scaled[EXP2F_POLY_ORDER];
+};
+
+NNMUSL_LIBM_HIDDEN extern const struct exp2f_data __exp2f_data;
+
 #define LOG_TABLE_BITS 7
 #define LOG_POLY_ORDER 6
 #define LOG_POLY1_ORDER 12
@@ -77,6 +91,8 @@ NNMUSL_LIBM_HIDDEN double __math_xflow(uint32_t sign, double y);
 NNMUSL_LIBM_HIDDEN double __math_divzero(uint32_t sign);
 NNMUSL_LIBM_HIDDEN double __math_invalid(double x);
 NNMUSL_LIBM_HIDDEN float __math_invalidf(float x);
+NNMUSL_LIBM_HIDDEN float __math_oflowf(uint32_t sign);
+NNMUSL_LIBM_HIDDEN float __math_uflowf(uint32_t sign);
 
 double round(double x);
 double fma(double x, double y, double z);
@@ -106,6 +122,11 @@ static inline uint32_t top16(double x)
 }
 
 static inline double eval_as_double(double x)
+{
+  return x;
+}
+
+static inline float eval_as_float(float x)
 {
   return x;
 }
