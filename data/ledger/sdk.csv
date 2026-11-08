@@ -1789,6 +1789,8 @@ ae9e0,8,verified,src/nn/async/async_thread_pool.cpp,_ZN2nn5async10ThreadPool12St
 ae9f0,4,verified,src/nn/async/async_thread_pool.cpp,_ZN2nn5async10ThreadPool12StartThreadsEiPPvmiPi
 aea00,8,verified,src/nn/async/async_thread_pool.cpp,_ZN2nn5async10ThreadPool17RequestThreadExitEv
 aea20,84,verified,src/nn/async/async_thread_pool.cpp,_ZN2nn5async10ThreadPool11JoinThreadsEv
+af910,60,verified,src/nnmusl/nnmusl_libc_misc3.cpp,fsync
+afa70,60,verified,src/nnmusl/nnmusl_libc_misc3.cpp,fdatasync
 afab0,36,verified,src/nnmusl/nnmusl_unsupported.c,link
 afae0,36,verified,src/nnmusl/nnmusl_unsupported.c,linkat
 afb10,36,verified,src/nnmusl/nnmusl_unsupported.c,symlink
@@ -1855,6 +1857,7 @@ b28e0,4,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,clock_getres
 b28f0,4,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,clock_gettime
 b2a40,4,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,clock_setclockbase_np
 b2a50,104,verified,src/musl/src/time/gettimeofday.c,gettimeofday
+b2ac0,52,verified,src/nnmusl/nnmusl_libc_misc3.cpp,nanosleep
 b2b00,68,verified,src/musl/src/time/time.c,time
 b2b50,60,verified,src/musl/src/time/timespec_get.c,timespec_get
 b2b90,4,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,access
@@ -23154,6 +23157,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 776de0,4,verified,src/libc/errno.cpp,__errno_location
 776df0,16,verified,src/libc/quick_exit.cpp,_Exit
 776e00,16,verified,src/nnmusl/nnmusl_libc_forwarders2.cpp,abort
+776e10,36,verified,src/nnmusl/nnmusl_libc_misc3.cpp,__assert_fail
 776e40,104,verified,src/libc/quick_exit.cpp,RunQuickExitCallbacks
 776eb0,112,verified,src/libc/quick_exit.cpp,at_quick_exit
 776f20,4,verified,src/libc/exit.cpp,RunExitCallbacks
@@ -23413,6 +23417,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 7989e0,244,verified,src/musl/src/env/setenv.c,setenv
 798ae0,240,verified,src/musl/src/env/unsetenv.c,unsetenv
 798bf0,36,verified,src/nnmusl/nnmusl_libc_misc.cpp,strerror_l
+798c20,68,verified,src/nnmusl/nnmusl_libc_misc3.cpp,strerror
 798c70,32,verified,src/libc/quick_exit.cpp,quick_exit
 798c90,48,verified,src/musl/src/fenv/fegetexceptflag.c,fegetexceptflag
 798cc0,36,verified,src/musl/src/fenv/feholdexcept.c,feholdexcept
@@ -23480,6 +23485,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 79daa0,16,verified,src/musl/src/prng/rand.c,srand
 79dab0,44,verified,src/musl/src/prng/rand.c,rand
 79dae0,68,verified,src/musl/src/prng/rand_r.c,rand_r
+79db30,92,verified,src/nnmusl/nnmusl_libc_misc3.cpp,seed48
 79db90,56,verified,src/musl/src/prng/srand48.c,srand48
 79df40,436,verified,src/musl/src/regex/fnmatch.c,pat_next
 79e1e0,476,verified,src/musl/src/regex/fnmatch.c,fnmatch_internal
@@ -23525,6 +23531,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 7a0030,88,verified,src/nnmusl/nnmusl_libc_misc2.cpp,ferror
 7a00a0,588,verified,src/libc/stdio_flush.cpp,fflush
 7a0410,68,verified,src/musl/src/stdio/fgetpos.c,fgetpos64
+7a0910,112,verified,src/nnmusl/nnmusl_libc_misc3.cpp,fileno_unlocked
 7a0bf0,112,verified,src/musl/src/stdio/fmemopen.c,mwrite
 7a0d90,8,verified,src/musl/src/stdio/fmemopen.c,mclose
 7a1160,108,verified,src/musl/src/stdio/fprintf.c,fprintf
@@ -23567,9 +23574,10 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 7a4070,120,verified,src/musl/src/stdio/wprintf.c,wprintf
 7a40f0,12,verified,src/musl/src/stdlib/abs.c,abs
 7a4100,8,verified,src/musl/src/stdlib/atof.c,atof
-7a4120,80,verified,src/nnmusl/nnmusl_atoi.cpp,atoi
+7a4120,176,verified,src/nnmusl/nnmusl_atoi.cpp,atoi
 7a41e0,176,verified,src/nnmusl/nnmusl_atoi.cpp,atol
-7a42a0,80,verified,src/nnmusl/nnmusl_atoi.cpp,atoll
+7a42a0,176,verified,src/nnmusl/nnmusl_atoi.cpp,atoll
+7a4360,140,verified,src/nnmusl/nnmusl_libc_misc3.cpp,bsearch
 7a4400,16,verified,src/musl/src/stdlib/div.c,div
 7a4420,196,verified,src/musl/src/stdlib/ecvt.c,ecvt
 7a44f0,232,verified,src/musl/src/stdlib/fcvt.c,fcvt
@@ -23671,6 +23679,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 7a8cf0,12,verified,src/musl/src/time/difftime.c,difftime
 7a8d00,104,verified,src/musl/src/time/ftime.c,ftime
 7a8d70,12,verified,src/musl/src/time/gmtime.c,gmtime
+7a8d80,96,verified,src/nnmusl/nnmusl_libc_misc3.cpp,gmtime_r
 7a8de0,12,verified,src/musl/src/time/localtime.c,localtime
 7a8df0,164,verified,src/musl/src/time/localtime_r.c,localtime_r
 7a8ea0,228,verified,src/musl/src/time/mktime.c,mktime
