@@ -3042,7 +3042,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 141700,60,verified,src/snd/vib_voice.cpp,_ZN3snd8VibVoice7destroyEv
 141740,16,verified,src/snd/vib_voice.cpp,_ZN3snd8VibVoice12mainUnlockedEv
 141750,116,verified,src/snd/vib_voice.cpp,_ZN3snd8VibVoice11updateActorEv
-1417d0,248,verified,src/snd/vib_voice.cpp,_ZN3snd8VibVoice6updateEf
+1417d0,320,verified,src/snd/vib_voice.cpp,_ZN3snd8VibVoice6updateEf
 141a40,60,verified,src/snd/vib_voice.cpp,_ZN3snd8VibVoice9addToSlotEv
 142300,60,verified,src/snd/vib_voice.cpp,_ZNK3snd8VibVoice9isLoadingEv
 142340,220,verified,src/snd/vib_voice.cpp,_ZN3snd8VibVoice11checkLoadedEv
@@ -4413,7 +4413,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 184910,80,verified,src/snd/wave_player.cpp,_ZNK3snd10WavePlayer11isRenderingEv
 184960,4,verified,src/angelscript/angelscript/source/as_thread.cpp,asUnprepareMultithread
 184980,260,verified,src/snd/wave_player.cpp,_ZN3snd10WavePlayer6renderEPsijj
-1852a0,896,verified,src/snd/wave_player.cpp,_ZN3snd10WavePlayer12updateOutputEv
+1852a0,904,verified,src/snd/wave_player.cpp,_ZN3snd10WavePlayer12updateOutputEv
 185630,492,verified,src/snd/wave_player.cpp,_ZN3snd10WavePlayer17calcFrontLeftGainEf
 185860,492,verified,src/snd/wave_player.cpp,_ZN3snd10WavePlayer18calcFrontRightGainEf
 185a90,492,verified,src/snd/wave_player.cpp,_ZN3snd10WavePlayer16calcRearLeftGainEf
@@ -4474,7 +4474,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 187920,40,verified,src/snd/wave_player.cpp,_ZN3snd10WavePlayer11setMainSendEf
 187950,264,verified,src/snd/wave_player.cpp,_ZN3snd10WavePlayer8applyLpfEf
 187a60,20,verified,src/snd/wave_player.cpp,_ZN3snd10WavePlayer11applyBiquadEf
-188360,764,verified,src/snd/wave_player.cpp,_ZN3snd10WavePlayer9seekCacheEv
+188360,532,disputed,src/snd/wave_player.cpp,_ZN3snd10WavePlayer9seekCacheEv
 188680,372,verified,src/snd/wave_player.cpp,_ZN3snd10WavePlayer10seekStreamEv
 188800,96,verified,src/snd/wave_player.cpp,_ZNK3snd10WavePlayer11getRegistryEv
 188970,48,verified,src/memory/new_delete.cpp,deleting destructor at 0x188970
