@@ -2024,6 +2024,8 @@ b9760,48,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag6detail7PutImplERKNS0
 b9790,52,verified,src/nn/diag/diag_c_api_abort.cpp,nndetailDiagVLogImplForC
 b9840,4,verified,src/nn/diag/diag_c_api_misc.cpp,nndetailDiagPutImplForC
 b9ac0,180,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag6detail18CallAllLogObserverERKNS0_11LogMetaDataERKNS0_7LogBodyE
+b9b80,200,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag6detail25ReplaceDefaultLogObserverEPFvRKNS0_11LogMetaDataERKNS0_7LogBodyEPvE
+b9c60,232,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag21UnregisterLogObserverEPNS0_17LogObserverHolderE
 b9d50,16,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag27InitializeLogObserverHolderEPNS0_17LogObserverHolderEPFvRKNS0_11LogMetaDataERKNS0_7LogBodyEPvES9_
 b9d60,156,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag19RegisterLogObserverEPNS0_17LogObserverHolderE
 b9e00,172,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag6detail23ResetDefaultLogObserverEv
@@ -2047,6 +2049,9 @@ bb4c0,112,verified,src/nn/diag/diag_module_misc.cpp,_ZN2nn4diag6detail13DevNotif
 bb900,128,verified,src/nn/diag/diag_module_misc.cpp,_ZN2nn4diag6detail27GetFileNameWithoutExtensionEPPKcPmS3_m
 bb990,48,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag6detail16PrintDebugStringEPKc
 bb9c0,168,verified,src/nn/diag/diag_module_misc.cpp,_ZN2nn4diag6detail24GetValidSizeAsUtf8StringEPKcm
+bba80,128,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag12GetBacktraceEPmi
+bbb30,128,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag12GetBacktraceEPmm
+bbbb0,60,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag9BacktraceC2Ev
 bbc40,12,verified,src/nn/diag/abort_observer.cpp,_ZN2nn4diag29InitializeAbortObserverHolderEPNS0_19AbortObserverHolderEPFvRKNS0_9AbortInfoEE
 bbc50,84,verified,src/nn/diag/abort_observer.cpp,_ZN2nn4diag21RegisterAbortObserverEPNS0_19AbortObserverHolderE
 bbcc0,196,verified,src/nn/diag/abort_observer.cpp,_ZN2nn4diag23UnregisterAbortObserverEPNS0_19AbortObserverHolderE
@@ -2054,6 +2059,7 @@ bbda0,16,verified,src/nn/diag/abort_observer.cpp,_ZN2nn4diag26EnableDefaultAbort
 bbdb0,12,verified,src/nn/diag/abort_observer.cpp,_ZN2nn4diag32InitializeSdkAbortObserverHolderEPNS0_22SdkAbortObserverHolderEPFvRKNS0_12SdkAbortInfoEE
 bbdc0,84,verified,src/nn/diag/abort_observer.cpp,_ZN2nn4diag24RegisterSdkAbortObserverEPNS0_22SdkAbortObserverHolderE
 bbe20,196,verified,src/nn/diag/abort_observer.cpp,_ZN2nn4diag26UnregisterSdkAbortObserverEPNS0_22SdkAbortObserverHolderE
+bbf00,80,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag18IsDebuggerAttachedEv
 bbf50,4,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag13GetModulePathEPcmm
 bbf60,48,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag16GetAllModuleInfoEPPNS0_10ModuleInfoEPvm
 bbf90,64,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag40GetRequiredBufferSizeForGetAllModuleInfoEv
@@ -2081,10 +2087,15 @@ bcdf0,8,verified,src/nn/diag/diag_module_misc.cpp,_ZNK2nn4diag6detail12ModulePar
 bce00,100,verified,src/nn/diag/diag_module_misc.cpp,_ZN2nn4diag6detail18IsSystemSymbolImplEm
 bce70,196,verified,src/nn/diag/diag_module_misc.cpp,_ZN2nn4diag6detail17GetSymbolNameImplEPcmm
 bcf40,92,verified,src/nn/diag/diag_module_misc.cpp,_ZN2nn4diag6detail17GetSymbolSizeImplEm
+bcfa0,172,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag6detail15GetAllBacktraceEPmmPNS0_9BacktraceE
+bd0e0,148,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag6detail9Backtrace12SetStackInfoEmm
+bd180,460,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag6detail9Backtrace4StepEv
 bd350,68,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag6detail9Backtrace10InitializeEmmm
 bd3a0,92,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag6detail9Backtrace10InitializeEPKNS_2os9FiberTypeE
 bd770,88,verified,src/nn/diag/diag_log_misc.cpp,_ZNK2nn4diag6detail9Backtrace15GetStackPointerEv
 bd7d0,24,verified,src/nn/diag/diag_log_misc.cpp,_ZNK2nn4diag6detail9Backtrace16GetReturnAddressEv
+bd7f0,144,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag12GetBacktraceEPmimmm
+bd8d0,128,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag12GetBacktraceEPmiPKNS_2os9FiberTypeE
 bd9e0,12,verified,src/nn/fs/dbm/fs_dbm_allocation_table.cpp,_ZN2nn2fs3dbm15AllocationTable9QuerySizeEj
 bd9f0,372,verified,src/nn/fs/dbm/fs_dbm_allocation_table.cpp,_ZN2nn2fs3dbm15AllocationTable6FormatENS0_10SubStorageEj
 bdef0,36,verified,src/nn/fs/dbm/fs_dbm_allocation_table.cpp,_ZN2nn2fs3dbm15AllocationTableC2Ev
