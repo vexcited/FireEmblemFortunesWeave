@@ -23201,6 +23201,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 778b00,32,verified,src/libc/stdio_flush.cpp,flockfile
 778b20,152,verified,src/nnmusl/stdio/fopen.c,fopen
 778bc0,4,verified,src/nnmusl/nnmusl_libc_forwarders2.cpp,fputc
+778cb0,292,verified,src/nnmusl/stdio/freopen.c,freopen
 778de0,32,verified,src/libc/stdio_flush.cpp,ftrylockfile
 778e00,8,verified,src/libc/stdio_flush.cpp,funlockfile
 778e10,84,verified,src/nnmusl/nnmusl_stdio_position.cpp,__fwide_unlocked
