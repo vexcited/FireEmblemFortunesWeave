@@ -64,6 +64,7 @@ f810,4,verified,src/nvidia/cuda_driver_stubs.cpp,_Z19CudaDriverStub_f810v
 1c8b0,12,verified,src/nvidia/cuda_driver_stubs_forwarders.cpp,_Z20CudaDriverStub_1c8b0v
 1c970,4,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_1c970v
 1d120,8,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_1d120v
+1e190,44,verified,src/nvidia/cuda_driver_stubs_more.cpp,_Z20CudaDriverStub_1e190m
 21680,176,verified,src/nvidia/cuda_driver_query_impl.cpp,_Z31cuArrayGetSparseProperties_implP20CudaSparsePropertiesm
 21730,132,verified,src/nvidia/cuda_driver_query_impl.cpp,_Z40cuMipmappedArrayGetSparseProperties_implP20CudaSparsePropertiesm
 217c0,140,verified,src/nvidia/cuda_driver_query_impl.cpp,_Z33cuArrayGetMemoryRequirements_implP22CudaMemoryRequirementsmj
@@ -622,6 +623,7 @@ f810,4,verified,src/nvidia/cuda_driver_stubs.cpp,_Z19CudaDriverStub_f810v
 51670,8,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_51670v
 51b20,8,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_51b20v
 51d40,8,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_51d40v
+51e90,12,verified,src/nvidia/cuda_driver_stubs_more.cpp,_Z20CudaDriverStub_51e90m
 54930,4,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_54930v
 54b20,4,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_54b20v
 559f0,4,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_559f0v
@@ -796,6 +798,7 @@ f810,4,verified,src/nvidia/cuda_driver_stubs.cpp,_Z19CudaDriverStub_f810v
 972a0,12,verified,src/nvidia/cuda_driver_stubs_forwarders.cpp,_Z20CudaDriverStub_972a0m
 972b0,12,verified,src/nvidia/cuda_driver_stubs_forwarders.cpp,_Z20CudaDriverStub_972b0m
 972c0,12,verified,src/nvidia/cuda_driver_stubs_forwarders.cpp,_Z20CudaDriverStub_972c0mm
+972d0,12,verified,src/nvidia/cuda_driver_stubs_more.cpp,_Z20CudaDriverStub_972d0mmm
 972e0,12,verified,src/nvidia/cuda_driver_stubs_forwarders.cpp,_Z20CudaDriverStub_972e0m
 97300,12,verified,src/nvidia/cuda_driver_stubs_forwarders.cpp,_Z20CudaDriverStub_97300m
 97320,12,verified,src/nvidia/cuda_driver_stubs_forwarders.cpp,_Z20CudaDriverStub_97320m

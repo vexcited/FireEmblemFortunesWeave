@@ -2422,7 +2422,9 @@ ce530,16,verified,src/nn/fs/save/fs_save_exclusive_file_system.cpp,_ZN2nn2fs4sav
 ce540,72,verified,src/nn/fs/save/fs_save_exclusive_file_system.cpp,_ZN2nn2fs4save19ExclusiveFileSystem12UnlinkObjectEPNS1_16IExclusiveObjectE
 ce980,16,verified,src/nn/fs/save/fs_save_exclusive_file_system.cpp,_ZNK2nn2fs4save13ExclusiveFile11GetOpenModeEv
 ce990,8,verified,src/nn/os/multi_wait.cpp,_ZN2nn2os6detail23GetUserWaitNativeHandleEPKNS1_19MultiWaitHolderBaseEPj
+ce9a0,8,verified,src/nn/sdk_trivial_more.cpp,_Z13SdkStub_ce9a0m
 ce9b0,8,verified,src/nn/sdk_trivial.cpp,_Z13SdkStub_ce9b0m
+cea10,8,verified,src/nn/sdk_trivial_more.cpp,_Z13SdkStub_cea10m
 ceb60,8,verified,src/nn/sdk_trivial.cpp,_Z13SdkStub_ceb60m
 cec40,8,verified,src/nn/sdk_trivial_forwarders.cpp,_Z13SdkStub_cec40m
 cec50,392,verified,src/nn/fs/save/fs_save_data_file_system_core.cpp,_ZN2nn2fs4save22SaveDataFileSystemCore6FormatENS0_10SubStorageES3_S3_lPNS0_14IBufferManagerE
@@ -2595,6 +2597,8 @@ d9750,156,verified,src/nn/fs/fs_system_api.cpp,_ZN2nn2fs16UnsetDebugOptionENS0_1
 d97f0,280,verified,src/nn/fs/fs_memory_stressor_api.cpp,_ZN2nn2fs18OpenMemoryStressorEPNS0_20MemoryStressorHandleE
 d9920,76,verified,src/nn/fs/fs_memory_stressor_api.cpp,_ZN2nn2fs19CloseMemoryStressorENS0_20MemoryStressorHandleE
 d9970,136,verified,src/nn/fs/fs_memory_stressor_api.cpp,_ZN2nn2fs23SetPooledBufferFreeSizeENS0_20MemoryStressorHandleEm
+da710,24,verified,src/nn/sdk_trivial_more.cpp,_Z13SdkStub_da710m
+da730,28,verified,src/nn/sdk_trivial_more.cpp,_Z13SdkStub_da730mm
 da830,8,verified,src/nn/sdk_trivial.cpp,_Z13SdkStub_da830m
 dbcf0,12,verified,src/nn/sdk_trivial_forwarders.cpp,_Z13SdkStub_dbcf0m
 df690,332,verified,src/nn/fs/fs_device_save_data.cpp,_ZN2nn2fs19MountDeviceSaveDataEPKc
@@ -4940,6 +4944,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 16cfe0,136,verified,src/nn/os/horizon_impl.cpp,_ZN2nn2os6detail38ExamineWholeAddressSpaceHasNoAttributeEmm
 16d0e0,112,verified,src/nn/os/fiber.cpp,_ZN2nn2os6detail18FiberImplByHorizon13MapAliasStackEPPvPKvm
 16d160,32,verified,src/nn/os/horizon_impl.cpp,_ZN2nn2os6detail18FiberImplByHorizon15UnmapAliasStackEPKvS4_m
+16d190,32,verified,src/nn/sdk_trivial_more.cpp,_Z14SdkStub_16d190m
 16d1b0,4,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_16d1b0v
 16d490,52,verified,src/nn/os/horizon_impl.cpp,_ZN2nn2os6detail25SharedMemoryImplByHorizon5CloseEj
 16d730,52,verified,src/nn/os/horizon_impl.cpp,_ZN2nn2os6detail25SharedMemoryImplByHorizon5UnmapEjPvm
@@ -5226,6 +5231,8 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 17cd00,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_17cd00m
 17d7c0,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_17d7c0mm
 17df60,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_17df60v
+17f7d0,16,verified,src/nn/sdk_trivial_more.cpp,_Z14SdkStub_17f7d0mm
+17f7e0,16,verified,src/nn/sdk_trivial_more.cpp,_Z14SdkStub_17f7e0mm
 17fa90,80,verified,src/nn/sf/hipc_client_info.cpp,_ZN2nn2sf44InitializeForHipcServerSessionManagerHandlerEv
 17fae0,36,verified,src/nn/sf/hipc_client_info.cpp,_ZN2nn2sf30GetCurrentHipcClientIdOnServerEv
 17fb10,12,verified,src/nn/sf/sf_fs_inline_context.cpp,_ZN2nn2sf4hipc6server44IsHipcServerSessionManagerHandlerInitializedEv
@@ -14343,6 +14350,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 4bbed0,4,verified,src/nn/mii/mii_applet.cpp,_ZN2nn3mii13DumpStoreDataERKNS0_9StoreDataE
 4bbee0,36,verified,src/nn/mii/mii_applet.cpp,_ZN2nn3mii26CompareStoreDataForMiiEditERKNS0_9StoreDataES3_
 4bbf10,12,verified,src/nn/mii/mii_applet.cpp,_ZN2nn3mii21SetCreateIdForMiiEditEPNS0_8CharInfoERKNS0_8CreateIdE
+4bbf20,8,verified,src/nn/sdk_trivial_more.cpp,_Z14SdkStub_4bbf20m
 4bbf30,24,verified,src/nn/mii/mii_database.cpp,_ZN2nn3mii8DatabaseD2Ev
 4bbf50,108,verified,src/nn/mii/mii_database.cpp,_ZN2nn3mii8Database10InitializeEv
 4bbfc0,32,verified,src/nn/mii/mii_database.cpp,_ZN2nn3mii8Database8FinalizeEv
@@ -14361,6 +14369,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 4bc280,52,verified,src/nn/mii/mii_database.cpp,_ZN2nn3mii8Database6ImportEPKvm
 4bc2c0,88,verified,src/nn/mii/mii_database.cpp,_ZNK2nn3mii8Database6ExportEPvm
 4bc320,4,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_4bc320v
+4bc330,8,verified,src/nn/sdk_trivial_more.cpp,_Z14SdkStub_4bc330m
 4bc340,24,verified,src/nn/mii/mii_database.cpp,_ZN2nn3mii15PrivateDatabaseD2Ev
 4bc360,192,verified,src/nn/mii/mii_database.cpp,_ZN2nn3mii15PrivateDatabase29IsBrokenDatabaseWithClearFlagEv
 4bc420,108,verified,src/nn/mii/mii_database.cpp,_ZN2nn3mii15PrivateDatabase10InitializeEv
@@ -14751,6 +14760,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 4d3600,20,verified,src/nandroid/libstagefright/foundation/MediaBuffer.cpp,_ZNK8nandroid12SortedVectorINS_16key_value_pair_tINS_7String8ES2_EEE15do_move_forwardEPvPKvm
 4d3620,20,verified,src/nandroid/libstagefright/foundation/MediaBuffer.cpp,_ZNK8nandroid12SortedVectorINS_16key_value_pair_tINS_7String8ES2_EEE16do_move_backwardEPvPKvm
 4d3640,80,verified,src/nandroid/libstagefright/foundation/MediaBuffer.cpp,_ZNK8nandroid12SortedVectorINS_16key_value_pair_tINS_7String8ES2_EEE10do_compareEPKvS6_
+4d3690,12,verified,src/nn/sdk_trivial_more.cpp,_Z14SdkStub_4d3690mmmm
 4d36a0,12,verified,src/nn/sdk_trivial_forwarders.cpp,_Z14SdkStub_4d36a0mm
 4d36b0,12,verified,src/nn/sdk_trivial_forwarders.cpp,_Z14SdkStub_4d36b0m
 4d3da0,12,verified,src/nn/sdk_trivial_forwarders.cpp,_Z14SdkStub_4d3da0m
@@ -14758,6 +14768,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 4d3dc0,12,verified,src/nn/sdk_trivial_forwarders.cpp,_Z14SdkStub_4d3dc0m
 4d3dd0,12,verified,src/nn/sdk_trivial_forwarders.cpp,_Z14SdkStub_4d3dd0m
 4d3de0,12,verified,src/nn/sdk_trivial_forwarders.cpp,_Z14SdkStub_4d3de0m
+4d3df0,12,verified,src/nn/sdk_trivial_more.cpp,_Z14SdkStub_4d3df0mmm
 4d3f00,4,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_4d3f00v
 4d9e60,4,verified,src/nandroid/libmediaplayerservice/nuplayer/NuPlayerSource.cpp,_ZNK8nandroid12SortedVectorINS_16key_value_pair_tIjjEEE12do_constructEPvm
 4d9e70,4,verified,src/nandroid/libmediaplayerservice/nuplayer/NuPlayerSource.cpp,_ZNK8nandroid12SortedVectorINS_16key_value_pair_tIjjEEE10do_destroyEPvm
@@ -14837,6 +14848,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 4decd0,4,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_4decd0v
 4dece0,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_4dece0m
 4dffa0,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_4dffa0v
+4dffb0,8,verified,src/nn/sdk_trivial_more.cpp,_Z14SdkStub_4dffb0m
 4dffc0,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_4dffc0m
 4e0040,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_4e0040v
 4e0060,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_4e0060v
@@ -14881,8 +14893,10 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 4e6c80,12,verified,src/nn/sdk_trivial_forwarders.cpp,_Z14SdkStub_4e6c80m
 4e6c90,12,verified,src/nn/sdk_trivial_forwarders.cpp,_Z14SdkStub_4e6c90mm
 4e6d00,12,verified,src/nn/sdk_trivial_forwarders.cpp,_Z14SdkStub_4e6d00m
+4e6d10,12,verified,src/nn/sdk_trivial_more.cpp,_Z14SdkStub_4e6d10mmmm
 4e6d20,12,verified,src/nn/sdk_trivial_forwarders.cpp,_Z14SdkStub_4e6d20mm
 4e6d30,12,verified,src/nn/sdk_trivial_forwarders.cpp,_Z14SdkStub_4e6d30m
+4e6d40,12,verified,src/nn/sdk_trivial_more.cpp,_Z14SdkStub_4e6d40mmm
 4e6d50,12,verified,src/nn/sdk_trivial_forwarders.cpp,_Z14SdkStub_4e6d50m
 4e6ea0,100,verified,src/nandroid/extractors/mkv/MatroskaExtractor.cpp,_ZNK8nandroid6VectorINS_17MatroskaExtractor9TrackInfoEE12do_constructEPvm
 4e6f20,100,verified,src/nandroid/extractors/mkv/MatroskaExtractor.cpp,_ZNK8nandroid6VectorINS_17MatroskaExtractor9TrackInfoEE10do_destroyEPvm
@@ -14897,6 +14911,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 4e73f0,20,verified,src/nandroid/extractors/mkv/MatroskaExtractor.cpp,_ZNK8nandroid6VectorIPKN9mkvparser8CuePointEE15do_move_forwardEPvPKvm
 4e7410,20,verified,src/nandroid/extractors/mkv/MatroskaExtractor.cpp,_ZNK8nandroid6VectorIPKN9mkvparser8CuePointEE16do_move_backwardEPvPKvm
 4e7480,12,verified,src/nn/sdk_trivial_forwarders.cpp,_Z14SdkStub_4e7480m
+4e7520,28,verified,src/nn/sdk_trivial_more.cpp,_Z14SdkStub_4e7520mm
 4e7550,100,verified,src/nandroid/extractors/mp4/MPEG4Extractor.cpp,_ZN8nandroid22CachedRangedDataSourceC2EPNS_16DataSourceHelperE
 4e75c0,108,verified,src/nandroid/extractors/mp4/MPEG4Extractor.cpp,_ZN8nandroid22CachedRangedDataSourceD2Ev
 4e7630,52,verified,src/nandroid/extractors/mp4/MPEG4Extractor.cpp,_ZN8nandroid22CachedRangedDataSource10clearCacheEv
@@ -14995,6 +15010,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 4f5da0,84,verified,src/nandroid/extractors/mp4/ItemTable.cpp,_ZNK8nandroid6VectorIjE8do_splatEPvPKvm
 4f5e10,20,verified,src/nandroid/extractors/mp4/ItemTable.cpp,_ZNK8nandroid6VectorIjE15do_move_forwardEPvPKvm
 4f5e30,20,verified,src/nandroid/extractors/mp4/ItemTable.cpp,_ZNK8nandroid6VectorIjE16do_move_backwardEPvPKvm
+4f5e90,28,verified,src/nn/sdk_trivial_more.cpp,_Z14SdkStub_4f5e90mm
 4f5eb0,12,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_4f5eb0v
 4f6640,112,verified,src/nandroid/extractors/mp4/MPEG4Extractor.cpp,_ZNK8nandroid6VectorINS_11MPEG4Source6SampleEE12do_constructEPvm
 4f66c0,120,verified,src/nandroid/extractors/mp4/MPEG4Extractor.cpp,_ZNK8nandroid6VectorINS_11MPEG4Source6SampleEE10do_destroyEPvm
@@ -15475,6 +15491,8 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 514240,100,verified,src/nandroid/libstagefright/MPEG4Writer.cpp,_ZNK8nandroid6VectorItE8do_splatEPvPKvm
 5142c0,20,verified,src/nandroid/libstagefright/MPEG4Writer.cpp,_ZNK8nandroid6VectorItE15do_move_forwardEPvPKvm
 5142e0,20,verified,src/nandroid/libstagefright/MPEG4Writer.cpp,_ZNK8nandroid6VectorItE16do_move_backwardEPvPKvm
+514490,24,verified,src/nn/sdk_trivial_more.cpp,_Z14SdkStub_514490mm
+514520,28,verified,src/nn/sdk_trivial_more.cpp,_Z14SdkStub_514520mm
 514540,12,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_514540v
 514550,264,verified,src/nandroid/libstagefright/NuCachedSource2.cpp,_ZN8nandroid9PageCacheC2Em
 514660,304,verified,src/nandroid/libstagefright/NuCachedSource2.cpp,_ZN8nandroid9PageCacheD2Ev
@@ -16396,6 +16414,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 56e710,44,verified,src/nandroid/libstagefright/id3/ID3.cpp,_ZNK8nandroid3ID38Iterator15getHeaderLengthEv
 56e740,112,verified,src/nandroid/libstagefright/id3/ID3.cpp,_ZNK8nandroid3ID38Iterator7getDataEPm
 56e7c0,308,verified,src/nandroid/libstagefright/id3/ID3.cpp,_ZNK8nandroid3ID311getAlbumArtEPmPNS_7String8E
+56ead0,16,verified,src/nn/sdk_trivial_more.cpp,_Z14SdkStub_56ead0mmmm
 56eb30,36,verified,src/nandroid/libstagefright/foundation/ABitReader.cpp,_ZN8nandroid10ABitReaderC2EPKhm
 56eb60,140,verified,src/nandroid/libstagefright/foundation/ABitReader.cpp,_ZN8nandroid10ABitReaderD0Ev
 56ebf0,196,verified,src/nandroid/libstagefright/foundation/ABitReader.cpp,_ZN8nandroid10ABitReader13fillReservoirEv
@@ -19230,6 +19249,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 5cb370,124,verified,src/nn/ssl/ssl_api.cpp,_ZN2nn3ssl12_GLOBAL__N_16SslApi8FinalizeEv
 5cb3f0,4,verified,src/nn/ssl/ssl_api.cpp,_ZN2nn3ssl21GetSslResultFromValueEPNS_6ResultEPKcj
 5cb400,160,verified,src/nn/ssl/ssl_api.cpp,_ZN2nn3ssl12_GLOBAL__N_16SslApi10InitializeEv
+5cb4a0,28,verified,src/nn/sdk_trivial_more.cpp,_Z14SdkStub_5cb4a0v
 5cb4c0,12,verified,src/nn/ssl/detail/ssl_builtin_data.cpp,_ZN2nn3ssl6detail12Sha256DigestC2Ev
 5cb4d0,40,verified,src/nn/ssl/detail/ssl_builtin_data.cpp,_ZNK2nn3ssl6detail12Sha256DigesteqERKS2_
 5cb500,28,verified,src/nn/ssl/detail/ssl_builtin_data.cpp,_ZN2nn3ssl6detail15BuiltinDataInfoC2EjNS2_17BuiltinDataStatusEPKcPNS1_17BuiltinDataLoaderERKNS1_12Sha256DigestE
@@ -20611,8 +20631,11 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 616ce0,108,verified,src/nvidia/nvvic.cpp,NvVicReadCrcComparison
 617760,12,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_617760v
 617b40,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_617b40m
+623ad0,28,verified,src/nn/sdk_trivial_more.cpp,_Z14SdkStub_623ad0mm
 623af0,12,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_623af0v
+623d40,28,verified,src/nn/sdk_trivial_more.cpp,_Z14SdkStub_623d40mm
 623d60,12,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_623d60v
+623dc0,28,verified,src/nn/sdk_trivial_more.cpp,_Z14SdkStub_623dc0mm
 623de0,12,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_623de0v
 623df0,4,verified,src/nvidia/nvos_stubs.cpp,NvRmGpuDebugDumpObjectTree
 62441c,4,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_62441cv
@@ -20680,9 +20703,11 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 629310,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_629310m
 629350,12,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_629350v
 629ca0,20,verified,src/nn/sdk_trivial_forwarders.cpp,_Z14SdkStub_629ca0m
+62aa70,44,verified,src/nn/sdk_trivial_more.cpp,_Z14SdkStub_62aa70m
 62aaa0,8,verified,src/nn/sdk_trivial_forwarders.cpp,_Z14SdkStub_62aaa0m
 62aab0,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_62aab0m
 62aac0,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_62aac0m
+62b2b0,44,verified,src/nn/sdk_trivial_more.cpp,_Z14SdkStub_62b2b0m
 62b4c0,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_62b4c0m
 62b4e0,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_62b4e0m
 62b4f0,4,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_62b4f0v
@@ -20699,8 +20724,12 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 62cac0,12,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_62cac0v
 62cb10,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_62cb10v
 62cb50,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_62cb50v
+62cf80,12,verified,src/nn/sdk_trivial_more.cpp,_Z14SdkStub_62cf80mmm
+62cf90,12,verified,src/nn/sdk_trivial_more.cpp,_Z14SdkStub_62cf90mmm
 62d0e0,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_62d0e0m
+632e70,12,verified,src/nn/sdk_trivial_more.cpp,_Z14SdkStub_632e70mmmmmmm
 634110,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_634110m
+6354e0,44,verified,src/nn/sdk_trivial_more.cpp,_Z14SdkStub_6354e0m
 635730,8,verified,src/nvidia/nvrm_gpu_wrappers.cpp,NvRmGpuNvgpuGetGpuCtrlFd
 635740,8,verified,src/nvidia/nvrm_gpu_wrappers.cpp,NvRmGpuNvgpuGetAsFd
 635750,8,verified,src/nvidia/nvrm_gpu_wrappers.cpp,NvRmGpuNvgpuGetGpuChannelFd
@@ -20709,6 +20738,8 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 636730,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_636730m
 636740,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_636740m
 6369e0,4,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_6369e0v
+6383e0,44,verified,src/nn/sdk_trivial_more.cpp,_Z14SdkStub_6383e0m
+638e20,44,verified,src/nn/sdk_trivial_more.cpp,_Z14SdkStub_638e20m
 639d3c,4,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_639d3cv
 63b48c,4,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_63b48cv
 63cd40,8,verified,src/nn/sdk_trivial_forwarders.cpp,_Z14SdkStub_63cd40m
@@ -21716,6 +21747,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 65ba50,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_65ba50m
 65ba60,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_65ba60m
 65c110,4,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_65c110v
+65c120,44,verified,src/nn/sdk_trivial_more.cpp,_Z14SdkStub_65c120m
 65c5d0,4,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_65c5d0v
 65c680,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_65c680v
 65cb50,4,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_65cb50v
@@ -21829,6 +21861,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 667440,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_667440m
 667500,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_667500v
 667830,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_667830m
+6678d0,8,verified,src/nn/sdk_trivial_more.cpp,_Z14SdkStub_6678d0m
 6678e0,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_6678e0mj
 6678f0,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_6678f0mj
 667900,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_667900m
@@ -21889,6 +21922,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 66c750,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_66c750m
 66c8c0,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_66c8c0m
 66c8d0,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_66c8d0m
+66e420,44,verified,src/nn/sdk_trivial_more.cpp,_Z14SdkStub_66e420m
 66f410,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_66f410m
 66fa70,4,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_66fa70v
 672b70,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_672b70m
@@ -21904,6 +21938,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 69c010,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_69c010m
 69c020,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_69c020m
 69c030,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_69c030m
+69c080,32,verified,src/nn/sdk_trivial_more.cpp,_Z14SdkStub_69c080m
 69c320,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_69c320m
 69d160,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_69d160v
 69d170,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_69d170v
@@ -24000,6 +24035,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 6feea0,4,verified,src/nerd/sensors/sensor_state.cpp,_ZNK4nerd7sensors11SensorState20GetStableOrientationEv
 6fefc0,932,verified,src/nerd/gyro_pointing/gyro_pointing_state_detector.cpp,_ZN4nerd10RingBufferINS_13gyro_pointing7ImuDataELm64EE11SetCapacityEm
 6ff840,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_6ff840v
+6ffa00,8,verified,src/nn/sdk_trivial_more.cpp,_Z14SdkStub_6ffa00m
 6ffa10,8,verified,src/nerd/gyro_pointing/gyro_pointing.cpp,_ZN4nerd13gyro_pointing12GyroPointing21SetProcessingTimestepENS_4Unit12BaseQuantityIfNSt3__15ratioILl0ELl1EEEJS6_S6_NS5_ILl1ELl1EEES6_EEE
 6ffa20,8,verified,src/nerd/gyro_pointing/gyro_pointing.cpp,_ZN4nerd13gyro_pointing12GyroPointing23SetDownsamplingTimestepENS_4Unit12BaseQuantityIfNSt3__15ratioILl0ELl1EEEJS6_S6_NS5_ILl1ELl1EEES6_EEE
 6ffa30,44,verified,src/nerd/gyro_pointing/gyro_pointing.cpp,_ZN4nerd13gyro_pointing12GyroPointing13FeedImuSampleERKNS0_7ImuDataE
@@ -24289,6 +24325,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 73d990,132,verified,src/nn/irsensor/detail/irsensor_ir_camera_api.cpp,_ZN2nn8irsensor6detail20RunPointingProcessorERKNS0_14IrCameraHandleE
 73df20,152,verified,src/nn/irsensor/detail/irsensor_ir_camera_api.cpp,_ZN2nn8irsensor6detail22RunTeraPluginProcessorERKNS0_14IrCameraHandleERKNS0_25TeraPluginProcessorConfigE
 73e380,128,verified,src/nn/irsensor/detail/irsensor_ir_camera_api.cpp,_ZN2nn8irsensor6detail17RunIrLedProcessorERKNS0_14IrCameraHandleERKNS0_20IrLedProcessorConfigE
+73e650,28,verified,src/nn/sdk_trivial_more.cpp,_Z14SdkStub_73e650mm
 73e670,12,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_73e670v
 73e680,100,verified,src/nn/irsensor/irsensor_api_extra.cpp,_ZN2nn8irsensor6detail23SetAppletResourceUserIdERKNS_6applet20AppletResourceUserIdE
 73e6f0,116,verified,src/nn/irsensor/irsensor_api_extra.cpp,_ZN2nn8irsensor6detail28RegisterAppletResourceUserIdERKNS_6applet20AppletResourceUserIdEb

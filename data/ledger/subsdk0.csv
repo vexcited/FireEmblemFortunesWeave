@@ -86,7 +86,10 @@ address,size,status,source,name
 3a150,8,verified,src/nvidia/ngx_trivial.cpp,_Z13NgxStub_3a150m
 3a160,8,verified,src/nvidia/ngx_trivial.cpp,_Z13NgxStub_3a160m
 3a170,8,verified,src/nvidia/ngx_trivial.cpp,_Z13NgxStub_3a170m
+70a90,24,verified,src/nvidia/ngx_trivial_more.cpp,_Z13NgxStub_70a90m
+70ab0,28,verified,src/nvidia/ngx_trivial_more.cpp,_Z13NgxStub_70ab0mm
 70ad0,8,verified,src/nvidia/ngx_trivial_forwarders.cpp,_Z13NgxStub_70ad0m
+70ae0,28,verified,src/nvidia/ngx_trivial_more.cpp,_Z13NgxStub_70ae0mm
 70c30,8,verified,src/nvidia/ngx_trivial.cpp,_Z13NgxStub_70c30v
 70c40,8,verified,src/nvidia/ngx_trivial.cpp,_Z13NgxStub_70c40v
 70c50,8,verified,src/nvidia/ngx_trivial.cpp,_Z13NgxStub_70c50v
@@ -105,6 +108,7 @@ a6ad0,8,verified,src/nvidia/ngx_trivial.cpp,_Z13NgxStub_a6ad0v
 a9b60,8,verified,src/nvidia/ngx_trivial_forwarders.cpp,_Z13NgxStub_a9b60m
 a9d20,12,verified,src/nvidia/ngx_trivial.cpp,_Z13NgxStub_a9d20v
 ae8f0,12,verified,src/nvidia/ngx_api.cpp,NVSDK_NGX_UpdateFeature
+b10a0,28,verified,src/nvidia/ngx_trivial_more.cpp,_Z13NgxStub_b10a0mm
 b2810,124,verified,src/nvidia/ngx_api.cpp,NVSDK_NGX_VULKAN_RequiredExtensions
 b2890,4,verified,src/nvidia/ngx_trivial.cpp,_Z13NgxStub_b2890v
 b2eb0,28,verified,src/nvidia/ngx_api.cpp,NVSDK_NGX_VULKAN_GetParameters
@@ -119,6 +123,7 @@ b3290,28,verified,src/nvidia/ngx_api.cpp,NVSDK_NGX_VULKAN_GetFeatureRequirements
 b32b0,36,verified,src/nvidia/ngx_api.cpp,NVSDK_NGX_VULKAN_GetFeatureInstanceExtensionRequirements
 b32e0,108,verified,src/nvidia/ngx_api.cpp,NVSDK_NGX_VULKAN_GetFeatureDeviceExtensionRequirements
 b3350,44,verified,src/nvidia/ngx_api.cpp,NVSDK_NGX_VULKAN_EvaluateFeature_C
+b3540,8,verified,src/nvidia/ngx_trivial_more.cpp,_Z13NgxStub_b3540m
 b3fa0,12,verified,src/nvidia/ngx_api.cpp,NVSDK_NGX_Parameter_SetF
 b3fb0,12,verified,src/nvidia/ngx_api.cpp,NVSDK_NGX_Parameter_SetUI
 b3fc0,12,verified,src/nvidia/ngx_api.cpp,NVSDK_NGX_Parameter_SetI
