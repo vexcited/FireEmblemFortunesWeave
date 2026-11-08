@@ -85,6 +85,10 @@ ServiceState g_State;
 
 }
 
+ServiceProviderClient::ServiceProviderClient() {}
+
+ServiceProviderClient::~ServiceProviderClient() {}
+
 Result ServiceProviderClient::GetUserServiceSharedPointer(
   ::nn::sf::SharedPointer<IGeneralService>* pOutService) {
   return GetServiceSharedPointer(pOutService, "nifm:u");

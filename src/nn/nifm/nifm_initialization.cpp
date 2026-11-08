@@ -94,7 +94,7 @@ Result Initialize(ServiceType type) {
   return result;
 }
 
-Result Finalize(ServiceType type) {
+[[gnu::noinline]] Result Finalize(ServiceType type) {
   g_Mutex.Lock();
   if (IsInitialized() && g_ServiceType == type) {
     if (g_pNetworkConnection != nullptr) {
@@ -207,16 +207,16 @@ Result InitializeSystem() {
   return Initialize(ServiceType_System);
 }
 
-Result FinalizeForTest() {
-  return Finalize(ServiceType_User);
+void FinalizeForTest() {
+  Finalize(ServiceType_User);
 }
 
-Result FinalizeAdminForTest() {
-  return Finalize(ServiceType_Admin);
+void FinalizeAdminForTest() {
+  Finalize(ServiceType_Admin);
 }
 
-Result FinalizeSystemForTest() {
-  return Finalize(ServiceType_System);
+void FinalizeSystemForTest() {
+  Finalize(ServiceType_System);
 }
 
 }
