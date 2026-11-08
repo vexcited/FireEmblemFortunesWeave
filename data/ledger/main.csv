@@ -13173,7 +13173,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 6b5390,24,verified,src/llvm-libcxx-21/libcxx/include/__vector/vector.h,std::vector<T>::__throw_length_error()
 6b71e0,660,verified,src/game/templates/deque_back_capacity.cpp,_ZNSt3__15dequeIPN4game11UnrecoveredILj101EEENS_9allocatorIS4_EEE19__add_back_capacityEv
 6b7520,320,verified,src/game/templates/deque.cpp,_ZNSt3__114__split_bufferIPPN4game11UnrecoveredILj8EEENS_9allocatorIS5_EEE12emplace_backIJRS5_EEEvDpOT_
-6b7680,280,verified,src/game/templates/deque.cpp,_ZNSt3__114__split_bufferIPPN4game11UnrecoveredILj9EEENS_9allocatorIS5_EEE12emplace_backIJRS5_EEEvDpOT_
+6b7680,320,verified,src/game/templates/deque.cpp,_ZNSt3__114__split_bufferIPPN4game11UnrecoveredILj9EEENS_9allocatorIS5_EEE12emplace_backIJRS5_EEEvDpOT_
 6b77e0,340,verified,src/game/templates/deque.cpp,_ZNSt3__114__split_bufferIPPN4game11UnrecoveredILj2EEENS_9allocatorIS5_EEE13emplace_frontIJRS5_EEEvDpOT_
 6b7940,344,verified,src/game/templates/deque.cpp,_ZNSt3__15dequeIPN4game11UnrecoveredILj4EEENS_9allocatorIS4_EEED2B8nn210108Ev
 6b7e50,4,verified,src/game/map/map_object.cpp,_ZNSt3__110__function6__baseIFviiEED2Ev
@@ -13776,7 +13776,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 71d9f0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::(anonymous namespace)::Impl::OnSerialize(game::Stream&)::'lambda'(game::Stream&), void (game::Stream&)>::target_type()"
 71da00,4,verified,src/game/game_trivial.cpp,_Z15GameStub_71da00v
 71da20,320,verified,src/game/templates/deque.cpp,_ZNSt3__114__split_bufferIPPN4game11UnrecoveredILj12EEENS_9allocatorIS5_EEE12emplace_backIJRS5_EEEvDpOT_
-71db80,280,verified,src/game/templates/deque.cpp,_ZNSt3__114__split_bufferIPPN4game11UnrecoveredILj13EEENS_9allocatorIS5_EEE12emplace_backIJRS5_EEEvDpOT_
+71db80,320,verified,src/game/templates/deque.cpp,_ZNSt3__114__split_bufferIPPN4game11UnrecoveredILj13EEENS_9allocatorIS5_EEE12emplace_backIJRS5_EEEvDpOT_
 71dce0,300,verified,src/game/templates/deque.cpp,_ZNSt3__114__split_bufferIPPN4game11UnrecoveredILj4EEENS_9allocatorIS5_EEE13emplace_frontIJRS5_EEEvDpOT_
 71de40,364,verified,src/game/data/stream_rows.cpp,_ZN4game6Stream8ReadDataINS_15BattleFieldDataEEEPKT_v
 71dfc0,364,verified,src/game/data/stream_rows.cpp,_ZN4game6Stream8ReadDataINS_13SideStoryDataEEEPKT_v
@@ -13817,7 +13817,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 71ffc0,280,verified,src/game/templates/deque.cpp,_ZNSt3__114__split_bufferIPPN4game11UnrecoveredILj15EEENS_9allocatorIS5_EEE12emplace_backIJRS5_EEEvDpOT_
 720120,300,verified,src/game/templates/deque.cpp,_ZNSt3__114__split_bufferIPPN4game11UnrecoveredILj5EEENS_9allocatorIS5_EEE13emplace_frontIJRS5_EEEvDpOT_
 720280,480,verified,src/game/templates/deque_back_capacity.cpp,_ZNSt3__15dequeIPN4game11UnrecoveredILj104EEENS_9allocatorIS4_EEE19__add_back_capacityEv
-7205c0,280,verified,src/game/templates/deque.cpp,_ZNSt3__114__split_bufferIPPN4game11UnrecoveredILj16EEENS_9allocatorIS5_EEE12emplace_backIJRS5_EEEvDpOT_
+7205c0,320,verified,src/game/templates/deque.cpp,_ZNSt3__114__split_bufferIPPN4game11UnrecoveredILj16EEENS_9allocatorIS5_EEE12emplace_backIJRS5_EEEvDpOT_
 720720,280,verified,src/game/templates/deque.cpp,_ZNSt3__114__split_bufferIPPN4game11UnrecoveredILj17EEENS_9allocatorIS5_EEE12emplace_backIJRS5_EEEvDpOT_
 720880,300,verified,src/game/templates/deque.cpp,_ZNSt3__114__split_bufferIPPN4game11UnrecoveredILj6EEENS_9allocatorIS5_EEE13emplace_frontIJRS5_EEEvDpOT_
 7209e0,396,verified,src/game/templates/deque_back_capacity.cpp,_ZNSt3__15dequeIPN4game11UnrecoveredILj105EEENS_9allocatorIS4_EEE19__add_back_capacityEv
@@ -14715,7 +14715,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 7a7e90,288,verified,src/game/templates/vector.cpp,_ZNSt3__16vectorIN4game16UnrecoveredValueILj0ELm16ELm8EEENS_9allocatorIS3_EEE9push_backB8nn210108ERKS3_
 7a8520,288,verified,src/game/util/hash_string.cpp,_ZN4game12HashString32EPKc
 7a86e0,296,verified,src/game/util/hash_string.cpp,_ZN4game10HashStringEPKc
-7a91c0,212,verified,src/game/templates/deque.cpp,_ZNSt3__15dequeIN4game16UnrecoveredValueILj0ELm16ELm8EEENS_9allocatorIS3_EEED2B8nn210108Ev
+7a91c0,344,verified,src/game/templates/deque.cpp,_ZNSt3__15dequeIN4game16UnrecoveredValueILj0ELm16ELm8EEENS_9allocatorIS3_EEED2B8nn210108Ev
 7aafc0,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::BattleUtil::GetFactorSkill(game::Unit const*, game::Unit const*, bool)::$_0, void (game::UnitSkill const&)>::deleting destructor"
 7aaff0,76,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::BattleUtil::GetFactorSkill(game::Unit const*, game::Unit const*, bool)::$_0, void (game::UnitSkill const&)>::__clone()"
 7ab040,24,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::BattleUtil::GetFactorSkill(game::Unit const*, game::Unit const*, bool)::$_0, void (game::UnitSkill const&)>::__clone(__base*)"
@@ -18590,7 +18590,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 932c10,280,verified,src/game/templates/vector.cpp,_ZNSt3__16vectorIN4game16UnrecoveredValueILj1ELm8ELm8EEENS_9allocatorIS3_EEE9push_backB8nn210108ERKS3_
 9337e0,24,verified,src/llvm-libcxx-21/libcxx/include/__vector/vector.h,std::vector<T>::__throw_length_error()
 935a90,24,verified,src/llvm-libcxx-21/libcxx/include/__vector/vector.h,std::vector<T>::__throw_length_error()
-9364c0,212,verified,src/game/templates/deque.cpp,_ZNSt3__15dequeIPN4game11UnrecoveredILj8EEENS_9allocatorIS4_EEED2B8nn210108Ev
+9364c0,344,verified,src/game/templates/deque.cpp,_ZNSt3__15dequeIPN4game11UnrecoveredILj8EEENS_9allocatorIS4_EEED2B8nn210108Ev
 938940,80,verified,src/memory/new_delete.cpp,deleting destructor at 0x938940
 93a7e0,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::LegionPool::List::Impl::EachData(std::__1::function<void (game::UnitLegion const&)> const&) const::'lambda'(int), void (int)>::deleting destructor"
 93a810,80,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::LegionPool::List::Impl::EachData(std::__1::function<void (game::UnitLegion const&)> const&) const::'lambda'(int), void (int)>::__clone()"
@@ -45892,7 +45892,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 15e4ea0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::gameui::(anonymous namespace)::ProcGameUIFade::Out(int, game::gameui::Fade::Color, game::gameui::Fade::Speed, game::menu::BasicMenu*)::'lambda'(bool), void (bool)>::destroy_deallocate()"
 15e4ed0,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::gameui::(anonymous namespace)::ProcGameUIFade::Out(int, game::gameui::Fade::Color, game::gameui::Fade::Speed, game::menu::BasicMenu*)::'lambda'(bool), void (bool)>::target(std::type_info const&)"
 15e4ef0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::gameui::(anonymous namespace)::ProcGameUIFade::Out(int, game::gameui::Fade::Color, game::gameui::Fade::Speed, game::menu::BasicMenu*)::'lambda'(bool), void (bool)>::target_type()"
-15e4f00,280,verified,src/game/templates/deque.cpp,_ZNSt3__114__split_bufferIPPN4game11UnrecoveredILj51EEENS_9allocatorIS5_EEE12emplace_backIJRS5_EEEvDpOT_
+15e4f00,320,verified,src/game/templates/deque.cpp,_ZNSt3__114__split_bufferIPPN4game11UnrecoveredILj51EEENS_9allocatorIS5_EEE12emplace_backIJRS5_EEEvDpOT_
 15e5060,280,verified,src/game/templates/deque.cpp,_ZNSt3__114__split_bufferIPPN4game11UnrecoveredILj52EEENS_9allocatorIS5_EEE12emplace_backIJRS5_EEEvDpOT_
 15e62e0,92,verified,src/game/telop/motivation_gauge_info.cpp,_ZN4game6gameui9BasicInfo12PlayDecideSeEv
 15e6340,92,verified,src/game/telop/motivation_gauge_info.cpp,_ZN4game6gameui9BasicInfo12PlayCancelSeEv
