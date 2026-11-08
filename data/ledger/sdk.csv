@@ -2046,6 +2046,8 @@ bb480,12,verified,src/nn/diag/diag_check.cpp,_ZN2nn4diag6detail8NullImplEm
 bb490,12,verified,src/nn/diag/diag_check.cpp,_ZN2nn4diag6detail11NotNullImplEm
 bb4a0,24,verified,src/nn/diag/diag_check.cpp,_ZN2nn4diag6detail11PointerImplEm
 bb4c0,112,verified,src/nn/diag/diag_module_misc.cpp,_ZN2nn4diag6detail13DevNotifyImplEONS0_21DevNotificationHeaderEPKcz
+bb540,248,verified,src/nn/diag/diag_module_misc.cpp,_ZN2nn4diag6detail14DevVNotifyImplEONS0_21DevNotificationHeaderEPKcSt9__va_list
+bb6e0,308,verified,src/nn/diag/diag_module_misc.cpp,_ZN2nn4diag6detail19DevNotifyDirectImplEONS0_21DevNotificationHeaderEPKcm
 bb900,128,verified,src/nn/diag/diag_module_misc.cpp,_ZN2nn4diag6detail27GetFileNameWithoutExtensionEPPKcPmS3_m
 bb990,48,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag6detail16PrintDebugStringEPKc
 bb9c0,168,verified,src/nn/diag/diag_module_misc.cpp,_ZN2nn4diag6detail24GetValidSizeAsUtf8StringEPKcm

@@ -7,9 +7,25 @@
 #include "libc/cxx_guard.hpp"
 #include "nn/diag/detail/diag_module_parser.hpp"
 #include "nn/diag/diag_abort.hpp"
+#include "nn/lm/lm_dev_notification.hpp"
+#include "nn/util/string_util.hpp"
 #include "nn/result.hpp"
 
 extern "C" void nnMain();
+
+namespace nn::util {
+
+void VFormatString(void (*output)(uintptr_t argument, const char* string,
+  int length), uintptr_t argument, const char* format, va_list arguments);
+
+}
+
+namespace nn::lm {
+
+bool DevNotify(const diag::DevNotificationHeader& header, const char* pText,
+  size_t size);
+
+}
 
 namespace nn::ro {
 
@@ -53,6 +69,8 @@ const char* Translate(const uint8_t* pCatalog, const char* pText);
 bool DevNotifyImpl(DevNotificationHeader&& header, const char* pFormat, ...);
 bool DevVNotifyImpl(DevNotificationHeader&& header, const char* pFormat,
   va_list arguments);
+bool DevNotifyDirectImpl(DevNotificationHeader&& header, const char* pText,
+  size_t length);
 void GetFileNameWithoutExtension(const char** ppOutName,
   size_t* pOutLength, const char* pPath, size_t length);
 int GetValidSizeAsUtf8String(const char* pText, size_t size);
@@ -78,7 +96,40 @@ struct ProcessName {
 [[gnu::visibility("hidden")]] extern uint64_t g_ProcessNameGuard;
 [[gnu::visibility("hidden")]] extern ProcessName g_ProcessName;
 
+constexpr int DevNotificationTextSize = 0x100;
+
+struct DevNotificationBuilder {
+  DevNotificationHeader* pHeader;
+  char* pBuffer;
+  size_t capacity;
+  uint32_t length;
+  bool reserved;
+};
+
+[[gnu::visibility("hidden")]] void AppendDevNotificationText(
+  uintptr_t argument, const char* string, int length);
+
 namespace {
+
+// The text goes out with its terminator and nothing past it.
+[[gnu::always_inline]] inline bool SendDevNotification(
+  DevNotificationHeader& header, const char* pText, int size) {
+  if (static_cast<unsigned int>(size) > DevNotificationTextSize) {
+    AbortImpl();
+  }
+
+  int length = 0;
+  while (length < size && pText[length] != '\0') {
+    length++;
+  }
+
+  if (length + 1 != size) {
+    AbortImpl();
+  }
+
+  header.textLength = static_cast<uint16_t>(size);
+  return lm::DevNotify(header, pText, size);
+}
 
 // Message catalogs use the gettext layout.
 constexpr uint8_t CatalogMagic[4] = {0xde, 0x12, 0x04, 0x95};
@@ -159,6 +210,44 @@ bool DevNotifyImpl(DevNotificationHeader&& header, const char* pFormat, ...) {
   const bool result = DevVNotifyImpl(std::move(header), pFormat, arguments);
   va_end(arguments);
   return result;
+}
+
+[[gnu::noinline]] void AppendDevNotificationText(uintptr_t argument,
+  const char* string, int length) {
+  auto* pBuilder = reinterpret_cast<DevNotificationBuilder*>(argument);
+  if (pBuilder->capacity - pBuilder->length <
+    static_cast<uint32_t>(length)) {
+    AbortImpl();
+  }
+
+  memcpy(pBuilder->pBuffer + pBuilder->length, string, length);
+  pBuilder->length += length;
+}
+
+[[gnu::noinline]] bool DevVNotifyImpl(DevNotificationHeader&& header,
+  const char* pFormat, va_list arguments) {
+  char buffer[DevNotificationTextSize] = {};
+  DevNotificationBuilder builder = {&header, buffer, sizeof(buffer), 0,
+    false};
+  util::VFormatString(AppendDevNotificationText,
+    reinterpret_cast<uintptr_t>(&builder), pFormat, arguments);
+  if (builder.capacity == builder.length) {
+    AbortImpl();
+  }
+
+  builder.pBuffer[builder.length] = '\0';
+  builder.length++;
+  return SendDevNotification(*builder.pHeader, builder.pBuffer,
+    builder.length);
+}
+
+bool DevNotifyDirectImpl(DevNotificationHeader&& header, const char* pText,
+  size_t length) {
+  char buffer[DevNotificationTextSize] = {};
+  const size_t count = length + 1 < sizeof(buffer) ? length + 1 :
+    sizeof(buffer);
+  const int copied = util::Strlcpy(buffer, pText, static_cast<int>(count));
+  return SendDevNotification(header, buffer, copied + 1);
 }
 
 // The name runs from the last backslash to the last dot after it. The scan
