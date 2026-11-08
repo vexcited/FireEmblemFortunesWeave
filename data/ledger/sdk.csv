@@ -19567,6 +19567,15 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 612390,16760,verified,src/graphics/color_format.cpp,NvColorFormatFromString
 623df0,4,verified,src/nvidia/nvos_stubs.cpp,NvRmGpuDebugDumpObjectTree
 68a2a0,20648,verified,src/graphics/program_commands.cpp,graphics::EmitProgramCommands
+6b0620,4,verified,src/nvn/nvn_native_image.cpp,_ZNK3nvn18NativeImageBuilder9GetDeviceEv
+6b0630,4,verified,src/nvn/nvn_native_image.cpp,_ZNK3nvn18NativeImageBuilder20GetNativeImageHandleEv
+6b0640,4,verified,src/nvn/nvn_native_image.cpp,_ZNK3nvn18NativeImageBuilder19GetMemoryPermissionEv
+6b0650,4,verified,src/nvn/nvn_native_image.cpp,_ZNK3nvn18NativeImageBuilder9GetFormatEv
+6b0680,4,verified,src/nvn/nvn_native_image.cpp,_ZN3nvn11NativeImage10InitializeEPKNS_18NativeImageBuilderE
+6b0690,4,verified,src/nvn/nvn_native_image.cpp,_ZN3nvn11NativeImage8FinalizeEv
+6b06a0,16,verified,src/nvn/nvn_native_image.cpp,_ZN3nvn11NativeImage17InitializeTextureEPNS_7TextureE
+6b0750,4,verified,src/nvn/nvn_native_image.cpp,_ZNK3nvn25ExternalMemoryPoolBuilder9GetDeviceEv
+6b0760,4,verified,src/nvn/nvn_native_image.cpp,_ZNK3nvn25ExternalMemoryPoolBuilder21GetNativeMemoryHandleEv
 6b0770,92,verified,src/nn/chat/chat_api.cpp,_ZN2nn4chat10InitializeEv
 6b07d0,28,verified,src/nn/chat/chat_api.cpp,_ZN2nn4chat8FinalizeEv
 6b07f0,4,verified,src/nn/chat/chat_api.cpp,_ZN2nn4chat30InitializeWithoutVirtualCameraEv
