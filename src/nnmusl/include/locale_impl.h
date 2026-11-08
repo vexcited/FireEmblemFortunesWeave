@@ -24,7 +24,8 @@ const char *__lctrans(const char *, const struct __locale_map *);
 const char *__lctrans_cur(const char *);
 
 #define LCTRANS(msg, lc, loc) __lctrans(msg, (loc)->cat[(lc)])
-#define LCTRANS_CUR(msg) __lctrans_cur(msg)
+// nnmusl never translates its own messages.
+#define LCTRANS_CUR(msg) (msg)
 
 #define C_LOCALE ((locale_t)&__c_locale)
 #define UTF8_LOCALE ((locale_t)&__c_dot_utf8_locale)

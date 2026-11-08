@@ -23547,6 +23547,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 79e1e0,476,verified,src/musl/src/regex/fnmatch.c,fnmatch_internal
 79e7e0,112,verified,src/musl/src/regex/fnmatch.c,str_next
 79e860,500,verified,src/musl/src/regex/fnmatch.c,match_bracket
+79eac0,148,verified,src/musl/src/regex/regerror.c,regerror
 79eb60,108,verified,src/musl/src/search/hsearch.c,hcreate
 79ebd0,104,verified,src/musl/src/search/hsearch.c,hcreate_r
 79ec40,84,verified,src/musl/src/search/hsearch.c,hdestroy
