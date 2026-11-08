@@ -23525,6 +23525,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 79d380,44,verified,src/musl/src/multibyte/mbstowcs.c,mbstowcs
 79d3b0,84,verified,src/musl/src/multibyte/mbtowc.c,mbtowc
 79d4e0,236,verified,src/musl/src/multibyte/wcrtomb.c,wcrtomb
+79d5e0,244,verified,src/nnmusl/multibyte/wcsnrtombs.c,wcsnrtombs
 79d6e0,424,verified,src/musl/src/multibyte/wcsrtombs.c,wcsrtombs
 79d890,44,verified,src/musl/src/multibyte/wcstombs.c,wcstombs
 79d8c0,12,verified,src/nnmusl/nnmusl_libc_forwarders2.cpp,wctob
