@@ -6,6 +6,12 @@
 #include "nn/sf/sf_buffers.hpp"
 #include "nn/sf/shared_pointer.hpp"
 
+namespace nn::diag {
+
+struct DevNotificationHeader;
+
+}
+
 namespace nn::lm {
 
 class ILogger : public sf::IServiceObject {
@@ -14,6 +20,9 @@ public:
   virtual void Reserved3() = 0;
   virtual Result Log(const sf::InAutoSelectBuffer& packet) = 0;
   virtual Result SetDestination(uint32_t destination) = 0;
+  virtual Result TransmitHashedLog(const sf::InAutoSelectBuffer& packet) = 0;
+  virtual Result DevNotify(const diag::DevNotificationHeader& header,
+    const sf::InBuffer& text) = 0;
 };
 
 class ILogService : public sf::IServiceObject {

@@ -201,6 +201,24 @@ void Initialize() {
   diag::detail::ReplaceDefaultLogObserver(detail::LogObserver);
 }
 
+namespace {
+
+// The log service drops notifications nobody listens to.
+constexpr uint32_t ResultDevNotificationDropped = 0x521;
+
+}
+
+bool DevNotify(const diag::DevNotificationHeader& header, const char* pText,
+  size_t size) {
+  const Result result = detail::ShimLibraryGlobal::GetInstance().GetLogger()
+    ->DevNotify(header, sf::InBuffer(pText, size));
+  if (result.GetInnerValueForDebug() != ResultDevNotificationDropped) {
+    NN_ABORT_UNLESS_RESULT_SUCCESS(result);
+  }
+
+  return result.IsSuccess();
+}
+
 void SetDestination(uint32_t destination) {
   NN_ABORT_UNLESS_RESULT_SUCCESS(detail::ShimLibraryGlobal::GetInstance()
     .GetLogger()->SetDestination(destination));

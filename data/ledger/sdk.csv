@@ -13435,6 +13435,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 4a15b0,184,verified,src/nn/lm/lm_api.cpp,_ZN2nn2lm12StartLoggingEv
 4a1670,184,verified,src/nn/lm/lm_api.cpp,_ZN2nn2lm11StopLoggingEv
 4a1730,228,verified,src/nn/lm/lm_api.cpp,_ZN2nn2lm6GetLogEPcmPlPj
+4a1820,240,verified,src/nn/lm/lm_api.cpp,_ZN2nn2lm9DevNotifyERKNS_4diag21DevNotificationHeaderEPKcm
 4a1920,164,verified,src/nn/lm/lm_api.cpp,_ZN2nn2lm6detail26TransmitHashedLogForSystemEPKvj
 4a1a40,168,verified,src/nn/lm/lm_api.cpp,_ZN2nn2lm6detail17ShimLibraryGlobalC2Ev
 4a1b00,80,verified,src/nn/lm/lm_api.cpp,_ZN2nn2lm6detail17ShimLibraryGlobalD2Ev
