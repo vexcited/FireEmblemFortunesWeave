@@ -1162,11 +1162,11 @@ d5010,12,verified,src/snd/bgm.cpp,_ZN3snd3BGM11setInstanceEPS0_
 d5020,56,verified,src/snd/game_ctrl.cpp,_ZN3snd3BGM6createEv
 d5060,56,verified,src/snd/game_ctrl.cpp,_ZN3snd3BGM7destroyEv
 d50a0,12,verified,src/snd/bgm.cpp,_ZN3snd3BGM11getInstanceEv
-d50c0,1168,verified,src/snd/bgm_entry.cpp,_ZN3snd3BGM6updateEv
+d50c0,1172,verified,src/snd/bgm_entry.cpp,_ZN3snd3BGM6updateEv
 d5ee0,184,verified,src/snd/bgm.cpp,_ZNK3snd3BGM7getBeatERKNS_3fnd10WeakHandleEi
 d5fa0,420,verified,src/snd/bgm_entry.cpp,_ZN3snd3BGM11requestDataEPKcii
 d6150,32,verified,src/snd/bgm.cpp,_ZNK3snd3BGM13isStoppingNowEv
-d6180,980,verified,src/snd/bgm_entry.cpp,_ZN3snd3BGM5startERKNS0_7RequestERKNS_4FadeEiiff
+d6180,1008,verified,src/snd/bgm_entry.cpp,_ZN3snd3BGM5startERKNS0_7RequestERKNS_4FadeEiiff
 d65a0,88,verified,src/snd/bgm.cpp,_ZN3snd3BGM11requestPlayEPKcRKNS_4FadeEiff
 d6600,1104,verified,src/snd/bgm_entry.cpp,_ZN3snd3BGM10startEntryERKNS0_7RequestERKNS_4FadeEiiff
 d6a60,128,verified,src/snd/bgm.cpp,_ZN3snd3BGM6equalsERKNS_3fnd6StringEPKc
@@ -1336,10 +1336,10 @@ e47c0,48,verified,src/memory/new_delete.cpp,deleting destructor at 0xe47c0
 e47f0,56,verified,src/snd/game_ctrl.cpp,_ZN3snd4Wind6createEv
 e4830,56,verified,src/snd/game_ctrl.cpp,_ZN3snd4Wind7destroyEv
 e4880,120,verified,src/snd/env_wind.cpp,_ZN3snd4Wind6updateEv
-e4920,292,verified,src/snd/env_wind.cpp,_ZN3snd4Wind4stopEPKc
+e4920,304,verified,src/snd/env_wind.cpp,_ZN3snd4Wind4stopEPKc
 e4a80,280,verified,src/snd/env_wind.cpp,_ZN3snd4Wind9findGroupEPKc
 e4bb0,196,verified,src/snd/env_wind.cpp,_ZN3snd3fnd9FastAllocINS_4Wind5GroupELj0EE6createEv
-e4c80,384,verified,src/snd/env_wind.cpp,_ZN3snd4Wind9stopGroupEPKc
+e4c80,288,disputed,src/snd/env_wind.cpp,_ZN3snd4Wind9stopGroupEPKc
 e4ec0,80,verified,src/snd/env_wind.cpp,_ZN3snd4Wind5resetEv
 e5580,468,verified,src/snd/env_wind.cpp,_ZN3snd4Wind11removeGroupEPNS0_5GroupE
 e57a0,184,verified,src/snd/env_wind.cpp,_ZN3snd4Wind4muteERKNS_4FadeE
@@ -1556,11 +1556,11 @@ ebe60,316,verified,src/snd/group_ctrl.cpp,_ZN3snd9GroupCtrl12unloadAddonsEPKc
 ebfc0,388,verified,src/snd/group_ctrl.cpp,_ZN3snd9GroupCtrl10loadCommonEv
 ec160,252,verified,src/snd/group_ctrl.cpp,_ZN3snd9GroupCtrl12unloadCommonEv
 ec560,376,verified,src/snd/group_ctrl.cpp,_ZN3snd9GroupCtrl13unloadCurrentEPKc
-ec700,524,verified,src/snd/group_ctrl.cpp,_ZN3snd9GroupCtrl9loadGroupEPKj
+ec700,552,verified,src/snd/group_ctrl.cpp,_ZN3snd9GroupCtrl9loadGroupEPKj
 ec960,216,verified,src/snd/group_ctrl.cpp,_ZN3snd9GroupCtrl11unloadGroupEPKj
 ecad0,104,verified,src/snd/group_ctrl.cpp,_ZNK3snd9GroupCtrl7isReadyEv
 ecde0,24,verified,src/llvm-libcxx-21/libcxx/include/__vector/vector.h,std::vector<T>::__throw_length_error()
-ecf60,260,verified,src/snd/group_ctrl.cpp,_ZNSt3__16vectorIN3snd9GroupCtrl4LoadENS1_3fnd9AllocatorIS3_EEE24__emplace_back_slow_pathIJRKS3_EEEPS3_DpOT_
+ecf60,284,verified,src/snd/group_ctrl.cpp,_ZNSt3__16vectorIN3snd9GroupCtrl4LoadENS1_3fnd9AllocatorIS3_EEE24__emplace_back_slow_pathIJRKS3_EEEPS3_DpOT_
 ed120,24,verified,src/llvm-libcxx-21/libcxx/include/__vector/vector.h,std::vector<T>::__throw_length_error()
 ed140,288,verified,src/snd/group_ctrl.cpp,_ZNSt3__16vectorIN3snd9GroupCtrl5AddonENS1_3fnd9AllocatorIS3_EEE24__emplace_back_slow_pathIJRKS3_EEEPS3_DpOT_
 ed300,24,verified,src/llvm-libcxx-21/libcxx/include/__vector/vector.h,std::vector<T>::__throw_length_error()
@@ -2453,7 +2453,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 12ff20,348,verified,src/snd/seq_voice.cpp,_ZN3snd8SeqVoice9setLockedEb
 1300a0,364,verified,src/snd/seq_voice.cpp,_ZNK3snd8SeqVoice8isLockedEv
 130220,360,verified,src/snd/seq_voice.cpp,_ZN3snd8SeqVoice9crossFadeEiff
-130980,300,verified,src/snd/seq_voice.cpp,_ZN3snd8SeqVoice13updatePlayingEv
+130980,336,verified,src/snd/seq_voice.cpp,_ZN3snd8SeqVoice13updatePlayingEv
 130c70,108,verified,src/snd/seq_voice.cpp,_ZN3snd8SeqVoice11getRegistryEv
 130ce0,8,verified,src/snd/voice.cpp,_ZN3snd5Voice14setStartOffsetEf
 130cf0,8,verified,src/snd/voice.cpp,_ZNK3snd5Voice12getUserFlagsEv
@@ -19194,7 +19194,7 @@ a3be20,180,verified,src/snd/debug_commands.cpp,_ZN3snd5debug12clearSeSendsEv
 a3bee0,168,verified,src/snd/debug_commands_2.cpp,_ZN3snd5debug11updateMixerEv
 a3bf90,184,verified,src/snd/debug_commands_2.cpp,_ZN3snd5debug13loadSoundDataERKN2as6stringE
 a3c050,180,verified,src/snd/debug_commands.cpp,_ZN3snd5debug15releaseListenerEv
-a3c110,108,verified,src/snd/debug_commands.cpp,_ZN3snd5debug11fixListenerEv
+a3c110,180,verified,src/snd/debug_commands.cpp,_ZN3snd5debug11fixListenerEv
 a3c1d0,180,verified,src/snd/debug_commands.cpp,_ZN3snd5debug12enableFlag60Ev
 a3c290,180,verified,src/snd/debug_commands.cpp,_ZN3snd5debug13disableFlag60Ev
 a3c350,180,verified,src/snd/debug_commands.cpp,_ZN3snd5debug12enableFlag62Ev
@@ -19244,7 +19244,7 @@ a3f3a0,216,verified,src/snd/debug_commands_2.cpp,_ZN3snd5debug19bgmStartSurround
 a3f480,168,verified,src/snd/debug_commands_2.cpp,_ZN3snd5debug17bgmGetSurroundPanEv
 a3f530,224,verified,src/snd/debug_commands_2.cpp,_ZN3snd5debug24bgmStartTrackSurroundPanEiff
 a3f610,176,verified,src/snd/debug_commands_2.cpp,_ZN3snd5debug22bgmGetTrackSurroundPanEi
-a3f6c0,148,verified,src/snd/debug_commands_2.cpp,_ZN3snd5debug20bgmStartLpfFrequencyEff
+a3f6c0,216,verified,src/snd/debug_commands_2.cpp,_ZN3snd5debug20bgmStartLpfFrequencyEff
 a3f7a0,224,verified,src/snd/debug_commands_2.cpp,_ZN3snd5debug25bgmStartTrackLpfFrequencyEiff
 a3f880,216,verified,src/snd/debug_commands_2.cpp,_ZN3snd5debug20bgmStartPitchCheckedEff
 a3f960,224,verified,src/snd/debug_commands_2.cpp,_ZN3snd5debug25bgmStartTrackPitchCheckedEiff
