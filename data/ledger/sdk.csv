@@ -903,6 +903,7 @@ ffe0,36,verified,src/nn/crypto/detail/sha3_impl.cpp,_ZNK2nn6crypto6detail8Sha3Im
 67060,348,verified,src/libpng/png.c,png_colorspace_set_chromaticities
 671c0,2000,verified,src/libpng/png.c,png_colorspace_check_xy
 67ae0,1352,verified,src/libpng/png.c,png_colorspace_set_endpoints
+681a0,548,verified,src/nn/unnamed/s900_0.c,SdkHr_681a0
 683d0,476,verified,src/libpng/png.c,png_icc_profile_error
 68660,288,verified,src/libpng/png.c,png_colorspace_endpoints_match
 68780,104,verified,src/libpng/png.c,png_icc_check_length
@@ -1655,6 +1656,7 @@ a66a0,164,verified,src/nn/util/util_format_string.cpp,_ZN2nn4util13TFormatString
 a6750,116,verified,src/nn/util/util_format_string.cpp,_ZN2nn4util10TVSNPrintfEPcmPKcSt9__va_list
 a67d0,196,verified,src/nn/util/util_format_string.cpp,_ZN2nn4util9TSNPrintfEPcmPKcz
 a7120,764,verified,src/nn/unnamed/s000_0.c,SdkHr_a7120
+a7480,92,verified,src/nn/unnamed/s900_0.c,SdkHr_a7480
 a74e0,56,verified,src/nn/util/utf.cpp,_ZN2nn4util30ConvertStringUtf8ToUtf16NativeEPtiPKci
 a7520,552,verified,src/nn/util/utf.cpp,_ZN2nn4util12_GLOBAL__N_118ConvertUtf8ToUtf16EPmS2_PtiPKci
 a7750,56,verified,src/nn/util/utf.cpp,_ZN2nn4util30ConvertStringUtf8ToUtf16NativeEPDsiPKci
@@ -2117,6 +2119,7 @@ b6060,224,verified,src/nnmusl/thread/tls_dtors.c,__nnmusl_get_number_uncalled_tl
 b6140,4,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,__nnmusl_get_tls_dtors_status
 b6ac0,136,verified,src/nn/unnamed/s000_0.c,SdkHr_b6ac0
 b7120,104,verified,src/nn/unnamed/s000_0.c,SdkHr_b7120
+b71a0,304,verified,src/nn/unnamed/s900_0.c,SdkHr_b71a0
 b7760,352,verified,src/nn/unnamed/s000_0.c,SdkHr_b7760
 b82d0,8,verified,src/nn/aoc/initialization.cpp,_ZN2nn3aoc6detail17AddProxyReferenceEPNS1_5ProxyE
 b82e0,144,verified,src/nn/unnamed/s000_0.c,SdkHr_b82e0
@@ -2253,6 +2256,7 @@ bd7f0,144,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag12GetBacktraceEPmimm
 bd880,76,verified,src/nn/unnamed/s000_0.c,SdkHr_bd880
 bd8d0,128,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag12GetBacktraceEPmiPKNS_2os9FiberTypeE
 bd950,60,verified,src/nn/unnamed/s000_0.c,SdkHr_bd950
+bd990,48,verified,src/nn/unnamed/s900_0.c,SdkHr_bd990
 bd9c0,32,verified,src/nn/unnamed/s000_0.c,SdkHr_bd9c0
 bd9e0,12,verified,src/nn/fs/dbm/fs_dbm_allocation_table.cpp,_ZN2nn2fs3dbm15AllocationTable9QuerySizeEj
 bd9f0,372,verified,src/nn/fs/dbm/fs_dbm_allocation_table.cpp,_ZN2nn2fs3dbm15AllocationTable6FormatENS0_10SubStorageEj
@@ -2352,6 +2356,7 @@ c35c0,192,verified,src/nn/unnamed/s000_1.c,SdkHr_c35c0
 c3680,200,verified,src/nn/unnamed/s000_1.c,SdkHr_c3680
 c3750,208,verified,src/nn/unnamed/s000_1.c,SdkHr_c3750
 c3820,216,verified,src/nn/unnamed/s000_1.c,SdkHr_c3820
+c3900,224,verified,src/nn/unnamed/s900_0.c,SdkHr_c3900
 c39e0,232,verified,src/nn/unnamed/s000_1.c,SdkHr_c39e0
 c3ad0,248,verified,src/nn/unnamed/s000_1.c,SdkHr_c3ad0
 c3bd0,264,verified,src/nn/unnamed/s000_1.c,SdkHr_c3bd0
@@ -2745,6 +2750,7 @@ de080,216,verified,src/nn/unnamed/s000_0.c,SdkHr_de080
 de180,56,verified,src/nn/unnamed/s000_0.c,SdkHr_de180
 de1c0,100,verified,src/nn/unnamed/s000_0.c,SdkHr_de1c0
 de340,100,verified,src/nn/unnamed/s000_0.c,SdkHr_de340
+de3c0,1296,verified,src/nn/unnamed/s900_0.c,SdkHr_de3c0
 df530,344,verified,src/nn/unnamed/s000_1.c,SdkHr_df530
 df690,332,verified,src/nn/fs/fs_device_save_data.cpp,_ZN2nn2fs19MountDeviceSaveDataEPKc
 df7e0,344,verified,src/nn/fs/fs_device_save_data.cpp,_ZN2nn2fs19MountDeviceSaveDataEPKcNS_3ncm13ApplicationIdE
@@ -2923,12 +2929,14 @@ e3e90,16,verified,src/nn/sdk_trivial_thunks.cpp,_Z13SdkStub_e3e90mm
 e3ea0,24,verified,src/nn/sdk_trivial_thunks2.cpp,_Z13SdkStub_e3ea0mmm
 e3ec0,24,verified,src/nn/sdk_trivial_thunks2.cpp,_Z13SdkStub_e3ec0mmm
 e3ee0,16,verified,src/nn/sdk_trivial_thunks.cpp,_Z13SdkStub_e3ee0mmm
+e3ef0,144,verified,src/nn/unnamed/s900_0.c,SdkHr_e3ef0
 e3fa0,144,verified,src/nn/unnamed/s000_0.c,SdkHr_e3fa0
 e4050,12,verified,src/nn/fssrv/sf/fssrv_sf_proxy.cpp,_ZN2nn2sf4cmif6client6detail13CmifProxyImplINS_5fssrv2sf11IFileSystemENS2_19CmifDomainProxyKindINS0_4hipc6client38Hipc2ClientSessionManagedProxyKindBaseINSA_18Hipc2ProxyKindBaseILNS9_6detail11MessageTypeE6EEEEEEENS0_25StatelessAllocationPolicyINS_2fs6detail19HipcClientAllocatorEEES7_NS3_19ProcessModifierImplINS2_21DefaultProxyFilterTagEEEE6CommitEv
 e4060,16,verified,src/nn/sdk_trivial_thunks.cpp,_Z13SdkStub_e4060mmm
 e4070,16,verified,src/nn/sdk_trivial_thunks.cpp,_Z13SdkStub_e4070mmm
 e4080,16,verified,src/nn/sdk_trivial_thunks.cpp,_Z13SdkStub_e4080mm
 e4090,16,verified,src/nn/sdk_trivial_thunks.cpp,_Z13SdkStub_e4090mmm
+e40a0,76,verified,src/nn/unnamed/s900_0.c,SdkHr_e40a0
 e40f0,12,verified,src/nn/sdk_trivial_thunks.cpp,_Z13SdkStub_e40f0mm
 e4100,472,verified,src/nn/sf/cmif/client/cmif_client_extra_message.cpp,_ZN2nn2sf4cmif6client19CmifDomainProxyKindINS0_4hipc6client38Hipc2ClientSessionManagedProxyKindBaseINS5_18Hipc2ProxyKindBaseILNS4_6detail11MessageTypeE6EEEEEE7ProcessILb0EJNS2_6detail6BufferILj25EEENSE_5InRawImEENSH_IjEEEEENS_6ResultEPKNSC_14ProxyKindStateEDpNT0_9ParameterEi
 e4310,420,verified,src/nn/sf/cmif/client/cmif_client_buffer_message.cpp,_ZN2nn2sf4cmif6client19CmifDomainProxyKindINS0_4hipc6client38Hipc2ClientSessionManagedProxyKindBaseINS5_18Hipc2ProxyKindBaseILNS4_6detail11MessageTypeE6EEEEEE7ProcessILb0EJNS2_6detail6BufferILj25EEEEEENS_6ResultEPKNSC_14ProxyKindStateEDpNT0_9ParameterEi
@@ -3105,11 +3113,13 @@ efd40,200,verified,src/nn/unnamed/s000_0.c,SdkHr_efd40
 efe10,36,verified,src/nn/unnamed/s000_0.c,SdkHr_efe10
 efe40,28,verified,src/nn/unnamed/s000_0.c,SdkHr_efe40
 efe60,72,verified,src/nn/unnamed/s000_0.c,SdkHr_efe60
+efeb0,80,verified,src/nn/unnamed/s900_0.c,SdkHr_efeb0
 eff00,92,verified,src/nn/unnamed/s000_0.c,SdkHr_eff00
 eff60,456,verified,src/nn/sf/cmif/client/cmif_client_buffer_message.cpp,_ZN2nn2sf4cmif6client19CmifDomainProxyKindINS0_4hipc6client38Hipc2ClientSessionManagedProxyKindBaseINS5_18Hipc2ProxyKindBaseILNS4_6detail11MessageTypeE6EEEEEE7ProcessILb0EJNS2_6detail6BufferILj69EEENSE_5InRawImEESI_NSH_IjEEEEENS_6ResultEPKNSC_14ProxyKindStateEDpNT0_9ParameterEi
 f0140,444,verified,src/nn/sf/cmif/client/cmif_client_buffer_message.cpp,_ZN2nn2sf4cmif6client19CmifDomainProxyKindINS0_4hipc6client38Hipc2ClientSessionManagedProxyKindBaseINS5_18Hipc2ProxyKindBaseILNS4_6detail11MessageTypeE6EEEEEE7ProcessILb0EJNS2_6detail6OutRawImEENSE_6BufferILj70EEENSE_5InRawIjEEEEENS_6ResultEPKNSC_14ProxyKindStateEDpNT0_9ParameterEi
 f0320,456,verified,src/nn/sf/cmif/client/cmif_client_extra_message.cpp,_ZN2nn2sf4cmif6client19CmifDomainProxyKindINS0_4hipc6client38Hipc2ClientSessionManagedProxyKindBaseINS5_18Hipc2ProxyKindBaseILNS4_6detail11MessageTypeE6EEEEEE7ProcessILb0EJNS2_6detail6OutRawImEENSE_6BufferILj70EEESG_SI_NSE_5InRawIjEEEEENS_6ResultEPKNSC_14ProxyKindStateEDpNT0_9ParameterEi
 f0520,476,verified,src/nn/sf/cmif/client/cmif_client_extra_message.cpp,_ZN2nn2sf4cmif6client19CmifDomainProxyKindINS0_4hipc6client38Hipc2ClientSessionManagedProxyKindBaseINS5_18Hipc2ProxyKindBaseILNS4_6detail11MessageTypeE6EEEEEE7ProcessILb0EJNS2_6detail6OutRawImEENSE_6BufferILj70EEENSH_ILj69EEENSE_5InRawImEESL_NSK_IjEEEEENS_6ResultEPKNSC_14ProxyKindStateEDpNT0_9ParameterEi
+f0930,200,verified,src/nn/unnamed/s900_0.c,SdkHr_f0930
 f0a00,12,verified,src/nn/account/detail/account_service_proxy.cpp,_ZN2nn2sf4cmif6client6detail13CmifProxyImplINS_7account31IAccountServiceForAdministratorENS2_19CmifDomainProxyKindINS0_4hipc6client38Hipc2ClientSessionManagedProxyKindBaseINS9_18Hipc2ProxyKindBaseILNS8_6detail11MessageTypeE6EEEEEEENS0_25StatelessAllocationPolicyINS0_22ExpHeapStaticAllocatorILm2048ENS5_6detail24ObjectHolderAllocatorTagEEEEES6_NS3_19ProcessModifierImplINS2_21DefaultProxyFilterTagEEEE12GetUserCountENS0_3OutIivEE
 f0a50,12,verified,src/nn/sf/cmif/client/cmif_proxy_method_table.cpp,_ZN2nn2sf4cmif6client6detail16CmifProxyMethodsINS_4chat12IUserServiceENS2_19CmifDomainProxyKindINS0_4hipc6client38Hipc2ClientSessionManagedProxyKindBaseINS9_18Hipc2ProxyKindBaseILNS8_6detail11MessageTypeE6EEEEEEEE9Command22Ev
 f0a60,12,verified,src/nn/sdk_trivial_thunks.cpp,_Z13SdkStub_f0a60mm
@@ -3155,6 +3165,7 @@ f3a20,104,verified,src/nn/sf/client_session.cpp,_ZN2nn2sf4hipc6client14AcquireSe
 f3a90,108,verified,src/nn/sf/client_session.cpp,_ZN2nn2sf4hipc6client13ReturnSessionEPNS2_24HipcClientSessionManagerEj
 f3b00,248,verified,src/nn/sf/client_session.cpp,_ZN2nn2sf4hipc6client14ResizeSessionsEPNS2_24HipcClientSessionManagerEi
 f3c40,128,verified,src/nn/sf/client_session.cpp,_ZN2nn2sf4hipc6client12CloseSessionEPNS2_24HipcClientSessionManagerE
+f3ce0,172,verified,src/nn/unnamed/s900_0.c,SdkHr_f3ce0
 f3db0,12,verified,src/nn/fssrv/sf/fssrv_sf_proxy.cpp,_ZN2nn2sf4cmif6client6detail13CmifProxyImplINS_5fssrv2sf25IFileSystemProxyForLoaderENS2_19CmifDomainProxyKindINS0_4hipc6client38Hipc2ClientSessionManagedProxyKindBaseINSA_18Hipc2ProxyKindBaseILNS9_6detail11MessageTypeE6EEEEEEENS0_25StatelessAllocationPolicyINS_2fs6detail19HipcClientAllocatorEEES7_NS3_19ProcessModifierImplINS2_21DefaultProxyFilterTagEEEE17IsArchivedProgramENS0_3OutIbvEEm
 f3dc0,12,verified,src/nn/fssrv/sf/fssrv_sf_proxy.cpp,_ZN2nn2sf4cmif6client6detail13CmifProxyImplINS_5fssrv2sf25IFileSystemProxyForLoaderENS2_19CmifDomainProxyKindINS0_4hipc6client38Hipc2ClientSessionManagedProxyKindBaseINSA_18Hipc2ProxyKindBaseILNS9_6detail11MessageTypeE6EEEEEEENS0_25StatelessAllocationPolicyINS_2fs6detail19HipcClientAllocatorEEES7_NS3_19ProcessModifierImplINS2_21DefaultProxyFilterTagEEEE17SetCurrentProcessEm
 f3dd0,488,verified,src/nn/sf/cmif/client/cmif_client_object_buffer_message.cpp,_ZN2nn2sf4cmif6client19CmifDomainProxyKindINS0_4hipc6client38Hipc2ClientSessionManagedProxyKindBaseINS5_18Hipc2ProxyKindBaseILNS4_6detail11MessageTypeE6EEEEEE18ProcessWithObjectsILb0ELi1EJNS2_6detail6BufferILj6EEENSE_5InRawIhEENSH_ImEESI_EEENS_6ResultEPKNSC_14ProxyKindStateEPKPNS0_13SharedPointerINS0_14IServiceObjectEEEDpNT1_9ParameterEiPPNSE_15CmifProxyObjectE
@@ -5522,6 +5533,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 173cc0,76,verified,src/nn/nlibsdk/posix_thread.cpp,_ZN2nn7nlibsdk6detail22JoinAndFreePosixThreadEPNS1_11PosixThreadEPPv
 173d10,400,verified,src/nn/nlibsdk/posix_thread.cpp,_ZN2nn7nlibsdk6detail25SetDefaultPosixThreadNameEPNS1_11PosixThreadE
 173ea0,32,verified,src/nn/result/result_unhandled.cpp,_ZN2nn6result6detail17OnUnhandledResultENS_6ResultE
+173ec0,28,verified,src/nn/unnamed/s900_0.c,SdkHr_173ec0
 173ee0,20,verified,src/nn/result/result_convert_invalid.cpp,_ZN2nn6result6detail18ConvertInvalidImplENS_6ResultE
 173f00,8,verified,src/nn/result/result_c_api.cpp,nnResultGetModule
 173f10,8,verified,src/nn/result/result_c_api.cpp,nnResultGetDescription
@@ -7183,6 +7195,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 1b9250,180,verified,src/nn/unnamed/s000_3.c,SdkHr_1b9250
 1b9320,12,verified,src/nn/account/detail/account_service_proxy.cpp,_ZN2nn2sf4cmif6client6detail13CmifProxyImplINS_7account4baas14IAdministratorENS2_19CmifDomainProxyKindINS0_4hipc6client38Hipc2ClientSessionManagedProxyKindBaseINSA_18Hipc2ProxyKindBaseILNS9_6detail11MessageTypeE6EEEEEEENS0_25StatelessAllocationPolicyINS0_22ExpHeapStaticAllocatorILm2048ENS5_6detail24ObjectHolderAllocatorTagEEEEES7_NS3_19ProcessModifierImplINS2_21DefaultProxyFilterTagEEEE46RequireReauthenticationOfNetworkServiceAccountEv
 1b9330,140,verified,src/nn/unnamed/s000_2.c,SdkHr_1b9330
+1b93e0,116,verified,src/nn/unnamed/s900_0.c,SdkHr_1b93e0
 1b9470,132,verified,src/nn/unnamed/s000_2.c,SdkHr_1b9470
 1b9510,444,verified,src/nn/sf/cmif/client/cmif_client_buffer_message.cpp,_ZN2nn2sf4cmif6client19CmifDomainProxyKindINS0_4hipc6client38Hipc2ClientSessionManagedProxyKindBaseINS5_18Hipc2ProxyKindBaseILNS4_6detail11MessageTypeE6EEEEEE7ProcessILb1EJNS2_6detail6BufferILj25EEENSE_5InRawImEEEEENS_6ResultEPKNSC_14ProxyKindStateEDpNT0_9ParameterEi
 1b96e0,304,verified,src/nn/sf/cmif/client/cmif_client_message.cpp,_ZN2nn2sf4cmif6client19CmifDomainProxyKindINS0_4hipc6client38Hipc2ClientSessionManagedProxyKindBaseINS5_18Hipc2ProxyKindBaseILNS4_6detail11MessageTypeE6EEEEEE7ProcessILb0EJNS2_6detail6OutRawIjEENSE_5InRawImEEEEENS_6ResultEPKNSC_14ProxyKindStateEDpNT0_9ParameterEi
@@ -7477,6 +7490,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 1c5d80,80,verified,src/nn/am/am_interface_accessors.cpp,_ZN2nn2am28IsInitializedAsOverlayAppletEv
 1c5dd0,1888,verified,src/nn/unnamed/s000_2.c,SdkHr_1c5dd0
 1c6580,1204,verified,src/nn/unnamed/s000_2.c,SdkHr_1c6580
+1c6b2c,92,verified,src/nn/unnamed/s900_0.c,SdkHr_1c6b2c
 1c6b88,108,verified,src/nn/unnamed/s000_2.c,SdkHr_1c6b88
 1c6bf4,12,verified,src/nn/am/am_interface_accessors.cpp,_ZN2nn2am24SetLibraryAppletResolverEPFvvE
 1c6cd0,84,verified,src/nn/unnamed/s000_2.c,SdkHr_1c6cd0
@@ -8090,6 +8104,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 1de930,248,verified,src/nn/sf/cmif/client/cmif_client_message.cpp,_ZN2nn2sf4hipc6client18Hipc2ProxyKindBaseILNS1_6detail11MessageTypeE6EE7ProcessILb0EJNS0_4cmif6client6detail6OutRawINSA_7RawDataILm128ELm8EEEEENSA_14InRawReferenceINSC_ILm16ELm8EEEEEEEENS_6ResultEPKNS6_14ProxyKindStateEDpNT0_9ParameterEi
 1dea80,260,verified,src/nn/sf/cmif/client/cmif_client_plain_object_message.cpp,_ZN2nn2sf4hipc6client18Hipc2ProxyKindBaseILNS1_6detail11MessageTypeE6EE18ProcessWithObjectsILb1ELi1EJNS0_4cmif6client6detail5InRawImEEEEENS_6ResultEPKNS6_14ProxyKindStateEPKPNS0_13SharedPointerINS0_14IServiceObjectEEEDpNT1_9ParameterEiPPNSA_15CmifProxyObjectE
 1dec50,172,verified,src/nn/sf/cmif/client/cmif_proxy_factory.cpp,_ZN2nn2sf4cmif6client6detail16OutObjectCreator6CreateINS_2ec23IContentsServiceManagerENS0_4hipc6client18Hipc2ProxyKindBaseILNS8_6detail11MessageTypeE6EEEEEvi
+1ded00,180,verified,src/nn/unnamed/s900_0.c,SdkHr_1ded00
 1dedd0,192,verified,src/nn/unnamed/s000_2.c,SdkHr_1dedd0
 1deeb0,452,verified,src/nn/sf/cmif/client/cmif_client_plain_object_message.cpp,_ZN2nn2sf4hipc6client18Hipc2ProxyKindBaseILNS1_6detail11MessageTypeE6EE21ProcessWithOutObjectsILb1ELi1EJNS0_4cmif6client6detail9OutHandleILb0EEENSA_10OutObjectsENSA_5InRawImEENSA_14InRawReferenceINSA_7RawDataILm65ELm1EEEEENSA_6BufferILj5EEEEEENS_6ResultEPKNS6_14ProxyKindStateEDpNT1_9ParameterEiPPNSA_15CmifProxyObjectE
 1df160,172,verified,src/nn/sf/cmif/client/cmif_proxy_factory.cpp,_ZN2nn2sf4cmif6client6detail16OutObjectCreator6CreateINS_2ec6detail10IAsyncDataENS0_4hipc6client18Hipc2ProxyKindBaseILNS9_6detail11MessageTypeE6EEEEEvi
@@ -9454,6 +9469,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 234cd0,176,verified,src/nn/unnamed/s001_0.c,SdkHr_234cd0
 234da0,168,verified,src/nn/audio/detail/audio_service_proxy.cpp,_ZN2nn2sf4cmif6client6detail13CmifProxyImplINS_5audio6detail21IAudioRendererManagerENS0_4hipc6client18Hipc2ProxyKindBaseILNS8_6detail11MessageTypeE6EEENS0_25StatelessAllocationPolicyINS0_22ExpHeapStaticAllocatorILm16384ENS5_35CreateAudioRendererManagerByHipcTagEEEEES7_NS3_19ProcessModifierImplINS2_21DefaultProxyFilterTagEEEE37GetAudioDeviceServiceWithRevisionInfoERKNS0_3OutINS0_13SharedPointerINS6_12IAudioDeviceEEEvEENS_6applet20AppletResourceUserIdEj
 234e50,168,verified,src/nn/unnamed/s001_0.c,SdkHr_234e50
+234f00,168,verified,src/nn/unnamed/s900_0.c,SdkHr_234f00
 234fb0,4,verified,src/nn/audio/common/command_dump.cpp,_ZN2nn5audio6common30DumpCommandStructSizeAndAlignsEv
 234fc0,4,verified,src/nn/audio/common/command_dump.cpp,_ZN2nn5audio6common15DumpCommandListEPKvm
 234fd0,16,verified,src/nn/audio/node_id_manager.cpp,_ZN2nn5audio6common13NodeIdManager9GetNodeIdENS2_10NodeIdTypeEii
@@ -10737,6 +10753,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 2b1670,200,verified,src/nn/audio/sysmix/sysmix_impl.cpp,_ZN2nn5audio6sysmix6detail15WriteStreamImplEPiPNS1_13StreamContextEPKvi
 2b1740,236,verified,src/nn/audio/sysmix/sysmix_impl.cpp,_ZN2nn5audio6sysmix6detail14ReadStreamImplEPiPvPNS_8TimeSpanEPNS1_13StreamContextEi
 2b1830,172,verified,src/nn/audio/sysmix/sysmix_impl.cpp,_ZN2nn5audio6sysmix6detail15PrimeStreamImplEPiPNS1_13StreamContextEi
+2b18e0,300,verified,src/nn/unnamed/s900_0.c,SdkHr_2b18e0
 2b1a10,168,verified,src/nn/audio/sysmix/sysmix_impl.cpp,_ZN2nn5audio6sysmix6detail15PurgeStreamImplEPiPNS1_13StreamContextEi
 2b1bf0,16,verified,src/nn/audio/sysmix/sysmix_impl.cpp,_ZN2nn5audio6sysmix6detail15ClockStreamImplEPNS1_13StreamContextENS_8TimeSpanE
 2b1c00,428,verified,src/nn/audio/sysmix/sysmix_impl.cpp,_ZN2nn5audio6sysmix6detail20DisengageStreamsImplEPKPNS1_13StreamContextEjb
@@ -10753,6 +10770,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 2b2a00,320,verified,src/nn/sf/cmif/client/cmif_client_handle_message.cpp,_ZN2nn2sf4cmif6client19CmifDomainProxyKindINS0_4hipc6client38Hipc2ClientSessionManagedProxyKindBaseINS5_18Hipc2ProxyKindBaseILNS4_6detail11MessageTypeE6EEEEEE7ProcessILb0EJNS2_6detail9OutHandleILb0EEENSE_5InRawIjEESI_EEENS_6ResultEPKNSC_14ProxyKindStateEDpNT0_9ParameterEi
 2b2b80,232,verified,src/nn/unnamed/s001_0.c,SdkHr_2b2b80
 2b2c70,580,verified,src/nn/unnamed/s001_0.c,SdkHr_2b2c70
+2b2ec0,180,verified,src/nn/unnamed/s900_0.c,SdkHr_2b2ec0
 2b2f80,24,verified,src/nn/unnamed/s001_0.c,SdkHr_2b2f80
 2b2fa0,396,verified,src/nn/unnamed/s001_0.c,SdkHr_2b2fa0
 2b3390,316,verified,src/nn/unnamed/s001_0.c,SdkHr_2b3390
@@ -11217,6 +11235,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 2c6cd4,80,verified,src/nn/unnamed/s001_0.c,SdkHr_2c6cd4
 2c6d24,16,verified,src/nn/capsrv/capsrv_service_proxy.cpp,_ZN2nn2sf4cmif6client6detail16CmifProxyMethodsINS_6capsrv2sf24IAlbumApplicationServiceENS0_4hipc6client18Hipc2ProxyKindBaseILNS8_6detail11MessageTypeE6EEEE10Command130Ehmm
 2c6d34,80,verified,src/nn/unnamed/s001_0.c,SdkHr_2c6d34
+2c6d84,88,verified,src/nn/unnamed/s900_0.c,SdkHr_2c6d84
 2c6ddc,76,verified,src/nn/unnamed/s001_0.c,SdkHr_2c6ddc
 2c6e28,84,verified,src/nn/unnamed/s001_0.c,SdkHr_2c6e28
 2c6e7c,76,verified,src/nn/unnamed/s001_0.c,SdkHr_2c6e7c
@@ -11326,6 +11345,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 2e8b40,716,verified,src/opus/celt/vq.c,alg_quant
 2e8e80,640,verified,src/opus/celt/vq.c,alg_unquant
 2e9180,348,verified,src/opus/celt/vq.c,renormalise_vector
+2e9300,732,verified,src/nn/unnamed/s900_0.c,SdkHr_2e9300
 2e9600,3752,verified,src/opus/celt/rate.c,clt_compute_allocation
 2ea920,5032,verified,src/opus/silk/A2NLSF.c,silk_A2NLSF
 2ebe40,228,verified,src/opus/silk/CNG.c,silk_CNG_Reset
@@ -13604,6 +13624,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 4305a0,24,verified,src/nn/unnamed/s001_1.c,SdkHr_4305a0
 4305c0,24,verified,src/nn/unnamed/s001_1.c,SdkHr_4305c0
 4305e0,376,verified,src/nn/unnamed/s001_1.c,SdkHr_4305e0
+430760,164,verified,src/nn/unnamed/s900_0.c,SdkHr_430760
 4308e0,164,verified,src/nn/unnamed/s001_1.c,SdkHr_4308e0
 430a60,192,verified,src/nn/unnamed/s001_1.c,SdkHr_430a60
 430b20,240,verified,src/nn/unnamed/s001_1.c,SdkHr_430b20
@@ -13663,6 +13684,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 438d00,84,verified,src/nn/fontll/itype/fsglue.c,fsg_SetDefaults
 438d60,252,verified,src/nn/unnamed/s001_1.c,SdkHr_438d60
 438e60,460,verified,src/nn/unnamed/s001_1.c,SdkHr_438e60
+439030,256,verified,src/nn/unnamed/s900_0.c,SdkHr_439030
 439720,1208,verified,src/nn/unnamed/s001_1.c,SdkHr_439720
 43a340,1068,verified,src/nn/unnamed/s001_1.c,SdkHr_43a340
 43a7c0,112,verified,src/nn/unnamed/s001_1.c,SdkHr_43a7c0
@@ -14511,6 +14533,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 491d60,12,verified,src/nn/tma/tma_proxy.cpp,_ZN2nn2sf4cmif6client6detail13CmifProxyImplINS_3tma7ISocketENS0_4hipc6client18Hipc2ProxyKindBaseILNS7_6detail11MessageTypeE6EEENS0_25StatelessAllocationPolicyINS0_22ExpHeapStaticAllocatorILm16384ENS_4htcs25CreateTmaManagerByHipcTagEEEEES6_NS3_19ProcessModifierImplINS2_21DefaultProxyFilterTagEEEE11AcceptStartENS0_3OutIjvEENSN_INS0_12NativeHandleEvEE
 491e30,20,verified,src/nn/tma/tma_proxy.cpp,_ZN2nn2sf4cmif6client6detail13CmifProxyImplINS_3tma7ISocketENS0_4hipc6client18Hipc2ProxyKindBaseILNS7_6detail11MessageTypeE6EEENS0_25StatelessAllocationPolicyINS0_22ExpHeapStaticAllocatorILm16384ENS_4htcs25CreateTmaManagerByHipcTagEEEEES6_NS3_19ProcessModifierImplINS2_21DefaultProxyFilterTagEEEE9RecvStartENS0_3OutIjvEENSN_INS0_12NativeHandleEvEEii
 491e50,28,verified,src/nn/tma/tma_proxy.cpp,_ZN2nn2sf4cmif6client6detail13CmifProxyImplINS_3tma7ISocketENS0_4hipc6client18Hipc2ProxyKindBaseILNS7_6detail11MessageTypeE6EEENS0_25StatelessAllocationPolicyINS0_22ExpHeapStaticAllocatorILm16384ENS_4htcs25CreateTmaManagerByHipcTagEEEEES6_NS3_19ProcessModifierImplINS2_21DefaultProxyFilterTagEEEE11RecvResultsENS0_3OutIivEENSN_IlvEERKNS0_9OutBufferEj
+491e70,56,verified,src/nn/unnamed/s900_0.c,SdkHr_491e70
 491f20,16,verified,src/nn/tma/tma_proxy.cpp,_ZN2nn2sf4cmif6client6detail13CmifProxyImplINS_3tma7ISocketENS0_4hipc6client18Hipc2ProxyKindBaseILNS7_6detail11MessageTypeE6EEENS0_25StatelessAllocationPolicyINS0_22ExpHeapStaticAllocatorILm16384ENS_4htcs25CreateTmaManagerByHipcTagEEEEES6_NS3_19ProcessModifierImplINS2_21DefaultProxyFilterTagEEEE11SendResultsENS0_3OutIivEENSN_IlvEEj
 491f30,16,verified,src/nn/tma/tma_proxy.cpp,_ZN2nn2sf4cmif6client6detail13CmifProxyImplINS_3tma7ISocketENS0_4hipc6client18Hipc2ProxyKindBaseILNS7_6detail11MessageTypeE6EEENS0_25StatelessAllocationPolicyINS0_22ExpHeapStaticAllocatorILm16384ENS_4htcs25CreateTmaManagerByHipcTagEEEEES6_NS3_19ProcessModifierImplINS2_21DefaultProxyFilterTagEEEE9StartSendENS0_3OutIjvEENSN_INS0_12NativeHandleEvEENSN_IlvEEli
 491f60,16,verified,src/nn/tma/tma_proxy.cpp,_ZN2nn2sf4cmif6client6detail13CmifProxyImplINS_3tma7ISocketENS0_4hipc6client18Hipc2ProxyKindBaseILNS7_6detail11MessageTypeE6EEENS0_25StatelessAllocationPolicyINS0_22ExpHeapStaticAllocatorILm16384ENS_4htcs25CreateTmaManagerByHipcTagEEEEES6_NS3_19ProcessModifierImplINS2_21DefaultProxyFilterTagEEEE7EndSendENS0_3OutIivEENSN_IlvEEj
@@ -15622,6 +15645,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 4bd000,104,verified,src/nn/mii/mii_image_database.cpp,_ZN2nn3mii13ImageDatabase10ImportFileEPKvm
 4bd070,116,verified,src/nn/mii/mii_image_database.cpp,_ZN2nn3mii13ImageDatabase10ExportFileEPvm
 4bd380,56,verified,src/nn/mii/mii_region_util.cpp,_ZN2nn3mii9AppendMiiERKNS0_8DatabaseERKNS0_8CharInfoE
+4bd660,740,verified,src/nn/unnamed/s900_0.c,SdkHr_4bd660
 4bda60,168,verified,src/nn/sf/cmif/client/cmif_proxy_method.cpp,_ZN2nn2sf4cmif6client6detail16CmifProxyMethodsINS_3mii6detail14IStaticServiceENS2_19CmifDomainProxyKindINS0_4hipc6client38Hipc2ClientSessionManagedProxyKindBaseINSA_18Hipc2ProxyKindBaseILNS9_6detail11MessageTypeE6EEEEEEEE18GetDatabaseServiceERKNS0_3OutINS0_13SharedPointerINS6_16IDatabaseServiceEEEvEEi
 4bdb10,176,verified,src/nn/sf/cmif/client/cmif_proxy_factory.cpp,_ZN2nn2sf4cmif6client6detail16OutObjectCreator6CreateINS_3mii6detail16IDatabaseServiceENS2_19CmifDomainProxyKindINS0_4hipc6client38Hipc2ClientSessionManagedProxyKindBaseINSB_18Hipc2ProxyKindBaseILNSA_6detail11MessageTypeE6EEEEEEEEEvi
 4bdbc0,16,verified,src/nn/mii/mii_service_proxy.cpp,_ZN2nn2sf4cmif6client6detail16CmifProxyMethodsINS_3mii6detail16IDatabaseServiceENS2_19CmifDomainProxyKindINS0_4hipc6client38Hipc2ClientSessionManagedProxyKindBaseINSA_18Hipc2ProxyKindBaseILNS9_6detail11MessageTypeE6EEEEEEEE8Command0ENS0_3OutIhvEEj
@@ -15945,6 +15969,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 4cd280,8,verified,src/nn/movie/detail/movie_extractor_unwrapper.cpp,_ZN2nn5movie6detail18ExtractorUnwrapper18GetCacheRangeCountEPi
 4cd290,8,verified,src/nn/movie/detail/movie_extractor_unwrapper.cpp,_ZN2nn5movie6detail18ExtractorUnwrapper13GetCacheRangeEPlS3_i
 4cd2a0,8,verified,src/nn/sdk_trivial_forwarders.cpp,_Z14SdkStub_4cd2a0m
+4cd2c0,148,verified,src/nn/unnamed/s900_0.c,SdkHr_4cd2c0
 4cd3f0,64,verified,src/nn/sdk_trivial_thunks.cpp,_Z14SdkStub_4cd3f0m
 4cd500,8,verified,src/nn/sdk_trivial_wrappers.cpp,_Z14SdkStub_4cd500m
 4cd530,64,verified,src/nn/sdk_trivial_thunks.cpp,_Z14SdkStub_4cd530m
@@ -15993,6 +16018,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 4d3690,12,verified,src/nn/sdk_trivial_more.cpp,_Z14SdkStub_4d3690mmmm
 4d36a0,12,verified,src/nn/sdk_trivial_forwarders.cpp,_Z14SdkStub_4d36a0mm
 4d36b0,12,verified,src/nn/sdk_trivial_forwarders.cpp,_Z14SdkStub_4d36b0m
+4d3bc0,52,verified,src/nn/unnamed/s900_0.c,SdkHr_4d3bc0
 4d3da0,12,verified,src/nn/sdk_trivial_forwarders.cpp,_Z14SdkStub_4d3da0m
 4d3db0,12,verified,src/nn/sdk_trivial_forwarders.cpp,_Z14SdkStub_4d3db0m
 4d3dc0,12,verified,src/nn/sdk_trivial_forwarders.cpp,_Z14SdkStub_4d3dc0m
@@ -16053,6 +16079,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 4dc790,32,verified,src/nn/movie/detail/movie_media_muxer_impl.cpp,_ZN2nn5movie6detail14MediaMuxerImpl8AllocateEmm
 4dc7c0,176,verified,src/nn/movie/detail/movie_media_muxer_impl.cpp,_ZN2nn5movie6detail21MediaMuxerThreadEntryEPv
 4dc8e0,60,verified,src/nn/movie/detail/movie_media_muxer_impl.cpp,_ZN2nn5movie6detail14MediaMuxerImpl20MediaMuxerThreadLoopEv
+4dcb20,96,verified,src/nn/unnamed/s900_0.c,SdkHr_4dcb20
 4dcd00,220,verified,src/nn/movie/detail/movie_media_muxer_state.cpp,_ZN2nn5movie6detail15MediaMuxerStateC2Ev
 4dcde0,404,verified,src/nn/movie/detail/movie_media_muxer_state.cpp,_ZNK2nn5movie6detail15MediaMuxerState20ValidateCurrentStateENS2_19MediaMuxerFunctionsE
 4dcf80,24,verified,src/nn/movie/detail/movie_message.cpp,_ZN2nn5movie6detail7Message5ResetEv
@@ -16186,6 +16213,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 4eee40,272,verified,src/nandroid/extractors/mp4/MPEG4Extractor.cpp,_ZN8nandroid14MPEG4Extractor19parseAC3SpecificBoxEl
 4ef0a0,232,verified,src/nandroid/extractors/mp4/MPEG4Extractor.cpp,_ZN8nandroid14MPEG4Extractor20parseEAC3SpecificBoxEl
 4ef640,292,verified,src/nandroid/extractors/mp4/MPEG4Extractor.cpp,_ZN8nandroid14MPEG4Extractor19parseAC4SpecificBoxEl
+4efb00,224,verified,src/nn/unnamed/s900_0.c,SdkHr_4efb00
 4efd00,472,verified,src/nandroid/extractors/mp4/MPEG4Extractor.cpp,_ZN8nandroid14MPEG4Extractor14parseQTMetaValEilm
 4eff50,236,verified,src/nandroid/extractors/mp4/MPEG4Extractor.cpp,_ZN8nandroid14MPEG4Extractor27parseChannelCountSampleRateEPlPtS2_
 4f05e0,812,verified,src/nandroid/extractors/mp4/MPEG4Extractor.cpp,_ZN8nandroid14MPEG4Extractor8getTrackEm
@@ -16227,6 +16255,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 4f4ca0,84,verified,src/nandroid/extractors/mp4/SampleIterator.cpp,_ZNK8nandroid6VectorImE8do_splatEPvPKvm
 4f4d10,20,verified,src/nandroid/extractors/mp4/SampleIterator.cpp,_ZNK8nandroid6VectorImE15do_move_forwardEPvPKvm
 4f4d30,20,verified,src/nandroid/extractors/mp4/SampleIterator.cpp,_ZNK8nandroid6VectorImE16do_move_backwardEPvPKvm
+4f4ea0,156,verified,src/nn/unnamed/s900_0.c,SdkHr_4f4ea0
 4f4ff0,4,verified,src/nandroid/extractors/mp4/MPEG4Extractor.cpp,_ZNK8nandroid6VectorINS_9SidxEntryEE12do_constructEPvm
 4f5000,4,verified,src/nandroid/extractors/mp4/MPEG4Extractor.cpp,_ZNK8nandroid6VectorINS_9SidxEntryEE10do_destroyEPvm
 4f5020,136,verified,src/nandroid/extractors/mp4/MPEG4Extractor.cpp,_ZNK8nandroid6VectorINS_9SidxEntryEE7do_copyEPvPKvm
@@ -16737,6 +16766,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 5142c0,20,verified,src/nandroid/libstagefright/MPEG4Writer.cpp,_ZNK8nandroid6VectorItE15do_move_forwardEPvPKvm
 5142e0,20,verified,src/nandroid/libstagefright/MPEG4Writer.cpp,_ZNK8nandroid6VectorItE16do_move_backwardEPvPKvm
 514490,24,verified,src/nn/sdk_trivial_more.cpp,_Z14SdkStub_514490mm
+5144b0,112,verified,src/nn/unnamed/s900_0.c,SdkHr_5144b0
 514520,28,verified,src/nn/sdk_trivial_more.cpp,_Z14SdkStub_514520mm
 514540,12,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_514540v
 514550,264,verified,src/nandroid/libstagefright/NuCachedSource2.cpp,_ZN8nandroid9PageCacheC2Em
@@ -17494,6 +17524,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 563ea0,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_563ea0m
 563f60,4,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_563f60v
 564320,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_564320m
+564720,96,verified,src/nn/unnamed/s900_0.c,SdkHr_564720
 564810,60,verified,src/nn/sdk_trivial_thunks.cpp,_Z14SdkStub_564810m
 564900,4,verified,src/nandroid/extractors/mp4/ItemTable.cpp,_ZNK8nandroid6VectorINS_4heif11ExtentEntryEE12do_constructEPvm
 564910,4,verified,src/nandroid/extractors/mp4/ItemTable.cpp,_ZNK8nandroid6VectorINS_4heif11ExtentEntryEE10do_destroyEPvm
@@ -17958,6 +17989,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 57e560,12,verified,src/nn/sdk_trivial_thunks.cpp,_Z14SdkStub_57e560mmm
 57e570,16,verified,src/nn/sdk_trivial_thunks2.cpp,_Z14SdkStub_57e570mb
 57e580,20,verified,src/nn/sdk_trivial_thunks2.cpp,_Z14SdkStub_57e580mbj
+57e5a0,48,verified,src/nn/unnamed/s900_0.c,SdkHr_57e5a0
 57e640,12,verified,src/nn/sdk_trivial_thunks.cpp,_Z14SdkStub_57e640mm
 57e650,12,verified,src/nn/sdk_trivial_thunks.cpp,_Z14SdkStub_57e650mm
 57e660,452,verified,src/nn/sf/cmif/client/cmif_client_buffer_message.cpp,_ZN2nn2sf4cmif6client19CmifDomainProxyKindINS0_4hipc6client38Hipc2ClientSessionManagedProxyKindBaseINS5_18Hipc2ProxyKindBaseILNS4_6detail11MessageTypeE6EEEEEE7ProcessILb1EJNS2_6detail5InRawImEESG_NSE_6BufferILj5EEEEEENS_6ResultEPKNSC_14ProxyKindStateEDpNT0_9ParameterEi
@@ -17970,6 +18002,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 57f720,32,verified,src/nn/nfc/nfc_client.cpp,_ZN2nn3nfc6client25GetUserInterfaceForCommonEv
 57f740,32,verified,src/nn/nfc/nfc_client.cpp,_ZN2nn3nfc6client16GetUserInterfaceEv
 57f7c0,20,verified,src/nn/nfc/nfc_client.cpp,_ZN2nn3nfc6client22IsCreatedUserInterfaceEv
+57f7e0,100,verified,src/nn/unnamed/s900_0.c,SdkHr_57f7e0
 57fb50,88,verified,src/nn/nfc/nfc_api.cpp,_ZN2nn3nfc6detail10CheckErrorERKNS_6ResultE
 57fbf0,160,verified,src/nn/nfc/nfc_api.cpp,_ZN2nn3nfc8GetStateEv
 57fc90,184,verified,src/nn/nfc/nfc_api.cpp,_ZN2nn3nfc14GetDeviceStateERKNS0_12DeviceHandleE
@@ -18462,6 +18495,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 592b50,72,verified,src/nn/notification/notification_alarm_api.cpp,_ZN2nn12notification8NotifieraSEOS1_
 592ba0,24,verified,src/nn/notification/notification_notifier.cpp,_ZN2nn12notification8NotifierD2Ev
 592bc0,112,verified,src/nn/notification/notification_notifier.cpp,_ZN2nn12notification8Notifier14GetSystemEventEPNS_2os11SystemEventE
+592fc0,736,verified,src/nn/unnamed/s900_0.c,SdkHr_592fc0
 593650,444,verified,src/nn/sf/cmif/client/cmif_client_buffer_message.cpp,_ZN2nn2sf4cmif6client19CmifDomainProxyKindINS0_4hipc6client38Hipc2ClientSessionManagedProxyKindBaseINS5_18Hipc2ProxyKindBaseILNS4_6detail11MessageTypeE6EEEEEE7ProcessILb0EJNS2_6detail6BufferILj21EEENSF_ILj5EEEEEENS_6ResultEPKNSC_14ProxyKindStateEDpNT0_9ParameterEi
 593820,444,verified,src/nn/sf/cmif/client/cmif_client_buffer_message.cpp,_ZN2nn2sf4cmif6client19CmifDomainProxyKindINS0_4hipc6client38Hipc2ClientSessionManagedProxyKindBaseINS5_18Hipc2ProxyKindBaseILNS4_6detail11MessageTypeE6EEEEEE7ProcessILb0EJNS2_6detail6OutRawIjEENSE_6BufferILj6EEENSE_5InRawItEEEEENS_6ResultEPKNSC_14ProxyKindStateEDpNT0_9ParameterEi
 593c00,132,verified,src/nn/notification/notification_alarm_api.cpp,_ZN2nn12notification18UpdateAlarmSettingERKNS0_12AlarmSettingEPKvm
@@ -19086,6 +19120,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 5a8350,12,verified,src/nn/prepo/prepo_async_context.cpp,_ZN2nn5prepo12AsyncContextC2ENS_6ResultE
 5a8360,12,verified,src/nn/prepo/prepo_api.cpp,_ZN2nn5prepo10InitializeEv
 5a8500,88,verified,src/nn/prepo/prepo_api.cpp,_ZN2nn5prepo21GetTransmissionStatusEPNS0_18TransmissionStatusE
+5a85f0,48,verified,src/nn/unnamed/s900_0.c,SdkHr_5a85f0
 5a86b0,4,verified,src/nn/prepo/prepo_api.cpp,_ZN2nn5prepo18SetApplicationInfoENS_13ApplicationIdEt
 5a86c0,4,verified,src/nn/prepo/prepo_api.cpp,_ZN2nn5prepo26SetNplnServiceAccountTokenEPKc
 5a86d0,60,verified,src/nn/prepo/prepo_api.cpp,_ZN2nn5prepo27IsUserAgreementCheckEnabledEPb
@@ -19270,6 +19305,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 5acc50,4,verified,src/nn/profiler/profiler_svc_intercept.cpp,_ZN2nn8profiler43ReplyAndReceiveWithUserBufferInterceptEnterEPimmPKNS_3svc6HandleEiS3_l
 5acc60,4,verified,src/nn/profiler/profiler_svc_intercept.cpp,_ZN2nn8profiler42ReplyAndReceiveWithUserBufferInterceptExitENS_6ResultEPimmPKNS_3svc6HandleEiS4_l
 5acc64,4,verified,src/nn/profiler/profiler_svc_intercept.cpp,_ZN2nn8profiler12svcIntercept6EnableEv
+5acd1c,164,verified,src/nn/unnamed/s900_0.c,SdkHr_5acd1c
 5ad7d0,60,verified,src/nn/settings/settings_fwdbg_api.cpp,_ZN2nn8settings5fwdbg18IsDebugModeEnabledEv
 5ad810,68,verified,src/nn/settings/settings_fwdbg_api.cpp,_ZN2nn8settings5fwdbg24GetSettingsItemValueSizeEPKcS3_
 5ad860,76,verified,src/nn/settings/settings_fwdbg_api.cpp,_ZN2nn8settings5fwdbg20GetSettingsItemValueEPvmPKcS4_
@@ -21331,7 +21367,9 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 5e7330,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_5e7330m
 5e7340,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_5e7340m
 5e74d0,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_5e74d0v
+5e75b0,28,verified,src/nn/unnamed/s900_0.c,SdkHr_5e75b0
 5e76e0,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_5e76e0m
+5e7890,48,verified,src/nn/unnamed/s900_0.c,SdkHr_5e7890
 5e7ad0,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_5e7ad0m
 5e7ae0,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_5e7ae0mj
 5e8ed0,292,verified,src/nn/vi2/vi2_frontend_impl.cpp,_ZZN2nn3vi26detail13SetUpFrontendEPNS1_8FrontendEEN3$_68__invokeEPvPKNS0_9LayerTypeE
@@ -21516,8 +21554,10 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 5f0740,188,verified,src/nvidia/nvu_string.cpp,NvUStrtoull
 5f0880,180,verified,src/nvidia/nvu_string.cpp,NvUStrtoul
 5f09a0,236,verified,src/nvidia/nvu_string.cpp,NvUStrtol
+5f1150,108,verified,src/nn/unnamed/s900_0.c,SdkHr_5f1150
 5f11e0,4,verified,src/nvidia/nvos_stubs.cpp,NvOsShowError
 5f11f0,64,verified,src/nvidia/nvos_misc.cpp,NvUAlloc0
+5f3a80,480,verified,src/nn/unnamed/s900_0.c,SdkHr_5f3a80
 5f5180,228,verified,src/nvidia/nvos_heap_library.cpp,NvOsHeapAllocatorAlloc
 5f5270,116,verified,src/nvidia/nvos_heap_library.cpp,NvOsHeapAllocatorPrintStatistics
 5f52f0,228,verified,src/nvidia/nvos_heap_library.cpp,NvOsHeapAllocatorRealloc
@@ -21680,6 +21720,9 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 5fb910,4,verified,src/nvidia/nv_misc.cpp,_Z23hosGetSystemEventHandleijPN2nn2os15SystemEventTypeE
 5fbf90,16,verified,src/nn/sdk_trivial_wrappers.cpp,_Z14SdkStub_5fbf90mm
 5fbfa0,4,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_5fbfa0v
+5fc080,380,verified,src/nn/unnamed/s900_0.c,SdkHr_5fc080
+5fc320,76,verified,src/nn/unnamed/s900_0.c,SdkHr_5fc320
+5fcb40,72,verified,src/nn/unnamed/s900_0.c,SdkHr_5fcb40
 5fcd60,392,verified,src/nvidia/nvrm_chip.cpp,NvRmChipGetCapabilityBool
 5fcef0,788,verified,src/nvidia/nvrm_chip.cpp,NvRmChipGetCapabilityU32
 5fd210,284,verified,src/nvidia/nvrm_chip.cpp,NvRmChipGetPlatform
@@ -21853,6 +21896,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 605dc0,92,verified,src/nvidia/nvrm_surface_query.cpp,NvRmSurfaceGetPitchAlignment
 605e20,300,verified,src/nvidia/nvrm_surface_query.cpp,NvRmSurfaceSetDeviceMemory
 605f50,8,verified,src/nvidia/nvos_stubs.cpp,NvRmSurfaceDebugControlInternal
+605f60,92,verified,src/nn/unnamed/s900_0.c,SdkHr_605f60
 606290,36,verified,src/nvidia/nvrm_surface.cpp,NvRmSurfaceInitNonRmPitch
 6062c0,40,verified,src/nvidia/nvrm_surface.cpp,NvRmSurfaceInitRmPitch
 6062f0,72,verified,src/nvidia/nvrm_surface.cpp,NvRmSurfaceFree
@@ -21952,6 +21996,8 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 616ce0,108,verified,src/nvidia/nvvic.cpp,NvVicReadCrcComparison
 617760,12,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_617760v
 617b40,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_617b40m
+61ea60,172,disputed,src/nn/unnamed/s900_0.c,SdkHr_61ea60
+623ab0,28,verified,src/nn/unnamed/s900_0.c,SdkHr_623ab0
 623ad0,28,verified,src/nn/sdk_trivial_more.cpp,_Z14SdkStub_623ad0mm
 623af0,12,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_623af0v
 623d40,28,verified,src/nn/sdk_trivial_more.cpp,_Z14SdkStub_623d40mm
@@ -22018,6 +22064,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 625ce0,12,verified,src/nvidia/nvrm_gpu_dispatch.cpp,NvRmGpuDeviceZbcGetDepthTableEntry
 625cf0,12,verified,src/nvidia/nvrm_gpu_dispatch.cpp,NvRmGpuDeviceZbcGetStencilTableEntry
 626960,240,verified,src/nvidia/sha1.c,NvSha1Digest
+627b10,196,verified,src/nn/unnamed/s900_0.c,SdkHr_627b10
 628160,780,verified,src/nvidia/spooky_hash.c,NvSpookyHashShort
 628520,328,verified,src/nvidia/sha1.c,NvSha1Final
 628680,1676,verified,src/nvidia/sha1.c,NvSha1Transform
@@ -22028,6 +22075,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 62aaa0,8,verified,src/nn/sdk_trivial_forwarders.cpp,_Z14SdkStub_62aaa0m
 62aab0,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_62aab0m
 62aac0,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_62aac0m
+62ac20,200,verified,src/nn/unnamed/s900_0.c,SdkHr_62ac20
 62b2b0,44,verified,src/nn/sdk_trivial_more.cpp,_Z14SdkStub_62b2b0m
 62b400,60,verified,src/nn/sdk_trivial_thunks.cpp,_Z14SdkStub_62b400m
 62b4c0,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_62b4c0m
@@ -22046,13 +22094,17 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 62cac0,12,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_62cac0v
 62cb10,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_62cb10v
 62cb50,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_62cb50v
+62cf40,60,verified,src/nn/unnamed/s900_0.c,SdkHr_62cf40
 62cf80,12,verified,src/nn/sdk_trivial_more.cpp,_Z14SdkStub_62cf80mmm
 62cf90,12,verified,src/nn/sdk_trivial_more.cpp,_Z14SdkStub_62cf90mmm
+62cfe0,172,verified,src/nn/unnamed/s900_0.c,SdkHr_62cfe0
 62d0e0,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_62d0e0m
 62ed50,60,verified,src/nn/sdk_trivial_thunks.cpp,_Z14SdkStub_62ed50m
+6308c0,1388,verified,src/nn/unnamed/s900_0.c,SdkHr_6308c0
 632e70,12,verified,src/nn/sdk_trivial_more.cpp,_Z14SdkStub_632e70mmmmmmm
 634110,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_634110m
 6354e0,44,verified,src/nn/sdk_trivial_more.cpp,_Z14SdkStub_6354e0m
+635560,92,verified,src/nn/unnamed/s900_0.c,SdkHr_635560
 635730,8,verified,src/nvidia/nvrm_gpu_wrappers.cpp,NvRmGpuNvgpuGetGpuCtrlFd
 635740,8,verified,src/nvidia/nvrm_gpu_wrappers.cpp,NvRmGpuNvgpuGetAsFd
 635750,8,verified,src/nvidia/nvrm_gpu_wrappers.cpp,NvRmGpuNvgpuGetGpuChannelFd
@@ -22063,6 +22115,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 6369e0,4,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_6369e0v
 6383e0,44,verified,src/nn/sdk_trivial_more.cpp,_Z14SdkStub_6383e0m
 638e20,44,verified,src/nn/sdk_trivial_more.cpp,_Z14SdkStub_638e20m
+6391b0,180,verified,src/nn/unnamed/s900_0.c,SdkHr_6391b0
 639640,20,verified,src/nn/sdk_trivial_wrappers.cpp,_Z14SdkStub_639640m
 639750,60,verified,src/nn/sdk_trivial_thunks.cpp,_Z14SdkStub_639750m
 639d3c,4,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_639d3cv
@@ -22073,6 +22126,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 63def0,20,verified,src/nn/sdk_trivial_wrappers.cpp,_Z14SdkStub_63def0mmm
 63df10,20,verified,src/nn/sdk_trivial_wrappers.cpp,_Z14SdkStub_63df10mmm
 63e0d0,20,verified,src/nn/sdk_trivial_wrappers.cpp,_Z14SdkStub_63e0d0m
+63e140,36,verified,src/nn/unnamed/s900_0.c,SdkHr_63e140
 63e190,60,verified,src/nn/sdk_trivial_thunks.cpp,_Z14SdkStub_63e190m
 63e4f0,12,verified,src/nvidia/nvrm_gpu_dispatch.cpp,NvRmGpuDeviceZbcAddColor
 63e500,12,verified,src/nvidia/nvrm_gpu_dispatch.cpp,NvRmGpuDeviceZbcAddDepth
@@ -22193,6 +22247,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 63f870,56,verified,src/nvidia/nvrm_gpu_wrappers.cpp,NvRmGpuDeviceEventSessionRead
 63f8b0,92,verified,src/nvidia/nvrm_gpu_objects.cpp,NvRmGpuDeviceEventSessionClose
 63f910,92,verified,src/nvidia/nvrm_gpu_objects.cpp,NvRmGpuDropObject
+643550,544,verified,src/nn/unnamed/s900_0.c,SdkHr_643550
 6441e0,268,verified,src/nvidia/spooky_hash.c,NvSpookyHashLong
 644400,516,verified,src/nvidia/spooky_hash.c,NvSpookyHashEnd
 644c4c,4,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_644c4cv
@@ -22237,6 +22292,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 64a250,16,verified,src/nn/sdk_trivial_thunks2.cpp,_Z14SdkStub_64a250mmmmm
 64a460,4,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_64a460v
 64a470,4,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_64a470v
+64a680,212,verified,src/nn/unnamed/s900_0.c,SdkHr_64a680
 64a760,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_64a760v
 64a770,4,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_64a770v
 64a7d0,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_64a7d0v
@@ -22264,6 +22320,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 64b410,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_64b410mj
 64ced0,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_64ced0m
 64cee0,4,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_64cee0v
+64ef60,1080,disputed,src/nn/unnamed/s900_0.c,SdkHr_64ef60
 64fb90,16,verified,src/nn/sdk_trivial_thunks2.cpp,_Z14SdkStub_64fb90mmm
 64fba0,4,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_64fba0v
 64fbb0,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_64fbb0mj
@@ -23036,6 +23093,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 6540f0,4,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_6540f0v
 654120,16,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_654120m
 656180,12,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_656180v
+656610,204,verified,src/nn/unnamed/s900_0.c,SdkHr_656610
 6566e0,4,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_6566e0v
 656780,28,verified,src/nn/sdk_trivial_wrappers.cpp,_Z14SdkStub_656780m
 656870,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_656870mm
@@ -23074,6 +23132,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 65b8e0,4,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_65b8e0v
 65b9c0,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_65b9c0m
 65b9d0,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_65b9d0m
+65b9e0,76,verified,src/nn/unnamed/s900_0.c,SdkHr_65b9e0
 65ba30,4,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_65ba30v
 65ba40,12,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_65ba40m
 65ba50,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_65ba50m
@@ -23178,6 +23237,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 666740,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_666740m
 6667c0,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_6667c0m
 666c20,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_666c20mm
+666c30,40,verified,src/nn/unnamed/s900_0.c,SdkHr_666c30
 666cb0,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_666cb0mf
 666d70,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_666d70mf
 666d90,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_666d90mf
@@ -23186,7 +23246,9 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 666ee0,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_666ee0m
 666f00,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_666f00m
 666f40,4,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_666f40v
+666f50,28,verified,src/nn/unnamed/s900_0.c,SdkHr_666f50
 666fc0,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_666fc0m
+666fd0,28,verified,src/nn/unnamed/s900_0.c,SdkHr_666fd0
 667080,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_667080m
 6671a0,8,verified,src/nn/sdk_trivial_thunks2.cpp,_Z14SdkStub_6671a0mmm
 6671b0,4,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_6671b0v
@@ -23259,10 +23321,13 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 66c730,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_66c730m
 66c740,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_66c740m
 66c750,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_66c750m
+66c760,68,verified,src/nn/unnamed/s900_0.c,SdkHr_66c760
 66c8c0,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_66c8c0m
 66c8d0,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_66c8d0m
 66cad0,16,verified,src/nn/sdk_trivial_wrappers.cpp,_Z14SdkStub_66cad0mm
+66cf80,24,verified,src/nn/unnamed/s900_0.c,SdkHr_66cf80
 66e420,44,verified,src/nn/sdk_trivial_more.cpp,_Z14SdkStub_66e420m
+66e600,244,verified,src/nn/unnamed/s900_0.c,SdkHr_66e600
 66f410,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_66f410m
 66fa70,4,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_66fa70v
 66fe10,8,verified,src/nn/sdk_trivial_thunks.cpp,_Z14SdkStub_66fe10m
@@ -23273,9 +23338,16 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 672bb0,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_672bb0m
 672bc0,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_672bc0mj
 672c30,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_672c30mm
+6808d0,116,verified,src/nn/unnamed/s900_0.c,SdkHr_6808d0
+680f50,132,verified,src/nn/unnamed/s900_1.c,SdkHr_680f50
+682200,96,verified,src/nn/unnamed/s900_0.c,SdkHr_682200
+684940,340,verified,src/nn/unnamed/s900_1.c,SdkHr_684940
+685290,72,verified,src/nn/unnamed/s900_0.c,SdkHr_685290
+685980,112,verified,src/nn/unnamed/s900_0.c,SdkHr_685980
 68a2a0,20648,verified,src/graphics/program_commands.cpp,graphics::EmitProgramCommands
 691370,8,verified,src/nn/sdk_trivial_thunks.cpp,_Z14SdkStub_691370mmm
 691650,8,verified,src/nn/sdk_trivial_thunks.cpp,_Z14SdkStub_691650mmm
+697070,104,verified,src/nn/unnamed/s900_1.c,SdkHr_697070
 6979e0,16,verified,src/nn/sdk_trivial_thunks2.cpp,_Z14SdkStub_6979e0mmm
 6979f0,4,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_6979f0v
 69be40,12,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_69be40v
@@ -23294,6 +23366,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 69d9d0,12,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_69d9d0v
 69f850,12,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_69f850v
 69f860,4,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_69f860v
+69f880,364,verified,src/nn/unnamed/s900_1.c,SdkHr_69f880
 69fa00,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_69fa00v
 69fa10,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_69fa10v
 69fac0,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_69fac0v
@@ -23310,15 +23383,22 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 6a0650,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_6a0650v
 6a0660,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_6a0660v
 6a1940,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_6a1940m
+6a1ae0,188,verified,src/nn/unnamed/s900_1.c,SdkHr_6a1ae0
 6a1de0,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_6a1de0v
 6a1df0,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_6a1df0v
 6a23b0,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_6a23b0v
 6a23c0,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_6a23c0m
 6a2470,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_6a2470m
+6a2b70,76,verified,src/nn/unnamed/s900_0.c,SdkHr_6a2b70
 6a4ab0,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_6a4ab0mm
+6a4ae0,32,verified,src/nn/unnamed/s900_0.c,SdkHr_6a4ae0
 6a4b50,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_6a4b50m
+6a4c30,68,verified,src/nn/unnamed/s900_0.c,SdkHr_6a4c30
 6a4c80,12,verified,src/nn/sdk_trivial_wrappers.cpp,_Z14SdkStub_6a4c80m
 6a52e0,4,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_6a52e0v
+6a5780,180,verified,src/nn/unnamed/s900_1.c,SdkHr_6a5780
+6a7f70,60,verified,src/nn/unnamed/s900_0.c,SdkHr_6a7f70
+6a8f00,48,verified,src/nn/unnamed/s900_0.c,SdkHr_6a8f00
 6a8f60,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_6a8f60v
 6a8f70,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_6a8f70v
 6a9a90,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_6a9a90v
@@ -23531,6 +23611,8 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 6b9340,140,verified,src/nn/hid/detail/hid_debug_pad_state.cpp,_ZN2nn3hid6detail16FinalizeDebugPadEv
 6b93e0,352,verified,src/nn/hid/detail/hid_debug_pad_state.cpp,_ZN2nn3hid6detail16GetDebugPadStateEPNS0_13DebugPadStateE
 6b95a0,268,verified,src/nn/hid/detail/hid_debug_pad_state.cpp,_ZN2nn3hid6detail17GetDebugPadStatesEPiPNS0_13DebugPadStateEi
+6b9790,96,verified,src/nn/unnamed/s900_0.c,SdkHr_6b9790
+6b9820,72,verified,src/nn/unnamed/s900_0.c,SdkHr_6b9820
 6b9890,188,verified,src/nn/hid/detail/hid_digitizer_state.cpp,_ZN2nn3hid6detail19InitializeDigitizerEv
 6b9950,152,verified,src/nn/hid/detail/hid_digitizer_state.cpp,_ZN2nn3hid6detail17FinalizeDigitizerEv
 6b9a00,416,verified,src/nn/hid/detail/hid_digitizer_state.cpp,_ZN2nn3hid6detail17GetDigitizerStateEPNS0_14DigitizerStateE
@@ -24386,6 +24468,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 6dda40,528,verified,src/nn/hid/system/detail/hid_touch_screen_state.cpp,_ZN2nn3hid6system6detail35GetTouchScreenStateForSystemProcessILm5EEENS_6ResultEPNS0_16TouchScreenStateIXT_EEE
 6ddf20,548,verified,src/nn/hid/system/detail/hid_touch_screen_state.cpp,_ZN2nn3hid6system6detail35GetTouchScreenStateForSystemProcessILm6EEENS_6ResultEPNS0_16TouchScreenStateIXT_EEE
 6de4a0,576,verified,src/nn/hid/system/detail/hid_touch_screen_state.cpp,_ZN2nn3hid6system6detail35GetTouchScreenStateForSystemProcessILm7EEENS_6ResultEPNS0_16TouchScreenStateIXT_EEE
+6de730,876,verified,src/nn/unnamed/s900_0.c,SdkHr_6de730
 6deaa0,768,verified,src/nn/hid/system/detail/hid_touch_screen_state.cpp,_ZN2nn3hid6system6detail35GetTouchScreenStateForSystemProcessILm8EEENS_6ResultEPNS0_16TouchScreenStateIXT_EEE
 6dee00,792,verified,src/nn/hid/system/detail/hid_touch_screen_state.cpp,_ZN2nn3hid6system6detail35GetTouchScreenStateForSystemProcessILm9EEENS_6ResultEPNS0_16TouchScreenStateIXT_EEE
 6df180,816,verified,src/nn/hid/system/detail/hid_touch_screen_state.cpp,_ZN2nn3hid6system6detail35GetTouchScreenStateForSystemProcessILm10EEENS_6ResultEPNS0_16TouchScreenStateIXT_EEE
@@ -25197,6 +25280,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 6f4680,12,verified,src/nn/sdk_trivial_thunks.cpp,_Z14SdkStub_6f4680mmm
 6f4690,12,verified,src/nn/sdk_trivial_thunks.cpp,_Z14SdkStub_6f4690mmm
 6f46a0,12,verified,src/nn/sdk_trivial_thunks.cpp,_Z14SdkStub_6f46a0mmmmmm
+6f46b0,28,verified,src/nn/unnamed/s900_0.c,SdkHr_6f46b0
 6f46d0,12,verified,src/nn/sdk_trivial_thunks.cpp,_Z14SdkStub_6f46d0mmm
 6f46e0,12,verified,src/nn/sdk_trivial_thunks.cpp,_Z14SdkStub_6f46e0mmm
 6f46f0,16,verified,src/nn/sdk_trivial_thunks2.cpp,_Z14SdkStub_6f46f0mb
@@ -25362,6 +25446,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 6f8a80,16,verified,src/nn/sdk_trivial_thunks2.cpp,_Z14SdkStub_6f8a80mmmj
 6f8a90,12,verified,src/nn/sdk_trivial_thunks.cpp,_Z14SdkStub_6f8a90mmm
 6f8aa0,20,verified,src/nn/hid/detail/hid_server_proxy.cpp,_ZN2nn2sf4cmif6client6detail13CmifProxyImplINS_3hid16IHidSystemServerENS0_4hipc6client18Hipc2ProxyKindBaseILNS7_6detail11MessageTypeE6EEENS0_30MemoryResourceAllocationPolicyES6_NS3_19ProcessModifierImplINS2_21DefaultProxyFilterTagEEEE30SetNpadPlayerLedBlinkingDeviceENS_6applet20AppletResourceUserIdEjNS_4util10BitFlagSetILi32ENS5_6system10DeviceTypeEEE
+6f8ac0,28,verified,src/nn/unnamed/s900_0.c,SdkHr_6f8ac0
 6f8ae0,16,verified,src/nn/hid/detail/hid_server_proxy.cpp,_ZN2nn2sf4cmif6client6detail13CmifProxyImplINS_3hid16IHidSystemServerENS0_4hipc6client18Hipc2ProxyKindBaseILNS7_6detail11MessageTypeE6EEENS0_30MemoryResourceAllocationPolicyES6_NS3_19ProcessModifierImplINS2_21DefaultProxyFilterTagEEEE22GetAppletFooterUiTypesEPNS5_6system18AppletFooterUiTypeEj
 6f8af0,16,verified,src/nn/hid/detail/hid_server_proxy.cpp,_ZN2nn2sf4cmif6client6detail13CmifProxyImplINS_3hid16IHidSystemServerENS0_4hipc6client18Hipc2ProxyKindBaseILNS7_6detail11MessageTypeE6EEENS0_30MemoryResourceAllocationPolicyES6_NS3_19ProcessModifierImplINS2_21DefaultProxyFilterTagEEEE24GetAppletDetailedUiTypesEPNS5_6system20AppletDetailedUiTypeEj
 6f8b00,16,verified,src/nn/sdk_trivial_thunks2.cpp,_Z14SdkStub_6f8b00mmj
@@ -27750,6 +27835,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 7cb940,784,verified,src/llvm-libcxx/libcxx/src/algorithm.cpp,_ZNSt3__119__partial_sort_implB8ne180100INS_17_ClassicAlgPolicyERNS_6ranges4lessEPfS5_EET1_S6_S6_T2_OT0_
 7cc460,692,verified,src/nn/unnamed/s005_0.c,SdkHr_7cc460
 7cc740,784,verified,src/llvm-libcxx/libcxx/src/algorithm.cpp,_ZNSt3__119__partial_sort_implB8ne180100INS_17_ClassicAlgPolicyERNS_6ranges4lessEPdS5_EET1_S6_S6_T2_OT0_
+7cca80,924,verified,src/nn/unnamed/s900_0.c,SdkHr_7cca80
 7cd000,936,verified,src/llvm-libcxx/libcxx/src/algorithm.cpp,_ZNSt3__119__partial_sort_implB8ne180100INS_17_ClassicAlgPolicyERNS_6ranges4lessEPeS5_EET1_S6_S6_T2_OT0_
 7cd480,12,verified,src/llvm-libcxx/libcxx/src/any.cpp,_ZNKSt12bad_any_cast4whatEv
 7cd490,12,verified,src/llvm-libcxx/libcxx/src/any.cpp,_ZNKSt12experimental15fundamentals_v112bad_any_cast4whatEv
@@ -28055,6 +28141,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 7e4ff0,140,verified,src/llvm-libcxx/libcxx/src/system_error.cpp,_ZNSt3__112system_errorC2EiRKNS_14error_categoryE
 7e50b0,4,verified,src/llvm-libcxx/libcxx/src/system_error.cpp,_ZNSt3__112system_errorD2Ev
 7e50c0,48,verified,src/llvm-libcxx/libcxx/src/system_error.cpp,_ZNSt3__112system_errorD0Ev
+7e5110,84,verified,src/nn/unnamed/s900_0.c,SdkHr_7e5110
 7e5180,48,verified,src/llvm-libcxx/libcxx/src/system_error.cpp,_ZNSt3__124__generic_error_categoryD0Ev
 7e51b0,100,verified,src/llvm-libcxx/libcxx/src/valarray.cpp,_ZNSt3__18valarrayImEC2Em
 7e5220,76,verified,src/llvm-libcxx/libcxx/src/valarray.cpp,_ZNSt3__18valarrayImED2Ev
@@ -28426,8 +28513,10 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 7f69c0,92,verified,src/nn/unnamed/s005_1.c,SdkHr_7f69c0
 7f6a20,104,verified,src/nn/unnamed/s005_1.c,SdkHr_7f6a20
 7f6a90,104,verified,src/nn/unnamed/s005_1.c,SdkHr_7f6a90
+7f6b00,116,verified,src/nn/unnamed/s900_0.c,SdkHr_7f6b00
 7f6b80,92,verified,src/nn/unnamed/s005_1.c,SdkHr_7f6b80
 7f6be0,104,verified,src/nn/unnamed/s005_1.c,SdkHr_7f6be0
+7f6c50,104,verified,src/nn/unnamed/s900_0.c,SdkHr_7f6c50
 7f6cc0,116,verified,src/nn/unnamed/s005_1.c,SdkHr_7f6cc0
 7f7050,228,verified,src/nn/unnamed/s005_1.c,SdkHr_7f7050
 7f7170,228,verified,src/nn/unnamed/s005_1.c,SdkHr_7f7170
@@ -28731,6 +28820,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 817760,240,verified,src/llvm-libcxx/libcxx/src/locale.cpp,_ZNSt3__16locale5__imp7installINS_15messages_bynameIwEEEEvPT_
 8178a0,1268,verified,src/nn/unnamed/s005_1.c,SdkHr_8178a0
 817f20,292,verified,src/nn/unnamed/s005_1.c,SdkHr_817f20
+818060,648,verified,src/nn/unnamed/s900_0.c,SdkHr_818060
 8184d0,20,verified,src/nn/unnamed/s005_2.c,SdkHr_8184d0
 818610,20,verified,src/nn/unnamed/s005_2.c,SdkHr_818610
 818750,20,verified,src/nn/unnamed/s005_2.c,SdkHr_818750
@@ -29126,6 +29216,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 82fd90,248,verified,src/llvm-libcxx/libcxx/src/locale.cpp,_ZNSt3__115__num_get_floatB8ne180100IdEET_PKcS3_Rj
 82fec0,272,verified,src/llvm-libcxx/libcxx/src/locale.cpp,_ZNSt3__115__num_get_floatB8ne180100IeEET_PKcS3_Rj
 830000,180,verified,src/llvm-libcxx/libcxx/src/locale.cpp,_ZNSt3__117__libcpp_sscanf_lEPKcP15__locale_structS1_z
+830194,24,verified,src/nn/unnamed/s900_0.c,SdkHr_830194
 8307d0,192,verified,src/llvm-libcxx/libcxx/src/locale.cpp,_ZNSt3__119__libcpp_snprintf_lEPcmP15__locale_structPKcz
 8308a0,184,verified,src/llvm-libcxx/libcxx/src/locale.cpp,_ZNSt3__119__libcpp_asprintf_lEPPcP15__locale_structPKcz
 830970,1444,verified,src/llvm-libcxx/libcxx/src/locale.cpp,_ZNSt3__118__time_get_storageIcED2B8ne180100Ev
@@ -29178,13 +29269,16 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 837360,8,verified,src/llvm-libcxx/libcxxabi/src/cxa_demangle.cpp,_ZN12_GLOBAL__N_116itanium_demangle11SpecialNameD0Ev
 837460,8,verified,src/llvm-libcxx/libcxxabi/src/cxa_demangle.cpp,_ZN12_GLOBAL__N_116itanium_demangle21CtorVtableSpecialNameD0Ev
 837910,12,verified,src/llvm-libcxx/libcxxabi/src/cxa_demangle.cpp,_ZNK12_GLOBAL__N_116itanium_demangle8NameType11getBaseNameEv
+8387c0,696,verified,src/nn/unnamed/s900_1.c,SdkHr_8387c0
 839230,140,disputed,src/llvm-libcxx/libcxxabi/src/cxa_demangle.cpp,_ZNK12_GLOBAL__N_116itanium_demangle24ForwardTemplateReference15hasFunctionSlowERNS0_12OutputBufferE
 8392d0,68,verified,src/llvm-libcxx/libcxxabi/src/cxa_demangle.cpp,_ZNK12_GLOBAL__N_116itanium_demangle24ForwardTemplateReference9printLeftERNS0_12OutputBufferE
 83ee90,8,verified,src/llvm-libcxx/libcxxabi/src/cxa_demangle.cpp,_ZN12_GLOBAL__N_116itanium_demangle13EnclosingExprD0Ev
 83ff70,8,verified,src/nn/sdk_trivial_forwarders.cpp,_Z14SdkStub_83ff70m
 8401d0,48,disputed,src/llvm-libcxx/libcxxabi/src/cxa_demangle.cpp,_ZNK12_GLOBAL__N_116itanium_demangle16FloatLiteralImplIdE9printLeftERNS0_12OutputBufferE
 840930,8,verified,src/llvm-libcxx/libcxxabi/src/cxa_demangle.cpp,_ZN12_GLOBAL__N_116itanium_demangle13StringLiteralD0Ev
+841800,180,verified,src/nn/unnamed/s900_0.c,SdkHr_841800
 841da0,8,verified,src/nn/sdk_trivial_forwarders.cpp,_Z14SdkStub_841da0m
+843b80,284,verified,src/nn/unnamed/s900_0.c,SdkHr_843b80
 844030,8,verified,src/nn/sdk_trivial_forwarders.cpp,_Z14SdkStub_844030m
 8444f0,8,verified,src/llvm-libcxx/libcxxabi/src/cxa_demangle.cpp,_ZNK12_GLOBAL__N_116itanium_demangle13NodeArrayNode9printLeftERNS0_12OutputBufferE
 8445e0,136,verified,src/llvm-libcxx/libcxxabi/src/cxa_demangle.cpp,_ZN12_GLOBAL__N_116itanium_demangle22AbstractManglingParserINS0_14ManglingParserINS_16DefaultAllocatorEEES3_E19parseUnresolvedTypeEv
@@ -29195,7 +29289,9 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 848ba0,44,verified,src/llvm-libcxx/libcxxabi/src/cxa_demangle.cpp,_ZNK12_GLOBAL__N_116itanium_demangle8QualType19hasRHSComponentSlowERNS0_12OutputBufferE
 848bd0,44,verified,src/llvm-libcxx/libcxxabi/src/cxa_demangle.cpp,_ZNK12_GLOBAL__N_116itanium_demangle8QualType12hasArraySlowERNS0_12OutputBufferE
 848c00,44,verified,src/llvm-libcxx/libcxxabi/src/cxa_demangle.cpp,_ZNK12_GLOBAL__N_116itanium_demangle8QualType15hasFunctionSlowERNS0_12OutputBufferE
+849f30,400,verified,src/nn/unnamed/s900_0.c,SdkHr_849f30
 84a180,44,verified,src/llvm-libcxx/libcxxabi/src/cxa_demangle.cpp,_ZNK12_GLOBAL__N_116itanium_demangle19PointerToMemberType19hasRHSComponentSlowERNS0_12OutputBufferE
+84a1b0,468,verified,src/nn/unnamed/s900_1.c,SdkHr_84a1b0
 84b128,136,verified,src/libc/cxx_guard.cpp,__cxa_guard_acquire
 84b1b0,112,verified,src/libc/cxx_guard.cpp,__cxa_guard_release
 84b220,104,verified,src/libc/cxx_guard.cpp,__cxa_guard_abort
