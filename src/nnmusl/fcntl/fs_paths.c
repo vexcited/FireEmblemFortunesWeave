@@ -113,3 +113,120 @@ HIDDEN int __nnmusl_access(const char *path, int amode)
 	__nnmusl_close_thunk(fd);
 	return 0;
 }
+
+uint32_t nn_fs_DeleteFile(const char *path)
+	__asm__("_ZN2nn2fs10DeleteFileEPKc");
+uint32_t nn_fs_DeleteDirectory(const char *path)
+	__asm__("_ZN2nn2fs15DeleteDirectoryEPKc");
+uint32_t nn_fs_OpenDirectory(uint64_t *handle, const char *path, int mode)
+	__asm__("_ZN2nn2fs13OpenDirectoryEPNS0_15DirectoryHandleEPKci");
+uint32_t nn_fs_GetDirectoryEntryCount(int64_t *out, uint64_t handle)
+	__asm__("_ZN2nn2fs22GetDirectoryEntryCountEPlNS0_15DirectoryHandleE");
+void nn_fs_CloseDirectory(uint64_t handle)
+	__asm__("_ZN2nn2fs14CloseDirectoryENS0_15DirectoryHandleE");
+void nn_os_SdkMutex_Lock(void *mutex) __asm__("_ZN2nn2os12SdkMutexType4LockEv");
+void nn_os_SdkMutex_Unlock(void *mutex)
+	__asm__("_ZN2nn2os12SdkMutexType6UnlockEv");
+unsigned long strlen(const char *s);
+
+extern HIDDEN uint32_t __nnmusl_rmdir_mutex;
+
+// Directories can only go once they are empty, the check and the delete
+// happen under one lock.
+HIDDEN __attribute__((noinline)) int __nnmusl_rmdir(const char *path)
+{
+	int64_t count = 0;
+	if (!*path) {
+		errno = ENOENT;
+		return -1;
+	}
+
+	int length;
+	char buffer[785];
+	uint32_t result = __nnmusl_resolve_path(&length, buffer, sizeof buffer,
+		path, -100);
+	if (result) {
+		errno = __nnmusl_result_to_errno(result);
+		return -1;
+	}
+
+	uint64_t handle = 0;
+	int type = 0;
+	int ret = -1;
+	int err;
+	nn_os_SdkMutex_Lock(&__nnmusl_rmdir_mutex);
+	result = nn_fs_OpenDirectory(&handle, buffer, 3);
+	if (result) {
+		if (!nn_fs_GetEntryType(&type, buffer) && type == 1) {
+			errno = ENOTDIR;
+			goto unlock;
+		}
+		errno = __nnmusl_result_to_errno(result);
+		goto unlock;
+	}
+
+	result = nn_fs_GetDirectoryEntryCount(&count, handle);
+	if (result) {
+		err = __nnmusl_result_to_errno(result);
+		goto close;
+	}
+	if (count > 0) {
+		err = ENOTEMPTY;
+		goto close;
+	}
+	nn_fs_CloseDirectory(handle);
+	result = nn_fs_DeleteDirectory(buffer);
+	if (result) {
+		errno = __nnmusl_result_to_errno(result);
+		goto unlock;
+	}
+	ret = 0;
+	goto unlock;
+
+close:
+	errno = err;
+	nn_fs_CloseDirectory(handle);
+unlock:
+	nn_os_SdkMutex_Unlock(&__nnmusl_rmdir_mutex);
+	return ret;
+}
+
+// unlink refuses directories, remove deletes them like rmdir.
+HIDDEN int __nnmusl_remove(const char *path, int unlink)
+{
+	int type = 0;
+	bool ok = true;
+	char buffer[785];
+	const char *resolved = __nnmusl_resolve(path, buffer, &ok);
+	if (!ok) return -1;
+
+	int err;
+	if (resolved[strlen(path) - 1] == '.') {
+		err = EINVAL;
+		goto fail;
+	}
+
+	uint32_t result = nn_fs_GetEntryType(&type, resolved);
+	if (result) {
+		err = (result & 0x3fffff) == 0x202 ? ENOENT : EPERM;
+		goto fail;
+	}
+
+	if (type == 0) {
+		if (!(unlink & 1)) return __nnmusl_rmdir(path);
+		err = EISDIR;
+		goto fail;
+	}
+	if (type != 1) {
+		err = EPERM;
+		goto fail;
+	}
+
+	result = nn_fs_DeleteFile(resolved);
+	if (!result) return 0;
+	err = (result & 0x3fffff) == 0x202 ? EACCES :
+		__nnmusl_fs_result_errno(result);
+fail:
+	errno = err;
+	return -1;
+}
