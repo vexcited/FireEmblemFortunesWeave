@@ -61,6 +61,18 @@ Executor* GetCurrentExecutor() {
   return pContext->executor;
 }
 
+void EnqueueExecutable(Executor* executor,
+  std::shared_ptr<Executable> executable, const CancellationToken& token) {
+  executor->EnqueueExecutable(std::move(executable), token);
+}
+
+void EnqueueExecutable(Executor* executor,
+  std::shared_ptr<Executable> executable, const CancellationToken& token,
+  ExecutionBlocker blocker) {
+  executor->EnqueueExecutable(std::move(executable), token,
+    std::move(blocker));
+}
+
 void DumpAllTaskDebugData() {}
 
 void DumpAllTaskDebugData(bool isDetailed) {

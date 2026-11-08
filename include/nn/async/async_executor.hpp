@@ -7,6 +7,7 @@
 #include "nn/async/async_detail.hpp"
 #include "nn/memory_resource.hpp"
 #include "nn/os/event.hpp"
+#include "nn/os/multi_wait.hpp"
 #include "nn/span.hpp"
 
 namespace nn::os {
@@ -17,7 +18,23 @@ struct ThreadType;
 
 namespace nn::async {
 
-class ExecutionBlocker;
+namespace detail {
+
+class IWaitHandler {
+public:
+  virtual ~IWaitHandler() = default;
+  virtual void InitializeMultiWaitHolder(os::MultiWaitHolderType* holder) = 0;
+};
+
+}
+
+class ExecutionBlocker {
+public:
+  bool IsBlocked() const;
+
+private:
+  std::shared_ptr<detail::IWaitHandler> m_Handler;
+};
 
 namespace detail {
 
@@ -39,12 +56,18 @@ private:
 
 class Executor {
 public:
-  virtual ~Executor() = default;
   virtual void EnqueueExecutable(std::shared_ptr<Executable> executable,
     const CancellationToken& token) = 0;
   virtual void EnqueueExecutable(std::shared_ptr<Executable> executable,
     const CancellationToken& token, ExecutionBlocker blocker) = 0;
+  virtual ~Executor() = default;
 };
+
+void EnqueueExecutable(Executor* executor,
+  std::shared_ptr<Executable> executable, const CancellationToken& token);
+void EnqueueExecutable(Executor* executor,
+  std::shared_ptr<Executable> executable, const CancellationToken& token,
+  ExecutionBlocker blocker);
 
 class QueuingExecutor final : public Executor {
 public:

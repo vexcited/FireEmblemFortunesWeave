@@ -155,11 +155,37 @@ private:
   std::shared_ptr<detail::CancellationState> m_State;
 };
 
+enum ExecutionResultCode : int32_t {
+  ExecutionResultCode_Complete,
+  ExecutionResultCode_Await,
+  ExecutionResultCode_Yield,
+  ExecutionResultCode_Invalid,
+};
+
+class ExecutionResult {
+public:
+  ExecutionResult(ExecutionResultCode code, ResumeBlocker* blocker);
+
+  ResumeBlocker* GetBlocker() const {
+    return m_pBlocker;
+  }
+
+  ExecutionResultCode GetCode() const {
+    return m_Code;
+  }
+
+private:
+  ResumeBlocker* m_pBlocker;
+  ExecutionResultCode m_Code;
+};
+
 class Executable {
 public:
   Executable();
-  virtual void DoExecute(const CancellationToken& token) = 0;
+  virtual ExecutionResult DoExecute(const CancellationToken& token) = 0;
   virtual ~Executable();
+
+  ExecutionResult Execute(const CancellationToken& token);
 
 private:
   os::MutexType m_Mutex;
@@ -272,7 +298,7 @@ public:
   TaskCoordinatorBase(MemoryResource* resource, FutureStateBase* state,
     FutureStateBase* result);
 
-  void DoExecute(const CancellationToken& token) override;
+  ExecutionResult DoExecute(const CancellationToken& token) override;
   SynchronousContinuationList* GetSynchronousContinuationList() override;
 
 protected:
