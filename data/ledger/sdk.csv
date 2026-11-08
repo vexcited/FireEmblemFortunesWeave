@@ -1981,7 +1981,9 @@ b5bc0,8,verified,src/nnmusl/fcntl/fd_entry.c,__nnmusl_fd_state
 b5ce0,12,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,__set_tp
 b5cf0,12,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,__get_tp
 b5d00,16,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,__get_tls_data
+b5d20,96,verified,src/nnmusl/thread/tls_dtors.c,__nnmusl_register_tls_dtor
 b5e60,56,verified,src/nnmusl/thread/tls_dtors.c,__nnmusl_run_thread_dtors
+b5f40,64,verified,src/nnmusl/thread/tls_dtors.c,__nnmusl_call_tls_dtors_for_module
 b6060,224,verified,src/nnmusl/thread/tls_dtors.c,__nnmusl_get_number_uncalled_tls_dtors
 b6140,4,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,__nnmusl_get_tls_dtors_status
 b82d0,8,verified,src/nn/aoc/initialization.cpp,_ZN2nn3aoc6detail17AddProxyReferenceEPNS1_5ProxyE

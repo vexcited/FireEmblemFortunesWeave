@@ -7,11 +7,12 @@ void nn_os_SdkMutex_Lock(void *mutex) __asm__("_ZN2nn2os12SdkMutexType4LockEv");
 void nn_os_SdkMutex_Unlock(void *mutex)
 	__asm__("_ZN2nn2os12SdkMutexType6UnlockEv");
 void nnosFreeMemoryForThreadLocal(void *p, size_t size);
+void *nnosAllocateMemoryForThreadLocal(size_t size);
 
 struct nnmusl_tls_dtor {
 	void (*func)(void *);
 	void *arg;
-	void *reserved;
+	void *dso;
 	size_t module;
 	struct nnmusl_tls_dtor *next;
 	struct nnmusl_tls_dtor *prev;
@@ -45,6 +46,19 @@ static inline struct nnmusl_tls_dtor **thread_dtors(void)
 	return *(struct nnmusl_tls_dtor ***)(tp + 0x1f0);
 }
 
+// Hands the destructor back to the module that registered it.
+static inline void finish_dtor(struct nnmusl_tls_dtor *dtor)
+{
+	size_t index = dtor->module;
+	nn_os_SdkMutex_Lock(&__nnmusl_tls.modules_mutex);
+	struct nnmusl_tls_module *module = __nnmusl_tls.modules[index];
+	nn_os_SdkMutex_Unlock(&__nnmusl_tls.modules_mutex);
+	if (module) {
+		module->pending_dtors--;
+		nnosFreeMemoryForThreadLocal(dtor, sizeof *dtor);
+	}
+}
+
 HIDDEN void __nnmusl_run_thread_dtors(void)
 {
 	struct nnmusl_tls_dtor **head = thread_dtors();
@@ -56,15 +70,7 @@ HIDDEN void __nnmusl_run_thread_dtors(void)
 		nn_os_SdkMutex_Unlock(&__nnmusl_tls.mutex);
 		dtor->func(dtor->arg);
 		nn_os_SdkMutex_Lock(&__nnmusl_tls.mutex);
-
-		size_t index = dtor->module;
-		nn_os_SdkMutex_Lock(&__nnmusl_tls.modules_mutex);
-		struct nnmusl_tls_module *module = __nnmusl_tls.modules[index];
-		nn_os_SdkMutex_Unlock(&__nnmusl_tls.modules_mutex);
-		if (module) {
-			module->pending_dtors--;
-			nnosFreeMemoryForThreadLocal(dtor, sizeof *dtor);
-		}
+		finish_dtor(dtor);
 		nn_os_SdkMutex_Unlock(&__nnmusl_tls.mutex);
 		nn_os_SdkMutex_Lock(&__nnmusl_tls.mutex);
 	}
@@ -103,4 +109,83 @@ size_t __nnmusl_get_number_uncalled_tls_dtors(void *dso)
 	}
 	nn_os_SdkMutex_Unlock(&__nnmusl_tls.mutex);
 	return count;
+}
+
+void __nnmusl_call_tls_dtors_for_module(void *dso)
+{
+	struct nnmusl_tls_dtor **head = thread_dtors();
+
+	nn_os_SdkMutex_Lock(&__nnmusl_tls.mutex);
+	for (;;) {
+		struct nnmusl_tls_dtor *dtor = *head;
+		while (dtor && dtor->dso != dso) dtor = dtor->next;
+		if (!dtor) break;
+
+		struct nnmusl_tls_dtor *next = dtor->next;
+		struct nnmusl_tls_dtor *prev = dtor->prev;
+		if (next) {
+			next->prev = prev;
+			next = dtor->next;
+		}
+		if (prev) prev->next = next;
+		else *head = next;
+
+		nn_os_SdkMutex_Unlock(&__nnmusl_tls.mutex);
+		dtor->func(dtor->arg);
+		nn_os_SdkMutex_Lock(&__nnmusl_tls.mutex);
+		finish_dtor(dtor);
+		nn_os_SdkMutex_Unlock(&__nnmusl_tls.mutex);
+		nn_os_SdkMutex_Lock(&__nnmusl_tls.mutex);
+	}
+	nn_os_SdkMutex_Unlock(&__nnmusl_tls.mutex);
+}
+
+// Registers a thread local destructor and charges it to the module that
+// contains the dso address, claiming that module for the handle.
+HIDDEN int __nnmusl_register_tls_dtor(void (*func)(void *), void *arg,
+	void *dso)
+{
+	struct nnmusl_tls_dtor *dtor =
+		nnosAllocateMemoryForThreadLocal(sizeof *dtor);
+	dtor->next = 0;
+	dtor->prev = 0;
+	dtor->func = func;
+	dtor->arg = arg;
+	dtor->dso = dso;
+	dtor->module = 0;
+
+	struct nnmusl_tls_dtor **head = thread_dtors();
+	nn_os_SdkMutex_Lock(&__nnmusl_tls.mutex);
+	dtor->next = *head;
+	dtor->prev = 0;
+	if (*head) (*head)->prev = dtor;
+	*head = dtor;
+
+	int start = 0;
+	for (;;) {
+		nn_os_SdkMutex_Lock(&__nnmusl_tls.modules_mutex);
+		int last = __nnmusl_tls_module_count > start ?
+			__nnmusl_tls_module_count : start;
+		struct nnmusl_tls_module *module = 0;
+		for (long i = start; i < last; i++)
+			if ((module = __nnmusl_tls.modules[i + 1])) break;
+		if (!module) {
+			nn_os_SdkMutex_Unlock(&__nnmusl_tls.modules_mutex);
+			break;
+		}
+		nn_os_SdkMutex_Unlock(&__nnmusl_tls.modules_mutex);
+
+		start = module->next_index;
+		if (dtor->dso != module->handle) {
+			uintptr_t address = (uintptr_t)dtor->dso;
+			if (module->begin > address || address > module->end)
+				continue;
+			module->handle = dtor->dso;
+		}
+		module->pending_dtors++;
+		dtor->module = start;
+		break;
+	}
+	nn_os_SdkMutex_Unlock(&__nnmusl_tls.mutex);
+	return 0;
 }
