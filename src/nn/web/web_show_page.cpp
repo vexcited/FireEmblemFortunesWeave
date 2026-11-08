@@ -13,6 +13,13 @@ void PopFromOutChannel(applet::LibraryAppletHandle handle, void* buffer,
 
 }
 
+namespace nn::applet {
+
+void SetStreamPlayShareEnabled(LibraryAppletHandle handle, bool isEnabled,
+  bool isEnabled2);
+
+}
+
 namespace nn::web {
 
 using namespace detail;
@@ -24,6 +31,12 @@ const applet::AppletId AppletId_Lobby =
   static_cast<applet::AppletId>(0x1000018);
 const applet::AppletId AppletId_Share =
   static_cast<applet::AppletId>(0x1000037);
+const applet::AppletId AppletId_OfflineWebGen0 =
+  static_cast<applet::AppletId>(0x1000017);
+const applet::AppletId AppletId_OfflineWeb =
+  static_cast<applet::AppletId>(0x1000032);
+const applet::AppletId AppletId_OfflineDocument =
+  static_cast<applet::AppletId>(0x1000033);
 const uint32_t CommonArgumentsVersion = 0x80000;
 
 const Result ResultWebPageFailed = {722};
@@ -36,6 +49,8 @@ const int WebExitReason_Unexpected = 14;
 
 os::MutexType g_WebPageMutex = {};
 applet::LibraryAppletHandle g_WebPageHandle;
+os::MutexType g_OfflinePageMutex = {};
+applet::LibraryAppletHandle g_OfflinePageHandle;
 
 }
 
@@ -159,6 +174,112 @@ Result ShowYouTubeVideo(WebPageReturnValue* pOutValue,
   }
 
   return ResultSuccess;
+}
+
+namespace detail {
+
+[[gnu::noinline, gnu::visibility("hidden")]] Result ShowOfflineHtmlPageImpl(
+  OfflineHtmlPageReturnValue* pOutValue, const ShowOfflineHtmlPageArg& arg,
+  applet::AppletId appletId) {
+  os::LockMutex(&g_OfflinePageMutex);
+  g_OfflinePageHandle = CreateWebApplet(appletId);
+  os::UnlockMutex(&g_OfflinePageMutex);
+
+  la::CommonArgumentsWriter writer(CommonArgumentsVersion);
+  writer.PushToInChannel(g_OfflinePageHandle);
+  reinterpret_cast<const ShowOfflineHtmlPageArgWriter&>(arg).PushToInChannel(
+    g_OfflinePageHandle);
+
+  auto& data = const_cast<ShowOfflineHtmlPageArg&>(arg);
+  const bool* pShare2 =
+    GetWebArgData<bool>(data.Data(), WebArgKind_StreamPlayShareEnabled2);
+  const bool isShare2 = pShare2 != nullptr ? *pShare2 : false;
+  const bool* pShare =
+    GetWebArgData<bool>(data.Data(), WebArgKind_StreamPlayShareEnabled);
+  const bool isShare = pShare != nullptr ? *pShare : false;
+  applet::SetStreamPlayShareEnabled(g_OfflinePageHandle, isShare, isShare2);
+
+  const Result result = RunWebApplet(pOutValue,
+    sizeof(OfflineHtmlPageReturnValue), &g_OfflinePageHandle);
+  g_OfflinePageHandle = {};
+  if (result.IsFailure()) {
+    return ResultWebPageFailed;
+  }
+
+  NN_ABORT_UNLESS(
+    pOutValue->GetOfflineExitReason() != WebExitReason_Unexpected);
+  return ResultSuccess;
+}
+
+}
+
+Result ShowOfflineHtmlPage(OfflineHtmlPageReturnValue* pOutValue,
+  const ShowOfflineHtmlPageArg& arg) {
+  return ShowOfflineHtmlPageImpl(pOutValue, arg, AppletId_OfflineWeb);
+}
+
+Result ShowOfflineHtmlPageGen0(OfflineHtmlPageReturnValue* pOutValue,
+  const ShowOfflineHtmlPageArg& arg) {
+  return ShowOfflineHtmlPageImpl(pOutValue, arg, AppletId_OfflineWebGen0);
+}
+
+void RequestExitOfflineHtmlPage() {
+  os::LockMutex(&g_OfflinePageMutex);
+
+  if (g_OfflinePageHandle._p != nullptr && !os::TryWaitSystemEvent(
+    applet::GetLibraryAppletExitEvent(g_OfflinePageHandle))) {
+    applet::RequestExitLibraryApplet(g_OfflinePageHandle);
+  }
+
+  os::UnlockMutex(&g_OfflinePageMutex);
+}
+
+Result ShowApplicationLegalInformationPage(
+  OfflineHtmlPageReturnValue* pOutValue,
+  const ShowApplicationLegalInformationPageArg& arg) {
+  applet::LibraryAppletHandle handle =
+    CreateWebApplet(AppletId_OfflineDocument);
+
+  la::CommonArgumentsWriter writer(CommonArgumentsVersion);
+  writer.PushToInChannel(handle);
+  arg.PushToInChannel(handle);
+
+  return RunWebApplet(pOutValue, sizeof(OfflineHtmlPageReturnValue),
+    &handle);
+}
+
+Result ShowSystemDataPage(OfflineHtmlPageReturnValue* pOutValue,
+  const ShowSystemDataPageArg& arg) {
+  applet::LibraryAppletHandle handle =
+    CreateWebApplet(AppletId_OfflineDocument);
+
+  la::CommonArgumentsWriter writer(CommonArgumentsVersion);
+  writer.PushToInChannel(handle);
+  arg.PushToInChannel(handle);
+
+  return RunWebApplet(pOutValue, sizeof(OfflineHtmlPageReturnValue),
+    &handle);
+}
+
+void GetOfflineHtmlPageReturnValueFromStorage(
+  OfflineHtmlPageReturnValue* pOutValue, const applet::StorageHandle& storage) {
+  NN_ABORT_UNLESS(
+    applet::GetStorageSize(storage) == sizeof(OfflineHtmlPageReturnValue));
+  NN_ABORT_UNLESS_RESULT_SUCCESS(applet::ReadFromStorage(storage, 0,
+    pOutValue, sizeof(OfflineHtmlPageReturnValue)));
+}
+
+Result ShowCalibrationOfflineHtmlPage(OfflineHtmlPageReturnValue* pOutValue,
+  const ShowCalibrationOfflineHtmlPageArg& arg) {
+  applet::LibraryAppletHandle handle =
+    CreateWebApplet(AppletId_OfflineDocument);
+
+  la::CommonArgumentsWriter writer(CommonArgumentsVersion);
+  writer.PushToInChannel(handle);
+  arg.PushToInChannel(handle);
+
+  return RunWebApplet(pOutValue, sizeof(OfflineHtmlPageReturnValue),
+    &handle);
 }
 
 }
