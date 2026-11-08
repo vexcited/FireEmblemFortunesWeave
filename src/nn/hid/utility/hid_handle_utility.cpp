@@ -10,6 +10,10 @@ namespace nn::detail {
 
 namespace nn::hid::utility {
 
+struct SixAxisSensorHandleIdxForNpad {
+  uint8_t index;
+};
+
 namespace {
 
 constexpr Result ResultMouseInvalidHandle = {0x84ca};
@@ -23,6 +27,54 @@ constexpr int SixAxisSensorIndexCount = 3;
 
 constexpr int VibrationDeviceIdxTable[] = {0, 0, 1};
 
+// Full key and the system styles share the first sensor, dual joy-cons
+// pick theirs from the hold type.
+Result GetSixAxisSensorHandleIdx(SixAxisSensorHandleIdxForNpad* pOut,
+  uint32_t style, int holdType) {
+  if ((style & 0x21) != 0) {
+    pOut->index = 0;
+    return Result{};
+  }
+  if ((style & 0x2) != 0) {
+    pOut->index = 1;
+    return Result{};
+  }
+  if ((style & 0x4) != 0) {
+    if (holdType == 0) {
+      pOut->index = 2;
+      return Result{};
+    }
+    if (holdType == 1) {
+      pOut->index = 3;
+      return Result{};
+    }
+  }
+  if ((style & 0x8) != 0) {
+    pOut->index = 4;
+    return Result{};
+  }
+  if ((style & 0x10) != 0) {
+    pOut->index = 5;
+    return Result{};
+  }
+  return ResultSixAxisSensorInvalidIndex;
+}
+
+}
+
+Result GetSixAxisSensorHandleIdxForNpad(SixAxisSensorHandleIdxForNpad* pOut,
+  const util::BitFlagSet<32, NpadStyleTag>& style, const int& holdType) {
+  return GetSixAxisSensorHandleIdx(pOut, style._storage[0], holdType);
+}
+
+// The handle keeps the style index in its low byte and the hold type in its
+// third byte.
+Result GetSixAxisSensorHandleIdxForNpad(SixAxisSensorHandleIdxForNpad* pOut,
+  const SixAxisSensorHandle& handle) {
+  const uint32_t style = 1u << ((handle._storage +
+    (32 - SixAxisSensorNpadStyleIndexBase)) & 31);
+  return GetSixAxisSensorHandleIdx(pOut, style,
+    static_cast<uint8_t>(handle._storage >> 16));
 }
 
 Result VerifyValidMouseHandle(const MouseHandle& handle) {
@@ -83,6 +135,132 @@ NpadIdType GetSixAxisSensorHandleNpadIdType(
 
 int GetSixAxisSensorHandleSixAxisSensorIdx(const SixAxisSensorHandle& handle) {
   return static_cast<uint8_t>(handle._storage >> 16);
+}
+
+// Dual joy-cons get one handle per controller, the other styles one handle
+// of the type that matches their sensor.
+Result GetSixAxisSensorHandle(SixAxisSensorHandle* pOutHandles,
+  int* pOutCount, int count, NpadIdType id, NpadStyleSet style) {
+  NN_ABORT_UNLESS_NOT_NULL(pOutHandles);
+  NN_ABORT_UNLESS_NOT_NULL(pOutCount);
+  NN_ABORT_UNLESS(count > 0);
+  NN_RESULT_DO(hid::detail::VerifyValidNpadId(id));
+  const uint32_t bits = style._storage[0];
+  if ((bits & 0x1) != 0) {
+    pOutHandles[0] = MakeSixAxisSensorHandle(3, id, 2);
+    *pOutCount = 1;
+  }
+  else if ((bits & 0x2) != 0) {
+    pOutHandles[0] = MakeSixAxisSensorHandle(4, id, 2);
+    *pOutCount = 1;
+  }
+  else if ((bits & 0x1004) != 0) {
+    pOutHandles[0] = MakeSixAxisSensorHandle(5, id, 0);
+    *pOutCount = 1;
+    if (count != 1) {
+      pOutHandles[1] = MakeSixAxisSensorHandle(5, id, 1);
+      *pOutCount += 1;
+    }
+  }
+  else if ((bits & 0x2008) != 0) {
+    pOutHandles[0] = MakeSixAxisSensorHandle(6, id, 0);
+    *pOutCount = 1;
+  }
+  else if ((bits & 0x4010) != 0) {
+    pOutHandles[0] = MakeSixAxisSensorHandle(7, id, 1);
+    *pOutCount = 1;
+  }
+  else if ((bits & 0x20) != 0) {
+    pOutHandles[0] = MakeSixAxisSensorHandle(3, id, 2);
+    *pOutCount = 1;
+  }
+  else if ((bits & 0xe80) != 0) {
+    *pOutCount = 0;
+  }
+  else if ((bits & 0x100) != 0) {
+    pOutHandles[0] = MakeSixAxisSensorHandle(4, id, 2);
+    *pOutCount = 1;
+  }
+  else if ((bits & 0x60000040) == 0x40) {
+    pOutHandles[0] = MakeSixAxisSensorHandle(3, id, 2);
+    *pOutCount = 1;
+  }
+  else {
+    *pOutCount = 0;
+  }
+  return Result{};
+}
+
+namespace {
+
+// Styles with two motors report the left one first, the right one only when
+// there is room for it.
+Result SetVibrationDeviceHandles(VibrationDeviceHandle* pOutHandles,
+  int* pOutCount, int count, NpadIdType id, uint8_t typeValue,
+  bool hasTwoDevices) {
+  const uint32_t base = typeValue |
+    static_cast<uint32_t>(static_cast<uint8_t>(id)) << 8;
+  pOutHandles[0] = VibrationDeviceHandle{base};
+  *pOutCount = 1;
+  if (hasTwoDevices && count >= 2) {
+    pOutHandles[1] = VibrationDeviceHandle{base | 1 << 16};
+    *pOutCount += 1;
+  }
+  return Result{};
+}
+
+}
+
+Result GetVibrationDeviceHandles(VibrationDeviceHandle* pOutHandles,
+  int* pOutCount, int count, NpadIdType id, NpadStyleSet style) {
+  NN_RESULT_DO(hid::detail::VerifyValidNpadId(id));
+  const uint32_t bits = style._storage[0];
+  if ((bits & 0x1) != 0) {
+    return SetVibrationDeviceHandles(pOutHandles, pOutCount, count, id, 3,
+      true);
+  }
+  if ((bits & 0x2) != 0) {
+    return SetVibrationDeviceHandles(pOutHandles, pOutCount, count, id, 4,
+      true);
+  }
+  if ((bits & 0x1004) != 0) {
+    return SetVibrationDeviceHandles(pOutHandles, pOutCount, count, id, 5,
+      true);
+  }
+  if ((bits & 0x2008) != 0) {
+    pOutHandles[0] = VibrationDeviceHandle{6 |
+      static_cast<uint32_t>(static_cast<uint8_t>(id)) << 8};
+    *pOutCount = 1;
+    return Result{};
+  }
+  if ((bits & 0x4010) != 0) {
+    pOutHandles[0] = VibrationDeviceHandle{7 |
+      static_cast<uint32_t>(static_cast<uint8_t>(id)) << 8 | 1 << 16};
+    *pOutCount = 1;
+    return Result{};
+  }
+  if ((bits & 0x20) != 0) {
+    return SetVibrationDeviceHandles(pOutHandles, pOutCount, count, id, 8,
+      false);
+  }
+  if ((bits & 0x400) != 0) {
+    return SetVibrationDeviceHandles(pOutHandles, pOutCount, count, id, 0xd,
+      false);
+  }
+  if ((bits & 0x100) != 0) {
+    return SetVibrationDeviceHandles(pOutHandles, pOutCount, count, id, 4,
+      true);
+  }
+  if ((bits & 0x40000000) != 0) {
+    return SetVibrationDeviceHandles(pOutHandles, pOutCount, count, id, 0x21,
+      true);
+  }
+  if ((bits & 0x20000000) != 0) {
+    return SetVibrationDeviceHandles(pOutHandles, pOutCount, count, id, 0x20,
+      true);
+  }
+  *pOutCount = 0;
+  return Result{};
 }
 
 Result VerifyValidSixAxisSensorHandle(const SixAxisSensorHandle& handle) {
