@@ -1,5 +1,6 @@
 #include "nn/async/async_cancellation.hpp"
 #include "nn/diag/diag_abort.hpp"
+#include "nn/util/util_pmr.hpp"
 
 namespace nn::async {
 
@@ -19,7 +20,7 @@ bool CancellationToken::IsCancellationRequested() const {
   if (m_State == nullptr) {
     return false;
   }
-  return os::TryWaitEvent(&m_State->m_Event);
+  return os::TryWaitEvent(m_State->m_Event.GetBase());
 }
 
 const CancellationToken& GetCurrentCancellationToken() {
@@ -45,6 +46,18 @@ void InitializeMultiWaitHolder(os::MultiWaitHolderType* pHolder,
   const CancellationToken& token) {
   detail::InitializeMultiWaitHolder(pHolder,
     detail::CancellationTokenAccessor::GetState(token));
+}
+
+CancellationTokenSource::CancellationTokenSource(MemoryResource* resource)
+  : m_State(std::allocate_shared<detail::CancellationState>(
+    util::pmr::PolymorphicAllocator<detail::CancellationState>(resource))) {}
+
+CancellationToken CancellationTokenSource::GetToken() const {
+  return detail::CancellationTokenAccessor::GetToken(m_State);
+}
+
+void CancellationTokenSource::RequestCancel() {
+  m_State->RequestCancel();
 }
 
 }

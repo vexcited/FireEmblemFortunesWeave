@@ -12,13 +12,12 @@ uint32_t g_DebugLoggingFlags[2];
 
 CancellationState::~CancellationState() {
   m_Observers.clear();
-  os::FinalizeEvent(&m_Event);
 }
 
 void CancellationState::RequestCancel() {
   m_Mutex.Lock();
-  if (!os::TryWaitEvent(&m_Event)) {
-    os::SignalEvent(&m_Event);
+  if (!os::TryWaitEvent(m_Event.GetBase())) {
+    os::SignalEvent(m_Event.GetBase());
     for (CancellationObserver& observer : m_Observers) {
       observer.NotifyCancel();
     }
@@ -29,7 +28,7 @@ void CancellationState::RequestCancel() {
 void CancellationState::RegisterObserver(CancellationObserver* pObserver) {
   m_Mutex.Lock();
   m_Observers.push_back(*pObserver);
-  if (os::TryWaitEvent(&m_Event)) {
+  if (os::TryWaitEvent(m_Event.GetBase())) {
     pObserver->NotifyCancel();
   }
   m_Mutex.Unlock();
@@ -46,7 +45,7 @@ void CancellationState::UnregisterObserver(CancellationObserver* pObserver) {
 
 void InitializeMultiWaitHolder(os::MultiWaitHolderType* pHolder,
   CancellationState* pState) {
-  os::InitializeMultiWaitHolder(pHolder, &pState->m_Event);
+  os::InitializeMultiWaitHolder(pHolder, pState->m_Event.GetBase());
 }
 
 CancellationToken CancellationTokenAccessor::GetToken(

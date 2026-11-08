@@ -4,6 +4,7 @@
 
 #include "nn/async/async_detail.hpp"
 #include "nn/os/event.hpp"
+#include "nn/os/event_class.hpp"
 #include "nn/os/multi_wait.hpp"
 #include "nn/os/synchronization.hpp"
 #include "nn/util/intrusive_list.hpp"
@@ -34,12 +35,24 @@ void InitializeMultiWaitHolder(os::MultiWaitHolderType* pHolder,
   const CancellationToken& token);
 const CancellationToken& GetCurrentCancellationToken();
 
+class CancellationTokenSource {
+public:
+  explicit CancellationTokenSource(MemoryResource* resource);
+
+  CancellationToken GetToken() const;
+  void RequestCancel();
+
+private:
+  std::shared_ptr<detail::CancellationState> m_State;
+};
+
 }
 
 namespace nn::async::detail {
 
 class CancellationState {
 public:
+  CancellationState() {}
   ~CancellationState();
 
   void RequestCancel();
@@ -55,8 +68,8 @@ private:
     util::IntrusiveListMemberNodeTraits<CancellationObserver,
       &CancellationObserver::m_Node>>;
 
-  os::EventType m_Event;
-  os::SdkMutexType m_Mutex;
+  os::Event m_Event{os::EventClearMode_ManualClear};
+  os::SdkMutexType m_Mutex = {};
   ObserverList m_Observers;
 };
 
