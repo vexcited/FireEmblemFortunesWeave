@@ -1804,6 +1804,8 @@ b2020,20,verified,src/nnmusl/nnmusl_libc_misc2.cpp,alphasort
 b2040,56,verified,src/musl/src/dirent/closedir.c,closedir
 b2080,8,verified,src/musl/src/dirent/dirfd.c,dirfd
 b2090,8,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,fdopendir
+b20a0,104,verified,src/nnmusl/nnmusl_libc_misc5.cpp,opendir
+b21b0,132,verified,src/nnmusl/nnmusl_libc_misc5.cpp,readdir
 b2260,68,verified,src/musl/src/dirent/rewinddir.c,rewinddir
 b22b0,72,verified,src/musl/src/dirent/seekdir.c,seekdir
 b2300,8,verified,src/musl/src/dirent/telldir.c,telldir
@@ -4853,6 +4855,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 172400,36,verified,src/nnmusl/nnmusl_unsupported.c,sched_getaffinity
 172430,36,verified,src/nnmusl/nnmusl_unsupported.c,sched_setaffinity
 172460,36,verified,src/nnmusl/nnmusl_unsupported.c,sched_getcpu
+172750,116,verified,src/nnmusl/nnmusl_libc_misc5.cpp,pthread_setschedprio
 1727d0,92,verified,src/nnmusl/nnmusl_pthread_misc2.cpp,sem_init
 172830,28,verified,src/nnmusl/nnmusl_os_wrappers.cpp,sem_destroy
 172850,48,verified,src/nnmusl/nnmusl_pthread_misc.cpp,sem_getvalue
@@ -4887,6 +4890,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 173230,32,verified,src/musl/src/thread/pthread_attr_setinheritsched.c,pthread_attr_setinheritsched
 173250,88,verified,src/nn/nlibsdk/posix_thread_attributes.cpp,pthread_attr_getaffinity_np
 1732c0,128,verified,src/nn/nlibsdk/posix_thread_attributes.cpp,pthread_attr_setaffinity_np
+173670,148,verified,src/nnmusl/nnmusl_libc_misc5.cpp,pthread_once
 173730,288,verified,src/nn/nlibsdk/posix_thread.cpp,_ZN2nn7nlibsdk6detail17DetachPosixThreadEPNS1_11PosixThreadE
 173860,256,verified,src/nn/nlibsdk/posix_thread_retirement.cpp,_ZN2nn7nlibsdk6detail17RetirePosixThreadEPv
 173a40,128,verified,src/nn/nlibsdk/posix_tls.cpp,_ZN2nn7nlibsdk6detail14GetLazyTlsSlotEv
@@ -23383,7 +23387,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 7977f0,4,verified,src/musl/src/ctype/iswblank.c,iswblank_l
 797800,48,verified,src/musl/src/ctype/iswcntrl.c,iswcntrl
 797830,48,verified,src/musl/src/ctype/iswcntrl.c,iswcntrl_l
-797860,56,verified,src/nnmusl/nnmusl_libc_misc4.cpp,iswctype
+797860,72,verified,src/nnmusl/nnmusl_libc_misc4.cpp,iswctype
 7978d0,612,verified,src/musl/src/ctype/iswctype.c,wctype
 797b40,4,verified,src/musl/src/ctype/iswctype.c,iswctype_l
 797b50,4,verified,src/musl/src/ctype/iswctype.c,wctype_l
@@ -23686,6 +23690,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 7a89b0,176,verified,src/musl/src/time/__tm_to_secs.c,__tm_to_secs
 7a8a60,336,verified,src/musl/src/time/__year_to_secs.c,__year_to_secs
 7a8bc0,12,verified,src/musl/src/time/asctime.c,asctime
+7a8bd0,172,verified,src/nnmusl/nnmusl_libc_misc5.cpp,asctime_r
 7a8c80,40,verified,src/musl/src/time/ctime.c,ctime
 7a8cb0,60,verified,src/musl/src/time/ctime_r.c,ctime_r
 7a8cf0,12,verified,src/musl/src/time/difftime.c,difftime
@@ -23696,6 +23701,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 7a8df0,164,verified,src/musl/src/time/localtime_r.c,localtime_r
 7a8ea0,228,verified,src/musl/src/time/mktime.c,mktime
 7a8fa0,364,verified,src/musl/src/time/strptime.c,strptime
+7a95b0,140,verified,src/nnmusl/nnmusl_libc_misc5.cpp,timegm
 7a9640,180,verified,src/musl/src/time/wcsftime.c,wcsftime_l
 7a9920,60,verified,src/musl/src/unistd/sleep.c,sleep
 7a9960,80,verified,src/musl/src/unistd/usleep.c,usleep
