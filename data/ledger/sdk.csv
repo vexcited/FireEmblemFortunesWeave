@@ -14040,6 +14040,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 4c3d60,404,verified,src/nn/movie/detail/movie_media_extractor_state.cpp,_ZNK2nn5movie6detail19MediaExtractorState20ValidateCurrentStateENS2_23MediaExtractorFunctionsE
 4c45f0,320,verified,src/nn/movie/detail/movie_compression_ratio.cpp,_ZN2nn5movie6detail27GetVideoMinCompressionRatioENS0_13MediaMimeTypeEi
 4c4790,4,verified,src/nn/movie/detail/movie_media_state.cpp,_ZN2nn5movie6detail10MediaStateD2Ev
+4c47a0,140,verified,src/nn/movie/detail/movie_media_state.cpp,_ZN2nn5movie6detail10MediaStateD0Ev
 4c4830,12,verified,src/nn/movie/detail/movie_media_state.cpp,_ZN2nn5movie6detail10MediaState8SetStateENS2_5StateE
 4c4840,12,verified,src/nn/movie/detail/movie_media_state.cpp,_ZNK2nn5movie6detail10MediaState8GetStateEv
 4c4ea0,152,verified,src/nn/movie/detail/movie_thread_manager.cpp,_ZN2nn5movie6detail13ThreadManager12_SetCoreMaskEm

@@ -1,3 +1,4 @@
+#include "nandroid/MovieHeap.h"
 #include "nn/movie/detail/movie_media_state.hpp"
 
 namespace nn::movie::detail {
