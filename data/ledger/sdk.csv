@@ -1809,6 +1809,7 @@ b0270,36,verified,src/nnmusl/nnmusl_unsupported.c,utimes
 b0990,240,verified,src/nnmusl/fcntl/fs_errno.c,__nnmusl_fs_result_errno
 b1780,88,verified,src/nnmusl/fcntl/fd_open.c,__nnmusl_fd_open_file
 b1990,64,verified,src/nnmusl/fcntl/fd_open.c,__nnmusl_fd_open_directory
+b1b10,152,verified,src/nnmusl/fcntl/fd_slots.c,__nnmusl_slot_release
 b1bd0,16,verified,src/nnmusl/fcntl/fd_entry.c,__nnmusl_fd_kind
 b1be0,12,verified,src/nnmusl/fcntl/fd_entry.c,__nnmusl_fd_handle
 b1bf0,12,verified,src/nnmusl/fcntl/fd_entry.c,__nnmusl_fd_position
@@ -1820,6 +1821,8 @@ b1c50,12,verified,src/nnmusl/fcntl/fd_entry.c,__nnmusl_fd_native
 b1c60,12,verified,src/nnmusl/fcntl/fd_entry.c,__nnmusl_fd_set_handle
 b1c70,12,verified,src/nnmusl/fcntl/fd_entry.c,__nnmusl_fd_context
 b1c80,12,verified,src/nnmusl/fcntl/fd_entry.c,__nnmusl_fd_extra
+b1c90,128,verified,src/nnmusl/fcntl/fd_slots.c,__nnmusl_slot_retain
+b1f00,128,verified,src/nnmusl/fcntl/fd_slots.c,__nnmusl_slot_retain_directory
 b2020,20,verified,src/nnmusl/nnmusl_libc_misc2.cpp,alphasort
 b2040,56,verified,src/musl/src/dirent/closedir.c,closedir
 b2080,8,verified,src/musl/src/dirent/dirfd.c,dirfd
