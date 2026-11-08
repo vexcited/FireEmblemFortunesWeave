@@ -224,9 +224,12 @@ bool TimedJamLightMessageQueue(LightMessageQueueType* queue, uintptr_t value,
 }
 
 void ReceiveLightMessageQueue(uintptr_t* value, LightMessageQueueType* queue) {
-  while (!TryReceiveOrClear(value, queue)) {
+  uintptr_t message = 0;
+  while (!TryReceiveOrClear(&message, queue)) {
     queue->notEmpty.WaitWithManualClear();
   }
+
+  *value = message;
 }
 
 bool TryReceiveLightMessageQueue(uintptr_t* value,
