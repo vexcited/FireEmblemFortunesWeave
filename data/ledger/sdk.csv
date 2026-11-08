@@ -19690,6 +19690,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 5ee9d0,4,verified,src/nvidia/nvos_stubs.cpp,NvOsSetResourceAllocFileLine
 5ee9f0,36,verified,src/nvidia/nvos_misc.cpp,NvOsSetVerboseLevel
 5eea20,36,verified,src/nvidia/nvos_misc.cpp,NvOsGetVerboseLevel
+5eec50,44,verified,src/nvidia/nvos_file_misc.cpp,NvOsFreeLeak
 5eec80,4,verified,src/nvidia/nvos_allocators.cpp,NvOsAlloc
 5eec90,4,verified,src/nvidia/nvos_allocators.cpp,NvOsAllocAlign
 5eeca0,4,verified,src/nvidia/nvos_allocators.cpp,NvOsRealloc
@@ -19698,9 +19699,13 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 5eecd0,8,verified,src/nvidia/nvos_misc.cpp,NvOsInterruptPriorityThreadCreate
 5eece0,16,verified,src/nvidia/nvos_misc.cpp,NvOsFopen
 5eecf0,12,verified,src/nvidia/nvos_misc.cpp,NvOsFclose
+5eed00,16,verified,src/nvidia/nvos_file_misc.cpp,NvOsFcloseEx
 5eed10,4,verified,src/nvidia/nvos_misc.cpp,NvOsFwrite
+5eed20,52,verified,src/nvidia/nvos_file_misc.cpp,NvOsFread
+5eed60,48,verified,src/nvidia/nvos_file_misc.cpp,NvOsFgetc
 5eed90,4,verified,src/nvidia/nvos_misc.cpp,NvOsFseek
 5eeda0,4,verified,src/nvidia/nvos_misc.cpp,NvOsFtell
+5eedb0,12,verified,src/nvidia/nvos_file_misc.cpp,NvOsStat
 5eee90,12,verified,src/nvidia/nvos_misc.cpp,NvOsFstat
 5eeec0,4,verified,src/nvidia/nvos_misc.cpp,NvOsFflush
 5eeed0,4,verified,src/nvidia/nvos_misc.cpp,NvOsFsync
@@ -19757,6 +19762,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 5f6850,8,verified,src/nvidia/nvos_stubs.cpp,NvOsTlsAddTerminator
 5f6860,8,verified,src/nvidia/nvos_stubs.cpp,NvOsPhysicalMemMap
 5f6870,4,verified,src/nvidia/nvos_stubs.cpp,NvOsPhysicalMemUnmap
+5f7080,52,verified,src/nvidia/nvos_file_misc.cpp,NvOsVsnprintf
 5f76f0,4,verified,src/nvidia/nvos_misc.cpp,NvOsStrcpy
 5f7700,4,verified,src/nvidia/nvos_misc.cpp,NvOsStrncpy
 5f7710,4,verified,src/nvidia/nvos_misc.cpp,NvOsStrlen
@@ -19808,8 +19814,12 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 5f84a0,8,verified,src/nvidia/nvos_stubs.cpp,NvOsMapRegSpace
 5f84b0,8,verified,src/nvidia/nvos_stubs.cpp,NvOsUnMapRegSpace
 5f84c0,4,verified,src/nvidia/nvos_misc.cpp,NvOsGetCurrentThreadId
+5f8b40,40,verified,src/nvidia/nv_graphics_config.cpp,_ZN2nv20GetGraphicsAllocatorEPPFPvmmS0_EPPFvS0_S0_EPPFS0_S0_mS0_EPS0_
+5f8dd0,44,verified,src/nvidia/nv_graphics_config.cpp,_ZN2nv27EnableGraphicsMemoryTracingEv
+5f8e00,44,verified,src/nvidia/nv_graphics_config.cpp,_ZN2nv20EnablePreemptionGFXPEv
 5f8ec0,4,verified,src/nvidia/nv_misc.cpp,_ZN2nv22DumpGraphicsMemoryInfoEv
 5f8ed0,4,verified,src/nvidia/nv_misc.cpp,_ZN2nv24IsCapableNoVsyncForDebugEv
+5f8ee0,44,verified,src/nvidia/nv_graphics_config.cpp,_ZN2nv28DisableGpuSemaAcquireTimeoutEv
 5f8fb0,4,verified,src/nvidia/nvos_stubs.cpp,NvOsHosSetCurrentAllocatorPointers
 5f8fc0,8,verified,src/nvidia/nvos_misc.cpp,NvOsHosIsUsingCoreCallbacks
 5f9d80,252,verified,src/nn/sf/cmif/client/cmif_client_extra_message.cpp,_ZN2nn2sf4hipc6client18Hipc2ProxyKindBaseILNS1_6detail11MessageTypeE6EE7ProcessILb0EJNS0_4cmif6client6detail5InRawIjEENSA_9OutHandleILb0EEESC_NSA_6OutRawIjEEEEENS_6ResultEPKNS6_14ProxyKindStateEDpNT0_9ParameterEi
@@ -19841,6 +19851,10 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 5fea50,8,verified,src/nvidia/nvos_stubs.cpp,NvRmChannelSetModulePixelRate
 5feaf0,8,verified,src/nvidia/nvos_stubs.cpp,NvRmHostCreateEventPollFd
 5feb00,8,verified,src/nvidia/nvos_stubs.cpp,NvRmHostTriggerEventPollFd
+5feb80,20,verified,src/nvidia/nvrm_host1x_proxy.cpp,_ZN4nvrm6host1x8SetProxyEPNS0_11INvDrvProxyE
+5feba0,24,verified,src/nvidia/nvrm_host1x_proxy.cpp,_ZN4nvrm6host1x4OpenEPKc
+5febc0,24,verified,src/nvidia/nvrm_host1x_proxy.cpp,_ZN4nvrm6host1x5CloseEi
+5febe0,36,verified,src/nvidia/nvrm_host1x_proxy.cpp,_ZN4nvrm6host1x5IoctlEijPvm
 5fed10,4,verified,src/nvidia/nvos_stubs.cpp,NvRmHost1xInitializeSystem
 5fed20,4,verified,src/nvidia/nvos_stubs.cpp,NvRmHost1xFinalizeSystem
 5fed30,8,verified,src/nvidia/nvos_stubs.cpp,NvRmHost1xGetPartitionId
