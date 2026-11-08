@@ -51,7 +51,29 @@ struct NvRmGpuSensorInfo {
   uint8_t flags;
 };
 
+// The library holds a process wide reference while it is open, the token
+// owns it when its byte is set.
+struct NvRmGpuLibReference {
+  uint8_t isOwned;
+};
+
+extern "C" void* NvOsAlloc(uint64_t size);
 extern "C" void NvOsFree(void* pointer);
+extern "C" void* stderr;
+extern "C" int fprintf(void* stream, const char* format, ...);
+
+[[gnu::visibility("hidden")]] uint32_t NvRmGpuLibAcquire(
+  NvRmGpuLibReference* reference);
+[[gnu::visibility("hidden")]] uint32_t NvRmGpuLibRelease(
+  NvRmGpuLibReference* reference);
+[[gnu::visibility("hidden")]] void NvRmGpuLibMoveReference(
+  NvRmGpuLibReference* destination, NvRmGpuLibReference* source);
+[[gnu::visibility("hidden")]] void NvRmGpuLibDestroyReference(
+  NvRmGpuLibReference* reference);
+[[gnu::visibility("hidden")]] void NvRmGpuLibConstruct(NvRmGpuObject* lib,
+  NvRmGpuLibReference* reference);
+[[gnu::visibility("hidden")]] uint32_t NvRmGpuLibInitialize(
+  NvRmGpuObject* lib);
 
 // The shipped build folds this into an empty function.
 [[gnu::visibility("hidden")]] void NvRmGpuObjectDetach(NvRmGpuObject* object);
@@ -162,6 +184,62 @@ template <typename A>
 }
 
 extern "C" {
+
+NvRmGpuObject* NvRmGpuLibOpen() {
+  NvRmGpuLibReference reference = {};
+  NvRmGpuObject* lib = nullptr;
+
+  uint32_t result = NvRmGpuLibAcquire(&reference);
+  if (result == 0) {
+    NvRmGpuLibReference owned;
+    NvRmGpuLibMoveReference(&owned, &reference);
+
+    lib = static_cast<NvRmGpuObject*>(NvOsAlloc(0x70));
+    if (lib == nullptr) {
+      result = 6;
+    }
+    else {
+      NvRmGpuLibConstruct(lib, &owned);
+      result = NvRmGpuLibInitialize(lib);
+      if (result != 0) {
+        Close(lib);
+        lib = nullptr;
+      }
+    }
+
+    NvRmGpuLibDestroyReference(&owned);
+  }
+
+  if (result != 0) {
+    fprintf(stderr, "libnvrm_gpu.so: %s failed, error=%u\n",
+      "NvRmGpuLibOpen", result);
+  }
+
+  NvRmGpuLibRelease(&reference);
+  NvRmGpuLibDestroyReference(&reference);
+  return lib;
+}
+
+// The first error wins, from the reference, the close or the release.
+uint32_t NvRmGpuLibClose(NvRmGpuObject* lib) {
+  NvRmGpuLibReference reference = {};
+  uint32_t result = NvRmGpuLibAcquire(&reference);
+
+  if (lib != nullptr) {
+    const uint32_t closeResult = Close(lib);
+    if (closeResult != 0 && result == 0) {
+      result = closeResult;
+    }
+  }
+
+  const uint32_t releaseResult = NvRmGpuLibRelease(&reference);
+  if (releaseResult != 0 && result == 0) {
+    result = releaseResult;
+  }
+
+  NvRmGpuLibDestroyReference(&reference);
+  return result;
+}
 
 uint32_t NvRmGpuDeviceClose(NvRmGpuObject* object) {
   return Close(object);
