@@ -7252,7 +7252,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 207e50,28,verified,src/nn/audio/ne10/modules/dsp/NE10_rfft_float32.c,nnaudiodetail_ne10_radix2_r2c_c
 207e70,40,verified,src/nn/audio/ne10/modules/dsp/NE10_rfft_float32.c,nnaudiodetail_ne10_radix2_c2r_c
 207ea0,40,verified,src/nn/audio/ne10/modules/dsp/NE10_rfft_float32.c,nnaudiodetail_ne10_fft_sizeof_r2c_float32
-207ee0,752,verified,src/nn/audio/ne10/modules/dsp/NE10_rfft_float32.c,nnaudiodetail_ne10_fft_init_r2c_float32
+207ee0,1428,verified,src/nn/audio/ne10/modules/dsp/NE10_rfft_float32.c,nnaudiodetail_ne10_fft_init_r2c_float32
 2084a0,2168,verified,src/nn/audio/ne10/modules/dsp/NE10_rfft_float32.c,nnaudiodetail_ne10_fft_r2c_1d_float32_c
 209320,796,verified,src/nn/audio/ne10/modules/dsp/NE10_rfft_float32.c,nnaudiodetail_ne10_fft_c2r_1d_float32_c
 209660,1420,verified,src/ne10/modules/dsp/NE10_rfft_float32.c,ne10_radix4_c2r_with_twiddles_c
@@ -7301,12 +7301,12 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 21c4a0,900,verified,src/ne10/modules/dsp/NE10_fft_int16.neonintrinsic.c,ne10_fft_c2r_1d_int16_neon
 21c940,3000,disputed,src/nn/audio/ne10/modules/dsp/NE10_fft_int32.neonintrinsic.c,nnaudiodetail_ne10_mixed_radix_fft_forward_int32_unscaled_neon
 21d680,2784,verified,src/nn/audio/ne10/modules/dsp/NE10_fft_int32.neonintrinsic.c,nnaudiodetail_ne10_mixed_radix_fft_forward_int32_scaled_neon
-21e3c0,2784,disputed,src/nn/audio/ne10/modules/dsp/NE10_fft_int32.neonintrinsic.c,nnaudiodetail_ne10_mixed_radix_fft_backward_int32_unscaled_neon
+21e3c0,3116,disputed,src/nn/audio/ne10/modules/dsp/NE10_fft_int32.neonintrinsic.c,nnaudiodetail_ne10_mixed_radix_fft_backward_int32_unscaled_neon
 21f100,3000,verified,src/nn/audio/ne10/modules/dsp/NE10_fft_int32.neonintrinsic.c,nnaudiodetail_ne10_mixed_radix_fft_backward_int32_scaled_neon
 21fe30,488,verified,src/nn/audio/ne10/modules/dsp/NE10_fft_int32.neonintrinsic.c,nnaudiodetail_ne10_fft_c2c_1d_int32_neon
 220420,852,verified,src/ne10/modules/dsp/NE10_fft_int32.neonintrinsic.c,ne10_fft_r2c_1d_int32_neon
 2207a0,844,verified,src/ne10/modules/dsp/NE10_fft_int32.neonintrinsic.c,ne10_fft_c2r_1d_int32_neon
-220b00,3020,verified,src/nn/audio/ne10/modules/dsp/NE10_rfft_float32.neonintrinsic.c,nnaudiodetail_ne10_fft_r2c_1d_float32_neon
+220b00,3484,verified,src/nn/audio/ne10/modules/dsp/NE10_rfft_float32.neonintrinsic.c,nnaudiodetail_ne10_fft_r2c_1d_float32_neon
 221aa0,1988,verified,src/nn/audio/ne10/modules/dsp/NE10_rfft_float32.neonintrinsic.c,nnaudiodetail_ne10_fft_c2r_1d_float32_neon
 222880,36,verified,src/nn/audio/output_recorder.cpp,_ZN2nn5audio43IsVirtualCaptureDeviceStreamFormatSupportedERKNS0_15AudioDeviceNameERKNS0_12StreamFormatE
 2228b0,124,verified,src/nn/audio/output_recorder.cpp,_ZN2nn5audio18OpenOutputRecorderEPNS0_18OutputRecorderTypeEPvmRKNS0_15AudioDeviceNameERKNS0_12StreamFormatEi
@@ -11300,6 +11300,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 4008b0,384,verified,src/nn/sf/cmif/client/cmif_client_extra_message.cpp,_ZN2nn2sf4hipc6client18Hipc2ProxyKindBaseILNS1_6detail11MessageTypeE6EE7ProcessILb0EJNS0_4cmif6client6detail5InRawIhEENSA_6BufferILj5EEESE_NSB_IjEESF_EEENS_6ResultEPKNS6_14ProxyKindStateEDpNT0_9ParameterEi
 400a50,248,verified,src/nn/sf/cmif/client/cmif_client_message.cpp,_ZN2nn2sf4hipc6client18Hipc2ProxyKindBaseILNS1_6detail11MessageTypeE6EE7ProcessILb1EJNS0_4cmif6client6detail6OutRawIhEENSA_5InRawImEEEEENS_6ResultEPKNS6_14ProxyKindStateEDpNT0_9ParameterEi
 400ed0,176,verified,src/nn/ec/ec_shop_page.cpp,_ZN2nn2ec6detail12ShowShopPageEPNS1_19ShopPageReturnValueERKNS1_15ShowShopPageArgE
+401060,104,verified,src/nn/ec/ec_shop_page_return_value.cpp,_ZN2nn2ec6detail33GetShopPageReturnValueFromStorageEPNS1_19ShopPageReturnValueERKNS_6applet13StorageHandleE
 4010e0,784,verified,src/nn/ec/ec_shop_page.cpp,_ZN2nn2ec6detail15ShowShopPageArgC2EPKc
 401460,136,verified,src/nn/ec/ec_shop_page.cpp,_ZN2nn2ec6detail15ShowShopPageArg6SetUidERKNS_7account3UidE
 401500,192,verified,src/nn/ec/ec_shop_page.cpp,_ZN2nn2ec6detail15ShowShopPageArg14SetCallbackUrlEPKc
