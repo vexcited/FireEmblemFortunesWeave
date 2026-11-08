@@ -23299,6 +23299,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 78d3a0,224,verified,src/nnmusl/stdio/wcstod.c,wcstod
 78d4a0,232,verified,src/nnmusl/stdio/wcstod.c,wcstold
 78d5a0,148,verified,src/nnmusl/stdio/wcstod.c,do_read
+78d640,172,verified,src/nnmusl/string/memccpy.c,memccpy
 78d880,424,verified,src/musl/src/string/memchr.c,memchr
 78df00,4,verified,src/nnmusl/nnmusl_libc_forwarders2.cpp,__memcpy_device
 78df20,268,verified,src/musl/src/string/memmove.c,memmove
