@@ -749,7 +749,7 @@ ff20,632,verified,src/spine-cpp/src/spine/AnimationState.cpp,_ZN5spine14Animatio
 55400,552,verified,src/gxc/nvn/nvn_command_list.cpp,_ZN3gxc14NvnCommandListC2ERKNS_15CommandListDescE
 55660,392,verified,src/gxc/nvn/nvn_command_list.cpp,_ZN3gxc14NvnCommandList5BeginEv
 557f0,56,verified,src/gxc/nvn/nvn_command_list.cpp,_ZN3gxc14NvnCommandList3EndEv
-55840,212,verified,src/gxc/nvn/nvn_command_list.cpp,_ZN3gxc14NvnCommandListD2Ev
+55840,264,verified,src/gxc/nvn/nvn_command_list.cpp,_ZN3gxc14NvnCommandListD2Ev
 55970,48,verified,src/spine-cpp/src/spine/ColorTimeline.cpp,_ZN5spine12RGBATimelineD0Ev
 559a0,8,verified,src/gxc/nvn/nvn_command_list.cpp,_ZNK3gxc14NvnCommandList8GetFlagsEv
 559b0,136,verified,src/gxc/nvn/nvn_command_list.cpp,_ZN3gxc14NvnCommandList10TransitionEPNS_8ResourceENS_13ResourceStateE
@@ -790,11 +790,11 @@ ff20,632,verified,src/spine-cpp/src/spine/AnimationState.cpp,_ZN5spine14Animatio
 56870,32,verified,src/gxc/nvn/nvn_command_list.cpp,_ZN3gxc14NvnCommandList14PushDebugGroupEPKc
 56890,28,verified,src/gxc/nvn/nvn_command_list.cpp,_ZN3gxc14NvnCommandList13PopDebugGroupEv
 568b0,8,verified,src/gxc/nvn/nvn_command_list.cpp,_ZNK3gxc14NvnCommandList10GetBackendEv
-568c0,136,verified,src/gxc/nvn/nvn_command_list.cpp,_ZNSt3__16vectorIN3gxc9GpuMemoryENS_9allocatorIS2_EEE8__appendEm
+568c0,136,disputed,src/gxc/nvn/nvn_command_list.cpp,_ZNSt3__16vectorIN3gxc9GpuMemoryENS_9allocatorIS2_EEE8__appendEm
 56a90,24,verified,src/llvm-libcxx-21/libcxx/include/__vector/vector.h,std::vector<T>::__throw_length_error()
 56ac0,460,verified,src/gxc/nvn/nvn_command_list.cpp,_ZNSt3__16vectorIPvNS_9allocatorIS1_EEE8__appendEmRKS1_
 56cb0,24,verified,src/llvm-libcxx-21/libcxx/include/__vector/vector.h,std::vector<T>::__throw_length_error()
-572e0,228,verified,src/gxc/nvn/nvn_texture_buffer.cpp,_ZN3gxc14NvnDepthBufferD2Ev
+572e0,244,verified,src/gxc/nvn/nvn_texture_buffer.cpp,_ZN3gxc14NvnDepthBufferD2Ev
 57400,48,verified,src/spine-cpp/src/spine/ColorTimeline.cpp,_ZN5spine12RGB2TimelineD0Ev
 57430,220,verified,src/gxc/nvn/nvn_texture_buffer.cpp,_ZN3gxc14NvnDepthBuffer13SetDebugLabelENSt3__117basic_string_viewIcNS1_11char_traitsIcEEEE
 57510,8,verified,src/gxc/nvn/nvn_texture_buffer.cpp,_ZNK3gxc14NvnDepthBuffer10GetBackendEv
@@ -13040,7 +13040,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 765c90,8,verified,src/game/map/situation.cpp,_ZThn8_NK4game3map9Situation10GetVersionEv
 765ca0,2760,verified,src/game/map/situation.cpp,_ZNK4game3map9Situation9SerializeERNS_6StreamE
 766770,8,verified,src/game/map/situation.cpp,_ZThn8_NK4game3map9Situation9SerializeERNS_6StreamE
-766780,2588,verified,src/game/map/situation.cpp,_ZN4game3map9Situation11DeserializeERNS_6StreamEi
+766780,2568,disputed,src/game/map/situation.cpp,_ZN4game3map9Situation11DeserializeERNS_6StreamEi
 7671a0,8,verified,src/game/map/situation.cpp,_ZThn8_N4game3map9Situation11DeserializeERNS_6StreamEi
 7672c0,4,verified,src/game/singleton/singletons.cpp,_ZN4game9SingletonINS_3map9SituationELb0EE10InitializeEv
 7672d0,4,verified,src/game/singleton/singletons.cpp,_ZN4game9SingletonINS_3map9SituationELb0EE8FinalizeEv
@@ -19692,7 +19692,7 @@ a9fe50,192,verified,src/gfx/settings/param_instance.cpp,_ZN3gfx8settings5FloatD0
 a9ff10,216,verified,src/gfx/settings/param_instance.cpp,_ZNK3gfx8settings14TParamInstanceIfE10ApplyMixedERNS0_17BaseParamInstanceERKS3_S6_fff
 a9fff0,132,verified,src/gfx/settings/param_instance.cpp,_ZNK3gfx8settings14TParamInstanceIfE5ApplyERNS0_17BaseParamInstanceERKS3_ff
 aa0080,636,verified,src/gfx/settings/param_instance.cpp,_ZNK3gfx8settings14TParamInstanceIfE12ApplyLayeredERNS0_17BaseParamInstanceERKS3_S6_ff
-aa0340,848,verified,src/gfx/settings/param_instance.cpp,_ZNK3gfx8settings14TParamInstanceIfE12ApplyLayeredERNS0_17BaseParamInstanceERKS3_S6_S6_ff
+aa0340,860,verified,src/gfx/settings/param_instance.cpp,_ZNK3gfx8settings14TParamInstanceIfE12ApplyLayeredERNS0_17BaseParamInstanceERKS3_S6_S6_ff
 aa0c20,16,verified,src/gfx/settings/param_instance.cpp,_ZNK3gfx8settings14TParamInstanceIfE7HasKeysEv
 aa0c30,20,verified,src/gfx/settings/param_instance.cpp,_ZN3gfx8settings14TParamInstanceIfE5ResetEv
 aa0c50,20,verified,src/gfx/settings/param_instance.cpp,_ZN3gfx8settings14TParamInstanceIfE5ClearEv
@@ -19756,7 +19756,7 @@ ab9be0,196,verified,src/gfx/settings/param_instance.cpp,_ZN3gfx8settings4BoolD0E
 ab9cb0,228,verified,src/gfx/settings/param_instance.cpp,_ZNK3gfx8settings14TParamInstanceIbE10ApplyMixedERNS0_17BaseParamInstanceERKS3_S6_fff
 ab9da0,140,verified,src/gfx/settings/param_instance.cpp,_ZNK3gfx8settings14TParamInstanceIbE5ApplyERNS0_17BaseParamInstanceERKS3_ff
 ab9e30,600,disputed,src/gfx/settings/param_instance.cpp,_ZNK3gfx8settings14TParamInstanceIbE12ApplyLayeredERNS0_17BaseParamInstanceERKS3_S6_ff
-aba0c0,1736,verified,src/gfx/settings/param_instance.cpp,_ZNK3gfx8settings14TParamInstanceIbE12ApplyLayeredERNS0_17BaseParamInstanceERKS3_S6_S6_ff
+aba0c0,1736,disputed,src/gfx/settings/param_instance.cpp,_ZNK3gfx8settings14TParamInstanceIbE12ApplyLayeredERNS0_17BaseParamInstanceERKS3_S6_S6_ff
 aba960,8,verified,src/gfx/settings/param_instance.cpp,_ZNK3gfx8settings14TParamInstanceIbE8HasValueEv
 aba970,16,verified,src/gfx/settings/param_instance.cpp,_ZNK3gfx8settings14TParamInstanceIbE7HasKeysEv
 aba980,16,verified,src/gfx/settings/param_instance.cpp,_ZN3gfx8settings14TParamInstanceIbE5ResetEv
@@ -19770,8 +19770,8 @@ abae20,180,verified,src/gfx/settings/param_instance.cpp,_ZN3gfx8settings14TParam
 abaee0,196,verified,src/gfx/settings/param_instance.cpp,_ZN3gfx8settings6Float3D0Ev
 abafb0,244,verified,src/gfx/settings/param_instance.cpp,_ZNK3gfx8settings14TParamInstanceIN2nn4util8Vector3fEE10ApplyMixedERNS0_17BaseParamInstanceERKS6_S9_fff
 abb0b0,160,verified,src/gfx/settings/param_instance.cpp,_ZNK3gfx8settings14TParamInstanceIN2nn4util8Vector3fEE5ApplyERNS0_17BaseParamInstanceERKS6_ff
-abb150,232,verified,src/gfx/settings/param_instance.cpp,_ZNK3gfx8settings14TParamInstanceIN2nn4util8Vector3fEE12ApplyLayeredERNS0_17BaseParamInstanceERKS6_S9_ff
-abb420,1356,verified,src/gfx/settings/param_instance.cpp,_ZNK3gfx8settings14TParamInstanceIN2nn4util8Vector3fEE12ApplyLayeredERNS0_17BaseParamInstanceERKS6_S9_S9_ff
+abb150,660,verified,src/gfx/settings/param_instance.cpp,_ZNK3gfx8settings14TParamInstanceIN2nn4util8Vector3fEE12ApplyLayeredERNS0_17BaseParamInstanceERKS6_S9_ff
+abb420,360,disputed,src/gfx/settings/param_instance.cpp,_ZNK3gfx8settings14TParamInstanceIN2nn4util8Vector3fEE12ApplyLayeredERNS0_17BaseParamInstanceERKS6_S9_S9_ff
 abbdd0,8,verified,src/gfx/settings/param_instance.cpp,_ZNK3gfx8settings14TParamInstanceIN2nn4util8Vector3fEE8HasValueEv
 abbde0,16,verified,src/gfx/settings/param_instance.cpp,_ZNK3gfx8settings14TParamInstanceIN2nn4util8Vector3fEE7HasKeysEv
 abbdf0,28,verified,src/gfx/settings/param_instance.cpp,_ZN3gfx8settings14TParamInstanceIN2nn4util8Vector3fEE5ResetEv
@@ -24983,7 +24983,7 @@ d09040,68,verified,src/game/character/signal.cpp,_ZN4game9character17Signal_Trai
 d09090,132,verified,src/game/character/signal.cpp,_ZN4game9character17Signal_TrailHandLD0Ev
 d09120,40,verified,src/game/character/signal.cpp,_ZNK4game9character17Signal_TrailHandL7GetNameEv
 d09150,20,verified,src/game/character/signal.cpp,_ZNK4game9character17Signal_TrailHandL11GetTypeHashEv
-d09180,428,verified,src/game/character/signal.cpp,_ZN4game9character17Signal_TrailHandL9SerializeEPN8timeline9KeyReaderEPNS2_9KeyWriterE
+d09180,428,disputed,src/game/character/signal.cpp,_ZN4game9character17Signal_TrailHandL9SerializeEPN8timeline9KeyReaderEPNS2_9KeyWriterE
 d09340,472,verified,src/game/character/signal.cpp,_ZN8timeline9KeyReader4ReadERN2nn4util8Vector4fE
 d09520,392,verified,src/game/character/signal.cpp,_ZN8timeline9KeyReader4ReadERN2nn4util8Vector3fE
 d096b0,192,verified,src/game/character/signal.cpp,_ZN8timeline9KeyWriter5WriteENSt3__117basic_string_viewIcNS1_11char_traitsIcEEEEPKfj
@@ -30524,7 +30524,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 1023940,24,verified,src/llvm-libcxx-21/libcxx/include/__vector/vector.h,std::vector<T>::__throw_length_error()
 1023a80,80,verified,src/memory/new_delete.cpp,deleting destructor at 0x1023a80
 1025e00,24,verified,src/llvm-libcxx-21/libcxx/include/__vector/vector.h,std::vector<T>::__throw_length_error()
-1027620,328,verified,src/game/singleton/singletons.cpp,_ZN4game5spine9SpineFaceD2Ev
+1027620,352,verified,src/game/singleton/singletons.cpp,_ZN4game5spine9SpineFaceD2Ev
 1027860,80,verified,src/memory/new_delete.cpp,deleting destructor at 0x1027860
 1028190,4,verified,src/game/singleton/singletons.cpp,_ZN4game9SingletonINS_5spine9SpineFaceELb0EE10InitializeEv
 10281a0,4,verified,src/game/singleton/singletons.cpp,_ZN4game9SingletonINS_5spine9SpineFaceELb0EE8FinalizeEv
@@ -45488,7 +45488,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 16dd9a0,248,verified,src/game/menu/basic_menu_cursor.cpp,_ZN4game4menu9BasicMenu14Unknown16dd9a0Ev
 16de1b0,56,verified,src/game/menu/basic_menu.cpp,_ZN4game4menu9BasicMenu9Unknown20Ev
 16de2b0,48,verified,src/game/menu/basic_menu.cpp,_ZN4game4menu9BasicMenu9Unknown44Ev
-16de2e0,340,verified,src/game/menu/basic_menu_cursor.cpp,_ZN4game4menu9BasicMenu14Unknown16de2e0Eb
+16de2e0,360,verified,src/game/menu/basic_menu_cursor.cpp,_ZN4game4menu9BasicMenu14Unknown16de2e0Eb
 16de4d0,304,verified,src/game/menu/basic_menu_cursor.cpp,_ZN4game4menu9BasicMenu14Unknown16de4d0Ev
 16defa0,516,verified,src/game/menu/basic_menu_cursor.cpp,_ZN4game4menu9BasicMenu14Unknown16defa0Ev
 16df1e0,156,verified,src/game/menu/basic_menu.cpp,_ZN4game4menu9BasicMenu10Unknown126Ev
@@ -45503,10 +45503,10 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 16e1040,108,verified,src/game/menu/basic_menu.cpp,_ZN4game4menu9BasicMenu14InputUnknown14Ev
 16e10c0,104,verified,src/game/menu/basic_menu.cpp,_ZThn176_N4game4menu9BasicMenu14InputUnknown14Ev
 16e1140,108,verified,src/game/menu/basic_menu.cpp,_ZN4game4menu9BasicMenu14InputUnknown15Ev
-16e11c0,104,verified,src/game/menu/basic_menu.cpp,_ZThn176_N4game4menu9BasicMenu14InputUnknown15Ev
+16e11c0,108,verified,src/game/menu/basic_menu.cpp,_ZThn176_N4game4menu9BasicMenu14InputUnknown15Ev
 16e1240,584,verified,src/game/menu/basic_menu_cursor.cpp,_ZN4game4menu9BasicMenu9Unknown57ERNSt3__16vectorIlNS2_9allocatorIlEEEE
 16e14a0,220,disputed,src/game/menu/basic_menu.cpp,_ZN4game4menu9BasicMenu10Unknown124Ev
-16e1580,584,verified,src/game/menu/basic_menu_cursor.cpp,_ZN4game4menu9BasicMenu9Unknown58ERNSt3__16vectorIlNS2_9allocatorIlEEEE
+16e1580,588,verified,src/game/menu/basic_menu_cursor.cpp,_ZN4game4menu9BasicMenu9Unknown58ERNSt3__16vectorIlNS2_9allocatorIlEEEE
 16e17e0,220,disputed,src/game/menu/basic_menu.cpp,_ZN4game4menu9BasicMenu10Unknown125Ev
 16e18c0,24,verified,src/game/menu/basic_menu.cpp,_ZN4game4menu9BasicMenu9Unknown94Ev
 16e18e0,280,verified,src/game/menu/basic_menu.cpp,_ZN4game4menu9BasicMenu9Unknown66Ev
@@ -45544,7 +45544,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 16e4cf0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::BasicMenu::StickRCall()::$_0, int (game::menu::SubMenuItem*)>::target_type()"
 16e4d00,164,verified,src/game/menu/basic_menu_item.cpp,_ZN4game4menu13BasicMenuItem7GetTextEv
 16e4db0,208,verified,src/game/menu/basic_menu_item.cpp,_ZN4game4menu13BasicMenuItem4DrawEv
-16e4e80,596,verified,src/game/menu/basic_menu_item.cpp,_ZN4game4menu13BasicMenuItem6UpdateEv
+16e4e80,652,verified,src/game/menu/basic_menu_item.cpp,_ZN4game4menu13BasicMenuItem6UpdateEv
 16e5a00,88,verified,src/game/menu/basic_menu_item.cpp,_ZN4game4menu13BasicMenuItem12ChangeSelectEb
 16e5a60,476,verified,src/game/menu/basic_menu_item.cpp,_ZN4game4menu13BasicMenuItem8GetWidthEv
 16e5c40,476,verified,src/game/menu/basic_menu_item.cpp,_ZN4game4menu13BasicMenuItem9GetHeightEv
@@ -47308,7 +47308,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 178aaf0,4,verified,src/game/menu/unit_grid_select_menu.cpp,_ZN4game4menu18UnitGridSelectMenu14InputUnknown18Ev
 178ab00,4,verified,src/game/menu/unit_grid_select_menu.cpp,_ZThn176_N4game4menu18UnitGridSelectMenu14InputUnknown18Ev
 178ab20,232,verified,src/game/menu/unit_grid_select_menu.cpp,_ZN4game4menu18UnitGridSelectMenu16SortUnitItemListEv
-178ac40,324,verified,src/game/menu/unit_grid_select_menu.cpp,_ZN4game4menu18UnitGridSelectMenu10Unknown146Eib
+178ac40,328,verified,src/game/menu/unit_grid_select_menu.cpp,_ZN4game4menu18UnitGridSelectMenu10Unknown146Eib
 178ada0,204,verified,src/game/menu/unit_grid_select_menu.cpp,_ZN4game4menu18UnitGridSelectMenu10Unknown147Ev
 178aea0,212,verified,src/game/menu/unit_grid_select_menu.cpp,_ZN4game4menu18UnitGridSelectMenu10Unknown148Ev
 178afa0,428,verified,src/game/menu/unit_grid_select_menu.cpp,_ZN4game4menu18UnitGridSelectMenuD0Ev
@@ -48488,7 +48488,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 17ed8c0,80,verified,src/memory/new_delete.cpp,deleting destructor at 0x17ed8c0
 17ed910,36,verified,src/game/cutscene/signal.cpp,_ZNK4game8cutscene16Signal_CharaWind7GetNameEv
 17ed940,20,verified,src/game/cutscene/signal.cpp,_ZNK4game8cutscene16Signal_CharaWind11GetTypeHashEv
-17ed960,1944,verified,src/game/cutscene/signal.cpp,_ZN4game8cutscene16Signal_CharaWind9SerializeEPN8timeline9KeyReaderEPNS2_9KeyWriterE
+17ed960,1992,verified,src/game/cutscene/signal.cpp,_ZN4game8cutscene16Signal_CharaWind9SerializeEPN8timeline9KeyReaderEPNS2_9KeyWriterE
 17ee180,16,verified,src/llvm-libcxx-21/libcxx/include/__memory/shared_ptr.h,"std::__1::__shared_ptr_emplace<game::cutscene::Signal_Dissolve, std::__1::allocator<game::cutscene::Signal_Dissolve>>::destructor"
 17ee190,92,verified,src/llvm-libcxx-21/libcxx/include/__memory/shared_ptr.h,"std::__1::__shared_ptr_emplace<game::cutscene::Signal_Dissolve, std::__1::allocator<game::cutscene::Signal_Dissolve>>::deleting destructor"
 17ee1f0,12,verified,src/llvm-libcxx-21/libcxx/include/__memory/shared_ptr.h,"std::__1::__shared_ptr_emplace<game::cutscene::Signal_Dissolve, std::__1::allocator<game::cutscene::Signal_Dissolve>>::__on_zero_shared()"
@@ -48584,7 +48584,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 17f3ba0,80,verified,src/memory/new_delete.cpp,deleting destructor at 0x17f3ba0
 17f3bf0,40,verified,src/game/cutscene/signal.cpp,_ZNK4game8cutscene15Signal_Vignette7GetNameEv
 17f3c20,20,verified,src/game/cutscene/signal.cpp,_ZNK4game8cutscene15Signal_Vignette11GetTypeHashEv
-17f3c40,2160,verified,src/game/cutscene/signal.cpp,_ZN4game8cutscene15Signal_Vignette9SerializeEPN8timeline9KeyReaderEPNS2_9KeyWriterE
+17f3c40,2208,verified,src/game/cutscene/signal.cpp,_ZN4game8cutscene15Signal_Vignette9SerializeEPN8timeline9KeyReaderEPNS2_9KeyWriterE
 17f4580,16,verified,src/llvm-libcxx-21/libcxx/include/__memory/shared_ptr.h,"std::__1::__shared_ptr_emplace<game::cutscene::Signal_Bloom, std::__1::allocator<game::cutscene::Signal_Bloom>>::destructor"
 17f4590,92,verified,src/llvm-libcxx-21/libcxx/include/__memory/shared_ptr.h,"std::__1::__shared_ptr_emplace<game::cutscene::Signal_Bloom, std::__1::allocator<game::cutscene::Signal_Bloom>>::deleting destructor"
 17f45f0,12,verified,src/llvm-libcxx-21/libcxx/include/__memory/shared_ptr.h,"std::__1::__shared_ptr_emplace<game::cutscene::Signal_Bloom, std::__1::allocator<game::cutscene::Signal_Bloom>>::__on_zero_shared()"
@@ -48722,7 +48722,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 17fa010,184,verified,src/game/cutscene/signal.cpp,_ZN4game8cutscene16Signal_ConstrainD0Ev
 17fa0d0,36,verified,src/game/cutscene/signal.cpp,_ZNK4game8cutscene16Signal_Constrain7GetNameEv
 17fa100,20,verified,src/game/cutscene/signal.cpp,_ZNK4game8cutscene16Signal_Constrain11GetTypeHashEv
-17fa120,1312,verified,src/game/cutscene/signal.cpp,_ZN4game8cutscene16Signal_Constrain9SerializeEPN8timeline9KeyReaderEPNS2_9KeyWriterE
+17fa120,1316,verified,src/game/cutscene/signal.cpp,_ZN4game8cutscene16Signal_Constrain9SerializeEPN8timeline9KeyReaderEPNS2_9KeyWriterE
 17fa650,16,verified,src/llvm-libcxx-21/libcxx/include/__memory/shared_ptr.h,"std::__1::__shared_ptr_emplace<game::cutscene::Signal_Caption, std::__1::allocator<game::cutscene::Signal_Caption>>::destructor"
 17fa660,92,verified,src/llvm-libcxx-21/libcxx/include/__memory/shared_ptr.h,"std::__1::__shared_ptr_emplace<game::cutscene::Signal_Caption, std::__1::allocator<game::cutscene::Signal_Caption>>::deleting destructor"
 17fa6c0,12,verified,src/llvm-libcxx-21/libcxx/include/__memory/shared_ptr.h,"std::__1::__shared_ptr_emplace<game::cutscene::Signal_Caption, std::__1::allocator<game::cutscene::Signal_Caption>>::__on_zero_shared()"

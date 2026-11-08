@@ -53,6 +53,15 @@ public:
 
 class IShopServiceAccessor : public sf::IServiceObject {};
 
+class IShopServiceAccessServer : public sf::IServiceObject {
+public:
+  virtual void Reserved2() = 0;
+  virtual void Reserved3() = 0;
+  virtual Result CreateAccessorInterface(
+    sf::Out<sf::SharedPointer<IShopServiceAccessor>> pOutAccessor,
+    uint8_t type) = 0;
+};
+
 }
 
 namespace nn::ec {
