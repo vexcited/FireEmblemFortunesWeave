@@ -45645,7 +45645,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 16eb060,248,verified,src/game/menu/game_menu_item.cpp,_ZN4game4menu12GameMenuItem21PlaySelectedAnimationEv
 16eb160,384,verified,src/game/menu/game_menu_item.cpp,_ZN4game4menu12GameMenuItem20GetIdleAnimationNameEv
 16eb2f0,380,verified,src/game/menu/game_menu_item.cpp,_ZN4game4menu12GameMenuItem22GetCursorAnimationNameEv
-16eb480,380,verified,src/game/menu/game_menu_item.cpp,_ZN4game4menu12GameMenuItem24GetSelectedAnimationNameEv
+16eb480,384,verified,src/game/menu/game_menu_item.cpp,_ZN4game4menu12GameMenuItem24GetSelectedAnimationNameEv
 16eb810,12,verified,src/game/menu/empty_menu_item.cpp,_ZN4game4menu13EmptyMenuItem6GetMidEv
 16eb820,152,verified,src/game/menu/game_menu_item.cpp,_ZN4game4menu12GameMenuItemD0Ev
 16eb8c0,152,verified,src/game/menu/empty_menu_item.cpp,_ZN4game4menu13EmptyMenuItemD0Ev
