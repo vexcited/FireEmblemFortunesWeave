@@ -8,7 +8,9 @@
 
 #include "nn/memory_resource.hpp"
 #include "nn/os/condition_variable.hpp"
+#include "nn/os/multi_wait.hpp"
 #include "nn/os/mutex.hpp"
+#include "nn/util/intrusive_list.hpp"
 
 namespace nn::async {
 
@@ -20,7 +22,44 @@ namespace detail {
 class CancellationState;
 class FiberTaskCoordinatorBase;
 class FutureStateBase;
-class GroupWaitHolder;
+class GroupWait;
+
+class GroupWaitHolder : public util::IntrusiveListBaseNode<GroupWaitHolder> {
+public:
+  struct InnerHolder {
+    os::MultiWaitHolderType holder;
+    GroupWaitHolder* owner;
+    GroupWait* groupWait;
+  };
+
+  enum WaitTarget : int32_t {
+    WaitTarget_All,
+    WaitTarget_Any,
+  };
+
+  virtual ~GroupWaitHolder() = default;
+  virtual int GetCount() const = 0;
+  virtual InnerHolder* GetHolder(int index) = 0;
+  virtual int GetIndex(InnerHolder* holder) = 0;
+  virtual WaitTarget GetWaitTarget() const = 0;
+
+private:
+  uintptr_t m_Reserved = 0;
+};
+
+class GroupWaitHolderOne final : public GroupWaitHolder {
+public:
+  ~GroupWaitHolderOne() override;
+
+  void Finalize();
+  int GetCount() const override;
+  InnerHolder* GetHolder(int index) override;
+  int GetIndex(InnerHolder* holder) override;
+  WaitTarget GetWaitTarget() const override;
+
+private:
+  InnerHolder m_Inner;
+};
 
 class GroupWait {
 public:
@@ -33,10 +72,22 @@ public:
   ~GroupWait();
 
   void LinkGroupWaitHolder(GroupWaitHolder* holder);
+  void UnlinkGroupWaitHolder(GroupWaitHolder* holder);
+  void UnlinkAllGroupWaitHolders();
+  SignaledObject Wait();
   bool TryWait(SignaledObject* pOut);
 
 private:
-  uint8_t m_Storage[64];
+  using HolderList = util::IntrusiveList<GroupWaitHolder,
+    util::IntrusiveListBaseNodeTraits<GroupWaitHolder>>;
+
+  void LinkMultiWaitHolder(GroupWaitHolder::InnerHolder* holder);
+  void UnlinkMultiWaitHolder(GroupWaitHolder::InnerHolder* holder);
+  bool CheckIfWaitRetryIsNeeded(SignaledObject* pOut,
+    os::MultiWaitHolderType* signaled);
+
+  os::MultiWaitType m_MultiWait;
+  HolderList m_Holders;
 };
 
 class FiberTaskCoordinatorBase {
