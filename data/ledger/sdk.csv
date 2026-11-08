@@ -24527,6 +24527,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 7d39a0,52,verified,src/llvm-libcxx/libcxx/src/locale.cpp,_ZNSt12out_of_rangeC2B8ne180100EPKc
 7d6310,4,verified,src/llvm-libcxx/libcxx/src/functional.cpp,_ZNSt3__117bad_function_callD2Ev
 7d6320,48,verified,src/llvm-libcxx/libcxx/src/functional.cpp,_ZNSt3__117bad_function_callD0Ev
+7d63a0,1100,verified,src/libcxx/string_hash.cpp,_ZNKSt3__121__murmur2_or_cityhashImLm64EEclB8nn210108EPKvm
 7d6800,1980,verified,src/llvm-libcxx/libcxx/src/hash.cpp,_ZNSt3__112__next_primeEm
 7d7030,52,verified,src/llvm-libcxx/libcxx/src/hash.cpp,_ZNSt14overflow_errorC2B8ne180100EPKc
 7d7070,4,verified,src/llvm-libcxx/libcxx/src/memory.cpp,_ZNSt3__112bad_weak_ptrD2Ev

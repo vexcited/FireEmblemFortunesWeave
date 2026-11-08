@@ -21,4 +21,5 @@ b3fe0,12,verified,src/nvidia/ngx_api.cpp,NVSDK_NGX_Parameter_GetULL
 b3ff0,12,verified,src/nvidia/ngx_api.cpp,NVSDK_NGX_Parameter_GetF
 b4000,12,verified,src/nvidia/ngx_api.cpp,NVSDK_NGX_Parameter_GetUI
 b4010,12,verified,src/nvidia/ngx_api.cpp,NVSDK_NGX_Parameter_GetVoidPointer
+bafa0,1100,verified,src/libcxx/string_hash.cpp,_ZNKSt3__121__murmur2_or_cityhashImLm64EEclB8nn210108EPKvm
 e3060,12,verified,src/nvidia/ngx_api.cpp,_Z23dlssdetailUseMiddleWarev
