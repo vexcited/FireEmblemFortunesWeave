@@ -167,6 +167,9 @@ class PlayReport {
   size_t GetSize() const;
 
  private:
+  friend Result AddInternetConnectionStatus(PlayReport* pReport,
+    const char* ssidKey, const char* bssidKey, const char* rssiKey);
+
   detail::PlayReportImpl m_Impl;
 };
 

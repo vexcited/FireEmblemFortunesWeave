@@ -231,6 +231,23 @@ void ContextTraits::UpdateRawContextData<HashedTraceContext>(
   }
 }
 
+// The hashes are written with the size of the output, not of the scratch
+// text, and the last separator is dropped.
+template <>
+void ContextTraits::ToString<HashedTraceContext>(char* buffer, size_t size,
+  const HashedTraceContext& context) {
+  char text[128] = {};
+  int length = 0;
+  for (int i = 0; i < context.count; i++) {
+    length += util::SNPrintf(text + length, size - length, "%llu ",
+      context.hashes[i]);
+  }
+  if (length > 0 && text[length - 1] == ' ') {
+    text[length - 1] = '\0';
+  }
+  util::Strlcpy(buffer, text, static_cast<int>(size));
+}
+
 template <>
 MessageContext ContextTraits::MakeContext<MessageContext>(
   const RawContext& context) {
