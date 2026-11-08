@@ -2,9 +2,12 @@
 #include <stdint.h>
 #include <string.h>
 
+#include "nn/diag/diag_abort.hpp"
+#include "nn/os/mutex.hpp"
 #include "nn/os/reader_writer_lock.hpp"
 #include "nn/os/synchronization.hpp"
 #include "nn/result.hpp"
+#include "nn/sf/shared_pointer.hpp"
 
 namespace nn::svc {
 
@@ -65,17 +68,38 @@ struct RoModule {
   size_t size;
 };
 
+class IRoInterface : public sf::IServiceObject {
+public:
+  virtual void Reserved2() = 0;
+  virtual void Reserved3() = 0;
+  virtual Result LoadModule() = 0;
+  virtual Result UnloadModule() = 0;
+  virtual Result RegisterModuleInfo() = 0;
+  virtual Result UnregisterModuleInfo(uint64_t processIdPlaceholder,
+    uintptr_t nrrAddress) = 0;
+};
+
 struct RuntimeState {
   uint8_t isInitialized;
-  uint8_t reserved01[15];
+  uint8_t reserved01[7];
+  IRoInterface* pService;
   os::ReaderWriterLockType lock;
 };
 
-using LookupGlobalFunction = const Elf64Symbol* (*)(const RoModule* pModule,
+struct ListNode {
+  ListNode* pNext;
+  ListNode* pPrevious;
+};
+
+struct RegistrationList {
+  ListNode head;
+  os::MutexType mutex;
+};
+
+using LookupGlobalFunction = uintptr_t (*)(const RoModule* pModule,
   const char* pName);
 
-const Elf64Symbol* LookupGlobalManual(const RoModule* pModule,
-  const char* pName);
+uintptr_t LookupGlobalManual(const RoModule* pModule, const char* pName);
 
 extern uint32_t g_RoBusyMutex;
 extern RoModule* g_pAutoLoadList;
@@ -86,6 +110,7 @@ extern RoModule* g_pManualLoadList;
 extern LookupGlobalFunction* g_pLookupGlobalManualFunctionPointer;
 
 [[gnu::visibility("hidden")]] extern RuntimeState g_RuntimeState;
+[[gnu::visibility("hidden")]] extern RegistrationList g_RegistrationList;
 
 [[gnu::visibility("hidden")]] const Elf64Symbol* LookupModuleSymbolImpl(
   const RoModule* pModule, const char* pName);
@@ -100,6 +125,13 @@ struct Module {
 struct ModuleId {
   uint8_t value[0x20];
   size_t size;
+};
+
+struct RegistrationInfo {
+  uint32_t state;
+  uint32_t reserved04;
+  uintptr_t nrrAddress;
+  detail::ListNode node;
 };
 
 namespace detail {
@@ -174,6 +206,25 @@ template<typename T, typename Query>
     address < pModule->baseAddress + pModule->size;
 }
 
+}
+
+// The node is left linked to itself once out of the list.
+void UnregisterModuleInfo(RegistrationInfo* pInfo) {
+  os::LockMutex(&detail::g_RegistrationList.mutex);
+  detail::ListNode* pNode = &pInfo->node;
+  if (pNode != &detail::g_RegistrationList.head) {
+    detail::ListNode* pSelf = pNode->pPrevious->pNext;
+    pNode->pNext->pPrevious = pNode->pPrevious;
+    pNode->pPrevious->pNext = pNode->pNext;
+    pSelf->pPrevious = pNode;
+    pNode->pNext = pSelf;
+  }
+
+  os::UnlockMutex(&detail::g_RegistrationList.mutex);
+  const Result result = detail::g_RuntimeState.pService->UnregisterModuleInfo(
+    0, pInfo->nrrAddress);
+  NN_ABORT_UNLESS_RESULT_SUCCESS(result);
+  pInfo->state = 0;
 }
 
 // The loader asks the runtime for lookups it cannot do alone.
