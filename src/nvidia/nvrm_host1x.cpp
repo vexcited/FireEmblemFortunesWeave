@@ -60,6 +60,14 @@ extern "C" int32_t sync_create_nvrm_mapping(const NvRmSyncPoint* syncpoints,
   uint32_t count);
 extern "C" NvError NvRmHost1xChannelOpen(NvRmHost1xChannel** pOutChannel,
   NvRmHost1x* host, const char* moduleName, uint32_t flags);
+extern "C" NvError NvRmChannelSubmit(NvRmHost1xChannel* channel,
+  uintptr_t argument1, uintptr_t argument2, uintptr_t argument3,
+  uintptr_t argument4, uintptr_t argument5, uintptr_t argument6,
+  uint32_t argument7, uint64_t argument8, uint64_t argument9,
+  uint32_t argument10, bool argument11, uint32_t argument12,
+  uint32_t argument13, uint64_t argument14, uint64_t argument15,
+  uint64_t argument16, uint32_t argument17, uint64_t argument18,
+  uint64_t argument19, uint32_t argument20, uint32_t argument21);
 extern "C" NvError NvRmChannelSyncPointWaitexTimeout(NvRmChannel* channel,
   uint32_t id, uint32_t threshold, void* semaphore, uint32_t timeout,
   void* pOutTimestamp);
@@ -97,6 +105,10 @@ extern "C" NvError NvRmChannelSetModuleBandwidth(void* channel,
   NvRmHost1xSyncpoint* syncpoint);
 [[gnu::visibility("hidden")]] NvError NvRmHost1xAttachedCall(NvRmHost1x* host,
   uint32_t id, uint32_t* pOutValue);
+[[gnu::visibility("hidden")]] NvError NvRmHost1xAttachedCall(
+  NvRmHost1xChannel* channel, uintptr_t argument1, uintptr_t argument2,
+  uintptr_t argument5, uint32_t argument8, uint64_t argument9,
+  uint64_t argument10, uint32_t argument11, uintptr_t argument4);
 
 namespace {
 
@@ -527,4 +539,21 @@ extern "C" NvError NvRmFencePutToFile(const char*,
   const int32_t fd = sync_create_nvrm_mapping(syncpoints, count);
   *pOutFd = fd;
   return fd < 0 ? NvError_InsufficientMemory : NvSuccess;
+}
+
+// Forwards to the full channel submit with the extended fields cleared,
+// attached channels drop the call.
+extern "C" NvError NvRmHost1xChannelSubmitPRIVATE(NvRmHost1xChannel* channel,
+  uintptr_t argument1, uintptr_t argument2, uintptr_t argument3,
+  uintptr_t argument4, uintptr_t argument5, uintptr_t argument6,
+  uintptr_t argument7, uint32_t argument8, uint64_t argument9,
+  uint64_t argument10, uint32_t argument11, uint64_t argument12) {
+  if (channel->owner->isSyncpointAttachSupported & 1) {
+    return NvRmHost1xAttachedCall(channel, argument1, argument2, argument5,
+      argument8, argument9, argument10, argument11, argument4);
+  }
+
+  return NvRmChannelSubmit(channel, argument1, argument2, argument3,
+    argument5, argument6, argument7, argument8, 0, 0, 0, false, 0, 0, 0,
+    argument9, argument10, argument11, argument12, argument4, 0, 0);
 }
