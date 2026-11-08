@@ -20577,6 +20577,8 @@ a09d50,92,verified,src/game/game_trivial_sounds.cpp,_Z15GameStub_a09d50m
 a09db0,92,verified,src/game/game_trivial_sounds.cpp,_Z15GameStub_a09db0m
 a09f80,4,verified,src/game/menu/basic_menu.cpp,_ZN4game4menu9BasicMenu9Unknown92Ev
 a0a030,12,verified,src/game/game_trivial.cpp,_Z15GameStub_a0a030v
+a0a040,196,verified,src/game/game_trivial_cues.cpp,_Z15GameStub_a0a040m
+a0a110,196,verified,src/game/game_trivial_cues.cpp,_Z15GameStub_a0a110m
 a0a2a0,12,verified,src/game/game_trivial.cpp,_Z15GameStub_a0a2a0v
 a0a2b0,152,verified,src/game/menu/menu_item_leaf_dtors.cpp,_ZN4game12_GLOBAL__N_18DiffMenu12DiffMenuItemD0Ev
 a0a5c0,4,verified,src/game/game_trivial.cpp,_Z15GameStub_a0a5c0v
@@ -20600,6 +20602,8 @@ a0a960,12,verified,src/game/game_trivial.cpp,_Z15GameStub_a0a960v
 a0a970,92,verified,src/game/game_trivial_sounds.cpp,_Z15GameStub_a0a970m
 a0a9d0,92,verified,src/game/game_trivial_sounds.cpp,_Z15GameStub_a0a9d0m
 a0ac40,12,verified,src/game/game_trivial.cpp,_Z15GameStub_a0ac40v
+a0ac50,196,verified,src/game/game_trivial_cues.cpp,_Z15GameStub_a0ac50m
+a0ad20,196,verified,src/game/game_trivial_cues.cpp,_Z15GameStub_a0ad20m
 a0aeb0,92,verified,src/game/game_trivial_sounds.cpp,_Z15GameStub_a0aeb0m
 a0af10,12,verified,src/game/game_trivial.cpp,_Z15GameStub_a0af10v
 a0af20,152,verified,src/game/menu/menu_item_leaf_dtors.cpp,_ZN4game12_GLOBAL__N_18ModeMenu12ModeMenuItemD0Ev
@@ -46746,6 +46750,10 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 1619a10,8,verified,src/game/game_trivial_forwarders.cpp,_Z16GameStub_1619a10m
 1619a20,4,verified,src/game/game_trivial.cpp,_Z16GameStub_1619a20v
 161a830,8,verified,src/game/game_trivial.cpp,_Z16GameStub_161a830m
+161a840,196,verified,src/game/game_trivial_cues.cpp,_Z16GameStub_161a840m
+161a910,196,verified,src/game/game_trivial_cues.cpp,_Z16GameStub_161a910m
+161a9e0,196,verified,src/game/game_trivial_cues.cpp,_Z16GameStub_161a9e0m
+161aab0,196,verified,src/game/game_trivial_cues.cpp,_Z16GameStub_161aab0m
 161afb0,8,verified,src/game/game_trivial.cpp,_Z16GameStub_161afb0v
 161afc0,12,verified,src/game/game_trivial.cpp,_Z16GameStub_161afc0v
 161afd0,152,verified,src/game/cmdbtl/attack_menu_item.cpp,_ZN4game6cmdbtl12_GLOBAL__N_114AttackMenuItemD0Ev
@@ -47625,6 +47633,10 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 1668f40,8,verified,src/game/game_trivial.cpp,_Z16GameStub_1668f40v
 1668f50,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::facility::(anonymous namespace)::DownDifficultyItem::ACall()::'lambda0'(auto), int (game::menu::DialogMenuItem*)>::target(std::type_info const&)"
 1668f70,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::facility::(anonymous namespace)::DownDifficultyItem::ACall()::'lambda0'(auto), int (game::menu::DialogMenuItem*)>::target_type()"
+1669a10,196,verified,src/game/game_trivial_cues.cpp,_Z16GameStub_1669a10m
+1669ae0,196,verified,src/game/game_trivial_cues.cpp,_Z16GameStub_1669ae0m
+1669bb0,196,verified,src/game/game_trivial_cues.cpp,_Z16GameStub_1669bb0m
+1669c80,196,verified,src/game/game_trivial_cues.cpp,_Z16GameStub_1669c80m
 1669d50,92,verified,src/game/menu/ex_dialog.cpp,_ZN4game4menu8ExDialog9Unknown72Ev
 1669db0,224,verified,src/game/menu/ex_dialog.cpp,_ZN4game4menu8ExDialogD2Ev
 1669e90,80,verified,src/memory/new_delete.cpp,deleting destructor at 0x1669e90
@@ -48005,6 +48017,8 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 1691140,8,verified,src/game/game_trivial.cpp,_Z16GameStub_1691140v
 1691150,8,verified,src/game/menu/game_menu.cpp,_ZN4game4menu9BasicMenu9Unknown24Ev
 1691210,12,verified,src/game/game_trivial.cpp,_Z16GameStub_1691210v
+1691220,196,verified,src/game/game_trivial_cues.cpp,_Z16GameStub_1691220m
+16912f0,196,verified,src/game/game_trivial_cues.cpp,_Z16GameStub_16912f0m
 16913c0,12,verified,src/game/game_trivial.cpp,_Z16GameStub_16913c0v
 16913d0,12,verified,src/game/game_trivial.cpp,_Z16GameStub_16913d0v
 16913e0,8,verified,src/game/gmap/gmap_ex_warp_menu_item.cpp,_ZN4game4gmap12_GLOBAL__N_118GmapExWarpMenuItem8IsActiveEv
@@ -48194,6 +48208,8 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 169eba0,48,verified,src/game/menu/title_menu_item.cpp,_ZN4game4menu13TitleMenuItem9Unknown70Ev
 169f8f0,72,verified,src/game/menu/title_menu_item.cpp,_ZN4game4menu13TitleMenuItem8OnSelectEv
 169f940,72,verified,src/game/menu/title_menu_item.cpp,_ZN4game4menu13TitleMenuItem8DrawTextEv
+16a0880,196,verified,src/game/game_trivial_cues.cpp,_Z16GameStub_16a0880m
+16a0950,196,verified,src/game/game_trivial_cues.cpp,_Z16GameStub_16a0950m
 16a0a20,156,verified,src/game/menu/title_menu.cpp,_ZN4game4menu9TitleMenuD0Ev
 16a0ac0,116,verified,src/game/menu/sub_menu.cpp,_ZN4game4menu12TitleSubMenuD1Ev
 16a0b40,160,verified,src/game/menu/sub_menu.cpp,_ZN4game4menu12TitleSubMenuD0Ev
@@ -51137,6 +51153,8 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 1753b40,80,verified,src/memory/new_delete.cpp,deleting destructor at 0x1753b40
 1753c30,64,verified,src/game/telop/list_result_menu_base.cpp,_ZN4game5telop18ListResultMenuBase9Unknown58ERNSt3__16vectorIlNS2_9allocatorIlEEEE
 1753c70,92,verified,src/game/telop/list_result_menu_base.cpp,_ZN4game5telop18ListResultMenuBase9Unknown82Ev
+1753cd0,196,verified,src/game/game_trivial_cues.cpp,_Z16GameStub_1753cd0m
+1753da0,196,verified,src/game/game_trivial_cues.cpp,_Z16GameStub_1753da0m
 1753e70,12,verified,src/game/telop/list_result_menu_base.cpp,_ZN4game5telop18ListResultMenuBase14InputUnknown20Ev
 1753e80,12,verified,src/game/telop/list_result_menu_base.cpp,_ZThn176_N4game5telop18ListResultMenuBase14InputUnknown20Ev
 17547f0,16,verified,src/game/telop/list_result_menu_base.cpp,_ZN4game5telop18ListResultMenuBase9Unknown96Ev
@@ -51683,7 +51701,11 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 179cca0,92,verified,src/game/game_trivial_sounds.cpp,_Z16GameStub_179cca0m
 179cd00,92,verified,src/game/game_trivial_sounds.cpp,_Z16GameStub_179cd00m
 179cd60,92,verified,src/game/game_trivial_sounds.cpp,_Z16GameStub_179cd60m
+179cdc0,196,verified,src/game/game_trivial_cues.cpp,_Z16GameStub_179cdc0m
+179ce90,196,verified,src/game/game_trivial_cues.cpp,_Z16GameStub_179ce90m
 179d820,8,verified,src/game/game_trivial.cpp,_Z16GameStub_179d820m
+179d830,196,verified,src/game/game_trivial_cues.cpp,_Z16GameStub_179d830m
+179d900,196,verified,src/game/game_trivial_cues.cpp,_Z16GameStub_179d900m
 179e610,16,verified,src/game/game_trivial_calls.cpp,_Z16GameStub_179e610m
 179eff0,16,verified,src/game/game_trivial_calls.cpp,_Z16GameStub_179eff0m
 179f6c0,92,verified,src/game/game_trivial_sounds.cpp,_Z16GameStub_179f6c0m
