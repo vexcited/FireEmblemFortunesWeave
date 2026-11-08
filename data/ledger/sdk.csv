@@ -20446,6 +20446,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 625ce0,12,verified,src/nvidia/nvrm_gpu_dispatch.cpp,NvRmGpuDeviceZbcGetDepthTableEntry
 625cf0,12,verified,src/nvidia/nvrm_gpu_dispatch.cpp,NvRmGpuDeviceZbcGetStencilTableEntry
 626960,240,verified,src/nvidia/sha1.c,NvSha1Digest
+628160,780,verified,src/nvidia/spooky_hash.c,NvSpookyHashShort
 628520,328,verified,src/nvidia/sha1.c,NvSha1Final
 628680,1676,verified,src/nvidia/sha1.c,NvSha1Transform
 635730,8,verified,src/nvidia/nvrm_gpu_wrappers.cpp,NvRmGpuNvgpuGetGpuCtrlFd
@@ -20571,6 +20572,8 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 63f870,56,verified,src/nvidia/nvrm_gpu_wrappers.cpp,NvRmGpuDeviceEventSessionRead
 63f8b0,92,verified,src/nvidia/nvrm_gpu_objects.cpp,NvRmGpuDeviceEventSessionClose
 63f910,92,verified,src/nvidia/nvrm_gpu_objects.cpp,NvRmGpuDropObject
+6441e0,268,verified,src/nvidia/spooky_hash.c,NvSpookyHashLong
+644400,516,verified,src/nvidia/spooky_hash.c,NvSpookyHashEnd
 645180,4,verified,src/nvidia/nvwsi_context.cpp,NvWsiContextDestroy
 645190,68,disputed,src/nvidia/nvwsi_context.cpp,NvWsiContextCreate
 6452e0,320,verified,src/nvidia/nvwsi_context.cpp,NvWsiNativeDisplayRef
