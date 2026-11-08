@@ -8,7 +8,11 @@
 namespace nn::diag::detail {
 
 struct ModuleInfoImpl {
-  uint8_t storage[0x58];
+  const char* pName;
+  size_t nameLength;
+  uintptr_t baseAddress;
+  size_t size;
+  uint8_t moduleId[0x28];
 };
 
 // Steps through the code sections of the loaded modules.
@@ -20,6 +24,7 @@ class ModuleParser : public MemoryBlockParser {
 
  private:
   ModuleInfoImpl m_ModuleInfo;
+  uint8_t m_Reserved[0x10];
 };
 
 static_assert(sizeof(ModuleParser) == 0xa0);

@@ -4,15 +4,27 @@
 #include <string.h>
 #include <utility>
 
+#include "libc/cxx_guard.hpp"
 #include "nn/diag/detail/diag_module_parser.hpp"
 #include "nn/diag/diag_abort.hpp"
 #include "nn/result.hpp"
 
+extern "C" void nnMain();
+
 namespace nn::ro {
+
+struct ModuleId {
+  uint8_t value[0x28];
+};
 
 bool GetModuleAddressRange(uintptr_t* pOutBase, uintptr_t* pOutSize,
   uintptr_t address);
 Result GetModuleName(char* pOutName, size_t size, uintptr_t base);
+Result GetModuleNamePointer(const char** ppOutName, size_t* pOutLength,
+  uintptr_t base);
+Result GetModuleId(ModuleId* pOutModuleId, uintptr_t base);
+Result LookupModuleSymbol(uintptr_t* pOutAddress, uintptr_t address,
+  const char* pName);
 Result GetUpperBoundSymbol(uintptr_t* pOutAddress, uintptr_t* pOutSize,
   char* pOutName, size_t nameSize, uintptr_t address);
 
@@ -38,6 +50,21 @@ uintptr_t GetModulePathImpl(char* pOutPath, size_t size, uintptr_t address);
 bool IsSystemSymbolImpl(uintptr_t address);
 size_t GetSymbolSizeImpl(uintptr_t address);
 uintptr_t GetSymbolNameImpl(char* pOutName, size_t size, uintptr_t address);
+bool GetReadOnlyDataSectionRangeImpl(uintptr_t* pOutStart,
+  uintptr_t* pOutEnd, uintptr_t address);
+
+// The original reaches this one through its import here, while the
+// symbol lookup inlines it.
+[[gnu::visibility("hidden")]] bool IsSystemSymbolImplImported(
+  uintptr_t address);
+
+struct ProcessName {
+  const char* pName;
+  size_t length;
+};
+
+[[gnu::visibility("hidden")]] extern uint64_t g_ProcessNameGuard;
+[[gnu::visibility("hidden")]] extern ProcessName g_ProcessName;
 
 namespace {
 
@@ -221,6 +248,119 @@ size_t GetSymbolSizeImpl(uintptr_t address) {
     return size;
   }
   return 0;
+}
+
+// The name is the main module's file name without its extension.
+[[gnu::visibility("hidden"), gnu::noinline]] void InitializeProcessName() {
+  ModuleInfoImpl info = {};
+  if (GetModuleInfoImpl(&info, reinterpret_cast<uintptr_t>(&nnMain), nullptr,
+    0)) {
+    GetFileNameWithoutExtension(&g_ProcessName.pName, &g_ProcessName.length,
+      info.pName, info.nameLength);
+    return;
+  }
+
+  g_ProcessName.pName = "";
+  g_ProcessName.length = 0;
+}
+
+[[gnu::noinline]] void GetProcessNamePointer(const char** ppOutName,
+  size_t* pOutLength) {
+  auto* pInitialized = reinterpret_cast<uint8_t*>(&g_ProcessNameGuard);
+  if (!(__atomic_load_n(pInitialized, __ATOMIC_ACQUIRE) & 1) &&
+    __cxa_guard_acquire(&g_ProcessNameGuard)) {
+    InitializeProcessName();
+    __cxa_guard_release(&g_ProcessNameGuard);
+  }
+
+  *ppOutName = g_ProcessName.pName;
+  *pOutLength = g_ProcessName.length;
+}
+
+// The name falls back to the empty string, counted with its terminator.
+[[gnu::noinline]] bool GetModuleInfoImpl(ModuleInfoImpl* pOutInfo,
+  uintptr_t address, char* pOutName, size_t nameSize) {
+  if (address == 0) {
+    return false;
+  }
+
+  uintptr_t base = 0;
+  uintptr_t size = 0;
+  const bool isFound = ro::GetModuleAddressRange(&base, &size, address);
+  if (!isFound) {
+    return isFound;
+  }
+
+  const char* pName = nullptr;
+  size_t nameLength = 0;
+  if (nameSize != 0) {
+    if (ro::GetModuleName(pOutName, nameSize, base).IsFailure()) {
+      pOutName[0] = '\0';
+    }
+
+    pName = pOutName;
+    nameLength = strlen(pOutName);
+  }
+  else if (ro::GetModuleNamePointer(&pName, &nameLength, base).IsFailure()) {
+    pName = "";
+    nameLength = 1;
+  }
+
+  ro::ModuleId moduleId = {};
+  if (ro::GetModuleId(&moduleId, base).IsFailure()) {
+    moduleId = {};
+  }
+
+  pOutInfo->pName = pName;
+  pOutInfo->nameLength = nameLength;
+  pOutInfo->baseAddress = base;
+  pOutInfo->size = size;
+  memcpy(pOutInfo->moduleId, moduleId.value, sizeof(moduleId.value));
+  return isFound;
+}
+
+// Modules export accessors for their read-only data bounds.
+bool GetReadOnlyDataSectionRangeImpl(uintptr_t* pOutStart,
+  uintptr_t* pOutEnd, uintptr_t address) {
+  if (IsSystemSymbolImplImported(address)) {
+    return false;
+  }
+
+  uintptr_t getStart = 0;
+  if (ro::LookupModuleSymbol(&getStart, address, "nndetailRoGetRoDataStart")
+    .IsFailure()) {
+    return false;
+  }
+
+  uintptr_t getEnd = 0;
+  if (ro::LookupModuleSymbol(&getEnd, address, "nndetailRoGetRoDataEnd")
+    .IsFailure()) {
+    return false;
+  }
+
+  *pOutStart = reinterpret_cast<uintptr_t (*)()>(getStart)();
+  *pOutEnd = reinterpret_cast<uintptr_t (*)()>(getEnd)();
+  return true;
+}
+
+// A code section is the first code block after a gap whose permission is
+// executable or read only.
+[[gnu::noinline]] bool ModuleParser::MoveToCodeSection() {
+  bool isAfterGap = false;
+  while (MemoryBlockParser::MoveNext()) {
+    if (MemoryBlockParser::GetInfo()->state == 3 ||
+      MemoryBlockParser::GetInfo()->state == 8) {
+      if (isAfterGap && ((MemoryBlockParser::GetInfo()->permission & 4) != 0 ||
+        MemoryBlockParser::GetInfo()->permission == 1)) {
+        return true;
+      }
+    }
+    else {
+      isAfterGap = true;
+    }
+  }
+
+  return false;
 }
 
 bool ModuleParser::MoveNext(char* pOutName, size_t nameSize) {

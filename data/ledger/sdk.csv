@@ -2077,12 +2077,16 @@ bc470,140,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag18PrintBacktraceItem
 bc500,132,verified,src/nn/diag/abort_observer.cpp,_ZN2nn4diag6detail23GetAbortObserverManagerEv
 bc590,132,verified,src/nn/diag/abort_observer.cpp,_ZN2nn4diag6detail26GetSdkAbortObserverManagerEv
 bc620,12,verified,src/nn/diag/diag_check.cpp,_ZN2nn4diag6detail16PrintDebugStringEPKcm
+bc630,128,verified,src/nn/diag/diag_module_misc.cpp,_ZN2nn4diag6detail21GetProcessNamePointerEPPKcPm
 bc730,16,verified,src/nn/diag/detail/diag_memory_block_parser.cpp,_ZN2nn4diag6detail17MemoryBlockParserC2Ev
 bc740,28,verified,src/nn/diag/detail/diag_memory_block_parser.cpp,_ZN2nn4diag6detail17MemoryBlockParser8SetRangeEmm
 bc760,176,verified,src/nn/diag/detail/diag_memory_block_parser.cpp,_ZN2nn4diag6detail17MemoryBlockParser8MoveNextEv
 bc810,8,verified,src/nn/diag/detail/diag_memory_block_parser.cpp,_ZNK2nn4diag6detail17MemoryBlockParser7GetInfoEv
+bc820,264,verified,src/nn/diag/diag_module_misc.cpp,_ZN2nn4diag6detail17GetModuleInfoImplEPNS1_14ModuleInfoImplEmPcm
 bc930,116,verified,src/nn/diag/diag_module_misc.cpp,_ZN2nn4diag6detail17GetModulePathImplEPcmm
+bcbb0,220,verified,src/nn/diag/diag_module_misc.cpp,_ZN2nn4diag6detail31GetReadOnlyDataSectionRangeImplEPmS2_m
 bcc90,104,verified,src/nn/diag/diag_module_misc.cpp,_ZN2nn4diag6detail12ModuleParser8MoveNextEPcm
+bcd00,228,verified,src/nn/diag/diag_module_misc.cpp,_ZN2nn4diag6detail12ModuleParser17MoveToCodeSectionEv
 bcdf0,8,verified,src/nn/diag/diag_module_misc.cpp,_ZNK2nn4diag6detail12ModuleParser7GetInfoEv
 bce00,100,verified,src/nn/diag/diag_module_misc.cpp,_ZN2nn4diag6detail18IsSystemSymbolImplEm
 bce70,196,verified,src/nn/diag/diag_module_misc.cpp,_ZN2nn4diag6detail17GetSymbolNameImplEPcmm
