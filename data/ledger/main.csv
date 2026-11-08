@@ -12923,6 +12923,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 667fb0,44,verified,src/memory/new_delete.cpp,deleting destructor at 0x667fb0
 668030,4,verified,src/game/game_trivial.cpp,_Z15GameStub_668030v
 668040,12,verified,src/game/game_trivial_forwarders.cpp,_Z15GameStub_668040m
+668050,92,verified,src/game/game_trivial_sounds.cpp,_Z15GameStub_668050m
 6680b0,28,verified,src/game/game_trivial_misc.cpp,_Z15GameStub_6680b0mm
 6680d0,12,verified,src/game/game_trivial.cpp,_Z15GameStub_6680d0v
 6680e0,320,verified,src/game/templates/function.cpp,_ZNSt3__110__function12__value_funcIFvPN4game11UnrecoveredILj5EEEEE4swapB8nn210108ERS7_
@@ -20051,6 +20052,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 9d0820,44,verified,src/memory/new_delete.cpp,deleting destructor at 0x9d0820
 9d08a0,4,verified,src/game/game_trivial.cpp,_Z15GameStub_9d08a0v
 9d08b0,12,verified,src/game/game_trivial_forwarders.cpp,_Z15GameStub_9d08b0m
+9d08c0,92,verified,src/game/game_trivial_sounds.cpp,_Z15GameStub_9d08c0m
 9d0920,28,verified,src/game/game_trivial_misc.cpp,_Z15GameStub_9d0920mm
 9d0940,12,verified,src/game/game_trivial.cpp,_Z15GameStub_9d0940v
 9d0950,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::facility::(anonymous namespace)::ProcObeliskDepositoryRideMenu::ZRCall()::'lambda'(auto), int (game::menu::DialogMenuItem*)>::deleting destructor"
@@ -20074,6 +20076,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 9d1730,44,verified,src/memory/new_delete.cpp,deleting destructor at 0x9d1730
 9d17b0,4,verified,src/game/game_trivial.cpp,_Z15GameStub_9d17b0v
 9d17c0,12,verified,src/game/game_trivial_forwarders.cpp,_Z15GameStub_9d17c0m
+9d17d0,92,verified,src/game/game_trivial_sounds.cpp,_Z15GameStub_9d17d0m
 9d1830,28,verified,src/game/game_trivial_misc.cpp,_Z15GameStub_9d1830mm
 9d1850,12,verified,src/game/game_trivial.cpp,_Z15GameStub_9d1850v
 9d1860,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::facility::(anonymous namespace)::ObeliskDepositoryRideMenuItem::ACall()::'lambda'(auto), int (game::menu::DialogMenuItem*)>::deleting destructor"
@@ -20570,6 +20573,8 @@ a07420,1240,verified,src/game/data/data_file.cpp,_ZNSt3__115__inplace_mergeINS_1
 a08bd0,24,verified,src/llvm-libcxx-21/libcxx/include/__vector/vector.h,std::vector<T>::__throw_length_error()
 a09d30,12,verified,src/game/game_trivial.cpp,_Z15GameStub_a09d30v
 a09d40,12,verified,src/game/game_trivial.cpp,_Z15GameStub_a09d40v
+a09d50,92,verified,src/game/game_trivial_sounds.cpp,_Z15GameStub_a09d50m
+a09db0,92,verified,src/game/game_trivial_sounds.cpp,_Z15GameStub_a09db0m
 a09f80,4,verified,src/game/menu/basic_menu.cpp,_ZN4game4menu9BasicMenu9Unknown92Ev
 a0a030,12,verified,src/game/game_trivial.cpp,_Z15GameStub_a0a030v
 a0a2a0,12,verified,src/game/game_trivial.cpp,_Z15GameStub_a0a2a0v
@@ -20592,7 +20597,10 @@ a0a7c0,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"st
 a0a7e0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::(anonymous namespace)::ProcModeSelect::CreateDifficultyMenu()::'lambda'(game::Difficulty), void (game::Difficulty)>::target_type()"
 a0a950,12,verified,src/game/game_trivial.cpp,_Z15GameStub_a0a950v
 a0a960,12,verified,src/game/game_trivial.cpp,_Z15GameStub_a0a960v
+a0a970,92,verified,src/game/game_trivial_sounds.cpp,_Z15GameStub_a0a970m
+a0a9d0,92,verified,src/game/game_trivial_sounds.cpp,_Z15GameStub_a0a9d0m
 a0ac40,12,verified,src/game/game_trivial.cpp,_Z15GameStub_a0ac40v
+a0aeb0,92,verified,src/game/game_trivial_sounds.cpp,_Z15GameStub_a0aeb0m
 a0af10,12,verified,src/game/game_trivial.cpp,_Z15GameStub_a0af10v
 a0af20,152,verified,src/game/menu/menu_item_leaf_dtors.cpp,_ZN4game12_GLOBAL__N_18ModeMenu12ModeMenuItemD0Ev
 a0b230,4,verified,src/game/game_trivial.cpp,_Z15GameStub_a0b230v
@@ -28919,6 +28927,7 @@ e13ec0,536,verified,src/game/script/hub_talk_natives.cpp,_ZN4game6script3hub4tal
 e14390,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xe14390
 e14410,4,verified,src/game/game_trivial.cpp,_Z15GameStub_e14410v
 e14420,12,verified,src/game/game_trivial_forwarders.cpp,_Z15GameStub_e14420m
+e14430,92,verified,src/game/game_trivial_sounds.cpp,_Z15GameStub_e14430m
 e14490,28,verified,src/game/game_trivial_misc.cpp,_Z15GameStub_e14490mm
 e144b0,12,verified,src/game/game_trivial.cpp,_Z15GameStub_e144b0v
 e144c0,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<RunShowYesNoDialogImpl(YesNoDialogArg const&)::$_0, int (game::menu::DialogMenuItem*)>::deleting destructor"
@@ -30044,6 +30053,7 @@ e92400,152,verified,src/game/menu/talk_select_gift_menu_item.cpp,_ZN4game4menu12
 e92930,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xe92930
 e929b0,4,verified,src/game/game_trivial.cpp,_Z15GameStub_e929b0v
 e929c0,12,verified,src/game/game_trivial_forwarders.cpp,_Z15GameStub_e929c0m
+e929d0,92,verified,src/game/game_trivial_sounds.cpp,_Z15GameStub_e929d0m
 e92a30,28,verified,src/game/game_trivial_misc.cpp,_Z15GameStub_e92a30mm
 e92a50,12,verified,src/game/game_trivial.cpp,_Z15GameStub_e92a50v
 e92a60,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::TalkSelectGiftMenuItem::ACall()::'lambda'(auto), int (game::menu::DialogMenuItem*)>::deleting destructor"
@@ -31818,6 +31828,7 @@ f6d500,60,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"st
 f6d540,16,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::DeliveryDialog* game::menu::Dialog::_CreateBindDirect<game::menu::DeliveryDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::__clone(__base*)"
 f6d550,4,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::DeliveryDialog* game::menu::Dialog::_CreateBindDirect<game::menu::DeliveryDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::destroy()"
 f6d560,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::DeliveryDialog* game::menu::Dialog::_CreateBindDirect<game::menu::DeliveryDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::destroy_deallocate()"
+f6d570,92,verified,src/game/game_trivial_sounds.cpp,_Z15GameStub_f6d570m
 f6d5d0,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::DeliveryDialog* game::menu::Dialog::_CreateBindDirect<game::menu::DeliveryDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::target(std::type_info const&)"
 f6d5f0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::DeliveryDialog* game::menu::Dialog::_CreateBindDirect<game::menu::DeliveryDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::target_type()"
 f6d600,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::ScoutBaseProc::ShowItemDialog(game::ProcInst*, bool)::$_0, int (game::menu::DialogMenuItem*)>::deleting destructor"
@@ -38935,6 +38946,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 12e1c00,16,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::InfoDialog* game::menu::Dialog::_CreateBindDirect<game::menu::InfoDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::__clone(__base*)"
 12e1c10,4,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::InfoDialog* game::menu::Dialog::_CreateBindDirect<game::menu::InfoDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::destroy()"
 12e1c20,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::InfoDialog* game::menu::Dialog::_CreateBindDirect<game::menu::InfoDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::destroy_deallocate()"
+12e1c30,92,verified,src/game/game_trivial_sounds.cpp,_Z16GameStub_12e1c30m
 12e1c90,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::InfoDialog* game::menu::Dialog::_CreateBindDirect<game::menu::InfoDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::target(std::type_info const&)"
 12e1cb0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::InfoDialog* game::menu::Dialog::_CreateBindDirect<game::menu::InfoDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::target_type()"
 12e1cc0,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::GameCalendar::ProcNotifyBirthday::Notify()::'lambda'(auto), int (game::menu::DialogMenuItem*)>::deleting destructor"
@@ -41726,6 +41738,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 13fa9c0,44,verified,src/memory/new_delete.cpp,deleting destructor at 0x13fa9c0
 13faa40,4,verified,src/game/facility/proc_dining_recipe_menu.cpp,_ZN4game8ProcInst9Unknown04Ev
 13faa50,12,verified,src/game/game_trivial_forwarders.cpp,_Z16GameStub_13faa50m
+13faa60,92,verified,src/game/game_trivial_sounds.cpp,_Z16GameStub_13faa60m
 13faac0,28,verified,src/game/game_trivial_misc.cpp,_Z16GameStub_13faac0mm
 13faae0,12,verified,src/game/game_trivial.cpp,_Z16GameStub_13faae0v
 13faaf0,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::facility::(anonymous namespace)::ProcDiningRecipeMenu::ACall()::'lambda'(auto), int (game::menu::DialogMenuItem*)>::deleting destructor"
@@ -44495,6 +44508,14 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 152fff0,180,verified,src/game/proc/unread_proc_singletons.cpp,_ZN4game21ProcJumpableSingletonINS_4gmap12_GLOBAL__N_116ProcGmapCycleExpENS2_5LabelEED0Ev
 15300b0,204,verified,src/game/gmap/gmap_singletons.cpp,_ZN4game4gmap9GmapSoundD2Ev
 1530180,240,verified,src/game/gmap/gmap_singletons.cpp,_ZN4game4gmap9GmapSoundD0Ev
+1530790,92,verified,src/game/game_trivial_sounds.cpp,_Z16GameStub_1530790m
+15307f0,92,verified,src/game/game_trivial_sounds.cpp,_Z16GameStub_15307f0m
+1530850,92,verified,src/game/game_trivial_sounds.cpp,_Z16GameStub_1530850m
+15308b0,92,verified,src/game/game_trivial_sounds.cpp,_Z16GameStub_15308b0m
+1530910,92,verified,src/game/game_trivial_sounds.cpp,_Z16GameStub_1530910m
+1530970,92,verified,src/game/game_trivial_sounds.cpp,_Z16GameStub_1530970m
+1531360,92,verified,src/game/game_trivial_sounds.cpp,_Z16GameStub_1531360m
+15313c0,92,verified,src/game/game_trivial_sounds.cpp,_Z16GameStub_15313c0m
 1531420,4,verified,src/game/singleton/singletons.cpp,_ZN4game9SingletonINS_4gmap9GmapSoundELb0EE10InitializeEv
 1531430,4,verified,src/game/singleton/singletons.cpp,_ZN4game9SingletonINS_4gmap9GmapSoundELb0EE8FinalizeEv
 1531690,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::gmap::GmapSound::Impl::HadesAtmos::getBgmVolumeTarget()::'lambda'(game::gmap::Troop*), bool (game::gmap::Troop*)>::deleting destructor"
@@ -45354,6 +45375,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 15bbc10,92,verified,src/game/menu/sub_exchange_menu_item.cpp,_ZN4game4menu12_GLOBAL__N_117SubRemoveMenuItem12PlayDecideSeEv
 15bbc70,152,verified,src/game/menu/menu_item_leaf_dtors.cpp,_ZN4game4menu12_GLOBAL__N_122EquipMenuItem_SkillFixD0Ev
 15bbd30,8,verified,src/game/game_trivial.cpp,_Z16GameStub_15bbd30v
+15bbd40,92,verified,src/game/game_trivial_sounds.cpp,_Z16GameStub_15bbd40m
 15bbda0,8,verified,src/game/game_trivial.cpp,_Z16GameStub_15bbda0v
 15bbdb0,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::SkillUnitMenu::OnAddSkillMenuItem()::'lambda'(game::UnitSkill const&), void (game::UnitSkill const&)>::deleting destructor"
 15bbde0,100,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::SkillUnitMenu::OnAddSkillMenuItem()::'lambda'(game::UnitSkill const&), void (game::UnitSkill const&)>::__clone()"
@@ -45753,6 +45775,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 15cd890,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::EquipMenuItem_UnitItem::ACall()::'lambda2'(auto), int (game::menu::SubMenuItem*)>::target_type()"
 15cd8a0,212,verified,src/game/menu/sub_equip_menu_item.cpp,_ZN4game4menu12_GLOBAL__N_119SubExchangeMenuItemD0Ev
 15cd980,12,verified,src/game/menu/sub_equip_menu_item.cpp,_ZN4game4menu12_GLOBAL__N_119SubExchangeMenuItem6GetMidEv
+15cd990,92,verified,src/game/game_trivial_sounds.cpp,_Z16GameStub_15cd990m
 15cd9f0,212,verified,src/game/menu/sub_equip_menu_item.cpp,_ZN4game4menu12_GLOBAL__N_114SubUseMenuItemD0Ev
 15cdad0,12,verified,src/game/menu/sub_equip_menu_item.cpp,_ZN4game4menu12_GLOBAL__N_114SubUseMenuItem6GetMidEv
 15cdae0,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::EquipMenuItem_UnitItem::ACall()::'lambda3'(auto), int (game::menu::SubMenuItem*)>::deleting destructor"
@@ -47245,6 +47268,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 164be20,16,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::NoInputDialog* game::menu::Dialog::_CreateBind<game::menu::NoInputDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::__clone(__base*)"
 164be30,4,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::NoInputDialog* game::menu::Dialog::_CreateBind<game::menu::NoInputDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::destroy()"
 164be40,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::NoInputDialog* game::menu::Dialog::_CreateBind<game::menu::NoInputDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::destroy_deallocate()"
+164be50,92,verified,src/game/game_trivial_sounds.cpp,_Z16GameStub_164be50m
 164beb0,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::NoInputDialog* game::menu::Dialog::_CreateBind<game::menu::NoInputDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::target(std::type_info const&)"
 164bed0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::NoInputDialog* game::menu::Dialog::_CreateBind<game::menu::NoInputDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::target_type()"
 164dae0,80,verified,src/memory/new_delete.cpp,deleting destructor at 0x164dae0
@@ -47262,6 +47286,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 164e2b0,16,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::ExchangeNumDialog* game::menu::Dialog::_CreateBind<game::menu::ExchangeNumDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::__clone(__base*)"
 164e2c0,4,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::ExchangeNumDialog* game::menu::Dialog::_CreateBind<game::menu::ExchangeNumDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::destroy()"
 164e2d0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::ExchangeNumDialog* game::menu::Dialog::_CreateBind<game::menu::ExchangeNumDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::destroy_deallocate()"
+164e2e0,92,verified,src/game/game_trivial_sounds.cpp,_Z16GameStub_164e2e0m
 164e340,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::ExchangeNumDialog* game::menu::Dialog::_CreateBind<game::menu::ExchangeNumDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::target(std::type_info const&)"
 164e360,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::ExchangeNumDialog* game::menu::Dialog::_CreateBind<game::menu::ExchangeNumDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::target_type()"
 164e370,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::ExchangeNumDialog::CreateBindExchange(game::ProcInst*, int, int, int, char const*, char const*, std::__1::function<void (game::menu::DialogMenuItem*, int)> const&, std::__1::function<int (game::menu::DialogMenuItem*)> const&, std::__1::function<int (game::menu::DialogMenuItem*)> const&, std::__1::function<int (game::menu::DialogMenuItem*)> const&)::$_0, int (game::menu::DialogMenuItem*)>::deleting destructor"
@@ -47296,6 +47321,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 164fec0,16,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::CorpsSelectDialog* game::menu::Dialog::_CreateBind<game::menu::CorpsSelectDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::__clone(__base*)"
 164fed0,4,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::CorpsSelectDialog* game::menu::Dialog::_CreateBind<game::menu::CorpsSelectDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::destroy()"
 164fee0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::CorpsSelectDialog* game::menu::Dialog::_CreateBind<game::menu::CorpsSelectDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::destroy_deallocate()"
+164fef0,92,verified,src/game/game_trivial_sounds.cpp,_Z16GameStub_164fef0m
 164ff50,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::CorpsSelectDialog* game::menu::Dialog::_CreateBind<game::menu::CorpsSelectDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::target(std::type_info const&)"
 164ff70,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::CorpsSelectDialog* game::menu::Dialog::_CreateBind<game::menu::CorpsSelectDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::target_type()"
 164ff80,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::CorpsSelectDialog::SortAndFilter()::$_0, bool (game::menu::BasicMenuItem*, game::menu::BasicMenuItem*)>::deleting destructor"
@@ -47619,6 +47645,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 166ade0,16,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::ItemUseDialog* game::menu::Dialog::_CreateBind<game::menu::ItemUseDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::__clone(__base*)"
 166adf0,4,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::ItemUseDialog* game::menu::Dialog::_CreateBind<game::menu::ItemUseDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::destroy()"
 166ae00,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::ItemUseDialog* game::menu::Dialog::_CreateBind<game::menu::ItemUseDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::destroy_deallocate()"
+166ae10,92,verified,src/game/game_trivial_sounds.cpp,_Z16GameStub_166ae10m
 166ae70,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::ItemUseDialog* game::menu::Dialog::_CreateBind<game::menu::ItemUseDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::target(std::type_info const&)"
 166ae90,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::ItemUseDialog* game::menu::Dialog::_CreateBind<game::menu::ItemUseDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::target_type()"
 166aea0,60,verified,src/game/game_trivial_functions.cpp,_Z16GameStub_166aea0m
@@ -47650,6 +47677,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 166bac0,16,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::ItemDiscardDialog* game::menu::Dialog::_CreateBind<game::menu::ItemDiscardDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::__clone(__base*)"
 166bad0,4,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::ItemDiscardDialog* game::menu::Dialog::_CreateBind<game::menu::ItemDiscardDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::destroy()"
 166bae0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::ItemDiscardDialog* game::menu::Dialog::_CreateBind<game::menu::ItemDiscardDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::destroy_deallocate()"
+166baf0,92,verified,src/game/game_trivial_sounds.cpp,_Z16GameStub_166baf0m
 166bb50,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::ItemDiscardDialog* game::menu::Dialog::_CreateBind<game::menu::ItemDiscardDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::target(std::type_info const&)"
 166bb70,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::ItemDiscardDialog* game::menu::Dialog::_CreateBind<game::menu::ItemDiscardDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::target_type()"
 166bb80,60,verified,src/game/game_trivial_functions.cpp,_Z16GameStub_166bb80m
@@ -47864,6 +47892,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 167e4d0,16,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::gmap::GmapSpotList::BCall()::$_0, void ()>::__clone(__base*)"
 167e4e0,4,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::gmap::GmapSpotList::BCall()::$_0, void ()>::destroy()"
 167e4f0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::gmap::GmapSpotList::BCall()::$_0, void ()>::destroy_deallocate()"
+167e500,92,verified,src/game/game_trivial_sounds.cpp,_Z16GameStub_167e500m
 167e560,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::gmap::GmapSpotList::BCall()::$_0, void ()>::target(std::type_info const&)"
 167e580,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::gmap::GmapSpotList::BCall()::$_0, void ()>::target_type()"
 167e590,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::gmap::GmapSpotList::ZRCall()::$_0, void ()>::deleting destructor"
@@ -47871,6 +47900,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 167e600,16,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::gmap::GmapSpotList::ZRCall()::$_0, void ()>::__clone(__base*)"
 167e610,4,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::gmap::GmapSpotList::ZRCall()::$_0, void ()>::destroy()"
 167e620,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::gmap::GmapSpotList::ZRCall()::$_0, void ()>::destroy_deallocate()"
+167e630,92,verified,src/game/game_trivial_sounds.cpp,_Z16GameStub_167e630m
 167e690,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::gmap::GmapSpotList::ZRCall()::$_0, void ()>::target(std::type_info const&)"
 167e6b0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::gmap::GmapSpotList::ZRCall()::$_0, void ()>::target_type()"
 167e6c0,4,verified,src/game/game_trivial.cpp,_Z16GameStub_167e6c0v
@@ -47956,6 +47986,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 168c090,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::gmap::(anonymous namespace)::ProcGmapCarriageList::CreateMap()::'lambda'(unsigned char&, math::Vec2&, float&), void (unsigned char&, math::Vec2&, float&)>::target_type()"
 168d3d0,280,verified,src/game/templates/vector.cpp,_ZNSt3__16vectorIN4game16UnrecoveredValueILj15ELm8ELm8EEENS_9allocatorIS3_EEE9push_backB8nn210108ERKS3_
 168d7e0,24,verified,src/llvm-libcxx-21/libcxx/include/__vector/vector.h,std::vector<T>::__throw_length_error()
+168db10,92,verified,src/game/game_trivial_sounds.cpp,_Z16GameStub_168db10m
 168e510,12,verified,src/game/game_trivial.cpp,_Z16GameStub_168e510v
 168ee70,12,verified,src/game/game_trivial.cpp,_Z16GameStub_168ee70v
 168ee80,12,verified,src/game/game_trivial.cpp,_Z16GameStub_168ee80v
@@ -47969,6 +48000,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 168f6a0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::gmap::(anonymous namespace)::ProcGmapWarpList::CreateMap()::'lambda'(unsigned char&, math::Vec2&, float&), void (unsigned char&, math::Vec2&, float&)>::destroy_deallocate()"
 168f720,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::gmap::(anonymous namespace)::ProcGmapWarpList::CreateMap()::'lambda'(unsigned char&, math::Vec2&, float&), void (unsigned char&, math::Vec2&, float&)>::target(std::type_info const&)"
 168f740,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::gmap::(anonymous namespace)::ProcGmapWarpList::CreateMap()::'lambda'(unsigned char&, math::Vec2&, float&), void (unsigned char&, math::Vec2&, float&)>::target_type()"
+1690bb0,92,verified,src/game/game_trivial_sounds.cpp,_Z16GameStub_1690bb0m
 1691130,12,verified,src/game/game_trivial.cpp,_Z16GameStub_1691130v
 1691140,8,verified,src/game/game_trivial.cpp,_Z16GameStub_1691140v
 1691150,8,verified,src/game/menu/game_menu.cpp,_ZN4game4menu9BasicMenu9Unknown24Ev
@@ -48093,6 +48125,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 1698620,16,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::hub::(anonymous namespace)::ProcFastTravelMenu::ZRCall()::'lambda'(), void ()>::__clone(__base*)"
 1698630,4,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::hub::(anonymous namespace)::ProcFastTravelMenu::ZRCall()::'lambda'(), void ()>::destroy()"
 1698640,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::hub::(anonymous namespace)::ProcFastTravelMenu::ZRCall()::'lambda'(), void ()>::destroy_deallocate()"
+1698650,92,verified,src/game/game_trivial_sounds.cpp,_Z16GameStub_1698650m
 16986b0,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::hub::(anonymous namespace)::ProcFastTravelMenu::ZRCall()::'lambda'(), void ()>::target(std::type_info const&)"
 16986d0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::hub::(anonymous namespace)::ProcFastTravelMenu::ZRCall()::'lambda'(), void ()>::target_type()"
 16986e0,268,verified,src/game/menu/page_tab.cpp,_ZN4game4menu7PageTab3AddEi
@@ -49316,6 +49349,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 16d8b50,16,verified,src/game/menu/unit_grid_select_menu.cpp,_ZNKSt3__110__function6__funcIZN4game4menu18UnitGridSelectMenu5XCallEvE3$_0FvvEE7__cloneEPNS0_6__baseIS6_EE
 16d8b60,4,verified,src/game/game_trivial.cpp,_Z16GameStub_16d8b60v
 16d8b70,12,verified,src/game/game_trivial_forwarders.cpp,_Z16GameStub_16d8b70m
+16d8b80,92,verified,src/game/game_trivial_sounds.cpp,_Z16GameStub_16d8b80m
 16d8be0,28,verified,src/game/game_trivial_misc.cpp,_Z16GameStub_16d8be0mm
 16d8c00,12,verified,src/game/game_trivial.cpp,_Z16GameStub_16d8c00v
 16d8c10,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::facility::(anonymous namespace)::ReinforceSkillMenuItem::ACall()::'lambda'(auto), int (game::menu::DialogMenuItem*)>::deleting destructor"
@@ -49752,6 +49786,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 16f7770,16,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::LegionDialog* game::menu::Dialog::_CreateBind<game::menu::LegionDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::__clone(__base*)"
 16f7780,4,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::LegionDialog* game::menu::Dialog::_CreateBind<game::menu::LegionDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::destroy()"
 16f7790,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::LegionDialog* game::menu::Dialog::_CreateBind<game::menu::LegionDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::destroy_deallocate()"
+16f77a0,92,verified,src/game/game_trivial_sounds.cpp,_Z16GameStub_16f77a0m
 16f7800,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::LegionDialog* game::menu::Dialog::_CreateBind<game::menu::LegionDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::target(std::type_info const&)"
 16f7820,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::LegionDialog* game::menu::Dialog::_CreateBind<game::menu::LegionDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::target_type()"
 16f7990,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::LegionDialog* game::menu::Dialog::_CreateBindDirect<game::menu::LegionDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::deleting destructor"
@@ -49759,6 +49794,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 16f7a00,16,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::LegionDialog* game::menu::Dialog::_CreateBindDirect<game::menu::LegionDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::__clone(__base*)"
 16f7a10,4,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::LegionDialog* game::menu::Dialog::_CreateBindDirect<game::menu::LegionDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::destroy()"
 16f7a20,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::LegionDialog* game::menu::Dialog::_CreateBindDirect<game::menu::LegionDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::destroy_deallocate()"
+16f7a30,92,verified,src/game/game_trivial_sounds.cpp,_Z16GameStub_16f7a30m
 16f7a90,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::LegionDialog* game::menu::Dialog::_CreateBindDirect<game::menu::LegionDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::target(std::type_info const&)"
 16f7ab0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::LegionDialog* game::menu::Dialog::_CreateBindDirect<game::menu::LegionDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::target_type()"
 16f7f10,12,verified,src/game/gmap/proc_comeback_list.cpp,_ZN4game4gmap12_GLOBAL__N_116ProcComebackList9Unknown32Ev
@@ -50360,6 +50396,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 1712250,16,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::ChangeNumDialog* game::menu::Dialog::_CreateBind<game::menu::ChangeNumDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::__clone(__base*)"
 1712260,4,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::ChangeNumDialog* game::menu::Dialog::_CreateBind<game::menu::ChangeNumDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::destroy()"
 1712270,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::ChangeNumDialog* game::menu::Dialog::_CreateBind<game::menu::ChangeNumDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::destroy_deallocate()"
+1712280,92,verified,src/game/game_trivial_sounds.cpp,_Z16GameStub_1712280m
 17122e0,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::ChangeNumDialog* game::menu::Dialog::_CreateBind<game::menu::ChangeNumDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::target(std::type_info const&)"
 1712300,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::ChangeNumDialog* game::menu::Dialog::_CreateBind<game::menu::ChangeNumDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::target_type()"
 1712310,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::ChangeNumDialog::CreateBindYesNo(game::ProcInst*, int, int, int, game::vstring const&, game::vstring const&, game::vstring const&, std::__1::function<void (game::menu::DialogMenuItem*, int)> const&, std::__1::function<int (game::menu::DialogMenuItem*)> const&, std::__1::function<int (game::menu::DialogMenuItem*)> const&, std::__1::function<int (game::menu::DialogMenuItem*)> const&)::$_0, int (game::menu::DialogMenuItem*)>::deleting destructor"
@@ -51580,6 +51617,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 17945d0,16,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::UnitTroopListMenu::XCall()::$_0, void ()>::__clone(__base*)"
 17945e0,4,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::UnitTroopListMenu::XCall()::$_0, void ()>::destroy()"
 17945f0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::UnitTroopListMenu::XCall()::$_0, void ()>::destroy_deallocate()"
+1794600,92,verified,src/game/game_trivial_sounds.cpp,_Z16GameStub_1794600m
 1794660,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::UnitTroopListMenu::XCall()::$_0, void ()>::target(std::type_info const&)"
 1794680,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::UnitTroopListMenu::XCall()::$_0, void ()>::target_type()"
 1794690,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::UnitTroopListMenu::UpdatePage(game::menu::UnitTroopMenuConst::TabType)::$_0, bool (game::menu::UnitTroopMenuItem*)>::deleting destructor"
@@ -51642,9 +51680,13 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 1799760,4,verified,src/game/game_trivial.cpp,_Z16GameStub_1799760v
 179a4b0,4,verified,src/game/game_trivial.cpp,_Z16GameStub_179a4b0v
 179c920,8,verified,src/game/game_trivial.cpp,_Z16GameStub_179c920m
+179cca0,92,verified,src/game/game_trivial_sounds.cpp,_Z16GameStub_179cca0m
+179cd00,92,verified,src/game/game_trivial_sounds.cpp,_Z16GameStub_179cd00m
+179cd60,92,verified,src/game/game_trivial_sounds.cpp,_Z16GameStub_179cd60m
 179d820,8,verified,src/game/game_trivial.cpp,_Z16GameStub_179d820m
 179e610,16,verified,src/game/game_trivial_calls.cpp,_Z16GameStub_179e610m
 179eff0,16,verified,src/game/game_trivial_calls.cpp,_Z16GameStub_179eff0m
+179f6c0,92,verified,src/game/game_trivial_sounds.cpp,_Z16GameStub_179f6c0m
 179f720,152,verified,src/game/menu/unit_make_menu_item.cpp,_ZN4game4menu16UnitMakeMenuItemD0Ev
 179f7c0,8,verified,src/game/game_trivial.cpp,_Z16GameStub_179f7c0v
 179f7d0,8,verified,src/game/menu/unit_make_menu_item.cpp,_ZN4game4menu16UnitMakeMenuItem9Unknown14Ev
@@ -51854,6 +51896,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 17a97d0,16,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::CalibrationDialog* game::menu::Dialog::_CreateBind<game::menu::(anonymous namespace)::CalibrationDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::__clone(__base*)"
 17a97e0,4,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::CalibrationDialog* game::menu::Dialog::_CreateBind<game::menu::(anonymous namespace)::CalibrationDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::destroy()"
 17a97f0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::CalibrationDialog* game::menu::Dialog::_CreateBind<game::menu::(anonymous namespace)::CalibrationDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::destroy_deallocate()"
+17a9800,92,verified,src/game/game_trivial_sounds.cpp,_Z16GameStub_17a9800m
 17a9860,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::CalibrationDialog* game::menu::Dialog::_CreateBind<game::menu::(anonymous namespace)::CalibrationDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::target(std::type_info const&)"
 17a9880,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::CalibrationDialog* game::menu::Dialog::_CreateBind<game::menu::(anonymous namespace)::CalibrationDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::target_type()"
 17a9890,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::ProcMouseGuide::StickRCall()::'lambda'(auto), int (game::menu::DialogMenuItem*)>::deleting destructor"
@@ -52047,6 +52090,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 17b2ea0,8,verified,src/game/menu/inventory_unit_menu_item.cpp,_ZN4game4menu12_GLOBAL__N_120SubTransportMenuItem9Unknown71Ev
 17b2eb0,8,verified,src/game/menu/inventory_unit_menu_item.cpp,_ZN4game4menu12_GLOBAL__N_116EquipSubMenuItem9Unknown72EPNS_4UnitE
 17b30d0,12,verified,src/game/game_trivial.cpp,_Z16GameStub_17b30d0v
+17b3140,92,verified,src/game/game_trivial_sounds.cpp,_Z16GameStub_17b3140m
 17b31a0,8,verified,src/game/game_trivial.cpp,_Z16GameStub_17b31a0v
 17b31b0,212,verified,src/game/menu/inventory_unit_menu_item.cpp,_ZN4game4menu12_GLOBAL__N_116SubSkillMenuItemD0Ev
 17b3290,12,verified,src/game/menu/inventory_unit_menu_item.cpp,_ZN4game4menu12_GLOBAL__N_116SubSkillMenuItem6GetMidEv
@@ -52223,6 +52267,8 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 17cf2f0,52,verified,src/game/singleton/singletons.cpp,_ZN4game9SingletonINS_3map12MapSkillInfoELb0EED2Ev
 17cf330,88,verified,src/game/singleton/singletons.cpp,_ZN4game9SingletonINS_3map12MapSkillInfoELb0EED0Ev
 17cfc30,80,verified,src/memory/new_delete.cpp,deleting destructor at 0x17cfc30
+17d0b30,92,verified,src/game/game_trivial_sounds.cpp,_Z16GameStub_17d0b30m
+17d0b90,92,verified,src/game/game_trivial_sounds.cpp,_Z16GameStub_17d0b90m
 17d0c70,152,verified,src/game/menu/menu_item_leaf_dtors.cpp,_ZN4game4talk15ProcTalkLogMenu15TalkLogMenuItemD0Ev
 17d26b0,8,verified,src/game/game_trivial.cpp,_Z16GameStub_17d26b0v
 17d26c0,8,verified,src/game/game_trivial.cpp,_Z16GameStub_17d26c0v
@@ -56709,6 +56755,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 1904ce0,4,verified,src/game/game_trivial.cpp,_Z16GameStub_1904ce0v
 1904cf0,4,verified,src/game/game_trivial.cpp,_Z16GameStub_1904cf0v
 1904d00,92,verified,src/game/menu/notice_info_dialog.cpp,_ZN4game4menu16NoticeInfoDialog10Unknown138Ev
+1904d60,92,verified,src/game/game_trivial_sounds.cpp,_Z16GameStub_1904d60m
 1904dc0,92,verified,src/game/menu/notice_info_dialog.cpp,_ZN4game4menu16NoticeInfoDialog9Unknown82Ev
 1904e20,92,verified,src/game/menu/notice_info_dialog.cpp,_ZN4game4menu16NoticeInfoDialog9Unknown69Ev
 1904e80,168,verified,src/game/menu/notice_info_dialog.cpp,_ZN4game4menu16NoticeInfoDialogD2Ev
@@ -57065,6 +57112,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 19309c0,16,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::ExchangeDialog* game::menu::Dialog::_CreateBindDirect<game::menu::ExchangeDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::__clone(__base*)"
 19309d0,4,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::ExchangeDialog* game::menu::Dialog::_CreateBindDirect<game::menu::ExchangeDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::destroy()"
 19309e0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::ExchangeDialog* game::menu::Dialog::_CreateBindDirect<game::menu::ExchangeDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::destroy_deallocate()"
+19309f0,92,verified,src/game/game_trivial_sounds.cpp,_Z16GameStub_19309f0m
 1930a50,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::ExchangeDialog* game::menu::Dialog::_CreateBindDirect<game::menu::ExchangeDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::target(std::type_info const&)"
 1930a70,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::ExchangeDialog* game::menu::Dialog::_CreateBindDirect<game::menu::ExchangeDialog>(game::ProcInst*, game::vstring const&)::'lambda'(), void ()>::target_type()"
 1930a80,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::facility::(anonymous namespace)::ObeliskCausationMenuItem::ACall()::'lambda'(auto), int (game::menu::DialogMenuItem*)>::deleting destructor"
