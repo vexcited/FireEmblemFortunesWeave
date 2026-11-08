@@ -40,6 +40,10 @@ struct NvRmSurfaceContainer {
   int32_t planeKind;
 };
 
+extern "C" int snprintf(char* buffer, unsigned long size, const char* format,
+  ...);
+extern "C" const char* NvColorFormatToString(uint64_t colorFormat);
+
 [[gnu::visibility("hidden")]] NvError NvRmSurfaceComputeSizeImpl(
   NvRmSurface* surface, uint32_t plane, uint32_t isTotal, uint32_t* pOutSize);
 [[gnu::visibility("hidden")]] void NvRmSurfaceRebasePlanes(
@@ -53,6 +57,14 @@ const uint32_t NvRmSurfaceScan_Interlaced = 1;
 const uint64_t NvRmSurfaceFlag_Compressible = 1 << 1;
 const uint64_t NvRmSurfaceFlag_SizeValid = 1ull << 63;
 const uint32_t NvRmSurfaceMaxBlockHeightLog2 = 5;
+
+enum NvYuvColorFormat : uint32_t {
+  NvYuvColorFormat_Unknown,
+  NvYuvColorFormat_YUV420,
+  NvYuvColorFormat_YUV422,
+  NvYuvColorFormat_YUV422R,
+  NvYuvColorFormat_YUV444,
+};
 
 }
 
@@ -275,4 +287,82 @@ extern "C" NvError NvRmSurfaceSetDeviceMemory(NvRmSurface* surface,
   surface->offset = offset;
   surface->pBase = pBase;
   return NvSuccess;
+}
+
+// Planar formats compare the chroma plane against the luma plane, packed
+// formats are told apart by their color format bits.
+extern "C" NvYuvColorFormat NvRmSurfaceGetYuvColorFormat(
+  NvRmSurface* const* surfaces, uint32_t planes) {
+  if (surfaces == nullptr) {
+    return NvYuvColorFormat_Unknown;
+  }
+
+  const NvRmSurface* luma = surfaces[0];
+  const uint64_t colorFormat = luma->colorFormat;
+  if (((colorFormat >> 32) & 0x3f) - 15 > 7) {
+    return NvYuvColorFormat_Unknown;
+  }
+
+  if ((planes & ~1u) == 2) {
+    const NvRmSurface* chroma = surfaces[1];
+    const int32_t chromaWidth = chroma->width;
+    if (chromaWidth < 0) {
+      return NvYuvColorFormat_Unknown;
+    }
+
+    const int32_t chromaHeight = chroma->height;
+    if (chromaHeight < 0) {
+      return NvYuvColorFormat_Unknown;
+    }
+
+    const int32_t width = luma->width;
+    const int32_t height = luma->height;
+    if (width == chromaWidth * 2 && height == chromaHeight * 2) {
+      return NvYuvColorFormat_YUV420;
+    }
+
+    if (width == chromaWidth * 2 && height == chromaHeight) {
+      return NvYuvColorFormat_YUV422;
+    }
+
+    if (height == chromaHeight * 2 && width == chromaWidth) {
+      return NvYuvColorFormat_YUV422R;
+    }
+
+    return width == chromaWidth && height == chromaHeight ?
+      NvYuvColorFormat_YUV444 : NvYuvColorFormat_Unknown;
+  }
+
+  if (planes != 1) {
+    return NvYuvColorFormat_Unknown;
+  }
+
+  const uint32_t bits = static_cast<uint32_t>(colorFormat);
+  if ((bits & 0x3800000) == 0x2000000 || (bits & 0xe0000) == 0x80000 ||
+    (bits & 0x700000) == 0x400000) {
+    return NvYuvColorFormat_Unknown;
+  }
+
+  return (bits & 0x3eff) == 0x810 ? NvYuvColorFormat_YUV422 :
+    NvYuvColorFormat_YUV444;
+}
+
+extern "C" int32_t NvRmSurfaceComputeName(char* buffer, int32_t size,
+  const NvRmSurface* surfaces, uint32_t count) {
+  if (count == 0) {
+    return 0;
+  }
+
+  int32_t length = snprintf(buffer, size < 0 ? 0 : size, "%s%dx%dx%s", "",
+    surfaces[0].width, surfaces[0].height,
+    NvColorFormatToString(surfaces[0].colorFormat));
+
+  for (uint32_t i = 1; i < count; i++) {
+    const int32_t left = size - length;
+    length += snprintf(buffer + length, left < 0 ? 0 : left, "%s%dx%dx%s",
+      "-", surfaces[i].width, surfaces[i].height,
+      NvColorFormatToString(surfaces[i].colorFormat));
+  }
+
+  return length;
 }

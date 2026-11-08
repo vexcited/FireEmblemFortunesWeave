@@ -20177,6 +20177,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 604fd0,8,verified,src/nvidia/nvos_stubs.cpp,NvRmSurfaceGetDefaultLayout
 605250,104,verified,src/nvidia/nvrm_surface_query.cpp,NvRmSurfaceGetAlignment
 605ad0,8,verified,src/nvidia/nvrm_surface.cpp,NvRmSurfaceSetup
+605ae0,220,verified,src/nvidia/nvrm_surface_query.cpp,NvRmSurfaceGetYuvColorFormat
 605dc0,84,verified,src/nvidia/nvrm_surface_query.cpp,NvRmSurfaceGetPitchAlignment
 605e20,300,verified,src/nvidia/nvrm_surface_query.cpp,NvRmSurfaceSetDeviceMemory
 605f50,8,verified,src/nvidia/nvos_stubs.cpp,NvRmSurfaceDebugControlInternal
@@ -20192,6 +20193,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 606640,16,verified,src/nvidia/nvrm_surface.cpp,NvRmSurfaceSetDecompressionPolicy
 606650,156,verified,src/nvidia/nvrm_surface_query.cpp,NvRmSurfaceComputeSize
 607740,124,verified,src/nvidia/nvrm_surface_query.cpp,NvRmSurfaceSetSystemMemory
+608fe0,252,verified,src/nvidia/nvrm_surface_query.cpp,NvRmSurfaceComputeName
 60a6c0,8,verified,src/nvidia/nvos_stubs.cpp,NvRmSurfaceDebugControl
 60ad40,180,verified,src/nvidia/nvrm_surface_query.cpp,NvRmSurfaceContainerGetSize
 60ae00,168,verified,src/nvidia/nvrm_surface_query.cpp,NvRmSurfaceContainerGetAlignment
