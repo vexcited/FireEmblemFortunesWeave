@@ -61,15 +61,13 @@ ScopedCancellationTokenRegister::~ScopedCancellationTokenRegister() {
 
 [[gnu::noinline]] SynchronousContinuationList::SynchronousContinuationList(
   MemoryResource* resource) : m_pResource(resource) {
-  m_Head.next = &m_Head;
-  m_Head.prev = &m_Head;
   ClearMutexType(&m_Mutex);
   os::InitializeMutex(&m_Mutex, false, 0);
   m_IsExecuted = false;
 }
 
 SynchronousContinuationList::~SynchronousContinuationList() {
-  NN_ABORT_UNLESS(m_Head.prev == &m_Head);
+  NN_ABORT_UNLESS(m_Continuations.empty());
   os::FinalizeMutex(&m_Mutex);
 }
 
@@ -83,8 +81,34 @@ bool SynchronousContinuationList::BeginAddingContinuation() {
   return true;
 }
 
+void SynchronousContinuationList::AddContinuation(
+  std::shared_ptr<Executable> executable, bool isInline,
+  const CancellationToken& token) {
+  Continuation* continuation =
+    new (m_pResource->allocate(sizeof(Continuation))) Continuation();
+  continuation->executable = std::move(executable);
+  continuation->token = token;
+  continuation->isInline = isInline;
+  m_Continuations.push_back(*continuation);
+}
+
 void SynchronousContinuationList::EndAddingContinuation() {
   os::UnlockMutex(&m_Mutex);
+}
+
+void SynchronousContinuationList::ExecuteContinuations() {
+  os::LockMutex(&m_Mutex);
+  m_IsExecuted = true;
+  os::UnlockMutex(&m_Mutex);
+  for (ContinuationList::iterator it = m_Continuations.begin();
+    it != m_Continuations.end();) {
+    Continuation& continuation = *it;
+    ExecuteTaskInline(continuation.executable.get(), continuation.isInline,
+      continuation.token);
+    it = m_Continuations.erase(it);
+    continuation.~Continuation();
+    m_pResource->deallocate(&continuation, sizeof(Continuation));
+  }
 }
 
 TaskCoordinatorBase::TaskCoordinatorBase(MemoryResource* resource,

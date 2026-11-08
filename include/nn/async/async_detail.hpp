@@ -300,13 +300,17 @@ public:
   void ExecuteContinuations();
 
 private:
-  struct Node {
-    Node* next;
-    Node* prev;
+  struct Continuation : util::IntrusiveListBaseNode<Continuation> {
+    std::shared_ptr<Executable> executable;
+    CancellationToken token;
+    bool isInline;
   };
 
+  using ContinuationList = util::IntrusiveList<Continuation,
+    util::IntrusiveListBaseNodeTraits<Continuation>>;
+
   MemoryResource* m_pResource;
-  Node m_Head;
+  ContinuationList m_Continuations;
   os::MutexType m_Mutex;
   bool m_IsExecuted;
 };

@@ -3667,7 +3667,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 162b80,36,verified,src/snd/target/base_nx.cpp,_ZN3snd6target6BaseNX14getArchiveNameEi
 162bb0,52,verified,src/snd/target/base_nx.cpp,_ZN3snd6target6BaseNX13isAddonLoadedEii
 162bf0,56,verified,src/snd/target/base_nx.cpp,_ZN3snd6target6BaseNX12getAddonNameEii
-162c30,52,verified,src/snd/target/base_nx.cpp,_ZN3snd6target6BaseNX15getAddonArchiveEii
+162c30,60,verified,src/snd/target/base_nx.cpp,_ZN3snd6target6BaseNX15getAddonArchiveEii
 162c70,52,verified,src/snd/target/base_nx.cpp,_ZN3snd6target6BaseNX13getAddonCountEi
 163140,4,verified,src/snd/fx/fx.cpp,_ZN3snd2fx8FxReverb12mainUnlockedEv
 163150,108,verified,src/snd/target/fx_nx_registry.cpp,_ZN3snd6target10FxReverbNX11getRegistryEv
@@ -12907,7 +12907,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 747590,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::Mind::SetTargetList(game::map::TargetList const&)::$_0, void (game::map::TargetData const&)>::target(std::type_info const&)"
 7475b0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::Mind::SetTargetList(game::map::TargetList const&)::$_0, void (game::map::TargetData const&)>::target_type()"
 7479b0,80,verified,src/memory/new_delete.cpp,deleting destructor at 0x7479b0
-74c480,204,verified,src/game/templates/deque.cpp,_ZNSt3__15dequeIPN4game11UnrecoveredILj6EEENS_9allocatorIS4_EEED2B8nn210108Ev
+74c480,212,verified,src/game/templates/deque.cpp,_ZNSt3__15dequeIPN4game11UnrecoveredILj6EEENS_9allocatorIS4_EEED2B8nn210108Ev
 74c5e0,4,verified,src/memory/new_delete.cpp,complete destructor at 0x74c5e0
 74c5f0,24,verified,src/llvm-libcxx-21/libcxx/include/__vector/vector.h,std::vector<T>::__throw_length_error()
 74c610,44,verified,src/memory/new_delete.cpp,deleting destructor at 0x74c610
@@ -12950,7 +12950,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 74cd60,396,verified,src/game/templates/deque_back_capacity.cpp,_ZNSt3__15dequeIPN4game11UnrecoveredILj106EEENS_9allocatorIS4_EEE19__add_back_capacityEv
 74d0a0,320,verified,src/game/templates/deque.cpp,_ZNSt3__114__split_bufferIPPN4game11UnrecoveredILj22EEENS_9allocatorIS5_EEE12emplace_backIJRS5_EEEvDpOT_
 74d200,280,verified,src/game/templates/deque.cpp,_ZNSt3__114__split_bufferIPPN4game11UnrecoveredILj23EEENS_9allocatorIS5_EEE12emplace_backIJRS5_EEEvDpOT_
-74d360,300,verified,src/game/templates/deque.cpp,_ZNSt3__114__split_bufferIPPN4game11UnrecoveredILj8EEENS_9allocatorIS5_EEE13emplace_frontIJRS5_EEEvDpOT_
+74d360,340,verified,src/game/templates/deque.cpp,_ZNSt3__114__split_bufferIPPN4game11UnrecoveredILj8EEENS_9allocatorIS5_EEE13emplace_frontIJRS5_EEEvDpOT_
 74e1f0,24,verified,src/llvm-libcxx-21/libcxx/include/__vector/vector.h,std::vector<T>::__throw_length_error()
 74f160,4,verified,src/memory/new_delete.cpp,complete destructor at 0x74f160
 74f170,44,verified,src/memory/new_delete.cpp,deleting destructor at 0x74f170
@@ -13414,7 +13414,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 7a3d80,480,verified,src/game/templates/deque_back_capacity_value.cpp,_ZNSt3__15dequeIN4game16UnrecoveredValueILj4ELm244ELm4EEENS_9allocatorIS3_EEE19__add_back_capacityEv
 7a40c0,320,verified,src/game/templates/deque.cpp,_ZNSt3__114__split_bufferIPPN4game11UnrecoveredILj24EEENS_9allocatorIS5_EEE12emplace_backIJRS5_EEEvDpOT_
 7a4220,320,verified,src/game/templates/deque.cpp,_ZNSt3__114__split_bufferIPPN4game11UnrecoveredILj25EEENS_9allocatorIS5_EEE12emplace_backIJRS5_EEEvDpOT_
-7a4380,300,verified,src/game/templates/deque.cpp,_ZNSt3__114__split_bufferIPPN4game11UnrecoveredILj9EEENS_9allocatorIS5_EEE13emplace_frontIJRS5_EEEvDpOT_
+7a4380,340,verified,src/game/templates/deque.cpp,_ZNSt3__114__split_bufferIPPN4game11UnrecoveredILj9EEENS_9allocatorIS5_EEE13emplace_frontIJRS5_EEEvDpOT_
 7a44e0,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::BattleSide::UpdateCoop()::$_0, void (game::Unit*)>::deleting destructor"
 7a4510,80,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::BattleSide::UpdateCoop()::$_0, void (game::Unit*)>::__clone()"
 7a4560,24,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::BattleSide::UpdateCoop()::$_0, void (game::Unit*)>::__clone(__base*)"
@@ -13615,7 +13615,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 7bb6c0,660,verified,src/game/templates/deque_back_capacity_value.cpp,_ZNSt3__15dequeIN4game16UnrecoveredValueILj1ELm4ELm4EEENS_9allocatorIS3_EEE19__add_back_capacityEv
 7bba00,280,verified,src/game/templates/deque.cpp,_ZNSt3__114__split_bufferIPPN4game11UnrecoveredILj27EEENS_9allocatorIS5_EEE12emplace_backIJRS5_EEEvDpOT_
 7bbb60,280,verified,src/game/templates/deque.cpp,_ZNSt3__114__split_bufferIPPN4game11UnrecoveredILj28EEENS_9allocatorIS5_EEE12emplace_backIJRS5_EEEvDpOT_
-7bbcc0,300,verified,src/game/templates/deque.cpp,_ZNSt3__114__split_bufferIPPN4game11UnrecoveredILj10EEENS_9allocatorIS5_EEE13emplace_frontIJRS5_EEEvDpOT_
+7bbcc0,340,verified,src/game/templates/deque.cpp,_ZNSt3__114__split_bufferIPPN4game11UnrecoveredILj10EEENS_9allocatorIS5_EEE13emplace_frontIJRS5_EEEvDpOT_
 7bc4b0,44,verified,src/memory/new_delete.cpp,deleting destructor at 0x7bc4b0
 7be060,24,verified,src/llvm-libcxx-21/libcxx/include/__vector/vector.h,std::vector<T>::__throw_length_error()
 7be360,80,verified,src/memory/new_delete.cpp,deleting destructor at 0x7be360
@@ -31946,7 +31946,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 10e7f00,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::character::IKChariot::IKChariot(game::character::CharacterBuilder const*, game::character::DisabledBy const&)::$_5, void (int, nn::g3d::WorldMtxManip&)>::target(std::type_info const&)"
 10e7f20,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::character::IKChariot::IKChariot(game::character::CharacterBuilder const*, game::character::DisabledBy const&)::$_5, void (int, nn::g3d::WorldMtxManip&)>::target_type()"
 10e9c20,488,verified,src/game/templates/deque_back_capacity_inline.cpp,_ZNSt3__15dequeIN12_GLOBAL__N_15ValueILj11ELm48ELm8EEENS_9allocatorIS3_EEE19__add_back_capacityEv
-10ea120,280,verified,src/game/templates/deque.cpp,_ZNSt3__114__split_bufferIPPN4game11UnrecoveredILj43EEENS_9allocatorIS5_EEE12emplace_backIJRS5_EEEvDpOT_
+10ea120,320,verified,src/game/templates/deque.cpp,_ZNSt3__114__split_bufferIPPN4game11UnrecoveredILj43EEENS_9allocatorIS5_EEE12emplace_backIJRS5_EEEvDpOT_
 10ed0d0,80,verified,src/memory/new_delete.cpp,deleting destructor at 0x10ed0d0
 10ed270,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::combat::(anonymous namespace)::BMapZoomIn::Schedule()::'lambda'(float), void (float)>::deleting destructor"
 10ed2a0,60,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::combat::(anonymous namespace)::BMapZoomIn::Schedule()::'lambda'(float), void (float)>::__clone()"
