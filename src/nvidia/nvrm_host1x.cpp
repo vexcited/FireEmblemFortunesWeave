@@ -6,6 +6,7 @@ enum NvError : int32_t {
   NvError_BadAddress = 3,
   NvError_BadParameter = 4,
   NvError_InsufficientMemory = 6,
+  NvError_KernelDriverNotFound = 0x30012,
 };
 
 struct NvRmHost1x {
@@ -19,7 +20,11 @@ struct NvRmHost1xChannel {
   NvRmHost1x* owner;
   int32_t fd;
   uint32_t moduleClass;
+  char name[32];
+  uint8_t reserved30[0x88];
 };
+
+static_assert(sizeof(NvRmHost1xChannel) == 0xb8);
 
 struct NvRmHost1xWaiter {
   NvRmHost1x* host;
@@ -56,6 +61,9 @@ extern "C" uint64_t NvOsGetTimeNS();
 extern "C" NvError NvOsDrvIoctl(int32_t fd, uint32_t request, void* argument,
   uint64_t size);
 extern "C" int strcmp(const char* first, const char* second);
+extern "C" char* strncpy(char* destination, const char* source,
+  unsigned long size);
+extern "C" int32_t NvRm_MemmgrGetIoctlFile();
 extern "C" int32_t sync_create_nvrm_mapping(const NvRmSyncPoint* syncpoints,
   uint32_t count);
 extern "C" NvError NvRmHost1xChannelOpen(NvRmHost1xChannel** pOutChannel,
@@ -103,6 +111,8 @@ extern "C" NvError NvRmChannelSetModuleBandwidth(void* channel,
   NvRmHost1xSyncpoint* syncpoint);
 [[gnu::visibility("hidden")]] NvError NvRmHost1xAttachedCall(
   NvRmHost1xSyncpoint* syncpoint);
+[[gnu::visibility("hidden")]] NvError NvRmHost1xAttachedCall(
+  NvRmHost1xChannel* channel);
 [[gnu::visibility("hidden")]] NvError NvRmHost1xAttachedCall(NvRmHost1x* host,
   uint32_t id, uint32_t* pOutValue);
 [[gnu::visibility("hidden")]] NvError NvRmHost1xAttachedCall(
@@ -120,6 +130,7 @@ const uint32_t NvHostIoctlSyncptAlloc = 0xc0080027;
 const uint32_t NvHostIoctlSyncptFree = 0x40040028;
 const uint32_t NvHostIoctlChannelGetSyncpoint = 0xc0080002;
 const uint32_t NvHostIoctlChannelSetTimeout = 0x40040007;
+const uint32_t NvHostIoctlChannelSetNvmapFd = 0x40044801;
 
 const uint64_t NvRmHost1xTimeoutInfinite = INT64_MAX / 1000;
 const uint32_t NvRmChannelModuleCount = 121;
@@ -556,4 +567,104 @@ extern "C" NvError NvRmHost1xChannelSubmitPRIVATE(NvRmHost1xChannel* channel,
   return NvRmChannelSubmit(channel, argument1, argument2, argument3,
     argument5, argument6, argument7, argument8, 0, 0, 0, false, 0, 0, 0,
     argument9, argument10, argument11, argument12, argument4, 0, 0);
+}
+
+// Known engines map to their device nodes, a name starting with a slash is
+// a device path itself.
+extern "C" [[gnu::noinline, clang::no_builtin("strcmp")]] NvError
+NvRmHost1xChannelOpen(NvRmHost1xChannel** pOutChannel, NvRmHost1x* host,
+  const char* moduleName, uint32_t flags) {
+  if (flags & 1) {
+    return NvError_NotSupported;
+  }
+
+  const char* path = nullptr;
+  uint32_t moduleClass = 0;
+  if (strcmp(moduleName, "vic") == 0) {
+    path = "/dev/nvhost-vic";
+    moduleClass = 0x5d;
+  }
+
+  if (strcmp(moduleName, "nvenc") == 0) {
+    path = "/dev/nvhost-msenc";
+    moduleClass = 0x21;
+  }
+
+  if (strcmp(moduleName, "nvenc1") == 0) {
+    path = "/dev/nvhost-nvenc1";
+    moduleClass = 0x22;
+  }
+
+  if (strcmp(moduleName, "nvdec") == 0) {
+    path = "/dev/nvhost-nvdec";
+    moduleClass = 0xf0;
+  }
+
+  if (strcmp(moduleName, "nvdec1") == 0) {
+    path = "/dev/nvhost-nvdec1";
+    moduleClass = 0xf5;
+  }
+
+  if (strcmp(moduleName, "nvjpg") == 0) {
+    path = "/dev/nvhost-nvjpg";
+    moduleClass = 0xc0;
+  }
+
+  if (strcmp(moduleName, "tsec") == 0) {
+    path = "/dev/nvhost-tsec";
+    moduleClass = 0xe0;
+  }
+
+  if (strcmp(moduleName, "tsecb") == 0) {
+    path = "/dev/nvhost-tsecb";
+    moduleClass = 0xe1;
+  }
+
+  if (moduleName[0] == '/') {
+    path = moduleName;
+  }
+
+  if (path == nullptr) {
+    return NvError_BadParameter;
+  }
+
+  auto* channel = static_cast<NvRmHost1xChannel*>(
+    NvOsAlloc(sizeof(NvRmHost1xChannel)));
+  if (channel == nullptr) {
+    return NvError_InsufficientMemory;
+  }
+
+  *channel = {};
+  int32_t nvmapFd = 0;
+  channel->owner = host;
+  channel->moduleClass = moduleClass;
+  strncpy(channel->name, moduleName, sizeof(channel->name) - 1);
+  channel->name[sizeof(channel->name) - 1] = '\0';
+
+  NvError result;
+  channel->fd = NvRmChannelOpenFd(path);
+  if (channel->fd < 0) {
+    result = NvError_NotSupported;
+  }
+  else {
+    nvmapFd = NvRm_MemmgrGetIoctlFile();
+    if (NvRmChannelIoctl(channel->fd, NvHostIoctlChannelSetNvmapFd,
+      &nvmapFd, sizeof(nvmapFd)) != NvSuccess) {
+      result = NvError_KernelDriverNotFound;
+    }
+    else {
+      result = NvSuccess;
+      if (host->isSyncpointAttachSupported == 1) {
+        result = NvRmHost1xAttachedCall(channel);
+      }
+
+      if (result == NvSuccess) {
+        *pOutChannel = channel;
+        return NvSuccess;
+      }
+    }
+  }
+
+  NvOsFree(channel);
+  return result;
 }
