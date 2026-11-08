@@ -14037,6 +14037,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 4c3670,144,verified,src/nn/movie/detail/movie_heap.cpp,MovieFree
 4c3700,176,verified,src/nn/movie/detail/movie_heap.cpp,MovieStrdup
 4c37b0,168,verified,src/nn/movie/detail/movie_heap.cpp,MovieMallocUsableSize
+4c3a80,728,verified,src/nn/movie/detail/movie_media_extractor_state.cpp,_ZN2nn5movie6detail19MediaExtractorStateC2Ev
 4c3d60,404,verified,src/nn/movie/detail/movie_media_extractor_state.cpp,_ZNK2nn5movie6detail19MediaExtractorState20ValidateCurrentStateENS2_23MediaExtractorFunctionsE
 4c42c0,364,verified,src/nn/movie/detail/movie_codec_utils.cpp,_ZN2nn5movie6detail26ParseAvccCodecSpecificDataEPcmPmPKvm
 4c4430,444,verified,src/nn/movie/detail/movie_codec_utils.cpp,_ZN2nn5movie6detail19MimeToMediaMimeTypeEPKc
@@ -14281,6 +14282,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 4dc790,32,verified,src/nn/movie/detail/movie_media_muxer_impl.cpp,_ZN2nn5movie6detail14MediaMuxerImpl8AllocateEmm
 4dc7c0,176,verified,src/nn/movie/detail/movie_media_muxer_impl.cpp,_ZN2nn5movie6detail21MediaMuxerThreadEntryEPv
 4dc8e0,60,verified,src/nn/movie/detail/movie_media_muxer_impl.cpp,_ZN2nn5movie6detail14MediaMuxerImpl20MediaMuxerThreadLoopEv
+4dcd00,220,verified,src/nn/movie/detail/movie_media_muxer_state.cpp,_ZN2nn5movie6detail15MediaMuxerStateC2Ev
 4dcde0,404,verified,src/nn/movie/detail/movie_media_muxer_state.cpp,_ZNK2nn5movie6detail15MediaMuxerState20ValidateCurrentStateENS2_19MediaMuxerFunctionsE
 4dcf80,24,verified,src/nn/movie/detail/movie_message.cpp,_ZN2nn5movie6detail7Message5ResetEv
 4dcfa0,8,verified,src/nn/movie/detail/movie_message.cpp,_ZN2nn5movie6detail7Message9GetWaiterEv

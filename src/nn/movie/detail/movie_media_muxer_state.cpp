@@ -15,6 +15,17 @@ constexpr Result StateErrors[] = {
 
 }
 
+MediaMuxerState::MediaMuxerState() : MediaState() {
+  SetValidStates(MediaMuxerFunctions_Initialize, {0});
+  SetValidStates(MediaMuxerFunctions_Finalize, {0, 1, 4, 5, 9});
+  SetValidStates(MediaMuxerFunctions_Configure, {1});
+  SetValidStates(MediaMuxerFunctions_AddTrack, {1});
+  SetValidStates(MediaMuxerFunctions_GetTrackCount, {1, 4});
+  SetValidStates(MediaMuxerFunctions_Start, {1});
+  SetValidStates(MediaMuxerFunctions_WriteAsync, {4});
+  SetValidStates(MediaMuxerFunctions_Stop, {4});
+}
+
 Result MediaMuxerState::ValidateCurrentState(
   MediaMuxerFunctions function) const {
   State state = GetState();
