@@ -220,3 +220,37 @@ int AwaitAnyImpl(ResumeBlocker* blocker) {
 }
 
 }
+
+namespace nn::async {
+
+void Await(os::EventType* event) {
+  ResumeBlockerOne blocker(event);
+  detail::AwaitImpl(&blocker);
+}
+
+void Await(os::MessageQueueType* queue, os::MessageQueueWaitType waitType) {
+  ResumeBlockerOne blocker(queue, waitType);
+  detail::AwaitImpl(&blocker);
+}
+
+void Await(os::SemaphoreType* semaphore) {
+  ResumeBlockerOne blocker(semaphore);
+  detail::AwaitImpl(&blocker);
+}
+
+void Await(os::SystemEventType* event) {
+  ResumeBlockerOne blocker(event);
+  detail::AwaitImpl(&blocker);
+}
+
+void Await(os::ThreadType* thread) {
+  ResumeBlockerOne blocker(thread);
+  detail::AwaitImpl(&blocker);
+}
+
+void Await(os::TimerEventType* event) {
+  ResumeBlockerOne blocker(event);
+  detail::AwaitImpl(&blocker);
+}
+
+}

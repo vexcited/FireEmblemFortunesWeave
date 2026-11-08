@@ -8,8 +8,13 @@
 
 #include "nn/memory_resource.hpp"
 #include "nn/os/condition_variable.hpp"
+#include "nn/os/event.hpp"
+#include "nn/os/message_queue.hpp"
 #include "nn/os/multi_wait.hpp"
 #include "nn/os/mutex.hpp"
+#include "nn/os/semaphore.hpp"
+#include "nn/os/system_event.hpp"
+#include "nn/os/timer_event.hpp"
 #include "nn/util/intrusive_list.hpp"
 
 namespace nn::async {
@@ -49,6 +54,12 @@ private:
 
 class GroupWaitHolderOne final : public GroupWaitHolder {
 public:
+  template<typename... Args>
+  explicit GroupWaitHolderOne(Args... args) : m_Inner() {
+    os::InitializeMultiWaitHolder(&m_Inner.holder, args...);
+    m_Inner.owner = this;
+  }
+
   ~GroupWaitHolderOne() override;
 
   void Finalize();
@@ -103,6 +114,26 @@ public:
   virtual ~ResumeBlocker() = default;
   virtual detail::GroupWaitHolder* GetGroupWaitHolder() = 0;
 };
+
+class ResumeBlockerOne final : public ResumeBlocker {
+public:
+  template<typename... Args>
+  explicit ResumeBlockerOne(Args... args) : m_Holder(args...) {}
+
+  detail::GroupWaitHolder* GetGroupWaitHolder() override {
+    return &m_Holder;
+  }
+
+private:
+  detail::GroupWaitHolderOne m_Holder;
+};
+
+void Await(os::EventType* event);
+void Await(os::MessageQueueType* queue, os::MessageQueueWaitType waitType);
+void Await(os::SemaphoreType* semaphore);
+void Await(os::SystemEventType* event);
+void Await(os::ThreadType* thread);
+void Await(os::TimerEventType* event);
 
 namespace detail {
 
