@@ -8,13 +8,17 @@ namespace nn::ro::detail {
 using LookupGlobalAutoFunction = uintptr_t (*)(const char* pName);
 
 extern LookupGlobalAutoFunction g_pLookupGlobalAutoFunctionPointer;
+extern uint32_t g_RoBusyMutex;
+extern RoModule* g_pManualLoadList;
 
 [[gnu::visibility("hidden")]] const Elf64Symbol* LookupModuleSymbolImpl(
   const RoModule* pModule, const char* pName);
-uintptr_t LookupGlobalManual(const RoModule* pModule, const char* pName);
+[[gnu::visibility("hidden")]] void LockBusyMutexImpl(uint32_t* pMutex);
+[[gnu::visibility("hidden")]] void UnlockBusyMutexImpl(uint32_t* pMutex);
 
 namespace {
 
+constexpr uint8_t SymbolBindingShift = 4;
 constexpr uint8_t SymbolBindingMask = 0xf0;
 constexpr uint8_t SymbolBindingWeak = 0x20;
 constexpr uint8_t SymbolVisibilityMask = 0x3;
@@ -29,6 +33,32 @@ constexpr size_t RelEntrySize = 0x10;
   uintptr_t address) {
   return pModule->baseAddress <= address &&
     address < pModule->baseAddress + pModule->size;
+}
+
+// Only global symbols resolve. A module loaded without references may only
+// resolve its own imports.
+[[gnu::always_inline]] inline uintptr_t LookupGlobalManualImpl(
+  const RoModule* pRequester, const char* pName) {
+  LockBusyMutexImpl(&g_RoBusyMutex);
+  uintptr_t address = 0;
+  for (RoModule* pModule = g_pManualLoadList->pNext;
+    pModule != g_pManualLoadList; pModule = pModule->pNext) {
+    const Elf64Symbol* pSymbol = LookupModuleSymbolImpl(pModule, pName);
+    if (pSymbol == nullptr || (pSymbol->info >> SymbolBindingShift) == 0) {
+      continue;
+    }
+
+    address = pSymbol->value + pModule->baseAddress;
+    if (pModule != pRequester &&
+      (pModule->flags & ModuleFlag_NotReferenced) != 0) {
+      diag::detail::AbortImpl();
+    }
+
+    break;
+  }
+
+  UnlockBusyMutexImpl(&g_RoBusyMutex);
+  return address;
 }
 
 [[gnu::always_inline]] inline bool IsDataRelocation(uint32_t type) {
@@ -78,6 +108,40 @@ constexpr size_t RelEntrySize = 0x10;
   }
 }
 
+}
+
+[[gnu::noinline]] uintptr_t LookupGlobalManual(const RoModule* pRequester,
+  const char* pName) {
+  return LookupGlobalManualImpl(pRequester, pName);
+}
+
+// Resolves one lazy call slot and patches it.
+uintptr_t Bind(RoModule* pModule, uint32_t index) {
+  NN_ABORT_UNLESS((pModule->flags & ModuleFlag_PltIsRela) != 0);
+  const Elf64Rela& relocation = pModule->pPltRelocations[index];
+  const Elf64Symbol& symbol = pModule->pSymbols[relocation.info >> 32];
+  const char* pName = pModule->pStrings + symbol.name;
+  uintptr_t address = 0;
+  if ((symbol.other & SymbolVisibilityMask) != 0) {
+    const Elf64Symbol* pOwnSymbol = LookupModuleSymbolImpl(pModule, pName);
+    if (pOwnSymbol != nullptr) {
+      address = pOwnSymbol->value + pModule->baseAddress;
+    }
+  }
+  else {
+    address = g_pLookupGlobalAutoFunctionPointer(pName);
+    if (address == 0) {
+      address = LookupGlobalManualImpl(pModule, pName);
+    }
+  }
+
+  if (address != 0) {
+    address += relocation.addend;
+  }
+
+  *reinterpret_cast<uintptr_t*>(pModule->baseAddress + relocation.offset) =
+    address;
+  return address;
 }
 
 void RoModule::RestoreVariables(RoModule* pOther) {
