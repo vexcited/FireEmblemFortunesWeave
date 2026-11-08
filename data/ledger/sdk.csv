@@ -2023,7 +2023,11 @@ b9660,248,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag6detail7LogImplERKNS
 b9760,48,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag6detail7PutImplERKNS0_11LogMetaDataEPKcm
 b9790,52,verified,src/nn/diag/diag_c_api_abort.cpp,nndetailDiagVLogImplForC
 b9840,4,verified,src/nn/diag/diag_c_api_misc.cpp,nndetailDiagPutImplForC
+b9ac0,180,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag6detail18CallAllLogObserverERKNS0_11LogMetaDataERKNS0_7LogBodyE
 b9d50,16,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag27InitializeLogObserverHolderEPNS0_17LogObserverHolderEPFvRKNS0_11LogMetaDataERKNS0_7LogBodyEPvES9_
+b9d60,156,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag19RegisterLogObserverEPNS0_17LogObserverHolderE
+b9e00,172,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag6detail23ResetDefaultLogObserverEv
+b9eb0,188,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag24EnableDefaultLogObserverEb
 ba000,80,verified,src/nn/diag/abort_observer.cpp,_ZN2nn4diag6detail27DestroyAbortObserverManagerEPv
 ba050,112,verified,src/nn/diag/diag_module_misc.cpp,_ZN2nn4diag14GetProcessNameEPcm
 ba0c0,4,verified,src/nn/diag/diag_check.cpp,_ZN2nn4diag13OnResultThrowENS_6ResultERKNS0_10SourceInfoE

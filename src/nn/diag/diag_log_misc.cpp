@@ -3,8 +3,11 @@
 #include <stdint.h>
 #include <string.h>
 
+#include "libc/cxx_guard.hpp"
 #include "nn/diag/detail/diag_module_parser.hpp"
+#include "nn/os/reader_writer_lock.hpp"
 #include "nn/result.hpp"
+#include "rtld/crt_registration.hpp"
 
 namespace nn::os {
 
@@ -57,9 +60,13 @@ using LogObserver = void (*)(const LogMetaData& metaData, const LogBody& body,
 struct LogObserverHolder {
   LogObserver observer;
   LogObserverHolder* pNext;
-  bool isRegistered;
+  uint8_t isRegistered;
   void* pArgument;
 };
+
+void RegisterLogObserver(LogObserverHolder* pHolder);
+void UnregisterLogObserver(LogObserverHolder* pHolder);
+void EnableDefaultLogObserver(bool isEnabled);
 
 struct ModuleInfo;
 
@@ -95,6 +102,32 @@ size_t GetSymbolSizeImpl(uintptr_t address);
 void PrepareAbort();
 int GetAllModuleInfoImpl(size_t* pOutSize, void* pBuffer, size_t bufferSize,
   bool isSizeQuery);
+
+struct LogObserverManager {
+  LogObserverHolder* pHead;
+  LogObserverHolder** ppTail;
+  os::ReaderWriterLockType lock;
+};
+
+void PrintDebugStringLogObserver(const LogMetaData& metaData,
+  const LogBody& body, void* pArgument);
+void ResetDefaultLogObserver();
+void DestroyAbortObserverManager(void* pManager);
+
+// Builds the manager and registers the default observer, out of line in the
+// original.
+[[gnu::visibility("hidden")]] void ConstructLogObserverManager();
+
+// The guard, the default holder and the manager sit next to each other and
+// the original addresses them through one base.
+struct LogObserverState {
+  uint64_t guard;
+  LogObserverHolder defaultHolder;
+  LogObserverManager manager;
+};
+
+[[gnu::visibility("hidden")]] extern LogObserverState g_LogObserverState;
+[[gnu::visibility("hidden")]] extern unsigned char g_SdkCrtHandle[];
 
 // Formatted text gathers in a small buffer, each flush sends one piece and
 // clears isHead.
@@ -137,8 +170,59 @@ void InitializeLogObserverHolder(LogObserverHolder* pHolder,
   LogObserver observer, void* pArgument) {
   pHolder->observer = observer;
   pHolder->pNext = nullptr;
-  pHolder->isRegistered = false;
+  pHolder->isRegistered = 0;
   pHolder->pArgument = pArgument;
+}
+
+namespace {
+
+[[gnu::always_inline]] inline detail::LogObserverManager* GetManager() {
+  auto* pInitialized =
+    reinterpret_cast<uint8_t*>(&detail::g_LogObserverState.guard);
+  if (!(__atomic_load_n(pInitialized, __ATOMIC_ACQUIRE) & 1) &&
+    __cxa_guard_acquire(&detail::g_LogObserverState.guard)) {
+    detail::ConstructLogObserverManager();
+    fw::rtld::RegisterCrtDestructor(detail::DestroyAbortObserverManager,
+      &detail::g_LogObserverState.manager,
+      reinterpret_cast<uintptr_t>(detail::g_SdkCrtHandle));
+    __cxa_guard_release(&detail::g_LogObserverState.guard);
+  }
+
+  return &detail::g_LogObserverState.manager;
+}
+
+[[gnu::always_inline]] inline void Register(LogObserverHolder* pHolder) {
+  detail::LogObserverManager* pManager = GetManager();
+  os::AcquireWriteLock(&pManager->lock);
+  *pManager->ppTail = pHolder;
+  pManager->ppTail = &pHolder->pNext;
+  pHolder->pNext = nullptr;
+  pHolder->isRegistered = 1;
+  os::ReleaseWriteLock(&pManager->lock);
+}
+
+}
+
+void RegisterLogObserver(LogObserverHolder* pHolder) {
+  Register(pHolder);
+}
+
+void EnableDefaultLogObserver(bool isEnabled) {
+  LogObserverHolder* pHolder = &detail::g_LogObserverState.defaultHolder;
+  if (isEnabled) {
+    if (pHolder->isRegistered & 1) {
+      return;
+    }
+
+    Register(pHolder);
+    return;
+  }
+
+  if (pHolder->isRegistered == 0) {
+    return;
+  }
+
+  UnregisterLogObserver(pHolder);
 }
 
 uintptr_t GetModulePath(char* pOutPath, size_t size, uintptr_t address) {
@@ -256,6 +340,28 @@ constexpr size_t LogBufferSize = 0x80;
   CallAllLogObserver(*state.pMetaData, body);
 }
 
+}
+
+[[gnu::noinline]] void CallAllLogObserver(const LogMetaData& metaData,
+  const LogBody& body) {
+  LogObserverManager* pManager = GetManager();
+  os::AcquireReadLock(&pManager->lock);
+  for (LogObserverHolder* pHolder = pManager->pHead; pHolder != nullptr;
+    pHolder = pHolder->pNext) {
+    pHolder->observer(metaData, body, pHolder->pArgument);
+  }
+
+  os::ReleaseReadLock(&pManager->lock);
+}
+
+void ResetDefaultLogObserver() {
+  LogObserverHolder* pHolder = &g_LogObserverState.defaultHolder;
+  UnregisterLogObserver(pHolder);
+  pHolder->observer = PrintDebugStringLogObserver;
+  pHolder->pNext = nullptr;
+  pHolder->isRegistered = 0;
+  pHolder->pArgument = nullptr;
+  Register(pHolder);
 }
 
 void VLogImpl(const LogMetaData& metaData, const char* format,
