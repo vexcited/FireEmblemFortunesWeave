@@ -250,8 +250,12 @@ private:
   os::SystemEventType m_StreamSourceDataEvent;
   os::SystemEventType m_StreamSourceSeekEvent;
   os::SystemEventType m_SeekCompletedEvent;
-  os::EventType m_TaskCompletedEvent;
-  os::EventType m_ErrorEvent;
+  union {
+    os::EventType m_TaskCompletedEvent;
+  };
+  union {
+    os::EventType m_ErrorEvent;
+  };
   int m_TrackCount;
   size_t m_PreferredPixels;
   size_t m_MinBandwidthSamples;
@@ -259,7 +263,10 @@ private:
   ThreadInfo* m_pWorkerThread;
   void* m_pThreadInstance;
   uintptr_t* m_pMessageQueueBuffer;
-  os::MessageQueueType m_MessageQueue;
+  // The original constructs nothing in the queue before initializing it.
+  union {
+    os::MessageQueueType m_MessageQueue;
+  };
   bool m_IsWorkerStopped;
   os::MutexType m_MessageMutex;
   AllocatorInfo* m_pAllocatorInfo;
