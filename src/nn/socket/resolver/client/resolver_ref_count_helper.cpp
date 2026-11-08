@@ -20,34 +20,38 @@ namespace {
 
 constexpr uint32_t ResolverCallsEnabledFlag = 0x80000000;
 
-bool g_IsInitialized;
-std::atomic<uint32_t> g_Count;
-os::EventType g_Event;
+struct State {
+  bool isInitialized;
+  std::atomic<uint32_t> count;
+  os::EventType event;
+};
+
+State g_State;
 
 [[gnu::always_inline]] inline void DecrementAndSignal() {
-  const uint32_t previous = g_Count.fetch_sub(1);
-  const uint32_t current = g_Count.load();
+  const uint32_t previous = g_State.count.fetch_sub(1);
+  const uint32_t current = g_State.count.load();
   if (previous == 1 && (current & ResolverCallsEnabledFlag) == 0 &&
-    g_IsInitialized) {
-    os::SignalEvent(&g_Event);
+    g_State.isInitialized) {
+    os::SignalEvent(&g_State.event);
   }
 }
 
 }
 
 void RefCountHelperInitialize() {
-  if (g_IsInitialized) {
+  if (g_State.isInitialized) {
     return;
   }
-  os::InitializeEvent(&g_Event, false,
+  os::InitializeEvent(&g_State.event, false,
     os::EventClearMode_AutoClear);
-  g_IsInitialized = true;
+  g_State.isInitialized = true;
 }
 
 void RefCountHelperFinalize() {
-  if (g_IsInitialized == true) {
-    g_IsInitialized = false;
-    os::FinalizeEvent(&g_Event);
+  if (g_State.isInitialized == true) {
+    g_State.isInitialized = false;
+    os::FinalizeEvent(&g_State.event);
   }
 }
 
@@ -56,8 +60,8 @@ void DecrementSocketAndSignalIfNeeded() {
 }
 
 bool IncrementSocketIfNeeded() {
-  g_Count.fetch_add(1);
-  const uint32_t current = g_Count.load();
+  g_State.count.fetch_add(1);
+  const uint32_t current = g_State.count.load();
   if ((current & ResolverCallsEnabledFlag) == 0) {
     DecrementAndSignal();
   }
@@ -65,27 +69,27 @@ bool IncrementSocketIfNeeded() {
 }
 
 bool AreResolverCallsEnabled() {
-  return g_Count.load() >> 31;
+  return g_State.count.load() >> 31;
 }
 
 void WaitForAllResolverCallsToComplete() {
-  if (g_IsInitialized != true) {
+  if (g_State.isInitialized != true) {
     return;
   }
-  while (g_Count.load() != 0) {
-    os::WaitEvent(&g_Event);
+  while (g_State.count.load() != 0) {
+    os::WaitEvent(&g_State.event);
   }
 }
 
 void EnableResolverCalls() {
-  if (g_IsInitialized == true) {
-    os::ClearEvent(&g_Event);
+  if (g_State.isInitialized == true) {
+    os::ClearEvent(&g_State.event);
   }
-  g_Count.store(ResolverCallsEnabledFlag);
+  g_State.count.store(ResolverCallsEnabledFlag);
 }
 
 void DisableResolverCalls() {
-  g_Count.fetch_and(~ResolverCallsEnabledFlag);
+  g_State.count.fetch_and(~ResolverCallsEnabledFlag);
 }
 
 }
