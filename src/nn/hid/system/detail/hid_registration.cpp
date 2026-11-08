@@ -1,5 +1,4 @@
 #include "nn/hid/detail/hid_abort.hpp"
-#include "nn/hid/detail/hid_api.hpp"
 #include "nn/hid/detail/hid_server.hpp"
 #include "nn/hid/detail/hid_utility.hpp"
 

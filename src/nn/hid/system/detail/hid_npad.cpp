@@ -65,6 +65,11 @@ Result ApplyNpadSystemCommonPolicyFull() {
     utility::GetAppletResourceUserId());
 }
 
+// Applets cannot narrow the styles in this version, the call succeeds.
+Result SetSupportedNpadStyleSetOfCallerApplet(NpadStyleSet /* styles */) {
+  return {0};
+}
+
 Result SetSupportedNpadStyleSetAll() {
   sf::SharedPointer<IHidSystemServer> proxy;
   server::CreateHidSystemServerProxy(&proxy);

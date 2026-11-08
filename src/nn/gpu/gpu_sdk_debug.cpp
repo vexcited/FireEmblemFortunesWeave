@@ -5,9 +5,7 @@
 
 namespace nn::gs {
 
-struct NativeMemoryHandle {
-  uint32_t value;
-};
+enum class NativeMemoryHandle : uint32_t {};
 
 namespace external {
 

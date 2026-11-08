@@ -3874,6 +3874,8 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 137140,88,verified,src/nn/lmem/exp_heap_inspection.cpp,_ZN2nn4lmem6detail21VisitExpHeapAllocatedEPNS1_8HeapHeadEPFvPvS3_mEm
 1371a0,4,verified,src/nn/lmem/exp_heap_inspection.cpp,_ZN2nn4lmem6detail11DumpExpHeapEPNS1_8HeapHeadE
 1371b0,464,verified,src/nn/lmem/exp_heap.cpp,_ZN2nn4lmem6detail20AllocateExpHeapBlockEPNS1_12ExpHeapStateEmmmi
+137390,8,verified,src/nn/lmem/frame_heap.cpp,_ZN2nn4lmem6detail17GetNextBlockFrontEPNS1_8HeapHeadE
+1373a0,8,verified,src/nn/lmem/frame_heap.cpp,_ZN2nn4lmem6detail16GetNextBlockRearEPNS1_8HeapHeadE
 1373b0,108,verified,src/nn/lmem/frame_heap.cpp,_ZN2nn4lmem6detail15CreateFrameHeapEPvmi
 137420,112,verified,src/nn/lmem/frame_heap.cpp,_ZN2nn4lmem6detail15CreateFrameHeapEPvmiPNS1_8HeapHeadE
 137490,4,verified,src/nn/lmem/frame_heap.cpp,_ZN2nn4lmem6detail16DestroyFrameHeapEPNS1_8HeapHeadE
@@ -12991,6 +12993,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 475e50,64,verified,src/nn/gpu/gpu_sdk_image_preference.cpp,_ZN2nn3gpu3sdk28MakeRgbaBlockImagePreferenceEiiiiNS_3gsv7imgdesc4impl4user5ounce24GpuOunceImagePixelFormatEtNS6_24GpuOunceImageBlockFormatE
 475e90,52,verified,src/nn/gpu/gpu_sdk_image_preference.cpp,_ZN2nn3gpu3sdk28MakeRgbaPitchImagePreferenceEiiiNS_3gsv7imgdesc4impl4user5ounce24GpuOunceImagePixelFormatENS6_17GpuOunceAlphaModeEt
 475ed0,68,verified,src/nn/gpu/gpu_sdk_debug.cpp,_ZN2nn3gpu3sdk26CreateNativeMemoryForDebugEPNS_2gs18NativeMemoryHandleEPvmNS1_15GpuMemoryHandleEm
+475f20,4,verified,src/nn/gpu/gpu_sdk_debug.cpp,_ZN2nn3gpu3sdk27DestroyNativeMemoryForDebugENS_2gs18NativeMemoryHandleE
 475f30,92,verified,src/nn/gpu/gpu_sdk_debug.cpp,_ZN2nn3gpu3sdk34QueryNativeMemoryNvRmMemIdForDebugEPjNS_2gs18NativeMemoryHandleE
 475f90,64,verified,src/nn/grc/grc_movie_api.cpp,_ZN2nn3grc3dev25InitializeMovieMakerProxyEONS_2sf13SharedPointerINS_6grcsrv11IMovieMakerEEE
 475fd0,32,verified,src/nn/grc/grc_movie_api.cpp,_ZN2nn3grc3dev23FinalizeMovieMakerProxyEv
@@ -17530,6 +17533,8 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 5a8350,12,verified,src/nn/prepo/prepo_async_context.cpp,_ZN2nn5prepo12AsyncContextC2ENS_6ResultE
 5a8360,12,verified,src/nn/prepo/prepo_api.cpp,_ZN2nn5prepo10InitializeEv
 5a8500,88,verified,src/nn/prepo/prepo_api.cpp,_ZN2nn5prepo21GetTransmissionStatusEPNS0_18TransmissionStatusE
+5a86b0,4,verified,src/nn/prepo/prepo_api.cpp,_ZN2nn5prepo18SetApplicationInfoENS_13ApplicationIdEt
+5a86c0,4,verified,src/nn/prepo/prepo_api.cpp,_ZN2nn5prepo26SetNplnServiceAccountTokenEPKc
 5a86d0,60,verified,src/nn/prepo/prepo_api.cpp,_ZN2nn5prepo27IsUserAgreementCheckEnabledEPb
 5a8710,60,verified,src/nn/prepo/prepo_api.cpp,_ZN2nn5prepo28SetUserAgreementCheckEnabledEb
 5a8750,44,verified,src/nn/prepo/prepo_api.cpp,_ZN2nn5prepo12ClearStorageEv
@@ -19541,6 +19546,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 5dff30,184,verified,src/nn/vi/vi_api.cpp,_ZN2nn2vi18CreateSharingLayerEPPNS0_5LayerEPNS0_7DisplayEPKNS0_21LayerCreationSettingsE
 5dfff0,48,verified,src/nn/vi/vi_api.cpp,_ZN2nn2vi30SetCopyrightCompositionEnabledEb
 5e0020,28,verified,src/nn/vi/vi_api.cpp,_ZN2nn2vi30InitializeCopyrightFramebufferEPvm
+5e0040,12,verified,src/nn/vi/vi_api.cpp,_ZN2nn2vi28FinalizeCopyrightFramebufferEv
 5e0050,92,verified,src/nn/vi/vi_api.cpp,_ZN2nn2vi27WriteToCopyrightFramebufferEPKvmiiiiNS0_10OriginModeE
 5e00b0,4,verified,src/nn/vi/vi_api.cpp,_ZN2nn2vi25SetMovieMakerLayerEnabledEb
 5e00c0,172,verified,src/nn/vi/vi_api.cpp,_ZN2nn2vi21CreateMovieMakerLayerEPPNS0_5LayerEPNS0_7DisplayEPKNS0_21LayerCreationSettingsE
@@ -21534,6 +21540,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 6db800,156,verified,src/nn/hid/system/detail/hid_system_detail_extra.cpp,_ZN2nn3hid6system6detail21GetUniquePadsFromNpadEPiPNS1_11UniquePadIdEiRKj
 6db8a0,124,verified,src/nn/hid/system/detail/hid_npad.cpp,_ZN2nn3hid6system6detail23GetNpadFullKeyGripColorEPNS_4util8Unorm8x4ES5_RKj
 6db920,100,verified,src/nn/hid/system/detail/hid_npad.cpp,_ZN2nn3hid6system6detail36IsHandheldButtonPressedOnConsoleModeEPb
+6db990,8,verified,src/nn/hid/system/detail/hid_npad.cpp,_ZN2nn3hid6system6detail38SetSupportedNpadStyleSetOfCallerAppletENS_4util10BitFlagSetILi32ENS0_12NpadStyleTagEEE
 6db9a0,144,verified,src/nn/hid/system/detail/hid_system_server_misc.cpp,_ZN2nn3hid6system6detail38GetSupportedNpadStyleSetOfCallerAppletEPNS_4util10BitFlagSetILi32ENS0_12NpadStyleTagEEE
 6dbb30,116,verified,src/nn/hid/system/detail/hid_npad.cpp,_ZN2nn3hid6system6detail10HasBatteryEPbRKj
 6dbbb0,124,verified,src/nn/hid/system/detail/hid_npad.cpp,_ZN2nn3hid6system6detail10HasBatteryEPbS3_RKj

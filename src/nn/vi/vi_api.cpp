@@ -284,6 +284,10 @@ void InitializeCopyrightFramebuffer(void* pMemory, size_t size) {
     CopyrightFramebufferWidth, CopyrightFramebufferHeight);
 }
 
+void FinalizeCopyrightFramebuffer() {
+  detail::g_CopyrightFramebuffer.Finalize();
+}
+
 // The framebuffer counts rows the other way around.
 void WriteToCopyrightFramebuffer(const void* pImage, size_t size, int x,
   int y, int width, int height, OriginMode mode) {

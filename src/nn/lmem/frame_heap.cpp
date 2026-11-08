@@ -34,6 +34,15 @@ static nn::os::MutexType* Mutex(HeapHead* heap) {
     reinterpret_cast<uintptr_t>(heap) + 64);
 }
 
+// Allocations grow from the head forward and from the tail backward.
+void* GetNextBlockFront(HeapHead* heap) {
+  return reinterpret_cast<void*>(Storage(heap).head);
+}
+
+void* GetNextBlockRear(HeapHead* heap) {
+  return reinterpret_cast<void*>(Storage(heap).tail);
+}
+
 HeapHead* CreateFrameHeap(void* address, size_t size, int options) {
   uintptr_t input = reinterpret_cast<uintptr_t>(address);
   uintptr_t end = input + size;

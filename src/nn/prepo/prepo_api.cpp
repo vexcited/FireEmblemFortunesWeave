@@ -1,4 +1,5 @@
 #include "nn/diag/diag_abort.hpp"
+#include "nn/ncm/ncm_ids.hpp"
 #include "nn/prepo/detail/prepo_shim_library_global.hpp"
 
 namespace nn::prepo {
@@ -26,6 +27,12 @@ Result GetTransmissionStatus(TransmissionStatus* pOutStatus) {
   }
   return result;
 }
+
+// Both settings are ignored by this version.
+void SetApplicationInfo(ApplicationId /* applicationId */,
+  uint16_t /* version */) {}
+
+void SetNplnServiceAccountToken(const char* /* pToken */) {}
 
 Result IsUserAgreementCheckEnabled(bool* pOutIsEnabled) {
   return GetSession()->IsUserAgreementCheckEnabled(
