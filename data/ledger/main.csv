@@ -29226,7 +29226,17 @@ e35a20,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"st
 e35a50,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::combat::LegionStackAttack::OnEnter()::$_3, void (game::character::SignalRoot*)>::target(std::type_info const&)"
 e35a70,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::combat::LegionStackAttack::OnEnter()::$_3, void (game::character::SignalRoot*)>::target_type()"
 e36d70,8,verified,src/game/game_trivial.cpp,_Z15GameStub_e36d70v
+e37060,140,verified,src/game/game_trivial_string_owners.cpp,_Z15GameStub_e37060m
 e372e0,8,verified,src/game/game_trivial.cpp,_Z15GameStub_e372e0m
+e374b0,140,verified,src/game/game_trivial_string_owners.cpp,_Z15GameStub_e374b0m
+e37540,140,verified,src/game/game_trivial_string_owners.cpp,_Z15GameStub_e37540m
+e375d0,140,verified,src/game/game_trivial_string_owners.cpp,_Z15GameStub_e375d0m
+e37660,140,verified,src/game/game_trivial_string_owners.cpp,_Z15GameStub_e37660m
+e376f0,140,verified,src/game/game_trivial_string_owners.cpp,_Z15GameStub_e376f0m
+e37780,140,verified,src/game/game_trivial_string_owners.cpp,_Z15GameStub_e37780m
+e37810,140,verified,src/game/game_trivial_string_owners.cpp,_Z15GameStub_e37810m
+e378a0,140,verified,src/game/game_trivial_string_owners.cpp,_Z15GameStub_e378a0m
+e37930,140,verified,src/game/game_trivial_string_owners.cpp,_Z15GameStub_e37930m
 e37a10,136,verified,src/game/game_trivial_buffer_owners.cpp,_Z15GameStub_e37a10m
 e37aa0,4,verified,src/game/game_trivial.cpp,_Z15GameStub_e37aa0v
 e37ab0,4,verified,src/game/game_trivial.cpp,_Z15GameStub_e37ab0v
@@ -35439,6 +35449,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 1127290,140,verified,src/game/map/map_chip.cpp,_ZN4game3map10CannonChipD0Ev
 1127320,140,verified,src/game/map/map_chip.cpp,_ZN4game3map16DestructibleChipD0Ev
 11273b0,140,verified,src/game/map/map_chip.cpp,_ZN4game3map8DoorChipD0Ev
+1127440,140,verified,src/game/game_trivial_string_owners.cpp,_Z16GameStub_1127440m
 11274d0,192,verified,src/game/map/map_chip.cpp,_ZN4game3map8WarpChipD2Ev
 1127670,76,verified,src/game/map/map_chip.cpp,_ZN4game3map7MapChipD2Ev
 11276c0,140,verified,src/game/map/map_chip.cpp,_ZN4game3map11BarrierChipD0Ev
@@ -42573,6 +42584,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 143ac70,92,verified,src/llvm-libcxx-21/libcxx/include/__memory/shared_ptr.h,"std::__1::__shared_ptr_emplace<game::facility::(anonymous namespace)::ExpressionLoop::(anonymous namespace)::SceneCharacterBehaviorRandomExpression, std::__1::allocator<game::facility::(anonymous namespace)::ExpressionLoop::(anonymous namespace)::SceneCharacterBehaviorRandomExpression>>::deleting destructor"
 143acd0,12,verified,src/llvm-libcxx-21/libcxx/include/__memory/shared_ptr.h,"std::__1::__shared_ptr_emplace<game::facility::(anonymous namespace)::ExpressionLoop::(anonymous namespace)::SceneCharacterBehaviorRandomExpression, std::__1::allocator<game::facility::(anonymous namespace)::ExpressionLoop::(anonymous namespace)::SceneCharacterBehaviorRandomExpression>>::__on_zero_shared()"
 143ace0,44,verified,src/llvm-libcxx-21/libcxx/include/__memory/shared_ptr.h,"std::__1::__shared_ptr_emplace<game::facility::(anonymous namespace)::ExpressionLoop::(anonymous namespace)::SceneCharacterBehaviorRandomExpression, std::__1::allocator<game::facility::(anonymous namespace)::ExpressionLoop::(anonymous namespace)::SceneCharacterBehaviorRandomExpression>>::__on_zero_shared_weak()"
+143ad10,140,verified,src/game/game_trivial_string_owners.cpp,_Z16GameStub_143ad10m
 143b4d0,44,verified,src/memory/new_delete.cpp,deleting destructor at 0x143b4d0
 143bfd0,8,verified,src/game/game_trivial.cpp,_Z16GameStub_143bfd0v
 143c070,12,verified,src/game/game_trivial_forwarders.cpp,_Z16GameStub_143c070v
@@ -55761,6 +55773,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 188a1f0,4,verified,src/ui/control/embedded_image.cpp,_ZNSt3__120__shared_ptr_emplaceIN2ui14ILayoutControl12CreateHelperINS1_7control13EmbeddedImageEEENS1_15LayoutAllocatorIS6_EEE21__on_zero_shared_weakEv
 188a350,80,verified,src/memory/new_delete.cpp,deleting destructor at 0x188a350
 188a480,232,verified,src/ui/game/control_lookup.cpp,_ZN2ui6Layout10GetControlINS_7control13EmbeddedImageEEENSt3__18weak_ptrIT_EEPN2nn4ui2d4PaneE
+188a5b0,140,verified,src/game/game_trivial_string_owners.cpp,_Z16GameStub_188a5b0m
 188a960,4,verified,src/ui/control/text_box_ex.cpp,_ZN2ui7control9TextBoxEx6UpdateEv
 188a970,40,verified,src/ui/control/text_box_ex.cpp,_ZNK2ui7control9TextBoxEx9IsVisibleEv
 188a9a0,48,verified,src/ui/control/text_box_ex.cpp,_ZN2ui7control9TextBoxEx10SetVisibleEb
