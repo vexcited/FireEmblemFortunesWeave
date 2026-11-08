@@ -34403,7 +34403,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 12305e0,616,verified,src/game/map/history_records.cpp,_ZN4game3map7history7DataAll11DeserializeERNS_6StreamE
 12308c0,416,verified,src/game/map/history_records.cpp,_ZN4game3map7history8DataDiffD2Ev
 1230a90,80,verified,src/memory/new_delete.cpp,deleting destructor at 0x1230a90
-1230ae0,1040,verified,src/game/map/history_records.cpp,_ZNK4game3map7history8DataDiff9SerializeERNS_6StreamE
+1230ae0,1100,verified,src/game/map/history_records.cpp,_ZNK4game3map7history8DataDiff9SerializeERNS_6StreamE
 1230f60,1128,verified,src/game/map/history_records.cpp,_ZN4game3map7history8DataDiff11DeserializeERNS_6StreamE
 12314a0,76,verified,src/game/map/history_records.cpp,_ZN4game3map7history18DataAdditionalUnitD2Ev
 12314f0,148,verified,src/game/map/history_records.cpp,_ZN4game3map7history18DataAdditionalUnitD0Ev

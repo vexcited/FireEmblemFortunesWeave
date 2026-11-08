@@ -13054,6 +13054,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 4a7340,124,verified,src/nn/mii/char_info_accessor.cpp,_ZN2nn3mii12IsSpecialMiiERKNS0_8CharInfoE
 4a73c0,24,verified,src/nn/mii/mii_misc.cpp,_ZN2nn3mii6detail18GetEyeRotateOffsetENS0_7EyeTypeE
 4a73e0,24,verified,src/nn/mii/mii_misc.cpp,_ZN2nn3mii6detail22GetEyebrowRotateOffsetENS0_11EyebrowTypeE
+4a7400,76,verified,src/nn/mii/mii_region_util.cpp,_ZN2nn3mii6detail11GetCreateIdEPNS0_8CreateIdERKNS0_8CharInfoE
 4a75b0,12,verified,src/nn/mii/mii_misc.cpp,_ZN2nn3mii6detail15BufferAllocatorC2EPvm
 4a75c0,4,verified,src/nn/mii/mii_misc.cpp,_ZN2nn3mii6detail15BufferAllocatorD2Ev
 4a75d0,16,verified,src/nn/mii/mii_misc.cpp,_ZN2nn3mii6detail15BufferAllocator7AdvanceEm
@@ -13208,6 +13209,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 4ac3d0,52,verified,src/nn/mii/core_data.cpp,_ZNK2nn3mii6detail11CoreDataRaw8GetMoleXEv
 4ac410,52,verified,src/nn/mii/core_data.cpp,_ZNK2nn3mii6detail11CoreDataRaw8GetMoleYEv
 4ac450,2212,verified,src/nn/mii/core_data.cpp,_ZNK2nn3mii6detail11CoreDataRaweqERKS2_
+4acd00,28,verified,src/nn/mii/mii_region_util.cpp,_ZN2nn3mii6detail25GetDefaultMiiForMiiEditorENS0_6GenderE
 4acd20,32,verified,src/nn/mii/visual_accessors.cpp,_ZN2nn3mii6detail13GetDefaultMiiEi
 4acd40,80,verified,src/nn/mii/char_info_accessor.cpp,_ZNK2nn3mii6detail10NicknameLe7IsValidEv
 4acd90,92,verified,src/nn/mii/char_info_accessor.cpp,_ZN2nn3mii6detail10NicknameLe7ConvertEPNS0_8NicknameERKS2_
@@ -13240,6 +13242,10 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 4ad620,172,verified,src/nn/mii/ver3_record.cpp,_ZN2nn3mii6detail25StoreLittleEndianNicknameEPtiRKNS0_8NicknameE
 4ad6e0,176,verified,src/nn/mii/ver3_record.cpp,_ZN2nn3mii6detail24LoadLittleEndianNicknameEPNS0_8NicknameEPKti
 4ad7a0,64,verified,src/nn/mii/core_data.cpp,_ZN2nn3mii6detail18GetDefaultNicknameEPNS0_8NicknameE
+4ad830,176,verified,src/nn/mii/mii_region_util.cpp,_ZN2nn3mii6detail26UpdateNicknameIfInvalidUgcEPNS0_8NicknameE
+4adb10,44,verified,src/nn/mii/mii_region_util.cpp,_ZN2nn3mii6detail13GetRegionCodeEv
+4adb40,80,verified,src/nn/mii/mii_region_util.cpp,_ZN2nn3mii6detail19GetMergedRegionCodeEv
+4adba0,136,verified,src/nn/mii/mii_region_util.cpp,_ZN2nn3mii6detail23IsIncludedCharacterCodeENS0_10FontRegionEt
 4ae450,192,verified,src/nn/mii/store_data.cpp,_ZNK2nn3mii6detail12StoreDataRaw8ValidateEv
 4ae510,8,verified,src/nn/mii/store_data.cpp,_ZNK2nn3mii6detail12StoreDataRaw10IsValidCrcEv
 4ae520,88,verified,src/nn/mii/store_data.cpp,_ZNK2nn3mii6detail12StoreDataRaw16IsValidDeviceCrcEv
@@ -13445,7 +13451,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 4b2750,76,verified,src/nn/mii/ver3_record.cpp,_ZNK2nn3mii6detail16Ver3StoreDataRaw14GetCreatorNameEPNS0_8NicknameE
 4b27a0,32,verified,src/nn/mii/ver3_record.cpp,_ZNK2nn3mii6detail16Ver3StoreDataRaw7IsValidEv
 4b27c0,8,verified,src/nn/mii/ver3_record.cpp,_ZN2nn3mii6detail16Ver3StoreDataRaw9UpdateCrcEv
-4b27d0,12280,verified,src/nn/mii/ver3_record.cpp,_ZN2nn3mii6detail16Ver3StoreDataRaw10SetDefaultEPNS1_11UtilityImplE
+4b27d0,13156,verified,src/nn/mii/ver3_record.cpp,_ZN2nn3mii6detail16Ver3StoreDataRaw10SetDefaultEPNS1_11UtilityImplE
 4b5b40,120,verified,src/nn/mii/ver3_fields.cpp,_ZN2nn3mii6detail16Ver3StoreDataRaw13SetMiiVersionEi
 4b5c30,120,verified,src/nn/mii/ver3_fields.cpp,_ZN2nn3mii6detail16Ver3StoreDataRaw11SetCopyableEi
 4b5d20,120,verified,src/nn/mii/ver3_fields.cpp,_ZN2nn3mii6detail16Ver3StoreDataRaw9SetNgWordEi
@@ -13541,6 +13547,9 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 4bbcd0,32,verified,src/nn/mii/mii_applet.cpp,_ZNK2nn3mii8CoreDataneERKS1_
 4bbcf0,4,verified,src/nn/mii/mii_applet.cpp,_ZNK2nn3mii9StoreDataeqERKS1_
 4bbd00,32,verified,src/nn/mii/mii_applet.cpp,_ZNK2nn3mii9StoreDataneERKS1_
+4bbd20,116,verified,src/nn/mii/mii_create_id_migration_table.cpp,_ZN2nn3mii22CreateIdMigrationTableC2Ev
+4bbdc0,160,verified,src/nn/mii/mii_create_id_migration_table.cpp,_ZNK2nn3mii22CreateIdMigrationTable11GetCreateIdEPNS0_8CreateIdERKS2_
+4bbe70,52,verified,src/nn/mii/mii_create_id_migration_table.cpp,_ZN2nn3mii22CreateIdMigrationTable11AddCreateIdERKNS0_8CreateIdES4_
 4bbeb0,4,verified,src/nn/mii/mii_applet.cpp,_ZN2nn3mii15IsValidCoreDataERKNS0_8CoreDataE
 4bbec0,4,verified,src/nn/mii/mii_applet.cpp,_ZN2nn3mii14VerifyCoreDataERKNS0_8CoreDataE
 4bbed0,4,verified,src/nn/mii/mii_applet.cpp,_ZN2nn3mii13DumpStoreDataERKNS0_9StoreDataE
@@ -13603,6 +13612,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 4bcfa0,96,verified,src/nn/mii/mii_image_database.cpp,_ZN2nn3mii13ImageDatabase11DestroyFileEv
 4bd000,104,verified,src/nn/mii/mii_image_database.cpp,_ZN2nn3mii13ImageDatabase10ImportFileEPKvm
 4bd070,116,verified,src/nn/mii/mii_image_database.cpp,_ZN2nn3mii13ImageDatabase10ExportFileEPvm
+4bd380,56,verified,src/nn/mii/mii_region_util.cpp,_ZN2nn3mii9AppendMiiERKNS0_8DatabaseERKNS0_8CharInfoE
 4bda60,168,verified,src/nn/sf/cmif/client/cmif_proxy_method.cpp,_ZN2nn2sf4cmif6client6detail16CmifProxyMethodsINS_3mii6detail14IStaticServiceENS2_19CmifDomainProxyKindINS0_4hipc6client38Hipc2ClientSessionManagedProxyKindBaseINSA_18Hipc2ProxyKindBaseILNS9_6detail11MessageTypeE6EEEEEEEE18GetDatabaseServiceERKNS0_3OutINS0_13SharedPointerINS6_16IDatabaseServiceEEEvEEi
 4bdb10,176,verified,src/nn/sf/cmif/client/cmif_proxy_factory.cpp,_ZN2nn2sf4cmif6client6detail16OutObjectCreator6CreateINS_3mii6detail16IDatabaseServiceENS2_19CmifDomainProxyKindINS0_4hipc6client38Hipc2ClientSessionManagedProxyKindBaseINSB_18Hipc2ProxyKindBaseILNSA_6detail11MessageTypeE6EEEEEEEEEvi
 4bdbc0,16,verified,src/nn/mii/mii_service_proxy.cpp,_ZN2nn2sf4cmif6client6detail16CmifProxyMethodsINS_3mii6detail16IDatabaseServiceENS2_19CmifDomainProxyKindINS0_4hipc6client38Hipc2ClientSessionManagedProxyKindBaseINSA_18Hipc2ProxyKindBaseILNS9_6detail11MessageTypeE6EEEEEEEE8Command0ENS0_3OutIhvEEj
