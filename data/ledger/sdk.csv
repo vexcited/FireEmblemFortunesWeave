@@ -1789,7 +1789,10 @@ ae9e0,8,verified,src/nn/async/async_thread_pool.cpp,_ZN2nn5async10ThreadPool12St
 ae9f0,4,verified,src/nn/async/async_thread_pool.cpp,_ZN2nn5async10ThreadPool12StartThreadsEiPPvmiPi
 aea00,8,verified,src/nn/async/async_thread_pool.cpp,_ZN2nn5async10ThreadPool17RequestThreadExitEv
 aea20,84,verified,src/nn/async/async_thread_pool.cpp,_ZN2nn5async10ThreadPool11JoinThreadsEv
+af0a0,88,verified,src/nnmusl/fcntl/fd_clock.c,__nnmusl_clock_monotonic
+af180,48,verified,src/nnmusl/fcntl/fd_clock.c,__nnmusl_clock_resolution
 af250,24,verified,src/nnmusl/fcntl/fd_entry.c,__nnmusl_fs_missing_mount
+af3d0,44,verified,src/nnmusl/fcntl/fd_clock.c,__nnmusl_fd_lookup
 af910,60,verified,src/nnmusl/nnmusl_libc_misc3.cpp,fsync
 afa70,60,verified,src/nnmusl/nnmusl_libc_misc3.cpp,fdatasync
 afab0,36,verified,src/nnmusl/nnmusl_unsupported.c,link
@@ -1802,6 +1805,8 @@ b0210,36,verified,src/nnmusl/nnmusl_unsupported.c,futimens
 b0240,36,verified,src/nnmusl/nnmusl_unsupported.c,utimensat
 b0270,36,verified,src/nnmusl/nnmusl_unsupported.c,utimes
 b0990,240,verified,src/nnmusl/fcntl/fs_errno.c,__nnmusl_fs_result_errno
+b1780,88,verified,src/nnmusl/fcntl/fd_open.c,__nnmusl_fd_open_file
+b1990,64,verified,src/nnmusl/fcntl/fd_open.c,__nnmusl_fd_open_directory
 b1bd0,16,verified,src/nnmusl/fcntl/fd_entry.c,__nnmusl_fd_kind
 b1be0,12,verified,src/nnmusl/fcntl/fd_entry.c,__nnmusl_fd_handle
 b1bf0,12,verified,src/nnmusl/fcntl/fd_entry.c,__nnmusl_fd_position
@@ -1913,6 +1918,7 @@ b55e0,4,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,_nnmusl_socket_poll_Trans
 b55f0,44,verified,src/nnmusl/nnmusl_socket_table.cpp,_nnmusl_socket_AddNativeSocketFileDescriptorToNnmuslTable
 b5680,48,verified,src/nnmusl/nnmusl_socket_table.cpp,_nnmusl_socket_RemoveNativeSocketFileDescriptorFromNnmuslTable
 b59f0,124,verified,src/nnmusl/fcntl/fs_sleep_fcntl.c,__nnmusl_socket_fcntl
+b5aa0,92,verified,src/nnmusl/fcntl/fd_open.c,__nnmusl_stat_path
 b5bc0,8,verified,src/nnmusl/fcntl/fd_entry.c,__nnmusl_fd_state
 b5ce0,12,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,__set_tp
 b5cf0,12,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,__get_tp
