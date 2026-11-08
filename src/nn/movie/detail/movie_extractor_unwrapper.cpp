@@ -1,9 +1,23 @@
 #include "nn/movie/detail/movie_extractor_unwrapper.hpp"
+#include "nn/movie/detail/movie_media_extractor_impl.hpp"
 
 namespace nn::movie::detail {
 
 // Only the cache and stream size controls reach the wrapped extractor.
 // Every other entry point is a stub that reports success.
+
+namespace {
+
+constexpr Result ResultNotInitialized = {0x3eb00};
+constexpr Result ResultNoExtractor = {0x7e500};
+constexpr Result ResultNoCoreExtractor = {0x7eb00};
+
+[[gnu::always_inline]] inline MediaExtractorImpl* GetImpl(
+  MediaExtractorImpl*** owner) {
+  return owner != nullptr ? **owner : nullptr;
+}
+
+}
 
 Result ExtractorUnwrapper::Initialize(AllocatorInfo* allocatorInfo,
   size_t cacheSize) {
@@ -129,6 +143,76 @@ Result ExtractorUnwrapper::StreamSourceSeekTo(int64_t position) {
 Result ExtractorUnwrapper::SetTrackSampleAvailableEventType(int index,
   os::SystemEventType* event) {
   return {};
+}
+
+Result ExtractorUnwrapper::StreamSourceSetSize(int64_t size) {
+  MediaExtractorImpl* impl = GetImpl(m_pOwner);
+  if (impl == nullptr) {
+    return ResultNotInitialized;
+  }
+
+  if (impl->m_pExtractor == nullptr) {
+    return ResultNoCoreExtractor;
+  }
+
+  return ToPublicResult(impl->m_pExtractor->StreamSourceSetSize(size));
+}
+
+Result ExtractorUnwrapper::IsCacheFull(bool* pOutIsFull,
+  bool* pOutIsEndOfStream) {
+  MediaExtractorImpl* impl = GetImpl(m_pOwner);
+  if (impl == nullptr) {
+    return ResultNoExtractor;
+  }
+
+  const Result result = impl->m_State.ValidateCurrentState(
+    MediaExtractorState::MediaExtractorFunctions_IsCacheFull);
+  if (!IsSucceeded(result)) {
+    return result;
+  }
+
+  if (impl->m_pExtractor == nullptr) {
+    return ResultNoCoreExtractor;
+  }
+
+  return ToPublicResult(impl->m_pExtractor->IsCacheFull(pOutIsFull,
+    pOutIsEndOfStream));
+}
+
+Result ExtractorUnwrapper::SetPreferredPixels(size_t pixels) {
+  MediaExtractorImpl* impl = GetImpl(m_pOwner);
+  if (impl == nullptr) {
+    return ResultNoExtractor;
+  }
+
+  if (pixels == impl->m_PreferredPixels) {
+    return {};
+  }
+
+  impl->m_PreferredPixels = pixels;
+  if (impl->m_pExtractor == nullptr) {
+    return {};
+  }
+
+  return ToPublicResult(impl->m_pExtractor->SetPreferredPixels(pixels));
+}
+
+Result ExtractorUnwrapper::SetMinBandwidthSamples(size_t samples) {
+  MediaExtractorImpl* impl = GetImpl(m_pOwner);
+  if (impl == nullptr) {
+    return ResultNoExtractor;
+  }
+
+  if (samples == impl->m_MinBandwidthSamples) {
+    return {};
+  }
+
+  impl->m_MinBandwidthSamples = samples;
+  if (impl->m_pExtractor == nullptr) {
+    return {};
+  }
+
+  return ToPublicResult(impl->m_pExtractor->SetMinBandwidthSamples(samples));
 }
 
 }

@@ -23,6 +23,7 @@ enum SeekMode : int32_t;
 namespace nn::movie::detail {
 
 struct AllocatorInfo;
+class MediaExtractorImpl;
 class NetworkConnection;
 
 class ExtractorUnwrapper {
@@ -57,8 +58,17 @@ public:
   Result StreamSourceReadData(void* buffer, int64_t* pOutSize,
     int64_t size);
   Result StreamSourceSeekTo(int64_t position);
+  Result StreamSourceSetSize(int64_t size);
+  Result IsCacheFull(bool* pOutIsFull, bool* pOutIsEndOfStream);
+  Result SetPreferredPixels(size_t pixels);
+  Result SetMinBandwidthSamples(size_t samples);
   Result SetTrackSampleAvailableEventType(int index,
     os::SystemEventType* event);
+
+private:
+  // The public extractor, whose holder starts with the implementation.
+  uint8_t m_Reserved[0x28];
+  MediaExtractorImpl*** m_pOwner;
 };
 
 }

@@ -31,6 +31,8 @@ inline Result ToPublicResult(Result result) {
 }
 
 class MediaExtractorImpl : public nandroid::StreamSourceObserver {
+  friend class ExtractorUnwrapper;
+
 public:
   enum MediaExtractorMessageType : int32_t {
     MediaExtractorMessageType_None,
