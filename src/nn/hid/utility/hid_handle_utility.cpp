@@ -1,6 +1,7 @@
 #include "nn/hid/detail/hid_abort.hpp"
 #include "nn/hid/detail/hid_npad_id.hpp"
 #include "nn/hid/detail/hid_utility.hpp"
+#include "nn/util/string_util.hpp"
 
 namespace nn::detail {
 
@@ -261,6 +262,50 @@ Result GetVibrationDeviceHandles(VibrationDeviceHandle* pOutHandles,
   }
   *pOutCount = 0;
   return Result{};
+}
+
+namespace {
+
+// The version bytes come first, then a short device identifier.
+constexpr size_t FirmwareVersionIdentifierOffset = 4;
+constexpr int FirmwareVersionIdentifierSize = 4;
+
+const char* GetIdentifier(const system::FirmwareVersion& version) {
+  return reinterpret_cast<const char*>(version._storage +
+    FirmwareVersionIdentifierOffset);
+}
+
+}
+
+// Some devices number their firmware in hexadecimal, others in decimal.
+void ConvertFirmwareVersionToStringType(system::FirmwareVersionString* pOut,
+  const system::FirmwareVersion& version,
+  const util::BitFlagSet<32, system::DeviceType>& deviceType) {
+  const uint32_t bits = deviceType._storage[0];
+  const char* format = (bits & 0x3c) != 0 || (bits & 0x13c0000) == 0 ?
+    "%02x.%02x.%02x.%02x" : "%02d.%02d.%02d.%02d";
+  const int length = util::Strlcpy(pOut->string, GetIdentifier(version),
+    FirmwareVersionIdentifierSize);
+  util::SNPrintf(pOut->string + length, sizeof(pOut->string) - length,
+    format, version._storage[0], version._storage[1], version._storage[2],
+    version._storage[3]);
+}
+
+void ConvertFirmwareVersionToFullFormatStringType(
+  debug::FirmwareVersionFullFormatString* pOut,
+  const system::FirmwareVersion* pVersions, int count) {
+  const int length = util::Strlcpy(pOut->string, GetIdentifier(pVersions[0]),
+    FirmwareVersionIdentifierSize);
+  char* pCursor = pOut->string + length;
+  size_t remaining = sizeof(pOut->string) - length;
+  for (int i = 0; i < count; i++) {
+    const int written = util::SNPrintf(pCursor, remaining,
+      "/%02d.%02d.%02d.%02d", pVersions[i]._storage[0],
+      pVersions[i]._storage[1], pVersions[i]._storage[2],
+      pVersions[i]._storage[3]);
+    pCursor += written;
+    remaining -= written;
+  }
 }
 
 Result VerifyValidSixAxisSensorHandle(const SixAxisSensorHandle& handle) {

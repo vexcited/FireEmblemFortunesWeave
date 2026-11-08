@@ -246,6 +246,10 @@ namespace debug {
 
 enum AccelerometerPlayMode {};
 
+struct FirmwareVersionFullFormatString {
+  char string[45];
+};
+
 }
 
 namespace system {
@@ -310,7 +314,10 @@ struct FirmwareVersion {
   uint8_t _storage[16];
 };
 
-struct FirmwareVersionString;
+struct FirmwareVersionString {
+  char string[29];
+};
+
 struct HomeButtonState;
 struct InteractiveArea {
   float x;
