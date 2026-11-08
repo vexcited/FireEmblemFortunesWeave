@@ -77,9 +77,109 @@ constexpr uint64_t DistanceN[4] = {
   Store(result, out);
 }
 
+// The whole product is formed before anything is stored.
+[[gnu::always_inline]] inline void Multiply(uint64_t* product,
+  const uint64_t* a, const uint64_t* b) {
+  for (int i = 0; i < 8; i++) {
+    product[i] = 0;
+  }
+  for (int i = 0; i < 4; i++) {
+    uint64_t carry = 0;
+    for (int j = 0; j < 4; j++) {
+      const unsigned __int128 term =
+        static_cast<unsigned __int128>(a[i]) * b[j] + product[i + j] + carry;
+      product[i + j] = static_cast<uint64_t>(term);
+      carry = static_cast<uint64_t>(term >> 64);
+    }
+    product[i + 4] = carry;
+  }
+}
+
+// The high half comes back in as a multiple of the distance, the leftover
+// top limb plus one is added again and taken off when nothing carries out.
+[[gnu::always_inline]] inline void ReduceP(uint64_t* out,
+  const uint64_t* product) {
+  const uint64_t k = DistanceP[0];
+  uint64_t high[5];
+  uint64_t carry = 0;
+  for (int i = 0; i < 4; i++) {
+    const unsigned __int128 term =
+      static_cast<unsigned __int128>(product[4 + i]) * k + carry;
+    high[i] = static_cast<uint64_t>(term);
+    carry = static_cast<uint64_t>(term >> 64);
+  }
+  high[4] = carry;
+  Limbs sum;
+  uint64_t sumCarry = 0;
+  for (int i = 0; i < 4; i++) {
+    sum[i] = AddCarry(product[i], high[i], sumCarry);
+  }
+  const uint64_t top = high[4] + sumCarry;
+  const unsigned __int128 fold =
+    static_cast<unsigned __int128>(top) * k + k;
+  uint64_t foldCarry = 0;
+  sum[0] = AddCarry(sum[0], static_cast<uint64_t>(fold), foldCarry);
+  sum[1] = AddCarry(sum[1], static_cast<uint64_t>(fold >> 64), foldCarry);
+  sum[2] = AddCarry(sum[2], 0, foldCarry);
+  sum[3] = AddCarry(sum[3], 0, foldCarry);
+  const uint64_t adjust = foldCarry == 0 ? k : 0;
+  uint64_t borrow = 0;
+  out[0] = SubBorrow(sum[0], adjust, borrow);
+  for (int i = 1; i < 4; i++) {
+    out[i] = SubBorrow(sum[i], 0, borrow);
+  }
+}
+
 }
 
 extern "C" {
+
+void nndetailCryptoMultMod256_SecP256k1_P(uint32_t* result,
+  const uint32_t* lhs, const uint32_t* rhs) {
+  Limbs a;
+  Limbs b;
+  Load(a, lhs);
+  Load(b, rhs);
+  uint64_t product[8];
+  Multiply(product, a, b);
+  Limbs out;
+  ReduceP(out, product);
+  Store(result, out);
+}
+
+void nndetailCryptoSqrMod256_SecP256k1_P(uint32_t* result,
+  const uint32_t* value) {
+  Limbs a;
+  Load(a, value);
+  uint64_t product[8];
+  Multiply(product, a, a);
+  Limbs out;
+  ReduceP(out, product);
+  Store(result, out);
+}
+
+void nndetailCryptoMult256(uint32_t* result, const uint32_t* lhs,
+  const uint32_t* rhs) {
+  Limbs a;
+  Limbs b;
+  Load(a, lhs);
+  Load(b, rhs);
+  uint64_t product[8];
+  Multiply(product, a, b);
+  memcpy(result, product, sizeof(product));
+}
+
+// Only the bits from 384 up are kept.
+void nndetailCryptoMult256_Shift384(uint32_t* result, const uint32_t* lhs,
+  const uint32_t* rhs) {
+  Limbs a;
+  Limbs b;
+  Load(a, lhs);
+  Load(b, rhs);
+  uint64_t product[8];
+  Multiply(product, a, b);
+  memcpy(result, product + 6, 2 * sizeof(uint64_t));
+}
 
 void nndetailCryptoAddMod256_SecP256k1_P(uint32_t* result,
   const uint32_t* lhs, const uint32_t* rhs) {
