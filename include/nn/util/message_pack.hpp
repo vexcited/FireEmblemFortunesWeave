@@ -35,6 +35,8 @@ public:
       int64_t signedValue;
       uint32_t float32Bits;
       uint64_t float64Bits;
+      float float32Value;
+      double float64Value;
       uint32_t count;
       struct {
         size_t length;
