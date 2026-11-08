@@ -1934,7 +1934,7 @@ b2f40,108,verified,src/nnmusl/fcntl/fs_handles.c,__nnmusl_resolve
 b2fb0,272,verified,src/nnmusl/nnmusl_fs_path_kind.cpp,__nnmusl_path_kind
 b30c0,256,verified,src/nnmusl/fcntl/open_directory.c,__nnmusl_open_directory
 b3280,48,verified,src/nnmusl/fcntl/fs_handles.c,__nnmusl_close_directory
-b32c0,640,verified,src/nnmusl/fcntl/fd_readdir.c,__nnmusl_directory_seek
+b32c0,652,verified,src/nnmusl/fcntl/fd_readdir.c,__nnmusl_directory_seek
 b3560,160,verified,src/nnmusl/fcntl/fs_paths.c,__nnmusl_mkdir
 b3600,164,verified,src/nnmusl/fcntl/fd_readdir.c,__nnmusl_readdir
 b37e0,384,verified,src/nnmusl/fcntl/fs_paths.c,__nnmusl_rmdir
@@ -1981,6 +1981,8 @@ b5bc0,8,verified,src/nnmusl/fcntl/fd_entry.c,__nnmusl_fd_state
 b5ce0,12,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,__set_tp
 b5cf0,12,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,__get_tp
 b5d00,16,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,__get_tls_data
+b5e60,56,verified,src/nnmusl/thread/tls_dtors.c,__nnmusl_run_thread_dtors
+b6060,224,verified,src/nnmusl/thread/tls_dtors.c,__nnmusl_get_number_uncalled_tls_dtors
 b6140,4,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,__nnmusl_get_tls_dtors_status
 b82d0,8,verified,src/nn/aoc/initialization.cpp,_ZN2nn3aoc6detail17AddProxyReferenceEPNS1_5ProxyE
 b8370,8,verified,src/nn/sf/cmif/client/cmif_proxy_factory.cpp,_ZN2nn2sf4cmif6client6detail9CmifProxyINS_5audio7karaoke14IClientSessionENS0_4hipc6client18Hipc2ProxyKindBaseILNS8_6detail11MessageTypeE6EEENS0_30MemoryResourceAllocationPolicyENS3_19ProcessModifierImplINS2_21DefaultProxyFilterTagEEEvE17GetCmifBaseObjectEv
