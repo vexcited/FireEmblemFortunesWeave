@@ -1880,6 +1880,7 @@ b2d00,4,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,rmdir
 b2d10,8,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,unlink
 b2d20,4,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,write
 b2d40,432,verified,src/nnmusl/dirent/scandir.c,scandir64
+b2fb0,272,verified,src/nnmusl/nnmusl_fs_path_kind.cpp,__nnmusl_path_kind
 b54d0,36,verified,src/nnmusl/nnmusl_socket_table.cpp,_nnmusl_socket_IsNnmuslFileDescriptor
 b5500,4,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,_nnmusl_socket_TranslateNnmuslFileDescriptorOrPassThrough
 b5560,44,verified,src/nnmusl/nnmusl_socket_table.cpp,_nnmusl_socket_TranslateFileDescriptorFromNativeToNnmusl
