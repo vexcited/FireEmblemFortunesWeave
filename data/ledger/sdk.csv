@@ -19910,6 +19910,10 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 5edd80,4,verified,src/nn/wsi/wsi_api.cpp,_ZN2nn3wsi6vulkan25SetNextHdrContentMetadataEPvRKNS0_6detail18HdrContentMetadataE
 5edd90,4,verified,src/nn/wsi/wsi_api.cpp,_ZN2nn3wsi6vulkan25SetNextHdrDisplayMetadataEPvRKNS1_18HdrDisplayMetadataE
 5edda0,4,verified,src/nn/wsi/wsi_api.cpp,_ZN2nn3wsi6vulkan25SetNextHdrContentMetadataEPvRKNS1_18HdrContentMetadataE
+5eddb0,44,verified,src/nvidia/md5.c,MD5Init
+5edde0,236,verified,src/nvidia/md5.c,MD5Update
+5eded0,2524,verified,src/nvidia/md5.c,MD5Transform
+5ee8b0,272,verified,src/nvidia/md5.c,MD5Final
 5ee9c0,4,verified,src/nvidia/nvos_stubs.cpp,NvOsSetAllocHook
 5ee9d0,4,verified,src/nvidia/nvos_stubs.cpp,NvOsSetResourceAllocFileLine
 5ee9f0,36,verified,src/nvidia/nvos_misc.cpp,NvOsSetVerboseLevel
