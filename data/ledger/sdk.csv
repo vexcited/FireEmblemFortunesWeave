@@ -19878,7 +19878,12 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 5f0720,12,verified,src/nvidia/nvos_misc.cpp,NvUScalarCompare
 5f11e0,4,verified,src/nvidia/nvos_stubs.cpp,NvOsShowError
 5f11f0,64,verified,src/nvidia/nvos_misc.cpp,NvUAlloc0
+5f5180,152,verified,src/nvidia/nvos_heap_library.cpp,NvOsHeapAllocatorAlloc
+5f5270,116,verified,src/nvidia/nvos_heap_library.cpp,NvOsHeapAllocatorPrintStatistics
+5f52f0,228,verified,src/nvidia/nvos_heap_library.cpp,NvOsHeapAllocatorRealloc
+5f53e0,228,verified,src/nvidia/nvos_heap_library.cpp,NvOsHeapAllocatorAllocAlign
 5f54d0,8,verified,src/nvidia/nvos_misc.cpp,NvOsHeapAllocatorFree
+5f54e0,128,verified,src/nvidia/nvos_heap_library.cpp,NvOsHeapAllocatorSetCallbacks
 5f5560,60,verified,src/nvidia/nvos_sync.cpp,NvOsGetTimeMS
 5f55a0,56,verified,src/nvidia/nvos_sync.cpp,NvOsGetTimeUS
 5f55e0,28,verified,src/nvidia/nvos_sync.cpp,NvOsGetTimeNS
@@ -19970,6 +19975,8 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 5f7d60,8,verified,src/nvidia/nvos_stubs.cpp,NvOsSharedMemMap
 5f7d70,4,verified,src/nvidia/nvos_stubs.cpp,NvOsSharedMemUnmap
 5f7d80,4,verified,src/nvidia/nvos_stubs.cpp,NvOsSharedMemFree
+5f8320,88,verified,src/nvidia/nvos_heap_library.cpp,NvOsLibraryLoad
+5f8380,108,verified,src/nvidia/nvos_heap_library.cpp,NvOsLibraryGetSymbol
 5f83f0,4,verified,src/nvidia/nvos_stubs.cpp,NvOsLibraryUnload
 5f8400,8,verified,src/nvidia/nvos_stubs.cpp,NvOsLibraryUnloadEx
 5f8410,4,verified,src/nvidia/nvos_stubs.cpp,NvOsFlushWriteCombineBuffer
@@ -19984,6 +19991,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 5f84a0,8,verified,src/nvidia/nvos_stubs.cpp,NvOsMapRegSpace
 5f84b0,8,verified,src/nvidia/nvos_stubs.cpp,NvOsUnMapRegSpace
 5f84c0,4,verified,src/nvidia/nvos_misc.cpp,NvOsGetCurrentThreadId
+5f84d0,160,verified,src/nvidia/nvos_heap_library.cpp,NvOsRegisterExitHandler
 5f8b40,40,verified,src/nvidia/nv_graphics_config.cpp,_ZN2nv20GetGraphicsAllocatorEPPFPvmmS0_EPPFvS0_S0_EPPFS0_S0_mS0_EPS0_
 5f8dd0,44,verified,src/nvidia/nv_graphics_config.cpp,_ZN2nv27EnableGraphicsMemoryTracingEv
 5f8e00,44,verified,src/nvidia/nv_graphics_config.cpp,_ZN2nv20EnablePreemptionGFXPEv
