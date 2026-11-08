@@ -1811,12 +1811,13 @@ afb40,36,verified,src/nnmusl/nnmusl_unsupported.c,symlinkat
 afb70,36,verified,src/nnmusl/nnmusl_unsupported.c,readlink
 afba0,36,verified,src/nnmusl/nnmusl_unsupported.c,readlinkat
 afbe0,184,verified,src/nnmusl/stdlib/realpath.c,realpath
+afca0,392,verified,src/nnmusl/stdlib/canonicalize.c,__nnmusl_canonicalize
 afea0,472,verified,src/nnmusl/fcntl/statvfs.c,statvfs
 b0080,284,verified,src/nnmusl/unistd/sysconf.c,sysconf
 b0210,36,verified,src/nnmusl/nnmusl_unsupported.c,futimens
 b0240,36,verified,src/nnmusl/nnmusl_unsupported.c,utimensat
 b0270,36,verified,src/nnmusl/nnmusl_unsupported.c,utimes
-b08b0,144,verified,src/nnmusl/unistd/cwd_state.c,__nnmusl_utf8_sequence_length
+b08b0,216,verified,src/nnmusl/unistd/cwd_state.c,__nnmusl_utf8_sequence_length
 b0990,240,verified,src/nnmusl/fcntl/fs_errno.c,__nnmusl_fs_result_errno
 b0cf0,192,verified,src/nnmusl/fcntl/fs_device.c,__nnmusl_check_device_path
 b15f0,248,verified,src/nnmusl/unistd/cwd_state.c,__nnmusl_set_cwd
