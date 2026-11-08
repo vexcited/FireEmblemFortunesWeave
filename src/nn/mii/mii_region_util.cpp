@@ -20,6 +20,68 @@ constexpr Result ResultInvalidCharInfo = {0xd67e};
 
 }
 
+struct CharacterRange {
+  uint16_t start;
+  int16_t length;
+};
+
+struct CharacterRangeTable {
+  int32_t reserved;
+  int32_t count;
+  const CharacterRange* pRanges;
+};
+
+// The ranges of each font region, filled when the font is loaded.
+[[gnu::visibility("hidden")]] extern CharacterRangeTable
+  g_CharacterRangeTables[];
+
+// Names with an at sign are taken for user content and hidden.
+bool UpdateNicknameIfInvalidUgc(Nickname* pName) {
+  for (int i = 0; i < 11; i++) {
+    if (pName->text[i] == '@') {
+      static const uint16_t Hidden[] = {'?', '?', '?', 0};
+      pName->Set(Hidden);
+      return true;
+    }
+  }
+  return false;
+}
+
+// The ranges are sorted, so the code is searched by halves.
+bool IsIncludedCharacterCode(FontRegion region, uint16_t code) {
+  const CharacterRangeTable& table = g_CharacterRangeTables[region];
+  const int count = table.count;
+  if (count < 0) {
+    return false;
+  }
+  int low = 0;
+  int high = count;
+  for (;;) {
+    const int middle =
+      low + static_cast<int>(static_cast<unsigned>(high - low) >> 1);
+    if (count <= middle) {
+      return false;
+    }
+    const CharacterRange& range =
+      table.pRanges[static_cast<unsigned>(middle)];
+    if (code >= range.start && code < range.start + range.length) {
+      return true;
+    }
+    if (code >= range.start) {
+      low = middle + 1;
+      if (low > high) {
+        return false;
+      }
+    }
+    else {
+      high = middle - 1;
+      if (low > high) {
+        return false;
+      }
+    }
+  }
+}
+
 settings::system::RegionCode GetRegionCode() {
   settings::system::RegionCode code = {};
   settings::system::GetRegionCode(&code);

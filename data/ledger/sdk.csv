@@ -3186,7 +3186,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 125470,64,verified,src/nn/fs/fs_save_data_types.cpp,_ZN2nn2fs17SaveDataAttribute4MakeEPS1_NS0_19SaveDataReferenceIdENS0_12SaveDataTypeENS0_6UserIdEm
 1254b0,88,verified,src/nn/fs/fs_save_data_types.cpp,_ZN2nn2fs20SaveDataCreationInfo4MakeEPS1_llmjNS0_15SaveDataSpaceIdE
 125860,424,verified,src/nn/fs/fs_save_data_types.cpp,_ZN2nn2fs14SaveDataFilter4MakeEPS1_NS_4util8optionalImEENS4_INS0_12SaveDataTypeEEENS4_INS0_6UserIdEEES5_NS4_ItEEh
-125a10,440,verified,src/nn/fs/fs_save_data_types.cpp,_ZN2nn2fs14SaveDataFilter4MakeEPS1_NS_4util8optionalImEENS4_INS0_12SaveDataTypeEEENS4_INS0_6UserIdEEES5_NS4_ItEE
+125a10,460,verified,src/nn/fs/fs_save_data_types.cpp,_ZN2nn2fs14SaveDataFilter4MakeEPS1_NS_4util8optionalImEENS4_INS0_12SaveDataTypeEEENS4_INS0_6UserIdEEES5_NS4_ItEE
 125be0,44,verified,src/nn/fs/fs_windows_path.cpp,_ZN2nn2fs14IsWindowsDriveEPKc
 125c10,100,verified,src/nn/fs/fs_windows_path.cpp,_ZN2nn2fs22IsWindowsDriveRootPathERKNS0_4PathE
 125c80,68,verified,src/nn/fs/fs_windows_path.cpp,_ZN2nn2fs9IsUncPathEPKc
@@ -12960,6 +12960,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 4a65b0,80,verified,src/nn/mii/visual_accessors.cpp,_ZN2nn3mii27CharInfoVisualParamAccessor8SetMoleYEi
 4a6600,208,verified,src/nn/mii/ver3_record.cpp,_ZNK2nn3mii8Nickname7IsValidEv
 4a66e0,96,verified,src/nn/mii/ver3_record.cpp,_ZNK2nn3mii8Nickname7IsEmptyEv
+4a6740,276,verified,src/nn/mii/mii_types.cpp,_ZN2nn3mii8Nickname17ReplaceFontRegionENS0_10FontRegionEi
 4a6860,216,verified,src/nn/mii/ver3_record.cpp,_ZN2nn3mii8Nickname3SetEPKt
 4a6940,32,verified,src/nn/mii/legacy_conversion.cpp,_ZN2nn3mii8Nickname19ReplaceQuestionMarkEv
 4a6970,36,verified,src/nn/mii/core_data.cpp,_ZNK2nn3mii8NicknameeqERKS1_
@@ -13232,7 +13233,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 4ad020,8,verified,src/nn/mii/char_info_accessor.cpp,_ZN2nn3mii6detail24NfpStoreDataExtentionRaw13SetGlassColorEi
 4ad030,8,verified,src/nn/mii/char_info_accessor.cpp,_ZN2nn3mii6detail24NfpStoreDataExtentionRaw12SetGlassTypeEi
 4ad180,196,verified,src/nn/mii/store_data.cpp,_ZN2nn3mii6detail14CalculateCrc16EPKvit
-4ad260,216,verified,src/nn/mii/ver3_record.cpp,_ZN2nn3mii6detail20CalculateAndSetCrc16EPvi
+4ad260,232,verified,src/nn/mii/ver3_record.cpp,_ZN2nn3mii6detail20CalculateAndSetCrc16EPvi
 4ad360,212,verified,src/nn/mii/store_data.cpp,_ZN2nn3mii6detail20CalculateAndSetCrc16EPvit
 4ad440,212,verified,src/nn/mii/ver3_record.cpp,_ZN2nn3mii6detail12IsValidCrc16EPKvi
 4ad540,200,verified,src/nn/mii/store_data.cpp,_ZN2nn3mii6detail12IsValidCrc16EPKvit
@@ -13378,7 +13379,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 4afd20,200,verified,src/nn/mii/ver3_record.cpp,_ZN2nn3mii6detail34ModifyVer3StoreDataNicknameInvalidEPNS0_8NicknameE
 4afdf0,16,verified,src/nn/mii/legacy_conversion.cpp,_ZN2nn3mii6detail18GetGlassTypeToVer3ENS0_9GlassTypeE
 4afe00,4,verified,src/nn/mii/legacy_conversion.cpp,_ZN2nn3mii6detail20GetGlassTypeFromVer3ENS1_13Ver3GlassTypeE
-4afe10,2372,verified,src/nn/mii/ver3_record.cpp,_ZNK2nn3mii6detail16Ver3StoreDataRaw6VerifyEv
+4afe10,2568,verified,src/nn/mii/ver3_record.cpp,_ZNK2nn3mii6detail16Ver3StoreDataRaw6VerifyEv
 4b0900,80,verified,src/nn/mii/ver3_fields.cpp,_ZNK2nn3mii6detail16Ver3StoreDataRaw13GetMiiVersionEv
 4b0980,80,verified,src/nn/mii/ver3_fields.cpp,_ZNK2nn3mii6detail16Ver3StoreDataRaw11GetCopyableEv
 4b0a00,80,verified,src/nn/mii/ver3_fields.cpp,_ZNK2nn3mii6detail16Ver3StoreDataRaw9GetNgWordEv
@@ -13444,7 +13445,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 4b2750,76,verified,src/nn/mii/ver3_record.cpp,_ZNK2nn3mii6detail16Ver3StoreDataRaw14GetCreatorNameEPNS0_8NicknameE
 4b27a0,32,verified,src/nn/mii/ver3_record.cpp,_ZNK2nn3mii6detail16Ver3StoreDataRaw7IsValidEv
 4b27c0,8,verified,src/nn/mii/ver3_record.cpp,_ZN2nn3mii6detail16Ver3StoreDataRaw9UpdateCrcEv
-4b27d0,4744,verified,src/nn/mii/ver3_record.cpp,_ZN2nn3mii6detail16Ver3StoreDataRaw10SetDefaultEPNS1_11UtilityImplE
+4b27d0,12280,verified,src/nn/mii/ver3_record.cpp,_ZN2nn3mii6detail16Ver3StoreDataRaw10SetDefaultEPNS1_11UtilityImplE
 4b5b40,120,verified,src/nn/mii/ver3_fields.cpp,_ZN2nn3mii6detail16Ver3StoreDataRaw13SetMiiVersionEi
 4b5c30,120,verified,src/nn/mii/ver3_fields.cpp,_ZN2nn3mii6detail16Ver3StoreDataRaw11SetCopyableEi
 4b5d20,120,verified,src/nn/mii/ver3_fields.cpp,_ZN2nn3mii6detail16Ver3StoreDataRaw9SetNgWordEi

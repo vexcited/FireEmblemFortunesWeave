@@ -12,6 +12,18 @@ void Nickname::Set(const uint16_t* source) {
   }
 }
 
+// Names whose region the font cannot show keep only ASCII characters.
+void Nickname::ReplaceFontRegion(FontRegion region, int supportedRegions) {
+  if ((static_cast<uint32_t>(supportedRegions) >> region & 1) != 0) {
+    return;
+  }
+  for (unsigned i = 0; i < 11 && text[i] != 0; ++i) {
+    if (text[i] >= 0x80) {
+      text[i] = '?';
+    }
+  }
+}
+
 bool Nickname::IsValid() const {
   if (text[0] == 0 || text[10] != 0) {
     return false;
