@@ -23175,8 +23175,11 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 777eb0,52,verified,src/nnmusl/nnmusl_libc_misc.cpp,__getlocale_addr
 777ef0,56,verified,src/nnmusl/nnmusl_libc_misc.cpp,__getlocale
 777f30,56,verified,src/nnmusl/nnmusl_libc_misc.cpp,__setlocale
+777f70,80,verified,src/nnmusl/nnmusl_libc_misc4.cpp,uselocale
 777fc0,60,verified,src/nnmusl/nnmusl_libc_misc.cpp,getentropy
 778000,356,verified,src/musl/src/prng/random.c,srandom
+778390,132,verified,src/nnmusl/nnmusl_libc_misc4.cpp,setstate
+778420,180,verified,src/nnmusl/nnmusl_libc_misc4.cpp,random
 778620,48,verified,src/libc/stdio_flush.cpp,LockFile
 778650,24,verified,src/libc/stdio_flush.cpp,UnlockFile
 778670,28,verified,src/libc/stdio_flush.cpp,InitializeFileLock
@@ -23230,6 +23233,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 77b860,4,verified,src/nnmusl/nnmusl_libc_forwarders2.cpp,getpid
 77b870,64,verified,src/musl/src/fenv/__flt_rounds.c,__flt_rounds
 77b8b0,20,verified,src/nnmusl/nnmusl_libc_forwarders2.cpp,fesetround
+77e6b0,160,verified,src/nnmusl/nnmusl_libc_misc4.cpp,posix_memalign
 77e760,8,verified,src/libm/exp_power.cpp,divide
 77eaa0,1940,verified,src/musl/src/regex/regcomp.c,regcomp
 780540,3604,verified,src/musl/src/regex/regcomp.c,tre_add_tags
@@ -23262,6 +23266,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 78d880,424,verified,src/musl/src/string/memchr.c,memchr
 78df00,4,verified,src/nnmusl/nnmusl_libc_forwarders2.cpp,__memcpy_device
 78e1e0,204,verified,src/musl/src/string/memset.c,memset
+78e2c0,124,verified,src/nnmusl/nnmusl_libc_misc4.cpp,memset_s
 78e340,84,verified,src/musl/src/string/strndup.c,strndup
 78e3a0,148,verified,src/musl/src/string/strtok_r.c,strtok_r
 78e440,328,verified,src/musl/src/internal/intscan.c,__intscan
@@ -23378,6 +23383,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 7977f0,4,verified,src/musl/src/ctype/iswblank.c,iswblank_l
 797800,48,verified,src/musl/src/ctype/iswcntrl.c,iswcntrl
 797830,48,verified,src/musl/src/ctype/iswcntrl.c,iswcntrl_l
+797860,56,verified,src/nnmusl/nnmusl_libc_misc4.cpp,iswctype
 7978d0,612,verified,src/musl/src/ctype/iswctype.c,wctype
 797b40,4,verified,src/musl/src/ctype/iswctype.c,iswctype_l
 797b50,4,verified,src/musl/src/ctype/iswctype.c,wctype_l
@@ -23563,10 +23569,12 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 7a26f0,20,verified,src/musl/src/stdio/setbuf.c,setbuf
 7a2710,20,verified,src/musl/src/stdio/setbuffer.c,setbuffer
 7a2730,16,verified,src/musl/src/stdio/setlinebuf.c,setlinebuf
+7a2740,120,verified,src/nnmusl/nnmusl_libc_misc4.cpp,setvbuf
 7a27c0,108,verified,src/musl/src/stdio/snprintf.c,snprintf
 7a2830,108,verified,src/musl/src/stdio/sprintf.c,sprintf
 7a28a0,108,verified,src/musl/src/stdio/sscanf.c,sscanf
 7a2910,108,verified,src/musl/src/stdio/swscanf.c,swscanf
+7a2980,196,verified,src/nnmusl/nnmusl_libc_misc4.cpp,ungetc
 7a2bc0,180,verified,src/musl/src/stdio/vasprintf.c,vasprintf
 7a2c80,132,verified,src/musl/src/stdio/vdprintf.c,vdprintf
 7a3970,68,verified,src/musl/src/stdio/vprintf.c,vprintf
