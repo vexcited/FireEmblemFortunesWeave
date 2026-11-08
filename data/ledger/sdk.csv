@@ -14104,7 +14104,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 4fab20,224,verified,src/nandroid/libstagefright/foundation/AMessage.cpp,_ZN8nandroid8AMessage9postReplyERKNS_2spINS_11AReplyTokenEEE
 4fac00,372,verified,src/nandroid/libstagefright/foundation/AMessage.cpp,_ZN8nandroid8AMessage20senderAwaitsResponseEPNS_2spINS_11AReplyTokenEEE
 4fade0,592,verified,src/nandroid/libstagefright/foundation/AMessage.cpp,_ZNK8nandroid8AMessage3dupEv
-4fb500,972,verified,src/nandroid/libstagefright/foundation/AMessage.cpp,_ZNK8nandroid8AMessage11changesFromERKNS_2spIKS0_EEb
+4fb500,2180,verified,src/nandroid/libstagefright/foundation/AMessage.cpp,_ZNK8nandroid8AMessage11changesFromERKNS_2spIKS0_EEb
 4fc180,8,verified,src/nandroid/libstagefright/foundation/AMessage.cpp,_ZNK8nandroid8AMessage12countEntriesEv
 4fc190,44,verified,src/nandroid/libstagefright/foundation/AMessage.cpp,_ZNK8nandroid8AMessage14getEntryNameAtEmPNS0_4TypeE
 4fc1c0,492,verified,src/nandroid/libstagefright/foundation/AMessage.cpp,_ZNK8nandroid8AMessage10getEntryAtEm
@@ -16671,6 +16671,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 5a4e40,196,verified,src/nn/srepo/detail/srepo_report_generator.cpp,_ZN2nn5srepo6detail14ArrayGenerator16IsSameStructTypeERKNS0_6StructEPhm
 5a4f10,84,verified,src/nn/srepo/detail/srepo_report_generator.cpp,_ZN2nn5srepo6detail15ReportGenerator10InitializeEPmPhm
 5a4f70,288,verified,src/nn/srepo/detail/srepo_report_generator.cpp,_ZN2nn5srepo6detail15ReportGenerator6AddKeyEPmPKcPhmm
+5a50a0,428,verified,src/nn/srepo/detail/srepo_report_generator.cpp,_ZN2nn5srepo6detail15ReportGenerator19CheckKeyDuplicationEPKhmPKc
 5a52e0,32,verified,src/nn/srepo/detail/srepo_report_generator.cpp,_ZN2nn5srepo6detail15ReportGenerator16GetKeyValueCountEPKhm
 5a5300,216,verified,src/nn/srepo/detail/srepo_report_generator.cpp,_ZN2nn5srepo6detail15ReportGenerator11AddKeyValueEPmPKclPhmmm
 5a53e0,40,verified,src/nn/srepo/detail/srepo_report_generator.cpp,_ZN2nn5srepo6detail15ReportGenerator22IncrementKeyValueCountEPhm
@@ -16707,6 +16708,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 5a7bb0,300,verified,src/nn/srepo/detail/srepo_report_generator.cpp,_ZN2nn5srepo6detail15StructGenerator11AddKeyValueEPmPKcbPhmm
 5a7ce0,396,verified,src/nn/srepo/detail/srepo_report_generator.cpp,_ZN2nn5srepo6detail15StructGenerator8AddValueEPmPKcRKNS0_5ArrayEPhmm
 5a7e70,396,verified,src/nn/srepo/detail/srepo_report_generator.cpp,_ZN2nn5srepo6detail15StructGenerator8AddValueEPmPKcRKNS0_6StructEPhmm
+5a8000,292,verified,src/nn/srepo/detail/srepo_report_generator.cpp,_ZN2nn5srepo6detail15StructGenerator19CheckKeyDuplicationEPKhmPKc
 5a8180,12,verified,src/nn/prepo/prepo_async_context.cpp,_ZN2nn5prepo12AsyncContextC2Ev
 5a8190,56,verified,src/nn/prepo/prepo_async_context.cpp,_ZN2nn5prepo12AsyncContextD2Ev
 5a81d0,28,verified,src/nn/prepo/prepo_async_context.cpp,_ZN2nn5prepo12AsyncContextC2EOS1_

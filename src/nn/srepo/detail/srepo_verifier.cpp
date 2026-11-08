@@ -1,9 +1,9 @@
 #include <math.h>
 #include <string.h>
 
-#include "nn/diag/diag_abort.hpp"
 #include "nn/srepo/detail/srepo_generator.hpp"
 #include "nn/srepo/detail/srepo_verifier.hpp"
+#include "nn/util/string_util.hpp"
 
 namespace nn::srepo::detail {
 
@@ -50,24 +50,6 @@ bool IsKeyHead(char c) {
 
 bool IsKeyChar(char c) {
   return IsDigit(c) || IsKeyHead(c);
-}
-
-char ToLower(char c) {
-  return c >= 'A' && c <= 'Z' ? c + ('a' - 'A') : c;
-}
-
-int Strnicmp(const char* lhs, const char* rhs, int count) {
-  NN_ABORT_UNLESS(count >= 0);
-  if (count == 0) {
-    return 0;
-  }
-  char l;
-  char r;
-  do {
-    l = ToLower(*lhs++);
-    r = ToLower(*rhs++);
-  } while (l != 0 && l == r && --count != 0);
-  return l - r;
 }
 
 bool IsAny64BitId(const Reader::AnyData& data) {
@@ -296,7 +278,7 @@ bool VerifyStructValue(size_t* pOutSize, const uint8_t* data, size_t size,
         return false;
       }
       if (any.string.length == other.string.length &&
-          Strnicmp(key, GetString(previous, other.string.position),
+          util::Strnicmp(key, GetString(previous, other.string.position),
             static_cast<int>(any.string.length)) == 0) {
         return false;
       }
@@ -519,7 +501,7 @@ bool VerifyReportOld(const uint8_t* data, size_t size, size_t sizeMax) {
   for (int i = 0; i < static_cast<int>(count) - 1; i++) {
     for (uint32_t j = i + 1; j < count; j++) {
       if (keys[i].length == keys[j].length &&
-          Strnicmp(GetString(stream, keys[i].position),
+          util::Strnicmp(GetString(stream, keys[i].position),
             GetString(stream, keys[j].position),
             static_cast<int>(keys[i].length)) == 0) {
         return false;
@@ -621,7 +603,7 @@ bool VerifyReport(const uint8_t* data, size_t size, size_t sizeMax) {
   for (int i = 0; i < static_cast<int>(count) - 1; i++) {
     for (uint32_t j = i + 1; j < count; j++) {
       if (keys[i].length == keys[j].length &&
-          Strnicmp(GetString(stream, keys[i].position),
+          util::Strnicmp(GetString(stream, keys[i].position),
             GetString(stream, keys[j].position),
             static_cast<int>(keys[i].length)) == 0) {
         return false;

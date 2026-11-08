@@ -5,6 +5,7 @@
 #include "nn/srepo/detail/srepo_verifier.hpp"
 #include "nn/srepo/srepo_report.hpp"
 #include "nn/util/message_pack.hpp"
+#include "nn/util/string_util.hpp"
 
 namespace nn::srepo::detail {
 
@@ -23,6 +24,22 @@ constexpr Result ResultTooManyKeys = {0xeb4};
 constexpr Result ResultReportTooLarge = {0x14b4};
 
 constexpr int KeyValueCountMax = 100;
+constexpr int DepthMax = 3;
+
+struct NestLevel {
+  uint32_t index;
+  uint32_t count;
+  bool isMap;
+};
+
+[[gnu::always_inline]] inline bool IsSameKey(const char* key,
+  const util::MessagePackReader::StreamParam& stream,
+  const util::MessagePackReader::AnyData& data) {
+  const char* other =
+    reinterpret_cast<const char*>(stream.buffer + data.string.position);
+  return util::Strnicmp(key, other, static_cast<int>(data.string.length)) ==
+    0 && key[data.string.length] == '\0';
+}
 
 // The bytes of the msgpack header of a string of the length.
 size_t GetStringHeaderSize(uint32_t length) {
@@ -264,6 +281,50 @@ Result ReportGenerator::AddKey(size_t* pOutPosition, const char* key,
   }
   *pOutPosition = stream.position;
   return Result{0};
+}
+
+// Only the top level keys are compared, the nested values are walked with
+// an explicit stack.
+bool ReportGenerator::CheckKeyDuplication(const uint8_t* buffer, size_t size,
+  const char* key) {
+  util::MessagePackReader::StreamParam stream = {buffer, size, 0};
+  util::MessagePackReader reader(&stream);
+  util::MessagePackReader::AnyData data = {};
+  reader.ReadCurrent(&data);
+  NestLevel levels[DepthMax + 1] = {};
+  levels[0].count = data.count;
+  levels[0].isMap = true;
+  for (int level = 0; level >= 0; level--) {
+    while (levels[level].index++ < levels[level].count) {
+      const bool isMap = levels[level].isMap;
+      if (isMap) {
+        reader.ReadCurrent(&data);
+        if (data.type != AnyDataType::AnyDataType_String) {
+          return true;
+        }
+        if (level == 0 && IsSameKey(key, stream, data)) {
+          return true;
+        }
+      }
+      if (!reader.ReadCurrent(&data)) {
+        return true;
+      }
+      if (data.type == AnyDataType::AnyDataType_Array ||
+          data.type == AnyDataType::AnyDataType_Map) {
+        if (level + 1 > DepthMax) {
+          return true;
+        }
+        if (!isMap && data.type != AnyDataType::AnyDataType_Map) {
+          return true;
+        }
+        level++;
+        levels[level].index = 0;
+        levels[level].count = data.count;
+        levels[level].isMap = data.type == AnyDataType::AnyDataType_Map;
+      }
+    }
+  }
+  return false;
 }
 
 // The payload bytes the service fills in for the placeholder types 0x40
@@ -607,6 +668,37 @@ Result StructGenerator::AddKeyValue(size_t* pOutPosition, const char* key,
   }
   *pOutPosition = stream.position;
   return Result{0};
+}
+
+// A key read failure is ignored, only its type is checked.
+bool StructGenerator::CheckKeyDuplication(const uint8_t* buffer, size_t size,
+  const char* key) {
+  util::MessagePackReader::StreamParam stream = {buffer, size, 0};
+  util::MessagePackReader reader(&stream);
+  util::MessagePackReader::AnyData data = {};
+  while (stream.position != stream.size) {
+    reader.ReadCurrent(&data);
+    if (data.type != AnyDataType::AnyDataType_String) {
+      return true;
+    }
+    if (IsSameKey(key, stream, data)) {
+      return true;
+    }
+    if (!reader.ReadCurrent(&data)) {
+      return true;
+    }
+    if (data.type == AnyDataType::AnyDataType_Array ||
+        data.type == AnyDataType::AnyDataType_Map) {
+      size_t skipped = 0;
+      if (!SkipNestedTypeValue(&skipped, stream.buffer + stream.position,
+          stream.size - stream.position, data.count,
+          data.type == AnyDataType::AnyDataType_Map, 1)) {
+        return true;
+      }
+      stream.position += skipped;
+    }
+  }
+  return false;
 }
 
 }

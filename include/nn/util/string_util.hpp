@@ -3,6 +3,12 @@
 #include <stddef.h>
 #include <string.h>
 
+namespace nn::diag::detail {
+
+[[noreturn]] void AbortImpl();
+
+}
+
 namespace nn::util {
 
 int SNPrintf(char* buffer, size_t size, const char* format, ...);
@@ -26,6 +32,28 @@ int Strncmp(const T* lhs, const T* rhs, int count) {
   do {
     l = *lhs++;
     r = *rhs++;
+  } while (l != 0 && l == r && --count != 0);
+  return l - r;
+}
+
+template<typename T>
+T ToLower(T c) {
+  return c >= 'A' && c <= 'Z' ? c + ('a' - 'A') : c;
+}
+
+template<typename T>
+int Strnicmp(const T* lhs, const T* rhs, int count) {
+  if (count < 0) {
+    diag::detail::AbortImpl();
+  }
+  if (count == 0) {
+    return 0;
+  }
+  T l;
+  T r;
+  do {
+    l = ToLower(*lhs++);
+    r = ToLower(*rhs++);
   } while (l != 0 && l == r && --count != 0);
   return l - r;
 }
