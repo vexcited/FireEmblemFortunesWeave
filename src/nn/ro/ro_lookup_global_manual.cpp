@@ -1,28 +1,9 @@
 #include <stdint.h>
 
 #include "nn/diag/diag_abort.hpp"
+#include "nn/ro/detail/ro_module.hpp"
 
 namespace nn::ro::detail {
-
-struct Elf64Symbol {
-  uint32_t name;
-  uint8_t info;
-  uint8_t other;
-  uint16_t sectionIndex;
-  uint64_t value;
-  uint64_t size;
-};
-
-struct RoModule {
-  RoModule* pPrevious;
-  RoModule* pNext;
-  uint8_t reserved10[0x18];
-  uintptr_t baseAddress;
-  uint8_t reserved30[0x93];
-  uint8_t flags;
-};
-
-static_assert(__builtin_offsetof(RoModule, flags) == 0xc3);
 
 extern uint32_t g_RoBusyMutex;
 extern RoModule* g_pManualLoadList;
@@ -35,7 +16,6 @@ extern RoModule* g_pManualLoadList;
 namespace {
 
 constexpr uint8_t SymbolBindingShift = 4;
-constexpr uint8_t ModuleFlagNotReferenced = 1;
 
 }
 
@@ -53,7 +33,7 @@ uintptr_t LookupGlobalManual(const RoModule* pRequester, const char* pName) {
 
     address = pSymbol->value + pModule->baseAddress;
     if (pModule != pRequester &&
-      (pModule->flags & ModuleFlagNotReferenced) != 0) {
+      (pModule->flags & ModuleFlag_NotReferenced) != 0) {
       diag::detail::AbortImpl();
     }
 

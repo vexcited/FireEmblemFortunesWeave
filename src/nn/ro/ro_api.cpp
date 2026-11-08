@@ -7,6 +7,7 @@
 #include "nn/os/reader_writer_lock.hpp"
 #include "nn/os/synchronization.hpp"
 #include "nn/result.hpp"
+#include "nn/ro/detail/ro_module.hpp"
 #include "nn/sf/shared_pointer.hpp"
 
 namespace nn::svc {
@@ -48,25 +49,6 @@ struct ModuleVersion {
 template<Result (*Query)(svc::lp64::MemoryInfo*, svc::PageInfo*, uintptr_t)>
 bool FindModuleHeader(const rocrt::ModuleHeader** ppOutHeader,
   ModuleVersion* pOutVersion, uintptr_t baseAddress);
-
-struct Elf64Symbol {
-  uint32_t name;
-  uint8_t info;
-  uint8_t other;
-  uint16_t sectionIndex;
-  uint64_t value;
-  uint64_t size;
-};
-
-// Modules sit on circular lists whose head is a node of its own.
-struct RoModule {
-  RoModule* pPrevious;
-  RoModule* pNext;
-  uint8_t reserved10[0x18];
-  uintptr_t baseAddress;
-  uint8_t reserved30[0x88];
-  size_t size;
-};
 
 class IRoInterface : public sf::IServiceObject {
 public:
