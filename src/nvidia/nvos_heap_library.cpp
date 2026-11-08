@@ -5,6 +5,7 @@
 
 enum NvError : int32_t {
   NvSuccess = 0,
+  NvError_InsufficientMemory = 6,
   NvError_LibraryNotFound = 0x30008,
 };
 
@@ -143,6 +144,28 @@ extern "C" NvError NvOsLibraryLoad(const char* name,
   }
 
   *pOutLibrary = library;
+  return NvSuccess;
+}
+
+// A zero symbol count unregisters the library.
+extern "C" NvError NvOsHosRegisterLibrary(const char* name, size_t symbolCount,
+  const NvOsLibrarySymbol* symbols) {
+  const int32_t index = NvOsLibraryFind(name);
+  if (index == -1) {
+    return NvError_InsufficientMemory;
+  }
+
+  NvOsLibrary* library = &g_NvOsLibraries[static_cast<uint32_t>(index)];
+  if (symbolCount == 0) {
+    library->symbolCount = 0;
+    library->symbols = nullptr;
+    library->name = nullptr;
+    return NvSuccess;
+  }
+
+  library->name = name;
+  library->symbolCount = symbolCount;
+  library->symbols = symbols;
   return NvSuccess;
 }
 

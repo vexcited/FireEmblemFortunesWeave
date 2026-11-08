@@ -51,10 +51,22 @@ struct NvOsDrvService {
   const uintptr_t* vtable;
 };
 
+struct NvOsDrvPath {
+  const char* path;
+  size_t length;
+};
+
+namespace nv {
+
+void InitCheck();
+
+}
+
 extern "C" {
 
 int vsnprintf(char* buffer, size_t size, const char* format,
   va_list arguments);
+size_t strlen(const char* string);
 void* memset(void* destination, int value, size_t size);
 void NvOsFwrite(void* stream, const void* buffer, int64_t size);
 void NvOsHosLog(int line, const char* file, const char* function,
@@ -70,6 +82,9 @@ void NvOsHosSdkLog(const char* module, int line, const char* file,
 
 [[gnu::visibility("hidden")]] void* NvOsDrvLockFd(int32_t fd);
 [[gnu::visibility("hidden")]] void NvOsDrvUnlockFd(void* entry);
+[[gnu::visibility("hidden")]] uint32_t NvOsDrvLockPath(const char* path,
+  void** pOutEntry);
+[[gnu::visibility("hidden")]] void NvOsDrvBindFd(void* entry, int32_t fd);
 
 namespace {
 
@@ -181,6 +196,49 @@ extern "C" void NvOsTlsFree(uint32_t index) {
   nn::os::UnlockMutex(&g_NvOsTlsMutex);
 }
 
+// A fatal driver status aborts, the host arguments are only touched first.
+[[gnu::always_inline]] inline void CheckDrvStatus(uint32_t status) {
+  if (status == NvOsDrvStatusFatal) {
+    if (nn::os::GetHostArgc() >= 1) {
+      nn::os::GetHostArgv();
+    }
+
+    nn::diag::detail::AbortImpl();
+  }
+}
+
+extern "C" int32_t NvOsDrvOpen(const char* path) {
+  int32_t fd = 0;
+  const size_t length = strlen(path);
+  void* entry = nullptr;
+  nv::InitCheck();
+
+  uint32_t status = NvOsDrvLockPath(path, &entry);
+  if (status == 0) {
+    NvOsDrvPath name = {path, length};
+    using Open = uint32_t (*)(NvOsDrvService*, NvOsDrvPath*, int32_t*,
+      uint32_t*);
+    NvOsDrvService* service = g_NvOsDrvService;
+    const uint32_t result = reinterpret_cast<Open>(service->vtable[4])(
+      service, &name, &fd, &status);
+
+    CheckDrvStatus(status);
+    if ((status | result) == 0) {
+      if (entry != nullptr) {
+        NvOsDrvBindFd(entry, fd);
+      }
+
+      return fd;
+    }
+  }
+
+  if (entry != nullptr) {
+    NvOsDrvUnlockFd(entry);
+  }
+
+  return -1;
+}
+
 extern "C" void NvOsDrvClose(int32_t fd) {
   uint32_t status = 0;
   void* entry = NvOsDrvLockFd(fd);
@@ -189,13 +247,7 @@ extern "C" void NvOsDrvClose(int32_t fd) {
   NvOsDrvService* service = g_NvOsDrvService;
   reinterpret_cast<Close>(service->vtable[6])(service, fd, &status);
 
-  if (status == NvOsDrvStatusFatal) {
-    if (nn::os::GetHostArgc() >= 1) {
-      nn::os::GetHostArgv();
-    }
-
-    nn::diag::detail::AbortImpl();
-  }
+  CheckDrvStatus(status);
 
   if (entry != nullptr) {
     NvOsDrvUnlockFd(entry);
