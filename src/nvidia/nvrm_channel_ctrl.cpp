@@ -4,6 +4,15 @@ enum NvError : int32_t {
   NvSuccess = 0,
   NvError_BadAddress = 3,
   NvError_BadParameter = 4,
+  NvError_InsufficientMemory = 6,
+  NvError_KernelDriverNotFound = 0x30012,
+};
+
+struct NvRmChannel {
+  void* owner;
+  int32_t fd;
+  const char* moduleName;
+  uint32_t flags;
 };
 
 struct NvRmFence {
@@ -31,6 +40,10 @@ void nnosUnlockMutex(void* mutex);
 void NvOsRegisterExitHandler(void (*handler)(void*), void* context,
   uint32_t flags);
 int32_t sync_get_nvrm_mapping(int32_t fd, NvRmFenceFileInfo* pOutInfo);
+void* NvOsAlloc(uint64_t size);
+void NvOsFree(void* pointer);
+void NvOsMemset(void* destination, uint8_t value, uint64_t size);
+int32_t NvRm_MemmgrGetIoctlFile();
 void* memcpy(void* destination, const void* source, uint64_t size);
 
 }
@@ -46,6 +59,9 @@ uint32_t NvRmChannelSyncPointReadAfterWait(NvError result, uint32_t id);
   g_NvRmHostCharacteristics;
 
 [[gnu::visibility("hidden")]] int32_t NvRmChannelOpenFd(const char* path);
+[[gnu::visibility("hidden")]] void NvRmChannelCloseFd(int32_t fd);
+[[gnu::visibility("hidden")]] const char* NvRmChannelGetModuleName(
+  uint32_t module);
 [[gnu::visibility("hidden")]] void NvRmControlClose(void* context);
 [[gnu::visibility("hidden")]] NvError NvRmChannelIoctl(int32_t fd,
   uint32_t request, void* argument, uint64_t size);
@@ -63,6 +79,7 @@ const uint32_t NvHostIoctlGetCharacteristics = 0xc010002a;
 const uint32_t NvHostIoctlSyncptRead = 0xc0080014;
 const uint32_t NvHostIoctlSyncptIncr = 0x40040015;
 const uint32_t NvHostIoctlModuleCheck = 0xc008002b;
+const uint32_t NvHostIoctlChannelSetNvmapFd = 0x40044801;
 
 struct NvHostCharacteristicsArguments {
   uint64_t size;
@@ -176,4 +193,44 @@ extern "C" NvError NvRmHostModuleCheck(void*, uint32_t module,
 
   *pOutIsPresent = arguments[1] != 0;
   return NvSuccess;
+}
+
+// Channels open the device of their first module and share the nvmap fd.
+extern "C" NvError NvRmChannelOpen(void*, NvRmChannel** pOutChannel,
+  uint32_t moduleCount, const uint32_t* modules) {
+  if (moduleCount == 0) {
+    return NvError_BadParameter;
+  }
+
+  OpenControl();
+  if (g_NvRmControlFd < 0) {
+    return NvError_KernelDriverNotFound;
+  }
+
+  const char* name = NvRmChannelGetModuleName(modules[0]);
+  if (name == nullptr) {
+    return NvError_BadParameter;
+  }
+
+  auto* channel = static_cast<NvRmChannel*>(NvOsAlloc(sizeof(NvRmChannel)));
+  if (channel == nullptr) {
+    return NvError_InsufficientMemory;
+  }
+
+  NvOsMemset(channel, 0, sizeof(NvRmChannel));
+  channel->moduleName = name;
+  channel->fd = NvRmChannelOpenFd(name);
+  if (channel->fd >= 0) {
+    int32_t nvmapFd = NvRm_MemmgrGetIoctlFile();
+    if (NvRmChannelIoctl(channel->fd, NvHostIoctlChannelSetNvmapFd,
+      &nvmapFd, sizeof(nvmapFd)) == NvSuccess) {
+      *pOutChannel = channel;
+      return NvSuccess;
+    }
+
+    NvRmChannelCloseFd(channel->fd);
+  }
+
+  NvOsFree(channel);
+  return NvError_KernelDriverNotFound;
 }
