@@ -23215,7 +23215,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 779690,4,verified,src/nnmusl/nnmusl_libc_forwarders2.cpp,_IO_putc
 7796a0,4,verified,src/nnmusl/nnmusl_libc_forwarders2.cpp,putchar
 7797b0,288,verified,src/nnmusl/stdio/swprintf.c,swprintf
-779a20,908,disputed,src/nnmusl/stdio/vfscanf.c,vfscanf
+779a20,908,verified,src/nnmusl/stdio/vfscanf.c,vfscanf
 77a8c0,200,verified,src/musl/src/temp/__randname.c,__randname
 77a990,4,verified,src/libc/quick_exit.cpp,LockQuickExitState
 77a9a0,4,verified,src/libc/quick_exit.cpp,UnlockQuickExitState
@@ -23637,7 +23637,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 7a3b60,64,verified,src/musl/src/stdio/vsprintf.c,vsprintf
 7a3ba0,132,verified,src/musl/src/stdio/vsscanf.c,vsscanf
 7a3cc0,252,verified,src/nnmusl/stdio/vswprintf.c,vswprintf
-7a3dc0,244,disputed,src/nnmusl/stdio/vswprintf.c,sw_write
+7a3dc0,212,disputed,src/nnmusl/stdio/vswprintf.c,sw_write
 7a3ec0,148,verified,src/musl/src/stdio/vswscanf.c,vswscanf
 7a4020,68,verified,src/musl/src/stdio/vwprintf.c,vwprintf
 7a4070,120,verified,src/musl/src/stdio/wprintf.c,wprintf

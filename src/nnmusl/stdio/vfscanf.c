@@ -10,7 +10,8 @@
 #include "stdio_impl.h"
 #include "shgetc.h"
 #include "intscan.h"
-#include "floatscan.h"
+double __floatscan(FILE *, int, int);
+long double __floatscanl(FILE *, int, int);
 
 #define SIZE_hh -2
 #define SIZE_h  -1
@@ -68,7 +69,6 @@ int vfscanf(FILE *restrict f, const char *restrict fmt, va_list ap)
 	int invert;
 	int matches=0;
 	unsigned long long x;
-	long double y;
 	off_t pos = 0;
 	unsigned char scanset[257];
 	size_t i, k;
@@ -302,18 +302,18 @@ int vfscanf(FILE *restrict f, const char *restrict fmt, va_list ap)
 		case 'e': case 'E':
 		case 'f': case 'F':
 		case 'g': case 'G':
-			y = __floatscan(f, size, 0);
-			if (!shcnt(f)) goto match_fail;
-			if (dest) switch (size) {
-			case SIZE_def:
-				*(float *)dest = y;
-				break;
-			case SIZE_l:
-				*(double *)dest = y;
-				break;
-			case SIZE_L:
-				*(long double *)dest = y;
-				break;
+			// nnmusl scans float and double without long double.
+			if (size < SIZE_L) {
+				double d = __floatscan(f, size, 0);
+				if (!shcnt(f)) goto match_fail;
+				if (dest) {
+					if (size == SIZE_def) *(float *)dest = d;
+					else *(double *)dest = d;
+				}
+			} else if (size == SIZE_L) {
+				long double y = __floatscanl(f, 2, 0);
+				if (!shcnt(f)) goto match_fail;
+				if (dest) *(long double *)dest = y;
 			}
 			break;
 		}
