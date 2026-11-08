@@ -76,6 +76,7 @@ NNMUSL_LIBM_HIDDEN double __math_uflow(uint32_t sign);
 NNMUSL_LIBM_HIDDEN double __math_xflow(uint32_t sign, double y);
 NNMUSL_LIBM_HIDDEN double __math_divzero(uint32_t sign);
 NNMUSL_LIBM_HIDDEN double __math_invalid(double x);
+NNMUSL_LIBM_HIDDEN float __math_invalidf(float x);
 
 double round(double x);
 double fma(double x, double y, double z);
@@ -91,6 +92,12 @@ static inline double asdouble(uint64_t i)
 {
   union { uint64_t i; double f; } u = { i };
   return u.f;
+}
+
+static inline uint32_t asuint(float f)
+{
+  union { float f; uint32_t i; } u = { f };
+  return u.i;
 }
 
 static inline uint32_t top16(double x)
@@ -111,6 +118,11 @@ static inline double fp_barrier(double x)
 }
 
 static inline void fp_force_eval(double x)
+{
+  __asm__ __volatile__("" : : "w"(x));
+}
+
+static inline void fp_force_evalf(float x)
 {
   __asm__ __volatile__("" : : "w"(x));
 }
