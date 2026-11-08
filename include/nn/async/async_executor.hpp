@@ -1,5 +1,6 @@
 #pragma once
 
+#include <atomic>
 #include <memory>
 #include <stddef.h>
 #include <stdint.h>
@@ -7,7 +8,9 @@
 #include "nn/async/async_detail.hpp"
 #include "nn/memory_resource.hpp"
 #include "nn/os/event.hpp"
+#include "nn/os/event_class.hpp"
 #include "nn/os/multi_wait.hpp"
+#include "nn/os/mutex.hpp"
 #include "nn/span.hpp"
 
 namespace nn::os {
@@ -28,11 +31,19 @@ public:
 
 }
 
+namespace detail {
+
+class ExecutionScheduler;
+
+}
+
 class ExecutionBlocker {
 public:
   bool IsBlocked() const;
 
 private:
+  friend class detail::ExecutionScheduler;
+
   std::shared_ptr<detail::IWaitHandler> m_Handler;
 };
 
@@ -45,13 +56,108 @@ public:
 
   bool IsEmpty();
   void Enqueue(std::shared_ptr<Executable> executable,
+    CancellationToken token);
+  void Enqueue(std::shared_ptr<Executable> executable,
     CancellationToken token, ExecutionBlocker blocker);
+  void DequeueAndCall();
   void DequeueAndCall(os::EventType* pExitEvent);
   bool TryDequeueAndCall();
   void DequeueAndCallAll();
 
 private:
-  uint8_t m_Storage[0x118];
+  struct WorkItem : util::IntrusiveListBaseNode<WorkItem> {
+    WorkItem(std::shared_ptr<Executable>&& executable,
+      CancellationToken&& token)
+      : executable(std::move(executable)), token(std::move(token)),
+        resumeBlocker(nullptr) {}
+
+    WorkItem(std::shared_ptr<Executable>&& executable,
+      CancellationToken&& token, ExecutionBlocker&& blocker)
+      : executable(std::move(executable)), token(std::move(token)),
+        blocker(std::move(blocker)), resumeBlocker(nullptr) {}
+
+    bool IsBlocked() const {
+      return blocker.m_Handler != nullptr || resumeBlocker != nullptr;
+    }
+
+    GroupWaitHolder* GetGroupWaitHolder();
+
+    std::shared_ptr<Executable> executable;
+    CancellationToken token;
+    ExecutionBlocker blocker;
+    GroupWaitHolderOne holder;
+    ResumeBlocker* resumeBlocker;
+  };
+
+  using WorkItemList = util::IntrusiveList<WorkItem,
+    util::IntrusiveListBaseNodeTraits<WorkItem>>;
+
+  enum WorkItemGroupKind : int32_t {
+    WorkItemGroupKind_Runnable,
+    WorkItemGroupKind_Blocked,
+  };
+
+  struct WorkItemGroup : util::IntrusiveListBaseNode<WorkItemGroup> {
+    explicit WorkItemGroup(WorkItemGroupKind kind) : kind(kind) {}
+
+    WorkItemGroupKind kind;
+    WorkItemList items;
+  };
+
+  using WorkItemGroupList = util::IntrusiveList<WorkItemGroup,
+    util::IntrusiveListBaseNodeTraits<WorkItemGroup>>;
+
+  enum SignalKind : int32_t {
+    SignalKind_Refresh,
+    SignalKind_Extra,
+    SignalKind_WorkItem,
+    SignalKind_None,
+  };
+
+  struct Signal {
+    SignalKind kind;
+    WorkItem* item;
+  };
+
+  class WorkItemMultiWait : public GroupWait {
+  public:
+    explicit WorkItemMultiWait(os::EventType* pRefreshEvent);
+
+    void LinkWorkItem(WorkItem* item);
+    void UnlinkWorkItem(WorkItem* item);
+    Signal WaitAny(GroupWaitHolder* extra);
+    Signal TryWaitAny(GroupWaitHolder* extra);
+
+  private:
+    friend class ExecutionScheduler;
+
+    os::EventType* m_pRefreshEvent;
+  };
+
+  WorkItem* CreateWorkItem(std::shared_ptr<Executable> executable,
+    CancellationToken token, ExecutionBlocker blocker);
+  void DestroyWorkItem(WorkItem* item);
+  void EnqueueWorkItem(WorkItem* item);
+  void EnqueueBlockedWorkItem(WorkItem* item);
+  void EnqueueRunnableWorkItem(WorkItem* item);
+  void UpdateRefreshEvent();
+  void ExecuteWorkItem(WorkItem* item);
+  bool TryDequeueMonitoredWorkItem(WorkItem** pOut);
+  void MovePreMonitoredWorkItemsToMonitoredList();
+  bool TryDequeueRunnableWorkItem(WorkItem** pOut);
+  Signal WaitForSignal(GroupWaitHolder* extra);
+  WorkItem* DoRefreshJob();
+
+  MemoryResource* m_pResource;
+  WorkItemList m_PreMonitoredItems;
+  WorkItemGroupList m_Groups;
+  os::Event m_RefreshEvent;
+  WorkItemMultiWait m_MultiWait;
+  std::atomic<uint32_t> m_MonitoredCount;
+  os::Mutex m_ListMutex;
+  os::Mutex m_WaitMutex;
+  ThreadCounter m_ThreadCounter;
+  bool m_IsExiting;
 };
 
 }

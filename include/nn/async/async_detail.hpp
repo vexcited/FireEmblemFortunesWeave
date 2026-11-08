@@ -48,12 +48,25 @@ public:
   virtual int GetIndex(InnerHolder* holder) = 0;
   virtual WaitTarget GetWaitTarget() const = 0;
 
+  void* GetUserData() const {
+    return m_pUserData;
+  }
+
+  void SetUserData(void* pUserData) {
+    m_pUserData = pUserData;
+  }
+
 private:
-  uintptr_t m_Reserved = 0;
+  void* m_pUserData;
 };
 
 class GroupWaitHolderOne final : public GroupWaitHolder {
 public:
+  GroupWaitHolderOne() {
+    m_Inner.owner = nullptr;
+    m_Inner.groupWait = nullptr;
+  }
+
   template<typename... Args>
   explicit GroupWaitHolderOne(Args... args) : m_Inner() {
     os::InitializeMultiWaitHolder(&m_Inner.holder, args...);
@@ -67,6 +80,14 @@ public:
   InnerHolder* GetHolder(int index) override;
   int GetIndex(InnerHolder* holder) override;
   WaitTarget GetWaitTarget() const override;
+
+  os::MultiWaitHolderType* GetMultiWaitHolder() {
+    return &m_Inner.holder;
+  }
+
+  void AttachOwner() {
+    m_Inner.owner = this;
+  }
 
 private:
   InnerHolder m_Inner;
@@ -313,7 +334,11 @@ private:
 class ThreadCounter {
 public:
   ThreadCounter();
-  ~ThreadCounter() {}
+
+  ~ThreadCounter() {
+    os::FinalizeConditionVariable(&m_Condition);
+    os::FinalizeMutex(&m_Mutex);
+  }
 
   void Join();
   void Leave();

@@ -58,6 +58,10 @@ class Mutex {
     UnlockMutex(&m_Mutex);
   }
 
+  bool TryLock() {
+    return TryLockMutex(&m_Mutex);
+  }
+
  private:
   MutexType m_Mutex;
 };
