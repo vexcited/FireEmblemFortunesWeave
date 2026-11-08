@@ -1,6 +1,29 @@
 #include "nn/mii/char_info_accessor.hpp"
+#include "nn/mii/ver3_record.hpp"
 
 namespace nn::mii {
+
+namespace detail {
+
+void GetCreateId(CreateId* pOutId, const CharInfo& info);
+void DuplicateMii(CharInfo* pOutInfo, const CharInfo& info);
+void SetNickname(CharInfo* pInfo, const Nickname& nickname,
+  FontRegion fontRegion);
+
+}
+
+void GetCreateId(CreateId* pOutId, const CharInfo& info) {
+  detail::GetCreateId(pOutId, info);
+}
+
+void DuplicateMii(CharInfo* pOutInfo, const CharInfo& info) {
+  detail::DuplicateMii(pOutInfo, info);
+}
+
+void SetNickname(CharInfo* pInfo, const Nickname& nickname,
+  FontRegion fontRegion) {
+  detail::SetNickname(pInfo, nickname, fontRegion);
+}
 
 namespace {
 

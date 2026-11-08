@@ -1,8 +1,19 @@
 #include "nn/mii/store_data.hpp"
 
 #include "nn/mii/mii_utility.hpp"
+#include "nn/util/uuid.hpp"
+
+namespace nn::settings::system {
+
+void GetMiiAuthorId(util::Uuid* pOutId);
+
+}
 
 namespace nn::mii::detail {
+
+void GetDeviceId(DeviceId* id) {
+  settings::system::GetMiiAuthorId(reinterpret_cast<util::Uuid*>(id));
+}
 
 static uint16_t DeviceCrcSeed() {
   DeviceId device = {};
