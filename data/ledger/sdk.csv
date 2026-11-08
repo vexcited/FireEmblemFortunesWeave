@@ -7852,7 +7852,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 1f68c0,392,verified,src/nn/audio/loudness_calculator.cpp,_ZN2nn5audio6detail22LoudnessCalculatorImpl10InitializeEPvmi
 1f6a60,124,verified,src/nn/audio/loudness_calculator.cpp,_ZN2nn5audio6detail22LoudnessCalculatorImpl5ResetEv
 1f6ae0,124,verified,src/nn/audio/loudness_calculator.cpp,_ZN2nn5audio6detail22LoudnessCalculatorImpl8FinalizeEv
-1f6b60,1284,verified,src/nn/audio/loudness_calculator.cpp,_ZN2nn5audio6detail22LoudnessCalculatorImpl7AnalyzeEPKsi
+1f6b60,1300,verified,src/nn/audio/loudness_calculator.cpp,_ZN2nn5audio6detail22LoudnessCalculatorImpl7AnalyzeEPKsi
 1f7090,148,verified,src/nn/audio/loudness_calculator.cpp,_ZN2nn5audio6detail22LoudnessCalculatorImpl20CalcKWeightingFilterEif
 1f7140,1396,verified,src/nn/audio/loudness_calculator.cpp,_ZN2nn5audio6detail22LoudnessCalculatorImpl4CalcEv
 1f7700,780,verified,src/nn/audio/ne10/modules/dsp/NE10_fft.c,nnaudiodetail_ne10_factor
@@ -7871,7 +7871,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 1f8e60,4,verified,src/ne10/modules/dsp/NE10_fft.c,ne10_fft_destroy_r2c_int16
 1f8e70,12,verified,src/nn/audio/ne10/modules/dsp/NE10_fft_float32.c,nnaudiodetail_ne10_fft_sizeof_c2c_float32_c
 1f8e80,140,verified,src/nn/audio/ne10/modules/dsp/NE10_fft_float32.c,nnaudiodetail_ne10_fft_init_c2c_float32_c
-1f8f20,2060,verified,src/nn/audio/ne10/modules/dsp/NE10_fft_float32.c,nnaudiodetail_ne10_fft_c2c_1d_float32_c
+1f8f20,2144,verified,src/nn/audio/ne10/modules/dsp/NE10_fft_float32.c,nnaudiodetail_ne10_fft_c2c_1d_float32_c
 1fa5c0,16,verified,src/nn/audio/ne10/modules/dsp/NE10_fft_generic_float32.c,nnaudiodetail_ne10_mixed_radix_generic_butterfly_float32_c
 1fbce0,16,verified,src/nn/audio/ne10/modules/dsp/NE10_fft_generic_float32.c,nnaudiodetail_ne10_mixed_radix_generic_butterfly_inverse_float32_c
 1fd850,12,verified,src/ne10/modules/dsp/NE10_fft_generic_int32.cpp,ne10_mixed_radix_generic_butterfly_int32_c
@@ -7930,7 +7930,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 20a190,172,verified,src/nn/audio/audio_fft.cpp,_ZN2nn5audio6detail36FftInPlaceProcessRealFixedPointShortEPsPKsRNS1_13FftWorkBufferENS1_12FftDirectionE
 20a240,2728,disputed,src/nn/audio/ne10/modules/dsp/NE10_fft_float32.neonintrinsic.c,nnaudiodetail_ne10_mixed_radix_fft_forward_float32_neon
 20af20,2764,disputed,src/nn/audio/ne10/modules/dsp/NE10_fft_float32.neonintrinsic.c,nnaudiodetail_ne10_mixed_radix_fft_backward_float32_neon
-20bc50,472,verified,src/nn/audio/ne10/modules/dsp/NE10_fft_float32.neonintrinsic.c,nnaudiodetail_ne10_fft_c2c_1d_float32_neon
+20bc50,780,verified,src/nn/audio/ne10/modules/dsp/NE10_fft_float32.neonintrinsic.c,nnaudiodetail_ne10_fft_c2c_1d_float32_neon
 20bf60,708,verified,src/ne10/modules/dsp/NE10_fft_generic_float32.neonintrinsic.cpp,ne10_mixed_radix_generic_butterfly_float32_neon
 20c240,1772,verified,src/ne10/modules/dsp/NE10_fft_generic_float32.neonintrinsic.cpp,_ZL52ne10_mixed_radix_generic_butterfly_float32_neon_implILi0ELb1EEvP13float32x4x2_tPKS0_PKiPK22ne10_fft_cpx_float32_tS1_
 20d900,1964,verified,src/ne10/modules/dsp/NE10_fft_generic_float32.neonintrinsic.cpp,_ZL52ne10_mixed_radix_generic_butterfly_float32_neon_implILi0ELb0EEvP13float32x4x2_tPKS0_PKiPK22ne10_fft_cpx_float32_tS1_
