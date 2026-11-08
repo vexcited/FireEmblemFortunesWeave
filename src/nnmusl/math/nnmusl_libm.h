@@ -57,6 +57,20 @@ struct log2_data {
 
 NNMUSL_LIBM_HIDDEN extern const struct log2_data __log2_data;
 
+#define POW_LOG_TABLE_BITS 7
+#define POW_LOG_POLY_ORDER 8
+
+struct pow_log_data {
+  double ln2hi;
+  double ln2lo;
+  double poly[POW_LOG_POLY_ORDER - 1];
+  struct {
+    double invc, pad, logc, logctail;
+  } tab[1 << POW_LOG_TABLE_BITS];
+};
+
+NNMUSL_LIBM_HIDDEN extern const struct pow_log_data __pow_log_data;
+
 NNMUSL_LIBM_HIDDEN double __math_oflow(uint32_t sign);
 NNMUSL_LIBM_HIDDEN double __math_uflow(uint32_t sign);
 NNMUSL_LIBM_HIDDEN double __math_xflow(uint32_t sign, double y);
@@ -65,6 +79,7 @@ NNMUSL_LIBM_HIDDEN double __math_invalid(double x);
 
 double round(double x);
 double fma(double x, double y, double z);
+double sqrt(double x);
 
 static inline uint64_t asuint64(double f)
 {
