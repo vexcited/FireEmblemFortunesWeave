@@ -327,7 +327,7 @@ public:
   SynchronousContinuationList* GetSynchronousContinuationList() override;
 
 protected:
-  virtual void Run() = 0;
+  virtual ExecutionResult Run() = 0;
   virtual void Complete() = 0;
   virtual void Finish() = 0;
 

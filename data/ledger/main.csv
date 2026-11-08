@@ -1548,7 +1548,7 @@ eb440,56,verified,src/snd/game_ctrl.cpp,_ZN3snd9GroupCtrl6createEv
 eb480,56,verified,src/snd/game_ctrl.cpp,_ZN3snd9GroupCtrl7destroyEv
 eb4c0,4,verified,src/snd/game.cpp,_ZNSt3__110__function6__funcIZN3snd4Game8doneSkipEvE3$_0FvPNS2_4SlotEEE7destroyEv
 eb4e0,364,verified,src/snd/group_ctrl.cpp,_ZN3snd9GroupCtrl8loadBootEv
-eb660,608,verified,src/snd/group_ctrl.cpp,_ZN3snd9GroupCtrl13loadUserGroupEPKj
+eb660,632,verified,src/snd/group_ctrl.cpp,_ZN3snd9GroupCtrl13loadUserGroupEPKj
 eb900,804,verified,src/snd/group_ctrl.cpp,_ZN3snd9GroupCtrl15loadAddSoundArcEPKj
 ebc60,252,verified,src/snd/group_ctrl.cpp,_ZN3snd9GroupCtrl10unloadBootEv
 ebd60,228,verified,src/snd/group_ctrl.cpp,_ZN3snd9GroupCtrl11unloadNamedEPKc
@@ -1556,7 +1556,7 @@ ebe60,316,verified,src/snd/group_ctrl.cpp,_ZN3snd9GroupCtrl12unloadAddonsEPKc
 ebfc0,388,verified,src/snd/group_ctrl.cpp,_ZN3snd9GroupCtrl10loadCommonEv
 ec160,252,verified,src/snd/group_ctrl.cpp,_ZN3snd9GroupCtrl12unloadCommonEv
 ec560,376,verified,src/snd/group_ctrl.cpp,_ZN3snd9GroupCtrl13unloadCurrentEPKc
-ec700,552,verified,src/snd/group_ctrl.cpp,_ZN3snd9GroupCtrl9loadGroupEPKj
+ec700,588,verified,src/snd/group_ctrl.cpp,_ZN3snd9GroupCtrl9loadGroupEPKj
 ec960,216,verified,src/snd/group_ctrl.cpp,_ZN3snd9GroupCtrl11unloadGroupEPKj
 ecad0,104,verified,src/snd/group_ctrl.cpp,_ZNK3snd9GroupCtrl7isReadyEv
 ecde0,24,verified,src/llvm-libcxx-21/libcxx/include/__vector/vector.h,std::vector<T>::__throw_length_error()
@@ -1617,7 +1617,7 @@ fd6a0,832,verified,src/game/templates/sort.cpp,_ZNSt3__127__insertion_sort_incom
 fdf60,100,verified,src/snd/fnd/math.cpp,_ZN3snd3fnd9calcCrc32EPKcj
 fdfe0,164,verified,src/snd/fnd/math.cpp,_ZN3snd3fnd16calcCrc32ReverseEPKcj
 fe090,48,verified,src/snd/fnd/math.cpp,_ZN3snd3fnd12calcDistanceERKNS0_4Vec3ES3_
-fe0c0,144,verified,src/snd/fnd/math.cpp,_ZN3snd3fnd9calcCurveENS0_9CurveTypeEffff
+fe0c0,108,disputed,src/snd/fnd/math.cpp,_ZN3snd3fnd9calcCurveENS0_9CurveTypeEffff
 fec10,24,verified,src/snd/fnd/math.cpp,_ZN3snd3fnd12calcDistanceEffff
 fec30,32,verified,src/snd/fnd/math.cpp,_ZN3snd3fnd12calcDistanceEffffff
 fec50,48,verified,src/snd/fnd/math.cpp,_ZN3snd3fnd14calcDistanceToERKNS0_4Vec3ES3_
@@ -2424,7 +2424,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 12d200,612,verified,src/snd/seq_voice.cpp,_ZN3snd8SeqVoice6silentERKNS_4FadeEPNS_5ActorE
 12d4a0,512,verified,src/snd/seq_voice.cpp,_ZN3snd8SeqVoice6silentERKNS_4FadeEb
 12d740,308,verified,src/snd/seq_voice.cpp,_ZN3snd8SeqVoice12resumeSilentERKNS_4FadeEPNS_5ActorE
-12d9e0,192,verified,src/snd/seq_voice.cpp,_ZN3snd8SeqVoice12resumeSilentERKNS_4FadeE
+12d9e0,292,verified,src/snd/seq_voice.cpp,_ZN3snd8SeqVoice12resumeSilentERKNS_4FadeE
 12dc40,92,verified,src/snd/seq_voice.cpp,_ZN3snd8SeqVoice11isActiveForEPNS_5ActorE
 12dca0,12,verified,src/snd/seq_voice.cpp,_ZNK3snd8SeqVoice8isActiveEv
 12dcb0,12,verified,src/snd/seq_voice.cpp,_ZNK3snd8SeqVoice8isPausedEv
@@ -3164,7 +3164,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 148570,20,verified,src/snd/voice.cpp,_ZNK3snd5Voice11hasFeature7Ev
 1485a0,208,disputed,src/snd/voice.cpp,_ZNK3snd5Voice9calcPitchEv
 148680,8,verified,src/snd/voice.cpp,_ZThn40_NK3snd5Voice9calcPitchEv
-148690,224,verified,src/snd/voice.cpp,_ZNK3snd5Voice7calcPanEv
+148690,224,disputed,src/snd/voice.cpp,_ZNK3snd5Voice7calcPanEv
 148780,8,verified,src/snd/voice.cpp,_ZThn40_NK3snd5Voice7calcPanEv
 148790,432,verified,src/snd/voice.cpp,_ZNK3snd5Voice15calcSurroundPanEv
 148940,8,verified,src/snd/voice.cpp,_ZThn40_NK3snd5Voice15calcSurroundPanEv
@@ -19201,7 +19201,7 @@ a3c350,180,verified,src/snd/debug_commands.cpp,_ZN3snd5debug12enableFlag62Ev
 a3c410,180,verified,src/snd/debug_commands.cpp,_ZN3snd5debug13disableFlag62Ev
 a3c4d0,180,verified,src/snd/debug_commands.cpp,_ZN3snd5debug12enableFlag61Ev
 a3c590,180,verified,src/snd/debug_commands.cpp,_ZN3snd5debug13disableFlag61Ev
-a3c650,108,verified,src/snd/debug_commands.cpp,_ZN3snd5debug9beginSkipEv
+a3c650,180,verified,src/snd/debug_commands.cpp,_ZN3snd5debug9beginSkipEv
 a3c710,180,verified,src/snd/debug_commands.cpp,_ZN3snd5debug8markSkipEv
 a3c7d0,180,verified,src/snd/debug_commands.cpp,_ZN3snd5debug7endSkipEv
 a3c890,180,verified,src/snd/debug_commands.cpp,_ZN3snd5debug8doneSkipEv

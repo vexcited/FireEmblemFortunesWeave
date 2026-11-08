@@ -94,6 +94,36 @@ TaskCoordinatorBase::TaskCoordinatorBase(MemoryResource* resource,
   }
 }
 
+ExecutionResult TaskCoordinatorBase::DoExecute(
+  const CancellationToken& token) {
+  const ExecutionResult result = [&] {
+    ScopedCancellationTokenRegister tokenRegister(token);
+    const ExecutionResult executed = Run();
+    if (executed.GetCode() == ExecutionResultCode_Complete) {
+      Finish();
+      Complete();
+      if (m_Continuations.has_value()) {
+        m_Continuations->ExecuteContinuations();
+      }
+    }
+
+    return executed;
+  }();
+
+  switch (result.GetCode()) {
+    case ExecutionResultCode_Complete:
+    case ExecutionResultCode_Await:
+    case ExecutionResultCode_Yield:
+      break;
+    case ExecutionResultCode_Invalid:
+      NN_ABORT_UNLESS(false);
+    default:
+      nn::detail::UnexpectedDefaultImpl();
+  }
+
+  return result;
+}
+
 SynchronousContinuationList*
 TaskCoordinatorBase::GetSynchronousContinuationList() {
   return m_Continuations ? &*m_Continuations : nullptr;
