@@ -19874,7 +19874,14 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 5ef510,28,verified,src/nvidia/nvos_misc.cpp,NvUHashInit
 5ef530,60,verified,src/nvidia/nvu_hash.cpp,NvUHashDeinit
 5ef570,60,verified,src/nvidia/nvu_hash.cpp,NvUHashClear
+5ef5b0,76,verified,src/nvidia/nvu_hash.cpp,NvUHashContains
+5efbf0,108,verified,src/nvidia/nvu_hash.cpp,NvUHashGet
+5efc60,156,verified,src/nvidia/nvu_hash.cpp,NvUHashSearch
+5f0360,116,verified,src/nvidia/nvu_hash.cpp,NvUHashNextEntry
+5f03e0,128,verified,src/nvidia/nvu_hash.cpp,NvUPtrHash
+5f0460,132,verified,src/nvidia/nvu_hash.cpp,NvUScalarHash64
 5f0680,32,verified,src/nvidia/nvos_misc.cpp,NvUStrCompare
+5f06a0,116,verified,src/nvidia/nvu_hash.cpp,NvUScalarHash32
 5f0720,12,verified,src/nvidia/nvos_misc.cpp,NvUScalarCompare
 5f11e0,4,verified,src/nvidia/nvos_stubs.cpp,NvOsShowError
 5f11f0,64,verified,src/nvidia/nvos_misc.cpp,NvUAlloc0
