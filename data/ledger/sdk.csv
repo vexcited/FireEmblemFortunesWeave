@@ -8,7 +8,7 @@ address,size,status,source,name
 8c0,592,verified,src/nn/crypto/aes128_ccm.cpp,_ZN2nn6crypto6detail11CcmModeImplINS0_12AesEncryptorILm16EEEE10InitializeEPKS4_PKvmllm
 b20,148,verified,src/nn/crypto/aes128_ctr.cpp,_ZN2nn6crypto6detail11CtrModeImplINS0_12AesEncryptorILm16EEEE16IncrementCounterEv
 c20,24,verified,src/nn/crypto/aes128_ccm.cpp,_ZN2nn6crypto6detail11CcmModeImplINS0_12AesEncryptorILm16EEEE12EncryptBlockEPvPKvS8_
-c40,744,verified,src/nn/crypto/aes128_ctr.cpp,_ZN2nn6crypto6detail11CtrModeImplINS0_12AesEncryptorILm16EEEE6UpdateEPvmPKvm
+c40,744,disputed,src/nn/crypto/aes128_ctr.cpp,_ZN2nn6crypto6detail11CtrModeImplINS0_12AesEncryptorILm16EEEE6UpdateEPvmPKvm
 f60,356,verified,src/nn/crypto/aes128_ccm.cpp,_ZN2nn6crypto6detail11CcmModeImplINS0_12AesEncryptorILm16EEEE6GetMacEPvm
 10d0,460,verified,src/nn/crypto/aes128_ccm.cpp,_ZN2nn6crypto16EncryptAes128CcmEPvmS1_mPKvmS3_mS3_mS3_mm
 12a0,260,verified,src/nn/crypto/aes128_ctr.cpp,_ZN2nn6crypto16DecryptAes128CtrEPvmPKvmS3_mS3_m
@@ -18,14 +18,14 @@ f60,356,verified,src/nn/crypto/aes128_ccm.cpp,_ZN2nn6crypto6detail11CcmModeImplI
 1750,256,verified,src/nn/crypto/aes128_ctr.cpp,_ZN2nn6crypto23EncryptAes128CtrPartialEPvmPKvmS3_mlS3_m
 1850,224,verified,src/nn/crypto/aes192_ctr.cpp,_ZN2nn6crypto16DecryptAes192CtrEPvmPKvmS3_mS3_m
 1930,220,verified,src/nn/crypto/aes192_ctr.cpp,_ZN2nn6crypto23DecryptAes192CtrPartialEPvmPKvmS3_mlS3_m
-1a20,744,verified,src/nn/crypto/aes192_ctr.cpp,_ZN2nn6crypto6detail11CtrModeImplINS0_12AesEncryptorILm24EEEE6UpdateEPvmPKvm
+1a20,744,disputed,src/nn/crypto/aes192_ctr.cpp,_ZN2nn6crypto6detail11CtrModeImplINS0_12AesEncryptorILm24EEEE6UpdateEPvmPKvm
 1d40,364,verified,src/nn/crypto/aes192_ctr.cpp,_ZN2nn6crypto6detail11CtrModeImplINS0_12AesEncryptorILm24EEEE13ProcessBlocksEPhPKhi
 1eb0,392,verified,src/nn/crypto/aes192_ctr.cpp,_ZN2nn6crypto6detail11CtrModeImplINS0_12AesEncryptorILm24EEEE10InitializeEPKS4_PKvml
 2040,224,verified,src/nn/crypto/aes192_ctr.cpp,_ZN2nn6crypto16EncryptAes192CtrEPvmPKvmS3_mS3_m
 2120,220,verified,src/nn/crypto/aes192_ctr.cpp,_ZN2nn6crypto23EncryptAes192CtrPartialEPvmPKvmS3_mlS3_m
 2200,224,verified,src/nn/crypto/aes256_ctr.cpp,_ZN2nn6crypto16DecryptAes256CtrEPvmPKvmS3_mS3_m
 22e0,220,verified,src/nn/crypto/aes256_ctr.cpp,_ZN2nn6crypto23DecryptAes256CtrPartialEPvmPKvmS3_mlS3_m
-23c0,744,verified,src/nn/crypto/aes256_ctr.cpp,_ZN2nn6crypto6detail11CtrModeImplINS0_12AesEncryptorILm32EEEE6UpdateEPvmPKvm
+23c0,744,disputed,src/nn/crypto/aes256_ctr.cpp,_ZN2nn6crypto6detail11CtrModeImplINS0_12AesEncryptorILm32EEEE6UpdateEPvmPKvm
 26e0,364,verified,src/nn/crypto/aes256_ctr.cpp,_ZN2nn6crypto6detail11CtrModeImplINS0_12AesEncryptorILm32EEEE13ProcessBlocksEPhPKhi
 2850,392,verified,src/nn/crypto/aes256_ctr.cpp,_ZN2nn6crypto6detail11CtrModeImplINS0_12AesEncryptorILm32EEEE10InitializeEPKS4_PKvml
 29e0,224,verified,src/nn/crypto/aes256_ctr.cpp,_ZN2nn6crypto16EncryptAes256CtrEPvmPKvmS3_mS3_m
@@ -154,7 +154,7 @@ f60,356,verified,src/nn/crypto/aes128_ccm.cpp,_ZN2nn6crypto6detail11CcmModeImplI
 6d20,480,verified,src/nn/crypto/detail/big_num_digits.cpp,_ZN2nn6crypto6detail6BigNum9LeftShiftEPjPKjii
 6f20,484,verified,src/nn/crypto/detail/big_num_digits.cpp,_ZN2nn6crypto6detail6BigNum10RightShiftEPjPKjii
 7120,72,verified,src/nn/crypto/detail/big_num_digits.cpp,_ZN2nn6crypto6detail6BigNum7CompareEPKjS4_i
-7180,2188,verified,src/nn/crypto/detail/big_num_digits.cpp,_ZN2nn6crypto6detail6BigNum3DivEPjS3_PKjiS5_iPNS2_14DigitAllocatorE
+7180,2176,verified,src/nn/crypto/detail/big_num_digits.cpp,_ZN2nn6crypto6detail6BigNum3DivEPjS3_PKjiS5_iPNS2_14DigitAllocatorE
 7bf0,180,verified,src/nn/crypto/detail/big_num_digits.cpp,_ZN2nn6crypto6detail6BigNum3ModEPjPKjiS5_iPNS2_14DigitAllocatorE
 7cb0,276,verified,src/nn/crypto/detail/big_num_digits.cpp,_ZN2nn6crypto6detail6BigNum7ModMultEPjPKjS5_S5_iPNS2_14DigitAllocatorE
 7de0,1404,verified,src/nn/crypto/detail/big_num_digits.cpp,_ZN2nn6crypto6detail6BigNum6ModExpEPjPKjS5_iS5_iPNS2_14DigitAllocatorE
@@ -221,7 +221,7 @@ d0c0,8,verified,src/nn/crypto/detail/md5_impl.cpp,_ZN2nn6crypto6detail7Md5ImplD2
 d0d0,52,verified,src/nn/crypto/detail/md5_impl.cpp,_ZN2nn6crypto6detail7Md5Impl10InitializeEv
 d120,260,verified,src/nn/crypto/detail/md5_impl.cpp,_ZN2nn6crypto6detail7Md5Impl6UpdateEPKvm
 d240,2512,verified,src/nn/crypto/detail/md5_impl.cpp,_ZN2nn6crypto6detail7Md5Impl12ProcessBlockEv
-dc10,244,verified,src/nn/crypto/detail/md5_impl.cpp,_ZN2nn6crypto6detail7Md5Impl7GetHashEPvm
+dc10,248,verified,src/nn/crypto/detail/md5_impl.cpp,_ZN2nn6crypto6detail7Md5Impl7GetHashEPvm
 dd10,208,verified,src/nn/crypto/detail/md5_impl.cpp,_ZN2nn6crypto6detail7Md5Impl16ProcessLastBlockEv
 dde0,8,verified,src/nn/crypto/detail/sha3_impl.cpp,_ZN2nn6crypto6detail8Sha3ImplILm28EEC2Ev
 ddf0,8,verified,src/nn/crypto/detail/sha3_impl.cpp,_ZN2nn6crypto6detail8Sha3ImplILm28EED2Ev
@@ -301,6 +301,8 @@ ffe0,36,verified,src/nn/crypto/detail/sha3_impl.cpp,_ZNK2nn6crypto6detail8Sha3Im
 12c90,740,verified,src/nn/crypto/detail/ecc_secp256k1_arith.cpp,nndetailCryptoMultMod256_SecP256k1_N
 12f80,100,verified,src/nn/crypto/detail/ecc_secp256k1_arith.cpp,nndetailCryptoMult8Mod256_SecP256k1_P
 12ff0,452,verified,src/nn/crypto/detail/ecc_secp256k1_arith.cpp,nndetailCryptoSqrMod256_SecP256k1_P
+131c0,472,verified,src/nn/crypto/detail/ecc_secp256k1_arith.cpp,nndetailCryptoInvMod256_SecP256k1_N
+133a0,432,verified,src/nn/crypto/detail/ecc_secp256k1_arith.cpp,nndetailCryptoInvMod256_SecP256k1_P
 13550,64,verified,src/nn/crypto/detail/is_same_bytes.cpp,_ZN2nn6crypto6detail11IsSameBytesEPKvS3_m
 13590,8,verified,src/nn/crypto/detail/aes_impl.cpp,_ZN2nn6crypto6detail7AesImplILm16EED2Ev
 135a0,504,verified,src/nn/crypto/detail/aes_impl.cpp,_ZN2nn6crypto6detail7AesImplILm16EE10InitializeEPKvmb
@@ -1824,7 +1826,7 @@ c2e10,160,verified,src/nn/fs/fs_file_accessor.cpp,_ZN2nn2fs6detail12FileAccessor
 c34f0,8,verified,src/nn/fs/fs_file_accessor.cpp,_ZNK2nn2fs6detail12FileAccessor11GetOpenModeEv
 c3ce0,108,verified,src/nn/fs/fs_file_accessor.cpp,_ZN2nn2fs6detail12FileAccessor25ReadWithoutCacheAccessLogEPmlPvmRKNS0_10ReadOptionE
 c3d50,584,verified,src/nn/fs/fs_file_accessor.cpp,_ZN2nn2fs6detail12FileAccessor4ReadEPmlPvmRKNS0_10ReadOptionE
-c4090,384,verified,src/nn/fs/fs_file_accessor.cpp,_ZN2nn2fs6detail12FileAccessor5WriteElPKvmRKNS0_11WriteOptionE
+c4090,392,verified,src/nn/fs/fs_file_accessor.cpp,_ZN2nn2fs6detail12FileAccessor5WriteElPKvmRKNS0_11WriteOptionE
 c4240,40,verified,src/nn/fs/fs_file_accessor.cpp,_ZN2nn2fs6detail12FileAccessor16UpdateLastResultENS_6ResultE
 c4270,112,verified,src/nn/fs/fs_file_accessor.cpp,_ZN2nn2fs6detail12FileAccessor5FlushEv
 c4300,352,verified,src/nn/fs/fs_file_accessor.cpp,_ZN2nn2fs6detail12FileAccessor7SetSizeEl
@@ -8866,7 +8868,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 280980,144,verified,src/nn/audio/mix_bus_stream_util.cpp,_ZN2nn5audio4util29SetConstantStridePointerArrayIiEEvPPKT_PKvim
 280a20,48,verified,src/nn/audio/mix_bus.cpp,_ZN2nn5audio4util15GetMixBusWeightEiiii
 280a50,68,verified,src/nn/audio/vector_fill.cpp,_ZN2nn5audio4util15GetMicBusWeightEiiii
-280aa0,152,verified,src/nn/audio/vector_fill.cpp,_ZN2nn5audio4util7VecFillIaEEvPT_S3_i
+280aa0,184,verified,src/nn/audio/vector_fill.cpp,_ZN2nn5audio4util7VecFillIaEEvPT_S3_i
 280b60,220,verified,src/nn/audio/vector_fill.cpp,_ZN2nn5audio4util7VecFillIsEEvPT_S3_i
 280c40,248,verified,src/nn/audio/vector_fill.cpp,_ZN2nn5audio4util7VecFillIiEEvPT_S3_i
 280d40,236,verified,src/nn/audio/vector_fill.cpp,_ZN2nn5audio4util7VecFillIlEEvPT_S3_i

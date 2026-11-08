@@ -95,6 +95,79 @@ constexpr uint64_t DistanceN[4] = {
   }
 }
 
+constexpr uint64_t ModulusP[4] = {
+  0xfffffffefffffc2f, ~uint64_t(0), ~uint64_t(0), ~uint64_t(0)};
+constexpr uint64_t ModulusN[4] = {
+  0xbfd25e8cd0364141, 0xbaaedce6af48a03b, ~uint64_t(1), ~uint64_t(0)};
+
+// A constant time binary extended gcd over 512 fixed steps, the second
+// coefficient ends up holding the inverse.
+[[gnu::always_inline]] inline void InvMod(uint32_t* result,
+  const uint32_t* value, const uint64_t* modulus) {
+  Limbs a;
+  Load(a, value);
+  Limbs b = {modulus[0], modulus[1], modulus[2], modulus[3]};
+  Limbs x = {1, 0, 0, 0};
+  Limbs y = {0, 0, 0, 0};
+  for (int step = 0; step < 512; step++) {
+    const bool isOdd = (a[0] & 1) != 0;
+    Limbs d;
+    uint64_t borrow = 0;
+    for (int i = 0; i < 4; i++) {
+      d[i] = SubBorrow(a[i], b[i], borrow);
+    }
+    const bool isSwapped = isOdd && borrow != 0;
+    if (!isOdd) {
+      for (int i = 0; i < 4; i++) {
+        d[i] = a[i];
+      }
+    }
+    if (isSwapped) {
+      uint64_t negateBorrow = 0;
+      for (int i = 0; i < 4; i++) {
+        d[i] = SubBorrow(0, d[i], negateBorrow);
+      }
+      for (int i = 0; i < 4; i++) {
+        b[i] = a[i];
+      }
+    }
+    for (int i = 0; i < 3; i++) {
+      a[i] = (d[i] >> 1) | (d[i + 1] << 63);
+    }
+    a[3] = d[3] >> 1;
+    if (isSwapped) {
+      for (int i = 0; i < 4; i++) {
+        const uint64_t swapped = x[i];
+        x[i] = y[i];
+        y[i] = swapped;
+      }
+    }
+    if (isOdd) {
+      uint64_t subtractBorrow = 0;
+      for (int i = 0; i < 4; i++) {
+        x[i] = SubBorrow(x[i], y[i], subtractBorrow);
+      }
+      if (subtractBorrow != 0) {
+        uint64_t carry = 0;
+        for (int i = 0; i < 4; i++) {
+          x[i] = AddCarry(x[i], modulus[i], carry);
+        }
+      }
+    }
+    uint64_t halveCarry = 0;
+    if ((x[0] & 1) != 0) {
+      for (int i = 0; i < 4; i++) {
+        x[i] = AddCarry(x[i], modulus[i], halveCarry);
+      }
+    }
+    for (int i = 0; i < 3; i++) {
+      x[i] = (x[i] >> 1) | (x[i + 1] << 63);
+    }
+    x[3] = (x[3] >> 1) | (halveCarry << 63);
+  }
+  Store(result, y);
+}
+
 [[gnu::always_inline]] inline void StoreProduct(uint32_t* result,
   const uint32_t* lhs, const uint32_t* rhs) {
   Limbs a;
@@ -319,6 +392,16 @@ void nndetailCryptoBignum_mul_comba8(uint32_t* result, const uint32_t* lhs,
 void nndetailCryptoBignum_sqr_comba8(uint32_t* result,
   const uint32_t* value) {
   StoreProduct(result, value, value);
+}
+
+void nndetailCryptoInvMod256_SecP256k1_P(uint32_t* result,
+  const uint32_t* value) {
+  InvMod(result, value, ModulusP);
+}
+
+void nndetailCryptoInvMod256_SecP256k1_N(uint32_t* result,
+  const uint32_t* value) {
+  InvMod(result, value, ModulusN);
 }
 
 }
