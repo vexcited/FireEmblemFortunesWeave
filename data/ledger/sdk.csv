@@ -23457,6 +23457,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 7984a0,28,verified,src/musl/src/ctype/wctrans.c,towctrans
 7984c0,92,verified,src/musl/src/ctype/wctrans.c,wctrans_l
 798520,28,verified,src/musl/src/ctype/wctrans.c,towctrans_l
+798540,128,verified,src/nnmusl/ctype/wcwidth.c,wcwidth
 798620,84,verified,src/musl/src/env/clearenv.c,clearenv
 7986a0,144,verified,src/musl/src/env/getenv.c,getenv
 798760,316,verified,src/musl/src/env/putenv.c,__putenv
@@ -23565,7 +23566,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 79f360,84,verified,src/musl/src/search/tdestroy.c,tdestroy
 79f3c0,120,verified,src/musl/src/search/tsearch_avl.c,tfind
 79f440,256,verified,src/nnmusl/search/tsearch.c,__tsearch_balance
-79f540,496,verified,src/nnmusl/search/tsearch.c,tsearch
+79f540,504,verified,src/nnmusl/search/tsearch.c,tsearch
 79f740,8,verified,src/musl/src/search/tsearch_avl.c,twalk
 79f7f0,152,verified,src/musl/src/stdio/__fmodeflags.c,__fmodeflags
 79f890,204,verified,src/musl/src/stdio/__overflow.c,__overflow
