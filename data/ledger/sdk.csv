@@ -2084,6 +2084,7 @@ bc760,176,verified,src/nn/diag/detail/diag_memory_block_parser.cpp,_ZN2nn4diag6d
 bc810,8,verified,src/nn/diag/detail/diag_memory_block_parser.cpp,_ZNK2nn4diag6detail17MemoryBlockParser7GetInfoEv
 bc820,264,verified,src/nn/diag/diag_module_misc.cpp,_ZN2nn4diag6detail17GetModuleInfoImplEPNS1_14ModuleInfoImplEmPcm
 bc930,116,verified,src/nn/diag/diag_module_misc.cpp,_ZN2nn4diag6detail17GetModulePathImplEPcmm
+bc9c0,464,verified,src/nn/diag/diag_module_misc.cpp,_ZN2nn4diag6detail20GetAllModuleInfoImplEPmPvmb
 bcbb0,220,verified,src/nn/diag/diag_module_misc.cpp,_ZN2nn4diag6detail31GetReadOnlyDataSectionRangeImplEPmS2_m
 bcc90,104,verified,src/nn/diag/diag_module_misc.cpp,_ZN2nn4diag6detail12ModuleParser8MoveNextEPcm
 bcd00,228,verified,src/nn/diag/diag_module_misc.cpp,_ZN2nn4diag6detail12ModuleParser17MoveToCodeSectionEv

@@ -14,7 +14,8 @@ extern "C" void nnMain();
 namespace nn::ro {
 
 struct ModuleId {
-  uint8_t value[0x28];
+  uint8_t value[0x20];
+  size_t size;
 };
 
 bool GetModuleAddressRange(uintptr_t* pOutBase, uintptr_t* pOutSize,
@@ -34,6 +35,15 @@ namespace nn::diag {
 
 struct DevNotificationHeader;
 
+struct ModuleInfo {
+  const char* pPath;
+  uintptr_t baseAddress;
+  size_t size;
+  const uint8_t* pModuleId;
+  size_t moduleIdSize;
+  uint32_t reserved;
+};
+
 size_t GetProcessName(char* pOutName, size_t size);
 
 namespace detail {
@@ -52,6 +62,8 @@ size_t GetSymbolSizeImpl(uintptr_t address);
 uintptr_t GetSymbolNameImpl(char* pOutName, size_t size, uintptr_t address);
 bool GetReadOnlyDataSectionRangeImpl(uintptr_t* pOutStart,
   uintptr_t* pOutEnd, uintptr_t address);
+int GetAllModuleInfoImpl(size_t* pOutSize, void* pBuffer, size_t bufferSize,
+  bool isSizeOnly);
 
 // The original reaches this one through its import here, while the
 // symbol lookup inlines it.
@@ -316,6 +328,7 @@ size_t GetSymbolSizeImpl(uintptr_t address) {
   pOutInfo->baseAddress = base;
   pOutInfo->size = size;
   memcpy(pOutInfo->moduleId, moduleId.value, sizeof(moduleId.value));
+  pOutInfo->moduleIdSize = moduleId.size;
   return isFound;
 }
 
@@ -363,7 +376,68 @@ bool GetReadOnlyDataSectionRangeImpl(uintptr_t* pOutStart,
   return false;
 }
 
-bool ModuleParser::MoveNext(char* pOutName, size_t nameSize) {
+// Entries fill the buffer from the front, names and ids from the back. The
+// name is first read into the free space between them.
+int GetAllModuleInfoImpl(size_t* pOutSize, void* pBuffer, size_t bufferSize,
+  bool isSizeOnly) {
+  ModuleParser parser;
+  int count = 0;
+  size_t requiredSize = 0;
+  if (isSizeOnly) {
+    while (parser.MoveNext(static_cast<char*>(pBuffer), bufferSize)) {
+      const ModuleInfoImpl* pInfo = parser.GetInfo();
+      count++;
+      requiredSize += pInfo->nameLength + pInfo->moduleIdSize +
+        sizeof(ModuleInfo) + 1;
+    }
+  }
+  else if (bufferSize > sizeof(ModuleInfo)) {
+    ModuleInfo* pOut = static_cast<ModuleInfo*>(pBuffer);
+    char* pTail = static_cast<char*>(pBuffer) + bufferSize;
+    while (parser.MoveNext(reinterpret_cast<char*>(pOut),
+      pTail - reinterpret_cast<char*>(pOut))) {
+      const ModuleInfoImpl* pInfo = parser.GetInfo();
+      requiredSize += pInfo->nameLength + pInfo->moduleIdSize +
+        sizeof(ModuleInfo) + 1;
+      if (requiredSize > bufferSize) {
+        break;
+      }
+
+      pTail -= pInfo->nameLength + 1;
+      if (pInfo->nameLength != 0) {
+        memmove(pTail, pInfo->pName, pInfo->nameLength);
+      }
+
+      pTail[pInfo->nameLength] = '\0';
+      pOut->pPath = pTail;
+      pOut->baseAddress = pInfo->baseAddress;
+      pOut->size = pInfo->size;
+
+      const uint8_t* pModuleId = nullptr;
+      if (pInfo->moduleIdSize != 0) {
+        pTail -= pInfo->moduleIdSize;
+        memcpy(pTail, pInfo->moduleId, pInfo->moduleIdSize);
+        pModuleId = reinterpret_cast<const uint8_t*>(pTail);
+      }
+
+      pOut->pModuleId = pModuleId;
+      pOut->moduleIdSize = pInfo->moduleIdSize;
+      pOut->reserved = 0;
+      count++;
+      pOut++;
+      if (static_cast<size_t>(pTail - reinterpret_cast<char*>(pOut)) <=
+        sizeof(ModuleInfo)) {
+        break;
+      }
+    }
+  }
+
+  *pOutSize = requiredSize;
+  return count;
+}
+
+[[gnu::noinline]] bool ModuleParser::MoveNext(char* pOutName,
+  size_t nameSize) {
   if (!MoveToCodeSection()) {
     return false;
   }
@@ -371,7 +445,9 @@ bool ModuleParser::MoveNext(char* pOutName, size_t nameSize) {
     MemoryBlockParser::GetInfo()->baseAddress, pOutName, nameSize);
 }
 
-const ModuleInfoImpl* ModuleParser::GetInfo() const {
+// Kept opaque, the original asks for the info again on every module.
+[[gnu::noinline, clang::optnone]] const ModuleInfoImpl*
+  ModuleParser::GetInfo() const {
   return &m_ModuleInfo;
 }
 
