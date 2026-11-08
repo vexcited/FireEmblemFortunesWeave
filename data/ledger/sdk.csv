@@ -20085,7 +20085,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 5fed40,8,verified,src/nvidia/nvos_stubs.cpp,NvRmHost1xGetDefaultOpenAttrs
 5fed50,140,verified,src/nvidia/nvrm_host1x.cpp,NvRmHost1xOpen
 5fedf0,80,verified,src/nvidia/nvrm_host1x.cpp,NvRmHost1xClose
-5fee40,624,verified,src/nvidia/nvrm_host1x.cpp,NvRmHost1xChannelOpen
+5fee40,636,verified,src/nvidia/nvrm_host1x.cpp,NvRmHost1xChannelOpen
 5ff0c0,80,verified,src/nvidia/nvrm_host1x.cpp,NvRmHost1xChannelClose
 5ff110,88,verified,src/nvidia/nvrm_host1x.cpp,NvRmHost1xChannelPinCommandBufferPRIVATE
 5ff170,28,verified,src/nvidia/nvrm_host1x.cpp,NvRmHost1xChannelIsValidSyncptPRIVATE
@@ -20110,7 +20110,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 5ff750,8,verified,src/nvidia/nvos_stubs.cpp,NvRmHost1xChannelPinGetSizePRIVATE
 5ff760,24,verified,src/nvidia/nvrm_host1x.cpp,NvRmHost1xChannelCheckIsDeterministicPRIVATE
 5ff780,164,verified,src/nvidia/nvrm_host1x.cpp,NvRmHost1xWaiterAllocate
-5ff830,20,verified,src/nvidia/nvrm_host1x.cpp,NvRmHost1xWaiterFree
+5ff830,60,verified,src/nvidia/nvrm_host1x.cpp,NvRmHost1xWaiterFree
 5ff870,8,verified,src/nvidia/nvos_stubs.cpp,NvRmHost1xWaiterAllocateWithEventService
 5ff880,8,verified,src/nvidia/nvos_stubs.cpp,NvRmHost1xWaiterCreateEventNotifier
 5ff890,8,verified,src/nvidia/nvos_stubs.cpp,NvRmHost1xSyncpointCreateReadOnlyMemHandle
@@ -20196,11 +20196,11 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 603ac0,204,verified,src/nvidia/nvrm_host1x_stream.cpp,NvRmHost1xStreamFlush
 603b90,404,verified,src/nvidia/nvrm_surface_query.cpp,NvRmSurfaceGetCoordOffset
 603f30,300,verified,src/nvidia/nvrm_surface_query.cpp,NvRmSurfaceWrite
-604800,336,verified,src/nvidia/nvrm_surface_query.cpp,NvRmSurfaceRead
+604800,308,verified,src/nvidia/nvrm_surface_query.cpp,NvRmSurfaceRead
 604fd0,8,verified,src/nvidia/nvos_stubs.cpp,NvRmSurfaceGetDefaultLayout
 605250,104,verified,src/nvidia/nvrm_surface_query.cpp,NvRmSurfaceGetAlignment
 605ad0,8,verified,src/nvidia/nvrm_surface.cpp,NvRmSurfaceSetup
-605ae0,236,verified,src/nvidia/nvrm_surface_query.cpp,NvRmSurfaceGetYuvColorFormat
+605ae0,40,verified,src/nvidia/nvrm_surface_query.cpp,NvRmSurfaceGetYuvColorFormat
 605dc0,84,verified,src/nvidia/nvrm_surface_query.cpp,NvRmSurfaceGetPitchAlignment
 605e20,300,verified,src/nvidia/nvrm_surface_query.cpp,NvRmSurfaceSetDeviceMemory
 605f50,8,verified,src/nvidia/nvos_stubs.cpp,NvRmSurfaceDebugControlInternal
@@ -20213,12 +20213,14 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 6063d0,52,verified,src/nvidia/nvrm_surface.cpp,NvRmSurfaceComputeOffset
 606410,56,verified,src/nvidia/nvrm_surface.cpp,NvRmSurfaceComputePitch
 606450,44,verified,src/nvidia/nvrm_surface.cpp,NvRmSurfaceMarkCompressibleWrite
+606480,432,verified,src/nvidia/nvrm_surface_query.cpp,NvRmSurfaceGetDecompressionPolicy
 606640,16,verified,src/nvidia/nvrm_surface.cpp,NvRmSurfaceSetDecompressionPolicy
 606650,156,verified,src/nvidia/nvrm_surface_query.cpp,NvRmSurfaceComputeSize
 607740,124,verified,src/nvidia/nvrm_surface_query.cpp,NvRmSurfaceSetSystemMemory
 608fe0,252,verified,src/nvidia/nvrm_surface_query.cpp,NvRmSurfaceComputeName
+60a060,244,verified,src/nvidia/nvrm_surface_query.cpp,NvRmSurfaceLoadJson
 60a6c0,8,verified,src/nvidia/nvos_stubs.cpp,NvRmSurfaceDebugControl
-60ad40,184,verified,src/nvidia/nvrm_surface_query.cpp,NvRmSurfaceContainerGetSize
+60ad40,180,verified,src/nvidia/nvrm_surface_query.cpp,NvRmSurfaceContainerGetSize
 60ae00,168,verified,src/nvidia/nvrm_surface_query.cpp,NvRmSurfaceContainerGetAlignment
 60aeb0,36,verified,src/nvidia/nvrm_sync.cpp,NvRmSyncDup
 60aee0,180,verified,src/nvidia/nvrm_sync.cpp,NvRmSyncDupInto

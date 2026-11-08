@@ -4,6 +4,7 @@ enum NvError : int32_t {
   NvSuccess = 0,
   NvError_NotImplemented = 2,
   NvError_BadParameter = 4,
+  NvError_InsufficientMemory = 6,
   NvError_BadValue = 11,
   NvError_NotSupported = 0x10002,
   NvError_AccessDenied = 0x30010,
@@ -41,9 +42,33 @@ struct NvRmSurfaceContainer {
   int32_t planeKind;
 };
 
-extern "C" int snprintf(char* buffer, unsigned long size, const char* format,
-  ...);
-extern "C" const char* NvColorFormatToString(uint64_t colorFormat);
+struct NvOsStatType {
+  uint64_t size;
+  uint64_t type;
+  uint64_t mtime;
+};
+
+extern "C" {
+
+int snprintf(char* buffer, unsigned long size, const char* format, ...);
+int strcmp(const char* first, const char* second);
+const char* NvColorFormatToString(uint64_t colorFormat);
+NvError NvOsGetConfigString(const char* name, char* value, uint32_t size);
+int32_t NvOsAtomicCompareExchange32(int32_t* target, int32_t expected,
+  int32_t value);
+NvError NvOsStat(const char* path, NvOsStatType* pOutStat);
+NvError NvOsFopen(const char* path, uint32_t flags, void** pOutFile);
+NvError NvOsFread(void* file, void* buffer, uint64_t size,
+  uint64_t* pOutRead);
+void NvOsFcloseEx(void* file);
+void* NvOsAlloc(uint64_t size);
+void NvOsFree(void* pointer);
+NvError NvRmSurfaceFromJson(void* surfaces, void* count, void* attributes,
+  const char* json, uint32_t length);
+
+}
+
+[[gnu::visibility("hidden")]] extern int32_t g_NvRmSurfaceDecompressionPolicy;
 
 [[gnu::visibility("hidden")]] NvError NvRmSurfaceComputeSizeImpl(
   NvRmSurface* surface, uint32_t plane, uint32_t isTotal, uint32_t* pOutSize);
@@ -550,4 +575,75 @@ extern "C" NvError NvRmSurfaceGetCoordOffset(const NvRmSurface* surface,
     default:
       return NvError_NotSupported;
   }
+}
+
+// The policy is read from NV_DECOMPRESSION once, the default is producer
+// decompression.
+extern "C" int32_t NvRmSurfaceGetDecompressionPolicy() {
+  if (g_NvRmSurfaceDecompressionPolicy != -1) {
+    return g_NvRmSurfaceDecompressionPolicy;
+  }
+
+  char value[20] = {};
+  int32_t policy = 1;
+  if (NvOsGetConfigString("NV_DECOMPRESSION", value, sizeof(value)) ==
+    NvSuccess && value[0] != '\0') {
+    if (strcmp(value, "disabled") == 0) {
+      policy = 0;
+    }
+    else if (strcmp(value, "consumer-decompression") == 0 ||
+      strcmp(value, "lazy") == 0) {
+      policy = 2;
+    }
+    else if (strcmp(value, "producer-decompression") == 0 ||
+      strcmp(value, "client") == 0) {
+      policy = 1;
+    }
+    else if (strcmp(value, "producer-compbits-conversion") == 0 ||
+      strcmp(value, "cde-client") == 0) {
+      policy = 3;
+    }
+    else if (strcmp(value, "consumer-compbits-conversion") == 0 ||
+      strcmp(value, "cde-lazy") == 0) {
+      policy = 4;
+    }
+  }
+
+  NvOsAtomicCompareExchange32(&g_NvRmSurfaceDecompressionPolicy, -1, policy);
+  return g_NvRmSurfaceDecompressionPolicy;
+}
+
+extern "C" NvError NvRmSurfaceLoadJson(void* surfaces, void* count,
+  void* attributes, const char* path) {
+  if (count == nullptr || attributes == nullptr || path == nullptr) {
+    return NvError_BadParameter;
+  }
+
+  void* file = nullptr;
+  NvOsStatType stat = {};
+  NvError result = NvOsStat(path, &stat);
+  if (result != NvSuccess) {
+    return result;
+  }
+
+  result = NvOsFopen(path, 1, &file);
+  if (result != NvSuccess) {
+    return result;
+  }
+
+  auto* json = static_cast<char*>(NvOsAlloc(stat.size));
+  if (json == nullptr) {
+    result = NvError_InsufficientMemory;
+  }
+  else {
+    result = NvOsFread(file, json, stat.size, nullptr);
+    if (result == NvSuccess) {
+      result = NvRmSurfaceFromJson(surfaces, count, attributes, json,
+        static_cast<uint32_t>(stat.size));
+    }
+  }
+
+  NvOsFcloseEx(file);
+  NvOsFree(json);
+  return result;
 }
