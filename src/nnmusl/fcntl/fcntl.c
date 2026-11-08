@@ -1,7 +1,8 @@
 #include <fcntl.h>
 #include <stdarg.h>
 
-__attribute__((visibility("hidden"))) int __nnmusl_vfcntl(int fd, int cmd, va_list ap);
+__attribute__((visibility("hidden"))) int __nnmusl_vfcntl(int fd, int cmd,
+	va_list ap);
 
 int fcntl(int fd, int cmd, ...)
 {

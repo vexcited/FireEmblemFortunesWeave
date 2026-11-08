@@ -5,7 +5,8 @@
 _Noreturn void nn_detail_UnexpectedDefaultImpl(void)
 	__asm__("_ZN2nn6detail21UnexpectedDefaultImplEv");
 
-NNMUSL_HIDDEN ssize_t __nnmusl_ref_pwrite(struct nnmusl_slot_reference reference,
+NNMUSL_HIDDEN ssize_t __nnmusl_ref_pwrite(struct nnmusl_slot_reference
+	reference,
 	const void *buf, size_t count, off_t offset);
 NNMUSL_HIDDEN ssize_t __nnmusl_ref_read(struct nnmusl_slot_reference reference,
 	void *buf, size_t count);

@@ -12,7 +12,8 @@ int *__errno_location(void) __attribute__((const));
 // The directory stream keeps its mutex 0x18 bytes in.
 #define DIR_LOCK(dir) ((char *)(dir) + 0x18)
 
-int readdir_r(DIR *restrict dir, struct dirent *restrict buf, struct dirent **restrict result)
+int readdir_r(DIR *restrict dir, struct dirent *restrict buf,
+	struct dirent **restrict result)
 {
 	struct dirent *de;
 	int errno_save = errno;

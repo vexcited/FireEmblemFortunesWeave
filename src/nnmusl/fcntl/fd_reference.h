@@ -17,9 +17,11 @@ struct nnmusl_slot_reference {
 
 NNMUSL_HIDDEN uint32_t __nnmusl_fd_lookup(unsigned fd);
 NNMUSL_HIDDEN struct nnmusl_slot_reference __nnmusl_fd_get(int fd);
-NNMUSL_HIDDEN void __nnmusl_slot_release(struct nnmusl_slot_reference *reference);
+NNMUSL_HIDDEN void __nnmusl_slot_release(
+	struct nnmusl_slot_reference *reference);
 NNMUSL_HIDDEN unsigned __nnmusl_fd_kind(struct nnmusl_slot_reference reference);
-NNMUSL_HIDDEN uint16_t __nnmusl_fd_native(struct nnmusl_slot_reference reference);
+NNMUSL_HIDDEN uint16_t __nnmusl_fd_native(
+	struct nnmusl_slot_reference reference);
 NNMUSL_HIDDEN int __nnmusl_fs_result_errno(uint64_t result);
 
 #define NNMUSL_IS_SOCKET(fd) ((uint16_t)__nnmusl_fd_lookup(fd) == 4)

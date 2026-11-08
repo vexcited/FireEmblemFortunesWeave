@@ -15,7 +15,8 @@ _Noreturn void nn_detail_UnexpectedDefaultImpl(void)
 	__asm__("_ZN2nn6detail21UnexpectedDefaultImplEv");
 
 NNMUSL_HIDDEN int __nnmusl_socket_fcntl(int fd, int cmd, va_list ap);
-NNMUSL_HIDDEN uint64_t __nnmusl_fd_handle(struct nnmusl_slot_reference reference);
+NNMUSL_HIDDEN uint64_t __nnmusl_fd_handle(
+	struct nnmusl_slot_reference reference);
 NNMUSL_HIDDEN int __nnmusl_ref_stat(struct nnmusl_slot_reference reference,
 	struct stat *st);
 

@@ -3,7 +3,8 @@
 
 // Maps an nn::fs result to errno, the module sits in the low 9 bits and the
 // description in the next 13.
-__attribute__((visibility("hidden"))) int __nnmusl_fs_result_errno(uint64_t result)
+__attribute__((visibility("hidden"))) int __nnmusl_fs_result_errno(uint64_t
+	result)
 {
 	uint32_t value = result;
 	uint32_t inner = result & 0x3fffff;
