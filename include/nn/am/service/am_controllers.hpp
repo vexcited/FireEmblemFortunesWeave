@@ -48,7 +48,9 @@ class ICommonStateGetter : public sf::IServiceObject {
   NN_AM_RESERVED(13); NN_AM_RESERVED(14); NN_AM_RESERVED(15);
   NN_AM_RESERVED(16); NN_AM_RESERVED(17);
   virtual Result GetWakeupCount(sf::Out<int64_t> pOutCount) = 0;
-  NN_AM_RESERVED(19); NN_AM_RESERVED(20); NN_AM_RESERVED(21);
+  NN_AM_RESERVED(19);
+  virtual Result PushToGeneralChannel(sf::SharedPointer<IStorage> storage) = 0;
+  NN_AM_RESERVED(21);
   NN_AM_RESERVED(22); NN_AM_RESERVED(23); NN_AM_RESERVED(24);
   virtual Result IsVrModeEnabled(sf::Out<bool> pOutIsEnabled) = 0;
   virtual Result SetVrModeEnabled(bool isEnabled) = 0;
@@ -66,7 +68,8 @@ class ICommonStateGetter : public sf::IServiceObject {
   virtual Result SetTvPowerStateMatchingMode(int32_t mode) = 0;
   NN_AM_RESERVED(37);
   virtual Result SetCpuBoostMode(int32_t mode) = 0;
-  NN_AM_RESERVED(39); NN_AM_RESERVED(40);
+  virtual Result CancelCpuBoostMode() = 0;
+  NN_AM_RESERVED(40);
   virtual Result PerformSystemButtonPressingIfInFocus(int32_t type) = 0;
   NN_AM_RESERVED(42); NN_AM_RESERVED(43); NN_AM_RESERVED(44);
   virtual Result GetGpuErrorHandler(

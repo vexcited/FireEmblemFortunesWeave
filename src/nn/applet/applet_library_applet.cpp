@@ -94,7 +94,9 @@ struct LibraryApplet {
   std::atomic<bool> isExitRequested;
   LibraryAppletExitReason exitReason;
   uint64_t indirectLayerConsumerHandle;
-  uint8_t reserved[32];
+  bool isStreamPlayShareEnabled;
+  bool isStreamPlayShareUnknownEnabled;
+  uint8_t reserved[30];
 };
 
 static_assert(sizeof(LibraryApplet) == 0xe8);
@@ -276,6 +278,31 @@ bool RequestExitChildLibraryAppletOfLibraryAppletOrTerminate(
   NN_ABORT_UNLESS_RESULT_SUCCESS(Get(handle)->accessor->GetChildAppletAccessor(
     sf::Out<sf::SharedPointer<IAppletAccessor>>(&child)));
   return RequestExitLibraryAppletOrTerminate(child.Get(), timeout);
+}
+
+os::SystemEventType* GetLibraryAppletExitEvent(LibraryAppletHandle handle) {
+  return &Get(handle)->stateChangedEvent;
+}
+
+void SetStreamPlayShareEnabled(LibraryAppletHandle handle, bool isEnabled,
+  bool isUnknownEnabled) {
+  LibraryApplet* pApplet = Get(handle);
+  pApplet->isStreamPlayShareEnabled = isEnabled;
+  pApplet->isStreamPlayShareUnknownEnabled = isUnknownEnabled;
+}
+
+void CloseLibraryApplet(LibraryAppletHandle handle) {
+  LibraryApplet* pApplet = Get(handle);
+  if (*reinterpret_cast<const uint8_t*>(
+      &pApplet->isPopFromInteractiveOutChannelEventInitialized) == 1) {
+    os::DestroySystemEvent(&pApplet->popFromInteractiveOutChannelEvent);
+  }
+  os::DestroySystemEvent(&pApplet->stateChangedEvent);
+  os::DestroySystemEvent(&pApplet->popOutDataEvent);
+  pApplet->accessor->Release();
+  pApplet->accessor = nullptr;
+  std::lock_guard<os::SdkMutex> lock(g_LibraryAppletMutex);
+  pApplet->isUsed = false;
 }
 
 }

@@ -1,4 +1,5 @@
 #include "nn/am/service/am_controllers.hpp"
+#include "nn/applet/applet_api.hpp"
 #include "nn/diag/diag_abort.hpp"
 #include "nn/span.hpp"
 
@@ -39,6 +40,25 @@ void SetDesirableKeyboardLayout(uint32_t layout) {
 void BeginVrModeInternal() {
   NN_ABORT_UNLESS_RESULT_SUCCESS(
     GetCommonStateGetterObject()->SetVrModeEnabled(true));
+}
+
+void EndVrModeInternal() {
+  NN_ABORT_UNLESS_RESULT_SUCCESS(
+    GetCommonStateGetterObject()->SetVrModeEnabled(false));
+}
+
+// The channel keeps its own reference, the handle is released once pushed.
+void PushToSystemGeneralChannel(StorageHandle storage) {
+  am::service::ICommonStateGetter* pGetter = GetCommonStateGetterObject();
+  NN_ABORT_UNLESS_RESULT_SUCCESS(pGetter->PushToGeneralChannel(
+    sf::SharedPointer<am::service::IStorage>(
+      static_cast<am::service::IStorage*>(storage._p), true)));
+  ReleaseStorage(storage);
+}
+
+void CancelCpuBoostMode() {
+  NN_ABORT_UNLESS_RESULT_SUCCESS(
+    GetCommonStateGetterObject()->CancelCpuBoostMode());
 }
 
 void OverrideAutoSleepTimeAndDimmingTime(int autoSleepTime,
