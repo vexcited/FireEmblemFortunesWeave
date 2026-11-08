@@ -15998,6 +15998,10 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 820390,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::UnitActor::FuncBuildCompleteSubscribe(std::__1::weak_ptr<std::__1::function<void (game::character::CharacterBuilder*)>>)::$_0, void (game::character::CharacterBuilder*)>::destroy_deallocate()"
 820430,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::UnitActor::FuncBuildCompleteSubscribe(std::__1::weak_ptr<std::__1::function<void (game::character::CharacterBuilder*)>>)::$_0, void (game::character::CharacterBuilder*)>::target(std::type_info const&)"
 820450,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::UnitActor::FuncBuildCompleteSubscribe(std::__1::weak_ptr<std::__1::function<void (game::character::CharacterBuilder*)>>)::$_0, void (game::character::CharacterBuilder*)>::target_type()"
+820990,68,verified,src/game/game_trivial_variables.cpp,_Z15GameStub_820990v
+8209e0,68,verified,src/game/game_trivial_variables.cpp,_Z15GameStub_8209e0v
+820a30,68,verified,src/game/game_trivial_variables.cpp,_Z15GameStub_820a30v
+820a80,68,verified,src/game/game_trivial_variables.cpp,_Z15GameStub_820a80v
 822cd0,24,verified,src/llvm-libcxx-21/libcxx/include/__vector/vector.h,std::vector<T>::__throw_length_error()
 822e90,172,verified,src/game/singleton/singletons.cpp,_ZN4game3map10TransitionD2Ev
 822f40,216,verified,src/game/singleton/singletons.cpp,_ZN4game3map10TransitionD0Ev
@@ -53469,6 +53473,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 181c4f0,16,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_0, int (bool)>::__clone(__base*)"
 181c500,4,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_0, int (bool)>::destroy()"
 181c510,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_0, int (bool)>::destroy_deallocate()"
+181c520,68,verified,src/game/game_trivial_variables.cpp,_Z16GameStub_181c520v
 181c570,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_0, int (bool)>::target(std::type_info const&)"
 181c590,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_0, int (bool)>::target_type()"
 181c5a0,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_1, void (int)>::deleting destructor"
@@ -53483,6 +53488,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 181c710,16,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_2, int (bool)>::__clone(__base*)"
 181c720,4,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_2, int (bool)>::destroy()"
 181c730,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_2, int (bool)>::destroy_deallocate()"
+181c740,68,verified,src/game/game_trivial_variables.cpp,_Z16GameStub_181c740v
 181c790,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_2, int (bool)>::target(std::type_info const&)"
 181c7b0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_2, int (bool)>::target_type()"
 181c7c0,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_3, void (int)>::deleting destructor"
@@ -53497,6 +53503,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 181c930,16,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_4, int (bool)>::__clone(__base*)"
 181c940,4,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_4, int (bool)>::destroy()"
 181c950,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_4, int (bool)>::destroy_deallocate()"
+181c960,68,verified,src/game/game_trivial_variables.cpp,_Z16GameStub_181c960v
 181c9b0,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_4, int (bool)>::target(std::type_info const&)"
 181c9d0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_4, int (bool)>::target_type()"
 181c9e0,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_5, void (int)>::deleting destructor"
@@ -53511,6 +53518,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 181cb50,16,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_6, int (bool)>::__clone(__base*)"
 181cb60,4,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_6, int (bool)>::destroy()"
 181cb70,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_6, int (bool)>::destroy_deallocate()"
+181cb80,68,verified,src/game/game_trivial_variables.cpp,_Z16GameStub_181cb80v
 181cbd0,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_6, int (bool)>::target(std::type_info const&)"
 181cbf0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_6, int (bool)>::target_type()"
 181cc00,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_7, void (int)>::deleting destructor"
@@ -53525,6 +53533,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 181cd70,16,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_8, int (bool)>::__clone(__base*)"
 181cd80,4,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_8, int (bool)>::destroy()"
 181cd90,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_8, int (bool)>::destroy_deallocate()"
+181cda0,68,verified,src/game/game_trivial_variables.cpp,_Z16GameStub_181cda0v
 181cdf0,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_8, int (bool)>::target(std::type_info const&)"
 181ce10,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_8, int (bool)>::target_type()"
 181ce20,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_9, void (int)>::deleting destructor"
@@ -53581,6 +53590,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 181d6b0,16,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_16, int (bool)>::__clone(__base*)"
 181d6c0,4,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_16, int (bool)>::destroy()"
 181d6d0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_16, int (bool)>::destroy_deallocate()"
+181d6e0,68,verified,src/game/game_trivial_variables.cpp,_Z16GameStub_181d6e0v
 181d730,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_16, int (bool)>::target(std::type_info const&)"
 181d750,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_16, int (bool)>::target_type()"
 181d760,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_17, void (int)>::deleting destructor"
@@ -53595,6 +53605,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 181d8d0,16,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_18, int (bool)>::__clone(__base*)"
 181d8e0,4,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_18, int (bool)>::destroy()"
 181d8f0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_18, int (bool)>::destroy_deallocate()"
+181d900,68,verified,src/game/game_trivial_variables.cpp,_Z16GameStub_181d900v
 181d950,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_18, int (bool)>::target(std::type_info const&)"
 181d970,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_18, int (bool)>::target_type()"
 181d980,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_19, void (int)>::deleting destructor"
@@ -53609,6 +53620,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 181daf0,16,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_20, int (bool)>::__clone(__base*)"
 181db00,4,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_20, int (bool)>::destroy()"
 181db10,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_20, int (bool)>::destroy_deallocate()"
+181db20,68,verified,src/game/game_trivial_variables.cpp,_Z16GameStub_181db20v
 181db70,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_20, int (bool)>::target(std::type_info const&)"
 181db90,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_20, int (bool)>::target_type()"
 181dba0,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_21, void (int)>::deleting destructor"
@@ -53623,6 +53635,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 181dd10,16,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_22, int (bool)>::__clone(__base*)"
 181dd20,4,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_22, int (bool)>::destroy()"
 181dd30,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_22, int (bool)>::destroy_deallocate()"
+181dd40,68,verified,src/game/game_trivial_variables.cpp,_Z16GameStub_181dd40v
 181dd90,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_22, int (bool)>::target(std::type_info const&)"
 181ddb0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_22, int (bool)>::target_type()"
 181ddc0,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_23, void (int)>::deleting destructor"
@@ -53637,6 +53650,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 181df30,16,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_24, int (bool)>::__clone(__base*)"
 181df40,4,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_24, int (bool)>::destroy()"
 181df50,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_24, int (bool)>::destroy_deallocate()"
+181df60,68,verified,src/game/game_trivial_variables.cpp,_Z16GameStub_181df60v
 181dfb0,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_24, int (bool)>::target(std::type_info const&)"
 181dfd0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_24, int (bool)>::target_type()"
 181dfe0,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_25, void (int)>::deleting destructor"
@@ -53651,6 +53665,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 181e150,16,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_26, int (bool)>::__clone(__base*)"
 181e160,4,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_26, int (bool)>::destroy()"
 181e170,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_26, int (bool)>::destroy_deallocate()"
+181e180,68,verified,src/game/game_trivial_variables.cpp,_Z16GameStub_181e180v
 181e1d0,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_26, int (bool)>::target(std::type_info const&)"
 181e1f0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_26, int (bool)>::target_type()"
 181e200,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_27, void (int)>::deleting destructor"
@@ -53665,6 +53680,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 181e370,16,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_28, int (bool)>::__clone(__base*)"
 181e380,4,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_28, int (bool)>::destroy()"
 181e390,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_28, int (bool)>::destroy_deallocate()"
+181e3a0,68,verified,src/game/game_trivial_variables.cpp,_Z16GameStub_181e3a0v
 181e3f0,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_28, int (bool)>::target(std::type_info const&)"
 181e410,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_28, int (bool)>::target_type()"
 181e420,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_29, void (int)>::deleting destructor"
@@ -53763,6 +53779,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 181f3a0,16,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_42, int (bool)>::__clone(__base*)"
 181f3b0,4,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_42, int (bool)>::destroy()"
 181f3c0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_42, int (bool)>::destroy_deallocate()"
+181f3d0,68,verified,src/game/game_trivial_variables.cpp,_Z16GameStub_181f3d0v
 181f420,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_42, int (bool)>::target(std::type_info const&)"
 181f440,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_42, int (bool)>::target_type()"
 181f450,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_43, void (int)>::deleting destructor"
@@ -53777,6 +53794,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 181f5c0,16,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_44, int (bool)>::__clone(__base*)"
 181f5d0,4,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_44, int (bool)>::destroy()"
 181f5e0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_44, int (bool)>::destroy_deallocate()"
+181f5f0,68,verified,src/game/game_trivial_variables.cpp,_Z16GameStub_181f5f0v
 181f640,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_44, int (bool)>::target(std::type_info const&)"
 181f660,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_44, int (bool)>::target_type()"
 181f670,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_45, void (int)>::deleting destructor"
@@ -53791,6 +53809,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 181f7e0,16,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_46, int (bool)>::__clone(__base*)"
 181f7f0,4,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_46, int (bool)>::destroy()"
 181f800,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_46, int (bool)>::destroy_deallocate()"
+181f810,68,verified,src/game/game_trivial_variables.cpp,_Z16GameStub_181f810v
 181f860,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_46, int (bool)>::target(std::type_info const&)"
 181f880,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_46, int (bool)>::target_type()"
 181f890,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_47, void (int)>::deleting destructor"
@@ -53805,6 +53824,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 181fa00,16,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_48, int (bool)>::__clone(__base*)"
 181fa10,4,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_48, int (bool)>::destroy()"
 181fa20,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_48, int (bool)>::destroy_deallocate()"
+181fa30,68,verified,src/game/game_trivial_variables.cpp,_Z16GameStub_181fa30v
 181fa80,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_48, int (bool)>::target(std::type_info const&)"
 181faa0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_48, int (bool)>::target_type()"
 181fab0,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_49, void (int)>::deleting destructor"
@@ -53819,6 +53839,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 181fc20,16,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_50, int (bool)>::__clone(__base*)"
 181fc30,4,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_50, int (bool)>::destroy()"
 181fc40,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_50, int (bool)>::destroy_deallocate()"
+181fc50,68,verified,src/game/game_trivial_variables.cpp,_Z16GameStub_181fc50v
 181fca0,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_50, int (bool)>::target(std::type_info const&)"
 181fcc0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_50, int (bool)>::target_type()"
 181fcd0,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::(anonymous namespace)::$_51, void (int)>::deleting destructor"
