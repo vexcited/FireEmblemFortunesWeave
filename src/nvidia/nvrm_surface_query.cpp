@@ -66,9 +66,23 @@ void NvOsFree(void* pointer);
 NvError NvRmSurfaceFromJson(void* surfaces, void* count, void* attributes,
   const char* json, uint32_t length);
 
+struct NvRmChipId {
+  uint32_t id;
+  uint32_t revision;
+};
+
+NvRmChipId NvRmPrivGetChipIdLimited();
+
 }
 
 [[gnu::visibility("hidden")]] extern int32_t g_NvRmSurfaceDecompressionPolicy;
+[[gnu::visibility("hidden")]] extern const uint32_t g_NvRmYuvWidthAlignment[5];
+[[gnu::visibility("hidden")]] extern const uint32_t
+  g_NvRmYuvHeightAlignment[5];
+
+[[gnu::visibility("hidden")]] NvError NvRmSurfaceSetupPlane(
+  NvRmSurface* surface, uint32_t width, uint32_t height, uint64_t colorFormat,
+  const void* attributes, uint32_t layoutHint);
 
 [[gnu::visibility("hidden")]] NvError NvRmSurfaceComputeSizeImpl(
   NvRmSurface* surface, uint32_t plane, uint32_t isTotal, uint32_t* pOutSize);
@@ -646,4 +660,63 @@ extern "C" NvError NvRmSurfaceLoadJson(void* surfaces, void* count,
   NvOsFcloseEx(file);
   NvOsFree(json);
   return result;
+}
+
+// Chroma planes are subsampled by the alignment of the yuv format and share
+// the block height of the last plane.
+extern "C" NvError NvRmMultiplanarSurfaceSetup(NvRmSurface* surfaces,
+  uint32_t planeCount, uint32_t width, uint32_t height, uint32_t yuvFormat,
+  const uint64_t* colorFormats, const void* attributes) {
+  const uint32_t layoutHint = NvRmPrivGetChipIdLimited().id == 0x21 ? 1 : 4;
+
+  if (yuvFormat > 4) {
+    return NvError_BadParameter;
+  }
+
+  const uint32_t widthAlignment = g_NvRmYuvWidthAlignment[yuvFormat];
+  if (((widthAlignment - 1) & width) != 0) {
+    return NvError_BadParameter;
+  }
+
+  if (planeCount - 4 < static_cast<uint32_t>(-3)) {
+    return NvError_BadParameter;
+  }
+
+  const uint32_t heightAlignment = g_NvRmYuvHeightAlignment[yuvFormat];
+  if (((heightAlignment - 1) & height) != 0) {
+    return NvError_BadParameter;
+  }
+
+  if (colorFormats == nullptr || surfaces == nullptr ||
+    (planeCount == 1 && yuvFormat != 0)) {
+    return NvError_BadParameter;
+  }
+
+  NvError result = NvRmSurfaceSetupPlane(&surfaces[0], width, height,
+    *colorFormats++, attributes, layoutHint);
+  if (result != NvSuccess) {
+    return result;
+  }
+
+  if (planeCount == 1) {
+    return NvSuccess;
+  }
+
+  const uint32_t chromaWidth = width >> __builtin_ctz(widthAlignment);
+  const uint32_t chromaHeight = height >> __builtin_ctz(heightAlignment);
+  for (uint64_t i = 1; i < planeCount; i++) {
+    result = NvRmSurfaceSetupPlane(&surfaces[i], chromaWidth, chromaHeight,
+      *colorFormats++, attributes, layoutHint);
+    if (result != NvSuccess) {
+      return result;
+    }
+  }
+
+  const uint32_t last = planeCount - 1;
+  const uint32_t blockHeightLog2 = surfaces[last].blockHeightLog2;
+  for (uint64_t i = 0; i < last; i++) {
+    surfaces[i].blockHeightLog2 = blockHeightLog2;
+  }
+
+  return NvSuccess;
 }
