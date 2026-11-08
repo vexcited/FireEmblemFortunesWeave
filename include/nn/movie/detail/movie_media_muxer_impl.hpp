@@ -184,10 +184,14 @@ private:
   ThreadInfo* m_pThreadInfo;
   void* m_pThreadInstance;
   uintptr_t* m_pMessageQueueBuffer;
-  os::MessageQueueType m_MessageQueue;
+  // The original constructs nothing in the queue before initializing it.
+  union {
+    os::MessageQueueType m_MessageQueue;
+  };
   MessageBufferList m_MessageBufferList;
   AllocatorInfo* m_pAllocatorInfo;
   os::LightEventType m_Waiter;
+  uint64_t m_Reserved;
 };
 
 }

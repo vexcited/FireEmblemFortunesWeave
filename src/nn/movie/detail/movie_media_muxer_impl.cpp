@@ -34,6 +34,17 @@ constexpr size_t MessageBufferSize = 80;
   muxer->RunMessageLoop();
 }
 
+MediaMuxerImpl::MediaMuxerImpl() : m_pMuxer(nullptr), m_State(),
+  m_TrackCount(0), m_IsFinalized(false), m_pThreadStack(nullptr),
+  m_IsThreadCreated(false), m_IsThreadRunning(false),
+  m_IsThreadExitRequested(false), m_pThreadInfo(nullptr),
+  m_pThreadInstance(nullptr), m_pMessageQueueBuffer(nullptr),
+  m_MessageBufferList(), m_pAllocatorInfo(nullptr) {}
+
+MediaMuxerImpl::~MediaMuxerImpl() {
+  NN_ABORT_UNLESS_RESULT_SUCCESS(Finalize());
+}
+
 Result MediaMuxerImpl::Initialize(AllocatorInfo* allocatorInfo,
   MediaWriter* writer, ContainerType containerType, void* threadInstance) {
   Result result = m_State.ValidateCurrentState(

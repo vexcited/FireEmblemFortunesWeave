@@ -52,6 +52,7 @@ struct MediaExtractorHolder {
 struct MediaMuxerHolder {
   MediaMuxerImpl* pImpl;
   os::SdkMutexType mutex;
+  AllocatorInfo allocatorInfo;
 };
 
 }
@@ -100,6 +101,10 @@ private:
 
 class HlsMediaExtractor {
 public:
+  HlsMediaExtractor();
+  ~HlsMediaExtractor();
+
+  void Finalize();
   Result SetUriMedia(const char* uri, int length);
   Result SetInMemoryMedia(const void* data, size_t size);
   Result SetUpMediaSourceMode();
@@ -137,6 +142,12 @@ private:
 
 class MediaMuxer {
 public:
+  MediaMuxer();
+  ~MediaMuxer();
+
+  Result Initialize(void* memory, size_t memorySize, MediaWriter* writer,
+    ContainerType containerType);
+  void Finalize();
   Result Configure(const MediaProperty* property);
   Result AddTrack(int* pOutIndex, const MediaProperty* property,
     const void* configuration, size_t configurationSize);

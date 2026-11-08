@@ -60,11 +60,11 @@ public:
   void ReleaseBuffer(void* buffer);
 
 private:
-  int m_Count;
-  uint32_t m_Alignment;
-  void* m_Buffers[BufferCountMax];
-  mem::StandardAllocator* m_Allocator;
-  os::MutexType m_Mutex;
+  int m_Count = 0;
+  uint32_t m_Alignment = 16;
+  void* m_Buffers[BufferCountMax] = {};
+  mem::StandardAllocator* m_Allocator = nullptr;
+  os::Mutex m_Mutex{true};
 };
 
 enum AllocatorType : int32_t {

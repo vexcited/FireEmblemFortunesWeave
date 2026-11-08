@@ -75,7 +75,7 @@ bool Message::TimedWait(int64_t waitTimeMs) {
 
 Result MessageBufferList::Initialize(mem::StandardAllocator* allocator,
   int count, size_t size) {
-  os::LockMutex(&m_Mutex);
+  m_Mutex.Lock();
   NN_ABORT_UNLESS_NULL(m_Allocator);
 
   m_Buffers[BufferCountMax - 1] = nullptr;
@@ -96,12 +96,12 @@ Result MessageBufferList::Initialize(mem::StandardAllocator* allocator,
     m_Buffers[i] = buffer;
   }
 
-  os::UnlockMutex(&m_Mutex);
+  m_Mutex.Unlock();
   return result;
 }
 
 void MessageBufferList::Finalize() {
-  os::LockMutex(&m_Mutex);
+  m_Mutex.Lock();
 
   for (int i = 0; i < BufferCountMax; i++) {
     if (m_Buffers[i] != nullptr) {
@@ -112,11 +112,11 @@ void MessageBufferList::Finalize() {
 
   m_Allocator = nullptr;
   m_Count = 0;
-  os::UnlockMutex(&m_Mutex);
+  m_Mutex.Unlock();
 }
 
 void MessageBufferList::AcquireBuffer(void** pOutBuffer) {
-  os::LockMutex(&m_Mutex);
+  m_Mutex.Lock();
 
   int index = 0;
   while (true) {
@@ -130,11 +130,11 @@ void MessageBufferList::AcquireBuffer(void** pOutBuffer) {
 
   *pOutBuffer = m_Buffers[index];
   m_Buffers[index] = nullptr;
-  os::UnlockMutex(&m_Mutex);
+  m_Mutex.Unlock();
 }
 
 void MessageBufferList::ReleaseBuffer(void* buffer) {
-  os::LockMutex(&m_Mutex);
+  m_Mutex.Lock();
 
   for (int i = 0; i < m_Count; i++) {
     NN_ABORT_UNLESS(m_Buffers[i] != buffer);
@@ -151,7 +151,7 @@ void MessageBufferList::ReleaseBuffer(void* buffer) {
   }
 
   m_Buffers[index] = buffer;
-  os::UnlockMutex(&m_Mutex);
+  m_Mutex.Unlock();
 }
 
 size_t AllocatorInfo::CalculateLeakedMemory() {
