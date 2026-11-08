@@ -1798,6 +1798,7 @@ af250,24,verified,src/nnmusl/fcntl/fd_entry.c,__nnmusl_fs_missing_mount
 af300,188,verified,src/nnmusl/fcntl/fd_install.c,__nnmusl_fd_install
 af3d0,44,verified,src/nnmusl/fcntl/fd_clock.c,__nnmusl_fd_lookup
 af910,60,verified,src/nnmusl/nnmusl_libc_misc3.cpp,fsync
+af950,288,verified,src/nnmusl/fcntl/fd_ops.c,__nnmusl_fd_flush
 afa70,60,verified,src/nnmusl/nnmusl_libc_misc3.cpp,fdatasync
 afab0,36,verified,src/nnmusl/nnmusl_unsupported.c,link
 afae0,36,verified,src/nnmusl/nnmusl_unsupported.c,linkat
@@ -1918,6 +1919,8 @@ b3960,76,verified,src/nnmusl/unistd/cwd.c,__nnmusl_chdir
 b39b0,72,verified,src/nnmusl/unistd/cwd.c,__nnmusl_getcwd
 b3a00,8,verified,src/nnmusl/fcntl/fs_result_errno.c,__nnmusl_result_to_errno
 b3c50,8,verified,src/nnmusl/fcntl/fs_handles.c,__nnmusl_close_file_handle
+b4b60,200,verified,src/nnmusl/fcntl/fd_ops.c,__nnmusl_fstat
+b5000,240,verified,src/nnmusl/fcntl/fd_ops.c,__nnmusl_vfcntl
 b5100,24,verified,src/nnmusl/fcntl/fd_entry.c,__nnmusl_socket_mark_ready
 b5200,148,verified,src/nnmusl/time/clock.c,__nnmusl_clock_getres
 b52a0,112,verified,src/nnmusl/time/clock.c,__nnmusl_clock_gettime
