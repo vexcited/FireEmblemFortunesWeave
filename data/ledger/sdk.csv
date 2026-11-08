@@ -1916,6 +1916,7 @@ b2d40,432,verified,src/nnmusl/dirent/scandir.c,scandir64
 b2f40,108,verified,src/nnmusl/fcntl/fs_handles.c,__nnmusl_resolve
 b2fb0,272,verified,src/nnmusl/nnmusl_fs_path_kind.cpp,__nnmusl_path_kind
 b3280,48,verified,src/nnmusl/fcntl/fs_handles.c,__nnmusl_close_directory
+b3560,160,verified,src/nnmusl/fcntl/fs_paths.c,__nnmusl_mkdir
 b3960,76,verified,src/nnmusl/unistd/cwd.c,__nnmusl_chdir
 b39b0,72,verified,src/nnmusl/unistd/cwd.c,__nnmusl_getcwd
 b3a00,8,verified,src/nnmusl/fcntl/fs_result_errno.c,__nnmusl_result_to_errno
@@ -1924,7 +1925,9 @@ b3c60,240,verified,src/nnmusl/fcntl/fd_file_io.c,__nnmusl_ref_read
 b3d70,312,verified,src/nnmusl/fcntl/fd_file_io.c,__nnmusl_ref_lseek
 b3eb0,264,verified,src/nnmusl/fcntl/fd_file_io.c,__nnmusl_ref_write
 b3fc0,292,verified,src/nnmusl/fcntl/fd_stat.c,__nnmusl_ref_stat
+b4270,252,verified,src/nnmusl/fcntl/fs_paths.c,__nnmusl_rename
 b4370,176,verified,src/nnmusl/fcntl/fd_file_io.c,__nnmusl_ref_truncate
+b4420,256,verified,src/nnmusl/fcntl/fs_paths.c,__nnmusl_access
 b4520,184,verified,src/nnmusl/fcntl/fd_file_io.c,__nnmusl_ref_pread
 b45f0,140,verified,src/nnmusl/fcntl/fd_file_io.c,__nnmusl_ref_pwrite
 b4690,424,verified,src/nnmusl/fcntl/fd_io.c,__nnmusl_read
