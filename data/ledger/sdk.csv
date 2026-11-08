@@ -23743,11 +23743,15 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 7b0dc0,128,verified,src/musl/src/math/__cos.c,__cos
 7b0e40,72,verified,src/musl/src/math/__cosdf.c,__cosdf
 7b0e90,424,verified,src/musl/src/math//cosl.c,__cosl
+7b1040,68,verified,src/nnmusl/nnmusl_expo2.c,__expo2
+7b1090,68,verified,src/nnmusl/nnmusl_expo2.c,__expo2f
 7b10e0,52,verified,src/musl/src/math/__fpclassify.c,__fpclassify
 7b1120,52,verified,src/musl/src/math/__fpclassifyf.c,__fpclassifyf
 7b1160,68,verified,src/musl/src/math/__fpclassifyl.c,__fpclassifyl
 7b11c0,496,verified,src/musl/src/math//invtrigl.c,__invtrigl_R
+7b13e0,776,verified,src/musl/src/math//rem_pio2.c,__rem_pio2
 7b17a0,2848,verified,src/musl/src/math/__rem_pio2_large.c,__rem_pio2_large
+7b2a50,248,verified,src/musl/src/math//rem_pio2f.c,__rem_pio2f
 7b3020,12,verified,src/musl/src/math/__signbit.c,__signbit
 7b3030,12,verified,src/musl/src/math/__signbitf.c,__signbitf
 7b3040,20,verified,src/musl/src/math/__signbitl.c,__signbitl
@@ -23756,6 +23760,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 7b3140,484,verified,src/musl/src/math//sinl.c,__sinl
 7b3330,404,verified,src/musl/src/math/__tan.c,__tan
 7b34d0,108,verified,src/musl/src/math/__tandf.c,__tandf
+7b3540,1364,verified,src/musl/src/math//tanl.c,__tanl
 7b3aa0,8,verified,src/musl/src/math/aarch64/ceil.c,ceil
 7b3ab0,8,verified,src/musl/src/math/aarch64/ceilf.c,ceilf
 7b3ac0,8,verified,src/musl/src/math/aarch64/fabs.c,fabs
@@ -23797,7 +23802,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 7b46b0,504,verified,src/musl/src/math/atan.c,atan
 7b48c0,360,verified,src/musl/src/math/atan2.c,atan2
 7b4aa0,356,verified,src/musl/src/math/atan2f.c,atan2f
-7b4c80,612,verified,src/musl/src/math/atan2l.c,atan2l
+7b4c80,620,verified,src/musl/src/math/atan2l.c,atan2l
 7b4f70,436,verified,src/musl/src/math/atanf.c,atanf
 7b5140,140,verified,src/musl/src/math/atanh.c,atanh
 7b51d0,148,verified,src/musl/src/math/atanhf.c,atanhf
@@ -23816,7 +23821,8 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 7b60e0,32,verified,src/nnmusl/nnmusl_math_ld.c,coshl
 7b6100,304,verified,src/musl/src/math/cosl.c,cosl
 7b6260,380,verified,src/musl/src/math/erff.c,erff
-7b6750,372,verified,src/musl/src/math/erff.c,erfcf
+7b63e0,868,verified,src/musl/src/math/erff.c,erfc2
+7b6750,392,verified,src/musl/src/math/erff.c,erfcf
 7b6900,32,verified,src/nnmusl/nnmusl_math_ld.c,erfl
 7b6920,32,verified,src/nnmusl/nnmusl_math_ld.c,erfcl
 7b6940,112,verified,src/musl/src/math/exp10.c,pow10
@@ -23894,6 +23900,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 7bab40,264,verified,src/musl/src/math/sin.c,sin
 7bac50,324,verified,src/musl/src/math/sincos.c,sincos
 7bada0,384,verified,src/musl/src/math/sincosl.c,sincosl
+7baf70,208,verified,src/nnmusl/nnmusl_sinh.c,sinh
 7bb040,204,verified,src/musl/src/math/sinhf.c,sinhf
 7bb110,32,verified,src/nnmusl/nnmusl_math_ld.c,sinhl
 7bb130,328,verified,src/musl/src/math/sinl.c,sinl
