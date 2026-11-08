@@ -1794,6 +1794,7 @@ af160,12,verified,src/nnmusl/time/clock.c,__nnmusl_clock_realtime
 af170,12,verified,src/nnmusl/time/clock.c,__nnmusl_clock_monotonic_hook
 af180,48,verified,src/nnmusl/fcntl/fd_clock.c,__nnmusl_clock_resolution
 af250,24,verified,src/nnmusl/fcntl/fd_entry.c,__nnmusl_fs_missing_mount
+af300,188,verified,src/nnmusl/fcntl/fd_install.c,__nnmusl_fd_install
 af3d0,44,verified,src/nnmusl/fcntl/fd_clock.c,__nnmusl_fd_lookup
 af910,60,verified,src/nnmusl/nnmusl_libc_misc3.cpp,fsync
 afa70,60,verified,src/nnmusl/nnmusl_libc_misc3.cpp,fdatasync
@@ -1809,6 +1810,7 @@ b0270,36,verified,src/nnmusl/nnmusl_unsupported.c,utimes
 b0990,240,verified,src/nnmusl/fcntl/fs_errno.c,__nnmusl_fs_result_errno
 b1780,88,verified,src/nnmusl/fcntl/fd_open.c,__nnmusl_fd_open_file
 b1990,64,verified,src/nnmusl/fcntl/fd_open.c,__nnmusl_fd_open_directory
+b1a20,236,verified,src/nnmusl/fcntl/fd_slots.c,__nnmusl_fd_get
 b1b10,152,verified,src/nnmusl/fcntl/fd_slots.c,__nnmusl_slot_release
 b1bd0,16,verified,src/nnmusl/fcntl/fd_entry.c,__nnmusl_fd_kind
 b1be0,12,verified,src/nnmusl/fcntl/fd_entry.c,__nnmusl_fd_handle
