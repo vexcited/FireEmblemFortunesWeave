@@ -4801,13 +4801,16 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 171320,432,verified,src/nn/nlibsdk/posix_tls.cpp,_ZN2nn7nlibsdk6detail20InvokeKeyDestructorsEPNS1_18PosixThreadStorageE
 1714e0,92,verified,src/nn/nlibsdk/posix_tls.cpp,pthread_getspecific
 171540,352,verified,src/nn/nlibsdk/posix_tls.cpp,pthread_setspecific
+171700,112,verified,src/nnmusl/nnmusl_pthread_misc2.cpp,pthread_barrier_init
 171770,28,verified,src/nnmusl/nnmusl_os_wrappers.cpp,pthread_barrier_destroy
 171790,56,verified,src/nnmusl/nnmusl_pthread_misc.cpp,pthread_barrier_wait
 1717d0,12,verified,src/musl/src/thread/pthread_barrierattr_init.c,pthread_barrierattr_init
 1717e0,8,verified,src/musl/src/thread/pthread_barrierattr_destroy.c,pthread_barrierattr_destroy
 1717f0,24,verified,src/musl/src/thread/pthread_attr_get.c,pthread_barrierattr_getpshared
 171810,40,verified,src/nnmusl/nnmusl_pthread_misc.cpp,pthread_barrierattr_setpshared
+171840,92,verified,src/nnmusl/nnmusl_pthread_misc2.cpp,pthread_cond_init
 1718a0,12,verified,src/nnmusl/nnmusl_pthread_misc.cpp,pthread_cond_destroy
+1718b0,108,verified,src/nnmusl/nnmusl_pthread_misc2.cpp,pthread_cond_wait
 171920,12,verified,src/nnmusl/nnmusl_pthread_misc.cpp,pthread_cond_timedwait
 171ac0,4,verified,src/nnmusl/nnmusl_libc_forwarders2.cpp,pthread_cond_clockwait
 171ad0,32,verified,src/nnmusl/nnmusl_pthread_misc.cpp,pthread_cond_broadcast
@@ -4815,6 +4818,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 171b10,12,verified,src/musl/src/thread/pthread_condattr_init.c,pthread_condattr_init
 171b20,8,verified,src/musl/src/thread/pthread_condattr_destroy.c,pthread_condattr_destroy
 171b30,20,verified,src/musl/src/thread/pthread_attr_get.c,pthread_condattr_getclock
+171b50,76,verified,src/nnmusl/nnmusl_pthread_misc2.cpp,pthread_condattr_setclock
 171ba0,20,verified,src/musl/src/thread/pthread_attr_get.c,pthread_condattr_getpshared
 171bc0,48,verified,src/nnmusl/nnmusl_pthread_misc.cpp,pthread_condattr_setpshared
 171bf0,28,verified,src/nn/init/module.cpp,_ZN2nn4init6detail25InitializePthreadDefaultsEv
@@ -4831,9 +4835,11 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 171f00,48,verified,src/nn/nlibsdk/posix_mutex.cpp,pthread_mutexattr_setpshared
 171f30,48,verified,src/nnmusl/nnmusl_pthread_misc.cpp,pthread_rwlock_init
 171f60,28,verified,src/nnmusl/nnmusl_os_wrappers.cpp,pthread_rwlock_destroy
+171f80,68,verified,src/nnmusl/nnmusl_pthread_misc2.cpp,pthread_rwlock_rdlock
 171fd0,28,verified,src/nnmusl/nnmusl_os_wrappers.cpp,pthread_rwlock_wrlock
 171ff0,64,verified,src/nnmusl/nnmusl_pthread_misc.cpp,pthread_rwlock_tryrdlock
 172030,36,verified,src/nnmusl/nnmusl_pthread_misc.cpp,pthread_rwlock_trywrlock
+172060,76,verified,src/nnmusl/nnmusl_pthread_misc2.cpp,pthread_rwlock_unlock
 1720b0,12,verified,src/musl/src/thread/pthread_rwlockattr_init.c,pthread_rwlockattr_init
 1720c0,8,verified,src/musl/src/thread/pthread_rwlockattr_destroy.c,pthread_rwlockattr_destroy
 1720d0,16,verified,src/musl/src/thread/pthread_attr_get.c,pthread_rwlockattr_getpshared
@@ -4844,6 +4850,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 172400,36,verified,src/nnmusl/nnmusl_unsupported.c,sched_getaffinity
 172430,36,verified,src/nnmusl/nnmusl_unsupported.c,sched_setaffinity
 172460,36,verified,src/nnmusl/nnmusl_unsupported.c,sched_getcpu
+1727d0,92,verified,src/nnmusl/nnmusl_pthread_misc2.cpp,sem_init
 172830,28,verified,src/nnmusl/nnmusl_os_wrappers.cpp,sem_destroy
 172850,48,verified,src/nnmusl/nnmusl_pthread_misc.cpp,sem_getvalue
 172880,28,verified,src/nnmusl/nnmusl_os_wrappers.cpp,sem_post
@@ -23195,6 +23202,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 77aa50,48,verified,src/musl/src/thread/cnd_timedwait.c,cnd_timedwait
 77aa80,36,verified,src/nnmusl/nnmusl_threads_rand48.cpp,cnd_wait
 77aab0,4,verified,src/nnmusl/nnmusl_libc_forwarders2.cpp,mtx_destroy
+77aac0,124,verified,src/nnmusl/nnmusl_pthread_misc2.cpp,mtx_init
 77ab40,52,verified,src/nnmusl/nnmusl_threads_rand48.cpp,mtx_lock
 77ab80,56,verified,src/nnmusl/nnmusl_threads_rand48.cpp,mtx_trylock
 77abc0,16,verified,src/nnmusl/nnmusl_libc_forwarders2.cpp,mtx_unlock
