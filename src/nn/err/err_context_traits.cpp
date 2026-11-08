@@ -81,7 +81,8 @@ MessageContext MessageContext::Make(char* buffer, size_t size,
   va_start(args, format);
   const int length = util::VSNPrintf(buffer, size, format, args);
   va_end(args);
-  return MessageContext{buffer, std::min(size, static_cast<size_t>(length + 1))};
+  return MessageContext{buffer,
+    std::min(size, static_cast<size_t>(length + 1))};
 }
 
 NplnContext NplnContext::Make(const void* data, size_t size) {

@@ -55,7 +55,8 @@ uint16_t SelectCode(uint16_t unshifted, uint16_t shifted, int lockKind,
   const bool isShift = (modifiers & ModifierShift) != 0;
   const uint16_t base = isShift ? shifted : unshifted;
   if (lockKind == LockKindNumLock) {
-    return (modifiers & ModifierNumLock) != 0 ? (isShift ? unshifted : shifted) :
+    return (modifiers & ModifierNumLock) != 0 ?
+      (isShift ? unshifted : shifted) :
       unshifted;
   }
   if (lockKind == LockKindCapsLock && (modifiers & ModifierCapsLock) != 0) {
@@ -100,7 +101,8 @@ void GetKeyCode(KeyCode* pOutCode, int usageId,
   const uint16_t entryFlags = pEntry[0];
   const int kind = entryFlags >> 12;
   uint16_t code;
-  const bool isAltGr = (~modifiers & (ModifierControl | ModifierLeftAlt)) == 0 ||
+  const bool isAltGr =
+    (~modifiers & (ModifierControl | ModifierLeftAlt)) == 0 ||
     (modifiers & ModifierRightAlt) != 0;
   if (kind == 1 && (mapFlags & MapHasAltGr) != 0 && isAltGr) {
     const uint16_t* pAltGr = pEntry + storage.extraOffset;

@@ -95,7 +95,8 @@ extern "C" auto nnosSetThreadCoreMask(
 }
 
 extern "C" auto nnosGetThreadCoreMask(
-  int* pOutValue, unsigned long* pOutValue2, nn::os::ThreadType const* pThread) {
+  int* pOutValue, unsigned long* pOutValue2,
+  nn::os::ThreadType const* pThread) {
   return nn::os::GetThreadCoreMask(pOutValue, pOutValue2, pThread);
 }
 
@@ -141,7 +142,8 @@ extern "C" auto nnosGetCurrentSemaphoreCount(
 }
 
 extern "C" auto nnosInitializeMultiWaitHolderForSemaphore(
-  nn::os::MultiWaitHolderType* pMultiWaitHolder, nn::os::SemaphoreType* pSemaphore) {
+  nn::os::MultiWaitHolderType* pMultiWaitHolder,
+  nn::os::SemaphoreType* pSemaphore) {
   return nn::os::InitializeMultiWaitHolder(pMultiWaitHolder, pSemaphore);
 }
 
@@ -160,7 +162,8 @@ extern "C" auto nnosStartOneShotTimerEvent(
 }
 
 extern "C" auto nnosStartPeriodicTimerEvent(
-  nn::os::TimerEventType* pTimerEvent, nn::TimeSpan timeout, nn::TimeSpan timeout2) {
+  nn::os::TimerEventType* pTimerEvent, nn::TimeSpan timeout,
+  nn::TimeSpan timeout2) {
   return nn::os::StartPeriodicTimerEvent(pTimerEvent, timeout, timeout2);
 }
 
@@ -185,7 +188,8 @@ extern "C" auto nnosTryWaitTimerEvent(nn::os::TimerEventType* pTimerEvent) {
 }
 
 extern "C" auto nnosInitializeMultiWaitHolderForTimerEvent(
-  nn::os::MultiWaitHolderType* pMultiWaitHolder, nn::os::TimerEventType* pTimerEvent) {
+  nn::os::MultiWaitHolderType* pMultiWaitHolder,
+  nn::os::TimerEventType* pTimerEvent) {
   return nn::os::InitializeMultiWaitHolder(pMultiWaitHolder, pTimerEvent);
 }
 
@@ -231,30 +235,35 @@ extern "C" auto nnosBroadcastConditionVariable(
 }
 
 extern "C" auto nnosWaitConditionVariable(
-  nn::os::ConditionVariableType* pConditionVariable, nn::os::MutexType* pMutex) {
+  nn::os::ConditionVariableType* pConditionVariable,
+  nn::os::MutexType* pMutex) {
   return nn::os::WaitConditionVariable(pConditionVariable, pMutex);
 }
 
 extern "C" auto nnosTimedWaitConditionVariable(
-  nn::os::ConditionVariableType* pConditionVariable, nn::os::MutexType* pMutex, nn::TimeSpan timeout) {
+  nn::os::ConditionVariableType* pConditionVariable, nn::os::MutexType* pMutex,
+  nn::TimeSpan timeout) {
   return nn::os::TimedWaitConditionVariable(
     pConditionVariable, pMutex, timeout);
 }
 
 extern "C" auto nnosAttachSystemEvent(
-  nn::os::SystemEventType* pSystemEvent, unsigned int value, bool flag, unsigned int value2, bool flag2, nn::os::EventClearMode clearMode) {
+  nn::os::SystemEventType* pSystemEvent, unsigned int value, bool flag,
+  unsigned int value2, bool flag2, nn::os::EventClearMode clearMode) {
   return nn::os::AttachSystemEvent(
     pSystemEvent, value, flag, value2, flag2, clearMode);
 }
 
 extern "C" auto nnosAttachReadableHandleToSystemEvent(
-  nn::os::SystemEventType* pSystemEvent, unsigned int value, bool flag, nn::os::EventClearMode clearMode) {
+  nn::os::SystemEventType* pSystemEvent, unsigned int value, bool flag,
+  nn::os::EventClearMode clearMode) {
   return nn::os::AttachReadableHandleToSystemEvent(
     pSystemEvent, value, flag, clearMode);
 }
 
 extern "C" auto nnosAttachWritableHandleToSystemEvent(
-  nn::os::SystemEventType* pSystemEvent, unsigned int value, bool flag, nn::os::EventClearMode clearMode) {
+  nn::os::SystemEventType* pSystemEvent, unsigned int value, bool flag,
+  nn::os::EventClearMode clearMode) {
   return nn::os::AttachWritableHandleToSystemEvent(
     pSystemEvent, value, flag, clearMode);
 }
@@ -305,7 +314,8 @@ extern "C" auto nnosGetWritableHandleOfSystemEvent(
 }
 
 extern "C" auto nnosInitializeMultiWaitHolderForSystemEvent(
-  nn::os::MultiWaitHolderType* pMultiWaitHolder, nn::os::SystemEventType* pSystemEvent) {
+  nn::os::MultiWaitHolderType* pMultiWaitHolder,
+  nn::os::SystemEventType* pSystemEvent) {
   return nn::os::InitializeMultiWaitHolder(pMultiWaitHolder, pSystemEvent);
 }
 
@@ -370,12 +380,14 @@ extern "C" auto nnosClearInterruptEvent(
 }
 
 extern "C" auto nnosInitializeMultiWaitHolderForInterruptEvent(
-  nn::os::MultiWaitHolderType* pMultiWaitHolder, nn::os::InterruptEventType* pInterruptEvent) {
+  nn::os::MultiWaitHolderType* pMultiWaitHolder,
+  nn::os::InterruptEventType* pInterruptEvent) {
   return nn::os::InitializeMultiWaitHolder(pMultiWaitHolder, pInterruptEvent);
 }
 
 extern "C" auto nnosInitializeMessageQueue(
-  nn::os::MessageQueueType* pMessageQueue, unsigned long* pOutValue, unsigned long value) {
+  nn::os::MessageQueueType* pMessageQueue, unsigned long* pOutValue,
+  unsigned long value) {
   return nn::os::InitializeMessageQueue(pMessageQueue, pOutValue, value);
 }
 
@@ -395,7 +407,8 @@ extern "C" auto nnosTrySendMessageQueue(
 }
 
 extern "C" auto nnosTimedSendMessageQueue(
-  nn::os::MessageQueueType* pMessageQueue, unsigned long value, nn::TimeSpan timeout) {
+  nn::os::MessageQueueType* pMessageQueue, unsigned long value,
+  nn::TimeSpan timeout) {
   return nn::os::TimedSendMessageQueue(pMessageQueue, value, timeout);
 }
 
@@ -410,7 +423,8 @@ extern "C" auto nnosTryJamMessageQueue(
 }
 
 extern "C" auto nnosTimedJamMessageQueue(
-  nn::os::MessageQueueType* pMessageQueue, unsigned long value, nn::TimeSpan timeout) {
+  nn::os::MessageQueueType* pMessageQueue, unsigned long value,
+  nn::TimeSpan timeout) {
   return nn::os::TimedJamMessageQueue(pMessageQueue, value, timeout);
 }
 
@@ -425,7 +439,8 @@ extern "C" auto nnosTryReceiveMessageQueue(
 }
 
 extern "C" auto nnosTimedReceiveMessageQueue(
-  unsigned long* pOutValue, nn::os::MessageQueueType* pMessageQueue, nn::TimeSpan timeout) {
+  unsigned long* pOutValue, nn::os::MessageQueueType* pMessageQueue,
+  nn::TimeSpan timeout) {
   return nn::os::TimedReceiveMessageQueue(pOutValue, pMessageQueue, timeout);
 }
 
@@ -440,12 +455,15 @@ extern "C" auto nnosTryPeekMessageQueue(
 }
 
 extern "C" auto nnosTimedPeekMessageQueue(
-  unsigned long* pOutValue, nn::os::MessageQueueType const* pMessageQueue, nn::TimeSpan timeout) {
+  unsigned long* pOutValue, nn::os::MessageQueueType const* pMessageQueue,
+  nn::TimeSpan timeout) {
   return nn::os::TimedPeekMessageQueue(pOutValue, pMessageQueue, timeout);
 }
 
 extern "C" auto nnosInitializeMultiWaitHolderForMessageQueue(
-  nn::os::MultiWaitHolderType* pMultiWaitHolder, nn::os::MessageQueueType* pMessageQueue, nn::os::MessageQueueWaitType waitType) {
+  nn::os::MultiWaitHolderType* pMultiWaitHolder,
+  nn::os::MessageQueueType* pMessageQueue,
+  nn::os::MessageQueueWaitType waitType) {
   return nn::os::InitializeMultiWaitHolder(
     pMultiWaitHolder, pMessageQueue, waitType);
 }
@@ -477,7 +495,8 @@ extern "C" auto nnosFinalizeMultiWaitHolder(
 }
 
 extern "C" auto nnosLinkMultiWaitHolder(
-  nn::os::MultiWaitType* pMultiWait, nn::os::MultiWaitHolderType* pMultiWaitHolder) {
+  nn::os::MultiWaitType* pMultiWait,
+  nn::os::MultiWaitHolderType* pMultiWaitHolder) {
   return nn::os::LinkMultiWaitHolder(pMultiWait, pMultiWaitHolder);
 }
 

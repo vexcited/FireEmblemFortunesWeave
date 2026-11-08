@@ -517,7 +517,8 @@ class IHidSystemServer : public sf::IServiceObject {
   virtual Result ActivateCButton() = 0;
   virtual Result AcquireNfcDeviceUpdateEventHandle(sf::NativeHandle*) = 0;
   virtual Result GetNpadsWithNfc(int64_t*, const sf::OutArray<NpadIdType>&) = 0;
-  virtual Result AcquireNfcActivateEventHandle(sf::NativeHandle*, NpadIdType) = 0;
+  virtual Result AcquireNfcActivateEventHandle(sf::NativeHandle*,
+    NpadIdType) = 0;
   virtual Result ActivateNfc(
     unsigned int, int, applet::AppletResourceUserId) = 0;
   virtual Result IsNfcActivated(bool*, unsigned int) = 0;

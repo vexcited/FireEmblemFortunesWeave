@@ -9,7 +9,8 @@ namespace {
 const int64_t DefaultSaveDataBlockSize = 0x4000;
 
 bool IsValidSaveDataType(SaveDataType type) {
-  return static_cast<uint8_t>(type) <= static_cast<uint8_t>(SaveDataType::Cache);
+  return static_cast<uint8_t>(type) <=
+    static_cast<uint8_t>(SaveDataType::Cache);
 }
 
 bool IsValidSaveDataRank(SaveDataRank rank) {

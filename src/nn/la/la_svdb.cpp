@@ -17,7 +17,8 @@ namespace svdb {
 
 namespace {
 
-constexpr applet::AppletId AppletId_SaveDataBackup = applet::AppletId{0x01010025};
+constexpr applet::AppletId AppletId_SaveDataBackup =
+  applet::AppletId{0x01010025};
 constexpr applet::AppletId AppletId_SaveDataBackupForApplication =
   applet::AppletId{0x01020025};
 

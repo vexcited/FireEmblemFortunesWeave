@@ -219,7 +219,8 @@ StreamStatistics OutputRecorderImpl::GetStatistics(bool reset) const {
 void OutputRecorderImpl::SetName(const NameStorage<63>& name) {
   sysmix::StreamContext* context = m_pContext;
   StreamName base(m_Id, m_Format, m_DeviceName);
-  NameStorage<255> fullName = FormatNameStorage("%s|%s", base.buffer, name.buffer);
+  NameStorage<255> fullName = FormatNameStorage("%s|%s", base.buffer,
+    name.buffer);
   NN_AUDIO_ABORT_UNLESS_SUCCESS(sysmix::RenameStream(context,
     util::string_view(fullName.data, fullName.size)));
 }

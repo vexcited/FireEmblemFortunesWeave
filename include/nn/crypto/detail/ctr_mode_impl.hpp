@@ -101,8 +101,9 @@ size_t CtrModeImpl<BlockCipher>::Update(void* dst, size_t dstSize,
     if (remaining < size) {
       size = remaining;
     }
+    const uint8_t* encryptedCounter = &m_EncryptedCounter[m_BufferedBytes];
     for (int i = 0; i < static_cast<int>(size); ++i) {
-      output[i] = m_EncryptedCounter[m_BufferedBytes + i] ^ input[i];
+      output[i] = encryptedCounter[i] ^ input[i];
     }
     output += size;
     input += size;
