@@ -1819,7 +1819,7 @@ b0240,36,verified,src/nnmusl/nnmusl_unsupported.c,utimensat
 b0270,36,verified,src/nnmusl/nnmusl_unsupported.c,utimes
 b08b0,216,verified,src/nnmusl/unistd/cwd_state.c,__nnmusl_utf8_sequence_length
 b0990,240,verified,src/nnmusl/fcntl/fs_errno.c,__nnmusl_fs_result_errno
-b0b00,472,verified,src/nnmusl/fcntl/fs_validate.c,__nnmusl_validate_path
+b0b00,496,verified,src/nnmusl/fcntl/fs_validate.c,__nnmusl_validate_path
 b0cf0,192,verified,src/nnmusl/fcntl/fs_device.c,__nnmusl_check_device_path
 b15f0,248,verified,src/nnmusl/unistd/cwd_state.c,__nnmusl_set_cwd
 b16f0,140,verified,src/nnmusl/unistd/cwd_state.c,__nnmusl_copy_cwd
@@ -1931,6 +1931,7 @@ b2d20,4,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,write
 b2d40,432,verified,src/nnmusl/dirent/scandir.c,scandir64
 b2f40,108,verified,src/nnmusl/fcntl/fs_handles.c,__nnmusl_resolve
 b2fb0,272,verified,src/nnmusl/nnmusl_fs_path_kind.cpp,__nnmusl_path_kind
+b30c0,256,verified,src/nnmusl/fcntl/open_directory.c,__nnmusl_open_directory
 b3280,48,verified,src/nnmusl/fcntl/fs_handles.c,__nnmusl_close_directory
 b3560,160,verified,src/nnmusl/fcntl/fs_paths.c,__nnmusl_mkdir
 b37e0,384,verified,src/nnmusl/fcntl/fs_paths.c,__nnmusl_rmdir
