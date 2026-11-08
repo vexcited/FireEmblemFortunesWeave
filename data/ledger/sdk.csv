@@ -20174,12 +20174,15 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 6037f0,288,verified,src/nvidia/nvrm_host1x_stream.cpp,NvRmHost1xStreamPushSyncpointIncrement
 603910,420,verified,src/nvidia/nvrm_host1x_stream.cpp,NvRmHost1xStreamAddWaits
 603ac0,204,verified,src/nvidia/nvrm_host1x_stream.cpp,NvRmHost1xStreamFlush
+603b90,404,verified,src/nvidia/nvrm_surface_query.cpp,NvRmSurfaceGetCoordOffset
+603f30,300,verified,src/nvidia/nvrm_surface_query.cpp,NvRmSurfaceWrite
+604800,236,verified,src/nvidia/nvrm_surface_query.cpp,NvRmSurfaceRead
 604fd0,8,verified,src/nvidia/nvos_stubs.cpp,NvRmSurfaceGetDefaultLayout
 605250,104,verified,src/nvidia/nvrm_surface_query.cpp,NvRmSurfaceGetAlignment
 605ad0,8,verified,src/nvidia/nvrm_surface.cpp,NvRmSurfaceSetup
-605ae0,220,verified,src/nvidia/nvrm_surface_query.cpp,NvRmSurfaceGetYuvColorFormat
+605ae0,40,verified,src/nvidia/nvrm_surface_query.cpp,NvRmSurfaceGetYuvColorFormat
 605dc0,84,verified,src/nvidia/nvrm_surface_query.cpp,NvRmSurfaceGetPitchAlignment
-605e20,300,verified,src/nvidia/nvrm_surface_query.cpp,NvRmSurfaceSetDeviceMemory
+605e20,268,verified,src/nvidia/nvrm_surface_query.cpp,NvRmSurfaceSetDeviceMemory
 605f50,8,verified,src/nvidia/nvos_stubs.cpp,NvRmSurfaceDebugControlInternal
 606290,36,verified,src/nvidia/nvrm_surface.cpp,NvRmSurfaceInitNonRmPitch
 6062c0,40,verified,src/nvidia/nvrm_surface.cpp,NvRmSurfaceInitRmPitch

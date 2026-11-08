@@ -6,6 +6,7 @@ enum NvError : int32_t {
   NvError_BadParameter = 4,
   NvError_BadValue = 11,
   NvError_NotSupported = 0x10002,
+  NvError_AccessDenied = 0x30010,
 };
 
 enum NvRmSurfaceLayout : uint32_t {
@@ -51,12 +52,51 @@ extern "C" const char* NvColorFormatToString(uint64_t colorFormat);
 [[gnu::visibility("hidden")]] extern const uint64_t
   g_NvRmSurfacePlaneCounts[];
 
+[[gnu::visibility("hidden")]] NvError NvRmSurfaceCheckRect(
+  const NvRmSurface* surface, uint32_t x, uint32_t y, uint32_t width,
+  uint32_t height);
+[[gnu::visibility("hidden")]] NvError NvRmSurfaceWritePitch(
+  NvRmSurface* surface, uint32_t x, uint32_t y, uint32_t width,
+  uint32_t height, const void* data);
+[[gnu::visibility("hidden")]] NvError NvRmSurfaceWriteTiled(
+  NvRmSurface* surface, uint32_t x, uint32_t y, uint32_t width,
+  uint32_t height, const void* data);
+[[gnu::visibility("hidden")]] NvError NvRmSurfaceWriteBlocklinear(
+  NvRmSurface* surface, uint32_t x, uint32_t y, uint32_t width,
+  uint32_t height, const void* data);
+[[gnu::visibility("hidden")]] NvError NvRmSurfaceReadPitch(
+  NvRmSurface* surface, uint32_t x, uint32_t y, uint32_t width,
+  uint32_t height, void* data);
+[[gnu::visibility("hidden")]] NvError NvRmSurfaceReadTiled(
+  NvRmSurface* surface, uint32_t x, uint32_t y, uint32_t width,
+  uint32_t height, void* data);
+[[gnu::visibility("hidden")]] NvError NvRmSurfaceReadBlocklinear(
+  NvRmSurface* surface, uint32_t x, uint32_t y, uint32_t width,
+  uint32_t height, void* data);
+[[gnu::visibility("hidden")]] uint32_t NvRmSurfaceTiledOffset(
+  const NvRmSurface* surface, uint32_t x, uint32_t y);
+[[gnu::visibility("hidden")]] NvError NvRmSurfaceBlocklinearGobs(
+  uint32_t* pOutGobs, uint32_t x, uint32_t y, uint32_t* pOutOffset);
+[[gnu::visibility("hidden")]] NvError NvRmSurfaceBlocklinearOffset(
+  const NvRmSurface* surface, uint32_t x, uint32_t y, void* reserved,
+  uint32_t gobs, uint32_t* pOutOffset);
+
 namespace {
 
 const uint32_t NvRmSurfaceScan_Interlaced = 1;
+const uint64_t NvRmSurfaceFlag_Protected = 1 << 0;
 const uint64_t NvRmSurfaceFlag_Compressible = 1 << 1;
 const uint64_t NvRmSurfaceFlag_SizeValid = 1ull << 63;
 const uint32_t NvRmSurfaceMaxBlockHeightLog2 = 5;
+
+// The low byte of a color format is its bits per pixel.
+[[gnu::always_inline]] inline uint32_t BitsPerPixel(uint64_t colorFormat) {
+  return colorFormat & 0xff;
+}
+
+[[gnu::always_inline]] inline bool MultiplyFits(uint32_t a, uint32_t b) {
+  return (static_cast<uint64_t>(a) * b >> 32) == 0;
+}
 
 enum NvYuvColorFormat : uint32_t {
   NvYuvColorFormat_Unknown,
@@ -365,4 +405,149 @@ extern "C" int32_t NvRmSurfaceComputeName(char* buffer, int32_t size,
   }
 
   return length;
+}
+
+extern "C" NvError NvRmSurfaceWrite(NvRmSurface* surface, uint32_t x,
+  uint32_t y, uint32_t width, uint32_t height, const void* data) {
+  NvError result = NvRmSurfaceCheckRect(surface, x, y, width, height);
+  if (result != NvSuccess) {
+    return result;
+  }
+
+  const uint32_t bpp = BitsPerPixel(surface->colorFormat);
+  if (!MultiplyFits(bpp, x) || !MultiplyFits(bpp, width)) {
+    return NvError_BadParameter;
+  }
+
+  const uint32_t xBytes = bpp * x >> 3;
+  const uint32_t widthBytes = bpp * width >> 3;
+
+  switch (surface->layout) {
+    case NvRmSurfaceLayout_Pitch:
+      result = NvRmSurfaceWritePitch(surface, xBytes, y, widthBytes, height,
+        data);
+      break;
+    case NvRmSurfaceLayout_Tiled:
+      NvRmSurfaceWriteTiled(surface, xBytes, y, widthBytes, height, data);
+      return NvSuccess;
+    case NvRmSurfaceLayout_Blocklinear:
+      result = NvRmSurfaceWriteBlocklinear(surface, xBytes, y, widthBytes,
+        height, data);
+      break;
+    default:
+      return NvError_NotSupported;
+  }
+
+  return result;
+}
+
+extern "C" NvError NvRmSurfaceRead(NvRmSurface* surface, uint32_t x,
+  uint32_t y, uint32_t width, uint32_t height, void* data) {
+  NvError result = NvRmSurfaceCheckRect(surface, x, y, width, height);
+  if (result != NvSuccess) {
+    return result;
+  }
+
+  const uint32_t bpp = BitsPerPixel(surface->colorFormat);
+  if (!MultiplyFits(bpp, x) || !MultiplyFits(bpp, width)) {
+    return NvError_BadParameter;
+  }
+
+  if ((surface->flags & NvRmSurfaceFlag_Protected) != 0) {
+    return NvError_AccessDenied;
+  }
+
+  const uint32_t xBytes = bpp * x >> 3;
+  const uint32_t widthBytes = bpp * width >> 3;
+
+  switch (surface->layout) {
+    case NvRmSurfaceLayout_Pitch:
+      result = NvRmSurfaceReadPitch(surface, xBytes, y, widthBytes, height,
+        data);
+      break;
+    case NvRmSurfaceLayout_Tiled:
+      NvRmSurfaceReadTiled(surface, xBytes, y, widthBytes, height, data);
+      return NvSuccess;
+    case NvRmSurfaceLayout_Blocklinear:
+      result = NvRmSurfaceReadBlocklinear(surface, xBytes, y, widthBytes,
+        height, data);
+      break;
+    default:
+      return NvError_NotSupported;
+  }
+
+  return result;
+}
+
+// Packed 422 formats share one sample between two pixels.
+extern "C" NvError NvRmSurfaceGetCoordOffset(const NvRmSurface* surface,
+  uint32_t x, uint32_t y, uint32_t* pOutOffset) {
+  if (surface == nullptr || pOutOffset == nullptr) {
+    return NvError_BadParameter;
+  }
+
+  if (x >= surface->width || y >= surface->height) {
+    return NvError_BadParameter;
+  }
+
+  const uint32_t pitch = surface->pitch;
+  if (pitch == 0) {
+    return NvError_NotSupported;
+  }
+
+  const uint64_t colorFormat = surface->colorFormat;
+  uint32_t bpp = BitsPerPixel(colorFormat);
+  if (bpp == 0) {
+    return NvError_NotSupported;
+  }
+
+  const uint32_t shift = (colorFormat & 0x3eff) == 0x810 ? 1 : 0;
+  const uint32_t column = x >> shift;
+  bpp <<= shift;
+  if (!MultiplyFits(bpp, column)) {
+    return NvError_BadParameter;
+  }
+
+  const uint32_t bits = column * bpp;
+  if ((bits & 7) != 0) {
+    return NvError_BadParameter;
+  }
+
+  const uint32_t xBytes = bits >> 3;
+
+  switch (surface->layout) {
+    case NvRmSurfaceLayout_Pitch: {
+      if (!MultiplyFits(pitch, y)) {
+        return NvError_BadParameter;
+      }
+
+      uint32_t offset;
+      if (__builtin_add_overflow(xBytes, pitch * y, &offset)) {
+        return NvError_BadParameter;
+      }
+
+      *pOutOffset = offset;
+      return NvSuccess;
+    }
+    case NvRmSurfaceLayout_Tiled:
+      *pOutOffset = NvRmSurfaceTiledOffset(surface, xBytes, y);
+      return NvSuccess;
+    case NvRmSurfaceLayout_Blocklinear: {
+      if (surface->blockHeightLog2 > NvRmSurfaceMaxBlockHeightLog2) {
+        return NvError_NotSupported;
+      }
+
+      uint32_t gobs;
+      const NvError result = NvRmSurfaceBlocklinearGobs(&gobs, xBytes, y,
+        pOutOffset);
+      if (result != NvSuccess) {
+        return result;
+      }
+
+      return NvRmSurfaceBlocklinearOffset(surface, xBytes, y, nullptr, gobs,
+        pOutOffset);
+    }
+    default:
+      return NvError_NotSupported;
+  }
 }
