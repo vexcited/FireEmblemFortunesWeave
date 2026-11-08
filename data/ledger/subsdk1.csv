@@ -1253,6 +1253,8 @@ address,size,status,source,name
 18c8a0,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuProfilerStart
 18c960,272,verified,src/nvidia/cuda_driver_tracing.cpp,_Z21cuProfilerStop_tracedv
 18ca70,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuProfilerStop
+249180,412,verified,src/nvidia/cuda_zstd_xxhash.c,XXH64_update
+249320,460,verified,src/nvidia/cuda_zstd_xxhash.c,XXH64_digest
 25c9c0,312,verified,src/nvidia/cuda_xxhash.c,XXH32
 25cb10,56,verified,src/nvidia/cuda_xxhash.c,XXH32_reset
 25cb60,348,verified,src/nvidia/cuda_xxhash.c,XXH32_update
