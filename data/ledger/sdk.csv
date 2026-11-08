@@ -19882,7 +19882,16 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 5f5800,28,verified,src/nvidia/nvos_threads.cpp,NvOsThreadSetName
 5f5820,88,verified,src/nvidia/nvos_sync.cpp,NvOsThreadJoin
 5f5880,76,verified,src/nvidia/nvos_sync.cpp,NvOsThreadJoinEx
+5f58d0,124,verified,src/nvidia/nvos_events.cpp,NvOsEventPoolCreate
+5f5960,108,verified,src/nvidia/nvos_events.cpp,NvOsEventPoolDestroy
+5f59e0,156,verified,src/nvidia/nvos_events.cpp,NvOsEventPoolLink
+5f5a80,92,verified,src/nvidia/nvos_events.cpp,NvOsEventPoolWait
+5f5ae0,140,verified,src/nvidia/nvos_events.cpp,NvOsSystemEventCreate
+5f5b70,148,verified,src/nvidia/nvos_events.cpp,NvOsTimerEventCreate
+5f5c10,116,verified,src/nvidia/nvos_events.cpp,NvOsUserEventCreate
 5f5c90,48,verified,src/nvidia/nvos_misc.cpp,NvOsUserEventSignal
+5f5cc0,152,verified,src/nvidia/nvos_events.cpp,NvOsEventWait
+5f5d70,108,verified,src/nvidia/nvos_events.cpp,NvOsEventDestroy
 5f5de0,40,verified,src/nvidia/nvos_misc.cpp,NvOsEventClear
 5f5e10,76,verified,src/nvidia/nvos_sync.cpp,NvOsConditionCreate
 5f5e60,48,verified,src/nvidia/nvos_sync.cpp,NvOsConditionDestroy
