@@ -15,6 +15,9 @@ void CheckGraphicsSystemInitialized(const char* pFunctionName,
 namespace nn::am {
 
 Result SetCopyrightLayerEnabled(bool isEnabled);
+Result SetRecordingLayerEnabled(bool isEnabled);
+Result SetSharingLayerEnabled(bool isEnabled);
+Result SetMovieMakerLayerEnabled(bool isEnabled);
 
 }
 
@@ -252,10 +255,18 @@ int ListFrameHistory(FrameInfo* pOutInfos, int count, const Layer*) {
   return detail::g_Layer.ListFrameHistory(pOutInfos, count);
 }
 
+Result SetRecordingLayerEnabled(bool isEnabled) {
+  return am::SetRecordingLayerEnabled(isEnabled);
+}
+
 Result CreateRecordingLayer(Layer** pOutLayer, Display* pDisplay,
   const LayerCreationSettings* pSettings) {
   return CreateNamedLayerImpl(pOutLayer, &detail::g_RecordingLayer, pDisplay,
     pSettings, "capture");
+}
+
+Result SetSharingLayerEnabled(bool isEnabled) {
+  return am::SetSharingLayerEnabled(isEnabled);
 }
 
 Result CreateSharingLayer(Layer** pOutLayer, Display* pDisplay,
@@ -288,6 +299,10 @@ void WriteToCopyrightFramebuffer(const void* pImage, size_t size, int x,
     default:
       nn::detail::UnexpectedDefaultImpl();
   }
+}
+
+Result SetMovieMakerLayerEnabled(bool isEnabled) {
+  return am::SetMovieMakerLayerEnabled(isEnabled);
 }
 
 Result CreateMovieMakerLayer(Layer** pOutLayer, Display* pDisplay,
@@ -355,6 +370,45 @@ void SetDisplayHdrCapabilityPrivate(Display* pDisplay, bool isEnabled) {
     vi2::SetDisplayHdrOutputFormatCapability(detail::g_DefaultDisplay.Get(),
       HdrOutputFormatPrivate, vi2::HdrOutputFormatCapability(isEnabled));
   }
+}
+
+Result SetLayerNextHdrExtendedContentLuminanceRangeMetadata(Layer* pLayer,
+  uint16_t minimum, uint16_t maximum) {
+  return pLayer->SetNextHdrExtendedContentLuminanceRangeMetadata(minimum,
+    maximum);
+}
+
+Result SetLayerNextHdrStandardContentLuminanceRangeMetadata(Layer* pLayer,
+  uint16_t minimum, uint16_t maximum) {
+  return pLayer->SetNextHdrStandardContentLuminanceRangeMetadata(minimum,
+    maximum);
+}
+
+void SetLayerNextHdrContentGamutMetadata(Layer* pLayer,
+  HdrContentGamut gamut) {
+  pLayer->SetNextHdrContentGamutMetadata(gamut);
+}
+
+void ClearLayerNextHdrContentGamutMetadata(Layer* pLayer) {
+  pLayer->ClearNextHdrContentGamutMetadata();
+}
+
+void SetLayerNextHdrToSdrToneMappingMetadata(Layer* pLayer,
+  HdrToneMapping mapping) {
+  pLayer->SetNextHdrToSdrToneMappingMetadata(mapping);
+}
+
+void ClearLayerNextHdrToSdrToneMappingMetadata(Layer* pLayer) {
+  pLayer->ClearNextHdrToSdrToneMappingMetadata();
+}
+
+Result SetLayerNextHdrAdjustableBezierMetadata(Layer* pLayer, float a,
+  float b, float c) {
+  return pLayer->SetNextHdrAdjustableBezierMetadata(a, b, c);
+}
+
+void ClearLayerNextHdrAdjustableBezierMetadata(Layer* pLayer) {
+  pLayer->ClearNextHdrAdjustableBezierMetadata();
 }
 
 Result QueryDisplayBufferMaxResolution(BufferMaxResolution* pOutResolution,
