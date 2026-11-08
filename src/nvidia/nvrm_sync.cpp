@@ -63,9 +63,9 @@ NvError NvRmFenceGetFromFile(int32_t fd, NvRmSyncPoint* pOutSyncpoints,
   uint32_t* pCount);
 NvError NvRmFencePutToFile(const char* name, const NvRmSyncPoint* syncpoints,
   uint32_t count, int32_t* pOutFd);
-NvRmSync* NvRmSyncCreateFromSyncpoints(const NvRmSyncPoint* syncpoints,
-  uint32_t count);
 void sync_close(int32_t fd);
+
+extern const NvRmSyncOps g_NvRmSyncSyncpointOps;
 
 }
 
@@ -74,6 +74,20 @@ namespace {
 const int32_t NvRmChipPlatform_Silicon = 1;
 const int32_t NvRmSyncTimeout_Infinite = -1;
 const uint32_t NvRmSyncFdMaxSyncpoints = 8;
+
+[[gnu::always_inline]] inline void AppendSyncpoint(NvRmSync* sync,
+  NvRmSyncPoint point) {
+  sync->ops = &g_NvRmSyncSyncpointOps;
+  const uint32_t index = sync->syncpointCount;
+  sync->type = NvRmSyncType_Syncpoints;
+  sync->syncpointCount = index + 1;
+
+  const uint32_t inlineCount = sync->inlineSyncpointCount;
+  NvRmSyncPointEntry* entry = index < inlineCount ?
+    &sync->inlineSyncpoints[index] :
+    &sync->pExtraSyncpoints[index - inlineCount];
+  entry->point = point;
+}
 
 bool IsEmpty(const NvRmSync* sync) {
   return sync == nullptr || sync->type == NvRmSyncType_Empty;
@@ -199,7 +213,9 @@ extern "C" NvError NvRmSyncDupInto(NvRmSync* destination, NvRmSync* source) {
   return source->ops->mergeInto(destination, source);
 }
 
-extern "C" void NvRmSyncClose(NvRmSync* sync) {
+namespace {
+
+[[gnu::always_inline]] inline void Close(NvRmSync* sync) {
   if (IsEmpty(sync)) {
     return;
   }
@@ -207,7 +223,8 @@ extern "C" void NvRmSyncClose(NvRmSync* sync) {
   Release(sync);
 }
 
-extern "C" NvRmSync* NvRmSyncMerge(NvRmSync* first, NvRmSync* second) {
+[[gnu::always_inline]] inline NvRmSync* Merge(NvRmSync* first,
+  NvRmSync* second) {
   if (IsEmpty(first)) {
     if (IsEmpty(second)) {
       return nullptr;
@@ -221,6 +238,24 @@ extern "C" NvRmSync* NvRmSyncMerge(NvRmSync* first, NvRmSync* second) {
   }
 
   return first->ops->merge(first, second);
+}
+
+}
+
+extern "C" void NvRmSyncClose(NvRmSync* sync) {
+  Close(sync);
+}
+
+extern "C" NvRmSync* NvRmSyncMerge(NvRmSync* first, NvRmSync* second) {
+  return Merge(first, second);
+}
+
+extern "C" NvRmSync* NvRmSyncMergeAndClose(NvRmSync* first,
+  NvRmSync* second) {
+  NvRmSync* merged = Merge(first, second);
+  Close(first);
+  Close(second);
+  return merged;
 }
 
 // Timeouts only apply on silicon, other platforms wait forever.
@@ -266,6 +301,33 @@ extern "C" [[gnu::noinline]] NvRmSyncPoint* NvRmSyncGetSyncpoints(
   }
 
   return syncpoints;
+}
+
+// The object keeps every syncpoint inline and is freed by the close.
+extern "C" [[gnu::noinline]] NvRmSync* NvRmSyncCreateFromSyncpoints(
+  const NvRmSyncPoint* syncpoints, uint32_t count) {
+  if (count == 0) {
+    return nullptr;
+  }
+
+  const int64_t entries = static_cast<int32_t>(count);
+  auto* sync = static_cast<NvRmSync*>(NvOsAlloc(
+    entries * sizeof(NvRmSyncPointEntry) + 40));
+  if (sync == nullptr) {
+    return nullptr;
+  }
+
+  sync->syncpointCount = 0;
+  sync->inlineSyncpointCount = count;
+  sync->pExtraSyncpoints = nullptr;
+  sync->isAllocated = 1;
+  sync->extraSyncpointCount = 0;
+
+  for (uint64_t i = 0; i < count; i++) {
+    AppendSyncpoint(sync, syncpoints[i]);
+  }
+
+  return sync;
 }
 
 extern "C" NvRmSync* NvRmSyncCreateFromFd(int32_t fd) {

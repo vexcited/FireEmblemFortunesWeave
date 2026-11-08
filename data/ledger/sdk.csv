@@ -19880,7 +19880,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 5efd00,352,verified,src/nvidia/nvu_hash.cpp,NvUHashInsert
 5f0120,296,verified,src/nvidia/nvu_hash.cpp,NvUHashRemove
 5f0260,248,verified,src/nvidia/nvu_hash.cpp,NvUHashReplace
-5f0360,92,verified,src/nvidia/nvu_hash.cpp,NvUHashNextEntry
+5f0360,116,verified,src/nvidia/nvu_hash.cpp,NvUHashNextEntry
 5f03e0,128,verified,src/nvidia/nvu_hash.cpp,NvUPtrHash
 5f0460,132,verified,src/nvidia/nvu_hash.cpp,NvUScalarHash64
 5f0500,368,verified,src/nvidia/nvu_hash.cpp,NvUStrHash
@@ -20218,6 +20218,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 60afa0,132,verified,src/nvidia/nvrm_sync.cpp,NvRmSyncClose
 60b030,36,verified,src/nvidia/nvrm_sync.cpp,NvRmSyncMergeInto
 60b060,128,verified,src/nvidia/nvrm_sync.cpp,NvRmSyncMerge
+60b0e0,432,verified,src/nvidia/nvrm_sync.cpp,NvRmSyncMergeAndClose
 60b2a0,92,verified,src/nvidia/nvrm_sync.cpp,NvRmSyncWait
 60b300,80,verified,src/nvidia/nvrm_sync.cpp,NvRmSyncSignalSemaphore
 60b350,32,verified,src/nvidia/nvrm_sync.cpp,NvRmSyncIsFd
@@ -20225,6 +20226,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 60b390,32,verified,src/nvidia/nvrm_sync.cpp,NvRmSyncIsSemaphores
 60b3b0,48,verified,src/nvidia/nvrm_sync.cpp,NvRmSyncGetInfo
 60b3e0,16,verified,src/nvidia/nvrm_sync.cpp,NvRmSyncCalculateSizeForInplaceSyncpoints
+60b840,408,verified,src/nvidia/nvrm_sync.cpp,NvRmSyncCreateFromSyncpoints
 60bd00,140,verified,src/nvidia/nvrm_sync.cpp,NvRmSyncGetSyncpoints
 60bd90,4,verified,src/nvidia/nvrm_sync.cpp,NvRmSyncFreeSyncpoints
 60bda0,32,verified,src/nvidia/nvrm_sync.cpp,NvRmSyncGetNumSyncpoints
