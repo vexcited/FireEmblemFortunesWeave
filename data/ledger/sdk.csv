@@ -19886,7 +19886,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 5f0720,12,verified,src/nvidia/nvos_misc.cpp,NvUScalarCompare
 5f0740,188,verified,src/nvidia/nvu_string.cpp,NvUStrtoull
 5f0880,180,verified,src/nvidia/nvu_string.cpp,NvUStrtoul
-5f09a0,180,verified,src/nvidia/nvu_string.cpp,NvUStrtol
+5f09a0,236,verified,src/nvidia/nvu_string.cpp,NvUStrtol
 5f11e0,4,verified,src/nvidia/nvos_stubs.cpp,NvOsShowError
 5f11f0,64,verified,src/nvidia/nvos_misc.cpp,NvUAlloc0
 5f5180,228,verified,src/nvidia/nvos_heap_library.cpp,NvOsHeapAllocatorAlloc
@@ -20175,7 +20175,10 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 603910,420,verified,src/nvidia/nvrm_host1x_stream.cpp,NvRmHost1xStreamAddWaits
 603ac0,204,verified,src/nvidia/nvrm_host1x_stream.cpp,NvRmHost1xStreamFlush
 604fd0,8,verified,src/nvidia/nvos_stubs.cpp,NvRmSurfaceGetDefaultLayout
+605250,104,verified,src/nvidia/nvrm_surface_query.cpp,NvRmSurfaceGetAlignment
 605ad0,8,verified,src/nvidia/nvrm_surface.cpp,NvRmSurfaceSetup
+605dc0,84,verified,src/nvidia/nvrm_surface_query.cpp,NvRmSurfaceGetPitchAlignment
+605e20,300,verified,src/nvidia/nvrm_surface_query.cpp,NvRmSurfaceSetDeviceMemory
 605f50,8,verified,src/nvidia/nvos_stubs.cpp,NvRmSurfaceDebugControlInternal
 606290,36,verified,src/nvidia/nvrm_surface.cpp,NvRmSurfaceInitNonRmPitch
 6062c0,40,verified,src/nvidia/nvrm_surface.cpp,NvRmSurfaceInitRmPitch
@@ -20187,7 +20190,11 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 606410,56,verified,src/nvidia/nvrm_surface.cpp,NvRmSurfaceComputePitch
 606450,44,verified,src/nvidia/nvrm_surface.cpp,NvRmSurfaceMarkCompressibleWrite
 606640,16,verified,src/nvidia/nvrm_surface.cpp,NvRmSurfaceSetDecompressionPolicy
+606650,156,verified,src/nvidia/nvrm_surface_query.cpp,NvRmSurfaceComputeSize
+607740,124,verified,src/nvidia/nvrm_surface_query.cpp,NvRmSurfaceSetSystemMemory
 60a6c0,8,verified,src/nvidia/nvos_stubs.cpp,NvRmSurfaceDebugControl
+60ad40,180,verified,src/nvidia/nvrm_surface_query.cpp,NvRmSurfaceContainerGetSize
+60ae00,168,verified,src/nvidia/nvrm_surface_query.cpp,NvRmSurfaceContainerGetAlignment
 60aeb0,36,verified,src/nvidia/nvrm_sync.cpp,NvRmSyncDup
 60aee0,180,verified,src/nvidia/nvrm_sync.cpp,NvRmSyncDupInto
 60afa0,132,verified,src/nvidia/nvrm_sync.cpp,NvRmSyncClose
