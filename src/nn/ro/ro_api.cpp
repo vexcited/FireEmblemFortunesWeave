@@ -105,6 +105,9 @@ struct ModuleId {
 namespace detail {
 
 [[gnu::visibility("hidden")]] void ProtectFullRelro(RoModule* pModule);
+[[gnu::visibility("hidden")]] Result GetUpperBoundSymbolImpl(
+  uintptr_t* pOutAddress, size_t* pOutSize, char* pOutName,
+  uintptr_t baseAddress, size_t nameSize, uintptr_t address);
 [[gnu::visibility("hidden")]] Result GetModuleIdImpl(ModuleId* pOutModuleId,
   uintptr_t baseAddress);
 [[gnu::visibility("hidden")]] Result GetModuleNamePointerImpl(
@@ -301,6 +304,49 @@ Result GetModuleNamePointer(const char** ppOutName, size_t* pOutLength,
     return detail::GetModuleNamePointerImpl(ppOutName, pOutLength,
       baseAddress);
   });
+}
+
+// The closest symbol at or below the address, inside its module.
+Result GetUpperBoundSymbol(uintptr_t* pOutAddress, size_t* pOutSize,
+  char* pOutName, size_t nameSize, uintptr_t address) {
+  const auto query = [&](const detail::RoModule* pModule) {
+    return detail::GetUpperBoundSymbolImpl(pOutAddress, pOutSize, pOutName,
+      pModule->baseAddress, nameSize, address);
+  };
+
+  detail::RoModule* pAutoLoadList = detail::g_pAutoLoadList;
+  if (pAutoLoadList == nullptr) {
+    if (!Contains(&detail::g_SelfModule, address)) {
+      return ResultNotFound;
+    }
+
+    return query(&detail::g_SelfModule);
+  }
+
+  for (detail::RoModule* pModule = pAutoLoadList->pNext;
+    pModule != pAutoLoadList; pModule = pModule->pNext) {
+    if (Contains(pModule, address)) {
+      return query(pModule);
+    }
+  }
+
+  if (!IsRuntimeInitialized()) {
+    return ResultNotFound;
+  }
+
+  os::AcquireReadLock(&detail::g_RuntimeState.lock);
+  Result result = ResultNotFound;
+  detail::RoModule* pManualLoadList = detail::g_pManualLoadList;
+  for (detail::RoModule* pModule = pManualLoadList->pNext;
+    pModule != pManualLoadList; pModule = pModule->pNext) {
+    if (Contains(pModule, address)) {
+      result = query(pModule);
+      break;
+    }
+  }
+
+  os::ReleaseReadLock(&detail::g_RuntimeState.lock);
+  return result;
 }
 
 // A name too long for the buffer is cut and reported as truncated.
