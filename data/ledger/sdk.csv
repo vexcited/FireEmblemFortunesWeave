@@ -1889,7 +1889,7 @@ b2820,4,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,rename
 b2830,148,verified,src/musl/src/time/clock.c,clock
 b28e0,4,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,clock_getres
 b28f0,4,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,clock_gettime
-b2900,292,disputed,src/nnmusl/time/clock_nanosleep.c,clock_nanosleep
+b2900,292,verified,src/nnmusl/time/clock_nanosleep.c,clock_nanosleep
 b2a40,4,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,clock_setclockbase_np
 b2a50,104,verified,src/musl/src/time/gettimeofday.c,gettimeofday
 b2ac0,52,verified,src/nnmusl/nnmusl_libc_misc3.cpp,nanosleep
@@ -1926,11 +1926,12 @@ b3eb0,264,verified,src/nnmusl/fcntl/fd_file_io.c,__nnmusl_ref_write
 b4370,176,verified,src/nnmusl/fcntl/fd_file_io.c,__nnmusl_ref_truncate
 b4520,184,verified,src/nnmusl/fcntl/fd_file_io.c,__nnmusl_ref_pread
 b45f0,140,verified,src/nnmusl/fcntl/fd_file_io.c,__nnmusl_ref_pwrite
-b4690,424,verified,src/nnmusl/fcntl/fd_io.c,__nnmusl_read
+b4690,304,verified,src/nnmusl/fcntl/fd_io.c,__nnmusl_read
+b4850,256,verified,src/nnmusl/fcntl/fd_io.c,__nnmusl_lseek
 b4b60,200,verified,src/nnmusl/fcntl/fd_ops.c,__nnmusl_fstat
 b4c30,264,verified,src/nnmusl/fcntl/fd_file_ops.c,__nnmusl_ftruncate
 b4d40,344,verified,src/nnmusl/fcntl/fd_file_ops.c,__nnmusl_pread
-b4eb0,328,verified,src/nnmusl/fcntl/fd_io.c,__nnmusl_pwrite
+b4eb0,324,verified,src/nnmusl/fcntl/fd_io.c,__nnmusl_pwrite
 b5000,244,verified,src/nnmusl/fcntl/fd_ops.c,__nnmusl_vfcntl
 b5100,24,verified,src/nnmusl/fcntl/fd_entry.c,__nnmusl_socket_mark_ready
 b5200,148,verified,src/nnmusl/time/clock.c,__nnmusl_clock_getres

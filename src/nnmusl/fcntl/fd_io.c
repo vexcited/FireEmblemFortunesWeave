@@ -109,3 +109,58 @@ fail:
 	__nnmusl_slot_release(&reference);
 	return -1;
 }
+
+NNMUSL_HIDDEN off_t __nnmusl_ref_lseek(struct nnmusl_slot_reference reference,
+	off_t offset, int whence);
+NNMUSL_HIDDEN off_t __nnmusl_directory_seek(
+	struct nnmusl_slot_reference reference, off_t offset, int whence);
+
+// The console only accepts valid origins and its null stream stays at 0.
+NNMUSL_HIDDEN off_t __nnmusl_lseek(int fd, off_t offset, int whence)
+{
+	if (NNMUSL_IS_SOCKET(fd)) {
+		errno = ESPIPE;
+		return -1;
+	}
+
+	struct nnmusl_slot_reference reference = __nnmusl_fd_get(fd);
+	if (!NNMUSL_REFERENCE_VALID(reference)) {
+		errno = EBADF;
+		return -1;
+	}
+
+	off_t ret;
+	int err;
+	if (!NNMUSL_OPEN(reference)) {
+		err = EBADF;
+		goto fail;
+	}
+	switch ((uint16_t)__nnmusl_fd_kind(reference)) {
+	case 0:
+		if ((unsigned)whence > 2) {
+			err = EINVAL;
+			goto fail;
+		}
+		if ((uint16_t)__nnmusl_fd_native(reference) != 3) {
+			err = ESPIPE;
+			goto fail;
+		}
+		ret = 0;
+		break;
+	case 2:
+		ret = __nnmusl_directory_seek(reference, offset, whence);
+		break;
+	case 1:
+		ret = __nnmusl_ref_lseek(reference, offset, whence);
+		break;
+	default:
+		nn_detail_UnexpectedDefaultImpl();
+	}
+	__nnmusl_slot_release(&reference);
+	return ret;
+
+fail:
+	errno = err;
+	__nnmusl_slot_release(&reference);
+	return -1;
+}
