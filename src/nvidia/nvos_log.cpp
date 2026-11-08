@@ -39,6 +39,7 @@ void VLogImpl(const LogMetaData& metaData, const char* format,
 
 }
 
+// NvOs keys share one os slot holding an array of 16 values per thread.
 struct NvOsTlsState {
   uint64_t reserved00;
   uint32_t usedMask;
@@ -101,6 +102,8 @@ extern "C" {
 int vsnprintf(char* buffer, size_t size, const char* format,
   va_list arguments);
 size_t strlen(const char* string);
+void* NvOsAlloc(uint64_t size);
+void NvOsFree(void* pointer);
 void* memset(void* destination, int value, size_t size);
 void NvOsFwrite(void* stream, const void* buffer, int64_t size);
 void NvOsHosLog(int line, const char* file, const char* function,
@@ -112,6 +115,7 @@ void NvOsHosSdkLog(const char* module, int line, const char* file,
 
 [[gnu::visibility("hidden")]] extern nn::os::MutexType g_NvOsTlsMutex;
 [[gnu::visibility("hidden")]] extern NvOsTlsState g_NvOsTls;
+[[gnu::visibility("hidden")]] void NvOsTlsDestroy(uintptr_t values);
 [[gnu::visibility("hidden")]] extern NvOsDrvService* g_NvOsDrvServices[4];
 
 [[gnu::visibility("hidden")]] NvOsDrvEntry* NvOsDrvFindFd(int32_t fd);
@@ -125,6 +129,7 @@ namespace {
 
 const size_t NvOsPrintBufferSize = 256;
 const size_t NvOsLogBufferSize = 1024;
+const uint32_t NvOsTlsKeyCount = 16;
 const uint32_t NvOsDrvStatusFatal = 0x1000;
 
 [[gnu::always_inline]] inline void VLog(const char* module,
@@ -216,6 +221,64 @@ extern "C" int NvOsHosSdkNLog(const char* module, int line, const char* file,
 
   NvOsHosSdkLog(module, line, file, function, buffer);
   return length;
+}
+
+extern "C" int32_t NvOsTlsAllocWithDestructor(void (*destructor)(void*)) {
+  nn::os::LockMutex(&g_NvOsTlsMutex);
+
+  int32_t index = -1;
+  if (g_NvOsTls.usedMask != 0 ||
+    !nn::os::SdkAllocateTlsSlot(&g_NvOsTls.slot, NvOsTlsDestroy)
+    .IsFailure()) {
+    const uint32_t mask = g_NvOsTls.usedMask;
+    for (uint32_t key = 0; key < NvOsTlsKeyCount; key++) {
+      if ((mask & (1u << key)) == 0) {
+        g_NvOsTls.usedMask = mask | 1u << key;
+        g_NvOsTls.destructors[key] = destructor;
+        index = key;
+        break;
+      }
+    }
+  }
+
+  nn::os::UnlockMutex(&g_NvOsTlsMutex);
+  return index;
+}
+
+// The value array is created on the first store and freed once empty.
+extern "C" void NvOsTlsSet(uint32_t index, void* value) {
+  auto** values = reinterpret_cast<void**>(
+    nn::os::GetTlsValue(g_NvOsTls.slot));
+
+  if (value != nullptr) {
+    if (values == nullptr) {
+      values = static_cast<void**>(
+        NvOsAlloc(NvOsTlsKeyCount * sizeof(void*)));
+      for (uint32_t key = 0; key < NvOsTlsKeyCount; key++) {
+        values[key] = nullptr;
+      }
+
+      nn::os::SetTlsValue(g_NvOsTls.slot,
+        reinterpret_cast<uintptr_t>(values));
+    }
+
+    values[index] = value;
+    return;
+  }
+
+  if (values == nullptr) {
+    return;
+  }
+
+  values[index] = nullptr;
+  for (uint32_t key = 0; key < NvOsTlsKeyCount; key++) {
+    if (values[key] != nullptr) {
+      return;
+    }
+  }
+
+  NvOsFree(values);
+  nn::os::SetTlsValue(g_NvOsTls.slot, 0);
 }
 
 // The os slot is released with the last NvOs key.
