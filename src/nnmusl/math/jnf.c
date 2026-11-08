@@ -104,7 +104,7 @@ float jnf(int n, float x)
 			int k;
 
 			nf = nm1+1.0f;
-			w = __nnmusl_fdivf(2*nf, x);
+			w = 2*__nnmusl_fdivf(nf, x);
 			h = __nnmusl_fdivf(2, x);
 			z = w+h;
 			q0 = w;
