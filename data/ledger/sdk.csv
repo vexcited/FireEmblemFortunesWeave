@@ -1800,6 +1800,7 @@ af250,24,verified,src/nnmusl/fcntl/fd_entry.c,__nnmusl_fs_missing_mount
 af270,140,verified,src/nnmusl/fcntl/fd_file_io.c,__nnmusl_read_file
 af300,188,verified,src/nnmusl/fcntl/fd_install.c,__nnmusl_fd_install
 af3d0,44,verified,src/nnmusl/fcntl/fd_clock.c,__nnmusl_fd_lookup
+af400,344,verified,src/nnmusl/fcntl/fd_dup.c,__nnmusl_dup
 af860,176,verified,src/nnmusl/fcntl/fd_forget.c,__nnmusl_fd_forget_kind
 af910,60,verified,src/nnmusl/nnmusl_libc_misc3.cpp,fsync
 af950,288,verified,src/nnmusl/fcntl/fd_ops.c,__nnmusl_fd_flush
