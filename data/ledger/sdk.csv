@@ -19857,10 +19857,16 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 5eeda0,4,verified,src/nvidia/nvos_misc.cpp,NvOsFtell
 5eedb0,12,verified,src/nvidia/nvos_file_misc.cpp,NvOsStat
 5eee90,12,verified,src/nvidia/nvos_misc.cpp,NvOsFstat
+5eeea0,4,verified,src/nvidia/nvos_config.cpp,NvOsOpendir
+5eeeb0,12,verified,src/nvidia/nvos_config.cpp,NvOsClosedir
 5eeec0,4,verified,src/nvidia/nvos_misc.cpp,NvOsFflush
 5eeed0,4,verified,src/nvidia/nvos_misc.cpp,NvOsFsync
 5eeee0,4,verified,src/nvidia/nvos_misc.cpp,NvOsFremove
 5eeef0,4,verified,src/nvidia/nvos_misc.cpp,NvOsFtruncate
+5eef00,4,verified,src/nvidia/nvos_config.cpp,NvOsReaddir
+5eef10,4,verified,src/nvidia/nvos_config.cpp,NvOsMkdir
+5eefd0,92,verified,src/nvidia/nvos_config.cpp,NvOsGetConfigString
+5ef4b0,92,verified,src/nvidia/nvos_config.cpp,NvOsGetSysConfigString
 5ef510,28,verified,src/nvidia/nvos_misc.cpp,NvUHashInit
 5ef530,60,verified,src/nvidia/nvu_hash.cpp,NvUHashDeinit
 5ef570,60,verified,src/nvidia/nvu_hash.cpp,NvUHashClear
@@ -19913,6 +19919,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 5f6860,8,verified,src/nvidia/nvos_stubs.cpp,NvOsPhysicalMemMap
 5f6870,4,verified,src/nvidia/nvos_stubs.cpp,NvOsPhysicalMemUnmap
 5f7080,52,verified,src/nvidia/nvos_file_misc.cpp,NvOsVsnprintf
+5f7680,108,verified,src/nvidia/nvos_config.cpp,NvOsSnprintf
 5f76f0,4,verified,src/nvidia/nvos_misc.cpp,NvOsStrcpy
 5f7700,4,verified,src/nvidia/nvos_misc.cpp,NvOsStrncpy
 5f7710,4,verified,src/nvidia/nvos_misc.cpp,NvOsStrlen
