@@ -23287,8 +23287,8 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 789110,312,verified,src/nnmusl/stdio/vfprintf.c,pop_arg
 7893a0,164,verified,src/musl/src/stdio/vfprintf.c,pad
 78bf20,244,verified,src/nnmusl/stdio/vfwprintf.c,vfwprintf
-78c020,460,verified,src/nnmusl/stdio/vfwprintf.c,wprintf_core
-78ca90,324,verified,src/musl/src/stdio/vfprintf.c,pop_arg
+78c020,692,disputed,src/nnmusl/stdio/vfwprintf.c,wprintf_core
+78ca90,560,verified,src/musl/src/stdio/vfprintf.c,pop_arg
 78cd40,800,verified,src/nnmusl/stdio/vfwprintf.c,pad
 78d070,180,verified,src/nnmusl/nnmusl_strtof.cpp,strtof
 78d130,176,verified,src/nnmusl/nnmusl_strtof.cpp,strtod
@@ -23635,7 +23635,8 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 7a39c0,224,verified,src/musl/src/stdio/vsnprintf.c,vsnprintf
 7a3b60,64,verified,src/musl/src/stdio/vsprintf.c,vsprintf
 7a3ba0,132,verified,src/musl/src/stdio/vsscanf.c,vsscanf
-7a3dc0,212,disputed,src/musl/src/stdio/vswprintf.c,sw_write
+7a3cc0,252,verified,src/nnmusl/stdio/vswprintf.c,vswprintf
+7a3dc0,212,verified,src/nnmusl/stdio/vswprintf.c,sw_write
 7a3ec0,148,verified,src/musl/src/stdio/vswscanf.c,vswscanf
 7a4020,68,verified,src/musl/src/stdio/vwprintf.c,vwprintf
 7a4070,120,verified,src/musl/src/stdio/wprintf.c,wprintf
