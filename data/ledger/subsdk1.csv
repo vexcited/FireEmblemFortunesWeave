@@ -101,7 +101,9 @@ address,size,status,source,name
 146690,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuDeviceGetByPCIBusId
 1468b0,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuDeviceGetPCIBusId
 146ab0,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuIpcGetEventHandle
+146d00,220,verified,src/nvidia/cuda_driver_entry_points.cpp,cuIpcOpenEventHandle
 146f20,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuIpcGetMemHandle
+147180,220,verified,src/nvidia/cuda_driver_entry_points.cpp,cuIpcOpenMemHandle_v2
 147390,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuIpcCloseMemHandle
 1475b0,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuMemHostRegister_v2
 1477a0,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuMemHostUnregister
@@ -129,6 +131,7 @@ address,size,status,source,name
 14a550,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuMemcpy2DAsync_v2_ptsz
 14a750,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuMemcpy3DAsync_v2_ptsz
 14a950,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuMemcpy3DPeerAsync_ptsz
+14abc0,208,verified,src/nvidia/cuda_driver_entry_points.cpp,cuMemcpyBatchAsync_ptsz
 14adf0,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuMemcpy3DBatchAsync_ptsz
 14b010,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuMemsetD8_v2_ptds
 14b230,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuMemsetD16_v2_ptds
@@ -254,7 +257,9 @@ address,size,status,source,name
 15ac70,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuFuncGetParamInfo
 15ae70,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuFuncIsLoaded
 15b060,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuFuncLoad
+15b330,216,verified,src/nvidia/cuda_driver_entry_points.cpp,cuLaunchKernel_ptsz
 15b570,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuLaunchKernelEx_ptsz
+15b7e0,208,verified,src/nvidia/cuda_driver_entry_points.cpp,cuLaunchCooperativeKernel_ptsz
 15ba10,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuLaunchCooperativeKernelMultiDevice
 15bc20,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuLaunchHostFunc_ptsz
 15be50,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuFuncSetBlockShape
@@ -400,6 +405,8 @@ address,size,status,source,name
 16df00,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuSurfObjectCreate
 16e0f0,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuSurfObjectDestroy
 16e2f0,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuSurfObjectGetResourceDesc
+16e5f0,232,verified,src/nvidia/cuda_driver_entry_points.cpp,cuTensorMapEncodeTiled
+16e960,256,verified,src/nvidia/cuda_driver_entry_points.cpp,cuTensorMapEncodeIm2col
 16eba0,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuTensorMapReplaceAddress
 16edc0,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuDeviceCanAccessPeer
 16efc0,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuCtxEnablePeerAccess
@@ -521,6 +528,7 @@ address,size,status,source,name
 17e220,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuMemcpyPeerAsync
 17e410,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuMemcpy3DPeer
 17e610,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuMemcpy3DPeerAsync
+17e880,208,verified,src/nvidia/cuda_driver_entry_points.cpp,cuMemcpyBatchAsync
 17eab0,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuMemcpy3DBatchAsync
 17ece0,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuMemsetD8Async
 17ef10,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuMemsetD16Async
@@ -541,6 +549,7 @@ address,size,status,source,name
 180e70,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuStreamSynchronize
 181070,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuEventRecord
 181290,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuEventRecordWithFlags
+181560,216,verified,src/nvidia/cuda_driver_entry_points.cpp,cuLaunchKernel
 1817a0,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuLaunchKernelEx
 1819b0,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuLaunchHostFunc
 181bd0,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuGraphicsMapResources
@@ -562,6 +571,7 @@ address,size,status,source,name
 183e60,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuStreamBatchMemOp_v2
 184090,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuMemPrefetchAsync
 1842c0,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuMemPrefetchAsync_v2
+184530,208,verified,src/nvidia/cuda_driver_entry_points.cpp,cuLaunchCooperativeKernel
 184770,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuSignalExternalSemaphoresAsync
 1849a0,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuWaitExternalSemaphoresAsync
 184b90,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuStreamBeginCapture
@@ -585,6 +595,7 @@ address,size,status,source,name
 1870c0,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuStreamCopyAttributes
 1872e0,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuStreamGetAttribute
 187500,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuStreamSetAttribute
+187760,220,verified,src/nvidia/cuda_driver_entry_points.cpp,cuIpcOpenMemHandle
 1879a0,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuGraphInstantiate
 187bc0,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuGraphInstantiate_v2
 187de0,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuMemMapArrayAsync

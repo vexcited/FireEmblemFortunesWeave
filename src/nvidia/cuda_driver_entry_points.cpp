@@ -25,6 +25,9 @@ struct CudaApiTable {
 [[gnu::visibility("hidden")]] extern CudaDriverState* g_pCudaDriverState;
 [[gnu::visibility("hidden")]] extern CudaApiTable g_CudaApiTable;
 
+// Some units reach the same table through a pointer.
+[[gnu::visibility("hidden")]] extern CudaApiTable* const g_pCudaApiTable;
+
 [[gnu::visibility("hidden")]] const CudaErrorEntry* FindCudaError(
   CUresult result);
 [[gnu::visibility("hidden")]] void CudaLog(const char* pCategory, int level,
@@ -39,16 +42,12 @@ constexpr CUresult CUDA_ERROR_NOT_READY = 600;
 // Success, not initialized and deinitialized are expected results.
 constexpr uint32_t QuietResults = 0x19;
 
-template<size_t Slot>
-[[gnu::always_inline]] inline CUresult CallDriver(const char* pFormat,
-  uint64_t a0, uint64_t a1, uint64_t a2, uint64_t a3, uint64_t a4,
-  uint64_t a5, uint64_t a6, uint64_t a7) {
-  if (g_pCudaDriverState->state == DriverStateDeinitialized) {
-    return CUDA_ERROR_DEINITIALIZED;
-  }
+[[gnu::always_inline]] inline bool IsDriverDeinitialized() {
+  return g_pCudaDriverState->state == DriverStateDeinitialized;
+}
 
-  const CUresult result =
-    g_CudaApiTable.functions[Slot](a0, a1, a2, a3, a4, a5, a6, a7);
+[[gnu::always_inline]] inline CUresult ReportResult(CUresult result,
+  const char* pFormat) {
   if (result <= 4 && ((1u << result) & QuietResults) != 0) {
     return result;
   }
@@ -61,6 +60,24 @@ template<size_t Slot>
   CudaLog("CUDA", 0, pFormat, result,
     pError != nullptr ? pError->pName : "UNRECOGNIZED_ERROR");
   return result;
+}
+
+template<size_t Slot>
+[[gnu::always_inline]] inline CUresult CallDriver(const char* pFormat,
+  uint64_t a0, uint64_t a1, uint64_t a2, uint64_t a3, uint64_t a4,
+  uint64_t a5, uint64_t a6, uint64_t a7) {
+  if (IsDriverDeinitialized()) {
+    return CUDA_ERROR_DEINITIALIZED;
+  }
+
+  return ReportResult(
+    g_CudaApiTable.functions[Slot](a0, a1, a2, a3, a4, a5, a6, a7), pFormat);
+}
+
+template<typename Function>
+[[gnu::always_inline]] inline Function GetDriverFunction(
+  const CudaApiTable& table, size_t slot) {
+  return reinterpret_cast<Function>(table.functions[slot]);
 }
 
 }
@@ -700,5 +717,138 @@ CUDA_ENTRY_POINT(cuEventCreateFromNVNSync, 469)
 CUDA_ENTRY_POINT(cuProfilerInitialize, 311)
 CUDA_ENTRY_POINT(cuProfilerStart, 308)
 CUDA_ENTRY_POINT(cuProfilerStop, 309)
+
+// Handles of 64 bytes travel by value, the driver gets its own copy.
+struct CudaIpcHandle {
+  uint8_t reserved[64];
+};
+
+using CudaIpcOpenEvent = CUresult (*)(uint64_t pEvent, CudaIpcHandle handle);
+using CudaIpcOpenMemory = CUresult (*)(uint64_t pAddress,
+  CudaIpcHandle handle, uint32_t flags);
+
+CUresult cuIpcOpenEventHandle(uint64_t pEvent, CudaIpcHandle handle) {
+  if (IsDriverDeinitialized()) {
+    return CUDA_ERROR_DEINITIALIZED;
+  }
+
+  return ReportResult(GetDriverFunction<CudaIpcOpenEvent>(g_CudaApiTable,
+    0x14f)(pEvent, handle),
+    "Returning %d (%s) from cuIpcOpenEventHandle");
+}
+
+CUresult cuIpcOpenMemHandle(uint64_t pAddress, CudaIpcHandle handle,
+  uint32_t flags) {
+  if (IsDriverDeinitialized()) {
+    return CUDA_ERROR_DEINITIALIZED;
+  }
+
+  return ReportResult(GetDriverFunction<CudaIpcOpenMemory>(g_CudaApiTable,
+    0x149)(pAddress, handle, flags),
+    "Returning %d (%s) from cuIpcOpenMemHandle");
+}
+
+CUresult cuIpcOpenMemHandle_v2(uint64_t pAddress, CudaIpcHandle handle,
+  uint32_t flags) {
+  if (IsDriverDeinitialized()) {
+    return CUDA_ERROR_DEINITIALIZED;
+  }
+
+  return ReportResult(GetDriverFunction<CudaIpcOpenMemory>(g_CudaApiTable,
+    0x237)(pAddress, handle, flags),
+    "Returning %d (%s) from cuIpcOpenMemHandle_v2");
+}
+
+using CudaBatchCopy = CUresult (*)(uint64_t, uint64_t, uint64_t, uint64_t,
+  uint64_t, uint64_t, uint64_t, uint64_t, uint64_t stream);
+
+#define CUDA_BATCH_COPY_ENTRY_POINT(name, slot) \
+  CUresult name(uint64_t a0, uint64_t a1, uint64_t a2, uint64_t a3, \
+    uint64_t a4, uint64_t a5, uint64_t a6, uint64_t a7, uint64_t stream) { \
+    if (IsDriverDeinitialized()) { \
+      return CUDA_ERROR_DEINITIALIZED; \
+    } \
+    return ReportResult(GetDriverFunction<CudaBatchCopy>(*g_pCudaApiTable, \
+      slot)(a0, a1, a2, a3, a4, a5, a6, a7, stream), \
+      "Returning %d (%s) from " #name); \
+  }
+
+CUDA_BATCH_COPY_ENTRY_POINT(cuMemcpyBatchAsync, 0x308)
+CUDA_BATCH_COPY_ENTRY_POINT(cuMemcpyBatchAsync_ptsz, 0x309)
+
+using CudaLaunch = CUresult (*)(uint64_t, uint64_t, uint64_t, uint64_t,
+  uint64_t, uint64_t, uint64_t, uint64_t, uint64_t stream,
+  uint64_t pParameters, uint64_t pExtra);
+
+#define CUDA_LAUNCH_ENTRY_POINT(name, slot) \
+  CUresult name(uint64_t a0, uint64_t a1, uint64_t a2, uint64_t a3, \
+    uint64_t a4, uint64_t a5, uint64_t a6, uint64_t a7, uint64_t stream, \
+    uint64_t pParameters, uint64_t pExtra) { \
+    if (IsDriverDeinitialized()) { \
+      return CUDA_ERROR_DEINITIALIZED; \
+    } \
+    return ReportResult(GetDriverFunction<CudaLaunch>(*g_pCudaApiTable, \
+      slot)(a0, a1, a2, a3, a4, a5, a6, a7, stream, pParameters, pExtra), \
+      "Returning %d (%s) from " #name); \
+  }
+
+CUDA_LAUNCH_ENTRY_POINT(cuLaunchKernel, 0x133)
+CUDA_LAUNCH_ENTRY_POINT(cuLaunchKernel_ptsz, 0x1ba)
+
+using CudaCooperativeLaunch = CUresult (*)(uint64_t, uint64_t, uint64_t,
+  uint64_t, uint64_t, uint64_t, uint64_t, uint64_t, uint64_t stream,
+  uint64_t pParameters);
+
+#define CUDA_COOPERATIVE_LAUNCH_ENTRY_POINT(name, slot) \
+  CUresult name(uint64_t a0, uint64_t a1, uint64_t a2, uint64_t a3, \
+    uint64_t a4, uint64_t a5, uint64_t a6, uint64_t a7, uint64_t stream, \
+    uint64_t pParameters) { \
+    if (IsDriverDeinitialized()) { \
+      return CUDA_ERROR_DEINITIALIZED; \
+    } \
+    return ReportResult(GetDriverFunction<CudaCooperativeLaunch>( \
+      *g_pCudaApiTable, slot)(a0, a1, a2, a3, a4, a5, a6, a7, stream, \
+      pParameters), "Returning %d (%s) from " #name); \
+  }
+
+CUDA_COOPERATIVE_LAUNCH_ENTRY_POINT(cuLaunchCooperativeKernel, 0x1dd)
+CUDA_COOPERATIVE_LAUNCH_ENTRY_POINT(cuLaunchCooperativeKernel_ptsz, 0x1de)
+
+using CudaTensorMapTiled = CUresult (*)(uint64_t, uint64_t, uint64_t,
+  uint64_t, uint64_t, uint64_t, uint64_t, uint64_t, uint32_t interleave,
+  uint32_t swizzle, uint32_t l2Promotion, uint32_t outOfBoundsFill);
+
+CUresult cuTensorMapEncodeTiled(uint64_t a0, uint64_t a1, uint64_t a2,
+  uint64_t a3, uint64_t a4, uint64_t a5, uint64_t a6, uint64_t a7,
+  uint32_t interleave, uint32_t swizzle, uint32_t l2Promotion,
+  uint32_t outOfBoundsFill) {
+  if (IsDriverDeinitialized()) {
+    return CUDA_ERROR_DEINITIALIZED;
+  }
+
+  return ReportResult(GetDriverFunction<CudaTensorMapTiled>(*g_pCudaApiTable,
+    0x2b9)(a0, a1, a2, a3, a4, a5, a6, a7, interleave, swizzle, l2Promotion,
+    outOfBoundsFill), "Returning %d (%s) from cuTensorMapEncodeTiled");
+}
+
+using CudaTensorMapIm2col = CUresult (*)(uint64_t, uint64_t, uint64_t,
+  uint64_t, uint64_t, uint64_t, uint64_t, uint64_t, uint32_t channels,
+  uint32_t pixelsPerColumn, uint64_t pElementStrides, uint32_t interleave,
+  uint32_t swizzle, uint32_t l2Promotion, uint32_t outOfBoundsFill);
+
+CUresult cuTensorMapEncodeIm2col(uint64_t a0, uint64_t a1, uint64_t a2,
+  uint64_t a3, uint64_t a4, uint64_t a5, uint64_t a6, uint64_t a7,
+  uint32_t channels, uint32_t pixelsPerColumn, uint64_t pElementStrides,
+  uint32_t interleave, uint32_t swizzle, uint32_t l2Promotion,
+  uint32_t outOfBoundsFill) {
+  if (IsDriverDeinitialized()) {
+    return CUDA_ERROR_DEINITIALIZED;
+  }
+
+  return ReportResult(GetDriverFunction<CudaTensorMapIm2col>(
+    *g_pCudaApiTable, 0x2ba)(a0, a1, a2, a3, a4, a5, a6, a7, channels,
+    pixelsPerColumn, pElementStrides, interleave, swizzle, l2Promotion,
+    outOfBoundsFill), "Returning %d (%s) from cuTensorMapEncodeIm2col");
+}
 
 }
