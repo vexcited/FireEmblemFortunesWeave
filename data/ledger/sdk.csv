@@ -20044,6 +20044,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 6005f0,52,verified,src/nvidia/nvrm_mem_access.cpp,NvRmMemWr08
 600630,52,verified,src/nvidia/nvrm_mem_access.cpp,NvRmMemWr16
 600670,48,verified,src/nvidia/nvrm_mem_access.cpp,NvRmMemWr32
+6006a0,108,verified,src/nvidia/nvrm_mem_query.cpp,NvRm_MemmgrGetIoctlFile
 600860,4,verified,src/nvidia/nvrm_mem.cpp,NvRmMemHandleFromFd
 600870,20,verified,src/nvidia/nvrm_mem.cpp,NvRmMemHandleDup
 600890,4,verified,src/nvidia/nvos_stubs.cpp,NvRmMemGetFd
@@ -20060,12 +20061,17 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 6013d0,8,verified,src/nvidia/nvrm_mem.cpp,NvRmMemWriteStrided
 6013e0,28,verified,src/nvidia/nvrm_mem.cpp,NvRmMemRead
 601400,8,verified,src/nvidia/nvrm_mem.cpp,NvRmMemReadStrided
+601600,128,verified,src/nvidia/nvrm_mem_query.cpp,NvRmMemGetSize
 601680,8,verified,src/nvidia/nvos_stubs.cpp,NvRmMemHandleExportForAruid
 601690,8,verified,src/nvidia/nvos_stubs.cpp,NvRmMemHandleRemoveExportForAruid
 6016a0,8,verified,src/nvidia/nvos_stubs.cpp,NvRmMemGetImportIdMult
 601800,8,verified,src/nvidia/nvos_stubs.cpp,NvRmMemGetImportId
 601810,8,verified,src/nvidia/nvos_stubs.cpp,NvRmMemHandleFromImportId
+601820,156,verified,src/nvidia/nvrm_mem_query.cpp,NvRmMemQueryHeaps
+6018c0,144,verified,src/nvidia/nvrm_mem_query.cpp,NvRmMemQueryHeapSize
+601950,112,verified,src/nvidia/nvrm_mem_query.cpp,NvRmMemQueryHeapParams
 6019c0,32,verified,src/nvidia/nvrm_mem.cpp,NvRmMemSetVprHeapSize
+6019e0,108,verified,src/nvidia/nvrm_mem_query.cpp,NvRmMemQueryHeapManager
 601a50,8,verified,src/nvidia/nvos_stubs.cpp,NvRmMemSetVprFloor
 601a60,8,verified,src/nvidia/nvos_stubs.cpp,NvRmMemCacheListSyncForCpu64
 601a70,8,verified,src/nvidia/nvos_stubs.cpp,NvRmMemCacheListSyncForDevice64
@@ -20074,6 +20080,11 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 601aa0,8,verified,src/nvidia/nvos_stubs.cpp,NvRmMemDmaUnmap
 601ab0,8,verified,src/nvidia/nvos_stubs.cpp,NvRmMemMgrInit
 601ac0,8,verified,src/nvidia/nvos_stubs.cpp,NvRmMemLoadMapBufferSgl
+601ad0,136,verified,src/nvidia/nvrm_mem_query.cpp,NvRmMemGetUserAllocated
+601b60,148,verified,src/nvidia/nvrm_mem_query.cpp,NvRmMemGetGpukMemoryHandle
+601c00,140,verified,src/nvidia/nvrm_mem_query.cpp,NvRmMemGetNativeImageHandle
+601c90,140,verified,src/nvidia/nvrm_mem_query.cpp,NvRmMemGetVprMemoryHandle
+601e10,92,verified,src/nvidia/nvrm_mem_query.cpp,NvRmMemQuery
 601e70,8,verified,src/nvidia/nvos_stubs.cpp,NvRmMemIsHwVprHeap
 601e80,16,verified,src/nvidia/nvrm_mem.cpp,NvRmMemEstablishVprHeap
 604fd0,8,verified,src/nvidia/nvos_stubs.cpp,NvRmSurfaceGetDefaultLayout
