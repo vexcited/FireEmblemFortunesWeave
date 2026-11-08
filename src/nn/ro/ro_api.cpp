@@ -1,13 +1,50 @@
 #include <stddef.h>
 #include <stdint.h>
+#include <string.h>
 
 #include "nn/os/reader_writer_lock.hpp"
 #include "nn/os/synchronization.hpp"
 #include "nn/result.hpp"
 
+namespace nn::svc {
+
+struct PageInfo;
+
+namespace lp64 {
+
+struct MemoryInfo;
+
+}
+
+namespace aarch64::lp64 {
+
+Result QueryMemory(svc::lp64::MemoryInfo* pOutInfo, PageInfo* pOutPageInfo,
+  uintptr_t address);
+
+}
+
+}
+
+namespace nn::rocrt {
+
+struct ModuleHeader {
+  uint32_t magic;
+  uint32_t dynamicOffset;
+};
+
+}
+
 namespace nn::ro {
 
 namespace detail {
+
+struct ModuleVersion {
+  uint64_t value[2];
+};
+
+template<Result (*Query)(svc::lp64::MemoryInfo*, svc::PageInfo*, uintptr_t)>
+bool FindModuleHeader(const rocrt::ModuleHeader** ppOutHeader,
+  ModuleVersion* pOutVersion, uintptr_t baseAddress);
 
 struct Elf64Symbol {
   uint32_t name;
@@ -67,6 +104,7 @@ struct ModuleId {
 
 namespace detail {
 
+[[gnu::visibility("hidden")]] void ProtectFullRelro(RoModule* pModule);
 [[gnu::visibility("hidden")]] Result GetModuleIdImpl(ModuleId* pOutModuleId,
   uintptr_t baseAddress);
 [[gnu::visibility("hidden")]] Result GetModuleNamePointerImpl(
@@ -84,16 +122,17 @@ constexpr Result ResultNotFound = {0xa16};
 }
 
 constexpr Result ResultModuleNotLoaded = {0x1a16};
+constexpr Result ResultNameTruncated = {0x1816};
 
 // Runs the query when a module starts at the address, under the lock for the
 // manual ones.
-template<typename Query>
-[[gnu::always_inline]] inline Result QueryLoadedModule(uintptr_t baseAddress,
-  Query query) {
+template<typename T, typename Query>
+[[gnu::always_inline]] inline T QueryLoadedModule(uintptr_t baseAddress,
+  T notLoaded, Query query) {
   detail::RoModule* pAutoLoadList = detail::g_pAutoLoadList;
   if (pAutoLoadList == nullptr) {
     if (detail::g_SelfModule.baseAddress != baseAddress) {
-      return ResultModuleNotLoaded;
+      return notLoaded;
     }
 
     return query();
@@ -108,11 +147,11 @@ template<typename Query>
 
   if (__atomic_load_n(&detail::g_RuntimeState.isInitialized,
     __ATOMIC_ACQUIRE) != 1) {
-    return ResultModuleNotLoaded;
+    return notLoaded;
   }
 
   os::AcquireReadLock(&detail::g_RuntimeState.lock);
-  Result result = ResultModuleNotLoaded;
+  T result = notLoaded;
   detail::RoModule* pManualLoadList = detail::g_pManualLoadList;
   for (detail::RoModule* pModule = pManualLoadList->pNext;
     pModule != pManualLoadList; pModule = pModule->pNext) {
@@ -251,17 +290,72 @@ bool GetModuleAddressRange(uintptr_t* pOutAddress, size_t* pOutSize,
 }
 
 Result GetModuleId(ModuleId* pOutModuleId, uintptr_t baseAddress) {
-  return QueryLoadedModule(baseAddress, [&] {
+  return QueryLoadedModule(baseAddress, ResultModuleNotLoaded, [&] {
     return detail::GetModuleIdImpl(pOutModuleId, baseAddress);
   });
 }
 
 Result GetModuleNamePointer(const char** ppOutName, size_t* pOutLength,
   uintptr_t baseAddress) {
-  return QueryLoadedModule(baseAddress, [&] {
+  return QueryLoadedModule(baseAddress, ResultModuleNotLoaded, [&] {
     return detail::GetModuleNamePointerImpl(ppOutName, pOutLength,
       baseAddress);
   });
+}
+
+// A name too long for the buffer is cut and reported as truncated.
+Result GetModuleName(char* pOutName, size_t size, uintptr_t baseAddress) {
+  return QueryLoadedModule(baseAddress, ResultModuleNotLoaded, [&] {
+    const char* pName = nullptr;
+    size_t length = 0;
+    const Result result =
+      detail::GetModuleNamePointerImpl(&pName, &length, baseAddress);
+    if (result.IsFailure() || length == 0) {
+      pOutName[0] = '\0';
+      return result;
+    }
+
+    if (size > length) {
+      memcpy(pOutName, pName, length);
+      pOutName[length] = '\0';
+      return Result{0};
+    }
+
+    memcpy(pOutName, pName, size - 1);
+    pOutName[size - 1] = '\0';
+    return ResultNameTruncated;
+  });
+}
+
+// The module header points at the dynamic section relative to itself.
+uintptr_t FindDynamicSegment(uintptr_t baseAddress) {
+  return QueryLoadedModule(baseAddress, uintptr_t(0), [&]() -> uintptr_t {
+    const rocrt::ModuleHeader* pHeader = nullptr;
+    detail::ModuleVersion version = {};
+    if (!detail::FindModuleHeader<&svc::aarch64::lp64::QueryMemory>(&pHeader,
+      &version, baseAddress)) {
+      return 0;
+    }
+
+    return reinterpret_cast<uintptr_t>(pHeader) + pHeader->dynamicOffset;
+  });
+}
+
+void ProtectFullRelroForAllModules() {
+  os::AcquireReadLock(&detail::g_RuntimeState.lock);
+  detail::RoModule* pAutoLoadList = detail::g_pAutoLoadList;
+  for (detail::RoModule* pModule = pAutoLoadList->pNext;
+    pModule != pAutoLoadList; pModule = pModule->pNext) {
+    detail::ProtectFullRelro(pModule);
+  }
+
+  detail::RoModule* pManualLoadList = detail::g_pManualLoadList;
+  for (detail::RoModule* pModule = pManualLoadList->pNext;
+    pModule != pManualLoadList; pModule = pModule->pNext) {
+    detail::ProtectFullRelro(pModule);
+  }
+
+  os::ReleaseReadLock(&detail::g_RuntimeState.lock);
 }
 
 Result LookupModuleSymbol(uintptr_t* pOutAddress, const Module* pModule,
