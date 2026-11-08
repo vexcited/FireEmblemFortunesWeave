@@ -19880,9 +19880,13 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 5f0360,116,verified,src/nvidia/nvu_hash.cpp,NvUHashNextEntry
 5f03e0,128,verified,src/nvidia/nvu_hash.cpp,NvUPtrHash
 5f0460,132,verified,src/nvidia/nvu_hash.cpp,NvUScalarHash64
+5f0500,368,verified,src/nvidia/nvu_hash.cpp,NvUStrHash
 5f0680,32,verified,src/nvidia/nvos_misc.cpp,NvUStrCompare
 5f06a0,116,verified,src/nvidia/nvu_hash.cpp,NvUScalarHash32
 5f0720,12,verified,src/nvidia/nvos_misc.cpp,NvUScalarCompare
+5f0740,188,verified,src/nvidia/nvu_string.cpp,NvUStrtoull
+5f0880,180,verified,src/nvidia/nvu_string.cpp,NvUStrtoul
+5f09a0,180,verified,src/nvidia/nvu_string.cpp,NvUStrtol
 5f11e0,4,verified,src/nvidia/nvos_stubs.cpp,NvOsShowError
 5f11f0,64,verified,src/nvidia/nvos_misc.cpp,NvUAlloc0
 5f5180,228,verified,src/nvidia/nvos_heap_library.cpp,NvOsHeapAllocatorAlloc

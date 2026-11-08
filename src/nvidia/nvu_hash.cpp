@@ -138,6 +138,27 @@ extern "C" uint64_t NvUScalarHash64(uint64_t key) {
   return c | static_cast<uint64_t>(b) << 32;
 }
 
+// Bytes are added into the three state words, mixing every 12 of them.
+extern "C" uint32_t NvUStrHash(const char* string) {
+  uint32_t state[3];
+  state[0] = NvUHashGolden;
+  state[1] = NvUHashGolden;
+  state[2] = NvUHashGolden;
+  int32_t length = 0;
+
+  for (const char* p = string; *p != '\0'; p++) {
+    reinterpret_cast<uint8_t*>(state)[length] += *p;
+    if (++length == 12) {
+      Mix(state[0], state[1], state[2]);
+      length = 0;
+    }
+  }
+
+  state[2] += length;
+  Mix(state[0], state[1], state[2]);
+  return state[2];
+}
+
 extern "C" uint32_t NvUScalarHash32(uint32_t key) {
   uint32_t a = NvUHashGolden;
   uint32_t b = NvUHashGolden;
