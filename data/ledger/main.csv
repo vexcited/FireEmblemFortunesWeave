@@ -45501,7 +45501,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 16e0fb0,64,verified,src/game/menu/basic_menu.cpp,_ZN4game4menu9BasicMenu14InputUnknown17Ev
 16e0ff0,64,verified,src/game/menu/basic_menu.cpp,_ZThn176_N4game4menu9BasicMenu14InputUnknown17Ev
 16e1040,108,verified,src/game/menu/basic_menu.cpp,_ZN4game4menu9BasicMenu14InputUnknown14Ev
-16e10c0,104,verified,src/game/menu/basic_menu.cpp,_ZThn176_N4game4menu9BasicMenu14InputUnknown14Ev
+16e10c0,108,verified,src/game/menu/basic_menu.cpp,_ZThn176_N4game4menu9BasicMenu14InputUnknown14Ev
 16e1140,108,verified,src/game/menu/basic_menu.cpp,_ZN4game4menu9BasicMenu14InputUnknown15Ev
 16e11c0,108,verified,src/game/menu/basic_menu.cpp,_ZThn176_N4game4menu9BasicMenu14InputUnknown15Ev
 16e1240,584,verified,src/game/menu/basic_menu_cursor.cpp,_ZN4game4menu9BasicMenu9Unknown57ERNSt3__16vectorIlNS2_9allocatorIlEEEE
@@ -45569,7 +45569,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 16e63b0,4,verified,src/game/menu/basic_menu_item.cpp,_ZN4game4menu13BasicMenuItem8OnSelectEv
 16e63c0,4,verified,src/game/menu/basic_menu_item.cpp,_ZN4game4menu13BasicMenuItem10OnDeselectEv
 16e63d0,4,verified,src/game/menu/basic_menu_item.cpp,_ZN4game4menu13BasicMenuItem7OnCloseEv
-16e63e0,540,verified,src/game/menu/basic_menu_cursor.cpp,_ZNK4game4menu9BasicMenu11SavedCursor7GetItemEv
+16e63e0,632,verified,src/game/menu/basic_menu_cursor.cpp,_ZNK4game4menu9BasicMenu11SavedCursor7GetItemEv
 16e66c0,420,verified,src/game/menu/page_tab.cpp,_ZN4game4menu7PageTab10SetupImageERKNSt3__18weak_ptrIN2ui14LayoutAccessorEEERKNS2_8functionIFvPN2nn4ui2d7PictureEiEEEiii
 16e6ca0,340,verified,src/game/menu/page_tab.cpp,_ZN4game4menu7PageTab10SetupLabelERKNSt3__18weak_ptrIN2ui14LayoutAccessorEEERKNS2_8functionIFNS_6gameui7Message9StringArgEiEEEiii
 16e6e00,488,verified,src/game/menu/page_tab.cpp,_ZN4game4menu7PageTab9SetupTextERKNSt3__18weak_ptrIN2ui14LayoutAccessorEEERKNS2_8functionIFNS_6gameui7Message9StringArgEiEEEiii
@@ -50339,7 +50339,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 1860600,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::menu::LegionPoolMenu::SortAndFilter()::$_1, bool (game::menu::BasicMenuItem*, game::menu::BasicMenuItem*)>::target_type()"
 1860ef0,120,verified,src/game/menu/deploy_pool_menu.cpp,_ZN4game4menu14AnimalPoolMenu10Unknown139Ev
 1860f70,168,verified,src/game/menu/deploy_pool_menu.cpp,_ZN4game4menu14AnimalPoolMenu10Unknown148EPKv
-18621a0,136,verified,src/game/menu/deploy_pool_menu.cpp,_ZN4game4menu14AnimalPoolMenu9Unknown85Ev
+18621a0,136,disputed,src/game/menu/deploy_pool_menu.cpp,_ZN4game4menu14AnimalPoolMenu9Unknown85Ev
 18626b0,4,verified,src/game/menu/deploy_pool_menu.cpp,_ZN4game4menu14AnimalPoolMenu10Unknown102Ev
 1862730,24,verified,src/game/menu/deploy_pool_menu.cpp,_ZN4game4menu14AnimalPoolMenu10Unknown131Ev
 1862750,96,verified,src/game/menu/deploy_pool_menu.cpp,_ZN4game4menu14AnimalPoolMenu9Unknown96Ev
@@ -54031,7 +54031,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 1a039e0,56,verified,src/game/map/map_view.cpp,_ZNK4game3map10MapHintMap6GetTopEv
 1a03a50,56,verified,src/game/map/map_view.cpp,_ZNK4game3map10MapHintMap8GetRightEv
 1a03ac0,116,verified,src/game/map/map_view.cpp,_ZNK4game3map10MapHintMap9GetBottomEv
-1a03b40,80,verified,src/game/map/map_view.cpp,_ZNK4game3map10MapHintMap10GetTerrainEii
+1a03b40,120,verified,src/game/map/map_view.cpp,_ZNK4game3map10MapHintMap10GetTerrainEii
 1a03bc0,80,verified,src/game/map/map_view.cpp,_ZNK4game3map10MapHintMap14GetHintTerrainEii
 1a041c0,8,verified,src/game/map/map_view.cpp,_ZNK4game3map10MapHintMap9Unknown08Eii
 1a041e0,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::MapHintMap::BuildUnits(std::__1::weak_ptr<ui::LayoutAccessor>)::$_0, void (game::DisposFile::List const&)>::deleting destructor"
