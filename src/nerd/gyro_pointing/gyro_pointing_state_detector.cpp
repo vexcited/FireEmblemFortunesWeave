@@ -65,8 +65,8 @@ GyroPointingStateDetector::GyroPointingStateDetector(
 void GyroPointingStateDetector::AddSample(const ImuData& sample) {
   m_samples.PushBack(sample);
   m_gyroscopeSamples.PushBack(sample.gyroscope);
-  UpdateSensorCovariance();
   UpdateMovingDetection();
+  UpdateSensorCovariance();
 }
 
 SensorCovariance GyroPointingStateDetector::GetSensorCovariance() const {
