@@ -296,7 +296,10 @@ struct AppletResourceProperty {
   uint32_t flags;
 };
 
-struct NotificationLedPattern;
+struct NotificationLedPattern {
+  uint8_t data[0x48];
+};
+
 enum AnalogStickManualCalibrationStage {};
 struct AudioControlState;
 struct CButtonState;

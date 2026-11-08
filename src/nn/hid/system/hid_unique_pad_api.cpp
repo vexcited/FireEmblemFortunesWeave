@@ -177,6 +177,22 @@ void BindUniquePadConnectionEvent(
       pOutSystemEventType, eventClearMode));
 }
 
+Result SetNotificationLedPatternForDebug(NotificationLedPattern pattern,
+  const UniquePadId& id) {
+  return hid::system::detail::SetNotificationLedPattern(pattern, id);
+}
+
+Result SetNotificationLedPattern(NotificationLedPattern pattern,
+  const UniquePadId& id, TimeSpan timeout) {
+  return hid::system::detail::SetNotificationLedPatternWithTimeout(pattern,
+    id, timeout);
+}
+
+Result BindUniquePadButtonStateChangedEvent(os::SystemEvent* pEvent) {
+  return hid::system::detail::BindUniquePadButtonStateChangedEvent(pEvent,
+    os::EventClearMode_AutoClear);
+}
+
 int ListUniquePads(UniquePadId* pOutUniquePadId, int count) {
   int value = {};
   NN_ABORT_UNLESS_RESULT_SUCCESS(

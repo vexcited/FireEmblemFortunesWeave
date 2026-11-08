@@ -238,6 +238,12 @@ Result BindTouchScreenAsyncWakeCompletedEvent(
   os::SystemEvent*, applet::AppletResourceUserId);
 Result BindTouchScreenAutoTuneForSystemSettingsCompletedEvent(os::SystemEvent*);
 Result BindUniquePadConnectionEvent(os::SystemEventType*, os::EventClearMode);
+Result BindUniquePadButtonStateChangedEvent(os::SystemEvent*,
+  os::EventClearMode);
+Result SetNotificationLedPattern(const NotificationLedPattern&,
+  const UniquePadId&);
+Result SetNotificationLedPatternWithTimeout(const NotificationLedPattern&,
+  const UniquePadId&, TimeSpan);
 Result BindUniquePadConnectionEventOnHandheldForNs(
   os::SystemEventType*, os::EventClearMode);
 Result BindWirelessRegistrationStateChangedEvent(os::SystemEventType*,
