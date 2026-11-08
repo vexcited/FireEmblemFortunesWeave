@@ -39732,7 +39732,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 13305c0,244,verified,src/game/gmap/spot_mgr_find.cpp,_ZN4game4gmap7SpotMgr14GetCurrentSpotEv
 13367a0,444,verified,src/game/gmap/spot_mgr.cpp,_ZN4game4gmap7SpotMgr18EachSpotAttachmentENS_23GmapSpotAttachmentConst4KindERKNSt3__18functionIFvPNS0_4SpotEEEE
 1336960,240,verified,src/game/gmap/spot_mgr.cpp,_ZN4game4gmap7SpotMgr19CountSpotAttachmentENS_23GmapSpotAttachmentConst4KindE
-1336a80,232,verified,src/game/gmap/spot_mgr.cpp,_ZN4game4gmap7SpotMgr19CountDispatchLegionEv
+1336a80,248,verified,src/game/gmap/spot_mgr.cpp,_ZN4game4gmap7SpotMgr19CountDispatchLegionEv
 1336ba0,220,verified,src/game/gmap/spot_mgr.cpp,_ZN4game4gmap7SpotMgr12OnStartPhaseEv
 1336ca0,236,verified,src/game/gmap/spot_mgr.cpp,_ZN4game4gmap7SpotMgr10OnEndPhaseEv
 1336da0,240,verified,src/game/gmap/spot_mgr.cpp,_ZN4game4gmap7SpotMgr15OnProgressCycleEi
@@ -44830,7 +44830,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 15aef80,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::gameui::Util::SetBasicStatusForUnitInfo(ui::LayoutAccessor&, game::Unit const*)::$_0, game::gameui::Util::StatusData (game::gameui::Const::StatusType)>::destroy_deallocate()"
 15af090,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::gameui::Util::SetBasicStatusForUnitInfo(ui::LayoutAccessor&, game::Unit const*)::$_0, game::gameui::Util::StatusData (game::gameui::Const::StatusType)>::target(std::type_info const&)"
 15af0b0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::gameui::Util::SetBasicStatusForUnitInfo(ui::LayoutAccessor&, game::Unit const*)::$_0, game::gameui::Util::StatusData (game::gameui::Const::StatusType)>::target_type()"
-15af0c0,232,verified,src/ui/game/control_lookup.cpp,_ZN2ui6Layout10GetControlIN4game6gameui7control11StatusTotalEEENSt3__18weak_ptrIT_EEPN2nn4ui2d4PaneE
+15af0c0,300,verified,src/ui/game/control_lookup.cpp,_ZN2ui6Layout10GetControlIN4game6gameui7control11StatusTotalEEENSt3__18weak_ptrIT_EEPN2nn4ui2d4PaneE
 15af1f0,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::gameui::Util::SetStatusForClassChange(std::__1::weak_ptr<ui::LayoutAccessor>, game::Unit const*, game::Unit const*, bool, bool)::$_0, void (game::AttrKind, int)>::deleting destructor"
 15af220,84,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::gameui::Util::SetStatusForClassChange(std::__1::weak_ptr<ui::LayoutAccessor>, game::Unit const*, game::Unit const*, bool, bool)::$_0, void (game::AttrKind, int)>::__clone()"
 15af280,32,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::gameui::Util::SetStatusForClassChange(std::__1::weak_ptr<ui::LayoutAccessor>, game::Unit const*, game::Unit const*, bool, bool)::$_0, void (game::AttrKind, int)>::__clone(__base*)"
@@ -45102,7 +45102,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 15b6f40,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::gameui::Util::IsVisibleSpecialPage(game::Unit const*)::$_0, void (game::UnitSkill const&)>::target_type()"
 15b6f50,232,verified,src/ui/game/control_lookup.cpp,_ZN2ui6Layout10GetControlIN4game6gameui7control8KeyArrowEEENSt3__18weak_ptrIT_EEPN2nn4ui2d4PaneE
 15b7080,232,verified,src/ui/game/control_lookup.cpp,_ZN2ui6Layout10GetControlIN4game6gameui7control7KeyIconEEENSt3__18weak_ptrIT_EEPN2nn4ui2d4PaneE
-15b71b0,232,verified,src/ui/game/control_lookup.cpp,_ZN2ui6Layout10GetControlINS_7control7ElementEEENSt3__18weak_ptrIT_EERKNS4_17basic_string_viewIcNS4_11char_traitsIcEEEE
+15b71b0,300,verified,src/ui/game/control_lookup.cpp,_ZN2ui6Layout10GetControlINS_7control7ElementEEENSt3__18weak_ptrIT_EERKNS4_17basic_string_viewIcNS4_11char_traitsIcEEEE
 15b7e60,120,verified,src/game/menu/unit_menu_item.cpp,_ZN4game4menu12UnitMenuItem9Unknown74Ev
 15b8000,8,verified,src/game/menu/unit_menu_item.cpp,_ZN4game4menu12UnitMenuItem9Unknown78Ev
 15b8010,12,verified,src/game/menu/unit_menu_item.cpp,_ZN4game4menu19EquipMenuItem_Empty6GetMidEv
@@ -45829,7 +45829,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 15dd280,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::gameui::Help::SetAnimal(ui::LayoutAccessor&, game::UnitRide const&, game::Unit const*, bool)::$_0, game::gameui::Util::StatusData (game::gameui::Const::StatusType)>::destroy_deallocate()"
 15dd3d0,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::gameui::Help::SetAnimal(ui::LayoutAccessor&, game::UnitRide const&, game::Unit const*, bool)::$_0, game::gameui::Util::StatusData (game::gameui::Const::StatusType)>::target(std::type_info const&)"
 15dd3f0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::gameui::Help::SetAnimal(ui::LayoutAccessor&, game::UnitRide const&, game::Unit const*, bool)::$_0, game::gameui::Util::StatusData (game::gameui::Const::StatusType)>::target_type()"
-15dd400,232,verified,src/ui/game/control_lookup.cpp,_ZN2ui6Layout10GetControlIN4game6gameui7control12MenuItemItemEEENSt3__18weak_ptrIT_EEPN2nn4ui2d4PaneE
+15dd400,300,verified,src/ui/game/control_lookup.cpp,_ZN2ui6Layout10GetControlIN4game6gameui7control12MenuItemItemEEENSt3__18weak_ptrIT_EEPN2nn4ui2d4PaneE
 15dda40,8,verified,src/game/menu/equip_menu_item_item_empty.cpp,_ZN4game4menu23EquipMenuItem_ItemEmpty8IsEnableEv
 15dda50,216,verified,src/game/menu/equip_menu_item_item_empty.cpp,_ZN4game4menu23EquipMenuItem_ItemEmptyD0Ev
 15ddb30,80,verified,src/memory/new_delete.cpp,deleting destructor at 0x15ddb30
