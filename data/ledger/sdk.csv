@@ -4855,6 +4855,10 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 172400,36,verified,src/nnmusl/nnmusl_unsupported.c,sched_getaffinity
 172430,36,verified,src/nnmusl/nnmusl_unsupported.c,sched_setaffinity
 172460,36,verified,src/nnmusl/nnmusl_unsupported.c,sched_getcpu
+172490,160,verified,src/nnmusl/nnmusl_pthread_sched.cpp,pthread_getaffinity_np
+172560,176,verified,src/nnmusl/nnmusl_pthread_sched.cpp,pthread_setaffinity_np
+172630,136,verified,src/nnmusl/nnmusl_pthread_sched.cpp,pthread_getschedparam
+1726c0,40,verified,src/nnmusl/nnmusl_pthread_sched.cpp,pthread_setschedparam
 172750,116,verified,src/nnmusl/nnmusl_libc_misc5.cpp,pthread_setschedprio
 1727d0,92,verified,src/nnmusl/nnmusl_pthread_misc2.cpp,sem_init
 172830,28,verified,src/nnmusl/nnmusl_os_wrappers.cpp,sem_destroy
