@@ -5,6 +5,7 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#include "nn/movie/detail/movie_android_media_muxer.hpp"
 #include "nn/movie/detail/movie_media_muxer_state.hpp"
 #include "nn/movie/detail/movie_message.hpp"
 #include "nn/os/light_event.hpp"
@@ -24,15 +25,6 @@ enum ContainerType : int32_t;
 namespace nn::movie::detail {
 
 struct ThreadInfo;
-
-class AndroidMediaMuxer {
-public:
-  explicit AndroidMediaMuxer(AllocatorInfo* allocatorInfo);
-  virtual ~AndroidMediaMuxer();
-
-private:
-  uint8_t m_Storage[64];
-};
 
 class MediaMuxerImpl {
 public:
