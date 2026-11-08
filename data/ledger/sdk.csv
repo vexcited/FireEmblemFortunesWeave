@@ -23576,6 +23576,12 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 7a4690,16,verified,src/musl/src/stdlib/lldiv.c,lldiv
 7a4ed0,12,verified,src/nnmusl/nnmusl_libc_forwarders2.cpp,qsort
 7a4ee0,4,verified,src/nnmusl/nnmusl_libc_forwarders2.cpp,_ZL22CompareWithoutArgumentPKvS0_Pv
+7a4ef0,132,verified,src/nnmusl/nnmusl_strtox.cpp,strtoull
+7a4f80,132,verified,src/nnmusl/nnmusl_strtox.cpp,__strtoll_internal
+7a5010,132,verified,src/nnmusl/nnmusl_strtox.cpp,__strtoul_internal
+7a50a0,132,verified,src/nnmusl/nnmusl_strtox.cpp,__strtol_internal
+7a5130,132,verified,src/nnmusl/nnmusl_strtox.cpp,__strtoimax_internal
+7a51c0,132,verified,src/nnmusl/nnmusl_strtox.cpp,__strtoumax_internal
 7a5260,240,verified,src/musl/src/stdlib/wcstol.c,wcstoull
 7a5360,240,verified,src/musl/src/stdlib/wcstol.c,wcstoll
 7a5460,240,verified,src/musl/src/stdlib/wcstol.c,wcstoul
