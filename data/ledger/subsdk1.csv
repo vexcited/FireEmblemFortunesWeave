@@ -10,6 +10,8 @@ a70,36,verified,src/nvidia/cuda_driver_requests.cpp,_Z21CudaDriverRoutine_a70mm
 39c0,8,verified,src/nvidia/cuda_driver_stubs.cpp,_Z19CudaDriverStub_39c0v
 39d0,8,verified,src/nvidia/cuda_driver_stubs.cpp,_Z19CudaDriverStub_39d0v
 39e0,8,verified,src/nvidia/cuda_driver_stubs.cpp,_Z19CudaDriverStub_39e0v
+3ac0,44,verified,src/nvidia/cuda_driver_misc_helpers.cpp,_Z22CudaDriverRoutine_3ac0mm
+3af0,68,verified,src/nvidia/cuda_driver_misc_helpers.cpp,_Z22CudaDriverRoutine_3af0PKjjm
 4ab0,4,verified,src/nvidia/cuda_driver_stubs.cpp,_Z19CudaDriverStub_4ab0v
 4ac0,8,verified,src/nvidia/cuda_driver_stubs.cpp,_Z19CudaDriverStub_4ac0v
 4af0,8,verified,src/nvidia/cuda_driver_stubs.cpp,_Z19CudaDriverStub_4af0v
@@ -19,10 +21,12 @@ a70,36,verified,src/nvidia/cuda_driver_requests.cpp,_Z21CudaDriverRoutine_a70mm
 4ca0,32,verified,src/nvidia/cuda_driver_stubs_wrappers.cpp,_Z19CudaDriverStub_4ca0mmjmmj
 5010,4,verified,src/nvidia/cuda_driver_stubs.cpp,_Z19CudaDriverStub_5010v
 53f0,4,verified,src/nvidia/cuda_driver_stubs.cpp,_Z19CudaDriverStub_53f0v
+5ab0,72,verified,src/nvidia/cuda_driver_misc_helpers.cpp,_Z22CudaDriverRoutine_5ab0Pjmm
 79a0,8,verified,src/nvidia/cuda_driver_stubs.cpp,_Z19CudaDriverStub_79a0v
 79b0,8,verified,src/nvidia/cuda_driver_stubs.cpp,_Z19CudaDriverStub_79b0v
 7f00,8,verified,src/nvidia/cuda_driver_stubs.cpp,_Z19CudaDriverStub_7f00m
 8190,4,verified,src/nvidia/cuda_driver_stubs.cpp,_Z19CudaDriverStub_8190v
+81e0,44,verified,src/nvidia/cuda_driver_misc_helpers.cpp,_Z22CudaDriverRoutine_81e0jPj
 8210,12,verified,src/nvidia/cuda_driver_stubs_forwarders.cpp,_Z19CudaDriverStub_8210v
 84e0,8,verified,src/nvidia/cuda_driver_stubs.cpp,_Z19CudaDriverStub_84e0v
 8970,8,verified,src/nvidia/cuda_driver_stubs.cpp,_Z19CudaDriverStub_8970v
@@ -50,6 +54,8 @@ f810,4,verified,src/nvidia/cuda_driver_stubs.cpp,_Z19CudaDriverStub_f810v
 161c0,8,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_161c0v
 161d0,8,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_161d0v
 161e0,8,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_161e0v
+162c0,44,verified,src/nvidia/cuda_driver_misc_helpers.cpp,_Z23CudaDriverRoutine_162c0mm
+162f0,68,verified,src/nvidia/cuda_driver_misc_helpers.cpp,_Z23CudaDriverRoutine_162f0PKjjm
 17600,4,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_17600v
 17610,4,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_17610v
 17620,8,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_17620v
@@ -59,10 +65,12 @@ f810,4,verified,src/nvidia/cuda_driver_stubs.cpp,_Z19CudaDriverStub_f810v
 17f70,8,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_17f70v
 18080,32,verified,src/nvidia/cuda_driver_stubs_wrappers.cpp,_Z20CudaDriverStub_18080mmjmmj
 18460,4,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_18460v
+19180,72,verified,src/nvidia/cuda_driver_misc_helpers.cpp,_Z23CudaDriverRoutine_19180Pjmm
 1c050,8,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_1c050v
 1c060,8,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_1c060v
 1c5a0,8,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_1c5a0m
 1c830,4,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_1c830v
+1c880,44,verified,src/nvidia/cuda_driver_misc_helpers.cpp,_Z23CudaDriverRoutine_1c880jPj
 1c8b0,12,verified,src/nvidia/cuda_driver_stubs_forwarders.cpp,_Z20CudaDriverStub_1c8b0v
 1c960,12,verified,src/nvidia/cuda_driver_stubs_wrappers.cpp,_Z20CudaDriverStub_1c960mmmmmmj
 1c970,4,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_1c970v
@@ -627,6 +635,7 @@ f810,4,verified,src/nvidia/cuda_driver_stubs.cpp,_Z19CudaDriverStub_f810v
 50cd0,8,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_50cd0v
 50ce0,8,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_50ce0v
 50cf0,8,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_50cf0v
+50d00,40,verified,src/nvidia/cuda_driver_misc_helpers.cpp,_Z23CudaDriverRoutine_50d00mjm
 515b0,40,verified,src/nvidia/cuda_driver_requests.cpp,_Z23CudaDriverRoutine_515b0mmmjm
 51640,36,verified,src/nvidia/cuda_driver_helpers.cpp,_Z23CudaDriverRoutine_51640m
 51670,8,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_51670v
@@ -650,6 +659,7 @@ f810,4,verified,src/nvidia/cuda_driver_stubs.cpp,_Z19CudaDriverStub_f810v
 5bb90,8,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_5bb90m
 5c420,4,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_5c420v
 5e980,36,verified,src/nvidia/cuda_driver_helpers.cpp,_Z23CudaDriverRoutine_5e980m
+5e9b0,60,verified,src/nvidia/cuda_driver_misc_helpers.cpp,_Z23CudaDriverRoutine_5e9b0m
 5e9f0,36,verified,src/nvidia/cuda_driver_helpers.cpp,_Z23CudaDriverRoutine_5e9f0m
 5f7d0,48,verified,src/nvidia/cuda_driver_helpers2.cpp,_Z23CudaDriverRoutine_5f7d0mj
 5f800,12,verified,src/nvidia/cuda_driver_helpers2.cpp,_Z23CudaDriverRoutine_5f800mj
@@ -664,8 +674,10 @@ f810,4,verified,src/nvidia/cuda_driver_stubs.cpp,_Z19CudaDriverStub_f810v
 60a00,4,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_60a00v
 60a10,12,verified,src/nvidia/cuda_driver_stubs_thunks2.cpp,_Z20CudaDriverStub_60a10m
 60a20,4,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_60a20v
+60b40,56,verified,src/nvidia/cuda_driver_misc_helpers.cpp,_Z23CudaDriverRoutine_60b40mPj
 60c80,4,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_60c80v
 60f20,4,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_60f20v
+61770,56,verified,src/nvidia/cuda_driver_misc_helpers.cpp,_Z23CudaDriverRoutine_61770mm
 61880,12,verified,src/nvidia/cuda_driver_stubs_wrappers.cpp,_Z20CudaDriverStub_61880m
 61890,8,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_61890v
 618a0,8,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_618a0v
@@ -750,6 +762,8 @@ f810,4,verified,src/nvidia/cuda_driver_stubs.cpp,_Z19CudaDriverStub_f810v
 6a0c0,8,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_6a0c0v
 6a0d0,8,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_6a0d0v
 6a0e0,8,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_6a0e0v
+6a2e0,72,verified,src/nvidia/cuda_driver_misc_helpers.cpp,_Z23CudaDriverRoutine_6a2e0m
+6b880,72,verified,src/nvidia/cuda_driver_misc_helpers.cpp,_Z23CudaDriverRoutine_6b880m
 6b9a0,32,verified,src/nvidia/cuda_driver_requests.cpp,_Z23CudaDriverRoutine_6b9a0mmPj
 6bcd0,8,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_6bcd0v
 6cfc0,4,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_6cfc0v
@@ -787,7 +801,9 @@ f810,4,verified,src/nvidia/cuda_driver_stubs.cpp,_Z19CudaDriverStub_f810v
 77520,4,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_77520v
 77c40,8,verified,src/nvidia/cuda_driver_stubs_thunks.cpp,_Z20CudaDriverStub_77c40m
 77cd0,12,verified,src/nvidia/cuda_driver_stubs_forwarders.cpp,_Z20CudaDriverStub_77cd0v
+781f0,56,verified,src/nvidia/cuda_driver_misc_helpers.cpp,_Z23CudaDriverRoutine_781f0jh
 78870,12,verified,src/nvidia/cuda_driver_stubs_forwarders.cpp,_Z20CudaDriverStub_78870v
+78cb0,40,verified,src/nvidia/cuda_driver_misc_helpers.cpp,_Z23CudaDriverRoutine_78cb0Pm
 7cfb0,20,verified,src/nvidia/cuda_debugger_api.cpp,cudbgReportDriverApiError
 7cfd0,20,verified,src/nvidia/cuda_debugger_api.cpp,cudbgReportDriverInternalError
 7d240,56,verified,src/nvidia/cuda_debugger_api.cpp,cudbgApiInit
@@ -795,14 +811,17 @@ f810,4,verified,src/nvidia/cuda_driver_stubs.cpp,_Z19CudaDriverStub_f810v
 7f8e0,8,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_7f8e0m
 82b40,8,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_82b40v
 82b50,8,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_82b50v
+857c0,52,verified,src/nvidia/cuda_driver_misc_helpers.cpp,_Z23CudaDriverRoutine_857c0mm
 86e30,80,verified,src/nvidia/cuda_driver_helpers.cpp,_Z23CudaDriverRoutine_86e30m
 86e80,16,verified,src/nvidia/cuda_driver_stubs_forwarders.cpp,_Z20CudaDriverStub_86e80m
 86fe0,40,verified,src/nvidia/cuda_driver_predicates.cpp,_Z23CudaDriverRoutine_86fe0m
 87c60,44,verified,src/nvidia/cuda_driver_checks.cpp,_Z23CudaDriverRoutine_87c60j
+87cd0,56,verified,src/nvidia/cuda_driver_misc_helpers.cpp,_Z23CudaDriverRoutine_87cd0m
 88b70,28,verified,src/nvidia/cuda_driver_stubs_wrappers.cpp,_Z20CudaDriverStub_88b70mmmjjj
 89350,16,verified,src/nvidia/cuda_driver_stubs_thunks.cpp,_Z20CudaDriverStub_89350mmmmm
 8a640,56,verified,src/nvidia/cuda_driver_predicates.cpp,_Z23CudaDriverRoutine_8a640mPKj
 8aaa0,56,verified,src/nvidia/cuda_driver_helpers.cpp,_Z23CudaDriverRoutine_8aaa0mm
+8adb0,48,verified,src/nvidia/cuda_driver_misc_helpers.cpp,_Z23CudaDriverRoutine_8adb0Pm
 8b270,8,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_8b270m
 8b280,8,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_8b280m
 8e1f0,8,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_8e1f0v
@@ -810,6 +829,7 @@ f810,4,verified,src/nvidia/cuda_driver_stubs.cpp,_Z19CudaDriverStub_f810v
 8e850,64,verified,src/nvidia/cuda_driver_requests.cpp,_Z23CudaDriverRoutine_8e850mPKj
 8ea00,40,verified,src/nvidia/cuda_driver_requests.cpp,_Z23CudaDriverRoutine_8ea00m
 8f350,8,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_8f350v
+8f360,112,verified,src/nvidia/cuda_driver_misc_helpers.cpp,_Z23CudaDriverRoutine_8f360m
 8f4a0,8,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_8f4a0v
 92190,76,verified,src/nvidia/cuda_driver_predicates.cpp,_Z23CudaDriverRoutine_92190m
 921e0,4,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_921e0v
@@ -823,6 +843,7 @@ f810,4,verified,src/nvidia/cuda_driver_stubs.cpp,_Z19CudaDriverStub_f810v
 943c0,8,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_943c0v
 943d0,92,verified,src/nvidia/cuda_driver_helpers.cpp,_Z23CudaDriverRoutine_943d0m
 94430,8,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_94430v
+94440,92,verified,src/nvidia/cuda_driver_misc_helpers.cpp,_Z23CudaDriverRoutine_94440m
 95c70,8,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_95c70v
 972a0,12,verified,src/nvidia/cuda_driver_stubs_forwarders.cpp,_Z20CudaDriverStub_972a0m
 972b0,12,verified,src/nvidia/cuda_driver_stubs_forwarders.cpp,_Z20CudaDriverStub_972b0m
@@ -832,14 +853,17 @@ f810,4,verified,src/nvidia/cuda_driver_stubs.cpp,_Z19CudaDriverStub_f810v
 97300,12,verified,src/nvidia/cuda_driver_stubs_forwarders.cpp,_Z20CudaDriverStub_97300m
 97320,12,verified,src/nvidia/cuda_driver_stubs_forwarders.cpp,_Z20CudaDriverStub_97320m
 97e00,36,verified,src/nvidia/cuda_driver_predicates.cpp,_Z23CudaDriverRoutine_97e00mPmmm
+980c0,68,verified,src/nvidia/cuda_driver_misc_helpers.cpp,_Z23CudaDriverRoutine_980c0mm
 98590,8,verified,src/nvidia/cuda_driver_stubs_forwarders.cpp,_Z20CudaDriverStub_98590m
 985a0,16,verified,src/nvidia/cuda_driver_stubs_forwarders.cpp,_Z20CudaDriverStub_985a0m
 99720,36,verified,src/nvidia/cuda_driver_predicates.cpp,_Z23CudaDriverRoutine_99720m
 99760,44,verified,src/nvidia/cuda_driver_predicates.cpp,_Z23CudaDriverRoutine_99760m
 99850,8,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_99850m
 99860,8,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_99860m
+99870,40,verified,src/nvidia/cuda_driver_misc_helpers.cpp,_Z23CudaDriverRoutine_99870m
 99f10,36,verified,src/nvidia/cuda_driver_predicates.cpp,_Z23CudaDriverRoutine_99f10m
 99f40,44,verified,src/nvidia/cuda_driver_helpers.cpp,_Z23CudaDriverRoutine_99f40mPKjj
+9aa60,64,verified,src/nvidia/cuda_driver_misc_helpers.cpp,_Z23CudaDriverRoutine_9aa60mj
 9ab70,16,verified,src/nvidia/cuda_driver_stubs_forwarders.cpp,_Z20CudaDriverStub_9ab70m
 9ab80,36,verified,src/nvidia/cuda_driver_predicates.cpp,_Z23CudaDriverRoutine_9ab80m
 9abb0,36,verified,src/nvidia/cuda_driver_predicates.cpp,_Z23CudaDriverRoutine_9abb0m
@@ -896,7 +920,9 @@ d4800,16,verified,src/nvidia/cuda_driver_stubs_forwarders.cpp,_Z20CudaDriverStub
 da230,64,verified,src/nvidia/cuda_driver_checks.cpp,_Z23CudaDriverRoutine_da230PKm
 da430,72,verified,src/nvidia/cuda_driver_checks.cpp,_Z23CudaDriverRoutine_da430PKmS0_
 da480,72,verified,src/nvidia/cuda_driver_checks.cpp,_Z23CudaDriverRoutine_da480mm
+de220,40,verified,src/nvidia/cuda_driver_misc_helpers.cpp,_Z23CudaDriverRoutine_de220mj
 de8d0,4,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_de8d0v
+df060,76,verified,src/nvidia/cuda_driver_misc_helpers.cpp,_Z23CudaDriverRoutine_df060Pm
 e1da0,8,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_e1da0v
 e1e20,4,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_e1e20v
 e1e90,8,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_e1e90v
@@ -911,6 +937,7 @@ e3120,52,verified,src/nvidia/cuda_driver_checks.cpp,_Z23CudaDriverRoutine_e3120P
 e4960,20,verified,src/nvidia/cuda_driver_stubs_wrappers.cpp,_Z20CudaDriverStub_e4960mmm
 e7c60,68,verified,src/nvidia/cuda_driver_checks.cpp,_Z23CudaDriverRoutine_e7c60mmj
 ea960,56,verified,src/nvidia/cuda_driver_helpers.cpp,_Z23CudaDriverRoutine_ea960mm
+ea9a0,56,verified,src/nvidia/cuda_driver_misc_helpers.cpp,_Z23CudaDriverRoutine_ea9a0mPm
 ee000,8,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_ee000v
 efe40,76,verified,src/nvidia/cuda_driver_predicates.cpp,_Z23CudaDriverRoutine_efe40m
 efe90,8,verified,src/nvidia/cuda_driver_stubs_forwarders.cpp,_Z20CudaDriverStub_efe90m
@@ -920,6 +947,7 @@ f0f70,8,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_f0f70m
 f1060,36,verified,src/nvidia/cuda_driver_helpers.cpp,_Z23CudaDriverRoutine_f1060v
 f1460,16,verified,src/nvidia/cuda_driver_stubs_forwarders.cpp,_Z20CudaDriverStub_f1460m
 f1470,16,verified,src/nvidia/cuda_driver_stubs_forwarders.cpp,_Z20CudaDriverStub_f1470m
+f1f00,68,verified,src/nvidia/cuda_driver_misc_helpers.cpp,_Z23CudaDriverRoutine_f1f00PmS_
 f2df0,8,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_f2df0m
 f2fe0,16,verified,src/nvidia/cuda_driver_stubs_forwarders.cpp,_Z20CudaDriverStub_f2fe0m
 f4320,48,verified,src/nvidia/cuda_driver_helpers.cpp,_Z23CudaDriverRoutine_f4320m
@@ -948,6 +976,7 @@ fcca0,48,verified,src/nvidia/cuda_driver_checks.cpp,_Z23CudaDriverRoutine_fcca0m
 107f60,40,verified,src/nvidia/cuda_driver_checks.cpp,_Z24CudaDriverRoutine_107f60Pm
 107f90,4,verified,src/nvidia/cuda_driver_stubs.cpp,_Z21CudaDriverStub_107f90v
 108070,4,verified,src/nvidia/cuda_driver_stubs.cpp,_Z21CudaDriverStub_108070v
+108490,44,verified,src/nvidia/cuda_driver_misc_helpers.cpp,_Z24CudaDriverRoutine_108490Pm
 108fc0,4,verified,src/nvidia/cuda_driver_stubs.cpp,_Z21CudaDriverStub_108fc0v
 10a0f0,64,verified,src/nvidia/cuda_driver_predicates.cpp,_Z24CudaDriverRoutine_10a0f0mm
 10c450,36,verified,src/nvidia/cuda_driver_helpers2.cpp,_Z24CudaDriverRoutine_10c450v
