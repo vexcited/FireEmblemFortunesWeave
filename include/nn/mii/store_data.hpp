@@ -1,5 +1,6 @@
 #pragma once
 
+#include "nn/mii/mii_color.hpp"
 #include "nn/mii/visual_accessors.hpp"
 
 namespace nn::mii::detail {
@@ -32,6 +33,7 @@ struct StoreDataRaw {
   void BuildDefault(UtilityImpl* utility, int index);
   void BuildWithCoreData(UtilityImpl* utility, const CoreDataRaw& data);
   void BuildWithCharInfo(UtilityImpl* utility, const CharInfo& info);
+  void BuildMiiEditor(UtilityImpl* utility, Gender gender);
   void UpdateDataCrc();
   void UpdateDeviceCrc();
   bool IsSpecial() const;

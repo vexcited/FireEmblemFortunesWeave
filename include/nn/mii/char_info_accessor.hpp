@@ -42,6 +42,8 @@ struct GenderCharInfoAccessor {
 
 namespace detail {
 
+struct StoreDataRaw;
+
 void ReplaceCharInfoIfNecessary(CharInfoRaw* info);
 
 struct NfpStoreDataExtentionRaw {
@@ -64,6 +66,8 @@ struct NfpStoreDataExtentionRaw {
   int GetGlassType() const;
   bool IsValid() const;
   void SetDefault();
+  void SetFromStoreData(const StoreDataRaw& store);
+  void ToStoreData(StoreDataRaw* store) const;
   void SetFacelineColor(int value);
   void SetHairColor(int value);
   void SetEyeColor(int value);

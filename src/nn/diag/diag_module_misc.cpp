@@ -231,6 +231,10 @@ bool ModuleParser::MoveNext(char* pOutName, size_t nameSize) {
     MemoryBlockParser::GetInfo()->baseAddress, pOutName, nameSize);
 }
 
+const ModuleInfoImpl* ModuleParser::GetInfo() const {
+  return &m_ModuleInfo;
+}
+
 }
 
 }
