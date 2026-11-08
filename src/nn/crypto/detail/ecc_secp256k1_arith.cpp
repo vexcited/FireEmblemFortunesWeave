@@ -95,6 +95,17 @@ constexpr uint64_t DistanceN[4] = {
   }
 }
 
+[[gnu::always_inline]] inline void StoreProduct(uint32_t* result,
+  const uint32_t* lhs, const uint32_t* rhs) {
+  Limbs a;
+  Limbs b;
+  Load(a, lhs);
+  Load(b, rhs);
+  uint64_t product[8];
+  Multiply(product, a, b);
+  memcpy(result, product, sizeof(product));
+}
+
 // The high half comes back in as a multiple of the distance, the leftover
 // top limb plus one is added again and taken off when nothing carries out.
 [[gnu::always_inline]] inline void ReduceP(uint64_t* out,
@@ -130,9 +141,66 @@ constexpr uint64_t DistanceN[4] = {
   }
 }
 
+// Adds value times the distance to n into the limbs, exactly.
+[[gnu::always_inline]] inline void AddTimesDistanceN(uint64_t* limbs,
+  int count, const uint64_t* value, int valueCount) {
+  for (int i = 0; i < valueCount; i++) {
+    uint64_t carry = 0;
+    for (int j = 0; j < 3; j++) {
+      const unsigned __int128 term =
+        static_cast<unsigned __int128>(value[i]) * DistanceN[j] +
+        limbs[i + j] + carry;
+      limbs[i + j] = static_cast<uint64_t>(term);
+      carry = static_cast<uint64_t>(term >> 64);
+    }
+    for (int j = i + 3; j < count && carry != 0; j++) {
+      const unsigned __int128 term =
+        static_cast<unsigned __int128>(limbs[j]) + carry;
+      limbs[j] = static_cast<uint64_t>(term);
+      carry = static_cast<uint64_t>(term >> 64);
+    }
+  }
+}
+
+// Three folds of the bits above 256, the carry of the last one is dropped,
+// then one conditional subtraction of n.
+[[gnu::always_inline]] inline void ReduceN(uint64_t* out,
+  const uint64_t* product) {
+  uint64_t first[8] = {};
+  for (int i = 0; i < 4; i++) {
+    first[i] = product[i];
+  }
+  AddTimesDistanceN(first, 8, product + 4, 4);
+  uint64_t second[8] = {first[0], first[1], first[2], first[3]};
+  AddTimesDistanceN(second, 8, first + 4, 3);
+  uint64_t third[8] = {second[0], second[1], second[2], second[3]};
+  AddTimesDistanceN(third, 8, second + 4, 1);
+  Limbs shifted;
+  uint64_t carry = 0;
+  for (int i = 0; i < 4; i++) {
+    shifted[i] = AddCarry(third[i], DistanceN[i], carry);
+  }
+  for (int i = 0; i < 4; i++) {
+    out[i] = carry != 0 ? shifted[i] : third[i];
+  }
+}
+
 }
 
 extern "C" {
+
+void nndetailCryptoMultMod256_SecP256k1_N(uint32_t* result,
+  const uint32_t* lhs, const uint32_t* rhs) {
+  Limbs a;
+  Limbs b;
+  Load(a, lhs);
+  Load(b, rhs);
+  uint64_t product[8];
+  Multiply(product, a, b);
+  Limbs out;
+  ReduceN(out, product);
+  Store(result, out);
+}
 
 void nndetailCryptoMultMod256_SecP256k1_P(uint32_t* result,
   const uint32_t* lhs, const uint32_t* rhs) {
@@ -160,13 +228,7 @@ void nndetailCryptoSqrMod256_SecP256k1_P(uint32_t* result,
 
 void nndetailCryptoMult256(uint32_t* result, const uint32_t* lhs,
   const uint32_t* rhs) {
-  Limbs a;
-  Limbs b;
-  Load(a, lhs);
-  Load(b, rhs);
-  uint64_t product[8];
-  Multiply(product, a, b);
-  memcpy(result, product, sizeof(product));
+  StoreProduct(result, lhs, rhs);
 }
 
 // Only the bits from 384 up are kept.
@@ -246,6 +308,17 @@ void nndetailCryptoMult8Mod256_SecP256k1_P(uint32_t* result,
     out[i] = SubBorrow(sum[i], 0, borrow);
   }
   Store(result, out);
+}
+
+// The eight word products read both inputs before writing anything.
+void nndetailCryptoBignum_mul_comba8(uint32_t* result, const uint32_t* lhs,
+  const uint32_t* rhs) {
+  StoreProduct(result, lhs, rhs);
+}
+
+void nndetailCryptoBignum_sqr_comba8(uint32_t* result,
+  const uint32_t* value) {
+  StoreProduct(result, value, value);
 }
 
 }

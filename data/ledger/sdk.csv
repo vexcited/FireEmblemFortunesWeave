@@ -288,6 +288,8 @@ ffe0,36,verified,src/nn/crypto/detail/sha3_impl.cpp,_ZNK2nn6crypto6detail8Sha3Im
 11d80,148,verified,src/nn/crypto/detail/big_num_words.cpp,nndetailCryptoBignumMulWords
 11e20,208,verified,src/nn/crypto/detail/big_num_words.cpp,nndetailCryptoBignumAddWords
 11ef0,212,verified,src/nn/crypto/detail/big_num_words.cpp,nndetailCryptoBignumSubWords
+11fd0,884,verified,src/nn/crypto/detail/ecc_secp256k1_arith.cpp,nndetailCryptoBignum_mul_comba8
+12350,772,verified,src/nn/crypto/detail/ecc_secp256k1_arith.cpp,nndetailCryptoBignum_sqr_comba8
 12660,324,verified,src/nn/crypto/detail/ecc_secp256k1_arith.cpp,nndetailCryptoMult256
 127b0,312,verified,src/nn/crypto/detail/ecc_secp256k1_arith.cpp,nndetailCryptoMult256_Shift384
 128f0,92,verified,src/nn/crypto/detail/ecc_secp256k1_arith.cpp,nndetailCryptoAddMod256_SecP256k1_P
@@ -296,6 +298,7 @@ ffe0,36,verified,src/nn/crypto/detail/sha3_impl.cpp,_ZNK2nn6crypto6detail8Sha3Im
 129e0,452,verified,src/nn/crypto/detail/ecc_secp256k1_arith.cpp,nndetailCryptoMultMod256_SecP256k1_P
 12bb0,120,verified,src/nn/crypto/detail/ecc_secp256k1_arith.cpp,nndetailCryptoAddMod256_SecP256k1_N
 12c30,88,verified,src/nn/crypto/detail/ecc_secp256k1_arith.cpp,nndetailCryptoNeg256_SecP256k1_N
+12c90,740,verified,src/nn/crypto/detail/ecc_secp256k1_arith.cpp,nndetailCryptoMultMod256_SecP256k1_N
 12f80,100,verified,src/nn/crypto/detail/ecc_secp256k1_arith.cpp,nndetailCryptoMult8Mod256_SecP256k1_P
 12ff0,452,verified,src/nn/crypto/detail/ecc_secp256k1_arith.cpp,nndetailCryptoSqrMod256_SecP256k1_P
 13550,64,verified,src/nn/crypto/detail/is_same_bytes.cpp,_ZN2nn6crypto6detail11IsSameBytesEPKvS3_m
@@ -9867,7 +9870,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 326b10,12,verified,src/nn/codec/opus/opus_decoder_impl.cpp,_ZN2nn5codec4opus23FinalizeOpusDecoderImplEPNS0_15OpusDecoderTypeE
 326b20,8,verified,src/nn/codec/opus/opus_decoder_impl.cpp,_ZN2nn5codec4opus28GetOpusDecoderSampleRateImplEPKNS0_15OpusDecoderTypeE
 326b30,8,verified,src/nn/codec/opus/opus_decoder_impl.cpp,_ZN2nn5codec4opus30GetOpusDecoderChannelCountImplEPKNS0_15OpusDecoderTypeE
-326b40,336,verified,src/nn/codec/opus/opus_decoder_impl.cpp,_ZN2nn5codec4opus25DecodeOpusInterleavedImplEPNS0_15OpusDecoderTypeEPmPiPsmPKvm
+326b40,344,verified,src/nn/codec/opus/opus_decoder_impl.cpp,_ZN2nn5codec4opus25DecodeOpusInterleavedImplEPNS0_15OpusDecoderTypeEPmPiPsmPKvm
 326ca0,12,verified,src/nn/codec/opus/opus_decoder_impl.cpp,_ZN2nn5codec4opus20ResetOpusDecoderImplEPNS0_15OpusDecoderTypeE
 326cb0,28,verified,src/nn/codec/opus/opus_encoder_impl.cpp,_ZN2nn5codec4opus32GetOpusEncoderWorkBufferSizeImplEi
 326cd0,284,verified,src/nn/codec/opus/opus_encoder_impl.cpp,_ZN2nn5codec4opus25InitializeOpusEncoderImplEPNS0_15OpusEncoderTypeEiiNS0_15OpusApplicationEPvm
@@ -10514,7 +10517,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 361d80,8,verified,src/nn/codec/aac/aac_decoder.cpp,_ZN2nn5codec23GetAacDecoderSampleRateEPKNS0_14AacDecoderTypeE
 361d90,8,verified,src/nn/codec/aac/aac_decoder.cpp,_ZN2nn5codec25GetAacDecoderChannelCountEPKNS0_14AacDecoderTypeE
 361da0,24,verified,src/nn/codec/aac/aac_decoder.cpp,_ZN2nn5codec33GetAacDecoderMpeg4AudioObjectTypeEPKNS0_14AacDecoderTypeE
-361dc0,436,verified,src/nn/codec/aac/aac_decoder.cpp,_ZN2nn5codec20DecodeAacInterleavedEPNS0_14AacDecoderTypeEPmPiPsmPKvm
+361dc0,464,verified,src/nn/codec/aac/aac_decoder.cpp,_ZN2nn5codec20DecodeAacInterleavedEPNS0_14AacDecoderTypeEPmPiPsmPKvm
 362100,520,verified,src/nn/codec/aac/aac_decoder.cpp,_ZN2nn5codec30InitializeAacDecoderForAnyTypeEPNS0_14AacDecoderTypeEiiPvm
 362310,12,verified,src/nn/codec/aac/aac_decoder.cpp,_ZN2nn5codec18IsSupportedDownMixEi
 362320,124,verified,src/nn/codec/aac/aac_decoder.cpp,_ZN2nn5codec41InitializeAacDecoderForAnyTypeWithDownmixEPNS0_14AacDecoderTypeEiiPvm
