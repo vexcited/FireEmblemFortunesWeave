@@ -23188,6 +23188,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 778000,356,verified,src/musl/src/prng/random.c,srandom
 778390,132,verified,src/nnmusl/nnmusl_libc_misc4.cpp,setstate
 778420,180,verified,src/nnmusl/nnmusl_libc_misc4.cpp,random
+7784e0,304,verified,src/nnmusl/stdio//fdopen.c,fdopen
 778620,48,verified,src/libc/stdio_flush.cpp,LockFile
 778650,24,verified,src/libc/stdio_flush.cpp,UnlockFile
 778670,28,verified,src/libc/stdio_flush.cpp,InitializeFileLock
@@ -23625,7 +23626,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 7a39c0,224,verified,src/musl/src/stdio/vsnprintf.c,vsnprintf
 7a3b60,64,verified,src/musl/src/stdio/vsprintf.c,vsprintf
 7a3ba0,132,verified,src/musl/src/stdio/vsscanf.c,vsscanf
-7a3dc0,212,verified,src/musl/src/stdio/vswprintf.c,sw_write
+7a3dc0,212,disputed,src/musl/src/stdio/vswprintf.c,sw_write
 7a3ec0,148,verified,src/musl/src/stdio/vswscanf.c,vswscanf
 7a4020,68,verified,src/musl/src/stdio/vwprintf.c,vwprintf
 7a4070,120,verified,src/musl/src/stdio/wprintf.c,wprintf
