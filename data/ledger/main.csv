@@ -13894,6 +13894,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 729000,44,verified,src/memory/new_delete.cpp,deleting destructor at 0x729000
 729030,4,verified,src/game/proc/proc_singleton.cpp,_ZN4game14IProcSingleton9Unknown12Ev
 729720,80,verified,src/memory/new_delete.cpp,deleting destructor at 0x729720
+72b410,132,verified,src/game/game_trivial_buffer_owners.cpp,_Z15GameStub_72b410m
 72c550,8,verified,src/game/game_trivial.cpp,_Z15GameStub_72c550v
 72c560,8,verified,src/game/game_trivial.cpp,_Z15GameStub_72c560v
 72c8e0,8,verified,src/game/game_trivial.cpp,_Z15GameStub_72c8e0m
@@ -15683,6 +15684,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 803d60,20,verified,src/game/game_trivial_forwarders.cpp,_Z15GameStub_803d60m
 803d80,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::RangeGroup::GetTargetCount(game::Unit const*, game::UnitSkill const&, int, int) const::$_0, void (int, int)>::target(std::type_info const&)"
 803da0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::RangeGroup::GetTargetCount(game::Unit const*, game::UnitSkill const&, int, int) const::$_0, void (int, int)>::target_type()"
+803e00,132,verified,src/game/game_trivial_buffer_owners.cpp,_Z15GameStub_803e00m
 803ea0,2452,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_10RangeGroupENS_9RangeDataEE4LoadEPKcS5_b
 805680,148,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game17SingletonDataFileINS_9RangeFileENS_10RangeGroupENS_9RangeDataEED0Ev
 805720,112,verified,src/game/singleton/singleton_data_file.cpp,_ZThn8_N4game17SingletonDataFileINS_9RangeFileENS_10RangeGroupENS_9RangeDataEED1Ev
@@ -16566,9 +16568,11 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 857ab0,8,verified,src/game/game_trivial.cpp,_Z15GameStub_857ab0m
 857ac0,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::UnitSkillList::Remove(game::BitMask<unsigned short, game::SkillConst::Kind> const&)::$_0, void (game::UnitSkill const&)>::target(std::type_info const&)"
 857ae0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::UnitSkillList::Remove(game::BitMask<unsigned short, game::SkillConst::Kind> const&)::$_0, void (game::UnitSkill const&)>::target_type()"
+857b40,132,verified,src/game/game_trivial_buffer_owners.cpp,_Z15GameStub_857b40m
 857d10,12,verified,src/game/game_trivial_forwarders.cpp,_Z15GameStub_857d10m
 857da0,28,verified,src/game/game_trivial_calls.cpp,_Z15GameStub_857da0mm
 857dc0,12,verified,src/game/game_trivial.cpp,_Z15GameStub_857dc0v
+857e20,132,verified,src/game/game_trivial_buffer_owners.cpp,_Z15GameStub_857e20m
 857ff0,12,verified,src/game/game_trivial_forwarders.cpp,_Z15GameStub_857ff0m
 858080,28,verified,src/game/game_trivial_calls.cpp,_Z15GameStub_858080mm
 8580a0,12,verified,src/game/game_trivial.cpp,_Z15GameStub_8580a0v
@@ -17561,6 +17565,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 8b2e80,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::(anonymous namespace)::ProcGainHonorSeq::Lv()::'lambda'(auto), void (game::ProcInst*)>::destroy_deallocate()"
 8b2eb0,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::(anonymous namespace)::ProcGainHonorSeq::Lv()::'lambda'(auto), void (game::ProcInst*)>::target(std::type_info const&)"
 8b2ed0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::(anonymous namespace)::ProcGainHonorSeq::Lv()::'lambda'(auto), void (game::ProcInst*)>::target_type()"
+8b2f30,132,verified,src/game/game_trivial_buffer_owners.cpp,_Z15GameStub_8b2f30m
 8b3130,12,verified,src/game/game_trivial_forwarders.cpp,_Z15GameStub_8b3130m
 8b31d0,28,verified,src/game/game_trivial_calls.cpp,_Z15GameStub_8b31d0mm
 8b31f0,12,verified,src/game/game_trivial.cpp,_Z15GameStub_8b31f0v
@@ -18759,6 +18764,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 943cd0,80,verified,src/memory/new_delete.cpp,deleting destructor at 0x943cd0
 943d20,52,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonINS_12TrainingFileELb0EED2Ev
 943d60,88,verified,src/game/singleton/singleton_data_file.cpp,_ZN4game9SingletonINS_12TrainingFileELb0EED0Ev
+943e10,132,verified,src/game/game_trivial_buffer_owners.cpp,_Z15GameStub_943e10m
 944040,12,verified,src/game/game_trivial_forwarders.cpp,_Z15GameStub_944040m
 944230,28,verified,src/game/game_trivial_calls.cpp,_Z15GameStub_944230mm
 944250,12,verified,src/game/game_trivial.cpp,_Z15GameStub_944250v
@@ -22628,6 +22634,7 @@ b32f70,24,verified,src/llvm-libcxx-21/libcxx/include/__vector/vector.h,std::vect
 b32f90,24,verified,src/llvm-libcxx-21/libcxx/include/__vector/vector.h,std::vector<T>::__throw_length_error()
 b32fb0,24,verified,src/llvm-libcxx-21/libcxx/include/__vector/vector.h,std::vector<T>::__throw_length_error()
 b32fd0,72,verified,src/gfx/flow/resources.cpp,_ZN3gfx4flow12ResourceBaseD2Ev
+b33020,136,verified,src/game/game_trivial_buffer_owners.cpp,_Z15GameStub_b33020m
 b330b0,8,verified,src/game/game_trivial.cpp,_Z15GameStub_b330b0m
 b33220,4,verified,src/gfx/flow/resources.cpp,_ZN3gfx4flow12ResourceBaseD0Ev
 b33230,8,verified,src/gfx/flow/resources.cpp,_ZNK3gfx4flow12ResourceBase9GetNativeEv
@@ -28137,6 +28144,7 @@ da5e00,24,verified,src/llvm-libcxx-21/libcxx/include/__vector/vector.h,std::vect
 da7770,4,verified,src/game/game_trivial.cpp,_Z15GameStub_da7770v
 da7780,4,verified,src/game/game_trivial.cpp,_Z15GameStub_da7780v
 da7790,4,verified,src/game/game_trivial.cpp,_Z15GameStub_da7790v
+da79b0,132,verified,src/game/game_trivial_buffer_owners.cpp,_Z15GameStub_da79b0m
 da89a0,24,verified,src/llvm-libcxx-21/libcxx/include/__vector/vector.h,std::vector<T>::__throw_length_error()
 da96a0,24,verified,src/llvm-libcxx-21/libcxx/include/__vector/vector.h,std::vector<T>::__throw_length_error()
 da9a30,80,verified,src/memory/new_delete.cpp,deleting destructor at 0xda9a30
@@ -29068,6 +29076,7 @@ e20180,4,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std
 e20190,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::zview::CharacterActionCorrection::SerchHitbox_Target(std::__1::vector<game::zview::Hitbox const*, std::__1::allocator<game::zview::Hitbox const*>> const&, float, math::Vec3) const::$_0, bool (game::zview::Hitbox const*)>::destroy_deallocate()"
 e20270,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::zview::CharacterActionCorrection::SerchHitbox_Target(std::__1::vector<game::zview::Hitbox const*, std::__1::allocator<game::zview::Hitbox const*>> const&, float, math::Vec3) const::$_0, bool (game::zview::Hitbox const*)>::target(std::type_info const&)"
 e20290,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::zview::CharacterActionCorrection::SerchHitbox_Target(std::__1::vector<game::zview::Hitbox const*, std::__1::allocator<game::zview::Hitbox const*>> const&, float, math::Vec3) const::$_0, bool (game::zview::Hitbox const*)>::target_type()"
+e202f0,132,verified,src/game/game_trivial_buffer_owners.cpp,_Z15GameStub_e202f0m
 e204f0,12,verified,src/game/game_trivial_forwarders.cpp,_Z15GameStub_e204f0m
 e205e0,28,verified,src/game/game_trivial_calls.cpp,_Z15GameStub_e205e0mm
 e20600,12,verified,src/game/game_trivial.cpp,_Z15GameStub_e20600v
@@ -29198,6 +29207,7 @@ e35a50,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"st
 e35a70,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::combat::LegionStackAttack::OnEnter()::$_3, void (game::character::SignalRoot*)>::target_type()"
 e36d70,8,verified,src/game/game_trivial.cpp,_Z15GameStub_e36d70v
 e372e0,8,verified,src/game/game_trivial.cpp,_Z15GameStub_e372e0m
+e37a10,136,verified,src/game/game_trivial_buffer_owners.cpp,_Z15GameStub_e37a10m
 e37aa0,4,verified,src/game/game_trivial.cpp,_Z15GameStub_e37aa0v
 e37ab0,4,verified,src/game/game_trivial.cpp,_Z15GameStub_e37ab0v
 e37ac0,4,verified,src/game/game_trivial.cpp,_Z15GameStub_e37ac0v
@@ -29525,25 +29535,33 @@ e51b30,24,verified,src/game/game_trivial_misc.cpp,_Z15GameStub_e51b30m
 e51bc0,4,verified,src/game/game_trivial.cpp,_Z15GameStub_e51bc0v
 e528c0,4,verified,src/game/game_trivial.cpp,_Z15GameStub_e528c0v
 e52a90,4,verified,src/game/game_trivial.cpp,_Z15GameStub_e52a90v
+e52aa0,136,verified,src/game/game_trivial_buffer_owners.cpp,_Z15GameStub_e52aa0m
 e52b70,4,verified,src/game/game_trivial.cpp,_Z15GameStub_e52b70v
+e52b80,136,verified,src/game/game_trivial_buffer_owners.cpp,_Z15GameStub_e52b80m
 e52c60,4,verified,src/game/game_trivial.cpp,_Z15GameStub_e52c60v
 e52e50,4,verified,src/game/game_trivial.cpp,_Z15GameStub_e52e50v
 e53040,4,verified,src/game/game_trivial.cpp,_Z15GameStub_e53040v
+e53050,136,verified,src/game/game_trivial_buffer_owners.cpp,_Z15GameStub_e53050m
 e53130,4,verified,src/game/game_trivial.cpp,_Z15GameStub_e53130v
 e53300,4,verified,src/game/game_trivial.cpp,_Z15GameStub_e53300v
 e534d0,4,verified,src/game/game_trivial.cpp,_Z15GameStub_e534d0v
 e53700,4,verified,src/game/game_trivial.cpp,_Z15GameStub_e53700v
 e538f0,4,verified,src/game/game_trivial.cpp,_Z15GameStub_e538f0v
+e53900,136,verified,src/game/game_trivial_buffer_owners.cpp,_Z15GameStub_e53900m
 e539e0,4,verified,src/game/game_trivial.cpp,_Z15GameStub_e539e0v
 e53c10,4,verified,src/game/game_trivial.cpp,_Z15GameStub_e53c10v
 e53e40,4,verified,src/game/game_trivial.cpp,_Z15GameStub_e53e40v
 e54030,4,verified,src/game/game_trivial.cpp,_Z15GameStub_e54030v
+e54040,136,verified,src/game/game_trivial_buffer_owners.cpp,_Z15GameStub_e54040m
 e54120,4,verified,src/game/game_trivial.cpp,_Z15GameStub_e54120v
+e54130,136,verified,src/game/game_trivial_buffer_owners.cpp,_Z15GameStub_e54130m
 e54210,4,verified,src/game/game_trivial.cpp,_Z15GameStub_e54210v
+e54220,136,verified,src/game/game_trivial_buffer_owners.cpp,_Z15GameStub_e54220m
 e54300,4,verified,src/game/game_trivial.cpp,_Z15GameStub_e54300v
 e54550,4,verified,src/game/game_trivial.cpp,_Z15GameStub_e54550v
 e547a0,4,verified,src/game/game_trivial.cpp,_Z15GameStub_e547a0v
 e54990,4,verified,src/game/game_trivial.cpp,_Z15GameStub_e54990v
+e549f0,136,verified,src/game/game_trivial_buffer_owners.cpp,_Z15GameStub_e549f0m
 e54ac0,4,verified,src/game/game_trivial.cpp,_Z15GameStub_e54ac0v
 e54ae0,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::combat::GambitRunFuncLegion::Run()::$_0, void (game::combat::CombatLegion*, int)>::deleting destructor"
 e54b10,76,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::combat::GambitRunFuncLegion::Run()::$_0, void (game::combat::CombatLegion*, int)>::__clone()"
@@ -31745,6 +31763,7 @@ f5c9d0,124,verified,src/game/proc/plain_procs.cpp,_ZN4game6cmdbtl12_GLOBAL__N_12
 f5d3d0,16,verified,src/game/game_trivial_forwarders.cpp,_Z15GameStub_f5d3d0v
 f5d640,136,verified,src/game/proc/unread_proc_singletons.cpp,_ZN4game21ProcJumpableSingletonINS_8facility12_GLOBAL__N_120ProcArenaWatchingSeqENS2_5LabelEED2Ev
 f5d6d0,180,verified,src/game/proc/unread_proc_singletons.cpp,_ZN4game21ProcJumpableSingletonINS_8facility12_GLOBAL__N_120ProcArenaWatchingSeqENS2_5LabelEED0Ev
+f5d7e0,132,verified,src/game/game_trivial_buffer_owners.cpp,_Z15GameStub_f5d7e0m
 f5e570,24,verified,src/llvm-libcxx-21/libcxx/include/__vector/vector.h,std::vector<T>::__throw_length_error()
 f5e970,80,verified,src/memory/new_delete.cpp,deleting destructor at 0xf5e970
 f5fb50,16,verified,src/llvm-libcxx-21/libcxx/include/__memory/shared_ptr.h,"std::__1::__shared_ptr_emplace<game::hub::DungeonRouteReport, std::__1::allocator<game::hub::DungeonRouteReport>>::destructor"
@@ -32498,6 +32517,7 @@ fb6150,52,verified,src/game/singleton/singletons.cpp,_ZN4game9SingletonINS_3hub1
 fb6190,88,verified,src/game/singleton/singletons.cpp,_ZN4game9SingletonINS_3hub14ObeliskSupportELb0EED0Ev
 fb65b0,80,verified,src/memory/new_delete.cpp,deleting destructor at 0xfb65b0
 fb7420,80,verified,src/memory/new_delete.cpp,deleting destructor at 0xfb7420
+fb81a0,132,verified,src/game/game_trivial_buffer_owners.cpp,_Z15GameStub_fb81a0m
 fb8a90,8,verified,src/game/game_trivial.cpp,_Z15GameStub_fb8a90v
 fb8aa0,12,verified,src/game/game_trivial.cpp,_Z15GameStub_fb8aa0v
 fb8eb0,24,verified,src/llvm-libcxx-21/libcxx/include/__vector/vector.h,std::vector<T>::__throw_length_error()
@@ -32599,6 +32619,7 @@ fc3f60,148,verified,src/game/proc/member_procs.cpp,_ZN4game3hub12_GLOBAL__N_117P
 fc4000,184,verified,src/game/proc/member_procs.cpp,_ZN4game3hub12_GLOBAL__N_118ProcChallengeBeginD0Ev
 fc40c0,184,verified,src/game/proc/member_procs.cpp,_ZN4game3hub12_GLOBAL__N_117ProcChallengeBaseD0Ev
 fc5000,8,verified,src/game/game_trivial.cpp,_Z15GameStub_fc5000m
+fc6d60,132,verified,src/game/game_trivial_buffer_owners.cpp,_Z15GameStub_fc6d60m
 fc6df0,12,verified,src/game/game_trivial.cpp,_Z15GameStub_fc6df0v
 fc6e00,4,verified,src/game/game_trivial.cpp,_Z15GameStub_fc6e00v
 fc6e10,8,verified,src/game/game_trivial.cpp,_Z15GameStub_fc6e10v
@@ -33332,6 +33353,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 103d8d0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::MapPanelTrickDestroy::UpdateTarget()::$_1, bool (int, int)>::destroy_deallocate()"
 103d940,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::MapPanelTrickDestroy::UpdateTarget()::$_1, bool (int, int)>::target(std::type_info const&)"
 103d960,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::MapPanelTrickDestroy::UpdateTarget()::$_1, bool (int, int)>::target_type()"
+103dae0,132,verified,src/game/game_trivial_buffer_owners.cpp,_Z16GameStub_103dae0m
 103f020,4,verified,src/memory/new_delete.cpp,complete destructor at 0x103f020
 103f030,44,verified,src/memory/new_delete.cpp,deleting destructor at 0x103f030
 10404f0,4,verified,src/memory/new_delete.cpp,complete destructor at 0x10404f0
@@ -33719,6 +33741,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 1063f30,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::combat::ActionAttack::OnEnter()::$_2, void (game::character::SignalRoot*)>::target(std::type_info const&)"
 1063f50,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::combat::ActionAttack::OnEnter()::$_2, void (game::character::SignalRoot*)>::target_type()"
 1063f60,24,verified,src/llvm-libcxx-21/libcxx/include/__vector/vector.h,std::vector<T>::__throw_length_error()
+1063fd0,132,verified,src/game/game_trivial_buffer_owners.cpp,_Z16GameStub_1063fd0m
 10643a0,12,verified,src/game/game_trivial_forwarders.cpp,_Z16GameStub_10643a0m
 1064400,28,verified,src/game/game_trivial_calls.cpp,_Z16GameStub_1064400mm
 1064420,12,verified,src/game/game_trivial.cpp,_Z16GameStub_1064420v
@@ -43276,6 +43299,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 1490820,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_13JobIntroGroupENS_12JobIntroDataEE7OnBuildEv
 1490830,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_13JobIntroGroupENS_12JobIntroDataEE9OnUnbuildEv
 1490840,4,verified,src/game/data/data_file.cpp,_ZN4game8DataFileINS_13JobIntroGroupENS_12JobIntroDataEE9OnRebuildEv
+14908a0,136,verified,src/game/game_trivial_buffer_owners.cpp,_Z16GameStub_14908a0m
 1490930,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::JobIntroGroup::IsCondition(game::JobIntroConst::ConditionFlagMask const&) const::$_0, void (game::JobIntroData const*)>::deleting destructor"
 1490960,80,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::JobIntroGroup::IsCondition(game::JobIntroConst::ConditionFlagMask const&) const::$_0, void (game::JobIntroData const*)>::__clone()"
 14909b0,24,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::JobIntroGroup::IsCondition(game::JobIntroConst::ConditionFlagMask const&) const::$_0, void (game::JobIntroData const*)>::__clone(__base*)"
@@ -50528,6 +50552,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 1718830,4,verified,src/game/game_trivial.cpp,_Z16GameStub_1718830v
 1718840,4,verified,src/game/game_trivial.cpp,_Z16GameStub_1718840v
 1718850,8,verified,src/game/game_trivial.cpp,_Z16GameStub_1718850m
+171a960,136,verified,src/game/game_trivial_buffer_owners.cpp,_Z16GameStub_171a960m
 171aa40,232,verified,src/ui/game/control_lookup.cpp,_ZN2ui6Layout10GetControlIN4game6gameui7control15HelpableElementEEENSt3__18weak_ptrIT_EERKNS6_17basic_string_viewIcNS6_11char_traitsIcEEEE
 171c020,124,verified,src/game/proc/plain_procs.cpp,_ZN4game6gameui12_GLOBAL__N_112ProcCalendar18ProcMoveEdgeToEdgeD0Ev
 171c270,80,verified,src/memory/new_delete.cpp,deleting destructor at 0x171c270
@@ -51353,6 +51378,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 177f890,24,verified,src/llvm-libcxx-21/libcxx/include/__vector/vector.h,std::vector<T>::__throw_length_error()
 177f8b0,284,verified,src/game/telop/telop_volunteer_result.cpp,_ZN4game5telop26TelopSortieVolunteerResultD0Ev
 177f9d0,8,verified,src/game/telop/telop_volunteer_result.cpp,_ZN4game5telop26TelopSortieVolunteerResult9Unknown62Ev
+177fa30,132,verified,src/game/game_trivial_buffer_owners.cpp,_Z16GameStub_177fa30m
 177fc60,12,verified,src/game/game_trivial_forwarders.cpp,_Z16GameStub_177fc60m
 1780130,28,verified,src/game/game_trivial_calls.cpp,_Z16GameStub_1780130mm
 1780150,12,verified,src/game/game_trivial.cpp,_Z16GameStub_1780150v
@@ -51364,6 +51390,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 1780380,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::telop::TelopSkillLearn::CreateBind(game::ProcInst*, game::Unit const*, std::__1::vector<game::LearnData const*, std::__1::allocator<game::LearnData const*>>, game::JobData const*)::$_1, void (game::ProcInst*)>::destroy_deallocate()"
 17803a0,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::telop::TelopSkillLearn::CreateBind(game::ProcInst*, game::Unit const*, std::__1::vector<game::LearnData const*, std::__1::allocator<game::LearnData const*>>, game::JobData const*)::$_1, void (game::ProcInst*)>::target(std::type_info const&)"
 17803c0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::telop::TelopSkillLearn::CreateBind(game::ProcInst*, game::Unit const*, std::__1::vector<game::LearnData const*, std::__1::allocator<game::LearnData const*>>, game::JobData const*)::$_1, void (game::ProcInst*)>::target_type()"
+1780420,132,verified,src/game/game_trivial_buffer_owners.cpp,_Z16GameStub_1780420m
 1780650,12,verified,src/game/game_trivial_forwarders.cpp,_Z16GameStub_1780650m
 1780b20,28,verified,src/game/game_trivial_calls.cpp,_Z16GameStub_1780b20mm
 1780b40,12,verified,src/game/game_trivial.cpp,_Z16GameStub_1780b40v
@@ -55033,6 +55060,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 186eed0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::facility::ItemShopMenuItem::CreateDialog(std::__1::function<int (game::menu::DialogMenuItem*)> const&, std::__1::function<int (game::menu::DialogMenuItem*)> const&)::$_1, void (game::menu::DialogMenuItem*, int)>::destroy_deallocate()"
 186f4b0,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::facility::ItemShopMenuItem::CreateDialog(std::__1::function<int (game::menu::DialogMenuItem*)> const&, std::__1::function<int (game::menu::DialogMenuItem*)> const&)::$_1, void (game::menu::DialogMenuItem*, int)>::target(std::type_info const&)"
 186f4d0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::facility::ItemShopMenuItem::CreateDialog(std::__1::function<int (game::menu::DialogMenuItem*)> const&, std::__1::function<int (game::menu::DialogMenuItem*)> const&)::$_1, void (game::menu::DialogMenuItem*, int)>::target_type()"
+186f530,132,verified,src/game/game_trivial_buffer_owners.cpp,_Z16GameStub_186f530m
 186f750,12,verified,src/game/game_trivial_forwarders.cpp,_Z16GameStub_186f750m
 186f880,28,verified,src/game/game_trivial_calls.cpp,_Z16GameStub_186f880mm
 186f8a0,12,verified,src/game/game_trivial.cpp,_Z16GameStub_186f8a0v
@@ -55043,6 +55071,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 186f960,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::facility::ShopMenuItem_Buy::OnDialogYes(game::menu::DialogMenuItem*)::$_1, void ()>::destroy_deallocate()"
 186f9e0,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::facility::ShopMenuItem_Buy::OnDialogYes(game::menu::DialogMenuItem*)::$_1, void ()>::target(std::type_info const&)"
 186fa00,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::facility::ShopMenuItem_Buy::OnDialogYes(game::menu::DialogMenuItem*)::$_1, void ()>::target_type()"
+186fa60,132,verified,src/game/game_trivial_buffer_owners.cpp,_Z16GameStub_186fa60m
 186fc80,12,verified,src/game/game_trivial_forwarders.cpp,_Z16GameStub_186fc80m
 186fea0,28,verified,src/game/game_trivial_calls.cpp,_Z16GameStub_186fea0mm
 186fec0,12,verified,src/game/game_trivial.cpp,_Z16GameStub_186fec0v
@@ -55548,6 +55577,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 1881680,12,verified,src/game/menu/report_menu_item_yes.cpp,_ZN4game4menu12_GLOBAL__N_123AcceptMenuItem_StoryYes6GetMidEv
 1881690,8,verified,src/game/menu/report_menu_item_yes.cpp,_ZN4game4menu12_GLOBAL__N_123AcceptMenuItem_StoryYes9Unknown14Ev
 18816a0,8,verified,src/game/menu/report_menu_item_yes.cpp,_ZN4game4menu12_GLOBAL__N_123AcceptMenuItem_StoryYes8IsActiveEv
+1881ba0,132,verified,src/game/game_trivial_buffer_owners.cpp,_Z16GameStub_1881ba0m
 1881da0,12,verified,src/game/game_trivial_forwarders.cpp,_Z16GameStub_1881da0m
 1881eb0,28,verified,src/game/game_trivial_calls.cpp,_Z16GameStub_1881eb0mm
 1881ed0,12,verified,src/game/game_trivial.cpp,_Z16GameStub_1881ed0v
@@ -56949,10 +56979,14 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 1919570,4,verified,src/game/game_trivial.cpp,_Z16GameStub_1919570v
 1919580,44,verified,src/game/game_trivial_misc.cpp,_Z16GameStub_1919580m
 1919a70,4,verified,src/game/game_trivial.cpp,_Z16GameStub_1919a70v
+191c170,136,verified,src/game/game_trivial_buffer_owners.cpp,_Z16GameStub_191c170m
 191c230,8,verified,src/game/game_trivial.cpp,_Z16GameStub_191c230mh
+191c2a0,136,verified,src/game/game_trivial_buffer_owners.cpp,_Z16GameStub_191c2a0m
+191c330,136,verified,src/game/game_trivial_buffer_owners.cpp,_Z16GameStub_191c330m
 191c400,8,verified,src/game/game_trivial.cpp,_Z16GameStub_191c400mm
 191c610,8,verified,src/game/game_trivial.cpp,_Z16GameStub_191c610m
 191c620,80,verified,src/memory/new_delete.cpp,deleting destructor at 0x191c620
+191c6c0,136,verified,src/game/game_trivial_buffer_owners.cpp,_Z16GameStub_191c6c0m
 191d110,4,verified,src/game/game_trivial.cpp,_Z16GameStub_191d110v
 191d120,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<bool (*)(cspine::SpineModel&, spine::Slot&), bool (cspine::SpineModel&, spine::Slot&)>::deleting destructor"
 191d150,76,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<bool (*)(cspine::SpineModel&, spine::Slot&), bool (cspine::SpineModel&, spine::Slot&)>::__clone()"
