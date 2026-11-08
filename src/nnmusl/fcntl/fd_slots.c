@@ -175,6 +175,23 @@ HIDDEN int __nnmusl_slot_close_index(int16_t index)
 	return ret;
 }
 
+// The directory table keeps its own copy of the close routine.
+HIDDEN int __nnmusl_slot_close_index_directory(
+	int16_t index)
+{
+	nn_os_SdkMutex_Lock(__nnmusl_slot_mutex);
+	struct nnmusl_slot *slot = &__nnmusl_slots[index];
+	const struct nnmusl_kind_info *info = &__nnmusl_kind_info[slot->kind];
+	struct nnmusl_slot_reference reference = {
+		slot,
+		info->base + (int16_t)(index - info->first) * info->state_size,
+		(uint16_t)(index << 1 | 1),
+	};
+	int ret = __nnmusl_slot_close(&reference);
+	nn_os_SdkMutex_Unlock(__nnmusl_slot_mutex);
+	return ret;
+}
+
 // Takes a free slot of the requested kind, copies the state in and installs
 // a descriptor for it, undoing everything if the table is full.
 HIDDEN int __nnmusl_fd_allocate(const void *state, const uint32_t *flags)

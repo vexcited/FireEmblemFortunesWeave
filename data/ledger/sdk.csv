@@ -1835,6 +1835,7 @@ b1c90,128,verified,src/nnmusl/fcntl/fd_slots.c,__nnmusl_slot_retain
 b1d10,160,verified,src/nnmusl/fcntl/fd_slots.c,__nnmusl_slot_close_index
 b1db0,268,verified,src/nnmusl/fcntl/fd_slots.c,__nnmusl_slot_close
 b1f00,128,verified,src/nnmusl/fcntl/fd_slots.c,__nnmusl_slot_retain_directory
+b1f80,160,verified,src/nnmusl/fcntl/fd_slots.c,__nnmusl_slot_close_index_directory
 b2020,20,verified,src/nnmusl/nnmusl_libc_misc2.cpp,alphasort
 b2040,56,verified,src/musl/src/dirent/closedir.c,closedir
 b2080,8,verified,src/musl/src/dirent/dirfd.c,dirfd
