@@ -2018,6 +2018,8 @@ b9270,32,verified,src/nn/diag/diag_c_api_unexpected.cpp,nndetailUnexpectedDefaul
 b92f0,24,verified,src/nn/diag/diag_c_api_abort.cpp,nndetailDiagAbortImpl
 b9310,40,verified,src/nn/diag/diag_c_api_abort.cpp,nndetailDiagAbortNoMessageImpl
 b93c0,4,verified,src/nn/diag/diag_c_api_misc.cpp,nndetailDiagOnAssertionFailureNoMessage
+b93d0,184,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag6detail8VLogImplERKNS0_11LogMetaDataEPKcSt9__va_list
+b9660,248,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag6detail7LogImplERKNS0_11LogMetaDataEPKcz
 b9760,48,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag6detail7PutImplERKNS0_11LogMetaDataEPKcm
 b9790,52,verified,src/nn/diag/diag_c_api_abort.cpp,nndetailDiagVLogImplForC
 b9840,4,verified,src/nn/diag/diag_c_api_misc.cpp,nndetailDiagPutImplForC

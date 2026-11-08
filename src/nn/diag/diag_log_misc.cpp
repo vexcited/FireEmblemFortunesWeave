@@ -1,3 +1,4 @@
+#include <stdarg.h>
 #include <stddef.h>
 #include <stdint.h>
 #include <string.h>
@@ -16,6 +17,13 @@ namespace nn::svc {
 [[gnu::visibility("hidden")]] Result Break(uint32_t reason, uintptr_t argument,
   size_t size);
 [[gnu::visibility("hidden")]] void SynchronizePreemptionState();
+
+}
+
+namespace nn::util {
+
+void VFormatString(void (*output)(uintptr_t argument, const char* string,
+  int length), uintptr_t argument, const char* format, va_list arguments);
 
 }
 
@@ -87,6 +95,20 @@ size_t GetSymbolSizeImpl(uintptr_t address);
 void PrepareAbort();
 int GetAllModuleInfoImpl(size_t* pOutSize, void* pBuffer, size_t bufferSize,
   bool isSizeQuery);
+
+// Formatted text gathers in a small buffer, each flush sends one piece and
+// clears isHead.
+struct LogBuffer {
+  char* pBegin;
+  char* pEnd;
+  char* pCurrent;
+  uint64_t reserved;
+  const LogMetaData* pMetaData;
+  bool isHead;
+};
+
+[[gnu::visibility("hidden")]] void FlushLogBuffer(uintptr_t argument,
+  const char* string, int length);
 
 // Walks the frame chain from the saved frame pointer, or from the context
 // when no frame pointer was given.
@@ -212,6 +234,40 @@ namespace detail {
 
 void PrintBacktraceItemImpl(uintptr_t address, bool isEnabled) {
   LookUpBacktraceItem(address, isEnabled);
+}
+
+namespace {
+
+constexpr size_t LogBufferSize = 0x80;
+
+[[gnu::always_inline]] inline void VLog(const LogMetaData& metaData,
+  const char* format, va_list arguments) {
+  char buffer[LogBufferSize] = {};
+  LogBuffer state = {buffer, buffer + LogBufferSize - 1, buffer, 0,
+    &metaData, true};
+
+  util::VFormatString(FlushLogBuffer, reinterpret_cast<uintptr_t>(&state),
+    format, arguments);
+  *state.pCurrent = '\0';
+
+  const LogBody body = {state.pBegin,
+    static_cast<size_t>(static_cast<int>(state.pCurrent - state.pBegin)),
+    state.isHead, true};
+  CallAllLogObserver(*state.pMetaData, body);
+}
+
+}
+
+void VLogImpl(const LogMetaData& metaData, const char* format,
+  va_list arguments) {
+  VLog(metaData, format, arguments);
+}
+
+void LogImpl(const LogMetaData& metaData, const char* format, ...) {
+  va_list arguments;
+  va_start(arguments, format);
+  VLog(metaData, format, arguments);
+  va_end(arguments);
 }
 
 // A single piece is both the head and the tail of its message.
