@@ -19878,7 +19878,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 5f0720,12,verified,src/nvidia/nvos_misc.cpp,NvUScalarCompare
 5f11e0,4,verified,src/nvidia/nvos_stubs.cpp,NvOsShowError
 5f11f0,64,verified,src/nvidia/nvos_misc.cpp,NvUAlloc0
-5f5180,152,verified,src/nvidia/nvos_heap_library.cpp,NvOsHeapAllocatorAlloc
+5f5180,228,verified,src/nvidia/nvos_heap_library.cpp,NvOsHeapAllocatorAlloc
 5f5270,116,verified,src/nvidia/nvos_heap_library.cpp,NvOsHeapAllocatorPrintStatistics
 5f52f0,228,verified,src/nvidia/nvos_heap_library.cpp,NvOsHeapAllocatorRealloc
 5f53e0,228,verified,src/nvidia/nvos_heap_library.cpp,NvOsHeapAllocatorAllocAlign
@@ -19931,11 +19931,14 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 5f62a0,36,verified,src/nvidia/nvos_sync.cpp,NvOsBusyWaitUS
 5f62d0,32,verified,src/nvidia/nvos_sync.cpp,NvOsBusyWaitNS
 5f62f0,8,verified,src/nvidia/nvos_sync.cpp,NvOsTlsAlloc
+5f6640,132,verified,src/nvidia/nvos_log.cpp,NvOsTlsFree
 5f66d0,52,verified,src/nvidia/nvos_misc.cpp,NvOsTlsGet
 5f6840,8,verified,src/nvidia/nvos_stubs.cpp,NvOsTlsRemoveTerminator
 5f6850,8,verified,src/nvidia/nvos_stubs.cpp,NvOsTlsAddTerminator
 5f6860,8,verified,src/nvidia/nvos_stubs.cpp,NvOsPhysicalMemMap
 5f6870,4,verified,src/nvidia/nvos_stubs.cpp,NvOsPhysicalMemUnmap
+5f6f00,216,verified,src/nvidia/nvos_log.cpp,NvOsFprintf
+5f6fe0,160,verified,src/nvidia/nvos_log.cpp,NvOsVfprintf
 5f7080,52,verified,src/nvidia/nvos_file_misc.cpp,NvOsVsnprintf
 5f7680,108,verified,src/nvidia/nvos_config.cpp,NvOsSnprintf
 5f76f0,4,verified,src/nvidia/nvos_misc.cpp,NvOsStrcpy
@@ -19992,6 +19995,12 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 5f84b0,8,verified,src/nvidia/nvos_stubs.cpp,NvOsUnMapRegSpace
 5f84c0,4,verified,src/nvidia/nvos_misc.cpp,NvOsGetCurrentThreadId
 5f84d0,160,verified,src/nvidia/nvos_heap_library.cpp,NvOsRegisterExitHandler
+5f8570,100,verified,src/nvidia/nvos_log.cpp,NvOsHosVLog
+5f85e0,156,verified,src/nvidia/nvos_log.cpp,NvOsHosLog
+5f8680,200,verified,src/nvidia/nvos_log.cpp,NvOsHosNLog
+5f8750,84,verified,src/nvidia/nvos_log.cpp,NvOsHosSdkVLog
+5f87b0,144,verified,src/nvidia/nvos_log.cpp,NvOsHosSdkLog
+5f8840,208,verified,src/nvidia/nvos_log.cpp,NvOsHosSdkNLog
 5f8b40,40,verified,src/nvidia/nv_graphics_config.cpp,_ZN2nv20GetGraphicsAllocatorEPPFPvmmS0_EPPFvS0_S0_EPPFS0_S0_mS0_EPS0_
 5f8dd0,44,verified,src/nvidia/nv_graphics_config.cpp,_ZN2nv27EnableGraphicsMemoryTracingEv
 5f8e00,44,verified,src/nvidia/nv_graphics_config.cpp,_ZN2nv20EnablePreemptionGFXPEv
@@ -20002,6 +20011,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 5f8fc0,8,verified,src/nvidia/nvos_misc.cpp,NvOsHosIsUsingCoreCallbacks
 5f9d80,252,verified,src/nn/sf/cmif/client/cmif_client_extra_message.cpp,_ZN2nn2sf4hipc6client18Hipc2ProxyKindBaseILNS1_6detail11MessageTypeE6EE7ProcessILb0EJNS0_4cmif6client6detail5InRawIjEENSA_9OutHandleILb0EEESC_NSA_6OutRawIjEEEEENS_6ResultEPKNS6_14ProxyKindStateEDpNT0_9ParameterEi
 5f9ed0,296,verified,src/nn/sf/cmif/client/cmif_client_extra_message.cpp,_ZN2nn2sf4hipc6client18Hipc2ProxyKindBaseILNS1_6detail11MessageTypeE6EE7ProcessILb0EJNS0_4cmif6client6detail8InHandleILb0EEENSA_5InRawIjEENSA_6OutRawIjEEEEENS_6ResultEPKNS6_14ProxyKindStateEDpNT0_9ParameterEi
+5fa980,124,verified,src/nvidia/nvos_log.cpp,NvOsDrvClose
 5fb060,8,verified,src/nvidia/nvos_stubs.cpp,NvOsDrvMapSharedMem
 5fb910,4,verified,src/nvidia/nv_misc.cpp,_Z23hosGetSystemEventHandleijPN2nn2os15SystemEventTypeE
 5fd330,8,verified,src/nvidia/nvos_stubs.cpp,NvRmIsOnHypervisor
