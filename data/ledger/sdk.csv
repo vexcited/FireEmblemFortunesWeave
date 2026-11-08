@@ -5691,7 +5691,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 193a00,4,verified,src/nn/socket/detail/socket_api_resolver.cpp,_ZN2nn6socket6detail9GetHErrnoEv
 193a90,8,verified,src/nn/socket/detail/socket_api_client.cpp,_ZN2nn6socket6detail12_GLOBAL__N_121ExpHeapMemoryResource13do_deallocateEPvmm
 193aa0,692,verified,src/nn/socket/detail/socket_api_client.cpp,_ZN2nn6socket6detail12_GLOBAL__N_116SendMessageBatchEPiS3_PKNS2_12NoMemRequestEPKPvPKiPNS2_17NoMemMessageEntryE
-193da0,716,verified,src/nn/socket/detail/socket_api_client.cpp,_ZN2nn6socket6detail12_GLOBAL__N_116RecvMessageBatchEPKNS2_12NoMemRequestEPKPvPKiPNS2_17NoMemMessageEntryEPiPNS_8TimeSpanEPKNS2_9NoMemNameE
+193da0,720,verified,src/nn/socket/detail/socket_api_client.cpp,_ZN2nn6socket6detail12_GLOBAL__N_116RecvMessageBatchEPKNS2_12NoMemRequestEPKPvPKiPNS2_17NoMemMessageEntryEPiPNS_8TimeSpanEPKNS2_9NoMemNameE
 1940a0,136,verified,src/nn/socket/detail/socket_api_client.cpp,_ZN2nn6socket6detail12_GLOBAL__N_116StatisticsThreadEPv
 194380,404,verified,src/nn/socket/detail/socket_aton.cpp,_ZN2nn6socket6detail10socketAtonEPKcPNS0_6InAddrE
 1945c0,368,verified,src/nn/socket/detail/socket_aton.cpp,_ZN2nn6socket6detail10socketAtonEPKcP7in_addr
@@ -19160,7 +19160,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 5c7890,24,verified,src/nn/ssl/ssl_connection.cpp,_ZN2nn3ssl10ConnectionC2Ev
 5c78b0,4,verified,src/nn/ssl/ssl_connection.cpp,_ZN2nn3ssl10ConnectionD2Ev
 5c78c0,172,verified,src/nn/ssl/ssl_connection.cpp,_ZN2nn3ssl10Connection6CreateEPNS0_7ContextE
-5c7a30,136,verified,src/nn/ssl/ssl_connection.cpp,_ZN2nn3ssl10Connection7DestroyEv
+5c7a30,184,verified,src/nn/ssl/ssl_connection.cpp,_ZN2nn3ssl10Connection7DestroyEv
 5c7b00,172,verified,src/nn/ssl/ssl_connection.cpp,_ZN2nn3ssl10Connection19SetSocketDescriptorEi
 5c7bb0,200,verified,src/nn/ssl/ssl_connection.cpp,_ZN2nn3ssl10Connection11SetHostNameEPKcj
 5c7c80,128,verified,src/nn/ssl/ssl_connection.cpp,_ZN2nn3ssl10Connection15SetVerifyOptionENS1_12VerifyOptionE
@@ -19230,7 +19230,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 5ca980,328,verified,src/nn/ssl/ssl_context.cpp,_ZN2nn3ssl14ContextPrivate25GeneratePrivateKeyAndCertEPcPjS2_S3_jjRKNS1_16KeyAndCertParamsE
 5caad0,68,verified,src/nn/ssl/ssl_api.cpp,_ZN2nn3ssl14SetDebugOptionEPKvjNS0_11DebugOptionE
 5cab20,160,verified,src/nn/ssl/ssl_api.cpp,_ZN2nn3ssl14GetDebugOptionEPvjNS0_11DebugOptionE
-5cabc0,240,verified,src/nn/ssl/ssl_api.cpp,_ZN2nn3ssl17FlushSessionCacheEPjPKcjNS0_27FlushSessionCacheOptionTypeE
+5cabc0,260,verified,src/nn/ssl/ssl_api.cpp,_ZN2nn3ssl17FlushSessionCacheEPjPKcjNS0_27FlushSessionCacheOptionTypeE
 5cacd0,68,verified,src/nn/ssl/ssl_api.cpp,_ZN2nn3ssl22ClearTls12FallbackFlagEv
 5cad40,80,verified,src/nn/ssl/detail/ssl_api_base.cpp,_ZN2nn3ssl6detail10SslApiBase10InitializeEv
 5cad90,88,verified,src/nn/ssl/detail/ssl_api_base.cpp,_ZN2nn3ssl6detail10SslApiBase8FinalizeEv
