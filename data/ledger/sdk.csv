@@ -23215,7 +23215,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 779690,4,verified,src/nnmusl/nnmusl_libc_forwarders2.cpp,_IO_putc
 7796a0,4,verified,src/nnmusl/nnmusl_libc_forwarders2.cpp,putchar
 7797b0,288,verified,src/nnmusl/stdio/swprintf.c,swprintf
-779a20,908,verified,src/nnmusl/stdio/vfscanf.c,vfscanf
+779a20,1412,verified,src/nnmusl/stdio/vfscanf.c,vfscanf
 77a8c0,200,verified,src/musl/src/temp/__randname.c,__randname
 77a990,4,verified,src/libc/quick_exit.cpp,LockQuickExitState
 77a9a0,4,verified,src/libc/quick_exit.cpp,UnlockQuickExitState
@@ -23294,6 +23294,10 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 78d070,180,verified,src/nnmusl/nnmusl_strtof.cpp,strtof
 78d130,176,verified,src/nnmusl/nnmusl_strtof.cpp,strtod
 78d1e0,176,verified,src/nnmusl/nnmusl_strtof.cpp,strtold
+78d2a0,228,verified,src/nnmusl/stdio/wcstod.c,wcstof
+78d3a0,224,verified,src/nnmusl/stdio/wcstod.c,wcstod
+78d4a0,232,verified,src/nnmusl/stdio/wcstod.c,wcstold
+78d5a0,148,verified,src/nnmusl/stdio/wcstod.c,do_read
 78d880,424,verified,src/musl/src/string/memchr.c,memchr
 78df00,4,verified,src/nnmusl/nnmusl_libc_forwarders2.cpp,__memcpy_device
 78df20,268,verified,src/musl/src/string/memmove.c,memmove
