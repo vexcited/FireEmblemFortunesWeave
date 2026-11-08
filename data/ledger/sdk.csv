@@ -23451,7 +23451,10 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 797f90,20,verified,src/musl/src/ctype/tolower.c,tolower_l
 797fb0,24,verified,src/musl/src/ctype/toupper.c,toupper
 797fd0,24,verified,src/musl/src/ctype/toupper.c,toupper_l
+798000,176,verified,src/nnmusl/ctype/towctrans.c,towlower
+798140,176,verified,src/nnmusl/ctype/towctrans.c,towupper
 798270,4,verified,src/nnmusl/nnmusl_libc_forwarders2.cpp,towupper_l
+798280,176,verified,src/nnmusl/ctype/towctrans.c,towlower_l
 7983c0,124,verified,src/musl/src/ctype/wcswidth.c,wcswidth
 798440,92,verified,src/musl/src/ctype/wctrans.c,wctrans
 7984a0,28,verified,src/musl/src/ctype/wctrans.c,towctrans
