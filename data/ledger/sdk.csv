@@ -23250,6 +23250,9 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 787f20,312,verified,src/musl/src/regex/tre-mem.c,__tre_mem_alloc_impl
 7893a0,164,verified,src/musl/src/stdio/vfprintf.c,pad
 78ca90,324,verified,src/musl/src/stdio/vfprintf.c,pop_arg
+78d070,180,verified,src/nnmusl/nnmusl_strtof.cpp,strtof
+78d130,176,verified,src/nnmusl/nnmusl_strtof.cpp,strtod
+78d1e0,176,verified,src/nnmusl/nnmusl_strtof.cpp,strtold
 78d880,424,verified,src/musl/src/string/memchr.c,memchr
 78df00,4,verified,src/nnmusl/nnmusl_libc_forwarders2.cpp,__memcpy_device
 78e1e0,204,verified,src/musl/src/string/memset.c,memset
@@ -23564,6 +23567,9 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 7a4070,120,verified,src/musl/src/stdio/wprintf.c,wprintf
 7a40f0,12,verified,src/musl/src/stdlib/abs.c,abs
 7a4100,8,verified,src/musl/src/stdlib/atof.c,atof
+7a4120,80,verified,src/nnmusl/nnmusl_atoi.cpp,atoi
+7a41e0,176,verified,src/nnmusl/nnmusl_atoi.cpp,atol
+7a42a0,80,verified,src/nnmusl/nnmusl_atoi.cpp,atoll
 7a4400,16,verified,src/musl/src/stdlib/div.c,div
 7a4420,196,verified,src/musl/src/stdlib/ecvt.c,ecvt
 7a44f0,232,verified,src/musl/src/stdlib/fcvt.c,fcvt
