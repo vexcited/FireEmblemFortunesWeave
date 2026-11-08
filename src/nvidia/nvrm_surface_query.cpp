@@ -61,6 +61,7 @@ NvError NvOsFopen(const char* path, uint32_t flags, void** pOutFile);
 NvError NvOsFread(void* file, void* buffer, uint64_t size,
   uint64_t* pOutRead);
 void NvOsFcloseEx(void* file);
+void NvOsFwrite(void* file, const void* buffer, uint64_t size);
 void* NvOsAlloc(uint64_t size);
 void NvOsFree(void* pointer);
 NvError NvRmSurfaceFromJson(void* surfaces, void* count, void* attributes,
@@ -480,8 +481,8 @@ extern "C" NvError NvRmSurfaceWrite(NvRmSurface* surface, uint32_t x,
   return result;
 }
 
-extern "C" NvError NvRmSurfaceRead(NvRmSurface* surface, uint32_t x,
-  uint32_t y, uint32_t width, uint32_t height, void* data) {
+extern "C" [[gnu::noinline]] NvError NvRmSurfaceRead(NvRmSurface* surface,
+  uint32_t x, uint32_t y, uint32_t width, uint32_t height, void* data) {
   NvError result = NvRmSurfaceCheckRect(surface, x, y, width, height);
   if (result != NvSuccess) {
     return result;
@@ -719,4 +720,53 @@ extern "C" NvError NvRmMultiplanarSurfaceSetup(NvRmSurface* surfaces,
   }
 
   return NvSuccess;
+}
+
+// Writes every surface after the other, each read in pitch order.
+extern "C" NvError NvRmSurfaceDump(NvRmSurface* surfaces, uint32_t count,
+  const char* path) {
+  if (surfaces == nullptr || count == 0 || path == nullptr) {
+    return NvError_BadParameter;
+  }
+
+  void* file = nullptr;
+  NvError result = NvOsFopen(path, 6, &file);
+  if (result != NvSuccess) {
+    return result;
+  }
+
+  uint32_t maxSize = 0;
+  for (uint64_t i = 0; i < count; i++) {
+    const NvRmSurface& surface = surfaces[i];
+    const uint32_t size = (BitsPerPixel(surface.colorFormat) * surface.width >>
+      3) * surface.height;
+    if (maxSize <= size) {
+      maxSize = size;
+    }
+  }
+
+  if (maxSize == 0) {
+    result = NvError_BadParameter;
+  }
+  else {
+    void* buffer = NvOsAlloc(maxSize);
+    if (buffer == nullptr) {
+      result = NvError_InsufficientMemory;
+    }
+    else {
+      for (uint64_t i = 0; i < count; i++) {
+        NvRmSurface& surface = surfaces[i];
+        NvRmSurfaceRead(&surface, 0, 0, surface.width, surface.height,
+          buffer);
+        NvOsFwrite(file, buffer, (BitsPerPixel(surface.colorFormat) *
+          surface.width >> 3) * surface.height);
+      }
+
+      NvOsFree(buffer);
+      result = NvSuccess;
+    }
+  }
+
+  NvOsFcloseEx(file);
+  return result;
 }
