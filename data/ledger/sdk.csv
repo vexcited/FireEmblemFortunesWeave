@@ -19820,6 +19820,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 6d48a0,144,verified,src/nn/hid/detail/hid_button_config.cpp,_ZN2nn3hid6detail24GetGlGrButtonConfigStateEPbS2_j
 6d4930,116,verified,src/nn/hid/detail/hid_nmouse_ipc.cpp,_ZN2nn3hid6detail23SetSceneIdForPrivateAppEi
 6d49b0,132,verified,src/nn/hid/detail/hid_npad.cpp,_ZN2nn3hid6detail23GetSceneIdForPrivateAppEPi
+6d4a40,912,verified,src/nn/hid/hid_keyboard_key_code.cpp,_ZN2nn3hid10GetKeyCodeEPtiNS_4util10BitFlagSetILi32ENS0_16KeyboardModifierEEENS2_7BitPackIjNS0_14KeyboardLayoutEEE
 6d5040,12,verified,src/nn/hid/hid_misc_api.cpp,_ZN2nn3hid15KeyCodeComposerC2Ev
 6d5050,8,verified,src/nn/hid/hid_key_code_composer.cpp,_ZN2nn3hid15KeyCodeComposer14SetDeadKeyModeEb
 6d5060,32,verified,src/nn/hid/hid_key_code_composer.cpp,_ZNK2nn3hid15KeyCodeComposer14GetDeadKeyModeEv
