@@ -13979,6 +13979,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 4c0d50,136,verified,src/nn/mii/mii_applet_launcher.cpp,_ZN2nn3mii23GetUpdateMiiImageResultEPiNS_6applet13StorageHandleE
 4c0de0,328,verified,src/nn/mii/mii_applet_launcher.cpp,_ZN2nn3mii6detail9StartImplEPNS0_12AppletOutputERKNS0_11AppletInputEh
 4c0f30,328,verified,src/nn/mii/mii_applet_launcher.cpp,_ZN2nn3mii6detail9StartImplEPNS0_30AppletOutputForCharInfoEditingERKNS0_11AppletInputEh
+4c1080,248,verified,src/nn/movie/movie_api.cpp,_ZN2nn5movie10InitializeEv
 4c1180,76,verified,src/nn/movie/movie_api.cpp,_ZN2nn5movie13IsInitializedEv
 4c11d0,116,verified,src/nn/movie/movie_api.cpp,_ZN2nn5movie8FinalizeEv
 4c1250,16,verified,src/nn/movie/movie_buffer.cpp,_ZN2nn5movie6BufferC2Ev

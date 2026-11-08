@@ -32,6 +32,10 @@ public:
     return m_IsStatisticsEnabled;
   }
 
+  static void SetSlot(os::TlsSlot slot) {
+    GetInstance().m_Slot = slot;
+  }
+
   static void SetCurrentHeap(HeapContext *heap) {
     os::SetTlsValue(GetInstance().m_Slot, reinterpret_cast<uintptr_t>(heap));
   }
