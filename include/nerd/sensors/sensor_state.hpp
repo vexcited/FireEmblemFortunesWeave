@@ -30,6 +30,19 @@ struct SensorStateInitParams {
 };
 
 struct NineAxisSensorSample {
+  bool HasGyrData() const;
+  bool IsGyrSaturated() const;
+  bool IsGyrInvalid() const;
+  bool HasAccData() const;
+  bool IsAccSaturated() const;
+  bool IsAccInvalid() const;
+  bool HasMagData() const;
+  bool IsMagSaturated() const;
+  bool IsMagInvalid() const;
+  bool HasTempData() const;
+  bool IsTempSaturated() const;
+  bool IsTempInvalid() const;
+
   int64_t timestamp;
   Vector3f acceleration;
   Vector3f angularVelocity;

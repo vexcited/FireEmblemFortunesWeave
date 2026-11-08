@@ -1,33 +1,6 @@
 #include <stdint.h>
 
-#include "nn/gs/gs_native_window.hpp"
-
-struct NVNdevice;
-struct NVNnativeImage;
-struct NVNnativeImageBuilder;
-struct NVNsync;
-struct NVNtexture;
-struct NVNexternalMemoryPoolBuilder;
-
-NVNdevice* nvnNativeImageBuilderGetDevice(
-  const NVNnativeImageBuilder* builder);
-uint64_t nvnNativeImageBuilderGetNativeImageHandle(
-  const NVNnativeImageBuilder* builder);
-int nvnNativeImageBuilderGetMemoryPermission(
-  const NVNnativeImageBuilder* builder);
-int nvnNativeImageBuilderGetFormat(const NVNnativeImageBuilder* builder);
-bool nvnNativeImageInitialize(NVNnativeImage* image,
-  const NVNnativeImageBuilder* builder);
-void nvnNativeImageFinalize(NVNnativeImage* image);
-bool nvnTextureInitializeFromNativeImage(NVNtexture* texture,
-  NVNnativeImage* image);
-bool nvnSyncInitializeFromNativeSyncHandle(NVNsync* sync, NVNdevice* device,
-  nn::gs::NativeSyncHandle handle);
-
-extern "C" NVNdevice* nvnExternalMemoryPoolBuilderGetDevice(
-  const NVNexternalMemoryPoolBuilder* builder);
-extern "C" uint64_t nvnExternalMemoryPoolBuilderGetNativeMemoryHandle(
-  const NVNexternalMemoryPoolBuilder* builder);
+#include "nvn/nvn_native_image.hpp"
 
 namespace nvn {
 
@@ -39,9 +12,9 @@ class Texture;
 class NativeImageBuilder {
 public:
   Device* GetDevice() const;
-  uint64_t GetNativeImageHandle() const;
-  int GetMemoryPermission() const;
-  int GetFormat() const;
+  nn::gs::NativeImageHandle GetNativeImageHandle() const;
+  NVNnativeImageMemoryPermission GetMemoryPermission() const;
+  NVNformat GetFormat() const;
 
 private:
   const NVNnativeImageBuilder* ToC() const {
@@ -53,15 +26,16 @@ Device* NativeImageBuilder::GetDevice() const {
   return reinterpret_cast<Device*>(nvnNativeImageBuilderGetDevice(ToC()));
 }
 
-uint64_t NativeImageBuilder::GetNativeImageHandle() const {
+nn::gs::NativeImageHandle NativeImageBuilder::GetNativeImageHandle() const {
   return nvnNativeImageBuilderGetNativeImageHandle(ToC());
 }
 
-int NativeImageBuilder::GetMemoryPermission() const {
+NVNnativeImageMemoryPermission NativeImageBuilder::GetMemoryPermission()
+  const {
   return nvnNativeImageBuilderGetMemoryPermission(ToC());
 }
 
-int NativeImageBuilder::GetFormat() const {
+NVNformat NativeImageBuilder::GetFormat() const {
   return nvnNativeImageBuilderGetFormat(ToC());
 }
 
@@ -97,7 +71,7 @@ bool InitializeSyncFromNativeSyncHandle(Sync* sync, Device* device,
 class ExternalMemoryPoolBuilder {
 public:
   Device* GetDevice() const;
-  uint64_t GetNativeMemoryHandle() const;
+  uint32_t GetNativeMemoryHandle() const;
 
 private:
   const NVNexternalMemoryPoolBuilder* ToC() const {
@@ -110,7 +84,7 @@ Device* ExternalMemoryPoolBuilder::GetDevice() const {
     nvnExternalMemoryPoolBuilderGetDevice(ToC()));
 }
 
-uint64_t ExternalMemoryPoolBuilder::GetNativeMemoryHandle() const {
+uint32_t ExternalMemoryPoolBuilder::GetNativeMemoryHandle() const {
   return nvnExternalMemoryPoolBuilderGetNativeMemoryHandle(ToC());
 }
 
