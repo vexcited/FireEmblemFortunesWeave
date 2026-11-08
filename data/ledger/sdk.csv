@@ -1800,6 +1800,7 @@ afba0,36,verified,src/nnmusl/nnmusl_unsupported.c,readlinkat
 b0210,36,verified,src/nnmusl/nnmusl_unsupported.c,futimens
 b0240,36,verified,src/nnmusl/nnmusl_unsupported.c,utimensat
 b0270,36,verified,src/nnmusl/nnmusl_unsupported.c,utimes
+b0990,192,verified,src/nnmusl/fcntl/fs_errno.c,__nnmusl_fs_result_errno
 b2020,20,verified,src/nnmusl/nnmusl_libc_misc2.cpp,alphasort
 b2040,56,verified,src/musl/src/dirent/closedir.c,closedir
 b2080,8,verified,src/musl/src/dirent/dirfd.c,dirfd
@@ -1881,6 +1882,7 @@ b2d10,8,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,unlink
 b2d20,4,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,write
 b2d40,432,verified,src/nnmusl/dirent/scandir.c,scandir64
 b2fb0,272,verified,src/nnmusl/nnmusl_fs_path_kind.cpp,__nnmusl_path_kind
+b3a00,8,verified,src/nnmusl/fcntl/fs_result_errno.c,__nnmusl_result_to_errno
 b54d0,36,verified,src/nnmusl/nnmusl_socket_table.cpp,_nnmusl_socket_IsNnmuslFileDescriptor
 b5500,4,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,_nnmusl_socket_TranslateNnmuslFileDescriptorOrPassThrough
 b5560,44,verified,src/nnmusl/nnmusl_socket_table.cpp,_nnmusl_socket_TranslateFileDescriptorFromNativeToNnmusl
