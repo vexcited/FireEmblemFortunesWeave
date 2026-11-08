@@ -20461,10 +20461,15 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 63f8b0,92,verified,src/nvidia/nvrm_gpu_objects.cpp,NvRmGpuDeviceEventSessionClose
 63f910,92,verified,src/nvidia/nvrm_gpu_objects.cpp,NvRmGpuDropObject
 645180,4,verified,src/nvidia/nvwsi_context.cpp,NvWsiContextDestroy
+645190,68,verified,src/nvidia/nvwsi_context.cpp,NvWsiContextCreate
+6452e0,320,verified,src/nvidia/nvwsi_context.cpp,NvWsiNativeDisplayRef
 645420,36,verified,src/nvidia/nvwsi_context.cpp,NvWsiGetGpuMapping
 645450,36,verified,src/nvidia/nvwsi_context.cpp,NvWsiSetGpuMapping
+645480,76,verified,src/nvidia/nvwsi_context.cpp,NvWsiNativeDisplayUnref
 6454d0,8,verified,src/nvidia/nvwsi_context.cpp,NvWsiGetNativeDisplay
 6454e0,56,verified,src/nvidia/nvwsi_context.cpp,NvWsiGetDisplayCaps
+645520,292,verified,src/nvidia/nvwsi_context.cpp,NvWsiWindowCreate
+645650,296,verified,src/nvidia/nvwsi_context.cpp,NvWsiPixmapCreate
 645780,28,verified,src/nvidia/nvwsi_context.cpp,NvWsiGetFormatInfo
 6457a0,12,verified,src/nvidia/nvwsi_context.cpp,NvWsiSetCallbacks
 64ff20,4,verified,src/nvidia/nv_misc.cpp,nvnInstallGlobalDebugCallback
