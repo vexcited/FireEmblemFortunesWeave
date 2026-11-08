@@ -19877,6 +19877,8 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 5ef5b0,76,verified,src/nvidia/nvu_hash.cpp,NvUHashContains
 5efbf0,108,verified,src/nvidia/nvu_hash.cpp,NvUHashGet
 5efc60,156,verified,src/nvidia/nvu_hash.cpp,NvUHashSearch
+5f0120,296,verified,src/nvidia/nvu_hash.cpp,NvUHashRemove
+5f0260,248,verified,src/nvidia/nvu_hash.cpp,NvUHashReplace
 5f0360,116,verified,src/nvidia/nvu_hash.cpp,NvUHashNextEntry
 5f03e0,128,verified,src/nvidia/nvu_hash.cpp,NvUPtrHash
 5f0460,132,verified,src/nvidia/nvu_hash.cpp,NvUScalarHash64

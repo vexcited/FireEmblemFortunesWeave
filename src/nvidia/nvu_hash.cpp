@@ -5,7 +5,8 @@
 struct NvUHash {
   uint32_t (*hashFn)(uint64_t key);
   uint64_t reserved08;
-  uint64_t count;
+  int32_t slotCount;
+  int32_t used;
   uint32_t capacity;
   void* pTable;
   uint64_t reserved28;
@@ -18,11 +19,16 @@ extern "C" void NvOsFree(void* pointer);
 
 [[gnu::visibility("hidden")]] int32_t NvUHashFind(NvUHash* hash, uint64_t key,
   uint32_t hashValue, uint32_t isInsert);
+[[gnu::visibility("hidden")]] uint8_t NvUHashResize(NvUHash* hash,
+  uint32_t slotCount, bool hasValues, bool hasFlags);
 
 namespace {
 
 const uint32_t NvUHashGolden = 0x9e3779b9;
 const uint64_t NvUHashFreeKey = UINT64_MAX - 2;
+const uint64_t NvUHashDeletedKey = UINT64_MAX - 1;
+const uint32_t NvUHashDeletedFlag = 2;
+const uint32_t NvUHashMinSlots = 9;
 
 // Bob Jenkins' 96 bit mix.
 [[gnu::always_inline]] inline void Mix(uint32_t& a, uint32_t& b,
@@ -46,7 +52,8 @@ const uint64_t NvUHashFreeKey = UINT64_MAX - 2;
 
 extern "C" void NvUHashDeinit(NvUHash* hash) {
   NvOsFree(hash->pTable);
-  hash->count = 0;
+  hash->slotCount = 0;
+  hash->used = 0;
   hash->capacity = 0;
   hash->pTable = nullptr;
   hash->keys = nullptr;
@@ -56,7 +63,8 @@ extern "C" void NvUHashDeinit(NvUHash* hash) {
 
 extern "C" void NvUHashClear(NvUHash* hash) {
   NvOsFree(hash->pTable);
-  hash->count = 0;
+  hash->slotCount = 0;
+  hash->used = 0;
   hash->capacity = 0;
   hash->pTable = nullptr;
   hash->keys = nullptr;
@@ -100,7 +108,7 @@ extern "C" bool NvUHashSearch(NvUHash* hash, uint64_t key,
 }
 
 extern "C" int32_t NvUHashNextEntry(NvUHash* hash, int32_t index) {
-  const int64_t count = static_cast<int32_t>(hash->count);
+  const int64_t count = hash->slotCount;
 
   if (hash->flags != nullptr) {
     for (int64_t i = index + 1; i < count; i++) {
@@ -165,4 +173,83 @@ extern "C" uint32_t NvUScalarHash32(uint32_t key) {
   uint32_t c = key;
   Mix(a, b, c);
   return c;
+}
+
+// Shrinks the table while it stays under 3/16 full, then removes the key.
+extern "C" bool NvUHashRemove(NvUHash* hash, uint64_t key, uint64_t* pOutKey,
+  uint64_t* pOutValue) {
+  const uint32_t slotCount = hash->slotCount;
+  const uint32_t threshold = static_cast<uint32_t>(hash->used) << 8;
+
+  uint32_t target = slotCount;
+  while (target >= NvUHashMinSlots && threshold <= target * 48) {
+    target >>= 1;
+  }
+
+  if (target != slotCount) {
+    NvUHashResize(hash, target, hash->values != nullptr,
+      hash->flags != nullptr);
+  }
+
+  const int32_t index = Find(hash, key);
+  if (index == -1) {
+    return false;
+  }
+
+  if (pOutKey != nullptr) {
+    *pOutKey = hash->keys[index];
+  }
+
+  if (pOutValue != nullptr) {
+    const uint64_t* values = hash->values != nullptr ? hash->values :
+      hash->keys;
+    *pOutValue = values[index];
+  }
+
+  hash->used--;
+  if (hash->flags != nullptr) {
+    hash->flags[index] = NvUHashDeletedFlag;
+  }
+  else {
+    hash->keys[index] = NvUHashDeletedKey;
+  }
+
+  return true;
+}
+
+// Tables without values store the key as its own value, a different value
+// first needs the values array.
+extern "C" bool NvUHashReplace(NvUHash* hash, uint64_t key, uint64_t value,
+  uint64_t* pOutKey, uint64_t* pOutValue) {
+  const uint32_t slotCount = hash->slotCount;
+  if (slotCount == 0) {
+    return false;
+  }
+
+  if (key != value && hash->values == nullptr &&
+    NvUHashResize(hash, slotCount, true, hash->flags != nullptr) == 0) {
+    return true;
+  }
+
+  const int32_t index = Find(hash, key);
+  if (index == -1) {
+    return false;
+  }
+
+  if (pOutKey != nullptr) {
+    *pOutKey = hash->keys[index];
+  }
+
+  if (pOutValue != nullptr) {
+    const uint64_t* values = hash->values != nullptr ? hash->values :
+      hash->keys;
+    *pOutValue = values[index];
+  }
+
+  hash->keys[index] = key;
+  if (hash->values != nullptr) {
+    hash->values[index] = value;
+  }
+
+  return true;
 }
