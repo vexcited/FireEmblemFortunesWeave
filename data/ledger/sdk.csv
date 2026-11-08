@@ -1793,6 +1793,7 @@ af0a0,88,verified,src/nnmusl/fcntl/fd_clock.c,__nnmusl_clock_monotonic
 af160,12,verified,src/nnmusl/time/clock.c,__nnmusl_clock_realtime
 af170,12,verified,src/nnmusl/time/clock.c,__nnmusl_clock_monotonic_hook
 af180,48,verified,src/nnmusl/fcntl/fd_clock.c,__nnmusl_clock_resolution
+af1b0,160,verified,src/nnmusl/fcntl/fchmod.c,fchmod
 af250,24,verified,src/nnmusl/fcntl/fd_entry.c,__nnmusl_fs_missing_mount
 af300,188,verified,src/nnmusl/fcntl/fd_install.c,__nnmusl_fd_install
 af3d0,44,verified,src/nnmusl/fcntl/fd_clock.c,__nnmusl_fd_lookup
@@ -1921,6 +1922,7 @@ b5100,24,verified,src/nnmusl/fcntl/fd_entry.c,__nnmusl_socket_mark_ready
 b5200,148,verified,src/nnmusl/time/clock.c,__nnmusl_clock_getres
 b52a0,112,verified,src/nnmusl/time/clock.c,__nnmusl_clock_gettime
 b5310,104,verified,src/nnmusl/fcntl/fs_sleep_fcntl.c,__nnmusl_sleep
+b53d0,248,verified,src/nnmusl/fcntl/isatty.c,__nnmusl_isatty
 b54d0,36,verified,src/nnmusl/nnmusl_socket_table.cpp,_nnmusl_socket_IsNnmuslFileDescriptor
 b5500,4,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,_nnmusl_socket_TranslateNnmuslFileDescriptorOrPassThrough
 b5510,80,verified,src/nnmusl/network/socket_fd.c,_nnmusl_socket_TranslateFileDescriptorFromNnmuslToNative
