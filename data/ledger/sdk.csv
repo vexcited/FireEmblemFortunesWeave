@@ -23185,6 +23185,8 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 778bc0,4,verified,src/nnmusl/nnmusl_libc_forwarders2.cpp,fputc
 778de0,32,verified,src/libc/stdio_flush.cpp,ftrylockfile
 778e00,8,verified,src/libc/stdio_flush.cpp,funlockfile
+778e10,84,verified,src/nnmusl/nnmusl_stdio_position.cpp,__fwide_unlocked
+778e70,184,verified,src/nnmusl/nnmusl_stdio_position.cpp,fwide
 778f30,4,verified,src/nnmusl/nnmusl_libc_forwarders2.cpp,getc
 778f40,4,verified,src/nnmusl/nnmusl_libc_forwarders2.cpp,getchar
 779020,48,verified,src/libc/stdio_flush.cpp,LockOpenFileList
@@ -23540,6 +23542,8 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 7a1600,108,verified,src/musl/src/stdio/fscanf.c,fscanf
 7a1870,4,verified,src/nnmusl/nnmusl_libc_forwarders2.cpp,fseek
 7a1880,12,verified,src/nnmusl/nnmusl_libc_forwarders2.cpp,fsetpos
+7a1890,188,verified,src/nnmusl/nnmusl_stdio_position.cpp,ftello
+7a1950,188,verified,src/nnmusl/nnmusl_stdio_position.cpp,ftell
 7a1a10,108,verified,src/musl/src/stdio/fwprintf.c,fwprintf
 7a1a80,304,verified,src/musl/src/stdio/fwrite.c,__fwritex
 7a1d60,108,verified,src/musl/src/stdio/fwscanf.c,fwscanf
