@@ -1,12 +1,9 @@
 #include "nn/diag/diag_abort.hpp"
 #include "nn/os/multi_wait.hpp"
 #include "nn/sf/hipc.hpp"
+#include "nn/svc/svc_handle.hpp"
 
 namespace nn::svc {
-
-struct Handle {
-  uint32_t value;
-};
 
 [[gnu::visibility("hidden")]] Result CloseHandle(Handle handle);
 [[gnu::visibility("hidden")]] Result ConnectToPort(Handle* pOutHandle,
