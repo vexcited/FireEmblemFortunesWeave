@@ -1,7 +1,11 @@
 #include <stdint.h>
 
 #include "nn/diag/diag_abort.hpp"
+#include "nn/lm/lm_dev_notification.hpp"
 #include "nn/lm/lm_services.hpp"
+#include "nn/os/system_event.hpp"
+#include "nn/sf/native_handle.hpp"
+#include "nn/span.hpp"
 
 namespace nn::diag {
 
@@ -56,6 +60,23 @@ private:
   ILogger* m_pLogger;
 };
 
+class IDevNotificationReceiver : public sf::IServiceObject {
+public:
+  virtual void Reserved2() = 0;
+  virtual void Reserved3() = 0;
+  virtual Result GetReceiveEventHandle(
+    sf::Out<sf::NativeHandle> pOutHandle) = 0;
+  virtual Result Receive(sf::Out<uint32_t> pOutSize,
+    const sf::OutBuffer& buffer) = 0;
+};
+
+class ILogGetterWithNotifications : public ILogGetter {
+public:
+  virtual Result OpenDevNotificationReceiver(
+    sf::Out<sf::SharedPointer<IDevNotificationReceiver>> pOutReceiver,
+    uint32_t moduleId) = 0;
+};
+
 class ShimLibraryForLogGetter {
 public:
   static ShimLibraryForLogGetter& GetInstance() {
@@ -91,6 +112,56 @@ ShimLibraryForLogGetter::~ShimLibraryForLogGetter() {
   m_pGetter->Release();
 }
 
+}
+
+enum DevNotificationReceiverModuleId : uint32_t {};
+
+// Notifications arrive in one fixed buffer, read back as a list.
+class DevNotificationReceiver {
+public:
+  void GetReceiveEvent(os::SystemEventType* pEvent,
+    os::EventClearMode clearMode);
+  void Receive();
+  DevNotificationListReader ReadNotifications() const;
+
+  DevNotificationReceiverModuleId m_ModuleId;
+  sf::SharedPointer<detail::IDevNotificationReceiver> m_Proxy;
+  uint32_t m_Size;
+  alignas(8) uint8_t m_Buffer[0x4a00];
+};
+
+void InitializeDevNotificationReceiver(DevNotificationReceiver* pReceiver,
+  DevNotificationReceiverModuleId moduleId) {
+  sf::SharedPointer<detail::IDevNotificationReceiver> receiver;
+  auto* pGetter = static_cast<detail::ILogGetterWithNotifications*>(
+    detail::ShimLibraryForLogGetter::GetInstance().GetGetter());
+  NN_ABORT_UNLESS_RESULT_SUCCESS(pGetter->OpenDevNotificationReceiver(
+    sf::Out<sf::SharedPointer<detail::IDevNotificationReceiver>>(&receiver),
+    moduleId));
+  pReceiver->m_ModuleId = moduleId;
+  pReceiver->m_Proxy = receiver;
+}
+
+void DevNotificationReceiver::GetReceiveEvent(os::SystemEventType* pEvent,
+  os::EventClearMode clearMode) {
+  sf::NativeHandle handle;
+  NN_ABORT_UNLESS_RESULT_SUCCESS(m_Proxy->GetReceiveEventHandle(
+    sf::Out<sf::NativeHandle>(&handle)));
+  os::AttachReadableHandleToSystemEvent(pEvent, handle.GetOsHandle(),
+    handle.IsManaged(), clearMode);
+  handle.Detach();
+}
+
+void DevNotificationReceiver::Receive() {
+  m_Size = 0;
+  uint32_t size = 0;
+  NN_ABORT_UNLESS_RESULT_SUCCESS(m_Proxy->Receive(sf::Out<uint32_t>(&size),
+    sf::OutBuffer(m_Buffer, sizeof(m_Buffer))));
+  m_Size = size;
+}
+
+DevNotificationListReader DevNotificationReceiver::ReadNotifications() const {
+  return DevNotificationListReader(Span<const uint8_t>(m_Buffer, m_Size));
 }
 
 void Initialize() {
