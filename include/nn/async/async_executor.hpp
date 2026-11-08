@@ -217,7 +217,10 @@ public:
   void JoinThreads();
 
 private:
-  void StartThreadsImpl(int count, void** stacks, size_t stackSize,
+  static void WorkerThreadMain(void* argument);
+
+  void DestroyThreads(Span<os::ThreadType*>& threads);
+  Result StartThreadsImpl(int count, void** stacks, size_t stackSize,
     int priority, int* pCoreNumbers);
 
   MemoryResource* m_pResource;
