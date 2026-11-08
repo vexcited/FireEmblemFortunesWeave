@@ -1791,6 +1791,7 @@ aea00,8,verified,src/nn/async/async_thread_pool.cpp,_ZN2nn5async10ThreadPool17Re
 aea20,84,verified,src/nn/async/async_thread_pool.cpp,_ZN2nn5async10ThreadPool11JoinThreadsEv
 af010,16,verified,src/nnmusl/time/clock_source.c,__nnmusl_clock_unavailable
 af0a0,88,verified,src/nnmusl/fcntl/fd_clock.c,__nnmusl_clock_monotonic
+af0f8,80,verified,src/nnmusl/time/clock_hooks.c,__nnmusl_set_monotonic_source
 af160,12,verified,src/nnmusl/time/clock.c,__nnmusl_clock_realtime
 af170,12,verified,src/nnmusl/time/clock.c,__nnmusl_clock_monotonic_hook
 af180,48,verified,src/nnmusl/fcntl/fd_clock.c,__nnmusl_clock_resolution
@@ -1818,7 +1819,7 @@ b0270,36,verified,src/nnmusl/nnmusl_unsupported.c,utimes
 b0990,240,verified,src/nnmusl/fcntl/fs_errno.c,__nnmusl_fs_result_errno
 b0cf0,192,verified,src/nnmusl/fcntl/fs_device.c,__nnmusl_check_device_path
 b1780,88,verified,src/nnmusl/fcntl/fd_open.c,__nnmusl_fd_open_file
-b17e0,420,verified,src/nnmusl/fcntl/fd_slots.c,__nnmusl_fd_allocate
+b17e0,420,disputed,src/nnmusl/fcntl/fd_slots.c,__nnmusl_fd_allocate
 b1990,64,verified,src/nnmusl/fcntl/fd_open.c,__nnmusl_fd_open_directory
 b1a20,236,verified,src/nnmusl/fcntl/fd_slots.c,__nnmusl_fd_get
 b1b10,152,verified,src/nnmusl/fcntl/fd_slots.c,__nnmusl_slot_release
@@ -1835,7 +1836,7 @@ b1c70,12,verified,src/nnmusl/fcntl/fd_entry.c,__nnmusl_fd_context
 b1c80,12,verified,src/nnmusl/fcntl/fd_entry.c,__nnmusl_fd_extra
 b1c90,128,verified,src/nnmusl/fcntl/fd_slots.c,__nnmusl_slot_retain
 b1d10,160,verified,src/nnmusl/fcntl/fd_slots.c,__nnmusl_slot_close_index
-b1db0,268,verified,src/nnmusl/fcntl/fd_slots.c,__nnmusl_slot_close
+b1db0,288,verified,src/nnmusl/fcntl/fd_slots.c,__nnmusl_slot_close
 b1f00,128,verified,src/nnmusl/fcntl/fd_slots.c,__nnmusl_slot_retain_directory
 b1f80,160,verified,src/nnmusl/fcntl/fd_slots.c,__nnmusl_slot_close_index_directory
 b2020,20,verified,src/nnmusl/nnmusl_libc_misc2.cpp,alphasort
