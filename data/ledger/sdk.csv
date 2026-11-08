@@ -7954,10 +7954,10 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 216f20,620,verified,src/ne10/modules/dsp/NE10_fft_generic_int32.neonintrinsic.cpp,_ZL31ne10_radix_butterfly_int32_neonILi5ELb0ELb1ELb1EEvP11int32x4x2_tPKS0_PK20ne10_fft_cpx_int32_tiii
 218060,556,verified,src/ne10/modules/dsp/NE10_fft_generic_int32.neonintrinsic.cpp,_ZL31ne10_radix_butterfly_int32_neonILi5ELb0ELb1ELb0EEvP11int32x4x2_tPKS0_PK20ne10_fft_cpx_int32_tiii
 2182a0,3128,verified,src/nn/audio/ne10/modules/dsp/NE10_fft_int16.neonintrinsic.c,nnaudiodetail_ne10_mixed_radix_fft_forward_int16_unscaled_neon
-218f80,2752,verified,src/nn/audio/ne10/modules/dsp/NE10_fft_int16.neonintrinsic.c,nnaudiodetail_ne10_mixed_radix_fft_forward_int16_scaled_neon
+218f80,3168,verified,src/nn/audio/ne10/modules/dsp/NE10_fft_int16.neonintrinsic.c,nnaudiodetail_ne10_mixed_radix_fft_forward_int16_scaled_neon
 219c80,2636,verified,src/nn/audio/ne10/modules/dsp/NE10_fft_int16.neonintrinsic.c,nnaudiodetail_ne10_mixed_radix_fft_backward_int16_unscaled_neon
 21a960,2936,verified,src/nn/audio/ne10/modules/dsp/NE10_fft_int16.neonintrinsic.c,nnaudiodetail_ne10_mixed_radix_fft_backward_int16_scaled_neon
-21b660,1204,verified,src/nn/audio/ne10/modules/dsp/NE10_fft_int16.neonintrinsic.c,nnaudiodetail_ne10_fft_c2c_1d_int16_neon
+21b660,1476,verified,src/nn/audio/ne10/modules/dsp/NE10_fft_int16.neonintrinsic.c,nnaudiodetail_ne10_fft_c2c_1d_int16_neon
 21c120,884,verified,src/ne10/modules/dsp/NE10_fft_int16.neonintrinsic.c,ne10_fft_r2c_1d_int16_neon
 21c4a0,900,verified,src/ne10/modules/dsp/NE10_fft_int16.neonintrinsic.c,ne10_fft_c2r_1d_int16_neon
 21c940,3000,disputed,src/nn/audio/ne10/modules/dsp/NE10_fft_int32.neonintrinsic.c,nnaudiodetail_ne10_mixed_radix_fft_forward_int32_unscaled_neon
