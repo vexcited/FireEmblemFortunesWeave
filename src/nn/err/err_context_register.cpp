@@ -2,7 +2,78 @@
 #include "nn/err/context_series.hpp"
 #include "nn/err/detail/err_context_series_holder.hpp"
 #include "nn/err/err_context_api.hpp"
+#include "nn/memory_resource.hpp"
 #include "nn/sf/shared_pointer.hpp"
+
+namespace nn::err::detail {
+
+namespace {
+
+constexpr size_t RawContextDataSizeMax = 256;
+constexpr size_t RawContextDataAlignment = 16;
+
+template <typename T>
+inline constexpr uint8_t ContextTypeValueOf = 0;
+
+template <>
+inline constexpr uint8_t ContextTypeValueOf<ShortMessageContext> = 1;
+template <>
+inline constexpr uint8_t ContextTypeValueOf<MessageContext> = 2;
+template <>
+inline constexpr uint8_t ContextTypeValueOf<HashedTraceContext> = 3;
+template <>
+inline constexpr uint8_t ContextTypeValueOf<NplnContext> = 4;
+template <>
+inline constexpr uint8_t ContextTypeValueOf<HttpContext> = 5;
+template <>
+inline constexpr uint8_t ContextTypeValueOf<ChatContext> = 6;
+template <>
+inline constexpr uint8_t ContextTypeValueOf<SdCardContext> = 7;
+template <>
+inline constexpr uint8_t ContextTypeValueOf<FsContext> = 8;
+
+[[gnu::always_inline]] inline void ReleaseContextData(void*& pData,
+  MemoryResourceDeleter& deleter) {
+  void* pOwned = pData;
+  pData = nullptr;
+  if (pOwned != nullptr) {
+    deleter(pOwned);
+  }
+}
+
+struct ScopedRawContext {
+  ~ScopedRawContext() {
+    ReleaseContextData(context.data, context.deleter);
+  }
+
+  RawContext context;
+};
+
+}
+
+template <typename T>
+[[gnu::noinline]] util::optional<RawContext> CreateRawContext(
+  const T& context, MemoryResource* pAllocator) {
+  size_t size = ContextTraits::GetRawContextDataSize(context);
+  if (size >= RawContextDataSizeMax) {
+    size = RawContextDataSizeMax;
+  }
+
+  void* pData = pAllocator->allocate(size, RawContextDataAlignment);
+  if (pData == nullptr) {
+    return std::nullopt;
+  }
+
+  OwnedContextData owned = {pData, {pAllocator, size}};
+  ScopedRawContext raw;
+  ConstructRawContext(&raw.context, ContextTypeValueOf<T>,
+    static_cast<uint16_t>(size), &owned);
+  ReleaseContextData(owned.data, owned.deleter);
+  ContextTraits::UpdateRawContextData(raw.context, context);
+  return util::optional<RawContext>(&raw.context, MoveRawContext);
+}
+
+}
 
 namespace nn::err {
 

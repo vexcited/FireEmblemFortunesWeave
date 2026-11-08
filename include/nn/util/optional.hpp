@@ -1,6 +1,7 @@
 #pragma once
 
 #include <new>
+#include <optional>
 #include <type_traits>
 #include <utility>
 
@@ -11,6 +12,11 @@ class optional {
 public:
   constexpr optional() : m_HasValue(false), m_Dummy() {}
 
+  // The SDK clears the whole object, padding included, for an empty value.
+  optional(std::nullopt_t) {
+    __builtin_memset(static_cast<void*>(this), 0, sizeof(*this));
+  }
+
   optional(const T& value) : m_HasValue(true), m_Value(value) {}
 
   // The SDK optional is not trivially copyable, so it is passed by pointer.
@@ -18,6 +24,14 @@ public:
     if (m_HasValue) {
       new (&m_Value) T(other.m_Value);
     }
+  }
+
+  // Engages the value through a move function for types that only have an
+  // out of line move constructor.
+  template<class Mover>
+  optional(T* source, Mover mover) : m_HasValue(false) {
+    mover(&m_Value, source);
+    m_HasValue = true;
   }
 
   ~optional() {}
