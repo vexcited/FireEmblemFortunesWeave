@@ -21,9 +21,11 @@ struct NvRmSyncInfo {
 
 struct NvRmSyncOps {
   NvRmSync* (*dup)(NvRmSync* sync);
-  void* reserved08[2];
+  void (*release)(NvRmSync* sync);
+  NvRmSync* (*merge)(NvRmSync* first, NvRmSync* second);
   NvError (*mergeInto)(NvRmSync* destination, NvRmSync* source);
-  void* reserved20[2];
+  NvError (*wait)(NvRmSync* sync, int32_t timeout);
+  void* reserved28;
   NvError (*getInfo)(NvRmSync* sync, NvRmSyncInfo* pOutInfo);
 };
 
@@ -42,12 +44,63 @@ struct NvRmSync {
   NvRmSyncType type;
   uint32_t syncpointCount;
   uint32_t inlineSyncpointCount;
+  uint8_t isAllocated;
   NvRmSyncPointEntry* pExtraSyncpoints;
-  uint32_t reserved20;
+  uint32_t extraSyncpointCount;
   NvRmSyncPointEntry inlineSyncpoints[1];
 };
 
-extern "C" void NvOsFree(void* pointer);
+struct NvRmSyncFdAttributes {
+  uint8_t closeFd;
+};
+
+extern "C" {
+
+void* NvOsAlloc(uint64_t size);
+void NvOsFree(void* pointer);
+int32_t NvRmChipGetPlatform();
+NvError NvRmFenceGetFromFile(int32_t fd, NvRmSyncPoint* pOutSyncpoints,
+  uint32_t* pCount);
+NvError NvRmFencePutToFile(const char* name, const NvRmSyncPoint* syncpoints,
+  uint32_t count, int32_t* pOutFd);
+NvRmSync* NvRmSyncCreateFromSyncpoints(const NvRmSyncPoint* syncpoints,
+  uint32_t count);
+void sync_close(int32_t fd);
+
+}
+
+namespace {
+
+const int32_t NvRmChipPlatform_Silicon = 1;
+const int32_t NvRmSyncTimeout_Infinite = -1;
+const uint32_t NvRmSyncFdMaxSyncpoints = 8;
+
+bool IsEmpty(const NvRmSync* sync) {
+  return sync == nullptr || sync->type == NvRmSyncType_Empty;
+}
+
+// Releases the backend state, then frees the object or leaves it empty.
+[[gnu::always_inline]] inline void Release(NvRmSync* sync) {
+  sync->ops->release(sync);
+  sync->ops = nullptr;
+  sync->syncpointCount = 0;
+
+  if (sync->pExtraSyncpoints != nullptr) {
+    NvOsFree(sync->pExtraSyncpoints);
+    sync->pExtraSyncpoints = nullptr;
+    sync->extraSyncpointCount = 0;
+  }
+
+  if (sync->isAllocated != 0) {
+    sync->type = static_cast<NvRmSyncType>(0);
+    NvOsFree(sync);
+    return;
+  }
+
+  sync->type = NvRmSyncType_Empty;
+}
+
+}
 
 extern "C" NvRmSync* NvRmSyncDup(NvRmSync* sync) {
   if (sync == nullptr || sync->type == NvRmSyncType_Empty) {
@@ -106,7 +159,7 @@ extern "C" uint32_t NvRmSyncCalculateSizeForInplaceSyncpoints(uint32_t count) {
   return count * sizeof(NvRmSyncPointEntry) + 40;
 }
 
-extern "C" void NvRmSyncFreeSyncpoints(void* syncpoints) {
+extern "C" [[gnu::noinline]] void NvRmSyncFreeSyncpoints(void* syncpoints) {
   NvOsFree(syncpoints);
 }
 
@@ -132,4 +185,143 @@ extern "C" NvError NvRmSyncExtractSyncpoint(NvRmSync* sync, uint32_t index,
     sync->inlineSyncpoints[index].point :
     sync->pExtraSyncpoints[index - inlineCount].point;
   return NvSuccess;
+}
+
+extern "C" NvError NvRmSyncDupInto(NvRmSync* destination, NvRmSync* source) {
+  if (destination->type != NvRmSyncType_Empty) {
+    Release(destination);
+  }
+
+  if (IsEmpty(source)) {
+    return NvSuccess;
+  }
+
+  return source->ops->mergeInto(destination, source);
+}
+
+extern "C" void NvRmSyncClose(NvRmSync* sync) {
+  if (IsEmpty(sync)) {
+    return;
+  }
+
+  Release(sync);
+}
+
+extern "C" NvRmSync* NvRmSyncMerge(NvRmSync* first, NvRmSync* second) {
+  if (IsEmpty(first)) {
+    if (IsEmpty(second)) {
+      return nullptr;
+    }
+
+    return second->ops->dup(second);
+  }
+
+  if (IsEmpty(second)) {
+    return first->ops->dup(first);
+  }
+
+  return first->ops->merge(first, second);
+}
+
+// Timeouts only apply on silicon, other platforms wait forever.
+extern "C" NvError NvRmSyncWait(NvRmSync* sync, int32_t timeout) {
+  if (IsEmpty(sync)) {
+    return NvSuccess;
+  }
+
+  if (NvRmChipGetPlatform() != NvRmChipPlatform_Silicon && timeout != 0) {
+    timeout = NvRmSyncTimeout_Infinite;
+  }
+
+  return sync->ops->wait(sync, timeout);
+}
+
+extern "C" bool NvRmSyncSignalSemaphore(NvRmSync* sync) {
+  if (!IsEmpty(sync)) {
+    NvRmChipGetPlatform();
+    sync->ops->wait(sync, NvRmSyncTimeout_Infinite);
+  }
+
+  return true;
+}
+
+extern "C" [[gnu::noinline]] NvRmSyncPoint* NvRmSyncGetSyncpoints(
+  NvRmSync* sync, uint32_t* pOutCount) {
+  *pOutCount = 0;
+  if (sync == nullptr) {
+    return nullptr;
+  }
+
+  auto* syncpoints = static_cast<NvRmSyncPoint*>(
+    NvOsAlloc(sync->syncpointCount * sizeof(NvRmSyncPoint)));
+  if (syncpoints == nullptr) {
+    return nullptr;
+  }
+
+  *pOutCount = sync->syncpointCount;
+  for (uint64_t i = 0; i < sync->syncpointCount; i++) {
+    const uint32_t inlineCount = sync->inlineSyncpointCount;
+    syncpoints[i] = i < inlineCount ? sync->inlineSyncpoints[i].point :
+      sync->pExtraSyncpoints[i - inlineCount].point;
+  }
+
+  return syncpoints;
+}
+
+extern "C" NvRmSync* NvRmSyncCreateFromFd(int32_t fd) {
+  uint32_t count = NvRmSyncFdMaxSyncpoints;
+  if (fd < 0) {
+    return nullptr;
+  }
+
+  NvRmSyncPoint syncpoints[NvRmSyncFdMaxSyncpoints] = {};
+  if (NvRmFenceGetFromFile(fd, syncpoints, &count) != NvSuccess) {
+    return nullptr;
+  }
+
+  return NvRmSyncCreateFromSyncpoints(syncpoints, count);
+}
+
+extern "C" NvError NvRmSyncCreateFromFdWithAttr(int32_t* pFd,
+  const NvRmSyncFdAttributes* attributes, NvRmSync** pOutSync) {
+  uint32_t count = NvRmSyncFdMaxSyncpoints;
+  NvRmSync* sync = nullptr;
+
+  if (pFd != nullptr) {
+    const int32_t fd = *pFd;
+    if (fd >= 0) {
+      NvRmSyncPoint syncpoints[NvRmSyncFdMaxSyncpoints] = {};
+      const NvError result = NvRmFenceGetFromFile(fd, syncpoints, &count);
+      if (result != NvSuccess) {
+        return result;
+      }
+
+      sync = NvRmSyncCreateFromSyncpoints(syncpoints, count);
+      if (attributes->closeFd != 0) {
+        sync_close(fd);
+        *pFd = -1;
+      }
+    }
+    else if (attributes->closeFd != 0) {
+      *pFd = -1;
+    }
+  }
+
+  *pOutSync = sync;
+  return NvSuccess;
+}
+
+extern "C" int32_t NvRmSyncGetFd(NvRmSync* sync) {
+  int32_t fd = 0;
+  uint32_t count = 0;
+
+  NvRmSyncPoint* syncpoints = NvRmSyncGetSyncpoints(sync, &count);
+  if (syncpoints == nullptr) {
+    return -1;
+  }
+
+  const NvError result = NvRmFencePutToFile("NvRmSyncGetFd", syncpoints,
+    count, &fd);
+  NvRmSyncFreeSyncpoints(syncpoints);
+  return result == NvSuccess ? fd : -1;
 }
