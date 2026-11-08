@@ -1878,6 +1878,7 @@ b2cf0,4,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,read
 b2d00,4,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,rmdir
 b2d10,8,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,unlink
 b2d20,4,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,write
+b2d40,432,verified,src/nnmusl/dirent/scandir.c,scandir64
 b54d0,36,verified,src/nnmusl/nnmusl_socket_table.cpp,_nnmusl_socket_IsNnmuslFileDescriptor
 b5500,4,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,_nnmusl_socket_TranslateNnmuslFileDescriptorOrPassThrough
 b5560,44,verified,src/nnmusl/nnmusl_socket_table.cpp,_nnmusl_socket_TranslateFileDescriptorFromNativeToNnmusl
@@ -23299,7 +23300,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 78d3a0,224,verified,src/nnmusl/stdio/wcstod.c,wcstod
 78d4a0,232,verified,src/nnmusl/stdio/wcstod.c,wcstold
 78d5a0,148,verified,src/nnmusl/stdio/wcstod.c,do_read
-78d640,172,verified,src/nnmusl/string/memccpy.c,memccpy
+78d640,192,verified,src/nnmusl/string/memccpy.c,memccpy
 78d880,424,verified,src/musl/src/string/memchr.c,memchr
 78df00,4,verified,src/nnmusl/nnmusl_libc_forwarders2.cpp,__memcpy_device
 78df20,268,verified,src/musl/src/string/memmove.c,memmove
