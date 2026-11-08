@@ -9,6 +9,7 @@
 #include "nn/memory_resource.hpp"
 #include "nn/os/condition_variable.hpp"
 #include "nn/os/event.hpp"
+#include "nn/os/event_class.hpp"
 #include "nn/os/message_queue.hpp"
 #include "nn/os/multi_wait.hpp"
 #include "nn/os/mutex.hpp"
@@ -367,6 +368,66 @@ private:
   Executable* m_pInlineExecutable;
   CancellationToken m_InlineToken;
   ExecutionResult m_Result;
+};
+
+class FutureStateBase {
+public:
+  FutureStateBase();
+  virtual ~FutureStateBase() {}
+
+  virtual void InitializeMultiWaitHolder(os::MultiWaitHolderType* holder) = 0;
+  virtual void Wait() = 0;
+  virtual bool IsReady() const = 0;
+  virtual bool IsValueReady() const = 0;
+  virtual std::shared_ptr<void> GetError() = 0;
+
+private:
+  bool m_IsRetrieved;
+};
+
+template <typename T>
+class FutureState;
+
+template <>
+class FutureState<void> : public FutureStateBase {
+public:
+  virtual void GetValue() = 0;
+  virtual void SetValue() = 0;
+};
+
+template <typename T>
+class ImmediateFutureState;
+
+template <>
+class ImmediateFutureState<void> final : public FutureState<void> {
+public:
+  ImmediateFutureState() {
+    m_Event.Signal();
+  }
+
+  void InitializeMultiWaitHolder(os::MultiWaitHolderType* holder) override {
+    os::InitializeMultiWaitHolder(holder, m_Event.GetBase());
+  }
+
+  void Wait() override {}
+
+  bool IsReady() const override {
+    return true;
+  }
+
+  bool IsValueReady() const override {
+    return true;
+  }
+
+  std::shared_ptr<void> GetError() override {
+    return {};
+  }
+
+  void GetValue() override {}
+  void SetValue() override {}
+
+private:
+  os::Event m_Event{os::EventClearMode_ManualClear};
 };
 
 class ThreadCounter {

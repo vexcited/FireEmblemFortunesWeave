@@ -229,6 +229,19 @@ private:
   bool m_IsJoined;
 };
 
+template <typename T>
+class Future {
+public:
+  Future() = default;
+  explicit Future(std::shared_ptr<detail::FutureState<T>> state)
+    : m_State(std::move(state)) {}
+
+private:
+  std::shared_ptr<detail::FutureState<T>> m_State;
+};
+
+Future<void> MakeReadyFuture(MemoryResource* resource);
+
 bool IsAwaitable();
 void YieldTask();
 Executor* GetCurrentExecutor();

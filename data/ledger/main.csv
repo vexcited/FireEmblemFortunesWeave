@@ -41323,7 +41323,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 1568430,112,verified,src/game/gameui/header_footer.cpp,_ZN4game6gameui12_GLOBAL__N_18ProcImplINS1_10ProcHeaderEE11CloseLayoutEv
 15684a0,612,verified,src/game/gameui/header_footer.cpp,_ZN4game6gameui12_GLOBAL__N_110ProcHeaderD2Ev
 1568710,80,verified,src/memory/new_delete.cpp,deleting destructor at 0x1568710
-1568760,100,verified,src/game/gameui/header_footer.cpp,_ZN4game6gameui12_GLOBAL__N_18ProcImplINS1_10ProcHeaderEE9Unknown02Ev
+1568760,144,verified,src/game/gameui/header_footer.cpp,_ZN4game6gameui12_GLOBAL__N_18ProcImplINS1_10ProcHeaderEE9Unknown02Ev
 1568830,12,verified,src/game/gameui/header_footer.cpp,_ZN4game6gameui12_GLOBAL__N_110ProcHeader9Unknown18Ev
 1568840,12,verified,src/game/gameui/header_footer.cpp,_ZN4game6gameui12_GLOBAL__N_110ProcHeader9Unknown19Ev
 1568850,116,verified,src/game/gameui/header_footer.cpp,_ZN4game6gameui12_GLOBAL__N_110ProcHeader9Unknown20Ev
@@ -41393,7 +41393,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 15a6060,24,verified,src/llvm-libcxx-21/libcxx/include/__vector/vector.h,std::vector<T>::__throw_length_error()
 15a7080,24,verified,src/llvm-libcxx-21/libcxx/include/__vector/vector.h,std::vector<T>::__throw_length_error()
 15a7390,24,verified,src/llvm-libcxx-21/libcxx/include/__vector/vector.h,std::vector<T>::__throw_length_error()
-15ab550,232,verified,src/ui/game/control_lookup.cpp,_ZN2ui6Layout10GetControlIN4game6gameui7control8UnitNameEEENSt3__18weak_ptrIT_EEPN2nn4ui2d4PaneE
+15ab550,300,verified,src/ui/game/control_lookup.cpp,_ZN2ui6Layout10GetControlIN4game6gameui7control8UnitNameEEENSt3__18weak_ptrIT_EEPN2nn4ui2d4PaneE
 15ab680,232,verified,src/ui/game/control_lookup.cpp,_ZN2ui6Layout10GetControlIN4game6gameui7control8StatusHPEEENSt3__18weak_ptrIT_EEPN2nn4ui2d4PaneE
 15ab7b0,300,verified,src/ui/game/control_lookup.cpp,_ZN2ui6Layout10GetControlIN4game6gameui7control8StatusLVEEENSt3__18weak_ptrIT_EEPN2nn4ui2d4PaneE
 15ab8e0,232,verified,src/ui/game/control_lookup.cpp,_ZN2ui6Layout10GetControlIN4game6gameui7control12UnitInfoClanEEENSt3__18weak_ptrIT_EEPN2nn4ui2d4PaneE

@@ -10,6 +10,8 @@ namespace nn::detail {
 
 namespace nn::async::detail {
 
+FutureStateBase::FutureStateBase() : m_IsRetrieved(false) {}
+
 GroupWaitHolderOne::~GroupWaitHolderOne() {
   Finalize();
 }

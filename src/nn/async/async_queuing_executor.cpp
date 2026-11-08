@@ -1,5 +1,6 @@
 #include "nn/async/async_executor.hpp"
 #include "nn/diag/diag_abort.hpp"
+#include "nn/util/util_pmr.hpp"
 
 namespace nn::async {
 
@@ -82,6 +83,12 @@ void EnqueueExecutable(Executor* executor,
   ExecutionBlocker blocker) {
   executor->EnqueueExecutable(std::move(executable), token,
     std::move(blocker));
+}
+
+Future<void> MakeReadyFuture(MemoryResource* resource) {
+  return Future<void>(std::allocate_shared<detail::ImmediateFutureState<void>>(
+    util::pmr::PolymorphicAllocator<detail::ImmediateFutureState<void>>(
+      resource)));
 }
 
 void DumpAllTaskDebugData() {}
