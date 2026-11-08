@@ -20445,6 +20445,9 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 625cd0,12,verified,src/nvidia/nvrm_gpu_dispatch.cpp,NvRmGpuDeviceZbcGetColorTableEntry
 625ce0,12,verified,src/nvidia/nvrm_gpu_dispatch.cpp,NvRmGpuDeviceZbcGetDepthTableEntry
 625cf0,12,verified,src/nvidia/nvrm_gpu_dispatch.cpp,NvRmGpuDeviceZbcGetStencilTableEntry
+626960,240,verified,src/nvidia/sha1.c,NvSha1Digest
+628520,328,verified,src/nvidia/sha1.c,NvSha1Final
+628680,1676,verified,src/nvidia/sha1.c,NvSha1Transform
 635730,8,verified,src/nvidia/nvrm_gpu_wrappers.cpp,NvRmGpuNvgpuGetGpuCtrlFd
 635740,8,verified,src/nvidia/nvrm_gpu_wrappers.cpp,NvRmGpuNvgpuGetAsFd
 635750,8,verified,src/nvidia/nvrm_gpu_wrappers.cpp,NvRmGpuNvgpuGetGpuChannelFd
