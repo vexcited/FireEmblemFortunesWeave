@@ -23561,8 +23561,11 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 79f0a0,24,verified,src/musl/src/search/insque.c,remque
 79f0c0,168,verified,src/musl/src/search/lsearch.c,lsearch
 79f180,104,verified,src/musl/src/search/lsearch.c,lfind
+79f200,328,verified,src/nnmusl/search/tdelete.c,tdelete
 79f360,84,verified,src/musl/src/search/tdestroy.c,tdestroy
 79f3c0,120,verified,src/musl/src/search/tsearch_avl.c,tfind
+79f440,256,verified,src/nnmusl/search/tsearch.c,__tsearch_balance
+79f540,496,verified,src/nnmusl/search/tsearch.c,tsearch
 79f740,8,verified,src/musl/src/search/tsearch_avl.c,twalk
 79f7f0,152,verified,src/musl/src/stdio/__fmodeflags.c,__fmodeflags
 79f890,204,verified,src/musl/src/stdio/__overflow.c,__overflow
@@ -23671,9 +23674,9 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 7a4670,16,verified,src/musl/src/stdlib/ldiv.c,ldiv
 7a4680,12,verified,src/musl/src/stdlib/llabs.c,llabs
 7a4690,16,verified,src/musl/src/stdlib/lldiv.c,lldiv
-7a46a0,764,verified,src/nnmusl/stdlib/qsort.c,qsort_r
-7a49e0,340,verified,src/nnmusl/stdlib/qsort.c,sift
-7a4b60,804,verified,src/nnmusl/stdlib/qsort.c,trinkle
+7a46a0,768,verified,src/nnmusl/stdlib/qsort.c,qsort_r
+7a49e0,372,verified,src/nnmusl/stdlib/qsort.c,sift
+7a4b60,836,verified,src/nnmusl/stdlib/qsort.c,trinkle
 7a4ed0,12,verified,src/nnmusl/nnmusl_libc_forwarders2.cpp,qsort
 7a4ee0,4,verified,src/nnmusl/nnmusl_libc_forwarders2.cpp,_ZL22CompareWithoutArgumentPKvS0_Pv
 7a4ef0,132,verified,src/nnmusl/nnmusl_strtox.cpp,strtoull
