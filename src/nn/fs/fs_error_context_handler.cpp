@@ -1,26 +1,10 @@
 #include "nn/diag/diag_abort.hpp"
 #include "nn/diag/diag_hashed_trace_context.hpp"
+#include "nn/fs/detail/fs_error_context_handler.hpp"
 #include "nn/fs/fs_error_context.hpp"
 #include "nn/os/synchronization.hpp"
 
-namespace nn::sdcard {
-
-struct ErrorContext;
-
-}
-
 namespace nn::fs::detail {
-
-class IErrorContextHandler {
- public:
-  virtual Result Enable() = 0;
-  virtual Result Update(Result result,
-    diag::HashedTraceContextImpl context) = 0;
-  virtual Result Update(Result result,
-    const sdcard::ErrorContext& context) = 0;
-  virtual Result Update(Result result, const ErrorContext& context) = 0;
-  virtual Result Convert(Result result, Result converted) = 0;
-};
 
 [[gnu::visibility("hidden")]] extern uint8_t g_IsErrorContextEnabled;
 [[gnu::visibility("hidden")]] extern os::SdkMutexType g_ErrorContextMutex;
@@ -51,7 +35,7 @@ template <typename Context>
   const Context& context) {
   g_ErrorContextMutex.Lock();
   if (IsHandling() && HasContext(result)) {
-    result = g_pErrorContextHandler->Update(result, context);
+    result = g_pErrorContextHandler->UpdateResult(result, context);
   }
   g_ErrorContextMutex.Unlock();
   return result;
@@ -81,7 +65,7 @@ void SetErrorContextEnabled(bool isEnabled) {
 Result UpdateResult(Result result, diag::HashedTraceContextImpl context) {
   g_ErrorContextMutex.Lock();
   if (IsHandling() && HasContext(result)) {
-    result = g_pErrorContextHandler->Update(result, context);
+    result = g_pErrorContextHandler->UpdateResult(result, context);
   }
   g_ErrorContextMutex.Unlock();
   return result;
@@ -98,7 +82,7 @@ Result UpdateResult(Result result, const sdcard::ErrorContext& context) {
 Result ConvertResult(Result result, Result converted) {
   g_ErrorContextMutex.Lock();
   if (IsHandling() && HasContext(result) && HasContext(converted)) {
-    converted = g_pErrorContextHandler->Convert(result, converted);
+    converted = g_pErrorContextHandler->ConvertResult(result, converted);
   }
   g_ErrorContextMutex.Unlock();
   return converted;
