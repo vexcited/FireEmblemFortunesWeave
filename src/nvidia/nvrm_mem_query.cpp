@@ -1,11 +1,35 @@
+#include <stddef.h>
 #include <stdint.h>
 
+#include <atomic>
+
 #include "nn/diag/diag_abort.hpp"
+#include "nn/gpu/gpu_sdk_types.hpp"
 #include "nn/os/mutex.hpp"
 #include "nn/os/startup_support.hpp"
+#include "nn/result.hpp"
+
+namespace nn::gs {
+
+struct NativeMemoryHandle {
+  uint32_t value;
+};
+
+}
+
+namespace nn::gpu::sdk {
+
+Result CreateNativeMemoryForDebug(gs::NativeMemoryHandle* pOutMemory,
+  void* address, size_t size, GpuMemoryHandle memory, size_t offset);
+Result QueryNativeMemoryNvRmMemIdForDebug(uint32_t* pOutId,
+  gs::NativeMemoryHandle memory);
+void DestroyNativeMemoryForDebug(gs::NativeMemoryHandle memory);
+
+}
 
 enum NvError : int32_t {
   NvSuccess = 0,
+  NvError_BadAddress = 3,
   NvError_BadParameter = 4,
 };
 
@@ -21,13 +45,26 @@ enum NvRmMemKind : uint32_t {
   NvRmMemKind_Vpr = 5,
 };
 
+struct NvRmMemObject;
+
+struct NvRmMemAllocator {
+  uint8_t reserved[0x18];
+  void (*free)(NvRmMemAllocator* allocator, NvRmMemObject* object);
+};
+
 struct NvRmMemObject {
-  uint8_t reserved[0x68];
+  uint8_t reserved[0x50];
+  NvRmMemAllocator* allocator;
+  std::atomic<int32_t> referenceCount;
+  uint32_t reserved5c;
+  void* address;
   uint64_t size;
   uint32_t reserved70;
   uint32_t kind;
   uint32_t nativeHandle;
   uint32_t gpukHandle;
+  nn::gs::NativeMemoryHandle debugMemory;
+  uint32_t debugId;
 };
 
 struct NvRmMemHeapParams {
@@ -48,6 +85,9 @@ void* NvOsDrvGpuGetGpukDevice();
   NvRmMemObject*** pOutSlot, void* table);
 [[gnu::visibility("hidden")]] NvError NvRmMemQueryImpl(void* table,
   void* query);
+[[gnu::visibility("hidden")]] void NvRmMemRemoveHandle(NvRmMemObject* object,
+  void** pTable);
+[[gnu::visibility("hidden")]] void NvRmMemDestroyObject(NvRmMemObject* object);
 
 namespace {
 
@@ -77,6 +117,18 @@ NvRmMemObject* LookupObject(uint32_t handle) {
   return slot != nullptr ? *slot : nullptr;
 }
 
+// Takes a reference unless the object is already being freed.
+bool TryRetain(NvRmMemObject* object) {
+  int32_t count = object->referenceCount.load(std::memory_order_acquire);
+  while (count > 0) {
+    if (object->referenceCount.compare_exchange_strong(count, count + 1)) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
 uint64_t GetHeapSize(uint32_t heap) {
   if (heap == NvRmHeap_Vpr) {
     const int64_t size = g_NvRmMemVprHeapSize;
@@ -92,6 +144,61 @@ uint64_t GetHeapSize(uint32_t heap) {
   return 0;
 }
 
+}
+
+extern "C" NvError NvRmMemHandleFromId(int32_t id,
+  uint32_t* pOutHandle) {
+  if (pOutHandle == nullptr) {
+    return NvError_BadAddress;
+  }
+
+  OpenGpukDevice();
+
+  NvRmMemObject** slot = nullptr;
+  NvRmMemObject* object = nullptr;
+  bool isRetained = false;
+
+  nn::os::LockMutex(&g_NvRmMemHandleMutex);
+  NvRmMemLookupHandle(id, &slot, g_NvRmMemHandleTable);
+  if (slot != nullptr) {
+    object = *slot;
+    isRetained = TryRetain(object);
+  }
+
+  nn::os::UnlockMutex(&g_NvRmMemHandleMutex);
+
+  if (!isRetained || object == nullptr) {
+    return NvError_BadParameter;
+  }
+
+  *pOutHandle = id;
+  return NvSuccess;
+}
+
+extern "C" NvError NvRmMemHandleFree(uint32_t handle) {
+  OpenGpukDevice();
+  if (handle == 0) {
+    return NvSuccess;
+  }
+
+  NvRmMemObject* object = LookupObject(handle);
+  if (object == nullptr) {
+    return NvError_BadParameter;
+  }
+
+  if (object->referenceCount.fetch_sub(1) != 1) {
+    return NvSuccess;
+  }
+
+  NvRmMemAllocator* allocator = object->allocator;
+
+  nn::os::LockMutex(&g_NvRmMemHandleMutex);
+  NvRmMemRemoveHandle(object, &g_NvRmMemHandleTable);
+  nn::os::UnlockMutex(&g_NvRmMemHandleMutex);
+
+  NvRmMemDestroyObject(object);
+  allocator->free(allocator, object);
+  return NvSuccess;
 }
 
 // The memory manager has no ioctl file on this platform, the call only
@@ -192,4 +299,38 @@ extern "C" NvError NvRmMemQuery(void* query) {
   nn::os::UnlockMutex(&g_NvRmMemHandleMutex);
 
   return result;
+}
+
+// The id is created once through a debug native memory and cached.
+extern "C" uint32_t NvRmMemGetNvRmMemIdForDebug(uint32_t handle) {
+  NvRmMemObject* object = LookupObject(handle);
+  if (object == nullptr) {
+    return 0;
+  }
+
+  if (object->kind != NvRmMemKind_User && object->kind != NvRmMemKind_Gpuk) {
+    return 0;
+  }
+
+  const uint32_t cachedId = object->debugId;
+  nn::gs::NativeMemoryHandle memory = {};
+  uint32_t id = 0;
+  if (cachedId != 0) {
+    return cachedId;
+  }
+
+  if (nn::gpu::sdk::CreateNativeMemoryForDebug(&memory, object->address,
+    object->size, {object->gpukHandle}, 0).IsSuccess() &&
+    nn::gpu::sdk::QueryNativeMemoryNvRmMemIdForDebug(&id, memory)
+    .IsSuccess()) {
+    object->debugMemory = memory;
+    object->debugId = id;
+    return id;
+  }
+
+  if (memory.value != 0) {
+    nn::gpu::sdk::DestroyNativeMemoryForDebug(memory);
+  }
+
+  return 0;
 }

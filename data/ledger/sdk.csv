@@ -20045,10 +20045,12 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 600630,52,verified,src/nvidia/nvrm_mem_access.cpp,NvRmMemWr16
 600670,48,verified,src/nvidia/nvrm_mem_access.cpp,NvRmMemWr32
 6006a0,108,verified,src/nvidia/nvrm_mem_query.cpp,NvRm_MemmgrGetIoctlFile
+600720,272,verified,src/nvidia/nvrm_mem_query.cpp,NvRmMemHandleFromId
 600860,4,verified,src/nvidia/nvrm_mem.cpp,NvRmMemHandleFromFd
 600870,20,verified,src/nvidia/nvrm_mem.cpp,NvRmMemHandleDup
 600890,4,verified,src/nvidia/nvos_stubs.cpp,NvRmMemGetFd
 6008a0,24,verified,src/nvidia/nvrm_mem.cpp,NvRmMemHandleDuplicate
+6008c0,216,verified,src/nvidia/nvrm_mem_query.cpp,NvRmMemHandleFree
 6010d0,4,verified,src/nvidia/nvos_stubs.cpp,NvRmMemGetId
 6010e0,8,verified,src/nvidia/nvos_stubs.cpp,NvRmMemGetIVCId
 6010f0,8,verified,src/nvidia/nvos_stubs.cpp,NvRmMemHandleFromIVCId
@@ -20084,6 +20086,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 601b60,148,verified,src/nvidia/nvrm_mem_query.cpp,NvRmMemGetGpukMemoryHandle
 601c00,140,verified,src/nvidia/nvrm_mem_query.cpp,NvRmMemGetNativeImageHandle
 601c90,140,verified,src/nvidia/nvrm_mem_query.cpp,NvRmMemGetVprMemoryHandle
+601d20,240,verified,src/nvidia/nvrm_mem_query.cpp,NvRmMemGetNvRmMemIdForDebug
 601e10,92,verified,src/nvidia/nvrm_mem_query.cpp,NvRmMemQuery
 601e70,8,verified,src/nvidia/nvos_stubs.cpp,NvRmMemIsHwVprHeap
 601e80,16,verified,src/nvidia/nvrm_mem.cpp,NvRmMemEstablishVprHeap
