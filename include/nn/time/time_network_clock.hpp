@@ -24,6 +24,7 @@ class CorrectionNetworkClockAsyncTask {
   ~CorrectionNetworkClockAsyncTask();
 
   Result StartTask();
+  bool IsProcessing();
   Result GetResult();
   os::SystemEventType* GetFinishNotificationEvent();
   void Cancel();

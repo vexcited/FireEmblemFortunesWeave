@@ -40,12 +40,15 @@ Result GetStaticServiceSharedPointer(
 
 class EnsureNetworkClockAvailabilityClientImpl {
  public:
+  explicit EnsureNetworkClockAvailabilityClientImpl(
+    os::EventClearMode clearMode);
   ~EnsureNetworkClockAvailabilityClientImpl();
 
   Result StartTask();
   Result GetResult();
   void Cancel();
   bool IsProcessing();
+  os::SystemEventType* GetFinishNotificationEvent();
   Result GetServerTime(time::PosixTime* pOutTime);
 
  private:
