@@ -19901,6 +19901,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 5f5560,60,verified,src/nvidia/nvos_sync.cpp,NvOsGetTimeMS
 5f55a0,56,verified,src/nvidia/nvos_sync.cpp,NvOsGetTimeUS
 5f55e0,28,verified,src/nvidia/nvos_sync.cpp,NvOsGetTimeNS
+5f5600,432,verified,src/nvidia/nvos_threads.cpp,NvOsThreadCreateWithAttr
 5f57f0,4,verified,src/nvidia/nvos_sync.cpp,NvOsThreadGetName
 5f5800,28,verified,src/nvidia/nvos_threads.cpp,NvOsThreadSetName
 5f5820,88,verified,src/nvidia/nvos_sync.cpp,NvOsThreadJoin
