@@ -1,4 +1,11 @@
 address,size,status,source,name
+38fb0,8,verified,src/nvidia/cuda_debugger_api.cpp,cuMemGetAttribute
+38fc0,8,verified,src/nvidia/cuda_debugger_api.cpp,cuMemGetAttribute_v2
+74a20,156,verified,src/nvidia/cuda_debugger_api.cpp,cudbgGetAPIVersion
+7cfb0,20,verified,src/nvidia/cuda_debugger_api.cpp,cudbgReportDriverApiError
+7cfd0,20,verified,src/nvidia/cuda_debugger_api.cpp,cudbgReportDriverInternalError
+7d240,56,verified,src/nvidia/cuda_debugger_api.cpp,cudbgApiInit
+7d2a0,4,verified,src/nvidia/cuda_debugger_api.cpp,cudbgApiAttach
 139b30,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuGetErrorString
 139d30,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuGetErrorName
 139f20,188,verified,src/nvidia/cuda_driver_entry_points.cpp,cuInit
