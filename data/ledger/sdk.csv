@@ -19889,7 +19889,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 5f09a0,236,verified,src/nvidia/nvu_string.cpp,NvUStrtol
 5f11e0,4,verified,src/nvidia/nvos_stubs.cpp,NvOsShowError
 5f11f0,64,verified,src/nvidia/nvos_misc.cpp,NvUAlloc0
-5f5180,152,verified,src/nvidia/nvos_heap_library.cpp,NvOsHeapAllocatorAlloc
+5f5180,228,verified,src/nvidia/nvos_heap_library.cpp,NvOsHeapAllocatorAlloc
 5f5270,116,verified,src/nvidia/nvos_heap_library.cpp,NvOsHeapAllocatorPrintStatistics
 5f52f0,228,verified,src/nvidia/nvos_heap_library.cpp,NvOsHeapAllocatorRealloc
 5f53e0,228,verified,src/nvidia/nvos_heap_library.cpp,NvOsHeapAllocatorAllocAlign
@@ -20025,6 +20025,9 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 5f9ed0,296,verified,src/nn/sf/cmif/client/cmif_client_extra_message.cpp,_ZN2nn2sf4hipc6client18Hipc2ProxyKindBaseILNS1_6detail11MessageTypeE6EE7ProcessILb0EJNS0_4cmif6client6detail8InHandleILb0EEENSA_5InRawIjEENSA_6OutRawIjEEEEENS_6ResultEPKNS6_14ProxyKindStateEDpNT0_9ParameterEi
 5fa8b0,208,verified,src/nvidia/nvos_log.cpp,NvOsDrvOpen
 5fa980,124,verified,src/nvidia/nvos_log.cpp,NvOsDrvClose
+5faa00,428,verified,src/nvidia/nvos_log.cpp,NvOsDrvIoctl
+5fac00,512,verified,src/nvidia/nvos_log.cpp,NvOsDrvIoctl2
+5fae30,480,verified,src/nvidia/nvos_log.cpp,NvOsDrvIoctl3
 5fb060,8,verified,src/nvidia/nvos_stubs.cpp,NvOsDrvMapSharedMem
 5fb910,4,verified,src/nvidia/nv_misc.cpp,_Z23hosGetSystemEventHandleijPN2nn2os15SystemEventTypeE
 5fd330,8,verified,src/nvidia/nvos_stubs.cpp,NvRmIsOnHypervisor
