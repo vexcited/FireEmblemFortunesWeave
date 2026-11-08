@@ -29,5 +29,6 @@ detail::HeapHead* CreateUnitHeap(void* address, size_t size, size_t unit_size,
                                 detail::HeapHead* external);
 void ExtendUnitHeapArea(detail::HeapHead* heap, size_t size);
 void* AllocateFromUnitHeap(detail::HeapHead* heap);
+void DestroyUnitHeap(detail::HeapHead* heap);
 
 }

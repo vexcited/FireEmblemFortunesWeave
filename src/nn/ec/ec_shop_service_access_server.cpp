@@ -1,5 +1,7 @@
 #include "nn/ec/detail/ec_shop_service_access_server.hpp"
 
+#include "nn/sf/unit_heap_memory_resource.hpp"
+
 namespace nn::ec::detail::ShopServiceAccessServer {
 
 namespace {
@@ -63,6 +65,30 @@ void Proxy::Detach(ShopServiceAccessor* accessor) {
   if (node->IsLinked() && node != &m_Accessors) {
     node->Unlink();
   }
+  m_Mutex.Unlock();
+}
+
+// A proxy that fails to finalize stays registered.
+ProxyStore::~ProxyStore() {
+  if (m_pProxy != nullptr && m_pProxy->Finalize().IsSuccess()) {
+    m_pProxy = nullptr;
+  }
+}
+
+SpecialClientRegister::~SpecialClientRegister() {
+  m_Mutex.Lock();
+  if (m_Session != nullptr) {
+    m_Session->Unregister(nullptr);
+    m_Session.Reset();
+  }
+  m_Pool.mutex.Lock();
+  if (--m_Pool.references == 0) {
+    auto* allocator = reinterpret_cast<sf::UnitHeapMemoryResource*>(
+      reinterpret_cast<uintptr_t>(m_Pool.heap) + 0x90);
+    lmem::DestroyUnitHeap(allocator->heap);
+    m_Pool.heap = nullptr;
+  }
+  m_Pool.mutex.Unlock();
   m_Mutex.Unlock();
 }
 
