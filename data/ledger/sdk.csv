@@ -2049,6 +2049,7 @@ bb4a0,24,verified,src/nn/diag/diag_check.cpp,_ZN2nn4diag6detail11PointerImplEm
 bb4c0,112,verified,src/nn/diag/diag_module_misc.cpp,_ZN2nn4diag6detail13DevNotifyImplEONS0_21DevNotificationHeaderEPKcz
 bb540,248,verified,src/nn/diag/diag_module_misc.cpp,_ZN2nn4diag6detail14DevVNotifyImplEONS0_21DevNotificationHeaderEPKcSt9__va_list
 bb6e0,308,verified,src/nn/diag/diag_module_misc.cpp,_ZN2nn4diag6detail19DevNotifyDirectImplEONS0_21DevNotificationHeaderEPKcm
+bb820,128,verified,src/nn/diag/diag_module_misc.cpp,_ZN2nn4diag6detail16CallOnOtherStackERKNS_4util9IFunctionIFvvEEE
 bb900,128,verified,src/nn/diag/diag_module_misc.cpp,_ZN2nn4diag6detail27GetFileNameWithoutExtensionEPPKcPmS3_m
 bb990,48,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag6detail16PrintDebugStringEPKc
 bb9c0,168,verified,src/nn/diag/diag_module_misc.cpp,_ZN2nn4diag6detail24GetValidSizeAsUtf8StringEPKcm
@@ -2075,6 +2076,7 @@ bc050,20,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag6detail12PrepareAbort
 bc080,120,verified,src/nn/diag/abort_observer.cpp,_ZN2nn4diag6detail19InvokeAbortObserverERKNS0_9AbortInfoE
 bc100,92,verified,src/nn/diag/abort_observer.cpp,_ZN2nn4diag6detail22InvokeSdkAbortObserverERKNS0_12SdkAbortInfoE
 bc170,140,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag6detail22PrintBacktraceItemImplEmb
+bc200,444,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag6detail23TentativeDumpStackTraceEv
 bc3e0,120,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag12PrintModulesEv
 bc470,140,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag18PrintBacktraceItemEmb
 bc500,132,verified,src/nn/diag/abort_observer.cpp,_ZN2nn4diag6detail23GetAbortObserverManagerEv

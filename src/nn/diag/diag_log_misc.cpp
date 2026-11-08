@@ -86,6 +86,7 @@ uintptr_t GetModulePath(char* pOutPath, size_t size, uintptr_t address);
 bool GetReadOnlyDataSectionRange(uintptr_t* pOutAddress, size_t* pOutSize,
   uintptr_t address);
 bool IsSystemSymbol(uintptr_t address);
+int GetBacktrace(uintptr_t* pOutArray, int arrayCountMax);
 uintptr_t GetSymbolName(char* pOutName, size_t size, uintptr_t address);
 size_t GetSymbolSize(uintptr_t address);
 
@@ -319,7 +320,7 @@ bool GetReadOnlyDataSectionRange(uintptr_t* pOutAddress, size_t* pOutSize,
     address);
 }
 
-bool IsSystemSymbol(uintptr_t address) {
+[[gnu::noinline]] bool IsSystemSymbol(uintptr_t address) {
   return detail::IsSystemSymbolImpl(address);
 }
 
@@ -356,6 +357,7 @@ void PrepareAbort() {
 namespace {
 
 constexpr size_t SymbolNameSize = 0x100;
+constexpr int DumpBacktraceCount = 32;
 
 // Release builds only look the symbol up, nothing is printed.
 [[gnu::always_inline]] void LookUpBacktraceItem(uintptr_t address,
@@ -370,13 +372,17 @@ constexpr size_t SymbolNameSize = 0x100;
     address - 1);
 }
 
-}
-
-void PrintModules() {
+[[gnu::always_inline]] inline void WalkModules() {
   detail::ModuleParser parser;
   while (parser.MoveNext(nullptr, 0)) {
     parser.GetInfo();
   }
+}
+
+}
+
+void PrintModules() {
+  WalkModules();
 }
 
 void PrintBacktraceItem(uintptr_t address, bool isEnabled) {
@@ -387,6 +393,23 @@ namespace detail {
 
 void PrintBacktraceItemImpl(uintptr_t address, bool isEnabled) {
   LookUpBacktraceItem(address, isEnabled);
+}
+
+// User frames are shown with the system frame right before each of them.
+void TentativeDumpStackTrace() {
+  uintptr_t addresses[DumpBacktraceCount] = {};
+  const int count = GetBacktrace(addresses, DumpBacktraceCount);
+  if (count > 0) {
+    bool isUser = !IsSystemSymbol(addresses[0]);
+    for (int i = 0; i < count; i++) {
+      const bool isNextUser =
+        i + 1 < count ? !IsSystemSymbol(addresses[i + 1]) : false;
+      LookUpBacktraceItem(addresses[i], isUser || isNextUser);
+      isUser = isNextUser;
+    }
+  }
+
+  WalkModules();
 }
 
 namespace {
@@ -683,7 +706,7 @@ namespace nn::diag {
   return m_Impl.GetReturnAddress();
 }
 
-int GetBacktrace(uintptr_t* pOutArray, int arrayCountMax) {
+[[gnu::noinline]] int GetBacktrace(uintptr_t* pOutArray, int arrayCountMax) {
   Backtrace backtrace;
   backtrace.Step();
   return detail::GetAllBacktrace(pOutArray, arrayCountMax, &backtrace);

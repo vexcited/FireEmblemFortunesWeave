@@ -13,7 +13,30 @@
 
 extern "C" void nnMain();
 
+namespace nn::os {
+
+struct FiberType {
+  uint64_t storage[11];
+};
+
+struct SdkMutexType {
+  void Lock();
+  void Unlock();
+
+  uint32_t value;
+};
+
+void InitializeFiber(FiberType* pFiber, FiberType* (*function)(void*),
+  void* pArgument, void* pStack, size_t stackSize, int flags);
+FiberType* GetCurrentFiber();
+void SwitchToFiber(FiberType* pFiber);
+
+}
+
 namespace nn::util {
+
+template<typename T>
+class IFunction;
 
 void VFormatString(void (*output)(uintptr_t argument, const char* string,
   int length), uintptr_t argument, const char* format, va_list arguments);
@@ -108,6 +131,22 @@ struct DevNotificationBuilder {
 
 [[gnu::visibility("hidden")]] void AppendDevNotificationText(
   uintptr_t argument, const char* string, int length);
+
+// The fiber and its stack are made once, the stack comes from the
+// application.
+struct OtherStack {
+  os::SdkMutexType mutex;
+  bool isInitialized;
+  os::FiberType fiber;
+  os::FiberType* pReturnFiber;
+  void* pStack;
+  size_t stackSize;
+  const util::IFunction<void()>* pFunction;
+};
+
+[[gnu::visibility("hidden")]] extern OtherStack g_OtherStack;
+[[gnu::visibility("hidden")]] os::FiberType* RunOnOtherStack(
+  void* pArgument);
 
 namespace {
 
@@ -248,6 +287,21 @@ bool DevNotifyDirectImpl(DevNotificationHeader&& header, const char* pText,
     sizeof(buffer);
   const int copied = util::Strlcpy(buffer, pText, static_cast<int>(count));
   return SendDevNotification(header, buffer, copied + 1);
+}
+
+void CallOnOtherStack(const util::IFunction<void()>& function) {
+  g_OtherStack.mutex.Lock();
+  if (!g_OtherStack.isInitialized) {
+    os::InitializeFiber(&g_OtherStack.fiber, RunOnOtherStack, &g_OtherStack,
+      g_OtherStack.pStack, g_OtherStack.stackSize, 1);
+    g_OtherStack.isInitialized = true;
+  }
+
+  g_OtherStack.pReturnFiber = os::GetCurrentFiber();
+  g_OtherStack.pFunction = &function;
+  os::SwitchToFiber(&g_OtherStack.fiber);
+  g_OtherStack.pFunction = nullptr;
+  g_OtherStack.mutex.Unlock();
 }
 
 // The name runs from the last backslash to the last dot after it. The scan
