@@ -37,7 +37,10 @@ constexpr char SuccessUrl[] = "eshop://success";
     static_cast<int64_t>(sizeof(*pOutValue)));
   NN_ABORT_UNLESS_RESULT_SUCCESS(
     applet::ReadFromStorage(storage, 0, pOutValue, sizeof(*pOutValue)));
-  return Result{0};
+  // The caller rechecks this always successful result.
+  Result result = {0};
+  asm("" : "+r"(result.value));
+  return result;
 }
 
 // The shop succeeded when it left through the success url.
