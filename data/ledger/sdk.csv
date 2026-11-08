@@ -1806,13 +1806,16 @@ b2040,56,verified,src/musl/src/dirent/closedir.c,closedir
 b2080,8,verified,src/musl/src/dirent/dirfd.c,dirfd
 b2090,8,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,fdopendir
 b20a0,104,verified,src/nnmusl/nnmusl_libc_misc5.cpp,opendir
+b2110,144,verified,src/nnmusl/dirent/readdir_r.c,readdir_r
 b21b0,132,verified,src/nnmusl/nnmusl_libc_misc5.cpp,readdir
 b2260,68,verified,src/musl/src/dirent/rewinddir.c,rewinddir
 b22b0,72,verified,src/musl/src/dirent/seekdir.c,seekdir
 b2300,8,verified,src/musl/src/dirent/telldir.c,telldir
 b2310,20,verified,src/nnmusl/nnmusl_libc_misc2.cpp,versionsort
 b2330,12,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,creat
+b2340,108,verified,src/nnmusl/fcntl/fcntl.c,fcntl
 b23b0,280,verified,src/nnmusl/fcntl/open.c,open
+b24e0,140,verified,src/nnmusl/fcntl/ioctl.c,ioctl
 b2580,4,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,accept
 b2590,4,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,bind
 b25a0,4,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,connect
