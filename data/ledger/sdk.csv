@@ -23210,10 +23210,12 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 778f40,4,verified,src/nnmusl/nnmusl_libc_forwarders2.cpp,getchar
 779020,48,verified,src/libc/stdio_flush.cpp,LockOpenFileList
 779050,12,verified,src/libc/stdio_flush.cpp,UnlockOpenFileList
-7791e0,260,verified,src/musl/src/stdio/open_memstream.c,ms_write
-7792f0,116,verified,src/musl/src/stdio/open_memstream.c,ms_seek
+7790b0,288,verified,src/nnmusl/stdio/open_memstream.c,open_memstream
+7791e0,260,verified,src/nnmusl/stdio/open_memstream.c,ms_write
+7792f0,116,verified,src/nnmusl/stdio/open_memstream.c,ms_seek
 779370,8,verified,src/musl/src/stdio/open_memstream.c,ms_close
-7795d0,164,verified,src/musl/src/stdio/open_wmemstream.c,wms_seek
+779380,292,verified,src/nnmusl/stdio/open_wmemstream.c,open_wmemstream
+7795d0,164,verified,src/nnmusl/stdio/open_wmemstream.c,wms_seek
 779680,8,verified,src/musl/src/stdio/open_wmemstream.c,wms_close
 779690,4,verified,src/nnmusl/nnmusl_libc_forwarders2.cpp,_IO_putc
 7796a0,4,verified,src/nnmusl/nnmusl_libc_forwarders2.cpp,putchar
