@@ -44,6 +44,8 @@ public:
   ~ExecutionScheduler();
 
   bool IsEmpty();
+  void Enqueue(std::shared_ptr<Executable> executable,
+    CancellationToken token, ExecutionBlocker blocker);
   void DequeueAndCall(os::EventType* pExitEvent);
   bool TryDequeueAndCall();
   void DequeueAndCallAll();

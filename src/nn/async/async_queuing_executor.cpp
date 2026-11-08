@@ -13,6 +13,17 @@ QueuingExecutor::~QueuingExecutor() {
   os::FinalizeEvent(&m_ExitEvent);
 }
 
+void QueuingExecutor::EnqueueExecutable(
+  std::shared_ptr<Executable> executable, const CancellationToken& token) {
+  EnqueueExecutable(std::move(executable), token, ExecutionBlocker());
+}
+
+void QueuingExecutor::EnqueueExecutable(
+  std::shared_ptr<Executable> executable, const CancellationToken& token,
+  ExecutionBlocker blocker) {
+  m_Scheduler.Enqueue(std::move(executable), token, std::move(blocker));
+}
+
 bool QueuingExecutor::TryExecuteOne() {
   detail::ThreadLocalTaskExecutionContextRegister contextRegister;
   detail::GetThreadLocalTaskExecutionContext()->executor = this;
