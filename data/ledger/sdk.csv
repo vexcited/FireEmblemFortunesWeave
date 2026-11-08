@@ -1807,10 +1807,12 @@ afb10,36,verified,src/nnmusl/nnmusl_unsupported.c,symlink
 afb40,36,verified,src/nnmusl/nnmusl_unsupported.c,symlinkat
 afb70,36,verified,src/nnmusl/nnmusl_unsupported.c,readlink
 afba0,36,verified,src/nnmusl/nnmusl_unsupported.c,readlinkat
+afbe0,184,verified,src/nnmusl/stdlib/realpath.c,realpath
 b0210,36,verified,src/nnmusl/nnmusl_unsupported.c,futimens
 b0240,36,verified,src/nnmusl/nnmusl_unsupported.c,utimensat
 b0270,36,verified,src/nnmusl/nnmusl_unsupported.c,utimes
 b0990,240,verified,src/nnmusl/fcntl/fs_errno.c,__nnmusl_fs_result_errno
+b0cf0,192,verified,src/nnmusl/fcntl/fs_device.c,__nnmusl_check_device_path
 b1780,88,verified,src/nnmusl/fcntl/fd_open.c,__nnmusl_fd_open_file
 b1990,64,verified,src/nnmusl/fcntl/fd_open.c,__nnmusl_fd_open_directory
 b1a20,236,verified,src/nnmusl/fcntl/fd_slots.c,__nnmusl_fd_get
