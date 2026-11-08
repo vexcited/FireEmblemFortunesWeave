@@ -35,8 +35,28 @@ Vector3f ConvertAccelerationToAnotherLocation(
     + Cross(angularAcceleration, offset);
 }
 
+// The gyro pointing state is the first part of the sensor state.
+void SensorState::Reset() {
+  reinterpret_cast<gyro_pointing::GyroPointing*>(m_unknown0)->ResetAll();
+}
+
 void SensorState::SetStillnessAxisConfig(gyro_pointing::AxisConfig config) {
   m_stillnessAxisConfig = config;
+}
+
+gyro_pointing::SensorCalibrationData SensorState::GetCalibrationData() const {
+  return reinterpret_cast<const gyro_pointing::GyroPointing*>(m_unknown0)
+    ->StoreParameters();
+}
+
+gyro_pointing::LQuaternion<float> SensorState::GetOrientation() const {
+  return reinterpret_cast<const gyro_pointing::GyroPointing*>(m_unknown0)
+    ->GetOrientation();
+}
+
+gyro_pointing::LQuaternion<float> SensorState::GetStableOrientation() const {
+  return reinterpret_cast<const gyro_pointing::GyroPointing*>(m_unknown0)
+    ->GetStableOrientation();
 }
 
 }
