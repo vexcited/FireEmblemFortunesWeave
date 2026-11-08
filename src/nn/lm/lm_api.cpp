@@ -1,4 +1,7 @@
+#include <stddef.h>
 #include <stdint.h>
+
+#include <cstddef>
 
 #include "nn/diag/diag_abort.hpp"
 #include "nn/lm/lm_dev_notification.hpp"
@@ -23,6 +26,22 @@ void ReplaceDefaultLogObserver(void (*observer)(const LogMetaData& metaData,
 
 namespace nn::lm {
 
+namespace impl {
+
+class SharedQueue {
+public:
+  class Producer {
+  public:
+    void Push(Span<const std::byte> data);
+
+  private:
+    uint64_t m_Storage[25];
+  };
+};
+
+}
+
+// Hashed logs go through a queue in memory shared with the log service.
 class HashedLogger {
 public:
   HashedLogger();
@@ -31,7 +50,9 @@ public:
   void Push(const void* pData, uint16_t size);
 
 private:
-  uint8_t m_Storage[0x98];
+  sf::IServiceObject* m_pAccessor;
+  impl::SharedQueue::Producer m_Producer;
+  os::SdkMutexType m_Mutex;
 };
 
 namespace detail {
@@ -162,6 +183,17 @@ void DevNotificationReceiver::Receive() {
 
 DevNotificationListReader DevNotificationReceiver::ReadNotifications() const {
   return DevNotificationListReader(Span<const uint8_t>(m_Buffer, m_Size));
+}
+
+[[gnu::noinline]] void HashedLogger::Push(const void* pData, uint16_t size) {
+  if (m_pAccessor == nullptr) {
+    return;
+  }
+
+  m_Mutex.Lock();
+  m_Producer.Push(
+    Span<const std::byte>(static_cast<const std::byte*>(pData), size));
+  m_Mutex.Unlock();
 }
 
 void Initialize() {

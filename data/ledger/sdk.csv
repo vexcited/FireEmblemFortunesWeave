@@ -13448,6 +13448,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 4a1dc0,108,verified,src/nn/lm/lm_api.cpp,_ZN2nn2lm23DevNotificationReceiver7ReceiveEv
 4a1e30,16,verified,src/nn/lm/lm_api.cpp,_ZNK2nn2lm23DevNotificationReceiver17ReadNotificationsEv
 4a1e40,264,verified,src/nn/lm/lm_api.cpp,_ZN2nn2lm33InitializeDevNotificationReceiverEPNS0_23DevNotificationReceiverENS0_31DevNotificationReceiverModuleIdE
+4a21e0,92,verified,src/nn/lm/lm_api.cpp,_ZN2nn2lm12HashedLogger4PushEPKvt
 4a2240,44,verified,src/nn/lm/impl/lm_shared_queue.cpp,_ZN2nn2lm4impl15SharedQueueBase8Producer12AttachBufferENS_4SpanISt4byteEEb
 4a2280,392,verified,src/nn/lm/impl/lm_shared_queue.cpp,_ZN2nn2lm4impl15SharedQueueBase8Producer7TryPushENS_4SpanIKSt4byteEE
 4a2470,192,verified,src/nn/lm/impl/lm_shared_queue.cpp,_ZN2nn2lm4impl15SharedQueueBase8Producer5WriteEmNS_4SpanIKSt4byteEE
