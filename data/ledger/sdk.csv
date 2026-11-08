@@ -2010,6 +2010,7 @@ b8ff0,24,verified,src/nn/diag/diag_abort.cpp,_ZN2nn4diag6detail9AbortImplEPKcS3_
 b9010,36,verified,src/nn/diag/diag_abort.cpp,_ZN2nn4diag6detail9AbortImplEv
 b9040,44,verified,src/nn/diag/diag_abort.cpp,_ZN2nn4diag6detail9AbortImplEPKNS_6ResultE
 b9070,48,verified,src/nn/diag/diag_abort.cpp,_ZN2nn4diag6detail9AbortImplEPKNS_6ResultEPKNS_2os17UserExceptionInfoE
+b90a0,312,verified,src/nn/diag/diag_abort.cpp,_ZN2nn4diag6detail18OnAssertionFailureENS0_13AssertionTypeEPKcS4_S4_iS4_z
 b91e0,12,verified,src/nn/diag/diag_abort.cpp,_ZN2nn4diag6detail18OnAssertionFailureENS0_13AssertionTypeEPKcS4_S4_i
 b91f0,28,verified,src/nn/diag/diag_abort.cpp,_ZN2nn4diag6detail18OnAssertionFailureENS0_13AssertionTypeE
 b9210,12,verified,src/nn/diag/diag_abort.cpp,_ZN2nn4diag26SetAssertionFailureHandlerEPFNS0_25AssertionFailureOperationERKNS0_13AssertionInfoEE
