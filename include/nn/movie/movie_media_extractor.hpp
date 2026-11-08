@@ -99,11 +99,18 @@ private:
   mem::StandardAllocator m_Allocator;
 };
 
+struct HlsMediaExtractorConfig {
+  detail::NetworkConnection* pConnections;
+  size_t connectionCount;
+};
+
 class HlsMediaExtractor {
 public:
   HlsMediaExtractor();
   ~HlsMediaExtractor();
 
+  Result Initialize(void* memory, size_t memorySize, size_t cacheSize,
+    HlsMediaExtractorConfig* config);
   void Finalize();
   Result SetUriMedia(const char* uri, int length);
   Result SetInMemoryMedia(const void* data, size_t size);
