@@ -19,6 +19,8 @@
 
 namespace nn::async {
 
+class CancellationToken;
+class Executable;
 class Executor;
 class ResumeBlocker;
 
@@ -126,6 +128,8 @@ class FiberTaskCoordinatorBase {
 public:
   void Await(ResumeBlocker* blocker);
   void YieldTask();
+  void SuspendAndExecuteInline(Executable* executable,
+    const CancellationToken& token);
 };
 
 }
@@ -358,6 +362,13 @@ private:
 os::FiberFlag ConvertToOsFiberFlag(SuspendableTaskFlag flag);
 
 void AwaitImpl(ResumeBlocker* blocker);
+void ExecuteInline(Executable* executable, const CancellationToken& token);
+void ExecuteSuspendableInline(Executable* executable,
+  const CancellationToken& token);
+void SuspendAndExecuteInline(Executable* executable,
+  const CancellationToken& token);
+void ExecuteTaskInline(Executable* executable, bool isSuspendable,
+  const CancellationToken& token);
 int AwaitAnyImpl(ResumeBlocker* blocker);
 
 }

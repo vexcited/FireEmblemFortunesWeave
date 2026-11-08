@@ -49,6 +49,12 @@ ScopedExecutorRegister::~ScopedExecutorRegister() {
   GetThreadLocalTaskExecutionContext()->executor = m_pPrevious;
 }
 
+ScopedCancellationTokenRegister::ScopedCancellationTokenRegister(
+  const CancellationToken& token) {
+  m_Previous = std::move(GetThreadLocalTaskExecutionContext()->token);
+  GetThreadLocalTaskExecutionContext()->token = token;
+}
+
 ScopedCancellationTokenRegister::~ScopedCancellationTokenRegister() {
   GetThreadLocalTaskExecutionContext()->token = std::move(m_Previous);
 }
