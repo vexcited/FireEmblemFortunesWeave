@@ -23595,6 +23595,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 79fec0,16,verified,src/musl/src/stdio/ext2.c,__freadptrinc
 79fed0,16,verified,src/musl/src/stdio/ext2.c,__fseterr
 79fee0,4,verified,src/musl/src/env/__libc_start_main.c,dummy
+79fef0,220,verified,src/nnmusl/stdio/fclose.c,fclose
 79ffd0,88,verified,src/nnmusl/nnmusl_libc_misc2.cpp,feof
 7a0030,88,verified,src/nnmusl/nnmusl_libc_misc2.cpp,ferror
 7a00a0,588,verified,src/libc/stdio_flush.cpp,fflush
