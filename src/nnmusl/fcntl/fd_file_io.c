@@ -32,7 +32,7 @@ uint32_t nn_fs_GetFileSize(int64_t *out, struct nn_fs_handle handle)
 
 NNMUSL_HIDDEN uint64_t __nnmusl_fd_handle(
 	struct nnmusl_slot_reference reference);
-NNMUSL_HIDDEN unsigned __nnmusl_fd_nonblock(
+NNMUSL_HIDDEN unsigned __nnmusl_fd_read_only(
 	struct nnmusl_slot_reference reference);
 NNMUSL_HIDDEN int64_t __nnmusl_fd_position(
 	struct nnmusl_slot_reference reference);
@@ -77,7 +77,7 @@ NNMUSL_HIDDEN int __nnmusl_ref_truncate(struct nnmusl_slot_reference reference,
 	struct nn_fs_handle handle = { __nnmusl_fd_handle(reference) };
 	int err = EINVAL;
 
-	if (!(__nnmusl_fd_nonblock(reference) & 1) && length >= 0) {
+	if (!(__nnmusl_fd_read_only(reference) & 1) && length >= 0) {
 		uint32_t result = nn_fs_SetFileSize(handle, length);
 		if (!result) return 0;
 		err = (result & 0x3fffff) == 0x202 ? EACCES :

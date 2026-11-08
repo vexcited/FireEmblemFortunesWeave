@@ -1826,6 +1826,7 @@ b16f0,140,verified,src/nnmusl/unistd/cwd_state.c,__nnmusl_copy_cwd
 b1780,88,verified,src/nnmusl/fcntl/fd_open.c,__nnmusl_fd_open_file
 b17e0,420,disputed,src/nnmusl/fcntl/fd_slots.c,__nnmusl_fd_allocate
 b1990,64,verified,src/nnmusl/fcntl/fd_open.c,__nnmusl_fd_open_directory
+b19d0,64,verified,src/nnmusl/fcntl/fd_null.c,__nnmusl_open_null
 b1a20,236,verified,src/nnmusl/fcntl/fd_slots.c,__nnmusl_fd_get
 b1b10,152,verified,src/nnmusl/fcntl/fd_slots.c,__nnmusl_slot_release
 b1bd0,16,verified,src/nnmusl/fcntl/fd_entry.c,__nnmusl_fd_kind
@@ -1834,7 +1835,7 @@ b1bf0,12,verified,src/nnmusl/fcntl/fd_entry.c,__nnmusl_fd_position
 b1c00,12,verified,src/nnmusl/fcntl/fd_entry.c,__nnmusl_fd_set_position
 b1c10,20,verified,src/nnmusl/fcntl/fd_entry.c,__nnmusl_fd_advance
 b1c30,16,verified,src/nnmusl/fcntl/fd_entry.c,__nnmusl_fd_append
-b1c40,16,verified,src/nnmusl/fcntl/fd_entry.c,__nnmusl_fd_nonblock
+b1c40,16,verified,src/nnmusl/fcntl/fd_entry.c,__nnmusl_fd_read_only
 b1c50,12,verified,src/nnmusl/fcntl/fd_entry.c,__nnmusl_fd_native
 b1c60,12,verified,src/nnmusl/fcntl/fd_entry.c,__nnmusl_fd_set_handle
 b1c70,12,verified,src/nnmusl/fcntl/fd_entry.c,__nnmusl_fd_context
@@ -1938,6 +1939,7 @@ b37e0,384,verified,src/nnmusl/fcntl/fs_paths.c,__nnmusl_rmdir
 b3960,76,verified,src/nnmusl/unistd/cwd.c,__nnmusl_chdir
 b39b0,72,verified,src/nnmusl/unistd/cwd.c,__nnmusl_getcwd
 b3a00,8,verified,src/nnmusl/fcntl/fs_result_errno.c,__nnmusl_result_to_errno
+b3a10,496,verified,src/nnmusl/fcntl/open_file.c,__nnmusl_open_file
 b3c50,8,verified,src/nnmusl/fcntl/fs_handles.c,__nnmusl_close_file_handle
 b3c60,240,verified,src/nnmusl/fcntl/fd_file_io.c,__nnmusl_ref_read
 b3d70,312,verified,src/nnmusl/fcntl/fd_file_io.c,__nnmusl_ref_lseek

@@ -78,7 +78,7 @@ HIDDEN unsigned __nnmusl_fd_append(struct nnmusl_fd_entry *entry)
 	return entry->flags[2] >> 7;
 }
 
-HIDDEN unsigned __nnmusl_fd_nonblock(struct nnmusl_fd_entry *entry)
+HIDDEN unsigned __nnmusl_fd_read_only(struct nnmusl_fd_entry *entry)
 {
 	return entry->flags[3] & 1;
 }

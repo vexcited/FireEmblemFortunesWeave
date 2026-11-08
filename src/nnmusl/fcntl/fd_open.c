@@ -23,15 +23,15 @@ HIDDEN int __nnmusl_fd_open_directory(void *state, uint64_t a, uint64_t b,
 	return __nnmusl_fd_allocate(&request, &flags);
 }
 
-// File descriptors carry the append and non blocking bits in their flags.
-HIDDEN int __nnmusl_fd_open_file(void *state, int append, int nonblock)
+// File descriptors carry the read only and append bits in their flags.
+HIDDEN int __nnmusl_fd_open_file(void *state, int read_only, int append)
 {
 	struct {
 		void *state;
 		uint64_t reserved;
 	} request = { state, 0 };
-	uint32_t flags = (append & 1 ? 0x1400001 : 0x400001) |
-		(nonblock & 1 ? 0x800000 : 0);
+	uint32_t flags = (read_only & 1 ? 0x1400001 : 0x400001) |
+		(append & 1 ? 0x800000 : 0);
 	return __nnmusl_fd_allocate((struct nnmusl_fd_request *)&request, &flags);
 }
 
