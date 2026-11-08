@@ -1,36 +1,97 @@
 #include "nn/crypto/aes_ctr.hpp"
+#include "nn/crypto/detail/sha1_impl.hpp"
+#include "nn/crypto/detail/sha256_impl.hpp"
 
-namespace {
-
-using nn::crypto::Aes128CtrEncryptor;
-using nn::crypto::Aes192CtrEncryptor;
-using nn::crypto::Aes256CtrEncryptor;
-
+extern "C" auto nncryptoEncryptAes128Ctr(
+  void* buffer, unsigned long value, void const* buffer2, unsigned long value2, void const* buffer3, unsigned long value3, void const* buffer4, unsigned long value4) {
+  return nn::crypto::EncryptAes128Ctr(
+    buffer, value, buffer2, value2, buffer3, value3, buffer4, value4);
 }
 
-// The C objects are the C++ ones, counter mode decrypts the same way it
-// encrypts.
-#define NN_CRYPTO_C_AES_CTR(Name, Type)                                      \
-  extern "C" void nncrypto##Name##Initialize(void* pObject,                  \
-    const void* key, size_t keySize, const void* iv, size_t ivSize) {        \
-    static_cast<Type*>(pObject)->Initialize(key, keySize, iv, ivSize);      \
-  }                                                                          \
-                                                                             \
-  extern "C" void nncrypto##Name##SwitchMessage(void* pObject,               \
-    const void* iv, size_t ivSize) {                                         \
-    static_cast<Type*>(pObject)->SwitchMessage(iv, ivSize);                  \
-  }                                                                          \
-                                                                             \
-  extern "C" size_t nncrypto##Name##Update(void* pObject, void* dst,         \
-    size_t dstSize, const void* src, size_t srcSize) {                       \
-    return static_cast<Type*>(pObject)->Update(dst, dstSize, src, srcSize); \
-  }
+extern "C" auto nncryptoDecryptAes128Ctr(
+  void* buffer, unsigned long value, void const* buffer2, unsigned long value2, void const* buffer3, unsigned long value3, void const* buffer4, unsigned long value4) {
+  return nn::crypto::DecryptAes128Ctr(
+    buffer, value, buffer2, value2, buffer3, value3, buffer4, value4);
+}
 
-NN_CRYPTO_C_AES_CTR(Aes128CtrEncryptor, Aes128CtrEncryptor)
-NN_CRYPTO_C_AES_CTR(Aes128CtrDecryptor, Aes128CtrEncryptor)
-NN_CRYPTO_C_AES_CTR(Aes192CtrEncryptor, Aes192CtrEncryptor)
-NN_CRYPTO_C_AES_CTR(Aes192CtrDecryptor, Aes192CtrEncryptor)
-NN_CRYPTO_C_AES_CTR(Aes256CtrEncryptor, Aes256CtrEncryptor)
-NN_CRYPTO_C_AES_CTR(Aes256CtrDecryptor, Aes256CtrEncryptor)
+extern "C" auto nncryptoEncryptAes192Ctr(
+  void* buffer, unsigned long value, void const* buffer2, unsigned long value2, void const* buffer3, unsigned long value3, void const* buffer4, unsigned long value4) {
+  return nn::crypto::EncryptAes192Ctr(
+    buffer, value, buffer2, value2, buffer3, value3, buffer4, value4);
+}
 
-#undef NN_CRYPTO_C_AES_CTR
+extern "C" auto nncryptoDecryptAes192Ctr(
+  void* buffer, unsigned long value, void const* buffer2, unsigned long value2, void const* buffer3, unsigned long value3, void const* buffer4, unsigned long value4) {
+  return nn::crypto::DecryptAes192Ctr(
+    buffer, value, buffer2, value2, buffer3, value3, buffer4, value4);
+}
+
+extern "C" auto nncryptoEncryptAes256Ctr(
+  void* buffer, unsigned long value, void const* buffer2, unsigned long value2, void const* buffer3, unsigned long value3, void const* buffer4, unsigned long value4) {
+  return nn::crypto::EncryptAes256Ctr(
+    buffer, value, buffer2, value2, buffer3, value3, buffer4, value4);
+}
+
+extern "C" auto nncryptoDecryptAes256Ctr(
+  void* buffer, unsigned long value, void const* buffer2, unsigned long value2, void const* buffer3, unsigned long value3, void const* buffer4, unsigned long value4) {
+  return nn::crypto::DecryptAes256Ctr(
+    buffer, value, buffer2, value2, buffer3, value3, buffer4, value4);
+}
+
+extern "C" auto nncryptoEncryptAes128CtrPartial(
+  void* buffer, unsigned long value, void const* buffer2, unsigned long value2, void const* buffer3, unsigned long value3, long value4, void const* buffer4, unsigned long value5) {
+  return nn::crypto::EncryptAes128CtrPartial(
+    buffer, value, buffer2, value2, buffer3, value3, value4, buffer4, value5);
+}
+
+extern "C" auto nncryptoDecryptAes128CtrPartial(
+  void* buffer, unsigned long value, void const* buffer2, unsigned long value2, void const* buffer3, unsigned long value3, long value4, void const* buffer4, unsigned long value5) {
+  return nn::crypto::DecryptAes128CtrPartial(
+    buffer, value, buffer2, value2, buffer3, value3, value4, buffer4, value5);
+}
+
+extern "C" auto nncryptoEncryptAes192CtrPartial(
+  void* buffer, unsigned long value, void const* buffer2, unsigned long value2, void const* buffer3, unsigned long value3, long value4, void const* buffer4, unsigned long value5) {
+  return nn::crypto::EncryptAes192CtrPartial(
+    buffer, value, buffer2, value2, buffer3, value3, value4, buffer4, value5);
+}
+
+extern "C" auto nncryptoDecryptAes192CtrPartial(
+  void* buffer, unsigned long value, void const* buffer2, unsigned long value2, void const* buffer3, unsigned long value3, long value4, void const* buffer4, unsigned long value5) {
+  return nn::crypto::DecryptAes192CtrPartial(
+    buffer, value, buffer2, value2, buffer3, value3, value4, buffer4, value5);
+}
+
+extern "C" auto nncryptoEncryptAes256CtrPartial(
+  void* buffer, unsigned long value, void const* buffer2, unsigned long value2, void const* buffer3, unsigned long value3, long value4, void const* buffer4, unsigned long value5) {
+  return nn::crypto::EncryptAes256CtrPartial(
+    buffer, value, buffer2, value2, buffer3, value3, value4, buffer4, value5);
+}
+
+extern "C" auto nncryptoDecryptAes256CtrPartial(
+  void* buffer, unsigned long value, void const* buffer2, unsigned long value2, void const* buffer3, unsigned long value3, long value4, void const* buffer4, unsigned long value5) {
+  return nn::crypto::DecryptAes256CtrPartial(
+    buffer, value, buffer2, value2, buffer3, value3, value4, buffer4, value5);
+}
+
+// The C generators start with the hash implementation they drive.
+extern "C" void nncryptoHmacSha1GeneratorUpdate(void* pGenerator,
+  const void* data, size_t size) {
+  static_cast<nn::crypto::detail::Sha1Impl*>(pGenerator)->Update(data, size);
+}
+
+extern "C" void nncryptoSha256GeneratorInitialize(void* pGenerator) {
+  static_cast<nn::crypto::detail::Sha256Impl*>(pGenerator)->Initialize();
+}
+
+extern "C" void nncryptoSha256GeneratorUpdate(void* pGenerator,
+  const void* data, size_t size) {
+  static_cast<nn::crypto::detail::Sha256Impl*>(pGenerator)->Update(data,
+    size);
+}
+
+extern "C" void nncryptoSha256GeneratorFinalize(void* pGenerator, void* hash,
+  size_t hashSize) {
+  static_cast<nn::crypto::detail::Sha256Impl*>(pGenerator)->GetHash(hash,
+    hashSize);
+}
