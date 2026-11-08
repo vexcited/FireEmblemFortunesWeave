@@ -1871,8 +1871,12 @@ b2cf0,4,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,read
 b2d00,4,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,rmdir
 b2d10,8,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,unlink
 b2d20,4,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,write
+b54d0,36,verified,src/nnmusl/nnmusl_socket_table.cpp,_nnmusl_socket_IsNnmuslFileDescriptor
 b5500,4,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,_nnmusl_socket_TranslateNnmuslFileDescriptorOrPassThrough
+b5560,44,verified,src/nnmusl/nnmusl_socket_table.cpp,_nnmusl_socket_TranslateFileDescriptorFromNativeToNnmusl
 b55e0,4,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,_nnmusl_socket_poll_TranslateFileDescriptorFromNativeToNnmusl
+b55f0,44,verified,src/nnmusl/nnmusl_socket_table.cpp,_nnmusl_socket_AddNativeSocketFileDescriptorToNnmuslTable
+b5680,48,verified,src/nnmusl/nnmusl_socket_table.cpp,_nnmusl_socket_RemoveNativeSocketFileDescriptorFromNnmuslTable
 b5ce0,12,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,__set_tp
 b5cf0,12,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,__get_tp
 b5d00,16,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,__get_tls_data
@@ -1893,8 +1897,13 @@ b9070,48,verified,src/nn/diag/diag_abort.cpp,_ZN2nn4diag6detail9AbortImplEPKNS_6
 b91e0,12,verified,src/nn/diag/diag_abort.cpp,_ZN2nn4diag6detail18OnAssertionFailureENS0_13AssertionTypeEPKcS4_S4_i
 b91f0,28,verified,src/nn/diag/diag_abort.cpp,_ZN2nn4diag6detail18OnAssertionFailureENS0_13AssertionTypeE
 b9210,12,verified,src/nn/diag/diag_abort.cpp,_ZN2nn4diag26SetAssertionFailureHandlerEPFNS0_25AssertionFailureOperationERKNS0_13AssertionInfoEE
+b9240,40,verified,src/nn/diag/diag_c_api_abort.cpp,nndetailUnexpectedDefaultImpl
+b9270,32,verified,src/nn/diag/diag_c_api_unexpected.cpp,nndetailUnexpectedDefaultNoMessageImpl
+b92f0,24,verified,src/nn/diag/diag_c_api_abort.cpp,nndetailDiagAbortImpl
+b9310,40,verified,src/nn/diag/diag_c_api_abort.cpp,nndetailDiagAbortNoMessageImpl
 b93c0,4,verified,src/nn/diag/diag_c_api_misc.cpp,nndetailDiagOnAssertionFailureNoMessage
 b9760,48,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag6detail7PutImplERKNS0_11LogMetaDataEPKcm
+b9790,52,verified,src/nn/diag/diag_c_api_abort.cpp,nndetailDiagVLogImplForC
 b9840,4,verified,src/nn/diag/diag_c_api_misc.cpp,nndetailDiagPutImplForC
 b9d50,16,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag27InitializeLogObserverHolderEPNS0_17LogObserverHolderEPFvRKNS0_11LogMetaDataERKNS0_7LogBodyEPvES9_
 ba000,80,verified,src/nn/diag/abort_observer.cpp,_ZN2nn4diag6detail27DestroyAbortObserverManagerEPv
@@ -1904,6 +1913,8 @@ ba0d0,4,verified,src/nn/diag/diag_check.cpp,_ZN2nn4diag14OnResultHandleENS_6Resu
 ba0e0,4,verified,src/nn/diag/diag_check.cpp,_ZN2nn4diag15OnResultRethrowENS_6ResultERKNS0_10SourceInfoE
 ba0f0,4,verified,src/nn/diag/diag_check.cpp,_ZN2nn4diag13OnResultCatchENS_6ResultERKNS0_10SourceInfoE
 ba100,4,verified,src/nn/diag/diag_check.cpp,_ZN2nn4diag12OnResultMissENS_6ResultERKNS0_10SourceInfoE
+ba110,40,verified,src/nn/diag/diag_c_api_abort.cpp,nndiagAbort
+ba1d0,32,verified,src/nn/diag/diag_c_api_abort.cpp,_ZN2nn6detail21UnexpectedDefaultImplEv
 ba200,188,verified,src/nn/diag/diag_module_misc.cpp,_ZN2nn4diag6detail9TranslateEPKhPKc
 ba2c0,4,verified,src/nn/diag/abort_observer.cpp,_ZN2nn4diag6detail20DefaultAbortObserverERKNS0_9AbortInfoE
 ba310,4,verified,src/nn/diag/diag_hashed_log.cpp,_ZN2nn4diag6detail34HashedLogPostSerializeProcess_hlogEPKvj
@@ -4400,6 +4411,8 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 1663f0,56,verified,src/nn/os/native_handle.cpp,_ZN2nn2os17CloseNativeHandleEj
 166430,8,verified,src/nn/dd/dd_process_handle.cpp,_ZN2nn2dd23GetCurrentProcessHandleEv
 166440,8,verified,src/nn/os/os_misc.cpp,_ZN2nn2os23GetCurrentProcessHandleEv
+1664b0,28,verified,src/nn/os/os_c_api_extra.cpp,nnosCreateThread
+1664d0,28,verified,src/nn/os/os_c_api_extra.cpp,nnosCreateThreadWithCoreNumber
 1664f0,4,verified,src/nn/os/os_c_api.cpp,nnosDestroyThread
 166500,4,verified,src/nn/os/os_c_api.cpp,nnosStartThread
 166510,4,verified,src/nn/os/os_c_api.cpp,nnosGetCurrentThread
@@ -4448,6 +4461,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 1667c0,4,verified,src/nn/os/os_c_api.cpp,nnosBroadcastConditionVariable
 1667d0,4,verified,src/nn/os/os_c_api.cpp,nnosWaitConditionVariable
 1667e0,4,verified,src/nn/os/os_c_api.cpp,nnosTimedWaitConditionVariable
+1667f0,28,verified,src/nn/os/os_c_api_extra.cpp,nnosCreateSystemEvent
 166810,4,verified,src/nn/os/os_c_api.cpp,nnosAttachSystemEvent
 166820,4,verified,src/nn/os/os_c_api.cpp,nnosAttachReadableHandleToSystemEvent
 166830,4,verified,src/nn/os/os_c_api.cpp,nnosAttachWritableHandleToSystemEvent
@@ -4639,6 +4653,8 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 169ff0,4,verified,src/nn/os/os_misc.cpp,_ZN2nn2os27DefaultUserExceptionHandlerEPNS0_17UserExceptionInfoE
 16a000,72,verified,src/nn/os/os_misc.cpp,_ZN2nn2os32SetMemoryAllocatorForThreadLocalEPFPvmmEPFvS1_mE
 16a050,20,verified,src/nn/os/os_misc.cpp,_ZN2nn2os40MemoryAllocatorForThreadLocalInitializedEv
+16a070,16,verified,src/nn/os/os_c_api_extra.cpp,nnosAllocateMemoryForThreadLocal
+16a080,20,verified,src/nn/os/os_c_api_extra.cpp,nnosFreeMemoryForThreadLocal
 16a0a0,8,verified,src/nn/os/os_c_api_misc.cpp,nnosGetModuleCountMax
 16a0b0,12,verified,src/nn/os/os_misc.cpp,_ZN2nn2os17GetLastThreadInfoEPPNS0_10ThreadTypeEPNS0_20SdkLastThreadContextEPj
 16a0c0,96,verified,src/nn/os/thread_info.cpp,_ZN2nn2os18GetThreadStackInfoEPmS1_PKNS0_10ThreadTypeE
@@ -4655,6 +4671,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 16a260,24,verified,src/nn/os/virtual_memory_pages.cpp,_ZN2nn2os15FreeMemoryPagesEmm
 16a280,16,verified,src/nn/os/memory_queries.cpp,_ZN2nn2os36GetVirtualAddressMemoryResourceUsageEv
 16a290,16,verified,src/nn/os/memory_queries.cpp,_ZN2nn2os29IsVirtualAddressMemoryEnabledEv
+16a2a0,28,verified,src/nn/os/os_c_api_extra.cpp,nnosAllocateTlsSlot
 16a2c0,8,verified,src/nn/os/os_c_api.cpp,nnosFreeTlsSlot
 16a2d0,8,verified,src/nn/os/os_c_api.cpp,nnosGetTlsValue
 16a2e0,8,verified,src/nn/os/os_c_api.cpp,nnosSetTlsValue
@@ -4853,6 +4870,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 173c90,40,verified,src/nn/nlibsdk/posix_tls.cpp,_ZN2nn7nlibsdk6detail22AllocateTlsSlotOrAbortEPNS_2os7TlsSlotEPFvmE
 173cc0,76,verified,src/nn/nlibsdk/posix_thread.cpp,_ZN2nn7nlibsdk6detail22JoinAndFreePosixThreadEPNS1_11PosixThreadEPPv
 173d10,400,verified,src/nn/nlibsdk/posix_thread.cpp,_ZN2nn7nlibsdk6detail25SetDefaultPosixThreadNameEPNS1_11PosixThreadE
+173ea0,32,verified,src/nn/result/result_unhandled.cpp,_ZN2nn6result6detail17OnUnhandledResultENS_6ResultE
 173f00,8,verified,src/nn/result/result_c_api.cpp,nnResultGetModule
 173f10,8,verified,src/nn/result/result_c_api.cpp,nnResultGetDescription
 173f20,12,verified,src/nn/result/result_c_api.cpp,nnResultIsSuccess
