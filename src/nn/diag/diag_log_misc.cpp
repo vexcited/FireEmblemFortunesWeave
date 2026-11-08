@@ -11,6 +11,20 @@ struct FiberType;
 
 }
 
+namespace nn::svc {
+
+[[gnu::visibility("hidden")]] Result Break(uint32_t reason, uintptr_t argument,
+  size_t size);
+[[gnu::visibility("hidden")]] void SynchronizePreemptionState();
+
+}
+
+namespace nn::lm {
+
+void Initialize();
+
+}
+
 namespace nn::ro {
 
 Result GetUpperBoundSymbol(uintptr_t* pOutAddress, uintptr_t* pOutSize,
@@ -43,6 +57,12 @@ struct ModuleInfo;
 
 void PrintModules();
 void PrintBacktraceItem(uintptr_t address, bool isEnabled);
+uintptr_t GetModulePath(char* pOutPath, size_t size, uintptr_t address);
+bool GetReadOnlyDataSectionRange(uintptr_t* pOutAddress, size_t* pOutSize,
+  uintptr_t address);
+bool IsSystemSymbol(uintptr_t address);
+uintptr_t GetSymbolName(char* pOutName, size_t size, uintptr_t address);
+size_t GetSymbolSize(uintptr_t address);
 
 void InitializeLogObserverHolder(LogObserverHolder* pHolder,
   LogObserver observer, void* pArgument);
@@ -57,6 +77,14 @@ void PutImpl(const LogMetaData& metaData, const char* pText, size_t length);
 void PrintDebugString(const char* pText, size_t length);
 void PrintDebugString(const char* pText);
 void PrintBacktraceItemImpl(uintptr_t address, bool isEnabled);
+uintptr_t GetModulePathImpl(char* pOutPath, size_t size, uintptr_t address);
+bool GetReadOnlyDataSectionRangeImpl(uintptr_t* pOutAddress,
+  size_t* pOutSize, uintptr_t address);
+bool IsSystemSymbolImpl(uintptr_t address);
+uintptr_t GetSymbolNameImpl(char* pOutName, size_t size, uintptr_t address);
+size_t GetSymbolSizeImpl(uintptr_t address);
+[[noreturn]] void Abort(const Result* pResult);
+void PrepareAbort();
 int GetAllModuleInfoImpl(size_t* pOutSize, void* pBuffer, size_t bufferSize,
   bool isSizeQuery);
 
@@ -91,6 +119,10 @@ void InitializeLogObserverHolder(LogObserverHolder* pHolder,
   pHolder->pArgument = pArgument;
 }
 
+uintptr_t GetModulePath(char* pOutPath, size_t size, uintptr_t address) {
+  return detail::GetModulePathImpl(pOutPath, size, address);
+}
+
 int GetAllModuleInfo(ModuleInfo** ppOutInfos, void* pBuffer,
   size_t bufferSize) {
   *ppOutInfos = static_cast<ModuleInfo*>(pBuffer);
@@ -104,6 +136,46 @@ size_t GetRequiredBufferSizeForGetAllModuleInfo() {
     return 0;
   }
   return size;
+}
+
+bool GetReadOnlyDataSectionRange(uintptr_t* pOutAddress, size_t* pOutSize,
+  uintptr_t address) {
+  return detail::GetReadOnlyDataSectionRangeImpl(pOutAddress, pOutSize,
+    address);
+}
+
+bool IsSystemSymbol(uintptr_t address) {
+  return detail::IsSystemSymbolImpl(address);
+}
+
+uintptr_t GetSymbolName(char* pOutName, size_t size, uintptr_t address) {
+  return detail::GetSymbolNameImpl(pOutName, size, address);
+}
+
+size_t GetSymbolSize(uintptr_t address) {
+  return detail::GetSymbolSizeImpl(address);
+}
+
+namespace detail {
+
+// The kernel takes the result as the break argument.
+void Abort(const Result* pResult) {
+  svc::Break(0, reinterpret_cast<uintptr_t>(pResult), sizeof(*pResult));
+  for (;;) {
+  }
+}
+
+// Clears the thread's disable count and gives back a pending preemption.
+void PrepareAbort() {
+  uint8_t* pTls;
+  asm volatile("mrs %0, tpidrro_el0" : "=r"(pTls));
+  *reinterpret_cast<volatile uint16_t*>(pTls + 0x100) = 0;
+  asm volatile("mrs %0, tpidrro_el0" : "=r"(pTls));
+  if (*reinterpret_cast<volatile uint16_t*>(pTls + 0x102) != 0) {
+    svc::SynchronizePreemptionState();
+  }
+}
+
 }
 
 namespace {
@@ -185,4 +257,8 @@ uintptr_t Backtrace::GetReturnAddress() const {
 
 }
 
+}
+
+extern "C" void nndiagStartup() {
+  nn::lm::Initialize();
 }

@@ -1714,8 +1714,15 @@ bbda0,16,verified,src/nn/diag/abort_observer.cpp,_ZN2nn4diag26EnableDefaultAbort
 bbdb0,12,verified,src/nn/diag/abort_observer.cpp,_ZN2nn4diag32InitializeSdkAbortObserverHolderEPNS0_22SdkAbortObserverHolderEPFvRKNS0_12SdkAbortInfoEE
 bbdc0,84,verified,src/nn/diag/abort_observer.cpp,_ZN2nn4diag24RegisterSdkAbortObserverEPNS0_22SdkAbortObserverHolderE
 bbe20,196,verified,src/nn/diag/abort_observer.cpp,_ZN2nn4diag26UnregisterSdkAbortObserverEPNS0_22SdkAbortObserverHolderE
+bbf50,4,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag13GetModulePathEPcmm
 bbf60,48,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag16GetAllModuleInfoEPPNS0_10ModuleInfoEPvm
 bbf90,64,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag40GetRequiredBufferSizeForGetAllModuleInfoEv
+bbfd0,4,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag27GetReadOnlyDataSectionRangeEPmS1_m
+bbfe0,4,verified,src/nn/diag/diag_log_misc.cpp,nndiagStartup
+bbff0,4,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag14IsSystemSymbolEm
+bc000,4,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag13GetSymbolNameEPcmm
+bc010,4,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag13GetSymbolSizeEm
+bc050,20,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag6detail12PrepareAbortEv
 bc080,120,verified,src/nn/diag/abort_observer.cpp,_ZN2nn4diag6detail19InvokeAbortObserverERKNS0_9AbortInfoE
 bc100,92,verified,src/nn/diag/abort_observer.cpp,_ZN2nn4diag6detail22InvokeSdkAbortObserverERKNS0_12SdkAbortInfoE
 bc170,140,verified,src/nn/diag/diag_log_misc.cpp,_ZN2nn4diag6detail22PrintBacktraceItemImplEmb
