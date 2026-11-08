@@ -1977,6 +1977,7 @@ b55f0,44,verified,src/nnmusl/nnmusl_socket_table.cpp,_nnmusl_socket_AddNativeSoc
 b5620,88,verified,src/nnmusl/network/socket_fd.c,_nnmusl_socket_RemoveNnmuslSocketFileDescriptorFromNnmuslTable
 b5680,48,verified,src/nnmusl/nnmusl_socket_table.cpp,_nnmusl_socket_RemoveNativeSocketFileDescriptorFromNnmuslTable
 b59f0,124,verified,src/nnmusl/fcntl/fs_sleep_fcntl.c,__nnmusl_socket_fcntl
+b5a90,4,verified,src/nnmusl/network/h_errno.c,__h_errno_location
 b5aa0,92,verified,src/nnmusl/fcntl/fd_open.c,__nnmusl_stat_path
 b5bc0,8,verified,src/nnmusl/fcntl/fd_entry.c,__nnmusl_fd_state
 b5ce0,12,verified,src/nnmusl/nnmusl_libc_forwarders.cpp,__set_tp
@@ -24128,9 +24129,15 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 7bc4e0,32,verified,src/libc/stdio_flush.cpp,TryLockLibcRecursiveMutex
 7bc500,4,verified,src/libc/stdio_flush.cpp,UnlockLibcRecursiveMutex
 7bc510,16,verified,src/nn/os/process_exit.cpp,LibcExitProcess
+7bc530,84,verified,src/nnmusl/time/timer.c,__nnmusl_TimerCreate
+7bc590,56,verified,src/nnmusl/time/timer.c,__nnmusl_TimerDelete
+7bc5d0,84,verified,src/nnmusl/time/timer.c,__nnmusl_TimerStop
+7bc630,180,verified,src/nnmusl/time/timer.c,__nnmusl_TimerSetTime
+7bc700,56,verified,src/nnmusl/time/timer.c,__nnmusl_TimerWait
 7bc740,4,verified,src/nnmusl/nnmusl_libc_forwarders2.cpp,memalign
 7bc760,32,verified,src/nn/init/libc.cpp,_ZN2nn4init6detail22InitializeRuntimeHooksEv
 7bc780,4,verified,src/nn/init/libc.cpp,_ZN2nn4init6detail16EmptyRuntimeHookEv
+7bc790,12,verified,src/nnmusl/thread/atomic_crash.c,call_atomic_a_crash
 7bc7b0,12,verified,src/libc/errno.cpp,_ZN2fw4libc14GetThreadErrorEv
 7bc7c0,56,verified,src/nnmusl/nnmusl_libc_misc.cpp,__musl_bytewise_strcmp
 7bc800,80,verified,src/nnmusl/nnmusl_libc_misc2.cpp,__musl_bytewise_strncmp
