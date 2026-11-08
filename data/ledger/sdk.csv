@@ -1919,9 +1919,11 @@ b3960,76,verified,src/nnmusl/unistd/cwd.c,__nnmusl_chdir
 b39b0,72,verified,src/nnmusl/unistd/cwd.c,__nnmusl_getcwd
 b3a00,8,verified,src/nnmusl/fcntl/fs_result_errno.c,__nnmusl_result_to_errno
 b3c50,8,verified,src/nnmusl/fcntl/fs_handles.c,__nnmusl_close_file_handle
+b4690,316,verified,src/nnmusl/fcntl/fd_io.c,__nnmusl_read
 b4b60,200,verified,src/nnmusl/fcntl/fd_ops.c,__nnmusl_fstat
-b4c30,228,verified,src/nnmusl/fcntl/fd_file_ops.c,__nnmusl_ftruncate
-b4d40,340,verified,src/nnmusl/fcntl/fd_file_ops.c,__nnmusl_pread
+b4c30,264,verified,src/nnmusl/fcntl/fd_file_ops.c,__nnmusl_ftruncate
+b4d40,344,verified,src/nnmusl/fcntl/fd_file_ops.c,__nnmusl_pread
+b4eb0,284,verified,src/nnmusl/fcntl/fd_io.c,__nnmusl_pwrite
 b5000,244,verified,src/nnmusl/fcntl/fd_ops.c,__nnmusl_vfcntl
 b5100,24,verified,src/nnmusl/fcntl/fd_entry.c,__nnmusl_socket_mark_ready
 b5200,148,verified,src/nnmusl/time/clock.c,__nnmusl_clock_getres
