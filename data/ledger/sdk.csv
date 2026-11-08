@@ -4862,6 +4862,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 16ce60,72,verified,src/nn/os/horizon_impl.cpp,_ZN2nn2os6detail18DebugImplByHorizon19GetCurrentStackInfoEPmS3_
 16cf00,204,verified,src/nn/os/startup_support.cpp,_ZN2nn2os6detail18DebugImplByHorizon15QueryMemoryInfoEPNS0_10MemoryInfoE
 16cfe0,136,verified,src/nn/os/horizon_impl.cpp,_ZN2nn2os6detail38ExamineWholeAddressSpaceHasNoAttributeEmm
+16d0e0,112,verified,src/nn/os/fiber.cpp,_ZN2nn2os6detail18FiberImplByHorizon13MapAliasStackEPPvPKvm
 16d160,32,verified,src/nn/os/horizon_impl.cpp,_ZN2nn2os6detail18FiberImplByHorizon15UnmapAliasStackEPKvS4_m
 16d490,52,verified,src/nn/os/horizon_impl.cpp,_ZN2nn2os6detail25SharedMemoryImplByHorizon5CloseEj
 16d730,52,verified,src/nn/os/horizon_impl.cpp,_ZN2nn2os6detail25SharedMemoryImplByHorizon5UnmapEjPvm

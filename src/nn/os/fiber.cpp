@@ -1,4 +1,5 @@
 #include "nn/diag/diag_abort.hpp"
+#include "nn/os/stack_guard.hpp"
 #include "nn/os/thread_info.hpp"
 
 namespace nn::os {
@@ -14,6 +15,33 @@ struct FiberImplByHorizon {
 
 void DispatchFiberContext(FiberContextForHorizon** current,
   FiberContextForHorizon** next);
+
+extern uint8_t g_OsResourceManagerStorage[];
+
+[[gnu::visibility("hidden")]] bool MapStackAlias(const void* alias,
+  const void* stack, size_t size);
+[[gnu::visibility("hidden")]] void UnmapStackAlias(const void* alias,
+  const void* stack, size_t size);
+
+namespace {
+
+constexpr size_t FiberStackGuardManagerOffset = 0xb8;
+
+}
+
+[[gnu::noinline]] bool FiberImplByHorizon::MapAliasStack(void** alias,
+  const void* stack, size_t size) {
+  auto* pManager = reinterpret_cast<StackGuardManager*>(
+    g_OsResourceManagerStorage + FiberStackGuardManagerOffset);
+  void* address = nullptr;
+  const int result = pManager->MapAtRandomAddress(&address, MapStackAlias,
+    UnmapStackAlias, stack, size);
+  if (result == 0) {
+    *alias = address;
+  }
+
+  return result == 0;
+}
 
 }
 
