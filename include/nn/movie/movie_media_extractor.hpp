@@ -45,7 +45,7 @@ public:
 
 struct MediaExtractorHolder {
   MediaExtractorImpl* pImpl;
-  uint8_t reserved[88];
+  AllocatorInfo allocatorInfo;
   os::EventType* pTaskCompletedEvent;
 };
 
