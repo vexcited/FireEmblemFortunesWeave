@@ -1,3 +1,5 @@
+#include <string.h>
+
 #include "nn/diag/diag_abort.hpp"
 #include "nn/os/multi_wait.hpp"
 #include "nn/sf/hipc.hpp"
@@ -23,6 +25,17 @@ namespace nn::svc {
 [[gnu::visibility("hidden")]] Result ReplyAndReceiveWithUserBuffer(
   int32_t* pOutIndex, uintptr_t buffer, size_t size, const Handle* handles,
   int32_t count, Handle replyTarget, int64_t timeout);
+
+}
+
+namespace nn::sm {
+
+enum ServiceSpaceSet : int32_t {};
+
+Result RegisterService(svc::Handle* pOutPort, ServiceSpaceSet space,
+  const char* pName, size_t length, int maxSessions, bool isLight);
+Result UnregisterService(ServiceSpaceSet space, const char* pName,
+  size_t length);
 
 }
 
@@ -217,6 +230,38 @@ Result Reply(svc::Handle session, void* buffer, size_t size) {
 void AttachWaitHolderForReply(os::MultiWaitHolderType* holder,
   svc::Handle session) {
   os::InitializeMultiWaitHolder(holder, session.value);
+}
+
+struct ServerPortDescriptor {
+  const char* pName;
+  sm::ServiceSpaceSet space;
+};
+
+Result RegisterHipcService(svc::Handle* pOutPort, int maxSessions,
+  const ServerPortDescriptor& descriptor) {
+  PortProcessor* processor = GetPortProcessor(descriptor.pName);
+  if (processor != nullptr) {
+    using Register = Result (*)(PortProcessor*, svc::Handle*, int,
+      const char*);
+    return reinterpret_cast<Register>(processor->vtable[2])(processor,
+      pOutPort, maxSessions, descriptor.pName);
+  }
+
+  return sm::RegisterService(pOutPort, descriptor.space, descriptor.pName,
+    strlen(descriptor.pName), maxSessions, false);
+}
+
+void UnregisterHipcService(const ServerPortDescriptor& descriptor) {
+  PortProcessor* processor = GetPortProcessor(descriptor.pName);
+  if (processor != nullptr) {
+    using Unregister = void (*)(PortProcessor*, const char*);
+    reinterpret_cast<Unregister>(processor->vtable[3])(processor,
+      descriptor.pName);
+    return;
+  }
+
+  NN_ABORT_UNLESS_RESULT_SUCCESS(sm::UnregisterService(descriptor.space,
+    descriptor.pName, strlen(descriptor.pName)));
 }
 
 [[gnu::noinline]] PortProcessor* GetPortProcessor(svc::Handle handle) {

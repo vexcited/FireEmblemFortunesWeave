@@ -4635,7 +4635,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 179a30,16,verified,src/nn/sf/hipc/hipc_client_api.cpp,_ZN2nn2sf4hipc6client22QueryPointerBufferSizeEPtNS_3svc6HandleE
 179a40,16,verified,src/nn/sf/hipc/hipc_client_api.cpp,_ZN2nn2sf4hipc6client22ConvertSessionToDomainEPNS0_4cmif18CmifDomainObjectIdENS_3svc6HandleE
 179a50,92,verified,src/nn/sf/hipc/hipc_client_api.cpp,_ZN2nn2sf4hipc6client16DuplicateSessionEPNS_3svc6HandleES4_
-179ac0,100,verified,src/nn/sf/hipc/hipc_client_api.cpp,_ZN2nn2sf4hipc6client18DuplicateSessionExEPNS_3svc6HandleES4_j
+179ac0,120,verified,src/nn/sf/hipc/hipc_client_api.cpp,_ZN2nn2sf4hipc6client18DuplicateSessionExEPNS_3svc6HandleES4_j
 17aba0,32,verified,src/nn/sf/hipc/detail/hipc_message_buffer_accessor.cpp,_ZN2nn2sf4hipc6detail25HipcMessageBufferAccessor6GetTagEPvm
 17acf0,468,verified,src/nn/sf/hipc/detail/hipc_message_buffer_accessor.cpp,_ZN2nn2sf4hipc6detail25HipcMessageBufferAccessor11SetupHeaderEPvmRKNS2_21HipcMessageHeaderInfoE
 17aed0,240,verified,src/nn/sf/hipc/detail/hipc_message_buffer_accessor.cpp,_ZN2nn2sf4hipc6detail25HipcMessageBufferAccessor11ParseHeaderEPNS2_21HipcMessageHeaderInfoEPvm
@@ -4690,6 +4690,8 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 180cf0,8,verified,src/nn/sf/unit_heap_memory_resource.cpp,_ZN2nn2sf22UnitHeapMemoryResource10DeallocateEPvmm
 180d00,48,verified,src/nn/sf/hipc.cpp,_ZN2nn2sf4hipc31InitializeHipcServiceResolutionEv
 180d30,48,verified,src/nn/sf/hipc.cpp,_ZN2nn2sf4hipc29FinalizeHipcServiceResolutionEv
+180d60,144,verified,src/nn/sf/hipc/hipc_api.cpp,_ZN2nn2sf4hipc19RegisterHipcServiceEPNS_3svc6HandleEiRKNS1_20ServerPortDescriptorE
+180df0,132,verified,src/nn/sf/hipc/hipc_api.cpp,_ZN2nn2sf4hipc21UnregisterHipcServiceERKNS1_20ServerPortDescriptorE
 180e80,16,verified,src/nn/sf/hipc_client_info.cpp,_ZN2nn2sf4hipc23IsHipcServiceRegisteredEPKc
 180e90,104,verified,src/nn/sf/hipc.cpp,_ZN2nn2sf4hipc20ConnectToHipcServiceEPNS_3svc6HandleEPKc
 180f00,16,verified,src/nn/sf/hipc_client_info.cpp,_ZN2nn2sf4hipc23TryConnectToHipcServiceEPbPNS_3svc6HandleEPKc
