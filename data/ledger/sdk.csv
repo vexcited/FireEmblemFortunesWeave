@@ -1808,6 +1808,7 @@ afb40,36,verified,src/nnmusl/nnmusl_unsupported.c,symlinkat
 afb70,36,verified,src/nnmusl/nnmusl_unsupported.c,readlink
 afba0,36,verified,src/nnmusl/nnmusl_unsupported.c,readlinkat
 afbe0,184,verified,src/nnmusl/stdlib/realpath.c,realpath
+b0080,200,verified,src/nnmusl/unistd/sysconf.c,sysconf
 b0210,36,verified,src/nnmusl/nnmusl_unsupported.c,futimens
 b0240,36,verified,src/nnmusl/nnmusl_unsupported.c,utimensat
 b0270,36,verified,src/nnmusl/nnmusl_unsupported.c,utimes
