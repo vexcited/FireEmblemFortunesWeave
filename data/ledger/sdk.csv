@@ -20039,7 +20039,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 5ff750,8,verified,src/nvidia/nvos_stubs.cpp,NvRmHost1xChannelPinGetSizePRIVATE
 5ff760,24,verified,src/nvidia/nvrm_host1x.cpp,NvRmHost1xChannelCheckIsDeterministicPRIVATE
 5ff780,164,verified,src/nvidia/nvrm_host1x.cpp,NvRmHost1xWaiterAllocate
-5ff830,20,verified,src/nvidia/nvrm_host1x.cpp,NvRmHost1xWaiterFree
+5ff830,60,verified,src/nvidia/nvrm_host1x.cpp,NvRmHost1xWaiterFree
 5ff870,8,verified,src/nvidia/nvos_stubs.cpp,NvRmHost1xWaiterAllocateWithEventService
 5ff880,8,verified,src/nvidia/nvos_stubs.cpp,NvRmHost1xWaiterCreateEventNotifier
 5ff890,8,verified,src/nvidia/nvos_stubs.cpp,NvRmHost1xSyncpointCreateReadOnlyMemHandle
@@ -20106,6 +20106,17 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 601e10,92,verified,src/nvidia/nvrm_mem_query.cpp,NvRmMemQuery
 601e70,8,verified,src/nvidia/nvos_stubs.cpp,NvRmMemIsHwVprHeap
 601e80,16,verified,src/nvidia/nvrm_mem.cpp,NvRmMemEstablishVprHeap
+602eb0,180,verified,src/nvidia/nvrm_host1x_stream.cpp,NvRmHost1xStreamCreate
+602fb0,96,verified,src/nvidia/nvrm_host1x_stream.cpp,NvRmHost1xStreamFree
+603010,320,verified,src/nvidia/nvrm_host1x_stream.cpp,NvRmHost1xStreamBegin
+603150,204,verified,src/nvidia/nvrm_host1x_stream.cpp,NvRmHost1xStreamEnd
+6032a0,200,verified,src/nvidia/nvrm_host1x_stream.cpp,NvRmHost1xStreamPushIncr
+603370,200,verified,src/nvidia/nvrm_host1x_stream.cpp,NvRmHost1xStreamPushNonIncr
+603440,176,verified,src/nvidia/nvrm_host1x_stream.cpp,NvRmHost1xStreamPushMask
+603510,200,verified,src/nvidia/nvrm_host1x_stream.cpp,NvRmHost1xStreamPushImm
+6035e0,212,verified,src/nvidia/nvrm_host1x_stream.cpp,NvRmHost1xStreamPushWords
+6036c0,288,verified,src/nvidia/nvrm_host1x_stream.cpp,NvRmHost1xStreamPushBufferAddress
+603ac0,200,verified,src/nvidia/nvrm_host1x_stream.cpp,NvRmHost1xStreamFlush
 604fd0,8,verified,src/nvidia/nvos_stubs.cpp,NvRmSurfaceGetDefaultLayout
 605ad0,8,verified,src/nvidia/nvrm_surface.cpp,NvRmSurfaceSetup
 605f50,8,verified,src/nvidia/nvos_stubs.cpp,NvRmSurfaceDebugControlInternal
