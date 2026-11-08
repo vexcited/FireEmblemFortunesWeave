@@ -14229,6 +14229,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 7473b0,24,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::Mind::UpdateSubTarget()::$_0, void (game::map::TargetData const&)>::__clone(__base*)"
 7473d0,4,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::Mind::UpdateSubTarget()::$_0, void (game::map::TargetData const&)>::destroy()"
 7473e0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::Mind::UpdateSubTarget()::$_0, void (game::map::TargetData const&)>::destroy_deallocate()"
+7473f0,76,verified,src/game/game_trivial_requests.cpp,_Z15GameStub_7473f0mm
 747440,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::Mind::UpdateSubTarget()::$_0, void (game::map::TargetData const&)>::target(std::type_info const&)"
 747460,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::Mind::UpdateSubTarget()::$_0, void (game::map::TargetData const&)>::target_type()"
 747470,4,verified,src/game/game_trivial.cpp,_Z15GameStub_747470v
@@ -14237,6 +14238,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 747500,24,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::Mind::SetTargetList(game::map::TargetList const&)::$_0, void (game::map::TargetData const&)>::__clone(__base*)"
 747520,4,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::Mind::SetTargetList(game::map::TargetList const&)::$_0, void (game::map::TargetData const&)>::destroy()"
 747530,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::Mind::SetTargetList(game::map::TargetList const&)::$_0, void (game::map::TargetData const&)>::destroy_deallocate()"
+747540,76,verified,src/game/game_trivial_requests.cpp,_Z15GameStub_747540mm
 747590,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::Mind::SetTargetList(game::map::TargetList const&)::$_0, void (game::map::TargetData const&)>::target(std::type_info const&)"
 7475b0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::Mind::SetTargetList(game::map::TargetList const&)::$_0, void (game::map::TargetData const&)>::target_type()"
 7479b0,80,verified,src/memory/new_delete.cpp,deleting destructor at 0x7479b0
@@ -14720,6 +14722,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 7822f0,24,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::VTarget::Enumerate()::$_0, void (game::map::TargetData const&)>::__clone(__base*)"
 782310,4,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::VTarget::Enumerate()::$_0, void (game::map::TargetData const&)>::destroy()"
 782320,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::VTarget::Enumerate()::$_0, void (game::map::TargetData const&)>::destroy_deallocate()"
+782330,76,verified,src/game/game_trivial_requests.cpp,_Z15GameStub_782330mm
 782380,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::VTarget::Enumerate()::$_0, void (game::map::TargetData const&)>::target(std::type_info const&)"
 7823a0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::VTarget::Enumerate()::$_0, void (game::map::TargetData const&)>::target_type()"
 787750,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::VTarget::GetDataNextSelect(int, bool, bool) const::$_0, float (int)>::deleting destructor"
@@ -18519,6 +18522,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 900640,24,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::BattleTarget::Commit(game::map::Mind const*)::$_0, void (game::map::TargetData const&)>::__clone(__base*)"
 900660,4,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::BattleTarget::Commit(game::map::Mind const*)::$_0, void (game::map::TargetData const&)>::destroy()"
 900670,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::BattleTarget::Commit(game::map::Mind const*)::$_0, void (game::map::TargetData const&)>::destroy_deallocate()"
+900680,76,verified,src/game/game_trivial_requests.cpp,_Z15GameStub_900680mm
 9006d0,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::BattleTarget::Commit(game::map::Mind const*)::$_0, void (game::map::TargetData const&)>::target(std::type_info const&)"
 9006f0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::BattleTarget::Commit(game::map::Mind const*)::$_0, void (game::map::TargetData const&)>::target_type()"
 900700,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::BattleTarget::Commit(game::map::MindConst::Type, game::Unit const*, game::Unit const*, game::SkillData const*)::$_0, void (game::map::TargetData const&)>::deleting destructor"
@@ -18526,6 +18530,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 900780,24,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::BattleTarget::Commit(game::map::MindConst::Type, game::Unit const*, game::Unit const*, game::SkillData const*)::$_0, void (game::map::TargetData const&)>::__clone(__base*)"
 9007a0,4,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::BattleTarget::Commit(game::map::MindConst::Type, game::Unit const*, game::Unit const*, game::SkillData const*)::$_0, void (game::map::TargetData const&)>::destroy()"
 9007b0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::BattleTarget::Commit(game::map::MindConst::Type, game::Unit const*, game::Unit const*, game::SkillData const*)::$_0, void (game::map::TargetData const&)>::destroy_deallocate()"
+9007c0,76,verified,src/game/game_trivial_requests.cpp,_Z15GameStub_9007c0mm
 900810,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::BattleTarget::Commit(game::map::MindConst::Type, game::Unit const*, game::Unit const*, game::SkillData const*)::$_0, void (game::map::TargetData const&)>::target(std::type_info const&)"
 900830,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::BattleTarget::Commit(game::map::MindConst::Type, game::Unit const*, game::Unit const*, game::SkillData const*)::$_0, void (game::map::TargetData const&)>::target_type()"
 900840,60,verified,src/game/game_trivial_functions.cpp,_Z15GameStub_900840m
@@ -33818,6 +33823,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 104ab70,24,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::MapDrawTargetSelectInfo::TryAddTargetItem(game::UnitItem const&)::$_0, void (game::map::TargetData const&)>::__clone(__base*)"
 104ab90,4,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::MapDrawTargetSelectInfo::TryAddTargetItem(game::UnitItem const&)::$_0, void (game::map::TargetData const&)>::destroy()"
 104aba0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::MapDrawTargetSelectInfo::TryAddTargetItem(game::UnitItem const&)::$_0, void (game::map::TargetData const&)>::destroy_deallocate()"
+104abb0,76,verified,src/game/game_trivial_requests.cpp,_Z16GameStub_104abb0mm
 104ac00,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::MapDrawTargetSelectInfo::TryAddTargetItem(game::UnitItem const&)::$_0, void (game::map::TargetData const&)>::target(std::type_info const&)"
 104ac20,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::MapDrawTargetSelectInfo::TryAddTargetItem(game::UnitItem const&)::$_0, void (game::map::TargetData const&)>::target_type()"
 104ac30,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::MapDrawTargetSelectInfo::TryAddTargetSkill(game::UnitSkill const&)::$_0, void (game::UnitItem const&)>::deleting destructor"
@@ -33832,6 +33838,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 104ae80,24,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::MapDrawTargetSelectInfo::TryAddTargetSkill(game::UnitSkill const&)::$_1, void (game::map::TargetData const&)>::__clone(__base*)"
 104aea0,4,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::MapDrawTargetSelectInfo::TryAddTargetSkill(game::UnitSkill const&)::$_1, void (game::map::TargetData const&)>::destroy()"
 104aeb0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::MapDrawTargetSelectInfo::TryAddTargetSkill(game::UnitSkill const&)::$_1, void (game::map::TargetData const&)>::destroy_deallocate()"
+104aec0,76,verified,src/game/game_trivial_requests.cpp,_Z16GameStub_104aec0mm
 104af10,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::MapDrawTargetSelectInfo::TryAddTargetSkill(game::UnitSkill const&)::$_1, void (game::map::TargetData const&)>::target(std::type_info const&)"
 104af30,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::map::MapDrawTargetSelectInfo::TryAddTargetSkill(game::UnitSkill const&)::$_1, void (game::map::TargetData const&)>::target_type()"
 104c620,24,verified,src/llvm-libcxx-21/libcxx/include/__vector/vector.h,std::vector<T>::__throw_length_error()
@@ -38566,6 +38573,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 1276a60,24,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::AITarget::EnumerateTalk(game::Unit const*, int, int)::$_0, void (game::map::TargetData const&)>::__clone(__base*)"
 1276a80,4,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::AITarget::EnumerateTalk(game::Unit const*, int, int)::$_0, void (game::map::TargetData const&)>::destroy()"
 1276a90,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::AITarget::EnumerateTalk(game::Unit const*, int, int)::$_0, void (game::map::TargetData const&)>::destroy_deallocate()"
+1276aa0,76,verified,src/game/game_trivial_requests.cpp,_Z16GameStub_1276aa0mm
 1276af0,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::AITarget::EnumerateTalk(game::Unit const*, int, int)::$_0, void (game::map::TargetData const&)>::target(std::type_info const&)"
 1276b10,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::AITarget::EnumerateTalk(game::Unit const*, int, int)::$_0, void (game::map::TargetData const&)>::target_type()"
 1276b20,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::AITarget::EnumerateAssist(game::Unit const*, int, int, int)::$_0, void (game::map::TargetData const&)>::deleting destructor"
@@ -38580,6 +38588,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 1276cf0,24,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::AITarget::EnumerateSkill(game::Unit const*, int, int, game::SkillData const*, game::map::MindConst::Type)::$_0, void (game::map::TargetData const&)>::__clone(__base*)"
 1276d10,4,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::AITarget::EnumerateSkill(game::Unit const*, int, int, game::SkillData const*, game::map::MindConst::Type)::$_0, void (game::map::TargetData const&)>::destroy()"
 1276d20,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::AITarget::EnumerateSkill(game::Unit const*, int, int, game::SkillData const*, game::map::MindConst::Type)::$_0, void (game::map::TargetData const&)>::destroy_deallocate()"
+1276d30,76,verified,src/game/game_trivial_requests.cpp,_Z16GameStub_1276d30mm
 1276d80,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::AITarget::EnumerateSkill(game::Unit const*, int, int, game::SkillData const*, game::map::MindConst::Type)::$_0, void (game::map::TargetData const&)>::target(std::type_info const&)"
 1276da0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::AITarget::EnumerateSkill(game::Unit const*, int, int, game::SkillData const*, game::map::MindConst::Type)::$_0, void (game::map::TargetData const&)>::target_type()"
 1276db0,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::AITarget::EnumerateEscape(game::Unit const*, int, int)::$_0, void (game::map::TargetData const&)>::deleting destructor"
@@ -38587,6 +38596,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 1276e30,24,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::AITarget::EnumerateEscape(game::Unit const*, int, int)::$_0, void (game::map::TargetData const&)>::__clone(__base*)"
 1276e50,4,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::AITarget::EnumerateEscape(game::Unit const*, int, int)::$_0, void (game::map::TargetData const&)>::destroy()"
 1276e60,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::AITarget::EnumerateEscape(game::Unit const*, int, int)::$_0, void (game::map::TargetData const&)>::destroy_deallocate()"
+1276e70,76,verified,src/game/game_trivial_requests.cpp,_Z16GameStub_1276e70mm
 1276ec0,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::AITarget::EnumerateEscape(game::Unit const*, int, int)::$_0, void (game::map::TargetData const&)>::target(std::type_info const&)"
 1276ee0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::AITarget::EnumerateEscape(game::Unit const*, int, int)::$_0, void (game::map::TargetData const&)>::target_type()"
 1276ef0,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::AITarget::EnumerateCannon(game::Unit const*, game::map::TrickData const*)::$_0, void (game::map::TargetData const&)>::deleting destructor"
@@ -38594,6 +38604,7 @@ fffc80,44,verified,src/memory/new_delete.cpp,deleting destructor at 0xfffc80
 1276f70,24,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::AITarget::EnumerateCannon(game::Unit const*, game::map::TrickData const*)::$_0, void (game::map::TargetData const&)>::__clone(__base*)"
 1276f90,4,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::AITarget::EnumerateCannon(game::Unit const*, game::map::TrickData const*)::$_0, void (game::map::TargetData const&)>::destroy()"
 1276fa0,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::AITarget::EnumerateCannon(game::Unit const*, game::map::TrickData const*)::$_0, void (game::map::TargetData const&)>::destroy_deallocate()"
+1276fb0,76,verified,src/game/game_trivial_requests.cpp,_Z16GameStub_1276fb0mm
 1277000,28,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::AITarget::EnumerateCannon(game::Unit const*, game::map::TrickData const*)::$_0, void (game::map::TargetData const&)>::target(std::type_info const&)"
 1277020,12,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::AITarget::EnumerateCannon(game::Unit const*, game::map::TrickData const*)::$_0, void (game::map::TargetData const&)>::target_type()"
 1277030,44,verified,src/llvm-libcxx-21/libcxx/include/__functional/function.h,"std::__1::__function::__func<game::AITarget::EnumerateSub(int)::$_0, void (game::map::TargetData const&)>::deleting destructor"
