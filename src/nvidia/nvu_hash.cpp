@@ -7,7 +7,7 @@ struct NvUHash {
   uint64_t reserved08;
   int32_t slotCount;
   int32_t used;
-  uint32_t capacity;
+  int32_t occupied;
   void* pTable;
   uint64_t reserved28;
   uint64_t* keys;
@@ -27,6 +27,7 @@ namespace {
 const uint32_t NvUHashGolden = 0x9e3779b9;
 const uint64_t NvUHashFreeKey = UINT64_MAX - 2;
 const uint64_t NvUHashDeletedKey = UINT64_MAX - 1;
+const uint64_t NvUHashEmptyKey = UINT64_MAX;
 const uint32_t NvUHashDeletedFlag = 2;
 const uint32_t NvUHashMinSlots = 9;
 
@@ -54,7 +55,7 @@ extern "C" void NvUHashDeinit(NvUHash* hash) {
   NvOsFree(hash->pTable);
   hash->slotCount = 0;
   hash->used = 0;
-  hash->capacity = 0;
+  hash->occupied = 0;
   hash->pTable = nullptr;
   hash->keys = nullptr;
   hash->flags = nullptr;
@@ -65,7 +66,7 @@ extern "C" void NvUHashClear(NvUHash* hash) {
   NvOsFree(hash->pTable);
   hash->slotCount = 0;
   hash->used = 0;
-  hash->capacity = 0;
+  hash->occupied = 0;
   hash->pTable = nullptr;
   hash->keys = nullptr;
   hash->flags = nullptr;
@@ -173,6 +174,54 @@ extern "C" uint32_t NvUScalarHash32(uint32_t key) {
   uint32_t c = key;
   Mix(a, b, c);
   return c;
+}
+
+// Grows once 3/4 of the slots ever held a key, rehashing in place when live
+// keys fill less than 9/16 of them.
+extern "C" bool NvUHashInsert(NvUHash* hash, uint64_t key, uint64_t value,
+  bool useFlags) {
+  const uint32_t slotCount = hash->slotCount;
+  if (static_cast<int32_t>(slotCount * 192) <=
+    static_cast<int32_t>(static_cast<uint32_t>(hash->occupied) << 8)) {
+    const bool hasValues = key != value || hash->values != nullptr;
+    const int32_t doubled = static_cast<int32_t>(slotCount * 2);
+    const uint32_t grown = doubled > 8 ? doubled : 8;
+    const uint32_t target = static_cast<int32_t>(slotCount * 144) >
+      static_cast<int32_t>(static_cast<uint32_t>(hash->used) << 8) ?
+      slotCount : grown;
+    if (NvUHashResize(hash, target, hasValues, useFlags) == 0) {
+      return false;
+    }
+  }
+
+  if (key != value && hash->values == nullptr &&
+    NvUHashResize(hash, hash->slotCount, true, useFlags) == 0) {
+    return false;
+  }
+
+  const uint32_t hashValue = hash->hashFn(key) | 1;
+  const int32_t index = NvUHashFind(hash, key, hashValue, 1);
+  hash->used++;
+
+  if (hash->flags != nullptr) {
+    if (hash->flags[index] == 0) {
+      hash->occupied++;
+    }
+  }
+  else if (hash->keys[index] == NvUHashEmptyKey) {
+    hash->occupied++;
+  }
+
+  hash->keys[index] = key;
+  if (hash->values != nullptr) {
+    hash->values[index] = value;
+  }
+
+  if (hash->flags != nullptr) {
+    hash->flags[index] = hashValue;
+  }
+
+  return true;
 }
 
 // Shrinks the table while it stays under 3/16 full, then removes the key.
