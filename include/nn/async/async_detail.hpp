@@ -80,7 +80,8 @@ public:
   virtual ~Executable();
 
 private:
-  uint8_t m_Storage[40];
+  os::MutexType m_Mutex;
+  int32_t m_State;
 };
 
 enum SuspendableTaskFlag : int32_t {
