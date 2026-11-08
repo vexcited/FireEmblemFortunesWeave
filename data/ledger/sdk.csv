@@ -14038,6 +14038,8 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 4c3700,176,verified,src/nn/movie/detail/movie_heap.cpp,MovieStrdup
 4c37b0,168,verified,src/nn/movie/detail/movie_heap.cpp,MovieMallocUsableSize
 4c3d60,404,verified,src/nn/movie/detail/movie_media_extractor_state.cpp,_ZNK2nn5movie6detail19MediaExtractorState20ValidateCurrentStateENS2_23MediaExtractorFunctionsE
+4c42c0,364,verified,src/nn/movie/detail/movie_codec_utils.cpp,_ZN2nn5movie6detail26ParseAvccCodecSpecificDataEPcmPmPKvm
+4c4430,444,verified,src/nn/movie/detail/movie_codec_utils.cpp,_ZN2nn5movie6detail19MimeToMediaMimeTypeEPKc
 4c45f0,320,verified,src/nn/movie/detail/movie_compression_ratio.cpp,_ZN2nn5movie6detail27GetVideoMinCompressionRatioENS0_13MediaMimeTypeEi
 4c4790,4,verified,src/nn/movie/detail/movie_media_state.cpp,_ZN2nn5movie6detail10MediaStateD2Ev
 4c47a0,140,verified,src/nn/movie/detail/movie_media_state.cpp,_ZN2nn5movie6detail10MediaStateD0Ev
