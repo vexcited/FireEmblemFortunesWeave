@@ -20270,6 +20270,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 60c670,8,verified,src/nvidia/nvos_stubs.cpp,NvTegraSysGetFuseOPT_info
 60c680,32,verified,src/nvidia/nvtegra_sys.cpp,NvTegraSysGetPlatform
 60c6a0,12,verified,src/nvidia/nvtegra_sys.cpp,NvTegraSysGetCpuType
+60c6b0,172,verified,src/nvidia/nvtegra_sys.cpp,NvTegraSysInit
 60c760,8,verified,src/nvidia/nvos_stubs.cpp,NvTegraSysDeInit
 60c770,8,verified,src/nvidia/nvos_stubs.cpp,NvHvCheckOsNative
 60c780,8,verified,src/nvidia/nvos_stubs.cpp,NvHvGetOsVmId
