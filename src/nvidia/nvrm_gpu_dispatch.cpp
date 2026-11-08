@@ -6,6 +6,26 @@ struct NvRmGpuObject {
   const uintptr_t* ops;
 };
 
+// Calls without attributes use the read only defaults of the driver.
+[[gnu::visibility("hidden")]] extern const uint8_t
+  g_NvRmGpuChannelSetWatchdogDefaultAttributes[];
+[[gnu::visibility("hidden")]] extern const uint8_t
+  g_NvRmGpuTSGSubcontextCreateDefaultAttributes[];
+[[gnu::visibility("hidden")]] extern const uint8_t
+  g_NvRmGpuChannelSetBoostDefaultAttributes[];
+[[gnu::visibility("hidden")]] extern const uint8_t
+  g_NvRmGpuChannelSetTimeoutDefaultAttributes[];
+[[gnu::visibility("hidden")]] extern const uint8_t
+  g_NvRmGpuRegOpsSessionExecWithAttrDefaultAttributes[];
+[[gnu::visibility("hidden")]] extern const uint8_t
+  g_NvRmGpuRegOpsSessionComptagsMapDefaultAttributes[];
+[[gnu::visibility("hidden")]] extern const uint8_t
+  g_NvRmGpuRegOpsSessionComptagsUnmapDefaultAttributes[];
+[[gnu::visibility("hidden")]] extern const uint8_t
+  g_NvRmGpuProfilerV2VabConfigureDefaultAttributes[];
+[[gnu::visibility("hidden")]] extern const uint8_t
+  g_NvRmGpuProfilerV2VabFlushDefaultAttributes[];
+
 namespace {
 
 template <typename... Args>
@@ -406,4 +426,231 @@ extern "C" uint64_t NvRmGpuDeviceThermalAlertSetLimit(NvRmGpuObject* object,
 extern "C" uint64_t NvRmGpuDeviceEventSessionOpen(NvRmGpuObject* object,
   uintptr_t argument1, uintptr_t argument2) {
   return Dispatch(object, 0xc8, argument1, argument2);
+}
+
+extern "C" uint64_t NvRmGpuDeviceCacheControl(NvRmGpuObject* object,
+  uintptr_t argument1) {
+  if (argument1 == 0) {
+    return 4;
+  }
+
+  return Dispatch(object, 0x110, argument1);
+}
+
+extern "C" uint64_t NvRmGpuChannelSetWatchdog(NvRmGpuObject* object,
+  uintptr_t argument1, uintptr_t argument2) {
+  if (argument2 == 0) {
+    argument2 = reinterpret_cast<uintptr_t>(
+      g_NvRmGpuChannelSetWatchdogDefaultAttributes);
+  }
+
+  return Dispatch(object, 0x88, argument1, argument2);
+}
+
+extern "C" uint64_t NvRmGpuTaskSchedulingGroupReadSmErrorState(
+  NvRmGpuObject* object, uintptr_t argument1, uintptr_t argument2) {
+  if (argument1 == 0) {
+    return 11;
+  }
+
+  return Dispatch(object, 0x50, argument1, argument2);
+}
+
+extern "C" uint64_t NvRmGpuTSGSubcontextCreate(NvRmGpuObject* object,
+  uintptr_t argument1, uintptr_t argument2, uintptr_t argument3) {
+  if (argument2 == 0) {
+    argument2 = reinterpret_cast<uintptr_t>(
+      g_NvRmGpuTSGSubcontextCreateDefaultAttributes);
+  }
+
+  return Dispatch(object, 0x58, argument1, argument2, argument3);
+}
+
+extern "C" uint64_t NvRmGpuChannelGetErrorInfo(NvRmGpuObject* object,
+  uintptr_t argument1) {
+  if (argument1 == 0) {
+    return 4;
+  }
+
+  return Dispatch(object, 0xc0, argument1);
+}
+
+extern "C" uint64_t NvRmGpuCtxSwTraceGetFilter(NvRmGpuObject* object,
+  uintptr_t argument1, uintptr_t argument2) {
+  if (argument2 == 0) {
+    return 4;
+  }
+
+  return Dispatch(object, 0x58, argument1, argument2);
+}
+
+extern "C" uint64_t NvRmGpuAddressSpaceAllocationRemap(NvRmGpuObject* object,
+  uintptr_t argument1, uintptr_t argument2, uintptr_t argument3) {
+  if (argument3 == 0) {
+    return 4;
+  }
+
+  return Dispatch(object, 0x38, argument1, argument2, argument3);
+}
+
+extern "C" uint64_t NvRmGpuMappingModify(NvRmGpuObject* object,
+  uintptr_t argument1, uintptr_t argument2, uintptr_t argument3) {
+  if (argument3 == 0) {
+    return 4;
+  }
+
+  return Dispatch(object, 0x30, argument1, argument2, argument3);
+}
+
+extern "C" uint64_t NvRmGpuChannelSetBoost(NvRmGpuObject* object,
+  uintptr_t argument1, uintptr_t argument2) {
+  if (argument2 == 0) {
+    argument2 = reinterpret_cast<uintptr_t>(
+      g_NvRmGpuChannelSetBoostDefaultAttributes);
+  }
+
+  return Dispatch(object, 0x58, argument1, argument2);
+}
+
+extern "C" uint64_t NvRmGpuChannelSetTimeout(NvRmGpuObject* object,
+  uintptr_t argument1, uintptr_t argument2) {
+  if (argument2 == 0) {
+    argument2 = reinterpret_cast<uintptr_t>(
+      g_NvRmGpuChannelSetTimeoutDefaultAttributes);
+  }
+
+  return Dispatch(object, 0x80, argument1, argument2);
+}
+
+extern "C" uint64_t NvRmGpuChannelGetErrorNotification(NvRmGpuObject* object,
+  uintptr_t argument1) {
+  if (argument1 == 0) {
+    return 4;
+  }
+
+  return Dispatch(object, 0xc8, argument1);
+}
+
+extern "C" uint64_t NvRmGpuRegOpsSessionExecWithAttr(NvRmGpuObject* object,
+  uintptr_t argument1, uintptr_t argument2, uintptr_t argument3) {
+  if (argument3 == 0) {
+    argument3 = reinterpret_cast<uintptr_t>(
+      g_NvRmGpuRegOpsSessionExecWithAttrDefaultAttributes);
+  }
+
+  return Dispatch(object, 0x30, argument1, argument2, argument3);
+}
+
+extern "C" uint64_t NvRmGpuRegOpsSessionReadSingleSmErrorState(
+  NvRmGpuObject* object, uintptr_t argument1, uintptr_t argument2) {
+  if (argument1 == 0) {
+    return 11;
+  }
+
+  return Dispatch(object, 0x68, argument1, argument2);
+}
+
+extern "C" uint64_t NvRmGpuRegOpsSessionGetTimeoutMode(NvRmGpuObject* object,
+  uintptr_t argument1) {
+  if (argument1 == 0) {
+    return 4;
+  }
+
+  return Dispatch(object, 0xb8, argument1);
+}
+
+extern "C" uint64_t NvRmGpuRegOpsSessionGetGrContextSize(NvRmGpuObject* object,
+  uintptr_t argument1) {
+  if (argument1 == 0) {
+    return 4;
+  }
+
+  return Dispatch(object, 0xe8, argument1);
+}
+
+extern "C" uint64_t NvRmGpuRegOpsSessionComptagsMap(NvRmGpuObject* object,
+  uintptr_t argument1, uintptr_t argument2, uintptr_t argument3,
+  uintptr_t argument4) {
+  if (argument4 == 0) {
+    argument4 = reinterpret_cast<uintptr_t>(
+      g_NvRmGpuRegOpsSessionComptagsMapDefaultAttributes);
+  }
+
+  return Dispatch(object, 0xf8, argument1, argument2, argument3, argument4);
+}
+
+extern "C" uint64_t NvRmGpuRegOpsSessionComptagsUnmap(NvRmGpuObject* object,
+  uintptr_t argument1, uintptr_t argument2, uintptr_t argument3) {
+  if (argument3 == 0) {
+    argument3 = reinterpret_cast<uintptr_t>(
+      g_NvRmGpuRegOpsSessionComptagsUnmapDefaultAttributes);
+  }
+
+  return Dispatch(object, 0x100, argument1, argument2, argument3);
+}
+
+extern "C" uint64_t NvRmGpuProfilerV2VabConfigure(NvRmGpuObject* object,
+  uintptr_t argument1, uintptr_t argument2, uintptr_t argument3,
+  uintptr_t argument4) {
+  if (argument4 == 0) {
+    argument4 = reinterpret_cast<uintptr_t>(
+      g_NvRmGpuProfilerV2VabConfigureDefaultAttributes);
+  }
+
+  return Dispatch(object, 0x78, argument1, argument2, argument3, argument4);
+}
+
+extern "C" uint64_t NvRmGpuProfilerV2VabFlush(NvRmGpuObject* object,
+  uintptr_t argument1, uintptr_t argument2, uintptr_t argument3) {
+  if (argument3 == 0) {
+    argument3 = reinterpret_cast<uintptr_t>(
+      g_NvRmGpuProfilerV2VabFlushDefaultAttributes);
+  }
+
+  return Dispatch(object, 0x80, argument1, argument2, argument3);
+}
+
+extern "C" uint64_t NvRmGpuClockGetPoints(NvRmGpuObject* object,
+  uintptr_t argument1, uintptr_t argument2, uintptr_t argument3) {
+  if (argument3 == 0) {
+    return 4;
+  }
+
+  return Dispatch(object, 0x158, argument1, argument2, argument3);
+}
+
+extern "C" uint64_t NvRmGpuDeviceGetVoltage(NvRmGpuObject* object,
+  uintptr_t argument1, uintptr_t argument2) {
+  if (argument2 == 0) {
+    return 4;
+  }
+
+  return Dispatch(object, 0x180, argument1, argument2);
+}
+
+extern "C" uint64_t NvRmGpuDeviceGetCurrent(NvRmGpuObject* object,
+  uintptr_t argument1, uintptr_t argument2) {
+  if (argument2 == 0) {
+    return 4;
+  }
+
+  return Dispatch(object, 0x188, argument1, argument2);
+}
+
+extern "C" uint64_t NvRmGpuDeviceGetPower(NvRmGpuObject* object,
+  uintptr_t argument1, uintptr_t argument2) {
+  if (argument2 == 0) {
+    return 4;
+  }
+
+  return Dispatch(object, 0x190, argument1, argument2);
+}
+
+extern "C" uint64_t NvRmGpuDeviceGetTemperature(NvRmGpuObject* object,
+  uintptr_t argument1, uintptr_t argument2) {
+  if (argument2 == 0) {
+    return 4;
+  }
+
+  return Dispatch(object, 0x198, argument1, argument2);
 }
