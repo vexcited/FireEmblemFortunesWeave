@@ -4738,6 +4738,8 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 168e60,100,verified,src/nn/os/message_queue.cpp,_ZN2nn2os6detail37MultiWaitHolderOfMessageQueueNotEmpty20RemoveFromObjectListEv
 168ed0,8,verified,src/nn/os/multi_wait_scheduler.cpp,_ZNK2nn2os6detail29MultiWaitHolderOfNativeHandle10IsSignaledEv
 168ee0,16,verified,src/nn/os/multi_wait_scheduler.cpp,_ZNK2nn2os6detail29MultiWaitHolderOfNativeHandle15GetNativeHandleEPj
+168ef0,32,verified,src/nn/os/internal_critical_section_wrapper.cpp,_ZN2nn2os6detail30InternalCriticalSectionWrapper4lockEv
+168f10,32,verified,src/nn/os/internal_critical_section_wrapper.cpp,_ZN2nn2os6detail30InternalCriticalSectionWrapper6unlockEv
 168f40,4,verified,src/nn/os/synchronization.cpp,_ZN2nn2os6detail23InternalCriticalSection10InitializeEv
 168f50,4,verified,src/nn/os/thread_lifecycle.cpp,_ZN2nn2os6detail23InternalCriticalSection8FinalizeEv
 168f60,28,verified,src/nn/os/synchronization.cpp,_ZN2nn2os6detail23InternalCriticalSection5EnterEv
@@ -4936,6 +4938,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 170800,120,verified,src/nn/os/reader_writer_lock.cpp,_ZN2nn2os6detail29ReaderWriterLockImplByHorizon19TryAcquireWriteLockEPNS0_20ReaderWriterLockTypeE
 170880,204,verified,src/nn/os/reader_writer_lock.cpp,_ZN2nn2os6detail29ReaderWriterLockImplByHorizon16ReleaseWriteLockEPNS0_20ReaderWriterLockTypeE
 170f90,124,verified,src/nn/os/memory_queries.cpp,_ZN2nn2os20GetRemoteMemoryUsageEv
+171020,384,verified,src/nn/os/remote_region.cpp,_ZN2nn2os6detail19RemoteRegionManager18MapAtRandomAddressEPPvPFNS_6ResultEjPKvmEPFvjS7_mEjmm
 1711c0,168,verified,src/nn/nlibsdk/posix_tls.cpp,pthread_key_create
 171270,4,verified,src/nn/nlibsdk/posix_tls.cpp,_ZN2nn7nlibsdk6detail20DefaultKeyDestructorEPv
 171280,132,verified,src/nn/nlibsdk/posix_tls.cpp,pthread_key_delete
