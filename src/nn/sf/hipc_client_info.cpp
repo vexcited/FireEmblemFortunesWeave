@@ -72,6 +72,16 @@ Result TryConnectToHipcService(bool*, svc::Handle*, const char*) {
 
 }
 
+void InitializeForHipcServerSessionManagerHandler() {
+  if (hipc::server::g_CurrentClientInfoSlot.isInitialized) {
+    return;
+  }
+
+  NN_ABORT_UNLESS_RESULT_SUCCESS(os::SdkAllocateTlsSlot(
+    &hipc::server::g_CurrentClientInfoSlot.slot, nullptr));
+  hipc::server::g_CurrentClientInfoSlot.isInitialized = true;
+}
+
 uint64_t GetCurrentHipcClientIdOnServer() {
   if (!hipc::server::g_CurrentClientInfoSlot.isInitialized) {
     return 0;

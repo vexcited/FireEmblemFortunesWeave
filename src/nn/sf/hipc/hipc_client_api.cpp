@@ -8,15 +8,7 @@ struct CmifDomainObjectId;
 
 }
 
-namespace nn::sf::hipc {
-
-[[gnu::visibility("hidden")]] extern void (*g_ServerErrorHandler)(Result);
-
-void SetHipcErrorHandlerOnServer(void (*handler)(Result)) {
-  g_ServerErrorHandler = handler;
-}
-
-namespace client {
+namespace nn::sf::hipc::client {
 
 namespace detail {
 
@@ -66,8 +58,6 @@ Result DuplicateSessionEx(svc::Handle* pOutHandle, svc::Handle session,
   *pOutHandle = svc::Handle{handle.GetOsHandle()};
   handle.Detach();
   return {};
-}
-
 }
 
 }

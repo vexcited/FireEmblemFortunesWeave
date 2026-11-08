@@ -9,6 +9,7 @@ using ServerErrorHandler = void (*)(Result);
 extern ClientErrorHandler ClientErrorCallback;
 extern ServerErrorHandler ServerErrorCallback;
 ClientErrorHandler SetHipcErrorHandlerOnClient(ClientErrorHandler handler);
+void SetHipcErrorHandlerOnServer(ServerErrorHandler handler);
 
 namespace detail {
 

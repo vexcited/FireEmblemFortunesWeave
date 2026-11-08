@@ -10,6 +10,10 @@ ClientErrorHandler SetHipcErrorHandlerOnClient(ClientErrorHandler handler) {
   return handler;
 }
 
+void SetHipcErrorHandlerOnServer(ServerErrorHandler handler) {
+  ServerErrorCallback = handler;
+}
+
 namespace detail {
 
 void HandleHipcErrorOnClient(Result result) {
