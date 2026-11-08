@@ -173,7 +173,7 @@ namespace detail {
 }
 
 Result MountHost(const char* name, const char* rootPath) {
-  std::unique_ptr<fsa::ICommonMountNameGenerator> generator;
+  std::unique_ptr<HostCommonMountNameGenerator> generator;
   auto makeGenerator = [&]() -> Result {
     NN_FS_RESULT_DO(detail::CheckMountName(name));
     NN_FS_RESULT_THROW_UNLESS(rootPath != nullptr, ResultNullptrArgument());
@@ -202,7 +202,7 @@ Result MountHost(const char* name, const char* rootPath) {
 
 Result MountHost(const char* name, const char* rootPath,
   const MountHostOption& option) {
-  std::unique_ptr<fsa::ICommonMountNameGenerator> generator;
+  std::unique_ptr<HostCommonMountNameGenerator> generator;
   auto makeGenerator = [&]() -> Result {
     NN_FS_RESULT_DO(detail::CheckMountName(name));
     NN_FS_RESULT_THROW_UNLESS(rootPath != nullptr, ResultNullptrArgument());
