@@ -61,6 +61,7 @@ address,size,status,source,name
 26ee0,156,verified,src/nvidia/cuda_driver_object_impl.cpp,_Z24cuDeviceTotalMem_v2_implPmi
 27020,208,verified,src/nvidia/cuda_driver_device_impl.cpp,_Z25cuDeviceGetAttribute_implmji
 270f0,228,verified,src/nvidia/cuda_driver_object_impl.cpp,_Z26cuDeviceCanAccessPeer_implPjii
+27320,328,verified,src/nvidia/cuda_driver_multicast_impl.cpp,_Z29cuDevicePrimaryCtxRetain_implPmi
 27470,140,verified,src/nvidia/cuda_driver_query_impl.cpp,_Z30cuDevicePrimaryCtxRelease_impli
 27500,148,verified,src/nvidia/cuda_driver_device_impl.cpp,_Z33cuDevicePrimaryCtxRelease_v2_impli
 275a0,8,verified,src/nvidia/cuda_driver_small_impl.cpp,_Z31cuDevicePrimaryCtxSetFlags_impljj
@@ -122,11 +123,14 @@ address,size,status,source,name
 29690,184,verified,src/nvidia/cuda_driver_query_impl.cpp,_Z24cuFuncSetSharedSize_implmj
 29750,220,verified,src/nvidia/cuda_driver_object_impl.cpp,_Z25cuFuncSetCacheConfig_implmj
 29830,220,verified,src/nvidia/cuda_driver_object_impl.cpp,_Z29cuFuncSetSharedMemConfig_implmj
+29910,428,verified,src/nvidia/cuda_driver_multicast_impl.cpp,_Z23cuFuncGetAttribute_implmjm
 29ac0,184,verified,src/nvidia/cuda_driver_device_impl.cpp,_Z23cuFuncSetAttribute_implmjj
 29b80,288,verified,src/nvidia/cuda_driver_occupancy_impl.cpp,_Z24cuModuleGetFunction_implPmmPKc
 29ca0,180,verified,src/nvidia/cuda_driver_object_impl.cpp,_Z20cuFuncGetModule_implPmm
 29d60,180,verified,src/nvidia/cuda_driver_query_impl.cpp,_Z18cuFuncGetName_implPmm
 29e20,276,verified,src/nvidia/cuda_driver_node_impl.cpp,_Z23cuFuncGetParamInfo_implmmPmS_
+29f40,260,verified,src/nvidia/cuda_driver_multicast_impl.cpp,_Z29cuModuleGetFunctionCount_implPjm
+2a060,248,verified,src/nvidia/cuda_driver_multicast_impl.cpp,_Z31cuModuleEnumerateFunctions_implPmjm
 2a160,208,verified,src/nvidia/cuda_driver_object_impl.cpp,_Z19cuFuncIsLoaded_implPjm
 2a230,124,verified,src/nvidia/cuda_driver_device_impl.cpp,_Z15cuFuncLoad_implm
 2a2b0,8,verified,src/nvidia/cuda_driver_small_impl.cpp,_Z18cuGLCtxCreate_implmjj
@@ -144,6 +148,7 @@ address,size,status,source,name
 2b510,220,verified,src/nvidia/cuda_driver_query_impl.cpp,_Z29cuGraphReleaseUserObject_implmmi
 2b5f0,200,verified,src/nvidia/cuda_driver_object_impl.cpp,_Z18cuGraphCreate_implPmj
 2be90,124,verified,src/nvidia/cuda_driver_graph_impl.cpp,_Z31cuGraphKernelNodeGetParams_implmP20CudaKernelNodeParams
+2c450,152,verified,src/nvidia/cuda_driver_multicast_impl.cpp,_Z34cuGraphKernelNodeGetParams_v2_implmP22CudaKernelNodeParamsV2
 2c4f0,252,verified,src/nvidia/cuda_driver_resource_impl.cpp,_Z34cuGraphKernelNodeSetParams_v2_implmm
 2c7a0,204,verified,src/nvidia/cuda_driver_query_impl.cpp,_Z24cuGraphAddEmptyNode_implPmmmm
 2c970,8,verified,src/nvidia/cuda_driver_small_impl.cpp,_Z20cuGraphGetNodes_implmmm
@@ -190,9 +195,11 @@ address,size,status,source,name
 2f3d0,148,verified,src/nvidia/cuda_driver_query_impl.cpp,_Z47cuGraphExternalSemaphoresWaitNodeSetParams_implmm
 2f470,16,verified,src/nvidia/cuda_driver_resource_impl.cpp,_Z27cuGraphAddMemAllocNode_implPmmmmm
 2f480,264,verified,src/nvidia/cuda_driver_resource_impl.cpp,_Z19CudaAddMemAllocNodePmmmmmm
+2f590,192,verified,src/nvidia/cuda_driver_multicast_impl.cpp,_Z33cuGraphMemAllocNodeGetParams_implmP22CudaMemAllocNodeParams
 2f650,216,verified,src/nvidia/cuda_driver_graph_impl.cpp,_Z26cuGraphAddMemFreeNode_implPmmmmm
 2f730,156,verified,src/nvidia/cuda_driver_graph_impl.cpp,_Z32cuGraphMemFreeNodeGetParams_implmPm
 2f7d0,132,verified,src/nvidia/cuda_driver_device_impl.cpp,_Z25cuDeviceGraphMemTrim_impli
+2f860,288,verified,src/nvidia/cuda_driver_multicast_impl.cpp,_Z33cuDeviceGetGraphMemAttribute_implijPm
 2f900,148,verified,src/nvidia/cuda_driver_context_impl.cpp,_Z33cuDeviceSetGraphMemAttribute_impljjm
 2f9a0,12,verified,src/nvidia/cuda_driver_node_impl.cpp,_Z27cuGraphAddDependencies_implmPmS_m
 2f9c0,276,verified,src/nvidia/cuda_driver_node_impl.cpp,_Z30cuGraphAddDependencies_v2_implmPmS_mm
@@ -343,6 +350,7 @@ address,size,status,source,name
 408a0,284,verified,src/nvidia/cuda_driver_copy_described_impl.cpp,_Z24cuMemcpy3DPeer_ptds_implPK16CudaMemcpy3DPeer
 40a60,288,verified,src/nvidia/cuda_driver_copy_described_impl.cpp,_Z24cuMemcpy3DPeerAsync_implPK16CudaMemcpy3DPeerm
 40c30,288,verified,src/nvidia/cuda_driver_copy_described_impl.cpp,_Z29cuMemcpy3DPeerAsync_ptsz_implPK16CudaMemcpy3DPeerm
+41000,416,verified,src/nvidia/cuda_driver_multicast_impl.cpp,_Z21cuMemAddressFree_implmm
 41340,156,verified,src/nvidia/cuda_driver_object_impl.cpp,_Z17cuMemRelease_implm
 416b0,364,verified,src/nvidia/cuda_driver_resource_impl.cpp,_Z15cuMemUnmap_implmm
 42250,220,verified,src/nvidia/cuda_driver_pool_impl.cpp,_Z34cuMemGetAllocationGranularity_implPmmj
@@ -359,6 +367,7 @@ address,size,status,source,name
 434d0,300,verified,src/nvidia/cuda_driver_occupancy_impl.cpp,_Z20cuMemPoolCreate_implPmm
 43a40,8,verified,src/nvidia/cuda_driver_small_impl.cpp,_Z28cuMemAllocFromPoolAsync_implmmmm
 43a50,8,verified,src/nvidia/cuda_driver_small_impl.cpp,_Z33cuMemAllocFromPoolAsync_ptsz_implmmmm
+43c10,292,verified,src/nvidia/cuda_driver_multicast_impl.cpp,_Z39cuMemPoolImportFromShareableHandle_implPmmjm
 440a0,80,verified,src/nvidia/cuda_driver_memset_impl.cpp,_Z15cuMemsetD8_impljhj
 440f0,76,verified,src/nvidia/cuda_driver_memset_impl.cpp,_Z18cuMemsetD8_v2_implmhm
 44140,80,verified,src/nvidia/cuda_driver_memset_impl.cpp,_Z23cuMemsetD8_v2_ptds_implmhm
@@ -396,6 +405,8 @@ address,size,status,source,name
 45950,104,verified,src/nvidia/cuda_driver_query_impl.cpp,_Z25cuModuleGetGlobal_v2_implPmS_mm
 459c0,88,verified,src/nvidia/cuda_driver_context_impl.cpp,_Z27cuModuleGetLoadingMode_implPj
 45a20,240,verified,src/nvidia/cuda_driver_resource_impl.cpp,_Z22cuMulticastCreate_implPmm
+45da0,240,verified,src/nvidia/cuda_driver_multicast_impl.cpp,_Z23cuMulticastBindMem_implmmmmmm
+46320,244,verified,src/nvidia/cuda_driver_multicast_impl.cpp,_Z22cuMulticastUnbind_implmimm
 46440,200,verified,src/nvidia/cuda_driver_object_impl.cpp,_Z25cuMulticastAddDevice_implmi
 46520,172,verified,src/nvidia/cuda_driver_pool_impl.cpp,_Z30cuMulticastGetGranularity_implPmmj
 46610,32,verified,src/nvidia/cuda_driver_misc_impl.cpp,_Z21cuNNSetAllocator_implmmmm
