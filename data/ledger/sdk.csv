@@ -23560,12 +23560,16 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 7a0030,88,verified,src/nnmusl/nnmusl_libc_misc2.cpp,ferror
 7a00a0,588,verified,src/libc/stdio_flush.cpp,fflush
 7a0410,68,verified,src/musl/src/stdio/fgetpos.c,fgetpos64
+7a0460,372,verified,src/nnmusl/stdio/fgets.c,fgets_unlocked
+7a0840,180,verified,src/nnmusl/stdio/fgetws.c,fgetws_unlocked
 7a0910,112,verified,src/nnmusl/nnmusl_libc_misc3.cpp,fileno_unlocked
 7a0bf0,112,verified,src/musl/src/stdio/fmemopen.c,mwrite
 7a0d90,8,verified,src/musl/src/stdio/fmemopen.c,mclose
 7a1160,108,verified,src/musl/src/stdio/fprintf.c,fprintf
 7a11d0,80,verified,src/musl/src/stdio/fputs.c,fputs_unlocked
+7a1220,300,verified,src/musl/src/stdio/fputwc.c,putwc_unlocked
 7a1350,120,verified,src/musl/src/stdio/fputwc.c,fputwc
+7a13e0,256,verified,src/musl/src/stdio/fputws.c,fputws_unlocked
 7a1600,108,verified,src/musl/src/stdio/fscanf.c,fscanf
 7a1870,4,verified,src/nnmusl/nnmusl_libc_forwarders2.cpp,fseek
 7a1880,12,verified,src/nnmusl/nnmusl_libc_forwarders2.cpp,fsetpos
@@ -23573,6 +23577,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 7a1950,188,verified,src/nnmusl/nnmusl_stdio_position.cpp,ftell
 7a1a10,108,verified,src/musl/src/stdio/fwprintf.c,fwprintf
 7a1a80,304,verified,src/musl/src/stdio/fwrite.c,__fwritex
+7a1bc0,404,verified,src/musl/src/stdio/fwrite.c,fwrite_unlocked
 7a1d60,108,verified,src/musl/src/stdio/fwscanf.c,fwscanf
 7a1dd0,32,verified,src/nnmusl/nnmusl_libc_misc.cpp,fgetc_unlocked
 7a1df0,52,verified,src/musl/src/stdio/getchar_unlocked.c,getchar_unlocked
@@ -23580,9 +23585,11 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 7a2260,60,verified,src/musl/src/stdio/getw.c,getw
 7a22a0,4,verified,src/musl/src/stdio/getwc.c,getwc
 7a22b0,12,verified,src/musl/src/stdio/getwchar.c,getwchar_unlocked
+7a22c0,296,verified,src/musl/src/stdio/perror.c,perror
 7a23f0,136,verified,src/musl/src/stdio/printf.c,printf
 7a2480,60,verified,src/nnmusl/nnmusl_libc_misc2.cpp,fputc_unlocked
 7a24c0,76,verified,src/nnmusl/nnmusl_libc_misc2.cpp,putchar_unlocked
+7a2510,228,verified,src/musl/src/stdio/puts.c,puts
 7a2600,56,verified,src/musl/src/stdio/putw.c,putw
 7a2640,4,verified,src/musl/src/stdio/putwc.c,putwc
 7a2650,12,verified,src/musl/src/stdio/putwchar.c,putwchar_unlocked
@@ -23596,6 +23603,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 7a28a0,108,verified,src/musl/src/stdio/sscanf.c,sscanf
 7a2910,108,verified,src/musl/src/stdio/swscanf.c,swscanf
 7a2980,196,verified,src/nnmusl/nnmusl_libc_misc4.cpp,ungetc
+7a2a50,356,verified,src/musl/src/stdio/ungetwc.c,ungetwc
 7a2bc0,180,verified,src/musl/src/stdio/vasprintf.c,vasprintf
 7a2c80,132,verified,src/musl/src/stdio/vdprintf.c,vdprintf
 7a3970,68,verified,src/musl/src/stdio/vprintf.c,vprintf
@@ -23729,8 +23737,8 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 7aa390,104,verified,src/nnmusl/math/sincosf_reduce.c,__sincosf_reduce_large
 7aa400,340,verified,src/musl/src/math/erf.c,erf
 7aa9a0,384,verified,src/musl/src/math/erf.c,erfc
-7aab20,312,verified,src/nnmusl/math/exp.c,exp
-7aac80,368,verified,src/nnmusl/math/exp.c,__exp_dd
+7aab20,352,verified,src/nnmusl/math/exp.c,exp
+7aac80,396,verified,src/nnmusl/math/exp.c,__exp_dd
 7aae80,508,verified,src/nnmusl/math/exp2.c,exp2
 7ab090,244,verified,src/libm/exp_power.cpp,expf
 7ab190,620,verified,src/musl/src/math/expm1.c,expm1
@@ -23856,7 +23864,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 7b6920,32,verified,src/nnmusl/nnmusl_math_ld.c,erfcl
 7b6940,112,verified,src/musl/src/math/exp10.c,pow10
 7b69f0,116,verified,src/musl/src/math/exp10f.c,pow10f
-7b6b80,140,verified,src/nnmusl/math/exp2f.c,exp2f
+7b6b80,164,verified,src/nnmusl/math/exp2f.c,exp2f
 7b6c30,696,verified,src/musl/src/math/exp2l.c,exp2l
 7b6f10,32,verified,src/nnmusl/nnmusl_math_ld.c,expl
 7b6f30,32,verified,src/nnmusl/nnmusl_math_ld.c,expm1l
