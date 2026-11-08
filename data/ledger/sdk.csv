@@ -1823,7 +1823,7 @@ afba0,36,verified,src/nnmusl/nnmusl_unsupported.c,readlinkat
 afbe0,184,verified,src/nnmusl/stdlib/realpath.c,realpath
 afca0,404,verified,src/nnmusl/stdlib/canonicalize.c,__nnmusl_canonicalize
 afea0,472,verified,src/nnmusl/fcntl/statvfs.c,statvfs
-b0080,284,verified,src/nnmusl/unistd/sysconf.c,sysconf
+b0080,292,verified,src/nnmusl/unistd/sysconf.c,sysconf
 b0210,36,verified,src/nnmusl/nnmusl_unsupported.c,futimens
 b0240,36,verified,src/nnmusl/nnmusl_unsupported.c,utimensat
 b0270,36,verified,src/nnmusl/nnmusl_unsupported.c,utimes
@@ -5079,7 +5079,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 1765e0,308,verified,src/nn/sf/cmif/client/cmif_client_extra_message.cpp,_ZN2nn2sf4hipc6client18Hipc2ProxyKindBaseILNS1_6detail11MessageTypeE6EE7ProcessILb1EJNS0_4cmif6client6detail5InRawImEENSA_8InHandleILb0EEESC_SC_EEENS_6ResultEPKNS6_14ProxyKindStateEDpNT0_9ParameterEi
 177e60,348,verified,src/nn/ro/ro_module.cpp,_ZN2nn2ro6detail8RoModule13BindVariablesEPKS2_
 178000,180,verified,src/nn/ro/ro_module.cpp,_ZN2nn2ro6detail8RoModule16RestoreVariablesEPS2_
-1780c0,296,verified,src/nn/ro/ro_module.cpp,_ZN2nn2ro6detail8RoModule15RevertReferenceEPS2_PFvPKcE
+1780c0,312,verified,src/nn/ro/ro_module.cpp,_ZN2nn2ro6detail8RoModule15RevertReferenceEPS2_PFvPKcE
 178220,164,verified,src/nn/ro/ro_module.cpp,_ZN2nn2ro6detail8RoModule16RestoreFunctionsEPS2_PFvPKcE
 1782e0,308,verified,src/nn/ro/ro_module.cpp,_ZN2nn2ro6detail4BindEPNS1_8RoModuleEj
 178420,172,verified,src/nn/ro/ro_module.cpp,_ZN2nn2ro6detail18LookupGlobalManualEPKNS1_8RoModuleEPKc
@@ -5898,7 +5898,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 1a5eb0,124,verified,src/nn/util/nlib_input_stream.cpp,_ZN2nn4util4nlib15NullInputStreamC2Ev
 1a5f30,8,verified,src/nn/util/nlib_input_stream.cpp,_ZN2nn4util4nlib15NullInputStream11FillBuffer_EPvm
 1a5f40,8,verified,src/nn/util/nlib_input_stream.cpp,_ZN2nn4util4nlib15NullInputStream5Skip_Em
-1a5f50,448,verified,src/nn/util/nlib_output_stream.cpp,_ZN2nn4util4nlib12OutputStream6Write_EPKvm
+1a5f50,488,verified,src/nn/util/nlib_output_stream.cpp,_ZN2nn4util4nlib12OutputStream6Write_EPKvm
 1a6140,176,verified,src/nn/util/nlib_output_stream.cpp,_ZN2nn4util4nlib12OutputStream14GetWorkBuffer_Ev
 1a61f0,280,verified,src/nn/util/nlib_output_stream.cpp,_ZN2nn4util4nlib12OutputStream6Flush_Eb
 1a6310,16,verified,src/nn/util/nlib_output_stream.cpp,_ZN2nn4util4nlib12OutputStream14GetWorkBuffer_EPm
@@ -16296,7 +16296,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 575c30,8,verified,src/nandroid/libstagefright/mpeg2ts/AnotherPacketSource.cpp,_ZN8nandroid19AnotherPacketSource5startEPNS_8MetaDataE
 575c40,8,verified,src/nandroid/libstagefright/mpeg2ts/AnotherPacketSource.cpp,_ZN8nandroid19AnotherPacketSource4stopEv
 575c60,440,verified,src/nandroid/libstagefright/mpeg2ts/AnotherPacketSource.cpp,_ZN8nandroid19AnotherPacketSource9getFormatEv
-575e40,884,verified,src/nandroid/libstagefright/mpeg2ts/AnotherPacketSource.cpp,_ZN8nandroid19AnotherPacketSource17dequeueAccessUnitEPNS_2spINS_7ABufferEEE
+575e40,896,verified,src/nandroid/libstagefright/mpeg2ts/AnotherPacketSource.cpp,_ZN8nandroid19AnotherPacketSource17dequeueAccessUnitEPNS_2spINS_7ABufferEEE
 5761e0,48,verified,src/nandroid/libstagefright/mpeg2ts/AnotherPacketSource.cpp,_ZNK8nandroid19AnotherPacketSource15wasFormatChangeEi
 576210,64,verified,src/nandroid/libstagefright/mpeg2ts/AnotherPacketSource.cpp,_ZN8nandroid19AnotherPacketSource17requeueAccessUnitERKNS_2spINS_7ABufferEEE
 576320,1948,verified,src/nandroid/libstagefright/mpeg2ts/AnotherPacketSource.cpp,_ZN8nandroid19AnotherPacketSource4readEPPNS_15MediaBufferBaseEPKNS_10MediaTrack11ReadOptionsE
@@ -16315,7 +16315,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 577df0,72,verified,src/nandroid/libstagefright/mpeg2ts/AnotherPacketSource.cpp,_ZN8nandroid19AnotherPacketSource21getLatestDequeuedMetaEv
 577e40,56,verified,src/nandroid/libstagefright/mpeg2ts/AnotherPacketSource.cpp,_ZN8nandroid19AnotherPacketSource6enableEb
 577e80,352,verified,src/nandroid/libstagefright/mpeg2ts/AnotherPacketSource.cpp,_ZN8nandroid19AnotherPacketSource24getMetaAfterLastDequeuedEl
-577fe0,768,verified,src/nandroid/libstagefright/mpeg2ts/AnotherPacketSource.cpp,_ZN8nandroid19AnotherPacketSource20trimBuffersAfterMetaERKNS_2spINS_8AMessageEEE
+577fe0,812,verified,src/nandroid/libstagefright/mpeg2ts/AnotherPacketSource.cpp,_ZN8nandroid19AnotherPacketSource20trimBuffersAfterMetaERKNS_2spINS_8AMessageEEE
 578360,1168,verified,src/nandroid/libstagefright/mpeg2ts/AnotherPacketSource.cpp,_ZN8nandroid19AnotherPacketSource21trimBuffersBeforeMetaERKNS_2spINS_8AMessageEEE
 578970,4,verified,src/nandroid/libstagefright/mpeg2ts/AnotherPacketSource.cpp,_ZNK8nandroid12SortedVectorIlE12do_constructEPvm
 578980,4,verified,src/nandroid/libstagefright/mpeg2ts/AnotherPacketSource.cpp,_ZNK8nandroid12SortedVectorIlE10do_destroyEPvm
@@ -19463,7 +19463,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 5dd960,96,verified,src/nn/vi/vi_default_display.cpp,_ZNK2nn2vi6detail14DefaultDisplay47TryEnsureInternalModeCapabilityEventInitializedEv
 5dd9c0,236,verified,src/nn/vi/vi_default_display.cpp,_ZNK2nn2vi6detail14DefaultDisplay17QueryVrrSupportedEPb
 5ddab0,92,verified,src/nn/vi/vi_default_display.cpp,_ZN2nn2vi6detail14DefaultDisplay54TryEnsureInternalAvailableRefreshRatesEventInitializedEv
-5ddb20,452,verified,src/nn/vi/vi_default_display.cpp,_ZN2nn2vi6detail14DefaultDisplay26QueryAvailableRefreshRatesENS_4SpanINS0_20AvailableRefreshRateEEEPi
+5ddb20,456,verified,src/nn/vi/vi_default_display.cpp,_ZN2nn2vi6detail14DefaultDisplay26QueryAvailableRefreshRatesENS_4SpanINS0_20AvailableRefreshRateEEEPi
 5ddcf0,132,verified,src/nn/vi/vi_default_display.cpp,_ZN2nn2vi6detail14DefaultDisplay19DuplicateVsyncEventEPNS_2os15SystemEventTypeE
 5ddd80,112,verified,src/nn/vi/vi_default_display.cpp,_ZN2nn2vi6detail14DefaultDisplay25DuplicateRefreshRateEventEPNS_2os15SystemEventTypeE
 5dddf0,112,verified,src/nn/vi/vi_default_display.cpp,_ZN2nn2vi6detail14DefaultDisplay23DuplicateHdrStatusEventEPNS_2os15SystemEventTypeE
@@ -20289,7 +20289,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 604fd0,8,verified,src/nvidia/nvos_stubs.cpp,NvRmSurfaceGetDefaultLayout
 605250,104,verified,src/nvidia/nvrm_surface_query.cpp,NvRmSurfaceGetAlignment
 605ad0,8,verified,src/nvidia/nvrm_surface.cpp,NvRmSurfaceSetup
-605ae0,220,verified,src/nvidia/nvrm_surface_query.cpp,NvRmSurfaceGetYuvColorFormat
+605ae0,236,verified,src/nvidia/nvrm_surface_query.cpp,NvRmSurfaceGetYuvColorFormat
 605be0,400,verified,src/nvidia/nvrm_surface_query.cpp,NvRmMultiplanarSurfaceSetup
 605dc0,84,verified,src/nvidia/nvrm_surface_query.cpp,NvRmSurfaceGetPitchAlignment
 605e20,300,verified,src/nvidia/nvrm_surface_query.cpp,NvRmSurfaceSetDeviceMemory
@@ -24458,8 +24458,8 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 787ec0,84,verified,src/musl/src/regex/tre-mem.c,__tre_mem_destroy
 787f20,312,verified,src/musl/src/regex/tre-mem.c,__tre_mem_alloc_impl
 788060,368,verified,src/nnmusl/stdio/vfprintf.c,vfprintf
-7881e0,1388,verified,src/nnmusl/stdio/vfprintf.c,printf_core
-789110,312,verified,src/nnmusl/stdio/vfprintf.c,pop_arg
+7881e0,1516,verified,src/nnmusl/stdio/vfprintf.c,printf_core
+789110,380,verified,src/nnmusl/stdio/vfprintf.c,pop_arg
 7893a0,164,verified,src/musl/src/stdio/vfprintf.c,pad
 78bf20,244,verified,src/nnmusl/stdio/vfwprintf.c,vfwprintf
 78c020,692,verified,src/nnmusl/stdio/vfwprintf.c,wprintf_core
