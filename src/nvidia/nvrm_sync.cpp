@@ -3,6 +3,8 @@
 enum NvError : int32_t {
   NvSuccess = 0,
   NvError_BadParameter = 4,
+  NvError_InsufficientMemory = 6,
+  NvError_Overflow = 17,
 };
 
 enum NvRmSyncType : uint32_t {
@@ -50,6 +52,14 @@ struct NvRmSync {
   NvRmSyncPointEntry inlineSyncpoints[1];
 };
 
+// A sync is built in the given object or buffer when there is one.
+struct NvRmSyncAttributes {
+  uint64_t reserved;
+  void* buffer;
+  uint32_t bufferSize;
+  NvRmSync* sync;
+};
+
 struct NvRmSyncFdAttributes {
   uint8_t closeFd;
 };
@@ -57,6 +67,7 @@ struct NvRmSyncFdAttributes {
 extern "C" {
 
 void* NvOsAlloc(uint64_t size);
+void* NvOsRealloc(void* pointer, uint64_t size);
 void NvOsFree(void* pointer);
 int32_t NvRmChipGetPlatform();
 NvError NvRmFenceGetFromFile(int32_t fd, NvRmSyncPoint* pOutSyncpoints,
@@ -242,7 +253,7 @@ namespace {
 
 }
 
-extern "C" void NvRmSyncClose(NvRmSync* sync) {
+extern "C" [[gnu::noinline]] void NvRmSyncClose(NvRmSync* sync) {
   Close(sync);
 }
 
@@ -386,4 +397,82 @@ extern "C" int32_t NvRmSyncGetFd(NvRmSync* sync) {
     count, &fd);
   NvRmSyncFreeSyncpoints(syncpoints);
   return result == NvSuccess ? fd : -1;
+}
+
+extern "C" NvError NvRmSyncCreateFromSyncpointsWithAttr(
+  const NvRmSyncPoint* syncpoints, uint32_t count,
+  const NvRmSyncAttributes* attributes, NvRmSync** pOutSync) {
+  NvRmSync* sync = nullptr;
+
+  if (count != 0) {
+    sync = attributes->sync;
+    if (sync != nullptr) {
+      if (sync->type != NvRmSyncType_Empty) {
+        NvRmSyncClose(sync);
+      }
+
+      const uint32_t inlineCount = sync->inlineSyncpointCount;
+      if (count > inlineCount &&
+        count > inlineCount + sync->extraSyncpointCount) {
+        const uint32_t extra = count - inlineCount;
+        sync->extraSyncpointCount = extra;
+
+        const int64_t size = static_cast<int64_t>(static_cast<int32_t>(extra)) *
+          static_cast<int64_t>(sizeof(NvRmSyncPointEntry));
+        if (sync->pExtraSyncpoints != nullptr) {
+          sync->pExtraSyncpoints = static_cast<NvRmSyncPointEntry*>(
+            NvOsRealloc(sync->pExtraSyncpoints, size));
+          if (sync->pExtraSyncpoints == nullptr) {
+            return NvError_InsufficientMemory;
+          }
+        }
+        else {
+          sync->pExtraSyncpoints = static_cast<NvRmSyncPointEntry*>(
+            NvOsAlloc(size));
+        }
+      }
+    }
+    else {
+      const uint64_t size = static_cast<int64_t>(static_cast<int32_t>(count)) *
+        static_cast<int64_t>(sizeof(NvRmSyncPointEntry)) + 40;
+      uint32_t inlineCount;
+      uint8_t isAllocated;
+
+      if (attributes->buffer != nullptr) {
+        if (size > attributes->bufferSize) {
+          return NvError_Overflow;
+        }
+
+        sync = static_cast<NvRmSync*>(attributes->buffer);
+        inlineCount = static_cast<uint32_t>(
+          (static_cast<uint64_t>(attributes->bufferSize) - 40) /
+          sizeof(NvRmSyncPointEntry));
+        isAllocated = 0;
+      }
+      else {
+        sync = static_cast<NvRmSync*>(NvOsAlloc(size));
+        if (sync == nullptr) {
+          return NvError_InsufficientMemory;
+        }
+
+        inlineCount = count;
+        isAllocated = 1;
+      }
+
+      sync->inlineSyncpointCount = inlineCount;
+      sync->isAllocated = isAllocated;
+      sync->pExtraSyncpoints = nullptr;
+      sync->extraSyncpointCount = 0;
+      sync->ops = nullptr;
+      sync->type = NvRmSyncType_Empty;
+      sync->syncpointCount = 0;
+    }
+
+    for (uint64_t i = 0; i < count; i++) {
+      AppendSyncpoint(sync, syncpoints[i]);
+    }
+  }
+
+  *pOutSync = sync;
+  return NvSuccess;
 }

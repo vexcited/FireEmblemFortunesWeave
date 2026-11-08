@@ -20227,6 +20227,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 60b3b0,48,verified,src/nvidia/nvrm_sync.cpp,NvRmSyncGetInfo
 60b3e0,16,verified,src/nvidia/nvrm_sync.cpp,NvRmSyncCalculateSizeForInplaceSyncpoints
 60b840,408,verified,src/nvidia/nvrm_sync.cpp,NvRmSyncCreateFromSyncpoints
+60ba00,724,verified,src/nvidia/nvrm_sync.cpp,NvRmSyncCreateFromSyncpointsWithAttr
 60bd00,140,verified,src/nvidia/nvrm_sync.cpp,NvRmSyncGetSyncpoints
 60bd90,4,verified,src/nvidia/nvrm_sync.cpp,NvRmSyncFreeSyncpoints
 60bda0,32,verified,src/nvidia/nvrm_sync.cpp,NvRmSyncGetNumSyncpoints
