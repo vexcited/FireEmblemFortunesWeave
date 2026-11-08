@@ -31,6 +31,11 @@ public:
   void Initialize(const BlockCipher* blockCipher, const void* iv,
     size_t ivSize, int64_t offset);
 
+  void SwitchMessage(const void* iv, size_t ivSize) {
+    memcpy(m_Counter, iv, ivSize);
+    m_BufferedBytes = 0;
+  }
+
   size_t Update(void* dst, size_t dstSize, const void* src, size_t srcSize);
 
 private:

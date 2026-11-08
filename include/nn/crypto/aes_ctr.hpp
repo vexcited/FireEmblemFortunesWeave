@@ -23,6 +23,10 @@ public:
     m_Impl.Initialize(&m_BlockCipher, iv, ivSize, offset);
   }
 
+  void SwitchMessage(const void* iv, size_t ivSize) {
+    m_Impl.SwitchMessage(iv, ivSize);
+  }
+
   size_t Update(void* dst, size_t dstSize, const void* src, size_t srcSize) {
     return m_Impl.Update(dst, dstSize, src, srcSize);
   }
