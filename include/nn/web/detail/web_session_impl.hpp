@@ -84,6 +84,10 @@ class WebSessionImpl {
     return m_LibraryAppletHandle._p != nullptr;
   }
 
+  applet::LibraryAppletHandle GetLibraryAppletHandle() const {
+    return m_LibraryAppletHandle;
+  }
+
  private:
   struct SendState {
     uint32_t count;

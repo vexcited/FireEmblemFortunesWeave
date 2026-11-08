@@ -23167,6 +23167,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 773870,8,verified,src/nn/web/web_offline_session.cpp,_ZN2nn3web17OfflineWebSession17GetWorkBufferSizeEv
 773880,48,verified,src/nn/web/web_session_lifetime.cpp,_ZN2nn3web17OfflineWebSession10InitializeEPvm
 7738c0,424,verified,src/nn/web/web_session_lifetime.cpp,_ZN2nn3web17OfflineWebSession5StartEPPNS_2os15SystemEventTypeERKNS0_22ShowOfflineHtmlPageArgE
+773a70,236,verified,src/nn/web/web_session_lifetime.cpp,_ZN2nn3web17OfflineWebSession11WaitForExitEPNS0_26OfflineHtmlPageReturnValueE
 773b60,20,verified,src/nn/web/web_offline_session.cpp,_ZNK2nn3web17OfflineWebSession16NeedsWaitForExitEv
 773b80,56,verified,src/nn/web/web_session_lifetime.cpp,_ZN2nn3web17OfflineWebSession8FinalizeEv
 773bc0,8,verified,src/nn/web/web_offline_session.cpp,_ZN2nn3web17OfflineWebSession6AppearEv
@@ -23223,6 +23224,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 775740,8,verified,src/nn/web/web_session.cpp,_ZN2nn3web10WebSession17GetWorkBufferSizeEv
 775750,48,verified,src/nn/web/web_session_lifetime.cpp,_ZN2nn3web10WebSession10InitializeEPvm
 775780,424,verified,src/nn/web/web_session_lifetime.cpp,_ZN2nn3web10WebSession5StartEPPNS_2os15SystemEventTypeERKNS0_14ShowWebPageArgE
+775930,232,verified,src/nn/web/web_session_lifetime.cpp,_ZN2nn3web10WebSession11WaitForExitEPNS0_18WebPageReturnValueE
 775a20,20,verified,src/nn/web/web_session.cpp,_ZNK2nn3web10WebSession16NeedsWaitForExitEv
 775a40,56,verified,src/nn/web/web_session_lifetime.cpp,_ZN2nn3web10WebSession8FinalizeEv
 775a80,8,verified,src/nn/web/web_session.cpp,_ZN2nn3web10WebSession6AppearEv
