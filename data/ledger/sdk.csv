@@ -1594,6 +1594,14 @@ a5170,148,verified,src/nn/util/uri_part.cpp,_ZNK2nn4util7UriPart12ParseIntegerEP
 a5210,32,verified,src/nn/util/utf8_string.cpp,_ZN2nn4util17IsValidUtf8StringEPKcm
 a5240,308,verified,src/nn/util/utf8_string.cpp,_ZN2nn4util29GetCodePointCountOfUtf8StringEPKcm
 a5380,360,verified,src/nn/util/utf8_string.cpp,_ZN2nn4util14CopyUtf8StringEPcmPKcmi
+a54f0,88,verified,src/nn/util/util_format_string.cpp,_ZN2nn4util13VFormatStringEPFvmPKciEmS2_St9__va_list
+a63d0,168,verified,src/nn/util/util_format_string.cpp,_ZN2nn4util12FormatStringEPFvmPKciEmS2_z
+a6480,120,verified,src/nn/util/util_format_string.cpp,_ZN2nn4util9VSNPrintfEPcmPKcSt9__va_list
+a6570,200,verified,src/nn/util/util_format_string.cpp,_ZN2nn4util8SNPrintfEPcmPKcz
+a6640,84,verified,src/nn/util/util_format_string.cpp,_ZN2nn4util14TVFormatStringEPFvmPKciEmS2_St9__va_list
+a66a0,164,verified,src/nn/util/util_format_string.cpp,_ZN2nn4util13TFormatStringEPFvmPKciEmS2_z
+a6750,116,verified,src/nn/util/util_format_string.cpp,_ZN2nn4util10TVSNPrintfEPcmPKcSt9__va_list
+a67d0,196,verified,src/nn/util/util_format_string.cpp,_ZN2nn4util9TSNPrintfEPcmPKcz
 a74e0,56,verified,src/nn/util/utf.cpp,_ZN2nn4util30ConvertStringUtf8ToUtf16NativeEPtiPKci
 a7520,520,verified,src/nn/util/utf.cpp,_ZN2nn4util12_GLOBAL__N_118ConvertUtf8ToUtf16EPmS2_PtiPKci
 a7750,56,verified,src/nn/util/utf.cpp,_ZN2nn4util30ConvertStringUtf8ToUtf16NativeEPDsiPKci
@@ -1635,6 +1643,7 @@ a9310,4,verified,src/nn/util/utf.cpp,_ZN2nn4util27ConvertCharacterUtf8ToUtf32EPD
 a9320,152,verified,src/nn/util/utf.cpp,_ZN2nn4util27ConvertCharacterUtf32ToUtf8EPcj
 a93f0,92,verified,src/nn/util/utf.cpp,_ZN2nn4util27ConvertCharacterUtf32ToUtf8EPcDi
 a94c0,240,verified,src/nn/util/utf.cpp,_ZN2nn4util30PickOutCharacterFromUtf8StringEPcPPKc
+a9640,16,verified,src/nn/util/util_format_string.cpp,_ZN2nn4util6detail37ConvertToExponentStyleStringWithPointEPcmdi
 a9660,60,verified,src/nn/async/detail/async_cancellation_state.cpp,_ZN2nn5async6detail17CancellationStateD2Ev
 a96c0,116,verified,src/nn/async/detail/async_cancellation_state.cpp,_ZN2nn5async6detail17CancellationState13RequestCancelEv
 a9740,108,verified,src/nn/async/detail/async_cancellation_state.cpp,_ZN2nn5async6detail17CancellationState16RegisterObserverEPNS0_20CancellationObserverE
