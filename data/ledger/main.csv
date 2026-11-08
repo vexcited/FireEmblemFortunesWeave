@@ -732,7 +732,7 @@ ff20,632,verified,src/spine-cpp/src/spine/AnimationState.cpp,_ZN5spine14Animatio
 53d30,12,verified,src/gxc/device_child.cpp,_ZNK3gxc11DeviceChild9GetDeviceEv
 53d40,8,verified,src/spine-cpp/src/spine/Extension.cpp,_ZN5spine14SpineExtension11_beforeFreeEPv
 53d50,4,verified,src/gxc/device_child.cpp,_ZN3gxc11DeviceChild13SetDebugLabelENSt3__117basic_string_viewIcNS1_11char_traitsIcEEEE
-54940,296,verified,src/gxc/nvn/nvn_texture_buffer.cpp,_ZN3gxc14NvnColorBufferD2Ev
+54940,312,verified,src/gxc/nvn/nvn_texture_buffer.cpp,_ZN3gxc14NvnColorBufferD2Ev
 54ab0,48,verified,src/spine-cpp/src/spine/SkeletonJson.cpp,_ZN5spine12SkeletonJsonD0Ev
 54ae0,84,verified,src/gxc/nvn/nvn_texture_buffer.cpp,_ZNK3gxc14NvnColorBuffer7GetViewEii
 54b40,84,verified,src/gxc/nvn/nvn_texture_buffer.cpp,_ZNK3gxc14NvnColorBuffer13GetDescriptorEii
@@ -857,7 +857,7 @@ ff20,632,verified,src/spine-cpp/src/spine/AnimationState.cpp,_ZN5spine14Animatio
 5dcf0,176,verified,src/gxc/nvn/nvn_queue.cpp,_ZN3gxc8NvnQueue6SubmitEPNS_11CommandListERKNSt3__18optionalINS_11QueueSignalEEE
 5dda0,24,verified,src/gxc/nvn/nvn_queue.cpp,_ZN3gxc8NvnQueue4WaitEPNS_9SemaphoreE
 5ddc0,8,verified,src/gxc/nvn/nvn_queue.cpp,_ZNK3gxc8NvnQueue10GetBackendEv
-5e380,88,disputed,src/gxc/nvn/nvn_swap_chain.cpp,_ZN3gxc12NvnSwapChainD2Ev
+5e380,192,disputed,src/gxc/nvn/nvn_swap_chain.cpp,_ZN3gxc12NvnSwapChainD2Ev
 5e480,48,verified,src/memory/new_delete.cpp,deleting destructor at 0x5e480
 5e4b0,136,verified,src/gxc/nvn/nvn_swap_chain.cpp,_ZN3gxc12NvnSwapChain14AcquireTextureEPNS_15AcquiredTextureEPNS_9SemaphoreEPNS_5FenceE
 5e540,8,verified,src/gxc/nvn/nvn_swap_chain.cpp,_ZNK3gxc12NvnSwapChain10GetBackendEv
@@ -19770,7 +19770,7 @@ abae20,180,verified,src/gfx/settings/param_instance.cpp,_ZN3gfx8settings14TParam
 abaee0,196,verified,src/gfx/settings/param_instance.cpp,_ZN3gfx8settings6Float3D0Ev
 abafb0,244,verified,src/gfx/settings/param_instance.cpp,_ZNK3gfx8settings14TParamInstanceIN2nn4util8Vector3fEE10ApplyMixedERNS0_17BaseParamInstanceERKS6_S9_fff
 abb0b0,160,verified,src/gfx/settings/param_instance.cpp,_ZNK3gfx8settings14TParamInstanceIN2nn4util8Vector3fEE5ApplyERNS0_17BaseParamInstanceERKS6_ff
-abb150,660,verified,src/gfx/settings/param_instance.cpp,_ZNK3gfx8settings14TParamInstanceIN2nn4util8Vector3fEE12ApplyLayeredERNS0_17BaseParamInstanceERKS6_S9_ff
+abb150,232,disputed,src/gfx/settings/param_instance.cpp,_ZNK3gfx8settings14TParamInstanceIN2nn4util8Vector3fEE12ApplyLayeredERNS0_17BaseParamInstanceERKS6_S9_ff
 abb420,360,disputed,src/gfx/settings/param_instance.cpp,_ZNK3gfx8settings14TParamInstanceIN2nn4util8Vector3fEE12ApplyLayeredERNS0_17BaseParamInstanceERKS6_S9_S9_ff
 abbdd0,8,verified,src/gfx/settings/param_instance.cpp,_ZNK3gfx8settings14TParamInstanceIN2nn4util8Vector3fEE8HasValueEv
 abbde0,16,verified,src/gfx/settings/param_instance.cpp,_ZNK3gfx8settings14TParamInstanceIN2nn4util8Vector3fEE7HasKeysEv
