@@ -37,6 +37,12 @@ struct FiberType {
 
 static_assert(sizeof(FiberType) == 0x58);
 
+void InitializeFiber(FiberType* fiber, FiberType* (*function)(void*),
+  void* argument, void* stack, size_t stackSize, int flags);
+void FinalizeFiber(FiberType* fiber);
+FiberType* GetCurrentFiber();
+void SwitchToFiber(FiberType* fiber);
+
 Result CreateThread(ThreadType* thread, void (*entry)(void*), void* argument,
   void* stack, size_t size, int priority, int idealCore);
 void SetThreadNamePointer(ThreadType* thread, const char* name);

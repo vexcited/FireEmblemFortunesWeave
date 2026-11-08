@@ -14,6 +14,7 @@
 #include "nn/os/mutex.hpp"
 #include "nn/os/semaphore.hpp"
 #include "nn/os/system_event.hpp"
+#include "nn/os/thread_info.hpp"
 #include "nn/os/timer_event.hpp"
 #include "nn/util/intrusive_list.hpp"
 
@@ -124,14 +125,6 @@ private:
   HolderList m_Holders;
 };
 
-class FiberTaskCoordinatorBase {
-public:
-  void Await(ResumeBlocker* blocker);
-  void YieldTask();
-  void SuspendAndExecuteInline(Executable* executable,
-    const CancellationToken& token);
-};
-
 }
 
 class ResumeBlocker {
@@ -189,6 +182,9 @@ enum ExecutionResultCode : int32_t {
 
 class ExecutionResult {
 public:
+  ExecutionResult()
+    : m_pBlocker(nullptr), m_Code(ExecutionResultCode_Invalid) {}
+
   ExecutionResult(ExecutionResultCode code, ResumeBlocker* blocker);
 
   ResumeBlocker* GetBlocker() const {
@@ -337,6 +333,40 @@ protected:
 
 private:
   std::optional<SynchronousContinuationList> m_Continuations;
+};
+
+class FiberTaskCoordinatorBase : public Executable,
+  public IContinuationListHolder {
+public:
+  FiberTaskCoordinatorBase(MemoryResource* resource, FutureStateBase* state,
+    FutureStateBase* result, void* stack, size_t stackSize,
+    os::FiberFlag flag);
+
+  ExecutionResult DoExecute(const CancellationToken& token) override;
+  SynchronousContinuationList* GetSynchronousContinuationList() override;
+
+  void FinalizeFiber();
+  void Await(ResumeBlocker* blocker);
+  void YieldTask();
+  void SuspendAndExecuteInline(Executable* executable,
+    const CancellationToken& token);
+
+protected:
+  virtual ExecutionResult Run() = 0;
+  virtual void Complete() = 0;
+  virtual void Finish() = 0;
+
+private:
+  static os::FiberType* FiberMain(void* argument);
+
+  os::FiberType m_Fiber;
+  std::optional<SynchronousContinuationList> m_Continuations;
+  uint64_t m_Reserved;
+  void* m_pStack;
+  os::FiberType* m_pCallerFiber;
+  Executable* m_pInlineExecutable;
+  CancellationToken m_InlineToken;
+  ExecutionResult m_Result;
 };
 
 class ThreadCounter {
