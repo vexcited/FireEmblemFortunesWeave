@@ -1789,6 +1789,7 @@ ae9e0,8,verified,src/nn/async/async_thread_pool.cpp,_ZN2nn5async10ThreadPool12St
 ae9f0,4,verified,src/nn/async/async_thread_pool.cpp,_ZN2nn5async10ThreadPool12StartThreadsEiPPvmiPi
 aea00,8,verified,src/nn/async/async_thread_pool.cpp,_ZN2nn5async10ThreadPool17RequestThreadExitEv
 aea20,84,verified,src/nn/async/async_thread_pool.cpp,_ZN2nn5async10ThreadPool11JoinThreadsEv
+af010,16,verified,src/nnmusl/time/clock_source.c,__nnmusl_clock_unavailable
 af0a0,88,verified,src/nnmusl/fcntl/fd_clock.c,__nnmusl_clock_monotonic
 af160,12,verified,src/nnmusl/time/clock.c,__nnmusl_clock_realtime
 af170,12,verified,src/nnmusl/time/clock.c,__nnmusl_clock_monotonic_hook
@@ -1798,6 +1799,7 @@ af250,24,verified,src/nnmusl/fcntl/fd_entry.c,__nnmusl_fs_missing_mount
 af270,140,verified,src/nnmusl/fcntl/fd_file_io.c,__nnmusl_read_file
 af300,188,verified,src/nnmusl/fcntl/fd_install.c,__nnmusl_fd_install
 af3d0,44,verified,src/nnmusl/fcntl/fd_clock.c,__nnmusl_fd_lookup
+af860,176,verified,src/nnmusl/fcntl/fd_forget.c,__nnmusl_fd_forget_kind
 af910,60,verified,src/nnmusl/nnmusl_libc_misc3.cpp,fsync
 af950,288,verified,src/nnmusl/fcntl/fd_ops.c,__nnmusl_fd_flush
 afa70,60,verified,src/nnmusl/nnmusl_libc_misc3.cpp,fdatasync
@@ -1947,7 +1949,8 @@ b4c30,264,verified,src/nnmusl/fcntl/fd_file_ops.c,__nnmusl_ftruncate
 b4d40,344,verified,src/nnmusl/fcntl/fd_file_ops.c,__nnmusl_pread
 b4eb0,328,verified,src/nnmusl/fcntl/fd_io.c,__nnmusl_pwrite
 b5000,244,verified,src/nnmusl/fcntl/fd_ops.c,__nnmusl_vfcntl
-b5100,24,verified,src/nnmusl/fcntl/fd_entry.c,__nnmusl_socket_mark_ready
+b5100,24,verified,src/nnmusl/fcntl/fd_entry.c,__nnmusl_lock_clock_sources
+b5120,224,verified,src/nnmusl/time/clock_source.c,__nnmusl_clock_select
 b5200,148,verified,src/nnmusl/time/clock.c,__nnmusl_clock_getres
 b52a0,112,verified,src/nnmusl/time/clock.c,__nnmusl_clock_gettime
 b5310,104,verified,src/nnmusl/fcntl/fs_sleep_fcntl.c,__nnmusl_sleep

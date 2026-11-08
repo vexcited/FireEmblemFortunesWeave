@@ -89,10 +89,11 @@ HIDDEN int __nnmusl_fs_missing_mount(uint64_t result)
 	return (result & 0x3fffff) == 0x177a02 ? 2 : 0;
 }
 
-extern HIDDEN uint8_t __nnmusl_socket_flags[5];
+// Each clock picks its source once, these flags lock the choice in.
+extern HIDDEN uint8_t __nnmusl_clock_source_set[5];
 
-HIDDEN void __nnmusl_socket_mark_ready(void)
+HIDDEN void __nnmusl_lock_clock_sources(void)
 {
-	__nnmusl_socket_flags[0] = 1;
-	__nnmusl_socket_flags[4] = 1;
+	__nnmusl_clock_source_set[0] = 1;
+	__nnmusl_clock_source_set[4] = 1;
 }
