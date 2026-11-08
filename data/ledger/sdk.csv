@@ -1593,7 +1593,7 @@ a4da0,12,verified,src/nn/util/uri_part.cpp,_ZNK2nn4util7UriPart9GetLengthEv
 a4db0,20,verified,src/nn/util/uri_part.cpp,_ZNK2nn4util7UriPart6ExistsEv
 a4dd0,256,verified,src/nn/util/uri_part.cpp,_ZNK2nn4util7UriPart7CompareEPKc
 a4f00,72,verified,src/nn/util/uri_part.cpp,_ZNK2nn4util7UriPart7CompareEPKcm
-a4f60,224,verified,src/nn/util/uri_part.cpp,_ZNK2nn4util7UriPart18CompareInsensitiveEPKc
+a4f60,300,verified,src/nn/util/uri_part.cpp,_ZNK2nn4util7UriPart18CompareInsensitiveEPKc
 a50c0,152,verified,src/nn/util/uri_part.cpp,_ZNK2nn4util7UriPart18CompareInsensitiveEPKcm
 a5170,148,verified,src/nn/util/uri_part.cpp,_ZNK2nn4util7UriPart12ParseIntegerEPt
 a5210,32,verified,src/nn/util/utf8_string.cpp,_ZN2nn4util17IsValidUtf8StringEPKcm
