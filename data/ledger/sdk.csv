@@ -23273,6 +23273,9 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 787e70,68,verified,src/musl/src/regex/tre-mem.c,__tre_mem_new_impl
 787ec0,84,verified,src/musl/src/regex/tre-mem.c,__tre_mem_destroy
 787f20,312,verified,src/musl/src/regex/tre-mem.c,__tre_mem_alloc_impl
+788060,368,verified,src/nnmusl/stdio/vfprintf.c,vfprintf
+7881e0,664,verified,src/nnmusl/stdio/vfprintf.c,printf_core
+789110,16,verified,src/nnmusl/stdio/vfprintf.c,pop_arg
 7893a0,164,verified,src/musl/src/stdio/vfprintf.c,pad
 78ca90,324,verified,src/musl/src/stdio/vfprintf.c,pop_arg
 78d070,180,verified,src/nnmusl/nnmusl_strtof.cpp,strtof
@@ -23560,7 +23563,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 7a0030,88,verified,src/nnmusl/nnmusl_libc_misc2.cpp,ferror
 7a00a0,588,verified,src/libc/stdio_flush.cpp,fflush
 7a0410,68,verified,src/musl/src/stdio/fgetpos.c,fgetpos64
-7a0460,372,verified,src/nnmusl/stdio/fgets.c,fgets_unlocked
+7a0460,384,verified,src/nnmusl/stdio/fgets.c,fgets_unlocked
 7a0840,180,verified,src/nnmusl/stdio/fgetws.c,fgetws_unlocked
 7a0910,112,verified,src/nnmusl/nnmusl_libc_misc3.cpp,fileno_unlocked
 7a0bf0,112,verified,src/musl/src/stdio/fmemopen.c,mwrite
@@ -23570,6 +23573,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 7a1220,300,verified,src/musl/src/stdio/fputwc.c,putwc_unlocked
 7a1350,120,verified,src/musl/src/stdio/fputwc.c,fputwc
 7a13e0,256,verified,src/musl/src/stdio/fputws.c,fputws_unlocked
+7a14e0,284,verified,src/nnmusl/stdio/fread.c,fread_unlocked
 7a1600,108,verified,src/musl/src/stdio/fscanf.c,fscanf
 7a1870,4,verified,src/nnmusl/nnmusl_libc_forwarders2.cpp,fseek
 7a1880,12,verified,src/nnmusl/nnmusl_libc_forwarders2.cpp,fsetpos
@@ -23577,11 +23581,12 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 7a1950,188,verified,src/nnmusl/nnmusl_stdio_position.cpp,ftell
 7a1a10,108,verified,src/musl/src/stdio/fwprintf.c,fwprintf
 7a1a80,304,verified,src/musl/src/stdio/fwrite.c,__fwritex
-7a1bc0,404,verified,src/musl/src/stdio/fwrite.c,fwrite_unlocked
+7a1bc0,416,verified,src/musl/src/stdio/fwrite.c,fwrite_unlocked
 7a1d60,108,verified,src/musl/src/stdio/fwscanf.c,fwscanf
 7a1dd0,32,verified,src/nnmusl/nnmusl_libc_misc.cpp,fgetc_unlocked
 7a1df0,52,verified,src/musl/src/stdio/getchar_unlocked.c,getchar_unlocked
 7a2140,12,verified,src/musl/src/stdio/getline.c,getline
+7a2160,224,verified,src/nnmusl/stdio/gets.c,gets
 7a2260,60,verified,src/musl/src/stdio/getw.c,getw
 7a22a0,4,verified,src/musl/src/stdio/getwc.c,getwc
 7a22b0,12,verified,src/musl/src/stdio/getwchar.c,getwchar_unlocked

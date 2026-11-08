@@ -57,6 +57,16 @@ _Static_assert(__builtin_offsetof(struct _IO_FILE, shend) == 0xb0, "shend");
 _Static_assert(__builtin_offsetof(struct _IO_FILE, locale) == 0xc8, "locale");
 _Static_assert(sizeof(struct _IO_FILE) == 0xd0, "size");
 
+extern __attribute__((visibility("hidden"))) FILE __stdin_FILE, __stdout_FILE,
+	__stderr_FILE;
+
+#undef stdin
+#undef stdout
+#undef stderr
+#define stdin (&__stdin_FILE)
+#define stdout (&__stdout_FILE)
+#define stderr (&__stderr_FILE)
+
 size_t __stdio_read(FILE *, unsigned char *, size_t);
 size_t __stdio_write(FILE *, const unsigned char *, size_t);
 size_t __stdout_write(FILE *, const unsigned char *, size_t);
