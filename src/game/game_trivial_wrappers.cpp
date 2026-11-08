@@ -251,18 +251,18 @@ template <typename T>
 [[gnu::visibility("hidden")]] U64 GameRoutine_1a084d0(U64, U64);
 
 [[gnu::visibility("hidden")]] U64 GameStub_e7670(U64 object) {
-  return GameRoutine_e6f20(At<U64>(reinterpret_cast<U64>(GameData_2178cb0),
-    0x0), object);
+  const U64 value0 = At<U64>(reinterpret_cast<U64>(GameData_2178cb0), 0x0);
+  return GameRoutine_e6f20(value0, object);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_ecb50(U64 object, U64 a1) {
-  return GameRoutine_ec280(At<U64>(reinterpret_cast<U64>(GameData_2178d00),
-    0x0), object, a1);
+  const U64 value0 = At<U64>(reinterpret_cast<U64>(GameData_2178d00), 0x0);
+  return GameRoutine_ec280(value0, object, a1);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_ecb70(U64 object) {
-  return GameRoutine_ec560(At<U64>(reinterpret_cast<U64>(GameData_2178d00),
-    0x0), object);
+  const U64 value0 = At<U64>(reinterpret_cast<U64>(GameData_2178d00), 0x0);
+  return GameRoutine_ec560(value0, object);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_101c20(U64 object) {
@@ -345,7 +345,8 @@ template <typename T>
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_55b990(U64 object) {
-  return GameRoutine_1a09b80(At<U64>(At<U64>(object, 0x0), 0x0));
+  const U64 value0 = At<U64>(At<U64>(object, 0x0), 0x0);
+  return GameRoutine_1a09b80(value0);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_560f20(U64 object, U64 a1) {
@@ -404,31 +405,37 @@ template <typename T>
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_6565d0(U64 object) {
-  return
-    GameRoutine_651b90(At<U64>(At<U64>(reinterpret_cast<U64>(GameData_212bf68), 0x0), 0x0), object, 0x10u, 0x0u);
+  const U64 value0 = At<U64>(At<U64>(reinterpret_cast<U64>(GameData_212bf68),
+    0x0), 0x0);
+  return GameRoutine_651b90(value0, object, 0x10u, 0x0u);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_71d9c0(U64 object) {
-  return GameRoutine_8eb020(At<U64>(At<U64>(object, 0x8), 0xb0));
+  const U64 value0 = At<U64>(At<U64>(object, 0x8), 0xb0);
+  return GameRoutine_8eb020(value0);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_71ecf0(U64 object) {
-  return GameRoutine_8eb7a0(At<U64>(At<U64>(object, 0x8), 0xb0));
+  const U64 value0 = At<U64>(At<U64>(object, 0x8), 0xb0);
+  return GameRoutine_8eb7a0(value0);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_738060(U64 object) {
-  return
-    GameRoutine_731180(At<U64>(At<U64>(reinterpret_cast<U64>(GameData_21cd130), 0x0), 0x30));
+  const U64 value0 = At<U64>(At<U64>(reinterpret_cast<U64>(GameData_21cd130),
+    0x0), 0x30);
+  return GameRoutine_731180(value0);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_738180(U64 object) {
-  return
-    GameRoutine_7317c0(At<U64>(At<U64>(reinterpret_cast<U64>(GameData_21cd130), 0x0), 0x30));
+  const U64 value0 = At<U64>(At<U64>(reinterpret_cast<U64>(GameData_21cd130),
+    0x0), 0x30);
+  return GameRoutine_7317c0(value0);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_73a300(U64 object) {
-  return
-    GameRoutine_182ae70(At<U64>(At<U64>(reinterpret_cast<U64>(GameData_212d0d0), 0x0), 0x0), 0x0u);
+  const U64 value0 = At<U64>(At<U64>(reinterpret_cast<U64>(GameData_212d0d0),
+    0x0), 0x0);
+  return GameRoutine_182ae70(value0, 0x0u);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_7686c0(U64 object) {
@@ -436,18 +443,22 @@ template <typename T>
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_76e390(U64 object) {
-  return
-    GameRoutine_730e40(At<U64>(At<U64>(reinterpret_cast<U64>(GameData_21cd130), 0x0), 0x30), At<U64>(object, 0x98));
+  const U64 value0 = At<U64>(At<U64>(reinterpret_cast<U64>(GameData_21cd130),
+    0x0), 0x30);
+  return GameRoutine_730e40(value0, At<U64>(object, 0x98));
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_7710b0(U64 object) {
-  return
-    GameRoutine_730e40(At<U64>(At<U64>(reinterpret_cast<U64>(GameData_21cd130), 0x0), 0x30), At<U64>(object, 0x98));
+  const U64 value0 = At<U64>(At<U64>(reinterpret_cast<U64>(GameData_21cd130),
+    0x0), 0x30);
+  return GameRoutine_730e40(value0, At<U64>(object, 0x98));
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_7b7440(U64 object, U64 a1) {
-  return
-    GameRoutine_7c9c50(At<U64>(At<U64>(At<U64>(reinterpret_cast<U64>(GameData_212cfb8), 0x0), 0x0), 0x10), At<U64>(object, 0x8), At<U64>(a1, 0x0));
+  const U64 value0 =
+    At<U64>(At<U64>(At<U64>(reinterpret_cast<U64>(GameData_212cfb8), 0x0),
+    0x0), 0x10);
+  return GameRoutine_7c9c50(value0, At<U64>(object, 0x8), At<U64>(a1, 0x0));
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_830fe0(U64 object, U64 a1) {
@@ -456,8 +467,8 @@ template <typename T>
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_831220(U64 object, U64 a1) {
-  return GameRoutine_827070(At<U64>(object, 0x8), 0x4u, a1,
-    reinterpret_cast<U64>(GameData_21ed0a8), 0x0u, 0x1u);
+  const U64 value0 = reinterpret_cast<U64>(GameData_21ed0a8);
+  return GameRoutine_827070(At<U64>(object, 0x8), 0x4u, a1, value0, 0x0u, 0x1u);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_831340(U64 object, U64 a1, U64 a2) {
@@ -466,13 +477,13 @@ template <typename T>
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_833df0(U64 object, U64 a1) {
-  return GameRoutine_827070(At<U64>(object, 0x8), 0xbu, a1,
-    reinterpret_cast<U64>(GameData_21ed0a8), 0x0u, 0x1u);
+  const U64 value0 = reinterpret_cast<U64>(GameData_21ed0a8);
+  return GameRoutine_827070(At<U64>(object, 0x8), 0xbu, a1, value0, 0x0u, 0x1u);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_833f00(U64 object) {
-  return GameRoutine_9b1710(reinterpret_cast<U64>(GameData_21f61c0),
-    At<U64>(object, 0x8));
+  const U64 value0 = reinterpret_cast<U64>(GameData_21f61c0);
+  return GameRoutine_9b1710(value0, At<U64>(object, 0x8));
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_8341d0(U64 object, U64 a1) {
@@ -486,20 +497,24 @@ template <typename T>
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_86f310(U64 object) {
-  return GameRoutine_1566440(reinterpret_cast<U64>(GameData_21ee318), 0x0u);
+  const U64 value0 = reinterpret_cast<U64>(GameData_21ee318);
+  return GameRoutine_1566440(value0, 0x0u);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_870570(U64 object) {
-  return GameRoutine_1566440(reinterpret_cast<U64>(GameData_21ee318), 0x0u);
+  const U64 value0 = reinterpret_cast<U64>(GameData_21ee318);
+  return GameRoutine_1566440(value0, 0x0u);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_870920(U64 object) {
-  return
-    GameRoutine_182ae70(At<U64>(At<U64>(reinterpret_cast<U64>(GameData_212d0d0), 0x0), 0x0), 0x0u);
+  const U64 value0 = At<U64>(At<U64>(reinterpret_cast<U64>(GameData_212d0d0),
+    0x0), 0x0);
+  return GameRoutine_182ae70(value0, 0x0u);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_87ba30(U64 object, U64 a1) {
-  return GameRoutine_18d4680(At<U64>(At<U64>(object, 0x8), 0x130), a1 + 0x8);
+  const U64 value0 = At<U64>(At<U64>(object, 0x8), 0x130);
+  return GameRoutine_18d4680(value0, a1 + 0x8);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_87bb30(U64 object, U64 a1) {
@@ -531,17 +546,18 @@ template <typename T>
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_8b26c0(U64 object) {
-  return GameRoutine_6ca760(At<U64>(At<U64>(object, 0x8), 0x108));
+  const U64 value0 = At<U64>(At<U64>(object, 0x8), 0x108);
+  return GameRoutine_6ca760(value0);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_8b2e90(U64 object, U64 a1) {
-  return GameRoutine_1382760(At<U64>(a1, 0x0), At<U32>(At<U64>(object, 0x8),
-    0x98), At<U32>(object, 0x10));
+  const U32 value0 = At<U32>(At<U64>(object, 0x8), 0x98);
+  return GameRoutine_1382760(At<U64>(a1, 0x0), value0, At<U32>(object, 0x10));
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_8cf640(U64 object) {
-  return GameRoutine_1153ca0(object, At<U64>(At<U64>(At<U64>(object, 0x98),
-    0x18), 0x8));
+  const U64 value0 = At<U64>(At<U64>(At<U64>(object, 0x98), 0x18), 0x8);
+  return GameRoutine_1153ca0(object, value0);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_8eee60(U64 object, U64 a1) {
@@ -571,8 +587,9 @@ template <typename T>
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_9174c0(U64 object) {
-  return
-    GameRoutine_12ddb80(At<U64>(At<U64>(reinterpret_cast<U64>(GameData_212c6c0), 0x0), 0x0), object);
+  const U64 value0 = At<U64>(At<U64>(reinterpret_cast<U64>(GameData_212c6c0),
+    0x0), 0x0);
+  return GameRoutine_12ddb80(value0, object);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_969370(U64 object, U64 a1) {
@@ -585,38 +602,43 @@ template <typename T>
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_a0a580(U64 object) {
-  return GameRoutine_7a7dc0(reinterpret_cast<U64>(GameData_1acadf8),
-    At<U32>(object, 0x28));
+  const U64 value0 = reinterpret_cast<U64>(GameData_1acadf8);
+  return GameRoutine_7a7dc0(value0, At<U32>(object, 0x28));
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_a0b1f0(U64 object) {
-  return GameRoutine_7a7dc0(reinterpret_cast<U64>(GameData_1acadf8),
-    At<U32>(object, 0x28));
+  const U64 value0 = reinterpret_cast<U64>(GameData_1acadf8);
+  return GameRoutine_7a7dc0(value0, At<U32>(object, 0x28));
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_a49810(U64 object, U64 a1) {
-  return
-    GameRoutine_651b90(At<U64>(At<U64>(reinterpret_cast<U64>(GameData_212bf68), 0x0), 0x0), object, a1, 0x0u);
+  const U64 value0 = At<U64>(At<U64>(reinterpret_cast<U64>(GameData_212bf68),
+    0x0), 0x0);
+  return GameRoutine_651b90(value0, object, a1, 0x0u);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_a52760(U64 object) {
-  return
-    GameRoutine_651b90(At<U64>(At<U64>(reinterpret_cast<U64>(GameData_212bf68), 0x0), 0x0), object, 0x10u, 0x0u);
+  const U64 value0 = At<U64>(At<U64>(reinterpret_cast<U64>(GameData_212bf68),
+    0x0), 0x0);
+  return GameRoutine_651b90(value0, object, 0x10u, 0x0u);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_ad4350(U64 object, U64 a1) {
-  return GameRoutine_a937c0(At<U64>(At<U64>(object, 0x8), 0x8),
-    At<U64>(object, 0x8) + 0x88, At<U64>(a1, 0x0));
+  const U64 value0 = At<U64>(At<U64>(object, 0x8), 0x8);
+  return GameRoutine_a937c0(value0, At<U64>(object, 0x8) + 0x88, At<U64>(a1,
+    0x0));
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_bc3d50(U64 object) {
-  return
-    GameRoutine_6160c0(At<U64>(At<U64>(reinterpret_cast<U64>(GameData_21a60d8), 0x0), 0x228));
+  const U64 value0 = At<U64>(At<U64>(reinterpret_cast<U64>(GameData_21a60d8),
+    0x0), 0x228);
+  return GameRoutine_6160c0(value0);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_bc7f70(U64 object, U64 a1, U64 a2) {
-  return
-    GameRoutine_651b90(At<U64>(At<U64>(reinterpret_cast<U64>(GameData_212bf68), 0x0), 0x0), a1, a2, 0x5u);
+  const U64 value0 = At<U64>(At<U64>(reinterpret_cast<U64>(GameData_212bf68),
+    0x0), 0x0);
+  return GameRoutine_651b90(value0, a1, a2, 0x5u);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_bc8eb0(U64 object) {
@@ -624,17 +646,21 @@ template <typename T>
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_c5dc60(U64 object) {
-  return GameRoutine_649d50(At<U64>(At<U64>(object, 0x8), 0x0));
+  const U64 value0 = At<U64>(At<U64>(object, 0x8), 0x0);
+  return GameRoutine_649d50(value0);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_c8b2d0(U64 object, U64 a1) {
-  return
-    GameRoutine_651b90(At<U64>(At<U64>(reinterpret_cast<U64>(GameData_212bf68), 0x0), 0x0), object, a1, 0x6u);
+  const U64 value0 = At<U64>(At<U64>(reinterpret_cast<U64>(GameData_212bf68),
+    0x0), 0x0);
+  return GameRoutine_651b90(value0, object, a1, 0x6u);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_cb5d30(U64 object) {
-  return
-    GameRoutine_fb7640(At<U64>(At<U64>(At<U64>(reinterpret_cast<U64>(GameData_212d458), 0x0), 0x0), 0x68), At<U64>(object, 0x8));
+  const U64 value0 =
+    At<U64>(At<U64>(At<U64>(reinterpret_cast<U64>(GameData_212d458), 0x0),
+    0x0), 0x68);
+  return GameRoutine_fb7640(value0, At<U64>(object, 0x8));
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_cdcf10(U64 object, U64 a1) {
@@ -658,35 +684,40 @@ template <typename T>
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_d88570(U64 object) {
-  return
-    GameRoutine_d55330(At<U64>(At<U64>(reinterpret_cast<U64>(GameData_212dbb8), 0x0), 0x0), object);
+  const U64 value0 = At<U64>(At<U64>(reinterpret_cast<U64>(GameData_212dbb8),
+    0x0), 0x0);
+  return GameRoutine_d55330(value0, object);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_d8b700(U64 object) {
-  return
-    GameRoutine_d55330(At<U64>(At<U64>(reinterpret_cast<U64>(GameData_212dbb8), 0x0), 0x0), object);
+  const U64 value0 = At<U64>(At<U64>(reinterpret_cast<U64>(GameData_212dbb8),
+    0x0), 0x0);
+  return GameRoutine_d55330(value0, object);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_e17ba0(U64 object) {
-  return GameRoutine_ceca80(At<U64>(At<U64>(At<U64>(object, 0x8), 0x8), 0x18),
-    0x80u, 0x1u);
+  const U64 value0 = At<U64>(At<U64>(At<U64>(object, 0x8), 0x8), 0x18);
+  return GameRoutine_ceca80(value0, 0x80u, 0x1u);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_e35600(U64 object) {
-  return GameRoutine_e337a0(At<U64>(At<U64>(object, 0x8), 0xd8));
+  const U64 value0 = At<U64>(At<U64>(object, 0x8), 0xd8);
+  return GameRoutine_e337a0(value0);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_e35700(U64 object) {
-  return GameRoutine_e339c0(At<U64>(At<U64>(object, 0x8), 0xd8));
+  const U64 value0 = At<U64>(At<U64>(object, 0x8), 0xd8);
+  return GameRoutine_e339c0(value0);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_e35a80(U64 object) {
-  return GameRoutine_e40be0(At<U64>(At<U64>(object, 0x28), 0x68), 0x0u);
+  const U64 value0 = At<U64>(At<U64>(object, 0x28), 0x68);
+  return GameRoutine_e40be0(value0, 0x0u);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_e36800(U64 object) {
-  return GameRoutine_e40f80(At<U64>(At<U64>(object, 0x28), 0x68),
-    object + 0x34);
+  const U64 value0 = At<U64>(At<U64>(object, 0x28), 0x68);
+  return GameRoutine_e40f80(value0, object + 0x34);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_e4ea50(U64 object, U64 a1) {
@@ -702,107 +733,130 @@ template <typename T>
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_e526c0(U64 object) {
-  return GameRoutine_e5d040(At<U64>(At<U64>(object, 0x30), 0x70),
-    object + 0x38);
+  const U64 value0 = At<U64>(At<U64>(object, 0x30), 0x70);
+  return GameRoutine_e5d040(value0, object + 0x38);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_e528a0(U64 object) {
-  return GameRoutine_540(0x0u, reinterpret_cast<U64>(GameData_1adb49e), 0x7u);
+  const U64 value0 = reinterpret_cast<U64>(GameData_1adb49e);
+  return GameRoutine_540(0x0u, value0, 0x7u);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_e52a70(U64 object) {
-  return GameRoutine_540(0x0u, reinterpret_cast<U64>(GameData_1ac7aa3), 0xdu);
+  const U64 value0 = reinterpret_cast<U64>(GameData_1ac7aa3);
+  return GameRoutine_540(0x0u, value0, 0xdu);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_e52b50(U64 object) {
-  return GameRoutine_540(0x0u, reinterpret_cast<U64>(GameData_1a95a21), 0x5u);
+  const U64 value0 = reinterpret_cast<U64>(GameData_1a95a21);
+  return GameRoutine_540(0x0u, value0, 0x5u);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_e52c40(U64 object) {
-  return GameRoutine_540(0x0u, reinterpret_cast<U64>(GameData_1af9e68), 0xau);
+  const U64 value0 = reinterpret_cast<U64>(GameData_1af9e68);
+  return GameRoutine_540(0x0u, value0, 0xau);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_e52e30(U64 object) {
-  return GameRoutine_540(0x0u, reinterpret_cast<U64>(GameData_1af1f51), 0xcu);
+  const U64 value0 = reinterpret_cast<U64>(GameData_1af1f51);
+  return GameRoutine_540(0x0u, value0, 0xcu);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_e53020(U64 object) {
-  return GameRoutine_540(0x0u, reinterpret_cast<U64>(GameData_1ad3755), 0xbu);
+  const U64 value0 = reinterpret_cast<U64>(GameData_1ad3755);
+  return GameRoutine_540(0x0u, value0, 0xbu);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_e53110(U64 object) {
-  return GameRoutine_540(0x0u, reinterpret_cast<U64>(GameData_1a95a27), 0x10u);
+  const U64 value0 = reinterpret_cast<U64>(GameData_1a95a27);
+  return GameRoutine_540(0x0u, value0, 0x10u);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_e532e0(U64 object) {
-  return GameRoutine_540(0x0u, reinterpret_cast<U64>(GameData_1aa92f7), 0xbu);
+  const U64 value0 = reinterpret_cast<U64>(GameData_1aa92f7);
+  return GameRoutine_540(0x0u, value0, 0xbu);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_e534b0(U64 object) {
-  return GameRoutine_540(0x0u, reinterpret_cast<U64>(GameData_1aea4c9), 0xcu);
+  const U64 value0 = reinterpret_cast<U64>(GameData_1aea4c9);
+  return GameRoutine_540(0x0u, value0, 0xcu);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_e536e0(U64 object) {
-  return GameRoutine_540(0x0u, reinterpret_cast<U64>(GameData_1a99823), 0x6u);
+  const U64 value0 = reinterpret_cast<U64>(GameData_1a99823);
+  return GameRoutine_540(0x0u, value0, 0x6u);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_e538d0(U64 object) {
-  return GameRoutine_540(0x0u, reinterpret_cast<U64>(GameData_1a95a38), 0x9u);
+  const U64 value0 = reinterpret_cast<U64>(GameData_1a95a38);
+  return GameRoutine_540(0x0u, value0, 0x9u);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_e539c0(U64 object) {
-  return GameRoutine_540(0x0u, reinterpret_cast<U64>(GameData_1a8e04a), 0xbu);
+  const U64 value0 = reinterpret_cast<U64>(GameData_1a8e04a);
+  return GameRoutine_540(0x0u, value0, 0xbu);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_e53bf0(U64 object) {
-  return GameRoutine_540(0x0u, reinterpret_cast<U64>(GameData_1a91b25), 0x6u);
+  const U64 value0 = reinterpret_cast<U64>(GameData_1a91b25);
+  return GameRoutine_540(0x0u, value0, 0x6u);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_e53e20(U64 object) {
-  return GameRoutine_540(0x0u, reinterpret_cast<U64>(GameData_1a8a086), 0x6u);
+  const U64 value0 = reinterpret_cast<U64>(GameData_1a8a086);
+  return GameRoutine_540(0x0u, value0, 0x6u);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_e54010(U64 object) {
-  return GameRoutine_540(0x0u, reinterpret_cast<U64>(GameData_1af1f5e), 0xeu);
+  const U64 value0 = reinterpret_cast<U64>(GameData_1af1f5e);
+  return GameRoutine_540(0x0u, value0, 0xeu);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_e54100(U64 object) {
-  return GameRoutine_540(0x0u, reinterpret_cast<U64>(GameData_1ae2c88), 0xfu);
+  const U64 value0 = reinterpret_cast<U64>(GameData_1ae2c88);
+  return GameRoutine_540(0x0u, value0, 0xfu);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_e541f0(U64 object) {
-  return GameRoutine_540(0x0u, reinterpret_cast<U64>(GameData_1ac0773), 0xeu);
+  const U64 value0 = reinterpret_cast<U64>(GameData_1ac0773);
+  return GameRoutine_540(0x0u, value0, 0xeu);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_e542e0(U64 object) {
-  return GameRoutine_540(0x0u, reinterpret_cast<U64>(GameData_1a8636a), 0x10u);
+  const U64 value0 = reinterpret_cast<U64>(GameData_1a8636a);
+  return GameRoutine_540(0x0u, value0, 0x10u);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_e54530(U64 object) {
-  return GameRoutine_540(0x0u, reinterpret_cast<U64>(GameData_1a8a08d), 0xcu);
+  const U64 value0 = reinterpret_cast<U64>(GameData_1a8a08d);
+  return GameRoutine_540(0x0u, value0, 0xcu);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_e54780(U64 object) {
-  return GameRoutine_540(0x0u, reinterpret_cast<U64>(GameData_1a9982a), 0xfu);
+  const U64 value0 = reinterpret_cast<U64>(GameData_1a9982a);
+  return GameRoutine_540(0x0u, value0, 0xfu);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_e54970(U64 object) {
-  return GameRoutine_540(0x0u, reinterpret_cast<U64>(GameData_1af9e73), 0x8u);
+  const U64 value0 = reinterpret_cast<U64>(GameData_1af9e73);
+  return GameRoutine_540(0x0u, value0, 0x8u);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_e54aa0(U64 object) {
-  return GameRoutine_540(0x0u, reinterpret_cast<U64>(GameData_1acbafc), 0x4u);
+  const U64 value0 = reinterpret_cast<U64>(GameData_1acbafc);
+  return GameRoutine_540(0x0u, value0, 0x4u);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_e56650(U64 object, U64 a1) {
-  return GameRoutine_e5d3b0(At<U64>(At<U64>(At<U64>(object, 0x8), 0x30),
-    0x70), At<U64>(a1, 0x0), At<U64>(object, 0x8) + 0x38, At<U64>(object,
-    0x8) + 0x50);
+  const U64 value0 = At<U64>(At<U64>(At<U64>(object, 0x8), 0x30), 0x70);
+  return GameRoutine_e5d3b0(value0, At<U64>(a1, 0x0), At<U64>(object,
+    0x8) + 0x38, At<U64>(object, 0x8) + 0x50);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_e65db0(U64 object) {
-  return GameRoutine_e734e0(At<U64>(reinterpret_cast<U64>(GameData_2203490),
-    0x0) + 0x2a0);
+  const U64 value0 = At<U64>(reinterpret_cast<U64>(GameData_2203490),
+    0x0) + 0x2a0;
+  return GameRoutine_e734e0(value0);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_e7e9d0(U64 object, U64 a1) {
@@ -814,48 +868,55 @@ template <typename T>
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_e96250(U64 object) {
-  return GameRoutine_155e830(At<U64>(At<U64>(object, 0x528), 0x8) + 0x350,
-    0x1u);
+  const U64 value0 = At<U64>(At<U64>(object, 0x528), 0x8) + 0x350;
+  return GameRoutine_155e830(value0, 0x1u);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_e97550(U64 object, U64 a1) {
-  return GameRoutine_60a020(a1 + 0x8, reinterpret_cast<U64>(GameData_1a8e073));
+  const U64 value0 = reinterpret_cast<U64>(GameData_1a8e073);
+  return GameRoutine_60a020(a1 + 0x8, value0);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_e991d0(U64 object) {
-  return GameRoutine_1007580(object,
-    At<U64>(At<U64>(reinterpret_cast<U64>(GameData_221bea8), 0x0), 0xd0), 0x0u);
+  const U64 value0 = At<U64>(At<U64>(reinterpret_cast<U64>(GameData_221bea8),
+    0x0), 0xd0);
+  return GameRoutine_1007580(object, value0, 0x0u);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_e991f0(U64 object) {
-  return GameRoutine_1433140(object,
-    At<U64>(At<U64>(reinterpret_cast<U64>(GameData_221bea8), 0x0), 0xd0));
+  const U64 value0 = At<U64>(At<U64>(reinterpret_cast<U64>(GameData_221bea8),
+    0x0), 0xd0);
+  return GameRoutine_1433140(object, value0);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_eabba0(U64 object) {
-  return GameRoutine_1196940(At<U64>(reinterpret_cast<U64>(GameData_22054a8),
-    0x0) + 0x28);
+  const U64 value0 = At<U64>(reinterpret_cast<U64>(GameData_22054a8),
+    0x0) + 0x28;
+  return GameRoutine_1196940(value0);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_efd430(U64 object) {
-  return
-    GameRoutine_efb8b0(At<U64>(At<U64>(reinterpret_cast<U64>(GameData_212dbf0), 0x0), 0x0), object, object + 0x98);
+  const U64 value0 = At<U64>(At<U64>(reinterpret_cast<U64>(GameData_212dbf0),
+    0x0), 0x0);
+  return GameRoutine_efb8b0(value0, object, object + 0x98);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_f34570(U64 object, U64 a1) {
-  return GameRoutine_f321d0(At<U64>(a1, 0x0), At<U64>(At<U64>(object, 0x8),
-    0x10));
+  const U64 value0 = At<U64>(At<U64>(object, 0x8), 0x10);
+  return GameRoutine_f321d0(At<U64>(a1, 0x0), value0);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_f347b0(U64 object, U64 a1) {
-  return GameRoutine_f321d0(At<U64>(a1, 0x0), At<U64>(At<U64>(object, 0x8),
-    0x10));
+  const U64 value0 = At<U64>(At<U64>(object, 0x8), 0x10);
+  return GameRoutine_f321d0(At<U64>(a1, 0x0), value0);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_f37cd0(U64 object) {
-  return GameRoutine_e738c0(At<U64>(reinterpret_cast<U64>(GameData_2203490),
-    0x0) + 0x320, At<U32>(At<U64>(reinterpret_cast<U64>(GameData_2203490),
-    0x0), 0x328));
+  const U64 value0 = At<U64>(reinterpret_cast<U64>(GameData_2203490),
+    0x0) + 0x320;
+  const U32 value1 = At<U32>(At<U64>(reinterpret_cast<U64>(GameData_2203490),
+    0x0), 0x328);
+  return GameRoutine_e738c0(value0, value1);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_f497f0(U64 object) {
@@ -872,13 +933,15 @@ template <typename T>
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_fc44c0(U64 object) {
-  return GameRoutine_f48cc0(object,
-    At<U64>(At<U64>(reinterpret_cast<U64>(GameData_21f3d10), 0x0), 0xd8));
+  const U64 value0 = At<U64>(At<U64>(reinterpret_cast<U64>(GameData_21f3d10),
+    0x0), 0xd8);
+  return GameRoutine_f48cc0(object, value0);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_10297a0(U64 object) {
-  return
-    GameRoutine_13602c0(At<U64>(At<U64>(reinterpret_cast<U64>(GameData_21c96f8), 0x0), 0x10));
+  const U64 value0 = At<U64>(At<U64>(reinterpret_cast<U64>(GameData_21c96f8),
+    0x0), 0x10);
+  return GameRoutine_13602c0(value0);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_1042070(U64 object, U64 a1) {
@@ -895,7 +958,8 @@ template <typename T>
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_10630c0(U64 object) {
-  return GameRoutine_10dea20(At<U64>(At<U64>(object, 0x8), 0x18) + 0x48);
+  const U64 value0 = At<U64>(At<U64>(object, 0x8), 0x18) + 0x48;
+  return GameRoutine_10dea20(value0);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_108eb50(U64 object) {
@@ -911,13 +975,15 @@ template <typename T>
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_11ed7d0(U64 object) {
-  return
-    GameRoutine_1286f60(At<U64>(At<U64>(At<U64>(reinterpret_cast<U64>(GameData_21d9188), 0x0), 0x10), 0x5870));
+  const U64 value0 =
+    At<U64>(At<U64>(At<U64>(reinterpret_cast<U64>(GameData_21d9188), 0x0),
+    0x10), 0x5870);
+  return GameRoutine_1286f60(value0);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_120a810(U64 object, U64 a1) {
-  return GameRoutine_121b950(At<U64>(At<U64>(object, 0x8), 0x8), At<U64>(a1,
-    0x0));
+  const U64 value0 = At<U64>(At<U64>(object, 0x8), 0x8);
+  return GameRoutine_121b950(value0, At<U64>(a1, 0x0));
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_1254500(U64 object) {
@@ -930,16 +996,19 @@ template <typename T>
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_12c6d50(U64 object) {
-  return
-    GameRoutine_89aac0(At<U64>(At<U64>(reinterpret_cast<U64>(GameData_21f1780), 0x0), 0x8));
+  const U64 value0 = At<U64>(At<U64>(reinterpret_cast<U64>(GameData_21f1780),
+    0x0), 0x8);
+  return GameRoutine_89aac0(value0);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_12c6dd0(U64 object) {
-  return GameRoutine_89aac0(At<U64>(At<U64>(object, 0x8), 0x8));
+  const U64 value0 = At<U64>(At<U64>(object, 0x8), 0x8);
+  return GameRoutine_89aac0(value0);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_12e1980(U64 object) {
-  return GameRoutine_1007580(object, At<U64>(At<U64>(object, 0x98), 0x0), 0x1u);
+  const U64 value0 = At<U64>(At<U64>(object, 0x98), 0x0);
+  return GameRoutine_1007580(object, value0, 0x1u);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_12e20f0(U64 object, U64 a1) {
@@ -955,8 +1024,9 @@ template <typename T>
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_134d2b0(U64 object) {
-  return
-    GameRoutine_134d2e0(At<U64>(At<U64>(reinterpret_cast<U64>(GameData_21c96e8), 0x0), 0x8));
+  const U64 value0 = At<U64>(At<U64>(reinterpret_cast<U64>(GameData_21c96e8),
+    0x0), 0x8);
+  return GameRoutine_134d2e0(value0);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_1356df0(U64 object, U64 a1) {
@@ -968,24 +1038,28 @@ template <typename T>
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_1363060(U64 object) {
-  return
-    GameRoutine_6160c0(At<U64>(At<U64>(reinterpret_cast<U64>(GameData_21a60d8), 0x0), 0x228));
+  const U64 value0 = At<U64>(At<U64>(reinterpret_cast<U64>(GameData_21a60d8),
+    0x0), 0x228);
+  return GameRoutine_6160c0(value0);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_1365120(U64 object) {
-  return
-    GameRoutine_6160c0(At<U64>(At<U64>(reinterpret_cast<U64>(GameData_21a60d8), 0x0), 0x228));
+  const U64 value0 = At<U64>(At<U64>(reinterpret_cast<U64>(GameData_21a60d8),
+    0x0), 0x228);
+  return GameRoutine_6160c0(value0);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_13697b0(U64 object) {
-  return GameRoutine_2b0(reinterpret_cast<U64>(GameData_a470e0),
-    reinterpret_cast<U64>(GameData_22416e0),
-    reinterpret_cast<U64>(GameData_1f50948));
+  const U64 value0 = reinterpret_cast<U64>(GameData_a470e0);
+  const U64 value1 = reinterpret_cast<U64>(GameData_22416e0);
+  const U64 value2 = reinterpret_cast<U64>(GameData_1f50948);
+  return GameRoutine_2b0(value0, value1, value2);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_1369810(U64 object) {
-  return
-    GameRoutine_6160c0(At<U64>(At<U64>(reinterpret_cast<U64>(GameData_21a60d8), 0x0), 0x228));
+  const U64 value0 = At<U64>(At<U64>(reinterpret_cast<U64>(GameData_21a60d8),
+    0x0), 0x228);
+  return GameRoutine_6160c0(value0);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_13903c0(U64 object, U64 a1) {
@@ -1022,17 +1096,20 @@ template <typename T>
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_149f7e0(U64 object, U64 a1) {
-  return
-    GameRoutine_651b90(At<U64>(At<U64>(reinterpret_cast<U64>(GameData_212bf68), 0x0), 0x0), a1, 0x10u, 0x7u);
+  const U64 value0 = At<U64>(At<U64>(reinterpret_cast<U64>(GameData_212bf68),
+    0x0), 0x0);
+  return GameRoutine_651b90(value0, a1, 0x10u, 0x7u);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_14ab960(U64 object) {
-  return GameRoutine_14a7aa0(At<U64>(At<U64>(At<U64>(object, 0xd0), 0x0), 0x0));
+  const U64 value0 = At<U64>(At<U64>(At<U64>(object, 0xd0), 0x0), 0x0);
+  return GameRoutine_14a7aa0(value0);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_14b35d0(U64 object) {
-  return
-    GameRoutine_14b7e60(At<U64>(At<U64>(reinterpret_cast<U64>(GameData_21f1620), 0x0), 0x8));
+  const U64 value0 = At<U64>(At<U64>(reinterpret_cast<U64>(GameData_21f1620),
+    0x0), 0x8);
+  return GameRoutine_14b7e60(value0);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_14c8b10(U64 object) {
@@ -1044,13 +1121,16 @@ template <typename T>
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_1521b00(U64 object) {
-  return
-    GameRoutine_17bd3e0(At<U64>(At<U64>(At<U64>(reinterpret_cast<U64>(GameData_212d728), 0x0), 0x0), 0x8), 0x1u);
+  const U64 value0 =
+    At<U64>(At<U64>(At<U64>(reinterpret_cast<U64>(GameData_212d728), 0x0),
+    0x0), 0x8);
+  return GameRoutine_17bd3e0(value0, 0x1u);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_152b950(U64 object) {
-  return
-    GameRoutine_134d2e0(At<U64>(At<U64>(reinterpret_cast<U64>(GameData_21c96e8), 0x0), 0x8));
+  const U64 value0 = At<U64>(At<U64>(reinterpret_cast<U64>(GameData_21c96e8),
+    0x0), 0x8);
+  return GameRoutine_134d2e0(value0);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_15376b0(U64 object) {
@@ -1062,8 +1142,9 @@ template <typename T>
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_154ea10(U64 object) {
-  return
-    GameRoutine_153a3d0(At<U64>(At<U64>(reinterpret_cast<U64>(GameData_212d700), 0x0), 0x0), object);
+  const U64 value0 = At<U64>(At<U64>(reinterpret_cast<U64>(GameData_212d700),
+    0x0), 0x0);
+  return GameRoutine_153a3d0(value0, object);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_155b810(U64 object) {
@@ -1075,13 +1156,13 @@ template <typename T>
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_15e4620(U64 object) {
-  return GameRoutine_1563280(object + 0xa8,
-    reinterpret_cast<U64>(GameData_1abb7f8), 0x0u);
+  const U64 value0 = reinterpret_cast<U64>(GameData_1abb7f8);
+  return GameRoutine_1563280(object + 0xa8, value0, 0x0u);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_15e4640(U64 object) {
-  return GameRoutine_1563280(object + 0xa8,
-    reinterpret_cast<U64>(GameData_1abb7f8), 0x0u);
+  const U64 value0 = reinterpret_cast<U64>(GameData_1abb7f8);
+  return GameRoutine_1563280(object + 0xa8, value0, 0x0u);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_161d790(U64 object) {
@@ -1093,8 +1174,8 @@ template <typename T>
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_165be20(U64 object, U32 a1) {
-  return GameRoutine_1560ec0(At<U64>(object, 0x8),
-    reinterpret_cast<U64>(GameData_1a8f256), a1);
+  const U64 value0 = reinterpret_cast<U64>(GameData_1a8f256);
+  return GameRoutine_1560ec0(At<U64>(object, 0x8), value0, a1);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_16771d0(U64 object) {
@@ -1114,9 +1195,10 @@ template <typename T>
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_16e8b90(U64 object) {
-  return GameRoutine_2b0(reinterpret_cast<U64>(GameData_67e7e0),
-    reinterpret_cast<U64>(GameData_22628f8),
-    reinterpret_cast<U64>(GameData_1f50948));
+  const U64 value0 = reinterpret_cast<U64>(GameData_67e7e0);
+  const U64 value1 = reinterpret_cast<U64>(GameData_22628f8);
+  const U64 value2 = reinterpret_cast<U64>(GameData_1f50948);
+  return GameRoutine_2b0(value0, value1, value2);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_16f4260(U64 object, U64 a1, U64 a2) {
@@ -1132,19 +1214,20 @@ template <typename T>
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_1713540(U64 object) {
-  return GameRoutine_1713a00(object,
-    At<U32>(reinterpret_cast<U64>(GameData_2175540), 0x0));
+  const U32 value0 = At<U32>(reinterpret_cast<U64>(GameData_2175540), 0x0);
+  return GameRoutine_1713a00(object, value0);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_1722ce0(U64 object) {
-  return GameRoutine_1563380(object + 0x350,
-    reinterpret_cast<U64>(GameData_1a949a5), 0x0u);
+  const U64 value0 = reinterpret_cast<U64>(GameData_1a949a5);
+  return GameRoutine_1563380(object + 0x350, value0, 0x0u);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_176d040(U64 object) {
+  const U64 value0 = At<U64>(At<U64>(reinterpret_cast<U64>(GameData_212d870),
+    0x0), 0x0);
   return GameRoutine_1762ce0(object, At<U64>(object, 0x4c0), At<U32>(object,
-    0x4c8), At<U64>(At<U64>(reinterpret_cast<U64>(GameData_212d870), 0x0),
-    0x0));
+    0x4c8), value0);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_1786730(U64 object) {
@@ -1152,18 +1235,19 @@ template <typename T>
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_17e0480(U64 object) {
-  return
-    GameRoutine_19987a0(At<U64>(At<U64>(reinterpret_cast<U64>(GameData_2272140), 0x0), 0x0));
+  const U64 value0 = At<U64>(At<U64>(reinterpret_cast<U64>(GameData_2272140),
+    0x0), 0x0);
+  return GameRoutine_19987a0(value0);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_17e0550(U64 object, U64 a1, U64 a2) {
-  return GameRoutine_651b90(At<U64>(reinterpret_cast<U64>(GameData_2265ee0),
-    0x0), At<U64>(a1, 0x0), At<U64>(a2, 0x0), 0x4u);
+  const U64 value0 = At<U64>(reinterpret_cast<U64>(GameData_2265ee0), 0x0);
+  return GameRoutine_651b90(value0, At<U64>(a1, 0x0), At<U64>(a2, 0x0), 0x4u);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_17e2e30(U64 object, U64 a1, U64 a2) {
-  return GameRoutine_651b90(At<U64>(reinterpret_cast<U64>(GameData_2265ee0),
-    0x0), At<U64>(a1, 0x0), At<U64>(a2, 0x0), 0x0u);
+  const U64 value0 = At<U64>(reinterpret_cast<U64>(GameData_2265ee0), 0x0);
+  return GameRoutine_651b90(value0, At<U64>(a1, 0x0), At<U64>(a2, 0x0), 0x0u);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_182bc40(U64 object) {
@@ -1171,7 +1255,8 @@ template <typename T>
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_184b500(U64 object) {
-  return GameRoutine_184a010(At<U64>(At<U64>(object, 0x8), 0x8));
+  const U64 value0 = At<U64>(At<U64>(object, 0x8), 0x8);
+  return GameRoutine_184a010(value0);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_1852550(U64 object, U64 a1) {
@@ -1179,16 +1264,18 @@ template <typename T>
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_185abb0(U64 object) {
-  return GameRoutine_1560ec0(object + 0x350,
-    reinterpret_cast<U64>(GameData_1af6b2f), 0x0u);
+  const U64 value0 = reinterpret_cast<U64>(GameData_1af6b2f);
+  return GameRoutine_1560ec0(object + 0x350, value0, 0x0u);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_1876f20(U64 object) {
-  return GameRoutine_9db9e0(0x16u, At<U32>(At<U64>(object, 0x70), 0x2c));
+  const U32 value0 = At<U32>(At<U64>(object, 0x70), 0x2c);
+  return GameRoutine_9db9e0(0x16u, value0);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_187ba40(U64 object) {
-  return GameRoutine_9db9e0(0x16u, At<U32>(At<U64>(object, 0x70), 0xc));
+  const U32 value0 = At<U32>(At<U64>(object, 0x70), 0xc);
+  return GameRoutine_9db9e0(0x16u, value0);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_18819f0(U64 object) {
@@ -1196,38 +1283,38 @@ template <typename T>
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_18c8ef0(U64 object, U64 a1) {
-  return GameRoutine_18bf640(At<U64>(a1, 0x0), At<U32>(At<U64>(object, 0x8),
-    0x0), 0x0u);
+  const U32 value0 = At<U32>(At<U64>(object, 0x8), 0x0);
+  return GameRoutine_18bf640(At<U64>(a1, 0x0), value0, 0x0u);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_18c91c0(U64 object, U64 a1) {
-  return GameRoutine_18bfe00(At<U64>(a1, 0x0), At<U32>(At<U64>(object, 0x8),
-    0x0));
+  const U32 value0 = At<U32>(At<U64>(object, 0x8), 0x0);
+  return GameRoutine_18bfe00(At<U64>(a1, 0x0), value0);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_18c92c0(U64 object, U64 a1) {
-  return GameRoutine_18bfa40(At<U64>(a1, 0x0), At<U32>(At<U64>(object, 0x8),
-    0x0));
+  const U32 value0 = At<U32>(At<U64>(object, 0x8), 0x0);
+  return GameRoutine_18bfa40(At<U64>(a1, 0x0), value0);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_18c93c0(U64 object, U64 a1) {
-  return GameRoutine_18bfc30(At<U64>(a1, 0x0), At<U32>(At<U64>(object, 0x8),
-    0x0));
+  const U32 value0 = At<U32>(At<U64>(object, 0x8), 0x0);
+  return GameRoutine_18bfc30(At<U64>(a1, 0x0), value0);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_18c94c0(U64 object, U64 a1) {
-  return GameRoutine_18bf640(At<U64>(a1, 0x0), At<U32>(At<U64>(object, 0x8),
-    0x0), 0x0u);
+  const U32 value0 = At<U32>(At<U64>(object, 0x8), 0x0);
+  return GameRoutine_18bf640(At<U64>(a1, 0x0), value0, 0x0u);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_18c95d0(U64 object, U64 a1) {
-  return GameRoutine_18bf640(At<U64>(a1, 0x0), At<U32>(At<U64>(object, 0x8),
-    0x0), 0x1u);
+  const U32 value0 = At<U32>(At<U64>(object, 0x8), 0x0);
+  return GameRoutine_18bf640(At<U64>(a1, 0x0), value0, 0x1u);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_18c99c0(U64 object, U64 a1) {
-  return GameRoutine_18bf640(At<U64>(a1, 0x0), At<U32>(At<U64>(object, 0x8),
-    0x0), 0x0u);
+  const U32 value0 = At<U32>(At<U64>(object, 0x8), 0x0);
+  return GameRoutine_18bf640(At<U64>(a1, 0x0), value0, 0x0u);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_18d2fc0(U64 object) {
@@ -1251,8 +1338,9 @@ template <typename T>
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_190d1d0(U64 object, U64 a1) {
-  return
-    GameRoutine_651b90(At<U64>(At<U64>(reinterpret_cast<U64>(GameData_212bf68), 0x0), 0x0), a1, 0x10u, 0x0u);
+  const U64 value0 = At<U64>(At<U64>(reinterpret_cast<U64>(GameData_212bf68),
+    0x0), 0x0);
+  return GameRoutine_651b90(value0, a1, 0x10u, 0x0u);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_1954ef0(U64 object) {
@@ -1260,13 +1348,13 @@ template <typename T>
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_1964420(U64 object) {
-  return GameRoutine_1980330(object, reinterpret_cast<U64>(GameData_1aefb5f),
-    0x1u);
+  const U64 value0 = reinterpret_cast<U64>(GameData_1aefb5f);
+  return GameRoutine_1980330(object, value0, 0x1u);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_1964460(U64 object) {
-  return GameRoutine_1980330(object, reinterpret_cast<U64>(GameData_1a97410),
-    0x1u);
+  const U64 value0 = reinterpret_cast<U64>(GameData_1a97410);
+  return GameRoutine_1980330(object, value0, 0x1u);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_1966d90(U64 object) {
@@ -1278,16 +1366,19 @@ template <typename T>
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_197e910(U64 object) {
-  return GameRoutine_948620(At<U64>(object, 0x58),
-    At<U64>(At<U64>(reinterpret_cast<U64>(GameData_212dcd0), 0x0), 0x0) + 0x30);
+  const U64 value0 = At<U64>(At<U64>(reinterpret_cast<U64>(GameData_212dcd0),
+    0x0), 0x0) + 0x30;
+  return GameRoutine_948620(At<U64>(object, 0x58), value0);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_1980830(U64 object) {
-  return GameRoutine_1153ca0(object, At<U64>(At<U64>(object, 0xb8), 0x20));
+  const U64 value0 = At<U64>(At<U64>(object, 0xb8), 0x20);
+  return GameRoutine_1153ca0(object, value0);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_19bf0d0(U64 object) {
-  return GameRoutine_19bf2f0(At<U64>(At<U64>(object, 0xd8), 0x10));
+  const U64 value0 = At<U64>(At<U64>(object, 0xd8), 0x10);
+  return GameRoutine_19bf2f0(value0);
 }
 
 [[gnu::visibility("hidden")]] U64 GameStub_1a082a0(U64 object, U64 a1) {

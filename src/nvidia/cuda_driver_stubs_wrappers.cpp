@@ -104,7 +104,8 @@ template <typename T>
 }
 
 [[gnu::visibility("hidden")]] U64 CudaDriverStub_61930(U64 object) {
-  return CudaDriverRoutine_90cc0(At<U64>(At<U64>(object, 0x18), 0x428));
+  const U64 value0 = At<U64>(At<U64>(object, 0x18), 0x428);
+  return CudaDriverRoutine_90cc0(value0);
 }
 
 [[gnu::visibility("hidden")]] U64 CudaDriverStub_619b0(U64 object) {
@@ -150,9 +151,9 @@ template <typename T>
 
 [[gnu::visibility("hidden")]] U64 CudaDriverStub_e4960(U64 object, U64 a1,
   U64 a2) {
-  return CudaDriverRoutine_e4750(object, a1, a2,
-    reinterpret_cast<U64>(CudaDriverData_112a7bd),
-    reinterpret_cast<U64>(CudaDriverData_1124c9b));
+  const U64 value0 = reinterpret_cast<U64>(CudaDriverData_112a7bd);
+  const U64 value1 = reinterpret_cast<U64>(CudaDriverData_1124c9b);
+  return CudaDriverRoutine_e4750(object, a1, a2, value0, value1);
 }
 
 [[gnu::visibility("hidden")]] U64 CudaDriverStub_f0f60(U64 object, U64 a1) {
@@ -169,8 +170,9 @@ template <typename T>
 }
 
 [[gnu::visibility("hidden")]] U64 CudaDriverStub_10e9d0(U64 object) {
-  return
-    CudaDriverRoutine_107f90(At<U64>(At<U64>(reinterpret_cast<U64>(CudaDriverData_14230e0), 0x0), 0x0), 0x0ul, 0x0u);
+  const U64 value0 =
+    At<U64>(At<U64>(reinterpret_cast<U64>(CudaDriverData_14230e0), 0x0), 0x0);
+  return CudaDriverRoutine_107f90(value0, 0x0ul, 0x0u);
 }
 
 [[gnu::visibility("hidden")]] U64 CudaDriverStub_10f370(U64 object) {
@@ -186,22 +188,28 @@ template <typename T>
 }
 
 [[gnu::visibility("hidden")]] U64 CudaDriverStub_118070(U64 object) {
-  return CudaDriverRoutine_12ea60(object + 0x240,
-    At<U64>(reinterpret_cast<U64>(CudaDriverData_14232e0), 0x0), object);
+  const U64 value0 = At<U64>(reinterpret_cast<U64>(CudaDriverData_14232e0),
+    0x0);
+  return CudaDriverRoutine_12ea60(object + 0x240, value0, object);
 }
 
 [[gnu::visibility("hidden")]] U64 CudaDriverStub_123f10(U64 object) {
-  return CudaDriverRoutine_77c40(At<U64>(At<U64>(object, 0x8), 0x0));
+  const U64 value0 = At<U64>(At<U64>(object, 0x8), 0x0);
+  return CudaDriverRoutine_77c40(value0);
 }
 
 [[gnu::visibility("hidden")]] U64 CudaDriverStub_12c940(U64 object) {
-  return
-    CudaDriverRoutine_86ae0(At<U64>(At<U64>(reinterpret_cast<U64>(CudaDriverData_1423370), 0x0), 0x0) + 0x50, object);
+  const U64 value0 =
+    At<U64>(At<U64>(reinterpret_cast<U64>(CudaDriverData_1423370), 0x0),
+    0x0) + 0x50;
+  return CudaDriverRoutine_86ae0(value0, object);
 }
 
 [[gnu::visibility("hidden")]] U64 CudaDriverStub_12c9a0(U64 object, U64 a1) {
-  return
-    CudaDriverRoutine_86b70(At<U64>(At<U64>(reinterpret_cast<U64>(CudaDriverData_1423370), 0x0), 0x0) + 0x50, object, a1);
+  const U64 value0 =
+    At<U64>(At<U64>(reinterpret_cast<U64>(CudaDriverData_1423370), 0x0),
+    0x0) + 0x50;
+  return CudaDriverRoutine_86b70(value0, object, a1);
 }
 
 [[gnu::visibility("hidden")]] U64 CudaDriverStub_12dd40(U64 object, U32 a1,
@@ -234,12 +242,13 @@ template <typename T>
 }
 
 [[gnu::visibility("hidden")]] U64 CudaDriverStub_1b7cc0(U64 object) {
-  return CudaDriverRoutine_e5e80(At<U64>(At<U64>(At<U64>(object, 0x20), 0x18),
-    0x4b0));
+  const U64 value0 = At<U64>(At<U64>(At<U64>(object, 0x20), 0x18), 0x4b0);
+  return CudaDriverRoutine_e5e80(value0);
 }
 
 [[gnu::visibility("hidden")]] U64 CudaDriverStub_1c0ac0(U64 object) {
-  return CudaDriverRoutine_102370(At<U64>(At<U64>(object, 0x50), 0x70));
+  const U64 value0 = At<U64>(At<U64>(object, 0x50), 0x70);
+  return CudaDriverRoutine_102370(value0);
 }
 
 [[gnu::visibility("hidden")]] U64 CudaDriverStub_1c3170(U64 object, U64 a1,
@@ -257,13 +266,15 @@ template <typename T>
 }
 
 [[gnu::visibility("hidden")]] U64 CudaDriverStub_1f2870(U64 object) {
-  return CudaDriverRoutine_102370(At<U64>(At<U64>(object, 0x50), 0x70));
+  const U64 value0 = At<U64>(At<U64>(object, 0x50), 0x70);
+  return CudaDriverRoutine_102370(value0);
 }
 
 [[gnu::visibility("hidden")]] U64 CudaDriverStub_203210(U64 object, U64 a1,
   U64 a2, U64 a3, U64 a4) {
-  return CudaDriverRoutine_202f80(object, a1, a2, a3, a4,
-    At<U64>(reinterpret_cast<U64>(CudaDriverData_14347a8), 0x118));
+  const U64 value0 = At<U64>(reinterpret_cast<U64>(CudaDriverData_14347a8),
+    0x118);
+  return CudaDriverRoutine_202f80(object, a1, a2, a3, a4, value0);
 }
 
 [[gnu::visibility("hidden")]] U64 CudaDriverStub_221750(U64 object, U64 a1,

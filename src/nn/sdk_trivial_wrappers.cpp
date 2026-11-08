@@ -82,22 +82,24 @@ template <typename T>
 }
 
 [[gnu::visibility("hidden")]] U64 SdkStub_aea90(U64 object, U64 a1) {
-  return SdkRoutine_859310(reinterpret_cast<U64>(SdkData_e4ced8), object, a1);
+  const U64 value0 = reinterpret_cast<U64>(SdkData_e4ced8);
+  return SdkRoutine_859310(value0, object, a1);
 }
 
 [[gnu::visibility("hidden")]] U64 SdkStub_aeab0(U64 object, U64 a1) {
-  return SdkRoutine_859310(reinterpret_cast<U64>(SdkData_e4cf18), object, a1);
+  const U64 value0 = reinterpret_cast<U64>(SdkData_e4cf18);
+  return SdkRoutine_859310(value0, object, a1);
 }
 
 [[gnu::visibility("hidden")]] U64 SdkStub_b93b0(U64 object, U64 a1, U64 a2,
   U64 a3, U64 a4) {
-  return SdkRoutine_859bb0(object, a1, a2, a3, a4,
-    reinterpret_cast<U64>(SdkData_bbbd5c));
+  const U64 value0 = reinterpret_cast<U64>(SdkData_bbbd5c);
+  return SdkRoutine_859bb0(object, a1, a2, a3, a4, value0);
 }
 
 [[gnu::visibility("hidden")]] U64 SdkStub_e3e40(U64 object, U64 a1, U64 a2,
   U32 a3) {
-  return SdkRoutine_e4100(object + 0x8, a1, 0x301, a2, a3, 0x0);
+  return SdkRoutine_e4100(object + 0x8, a1, 0x301u, a2, a3, 0x0u);
 }
 
 [[gnu::visibility("hidden")]] U64 SdkStub_17c6e0(U64 object, U64 a1) {
@@ -105,54 +107,62 @@ template <typename T>
 }
 
 [[gnu::visibility("hidden")]] U64 SdkStub_1a2490(U64 object) {
-  return SdkRoutine_85f6e0(At<U64>(reinterpret_cast<U64>(SdkData_e87080), 0x0));
+  const U64 value0 = At<U64>(reinterpret_cast<U64>(SdkData_e87080), 0x0);
+  return SdkRoutine_85f6e0(value0);
 }
 
 [[gnu::visibility("hidden")]] U64 SdkStub_1ba480(U64 object, U64 a1, U64 a2,
   U32 a3) {
-  return SdkRoutine_1baa90(object + 0x8, a1, 0x1000, a2, 0x100, a3, 0x64);
+  return SdkRoutine_1baa90(object + 0x8, a1, 0x1000u, a2, 0x100u, a3, 0x64u);
 }
 
 [[gnu::visibility("hidden")]] U64 SdkStub_1be340(U64 object, U64 a1, U32 a2) {
-  return SdkRoutine_1beb60(object + 0x8, a1, 0x1000, a2, 0x123);
+  return SdkRoutine_1beb60(object + 0x8, a1, 0x1000u, a2, 0x123u);
 }
 
 [[gnu::visibility("hidden")]] U64 SdkStub_1e20d0(U64 object) {
-  return SdkRoutine_2d0(reinterpret_cast<U64>(SdkData_e03d0),
-    reinterpret_cast<U64>(SdkData_f01178),
-    reinterpret_cast<U64>(SdkData_e4c300));
+  const U64 value0 = reinterpret_cast<U64>(SdkData_e03d0);
+  const U64 value1 = reinterpret_cast<U64>(SdkData_f01178);
+  const U64 value2 = reinterpret_cast<U64>(SdkData_e4c300);
+  return SdkRoutine_2d0(value0, value1, value2);
 }
 
 [[gnu::visibility("hidden")]] U64 SdkStub_1e2690(U64 object) {
-  return SdkRoutine_2d0(reinterpret_cast<U64>(SdkData_e03d0),
-    reinterpret_cast<U64>(SdkData_f012a8),
-    reinterpret_cast<U64>(SdkData_e4c300));
+  const U64 value0 = reinterpret_cast<U64>(SdkData_e03d0);
+  const U64 value1 = reinterpret_cast<U64>(SdkData_f012a8);
+  const U64 value2 = reinterpret_cast<U64>(SdkData_e4c300);
+  return SdkRoutine_2d0(value0, value1, value2);
 }
 
 [[gnu::visibility("hidden")]] U64 SdkStub_1e6d10(U64 object, U64 a1) {
-  return SdkRoutine_860d90(object, reinterpret_cast<U64>(SdkData_bbbd5c), a1);
+  const U64 value0 = reinterpret_cast<U64>(SdkData_bbbd5c);
+  return SdkRoutine_860d90(object, value0, a1);
 }
 
 [[gnu::visibility("hidden")]] U64 SdkStub_1e7e60(U64 object, U64 a1) {
-  return SdkRoutine_860da0(object, reinterpret_cast<U64>(SdkData_bbbd5c), a1);
+  const U64 value0 = reinterpret_cast<U64>(SdkData_bbbd5c);
+  return SdkRoutine_860da0(object, value0, a1);
 }
 
 [[gnu::visibility("hidden")]] U64 SdkStub_2ae260(U64 object) {
-  return SdkRoutine_2d0(reinterpret_cast<U64>(SdkData_e03d0),
-    reinterpret_cast<U64>(SdkData_f27ee8),
-    reinterpret_cast<U64>(SdkData_e4c300));
+  const U64 value0 = reinterpret_cast<U64>(SdkData_e03d0);
+  const U64 value1 = reinterpret_cast<U64>(SdkData_f27ee8);
+  const U64 value2 = reinterpret_cast<U64>(SdkData_e4c300);
+  return SdkRoutine_2d0(value0, value1, value2);
 }
 
 [[gnu::visibility("hidden")]] U64 SdkStub_2aed80(U64 object) {
-  return SdkRoutine_2d0(reinterpret_cast<U64>(SdkData_e03d0),
-    reinterpret_cast<U64>(SdkData_f28480),
-    reinterpret_cast<U64>(SdkData_e4c300));
+  const U64 value0 = reinterpret_cast<U64>(SdkData_e03d0);
+  const U64 value1 = reinterpret_cast<U64>(SdkData_f28480);
+  const U64 value2 = reinterpret_cast<U64>(SdkData_e4c300);
+  return SdkRoutine_2d0(value0, value1, value2);
 }
 
 [[gnu::visibility("hidden")]] U64 SdkStub_2bdc40(U64 object) {
-  return SdkRoutine_2d0(reinterpret_cast<U64>(SdkData_e03d0),
-    reinterpret_cast<U64>(SdkData_f28c98),
-    reinterpret_cast<U64>(SdkData_e4c300));
+  const U64 value0 = reinterpret_cast<U64>(SdkData_e03d0);
+  const U64 value1 = reinterpret_cast<U64>(SdkData_f28c98);
+  const U64 value2 = reinterpret_cast<U64>(SdkData_e4c300);
+  return SdkRoutine_2d0(value0, value1, value2);
 }
 
 [[gnu::visibility("hidden")]] U64 SdkStub_3623a0(U64 object, U32 a1, U32 a2,
@@ -161,35 +171,41 @@ template <typename T>
 }
 
 [[gnu::visibility("hidden")]] U64 SdkStub_430440(U64 object) {
-  return SdkRoutine_4379e0(object, At<U64>(object, 0x60),
-    At<U16>(At<U64>(object, 0x40), 0x9a), At<U16>(At<U64>(object, 0x40), 0x9c));
+  const U16 value0 = At<U16>(At<U64>(object, 0x40), 0x9a);
+  const U16 value1 = At<U16>(At<U64>(object, 0x40), 0x9c);
+  return SdkRoutine_4379e0(object, At<U64>(object, 0x60), value0, value1);
 }
 
 [[gnu::visibility("hidden")]] U64 SdkStub_4320e0(U64 object) {
-  return SdkRoutine_437b60(object, At<U16>(At<U64>(object, 0x40), 0x9a),
-    At<U16>(At<U64>(object, 0x40), 0x9c));
+  const U16 value0 = At<U16>(At<U64>(object, 0x40), 0x9a);
+  const U16 value1 = At<U16>(At<U64>(object, 0x40), 0x9c);
+  return SdkRoutine_437b60(object, value0, value1);
 }
 
 [[gnu::visibility("hidden")]] U64 SdkStub_432130(U64 object) {
-  return SdkRoutine_437da0(object, At<U16>(At<U64>(object, 0x40), 0x9a),
-    At<U16>(At<U64>(object, 0x40), 0x9c));
+  const U16 value0 = At<U16>(At<U64>(object, 0x40), 0x9a);
+  const U16 value1 = At<U16>(At<U64>(object, 0x40), 0x9c);
+  return SdkRoutine_437da0(object, value0, value1);
 }
 
 [[gnu::visibility("hidden")]] U64 SdkStub_432180(U64 object) {
-  return SdkRoutine_4380a0(object, At<U16>(At<U64>(object, 0x40), 0x9a),
-    At<U16>(At<U64>(object, 0x40), 0x9c));
+  const U16 value0 = At<U16>(At<U64>(object, 0x40), 0x9a);
+  const U16 value1 = At<U16>(At<U64>(object, 0x40), 0x9c);
+  return SdkRoutine_4380a0(object, value0, value1);
 }
 
 [[gnu::visibility("hidden")]] U64 SdkStub_476850(U64 object) {
-  return SdkRoutine_2d0(reinterpret_cast<U64>(SdkData_e03d0),
-    reinterpret_cast<U64>(SdkData_f39af8),
-    reinterpret_cast<U64>(SdkData_e4c300));
+  const U64 value0 = reinterpret_cast<U64>(SdkData_e03d0);
+  const U64 value1 = reinterpret_cast<U64>(SdkData_f39af8);
+  const U64 value2 = reinterpret_cast<U64>(SdkData_e4c300);
+  return SdkRoutine_2d0(value0, value1, value2);
 }
 
 [[gnu::visibility("hidden")]] U64 SdkStub_476bf0(U64 object) {
-  return SdkRoutine_2d0(reinterpret_cast<U64>(SdkData_e03d0),
-    reinterpret_cast<U64>(SdkData_f39b30),
-    reinterpret_cast<U64>(SdkData_e4c300));
+  const U64 value0 = reinterpret_cast<U64>(SdkData_e03d0);
+  const U64 value1 = reinterpret_cast<U64>(SdkData_f39b30);
+  const U64 value2 = reinterpret_cast<U64>(SdkData_e4c300);
+  return SdkRoutine_2d0(value0, value1, value2);
 }
 
 [[gnu::visibility("hidden")]] U64 SdkStub_4cd500(U64 object) {
@@ -197,41 +213,46 @@ template <typename T>
 }
 
 [[gnu::visibility("hidden")]] U64 SdkStub_5859f0(U64 object) {
-  return SdkRoutine_2d0(reinterpret_cast<U64>(SdkData_361a40),
-    reinterpret_cast<U64>(SdkData_ea37a8),
-    reinterpret_cast<U64>(SdkData_e4c300));
+  const U64 value0 = reinterpret_cast<U64>(SdkData_361a40);
+  const U64 value1 = reinterpret_cast<U64>(SdkData_ea37a8);
+  const U64 value2 = reinterpret_cast<U64>(SdkData_e4c300);
+  return SdkRoutine_2d0(value0, value1, value2);
 }
 
 [[gnu::visibility("hidden")]] U64 SdkStub_587430(U64 object) {
-  return SdkRoutine_2d0(reinterpret_cast<U64>(SdkData_e03d0),
-    reinterpret_cast<U64>(SdkData_f64818),
-    reinterpret_cast<U64>(SdkData_e4c300));
+  const U64 value0 = reinterpret_cast<U64>(SdkData_e03d0);
+  const U64 value1 = reinterpret_cast<U64>(SdkData_f64818);
+  const U64 value2 = reinterpret_cast<U64>(SdkData_e4c300);
+  return SdkRoutine_2d0(value0, value1, value2);
 }
 
 [[gnu::visibility("hidden")]] U64 SdkStub_589fc0(U64 object, U64 a1, U32 a2) {
-  return SdkRoutine_58bd60(object + 0x8, a1, 0x1438, a2, 0x38);
+  return SdkRoutine_58bd60(object + 0x8, a1, 0x1438u, a2, 0x38u);
 }
 
 [[gnu::visibility("hidden")]] U64 SdkStub_58da60(U64 object) {
-  return SdkRoutine_2d0(reinterpret_cast<U64>(SdkData_e03d0),
-    reinterpret_cast<U64>(SdkData_f65100),
-    reinterpret_cast<U64>(SdkData_e4c300));
+  const U64 value0 = reinterpret_cast<U64>(SdkData_e03d0);
+  const U64 value1 = reinterpret_cast<U64>(SdkData_f65100);
+  const U64 value2 = reinterpret_cast<U64>(SdkData_e4c300);
+  return SdkRoutine_2d0(value0, value1, value2);
 }
 
 [[gnu::visibility("hidden")]] U64 SdkStub_5957f0(U64 object) {
-  return SdkRoutine_2d0(reinterpret_cast<U64>(SdkData_e03d0),
-    reinterpret_cast<U64>(SdkData_f65598),
-    reinterpret_cast<U64>(SdkData_e4c300));
+  const U64 value0 = reinterpret_cast<U64>(SdkData_e03d0);
+  const U64 value1 = reinterpret_cast<U64>(SdkData_f65598);
+  const U64 value2 = reinterpret_cast<U64>(SdkData_e4c300);
+  return SdkRoutine_2d0(value0, value1, value2);
 }
 
 [[gnu::visibility("hidden")]] U64 SdkStub_596ee4(U64 object) {
-  return SdkRoutine_860a00(0x1);
+  return SdkRoutine_860a00(0x1u);
 }
 
 [[gnu::visibility("hidden")]] U64 SdkStub_5a2ed0(U64 object) {
-  return SdkRoutine_2d0(reinterpret_cast<U64>(SdkData_e03d0),
-    reinterpret_cast<U64>(SdkData_f65e38),
-    reinterpret_cast<U64>(SdkData_e4c300));
+  const U64 value0 = reinterpret_cast<U64>(SdkData_e03d0);
+  const U64 value1 = reinterpret_cast<U64>(SdkData_f65e38);
+  const U64 value2 = reinterpret_cast<U64>(SdkData_e4c300);
+  return SdkRoutine_2d0(value0, value1, value2);
 }
 
 [[gnu::visibility("hidden")]] U64 SdkStub_5d4210(U64 object, U64 a1, U64 a2) {
@@ -243,9 +264,10 @@ template <typename T>
 }
 
 [[gnu::visibility("hidden")]] U64 SdkStub_5ec080(U64 object) {
-  return SdkRoutine_2d0(reinterpret_cast<U64>(SdkData_361a40),
-    reinterpret_cast<U64>(SdkData_ea3a98),
-    reinterpret_cast<U64>(SdkData_e4c300));
+  const U64 value0 = reinterpret_cast<U64>(SdkData_361a40);
+  const U64 value1 = reinterpret_cast<U64>(SdkData_ea3a98);
+  const U64 value2 = reinterpret_cast<U64>(SdkData_e4c300);
+  return SdkRoutine_2d0(value0, value1, value2);
 }
 
 [[gnu::visibility("hidden")]] U64 SdkStub_5fbf90(U64 object, U64 a1) {
@@ -271,9 +293,10 @@ template <typename T>
 }
 
 [[gnu::visibility("hidden")]] U64 SdkStub_656780(U64 object) {
-  return SdkRoutine_2d0(At<U64>(reinterpret_cast<U64>(SdkData_e89d30), 0x0),
-    At<U64>(reinterpret_cast<U64>(SdkData_e89c10), 0x0),
-    reinterpret_cast<U64>(SdkData_e4c300));
+  const U64 value0 = At<U64>(reinterpret_cast<U64>(SdkData_e89d30), 0x0);
+  const U64 value1 = At<U64>(reinterpret_cast<U64>(SdkData_e89c10), 0x0);
+  const U64 value2 = reinterpret_cast<U64>(SdkData_e4c300);
+  return SdkRoutine_2d0(value0, value1, value2);
 }
 
 [[gnu::visibility("hidden")]] U64 SdkStub_66cad0(U64 object, U64 a1) {
@@ -286,75 +309,76 @@ template <typename T>
 }
 
 [[gnu::visibility("hidden")]] U64 SdkStub_6b5970(U64 object) {
-  return SdkRoutine_2d0(reinterpret_cast<U64>(SdkData_e03d0),
-    At<U64>(reinterpret_cast<U64>(SdkData_e89060), 0x0),
-    reinterpret_cast<U64>(SdkData_e4c300));
+  const U64 value0 = reinterpret_cast<U64>(SdkData_e03d0);
+  const U64 value1 = At<U64>(reinterpret_cast<U64>(SdkData_e89060), 0x0);
+  const U64 value2 = reinterpret_cast<U64>(SdkData_e4c300);
+  return SdkRoutine_2d0(value0, value1, value2);
 }
 
 [[gnu::visibility("hidden")]] U64 SdkStub_6eecb0(U64 object, U64 a1, U64 a2,
   U32 a3) {
-  return SdkRoutine_6f0320(object + 0x8, a1, a2, 0x744, a3, 0x57);
+  return SdkRoutine_6f0320(object + 0x8, a1, a2, 0x744u, a3, 0x57u);
 }
 
 [[gnu::visibility("hidden")]] U64 SdkStub_6eecd0(U64 object, U64 a1, U64 a2,
   U32 a3) {
-  return SdkRoutine_6f04b0(object + 0x8, a1, a2, 0xc8, a3, 0x58);
+  return SdkRoutine_6f04b0(object + 0x8, a1, a2, 0xc8u, a3, 0x58u);
 }
 
 [[gnu::visibility("hidden")]] U64 SdkStub_6ef5a0(U64 object, U64 a1, U32 a2) {
-  return SdkRoutine_6f2fd0(object + 0x8, a1, 0x58, a2, 0xbbe);
+  return SdkRoutine_6f2fd0(object + 0x8, a1, 0x58u, a2, 0xbbeu);
 }
 
 [[gnu::visibility("hidden")]] U64 SdkStub_6ef5c0(U64 object, U64 a1, U32 a2) {
-  return SdkRoutine_6f3190(object + 0x8, a1, 0x58, a2, 0xbbf);
+  return SdkRoutine_6f3190(object + 0x8, a1, 0x58u, a2, 0xbbfu);
 }
 
 [[gnu::visibility("hidden")]] U64 SdkStub_6f97d0(U64 object, U64 a1, U64 a2,
   U32 a3) {
-  return SdkRoutine_6fcad0(object + 0x8, a1, 0x54, a2, 0x81, a3, 0x504);
+  return SdkRoutine_6fcad0(object + 0x8, a1, 0x54u, a2, 0x81u, a3, 0x504u);
 }
 
 [[gnu::visibility("hidden")]] U64 SdkStub_6f97f0(U64 object, U64 a1, U64 a2,
   U32 a3) {
-  return SdkRoutine_6fcad0(object + 0x8, a1, 0x60, a2, 0x81, a3, 0x505);
+  return SdkRoutine_6fcad0(object + 0x8, a1, 0x60u, a2, 0x81u, a3, 0x505u);
 }
 
 [[gnu::visibility("hidden")]] U64 SdkStub_6f9810(U64 object, U64 a1, U64 a2,
   U32 a3) {
-  return SdkRoutine_6fcad0(object + 0x8, a1, 0x34, a2, 0x81, a3, 0x506);
+  return SdkRoutine_6fcad0(object + 0x8, a1, 0x34u, a2, 0x81u, a3, 0x506u);
 }
 
 [[gnu::visibility("hidden")]] U64 SdkStub_6f9830(U64 object, U64 a1, U64 a2,
   U32 a3) {
-  return SdkRoutine_6fcad0(object + 0x8, a1, 0x34, a2, 0x81, a3, 0x507);
+  return SdkRoutine_6fcad0(object + 0x8, a1, 0x34u, a2, 0x81u, a3, 0x507u);
 }
 
 [[gnu::visibility("hidden")]] U64 SdkStub_6f9850(U64 object, U64 a1, U64 a2,
   U32 a3) {
-  return SdkRoutine_6fccb0(object + 0x8, a1, 0x54, a2, 0x81, a3, 0x508);
+  return SdkRoutine_6fccb0(object + 0x8, a1, 0x54u, a2, 0x81u, a3, 0x508u);
 }
 
 [[gnu::visibility("hidden")]] U64 SdkStub_6f9870(U64 object, U64 a1, U64 a2,
   U32 a3) {
-  return SdkRoutine_6fccb0(object + 0x8, a1, 0x60, a2, 0x81, a3, 0x509);
+  return SdkRoutine_6fccb0(object + 0x8, a1, 0x60u, a2, 0x81u, a3, 0x509u);
 }
 
 [[gnu::visibility("hidden")]] U64 SdkStub_6f9890(U64 object, U64 a1, U64 a2,
   U32 a3) {
-  return SdkRoutine_6fccb0(object + 0x8, a1, 0x34, a2, 0x81, a3, 0x50a);
+  return SdkRoutine_6fccb0(object + 0x8, a1, 0x34u, a2, 0x81u, a3, 0x50au);
 }
 
 [[gnu::visibility("hidden")]] U64 SdkStub_6f98b0(U64 object, U64 a1, U64 a2,
   U32 a3) {
-  return SdkRoutine_6fccb0(object + 0x8, a1, 0x34, a2, 0x81, a3, 0x50b);
+  return SdkRoutine_6fccb0(object + 0x8, a1, 0x34u, a2, 0x81u, a3, 0x50bu);
 }
 
 [[gnu::visibility("hidden")]] U64 SdkStub_6f9930(U64 object, U64 a1, U64 a2,
   U32 a3) {
-  return SdkRoutine_6fcad0(object + 0x8, a1, 0x8, a2, 0x81, a3, 0x513);
+  return SdkRoutine_6fcad0(object + 0x8, a1, 0x8u, a2, 0x81u, a3, 0x513u);
 }
 
 [[gnu::visibility("hidden")]] U64 SdkStub_760620(U64 object, U64 a1, U64 a2,
   U64 a3, U32 a4, U32 a5) {
-  return SdkRoutine_761130(object + 0x8, a1, 0x480, a2, a3, a4, a5, 0x12e);
+  return SdkRoutine_761130(object + 0x8, a1, 0x480u, a2, a3, a4, a5, 0x12eu);
 }
