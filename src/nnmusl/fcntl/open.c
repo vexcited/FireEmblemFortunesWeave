@@ -4,10 +4,11 @@
 
 #define HIDDEN __attribute__((visibility("hidden")))
 
-// nnmusl classifies the path first, then opens it as a file or a directory.
+// nnmusl asks the file system for the entry type first, 0 is a directory, 1
+// a file and 2 a missing entry that the file path may create.
 HIDDEN int __nnmusl_path_kind(const char *path);
-HIDDEN int __nnmusl_open_file(const char *path, int flags);
 HIDDEN int __nnmusl_open_directory(const char *path, int flags);
+HIDDEN int __nnmusl_open_file(const char *path, int flags);
 
 int open(const char *filename, int flags, ...)
 {
@@ -23,7 +24,7 @@ int open(const char *filename, int flags, ...)
 
 	switch (__nnmusl_path_kind(filename)) {
 	case 0:
-		return __nnmusl_open_file(filename, flags);
+		return __nnmusl_open_directory(filename, flags);
 	case 1:
 		if (flags & O_DIRECTORY) {
 			errno = ENOTDIR;
@@ -31,7 +32,7 @@ int open(const char *filename, int flags, ...)
 		}
 		/* fallthrough */
 	case 2:
-		return __nnmusl_open_directory(filename, flags);
+		return __nnmusl_open_file(filename, flags);
 	default:
 		return -1;
 	}
