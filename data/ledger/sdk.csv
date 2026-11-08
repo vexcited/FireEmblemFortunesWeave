@@ -23288,7 +23288,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 789110,312,verified,src/nnmusl/stdio/vfprintf.c,pop_arg
 7893a0,164,verified,src/musl/src/stdio/vfprintf.c,pad
 78bf20,244,verified,src/nnmusl/stdio/vfwprintf.c,vfwprintf
-78c020,692,disputed,src/nnmusl/stdio/vfwprintf.c,wprintf_core
+78c020,692,verified,src/nnmusl/stdio/vfwprintf.c,wprintf_core
 78ca90,560,verified,src/musl/src/stdio/vfprintf.c,pop_arg
 78cd40,800,verified,src/nnmusl/stdio/vfwprintf.c,pad
 78d070,180,verified,src/nnmusl/nnmusl_strtof.cpp,strtof
@@ -23514,10 +23514,13 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 79cba0,36,verified,src/musl/src/multibyte/mbrlen.c,mbrlen
 79cbd0,200,verified,src/musl/src/multibyte/mbrtoc16.c,mbrtoc16
 79ccd0,112,verified,src/musl/src/multibyte/mbrtoc32.c,mbrtoc32
+79cd40,208,verified,src/musl/src/multibyte/mbrtowc.c,mbrtowc
 79ce80,28,verified,src/musl/src/multibyte/mbsinit.c,mbsinit
 79cea0,380,verified,src/musl/src/multibyte/mbsnrtowcs.c,mbsnrtowcs
+79d040,508,verified,src/musl/src/multibyte/mbsrtowcs.c,mbsrtowcs
 79d380,44,verified,src/musl/src/multibyte/mbstowcs.c,mbstowcs
 79d3b0,84,verified,src/musl/src/multibyte/mbtowc.c,mbtowc
+79d4e0,136,verified,src/musl/src/multibyte/wcrtomb.c,wcrtomb
 79d6e0,424,verified,src/musl/src/multibyte/wcsrtombs.c,wcsrtombs
 79d890,44,verified,src/musl/src/multibyte/wcstombs.c,wcstombs
 79d8c0,12,verified,src/nnmusl/nnmusl_libc_forwarders2.cpp,wctob
@@ -23641,7 +23644,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 7a3b60,64,verified,src/musl/src/stdio/vsprintf.c,vsprintf
 7a3ba0,132,verified,src/musl/src/stdio/vsscanf.c,vsscanf
 7a3cc0,252,verified,src/nnmusl/stdio/vswprintf.c,vswprintf
-7a3dc0,212,disputed,src/nnmusl/stdio/vswprintf.c,sw_write
+7a3dc0,212,verified,src/nnmusl/stdio/vswprintf.c,sw_write
 7a3ec0,148,verified,src/musl/src/stdio/vswscanf.c,vswscanf
 7a4020,68,verified,src/musl/src/stdio/vwprintf.c,vwprintf
 7a4070,120,verified,src/musl/src/stdio/wprintf.c,wprintf

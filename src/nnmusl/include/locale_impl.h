@@ -35,7 +35,8 @@ locale_t __getlocale(void);
 
 #define CURRENT_LOCALE (*__getlocale_addr())
 
-#define CURRENT_UTF8 (!!__getlocale()->cat[LC_CTYPE])
+// nnmusl only speaks UTF-8.
+#define CURRENT_UTF8 1
 
 #undef MB_CUR_MAX
 #define MB_CUR_MAX (CURRENT_UTF8 ? 4 : 1)
