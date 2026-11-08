@@ -20029,7 +20029,7 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 5f8d70,96,verified,src/nvidia/nv_graphics_config.cpp,_ZN2nv26InitializeGraphicsDevtoolsEPvm
 5f8dd0,44,verified,src/nvidia/nv_graphics_config.cpp,_ZN2nv27EnableGraphicsMemoryTracingEv
 5f8e00,44,verified,src/nvidia/nv_graphics_config.cpp,_ZN2nv20EnablePreemptionGFXPEv
-5f8e30,84,verified,src/nvidia/nv_graphics_config.cpp,_ZN2nv21GetGraphicsMemoryInfoEPNS_10MemoryInfoE
+5f8e30,132,verified,src/nvidia/nv_graphics_config.cpp,_ZN2nv21GetGraphicsMemoryInfoEPNS_10MemoryInfoE
 5f8ec0,4,verified,src/nvidia/nv_misc.cpp,_ZN2nv22DumpGraphicsMemoryInfoEv
 5f8ed0,4,verified,src/nvidia/nv_misc.cpp,_ZN2nv24IsCapableNoVsyncForDebugEv
 5f8ee0,44,verified,src/nvidia/nv_graphics_config.cpp,_ZN2nv28DisableGpuSemaAcquireTimeoutEv
@@ -20504,6 +20504,11 @@ ffed0,4,verified,src/nn/fs/fs_memory_management.cpp,_ZN2nn2fs12_GLOBAL__N_117Def
 6457a0,12,verified,src/nvidia/nvwsi_context.cpp,NvWsiSetCallbacks
 64ff20,4,verified,src/nvidia/nv_misc.cpp,nvnInstallGlobalDebugCallback
 68a2a0,20648,verified,src/graphics/program_commands.cpp,graphics::EmitProgramCommands
+6af7c0,96,verified,src/nvidia/nvn_bootstrap.cpp,nvnBootstrapLoader
+6af820,12,verified,src/nvidia/nvn_bootstrap.cpp,nvnBootstrapLoaderInternal
+6af830,44,verified,src/nvidia/nvn_bootstrap.cpp,nvnDevtoolsBootstrap
+6af860,128,verified,src/nvidia/nvn_bootstrap.cpp,_ZN2nv28SetGraphicsDevtoolsAllocatorEPFPvmmS0_EPFvS0_S0_EPFS0_S0_mS0_ES0_
+6af950,52,verified,src/nvidia/nvn_bootstrap.cpp,_ZN2nv28GetGraphicsDevtoolsAllocatorEPPFPvmmS0_EPPFvS0_S0_EPPFS0_S0_mS0_EPS0_
 6afa30,8,verified,src/nvn/nvn_native_image_builder.cpp,_Z30nvnNativeImageBuilderSetDeviceP21NVNnativeImageBuilderP9NVNdevice
 6afa40,12,verified,src/nvn/nvn_native_image_builder.cpp,_Z32nvnNativeImageBuilderSetDefaultsP21NVNnativeImageBuilder
 6afa50,8,verified,src/nvn/nvn_native_image_builder.cpp,_Z41nvnNativeImageBuilderSetNativeImageHandleP21NVNnativeImageBuilderN2nn2gs17NativeImageHandleE
