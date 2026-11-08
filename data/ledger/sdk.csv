@@ -1934,6 +1934,7 @@ b2f40,108,verified,src/nnmusl/fcntl/fs_handles.c,__nnmusl_resolve
 b2fb0,272,verified,src/nnmusl/nnmusl_fs_path_kind.cpp,__nnmusl_path_kind
 b30c0,256,verified,src/nnmusl/fcntl/open_directory.c,__nnmusl_open_directory
 b3280,48,verified,src/nnmusl/fcntl/fs_handles.c,__nnmusl_close_directory
+b32c0,640,verified,src/nnmusl/fcntl/fd_readdir.c,__nnmusl_directory_seek
 b3560,160,verified,src/nnmusl/fcntl/fs_paths.c,__nnmusl_mkdir
 b3600,164,verified,src/nnmusl/fcntl/fd_readdir.c,__nnmusl_readdir
 b37e0,384,verified,src/nnmusl/fcntl/fs_paths.c,__nnmusl_rmdir
