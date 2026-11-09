@@ -657,10 +657,10 @@ fff0,88,verified,src/movie/detail/movie_video_decoder_event_manager.cpp,_ZN5movi
 21840,3700,verified,src/movie/unnamed/p000_0.c,MovieHr_21840
 22960,1616,verified,src/opus/celt/bands.c,quant_band_stereo
 23500,1732,verified,src/opus/celt/bands.c,quant_partition
-23ce0,308,disputed,src/movie/unnamed/p000_0.c,MovieHr_23ce0
+23ce0,308,verified,src/movie/unnamed/p000_0.c,MovieHr_23ce0
 23fc0,2388,verified,src/opus/celt/bands.c,compute_theta
 24d60,104,verified,src/opus/celt/celt.c,resampling_factor
-24de0,832,disputed,src/movie/unnamed/p000_0.c,MovieHr_24de0
+24de0,832,verified,src/movie/unnamed/p000_0.c,MovieHr_24de0
 252a0,104,verified,src/opus/celt/celt.c,init_caps
 25340,12,verified,src/opus/celt/celt.c,opus_get_version_string
 25350,72,verified,src/opus/celt/celt_decoder.c,celt_decoder_get_size
@@ -672,7 +672,7 @@ fff0,88,verified,src/movie/detail/movie_video_decoder_event_manager.cpp,_ZN5movi
 30a20,944,verified,src/opus/celt/celt_encoder.c,compute_mdcts
 34060,1376,verified,src/opus/celt/celt_encoder.c,alloc_trim_analysis
 34f60,144,verified,src/opus/celt/celt_encoder.c,opus_custom_encoder_ctl
-35cc0,852,disputed,src/movie/unnamed/p000_0.c,MovieHr_35cc0
+35cc0,852,verified,src/movie/unnamed/p000_0.c,MovieHr_35cc0
 360c0,460,verified,src/opus/celt/celt_lpc.c,xcorr_kernel_c
 37120,432,verified,src/movie/unnamed/p000_0.c,MovieHr_37120
 372e0,488,verified,src/movie/unnamed/p000_0.c,MovieHr_372e0
@@ -715,7 +715,7 @@ fff0,88,verified,src/movie/detail/movie_video_decoder_event_manager.cpp,_ZN5movi
 3e6a0,1140,verified,src/movie/unnamed/p000_0.c,MovieHr_3e6a0
 40a00,504,verified,src/opus/celt/vq.c,renormalise_vector
 40c20,1012,verified,src/movie/unnamed/p000_0.c,MovieHr_40c20
-41040,2440,disputed,src/movie/unnamed/p000_0.c,MovieHr_41040
+41040,2440,verified,src/movie/unnamed/p000_0.c,MovieHr_41040
 422a0,4244,verified,src/opus/silk/A2NLSF.c,silk_A2NLSF
 437c0,228,verified,src/opus/silk/CNG.c,silk_CNG_Reset
 44290,344,verified,src/opus/silk/HP_variable_cutoff.c,silk_HP_variable_cutoff
@@ -727,7 +727,7 @@ fff0,88,verified,src/movie/detail/movie_video_decoder_event_manager.cpp,_ZN5movi
 46040,500,verified,src/opus/silk/NLSF_decode.c,silk_NLSF_decode
 47020,1668,verified,src/movie/unnamed/p000_0.c,MovieHr_47020
 47700,160,verified,src/opus/silk/NLSF_unpack.c,silk_NLSF_unpack
-4a340,2064,disputed,src/movie/unnamed/p000_0.c,MovieHr_4a340
+4a340,2064,verified,src/movie/unnamed/p000_0.c,MovieHr_4a340
 4bb60,40,verified,src/opus/silk/PLC.c,silk_PLC_Reset
 4bba0,596,verified,src/movie/unnamed/p000_0.c,MovieHr_4bba0
 4c9e0,348,verified,src/opus/silk/PLC.c,silk_PLC_glue_frames
@@ -792,7 +792,7 @@ fff0,88,verified,src/movie/detail/movie_video_decoder_event_manager.cpp,_ZN5movi
 5dde0,180,verified,src/opus/silk/fixed/encode_frame_FIX.c,silk_encode_do_VAD_FIX
 5f240,668,verified,src/opus/silk/fixed/find_LTP_FIX.c,silk_find_LTP_FIX
 60180,592,verified,src/movie/unnamed/p000_0.c,MovieHr_60180
-63520,632,disputed,src/movie/unnamed/p000_0.c,MovieHr_63520
+63520,632,verified,src/movie/unnamed/p000_0.c,MovieHr_63520
 63aa0,1236,verified,src/opus/silk/fixed/pitch_analysis_core_FIX.c,silk_P_Ana_calc_energy_st3
 64260,796,verified,src/opus/silk/fixed/process_gains_FIX.c,silk_process_gains_FIX
 64580,248,verified,src/opus/silk/fixed/residual_energy_FIX.c,silk_residual_energy_FIX
@@ -827,7 +827,7 @@ fff0,88,verified,src/movie/detail/movie_video_decoder_event_manager.cpp,_ZN5movi
 6cc20,908,verified,src/movie/unnamed/p000_0.c,MovieHr_6cc20
 6d020,1124,verified,src/movie/unnamed/p000_0.c,MovieHr_6d020
 6d6a0,692,verified,src/opus/src/opus_encoder.c,decide_dtx_mode
-6d9a0,172,disputed,src/movie/unnamed/p000_0.c,MovieHr_6d9a0
+6d9a0,172,verified,src/movie/unnamed/p000_0.c,MovieHr_6d9a0
 6dbf0,248,verified,src/movie/unnamed/p000_0.c,MovieHr_6dbf0
 6dd30,200,verified,src/opus/src/opus_encoder.c,opus_encoder_ctl
 6ece0,4,verified,src/opus/src/opus_encoder.c,opus_encoder_destroy
@@ -878,7 +878,7 @@ fff0,88,verified,src/movie/detail/movie_video_decoder_event_manager.cpp,_ZN5movi
 7a500,208,verified,src/movie/unnamed/p000_0.c,MovieHr_7a500
 7a5e0,208,verified,src/movie/unnamed/p000_0.c,MovieHr_7a5e0
 7a6c0,132,verified,src/movie/unnamed/p000_0.c,MovieHr_7a6c0
-7a920,164,disputed,src/movie/unnamed/p000_0.c,MovieHr_7a920
+7a920,164,verified,src/movie/unnamed/p000_0.c,MovieHr_7a920
 7ac60,136,verified,src/movie/unnamed/p000_0.c,MovieHr_7ac60
 7b4c0,1172,verified,src/movie/unnamed/p000_0.c,MovieHr_7b4c0
 7b9d0,8,verified,src/movie/unnamed/y000_0.c,MovieHr_7b9d0
