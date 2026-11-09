@@ -696,6 +696,7 @@ fff0,88,verified,src/movie/detail/movie_video_decoder_event_manager.cpp,_ZN5movi
 384c0,1344,verified,src/opus/celt/entenc.c,ec_enc_done
 38ba0,1648,verified,src/opus/celt/kiss_fft.c,opus_fft_impl
 39600,124,verified,src/opus/celt/kiss_fft.c,opus_fft_c
+39680,580,verified,src/movie/unnamed/j000_0.c,MovieHr_39680
 39780,232,verified,src/opus/celt/laplace.c,ec_laplace_decode
 39880,80,verified,src/opus/celt/mathops.c,isqrt32
 398d0,340,verified,src/opus/celt/mathops.c,frac_div32
@@ -856,6 +857,7 @@ fff0,88,verified,src/movie/detail/movie_video_decoder_event_manager.cpp,_ZN5movi
 763f0,4,verified,src/opus/src/opus_multistream_decoder.c,opus_multistream_decoder_destroy
 77980,116,verified,src/opus/src/opus_multistream_encoder.c,opus_multistream_encoder_get_size
 77a00,276,verified,src/movie/unnamed/p000_0.c,MovieHr_77a00
+77b80,768,verified,src/movie/unnamed/j000_0.c,MovieHr_77b80
 77f00,696,verified,src/movie/unnamed/p000_0.c,MovieHr_77f00
 78220,312,verified,src/movie/unnamed/p000_0.c,MovieHr_78220
 78360,252,verified,src/opus/src/opus_multistream_encoder.c,opus_multistream_surround_encoder_create

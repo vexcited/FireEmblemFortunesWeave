@@ -13897,6 +13897,8 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 44d780,232,verified,src/nn/unnamed/s001_1.c,SdkHr_44d780
 44d880,688,disputed,src/nn/unnamed/s001_1.c,SdkHr_44d880
 44e9e0,292,verified,src/nn/unnamed/t000_0.c,SdkHr_44e9e0
+44eb20,284,disputed,src/nn/unnamed/h000_0.c,SdkHr_44eb20
+44ec60,68,verified,src/nn/unnamed/h000_0.c,SdkHr_44ec60
 44fa00,852,verified,src/nn/unnamed/s001_1.c,SdkHr_44fa00
 450020,1108,verified,src/nn/unnamed/s001_1.c,SdkHr_450020
 450480,152,verified,src/nn/unnamed/s001_1.c,SdkHr_450480
@@ -14575,6 +14577,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 47b000,1392,verified,src/nn/unnamed/t000_0.c,SdkHr_47b000
 47b780,928,verified,src/nn/unnamed/t000_0.c,SdkHr_47b780
 47bc80,236,verified,src/nn/unnamed/s001_1.c,SdkHr_47bc80
+47f8a0,312,verified,src/nn/unnamed/h000_0.c,SdkHr_47f8a0
 4806d0,584,verified,src/nn/unnamed/s001_1.c,SdkHr_4806d0
 480920,1128,verified,src/nn/unnamed/s001_1.c,SdkHr_480920
 487f90,288,verified,src/nn/unnamed/s001_1.c,SdkHr_487f90
@@ -22562,6 +22565,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 601e70,8,verified,src/nvidia/nvos_stubs.cpp,NvRmMemIsHwVprHeap
 601e80,16,verified,src/nvidia/nvrm_mem.cpp,NvRmMemEstablishVprHeap
 6020a0,28,verified,src/nn/unnamed/s003_0.c,SdkHr_6020a0
+6020e0,84,verified,src/nn/unnamed/h000_0.c,SdkHr_6020e0
 602100,28,verified,src/nn/unnamed/s003_0.c,SdkHr_602100
 602120,292,verified,src/nn/unnamed/s003_0.c,SdkHr_602120
 602260,128,verified,src/nn/unnamed/s003_0.c,SdkHr_602260
@@ -22727,6 +22731,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 616c50,140,verified,src/nvidia/nvvic.cpp,NvVicReadCrcValue
 616ce0,108,verified,src/nvidia/nvvic.cpp,NvVicReadCrcComparison
 616d50,176,verified,src/nn/unnamed/s003_0.c,SdkHr_616d50
+616e00,32,verified,src/nn/unnamed/h000_0.c,SdkHr_616e00
 617380,68,verified,src/nn/unnamed/s003_0.c,SdkHr_617380
 6173d0,76,verified,src/nn/unnamed/s003_0.c,SdkHr_6173d0
 617420,92,verified,src/nn/unnamed/s003_0.c,SdkHr_617420
@@ -22915,6 +22920,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 629580,144,verified,src/nn/unnamed/s003_1.c,SdkHr_629580
 629610,148,verified,src/nn/unnamed/s003_0.c,SdkHr_629610
 6296b0,12,verified,src/nn/unnamed/u000_0.c,SdkHr_6296b0
+6297f0,20,verified,src/nn/unnamed/h000_0.c,SdkHr_6297f0
 629800,52,verified,src/nn/unnamed/s003_0.c,SdkHr_629800
 629840,144,verified,src/nn/unnamed/s003_1.c,SdkHr_629840
 6298d0,152,verified,src/nn/unnamed/s003_1.c,SdkHr_6298d0
@@ -24575,7 +24581,9 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 65d500,12,verified,src/nn/unnamed/u000_1.c,SdkHr_65d500
 65d510,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_65d510m
 65d520,40,verified,src/nn/unnamed/s003_2.c,SdkHr_65d520
+65d550,684,disputed,src/nn/unnamed/h000_0.c,SdkHr_65d550
 65d570,4,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_65d570v
+65d580,40,verified,src/nn/unnamed/h000_0.c,SdkHr_65d580
 65d5a0,24,verified,src/nn/unnamed/s003_2.c,SdkHr_65d5a0
 65d5c0,12,verified,src/nn/unnamed/u000_1.c,SdkHr_65d5c0
 65d5d0,20,verified,src/nn/unnamed/u000_1.c,SdkHr_65d5d0
@@ -25093,6 +25101,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 66e600,244,verified,src/nn/unnamed/s900_0.c,SdkHr_66e600
 66e700,244,verified,src/nn/unnamed/s004_0.c,SdkHr_66e700
 66e800,320,verified,src/nn/unnamed/s004_0.c,SdkHr_66e800
+66ea90,308,verified,src/nn/unnamed/h000_0.c,SdkHr_66ea90
 66eaa0,256,verified,src/nn/unnamed/s004_0.c,SdkHr_66eaa0
 66eca0,208,verified,src/nn/unnamed/s004_0.c,SdkHr_66eca0
 66f380,72,verified,src/nn/unnamed/s004_0.c,SdkHr_66f380
