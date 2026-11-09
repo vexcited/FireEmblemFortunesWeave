@@ -1,9 +1,12 @@
 address,size,status,source,name
+20,4,verified,src/movie/unnamed/y000_0.c,MovieHr_20
 1b0,32,verified,src/movie/unnamed/p000_0.c,MovieHr_1b0
 200,64,verified,src/movie/unnamed/p000_0.c,MovieHr_200
 270,32,verified,src/movie/unnamed/p000_0.c,MovieHr_270
 2b0,56,verified,src/movie/unnamed/p000_0.c,MovieHr_2b0
 340,88,verified,src/movie/unnamed/p000_0.c,MovieHr_340
+400,8,verified,src/movie/unnamed/y000_0.c,MovieHr_400
+410,8,verified,src/movie/unnamed/y000_0.c,MovieHr_410
 420,44,verified,src/movie/movie_audio_decoder.cpp,_ZN5movie12AudioDecoderC2Ev
 450,72,verified,src/movie/movie_audio_decoder.cpp,_ZN5movie12AudioDecoderD2Ev
 4a0,332,verified,src/movie/movie_audio_decoder.cpp,_ZN5movie12AudioDecoder8FinalizeEv
@@ -428,6 +431,8 @@ fff0,88,verified,src/movie/detail/movie_video_decoder_event_manager.cpp,_ZN5movi
 11f20,8,verified,src/movie/detail/movie_byte_stream_on_buffer.cpp,_ZNK5movie6detail18ByteStreamOnBuffer15ReadAsyncResult9GetResultEv
 11f30,112,verified,src/movie/detail/movie_byte_stream_on_buffer.cpp,_ZN5movie6detail18ByteStreamOnBuffer15ReadAsyncResultD2Ev
 11fa0,120,verified,src/movie/detail/movie_byte_stream_on_buffer.cpp,_ZN5movie6detail18ByteStreamOnBuffer15ReadAsyncResultD0Ev
+12020,4,verified,src/movie/unnamed/y000_0.c,MovieHr_12020
+12030,8,verified,src/movie/unnamed/y000_0.c,MovieHr_12030
 12040,72,verified,src/movie/detail/movie_byte_stream_on_buffer.cpp,_ZN5movie6detail12MovieRefBaseINS_11IByteStreamEED2Ev
 120a0,16,verified,src/movie/detail/movie_file_byte_stream.cpp,_ZN5movie4TaskIZNS_6detail14FileByteStream14StartAsyncReadEPhmPNS_14IAsyncCallbackEE3$_0E6AddRefEv
 120b0,212,verified,src/movie/detail/movie_file_byte_stream.cpp,_ZN5movie4TaskIZNS_6detail14FileByteStream14StartAsyncReadEPhmPNS_14IAsyncCallbackEE3$_0E7ReleaseEv
@@ -835,6 +840,7 @@ fff0,88,verified,src/movie/detail/movie_video_decoder_event_manager.cpp,_ZN5movi
 6f4e0,28,verified,src/opus/src/repacketizer.c,opus_repacketizer_out
 6f500,36,verified,src/movie/unnamed/p000_1.c,MovieHr_6f500
 6fab0,24,verified,src/movie/unnamed/p000_0.c,MovieHr_6fab0
+6fad0,16,verified,src/movie/unnamed/y000_0.c,MovieHr_6fad0
 73380,464,verified,src/movie/unnamed/p000_0.c,MovieHr_73380
 750e0,72,verified,src/opus/src/opus_multistream.c,validate_layout
 75140,76,verified,src/movie/unnamed/p000_0.c,MovieHr_75140
@@ -864,6 +870,7 @@ fff0,88,verified,src/movie/detail/movie_video_decoder_event_manager.cpp,_ZN5movi
 79fe0,204,verified,src/movie/unnamed/p000_0.c,MovieHr_79fe0
 7a0b0,540,verified,src/movie/unnamed/p000_0.c,MovieHr_7a0b0
 7a2e0,188,verified,src/movie/unnamed/p000_0.c,MovieHr_7a2e0
+7a3b0,12,verified,src/movie/unnamed/y000_0.c,MovieHr_7a3b0
 7a3c0,232,verified,src/movie/unnamed/p000_0.c,MovieHr_7a3c0
 7a4c0,56,verified,src/movie/unnamed/p000_0.c,MovieHr_7a4c0
 7a500,208,verified,src/movie/unnamed/p000_0.c,MovieHr_7a500
@@ -872,6 +879,7 @@ fff0,88,verified,src/movie/detail/movie_video_decoder_event_manager.cpp,_ZN5movi
 7a920,164,disputed,src/movie/unnamed/p000_0.c,MovieHr_7a920
 7ac60,136,verified,src/movie/unnamed/p000_0.c,MovieHr_7ac60
 7b4c0,1172,verified,src/movie/unnamed/p000_0.c,MovieHr_7b4c0
+7b9d0,8,verified,src/movie/unnamed/y000_0.c,MovieHr_7b9d0
 7c120,88,verified,src/movie/unnamed/p000_0.c,MovieHr_7c120
 7c180,728,verified,src/movie/unnamed/p000_0.c,MovieHr_7c180
 7d020,2908,verified,src/movie/unnamed/p000_0.c,MovieHr_7d020
@@ -890,4 +898,6 @@ fff0,88,verified,src/movie/detail/movie_video_decoder_event_manager.cpp,_ZN5movi
 81060,244,verified,src/movie/unnamed/p000_1.c,MovieHr_81060
 81160,320,verified,src/movie/unnamed/p000_1.c,MovieHr_81160
 812c0,260,verified,src/movie/unnamed/p000_1.c,MovieHr_812c0
+82440,12,verified,src/movie/unnamed/y000_0.c,MovieHr_82440
+82590,12,verified,src/movie/unnamed/y000_0.c,MovieHr_82590
 82720,132,verified,src/movie/unnamed/p000_0.c,MovieHr_82720
