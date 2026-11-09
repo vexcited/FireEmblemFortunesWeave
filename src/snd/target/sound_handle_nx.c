@@ -21,6 +21,13 @@ extern __int64 snd_target_s_platform;
 void __attribute__((noreturn)) GameRoutine_a36650(_QWORD, _QWORD);
 __int64 SoundHandleNX_Unknown11(__int64 a1);
 __n128 SoundHandleNX_Unknown19(__int64 a1, unsigned int a2);
+__int64 __cxa_guard_acquire(_QWORD);
+__int64 __cxa_guard_release(_QWORD);
+__int64 nn_atk_detail_BasicSound_GetRuntimeTypeInfoStatic(void);
+extern _UNKNOWN* GameData_2134ff8;
+extern __int64* GameData_2135000;
+__int64 SoundHandleNx_2769e0(__int64 result, __int64* a2);
+__int64* SoundHandleNx_276ac0(__int64* result);
 
 __int64 SoundHandleNX_Unknown11(__int64 a1)
 {
@@ -154,6 +161,61 @@ LABEL_23:
 LABEL_27:
   v26 = GameRoutine_2a1b90(v23);
   return nn_os_UnlockMutex(v26 + 840);
+}
+
+__int64 SoundHandleNx_2769e0(__int64 result, __int64* a2)
+{
+  __int64 v2;
+  _QWORD* v3;
+  unsigned __int8 explicit;
+  __int64* v5;
+
+  *(_QWORD*)result = 0;
+  if (a2 != nullptr) {
+    v2 = *a2;
+    if (*a2 != 0) {
+      v3 = (_QWORD*)result;
+      explicit = atomic_load_explicit((atomic_uchar* volatile)GameData_2134ff8,
+                                      memory_order_acquire);
+      v5 = GameData_2135000;
+      if ((explicit & 1) == 0 &&
+          (unsigned int)__cxa_guard_acquire(GameData_2134ff8) != 0) {
+        *v5 = nn_atk_detail_BasicSound_GetRuntimeTypeInfoStatic();
+        __cxa_guard_release(GameData_2134ff8);
+      }
+      result = (**(__int64 (***)(__int64))v2)(v2);
+      if ((__int64*)result == v5) {
+        goto LABEL_11;
+      }
+      do {
+        result = *(_QWORD*)result;
+      } while ((__int64*)result != v5 && result != 0);
+      if (result != 0) {
+      LABEL_11:
+        *v3 = v2;
+        result = (*(__int64 (**)(__int64))(*(_QWORD*)v2 + 48LL))(v2);
+        if ((result & 1) != 0) {
+          result = (*(__int64 (**)(_QWORD))(*(_QWORD*)*v3 + 56LL))(*v3);
+        }
+        *(_QWORD*)(*v3 + 560LL) = v3;
+      }
+    }
+  }
+  return result;
+}
+
+__int64* SoundHandleNx_276ac0(__int64* result)
+{
+  __int64 v1;
+
+  v1 = *result;
+  if (*result != 0) {
+    if (*(__int64**)(v1 + 560) != result ||
+        (*(_QWORD*)(v1 + 560) = 0, *result != 0)) {
+      *result = 0;
+    }
+  }
+  return result;
 }
 
 #pragma GCC visibility pop

@@ -26,6 +26,7 @@ __int64 SoundDataManager_27baa0(__int64 a1, unsigned int a2);
 __int64 SoundDataManager_Unknown3(__int64 a1, unsigned int a2, __int64 a3);
 __int64 SoundDataManager_27bb30(__int64 a1, unsigned int a2, __int64 a3);
 __int64 SoundDataManager_Unknown4(__int64 a1, unsigned int a2);
+__int64 SoundDataManager_287ff0(__int64 a1);
 
 __int64 SoundDataManager_27b710(__int64 a1, __int64 a2)
 {
@@ -230,6 +231,17 @@ __int64 SoundDataManager_Unknown4(__int64 a1, unsigned int a2)
   else {
     return 0;
   }
+}
+
+__int64 SoundDataManager_287ff0(__int64 a1)
+{
+  __int64 result;
+
+  result = *(_QWORD*)(a1 + 8);
+  if (result != 0) {
+    return (*(__int64 (**)(__int64))(*(_QWORD*)result + 16LL))(result);
+  }
+  return result;
 }
 
 #pragma GCC visibility pop

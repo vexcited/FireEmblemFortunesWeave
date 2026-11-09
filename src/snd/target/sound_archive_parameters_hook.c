@@ -9,7 +9,6 @@ void GameRoutine_651250(void*, unsigned __int64);
 __int64 SoundArchiveParametersHook_Unknown14(__int64 a1, int a2, __int64 a3);
 _QWORD* SoundArchiveParametersHook_Destructor(_QWORD* result);
 void SoundArchiveParametersHook_DeletingDestructor(_QWORD* a1);
-__int64 GameHr_17e300(__int64 result);
 __int64 SoundArchiveParametersHook_Unknown20(__int64 a1, __int64 a2,
                                              unsigned int a3)
 {
@@ -64,22 +63,6 @@ void SoundArchiveParametersHook_DeletingDestructor(_QWORD* a1)
     a1 = v2;
   }
   GameRoutine_651250(a1, 0x40u);
-}
-
-__int64 GameHr_17e300(__int64 result)
-{
-  int v1;
-  int v2;
-
-  v1 = *(_DWORD*)(result + 5728);
-  if (v1 <= 1) {
-    v2 = v1 + 1;
-  }
-  else {
-    v2 = 0;
-  }
-  *(_DWORD*)(result + 5728) = v2;
-  return result;
 }
 
 #pragma GCC visibility pop

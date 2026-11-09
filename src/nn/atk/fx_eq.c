@@ -12,6 +12,7 @@ extern __int64 GameData_2134708[26];
 extern __int64* snd_g_memory_ptr[2];
 __int64 FxEQ_Destructor(_QWORD* a1);
 void FxEQ_Unknown5(__int64 a1, __int64 a2, int* a3);
+__n128 FxEq_16a840(__int64 a1, char a2);
 
 __int64 FxEQ_Destructor(_QWORD* a1)
 {
@@ -200,6 +201,13 @@ void FxEQ_Unknown5(__int64 a1, __int64 a2, int* a3)
       } while (v29 != 8);
     }
   }
+}
+
+__n128 FxEq_16a840(__int64 a1, char a2)
+{
+  nn_os_LockMutex(a1 + 112);
+  *(_BYTE*)(a1 + 144) = a2;
+  return nn_os_UnlockMutex(a1 + 112);
 }
 
 #pragma GCC visibility pop

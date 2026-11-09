@@ -11,6 +11,8 @@ extern __int64 GameData_220f950;
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern int GameData_2213fb0;
 __int64 ObjectManager_Destructor(_QWORD* a1);
+__int64 GameRoutine_d914a0(_QWORD);
+_QWORD* ObjectManager_e02040(_QWORD* result);
 
 __int64 ObjectManager_Destructor(_QWORD* a1)
 {
@@ -100,6 +102,26 @@ __int64 ObjectManager_Destructor(_QWORD* a1)
   if ((_QWORD*)GameData_220f950 == a1) {
     GameData_220f950 = 0;
     GameData_2213fb0 = 0;
+  }
+  return result;
+}
+
+_QWORD* ObjectManager_e02040(_QWORD* result)
+{
+  _QWORD* v1;
+  __int64 v2;
+
+  if (result != nullptr) {
+    v1 = result;
+    ObjectManager_e02040(*result);
+    ObjectManager_e02040(v1[1]);
+    GameRoutine_d914a0(v1 + 5);
+    v2 = 128;
+    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+      v2 = 56;
+    }
+    return (_QWORD*)nn_mem_StandardAllocator_Free(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v2);
   }
   return result;
 }

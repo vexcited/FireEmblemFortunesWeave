@@ -6,7 +6,6 @@ __int64 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 extern __int64 (*game_hub_ObjectBuildBase_vtable)();
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 ObjectBuildBase_Destructor(__int64 result);
-bool ObjectBuildCreate_Unknown2(__int64 a1);
 
 void __attribute__((noreturn)) ObjectBuildBase_DeletingDestructor()
 {
@@ -46,11 +45,6 @@ __int64 ObjectBuildBase_Destructor(__int64 result)
         *(_QWORD*)fw_memory_g_heap_manager_ptr + v5, v4);
   }
   return result;
-}
-
-bool ObjectBuildCreate_Unknown2(__int64 a1)
-{
-  return *(_QWORD*)(a1 + 16) != *(_QWORD*)(a1 + 8);
 }
 
 #pragma GCC visibility pop

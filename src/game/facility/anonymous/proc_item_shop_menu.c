@@ -70,7 +70,6 @@ __int64 ProcItemShopMenu_Unknown106(__int64 a1, char a2);
 __int64 ProcItemShopMenu_Unknown108(__int64 a1, char a2);
 __int64 ProcItemShopMenu_Unknown110(__int64 a1, char a2);
 __int64 ProcItemShopMenu_Unknown143(_QWORD* a1, unsigned int a2, char a3);
-bool ProcItemShopMenu_Unknown150(__int64 a1);
 __int64 ProcItemShopMenu_Unknown153(__int64 a1, _QWORD* a2, _QWORD* a3);
 __int64 ProcItemShopMenu_Unknown154(_QWORD* a1, __int64 a2);
 __int64 ProcItemShopMenu_Unknown155(__int64 a1, int a2);
@@ -527,11 +526,6 @@ LABEL_30:
   }
   GameData_226b338 = 0;
   return result;
-}
-
-bool ProcItemShopMenu_Unknown150(__int64 a1)
-{
-  return *(_QWORD*)(a1 + 1096) != *(_QWORD*)(a1 + 1104);
 }
 
 __int64 ProcItemShopMenu_Unknown153(__int64 a1, _QWORD* a2, _QWORD* a3)

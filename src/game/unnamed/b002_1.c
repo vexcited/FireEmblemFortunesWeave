@@ -10,8 +10,6 @@ extern _QWORD GameData_1b01548[4];
 
 extern _UNKNOWN* GameData_1f50948;
 
-extern __int64 (*GameData_1f80590[])();
-
 extern __int64 (*GameData_1f80668[])();
 
 extern __int64 (*GameData_1f80698[])();
@@ -1480,15 +1478,6 @@ __int64 GameHr_2b3a20(_QWORD* a1)
   else {
     return 0;
   }
-}
-
-_QWORD* GameHr_2b3d00(_QWORD* result, __int64 a2, __int64 a3, __int64 a4)
-{
-  result[2] = a3;
-  result[3] = a4;
-  *result = GameData_1f80590;
-  result[1] = a2;
-  return result;
 }
 
 __int64 GameHr_2b3f60(__int64 result)

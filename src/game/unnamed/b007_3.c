@@ -3979,26 +3979,6 @@ bool GameHr_94eea0(__int64 a1, __int64 a2)
   return result;
 }
 
-bool GameHr_94efe0(__int64 a1, __int64 a2)
-{
-  unsigned __int8* v2;
-  __int64 v3;
-  int v4;
-  _BOOL8 result;
-
-  if (*(_BYTE*)(*(_QWORD*)a2 + 1LL) == 0) {
-    return false;
-  }
-  v2 = (unsigned __int8*)(*(_QWORD*)a2 + 8LL);
-  v3 = *(unsigned __int8*)(*(_QWORD*)a2 + 1LL) - 1LL;
-  do {
-    v4 = *v2;
-    v2 += 24;
-    result = v4 == 3;
-  } while (v4 != 3 && v3-- != 0);
-  return result;
-}
-
 __int64 GameHr_94f120(__int64 result)
 {
   _DWORD* v1;

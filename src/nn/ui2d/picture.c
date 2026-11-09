@@ -40,6 +40,7 @@ __int64 Picture_595d60(__int64 a1, __int64 a2);
 __int64 Picture_596c30(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
                        __int64 a5);
 __int64 Picture_Unknown28(__int64 result, __int64 a2, __int64 a3);
+__int64 Picture_5b2440(__int64 a1);
 
 __int64 Picture_Unknown3(__int64 a1, __int64 a2)
 {
@@ -435,6 +436,24 @@ __int64 Picture_Unknown28(__int64 result, __int64 a2, __int64 a3)
     }
     return GameRoutine_5764b0(a3, a2);
   }
+}
+
+__int64 Picture_5b2440(__int64 a1)
+{
+  int v1;
+  __int64 v2;
+  __int64 v3;
+
+  v1 = *(_DWORD*)(a1 + 24);
+  v2 = 12;
+  if ((v1 & 1) == 0) {
+    v2 = 0;
+  }
+  v3 = (2 * (_BYTE)v1) & 8;
+  if ((*(_DWORD*)(a1 + 24) & 2) != 0) {
+    v2 += 12;
+  }
+  return v2 + v3;
 }
 
 #pragma GCC visibility pop

@@ -1,73 +1,136 @@
 #include "decomp/pseudo_helpers.h"
+
 #pragma GCC visibility push(hidden)
 
 extern __int64 (*GameData_1f914e8[])();
+
 extern __int64 (*GameData_1f95160[])();
+
 extern __int64 GameData_212bf68;
+
 extern __int64* GameData_212c880[5];
+
 extern __int64 GameData_212cf80[5];
+
 extern __int64 GameData_212cf88[4];
+
 extern __int64* GameData_212d198[2];
+
 extern __int64 GameData_21c6968;
+
 extern __int64 GameData_21c6978;
+
 extern __int64 GameData_21c9668;
+
 extern __int64 GameData_21c9670;
+
 extern __int64 GameData_21c9680;
+
 extern __int64 GameData_21c9688;
+
 extern __int64 GameData_21ca310;
+
 extern int GameData_21d9700;
+
 __int64 GameRoutine_11e8ae0(_QWORD, _QWORD);
+
 __int64 GameRoutine_1210350(_QWORD, _QWORD);
+
 __int64 GameRoutine_1a09c50(_QWORD);
+
 __int64 GameRoutine_1a0a0c0(_QWORD);
+
 __int64 GameRoutine_1a0a4e0(_QWORD, _QWORD);
+
 __int64 GameRoutine_1a0b950(_QWORD, _QWORD, _QWORD);
+
 __int64 GameRoutine_1a0ba50(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
+
 void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
+
 void __attribute__((noreturn)) GameRoutine_60a310(_QWORD);
+
 void __attribute__((noreturn)) GameRoutine_638240(const char*);
+
 unsigned __int8* GameRoutine_638380(unsigned __int8* result, unsigned __int8*,
                                     __int64);
+
 __int64* GameRoutine_64dde0(__int64*, __int64, unsigned __int64);
+
 __int64 GameRoutine_64df20(_QWORD, _QWORD, _QWORD);
+
 __int64 GameRoutine_651b90(_QWORD, _QWORD, _QWORD, _QWORD);
+
 __int64 GameRoutine_662560(_QWORD);
+
 __int64* GameRoutine_674b80(__int64* result, __int64*, __int64*, __int64*,
                             __int64*);
+
 __int64 GameRoutine_67ed20(_QWORD*);
+
 __int64* GameRoutine_6bde00(__int64* result, __int64*, unsigned __int64,
                             __int64*, signed __int64);
+
 __int64 GameRoutine_6c1f80(__int64 result, __int64*, __int64, unsigned __int64,
                            __int64*, signed __int64);
+
 __int64 GameRoutine_6c3050(__int64, __int64, __int64, __int64, __int64,
                            __int64);
+
 __int64 GameRoutine_6c4610(_QWORD);
+
 __int64 GameRoutine_6c4d60(_QWORD);
+
 __int64 GameRoutine_6c51e0(_QWORD);
+
 __int64 GameRoutine_6c6da0(__int64);
+
 __int64 GameRoutine_6c6ec0(__int64);
+
 __int64 GameRoutine_6cd010(void);
+
 __int64 GameRoutine_6ce1c0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
+
 __int64 GameRoutine_6dd190(_QWORD, _QWORD, _QWORD);
+
 __int64 GameRoutine_6e36c0(_QWORD, _QWORD, _QWORD);
+
 void __attribute__((noreturn)) GameRoutine_6e3e20(void);
+
 __int64 GameRoutine_70f550(_QWORD, _QWORD);
+
 __int64 GameRoutine_712a40(_QWORD);
+
 __int64 GameRoutine_713480(_QWORD);
+
 __int64 GameRoutine_74e220(_QWORD);
+
 __int64 GameRoutine_7fb7c0(_QWORD);
+
 __int64 GameRoutine_7fc5c0(_QWORD, _QWORD, _QWORD);
+
 __int64 GameRoutine_819160(_QWORD);
+
 __int64 GameRoutine_819400(_QWORD);
+
 __int64 GameRoutine_843420(_QWORD, _QWORD);
+
 __int64 GameRoutine_84cc00(_QWORD, _QWORD, _QWORD);
+
 __int64 GameRoutine_84cf20(_QWORD, _QWORD, _QWORD);
+
 __int64 GameRoutine_84d980(_QWORD, _QWORD);
+
 __int64 GameRoutine_84ec80(_QWORD, _QWORD);
+
 __int64 GameRoutine_936cf0(_QWORD, _QWORD);
+
 __int64 GameRoutine_93c2e0(_QWORD, _QWORD);
+
 __int64 GameRoutine_960280(_QWORD);
+
 __int64 GameRoutine_97b2f0(_QWORD);
+
 __int64 GameRoutine_a82380(_QWORD);
 
 bool GameHr_6390c0(__int64 a1, unsigned __int8** a2, unsigned __int8* a3,
@@ -2876,37 +2939,6 @@ LABEL_94:
     }
   }
   return 1;
-}
-
-bool GameHr_6d2c90(__int64 a1, __int64* a2)
-{
-  __int64 v2;
-  __int64 v3;
-  char v4;
-  int v5;
-  __int64 v6;
-
-  v2 = *(_QWORD*)(a1 + 1944);
-  v3 = *a2;
-  if (v2 != *a2) {
-    *(_WORD*)(a1 + 1944) = v3;
-    *(_BYTE*)(a1 + 1946) = *((_BYTE*)a2 + 2);
-    v4 = *((_BYTE*)a2 + 7);
-    *(_DWORD*)(a1 + 1947) = *(_DWORD*)((char*)a2 + 3);
-    v5 = *(_DWORD*)(a1 + 416);
-    *(_BYTE*)(a1 + 1951) = v4;
-    if ((v5 & 0x10000000) == 0) {
-      v6 = a1;
-      *(_DWORD*)(a1 + 416) = v5 | 0x10000000;
-      GameRoutine_6c51e0(a1);
-      GameRoutine_6c6da0(v6);
-      GameRoutine_6c6ec0(v6);
-      a1 = v6;
-      *(_DWORD*)(v6 + 416) &= ~0x10000000u;
-    }
-    *(_WORD*)(a1 + 20) |= 1u;
-  }
-  return v2 != v3;
 }
 
 #pragma GCC visibility pop

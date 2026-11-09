@@ -18,6 +18,13 @@ extern __int64* GameData_212e008[9];
 extern char GameData_1a9f09e;
 __int64 ProcThermaeThermaeMenu_Unknown84(__int64 a1);
 __int64 ProcThermaeThermaeMenu_Unknown88(__int64 a1);
+_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__int64 GameRoutine_15758f0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
+                            _QWORD);
+__int64 LayoutAccessor_1562cf0(_QWORD, _QWORD);
+__int64 game_util_Format(const char*, ...);
+extern __int64* GameData_212dcd0;
+__int64 ProcThermaeThermaeMenu_192c430(__int64 a1, unsigned int a2);
 
 __int64 ProcThermaeThermaeMenu_Unknown84(__int64 a1)
 {
@@ -99,6 +106,60 @@ __int64 ProcThermaeThermaeMenu_Unknown88(__int64 a1)
           return std___1___shared_weak_count___release_weak(v7);
         }
       }
+    }
+  }
+  return result;
+}
+
+__int64 ProcThermaeThermaeMenu_192c430(__int64 a1, unsigned int a2)
+{
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  long double v8;
+  double v9;
+  __int64 result;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
+  __int64 v14;
+  __int64 v15;
+  __int64 v16;
+
+  v4 = *(_QWORD*)(*GameData_212dcd0 + 48);
+  if (a2 >=
+      (unsigned __int64)((*(_QWORD*)(*GameData_212dcd0 + 56) - v4) >> 3)) {
+    v5 = 0;
+  }
+  else {
+    v5 = *(_QWORD*)(v4 + 8LL * a2);
+  }
+  v6 = game_util_Format("L_UnitInfo%02d", a2);
+  GameRoutine_1560070(&v15, a1 + 848, v6);
+  GameRoutine_15758f0(&v15, v5, 0xFFFFFFFFLL, 2, 6, 0, 1);
+  if (v16 != 0) {
+    std___1___shared_weak_count___release_weak(v16);
+  }
+  v7 = game_util_Format("L_UnitInfo%02d/L_UnitInfo", a2);
+  GameRoutine_1560070(&v13, a1 + 848, v7);
+  result = v14;
+  if (v14 != 0) {
+    v11 = std___1___shared_weak_count_lock(v8, v9);
+    if (v11 != 0) {
+      v12 = v11;
+      if (v13 != 0) {
+        LayoutAccessor_1562cf0(v13, "Simple01");
+      }
+      if (atomic_fetch_add((atomic_ullong* volatile)(v12 + 8),
+                           0xFFFFFFFFFFFFFFFFLL) == 0) {
+        (*(void (**)(__int64))(*(_QWORD*)v12 + 16LL))(v12);
+        std___1___shared_weak_count___release_weak(v12);
+      }
+    }
+    result = v14;
+    if (v14 != 0) {
+      return std___1___shared_weak_count___release_weak(v14);
     }
   }
   return result;

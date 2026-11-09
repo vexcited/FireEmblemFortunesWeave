@@ -46,7 +46,6 @@ __int64 WaveMultiStreamPlayer_1804a0(__int64 a1);
 __int64 WaveMultiStreamPlayer_180660(__int64 a1, int a2, unsigned int a3);
 __int64 WaveMultiStreamPlayer_180720(__int64 a1, int a2, int a3, __int64 a4,
                                      __int64 a5, unsigned int a6);
-__int64 WavePlayer_187420(__int64 result, int a2, int a3);
 _QWORD* WaveMultiStreamPlayer_180a30(_QWORD* result, int a2, __int64 a3);
 __int64 WaveMultiStreamPlayer_180a90(__int64 a1, int a2);
 _QWORD* WaveMultiStreamPlayer_180ae0(_QWORD* result, int a2, unsigned int a3,
@@ -487,12 +486,6 @@ __int64 WaveMultiStreamPlayer_180720(__int64 a1, int a2, int a3, __int64 a4,
 LABEL_32:
   nn_os_UnlockMutex(a1 + 11512);
   return v21;
-}
-
-__int64 WavePlayer_187420(__int64 result, int a2, int a3)
-{
-  *(_DWORD*)(result + 4LL * a2 + 11088) = a3;
-  return result;
 }
 
 _QWORD* WaveMultiStreamPlayer_180a30(_QWORD* result, int a2, __int64 a3)

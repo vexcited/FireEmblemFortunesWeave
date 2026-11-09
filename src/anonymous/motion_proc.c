@@ -15,6 +15,14 @@ extern __int64 game_ProcGameSkipView_instance_;
 __int64 MotionProc_Destructor(__int64 a1);
 __int64 MotionProc_DeletingDestructor(__int64 a1);
 __int64 MotionProc_Unknown2(__int64 result);
+__int64 GameRoutine_d2b5f0(_QWORD);
+__int64 __cxa_guard_acquire(_QWORD);
+__int64 __cxa_guard_release(_QWORD);
+__int64 wld_Crc32(_QWORD, _QWORD, _QWORD);
+extern _UNKNOWN GameData_220f858;
+extern __int64 (*eft_ClampCurve_ptr)();
+extern int GameData_220f854;
+bool MotionProc_118a440(_BOOL8 result);
 
 __int64 MotionProc_Destructor(__int64 a1)
 {
@@ -105,6 +113,80 @@ __int64 MotionProc_Unknown2(__int64 result)
       }
     }
     *(_WORD*)(v1 + 136) |= 8u;
+  }
+  return result;
+}
+
+bool MotionProc_118a440(_BOOL8 result)
+{
+  __int64 v1;
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  int v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  int v12;
+  __int64 v13;
+
+  if (result != 0) {
+    v1 = *(_QWORD*)(result + 232);
+    if (v1 != 0) {
+      if ((atomic_load_explicit((atomic_uchar* volatile)&GameData_220f858,
+                                memory_order_acquire) &
+           1) == 0) {
+        v13 = v1;
+        v12 = __cxa_guard_acquire(&GameData_220f858);
+        v1 = v13;
+        if (v12 != 0) {
+          GameData_220f854 = wld_Crc32(0, "CharacterAnimator", 17);
+          __cxa_guard_release(&GameData_220f858);
+          v1 = v13;
+        }
+      }
+      v3 = *(_QWORD*)(v1 + 504);
+      v2 = *(_QWORD*)(v1 + 512);
+      v4 = v2;
+      v5 = v2;
+      do {
+        if (v5 == v3) {
+          return 0;
+        }
+        v6 = *(_DWORD*)(v5 - 16);
+        v5 -= 16;
+        v4 -= 16;
+      } while (v6 != GameData_220f854);
+      if (v2 == v4) {
+        return 0;
+      }
+      v7 = *(_QWORD*)(v4 + 8);
+      if (v7 == 0) {
+        return 0;
+      }
+      v8 = *(_QWORD*)(v7 + 96);
+      if (v8 == 0) {
+        return 0;
+      }
+      v9 = GameRoutine_d2b5f0(*(_QWORD*)(v8 + 32) + 72LL);
+      if ((v9 & 0x100000000LL) == 0) {
+        return 0;
+      }
+      v10 =
+          *(_QWORD*)(*(_QWORD*)(*(_QWORD*)(v8 + 24) + 72LL) + 104LL * (int)v9);
+      if (v10 == 0) {
+        return 0;
+      }
+      v11 = *(_QWORD*)(v10 + 16);
+      return v11 == 0 || *(__int64 (**)())(v11 + 16) != eft_ClampCurve_ptr ||
+             *(float*)v11 < *(float*)(v11 + 8);
+    }
+    else {
+      return 0;
+    }
   }
   return result;
 }

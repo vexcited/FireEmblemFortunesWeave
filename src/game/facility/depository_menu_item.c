@@ -31,8 +31,6 @@ __int64 ui_LayoutAccessor_SetPaneVisible(_QWORD, _QWORD, _QWORD);
 __n128 snd_Fade_Fade_10c830(_QWORD, double);
 extern _UNKNOWN* GameData_212da30;
 extern __int64 (*GameData_1fb62f0[])();
-extern __int64 (*GameData_1fb7780[])();
-extern __int64 (*GameData_1fb7b68[])();
 extern __int64 (*GameData_20f73c0[])();
 extern __int64 (*GameData_20f7440[])();
 extern __int64 GameData_1fb5cb0;
@@ -68,10 +66,6 @@ __int64 DepositoryMenuItem_Unknown70(__int64 a1)
 {
   return *(_QWORD*)(a1 + 104) + 4LL;
 }
-
-void GameHr_9d0890(__int64 a1, _QWORD* a2) { *a2 = GameData_1fb7780; }
-
-void GameHr_9d17a0(__int64 a1, _QWORD* a2) { *a2 = GameData_1fb7b68; }
 
 __int64 GameHr_a0a7b0(__int64 result, _BYTE* a2);
 

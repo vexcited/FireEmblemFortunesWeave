@@ -20,6 +20,226 @@ __int64 PostEffectActor_Unknown8(__int64 result, __int64 a2);
 __int64 PostEffectActor_Unknown4(__int64 result, double a2, float a3);
 void PostEffectActor_Unknown9(__int64 a1, __int64 a2);
 _QWORD* PostEffectActor_Destructor(_QWORD* result);
+__int64 GameRoutine_17fb4a0(_QWORD, float, float);
+void __attribute__((noreturn)) GameRoutine_1800840(long double);
+float PostEffectActor_17fb700(__int64 a1, __int64* a2, long double a3);
+_OWORD* PostEffectActor_17fca10(_OWORD* result, float a2, float a3, float a4,
+                                float a5, float a6, float a7);
+_OWORD* PostEffectActor_17fcb90(_OWORD* result, float a2, float a3, float a4,
+                                float a5, float a6, float a7);
+
+float PostEffectActor_17fb700(__int64 a1, __int64* a2, long double a3)
+{
+  float result;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  unsigned __int64 v7;
+  unsigned __int64 v8;
+  float v9;
+
+  if ((int)**(float**)a1 == -2) {
+    GameRoutine_17fb4a0(a2, *(float*)(a1 + 8), *(float*)(a1 + 12));
+    return result;
+  }
+  v4 = *a2;
+  v5 = a2[1];
+  *(_QWORD*)&a3 = 0;
+  v6 = v5 - *a2;
+  v7 = v6 >> 2;
+  v8 = (v6 >> 2) / 3uLL;
+  if ((int)v8 < 1) {
+    v9 = 0.0;
+    return v9 + (float)((float)(*(float*)&a3 - v9) * *(float*)(a1 + 16));
+  }
+  if (v5 == v4 || v7 <= 1 || v6 == 8) {
+    goto LABEL_14;
+  }
+  v9 = *(float*)(v4 + 4);
+  if ((_DWORD)v8 != 1) {
+    if (v7 > 3 && v6 != 16 && v7 > 5) {
+      LODWORD(a3) = *(_DWORD*)(v4 + 16);
+      return v9 + (float)((float)(*(float*)&a3 - v9) * *(float*)(a1 + 16));
+    }
+  LABEL_14:
+    GameRoutine_1800840(a3);
+  }
+  return v9 + (float)((float)(*(float*)&a3 - v9) * *(float*)(a1 + 16));
+}
+
+_OWORD* PostEffectActor_17fca10(_OWORD* result, float a2, float a3, float a4,
+                                float a5, float a6, float a7)
+{
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  __int64 v10;
+  _OWORD* v11;
+  float v12;
+  float v13;
+  float v14;
+  float v15;
+  float v16;
+  float v17;
+  char v18;
+  __int64 v19;
+  int v20;
+  __int128 v21;
+
+  v7 = *(_QWORD*)(game_g_frame_clock + 13224);
+  v8 = *(_QWORD*)(v7 + 48);
+  v9 = *(_QWORD*)(v7 + 56);
+  if (v9 != 0) {
+    atomic_fetch_add_explicit((atomic_ullong* volatile)(v9 + 8), 1u,
+                              memory_order_relaxed);
+    v10 = *(_QWORD*)(*(_QWORD*)(v8 + 8) + 192LL);
+    if (atomic_fetch_add((atomic_ullong* volatile)(v9 + 8),
+                         0xFFFFFFFFFFFFFFFFLL) == 0) {
+      v11 = result;
+      v12 = a7;
+      v13 = a6;
+      v14 = a5;
+      v15 = a4;
+      v16 = a3;
+      v17 = a2;
+      (*(void (**)(__int64))(*(_QWORD*)v9 + 16LL))(v9);
+      std___1___shared_weak_count___release_weak(v9);
+      a2 = v17;
+      a3 = v16;
+      result = v11;
+      a4 = v15;
+      a5 = v14;
+      a6 = v13;
+      a7 = v12;
+    }
+  }
+  else {
+    v10 = *(_QWORD*)(*(_QWORD*)(v8 + 8) + 192LL);
+  }
+  v18 = *(_BYTE*)(v10 + 272);
+  v19 = *(_QWORD*)(v10 + 328);
+  *(_QWORD*)(v10 + 256) = *(_QWORD*)(v10 + 320);
+  *(_QWORD*)(v10 + 264) = v19;
+  if ((v18 & 1) == 0) {
+    *(_BYTE*)(v10 + 272) = 1;
+  }
+  v20 = *(_DWORD*)(v10 + 408);
+  *(_BYTE*)(v10 + 376) = 1;
+  *(_BYTE*)(v10 + 456) = 1;
+  *(_BYTE*)(v10 + 536) = 1;
+  *(_BYTE*)(v10 + 616) = 1;
+  *(_BYTE*)(v10 + 696) = 1;
+  *(_BYTE*)(v10 + 776) = 1;
+  *(_WORD*)(v10 + 89) = 257;
+  *(_DWORD*)(v10 + 372) = v20;
+  *(_DWORD*)(v10 + 452) = *(_DWORD*)(v10 + 488);
+  *(_DWORD*)(v10 + 532) = *(_DWORD*)(v10 + 568);
+  *(_DWORD*)(v10 + 612) = *(_DWORD*)(v10 + 648);
+  *(_DWORD*)(v10 + 692) = *(_DWORD*)(v10 + 728);
+  *(_DWORD*)(v10 + 772) = *(_DWORD*)(v10 + 808);
+  v21 = *result;
+  *(float*)(v10 + 372) = a2;
+  *(_BYTE*)(v10 + 376) = 1;
+  *(float*)(v10 + 452) = a3;
+  *(_BYTE*)(v10 + 456) = 1;
+  *(float*)(v10 + 532) = a4;
+  *(_BYTE*)(v10 + 536) = 1;
+  *(float*)(v10 + 612) = a5;
+  *(_BYTE*)(v10 + 616) = 1;
+  *(float*)(v10 + 692) = a6;
+  *(_BYTE*)(v10 + 696) = 1;
+  *(float*)(v10 + 772) = a7;
+  *(_BYTE*)(v10 + 776) = 1;
+  *(_OWORD*)(v10 + 256) = v21;
+  return result;
+}
+
+_OWORD* PostEffectActor_17fcb90(_OWORD* result, float a2, float a3, float a4,
+                                float a5, float a6, float a7)
+{
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  __int64 v10;
+  _OWORD* v11;
+  float v12;
+  float v13;
+  float v14;
+  float v15;
+  float v16;
+  float v17;
+  char v18;
+  __int64 v19;
+  int v20;
+  __int128 v21;
+
+  v7 = *(_QWORD*)(game_g_frame_clock + 13224);
+  v8 = *(_QWORD*)(v7 + 48);
+  v9 = *(_QWORD*)(v7 + 56);
+  if (v9 != 0) {
+    atomic_fetch_add_explicit((atomic_ullong* volatile)(v9 + 8), 1u,
+                              memory_order_relaxed);
+    v10 = *(_QWORD*)(*(_QWORD*)(v8 + 8) + 184LL);
+    if (atomic_fetch_add((atomic_ullong* volatile)(v9 + 8),
+                         0xFFFFFFFFFFFFFFFFLL) == 0) {
+      v11 = result;
+      v12 = a7;
+      v13 = a6;
+      v14 = a5;
+      v15 = a4;
+      v16 = a3;
+      v17 = a2;
+      (*(void (**)(__int64))(*(_QWORD*)v9 + 16LL))(v9);
+      std___1___shared_weak_count___release_weak(v9);
+      a2 = v17;
+      a3 = v16;
+      result = v11;
+      a4 = v15;
+      a5 = v14;
+      a6 = v13;
+      a7 = v12;
+    }
+  }
+  else {
+    v10 = *(_QWORD*)(*(_QWORD*)(v8 + 8) + 184LL);
+  }
+  v18 = *(_BYTE*)(v10 + 192);
+  v19 = *(_QWORD*)(v10 + 248);
+  *(_QWORD*)(v10 + 176) = *(_QWORD*)(v10 + 240);
+  *(_QWORD*)(v10 + 184) = v19;
+  if ((v18 & 1) == 0) {
+    *(_BYTE*)(v10 + 192) = 1;
+  }
+  v20 = *(_DWORD*)(v10 + 328);
+  *(_BYTE*)(v10 + 296) = 1;
+  *(_BYTE*)(v10 + 376) = 1;
+  *(_BYTE*)(v10 + 456) = 1;
+  *(_BYTE*)(v10 + 536) = 1;
+  *(_BYTE*)(v10 + 616) = 1;
+  *(_BYTE*)(v10 + 696) = 1;
+  *(_WORD*)(v10 + 89) = 257;
+  *(_DWORD*)(v10 + 292) = v20;
+  *(_DWORD*)(v10 + 372) = *(_DWORD*)(v10 + 408);
+  *(_DWORD*)(v10 + 452) = *(_DWORD*)(v10 + 488);
+  *(_DWORD*)(v10 + 532) = *(_DWORD*)(v10 + 568);
+  *(_DWORD*)(v10 + 612) = *(_DWORD*)(v10 + 648);
+  *(_DWORD*)(v10 + 692) = *(_DWORD*)(v10 + 728);
+  v21 = *result;
+  *(float*)(v10 + 292) = a2;
+  *(_BYTE*)(v10 + 296) = 1;
+  *(float*)(v10 + 372) = a3;
+  *(_BYTE*)(v10 + 376) = 1;
+  *(float*)(v10 + 452) = a4;
+  *(_BYTE*)(v10 + 456) = 1;
+  *(float*)(v10 + 532) = a5;
+  *(_BYTE*)(v10 + 536) = 1;
+  *(float*)(v10 + 612) = a6;
+  *(_BYTE*)(v10 + 616) = 1;
+  *(float*)(v10 + 692) = a7;
+  *(_BYTE*)(v10 + 696) = 1;
+  *(_OWORD*)(v10 + 176) = v21;
+  return result;
+}
 
 __int64 PostEffectActor_Unknown8(__int64 result, __int64 a2)
 {

@@ -7,7 +7,6 @@ __int64 nn_mem_StandardAllocator_Free(_QWORD);
 extern __int64 (*cspine_SpineCapturerBase_vtable)();
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 SpineCapturerBase_Destructor(__int64 a1);
-void GameHr_1919330(__int64 a1, __int64 a2);
 
 void __attribute__((noreturn)) SpineCapturerBase_DeletingDestructor()
 {
@@ -57,13 +56,6 @@ __int64 SpineCapturerBase_Destructor(__int64 a1)
   }
   *(_QWORD*)(a1 + 32) = 0;
   return GameRoutine_190de60(a1 + 40);
-}
-
-void GameHr_1919330(__int64 a1, __int64 a2)
-{
-  *(_WORD*)a2 = 0;
-  *(_BYTE*)(a2 + 2) = 0;
-  *(_WORD*)(a2 + 6) = 42;
 }
 
 #pragma GCC visibility pop

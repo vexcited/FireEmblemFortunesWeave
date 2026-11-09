@@ -20,6 +20,13 @@ extern int GameData_1c001ac[];
 __int64 MapTroopMenu_Unknown85(__int64 a1);
 __int64 MapTroopMenu_Unknown107(__int64 a1);
 __int64 MapTroopMenu_Unknown128(__int64 result);
+__int64 __dynamic_cast(_QWORD, _QWORD, _QWORD, _QWORD);
+__int64 game_menu_BasicMenu_Unknown16dd9a0(_QWORD);
+extern __int64 (*GameData_20c93c8[])();
+extern __int64 GameData_20c77f8;
+extern __int64* GameData_212e008[9];
+void __attribute__((noreturn)) GameRoutine_60a310(_QWORD, _QWORD, _QWORD);
+__int64 MapTroopMenu_178cd40(__int64 a1, __int64 a2);
 
 __int64 MapTroopMenu_Unknown85(__int64 a1)
 {
@@ -211,6 +218,73 @@ __int64 MapTroopMenu_Unknown128(__int64 result)
     } while (v4 != 0);
   }
   return result;
+}
+
+__int64 MapTroopMenu_178cd40(__int64 a1, __int64 a2)
+{
+  __int64 v3;
+  __int64 v4;
+  _QWORD* v5;
+  unsigned __int64 v6;
+  __int64* v7;
+  __int64 v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  _QWORD v13[4];
+  _QWORD* v14;
+  int v15;
+  __int64 v16;
+
+  v4 = *(_QWORD*)(a1 + 232);
+  v3 = *(_QWORD*)(a1 + 240);
+  *(_DWORD*)(a1 + 1068) = a2;
+  v5 = v13;
+  v15 = a2;
+  v13[0] = GameData_20c93c8;
+  v13[1] = &v15;
+  v14 = v13;
+  if (v3 == v4) {
+    goto LABEL_12;
+  }
+  v6 = 0;
+  v7 = GameData_212e008[0];
+  do {
+    v8 = *(_QWORD*)(v4 + 8 * v6);
+    if (v8 != 0) {
+      v9 = __dynamic_cast(v8, v7, &GameData_20c77f8, 0);
+      if (v9 == 0) {
+        goto LABEL_3;
+      }
+      v16 = v9;
+      if (v14 == nullptr) {
+        GameRoutine_60a310(0, a2, v10);
+      }
+      if (((*(__int64 (**)(_QWORD*, __int64*))(*v14 + 48LL))(v14, &v16) & 1) !=
+          0) {
+        break;
+      }
+      v4 = *(_QWORD*)(a1 + 232);
+      v3 = *(_QWORD*)(a1 + 240);
+    }
+  LABEL_3:
+    ++v6;
+  } while (v6 < (v3 - v4) >> 3);
+  v5 = v14;
+  if (v14 != v13) {
+    if (v14 != nullptr) {
+      v11 = 40;
+      goto LABEL_13;
+    }
+    return game_menu_BasicMenu_Unknown16dd9a0(a1);
+  }
+
+LABEL_12:
+  v11 = 32;
+
+LABEL_13:
+  (*(void (**)(_QWORD*, __int64))(*v5 + v11))(v5, a2);
+  return game_menu_BasicMenu_Unknown16dd9a0(a1);
 }
 
 #pragma GCC visibility pop

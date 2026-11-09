@@ -17,8 +17,6 @@ __int64 DeleteTransportMenu_Unknown141(__int64 a1)
   return (unsigned int)*(char*)(a1 + 1064);
 }
 
-__int64 GameHr_16fd180(__int64 a1) { return (unsigned int)*(char*)(a1 + 8); }
-
 __int64 GameHr_1700840(__int64 a1, __int64 a2);
 
 __int64 DeleteTransportMenu_Unknown101(__int64 a1)

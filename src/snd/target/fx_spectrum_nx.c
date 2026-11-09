@@ -22,6 +22,9 @@ __int64 FxSpectrumNX_Destructor(_QWORD* a1);
 void FxSpectrumNX_153d20(__int64 a1);
 __int64 FxSpectrumNX_Unknown9(_QWORD* a1);
 __int64 FxSpectrumNX_Unknown25(__int64 a1, int a2);
+float log10f(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD, float);
+void FxSpectrumNx_16f420(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
+                         __int64 a5, __int64 a6);
 
 __int64 FxSpectrumNX_Destructor(_QWORD* a1)
 {
@@ -277,6 +280,163 @@ __int64 FxSpectrumNX_Unknown25(__int64 a1, int a2)
     } while (v42 < (unsigned __int64)*(unsigned int*)(a1 + 6604) >> 1);
   }
   return result;
+}
+
+void FxSpectrumNx_16f420(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
+                         __int64 a5, __int64 a6)
+{
+  int v6;
+  __int64 v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  int v13;
+  float v14;
+  int v15;
+  int v16;
+  __int64 v17;
+  int i;
+  float v19;
+  float v20;
+  __int64 v21;
+  int v22;
+  float* v23;
+  float v24;
+  float v25;
+  float v26;
+  float v27;
+  float v28;
+  float v29;
+  float v30;
+
+  v6 = *(_DWORD*)(a1 + 5684);
+  v8 = 0;
+  v9 = a1 + 5684;
+  v10 = a1 + 6144;
+  do {
+    while (1) {
+      v11 = *(_QWORD*)(a1 + 6624);
+      v12 = v8 + 1;
+      v13 = *(_DWORD*)(v9 + 4 * (v8 + 1));
+      v14 = *(float*)(v11 + 4LL * v6);
+      if (v6 + 1 < v13) {
+        v15 = v6;
+        v16 = v6 - v13;
+        v17 = v6 + 1LL;
+        for (i = ~v16 & 7; i != 0; --i) {
+          v19 = *(float*)(v11 + 4 * v17++);
+          if (v14 < v19) {
+            v14 = v19;
+          }
+        }
+        if ((unsigned int)(v13 - v15 - 2) >= 7) {
+          v21 = v11 + 4 * v17;
+          v22 = v13 - v17;
+          v23 = (float*)(v21 + 16);
+          do {
+            v24 = *(v23 - 4);
+            if (v14 >= v24) {
+              v24 = v14;
+              v25 = *(v23 - 3);
+              if (v24 < v25) {
+              LABEL_18:
+                v26 = *(v23 - 2);
+                if (v25 < v26) {
+                  goto LABEL_19;
+                }
+                goto LABEL_27;
+              }
+            }
+            else {
+              v25 = *(v23 - 3);
+              if (v24 < v25) {
+                goto LABEL_18;
+              }
+            }
+            v25 = v24;
+            v26 = *(v23 - 2);
+            if (v25 < v26) {
+            LABEL_19:
+              v27 = *(v23 - 1);
+              if (v26 < v27) {
+                goto LABEL_20;
+              }
+              goto LABEL_28;
+            }
+          LABEL_27:
+            v26 = v25;
+            v27 = *(v23 - 1);
+            if (v26 < v27) {
+            LABEL_20:
+              v28 = *v23;
+              if (v27 < *v23) {
+                goto LABEL_21;
+              }
+              goto LABEL_29;
+            }
+          LABEL_28:
+            v27 = v26;
+            v28 = *v23;
+            if (v27 < *v23) {
+            LABEL_21:
+              v29 = v23[1];
+              if (v28 < v29) {
+                goto LABEL_22;
+              }
+              goto LABEL_30;
+            }
+          LABEL_29:
+            v28 = v27;
+            v29 = v23[1];
+            if (v28 < v29) {
+            LABEL_22:
+              v30 = v23[2];
+              if (v29 < v30) {
+                goto LABEL_23;
+              }
+              goto LABEL_31;
+            }
+          LABEL_30:
+            v29 = v28;
+            v30 = v23[2];
+            if (v29 < v30) {
+            LABEL_23:
+              v14 = v23[3];
+              if (v30 >= v14) {
+                goto LABEL_32;
+              }
+              goto LABEL_15;
+            }
+          LABEL_31:
+            v30 = v29;
+            v14 = v23[3];
+            if (v30 >= v14) {
+            LABEL_32:
+              v14 = v30;
+            }
+          LABEL_15:
+            v22 -= 8;
+            v23 += 8;
+          } while (v22 != 0);
+        }
+      }
+      if (v14 > 0.0) {
+        break;
+      }
+      v6 = *(_DWORD*)(v9 + 4 * (v8 + 1));
+      *(_DWORD*)(v10 + 4 * v8++) = (int)(float)*(int*)(a1 + 6676);
+      if (v12 == 114) {
+        return;
+      }
+    }
+    v20 = log10f(a1, a2, a3, a4, a5, a6, v14) * 20.0;
+    if (v20 < (float)*(int*)(a1 + 6676)) {
+      v20 = (float)*(int*)(a1 + 6676);
+    }
+    v6 = v13;
+    *(_DWORD*)(v10 + 4 * v8++) = (int)v20;
+  } while (v12 != 114);
 }
 
 #pragma GCC visibility pop

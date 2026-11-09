@@ -13,6 +13,67 @@ extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64 game_ProcGameSkipView_instance_;
 __int64 ProcProgress_Destructor(__int64 a1);
 __int64 ProcProgress_DeletingDestructor(__int64 a1);
+__int16* GameRoutine_8697c0(__int16* result, char, float);
+__int64 Dir_70d7a0(_QWORD);
+__int64 ScheduleNatives_869280(__int64 result, __int16*);
+extern __int64 game_gmap_GmapClock_instance_;
+extern __int64 game_gmap_GmapClock_kDefaultTime_ptr;
+__int16* ProcProgress_86b660(__int64 a1, int a2);
+
+__int16* ProcProgress_86b660(__int64 a1, int a2)
+{
+  __int16 v2;
+  __int16 v3;
+  int v4;
+  __int16 v5;
+  __int64 v6;
+  __int16* v7;
+  float v8;
+  __int16 v10;
+  int v11;
+  __int16 v12;
+  __int16 v13;
+  __int16 v14;
+
+  v2 = *(_WORD*)(a1 + 6);
+  v3 = *(_WORD*)(a1 + 10);
+  v10 = *(_WORD*)a1;
+  v4 = *(_DWORD*)(a1 + 2);
+  v12 = v2;
+  v14 = v3;
+  v11 = v4;
+  v5 = *(_WORD*)(a1 + 8);
+  v13 = v5;
+  if (a2 != 0) {
+    v14 = 0;
+    v12 = v2 + a2 / 60;
+    v13 = v5 + a2 % 60;
+    Dir_70d7a0(&v10);
+  }
+  if (game_gmap_GmapClock_instance_ != 0) {
+    ScheduleNatives_869280(game_gmap_GmapClock_instance_, &v10);
+    v6 = game_gmap_GmapClock_instance_;
+  }
+  else {
+    v6 = 0;
+  }
+  if (v6 != 0) {
+    v7 = (__int16*)(v6 + 32);
+  }
+  else {
+    v7 = (__int16*)game_gmap_GmapClock_kDefaultTime_ptr;
+  }
+  if (v7[1] * *v7 * v7[2] != 0 ||
+      (v6 != 0 ? (v7 = (__int16*)(v6 + 8))
+               : (v7 = (__int16*)game_gmap_GmapClock_kDefaultTime_ptr),
+       v6 == 0)) {
+    v8 = 0.0;
+  }
+  else {
+    v8 = *(float*)(v6 + 44);
+  }
+  return GameRoutine_8697c0(v7, 1, v8);
+}
 
 __int64 ProcProgress_Destructor(__int64 a1)
 {

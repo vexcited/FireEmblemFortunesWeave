@@ -15,6 +15,10 @@ extern __int64* GameData_21319c0[4];
 void __attribute__((noreturn)) GameRoutine_60a310(_QWORD, _QWORD);
 __int64 MapUnitCommandItemMenu_15c09e0(__int64 a1);
 __int64 MapUnitCommandItemMenu_15c0b80();
+__int64 _ZN4game4menu9BasicMenu13Unknown16dea40Ebbb(__int64 result, char,
+                                                    unsigned __int8,
+                                                    unsigned __int8);
+__int64 MapUnitCommandItemMenu_16e2be0(__int64 a1);
 
 __int64 MapUnitCommandItemMenu_15c09e0(__int64 a1)
 {
@@ -195,6 +199,42 @@ __int64 MapUnitCommandItemMenu_15c0b80()
     return 0;
   }
   return result;
+}
+
+__int64 MapUnitCommandItemMenu_16e2be0(__int64 a1)
+{
+  _QWORD* v1;
+  _QWORD* v2;
+  int v4;
+  __int64 v5;
+  int v6;
+
+  v1 = *(_QWORD**)(a1 + 232);
+  v2 = *(_QWORD**)(a1 + 240);
+  if (v1 != v2) {
+    v4 = 0;
+    do {
+      v5 = *v1;
+      if (((*(__int64 (**)(_QWORD))(*(_QWORD*)*v1 + 48LL))(*v1) & 1) != 0) {
+        if (v5 == *(_QWORD*)(a1 + 336)) {
+          goto LABEL_8;
+        }
+        ++v4;
+      }
+      ++v1;
+    } while (v1 != v2);
+  }
+  v4 = -1;
+
+LABEL_8:
+  if (v4 <= 1) {
+    v6 = 1;
+  }
+  else {
+    v6 = v4;
+  }
+  *(_DWORD*)(a1 + 552) = v6 - 1;
+  return _ZN4game4menu9BasicMenu13Unknown16dea40Ebbb(a1, 1, 0, 0);
 }
 
 #pragma GCC visibility pop

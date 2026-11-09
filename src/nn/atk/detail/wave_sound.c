@@ -30,6 +30,11 @@ __int64 WaveSound_2ac660(__int64 a1, char a2);
 __int64 WaveSound_DeletingDestructor(__int64 a1);
 void WaveSound_Unknown2(_QWORD* a1);
 bool WaveSound_Unknown5(_BYTE* a1);
+__int64 GameRoutine_2ad0f0(void);
+__int64 nn_os_FinalizeEvent(_QWORD);
+extern __int64 GameData_21354a8;
+extern __int64* GameData_2135250;
+__int64 WaveSound_2acf30(_QWORD* a1);
 
 __int64 WaveSound_Unknown3(__int64 a1)
 {
@@ -433,6 +438,19 @@ bool WaveSound_Unknown5(_BYTE* a1)
     return (unsigned __int8)a1[964] > 2u;
   }
   return false;
+}
+
+__int64 WaveSound_2acf30(_QWORD* a1)
+{
+  __int64 v2;
+
+  v2 = GameData_21354a8;
+  *a1 = GameData_21354a8 + 16;
+  a1[25] = v2 + 128;
+  a1[28] = v2 + 168;
+  GameRoutine_2ad0f0();
+  *a1 = GameData_2135250 + 2;
+  return nn_os_FinalizeEvent(a1 + 1);
 }
 
 #pragma GCC visibility pop

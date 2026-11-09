@@ -31,6 +31,13 @@ __int64 MapSkillInfo_17ce320(__int64 result);
 __int64 MapSkillInfo_17ce880(_QWORD* a1);
 __int64* MapSkillInfo_17ceb30(__int64* result, _QWORD* a2);
 __int64 MapSkillInfo_Unknown5(__int64 result);
+__int64 LayoutAccessor_155e830(_QWORD, _QWORD);
+__int64 LayoutAccessor_1562cf0(_QWORD, _QWORD);
+__int64 LayoutAccessor_15636c0(_QWORD, _QWORD, _QWORD);
+__int64 ui_LayoutAccessor_Setup_155dea0(_QWORD, _QWORD);
+extern __int64 (*game_map_MapSkillInfo_SkillParts_vtable[])();
+__int64 MapSkillInfo_17cecb0(__int64 result);
+__int64 MapSkillInfo_17cf0c0(__int64 a1, _QWORD* a2);
 
 __int64 MapSkillInfo_Destructor(_QWORD* a1)
 {
@@ -584,6 +591,57 @@ __int64 MapSkillInfo_Unknown5(__int64 result)
     return GameRoutine_155e830(result + 40, 1);
   }
   return result;
+}
+
+__int64 MapSkillInfo_17cecb0(__int64 result)
+{
+  if (GameData_21ed090 == 0 || *(int*)(GameData_21ed090 + 16) <= 0) {
+    return LayoutAccessor_155e830(result + 32, 1);
+  }
+  return result;
+}
+
+__int64 MapSkillInfo_17cf0c0(__int64 a1, _QWORD* a2)
+{
+  __int64 v2;
+  __int64 v3;
+  _QWORD v5[2];
+
+  *(_QWORD*)(a1 + 16) = 0;
+  *(_QWORD*)(a1 + 24) = 0;
+  *(_QWORD*)(a1 + 48) = 0;
+  *(_QWORD*)(a1 + 56) = 0;
+  *(_QWORD*)(a1 + 64) = 0;
+  *(_QWORD*)(a1 + 72) = 0;
+  *(_QWORD*)(a1 + 80) = 0;
+  *(_QWORD*)(a1 + 96) = 0;
+  *(_QWORD*)(a1 + 104) = 0;
+  *(_QWORD*)(a1 + 109) = 0;
+  *(_QWORD*)(a1 + 8) = 0;
+  v2 = a1 + 8;
+  *(_QWORD*)a1 = game_map_MapSkillInfo_SkillParts_vtable;
+  *(_QWORD*)(a1 + 40) = 0;
+  *(_QWORD*)(a1 + 32) = a1 + 40;
+  *(_DWORD*)(a1 + 88) = 1065353216;
+  v3 = a2[1];
+  v5[0] = *a2;
+  v5[1] = v3;
+  if (v3 != 0) {
+    atomic_fetch_add_explicit((atomic_ullong* volatile)(v3 + 8), 1u,
+                              memory_order_relaxed);
+    ui_LayoutAccessor_Setup_155dea0(a1 + 8, v5);
+    if (atomic_fetch_add((atomic_ullong* volatile)(v3 + 8),
+                         0xFFFFFFFFFFFFFFFFLL) == 0) {
+      (*(void (**)(__int64))(*(_QWORD*)v3 + 16LL))(v3);
+      std___1___shared_weak_count___release_weak(v3);
+    }
+  }
+  else {
+    ui_LayoutAccessor_Setup_155dea0(a1 + 8, v5);
+  }
+  LayoutAccessor_1562cf0(v2, "Out");
+  LayoutAccessor_15636c0(v2, "Out", 0);
+  return LayoutAccessor_155e830(v2, 0);
 }
 
 #pragma GCC visibility pop

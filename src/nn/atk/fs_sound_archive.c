@@ -37,6 +37,9 @@ __int64 FsSoundArchive_2763f0(__int64 a1, __int64 a2, unsigned __int64 a3);
 __int64 FsSoundArchive_2764c0(__int64 a1, __int64 a2, unsigned __int64 a3);
 __int64 FsSoundArchive_Unknown4(__int64 result);
 __int64 FsSoundArchive_Unknown5(__int64 result);
+extern __int64 (*nn_atk_detail_fnd_FileStreamProxy_vtable[])();
+_QWORD* FsSoundArchive_2b3d00(_QWORD* result, __int64 a2, __int64 a3,
+                              __int64 a4);
 
 __int64 FsSoundArchive_Destructor(__int64 a1)
 {
@@ -278,6 +281,16 @@ __int64 FsSoundArchive_Unknown5(__int64 result)
     }
     return nn_os_UnlockMutex(v1 + 1520);
   }
+  return result;
+}
+
+_QWORD* FsSoundArchive_2b3d00(_QWORD* result, __int64 a2, __int64 a3,
+                              __int64 a4)
+{
+  result[2] = a3;
+  result[3] = a4;
+  *result = nn_atk_detail_fnd_FileStreamProxy_vtable;
+  result[1] = a2;
   return result;
 }
 

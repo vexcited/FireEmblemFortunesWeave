@@ -4208,8 +4208,6 @@ __int64 GameRoutine_14a1b00(_QWORD, float);
 
 __int64 GameRoutine_155ea30(_QWORD);
 
-__int64 GameRoutine_1563280(_QWORD, _QWORD, _QWORD);
-
 __int64 GameRoutine_16247c0(_QWORD, _QWORD, _QWORD);
 
 __int64 GameRoutine_16477d0(_QWORD, _QWORD, _QWORD, _QWORD);
@@ -4217,8 +4215,6 @@ __int64 GameRoutine_16477d0(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_16e0c00(_QWORD, _QWORD);
 
 __int64 GameRoutine_16f42a0(_QWORD, _QWORD);
-
-__int64 GameRoutine_17c2410(void);
 
 __int64 GameRoutine_17c2620(void);
 
@@ -13132,43 +13128,6 @@ __int64 GameHr_f633e0(__int64 a1, int a2)
   }
   return GameRoutine_657850(v4, &GameData_2223e58, "ProcCmdBtlSeqTransferHp", 1,
                             a1);
-}
-
-__int64 GameHr_f63940(__int64 a1)
-{
-  __int64* v2;
-  __int64 result;
-  __int64 v4;
-  __int64 v5;
-  unsigned __int8* v6;
-  unsigned int v7;
-  bool v8;
-  int v9;
-
-  v2 = (__int64*)GameData_212f5c0[0];
-  result = *(_QWORD*)GameData_212f5c0[0];
-  if (*(_QWORD*)GameData_212f5c0[0] != 0 && *(int*)(result + 256) >= 1) {
-    v4 = result + 24;
-    v5 =
-        (*(__int64 (**)(__int64, _QWORD))(*(_QWORD*)result + 224LL))(result, 0);
-    result = GameRoutine_1563280(v4, v5, 0);
-    if ((result & 1) == 0) {
-      v6 = *(unsigned __int8**)(a1 + 16);
-      if (v6 != nullptr) {
-        v7 = *v6;
-        v8 = v7 > 0x10;
-        v9 = (1 << v7) & 0x1CE00;
-        if (!v8 && v9 != 0) {
-          *(_WORD*)(a1 + 136) |= 0x80u;
-        }
-      }
-      result = *v2;
-      if (*v2 != 0) {
-        return GameRoutine_17c2410();
-      }
-    }
-  }
-  return result;
 }
 
 __int64 GameHr_f64a20(__int64 a1, __int64 a2, __int64 a3)

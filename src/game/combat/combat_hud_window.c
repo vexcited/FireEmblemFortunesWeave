@@ -48,6 +48,49 @@ __int64 CombatHUDWindow_Unknown20(__int64 a1, __int64 a2);
 __int64 CombatHUDWindow_Unknown21(__int64 a1, __int64 a2);
 __int64 CombatHUDWindow_Unknown29(__int64 a1);
 __int64 CombatHUDWindow_183ea70(__int64 a1);
+__int64 GameRoutine_1014aa0(_QWORD);
+__int64 LayoutAccessor_1562680(_QWORD, _QWORD, float);
+__int64 LayoutAccessor_1563280(_QWORD, _QWORD, _QWORD);
+__int64 LayoutAccessor_15636c0(_QWORD, _QWORD, _QWORD);
+float LayoutAccessor_15637c0(_QWORD, _QWORD, _QWORD);
+__int64 CombatHudWindow_1832b70(__int64 a1, unsigned int a2, char a3);
+
+__int64 CombatHudWindow_1832b70(__int64 a1, unsigned int a2, char a3)
+{
+  char v3;
+  __int64 v4;
+  char v6;
+  __int64 v8;
+  __int64 v9;
+  __int64 v10;
+
+  v3 = a3 | (*(unsigned __int8*)(a1 + 128) != (unsigned __int8)a2);
+  if ((a3 & 1 | (*(unsigned __int8*)(a1 + 128) != (unsigned __int8)a2)) != 0) {
+    v4 = a1 + 24;
+    v6 = a3;
+    v8 = (*(__int64 (**)(__int64, bool))(*(_QWORD*)a1 + 224LL))(
+        a1, (unsigned __int8)a2 == 0);
+    if ((LayoutAccessor_1563280(v4, v8, 1) & 1) != 0 &&
+        LayoutAccessor_15637c0(v4, v8, 1) < 1.0) {
+      v6 = 1;
+    }
+    v9 = (*(__int64 (**)(__int64, _QWORD))(*(_QWORD*)a1 + 224LL))(a1, a2);
+    LayoutAccessor_1562680(v4, v9, 1.0);
+    *(_BYTE*)(a1 + 128) = a2;
+    *(_BYTE*)(a1 + 197) = (unsigned __int8)a2 == 1;
+    if ((v6 & 1) != 0) {
+      v10 = (*(__int64 (**)(__int64, _QWORD))(*(_QWORD*)a1 + 224LL))(a1, 0);
+      GameRoutine_15638b0(v4, v10, 0);
+      LayoutAccessor_15636c0(v4, v10, 0);
+      if ((unsigned __int8)a2 == 1) {
+        GameRoutine_1014aa0(*(_QWORD*)(a1 + 136));
+        GameRoutine_1014aa0(*(_QWORD*)(a1 + 144));
+        *(_BYTE*)(a1 + 197) = 0;
+      }
+    }
+  }
+  return v3 & 1;
+}
 
 __int64 CombatHUDWindow_DeletingDestructor(_QWORD* a1)
 {

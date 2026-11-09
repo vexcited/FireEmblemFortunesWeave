@@ -13,6 +13,18 @@ __int64 std___1___shared_weak_count_lock(_QWORD);
 __int64 ui_LayoutAccessor_FindTextBox(_QWORD, _QWORD);
 __int64 ui_LayoutAccessor_SetPaneVisible(_QWORD, _QWORD, _QWORD);
 __int64 GuideMenuItem_Unknown55(_QWORD* a1);
+__int64 GameRoutine_136a920(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
+__int64 GameRoutine_136afb0(_QWORD, _QWORD);
+__int64 GameRoutine_6c8300(_QWORD, _QWORD);
+__int64 __dynamic_cast(_QWORD, _QWORD, _QWORD, _QWORD);
+__int64 game_GetHero(_QWORD);
+__int64 game_UnitPool_Find_6ead60(_QWORD, _QWORD);
+__int64 ui_LayoutAccessor_FindPane(_QWORD, _QWORD);
+extern __int64 game_GameModeData_instance_;
+extern __int64 ui_Manager_instance_;
+extern __int64* GameData_212d670[3];
+extern __int64* GameData_212d678[2];
+__int64 GuideMenuItem_1716850(__int64 a1, __int64 a2);
 
 __int64 GuideMenuItem_Unknown55(_QWORD* a1)
 {
@@ -81,6 +93,54 @@ __int64 GuideMenuItem_Unknown55(_QWORD* a1)
                            0xFFFFFFFFFFFFFFFFLL) == 0) {
         (*(void (**)(__int64))(*(_QWORD*)v4 + 16LL))(v4);
         return std___1___shared_weak_count___release_weak(v4);
+      }
+    }
+  }
+  return result;
+}
+
+__int64 GuideMenuItem_1716850(__int64 a1, __int64 a2)
+{
+  __int64 result;
+  char v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  _BYTE* v8;
+  __int64 v9;
+  int v10;
+  __int64 v11;
+
+  result = ui_LayoutAccessor_FindPane(a1, "Dedicated");
+  if (result != 0) {
+    result =
+        __dynamic_cast(result, GameData_212d670[0], GameData_212d678[0], 0);
+    if (result != 0) {
+      v4 = *(_BYTE*)(a2 + 80);
+      v5 = result;
+      *(_BYTE*)(result + 88) = *(_BYTE*)(result + 88) & 0xFE | v4 & 1;
+      if ((v4 & 1) != 0) {
+        if (game_GameModeData_instance_ != 0) {
+          v6 = *(unsigned __int8*)(game_GameModeData_instance_ + 15);
+        }
+        else {
+          v6 = 0;
+        }
+        v11 = game_GetHero(v6);
+        v10 = 241;
+        v7 = game_UnitPool_Find_6ead60(&v11, &v10);
+        result = GameRoutine_6c8300(v7, 0);
+        if (result != 0) {
+          v8 = *(_BYTE**)(result + 48);
+          if (v8 != nullptr && *v8 != 0) {
+            v9 = result;
+            result = GameRoutine_136afb0(ui_Manager_instance_ + 1264, 5);
+            if ((result & 1) != 0) {
+              return GameRoutine_136a920(ui_Manager_instance_ + 1264, v5, 0, 5,
+                                         *(_QWORD*)(v9 + 48));
+            }
+          }
+        }
       }
     }
   }

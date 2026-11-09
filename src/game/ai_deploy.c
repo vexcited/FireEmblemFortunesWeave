@@ -10,6 +10,7 @@ extern __int64 GameData_2240090;
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern int GameData_22407a0;
 __int64 AIDeploy_Destructor(_QWORD* a1);
+__int64 AiDeploy_1274c20(__int64 a1);
 
 __int64 AIDeploy_Destructor(_QWORD* a1)
 {
@@ -101,6 +102,19 @@ __int64 AIDeploy_Destructor(_QWORD* a1)
     GameData_22407a0 = 0;
   }
   return GameRoutine_747800(a1);
+}
+
+__int64 AiDeploy_1274c20(__int64 a1)
+{
+  __int64 v1;
+
+  AIDeploy_Destructor((_QWORD*)(a1 - 12872));
+  v1 = 128;
+  if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+    v1 = 56;
+  }
+  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
+                                       v1);
 }
 
 #pragma GCC visibility pop

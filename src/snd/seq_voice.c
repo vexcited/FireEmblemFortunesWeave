@@ -57,6 +57,23 @@ __int64 SeqVoice_Unknown16(__int64 a1);
 __int64 SeqVoice_Unknown19(__int64 result);
 __int64 SeqVoice_Unknown20(__int64 result);
 bool SeqVoice_1471b0(__int64 a1);
+unsigned __int64* GameRoutine_f33e0(unsigned __int64* result);
+unsigned __int64* SeqVoice_f3540(__int64 a1);
+
+unsigned __int64* SeqVoice_f3540(__int64 a1)
+{
+  __int64 v1;
+  __int64 v2;
+
+  v1 = *(_QWORD*)(a1 + 688);
+  v2 = *(_QWORD*)(a1 + 680);
+  while (v1 != v2) {
+    v1 -= 664;
+    GameRoutine_f7060(v1);
+  }
+  *(_QWORD*)(a1 + 688) = v2;
+  return GameRoutine_f33e0((unsigned __int64*)(a1 + 680));
+}
 
 __int64 SeqVoice_Destructor(__int64 a1)
 {

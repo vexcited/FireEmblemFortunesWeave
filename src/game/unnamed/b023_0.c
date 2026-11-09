@@ -78,8 +78,6 @@ extern __int64 (*GameData_20b4c48[])();
 
 extern __int64 (*GameData_20b4d30[])();
 
-extern __int64 (*GameData_20b5090[])();
-
 extern __int64 (*GameData_20b6368[])();
 
 extern __int64 (*GameData_20b6868[])();
@@ -5352,46 +5350,6 @@ __int64 GameHr_17302e0(__int64 result, _QWORD* a2, int* a3)
   if (v3 != 0) {
     return GameRoutine_136a920(GameData_22416f0 + 1264, *a2, 0, 7,
                                "IconPageTab_GmapHub");
-  }
-  return result;
-}
-
-__int64 GameHr_1730510(__int64 result, __int64* a2)
-{
-  __int64 v2;
-  __int64 v3;
-  __int64 v4;
-  __int64 v5;
-  __int64 v6;
-  int v7;
-  int v8;
-
-  v2 = *a2;
-  if ((*(_BYTE*)(*a2 + 418) & 0x18) == 0) {
-    v3 = *(_QWORD*)(result + 8);
-    v4 = result;
-    v5 = GameRoutine_651b90(*(_QWORD*)GameData_212bf68, 120, 16, 0);
-    v6 = **(_QWORD**)(v4 + 16);
-    v7 = **(_DWORD**)(v4 + 24);
-    v8 = **(_DWORD**)(v4 + 32);
-    *(_WORD*)(v5 + 80) = 257;
-    *(_WORD*)(v5 + 16) = 0;
-    *(_DWORD*)(v5 + 40) = 0;
-    *(_QWORD*)(v5 + 48) = 0;
-    *(_QWORD*)(v5 + 56) = 0;
-    *(_QWORD*)(v5 + 64) = 0;
-    *(_QWORD*)(v5 + 72) = 0;
-    *(_BYTE*)(v5 + 104) = 0;
-    *(_BYTE*)(v5 + 116) = 0;
-    *(_BYTE*)(v5 + 82) = 1;
-    *(_QWORD*)(v5 + 88) = v6;
-    *(_QWORD*)(v5 + 96) = v2;
-    *(_DWORD*)(v5 + 108) = v7;
-    *(_DWORD*)(v5 + 112) = v8;
-    *(_QWORD*)v5 = GameData_20b5090;
-    *(_QWORD*)(v5 + 8) = 0;
-    result = GameRoutine_16e0c00(v3, v5);
-    ++**(_DWORD**)(v4 + 32);
   }
   return result;
 }

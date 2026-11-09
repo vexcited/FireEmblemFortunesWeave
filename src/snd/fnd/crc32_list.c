@@ -11,8 +11,6 @@ __int64 GameRoutine_110270(_QWORD);
 __int64 GameRoutine_112550(__int64, __int64, __int64, unsigned int,
                            unsigned int);
 __int64 GameRoutine_113100(void);
-__int64 GameRoutine_11c560(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, float, float,
-                           float);
 __int64 GameRoutine_127e30(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
                            _QWORD, _QWORD);
 __int64 GameRoutine_128110(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
@@ -99,8 +97,6 @@ __int64 Crc32List_1130e0(__int64 result);
 __int64 Crc32List_116350();
 
 __int64 Crc32List_1163b0() { return snd_g_manager; }
-
-__int64 Crc32List_116630() { return *(unsigned __int8*)(snd_s_target + 17); }
 
 __int64 Crc32List_11d8b0(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
                          float* a5, __int64 a6);

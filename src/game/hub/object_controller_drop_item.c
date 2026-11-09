@@ -27,6 +27,188 @@ extern __int64* GameData_212cbf0[73];
 _QWORD* ObjectControllerDropItem_Destructor(_QWORD* result);
 __int64 ObjectControllerDropItem_DeletingDestructor(_QWORD* a1);
 __int64 ObjectControllerDropItem_Unknown6(__int64 a1);
+__int64 GameRoutine_dfc300(__int64, int, long double, long double, __int64,
+                           __int64, __int64, __int64);
+__int64 HandlePtr_Unknown24_d5bee0(_QWORD, _QWORD);
+__int64 HubEventNatives_d5bb40(_QWORD, _QWORD);
+__int64 ObjectControllerDropItem_db1980(__int64, __int64, _DWORD*,
+                                        unsigned __int8*, __int64);
+__int64 fw_memory_HeapManager_Allocate(_QWORD, _QWORD, _QWORD, _QWORD);
+__int64 memchr(_QWORD, _QWORD, _QWORD);
+extern __int64 (*GameData_1fdce28[8])();
+extern __int64 (*GameData_1fe1ff0[])();
+extern unsigned __int8 GameData_1ac799d[];
+__int64 ObjectControllerDropItem_db1bc0(char* a1, __int64 a2, int* a3);
+__int64 ObjectControllerDropItem_dfca40(__int64 a1, __int64 a2, __int64 a3,
+                                        __int64 a4, __int64 a5, __int64 a6,
+                                        long double a7, long double a8);
+
+__int64 ObjectControllerDropItem_db1bc0(char* a1, __int64 a2, int* a3)
+{
+  __int64 v5;
+  char* v6;
+  __int64 v7;
+  char* v8;
+  int v9;
+  unsigned int v10;
+  __int64 v12;
+
+  v5 = (__int64)a1;
+  v12 = 0;
+  if (a2 >= 4) {
+    v6 = &a1[a2];
+    v7 = a2;
+    do {
+      v8 = (char*)memchr(a1, 73, v7 - 3);
+      if (v8 == nullptr) {
+        break;
+      }
+      if (*(_DWORD*)v8 == 1598310729) {
+        if (v8 != v6 && (char*)v5 == v8) {
+          v9 = 1;
+          v10 = 1;
+          goto LABEL_14;
+        }
+        break;
+      }
+      a1 = v8 + 1;
+      v7 = v6 - a1;
+    } while (v6 - a1 >= 4);
+  }
+  if ((ObjectControllerDropItem_db1980(v5, a2, (_DWORD*)&v12 + 1, "P", 1) &
+       1) != 0) {
+    v9 = HIDWORD(v12);
+    v10 = 2;
+  LABEL_14:
+    *a3 = v9;
+    return v10;
+  }
+  v10 = 1;
+  if ((ObjectControllerDropItem_db1980(v5, a2, &v12, GameData_1ac799d, 1) &
+       1) != 0) {
+    v9 = v12;
+    v10 = 3;
+    goto LABEL_14;
+  }
+  return v10;
+}
+
+__int64 ObjectControllerDropItem_dfca40(__int64 a1, __int64 a2, __int64 a3,
+                                        __int64 a4, __int64 a5, __int64 a6,
+                                        long double a7, long double a8)
+{
+  __int64 result;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
+  _BYTE* v14;
+  _QWORD* v15;
+  __int64 (**v16)();
+  __int64 (***v17)();
+  _QWORD* v18;
+  __int64 v19;
+  unsigned __int64 v20;
+  unsigned __int64 v21;
+  __int64 v22;
+  __int64 v23;
+  __int64 v24;
+  _BYTE v25[32];
+  _BYTE* v26;
+  _BYTE v27[32];
+  __int64 v28;
+  unsigned int v29;
+  unsigned __int64 v30;
+
+  GameRoutine_dfc300(a1, 0, a7, a8, a3, a4, a5, a6);
+  result = *(_QWORD*)(a1 + 712);
+  if (result != 0) {
+    result = std___1___shared_weak_count_lock(result);
+    if (result != 0) {
+      v11 = *(_QWORD*)(a1 + 704);
+      v12 = result;
+      if (v11 == 0) {
+        goto LABEL_24;
+      }
+      v13 = *(_QWORD*)(a2 + 32);
+      if (v13 != 0) {
+        if (v13 == a2) {
+          v26 = v25;
+          (*(void (**)(__int64, _BYTE*))(*(_QWORD*)v13 + 24LL))(v13, v25);
+          v14 = v26;
+        }
+        else {
+          v14 = (_BYTE*)(*(__int64 (**)(__int64))(*(_QWORD*)v13 + 16LL))(v13);
+          v26 = v14;
+        }
+      }
+      else {
+        v14 = nullptr;
+        v26 = nullptr;
+      }
+      v15 = (_QWORD*)fw_memory_HeapManager_Allocate(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr, 64, 16, 0);
+      v16 = GameData_1fe1ff0;
+      v17 = (__int64 (***)())v15;
+      *v15 = GameData_1fe1ff0;
+      v18 = v15 + 2;
+      if (v14 != nullptr) {
+        if (v14 == v25) {
+          v15[6] = v18;
+          (*(void (**)(_BYTE*))(*(_QWORD*)v14 + 24LL))(v14);
+          v16 = *v17;
+        }
+        else {
+          v16 = GameData_1fe1ff0;
+          v15[6] = v14;
+          v26 = nullptr;
+        }
+      }
+      else {
+        v15[6] = 0;
+      }
+      v19 = ((__int64 (*)(__int64 (***)(), _QWORD*))v16[2])(v17, v18);
+      v20 = *(_QWORD*)(v11 + 1312);
+      v21 = *(_QWORD*)(v11 + 1320);
+      v28 = v19;
+      v29 = 1;
+      if (v20 >= v21) {
+        v22 = HubEventNatives_d5bb40(v11 + 1304, v27);
+      }
+      else {
+        *(_BYTE*)v20 = 0;
+        v30 = v20;
+        *(_DWORD*)(v20 + 48) = -1;
+        HandlePtr_Unknown24_d5bee0(&v30, v27);
+        *(_DWORD*)(v20 + 48) = 1;
+        v22 = v20 + 64;
+      }
+      v23 = v29;
+      *(_QWORD*)(v11 + 1312) = v22;
+      if ((_DWORD)v23 != -1) {
+        ((void (*)(unsigned __int64*, _BYTE*))GameData_1fdce28[v23])(&v30, v27);
+      }
+      ((void (*)(__int64 (***)()))(*v17)[5])(v17);
+      result = (__int64)v26;
+      if (v26 == v25) {
+        v24 = 32;
+      }
+      else {
+        if (v26 == nullptr) {
+          goto LABEL_24;
+        }
+        v24 = 40;
+      }
+      result = (*(__int64 (**)(void))(*(_QWORD*)v26 + v24))();
+    LABEL_24:
+      if (atomic_fetch_add((atomic_ullong* volatile)(v12 + 8),
+                           0xFFFFFFFFFFFFFFFFLL) == 0) {
+        (*(void (**)(__int64))(*(_QWORD*)v12 + 16LL))(v12);
+        return std___1___shared_weak_count___release_weak(v12);
+      }
+    }
+  }
+  return result;
+}
 
 _QWORD* ObjectControllerDropItem_Destructor(_QWORD* result)
 {

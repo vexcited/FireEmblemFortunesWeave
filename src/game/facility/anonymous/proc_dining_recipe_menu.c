@@ -40,6 +40,10 @@ extern char GameData_1a9f09e;
 void __attribute__((noreturn)) GameRoutine_60a1d0(_QWORD);
 __int64 ProcDiningRecipeMenu_Unknown84(__int64 a1);
 __int64 ProcDiningRecipeMenu_Unknown88(__int64 a1);
+__int64 GameRoutine_15758f0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
+                            _QWORD);
+__int64 LayoutAccessor_1562cf0(_QWORD, _QWORD);
+__int64 ProcDiningRecipeMenu_13fa3e0(__int64 a1, unsigned int a2);
 
 __int64 ProcDiningRecipeMenu_Unknown84(__int64 a1)
 {
@@ -341,6 +345,58 @@ LABEL_33:
   }
   v34 = GameRoutine_9244a0(v3, v21);
   return GameRoutine_1840740(v33, 0, v21, v34, 1);
+}
+
+__int64 ProcDiningRecipeMenu_13fa3e0(__int64 a1, unsigned int a2)
+{
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 result;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
+  __int64 v14;
+
+  v4 = *(_QWORD*)(*GameData_212dcd0 + 48);
+  if (a2 >=
+      (unsigned __int64)((*(_QWORD*)(*GameData_212dcd0 + 56) - v4) >> 3)) {
+    v5 = 0;
+  }
+  else {
+    v5 = *(_QWORD*)(v4 + 8LL * a2);
+  }
+  v6 = game_util_Format("L_UnitInfo%02d", a2);
+  GameRoutine_1560070(&v13, a1 + 848, v6);
+  GameRoutine_15758f0(&v13, v5, 0xFFFFFFFFLL, 0, 6, 0, 1);
+  if (v14 != 0) {
+    std___1___shared_weak_count___release_weak(v14);
+  }
+  v7 = game_util_Format("L_UnitInfo%02d/L_UnitInfo", a2);
+  GameRoutine_1560070(&v11, a1 + 848, v7);
+  result = v12;
+  if (v12 != 0) {
+    v9 = std___1___shared_weak_count_lock(v12);
+    if (v9 != 0) {
+      v10 = v9;
+      if (v11 != 0) {
+        LayoutAccessor_1562cf0(v11, "Simple01");
+      }
+      if (atomic_fetch_add((atomic_ullong* volatile)(v10 + 8),
+                           0xFFFFFFFFFFFFFFFFLL) == 0) {
+        (*(void (**)(__int64))(*(_QWORD*)v10 + 16LL))(v10);
+        std___1___shared_weak_count___release_weak(v10);
+      }
+    }
+    result = v12;
+    if (v12 != 0) {
+      return std___1___shared_weak_count___release_weak(v12);
+    }
+  }
+  return result;
 }
 
 #pragma GCC visibility pop

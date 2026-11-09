@@ -439,17 +439,6 @@ __int64 GameHr_1078a0(__int64 a1, unsigned int a2, unsigned int* a3, __int64 a4,
   return v7;
 }
 
-float GameHr_16afe0(__int64 a1, float a2, float a3, float a4, float a5,
-                    float a6, float a7)
-{
-  *(float*)(*(_QWORD*)(a1 + 16) + 8LL) = a5 / a2;
-  *(float*)(*(_QWORD*)(a1 + 16) + 12LL) = a6 / a2;
-  *(float*)(*(_QWORD*)(a1 + 16) + 16LL) = a7 / a2;
-  **(float**)(a1 + 16) = a3 / a2;
-  *(float*)(*(_QWORD*)(a1 + 16) + 4LL) = a4 / a2;
-  return *(float*)(*(_QWORD*)(a1 + 16) + 4LL);
-}
-
 void GameHr_16ee40(__int64 a1, __int64 a2, __int64 a3)
 {
   __int64* v4;

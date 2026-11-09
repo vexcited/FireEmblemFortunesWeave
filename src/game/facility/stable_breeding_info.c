@@ -61,6 +61,8 @@ __int64 StableBreedingInfo_16be4a0(__int64 a1, __int64 a2);
 __int64 StableBreedingInfo_16bede0(__int64 a1, __int64 a2, __int64 a3);
 __int64 StableBreedingInfo_Destructor(__int64 a1);
 __int64 StableBreedingInfo_DeletingDestructor(__int64 a1);
+__int64 GameRoutine_17685e0(void);
+__int64 StableBreedingInfo_16c1180(__int64 result);
 
 __int64 StableBreedingInfo_16be4a0(__int64 a1, __int64 a2)
 {
@@ -295,6 +297,18 @@ __int64 StableBreedingInfo_DeletingDestructor(__int64 a1)
     v9 = 56;
   }
   return nn_mem_StandardAllocator_Free(*(_QWORD*)v2 + v9, a1);
+}
+
+__int64 StableBreedingInfo_16c1180(__int64 result)
+{
+  __int64 v1;
+
+  v1 = *(_QWORD*)(result + 160);
+  if (*(_BYTE*)(v1 + 361) == 1) {
+    *(_BYTE*)(v1 + 361) = 0;
+    return GameRoutine_17685e0();
+  }
+  return result;
 }
 
 #pragma GCC visibility pop

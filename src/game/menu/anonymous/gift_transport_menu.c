@@ -12,11 +12,102 @@ extern __int64 game_TransporterConst_List_instance_;
 void __attribute__((noreturn)) GameRoutine_60a310(_QWORD, _QWORD);
 __int64 GiftTransportMenu_Unknown85(__int64 a1);
 _QWORD* GiftTransportMenu_Unknown128(__int64 a1);
+__int64 GameRoutine_1a06650(_QWORD, _QWORD, _QWORD);
+__int64 ProcObeliskDepositoryRideMenu_9d0620(_QWORD, _QWORD, _QWORD, _QWORD,
+                                             _QWORD);
+__int64 __dynamic_cast(_QWORD, _QWORD, _QWORD, _QWORD);
+extern __int64 (*GameData_1fff758[])();
+extern __int64 (*GameData_1fff7d8[])();
+extern __int64* GameData_212c878[6];
+extern __int64* GameData_212e008[9];
+extern __int64* GameData_212fbc0[2];
+__int64 GiftTransportMenu_ff0050(__int64 a1);
 
 __int64 GiftTransportMenu_Unknown85(__int64 a1)
 {
   GameRoutine_170b4c0();
   return ui_LayoutAccessor_SetPaneVisible(a1 + 848, "L_EquipPool/L_Num", 0);
+}
+
+__int64 GiftTransportMenu_ff0050(__int64 a1)
+{
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  __int64 v10;
+  unsigned __int16* v11;
+  _QWORD v12[4];
+  _QWORD* v13;
+  _QWORD v14[4];
+  _QWORD* v15;
+  _QWORD v16[4];
+  _QWORD* v17;
+  const char* v18;
+
+  v2 = *(_QWORD*)(a1 + 336);
+  if (v2 == 0) {
+    return 1;
+  }
+  v3 = a1;
+  v4 = __dynamic_cast(v2, GameData_212e008[0], GameData_212fbc0[0], 0);
+  if (v4 == 0) {
+    return 1;
+  }
+  v5 = v4;
+  if (((*(__int64 (**)(__int64))(*(_QWORD*)v4 + 480LL))(v4) & 1) != 0) {
+    return 1;
+  }
+  v18 = "MID_Menu_ItemSend_Confirm";
+  v15 = v14;
+  v13 = v12;
+  v16[0] = GameData_1fff758;
+  v16[1] = v3;
+  v17 = v16;
+  v14[0] = GameData_1fff7d8;
+  v12[0] = GameData_1fff7d8;
+  v7 = ProcObeliskDepositoryRideMenu_9d0620(v3, &v18, v16, v14, v12);
+  if (v13 == v12) {
+    v8 = 32;
+  }
+  else {
+    if (v13 == nullptr) {
+      goto LABEL_11;
+    }
+    v8 = 40;
+  }
+  (*(void (**)(__int64))(*v13 + v8))((__int64)v13);
+
+LABEL_11:
+  if (v15 == v14) {
+    v9 = 32;
+  }
+  else {
+    if (v15 == nullptr) {
+      goto LABEL_16;
+    }
+    v9 = 40;
+  }
+  (*(void (**)(__int64))(*v15 + v9))((__int64)v15);
+
+LABEL_16:
+  if (v17 == v16) {
+    v10 = 32;
+    goto LABEL_20;
+  }
+  if (v17 != nullptr) {
+    v10 = 40;
+  LABEL_20:
+    (*(void (**)(__int64))(*v17 + v10))((__int64)v17);
+  }
+  v11 = (unsigned __int16*)(*(__int64 (**)(__int64))(*(_QWORD*)v5 + 560LL))(v5);
+  GameRoutine_1a06650(
+      v7 + 1496, *(_QWORD*)(*(_QWORD*)(*GameData_212c878[0] + 64) + 8LL * *v11),
+      1);
+  return 12;
 }
 
 _QWORD* GiftTransportMenu_Unknown128(__int64 a1)

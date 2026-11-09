@@ -9,6 +9,7 @@ extern __int64 (*game_map_MassMeshGroup_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 MassMeshGroup_Destructor(_QWORD* a1);
 __int64 MassMeshGroup_DeletingDestructor(_QWORD* a1);
+_QWORD* MassMeshGroup_f16a70(_QWORD* result);
 
 __int64 MassMeshGroup_Destructor(_QWORD* a1)
 {
@@ -36,6 +37,26 @@ __int64 MassMeshGroup_DeletingDestructor(_QWORD* a1)
   }
   return nn_mem_StandardAllocator_Free(
       *(_QWORD*)fw_memory_g_heap_manager_ptr + v2, a1);
+}
+
+_QWORD* MassMeshGroup_f16a70(_QWORD* result)
+{
+  _QWORD* v1;
+  __int64 v2;
+
+  if (result != nullptr) {
+    v1 = result;
+    MassMeshGroup_f16a70(*result);
+    MassMeshGroup_f16a70(v1[1]);
+    GameRoutine_f43b80(v1 + 6);
+    v2 = 128;
+    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+      v2 = 56;
+    }
+    return (_QWORD*)nn_mem_StandardAllocator_Free(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v2, v1);
+  }
+  return result;
 }
 
 #pragma GCC visibility pop

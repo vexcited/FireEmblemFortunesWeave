@@ -12,6 +12,11 @@ void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
 void __attribute__((noreturn)) GameRoutine_98f290(void);
 _QWORD* Object_Destructor_a8a960(_QWORD* result);
 __int64 Object_a8ade0(__int64 result);
+__int64 Components_a87260(__int64 result, __int64, int);
+__int64 nn_os_LockMutex(_QWORD);
+__int64 nn_os_UnlockMutex(_QWORD);
+extern _UNKNOWN GameData_2167560;
+__int64 Object_a8bfe0(__int64 result, char a2, char a3);
 
 _QWORD* Object_Destructor_a8a960(_QWORD* result)
 {
@@ -643,6 +648,55 @@ LABEL_38:
   *(_BYTE*)(v1 + 664) = 1;
   *(_BYTE*)(v1 + 696) = 1;
   *(_BYTE*)(v1 + 728) = 1;
+  return result;
+}
+
+__int64 Object_a8bfe0(__int64 result, char a2, char a3)
+{
+  char v3;
+  int v4;
+  int v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  __int64** v9;
+  __int64** i;
+  __int64* v11;
+  __int64* v12;
+  __int64 v13;
+  __int64 v14;
+
+  if ((a2 & 1) != 0) {
+    v3 = 2;
+  }
+  else {
+    v3 = a3;
+  }
+  v4 = v3 & 3;
+  *(_BYTE*)(result + 301) = v3;
+  v5 = *(unsigned __int8*)(result + 300);
+  if (v5 != v4 && v5 == 3 && (*(_BYTE*)(result + 302) & 1) == 0) {
+    v6 = *(_QWORD*)(result + 8);
+    v7 = result;
+    nn_os_LockMutex(&GameData_2167560);
+    Components_a87260(v6, v7, *(_DWORD*)(v7 + 280));
+    *(_BYTE*)(v6 + 80) = 1;
+    nn_os_UnlockMutex(&GameData_2167560);
+    result = Object_a8ade0(v7);
+    v9 = *(__int64***)(v7 + 584);
+    for (i = *(__int64***)(v7 + 592); v9 != i;
+         result = (*(__int64 (**)(__int64*, __int64))(v13 + v14))(v11, v8)) {
+      v12 = *v9++;
+      v11 = v12;
+      v13 = *v12;
+      if (*((_BYTE*)v12 + 16) != 0) {
+        v14 = 64;
+      }
+      else {
+        v14 = 72;
+      }
+    }
+  }
   return result;
 }
 

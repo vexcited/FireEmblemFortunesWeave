@@ -5,8 +5,6 @@
 __int64 GameRoutine_10098a0(_QWORD);
 __int64 GameRoutine_1562680(_QWORD, _QWORD, long double);
 __int64 GameRoutine_156c5d0(_QWORD, _QWORD, _QWORD);
-__int64 GameRoutine_16ee370(_QWORD, _QWORD, _QWORD);
-__int64 GameRoutine_16ee520(_QWORD);
 __int64 GameRoutine_a4dbe0(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 __dynamic_cast(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 game_menu_GameMenuItem_DrawText(void);
@@ -15,42 +13,14 @@ __int64 std___1___shared_weak_count_lock(_QWORD);
 __int64 ui_LayoutAccessor_FindTextBox(_QWORD, _QWORD);
 extern __int64 game_GameModeData_instance_;
 extern __int64 game_GameRestartData_unknown_;
-extern __int64* GameData_212dff0[12];
-extern __int64* GameData_212e030[4];
 extern __int64* GameData_212e348;
 extern __int64* msg_MessageManager_instance__ptr[2];
-__int64 RestartMenuItem_Unknown73_15eb300(__int64 a1);
 __int64 RestartMenuItem_Unknown27(__int64 a1);
 __int64 RestartMenuItem_Unknown55(__int64 a1);
 
 bool RestartMenuItem_Unknown58()
 {
   return *(_DWORD*)(game_GameRestartData_unknown_ + 652) != 0;
-}
-
-__int64 RestartMenuItem_Unknown73_15eb300(__int64 a1)
-{
-  __int64 v1;
-  __int64 v2;
-  __int64 v3;
-  const char* v4;
-  _BYTE v6[168];
-
-  v1 = *(_QWORD*)(a1 + 8);
-  if (v1 != 0 && (v2 = __dynamic_cast(*(_QWORD*)(a1 + 8), GameData_212e030[0],
-                                      GameData_212dff0[0], 0)) != 0) {
-    v3 = (*(__int64 (**)(__int64))(*(_QWORD*)v2 + 1112LL))(v2);
-  }
-  else {
-    v3 = v1 + 848;
-  }
-  v4 = "MID_PerchMenu_ResetChapter_Help";
-  if (game_GameModeData_instance_ != 0 &&
-      *(_DWORD*)(game_GameModeData_instance_ + 60) == 3) {
-    v4 = "MID_PerchMenu_ResetChapter_Part3_Help";
-  }
-  GameRoutine_16ee370(v6, v3, v4);
-  return GameRoutine_16ee520(v6);
 }
 
 __int64 RestartMenuItem_Unknown27(__int64 a1)

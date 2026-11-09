@@ -100,10 +100,6 @@ extern __int64* GameData_212ece8;
 
 extern __int64* GameData_212ed08[13];
 
-extern __int64 GameData_212f520[4];
-
-extern __int64 GameData_212f5c0[3];
-
 extern __int64* GameData_212fe80;
 
 extern __int64 GameData_21a60d8;
@@ -137,8 +133,6 @@ extern __int64 GameData_21fdf68;
 extern __int64 GameData_22110ac;
 
 extern _UNKNOWN GameData_22110b8;
-
-extern __int64 GameData_22197d8;
 
 extern char GameData_221fe88;
 
@@ -227,8 +221,6 @@ __int64 GameRoutine_16dcd30(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_16e0c00(_QWORD, _QWORD);
 
 __int64 GameRoutine_16e6880(_QWORD, _QWORD, _QWORD, _QWORD);
-
-__int64 GameRoutine_17c1f00(void);
 
 __int64 GameRoutine_18d0ec0(_QWORD, _QWORD);
 
@@ -550,80 +542,6 @@ __int64 GameHr_1001c70(__int64 a1)
                      *(float*)(a1 + 152) * 0.6f, 0.012f, 1.0f);
   return GameRoutine_edede0(*(_QWORD*)(*(_QWORD*)v2 + 912LL),
                             *(float*)(a1 + 152) + 1.0f, 0.01f, 1.0f);
-}
-
-float GameHr_10095c0(__int64 a1)
-{
-  unsigned __int8* v1;
-  unsigned int v2;
-  bool v3;
-  int v4;
-  float v6;
-  float v7;
-  float result;
-
-  if (GameData_22197d8 != 0 && *(int*)(GameData_22197d8 + 256) >= 1) {
-    v1 = *(unsigned __int8**)(a1 + 16);
-    if (v1 != nullptr) {
-      v2 = *v1;
-      v3 = v2 > 0x10;
-      v4 = (1 << v2) & 0x1CE00;
-      if (!v3 && v4 != 0) {
-        *(_WORD*)(a1 + 136) |= 0x80u;
-      }
-    }
-  }
-  v6 = 60.0f / (float)*(int*)(GameData_21a60d8 + 476);
-  if (v6 <= 0.0f) {
-    v7 = 0.0167f;
-  }
-  else {
-    v7 = v6 * 0.0167f;
-  }
-  result = *(float*)(a1 + 160) + v7;
-  *(float*)(a1 + 160) = result;
-  return result;
-}
-
-float GameHr_1009660(__int64 a1)
-{
-  __int64 v2;
-  unsigned __int8* v4;
-  unsigned int v5;
-  bool v6;
-  int v7;
-  float v9;
-  float v10;
-  float result;
-
-  v2 = GameData_212f5c0[0];
-  if (*GameData_212ea58 != 0 && *(_QWORD*)GameData_212f5c0[0] != 0) {
-    if ((GameRoutine_17c1f00(), *(_QWORD*)v2 != 0) &&
-            (*(_BYTE*)(*(_QWORD*)v2 + 296LL) & 1 |
-             (*(_DWORD*)(*(_QWORD*)v2 + 360LL) == 5)) != 0 &&
-            *(float*)(a1 + 160) >= 1.5f ||
-        *(_BYTE*)(*(_QWORD*)GameData_212f520[0] + 11LL) == 1) {
-      v4 = *(unsigned __int8**)(a1 + 16);
-      if (v4 != nullptr) {
-        v5 = *v4;
-        v6 = v5 > 0x10;
-        v7 = (1 << v5) & 0x1CE00;
-        if (!v6 && v7 != 0) {
-          *(_WORD*)(a1 + 136) |= 0x80u;
-        }
-      }
-    }
-  }
-  v9 = 60.0f / (float)*(int*)(*GameData_212c010[0] + 476);
-  if (v9 <= 0.0f) {
-    v10 = 0.0167f;
-  }
-  else {
-    v10 = v9 * 0.0167f;
-  }
-  result = *(float*)(a1 + 160) + v10;
-  *(float*)(a1 + 160) = result;
-  return result;
 }
 
 float GameHr_1016910(__int64 a1, float a2)

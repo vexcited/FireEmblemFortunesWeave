@@ -14,6 +14,121 @@ void ShapeAnimObj_Unknown2(__int64 a1);
 __int64 ShapeAnimObj_Unknown5(__int64 a1, _QWORD* a2);
 void ShapeAnimObj_Unknown3(__int64 a1, long double a2);
 __int64 ShapeAnimObj_Unknown7(__int64 result, __int64 a2);
+float GameRoutine_5e52c0(__int64, long double);
+void ShapeAnimObj_5e9180(__int64 a1, float* a2, unsigned __int8* a3,
+                         long double a4);
+void ShapeAnimObj_5e9260(__int64 a1, float* a2, unsigned __int8* a3,
+                         long double a4);
+float ShapeAnimObj_5e9320(__int64 a1, _DWORD* a2);
+void ShapeAnimObj_5e9180(__int64 a1, float* a2, unsigned __int8* a3,
+                         long double a4)
+{
+  __int64 v4;
+  int v5;
+  char* v9;
+  int v10;
+
+  v4 = *(unsigned __int16*)(a1 + 34);
+  if (*(_WORD*)(a1 + 34) != 0) {
+    v5 = LODWORD(a4);
+    v9 = (char*)(*(_QWORD*)(a1 + 24) + 8LL);
+    do {
+      v10 = *a3++;
+      if (v10 != 255 && *v9 != -1) {
+        LODWORD(a4) = v5;
+        *a2 = GameRoutine_5e52c0(*(_QWORD*)(a1 + 8) + 48LL * *v9, a4);
+      }
+      ++a2;
+      --v4;
+      v9 += 16;
+    } while (v4 != 0);
+  }
+}
+
+void ShapeAnimObj_5e9260(__int64 a1, float* a2, unsigned __int8* a3,
+                         long double a4)
+{
+  __int64 v4;
+  int v5;
+  char* v9;
+  int v10;
+
+  v4 = *(unsigned __int16*)(a1 + 34);
+  if (*(_WORD*)(a1 + 34) != 0) {
+    v5 = LODWORD(a4);
+    v9 = (char*)(*(_QWORD*)(a1 + 24) + 8LL);
+    do {
+      v10 = *a3++;
+      if (v10 != 255 && *v9 != -1) {
+        LODWORD(a4) = v5;
+        *a2 = GameRoutine_5e52c0(*(_QWORD*)(a1 + 8) + 48LL * *v9, a4);
+      }
+      ++a2;
+      --v4;
+      v9 += 16;
+    } while (v4 != 0);
+  }
+}
+
+float ShapeAnimObj_5e9320(__int64 a1, _DWORD* a2)
+{
+  __int64 v2;
+  unsigned int v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  unsigned __int64 v8;
+  float* v9;
+  float* v10;
+  float result;
+  float* v12;
+  float* v13;
+  float v14;
+
+  *a2 = 0;
+  v2 = *(unsigned __int16*)(a1 + 34);
+  v3 = v2 - 2;
+  if ((unsigned int)v2 >= 2) {
+    v4 = *(_QWORD*)(a1 + 16);
+    v5 = v2 - 1;
+    v6 = (v2 - 1) & 7;
+    if (v3 >= 7) {
+      v8 = v5 & 0xFFFFFFFFFFFFFFF8LL;
+      v9 = (float*)(v4 + 16);
+      v10 = (float*)(a2 + 4);
+      v7 = v8 | 1;
+      do {
+        v8 -= 8LL;
+        *(v10 - 3) = *(v9 - 4);
+        *(v10 - 2) = *(v9 - 3);
+        *(v10 - 1) = *(v9 - 2);
+        *v10 = *(v9 - 1);
+        v10[1] = *v9;
+        v10[2] = v9[1];
+        v10[3] = v9[2];
+        result = v9[3];
+        v9 += 8;
+        v10[4] = result;
+        v10 += 8;
+      } while (v8 != 0);
+    }
+    else {
+      v7 = 1;
+    }
+    if (v6 != 0) {
+      v12 = (float*)&a2[v7];
+      v13 = (float*)(v4 + 4 * v7 - 4);
+      do {
+        v14 = *v13++;
+        result = v14;
+        --v6;
+        *v12++ = v14;
+      } while (v6 != 0);
+    }
+  }
+  return result;
+}
 
 __int64 ShapeAnimObj_Unknown4(__int64 a1, __int64 a2)
 {

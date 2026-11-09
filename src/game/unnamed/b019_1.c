@@ -958,15 +958,9 @@ __int64 GameRoutine_1400f80(_QWORD, _QWORD);
 
 __int64 GameRoutine_1401610(_QWORD, _QWORD, _QWORD);
 
-__int64 GameRoutine_1401b10(_QWORD, _QWORD, _QWORD);
-
-__int64 GameRoutine_1401f80(_QWORD, float);
-
 __int64 GameRoutine_14020c0(_QWORD);
 
 __int64 GameRoutine_1405080(_QWORD);
-
-__int64 GameRoutine_140ab80(_QWORD, _QWORD);
 
 _QWORD* GameRoutine_140ea90(_QWORD* __return_ptr, _QWORD, _QWORD);
 
@@ -1227,8 +1221,6 @@ __int64 GameRoutine_1a0a0c0(_QWORD);
 __int64 GameRoutine_1a0a4e0(_QWORD, _QWORD);
 
 __int64 GameRoutine_1a0a690(_QWORD, _QWORD);
-
-float GameRoutine_1a0a770(_QWORD, _QWORD);
 
 __int64 GameRoutine_1a0b940(_QWORD, _QWORD, _QWORD);
 
@@ -8922,35 +8914,6 @@ _QWORD* GameHr_1498aa0(_QWORD* a1, __int64 a2)
   }
   ++a1[3];
   return v4;
-}
-
-__int64 GameHr_14993d0(__int64* a1, __int64 a2)
-{
-  __int64 v2;
-  __int64 v5;
-  unsigned int v6;
-  unsigned __int64 v7;
-  unsigned __int64 v8;
-  float v9;
-  char v10;
-
-  v2 = *a1;
-  v6 = *(unsigned __int8*)(*a1 + 72);
-  v5 = *a1 + 72;
-  v7 = (unsigned __int64)v6 >> 1;
-  if ((v6 & 1) != 0) {
-    v8 = *(_QWORD*)(v2 + 80);
-  }
-  else {
-    v8 = v7;
-  }
-  if (v8 != 0) {
-    v9 = GameRoutine_1a0a770(v5, 0);
-    GameRoutine_1401f80(a2, v9);
-    v2 = *a1;
-  }
-  v10 = GameRoutine_140ab80(v2 + 48, 0);
-  return GameRoutine_1401b10(a2, v2 + 24, v10 & 1);
 }
 
 __int64 GameHr_1499720(__int64 result)

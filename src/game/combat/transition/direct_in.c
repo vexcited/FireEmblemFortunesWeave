@@ -10,8 +10,6 @@ __int64 DirectIn_Unknown18(__int64* a1);
 
 float DirectIn_Unknown19() { return 0.4; }
 
-float DirectOut_Unknown19() { return 0.2; }
-
 __int64 WallCollisionModule_Unknown8(__int64 result);
 
 __int64 DirectIn_Unknown18(__int64* a1)

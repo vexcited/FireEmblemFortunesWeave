@@ -6,7 +6,6 @@ __int64 nn_os_FinalizeEvent(_QWORD);
 extern __int64 (*nn_atk_detail_driver_BasicSoundPlayer_vtable)();
 __int64 BasicSoundPlayer_Unknown2(__int64 result, __int64 a2, __int64 a3);
 __int64 BasicSoundPlayer_Destructor(_QWORD* a1);
-float GameHr_283c40(__int64 a1, int a2, int a3);
 
 void __attribute__((noreturn)) BasicSoundPlayer_DeletingDestructor()
 {
@@ -36,11 +35,6 @@ __int64 BasicSoundPlayer_Destructor(_QWORD* a1)
 {
   *a1 = &nn_atk_detail_driver_BasicSoundPlayer_vtable;
   return nn_os_FinalizeEvent(a1 + 1);
-}
-
-float GameHr_283c40(__int64 a1, int a2, int a3)
-{
-  return *(float*)(*(_QWORD*)(a1 + 32) + 96LL * a2 + 4LL * a3);
 }
 
 #pragma GCC visibility pop

@@ -25,6 +25,132 @@ __n128 Sound3DActorNX_Unknown9(__int64 a1, __int64 a2);
 __n128 Sound3DActorNX_Unknown11(__int64 a1);
 __n128 Sound3DActorNX_Unknown12(__int64 a1, int a2);
 __n128 Sound3DActorNX_Unknown14(__int64 a1);
+void __attribute__((noreturn)) GameRoutine_164010(void);
+__int64 Sound3DActorNx_14b560(_QWORD* a1, __int64* a2, int a3, __int64 a4);
+__int64 Sound3DActorNx_277190(__int64 result);
+__int64 Sound3DActorNx_2771b0(__int64 result, _QWORD* a2);
+
+__int64 Sound3DActorNx_14b560(_QWORD* a1, __int64* a2, int a3, __int64 a4)
+{
+  unsigned __int64 v4;
+  __int64 v5;
+  __int64 v7;
+  unsigned __int64 v8;
+  _QWORD* v9;
+  __int64 result;
+  unsigned __int64 v11;
+  __int64 v12;
+  int v13;
+  __int64 v14;
+  unsigned __int64 v15;
+  __int64 v16;
+  __int64* v19;
+  unsigned __int64 v20;
+  __int64 v21;
+  __int64 v22;
+  __int64 v23;
+  char* v24;
+  char* v25;
+  _QWORD* v26;
+  _QWORD* v27;
+  __int64 v28;
+  __int64 v29;
+  __int64 v30;
+  __int64 v31;
+  __int64 v32;
+  int v33;
+  __int64 v34;
+  int v35;
+
+  v5 = a1[5];
+  v4 = a1[6];
+  v7 = v4 - v5;
+  v8 = 0xAAAAAAAAAAAAAAABLL * ((__int64)(v4 - v5) >> 3);
+  if (v4 == v5) {
+  LABEL_5:
+    v34 = *a2;
+    v35 = *((_DWORD*)a2 + 2);
+    v11 = a1[7];
+    if (v4 >= v11) {
+      v15 = v8 + 1;
+      v16 = 0xAAAAAAAAAAAAAAALL;
+      if (v15 > 0xAAAAAAAAAAAAAAALL) {
+        GameRoutine_164010();
+      }
+      v19 = snd_g_memory_ptr[0];
+      v20 = 0xAAAAAAAAAAAAAAABLL * ((__int64)(v11 - v5) >> 3);
+      if (2 * v20 > v15) {
+        v15 = 2 * v20;
+      }
+      if (v20 < 0x555555555555555LL) {
+        v16 = v15;
+      }
+      v21 = 3 * v16;
+      v22 = (*(__int64 (**)(_QWORD, __int64, __int64))(
+          **(_QWORD**)snd_g_memory_ptr[0] + 16LL))(*snd_g_memory_ptr[0],
+                                                   24 * v16, 32);
+      v23 = v22 + v7;
+      *(_QWORD*)(v23 + 16) = a4;
+      v14 = v22 + v7 + 24;
+      *(_QWORD*)v23 = v34;
+      *(_DWORD*)(v23 + 8) = v35;
+      *(_DWORD*)(v23 + 12) = a3;
+      v24 = (char*)a1[5];
+      v25 = (char*)a1[6];
+      v26 = (_QWORD*)(v23 + v24 - v25);
+      if (v24 != v25) {
+        v27 = v26;
+        do {
+          v28 = *(_QWORD*)v24;
+          v29 = *((_QWORD*)v24 + 1);
+          v30 = *((_QWORD*)v24 + 2);
+          v24 += 24;
+          v27[1] = v29;
+          v27[2] = v30;
+          *v27 = v28;
+          v27 += 3;
+        } while (v24 != v25);
+        v24 = (char*)a1[5];
+      }
+      a1[5] = v26;
+      a1[6] = v14;
+      a1[7] = v22 + 8 * v21;
+      if (v24 != nullptr) {
+        (*(void (**)(__int64))(*(_QWORD*)*v19 + 24LL))(*v19);
+      }
+    }
+    else {
+      v12 = *a2;
+      v13 = *((_DWORD*)a2 + 2);
+      *(_QWORD*)(v4 + 16) = a4;
+      v14 = v4 + 24;
+      *(_QWORD*)v4 = v12;
+      *(_DWORD*)(v4 + 8) = v13;
+      *(_DWORD*)(v4 + 12) = a3;
+    }
+    v31 = a1[5];
+    a1[6] = v14;
+    return -1 - 1431655765 * (unsigned int)((unsigned __int64)(v14 - v31) >> 3);
+  }
+  else {
+    v9 = (_QWORD*)(v5 + 16);
+    result = 0;
+    while (*v9 != 0) {
+      ++result;
+      v9 += 3;
+      if (v8 == result) {
+        goto LABEL_5;
+      }
+    }
+    v32 = *a2;
+    v33 = *((_DWORD*)a2 + 2);
+    *v9 = a4;
+    *(v9 - 2) = v32;
+    *((_DWORD*)v9 - 2) = v33;
+    *((_DWORD*)v9 - 1) = a3;
+  }
+  return result;
+}
 
 _QWORD* Sound3DActorNX_Destructor(_QWORD* result)
 {
@@ -361,6 +487,23 @@ __n128 Sound3DActorNX_Unknown14(__int64 a1)
   }
   v11 = GameRoutine_2a1b90(v9);
   return nn_os_UnlockMutex(v11 + 840);
+}
+
+__int64 Sound3DActorNx_277190(__int64 result)
+{
+  *(_QWORD*)(result + 240) = 0;
+  *(_QWORD*)(result + 248) = 0;
+  *(_QWORD*)(result + 256) = 0;
+  *(_QWORD*)(result + 264) = 0;
+  *(_BYTE*)(result + 272) = 1;
+  return result;
+}
+
+__int64 Sound3DActorNx_2771b0(__int64 result, _QWORD* a2)
+{
+  *(_QWORD*)(result + 264) = a2[1];
+  *(_QWORD*)(result + 256) = *a2;
+  return result;
 }
 
 #pragma GCC visibility pop

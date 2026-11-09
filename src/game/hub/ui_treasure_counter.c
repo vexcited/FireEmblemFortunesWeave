@@ -32,6 +32,94 @@ extern __int64* GameData_212eec0[4];
 struct PseudoSret GameRoutine_1560070(_QWORD, _QWORD);
 _QWORD* UITreasureCounter_Destructor(_QWORD* result);
 __int64 UITreasureCounter_Unknown2();
+__n128 nn_mem_StandardAllocator_Free(_QWORD);
+extern __int64 fw_memory_g_heap_manager_ptr;
+extern __int64* GameData_212f0b8[5];
+void __attribute__((noreturn)) GameRoutine_60a310(_QWORD, _QWORD);
+__int64 UiTreasureCounter_e00880(__int64 result, __int64 a2);
+__n128 UiTreasureCounter_f630e0(_QWORD* a1);
+
+__int64 UiTreasureCounter_e00880(__int64 result, __int64 a2)
+{
+  __int64* v2;
+  __int64* v3;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  __int64* v9;
+  __int64* v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
+  __int64 v14;
+
+  v2 = *(__int64**)(result + 40);
+  v3 = *(__int64**)(result + 48);
+  v5 = result;
+  if (v2 != v3) {
+    while (1) {
+      v13 = *v2;
+      v6 = v2[1];
+      v14 = v6;
+      if (v6 != 0) {
+        atomic_fetch_add_explicit((atomic_ullong* volatile)(v6 + 8), 1u,
+                                  memory_order_relaxed);
+      }
+      v7 = *(_QWORD*)(a2 + 32);
+      if (v7 == 0) {
+        break;
+      }
+      result =
+          (*(__int64 (**)(__int64, __int64*))(*(_QWORD*)v7 + 48LL))(v7, &v13);
+      v8 = v14;
+      if (v14 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v14 + 8),
+                                       0xFFFFFFFFFFFFFFFFLL) == 0) {
+        (*(void (**)(__int64))(*(_QWORD*)v8 + 16LL))(v8);
+        result = std___1___shared_weak_count___release_weak(v8);
+      }
+      v2 += 2;
+      if (v2 == v3) {
+        goto LABEL_10;
+      }
+    }
+  LABEL_20:
+    GameRoutine_60a310(v7, a2);
+  }
+
+LABEL_10:
+  v9 = *(__int64**)(v5 + 64);
+  v10 = *(__int64**)(v5 + 72);
+  if (v9 != v10) {
+    while (1) {
+      v13 = *v9;
+      v11 = v9[1];
+      v14 = v11;
+      if (v11 != 0) {
+        atomic_fetch_add_explicit((atomic_ullong* volatile)(v11 + 8), 1u,
+                                  memory_order_relaxed);
+      }
+      v7 = *(_QWORD*)(a2 + 32);
+      if (v7 == 0) {
+        break;
+      }
+      result =
+          (*(__int64 (**)(__int64, __int64*))(*(_QWORD*)v7 + 48LL))(v7, &v13);
+      v12 = v14;
+      if (v14 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v14 + 8),
+                                       0xFFFFFFFFFFFFFFFFLL) == 0) {
+        (*(void (**)(__int64))(*(_QWORD*)v12 + 16LL))(v12);
+        result = std___1___shared_weak_count___release_weak(v12);
+      }
+      v9 += 2;
+      if (v9 == v10) {
+        return result;
+      }
+    }
+    goto LABEL_20;
+  }
+  return result;
+}
 
 _QWORD* UITreasureCounter_Destructor(_QWORD* result)
 {
@@ -108,6 +196,93 @@ LABEL_17:
     }
   }
   return result;
+}
+
+__n128 UiTreasureCounter_f630e0(_QWORD* a1)
+{
+  __int64 v1;
+  char* v2;
+  char* v3;
+  unsigned __int64 v4;
+  __int64 v5;
+  char* v6;
+  char* v7;
+  __int64 v9;
+
+  *a1 = GameData_212f0b8[0] + 2;
+  v1 = GameData_220b6e0;
+  v3 = *(char**)(GameData_220b6e0 + 136);
+  v2 = *(char**)(GameData_220b6e0 + 144);
+  if (v3 != v2) {
+    v4 = v2 - v3 - 8;
+    if ((~(_BYTE)v4 & 0x18) != 0) {
+      v5 = ((unsigned __int8)((unsigned int)v4 >> 3) + 1) & 3;
+      while (*(_QWORD**)v3 != a1) {
+        v3 += 8;
+        if (--v5 == 0) {
+          goto LABEL_6;
+        }
+      }
+    }
+    else {
+    LABEL_6:
+      if (v4 < 0x18) {
+        goto LABEL_29;
+      }
+      v3 += 16;
+      while (1) {
+        if (*((_QWORD**)v3 - 2) == a1) {
+          v3 -= 16;
+          goto LABEL_17;
+        }
+        if (*((_QWORD**)v3 - 1) == a1) {
+          v3 -= 8;
+          goto LABEL_17;
+        }
+        if (*(_QWORD**)v3 == a1) {
+          goto LABEL_17;
+        }
+        if (*((_QWORD**)v3 + 1) == a1) {
+          break;
+        }
+        v6 = v3 + 16;
+        v3 += 32;
+        if (v6 == v2) {
+          goto LABEL_29;
+        }
+      }
+      v3 += 8;
+    }
+  }
+
+LABEL_17:
+  v7 = v3 + 8;
+  if (v3 == v2 || v7 == v2) {
+    if (v3 != v2) {
+    LABEL_28:
+      *(_QWORD*)(v1 + 144) = v3;
+    }
+  }
+  else {
+    do {
+      if (*(_QWORD**)v7 != a1) {
+        *(_QWORD*)v3 = *(_QWORD*)v7;
+        v3 += 8;
+      }
+      v7 += 8;
+    } while (v7 != v2);
+    if (v3 != *(char**)(v1 + 144)) {
+      goto LABEL_28;
+    }
+  }
+
+LABEL_29:
+  v9 = 128;
+  if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+    v9 = 56;
+  }
+  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
+                                       v9);
 }
 
 __int64 UITreasureCounter_Unknown2()

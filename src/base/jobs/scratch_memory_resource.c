@@ -2,8 +2,6 @@
 
 #pragma GCC visibility push(hidden)
 
-__int64 GameRoutine_14877f0(_QWORD, _QWORD);
-__int64 GameRoutine_15e5fa0(void);
 __int64 nn_lmem_DestroyFrameHeap(_QWORD);
 __int64 nn_mem_StandardAllocator_Free(_QWORD);
 __int64 std___1_pmr_memory_resource_Destroy_memory_resource(_QWORD);
@@ -13,10 +11,6 @@ __int64 ScratchMemoryResource_Destructor(_QWORD* a1);
 __int64 ScratchMemoryResource_DeletingDestructor(_QWORD* a1);
 
 bool ScratchMemoryResource_Unknown4(__int64 a1, __int64 a2) { return a1 == a2; }
-
-__int64 GameHr_194f3c0() { return GameRoutine_14877f0(0, 0x13F000000LL); }
-
-__int64 GameHr_194f5c0() { return GameRoutine_14877f0(0, 0x13F000000LL); }
 
 __int64 GameHr_1955080(__int64 a1);
 

@@ -2,20 +2,13 @@
 
 #pragma GCC visibility push(hidden)
 
-__int64 GameRoutine_c75d80(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 __int64 nn_mem_StandardAllocator_Free(_QWORD);
-extern _UNKNOWN* GameData_212c2a0;
 extern __int128 GameData_1b80310;
-extern __int128 GameData_1b80320;
 extern __int64 (*gfx_light_Instance_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 float RectangleLight_Unknown2(__int64 a1);
 
 long double RectangleLight_c53f00() { return *(long double*)&GameData_1b80310; }
-
-long double RectangleLight_c53f10() { return *(long double*)&GameData_1b80320; }
-
-long double Actor_Unknown2() { return *(long double*)GameData_212c2a0; }
 
 __int64 GameHr_c76f00(__int64 a1, __int64 a2);
 _QWORD* RectangleLight_c541a0(_QWORD* result);

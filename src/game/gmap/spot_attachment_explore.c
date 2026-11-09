@@ -29,6 +29,217 @@ void __attribute__((noreturn)) GameRoutine_6e5c60(_QWORD);
 __int64 SpotAttachmentExplore_Unknown30(__int64 a1);
 __int64 SpotAttachmentExplore_Unknown40(_QWORD* a1);
 __int64 SpotAttachmentExplore_DeletingDestructor(_QWORD* a1);
+__int64 Impl_13261c0(_QWORD);
+__int64 SpotAttachmentDungeon_151b000(void);
+__int64 SpotAttachmentExplore_151a420(void);
+__int64 SpotAttachmentFort_151b980(void);
+__int64 game_gmap_SpotAttachmentDungeon_GetData(_QWORD);
+__int64 game_gmap_SpotAttachmentExplore_GetData(void);
+__int64 game_gmap_SpotAttachmentFort_GetData(_QWORD, _QWORD);
+extern _UNKNOWN GameData_1ab7f34;
+extern __int64 GameData_21c9ed0;
+bool SpotAttachmentExplore_15199c0(__int64 a1, __int64 a2);
+__int64 SpotAttachmentExplore_151a420();
+
+bool SpotAttachmentExplore_15199c0(__int64 a1, __int64 a2)
+{
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  unsigned __int8* v7;
+  int v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  unsigned __int8* v13;
+  int v14;
+  __int64 v15;
+  unsigned __int8 v16;
+  __int64 v17;
+  unsigned __int8* v18;
+  int v19;
+  __int64 v20;
+  unsigned __int8* v21;
+  __int64 v22;
+  int v23;
+  int v24;
+  _BOOL8 result;
+  __int64 v27;
+  unsigned __int8* v28;
+  __int64 v29;
+  int v30;
+  int v31;
+  __int64 v33;
+  unsigned __int8* v34;
+  __int64 v35;
+  int v36;
+  int v37;
+
+  v4 = game_gmap_SpotAttachmentExplore_GetData();
+  v5 = Impl_13261c0(a1);
+  v6 = *(unsigned __int16*)(v4 + 48);
+  if (*(_WORD*)(v4 + 48) == 0) {
+  LABEL_5:
+    v9 = game_gmap_SpotAttachmentDungeon_GetData(v5);
+    v10 = Impl_13261c0(a1);
+    v12 = *(unsigned __int16*)(v9 + 48);
+    if (*(_WORD*)(v9 + 48) != 0) {
+      v13 = *(unsigned __int8**)(v9 + 56);
+      while (1) {
+        v14 = *v13++;
+        if (v14 == (unsigned __int8)v10) {
+          break;
+        }
+        if (--v12 == 0) {
+          goto LABEL_9;
+        }
+      }
+      if (*(_QWORD*)(a2 + 64) != 0) {
+        v27 = SpotAttachmentDungeon_151b000();
+        if (*(_WORD*)(v27 + 32) != 0) {
+          v28 = *(unsigned __int8**)(v27 + 40);
+          v29 = *(unsigned __int16*)(v27 + 32) - 1LL;
+          v30 = *(unsigned __int8*)(*(_QWORD*)(a2 + 64) + 250LL);
+          do {
+            v31 = *v28++;
+            result = v31 == v30;
+          } while (v31 != v30 && v29-- != 0);
+          return result;
+        }
+      }
+    }
+    else {
+    LABEL_9:
+      v15 = game_gmap_SpotAttachmentFort_GetData(v10, v11);
+      v16 = Impl_13261c0(a1);
+      v17 = *(unsigned __int16*)(v15 + 48);
+      if (*(_WORD*)(v15 + 48) != 0) {
+        v18 = *(unsigned __int8**)(v15 + 56);
+        while (1) {
+          v19 = *v18++;
+          if (v19 == v16) {
+            break;
+          }
+          if (--v17 == 0) {
+            return false;
+          }
+        }
+        if (*(_QWORD*)(a2 + 64) != 0) {
+          v33 = SpotAttachmentFort_151b980();
+          if (*(_WORD*)(v33 + 32) != 0) {
+            v34 = *(unsigned __int8**)(v33 + 40);
+            v35 = *(unsigned __int16*)(v33 + 32) - 1LL;
+            v36 = *(unsigned __int8*)(*(_QWORD*)(a2 + 64) + 250LL);
+            do {
+              v37 = *v34++;
+              result = v37 == v36;
+            } while (v37 != v36 && v35-- != 0);
+            return result;
+          }
+        }
+      }
+    }
+    return false;
+  }
+  v7 = *(unsigned __int8**)(v4 + 56);
+  while (1) {
+    v8 = *v7++;
+    if (v8 == (unsigned __int8)v5) {
+      break;
+    }
+    if (--v6 == 0) {
+      goto LABEL_5;
+    }
+  }
+  if (*(_QWORD*)(a2 + 64) == 0) {
+    return false;
+  }
+  v20 = SpotAttachmentExplore_151a420();
+  if (*(_WORD*)(v20 + 32) == 0) {
+    return false;
+  }
+  v21 = *(unsigned __int8**)(v20 + 40);
+  v22 = *(unsigned __int16*)(v20 + 32) - 1LL;
+  v23 = *(unsigned __int8*)(*(_QWORD*)(a2 + 64) + 250LL);
+  do {
+    v24 = *v21++;
+    result = v24 == v23;
+  } while (v24 != v23 && v22-- != 0);
+  return result;
+}
+
+__int64 SpotAttachmentExplore_151a420()
+{
+  unsigned __int64 v0;
+  unsigned __int64 v1;
+  unsigned __int64 v3;
+  unsigned __int64 v4;
+  _QWORD* v5;
+  _QWORD* v6;
+  unsigned __int64 v7;
+  __int64 v8;
+  __int64 v9;
+
+  v0 = game_HashString(&GameData_1ab7f34);
+  if (v0 != 0) {
+    v1 = *(_QWORD*)(GameData_21c9ed0 + 96);
+    if (v1 != 0 && *(_QWORD*)(GameData_21c9ed0 + 112) != 0) {
+      v3 = v1 - 1;
+      if ((v1 & (v1 - 1)) != 0) {
+        v4 = v0;
+        if (v0 >= v1) {
+          v4 = v0 % v1;
+        }
+      }
+      else {
+        v4 = v3 & v0;
+      }
+      v5 = *(_QWORD**)(*(_QWORD*)(GameData_21c9ed0 + 88) + 8 * v4);
+      if (v5 != nullptr) {
+        v6 = (_QWORD*)*v5;
+        if (v6 != nullptr) {
+          if ((v1 & v3) == 0) {
+            while (1) {
+              v9 = v6[1];
+              if (v9 == v0) {
+                if (v6[2] == v0) {
+                  return v6[3];
+                }
+              }
+              else if ((v9 & v3) != v4) {
+                return 0;
+              }
+              v6 = (_QWORD*)*v6;
+              v8 = 0;
+              if (v6 == nullptr) {
+                return v8;
+              }
+            }
+          }
+          do {
+            v7 = v6[1];
+            if (v7 == v0) {
+              if (v6[2] == v0) {
+                return v6[3];
+              }
+            }
+            else {
+              if (v7 >= v1) {
+                v7 %= v1;
+              }
+              if (v7 != v4) {
+                return 0;
+              }
+            }
+            v6 = (_QWORD*)*v6;
+          } while (v6 != nullptr);
+        }
+      }
+    }
+  }
+  return 0;
+}
 
 __int64 SpotAttachmentExplore_Unknown30(__int64 a1)
 {

@@ -25,6 +25,22 @@ __int64 SubMix_DeletingDestructor(__int64 a1);
 __int64 SubMix_Unknown3(__int64 result, unsigned int a2);
 __int64 SubMix_Unknown11(_QWORD* a1);
 void SubMix_Unknown12(_QWORD* a1);
+__int64 SubMix_2af700(__int64 result, __int64 a2);
+__int64 SubMix_2b79b0(__int64 a1, int a2);
+
+__int64 SubMix_2af700(__int64 result, __int64 a2)
+{
+  __int64 v2;
+
+  if (*(int*)(result + 44) >= 1) {
+    v2 = 0;
+    do {
+      *(_DWORD*)(a2 + 4 * v2) = *(_DWORD*)(result + 80 + 4 * v2);
+      ++v2;
+    } while (v2 < *(int*)(result + 44));
+  }
+  return result;
+}
 
 __int64 SubMix_Unknown4(__int64 a1, int a2)
 {
@@ -39,6 +55,11 @@ __int64 SubMix_Unknown8(__int64 a1, int a2, int a3)
 __int64 SubMix_Unknown9(__int64 a1, int a2)
 {
   return (unsigned int)(a2 / *(_DWORD*)(a1 + 168));
+}
+
+__int64 SubMix_2b79b0(__int64 a1, int a2)
+{
+  return (unsigned int)(a2 % *(_DWORD*)(a1 + 168));
 }
 
 __int64 SubMix_2b79e0(__int64 a1, __int64 a2, int a3, int a4)

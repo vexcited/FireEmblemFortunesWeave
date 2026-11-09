@@ -35,6 +35,8 @@ void __attribute__((noreturn)) GameRoutine_8a7fd0(void);
 __int64 ProcGmapShopGuideMenu_Unknown84(__int64* a1);
 __int64 ProcGmapShopGuideMenu_Unknown104(__int64 a1, char a2);
 __int64 ProcGmapShopGuideMenu_Unknown106(__int64 a1, char a2);
+extern __int64 GameData_21ca018;
+__int64 ProcGmapShopGuideMenu_1903280(__int64 a1, unsigned __int8 a2);
 
 __int64 ProcGmapShopGuideMenu_Unknown84(__int64* a1)
 {
@@ -759,6 +761,110 @@ __int64 ProcGmapShopGuideMenu_Unknown106(__int64 a1, char a2)
   }
   GameRoutine_1903880(a1, v7);
   return 13;
+}
+
+__int64 ProcGmapShopGuideMenu_1903280(__int64 a1, unsigned __int8 a2)
+{
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  unsigned __int64 v6;
+  unsigned __int64 v7;
+  unsigned __int64 v9;
+  unsigned __int64 v10;
+  _QWORD* v11;
+  _QWORD* v12;
+  unsigned __int64 v13;
+  __int64 v14;
+  __int64 v15;
+  __int64 v16;
+
+  v2 = (__int64)*(&GameData_1fa8308 + a2);
+  v3 = *(_QWORD*)(a1 + 1208);
+  if ((*(_BYTE*)v3 & 1) != 0) {
+    v4 = *(_QWORD*)(v3 + 16);
+  }
+  else {
+    v4 = v3 + 1;
+  }
+  v5 = game_util_Format("%s_%s", v4, v2);
+  v6 = game_HashString(v5);
+  if (v6 == 0) {
+    return 0;
+  }
+  v7 = *(_QWORD*)(GameData_21ca018 + 96);
+  if (v7 == 0 || *(_QWORD*)(GameData_21ca018 + 112) == 0) {
+    return 0;
+  }
+  v9 = v7 - 1;
+  if ((v7 & (v7 - 1)) != 0) {
+    v10 = v6;
+    if (v6 >= v7) {
+      v10 = v6 % v7;
+    }
+  }
+  else {
+    v10 = v9 & v6;
+  }
+  v11 = *(_QWORD**)(*(_QWORD*)(GameData_21ca018 + 88) + 8 * v10);
+  if (v11 == nullptr) {
+    return 0;
+  }
+  v12 = (_QWORD*)*v11;
+  if (v12 == nullptr) {
+    return 0;
+  }
+  if ((v7 & v9) == 0) {
+    while (1) {
+      v15 = v12[1];
+      if (v15 == v6) {
+        if (v12[2] == v6) {
+          goto LABEL_29;
+        }
+      }
+      else if ((v15 & v9) != v10) {
+        return 0;
+      }
+      v12 = (_QWORD*)*v12;
+      v14 = 0;
+      if (v12 == nullptr) {
+        return v14;
+      }
+    }
+  }
+  while (1) {
+    v13 = v12[1];
+    if (v13 == v6) {
+      break;
+    }
+    if (v13 >= v7) {
+      v13 %= v7;
+    }
+    if (v13 != v10) {
+      return 0;
+    }
+  LABEL_18:
+    v12 = (_QWORD*)*v12;
+    if (v12 == nullptr) {
+      return 0;
+    }
+  }
+  if (v12[2] != v6) {
+    goto LABEL_18;
+  }
+
+LABEL_29:
+  v16 = v12[3];
+  if (v16 == 0) {
+    return 0;
+  }
+  if ((GameRoutine_1595650(0, *(_QWORD*)(v16 + 8)) & 1) != 0) {
+    return 0;
+  }
+  else {
+    return v16;
+  }
 }
 
 #pragma GCC visibility pop

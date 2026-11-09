@@ -12,6 +12,82 @@ extern __int64* GameData_212c780;
 extern char GameData_1a9f09e;
 __int64 SpotAttachmentDungeon_Unknown30(__int64 a1);
 __int64 SpotAttachmentDungeon_DeletingDestructor(_QWORD* a1);
+__int64 game_HashString(_QWORD);
+extern _UNKNOWN GameData_1a8dc68;
+extern __int64 GameData_21c9ed0;
+__int64 SpotAttachmentDungeon_151b000();
+
+__int64 SpotAttachmentDungeon_151b000()
+{
+  unsigned __int64 v0;
+  unsigned __int64 v1;
+  unsigned __int64 v3;
+  unsigned __int64 v4;
+  _QWORD* v5;
+  _QWORD* v6;
+  unsigned __int64 v7;
+  __int64 v8;
+  __int64 v9;
+
+  v0 = game_HashString(&GameData_1a8dc68);
+  if (v0 != 0) {
+    v1 = *(_QWORD*)(GameData_21c9ed0 + 96);
+    if (v1 != 0 && *(_QWORD*)(GameData_21c9ed0 + 112) != 0) {
+      v3 = v1 - 1;
+      if ((v1 & (v1 - 1)) != 0) {
+        v4 = v0;
+        if (v0 >= v1) {
+          v4 = v0 % v1;
+        }
+      }
+      else {
+        v4 = v3 & v0;
+      }
+      v5 = *(_QWORD**)(*(_QWORD*)(GameData_21c9ed0 + 88) + 8 * v4);
+      if (v5 != nullptr) {
+        v6 = (_QWORD*)*v5;
+        if (v6 != nullptr) {
+          if ((v1 & v3) == 0) {
+            while (1) {
+              v9 = v6[1];
+              if (v9 == v0) {
+                if (v6[2] == v0) {
+                  return v6[3];
+                }
+              }
+              else if ((v9 & v3) != v4) {
+                return 0;
+              }
+              v6 = (_QWORD*)*v6;
+              v8 = 0;
+              if (v6 == nullptr) {
+                return v8;
+              }
+            }
+          }
+          do {
+            v7 = v6[1];
+            if (v7 == v0) {
+              if (v6[2] == v0) {
+                return v6[3];
+              }
+            }
+            else {
+              if (v7 >= v1) {
+                v7 %= v1;
+              }
+              if (v7 != v4) {
+                return 0;
+              }
+            }
+            v6 = (_QWORD*)*v6;
+          } while (v6 != nullptr);
+        }
+      }
+    }
+  }
+  return 0;
+}
 
 __int64 SpotAttachmentDungeon_Unknown30(__int64 a1)
 {

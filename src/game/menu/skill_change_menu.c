@@ -9,6 +9,16 @@ extern __int64* GameData_212e008[9];
 const char* SkillChangeMenu_Unknown49(__int64 a1);
 const char* SkillChangeMenu_15b88d0(__int64 a1);
 __int64 SkillChangeMenu_15b8900(__int64 a1);
+__int64 GameRoutine_6c51e0(_QWORD);
+__int64 GameRoutine_6c6da0(_QWORD);
+__int64 GameRoutine_6c6ec0(_QWORD);
+__int64 GameRoutine_6cc580(_QWORD, _QWORD, _QWORD);
+__int64 GameRoutine_6cc9e0(_QWORD, _QWORD, _QWORD);
+__int64 UnitSkillList_84dea0(_QWORD, _QWORD, _QWORD);
+__int64 game_Unit_Unknown6c4610(_QWORD);
+__int64 game_Unit_Unknown6ccf10(_QWORD, _QWORD, _QWORD);
+__int64 SkillChangeMenu_15debb0(__int64 result, __int64 a2, _WORD* a3,
+                                __int64 a4);
 
 const char* SkillChangeMenu_Unknown49(__int64 a1)
 {
@@ -192,6 +202,41 @@ LABEL_44:
   v28 = *(unsigned __int8*)(a1 + 376);
   v30 = v27;
   return GameRoutine_15debb0(v28, v26, &v31, &v30);
+}
+
+__int64 SkillChangeMenu_15debb0(__int64 result, __int64 a2, _WORD* a3,
+                                __int64 a4)
+{
+  int v5;
+
+  if (a2 != 0) {
+    if ((*a3 & 0xFFF) != 0) {
+      if ((unsigned __int8)result == 2) {
+        if ((UnitSkillList_84dea0(a2 + 1168, a3, a4) & 1) != 0) {
+          v5 = *(_DWORD*)(a2 + 416);
+          if ((v5 & 0x10000000) == 0) {
+            *(_DWORD*)(a2 + 416) = v5 | 0x10000000;
+            GameRoutine_6c51e0(a2);
+            GameRoutine_6c6da0(a2);
+            GameRoutine_6c6ec0(a2);
+            *(_DWORD*)(a2 + 416) &= ~0x10000000u;
+          }
+        }
+      }
+      else {
+        game_Unit_Unknown6ccf10(a2, a3, a4);
+      }
+    }
+    else if ((unsigned __int8)result == 2) {
+      GameRoutine_6cc580(a2, a4, 1);
+    }
+    else {
+      GameRoutine_6cc9e0(a2, a4, 1);
+    }
+    result = game_Unit_Unknown6c4610(a2);
+    *(_WORD*)(a2 + 20) |= 1u;
+  }
+  return result;
 }
 
 #pragma GCC visibility pop

@@ -8,6 +8,12 @@ __int64 std___1___shared_weak_count___release_weak(_QWORD);
 extern __int64 (*game_cmdbtl_CmdBtlMindEnumeration_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 _QWORD* CmdBtlMindEnumeration_Destructor(_QWORD* result);
+__int64 GameRoutine_658c00(_QWORD);
+__int64 game_ProcInst_Unregister(_QWORD);
+extern __int64 (*GameData_1fed660[])();
+extern __int64 (*game_ProcInst_vtable[])();
+extern __int64 (*game_cmdbtl_anonymous_ProcCmdBtlSeqAI_vtable[])();
+__int64 CmdBtlMindEnumeration_eab1e0(__int64 a1);
 
 _QWORD* CmdBtlMindEnumeration_Destructor(_QWORD* result)
 {
@@ -75,6 +81,35 @@ _QWORD* CmdBtlMindEnumeration_Destructor(_QWORD* result)
     }
   }
   return result;
+}
+
+__int64 CmdBtlMindEnumeration_eab1e0(__int64 a1)
+{
+  _QWORD* v2;
+  __int64 v3;
+
+  *(_QWORD*)a1 = game_cmdbtl_anonymous_ProcCmdBtlSeqAI_vtable;
+  CmdBtlMindEnumeration_Destructor(a1 + 208);
+  v2 = *(_QWORD**)(a1 + 192);
+  *(_QWORD*)a1 = GameData_1fed660;
+  if (v2 == (_QWORD*)(a1 + 160)) {
+    v3 = 32;
+  }
+  else {
+    if (v2 == nullptr) {
+      goto LABEL_6;
+    }
+    v3 = 40;
+  }
+  (*(void (**)(__int64))(*v2 + v3))((__int64)v2);
+
+LABEL_6:
+  *(_QWORD*)a1 = game_ProcInst_vtable;
+  if ((*(_WORD*)(a1 + 136) & 0x100) != 0) {
+    *(_WORD*)(a1 + 136) &= ~0x100u;
+  }
+  game_ProcInst_Unregister(a1);
+  return GameRoutine_658c00(a1 + 88);
 }
 
 #pragma GCC visibility pop

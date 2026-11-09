@@ -26,6 +26,93 @@ __int64 TelopStatusChange_Unknown39(__int64 result, long double a2);
 __int64 TelopStatusChange_Unknown2(__int64 a1, long double a2);
 __int64 TelopStatusChange_Destructor(__int64 a1);
 __int64 TelopStatusChange_DeletingDestructor(__int64 a1);
+__int64 TelopStatusChange_17484f0(_QWORD* a1);
+
+__int64 TelopStatusChange_17484f0(_QWORD* a1)
+{
+  __int64 v1;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  __int64 result;
+
+  v1 = a1[47];
+  if (v1 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v1 + 8),
+                                  0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v1 + 16LL))(v1);
+    std___1___shared_weak_count___release_weak();
+  }
+  v3 = a1[45];
+  if (v3 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v3 + 8),
+                                  0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v3 + 16LL))(v3);
+    std___1___shared_weak_count___release_weak();
+  }
+  v4 = a1[43];
+  if (v4 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v4 + 8),
+                                  0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v4 + 16LL))(v4);
+    std___1___shared_weak_count___release_weak();
+  }
+  v5 = a1[41];
+  if (v5 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v5 + 8),
+                                  0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v5 + 16LL))(v5);
+    std___1___shared_weak_count___release_weak();
+  }
+  v6 = a1[39];
+  if (v6 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v6 + 8),
+                                  0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v6 + 16LL))(v6);
+    std___1___shared_weak_count___release_weak();
+  }
+  v7 = a1[37];
+  if (v7 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v7 + 8),
+                                  0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v7 + 16LL))(v7);
+    std___1___shared_weak_count___release_weak();
+  }
+  v8 = a1[35];
+  if (v8 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v8 + 8),
+                                  0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v8 + 16LL))(v8);
+    std___1___shared_weak_count___release_weak();
+  }
+  v9 = a1[33];
+  if (v9 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v9 + 8),
+                                  0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v9 + 16LL))(v9);
+    std___1___shared_weak_count___release_weak();
+  }
+  v10 = a1[31];
+  if (v10 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v10 + 8),
+                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v10 + 16LL))(v10);
+    std___1___shared_weak_count___release_weak();
+  }
+  v11 = a1[29];
+  if (v11 == 0 || atomic_fetch_add((atomic_ullong* volatile)(v11 + 8),
+                                   0xFFFFFFFFFFFFFFFFLL) != 0) {
+    result = a1[1];
+    if (result == 0) {
+      return result;
+    }
+    return std___1___shared_weak_count___release_weak();
+  }
+  (*(void (**)(__int64))(*(_QWORD*)v11 + 16LL))(v11);
+  std___1___shared_weak_count___release_weak();
+  result = a1[1];
+  if (result != 0) {
+    return std___1___shared_weak_count___release_weak();
+  }
+  return result;
+}
 
 __int64 TelopStatusChange_Unknown34(__int64 a1)
 {

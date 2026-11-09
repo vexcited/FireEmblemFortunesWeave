@@ -10,6 +10,16 @@ extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 RouteAStarSpace_Unknown5(_QWORD* a1);
 __int64 RouteAStarSpace_Unknown2(__int64 result);
 bool RouteAStarSpace_Unknown4(__int64 a1);
+__int64 fw_memory_HeapManager_Allocate(_QWORD, _QWORD, _QWORD, _QWORD);
+__int64 fw_world_JobContext_Drain(_QWORD);
+__int64 fw_world_JobContext_Wait(_QWORD, _QWORD);
+__int64 fw_world_JobQueue_Submit(_QWORD, _QWORD);
+__int64 fw_world_SwapCallables(_QWORD, _QWORD);
+__int64 nn_os_ClearLightEvent(_QWORD);
+extern __int64 (*GameData_1fdd530[])();
+extern __int64 GameData_212e368[4];
+extern __int64 GameData_21323e8[4];
+__int64 RouteAStarSpace_d72de0(__int64 a1);
 
 __int64 RouteAStarSpace_Unknown5(_QWORD* a1)
 {
@@ -99,6 +109,86 @@ __int64 RouteAStarSpace_Unknown2(__int64 result)
     return GameRoutine_d72de0(result);
   }
   return result;
+}
+
+__int64 RouteAStarSpace_d72de0(__int64 a1)
+{
+  __int64 v1;
+  __int64 v2;
+  _QWORD* v4;
+  __int64 v5;
+  __int64 v6;
+  int v7;
+  int v8;
+  unsigned __int64 v9;
+  __int64 v10;
+  unsigned __int64 v11;
+  unsigned __int64* v12;
+  unsigned __int64 v13;
+  _QWORD* v14;
+  _QWORD* v15;
+  __int64 v16;
+  unsigned __int64 v17;
+  __int64 v18;
+  _QWORD v20[4];
+  _QWORD* v21;
+
+  v2 = *(_QWORD*)(a1 + 88);
+  v1 = *(_QWORD*)(a1 + 96);
+  v4 = (_QWORD*)GameData_21323e8[0];
+  fw_world_JobContext_Drain(*(_QWORD*)GameData_21323e8[0]);
+  v5 = *v4;
+  v6 = *v4 + 32LL;
+  do {
+    v7 = *(_DWORD*)(v5 + 8);
+    v8 = (v7 + 1) & 0xFFFFFF;
+    if (v7 + 1 <= 0) {
+      v8 = -(-(v7 + 1) & 0xFFFFFF);
+    }
+    *(_DWORD*)(v5 + 8) = v8;
+    v9 = atomic_load((unsigned __int64*)(v6 + 32LL * (v7 & 0x3F)));
+    if (v9 != 0) {
+      v7 = -1;
+    }
+  } while (v7 < 0);
+  v10 = v1 - v2;
+  v11 = v7 | 0xC0000000;
+  v12 = (unsigned __int64*)(v6 + 32LL * (v7 & 0x3F));
+  v13 = 0xAAAAAAAAAAAAAAABLL * (v10 >> 5);
+  nn_os_ClearLightEvent(v12 + 1);
+  v14 = (_QWORD*)fw_memory_HeapManager_Allocate(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr, 80, 16, 0);
+  v14[2] = 0;
+  v15 = v14;
+  v16 = GameData_212e368[0];
+  v14[8] = 0;
+  *v14 = v16 + 16;
+  v14[1] = 0;
+  v17 = v12[3];
+  v12[3] = (unsigned __int64)v15;
+  if (v17 != 0) {
+    (*(void (**)(unsigned __int64))(*(_QWORD*)v17 + 8LL))(v17);
+  }
+  atomic_store(v11, v12);
+  v20[2] = v13;
+  v20[3] = a1;
+  v15[1] = v5;
+  *((_DWORD*)v15 + 4) = v11;
+  v20[0] = GameData_1fdd530;
+  v20[1] = v2;
+  v21 = v20;
+  fw_world_SwapCallables(v20, v15 + 4);
+  if (v21 == v20) {
+    v18 = 32;
+    goto LABEL_13;
+  }
+  if (v21 != nullptr) {
+    v18 = 40;
+  LABEL_13:
+    (*(void (**)(__int64))(*v21 + v18))((__int64)v21);
+  }
+  fw_world_JobQueue_Submit(*(_QWORD*)(v5 + 16), v11);
+  return fw_world_JobContext_Wait(*v4, v11);
 }
 
 bool RouteAStarSpace_Unknown4(__int64 a1)

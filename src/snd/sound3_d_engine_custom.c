@@ -9,6 +9,24 @@ __int64 Sound3DActorNX_14dc10(_QWORD, _QWORD);
 __int64 StartInfoNX_14b920(void);
 __int64 Sound3DEngineCustom_Unknown4(__int64 a1, __int64 a2, __int64 a3,
                                      __int64 a4);
+__int64 Sound3DEngineCustom_14b730(__int64 a1, int a2);
+__int64 Sound3DEngineCustom_14b740(__int64 result, int a2);
+
+__int64 Sound3DEngineCustom_14b730(__int64 a1, int a2)
+{
+  return *(_QWORD*)(a1 + 40) + 24LL * a2;
+}
+
+__int64 Sound3DEngineCustom_14b740(__int64 result, int a2)
+{
+  __int64 v2;
+
+  v2 = *(_QWORD*)(result + 40) + 24LL * a2;
+  *(_DWORD*)(v2 + 12) = -1;
+  *(_QWORD*)(v2 + 16) = 0;
+  return result;
+}
+
 __int64 Sound3DEngineCustom_Unknown4(__int64 a1, __int64 a2, __int64 a3,
                                      __int64 a4)
 {

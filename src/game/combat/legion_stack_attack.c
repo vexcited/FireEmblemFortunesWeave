@@ -14,6 +14,8 @@ __int64 LegionStackAttack_Unknown4(_QWORD* a1);
 __int64 LegionStackAttack_Unknown5(__int64 a1);
 __int64 LegionStackAttack_Destructor(__int64 a1);
 __int64 LegionStackAttack_DeletingDestructor(__int64 a1);
+__int64 Signal_d30dc0(_QWORD, _QWORD, _QWORD, _QWORD);
+__int64 LegionStackAttack_e35470(__int64 result);
 
 __int64 LegionStackAttack_Unknown4(_QWORD* a1)
 {
@@ -120,6 +122,58 @@ __int64 LegionStackAttack_DeletingDestructor(__int64 a1)
     v5 = 56;
   }
   return nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v5);
+}
+
+__int64 LegionStackAttack_e35470(__int64 result)
+{
+  __int64 v1;
+  __int64 v2;
+  __int64 v3;
+  unsigned __int64 v5;
+  __int64 v6;
+  bool v7;
+  unsigned __int64 v8;
+  __int64 v9;
+  unsigned __int64 v10;
+  __int64 v11;
+
+  v1 = *(_QWORD*)result;
+  if (*(_QWORD*)result != 0 && *(_BYTE*)(result + 12) == 1) {
+    v2 = *(_QWORD*)(v1 + 48);
+    if (v2 != 0) {
+      v3 = *(_QWORD*)(v1 + 56);
+      if (*(_QWORD*)(v2 + 8) != -1 && v3 != 0) {
+        v5 = *(unsigned __int8*)(result + 16);
+        v6 = result;
+        v7 = (v5 & 1) == 0;
+        v8 = v5 >> 1;
+        if (v7) {
+          v9 = result + 17;
+        }
+        else {
+          v9 = *(_QWORD*)(result + 32);
+        }
+        if (v7) {
+          v10 = v8;
+        }
+        else {
+          v10 = *(_QWORD*)(result + 24);
+        }
+        Signal_d30dc0(*(_QWORD*)(v3 + 320), v9, v10,
+                      *(unsigned int*)(result + 8));
+        result = v6;
+      }
+    }
+  }
+  if ((*(_BYTE*)(result + 16) & 1) != 0 && *(_QWORD*)(result + 32) != 0) {
+    v11 = 128;
+    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+      v11 = 56;
+    }
+    return nn_mem_StandardAllocator_Free(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v11);
+  }
+  return result;
 }
 
 #pragma GCC visibility pop

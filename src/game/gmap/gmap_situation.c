@@ -58,6 +58,7 @@ __int64 GmapSituation_14dc380(__int64 result, __int64 a2);
 __int64 GmapSituation_14dc4f0();
 __int64 GmapSituation_14dc560(__int64 result, __int64 a2);
 __int64 GmapSituation_14dc720(__int64 result, __int64 a2);
+__int64 GmapSituation_14dbeb0(__int64 result);
 
 __int64 GmapSituation_14d7f60()
 {
@@ -423,6 +424,83 @@ __int64 GmapSituation_14dbe20()
   if (result != 0) {
     return *(_DWORD*)(result + 32) != 0;
   }
+  return result;
+}
+
+__int64 GmapSituation_14dbeb0(__int64 result)
+{
+  _QWORD* v1;
+  unsigned __int64 v2;
+  __int64* v3;
+  __int64 v4;
+  __int64 v5;
+  char* v6;
+  __int64 v7;
+  unsigned __int64 v8;
+  __int64 v9;
+  __int64 v10;
+  unsigned __int64 v11;
+  __int64 v12;
+  __int64 v13;
+  unsigned __int64 v14;
+  __int64 v15;
+  __int64 v16;
+
+  v1 = (_QWORD*)GameData_22416c0;
+  v3 = *(__int64**)(GameData_22416c0 + 16);
+  v2 = *(_QWORD*)(GameData_22416c0 + 24);
+  if ((unsigned __int64)v3 >= v2) {
+    v5 = *(_QWORD*)(GameData_22416c0 + 8);
+    v6 = (char*)v3 - v5;
+    v7 = ((__int64)v3 - v5) >> 3;
+    v8 = v7 + 1;
+    if ((unsigned __int64)(v7 + 1) >> 61 != 0) {
+      GameRoutine_14c2010();
+    }
+    v9 = v2 - v5;
+    v10 = fw_memory_g_heap_manager_ptr;
+    if (v9 >> 2 > v8) {
+      v8 = v9 >> 2;
+    }
+    if ((unsigned __int64)v9 >= 0x7FFFFFFFFFFFFFF8LL) {
+      v11 = 0x1FFFFFFFFFFFFFFFLL;
+    }
+    else {
+      v11 = v8;
+    }
+    if (v11 != 0) {
+      if (v11 >> 61 != 0) {
+        GameRoutine_60a210(result);
+      }
+      v12 = result;
+      v13 = fw_memory_HeapManager_Allocate(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr, 8 * v11, 16, 0);
+      result = v12;
+    }
+    else {
+      v13 = 0;
+    }
+    v14 = v13 + 8 * v11;
+    v15 = (__int64)&v6[v13 + -8 * v7];
+    *(_QWORD*)&v6[v13] = result;
+    v4 = (__int64)&v6[v13 + 8];
+    result = memcpy(v15, v5, v6);
+    v1[1] = v15;
+    v1[2] = v4;
+    v1[3] = v14;
+    if (v5 != 0) {
+      v16 = 128;
+      if (*(_QWORD*)(*(_QWORD*)v10 + 200LL) == 0) {
+        v16 = 56;
+      }
+      result = nn_mem_StandardAllocator_Free(*(_QWORD*)v10 + v16, v5);
+    }
+  }
+  else {
+    *v3 = result;
+    v4 = (__int64)(v3 + 1);
+  }
+  v1[2] = v4;
   return result;
 }
 

@@ -32,6 +32,11 @@ __int64 ProcClassRankMenu_Unknown103(__int64 a1);
 __int64 ProcClassRankMenu_Unknown105(__int64 a1);
 const char* ProcClassRankMenu_Unknown130(__int64 a1);
 __int64 ProcClassRankMenu_Unknown142(__int64 a1, __int64* a2);
+__int64 GameRoutine_1467a30(_QWORD);
+__int64 _ZN4game4menu8GameMenu12Unknown16e9cd0Ev(_QWORD, _QWORD);
+extern __int64 (*GameData_208d828[])();
+void __attribute__((noreturn)) GameRoutine_60a310(_QWORD, _QWORD);
+__int64 ProcClassRankMenu_16bb880(_QWORD* a1, __int64 a2);
 
 __int64 ProcClassRankMenu_Unknown96(_QWORD* a1)
 {
@@ -270,6 +275,73 @@ __int64 ProcClassRankMenu_Unknown142(__int64 a1, __int64* a2)
   }
   a2[1] = v6;
   return result;
+}
+
+__int64 ProcClassRankMenu_16bb880(_QWORD* a1, __int64 a2)
+{
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  _QWORD* v6;
+  unsigned __int64 v7;
+  __int64* v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  _QWORD v13[4];
+  _QWORD* v14;
+  __int64 v15;
+
+  a1[133] = a2;
+  GameRoutine_1467a30(a2);
+  _ZN4game4menu8GameMenu12Unknown16e9cd0Ev(a1, a1[133]);
+  v5 = a1[29];
+  v4 = a1[30];
+  v6 = v13;
+  v13[0] = GameData_208d828;
+  v13[1] = a1;
+  v14 = v13;
+  if (v4 == v5) {
+    goto LABEL_12;
+  }
+  v7 = 0;
+  v8 = GameData_212e008[0];
+  do {
+    v9 = *(_QWORD*)(v5 + 8 * v7);
+    if (v9 != 0) {
+      v10 = __dynamic_cast(v9, v8, &GameData_208d800, 0);
+      if (v10 == 0) {
+        goto LABEL_3;
+      }
+      v15 = v10;
+      if (v14 == nullptr) {
+        GameRoutine_60a310(0, v3);
+      }
+      if (((*(__int64 (**)(_QWORD*, __int64*))(*v14 + 48LL))(v14, &v15) & 1) !=
+          0) {
+        break;
+      }
+      v5 = a1[29];
+      v4 = a1[30];
+    }
+  LABEL_3:
+    ++v7;
+  } while (v7 < (v4 - v5) >> 3);
+  v6 = v14;
+  if (v14 != v13) {
+    if (v14 != nullptr) {
+      v11 = 40;
+      goto LABEL_13;
+    }
+    return GameRoutine_16bb9c0(a1);
+  }
+
+LABEL_12:
+  v11 = 32;
+
+LABEL_13:
+  (*(void (**)(_QWORD*, __int64))(*v6 + v11))(v6, v3);
+  return GameRoutine_16bb9c0(a1);
 }
 
 #pragma GCC visibility pop

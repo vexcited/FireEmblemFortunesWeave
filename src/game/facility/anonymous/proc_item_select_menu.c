@@ -29,7 +29,6 @@ extern __int64* GameData_212c878[6];
 extern __int64* GameData_212e008[9];
 extern __int64* game_g_empty_item_ptr;
 void __attribute__((noreturn)) GameRoutine_60a310(_QWORD);
-__int64 GameHr_1874b80(__int64 a1, _QWORD* a2);
 __int64 ProcItemSelectMenu_Unknown84_1875fe0(__int64 a1);
 __int64 ProcItemSelectMenu_Unknown85(__int64 a1);
 __int64 ProcItemSelectMenu_Unknown129(__int64 a1);
@@ -47,12 +46,6 @@ __int64 ProcItemSelectMenu_Unknown157_187b520(__int64 a1, __int16* a2);
 __int64 ProcItemSelectMenu_Unknown155_1874a60(__int64 a1, unsigned int a2)
 {
   return a2;
-}
-
-__int64 GameHr_1874b80(__int64 a1, _QWORD* a2)
-{
-  return (*(__int64 (**)(_QWORD, _QWORD))(**(_QWORD**)(a1 + 8) + 32LL))(
-      *(_QWORD*)(a1 + 8), *a2);
 }
 
 __int64 ProcItemSelectMenu_Unknown84_1875fe0(__int64 a1)

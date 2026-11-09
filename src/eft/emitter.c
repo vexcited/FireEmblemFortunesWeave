@@ -14,14 +14,8 @@ extern __int64 (*gfx_light_Actor_vtable[])();
 extern __int64 eft_g_effectSystem;
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 Emitter_Destructor(__int64 a1);
-__int64 GameHr_bd7520(__int64 result);
 
 void __attribute__((noreturn)) Emitter_DeletingDestructor() { __udf(0x8002u); }
-
-void __attribute__((noreturn)) EffectEmitter_DeletingDestructor()
-{
-  __udf(0x8002u);
-}
 
 __int64 Emitter_Destructor(__int64 a1)
 {
@@ -325,13 +319,6 @@ LABEL_53:
   if (result != 0) {
     return std___1___shared_weak_count___release_weak(result);
   }
-  return result;
-}
-
-__int64 GameHr_bd7520(__int64 result)
-{
-  *(_DWORD*)(result + 176) = 0;
-  *(_BYTE*)(result + 136) = 0;
   return result;
 }
 

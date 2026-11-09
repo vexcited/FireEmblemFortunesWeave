@@ -24,6 +24,9 @@ __int64 Material_add560(__int64 result);
 __int64 Material_add7a0(__int64 result, _QWORD* a2, unsigned __int8 a3);
 __int64 Material_addcc0(__int64 result, __int64 a2, __int64* a3);
 __int64 Material_ade2c0(__int64 result);
+_QWORD* Material_addb00(_QWORD* result, __int64 a2, __int64 a3,
+                        unsigned int a4);
+_QWORD* Material_addbe0(_QWORD* result, __int64 a2, __int64 a3, char a4);
 
 __int64 Material_add560(__int64 result)
 {
@@ -299,6 +302,68 @@ __int64 Material_add7a0(__int64 result, _QWORD* a2, unsigned __int8 a3)
     LABEL_7:
       ++v3;
     } while (v3 != v4);
+  }
+  return result;
+}
+
+_QWORD* Material_addb00(_QWORD* result, __int64 a2, __int64 a3, unsigned int a4)
+{
+  __int64 v4;
+  __int64 i;
+  _QWORD* v9;
+  unsigned int v10;
+  __int64 v11;
+
+  if (result[40] != 0) {
+    v4 = result[33];
+    for (i = result[34]; v4 != i; v4 += 24) {
+      result = *(_QWORD**)v4;
+      if (*(_QWORD*)v4 != 0) {
+        GameRoutine_ad5500(result, a2, a3, a4);
+        v9 = *(_QWORD**)v4;
+        v10 = GameRoutine_5fba80(*(_QWORD*)(*(_QWORD*)v4 + 120LL),
+                                 *(_QWORD*)(*(_QWORD*)v4 + 200LL));
+        v11 = v9[15];
+        if ((v10 & 0x80000000) != 0) {
+          v10 = *(_DWORD*)(v11 + 224) & ~(*(int*)(v11 + 224) >> 31);
+        }
+        v9[17] = *(_QWORD*)(v11 + 136) + ((unsigned __int64)v10 << 6);
+        GameRoutine_5fb840();
+        result = (_QWORD*)GameRoutine_5fb900(v9[17]);
+        v9[18] = result[1];
+      }
+    }
+  }
+  return result;
+}
+
+_QWORD* Material_addbe0(_QWORD* result, __int64 a2, __int64 a3, char a4)
+{
+  __int64 v4;
+  __int64 i;
+  _QWORD* v9;
+  unsigned int v10;
+  __int64 v11;
+
+  if (result[40] != 0) {
+    v4 = result[33];
+    for (i = result[34]; v4 != i; v4 += 24) {
+      result = *(_QWORD**)v4;
+      if (*(_QWORD*)v4 != 0) {
+        GameRoutine_ad5500(result, a2, a3, a4 & 1);
+        v9 = *(_QWORD**)v4;
+        v10 = GameRoutine_5fba80(*(_QWORD*)(*(_QWORD*)v4 + 120LL),
+                                 *(_QWORD*)(*(_QWORD*)v4 + 200LL));
+        v11 = v9[15];
+        if ((v10 & 0x80000000) != 0) {
+          v10 = *(_DWORD*)(v11 + 224) & ~(*(int*)(v11 + 224) >> 31);
+        }
+        v9[17] = *(_QWORD*)(v11 + 136) + ((unsigned __int64)v10 << 6);
+        GameRoutine_5fb840();
+        result = (_QWORD*)GameRoutine_5fb900(v9[17]);
+        v9[18] = result[1];
+      }
+    }
   }
   return result;
 }

@@ -9,6 +9,16 @@ __int64 GameRoutine_288260(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_2a5660(__int64, unsigned int, __int64, __int64);
 __int64 PlayerHeapDataManager_2915a0(_QWORD, _QWORD);
 __int64 DataLoadTask_Unknown2_2ae190(__int64 a1);
+extern __int64 (*GameData_219d0a0)(_QWORD);
+__int64 DataLoadTask_27dfe0(__int64 result);
+
+__int64 DataLoadTask_27dfe0(__int64 result)
+{
+  if (GameData_219d0a0 != nullptr) {
+    return GameData_219d0a0((unsigned int)result);
+  }
+  return result;
+}
 
 __int64 DataLoadTask_Unknown2_2ae190(__int64 a1)
 {

@@ -12,6 +12,7 @@ extern __int64 (*gfxa_Probe2UpdateTask_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64* game_g_frame_clock_ptr[3];
 __int64 Probe2UpdateTask_Destructor(_QWORD* a1);
+_QWORD* Probe2UpdateTask_b47f40(_QWORD* result);
 
 __int64 Probe2UpdateTask_Destructor(_QWORD* a1)
 {
@@ -206,6 +207,25 @@ __int64 Probe2UpdateTask_Destructor(_QWORD* a1)
                        0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v33 + 16LL))(v33);
     return std___1___shared_weak_count___release_weak(v33);
+  }
+  return result;
+}
+
+_QWORD* Probe2UpdateTask_b47f40(_QWORD* result)
+{
+  _QWORD* v1;
+  __int64 v2;
+
+  if (result != nullptr) {
+    v1 = result;
+    Probe2UpdateTask_b47f40(*result);
+    Probe2UpdateTask_b47f40(v1[1]);
+    v2 = 128;
+    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+      v2 = 56;
+    }
+    return (_QWORD*)nn_mem_StandardAllocator_Free(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v2, v1);
   }
   return result;
 }

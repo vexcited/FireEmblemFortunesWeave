@@ -10,6 +10,79 @@ extern __int64 GameData_21c99b0;
 extern __int64 GameData_21c99b8;
 __int64 MapCombatPrediction_Unknown4(__int64 result);
 __int64 MapCombatPrediction_Unknown5(__int64 a1);
+__int64 MapCombatPrediction_a157e0(_QWORD* a1, int a2, int a3, int a4,
+                                   __int64 a5);
+__int64 MapCombatPrediction_a157e0(_QWORD* a1, int a2, int a3, int a4,
+                                   __int64 a5)
+{
+  unsigned int v5;
+  unsigned __int64 v6;
+  unsigned __int64 v8;
+  __int64 v9;
+  __int64** v10;
+  __int64* v11;
+  unsigned __int64 v12;
+  __int64 v13;
+
+  v5 = a2 | (32 * a3) | ((a4 << 10) + 1024);
+  if (a5 != 0) {
+    v5 |= *(unsigned __int16*)(a5 + 16) << 16;
+  }
+  v6 = a1[13];
+  if (v6 != 0 && a1[15] != 0) {
+    v8 = v6 - 1;
+    if ((v6 & (v6 - 1)) != 0) {
+      v9 = v5;
+      if (v6 <= v5) {
+        v9 = v5 % (unsigned int)v6;
+      }
+    }
+    else {
+      v9 = ((_DWORD)v6 - 1) & v5;
+    }
+    v10 = *(__int64***)(a1[12] + 8 * v9);
+    if (v10 != nullptr) {
+      v11 = *v10;
+      if (v11 != nullptr) {
+        if ((v6 & v8) == 0) {
+          while (1) {
+            v13 = v11[1];
+            if (v13 == v5) {
+              if (*((_DWORD*)v11 + 4) == v5) {
+                return 1;
+              }
+            }
+            else if ((v13 & v8) != v9) {
+              return 0;
+            }
+            v11 = (__int64*)*v11;
+            if (v11 == nullptr) {
+              return 0;
+            }
+          }
+        }
+        do {
+          v12 = v11[1];
+          if (v12 == v5) {
+            if (*((_DWORD*)v11 + 4) == v5) {
+              return 1;
+            }
+          }
+          else {
+            if (v12 >= v6) {
+              v12 %= v6;
+            }
+            if (v12 != v9) {
+              return 0;
+            }
+          }
+          v11 = (__int64*)*v11;
+        } while (v11 != nullptr);
+      }
+    }
+  }
+  return 0;
+}
 
 __int64 MapCombatPrediction_Unknown4(__int64 result)
 {

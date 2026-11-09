@@ -6,6 +6,10 @@ __int64 std___1___shared_weak_count___release_weak(_QWORD);
 extern __int64* GameData_212ee20[6];
 _QWORD* HitboxModule_Unknown5(_QWORD* result);
 __int64 HitboxModule_d4e080(__int64 result, _QWORD* a2);
+__int64 GameRoutine_d4e4e0(_QWORD, _QWORD);
+__int64 nn_os_UnlockMutex(_QWORD);
+__n128 nn_os_LockMutex(_QWORD);
+__int64 HitboxModule_d4dfe0(__int64 a1, __int64 a2);
 
 _QWORD* HitboxModule_Unknown5(_QWORD* result)
 {
@@ -296,6 +300,29 @@ _QWORD* HitboxModule_Unknown5(_QWORD* result)
 LABEL_93:
   v1[4] = v2;
   return result;
+}
+
+__int64 HitboxModule_d4dfe0(__int64 a1, __int64 a2)
+{
+  __int64* v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+
+  v4 = GameData_212ee20[0];
+  v5 = *GameData_212ee20[0];
+  nn_os_LockMutex(*GameData_212ee20[0] + 48);
+  *(_QWORD*)(*(_QWORD*)a2 + 168LL) = a1;
+  *(_BYTE*)(*(_QWORD*)a2 + 176LL) = 1;
+  v6 = *v4;
+  v7 = *(_QWORD*)(*v4 + 8);
+  *(_QWORD*)(*(_QWORD*)a2 + 160LL) = v7;
+  *(_QWORD*)(v6 + 8) = v7 + 1;
+  GameRoutine_d4e4e0(a1 + 24, a2);
+  v8 = *(_QWORD*)(*(_QWORD*)a2 + 160LL);
+  nn_os_UnlockMutex(v5 + 48);
+  return v8;
 }
 
 __int64 HitboxModule_d4e080(__int64 result, _QWORD* a2)

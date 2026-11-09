@@ -24,6 +24,24 @@ __int64 SoundThread_2a1f40(__int64 a1, __int64 a2);
 __int64 SoundThread_2a1fa0(__int64 result, __int64 a2);
 __int64 SoundThread_2a1fd0(__int64 result, __int64 a2);
 void SoundThread_DeletingDestructor(_QWORD* a1);
+__int64 nn_audio_ExecuteAudioRendererRendering(_QWORD, _QWORD);
+__int64 nn_diag_detail_AbortImpl_1a0a080(_QWORD);
+__int64 SoundThread_289fa0(__int64 a1);
+
+__int64 SoundThread_289fa0(__int64 a1)
+{
+  __int64 result;
+  int v2;
+
+  result = nn_audio_ExecuteAudioRendererRendering(*(_QWORD*)(a1 + 8),
+                                                  *(_QWORD*)(a1 + 16));
+  v2 = result;
+  if ((_DWORD)result != 0) {
+    nn_diag_detail_AbortImpl_1a0a080(&v2);
+    __udf(0);
+  }
+  return result;
+}
 
 __int64 SoundThread_Destructor(_QWORD* a1)
 {

@@ -8,7 +8,6 @@ extern __int64 (*game_menu_BasicMenuItem_vtable[])();
 extern __int64 (*game_menu_anonymous_BaseQuestMenuItem_vtable)();
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 MainquestMenuItem_DeletingDestructor(__int64 a1);
-__int64 MainquestMenuItem_Unknown74(__int64 a1);
 __int64 MainquestMenuItem_Unknown75(__int64 a1);
 
 bool MainquestMenuItem_Unknown73(__int64 a1)
@@ -52,11 +51,6 @@ __int64 MainquestMenuItem_DeletingDestructor(__int64 a1)
     v7 = 56;
   }
   return nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v7, a1);
-}
-
-__int64 MainquestMenuItem_Unknown74(__int64 a1)
-{
-  return *(_QWORD*)(*(_QWORD*)(a1 + 152) + 24LL) + 96LL;
 }
 
 __int64 MainquestMenuItem_Unknown75(__int64 a1)

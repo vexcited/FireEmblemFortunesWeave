@@ -13,6 +13,8 @@ void GameRoutine_651250(void*, unsigned __int64);
 __int64 RenderTargetTextureInfo_Unknown3(__int64 a1, __int64 a2);
 __int64 RenderTargetTextureInfo_DeletingDestructor(_QWORD* a1);
 void RenderTargetTextureInfo_Unknown2(_QWORD* a1);
+__int64 RenderTargetTextureInfo_606190(__int64 result);
+__int64 RenderTargetTextureInfo_606770(__int64 result);
 
 __int64 RenderTargetTextureInfo_Unknown3(__int64 a1, __int64 a2)
 {
@@ -47,6 +49,20 @@ void RenderTargetTextureInfo_Unknown2(_QWORD* a1)
   GameRoutine_606010(a1 + 17);
   GameRoutine_606680(a1 + 8);
   GameRoutine_651250(a1, 0xD8u);
+}
+
+__int64 RenderTargetTextureInfo_606190(__int64 result)
+{
+  *(_BYTE*)(result + 64) = 0;
+  return result;
+}
+
+__int64 RenderTargetTextureInfo_606770(__int64 result)
+{
+  *(_BYTE*)result = 0;
+  *(_QWORD*)(result + 8) = 0;
+  *(_QWORD*)(result + 16) = 0;
+  return result;
 }
 
 #pragma GCC visibility pop

@@ -15,6 +15,75 @@ extern __int64* GameData_212d670[3];
 extern __int64* GameData_212fc70[2];
 __int64 GmapSpotInfoSetterForGmap_Unknown6(__int64 a1);
 __int64 GmapSpotInfoSetterForGmap_DeletingDestructor(_QWORD* a1);
+_QWORD* GmapSpotInfoSetterForGmap_1657240(_QWORD* result);
+
+_QWORD* GmapSpotInfoSetterForGmap_1657240(_QWORD* result)
+{
+  __int64 v1;
+  __int64 v2;
+  _QWORD* v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+
+  v1 = *result;
+  v2 = result[1];
+  v3 = result;
+  if (*result != v2) {
+    v4 = fw_memory_g_heap_manager_ptr;
+    do {
+      v8 = *(_QWORD*)(v2 - 32);
+      if (v8 != 0) {
+        *(_QWORD*)(v2 - 24) = v8;
+        if (*(_QWORD*)(*(_QWORD*)v4 + 200LL) != 0) {
+          v9 = 128;
+        }
+        else {
+          v9 = 56;
+        }
+        result = (_QWORD*)nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v9, v8);
+      }
+      v6 = *(_QWORD*)(v2 - 56);
+      if (v6 != 0) {
+        v10 = *(_QWORD*)(v2 - 48);
+        if (v6 == v10) {
+          goto LABEL_4;
+        }
+        do {
+          v11 = *(_QWORD*)(v10 - 8);
+          if (v11 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v11 + 8),
+                                           0xFFFFFFFFFFFFFFFFLL) == 0) {
+            (*(void (**)(__int64))(*(_QWORD*)v11 + 16LL))(v11);
+            result = (_QWORD*)std___1___shared_weak_count___release_weak(v11);
+          }
+          v10 -= 16;
+        } while (v10 != v6);
+        v5 = *(_QWORD*)(v2 - 56);
+        *(_QWORD*)(v2 - 48) = v6;
+        v6 = v5;
+        if (v5 != 0) {
+        LABEL_4:
+          if (*(_QWORD*)(*(_QWORD*)v4 + 200LL) != 0) {
+            v7 = 128;
+          }
+          else {
+            v7 = 56;
+          }
+          result =
+              (_QWORD*)nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v7, v6);
+        }
+      }
+      v2 -= 72;
+    } while (v1 != v2);
+  }
+  v3[1] = v1;
+  return result;
+}
 
 __int64 GmapSpotInfoSetterForGmap_Unknown6(__int64 a1)
 {

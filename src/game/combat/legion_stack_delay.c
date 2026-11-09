@@ -3,14 +3,8 @@
 #pragma GCC visibility push(hidden)
 
 float LegionStackDelay_Unknown3(__int64 a1);
-__int64 GameHr_e4e690(__int64 result);
 
 bool LegionStackDelay_Unknown5(__int64 a1) { return *(float*)(a1 + 52) <= 0.0; }
-
-bool LegionStackWalkAndSee_Unknown5(__int64 a1)
-{
-  return *(float*)(a1 + 52) <= 0.0;
-}
 
 float LegionStackDelay_Unknown3(__int64 a1)
 {
@@ -31,12 +25,6 @@ float LegionStackDelay_Unknown3(__int64 a1)
   }
   result = *(float*)(a1 + 52) - v2;
   *(float*)(a1 + 52) = result;
-  return result;
-}
-
-__int64 GameHr_e4e690(__int64 result)
-{
-  *(_BYTE*)(*(_QWORD*)(result + 8) + 145LL) = 1;
   return result;
 }
 

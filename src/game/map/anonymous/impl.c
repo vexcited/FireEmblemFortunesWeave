@@ -8,6 +8,8 @@ __int64 std___1___shared_weak_count___release_weak(_QWORD);
 extern __int64 (*game_map_anonymous_Impl_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 Impl_Destructor_9ba4a0(_QWORD* a1);
+__int64 Shape_f64760(_QWORD);
+__int64 Impl_9baec0(__int64 result, unsigned __int8 a2);
 
 __int64 Impl_Destructor_9ba4a0(_QWORD* a1)
 {
@@ -184,6 +186,77 @@ LABEL_44:
     return nn_mem_StandardAllocator_Free(
         *(_QWORD*)fw_memory_g_heap_manager_ptr + v31);
   }
+  return result;
+}
+
+__int64 Impl_9baec0(__int64 result, unsigned __int8 a2)
+{
+  __int64 v2;
+  __int64 v3;
+  __int64* v4;
+  __int64* v5;
+  __int64 v6;
+  __int64 v7;
+  atomic_ullong* v8;
+  __int64 v9;
+  _QWORD v10[2];
+
+  v2 = result + 24LL * a2;
+  v4 = *(__int64**)(v2 + 56);
+  v5 = *(__int64**)(v2 + 64);
+  v3 = v2 + 56;
+  if (v4 != v5) {
+    while (1) {
+      v6 = *v4;
+      v7 = v4[1];
+      if (v7 != 0) {
+        v8 = (atomic_ullong*)(v7 + 8);
+        atomic_fetch_add_explicit((atomic_ullong* volatile)(v7 + 8), 1u,
+                                  memory_order_relaxed);
+        v10[0] = v6;
+        v10[1] = v7;
+        atomic_fetch_add_explicit((atomic_ullong* volatile)(v7 + 8), 1u,
+                                  memory_order_relaxed);
+        result = Shape_f64760(v10);
+        if (atomic_fetch_add((atomic_ullong* volatile)(v7 + 8),
+                             0xFFFFFFFFFFFFFFFFLL) != 0) {
+          if (atomic_fetch_add(v8, 0xFFFFFFFFFFFFFFFFLL) == 0) {
+            goto LABEL_10;
+          }
+        }
+        else {
+          (*(void (**)(__int64))(*(_QWORD*)v7 + 16LL))(v7);
+          result = std___1___shared_weak_count___release_weak(v7);
+          if (atomic_fetch_add(v8, 0xFFFFFFFFFFFFFFFFLL) == 0) {
+          LABEL_10:
+            (*(void (**)(__int64))(*(_QWORD*)v7 + 16LL))(v7);
+            result = std___1___shared_weak_count___release_weak(v7);
+          }
+        }
+      }
+      else {
+        v10[0] = *v4;
+        v10[1] = 0;
+        result = Shape_f64760(v10);
+      }
+      v4 += 2;
+      if (v4 == v5) {
+        v4 = *(__int64**)v3;
+        v5 = *(__int64**)(v3 + 8);
+        break;
+      }
+    }
+  }
+  while (v5 != v4) {
+    v9 = *(v5 - 1);
+    if (v9 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v9 + 8),
+                                    0xFFFFFFFFFFFFFFFFLL) == 0) {
+      (*(void (**)(__int64))(*(_QWORD*)v9 + 16LL))(v9);
+      result = std___1___shared_weak_count___release_weak(v9);
+    }
+    v5 -= 2;
+  }
+  *(_QWORD*)(v3 + 8) = v4;
   return result;
 }
 

@@ -1,65 +1,123 @@
 #include "decomp/pseudo_helpers.h"
+
 #pragma GCC visibility push(hidden)
 
 extern _UNKNOWN GameData_1a919f8;
+
 extern _UNKNOWN GameData_1a99732;
+
 extern __int64 (*GameData_1fdc888[])();
+
 extern __int64 GameData_212bf68;
+
 extern __int64* GameData_212c330[2];
+
 extern __int64* GameData_212c370;
+
 extern __int64 GameData_212dbc0[8];
+
 extern __int64 GameData_21a6070;
+
 extern __int64 GameData_21c6978;
+
 extern __int64 GameData_21c9608;
+
 extern __int64 GameData_21caab0;
+
 extern __int64 GameData_21ec7c0;
+
 extern __int64 GameData_21f3cb8;
+
 extern __int64 GameData_21f3ce8;
+
 extern __int64 GameData_21f3d10;
+
 extern __int64 GameData_220b6e0;
+
 extern __int64 GameData_220d618;
+
 extern __int64 GameData_2212270;
+
 extern _UNKNOWN GameData_2216780;
+
 extern __int64 GameData_2216828;
+
 extern __int64 GameData_2216830;
+
 extern char GameData_2216850;
+
 extern char GameData_2216858;
+
 extern __int64 GameData_2263c30;
+
 extern __int64 GameData_2264c50;
+
 extern __int64 GameData_2265ee0;
+
 extern __int64 GameData_2265ef8;
+
 __int64 GameRoutine_120ef00(_QWORD);
+
 __int64 GameRoutine_1562680(_QWORD, _QWORD, float);
+
 __int64 GameRoutine_1563030(_QWORD, _QWORD, _QWORD);
+
 __int64 GameRoutine_17b8bd0(void);
+
 __int64 GameRoutine_1a09c50(_QWORD);
+
 __int64 GameRoutine_1a09c70(_QWORD);
+
 __int64 GameRoutine_1a0a4e0(_QWORD, _QWORD);
+
 __int64 GameRoutine_1a0b940(_QWORD, _QWORD, _QWORD);
+
 void __attribute__((noreturn)) GameRoutine_60a1d0(void);
+
 __int64 GameRoutine_651b90(_QWORD, _QWORD, _QWORD, _QWORD);
+
 __int64 GameRoutine_654050(_QWORD, _QWORD);
+
 __int64 GameRoutine_667c80(_QWORD);
+
 __int64 GameRoutine_716d80(_QWORD, _QWORD);
+
 __int64 GameRoutine_7a86e0(_QWORD);
+
 __int64 GameRoutine_828dc0(_QWORD, _QWORD, _QWORD);
+
 __int64 GameRoutine_a32880(_QWORD);
+
 _BYTE* GameRoutine_d52950(_BYTE* result, char);
+
 __int64 GameRoutine_d58590(_QWORD, _QWORD);
+
 __int64 GameRoutine_d58e20(__int64 result, int, __int64*, int);
+
 __int64 GameRoutine_d6e4d0(_QWORD, _QWORD, _QWORD);
+
 __int64 GameRoutine_d799f0(__int64);
+
 __int64 GameRoutine_d8ce40(_QWORD);
+
 __int64 GameRoutine_d8cf60(__int64 result);
+
 __int64 GameRoutine_d9edf0(void);
+
 __int64 GameRoutine_d9f4e0(_QWORD);
+
 __int64 GameRoutine_da4bc0(__int64 result, long double);
+
 __int64 GameRoutine_da51e0(__int64, long double);
-__int64 GameRoutine_e7cd60(_QWORD);
+
 __int64 GameRoutine_e803d0(__int64, __int64);
+
 __int64 GameRoutine_e80e80(_QWORD, _QWORD);
+
 __int64 GameRoutine_ee0900(_QWORD);
+
 __int64 GameRoutine_f60b80(_QWORD);
+
 __int64 GameRoutine_fa05c0(_QWORD);
 
 _BYTE* GameHr_d54a60(__int64 a1)
@@ -506,46 +564,6 @@ __int64 GameHr_e81140(__int64 a1, __int64 a2, __int64 a3, __int64 a4)
     v11 = 40;
   }
   return (*(__int64 (**)(_BYTE*))(*(_QWORD*)v14 + v11))(v14);
-}
-
-__int64 GameHr_e9cce0(__int64 result)
-{
-  __int64* v1;
-  __int64* v2;
-  _QWORD* i;
-  __int64 v4;
-  __int64* v5;
-  __int64* j;
-  __int64 v7;
-  __int64* v8;
-  __int64* k;
-  __int64 v10;
-  __int64* v11;
-  __int64* m;
-  __int64 v13;
-
-  v1 = *(__int64**)(result + 712);
-  v2 = *(__int64**)(result + 720);
-  for (i = (_QWORD*)result; v1 != v2; result = GameRoutine_e7cd60(v4)) {
-    v4 = *v1;
-    v1 += 2;
-  }
-  v5 = (__int64*)i[105];
-  for (j = (__int64*)i[106]; v5 != j; result = GameRoutine_e7cd60(v7)) {
-    v7 = *v5;
-    v5 += 2;
-  }
-  v8 = (__int64*)i[121];
-  for (k = (__int64*)i[122]; v8 != k; result = GameRoutine_e7cd60(v10)) {
-    v10 = *v8;
-    v8 += 2;
-  }
-  v11 = (__int64*)i[137];
-  for (m = (__int64*)i[138]; v11 != m; result = GameRoutine_e7cd60(v13)) {
-    v13 = *v11;
-    v11 += 2;
-  }
-  return result;
 }
 
 #pragma GCC visibility pop
