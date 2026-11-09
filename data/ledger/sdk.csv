@@ -774,6 +774,9 @@ ffe0,36,verified,src/nn/crypto/detail/sha3_impl.cpp,_ZNK2nn6crypto6detail8Sha3Im
 5e688,708,verified,src/image/jpeg_simd_color.cpp,jpeg_simd_color::jsimd_extxrgb_ycc_convert_neon
 5e94c,892,verified,src/image/jpeg_simd_color.cpp,jpeg_simd_color::jsimd_extrgb_ycc_convert_neon_slowld3
 5ecc8,892,verified,src/image/jpeg_simd_color.cpp,jpeg_simd_color::jsimd_extbgr_ycc_convert_neon_slowld3
+5f0cc,900,verified,src/nn/unnamed/a000_0.c,SdkHr_5f0cc
+5f450,284,verified,src/nn/unnamed/a000_0.c,SdkHr_5f450
+5f56c,220,verified,src/nn/unnamed/a000_0.c,SdkHr_5f56c
 5f648,112,verified,src/image/jpeg_simd_sampling.cpp,jpeg_sampling::h2v1_downsample_neon
 5f6c0,144,verified,src/image/jpeg_simd_sampling.cpp,jpeg_sampling::h2v2_downsample_neon
 608c0,8,verified,src/nn/image/image_jpeg_glue.cpp,_Z30nnImageDetailJpeg_FormatStringPcmPKcz
@@ -4029,6 +4032,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 128b30,136,verified,src/nn/unnamed/s000_1.c,SdkHr_128b30
 128bc0,40,verified,src/nn/unnamed/s000_1.c,SdkHr_128bc0
 128bf0,84,verified,src/nn/unnamed/s000_1.c,SdkHr_128bf0
+128c50,144,verified,src/nn/unnamed/a000_0.c,SdkHr_128c50
 128ce0,156,verified,src/nn/fs/fs_save_data_transfer.cpp,_ZN2nn2fs40SaveDataTransferManagerForSaveDataRepairC2Ei
 128d80,148,verified,src/nn/fs/fs_save_data_transfer.cpp,_ZN2nn2fs40SaveDataTransferManagerForSaveDataRepair12GetChallengeEPNS0_31SaveDataTransferManagerVersion29ChallengeE
 128e20,148,verified,src/nn/fs/fs_save_data_transfer.cpp,_ZN2nn2fs40SaveDataTransferManagerForSaveDataRepair13SetKeyPackageERKNS1_12KeyPackageV1E
@@ -6538,6 +6542,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 1a4fc0,44,verified,src/nn/socket/resolver/client/resolver_strings.cpp,_ZN2nn6socket8resolver23GetOperationStateStringERKNS1_14OperationStateE
 1a4ff0,376,verified,src/nn/socket/resolver/client/resolver_strings.cpp,_ZN2nn6socket8resolver26GetResolverOptionKeyStringERKNS0_17ResolverOptionKeyE
 1a5170,48,verified,src/nn/socket/resolver/client/resolver_strings.cpp,_ZN2nn6socket8resolver27GetResolverOptionTypeStringERKNS0_18ResolverOptionTypeE
+1a51a0,416,verified,src/nn/unnamed/a000_0.c,SdkHr_1a51a0
 1a5670,120,verified,src/nn/sm/services.cpp,_ZN2nn2sm6detail18OpenServiceSessionEPjPKc
 1a56f0,8,verified,src/nn/sm/initialization.cpp,_ZN2nn2sm6detail18SendSessionRequestEPNS1_7SessionE
 1a5700,104,verified,src/nn/sm/initialization.cpp,_ZN2nn2sm6detail12CloseSessionEPNS1_7SessionE
@@ -8892,16 +8897,27 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 212060,456,verified,src/ne10/modules/dsp/NE10_fft_generic_int32.neonintrinsic.cpp,_ZL50ne10_mixed_radix_generic_butterfly_int32_neon_implILb0ELb1EEvP11int32x4x2_tPKS0_PKiPK20ne10_fft_cpx_int32_tS1_
 212260,480,verified,src/ne10/modules/dsp/NE10_fft_generic_int32.neonintrinsic.cpp,_ZL50ne10_mixed_radix_generic_butterfly_int32_neon_implILb0ELb0EEvP11int32x4x2_tPKS0_PKiPK20ne10_fft_cpx_int32_tS1_
 212460,804,verified,src/ne10/modules/dsp/NE10_fft_generic_int32.neonintrinsic.cpp,_ZL27ne10_c2c_1d_last_stage_neonILb0ELb1EEvP11int32x4x2_tPKS0_PK20ne10_fft_cpx_int32_tiii
+212d40,416,verified,src/nn/unnamed/a000_0.c,SdkHr_212d40
 212f00,232,verified,src/ne10/modules/dsp/NE10_fft_generic_int32.neonintrinsic.cpp,_ZL31ne10_radix_butterfly_int32_neonILi4ELb1ELb0ELb1EEvP11int32x4x2_tPKS0_PK20ne10_fft_cpx_int32_tiii
+213000,532,verified,src/nn/unnamed/a000_0.c,SdkHr_213000
+213220,404,verified,src/nn/unnamed/a000_0.c,SdkHr_213220
 213de0,580,verified,src/ne10/modules/dsp/NE10_fft_generic_int32.neonintrinsic.cpp,_ZL31ne10_radix_butterfly_int32_neonILi5ELb0ELb0ELb1EEvP11int32x4x2_tPKS0_PK20ne10_fft_cpx_int32_tiii
+214040,328,verified,src/nn/unnamed/a000_0.c,SdkHr_214040
+2141a0,460,verified,src/nn/unnamed/a000_0.c,SdkHr_2141a0
+214380,444,verified,src/nn/unnamed/a000_0.c,SdkHr_214380
+214560,356,verified,src/nn/unnamed/a000_0.c,SdkHr_214560
 214fc0,532,verified,src/ne10/modules/dsp/NE10_fft_generic_int32.neonintrinsic.cpp,_ZL31ne10_radix_butterfly_int32_neonILi5ELb0ELb0ELb0EEvP11int32x4x2_tPKS0_PK20ne10_fft_cpx_int32_tiii
 2151e0,484,verified,src/ne10/modules/dsp/NE10_fft_generic_int32.neonintrinsic.cpp,_ZL50ne10_mixed_radix_generic_butterfly_int32_neon_implILb1ELb1EEvP11int32x4x2_tPKS0_PKiPK20ne10_fft_cpx_int32_tS1_
 2153e0,456,verified,src/ne10/modules/dsp/NE10_fft_generic_int32.neonintrinsic.cpp,_ZL50ne10_mixed_radix_generic_butterfly_int32_neon_implILb1ELb0EEvP11int32x4x2_tPKS0_PKiPK20ne10_fft_cpx_int32_tS1_
 2155e0,824,verified,src/ne10/modules/dsp/NE10_fft_generic_int32.neonintrinsic.cpp,_ZL27ne10_c2c_1d_last_stage_neonILb1ELb1EEvP11int32x4x2_tPKS0_PK20ne10_fft_cpx_int32_tiii
+215f20,296,verified,src/nn/unnamed/a000_0.c,SdkHr_215f20
 216060,256,verified,src/ne10/modules/dsp/NE10_fft_generic_int32.neonintrinsic.cpp,_ZL31ne10_radix_butterfly_int32_neonILi4ELb1ELb1ELb1EEvP11int32x4x2_tPKS0_PK20ne10_fft_cpx_int32_tiii
 216180,240,verified,src/ne10/modules/dsp/NE10_fft_generic_int32.neonintrinsic.cpp,_ZL31ne10_radix_butterfly_int32_neonILi3ELb1ELb1ELb1EEvP11int32x4x2_tPKS0_PK20ne10_fft_cpx_int32_tiii
 216280,444,verified,src/ne10/modules/dsp/NE10_fft_generic_int32.neonintrinsic.cpp,_ZL31ne10_radix_butterfly_int32_neonILi5ELb1ELb1ELb1EEvP11int32x4x2_tPKS0_PK20ne10_fft_cpx_int32_tiii
 216f20,620,verified,src/ne10/modules/dsp/NE10_fft_generic_int32.neonintrinsic.cpp,_ZL31ne10_radix_butterfly_int32_neonILi5ELb0ELb1ELb1EEvP11int32x4x2_tPKS0_PK20ne10_fft_cpx_int32_tiii
+2171a0,472,verified,src/nn/unnamed/a000_0.c,SdkHr_2171a0
+217380,444,verified,src/nn/unnamed/a000_0.c,SdkHr_217380
+217560,380,verified,src/nn/unnamed/a000_0.c,SdkHr_217560
 218060,556,verified,src/ne10/modules/dsp/NE10_fft_generic_int32.neonintrinsic.cpp,_ZL31ne10_radix_butterfly_int32_neonILi5ELb0ELb1ELb0EEvP11int32x4x2_tPKS0_PK20ne10_fft_cpx_int32_tiii
 2182a0,3128,verified,src/nn/audio/ne10/modules/dsp/NE10_fft_int16.neonintrinsic.c,nnaudiodetail_ne10_mixed_radix_fft_forward_int16_unscaled_neon
 218f80,2700,disputed,src/nn/audio/ne10/modules/dsp/NE10_fft_int16.neonintrinsic.c,nnaudiodetail_ne10_mixed_radix_fft_forward_int16_scaled_neon
@@ -9645,6 +9661,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 238ca0,376,verified,src/nn/unnamed/s001_0.c,SdkHr_238ca0
 239620,720,verified,src/nn/unnamed/s001_0.c,SdkHr_239620
 239900,524,verified,src/nn/unnamed/s001_0.c,SdkHr_239900
+239b20,816,verified,src/nn/unnamed/a000_0.c,SdkHr_239b20
 239e60,524,verified,src/nn/unnamed/s001_0.c,SdkHr_239e60
 23a080,8,verified,src/nn/sdk_trivial_forwarders.cpp,_Z14SdkStub_23a080m
 23a0a0,388,verified,src/nn/unnamed/s001_0.c,SdkHr_23a0a0
@@ -9766,7 +9783,11 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 2426d0,176,verified,src/nn/audio/server/command_generator.cpp,_ZN2nn5audio6server16CommandGenerator26CalculateCommandBufferSizeERKNS0_6detail30AudioRendererParameterInternalERKNS1_12BehaviorInfoE
 242780,252,verified,src/nn/audio/server/command_generator.cpp,_ZN2nn5audio6server12_GLOBAL__N_112DetailAspectD0Ev
 242880,252,verified,src/nn/audio/server/command_generator.cpp,_ZN2nn5audio6server12_GLOBAL__N_111EntryAspectD0Ev
+242980,224,verified,src/nn/unnamed/a000_0.c,SdkHr_242980
 242a60,176,verified,src/nn/unnamed/s001_0.c,SdkHr_242a60
+242b10,240,verified,src/nn/unnamed/a000_0.c,SdkHr_242b10
+242c00,608,verified,src/nn/unnamed/a000_0.c,SdkHr_242c00
+242e60,616,verified,src/nn/unnamed/a000_0.c,SdkHr_242e60
 2430d0,32,verified,src/nn/audio/server/command_generator.cpp,_GLOBAL__sub_I_command_generator.cpp
 243100,244,verified,src/nn/audio/server/info_updater.cpp,_ZN2nn5audio6server11InfoUpdater27UpdateVoiceChannelResourcesEv
 243200,116,verified,src/nn/audio/server/info_updater.cpp,_ZN2nn5audio6server11InfoUpdater13UpdateEffectsEb
@@ -11439,6 +11460,8 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 2e6380,536,verified,src/opus/celt/quant_bands.c,unquant_coarse_energy
 2e65c0,212,verified,src/opus/celt/quant_bands.c,unquant_fine_energy
 2e66c0,416,verified,src/opus/celt/quant_bands.c,unquant_energy_finalise
+2e6880,1216,verified,src/nn/unnamed/a000_0.c,SdkHr_2e6880
+2e6d80,960,verified,src/nn/unnamed/a000_0.c,SdkHr_2e6d80
 2e8b40,716,verified,src/opus/celt/vq.c,alg_quant
 2e8e80,640,verified,src/opus/celt/vq.c,alg_unquant
 2e9180,348,verified,src/opus/celt/vq.c,renormalise_vector
@@ -11577,6 +11600,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 314760,796,verified,src/opus/src/opus_encoder.c,encode_multiframe_packet
 314aa0,136,verified,src/opus/src/opus_encoder.c,compute_redundancy_bytes
 314b30,192,verified,src/opus/src/opus_encoder.c,hp_cutoff
+314c00,576,verified,src/nn/unnamed/a000_0.c,SdkHr_314c00
 314e50,244,verified,src/opus/src/opus_encoder.c,compute_silk_rate_for_hybrid
 314f80,732,verified,src/nn/unnamed/s001_0.c,SdkHr_314f80
 315380,1140,verified,src/nn/unnamed/s001_0.c,SdkHr_315380
@@ -11599,6 +11623,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 317ae0,256,verified,src/opus/src/repacketizer.c,opus_multistream_packet_pad
 317c00,256,verified,src/opus/src/repacketizer.c,opus_multistream_packet_unpad
 317e30,16,verified,src/nn/sdk_trivial_thunks.cpp,_Z14SdkStub_317e30m
+31bc20,1612,verified,src/nn/unnamed/a000_0.c,SdkHr_31bc20
 31d440,72,verified,src/opus/src/opus_multistream.c,validate_layout
 31d4a0,76,verified,src/opus/src/opus_multistream.c,get_left_channel
 31d500,80,verified,src/opus/src/opus_multistream.c,get_right_channel
@@ -12496,6 +12521,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 377450,100,verified,src/fdk-aac/libFDK/src/mdct.cpp,_ZN2nn5codec11imdct_drainEPNS0_6mdct_tEPii
 3774c0,272,verified,src/fdk-aac/libFDK/src/mdct.cpp,_ZN2nn5codec20imdct_copy_ov_and_nrEPNS0_6mdct_tEPii
 3775f0,136,verified,src/fdk-aac/libFDK/src/mdct.cpp,_ZN2nn5codec22imdct_adapt_parametersEPNS0_6mdct_tEPiS3_iPKNS0_8FIXP_DPKEi
+377680,2536,verified,src/nn/unnamed/a000_0.c,SdkHr_377680
 378380,96,verified,src/fdk-aac/libAACenc/src/metadata_compressor.cpp,_ZN2nn5codec22FDK_DRC_Generator_OpenEPPNS0_8DRC_COMPE
 3783e0,64,verified,src/fdk-aac/libAACenc/src/metadata_compressor.cpp,_ZN2nn5codec23FDK_DRC_Generator_CloseEPPNS0_8DRC_COMPE
 378420,704,verified,src/fdk-aac/libAACenc/src/metadata_compressor.cpp,_ZN2nn5codec28FDK_DRC_Generator_InitializeEPNS0_8DRC_COMPENS0_11DRC_PROFILEES3_ij12CHANNEL_MODENS0_13CHANNEL_ORDEREh
@@ -13777,6 +13803,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 430c10,44,verified,src/nn/unnamed/s001_1.c,SdkHr_430c10
 430c40,48,verified,src/nn/unnamed/s001_1.c,SdkHr_430c40
 430c70,28,verified,src/nn/unnamed/s001_1.c,SdkHr_430c70
+430ca0,2636,disputed,src/nn/unnamed/a000_0.c,SdkHr_430ca0
 4318c0,236,verified,src/nn/unnamed/s001_1.c,SdkHr_4318c0
 4319c0,220,verified,src/nn/unnamed/s001_1.c,SdkHr_4319c0
 431ac0,232,verified,src/nn/unnamed/s001_1.c,SdkHr_431ac0
@@ -13817,6 +13844,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 433570,36,verified,src/nn/unnamed/s001_1.c,SdkHr_433570
 4335a0,8,verified,src/nn/unnamed/u000_0.c,SdkHr_4335a0
 4335b0,248,verified,src/nn/unnamed/s001_1.c,SdkHr_4335b0
+4336b0,228,verified,src/nn/unnamed/a000_0.c,SdkHr_4336b0
 4337a0,88,verified,src/nn/unnamed/s001_1.c,SdkHr_4337a0
 433800,88,verified,src/nn/unnamed/s001_1.c,SdkHr_433800
 433860,256,verified,src/nn/unnamed/s001_1.c,SdkHr_433860
@@ -16523,6 +16551,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 4ec6b0,104,verified,src/nandroid/extractors/mp4/MPEG4Extractor.cpp,_ZN8nandroid2spINS_7ABufferEEaSEPS1_
 4ec720,544,verified,src/nandroid/extractors/mp4/MPEG4Extractor.cpp,_ZN8nandroid14MPEG4Extractor16parseTrackHeaderEll
 4eca40,168,verified,src/nandroid/extractors/mp4/MPEG4Extractor.cpp,_ZN8nandroid10heapbufferIhEENSt3__110unique_ptrIA_T_NS1_8functionIFvPS3_EEEEEm
+4ecaf0,120,verified,src/nn/unnamed/a001_0.c,SdkHr_4ecaf0
 4ecb70,220,verified,src/nandroid/extractors/mp4/MPEG4Extractor.cpp,_ZN8nandroid14MPEG4Extractor25adjustRawDefaultFrameSizeEv
 4ecc50,1112,verified,src/nandroid/extractors/mp4/MPEG4Extractor.cpp,_ZN8nandroid14MPEG4Extractor39updateAudioTrackInfoFromESDS_MPEG4AudioEPKvm
 4ed4e0,104,verified,src/nandroid/extractors/mp4/MPEG4Extractor.cpp,_ZN8nandroid2spINS_4heif9ItemTableEEaSEPS2_
@@ -17231,6 +17260,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 522400,760,verified,src/nandroid/libstagefright/httplive/LiveSession.cpp,_ZN8nandroid11LiveSession26tryToFinishBandwidthSwitchERKNS_7AStringE
 522710,56,verified,src/nandroid/libstagefright/httplive/LiveSession.cpp,_ZN8nandroid11LiveSession27setPreferredBandwidthSwitchEb
 522750,696,verified,src/nandroid/libstagefright/httplive/LiveSession.cpp,_ZN8nandroid11LiveSession13resumeFetcherERKNS_7AStringEjlb
+522a60,1092,verified,src/nn/unnamed/a001_0.c,SdkHr_522a60
 522f40,112,verified,src/nandroid/libstagefright/httplive/LiveSession.cpp,_ZN8nandroid11LiveSession21onChangeConfigurationERKNS_2spINS_8AMessageEEE
 522fc0,1608,verified,src/nandroid/libstagefright/httplive/LiveSession.cpp,_ZN8nandroid11LiveSession22onChangeConfiguration2ERKNS_2spINS_8AMessageEEE
 523620,516,verified,src/nn/unnamed/s002_0.c,SdkHr_523620
@@ -17333,6 +17363,8 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 529b50,104,verified,src/nandroid/libstagefright/httplive/M3UParser.cpp,_ZN8nandroid2spINS_8AMessageEEaSEPS1_
 529bc0,308,verified,src/nandroid/libstagefright/httplive/M3UParser.cpp,_ZN8nandroid9M3UParser6itemAtEmPNS_7AStringEPNS_2spINS_8AMessageEEE
 529d00,8,verified,src/nandroid/libstagefright/httplive/M3UParser.cpp,_ZN8nandroid9M3UParser9groupSizeEv
+529d20,260,verified,src/nn/unnamed/a001_0.c,SdkHr_529d20
+529ea0,376,verified,src/nn/unnamed/a001_0.c,SdkHr_529ea0
 52a040,388,verified,src/nandroid/libstagefright/httplive/M3UParser.cpp,_ZN8nandroid9M3UParser21getGroupNamesAndTypesEPNS_6VectorINS_7AStringEEEPNS1_INS_16media_track_typeEEE
 52a1e0,84,verified,src/nandroid/libstagefright/httplive/M3UParser.cpp,_ZN8nandroid9M3UParser20pickRandomMediaItemsEv
 52a240,260,verified,src/nandroid/libstagefright/httplive/M3UParser.cpp,_ZN8nandroid9M3UParser11selectTrackEmb
@@ -17399,7 +17431,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 52fd10,60,verified,src/nandroid/libstagefright/httplive/PlaylistFetcher.cpp,_ZNK8nandroid15PlaylistFetcher18containsSourceTypeENS_9ATSParser10SourceTypeE
 52fd50,12,verified,src/nandroid/libstagefright/httplive/PlaylistFetcher.cpp,_ZNK8nandroid15PlaylistFetcher23isPacketSourcesPreparedEv
 52fd60,36,verified,src/nandroid/libstagefright/httplive/PlaylistFetcher.cpp,_ZNK8nandroid15PlaylistFetcher12isLiveStreamEv
-52fd90,424,disputed,src/nandroid/libstagefright/httplive/PlaylistFetcher.cpp,_ZN8nandroid15PlaylistFetcher17onMessageReceivedERKNS_2spINS_8AMessageEEE
+52fd90,316,verified,src/nn/unnamed/a001_0.c,SdkHr_52fd90
 530680,152,verified,src/nn/unnamed/s002_0.c,SdkHr_530680
 5315d0,164,verified,src/nandroid/libstagefright/httplive/PlaylistFetcher.cpp,_ZN8nandroid15PlaylistFetcher13onResumeUntilERKNS_2spINS_8AMessageEEE
 531680,96,verified,src/nandroid/libstagefright/httplive/PlaylistFetcher.cpp,_ZN8nandroid2spINS_8AMessageEEaSEOS2_
@@ -19504,6 +19536,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 5a27b0,16,verified,src/nn/pl/pl_shared_font.cpp,_ZN2nn2pl30GetSharedFontInOrderOfPriorityEPiPNS0_14SharedFontTypeEPPKvPmiNS_8settings12LanguageCodeE
 5a27c0,16,verified,src/nn/pl/pl_shared_font.cpp,_ZN2nn2pl39GetSharedFontInOrderOfPriorityForSystemEPiPNS0_23SharedFontTypeForSystemEPPKvPmiNS_8settings12LanguageCodeE
 5a2b90,152,verified,src/nn/unnamed/s002_1.c,SdkHr_5a2b90
+5a2c40,176,verified,src/nn/unnamed/a001_0.c,SdkHr_5a2c40
 5a2ed0,28,verified,src/nn/sdk_trivial_wrappers.cpp,_Z14SdkStub_5a2ed0m
 5a2ef0,8,verified,src/nn/pl/pl_shared_font.cpp,_ZN2nn2pl6detail10AwgawpkwptEv
 5a2f00,8,verified,src/nn/pl/pl_shared_font.cpp,_ZN2nn2pl6detail10SzsyzauxwtEv
@@ -21456,6 +21489,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 5d7f20,8,verified,src/nn/time/detail/time_clock_snapshot_private.cpp,_ZN2nn4time6detail41IsClockSnapshotAutomaticCorrectionEnabledERKNS0_13ClockSnapshotE
 5d7f30,40,verified,src/nn/time/detail/time_periodic_benefit_claim.cpp,_ZN2nn4time6detail26HasLastBenefitReceivedInfoERKNS0_27PeriodicBenefitClaimContextE
 5d7f60,76,verified,src/nn/time/detail/time_periodic_benefit_claim.cpp,_ZN2nn4time6detail14HasPenaltyInfoERKNS0_27PeriodicBenefitClaimContextE
+5d84c0,312,verified,src/nn/unnamed/a001_0.c,SdkHr_5d84c0
 5d8620,52,verified,src/nn/time/detail/time_monotonic_system_clock.cpp,_ZNK2nn4time6detail20MonotonicSystemClock21GetSystemClockContextEv
 5d8660,88,verified,src/nn/time/detail/time_monotonic_system_clock.cpp,_ZN2nn4time6detail20MonotonicSystemClock21SetSystemClockContextERKNS0_18SystemClockContextE
 5d86c0,112,verified,src/nn/time/detail/time_monotonic_system_clock.cpp,_ZNK2nn4time6detail20MonotonicSystemClock14GetCurrentTimeEPNS0_9PosixTimeE
@@ -21932,6 +21966,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 5e74d0,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_5e74d0v
 5e74e0,200,verified,src/nn/unnamed/s002_1.c,SdkHr_5e74e0
 5e75b0,28,verified,src/nn/unnamed/s900_0.c,SdkHr_5e75b0
+5e75d0,264,verified,src/nn/unnamed/a001_0.c,SdkHr_5e75d0
 5e76e0,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_5e76e0m
 5e76f0,220,disputed,src/nn/unnamed/t001_0.c,SdkHr_5e76f0
 5e77d0,40,verified,src/nn/unnamed/s002_1.c,SdkHr_5e77d0
@@ -22773,6 +22808,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 61b880,100,verified,src/nn/unnamed/s003_0.c,SdkHr_61b880
 61b8f0,72,verified,src/nn/unnamed/s003_0.c,SdkHr_61b8f0
 61b940,52,verified,src/nn/unnamed/s003_0.c,SdkHr_61b940
+61b980,124,verified,src/nn/unnamed/a001_0.c,SdkHr_61b980
 61ba00,296,verified,src/nn/unnamed/s003_0.c,SdkHr_61ba00
 61d060,460,verified,src/nn/unnamed/s003_0.c,SdkHr_61d060
 61d240,344,verified,src/nn/unnamed/s003_0.c,SdkHr_61d240
@@ -23093,9 +23129,11 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 6335b0,188,verified,src/nn/unnamed/s003_1.c,SdkHr_6335b0
 633860,172,verified,src/nn/unnamed/s003_1.c,SdkHr_633860
 633af0,64,verified,src/nn/unnamed/s003_1.c,SdkHr_633af0
+633b30,760,verified,src/nn/unnamed/a001_0.c,SdkHr_633b30
 633e30,24,verified,src/nn/unnamed/s003_1.c,SdkHr_633e30
 633e50,360,verified,src/nn/unnamed/s003_1.c,SdkHr_633e50
 634110,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_634110m
+634da0,136,verified,src/nn/unnamed/a001_0.c,SdkHr_634da0
 634e30,104,verified,src/nn/unnamed/s003_1.c,SdkHr_634e30
 634ea0,244,verified,src/nn/unnamed/s003_1.c,SdkHr_634ea0
 634fa0,416,verified,src/nn/unnamed/s003_1.c,SdkHr_634fa0
@@ -23185,8 +23223,10 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 639830,292,verified,src/nn/unnamed/s003_1.c,SdkHr_639830
 639960,196,verified,src/nn/unnamed/s003_1.c,SdkHr_639960
 639a30,156,verified,src/nn/unnamed/s003_1.c,SdkHr_639a30
+639ad0,204,verified,src/nn/unnamed/a001_0.c,SdkHr_639ad0
 639d3c,4,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_639d3cv
 63a200,324,verified,src/nn/unnamed/s003_1.c,SdkHr_63a200
+63a960,292,verified,src/nn/unnamed/a001_0.c,SdkHr_63a960
 63ae30,244,verified,src/nn/unnamed/s003_1.c,SdkHr_63ae30
 63af30,36,verified,src/nn/unnamed/s003_1.c,SdkHr_63af30
 63b090,248,verified,src/nn/unnamed/s003_1.c,SdkHr_63b090
@@ -23570,6 +23610,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 64d7a0,404,verified,src/nn/unnamed/s003_2.c,SdkHr_64d7a0
 64da00,780,verified,src/nn/unnamed/s003_2.c,SdkHr_64da00
 64de60,1528,disputed,src/nn/unnamed/t001_0.c,SdkHr_64de60
+64e500,828,verified,src/nn/unnamed/a001_0.c,SdkHr_64e500
 64e860,420,verified,src/nn/unnamed/s003_3.c,SdkHr_64e860
 64ea10,104,verified,src/nn/unnamed/s003_2.c,SdkHr_64ea10
 64ea80,680,verified,src/nn/unnamed/s003_3.c,SdkHr_64ea80
@@ -23587,6 +23628,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 64eef0,28,verified,src/nn/unnamed/s003_2.c,SdkHr_64eef0
 64ef10,52,verified,src/nn/unnamed/s003_2.c,SdkHr_64ef10
 64ef60,1608,verified,src/nn/unnamed/s900_0.c,SdkHr_64ef60
+64f5d0,1032,verified,src/nn/unnamed/a001_0.c,SdkHr_64f5d0
 64fb90,16,verified,src/nn/sdk_trivial_thunks2.cpp,_Z14SdkStub_64fb90mmm
 64fba0,4,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_64fba0v
 64fbb0,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_64fbb0mj
@@ -24428,6 +24470,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 6581b0,372,verified,src/nn/unnamed/s003_2.c,SdkHr_6581b0
 658330,64,verified,src/nn/unnamed/s003_3.c,SdkHr_658330
 658380,16,verified,src/nn/unnamed/u000_1.c,SdkHr_658380
+6587a0,428,verified,src/nn/unnamed/a001_0.c,SdkHr_6587a0
 6589a0,4,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_6589a0v
 658ac0,88,verified,src/nn/unnamed/s003_2.c,SdkHr_658ac0
 658f00,152,verified,src/nn/unnamed/s003_2.c,SdkHr_658f00
@@ -24780,6 +24823,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 663880,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_663880mm
 663890,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_663890m
 6641b0,256,verified,src/nn/unnamed/s003_3.c,SdkHr_6641b0
+6642b0,460,verified,src/nn/unnamed/a001_0.c,SdkHr_6642b0
 664480,492,verified,src/nn/unnamed/s003_3.c,SdkHr_664480
 664670,64,verified,src/nn/unnamed/s003_3.c,SdkHr_664670
 664890,288,verified,src/nn/unnamed/s003_3.c,SdkHr_664890
@@ -24994,6 +25038,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 6698a0,384,verified,src/nn/unnamed/s004_0.c,SdkHr_6698a0
 669c40,28,verified,src/nn/unnamed/s004_0.c,SdkHr_669c40
 669c60,136,verified,src/nn/unnamed/s004_0.c,SdkHr_669c60
+669cf0,276,verified,src/nn/unnamed/a001_0.c,SdkHr_669cf0
 669e10,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_669e10m
 669e20,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_669e20mm
 669ea0,84,verified,src/nn/unnamed/s004_0.c,SdkHr_669ea0
@@ -25188,6 +25233,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 67a310,120,verified,src/nn/unnamed/s004_0.c,SdkHr_67a310
 67a700,640,verified,src/nn/unnamed/t001_0.c,SdkHr_67a700
 67a990,148,verified,src/nn/unnamed/s004_0.c,SdkHr_67a990
+67aa40,532,verified,src/nn/unnamed/a001_0.c,SdkHr_67aa40
 67ac60,392,verified,src/nn/unnamed/s004_0.c,SdkHr_67ac60
 67b360,116,verified,src/nn/unnamed/s004_0.c,SdkHr_67b360
 67b920,376,verified,src/nn/unnamed/s004_0.c,SdkHr_67b920
@@ -25226,11 +25272,13 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 6810e0,108,verified,src/nn/unnamed/s004_0.c,SdkHr_6810e0
 681150,152,verified,src/nn/unnamed/s004_0.c,SdkHr_681150
 6811f0,108,verified,src/nn/unnamed/s004_0.c,SdkHr_6811f0
+681260,108,verified,src/nn/unnamed/a001_2.c,SdkHr_681260
 6812d0,348,verified,src/nn/unnamed/s004_0.c,SdkHr_6812d0
 681430,348,verified,src/nn/unnamed/s004_0.c,SdkHr_681430
 681590,348,verified,src/nn/unnamed/s004_0.c,SdkHr_681590
 6816f0,564,verified,src/nn/unnamed/s004_0.c,SdkHr_6816f0
 681930,108,verified,src/nn/unnamed/s004_0.c,SdkHr_681930
+6819a0,348,verified,src/nn/unnamed/a001_2.c,SdkHr_6819a0
 681b00,68,verified,src/nn/unnamed/s004_1.c,SdkHr_681b00
 681b60,264,verified,src/nn/unnamed/t002_0.c,SdkHr_681b60
 681c70,48,verified,src/nn/unnamed/s004_1.c,SdkHr_681c70
@@ -25252,7 +25300,9 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 6831f0,288,verified,src/nn/unnamed/s004_1.c,SdkHr_6831f0
 683310,64,verified,src/nn/unnamed/s004_1.c,SdkHr_683310
 683350,104,verified,src/nn/unnamed/s004_1.c,SdkHr_683350
+6833c0,132,verified,src/nn/unnamed/a001_2.c,SdkHr_6833c0
 683450,128,verified,src/nn/unnamed/s004_1.c,SdkHr_683450
+6834d0,168,verified,src/nn/unnamed/a001_2.c,SdkHr_6834d0
 683640,244,verified,src/nn/unnamed/s004_1.c,SdkHr_683640
 683740,108,verified,src/nn/unnamed/s004_1.c,SdkHr_683740
 6837c0,476,verified,src/nn/unnamed/s004_1.c,SdkHr_6837c0
@@ -25295,6 +25345,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 6861d0,348,verified,src/nn/unnamed/s004_1.c,SdkHr_6861d0
 686330,60,verified,src/nn/unnamed/s004_1.c,SdkHr_686330
 686370,72,verified,src/nn/unnamed/s004_1.c,SdkHr_686370
+6863c0,1444,verified,src/nn/unnamed/a001_2.c,SdkHr_6863c0
 686c00,28,verified,src/nn/unnamed/s004_1.c,SdkHr_686c00
 686d90,656,verified,src/nn/unnamed/t002_0.c,SdkHr_686d90
 687900,288,verified,src/nn/unnamed/s004_1.c,SdkHr_687900
@@ -25308,6 +25359,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 688dc0,124,verified,src/nn/unnamed/s004_1.c,SdkHr_688dc0
 688e40,220,verified,src/nn/unnamed/s004_1.c,SdkHr_688e40
 688f20,456,verified,src/nn/unnamed/s004_1.c,SdkHr_688f20
+6890f0,508,verified,src/nn/unnamed/a001_2.c,SdkHr_6890f0
 6892f0,268,verified,src/nn/unnamed/s004_1.c,SdkHr_6892f0
 689400,348,verified,src/nn/unnamed/s004_1.c,SdkHr_689400
 689560,424,verified,src/nn/unnamed/s004_1.c,SdkHr_689560
@@ -25330,8 +25382,11 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 693340,1092,verified,src/nn/unnamed/s004_1.c,SdkHr_693340
 693790,200,verified,src/nn/unnamed/s004_1.c,SdkHr_693790
 694c60,496,verified,src/nn/unnamed/s004_1.c,SdkHr_694c60
+694e60,796,verified,src/nn/unnamed/a001_2.c,SdkHr_694e60
 695190,104,verified,src/nn/unnamed/s004_1.c,SdkHr_695190
 695200,436,verified,src/nn/unnamed/s004_1.c,SdkHr_695200
+6953c0,164,verified,src/nn/unnamed/a001_0.c,SdkHr_6953c0
+695480,284,verified,src/nn/unnamed/a001_2.c,SdkHr_695480
 6955a0,172,verified,src/nn/unnamed/s004_1.c,SdkHr_6955a0
 696560,120,verified,src/nn/unnamed/s004_1.c,SdkHr_696560
 6965e0,104,verified,src/nn/unnamed/s004_1.c,SdkHr_6965e0
@@ -25359,6 +25414,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 69a230,140,verified,src/nn/unnamed/s004_1.c,SdkHr_69a230
 69a2c0,148,verified,src/nn/unnamed/s004_1.c,SdkHr_69a2c0
 69a360,140,verified,src/nn/unnamed/s004_1.c,SdkHr_69a360
+69a660,160,verified,src/nn/unnamed/a001_2.c,SdkHr_69a660
 69a700,52,verified,src/nn/unnamed/s004_1.c,SdkHr_69a700
 69aad0,104,verified,src/nn/unnamed/s004_1.c,SdkHr_69aad0
 69ab40,100,verified,src/nn/unnamed/s004_1.c,SdkHr_69ab40
@@ -25409,6 +25465,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 69d9d0,12,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_69d9d0v
 69d9e0,328,verified,src/nn/unnamed/s004_1.c,SdkHr_69d9e0
 69db30,180,verified,src/nn/unnamed/s004_1.c,SdkHr_69db30
+69dc00,264,verified,src/nn/unnamed/a001_0.c,SdkHr_69dc00
 69dfe0,20,verified,src/nn/unnamed/u000_2.c,SdkHr_69dfe0
 69e000,40,verified,src/nn/unnamed/s004_1.c,SdkHr_69e000
 69e110,124,verified,src/nn/unnamed/s004_1.c,SdkHr_69e110
@@ -25442,6 +25499,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 69fae0,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_69fae0v
 69faf0,224,verified,src/nn/unnamed/s004_1.c,SdkHr_69faf0
 69fbd0,360,verified,src/nn/unnamed/s004_1.c,SdkHr_69fbd0
+6a0500,200,verified,src/nn/unnamed/a001_2.c,SdkHr_6a0500
 6a05d0,12,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_6a05d0v
 6a05e0,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_6a05e0v
 6a05f0,8,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_6a05f0v
@@ -28139,6 +28197,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 7019f0,44,verified,src/nerd/gyro_pointing/gyro_pointing.cpp,_ZN4nerd13gyro_pointing12GyroPointing12ResetHeadingEv
 701a20,8,verified,src/nerd/gyro_pointing/gyro_pointing.cpp,_ZN4nerd13gyro_pointing12GyroPointing35SnapStableOrientationToBestEstimateEv
 701a30,108,verified,src/nerd/gyro_pointing/gyro_pointing.cpp,_ZN4nerd13gyro_pointing12GyroPointing8ResetAllEv
+701aa0,1008,verified,src/nn/unnamed/a002_0.c,SdkHr_701aa0
 701e90,476,verified,src/nn/unnamed/s004_2.c,SdkHr_701e90
 702b40,1592,verified,src/math/matrix.cpp,_ZN4nerd14linear_algebra17NormalizeDiagonalIfLl27EEENS0_7LMatrixIT_XT0_EXT0_ENS0_11LMatrixType5DenseILb1EEEEES7_
 704160,2160,verified,src/math/inversion.cpp,_ZN4nerd23GaussJordanInversionROKIfEEbPT_mS2_mm
@@ -28148,6 +28207,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 706580,128,verified,src/nerd/gyro_pointing/gyro_pointing_core.cpp,_ZNK4nerd13gyro_pointing16GyroPointingCore14GetOrientationEv
 706600,8,verified,src/nerd/gyro_pointing/gyro_pointing_core.cpp,_ZNK4nerd13gyro_pointing16GyroPointingCore17GetIntegrityStateEv
 706610,24,verified,src/nerd/gyro_pointing/gyro_pointing_core.cpp,_ZN4nerd13gyro_pointing16GyroPointingCore21UpdateIfEnoughSamplesEv
+70a5e0,352,verified,src/nn/unnamed/a002_0.c,SdkHr_70a5e0
 70bba0,1904,verified,src/math/kalman_transition.cpp,_ZN4nerd6kalman20ExtendedKalmanFilterIfNS_13gyro_pointing24GyroPointingKalmanFilterELln33ELb0EE16TransitionUpdateILl18ELl3ENS_14linear_algebra11LMatrixType5DenseILb1EEEEEvRKNS6_7LMatrixIfXT0_EXT_ET1_EERKNS6_7LVectorImXT_ELb0ENS6_11LVectorType5DenseEEERKNSF_ImXT0_ELb0ESH_EERKNSA_IfXT0_EXT0_ES9_EE
 70c380,2152,verified,src/math/kalman_transition.cpp,_ZN4nerd6kalman20ExtendedKalmanFilterIfNS_13gyro_pointing24GyroPointingKalmanFilterELln33ELb0EE16TransitionUpdateILl3ELl3ENS_14linear_algebra11LMatrixType5DenseILb1EEEEEvRKNS6_7LMatrixIfXT0_EXT_ET1_EERKNS6_7LVectorImXT_ELb0ENS6_11LVectorType5DenseEEERKNSF_ImXT0_ELb0ESH_EERKNSA_IfXT0_EXT0_ES9_EE
 70e5c0,1908,verified,src/math/kalman_transition.cpp,_ZN4nerd6kalman20ExtendedKalmanFilterIfNS_13gyro_pointing24GyroPointingKalmanFilterELln33ELb0EE16TransitionUpdateILl9ELl3ENS_14linear_algebra11LMatrixType5DenseILb1EEEEEvRKNS6_7LMatrixIfXT0_EXT_ET1_EERKNS6_7LVectorImXT_ELb0ENS6_11LVectorType5DenseEEERKNSF_ImXT0_ELb0ESH_EERKNSA_IfXT0_EXT0_ES9_EE
@@ -28428,6 +28488,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 73d990,132,verified,src/nn/irsensor/detail/irsensor_ir_camera_api.cpp,_ZN2nn8irsensor6detail20RunPointingProcessorERKNS0_14IrCameraHandleE
 73da20,288,verified,src/nn/unnamed/t002_0.c,SdkHr_73da20
 73df20,152,verified,src/nn/irsensor/detail/irsensor_ir_camera_api.cpp,_ZN2nn8irsensor6detail22RunTeraPluginProcessorERKNS0_14IrCameraHandleERKNS0_25TeraPluginProcessorConfigE
+73dfc0,352,verified,src/nn/unnamed/a002_0.c,SdkHr_73dfc0
 73e140,540,verified,src/nn/unnamed/s005_0.c,SdkHr_73e140
 73e380,128,verified,src/nn/irsensor/detail/irsensor_ir_camera_api.cpp,_ZN2nn8irsensor6detail17RunIrLedProcessorERKNS0_14IrCameraHandleERKNS0_20IrLedProcessorConfigE
 73e510,64,verified,src/nn/unnamed/s005_0.c,SdkHr_73e510
@@ -28511,6 +28572,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 7405c0,168,verified,src/nn/irsensor/detail/irsensor_ir_sensor_session.cpp,_ZN2nn8irsensor6detail15IrSensorSession17RunIrLedProcessorERKNS0_14IrCameraHandleERKNS0_26PackedIrLedProcessorConfigE
 740680,384,verified,src/nn/irsensor/detail/irsensor_ir_sensor_session.cpp,_ZN2nn8irsensor6detail15IrSensorSession21GetImageTransferStateERKNS0_14IrCameraHandleEPNS0_27ImageTransferProcessorStateEPvm
 740820,40,verified,src/nn/irsensor/detail/irsensor_ir_sensor_session.cpp,_ZN2nn8irsensor6detail15IrSensorSession12GetImageSizeENS0_28ImageTransferProcessorFormatE
+740860,892,verified,src/nn/unnamed/a002_0.c,SdkHr_740860
 740be0,20,verified,src/nn/irsensor/detail/irsensor_ir_sensor_session.cpp,_ZN2nn8irsensor6detail15IrSensorSession34GetClusteringProcessorStateDefaultEPNS0_24ClusteringProcessorStateERKNS0_14IrCameraHandleE
 740c00,124,verified,src/nn/irsensor/detail/irsensor_ir_sensor_session.cpp,_ZN2nn8irsensor6detail15IrSensorSession37GetImageTransferProcessorStateDefaultEPNS0_27ImageTransferProcessorStateEPvmRKNS0_14IrCameraHandleE
 740c80,20,verified,src/nn/irsensor/detail/irsensor_ir_sensor_session.cpp,_ZN2nn8irsensor6detail15IrSensorSession32GetPointingProcessorStateDefaultEPNS0_28PointingProcessorMarkerStateERKNS0_14IrCameraHandleE
@@ -30181,9 +30243,11 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 7bc890,36,verified,src/nn/unnamed/s005_0.c,SdkHr_7bc890
 7bd250,40,verified,src/nn/unnamed/s005_0.c,SdkHr_7bd250
 7bd890,36,verified,src/nn/unnamed/s005_0.c,SdkHr_7bd890
+7be250,36,verified,src/nn/unnamed/a002_0.c,SdkHr_7be250
 7be280,40,verified,src/nn/unnamed/s005_0.c,SdkHr_7be280
 7be930,40,verified,src/nn/unnamed/s005_0.c,SdkHr_7be930
 7befd0,40,verified,src/nn/unnamed/s005_0.c,SdkHr_7befd0
+7bf610,40,verified,src/nn/unnamed/a002_0.c,SdkHr_7bf610
 7bf640,40,verified,src/nn/unnamed/s005_0.c,SdkHr_7bf640
 7bfc90,40,verified,src/nn/unnamed/s005_0.c,SdkHr_7bfc90
 7c02d0,40,verified,src/nn/unnamed/s005_0.c,SdkHr_7c02d0
@@ -31654,6 +31718,9 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 82ffe4,28,verified,src/nn/unnamed/s006_0.c,SdkHr_82ffe4
 830000,180,verified,src/llvm-libcxx/libcxx/src/locale.cpp,_ZNSt3__117__libcpp_sscanf_lEPKcP15__locale_structS1_z
 830194,24,verified,src/nn/unnamed/s900_0.c,SdkHr_830194
+830500,156,verified,src/nn/unnamed/a002_0.c,SdkHr_830500
+8305c0,168,verified,src/nn/unnamed/a002_0.c,SdkHr_8305c0
+8306a0,160,verified,src/nn/unnamed/a002_0.c,SdkHr_8306a0
 830760,104,verified,src/nn/unnamed/s006_0.c,SdkHr_830760
 8307d0,192,verified,src/llvm-libcxx/libcxx/src/locale.cpp,_ZNSt3__119__libcpp_snprintf_lEPcmP15__locale_structPKcz
 8308a0,184,verified,src/llvm-libcxx/libcxx/src/locale.cpp,_ZNSt3__119__libcpp_asprintf_lEPPcP15__locale_structPKcz
@@ -32036,6 +32103,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 84eac0,40,verified,src/nn/unnamed/s006_0.c,SdkHr_84eac0
 84eaf0,32,verified,src/nn/unnamed/s006_0.c,SdkHr_84eaf0
 84eb20,1228,verified,src/nn/unnamed/s006_1.c,SdkHr_84eb20
+84f1a0,116,verified,src/nn/unnamed/a002_0.c,SdkHr_84f1a0
 84f3e0,236,verified,src/llvm-libcxx/libcxxabi/src/cxa_personality.cpp,_ZN10__cxxabiv1L18readEncodedPointerEPPKhhm
 84f5e0,280,verified,src/nn/unnamed/s006_1.c,SdkHr_84f5e0
 84f700,24,verified,src/nn/unnamed/s006_0.c,SdkHr_84f700
