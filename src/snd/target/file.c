@@ -1,0 +1,27 @@
+#include "decomp/pseudo_helpers.h"
+
+#pragma GCC visibility push(hidden)
+
+__int64 __cxa_guard_acquire(_QWORD);
+__int64 __cxa_guard_release(_QWORD, _QWORD, _QWORD, _QWORD);
+extern _UNKNOWN* GameData_212e280;
+extern __int64* GameData_212e278;
+__int64* File_Unknown2();
+
+__int64* File_Unknown2()
+{
+  __int64 v1;
+  __int64 v2;
+  __int64 v3;
+
+  if ((atomic_load_explicit((atomic_uchar* volatile)GameData_212e280,
+                            memory_order_acquire) &
+       1) == 0 &&
+      (unsigned int)__cxa_guard_acquire(GameData_212e280) != 0) {
+    *GameData_212e278 = 0;
+    __cxa_guard_release(GameData_212e280, v1, v2, v3);
+  }
+  return GameData_212e278;
+}
+
+#pragma GCC visibility pop

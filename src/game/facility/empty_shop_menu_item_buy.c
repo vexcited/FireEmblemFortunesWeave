@@ -1,0 +1,74 @@
+#include "decomp/pseudo_helpers.h"
+
+#pragma GCC visibility push(hidden)
+
+__int64 __dynamic_cast(_QWORD, _QWORD, _QWORD, _QWORD);
+extern __int64 (*GameData_20f3a48[])();
+extern __int64 GameData_20f20a0;
+extern __int64* GameData_212e008[9];
+void __attribute__((noreturn)) GameRoutine_60a310(_QWORD);
+_QWORD* EmptyShopMenuItem_Buy_186b2c0(__int64* a1);
+
+_QWORD* EmptyShopMenuItem_Buy_186b2c0(__int64* a1)
+{
+  __int64 v1;
+  _QWORD* result;
+  __int64 v3;
+  __int64 v4;
+  unsigned __int64 v5;
+  __int64* v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  _QWORD v10[4];
+  _QWORD* v11;
+  __int64 v12;
+
+  v1 = *a1;
+  a1[2] = a1[1];
+  result = v10;
+  v4 = *(_QWORD*)(v1 + 256);
+  v3 = *(_QWORD*)(v1 + 264);
+  v10[0] = GameData_20f3a48;
+  v11 = v10;
+  if (v3 == v4) {
+    goto LABEL_12;
+  }
+  v5 = 0;
+  v6 = GameData_212e008[0];
+  do {
+    v7 = *(_QWORD*)(v4 + 8 * v5);
+    if (v7 != 0) {
+      v8 = __dynamic_cast(v7, v6, &GameData_20f20a0, 0);
+      if (v8 == 0) {
+        goto LABEL_3;
+      }
+      v12 = v8;
+      if (v11 == nullptr) {
+        GameRoutine_60a310(0);
+      }
+      if (((*(__int64 (**)(_QWORD*, __int64*))(*v11 + 48LL))(v11, &v12) & 1) !=
+          0) {
+        break;
+      }
+      v4 = *(_QWORD*)(v1 + 256);
+      v3 = *(_QWORD*)(v1 + 264);
+    }
+  LABEL_3:
+    ++v5;
+  } while (v5 < (v3 - v4) >> 3);
+  result = v11;
+  if (v11 != v10) {
+    if (v11 != nullptr) {
+      v9 = 40;
+      return (_QWORD*)(*(__int64 (**)(_QWORD*))(*result + v9))(result);
+    }
+    return result;
+  }
+
+LABEL_12:
+  v9 = 32;
+  return (_QWORD*)(*(__int64 (**)(_QWORD*))(*result + v9))(result);
+}
+
+#pragma GCC visibility pop

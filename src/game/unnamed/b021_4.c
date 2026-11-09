@@ -1,27 +1,37 @@
 #include "decomp/pseudo_helpers.h"
+
 #pragma GCC visibility push(hidden)
 
 extern __int64* GameData_212c880[5];
+
 __int64 GameRoutine_13633c0(_QWORD);
+
 __int64 GameRoutine_155e830(_QWORD, _QWORD);
+
 _QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+
 __int64 GameRoutine_15621a0(_QWORD, _QWORD);
+
 __int64 GameRoutine_1563e00(_QWORD, _QWORD);
-__int64 GameRoutine_1572370(_QWORD, _QWORD);
+
 __int64 GameRoutine_157b780(_QWORD);
+
 __int64 GameRoutine_1583e80(_QWORD, _QWORD);
+
 __int64 GameRoutine_1605f00(__int64);
+
 __int64 GameRoutine_16061b0(__int64, __int64);
+
 _QWORD* GameRoutine_1606250(_QWORD* result);
+
 __int64 GameRoutine_165bbf0(__int64*);
-__int64 GameRoutine_16734f0(__int64);
-__int64 GameRoutine_1673c10(__int64*, char);
-void GameRoutine_16758d0(__int64, _QWORD*);
-__int64 GameRoutine_1675d00(__int64*);
-__int64 GameRoutine_1677660(_QWORD);
+
 __int64 GameRoutine_190a0c0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
+
 __int64 GameRoutine_1a09c50(_QWORD);
+
 __int64 GameRoutine_1a0a0c0(_QWORD);
+
 __int64 GameRoutine_56b600(_QWORD);
 
 _QWORD* GameHr_16115c0(__int64 a1, int* a2)
@@ -524,136 +534,6 @@ __int64 GameHr_165c540(__int64 a1, char a2)
     }
   }
   return result;
-}
-
-void GameHr_1676b60(__int64 a1)
-{
-  __int64 v1;
-  _QWORD v2[2];
-
-  if (*(_BYTE*)(a1 + 194) == 1) {
-    v1 = *(_QWORD*)(a1 + 128);
-    v2[0] = *(_QWORD*)(a1 + 120);
-    v2[1] = v1;
-    if (v1 != 0) {
-      atomic_fetch_add_explicit((atomic_ullong* volatile)(v1 + 16), 1u,
-                                memory_order_relaxed);
-      GameRoutine_16758d0(a1 + 144, v2);
-      GameRoutine_1a09c50(v1);
-    }
-    else {
-      GameRoutine_16758d0(a1 + 144, v2);
-    }
-  }
-}
-
-__int64 GameHr_1676be0(__int64 a1)
-{
-  __int64 v2;
-  __int64 v4[2];
-
-  GameRoutine_16734f0(a1);
-  v2 = *(_QWORD*)(a1 + 128);
-  v4[0] = *(_QWORD*)(a1 + 120);
-  v4[1] = v2;
-  if (v2 != 0) {
-    atomic_fetch_add_explicit((atomic_ullong* volatile)(v2 + 16), 1u,
-                              memory_order_relaxed);
-    GameRoutine_1675d00(v4);
-    GameRoutine_1a09c50(v2);
-  }
-  else {
-    GameRoutine_1675d00(v4);
-  }
-  return GameRoutine_1677660(a1);
-}
-
-__int64 GameHr_1677b10(__int64 a1)
-{
-  int v1;
-  __int64 v2;
-  bool v4;
-  __int64 v5;
-  __int64 v6;
-  __int64 v7;
-  __int64 v8;
-  __int64 v9;
-  __int64 v10;
-
-  v1 = *(unsigned __int8*)(a1 + 79);
-  v2 = *(_QWORD*)a1;
-  *(_WORD*)(a1 + 144) = 0;
-  v4 = v1 == 0;
-  v5 = 504;
-  if (!v4) {
-    v5 = 520;
-  }
-  (*(void (**)(void))(v2 + v5))();
-  v6 = *(_QWORD*)(a1 + 128);
-  if (v6 != 0) {
-    v7 = *(_QWORD*)(a1 + 120);
-    v8 = *(_QWORD*)(a1 + 128);
-    atomic_fetch_add_explicit((atomic_ullong* volatile)(v6 + 16), 1u,
-                              memory_order_relaxed);
-    v9 = GameRoutine_1a0a0c0(v8);
-    if (v9 != 0) {
-      v10 = v9;
-      if (v7 != 0) {
-        GameRoutine_1572370(v7, 0);
-      }
-      if (atomic_fetch_add((atomic_ullong* volatile)(v10 + 8),
-                           0xFFFFFFFFFFFFFFFFLL) == 0) {
-        (*(void (**)(__int64))(*(_QWORD*)v10 + 16LL))(v10);
-        GameRoutine_1a09c50(v10);
-      }
-    }
-    GameRoutine_1a09c50(v6);
-  }
-  return GameRoutine_1673c10((__int64*)a1, 0);
-}
-
-__int64 GameHr_16780c0(__int64 a1)
-{
-  int v1;
-  __int64 v2;
-  bool v4;
-  __int64 v5;
-  __int64 v6;
-  __int64 v7;
-  __int64 v8;
-  __int64 v9;
-  __int64 v10;
-
-  v1 = *(unsigned __int8*)(a1 + 79);
-  v2 = *(_QWORD*)a1;
-  *(_WORD*)(a1 + 144) = 0;
-  v4 = v1 == 0;
-  v5 = 504;
-  if (!v4) {
-    v5 = 520;
-  }
-  (*(void (**)(void))(v2 + v5))();
-  v6 = *(_QWORD*)(a1 + 128);
-  if (v6 != 0) {
-    v7 = *(_QWORD*)(a1 + 120);
-    v8 = *(_QWORD*)(a1 + 128);
-    atomic_fetch_add_explicit((atomic_ullong* volatile)(v6 + 16), 1u,
-                              memory_order_relaxed);
-    v9 = GameRoutine_1a0a0c0(v8);
-    if (v9 != 0) {
-      v10 = v9;
-      if (v7 != 0) {
-        GameRoutine_1572370(v7, 0);
-      }
-      if (atomic_fetch_add((atomic_ullong* volatile)(v10 + 8),
-                           0xFFFFFFFFFFFFFFFFLL) == 0) {
-        (*(void (**)(__int64))(*(_QWORD*)v10 + 16LL))(v10);
-        GameRoutine_1a09c50(v10);
-      }
-    }
-    GameRoutine_1a09c50(v6);
-  }
-  return GameRoutine_1673c10((__int64*)a1, 0);
 }
 
 #pragma GCC visibility pop

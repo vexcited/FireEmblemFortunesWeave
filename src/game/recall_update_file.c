@@ -1,0 +1,168 @@
+#include "decomp/pseudo_helpers.h"
+
+#pragma GCC visibility push(hidden)
+
+__int64 GameRoutine_9ecb80(_QWORD, _QWORD);
+__int64 nn_mem_StandardAllocator_Free(_QWORD);
+extern __int64 GameData_21c9a78;
+extern __int64 GameData_21c9a80;
+extern __int64 GameData_21c9fc8;
+extern __int64 GameData_21f8fa0;
+extern __int64 GameData_21f8fa8;
+extern __int64 GameData_21f8fb0;
+extern __int64 GameData_21f8fb8;
+extern __int64 GameData_21f8fc8;
+extern __int64 GameData_21f8fd0;
+extern __int64 fw_memory_g_heap_manager_ptr;
+__int64 RecallUpdateFile_Unknown4();
+__int64 RecallUpdateFile_Unknown5();
+
+__int64 RecallUpdateFile_Unknown4()
+{
+  _QWORD* v0;
+  __int64 v1;
+  _QWORD* v2;
+  __int64 v3;
+  __int64 result;
+  __int64 v5;
+  __int64 v6;
+  unsigned __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  __int64* v10;
+  __int64* i;
+  __int64 v12;
+  __int64* v13;
+  __int64 j;
+  __int64 v15;
+
+  if (GameData_21f8fb8 != 0) {
+    v0 = (_QWORD*)GameData_21f8fb0;
+    if (GameData_21f8fb0 != 0) {
+      v1 = fw_memory_g_heap_manager_ptr;
+      do {
+        v2 = (_QWORD*)*v0;
+        if (*(_QWORD*)(*(_QWORD*)v1 + 200LL) != 0) {
+          v3 = 128;
+        }
+        else {
+          v3 = 56;
+        }
+        result = nn_mem_StandardAllocator_Free(*(_QWORD*)v1 + v3);
+        v0 = v2;
+      } while (v2 != nullptr);
+    }
+    GameData_21f8fb0 = 0;
+    if (GameData_21f8fa8 != 0) {
+      v5 = GameData_21f8fa8 & 7;
+      if ((unsigned __int64)GameData_21f8fa8 >= 8) {
+        v7 = GameData_21f8fa8 & 0xFFFFFFFFFFFFFFF8LL;
+        v6 = 0;
+        do {
+          *(_QWORD*)(GameData_21f8fa0 + 8 * v6) = 0;
+          *(_QWORD*)(GameData_21f8fa0 + 8 * v6 + 8) = 0;
+          *(_QWORD*)(GameData_21f8fa0 + 8 * v6 + 16) = 0;
+          *(_QWORD*)(GameData_21f8fa0 + 8 * v6 + 24) = 0;
+          *(_QWORD*)(GameData_21f8fa0 + 8 * v6 + 32) = 0;
+          *(_QWORD*)(GameData_21f8fa0 + 8 * v6 + 40) = 0;
+          *(_QWORD*)(GameData_21f8fa0 + 8 * v6 + 48) = 0;
+          v8 = GameData_21f8fa0 + 8 * v6;
+          v6 += 8;
+          *(_QWORD*)(v8 + 56) = 0;
+        } while (v7 != v6);
+      }
+      else {
+        v6 = 0;
+      }
+      if (v5 != 0) {
+        v9 = 8 * v6;
+        do {
+          --v5;
+          *(_QWORD*)(GameData_21f8fa0 + v9) = 0;
+          v9 += 8;
+        } while (v5 != 0);
+      }
+    }
+    GameData_21f8fb8 = 0;
+  }
+  GameData_21f8fd0 = GameData_21f8fc8;
+  v10 = *(__int64**)(GameData_21c9fc8 + 64);
+  for (i = *(__int64**)(GameData_21c9fc8 + 72); v10 != i;
+       result = GameRoutine_9ecb80(v12, *(unsigned __int8*)(v12 + 32))) {
+    v12 = *v10++;
+  }
+  v13 = (__int64*)GameData_21c9a78;
+  for (j = GameData_21c9a80; v13 != (__int64*)j;
+       result = GameRoutine_9ecb80(*(_QWORD*)(v15 + 24) + 1072LL, 1)) {
+    v15 = *v13++;
+  }
+  return result;
+}
+
+__int64 RecallUpdateFile_Unknown5()
+{
+  _QWORD* v0;
+  __int64 v1;
+  _QWORD* v2;
+  __int64 v3;
+  __int64 result;
+  __int64 v5;
+  __int64 v6;
+  unsigned __int64 v7;
+  __int64 v8;
+  __int64 v9;
+
+  if (GameData_21f8fb8 != 0) {
+    v0 = (_QWORD*)GameData_21f8fb0;
+    if (GameData_21f8fb0 != 0) {
+      v1 = fw_memory_g_heap_manager_ptr;
+      do {
+        v2 = (_QWORD*)*v0;
+        if (*(_QWORD*)(*(_QWORD*)v1 + 200LL) != 0) {
+          v3 = 128;
+        }
+        else {
+          v3 = 56;
+        }
+        result = nn_mem_StandardAllocator_Free(*(_QWORD*)v1 + v3);
+        v0 = v2;
+      } while (v2 != nullptr);
+    }
+    GameData_21f8fb0 = 0;
+    if (GameData_21f8fa8 != 0) {
+      v5 = GameData_21f8fa8 & 7;
+      if ((unsigned __int64)GameData_21f8fa8 >= 8) {
+        v7 = GameData_21f8fa8 & 0xFFFFFFFFFFFFFFF8LL;
+        v6 = 0;
+        do {
+          *(_QWORD*)(GameData_21f8fa0 + 8 * v6) = 0;
+          *(_QWORD*)(GameData_21f8fa0 + 8 * v6 + 8) = 0;
+          *(_QWORD*)(GameData_21f8fa0 + 8 * v6 + 16) = 0;
+          *(_QWORD*)(GameData_21f8fa0 + 8 * v6 + 24) = 0;
+          *(_QWORD*)(GameData_21f8fa0 + 8 * v6 + 32) = 0;
+          *(_QWORD*)(GameData_21f8fa0 + 8 * v6 + 40) = 0;
+          *(_QWORD*)(GameData_21f8fa0 + 8 * v6 + 48) = 0;
+          v8 = GameData_21f8fa0 + 8 * v6;
+          v6 += 8;
+          *(_QWORD*)(v8 + 56) = 0;
+        } while (v7 != v6);
+      }
+      else {
+        v6 = 0;
+      }
+      if (v5 != 0) {
+        v9 = 8 * v6;
+        do {
+          --v5;
+          *(_QWORD*)(GameData_21f8fa0 + v9) = 0;
+          v9 += 8;
+        } while (v5 != 0);
+      }
+    }
+    GameData_21f8fb8 = 0;
+  }
+  GameData_21f8fd0 = GameData_21f8fc8;
+  return result;
+}
+
+#pragma GCC visibility pop
