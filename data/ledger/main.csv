@@ -56,6 +56,7 @@ b290,144,verified,src/game/unnamed/b000_0.c,GameHr_b290
 b320,276,verified,src/game/unnamed/b000_1.c,GameHr_b320
 b440,444,verified,src/game/unnamed/b000_1.c,GameHr_b440
 b9a0,236,verified,src/game/unnamed/r000_0.c,GameHr_b9a0
+bae0,96,verified,src/game/unnamed/q000_0.c,GameHr_bae0
 bb40,244,verified,src/game/unnamed/r000_0.c,GameHr_bb40
 ca80,116,verified,src/game/unnamed/r000_0.c,GameHr_ca80
 d470,288,verified,src/game/unnamed/r000_0.c,GameHr_d470
@@ -293,6 +294,7 @@ ff20,632,verified,src/spine-cpp/src/spine/AnimationState.cpp,_ZN5spine14Animatio
 1b620,292,verified,src/spine-cpp/src/spine/RegionAttachment.cpp,_ZN5spine16RegionAttachmentD2Ev
 1b750,44,verified,src/spine-cpp/src/spine/RegionAttachment.cpp,_ZN5spine16RegionAttachmentD0Ev
 1b780,664,verified,src/spine-cpp/src/spine/RegionAttachment.cpp,_ZN5spine16RegionAttachment12updateRegionEv
+1bbc0,332,disputed,src/game/unnamed/q000_0.c,GameHr_1bbc0
 1bde0,8,verified,src/spine-cpp/src/spine/RegionAttachment.cpp,_ZN5spine16RegionAttachment9getRegionEv
 1bdf0,8,verified,src/spine-cpp/src/spine/RegionAttachment.cpp,_ZN5spine16RegionAttachment9setRegionEPNS_13TextureRegionE
 1be00,8,verified,src/spine-cpp/src/spine/RegionAttachment.cpp,_ZN5spine16RegionAttachment11getSequenceEv
@@ -1694,6 +1696,9 @@ f0a40,4412,verified,src/game/unnamed/b028_0.c,GameHr_f0a40
 f2ce0,1664,verified,src/game/unnamed/b000_0.c,GameHr_f2ce0
 f33e0,232,verified,src/game/unnamed/b000_0.c,GameHr_f33e0
 f3540,68,verified,src/game/unnamed/b000_1.c,GameHr_f3540
+f38b0,124,verified,src/game/unnamed/q000_1.c,GameHr_f38b0
+f3930,124,verified,src/game/unnamed/q000_1.c,GameHr_f3930
+f39b0,124,verified,src/game/unnamed/q000_1.c,GameHr_f39b0
 f3a40,208,verified,src/game/unnamed/r000_1.c,GameHr_f3a40
 f4760,136,verified,src/game/unnamed/b000_0.c,GameHr_f4760
 f47f0,112,verified,src/game/unnamed/b000_0.c,GameHr_f47f0
@@ -2049,6 +2054,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 105740,48,verified,src/game/unnamed/b000_0.c,GameHr_105740
 1059c0,476,verified,src/game/unnamed/b000_0.c,GameHr_1059c0
 105ba0,208,verified,src/game/unnamed/b000_0.c,GameHr_105ba0
+105c80,428,verified,src/game/unnamed/q000_0.c,GameHr_105c80
 106240,344,verified,src/game/unnamed/r000_0.c,GameHr_106240
 1063a0,344,verified,src/game/unnamed/r000_0.c,GameHr_1063a0
 106500,332,verified,src/game/unnamed/r000_0.c,GameHr_106500
@@ -2066,6 +2072,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 1076a0,124,verified,src/game/unnamed/b000_0.c,GameHr_1076a0
 107720,236,verified,src/game/unnamed/r000_0.c,GameHr_107720
 107810,136,verified,src/game/unnamed/r000_0.c,GameHr_107810
+1078a0,556,verified,src/game/unnamed/q000_0.c,GameHr_1078a0
 107b40,332,verified,src/game/unnamed/b000_0.c,GameHr_107b40
 107cb0,100,verified,src/game/unnamed/r000_0.c,GameHr_107cb0
 107d20,100,verified,src/game/unnamed/r000_0.c,GameHr_107d20
@@ -2250,8 +2257,10 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 116320,48,verified,src/memory/new_delete.cpp,deleting destructor at 0x116320
 116350,84,verified,src/game/unnamed/b000_1.c,GameHr_116350
 116570,188,verified,src/game/unnamed/b000_1.c,GameHr_116570
+116660,496,verified,src/game/unnamed/q000_0.c,GameHr_116660
 1168a0,168,verified,src/game/unnamed/r000_0.c,GameHr_1168a0
 1170c0,136,verified,src/game/unnamed/r000_0.c,GameHr_1170c0
+117a00,368,verified,src/game/unnamed/q000_0.c,GameHr_117a00
 117bb0,8,verified,src/game/game_trivial.cpp,_Z15GameStub_117bb0m
 118060,188,verified,src/game/unnamed/b000_1.c,GameHr_118060
 118120,204,verified,src/game/unnamed/b000_1.c,GameHr_118120
@@ -2858,6 +2867,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 1290e0,76,verified,src/snd/seq_voice.cpp,_ZN3snd12_GLOBAL__N_114isEnvelopeDoneERKNS_5ParamE
 129130,60,verified,src/snd/seq_voice.cpp,_ZN3snd8SeqVoice9addToSlotEv
 129b60,364,disputed,src/game/unnamed/b000_1.c,GameHr_129b60
+12b0e0,464,disputed,src/game/unnamed/q000_0.c,GameHr_12b0e0
 12b7f0,60,verified,src/snd/seq_voice.cpp,_ZN3snd8SeqVoice13checkPriorityEv
 12b830,68,verified,src/snd/seq_voice.cpp,_ZNK3snd8SeqVoice20getPriorityReductionEv
 12b880,784,verified,src/snd/seq_voice.cpp,_ZN3snd8SeqVoice23updatePriorityReductionEv
@@ -4881,7 +4891,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 16a8a0,624,verified,src/game/unnamed/b000_2.c,GameHr_16a8a0
 16ac50,556,verified,src/game/unnamed/b000_2.c,GameHr_16ac50
 16afb0,48,verified,src/memory/new_delete.cpp,deleting destructor at 0x16afb0
-16afe0,128,disputed,src/snd/coef/biquad_filter.cpp,_ZN3snd4coef12BiQuadFilter7setCoefEffffff
+16afe0,128,disputed,src/game/unnamed/q000_0.c,GameHr_16afe0
 16b090,1256,verified,src/snd/coef/biquad.cpp,_ZN3snd4coef10BiQuadCoefC2Ev
 16b580,424,verified,src/snd/coef/biquad.cpp,_ZN3snd4coef10BiQuadCoefD2Ev
 16b730,48,verified,src/memory/new_delete.cpp,deleting destructor at 0x16b730
@@ -4979,6 +4989,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 16e750,852,verified,src/game/unnamed/b000_2.c,GameHr_16e750
 16eb60,316,verified,src/game/unnamed/b000_2.c,GameHr_16eb60
 16ed40,48,verified,src/memory/new_delete.cpp,deleting destructor at 0x16ed40
+16ee40,328,disputed,src/game/unnamed/q000_0.c,GameHr_16ee40
 16f0e0,344,verified,src/game/unnamed/b000_2.c,GameHr_16f0e0
 16f250,8,verified,src/game/game_trivial.cpp,_Z15GameStub_16f250m
 16f260,12,verified,src/game/game_trivial.cpp,_Z15GameStub_16f260m
@@ -8340,6 +8351,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 2aa190,68,verified,src/game/unnamed/b002_0.c,GameHr_2aa190
 2aa1e0,284,verified,src/game/unnamed/b002_0.c,GameHr_2aa1e0
 2aa300,168,verified,src/game/unnamed/b002_1.c,GameHr_2aa300
+2aa3e0,636,verified,src/game/unnamed/q000_0.c,GameHr_2aa3e0
 2aa660,80,verified,src/game/unnamed/b002_0.c,GameHr_2aa660
 2aa6c0,68,verified,src/game/unnamed/b002_0.c,GameHr_2aa6c0
 2aa720,80,verified,src/game/unnamed/b002_0.c,GameHr_2aa720
@@ -8619,7 +8631,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 2b3f60,40,verified,src/game/unnamed/b002_1.c,GameHr_2b3f60
 2b3fb0,24,verified,src/game/unnamed/b002_1.c,GameHr_2b3fb0
 2b43c0,180,verified,src/game/unnamed/b002_1.c,GameHr_2b43c0
-2b4480,860,verified,src/game/unnamed/b002_1.c,GameHr_2b4480
+2b4480,864,verified,src/game/unnamed/b002_1.c,GameHr_2b4480
 2b48f0,4,verified,src/physx/source/physxextensions/src/ExtCustomGeometryExt.cpp,_ZThn8_N5physx19PxCustomGeometryExt19BaseConvexCallbacksD1Ev
 2b4900,8,verified,src/game/game_trivial_forwarders.cpp,_Z15GameStub_2b4900m
 2b4910,44,verified,src/game/unnamed/b002_1.c,GameHr_2b4910
@@ -8658,12 +8670,12 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 2b58e0,124,verified,src/game/unnamed/b002_1.c,GameHr_2b58e0
 2b5960,224,verified,src/game/unnamed/b002_1.c,GameHr_2b5960
 2b5a60,240,verified,src/game/unnamed/b002_1.c,GameHr_2b5a60
-2b5b60,244,verified,src/game/unnamed/b002_1.c,GameHr_2b5b60
+2b5b60,504,verified,src/game/unnamed/b002_1.c,GameHr_2b5b60
 2b5d60,436,verified,src/game/unnamed/b002_1.c,GameHr_2b5d60
 2b5f20,428,verified,src/game/unnamed/b002_1.c,GameHr_2b5f20
 2b60e0,204,verified,src/game/unnamed/b002_1.c,GameHr_2b60e0
 2b61c0,216,verified,src/game/unnamed/b002_1.c,GameHr_2b61c0
-2b62a0,152,verified,src/game/unnamed/b002_1.c,GameHr_2b62a0
+2b62a0,216,verified,src/game/unnamed/b002_1.c,GameHr_2b62a0
 2b6380,472,verified,src/game/unnamed/b002_1.c,GameHr_2b6380
 2b6570,28,verified,src/game/unnamed/b002_1.c,GameHr_2b6570
 2b65b0,148,verified,src/game/unnamed/b002_2.c,GameHr_2b65b0
@@ -10403,7 +10415,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 32bb00,1984,verified,src/physx/source/lowleveldynamics/src/DyFeatherstoneArticulation.cpp,_ZN5physx2Dy24FeatherstoneArticulation24setupInternalConstraintsEPNS0_16ArticulationLinkEjbRNS0_16ArticulationDataEfffb
 32c2f0,52,verified,src/physx/source/lowleveldynamics/src/DyFeatherstoneArticulation.cpp,_ZN5physx2Dy24FeatherstoneArticulation22setupSolverConstraintsEPNS0_16ArticulationLinkEjbRNS0_16ArticulationDataERj
 32c330,72,verified,src/physx/source/lowleveldynamics/src/DyFeatherstoneArticulation.cpp,_ZN5physx2Dy24FeatherstoneArticulation25setupSolverConstraintsTGSERKNS0_22ArticulationSolverDescEfff
-32c380,1216,disputed,src/game/unnamed/b002_1.c,GameHr_32c380
+32c380,1388,disputed,src/game/unnamed/b002_1.c,GameHr_32c380
 32d040,512,verified,src/physx/source/lowleveldynamics/src/DyFeatherstoneArticulation.cpp,_ZN5physx2Dy24FeatherstoneArticulation21computeSpatialInertiaERNS0_16ArticulationDataE
 32d260,404,verified,src/physx/source/lowleveldynamics/src/DyFeatherstoneArticulation.cpp,_ZN5physx2Dy24FeatherstoneArticulation8computeZERKNS0_16ArticulationDataERKNS_7PxVec3TIfEERNS0_11ScratchDataE
 32d740,920,verified,src/physx/source/lowleveldynamics/src/DyFeatherstoneArticulation.cpp,_ZN5physx2Dy24FeatherstoneArticulation27computeRelativeTransformC2PEPKNS0_16ArticulationLinkEjPKNS0_25ArticulationJointCoreDataEPKNS_2Cm22UnAlignedSpatialVectorEPNS_12PxTransformTIfEEPNS_7PxVec3TIfEEPS9_
@@ -10572,7 +10584,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 360160,1044,verified,src/physx/source/lowleveldynamics/src/DyDynamics.cpp,_ZN5physx2DyL9integrateERKNS_2IG9IslandSimEPNS_16PxSolverBodyDataEPPNS_12PxsRigidBodyEPNS_2Cm13SpatialVectorEPNS_12PxSolverBodyEjfb
 3605e0,152,verified,src/physx/source/lowleveldynamics/src/DyDynamics.cpp,_ZN5physx2Dy14BlockAllocator21reserveConstraintDataEj
 360680,116,verified,src/physx/source/lowleveldynamics/src/DyDynamics.cpp,_ZN5physx2Dy14BlockAllocator19reserveFrictionDataEj
-360700,832,verified,src/game/unnamed/b002_1.c,GameHr_360700
+360700,1200,verified,src/game/unnamed/b002_1.c,GameHr_360700
 360cb0,4,verified,src/physx/source/lowleveldynamics/src/DyDynamics.cpp,_ZN5physx21PxConstraintAllocatorD2Ev
 360cc0,8,verified,src/physx/source/lowleveldynamics/src/DyDynamics.cpp,_ZN5physx2Dy14BlockAllocatorD0Ev
 360cd0,8,verified,src/physx/source/lowleveldynamics/src/DyDynamics.cpp,_ZN5physx2Dy14BlockAllocator16findInputPatchesEPh
@@ -11323,7 +11335,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 3a0080,2280,verified,src/physx/source/lowlevelaabb/src/BpBroadPhaseSap.cpp,_ZN5physx2Bp13BroadPhaseSap13setUpdateDataERKNS0_20BroadPhaseUpdateDataE
 3a09e0,424,verified,src/physx/source/lowlevelaabb/src/BpBroadPhaseSap.cpp,_ZN5physx2Bp13BroadPhaseSap10postUpdateEv
 3a0ba0,1168,verified,src/physx/source/lowlevelaabb/src/BpBroadPhaseSap.cpp,_ZN5physx2Bp13BroadPhaseSap11batchCreateEv
-3a14b0,868,verified,src/game/unnamed/b002_1.c,GameHr_3a14b0
+3a14b0,936,verified,src/game/unnamed/b002_1.c,GameHr_3a14b0
 3a1b60,1172,verified,src/physx/source/lowlevelaabb/src/BpBroadPhaseSap.cpp,_ZN5physx2Bp13BroadPhaseSap11batchRemoveEv
 3a2080,704,verified,src/physx/source/lowlevelaabb/src/BpBroadPhaseSap.cpp,_ZN5physx2Bp13BroadPhaseSap18ComputeSortedListsEPjRjS2_S3_RbS4_
 3a2360,1592,verified,src/physx/source/lowlevelaabb/src/BpBroadPhaseSap.cpp,_ZN5physx2Bp13BroadPhaseSap21batchUpdateFewUpdatesEjRPNS0_14BroadPhasePairERjS5_
@@ -11642,7 +11654,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 3bcfa0,360,verified,src/physx/source/lowleveldynamics/src/DyTGSDynamics.cpp,_ZN5physx2Dy32PxsCreateArticConstraintsSubTask11runInternalEv
 3bd110,28,verified,src/game/unnamed/r000_1.c,GameHr_3bd110
 3bd130,12,verified,src/physx/source/lowleveldynamics/src/DyTGSDynamics.cpp,_ZNK5physx2Dy15SolveIslandTask7getNameEv
-3bd140,2020,verified,src/game/unnamed/b002_1.c,GameHr_3bd140
+3bd140,2236,verified,src/game/unnamed/b002_1.c,GameHr_3bd140
 3bdc20,28,verified,src/game/unnamed/r000_1.c,GameHr_3bdc20
 3bdc40,12,verified,src/physx/source/lowleveldynamics/src/DyTGSDynamics.cpp,_ZNK5physx2Dy17ParallelSolveTask7getNameEv
 3bdc50,120,verified,src/game/unnamed/b002_1.c,GameHr_3bdc50
@@ -12690,7 +12702,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 465a40,704,verified,src/physx/source/geomutils/src/contact/GuContactConvexCoreConvex.cpp,_ZN5physx2Gu11FaceClipper8clipPolyERKNS_7PxVec4TIfEEPNS_7PxVec3TIfEERj
 465d40,512,verified,src/physx/source/geomutils/src/contact/GuContactConvexCoreConvex.cpp,_ZN5physx2Gu11FaceClipper10makePlanesEPKNS_7PxVec3TIfEEjPNS_7PxVec4TIfEERj
 465f60,632,verified,src/physx/source/geomutils/src/contact/GuContactConvexCoreMesh.cpp,_ZN5physx2Gu7Contact13addPatchPointEjRKNS1_5PointE
-466200,1308,verified,src/game/unnamed/b002_1.c,GameHr_466200
+466200,1348,verified,src/game/unnamed/b002_1.c,GameHr_466200
 466850,8,verified,src/physx/source/geomutils/src/contact/GuContactConvexCoreMesh.cpp,_ZZN5physx2Gu28contactConvexCoreHeightfieldERKNS_10PxGeometryES3_RKNS_17PxTransformPaddedES6_RKNS0_17NarrowPhaseParamsERNS0_5CacheERNS_15PxContactBufferEPNS_14PxRenderOutputEEN8CallbackD0Ev
 466860,4352,verified,src/physx/source/geomutils/src/contact/GuContactConvexCoreMesh.cpp,_ZZN5physx2Gu28contactConvexCoreHeightfieldERKNS_10PxGeometryES3_RKNS_17PxTransformPaddedES6_RKNS0_17NarrowPhaseParamsERNS0_5CacheERNS_15PxContactBufferEPNS_14PxRenderOutputEEN8Callback17reportTouchedTrisEjPKj
 4689f0,376,verified,src/physx/source/geomutils/src/GuBounds.cpp,_ZNK5physx2Gu11ConvexShape7supportERKNS_7PxVec3TIfEE
