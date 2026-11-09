@@ -1133,6 +1133,7 @@ ffe0,36,verified,src/nn/crypto/detail/sha3_impl.cpp,_ZNK2nn6crypto6detail8Sha3Im
 836c0,208,verified,src/nn/unnamed/s000_0.c,SdkHr_836c0
 837a0,320,verified,src/nn/unnamed/s000_0.c,SdkHr_837a0
 83980,140,verified,src/libpng/pngrutil.c,png_read_filter_row_paeth_1byte_pixel
+83a20,396,verified,src/nn/unnamed/t000_0.c,SdkHr_83a20
 83bb0,44,verified,src/libpng/pngset.c,png_set_bKGD
 83be0,124,verified,src/libpng/pngset.c,png_set_cHRM_fixed
 83c60,132,verified,src/libpng/pngset.c,png_set_cHRM_XYZ_fixed
@@ -2602,6 +2603,7 @@ d1600,124,verified,src/nn/fs/save/fs_save_data_file_system_core_impl.cpp,_ZN2nn2
 d1680,176,verified,src/nn/fs/save/fs_save_data_file_system_core_impl.cpp,_ZN2nn2fs4save26SaveDataFileSystemCoreImpl12DoRenameFileERKNS0_4PathES5_
 d1730,624,verified,src/nn/fs/dbm/fs_dbm_hierarchical_file_table.cpp,_ZN2nn2fs3dbm29HierarchicalFileTableTemplateINS1_13DirectoryNameENS1_8FileNameENS1_6detail13DirectoryInfoENS5_8FileInfoEE10RenameFileEPbS9_PKcSB_
 d19a0,184,verified,src/nn/fs/save/fs_save_data_file_system_core_impl.cpp,_ZN2nn2fs4save26SaveDataFileSystemCoreImpl17DoRenameDirectoryERKNS0_4PathES5_
+d1a60,496,verified,src/nn/unnamed/t000_0.c,SdkHr_d1a60
 d2020,88,verified,src/nn/fs/save/fs_save_data_file_system_core_impl.cpp,_ZN2nn2fs4save26SaveDataFileSystemCoreImpl24DoGetFileSystemAttributeEPNS0_3fsa19FileSystemAttributeE
 d2080,132,verified,src/nn/fs/save/fs_save_data_file_system_core_impl.cpp,_ZN2nn2fs4save16SaveDataFileImplC2Ev
 d2110,208,verified,src/nn/fs/save/fs_save_data_file_system_core_impl.cpp,_ZN2nn2fs4save16SaveDataFileImplD2Ev
@@ -2743,6 +2745,7 @@ dcd00,664,verified,src/nn/unnamed/s000_1.c,SdkHr_dcd00
 dcfe0,1100,verified,src/nn/unnamed/s000_0.c,SdkHr_dcfe0
 dd460,512,verified,src/nn/unnamed/s000_2.c,SdkHr_dd460
 dd680,312,verified,src/nn/unnamed/s000_0.c,SdkHr_dd680
+dd7e0,1364,verified,src/nn/unnamed/t000_0.c,SdkHr_dd7e0
 ddf10,44,verified,src/nn/unnamed/s000_0.c,SdkHr_ddf10
 ddf40,84,verified,src/nn/unnamed/s000_0.c,SdkHr_ddf40
 ddfa0,212,verified,src/nn/unnamed/s000_0.c,SdkHr_ddfa0
@@ -4472,7 +4475,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 140520,224,verified,src/nn/nlibsdk/nlib_string.cpp,nnmem_nlib_crc32
 140680,224,verified,src/nn/nlibsdk/nlib_string.cpp,nnmem_nlib_crc32c
 1407e0,164,verified,src/nn/nlibsdk/nlib_printf.cpp,nnmem_nlib_vsnprintf_fallback
-140890,412,disputed,src/nn/nlibsdk/nlib_printf_engine.cpp,_ZN2nn7nlibsdk14FormatFallbackEPcmPKcSt9__va_list
+140890,412,verified,src/nn/unnamed/t000_0.c,SdkHr_140890
 141960,216,verified,src/nn/nlibsdk/nlib_printf.cpp,nnmem_nlib_snprintf_fallback
 141a40,164,verified,src/nn/nlibsdk/nlib_printf.cpp,nnmem_nlib_vsnwprintf_fallback
 141af0,216,verified,src/nn/nlibsdk/nlib_printf_engine.cpp,_ZN2nn7nlibsdk14FormatFallbackEPwmPKwSt9__va_list
@@ -6576,6 +6579,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 1a7480,32,verified,src/nn/account/account_ui_settings.cpp,_ZNK2nn7account10UiSettings35GetNintendoAccountStartupDialogTypeEv
 1a74a0,56,verified,src/nn/account/account_ui_settings.cpp,_ZNK2nn7account10UiSettings14GetLicenseTypeEv
 1a74e0,280,verified,src/nn/unnamed/s000_1.c,SdkHr_1a74e0
+1a7600,272,verified,src/nn/unnamed/t000_0.c,SdkHr_1a7600
 1a7840,248,verified,src/nn/unnamed/s000_1.c,SdkHr_1a7840
 1a7a50,96,verified,src/nn/account/account_ui.cpp,_ZN2nn7account18ShowUserIconEditorERKNS0_3UidE
 1a7ab0,96,verified,src/nn/account/account_ui.cpp,_ZN2nn7account22ShowUserNicknameEditorERKNS0_3UidE
@@ -8638,7 +8642,9 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 1f2580,100,verified,src/nn/audio/audio_fft_api.cpp,_ZN2nn5audio6detail31FftProcessInternalImplInt16RealEPsiPKsiRKNS1_13FftWorkBufferENS1_12FftDirectionEj
 1f25f0,72,verified,src/nn/audio/audio_fft_work_buffer.cpp,_ZN2nn5audio6detail26GetFftWorkBufferSizeCommonEmNS0_14FftProcessTypeEi
 1f2640,8,verified,src/nn/audio/audio_fft_api.cpp,_ZN2nn5audio6detail31GetFftWorkBufferAlignmentCommonEv
+1f31e0,480,verified,src/nn/unnamed/t000_0.c,SdkHr_1f31e0
 1f36e0,772,disputed,src/nn/unnamed/s001_0.c,SdkHr_1f36e0
+1f3a00,596,verified,src/nn/unnamed/t000_0.c,SdkHr_1f3a00
 1f3c60,16,verified,src/nn/audio/vector_fill.cpp,_ZN2nn5audio4util10RoundInt32El
 1f3c70,16,verified,src/nn/audio/vector_fill.cpp,_ZN2nn5audio4util13MulInt32Int32Eii
 1f3c80,12,verified,src/nn/audio/vector_fill.cpp,_ZN2nn5audio4util10RoundInt16Ei
@@ -9305,6 +9311,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 22f640,32,verified,src/nn/audio/renderer_voice.cpp,_ZN2nn5audio23GetVoiceBehaviorOptionsEPKNS0_9VoiceTypeE
 22f660,16,verified,src/nn/audio/renderer_voice.cpp,_ZN2nn5audio21ClearVoiceDestinationEPNS0_19AudioRendererConfigEPNS0_9VoiceTypeE
 22f670,4,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_22f670v
+22fbf0,204,verified,src/nn/unnamed/t000_0.c,SdkHr_22fbf0
 22fcf0,92,verified,src/nn/audio/audio_renderer.cpp,_ZN2nn5audio18CloseAudioRendererENS0_19AudioRendererHandleE
 22fd50,64,verified,src/nn/audio/audio_renderer.cpp,_ZN2nn5audio18StartAudioRendererENS0_19AudioRendererHandleE
 22fd90,68,verified,src/nn/audio/audio_renderer.cpp,_ZN2nn5audio17StopAudioRendererENS0_19AudioRendererHandleE
@@ -9531,6 +9538,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 236050,668,verified,src/nn/audio/server/audio_render_system_work_buffer.cpp,_ZN2nn5audio6server17AudioRenderSystem21GetWorkBufferSizeImplERKNS0_6detail30AudioRendererParameterInternalE
 2362f0,4,verified,src/nn/audio/server/audio_render_system.cpp,_ZN2nn5audio6server17AudioRenderSystem50GetRequiredBufferSizeForPerformanceMetricsPerFrameERKNS1_12BehaviorInfoERKNS0_6detail30AudioRendererParameterInternalE
 236300,204,verified,src/nn/audio/server/audio_render_system_setup.cpp,_ZN2nn5audio6server17AudioRenderSystem10InitializeERKNS0_6detail30AudioRendererParameterInternalEjPvmRKNS_6applet20AppletResourceUserIdEi
+2363d0,476,verified,src/nn/unnamed/t000_0.c,SdkHr_2363d0
 2365b0,4,verified,src/nn/audio/server/audio_render_system.cpp,_ZN2nn5audio6server17AudioRenderSystem22DumpRendererPropertiesEv
 2365c0,4,verified,src/nn/audio/server/audio_render_system.cpp,_ZN2nn5audio6server17AudioRenderSystem21DumpRendererMemoryMapEv
 2365d0,12,verified,src/nn/audio/server/audio_render_system.cpp,_ZN2nn5audio6server17AudioRenderSystem23SetUpSystemDebugControlEv
@@ -9602,10 +9610,14 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 23a9c0,32,verified,src/nn/audio/server/audio_renderer_manager_impl.cpp,_ZN2nn5audio6server24AudioRendererManagerImpl17AudioRendererImpl21SetVoiceDropParameterEf
 23a9e0,16,verified,src/nn/audio/server/audio_renderer_manager_impl.cpp,_ZN2nn5audio6server24AudioRendererManagerImpl17AudioRendererImpl21GetVoiceDropParameterENS_2sf3OutIfvEE
 23a9f0,8,verified,src/nn/audio/server/audio_renderer_manager_impl.cpp,_ZN2nn5audio6server24AudioRendererManagerImpl17AudioRendererImpl29ExecuteAudioRendererRenderingEv
+23aa00,392,verified,src/nn/unnamed/t000_0.c,SdkHr_23aa00
+23ab90,308,verified,src/nn/unnamed/t000_0.c,SdkHr_23ab90
 23acd0,112,verified,src/nn/audio/server/audio_renderer_manager_impl.cpp,_ZN2nn5audio6server24AudioRendererManagerImplC2Ev
 23ad40,60,verified,src/nn/audio/server/audio_renderer_manager_impl.cpp,_ZN2nn5audio6server24AudioRendererManagerImplD2Ev
 23ad80,4,verified,src/nn/audio/server/audio_renderer_manager_impl.cpp,_ZN2nn5audio6server24AudioRendererManagerImplD0Ev
+23ad90,348,verified,src/nn/unnamed/t000_0.c,SdkHr_23ad90
 23aef0,96,verified,src/nn/audio/server/audio_renderer_manager_impl.cpp,_ZN2nn5audio6server24AudioRendererManagerImpl16AcquireSessionIdEv
+23af50,240,verified,src/nn/unnamed/t000_0.c,SdkHr_23af50
 23b040,84,verified,src/nn/audio/server/audio_renderer_manager_impl.cpp,_ZN2nn5audio6server24AudioRendererManagerImpl16ReleaseSessionIdEi
 23b0a0,200,verified,src/nn/audio/server/audio_renderer_manager_service.cpp,_ZN2nn5audio6server24AudioRendererManagerImpl21GetAudioDeviceServiceENS_2sf3OutINS3_13SharedPointerINS0_6detail12IAudioDeviceEEEvEERNS_6applet20AppletResourceUserIdE
 23b170,196,verified,src/nn/audio/server/audio_renderer_manager_service.cpp,_ZN2nn5audio6server24AudioRendererManagerImpl37GetAudioDeviceServiceWithRevisionInfoENS_2sf3OutINS3_13SharedPointerINS0_6detail12IAudioDeviceEEEvEERNS_6applet20AppletResourceUserIdEj
@@ -10388,7 +10400,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 27e9d0,128,verified,src/nn/audio/mix_bus_line.cpp,_ZN2nn5audio4util10MixBusLine33ZeroFillFirstExistingOutputSignalEi
 27ea50,12,verified,src/nn/audio/mix_bus_line.cpp,_ZN2nn5audio4util10MixBusLine13StartMixCycleEi
 27ea60,128,verified,src/nn/audio/mix_bus_line.cpp,_ZN2nn5audio4util10MixBusLine17MixInputInterfaceEPNS1_17MixBusLineScratchEiPNS1_15MixBusInterfaceEff
-27eaf0,124,disputed,src/nn/audio/mix_bus_line.cpp,_ZN2nn5audio4util10MixBusLine16MixInputJunctionEPNS1_17MixBusLineScratchEiPNS1_14MixBusJunctionEff
+27eaf0,124,verified,src/nn/unnamed/t000_0.c,SdkHr_27eaf0
 27ec00,328,verified,src/nn/audio/mix_bus_line.cpp,_ZN2nn5audio4util9MixSignalEPNS1_18MixBusSignalBufferEPKS2_ibff
 27ee20,316,verified,src/nn/audio/mix_bus_line.cpp,_ZN2nn5audio4util10MixBusLine12StopMixCycleEPNS1_17MixBusLineScratchEi
 27ef80,120,verified,src/nn/audio/mix_bus_line.cpp,_ZN2nn5audio4util10MixBusLine26RunCompleteBusLineMixCycleEPNS1_17MixBusLineScratchEiff
@@ -10631,6 +10643,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 2abb30,96,verified,src/nn/audio/devmgr/devmgr_api.cpp,_ZN2nn5audio6devmgr10GetMixNodeEPNS1_7MixNodeEjNS_4util10BitFlagSetILi32ENS1_11MixNodeFlagEEE
 2abdd0,172,verified,src/nn/audio/devmgr/devmgr_impl.cpp,_ZN2nn5audio6devmgr6detail12FinalizeImplEv
 2abe80,20,verified,src/nn/audio/devmgr/devmgr_impl.cpp,_ZN2nn5audio6devmgr6detail17IsInitializedImplEv
+2abea0,516,verified,src/nn/unnamed/t000_0.c,SdkHr_2abea0
 2ac0d0,4,verified,src/nn/audio/devmgr/devmgr_impl.cpp,_ZN2nn5audio6devmgr6detail7GetImplEPNS1_12ProxyContextE
 2ac0e0,140,verified,src/nn/audio/devmgr/devmgr_impl.cpp,_ZN2nn5audio6devmgr6detail23DestroyProxyContextImplEPNS1_12ProxyContextE
 2ac170,80,verified,src/nn/audio/devmgr/devmgr_impl.cpp,_ZN2nn5audio6devmgr6detail26ListVirtualDeviceNamesImplEPiPNS0_6detail15NameStorageTypeILi255EEEiNS1_19DeviceFunctionalityEbPKNS1_12ProxyContextE
@@ -10671,6 +10684,9 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 2ae280,4,verified,src/nn/audio/dpm.cpp,_ZN2nn5audio3dpm10InitializeEv
 2ae290,4,verified,src/nn/audio/dpm.cpp,_ZN2nn5audio3dpm8FinalizeEv
 2ae2a0,16,verified,src/nn/audio/dpm.cpp,_ZN2nn5audio3dpm13CreateProcessEPNS1_16DspProcessHandleEPvm
+2ae2b0,164,verified,src/nn/unnamed/t000_0.c,SdkHr_2ae2b0
+2ae700,120,verified,src/nn/unnamed/t000_0.c,SdkHr_2ae700
+2ae780,124,verified,src/nn/unnamed/t000_0.c,SdkHr_2ae780
 2ae800,32,verified,src/nn/unnamed/s001_0.c,SdkHr_2ae800
 2ae830,4,verified,src/nn/audio/karaoke.cpp,_ZN2nn5audio29InitializeKaraokeInputDevicesEv
 2ae840,4,verified,src/nn/audio/karaoke.cpp,_ZN2nn5audio36ListActiveVirtualKaraokeInputDevicesEPNS0_15AudioDeviceNameEi
@@ -10743,6 +10759,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 2b0e30,80,verified,src/nn/audio/sysmix/sysmix_impl.cpp,_ZN2nn5audio6sysmix6detail33ReleaseStreamStateChangeEventImplEPNS_2os11SystemEventEPKNS1_13StreamContextE
 2b0e80,156,verified,src/nn/audio/sysmix/sysmix_impl.cpp,_ZN2nn5audio6sysmix6detail26AcquireStreamDataEventImplEPNS_2os11SystemEventEPKNS1_13StreamContextENS1_26StreamDataNotificationModeEi
 2b0f20,80,verified,src/nn/audio/sysmix/sysmix_impl.cpp,_ZN2nn5audio6sysmix6detail26ReleaseStreamDataEventImplEPNS_2os11SystemEventEPKNS1_13StreamContextE
+2b0f70,568,verified,src/nn/unnamed/t000_0.c,SdkHr_2b0f70
 2b1280,212,verified,src/nn/audio/sysmix/sysmix_impl.cpp,_ZN2nn5audio6sysmix6detail15CloseStreamImplEPNS1_13StreamContextE
 2b1360,24,verified,src/nn/audio/sysmix/sysmix_impl.cpp,_ZN2nn5audio6sysmix6detail18GetStreamStateImplEPNS1_11StreamStateEPKNS1_13StreamContextE
 2b1380,180,verified,src/nn/audio/sysmix/sysmix_impl.cpp,_ZN2nn5audio6sysmix6detail23GetStreamStatisticsImplEPNS1_16StreamStatisticsEPNS1_13StreamContextEb
@@ -11839,6 +11856,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 32e9c0,488,verified,src/nn/codec/hwacod/hwacod_io_buffer.cpp,_ZN2nn5codec6hwacod4shim15IoBufferManagerD2Ev
 32ebc0,476,verified,src/nn/codec/hwacod/hwacod_io_buffer.cpp,_ZN2nn5codec6hwacod4shim15IoBufferManager8FinalizeEv
 32edb0,20,verified,src/nn/codec/hwacod/hwacod_io_buffer.cpp,_ZN2nn5codec6hwacod4shim15IoBufferManager17GetWorkBufferSizeEi
+32ede0,340,verified,src/nn/unnamed/t000_0.c,SdkHr_32ede0
 32ef40,120,verified,src/nn/codec/hwacod/hwacod_io_buffer.cpp,_ZN2nn5codec6hwacod4shim15IoBufferManager15AcquireIoBufferEv
 32efc0,84,verified,src/nn/codec/hwacod/hwacod_io_buffer.cpp,_ZN2nn5codec6hwacod4shim15IoBufferManager15ReleaseIoBufferEPNS2_8IoBufferE
 32f020,24,verified,src/nn/unnamed/s001_0.c,SdkHr_32f020
@@ -11907,7 +11925,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 333a00,316,verified,src/nn/codec/video/h264_encoder.cpp,_ZN2nn5codec21InitializeH264EncoderEPmPNS0_15H264EncoderTypeEPvmttiNS_5movie11BitRateModeENS5_10AvcProfileENS5_8AvcLevelEiiiiibbibNS0_27VideoEncoderHardwareProfileEi
 333b40,256,verified,src/nn/codec/video/h264_encoder.cpp,_ZN2nn5codec21InitializeH264EncoderEPmPNS0_15H264EncoderTypeENS_5gsdrv16WeakNativeHandleEmttiNS_5movie11BitRateModeENS6_10AvcProfileENS6_8AvcLevelEiiiiibbibNS0_27VideoEncoderHardwareProfileEi
 333c40,4,verified,src/nn/codec/video/h264_encoder.cpp,_ZN2nn5codec19FinalizeH264EncoderEPNS0_15H264EncoderTypeE
-333c50,136,disputed,src/nn/codec/video/h264_encoder.cpp,_ZN2nn5codec25RegisterH264EncoderBufferEPNS0_15H264EncoderTypeEjPNS0_25VideoEncoderImagePoolTypeEj
+333c50,140,verified,src/nn/unnamed/t000_0.c,SdkHr_333c50
 333ce0,16,verified,src/nn/codec/video/h264_encoder.cpp,_ZN2nn5codec27UnregisterH264EncoderBufferEPNS0_15H264EncoderTypeEj
 333cf0,36,verified,src/nn/codec/video/h264_encoder.cpp,_ZN2nn5codec16StartH264EncoderEPNS0_15H264EncoderTypeE
 333d40,36,verified,src/nn/codec/video/h264_encoder.cpp,_ZN2nn5codec15StopH264EncoderEPNS0_15H264EncoderTypeE
@@ -12003,6 +12021,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 33b980,116,verified,src/fdk-aac/libAACdec/src/aacdecoder_lib.cpp,_ZN2nn5codec16aacDecoder_CloseEPNS0_20AAC_DECODER_INSTANCEE
 33ba00,148,verified,src/fdk-aac/libAACdec/src/aacdecoder_lib.cpp,_ZN2nn5codec15aacDecoder_FillEPNS0_20AAC_DECODER_INSTANCEEPPhPKjPj
 33c0f0,4,verified,src/fdk-aac/libAACdec/src/aacdecoder_lib.cpp,_ZN2nn5codec24aacDecoder_GetStreamInfoEPNS0_20AAC_DECODER_INSTANCEE
+33c100,684,verified,src/nn/unnamed/t000_0.c,SdkHr_33c100
 33c3b0,44,verified,src/fdk-aac/libAACdec/src/aacdec_drc.cpp,_ZN2nn5codec18aacDecoder_drcInitEPNS0_8CDrcInfoE
 33c3e0,36,verified,src/fdk-aac/libAACdec/src/aacdec_drc.cpp,_ZN2nn5codec29aacDecoder_drcInitChannelDataEPNS0_15CDrcChannelDataE
 33c410,404,verified,src/fdk-aac/libAACdec/src/aacdec_drc.cpp,_ZN2nn5codec22aacDecoder_drcSetParamEPNS0_8CDrcInfoENS0_16AACDEC_DRC_PARAMEi
@@ -12049,6 +12068,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 348280,40,verified,src/fdk-aac/libAACenc/src/aacenc_lib.cpp,_ZN2nn5codecL18aacenc_SbrCallbackEPvPNS0_13FDK_BITSTREAMEiii17AUDIO_OBJECT_TYPE14MP4_ELEMENT_IDi
 3482b0,172,verified,src/fdk-aac/libAACenc/src/aacenc_lib.cpp,_ZN2nn5codec11aacEncCloseEPPNS0_10AACENCODERE
 348360,4640,verified,src/fdk-aac/libAACenc/src/aacenc_lib.cpp,_ZN2nn5codec12aacEncEncodeEPNS0_10AACENCODEREPKNS0_14AACENC_BufDescES5_PKNS0_13AACENC_InArgsEPNS0_14AACENC_OutArgsE
+349d40,672,verified,src/nn/unnamed/t000_0.c,SdkHr_349d40
 349fe0,1308,verified,src/fdk-aac/libAACenc/src/aacenc_lib.cpp,_ZN2nn5codec19aacEncoder_SetParamEPNS0_10AACENCODERENS0_12AACENC_PARAMEj
 34a620,596,verified,src/fdk-aac/libAACenc/src/aacenc_lib.cpp,_ZN2nn5codec19aacEncoder_GetParamEPNS0_10AACENCODERENS0_12AACENC_PARAME
 34a880,428,verified,src/fdk-aac/libAACenc/src/aacenc_lib.cpp,_ZN2nn5codec10aacEncInfoEPNS0_10AACENCODEREPNS0_17AACENC_InfoStructE
@@ -12175,8 +12195,10 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 35bfe0,360,verified,src/nn/codec/aac_huffman.cpp,count11
 35c160,260,verified,src/nn/codec/aac_huffman.cpp,countEsc
 35c280,160,disputed,src/fdk-aac/libAACdec/src/block.cpp,_ZN2nn5codec16CBlock_GetEscapeEPNS0_13FDK_BITSTREAMEi
+35c880,748,verified,src/nn/unnamed/t000_0.c,SdkHr_35c880
 35d0c0,1000,verified,src/fdk-aac/libAACdec/src/block.cpp,_ZN2nn5codec34CBlock_InverseQuantizeSpectralDataEPNS0_22CAacDecoderChannelInfoEPNS0_16SamplingRateInfoE
 35db30,136,verified,src/fdk-aac/libAACdec/src/block.cpp,_ZN2nn5codec10ApplyToolsEPPNS0_22CAacDecoderChannelInfoEPKNS0_16SamplingRateInfoEji
+35dbc0,592,verified,src/nn/unnamed/t000_0.c,SdkHr_35dbc0
 35de20,32,verified,src/fdk-aac/libAACdec/src/block.cpp,_ZN2nn5codec30CBlock_FrequencyToTimeLowDelayEPNS0_28CAacDecoderStaticChannelInfoEPNS0_22CAacDecoderChannelInfoEPssc
 35de40,104,verified,src/fdk-aac/libAACenc/src/block_switch.cpp,_ZN2nn5codec28FDKaacEnc_InitBlockSwitchingEPNS0_23BLOCK_SWITCHING_CONTROLEi
 35dec0,980,disputed,src/fdk-aac/libAACenc/src/block_switch.cpp,_ZN2nn5codec24FDKaacEnc_BlockSwitchingEPNS0_23BLOCK_SWITCHING_CONTROLEiiPKs
@@ -12185,7 +12207,9 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 35e9a0,892,verified,src/fdk-aac/libAACdec/src/channel.cpp,_ZN2nn5codec26CChannel_CodebookTableInitEPNS0_22CAacDecoderChannelInfoE
 35f4f0,188,disputed,src/fdk-aac/libAACdec/src/channelinfo.cpp,_ZN2nn5codec13IcsReadMaxSfbEPNS0_13FDK_BITSTREAMEPNS0_8CIcsInfoEPKNS0_16SamplingRateInfoE
 35fba0,156,verified,src/fdk-aac/libAACdec/src/channelinfo.cpp,_ZN2nn5codec19getSamplingRateInfoEPNS0_16SamplingRateInfoEjjj
+35fc40,264,verified,src/nn/unnamed/t000_0.c,SdkHr_35fc40
 35fed0,212,verified,src/fdk-aac/libAACenc/src/channel_map.cpp,_ZN2nn5codec37FDKaacEnc_GetChannelModeConfigurationE12CHANNEL_MODE
+35ffb0,3072,verified,src/nn/unnamed/t000_0.c,SdkHr_35ffb0
 361270,1400,verified,src/fdk-aac/libAACenc/src/channel_map.cpp,_ZN2nn5codec25FDKaacEnc_InitElementBitsEPNS0_8QC_STATEEPNS0_15CHANNEL_MAPPINGEiii
 3617f0,64,verified,src/fdk-aac/libAACenc/src/channel_map.cpp,_ZN2nn5codec27FDKaacEnc_GetMonoStereoModeE12CHANNEL_MODE
 361840,384,verified,src/fdk-aac/libAACenc/src/chaosmeasure.cpp,_ZN2nn5codec31FDKaacEnc_CalculateChaosMeasureEPiiS1_
@@ -12295,6 +12319,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 36ca30,48,verified,src/fdk-aac/libFDK/src/FDK_hybrid.cpp,_ZN2nn5codec22FDKhybridSynthesisInitEPNS0_18FDK_SYN_HYB_FILTERENS0_15FDK_HYBRID_MODEEii
 36ca60,424,verified,src/fdk-aac/libFDK/src/FDK_hybrid.cpp,_ZN2nn5codec23FDKhybridSynthesisApplyEPNS0_18FDK_SYN_HYB_FILTEREPKiS4_PiS5_
 36cc20,128,verified,src/fdk-aac/libFDK/src/FDK_tools_rom.cpp,_ZN2nn5codec17FDKgetWindowSlopeEii
+36cca0,220,verified,src/nn/unnamed/t000_0.c,SdkHr_36cca0
 36cdf0,356,verified,src/fdk-aac/libFDK/src/FDK_trigFcts.cpp,_ZN2nn5codec10fixp_atan2Eii
 36cfa0,292,verified,src/fdk-aac/libFDK/src/FDK_trigFcts.cpp,_ZN2nn5codec9fixp_atanEi
 36d340,5192,verified,src/nn/codec/transforms.cpp,_ZN2nn5codec3fftEiPiS1_
@@ -12414,12 +12439,14 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 37c640,4272,verified,src/fdk-aac/libPCMutils/src/pcmutils_lib.cpp,_ZN2nn5codec17pcmDmx_ApplyFrameEPNS0_16PCM_DMX_INSTANCEEPsjPiiP18AUDIO_CHANNEL_TYPEPhPA8_KhS4_
 37ef40,912,verified,src/fdk-aac/libPCMutils/src/pcmutils_lib.cpp,_ZN2nn5codecL21getChannelDescriptionENS0_20PCM_DMX_CHANNEL_MODEEPA8_KhP18AUDIO_CHANNEL_TYPEPhS7_
 382a60,64,verified,src/fdk-aac/libPCMutils/src/pcmutils_lib.cpp,_ZN2nn5codec12pcmDmx_CloseEPPNS0_16PCM_DMX_INSTANCEE
+382aa0,664,verified,src/nn/unnamed/t000_0.c,SdkHr_382aa0
 382d40,340,verified,src/fdk-aac/libPCMutils/src/pcmutils_lib.cpp,_ZN2nn5codecL13dmxSetChannelEPA8_sPA8_ijjsi
 382ea0,752,verified,src/fdk-aac/libPCMutils/src/pcmutils_lib.cpp,_ZN2nn5codecL13dmxAddChannelEPA8_sPA8_ijjsi
 3831a0,300,verified,src/fdk-aac/libAACenc/src/pnsparam.cpp,_ZN2nn5codec22FDKaacEnc_lookUpPnsUseEiiii
 3832e0,676,verified,src/fdk-aac/libAACenc/src/pnsparam.cpp,_ZN2nn5codec21FDKaacEnc_GetPnsParamEPNS0_11NOISEPARAMSEiiiPKiPiii
 3835a0,60,verified,src/fdk-aac/libAACenc/src/pre_echo_control.cpp,_ZN2nn5codec28FDKaacEnc_InitPreEchoControlEPiS1_iS1_S1_
 3835e0,844,verified,src/fdk-aac/libAACenc/src/pre_echo_control.cpp,_ZN2nn5codec24FDKaacEnc_PreEchoControlEPiiiisS1_iS1_
+383980,3032,verified,src/nn/unnamed/t000_0.c,SdkHr_383980
 384680,256,verified,src/fdk-aac/libAACenc/src/psy_main.cpp,_ZN2nn5codec16FDKaacEnc_PsyNewEPPNS0_12PSY_INTERNALEiiPh
 3847a0,816,verified,src/fdk-aac/libAACenc/src/psy_main.cpp,_ZN2nn5codec18FDKaacEnc_PsyCloseEPPNS0_12PSY_INTERNALEPPNS0_7PSY_OUTE
 384ae0,484,verified,src/fdk-aac/libAACenc/src/psy_main.cpp,_ZN2nn5codec19FDKaacEnc_PsyOutNewEPPNS0_7PSY_OUTEiiiPh
@@ -12496,6 +12523,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 3a2950,28,verified,src/fdk-aac/libMpegTPDec/src/tpdec_lib.cpp,_ZN2nn5codec32transportDec_RegisterAscCallbackEPNS0_12TRANSPORTDECEPFiPvPKNS0_21CSAudioSpecificConfigEES3_
 3a2970,28,verified,src/fdk-aac/libMpegTPDec/src/tpdec_lib.cpp,_ZN2nn5codec32transportDec_RegisterSscCallbackEPNS0_12TRANSPORTDECEPFiPvPNS0_13FDK_BITSTREAME17AUDIO_OBJECT_TYPEiiiES3_
 3a2990,28,verified,src/fdk-aac/libMpegTPDec/src/tpdec_lib.cpp,_ZN2nn5codec32transportDec_RegisterSbrCallbackEPNS0_12TRANSPORTDECEPFiPvPNS0_13FDK_BITSTREAMEiii17AUDIO_OBJECT_TYPE14MP4_ELEMENT_IDiES3_
+3a29b0,392,verified,src/nn/unnamed/t000_0.c,SdkHr_3a29b0
 3a2b40,16,verified,src/fdk-aac/libMpegTPDec/src/tpdec_lib.cpp,_ZN2nn5codec25transportDec_GetBitstreamEPNS0_12TRANSPORTDECEj
 3a2b50,8,verified,src/fdk-aac/libMpegTPDec/src/tpdec_lib.cpp,_ZN2nn5codec22transportDec_GetFormatEPNS0_12TRANSPORTDECE
 3a2b60,100,verified,src/fdk-aac/libMpegTPDec/src/tpdec_lib.cpp,_ZN2nn5codec30transportDec_GetBufferFullnessEPNS0_12TRANSPORTDECE
@@ -12507,6 +12535,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 3a3640,4,verified,src/fdk-aac/libMpegTPDec/src/tpdec_lib.cpp,_ZN2nn5codec26transportDec_EndAccessUnitEPNS0_12TRANSPORTDECE
 3a3940,352,verified,src/fdk-aac/libMpegTPDec/src/tpdec_lib.cpp,_ZN2nn5codec21transportDec_SetParamEPNS0_12TRANSPORTDECENS0_11TPDEC_PARAMEi
 3a3aa0,60,verified,src/fdk-aac/libMpegTPDec/src/tpdec_lib.cpp,_ZN2nn5codec29transportDec_GetNrOfSubFramesEPNS0_12TRANSPORTDECE
+3a3ae0,632,verified,src/nn/unnamed/t000_0.c,SdkHr_3a3ae0
 3a3d60,64,verified,src/fdk-aac/libMpegTPDec/src/tpdec_lib.cpp,_ZN2nn5codec24transportDec_CrcStartRegEPNS0_12TRANSPORTDECEi
 3a3da0,60,verified,src/fdk-aac/libMpegTPDec/src/tpdec_lib.cpp,_ZN2nn5codec22transportDec_CrcEndRegEPNS0_12TRANSPORTDECEi
 3a3de0,108,verified,src/fdk-aac/libMpegTPDec/src/tpdec_lib.cpp,_ZN2nn5codec21transportDec_CrcCheckEPNS0_12TRANSPORTDECE
@@ -12545,6 +12574,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 3a95d0,40,verified,src/fdk-aac/libMpegTPEnc/src/tpenc_lib.cpp,_ZN2nn5codec24transportEnc_CrcStartRegEPNS0_12TRANSPORTENCEi
 3a9600,36,verified,src/fdk-aac/libMpegTPEnc/src/tpenc_lib.cpp,_ZN2nn5codec22transportEnc_CrcEndRegEPNS0_12TRANSPORTENCEi
 3a9630,128,verified,src/fdk-aac/libMpegTPEnc/src/tpenc_lib.cpp,_ZN2nn5codec20transportEnc_GetConfEPNS0_12TRANSPORTENCEP12CODER_CONFIGPNS0_13FDK_BITSTREAMEPj
+3a96b0,644,verified,src/nn/unnamed/t000_0.c,SdkHr_3a96b0
 3aa1e0,1924,verified,src/nn/codec/sbr_envelope.cpp,nn::codec::aliasingReduction
 3aab00,21368,verified,src/nn/codec/sbr_envelope.cpp,nn::codec::calculateSbrEnvelope
 3b0820,552,verified,src/nn/codec/sbr_envelope.cpp,nn::codec::maxSubbandSample
@@ -12595,7 +12625,9 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 3c5720,732,verified,src/fdk-aac/libSBRdec/src/sbrdecoder.cpp,_ZN2nn5codec25sbrDecoder_drcFeedChannelEPNS0_20SBR_DECODER_INSTANCEEijPiishPt
 3c5a40,264,verified,src/fdk-aac/libSBRdec/src/sbrdecoder.cpp,_ZN2nn5codec21sbrDecoder_drcDisableEPNS0_20SBR_DECODER_INSTANCEEi
 3c5b80,1268,verified,src/fdk-aac/libSBRdec/src/sbrdecoder.cpp,_ZN2nn5codec16sbrDecoder_ParseEPNS0_20SBR_DECODER_INSTANCEEPNS0_13FDK_BITSTREAMEPiii14MP4_ELEMENT_IDii
+3c68a0,1528,verified,src/nn/unnamed/t000_0.c,SdkHr_3c68a0
 3c7080,936,verified,src/fdk-aac/libSBRdec/src/sbrdecoder.cpp,_ZN2nn5codec16sbrDecoder_CloseEPPNS0_20SBR_DECODER_INSTANCEE
+3c7430,636,verified,src/nn/unnamed/t000_0.c,SdkHr_3c7430
 3c76b0,136,verified,src/fdk-aac/libSBRdec/src/sbrdecoder.cpp,_ZN2nn5codec19sbrDecoder_GetDelayEPNS0_20SBR_DECODER_INSTANCEE
 3c7740,200,verified,src/fdk-aac/libSBRdec/src/sbrdec_drc.cpp,_ZN2nn5codec25sbrDecoder_drcInitChannelEPNS0_18SBRDEC_DRC_CHANNELE
 3c7810,116,verified,src/fdk-aac/libSBRdec/src/sbrdec_drc.cpp,_ZN2nn5codec27sbrDecoder_drcUpdateChannelEPNS0_18SBRDEC_DRC_CHANNELE
@@ -12644,6 +12676,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 3d0180,872,verified,src/fdk-aac/libSBRenc/src/bit_sbr.cpp,_ZN2nn5codecL17writeEnvelopeDataEPNS0_12SBR_ENV_DATAEPNS0_13FDK_BITSTREAMEi
 3d0520,984,verified,src/fdk-aac/libSBRenc/src/bit_sbr.cpp,_ZN2nn5codecL19writeNoiseLevelDataEPNS0_12SBR_ENV_DATAEPNS0_13FDK_BITSTREAMEi
 3d0920,616,verified,src/fdk-aac/libSBRenc/src/bit_sbr.cpp,_ZN2nn5codecL18encodeExtendedDataEPNS0_19T_PARAMETRIC_STEREOEPNS0_13FDK_BITSTREAME
+3d0b90,576,verified,src/nn/unnamed/t000_0.c,SdkHr_3d0b90
 3d0de0,1812,verified,src/fdk-aac/libSBRenc/src/code_env.cpp,_ZN2nn5codec22FDKsbrEnc_codeEnvelopeEPaPKNS0_8FREQ_RESEPNS0_17SBR_CODE_ENVELOPEEPiiiii
 3d1900,116,verified,src/fdk-aac/libSBRenc/src/code_env.cpp,_ZN2nn5codec29FDKsbrEnc_InitSbrCodeEnvelopeEPNS0_17SBR_CODE_ENVELOPEEPiiii
 3d1980,248,verified,src/fdk-aac/libSBRenc/src/env_bit.cpp,_ZN2nn5codec26FDKsbrEnc_InitSbrBitstreamEPNS0_11COMMON_DATAEPhiPNS0_11FDK_CRCINFOEj
@@ -12656,6 +12689,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 3d8520,380,verified,src/fdk-aac/libSBRenc/src/env_est.cpp,_ZN2nn5codec32FDKsbrEnc_InitExtractSbrEnvelopeEPNS0_20SBR_EXTRACT_ENVELOPEEiiiiiijiPhj
 3d86a0,16,verified,src/fdk-aac/libSBRenc/src/env_est.cpp,_ZN2nn5codec34FDKsbrEnc_deleteExtractSbrEnvelopeEPNS0_20SBR_EXTRACT_ENVELOPEE
 3d86b0,28,verified,src/fdk-aac/libSBRenc/src/env_est.cpp,_ZN2nn5codec24FDKsbrEnc_GetEnvEstDelayEPNS0_20SBR_EXTRACT_ENVELOPEE
+3d86e0,1892,verified,src/nn/unnamed/t000_0.c,SdkHr_3d86e0
 3da040,208,verified,src/fdk-aac/libSBRenc/src/fram_gen.cpp,_ZN2nn5codecL11specialCaseEPiiS1_S1_S1_S1_S1_i
 3da120,992,verified,src/fdk-aac/libSBRenc/src/fram_gen.cpp,_ZN2nn5codecL14calcCtrlSignalEPNS0_8SBR_GRIDENS0_11FRAME_CLASSEPiiS4_iiiii
 3da6a0,276,verified,src/fdk-aac/libSBRenc/src/fram_gen.cpp,_ZN2nn5codec32FDKsbrEnc_initFrameInfoGeneratorEPNS0_18SBR_ENVELOPE_FRAMEEiiiiPKNS0_8FREQ_RESEhi
@@ -12689,7 +12723,9 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 3e6620,2916,verified,src/fdk-aac/libSBRenc/src/ps_main.cpp,_ZN2nn5codec42FDKsbrEnc_PSEnc_ParametricStereoProcessingEPNS0_19T_PARAMETRIC_STEREOEPPsjPPNS0_15QMF_FILTER_BANKEPPiS9_S3_S6_Pai
 3e75f0,176,verified,src/fdk-aac/libSBRenc/src/resampler.cpp,_ZN2nn5codec25FDKaacEnc_InitDownsamplerEPNS0_11DOWNSAMPLEREii
 3e76a0,960,verified,src/fdk-aac/libSBRenc/src/resampler.cpp,_ZN2nn5codec20FDKaacEnc_DownsampleEPNS0_11DOWNSAMPLEREPsiiS3_Pii
+3e7ab0,492,verified,src/nn/unnamed/t000_0.c,SdkHr_3e7ab0
 3e7cb0,80,verified,src/fdk-aac/libSBRenc/src/sbrenc_freq_sca.cpp,_ZN2nn5codec27FDKsbrEnc_getSbrStopFreqRAWEii
+3e7f50,732,verified,src/nn/unnamed/t000_0.c,SdkHr_3e7f50
 3e8260,872,verified,src/fdk-aac/libSBRenc/src/sbrenc_freq_sca.cpp,_ZN2nn5codec25FDKsbrEnc_UpdateFreqScaleEPhPiiiii
 3e8980,252,verified,src/nn/unnamed/s001_0.c,SdkHr_3e8980
 3e8aa0,336,verified,src/fdk-aac/libSBRenc/src/sbrenc_freq_sca.cpp,_ZN2nn5codec21FDKsbrEnc_UpdateHiResEPhPiS1_iS2_
@@ -12708,6 +12744,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 3eb520,184,verified,src/fdk-aac/libSBRenc/src/sbr_encoder.cpp,_ZN2nn5codec24sbrEncoder_UpdateBuffersEPNS0_11SBR_ENCODEREPs
 3eb5e0,12,verified,src/fdk-aac/libSBRenc/src/sbr_encoder.cpp,_ZN2nn5codec29sbrEncoder_GetEstimateBitrateEPNS0_11SBR_ENCODERE
 3eb5f0,20,verified,src/fdk-aac/libSBRenc/src/sbr_encoder.cpp,_ZN2nn5codec28sbrEncoder_GetInputDataDelayEPNS0_11SBR_ENCODERE
+3eb610,636,verified,src/nn/unnamed/t000_0.c,SdkHr_3eb610
 3eb8a0,672,verified,src/nn/codec/sbr_noise.cpp,_ZN2nn5codec25FDKsbrEnc_Shellsort_fractEPii
 3ebba0,672,verified,src/fdk-aac/libSBRenc/src/sbr_misc.cpp,_ZN2nn5codec23FDKsbrEnc_Shellsort_intEPii
 3ebea0,372,verified,src/fdk-aac/libSBRenc/src/sbr_misc.cpp,_ZN2nn5codec20FDKsbrEnc_AddVecLeftEPiS1_S1_i
@@ -12890,6 +12927,8 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 3f3500,336,verified,src/nn/ec/ec_consumable_service_item.cpp,_ZN2nn2ec28AsyncRecoverRightDataRequest3EndEv
 3f3660,132,verified,src/nn/ec/ec_consumable_service_item.cpp,_ZN2nn2ec28AsyncConsumeRightDataRequest5BeginEv
 3f36f0,212,verified,src/nn/ec/ec_consumable_service_item.cpp,_ZN2nn2ec28AsyncConsumeRightDataRequest3EndEv
+3f4150,172,verified,src/nn/unnamed/t000_0.c,SdkHr_3f4150
+3f51b0,172,verified,src/nn/unnamed/t000_0.c,SdkHr_3f51b0
 3f5790,8,verified,src/nn/sdk_trivial_forwarders.cpp,_Z14SdkStub_3f5790m
 3f6d60,812,verified,src/nn/unnamed/s001_0.c,SdkHr_3f6d60
 3f71a0,460,verified,src/nn/unnamed/s001_0.c,SdkHr_3f71a0
@@ -12907,6 +12946,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 3f86f0,1040,verified,src/nn/unnamed/s001_0.c,SdkHr_3f86f0
 3f8b00,24,verified,src/nn/ec/ec_consumable_service_item.cpp,_ZNK2nn2ec30ConsumableServiceItemRightData26GetConsumableServiceItemIdEv
 3f8b20,8,verified,src/nn/ec/ec_consumable_service_item.cpp,_ZNK2nn2ec30ConsumableServiceItemRightData26IsServiceProvidableOnLocalEv
+3f8b40,308,verified,src/nn/unnamed/t000_0.c,SdkHr_3f8b40
 3f8d30,240,verified,src/nn/unnamed/s001_0.c,SdkHr_3f8d30
 3f8f20,88,verified,src/nn/ec/ec_purchased_event.cpp,_ZN2nn2ec56SetRequiredAddOnContentsOnContentsAvailabilityTransitionENS_4SpanIKiEE
 3f8f80,308,verified,src/nn/ec/ec_purchased_event.cpp,_ZN2nn2ec24InitializePurchasedEventEv
@@ -13037,14 +13077,17 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 3fe710,248,verified,src/nn/ec/ec_shop_impl.cpp,_ZN2nn2ec6detail26ShowShopRedownloadListImplENS1_10LaunchModeERKNS_7account3UidENS0_8SourceIdE
 3fe810,248,verified,src/nn/ec/ec_shop_impl.cpp,_ZN2nn2ec6detail36ShowShopDigitalBundleInformationImplENS1_10LaunchModeERKNS_7account3UidENS0_8SourceIdE
 3fe910,12,verified,src/nn/sdk_trivial_forwarders.cpp,_Z14SdkStub_3fe910v
+3fe920,292,verified,src/nn/unnamed/t000_0.c,SdkHr_3fe920
 3fef90,76,verified,src/nn/ec/ec_shop_service_access_server.cpp,_ZN2nn2ec6detail23ShopServiceAccessServer5ProxyC2Ev
 3fefe0,148,verified,src/nn/ec/ec_shop_service_access_server.cpp,_ZN2nn2ec6detail23ShopServiceAccessServer5ProxyD2Ev
 3ff080,140,verified,src/nn/ec/ec_shop_service_access_server.cpp,_ZN2nn2ec6detail23ShopServiceAccessServer5Proxy8FinalizeEv
+3ff110,576,verified,src/nn/unnamed/t000_0.c,SdkHr_3ff110
 3ff480,96,verified,src/nn/ec/ec_shop_service_access_server.cpp,_ZN2nn2ec6detail23ShopServiceAccessServer5Proxy23CreateAccessorInterfaceEPNS_2sf13SharedPointerINS_3nim6detail20IShopServiceAccessorEEERKh
 3ff4e0,8,verified,src/nn/ec/ec_shop_service_access_server.cpp,_ZN2nn2ec6detail23ShopServiceAccessServer5Proxy11AcquireImplEv
 3ff4f0,80,verified,src/nn/ec/ec_shop_service_access_server.cpp,_ZN2nn2ec6detail23ShopServiceAccessServer5Proxy6AttachEPNS0_19ShopServiceAccessorE
 3ff540,96,verified,src/nn/ec/ec_shop_service_access_server.cpp,_ZN2nn2ec6detail23ShopServiceAccessServer5Proxy6DetachEPNS0_19ShopServiceAccessorE
 3ff690,168,verified,src/nn/ec/ec_shop_service_access_server.cpp,_ZN2nn2ec6detail23ShopServiceAccessServer21SpecialClientRegisterD2Ev
+3ff740,248,verified,src/nn/unnamed/t000_0.c,SdkHr_3ff740
 3ff840,124,verified,src/nn/ec/ec_shop_service_access_server.cpp,_ZN2nn2ec6detail23ShopServiceAccessServer10ProxyStore11GetInstanceEv
 3ff8c0,8,verified,src/nn/ec/ec_shop_service_access_server.cpp,_ZN2nn2ec6detail23ShopServiceAccessServer10ProxyStore10InitializeEPNS2_5ProxyE
 3ff8e0,196,verified,src/nn/ec/ec_shop_service_access_server.cpp,_ZN2nn2ec6detail23ShopServiceAccessServer10ProxyStore8FinalizeEv
@@ -13242,6 +13285,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 406f00,88,verified,src/nn/err/detail/err_context_accessors.cpp,_ZNK2nn3err6detail10RawContext9SerializeEPvm
 406f60,172,verified,src/nn/err/context_series_lifetime.cpp,_ZN2nn3err6detail10RawContext11DeserializeEPKvm
 407010,60,verified,src/nn/err/context_series_lifetime.cpp,_ZN2nn3err6detail10RawContext16IsDeserializableEPKvm
+407060,452,verified,src/nn/unnamed/t000_0.c,SdkHr_407060
 407350,60,verified,src/nn/err/context_series_lifetime.cpp,_ZN2nn3err6detail23SerializedContextSeriesC2EOS2_
 407390,144,verified,src/nn/err/context_series_lifetime.cpp,_ZN2nn3err6detail23SerializedContextSeriesaSEOS2_
 407420,64,verified,src/nn/err/context_series_lifetime.cpp,_ZN2nn3err6detail23SerializedContextSeries5ResetEv
@@ -13262,6 +13306,8 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 407840,420,verified,src/nn/err/err_context_traits.cpp,_ZN2nn3err6detail13ContextTraits11MakeContextINS0_11ChatContextEEET_RKNS1_10RawContextE
 407a00,344,verified,src/nn/err/err_context_traits.cpp,_ZN2nn3err6detail13ContextTraits20UpdateRawContextDataINS0_11ChatContextEEEvRKNS1_10RawContextERKT_
 407b60,200,verified,src/nn/err/err_context_traits.cpp,_ZN2nn3err6detail13ContextTraits8ToStringINS0_11ChatContextEEEvPcmRKT_
+407c30,256,verified,src/nn/unnamed/t000_0.c,SdkHr_407c30
+407d50,140,verified,src/nn/unnamed/t000_0.c,SdkHr_407d50
 407e70,96,verified,src/nn/err/err_context_reader.cpp,_ZN2nn3err13ContextReader26SetSerializedContextSeriesEONS0_6detail23SerializedContextSeriesE
 408010,32,verified,src/nn/err/err_context_reader.cpp,_ZNK2nn3err13ContextReader7GetTypeEv
 408030,8,verified,src/nn/err/err_context_reader.cpp,_ZN2nn3err13ContextReader13SetTotalCountEi
@@ -13312,6 +13358,8 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 40a3e0,40,verified,src/nn/err/err_context_api.cpp,_ZN2nn3err6detail14ContextApiImpl10AddContextERNS1_35ContextWriterClientResourceAccessorENS0_17ContextDescriptorENS_6ResultEONS_4util8optionalINS1_10RawContextEEE
 40a410,40,verified,src/nn/err/err_context_api.cpp,_ZN2nn3err6detail14ContextApiImpl13CommitContextINS0_7context16IWriterForSystemEEEvRT_RNS1_35ContextWriterClientResourceAccessorENS0_17ContextDescriptorENS_6ResultE
 40a440,40,verified,src/nn/err/err_context_api.cpp,_ZN2nn3err6detail14ContextApiImpl13CommitContextINS0_7context21IWriterForApplicationEEEvRT_RNS1_35ContextWriterClientResourceAccessorENS0_17ContextDescriptorENS_6ResultE
+40a470,256,verified,src/nn/unnamed/t000_0.c,SdkHr_40a470
+40a570,256,verified,src/nn/unnamed/t000_0.c,SdkHr_40a570
 40a670,48,verified,src/nn/err/detail/err_context_accessors.cpp,_ZN2nn3err6detail18ContextSeriesArray12SeriesHolder10InitializeENS0_17ContextDescriptorENS_6ResultE
 40a6a0,16,verified,src/nn/err/detail/err_context_accessors.cpp,_ZNK2nn3err6detail18ContextSeriesArray12SeriesHolder13IsInitializedEv
 40a6b0,12,verified,src/nn/err/detail/err_context_accessors.cpp,_ZN2nn3err6detail18ContextSeriesArray12SeriesHolder5ResetEv
@@ -13341,10 +13389,16 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 40b630,172,verified,src/nn/err/detail/err_context_registrar_client.cpp,_ZN2nn3err6detail22ContextRegistrarClientaSEOS2_
 40b6e0,84,verified,src/nn/err/detail/err_context_registrar_client.cpp,_ZN2nn3err6detail22ContextRegistrarClient10InitializeEONS_2sf13SharedPointerINS0_7context17IContextRegistrarEEEPNS1_18ContextSeriesArrayEPNS_14MemoryResourceE
 40b740,48,verified,src/nn/err/detail/err_context_registrar_client.cpp,_ZN2nn3err6detail22ContextRegistrarClient10AddContextEONS1_10RawContextENS_6ResultE
+40b770,232,verified,src/nn/unnamed/t000_0.c,SdkHr_40b770
 40b860,12,verified,src/nn/err/context_series.cpp,_ZN2nn3err6detail23ContextWriterClientImpl34InheritRegisteredContextDescriptorERNS1_18ContextSeriesArrayENS0_17ContextDescriptorENS_6ResultE
 40b870,16,verified,src/nn/err/err_context_writer_client.cpp,_ZN2nn3err6detail23ContextWriterClientImpl10AddContextERNS1_18ContextSeriesArrayENS0_17ContextDescriptorENS_6ResultEONS1_10RawContextE
 40b880,16,verified,src/nn/err/err_context_writer_client.cpp,_ZN2nn3err6detail23ContextWriterClientImpl12UpdateResultERNS1_18ContextSeriesArrayENS0_17ContextDescriptorENS_6ResultES6_
 40b890,52,verified,src/nn/err/err_context_writer_client.cpp,_ZN2nn3err6detail23ContextWriterClientImpl13ConvertResultERNS1_18ContextSeriesArrayENS0_17ContextDescriptorENS_6ResultES6_
+40b8d0,264,verified,src/nn/unnamed/t000_0.c,SdkHr_40b8d0
+40b9f0,264,verified,src/nn/unnamed/t000_0.c,SdkHr_40b9f0
+40bb20,552,verified,src/nn/unnamed/t000_0.c,SdkHr_40bb20
+40bdc0,136,verified,src/nn/unnamed/t000_0.c,SdkHr_40bdc0
+40be50,112,verified,src/nn/unnamed/t000_0.c,SdkHr_40be50
 40bec0,12,verified,src/nn/err/context_initialization.cpp,_ZN2nn3err6detail38GetContextWriterClientResourceAccessorEv
 40bed0,288,verified,src/nn/err/context_initialization.cpp,_ZN2nn3err26InitializeContextWriterApiEv
 40c120,144,verified,src/nn/unnamed/s001_0.c,SdkHr_40c120
@@ -13505,6 +13559,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 41a1b0,876,verified,src/nn/unnamed/s001_0.c,SdkHr_41a1b0
 41a520,484,verified,src/nn/unnamed/s001_0.c,SdkHr_41a520
 41a760,328,verified,src/nn/unnamed/s001_0.c,SdkHr_41a760
+41abc0,484,disputed,src/nn/unnamed/t000_1.c,SdkHr_41abc0
 41b420,212,verified,src/nn/unnamed/s001_0.c,SdkHr_41b420
 41b500,56,verified,src/nn/fontll/itype/fs_api.c,make_outline
 41b540,196,verified,src/nn/unnamed/s001_0.c,SdkHr_41b540
@@ -13546,10 +13601,12 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 421940,512,verified,src/nn/unnamed/s001_2.c,SdkHr_421940
 421b40,284,verified,src/nn/unnamed/s001_2.c,SdkHr_421b40
 421c60,548,verified,src/nn/unnamed/s001_2.c,SdkHr_421c60
+421e90,416,verified,src/nn/unnamed/t000_0.c,SdkHr_421e90
 422040,268,disputed,src/nn/unnamed/s001_1.c,SdkHr_422040
 4228c0,792,verified,src/nn/unnamed/s001_1.c,SdkHr_4228c0
 424820,200,verified,src/nn/unnamed/s001_1.c,SdkHr_424820
 427000,772,verified,src/nn/unnamed/s001_1.c,SdkHr_427000
+429280,852,verified,src/nn/unnamed/t000_0.c,SdkHr_429280
 42a3e0,2964,verified,src/nn/unnamed/s001_1.c,SdkHr_42a3e0
 42c1e0,76,verified,src/nn/fontll/itype/fs_file.c,FS_open
 42c230,52,verified,src/nn/fontll/itype/fs_file.c,FS_close
@@ -13601,6 +13658,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 42f540,684,verified,src/nn/unnamed/s001_1.c,SdkHr_42f540
 42f7f0,292,verified,src/nn/unnamed/s001_1.c,SdkHr_42f7f0
 42f920,172,verified,src/nn/unnamed/s001_1.c,SdkHr_42f920
+42f9e0,268,verified,src/nn/unnamed/t000_0.c,SdkHr_42f9e0
 42fb00,180,verified,src/nn/unnamed/s001_1.c,SdkHr_42fb00
 42fbe0,344,verified,src/nn/unnamed/s001_1.c,SdkHr_42fbe0
 42fd50,44,verified,src/nn/unnamed/s001_1.c,SdkHr_42fd50
@@ -13669,6 +13727,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 4337a0,88,verified,src/nn/unnamed/s001_1.c,SdkHr_4337a0
 433800,88,verified,src/nn/unnamed/s001_1.c,SdkHr_433800
 433860,256,verified,src/nn/unnamed/s001_1.c,SdkHr_433860
+433960,9968,verified,src/nn/unnamed/t000_0.c,SdkHr_433960
 437950,128,verified,src/nn/unnamed/s001_1.c,SdkHr_437950
 4379e0,352,verified,src/nn/unnamed/s001_2.c,SdkHr_4379e0
 437b60,540,verified,src/nn/unnamed/s001_2.c,SdkHr_437b60
@@ -13695,6 +13754,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 43ad70,124,verified,src/nn/fontll/itype/fsglue.c,advance_elementPtr
 43adf0,108,verified,src/nn/fontll/itype/fsglue.c,fsg_IncrementElement
 43b2c0,956,verified,src/nn/unnamed/s001_1.c,SdkHr_43b2c0
+43b6b0,704,verified,src/nn/unnamed/t000_0.c,SdkHr_43b6b0
 43cb50,136,verified,src/nn/fontll/itype/fsglue.c,fsg_CopyElementBackwards
 43cbe0,276,verified,src/nn/fontll/itype/fsglue.c,fsg_SetUpElement
 43cd00,620,verified,src/nn/unnamed/s001_1.c,SdkHr_43cd00
@@ -13735,6 +13795,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 444d00,224,verified,src/nn/unnamed/s001_1.c,SdkHr_444d00
 444de0,656,verified,src/nn/unnamed/s001_1.c,SdkHr_444de0
 445090,332,verified,src/nn/unnamed/s001_1.c,SdkHr_445090
+449700,804,disputed,src/nn/unnamed/t000_0.c,SdkHr_449700
 449b00,844,verified,src/nn/unnamed/s001_1.c,SdkHr_449b00
 44ad60,788,verified,src/nn/unnamed/s001_1.c,SdkHr_44ad60
 44cf60,1148,verified,src/nn/unnamed/s001_1.c,SdkHr_44cf60
@@ -13742,6 +13803,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 44d600,380,verified,src/nn/unnamed/s001_1.c,SdkHr_44d600
 44d780,232,verified,src/nn/unnamed/s001_1.c,SdkHr_44d780
 44d880,688,disputed,src/nn/unnamed/s001_1.c,SdkHr_44d880
+44e9e0,292,verified,src/nn/unnamed/t000_0.c,SdkHr_44e9e0
 44fa00,852,verified,src/nn/unnamed/s001_1.c,SdkHr_44fa00
 450020,1108,verified,src/nn/unnamed/s001_1.c,SdkHr_450020
 450480,152,verified,src/nn/unnamed/s001_1.c,SdkHr_450480
@@ -14130,10 +14192,14 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 461d40,152,verified,src/nn/friends/detail/friends_my_page_applet.cpp,_ZN2nn7friends6detail17StartMyPageAppletERKNS_6applet19LibraryAppletHandleERKNS0_13AppletArgVer1Eb
 461de0,152,verified,src/nn/friends/detail/friends_my_page_applet.cpp,_ZN2nn7friends6detail17StartMyPageAppletERKNS_6applet19LibraryAppletHandleERKNS0_13AppletArgVer2Eb
 461e80,56,verified,src/nn/friends/detail/friends_my_page_applet.cpp,_ZN2nn7friends6detail15GetMyPageResultERKNS_6applet19LibraryAppletHandleE
+461ec0,300,verified,src/nn/unnamed/t000_0.c,SdkHr_461ec0
 462040,124,verified,src/nn/fs/fs_save_data_for_application.cpp,_ZN2nn2fs26GetCacheStorageTargetMediaEPNS0_23CacheStorageTargetMediaENS_3ncm13ApplicationIdE
 4620c0,392,verified,src/nn/fs/fs_save_data_for_application.cpp,_ZN2nn2fs12_GLOBAL__N_130GetCacheStorageTargetMediaImplEPNS0_23CacheStorageTargetMediaENS_3ncm13ApplicationIdE
+462250,168,verified,src/nn/unnamed/t000_0.c,SdkHr_462250
 462300,388,verified,src/nn/unnamed/s001_1.c,SdkHr_462300
+462550,168,verified,src/nn/unnamed/t000_0.c,SdkHr_462550
 462720,124,verified,src/nn/fs/fs_save_data_for_application.cpp,_ZN2nn2fs23CleanUpTemporaryStorageEv
+4627a0,184,verified,src/nn/unnamed/t000_0.c,SdkHr_4627a0
 462860,296,verified,src/nn/unnamed/s001_1.c,SdkHr_462860
 4631f0,92,verified,src/nn/unnamed/s001_1.c,SdkHr_4631f0
 463a70,636,disputed,src/nn/unnamed/s001_2.c,SdkHr_463a70
@@ -14195,7 +14261,9 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 466bc0,148,verified,src/nn/gpu/gpu_sdk_boot.cpp,_ZN2nn3gpu3sdk22BootWithTransferMemoryEPvmNS_3gsv12MemoryRegionE
 466c60,96,verified,src/nn/gpu/gpu_sdk_boot.cpp,_ZN2nn3gpu3sdk20BootWithRemoteMemoryENS_3gsv12MemoryRegionE
 466cc0,128,verified,src/nn/gpu/gpu_sdk_boot.cpp,_ZN2nn3gpu3sdk34TryQueryDonatedTransferMemoryUsageEPmS2_S2_
+466da0,120,verified,src/nn/unnamed/t000_0.c,SdkHr_466da0
 466f30,8,verified,src/nn/gpu/gpu_sdk_api.cpp,_ZN2nn3gpu4impl4user26GetGpuAddressSpaceCountMaxEv
+466f40,444,verified,src/nn/unnamed/t000_0.c,SdkHr_466f40
 467100,12,verified,src/nn/gs/gs_sdk_state.cpp,_ZN2nn3gpu4impl4user13GetKEventPoolEv
 467110,148,verified,src/nn/gpu/gpu_sdk_device.cpp,_ZN2nn3gpu3sdk20CreateGraphicsDeviceEPNS1_18GraphicsDeviceTypeEPKcmNS1_13SdkDebugLabelE
 467210,276,verified,src/nn/unnamed/s001_1.c,SdkHr_467210
@@ -14221,6 +14289,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 468820,496,verified,src/nn/gpu/gpu_sdk_mapping.cpp,_ZN2nn3gpu3sdk24NormalModifyMemoryKind4KEPhPKNS1_19GpuAddressSpaceTypeEmmhhNS1_20AddressSpaceSyncFlagE
 468a80,152,verified,src/nn/gpu/gpu_sdk_mapping.cpp,_ZN2nn3gpu3sdk18CreateSparseRegionEPKNS1_19GpuAddressSpaceTypeEmmmNS1_18PageTableAllocModeENS1_20AddressSpaceSyncFlagE
 468d00,256,verified,src/nn/gpu/gpu_sdk_mapping.cpp,_ZN2nn3gpu3sdk19DestroySparseRegionEPKNS1_19GpuAddressSpaceTypeEmmNS1_20AddressSpaceSyncFlagE
+468f40,432,verified,src/nn/unnamed/t000_0.c,SdkHr_468f40
 4692b0,156,verified,src/nn/gpu/gpu_sdk_memory.cpp,_ZN2nn3gpu3sdk26SetGpuSegmentSdkDebugLabelEPKNS1_19GpuAddressSpaceTypeEmmRKNS1_13SdkDebugLabelE
 469390,160,verified,src/nn/gpu/gpu_sdk_memory.cpp,_ZN2nn3gpu3sdk27SetGpuSegmentUserDebugLabelEPKNS1_19GpuAddressSpaceTypeEmmRKNS1_14UserDebugLabelE
 469470,192,verified,src/nn/gpu/gpu_sdk_mapping.cpp,_ZN2nn3gpu3sdk16QueryNativeImageEPmS2_PNS_3gsv7imgdesc4impl4user5ounce27GpuOunceUserImageDescriptorEPNS3_22GpuOunceUserImageFlagsENS_2gs17NativeImageHandleE
@@ -14349,6 +14418,8 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 4760b0,32,verified,src/nn/grc/grc_movie_api.cpp,_ZN2nn3grc3dev19CloseAllMovieLayersEv
 4760d0,12,verified,src/nn/grc/grc_movie_api.cpp,_ZN2nn3grc3dev18OpenOffscreenLayerEPim
 4760e0,4,verified,src/nn/grc/grc_movie_api.cpp,_ZN2nn3grc3dev19CloseOffscreenLayerEm
+4762a0,68,verified,src/nn/unnamed/t000_0.c,SdkHr_4762a0
+4762f0,56,verified,src/nn/unnamed/t000_0.c,SdkHr_4762f0
 476330,40,verified,src/nn/grc/grc_movie_api.cpp,_ZN2nn3grc20GetVideoNativeWindowEPPvPNS0_10MovieLayerE
 4763b0,40,verified,src/nn/grc/grc_movie_api.cpp,_ZN2nn3grc14StartMovieFileEPNS0_10MovieLayerERKNS0_27OffscreenRecordingParameterE
 476460,40,verified,src/nn/grc/grc_movie_api.cpp,_ZN2nn3grc22RequestFinishMovieFileEPNS0_10MovieLayerE
@@ -14405,6 +14476,10 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 47ab40,28,verified,src/nn/gs/gs_sdk_state.cpp,_ZN2nn2gs3sdk27InitializeGraphicsAllocatorEPFPvmmS2_EPFvS2_S2_EPFS2_S2_mS2_ES2_
 47ab60,12,verified,src/nn/gs/gs_sdk_state.cpp,_ZN2nn2gs3sdk25ShutdownGraphicsAllocatorEv
 47acb0,28,verified,src/nn/gs/gs_sdk_state.cpp,_ZN2nn2gs3sdk20GetGraphicsAllocatorEPPFPvmmS2_EPPFvS2_S2_EPPFS2_S2_mS2_E
+47ace0,144,verified,src/nn/unnamed/t000_0.c,SdkHr_47ace0
+47ada0,368,verified,src/nn/unnamed/t000_0.c,SdkHr_47ada0
+47b000,1392,verified,src/nn/unnamed/t000_0.c,SdkHr_47b000
+47b780,928,verified,src/nn/unnamed/t000_0.c,SdkHr_47b780
 47bc80,236,verified,src/nn/unnamed/s001_1.c,SdkHr_47bc80
 4806d0,584,verified,src/nn/unnamed/s001_1.c,SdkHr_4806d0
 480920,1128,verified,src/nn/unnamed/s001_1.c,SdkHr_480920
@@ -14413,7 +14488,9 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 4881d0,264,verified,src/nn/unnamed/s001_1.c,SdkHr_4881d0
 489340,288,verified,src/nn/unnamed/s001_1.c,SdkHr_489340
 489460,284,verified,src/nn/unnamed/s001_1.c,SdkHr_489460
+489e80,964,verified,src/nn/unnamed/t000_1.c,SdkHr_489e80
 48ce20,228,verified,src/nn/unnamed/s001_1.c,SdkHr_48ce20
+48d060,584,verified,src/nn/unnamed/t000_2.c,SdkHr_48d060
 48d380,220,verified,src/nn/unnamed/s001_1.c,SdkHr_48d380
 48d480,212,verified,src/nn/unnamed/s001_1.c,SdkHr_48d480
 48da30,4,verified,src/nn/gs/gs_sdk_misc.cpp,_ZN2nn2gs3sdk23GetAppletResourceUserIdEv
