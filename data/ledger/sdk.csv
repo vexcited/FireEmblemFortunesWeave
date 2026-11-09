@@ -12,7 +12,7 @@ address,size,status,source,name
 590,340,verified,src/nn/crypto/aes128_cbc.cpp,_ZN2nn6crypto16EncryptAes128CbcEPvmPKvmS3_mS3_m
 6f0,460,verified,src/nn/crypto/aes128_ccm.cpp,_ZN2nn6crypto16DecryptAes128CcmEPvmS1_mPKvmS3_mS3_mS3_mm
 8c0,592,verified,src/nn/crypto/aes128_ccm.cpp,_ZN2nn6crypto6detail11CcmModeImplINS0_12AesEncryptorILm16EEEE10InitializeEPKS4_PKvmllm
-b20,148,verified,src/nn/crypto/aes128_ctr.cpp,_ZN2nn6crypto6detail11CtrModeImplINS0_12AesEncryptorILm16EEEE16IncrementCounterEv
+b20,180,verified,src/nn/crypto/aes128_ctr.cpp,_ZN2nn6crypto6detail11CtrModeImplINS0_12AesEncryptorILm16EEEE16IncrementCounterEv
 c20,24,verified,src/nn/crypto/aes128_ccm.cpp,_ZN2nn6crypto6detail11CcmModeImplINS0_12AesEncryptorILm16EEEE12EncryptBlockEPvPKvS8_
 c40,744,verified,src/nn/crypto/aes128_ctr.cpp,_ZN2nn6crypto6detail11CtrModeImplINS0_12AesEncryptorILm16EEEE6UpdateEPvmPKvm
 f60,356,verified,src/nn/crypto/aes128_ccm.cpp,_ZN2nn6crypto6detail11CcmModeImplINS0_12AesEncryptorILm16EEEE6GetMacEPvm
@@ -1630,7 +1630,7 @@ a4220,448,verified,src/nn/util/uri_parser.cpp,_ZN2nn4util9UriParser9ParsePathEPK
 a4400,344,verified,src/nn/util/uri_parser.cpp,_ZN2nn4util9UriParser10ParseQueryEPKcS3_
 a4580,284,verified,src/nn/util/uri_parser.cpp,_ZN2nn4util9UriParser13ParseFragmentEPKcS3_
 a46c0,4,verified,src/nn/util/uri_parser.cpp,_ZNK2nn4util9UriParser8GetPartsEv
-a46e0,348,verified,src/nn/util/uri_parser.cpp,_ZN2nn4util9UriParser13ParseUserInfoEPKcS3_
+a46e0,404,verified,src/nn/util/uri_parser.cpp,_ZN2nn4util9UriParser13ParseUserInfoEPKcS3_
 a48a0,336,verified,src/nn/util/uri_parser.cpp,_ZN2nn4util9UriParser27ParseHostAsDomainNameOrIpv4EPKcS3_
 a4a20,428,verified,src/nn/util/uri_parser.cpp,_ZN2nn4util9UriParser9ParseHostEPKcS3_
 a4be0,164,verified,src/nn/util/uri_parser.cpp,_ZN2nn4util9UriParser15ParseHostAsIpv6EPKcS3_
@@ -2305,7 +2305,7 @@ bfcb0,12,verified,src/nn/fs/dbm/fs_dbm_allocation_table_storage.cpp,_ZN2nn2fs3db
 bfcc0,348,verified,src/nn/fs/dbm/fs_dbm_allocation_table_storage.cpp,_ZN2nn2fs3dbm22AllocationTableStorage4ReadElPvm
 bfe40,296,verified,src/nn/fs/dbm/fs_dbm_allocation_table_storage.cpp,_ZNK2nn2fs3dbm22AllocationTableStorage6SeekToEPjS3_Pll
 bff80,348,verified,src/nn/fs/dbm/fs_dbm_allocation_table_storage.cpp,_ZN2nn2fs3dbm22AllocationTableStorage5WriteElPKvm
-c0100,468,verified,src/nn/fs/dbm/fs_dbm_allocation_table_storage.cpp,_ZN2nn2fs3dbm22AllocationTableStorage12OperateRangeEPvmNS0_11OperationIdEllPKvm
+c0100,512,verified,src/nn/fs/dbm/fs_dbm_allocation_table_storage.cpp,_ZN2nn2fs3dbm22AllocationTableStorage12OperateRangeEPvmNS0_11OperationIdEllPKvm
 c0310,164,verified,src/nn/fs/dbm/fs_dbm_allocation_table_storage.cpp,_ZN2nn2fs3dbm22AllocationTableStorage13AllocateBlockEj
 c03c0,120,verified,src/nn/unnamed/s000_0.c,SdkHr_c03c0
 c0440,144,verified,src/nn/unnamed/s000_0.c,SdkHr_c0440
@@ -2672,7 +2672,7 @@ d6940,340,verified,src/nn/fs/fs_access_failure_api.cpp,_ZN2nn2fs25OpenAccessFail
 d6aa0,188,verified,src/nn/fs/fs_access_failure_api.cpp,_ZNKSt3__114default_deleteIN2nn2fs21AccessFailureResolverEEclB8nn210108EPS3_
 d6b60,440,verified,src/nn/fs/fs_application.cpp,_ZN2nn2fs23MountApplicationPackageEPKcS2_
 d6d20,376,verified,src/nn/fs/fs_bcat_save_data.cpp,_ZN2nn2fs17MountBcatSaveDataEPKcNS_3ncm13ApplicationIdE
-d6ea0,136,verified,src/nn/fs/fs_bis_api.cpp,_ZN2nn2fs15GetBisMountNameENS0_14BisPartitionIdE
+d6ea0,168,verified,src/nn/fs/fs_bis_api.cpp,_ZN2nn2fs15GetBisMountNameENS0_14BisPartitionIdE
 d6f70,4,verified,src/nn/fs/fs_bis_api.cpp,_ZN2nn2fs8MountBisEPKcNS0_14BisPartitionIdE
 d7130,196,verified,src/nn/fs/fs_bis_api.cpp,_ZN2nn2fs8MountBisENS0_14BisPartitionIdEPKc
 d7210,304,verified,src/nn/fs/fs_bis_api.cpp,_ZN2nn2fs6detail16OpenBisPartitionEPNSt3__110unique_ptrINS0_8IStorageENS2_14default_deleteIS4_EEEENS0_14BisPartitionIdE
@@ -4093,7 +4093,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 12cb60,280,verified,src/nn/fs/fs_file_data_cache_system.cpp,_ZN2nn2fs6detail19FileDataCacheSystem5PurgeEPNS0_8IStorageE
 12cc80,2264,verified,src/nn/unnamed/s000_1.c,SdkHr_12cc80
 12d730,68,verified,src/nn/fs/fs_file_data_cache_system.cpp,_ZN2nn2fs6detail19FileDataCacheSystem16ReserveFreePagesEPNS0_8IStorageElm
-12d780,204,verified,src/nn/fs/fs_file_data_cache_system.cpp,_ZN2nn2fs6detail19FileDataCacheSystem23ReturnBackReservedPagesEPvm
+12d780,208,verified,src/nn/fs/fs_file_data_cache_system.cpp,_ZN2nn2fs6detail19FileDataCacheSystem23ReturnBackReservedPagesEPvm
 12d860,424,verified,src/nn/fs/fs_file_data_cache_system.cpp,_ZN2nn2fs6detail19FileDataCacheSystem16CommitCachePagesEPNS0_8IStorageEPvlm
 12da20,524,verified,src/nn/fs/fs_file_data_cache_system.cpp,_ZN2nn2fs6detail19FileDataCacheSystem39ReserveFreePagesBySinglePageReservationEPNS0_8IStorageElm
 12e380,500,verified,src/nn/fs/fs_file_data_cache_system.cpp,_ZN2nn2fs6detail19FileDataCacheSystem11AddFreePageEPNS2_4PageE
@@ -4444,7 +4444,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 139860,356,verified,src/nn/unnamed/s000_1.c,SdkHr_139860
 1399d0,396,verified,src/nn/nlibsdk/nlib_memory.cpp,nnmem_nlib_memchr_range_not_generic
 139be0,376,verified,src/nn/nlibsdk/nlib_memory.cpp,nnmem_nlib_memchr_lt_generic
-139d60,364,verified,src/nn/nlibsdk/nlib_memory.cpp,nnmem_nlib_memchr_gt_generic
+139d60,372,verified,src/nn/nlibsdk/nlib_memory.cpp,nnmem_nlib_memchr_gt_generic
 139ee0,284,verified,src/nn/nlibsdk/nlib_memory.cpp,nnmem_nlib_memchr_mb_generic
 13a020,1540,verified,src/nn/nlibsdk/nlib_memory.cpp,nnmem_nlib_memspn
 13a680,1424,verified,src/nn/nlibsdk/nlib_memory.cpp,nnmem_nlib_memcspn
@@ -4684,7 +4684,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 14f300,8,verified,src/nn/nlibsdk/nlib_stubs.cpp,nnmem_nlib_malloc_size_
 14f320,272,verified,src/nn/nlibsdk/nlib_simd.cpp,nnmem_utf16chr_mb_simd
 14f460,316,verified,src/nn/nlibsdk/nlib_simd.cpp,nnmem_nlib_strchr_simd
-14f5c0,272,verified,src/nn/nlibsdk/nlib_simd.cpp,nnmem_nlib_strchrnul
+14f5c0,276,verified,src/nn/nlibsdk/nlib_simd.cpp,nnmem_nlib_strchrnul
 14f6e0,340,verified,src/nn/nlibsdk/nlib_simd.cpp,nnmem_nlib_strrchr_simd
 14f860,204,verified,src/nn/nlibsdk/nlib_simd.cpp,nnmem_nlib_memchr_simd
 14f940,400,verified,src/nn/nlibsdk/nlib_simd.cpp,nnmem_nlib_memrchr_simd
@@ -4694,7 +4694,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 14ff40,372,verified,src/nn/nlibsdk/nlib_simd.cpp,nnmem_nlib_memchr_gt_simd
 1500e0,316,verified,src/nn/nlibsdk/nlib_simd.cpp,nnmem_nlib_memchr_mb_simd
 150240,276,verified,src/nn/nlibsdk/nlib_simd.cpp,nnmem_nlib_strlen_simd
-150380,316,verified,src/nn/nlibsdk/nlib_simd.cpp,nnmem_nlib_strnlen_simd
+150380,328,verified,src/nn/nlibsdk/nlib_simd.cpp,nnmem_nlib_strnlen_simd
 1504e0,280,verified,src/nn/nlibsdk/nlib_simd.cpp,nnmem_nlib_utf16len_simd
 150600,340,verified,src/nn/nlibsdk/nlib_simd.cpp,nnmem_nlib_utf16nlen_simd
 150780,356,verified,src/nn/nlibsdk/nlib_simd.cpp,nnmem_nlib_utf16cplen_ex_simd
@@ -4721,7 +4721,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 1535c0,320,verified,src/nn/nlibsdk/nlib_threadpool.cpp,nnmem_nlib_threadpool_submit_sync
 153710,64,verified,src/nn/nlibsdk/nlib_threadpool.cpp,_ZN12_GLOBAL__N_113InitializeKeyEv
 153750,380,verified,src/nn/nlibsdk/nlib_threadpool.cpp,_ZN12_GLOBAL__N_111StartWorkerEPNS_10ThreadPoolE
-1538e0,520,verified,src/nn/nlibsdk/nlib_threadpool.cpp,_ZN12_GLOBAL__N_19RunWorkerEPv
+1538e0,524,verified,src/nn/nlibsdk/nlib_threadpool.cpp,_ZN12_GLOBAL__N_19RunWorkerEPv
 153c00,56,verified,src/nn/nlibsdk/nlib_threadpool.cpp,_ZN12_GLOBAL__N_112FinalizePoolEjPv
 153c40,56,verified,src/nn/nlibsdk/nlib_taskgroup.cpp,_ZN12_GLOBAL__N_112RunGroupTaskEPv
 153c80,52,verified,src/nn/nlibsdk/nlib_threadpool.cpp,_ZN12_GLOBAL__N_111RunSyncTaskEPv
@@ -4842,7 +4842,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 15e5a0,120,verified,src/nn/mem/number_line_allocator.cpp,_ZN2nn3mem19NumberLineAllocator11RemoveRangeEii
 15e620,956,verified,src/nn/mem/number_line_allocator_impl.cpp,_ZN2nn3mem19NumberLineAllocator4Impl11RemoveRangeEii
 15eaf0,200,verified,src/nn/mem/number_line_allocator.cpp,_ZN2nn3mem19NumberLineAllocator8AllocateEPii
-15ebc0,1760,verified,src/nn/mem/number_line_allocator_impl.cpp,_ZN2nn3mem19NumberLineAllocator4Impl8AllocateEPPNS0_6detail4NodeEi
+15ebc0,1772,verified,src/nn/mem/number_line_allocator_impl.cpp,_ZN2nn3mem19NumberLineAllocator4Impl8AllocateEPPNS0_6detail4NodeEi
 15f450,192,verified,src/nn/mem/number_line_allocator.cpp,_ZN2nn3mem19NumberLineAllocator8AllocateEPiiPvPFvS3_E
 15f510,184,verified,src/nn/mem/number_line_allocator.cpp,_ZN2nn3mem19NumberLineAllocator8AllocateEPiii
 15f5e0,2420,verified,src/nn/mem/number_line_allocator_impl.cpp,_ZN2nn3mem19NumberLineAllocator4Impl8AllocateEPPNS0_6detail4NodeEii
@@ -8878,7 +8878,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 20a020,184,verified,src/nn/audio/audio_fft.cpp,_ZN2nn5audio6detail26FftInPlaceProcessRealFloatEPfPKfRNS1_13FftWorkBufferENS1_12FftDirectionE
 20a0e0,172,verified,src/nn/audio/audio_fft.cpp,_ZN2nn5audio6detail34FftInPlaceProcessRealFixedPointIntEPiPKiRNS1_13FftWorkBufferENS1_12FftDirectionE
 20a190,172,verified,src/nn/audio/audio_fft.cpp,_ZN2nn5audio6detail36FftInPlaceProcessRealFixedPointShortEPsPKsRNS1_13FftWorkBufferENS1_12FftDirectionE
-20a240,2728,disputed,src/nn/audio/ne10/modules/dsp/NE10_fft_float32.neonintrinsic.c,nnaudiodetail_ne10_mixed_radix_fft_forward_float32_neon
+20a240,2900,disputed,src/nn/audio/ne10/modules/dsp/NE10_fft_float32.neonintrinsic.c,nnaudiodetail_ne10_mixed_radix_fft_forward_float32_neon
 20af20,2764,disputed,src/nn/audio/ne10/modules/dsp/NE10_fft_float32.neonintrinsic.c,nnaudiodetail_ne10_mixed_radix_fft_backward_float32_neon
 20bc50,780,verified,src/nn/audio/ne10/modules/dsp/NE10_fft_float32.neonintrinsic.c,nnaudiodetail_ne10_fft_c2c_1d_float32_neon
 20bf60,708,verified,src/ne10/modules/dsp/NE10_fft_generic_float32.neonintrinsic.cpp,ne10_mixed_radix_generic_butterfly_float32_neon
@@ -8912,7 +8912,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 21c4a0,900,verified,src/ne10/modules/dsp/NE10_fft_int16.neonintrinsic.c,ne10_fft_c2r_1d_int16_neon
 21c940,3284,disputed,src/nn/audio/ne10/modules/dsp/NE10_fft_int32.neonintrinsic.c,nnaudiodetail_ne10_mixed_radix_fft_forward_int32_unscaled_neon
 21d680,2756,disputed,src/nn/audio/ne10/modules/dsp/NE10_fft_int32.neonintrinsic.c,nnaudiodetail_ne10_mixed_radix_fft_forward_int32_scaled_neon
-21e3c0,2784,disputed,src/nn/audio/ne10/modules/dsp/NE10_fft_int32.neonintrinsic.c,nnaudiodetail_ne10_mixed_radix_fft_backward_int32_unscaled_neon
+21e3c0,2980,disputed,src/nn/audio/ne10/modules/dsp/NE10_fft_int32.neonintrinsic.c,nnaudiodetail_ne10_mixed_radix_fft_backward_int32_unscaled_neon
 21f100,3000,disputed,src/nn/audio/ne10/modules/dsp/NE10_fft_int32.neonintrinsic.c,nnaudiodetail_ne10_mixed_radix_fft_backward_int32_scaled_neon
 21fe30,488,verified,src/nn/audio/ne10/modules/dsp/NE10_fft_int32.neonintrinsic.c,nnaudiodetail_ne10_fft_c2c_1d_int32_neon
 220420,852,verified,src/ne10/modules/dsp/NE10_fft_int32.neonintrinsic.c,ne10_fft_r2c_1d_int32_neon
@@ -9050,7 +9050,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 226e70,64,verified,src/nn/audio/effect_aux.cpp,_ZN2nn5audio22GetAuxBufferStatisticsEPKNS0_7AuxTypeE
 226eb0,52,verified,src/nn/audio/effect_aux.cpp,_ZN2nn5audio24ResetAuxBufferStatisticsEPNS0_7AuxTypeE
 226ef0,172,verified,src/nn/audio/effect_biquad_filter.cpp,_ZN2nn5audio15AddBiquadFilterEPNS0_19AudioRendererConfigEPNS0_16BiquadFilterTypeEPNS0_12FinalMixTypeE
-226fa0,156,verified,src/nn/audio/effect_biquad_filter.cpp,_ZN2nn5audio15AddBiquadFilterEPNS0_19AudioRendererConfigEPNS0_16BiquadFilterTypeEPNS0_10SubMixTypeE
+226fa0,172,verified,src/nn/audio/effect_biquad_filter.cpp,_ZN2nn5audio15AddBiquadFilterEPNS0_19AudioRendererConfigEPNS0_16BiquadFilterTypeEPNS0_10SubMixTypeE
 227050,108,verified,src/nn/audio/effect_biquad_filter.cpp,_ZN2nn5audio18RemoveBiquadFilterEPNS0_19AudioRendererConfigEPNS0_16BiquadFilterTypeEPNS0_12FinalMixTypeE
 2270c0,108,verified,src/nn/audio/effect_biquad_filter.cpp,_ZN2nn5audio18RemoveBiquadFilterEPNS0_19AudioRendererConfigEPNS0_16BiquadFilterTypeEPNS0_10SubMixTypeE
 227140,360,verified,src/nn/audio/effect_biquad_filter.cpp,_ZN2nn5audio26GetBiquadFilterInputOutputEPKNS0_16BiquadFilterTypeEPaS4_Pii
@@ -10060,7 +10060,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 24c3a0,16,verified,src/nn/audio/server/splitter_context.cpp,_ZN2nn5audio6server15SplitterContext5ResetEv
 24c3b0,40,verified,src/nn/audio/server/splitter_context.cpp,_ZNK2nn5audio6server15SplitterContext13UsingSplitterEv
 24c3e0,184,verified,src/nn/audio/server/splitter_context.cpp,_ZN2nn5audio6server15SplitterContext25ClearAllNewConnectionFlagEv
-24c4a0,644,verified,src/nn/audio/server/splitter_context.cpp,_ZN2nn5audio6server15SplitterContext10InitializeERKNS1_12BehaviorInfoERKNS0_6detail30AudioRendererParameterInternalEPvmPNS1_24SplitterDestinationStateE
+24c4a0,752,verified,src/nn/audio/server/splitter_context.cpp,_ZN2nn5audio6server15SplitterContext10InitializeERKNS1_12BehaviorInfoERKNS0_6detail30AudioRendererParameterInternalEPvmPNS1_24SplitterDestinationStateE
 24c7c0,424,verified,src/nn/audio/server/splitter_context.cpp,_ZN2nn5audio6server15SplitterContext6UpdateEmRm
 24c980,692,verified,src/nn/audio/server/splitter_context.cpp,_ZN2nn5audio6server15SplitterContext10UpdateInfoERNS_4util12ConstBytePtrEmi
 24cc60,168,verified,src/nn/audio/server/splitter_context.cpp,_ZN2nn5audio6server15SplitterContext10UpdateDataERNS_4util12ConstBytePtrEmi
@@ -10078,7 +10078,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 24da70,720,verified,src/nn/audio/server/voice_context.cpp,_ZN2nn5audio6server9VoiceInfo16UpdateWaveBufferEPNS0_6common17BehaviorParameter9ErrorInfoEPNS1_10WaveBufferEPKNS0_8renderer3ipc5Voice10WaveBufferEhbRNS1_10PoolMapperERKNS1_12BehaviorInfoE
 24dd40,44,verified,src/nn/audio/server/voice_context.cpp,_ZNK2nn5audio6server9VoiceInfo10ShouldSkipEv
 24dd80,812,verified,src/nn/audio/server/voice_context.cpp,_ZN2nn5audio6server9VoiceInfo16FlushWaveBuffersEiPPNS0_10VoiceStateEi
-24e0e0,2304,verified,src/nn/audio/server/voice_context.cpp,_ZN2nn5audio6server9VoiceInfo36UpdateParametersForCommandGenerationEPPNS0_10VoiceStateE
+24e0e0,3036,verified,src/nn/audio/server/voice_context.cpp,_ZN2nn5audio6server9VoiceInfo36UpdateParametersForCommandGenerationEPPNS0_10VoiceStateE
 24eec0,1024,verified,src/nn/audio/server/voice_context.cpp,_ZN2nn5audio6server9VoiceInfo26UpdateForCommandGenerationEPNS1_12VoiceContextE
 24f2e0,760,verified,src/nn/audio/server/voice_context.cpp,_ZN2nn5audio6server9VoiceInfo14ResetResourcesEPNS1_12VoiceContextE
 24f5f0,16,verified,src/nn/audio/server/voice_context.cpp,_ZNK2nn5audio6server12VoiceContext17GetDspSharedStateEi
@@ -11944,7 +11944,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 32f100,28,verified,src/nn/codec/hwacod/hwacod_task_producer.cpp,_ZN2nn5codec6hwacod4shim12TaskProducer8FinalizeEv
 32f120,112,verified,src/nn/codec/hwacod/hwacod_task_producer.cpp,_ZN2nn5codec6hwacod4shim12TaskProducer12RegisterTaskEiRKNS2_8IoBufferEb
 32f190,48,verified,src/nn/codec/hwacod/hwacod_task_producer.cpp,_ZN2nn5codec6hwacod4shim12TaskProducer12CreateHeaderEii
-32f600,636,verified,src/nn/codec/hwacod/hwacod_validator.cpp,_ZN2nn5codec6hwacod6detail25ValidateInstanceParameterERKNS2_17InstanceParameterE
+32f600,656,verified,src/nn/codec/hwacod/hwacod_validator.cpp,_ZN2nn5codec6hwacod6detail25ValidateInstanceParameterERKNS2_17InstanceParameterE
 32f8d0,300,verified,src/nn/codec/video/av1_decoder.cpp,_ZN2nn5codec36InitializeAv1DecoderByTransferMemoryEPNS0_14Av1DecoderTypeEPvmmttjNS0_23VideoDecoderInputFormatENS0_24VideoDecoderOutputFormatENS0_22VideoDecoderOutputModeE
 32fa40,268,verified,src/nn/codec/video/av1_decoder.cpp,_ZN2nn5codec34InitializeAv1DecoderByRemoteMemoryEPNS0_14Av1DecoderTypeEmttjNS0_23VideoDecoderInputFormatENS0_24VideoDecoderOutputFormatENS0_22VideoDecoderOutputModeE
 32fb90,4,verified,src/nn/codec/video/av1_decoder.cpp,_ZN2nn5codec18FinalizeAv1DecoderEPNS0_14Av1DecoderTypeE
@@ -16334,7 +16334,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 4daeb0,24,verified,src/nn/movie/detail/movie_android_media_muxer.cpp,_ZN2nn5movie6detail17AndroidMediaMuxer10DeallocateEPv
 4daee0,1448,disputed,src/nn/movie/detail/movie_android_media_muxer.cpp,_ZN2nn5movie6detail17AndroidMediaMuxer33CopyAvcCodecSpecificDataToMessageEPN8nandroid8AMessageEPKvm
 4db4d0,400,verified,src/nn/movie/detail/movie_android_media_muxer.cpp,_ZN2nn5movie6detail17AndroidMediaMuxer33CopyAacCodecSpecificDataToMessageEPN8nandroid8AMessageEPKvm
-4db660,352,disputed,src/nn/movie/detail/movie_android_media_muxer.cpp,_ZN2nn5movie6detail17AndroidMediaMuxer37GetH264NalUnitStartPositionAndNalSizeEPPhPmS4_S5_
+4db660,340,disputed,src/nn/movie/detail/movie_android_media_muxer.cpp,_ZN2nn5movie6detail17AndroidMediaMuxer37GetH264NalUnitStartPositionAndNalSizeEPPhPmS4_S5_
 4db7c0,268,verified,src/nn/movie/detail/movie_media_muxer_impl.cpp,_ZN2nn5movie6detail14MediaMuxerImplC2Ev
 4db8d0,68,verified,src/nn/movie/detail/movie_media_muxer_impl.cpp,_ZN2nn5movie6detail14MediaMuxerImplD2Ev
 4db920,400,verified,src/nn/movie/detail/movie_media_muxer_impl.cpp,_ZN2nn5movie6detail14MediaMuxerImpl8FinalizeEv
@@ -16431,7 +16431,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 4e1120,84,verified,src/nandroid/extractors/mkv/MatroskaExtractor.cpp,_ZNK8nandroid13BlockIterator5blockEv
 4e1620,620,verified,src/nandroid/extractors/mkv/MatroskaExtractor.cpp,_ZN8nandroid13BlockIterator16seekwithoutcue_lElPl
 4e18a0,160,verified,src/nandroid/extractors/mkv/MatroskaExtractor.cpp,_ZNK8nandroid13BlockIterator11blockTimeUsEv
-4e19f0,428,disputed,src/nandroid/extractors/mkv/MatroskaExtractor.cpp,_ZN8nandroid14MatroskaSource22setWebmBlockCryptoInfoEPNS_17MediaBufferHelperE
+4e19f0,604,disputed,src/nandroid/extractors/mkv/MatroskaExtractor.cpp,_ZN8nandroid14MatroskaSource22setWebmBlockCryptoInfoEPNS_17MediaBufferHelperE
 4e1fd0,224,verified,src/nn/unnamed/s002_0.c,SdkHr_4e1fd0
 4e38a0,8,verified,src/nandroid/extractors/mkv/MatroskaExtractor.cpp,_ZNK8nandroid17MatroskaExtractor15isLiveStreamingEv
 4e47e0,316,verified,src/nandroid/extractors/mkv/MatroskaExtractor.cpp,_ZN8nandroid17MatroskaExtractorD2Ev
@@ -16521,7 +16521,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 4ec030,436,verified,src/nandroid/extractors/mp4/MPEG4Extractor.cpp,_ZN8nandroid14MPEG4Extractor11verifyTrackEPNS0_5TrackE
 4ec510,408,verified,src/nandroid/extractors/mp4/MPEG4Extractor.cpp,_ZN8nandroid14MPEG4Extractor20parseALACSampleEntryEPl
 4ec6b0,104,verified,src/nandroid/extractors/mp4/MPEG4Extractor.cpp,_ZN8nandroid2spINS_7ABufferEEaSEPS1_
-4ec720,512,verified,src/nandroid/extractors/mp4/MPEG4Extractor.cpp,_ZN8nandroid14MPEG4Extractor16parseTrackHeaderEll
+4ec720,544,verified,src/nandroid/extractors/mp4/MPEG4Extractor.cpp,_ZN8nandroid14MPEG4Extractor16parseTrackHeaderEll
 4eca40,168,verified,src/nandroid/extractors/mp4/MPEG4Extractor.cpp,_ZN8nandroid10heapbufferIhEENSt3__110unique_ptrIA_T_NS1_8functionIFvPS3_EEEEEm
 4ecb70,220,verified,src/nandroid/extractors/mp4/MPEG4Extractor.cpp,_ZN8nandroid14MPEG4Extractor25adjustRawDefaultFrameSizeEv
 4ecc50,1112,verified,src/nandroid/extractors/mp4/MPEG4Extractor.cpp,_ZN8nandroid14MPEG4Extractor39updateAudioTrackInfoFromESDS_MPEG4AudioEPKvm
@@ -16553,7 +16553,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 4f1340,140,verified,src/nandroid/extractors/mp4/MPEG4Extractor.cpp,_ZN8nandroid11MPEG4SourceD0Ev
 4f13d0,288,verified,src/nandroid/extractors/mp4/MPEG4Extractor.cpp,_ZN8nandroid11MPEG4Source5startEv
 4f14f0,196,verified,src/nandroid/extractors/mp4/MPEG4Extractor.cpp,_ZN8nandroid11MPEG4Source4stopEv
-4f15c0,348,verified,src/nandroid/extractors/mp4/MPEG4Extractor.cpp,_ZN8nandroid11MPEG4Source24parseTrackFragmentHeaderEll
+4f15c0,412,verified,src/nandroid/extractors/mp4/MPEG4Extractor.cpp,_ZN8nandroid11MPEG4Source24parseTrackFragmentHeaderEll
 4f1840,232,verified,src/nandroid/extractors/mp4/MPEG4Extractor.cpp,_ZN8nandroid11MPEG4Source37parseTrackFragmentBaseMediaDecodeTimeEll
 4f1980,504,verified,src/nandroid/extractors/mp4/MPEG4Extractor.cpp,_ZN8nandroid11MPEG4Source21parseTrackFragmentRunEll
 4f1cd0,376,verified,src/nandroid/extractors/mp4/MPEG4Extractor.cpp,_ZN8nandroid11MPEG4Source36parseSampleAuxiliaryInformationSizesEll
@@ -16565,7 +16565,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 4f2510,68,verified,src/nandroid/extractors/mp4/MPEG4Extractor.cpp,_ZN8nandroid11MPEG4Source9getFormatEP12AMediaFormat
 4f2560,160,verified,src/nandroid/extractors/mp4/MPEG4Extractor.cpp,_ZNK8nandroid11MPEG4Source12parseNALSizeEPKh
 4f2600,76,verified,src/nandroid/extractors/mp4/MPEG4Extractor.cpp,_ZN8nandroid11MPEG4Source16parseHEVCLayerIdEPKhm
-4f2650,2796,verified,src/nandroid/extractors/mp4/MPEG4Extractor.cpp,_ZN8nandroid11MPEG4Source4readEPPNS_17MediaBufferHelperEPKNS_16MediaTrackHelper11ReadOptionsE
+4f2650,3056,verified,src/nandroid/extractors/mp4/MPEG4Extractor.cpp,_ZN8nandroid11MPEG4Source4readEPPNS_17MediaBufferHelperEPKNS_16MediaTrackHelper11ReadOptionsE
 4f43e0,12,verified,src/nn/sdk_trivial.cpp,_Z14SdkStub_4f43e0v
 4f43f0,60,verified,src/nn/sdk_trivial_thunks.cpp,_Z14SdkStub_4f43f0m
 4f44e0,64,verified,src/nandroid/extractors/mp4/MPEG4Extractor.cpp,_ZNK8nandroid12SortedVectorINS_16key_value_pair_tIjNS_7AStringEEEE12do_constructEPvm
@@ -16707,7 +16707,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 4fab20,224,verified,src/nandroid/libstagefright/foundation/AMessage.cpp,_ZN8nandroid8AMessage9postReplyERKNS_2spINS_11AReplyTokenEEE
 4fac00,372,verified,src/nandroid/libstagefright/foundation/AMessage.cpp,_ZN8nandroid8AMessage20senderAwaitsResponseEPNS_2spINS_11AReplyTokenEEE
 4fade0,592,verified,src/nandroid/libstagefright/foundation/AMessage.cpp,_ZNK8nandroid8AMessage3dupEv
-4fb500,2736,verified,src/nandroid/libstagefright/foundation/AMessage.cpp,_ZNK8nandroid8AMessage11changesFromERKNS_2spIKS0_EEb
+4fb500,2748,verified,src/nandroid/libstagefright/foundation/AMessage.cpp,_ZNK8nandroid8AMessage11changesFromERKNS_2spIKS0_EEb
 4fc180,8,verified,src/nandroid/libstagefright/foundation/AMessage.cpp,_ZNK8nandroid8AMessage12countEntriesEv
 4fc190,44,verified,src/nandroid/libstagefright/foundation/AMessage.cpp,_ZNK8nandroid8AMessage14getEntryNameAtEmPNS0_4TypeE
 4fc1c0,492,verified,src/nandroid/libstagefright/foundation/AMessage.cpp,_ZNK8nandroid8AMessage10getEntryAtEm
@@ -17148,8 +17148,8 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 5160d0,388,verified,src/nandroid/libstagefright/NuCachedSource2.cpp,_ZN8nandroid15NuCachedSource26onReadERKNS_2spINS_8AMessageEEE
 516260,492,verified,src/nandroid/libstagefright/NuCachedSource2.cpp,_ZN8nandroid15NuCachedSource213fetchInternalEv
 516470,188,verified,src/nandroid/libstagefright/NuCachedSource2.cpp,_ZN8nandroid15NuCachedSource230restartPrefetcherIfNecessary_lEbb
-516540,716,verified,src/nandroid/libstagefright/NuCachedSource2.cpp,_ZN8nandroid15NuCachedSource212readInternalElPvm
-516820,744,disputed,src/nandroid/libstagefright/NuCachedSource2.cpp,_ZN8nandroid15NuCachedSource26readAtElPvm
+516540,720,verified,src/nandroid/libstagefright/NuCachedSource2.cpp,_ZN8nandroid15NuCachedSource212readInternalElPvm
+516820,756,disputed,src/nandroid/libstagefright/NuCachedSource2.cpp,_ZN8nandroid15NuCachedSource26readAtElPvm
 516b80,68,verified,src/nandroid/libstagefright/NuCachedSource2.cpp,_ZN8nandroid15NuCachedSource210cachedSizeEv
 516bd0,124,verified,src/nandroid/libstagefright/NuCachedSource2.cpp,_ZN8nandroid15NuCachedSource216getAvailableSizeElPl
 516c50,64,verified,src/nandroid/libstagefright/NuCachedSource2.cpp,_ZNK8nandroid15NuCachedSource221approxDataRemaining_lElPi
@@ -17414,7 +17414,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 531d00,380,verified,src/nandroid/libstagefright/httplive/PlaylistFetcher.cpp,_ZN8nandroid15PlaylistFetcher26initSeqNumberForLiveStreamERiS1_
 532620,220,verified,src/nandroid/libstagefright/httplive/PlaylistFetcher.cpp,_ZNK8nandroid15PlaylistFetcher19getSeqNumberForTimeEl
 532720,272,verified,src/nandroid/libstagefright/httplive/PlaylistFetcher.cpp,_ZNK8nandroid15PlaylistFetcher28getSeqNumberForDiscontinuityEm
-532840,1456,disputed,src/nandroid/libstagefright/httplive/PlaylistFetcher.cpp,_ZN8nandroid15PlaylistFetcher32extractAndQueueAccessUnitsFromTsERKNS_2spINS_7ABufferEEE
+532840,1404,disputed,src/nandroid/libstagefright/httplive/PlaylistFetcher.cpp,_ZN8nandroid15PlaylistFetcher32extractAndQueueAccessUnitsFromTsERKNS_2spINS_7ABufferEEE
 5331a0,1320,verified,src/nandroid/libstagefright/httplive/PlaylistFetcher.cpp,_ZN8nandroid15PlaylistFetcher26extractAndQueueAccessUnitsERKNS_2spINS_7ABufferEEERKNS1_INS_8AMessageEEE
 533d00,448,verified,src/nandroid/libstagefright/httplive/PlaylistFetcher.cpp,_ZN8nandroid15PlaylistFetcher29adjustSeqNumberWithAnchorTimeEl
 5341c0,68,verified,src/nandroid/libstagefright/httplive/PlaylistFetcher.cpp,_ZN8nandroid15PlaylistFetcher18isStartTimeReachedEl
@@ -18018,7 +18018,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 568590,40,verified,src/nandroid/extractors/mp4/SampleTable.cpp,_ZNK8nandroid11SampleTable7isValidEv
 5685c0,256,verified,src/nandroid/extractors/mp4/SampleTable.cpp,_ZN8nandroid11SampleTable20setChunkOffsetParamsEjlm
 5688c0,284,verified,src/nandroid/extractors/mp4/SampleTable.cpp,_ZN8nandroid11SampleTable19setSampleSizeParamsEjlm
-568a30,88,disputed,src/nandroid/extractors/mp4/SampleTable.cpp,_ZN8nandroid11SampleTable21setTimeToSampleParamsElm
+568a30,200,disputed,src/nandroid/extractors/mp4/SampleTable.cpp,_ZN8nandroid11SampleTable21setTimeToSampleParamsElm
 568be0,200,verified,src/nandroid/extractors/mp4/SampleTable.cpp,_ZN8nandroid11SampleTable32setCompositionTimeToSampleParamsElm
 568e40,380,verified,src/nandroid/extractors/mp4/SampleTable.cpp,_ZN8nandroid11SampleTable19setSyncSampleParamsElm
 5690b0,8,verified,src/nandroid/extractors/mp4/SampleTable.cpp,_ZNK8nandroid11SampleTable17countChunkOffsetsEv
@@ -21471,7 +21471,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 5d8c80,80,verified,src/nn/time/detail/time_shared_memory_client.cpp,_ZN2nn4time6detail18SharedMemoryClient36GetStandardNetworkSystemClockContextEPNS0_18SystemClockContextE
 5d8cd0,216,verified,src/nn/time/detail/time_shared_memory_client.cpp,_ZN2nn4time6detail18SharedMemoryClient31CalculateSystemClockCurrentTimeEPNS0_9PosixTimeERKNS0_18SystemClockContextERKNS1_29ContinuousAdjustmentTimePointE
 5d8dc0,88,verified,src/nn/time/detail/time_shared_memory_client.cpp,_ZN2nn4time6detail18SharedMemoryClient41GetStandardUserSystemClockCurrentTimespecEP8timespec
-5d8e20,152,verified,src/nn/time/detail/time_shared_memory_client.cpp,_ZN2nn4time6detail18SharedMemoryClient35CalculateSystemClockCurrentTimespecEP8timespecRKNS0_18SystemClockContextE
+5d8e20,296,verified,src/nn/time/detail/time_shared_memory_client.cpp,_ZN2nn4time6detail18SharedMemoryClient35CalculateSystemClockCurrentTimespecEP8timespecRKNS0_18SystemClockContextE
 5d8f50,236,verified,src/nn/time/detail/time_shared_memory_client.cpp,_ZN2nn4time6detail18SharedMemoryClient35CalculateSystemClockCurrentTimespecEP8timespecRKNS0_18SystemClockContextERKNS1_29ContinuousAdjustmentTimePointE
 5d9040,256,verified,src/nn/time/detail/time_shared_memory_client.cpp,_ZN2nn4time6detail18SharedMemoryClient37GetStandardSteadyClockCurrentTimespecEP8timespec
 5d9140,88,verified,src/nn/time/detail/time_shared_memory_client.cpp,_ZN2nn4time6detail18SharedMemoryClient44GetStandardNetworkSystemClockCurrentTimespecEP8timespec
@@ -25867,7 +25867,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 6b9890,188,verified,src/nn/hid/detail/hid_digitizer_state.cpp,_ZN2nn3hid6detail19InitializeDigitizerEv
 6b9950,152,verified,src/nn/hid/detail/hid_digitizer_state.cpp,_ZN2nn3hid6detail17FinalizeDigitizerEv
 6b9a00,416,verified,src/nn/hid/detail/hid_digitizer_state.cpp,_ZN2nn3hid6detail17GetDigitizerStateEPNS0_14DigitizerStateE
-6b9c00,268,verified,src/nn/hid/detail/hid_digitizer_state.cpp,_ZN2nn3hid6detail18GetDigitizerStatesEPiPNS0_14DigitizerStateEi
+6b9c00,448,verified,src/nn/hid/detail/hid_digitizer_state.cpp,_ZN2nn3hid6detail18GetDigitizerStatesEPiPNS0_14DigitizerStateEi
 6b9e10,96,verified,src/nn/unnamed/s004_2.c,SdkHr_6b9e10
 6b9ea0,72,verified,src/nn/unnamed/s004_2.c,SdkHr_6b9ea0
 6b9f10,224,verified,src/nn/hid/detail/hid_gesture_state.cpp,_ZN2nn3hid6detail17InitializeGestureEii
@@ -26756,9 +26756,9 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 6e0e40,440,verified,src/nn/hid/system/detail/hid_touch_screen_state.cpp,_ZN2nn3hid6system6detail36GetTouchScreenStatesForSystemProcessILm5EEENS_6ResultEPiPNS0_16TouchScreenStateIXT_EEEi
 6e1120,560,verified,src/nn/hid/system/detail/hid_touch_screen_state.cpp,_ZN2nn3hid6system6detail36GetTouchScreenStatesForSystemProcessILm6EEENS_6ResultEPiPNS0_16TouchScreenStateIXT_EEEi
 6e1420,700,verified,src/nn/hid/system/detail/hid_touch_screen_state.cpp,_ZN2nn3hid6system6detail36GetTouchScreenStatesForSystemProcessILm7EEENS_6ResultEPiPNS0_16TouchScreenStateIXT_EEEi
-6e1740,636,verified,src/nn/hid/system/detail/hid_touch_screen_state.cpp,_ZN2nn3hid6system6detail36GetTouchScreenStatesForSystemProcessILm8EEENS_6ResultEPiPNS0_16TouchScreenStateIXT_EEEi
+6e1740,984,verified,src/nn/hid/system/detail/hid_touch_screen_state.cpp,_ZN2nn3hid6system6detail36GetTouchScreenStatesForSystemProcessILm8EEENS_6ResultEPiPNS0_16TouchScreenStateIXT_EEEi
 6e1b80,660,verified,src/nn/hid/system/detail/hid_touch_screen_state.cpp,_ZN2nn3hid6system6detail36GetTouchScreenStatesForSystemProcessILm9EEENS_6ResultEPiPNS0_16TouchScreenStateIXT_EEEi
-6e1fe0,260,verified,src/nn/hid/system/detail/hid_touch_screen_state.cpp,_ZN2nn3hid6system6detail36GetTouchScreenStatesForSystemProcessILm10EEENS_6ResultEPiPNS0_16TouchScreenStateIXT_EEEi
+6e1fe0,648,verified,src/nn/hid/system/detail/hid_touch_screen_state.cpp,_ZN2nn3hid6system6detail36GetTouchScreenStatesForSystemProcessILm10EEENS_6ResultEPiPNS0_16TouchScreenStateIXT_EEEi
 6e2460,1064,verified,src/nn/hid/system/detail/hid_touch_screen_state.cpp,_ZN2nn3hid6system6detail36GetTouchScreenStatesForSystemProcessILm11EEENS_6ResultEPiPNS0_16TouchScreenStateIXT_EEEi
 6e2900,1080,verified,src/nn/hid/system/detail/hid_touch_screen_state.cpp,_ZN2nn3hid6system6detail36GetTouchScreenStatesForSystemProcessILm12EEENS_6ResultEPiPNS0_16TouchScreenStateIXT_EEEi
 6e2da0,564,verified,src/nn/hid/system/detail/hid_touch_screen_state.cpp,_ZN2nn3hid6system6detail36GetTouchScreenStatesForSystemProcessILm13EEENS_6ResultEPiPNS0_16TouchScreenStateIXT_EEEi
@@ -27176,7 +27176,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 6ecf60,156,verified,src/nn/hid/system/detail/hid_system_detail_extra.cpp,_ZN2nn3hid6system6detail20BindSleepButtonEventEPNS_2os15SystemEventTypeENS3_14EventClearModeE
 6ed010,184,verified,src/nn/hid/system/detail/hid_sleep_button_state.cpp,_ZN2nn3hid6system6detail21InitializeSleepButtonEv
 6ed0d0,152,verified,src/nn/hid/system/detail/hid_sleep_button_state.cpp,_ZN2nn3hid6system6detail19FinalizeSleepButtonEv
-6ed180,376,verified,src/nn/hid/system/detail/hid_sleep_button_state.cpp,_ZN2nn3hid6system6detail20GetSleepButtonStatesEPiPNS1_16SleepButtonStateEi
+6ed180,404,verified,src/nn/hid/system/detail/hid_sleep_button_state.cpp,_ZN2nn3hid6system6detail20GetSleepButtonStatesEPiPNS1_16SleepButtonStateEi
 6ed360,88,verified,src/nn/unnamed/s004_2.c,SdkHr_6ed360
 6ed3f0,72,verified,src/nn/unnamed/s004_2.c,SdkHr_6ed3f0
 6ed460,96,verified,src/nn/hid/system/detail/hid_npad.cpp,_ZN2nn3hid6system6detail26SetConnectionLimitForSplayEh
@@ -29388,7 +29388,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 787f20,312,verified,src/musl/src/regex/tre-mem.c,__tre_mem_alloc_impl
 788060,368,verified,src/nnmusl/stdio/vfprintf.c,vfprintf
 7881e0,1516,verified,src/nnmusl/stdio/vfprintf.c,printf_core
-789110,448,verified,src/nnmusl/stdio/vfprintf.c,pop_arg
+789110,512,verified,src/nnmusl/stdio/vfprintf.c,pop_arg
 7893a0,164,verified,src/musl/src/stdio/vfprintf.c,pad
 78bf20,244,verified,src/nnmusl/stdio/vfwprintf.c,vfwprintf
 78c020,692,verified,src/nnmusl/stdio/vfwprintf.c,wprintf_core
@@ -29536,7 +29536,7 @@ ffee0,108,verified,src/nn/unnamed/s000_0.c,SdkHr_ffee0
 7977f0,4,verified,src/musl/src/ctype/iswblank.c,iswblank_l
 797800,48,verified,src/musl/src/ctype/iswcntrl.c,iswcntrl
 797830,48,verified,src/musl/src/ctype/iswcntrl.c,iswcntrl_l
-797860,76,verified,src/nnmusl/nnmusl_libc_misc4.cpp,iswctype
+797860,80,verified,src/nnmusl/nnmusl_libc_misc4.cpp,iswctype
 7978d0,612,verified,src/musl/src/ctype/iswctype.c,wctype
 797b40,4,verified,src/musl/src/ctype/iswctype.c,iswctype_l
 797b50,4,verified,src/musl/src/ctype/iswctype.c,wctype_l

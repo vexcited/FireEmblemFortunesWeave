@@ -457,7 +457,7 @@ fcc0,1860,verified,src/nvidia/unnamed/c000_0.c,CudaDriverHr_fcc0
 27e40,172,verified,src/nvidia/cuda_driver_query_impl.cpp,_Z24cuCtxGetDevResource_implmPjj
 27ef0,172,verified,src/nvidia/cuda_driver_query_impl.cpp,_Z29cuGreenCtxGetDevResource_implmPjj
 27fa0,372,verified,src/nvidia/unnamed/c000_1.c,CudaDriverHr_27fa0
-28120,312,verified,src/nvidia/cuda_driver_kernel_impl.cpp,_Z30cuDevResourceGenerateDesc_implmPjj
+28120,316,verified,src/nvidia/cuda_driver_kernel_impl.cpp,_Z30cuDevResourceGenerateDesc_implmPjj
 28260,76,verified,src/nvidia/cuda_driver_context_impl.cpp,_Z21cuGetErrorString_impljPPKc
 282b0,76,verified,src/nvidia/cuda_driver_context_impl.cpp,_Z19cuGetErrorName_impljPPKc
 28300,4,verified,src/nvidia/cuda_driver_stubs.cpp,_Z20CudaDriverStub_28300v
@@ -742,7 +742,7 @@ fcc0,1860,verified,src/nvidia/unnamed/c000_0.c,CudaDriverHr_fcc0
 3adc0,300,verified,src/nvidia/unnamed/c000_1.c,CudaDriverHr_3adc0
 3aef0,200,verified,src/nvidia/cuda_driver_copy_impl.cpp,_Z18cuMemcpy_ptds_implmmm
 3b040,352,verified,src/nvidia/cuda_driver_copy_impl.cpp,_Z18cuMemcpyAsync_implmmmm
-3b1f0,272,verified,src/nvidia/cuda_driver_copy_impl.cpp,_Z23cuMemcpyAsync_ptsz_implmmmm
+3b1f0,352,verified,src/nvidia/cuda_driver_copy_impl.cpp,_Z23cuMemcpyAsync_ptsz_implmmmm
 3b3a0,304,verified,src/nvidia/cuda_driver_copy_described_impl.cpp,_Z17cuMemcpyPeer_implmmmmm
 3b580,304,verified,src/nvidia/cuda_driver_copy_described_impl.cpp,_Z22cuMemcpyPeer_ptds_implmmmmm
 3b760,316,verified,src/nvidia/cuda_driver_copy_described_impl.cpp,_Z22cuMemcpyPeerAsync_implmmmmmm
