@@ -7792,7 +7792,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 289fe0,8,verified,src/game/game_trivial.cpp,_Z15GameStub_289fe0m
 28aca0,192,verified,src/game/unnamed/b001_2.c,GameHr_28aca0
 28ad60,12,verified,src/game/game_trivial.cpp,_Z15GameStub_28ad60v
-28ad80,56,disputed,src/game/unnamed/b001_3.c,GameHr_28ad80
+28ad80,632,disputed,src/game/unnamed/b001_3.c,GameHr_28ad80
 28b020,360,verified,src/game/unnamed/b001_2.c,GameHr_28b020
 28b1a0,120,verified,src/game/unnamed/b001_2.c,GameHr_28b1a0
 28b220,8,verified,src/game/game_trivial.cpp,_Z15GameStub_28b220m
@@ -8145,7 +8145,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 29f920,104,verified,src/game/unnamed/b001_3.c,GameHr_29f920
 2a0360,8,verified,src/game/game_trivial_forwarders.cpp,_Z15GameStub_2a0360m
 2a0380,156,verified,src/game/unnamed/b001_4.c,GameHr_2a0380
-2a0440,196,disputed,src/game/unnamed/b001_3.c,GameHr_2a0440
+2a0440,352,disputed,src/game/unnamed/b001_3.c,GameHr_2a0440
 2a0600,32,verified,src/game/unnamed/b001_3.c,GameHr_2a0600
 2a0640,4,verified,src/game/game_trivial.cpp,_Z15GameStub_2a0640v
 2a0670,128,verified,src/game/unnamed/b001_3.c,GameHr_2a0670
@@ -8209,7 +8209,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 2a3a00,108,verified,src/game/unnamed/b002_0.c,GameHr_2a3a00
 2a3a70,72,verified,src/game/unnamed/b002_0.c,GameHr_2a3a70
 2a3ac0,8,verified,src/game/game_trivial.cpp,_Z15GameStub_2a3ac0m
-2a3ad0,224,verified,src/game/unnamed/b002_0.c,GameHr_2a3ad0
+2a3ad0,228,verified,src/game/unnamed/b002_0.c,GameHr_2a3ad0
 2a3d90,8,verified,src/game/game_trivial.cpp,_Z15GameStub_2a3d90m
 2a3da0,44,verified,src/game/unnamed/b002_0.c,GameHr_2a3da0
 2a3dd0,8,verified,src/game/game_trivial.cpp,_Z15GameStub_2a3dd0v
@@ -8307,7 +8307,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 2a7620,124,verified,src/game/unnamed/b002_0.c,GameHr_2a7620
 2a76b0,28,verified,src/game/unnamed/b002_0.c,GameHr_2a76b0
 2a76e0,116,verified,src/game/unnamed/b002_0.c,GameHr_2a76e0
-2a7760,136,verified,src/game/unnamed/b002_0.c,GameHr_2a7760
+2a7760,268,verified,src/game/unnamed/b002_0.c,GameHr_2a7760
 2a7880,36,verified,src/game/unnamed/b002_0.c,GameHr_2a7880
 2a7d60,204,verified,src/game/unnamed/b002_0.c,GameHr_2a7d60
 2a7e40,16,disputed,src/game/unnamed/r000_2.c,GameHr_2a7e40
@@ -8327,7 +8327,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 2a9140,1640,verified,src/game/unnamed/r000_1.c,GameHr_2a9140
 2a9930,168,verified,src/game/unnamed/r000_1.c,GameHr_2a9930
 2a99e0,220,verified,src/game/unnamed/b002_0.c,GameHr_2a99e0
-2a9ba0,360,verified,src/game/unnamed/b002_0.c,GameHr_2a9ba0
+2a9ba0,544,verified,src/game/unnamed/b002_0.c,GameHr_2a9ba0
 2a9e00,8,verified,src/game/game_trivial.cpp,_Z15GameStub_2a9e00m
 2a9e20,132,verified,src/game/unnamed/b002_0.c,GameHr_2a9e20
 2a9ec0,8,verified,src/game/game_trivial.cpp,_Z15GameStub_2a9ec0mj
@@ -8453,7 +8453,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 2aed00,104,verified,src/game/unnamed/b002_0.c,GameHr_2aed00
 2af0a0,8,verified,src/game/game_trivial_forwarders.cpp,_Z15GameStub_2af0a0m
 2af0c0,144,verified,src/game/unnamed/b002_1.c,GameHr_2af0c0
-2af160,392,verified,src/game/unnamed/b002_0.c,GameHr_2af160
+2af160,392,disputed,src/game/unnamed/b002_0.c,GameHr_2af160
 2af320,88,verified,src/game/unnamed/b002_0.c,GameHr_2af320
 2af380,4,verified,src/game/game_trivial.cpp,_Z15GameStub_2af380v
 2af3a0,8,verified,src/game/game_trivial.cpp,_Z15GameStub_2af3a0v
