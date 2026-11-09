@@ -448,7 +448,7 @@ fcc0,1860,verified,src/nvidia/unnamed/c000_0.c,CudaDriverHr_fcc0
 276f0,212,verified,src/nvidia/cuda_driver_query_impl.cpp,_Z31cuDevicePrimaryCtxGetState_implimm
 277d0,228,verified,src/nvidia/cuda_driver_graph_impl.cpp,_Z28cuDevicePrimaryCtxReset_impli
 278c0,188,verified,src/nvidia/cuda_driver_query_impl.cpp,_Z31cuDevicePrimaryCtxReset_v2_impli
-27980,232,verified,src/nvidia/cuda_driver_pool_impl.cpp,_Z30cuDeviceGetDefaultMemPool_implPmi
+27980,252,verified,src/nvidia/cuda_driver_pool_impl.cpp,_Z30cuDeviceGetDefaultMemPool_implPmi
 27a80,252,verified,src/nvidia/cuda_driver_pool_impl.cpp,_Z23cuDeviceSetMemPool_implim
 27b80,224,verified,src/nvidia/cuda_driver_graph_impl.cpp,_Z23cuDeviceGetMemPool_implPmj
 27c60,16,verified,src/nvidia/cuda_driver_misc_impl.cpp,_Z23cuDriverGetVersion_implm
@@ -878,7 +878,7 @@ fcc0,1860,verified,src/nvidia/unnamed/c000_0.c,CudaDriverHr_fcc0
 45da0,240,verified,src/nvidia/cuda_driver_multicast_impl.cpp,_Z23cuMulticastBindMem_implmmmmmm
 46320,244,verified,src/nvidia/cuda_driver_multicast_impl.cpp,_Z22cuMulticastUnbind_implmimm
 46440,200,verified,src/nvidia/cuda_driver_object_impl.cpp,_Z25cuMulticastAddDevice_implmi
-46520,172,verified,src/nvidia/cuda_driver_pool_impl.cpp,_Z30cuMulticastGetGranularity_implPmmj
+46520,204,verified,src/nvidia/cuda_driver_pool_impl.cpp,_Z30cuMulticastGetGranularity_implPmmj
 46610,32,verified,src/nvidia/cuda_driver_misc_impl.cpp,_Z21cuNNSetAllocator_implmmmm
 46630,256,verified,src/nvidia/cuda_driver_interop_impl.cpp,_Z26cuNVNbufferGetPointer_implPmmjS_
 46730,204,verified,src/nvidia/cuda_driver_node_impl.cpp,_Z25cuNVNtextureGetArray_implPmmmj
