@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 Alignment_56b600(void);
 __int64 ControlCreator_13633c0(void);
 __int64 GameRoutine_155fbe0(_QWORD, _QWORD);
@@ -1003,7 +1003,7 @@ __int64 MapSortieMenu_872a70(_QWORD* a1)
     if (game_GameModeData_instance_ != 0) {
       v20 = *(_QWORD*)(game_GameModeData_instance_ + 16);
       if (v20 != 0) {
-        GameRoutine_1560070(&v22, a1 + 106, "L_Minimap");
+        GameRoutine_1560070((void*)&v22, a1 + 106, "L_Minimap");
         LOWORD(v21) = *(_WORD*)(v20 + 134);
         GameRoutine_19fc5c0(a1 + 134, &v22, (float)v21);
         result = v23;
@@ -1123,7 +1123,7 @@ __int64 MapSortieMenu_872fe0(__int64 a1)
   if ((unsigned int)v1 <= 2) {
     *(_DWORD*)(a1 + 1300) = GameData_1b0b98c[v1];
   }
-  GameRoutine_1560070(&v8, a1 + 848, "L_Minimap");
+  GameRoutine_1560070((void*)&v8, a1 + 848, "L_Minimap");
   if (v9 != 0) {
     v3 = std___1___shared_weak_count_lock(v9);
     if (v3 != 0) {
@@ -1261,7 +1261,7 @@ __int64 MapSortieMenu_Unknown112(__int64 a1)
     }
     v2 = 40;
   }
-  (*(void (**)(void))(*(_QWORD*)v5 + v2))();
+  (*(void (**)(void*))(*(_QWORD*)v5 + v2))((void*)v5);
 
 LABEL_6:
   if (v1 != 0) {

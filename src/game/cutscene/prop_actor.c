@@ -37,7 +37,8 @@ __int64 PropActor_1806fc0(_QWORD* a1, _QWORD* a2, char a3);
 __int64 PropActor_1807a80(__int64 a1);
 __int64 PropActor_1807b60(__int64 a1, _QWORD* a2);
 bool PropActor_Unknown3(__int64 a1);
-_QWORD* GameRoutine_c24a80(_QWORD* __return_ptr, _QWORD, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_c24a80(PSEUDO_X8, _QWORD, _QWORD,
+                                                   _QWORD);
 __int64 CharacterActor_17ff8a0(_QWORD);
 __int64 CharacterActor_18055a0(_QWORD);
 __int64 Components_a870e0(_QWORD, _QWORD);
@@ -326,7 +327,7 @@ __int64 PropActor_1806fc0(_QWORD* a1, _QWORD* a2, char a3)
     if (v49 != nullptr) {
       v13 = 40;
     LABEL_14:
-      v12 = (*(__int64 (**)(void))(*(_QWORD*)v49 + v13))();
+      v12 = (*(__int64 (**)(void*))(*(_QWORD*)v49 + v13))((void*)v49);
     }
   }
   if ((v45 & 1) != 0 && v47 != 0) {
@@ -725,7 +726,8 @@ __int64 PropActor_Unknown2(__int64 result)
       else {
         v34 = v28;
       }
-      result = (__int64)GameRoutine_c24a80(&v80, v22, v33, v34);
+      result = (__int64)X8CALL_X0(
+          _QWORD*, GameRoutine_c24a80((void*)&v80, v22, v33, v34));
       if (atomic_fetch_add((atomic_ullong* volatile)(v25 + 8),
                            0xFFFFFFFFFFFFFFFFLL) == 0) {
         (*(void (**)(__int64))(*(_QWORD*)v25 + 16LL))(v25);

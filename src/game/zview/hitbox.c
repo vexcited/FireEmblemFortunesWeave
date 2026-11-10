@@ -83,7 +83,7 @@ __int64 Hitbox_Destructor(__int64 result)
     if (v6 - 48 == result) {
       v7 = 32;
     LABEL_12:
-      result = (*(__int64 (**)(void))(*(_QWORD*)result + v7))();
+      result = (*(__int64 (**)(void*))(*(_QWORD*)result + v7))((void*)result);
       goto LABEL_13;
     }
     if (result != 0) {
@@ -125,7 +125,7 @@ LABEL_21:
     if (result != 0) {
       v13 = 40;
     LABEL_25:
-      result = (*(__int64 (**)(void))(*(_QWORD*)result + v13))();
+      result = (*(__int64 (**)(void*))(*(_QWORD*)result + v13))((void*)result);
     }
     v12 = v14;
     if (v14 != v11) {
@@ -165,7 +165,7 @@ LABEL_34:
     if (result != 0) {
       v19 = 40;
     LABEL_38:
-      result = (*(__int64 (**)(void))(*(_QWORD*)result + v19))();
+      result = (*(__int64 (**)(void*))(*(_QWORD*)result + v19))((void*)result);
     }
     v18 = v20;
     if (v20 != v17) {

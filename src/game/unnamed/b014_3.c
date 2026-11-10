@@ -752,7 +752,7 @@ __int64 GameHr_101b8e0(__int64 result, unsigned __int8* a2, __int64 a3)
         }
         v34 = 40;
       }
-      (*(void (**)(void))(*(_QWORD*)v39 + v34))();
+      (*(void (**)(void*))(*(_QWORD*)v39 + v34))((void*)v39);
     LABEL_66:
       if ((v40 & 1) != 0 && v42 != nullptr) {
         v35 = 128;

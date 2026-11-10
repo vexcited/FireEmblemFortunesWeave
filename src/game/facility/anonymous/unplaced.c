@@ -1833,8 +1833,8 @@ __int64 game_facility_anonymous_143b060()
   v1 = result;
   v2 = SceneCharacter_14020c0(result);
   SceneTalk_1497cf0((void*)(v53), v2);
-  ((void (*)(_QWORD* __return_ptr, _QWORD*, __int64,
-             __int64))GameRoutine_1488120)(v52, v53, v1, 1);
+  ((__attribute__((swiftcall)) void (*)(PSEUDO_X8, _QWORD*, __int64, __int64))
+       GameRoutine_1488120)((void*)v52, v53, v1, 1);
   result = snd_fnd_WeakHandle_isValid(v52);
   if ((result & 1) != 0) {
     result = VoiceRootRegistry_a1b100(v52);

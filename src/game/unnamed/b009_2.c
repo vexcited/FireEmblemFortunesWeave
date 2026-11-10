@@ -68,7 +68,7 @@ __int64 GameRoutine_1a0a0c0(_QWORD);
 
 __int64 GameRoutine_1a0a4e0(_QWORD, _QWORD);
 
-_QWORD* GameRoutine_1a0a790(_QWORD* __return_ptr, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1a0a790(PSEUDO_X8, _QWORD);
 
 __int64 GameRoutine_1a0ab60(void);
 
@@ -120,7 +120,7 @@ __int64 GameRoutine_a991b0(_QWORD, _QWORD);
 
 __int64 GameRoutine_a993a0(_QWORD, _QWORD, _QWORD);
 
-_QWORD* GameRoutine_a99c80(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_a99c80(PSEUDO_X8, _QWORD, _QWORD);
 
 __int64 GameRoutine_adc400(__int64, __int64, __int64, __int64, __int64, _QWORD*,
                            __int64*, __int64);
@@ -699,7 +699,7 @@ __int64 GameHr_a988a0(__int64 result, __int64 a2, __int64* a3)
           v15 = (v9[1] - *v9) >> 2;
           v29 = *v9;
           v30 = v15;
-          GameRoutine_a99c80(v25, v11, &v26);
+          GameRoutine_a99c80((void*)v25, v11, &v26);
           GameRoutine_193ac30(v4 + 5, v25);
           GameRoutine_193ab40(v25);
           v19 = v4[17];
@@ -2102,7 +2102,7 @@ __int64 GameHr_b7b380(__int64* a1, _QWORD* a2, __int64 a3)
     v8 = 1 << (v7 - 1);
     v46 = v3 / v8;
     v47 = v4 / v8;
-    GameRoutine_1a0a790(v39, v7 - 1);
+    GameRoutine_1a0a790((void*)v39, v7 - 1);
     if ((v39[0] & 1) != 0) {
       v9 = v40;
     }

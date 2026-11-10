@@ -73,7 +73,7 @@ __int64 game_gmap_ProcAfterEncountSeq_TryHeroWarpOut(__int64 a1)
       }
       v4 = 40;
     }
-    result = (*(__int64 (**)(void))(*v6 + v4))();
+    result = (*(__int64 (**)(void*))(*v6 + v4))(v6);
   LABEL_9:
     if (v2 > 0) {
       return result;

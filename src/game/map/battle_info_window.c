@@ -41,7 +41,7 @@ __int64 BattleInfoWindow_Unknown21(__int64 a1, __int64 a2, __int64 a3, char a4);
 __int64 BattleInfoWindow_Unknown24(__int64 a1, char a2, char a3);
 __int64 BattleInfoWindow_18403e0(__int64 a1);
 __int64 BattleInfoWindow_1840400(__int64 a1);
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 Alignment_56b600(void);
 __int64 GameRoutine_156c5d0(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_159da00(_QWORD, _QWORD, _QWORD);
@@ -261,7 +261,7 @@ __int64 BattleInfoWindow_1835140(__int64 a1, __int64 a2, unsigned int a3,
     }
   }
   *(_BYTE*)(a1 + 224) = a5 & 1;
-  GameRoutine_1560070(&v19, a2, "L_ArrowL");
+  GameRoutine_1560070((void*)&v19, a2, "L_ArrowL");
   if (v20 != 0) {
     v12 = std___1___shared_weak_count_lock(v20);
     if (v12 != 0) {
@@ -279,7 +279,7 @@ __int64 BattleInfoWindow_1835140(__int64 a1, __int64 a2, unsigned int a3,
       std___1___shared_weak_count___release_weak(v20);
     }
   }
-  GameRoutine_1560070(&v17, a2, "L_ArrowR");
+  GameRoutine_1560070((void*)&v17, a2, "L_ArrowR");
   result = v18;
   if (v18 != 0) {
     v15 = std___1___shared_weak_count_lock(v18);
@@ -332,7 +332,7 @@ __int64 BattleInfoWindow_18352d0(__int64 a1, __int64 a2, unsigned int a3,
   else {
     v12 = v7;
   }
-  GameRoutine_1560070(&v20, a2, "L_ArrowL");
+  GameRoutine_1560070((void*)&v20, a2, "L_ArrowL");
   if (v21 != 0) {
     v13 = std___1___shared_weak_count_lock(v21);
     if (v13 != 0) {
@@ -350,7 +350,7 @@ __int64 BattleInfoWindow_18352d0(__int64 a1, __int64 a2, unsigned int a3,
       std___1___shared_weak_count___release_weak(v21);
     }
   }
-  GameRoutine_1560070(&v18, a2, "L_ArrowR");
+  GameRoutine_1560070((void*)&v18, a2, "L_ArrowR");
   result = v19;
   if (v19 != 0) {
     v16 = std___1___shared_weak_count_lock(v19);
@@ -888,9 +888,9 @@ __int64 BattleInfoWindow_Unknown4(__int64 a1)
         v8 = 0;
         v6 = GameData_212d890[0] + 2;
         v7 = 44;
-        (*(void (**)(char* __return_ptr, __int64, __int64**))(
-            *(_QWORD*)(GameData_21f1e08 + 8) + 16LL))(v5, GameData_21f1e08 + 8,
-                                                      &v6);
+        (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64, __int64**))(
+            *(_QWORD*)(GameData_21f1e08 + 8) + 16LL))(
+            (void*)v5, GameData_21f1e08 + 8, &v6);
       }
       *(_QWORD*)(v2 + 160) = 0;
       FloatingHelp_18af120(v2, a1 + 24);
@@ -1124,9 +1124,9 @@ __int64 BattleInfoWindow_Unknown24(__int64 a1, char a2, char a3)
           return GameRoutine_1562cf0(a1 + 24, "Info_Battle_PlayerOnly");
         }
         v20 = a1;
-        v21 =
-            (unsigned __int8)(*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD*)) *
-                              v19)(v19, v19);
+        v21 = (unsigned __int8)X8CALL_X0(
+            _QWORD*, (*(__attribute__((swiftcall)) void (**)(
+                         PSEUDO_X8, _QWORD*))*v19)((void*)v19, v19));
         a1 = v20;
         if ((v21 & 1) == 0) {
           return GameRoutine_1562cf0(a1 + 24, "Info_Battle_PlayerOnly");

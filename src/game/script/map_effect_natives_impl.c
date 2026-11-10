@@ -136,7 +136,7 @@ LABEL_14:
       }
       v25 = 40;
     }
-    return (_QWORD*)(*(__int64 (**)(void))(*result + v25))();
+    return (_QWORD*)(*(__int64 (**)(void*))(*result + v25))(result);
   }
   game_script_StartWaitProc(v12);
   v13 = (_QWORD*)*v6;
@@ -329,7 +329,7 @@ LABEL_14:
       }
       v34 = 40;
     }
-    return (_QWORD*)(*(__int64 (**)(void))(*result + v34))();
+    return (_QWORD*)(*(__int64 (**)(void*))(*result + v34))(result);
   }
   game_script_StartWaitProc(v21);
   v22 = (_QWORD*)*v16;
@@ -484,7 +484,7 @@ LABEL_15:
       }
       v33 = 40;
     }
-    return (_QWORD*)(*(__int64 (**)(void))(*result + v33))();
+    return (_QWORD*)(*(__int64 (**)(void*))(*result + v33))(result);
   }
   game_script_StartWaitProc(v20);
   v21 = (_QWORD*)*v16;

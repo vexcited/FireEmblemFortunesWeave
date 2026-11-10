@@ -140,7 +140,7 @@ __int64 MapPanelRageBalor_Unknown3(__int64 result)
     do {
       v9 = v2[6];
       *((_BYTE*)v2 + 272) = 0;
-      if (((*(__int64 (**)(void))(v9 + 48))() & 1) != 0) {
+      if (((*(__int64 (**)(void*))(v9 + 48))(&v2[6]) & 1) != 0) {
         v10 = 1036831949;
       }
       else {

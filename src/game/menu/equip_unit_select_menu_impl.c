@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 Alignment_56b600(void);
 __int64 ControlCreator_13633c0(void);
 __int64 GameRoutine_1574c20(_QWORD);
@@ -503,7 +503,7 @@ __int64 EquipUnitSelectMenu_16cdaa0(_QWORD* a1, _QWORD* a2)
   __int64 v32;
 
   a1[171] = a1[170];
-  GameRoutine_1560070(&v31, a1 + 106, "L_UnitInfoDetail");
+  GameRoutine_1560070((void*)&v31, a1 + 106, "L_UnitInfoDetail");
   result = v32;
   if (v32 != 0) {
     v5 = std___1___shared_weak_count_lock(v32);
@@ -541,7 +541,7 @@ __int64 EquipUnitSelectMenu_16cdaa0(_QWORD* a1, _QWORD* a2)
         if (!v10 && !v21) {
         LABEL_42:
           v22 = game_util_Format("L_KeyHelp%02d", 0);
-          GameRoutine_1560070(&v31, v6, v22);
+          GameRoutine_1560070((void*)&v31, v6, v22);
           if (v32 == 0) {
             goto LABEL_52;
           }
@@ -567,7 +567,7 @@ __int64 EquipUnitSelectMenu_16cdaa0(_QWORD* a1, _QWORD* a2)
           }
         LABEL_52:
           v25 = game_util_Format("L_KeyHelp%02d", 1);
-          GameRoutine_1560070(&v31, v6, v25);
+          GameRoutine_1560070((void*)&v31, v6, v25);
           if (v32 != 0) {
             v26 = std___1___shared_weak_count_lock(v32);
             v27 = v31;
@@ -618,7 +618,7 @@ __int64 EquipUnitSelectMenu_16cdaa0(_QWORD* a1, _QWORD* a2)
       goto LABEL_42;
     }
     v15 = game_util_Format("L_KeyHelp%02d", 0);
-    GameRoutine_1560070(&v31, v6, v15);
+    GameRoutine_1560070((void*)&v31, v6, v15);
     if (v32 != 0) {
       v16 = std___1___shared_weak_count_lock(v32);
       v17 = v31;
@@ -639,7 +639,7 @@ __int64 EquipUnitSelectMenu_16cdaa0(_QWORD* a1, _QWORD* a2)
     }
   LABEL_29:
     v18 = game_util_Format("L_KeyHelp%02d", 1);
-    GameRoutine_1560070(&v31, v6, v18);
+    GameRoutine_1560070((void*)&v31, v6, v18);
     result = v32;
     if (v32 != 0) {
       v19 = std___1___shared_weak_count_lock(v32);
@@ -843,7 +843,7 @@ __int64 EquipUnitSelectMenu_16cdee0(__int64 a1)
       *(_DWORD*)(a1 + 1204) = v15;
       *(_DWORD*)(a1 + 1208) = v15;
       *(_DWORD*)(a1 + 1200) = ((unsigned __int64)v14 >> 2) - 1;
-      GameRoutine_1560070(&v28, a1 + 848, "L_UnitInfoDetail/L_PageTab");
+      GameRoutine_1560070((void*)&v28, a1 + 848, "L_UnitInfoDetail/L_PageTab");
       if (v29 != 0) {
         v16 = std___1___shared_weak_count_lock(v29);
         v17 = v16;

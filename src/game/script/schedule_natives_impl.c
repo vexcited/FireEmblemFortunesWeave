@@ -476,7 +476,7 @@ _QWORD* ScheduleNatives_11c05d0(char a1, __int64 a2, char a3, char a4,
   }
   v14 = **(_QWORD**)(v13 + 24);
   if (v9 == 0) {
-    (*(void (**)(void))(v14 + 448))();
+    (*(void (**)(void*))(v14 + 448))((void*)(*(_QWORD**)(v13 + 24)));
     result = *(_QWORD**)(v13 + 2240);
     *(_QWORD*)(v13 + 2240) = 0;
     if (result == (_QWORD*)(v13 + 2208)) {
@@ -488,9 +488,10 @@ _QWORD* ScheduleNatives_11c05d0(char a1, __int64 a2, char a3, char a4,
       }
       v21 = 40;
     }
-    return (_QWORD*)(*(__int64 (**)(void))(*result + v21))();
+    return (_QWORD*)(*(__int64 (**)(void*))(*result + v21))(result);
   }
-  if (((*(__int64 (**)(void))(v14 + 456))() & 1) == 0) {
+  if (((*(__int64 (**)(void*))(v14 + 456))((void*)(*(_QWORD**)(v13 + 24))) &
+       1) == 0) {
     return (_QWORD*)game_script_WaitProc();
   }
   LOBYTE(v58) = a1;
@@ -696,7 +697,7 @@ LABEL_57:
       }
       v53 = 40;
     }
-    return (_QWORD*)(*(__int64 (**)(void))(*result + v53))();
+    return (_QWORD*)(*(__int64 (**)(void*))(*result + v53))(result);
   }
 }
 
@@ -805,20 +806,20 @@ _QWORD* ScheduleNatives_11c0b80(__int64 a1, __int64 a2, char a3, char a4,
     }
     v21 = **(_QWORD**)(v18 + 24);
     if (v15 == 0) {
-      (*(void (**)(void))(v21 + 448))();
+      (*(void (**)(void*))(v21 + 448))((void*)(*(_QWORD**)(v18 + 24)));
       result = *(_QWORD**)(v18 + 2240);
       *(_QWORD*)(v18 + 2240) = 0;
       if (result == (_QWORD*)(v18 + 2208)) {
       LABEL_151:
         v26 = 32;
-        return (_QWORD*)(*(__int64 (**)(void))(*result + v26))();
+        return (_QWORD*)(*(__int64 (**)(void*))(*result + v26))(result);
       }
     LABEL_21:
       if (result == nullptr) {
         return result;
       }
       v26 = 40;
-      return (_QWORD*)(*(__int64 (**)(void))(*result + v26))();
+      return (_QWORD*)(*(__int64 (**)(void*))(*result + v26))(result);
     }
     if (((*(__int64 (**)(void))(v21 + 456))() & 1) == 0) {
       return (_QWORD*)game_script_WaitProc();
@@ -1193,11 +1194,11 @@ _QWORD* ScheduleNatives_11c0b80(__int64 a1, __int64 a2, char a3, char a4,
   *(_QWORD*)(v14 + 2240) = 0;
   if (result == (_QWORD*)(v14 + 2208)) {
     v20 = 32;
-    return (_QWORD*)(*(__int64 (**)(void))(*result + v20))();
+    return (_QWORD*)(*(__int64 (**)(void*))(*result + v20))(result);
   }
   if (result != nullptr) {
     v20 = 40;
-    return (_QWORD*)(*(__int64 (**)(void))(*result + v20))();
+    return (_QWORD*)(*(__int64 (**)(void*))(*result + v20))(result);
   }
   return result;
 }

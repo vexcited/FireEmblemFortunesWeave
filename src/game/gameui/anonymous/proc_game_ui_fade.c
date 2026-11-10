@@ -599,7 +599,7 @@ _QWORD* ProcGameUiFade_15e2de0(_QWORD* result)
       if (result != nullptr) {
         v10 = 40;
       LABEL_9:
-        result = (_QWORD*)(*(__int64 (**)(void))(*result + v10))();
+        result = (_QWORD*)(*(__int64 (**)(void*))(*result + v10))(result);
         v7 = *v6;
       }
       v8 += 48LL;
@@ -729,7 +729,7 @@ _QWORD* ProcGameUiFade_15e3040(_QWORD* result)
       if (result != nullptr) {
         v10 = 40;
       LABEL_9:
-        result = (_QWORD*)(*(__int64 (**)(void))(*result + v10))();
+        result = (_QWORD*)(*(__int64 (**)(void*))(*result + v10))(result);
         v7 = *v6;
       }
       v8 += 48LL;

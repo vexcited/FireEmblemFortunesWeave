@@ -181,7 +181,7 @@ LABEL_14:
   if (v16 == v15) {
     v13 = 32;
   LABEL_22:
-    (*(void (**)(void))(*v16 + v13))();
+    (*(void (**)(void*))(*v16 + v13))(v16);
   }
   else if (v16 != nullptr) {
     v13 = 40;

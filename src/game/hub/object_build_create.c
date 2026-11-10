@@ -2,7 +2,8 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_a5cb20(_QWORD* __return_ptr, _QWORD, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_a5cb20(PSEUDO_X8, _QWORD, _QWORD,
+                                                   _QWORD);
 __int64 GameRoutine_2b0(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_a5aca0(_QWORD);
 __int64 GameRoutine_c20ea0(_QWORD, _QWORD);
@@ -99,7 +100,8 @@ _QWORD* ObjectBuildCreate_Destructor(__int64 a1)
   else {
     v6 = *(_QWORD*)(a1 + 80);
   }
-  result = GameRoutine_a5cb20(&v22, &GameData_21fdd90, v5, v6);
+  result = X8CALL_X0(
+      _QWORD*, GameRoutine_a5cb20((void*)&v22, &GameData_21fdd90, v5, v6));
   if (v22 != 0) {
     *(_BYTE*)(v22 + 184) = 0;
   }

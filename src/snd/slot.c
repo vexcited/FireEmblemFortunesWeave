@@ -4310,8 +4310,10 @@ void snd_Slot_mute_lambda0_CloneInto(__int64 a1, __int64 a2)
 
 _QWORD* snd_Slot_mute_lambda0_Invoke(__int64 a1, _QWORD** a2)
 {
-  return (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD, __int64, _QWORD))(
-      **a2 + 280LL))(*a2, *a2, a1 + 8, *(unsigned __int8*)(a1 + 208));
+  return X8CALL_X0(_QWORD*,
+                   (*(__attribute__((swiftcall)) void (**)(
+                       PSEUDO_X8, _QWORD, __int64, _QWORD))(**a2 + 280LL))(
+                       (void*)*a2, *a2, a1 + 8, *(unsigned __int8*)(a1 + 208)));
 }
 
 __int64 snd_Slot_mute_lambda1_Clone(__int64 a1)
@@ -4334,8 +4336,10 @@ void snd_Slot_mute_lambda1_CloneInto(__int64 a1, __int64 a2)
 
 _QWORD* snd_Slot_mute_lambda1_Invoke(__int64 a1, _QWORD** a2)
 {
-  return (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD, __int64, _QWORD))(
-      **a2 + 280LL))(*a2, *a2, a1 + 8, *(unsigned __int8*)(a1 + 208));
+  return X8CALL_X0(_QWORD*,
+                   (*(__attribute__((swiftcall)) void (**)(
+                       PSEUDO_X8, _QWORD, __int64, _QWORD))(**a2 + 280LL))(
+                       (void*)*a2, *a2, a1 + 8, *(unsigned __int8*)(a1 + 208)));
 }
 
 __int64 snd_Slot_mute_lambda2_Clone(__int64 a1)
@@ -4358,62 +4362,73 @@ void snd_Slot_mute_lambda2_CloneInto(__int64 a1, __int64 a2)
 
 _QWORD* snd_Slot_mute_lambda2_Invoke(__int64 a1, _QWORD** a2)
 {
-  return (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD, __int64, _QWORD))(
-      **a2 + 280LL))(*a2, *a2, a1 + 8, *(unsigned __int8*)(a1 + 208));
+  return X8CALL_X0(_QWORD*,
+                   (*(__attribute__((swiftcall)) void (**)(
+                       PSEUDO_X8, _QWORD, __int64, _QWORD))(**a2 + 280LL))(
+                       (void*)*a2, *a2, a1 + 8, *(unsigned __int8*)(a1 + 208)));
 }
 
 _QWORD* snd_Slot_resumeMute_lambda0_Invoke(__int64 a1, _QWORD** a2)
 {
-  return (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD, __int64))(
-      **a2 + 296LL))(*a2, *a2, a1 + 8);
+  return X8CALL_X0(_QWORD*, (*(__attribute__((swiftcall)) void (**)(
+                                PSEUDO_X8, _QWORD, __int64))(**a2 + 296LL))(
+                                (void*)*a2, *a2, a1 + 8));
 }
 
 _QWORD* snd_Slot_resumeMute_lambda1_Invoke(__int64 a1, _QWORD** a2)
 {
-  return (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD, __int64))(
-      **a2 + 296LL))(*a2, *a2, a1 + 8);
+  return X8CALL_X0(_QWORD*, (*(__attribute__((swiftcall)) void (**)(
+                                PSEUDO_X8, _QWORD, __int64))(**a2 + 296LL))(
+                                (void*)*a2, *a2, a1 + 8));
 }
 
 _QWORD* snd_Slot_resumeMute_lambda2_Invoke(__int64 a1, _QWORD** a2)
 {
-  return (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD, __int64))(
-      **a2 + 296LL))(*a2, *a2, a1 + 8);
+  return X8CALL_X0(_QWORD*, (*(__attribute__((swiftcall)) void (**)(
+                                PSEUDO_X8, _QWORD, __int64))(**a2 + 296LL))(
+                                (void*)*a2, *a2, a1 + 8));
 }
 
 _QWORD* snd_Slot_pause_lambda0_Invoke(__int64 a1, _QWORD** a2)
 {
-  return (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD, __int64, _QWORD))(
-      **a2 + 312LL))(*a2, *a2, a1 + 8, 0);
+  return X8CALL_X0(_QWORD*, (*(__attribute__((swiftcall)) void (**)(
+                                PSEUDO_X8, _QWORD, __int64, _QWORD))(
+                                **a2 + 312LL))((void*)*a2, *a2, a1 + 8, 0));
 }
 
 _QWORD* snd_Slot_pause_lambda1_Invoke(__int64 a1, _QWORD** a2)
 {
-  return (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD, __int64, _QWORD))(
-      **a2 + 312LL))(*a2, *a2, a1 + 8, 0);
+  return X8CALL_X0(_QWORD*, (*(__attribute__((swiftcall)) void (**)(
+                                PSEUDO_X8, _QWORD, __int64, _QWORD))(
+                                **a2 + 312LL))((void*)*a2, *a2, a1 + 8, 0));
 }
 
 _QWORD* snd_Slot_pause_lambda2_Invoke(__int64 a1, _QWORD** a2)
 {
-  return (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD, __int64, _QWORD))(
-      **a2 + 312LL))(*a2, *a2, a1 + 8, 0);
+  return X8CALL_X0(_QWORD*, (*(__attribute__((swiftcall)) void (**)(
+                                PSEUDO_X8, _QWORD, __int64, _QWORD))(
+                                **a2 + 312LL))((void*)*a2, *a2, a1 + 8, 0));
 }
 
 _QWORD* snd_Slot_resumePause_lambda0_Invoke(__int64 a1, _QWORD** a2)
 {
-  return (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD, __int64))(
-      **a2 + 328LL))(*a2, *a2, a1 + 8);
+  return X8CALL_X0(_QWORD*, (*(__attribute__((swiftcall)) void (**)(
+                                PSEUDO_X8, _QWORD, __int64))(**a2 + 328LL))(
+                                (void*)*a2, *a2, a1 + 8));
 }
 
 _QWORD* snd_Slot_resumePause_lambda1_Invoke(__int64 a1, _QWORD** a2)
 {
-  return (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD, __int64))(
-      **a2 + 328LL))(*a2, *a2, a1 + 8);
+  return X8CALL_X0(_QWORD*, (*(__attribute__((swiftcall)) void (**)(
+                                PSEUDO_X8, _QWORD, __int64))(**a2 + 328LL))(
+                                (void*)*a2, *a2, a1 + 8));
 }
 
 _QWORD* snd_Slot_resumePause_lambda2_Invoke(__int64 a1, _QWORD** a2)
 {
-  return (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD, __int64))(
-      **a2 + 328LL))(*a2, *a2, a1 + 8);
+  return X8CALL_X0(_QWORD*, (*(__attribute__((swiftcall)) void (**)(
+                                PSEUDO_X8, _QWORD, __int64))(**a2 + 328LL))(
+                                (void*)*a2, *a2, a1 + 8));
 }
 
 __int64 snd_Slot_silent_lambda0_Destructor(_QWORD* a1)

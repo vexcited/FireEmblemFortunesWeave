@@ -1,4 +1,4 @@
-#include "decomp/pseudo_types.h"
+#include "decomp/pseudo_helpers.h"
 #pragma GCC visibility push(hidden)
 
 extern unsigned int SdkData_bb1210[4];
@@ -241,7 +241,7 @@ __int64 SdkRoutine_85a870(_QWORD);
 __int64 SdkRoutine_85a880(_QWORD, _QWORD);
 __int64 SdkRoutine_85a890(_QWORD, _QWORD);
 __int64 SdkRoutine_85a9a0(_QWORD);
-_QWORD* SdkRoutine_85a9c0(_QWORD* __return_ptr, _QWORD);
+__attribute__((swiftcall)) void SdkRoutine_85a9c0(PSEUDO_X8, _QWORD);
 __int64 SdkRoutine_85adb0(_QWORD);
 __int64 SdkRoutine_85aec0(_QWORD);
 __int64 SdkRoutine_85af00(_QWORD, _QWORD);
@@ -2015,7 +2015,7 @@ __int64 SdkHr_118da0(__int64 a1)
   strcpy(v7, "Error: FS Access Log failed to allocate memory.\n");
   if ((SdkData_eafa2c & 2) != 0) {
     v9 = 0;
-    SdkRoutine_85a9c0(&v9, a1);
+    SdkRoutine_85a9c0((void*)&v9, a1);
     v8[0] = v7;
     v8[1] = 48;
     (*(void (**)(__int64, _QWORD*))(*(_QWORD*)v9 + 944LL))(v9, v8);
@@ -2026,7 +2026,7 @@ __int64 SdkHr_118da0(__int64 a1)
   result = SdkRoutine_85a870(1752066);
   if ((result & 1) != 0) {
     v8[0] = 0;
-    SdkRoutine_85a9c0(v8, result);
+    SdkRoutine_85a9c0((void*)v8, result);
     (*(void (**)(_QWORD))(*(_QWORD*)v8[0] + 1000LL))(v8[0]);
     if (v8[0] != 0) {
       (*(void (**)(_QWORD))(*(_QWORD*)v8[0] + 8LL))(v8[0]);
@@ -2037,7 +2037,7 @@ __int64 SdkHr_118da0(__int64 a1)
     v6[2] = v3;
     v6[0] = 0;
     strcpy(v4, "Error: FS Access Log to SD Card failed to allocate memory.\n");
-    SdkRoutine_85a9c0(v6, v2);
+    SdkRoutine_85a9c0((void*)v6, v2);
     v5[0] = v4;
     v5[1] = 59;
     (*(void (**)(_QWORD, _QWORD*))(*(_QWORD*)v6[0] + 944LL))(v6[0], v5);
@@ -2047,7 +2047,7 @@ __int64 SdkHr_118da0(__int64 a1)
     result = SdkRoutine_85a870(1752066);
     if ((result & 1) != 0) {
       v5[0] = 0;
-      SdkRoutine_85a9c0(v5, result);
+      SdkRoutine_85a9c0((void*)v5, result);
       (*(void (**)(_QWORD))(*(_QWORD*)v5[0] + 1000LL))(v5[0]);
       if (v5[0] != 0) {
         (*(void (**)(_QWORD))(*(_QWORD*)v5[0] + 8LL))(v5[0]);
@@ -3635,7 +3635,8 @@ __int64 SdkHr_127450(_QWORD* a1)
   v1 = (_QWORD*)a1[1];
   if (v1 != nullptr) {
     v2 = a1;
-    (*(void (**)(_QWORD* __return_ptr, _QWORD))(*v1 + 8LL))(v1, a1[1]);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD))(*v1 + 8LL))(
+        (void*)v1, a1[1]);
     a1 = v2;
   }
   return SdkRoutine_85a0b0(a1, 16);
@@ -3696,7 +3697,8 @@ __int64 SdkHr_127540(__int64 a1, _QWORD** a2)
     v8 = *a2;
     *a2 = v6;
     if (v8 != nullptr) {
-      (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v8 + 8LL))(v8, v8);
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v8 + 8LL))(
+          (void*)v8, v8);
       v4 = 0;
       goto LABEL_3;
     }
@@ -3789,7 +3791,8 @@ __int64 SdkHr_127670(__int64 a1, _QWORD** a2, unsigned __int16 a3)
       v9 = *a2;
       *a2 = v7;
       if (v9 != nullptr) {
-        (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v9 + 8LL))(v9, v9);
+        (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(
+            *v9 + 8LL))((void*)v9, v9);
         LODWORD(v5) = 0;
         goto LABEL_3;
       }
@@ -4097,7 +4100,8 @@ __int64 SdkHr_127f60(_QWORD* a1)
   v1 = (_QWORD*)a1[1];
   if (v1 != nullptr) {
     v2 = a1;
-    (*(void (**)(_QWORD* __return_ptr, _QWORD))(*v1 + 8LL))(v1, a1[1]);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD))(*v1 + 8LL))(
+        (void*)v1, a1[1]);
     a1 = v2;
   }
   return SdkRoutine_85a0b0(a1, 16);
@@ -4156,7 +4160,8 @@ __int64 SdkHr_128140(_QWORD* a1)
   v1 = (_QWORD*)a1[1];
   if (v1 != nullptr) {
     v2 = a1;
-    (*(void (**)(_QWORD* __return_ptr, _QWORD))(*v1 + 8LL))(v1, a1[1]);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD))(*v1 + 8LL))(
+        (void*)v1, a1[1]);
     a1 = v2;
   }
   return SdkRoutine_85a0b0(a1, 16);
@@ -4200,7 +4205,8 @@ __int64 SdkHr_1282e0(_QWORD* a1)
   v1 = (_QWORD*)a1[1];
   if (v1 != nullptr) {
     v2 = a1;
-    (*(void (**)(_QWORD* __return_ptr, _QWORD))(*v1 + 8LL))(v1, a1[1]);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD))(*v1 + 8LL))(
+        (void*)v1, a1[1]);
     a1 = v2;
   }
   return SdkRoutine_85a0b0(a1, 16);
@@ -4240,7 +4246,8 @@ __int64 SdkHr_128340(__int64 a1, _QWORD** a2)
     v8 = *a2;
     *a2 = v6;
     if (v8 != nullptr) {
-      (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v8 + 8LL))(v8, v8);
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v8 + 8LL))(
+          (void*)v8, v8);
       v4 = 0;
       goto LABEL_3;
     }
@@ -4437,7 +4444,8 @@ __int64 SdkHr_1287e0(__int64 a1, _QWORD** a2, unsigned __int16 a3)
       v9 = *a2;
       *a2 = v7;
       if (v9 != nullptr) {
-        (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v9 + 8LL))(v9, v9);
+        (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(
+            *v9 + 8LL))((void*)v9, v9);
         LODWORD(v5) = 0;
         goto LABEL_3;
       }
@@ -4539,7 +4547,8 @@ __int64 SdkHr_128bf0(_QWORD* a1)
   v1 = (_QWORD*)a1[1];
   if (v1 != nullptr) {
     v2 = a1;
-    (*(void (**)(_QWORD* __return_ptr, _QWORD))(*v1 + 8LL))(v1, a1[1]);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD))(*v1 + 8LL))(
+        (void*)v1, a1[1]);
     a1 = v2;
   }
   return SdkRoutine_85a0b0(a1, 16);
@@ -9737,8 +9746,8 @@ __int64 SdkHr_17c280(__int64 a1, __int64 a2, __int64 a3, __int64 a4, __int64 a5,
   result = SdkRoutine_85e320(a1, v14, a2, a3, a4, a5, a6);
   if (v14[0] != nullptr) {
     v13 = result;
-    (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v14[0] + 8LL))(v14[0],
-                                                                 v14[0]);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(
+        *v14[0] + 8LL))((void*)v14[0], v14[0]);
     return v13;
   }
   return result;
@@ -9868,8 +9877,8 @@ __int64 SdkHr_17c5a0(_QWORD* a1, unsigned int* a2, unsigned int a3)
   if (*(_QWORD*)(v3 + 120) != SdkData_e87020 || v6 == 0) {
     return v5;
   }
-  (*(void (**)(_QWORD* __return_ptr, __int64, _QWORD))(*(_QWORD*)(v6 + 8) +
-                                                       32LL))(v17, v6 + 8, a3);
+  (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64, _QWORD))(
+      *(_QWORD*)(v6 + 8) + 32LL))((void*)v17, v6 + 8, a3);
   if (v17[0] == 0) {
     return 251915;
   }
@@ -10042,7 +10051,8 @@ __int64 SdkHr_17cb50(__int64 a1, __int64 a2, unsigned int a3, __int64 a4)
   result = SdkRoutine_85e3d0(a1, a2, v6, a3, a4);
   if (v6[0] != nullptr) {
     v5 = result;
-    (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v6[0] + 8LL))(v6[0], v6[0]);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v6[0] + 8LL))(
+        (void*)v6[0], v6[0]);
     return v5;
   }
   return result;
@@ -12515,7 +12525,8 @@ __int64 SdkHr_1a8b30(_QWORD* a1)
   v1 = (_QWORD*)a1[3];
   if (v1 != nullptr) {
     v2 = a1;
-    (*(void (**)(_QWORD* __return_ptr, _QWORD))(*v1 + 8LL))(v1, a1[3]);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD))(*v1 + 8LL))(
+        (void*)v1, a1[3]);
     a1 = v2;
   }
   return SdkRoutine_857220(a1, 32);
@@ -13003,7 +13014,8 @@ __int64 SdkHr_1ac8f0(__int64 a1, __int64 a2, __int64 a3)
       result = 0;
     }
     if (v9 != nullptr) {
-      (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v9 + 8LL))(v9, v9);
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v9 + 8LL))(
+          (void*)v9, v9);
       result = v7;
     }
     if ((unsigned __int8)v11 == 1) {
@@ -13153,7 +13165,8 @@ LABEL_4:
       if (v20 == nullptr) {
         return 0;
       }
-      (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v20 + 8LL))(v20, v20);
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v20 + 8LL))(
+          (void*)v20, v20);
       v17 = v21;
       if (v21 == nullptr) {
       LABEL_11:
@@ -13215,7 +13228,8 @@ __int64 SdkHr_1ad880(__int64 a1, __int64* a2, __int64 a3, unsigned int a4)
     v12 = (_QWORD*)*a2;
     *a2 = v10;
     if (v12 != nullptr) {
-      (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v12 + 8LL))(v12, v12);
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v12 + 8LL))(
+          (void*)v12, v12);
     }
     SdkRoutine_858b60(a1 + 24);
     v13 = *(_QWORD*)(a1 + 32);
@@ -13336,7 +13350,8 @@ __int64 SdkHr_1af400(__int64 a1, __int64 a2, __int64 a3, __int64 a4, __int64 a5)
       }
       if (v22 != nullptr) {
         v15 = result;
-        (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v22 + 8LL))(v22, v22);
+        (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(
+            *v22 + 8LL))((void*)v22, v22);
         result = v15;
       }
     }
@@ -13619,7 +13634,8 @@ __int64 SdkHr_1b16c0(_QWORD* a1)
   v1 = (_QWORD*)a1[3];
   if (v1 != nullptr) {
     v2 = a1;
-    (*(void (**)(_QWORD* __return_ptr, _QWORD))(*v1 + 8LL))(v1, a1[3]);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD))(*v1 + 8LL))(
+        (void*)v1, a1[3]);
     a1 = v2;
   }
   return SdkRoutine_857220(a1, 32);

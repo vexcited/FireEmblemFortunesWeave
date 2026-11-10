@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 Alignment_56b600(void);
 __int64 ControlCreator_13633c0(__int64 result);
 __int64 GameRoutine_1374cc0(_BYTE*, char);
@@ -289,7 +289,7 @@ __int64 TelopCalendarRemind_Unknown44(__int64 a1)
   if ((result & 1) != 0) {
     goto LABEL_24;
   }
-  GameRoutine_1560070(&v16, a1 + 168, "L_Remind_KeyHelp");
+  GameRoutine_1560070((void*)&v16, a1 + 168, "L_Remind_KeyHelp");
   if (v17 != 0) {
     v3 = std___1___shared_weak_count_lock(v17);
     v4 = v16;

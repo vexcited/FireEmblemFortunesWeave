@@ -7,7 +7,7 @@ __int64 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 extern __int64 (*game_GameVariable_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 _QWORD* GameVariable_Destructor(_QWORD* result);
-_QWORD* GameRoutine_82faa0(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_82faa0(PSEUDO_X8, _QWORD, _QWORD);
 _QWORD* GameVariable_826e40(__int64, unsigned int, _QWORD*, int, int, int, int,
                             char);
 __int64 GameRoutine_12274e0(_QWORD, _QWORD);
@@ -2144,7 +2144,8 @@ char* GameVariable_827c00(char* result)
             }
             v29 = 40;
           }
-          result = (char*)(*(__int64 (**)(void))(*(_QWORD*)result + v29))();
+          result = (char*)(*(__int64 (**)(void*))(*(_QWORD*)result + v29))(
+              (void*)result);
         LABEL_55:
           v26 = v30;
           if (v30 == v27) {
@@ -2195,7 +2196,7 @@ char* GameVariable_827c00(char* result)
         if (v28 == v39) {
           v38 = 32;
         LABEL_72:
-          (*(void (**)(void))(*(_QWORD*)v39 + v38))();
+          (*(void (**)(void*))(*(_QWORD*)v39 + v38))((void*)v39);
           goto LABEL_73;
         }
         if (v39 != nullptr) {
@@ -2283,7 +2284,7 @@ char* GameVariable_827c00(char* result)
                       v54 = v102[506];
                     }
                     v102[506] = v54 - 8;
-                    GameRoutine_82faa0(v107, v103 + 3932128, v51);
+                    GameRoutine_82faa0((void*)v107, v103 + 3932128, v51);
                     v57 = v107[0];
                     v107[0] = 0;
                     if (v57 != 0) {
@@ -3565,7 +3566,7 @@ _QWORD* game_GameVariable_Impl_Push(_QWORD* result, __int64 a2,
     }
     v68 = 40;
   }
-  return (_QWORD*)(*(__int64 (**)(void))(*v83 + v68))();
+  return (_QWORD*)(*(__int64 (**)(void*))(*v83 + v68))(v83);
 }
 
 _QWORD* game_GameVariable_Impl_Pop(_QWORD* result, __int64 a2, __int64 a3)

@@ -52,7 +52,7 @@ __int64 ItemShopBuyMenuItem_18664f0(_QWORD* a1)
   if (v9 != nullptr) {
     v6 = 40;
   LABEL_10:
-    (*(void (**)(void))(*(_QWORD*)v9 + v6))();
+    (*(void (**)(void*))(*(_QWORD*)v9 + v6))((void*)v9);
   }
   return 9;
 }

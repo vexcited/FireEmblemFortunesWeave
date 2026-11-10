@@ -13,7 +13,7 @@ extern __int64* GameData_212e008[9];
 extern char GameData_2262bfc;
 __int64 ProcUnitSelectMenu_Unknown93(__int64 result);
 __int64 ProcUnitSelectMenu_Unknown102(__int64 a1);
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 BasicMenuCursor_16e0c00(_QWORD, _QWORD);
 __int64 GameRoutine_156af20(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_156c5d0(_QWORD, _QWORD, _QWORD);
@@ -312,7 +312,7 @@ __int64 ProcUnitSelectMenu_Unknown58(_QWORD* a1, __int64* a2)
   v11 = (__int64)(v10 + 1);
 LABEL_37:
   a2[1] = v11;
-  GameRoutine_1560070(&v49, a1 + 106, "L_Bg");
+  GameRoutine_1560070((void*)&v49, a1 + 106, "L_Bg");
   result = v50;
   if (v50 == 0) {
     return result;

@@ -16,7 +16,7 @@ __int64 GameRoutine_14107c0(_QWORD, _QWORD);
 
 __int64 GameRoutine_14127e0(_QWORD, _QWORD);
 
-_QWORD* GameRoutine_144f120(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_144f120(PSEUDO_X8, _QWORD, _QWORD);
 
 __int64 GameRoutine_1a09c50(_QWORD);
 
@@ -233,7 +233,7 @@ LABEL_51:
         *(_QWORD*)(v27 + 32) = 0xB8E4B1A9E89ABCE4LL;
         *(_QWORD*)v27 = 0x83E3A183E3AB82E3LL;
         *(_QWORD*)(v27 + 8) = 0xE3BC83E3AF83E3A9LL;
-        result = GameRoutine_144f120(&v30, v23, v32);
+        result = X8CALL_X0(_QWORD*, GameRoutine_144f120((void*)&v30, v23, v32));
         v28 = v31;
         if (v31 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v31 + 8),
                                          0xFFFFFFFFFFFFFFFFLL) == 0) {

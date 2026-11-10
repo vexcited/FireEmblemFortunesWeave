@@ -602,7 +602,7 @@ __int64 ProcDeliveryAnimalMenu_Unknown100(__int64 a1)
       }
       v16 = 40;
     }
-    (*(void (**)(void))(*v23 + v16))();
+    (*(void (**)(void*))(*v23 + v16))(v23);
   LABEL_30:
     if (v25 == v24) {
       v17 = 32;
@@ -613,7 +613,7 @@ __int64 ProcDeliveryAnimalMenu_Unknown100(__int64 a1)
       }
       v17 = 40;
     }
-    (*(void (**)(void))(*v25 + v17))();
+    (*(void (**)(void*))(*v25 + v17))(v25);
   LABEL_35:
     if (v28 == &v26) {
       v18 = 4;

@@ -240,7 +240,7 @@ __int64 GameRoutine_155e830(_QWORD, _QWORD);
 
 __int64 GameRoutine_155f480(_QWORD, _QWORD);
 
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 
 __int64 GameRoutine_179c320(_QWORD);
 
@@ -405,7 +405,8 @@ __int64 GameRoutine_efb030(_QWORD, _QWORD, _QWORD, float);
 
 float GameRoutine_efc240(_QWORD, _QWORD);
 
-_QWORD* GameRoutine_efca60(_QWORD* __return_ptr, _QWORD, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_efca60(PSEUDO_X8, _QWORD, _QWORD,
+                                                   _QWORD);
 
 __int64 GameHr_11057c0(__int64 a1)
 {
@@ -2132,7 +2133,7 @@ __int64 GameHr_1126110(__int64 a1, __int64* a2)
         goto LABEL_16;
       }
       v6 = (*(_BYTE*)(a1 + 8) & 1) != 0 ? *(_QWORD*)(a1 + 24) : a1 + 9;
-      GameRoutine_1560070(&v10, result, v6);
+      GameRoutine_1560070((void*)&v10, result, v6);
       result = v11;
       if (v11 == 0) {
         goto LABEL_16;
@@ -2189,7 +2190,7 @@ __int64 GameHr_1126210(__int64 a1, __int64* a2)
         goto LABEL_16;
       }
       v6 = (*(_BYTE*)(a1 + 8) & 1) != 0 ? *(_QWORD*)(a1 + 24) : a1 + 9;
-      GameRoutine_1560070(&v10, result, v6);
+      GameRoutine_1560070((void*)&v10, result, v6);
       result = v11;
       if (v11 == 0) {
         goto LABEL_16;
@@ -4052,7 +4053,7 @@ __int64 GameHr_11571c0(__int64* a1, __int64 a2, __int64 a3, char a4, float a5,
           }
           v30 = 40;
         }
-        (*(void (**)(void))(*(_QWORD*)v38 + v30))();
+        (*(void (**)(void*))(*(_QWORD*)v38 + v30))((void*)v38);
       LABEL_55:
         if ((v33[0] & 1) != 0 && v34 != 0) {
           v31 = 128;
@@ -6682,7 +6683,7 @@ __int64 GameHr_11985f0(__int64 a1, __int64 a2)
   else {
     v10 = (unsigned __int64)(unsigned __int8)v38 >> 1;
   }
-  GameRoutine_efca60(&v33, *(_QWORD*)GameData_212dbf0[0], v9, v10);
+  GameRoutine_efca60((void*)&v33, *(_QWORD*)GameData_212dbf0[0], v9, v10);
   if ((v35 & 1) != 0) {
     v11 = v37;
   }
@@ -6695,7 +6696,7 @@ __int64 GameHr_11985f0(__int64 a1, __int64 a2)
   else {
     v12 = (unsigned __int64)(unsigned __int8)v35 >> 1;
   }
-  GameRoutine_efca60(&v31, *v8, v11, v12);
+  GameRoutine_efca60((void*)&v31, *v8, v11, v12);
   if (v34 != 0 && *(_QWORD*)(v34 + 8) != -1 && v32 != 0 &&
       *(_QWORD*)(v32 + 8) != -1) {
     v13 = *v8;

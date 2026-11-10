@@ -177,7 +177,7 @@ __int64 game_UnitAutoGrowSkillUpdater_Update(__int64* a1)
       }
       v29 = 40;
     }
-    result = (*(__int64 (**)(void))(*v40 + v29))();
+    result = (*(__int64 (**)(void*))(*v40 + v29))(v40);
   }
   v32 = (__int64*)fw_memory_g_heap_manager_ptr;
   if (v48 != 0) {

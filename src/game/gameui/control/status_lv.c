@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 _QWORD* GameRoutine_1890220(__int64, int, int, int, char, char, int);
 _QWORD* GameRoutine_1890420(__int64, int, int, int, char);
 _QWORD* StatusNum_1890080(__int64);
@@ -229,7 +229,7 @@ _QWORD* StatusLV_18a2ed0(_QWORD* a1, int a2, int a3, int a4, int a5, float a6,
   }
   v16 = a1[137];
   if (v16 != 0) {
-    GameRoutine_1560070(&v27, a1 + 11, v16 + 176);
+    GameRoutine_1560070((void*)&v27, a1 + 11, v16 + 176);
     v17 = 1.0;
     if (a5 < 1) {
       v19 = 1.0;
@@ -372,7 +372,7 @@ __int64 StatusLV_18a30a0(__int64 result, __int64 a2)
       }
       v14 = *(_DWORD*)(a2 + 504);
       v15 = *(_DWORD*)(GameData_21d9968 + 4 * v12);
-      GameRoutine_1560070(&v22, v2 + 88, v9 + 176);
+      GameRoutine_1560070((void*)&v22, v2 + 88, v9 + 176);
       v16 = 1.0;
       if (v13 >= 1) {
         v17 = v13 - v15;
@@ -550,7 +550,7 @@ LABEL_29:
 LABEL_57:
   v28 = 0;
 LABEL_58:
-  GameRoutine_1560070(&v35, v4 + 11, v16 + 176);
+  GameRoutine_1560070((void*)&v35, v4 + 11, v16 + 176);
   v29 = 1.0;
   if (v28 >= 1) {
     v30 = v28 - v20;
@@ -600,7 +600,7 @@ _QWORD* StatusLV_18a34f0(_QWORD* a1)
 
   v1 = a1[137];
   if (v1 != 0) {
-    GameRoutine_1560070(&v5, a1 + 11, v1 + 176);
+    GameRoutine_1560070((void*)&v5, a1 + 11, v1 + 176);
     GameRoutine_174d670(&v5);
     if (v6 != 0) {
       std___1___shared_weak_count___release_weak(v6);

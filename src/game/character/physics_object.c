@@ -606,8 +606,8 @@ void game_character_PhysicsObject_PhysicsObject_lambda0_Invoke(__int64 a1,
             if ((v14 & 1) != 0 && (v33 & 2) == 0) {
               v15 = (*(__int64 (**)(_QWORD, long double))(
                   **(_QWORD**)(v4 + 24) + 40LL))(*(_QWORD*)(v4 + 24), v13);
-              (*(void (**)(float32x2_t* __return_ptr))(*(_QWORD*)v15 + 336LL))(
-                  &v28);
+              (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, void*))(
+                  *(_QWORD*)v15 + 336LL))((void*)&v28, (void*)v15);
               LANES64(v16).n64_u32[0] = v29;
               *(float32x2_t*)&v17 =
                   vadd_f32(vmul_f32(v16, v16), vmul_f32(v28, v28));
@@ -638,8 +638,9 @@ void game_character_PhysicsObject_PhysicsObject_lambda0_Invoke(__int64 a1,
                 }
               }
               v24 = *(_QWORD*)(v5 + 136);
-              (*(void (**)(_QWORD* __return_ptr, long double))(
-                  **(_QWORD**)(*(_QWORD*)(v4 + 24) + 16LL) + 176LL))(v34, v17);
+              (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, long double))(
+                  **(_QWORD**)(*(_QWORD*)(v4 + 24) + 16LL) + 176LL))((void*)v34,
+                                                                     v17);
               *(_QWORD*)&v25 = v34[2];
               LODWORD(v26) = v35;
               *((_QWORD*)&v25 + 1) = v26;

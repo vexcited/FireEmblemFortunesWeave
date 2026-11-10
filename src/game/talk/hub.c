@@ -2,8 +2,9 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_112d860(_QWORD* __return_ptr, _QWORD);
-_QWORD* GameRoutine_efca60(_QWORD* __return_ptr, _QWORD, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_112d860(PSEUDO_X8, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_efca60(PSEUDO_X8, _QWORD, _QWORD,
+                                                   _QWORD);
 __int64 GameRoutine_108c540(_QWORD);
 __int64 GameRoutine_108c760(_QWORD);
 __int64 GameRoutine_10c0490(_QWORD, _QWORD);
@@ -1788,7 +1789,7 @@ __int64 game_talk_Hub_DisableLookAt(__int64 a1, __int64 a2)
   else {
     v7 = (unsigned __int64)(unsigned __int8)v26 >> 1;
   }
-  GameRoutine_efca60(&v24, *(_QWORD*)GameData_212dbf0[0], v6, v7);
+  GameRoutine_efca60((void*)&v24, *(_QWORD*)GameData_212dbf0[0], v6, v7);
   if (v25 == 0) {
     goto LABEL_30;
   }
@@ -1854,7 +1855,7 @@ __int64 game_talk_Hub_DisableLookAt(__int64 a1, __int64 a2)
         }
         v15 = 40;
       }
-      (*(void (**)(void))(*v19 + v15))();
+      (*(void (**)(void*))(*v19 + v15))(v19);
       goto LABEL_25;
     }
   }
@@ -1918,7 +1919,7 @@ __int64 Hub_1199bc0(__int64 a1, __int64 a2)
   else {
     v7 = (unsigned __int64)(unsigned __int8)v18 >> 1;
   }
-  GameRoutine_efca60(&v16, *(_QWORD*)GameData_212dbf0[0], v6, v7);
+  GameRoutine_efca60((void*)&v16, *(_QWORD*)GameData_212dbf0[0], v6, v7);
   if (v17 != 0) {
     if (*(_QWORD*)(v17 + 8) != -1) {
       v8 = *v5;
@@ -2148,7 +2149,7 @@ bool Hub_119a3a0(__int64 a1, __int64 a2, __int64* a3)
       v79 = v8;
       v80 = (char*)a3[2];
     }
-    GameRoutine_112d860(&v75, &v78);
+    GameRoutine_112d860((void*)&v75, &v78);
     v9 = *(_BYTE*)(a1 + 129);
     v10 = v75;
     *(_BYTE*)(a1 + 129) = 0;
@@ -3009,7 +3010,7 @@ __int64 Hub_119b730(__int64 a1, __int64 a2, int a3, __int64* a4, __int64 a5)
     v13 = *(_QWORD**)(a1 + 64);
     if (v21 == v20) {
       if (v13 == (_QWORD*)v11) {
-        (*(void (**)(void))(*(_QWORD*)v21 + 24LL))();
+        (*(void (**)(void*, void*))(*(_QWORD*)v21 + 24))(v21, v22);
         (*(void (**)(_BYTE*))(*(_QWORD*)v21 + 32LL))(v21);
         v16 = *(_QWORD*)(a1 + 64);
         v21 = nullptr;
@@ -3024,7 +3025,7 @@ __int64 Hub_119b730(__int64 a1, __int64 a2, int a3, __int64* a4, __int64 a5)
         *(_QWORD*)(a1 + 64) = v11;
       }
       else {
-        (*(void (**)(void))(*(_QWORD*)v21 + 24LL))();
+        (*(void (**)(void*, void*))(*(_QWORD*)v21 + 24))(v21, v11);
         (*(void (**)(_BYTE*))(*(_QWORD*)v21 + 32LL))(v21);
         v14 = *(_BYTE**)(a1 + 64);
         *(_QWORD*)(a1 + 64) = v11;
@@ -3032,8 +3033,8 @@ __int64 Hub_119b730(__int64 a1, __int64 a2, int a3, __int64* a4, __int64 a5)
       }
     }
     else if (v13 == (_QWORD*)v11) {
-      (*(void (**)(_QWORD* __return_ptr, _QWORD, _BYTE*))(*v13 + 24LL))(
-          v13, *(_QWORD*)(a1 + 64), v20);
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD, _BYTE*))(
+          *v13 + 24LL))((void*)v13, *(_QWORD*)(a1 + 64), v20);
       (*(void (**)(_QWORD))(**(_QWORD**)(a1 + 64) + 32LL))(*(_QWORD*)(a1 + 64));
       v15 = v21;
       v21 = v20;
@@ -3054,7 +3055,7 @@ __int64 Hub_119b730(__int64 a1, __int64 a2, int a3, __int64* a4, __int64 a5)
     }
     v19 = 40;
   }
-  return (*(__int64 (**)(void))(*(_QWORD*)v21 + v19))();
+  return (*(__int64 (**)(void*))(*(_QWORD*)v21 + v19))((void*)v21);
 }
 
 bool Hub_119b940(__int64 a1, __int64* a2)

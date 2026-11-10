@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_157ac20(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_1583180(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_15d32c0(_QWORD, _QWORD, _QWORD);
@@ -37,7 +37,7 @@ __int64 EquipMenuItem_PoolEmpty_185e990(__int64 a1)
   if (*(_BYTE*)(a1 + 79) != 0) {
     v2 = 520;
   }
-  result = (*(__int64 (**)(void))(*(_QWORD*)a1 + v2))();
+  result = (*(__int64 (**)(void*))(*(_QWORD*)a1 + v2))((void*)a1);
   v4 = *(_QWORD*)(a1 + 8);
   if (v4 != 0) {
     v5 = *(unsigned int*)(a1 + 40);
@@ -48,7 +48,7 @@ __int64 EquipMenuItem_PoolEmpty_185e990(__int64 a1)
                                  48LL) +
                       8 * v5);
     }
-    GameRoutine_1560070(&v10, v4 + 848, "L_Help");
+    GameRoutine_1560070((void*)&v10, v4 + 848, "L_Help");
     result = v11;
     if (v11 != 0) {
       v7 = *(_QWORD*)(v4 + 1064);

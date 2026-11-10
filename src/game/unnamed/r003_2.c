@@ -580,7 +580,7 @@ _QWORD* GameHr_cc2aa0(__int64 a1, __int64 a2, _DWORD* a3)
     }
     v11 = 40;
   }
-  (*(void (**)(void))(*v10 + v11))();
+  (*(void (**)(void*))(*v10 + v11))(v10);
 LABEL_9:
   v12 = *v6;
   v13 = *(
@@ -782,7 +782,7 @@ LABEL_72:
       }
       v51 = 40;
     }
-    result = (_QWORD*)(*(__int64 (**)(void))(*result + v51))();
+    result = (_QWORD*)(*(__int64 (**)(void*))(*result + v51))(result);
     goto LABEL_82;
   }
   result = (_QWORD*)((__int64 (*)(void))v48)();
@@ -841,7 +841,7 @@ __int64 GameHr_ccb620(__int64 a1)
     }
     v6 = 40;
   }
-  (*(void (**)(void))(*v5 + v6))();
+  (*(void (**)(void*))(*v5 + v6))(v5);
 LABEL_9:
   v7 = GameData_21f3cc0;
   if ((*(_BYTE*)a1 & 1) != 0) {

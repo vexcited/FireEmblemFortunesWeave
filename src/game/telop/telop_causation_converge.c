@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_13755a0(__int64*);
 __int64 GameRoutine_1375790(__int64 result);
 __int64 GameRoutine_1386f80(__int64);
@@ -313,7 +313,7 @@ __int64 TelopCausationConverge_Unknown33(__int64 a1)
     }
     nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v28);
   }
-  GameRoutine_1560070(&v38, a1 + 168, "L_Bg");
+  GameRoutine_1560070((void*)&v38, a1 + 168, "L_Bg");
   v43[0] = "In";
   v43[1] = 2;
   v40 = (__int64)"Out";
@@ -448,7 +448,8 @@ __int64 TelopCausationConverge_Destructor(_QWORD* a1)
   a1[105] = 0;
   if (v1 != nullptr) {
     v2 = a1;
-    (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v1 + 8LL))(v1, v1);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v1 + 8LL))(
+        (void*)v1, v1);
     a1 = v2;
   }
   return GameRoutine_1386f80((__int64)a1);

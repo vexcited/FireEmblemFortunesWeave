@@ -3330,12 +3330,14 @@ _QWORD* game_map_BattleUtil_EachFactorSkill_lambda0_Clone_7ab370(_QWORD* a1)
     if (v4 == a1 + 4) {
       v5 = result;
       result[8] = result + 4;
-      (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v4 + 24LL))(v4, v4);
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v4 + 24LL))(
+          (void*)v4, v4);
     }
     else {
       v5 = result;
-      result[8] = (*(_QWORD *
-                     (**)(_QWORD * __return_ptr, _QWORD*))(*v4 + 16LL))(v4, v4);
+      result[8] = X8CALL_X0(
+          _QWORD*, (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(
+                       *v4 + 16LL))((void*)v4, v4));
     }
     return v5;
   }
@@ -3365,8 +3367,9 @@ game_map_BattleUtil_EachFactorSkill_lambda0_CloneInto_7ab420(_QWORD* result,
           result[8]);
     }
     else {
-      result = (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD))(*v4 + 16LL))(
-          v4, result[8]);
+      result = X8CALL_X0(
+          _QWORD*, (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD))(
+                       *v4 + 16LL))((void*)v4, result[8]));
       a2[8] = result;
     }
   }
@@ -3413,12 +3416,14 @@ _QWORD* game_map_BattleUtil_EachFactorSkill_lambda0_Clone_7ab660(_QWORD* a1)
     if (v4 == a1 + 4) {
       v5 = result;
       result[8] = result + 4;
-      (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v4 + 24LL))(v4, v4);
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v4 + 24LL))(
+          (void*)v4, v4);
     }
     else {
       v5 = result;
-      result[8] = (*(_QWORD *
-                     (**)(_QWORD * __return_ptr, _QWORD*))(*v4 + 16LL))(v4, v4);
+      result[8] = X8CALL_X0(
+          _QWORD*, (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(
+                       *v4 + 16LL))((void*)v4, v4));
     }
     return v5;
   }
@@ -3448,8 +3453,9 @@ game_map_BattleUtil_EachFactorSkill_lambda0_CloneInto_7ab710(_QWORD* result,
           result[8]);
     }
     else {
-      result = (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD))(*v4 + 16LL))(
-          v4, result[8]);
+      result = X8CALL_X0(
+          _QWORD*, (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD))(
+                       *v4 + 16LL))((void*)v4, result[8]));
       a2[8] = result;
     }
   }
@@ -3477,12 +3483,14 @@ _QWORD* game_map_BattleUtil_EachFactorSkill_lambda1_Clone(_QWORD* a1)
     if (v4 == a1 + 4) {
       v5 = result;
       result[8] = result + 4;
-      (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v4 + 24LL))(v4, v4);
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v4 + 24LL))(
+          (void*)v4, v4);
     }
     else {
       v5 = result;
-      result[8] = (*(_QWORD *
-                     (**)(_QWORD * __return_ptr, _QWORD*))(*v4 + 16LL))(v4, v4);
+      result[8] = X8CALL_X0(
+          _QWORD*, (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(
+                       *v4 + 16LL))((void*)v4, v4));
     }
     return v5;
   }
@@ -3510,8 +3518,9 @@ _QWORD* game_map_BattleUtil_EachFactorSkill_lambda1_CloneInto(_QWORD* result,
           result[8]);
     }
     else {
-      result = (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD))(*v4 + 16LL))(
-          v4, result[8]);
+      result = X8CALL_X0(
+          _QWORD*, (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD))(
+                       *v4 + 16LL))((void*)v4, result[8]));
       a2[8] = result;
     }
   }
@@ -3590,13 +3599,15 @@ _QWORD* game_map_BattleUtil_GetHealPower_lambda0_Clone(_QWORD* a1)
     if (v4 == a1 + 2) {
       result[6] = v3;
       v7 = result;
-      (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v4 + 24LL))(v4, v4);
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v4 + 24LL))(
+          (void*)v4, v4);
       result = v7;
     }
     else {
       v5 = result;
-      v6 = (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD, _QWORD*))(
-          *v4 + 16LL))(v4, a1[6], v3);
+      v6 = X8CALL_X0(_QWORD*, (*(__attribute__((swiftcall)) void (**)(
+                                  PSEUDO_X8, _QWORD, _QWORD*))(*v4 + 16LL))(
+                                  (void*)v4, a1[6], v3));
       result = v5;
       v5[6] = v6;
     }

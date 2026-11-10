@@ -272,9 +272,11 @@ __int64 SoundArchivePlayer_279410(__int64 a1, _BYTE* a2, unsigned __int64 a3,
   v15 = *(_QWORD**)(a1 + 16);
   if (v15 != nullptr) {
     if (*((_BYTE*)v15 + 8) == 1) {
-      if (((v14 | (unsigned int)(*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD,
-                                                 _QWORD, _QWORD*))(
-                      *v15 + 48LL))(v15, *(_QWORD*)(a1 + 16), a4, v34_.v34)) &
+      if (((v14 |
+            (unsigned int)X8CALL_X0(
+                _QWORD*, (*(__attribute__((swiftcall)) void (**)(
+                             PSEUDO_X8, _QWORD, _QWORD, _QWORD*))(*v15 + 48LL))(
+                             (void*)v15, *(_QWORD*)(a1 + 16), a4, v34_.v34))) &
            1) == 0) {
         return 0;
       }
@@ -1419,7 +1421,8 @@ LABEL_112:
     v37 = *(_QWORD**)(a1 + 784);
     if (v37 != nullptr && *((_BYTE*)v37 + 8) == 1) {
       v38 = result;
-      (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v37 + 32LL))(v37, v37);
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(
+          *v37 + 32LL))((void*)v37, v37);
       return v38;
     }
     return result;

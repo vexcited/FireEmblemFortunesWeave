@@ -58,7 +58,7 @@ __int64 GameRoutine_1a0a0c0(_QWORD);
 
 __int64 GameRoutine_1a0a4e0(_QWORD);
 
-_QWORD* GameRoutine_1a0a790(_QWORD* __return_ptr, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1a0a790(PSEUDO_X8, _QWORD);
 
 __int64 GameRoutine_1a0b940(_QWORD, _QWORD, _QWORD);
 
@@ -78,7 +78,8 @@ void __attribute__((noreturn)) GameRoutine_688200(_QWORD);
 
 void __attribute__((noreturn)) GameRoutine_919020(_QWORD);
 
-_QWORD* GameRoutine_a8ed00(_QWORD* __return_ptr, _QWORD, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_a8ed00(PSEUDO_X8, _QWORD, _QWORD,
+                                                   _QWORD);
 
 __int64 GameRoutine_a908c0(_QWORD, _QWORD);
 
@@ -285,7 +286,7 @@ char* GameHr_c71860(__int64 a1, int a2, unsigned int a3)
   unsigned __int64 v158;
   char* v159;
 
-  result = (char*)GameRoutine_1a0a790(&v157, a3);
+  result = (char*)X8CALL_X0(_QWORD*, GameRoutine_1a0a790((void*)&v157, a3));
   v6 = *(unsigned __int8*)(a1 + 376);
   v7 = (v6 & 1) == 0;
   v8 = v6 >> 1;
@@ -453,8 +454,9 @@ char* GameHr_c71860(__int64 a1, int a2, unsigned int a3)
     else {
       v38 = (char*)&v154 + 1;
     }
-    result =
-        (char*)GameRoutine_a8ed00(&v151, *(_QWORD*)(*v23 + 13224), v38, v37);
+    result = (char*)X8CALL_X0(
+        _QWORD*,
+        GameRoutine_a8ed00((void*)&v151, *(_QWORD*)(*v23 + 13224), v38, v37));
     v40 = v151;
     v39 = v152;
     if (v152 != 0) {
@@ -685,7 +687,9 @@ char* GameHr_c71860(__int64 a1, int a2, unsigned int a3)
   else {
     v81 = (char*)&v154 + 1;
   }
-  result = (char*)GameRoutine_a8ed00(&v151, *(_QWORD*)(*v23 + 13224), v81, v80);
+  result = (char*)X8CALL_X0(
+      _QWORD*,
+      GameRoutine_a8ed00((void*)&v151, *(_QWORD*)(*v23 + 13224), v81, v80));
   v83 = v151;
   v82 = v152;
   if (v152 != 0 &&
@@ -1485,7 +1489,7 @@ _QWORD* GameHr_cbf8a0()
     }
     v20 = 40;
   }
-  return (_QWORD*)(*(__int64 (**)(void))(*result + v20))();
+  return (_QWORD*)(*(__int64 (**)(void*))(*result + v20))(result);
 }
 
 __int64 GameHr_cd7620(__int64 result, __int64* a2, _QWORD* a3, _QWORD* a4)
@@ -1686,7 +1690,7 @@ LABEL_11:
   if (v70 != nullptr) {
     v26 = 40;
   LABEL_29:
-    (*(void (**)(void))(*v70 + v26))();
+    (*(void (**)(void*))(*v70 + v26))(v70);
   }
   v27 = v66;
   if (v66 != 0) {
@@ -1781,7 +1785,7 @@ LABEL_11:
     }
     v44 = 40;
   }
-  (*(void (**)(void))(*(_QWORD*)v62 + v44))();
+  (*(void (**)(void*))(*(_QWORD*)v62 + v44))((void*)v62);
 LABEL_74:
   if (v60 == &v59) {
     v45 = 32;
@@ -1792,7 +1796,7 @@ LABEL_74:
     }
     v45 = 40;
   }
-  (*(void (**)(void))(*v60 + v45))();
+  (*(void (**)(void*))(*v60 + v45))(v60);
 LABEL_79:
   result = (__int64)v58;
   if (v58 == &v57) {
@@ -1802,7 +1806,7 @@ LABEL_79:
   if (v58 != nullptr) {
     v46 = 40;
   LABEL_83:
-    result = (*(__int64 (**)(void))(*v58 + v46))();
+    result = (*(__int64 (**)(void*))(*v58 + v46))(v58);
   }
   if ((v54 & 1) != 0 && v56 != 0) {
     v47 = 128;

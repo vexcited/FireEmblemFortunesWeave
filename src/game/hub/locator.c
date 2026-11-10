@@ -14,8 +14,8 @@ extern __int64* GameData_212eb98[10];
 extern __int64* as_g_script_manager_ptr;
 extern __int64* util_g_handle_slots_ptr[2];
 __int64 Locator_Destructor(__int64 a1);
-_QWORD* GameRoutine_d9b810(_QWORD* __return_ptr, _QWORD, _QWORD, _QWORD, _QWORD,
-                           _QWORD);
+__attribute__((swiftcall)) void GameRoutine_d9b810(PSEUDO_X8, _QWORD, _QWORD,
+                                                   _QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_d9af70(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_d9bc80(_QWORD, _QWORD, _QWORD);
 __int64 HandlePtr_cb3600(_QWORD, _QWORD, _QWORD, _QWORD);
@@ -296,7 +296,7 @@ __int64 Locator_df7860(__int64 result, unsigned __int8* a2, __int64 a3)
       v19 = a2 + 1;
     }
     v20 = strlen(v19);
-    GameRoutine_d9b810(&v51, v18, v19, v20, &v57, 4);
+    GameRoutine_d9b810((void*)&v51, v18, v19, v20, &v57, 4);
     v21 = v51;
     v22 = v52;
     v53 = v51;
@@ -376,7 +376,7 @@ LABEL_43:
     v34 = a2 + 1;
   }
   v35 = strlen(v34);
-  GameRoutine_d9b810(&v51, v33, v34, v35, &v57, 4);
+  GameRoutine_d9b810((void*)&v51, v33, v34, v35, &v57, 4);
   v21 = v51;
   v22 = v52;
   v53 = v51;

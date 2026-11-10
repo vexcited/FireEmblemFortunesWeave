@@ -2397,8 +2397,8 @@ __n128 GameHr_17f0e0(__int64 a1, _QWORD* a2, int a3, int a4, unsigned int a5,
       }
     }
     v6 = v78;
-    (*(void (**)(__int64* __return_ptr, __int64))(*(_QWORD*)v78 + 1192LL))(&v95,
-                                                                           v78);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64))(
+        *(_QWORD*)v78 + 1192LL))((void*)&v95, v78);
     v46 = v80;
     if (v79 != v15) {
       for (j = 0; j != v46; ++j) {
@@ -2411,8 +2411,8 @@ __n128 GameHr_17f0e0(__int64 a1, _QWORD* a2, int a3, int a4, unsigned int a5,
                 0 &&
             ((*(__int64 (**)(__int64))(*(_QWORD*)v48 + 1296LL))(v48) & 1) ==
                 0) {
-          (*(void (**)(unsigned __int64* __return_ptr, __int64))(
-              *(_QWORD*)v48 + 1192LL))(&v87, v48);
+          (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64))(
+              *(_QWORD*)v48 + 1192LL))((void*)&v87, v48);
           *(float*)&v49 = *(float*)&v95 * *(float*)&v87;
           *(float*)&v50 = *((float*)&v95 + 1) + *((float*)&v87 + 1);
           v51 = v88;

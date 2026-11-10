@@ -688,7 +688,7 @@ void __attribute__((noreturn)) GameRoutine_e0aee0(void);
 
 __int64 GameRoutine_e14270(_QWORD, _QWORD);
 
-_QWORD* GameRoutine_e1b4d0(_QWORD* __return_ptr);
+__attribute__((swiftcall)) void GameRoutine_e1b4d0(PSEUDO_X8);
 
 __int64 GameRoutine_e1be10(_QWORD, _QWORD);
 
@@ -6254,7 +6254,7 @@ void GameHr_e1b220()
   v3 = nullptr;
   v4 = (_QWORD*)GameData_212bf68;
   do {
-    v7 = GameRoutine_e1b4d0(&v24);
+    v7 = X8CALL_X0(_QWORD*, GameRoutine_e1b4d0((void*)&v24));
     if ((unsigned __int64)v3 < v2) {
       v5 = v25;
       v6 = v3;

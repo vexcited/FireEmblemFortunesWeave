@@ -78,7 +78,7 @@ __int64 ContinueMenuItem_Unknown19(__int64 result)
         }
         v9 = 40;
       }
-      (*(void (**)(void))(*(_QWORD*)v13 + v9))();
+      (*(void (**)(void*))(*(_QWORD*)v13 + v9))((void*)v13);
     LABEL_18:
       if (v15 == v14) {
         v10 = 32;
@@ -89,7 +89,7 @@ __int64 ContinueMenuItem_Unknown19(__int64 result)
         }
         v10 = 40;
       }
-      (*(void (**)(void))(*v15 + v10))();
+      (*(void (**)(void*))(*v15 + v10))(v15);
     LABEL_23:
       if (v17 == v16) {
         v11 = 32;
@@ -104,7 +104,7 @@ __int64 ContinueMenuItem_Unknown19(__int64 result)
         }
         v11 = 40;
       }
-      (*(void (**)(void))(*v17 + v11))();
+      (*(void (**)(void*))(*v17 + v11))(v17);
       goto LABEL_28;
     }
   }

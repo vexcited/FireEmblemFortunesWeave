@@ -811,10 +811,11 @@ void Voice_1460e0(__int64 a1)
     v12 = v1;
     v13 = v2;
     v4 = (_QWORD*)a1;
-    (*(void (**)(_QWORD* __return_ptr, _QWORD, __int64, float*, float*))(
-        **(_QWORD**)snd_g_proxy_ptr[0] + 464LL))(*(_QWORD**)snd_g_proxy_ptr[0],
-                                                 *(_QWORD*)snd_g_proxy_ptr[0],
-                                                 a1, &v10, &v9);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD, __int64, float*,
+                                            float*))(
+        **(_QWORD**)snd_g_proxy_ptr[0] + 464LL))(
+        (void*)*(_QWORD**)snd_g_proxy_ptr[0], *(_QWORD*)snd_g_proxy_ptr[0], a1,
+        &v10, &v9);
     v5 = v10;
     snd_Fade_Fade_10c910(v8, 300);
     v6 = v4[5];
@@ -1287,8 +1288,10 @@ __int64 Voice_Unknown98(__int64 result)
           goto LABEL_3;
         }
         v8 = result;
-        result = (__int64)(*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD))(
-            *v2 + 24LL))(v2, *(_QWORD*)(result + 5664));
+        result = (__int64)X8CALL_X0(
+            _QWORD*,
+            (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD))(
+                *v2 + 24LL))((void*)v2, *(_QWORD*)(result + 5664)));
         if ((result & 1) == 0) {
           result = (*(__int64 (**)(__int64))(*(_QWORD*)v8 + 704LL))(v8);
           if ((result & 1) == 0) {

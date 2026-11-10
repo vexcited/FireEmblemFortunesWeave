@@ -61,7 +61,7 @@ __int64 GameRoutine_1152360(_QWORD, _QWORD);
 __int64 GameRoutine_11c46e0(_QWORD);
 __int64 ProcInst_657a50(void);
 __int64 game_HashString(_QWORD);
-__n128 CharacterModel_1071880(_QWORD, _QWORD);
+__int64 CharacterModel_1071880(_QWORD, _QWORD);
 extern _DWORD* GameData_212d280;
 extern __int64 (*GameData_20168c0[])();
 extern __int64 GameData_21c9d80;
@@ -507,7 +507,7 @@ game_evt_demo_CharacterWork_CharacterWork_lambda0_Invoke_11c6440(_QWORD* result,
         else {
           v13 = *(_QWORD*)(v11 + 11608);
         }
-        CharacterModel_1071880(v13, 1669996436);
+        v15 = CharacterModel_1071880(v13, 1669996436);
         CharacterAnimator_1079580(v9, v15, 0.0, -0x1.0000000000000p+0,
                                   0x1.0000000000000p+0);
         *(_DWORD*)(v8 + 232) = -1;
@@ -658,7 +658,7 @@ game_evt_demo_CharacterWork_CharacterWork_lambda0_Invoke_11c6440(_QWORD* result,
           if (v38 != nullptr) {
             v39 = 40;
           LABEL_53:
-            (*(void (**)(long double))(*v38 + v39))(v31);
+            (*(void (**)(void*))(*v38 + v39))(v38);
           }
           v40 = *(_QWORD*)(v34 - 64);
           if (v40 != 0) {

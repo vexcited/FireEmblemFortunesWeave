@@ -22,9 +22,9 @@ extern __int64* GameData_2132488;
 extern int GameData_224ade4;
 __int64 ProcTheaterSceneAct_Destructor(__int64 a1);
 __int64 ProcTheaterSceneAct_Unknown21(__int64 a1);
-_QWORD* GameRoutine_144f120(_QWORD* __return_ptr, _QWORD, _QWORD);
-_QWORD* GameRoutine_1950100(_QWORD* __return_ptr, _QWORD, _QWORD, _QWORD,
-                            _QWORD);
+__attribute__((swiftcall)) void GameRoutine_144f120(PSEUDO_X8, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1950100(PSEUDO_X8, _QWORD, _QWORD,
+                                                    _QWORD, _QWORD);
 __int64 GameRoutine_1113120(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_1113400(_QWORD, _QWORD);
 __int64 GameRoutine_13da730(__int64 result, __int64);
@@ -2421,7 +2421,7 @@ __int64 ProcTheaterSceneAct_13deaa0(__int64 a1)
   v35[16] = 0;
   v34[0] = 0;
   v34[4] = 0;
-  GameRoutine_1950100(&v32, v36, v35, v34, 1);
+  GameRoutine_1950100((void*)&v32, v36, v35, v34, 1);
   if ((v36[0] & 1) != 0 && v37 != 0) {
     v21 = 128;
     if (*(_QWORD*)(*v4 + 200LL) == 0) {
@@ -2893,7 +2893,7 @@ void ProcTheaterSceneAct_13df3e0()
         *(_QWORD*)(v5 + 8) = 0xE3BC83E3AF83E3A9LL;
         *(_QWORD*)(v5 + 16) = 0xBCE6BA87E55FAF82LL;
         *(_QWORD*)(v5 + 24) = 0x94BCE682B5E75F94LL;
-        GameRoutine_144f120(&v10, v1, v8);
+        GameRoutine_144f120((void*)&v10, v1, v8);
         v6 = v11;
         if (v11 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v11 + 8),
                                          0xFFFFFFFFFFFFFFFFLL) == 0) {
@@ -3823,8 +3823,9 @@ __int64 ProcTheaterSceneAct_13e0e80(__int64 a1, __int64 a2, int a3)
           v21 = v19;
           v30[0] = SceneCharacter_14020c0();
           SceneTalk_1497bf0((void*)(v26), v30, (unsigned int)(v20 + 41));
-          ((void (*)(_QWORD* __return_ptr, _QWORD*, __int64,
-                     __int64))GameRoutine_1488120)(v30, v26, v21, 1);
+          ((__attribute__((swiftcall)) void (*)(PSEUDO_X8, _QWORD*, __int64,
+                                                __int64))GameRoutine_1488120)(
+              (void*)v30, v26, v21, 1);
           if ((v26[0] & 1) != 0 && v26[2] != 0) {
             v22 = 128;
             if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) ==
@@ -4091,7 +4092,8 @@ __int64 ProcTheaterSceneAct_Destructor(__int64 a1)
   if (GameData_224ade8 != 0) {
     v5 = GameData_224ade4-- <= 1;
     if (v5) {
-      (*(void (**)(void))(*(_QWORD*)GameData_224ade8 + 24LL))();
+      (*(void (**)(void*))(*(_QWORD*)GameData_224ade8 + 24LL))(
+          (void*)GameData_224ade8);
       if (GameData_224ade8 != 0) {
         (*(void (**)(__int64))(*(_QWORD*)GameData_224ade8 + 8LL))(
             GameData_224ade8);

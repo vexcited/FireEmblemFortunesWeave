@@ -129,7 +129,7 @@ __int64 game_combat_CombatUniverse_Setup(__int64 a1, __int64* a2)
     }
     v11 = 40;
   }
-  return (*(__int64 (**)(long double))(*v12_.v13 + v11))(*(long double*)&v9);
+  return (*(__int64 (**)(void*))(*v12_.v13 + v11))(v12_.v13);
 }
 
 __n128 CombatUniverse_106bbf0(_QWORD* a1)
@@ -390,7 +390,7 @@ void CombatUniverse_Destructor(_QWORD* a1, long double a2)
         }
         v15 = 5;
       }
-      v14 = ((long double (*)(void))(*v86)[v15])();
+      v14 = ((long double (*)(void*))(*v86)[v15])(v86);
       goto LABEL_25;
     }
   }
@@ -447,7 +447,7 @@ LABEL_37:
         }
         v26 = 5;
       }
-      v25 = ((long double (*)(void))(*v86)[v26])();
+      v25 = ((long double (*)(void*))(*v86)[v26])(v86);
       goto LABEL_53;
     }
   }
@@ -508,7 +508,7 @@ LABEL_65:
         }
         v37 = 5;
       }
-      v36 = ((long double (*)(void))(*v86)[v37])();
+      v36 = ((long double (*)(void*))(*v86)[v37])(v86);
       goto LABEL_81;
     }
   }
@@ -552,7 +552,7 @@ LABEL_91:
   if (v86 != nullptr) {
     v47 = 5;
   LABEL_106:
-    v46 = ((long double (*)(void))(*v86)[v47])();
+    v46 = ((long double (*)(void*))(*v86)[v47])(v86);
   }
   v84 = GameData_2007758;
   v86 = &v84;
@@ -665,7 +665,7 @@ LABEL_117:
       }
       v67 = 40;
     }
-    (*(void (**)(long double))(*v66 + v67))(*(long double*)&v53);
+    (*(void (**)(void*))(*v66 + v67))(v66);
   LABEL_157:
     v68 = *(_QWORD*)(v65 - 64);
     if (v68 != 0) {

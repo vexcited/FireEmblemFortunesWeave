@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 _QWORD* GameRoutine_1886290(__int64, _QWORD*);
 __int64 Alignment_56b600(_QWORD);
 __int64 GameRoutine_136a920(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
@@ -1450,7 +1450,7 @@ __int64 AsyncLoadThumbImage_18b53c0(__int64 a1, unsigned __int16* a2,
         GameRoutine_156c5d0(v11, v10, 0);
       }
     }
-    GameRoutine_1560070(&v17, a1 + 88, "L_Icon");
+    GameRoutine_1560070((void*)&v17, a1 + 88, "L_Icon");
     result = v18;
     if (v18 != 0) {
       v13 = std___1___shared_weak_count_lock(v18);

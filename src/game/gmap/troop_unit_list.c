@@ -318,7 +318,7 @@ __int64 game_gmap_TroopUnitList_CreateReinforce(__int64 result, __int64 a2,
       if (v21_.v22 != nullptr) {
         v20 = 40;
       LABEL_32:
-        result = (*(__int64 (**)(long double))(*v21_.v22 + v20))(v19);
+        result = (*(__int64 (**)(void*))(*v21_.v22 + v20))(v21_.v22);
       }
     }
   }

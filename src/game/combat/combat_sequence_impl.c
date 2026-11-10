@@ -458,7 +458,7 @@ __int64 game_combat_CombatSequenceImpl_DieTalkOrNothing(__int64 result)
               }
               v8 = 40;
             }
-            return (*(__int64 (**)(long double))(*v9_.v10 + v8))(v7);
+            return (*(__int64 (**)(void*))(*v9_.v10 + v8))(v9_.v10);
           }
         }
       }

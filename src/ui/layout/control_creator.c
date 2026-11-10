@@ -66,8 +66,9 @@ _QWORD* ControlCreator_5d570(_QWORD* result)
     v8[0] = *result;
     v8[1] = v6;
     v8[2] = result[2];
-    result = (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD*, _QWORD*))(
-        *v3 + 40LL))(v3, v3, v8);
+    result = X8CALL_X0(_QWORD*, (*(__attribute__((swiftcall)) void (**)(
+                                    PSEUDO_X8, _QWORD*, _QWORD*))(*v3 + 40LL))(
+                                    (void*)v3, v3, v8));
     *v7 = 0;
     v7[1] = 0;
     v7[2] = -1;

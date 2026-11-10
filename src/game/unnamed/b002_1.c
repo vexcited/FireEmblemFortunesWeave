@@ -1,4 +1,4 @@
-#include "decomp/pseudo_types.h"
+#include "decomp/pseudo_helpers.h"
 
 #pragma GCC visibility push(hidden)
 
@@ -4738,11 +4738,13 @@ _QWORD* GameHr_312380(__int64 a1)
     if (v1 < 4) {
       v4 = 0;
       if ((v1 & 3) == 0) {
-        return (
-            *(_QWORD * (**)(_QWORD * __return_ptr, _QWORD, _QWORD, __int64))(
-                **(_QWORD**)(*(_QWORD*)(a1 + 8) + 368LL) + 152LL))(
-            *(_QWORD**)(*(_QWORD*)(a1 + 8) + 368LL),
-            *(_QWORD*)(*(_QWORD*)(a1 + 8) + 368LL), *(_QWORD*)a1, a1 + 120);
+        return X8CALL_X0(
+            _QWORD*, (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD,
+                                                             _QWORD, __int64))(
+                         **(_QWORD**)(*(_QWORD*)(a1 + 8) + 368LL) + 152LL))(
+                         (void*)*(_QWORD**)(*(_QWORD*)(a1 + 8) + 368LL),
+                         *(_QWORD*)(*(_QWORD*)(a1 + 8) + 368LL), *(_QWORD*)a1,
+                         a1 + 120));
       }
       goto LABEL_8;
     }
@@ -4802,10 +4804,13 @@ _QWORD* GameHr_312380(__int64 a1)
       } while (v3 != 0);
     }
   }
-  return (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD, _QWORD, __int64))(
-      **(_QWORD**)(*(_QWORD*)(a1 + 8) + 368LL) + 152LL))(
-      *(_QWORD**)(*(_QWORD*)(a1 + 8) + 368LL),
-      *(_QWORD*)(*(_QWORD*)(a1 + 8) + 368LL), *(_QWORD*)a1, a1 + 120);
+  return X8CALL_X0(_QWORD*,
+                   (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD,
+                                                           _QWORD, __int64))(
+                       **(_QWORD**)(*(_QWORD*)(a1 + 8) + 368LL) + 152LL))(
+                       (void*)*(_QWORD**)(*(_QWORD*)(a1 + 8) + 368LL),
+                       *(_QWORD*)(*(_QWORD*)(a1 + 8) + 368LL), *(_QWORD*)a1,
+                       a1 + 120));
 }
 
 __int64 GameHr_314ac0(__int64 result, __int64 a2)

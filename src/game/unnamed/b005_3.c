@@ -318,7 +318,7 @@ __int64 GameHr_77c480(__int64 a1, unsigned __int16* a2)
           }
           v46 = 40;
         }
-        (*(void (**)(void))(*v48 + v46))();
+        (*(void (**)(void*))(*v48 + v46))(v48);
         return v50 >= 1;
       }
     }

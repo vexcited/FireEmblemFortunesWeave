@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_15d4100(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_15d4100(PSEUDO_X8, _QWORD, _QWORD);
 _QWORD* GameRoutine_18bb1d0(__int64);
 _QWORD* GameRoutine_18bb8b0(_QWORD*);
 __int64 Alignment_56b600(_QWORD);
@@ -358,7 +358,7 @@ __int64 MenuItemMorph_18bd000(__int64 result, __int64* a2)
     v3 = result;
     v40[0] = "L_MenuItem_Name";
     v40[1] = 15;
-    GameRoutine_15d4100(&v41, result + 88, v40);
+    GameRoutine_15d4100((void*)&v41, result + 88, v40);
     if (v42 != 0) {
       v4 = std___1___shared_weak_count_lock(v42);
       v5 = v41;
@@ -428,7 +428,7 @@ __int64 MenuItemMorph_18bd000(__int64 result, __int64* a2)
     }
     v40[0] = "L_MenuItem_Attack00";
     v40[1] = 19;
-    GameRoutine_15d4100(&v41, v3 + 88, v40);
+    GameRoutine_15d4100((void*)&v41, v3 + 88, v40);
     if (v42 != 0) {
       v13 = std___1___shared_weak_count_lock(v42);
       v14 = v41;
@@ -498,7 +498,7 @@ __int64 MenuItemMorph_18bd000(__int64 result, __int64* a2)
     }
     v40[0] = "L_MenuItem_Attack01";
     v40[1] = 19;
-    GameRoutine_15d4100(&v41, v3 + 88, v40);
+    GameRoutine_15d4100((void*)&v41, v3 + 88, v40);
     if (v42 != 0) {
       v22 = std___1___shared_weak_count_lock(v42);
       v23 = v41;
@@ -568,7 +568,7 @@ __int64 MenuItemMorph_18bd000(__int64 result, __int64* a2)
     }
     v40[0] = "L_MenuItem_Morph";
     v40[1] = 16;
-    GameRoutine_15d4100(&v41, v3 + 88, v40);
+    GameRoutine_15d4100((void*)&v41, v3 + 88, v40);
     result = v42;
     if (v42 != 0) {
       v31 = std___1___shared_weak_count_lock(v42);

@@ -7462,7 +7462,7 @@ _QWORD* SpotMgr_1334560(_QWORD* result)
         }
         v9 = 40;
       }
-      result = (_QWORD*)(*(__int64 (**)(void))(*v83 + v9))();
+      result = (_QWORD*)(*(__int64 (**)(void*))(*v83 + v9))(v83);
     LABEL_12:
       v75 = v1;
       v80 = *(unsigned __int16*)(v8 + 152);
@@ -7542,7 +7542,7 @@ _QWORD* SpotMgr_1334560(_QWORD* result)
           if (v83 == v82) {
             v24 = 32;
           LABEL_45:
-            result = (_QWORD*)(*(__int64 (**)(void))(*v83 + v24))();
+            result = (_QWORD*)(*(__int64 (**)(void*))(*v83 + v24))(v83);
           }
           else if (v83 != nullptr) {
             v24 = 40;

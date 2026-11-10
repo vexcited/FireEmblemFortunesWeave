@@ -131,7 +131,7 @@ __int64 gfxa_TaskLocalShadow_Execute(__int64 a1, __int64 a2, _QWORD* a3,
         }
         v9 = 40;
       }
-      (*(void (**)(void))(*v44 + v9))();
+      (*(void (**)(void*))(*v44 + v9))(v44);
     LABEL_5:
       v8 += v24;
       GameRoutine_a73d40(*(_QWORD*)(v10 + 136), (__int64)a3);
@@ -199,7 +199,7 @@ LABEL_12:
         }
         v26 = 40;
       }
-      (*(void (**)(void))(*v44 + v26))();
+      (*(void (**)(void*))(*v44 + v26))(v44);
     LABEL_16:
       v8 += v41;
       GameRoutine_a73d40(*(_QWORD*)(v27 + 200), (__int64)a3);

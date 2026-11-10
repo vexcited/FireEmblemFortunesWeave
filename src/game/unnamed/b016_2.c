@@ -428,7 +428,7 @@ __int64 GameRoutine_1211600(_QWORD, _QWORD);
 
 __int64 GameRoutine_12169e0(_QWORD, _QWORD);
 
-_QWORD* GameRoutine_1225280(_QWORD* __return_ptr, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1225280(PSEUDO_X8, _QWORD);
 
 __int64 GameRoutine_1225500(_QWORD, _QWORD, _QWORD);
 
@@ -677,11 +677,11 @@ LABEL_11:
       }
     LABEL_25:
       v26 = 40;
-      return (_QWORD*)(*(__int64 (**)(void))(*result + v26))();
+      return (_QWORD*)(*(__int64 (**)(void*))(*result + v26))(result);
     }
   LABEL_41:
     v26 = 32;
-    return (_QWORD*)(*(__int64 (**)(void))(*result + v26))();
+    return (_QWORD*)(*(__int64 (**)(void*))(*result + v26))(result);
   }
   if (v16 == 0) {
     v23 = *v6;
@@ -4768,7 +4768,8 @@ unsigned __int64 GameHr_11e7860(unsigned __int64 result, __int64 a2)
   if (*(_QWORD*)(a2 + 8) == 0) {
     goto LABEL_134;
   }
-  result = (unsigned __int64)GameRoutine_1225280(&v100, a2);
+  result = (unsigned __int64)X8CALL_X0(_QWORD*,
+                                       GameRoutine_1225280((void*)&v100, a2));
   v3 = v101;
   if (v101 == 0) {
     goto LABEL_134;
@@ -5916,7 +5917,8 @@ __int64 GameHr_11e8ca0(__int64 a1, __int64 a2)
   if (v19 != nullptr && *v19 != 0) {
     v46 = v19;
     v47 = GameRoutine_1a09c70(v19);
-    result = (__int64)GameRoutine_1225280(&v44, &v46);
+    result =
+        (__int64)X8CALL_X0(_QWORD*, GameRoutine_1225280((void*)&v44, &v46));
     if (v45 == 4) {
       switch (*(_DWORD*)v44) {
       case 0x45564F4D:
@@ -5934,12 +5936,13 @@ __int64 GameHr_11e8ca0(__int64 a1, __int64 a2)
       default:
         goto LABEL_33;
       }
-      GameRoutine_1225280(&v49, &v46);
+      GameRoutine_1225280((void*)&v49, &v46);
       v44 = v49;
       v45 = v50;
       result = GameRoutine_1225500(&v44, &v43, &v42);
       if ((result & 1) != 0) {
-        result = (__int64)GameRoutine_1225280(&v49, &v46);
+        result =
+            (__int64)X8CALL_X0(_QWORD*, GameRoutine_1225280((void*)&v49, &v46));
         v44 = v49;
         v45 = v50;
         if (v21 == 0) {

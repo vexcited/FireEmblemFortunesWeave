@@ -500,7 +500,7 @@ _QWORD* Crc32List_1168a0(__int64** a1, __int64 a2, __int64 a3)
     LABEL_12:
       v10 = 32;
     LABEL_13:
-      (*(void (**)(void))(*v9 + v10))();
+      (*(void (**)(void*))(*v9 + v10))(v9);
       goto LABEL_14;
     }
     do {
@@ -548,7 +548,7 @@ _QWORD* Crc32List_1168a0(__int64** a1, __int64 a2, __int64 a3)
     if (v99 != nullptr) {
       v14 = 40;
     LABEL_21:
-      (*(void (**)(void))(*v11 + v14))();
+      (*(void (**)(void*))(*v11 + v14))(v11);
     }
     v15 = v96;
     v96[0] = GameData_1f557b0;
@@ -576,7 +576,7 @@ _QWORD* Crc32List_1168a0(__int64** a1, __int64 a2, __int64 a3)
     if (v97 != nullptr) {
       v18 = 40;
     LABEL_29:
-      (*(void (**)(void))(*v15 + v18))();
+      (*(void (**)(void*))(*v15 + v18))(v15);
     }
     v19 = v94;
     v94[0] = GameData_1f55830;
@@ -604,7 +604,7 @@ _QWORD* Crc32List_1168a0(__int64** a1, __int64 a2, __int64 a3)
     if (v95 != nullptr) {
       v22 = 40;
     LABEL_37:
-      (*(void (**)(void))(*v19 + v22))();
+      (*(void (**)(void*))(*v19 + v22))(v19);
     }
     v23 = v92;
     v92[0] = GameData_1f558b0;
@@ -632,7 +632,7 @@ _QWORD* Crc32List_1168a0(__int64** a1, __int64 a2, __int64 a3)
     if (v93 != nullptr) {
       v26 = 40;
     LABEL_45:
-      (*(void (**)(void))(*v23 + v26))();
+      (*(void (**)(void*))(*v23 + v26))(v23);
     }
     v27 = v90;
     v90[0] = GameData_1f55930;
@@ -660,7 +660,7 @@ _QWORD* Crc32List_1168a0(__int64** a1, __int64 a2, __int64 a3)
     if (v91 != nullptr) {
       v30 = 40;
     LABEL_53:
-      (*(void (**)(void))(*v27 + v30))();
+      (*(void (**)(void*))(*v27 + v30))(v27);
     }
     v31 = v88;
     v88[0] = GameData_1f559b0;
@@ -688,7 +688,7 @@ _QWORD* Crc32List_1168a0(__int64** a1, __int64 a2, __int64 a3)
     if (v89 != nullptr) {
       v34 = 40;
     LABEL_61:
-      (*(void (**)(void))(*v31 + v34))();
+      (*(void (**)(void*))(*v31 + v34))(v31);
     }
     v35 = v6[38];
     v36 = v86;
@@ -716,7 +716,7 @@ _QWORD* Crc32List_1168a0(__int64** a1, __int64 a2, __int64 a3)
     if (v87 != nullptr) {
       v38 = 40;
     LABEL_69:
-      (*(void (**)(void))(*v36 + v38))();
+      (*(void (**)(void*))(*v36 + v38))(v36);
     }
     v39 = v6[43];
     v40 = v84;
@@ -744,7 +744,7 @@ _QWORD* Crc32List_1168a0(__int64** a1, __int64 a2, __int64 a3)
     if (v85 != nullptr) {
       v42 = 40;
     LABEL_77:
-      (*(void (**)(void))(*v40 + v42))();
+      (*(void (**)(void*))(*v40 + v42))(v40);
     }
     v43 = v6[48];
     v44 = v82;
@@ -772,7 +772,7 @@ _QWORD* Crc32List_1168a0(__int64** a1, __int64 a2, __int64 a3)
     if (v83 != nullptr) {
       v46 = 40;
     LABEL_85:
-      (*(void (**)(void))(*v44 + v46))();
+      (*(void (**)(void*))(*v44 + v46))(v44);
     }
     v47 = v6[53];
     v48 = v80;
@@ -800,7 +800,7 @@ _QWORD* Crc32List_1168a0(__int64** a1, __int64 a2, __int64 a3)
     if (v81 != nullptr) {
       v50 = 40;
     LABEL_93:
-      (*(void (**)(void))(*v48 + v50))();
+      (*(void (**)(void*))(*v48 + v50))(v48);
     }
     v51 = v6[58];
     v52 = v78;
@@ -824,7 +824,7 @@ _QWORD* Crc32List_1168a0(__int64** a1, __int64 a2, __int64 a3)
     LABEL_2:
       v5 = 32;
     LABEL_3:
-      (*(void (**)(void))(*v52 + v5))();
+      (*(void (**)(void*))(*v52 + v5))(v52);
       continue;
     }
     if (v79 != nullptr) {
@@ -853,7 +853,7 @@ _QWORD* Crc32List_1168a0(__int64** a1, __int64 a2, __int64 a3)
   LABEL_106:
     v56 = 32;
   LABEL_107:
-    (*(void (**)(void))(*v54 + v56))();
+    (*(void (**)(void*))(*v54 + v56))(v54);
   }
   else if (v77 != nullptr) {
     v56 = 40;
@@ -881,7 +881,7 @@ _QWORD* Crc32List_1168a0(__int64** a1, __int64 a2, __int64 a3)
   LABEL_114:
     v60 = 32;
   LABEL_115:
-    (*(void (**)(void))(*v57 + v60))();
+    (*(void (**)(void*))(*v57 + v60))(v57);
   }
   else if (v75 != nullptr) {
     v60 = 40;
@@ -909,7 +909,7 @@ _QWORD* Crc32List_1168a0(__int64** a1, __int64 a2, __int64 a3)
   LABEL_122:
     v64 = 32;
   LABEL_123:
-    (*(void (**)(void))(*v61 + v64))();
+    (*(void (**)(void*))(*v61 + v64))(v61);
   }
   else if (v73 != nullptr) {
     v64 = 40;
@@ -936,11 +936,11 @@ _QWORD* Crc32List_1168a0(__int64** a1, __int64 a2, __int64 a3)
   if (v71 == v70) {
   LABEL_130:
     v68 = 32;
-    return (_QWORD*)(*(__int64 (**)(void))(*result + v68))();
+    return (_QWORD*)(*(__int64 (**)(void*))(*result + v68))(result);
   }
   else if (v71 != nullptr) {
     v68 = 40;
-    return (_QWORD*)(*(__int64 (**)(void))(*result + v68))();
+    return (_QWORD*)(*(__int64 (**)(void*))(*result + v68))(result);
   }
   return result;
 }
@@ -1476,9 +1476,11 @@ __int64 Crc32List_118e90(__int64 a1, __int64 a2, __int64 a3)
 _QWORD* Crc32List_118f90(__int64 a1, float a2)
 {
   *(float*)(a1 + 3164) = a2;
-  return (*(_QWORD * (**)(__int64 __return_ptr, __int64, float))(
-      *(_QWORD*)snd_s_target + 1144LL))(snd_s_target, snd_s_target,
-                                        a2 * *(float*)(a1 + 3080));
+  return X8CALL_X0(
+      _QWORD*,
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64, float))(
+          *(_QWORD*)snd_s_target + 1144LL))((void*)snd_s_target, snd_s_target,
+                                            a2 * *(float*)(a1 + 3080)));
 }
 
 __int64 Crc32List_119790(__int64 a1, int* a2)

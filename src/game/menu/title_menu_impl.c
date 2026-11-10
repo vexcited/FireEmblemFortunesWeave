@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_156af20(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_169e7d0(_QWORD*);
 __int64 GameRoutine_173f310(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, float);
@@ -269,7 +269,7 @@ _QWORD* TitleMenu_16a0000(__int64 a1, __int64 a2)
     }
   }
   if (GameData_2260e70 == 0) {
-    GameRoutine_1560070(&v16, a1 + 848, "L_Bg");
+    GameRoutine_1560070((void*)&v16, a1 + 848, "L_Bg");
     v6 = v16;
     v5 = v17;
     v7 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,

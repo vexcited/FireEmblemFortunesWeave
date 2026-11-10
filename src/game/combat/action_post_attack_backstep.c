@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_10690a0(_QWORD* __return_ptr, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_10690a0(PSEUDO_X8, _QWORD);
 __int64 CharacterAnimator_1079e10(_QWORD);
 __int64 GameRoutine_1079580(_QWORD, _QWORD, float, float, float);
 __int64 GameRoutine_108c8a0(_QWORD);
@@ -102,7 +102,8 @@ LABEL_15:
     }
   }
   v13 = v11[1];
-  result = GameRoutine_10690a0(&v25, *(_QWORD*)(v13 + 808));
+  result = X8CALL_X0(_QWORD*,
+                     GameRoutine_10690a0((void*)&v25, *(_QWORD*)(v13 + 808)));
   if (*v2 == 0 || (v14 = *(_QWORD*)(*v2 + 8)) == 0 ||
       (~*(_DWORD*)(v14 + 112) & 0x28000) != 0) {
     v15 = *(_QWORD*)(*(_QWORD*)(v13 + 808) + 88LL);

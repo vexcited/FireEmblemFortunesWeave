@@ -52,7 +52,7 @@ __int64 GameRoutine_1a0b940(_QWORD, _QWORD, _QWORD);
 
 __int64 GameRoutine_1a0b950(_QWORD, _QWORD, _QWORD);
 
-_QWORD* GameRoutine_539f0(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_539f0(PSEUDO_X8, _QWORD, _QWORD);
 
 void __attribute__((noreturn)) GameRoutine_60a1d0(_QWORD, _QWORD, _QWORD,
                                                   _QWORD, _QWORD, _QWORD,
@@ -173,7 +173,7 @@ __int64 GameHr_6478c0(__int64 a1)
   v4 = *(_QWORD*)(a1 + 360);
   v48 = GameData_21a60d0;
   v49 = v4;
-  GameRoutine_539f0(v51, &v45, 0);
+  GameRoutine_539f0((void*)v51, &v45, 0);
   v5 = v51[0];
   v6 = (__int64*)GameData_212bf68;
   if (v51[0] != 0) {

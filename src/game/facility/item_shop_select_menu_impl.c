@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_156c5d0(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_19ef8e0(_QWORD, _QWORD);
 __int64 GameRoutine_a4dbe0(_QWORD, _QWORD, _QWORD, _QWORD);
@@ -37,7 +37,7 @@ __int64 ItemShopSelectMenu_1873c90(_BYTE* a1)
   if (((*(__int64 (**)(_BYTE*))(*(_QWORD*)a1 + 1200LL))(a1) & 1) == 0) {
     goto LABEL_9;
   }
-  GameRoutine_1560070(&v8, a1 + 952, "L_PageTab");
+  GameRoutine_1560070((void*)&v8, a1 + 952, "L_PageTab");
   v6[0] = GameData_20f7640;
   v6[1] = a1;
   v2 = *(_QWORD*)a1;
@@ -53,7 +53,7 @@ __int64 ItemShopSelectMenu_1873c90(_BYTE* a1)
     }
     v4 = 40;
   }
-  (*(void (**)(void))(*v7 + v4))();
+  (*(void (**)(void*))(*v7 + v4))(v7);
 
 LABEL_7:
   if (v9 != 0) {

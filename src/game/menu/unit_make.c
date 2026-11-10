@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_14a1390(_QWORD, _QWORD);
 __int64 GameRoutine_14a1520(_QWORD, _QWORD);
 __int64 GameRoutine_14a3920(void);
@@ -983,7 +983,7 @@ __int64 UnitMake_Destructor(__int64 a1)
     }
     v16 = 40;
   }
-  (*(void (**)(void))(*v15 + v16))();
+  (*(void (**)(void*))(*v15 + v16))(v15);
 
 LABEL_31:
   v17 = *(_QWORD**)(a1 + 992);
@@ -996,7 +996,7 @@ LABEL_31:
     }
     v18 = 40;
   }
-  (*(void (**)(void))(*v17 + v18))();
+  (*(void (**)(void*))(*v17 + v18))(v17);
 
 LABEL_36:
   v19 = *(_QWORD**)(a1 + 944);
@@ -1009,7 +1009,7 @@ LABEL_36:
     }
     v20 = 40;
   }
-  (*(void (**)(void))(*v19 + v20))();
+  (*(void (**)(void*))(*v19 + v20))(v19);
 
 LABEL_41:
   v21 = *(_QWORD**)(a1 + 864);
@@ -1022,7 +1022,7 @@ LABEL_41:
     }
     v22 = 40;
   }
-  (*(void (**)(void))(*v21 + v22))();
+  (*(void (**)(void*))(*v21 + v22))(v21);
 
 LABEL_46:
   v23 = *(_QWORD**)(a1 + 816);
@@ -1035,7 +1035,7 @@ LABEL_46:
     }
     v24 = 40;
   }
-  (*(void (**)(void))(*v23 + v24))();
+  (*(void (**)(void*))(*v23 + v24))(v23);
 
 LABEL_51:
   v25 = *(_QWORD**)(a1 + 768);
@@ -1048,7 +1048,7 @@ LABEL_51:
     }
     v26 = 40;
   }
-  (*(void (**)(void))(*v25 + v26))();
+  (*(void (**)(void*))(*v25 + v26))(v25);
 
 LABEL_56:
   v27 = *(_QWORD*)(a1 + 704);
@@ -1225,7 +1225,7 @@ __int64 UnitMake_16318c0(__int64 result, int a2)
           memcpy(v27, v17, v16);
           v27[v18 - 1] = 0;
           v19 = game_util_Format("Progress_PageName_%02d", v15);
-          GameRoutine_1560070(&v24, v6 + 39, v19);
+          GameRoutine_1560070((void*)&v24, v6 + 39, v19);
           result = v25;
           if (v25 == 0) {
             break;

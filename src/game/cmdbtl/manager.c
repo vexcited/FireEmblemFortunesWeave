@@ -2436,7 +2436,7 @@ void game_cmdbtl_Manager_UnitRelocationImpl(_QWORD* a1, __int64 a2)
     }
     v5 = 40;
   }
-  (*(void (**)(void))(*v19 + v5))();
+  (*(void (**)(void*))(*v19 + v5))(v19);
 LABEL_13:
   v6 = (__int64*)a1[89];
   v7 = (__int64*)a1[90];

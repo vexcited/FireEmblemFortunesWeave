@@ -2244,7 +2244,7 @@ __n128 game_1196c00(__int64 a1)
       }
       v13 = 40;
     }
-    (*(void (**)(long double))(*v12 + v13))(*(long double*)&result),
+    (*(void (**)(void*))(*v12 + v13))(v12),
         result =
             COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
   LABEL_28:

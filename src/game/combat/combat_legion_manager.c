@@ -3785,7 +3785,7 @@ __int64 CombatLegionManager_e2fd80(__int64* a1, __int64 a2, __int64 a3)
       if (v21 != nullptr) {
         v22 = 40;
       LABEL_27:
-        (*(void (**)(void))(*v21 + v22))();
+        (*(void (**)(void*))(*v21 + v22))(v21);
       }
       v23 = *(_QWORD*)(v4 - 64);
       if (v23 != 0) {
@@ -3828,7 +3828,7 @@ __int64 CombatLegionManager_e2fd80(__int64* a1, __int64 a2, __int64 a3)
       }
       v16 = 40;
     }
-    (*(void (**)(void))(*v15 + v16))();
+    (*(void (**)(void*))(*v15 + v16))(v15);
   LABEL_13:
     v17 = v9 + v8;
     v18 = *(_QWORD*)(v9 + v8 + 64);
@@ -3929,7 +3929,7 @@ __int64 CombatLegionManager_e2ff40(__int64 a1, __int64 a2)
       }
       v11 = 40;
     }
-    (*(void (**)(void))(*v10 + v11))();
+    (*(void (**)(void*))(*v10 + v11))(v10);
     goto LABEL_23;
   }
   do {
@@ -4146,7 +4146,7 @@ __int64* CombatLegionManager_e302c0(__int64* result, _QWORD* a2)
       if (v13 != nullptr) {
         v14 = 40;
       LABEL_15:
-        (*(void (**)(void))(*v13 + v14))();
+        (*(void (**)(void*))(*v13 + v14))(v13);
       }
       result = (__int64*)*(v11 - 2);
       if (result != nullptr) {
@@ -4378,7 +4378,7 @@ __int64 CombatLegionManager_e30760(__int64 a1, __int64 a2)
       }
       v11 = 40;
     }
-    (*(void (**)(void))(*v10 + v11))();
+    (*(void (**)(void*))(*v10 + v11))(v10);
     goto LABEL_23;
   }
   do {

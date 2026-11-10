@@ -4,7 +4,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_d80c00(_QWORD* __return_ptr, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_d80c00(PSEUDO_X8, _QWORD);
 __int64 CScriptArray_At_1971f0(_QWORD, _QWORD);
 __int64 CScriptArray_GetSize(_QWORD);
 __int64 EventManager_cbbb40(_QWORD);
@@ -1494,7 +1494,7 @@ __int64 HubCharacterNatives_cadba0(__int64 a1)
 
   v1 = *(_QWORD*)(a1 + 200);
   if (v1 == 0 || *(_QWORD*)(v1 + 8) == -1) {
-    GameRoutine_d80c00(&v10, *(_QWORD*)(GameData_220b6e0 + 8));
+    GameRoutine_d80c00((void*)&v10, *(_QWORD*)(GameData_220b6e0 + 8));
     v4 = *((_QWORD*)&v10 + 1);
     v5 = *(_QWORD*)(a1 + 200);
     *(_OWORD*)(a1 + 192) = v10;
@@ -3005,7 +3005,7 @@ _QWORD* HubCharacterNatives_cd3a50(__int64 a1, float a2)
   if (result != nullptr) {
     v9 = 40;
   LABEL_8:
-    result = (_QWORD*)(*(__int64 (**)(void))(*result + v9))();
+    result = (_QWORD*)(*(__int64 (**)(void*))(*result + v9))(result);
   }
   v10 = *(unsigned int*)(a1 + 16);
   if ((_DWORD)v10 != 0x4000) {
@@ -3086,7 +3086,7 @@ _QWORD* HubCharacterNatives_cd4660(__int64 a1, __int64 a2)
   if (result != nullptr) {
     v8 = 40;
   LABEL_8:
-    result = (_QWORD*)(*(__int64 (**)(void))(*result + v8))();
+    result = (_QWORD*)(*(__int64 (**)(void*))(*result + v8))(result);
   }
   v9 = *(unsigned int*)(a1 + 16);
   if ((_DWORD)v9 == 0x4000) {

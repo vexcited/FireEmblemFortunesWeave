@@ -9,7 +9,7 @@ __int64 std___1___shared_weak_count___release_weak();
 extern __int64 (*game_cmdbtl_CmdBtlParty_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 CmdBtlParty_Destructor(__int64 a1);
-_QWORD* GameRoutine_e7e340(_QWORD* __return_ptr);
+__attribute__((swiftcall)) void GameRoutine_e7e340(PSEUDO_X8);
 __int64 GameReliance_8e17a0(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_1a09ce0(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_60a020(_QWORD, _QWORD);
@@ -634,7 +634,7 @@ __int64 CmdBtlParty_e76e80(__int64 a1, __int64* a2, __int64* a3,
   if (*a3 == 0 || *a2 == *a3) {
     return 128;
   }
-  GameRoutine_e7e340(&v22);
+  GameRoutine_e7e340((void*)&v22);
   v8 = 0;
   if (v22 == 0 && a4 <= 2) {
     v8 = GameData_1b91b08[a4];

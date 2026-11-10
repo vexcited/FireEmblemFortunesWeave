@@ -132,7 +132,7 @@ __int64 game_menu_TalkSelectQuestMenu_CreateBindNoChoice_lambda0_Invoke(
       }
       v7 = 40;
     }
-    return (*(__int64 (**)(void))(*(_QWORD*)v9 + v7))();
+    return (*(__int64 (**)(void*))(*(_QWORD*)v9 + v7))((void*)v9);
   }
   return result;
 }

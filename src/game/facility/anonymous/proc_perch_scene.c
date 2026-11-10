@@ -255,7 +255,7 @@ __int64 game_facility_anonymous_ProcPerchScene_SetGreetCamera()
           }
           v7 = 40;
         }
-        (*(void (**)(void))(*v12 + v7))();
+        (*(void (**)(void*))(*v12 + v7))(v12);
       LABEL_10:
         result = (__int64)v10;
         if (v10 == v9) {
@@ -267,7 +267,7 @@ __int64 game_facility_anonymous_ProcPerchScene_SetGreetCamera()
           }
           v8 = 40;
         }
-        result = (*(__int64 (**)(void))(*v10 + v8))();
+        result = (*(__int64 (**)(void*))(*v10 + v8))(v10);
       LABEL_15:
         if (atomic_fetch_add((atomic_ullong* volatile)(v6 + 8),
                              0xFFFFFFFFFFFFFFFFLL) == 0) {
@@ -450,7 +450,7 @@ void game_facility_anonymous_ProcPerchScene_SetQuestionCamera()
         }
         v4 = 40;
       }
-      (*(void (**)(void))(*v9 + v4))();
+      (*(void (**)(void*))(*v9 + v4))(v9);
     LABEL_9:
       if (v7 == v6) {
         v5 = 32;
@@ -461,7 +461,7 @@ void game_facility_anonymous_ProcPerchScene_SetQuestionCamera()
         }
         v5 = 40;
       }
-      (*(void (**)(void))(*v7 + v5))();
+      (*(void (**)(void*))(*v7 + v5))(v7);
     LABEL_14:
       if (atomic_fetch_add((atomic_ullong* volatile)(v3 + 8),
                            0xFFFFFFFFFFFFFFFFLL) == 0) {

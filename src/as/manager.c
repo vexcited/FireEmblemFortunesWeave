@@ -3871,7 +3871,7 @@ __int64 as_Manager_executeContext(__int64 a1, const char* a2, __int64 a3,
         }
         v8 = 40;
       }
-      (*(void (**)(void))(*v16 + v8))();
+      (*(void (**)(void*))(*v16 + v8))(v16);
     }
   }
 

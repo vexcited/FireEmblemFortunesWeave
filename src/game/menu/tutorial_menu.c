@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_17e5830(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_17e68f0(_QWORD, _QWORD);
 __int64 GameRoutine_579160(_QWORD, _QWORD);
@@ -320,7 +320,7 @@ LABEL_27:
   v23 = 32;
 
 LABEL_28:
-  (*(void (**)(void))(*v15 + v23))();
+  (*(void (**)(void*))(*v15 + v23))(v15);
 
 LABEL_29:
   v25 = *(_QWORD*)(a1 + 232);
@@ -372,14 +372,14 @@ LABEL_40:
   v32 = 32;
 
 LABEL_41:
-  (*(void (**)(void))(*v26 + v32))();
+  (*(void (**)(void*))(*v26 + v32))(v26);
 
 LABEL_42:
   *(_BYTE*)(a1 + 1105) = 0;
   game_menu_BasicMenu_Unknown16de4d0(a1);
 
 LABEL_43:
-  GameRoutine_1560070(&v46, v12, "L_PageTab");
+  GameRoutine_1560070((void*)&v46, v12, "L_PageTab");
   v48[0] = GameData_206ffc8;
   v48[1] = a1;
   v49 = v48;
@@ -387,7 +387,7 @@ LABEL_43:
   if (v49 == v48) {
     v33 = 32;
   LABEL_47:
-    (*(void (**)(void))(*v49 + v33))();
+    (*(void (**)(void*))(*v49 + v33))(v49);
   }
   else if (v49 != nullptr) {
     v33 = 40;

@@ -119,7 +119,7 @@ _QWORD* wld_ClothModule_ClothModule(__int64 a1, __int64 a2, __int64 a3,
       }
       v21 = 40;
     }
-    return (_QWORD*)(*(__int64 (**)(void))(*result + v21))();
+    return (_QWORD*)(*(__int64 (**)(void*))(*result + v21))(result);
   }
   return result;
 }

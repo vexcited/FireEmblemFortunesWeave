@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_53c20(_QWORD* __return_ptr, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_53c20(PSEUDO_X8, _QWORD);
 _QWORD* GameRoutine_b36540(_QWORD* result, __int64);
 __int64 Config_bc4f00(_QWORD, _QWORD, _QWORD);
 __int64 Config_bc7c20(_QWORD);
@@ -5269,7 +5269,7 @@ _QWORD* ResourceBuilder_b677a0(_QWORD* result, _QWORD* a2, __int64 a3,
       v27 = *(_QWORD*)(v26 + 16);
       LOBYTE(v41[1]) = 1;
       v41[3] = v27;
-      GameRoutine_53c20(v38, &v39);
+      GameRoutine_53c20((void*)v38, &v39);
       v28 = v38[0];
       v29 = v6[35];
       v38[0] = 0;
@@ -5740,8 +5740,9 @@ __int64 ResourceBuilder_b6c430(__int64 a1, _QWORD* a2, _QWORD* a3, _QWORD* a4,
                               *(_QWORD*)(v29 + 32));
   v30 = (*(__int64 (**)(_QWORD))(*(_QWORD*)a3[3] + 16LL))(a3[3]);
   v31 = (*(__int64 (**)(__int64))(*(_QWORD*)v30 + 48LL))(v30);
-  (*(void (**)(_QWORD* __return_ptr, _QWORD, __int64, _QWORD, _QWORD))(
-      *(_QWORD*)*a4 + 256LL))((_QWORD*)*a4, *a4, 8, 0, v31);
+  (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD, __int64, _QWORD,
+                                          _QWORD))(*(_QWORD*)*a4 + 256LL))(
+      (void*)(_QWORD*)*a4, *a4, 8, 0, v31);
   v32 = *a4;
   v33 = (*(__int64 (**)(_QWORD))(*(_QWORD*)*a3 + 16LL))(*a3);
   v34 = v33 + 16LL * *(int*)(v33 + 16);
@@ -6605,9 +6606,10 @@ __int64 ResourceBuilder_b71010(__int64 result, _QWORD* a2, _QWORD* a3,
     v6 = *(_QWORD**)(a4 + 8);
     if (v6 != nullptr) {
       v8 = (_QWORD*)result;
-      v11 = (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD))(
-          **(_QWORD**)(result + 8) + 16LL))(*(_QWORD**)(result + 8),
-                                            *(_QWORD*)(result + 8));
+      v11 = X8CALL_X0(
+          _QWORD*, (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD))(
+                       **(_QWORD**)(result + 8) + 16LL))(
+                       (void*)*(_QWORD**)(result + 8), *(_QWORD*)(result + 8)));
       v12 = (*(__int64 (**)(_QWORD*))(*v11 + 40LL))(v11);
       GameRoutine_19932a0(*v6, "CharaMask", 9, v12, v13);
       v14 = (*(__int64 (**)(_QWORD))(*(_QWORD*)*a2 + 16LL))(*a2);
@@ -7418,8 +7420,9 @@ __int64 ResourceBuilder_b78dc0(__int64 a1, _QWORD* a2, _QWORD* a3)
                                     *(_QWORD*)(v24 + v23 + 8));
         v25 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD))(*(_QWORD*)*a3 + 72LL))(
             *a3, (unsigned int)v21, (unsigned int)v22);
-        (*(void (**)(_QWORD* __return_ptr, _QWORD, __int64, _QWORD, _QWORD))(
-            *(_QWORD*)*a2 + 256LL))((_QWORD*)*a2, *a2, 8, 0, v25);
+        (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD, __int64,
+                                                _QWORD, _QWORD))(
+            *(_QWORD*)*a2 + 256LL))((void*)(_QWORD*)*a2, *a2, 8, 0, v25);
         result = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64))(
             *(_QWORD*)*a2 + 304LL))(
             *a2, (unsigned int)((*((int*)a3 + 21) >> v21) / 8),

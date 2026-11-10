@@ -1,4 +1,4 @@
-#include "decomp/pseudo_types.h"
+#include "decomp/pseudo_helpers.h"
 
 #pragma GCC visibility push(hidden)
 
@@ -127,7 +127,7 @@ __int64 GameRoutine_126f60(__int64, __int64);
 
 __int64 GameRoutine_128050(__int64);
 
-_QWORD* GameRoutine_1305a0(_QWORD* __return_ptr, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1305a0(PSEUDO_X8, _QWORD);
 
 __int64 GameRoutine_130d20(_QWORD, _QWORD, _QWORD);
 
@@ -1494,7 +1494,7 @@ void GameHr_129b60(__int64 a1, float a2)
         v5 = 0;
         v6 = 0;
         do {
-          GameRoutine_1305a0(v30, a1);
+          GameRoutine_1305a0((void*)v30, a1);
           GameRoutine_112180(**(_QWORD**)(a1 + 6104) + v5, v30);
           v7 = v6 >> 6;
           v8 = ~(1LL << v6);
@@ -1599,7 +1599,7 @@ void GameHr_129b60(__int64 a1, float a2)
         if ((*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(a1 + 6104) + 24LL) +
                         8 * (v27 >> 6)) &
              (1LL << v27)) != 0) {
-          GameRoutine_1305a0(v30, a1);
+          GameRoutine_1305a0((void*)v30, a1);
           GameRoutine_112180(**(_QWORD**)(a1 + 6104) + v26, v30);
           v25 = v31;
           *(_QWORD*)(*(_QWORD*)(*(_QWORD*)(a1 + 6104) + 48LL) +
@@ -2229,9 +2229,9 @@ __int64 GameHr_14ab40(__int64* a1, __int64 a2)
              56) = v13;
   result = v13;
   if ((v16[0] & 1) != 0) {
-    (*(void (**)(_QWORD* __return_ptr, _QWORD, __int64))(
-        **(_QWORD**)GameData_212d480[0] + 24LL))(*(_QWORD**)GameData_212d480[0],
-                                                 *GameData_212d480[0], v17);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD, __int64))(
+        **(_QWORD**)GameData_212d480[0] + 24LL))(
+        (void*)*(_QWORD**)GameData_212d480[0], *GameData_212d480[0], v17);
     return v13;
   }
   return result;

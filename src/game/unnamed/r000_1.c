@@ -20,7 +20,8 @@ extern __int64 GameData_2178df0;
 
 extern __int64 GameData_2178df8;
 
-_QWORD* GameRoutine_10e040(_QWORD* __return_ptr, _QWORD, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_10e040(PSEUDO_X8, _QWORD, _QWORD,
+                                                   _QWORD);
 
 __int64 GameRoutine_10ede0(_QWORD*, __int64);
 
@@ -191,7 +192,7 @@ __int64 GameHr_f3a40(__int64 result)
       v8 = GameRoutine_190020(&v20, &GameData_1a9f09e);
       v9 = GameRoutine_1163b0(v8);
       v10 = GameRoutine_118ff0(v9);
-      GameRoutine_10e040(v17, v10, v23, 64);
+      GameRoutine_10e040((void*)v17, v10, v23, 64);
       GameRoutine_112180(&v18, v17);
       v12 = GameRoutine_112290(&v18, v11);
       (*(void (**)(__int64))(*(_QWORD*)v12 + 48LL))(v12);
@@ -1091,8 +1092,10 @@ LABEL_54:
         v100 = *(_QWORD**)(a1 + 40);
         v126 = v98;
         if (v100 != nullptr &&
-            ((unsigned int)(*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD*))(
-                 *v100 + 128LL))(v100, v100) &
+            ((unsigned int)X8CALL_X0(
+                 _QWORD*,
+                 (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(
+                     *v100 + 128LL))((void*)v100, v100)) &
              1) != 0) {
           v99 = (*(__int64 (**)(_QWORD))(**(_QWORD**)(a1 + 40) + 56LL))(
               *(_QWORD*)(a1 + 40));

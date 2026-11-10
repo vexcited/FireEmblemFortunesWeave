@@ -2,8 +2,8 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_1587740(_QWORD* __return_ptr, _QWORD, _QWORD);
-_QWORD* GameRoutine_95eaa0(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1587740(PSEUDO_X8, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_95eaa0(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_1562680(_QWORD, _QWORD, float);
 __int64 GameRoutine_1562cf0(_QWORD, _QWORD);
 __int64 GameRoutine_157ac20(_QWORD, _QWORD, _QWORD, _QWORD);
@@ -44,14 +44,14 @@ __int64 ClassChangeJobMenuItem_DrawText(_QWORD* a1)
       v4 = result;
       if (v3 != 0) {
         GameRoutine_1562cf0(a1[6], "All_Off");
-        GameRoutine_95eaa0(&v11, a1[11], a1[12]);
+        GameRoutine_95eaa0((void*)&v11, a1[11], a1[12]);
         v5 = (v11 & 2) != 0;
         v6 = (*(__int64 (**)(_QWORD*))(*a1 + 464LL))(a1);
         GameRoutine_157ac20(v3, "IconEquip", v5, v6 & 1);
         ui_LayoutAccessor_SetPaneVisible(v3, "BgEquip", v5);
         v10[0] = "L_JobIcon";
         v10[1] = 9;
-        GameRoutine_1587740(&v11, v3, v10);
+        GameRoutine_1587740((void*)&v11, v3, v10);
         result = v12;
         if (v12 != 0) {
           v7 = std___1___shared_weak_count_lock(v12);

@@ -621,8 +621,9 @@ __int64 JostleManager_ea0220(__int64** a1, __int64 a2, float* a3, _BYTE* a4,
   else {
     v17 = (__int128*)(*(_QWORD*)(v11 + 8) + 304LL);
   }
-  ((void (*)(float* __return_ptr, __int64**, __int128*, __int64, _BYTE*,
-             _QWORD))GameRoutine_e9f860)(v106_.v106, a1, v17, a2, a4, 0),
+  ((__attribute__((swiftcall)) void (*)(
+      PSEUDO_X8, __int64**, __int128*, __int64, _BYTE*,
+      _QWORD))GameRoutine_e9f860)((void*)v106_.v106, a1, v17, a2, a4, 0),
       v46 = COERCE_AS(__typeof__(v46), PSEUDO_REGISTER(float, "s0", "=w")),
       v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(float, "s0", "=w")),
       v56 = COERCE_AS(__typeof__(v56), PSEUDO_REGISTER(__n128, "v0", "=w"));

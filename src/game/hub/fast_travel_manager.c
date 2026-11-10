@@ -2655,7 +2655,7 @@ LABEL_387:
   LABEL_405:
     v281 = 32;
   LABEL_406:
-    (*(void (**)(long double))(*v271 + v281))(*(long double*)&v31),
+    (*(void (**)(void*))(*v271 + v281))(v271),
         result =
             COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w")),
         v31 = COERCE_AS(__typeof__(v31), PSEUDO_REGISTER(__n128, "v0", "=w")),

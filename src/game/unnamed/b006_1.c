@@ -7420,7 +7420,7 @@ _QWORD* GameHr_826e40(__int64 a1, unsigned int a2, _QWORD* a3, int a4, int a5,
         }
         v38 = 40;
       }
-      (*(void (**)(void))(*v39 + v38))();
+      (*(void (**)(void*))(*v39 + v38))(v39);
     LABEL_30:
       v35 = v40;
       if (v40 == v36) {
@@ -8088,7 +8088,7 @@ __int64 GameHr_82ec20(_QWORD* a1)
         }
         v11 = 40;
       }
-      (*(void (**)(void))(*v12 + v11))();
+      (*(void (**)(void*))(*v12 + v11))(v12);
     LABEL_13:
       v8 = v13;
     } while (v13 != v9);

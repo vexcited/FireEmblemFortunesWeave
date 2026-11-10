@@ -2751,8 +2751,8 @@ _BYTE* GameHr_d5c6d0(__int64* a1, _QWORD* a2, __int64 a3)
         }
       }
       else if (v8 == a2) {
-        (*(void (**)(_QWORD* __return_ptr, _QWORD, _BYTE*))(*v8 + 24LL))(
-            v8, a2[4], v16);
+        (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD, _BYTE*))(
+            *v8 + 24LL))((void*)v8, a2[4], v16);
         (*(void (**)(_QWORD))(*(_QWORD*)a2[4] + 32LL))(a2[4]);
         v13 = v17;
         v17 = v16;

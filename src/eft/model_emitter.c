@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_a6e580(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_a6e580(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_14a5a10(_QWORD*, __int64);
 __int64 GameRoutine_14a5be0(__int64*);
 __int64 GameRoutine_5e5f00(_QWORD);
@@ -372,7 +372,7 @@ __int64 ModelEmitter_Unknown2(__int64 a1, __int64* a2)
       else {
         v50 = 0;
       }
-      GameRoutine_a6e580(v86, v50, v8[v49 + 13]);
+      GameRoutine_a6e580((void*)v86, v50, v8[v49 + 13]);
       if (v88 != 0 || v89 != 0 || v90 != 0 || v91 != 0 || v92 != 0) {
         v55 = *v8;
         v56 = *(_QWORD*)(*(_QWORD*)(*v8 + 112LL) + 24LL);

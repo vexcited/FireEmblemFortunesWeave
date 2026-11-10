@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_1587740(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1587740(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_1562680(_QWORD, _QWORD, float);
 __int64 GameRoutine_1562cf0(_QWORD, _QWORD);
 __int64 GameRoutine_157ac20(_QWORD, _QWORD, _QWORD, _QWORD);
@@ -36,7 +36,7 @@ __int64 EmptyClassChangeJobMenuItem_DrawText(__int64 a1)
         ui_LayoutAccessor_SetPaneVisible(v3, "BgEquip", 0);
         v7[0] = "L_JobIcon";
         v7[1] = 9;
-        GameRoutine_1587740(&v8, v3, v7);
+        GameRoutine_1587740((void*)&v8, v3, v7);
         result = v9;
         if (v9 != 0) {
           v5 = std___1___shared_weak_count_lock(v9);

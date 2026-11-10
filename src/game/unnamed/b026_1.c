@@ -4996,7 +4996,7 @@ __int64 GameRoutine_14a1390(_QWORD, _QWORD);
 
 __int64 GameRoutine_14a1e70(_QWORD);
 
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 
 __int64 GameRoutine_1566d90(_QWORD, _QWORD);
 
@@ -5300,7 +5300,7 @@ __int64 GameRoutine_4e860(_QWORD);
 
 __int64 GameRoutine_4e8a0(_QWORD);
 
-_QWORD* GameRoutine_53a40(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_53a40(PSEUDO_X8, _QWORD, _QWORD);
 
 __int64 GameRoutine_5fc640(void);
 
@@ -7859,7 +7859,7 @@ __int64 GameHr_194d1c0(__int64 a1, _QWORD* a2, unsigned __int64 a3)
     if (v10 != v11) {
       v12 = (_QWORD*)GameData_212bf68;
       do {
-        GameRoutine_53a40(&v38, a1, 0);
+        GameRoutine_53a40((void*)&v38, a1, 0);
         v13 = v38;
         v38 = 0;
         v14 = *v10;
@@ -7938,7 +7938,7 @@ __int64 GameHr_194d1c0(__int64 a1, _QWORD* a2, unsigned __int64 a3)
   if (v29 != v24) {
     v30 = (_QWORD*)GameData_212bf68;
     do {
-      GameRoutine_53a40(&v38, a1, 0);
+      GameRoutine_53a40((void*)&v38, a1, 0);
       v31 = v38;
       v38 = 0;
       v32 = *v29;
@@ -10240,7 +10240,8 @@ __int64 GameHr_1957ca0(__int64 result, __int64 a2)
           }
           v29 = 40;
         }
-        result = (*(__int64 (**)(void))(*(_QWORD*)result + v29))();
+        result =
+            (*(__int64 (**)(void*))(*(_QWORD*)result + v29))((void*)result);
       LABEL_28:
         v21 += 80;
         if (v21 == v22) {
@@ -10755,7 +10756,8 @@ __int64 GameHr_195a5c0()
   }
   result = GameData_21f3ff8;
   if (GameData_21f3ff8 != 0 && GameData_21f3ff4-- <= 1) {
-    (*(void (**)(void))(*(_QWORD*)GameData_21f3ff8 + 24LL))();
+    (*(void (**)(void*))(*(_QWORD*)GameData_21f3ff8 + 24LL))(
+        (void*)GameData_21f3ff8);
     result = GameData_21f3ff8;
     if (GameData_21f3ff8 != 0) {
       result = (*(__int64 (**)(__int64))(*(_QWORD*)GameData_21f3ff8 + 8LL))(
@@ -13066,7 +13068,7 @@ __int64 GameHr_197da00(__int64 a1, __int64 a2, int a3)
   __int64 v17;
 
   v5 = GameRoutine_7a7dc0("L_UnitInfo%02d", a3);
-  GameRoutine_1560070(&v12, a1 + 848, v5);
+  GameRoutine_1560070((void*)&v12, a1 + 848, v5);
   result = (__int64)v13;
   v16 = nullptr;
   if (v13 == nullptr) {

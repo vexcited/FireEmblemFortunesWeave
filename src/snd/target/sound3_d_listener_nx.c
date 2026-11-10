@@ -135,10 +135,12 @@ __n128 Sound3DListenerNX_Unknown6(__int64 a1, float a2)
 
 _QWORD* Sound3DListenerNX_Unknown7(__int64 a1)
 {
-  return (*(_QWORD * (**)(__int64 __return_ptr, __int64, _QWORD, _QWORD))(
-      *(_QWORD*)snd_target_s_platform + 560LL))(
-      snd_target_s_platform, snd_target_s_platform, *(unsigned int*)(a1 + 12),
-      *(unsigned int*)(a1 + 8));
+  return X8CALL_X0(_QWORD*,
+                   (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64,
+                                                           _QWORD, _QWORD))(
+                       *(_QWORD*)snd_target_s_platform + 560LL))(
+                       (void*)snd_target_s_platform, snd_target_s_platform,
+                       *(unsigned int*)(a1 + 12), *(unsigned int*)(a1 + 8)));
 }
 
 float Sound3DListenerNX_Unknown8(__int64 a1)

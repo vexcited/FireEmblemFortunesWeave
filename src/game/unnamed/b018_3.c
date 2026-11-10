@@ -1984,7 +1984,7 @@ __int64 GameRoutine_928a20(void);
 
 __int64 GameRoutine_971f60(_QWORD, _QWORD);
 
-_QWORD* GameRoutine_9c5fd0(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_9c5fd0(PSEUDO_X8, _QWORD, _QWORD);
 
 __int64 GameRoutine_9db9e0(_QWORD, _QWORD);
 
@@ -2127,7 +2127,7 @@ __int64 GameHr_135a070(__int64 a1, __int64* a2)
     }
     v5 = 40;
   }
-  result = (*(__int64 (**)(void))(*v31 + v5))();
+  result = (*(__int64 (**)(void*))(*v31 + v5))(v31);
 LABEL_7:
   if (v32 != 0) {
     result = GameRoutine_133e4e0(v2);
@@ -3136,7 +3136,7 @@ __int64 GameHr_1382760(__int64 a1, int a2, int a3)
         v52 = 0;
       }
       else {
-        GameRoutine_9c5fd0(&v51, v42, v41);
+        GameRoutine_9c5fd0((void*)&v51, v42, v41);
         v43 = v51;
         if (v52 != v51) {
           v44 = v51;
@@ -3525,7 +3525,7 @@ _QWORD* GameHr_13dd670(_QWORD* result)
               if (v26 != nullptr) {
                 v12 = 40;
               LABEL_18:
-                result = (_QWORD*)(*(__int64 (**)(void))(*v26 + v12))();
+                result = (_QWORD*)(*(__int64 (**)(void*))(*v26 + v12))(v26);
               }
             LABEL_19:
               v13 = *(_BYTE**)(v9 + 328);
@@ -3605,7 +3605,7 @@ _QWORD* GameHr_13dd670(_QWORD* result)
                       }
                       v19 = 40;
                     }
-                    (*(void (**)(void))(*v18 + v19))();
+                    (*(void (**)(void*))(*v18 + v19))(v18);
                     goto LABEL_35;
                   }
                 }
@@ -3622,7 +3622,7 @@ _QWORD* GameHr_13dd670(_QWORD* result)
             }
             v11 = 40;
           }
-          (*(void (**)(void))(*v30 + v11))();
+          (*(void (**)(void*))(*v30 + v11))(v30);
           goto LABEL_14;
         }
       }
@@ -3711,7 +3711,7 @@ __int64 GameHr_13ddad0(__int64 result)
             }
             v13 = 40;
           }
-          result = (*(__int64 (**)(void))(*v17 + v13))();
+          result = (*(__int64 (**)(void*))(*v17 + v13))(v17);
         LABEL_19:
           if (atomic_fetch_add((atomic_ullong* volatile)(v7 + 8),
                                0xFFFFFFFFFFFFFFFFLL) == 0) {
@@ -4245,7 +4245,7 @@ LABEL_77:
   if (v56 == v54) {
     v35 = 32;
   LABEL_86:
-    (*(void (**)(void))(*v56 + v35))();
+    (*(void (**)(void*))(*v56 + v35))(v56);
   }
   else if (v56 != nullptr) {
     v35 = 40;

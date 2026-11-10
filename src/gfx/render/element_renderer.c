@@ -291,7 +291,7 @@ __int64** ElementRenderer_a74a20(__int64** result)
         if ((__int64**)(v16 - 80) == result) {
           v17 = 4;
         LABEL_23:
-          result = (__int64**)((__int64 (*)(void))(*result)[v17])();
+          result = (__int64**)((__int64 (*)(void*))(*result)[v17])(result);
           goto LABEL_24;
         }
         if (result != nullptr) {
@@ -525,7 +525,7 @@ __int64 ElementRenderer_a75e00(char** a1, __int64 a2, __int64 a3,
         }
         v26 = 40;
       }
-      (*(void (**)(void))(*(_QWORD*)v27 + v26))();
+      (*(void (**)(void*))(*(_QWORD*)v27 + v26))((void*)v27);
     LABEL_26:
       v16 += 80;
       if (v16 == v17) {

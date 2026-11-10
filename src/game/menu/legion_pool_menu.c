@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_15d32c0(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_185c940(_QWORD*);
 __int64 GameRoutine_18ae960(_QWORD, _QWORD);
@@ -55,7 +55,7 @@ __int64 LegionPoolMenu_Unknown139(_QWORD* a1)
                                    48LL) +
                         8 * v3);
       }
-      GameRoutine_1560070(&v8, a1 + 106, "L_Help");
+      GameRoutine_1560070((void*)&v8, a1 + 106, "L_Help");
       result = v9;
       if (v9 != 0) {
         v5 = a1[133];

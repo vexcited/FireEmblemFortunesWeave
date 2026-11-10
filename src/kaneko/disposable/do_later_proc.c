@@ -146,7 +146,8 @@ _QWORD* DoLaterProc_Unknown19(_QWORD* result)
   if (v1 != nullptr) {
     v2 = result + 26;
     v3 = result;
-    (*(void (**)(_QWORD* __return_ptr, _QWORD))(*v1 + 48LL))(v1, result[30]);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD))(*v1 + 48LL))(
+        (void*)v1, result[30]);
     result = (_QWORD*)v3[30];
     v3[30] = 0;
     if (result == v2) {

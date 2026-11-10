@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_155ca60(_QWORD);
 __int64 GameRoutine_1745960(__int64*, __int64);
 __int64 GameRoutine_1750020(_QWORD*, __int64*, __int64, char, signed int,
@@ -26,7 +26,7 @@ __int64 TrainingMenuItem_Destructor(__int64 a1);
 __int64 TrainingMenuItem_Unknown17(_QWORD* a1);
 __int64 TrainingMenuItem_Unknown73_175adc0(__int64 a1);
 __int64 TrainingMenuItem_Unknown75(__int64 result);
-_QWORD* GameRoutine_15883c0(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_15883c0(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_18b3670(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 strlen(_QWORD);
 __int64 ui_LayoutAccessor_FindPane(_QWORD, _QWORD);
@@ -206,7 +206,7 @@ __int64 TrainingMenuItem_Unknown17(_QWORD* a1)
             v40 = 0;
             v41 = 1065353216;
             v9 = game_util_Format("L_Mastery%02d", v5);
-            GameRoutine_1560070(&v35, v3, v9);
+            GameRoutine_1560070((void*)&v35, v3, v9);
             v10 = *(_QWORD*)a1[12];
             v11 = *(unsigned __int16*)(a1[13] + 2 * v7 + 514);
             v56[0] = v35;
@@ -465,7 +465,7 @@ __int64 game_telop_anonymous_TrainingMenuItem_OnUpdateContent_closure_Invoke(
         v11 = **(_QWORD**)(v3 + 24);
         v14[0] = game_util_Format("L_Skill%02d", v7);
         v14[1] = strlen(v14[0]);
-        GameRoutine_15883c0(&v15, v11, v14);
+        GameRoutine_15883c0((void*)&v15, v11, v14);
         result = v16;
         if (v16 != 0) {
           v12 = std___1___shared_weak_count_lock(v16);

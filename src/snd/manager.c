@@ -3847,9 +3847,10 @@ __int64 Manager_11e4c0(__int64 a1, int* a2)
         v23 = (_QWORD*)*snd_s_target_ptr;
         v24[0] = *(_DWORD*)(v8 + 32);
         v24[1] = v22;
-        v10 = (unsigned __int8)(*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD*,
-                                                int*))(*v23 + 272LL))(v23, v23,
-                                                                      v24) &
+        v10 = (unsigned __int8)X8CALL_X0(
+                  _QWORD*, (*(__attribute__((swiftcall)) void (**)(
+                               PSEUDO_X8, _QWORD*, int*))(*v23 + 272LL))(
+                               (void*)v23, v23, v24)) &
               (*(float*)(v8 + 168) < 0x0.0p+0f);
       }
       return v10 & 1;

@@ -83,7 +83,7 @@ __int64 HistoryMenuItem_OnSelect(__int64 a1)
   if (*(_BYTE*)(a1 + 79) != 0) {
     v2 = 520;
   }
-  (*(void (**)(void))(*(_QWORD*)a1 + v2))();
+  (*(void (**)(void*))(*(_QWORD*)a1 + v2))((void*)a1);
   v3 = *(_QWORD*)(a1 + 56);
   if (v3 == 0) {
     goto LABEL_7;
@@ -161,7 +161,7 @@ __int64 HistoryMenuItem_OnDeselect(__int64 a1)
   if (*(_BYTE*)(a1 + 79) != 0) {
     v2 = 520;
   }
-  (*(void (**)(void))(*(_QWORD*)a1 + v2))();
+  (*(void (**)(void*))(*(_QWORD*)a1 + v2))((void*)a1);
   v3 = *(_QWORD*)(a1 + 56);
   if (v3 == 0) {
     goto LABEL_7;

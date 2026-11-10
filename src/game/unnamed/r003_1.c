@@ -192,7 +192,7 @@ bool GameHr_cc1180(int a1, int a2)
     }
     v8 = 40;
   }
-  (*(void (**)(void))(*v7 + v8))();
+  (*(void (**)(void*))(*v7 + v8))(v7);
 LABEL_9:
   if (GameData_21ee260 != 0) {
     v9 = (unsigned __int16*)(GameData_21ee260 + 8);
@@ -260,7 +260,7 @@ __int64 GameHr_cc5f00(unsigned __int8* a1)
     }
     v6 = 40;
   }
-  (*(void (**)(void))(*v5 + v6))();
+  (*(void (**)(void*))(*v5 + v6))(v5);
 LABEL_9:
   memset(v15, 0, sizeof(v15));
   if (*(_QWORD*)GameData_212dbb8[0] != 0) {

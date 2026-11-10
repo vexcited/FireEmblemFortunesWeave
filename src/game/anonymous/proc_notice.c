@@ -125,7 +125,7 @@ __int64 game_anonymous_ProcNotice_TryMastery(__int64 result)
     if (v22 != nullptr) {
       v17 = 40;
     LABEL_16:
-      (*(void (**)(void))(*v22 + v17))();
+      (*(void (**)(void*))(*v22 + v17))(v22);
     }
     v18 = *v10;
     v19 = v10[1];
@@ -139,7 +139,7 @@ __int64 game_anonymous_ProcNotice_TryMastery(__int64 result)
     if (v22 == v21) {
       v12 = 32;
     LABEL_9:
-      result = (*(__int64 (**)(void))(*v22 + v12))();
+      result = (*(__int64 (**)(void*))(*v22 + v12))(v22);
       goto LABEL_10;
     }
     if (v22 != nullptr) {

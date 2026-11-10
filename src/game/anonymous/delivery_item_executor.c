@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_89cb30(_QWORD* __return_ptr);
+__attribute__((swiftcall)) void GameRoutine_89cb30(PSEUDO_X8);
 __int64 GameRoutine_1262240(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_12623a0(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_6c51e0(_QWORD);
@@ -162,10 +162,12 @@ __int64 DeliveryItemExecutor_Unknown6(__int64 result)
                     if (*(_WORD*)(v18 + 2) != 0) {
                       v20 = v6 - v19;
                       if (v6 < v19) {
-                        result = (__int64)GameRoutine_89cb30(&v21);
+                        result = (__int64)X8CALL_X0(
+                            _QWORD*, GameRoutine_89cb30((void*)&v21));
                         goto LABEL_4;
                       }
-                      result = (__int64)GameRoutine_89cb30(&v21);
+                      result = (__int64)X8CALL_X0(
+                          _QWORD*, GameRoutine_89cb30((void*)&v21));
                       v6 = v20;
                       if (v20 == 0) {
                         goto LABEL_4;

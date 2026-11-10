@@ -76,7 +76,7 @@ _QWORD* system_skip_Escape()
       }
     LABEL_30:
       v20 = 32;
-      return (_QWORD*)(*(__int64 (**)(void))(*result + v20))();
+      return (_QWORD*)(*(__int64 (**)(void*))(*result + v20))(result);
     }
   }
   else if (game_ProcGameSkipView_instance_ == 0) {
@@ -126,7 +126,7 @@ LABEL_18:
   if (result != nullptr) {
   LABEL_29:
     v20 = 40;
-    return (_QWORD*)(*(__int64 (**)(void))(*result + v20))();
+    return (_QWORD*)(*(__int64 (**)(void*))(*result + v20))(result);
   }
   return result;
 }

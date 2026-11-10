@@ -144,8 +144,8 @@ __int64 UnitItem_6e63f0(__int64 result, _DWORD* a2)
       v4 = result;
       v5 = *(_QWORD*)(*(_QWORD*)(result + 8) + 32LL);
       v6 = *(_WORD*)(v2 + 16) & 0xFFF;
-      (*(void (**)(_QWORD* __return_ptr, __int64, int*))(*v3 + 48LL))(v3, v5,
-                                                                      &v6);
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64, int*))(
+          *v3 + 48LL))((void*)v3, v5, &v6);
       result = v4;
     }
     ++**(_DWORD**)(result + 16);

@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_906320(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_906320(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_13261c0(__int64);
 __int64 GameRoutine_133cc40(__int64);
 __int64 GameRoutine_133d560(_QWORD, _QWORD);
@@ -1313,7 +1313,7 @@ LABEL_106:
       if (v132 == v131) {
         v48 = 32;
       LABEL_143:
-        (*(void (**)(void))(*v132 + v48))();
+        (*(void (**)(void*))(*v132 + v48))(v132);
       }
       else if (v132 != nullptr) {
         v48 = 40;
@@ -2197,7 +2197,7 @@ unsigned __int64 TroopMgr_1348ec0()
         }
         v22 = 40;
       }
-      result = (*(__int64 (**)(void))(*v25 + v22))();
+      result = (*(__int64 (**)(void*))(*v25 + v22))(v25);
     LABEL_33:
       if (v21 <= 0) {
         v23 = *((_WORD*)v18 + 272);
@@ -2242,7 +2242,7 @@ __int64 TroopMgr_1349260(unsigned __int8 a1)
   if (result != 0) {
     v5[0] = 0;
     v5[1] = result;
-    GameRoutine_906320(v6, game_GameModeData_instance_ + 136, v5);
+    GameRoutine_906320((void*)v6, game_GameModeData_instance_ + 136, v5);
     if (v7 == 0) {
       return 0;
     }
@@ -2427,7 +2427,7 @@ __int64 game_gmap_TroopMgr_RequestEscapeSpecial(__int64 result)
           }
           v30 = 40;
         }
-        result = (*(__int64 (**)(void))(*v34 + v30))();
+        result = (*(__int64 (**)(void*))(*v34 + v30))(v34);
       LABEL_47:
         if ((v35 & 1) == 0) {
           v31 = *(_WORD*)(v36 + 544);
@@ -3095,7 +3095,7 @@ __int64 TroopMgr_134a9e0()
     }
     v0 = 40;
   }
-  (*(void (**)(void))(*v4 + v0))();
+  (*(void (**)(void*))(*v4 + v0))(v4);
 
 LABEL_7:
   result = GameRoutine_9728b0();
@@ -6519,7 +6519,7 @@ __int64 game_gmap_TroopMgr_OnUpdateChapter(__int64 a1)
       }
       v1 = 40;
     }
-    a1 = (*(__int64 (**)(void))(*v10 + v1))();
+    a1 = (*(__int64 (**)(void*))(*v10 + v1))(v10);
   }
 LABEL_8:
   v2 = *(_QWORD*)(GameData_21c96e8 + 8);

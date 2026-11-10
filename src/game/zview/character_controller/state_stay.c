@@ -312,8 +312,9 @@ _QWORD* StateStay_Unknown5(_QWORD* result)
   v4 = (_QWORD*)result[3];
   result[3] = 0;
   if (v4 != nullptr) {
-    return (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD*))(*v4 + 8LL))(v4,
-                                                                         v4);
+    return X8CALL_X0(
+        _QWORD*, (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(
+                     *v4 + 8LL))((void*)v4, v4));
   }
   return result;
 }

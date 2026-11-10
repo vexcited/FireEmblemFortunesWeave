@@ -128,7 +128,7 @@ _QWORD* map_camera_MoveWait()
         }
         v26 = 40;
       }
-      return (_QWORD*)(*(__int64 (**)(void))(*result + v26))();
+      return (_QWORD*)(*(__int64 (**)(void*))(*result + v26))(result);
     }
   }
   v6 = GameData_212cfb0[0];

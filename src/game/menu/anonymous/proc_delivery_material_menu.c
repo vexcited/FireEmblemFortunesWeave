@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_15d2910(_QWORD, _QWORD);
 __int64 GameRoutine_17a1f20(_QWORD, _QWORD);
 __int64 __dynamic_cast(_QWORD, _QWORD, _QWORD, _QWORD);
@@ -81,7 +81,7 @@ __int64 ProcDeliveryMaterialMenu_Unknown88(__int64 a1)
     result = __dynamic_cast(result, GameData_212e008[0], &GameData_20cd4c8, 0);
     if (result != 0) {
       v3 = result;
-      GameRoutine_1560070(&v9, a1 + 848, "L_Menu/L_InfoDetail");
+      GameRoutine_1560070((void*)&v9, a1 + 848, "L_Menu/L_InfoDetail");
       result = v10;
       if (v10 != 0) {
         v4 = std___1___shared_weak_count_lock(v10);

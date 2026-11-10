@@ -116,7 +116,7 @@ __int64 GmapTargetLine_Unknown5(__int64 result)
         }
         v5 = 40;
       }
-      result = (*(__int64 (**)(void))(*v9 + v5))();
+      result = (*(__int64 (**)(void*))(*v9 + v5))(v9);
     }
   }
   return result;

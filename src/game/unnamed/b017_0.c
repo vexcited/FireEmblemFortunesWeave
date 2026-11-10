@@ -11695,8 +11695,10 @@ _QWORD* GameHr_1262b50(_QWORD* result, __int64 a2)
                                 24LL) +
                      600LL)) {
     v2 = result;
-    result = (**(_QWORD * (***)(_QWORD * __return_ptr, _QWORD))
-                   result[3])((_QWORD*)result[3], result[3]);
+    result = X8CALL_X0(
+        _QWORD*,
+        (**(__attribute__((swiftcall)) void (***)(PSEUDO_X8, _QWORD))result[3])(
+            (void*)(_QWORD*)result[3], result[3]));
     if ((_DWORD)result == 1) {
       *(_BYTE*)v2[1] = 1;
     }

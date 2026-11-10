@@ -134,7 +134,7 @@ void game_map_MapPanelTargetSelectSub_UpdateTarget(__int64 a1)
     do {
       v12 = v2[6];
       *((_BYTE*)v2 + 272) = 0;
-      if (((*(__int64 (**)(void))(v12 + 48))() & 1) != 0) {
+      if (((*(__int64 (**)(void*))(v12 + 48))(&v2[6]) & 1) != 0) {
         v13 = 1036831949;
       }
       else {

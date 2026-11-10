@@ -71,7 +71,7 @@ __int64 LoadStateExec_Unknown2(__int64 a1, _QWORD* a2)
       }
       v8 = 40;
     }
-    result = (*(__int64 (**)(void))(*(_QWORD*)v13 + v8))();
+    result = (*(__int64 (**)(void*))(*(_QWORD*)v13 + v8))((void*)v13);
     goto LABEL_10;
   }
   a2[2] = v4;

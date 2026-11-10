@@ -3030,8 +3030,8 @@ __int64 GameHr_81cda0(__int64 a1, __int128* a2, float a3)
       ((*(__int64 (**)(__int64, __int128*, __int64))(
            *(_QWORD*)(a1 + 48) + 8LL))(a1 + 48, &v12, a1 + 96) &
        1) != 0) {
-    (*(void (**)(__int128* __return_ptr, __int64))(*(_QWORD*)(a1 + 48) + 16LL))(
-        &v14, a1 + 48);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64))(
+        *(_QWORD*)(a1 + 48) + 16LL))((void*)&v14, a1 + 48);
     v13 = v12;
     (*(void (**)(__int64, __int128*, __int128*))(*(_QWORD*)(a1 + 48) + 24LL))(
         a1 + 48, &v14, &v13);

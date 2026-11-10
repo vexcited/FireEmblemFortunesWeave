@@ -80,8 +80,9 @@ __n128 MapTroopMenu_Unknown84(__int64 a1)
   v5 = *(_QWORD**)(a1 + 1056);
   if (v5 != nullptr) {
     v6 = v4;
-    v7 = (unsigned int)(*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD))(
-        *v5 + 192LL))(v5, *(_QWORD*)(a1 + 1056));
+    v7 = (unsigned int)X8CALL_X0(
+        _QWORD*, (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD))(
+                     *v5 + 192LL))((void*)v5, *(_QWORD*)(a1 + 1056)));
     v4 = v6;
   }
   else {

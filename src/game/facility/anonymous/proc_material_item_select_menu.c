@@ -125,7 +125,7 @@ __int64 ProcMaterialItemSelectMenu_Unknown110(_BYTE* a1, char a2)
       if (v10 != nullptr) {
         v8 = 40;
       LABEL_14:
-        (*(void (**)(void))(*(_QWORD*)v10 + v8))();
+        (*(void (**)(void*))(*(_QWORD*)v10 + v8))((void*)v10);
       }
     }
     return 12;

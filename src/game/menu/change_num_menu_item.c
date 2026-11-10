@@ -87,7 +87,7 @@ __int64 ChangeNumMenuItem_1711570(__int64 a1)
   if (*(_BYTE*)(a1 + 79) != 0) {
     v2 = 520;
   }
-  result = (*(__int64 (**)(void))(*(_QWORD*)a1 + v2))();
+  result = (*(__int64 (**)(void*))(*(_QWORD*)a1 + v2))((void*)a1);
   if (*(_DWORD*)(a1 + 192) != *(_DWORD*)(a1 + 196)) {
     result = (*(__int64 (**)(__int64))(*(_QWORD*)a1 + 560LL))(a1);
     v4 = *(_QWORD*)(a1 + 208);
@@ -151,7 +151,7 @@ __int64 ChangeNumMenuItem_17116e0(__int64 a1)
   if (*(_BYTE*)(a1 + 79) != 0) {
     v2 = 520;
   }
-  result = (*(__int64 (**)(void))(*(_QWORD*)a1 + v2))();
+  result = (*(__int64 (**)(void*))(*(_QWORD*)a1 + v2))((void*)a1);
   if (*(_DWORD*)(a1 + 192) != *(_DWORD*)(a1 + 196)) {
     v4 = *(_QWORD*)(a1 + 208);
     if (v4 != 0) {

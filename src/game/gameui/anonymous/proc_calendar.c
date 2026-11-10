@@ -5,7 +5,7 @@
 struct PseudoSret {
   _QWORD words[3];
 };
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 Dir_70d7a0(_QWORD);
 __int64 FloatingHelp_18aee60(_QWORD, _QWORD);
 __int64 GameRoutine_12dd260(void);
@@ -167,7 +167,7 @@ __int64 ProcCalendar_Unknown3(__int64 result)
   v19 = v1;
   v20 = v2;
   v4 = result;
-  GameRoutine_1560070(&v16, result + 848, "L_SelectDaily");
+  GameRoutine_1560070((void*)&v16, result + 848, "L_SelectDaily");
   result = v17;
   if (v17 == 0) {
     return result;
@@ -181,7 +181,7 @@ __int64 ProcCalendar_Unknown3(__int64 result)
   if (v5 == 0 || v6 == 0) {
     goto LABEL_41;
   }
-  GameRoutine_1560070(&v16, v6, "L_ReminderIcon");
+  GameRoutine_1560070((void*)&v16, v6, "L_ReminderIcon");
   result = v17;
   if (v17 == 0) {
   LABEL_42:
@@ -214,7 +214,7 @@ __int64 ProcCalendar_Unknown3(__int64 result)
   }
   for (i = 0; i != 6; ++i) {
     v10 = game_util_Format("L_Daily%02d", i);
-    GameRoutine_1560070(&v16, v4 + 848, v10);
+    GameRoutine_1560070((void*)&v16, v4 + 848, v10);
     if (v17 == 0) {
       continue;
     }
@@ -231,7 +231,7 @@ __int64 ProcCalendar_Unknown3(__int64 result)
       v15 = 4;
       goto LABEL_34;
     }
-    GameRoutine_1560070(&v16, v12, "L_ReminderIcon");
+    GameRoutine_1560070((void*)&v16, v12, "L_ReminderIcon");
     if (v17 == 0) {
       goto LABEL_30;
     }
@@ -1447,7 +1447,7 @@ LABEL_97:
       }
       v70 = 5;
     }
-    ((void (*)(void))(*v217)[v70])();
+    ((void (*)(void*))(*v217)[v70])(v217);
   LABEL_117:
     v71 = v212;
     if (v212 <= 3) {

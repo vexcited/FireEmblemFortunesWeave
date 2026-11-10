@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_15d2910(_QWORD, _QWORD);
 __int64 GameRoutine_15e5fa0(void);
 __int64 __dynamic_cast(_QWORD, _QWORD, _QWORD, _QWORD);
@@ -82,7 +82,7 @@ __int64 ProcStableBreedingFoodMenu_Unknown88(__int64 a1)
     result = __dynamic_cast(result, GameData_212e008[0], &GameData_208fa50, 0);
     if (result != 0) {
       v3 = result;
-      GameRoutine_1560070(&v7, a1 + 848, "L_InfoDetail");
+      GameRoutine_1560070((void*)&v7, a1 + 848, "L_InfoDetail");
       result = v8;
       if (v8 != 0) {
         v4 = std___1___shared_weak_count_lock(v8);
@@ -491,8 +491,9 @@ bool game_facility_anonymous_ProcStableBreedingFoodMenu_SortAndFilter_closure_In
     if ((v4[83] & 1) != 0) {
       return false;
     }
-    v8 = *(*(_QWORD * (**)(_BYTE * __return_ptr, _QWORD))(*(_QWORD*)v3 +
-                                                          560LL))(v3, *a2);
+    v8 = *X8CALL_X0(_QWORD*,
+                    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD))(
+                        *(_QWORD*)v3 + 560LL))((void*)v3, *a2));
     v26 = v8;
     v9 = *(_QWORD*)(*(__int64 (**)(_BYTE*))(*(_QWORD*)v4 + 560LL))(v4);
     v10 = *(unsigned __int8*)(a1 + 8);

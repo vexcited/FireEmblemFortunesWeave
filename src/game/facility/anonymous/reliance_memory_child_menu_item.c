@@ -23,7 +23,7 @@ __int64 RelianceMemoryChildMenuItem_Destructor(__int64 a1);
 __int64 RelianceMemoryChildMenuItem_Unknown20(__int64 a1);
 __int64 RelianceMemoryChildMenuItem_Unknown21(__int64 a1);
 __int64 RelianceMemoryChildMenuItem_Unknown55(__int64 a1);
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 LayoutAccessor_1562680(_QWORD, _QWORD, float);
 __int64 ui_LayoutAccessor_SetPaneVisible(_QWORD, _QWORD, _QWORD);
 extern __int64* ui_LayoutAccessor_empty__ptr[3];
@@ -126,7 +126,7 @@ __int64 RelianceMemoryChildMenuItem_Unknown20(__int64 a1)
   if (*(_BYTE*)(a1 + 79) != 0) {
     v2 = 520;
   }
-  (*(void (**)(void))(*(_QWORD*)a1 + v2))();
+  (*(void (**)(void*))(*(_QWORD*)a1 + v2))((void*)a1);
   GameRoutine_19ed2b0(a1, 1);
   return GameRoutine_19ed040(a1);
 }
@@ -139,7 +139,7 @@ __int64 RelianceMemoryChildMenuItem_Unknown21(__int64 a1)
   if (*(_BYTE*)(a1 + 79) != 0) {
     v2 = 520;
   }
-  (*(void (**)(void))(*(_QWORD*)a1 + v2))();
+  (*(void (**)(void*))(*(_QWORD*)a1 + v2))((void*)a1);
   GameRoutine_19ed2b0(a1, 0);
   return GameRoutine_19ed040(a1);
 }
@@ -284,7 +284,7 @@ __int64 RelianceMemoryChildMenuItem_19ed040(__int64 a1)
       v10 = "L_RankS";
     }
   LABEL_18:
-    GameRoutine_1560070(&v17, result, v10);
+    GameRoutine_1560070((void*)&v17, result, v10);
     result = v18;
     if (v18 == 0) {
       v12 = 0;

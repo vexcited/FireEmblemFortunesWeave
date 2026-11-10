@@ -3,7 +3,7 @@
 #pragma GCC visibility push(hidden)
 
 _QWORD* Element_1886290(__int64, _QWORD*);
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 Alignment_56b600(_QWORD);
 __int64 ControlCreator_13633c0(void);
 __int64 Element_1888840(__int64);
@@ -150,7 +150,7 @@ _QWORD* StatusClass_189ce00(_QWORD* a1)
     v25[1] = 5;
     v11 = Element_1886290((__int64)a1, v25);
     if (v11 != nullptr) {
-      GameRoutine_1560070(&v23, a1 + 11, v11 + 22);
+      GameRoutine_1560070((void*)&v23, a1 + 11, v11 + 22);
       GameRoutine_174d670(&v23);
       if (v24 != 0) {
         std___1___shared_weak_count___release_weak(v24);
@@ -314,7 +314,7 @@ __int64 StatusClass_189dc40(__int64 result, __int64 a2, int a3, unsigned int a4,
   if ((result & 1) == 0) {
     return result;
   }
-  GameRoutine_1560070(&v21, v11 + 88, v13 + 176);
+  GameRoutine_1560070((void*)&v21, v11 + 88, v13 + 176);
   if ((int)a4 < 1) {
     v16 = 1.0;
     v18 = 1.0;

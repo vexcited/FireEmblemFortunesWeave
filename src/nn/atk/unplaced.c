@@ -128,8 +128,9 @@ __int64 nn_atk_278700(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
   if (v8 != nullptr && *((_BYTE*)v8 + 8) == 1) {
     v9 = a1;
     v10 = a2;
-    v11 = (unsigned int)(*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD*))(
-        *v8 + 32LL))(v8, v8);
+    v11 = (unsigned int)X8CALL_X0(
+        _QWORD*, (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(
+                     *v8 + 32LL))((void*)v8, v8));
     a2 = v10;
     v12 = v11;
     a1 = v9;

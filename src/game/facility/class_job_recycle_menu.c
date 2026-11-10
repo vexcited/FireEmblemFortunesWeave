@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_13fa520(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_13fa520(PSEUDO_X8, _QWORD, _QWORD);
 __int64 Alignment_56b600(void);
 __int64 GameRoutine_1562060(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_15760a0(_QWORD, _QWORD);
@@ -79,7 +79,7 @@ __int64 ClassJobRecycleMenu_Unknown88(__int64 a1)
       v4 = (_QWORD*)result;
       v17[0] = "L_Info/L_InfoTitle";
       v17[1] = 18;
-      GameRoutine_13fa520(&v18, a1 + 848, v17);
+      GameRoutine_13fa520((void*)&v18, a1 + 848, v17);
       result = (__int64)v19;
       if (v19 != nullptr) {
         v5 = std___1___shared_weak_count_lock(v19);

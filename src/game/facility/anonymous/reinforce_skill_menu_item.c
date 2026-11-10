@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_136a920(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_1562cf0(_QWORD, _QWORD);
 __int64 GameRoutine_156c5d0(_QWORD, _QWORD, _QWORD);
@@ -137,7 +137,7 @@ __int64 ReinforceSkillMenuItem_Unknown55(_DWORD* a1)
           if ((*((_BYTE*)a1 + 102) & 0x10) != 0) {
             goto LABEL_54;
           }
-          GameRoutine_1560070(&v30, v6, "L_Cost");
+          GameRoutine_1560070((void*)&v30, v6, "L_Cost");
           result = v31;
           if (v31 == 0) {
             goto LABEL_54;

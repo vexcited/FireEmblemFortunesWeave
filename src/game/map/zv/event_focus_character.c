@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_d1fdc0(_QWORD* __return_ptr, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_d1fdc0(PSEUDO_X8, _QWORD);
 __int64 GameRoutine_cf12a0(_QWORD);
 __int64 GameRoutine_cf3760(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_d196c0(_QWORD, _QWORD, float);
@@ -373,7 +373,9 @@ _QWORD* EventFocusCharacter_e5f1b0(_QWORD* result)
     GameRoutine_cf3760(*GameData_212eba8[0] + 88, 0, 0, 0);
     GameRoutine_cf12a0(v9);
     v10 = GameData_212dc38[0];
-    result = GameRoutine_d1fdc0(&v28, *(_QWORD*)GameData_212dc38[0]);
+    result =
+        X8CALL_X0(_QWORD*, GameRoutine_d1fdc0((void*)&v28,
+                                              *(_QWORD*)GameData_212dc38[0]));
     v11 = *(_QWORD*)v10;
     if (*(int*)(*(_QWORD*)v10 + 1048LL) <= 0) {
       if (BYTE4(v33) != 1 || (v34 & 1) != 0 ||

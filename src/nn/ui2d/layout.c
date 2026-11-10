@@ -363,8 +363,9 @@ __int64 Layout_579d80(__int64 result, __int64 a2)
       }
       v12 = result;
       v13 = a2;
-      v14 = (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD*))(*v11 + 16LL))(
-          v11, v11);
+      v14 = X8CALL_X0(
+          _QWORD*, (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(
+                       *v11 + 16LL))((void*)v11, v11));
       a2 = v13;
       v15 = v14;
       result = v12;

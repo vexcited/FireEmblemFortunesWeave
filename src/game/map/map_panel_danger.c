@@ -490,7 +490,7 @@ void game_map_MapPanelDanger_UpdateMeshDanger(__int64 a1)
     do {
       v21 = v2[6];
       *((_BYTE*)v2 + 272) = 0;
-      if (((*(__int64 (**)(void))(v21 + 48))() & 1) != 0) {
+      if (((*(__int64 (**)(void*))(v21 + 48))(&v2[6]) & 1) != 0) {
         v22 = 1036831949;
       }
       else {
@@ -520,7 +520,7 @@ void game_map_MapPanelDanger_UpdateMeshDanger(__int64 a1)
     do {
       v25 = v4[6];
       *((_BYTE*)v4 + 272) = 0;
-      if (((*(__int64 (**)(void))(v25 + 48))() & 1) != 0) {
+      if (((*(__int64 (**)(void*))(v25 + 48))(&v4[6]) & 1) != 0) {
         v26 = 1036831949;
       }
       else {
@@ -551,7 +551,7 @@ void game_map_MapPanelDanger_UpdateMeshDanger(__int64 a1)
     do {
       v29 = v5[6];
       *((_BYTE*)v5 + 272) = 0;
-      if (((*(__int64 (**)(void))(v29 + 48))() & 1) != 0) {
+      if (((*(__int64 (**)(void*))(v29 + 48))(&v5[6]) & 1) != 0) {
         v30 = 1036831949;
       }
       else {
@@ -862,7 +862,7 @@ LABEL_60:
       LABEL_101:
         v70 = *(_QWORD*)(v42 + 48);
         *(_BYTE*)(v42 + 272) = 1;
-        v71 = (*(__int64 (**)(void))(v70 + 48))();
+        v71 = (*(__int64 (**)(void*))(v70 + 48))((void*)(v42 + 48));
         v35 = *GameData_212ce98[0];
         v36 = *GameData_212ce90[0];
         if ((v71 & 1) != 0) {
@@ -991,7 +991,7 @@ LABEL_143:
     do {
       v95 = v90[6];
       *((_BYTE*)v90 + 272) = 0;
-      if (((*(__int64 (**)(void))(v95 + 48))() & 1) != 0) {
+      if (((*(__int64 (**)(void*))(v95 + 48))(&v90[6]) & 1) != 0) {
         v96 = 1036831949;
       }
       else {
@@ -1715,7 +1715,7 @@ LABEL_143:
     LABEL_335:
       v230 = *(_QWORD*)(v199 + 48);
       *(_BYTE*)(v199 + 272) = 1;
-      if (((*(__int64 (**)(void))(v230 + 48))() & 1) != 0) {
+      if (((*(__int64 (**)(void*))(v230 + 48))((void*)(v199 + 48)) & 1) != 0) {
         *(_DWORD*)(v199 + 280) = 1036831949;
         if ((v229 & 1) != 0) {
           goto LABEL_351;

@@ -241,7 +241,7 @@ __int64 CorpsPoolMenu_Unknown128(_QWORD* a1)
               if (v39 == &v37) {
                 v28 = 32;
               LABEL_25:
-                (*(void (**)(void))(*v39 + v28))();
+                (*(void (**)(void*))(*v39 + v28))(v39);
               }
               else if (v39 != nullptr) {
                 v28 = 40;

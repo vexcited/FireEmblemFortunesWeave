@@ -509,8 +509,10 @@ _QWORD* MenuItem_188b880(_QWORD* result, __int64 a2)
           goto LABEL_67;
         }
       LABEL_66:
-        result = (*(_QWORD * (**)(__int64* __return_ptr, __int64, __int64))(
-            *(_QWORD*)v48 + 16LL))(&v65, v48, a2);
+        result = X8CALL_X0(
+            _QWORD*, (*(__attribute__((swiftcall)) void (**)(
+                         PSEUDO_X8, __int64, __int64))(*(_QWORD*)v48 + 16LL))(
+                         (void*)&v65, v48, a2));
         goto LABEL_67;
       }
     }

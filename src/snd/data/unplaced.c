@@ -4106,9 +4106,11 @@ char** snd_data_f77e0(char** result, unsigned __int64 a2)
     if ((unsigned __int64)(v8 - 0x276276276276277LL) >= 0xFD89D89D89D89D8ALL) {
       v14 = result;
       v15 = a2;
-      v16 = (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD, __int64, __int64))(
-          **(_QWORD**)snd_g_memory_ptr[0] + 16LL))(
-          *(_QWORD**)snd_g_memory_ptr[0], *snd_g_memory_ptr[0], 104 * v8, 32);
+      v16 = X8CALL_X0(_QWORD*, (*(__attribute__((swiftcall)) void (**)(
+                                   PSEUDO_X8, _QWORD, __int64, __int64))(
+                                   **(_QWORD**)snd_g_memory_ptr[0] + 16LL))(
+                                   (void*)*(_QWORD**)snd_g_memory_ptr[0],
+                                   *snd_g_memory_ptr[0], 104 * v8, 32));
       a2 = v15;
       v9 = v16;
       result = v14;

@@ -6,7 +6,7 @@ __int64 GameRoutine_13633c0(_QWORD);
 
 __int64 GameRoutine_155e830(_QWORD, _QWORD);
 
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 
 __int64 GameRoutine_15621a0(_QWORD, _QWORD);
 
@@ -44,7 +44,7 @@ __int64 GameHr_165c540(__int64 a1, char a2)
   _BYTE v21[4];
   _DWORD v22[2];
 
-  GameRoutine_1560070(&v19, *(_QWORD*)(a1 + 8), "L_Festival");
+  GameRoutine_1560070((void*)&v19, *(_QWORD*)(a1 + 8), "L_Festival");
   result = v20;
   if (v20 != 0) {
     v5 = GameRoutine_1a0a0c0(v20);

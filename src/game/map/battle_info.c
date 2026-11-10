@@ -1172,9 +1172,10 @@ LABEL_14:
             (*(_BYTE*)(*(_QWORD*)(v19 + 8) + 11277LL) & 0x80) == 0 &&
                 (v27 = *(_QWORD**)(v19 + 32)) != nullptr &&
                 (v28 = v21,
-                 v29 = (unsigned __int8)(*(_QWORD * (**)(_QWORD * __return_ptr,
-                                                         _QWORD)) *
-                                         v27)(v27, *(_QWORD*)(v19 + 32)),
+                 v29 = (unsigned __int8)X8CALL_X0(
+                     _QWORD*, (*(__attribute__((swiftcall)) void (**)(
+                                  PSEUDO_X8, _QWORD))*v27)(
+                                  (void*)v27, *(_QWORD*)(v19 + 32))),
                  v21 = v28, (v29 & 1) != 0)) {
           v30 = (__int16*)&v21[3 * *(unsigned __int8*)(v19 + 16)];
           v31 = BattleInfo_79c7f0(v19);

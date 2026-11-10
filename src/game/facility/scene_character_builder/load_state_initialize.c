@@ -61,7 +61,7 @@ _QWORD* LoadStateInitialize_Unknown2(__int64 a1, __int64 a2)
     if (v9 != nullptr) {
       v7 = 40;
     LABEL_7:
-      result = (_QWORD*)(*(__int64 (**)(void))(*(_QWORD*)v9 + v7))();
+      result = (_QWORD*)(*(__int64 (**)(void*))(*(_QWORD*)v9 + v7))((void*)v9);
     }
   }
   else {

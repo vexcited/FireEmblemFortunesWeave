@@ -1193,7 +1193,8 @@ __int64 GameHr_10bfee0(__int64 a1, __int64 a2, char a3)
       *(_WORD*)(a1 + 112) = 257;
       goto LABEL_15;
     }
-    (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v10 + 8LL))(v10, v10);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v10 + 8LL))(
+        (void*)v10, v10);
   }
   v11 = *(__int64 (****)())(a1 + 192);
   *(_WORD*)(a1 + 112) = 257;

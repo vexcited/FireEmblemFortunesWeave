@@ -134,7 +134,7 @@ __int64 WorkerThread_Unknown4(__int64 result)
           }
           v4 = 40;
         }
-        (*(void (**)(void))(*v8 + v4))();
+        (*(void (**)(void*))(*v8 + v4))(v8);
       }
     LABEL_6:
       result = nn_os_SignalLightEvent(v3 + 496);

@@ -6676,13 +6676,14 @@ _QWORD* game_map_BattleSide_EachMaskSkill_lambda0_Clone(_QWORD* a1)
     if (v5 == a1 + 6) {
       v6 = result;
       result[10] = result + 6;
-      (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v5 + 24LL))(v5, v5);
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v5 + 24LL))(
+          (void*)v5, v5);
     }
     else {
       v6 = result;
-      result[10] =
-          (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD*))(*v5 + 16LL))(v5,
-                                                                         v5);
+      result[10] = X8CALL_X0(
+          _QWORD*, (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(
+                       *v5 + 16LL))((void*)v5, v5));
     }
     return v6;
   }
@@ -6716,8 +6717,9 @@ _QWORD* game_map_BattleSide_EachMaskSkill_lambda0_CloneInto(_QWORD* result,
           result[10]);
     }
     else {
-      result = (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD))(*v6 + 16LL))(
-          v6, result[10]);
+      result = X8CALL_X0(
+          _QWORD*, (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD))(
+                       *v6 + 16LL))((void*)v6, result[10]));
       a2[10] = result;
     }
   }

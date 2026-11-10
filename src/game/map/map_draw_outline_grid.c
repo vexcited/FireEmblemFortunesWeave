@@ -150,7 +150,7 @@ __int64 MapDrawOutlineGrid_Unknown3(__int64 result)
     do {
       v10 = v2[6];
       *((_BYTE*)v2 + 272) = 0;
-      if (((*(__int64 (**)(void))(v10 + 48))() & 1) != 0) {
+      if (((*(__int64 (**)(void*))(v10 + 48))(&v2[6]) & 1) != 0) {
         v11 = 1036831949;
       }
       else {
@@ -180,7 +180,7 @@ __int64 MapDrawOutlineGrid_Unknown3(__int64 result)
     do {
       v15 = v4[6];
       *((_BYTE*)v4 + 272) = 0;
-      if (((*(__int64 (**)(void))(v15 + 48))() & 1) != 0) {
+      if (((*(__int64 (**)(void*))(v15 + 48))(&v4[6]) & 1) != 0) {
         v16 = 1036831949;
       }
       else {

@@ -5,9 +5,10 @@
 struct PseudoSret {
   _QWORD words[3];
 };
-_QWORD* GameRoutine_936f60(_QWORD* __return_ptr, _QWORD, _QWORD, _QWORD);
-_QWORD* GameRoutine_93c6a0(_QWORD* __return_ptr, _QWORD, _QWORD, _QWORD,
-                           _QWORD);
+__attribute__((swiftcall)) void GameRoutine_936f60(PSEUDO_X8, _QWORD, _QWORD,
+                                                   _QWORD);
+__attribute__((swiftcall)) void GameRoutine_93c6a0(PSEUDO_X8, _QWORD, _QWORD,
+                                                   _QWORD, _QWORD);
 __int64 GameRoutine_12c0bc0(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_12c16e0(_QWORD);
 __int64 GameRoutine_12c1f80(_QWORD);
@@ -11410,8 +11411,8 @@ __int64 Unit_6db740(__int64 a1, char a2, char a3)
         GameRoutine_930b90(&v166, a1 + 1880);
         BYTE3(v166) = 0;
         UnitHeroes_6d2b90(a1, GameData_212c8b0[0]);
-        GameRoutine_93c6a0(&v138, *(_QWORD*)(GameData_21f42d0 + 8), &v166, 0,
-                           1);
+        GameRoutine_93c6a0((void*)&v138, *(_QWORD*)(GameData_21f42d0 + 8),
+                           &v166, 0, 1);
         v49 = (_QWORD*)UnitVariables_930e20(&v166);
       }
       else {
@@ -11461,8 +11462,10 @@ __int64 Unit_6db740(__int64 a1, char a2, char a3)
         v166 = *(__int64**)(a1 + 1944);
         BYTE1(v166) = 0;
         UnitHeroes_6d2c90(a1, GameData_212ceb0);
-        v49 = GameRoutine_936f60(&v138, *(_QWORD*)(GameData_21f4280 + 8), &v166,
-                                 0);
+        v49 = X8CALL_X0(_QWORD*,
+                        GameRoutine_936f60((void*)&v138,
+                                           *(_QWORD*)(GameData_21f4280 + 8),
+                                           &v166, 0));
       }
       else {
         v49 = (_QWORD*)LegionPool_937de0(*(_QWORD*)(GameData_21f4280 + 8), a1);

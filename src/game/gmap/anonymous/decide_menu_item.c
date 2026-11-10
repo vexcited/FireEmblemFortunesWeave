@@ -16,7 +16,7 @@ __int64 DecideMenuItem_OnSelect(__int64 a1)
   if (*(_BYTE*)(a1 + 79) != 0) {
     v2 = 520;
   }
-  (*(void (**)(void))(*(_QWORD*)a1 + v2))();
+  (*(void (**)(void*))(*(_QWORD*)a1 + v2))((void*)a1);
   v3 = GameRoutine_155fbe0(*(_QWORD*)(a1 + 88) + 200LL, "L_InfoDetail");
   return GameRoutine_15d2910(v3, (unsigned __int16*)&game_g_empty_item);
 }

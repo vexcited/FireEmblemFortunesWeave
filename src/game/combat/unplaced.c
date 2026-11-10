@@ -2823,8 +2823,9 @@ void game_combat_e44cd0(__int64 a1, long double a2)
   if (v8 != 0) {
     atomic_fetch_add_explicit((atomic_ullong* volatile)(v8 + 8), 1u,
                               memory_order_relaxed);
-    ((void (*)(__int64* __return_ptr, __int64, long double*, __int64, _WORD*,
-               __int64))GameRoutine_e9f860)(&v67, v5, &v69, v7, v66, 2);
+    ((__attribute__((swiftcall)) void (*)(
+        PSEUDO_X8, __int64, long double*, __int64, _WORD*,
+        __int64))GameRoutine_e9f860)((void*)&v67, v5, &v69, v7, v66, 2);
     if (atomic_fetch_add((atomic_ullong* volatile)(v8 + 8),
                          0xFFFFFFFFFFFFFFFFLL) != 0) {
       if ((v67 & 1) != 0) {
@@ -2843,8 +2844,9 @@ void game_combat_e44cd0(__int64 a1, long double a2)
     }
   }
   else {
-    ((void (*)(__int64* __return_ptr, __int64, long double*, __int64, _WORD*,
-               __int64))GameRoutine_e9f860)(&v67, v5, &v69, v7, v66, 2);
+    ((__attribute__((swiftcall)) void (*)(
+        PSEUDO_X8, __int64, long double*, __int64, _WORD*,
+        __int64))GameRoutine_e9f860)((void*)&v67, v5, &v69, v7, v66, 2);
     if ((v67 & 1) == 0) {
       goto LABEL_11;
     }
@@ -2940,8 +2942,9 @@ LABEL_37:
   if (v31 != 0) {
     atomic_fetch_add_explicit((atomic_ullong* volatile)(v31 + 8), 1u,
                               memory_order_relaxed);
-    ((void (*)(__int64* __return_ptr, __int64, long double*, __int64, _WORD*,
-               __int64))GameRoutine_e9f860)(&v67, v33, &v69, v30, v66, 1);
+    ((__attribute__((swiftcall)) void (*)(
+        PSEUDO_X8, __int64, long double*, __int64, _WORD*,
+        __int64))GameRoutine_e9f860)((void*)&v67, v33, &v69, v30, v66, 1);
     if (atomic_fetch_add((atomic_ullong* volatile)(v31 + 8),
                          0xFFFFFFFFFFFFFFFFLL) == 0) {
       (*(void (**)(__int64))(*(_QWORD*)v31 + 16LL))(v31);
@@ -2949,8 +2952,9 @@ LABEL_37:
     }
   }
   else {
-    ((void (*)(__int64* __return_ptr, __int64, long double*, __int64, _WORD*,
-               __int64))GameRoutine_e9f860)(&v67, v33, &v69, v30, v66, 1);
+    ((__attribute__((swiftcall)) void (*)(
+        PSEUDO_X8, __int64, long double*, __int64, _WORD*,
+        __int64))GameRoutine_e9f860)((void*)&v67, v33, &v69, v30, v66, 1);
   }
   v34 = *(_QWORD**)(a1 + 8);
   if ((v67 & 1) == 0) {

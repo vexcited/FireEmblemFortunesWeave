@@ -443,9 +443,12 @@ __int64* HandlePtr_111ee0(__int64* result)
     if ((unsigned __int64)(((__int64)v2 >> 6) - 0x400000000000000LL) >=
         0xFC00000000000001LL) {
       v4 = result;
-      v5 = (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD, unsigned __int64,
-                            __int64))(**(_QWORD**)snd_g_memory_ptr[0] + 16LL))(
-          *(_QWORD**)snd_g_memory_ptr[0], *snd_g_memory_ptr[0], v2, 32);
+      v5 =
+          X8CALL_X0(_QWORD*, (*(__attribute__((swiftcall)) void (**)(
+                                 PSEUDO_X8, _QWORD, unsigned __int64, __int64))(
+                                 **(_QWORD**)snd_g_memory_ptr[0] + 16LL))(
+                                 (void*)*(_QWORD**)snd_g_memory_ptr[0],
+                                 *snd_g_memory_ptr[0], v2, 32));
       result = v4;
       v6 = v4[2] - *v4;
       v10 = v5;

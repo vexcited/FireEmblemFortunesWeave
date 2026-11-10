@@ -424,7 +424,7 @@ LABEL_20:
   if (v21_.v22 != nullptr) {
     v8 = 5;
   LABEL_24:
-    result = ((__int64 (*)(void))(*v21_.v22)[v8])();
+    result = ((__int64 (*)(void*))(*v21_.v22)[v8])(v21_.v22);
   }
   v9 = v18_.v18;
   if (v18_.v18 != nullptr) {
@@ -833,7 +833,7 @@ __int64 ProcMainSeq_666000(__int64 a1)
       }
       v34 = 40;
     }
-    (*(void (**)(void))(*v33 + v34))();
+    (*(void (**)(void*))(*v33 + v34))(v33);
     v5 = GameData_21eea58;
     goto LABEL_78;
   }
@@ -1026,7 +1026,7 @@ __int64 ProcMainSeq_6664c0(__int64 a1)
     }
     v2 = 40;
   }
-  (*(void (**)(void))(*v17 + v2))();
+  (*(void (**)(void*))(*v17 + v2))(v17);
 LABEL_6:
   result = (__int64)v15;
   if (v15 == &v14) {
@@ -1036,7 +1036,7 @@ LABEL_6:
   if (v15 != nullptr) {
     v4 = 40;
   LABEL_10:
-    result = (*(__int64 (**)(void))(*v15 + v4))();
+    result = (*(__int64 (**)(void*))(*v15 + v4))(v15);
   }
   v5 = v11;
   if (v11 != 0) {
@@ -1742,7 +1742,7 @@ __int64 ProcMainSeq_667120(__int64 a1)
       }
       v2 = 40;
     }
-    return (*(__int64 (**)(void))(*(_QWORD*)v4 + v2))();
+    return (*(__int64 (**)(void*))(*(_QWORD*)v4 + v2))((void*)v4);
   }
   return result;
 }

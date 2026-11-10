@@ -8,7 +8,7 @@ extern __int64* GameData_212ec38[6];
 void __attribute__((noreturn)) GameRoutine_ce5300(void);
 __int64 SkeletalBlendCallback_Unknown2(__int64 result, __int64 a2);
 __int64* SkeletalBlendCallback_ce5120(__int64* result, _QWORD* a2);
-_QWORD* GameRoutine_d2b700(_QWORD* __return_ptr, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_d2b700(PSEUDO_X8, _QWORD);
 __int64 AnimCtrlModule_a78450(_QWORD, _QWORD);
 __int64 GameRoutine_1a0a8b0(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_c3b000(_QWORD, _QWORD, _QWORD, _QWORD);
@@ -653,8 +653,9 @@ _QWORD* SkeletalBlendCallback_ce4aa0(_QWORD* result, int a2, float a3)
   v3 = result[4] + 72LL * a2;
   if (*(_BYTE*)(v3 + 52) == 1) {
     v4 = result;
-    result =
-        GameRoutine_d2b700(&v10, *(_QWORD*)(v3 + 24) + 56LL * *(int*)(v3 + 48));
+    result = X8CALL_X0(
+        _QWORD*, GameRoutine_d2b700((void*)&v10, *(_QWORD*)(v3 + 24) +
+                                                     56LL * *(int*)(v3 + 48)));
     v6 = v10;
     v7 = v11;
     if (v10 != v11) {

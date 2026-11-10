@@ -1764,7 +1764,7 @@ __int64 ProcGmapCommandSeq_14b1d80(__int64 a1)
       }
       v2 = 40;
     }
-    return (*(__int64 (**)(void))(*(_QWORD*)v4 + v2))();
+    return (*(__int64 (**)(void*))(*(_QWORD*)v4 + v2))((void*)v4);
   }
   return result;
 }

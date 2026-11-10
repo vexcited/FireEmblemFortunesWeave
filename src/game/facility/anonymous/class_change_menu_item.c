@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_95eaa0(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_95eaa0(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_143d0a0(_QWORD, _QWORD);
 __int64 GameRoutine_16ee370(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_16ee520(_QWORD);
@@ -171,7 +171,7 @@ __int64 ClassChangeMenuItem_Unknown70(_QWORD* a1, __int64 a2)
   if (v3 != v4) {
     while (1) {
       if (*(unsigned __int8*)(*v3 + 49LL) == *((unsigned __int8*)v2 + 96)) {
-        a1 = GameRoutine_95eaa0(&var4, v2[11], *v3);
+        a1 = X8CALL_X0(_QWORD*, GameRoutine_95eaa0((void*)&var4, v2[11], *v3));
         if ((var4 & 0x201) == 0x200) {
           break;
         }

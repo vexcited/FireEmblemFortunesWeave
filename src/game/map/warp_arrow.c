@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_155e830(_QWORD, _QWORD);
 __int64 GameRoutine_1560520(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_1562680(_QWORD, _QWORD, double);
@@ -39,7 +39,7 @@ __int64 WarpArrow_Setup(__int64 a1, __int64* a2, int a3)
       if (a3 >= 1) {
         GameRoutine_1560520(v7, "L_Warp0", "N_Warp", v15);
       }
-      GameRoutine_1560070(&v13, v7, v15);
+      GameRoutine_1560070((void*)&v13, v7, v15);
       result = v14;
       if (v14 == 0) {
         goto LABEL_15;

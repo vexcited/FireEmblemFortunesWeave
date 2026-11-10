@@ -125,7 +125,7 @@ __int64 eft_Stack_calcEmitter(__int64 result)
     v7 = *v6;
     v8 = 0;
     v9 = 0;
-    if ((v7 & 0x80000000) == 0 && (signed int)v7 < *(_DWORD*)v5) {
+    if ((v7 & 0x80000000) == 0 && (signed int)v7 < *(int*)v5) {
       v10 = (__int64*)(*(_QWORD*)(v5 + 112) + 48LL * v7);
       v8 = *v10;
       v11 = v10[1];
@@ -255,7 +255,8 @@ LABEL_19:
         if ((_QWORD*)result != v2) {
           do {
             v44 = *(_QWORD*)(result + 8);
-            (*(void (**)(void))(*(_QWORD*)(result - 136) + 112LL))();
+            (*(void (**)(void*))(*(_QWORD*)(result - 136) + 112LL))(
+                (void*)(result - 136));
             result = v44;
           } while ((_QWORD*)v44 != v2);
         }

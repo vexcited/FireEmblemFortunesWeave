@@ -9,8 +9,8 @@ extern __int64 (*game_hub_ObjectControllerTreasureChest_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 _QWORD* ObjectControllerTreasureChest_Destructor(_QWORD* result);
 __int64 ObjectControllerTreasureChest_DeletingDestructor(_QWORD* a1);
-_QWORD* GameRoutine_d9b810(_QWORD* __return_ptr, _QWORD, _QWORD, _QWORD, _QWORD,
-                           _QWORD);
+__attribute__((swiftcall)) void GameRoutine_d9b810(PSEUDO_X8, _QWORD, _QWORD,
+                                                   _QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_13339e0(_QWORD);
 __int64 GameRoutine_989ea0(_QWORD, _QWORD);
 __int64 GameRoutine_9b11a0(_QWORD, _QWORD, _QWORD);
@@ -342,7 +342,9 @@ LABEL_41:
   else {
     v39 = v38;
   }
-  result = GameRoutine_d9b810(&v50, v39, "ItemGainWaitObjAnim", 19, &v54, 0);
+  result = X8CALL_X0(
+      _QWORD*,
+      GameRoutine_d9b810((void*)&v50, v39, "ItemGainWaitObjAnim", 19, &v54, 0));
   *((_DWORD*)v3 + 3) = 1;
   if (game_GameModeData_instance_ != 0 &&
       *(_DWORD*)(game_GameModeData_instance_ + 60) == 3) {

@@ -142,8 +142,10 @@ _QWORD* game_combat_GambitSetDirection_Run_lambda0_Invoke(__int64 a1,
     v5 = *a3;
     v10 = *a2;
     v9 = v5;
-    result = (*(_QWORD * (**)(__int64* __return_ptr, _QWORD*, __int64*, int*))(
-        *result + 48LL))(&v8, result, &v10, &v9);
+    result =
+        X8CALL_X0(_QWORD*, (*(__attribute__((swiftcall)) void (**)(
+                               PSEUDO_X8, _QWORD*, __int64*, int*))(
+                               *result + 48LL))((void*)&v8, result, &v10, &v9));
     v6 = v8;
   }
   else {

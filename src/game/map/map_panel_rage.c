@@ -92,7 +92,7 @@ __int64 MapPanelRage_Unknown3(__int64 result)
       do {
         v6 = v2[6];
         *((_BYTE*)v2 + 272) = 0;
-        if (((*(__int64 (**)(void))(v6 + 48))() & 1) != 0) {
+        if (((*(__int64 (**)(void*))(v6 + 48))(&v2[6]) & 1) != 0) {
           v7 = 1036831949;
         }
         else {
@@ -122,7 +122,7 @@ __int64 MapPanelRage_Unknown3(__int64 result)
       do {
         v11 = v4[6];
         *((_BYTE*)v4 + 272) = 0;
-        if (((*(__int64 (**)(void))(v11 + 48))() & 1) != 0) {
+        if (((*(__int64 (**)(void*))(v11 + 48))(&v4[6]) & 1) != 0) {
           v12 = 1036831949;
         }
         else {

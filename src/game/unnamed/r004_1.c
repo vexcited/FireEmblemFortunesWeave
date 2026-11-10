@@ -135,7 +135,7 @@ _QWORD* GameHr_d626e0(__int64 a1, unsigned __int8* a2, __int64 a3)
   if (result != nullptr) {
     v10 = 40;
   LABEL_8:
-    result = (_QWORD*)(*(__int64 (**)(void))(*result + v10))();
+    result = (_QWORD*)(*(__int64 (**)(void*))(*result + v10))(result);
   }
   v11 = *(unsigned int*)(a1 + 16);
   if ((_DWORD)v11 == 0x4000) {

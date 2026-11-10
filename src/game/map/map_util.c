@@ -40,8 +40,7 @@ extern __int64* GameData_212ce98[2];
 extern __int64* GameData_212cfb8[11];
 extern __int64* GameData_212d000[2];
 extern char game_script_map_event_g_active_unit;
-void __attribute__((noreturn)) GameRoutine_60a310(_QWORD, _QWORD, _QWORD,
-                                                  _QWORD);
+void __attribute__((noreturn)) GameRoutine_60a310(void);
 __int64 MapUtil_753260(__int64 a1, unsigned int a2, unsigned int a3,
                        __int64 a4);
 __int64 MapUtil_753390(__int64 a1, unsigned int a2, int a3, __int64 a4);
@@ -2488,9 +2487,10 @@ __int64 MapUtil_756d50(int a1, __int64 a2, __int64 a3, __int64 a4)
       if (v15 == nullptr) {
         goto LABEL_25;
       }
-      result =
-          (__int64)(*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD*, __int64*))(
-              *v15 + 48LL))(v15, v15, &v21);
+      result = (__int64)X8CALL_X0(
+          _QWORD*, (*(__attribute__((swiftcall)) void (**)(
+                       PSEUDO_X8, _QWORD*, __int64*))(*v15 + 48LL))((void*)v15,
+                                                                    v15, &v21));
     }
   }
   v16 = *(_QWORD*)(*v10 + 16);
@@ -2512,7 +2512,7 @@ __int64 MapUtil_756d50(int a1, __int64 a2, __int64 a3, __int64 a4)
                                                          48LL))(result, &v21);
             }
           LABEL_25:
-            GameRoutine_60a310(result, a2, a3, a4);
+            GameRoutine_60a310();
           }
         }
       }

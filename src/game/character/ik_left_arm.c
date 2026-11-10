@@ -261,7 +261,7 @@ LABEL_17:
           }
           v33 = 40;
         }
-        (*(void (**)(long double))(*v34_.v35 + v33))(v32);
+        (*(void (**)(void*))(*v34_.v35 + v33))(v34_.v35);
         goto LABEL_45;
       }
     }

@@ -1,4 +1,4 @@
-#include "decomp/pseudo_types.h"
+#include "decomp/pseudo_helpers.h"
 
 #pragma GCC visibility push(hidden)
 
@@ -850,10 +850,10 @@ __int64 GameHr_179810(__int64 a1)
   *(_QWORD*)a1 = GameData_1f6fe88;
   if ((*(_BYTE*)(a1 + 40) & 1) != 0) {
     v1 = a1;
-    (*(void (**)(_QWORD* __return_ptr, _QWORD, _QWORD))(
-        **(_QWORD**)GameData_212d480[0] + 24LL))(*(_QWORD**)GameData_212d480[0],
-                                                 *GameData_212d480[0],
-                                                 *(_QWORD*)(a1 + 56));
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD, _QWORD))(
+        **(_QWORD**)GameData_212d480[0] + 24LL))(
+        (void*)*(_QWORD**)GameData_212d480[0], *GameData_212d480[0],
+        *(_QWORD*)(a1 + 56));
     a1 = v1;
   }
   *(_QWORD*)a1 = GameData_1f54618;
@@ -1342,8 +1342,8 @@ __int64 GameHr_17af40(__int64 result, _QWORD* a2)
       }
     }
     v7 = result;
-    (*(void (**)(_QWORD* __return_ptr, _QWORD))(*v6 + 24LL))(
-        v6, *(_QWORD*)(v2 + 8 * v5));
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD))(*v6 + 24LL))(
+        (void*)v6, *(_QWORD*)(v2 + 8 * v5));
     v8 = *(_QWORD*)(v7 + 64);
     v9 = *(void (****)(_QWORD))(v8 + 8 * v5);
     *(_QWORD*)(v8 + 8 * v5) = 0;
@@ -3717,8 +3717,8 @@ __int64 GameHr_1c0ee0(__int64 a1, __int64 a2, __int64 a3, char a4, char a5,
     result = v18;
     v17 = *(_QWORD**)(v18 + 32);
     if (v17 != nullptr) {
-      (*(void (**)(_QWORD* __return_ptr, _QWORD))(*v17 + 352LL))(
-          v17, *(_QWORD*)(v18 + 32));
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD))(
+          *v17 + 352LL))((void*)v17, *(_QWORD*)(v18 + 32));
       return v18;
     }
     return result;
@@ -4037,7 +4037,8 @@ _DWORD* GameHr_1ed230(__int64 a1)
   if (result[3478] != 0) {
     ++*(_DWORD*)(a1 + 4);
     if ((*(_BYTE*)(a1 + 8) & 1) == 0) {
-      return (_DWORD*)(*(__int64 (**)(void))(*(_QWORD*)result + 56LL))();
+      return (_DWORD*)(*(__int64 (**)(void*))(*(_QWORD*)result + 56LL))(
+          (void*)result);
     }
   }
   return result;

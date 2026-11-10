@@ -244,7 +244,7 @@ __int64 ThermaeThermaeMenuItem_15e69c0(__int64 a1)
     }
     v15 = 40;
   }
-  v14 = (*(__int64 (**)(void))(*v34 + v15))();
+  v14 = (*(__int64 (**)(void*))(*v34 + v15))(v34);
 
 LABEL_20:
   if ((v12 & 0x40) != 0) {

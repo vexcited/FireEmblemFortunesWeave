@@ -272,9 +272,9 @@ __int64 WaveReader_188ee0(__int64 a1)
   result = GameRoutine_190260(a1 + 16, v6, 0) != -1;
   if ((v6[0] & 1) != 0) {
     v5 = result;
-    (*(void (**)(_QWORD* __return_ptr, _QWORD, __int64))(
-        **(_QWORD**)snd_g_memory_ptr[0] + 24LL))(*(_QWORD**)snd_g_memory_ptr[0],
-                                                 *snd_g_memory_ptr[0], v7);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD, __int64))(
+        **(_QWORD**)snd_g_memory_ptr[0] + 24LL))(
+        (void*)*(_QWORD**)snd_g_memory_ptr[0], *snd_g_memory_ptr[0], v7);
     return v5;
   }
   return result;

@@ -8,7 +8,7 @@ __int64 MindBtlInfo_Unknown2(__int64 a1);
 __int64 MindBtlInfo_Unknown4(__int64 a1);
 __int64 MindBtlInfo_Unknown3(__int64 a1);
 __int64 MindBtlInfo_Unknown5(__int64 a1);
-_QWORD* GameRoutine_e9af40(_QWORD* __return_ptr, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_e9af40(PSEUDO_X8, _QWORD);
 __int64 CmdbtlPartyNatives_e9a800(_QWORD, _QWORD);
 __int64 GameRoutine_6c51e0(_QWORD);
 __int64 GameRoutine_6c6da0(_QWORD);
@@ -1174,7 +1174,8 @@ __int64 MindBtlInfo_edc200(__int64* a1, _DWORD* a2)
   }
   v80 = 0;
 LABEL_17:
-  result = (__int64)GameRoutine_e9af40(&v85, GameData_2203490);
+  result = (__int64)X8CALL_X0(
+      _QWORD*, GameRoutine_e9af40((void*)&v85, GameData_2203490));
   v17 = v85;
   v79 = v86;
   if (v85 != v86) {

@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_136a920(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_155e830(_QWORD, _QWORD);
 __int64 GameRoutine_1567590(_QWORD, _QWORD);
@@ -433,7 +433,7 @@ __int64 GmapBanquetMenu_16416e0(__int64 a1)
   else {
     v19 = v18;
   }
-  GameRoutine_1560070(&v78, v16, "L_List");
+  GameRoutine_1560070((void*)&v78, v16, "L_List");
   if (v79 != nullptr) {
     v20 = std___1___shared_weak_count_lock(v79);
     v21 = v78;
@@ -510,8 +510,10 @@ __int64 GmapBanquetMenu_16416e0(__int64 a1)
       ++v25;
     } while (v25 != 3);
   LABEL_49:
-    if (v17 == v13 && (v37 = game_util_Format("L_Taste%02d", 0),
-                       GameRoutine_1560070(&v78, v21, v37), v79 != nullptr)) {
+    if (v17 == v13 &&
+        (v37 = game_util_Format("L_Taste%02d", 0),
+         X8CALL_X0(_QWORD*, GameRoutine_1560070((void*)&v78, v21, v37)),
+         v79 != nullptr)) {
       v38 = std___1___shared_weak_count_lock(v79);
       v39 = v78;
       if (v79 != nullptr) {
@@ -566,7 +568,7 @@ __int64 GmapBanquetMenu_16416e0(__int64 a1)
   LABEL_59:
     if (v17 == HIDWORD(v74)) {
       v45 = game_util_Format("L_Taste%02d", v40);
-      GameRoutine_1560070(&v78, v21, v45);
+      GameRoutine_1560070((void*)&v78, v21, v45);
       if (v79 != nullptr) {
         v46 = std___1___shared_weak_count_lock(v79);
         v47 = v78;
@@ -617,7 +619,7 @@ __int64 GmapBanquetMenu_16416e0(__int64 a1)
   LABEL_75:
     if (v17 == (_DWORD)v75) {
       v52 = game_util_Format("L_Taste%02d", v40);
-      GameRoutine_1560070(&v78, v21, v52);
+      GameRoutine_1560070((void*)&v78, v21, v52);
       if (v79 != nullptr) {
         v53 = std___1___shared_weak_count_lock(v79);
         v54 = v78;
@@ -668,7 +670,7 @@ __int64 GmapBanquetMenu_16416e0(__int64 a1)
     }
     if (v17 == HIDWORD(v75)) {
       v59 = game_util_Format("L_Taste%02d", v40);
-      GameRoutine_1560070(&v78, v21, v59);
+      GameRoutine_1560070((void*)&v78, v21, v59);
       if (v79 != nullptr) {
         v60 = std___1___shared_weak_count_lock(v79);
         v61 = v78;
@@ -722,7 +724,7 @@ __int64 GmapBanquetMenu_16416e0(__int64 a1)
     while (1) {
     LABEL_104:
       v66 = game_util_Format("L_Taste%02d", v40);
-      GameRoutine_1560070(&v78, v21, v66);
+      GameRoutine_1560070((void*)&v78, v21, v66);
       if (v79 != nullptr) {
         v67 = std___1___shared_weak_count_lock(v79);
         v68 = v78;

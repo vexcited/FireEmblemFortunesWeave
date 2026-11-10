@@ -33,9 +33,9 @@ void CacheBuffer_DeletingDestructor(_QWORD* a1)
   if (v1 != 0) {
     a1[4] = 0;
     v2 = a1;
-    (*(void (**)(_QWORD* __return_ptr, _QWORD))(
-        **(_QWORD**)snd_g_memory_ptr[0] + 24LL))(*(_QWORD**)snd_g_memory_ptr[0],
-                                                 *snd_g_memory_ptr[0]);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD))(
+        **(_QWORD**)snd_g_memory_ptr[0] + 24LL))(
+        (void*)*(_QWORD**)snd_g_memory_ptr[0], *snd_g_memory_ptr[0]);
     a1 = v2;
   }
   GameRoutine_651250(a1, 0x30u);

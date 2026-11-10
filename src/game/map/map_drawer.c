@@ -208,7 +208,7 @@ __int64 game_map_MapDrawer_DrawMap()
       }
       v29 = 40;
     }
-    (*(void (**)(void))(*v34 + v29))();
+    (*(void (**)(void*))(*v34 + v29))(v34);
   LABEL_21:
     PrimitiveDrawManager_1994180(**v5);
     GameRoutine_965080(&GameData_21da4a0);
@@ -226,7 +226,7 @@ __int64 game_map_MapDrawer_DrawMap()
       }
       v30 = 40;
     }
-    (*(void (**)(void))(*v34 + v30))();
+    (*(void (**)(void*))(*v34 + v30))(v34);
     goto LABEL_26;
   }
 LABEL_27:
@@ -248,7 +248,7 @@ LABEL_27:
       }
       v31 = 40;
     }
-    (*(void (**)(void))(*v34 + v31))();
+    (*(void (**)(void*))(*v34 + v31))(v34);
   }
 LABEL_35:
   result = GameData_21ed080;

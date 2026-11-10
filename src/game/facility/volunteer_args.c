@@ -35,7 +35,7 @@ __int64 VolunteerArgs_Unknown2(_QWORD* a1);
 __int64 VolunteerArgs_Unknown4(__int64 a1);
 __int64 VolunteerArgs_141aec0(__int64 result, __int64 a2, __int64 a3);
 __int64 VolunteerArgs_Unknown12(__int64 a1);
-_QWORD* GameRoutine_95f260(_QWORD* __return_ptr, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_95f260(PSEUDO_X8, _QWORD);
 __int64 Dir_70d7a0(_QWORD);
 __int64 GameRoutine_143d0a0(_QWORD, _QWORD);
 __int64 GameRoutine_143d340(_QWORD, _QWORD);
@@ -967,7 +967,7 @@ __int64 VolunteerArgs_948b80()
       v7 = GameData_21c9870;
       while (v6 != (__int64*)v7) {
         v8 = *v6++;
-        GameRoutine_95f260(v10, v8);
+        GameRoutine_95f260((void*)v10, v8);
         if ((v10[0] & 0x800) != 0) {
           v5 &= ~0x400000u;
         }

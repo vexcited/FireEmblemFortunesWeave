@@ -2717,8 +2717,8 @@ __n128 CharacterBuilder_107e090(__int64 a1, __int64 a2)
   if (v2 != nullptr) {
     if ((*(_BYTE*)(a1 + 342) & 1) != 0) {
       v6 = a1;
-      (*(void (**)(_QWORD* __return_ptr, _QWORD*, __int64*))(*v2 + 48LL))(
-          v2, v2, &v6);
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*, __int64*))(
+          *v2 + 48LL))((void*)v2, v2, &v6);
     }
     else {
       v3 = GameData_2235760;

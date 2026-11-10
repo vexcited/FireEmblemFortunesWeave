@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_1572980(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1572980(PSEUDO_X8, _QWORD, _QWORD);
 __int64 AsyncLoadThumbImage_18ba690(_QWORD, _QWORD);
 __int64 GameRoutine_136a920(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_136afb0(_QWORD, _QWORD);
@@ -56,7 +56,7 @@ __int64 ProcRouteMenu_Unknown84(__int64 a1)
   v5 = (*(__int64 (**)(__int64))(*(_QWORD*)a1 + 1152LL))(a1);
   v11[0] = "L_Clan";
   v11[1] = 6;
-  GameRoutine_1572980(&v12, v5, v11);
+  GameRoutine_1572980((void*)&v12, v5, v11);
   if (v13 != 0) {
     v6 = std___1___shared_weak_count_lock(v13);
     v7 = v12;
@@ -127,7 +127,7 @@ __int64 ProcRouteMenu_Unknown88(_QWORD* a1)
   v4 = (*(__int64 (**)(_QWORD*))(*a1 + 1152LL))(a1);
   v10[0] = "L_Clan";
   v10[1] = 6;
-  GameRoutine_1572980(&v11, v4, v10);
+  GameRoutine_1572980((void*)&v11, v4, v10);
   if (v12 != 0) {
     v5 = std___1___shared_weak_count_lock(v12);
     v6 = v11;

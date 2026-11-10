@@ -1902,8 +1902,11 @@ __int64 game_UnitUtil_UniqueMap_Commit_lambda0_Invoke_1216570(__int64 result,
       GameRoutine_60a310(result, a2);
     }
     v6 = *(_QWORD*)(result + 8);
-    result = (__int64)(*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD, __int64))(
-        *v5 + 48LL))(v5, *(_QWORD*)(*(_QWORD*)(result + 16) + 32LL), a2 + 4);
+    result = (__int64)X8CALL_X0(
+        _QWORD*,
+        (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD, __int64))(
+            *v5 + 48LL))((void*)v5, *(_QWORD*)(*(_QWORD*)(result + 16) + 32LL),
+                         a2 + 4));
     if ((result & 1) != 0) {
       v8 =
           *(__int64**)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*v3 + 64) + 8LL * *v2) +
@@ -1944,8 +1947,10 @@ __int64 game_UnitUtil_UniqueMap_Commit_lambda1_Invoke(__int64 result,
         GameRoutine_60a310(result, a2);
       }
       v5 = *(_QWORD*)(result + 8);
-      result = (__int64)(*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD))(
-          *v4 + 48LL))(v4, *(_QWORD*)(*(_QWORD*)(result + 16) + 32LL));
+      result = (__int64)X8CALL_X0(
+          _QWORD*, (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD))(
+                       *v4 + 48LL))(
+                       (void*)v4, *(_QWORD*)(*(_QWORD*)(result + 16) + 32LL)));
       if ((result & 1) != 0) {
         v7 = *(
             __int64**)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*v2 + 64) + 8LL * *a2) +

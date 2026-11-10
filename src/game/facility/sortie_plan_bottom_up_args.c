@@ -309,7 +309,7 @@ LABEL_19:
   v10 = 32;
 
 LABEL_20:
-  (*(void (**)(void))(*v3 + v10))();
+  (*(void (**)(void*))(*v3 + v10))(v3);
 
 LABEL_21:
   result = GameRoutine_940640(a1 + 8, &v13);

@@ -2147,8 +2147,8 @@ __int64 GameHr_fbb8a0(unsigned int a1, __int64 a2, __int64 a3)
       v9 = a1;
       v10 = a3;
       v11 = a2;
-      (*(void (**)(__int64 __return_ptr, __int64))(*(_QWORD*)(v6 - 2072) +
-                                                   16LL))(v6 - 2072, v6 - 2072);
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64))(
+          *(_QWORD*)(v6 - 2072) + 16LL))((void*)(v6 - 2072), v6 - 2072);
       a2 = v11;
       a3 = v10;
       LOBYTE(a1) = v9;
@@ -2284,7 +2284,7 @@ __int64 GameHr_fbb8a0(unsigned int a1, __int64 a2, __int64 a3)
     }
     v24 = 40;
   }
-  (*(void (**)(void))(*v18 + v24))();
+  (*(void (**)(void*))(*v18 + v24))(v18);
 LABEL_29:
   if (v42 == v41) {
     v25 = 32;
@@ -2295,7 +2295,7 @@ LABEL_29:
     }
     v25 = 40;
   }
-  (*(void (**)(void))(*(_QWORD*)v42 + v25))();
+  (*(void (**)(void*))(*(_QWORD*)v42 + v25))((void*)v42);
 LABEL_35:
   v26 = 0;
   if ((v43 & 1) == 0) {

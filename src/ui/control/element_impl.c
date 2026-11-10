@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_15b71b0(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_15b71b0(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_15638b0(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_1563f90(_QWORD, _QWORD);
 __int64 GameRoutine_1564060(_QWORD);
@@ -884,10 +884,12 @@ LABEL_10:
     else {
       v11 = (char*)result + 41;
     }
-    return (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD, char*, __int64))(
-        **(_QWORD**)(*(_QWORD*)(a1 + 8) + 24LL) + 120LL))(
-        *(_QWORD**)(*(_QWORD*)(a1 + 8) + 24LL),
-        *(_QWORD*)(*(_QWORD*)(a1 + 8) + 24LL), v11, 1);
+    return X8CALL_X0(_QWORD*,
+                     (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD,
+                                                             char*, __int64))(
+                         **(_QWORD**)(*(_QWORD*)(a1 + 8) + 24LL) + 120LL))(
+                         (void*)*(_QWORD**)(*(_QWORD*)(a1 + 8) + 24LL),
+                         *(_QWORD*)(*(_QWORD*)(a1 + 8) + 24LL), v11, 1));
   }
   return result;
 }
@@ -1165,7 +1167,7 @@ LABEL_12:
     }
     v41[0] = v12;
     v41[1] = v14;
-    GameRoutine_15b71b0(&v42, v13, v41);
+    GameRoutine_15b71b0((void*)&v42, v13, v41);
     result = v43;
     *v4 = 0;
     v4[1] = 0;

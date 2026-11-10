@@ -1459,7 +1459,7 @@ __int64 DepositoryMenuItem_Unknown77(_QWORD* a1)
     if (v10 != nullptr) {
       v7 = 40;
     LABEL_9:
-      (*(void (**)(void))(*(_QWORD*)v10 + v7))();
+      (*(void (**)(void*))(*(_QWORD*)v10 + v7))((void*)v10);
     }
   }
   return 12;

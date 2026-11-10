@@ -3,8 +3,8 @@
 #pragma GCC visibility push(hidden)
 
 _BYTE* GameRoutine_1258640(__int64*);
-_QWORD* GameRoutine_1264da0(_QWORD* __return_ptr, _QWORD);
-_QWORD* GameRoutine_89cb30(_QWORD* __return_ptr);
+__attribute__((swiftcall)) void GameRoutine_1264da0(PSEUDO_X8, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_89cb30(PSEUDO_X8);
 __int64 GameRoutine_1256660(_QWORD, _QWORD);
 __int64 GameRoutine_12569c0(__int64, __int64, int);
 __int64 GameRoutine_12571e0(__int64*);
@@ -4156,7 +4156,7 @@ void GameSubquestData_125c1a0(__int64 a1, __int64 a2, __int64** a3)
             }
             v12 = 40;
           }
-          (*(void (**)(void))(*v15 + v12))();
+          (*(void (**)(void*))(*v15 + v12))(v15);
         LABEL_13:
           v13 = *v8;
           v15 = v14;
@@ -4172,7 +4172,7 @@ void GameSubquestData_125c1a0(__int64 a1, __int64 a2, __int64** a3)
             }
             v10 = 40;
           }
-          (*(void (**)(void))(*v15 + v10))();
+          (*(void (**)(void*))(*v15 + v10))(v15);
         LABEL_7:
           ++v8;
         } while (v8 != v7);
@@ -5038,7 +5038,8 @@ __int64 GameSubquestData_125c2c0(__int64 result, __int64 a2, __int64** a3,
           }
         }
       LABEL_228:
-        result = (__int64)GameRoutine_1264da0(&v143, v85);
+        result =
+            (__int64)X8CALL_X0(_QWORD*, GameRoutine_1264da0((void*)&v143, v85));
         v107 = v143;
         v106 = (__int64*)v144;
         for (i = (__int64*)v143; i != v106;
@@ -6611,7 +6612,7 @@ __int64 GameSubquestData_125ec20(__int64 result, __int64 a2)
         }
         else if (*(_WORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)v4 + 8LL) + 8LL) +
                            12LL * (unsigned int)result + 4) != 0) {
-          result = (__int64)GameRoutine_89cb30(&v16);
+          result = (__int64)X8CALL_X0(_QWORD*, GameRoutine_89cb30((void*)&v16));
         }
       }
       v3 += 16;

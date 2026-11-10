@@ -3,7 +3,7 @@
 #pragma GCC visibility push(hidden)
 
 _QWORD* GameRoutine_ad0e40(float*, __int64, unsigned __int64);
-_QWORD* GameRoutine_ad5600(_QWORD* __return_ptr, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_ad5600(PSEUDO_X8, _QWORD);
 __int64 GameRoutine_5fb840(void);
 __int64 GameRoutine_5fb900(_QWORD);
 __int64 GameRoutine_5fba80(_QWORD, _QWORD);
@@ -1144,7 +1144,7 @@ unsigned __int64 Archive_ad3360(__int64 a1, char a2)
                                   v135 =
                                       (unsigned __int64)(v129 - v124 - 24) >> 4;
                                   if ((_DWORD)v135 != -1) {
-                                    GameRoutine_ad5600(&v163, v159);
+                                    GameRoutine_ad5600((void*)&v163, v159);
                                     GameRoutine_ad4be0(
                                         v159, v108[5],
                                         *((unsigned int*)v108 + 12),

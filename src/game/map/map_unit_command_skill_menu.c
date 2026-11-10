@@ -811,7 +811,7 @@ LABEL_9:
     }
     v19 = 40;
   }
-  (*(void (**)(void))(*v33 + v19))();
+  (*(void (**)(void*))(*v33 + v19))(v33);
 
 LABEL_22:
   if (GameData_221a540 == 0 ||

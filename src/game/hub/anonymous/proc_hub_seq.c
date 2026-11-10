@@ -1574,7 +1574,7 @@ __int64 game_hub_anonymous_ProcHubSeq_CreateInstances(__int64 a1)
     }
     v140 = 40;
   }
-  (*(void (**)(void))(*v147 + v140))();
+  (*(void (**)(void*))(*v147 + v140))(v147);
 LABEL_78:
   v141 = *(_QWORD*)(a1 + 384);
   v142 = *(_QWORD*)(a1 + 392);
@@ -1999,7 +1999,7 @@ __int64 ProcHubSeq_d881c0()
     }
     v2 = 40;
   }
-  return (*(__int64 (**)(void))(*(_QWORD*)v4 + v2))();
+  return (*(__int64 (**)(void*))(*(_QWORD*)v4 + v2))((void*)v4);
 }
 
 __int64 game_hub_anonymous_ProcHubSeq_CreateBindZView(__int64 a1)

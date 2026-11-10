@@ -4,7 +4,7 @@
 
 const char* ReportMenuItem_Yes_Unknown3(__int64 a1);
 bool ReportMenuItem_Yes_Unknown58(__int64 a1);
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 Alignment_56b600(void);
 __int64 GameRoutine_156c5d0(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_173eee0(_QWORD, _QWORD, _QWORD);
@@ -139,7 +139,8 @@ game_menu_anonymous_ReportMenuItem_Yes_ACall_closure_Invoke_187f810(__int64 a1,
 
   v2 = *(_QWORD*)(a1 + 8);
   v3 = *a2;
-  GameRoutine_1560070(&v13, *(_QWORD*)(v2 + 8) + 848LL, "L_Info/L_Stamp");
+  GameRoutine_1560070((void*)&v13, *(_QWORD*)(v2 + 8) + 848LL,
+                      "L_Info/L_Stamp");
   if (v14 != 0) {
     v4 = std___1___shared_weak_count_lock(v14);
     if (v4 != 0) {
@@ -171,7 +172,7 @@ game_menu_anonymous_ReportMenuItem_Yes_ACall_closure_Invoke_187f810(__int64 a1,
       std___1___shared_weak_count___release_weak(v4);
     }
   }
-  GameRoutine_1560070(&v13, *(_QWORD*)(v2 + 8) + 848LL, "L_Info");
+  GameRoutine_1560070((void*)&v13, *(_QWORD*)(v2 + 8) + 848LL, "L_Info");
   result = v14;
   if (v14 != 0) {
     v7 = std___1___shared_weak_count_lock(v14);

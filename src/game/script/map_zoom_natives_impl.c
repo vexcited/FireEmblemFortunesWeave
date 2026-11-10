@@ -101,7 +101,7 @@ LABEL_11:
       }
       v22 = 40;
     }
-    return (_QWORD*)(*(__int64 (**)(void))(*result + v22))();
+    return (_QWORD*)(*(__int64 (**)(void*))(*result + v22))(result);
   }
   game_script_StartWaitProc(v9);
   v10 = (_QWORD*)*v4;
@@ -233,7 +233,7 @@ LABEL_11:
       }
       v22 = 40;
     }
-    return (_QWORD*)(*(__int64 (**)(void))(*result + v22))();
+    return (_QWORD*)(*(__int64 (**)(void*))(*result + v22))(result);
   }
   game_script_StartWaitProc(v9);
   v10 = (_QWORD*)*v4;

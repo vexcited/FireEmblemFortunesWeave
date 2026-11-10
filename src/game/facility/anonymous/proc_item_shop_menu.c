@@ -412,7 +412,7 @@ __int64 ProcItemShopMenu_Unknown110(__int64 a1, char a2)
         }
         v8 = 40;
       }
-      (*(void (**)(void))(*(_QWORD*)v10 + v8))();
+      (*(void (**)(void*))(*(_QWORD*)v10 + v8))((void*)v10);
       return 12;
     }
     if (v5 != 0) {

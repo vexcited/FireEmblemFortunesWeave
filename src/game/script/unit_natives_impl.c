@@ -791,7 +791,7 @@ __int64 UnitNatives_754f50(__int64 a1, __int64 a2)
   if (v35 != nullptr) {
     v18 = 40;
   LABEL_20:
-    (*(void (**)(void))(*v35 + v18))();
+    (*(void (**)(void*))(*v35 + v18))(v35);
   }
   v19 = (_QWORD*)*v7;
   v20 = v19[1347];
@@ -920,7 +920,7 @@ __int64 UnitNatives_7551a0(__int64 a1, unsigned __int8 a2)
             }
             v17 = 40;
           }
-          (*(void (**)(void))(*v37 + v17))();
+          (*(void (**)(void*))(*v37 + v17))(v37);
         }
       }
     }
@@ -4671,7 +4671,7 @@ _QWORD* UnitNatives_1188050(__int64 a1)
         }
         v30 = 40;
       }
-      return (_QWORD*)(*(__int64 (**)(void))(*result + v30))();
+      return (_QWORD*)(*(__int64 (**)(void*))(*result + v30))(result);
     }
   }
   v9 = GameData_212cfb0[0];

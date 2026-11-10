@@ -292,7 +292,7 @@ __int64 ProcDialogList_Unknown2(__int64 result)
       }
       v20 = 40;
     }
-    result = (*(__int64 (**)(void))(*(_QWORD*)v27 + v20))();
+    result = (*(__int64 (**)(void*))(*(_QWORD*)v27 + v20))((void*)v27);
     goto LABEL_32;
   }
   v21 = *(unsigned __int8**)(result + 16);

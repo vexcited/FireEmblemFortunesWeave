@@ -13790,7 +13790,7 @@ LABEL_7:
               if (v158 == v154) {
                 v78 = 32;
               LABEL_122:
-                result = (*(__int64 (**)(void))(*v158 + v78))();
+                result = (*(__int64 (**)(void*))(*v158 + v78))(v158);
               }
               else if (v158 != nullptr) {
                 v78 = 40;
@@ -14076,7 +14076,7 @@ LABEL_162:
             }
             v96 = 40;
           }
-          result = (*(__int64 (**)(void))(*v158 + v96))();
+          result = (*(__int64 (**)(void*))(*v158 + v96))(v158);
         }
       LABEL_168:
         v16 += 2;
@@ -14127,7 +14127,7 @@ LABEL_162:
       }
       v110 = 40;
     }
-    result = (*(__int64 (**)(void))(*v158 + v110))();
+    result = (*(__int64 (**)(void*))(*v158 + v110))(v158);
   LABEL_200:
     if (v109 != 0) {
       result = GameRoutine_11f44e0(v105, 0);

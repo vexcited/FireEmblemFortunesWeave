@@ -275,7 +275,7 @@ __int64* game_Tutorial_CreateBind(__int64 a1, __int64* a2)
     if (v45 == v44) {
       v38 = 32;
     LABEL_64:
-      (*(void (**)(void))(*v45 + v38))();
+      (*(void (**)(void*))(*v45 + v38))(v45);
       goto LABEL_65;
     }
     if (v45 != nullptr) {

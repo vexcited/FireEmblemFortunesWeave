@@ -234,7 +234,7 @@ __int64 GameHr_1854e30(__int64 a1)
   if (*(_BYTE*)(a1 + 79) != 0) {
     v2 = 520;
   }
-  (*(void (**)(void))(*(_QWORD*)a1 + v2))();
+  (*(void (**)(void*))(*(_QWORD*)a1 + v2))((void*)a1);
   return GameRoutine_1854cf0((_QWORD*)a1);
 }
 

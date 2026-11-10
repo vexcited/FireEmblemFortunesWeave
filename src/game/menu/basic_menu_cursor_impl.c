@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 BasicMenuItem_16e5110(_QWORD, _QWORD);
 __int64 BasicMenuItem_16e5340(_QWORD, _QWORD);
 __int64 GameRoutine_1553220(_QWORD);
@@ -411,7 +411,7 @@ __int64 BasicMenuCursor_16de1f0(_DWORD* a1, int a2, int a3)
   a1[49] = a2;
   a1[50] = a3;
   v5 = (*(__int64 (**)(_DWORD*))(v3 + 336))(a1);
-  GameRoutine_1560070(&v10, a1 + 212, v5);
+  GameRoutine_1560070((void*)&v10, a1 + 212, v5);
   result = v11;
   if (v11 != 0) {
     v7 = std___1___shared_weak_count_lock(v11);
@@ -634,7 +634,7 @@ LABEL_10:
             if ((result & 1) != 0) {
               sprintf(v43, "L_MenuItem%02d", v31 % *(_DWORD*)(v3 + 584));
               v35 = *(_QWORD*)(*(_QWORD*)(v3 + 232) + 8 * v30);
-              GameRoutine_1560070(&v41, v3 + 952, v43);
+              GameRoutine_1560070((void*)&v41, v3 + 952, v43);
               BasicMenuItem_16e5110(v35, &v41);
               result = v42;
               if (v42 != 0) {

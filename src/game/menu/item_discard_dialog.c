@@ -122,13 +122,14 @@ __int64 game_menu_ItemDiscardDialog_CreateBind_lambda0_Clone(__int64 a1)
     if (v3 == (_QWORD*)(a1 + 32)) {
       v4 = result;
       *(_QWORD*)(result + 64) = result + 32;
-      (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v3 + 24LL))(v3, v3);
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v3 + 24LL))(
+          (void*)v3, v3);
     }
     else {
       v4 = result;
-      *(_QWORD*)(result + 64) =
-          (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD*))(*v3 + 16LL))(v3,
-                                                                         v3);
+      *(_QWORD*)(result + 64) = X8CALL_X0(
+          _QWORD*, (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(
+                       *v3 + 16LL))((void*)v3, v3));
     }
     return v4;
   }
@@ -156,8 +157,9 @@ _QWORD* game_menu_ItemDiscardDialog_CreateBind_lambda0_CloneInto(_QWORD* result,
           result[8]);
     }
     else {
-      result = (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD))(*v4 + 16LL))(
-          v4, result[8]);
+      result = X8CALL_X0(
+          _QWORD*, (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD))(
+                       *v4 + 16LL))((void*)v4, result[8]));
       *(_QWORD*)(a2 + 64) = result;
     }
   }

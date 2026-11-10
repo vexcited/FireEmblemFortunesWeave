@@ -2404,7 +2404,7 @@ LABEL_11:
   if (v70 != nullptr) {
     v26 = 40;
   LABEL_29:
-    (*(void (**)(void))(*v70 + v26))();
+    (*(void (**)(void*))(*v70 + v26))(v70);
   }
   v27 = v66;
   if (v66 != 0) {
@@ -2501,7 +2501,7 @@ LABEL_11:
     }
     v44 = 40;
   }
-  (*(void (**)(void))(*(_QWORD*)v62 + v44))();
+  (*(void (**)(void*))(*(_QWORD*)v62 + v44))((void*)v62);
 
 LABEL_74:
   if (v60 == &v59) {
@@ -2513,7 +2513,7 @@ LABEL_74:
     }
     v45 = 40;
   }
-  (*(void (**)(void))(*v60 + v45))();
+  (*(void (**)(void*))(*v60 + v45))(v60);
 
 LABEL_79:
   result = (__int64)v58;
@@ -2524,7 +2524,7 @@ LABEL_79:
   if (v58 != nullptr) {
     v46 = 40;
   LABEL_83:
-    result = (*(__int64 (**)(void))(*v58 + v46))();
+    result = (*(__int64 (**)(void*))(*v58 + v46))(v58);
   }
   if ((v54 & 1) != 0 && v56 != 0) {
     v47 = 128;

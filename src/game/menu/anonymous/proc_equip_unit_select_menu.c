@@ -628,7 +628,7 @@ __int64 ProcEquipUnitSelectMenu_17ac080(__int64* a1)
               }
               v28 = 40;
             }
-            (*(void (**)(void))(*(_QWORD*)v32 + v28))();
+            (*(void (**)(void*))(*(_QWORD*)v32 + v28))((void*)v32);
             return 12;
           }
         }

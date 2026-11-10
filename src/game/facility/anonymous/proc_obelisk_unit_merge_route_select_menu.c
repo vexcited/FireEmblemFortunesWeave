@@ -2,11 +2,12 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
-_QWORD* GameRoutine_158ac40(_QWORD* __return_ptr, _QWORD, _QWORD, _QWORD);
-_QWORD* GameRoutine_158aec0(_QWORD* __return_ptr, _QWORD, _QWORD);
-_QWORD* GameRoutine_158b280(_QWORD* __return_ptr, _QWORD, _QWORD);
-_QWORD* GameRoutine_158b3c0(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_158ac40(PSEUDO_X8, _QWORD, _QWORD,
+                                                    _QWORD);
+__attribute__((swiftcall)) void GameRoutine_158aec0(PSEUDO_X8, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_158b280(PSEUDO_X8, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_158b3c0(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_158ca00(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_158cac0(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_16e6880(_QWORD, _QWORD, _QWORD, _QWORD);
@@ -331,7 +332,7 @@ __int64 ProcObeliskUnitMergeRouteSelectMenu_Unknown88(__int64 a1)
   *(_QWORD*)(a1 + 1192) = v8;
   v42 = 0;
   if (v4 != 0) {
-    GameRoutine_158ac40(&v37, 2, v3, v6 + 96);
+    GameRoutine_158ac40((void*)&v37, 2, v3, v6 + 96);
     HIDWORD(v40[0]) = (unsigned __int64)(v38 - v37) >> 3;
     if (v37 != nullptr) {
       v38 = v37;
@@ -342,7 +343,7 @@ __int64 ProcObeliskUnitMergeRouteSelectMenu_Unknown88(__int64 a1)
       nn_mem_StandardAllocator_Free(
           *(_QWORD*)fw_memory_g_heap_manager_ptr + v16, v37);
     }
-    GameRoutine_158ac40(&v37, 1, v3, v6 + 96);
+    GameRoutine_158ac40((void*)&v37, 1, v3, v6 + 96);
     LODWORD(v40[1]) = (unsigned __int64)(v38 - v37) >> 3;
     if (v37 != nullptr) {
       v38 = v37;
@@ -353,7 +354,7 @@ __int64 ProcObeliskUnitMergeRouteSelectMenu_Unknown88(__int64 a1)
       nn_mem_StandardAllocator_Free(
           *(_QWORD*)fw_memory_g_heap_manager_ptr + v17, v37);
     }
-    GameRoutine_158aec0(&v37, v3, v6 + 96);
+    GameRoutine_158aec0((void*)&v37, v3, v6 + 96);
     v41 = (unsigned __int64)(v38 - v37) >> 3;
     if (v37 != nullptr) {
       v38 = v37;
@@ -364,7 +365,7 @@ __int64 ProcObeliskUnitMergeRouteSelectMenu_Unknown88(__int64 a1)
       nn_mem_StandardAllocator_Free(
           *(_QWORD*)fw_memory_g_heap_manager_ptr + v18, v37);
     }
-    GameRoutine_158b3c0(&v37, v3, v6 + 96);
+    GameRoutine_158b3c0((void*)&v37, v3, v6 + 96);
     HIDWORD(v40[1]) = (unsigned __int64)(v38 - v37) >> 3;
     if (v37 != nullptr) {
       v38 = v37;
@@ -375,7 +376,7 @@ __int64 ProcObeliskUnitMergeRouteSelectMenu_Unknown88(__int64 a1)
       nn_mem_StandardAllocator_Free(
           *(_QWORD*)fw_memory_g_heap_manager_ptr + v19, v37);
     }
-    GameRoutine_1560070(&v35, a1 + 848, "L_CompareInfo");
+    GameRoutine_1560070((void*)&v35, a1 + 848, "L_CompareInfo");
     GameRoutine_158cac0(&v35, v3, v6 + 96);
     if (v36 != 0) {
       std___1___shared_weak_count___release_weak(v36);
@@ -389,13 +390,13 @@ __int64 ProcObeliskUnitMergeRouteSelectMenu_Unknown88(__int64 a1)
     GameRoutine_9d3d10(&v37, 4);
   }
   else {
-    GameRoutine_1560070(&v33, a1 + 848, "L_CompareInfo");
+    GameRoutine_1560070((void*)&v33, a1 + 848, "L_CompareInfo");
     GameRoutine_158ca00(&v33, v3, 0);
     if (v34 != 0) {
       std___1___shared_weak_count___release_weak(v34);
     }
   }
-  GameRoutine_1560070(&v37, a1 + 848, "L_CompareInfo");
+  GameRoutine_1560070((void*)&v37, a1 + 848, "L_CompareInfo");
   if (v38 != nullptr) {
     v20 = std___1___shared_weak_count_lock(v38);
     v21 = v37;
@@ -403,7 +404,7 @@ __int64 ProcObeliskUnitMergeRouteSelectMenu_Unknown88(__int64 a1)
       std___1___shared_weak_count___release_weak(v38);
     }
     if (v20 != 0 && v21 != nullptr) {
-      GameRoutine_158b280(&v37, v3, v6 + 96);
+      GameRoutine_158b280((void*)&v37, v3, v6 + 96);
       if (v38 == v37) {
         v22 = 0;
       }
@@ -436,7 +437,7 @@ __int64 ProcObeliskUnitMergeRouteSelectMenu_Unknown88(__int64 a1)
   v24 = v42;
   *(_DWORD*)(a1 + 1220) = v42;
   *(_DWORD*)(a1 + 1224) = v24;
-  GameRoutine_1560070(&v31, a1 + 848, "L_CompareInfo/L_PageTab");
+  GameRoutine_1560070((void*)&v31, a1 + 848, "L_CompareInfo/L_PageTab");
   v25 = (*(__int64 (**)(__int64))(*(_QWORD*)a1 + 192LL))(a1);
   if (v32 != 0) {
     v26 = std___1___shared_weak_count_lock(v32);

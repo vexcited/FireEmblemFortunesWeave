@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_145e5c0(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_145e820(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_1575e70(_QWORD, _QWORD);
@@ -117,7 +117,7 @@ __int64 ProcClassRankMenu_Unknown96(_QWORD* a1)
           GameRoutine_16bb880(a1, v4);
           game_menu_BasicMenu_Unknown16de4d0(a1);
         }
-        GameRoutine_1560070(&v11, a1 + 106, "L_UnitInfo00");
+        GameRoutine_1560070((void*)&v11, a1 + 106, "L_UnitInfo00");
         if (v12 == 0) {
           goto LABEL_21;
         }

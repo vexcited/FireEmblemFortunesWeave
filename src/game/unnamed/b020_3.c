@@ -205,7 +205,7 @@ __int64 GameHr_1590b40(__int64 result, char a2, __int64** a3, char a4)
       }
       v22 = 40;
     }
-    (*(void (**)(void))(*v66 + v22))();
+    (*(void (**)(void*))(*v66 + v22))(v66);
   LABEL_45:
     a3 = v21;
     if (v82 != 0) {
@@ -229,7 +229,7 @@ __int64 GameHr_1590b40(__int64 result, char a2, __int64** a3, char a4)
       }
       v39 = 40;
     }
-    (*(void (**)(void))(*v66 + v39))();
+    (*(void (**)(void*))(*v66 + v39))(v66);
   LABEL_85:
     a3 = v21;
     if (v82 == 0) {

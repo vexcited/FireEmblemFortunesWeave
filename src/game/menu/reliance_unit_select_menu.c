@@ -8,7 +8,7 @@ __int64 fw_memory_HeapManager_Allocate(_QWORD, _QWORD, _QWORD, _QWORD);
 extern _UNKNOWN* GameData_212c730;
 extern __int64 fw_memory_g_heap_manager_ptr;
 _QWORD* RelianceUnitSelectMenu_184f060(__int64 a1, unsigned int a2);
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_149e3e0(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_15997d0(_QWORD);
 __int64 GameRoutine_906440(_QWORD, _QWORD);
@@ -353,7 +353,7 @@ __int64 RelianceUnitSelectMenu_184fb20(__int64 a1)
   if (result != 0) {
     result = __dynamic_cast(result, GameData_212e008[0], &GameData_20e8388, 0);
     if (result != 0) {
-      GameRoutine_1560070(&v5, a1 + 848, "L_UnitInfoDetail");
+      GameRoutine_1560070((void*)&v5, a1 + 848, "L_UnitInfoDetail");
       result = v6;
       if (v6 != 0) {
         v3 = std___1___shared_weak_count_lock(v6);

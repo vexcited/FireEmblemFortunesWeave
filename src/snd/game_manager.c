@@ -7183,14 +7183,14 @@ void GameManager_a32d60(__int64 a1, __int64 a2, float* a3, float* a4)
     *(struct PseudoSret*)(&v28) = GameRoutine_1181f0(v10, 0xFFFFFFFFLL);
     v11 = snd_fnd_WeakHandle_get(&v28);
     if (v11 != 0) {
-      (*(void (**)(__int64* __return_ptr, __int64))(*(_QWORD*)(v11 - 5552) +
-                                                    1048LL))(&v28, v11 - 5552);
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64))(
+          *(_QWORD*)(v11 - 5552) + 1048LL))((void*)&v28, v11 - 5552);
       v38 = v30[0];
       v12 = GameData_212d1e0[0] + 2;
       v36 = GameData_212d1e0[0] + 2;
       v37 = v29;
-      (*(void (**)(__int64* __return_ptr, __int64))(*(_QWORD*)(v9 - 5592) +
-                                                    96LL))(&v28, v9 - 5592);
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64))(
+          *(_QWORD*)(v9 - 5592) + 96LL))((void*)&v28, v9 - 5592);
       v33 = v12;
       v34 = v29;
       v35 = v30[0];

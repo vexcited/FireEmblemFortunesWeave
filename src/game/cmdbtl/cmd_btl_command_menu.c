@@ -455,7 +455,8 @@ __int64 CmdBtlCommandMenu_Unknown122(__int64 a1)
   if (v1 != 0) {
     GameData_2174ef4 = *(_DWORD*)(v1 + 40);
   }
-  (*(void (**)(__int64* __return_ptr, __int64))(*(_QWORD*)a1 + 392LL))(&v7, a1);
+  (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64))(
+      *(_QWORD*)a1 + 392LL))((void*)&v7, a1);
   GameRoutine_159e540(&v7);
   result = v8;
   if (v8 != 0) {
@@ -486,8 +487,8 @@ __int64 CmdBtlCommandMenu_161ac20(__int64 a1)
   if (v1 != 0) {
     GameData_2174ef4 = *(_DWORD*)(v1 + 40);
   }
-  (*(void (**)(__int64* __return_ptr, __int64))(*(_QWORD*)(a1 - 176) + 392LL))(
-      &v7, a1 - 176);
+  (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64))(
+      *(_QWORD*)(a1 - 176) + 392LL))((void*)&v7, a1 - 176);
   GameRoutine_159e540(&v7);
   result = v8;
   if (v8 != 0) {
@@ -518,7 +519,8 @@ __int64 CmdBtlCommandMenu_Unknown121(__int64 a1)
   if (v1 != 0) {
     GameData_2174ef4 = *(_DWORD*)(v1 + 40);
   }
-  (*(void (**)(__int64* __return_ptr, __int64))(*(_QWORD*)a1 + 384LL))(&v7, a1);
+  (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64))(
+      *(_QWORD*)a1 + 384LL))((void*)&v7, a1);
   GameRoutine_159e540(&v7);
   result = v8;
   if (v8 != 0) {
@@ -549,8 +551,8 @@ __int64 CmdBtlCommandMenu_161ad60(__int64 a1)
   if (v1 != 0) {
     GameData_2174ef4 = *(_DWORD*)(v1 + 40);
   }
-  (*(void (**)(__int64* __return_ptr, __int64))(*(_QWORD*)(a1 - 176) + 384LL))(
-      &v7, a1 - 176);
+  (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64))(
+      *(_QWORD*)(a1 - 176) + 384LL))((void*)&v7, a1 - 176);
   GameRoutine_159e540(&v7);
   result = v8;
   if (v8 != 0) {

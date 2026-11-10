@@ -1455,7 +1455,8 @@ __int64 GameHr_6648e0(__int64 result)
             }
             v12 = 40;
           }
-          result = (*(__int64 (**)(void))(*(_QWORD*)result + v12))();
+          result =
+              (*(__int64 (**)(void*))(*(_QWORD*)result + v12))((void*)result);
           goto LABEL_26;
         }
         v10 = *(_QWORD*)(GameData_21caab0 + 176);
@@ -2940,7 +2941,7 @@ __int64 GameHr_7394a0(__int64 a1, long double a2)
     }
     v20 = 40;
   }
-  result = (*(__int64 (**)(void))(*(_QWORD*)result + v20))();
+  result = (*(__int64 (**)(void*))(*(_QWORD*)result + v20))((void*)result);
 LABEL_24:
   v21 = *(_QWORD*)(a1 + 8);
   if (v21 != 0) {

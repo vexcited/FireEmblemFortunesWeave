@@ -8,8 +8,8 @@ extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64* GameData_212eb88;
 __int64 HubDisposFileReader_Destructor(_QWORD* a1);
 __int64 HubDisposFileReader_c983c0(__int64 result);
-_QWORD* GameRoutine_c98880(_QWORD* __return_ptr, _QWORD);
-_QWORD* std___1_to_string_1a0a790(_QWORD* __return_ptr, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_c98880(PSEUDO_X8, _QWORD);
+__attribute__((swiftcall)) void std___1_to_string_1a0a790(PSEUDO_X8, _QWORD);
 __int64 GameRoutine_1a0a680(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_1a0a7b0(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_c97f50(_QWORD, _QWORD);
@@ -1875,7 +1875,7 @@ LABEL_121:
       v397 = v157;
       if (v403[1] != 0) {
         v158 = v403;
-        GameRoutine_c98880(&v414, v403);
+        GameRoutine_c98880((void*)&v414, v403);
         v159 = v414;
         v398 = v415;
         if (v414 == v415) {
@@ -2181,7 +2181,7 @@ LABEL_121:
                     if (v413 == &v410) {
                       v278 = 32;
                     LABEL_525:
-                      (*(void (**)(void))(*v413 + v278))();
+                      (*(void (**)(void*))(*v413 + v278))(v413);
                     }
                     else if (v413 != nullptr) {
                       v278 = 40;
@@ -2384,7 +2384,7 @@ LABEL_121:
                   if (v407 == &v404) {
                     v310 = 32;
                   LABEL_589:
-                    (*(void (**)(void))(*v407 + v310))();
+                    (*(void (**)(void*))(*v407 + v310))(v407);
                   }
                   else if (v407 != nullptr) {
                     v310 = 40;
@@ -2563,7 +2563,7 @@ LABEL_121:
           if (v419 != nullptr) {
             v170 = 40;
           LABEL_337:
-            v91 = (*(__int64 (**)(void))(*v419 + v170))();
+            v91 = (*(__int64 (**)(void*))(*v419 + v170))(v419);
           }
           if ((v410 & 1) != 0 && v412 != nullptr) {
             if (*(_QWORD*)(*v160 + 200LL) != 0) {
@@ -3198,7 +3198,7 @@ LABEL_739:
     do {
       result = *(unsigned int*)v385;
       if ((int)result >= 1) {
-        std___1_to_string_1a0a790(v417, result);
+        std___1_to_string_1a0a790((void*)v417, result);
         v387 = (__int64*)GameRoutine_1a0a680(v417, 0, "A", 1);
         v389 = v387[1];
         v388 = (char*)v387[2];

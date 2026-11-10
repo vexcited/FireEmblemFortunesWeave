@@ -612,7 +612,8 @@ LABEL_57:
       else {
         v55 = 8;
       }
-      result = (*(__int64 (**)(void))(**(_QWORD**)(a2 + 8) + v55))();
+      result = (*(__int64 (**)(void*))(**(_QWORD**)(a2 + 8) + v55))(
+          (void*)*(_QWORD**)(a2 + 8));
       ++v54;
     } while (0x4EC4EC4EC4EC4EC5LL * ((__int64)(v2[2] - v2[1]) >> 3) > v54);
   }

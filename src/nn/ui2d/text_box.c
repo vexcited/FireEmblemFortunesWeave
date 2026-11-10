@@ -1315,10 +1315,12 @@ unsigned __int64 TextBox_59c8e0(unsigned __int64 result, __int64 a2)
         v18 = *(float*)(v4 + 248);
         v19 = *v14;
         v20 = (unsigned __int16*)result;
-        v21 =
-            v18 / (float)(int)(*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD))(
-                      **(_QWORD**)(v4 + 240) + 32LL))(*(_QWORD**)(v4 + 240),
-                                                      *(_QWORD*)(v4 + 240));
+        v21 = v18 /
+              (float)(int)X8CALL_X0(
+                  _QWORD*,
+                  (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD))(
+                      **(_QWORD**)(v4 + 240) + 32LL))(
+                      (void*)*(_QWORD**)(v4 + 240), *(_QWORD*)(v4 + 240)));
         v22 = v21 * (float)(*(float*)(v4 + 260) +
                             (float)(*(int (**)(_QWORD, _QWORD))(
                                 **(_QWORD**)(v4 + 240) + 128LL))(

@@ -2,8 +2,8 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_13fa520(_QWORD* __return_ptr, _QWORD, _QWORD);
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_13fa520(PSEUDO_X8, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_136a920(__int64, __int64, int, unsigned int, _BYTE*);
 __int64 GameRoutine_13fa3e0(_QWORD, _QWORD);
 __int64 GameRoutine_15753b0(_QWORD, _QWORD, _QWORD, _QWORD);
@@ -203,7 +203,7 @@ __int64 ProcDiningRecipeMenu_Unknown88(__int64 a1)
   v4 = result;
   v44[0] = "L_Info";
   v44[1] = 6;
-  GameRoutine_13fa520(&v41, a1 + 848, v44);
+  GameRoutine_13fa520((void*)&v41, a1 + 848, v44);
   if (v42 != 0) {
     v5 = std___1___shared_weak_count_lock(v42);
     v6 = v41;
@@ -326,19 +326,19 @@ LABEL_33:
     v19 = 0;
     v21 = 0;
   }
-  GameRoutine_1560070(&v39, a1 + 848, "L_UnitInfo00/L_BlnFavor");
+  GameRoutine_1560070((void*)&v39, a1 + 848, "L_UnitInfo00/L_BlnFavor");
   v23 = GameRoutine_9244a0(v3, v19);
   GameRoutine_15753b0(&v39, v19, 0, v23);
   if (v40 != 0) {
     std___1___shared_weak_count___release_weak(v40);
   }
-  GameRoutine_1560070(&v37, a1 + 848, "L_UnitInfo01/L_BlnFavor");
+  GameRoutine_1560070((void*)&v37, a1 + 848, "L_UnitInfo01/L_BlnFavor");
   v24 = GameRoutine_9244a0(v3, v20);
   GameRoutine_15753b0(&v37, v20, 0, v24);
   if (v38 != 0) {
     std___1___shared_weak_count___release_weak(v38);
   }
-  GameRoutine_1560070(&v35, a1 + 848, "L_UnitInfo02/L_BlnFavor");
+  GameRoutine_1560070((void*)&v35, a1 + 848, "L_UnitInfo02/L_BlnFavor");
   v25 = GameRoutine_9244a0(v3, v21);
   GameRoutine_15753b0(&v35, v21, 0, v25);
   if (v36 != 0) {
@@ -604,13 +604,13 @@ __int64 ProcDiningRecipeMenu_13fa3e0(__int64 a1, unsigned int a2)
     v5 = *(_QWORD*)(v4 + 8LL * a2);
   }
   v6 = game_util_Format("L_UnitInfo%02d", a2);
-  GameRoutine_1560070(&v13, a1 + 848, v6);
+  GameRoutine_1560070((void*)&v13, a1 + 848, v6);
   GameRoutine_15758f0(&v13, v5, 0xFFFFFFFFLL, 0, 6, 0, 1);
   if (v14 != 0) {
     std___1___shared_weak_count___release_weak(v14);
   }
   v7 = game_util_Format("L_UnitInfo%02d/L_UnitInfo", a2);
-  GameRoutine_1560070(&v11, a1 + 848, v7);
+  GameRoutine_1560070((void*)&v11, a1 + 848, v7);
   result = v12;
   if (v12 != 0) {
     v9 = std___1___shared_weak_count_lock(v12);

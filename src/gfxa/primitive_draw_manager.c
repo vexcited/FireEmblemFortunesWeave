@@ -538,7 +538,7 @@ LABEL_13:
   if (v78 == &v75) {
     v61 = 32;
   LABEL_109:
-    (*(void (**)(void))(*v78 + v61))();
+    (*(void (**)(void*))(*v78 + v61))(v78);
   }
   else if (v78 != nullptr) {
     v61 = 40;
@@ -1607,7 +1607,7 @@ __int64 PrimitiveDrawManager_1996450(_QWORD* a1, __int64 a2, unsigned int a3)
         }
         v31 = 40;
       }
-      (*(void (**)(void))(*v40 + v31))();
+      (*(void (**)(void*))(*v40 + v31))(v40);
     LABEL_30:
       if (v42 == v41) {
         v32 = 32;
@@ -1618,7 +1618,7 @@ __int64 PrimitiveDrawManager_1996450(_QWORD* a1, __int64 a2, unsigned int a3)
         }
         v32 = 40;
       }
-      (*(void (**)(void))(*v42 + v32))();
+      (*(void (**)(void*))(*v42 + v32))(v42);
     LABEL_35:
       result = (__int64)v38;
       if (v38 == v37) {
@@ -1630,7 +1630,7 @@ __int64 PrimitiveDrawManager_1996450(_QWORD* a1, __int64 a2, unsigned int a3)
         }
         v11 = 40;
       }
-      result = (*(__int64 (**)(void))(*v38 + v11))();
+      result = (*(__int64 (**)(void*))(*v38 + v11))(v38);
     LABEL_5:
       ++v7;
     } while (v7 != v8);

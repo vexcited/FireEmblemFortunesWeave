@@ -131,7 +131,7 @@ __int64 LessonMenuItem_ACall(_QWORD* a1)
     }
     v11 = 40;
   }
-  (*(void (**)(void))(*v19 + v11))();
+  (*(void (**)(void*))(*v19 + v11))(v19);
 
 LABEL_30:
   if (v21 == v20) {
@@ -143,7 +143,7 @@ LABEL_30:
     }
     v14 = 40;
   }
-  (*(void (**)(void))(*v21 + v14))();
+  (*(void (**)(void*))(*v21 + v14))(v21);
 
 LABEL_35:
   if (v23 == v22) {
@@ -155,7 +155,7 @@ LABEL_35:
     }
     v15 = 40;
   }
-  (*(void (**)(void))(*v23 + v15))();
+  (*(void (**)(void*))(*v23 + v15))(v23);
 
 LABEL_40:
   result = 12;

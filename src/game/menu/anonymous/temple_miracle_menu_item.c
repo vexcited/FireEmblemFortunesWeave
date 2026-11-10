@@ -17,7 +17,7 @@ __int64 TempleMiracleMenuItem_OnSelect(__int64 a1)
   if (*(_BYTE*)(a1 + 79) != 0) {
     v2 = 520;
   }
-  (*(void (**)(void))(*(_QWORD*)a1 + v2))();
+  (*(void (**)(void*))(*(_QWORD*)a1 + v2))((void*)a1);
   return GameRoutine_1464830(a1);
 }
 
@@ -29,7 +29,7 @@ __int64 TempleMiracleMenuItem_OnDeselect(__int64 a1)
   if (*(_BYTE*)(a1 + 79) != 0) {
     v2 = 520;
   }
-  (*(void (**)(void))(*(_QWORD*)a1 + v2))();
+  (*(void (**)(void*))(*(_QWORD*)a1 + v2))((void*)a1);
   return GameRoutine_1464830(a1);
 }
 

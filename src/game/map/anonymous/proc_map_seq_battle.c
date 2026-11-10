@@ -59,7 +59,7 @@ __int64 ProcMapSeqBattle_Unknown22(__int64 a1);
 __int64 ProcMapSeqBattle_Unknown23(__int64 a1);
 __int64 ProcMapSeqBattle_Unknown24(__int64 a1);
 __int64 ProcMapSeqBattle_Unknown25(__int64 a1, __int64 a2);
-_QWORD* GameRoutine_8fe8e0(_QWORD* __return_ptr, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_8fe8e0(PSEUDO_X8, _QWORD);
 __int64 BattleArea_8b9d00(_QWORD);
 __int64 BattleInfo_7905d0(_QWORD, _QWORD, _QWORD);
 __int64 BattleInfo_790b00(_QWORD, _QWORD);
@@ -1058,7 +1058,7 @@ __int64 game_map_anonymous_ProcMapSeqBattle_TryNotice(__int64 result)
   if (v12 != nullptr) {
     v9 = 40;
   LABEL_30:
-    (*(void (**)(void))(*v12 + v9))();
+    (*(void (**)(void*))(*v12 + v9))(v12);
   }
   result = (__int64)v14;
   if (v14 == v13) {
@@ -1070,7 +1070,7 @@ __int64 game_map_anonymous_ProcMapSeqBattle_TryNotice(__int64 result)
     }
     v10 = 40;
   }
-  return (*(__int64 (**)(void))(*v14 + v10))();
+  return (*(__int64 (**)(void*))(*v14 + v10))(v14);
 }
 
 __int64
@@ -2948,7 +2948,7 @@ LABEL_9:
     }
     v13 = 40;
   }
-  return (*(__int64 (**)(void))(*(_QWORD*)v15 + v13))();
+  return (*(__int64 (**)(void*))(*(_QWORD*)v15 + v13))((void*)v15);
 }
 
 __int64 ProcMapSeqBattle_Destructor(__int64 a1)
@@ -3728,7 +3728,7 @@ __int64 ProcMapSeqBattle_Unknown4(__int64 a1, long double a2, long double a3)
     *(_QWORD*)(v5 + 144) = 0;
     *(_WORD*)(v5 + 160) = 256;
   }
-  GameRoutine_8fe8e0(&v11, *(_QWORD*)(a1 + 16));
+  GameRoutine_8fe8e0((void*)&v11, *(_QWORD*)(a1 + 16));
   v8 = v12;
   *(_QWORD*)(v3 + 2488) = v11;
   v9 = *(_OWORD*)(v3 + 2488);

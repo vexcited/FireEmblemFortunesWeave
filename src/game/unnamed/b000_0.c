@@ -1,4 +1,4 @@
-#include "decomp/pseudo_types.h"
+#include "decomp/pseudo_helpers.h"
 
 #pragma GCC visibility push(hidden)
 
@@ -158,7 +158,8 @@ __int64 GameRoutine_10a250(__int64, __int64);
 
 __int64 GameRoutine_10c480(_QWORD, _QWORD, _QWORD, _QWORD);
 
-_QWORD* GameRoutine_10df70(_QWORD* __return_ptr, _QWORD, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_10df70(PSEUDO_X8, _QWORD, _QWORD,
+                                                   _QWORD);
 
 __int64 GameRoutine_10e200(_QWORD, _QWORD);
 
@@ -4471,7 +4472,7 @@ __int64 GameHr_105350(__int64 a1, const char* a2, const char* a3, char a4)
   GameRoutine_117bc0(v13, v14, a2, a4 & 1);
   v15 = GameRoutine_118ff0(*(_QWORD*)(a1 + 32));
   v16 = GameRoutine_190240(*v9 + 72LL);
-  GameRoutine_10df70(v20, v15, v16, 32);
+  GameRoutine_10df70((void*)v20, v15, v16, 32);
   GameRoutine_112180(*v9 + 128LL, v20);
   v18 = GameRoutine_112290(*v9 + 128LL, v17);
   result = (*(__int64 (**)(__int64))(*(_QWORD*)v18 + 40LL))(v18);

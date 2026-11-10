@@ -511,8 +511,8 @@ LABEL_43:
       v95 = nullptr;
       v93 = GameData_212d890[0] + 2;
       LODWORD(v94) = 20;
-      (*(void (**)(const char** __return_ptr, __int64*, __int64**))(
-          v25[9] + 16))(&v90, v25 + 9, &v93);
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64*, __int64**))(
+          v25[9] + 16))((void*)&v90, v25 + 9, &v93);
     }
     else if (v24 == 0) {
       goto LABEL_66;
@@ -555,8 +555,8 @@ LABEL_66:
     v95 = nullptr;
     v93 = GameData_212d890[0] + 2;
     LODWORD(v94) = 20;
-    (*(void (**)(const char** __return_ptr, __int64*, __int64**))(v32[9] + 16))(
-        &v90, v32 + 9, &v93);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64*, __int64**))(
+        v32[9] + 16))((void*)&v90, v32 + 9, &v93);
   }
   else if (v31 == 0) {
     goto LABEL_89;
@@ -589,7 +589,7 @@ LABEL_89:
     }
     v38 = 5;
   }
-  ((void (*)(void))(*v97)[v38])();
+  ((void (*)(void*))(*v97)[v38])(v97);
 LABEL_94:
   if (v89 == v88) {
     v39 = 32;
@@ -829,8 +829,8 @@ LABEL_173:
     v95 = nullptr;
     v93 = GameData_212d890[0] + 2;
     LODWORD(v94) = 20;
-    (*(void (**)(const char** __return_ptr, __int64*, __int64**))(v74[9] + 16))(
-        &v90, v74 + 9, &v93);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64*, __int64**))(
+        v74[9] + 16))((void*)&v90, v74 + 9, &v93);
   }
   else if (v73 == 0) {
   LABEL_186:

@@ -1883,8 +1883,9 @@ float* GameHr_104b900(float* result, char a2)
         if (v27 != nullptr) {
           *(_QWORD*)&v30 = v2;
           *(float*)&v32 = v26;
-          (*(void (**)(float* __return_ptr, float*, long double*, float**))(
-              *(_QWORD*)v27 + 48LL))(v27, v27, &v30, &v32);
+          (*(__attribute__((swiftcall)) void (**)(
+              PSEUDO_X8, float*, long double*, float**))(*(_QWORD*)v27 + 48LL))(
+              (void*)v27, v27, &v30, &v32);
         }
         result = (float*)GameRoutine_14a1b00();
       }

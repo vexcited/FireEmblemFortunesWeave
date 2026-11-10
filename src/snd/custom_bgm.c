@@ -152,14 +152,17 @@ __int64 CustomBGM_update(__int64 a1)
                   *(_QWORD*)(v10 - 5552) + 96LL))(v10 - 5552, v40, v26);
               goto LABEL_8;
             }
-            (*(void (**)(_QWORD* __return_ptr, __int64, _QWORD))(
-                *(_QWORD*)(v10 - 5592) + 440LL))(v40, v10 - 5592, 0);
+            (*(__attribute__((swiftcall)) void (**)(
+                PSEUDO_X8, __int64, _QWORD))(*(_QWORD*)(v10 - 5592) + 440LL))(
+                (void*)v40, v10 - 5592, 0);
             v11 = snd_fnd_WeakHandle_get(v40);
-            (*(void (**)(_QWORD* __return_ptr, __int64, __int64))(
-                *(_QWORD*)(v10 - 5592) + 440LL))(v40, v10 - 5592, 1);
+            (*(__attribute__((swiftcall)) void (**)(
+                PSEUDO_X8, __int64, __int64))(*(_QWORD*)(v10 - 5592) + 440LL))(
+                (void*)v40, v10 - 5592, 1);
             v12 = snd_fnd_WeakHandle_get(v40);
-            (*(void (**)(_QWORD* __return_ptr, __int64, __int64))(
-                *(_QWORD*)(v10 - 5592) + 440LL))(v40, v10 - 5592, 2);
+            (*(__attribute__((swiftcall)) void (**)(
+                PSEUDO_X8, __int64, __int64))(*(_QWORD*)(v10 - 5592) + 440LL))(
+                (void*)v40, v10 - 5592, 2);
             v13 = snd_fnd_WeakHandle_get(v40);
             v14 = *(float*)(a1 + 32);
             v15 = v13;

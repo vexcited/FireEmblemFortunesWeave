@@ -342,7 +342,7 @@ __int64 GameRoutine_10735d0(_QWORD);
 
 __int64 GameRoutine_10784f0(_QWORD, _QWORD, _QWORD);
 
-_QWORD* GameRoutine_10f6aa0(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_10f6aa0(PSEUDO_X8, _QWORD, _QWORD);
 
 __int64 GameRoutine_1195900(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 
@@ -1251,7 +1251,7 @@ LABEL_80:
             if (v104 == &v101) {
               v76 = 32;
             LABEL_115:
-              (*(void (**)(void))(*v104 + v76))();
+              (*(void (**)(void*))(*v104 + v76))(v104);
             }
             else if (v104 != nullptr) {
               v76 = 40;
@@ -1436,7 +1436,8 @@ _QWORD* GameHr_11c6900(_QWORD* result, __int64* a2)
           if ((v14[0] & 1) == 0) {
           LABEL_24:
             if (v12 != 0) {
-              return GameRoutine_10f6aa0(v14, v4[1], v3);
+              return X8CALL_X0(_QWORD*,
+                               GameRoutine_10f6aa0((void*)v14, v4[1], v3));
             }
             return result;
           }
@@ -3579,7 +3580,7 @@ __int64 GameHr_12a4d40(__int64 result, __int64 a2)
               }
               v10 = 40;
             }
-            result = (*(__int64 (**)(void))(*v27 + v10))();
+            result = (*(__int64 (**)(void*))(*v27 + v10))(v27);
           }
         LABEL_13:
           v9 = *(_QWORD*)(v9 + 432);
@@ -3616,7 +3617,7 @@ __int64 GameHr_12a4d40(__int64 result, __int64 a2)
               }
               v14 = 40;
             }
-            result = (*(__int64 (**)(void))(*v27 + v14))();
+            result = (*(__int64 (**)(void*))(*v27 + v14))(v27);
           }
         LABEL_27:
           v13 = *(_QWORD*)(v13 + 432);
@@ -3653,7 +3654,7 @@ __int64 GameHr_12a4d40(__int64 result, __int64 a2)
               }
               v18 = 40;
             }
-            result = (*(__int64 (**)(void))(*v27 + v18))();
+            result = (*(__int64 (**)(void*))(*v27 + v18))(v27);
           }
         LABEL_41:
           v17 = *(_QWORD*)(v17 + 432);
@@ -3691,7 +3692,7 @@ __int64 GameHr_12a4d40(__int64 result, __int64 a2)
             }
             v25 = 40;
           }
-          result = (*(__int64 (**)(void))(*v27 + v25))();
+          result = (*(__int64 (**)(void*))(*v27 + v25))(v27);
         }
       }
     }

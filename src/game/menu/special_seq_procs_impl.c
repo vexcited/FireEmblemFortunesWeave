@@ -285,7 +285,7 @@ __int64 SpecialSeqProcs_fe1600(__int64 a1)
       }
       v2 = 40;
     }
-    return (*(__int64 (**)(void))(*(_QWORD*)v4 + v2))();
+    return (*(__int64 (**)(void*))(*(_QWORD*)v4 + v2))((void*)v4);
   }
   return result;
 }
@@ -384,7 +384,7 @@ __int64 SpecialSeqProcs_fe2ba0(__int64 a1)
       }
       v2 = 40;
     }
-    return (*(__int64 (**)(void))(*(_QWORD*)v4 + v2))();
+    return (*(__int64 (**)(void*))(*(_QWORD*)v4 + v2))((void*)v4);
   }
   return result;
 }

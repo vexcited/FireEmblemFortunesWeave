@@ -526,7 +526,7 @@ __int64 GameRoutine_13305c0(_QWORD);
 
 __int64 GameRoutine_133e4e0(_QWORD);
 
-_QWORD* GameRoutine_134b820(_QWORD* __return_ptr, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_134b820(PSEUDO_X8, _QWORD);
 
 __int64 GameRoutine_134b980(_QWORD);
 
@@ -630,11 +630,11 @@ __int64 GameRoutine_15704e0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 
 __int64 GameRoutine_1570b30(__int64*, _QWORD*);
 
-_QWORD* GameRoutine_15733c0(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_15733c0(PSEUDO_X8, _QWORD, _QWORD);
 
 __int64 GameRoutine_1573820();
 
-_QWORD* GameRoutine_1573f80(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1573f80(PSEUDO_X8, _QWORD, _QWORD);
 
 __int64 GameRoutine_15748c0(_QWORD, _QWORD, _QWORD);
 
@@ -666,7 +666,7 @@ __int64 GameRoutine_1594bd0(_QWORD, _QWORD, _QWORD);
 
 __int64 GameRoutine_159a5c0(_QWORD, _QWORD);
 
-_QWORD* GameRoutine_159e180(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_159e180(PSEUDO_X8, _QWORD, _QWORD);
 
 __int64 GameRoutine_15a4580(_QWORD, _QWORD, _QWORD, _QWORD);
 
@@ -839,7 +839,7 @@ __int64 GameRoutine_c73a10(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, float, float,
 
 __int64 GameRoutine_d541e0(void);
 
-_QWORD* GameRoutine_eb5ba0(_QWORD* __return_ptr, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_eb5ba0(PSEUDO_X8, _QWORD);
 
 __int64 GameRoutine_ffd760(_QWORD, _QWORD, _QWORD, _QWORD);
 
@@ -1453,7 +1453,7 @@ __int64 GameHr_154f9c0(__int64 result)
     return result;
   }
   v1 = (_QWORD*)result;
-  GameRoutine_134b820(&v104, *(_QWORD*)(result + 152));
+  GameRoutine_134b820((void*)&v104, *(_QWORD*)(result + 152));
   v2 = v104;
   v3 = v105;
   if (v104 != v105) {
@@ -4953,7 +4953,7 @@ __int64 GameHr_1572370(__int64 a1, char a2)
 
   v10[0] = "L_ArrowL";
   v10[1] = 8;
-  GameRoutine_159e180(&v11, a1, v10);
+  GameRoutine_159e180((void*)&v11, a1, v10);
   if (v12 != 0) {
     v4 = GameRoutine_1a0a0c0(v12);
     v5 = v11;
@@ -4977,7 +4977,7 @@ __int64 GameHr_1572370(__int64 a1, char a2)
 LABEL_12:
   v10[0] = "L_ArrowR";
   v10[1] = 8;
-  GameRoutine_159e180(&v11, a1, v10);
+  GameRoutine_159e180((void*)&v11, a1, v10);
   result = v12;
   if (v12 == 0) {
     return result;
@@ -5021,7 +5021,7 @@ __int64 GameHr_15735c0(__int64* a1, int a2, int* a3)
   v5 = *a1;
   v12[0] = v15;
   v12[1] = GameRoutine_1a09c70(v15);
-  GameRoutine_1573f80(&v13, v5, v12);
+  GameRoutine_1573f80((void*)&v13, v5, v12);
   result = v14;
   if (v14 != 0) {
     v7 = GameRoutine_1a0a0c0(v14);
@@ -5078,7 +5078,7 @@ __int64 GameHr_15744f0(__int64 a1, char a2, char a3)
   }
   v9[0] = v3;
   v9[1] = 8;
-  GameRoutine_159e180(&v10, a1, v9);
+  GameRoutine_159e180((void*)&v10, a1, v9);
   result = v11;
   if (v11 != 0) {
     v6 = GameRoutine_1a0a0c0(v11);
@@ -6717,7 +6717,7 @@ __int64 GameHr_1586d80(__int64 a1, _DWORD* a2, _DWORD* a3, __int64 a4, char a5,
     while (1) {
       v33[0] = GameRoutine_7a7dc0("L_Status%02d", v15);
       v33[1] = GameRoutine_1a09c70(v33[0]);
-      GameRoutine_15733c0(&v28, a1, v33);
+      GameRoutine_15733c0((void*)&v28, a1, v33);
       if (v29 != 0) {
         v18 = GameRoutine_1a0a0c0(v29);
         v19 = v28;
@@ -6730,8 +6730,8 @@ __int64 GameHr_1586d80(__int64 a1, _DWORD* a2, _DWORD* a3, __int64 a4, char a5,
           if (v20 == 0) {
             GameRoutine_60a310(0, v17);
           }
-          (*(void (**)(__int64* __return_ptr, __int64, _QWORD*))(
-              *(_QWORD*)v20 + 48LL))(&v28, v20, v33);
+          (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64, _QWORD*))(
+              *(_QWORD*)v20 + 48LL))((void*)&v28, v20, v33);
           if (a8 != 0) {
             *(_QWORD*)(v19 + 1136) = a8;
           }
@@ -8552,7 +8552,7 @@ __int64 GameHr_1599e20()
   else {
     v2 = *(unsigned int*)(GameData_21c9608 + 308);
   }
-  GameRoutine_eb5ba0(v13, v2);
+  GameRoutine_eb5ba0((void*)v13, v2);
   v3 = v13[0];
   v4 = (__int64*)v13[1];
   if (v13[1] == v13[0]) {
@@ -8829,7 +8829,7 @@ __int64 GameHr_159e7c0(__int64 a1, char a2)
   }
   v7[0] = v2;
   v7[1] = 8;
-  GameRoutine_159e180(&v8, a1, v7);
+  GameRoutine_159e180((void*)&v8, a1, v7);
   result = v9;
   if (v9 != 0) {
     v4 = GameRoutine_1a0a0c0(v9);

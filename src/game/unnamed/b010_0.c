@@ -9686,7 +9686,7 @@ _QWORD* GameHr_c25240(_QWORD* result, unsigned __int64 a2)
         }
         v9 = 40;
       }
-      result = (_QWORD*)(*(__int64 (**)(void))(*result + v9))();
+      result = (_QWORD*)(*(__int64 (**)(void*))(*result + v9))(result);
     LABEL_11:
       v10 = *(_QWORD*)(i - 56);
       if (v10 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v10 + 8),

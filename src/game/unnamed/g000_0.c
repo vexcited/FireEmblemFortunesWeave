@@ -1409,9 +1409,11 @@ _QWORD* GameHr_311070(__int64 a1)
   _QWORD* v1;
 
   v1 = **(_QWORD***)(*(_QWORD*)(a1 + 32) + 360LL);
-  return (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD, _QWORD, _QWORD*))(
-      **(_QWORD**)(v1[1] + 368LL) + 160LL))(
-      *(_QWORD**)(v1[1] + 368LL), *(_QWORD*)(v1[1] + 368LL), *v1, v1 + 15);
+  return X8CALL_X0(_QWORD*, (*(__attribute__((swiftcall)) void (**)(
+                                PSEUDO_X8, _QWORD, _QWORD, _QWORD*))(
+                                **(_QWORD**)(v1[1] + 368LL) + 160LL))(
+                                (void*)*(_QWORD**)(v1[1] + 368LL),
+                                *(_QWORD*)(v1[1] + 368LL), *v1, v1 + 15));
 }
 
 __int64 GameHr_320c40(__int64 a1, int a2, __int64 a3)

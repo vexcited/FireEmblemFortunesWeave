@@ -41,7 +41,7 @@ __int64 Seq_11ce880(__int64 result);
 __int64 Seq_11cf400(__int64 a1);
 __int64 Seq_Unknown12_11cf4a0(__int64 result);
 _QWORD* GameManager_a2e490(__int64, __int64, char);
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_11d0a10(_QWORD);
 __int64 GameRoutine_1563f90(_QWORD, _QWORD);
 __int64 GameRoutine_1564060(_QWORD);
@@ -3113,7 +3113,7 @@ __int64 Seq_11cfc60(_QWORD* a1, __int16 a2)
         *(_QWORD*)((char*)v15 + 28) = 0;
         *(_QWORD*)((char*)v15 + 36) = 0;
         v16 = game_util_Format("L_ScrollItem%02d", v12);
-        GameRoutine_1560070(&v38, v3, v16);
+        GameRoutine_1560070((void*)&v38, v3, v16);
         v18 = v38;
         v17 = v39;
         if (v39 != 0) {

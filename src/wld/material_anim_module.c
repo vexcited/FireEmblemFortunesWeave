@@ -603,7 +603,7 @@ __int64 wld_MaterialAnimModule_LoadAnimAsync(_QWORD* a1, __int64 a2, __int64 a3,
             }
             v21 = 40;
           }
-          (*(void (**)(void))(*(_QWORD*)v20 + v21))();
+          (*(void (**)(void*))(*(_QWORD*)v20 + v21))((void*)v20);
         LABEL_28:
           v22 = (__int64)v46;
           v23 = v16 + 4;
@@ -688,7 +688,7 @@ __int64 wld_MaterialAnimModule_LoadAnimAsync(_QWORD* a1, __int64 a2, __int64 a3,
             }
             v24 = 40;
           }
-          v22 = (*(__int64 (**)(void))(*(_QWORD*)v46 + v24))();
+          v22 = (*(__int64 (**)(void*))(*(_QWORD*)v46 + v24))((void*)v46);
           goto LABEL_33;
         }
         v46 = v10;

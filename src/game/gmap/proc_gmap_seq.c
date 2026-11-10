@@ -208,7 +208,7 @@ __int64 game_gmap_ProcGmapSeq_LimitOver_closure1_Invoke(__int64 result,
                                                         _QWORD* a2);
 void ProcGmapSeq_Unknown7(__int64 a1, __int64 a2);
 void ProcGmapSeq_Unknown8(__int64 a1, __int64* a2, int a3);
-_QWORD* GameRoutine_134bbe0(_QWORD* __return_ptr, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_134bbe0(PSEUDO_X8, _QWORD);
 __int64 GameRoutine_104f0e0(_QWORD, _QWORD);
 __int64 GameRoutine_1337000(void);
 __int64 GameRoutine_13402f0(_QWORD, _QWORD, _QWORD);
@@ -931,7 +931,7 @@ LABEL_66:
     }
     v80 = 40;
   }
-  (*(void (**)(void))(*v87 + v80))();
+  (*(void (**)(void*))(*v87 + v80))(v87);
 LABEL_121:
   if (v89 == v88) {
     v81 = 32;
@@ -942,7 +942,7 @@ LABEL_121:
     }
     v81 = 40;
   }
-  (*(void (**)(void))(*v89 + v81))();
+  (*(void (**)(void*))(*v89 + v81))(v89);
 LABEL_126:
   result = (__int64)v92;
   if (v92 == &v90) {
@@ -4501,7 +4501,7 @@ __int64 ProcGmapSeq_884100(__int64 result)
   LABEL_56:
     v40 = game_gmap_SpotMgr_GetCurrentSpot(v12);
   LABEL_61:
-    GameRoutine_134bbe0(&v65, v40);
+    GameRoutine_134bbe0((void*)&v65, v40);
     v41 = v66;
     v64 = v65;
     if (v65 != v66) {
@@ -4830,7 +4830,7 @@ __int64 ProcGmapSeq_884920(__int64 result)
   LABEL_30:
     v24 = game_gmap_SpotMgr_GetCurrentSpot(result);
   LABEL_35:
-    GameRoutine_134bbe0(&v55, v24);
+    GameRoutine_134bbe0((void*)&v55, v24);
     v25 = v55;
     v26 = v56;
     if (v55 != v56) {

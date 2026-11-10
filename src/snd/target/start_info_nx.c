@@ -279,9 +279,9 @@ void StartInfoNX_DeletingDestructor(_QWORD* a1)
   *a1 = snd_target_StartInfoNX_vtable;
   if ((a1[47] & 1) != 0) {
     v1 = a1;
-    (*(void (**)(_QWORD* __return_ptr, _QWORD, _QWORD))(
-        **(_QWORD**)snd_g_memory_ptr[0] + 24LL))(*(_QWORD**)snd_g_memory_ptr[0],
-                                                 *snd_g_memory_ptr[0], a1[49]);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD, _QWORD))(
+        **(_QWORD**)snd_g_memory_ptr[0] + 24LL))(
+        (void*)*(_QWORD**)snd_g_memory_ptr[0], *snd_g_memory_ptr[0], a1[49]);
     a1 = v1;
   }
   GameRoutine_651250(a1, 0x190u);

@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_1593d90(_QWORD, _QWORD);
 __int64 GameRoutine_15940f0(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_1637e20(_QWORD);
@@ -121,7 +121,7 @@ __int64 CmdbtlUnitSelectMenu_1637cf0(__int64 a1)
   v15 = v5;
   v16 = 3;
   GameRoutine_1593d90(v4, v12);
-  GameRoutine_1560070(&v10, a1 + 952, "L_Num");
+  GameRoutine_1560070((void*)&v10, a1 + 952, "L_Num");
   v8 = CmdbtlUnitSelectMenu_1637be0(a1, v7);
   GameRoutine_15940f0(&v10, v8, *(unsigned int*)(a1 + 1424));
   if (v11 != 0) {

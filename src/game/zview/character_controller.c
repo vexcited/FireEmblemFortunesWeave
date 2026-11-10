@@ -836,7 +836,7 @@ __int64 game_zview_CharacterController_CharacterController(__int64 a1,
     }
     v17 = 40;
   }
-  (*(void (**)(void))(*v154 + v17))();
+  (*(void (**)(void*))(*v154 + v17))(v154);
 LABEL_14:
   if (v152 == v151) {
     v18 = 32;
@@ -847,7 +847,7 @@ LABEL_14:
     }
     v18 = 40;
   }
-  (*(void (**)(void))(*v152 + v18))();
+  (*(void (**)(void*))(*v152 + v18))(v152);
 LABEL_19:
   result = fw_memory_HeapManager_Allocate(*v10, 48, 16, 0);
   *(_WORD*)(result + 16) = 0;

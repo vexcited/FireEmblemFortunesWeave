@@ -252,7 +252,7 @@ void game_FacilitySceneObjectLocationArray_Locate(__int64 a1)
             }
             v24 = 40;
           }
-          (*(void (**)(long double))(*(_QWORD*)v23 + v24))(v17),
+          (*(void (**)(void*))(*(_QWORD*)v23 + v24))((void*)v23),
               v17 = COERCE_AS(__typeof__(v17),
                               PSEUDO_REGISTER(__n128, "v0", "=w"));
         }
@@ -336,8 +336,7 @@ void game_FacilitySceneObjectLocationArray_Locate(__int64 a1)
           }
           v38 = 40;
         }
-        (*(void (**)(long double))(*(_QWORD*)v42_.v43 + v38))(
-            *(long double*)&v35),
+        (*(void (**)(void*))(*(_QWORD*)v42_.v43 + v38))((void*)v42_.v43),
             v17 =
                 COERCE_AS(__typeof__(v17), PSEUDO_REGISTER(__n128, "v0", "=w"));
       LABEL_76:

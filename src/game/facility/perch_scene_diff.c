@@ -917,7 +917,7 @@ __n128 game_facility_PerchSceneDiff_Initialize_lambda0_Invoke(__int64 a1)
   if (v70_.v73 != nullptr) {
     v12 = 40;
   LABEL_21:
-    (*(void (**)(long double))(*(_QWORD*)v70_.v73 + v12))(v10),
+    (*(void (**)(void*))(*(_QWORD*)v70_.v73 + v12))((void*)v70_.v73),
         v10 = COERCE_AS(__typeof__(v10), PSEUDO_REGISTER(__n128, "v0", "=w")),
         v15 = COERCE_AS(__typeof__(v15),
                         PSEUDO_REGISTER(unsigned long long, "x2", "=r")),

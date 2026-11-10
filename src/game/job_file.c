@@ -857,7 +857,7 @@ game_JobFile_GetFromClassChangeCondition(PSEUDO_X8 x8_, __int64** result)
       LABEL_8:
         v8 = 4;
       LABEL_9:
-        result = (__int64**)((__int64 (*)(void))(*result)[v8])();
+        result = (__int64**)((__int64 (*)(void*))(*result)[v8])(result);
         goto LABEL_10;
       }
       if (v27 != nullptr) {

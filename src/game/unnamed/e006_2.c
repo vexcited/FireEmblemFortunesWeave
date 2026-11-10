@@ -5559,12 +5559,13 @@ void GameHr_109d740(__int64 a1, __int64 a2, _QWORD* a3, unsigned int a4)
         if (v11 == a3) {
           v15 = a3[4];
           v25 = v24;
-          (*(void (**)(_QWORD* __return_ptr, __int64, _BYTE*))(*v11 + 24LL))(
-              v11, v15, v24);
+          (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64, _BYTE*))(
+              *v11 + 24LL))((void*)v11, v15, v24);
         }
         else {
-          v25 = (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD))(*v11 + 16LL))(
-              v11, a3[4]);
+          v25 = X8CALL_X0(_QWORD*, (*(__attribute__((swiftcall)) void (**)(
+                                       PSEUDO_X8, _QWORD))(*v11 + 16LL))(
+                                       (void*)v11, a3[4]));
         }
         a4 = v12;
       }

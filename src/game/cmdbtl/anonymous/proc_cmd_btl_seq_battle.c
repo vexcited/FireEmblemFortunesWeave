@@ -103,8 +103,8 @@ void __attribute__((noreturn)) GameRoutine_60a310();
 void game_map_790ba0(__int64);
 __n128 ProcCmdBtlSeqBattle_e68f40();
 __n128 ProcCmdBtlSeqBattle_e698a0(__int64 a1);
-__n128 game_cmdbtl_anonymous_ProcCmdBtlSeqBattle_CommitBtlInfo(__int64 a1,
-                                                               __n128 result);
+void game_cmdbtl_anonymous_ProcCmdBtlSeqBattle_CommitBtlInfo(__int64 a1,
+                                                             __n128 result);
 __int64 ProcCmdBtlSeqBattle_e6a4e0(__int64 result);
 __int64 ProcCmdBtlSeqBattle_e6a7b0();
 void ProcCmdBtlSeqBattle_e6b340();
@@ -279,8 +279,9 @@ LABEL_40:
   return result;
 }
 
-__n128 game_cmdbtl_anonymous_ProcCmdBtlSeqBattle_CommitBtlInfo(__int64 a1,
-                                                               __n128 result)
+// A step of the sequence table, the dispatcher reads no result.
+void game_cmdbtl_anonymous_ProcCmdBtlSeqBattle_CommitBtlInfo(__int64 a1,
+                                                             __n128 result)
 {
 
 #pragma clang fp contract(off)
@@ -512,7 +513,7 @@ LABEL_30:
   if (v90_.v91 != nullptr) {
     v11 = 40;
   LABEL_37:
-    (*(void (**)(long double))(*v90_.v91 + v11))(*(long double*)&result),
+    (*(void (**)(void*))(*v90_.v91 + v11))(v90_.v91),
         v50 = COERCE_AS(__typeof__(v50), PSEUDO_REGISTER(__n128, "v0", "=w"));
   }
 LABEL_38:
@@ -1015,9 +1016,8 @@ LABEL_157:
                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v3 + 16LL))(v3),
         v50 = COERCE_AS(__typeof__(v50), PSEUDO_REGISTER(__n128, "v0", "=w"));
-    return std___1___shared_weak_count___release_weak_alt1(v3);
+    std___1___shared_weak_count___release_weak_alt1(v3);
   }
-  return result;
 }
 
 __int64 ProcCmdBtlSeqBattle_e6a4e0(__int64 result)

@@ -2203,7 +2203,7 @@ LABEL_4:
     }
     v5 = 40;
   }
-  return (*(__int64 (**)(void))(*(_QWORD*)v11 + v5))();
+  return (*(__int64 (**)(void*))(*(_QWORD*)v11 + v5))((void*)v11);
 }
 
 void GameHr_eab1b0() { *(_BYTE*)(*GameData_212f4e0[0] + 12) = 1; }
@@ -2861,7 +2861,7 @@ _QWORD* GameHr_eae550(__int64 a1)
     }
     v6 = 40;
   }
-  result = (_QWORD*)(*(__int64 (**)(void))(*result + v6))();
+  result = (_QWORD*)(*(__int64 (**)(void*))(*result + v6))(result);
 LABEL_9:
   v7 = *(_QWORD*)(a1 + 8);
   if ((*(_BYTE*)a1 & 1) == 0) {

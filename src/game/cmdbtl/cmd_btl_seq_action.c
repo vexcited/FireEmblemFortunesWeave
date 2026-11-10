@@ -244,7 +244,7 @@ LABEL_43:
       }
       v26 = 40;
     }
-    (*(void (**)(void))(*v30 + v26))();
+    (*(void (**)(void*))(*v30 + v26))(v30);
   LABEL_68:
     result = v25;
     if (v14 == 0) {
@@ -268,7 +268,7 @@ LABEL_43:
   if (v30 != nullptr) {
     v27 = 40;
   LABEL_75:
-    result = (*(__int64 (**)(void))(*v30 + v27))();
+    result = (*(__int64 (**)(void*))(*v30 + v27))(v30);
   }
 LABEL_76:
   if (v15 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v15 + 8),

@@ -267,8 +267,8 @@ LABEL_5:
 LABEL_8:
   *v8 = 0;
   *(_QWORD*)(v6[4] + v3 + 8) = 0;
-  (*(void (**)(__int64 __return_ptr, __int64, _QWORD))(
-      *(_QWORD*)snd_g_proxy + 528LL))(snd_g_proxy, snd_g_proxy,
+  (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64, _QWORD))(
+      *(_QWORD*)snd_g_proxy + 528LL))((void*)snd_g_proxy, snd_g_proxy,
                                       **(_QWORD**)(a1 + 8));
   return v3 == v4;
 }

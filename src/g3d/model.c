@@ -767,8 +767,9 @@ LABEL_28:
   if (v25 != 0) {
     v29 = v25;
     v30 = Model_5e3580(v4, v8 + 568);
-    (*(void (**)(_QWORD* __return_ptr, _QWORD, __int64, __int64))(
-        **(_QWORD**)(*v7 + 312) + 48LL))(v346, *(_QWORD*)(*v7 + 312), v29, v30);
+    (*(__attribute__((swiftcall)) void (**)(
+        PSEUDO_X8, _QWORD, __int64, __int64))(**(_QWORD**)(*v7 + 312) + 48LL))(
+        (void*)v346, *(_QWORD*)(*v7 + 312), v29, v30);
     GameRoutine_5d610(v4 + 120, v346);
     gxc_GpuMemory_Destroy_GpuMemory(v346);
     v25 = Model_5e37e0(v4, v8 + 568, *v7 + 12880, v2[34], v29);
@@ -4742,8 +4743,8 @@ __int64 Model_a661a0(__int64 a1, int a2, __int64 a3, int a4)
     goto LABEL_10;
   }
   if (v5 == v50) {
-    (*(void (**)(_BYTE* __return_ptr, _BYTE*, _QWORD*))(*(_QWORD*)v6 + 24LL))(
-        v6, v6, v54);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _BYTE*, _QWORD*))(
+        *(_QWORD*)v6 + 24LL))((void*)v6, v6, v54);
     (*(void (**)(_BYTE*))(*(_QWORD*)v53 + 32LL))(v53);
     v53 = nullptr;
     (*(void (**)(_BYTE*, _BYTE*))(*(_QWORD*)v51 + 24LL))(v51, v52);
@@ -4756,8 +4757,8 @@ __int64 Model_a661a0(__int64 a1, int a2, __int64 a3, int a4)
     v51 = v50;
   }
   else {
-    (*(void (**)(_BYTE* __return_ptr, _BYTE*, _BYTE*))(*(_QWORD*)v6 + 24LL))(
-        v6, v6, v50);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _BYTE*, _BYTE*))(
+        *(_QWORD*)v6 + 24LL))((void*)v6, v6, v50);
     (*(void (**)(_BYTE*))(*(_QWORD*)v53 + 32LL))(v53);
     v5 = v51;
     v51 = v50;
@@ -5138,7 +5139,7 @@ LABEL_11:
         (*(void (**)(_BYTE*))(*(_QWORD*)v41 + 24LL))(v41);
       }
       else {
-        v8[6] = (*(__int64 (**)(void))(*(_QWORD*)v41 + 16LL))();
+        v8[6] = (*(__int64 (**)(void*))(*(_QWORD*)v41 + 16))((void*)v41);
       }
       v10 = v8 + 8;
     }
@@ -5227,7 +5228,7 @@ LABEL_11:
         }
         v32 = 40;
       }
-      (*(void (**)(void))(*v33 + v32))();
+      (*(void (**)(void*))(*v33 + v32))(v33);
     LABEL_39:
       v26 += 64;
       if (v26 == v25) {
@@ -5262,7 +5263,7 @@ LABEL_48:
   if (v36 != nullptr) {
     v37 = 40;
   LABEL_54:
-    (*(void (**)(void))(*(_QWORD*)v36 + v37))();
+    (*(void (**)(void*))(*(_QWORD*)v36 + v37))((void*)v36);
   }
   return (unsigned int)v39;
 }

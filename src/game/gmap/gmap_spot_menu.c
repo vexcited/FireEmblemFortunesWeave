@@ -1294,8 +1294,8 @@ LABEL_153:
           v167 = v180;
           if (v166 != v163) {
             if (v166 != nullptr) {
-              (*(void (**)(_QWORD* __return_ptr, _QWORD))(*v166 + 168LL))(
-                  v166, v180[42]);
+              (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD))(
+                  *v166 + 168LL))((void*)v166, v180[42]);
               result = (__int64)v167;
             }
             *(_QWORD*)(result + 336) = v163;
@@ -1309,17 +1309,18 @@ LABEL_153:
                   *(_DWORD*)(result + 356) & 0xFFFFFFFB | v169;
               return result;
             }
-            (*(void (**)(_QWORD* __return_ptr, _QWORD))(*v168 + 160LL))(
-                v168, v167[42]);
+            (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD))(
+                *v168 + 160LL))((void*)v168, v167[42]);
             game_IsVibrationEnabled(*(_QWORD*)game_g_game_setting_ptr + 712LL);
             v166 = (_QWORD*)v167[42];
             result = (__int64)v167;
           }
           v169 = 4;
           if (v166 != nullptr) {
-            v43 = ((unsigned __int8)(*(_QWORD * (**)(_QWORD * __return_ptr,
-                                                     _QWORD*))(*v166 + 120LL))(
-                       v166, v166) &
+            v43 = ((unsigned __int8)X8CALL_X0(
+                       _QWORD*, (*(__attribute__((swiftcall)) void (**)(
+                                    PSEUDO_X8, _QWORD*))(*v166 + 120LL))(
+                                    (void*)v166, v166)) &
                    1) == 0;
             result = (__int64)v167;
             if (v43) {

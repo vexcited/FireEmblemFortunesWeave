@@ -691,7 +691,7 @@ _QWORD* map_SetRainEnable(char a1)
       }
       v14 = 40;
     }
-    return (_QWORD*)(*(__int64 (**)(void))(*result + v14))();
+    return (_QWORD*)(*(__int64 (**)(void*))(*result + v14))(result);
   }
   v6 = GameData_212cfb0[0];
   v7 = (_QWORD*)*GameData_212cfb0[0];

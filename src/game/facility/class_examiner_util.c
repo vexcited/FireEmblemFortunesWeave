@@ -51,7 +51,7 @@ void game_facility_ClassExaminerUtil_AddRelayCallback_lambda1_Invoke(
         }
         v6 = 40;
       }
-      (*(void (**)(void))(*(_QWORD*)v8 + v6))();
+      (*(void (**)(void*))(*(_QWORD*)v8 + v6))((void*)v8);
     }
   }
 }

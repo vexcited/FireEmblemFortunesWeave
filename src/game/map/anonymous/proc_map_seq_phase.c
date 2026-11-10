@@ -765,7 +765,7 @@ __int64 game_map_anonymous_ProcMapSeqPhase_TargetData_TryWaste(__int64 result)
           }
           v6 = 40;
         }
-        (*(void (**)(void))(*v10 + v6))();
+        (*(void (**)(void*))(*v10 + v6))(v10);
       LABEL_13:
         v8[0] = GameData_1fa0c10;
         v8[1] = v1;
@@ -781,7 +781,7 @@ __int64 game_map_anonymous_ProcMapSeqPhase_TargetData_TryWaste(__int64 result)
           }
           v7 = 40;
         }
-        (*(void (**)(void))(*v10 + v7))();
+        (*(void (**)(void*))(*v10 + v7))(v10);
       LABEL_18:
         v8[0] = GameData_1fa0c90;
         v8[1] = v1;
@@ -798,7 +798,7 @@ __int64 game_map_anonymous_ProcMapSeqPhase_TargetData_TryWaste(__int64 result)
           }
           v5 = 40;
         }
-        result = (*(__int64 (**)(void))(*v10 + v5))();
+        result = (*(__int64 (**)(void*))(*v10 + v5))(v10);
       LABEL_7:
         v2 += 3;
       } while (v2 != v3);
@@ -908,7 +908,7 @@ __int64 game_map_anonymous_ProcMapSeqPhase_TargetData_TryGive(__int64 result)
           }
           v4 = 40;
         }
-        result = (*(__int64 (**)(void))(*v6 + v4))();
+        result = (*(__int64 (**)(void*))(*v6 + v4))(v6);
       }
     }
   }
@@ -1393,7 +1393,7 @@ __int64 ProcMapSeqPhase_849600(__int64 a1, char a2)
       if (v23 != nullptr) {
         v10 = 40;
       LABEL_11:
-        (*(void (**)(void))(*v23 + v10))();
+        (*(void (**)(void*))(*v23 + v10))(v23);
       }
       result = (__int64)v19;
       if (v19 == v18) {
@@ -1405,7 +1405,7 @@ __int64 ProcMapSeqPhase_849600(__int64 a1, char a2)
         }
         v7 = 40;
       }
-      result = (*(__int64 (**)(void))(*v19 + v7))();
+      result = (*(__int64 (**)(void*))(*v19 + v7))(v19);
     LABEL_5:
       if (++v6 == v5) {
         goto LABEL_15;

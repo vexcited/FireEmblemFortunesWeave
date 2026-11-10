@@ -242,9 +242,9 @@ __int64 GameRoutine_1a0ba50(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 
 __int64 GameRoutine_2b0(_QWORD, _QWORD, _QWORD);
 
-_QWORD* GameRoutine_53bd0(_QWORD* __return_ptr, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_53bd0(PSEUDO_X8, _QWORD);
 
-_QWORD* GameRoutine_53c20(_QWORD* __return_ptr, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_53c20(PSEUDO_X8, _QWORD);
 
 __int64 GameRoutine_540(_QWORD, _QWORD, _QWORD);
 
@@ -6698,7 +6698,7 @@ __int64 GameHr_b310e0(__int64 a1, __int64** a2)
       v53 = *(_QWORD*)(*(_QWORD*)(v51 + 552) + 16LL);
       v88 = 48;
       v89 = v52;
-      GameRoutine_53bd0(&v97, &v87);
+      GameRoutine_53bd0((void*)&v97, &v87);
       v54 = v97;
       v97 = 0;
       v55 = *(_QWORD*)(v50 + v38);
@@ -6746,7 +6746,7 @@ __int64 GameHr_b310e0(__int64 a1, __int64** a2)
   LODWORD(v87) = 3;
   v88 = 48;
   v89 = v59;
-  GameRoutine_53bd0(&v97, &v87);
+  GameRoutine_53bd0((void*)&v97, &v87);
   v61 = v97;
   v62 = *(_QWORD*)(v58 + 768);
   v97 = 0;
@@ -6791,7 +6791,7 @@ __int64 GameHr_b310e0(__int64 a1, __int64** a2)
   v89 = 0x1400000003LL;
   LODWORD(v87) = *((_DWORD*)*a2 + 20);
   HIDWORD(v87) = v87;
-  GameRoutine_53c20(&v97, &v87);
+  GameRoutine_53c20((void*)&v97, &v87);
   v74 = v49[5];
   v75 = v97;
   v97 = 0;
@@ -6807,7 +6807,7 @@ __int64 GameHr_b310e0(__int64 a1, __int64** a2)
   }
   v87 = 0x1000000010LL;
   HIDWORD(v88) = 1;
-  GameRoutine_53c20(&v97, &v87);
+  GameRoutine_53c20((void*)&v97, &v87);
   v78 = v49[5];
   v79 = v97;
   v97 = 0;
@@ -6824,7 +6824,7 @@ __int64 GameHr_b310e0(__int64 a1, __int64** a2)
   LODWORD(v87) = *((_DWORD*)*a2 + 20);
   HIDWORD(v87) = v87;
   HIDWORD(v88) = 4;
-  GameRoutine_53c20(&v97, &v87);
+  GameRoutine_53c20((void*)&v97, &v87);
   v82 = v49[5];
   v83 = v97;
   v97 = 0;

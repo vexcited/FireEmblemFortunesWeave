@@ -3070,7 +3070,7 @@ _QWORD* GameHr_8196e0(_QWORD* result, unsigned __int8* a2)
           if (v31 != nullptr) {
             v32 = 40;
           LABEL_27:
-            (*(void (**)(void))(*v31 + v32))();
+            (*(void (**)(void*))(*v31 + v32))(v31);
           }
           v33 = v41;
           if (v41 != nullptr &&

@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_17e5d20(_QWORD, _QWORD);
 __int64 GameRoutine_17e5d20_alt1(_QWORD*, int) __asm__("GameRoutine_17e5d20");
 __int64 GameRoutine_17e6a30(_QWORD, _QWORD);
@@ -118,7 +118,7 @@ __int64 TutorialInfoImpl_17e5b40(__int64 result, __int64 a2)
     }
     *(_DWORD*)(v4 + 128) = v14;
     *(_QWORD*)(v4 + 132) = 0;
-    GameRoutine_1560070(&v20, v4 + 24, "L_PageTab");
+    GameRoutine_1560070((void*)&v20, v4 + 24, "L_PageTab");
     if (v21 != 0) {
       v15 = std___1___shared_weak_count_lock(v21);
       if (v15 != 0) {
@@ -183,8 +183,10 @@ __int64 TutorialInfoImpl_17e6660(__int64 a1, unsigned __int8 a2, char a3)
           return 0;
         }
         v11 = v7;
-        v12 = (unsigned __int8)(*(_QWORD * (**)(_BYTE * __return_ptr, _QWORD))(
-            *(_QWORD*)v8 + 160LL))(v8, *(_QWORD*)(a1 + 264));
+        v12 = (unsigned __int8)X8CALL_X0(
+            _QWORD*,
+            (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD))(
+                *(_QWORD*)v8 + 160LL))((void*)v8, *(_QWORD*)(a1 + 264)));
         if (atomic_fetch_add((atomic_ullong* volatile)(v11 + 8),
                              0xFFFFFFFFFFFFFFFFLL) != 0) {
           if ((v12 & 1) != 0) {
@@ -250,8 +252,10 @@ __int64 TutorialInfoImpl_17e67b0(__int64 a1, char a2)
           return 0;
         }
         v9 = v5;
-        v10 = (unsigned __int8)(*(_QWORD * (**)(_BYTE * __return_ptr, _QWORD))(
-            *(_QWORD*)v6 + 160LL))(v6, *(_QWORD*)(a1 + 264));
+        v10 = (unsigned __int8)X8CALL_X0(
+            _QWORD*,
+            (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD))(
+                *(_QWORD*)v6 + 160LL))((void*)v6, *(_QWORD*)(a1 + 264)));
         if (atomic_fetch_add((atomic_ullong* volatile)(v9 + 8),
                              0xFFFFFFFFFFFFFFFFLL) != 0) {
           if ((v10 & 1) != 0) {
@@ -322,8 +326,10 @@ __int64 TutorialInfoImpl_17e68f0(_QWORD* a1, __int64 a2)
           goto LABEL_15;
         }
         v10 = v6;
-        v11 = (unsigned __int8)(*(_QWORD * (**)(_BYTE * __return_ptr, _QWORD))(
-            *(_QWORD*)v7 + 160LL))(v7, a1[33]);
+        v11 = (unsigned __int8)X8CALL_X0(
+            _QWORD*,
+            (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD))(
+                *(_QWORD*)v7 + 160LL))((void*)v7, a1[33]));
         if (atomic_fetch_add((atomic_ullong* volatile)(v10 + 8),
                              0xFFFFFFFFFFFFFFFFLL) != 0) {
           if ((v11 & 1) != 0) {
@@ -380,8 +386,10 @@ __int64 TutorialInfoImpl_17e6c00(__int64 a1)
           return 1;
         }
         v8 = v4;
-        v9 = (unsigned __int8)(*(_QWORD * (**)(_BYTE * __return_ptr, _QWORD))(
-            *(_QWORD*)v5 + 160LL))(v5, *(_QWORD*)(v1 + 264));
+        v9 = (unsigned __int8)X8CALL_X0(
+            _QWORD*,
+            (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD))(
+                *(_QWORD*)v5 + 160LL))((void*)v5, *(_QWORD*)(v1 + 264)));
         if (atomic_fetch_add((atomic_ullong* volatile)(v8 + 8),
                              0xFFFFFFFFFFFFFFFFLL) != 0) {
           if ((v9 & 1) != 0) {

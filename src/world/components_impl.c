@@ -2,8 +2,9 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_66fe60(_QWORD* __return_ptr, _QWORD);
-_QWORD* GameRoutine_670240(_QWORD* __return_ptr, _QWORD, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_66fe60(PSEUDO_X8, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_670240(PSEUDO_X8, _QWORD, _QWORD,
+                                                   _QWORD);
 __int64 GameRoutine_17d4db0(_QWORD, _QWORD);
 __int64 GameRoutine_60a060(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_634d80(_QWORD);
@@ -142,7 +143,7 @@ __int64 Components_a5df80(__int64 a1, __int64 a2, atomic_uint* a3)
               GameRoutine_60a060(*v20, v30, v29);
               v3 = v19;
               if ((v16[112] & 1) == 0) {
-                GameRoutine_66fe60(&v41, v28);
+                GameRoutine_66fe60((void*)&v41, v28);
                 v31 = v20[2];
                 if (v31 != 0) {
                   v20[3] = v31;
@@ -158,7 +159,7 @@ __int64 Components_a5df80(__int64 a1, __int64 a2, atomic_uint* a3)
                 v20[2] = v41;
                 v20[3] = v42;
                 v20[4] = v43;
-                GameRoutine_670240(&v41, v28, v20[2],
+                GameRoutine_670240((void*)&v41, v28, v20[2],
                                    (__int64)(v20[3] - v20[2]) >> 4);
                 v33 = v20[5];
                 if (v33 != 0) {

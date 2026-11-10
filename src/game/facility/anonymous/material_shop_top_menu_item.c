@@ -34,7 +34,7 @@ __int64 MaterialShopTopMenuItem_Unknown25(_QWORD* a1)
   if (v8 != nullptr) {
     v5 = 40;
   LABEL_10:
-    (*(void (**)(void))(*(_QWORD*)v8 + v5))();
+    (*(void (**)(void*))(*(_QWORD*)v8 + v5))((void*)v8);
   }
   return 9;
 }

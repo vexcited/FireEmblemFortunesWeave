@@ -90,7 +90,7 @@ game_facility_anonymous_DownDifficultyItem_ACall_closure_Invoke(__int64 a1)
   if (v12 != nullptr) {
     v9 = 40;
   LABEL_14:
-    (*(void (**)(void))(*v12 + v9))();
+    (*(void (**)(void*))(*v12 + v9))(v12);
   }
   return 2;
 }

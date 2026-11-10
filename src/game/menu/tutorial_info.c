@@ -351,9 +351,10 @@ __int64 TutorialInfo_Unknown115(__int64 a1)
         }
         else {
           v8 = v4;
-          v6 =
-              (unsigned __int8)(*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD))(
-                  *(_QWORD*)v5 + 160LL))((_QWORD*)v5, *(_QWORD*)(v1 + 264));
+          v6 = (unsigned __int8)X8CALL_X0(
+              _QWORD*, (*(__attribute__((swiftcall)) void (**)(
+                           PSEUDO_X8, _QWORD))(*(_QWORD*)v5 + 160LL))(
+                           (void*)(_QWORD*)v5, *(_QWORD*)(v1 + 264)));
           v4 = v8;
         }
         if (atomic_fetch_add((atomic_ullong* volatile)(v4 + 8),

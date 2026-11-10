@@ -1020,7 +1020,7 @@ __int64 HubUniqueNatives_ec8880()
   if (v3 != nullptr) {
     v4 = 40;
   LABEL_8:
-    (*(void (**)(void))(*v3 + v4))();
+    (*(void (**)(void*))(*v3 + v4))(v3);
   }
   v5 = game_GameModeData_instance_;
   if (game_GameModeData_instance_ != 0) {
@@ -1087,7 +1087,7 @@ __int64 HubUniqueNatives_ec89a0()
     }
     v4 = 40;
   }
-  (*(void (**)(void))(*v3 + v4))();
+  (*(void (**)(void*))(*v3 + v4))(v3);
 
 LABEL_9:
   v19 = 0;
@@ -1176,7 +1176,7 @@ __int64 HubUniqueNatives_ec8b20()
     }
     v4 = 40;
   }
-  (*(void (**)(void))(*v3 + v4))();
+  (*(void (**)(void*))(*v3 + v4))(v3);
 
 LABEL_9:
   v5 = game_GameModeData_instance_;
@@ -1273,7 +1273,7 @@ bool HubUniqueNatives_ec9360(char* a1)
     }
     v6 = 40;
   }
-  (*(void (**)(void))(*v5 + v6))();
+  (*(void (**)(void*))(*v5 + v6))(v5);
 
 LABEL_9:
   v7 = *a1;
@@ -2176,7 +2176,7 @@ __int64 hub_unique_OpenCrownDoorAchievement()
     }
     v4 = 40;
   }
-  (*(void (**)(void))(*v3 + v4))();
+  (*(void (**)(void*))(*v3 + v4))(v3);
 LABEL_9:
   v5 = fw_memory_g_heap_manager_ptr;
   v6 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,

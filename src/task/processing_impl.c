@@ -406,7 +406,7 @@ __int64 Processing_199a300(__int64 a1)
     }
     v12 = 40;
   }
-  (*(void (**)(void))(*v11 + v12))();
+  (*(void (**)(void*))(*v11 + v12))(v11);
 
 LABEL_20:
   v13 = v2[10];

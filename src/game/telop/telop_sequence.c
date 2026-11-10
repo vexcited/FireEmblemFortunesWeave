@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_1374ee0(_QWORD, _QWORD);
 __int64 GameRoutine_173fe30(void);
 __int64 LayoutAccessor_155cda0(_QWORD, _QWORD, _QWORD);
@@ -139,7 +139,7 @@ __int64 TelopSequence_1374cc0(_BYTE* a1, char a2)
 
   v2 = a1 + 168;
   v5 = (*(__int64 (**)(_BYTE*))(*(_QWORD*)a1 + 408LL))(a1);
-  GameRoutine_1560070(&v12, v2, v5);
+  GameRoutine_1560070((void*)&v12, v2, v5);
   result = v13;
   if (v13 != 0) {
     v7 = std___1___shared_weak_count_lock(v13);
@@ -196,7 +196,7 @@ __int64 TelopSequence_1374e00(_BYTE* a1)
   result = (*(__int64 (**)(_BYTE*))(*(_QWORD*)a1 + 408LL))(a1);
   if (result != 0) {
     v3 = result;
-    GameRoutine_1560070(&v7, a1 + 168, result);
+    GameRoutine_1560070((void*)&v7, a1 + 168, result);
     result = v8;
     if (v8 != 0) {
       v4 = std___1___shared_weak_count_lock(v8);

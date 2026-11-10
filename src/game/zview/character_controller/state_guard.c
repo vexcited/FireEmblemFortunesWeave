@@ -2,9 +2,10 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_d56ba0(_QWORD* __return_ptr, _QWORD, _QWORD, _QWORD, float);
-_QWORD* GameRoutine_d57000(_QWORD* __return_ptr, _QWORD, _QWORD, _QWORD, _QWORD,
-                           _QWORD);
+__attribute__((swiftcall)) void GameRoutine_d56ba0(PSEUDO_X8, _QWORD, _QWORD,
+                                                   _QWORD, float);
+__attribute__((swiftcall)) void GameRoutine_d57000(PSEUDO_X8, _QWORD, _QWORD,
+                                                   _QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_cfa2a0(long double);
 __int64 GameRoutine_d47980(_QWORD, _QWORD);
 __int64 GameRoutine_d4eca0(_QWORD, _QWORD);
@@ -289,7 +290,7 @@ LABEL_32:
     GameRoutine_edea70(*(_QWORD*)(GameData_21f3cb0 + 912), 0.06, 0.08);
   }
   v40 = a3 & 1;
-  GameRoutine_d57000(&v45,
+  GameRoutine_d57000((void*)&v45,
                      *(_QWORD*)(*(_QWORD*)(*(_QWORD*)(a1 + 8) + 8LL) + 48LL),
                      "Btl_Guard_NormalA", 17, "Loc_C_Center", 12);
   v41 = v46;
@@ -298,7 +299,7 @@ LABEL_32:
     (*(void (**)(__int64))(*(_QWORD*)v41 + 16LL))(v41);
     std___1___shared_weak_count___release_weak(v41);
   }
-  GameRoutine_d56ba0(&v44,
+  GameRoutine_d56ba0((void*)&v44,
                      *(_QWORD*)(*(_QWORD*)(*(_QWORD*)(a1 + 8) + 8LL) + 40LL),
                      "Guard_Normal", 12, 1.0);
   result = *(_QWORD*)(a1 + 120);

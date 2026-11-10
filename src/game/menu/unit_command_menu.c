@@ -175,8 +175,8 @@ LABEL_28:
   v23 = *(_QWORD**)(a1 + 336);
   if (v23 != v21) {
     if (v23 != nullptr) {
-      (*(void (**)(_QWORD* __return_ptr, _QWORD))(*v23 + 168LL))(
-          v23, *(_QWORD*)(a1 + 336));
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD))(
+          *v23 + 168LL))((void*)v23, *(_QWORD*)(a1 + 336));
     }
     *(_QWORD*)(a1 + 336) = v21;
     _ZN4game4menu9BasicMenu13Unknown16dea40Ebbb(a1, 0, 1u, 0);

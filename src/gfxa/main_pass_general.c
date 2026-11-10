@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* std___1_to_string_1a0a790(_QWORD* __return_ptr, _QWORD);
+__attribute__((swiftcall)) void std___1_to_string_1a0a790(PSEUDO_X8, _QWORD);
 __int64 GameRoutine_1a0a680(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_b509c0(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_b97a20(_QWORD, _QWORD);
@@ -233,7 +233,7 @@ __int64 gfxa_MainPassGeneral_SetupPrePass_lambda0_Invoke(__int64 a1, __int64 a2,
       v64 = 0x1700000003LL;
       v65 = v38;
       v66 = v38;
-      std___1_to_string_1a0a790(v59, v37);
+      std___1_to_string_1a0a790((void*)v59, v37);
       v39 = (__int64*)GameRoutine_1a0a680(v59, 0, "PointShadowMap", 14);
       v41 = v39[1];
       v40 = v39[2];
@@ -288,7 +288,7 @@ __int64 gfxa_MainPassGeneral_SetupPrePass_lambda0_Invoke(__int64 a1, __int64 a2,
       v69 = 0;
       v65 = v50;
       v66 = v50;
-      std___1_to_string_1a0a790(v59, v51);
+      std___1_to_string_1a0a790((void*)v59, v51);
       v52 = (__int64*)GameRoutine_1a0a680(v59, 0, "SpotShadowMap", 13);
       v54 = v52[1];
       v53 = v52[2];

@@ -1,4 +1,4 @@
-#include "decomp/pseudo_types.h"
+#include "decomp/pseudo_helpers.h"
 
 #pragma GCC visibility push(hidden)
 
@@ -4705,7 +4705,8 @@ __int64 GameHr_5c9c10(__int64 a1, _QWORD* a2, __int64 a3, int a4, int a5)
   *(_QWORD*)(a1 + 8) = a3;
   *(_QWORD*)(a1 + 32) = 144LL * a5;
   *(_QWORD*)(a1 + 40) = 0;
-  v7 = (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD*))(*a2 + 16LL))(a2, a2);
+  v7 = X8CALL_X0(_QWORD*, (*(__attribute__((swiftcall)) void (**)(
+                              PSEUDO_X8, _QWORD*))(*a2 + 16LL))((void*)a2, a2));
   v8 = *(int*)(a1 + 28);
   *(_QWORD*)(a1 + 48) = v7;
   result = GameRoutine_1a0ba50(v7, 0, 144 * v8, v9, v10, v11);
@@ -5575,7 +5576,8 @@ __int64 GameHr_5cd330(__int64 a1, _QWORD* a2, __int64 a3, int a4, int a5)
   *(_QWORD*)(a1 + 8) = a3;
   *(_QWORD*)(a1 + 32) = 160LL * a5;
   *(_QWORD*)(a1 + 40) = 0;
-  v7 = (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD*))(*a2 + 16LL))(a2, a2);
+  v7 = X8CALL_X0(_QWORD*, (*(__attribute__((swiftcall)) void (**)(
+                              PSEUDO_X8, _QWORD*))(*a2 + 16LL))((void*)a2, a2));
   v8 = *(int*)(a1 + 28);
   *(_QWORD*)(a1 + 48) = v7;
   result = GameRoutine_1a0ba50(v7, 0, 160 * v8, v9, v10, v11);

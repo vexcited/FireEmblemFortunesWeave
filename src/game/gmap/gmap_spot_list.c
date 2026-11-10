@@ -1108,7 +1108,7 @@ __int64 game_gmap_GmapSpotList_ZRCall(__int64 a1)
       }
       v3 = 40;
     }
-    (*(void (**)(void))(*v8 + v3))();
+    (*(void (**)(void*))(*v8 + v3))(v8);
   LABEL_15:
     if (v6 == v5) {
       v4 = 32;
@@ -1119,7 +1119,7 @@ __int64 game_gmap_GmapSpotList_ZRCall(__int64 a1)
       }
       v4 = 40;
     }
-    (*(void (**)(void))(*v6 + v4))();
+    (*(void (**)(void*))(*v6 + v4))(v6);
     return 3;
   }
   result = *(_QWORD*)(a1 + 336);

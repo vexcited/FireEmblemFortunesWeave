@@ -618,7 +618,7 @@ __int64 SkillUnitMenu_Unknown128(__int64 a1, __n128 a2)
   if (v77_.v78 != nullptr) {
     v9 = 40;
   LABEL_43:
-    (*(void (**)(long double))(*v77_.v78 + v9))(v8);
+    (*(void (**)(void*))(*v77_.v78 + v9))(v77_.v78);
   }
   v39 = v75_.v75;
   for (i = v75_.v76; v39 != i; v39 += 8) {

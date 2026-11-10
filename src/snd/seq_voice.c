@@ -1069,9 +1069,10 @@ void SeqVoice_12a340(__int64 a1)
       if (v7 > 1) {
         v9 = *(_QWORD*)(a1 + 32);
         v10 = v6;
-        v11 = (unsigned int)(*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD))(
-            **(_QWORD**)(v6 + 32) + 16LL))(*(_QWORD**)(v6 + 32),
-                                           *(_QWORD*)(v6 + 32));
+        v11 = (unsigned int)X8CALL_X0(
+            _QWORD*, (*(__attribute__((swiftcall)) void (**)(
+                         PSEUDO_X8, _QWORD))(**(_QWORD**)(v6 + 32) + 16LL))(
+                         (void*)*(_QWORD**)(v6 + 32), *(_QWORD*)(v6 + 32)));
         Manager_1181f0((void*)((__int64)v43), v9, v11);
         v12 = snd_fnd_WeakHandle_get_alt1((__int64)v43);
         if (v12 != 0) {

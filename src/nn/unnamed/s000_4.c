@@ -96,7 +96,7 @@ __int64 SdkHr_1d6804(__int64 a1, __int64* a2, __int64 a3, __int64 a4)
     goto LABEL_12;
   }
   if (v15 != 0) {
-    (*(void (**)(void))(*(_QWORD*)v15 + 8LL))();
+    (*(void (**)(void*))(*(_QWORD*)v15 + 8))((void*)v15);
   }
   *(_QWORD*)(v11 + 6576) = SdkData_e86d80 + 16;
   SdkRoutine_1d3d5c(v11 + 6576);
@@ -173,7 +173,7 @@ __int64 SdkHr_1db6cc(__int64 a1, __int64* a2, __int64 a3, __int64 a4)
     goto LABEL_12;
   }
   if (v15 != 0) {
-    (*(void (**)(void))(*(_QWORD*)v15 + 8LL))();
+    (*(void (**)(void*))(*(_QWORD*)v15 + 8))((void*)v15);
   }
   *(_QWORD*)(v11 + 6576) = SdkData_e86d80 + 16;
   SdkRoutine_1d3d5c(v11 + 6576);

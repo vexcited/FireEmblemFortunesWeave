@@ -2,8 +2,8 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
-_QWORD* GameRoutine_159e180(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_159e180(PSEUDO_X8, _QWORD, _QWORD);
 __int64 Alignment_56b600(void);
 __int64 ControlCreator_13633c0(void);
 __int64 GameRoutine_156d490(_QWORD);
@@ -71,7 +71,7 @@ __int64 PageTab_16e6880(__int64 a1, int a2, unsigned int a3, unsigned int a4)
   v26 = a3;
   for (i = 0; i != 13; ++i) {
     v12 = game_util_Format("L_Tab%02d", i);
-    GameRoutine_1560070(&v28, v9, v12);
+    GameRoutine_1560070((void*)&v28, v9, v12);
     if (v29 == 0) {
       continue;
     }
@@ -104,7 +104,7 @@ __int64 PageTab_16e6880(__int64 a1, int a2, unsigned int a3, unsigned int a4)
   *(_BYTE*)(a1 + 112) = GameRoutine_156d490(v9);
   v27[0] = "L_ArrowL";
   v27[1] = 8;
-  GameRoutine_159e180(&v28, v9, v27);
+  GameRoutine_159e180((void*)&v28, v9, v27);
   if (v29 != 0) {
     v16 = std___1___shared_weak_count_lock(v29);
     v17 = v28;
@@ -131,7 +131,7 @@ __int64 PageTab_16e6880(__int64 a1, int a2, unsigned int a3, unsigned int a4)
   }
   v27[0] = "L_ArrowR";
   v27[1] = 8;
-  GameRoutine_159e180(&v28, v9, v27);
+  GameRoutine_159e180((void*)&v28, v9, v27);
   if (v29 != 0) {
     v20 = std___1___shared_weak_count_lock(v29);
     v21 = v28;

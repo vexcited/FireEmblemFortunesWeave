@@ -5,9 +5,9 @@
 struct PseudoSret {
   _QWORD words[3];
 };
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
-_QWORD* GameRoutine_1572840(_QWORD* __return_ptr, _QWORD, _QWORD);
-_QWORD* GameRoutine_95e2c0(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1572840(PSEUDO_X8, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_95e2c0(PSEUDO_X8, _QWORD, _QWORD);
 __int64 Alignment_56b600(void);
 __int64 GameRoutine_156c5d0(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_15e0640(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
@@ -710,7 +710,7 @@ __int64 ClassChangeJobMenu_16b53a0(__int64 result)
   LABEL_8:
     v14[0] = "L_LvGroup";
     v14[1] = 9;
-    GameRoutine_1572840(&v15, v2 + 848, v14);
+    GameRoutine_1572840((void*)&v15, v2 + 848, v14);
     if (v16 == 0) {
       goto LABEL_20;
     }
@@ -743,7 +743,7 @@ __int64 ClassChangeJobMenu_16b53a0(__int64 result)
       std___1___shared_weak_count___release_weak(v5);
     }
   LABEL_20:
-    GameRoutine_1560070(&v15, v2 + 848, "L_LvGroup");
+    GameRoutine_1560070((void*)&v15, v2 + 848, "L_LvGroup");
     if (v16 != 0) {
       v12 = std___1___shared_weak_count_lock(v16);
       v13 = v15;
@@ -883,7 +883,7 @@ __int64 ClassChangeJobMenu_16b5db0(__int64 a1)
         }
       }
     }
-    GameRoutine_95e2c0(&v15, v5, v4);
+    GameRoutine_95e2c0((void*)&v15, v5, v4);
     if ((v15 & 0xBC1) == 0x100 ||
         (*(_BYTE*)(v4 + 49) & 0xFE) == 4 &&
             (game_GameModeData_instance_ == 0 ||
@@ -895,7 +895,7 @@ __int64 ClassChangeJobMenu_16b5db0(__int64 a1)
       LODWORD(v4) = 1;
     }
   }
-  GameRoutine_1560070(&v15, a1 + 848, "L_ClassInfo/L_Class");
+  GameRoutine_1560070((void*)&v15, a1 + 848, "L_ClassInfo/L_Class");
   result = v16;
   if (v16 == 0) {
     return result;

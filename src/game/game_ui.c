@@ -735,8 +735,10 @@ _QWORD* game_GameUI_Setup_lambda2_Invoke()
   while (v1 != v2) {
     result = *(_QWORD**)(v1 + 16);
     if (result != nullptr) {
-      result = (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD*, _QWORD*))(
-          *result + 16LL))(v3, result, v4);
+      result = X8CALL_X0(
+          _QWORD*,
+          (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*, _QWORD*))(
+              *result + 16LL))((void*)v3, result, v4));
     }
     v1 = *(_QWORD*)(v1 + 8);
   }
@@ -773,8 +775,10 @@ _QWORD* game_GameUI_Setup_lambda3_Invoke()
   while (v1 != v2) {
     result = *(_QWORD**)(v1 + 16);
     if (result != nullptr) {
-      result = (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD*, _QWORD*))(
-          *result + 16LL))(v3, result, v4);
+      result = X8CALL_X0(
+          _QWORD*,
+          (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*, _QWORD*))(
+              *result + 16LL))((void*)v3, result, v4));
     }
     v1 = *(_QWORD*)(v1 + 8);
   }
@@ -800,8 +804,9 @@ void game_GameUI_Setup_lambda4_Invoke()
   while (v0 != v1) {
     v2 = *(_QWORD*)(v0 + 16);
     if (v2 != 0) {
-      (*(void (**)(__int64* __return_ptr, __int64, __int64 (***)()))(
-          *(_QWORD*)v2 + 16LL))(&var4, v2, &v4);
+      (*(__attribute__((swiftcall)) void (**)(
+          PSEUDO_X8, __int64, __int64 (***)()))(*(_QWORD*)v2 + 16LL))(
+          (void*)&var4, v2, &v4);
     }
     v0 = *(_QWORD*)(v0 + 8);
   }

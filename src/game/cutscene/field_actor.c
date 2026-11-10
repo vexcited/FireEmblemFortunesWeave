@@ -1465,7 +1465,7 @@ __int64 FieldActor_1802740(_QWORD* a1, _QWORD* a2, char a3)
     if (v48 != nullptr) {
       v13 = 40;
     LABEL_14:
-      v12 = (*(__int64 (**)(void))(*(_QWORD*)v48 + v13))();
+      v12 = (*(__int64 (**)(void*))(*(_QWORD*)v48 + v13))((void*)v48);
     }
   }
   if ((v45[0] & 1) != 0 && v46 != 0) {

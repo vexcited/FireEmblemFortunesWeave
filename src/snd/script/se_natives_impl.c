@@ -144,7 +144,7 @@ _QWORD* snd_se_GetPos(__int64 a1, _QWORD* a2)
     }
     v8 = 40;
   }
-  return (_QWORD*)(*(__int64 (**)(void))(*result + v8))();
+  return (_QWORD*)(*(__int64 (**)(void*))(*result + v8))(result);
 }
 
 #pragma GCC visibility pop

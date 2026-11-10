@@ -52,7 +52,7 @@ __int64 LoadStateHide_Unknown2(__int64 a1, _QWORD* a2)
     }
     v5 = 40;
   }
-  (*(void (**)(void))(*v4 + v5))();
+  (*(void (**)(void*))(*v4 + v5))(v4);
 
 LABEL_7:
   v6 = *(_QWORD*)(v2 + 112);
@@ -68,7 +68,7 @@ LABEL_7:
       }
       v13 = 40;
     }
-    (*(void (**)(void))(*v12 + v13))();
+    (*(void (**)(void*))(*v12 + v13))(v12);
     v14 = *(_QWORD**)(i - 16);
     if ((_QWORD*)(i - 48) == v14) {
       v11 = 32;
@@ -79,7 +79,7 @@ LABEL_7:
       }
       v11 = 40;
     }
-    (*(void (**)(void))(*v14 + v11))();
+    (*(void (**)(void*))(*v14 + v11))(v14);
   }
   *(_QWORD*)(v2 + 120) = v6;
 

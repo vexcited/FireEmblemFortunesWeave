@@ -1209,8 +1209,8 @@ void game_map_724ae0()
                 *(_QWORD*)(*(_QWORD*)(GameData_21ca310 + 56) + 556000LL));
   v8 = *(_QWORD*)(*v7 + 48);
   if (*(float*)(v8 + 28) == *(float*)(v8 + 24)) {
-    (*(void (**)(__int128* __return_ptr, __int64))(*(_QWORD*)(v8 + 16) + 16LL))(
-        &v28, v8 + 16);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64))(
+        *(_QWORD*)(v8 + 16) + 16LL))((void*)&v28, v8 + 16);
   }
   else {
     v12 = *(_QWORD*)(v8 + 72);
@@ -15123,10 +15123,10 @@ __int64 game_map_792360(__int64 a1)
                 v516 = *(_QWORD**)(a1 + 48);
                 if (v516 != nullptr) {
                   v517 = v514;
-                  v518 =
-                      (unsigned __int8)(*(_QWORD *
-                                          (**)(_QWORD * __return_ptr, _QWORD)) *
-                                        v516)(v516, *(_QWORD*)(a1 + 48));
+                  v518 = (unsigned __int8)X8CALL_X0(
+                      _QWORD*, (*(__attribute__((swiftcall)) void (**)(
+                                   PSEUDO_X8, _QWORD))*v516)(
+                                   (void*)v516, *(_QWORD*)(a1 + 48)));
                   v514 = v517;
                   if ((v518 & 1) != 0) {
                   LABEL_755:

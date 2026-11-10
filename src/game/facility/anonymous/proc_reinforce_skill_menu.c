@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_1572370(_QWORD, _QWORD);
 __int64 GameRoutine_15740c0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_15d2f60(_QWORD, _QWORD, _QWORD, _QWORD);
@@ -77,7 +77,7 @@ __int64 ProcReinforceSkillMenu_16d7120(_QWORD* a1, char a2)
   }
 
 LABEL_10:
-  GameRoutine_1560070(&v11, a1 + 106, "L_UnitInfo");
+  GameRoutine_1560070((void*)&v11, a1 + 106, "L_UnitInfo");
   result = v12;
   if (v12 != 0) {
     v9 = std___1___shared_weak_count_lock(v12);
@@ -160,7 +160,7 @@ __int64 ProcReinforceSkillMenu_16d73d0(__int64 a1, __int64 a2)
   }
   v4[7] = v7;
   _ZN4game4menu8GameMenu12Unknown16e9cd0Ev(a1, *(_QWORD*)(a1 + 1064));
-  GameRoutine_1560070(&v18, a1 + 848, "L_UnitInfo");
+  GameRoutine_1560070((void*)&v18, a1 + 848, "L_UnitInfo");
   if (v19 != 0) {
     v14 = *(_QWORD*)(a1 + 1064);
     v15 = std___1___shared_weak_count_lock(v19);
@@ -207,7 +207,7 @@ __int64 ProcReinforceSkillMenu_Unknown88(__int64 a1)
       v3 = result;
       if ((*(_BYTE*)(result + 102) & 0x10) != 0) {
         ui_LayoutAccessor_SetPaneVisible(a1 + 848, "N_After", 0);
-        GameRoutine_1560070(&v15, a1 + 848, "L_InfoDetail_Before");
+        GameRoutine_1560070((void*)&v15, a1 + 848, "L_InfoDetail_Before");
         GameRoutine_15d2f60(&v15, v3 + 96, *(_QWORD*)(v3 + 88), 0);
         result = v16;
         if (v16 != 0) {
@@ -216,7 +216,7 @@ __int64 ProcReinforceSkillMenu_Unknown88(__int64 a1)
       }
       else {
         ui_LayoutAccessor_SetPaneVisible(a1 + 848, "N_After", 1);
-        GameRoutine_1560070(&v13, a1 + 848, "L_InfoDetail_Before");
+        GameRoutine_1560070((void*)&v13, a1 + 848, "L_InfoDetail_Before");
         v4 = GameData_212c880[0];
         GameRoutine_15d2f60(
             &v13,
@@ -228,7 +228,7 @@ __int64 ProcReinforceSkillMenu_Unknown88(__int64 a1)
         if (v14 != 0) {
           std___1___shared_weak_count___release_weak(v14);
         }
-        GameRoutine_1560070(&v9, a1 + 848, "L_InfoDetail_After");
+        GameRoutine_1560070((void*)&v9, a1 + 848, "L_InfoDetail_After");
         if (v10 != 0 && (v5 = std___1___shared_weak_count_lock(v10)) != 0) {
           v6 = v5;
           v7 = 0;

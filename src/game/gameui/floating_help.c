@@ -2,9 +2,9 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_1363e00(_QWORD* __return_ptr, _QWORD, _QWORD);
-_QWORD* GameRoutine_1366ac0(_QWORD* __return_ptr, _QWORD, _QWORD);
-_QWORD* GameRoutine_16d1510(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1363e00(PSEUDO_X8, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1366ac0(PSEUDO_X8, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_16d1510(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_1563f90(_QWORD, _QWORD);
 __int64 GameRoutine_1564060(_QWORD);
 __int64 GameRoutine_18ac620(__int64, __int64);
@@ -187,7 +187,7 @@ __int64 FloatingHelp_Destructor(_QWORD* a1)
       }
       v9 = 40;
     }
-    (*(void (**)(void))(*v8 + v9))();
+    (*(void (**)(void*))(*v8 + v9))(v8);
   LABEL_18:
     v10 = *(_QWORD*)(v7 - 56);
     if (v10 != 0) {
@@ -546,7 +546,7 @@ __int64 FloatingHelp_18ac7f0(_QWORD* a1, __int64 a2, __int64 a3)
       std___1___shared_weak_count___release_weak(v8);
     }
   }
-  GameRoutine_1366ac0(&v31, a2, a3);
+  GameRoutine_1366ac0((void*)&v31, a2, a3);
   v9 = v31;
   v10 = v32;
   v11 = a1[3];
@@ -586,7 +586,7 @@ __int64 FloatingHelp_18ac7f0(_QWORD* a1, __int64 a2, __int64 a3)
   v14 = a1[2];
   v25[0] = "RootPane";
   v25[1] = 8;
-  GameRoutine_1363e00(&v27, v14, v25);
+  GameRoutine_1363e00((void*)&v27, v14, v25);
   v29 = 0;
   v30 = 0;
   if (v28 != 0 &&
@@ -954,7 +954,7 @@ __int64 FloatingHelp_18ae5e0(__int64 a1, float* a2)
         goto LABEL_66;
       }
     }
-    GameRoutine_16d1510(&v39, v17, v22);
+    GameRoutine_16d1510((void*)&v39, v17, v22);
     v41 = 0;
     v42 = 0;
     if (v40 != 0) {

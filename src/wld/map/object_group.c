@@ -223,7 +223,7 @@ __int64* ObjectGroup_c25a40(__int64* result, _QWORD* a2)
         }
         v12 = 40;
       }
-      result = (__int64*)(*(__int64 (**)(void))(*result + v12))();
+      result = (__int64*)(*(__int64 (**)(void*))(*result + v12))(result);
     LABEL_18:
       v13 = v3[1];
       if (v13 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v13 + 8),

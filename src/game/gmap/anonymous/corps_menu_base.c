@@ -99,8 +99,9 @@ _QWORD* game_gmap_anonymous_CorpsMenuBase_IsEmpty(__int64 a1)
     if ((*(_BYTE*)(v9 + 356) & 1) != 0) {
       v10 = *(_QWORD**)(v9 + 368);
       if (v10 != nullptr) {
-        result = (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD))(
-            *v10 + 560LL))(v10, *(_QWORD*)(v9 + 368));
+        result = X8CALL_X0(_QWORD*, (*(__attribute__((swiftcall)) void (**)(
+                                        PSEUDO_X8, _QWORD))(*v10 + 560LL))(
+                                        (void*)v10, *(_QWORD*)(v9 + 368)));
         if (result == nullptr) {
           return result;
         }

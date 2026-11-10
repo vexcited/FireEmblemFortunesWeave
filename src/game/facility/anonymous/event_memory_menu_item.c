@@ -344,7 +344,7 @@ game_facility_anonymous_EventMemoryMenuItem_EventMemoryMenuItem(__int64 a1)
           if (v72 != nullptr) {
             v62 = 40;
           LABEL_101:
-            (*(void (**)(void))(*v72 + v62))();
+            (*(void (**)(void*))(*v72 + v62))(v72);
           }
         }
       LABEL_49:
@@ -438,7 +438,7 @@ game_facility_anonymous_EventMemoryMenuItem_EventMemoryMenuItem(__int64 a1)
         if (v72 != nullptr) {
           v32 = 40;
         LABEL_47:
-          (*(void (**)(void))(*v72 + v32))();
+          (*(void (**)(void*))(*v72 + v32))(v72);
         }
       }
     LABEL_26:

@@ -188,8 +188,8 @@ LABEL_24:
       Layout_1364020(a1, i - 216, v32);
     }
   }
-  (*(void (**)(__int64* __return_ptr, _QWORD*, _QWORD*))(*v13 + 16LL))(
-      &v53, v13, v28);
+  (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*, _QWORD*))(
+      *v13 + 16LL))((void*)&v53, v13, v28);
   if (v53 != 0 && (v33 = __dynamic_cast(v53, GameData_212dfc0[0],
                                         GameData_2131a20[0], 0)) != 0) {
     v55 = v33;

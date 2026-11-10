@@ -2,8 +2,9 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_e1b4d0(_QWORD* __return_ptr);
-_QWORD* GameRoutine_e1bfe0(_QWORD* __return_ptr, _QWORD, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_e1b4d0(PSEUDO_X8);
+__attribute__((swiftcall)) void GameRoutine_e1bfe0(PSEUDO_X8, _QWORD, _QWORD,
+                                                   _QWORD);
 __int64 GameRoutine_14a1520(_QWORD, _QWORD);
 __int64 GameRoutine_db1bc0(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_dfca40(__int64, __int64, __int64, __int64, __int64, __int64,
@@ -265,7 +266,7 @@ __int64 ObjectControllerDropItem_dfca40(__int64 a1, __int64 a2, __int64 a3,
         }
         v24 = 40;
       }
-      result = (*(__int64 (**)(void))(*(_QWORD*)v26 + v24))();
+      result = (*(__int64 (**)(void*))(*(_QWORD*)v26 + v24))((void*)v26);
     LABEL_24:
       if (atomic_fetch_add((atomic_ullong* volatile)(v12 + 8),
                            0xFFFFFFFFFFFFFFFFLL) == 0) {
@@ -463,8 +464,8 @@ __int64 ObjectControllerDropItem_Unknown6(__int64 a1)
   v15 = (__int128*)(v14 + 960);
 
 LABEL_25:
-  GameRoutine_e1b4d0(&v50);
-  GameRoutine_e1bfe0(&v48, v13, &v50, v15);
+  GameRoutine_e1b4d0((void*)&v50);
+  GameRoutine_e1bfe0((void*)&v48, v13, &v50, v15);
   if ((v50 & 1) != 0 && v52 != nullptr) {
     v19 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
@@ -583,7 +584,7 @@ LABEL_46:
   if (v47 != nullptr) {
     v39 = 40;
   LABEL_60:
-    (*(void (**)(void))(*v47 + v39))();
+    (*(void (**)(void*))(*v47 + v39))(v47);
   }
   v40 = *(_QWORD*)(a1 + 8);
   result = *(_QWORD*)(v40 + 712);

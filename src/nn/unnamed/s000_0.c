@@ -1,4 +1,4 @@
-#include "decomp/pseudo_types.h"
+#include "decomp/pseudo_helpers.h"
 #pragma GCC visibility push(hidden)
 
 extern _DWORD SdkData_bb03f0[8];
@@ -373,7 +373,7 @@ __int64 SdkRoutine_85a420(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
                           _QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
                           _QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
                           _QWORD);
-_QWORD* SdkRoutine_85a750(_QWORD* __return_ptr, _QWORD);
+__attribute__((swiftcall)) void SdkRoutine_85a750(PSEUDO_X8, _QWORD);
 __int64 SdkRoutine_85a7d0(_QWORD, _QWORD);
 __int64 SdkRoutine_85a800(_QWORD);
 __int64 SdkRoutine_85a860(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, const char*,
@@ -383,7 +383,7 @@ __int64 SdkRoutine_85a880(_QWORD, _QWORD);
 __int64 SdkRoutine_85a890(_QWORD, _QWORD);
 __int64 SdkRoutine_85a8a0(_QWORD, _QWORD);
 __int64 SdkRoutine_85a9a0(_QWORD);
-_QWORD* SdkRoutine_85a9c0(_QWORD* __return_ptr, _QWORD);
+__attribute__((swiftcall)) void SdkRoutine_85a9c0(PSEUDO_X8, _QWORD);
 __int64 SdkRoutine_85aa00(void);
 __int64 SdkRoutine_85aa10(_QWORD);
 __int64 SdkRoutine_85aa20(_QWORD, _QWORD);
@@ -2437,7 +2437,8 @@ __int64 SdkHr_337a0(__int64 a1, _QWORD* a2)
                 }
                 else {
                   v30 = *(_QWORD*)(*(_QWORD*)(v2 + 64) + 48LL);
-                  if ((*(unsigned int (**)(void))(v30 + 24))() == 0) {
+                  if ((*(unsigned int (**)(void*))(v30 + 24))(
+                          (void*)*(_QWORD*)(v2 + 64)) == 0) {
                     *(_DWORD*)(**(_QWORD**)(v2 + 64) + 40LL) = 25;
                     (***(void (****)(_QWORD))(v2 + 64))(*(_QWORD*)(v2 + 64));
                   }
@@ -2452,7 +2453,8 @@ __int64 SdkHr_337a0(__int64 a1, _QWORD* a2)
                     *(_QWORD*)(v2 + 40) = v32;
                     if (v32 == 0) {
                       v33 = *(_QWORD*)(*(_QWORD*)(v2 + 64) + 48LL);
-                      if ((*(unsigned int (**)(void))(v33 + 24))() == 0) {
+                      if ((*(unsigned int (**)(void*))(v33 + 24))(
+                              (void*)*(_QWORD*)(v2 + 64)) == 0) {
                         *(_DWORD*)(**(_QWORD**)(v2 + 64) + 40LL) = 25;
                         (***(void (****)(_QWORD))(v2 + 64))(
                             *(_QWORD*)(v2 + 64));
@@ -2957,7 +2959,8 @@ LABEL_33:
                         }
                       }
                       v77 = *(_QWORD*)(*(_QWORD*)(v2 + 64) + 48LL);
-                      if ((*(unsigned int (**)(void))(v77 + 24))() == 0) {
+                      if ((*(unsigned int (**)(void*))(v77 + 24))(
+                              (void*)*(_QWORD*)(v2 + 64)) == 0) {
                         *(_DWORD*)(**(_QWORD**)(v2 + 64) + 40LL) = 25;
                         (***(void (****)(_QWORD))(v2 + 64))(
                             *(_QWORD*)(v2 + 64));
@@ -2975,7 +2978,8 @@ LABEL_33:
                       *(_QWORD*)(v2 + 40) = v79;
                       if (v79 == 0) {
                         v80 = *(_QWORD*)(*(_QWORD*)(v2 + 64) + 48LL);
-                        if ((*(unsigned int (**)(void))(v80 + 24))() == 0) {
+                        if ((*(unsigned int (**)(void*))(v80 + 24))(
+                                (void*)*(_QWORD*)(v2 + 64)) == 0) {
                           *(_DWORD*)(**(_QWORD**)(v2 + 64) + 40LL) = 25;
                           (***(void (****)(_QWORD))(v2 + 64))(
                               *(_QWORD*)(v2 + 64));
@@ -2999,7 +3003,8 @@ LABEL_33:
               }
             }
             v65 = *(_QWORD*)(*(_QWORD*)(v2 + 64) + 48LL);
-            if ((*(unsigned int (**)(void))(v65 + 24))() == 0) {
+            if ((*(unsigned int (**)(void*))(v65 + 24))(
+                    (void*)*(_QWORD*)(v2 + 64)) == 0) {
               *(_DWORD*)(**(_QWORD**)(v2 + 64) + 40LL) = 25;
               (***(void (****)(_QWORD))(v2 + 64))(*(_QWORD*)(v2 + 64));
             }
@@ -3016,7 +3021,8 @@ LABEL_33:
             *(_QWORD*)(v2 + 40) = v67;
             if (v67 == 0) {
               v68 = *(_QWORD*)(*(_QWORD*)(v2 + 64) + 48LL);
-              if ((*(unsigned int (**)(void))(v68 + 24))() == 0) {
+              if ((*(unsigned int (**)(void*))(v68 + 24))(
+                      (void*)*(_QWORD*)(v2 + 64)) == 0) {
                 *(_DWORD*)(**(_QWORD**)(v2 + 64) + 40LL) = 25;
                 (***(void (****)(_QWORD))(v2 + 64))(*(_QWORD*)(v2 + 64));
               }
@@ -3075,7 +3081,8 @@ LABEL_33:
               }
             }
             v92 = *(_QWORD*)(*(_QWORD*)(v2 + 64) + 48LL);
-            if ((*(unsigned int (**)(void))(v92 + 24))() == 0) {
+            if ((*(unsigned int (**)(void*))(v92 + 24))(
+                    (void*)*(_QWORD*)(v2 + 64)) == 0) {
               *(_DWORD*)(**(_QWORD**)(v2 + 64) + 40LL) = 25;
               (***(void (****)(_QWORD))(v2 + 64))(*(_QWORD*)(v2 + 64));
             }
@@ -3092,7 +3099,8 @@ LABEL_33:
             *(_QWORD*)(v2 + 40) = v94;
             if (v94 == 0) {
               v95 = *(_QWORD*)(*(_QWORD*)(v2 + 64) + 48LL);
-              if ((*(unsigned int (**)(void))(v95 + 24))() == 0) {
+              if ((*(unsigned int (**)(void*))(v95 + 24))(
+                      (void*)*(_QWORD*)(v2 + 64)) == 0) {
                 *(_DWORD*)(**(_QWORD**)(v2 + 64) + 40LL) = 25;
                 (***(void (****)(_QWORD))(v2 + 64))(*(_QWORD*)(v2 + 64));
               }
@@ -3131,7 +3139,8 @@ LABEL_33:
                 }
               }
               v101 = *(_QWORD*)(*(_QWORD*)(v2 + 64) + 48LL);
-              if ((*(unsigned int (**)(void))(v101 + 24))() == 0) {
+              if ((*(unsigned int (**)(void*))(v101 + 24))(
+                      (void*)*(_QWORD*)(v2 + 64)) == 0) {
                 *(_DWORD*)(**(_QWORD**)(v2 + 64) + 40LL) = 25;
                 (***(void (****)(_QWORD))(v2 + 64))(*(_QWORD*)(v2 + 64));
               }
@@ -3148,7 +3157,8 @@ LABEL_33:
               *(_QWORD*)(v2 + 40) = v103;
               if (v103 == 0) {
                 v104 = *(_QWORD*)(*(_QWORD*)(v2 + 64) + 48LL);
-                if ((*(unsigned int (**)(void))(v104 + 24))() == 0) {
+                if ((*(unsigned int (**)(void*))(v104 + 24))(
+                        (void*)*(_QWORD*)(v2 + 64)) == 0) {
                   *(_DWORD*)(**(_QWORD**)(v2 + 64) + 40LL) = 25;
                   (***(void (****)(_QWORD))(v2 + 64))(*(_QWORD*)(v2 + 64));
                 }
@@ -3210,7 +3220,8 @@ LABEL_33:
           }
         }
         v56 = *(_QWORD*)(*(_QWORD*)(v2 + 64) + 48LL);
-        if ((*(unsigned int (**)(void))(v56 + 24))() == 0) {
+        if ((*(unsigned int (**)(void*))(v56 + 24))(
+                (void*)*(_QWORD*)(v2 + 64)) == 0) {
           *(_DWORD*)(**(_QWORD**)(v2 + 64) + 40LL) = 25;
           (***(void (****)(_QWORD))(v2 + 64))(*(_QWORD*)(v2 + 64));
         }
@@ -3227,7 +3238,8 @@ LABEL_33:
         *(_QWORD*)(v2 + 40) = v58;
         if (v58 == 0) {
           v59 = *(_QWORD*)(*(_QWORD*)(v2 + 64) + 48LL);
-          if ((*(unsigned int (**)(void))(v59 + 24))() == 0) {
+          if ((*(unsigned int (**)(void*))(v59 + 24))(
+                  (void*)*(_QWORD*)(v2 + 64)) == 0) {
             *(_DWORD*)(**(_QWORD**)(v2 + 64) + 40LL) = 25;
             (***(void (****)(_QWORD))(v2 + 64))(*(_QWORD*)(v2 + 64));
           }
@@ -3287,7 +3299,8 @@ LABEL_33:
             }
           }
           v113 = *(_QWORD*)(*(_QWORD*)(v2 + 64) + 48LL);
-          if ((*(unsigned int (**)(void))(v113 + 24))() == 0) {
+          if ((*(unsigned int (**)(void*))(v113 + 24))(
+                  (void*)*(_QWORD*)(v2 + 64)) == 0) {
             *(_DWORD*)(**(_QWORD**)(v2 + 64) + 40LL) = 25;
             (***(void (****)(_QWORD))(v2 + 64))(*(_QWORD*)(v2 + 64));
           }
@@ -3304,7 +3317,8 @@ LABEL_33:
           *(_QWORD*)(v2 + 40) = v115;
           if (v115 == 0) {
             v116 = *(_QWORD*)(*(_QWORD*)(v2 + 64) + 48LL);
-            if ((*(unsigned int (**)(void))(v116 + 24))() == 0) {
+            if ((*(unsigned int (**)(void*))(v116 + 24))(
+                    (void*)*(_QWORD*)(v2 + 64)) == 0) {
               *(_DWORD*)(**(_QWORD**)(v2 + 64) + 40LL) = 25;
               (***(void (****)(_QWORD))(v2 + 64))(*(_QWORD*)(v2 + 64));
             }
@@ -3561,7 +3575,7 @@ __int64 SdkHr_4a7f0(__int64 a1, __int64 a2, _DWORD* a3, __int64 a4, __int64 a5,
 {
   __int64 result;
 
-  result = (*(__int64 (**)(void))(*(_QWORD*)(a1 + 640) + 24LL))();
+  result = (*(__int64 (**)(void*))(*(_QWORD*)(a1 + 640) + 24LL))((void*)a1);
   ++*a6;
   ++*a3;
   return result;
@@ -3612,7 +3626,7 @@ __int64 SdkHr_4bae0(__int64 a1, _QWORD* a2)
     v9 = a2;
     *(_DWORD*)(*(_QWORD*)(a1 + 616) + 36LL) += *(_DWORD*)(v2 + 32) / 8;
     *(_DWORD*)(v2 + 32) = 0;
-    result = (*(__int64 (**)(void))(*(_QWORD*)(a1 + 616) + 16LL))();
+    result = (*(__int64 (**)(void*))(*(_QWORD*)(a1 + 616) + 16LL))((void*)a1);
     if ((_DWORD)result == 0) {
       return result;
     }
@@ -9786,7 +9800,7 @@ __int64 SdkHr_cbac0(__int64 a1)
     }
     else if (v4 != 0) {
       v14 = nullptr;
-      SdkRoutine_85a9c0(&v14, 3104258);
+      SdkRoutine_85a9c0((void*)&v14, 3104258);
       v15 = *(_QWORD**)(a1 + 16);
       result = (*(__int64 (**)(_QWORD*, _QWORD**))(*v14 + 1056LL))(v14, &v15);
       if ((_DWORD)result == 0) {
@@ -9804,7 +9818,7 @@ __int64 SdkHr_cbac0(__int64 a1)
               break;
             }
             v12 = nullptr;
-            SdkRoutine_85a750(&v12, v13);
+            SdkRoutine_85a750((void*)&v12, v13);
             v7 = v12;
             if (v12 == nullptr) {
               result = 3226114;
@@ -9817,8 +9831,8 @@ __int64 SdkHr_cbac0(__int64 a1)
                 v8, &v15);
             if (v15 != nullptr) {
               v9 = result;
-              (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v15 + 8LL))(v15,
-                                                                        v15);
+              (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(
+                  *v15 + 8LL))((void*)v15, v15);
               result = v9;
             }
             if ((_DWORD)result != 0) {
@@ -9840,7 +9854,8 @@ __int64 SdkHr_cbac0(__int64 a1)
       }
       if (v14 != nullptr) {
         v10 = result;
-        (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v14 + 8LL))(v14, v14);
+        (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(
+            *v14 + 8LL))((void*)v14, v14);
         return v10;
       }
     }
@@ -10182,7 +10197,8 @@ __int64 SdkHr_da070(__int64** a1)
           }
         LABEL_15:
           v17 = result;
-          (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v16 + 8LL))(v16, v16);
+          (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(
+              *v16 + 8LL))((void*)v16, v16);
           return v17;
         }
         v13 = **a1;
@@ -10192,7 +10208,8 @@ __int64 SdkHr_da070(__int64** a1)
         v21[0] = 0;
         if (v14 != nullptr) {
           v15 = result;
-          (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v14 + 8LL))(v14, v14);
+          (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(
+              *v14 + 8LL))((void*)v14, v14);
           result = v15;
           v16 = v20;
           if (v20 == nullptr) {
@@ -11137,7 +11154,8 @@ __int64 SdkHr_ddf40(_QWORD* a1)
   a1[1] = 0;
   if (v1 != nullptr) {
     v2 = a1;
-    (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v1 + 8LL))(v1, v1);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v1 + 8LL))(
+        (void*)v1, v1);
     a1 = v2;
   }
   return SdkRoutine_85a0b0(a1, 24);
@@ -11226,9 +11244,10 @@ __int64 SdkHr_de1c0(__int64 a1)
   *(_QWORD*)a1 = SdkData_e86d70 + 16;
   if ((*(_BYTE*)(a1 + 8) & 1) != 0) {
     v1 = a1;
-    (*(void (**)(_QWORD* __return_ptr, _QWORD, _QWORD, unsigned __int64,
-                 __int64))(**(_QWORD**)(a1 + 32) + 24LL))(
-        *(_QWORD**)(a1 + 32), *(_QWORD*)(a1 + 32), *(_QWORD*)(a1 + 24),
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD, _QWORD,
+                                            unsigned __int64, __int64))(
+        **(_QWORD**)(a1 + 32) + 24LL))(
+        (void*)*(_QWORD**)(a1 + 32), *(_QWORD*)(a1 + 32), *(_QWORD*)(a1 + 24),
         *(_QWORD*)(a1 + 8) & 0xFFFFFFFFFFFFFFFELL, 16);
     a1 = v1;
   }
@@ -11363,7 +11382,8 @@ __int64 SdkHr_e04f0()
     v8 = (_QWORD*)SdkData_eaf450;
     SdkData_eaf450 = (__int64)v7;
     if (v8 != nullptr) {
-      (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v8 + 8LL))(v8, v8);
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v8 + 8LL))(
+          (void*)v8, v8);
     }
     v9 = SdkRoutine_f34f0(&SdkData_eaf8c0, v5);
     ++HIDWORD(SdkData_eaf8e8);
@@ -11510,7 +11530,8 @@ LABEL_12:
   v5 = (_QWORD*)SdkData_eaf460;
   SdkData_eaf460 = (__int64)v4;
   if (v5 != nullptr) {
-    (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v5 + 8LL))(v5, v5);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v5 + 8LL))(
+        (void*)v5, v5);
   }
   SdkRoutine_858b60(&SdkData_eaf638);
   v6 = SdkData_eaf640;
@@ -11627,7 +11648,8 @@ LABEL_12:
   v5 = (_QWORD*)SdkData_eaf470;
   SdkData_eaf470 = (__int64)v4;
   if (v5 != nullptr) {
-    (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v5 + 8LL))(v5, v5);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v5 + 8LL))(
+        (void*)v5, v5);
   }
   SdkRoutine_858b60(&SdkData_eaf780);
   v6 = SdkData_eaf788;
@@ -14040,7 +14062,7 @@ __int64 SdkHr_ffee0(_QWORD* a1)
     v3 = &v31;
     v1 = a1;
     v31 = 0;
-    SdkRoutine_85a9c0(&v31, a1);
+    SdkRoutine_85a9c0((void*)&v31, a1);
     v29 = 0;
     v30 = 0;
     v27 = 0;
@@ -14446,7 +14468,8 @@ __int64 SdkHr_1021a0(_QWORD* a1)
   a1[1] = 0;
   if (v1 != nullptr) {
     v2 = a1;
-    (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v1 + 8LL))(v1, v1);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v1 + 8LL))(
+        (void*)v1, v1);
     a1 = v2;
   }
   return SdkRoutine_85a0b0(a1, 16);

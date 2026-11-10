@@ -70,7 +70,7 @@ void game_combat_CombatCharacterObserver_CombatCharacterObserver_lambda1_Invoke(
           if (v9_.v10 != nullptr) {
             v8 = 40;
           LABEL_12:
-            (*(void (**)(long double))(*v9_.v10 + v8))(v7);
+            (*(void (**)(void*))(*v9_.v10 + v8))(v9_.v10);
           }
         }
         GameRoutine_10f15b0();

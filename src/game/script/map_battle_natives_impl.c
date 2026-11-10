@@ -120,7 +120,7 @@ LABEL_16:
       }
       v28 = 40;
     }
-    return (_QWORD*)(*(__int64 (**)(void))(*result + v28))();
+    return (_QWORD*)(*(__int64 (**)(void*))(*result + v28))(result);
   }
   game_script_StartWaitProc();
   v16 = (_QWORD*)*v11;

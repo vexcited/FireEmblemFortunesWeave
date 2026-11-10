@@ -2,8 +2,8 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_188aa00(_QWORD* __return_ptr, _QWORD, _QWORD);
-_QWORD* GameRoutine_9b8fe0(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_188aa00(PSEUDO_X8, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_9b8fe0(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_1760e40(__int64, unsigned int);
 __int64 GameRoutine_1762890(__int64, unsigned int);
 __int64 GameRoutine_1889ae0(_QWORD, _QWORD);
@@ -43,7 +43,7 @@ __int64 TelopDivinationResult_Unknown57(__int64 result)
   v4 = GameRoutine_1760e40(result, 0);
   v13[0] = "L_Txt";
   v13[1] = 5;
-  GameRoutine_9b8fe0(&v14, v4, v13);
+  GameRoutine_9b8fe0((void*)&v14, v4, v13);
   result = v15;
   if (v15 != 0) {
     v5 = std___1___shared_weak_count_lock(v15);
@@ -63,7 +63,7 @@ __int64 TelopDivinationResult_Unknown57(__int64 result)
       }
       GameRoutine_60a020(v7 + 14704, v9);
       GameRoutine_188ab20(v6, "MID_Sys_Result_Msg_GetReward");
-      GameRoutine_188aa00(&v14, v6, 0);
+      GameRoutine_188aa00((void*)&v14, v6, 0);
       result = v15;
       if (v15 != 0) {
         v10 = std___1___shared_weak_count_lock(v15);

@@ -146,7 +146,7 @@ __int64 gfxa_Task3DUI_Impl_draw(__int64 a1, _QWORD* a2, _QWORD* a3, _QWORD* a4,
     }
     v39 = 40;
   }
-  (*(void (**)(void))(*v61 + v39))();
+  (*(void (**)(void*))(*v61 + v39))(v61);
 LABEL_6:
   GameRoutine_a73d40(*((_QWORD*)a5 + 2), a4);
   gxc_NvnStateCache_Reset(a4[1]);
@@ -195,7 +195,7 @@ LABEL_6:
   if (v61 != nullptr) {
     v57 = 40;
   LABEL_10:
-    (*(void (**)(void))(*v61 + v57))();
+    (*(void (**)(void*))(*v61 + v57))(v61);
   }
   GameRoutine_a73e50(*((_QWORD*)a5 + 2), a4);
   return (unsigned int)(v56 + v38);

@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_145c3e0(void);
 __int64 GameRoutine_149e3e0(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_155fbe0(_QWORD, _QWORD);
@@ -195,7 +195,7 @@ __int64 ProcFastTravelMenu_Unknown84(__int64* a1)
   *(_QWORD*)(v3 + 20) = -1;
   *(_QWORD*)(v3 + 28) = -1;
   *(_QWORD*)(v3 + 36) = -1;
-  GameRoutine_1560070(&v40, a1 + 119, "L_PageTab");
+  GameRoutine_1560070((void*)&v40, a1 + 119, "L_PageTab");
   v42 = (__int64)GameData_2082af0;
   v9 = *a1;
   v46 = &v42;
@@ -210,7 +210,7 @@ __int64 ProcFastTravelMenu_Unknown84(__int64* a1)
     }
     v11 = 40;
   }
-  (*(void (**)(void))(*v46 + v11))();
+  (*(void (**)(void*))(*v46 + v11))(v46);
 
 LABEL_11:
   if (v41 != 0) {
@@ -255,7 +255,7 @@ LABEL_11:
     }
   }
   v19 = fw_memory_HeapManager_Allocate(*v4, 816, 16, 0);
-  GameRoutine_1560070(&v38, a1 + 106, "L_Map");
+  GameRoutine_1560070((void*)&v38, a1 + 106, "L_Map");
   *(_QWORD*)v19 = GameData_2132210[0] + 2;
   *(_QWORD*)(v19 + 8) = 0x3F80000000000001LL;
   v20 = v39;

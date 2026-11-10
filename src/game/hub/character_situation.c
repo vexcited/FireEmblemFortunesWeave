@@ -10,7 +10,7 @@ extern __int64 GameData_21f3ce0;
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern int GameData_2228b18;
 _QWORD* CharacterSituation_Destructor(_QWORD* result);
-_QWORD* GameRoutine_112eec0(_QWORD* __return_ptr, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_112eec0(PSEUDO_X8, _QWORD);
 __int64 GameRoutine_64df20(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_6b7aa0(_QWORD);
 __int64 GameRoutine_f96ec0(__int64, _QWORD*, __int64, __int64, bool*);
@@ -3346,7 +3346,7 @@ __int64 game_hub_CharacterSituation_Rebuild_lambda0_Invoke(__int64 a1,
     }
     GameRoutine_6b7aa0(&v67);
     if (v71) {
-      GameRoutine_112eec0(v61, v3);
+      GameRoutine_112eec0((void*)v61, v3);
       if ((v61[0] & 1) != 0) {
         v7 = v62;
       }

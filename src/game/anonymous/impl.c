@@ -5321,7 +5321,7 @@ LABEL_7:
     }
     v10 = 40;
   }
-  (*(void (**)(long double))(*v9 + v10))(*(long double*)&v4);
+  (*(void (**)(void*))(*v9 + v10))(v9);
 LABEL_20:
   v11 = (_QWORD*)v0[10];
   if (v11 == v0 + 6) {
@@ -5333,7 +5333,7 @@ LABEL_20:
     }
     v12 = 40;
   }
-  (*(void (**)(long double))(*v11 + v12))(*(long double*)&v4);
+  (*(void (**)(void*))(*v11 + v12))(v11);
 LABEL_25:
   v13 = (_QWORD*)v0[4];
   if (v13 == v0) {
@@ -5343,7 +5343,7 @@ LABEL_25:
   if (v13 != nullptr) {
     v14 = 40;
   LABEL_29:
-    (*(void (**)(long double))(*v13 + v14))(*(long double*)&v4);
+    (*(void (**)(void*))(*v13 + v14))(v13);
   }
   v15 = 128;
   if (*(_QWORD*)(*(_QWORD*)v6 + 200LL) == 0) {

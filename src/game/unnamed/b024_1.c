@@ -142,7 +142,7 @@ __int64 GameRoutine_155f480(_QWORD, _QWORD);
 
 __int64 GameRoutine_155fbe0(_QWORD, _QWORD);
 
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 
 __int64 GameRoutine_1560ec0(_QWORD, _QWORD, _QWORD);
 
@@ -984,7 +984,7 @@ __int64 GameHr_17b92d0(__int64 a1, unsigned int a2, unsigned int a3)
       *(_BYTE*)(v10 + 88) |= 0x10u;
       *(float*)(v10 + 80) = v12;
     }
-    GameRoutine_1560070(&v13, v5, "L_DagsionHp");
+    GameRoutine_1560070((void*)&v13, v5, "L_DagsionHp");
     GameRoutine_16503d0(&v13, a3);
     result = v14;
     if (v14 != 0) {
@@ -1040,7 +1040,7 @@ void GameHr_17bcf90()
     if (((*(__int64 (**)(_QWORD*, _QWORD))(v1[707] + 16LL))(
              v1 + 707, *(_QWORD*)(*(_QWORD*)(GameData_21f1658 + 16) + 96LL)) &
          1) != 0) {
-      GameRoutine_1560070(&v5, v1[2], "L_SpotDetail");
+      GameRoutine_1560070((void*)&v5, v1[2], "L_SpotDetail");
       if (((*(__int64 (**)(_QWORD*, __int64))(v1[707] + 16LL))(v1 + 707, v0) &
            1) != 0) {
         v2 = v6;
@@ -1574,7 +1574,8 @@ __int64 GameHr_17c3690(__int64 a1, int a2)
   _QWORD* v10;
   __int64 v11;
 
-  GameRoutine_1560070(&v10, a1 + 24, "L_TargetHP_Gauge/L_GaugeR_HPStock");
+  GameRoutine_1560070((void*)&v10, a1 + 24,
+                      "L_TargetHP_Gauge/L_GaugeR_HPStock");
   result = v11;
   if (v11 != 0) {
     v4 = GameRoutine_1a0a0c0(v11);
@@ -1635,7 +1636,7 @@ __int64 GameHr_17c6540(__int64 a1, char a2)
   __int64 v9;
   __int64 v10;
 
-  GameRoutine_1560070(&v9, a1 + 24, "L_Link_Equip00");
+  GameRoutine_1560070((void*)&v9, a1 + 24, "L_Link_Equip00");
   result = v10;
   if (v10 != 0) {
     v4 = GameRoutine_1a0a0c0(v10);

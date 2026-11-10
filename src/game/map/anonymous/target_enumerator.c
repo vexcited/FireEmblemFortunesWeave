@@ -1118,7 +1118,7 @@ __int64 TargetEnumerator_77cc80(__int64 a1, int* a2, unsigned int a3,
           if (v161 != nullptr) {
             v103 = 40;
           LABEL_158:
-            (*(void (**)(void))(*v161 + v103))();
+            (*(void (**)(void*))(*v161 + v103))(v161);
           }
         LABEL_159:
           if (v164 < 0 ||
@@ -1188,7 +1188,7 @@ __int64 TargetEnumerator_77cc80(__int64 a1, int* a2, unsigned int a3,
                   }
                   v114 = 40;
                 }
-                (*(void (**)(void))(*v161 + v114))();
+                (*(void (**)(void*))(*v161 + v114))(v161);
               LABEL_183:
                 if (v165 != 0) {
                 LABEL_126:
@@ -1208,7 +1208,7 @@ __int64 TargetEnumerator_77cc80(__int64 a1, int* a2, unsigned int a3,
           else {
             v113 = 32;
           }
-          (*(void (**)(void))(*v105 + v113))();
+          (*(void (**)(void*))(*v105 + v113))(v105);
           goto LABEL_178;
         }
         v102 = 40;
@@ -1217,7 +1217,7 @@ __int64 TargetEnumerator_77cc80(__int64 a1, int* a2, unsigned int a3,
     else {
       v102 = 32;
     }
-    (*(void (**)(void))(*v94 + v102))();
+    (*(void (**)(void*))(*v94 + v102))(v94);
     goto LABEL_154;
   }
   if (v31 == 3) {
@@ -2030,13 +2030,14 @@ game_map_anonymous_TargetEnumerator_AssistSkill_closure_Clone(__int64 a1)
     if (v3 == (_QWORD*)(a1 + 32)) {
       v4 = result;
       *(_QWORD*)(result + 64) = result + 32;
-      (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v3 + 24LL))(v3, v3);
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v3 + 24LL))(
+          (void*)v3, v3);
     }
     else {
       v4 = result;
-      *(_QWORD*)(result + 64) =
-          (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD*))(*v3 + 16LL))(v3,
-                                                                         v3);
+      *(_QWORD*)(result + 64) = X8CALL_X0(
+          _QWORD*, (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(
+                       *v3 + 16LL))((void*)v3, v3));
     }
     return v4;
   }
@@ -2061,8 +2062,9 @@ _QWORD* game_map_anonymous_TargetEnumerator_AssistSkill_closure_CloneInto(
           result[8]);
     }
     else {
-      result = (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD))(*v3 + 16LL))(
-          v3, result[8]);
+      result = X8CALL_X0(
+          _QWORD*, (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD))(
+                       *v3 + 16LL))((void*)v3, result[8]));
       *(_QWORD*)(a2 + 64) = result;
     }
   }
@@ -2389,12 +2391,14 @@ _QWORD* game_map_anonymous_TargetEnumerator_Cannon_closure_Clone(_QWORD* a1)
     v4 = result;
     if (v3 == a1 + 4) {
       result[8] = result + 4;
-      (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v3 + 24LL))(v3, v3);
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v3 + 24LL))(
+          (void*)v3, v3);
       result = v4;
     }
     else {
-      v5 = (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD))(*v3 + 16LL))(v3,
-                                                                         a1[8]);
+      v5 = X8CALL_X0(
+          _QWORD*, (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD))(
+                       *v3 + 16LL))((void*)v3, a1[8]));
       result = v4;
       v4[8] = v5;
     }

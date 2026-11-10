@@ -2,7 +2,8 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_ada070(_QWORD* __return_ptr, _QWORD, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_ada070(PSEUDO_X8, _QWORD, _QWORD,
+                                                   _QWORD);
 __int64 GameRoutine_6360e0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_ad69c0(_QWORD);
 __int64 GameRoutine_ad6bb0(void);
@@ -119,7 +120,7 @@ __int64 ModelResource_Unknown2(__int64 a1)
              *(const char**)(v4 + 48));
     v7 = strlen(v20);
     v19 = nullptr;
-    GameRoutine_ada070(&v23, v20, v7, v18);
+    GameRoutine_ada070((void*)&v23, v20, v7, v18);
     v8 = v23;
     v9 = *(_QWORD*)(v4 + 184);
     v23 = 0;
@@ -151,7 +152,7 @@ __int64 ModelResource_Unknown2(__int64 a1)
     if (v19 != nullptr) {
       v14 = 40;
     LABEL_18:
-      (*(void (**)(void))(*(_QWORD*)v19 + v14))();
+      (*(void (**)(void*))(*(_QWORD*)v19 + v14))((void*)v19);
     }
   }
   a1 = v4;
@@ -240,7 +241,7 @@ __int64 ModelResource_Unknown3(__int64 a1)
                *(const char**)(a1 + 48));
       v7 = strlen(v21);
       v20 = nullptr;
-      GameRoutine_ada070(&v24, v21, v7, v19);
+      GameRoutine_ada070((void*)&v24, v21, v7, v19);
       v8 = v24;
       v9 = *(_QWORD*)(a1 + 184);
       v24 = 0;
@@ -272,7 +273,7 @@ __int64 ModelResource_Unknown3(__int64 a1)
       if (v20 != nullptr) {
         v14 = 40;
       LABEL_17:
-        (*(void (**)(void))(*(_QWORD*)v20 + v14))();
+        (*(void (**)(void*))(*(_QWORD*)v20 + v14))((void*)v20);
       }
     }
     *(_BYTE*)(a1 + 10) = 1;

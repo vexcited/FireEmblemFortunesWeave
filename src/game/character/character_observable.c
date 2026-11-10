@@ -929,7 +929,7 @@ __int64 game_character_CharacterObservable_CharacterObservable_lambda19_Invoke(
           }
           v13 = 40;
         }
-        return (*(__int64 (**)(long double))(*v14_.v15 + v13))(v12);
+        return (*(__int64 (**)(void*))(*v14_.v15 + v13))(v14_.v15);
       }
       else if ((*(_BYTE*)(v8 + 341) & 8) == 0) {
         *(_BYTE*)(*(_QWORD*)(v8 + 8) + 289LL) = v11 ^ 1;

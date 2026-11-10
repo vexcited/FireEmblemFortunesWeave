@@ -1743,7 +1743,7 @@ __int64 CharacterActor_1804600(_QWORD* a1, _QWORD* a2, __int64 a3)
     if (v61 != nullptr) {
       v14 = 40;
     LABEL_14:
-      (*(void (**)(void))(*(_QWORD*)v61 + v14))();
+      (*(void (**)(void*))(*(_QWORD*)v61 + v14))((void*)v61);
     }
   }
   if ((v58[0] & 1) != 0 && v59 != 0) {
@@ -1797,7 +1797,7 @@ __int64 CharacterActor_1804600(_QWORD* a1, _QWORD* a2, __int64 a3)
     if (v61 != nullptr) {
       v22 = 40;
     LABEL_33:
-      v21 = (*(__int64 (**)(void))(*(_QWORD*)v61 + v22))();
+      v21 = (*(__int64 (**)(void*))(*(_QWORD*)v61 + v22))((void*)v61);
     }
   }
   if ((v58[0] & 1) != 0 && v59 != 0) {

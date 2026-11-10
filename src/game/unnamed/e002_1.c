@@ -1350,8 +1350,8 @@ LABEL_13:
     v14 = v13;
     if ((GameRoutine_149a40(v13 - 5592, 14) & 1) != 0 &&
         (v12 & *(_BYTE*)(v14 + 297)) == 1) {
-      (*(void (**)(_QWORD* __return_ptr, __int64, _QWORD))(
-          *(_QWORD*)(v14 - 5592) + 440LL))(v20, v14 - 5592, 0);
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64, _QWORD))(
+          *(_QWORD*)(v14 - 5592) + 440LL))((void*)v20, v14 - 5592, 0);
       v15 = GameRoutine_112290(v20);
       if (v15 != 0) {
         v16 = v15 - 5592;

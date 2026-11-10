@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_1038880(_QWORD, _QWORD);
 __int64 GameRoutine_1560520(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_18438a0(_QWORD, _QWORD);
@@ -111,7 +111,7 @@ __int64 NpcIconList_Unknown2(__int64 a1, _QWORD* a2)
               }
             }
             v16 = std___1___shared_weak_count_lock(a2[1]);
-            GameRoutine_1560070(&v25, *a2, v32);
+            GameRoutine_1560070((void*)&v25, *a2, v32);
             result = v26;
             if (v26 != 0) {
               v17 = std___1___shared_weak_count_lock(v26);

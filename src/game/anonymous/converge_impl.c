@@ -1900,12 +1900,15 @@ _QWORD* game_anonymous_ConvergeImpl_TryRunConverge_closure4_Clone(__int64 a1)
     if (v4 == (_QWORD*)(a1 + 16)) {
       result[6] = v3;
       v5 = result;
-      (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v4 + 24LL))(v4, v4);
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v4 + 24LL))(
+          (void*)v4, v4);
     }
     else {
       v5 = result;
-      result[6] = (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD*, _QWORD*))(
-          *v4 + 16LL))(v4, v4, v3);
+      result[6] = X8CALL_X0(
+          _QWORD*,
+          (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*, _QWORD*))(
+              *v4 + 16LL))((void*)v4, v4, v3));
     }
     return v5;
   }

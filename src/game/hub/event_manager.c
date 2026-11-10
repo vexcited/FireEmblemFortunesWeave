@@ -9,7 +9,7 @@ extern __int64 (*game_hub_EventManager_vtable[])();
 extern __int64 GameData_21f3c98;
 extern int GameData_220b700;
 __int64 EventManager_Destructor(_QWORD* a1);
-_QWORD* GameRoutine_d59720(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_d59720(PSEUDO_X8, _QWORD, _QWORD);
 __int64 EventManager_cbb140(__int64 result);
 __int64 GameRoutine_cbc720(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_d83020(_QWORD, _QWORD);
@@ -802,7 +802,7 @@ __int64 EventManager_cbb8c0(__int64 a1, _DWORD* a2)
           }
         }
         if (*(_DWORD*)(v12 + 1244) == 1) {
-          GameRoutine_d59720(v22, v12, 3);
+          GameRoutine_d59720((void*)v22, v12, 3);
           if (v22[0] != 0) {
             v22[1] = v22[0];
             if (*(_QWORD*)(fw_memory_g_heap_manager + 200) != 0) {
@@ -918,7 +918,7 @@ __int64 EventManager_cbbb40(__int64 a1, __int64 a2)
   }
   if ((*(_BYTE*)(v7 + 1452) & 1) == 0) {
     if (*(_DWORD*)(v7 + 1244) == 1) {
-      GameRoutine_d59720(v15, v7, 3);
+      GameRoutine_d59720((void*)v15, v7, 3);
       if (v15[0] != 0) {
         v15[1] = v15[0];
         v14 = 128;

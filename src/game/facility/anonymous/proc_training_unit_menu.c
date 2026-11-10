@@ -27,7 +27,7 @@ bool game_facility_anonymous_ProcTrainingUnitMenu_OnInit_closure_Invoke_15f9930(
     __int64 a1, __int64 a2);
 __int64 game_facility_anonymous_ProcTrainingUnitMenu_CreateBind_closure_Invoke(
     __int64 a1, __int64* a2);
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 LayoutAccessor_1562680(_QWORD, _QWORD, float);
 __int64 game_util_Format(const char*, ...);
 __int64 std___1___shared_weak_count___release_weak(_QWORD);
@@ -324,7 +324,7 @@ game_facility_anonymous_ProcTrainingUnitMenu_OnInit_closure_Invoke_15f97a0(
 
   v3 = **(_QWORD**)(a1 + 8);
   v4 = game_util_Format("L_MasteryInfoItem%02d", *a3);
-  GameRoutine_1560070(&v8, v3, v4);
+  GameRoutine_1560070((void*)&v8, v3, v4);
   result = v9;
   if (v9 != 0) {
     v6 = std___1___shared_weak_count_lock(v9);

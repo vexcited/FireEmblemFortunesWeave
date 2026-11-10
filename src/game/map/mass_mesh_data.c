@@ -159,7 +159,7 @@ __int64 MassMeshData_f44c80(__int64 result)
     do {
       v8 = v1[6];
       *((_BYTE*)v1 + 272) = 0;
-      result = (*(__int64 (**)(void))(v8 + 48))();
+      result = (*(__int64 (**)(void*))(v8 + 48))(&v1[6]);
       if ((result & 1) != 0) {
         v9 = 1036831949;
       }
@@ -190,7 +190,7 @@ __int64 MassMeshData_f44c80(__int64 result)
     do {
       v13 = v4[6];
       *((_BYTE*)v4 + 272) = 0;
-      result = (*(__int64 (**)(void))(v13 + 48))();
+      result = (*(__int64 (**)(void*))(v13 + 48))(&v4[6]);
       if ((result & 1) != 0) {
         v14 = 1036831949;
       }
@@ -221,7 +221,7 @@ __int64 MassMeshData_f44c80(__int64 result)
     do {
       v17 = v5[6];
       *((_BYTE*)v5 + 272) = 0;
-      result = (*(__int64 (**)(void))(v17 + 48))();
+      result = (*(__int64 (**)(void*))(v17 + 48))(&v5[6]);
       if ((result & 1) != 0) {
         v18 = 1036831949;
       }
@@ -253,7 +253,7 @@ __int64 MassMeshData_f44c80(__int64 result)
     do {
       v21 = v6[6];
       *((_BYTE*)v6 + 272) = 0;
-      result = (*(__int64 (**)(void))(v21 + 48))();
+      result = (*(__int64 (**)(void*))(v21 + 48))(&v6[6]);
       if ((result & 1) != 0) {
         v22 = 1036831949;
       }

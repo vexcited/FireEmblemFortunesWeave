@@ -5,7 +5,7 @@
 struct PseudoSret {
   _QWORD words[3];
 };
-_QWORD* GameRoutine_629620(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_629620(PSEUDO_X8, _QWORD, _QWORD);
 __int64 BuildThread_Unknown2(_QWORD);
 __int64 GameRoutine_1000();
 __int64 GameRoutine_18df280(_QWORD, _QWORD);
@@ -2279,7 +2279,9 @@ _QWORD* Registration_626c40(__int64 a1)
     result = (_QWORD*)(*(__int64 (**)(_QWORD*))(*result + 472LL))(result);
     if (result != nullptr) {
       v4 = *(_DWORD*)(a1 + 8);
-      result = GameRoutine_629620(&v7, as_g_script_manager, *(_QWORD*)a1);
+      result =
+          X8CALL_X0(_QWORD*, GameRoutine_629620((void*)&v7, as_g_script_manager,
+                                                *(_QWORD*)a1));
       if (v8 != 0x2000) {
         v5 = (_QWORD*)((char*)&as_g_context_slots + 16 * v8);
         v6 = v5[1];

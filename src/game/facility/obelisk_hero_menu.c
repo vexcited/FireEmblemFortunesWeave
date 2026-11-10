@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_14a10d0(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_14a3920(_QWORD);
 __int64 GameRoutine_1562680(_QWORD, _QWORD, float);
@@ -247,12 +247,12 @@ __int64 ObeliskHeroMenu_1661e20(__int64 a1)
   __int64 v12;
 
   if ((*(_BYTE*)(a1 + 1076) & 1) == 0) {
-    GameRoutine_1560070(&v8, a1 + 848, "L_ArrowL");
+    GameRoutine_1560070((void*)&v8, a1 + 848, "L_ArrowL");
     GameRoutine_159e2c0(&v8, 0);
     if (v9 != 0) {
       std___1___shared_weak_count___release_weak(v9);
     }
-    GameRoutine_1560070(&v6, a1 + 848, "L_ArrowR");
+    GameRoutine_1560070((void*)&v6, a1 + 848, "L_ArrowR");
     GameRoutine_159e2c0(&v6, 0);
     if (v7 != 0) {
       std___1___shared_weak_count___release_weak(v7);

@@ -863,9 +863,11 @@ void game_map_fe96c0(__int64 a1)
         *((_QWORD*)&v31 + 1) = LANES128(v29).n128_u32[2];
         *(_OWORD*)(a1 + 48) = v31;
         *(_OWORD*)(a1 + 64) = v30;
-        v32 = (*(_QWORD * (**)(float32x4_t * __return_ptr, __int64))(
-            *(_QWORD*)(*(_QWORD*)(v25 + 48) + 16LL) + 16LL))(
-            &v76, *(_QWORD*)(v25 + 48) + 16LL),
+        v32 = X8CALL_X0(
+            _QWORD*,
+            (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64))(
+                *(_QWORD*)(*(_QWORD*)(v25 + 48) + 16LL) + 16LL))(
+                (void*)&v76, *(_QWORD*)(v25 + 48) + 16LL)),
         v10 = COERCE_AS(__typeof__(v10), PSEUDO_REGISTER(float, "s0", "=w")),
         v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(float, "s0", "=w"));
         v33 = *(char*)(a1 + 82);
@@ -3769,8 +3771,10 @@ _DWORD* game_map_1a01b50(float a1, float a2, __int64 a3, __int64 a4, __int64 a5,
                                                   8, a6, v19);
                 if (result != nullptr) {
                   v20 = a1 * a2;
-                  result = (*(_QWORD * (**)(__int64* __return_ptr))(
-                      *(_QWORD*)result + 32LL))(&v26);
+                  result = X8CALL_X0(
+                      _QWORD*, (*(__attribute__((swiftcall)) void (**)(
+                                   PSEUDO_X8, void*))(*(_QWORD*)result + 32LL))(
+                                   (void*)&v26, (void*)result));
                   LOWORD(v21) = v26;
                   v22 = *((float*)v17 + 20);
                   v23 = (float)v21;

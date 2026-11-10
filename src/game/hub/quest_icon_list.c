@@ -4,7 +4,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_1038880(_QWORD, _QWORD);
 __int64 GameRoutine_1560520(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_18f4a00(_QWORD);
@@ -149,7 +149,7 @@ __int64 QuestIconList_Unknown2(__int64 a1, __int64* a2)
         return result;
       }
       sprintf(v36, "L_Quest%d", 0);
-      GameRoutine_1560070(&v29, v11, v36);
+      GameRoutine_1560070((void*)&v29, v11, v36);
       result = v30;
       if (v30 != 0) {
         v13 = std___1___shared_weak_count_lock(v30);
@@ -210,7 +210,7 @@ __int64 QuestIconList_Unknown2(__int64 a1, __int64* a2)
         while (1) {
           sprintf(v36, "L_Quest%d", v21);
           GameRoutine_1560520(v11, "L_Quest0", "N_Quest", v36);
-          GameRoutine_1560070(&v29, v11, v36);
+          GameRoutine_1560070((void*)&v29, v11, v36);
           result = v30;
           if (v30 != 0) {
             v22 = std___1___shared_weak_count_lock(v30);

@@ -803,7 +803,7 @@ _QWORD* ProcGameSaveData_Destructor(__int64 a1)
     }
   }
   if (--GameData_21f61c8 == 0) {
-    (*(void (**)(void))(GameData_21f61c0[0] + 8))();
+    (*(void (**)(void*))(GameData_21f61c0[0] + 8))((void*)&GameData_21f61c0[0]);
   }
   v5 = *(_QWORD*)(a1 + 312);
   if (v5 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v5 + 8),

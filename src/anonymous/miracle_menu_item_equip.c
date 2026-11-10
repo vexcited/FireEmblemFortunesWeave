@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_136a920(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_156c5d0(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_157bfb0(_QWORD, _QWORD);
@@ -84,7 +84,7 @@ __int64 MiracleMenuItem_Equip_OnSelect(__int64 a1)
   if (*(_BYTE*)(a1 + 79) != 0) {
     v2 = 520;
   }
-  (*(void (**)(void))(*(_QWORD*)a1 + v2))();
+  (*(void (**)(void*))(*(_QWORD*)a1 + v2))((void*)a1);
   return GameRoutine_185c1a0(a1);
 }
 
@@ -96,7 +96,7 @@ __int64 MiracleMenuItem_Equip_OnDeselect(__int64 a1)
   if (*(_BYTE*)(a1 + 79) != 0) {
     v2 = 520;
   }
-  (*(void (**)(void))(*(_QWORD*)a1 + v2))();
+  (*(void (**)(void*))(*(_QWORD*)a1 + v2))((void*)a1);
   return GameRoutine_185c1a0(a1);
 }
 
@@ -302,7 +302,7 @@ LABEL_14:
   }
 
 LABEL_19:
-  GameRoutine_1560070(&v77, v16, "L_MiracleLV/L_Lv");
+  GameRoutine_1560070((void*)&v77, v16, "L_MiracleLV/L_Lv");
   v17 = a1[12];
   v18 = GameRoutine_90c9e0(v17);
   v19 = GameRoutine_90cb60(a1[12]);
@@ -398,7 +398,7 @@ LABEL_64:
   }
 
 LABEL_68:
-  GameRoutine_1560070(&v75, v44, "L_MiracleLV/L_Gauge");
+  GameRoutine_1560070((void*)&v75, v44, "L_MiracleLV/L_Gauge");
   LODWORD(v45) = 1.0;
   if (v40 >= 1) {
     v46 = v40 - v29;
@@ -547,7 +547,7 @@ LABEL_84:
   }
 
 LABEL_89:
-  GameRoutine_1560070(&v79, v58, "L_MiracleLV");
+  GameRoutine_1560070((void*)&v79, v58, "L_MiracleLV");
   result = v80;
   if (v80 == 0) {
     return result;

@@ -1610,7 +1610,8 @@ __attribute__((swiftcall)) void collision_672120(PSEUDO_X8 x8_, __int128* a1,
       v19 = *(_QWORD*)(*(_QWORD*)v15 + 16LL);
       v31 = 0;
       v32 = v19;
-      (*(void (**)(__int64* __return_ptr))(*(_QWORD*)v18 + 176LL))(&v33);
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, void*))(
+          *(_QWORD*)v18 + 176LL))((void*)&v33, (void*)v18);
       if (v14 >= v39) {
         v14 = GameRoutine_675260(&v37, &v31);
         goto LABEL_16;
@@ -1969,10 +1970,11 @@ __attribute__((swiftcall)) void collision_672fa0(PSEUDO_X8 x8_, _OWORD* a1,
   v33 = v8;
   LODWORD(v34) = DWORD2(v8);
   v149 = 1;
-  result = (__int64)(*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD*, __int64*,
-                                     __int64*, __int64 (***)(), _QWORD*,
-                                     _QWORD*, _QWORD, int*))(*v7 + 88LL))(
-      v7, v7, &v40, &v31, &v42, v145, v147, 0, &v149);
+  result = (__int64)X8CALL_X0(
+      _QWORD*, (*(__attribute__((swiftcall)) void (**)(
+                   PSEUDO_X8, _QWORD*, __int64*, __int64*, __int64 (***)(),
+                   _QWORD*, _QWORD*, _QWORD, int*))(*v7 + 88LL))(
+                   (void*)v7, v7, &v40, &v31, &v42, v145, v147, 0, &v149));
   if ((result & 1) == 0) {
     goto LABEL_25;
   }
@@ -2017,8 +2019,9 @@ __attribute__((swiftcall)) void collision_672fa0(PSEUDO_X8 x8_, _OWORD* a1,
       v17 = *(_QWORD*)(*(_QWORD*)v13 + 16LL);
       v31 = 0;
       v32 = v17;
-      result = (__int64)(*(_QWORD * (**)(__int64* __return_ptr))(*(_QWORD*)v16 +
-                                                                 176LL))(&v33);
+      result = (__int64)X8CALL_X0(
+          _QWORD*, (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, void*))(
+                       *(_QWORD*)v16 + 176LL))((void*)&v33, (void*)v16));
       if (v12 >= v39) {
         result = GameRoutine_675260(&v37, &v31);
         v12 = result;

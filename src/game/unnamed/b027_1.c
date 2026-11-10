@@ -42,7 +42,7 @@ __int64 GameRoutine_155f480(_QWORD, _QWORD);
 
 __int64 GameRoutine_155fbe0(_QWORD, _QWORD);
 
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 
 __int64 GameRoutine_15613b0(_QWORD, _QWORD);
 
@@ -107,7 +107,7 @@ __int64 GameRoutine_746340(_QWORD, _QWORD);
 
 __int64 GameRoutine_930b90(_QWORD, _QWORD);
 
-_QWORD* GameRoutine_9b8fe0(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_9b8fe0(PSEUDO_X8, _QWORD, _QWORD);
 
 __int64 GameRoutine_9bcfa0(_QWORD, _QWORD);
 
@@ -463,7 +463,7 @@ __int64 GameHr_1a006e0(__int64 a1, __int64* a2, __int64* a3, __int64* a4,
       else {
         v28 = v55;
       }
-      GameRoutine_1560070(&v53, v11, v28);
+      GameRoutine_1560070((void*)&v53, v11, v28);
       result = v54;
       if (v54 != 0) {
         v29 = GameRoutine_1a0a0c0(v54);
@@ -1020,7 +1020,7 @@ __int64 GameHr_1a01a00(float a1, float a2, float a3, __int64 a4, __int64* a5,
         }
         return result;
       }
-      GameRoutine_1560070(&v19, v12, a6);
+      GameRoutine_1560070((void*)&v19, v12, a6);
       if (v20 != 0) {
         v14 = GameRoutine_1a0a0c0(v20);
         v15 = v19;
@@ -1885,7 +1885,7 @@ __int64 GameHr_1a075b0(__int64 a1)
 
   v30[0] = "L_Txt";
   v30[1] = 5;
-  GameRoutine_9b8fe0(&v31, a1 + 168, v30);
+  GameRoutine_9b8fe0((void*)&v31, a1 + 168, v30);
   if (v32 != 0) {
     v2 = GameRoutine_1a0a0c0(v32);
     v3 = v31;
@@ -1934,7 +1934,7 @@ __int64 GameHr_1a075b0(__int64 a1)
   }
 LABEL_27:
   if (*(_BYTE*)(a1 + 896) != 1) {
-    GameRoutine_1560070(&v28, a1 + 168, "L_ItemList");
+    GameRoutine_1560070((void*)&v28, a1 + 168, "L_ItemList");
     if (v29 == 0) {
       goto LABEL_49;
     }
@@ -1976,7 +1976,7 @@ LABEL_27:
                  337LL) &
        4) != 0 &&
       (*(_BYTE*)(a1 + 898) & 1) != 0) {
-    GameRoutine_1560070(&v31, a1 + 168, "L_Bg");
+    GameRoutine_1560070((void*)&v31, a1 + 168, "L_Bg");
     if (v32 != 0) {
       v17 = GameRoutine_1a0a0c0(v32);
       v18 = v31;

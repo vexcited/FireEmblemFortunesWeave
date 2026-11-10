@@ -127,7 +127,7 @@ _QWORD* fs_Manager_createFileSync_fs_BntxFile_closure_Invoke(__int64 a1,
                                                              __int64* a2);
 __int64 fs_Manager_createFileAsync_fs_PropertyFile_closure_Invoke(__int64 a1,
                                                                   __int64* a2);
-_QWORD* GameRoutine_632da0(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_632da0(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_1a0a680(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_573330(_QWORD);
 __int64 GameRoutine_59e700(_QWORD, _QWORD);
@@ -5279,7 +5279,7 @@ LABEL_11:
   if ((v6 & 1) == 0) {
     goto LABEL_40;
   }
-  GameRoutine_632da0(&v29, v2, v27);
+  GameRoutine_632da0((void*)&v29, v2, v27);
   GameRoutine_633980(v2, &v29);
   (*(void (**)(_DWORD*))(*(_QWORD*)v2 + 16LL))(v2);
   GameRoutine_632cd0(v4, v2);

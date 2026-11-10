@@ -30,7 +30,7 @@ __int64 StartBattleMenuItem_Unknown25(__int64 a1)
     }
     v3 = 40;
   }
-  (*(void (**)(void))(*(_QWORD*)v6 + v3))();
+  (*(void (**)(void*))(*(_QWORD*)v6 + v3))((void*)v6);
 
 LABEL_9:
   if (v2 != 0) {

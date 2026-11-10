@@ -360,8 +360,8 @@ void Actor_102150(__int64 a1, float* a2, float* a3, float* a4)
       v12 = v10;
       v13 = v11 * Listener_112af0();
       if (v13 != 1.0) {
-        (*(void (**)(__int64* __return_ptr, __int64))(*(_QWORD*)(v12 + 40) +
-                                                      1048LL))(&v21, v12 + 40);
+        (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64))(
+            *(_QWORD*)(v12 + 40) + 1048LL))((void*)&v21, v12 + 40);
         v14 = (*(float (**)(__int64))(*(_QWORD*)(v12 + 40) + 312LL))(v12 + 40);
         v15 = *a2 - v22;
         v25 = *a4 - v24;
@@ -377,8 +377,8 @@ void Actor_102150(__int64 a1, float* a2, float* a3, float* a4)
       v19 = *(float*)(a1 + 5728);
       v20 = v19 * Listener_112b10(v12);
       if (v20 != 1.0) {
-        (*(void (**)(__int64* __return_ptr, __int64))(*(_QWORD*)(v12 + 40) +
-                                                      1048LL))(&v21, v12 + 40);
+        (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64))(
+            *(_QWORD*)(v12 + 40) + 1048LL))((void*)&v21, v12 + 40);
         *a3 = v23 + (float)(v20 * (float)(*a3 - v23));
       }
     }
@@ -407,8 +407,9 @@ _QWORD* Actor_102300(_QWORD* result)
     if (v3 == 1) {
       *((_BYTE*)result + 5718) = 0;
       v4 = result;
-      (*(void (**)(_QWORD* __return_ptr, _QWORD))(
-          *(_QWORD*)result[703] + 88LL))((_QWORD*)result[703], result[703]);
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD))(
+          *(_QWORD*)result[703] + 88LL))((void*)(_QWORD*)result[703],
+                                         result[703]);
       result = v4;
     }
     v5 = *((_DWORD*)result + 1426);
@@ -417,8 +418,9 @@ _QWORD* Actor_102300(_QWORD* result)
     v8[0] = GameData_212e2d8 + 16;
     v8[1] = v6;
     v9 = v5;
-    return (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD*, _QWORD*))(
-        *v7 + 72LL))(v7, v7, v8);
+    return X8CALL_X0(_QWORD*, (*(__attribute__((swiftcall)) void (**)(
+                                  PSEUDO_X8, _QWORD*, _QWORD*))(*v7 + 72LL))(
+                                  (void*)v7, v7, v8));
   }
   return result;
 }

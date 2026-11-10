@@ -1730,7 +1730,8 @@ __int64 gfxa_MainPassImageProcess_SetupHeightFogPass(__int64 result,
           (*(void (**)(_QWORD*))(*v22 + 24LL))(v22);
         }
         else {
-          *(_QWORD*)(v13 + 368) = (*(__int64 (**)(void))(*v44 + 16LL))();
+          *(_QWORD*)(v13 + 368) =
+              (*(__int64 (**)(void*))(*v44 + 16LL))((void*)v44);
         }
         if (v44 == v43) {
           v23 = 32;
@@ -1739,7 +1740,7 @@ __int64 gfxa_MainPassImageProcess_SetupHeightFogPass(__int64 result,
         if (v44 != nullptr) {
           v23 = 40;
         LABEL_14:
-          (*(void (**)(void))(*v44 + v23))();
+          (*(void (**)(void*))(*v44 + v23))(v44);
         }
       }
       else {

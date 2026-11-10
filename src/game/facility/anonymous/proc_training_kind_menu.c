@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_13fa520(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_13fa520(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_1597c00(_QWORD, _QWORD);
 __int64 GameRoutine_15e77c0(_QWORD);
 __int64 GameRoutine_18b7c20(_QWORD);
@@ -25,7 +25,7 @@ extern __int64* GameData_212e008[9];
 extern char GameData_1a9f09e;
 __int64 ProcTrainingKindMenu_Unknown84(__int64 a1);
 __int64 ProcTrainingKindMenu_Unknown88(__int64 a1);
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_1575ab0(_QWORD, _QWORD, _QWORD);
 __int64 LayoutAccessor_1562cf0(_QWORD, _QWORD);
 __int64 game_util_Format(const char*, ...);
@@ -152,7 +152,7 @@ __int64 ProcTrainingKindMenu_Unknown88(__int64 a1)
       v4 = result;
       v12[0] = "L_Info";
       v12[1] = 6;
-      GameRoutine_13fa520(&v13, a1 + 848, v12);
+      GameRoutine_13fa520((void*)&v13, a1 + 848, v12);
       if (v14 != 0) {
         v7 = std___1___shared_weak_count_lock(v5, v6);
         v8 = v13;
@@ -232,13 +232,13 @@ __int64 ProcTrainingKindMenu_197d8e0(__int64 a1, unsigned int a2)
     v5 = *(_QWORD*)(v4 + 8LL * a2);
   }
   v6 = game_util_Format("L_UnitInfo%02d", a2);
-  GameRoutine_1560070(&v15, a1 + 848, v6);
+  GameRoutine_1560070((void*)&v15, a1 + 848, v6);
   GameRoutine_1575ab0(&v15, v5, 0xFFFFFFFFLL);
   if (v16 != 0) {
     std___1___shared_weak_count___release_weak(v16);
   }
   v7 = game_util_Format("L_UnitInfo%02d/L_UnitInfo", a2);
-  GameRoutine_1560070(&v13, a1 + 848, v7);
+  GameRoutine_1560070((void*)&v13, a1 + 848, v7);
   result = v14;
   if (v14 != 0) {
     v11 = std___1___shared_weak_count_lock(v8, v9);
@@ -281,7 +281,7 @@ game_facility_anonymous_ProcTrainingKindMenu_OnUpdateCursor_closure_Invoke(
   v3 = *a2;
   v5 = **(_QWORD**)(a1 + 8);
   v6 = game_util_Format("L_MasteryInfoItem%02d", *a3);
-  GameRoutine_1560070(&v13, v5, v6);
+  GameRoutine_1560070((void*)&v13, v5, v6);
   result = v14;
   if (v14 != 0) {
     v10 = std___1___shared_weak_count_lock(v7, v8);

@@ -265,7 +265,7 @@ void game_map_MapPanelTrickDestroy_UpdateTarget(__int64 a1)
       do {
         v9 = v2[6];
         *((_BYTE*)v2 + 272) = 0;
-        if (((*(__int64 (**)(void))(v9 + 48))() & 1) != 0) {
+        if (((*(__int64 (**)(void*))(v9 + 48))(&v2[6]) & 1) != 0) {
           v10 = 1036831949;
         }
         else {
@@ -896,7 +896,8 @@ void game_map_MapPanelTrickDestroy_UpdateTarget(__int64 a1)
             LABEL_186:
               v119 = *(_QWORD*)(v92 + 48);
               *(_BYTE*)(v92 + 272) = 1;
-              if (((*(__int64 (**)(void))(v119 + 48))() & 1) != 0) {
+              if (((*(__int64 (**)(void*))(v119 + 48))((void*)(v92 + 48)) &
+                   1) != 0) {
                 v120 = 1036831949;
               }
               else {

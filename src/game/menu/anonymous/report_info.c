@@ -6,7 +6,7 @@ __int64 GameRoutine_15e5e00(void);
 extern __int64 (*GameData_2088ae0[])();
 extern __int64 GameData_2260e80;
 __int64 ReportInfo_Destructor(__int64 a1);
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_136a920(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_15e5e00_alt1(_QWORD) __asm__("GameRoutine_15e5e00");
 __int64 GameRoutine_1842ae0(_QWORD, _QWORD, _QWORD);
@@ -153,7 +153,7 @@ game_menu_anonymous_ReportInfo_SetClearState_lambda0_Invoke(__int64 a1,
   v2 = *(_QWORD*)(a1 + 16);
   v3 = *a2;
   v5 = game_util_Format("L_Icon%02d", **(_DWORD**)(a1 + 8));
-  GameRoutine_1560070(&v24, v2, v5);
+  GameRoutine_1560070((void*)&v24, v2, v5);
   result = v25;
   if (v25 != 0) {
     v7 = std___1___shared_weak_count_lock(v25);

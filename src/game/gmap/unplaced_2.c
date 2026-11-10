@@ -897,7 +897,7 @@ void game_gmap_152cc00(__int64 a1, __n128 a2)
       }
       v40 = 40;
     }
-    (*(void (**)(long double))(*v39 + v40))(*(long double*)&a2),
+    (*(void (**)(void*))(*v39 + v40))(v39),
         v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v0", "=w"));
   LABEL_76:
     v46 = *(_QWORD*)(a1 + 8);
@@ -1044,7 +1044,7 @@ LABEL_103:
       }
       v62 = 40;
     }
-    (*(void (**)(long double))(*v61 + v62))(v54),
+    (*(void (**)(void*))(*v61 + v62))(v61),
         v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v0", "=w"));
   LABEL_115:
     v46 = *(_QWORD*)(a1 + 8);
@@ -1116,7 +1116,7 @@ LABEL_103:
   if (v71 == (_QWORD*)(v69 + 160)) {
     v72 = 32;
   LABEL_138:
-    (*(void (**)(long double))(*v71 + v72))(*(long double*)&v60),
+    (*(void (**)(void*))(*v71 + v72))(v71),
         v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v0", "=w"));
   }
   else if (v71 != nullptr) {

@@ -57,7 +57,7 @@ __int64 MovieEventHandler_18cbc40(__int64 a1)
       if (v9 == v8) {
         v2 = 32;
       LABEL_3:
-        result = (*(__int64 (**)(void))(*(_QWORD*)v9 + v2))();
+        result = (*(__int64 (**)(void*))(*(_QWORD*)v9 + v2))((void*)v9);
         goto LABEL_4;
       }
       if (v9 != nullptr) {

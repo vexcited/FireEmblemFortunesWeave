@@ -154,7 +154,7 @@ _QWORD* SceneCameraWorkUpdater_Destructor(_QWORD* result)
           }
           v4 = 40;
         }
-        (*(void (**)(void))(*v7 + v4))();
+        (*(void (**)(void*))(*v7 + v4))(v7);
       LABEL_6:
         if (*(_QWORD*)(*(_QWORD*)v2 + 200LL) != 0) {
           v5 = 128;
@@ -313,7 +313,7 @@ LABEL_35:
         }
         v35 = 40;
       }
-      (*(void (**)(void))(*v38 + v35))();
+      (*(void (**)(void*))(*v38 + v35))(v38);
     LABEL_63:
       if (*(_QWORD*)(*(_QWORD*)v2 + 200LL) != 0) {
         v36 = 128;

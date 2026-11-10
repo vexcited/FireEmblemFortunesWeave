@@ -121,7 +121,7 @@ __int64 ProcSaveReload_Unknown18(__int64 result)
   if (v4 != nullptr) {
     v5 = 40;
   LABEL_13:
-    (*(void (**)(void))(*v4 + v5))();
+    (*(void (**)(void*))(*v4 + v5))(v4);
     v1 = GameData_21eea58;
   }
   v6 = &GameData_1a9f09e;

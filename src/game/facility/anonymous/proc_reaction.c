@@ -2,7 +2,8 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_1950850(_QWORD* __return_ptr, _QWORD, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1950850(PSEUDO_X8, _QWORD, _QWORD,
+                                                    _QWORD);
 __int64 GameRoutine_14107c0(_QWORD, _QWORD);
 __int64 GameRoutine_14127e0(_QWORD, _QWORD);
 __int64 GameRoutine_1958ed0(_QWORD, _QWORD);
@@ -288,7 +289,8 @@ _QWORD* ProcReaction_1430380(__int64 a1, __int64 a2)
         *(_QWORD*)(v18 + 8) = 0xAF82E3A282E3AA83LL;
         *(_QWORD*)(v18 + 16) = 0x83E3A783E3B782E3LL;
         *(_QWORD*)(v18 + 24) = 0xBDA5E5AF89E85FB3LL;
-        result = GameRoutine_1950850(&v33, &v38, v7, 1);
+        result =
+            X8CALL_X0(_QWORD*, GameRoutine_1950850((void*)&v33, &v38, v7, 1));
         v19 = v34;
         if (v34 == 0) {
           goto LABEL_43;
@@ -348,7 +350,8 @@ _QWORD* ProcReaction_1430380(__int64 a1, __int64 a2)
         *(_QWORD*)(v26 + 8) = 0xAF82E3A282E3AA83LL;
         *(_QWORD*)(v26 + 16) = 0x83E3A783E3B782E3LL;
         *(_QWORD*)(v26 + 24) = 0xAA82E6809CE65FB3LL;
-        result = GameRoutine_1950850(&v31, &v38, v7, 1);
+        result =
+            X8CALL_X0(_QWORD*, GameRoutine_1950850((void*)&v31, &v38, v7, 1));
         v19 = v32;
         if (v32 != 0) {
         LABEL_41:

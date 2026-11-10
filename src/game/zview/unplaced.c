@@ -11547,8 +11547,10 @@ _QWORD* game_zview_d95860(float* a1)
       do {
         v42 = v17;
         v23 = v20 + (float)((float)v21 * 0x1.99999a0000000p-4f);
-        result = (*(_QWORD * (**)(float32x4_t * __return_ptr, float*, float))(
-            *(_QWORD*)a1 + 16LL))(v43, a1, v23);
+        result = X8CALL_X0(
+            _QWORD*,
+            (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, float*, float))(
+                *(_QWORD*)a1 + 16LL))((void*)v43, a1, v23));
         v17 = v43[0];
         v25 = *((float**)a1 + 3);
         v24 = *((_QWORD*)a1 + 4);
@@ -12899,9 +12901,10 @@ void game_zview_daaeb0(_QWORD* a1, _QWORD* a2)
   else {
     v5 = (__int64)a1;
   }
-  v6 =
-      (unsigned int)(*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD*, __int64*))(
-          *v2 + 48LL))(v2, v2, &v29_.v29);
+  v6 = (unsigned int)X8CALL_X0(
+      _QWORD*,
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*, __int64*))(
+          *v2 + 48LL))((void*)v2, v2, &v29_.v29));
   v8 = v29_.v30;
   v9 = v6;
   if (v29_.v30 == 0 || atomic_fetch_add((atomic_ullong* volatile)(v29_.v30 + 8),

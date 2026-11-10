@@ -5,7 +5,7 @@
 struct PseudoSret {
   _QWORD words[3];
 };
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 Alignment_56b600(void);
 __int64 GameRoutine_10140c0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_155fbe0(_QWORD, _QWORD);
@@ -279,7 +279,7 @@ __int64 RelianceSelectMenu_Unknown88(__int64 a1)
   v20 = *(_QWORD*)(a1 + 336);
   if (v20 != 0 &&
       *(__int64 (***)())v20 == game_menu_anonymous_RelianceMenuItem_vtable) {
-    GameRoutine_1560070(&v46, a1 + 848, "L_Reliance");
+    GameRoutine_1560070((void*)&v46, a1 + 848, "L_Reliance");
     if (v47 != 0) {
       v22 = std___1___shared_weak_count_lock(v47);
       if (v22 != 0) {
@@ -721,7 +721,7 @@ __int64 RelianceSelectMenu_Unknown103(__int64 a1)
     }
     v4 = 40;
   }
-  (*(void (**)(void))(*(_QWORD*)v7 + v4))();
+  (*(void (**)(void*))(*(_QWORD*)v7 + v4))((void*)v7);
   v3 = *(_QWORD*)(a1 + 1072);
 
 LABEL_6:
@@ -754,7 +754,7 @@ __int64 RelianceSelectMenu_Unknown105(__int64 a1)
     }
     v4 = 40;
   }
-  (*(void (**)(void))(*(_QWORD*)v7 + v4))();
+  (*(void (**)(void*))(*(_QWORD*)v7 + v4))((void*)v7);
   v3 = *(_QWORD*)(a1 + 1072);
 
 LABEL_6:

@@ -510,7 +510,7 @@ __int64 GameRoutine_155e830(_QWORD, _QWORD);
 
 __int64 GameRoutine_155ea30(_QWORD);
 
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 
 __int64 GameRoutine_15997d0(_QWORD, _QWORD, _QWORD);
 
@@ -968,7 +968,7 @@ __int64 GameHr_19e8fe0(__int64 a1)
     GameRoutine_15e0200(v10);
   }
   GameRoutine_178a830(a1);
-  GameRoutine_1560070(&v8, a1 + 848, "L_UnitInfoDetail");
+  GameRoutine_1560070((void*)&v8, a1 + 848, "L_UnitInfoDetail");
   if (v9 != 0) {
     v5 = GameRoutine_1a0a0c0();
     v6 = v8;
@@ -1202,7 +1202,7 @@ __int64 GameHr_19e9b20(__int64 a1, unsigned int a2)
   __int64 v4;
   __int64 v5;
 
-  GameRoutine_1560070(&v4, a1 + 848, "L_KeyHelp00");
+  GameRoutine_1560070((void*)&v4, a1 + 848, "L_KeyHelp00");
   GameRoutine_159dda0(&v4, a2, 0);
   result = v5;
   if (v5 != 0) {

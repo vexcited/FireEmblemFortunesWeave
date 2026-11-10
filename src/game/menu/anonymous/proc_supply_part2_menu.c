@@ -97,7 +97,7 @@ game_menu_anonymous_ProcSupplyPart2Menu_CreateBind_closure_Invoke(__int64 a1,
       }
       v4 = 40;
     }
-    return (*(__int64 (**)(void))(*(_QWORD*)v6 + v4))();
+    return (*(__int64 (**)(void*))(*(_QWORD*)v6 + v4))((void*)v6);
   }
   return result;
 }

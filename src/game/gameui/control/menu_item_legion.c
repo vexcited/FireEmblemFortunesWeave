@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_15d4100(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_15d4100(PSEUDO_X8, _QWORD, _QWORD);
 __int64 Element_1885bc0(__int64, __int64*);
 __int64 GameRoutine_18855c0(__int64 result, _QWORD*);
 __int64 std___1___shared_weak_count___release_weak(_QWORD);
@@ -111,7 +111,7 @@ __int64 MenuItemLegion_1897d20(__int64 result, __int64* a2)
     v3 = result;
     v22[0] = "L_MenuItem_Name";
     v22[1] = 15;
-    GameRoutine_15d4100(&v23, result + 88, v22);
+    GameRoutine_15d4100((void*)&v23, result + 88, v22);
     if (v24 != 0) {
       v4 = std___1___shared_weak_count_lock(v24);
       v5 = v23;
@@ -181,7 +181,7 @@ __int64 MenuItemLegion_1897d20(__int64 result, __int64* a2)
     }
     v22[0] = "L_MenuItem_Gambit";
     v22[1] = 17;
-    GameRoutine_15d4100(&v23, v3 + 88, v22);
+    GameRoutine_15d4100((void*)&v23, v3 + 88, v22);
     result = v24;
     if (v24 != 0) {
       v13 = std___1___shared_weak_count_lock(v24);

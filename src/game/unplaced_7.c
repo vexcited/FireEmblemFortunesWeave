@@ -3764,7 +3764,7 @@ LABEL_63:
   if (v59 != nullptr) {
     v60 = 40;
   LABEL_79:
-    (*(void (**)(long double))(*v59 + v60))(*(long double*)&v37),
+    (*(void (**)(void*))(*v59 + v60))(v59),
         v34 = COERCE_AS(__typeof__(v34),
                         PSEUDO_REGISTER(unsigned long long, "x3", "=r")),
         v35 = COERCE_AS(__typeof__(v35),

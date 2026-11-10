@@ -170,7 +170,8 @@ __int64 GameAlloc_e2400(__int64 a1, __int64 a2, __int64 a3)
     v8 = *(_QWORD*)(*(_QWORD*)v6 + 32LL);
     v7 = *(_QWORD*)(*(_QWORD*)v6 + 40LL);
     while (v8 != v7) {
-      (*(void (**)(_QWORD* __return_ptr))(**(_QWORD**)v8 + 32LL))(v20);
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, void*))(
+          **(_QWORD**)v8 + 32LL))((void*)v20, (void*)*(_QWORD**)v8);
       v9 = strlen(a2);
       v11 = v20[0];
       v12 = LOBYTE(v20[0]) >> 1;

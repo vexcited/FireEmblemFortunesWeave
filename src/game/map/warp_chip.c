@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 WarpArrow_Setup(__int64, __int64*, int);
 __int64 __dynamic_cast(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 game_map_ObjectMapChip_Setup(_QWORD, _QWORD, _QWORD);
@@ -226,7 +226,7 @@ __int64 WarpChip_1126c40(__int64 a1, __int64* a2, char a3)
         goto LABEL_18;
       }
       v7 = (*(_BYTE*)(a1 + 8) & 1) != 0 ? *(_QWORD*)(a1 + 24) : a1 + 9;
-      GameRoutine_1560070(&v11, result, v7);
+      GameRoutine_1560070((void*)&v11, result, v7);
       result = v12;
       if (v12 == 0) {
         goto LABEL_18;

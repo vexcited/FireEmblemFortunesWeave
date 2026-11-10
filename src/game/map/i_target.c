@@ -3634,12 +3634,14 @@ _QWORD* game_map_ITarget_EnumerateSubTarget_lambda0_Clone(_QWORD* a1)
     v5 = result;
     if (v4 == a1 + 4) {
       result[8] = result + 4;
-      (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v4 + 24LL))(v4, v4);
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v4 + 24LL))(
+          (void*)v4, v4);
       result = v5;
     }
     else {
-      v6 = (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD))(*v4 + 16LL))(v4,
-                                                                         a1[8]);
+      v6 = X8CALL_X0(
+          _QWORD*, (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD))(
+                       *v4 + 16LL))((void*)v4, a1[8]));
       result = v5;
       v5[8] = v6;
     }
@@ -3889,12 +3891,14 @@ _QWORD* game_map_ITarget_EnumerateSubTarget_lambda1_Clone(_QWORD* a1)
     v5 = result;
     if (v4 == a1 + 4) {
       result[8] = result + 4;
-      (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v4 + 24LL))(v4, v4);
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v4 + 24LL))(
+          (void*)v4, v4);
       result = v5;
     }
     else {
-      v6 = (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD))(*v4 + 16LL))(v4,
-                                                                         a1[8]);
+      v6 = X8CALL_X0(
+          _QWORD*, (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD))(
+                       *v4 + 16LL))((void*)v4, a1[8]));
       result = v5;
       v5[8] = v6;
     }
@@ -4033,12 +4037,14 @@ _QWORD* game_map_ITarget_EnumerateSubTarget_lambda2_Clone(_QWORD* a1)
     v5 = result;
     if (v4 == a1 + 4) {
       result[8] = result + 4;
-      (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v4 + 24LL))(v4, v4);
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v4 + 24LL))(
+          (void*)v4, v4);
       result = v5;
     }
     else {
-      v6 = (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD))(*v4 + 16LL))(v4,
-                                                                         a1[8]);
+      v6 = X8CALL_X0(
+          _QWORD*, (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD))(
+                       *v4 + 16LL))((void*)v4, a1[8]));
       result = v5;
       v5[8] = v6;
     }

@@ -1793,8 +1793,10 @@ __int64 PostEffectActor_Unknown5(__int64 result, float a2)
                   }
                   if (v37 != nullptr) {
                     v39 = result;
-                    v40 = (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD*))(
-                        *v37 + 16LL))(v37, v37);
+                    v40 = X8CALL_X0(_QWORD*,
+                                    (*(__attribute__((swiftcall)) void (**)(
+                                        PSEUDO_X8, _QWORD*))(*v37 + 16LL))(
+                                        (void*)v37, v37));
                     if ((v59 & 1) == 0) {
                       GameRoutine_8123d0(v40);
                     }

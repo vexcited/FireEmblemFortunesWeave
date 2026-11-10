@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 BasicMenuCursor_16e0e00(void);
 __int64 GameRoutine_1593d90(_QWORD, _QWORD);
 __int64 GameRoutine_159a5c0(_QWORD, _QWORD);
@@ -120,7 +120,7 @@ __int64 game_menu_anonymous_ProcBattleHintInfo_OnBuild(__int64* a1)
   LABEL_10:
     *((_DWORD*)a1 + 268) = 954437177 * ((unsigned __int64)(v4 - v5) >> 3) - 1;
     *(__int64*)((char*)a1 + 1076) = 0;
-    GameRoutine_1560070(&v17, a1 + 106, "L_PageTab");
+    GameRoutine_1560070((void*)&v17, a1 + 106, "L_PageTab");
     v19[0] = GameData_20887d0;
     v19[1] = a1;
     v6 = *a1;
@@ -141,7 +141,7 @@ __int64 game_menu_anonymous_ProcBattleHintInfo_OnBuild(__int64* a1)
       }
       v8 = 40;
     }
-    (*(void (**)(void))(*v23 + v8))();
+    (*(void (**)(void*))(*v23 + v8))(v23);
     goto LABEL_15;
   }
   v3 = *(_QWORD*)(game_GameModeData_instance_ + 16);
@@ -160,7 +160,7 @@ __int64 game_menu_anonymous_ProcBattleHintInfo_OnBuild(__int64* a1)
     a1[134] = 0;
     *((_DWORD*)a1 + 270) = 0;
     v13 = v5;
-    GameRoutine_1560070(&v24, a1 + 106, "L_PageTab");
+    GameRoutine_1560070((void*)&v24, a1 + 106, "L_PageTab");
     v20 = v13;
     v19[0] = GameData_2088750;
     v19[1] = a1;
@@ -184,7 +184,7 @@ __int64 game_menu_anonymous_ProcBattleHintInfo_OnBuild(__int64* a1)
       }
       v16 = 40;
     }
-    (*(void (**)(void))(*v23 + v16))();
+    (*(void (**)(void*))(*v23 + v16))(v23);
     goto LABEL_25;
   }
 LABEL_19:

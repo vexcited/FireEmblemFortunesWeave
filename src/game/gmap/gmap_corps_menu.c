@@ -3420,7 +3420,7 @@ __int64 GmapCorpsMenu_1734260(__int64 a1, _QWORD* a2)
           }
           v14 = 40;
         }
-        (*(void (**)(void))(*v16 + v14))();
+        (*(void (**)(void*))(*v16 + v14))(v16);
       }
     }
   }

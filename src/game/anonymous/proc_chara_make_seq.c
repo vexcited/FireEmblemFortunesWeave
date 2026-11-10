@@ -680,7 +680,7 @@ __int64 ProcCharaMakeSeq_97cd20(__int64 result, __int64 a2)
             }
             v19 = 40;
           }
-          result = (*(__int64 (**)(void))(*(_QWORD*)v32 + v19))();
+          result = (*(__int64 (**)(void*))(*(_QWORD*)v32 + v19))((void*)v32);
         LABEL_30:
           v23 = v34;
           if (v34 != nullptr &&
@@ -707,7 +707,7 @@ __int64 ProcCharaMakeSeq_97cd20(__int64 result, __int64 a2)
           if (v20 != nullptr) {
             v21 = 40;
           LABEL_25:
-            (*(void (**)(void))(*v20 + v21))();
+            (*(void (**)(void*))(*v20 + v21))(v20);
           }
           v22 = *(_QWORD*)(v15 - 64);
           if (v22 != 0) {

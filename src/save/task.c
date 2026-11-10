@@ -183,7 +183,7 @@ __int64 Task_Unknown4(__int64 a1)
         }
         v5 = 40;
       }
-      (*(void (**)(void))(*v8 + v5))();
+      (*(void (**)(void*))(*v8 + v5))(v8);
     LABEL_5:
       if (*(_QWORD*)(*(_QWORD*)v4 + 200LL) != 0) {
         v6 = 128;

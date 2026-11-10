@@ -2,8 +2,8 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_1114920(_QWORD* __return_ptr, _QWORD, _QWORD);
-_QWORD* GameRoutine_1572840(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1114920(PSEUDO_X8, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1572840(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_1562680(_QWORD, _QWORD, long double);
 __int64 GameRoutine_1562f00(_QWORD, _QWORD);
 __int64 GameRoutine_1563030(_QWORD, _QWORD, _QWORD);
@@ -252,7 +252,7 @@ __int64 ExpMenuItem_Unknown55(__int64 a1)
         GameRoutine_1563030(v3, v11, 0);
         v24[0] = "L_ExpLvUP";
         v24[1] = 9;
-        GameRoutine_1114920(&v25, v3, v24);
+        GameRoutine_1114920((void*)&v25, v3, v24);
         if (v26 != 0) {
           v12 = std___1___shared_weak_count_lock(v26);
           v13 = v25;
@@ -275,7 +275,7 @@ __int64 ExpMenuItem_Unknown55(__int64 a1)
       LABEL_31:
         v24[0] = "L_MasteryLvUP";
         v24[1] = 13;
-        GameRoutine_1114920(&v25, v3, v24);
+        GameRoutine_1114920((void*)&v25, v3, v24);
         if (v26 == 0) {
           goto LABEL_50;
         }
@@ -303,7 +303,7 @@ __int64 ExpMenuItem_Unknown55(__int64 a1)
                                            *(_DWORD*)(a1 + 116) != 0);
           v24[0] = "L_LvGroup";
           v24[1] = 9;
-          GameRoutine_1572840(&v25, v3, v24);
+          GameRoutine_1572840((void*)&v25, v3, v24);
           if (v26 != 0) {
             v22 = std___1___shared_weak_count_lock(v26);
             v23 = v25;
@@ -339,7 +339,7 @@ __int64 ExpMenuItem_Unknown55(__int64 a1)
       GameRoutine_1562680(v3, "Finish_Off", v9);
       v24[0] = "L_ExpLvUP";
       v24[1] = 9;
-      GameRoutine_1114920(&v25, v3, v24);
+      GameRoutine_1114920((void*)&v25, v3, v24);
       if (v26 != 0) {
         v14 = std___1___shared_weak_count_lock(v26);
         v15 = v25;
@@ -361,7 +361,7 @@ __int64 ExpMenuItem_Unknown55(__int64 a1)
     LABEL_40:
       v24[0] = "L_MasteryLvUP";
       v24[1] = 13;
-      GameRoutine_1114920(&v25, v3, v24);
+      GameRoutine_1114920((void*)&v25, v3, v24);
       if (v26 == 0) {
         goto LABEL_50;
       }

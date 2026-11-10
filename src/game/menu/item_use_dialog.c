@@ -128,13 +128,14 @@ _QWORD* game_menu_ItemUseDialog_CreateBind_lambda0_Clone(_QWORD* a1)
     if (v5 == a1 + 6) {
       v6 = result;
       result[10] = result + 6;
-      (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v5 + 24LL))(v5, v5);
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v5 + 24LL))(
+          (void*)v5, v5);
     }
     else {
       v6 = result;
-      result[10] =
-          (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD*))(*v5 + 16LL))(v5,
-                                                                         v5);
+      result[10] = X8CALL_X0(
+          _QWORD*, (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(
+                       *v5 + 16LL))((void*)v5, v5));
     }
     return v6;
   }
@@ -168,8 +169,9 @@ _QWORD* game_menu_ItemUseDialog_CreateBind_lambda0_CloneInto(_QWORD* result,
           result[10]);
     }
     else {
-      result = (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD))(*v6 + 16LL))(
-          v6, result[10]);
+      result = X8CALL_X0(
+          _QWORD*, (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD))(
+                       *v6 + 16LL))((void*)v6, result[10]));
       a2[10] = result;
     }
   }
@@ -316,7 +318,7 @@ __int64 ItemUseDialog_166b3a0(__int64 a1, __int64* a2)
     }
     v7 = 40;
   }
-  return (*(__int64 (**)(void))(*(_QWORD*)v9 + v7))();
+  return (*(__int64 (**)(void*))(*(_QWORD*)v9 + v7))((void*)v9);
 }
 
 _QWORD* ItemUseDialog_166b510(__int64 a1)
@@ -335,12 +337,15 @@ _QWORD* ItemUseDialog_166b510(__int64 a1)
     if (v4 == (_QWORD*)(a1 + 16)) {
       result[6] = v3;
       v5 = result;
-      (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v4 + 24LL))(v4, v4);
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v4 + 24LL))(
+          (void*)v4, v4);
     }
     else {
       v5 = result;
-      result[6] = (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD*, _QWORD*))(
-          *v4 + 16LL))(v4, v4, v3);
+      result[6] = X8CALL_X0(
+          _QWORD*,
+          (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*, _QWORD*))(
+              *v4 + 16LL))((void*)v4, v4, v3));
     }
     return v5;
   }

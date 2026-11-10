@@ -566,7 +566,7 @@ __int64 Registration_88dda0(__int64 a1)
                         if (v217 != nullptr) {
                           v65 = 40;
                         LABEL_86:
-                          (*(void (**)(void))(*v61 + v65))();
+                          (*(void (**)(void*))(*v61 + v65))(v61);
                         }
                         if (v205 < 1) {
                           goto LABEL_112;
@@ -1017,7 +1017,7 @@ __int64 Registration_88dda0(__int64 a1)
         }
         v152 = 40;
       }
-      (*(void (**)(void))(*v155 + v152))();
+      (*(void (**)(void*))(*v155 + v152))(v155);
     LABEL_214:
       *(_QWORD*)(v153 + 40) = v154;
       v150 = *(_WORD*)(v149 + 18);

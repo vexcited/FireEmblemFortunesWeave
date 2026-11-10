@@ -1122,7 +1122,7 @@ void Alignment_56d3e0(float32x4_t* a1, float* a2, float* a3, float32x4_t* a4)
   float v53;
   float v54;
   float v55;
-  void (*v56)(_QWORD* __return_ptr, float32x4_t*);
+  __attribute__((swiftcall)) void (*v56)(PSEUDO_X8, float32x4_t*);
   unsigned int v57;
   float v58;
   float v59;
@@ -1611,10 +1611,10 @@ void Alignment_56d3e0(float32x4_t* a1, float* a2, float* a3, float32x4_t* a4)
         }
         (*(void (**)(float32x4_t*))(LANES128(*(a1)).n128_u64[0] + 360))(a1);
         v55 = *(float*)&v175[1] - *(float*)v175;
-        v56 = *(void (**)(_QWORD* __return_ptr, float32x4_t*))(
+        v56 = *(__attribute__((swiftcall)) void (**)(PSEUDO_X8, float32x4_t*))(
             LANES128(*(a1)).n128_u64[0] + 360);
         *(_OWORD*)v175 = (__typeof__(*(_OWORD*)v175)){0};
-        v56(v175, a1);
+        v56((void*)v175, a1);
         v57 = LANES128(a1[5]).n128_u8[11];
         v58 = 0.0;
         if ((v57 & 3) != 1) {
@@ -1889,7 +1889,7 @@ void Alignment_56dd00(float32x4_t* a1, float* a2, float* a3, float32x4_t* a4)
   float v53;
   float v54;
   float v55;
-  void (*v56)(float32x4_t* __return_ptr, float32x4_t*);
+  __attribute__((swiftcall)) void (*v56)(PSEUDO_X8, float32x4_t*);
   unsigned int v57;
   float v58;
   float v59;
@@ -2501,7 +2501,7 @@ void Alignment_56dd00(float32x4_t* a1, float* a2, float* a3, float32x4_t* a4)
             v67 =
                 COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w"));
         v55 = LANES128(v158[0]).n128_f32[2] - LANES128(v158[0]).n128_f32[0];
-        v56 = *(void (**)(float32x4_t* __return_ptr, float32x4_t*))(
+        v56 = *(__attribute__((swiftcall)) void (**)(PSEUDO_X8, float32x4_t*))(
             LANES128(*(a1)).n128_u64[0] + 360),
         v118 = COERCE_AS(__typeof__(v118), PSEUDO_REGISTER(__n128, "v1", "=w")),
         v119 = COERCE_AS(__typeof__(v119), PSEUDO_REGISTER(__n128, "v2", "=w")),
@@ -2512,7 +2512,7 @@ void Alignment_56dd00(float32x4_t* a1, float* a2, float* a3, float32x4_t* a4)
         v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
         v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w"));
         v158[0] = (__typeof__(v158[0])){0};
-        v56(v158, a1),
+        v56((void*)v158, a1),
             v118 = COERCE_AS(__typeof__(v118),
                              PSEUDO_REGISTER(__n128, "v1", "=w")),
             v119 = COERCE_AS(__typeof__(v119),

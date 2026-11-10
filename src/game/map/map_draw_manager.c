@@ -3942,8 +3942,8 @@ void game_map_MapDrawManager_UpdateTrickDangerMapPos()
                                          0xFFFFFFFFFFFFFFFFLL) == 0) {
                       v40 = v0;
                       v41 = v39;
-                      (*(void (**)(_QWORD* __return_ptr, _QWORD*))(
-                          *v39 + 16LL))(v39, v39);
+                      (*(__attribute__((swiftcall)) void (**)(
+                          PSEUDO_X8, _QWORD*))(*v39 + 16LL))((void*)v39, v39);
                       v42 = v41;
                       v0 = v40;
                       std___1___shared_weak_count___release_weak(v42);

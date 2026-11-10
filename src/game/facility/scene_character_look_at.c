@@ -503,7 +503,7 @@ _QWORD* SceneCharacterLookAt_Destructor(__int64 a1)
       }
       v12 = 40;
     }
-    result = (_QWORD*)(*(__int64 (**)(void))(*result + v12))();
+    result = (_QWORD*)(*(__int64 (**)(void*))(*result + v12))(result);
   LABEL_16:
     v8 += 80LL;
     if (v8 - *v7 == 4080) {
@@ -987,7 +987,7 @@ __int64 SceneCharacterLookAt_1416a00(__int64 a1, __int64 a2, float a3, float a4)
     }
     v11 = 40;
   }
-  return (*(__int64 (**)(void))(*(_QWORD*)v13 + v11))();
+  return (*(__int64 (**)(void*))(*(_QWORD*)v13 + v11))((void*)v13);
 }
 
 __int64 SceneCharacterLookAt_1416c80(__int64* a1, _QWORD* a2)

@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_136a920(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_155e830(_QWORD, _QWORD);
 __int64 GameRoutine_155fbe0(_QWORD, _QWORD);
@@ -202,7 +202,7 @@ __int64 CorpsUserMenu_172bca0(__int64 a1)
     while (1) {
     LABEL_39:
       v26 = game_util_Format("L_Abilities%02d", v9);
-      GameRoutine_1560070(&v32, v2 + 200, v26);
+      GameRoutine_1560070((void*)&v32, v2 + 200, v26);
       if (v33 != 0) {
         v27 = std___1___shared_weak_count_lock(v33);
         v28 = v32;
@@ -233,7 +233,7 @@ __int64 CorpsUserMenu_172bca0(__int64 a1)
   v8 = GameData_212e348 + 2;
   do {
     v10 = game_util_Format("L_Abilities%02d", v7);
-    GameRoutine_1560070(&v32, v2 + 200, v10);
+    GameRoutine_1560070((void*)&v32, v2 + 200, v10);
     if (v33 == 0) {
       goto LABEL_7;
     }
@@ -434,7 +434,7 @@ LABEL_16:
     }
     v4 = 5;
   }
-  ((void (*)(void))(*v15_.v17)[v4])();
+  ((void (*)(void*))(*v15_.v17)[v4])(v15_.v17);
 LABEL_21:
   v12_.v13 = v12_.v12;
   v15_.v17 = &v15_.v15;
@@ -452,7 +452,7 @@ LABEL_21:
     }
     v5 = 5;
   }
-  ((void (*)(void))(*v15_.v17)[v5])();
+  ((void (*)(void*))(*v15_.v17)[v5])(v15_.v17);
 LABEL_26:
   if (v12_.v13 == v12_.v12) {
     v6 = 32;

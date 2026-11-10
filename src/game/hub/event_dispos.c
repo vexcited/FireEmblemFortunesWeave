@@ -2,9 +2,11 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_c9bf60(_QWORD* __return_ptr, _QWORD, _QWORD, _QWORD);
-_QWORD* GameRoutine_cbbcc0(_QWORD* __return_ptr, _QWORD, _QWORD, _QWORD);
-_QWORD* GameRoutine_db2180(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_c9bf60(PSEUDO_X8, _QWORD, _QWORD,
+                                                   _QWORD);
+__attribute__((swiftcall)) void GameRoutine_cbbcc0(PSEUDO_X8, _QWORD, _QWORD,
+                                                   _QWORD);
+__attribute__((swiftcall)) void GameRoutine_db2180(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_c9c320(_QWORD);
 __int64 GameRoutine_cae2c0(_QWORD, _QWORD);
 __int64 GameRoutine_d58680(__int64, _QWORD*, __int64*);
@@ -518,7 +520,7 @@ LABEL_19:
   v92[0] = GameData_1fddb00;
   v92[1] = v2;
   v93 = v92;
-  GameRoutine_c9bf60(&v99, *(_QWORD*)(*(_QWORD*)v9 + 216LL) + 8LL, 1,
+  GameRoutine_c9bf60((void*)&v99, *(_QWORD*)(*(_QWORD*)v9 + 216LL) + 8LL, 1,
                      v10 + 112);
   v16 = v99;
   v17 = v100;
@@ -574,7 +576,7 @@ LABEL_19:
                     v28 = v25[3];
                     if (v28 != 0) {
                       v89 = v10;
-                      GameRoutine_db2180(&v94, v10 + 40, v16 + 56);
+                      GameRoutine_db2180((void*)&v94, v10 + 40, v16 + 56);
                       v29 = *(__int64***)(v28 + 40);
                       v31 = *v29;
                       v30 = v29[1];
@@ -691,7 +693,7 @@ LABEL_19:
     }
     v48 = 40;
   }
-  result = (*(__int64 (**)(void))(*v93 + v48))();
+  result = (*(__int64 (**)(void*))(*v93 + v48))(v93);
 LABEL_84:
   v49 = (__int64*)v2[3];
   v50 = (__int64*)v2[4];
@@ -790,7 +792,7 @@ LABEL_84:
     GameRoutine_d58680((__int64)(v63 + 4), &v99, v49);
     v97 = v64;
     v98 = v65;
-    GameRoutine_cbbcc0(&v94, v62, 0, &v97);
+    GameRoutine_cbbcc0((void*)&v94, v62, 0, &v97);
     v66 = v98;
     if (v98 != nullptr && atomic_fetch_add((atomic_ullong* volatile)(v98 + 1),
                                            0xFFFFFFFFFFFFFFFFLL) == 0) {

@@ -478,7 +478,7 @@ LABEL_45:
     if (v29 == v28) {
       v24 = 32;
     LABEL_51:
-      (*(void (**)(void))(*v29 + v24))();
+      (*(void (**)(void*))(*v29 + v24))(v29);
     }
     else if (v29 != nullptr) {
       v24 = 40;
@@ -487,7 +487,7 @@ LABEL_45:
     if (v27 == v26) {
       v25 = 32;
     LABEL_56:
-      (*(void (**)(void))(*v27 + v25))();
+      (*(void (**)(void*))(*v27 + v25))(v27);
     }
     else if (v27 != nullptr) {
       v25 = 40;

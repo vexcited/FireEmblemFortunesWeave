@@ -575,7 +575,7 @@ LABEL_26:
       }
       v20 = 40;
     }
-    result = (_QWORD*)(*(__int64 (**)(void))(*result + v20))();
+    result = (_QWORD*)(*(__int64 (**)(void*))(*result + v20))(result);
     goto LABEL_36;
   }
   result = (_QWORD*)((__int64 (*)(void))v18)();

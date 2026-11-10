@@ -203,8 +203,8 @@ LABEL_17:
                        0xFFFFFFFFFFFFFFFFLL) == 0) {
     v17 = result;
     v18 = v12;
-    (*(void (**)(__int64 __return_ptr, __int64))(*(_QWORD*)v12 + 16LL))(v12,
-                                                                        v12);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64))(
+        *(_QWORD*)v12 + 16LL))((void*)v12, v12);
     std___1___shared_weak_count___release_weak(v18);
     result = v17;
   }
@@ -418,7 +418,7 @@ LABEL_6:
     }
     v6 = 40;
   }
-  return (*(__int64 (**)(void))(*(_QWORD*)v8 + v6))();
+  return (*(__int64 (**)(void*))(*(_QWORD*)v8 + v6))((void*)v8);
 }
 
 __int64 BasicMenu_16e1f40(__int64 result, __int64 a2, __int64 a3)

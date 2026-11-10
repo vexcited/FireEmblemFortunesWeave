@@ -1829,7 +1829,7 @@ __int64 SceneCharacter_1401180(__int64 a1, float a2)
       }
       v6 = 40;
     }
-    result = (*(__int64 (**)(void))(*(_QWORD*)v10 + v6))();
+    result = (*(__int64 (**)(void*))(*(_QWORD*)v10 + v6))((void*)v10);
   LABEL_20:
     if (atomic_fetch_add((atomic_ullong* volatile)(v3 + 8),
                          0xFFFFFFFFFFFFFFFFLL) == 0) {
@@ -1860,7 +1860,7 @@ __int64 SceneCharacter_1401180(__int64 a1, float a2)
     }
     v8 = 40;
   }
-  return (*(__int64 (**)(void))(*(_QWORD*)v10 + v8))();
+  return (*(__int64 (**)(void*))(*(_QWORD*)v10 + v8))((void*)v10);
 }
 
 __int64 SceneCharacter_1401300(__int64 result, __int64 a2, float a3)
@@ -4199,13 +4199,14 @@ _QWORD* game_facility_SceneCharacter_ChangeAppearance_lambda0_Clone(_QWORD* a1)
     if (v5 == a1 + 6) {
       v6 = result;
       result[10] = result + 6;
-      (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v5 + 24LL))(v5, v5);
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v5 + 24LL))(
+          (void*)v5, v5);
     }
     else {
       v6 = result;
-      result[10] =
-          (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD*))(*v5 + 16LL))(v5,
-                                                                         v5);
+      result[10] = X8CALL_X0(
+          _QWORD*, (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(
+                       *v5 + 16LL))((void*)v5, v5));
     }
     return v6;
   }
@@ -4240,8 +4241,9 @@ game_facility_SceneCharacter_ChangeAppearance_lambda0_CloneInto(_QWORD* result,
           result[10]);
     }
     else {
-      result = (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD))(*v4 + 16LL))(
-          v4, result[10]);
+      result = X8CALL_X0(
+          _QWORD*, (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD))(
+                       *v4 + 16LL))((void*)v4, result[10]));
       a2[10] = result;
     }
   }

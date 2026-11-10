@@ -166,7 +166,7 @@ __int64 wld_map_MapEffectPlacer_PlaceCommon(__int64 a1, __int64* a2, float a3)
       }
       v20 = 40;
     }
-    result = (*(__int64 (**)(void))(*v23 + v20))();
+    result = (*(__int64 (**)(void*))(*v23 + v20))(v23);
   LABEL_15:
     if (v18 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v18 + 8),
                                      0xFFFFFFFFFFFFFFFFLL) == 0) {

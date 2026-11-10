@@ -223,7 +223,7 @@ __int64 ProcDivinationSceneVisitor_Unknown22()
   if (v21 != nullptr) {
     v1 = 40;
   LABEL_5:
-    (*(void (**)(void))(*(_QWORD*)v21 + v1))();
+    (*(void (**)(void*))(*(_QWORD*)v21 + v1))((void*)v21);
   }
   v16 = (__int64 (**)())0x8481E3A08DE50CLL;
   v2 = GameRoutine_19513c0((unsigned __int64)&v16);

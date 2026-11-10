@@ -202,7 +202,7 @@ __int64 game_map_MapPanelSortie_UpdateSortie(__int64 result)
       do {
         v8 = v2[6];
         *((_BYTE*)v2 + 272) = 0;
-        if (((*(__int64 (**)(void))(v8 + 48))() & 1) != 0) {
+        if (((*(__int64 (**)(void*))(v8 + 48))(&v2[6]) & 1) != 0) {
           v9 = 1036831949;
         }
         else {
@@ -232,7 +232,7 @@ __int64 game_map_MapPanelSortie_UpdateSortie(__int64 result)
       do {
         v12 = v4[6];
         *((_BYTE*)v4 + 272) = 0;
-        if (((*(__int64 (**)(void))(v12 + 48))() & 1) != 0) {
+        if (((*(__int64 (**)(void*))(v12 + 48))(&v4[6]) & 1) != 0) {
           v13 = 1036831949;
         }
         else {
@@ -262,7 +262,7 @@ __int64 game_map_MapPanelSortie_UpdateSortie(__int64 result)
       do {
         v16 = v5[6];
         *((_BYTE*)v5 + 272) = 0;
-        if (((*(__int64 (**)(void))(v16 + 48))() & 1) != 0) {
+        if (((*(__int64 (**)(void*))(v16 + 48))(&v5[6]) & 1) != 0) {
           v17 = 1036831949;
         }
         else {
@@ -292,7 +292,7 @@ __int64 game_map_MapPanelSortie_UpdateSortie(__int64 result)
       do {
         v20 = v6[6];
         *((_BYTE*)v6 + 272) = 0;
-        if (((*(__int64 (**)(void))(v20 + 48))() & 1) != 0) {
+        if (((*(__int64 (**)(void*))(v20 + 48))(&v6[6]) & 1) != 0) {
           v21 = 1036831949;
         }
         else {

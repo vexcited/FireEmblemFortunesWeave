@@ -952,7 +952,7 @@ __int64 game_UnitActor_TryReload(_QWORD* a1)
         }
         v10 = 40;
       }
-      (*(void (**)(void))(*v24 + v10))();
+      (*(void (**)(void*))(*v24 + v10))(v24);
       goto LABEL_27;
     }
     while (1) {
@@ -963,7 +963,7 @@ __int64 game_UnitActor_TryReload(_QWORD* a1)
       if (v11 != nullptr) {
         v12 = 40;
       LABEL_21:
-        (*(void (**)(void))(*v11 + v12))();
+        (*(void (**)(void*))(*v11 + v12))(v11);
       }
       v13 = *(_QWORD*)(v6 - 64);
       if (v13 != 0) {

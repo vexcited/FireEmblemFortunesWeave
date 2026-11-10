@@ -27,7 +27,7 @@ __int64 ProcMouseGuide_Unknown96(__int64 a1);
 __int64 ProcMouseGuide_Unknown112(__int64 a1);
 __int64 ProcMouseGuide_Unknown140(__int64 a1, __int64* a2);
 __int64 ProcMouseGuide_Unknown142(__int64 result);
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_1567590(_QWORD, _QWORD);
 __int64 GameRoutine_717fc0(_QWORD, _QWORD);
 __int64 LayoutAccessor_155fbe0(_QWORD, _QWORD);
@@ -665,7 +665,7 @@ LABEL_10:
     GameRoutine_1567590("MouseCalib", v1 & 1);
     return GameRoutine_1567590("MouseReset", v1 & 1);
   }
-  GameRoutine_1560070(&v10, a1 + 848, "L_Footer");
+  GameRoutine_1560070((void*)&v10, a1 + 848, "L_Footer");
   result = v11;
   if (v11 != 0) {
     v3 = std___1___shared_weak_count_lock(v11);

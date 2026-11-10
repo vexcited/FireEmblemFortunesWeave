@@ -281,7 +281,7 @@ _QWORD* map_snd_WaitSe(__int64 a1)
         }
         v28 = 40;
       }
-      return (_QWORD*)(*(__int64 (**)(void))(*result + v28))();
+      return (_QWORD*)(*(__int64 (**)(void*))(*result + v28))(result);
     }
   }
   v8 = GameData_212cfb0[0];

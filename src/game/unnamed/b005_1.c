@@ -2531,8 +2531,8 @@ long double GameHr_739190()
       if ((*(unsigned __int8 (**)(__int64))(*(_QWORD*)v5 + 40LL))(v5) == 13 &&
           ((*(__int64 (**)(__int64))(*(_QWORD*)v5 + 776LL))(v5) & 1) != 0) {
         v7 = *v0;
-        (*(void (**)(long double* __return_ptr, __int64))(*(_QWORD*)v5 +
-                                                          768LL))(&v10, v5);
+        (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64))(
+            *(_QWORD*)v5 + 768LL))((void*)&v10, v5);
         result = v10;
         v8 = *(_QWORD*)(v7 + 48);
         *(_QWORD*)(v8 + 144) = *(_QWORD*)&v10;

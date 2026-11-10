@@ -1086,7 +1086,7 @@ __int64 GameRoutine_155f480(_QWORD, _QWORD);
 
 __int64 GameRoutine_155fbe0(_QWORD, _QWORD);
 
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 
 __int64 GameRoutine_1566d90(_QWORD, _QWORD);
 
@@ -1272,7 +1272,7 @@ __int64 GameHr_167e3c0(__int64 a1, __int64 a2, __int64 a3, __int64 a4)
   __int64 v8;
   __int64 v9;
 
-  GameRoutine_1560070(&v8, *(_QWORD*)(a1 + 8) + 848LL, "L_Img");
+  GameRoutine_1560070((void*)&v8, *(_QWORD*)(a1 + 8) + 848LL, "L_Img");
   GameRoutine_159b580(&v8, a2, a3, a4);
   result = v9;
   if (v9 != 0) {
@@ -2017,7 +2017,8 @@ __int64 GameHr_1686120(__int64 result, __int64 a2, __int64 a3)
           }
           v25 = 40;
         }
-        result = (*(__int64 (**)(void))(*(_QWORD*)result + v25))();
+        result =
+            (*(__int64 (**)(void*))(*(_QWORD*)result + v25))((void*)result);
       LABEL_38:
         v12 += 48;
         if (v12 == v10) {
@@ -3209,7 +3210,8 @@ __int64 GameHr_1696860(_QWORD* a1)
   v2 = *(_QWORD**)GameData_2131520;
   if (*(_QWORD*)GameData_2131520 != 0 && GameData_2246ca8-- <= 1) {
     v4 = a1;
-    (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v2 + 24LL))(v2, v2);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v2 + 24LL))(
+        (void*)v2, v2);
     if (*v1 != 0) {
       (*(void (**)(_QWORD))(*(_QWORD*)*v1 + 8LL))(*v1);
     }
@@ -3399,12 +3401,15 @@ _QWORD* GameHr_16a8de0(__int64 a1)
     if (v4 == (_QWORD*)(a1 + 16)) {
       result[6] = v3;
       v5 = result;
-      (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v4 + 24LL))(v4, v4);
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v4 + 24LL))(
+          (void*)v4, v4);
     }
     else {
       v5 = result;
-      result[6] = (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD*, _QWORD*))(
-          *v4 + 16LL))(v4, v4, v3);
+      result[6] = X8CALL_X0(
+          _QWORD*,
+          (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*, _QWORD*))(
+              *v4 + 16LL))((void*)v4, v4, v3));
     }
     return v5;
   }

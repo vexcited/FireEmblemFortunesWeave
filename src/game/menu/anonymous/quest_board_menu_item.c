@@ -8,7 +8,7 @@ extern __int64 (*game_menu_BasicMenuItem_vtable[])();
 extern __int64 (*game_menu_anonymous_BaseQuestMenuItem_vtable)();
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 QuestBoardMenuItem_DeletingDestructor(__int64 a1);
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_162aea0(_QWORD, _QWORD);
 __int64 GameRoutine_16824c0(_QWORD);
 __int64 GameRoutine_1683020(_QWORD);
@@ -204,7 +204,7 @@ game_menu_anonymous_QuestBoardMenuItem_ACall_closure_Invoke_1849c00(__int64 a1)
   __int64 v5;
   __int64 v6;
 
-  GameRoutine_1560070(&v5, *(_QWORD*)(*(_QWORD*)(a1 + 8) + 8LL) + 848LL,
+  GameRoutine_1560070((void*)&v5, *(_QWORD*)(*(_QWORD*)(a1 + 8) + 8LL) + 848LL,
                       "L_Info/L_Stamp");
   result = v6;
   if (v6 != 0) {
@@ -274,7 +274,7 @@ __int64 game_menu_anonymous_QuestBoardMenuItem_ACall_closure_Invoke_1849da0(
       }
       v5 = 40;
     }
-    result = (*(__int64 (**)(void))(*(_QWORD*)v8 + v5))();
+    result = (*(__int64 (**)(void*))(*(_QWORD*)v8 + v5))((void*)v8);
   }
 LABEL_10:
   if (v9 != 0) {
@@ -372,7 +372,7 @@ __int64 game_menu_anonymous_QuestBoardMenuItem_ACall_closure1_Invoke_184a830(
         }
         v4 = 40;
       }
-      return (*(__int64 (**)(void))(*v7 + v4))();
+      return (*(__int64 (**)(void*))(*v7 + v4))(v7);
     }
   }
   return result;
@@ -469,7 +469,8 @@ __int64 game_menu_anonymous_QuestBoardMenuItem_ACall_closure1_Invoke_184b110(
 
   v1 = *(_QWORD*)(result + 8);
   if (*(_BYTE*)(v1 + 160) == 1) {
-    GameRoutine_1560070(&v4, *(_QWORD*)(v1 + 8) + 848LL, "L_Info/L_Stamp");
+    GameRoutine_1560070((void*)&v4, *(_QWORD*)(v1 + 8) + 848LL,
+                        "L_Info/L_Stamp");
     result = v5;
     if (v5 != 0) {
       v2 = std___1___shared_weak_count_lock(v5);
@@ -548,7 +549,7 @@ __int64 game_menu_anonymous_QuestBoardMenuItem_ACall_closure1_Invoke_184b2c0(
       }
       v8 = 40;
     }
-    result = (*(__int64 (**)(void))(*(_QWORD*)v11 + v8))();
+    result = (*(__int64 (**)(void*))(*(_QWORD*)v11 + v8))((void*)v11);
   }
 LABEL_11:
   if (v12 != 0) {

@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_134b820(_QWORD* __return_ptr, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_134b820(PSEUDO_X8, _QWORD);
 __int64 GameRoutine_120dd60(_QWORD);
 __int64 GameRoutine_134c680(void);
 __int64 GameRoutine_14c46a0(_QWORD, _QWORD);
@@ -721,7 +721,7 @@ __int64 ProcGmapMove_1549e60()
     if ((GameRoutine_718130(result, 0) & 1) != 0) {
       v1 = GameRoutine_134c680();
       if (*(_BYTE*)(v1 + 113) == 1) {
-        GameRoutine_134b820(&v7, v1);
+        GameRoutine_134b820((void*)&v7, v1);
         v2 = v7;
         v3 = v8;
         if (v7 != v8) {

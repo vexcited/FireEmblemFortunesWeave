@@ -3061,7 +3061,7 @@ _QWORD* GameHr_10dc120(__int64 a1)
       }
       v21 = 40;
     }
-    result = (_QWORD*)(*(__int64 (**)(void))(*result + v21))();
+    result = (_QWORD*)(*(__int64 (**)(void*))(*result + v21))(result);
     goto LABEL_31;
   }
   result = (_QWORD*)((__int64 (*)(void))v18)();

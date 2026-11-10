@@ -498,7 +498,7 @@ __int64 game_anonymous_ProcGrowSeq_UpdateLearn(_QWORD* a1)
       }
       v43 = 40;
     }
-    result = (*(__int64 (**)(void))(*v53 + v43))();
+    result = (*(__int64 (**)(void*))(*v53 + v43))(v53);
   }
   if (v61 != 0) {
     v46 = *v7;

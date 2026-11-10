@@ -84,7 +84,7 @@ __int64 game_facility_anonymous_ShowmanSeqBase_TryReportBarQuestPre(__int64 a1)
       }
       v10 = 40;
     }
-    result = (*(__int64 (**)(void))(*v13 + v10))();
+    result = (*(__int64 (**)(void*))(*v13 + v10))(v13);
     goto LABEL_14;
   }
 LABEL_15:

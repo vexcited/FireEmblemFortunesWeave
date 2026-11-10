@@ -57,7 +57,7 @@ _QWORD* HubSeqEnter_Destructor(_QWORD* result)
     if (result != nullptr) {
       v6 = 40;
     LABEL_9:
-      result = (_QWORD*)(*(__int64 (**)(void))(*result + v6))();
+      result = (_QWORD*)(*(__int64 (**)(void*))(*result + v6))(result);
     }
     v4 -= 80;
     if ((*(_BYTE*)(v5 - 80) & 1) != 0) {

@@ -2,8 +2,8 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_f256b0(_QWORD* __return_ptr, _QWORD, _QWORD, _QWORD,
-                           _QWORD);
+__attribute__((swiftcall)) void GameRoutine_f256b0(PSEUDO_X8, _QWORD, _QWORD,
+                                                   _QWORD, _QWORD);
 __int64 GameRoutine_1049ba0(_QWORD, _QWORD);
 __int64 GameRoutine_845840(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_f097d0(__int64);
@@ -408,7 +408,8 @@ __int64 MapPanelDeployAction_Unknown3(__int64 a1)
                   }
                   v98 = *v94;
                   v99 = v94[1];
-                  v52 = GameRoutine_f256b0(&v124, v92, v98, v99, v88);
+                  v52 = X8CALL_X0(_QWORD*, GameRoutine_f256b0((void*)&v124, v92,
+                                                              v98, v99, v88));
                   if (BYTE4(v124) != 0) {
                     break;
                   }

@@ -5,7 +5,7 @@
 #pragma GCC visibility push(hidden)
 
 _BYTE* CharacterModel_1070320(__int64, unsigned int);
-_QWORD* GameRoutine_d2b700(_QWORD* __return_ptr, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_d2b700(PSEUDO_X8, _QWORD);
 __int64 AnimLayerCtrlModule_ce3880(_QWORD, _QWORD, _QWORD, float);
 __int64 CharacterModel_1070c00(_QWORD, _QWORD);
 __int64 GameRoutine_1079580(_QWORD, _QWORD, float, float, float);
@@ -998,8 +998,10 @@ float* CharacterAnimator_107a920(float* result, float a2)
   if (v2 != 0) {
     v5 = *(_QWORD*)(v2 + 32);
     if (*(_BYTE*)(v5 + 124) == 1) {
-      result = (float*)GameRoutine_d2b700(&v18, *(_QWORD*)(v5 + 96) +
-                                                    56LL * *(int*)(v5 + 120));
+      result = (float*)X8CALL_X0(
+          _QWORD*,
+          GameRoutine_d2b700((void*)&v18,
+                             *(_QWORD*)(v5 + 96) + 56LL * *(int*)(v5 + 120)));
       v7 = v18;
       v8 = v19;
       if (v18 != v19) {
@@ -1025,8 +1027,10 @@ float* CharacterAnimator_107a920(float* result, float a2)
   if (v11 != 0) {
     v12 = *(_QWORD*)(v11 + 32);
     if (*(_BYTE*)(v12 + 124) == 1) {
-      result = (float*)GameRoutine_d2b700(&v18, *(_QWORD*)(v12 + 96) +
-                                                    56LL * *(int*)(v12 + 120));
+      result = (float*)X8CALL_X0(
+          _QWORD*,
+          GameRoutine_d2b700((void*)&v18,
+                             *(_QWORD*)(v12 + 96) + 56LL * *(int*)(v12 + 120)));
       v14 = v18;
       v15 = v19;
       if (v18 != v19) {

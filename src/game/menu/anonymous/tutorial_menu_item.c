@@ -47,7 +47,7 @@ __int64 TutorialMenuItem_OnDeselect(__int64 a1)
   if (*(_BYTE*)(a1 + 79) != 0) {
     v2 = 520;
   }
-  result = (*(__int64 (**)(void))(*(_QWORD*)a1 + v2))();
+  result = (*(__int64 (**)(void*))(*(_QWORD*)a1 + v2))((void*)a1);
   if ((game_menu_TutorialMenu_unknown_225d650_ & 1) == 0) {
     GameRoutine_887920(&v7, *(_QWORD*)(*(_QWORD*)(a1 + 88) + 8LL));
     v4 = v7;

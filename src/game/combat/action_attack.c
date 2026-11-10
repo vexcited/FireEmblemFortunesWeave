@@ -2163,7 +2163,7 @@ __int64 game_combat_ActionAttack_OnEnter_lambda2_Invoke(__int64 result,
     if (v59 == v58) {
       v49 = 32;
     LABEL_55:
-      (*(void (**)(void))(*(_QWORD*)v59 + v49))();
+      (*(void (**)(void*))(*(_QWORD*)v59 + v49))((void*)v59);
     }
     else if (v59 != nullptr) {
       v49 = 40;

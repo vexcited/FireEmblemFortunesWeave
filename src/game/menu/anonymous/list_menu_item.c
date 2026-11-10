@@ -35,7 +35,7 @@ __int64 ListMenuItem_16734f0(__int64 a1)
   if (*(_BYTE*)(a1 + 79) != 0) {
     v2 = 520;
   }
-  (*(void (**)(void))(*(_QWORD*)a1 + v2))();
+  (*(void (**)(void*))(*(_QWORD*)a1 + v2))((void*)a1);
   v3 = *(_QWORD*)(a1 + 128);
   if (v3 != 0) {
     v4 = *(_QWORD*)(a1 + 120);
@@ -77,7 +77,7 @@ __int64 ListMenuItem_1673610(__int64 a1)
   if (*(_BYTE*)(a1 + 79) != 0) {
     v2 = 520;
   }
-  (*(void (**)(void))(*(_QWORD*)a1 + v2))();
+  (*(void (**)(void*))(*(_QWORD*)a1 + v2))((void*)a1);
   v3 = *(_QWORD*)(a1 + 128);
   if (v3 != 0) {
     v4 = *(_QWORD*)(a1 + 120);
@@ -245,8 +245,8 @@ __int64 ListMenuItem_16738e0(__int64 a1)
     if (atomic_fetch_add((atomic_ullong* volatile)(v8 + 8),
                          0xFFFFFFFFFFFFFFFFLL) == 0) {
       v14 = v8;
-      (*(void (**)(__int64 __return_ptr, __int64))(*(_QWORD*)v8 + 16LL))(v8,
-                                                                         v8);
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64))(
+          *(_QWORD*)v8 + 16LL))((void*)v8, v8);
       std___1___shared_weak_count___release_weak(v14);
     }
     goto LABEL_14;

@@ -32,7 +32,7 @@ __int64 ClassJobRecycleMenuItem_OnSelect(__int64 a1)
   if (*(_BYTE*)(a1 + 79) != 0) {
     v2 = 520;
   }
-  (*(void (**)(void))(*(_QWORD*)a1 + v2))();
+  (*(void (**)(void*))(*(_QWORD*)a1 + v2))((void*)a1);
   v3 = GameData_21f3ff8;
   if (GameData_21f3ff8 != 0) {
     v4 = *(_QWORD*)(a1 + 96);

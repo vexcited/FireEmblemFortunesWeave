@@ -731,8 +731,10 @@ __int64* Layout_1364020(__int64* a1, __int64 a2, __int64 a3)
            result = (__int64*)std___1___shared_weak_count___release_weak(v25),
            v15 == -1)) {
         if (*(_QWORD*)(a3 + 232) != 0) {
-          result = (*(_QWORD * (**)(__int64* __return_ptr, __int64))(
-              *(_QWORD*)v13 + 16LL))(&v24, v13);
+          result = X8CALL_X0(
+              _QWORD*,
+              (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64))(
+                  *(_QWORD*)v13 + 16LL))((void*)&v24, v13));
           v16 = v24;
           if (v24 != 0) {
             v17 = (__int64*)a1[285];
@@ -1363,8 +1365,8 @@ LABEL_26:
       Layout_1364020_alt1(a1, i - 216, v27);
     }
   }
-  (*(void (**)(__int64* __return_ptr, _QWORD*, _QWORD*))(*v13 + 16LL))(
-      &v48, v13, v23);
+  (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*, _QWORD*))(
+      *v13 + 16LL))((void*)&v48, v13, v23);
   if (v48 != 0 && (v28 = __dynamic_cast(v48, GameData_212dfc0[0],
                                         GameData_212fc60[0], 0)) != 0) {
     v50 = v28;

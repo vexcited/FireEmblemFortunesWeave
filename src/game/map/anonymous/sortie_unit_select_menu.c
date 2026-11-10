@@ -45,7 +45,7 @@ __int64 SortieUnitSelectMenu_Unknown112(__int64 a1)
     }
     v3 = 40;
   }
-  (*(void (**)(void))(*(_QWORD*)v6 + v3))();
+  (*(void (**)(void*))(*(_QWORD*)v6 + v3))((void*)v6);
 
 LABEL_8:
   if (v2 != 0) {

@@ -2725,7 +2725,7 @@ __int64 game_character_CharacterAppearance_LoadAsync_lambda0_Invoke(
         }
         v21 = 40;
       }
-      (*(void (**)(void))(*v28 + v21))();
+      (*(void (**)(void*))(*v28 + v21))(v28);
     LABEL_25:
       if ((v20 & 1) != 0) {
         v27[0] = GameData_20065c0;
@@ -2748,7 +2748,7 @@ __int64 game_character_CharacterAppearance_LoadAsync_lambda0_Invoke(
         }
         v24 = 40;
       }
-      result = (*(__int64 (**)(void))(*(_QWORD*)result + v24))();
+      result = (*(__int64 (**)(void*))(*(_QWORD*)result + v24))((void*)result);
     LABEL_33:
       if (v28 != nullptr) {
         if (v28 != v27) {
@@ -2769,7 +2769,7 @@ __int64 game_character_CharacterAppearance_LoadAsync_lambda0_Invoke(
       if (v28 != nullptr) {
         v25 = 40;
       LABEL_41:
-        result = (*(__int64 (**)(void))(*v28 + v25))();
+        result = (*(__int64 (**)(void*))(*v28 + v25))(v28);
       }
     LABEL_15:
       ++v11;

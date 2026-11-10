@@ -3762,7 +3762,7 @@ __int64 Seq_1137500(__int64 result)
       }
       v9 = 40;
     }
-    result = (*(__int64 (**)(void))(*(_QWORD*)v16 + v9))();
+    result = (*(__int64 (**)(void*))(*(_QWORD*)v16 + v9))((void*)v16);
   }
 
 LABEL_13:

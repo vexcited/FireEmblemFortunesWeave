@@ -355,8 +355,10 @@ LABEL_29:
           v48 = *(_QWORD**)(a1 + 40);
           v53_.v54 = v46;
           if (v48 != nullptr &&
-              ((unsigned int)(*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD*))(
-                   *v48 + 128LL))(v48, v48) &
+              ((unsigned int)X8CALL_X0(
+                   _QWORD*,
+                   (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(
+                       *v48 + 128LL))((void*)v48, v48)) &
                1) != 0) {
             v47 = (*(__int64 (**)(_QWORD))(**(_QWORD**)(a1 + 40) + 56LL))(
                 *(_QWORD*)(a1 + 40));

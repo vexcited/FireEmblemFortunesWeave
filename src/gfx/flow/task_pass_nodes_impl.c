@@ -4124,7 +4124,7 @@ __int64 TaskPassNodes_b9b090(_QWORD* a1, __int64* a2, _QWORD* a3)
     }
     v17 = 40;
   }
-  return (*(__int64 (**)(void))(*v22 + v17))();
+  return (*(__int64 (**)(void*))(*v22 + v17))(v22);
 }
 
 __int64 TaskPassNodes_b9b260(__int64 a1, __int64* a2, __int64 a3)

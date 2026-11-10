@@ -2888,8 +2888,10 @@ __int64 TaskSSR_b7cee0(__int64 a1, __int64 a2, __int64 a3, _QWORD* a4,
   v8 = (__int64 (**)(__int64))GameData_212e778[0];
   v9 = (__int64 (**)(__int64))GameData_212e780;
   if ((*(_BYTE*)(a5 + 84) & 1) != 0 || (*(_BYTE*)(a1 + 1032) & 1) != 0) {
-    v11 = (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD))(
-        **(_QWORD**)(a1 + 8) + 32LL))(*(_QWORD**)(a1 + 8), *(_QWORD*)(a1 + 8));
+    v11 = X8CALL_X0(
+        _QWORD*, (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD))(
+                     **(_QWORD**)(a1 + 8) + 32LL))((void*)*(_QWORD**)(a1 + 8),
+                                                   *(_QWORD*)(a1 + 8)));
     (*(void (**)(_QWORD, _QWORD*, __int64))(*(_QWORD*)*a4 + 96LL))(*a4, v11,
                                                                    v12);
     v13 = *a4;

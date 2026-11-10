@@ -20,7 +20,8 @@ _QWORD* snd_bgm_WaitDoneChangeCtrlBGM()
   __int64 v1;
   __int64 v2;
   __int64 v3;
-  __int64 (*v4)(void);
+  __int64 (*v4)(__int64, _QWORD);
+  __int64 v7;
   _QWORD* result;
   __int64 v6;
 
@@ -37,11 +38,12 @@ _QWORD* snd_bgm_WaitDoneChangeCtrlBGM()
   else {
     v3 = 0;
   }
-  v4 = *(__int64 (**)(void))(**(_QWORD**)(v3 + 24) + 448LL);
+  v7 = *(_QWORD*)(v3 + 24);
+  v4 = *(__int64 (**)(__int64, _QWORD))(*(_QWORD*)v7 + 448LL);
   if ((v0 & 1) == 0) {
-    return (_QWORD*)v4();
+    return (_QWORD*)v4(v7, 0);
   }
-  v4();
+  v4(v7, 1);
   result = *(_QWORD**)(v3 + 2240);
   *(_QWORD*)(v3 + 2240) = 0;
   if (result == (_QWORD*)(v3 + 2208)) {
@@ -53,7 +55,7 @@ _QWORD* snd_bgm_WaitDoneChangeCtrlBGM()
     }
     v6 = 40;
   }
-  return (_QWORD*)(*(__int64 (**)(void))(*result + v6))();
+  return (_QWORD*)(*(__int64 (**)(void*))(*result + v6))(result);
 }
 
 _QWORD* snd_bgm_WaitPrepared()
@@ -62,7 +64,8 @@ _QWORD* snd_bgm_WaitPrepared()
   __int64 v1;
   __int64 v2;
   __int64 v3;
-  __int64 (*v4)(void);
+  __int64 (*v4)(__int64, _QWORD);
+  __int64 v7;
   _QWORD* result;
   __int64 v6;
 
@@ -79,11 +82,12 @@ _QWORD* snd_bgm_WaitPrepared()
   else {
     v3 = 0;
   }
-  v4 = *(__int64 (**)(void))(**(_QWORD**)(v3 + 24) + 448LL);
+  v7 = *(_QWORD*)(v3 + 24);
+  v4 = *(__int64 (**)(__int64, _QWORD))(*(_QWORD*)v7 + 448LL);
   if (!v0) {
-    return (_QWORD*)v4();
+    return (_QWORD*)v4(v7, 0);
   }
-  v4();
+  v4(v7, 1);
   result = *(_QWORD**)(v3 + 2240);
   *(_QWORD*)(v3 + 2240) = 0;
   if (result == (_QWORD*)(v3 + 2208)) {
@@ -132,7 +136,7 @@ _QWORD* snd_bgm_EnableIgnoreStopBGM()
     }
     v4 = 40;
   }
-  return (_QWORD*)(*(__int64 (**)(void))(*result + v4))();
+  return (_QWORD*)(*(__int64 (**)(void*))(*result + v4))(result);
 }
 
 _QWORD* snd_bgm_DisableIgnoreStopBGM()

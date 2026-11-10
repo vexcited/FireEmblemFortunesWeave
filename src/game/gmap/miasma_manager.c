@@ -1139,7 +1139,7 @@ __int64 MiasmaManager_14a9f60()
         if (v10 != nullptr) {
           v6 = 40;
         LABEL_11:
-          (*(void (**)(void))(*v10 + v6))();
+          (*(void (**)(void*))(*v10 + v6))(v10);
         }
         v7 = *(_DWORD*)(v4 + 8);
         if (v5 != v7) {

@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_936f60(_QWORD* __return_ptr, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_936f60(PSEUDO_X8, _QWORD);
 __int64 GameRoutine_667ea0(_QWORD, _QWORD);
 __int64 GameRoutine_6680e0(_QWORD, _QWORD);
 __int64 __dynamic_cast(_QWORD, _QWORD, _QWORD, _QWORD);
@@ -91,7 +91,7 @@ __int64 ObeliskDepositoryLegionMenuItem_Unknown73(__int64 a1)
         LODWORD(v12) = *(unsigned __int16*)(v12 + 32);
       }
       if (v9 >= (int)v12) {
-        GameRoutine_936f60(&v20, *(_QWORD*)(*v8 + 16));
+        GameRoutine_936f60((void*)&v20, *(_QWORD*)(*v8 + 16));
         v3 = game_GameModeData_instance_;
         if ((v20 & 0x8000000000000000LL) == 0) {
           v13 = *(unsigned int*)(a1 + 40);
@@ -202,7 +202,7 @@ __int64 ObeliskDepositoryLegionMenuItem_Unknown74(__int64 a1)
     if (v13 != nullptr) {
       v11 = 40;
     LABEL_18:
-      (*(void (**)(void))(*(_QWORD*)v13 + v11))();
+      (*(void (**)(void*))(*(_QWORD*)v13 + v11))((void*)v13);
     }
   }
   return 12;

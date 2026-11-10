@@ -118,7 +118,8 @@ char* GameRoutine_e37f80(signed __int64*, char*, char*);
 
 void GameRoutine_e3f8b0(_QWORD*, double, double, double, double);
 
-_QWORD* GameRoutine_e4c790(_QWORD* __return_ptr, _QWORD, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_e4c790(PSEUDO_X8, _QWORD, _QWORD,
+                                                   _QWORD);
 
 __int64 GameRoutine_e58ae0(_QWORD, _QWORD, _QWORD);
 
@@ -457,7 +458,7 @@ __int64 GameHr_e4bf40(__int64 result)
       if (v2 != nullptr) {
         v39 = *(_QWORD*)(*((_QWORD*)v2 + 3) + 16 * v28);
         if (v39 != 0) {
-          GameRoutine_e4c790(&v110, v109, v39, 0);
+          GameRoutine_e4c790((void*)&v110, v109, v39, 0);
           v40 = *(_QWORD*)(v39 + 120);
           LODWORD(v42) = HIDWORD(v110);
           LODWORD(v41) = v110;
@@ -1394,8 +1395,9 @@ _QWORD* GameHr_e99210(_QWORD* result)
   v1 = *(_QWORD**)(*(_QWORD*)(GameData_221bea8 + 288) +
                    176LL * *((int*)result + 101) + 160);
   if (v1 != nullptr) {
-    return (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD*, _QWORD*))(
-        *v1 + 48LL))(v1, v1, result + 51);
+    return X8CALL_X0(_QWORD*, (*(__attribute__((swiftcall)) void (**)(
+                                  PSEUDO_X8, _QWORD*, _QWORD*))(*v1 + 48LL))(
+                                  (void*)v1, v1, result + 51));
   }
   return result;
 }

@@ -32,7 +32,7 @@ __int64 ProcClassExaminerScene_Destructor(__int64 a1);
 void ProcClassExaminerScene_146fec0();
 __int64 ProcClassExaminerScene_Unknown18();
 _QWORD* ProcClassExaminerScene_Unknown20(_QWORD* result, char a2);
-_QWORD* GameRoutine_140ea90(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_140ea90(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_1400c40(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_1400f80(_QWORD, _QWORD);
 __int64 GameRoutine_1405080(_QWORD);
@@ -566,7 +566,7 @@ void game_facility_anonymous_ProcClassExaminerScene_PrepareTrialResult()
           }
           v15 = 40;
         }
-        (*(void (**)(void))(*(_QWORD*)v21 + v15))();
+        (*(void (**)(void*))(*(_QWORD*)v21 + v15))((void*)v21);
       LABEL_32:
         v16 = v23;
         if (v23 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v23 + 8),
@@ -579,7 +579,7 @@ void game_facility_anonymous_ProcClassExaminerScene_PrepareTrialResult()
       v24[0] = SceneCharacter_14020c0(v3);
       v25 = 0;
       v26 = 1;
-      GameRoutine_140ea90(&v17, v24, &v25);
+      GameRoutine_140ea90((void*)&v17, v24, &v25);
       v21 = nullptr;
       GameRoutine_1400c40(v3, &v17, 0, v19);
       if (v21 == v19) {
@@ -591,7 +591,7 @@ void game_facility_anonymous_ProcClassExaminerScene_PrepareTrialResult()
         }
         v13 = 40;
       }
-      (*(void (**)(void))(*(_QWORD*)v21 + v13))();
+      (*(void (**)(void*))(*(_QWORD*)v21 + v13))((void*)v21);
     LABEL_22:
       v14 = v18;
       if (v18 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v18 + 8),
@@ -2215,7 +2215,7 @@ LABEL_41:
     }
     v33 = 40;
   }
-  return (*(__int64 (**)(long double))(*v34_.v35 + v33))(*(long double*)&v15);
+  return (*(__int64 (**)(void*))(*v34_.v35 + v33))(v34_.v35);
 }
 
 __int64 ProcClassExaminerScene_Unknown2()

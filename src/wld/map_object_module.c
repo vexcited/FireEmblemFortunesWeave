@@ -2,7 +2,8 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_a5cb20(_QWORD* __return_ptr, _QWORD, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_a5cb20(PSEUDO_X8, _QWORD, _QWORD,
+                                                   _QWORD);
 __int64 GameRoutine_2b0(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_a5aca0(_QWORD);
 __int64 MapObjectModule_a7d120(_QWORD);
@@ -711,7 +712,7 @@ _QWORD* MapObjectModule_a7dcc0(__int64 a1)
       else {
         v11 = *((_QWORD*)v4 + 1);
       }
-      v12 = GameRoutine_a5cb20(&v36, v6, v10, v11);
+      v12 = X8CALL_X0(_QWORD*, GameRoutine_a5cb20((void*)&v36, v6, v10, v11));
       v13 = v36;
       if (v36 != 0) {
         v14 = *(_QWORD**)(a1 + 224);

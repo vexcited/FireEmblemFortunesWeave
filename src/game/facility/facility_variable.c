@@ -138,7 +138,7 @@ void game_facility_FacilityVariable_EntryState()
       }
       v1 = 40;
     }
-    (*(void (**)(void))(*v3 + v1))();
+    (*(void (**)(void*))(*v3 + v1))(v3);
   }
 }
 

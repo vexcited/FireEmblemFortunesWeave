@@ -124,7 +124,7 @@ __int64 GameRoutine_1341d60(_QWORD, _QWORD);
 
 __int64 GameRoutine_134a4a0(_QWORD);
 
-_QWORD* GameRoutine_134b820(_QWORD* __return_ptr, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_134b820(PSEUDO_X8, _QWORD);
 
 __int64 GameRoutine_134c680(void);
 
@@ -518,7 +518,7 @@ LABEL_40:
       }
       v21 = 40;
     }
-    result = (__int64*)(*(__int64 (**)(void))(*v57 + v21))();
+    result = (__int64*)(*(__int64 (**)(void*))(*v57 + v21))(v57);
   }
 LABEL_46:
   v22 = v3[8];
@@ -1509,7 +1509,7 @@ __int64 GameHr_882300(__int64 result)
   LABEL_24:
     v16 = GameRoutine_13305c0();
   LABEL_29:
-    GameRoutine_134b820(&v25, v16);
+    GameRoutine_134b820((void*)&v25, v16);
     v17 = v25;
     v18 = v26;
     if (v25 != v26) {

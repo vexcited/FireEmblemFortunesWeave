@@ -2,8 +2,8 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_15870e0(_QWORD* __return_ptr, _QWORD, _QWORD);
-_QWORD* GameRoutine_15883c0(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_15870e0(PSEUDO_X8, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_15883c0(PSEUDO_X8, _QWORD, _QWORD);
 __int64 Alignment_56b600(void);
 __int64 ControlCreator_13633c0(_QWORD);
 __int64 GameRoutine_136a920(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
@@ -29105,11 +29105,11 @@ __int64 game_gameui_Util_SetBasicStatusForUnitInfo(__int64 result, __int64 a2)
   if (v11 != nullptr) {
     v4 = 40;
   LABEL_6:
-    (*(void (**)(void))(*v11 + v4))();
+    (*(void (**)(void*))(*v11 + v4))(v11);
   }
   v7[0] = "L_TotalNum";
   v7[1] = 10;
-  GameRoutine_15870e0(&v8, v2, v7);
+  GameRoutine_15870e0((void*)&v8, v2, v7);
   result = v9;
   if (v9 == 0) {
     return result;
@@ -50125,8 +50125,8 @@ LABEL_43:
         }
         if (v43 != 0 && v44 != 0) {
           LODWORD(v97[0]) = *(_DWORD*)(v38 + 4 * v42);
-          (*(void (**)(__int64* __return_ptr, _QWORD*, _QWORD*))(*v40 + 48LL))(
-              &v93, v40, v97);
+          (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*, _QWORD*))(
+              *v40 + 48LL))((void*)&v93, v40, v97);
           GameRoutine_188df50(v44, &v93, 1, 0);
           if (v95 != 0) {
             v96 = v95;
@@ -52956,7 +52956,7 @@ __int64 game_gameui_Util_SetStatusForClassChange_lambda1_Invoke(__int64 a1,
   ++*v2;
   v10[0] = game_util_Format("L_ClassSkillItem%02d", v5);
   v10[1] = strlen(v10[0]);
-  GameRoutine_15883c0(&v11, v6, v10);
+  GameRoutine_15883c0((void*)&v11, v6, v10);
   result = v12;
   if (v12 != 0) {
     v8 = std___1___shared_weak_count_lock(v12);

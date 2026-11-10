@@ -2641,7 +2641,7 @@ __int64 game_GameCalendar_ProcNotify_Notify_closure0_Invoke(__int64 a1,
       }
       v4 = 40;
     }
-    return (*(__int64 (**)(void))(*(_QWORD*)v6 + v4))();
+    return (*(__int64 (**)(void*))(*(_QWORD*)v6 + v4))((void*)v6);
   }
   return result;
 }

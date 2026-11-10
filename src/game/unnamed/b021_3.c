@@ -138,7 +138,7 @@ __int64 GameRoutine_155f480(_QWORD, _QWORD);
 
 __int64 GameRoutine_155fbe0(_QWORD, _QWORD);
 
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 
 __int64 GameRoutine_1560ec0(_QWORD, _QWORD, _QWORD);
 
@@ -228,9 +228,9 @@ __int64 GameRoutine_821090(_QWORD);
 
 __int64 GameRoutine_8224a0(_QWORD);
 
-_QWORD* GameRoutine_a31e60(_QWORD* __return_ptr, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_a31e60(PSEUDO_X8, _QWORD);
 
-_QWORD* GameRoutine_a32360(_QWORD* __return_ptr, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_a32360(PSEUDO_X8, _QWORD);
 
 __int64 GameRoutine_a4dbe0(_QWORD, _QWORD, _QWORD, _QWORD);
 
@@ -337,7 +337,7 @@ __int64 GameHr_1627bf0(_QWORD* a1)
         }
         *((_DWORD*)a1 + 9) = v9;
         *((_DWORD*)a1 + 10) = v9;
-        GameRoutine_1560070(&v26, v7, "L_PageTab");
+        GameRoutine_1560070((void*)&v26, v7, "L_PageTab");
         result = v27;
         if (v27 == 0) {
           goto LABEL_28;
@@ -887,7 +887,7 @@ __int64 GameHr_16602f0(__int64 a1)
   __int64 v12;
   __int64 v13;
 
-  GameRoutine_1560070(&v12, *(_QWORD*)a1, "L_DagsionHp");
+  GameRoutine_1560070((void*)&v12, *(_QWORD*)a1, "L_DagsionHp");
   result = v13;
   if (v13 == 0) {
     return result;
@@ -1792,7 +1792,7 @@ __int64 GameHr_16716e0(__int64 result)
               *v11 = (__int64*)GameData_207e158;
               v90 = GameData_212d468[0];
               *((_BYTE*)v11 + 176) = 0;
-              GameRoutine_a31e60(&v106, *v90);
+              GameRoutine_a31e60((void*)&v106, *v90);
               v91 = v11[19];
               if (v91 != nullptr) {
                 v92 = v11[20];
@@ -1914,7 +1914,7 @@ __int64 GameHr_16716e0(__int64 result)
             *v11 = (__int64*)GameData_207e3e8;
             v73 = GameData_212d468[0];
             *((_BYTE*)v11 + 194) = 0;
-            GameRoutine_a32360(&v106, *v73);
+            GameRoutine_a32360((void*)&v106, *v73);
             v74 = v11[19];
             v4 = GameData_212d630[0];
             if (v74 != nullptr) {

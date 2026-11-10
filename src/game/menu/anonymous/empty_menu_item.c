@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_155e830(_QWORD, _QWORD);
 __int64 GameRoutine_1562cf0(_QWORD, _QWORD);
 __int64 GameRoutine_15b7780(void);
@@ -58,8 +58,9 @@ __int64 EmptyMenuItem_OnSelect(__int64 a1)
   if (*(_BYTE*)(a1 + 79) != 0) {
     v2 = 520;
   }
-  (*(void (**)(void))(*(_QWORD*)a1 + v2))();
-  GameRoutine_1560070(&v6, *(_QWORD*)(a1 + 8) + 848LL, "L_UnitInfoDetail");
+  (*(void (**)(void*))(*(_QWORD*)a1 + v2))((void*)a1);
+  GameRoutine_1560070((void*)&v6, *(_QWORD*)(a1 + 8) + 848LL,
+                      "L_UnitInfoDetail");
   result = v7;
   if (v7 != 0) {
     v4 = std___1___shared_weak_count_lock(v7);

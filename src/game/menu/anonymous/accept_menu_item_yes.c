@@ -95,7 +95,7 @@ __int64 AcceptMenuItem_Yes_Unknown25(__int64 a1)
         }
         v6 = 40;
       }
-      (*(void (**)(void))(*v18 + v6))();
+      (*(void (**)(void*))(*v18 + v6))(v18);
     LABEL_11:
       if (v4[9] == 1) {
         v8 = *(unsigned __int8*)(*(_QWORD*)v4 + 113LL);
@@ -132,12 +132,12 @@ __int64 AcceptMenuItem_Yes_Unknown25(__int64 a1)
                 }
                 v16 = 40;
               }
-              (*(void (**)(void))(*v18 + v16))();
+              (*(void (**)(void*))(*v18 + v16))(v18);
               goto LABEL_43;
             }
             v13 = 40;
           }
-          (*(void (**)(void))(*v18 + v13))();
+          (*(void (**)(void*))(*v18 + v13))(v18);
           goto LABEL_35;
         }
       }
@@ -155,7 +155,7 @@ __int64 AcceptMenuItem_Yes_Unknown25(__int64 a1)
         }
         v11 = 40;
       }
-      (*(void (**)(void))(*v18 + v11))();
+      (*(void (**)(void*))(*v18 + v11))(v18);
     LABEL_23:
       v17[0] = GameData_20fbcb0;
       v17[1] = v4;
@@ -168,7 +168,7 @@ __int64 AcceptMenuItem_Yes_Unknown25(__int64 a1)
       if (v18 != nullptr) {
         v12 = 40;
       LABEL_27:
-        (*(void (**)(void))(*v18 + v12))();
+        (*(void (**)(void*))(*v18 + v12))(v18);
       }
       return 2;
     }
@@ -281,7 +281,7 @@ game_menu_anonymous_AcceptMenuItem_Yes_ACall_closure1_Invoke(__int64 a1,
         }
         v4 = 40;
       }
-      return (*(__int64 (**)(void))(*v7 + v4))();
+      return (*(__int64 (**)(void*))(*v7 + v4))(v7);
     }
   }
   return result;
@@ -359,7 +359,7 @@ __int64 game_menu_anonymous_AcceptMenuItem_Yes_ACall(__int64 result,
     }
     v6 = 40;
   }
-  (*(void (**)(void))(*v10 + v6))();
+  (*(void (**)(void*))(*v10 + v6))(v10);
 LABEL_8:
   if (v12 == v11) {
     v7 = 32;
@@ -368,7 +368,7 @@ LABEL_8:
   if (v12 != nullptr) {
     v7 = 40;
   LABEL_12:
-    (*(void (**)(void))(*v12 + v7))();
+    (*(void (**)(void*))(*v12 + v7))(v12);
   }
   result = (__int64)v14;
   if (v14 == v13) {
@@ -380,7 +380,7 @@ LABEL_8:
     }
     v8 = 40;
   }
-  return (*(__int64 (**)(void))(*v14 + v8))();
+  return (*(__int64 (**)(void*))(*v14 + v8))(v14);
 }
 
 __int64 game_menu_anonymous_AcceptMenuItem_Yes_ACall_closure4_Invoke(__int64 a1)

@@ -79,7 +79,7 @@ __int64 SubExchangeMenuItem_Unknown25_185f7e0(__int64 a1)
           }
           v12 = 40;
         }
-        (*(void (**)(void))(*(_QWORD*)v14 + v12))();
+        (*(void (**)(void*))(*(_QWORD*)v14 + v12))((void*)v14);
         return 12;
       }
     }

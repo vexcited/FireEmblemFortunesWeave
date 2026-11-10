@@ -144,7 +144,7 @@ __int64 ProcObeliskDepositoryTransporterMenu_Unknown109(_QWORD* a1)
       if (v7 != nullptr) {
         v5 = 40;
       LABEL_10:
-        (*(void (**)(void))(*(_QWORD*)v7 + v5))();
+        (*(void (**)(void*))(*(_QWORD*)v7 + v5))((void*)v7);
       }
     }
     return 12;

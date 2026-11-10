@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_9d5180(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_9d5180(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_136a920(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_136afb0(_QWORD, _QWORD);
 __int64 GameRoutine_1562060(_QWORD, _QWORD, _QWORD);
@@ -180,7 +180,7 @@ __int64 RouteMenuItem_DrawText(__int64 a1)
       GameRoutine_1840740(v10, 0, *(_QWORD*)(a1 + 2320), 6, 1);
       v41[0] = "L_Lv";
       v41[1] = 4;
-      GameRoutine_9d5180(&v38, v3, v41);
+      GameRoutine_9d5180((void*)&v38, v3, v41);
       if (v39 != 0) {
         v11 = std___1___shared_weak_count_lock(v39);
         v12 = v38;

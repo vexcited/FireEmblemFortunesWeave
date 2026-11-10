@@ -158,7 +158,7 @@ extern __int64 GameData_2265ee0;
 
 __int64 GameRoutine_1015560(_QWORD);
 
-_QWORD* GameRoutine_112d860(_QWORD* __return_ptr, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_112d860(PSEUDO_X8, _QWORD);
 
 __int64 GameRoutine_112daa0(_QWORD);
 
@@ -2383,8 +2383,8 @@ __int64 GameHr_133f9e0(_QWORD* a1, __int64 a2)
   if (v4 != 0) {
     if (*(_BYTE*)(v4 + 42) == 1) {
       v5 = a1;
-      (*(void (**)(__int64 __return_ptr, _QWORD, __int64))(
-          *(_QWORD*)v4 + 88LL))(v4, *(_QWORD*)(*a1 + 280LL), a2);
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD, __int64))(
+          *(_QWORD*)v4 + 88LL))((void*)v4, *(_QWORD*)(*a1 + 280LL), a2);
       if (((*(__int64 (**)(_QWORD))(**(_QWORD**)(v2 + 280) + 112LL))(
                *(_QWORD*)(v2 + 280)) &
            1) != 0) {
@@ -4137,7 +4137,7 @@ bool GameHr_135a2e0(__int64 a1, __int64* a2)
       v81 = v7;
       v82 = (char*)a2[2];
     }
-    GameRoutine_112d860(v78, &v80);
+    GameRoutine_112d860((void*)v78, &v80);
     v8 = v78[1];
     *(_WORD*)((char*)&v83 + 1) = 12079;
     if ((v78[0] & 1) == 0) {

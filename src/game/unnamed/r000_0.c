@@ -1500,8 +1500,9 @@ __int64 GameHr_5df00(_QWORD* a1, unsigned int* a2)
       v29 = v15;
       v30 = v4;
       v31 = v27 + v24;
-      (*(void (**)(_QWORD* __return_ptr, _QWORD, __int64, __int64))(
-          **((_QWORD**)a2 + 3) + 48LL))(v50, *((_QWORD*)a2 + 3), v20, v23);
+      (*(__attribute__((swiftcall)) void (**)(
+          PSEUDO_X8, _QWORD, __int64, __int64))(**((_QWORD**)a2 + 3) + 48LL))(
+          (void*)v50, *((_QWORD*)a2 + 3), v20, v23);
       GameRoutine_5d610(v31, v50);
       GameRoutine_5d4f0(v50);
       v32 = *(_QWORD*)(v31 + 8);

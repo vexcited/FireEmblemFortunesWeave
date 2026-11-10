@@ -317,7 +317,7 @@ __int64 BonusExpList_7ffec0(__int64* a1, __int64 a2)
           if (v45 == &v42) {
             v23 = 32;
           LABEL_47:
-            (*(void (**)(void))(*v45 + v23))();
+            (*(void (**)(void*))(*v45 + v23))(v45);
           }
           else if (v45 != nullptr) {
             v23 = 40;
@@ -327,7 +327,7 @@ __int64 BonusExpList_7ffec0(__int64* a1, __int64 a2)
           if (v41 == v40) {
             v25 = 32;
           LABEL_52:
-            (*(void (**)(void))(*(_QWORD*)v41 + v25))();
+            (*(void (**)(void*))(*(_QWORD*)v41 + v25))((void*)v41);
           }
           else if (v41 != nullptr) {
             v25 = 40;

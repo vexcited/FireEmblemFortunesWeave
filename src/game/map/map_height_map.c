@@ -678,7 +678,7 @@ __int64 MapHeightMap_f0f740(__int64 a1)
       if (v116 != nullptr) {
         v95 = 40;
       LABEL_81:
-        (*(void (**)(void))(*v88 + v95))();
+        (*(void (**)(void*))(*v88 + v95))(v88);
       }
       LOBYTE(v118) = 0;
       v96 = v5;
@@ -735,7 +735,7 @@ __int64 MapHeightMap_f0f740(__int64 a1)
         }
         v110 = 40;
       }
-      (*(void (**)(void))(*v116 + v110))();
+      (*(void (**)(void*))(*v116 + v110))(v116);
     LABEL_95:
       fw_world_JobQueue_Submit(*(_QWORD*)(v98 + 16), v103);
       fw_world_JobContext_Wait(*v97, v103);

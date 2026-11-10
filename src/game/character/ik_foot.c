@@ -738,7 +738,7 @@ void game_character_IKFoot_IKFoot(__int64 a1, _QWORD* a2, __int64 a3)
             }
             v126 = 40;
           }
-          (*(void (**)(long double))(*v127_.v130 + v126))(*(long double*)&v8);
+          (*(void (**)(void*))(*v127_.v130 + v126))(v127_.v130);
           goto LABEL_207;
         }
         v84 = a2[34];
@@ -924,8 +924,7 @@ void game_character_IKFoot_IKFoot(__int64 a1, _QWORD* a2, __int64 a3)
                 if (v120 == v122) {
                   v123 = 32;
                 LABEL_192:
-                  (*(void (**)(long double))(*v122 + v123))(
-                      *(long double*)&v112);
+                  (*(void (**)(void*))(*v122 + v123))(v122);
                 }
                 else if (v122 != nullptr) {
                   v123 = 40;
@@ -1002,7 +1001,7 @@ void game_character_IKFoot_IKFoot(__int64 a1, _QWORD* a2, __int64 a3)
           }
           v93 = 40;
         }
-        (*(void (**)(long double))(*v92 + v93))(*(long double*)&v8);
+        (*(void (**)(void*))(*v92 + v93))(v92);
         goto LABEL_136;
       }
     }

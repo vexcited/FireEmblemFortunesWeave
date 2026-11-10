@@ -31,7 +31,8 @@ __int64 GameRoutine_1a0a540(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_1a0b940(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_1a0b950(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_1a0ba50(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
-_QWORD* GameRoutine_540(_QWORD* __return_ptr, _QWORD, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_540(PSEUDO_X8, _QWORD, _QWORD,
+                                                _QWORD);
 void __attribute__((noreturn)) GameRoutine_60a1d0(_QWORD);
 void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
 __int64 GameRoutine_6380e0(_QWORD, _QWORD);
@@ -269,7 +270,8 @@ __int64 GameHr_bd6740(__int64 a1, __int64 a2, _QWORD* a3, char a4)
   if ((explicit & 1) == 0) {
     result = GameRoutine_1a09fd0(GameData_212df10);
     if ((_DWORD)result != 0) {
-      *v19 = (unsigned int)GameRoutine_540(v158, 0, "ModelModule", 11);
+      *v19 = (unsigned int)X8CALL_X0(
+          _QWORD*, GameRoutine_540((void*)v158, 0, "ModelModule", 11));
       result = GameRoutine_1a09fe0(GameData_212df10);
     }
   }
@@ -820,8 +822,9 @@ LABEL_174:
       v160 = (unsigned int)GameRoutine_1a09fd0(GameData_212ea08);
       v150 = v159;
       if ((_DWORD)v160 != 0) {
-        *v152 = (unsigned int)GameRoutine_540((_QWORD*)v160, 0, "LocatorModule",
-                                              13);
+        *v152 = (unsigned int)X8CALL_X0(
+            _QWORD*,
+            GameRoutine_540((void*)(_QWORD*)v160, 0, "LocatorModule", 13));
         GameRoutine_1a09fe0(GameData_212ea08);
         v150 = v159;
       }
@@ -924,7 +927,7 @@ __int64 GameHr_cc5980(__int64 a1)
     }
     v6 = 40;
   }
-  (*(void (**)(void))(*v5 + v6))();
+  (*(void (**)(void*))(*v5 + v6))(v5);
 LABEL_9:
   v7 = nullptr;
   v8 = nullptr;

@@ -290,8 +290,9 @@ __int64 AnimatorEx_Unknown3(__int64 result, float a2)
         *(_DWORD*)(result + 68) = v3 | 2;
         v13 = *(_QWORD*)(result + 88);
         *(float*)(result + 60) = -v2;
-        (*(void (**)(_QWORD* __return_ptr, _QWORD, __int64, __int64))(
-            **(_QWORD**)(v13 + 96) + 120LL))(*(_QWORD**)(v13 + 96),
+        (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD, __int64,
+                                                __int64))(
+            **(_QWORD**)(v13 + 96) + 120LL))((void*)*(_QWORD**)(v13 + 96),
                                              *(_QWORD*)(v13 + 96), 6, result);
         goto LABEL_19;
       }

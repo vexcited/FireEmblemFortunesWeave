@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 _QWORD* GameRoutine_16e0c00(_QWORD* result, __int64);
 __int64 GameRoutine_120c6c0(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_15d2540(_QWORD, _QWORD, _QWORD);
@@ -277,7 +277,7 @@ __int64 SendUnitItemMenu_Unknown88(__int64 a1)
     result = __dynamic_cast(result, GameData_212e008[0], &GameData_20a3328, 0);
     if (result != 0) {
       v3 = result;
-      GameRoutine_1560070(&v10, a1 + 848, "L_ItemDetail");
+      GameRoutine_1560070((void*)&v10, a1 + 848, "L_ItemDetail");
       v4 = *(_QWORD**)(v3 + 96);
       v5 = *(int*)(v3 + 40);
       result = v11;
@@ -539,7 +539,7 @@ __int64 game_menu_SendUnitItemMenu_CreateBind_lambda0_Invoke(__int64 a1,
       }
       v4 = 40;
     }
-    return (*(__int64 (**)(void))(*(_QWORD*)v6 + v4))();
+    return (*(__int64 (**)(void*))(*(_QWORD*)v6 + v4))((void*)v6);
   }
   return result;
 }

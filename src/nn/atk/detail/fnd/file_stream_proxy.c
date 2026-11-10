@@ -77,9 +77,10 @@ __int64 FileStreamProxy_Unknown6(__int64 a1, __int64 a2, __int64 a3)
   switch ((_DWORD)a3) {
   case 2:
     v6 = a1;
-    v5 = (char*)(*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD))(
-             **(_QWORD**)(a1 + 8) + 56LL))(*(_QWORD**)(a1 + 8),
-                                           *(_QWORD*)(a1 + 8)) +
+    v5 = (char*)X8CALL_X0(_QWORD*,
+                          (*(__attribute__((swiftcall)) void (**)(
+                              PSEUDO_X8, _QWORD))(**(_QWORD**)(a1 + 8) + 56LL))(
+                              (void*)*(_QWORD**)(a1 + 8), *(_QWORD*)(a1 + 8))) +
          a2;
     v4 = *(_QWORD*)(v6 + 16);
     a3 = 2;

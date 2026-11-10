@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_155e830(_QWORD, _QWORD);
 __int64 GameRoutine_159e2c0(_QWORD, _QWORD);
 __int64 GameRoutine_170e3e0(_QWORD);
@@ -227,17 +227,17 @@ __int64 TalkMenu_Unknown85(__int64 a1)
     v5 = 4;
   }
   *(_DWORD*)(a1 + 356) = *(_DWORD*)(a1 + 356) & 0xFFFFFFFB | v5;
-  GameRoutine_1560070(&v11, a1 + 952, "L_Arrow/L_Arrow_L");
+  GameRoutine_1560070((void*)&v11, a1 + 952, "L_Arrow/L_Arrow_L");
   GameRoutine_159e2c0(&v11, 0);
   if (v12 != 0) {
     std___1___shared_weak_count___release_weak(v12);
   }
-  GameRoutine_1560070(&v9, a1 + 952, "L_Arrow/L_Arrow_R");
+  GameRoutine_1560070((void*)&v9, a1 + 952, "L_Arrow/L_Arrow_R");
   GameRoutine_159e2c0(&v9, 0);
   if (v10 != 0) {
     std___1___shared_weak_count___release_weak(v10);
   }
-  GameRoutine_1560070(&v7, a1 + 952, "L_Arrow/L_Arrow_D");
+  GameRoutine_1560070((void*)&v7, a1 + 952, "L_Arrow/L_Arrow_D");
   GameRoutine_159e2c0(&v7, 0);
   result = v8;
   if (v8 != 0) {

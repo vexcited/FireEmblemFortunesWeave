@@ -491,8 +491,8 @@ __int64 ProcTalkLogMenu_Unknown121(__int64 a1)
     }
     *(_BYTE*)(a1 + 1688) = 1;
   }
-  (*(void (**)(__int64* __return_ptr, __int64))(*(_QWORD*)a1 + 384LL))(&v10,
-                                                                       a1);
+  (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64))(
+      *(_QWORD*)a1 + 384LL))((void*)&v10, a1);
   GameRoutine_159e540(&v10);
   result = v11;
   if (v11 != 0) {
@@ -555,7 +555,8 @@ __int64 ProcTalkLogMenu_17d0700(__int64 a1)
     }
     *(_BYTE*)(a1 + 1512) = 1;
   }
-  (*(void (**)(__int64* __return_ptr))(*(_QWORD*)v3 + 384LL))(&v13);
+  (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, void*))(
+      *(_QWORD*)v3 + 384LL))((void*)&v13, (void*)v3);
   GameRoutine_159e540(&v13);
   result = v14;
   if (v14 != 0) {
@@ -612,8 +613,8 @@ __int64 ProcTalkLogMenu_Unknown122(__int64 a1)
     }
     *(_BYTE*)(a1 + 1688) = 0;
   }
-  (*(void (**)(__int64* __return_ptr, __int64))(*(_QWORD*)a1 + 392LL))(&v11,
-                                                                       a1);
+  (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64))(
+      *(_QWORD*)a1 + 392LL))((void*)&v11, a1);
   GameRoutine_159e540(&v11);
   result = v12;
   if (v12 != 0) {
@@ -679,7 +680,8 @@ __int64 ProcTalkLogMenu_17d09c0(__int64 a1)
     }
     *(_BYTE*)(a1 + 1512) = 0;
   }
-  (*(void (**)(__int64* __return_ptr))(*(_QWORD*)v4 + 392LL))(&v15);
+  (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, void*))(
+      *(_QWORD*)v4 + 392LL))((void*)&v15, (void*)v4);
   GameRoutine_159e540(&v15);
   result = v16;
   if (v16 != 0) {

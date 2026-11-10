@@ -1277,7 +1277,7 @@ _BYTE* game_hub_Manager_BeginPopWorldPost(__int64 a1)
       }
       v7 = 40;
     }
-    (*(void (**)(void))(*v22 + v7))();
+    (*(void (**)(void*))(*v22 + v7))(v22);
   LABEL_20:
     if (*(_BYTE*)(a1 + 240) == 1) {
       *(_BYTE*)(a1 + 240) = 0;

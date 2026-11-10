@@ -375,7 +375,7 @@ LABEL_26:
         }
         v27 = 40;
       }
-      (*(void (**)(void))(*v26 + v27))();
+      (*(void (**)(void*))(*v26 + v27))(v26);
     LABEL_37:
       if ((v25[2] & 1) != 0 && v25[4] != 0) {
         if (*(_QWORD*)(*(_QWORD*)v23 + 200LL) != 0) {
@@ -1795,7 +1795,7 @@ LABEL_6:
       if (v43 == (__int64*)&v56_.v56) {
         v49 = 32;
       LABEL_50:
-        (*(void (**)(long double))(*v43 + v49))(v11),
+        (*(void (**)(void*))(*v43 + v49))(v43),
             v14 = COERCE_AS(__typeof__(v14),
                             PSEUDO_REGISTER(unsigned long long, "x2", "=r")),
             v15 = COERCE_AS(__typeof__(v15),

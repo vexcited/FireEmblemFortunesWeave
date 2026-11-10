@@ -2088,8 +2088,10 @@ _QWORD* CharacterControllerEnemy_StateReturn_Unknown3(__int64 a1, double a2,
     v7 = 0;
     v8 = 0;
     while (1) {
-      result = (*(_QWORD * (**)(__int128* __return_ptr))(**(_QWORD**)(v5 + v7) +
-                                                         48LL))(&v12);
+      result = X8CALL_X0(
+          _QWORD*, (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, void*))(
+                       **(_QWORD**)(v5 + v7) + 48LL))(
+                       (void*)&v12, (void*)*(_QWORD**)(v5 + v7)));
       if (v13 == 1) {
         break;
       }

@@ -307,8 +307,9 @@ __int64 TextTagProcessor_Unknown4(_QWORD* a1, __int64 a2, __int64* a3,
     }
   LABEL_60:
     v81 = v48 | v46 | v49 | v50 | v51 | v52 | v53 | v54;
-    (*(void (**)(_QWORD** __return_ptr, __int64, unsigned __int64*))(
-        *(_QWORD*)v42 + 48LL))(&v79, v42, &v81);
+    (*(__attribute__((swiftcall)) void (**)(
+        PSEUDO_X8, __int64, unsigned __int64*))(*(_QWORD*)v42 + 48LL))(
+        (void*)&v79, v42, &v81);
     if (v80 == 0) {
     LABEL_72:
       v65 = v19;

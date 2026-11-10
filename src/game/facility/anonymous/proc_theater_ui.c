@@ -20,7 +20,7 @@ __int64 LayoutAccessor_155e140(_QWORD);
 __int64 ProcTheaterUI_1114230(__int64 a1);
 __int64 game_facility_anonymous_ProcTheaterUI_CreateBindChoice_closure_Invoke(
     __int64 result, _DWORD* a2);
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 BasicMenuCursor_16e0c00(_QWORD, _QWORD);
 __int64 GameRoutine_16dcd30(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 LayoutAccessor_155c910(_QWORD, _QWORD);
@@ -763,7 +763,7 @@ __int64 ProcTheaterUI_1113db0()
   if (GameData_2236778 == 0) {
     return 0;
   }
-  GameRoutine_1560070(&v7, GameData_2236778 + 168, "L_Tlp");
+  GameRoutine_1560070((void*)&v7, GameData_2236778 + 168, "L_Tlp");
   if (v8 == 0) {
     return 0;
   }

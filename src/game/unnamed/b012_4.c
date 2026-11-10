@@ -30,7 +30,7 @@ __int64 GameRoutine_6d8f40(void);
 
 __int64 GameRoutine_6dd190(_QWORD, _QWORD, _QWORD);
 
-_QWORD* GameRoutine_80c770(_QWORD* __return_ptr, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_80c770(PSEUDO_X8, _QWORD);
 
 void __attribute__((noreturn)) GameRoutine_8123d0(_QWORD);
 
@@ -251,7 +251,7 @@ LABEL_10:
         }
       }
       if ((GameRoutine_6d8f40() & 1) != 0) {
-        GameRoutine_80c770(&v40, "SE_SYS_Weapon_Change_LinkUnit");
+        GameRoutine_80c770((void*)&v40, "SE_SYS_Weapon_Change_LinkUnit");
         GameRoutine_e7d890(v22);
         v38 = GameData_212f628[0];
         GameRoutine_17c6540(*GameData_212f628[0], a2 & 1);

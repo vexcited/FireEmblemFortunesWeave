@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_19fc190(_QWORD, _QWORD);
 __int64 LayoutAccessor_155e830(_QWORD, _QWORD);
 __int64 fw_text_String_CopyTerminated(_QWORD, _QWORD, _QWORD);
@@ -134,7 +134,7 @@ __int64* MapChip_19fc2e0(__int64* result, __int64* a2)
     else {
       v10 = (char*)v15 + 1;
     }
-    GameRoutine_1560070(&v17, v6, v10);
+    GameRoutine_1560070((void*)&v17, v6, v10);
     result = v18;
     if (v18 != nullptr) {
       v11 = std___1___shared_weak_count_lock(v18);

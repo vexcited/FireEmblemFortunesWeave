@@ -2518,7 +2518,7 @@ snd_target_BaseNX_closeAdditionalArchive_lambda0_Invoke_166f40(__int64 a1,
     }
     v6 = 40;
   }
-  return (*(__int64 (**)(long double))(*v7_.v8 + v6))(v4);
+  return (*(__int64 (**)(void*))(*v7_.v8 + v6))(v7_.v8);
 }
 
 __int64 snd_target_BaseNX_closeAdditionalArchive_lambda0_Invoke(__int64 a1,
@@ -2567,7 +2567,7 @@ __int64 snd_target_BaseNX_closeAdditionalArchiveForCache_lambda0_Invoke_167190(
     }
     v6 = 40;
   }
-  return (*(__int64 (**)(long double))(*v7_.v8 + v6))(v4);
+  return (*(__int64 (**)(void*))(*v7_.v8 + v6))(v7_.v8);
 }
 
 __int64 snd_target_BaseNX_closeAdditionalArchiveForCache_lambda0_Invoke(

@@ -2,8 +2,8 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_1030ce0(_QWORD* __return_ptr, _QWORD, _QWORD);
-_QWORD* GameRoutine_8903a0(_QWORD* __return_ptr, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1030ce0(PSEUDO_X8, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_8903a0(PSEUDO_X8, _QWORD);
 __int64 GameRoutine_16e0c00(_QWORD, _QWORD);
 __int64 GameRoutine_1845b60(_QWORD);
 __int64 GameRoutine_1846260(_QWORD);
@@ -228,7 +228,7 @@ __int64 ProcQuestMenu_Unknown128(_QWORD* a1)
   else {
     v4 = 0;
   }
-  GameRoutine_8903a0(&v65, v4);
+  GameRoutine_8903a0((void*)&v65, v4);
   v5 = v65;
   v6 = v66;
   if ((__int64*)v66 == v65) {
@@ -485,7 +485,7 @@ LABEL_30:
       *(_QWORD*)(v42 + 144) = game_gameui_Help_SideStoryInfo_GetIcon_ptr;
       v26 = (_QWORD*)fw_memory_g_heap_manager_ptr;
       if (*(_QWORD*)GameData_212efa8[0] != 0) {
-        GameRoutine_1030ce0(&v65, *(_QWORD*)GameData_212efa8[0],
+        GameRoutine_1030ce0((void*)&v65, *(_QWORD*)GameData_212efa8[0],
                             *(_QWORD*)(v42 + 152));
         v53 = *(_QWORD*)(v42 + 112);
         *(_DWORD*)(v42 + 96) = (_DWORD)v65;

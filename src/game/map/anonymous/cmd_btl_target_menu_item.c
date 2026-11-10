@@ -118,7 +118,7 @@ __int64 CmdBtlTargetMenuItem_Unknown70(__int64 a1)
   if (v23 != nullptr) {
     v4 = 40;
   LABEL_15:
-    (*(void (**)(void))(*v23 + v4))();
+    (*(void (**)(void*))(*v23 + v4))(v23);
   }
   if (v20 != 0) {
     GameRoutine_e7d890();

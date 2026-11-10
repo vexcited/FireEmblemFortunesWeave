@@ -10,7 +10,7 @@ extern __int64 (*GameData_1fe1130[])();
 extern __int64 GameData_21c9f38;
 extern int GameData_2213f84;
 __int64 HubFacilityOpenFile_Destructor(_QWORD* a1);
-_QWORD* std___1_to_string_1a0abd0(_QWORD* __return_ptr, _QWORD);
+__attribute__((swiftcall)) void std___1_to_string_1a0abd0(PSEUDO_X8, _QWORD);
 __int64 GameRoutine_1a09ce0(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_1a0a680(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_64df20(_QWORD, _QWORD, _QWORD);
@@ -520,7 +520,7 @@ __int64 HubFacilityOpenFile_dc7100(__int64 result)
           v13 = v94;
           v58 = 0;
         }
-        std___1_to_string_1a0abd0(v95, v58);
+        std___1_to_string_1a0abd0((void*)v95, v58);
         v67 = (__int64*)GameRoutine_1a0a680(v95, 0, &GameData_1ac690d, 1);
         v69 = v67[1];
         v68 = (char*)v67[2];

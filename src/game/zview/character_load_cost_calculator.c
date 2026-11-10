@@ -443,9 +443,10 @@ game_zview_CharacterLoadCostCalculator_collectCharaPolygon_lambda0_Invoke(
         v7 = *(_QWORD*)(v4 + 8);
         if (v7 != 0) {
           v8 = result;
-          result = (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD))(
-              **(_QWORD**)(v7 + 24) + 56LL))(*(_QWORD**)(v7 + 24),
-                                             *(_QWORD*)(v7 + 24));
+          result = X8CALL_X0(
+              _QWORD*, (*(__attribute__((swiftcall)) void (**)(
+                           PSEUDO_X8, _QWORD))(**(_QWORD**)(v7 + 24) + 56LL))(
+                           (void*)*(_QWORD**)(v7 + 24), *(_QWORD*)(v7 + 24)));
           v12 = *((_DWORD*)v8 + 4);
           v13 = (_DWORD)result - 1;
           if (v12 < (int)result - 1) {

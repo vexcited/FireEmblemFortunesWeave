@@ -254,7 +254,7 @@ __int64 game_map_MapPanelDeployMove_UpdateMesh(__int64 result)
       do {
         v18 = v2[6];
         *((_BYTE*)v2 + 272) = 0;
-        if (((*(__int64 (**)(void))(v18 + 48))() & 1) != 0) {
+        if (((*(__int64 (**)(void*))(v18 + 48))(&v2[6]) & 1) != 0) {
           v19 = 1036831949;
         }
         else {
@@ -285,7 +285,7 @@ __int64 game_map_MapPanelDeployMove_UpdateMesh(__int64 result)
       do {
         v22 = v4[6];
         *((_BYTE*)v4 + 272) = 0;
-        if (((*(__int64 (**)(void))(v22 + 48))() & 1) != 0) {
+        if (((*(__int64 (**)(void*))(v22 + 48))(&v4[6]) & 1) != 0) {
           v23 = 1036831949;
         }
         else {
@@ -316,7 +316,7 @@ __int64 game_map_MapPanelDeployMove_UpdateMesh(__int64 result)
       do {
         v26 = v6[6];
         *((_BYTE*)v6 + 272) = 0;
-        if (((*(__int64 (**)(void))(v26 + 48))() & 1) != 0) {
+        if (((*(__int64 (**)(void*))(v26 + 48))(&v6[6]) & 1) != 0) {
           v27 = 1036831949;
         }
         else {
@@ -667,7 +667,8 @@ __int64 game_map_MapPanelDeployMove_UpdateMesh(__int64 result)
                 LABEL_99:
                   v79 = *(_QWORD*)(v47 + 48);
                   *(_BYTE*)(v47 + 272) = 1;
-                  result = (*(__int64 (**)(void))(v79 + 48))();
+                  result =
+                      (*(__int64 (**)(void*))(v79 + 48))((void*)(v47 + 48));
                   if ((result & 1) != 0) {
                     v80 = 1036831949;
                   }

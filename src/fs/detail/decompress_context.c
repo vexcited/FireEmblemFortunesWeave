@@ -720,7 +720,7 @@ __int64* DecompressContext_17d62a0(__int64 a1, __int64** a2)
     }
     v13 = 40;
   }
-  (*(void (**)(void))(*v35 + v13))();
+  (*(void (**)(void*))(*v35 + v13))(v35);
 LABEL_18:
   v14 = v27;
   v27 = 0;
@@ -743,7 +743,7 @@ LABEL_21:
   if (v29 != nullptr) {
     v16 = 40;
   LABEL_25:
-    result = (__int64*)(*(__int64 (**)(void))(*v29 + v16))();
+    result = (__int64*)(*(__int64 (**)(void*))(*v29 + v16))(v29);
   }
   v17 = (__int64)v24;
   if (v24 == nullptr) {
@@ -771,7 +771,7 @@ LABEL_21:
     if (v18 - 64 == (char*)result) {
       v20 = 32;
     LABEL_30:
-      result = (__int64*)(*(__int64 (**)(void))(*result + v20))();
+      result = (__int64*)(*(__int64 (**)(void*))(*result + v20))(result);
       goto LABEL_31;
     }
     if (result != nullptr) {

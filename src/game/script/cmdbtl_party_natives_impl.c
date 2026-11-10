@@ -493,7 +493,7 @@ __int64 CmdbtlPartyNatives_e738c0(__int64 a1, unsigned int a2)
       }
       v18 = 40;
     }
-    result = (*(__int64 (**)(void))(*v38 + v18))();
+    result = (*(__int64 (**)(void*))(*v38 + v18))(v38);
   LABEL_28:
     if (v33 != 0) {
       v32[0] = v33;
@@ -1239,7 +1239,7 @@ LABEL_15:
   if (add == 0) {
     v24 = *(_QWORD*)v20;
     v43 = v20;
-    (*(void (**)(void))(v24 + 16))();
+    (*(void (**)(void*))(v24 + 16))((void*)v20);
     std___1___shared_weak_count___release_weak();
   }
 
@@ -2676,7 +2676,7 @@ __int64 cmdbtl_party_RemovePrivateSkill(int a1, char* a2)
     }
     v8 = 40;
   }
-  (*(void (**)(void))(*v7 + v8))();
+  (*(void (**)(void*))(*v7 + v8))(v7);
 LABEL_9:
   v24 = a1;
   v18 = 0;
@@ -3212,7 +3212,7 @@ __int64 cmdbtl_party_PlayMotionDetail(int a1, __int64 a2, float a3, float a4,
     }
     v14 = 40;
   }
-  (*(void (**)(void))(*v13 + v14))();
+  (*(void (**)(void*))(*v13 + v14))(v13);
 LABEL_9:
   v30 = a1;
   v26 = 0;
@@ -3232,7 +3232,7 @@ LABEL_9:
     }
     v16 = 40;
   }
-  (*(void (**)(void))(*v29 + v16))();
+  (*(void (**)(void*))(*v29 + v16))(v29);
 LABEL_14:
   result = v27;
   if (v27 == 0) {
@@ -3864,7 +3864,7 @@ __int64 cmdbtl_party_IsIdle(int a1)
     }
     v6 = 40;
   }
-  (*(void (**)(void))(*v5 + v6))();
+  (*(void (**)(void*))(*v5 + v6))(v5);
 LABEL_9:
   v19 = a1;
   v15 = 0;
@@ -3882,7 +3882,7 @@ LABEL_9:
   if (v18 != nullptr) {
     v8 = 40;
   LABEL_13:
-    (*(void (**)(void))(*v18 + v8))();
+    (*(void (**)(void*))(*v18 + v8))(v18);
   }
   if (v16 != 0) {
     v9 = std___1___shared_weak_count_lock_alt1();

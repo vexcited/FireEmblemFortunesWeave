@@ -346,7 +346,7 @@ void game_map_MapPanelTrickTarget_UpdateTarget(__int64 a1)
     do {
       v12 = v2[6];
       *((_BYTE*)v2 + 272) = 0;
-      if (((*(__int64 (**)(void))(v12 + 48))() & 1) != 0) {
+      if (((*(__int64 (**)(void*))(v12 + 48))(&v2[6]) & 1) != 0) {
         v13 = 1036831949;
       }
       else {
@@ -1215,7 +1215,8 @@ LABEL_181:
       LABEL_264:
         v168 = *(_QWORD*)(v137 + 48);
         *(_BYTE*)(v137 + 272) = 1;
-        if (((*(__int64 (**)(void))(v168 + 48))() & 1) != 0) {
+        if (((*(__int64 (**)(void*))(v168 + 48))((void*)(v137 + 48)) & 1) !=
+            0) {
           LODWORD(v169) = 1036831949;
         }
         else {

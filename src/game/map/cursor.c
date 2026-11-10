@@ -463,8 +463,10 @@ float* Cursor_731180(float* result)
     v1 = *((_QWORD*)result + 1);
     v2 = result;
     if (result[23] == result[22]) {
-      result = (float*)(*(_QWORD * (**)(__int128* __return_ptr, _QWORD*))(
-          *((_QWORD*)result + 10) + 16LL))(&v82, (_QWORD*)result + 10);
+      result = (float*)X8CALL_X0(
+          _QWORD*, (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(
+                       *((_QWORD*)result + 10) + 16LL))((void*)&v82,
+                                                        (_QWORD*)result + 10));
     }
     else {
       v3 = *((_QWORD*)result + 17);
@@ -474,8 +476,10 @@ float* Cursor_731180(float* result)
     v81 = v82;
     v4 = v2[7];
     if (v4 == v2[6]) {
-      result = (float*)(*(_QWORD * (**)(__int128* __return_ptr, float*, float))(
-          *((_QWORD*)v2 + 2) + 16LL))(&v82, v2 + 4, v4);
+      result = (float*)X8CALL_X0(
+          _QWORD*,
+          (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, float*, float))(
+              *((_QWORD*)v2 + 2) + 16LL))((void*)&v82, v2 + 4, v4));
     }
     else {
       v5 = *((_QWORD*)v2 + 9);
@@ -1821,8 +1825,8 @@ __int64 game_map_Cursor_Impl_Tick_closure_Invoke(__int64 a1, int* a2, int* a3,
   v6 = *a3;
   v8 = *a4;
   if (*(float*)(v4 + 28) == *(float*)(v4 + 24)) {
-    (*(void (**)(__int128* __return_ptr, __int64))(*(_QWORD*)(v4 + 16) + 16LL))(
-        &v15, v4 + 16);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64))(
+        *(_QWORD*)(v4 + 16) + 16LL))((void*)&v15, v4 + 16);
   }
   else {
     v9 = *(_QWORD*)(v4 + 72);

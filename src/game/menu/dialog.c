@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameConverge_8f24c0(_QWORD, _QWORD);
 __int64 GameRoutine_1647b80(_QWORD, _QWORD);
 __int64 GameRoutine_164b120(_QWORD, _QWORD, _QWORD);
@@ -374,7 +374,7 @@ __int64 Dialog_16495e0(_QWORD* a1)
                                  3) <= 0x7FFFFFFE) {
     return GameRoutine_16df7a0(a1);
   }
-  GameRoutine_1560070(&v10, a1 + 106, "L_NextCursor");
+  GameRoutine_1560070((void*)&v10, a1 + 106, "L_NextCursor");
   if (v11 != 0) {
     v5 = std___1___shared_weak_count_lock(v11);
     if (v5 != 0) {

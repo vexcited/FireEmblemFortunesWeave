@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_a97000(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_a97000(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_ad69c0(_QWORD);
 __int64 GameRoutine_ad7390(_QWORD);
 __int64 GameRoutine_c19a20(_QWORD, _QWORD);
@@ -1599,7 +1599,8 @@ _QWORD* wld_map_Layout_Internal_LoadMapModelFile_lambda0_Invoke(_QWORD* result,
       v17 = 0;
       v18 = fw_memory_g_heap_manager_ptr;
       do {
-        result = GameRoutine_a97000(&v23, a2, (unsigned int)v17);
+        result = X8CALL_X0(
+            _QWORD*, GameRoutine_a97000((void*)&v23, a2, (unsigned int)v17));
         v19 = (_QWORD*)(*(_QWORD*)(v3[1] + 24LL) + v16);
         if (*v19 != 0) {
           v19[1] = *v19;
@@ -1716,7 +1717,8 @@ _QWORD* wld_map_Layout_Internal_LoadDirectModelFile_lambda0_Invoke(__int64 a1,
     v22 = 0;
     v23 = fw_memory_g_heap_manager_ptr;
     do {
-      result = GameRoutine_a97000(&v28, a2, (unsigned int)v22);
+      result = X8CALL_X0(
+          _QWORD*, GameRoutine_a97000((void*)&v28, a2, (unsigned int)v22));
       v24 = (_QWORD*)(*(_QWORD*)(*(_QWORD*)(a1 + 8) + 24LL) + v21);
       if (*v24 != 0) {
         v24[1] = *v24;

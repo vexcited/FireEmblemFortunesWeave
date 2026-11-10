@@ -74,7 +74,7 @@ __int64 game_gmap_anonymous_ProcGmapOpenRouteSeq_BeginRouteOpen(__int64 result)
       }
       v1 = 40;
     }
-    result = (*(__int64 (**)(void))(*v19 + v1))();
+    result = (*(__int64 (**)(void*))(*v19 + v1))(v19);
   LABEL_9:
     if (v20 != 0) {
       v21 = v20;

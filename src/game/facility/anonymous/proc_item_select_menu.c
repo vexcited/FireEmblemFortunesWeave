@@ -241,7 +241,7 @@ __int64 ProcItemSelectMenu_Unknown129(__int64 a1)
   v4 = 0;
   GameRoutine_16e1f40(a1, v5);
   if (&v3 == nullptr) {
-    (*(void (**)(void))(*(_QWORD*)v4 + 32LL))();
+    (*(void (**)(void*))(*(_QWORD*)v4 + 32))((void*)v4);
   }
   result = (__int64)v6;
   if (v6 == v5) {
@@ -253,7 +253,7 @@ __int64 ProcItemSelectMenu_Unknown129(__int64 a1)
     }
     v2 = 40;
   }
-  return (*(__int64 (**)(void))(*(_QWORD*)v6 + v2))();
+  return (*(__int64 (**)(void*))(*(_QWORD*)v6 + v2))((void*)v6);
 }
 
 __int64 ProcItemSelectMenu_Unknown157_18769a0(__int64 a1, __int16* a2)

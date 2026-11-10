@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_e7e340(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_e7e340(PSEUDO_X8, _QWORD, _QWORD);
 __int64 BelongingMenu_16ca580(_QWORD);
 __int64 GameRoutine_155e140(_QWORD);
 __int64 GameRoutine_155fbe0(_QWORD, _QWORD);
@@ -98,7 +98,7 @@ _QWORD* CmdBtlCommandLinkMenu_Unknown88(_QWORD* result)
     v4 = result[12];
     if (v4 == 0) {
     LABEL_11:
-      GameRoutine_e7e340(&v13, 0, v3);
+      GameRoutine_e7e340((void*)&v13, 0, v3);
       goto LABEL_12;
     }
   }
@@ -117,7 +117,7 @@ _QWORD* CmdBtlCommandLinkMenu_Unknown88(_QWORD* result)
     goto LABEL_11;
   }
   v7 = v6;
-  GameRoutine_e7e340(&v13, v5, v3);
+  GameRoutine_e7e340((void*)&v13, v5, v3);
   if (atomic_fetch_add((atomic_ullong* volatile)(v7 + 8),
                        0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v7 + 16LL))(v7);

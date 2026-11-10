@@ -2,8 +2,8 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
-_QWORD* GameRoutine_9591b0(_QWORD* __return_ptr, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_9591b0(PSEUDO_X8, _QWORD);
 __int64 Alignment_56b600(void);
 __int64 GameRoutine_143f2e0(_QWORD);
 __int64 GameRoutine_145e440(_QWORD, _QWORD, _QWORD);
@@ -308,7 +308,7 @@ __int64 VolunteerMenuItem_Unknown73(__int64 a1)
     v5 = 0;
   }
   GameRoutine_1562060(*(_QWORD*)(a1 + 8) + 848LL, "T_Txt", v5);
-  GameRoutine_1560070(&v29, *(_QWORD*)(a1 + 8) + 848LL, "L_MiracleLv");
+  GameRoutine_1560070((void*)&v29, *(_QWORD*)(a1 + 8) + 848LL, "L_MiracleLv");
   GameRoutine_1584200(&v29, *(_QWORD*)(a1 + 88));
   if (v30 != 0) {
     std___1___shared_weak_count___release_weak(v30);
@@ -362,14 +362,14 @@ LABEL_19:
     }
     v16 = 40;
   }
-  (*(void (**)(void))(*v36 + v16))();
+  (*(void (**)(void*))(*v36 + v16))(v36);
 
 LABEL_24:
   if ((v14 & 0x40) != 0) {
     v26 = v37;
     v27 = 2;
   }
-  GameRoutine_9591b0(&v31, *(_QWORD*)(a1 + 88));
+  GameRoutine_9591b0((void*)&v31, *(_QWORD*)(a1 + 88));
   v17 = (*(_DWORD*)(a1 + 84) & 0x70000) != 0;
   if ((v31 & 1) != 0) {
     v18 = v33;

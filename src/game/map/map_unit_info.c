@@ -591,7 +591,7 @@ LABEL_29:
       }
       v19 = 40;
     }
-    return (*(__int64 (**)(void))(*(_QWORD*)v21 + v19))();
+    return (*(__int64 (**)(void*))(*(_QWORD*)v21 + v19))((void*)v21);
   }
   return result;
 }

@@ -326,7 +326,7 @@ __int64 game_anonymous_TimelineCaller_RunImpl(__int64 result, __int64 a2,
       }
       v45 = 40;
     }
-    result = (*(__int64 (**)(void))(*v81 + v45))();
+    result = (*(__int64 (**)(void*))(*v81 + v45))(v81);
     goto LABEL_165;
   case 0x15:
     result = GameRoutine_892d40(*(_QWORD*)(*(_QWORD*)(v6 + 24) + 256LL),
@@ -680,7 +680,7 @@ __int64 game_anonymous_TimelineCaller_RunImpl(__int64 result, __int64 a2,
     if (v81 == v80) {
       v54 = 32;
     LABEL_97:
-      result = (*(__int64 (**)(void))(*v81 + v54))();
+      result = (*(__int64 (**)(void*))(*v81 + v54))(v81);
       goto LABEL_98;
     }
     if (v81 != nullptr) {
@@ -1271,7 +1271,7 @@ __int64 game_anonymous_TimelineCaller_ComebackForced_closure_Invoke(__int64 a1,
       }
       v4 = 40;
     }
-    return (*(__int64 (**)(void))(*v7 + v4))();
+    return (*(__int64 (**)(void*))(*v7 + v4))(v7);
   }
   return result;
 }

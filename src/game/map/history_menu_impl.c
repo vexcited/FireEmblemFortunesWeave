@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 __int64 GameRoutine_12297e0(__int64, int);
 __int64 GameRoutine_1272780(_QWORD, _QWORD);
 __int64 GameRoutine_159da00(_QWORD, _QWORD, _QWORD);
@@ -64,7 +64,7 @@ __int64 HistoryMenu_126fe90(__int64 a1)
     LayoutAccessor_1562680(v6, "DisableSelect", 1.0);
   }
   v8 = GameData_22400f8 != 0 && *(_DWORD*)(GameData_22400f8 + 824) > 1;
-  GameRoutine_1560070(&v18, a1 + 848, "L_KeyUD/L_Arrow_U");
+  GameRoutine_1560070((void*)&v18, a1 + 848, "L_KeyUD/L_Arrow_U");
   if (v19 != 0) {
     v9 = ((__int64 (*)(void))std___1___shared_weak_count_lock)();
     v10 = v18;
@@ -86,7 +86,7 @@ __int64 HistoryMenu_126fe90(__int64 a1)
   }
 
 LABEL_22:
-  GameRoutine_1560070(&v18, a1 + 848, "L_KeyUD/L_Arrow_D");
+  GameRoutine_1560070((void*)&v18, a1 + 848, "L_KeyUD/L_Arrow_D");
   if (v19 != 0) {
     v11 = ((__int64 (*)(void))std___1___shared_weak_count_lock)();
     v12 = v18;
@@ -107,7 +107,7 @@ LABEL_22:
   }
 
 LABEL_31:
-  GameRoutine_1560070(&v18, a1 + 848, "L_KeyUD");
+  GameRoutine_1560070((void*)&v18, a1 + 848, "L_KeyUD");
   result = v19;
   if (v19 == 0) {
     return result;
