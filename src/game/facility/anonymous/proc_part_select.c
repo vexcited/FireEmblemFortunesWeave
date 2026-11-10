@@ -33,10 +33,33 @@ void __attribute__((noreturn)) GameRoutine_60a1d0(_QWORD);
 __int64 ProcPartSelect_Unknown58(__int64 a1);
 __int64 ProcPartSelect_Unknown142(__int64 a1, unsigned int a2);
 __int64 ProcPartSelect_Unknown143(__int64 a1);
+__int64 LayoutAccessor_1562680(_QWORD, _QWORD, long double);
+__int64 LayoutAccessor_1562f00(_QWORD, _QWORD, long double);
+__int64 LayoutAccessor_1563030(_QWORD, _QWORD, _QWORD);
+__int64 game_menu_BasicMenu_Unknown96(void);
+long double LayoutAccessor_15638b0(_QWORD, _QWORD, _QWORD);
+__int64 ProcPartSelect_Unknown96(_QWORD* a1);
 
 __int64 ProcPartSelect_Unknown58(__int64 a1)
 {
   return GameRoutine_1562680(a1 + 848, "Out", 1.0);
+}
+
+__int64 ProcPartSelect_Unknown96(_QWORD* a1)
+{
+  long double v2;
+  long double v3;
+
+  game_menu_BasicMenu_Unknown96();
+  if ((*(unsigned int (**)(_QWORD*))(*a1 + 168LL))(a1)-8 <= 0xFFFFFFF9) {
+    *(__n128*)&v2 =
+        ((__n128 (*)(_QWORD*)) * (_QWORD*)(a1[132] + 96LL))(a1 + 132);
+  }
+  LODWORD(v2) = 1.0;
+  LayoutAccessor_1562680(a1 + 106, "In", v2);
+  v3 = LayoutAccessor_15638b0(a1 + 106, "In", 0);
+  LayoutAccessor_1562f00(a1 + 106, "In", v3);
+  return LayoutAccessor_1563030(a1 + 106, "In", 0);
 }
 
 __int64 ProcPartSelect_Unknown142(__int64 a1, unsigned int a2)

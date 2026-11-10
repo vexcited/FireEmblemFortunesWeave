@@ -12,6 +12,7 @@ void __attribute__((noreturn)) GameRoutine_d38e30(_QWORD);
 __int64 GambitCameraSpotName_Unknown2(__int64 a1);
 __int64 GambitCameraSpotName_Destructor(__int64 result);
 __int64 GambitCameraSpotName_DeletingDestructor(__int64 a1);
+__attribute__((swiftcall)) void GambitCameraSpotName_Unknown3(PSEUDO_X8 x8_);
 
 __int64 GambitCameraSpotName_Unknown2(__int64 a1)
 {
@@ -160,6 +161,13 @@ __int64 GambitCameraSpotName_DeletingDestructor(__int64 a1)
     v5 = 56;
   }
   return nn_mem_StandardAllocator_Free(*(_QWORD*)v2 + v5);
+}
+
+__attribute__((swiftcall)) void GambitCameraSpotName_Unknown3(PSEUDO_X8 x8_)
+{
+  _BYTE* a1 = (_BYTE*)PSEUDO_X8_VALUE(x8_);
+  *a1 = 28;
+  strcpy(a1 + 1, "CameraSpotName");
 }
 
 #pragma GCC visibility pop

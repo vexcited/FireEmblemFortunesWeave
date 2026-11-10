@@ -84,6 +84,132 @@ __int64 SpotAttachmentBase_14d4820(__int64 a1, __int64 a2);
 __int64 SpotAttachmentBase_14d4a20(__int64 a1, __int64 a2);
 __int64 SpotAttachmentBase_14d4c90(__int64 result, __int64 a2, int a3);
 __int64 SpotAttachmentBase_14d4e10(__int64 a1);
+__int64 Dir_70df40(_QWORD);
+__int64 SpotAttachmentBase_14d44d0(__int16* a1);
+
+__int64 SpotAttachmentBase_14d44d0(__int16* a1)
+{
+  __int64 v1;
+  _WORD* v2;
+  __int16* v3;
+  __int16* v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  unsigned __int64 v9;
+  int v10;
+  unsigned int v11;
+  int v12;
+  int v13;
+  _WORD* v14;
+  __int16 v15;
+  __int16 v16;
+  __int16 v17;
+  __int16 v18;
+  __int16 v19;
+  __int16 v20;
+  int v22;
+  signed int v23;
+  __int16 v24;
+  __int16 v25;
+  __int16 v26;
+  __int16 v27;
+  int v28;
+
+  v1 = game_gmap_GmapClock_instance_;
+  v2 = (_WORD*)game_gmap_GmapClock_kDefaultTime_ptr;
+  v3 = a1 + 10;
+  v4 = (__int16*)(game_gmap_GmapClock_instance_ + 8);
+  if (game_gmap_GmapClock_instance_ == 0) {
+    v4 = (__int16*)game_gmap_GmapClock_kDefaultTime_ptr;
+  }
+  v5 = v4[1];
+  v6 = *v4;
+  v7 = v4[2];
+  v8 = v4[3];
+  v9 = (v5 << 24) + (v6 << 32) + (v7 << 18) + (v8 << 12) +
+       ((__int64)v4[4] << 6) + v4[5];
+  if (v9 <= ((__int64)v3[1] << 24) + ((__int64)a1[10] << 32) +
+                ((__int64)v3[2] << 18) + ((__int64)v3[3] << 12) +
+                ((__int64)v3[4] << 6) + v3[5]) {
+    return 0;
+  }
+  if (v9 >= ((__int64)a1[5] << 24) + ((__int64)a1[4] << 32) +
+                ((__int64)a1[6] << 18) + ((__int64)a1[7] << 12) +
+                ((__int64)a1[8] << 6) + a1[9]) {
+    return 100;
+  }
+  v10 = Dir_70df40(a1 + 10);
+  if ((unsigned int)v10 >= 0x3C) {
+    v11 = v10 / 0x3Cu;
+  }
+  else {
+    v11 = 1;
+  }
+  if (v10 >= 1) {
+    v12 = v11;
+  }
+  else {
+    v12 = -1;
+  }
+  if (v10 != 0) {
+    v13 = v12;
+  }
+  else {
+    v13 = 0;
+  }
+  if ((_DWORD)v5 * (_DWORD)v6 * (_DWORD)v7 != 0) {
+    v28 = 0;
+    v24 = v6;
+    if (v1 != 0) {
+      v14 = (_WORD*)(v1 + 20);
+    }
+    else {
+      v14 = v2;
+    }
+    v25 = v5;
+    v26 = v7;
+    v27 = 6 * game_script_hub_schedule_kHourCycles[(__int16)v8 % 24] % 0x18u;
+    Dir_70dd80(&v24, v14);
+    v15 = v24;
+    v16 = v25;
+    v17 = v26;
+    v18 = v27;
+    v19 = v28;
+    v20 = HIWORD(v28);
+  }
+  else {
+    v15 = *v2;
+    v16 = v2[1];
+    v17 = v2[2];
+    v18 = v2[3];
+    v19 = *(_WORD*)((char*)((_UNKNOWN**)0x8LL) + (_QWORD)v2);
+    v20 = *(_WORD*)((char*)((_UNKNOWN**)0x8LL) + (_QWORD)v2 + 2);
+  }
+  v24 = v15;
+  v25 = v16;
+  v26 = v17;
+  v27 = v18;
+  LOWORD(v28) = v19;
+  HIWORD(v28) = v20;
+  v22 = Dir_70df40(v3);
+  if (v22 != 0) {
+    if (v22 < 1) {
+      v23 = -100;
+    }
+    else {
+      v23 = 100 * (v22 / 0x3Cu);
+      if ((unsigned int)v22 < 0x3C) {
+        v23 = 100;
+      }
+    }
+  }
+  else {
+    v23 = 0;
+  }
+  return (unsigned int)(v23 / v13);
+}
 
 bool SpotAttachmentBase_14d4740(__int64 a1)
 {

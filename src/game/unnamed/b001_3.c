@@ -231,8 +231,6 @@ unsigned int* GameRoutine_297130(__int64, char*, signed int);
 
 bool GameRoutine_2971f0(__int64, _QWORD*, __int64, unsigned int);
 
-__int64 GameRoutine_29b900(_QWORD*);
-
 __int64 GameRoutine_29c080(_QWORD, _QWORD);
 
 __int64 GameRoutine_29c380(_QWORD, _QWORD, _QWORD, _QWORD);
@@ -246,10 +244,6 @@ __int64 GameRoutine_29df20(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_29e040(_QWORD, _QWORD, _QWORD, _QWORD);
 
 __int64 GameRoutine_29e5c0(__int64 result, __int64, unsigned __int64, int);
-
-__int64 GameRoutine_29e630(_QWORD);
-
-__int64 GameRoutine_29f420(_QWORD);
 
 __int64 GameRoutine_2a0440(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 
@@ -279,8 +273,6 @@ __int64 GameRoutine_2a1c10();
 __int64 GameRoutine_2a1da0();
 
 __int64 GameRoutine_2a1dd0();
-
-__int64 GameRoutine_2a1f40(_QWORD, _QWORD);
 
 __int64 GameRoutine_2a1fa0(_QWORD, _QWORD);
 
@@ -3790,41 +3782,6 @@ __int64 GameHr_29f230(__int64 a1)
   else {
     return 1;
   }
-}
-
-__int64 GameHr_29f320(_QWORD* a1)
-{
-  __int64 i;
-  unsigned __int64 v3;
-  _QWORD* v4;
-  __int64* j;
-  __int64* v6;
-  __int64 v7;
-  __int64 v8;
-
-  GameRoutine_29e630(a1 + 17);
-  for (i = GameRoutine_29f420(a1); (_QWORD*)a1[16] != a1 + 15;
-       i = GameRoutine_1a09bc0(5000000))
-    ;
-  v3 = a1[12] / 0x3680uLL;
-  if ((int)v3 >= 1) {
-    v4 = (_QWORD*)a1[11];
-    do {
-      i = GameRoutine_29b900(v4);
-      v4 += 1744;
-      LODWORD(v3) = v3 - 1;
-    } while ((_DWORD)v3 != 0);
-  }
-  for (j = (__int64*)a1[14]; j != a1 + 13; j = (__int64*)a1[14]) {
-    v6 = (__int64*)j[1];
-    v7 = *v6;
-    *(_QWORD*)(*j + 8) = v6;
-    *v6 = *j;
-    *(_QWORD*)(v7 + 8) = j;
-    *j = v7;
-  }
-  v8 = GameRoutine_2a1b90(i);
-  return GameRoutine_2a1f40(v8, a1 + 8);
 }
 
 __int64 GameHr_29f610(__int64 a1, __int64 a2)

@@ -36,6 +36,8 @@ __int64 GameRoutine_2b3fd0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_2b4480(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 FileStreamImpl_Unknown4(_QWORD* a1, __int64 a2, __int64 a3, __int64 a4);
 __int64 FileStreamImpl_Unknown5(__int64 a1, __int64 a2, __int64 a3, __int64 a4);
+__int64 FileStreamImpl_2b3860(_QWORD* a1, __int64 a2, int a3);
+__int64 FileStreamImpl_DirectStream_Unknown6(__int64 a1, __int64 a2, int a3);
 
 __int64 FileStreamImpl_Unknown4(_QWORD* a1, __int64 a2, __int64 a3, __int64 a4)
 {
@@ -239,6 +241,54 @@ __int64 FileStreamImpl_2b37d0(_QWORD* a1, __int64 a2, __int64 a3, int* a4)
   return a3;
 }
 
+__int64 FileStreamImpl_2b3860(_QWORD* a1, __int64 a2, int a3)
+{
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v10;
+  __int64 v11;
+
+  v6 = (*(__int64 (**)(_QWORD*))(*a1 + 64LL))(a1);
+  if (a3 == 2) {
+    if (a2 < 1) {
+      v8 = (*(__int64 (**)(_QWORD*))(*a1 + 56LL))(a1);
+      if (a2 < 0) {
+        if ((v8 + a2 < 0) ^ __OFADD__(v8, a2) | (v8 + a2 == 0)) {
+          v8 = 0;
+        }
+        else {
+          v8 = (*(__int64 (**)(_QWORD*))(*a1 + 56LL))(a1) + a2;
+        }
+      }
+    }
+    else {
+      v10 = v6;
+      v11 = (*(__int64 (**)(_QWORD*))(*a1 + 56LL))(a1);
+      if (v11 + a2 >= v10) {
+        v8 = v10;
+      }
+      else {
+        v8 = v11 + a2;
+      }
+    }
+  }
+  else {
+    v7 = a2 & ~(a2 >> 63);
+    if (a3 != 0) {
+      v7 = 0;
+    }
+    if (a3 == 1) {
+      v8 = v6 - (a2 & (a2 >> 63));
+    }
+    else {
+      v8 = v7;
+    }
+  }
+  a1[4] = v8;
+  return 0;
+}
+
 __int64 FileStreamImpl_Unknown7(__int64 a1)
 {
   char v2;
@@ -255,6 +305,56 @@ __int64 FileStreamImpl_Unknown7(__int64 a1)
 bool FileStreamImpl_Unknown16(_QWORD* a1)
 {
   return a1[6] != 0 && a1[8] != 0 && a1[9] != 0;
+}
+
+__int64 FileStreamImpl_DirectStream_Unknown6(__int64 a1, __int64 a2, int a3)
+{
+  _QWORD* v3;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v10;
+  __int64 v11;
+
+  v3 = *(_QWORD**)(a1 + 8);
+  v6 = (*(__int64 (**)(_QWORD*))(*v3 + 64LL))(v3);
+  if (a3 == 2) {
+    if (a2 < 1) {
+      v8 = (*(__int64 (**)(_QWORD*))(*v3 + 56LL))(v3);
+      if (a2 < 0) {
+        if ((v8 + a2 < 0) ^ __OFADD__(v8, a2) | (v8 + a2 == 0)) {
+          v8 = 0;
+        }
+        else {
+          v8 = (*(__int64 (**)(_QWORD*))(*v3 + 56LL))(v3) + a2;
+        }
+      }
+    }
+    else {
+      v10 = v6;
+      v11 = (*(__int64 (**)(_QWORD*))(*v3 + 56LL))(v3);
+      if (v11 + a2 >= v10) {
+        v8 = v10;
+      }
+      else {
+        v8 = v11 + a2;
+      }
+    }
+  }
+  else {
+    v7 = a2 & ~(a2 >> 63);
+    if (a3 != 0) {
+      v7 = 0;
+    }
+    if (a3 == 1) {
+      v8 = v6 - (a2 & (a2 >> 63));
+    }
+    else {
+      v8 = v7;
+    }
+  }
+  v3[4] = v8;
+  return 0;
 }
 
 #pragma GCC visibility pop

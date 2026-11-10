@@ -1,5 +1,7 @@
 #include "decomp/pseudo_helpers.h"
 
+#include "decomp/pseudo_float.h"
+
 #pragma GCC visibility push(hidden)
 
 __int64 GameRoutine_a867a0(_QWORD);
@@ -30,6 +32,232 @@ _QWORD* game_combat_CombatLegionGroup_AddCharacter(_QWORD* a1, __int64 a2,
                                                    __int64 a3, __int64 a4,
                                                    unsigned __int64 a5,
                                                    long double a6);
+__int64* AssetTableFile_7eb9c0(__int64* result, __int64*);
+__int64 AssetTableFile_7e8000(__int64);
+__int64 AssetTableFile_7e9960(__int64, __int64, __int64*);
+__int64 AssetTableFile_7e9e00(__int64, unsigned __int8*, unsigned int, char);
+__int64 CharacterAppearance_10735d0(__int64);
+__int64 TrickEntity_7d1480(__int64 result);
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 game_anonymous_ConditionMap_Add_7ebae0(__int64 result);
+__int64 game_character_CharacterAppearance_Setup(unsigned __int64, char**);
+extern _UNKNOWN* GameData_212c188;
+extern _UNKNOWN* GameData_212c190;
+extern __int64* GameData_212d3c8[3];
+extern __int64* GameData_212d448[9];
+extern __int64 GameData_21c96d8;
+extern __int64 GameData_21d9ce8;
+extern __int64 GameData_21d9cf0;
+extern __int64 GameData_21d9d00;
+extern __int64 GameData_21d9d18;
+extern __int64 GameData_21d9d20;
+extern __int64 GameData_21d9d30;
+extern __int64 GameData_21d9d38;
+extern __int64 GameData_21d9d48;
+extern __int64 GameData_21d9d50;
+extern __int64 GameData_21d9d60;
+extern __int64 GameData_21d9d68;
+extern __int64 GameData_21d9d70;
+extern char GameData_21d9d78;
+extern int GameData_21d9d7c;
+void CombatLegionManager_e2ddb0(__int64, __int64, __int64);
+void game_combat_e3f310(_QWORD*);
+__attribute__((swiftcall)) void
+CombatLegionGroup_e57320(PSEUDO_X8 x8_, __int64 a1, unsigned __int8* a2,
+                         unsigned int a3, char a4);
+void CombatLegionGroup_e58720(__int64 a1);
+__attribute__((swiftcall)) void
+
+CombatLegionGroup_e57320(PSEUDO_X8 x8_, __int64 a1, unsigned __int8* a2,
+                         unsigned int a3, char a4)
+{
+  unsigned __int64* a5 = (unsigned __int64*)PSEUDO_X8_VALUE(x8_);
+  int v5;
+  int v6;
+  int v7;
+  unsigned int v9;
+  __int64* v11;
+  __int64 v12;
+  __int64 v13;
+  unsigned __int8* v14;
+  unsigned int v15;
+  __int64 v16;
+  bool v17;
+  __int64 v18;
+  bool v19;
+  __int64 v20;
+  int v21;
+  char v22;
+  int* v23;
+  __int64 v24;
+  __int64 v25;
+  __int64 v26;
+  __int64 v27;
+  __int64* v28;
+  __int64* v29;
+  _QWORD* v30;
+  unsigned __int64 v31;
+  unsigned __int64 v32;
+  const char* v39;
+  struct {
+    char* v40[30];
+    int v41;
+    int v42;
+    int v43;
+    char gap260_[68];
+    __int64 v44;
+    __int64 v45;
+    char gap344_[8];
+    __int64 v46;
+    __int64 v47;
+    __int64 v48;
+    __int64 v49;
+    __int64 v50;
+    int v51;
+    char gap396_[4];
+    __int64 v52;
+    __int64 v53;
+    __int64 v54;
+    __int64 v55;
+    __int64 v56;
+    __int64 v57;
+    __int64 v58;
+    __int64 v59;
+    __int64 v60;
+  } v40_;
+
+  v9 = *(_DWORD*)(a1 + 112);
+  if (v9 != 0) {
+    if (v9 != 1) {
+    LABEL_17:
+      v20 = 0;
+      v21 = 0;
+      v22 = 1;
+      goto LABEL_21;
+    }
+    v9 = 1;
+  }
+  v11 = GameData_212d448[0];
+  v12 = *GameData_212d448[0] + 24LL * v9;
+  v13 = *(_QWORD*)(v12 + 32);
+  if (v13 == 0) {
+    goto LABEL_17;
+  }
+  v14 = a2;
+  v15 = a3;
+  atomic_fetch_add_explicit((atomic_ullong* volatile)(v13 + 16), 1u,
+                            memory_order_relaxed);
+  v16 = *(_QWORD*)(v12 + 40);
+  v17 = *(_QWORD*)(v13 + 8) == -1 || v16 == 0;
+  if (v17 || (v18 = *(_QWORD*)(v16 + 80)) == 0 ||
+      (*(_QWORD*)(v18 + 8) != -1 ? (v19 = *(_QWORD*)(v16 + 88) == 0)
+                                 : (v19 = true),
+       v19 || *(_QWORD*)(v13 + 8) == -1)) {
+    std___1___shared_weak_count___release_weak_alt1(v13);
+    v20 = 0;
+    goto LABEL_19;
+  }
+  std___1___shared_weak_count___release_weak_alt1(v13);
+  v20 = *(_QWORD*)(*(_QWORD*)(*v11 + 8) + 96LL * *(int*)(v16 + 96) + 256);
+  if (v20 == 0) {
+  LABEL_19:
+    v21 = 0;
+    v22 = 1;
+    goto LABEL_20;
+  }
+  v39 = "BMAP";
+  AssetTableFile_7e9960((__int64)v40_.v40, v20, (__int64*)&v39);
+  v5 = v40_.v41;
+  v6 = v40_.v42;
+  v7 = v40_.v43;
+  TrickEntity_7d1480((__int64)v40_.v40);
+  v21 = 1;
+  v22 = 0;
+LABEL_20:
+  a3 = v15;
+  a2 = v14;
+LABEL_21:
+  v40_.v40[25] = nullptr;
+  v40_.v40[27] = nullptr;
+  memset(v40_.v40, 0, 192);
+  v40_.v51 = 1065353216;
+  v23 = (int*)GameData_21d9d18;
+  v24 = GameData_21d9d20;
+  v40_.v44 = 0;
+  v40_.v45 = 0;
+  v40_.v46 = 0;
+  v40_.v47 = 0;
+  v40_.v48 = 0;
+  v40_.v49 = 0;
+  v40_.v50 = 0;
+  v40_.v52 = 0;
+  v40_.v53 = 0;
+  v40_.v54 = 0;
+  v40_.v55 = 0;
+  v40_.v56 = 0;
+  v40_.v57 = 0;
+  v40_.v58 = 0;
+  v40_.v59 = 0;
+  v40_.v60 = 0;
+  if (GameData_21d9d18 != GameData_21d9d20) {
+    do {
+      v25 = *v23++;
+      *(_QWORD*)(GameData_21d9d00 + 8 * v25) = 0;
+    } while (v23 != (int*)v24);
+    v23 = (int*)GameData_21d9d18;
+  }
+  GameData_21d9d20 = (__int64)v23;
+  GameData_21d9d60 = 0;
+  GameData_21d9d68 = 0;
+  GameData_21d9d70 = 0;
+  GameData_21d9d7c = 0;
+  GameData_21d9d50 = GameData_21d9d48;
+  GameData_21d9cf0 = GameData_21d9ce8;
+  GameData_21d9d38 = GameData_21d9d30;
+  GameData_21d9d78 = 8;
+  AssetTableFile_7e9e00((__int64)v40_.v40, a2, a3, a4 & 1);
+  if ((v22 & 1) == 0) {
+    v26 = *(_QWORD*)(v20 + 392);
+    if (v26 != 0) {
+      v27 = *(_QWORD*)(v26 + 24);
+      v28 = *(__int64**)(v27 + 32);
+      v29 = *(__int64**)(v27 + 40);
+      if (v28 != v29) {
+        AssetTableFile_7eb9c0(v28, v29);
+        game_anonymous_ConditionMap_Add_7ebae0(GameData_21c96d8);
+      }
+    }
+  }
+  AssetTableFile_7e8000((__int64)v40_.v40);
+  if (v21 != 0) {
+    v40_.v41 = v5;
+    v40_.v42 = v6;
+    v40_.v43 = v7;
+  }
+  if (v40_.v40[0] != nullptr && *v40_.v40[0] != 0) {
+    v30 = (_QWORD*)fw_memory_HeapManager_Allocate_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr, 11832, 16, 0);
+    v30[2] = 0;
+    v31 = (unsigned __int64)(v30 + 3);
+    v32 = (unsigned __int64)v30;
+    *v30 = GameData_212d3c8[0] + 2;
+    v30[1] = 0;
+    CharacterAppearance_10735d0((__int64)(v30 + 3));
+    *a5 = v31;
+    a5[1] = v32;
+    game_character_CharacterAppearance_Setup(v31, v40_.v40);
+  }
+  else {
+    *a5 = 0;
+    a5[1] = 0;
+  }
+  {
+    TrickEntity_7d1480((__int64)v40_.v40);
+    return;
+  }
+}
 
 _QWORD* CombatLegionGroup_Destructor(_QWORD* result)
 {
@@ -156,6 +384,176 @@ _QWORD* CombatLegionGroup_Destructor(_QWORD* result)
     }
   }
   return result;
+}
+
+void CombatLegionGroup_e58720(__int64 a1)
+{
+  unsigned int v1;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v7;
+  bool v8;
+  float v9;
+  float v10;
+  float v11;
+  float v12;
+  __int64 v13;
+  float v14;
+  __int64 v15;
+  float v16;
+  float v17;
+  float v18;
+  _QWORD** v19;
+  _QWORD** v20;
+  _QWORD* v21;
+  __int64 v22;
+  __int64 v23;
+
+  v1 = *(_DWORD*)(a1 + 112);
+  if (v1 != 0) {
+    if (v1 != 1) {
+      goto LABEL_17;
+    }
+    v1 = 1;
+  }
+  v3 = *GameData_212d448[0] + 24LL * v1;
+  v4 = *(_QWORD*)(v3 + 32);
+  if (v4 != 0) {
+    atomic_fetch_add_explicit((atomic_ullong* volatile)(v4 + 16), 1u,
+                              memory_order_relaxed);
+    v5 = *(_QWORD*)(v3 + 40);
+    if (*(_QWORD*)(v4 + 8) != -1 && v5 != 0) {
+      v7 = *(_QWORD*)(v5 + 80);
+      if (v7 != 0) {
+        v8 = *(_QWORD*)(v7 + 8) == -1 || *(_QWORD*)(v5 + 88) == 0;
+        if (!v8 && *(_QWORD*)(v4 + 8) != -1) {
+          std___1___shared_weak_count___release_weak_alt1(v4);
+          *(_DWORD*)(a1 + 128) = *(_DWORD*)(v5 + 40);
+          *(_DWORD*)(a1 + 132) = *(_DWORD*)(v5 + 44);
+          v9 = *(float*)(v5 + 48);
+          *(float*)(a1 + 136) = v9;
+          v10 =
+              (float)((float)((float)-(
+                                  float)(*(float*)((char*)((__int128*)0x10LL) +
+                                                   (_QWORD)GameData_212c190) -
+                                         (float)((float)(*(float*)((char*)((
+                                                                       _UNKNOWN**)0x8LL) +
+                                                                   (_QWORD)
+                                                                       GameData_212c190 +
+                                                                   4) +
+                                                         (float)((float)-(
+                                                                     float)(*(float*)((char*)((
+                                                                                          _UNKNOWN**)0x8LL) +
+                                                                                      (_QWORD)
+                                                                                          GameData_212c190) -
+                                                                            (float)((float)(*((float*)
+                                                                                                  GameData_212c190 +
+                                                                                              1) -
+                                                                                            (float)(*(float*)
+                                                                                                        GameData_212c190 *
+                                                                                                    0x1.3bd3ce0000000p+1f)) *
+                                                                                    0x1.3bd3ce0000000p+1f)) *
+                                                                 0x1.3bd3ce0000000p+1f)) *
+                                                 0x1.3bd3ce0000000p+1f)) *
+                              0x1.3bd3ce0000000p+1f) +
+                      0x1.0000000000000p+0f) *
+              -0x1.921fb60000000p+0f;
+          v11 = *(float*)(v5 + 52);
+          v12 =
+              (float)((float)-(
+                          float)(*(float*)((char*)((__int128*)0x10LL) +
+                                           (_QWORD)GameData_212c188) -
+                                 (float)((float)(*(float*)((char*)((
+                                                               _UNKNOWN**)0x8LL) +
+                                                           (_QWORD)
+                                                               GameData_212c188 +
+                                                           4) +
+                                                 (float)((float)-(
+                                                             float)(*(float*)((char*)((
+                                                                                  _UNKNOWN**)0x8LL) +
+                                                                              (_QWORD)
+                                                                                  GameData_212c188) -
+                                                                    (float)((float)(*((float*)
+                                                                                          GameData_212c188 +
+                                                                                      1) -
+                                                                                    (float)(*(float*)
+                                                                                                GameData_212c188 *
+                                                                                            0x1.3bd3ce0000000p+1f)) *
+                                                                            0x1.3bd3ce0000000p+1f)) *
+                                                         0x1.3bd3ce0000000p+1f)) *
+                                         0x1.3bd3ce0000000p+1f)) *
+                      0x1.3bd3ce0000000p+1f) +
+              0x1.0000000000000p+0f;
+          *(float*)(a1 + 140) = v11;
+          *(float*)(a1 + 144) =
+              (float)(PSEUDO_UNFUSED(v11 * v10)) + (float)(v9 * v12);
+          *(float*)(a1 + 148) =
+              (float)(PSEUDO_UNFUSED(v11 * v12)) - (float)(v9 * v10);
+          goto LABEL_18;
+        }
+      }
+    }
+    std___1___shared_weak_count___release_weak_alt1(v4);
+  }
+LABEL_17:
+  v13 = *(_QWORD*)(a1 + 8);
+  v22 = 0;
+  v23 = 0;
+  CombatLegionManager_e2ddb0(v13, (__int64)&v23, (__int64)&v22);
+  *(_QWORD*)(a1 + 128) = v23;
+  v14 =
+      (float)((float)((float)-(
+                          float)(*(float*)((char*)((__int128*)0x10LL) +
+                                           (_QWORD)GameData_212c190) -
+                                 (float)((float)(*(float*)((char*)((
+                                                               _UNKNOWN**)0x8LL) +
+                                                           (_QWORD)
+                                                               GameData_212c190 +
+                                                           4) +
+                                                 (float)((float)-(
+                                                             float)(*(float*)((char*)((
+                                                                                  _UNKNOWN**)0x8LL) +
+                                                                              (_QWORD)
+                                                                                  GameData_212c190) -
+                                                                    (float)((float)(*((float*)
+                                                                                          GameData_212c190 +
+                                                                                      1) -
+                                                                                    (float)(*(float*)
+                                                                                                GameData_212c190 *
+                                                                                            0x1.3bd3ce0000000p+1f)) *
+                                                                            0x1.3bd3ce0000000p+1f)) *
+                                                         0x1.3bd3ce0000000p+1f)) *
+                                         0x1.3bd3ce0000000p+1f)) *
+                      0x1.3bd3ce0000000p+1f) +
+              0x1.0000000000000p+0f) *
+      0x1.921fb60000000p+0f;
+  v15 = v22;
+  v16 = *(float*)((char*)((_UNKNOWN**)0x8LL) + (_QWORD)GameData_212c188 + 4) +
+        (float)((float)-(
+                    float)(*(float*)((char*)((_UNKNOWN**)0x8LL) +
+                                     (_QWORD)GameData_212c188) -
+                           (float)((float)(*((float*)GameData_212c188 + 1) -
+                                           (float)(*(float*)GameData_212c188 *
+                                                   0x1.3bd3ce0000000p+1f)) *
+                                   0x1.3bd3ce0000000p+1f)) *
+                0x1.3bd3ce0000000p+1f);
+  v17 = *(float*)((char*)((__int128*)0x10LL) + (_QWORD)GameData_212c188);
+  *(_QWORD*)(a1 + 144) = v22;
+  v18 = (float)((float)-(float)(v17 - (float)(v16 * 0x1.3bd3ce0000000p+1f)) *
+                0x1.3bd3ce0000000p+1f) +
+        0x1.0000000000000p+0f;
+  *(float*)(a1 + 136) = (float)(PSEUDO_UNFUSED(*((float*)&v15 + 1) * v14)) +
+                        (float)(*(float*)&v15 * v18);
+  *(float*)(a1 + 140) = (float)(PSEUDO_UNFUSED(*((float*)&v15 + 1) * v18)) -
+                        (float)(*(float*)&v15 * v14);
+LABEL_18:
+  v20 = *(_QWORD***)(a1 + 88);
+  v19 = *(_QWORD***)(a1 + 96);
+  while (v20 != v19) {
+    v21 = *v20++;
+    game_combat_e3f310(v21);
+  }
 }
 
 float CombatLegionGroup_e58940(__int64 a1, __int64 a2)

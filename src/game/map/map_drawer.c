@@ -58,6 +58,15 @@ void MapDrawer_8084c0(__int64 a1);
 __int64 MapDrawer_808650(__int64 a1, __int64 a2, int a3);
 __int64 MapDrawer_808760(__int64 a1, __int64 a2, _DWORD* a3);
 __int64 MapDrawer_8089c0(__int64 a1, __int64 a2, unsigned int a3);
+__int64 GameRoutine_965220(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, float);
+__int64 MapUtil_7536a0(_QWORD);
+__int64 game_HasSkill(_QWORD, _QWORD);
+__int64 game_HashString(_QWORD, _QWORD);
+extern _QWORD GameData_1fb0250[9];
+extern _QWORD GameData_1fb0298[3];
+extern _QWORD game_g_shared_system_skills_ptr;
+extern _UNKNOWN* GameData_21d21b8;
+void game_map_MapDrawer_DrawMap_lambda1_Invoke(__int64 a1, _QWORD* a2);
 
 __int64 game_map_MapDrawer_DrawMap()
 {
@@ -585,6 +594,162 @@ LABEL_10:
     }
   }
   return result;
+}
+
+void game_map_MapDrawer_DrawMap_lambda1_Invoke(__int64 a1, _QWORD* a2)
+{
+  __int64 v2;
+  unsigned __int8* v3;
+  unsigned int v4;
+  _UNKNOWN** v5;
+  unsigned int v6;
+  bool v7;
+  __int64 v8;
+  float v9;
+  bool v10;
+  __int64 v11;
+  int v12;
+  int v13;
+  const char* v14;
+  char* v15;
+  char* v16;
+  int v17;
+  int v18;
+  int v19;
+  int v20;
+  int v21;
+  int v22;
+  unsigned int v24;
+  const char* v25;
+  int v26;
+  int v27;
+  int v28;
+  int v29;
+  int v30;
+  __int64 v31;
+  const char* v32;
+
+  v2 = *a2;
+  if ((*(_WORD*)(*a2 + 1872LL) & 0xFFF) == 0) {
+    return;
+  }
+  v3 = (unsigned __int8*)GameData_21d21b8;
+  if (GameData_21d21b8 != nullptr) {
+    v4 = *(unsigned __int8*)(v2 + 2088);
+    v5 = &GameData_21d21b8;
+    do {
+      v6 = v3[25];
+      v7 = v6 >= v4;
+      if (v6 >= v4) {
+        v8 = 0;
+      }
+      else {
+        v8 = 8;
+      }
+      if (v7) {
+        v5 = (_UNKNOWN**)v3;
+      }
+      v3 = *(unsigned __int8**)&v3[v8];
+    } while (v3 != nullptr);
+    if (v5 != &GameData_21d21b8 && v4 >= *((unsigned __int8*)v5 + 25)) {
+      return;
+    }
+  }
+  if ((MapUtil_7536a0(*a2) & 1) == 0) {
+    return;
+  }
+  v9 = (*(float (**)(__int64))(*(_QWORD*)(v2 + 152) + 16LL))(v2 + 152);
+  v10 = (*(_DWORD*)(v2 + 1872) & 0xFFF) == 0 ||
+        *(_BYTE*)(*(_QWORD*)(*(_QWORD*)(GameData_21c99b0 + 64) +
+                             8LL * (*(_DWORD*)(v2 + 1872) & 0xFFF)) +
+                  273LL) == 0;
+  LODWORD(v31) = *(_DWORD*)((_BYTE*)((_UNKNOWN*)0x1A4LL) +
+                            game_g_shared_system_skills_ptr) &
+                 0xFFF;
+  if ((game_HasSkill(v2 + 1744, &v31) & 1) == 0) {
+    v15 = *(char**)(v2 + 600);
+    v16 = *(char**)(v2 + 608);
+    if (v15 == v16) {
+      return;
+    }
+    while (1) {
+      v19 = *v15;
+      v20 = v15[1];
+      v21 = 0;
+      if ((v20 | v19) < 0 || (*(_DWORD*)(v2 + 1872) & 0xFFF) == 0) {
+        goto LABEL_37;
+      }
+      v22 = *(_DWORD*)(v2 + 592);
+      if (v22 > v19 && v22 > v20) {
+        v24 = v19 + v22 * v20;
+        if ((v24 & 0x80000000) == 0) {
+          break;
+        }
+      }
+      v21 = 0;
+      v25 = "UI_Bmap_Wall_Monster_NoDamage_Loop";
+      if (!v10) {
+      LABEL_40:
+        v26 = v21 & ~(v21 >> 31);
+        if (v26 >= 2) {
+          v26 = 2;
+        }
+        if (v21 < 1) {
+          goto LABEL_28;
+        }
+        v25 = (const char*)GameData_1fb0298[v26];
+      }
+    LABEL_27:
+      v17 = *(char*)(v2 + 584);
+      v18 = *(char*)(v2 + 585);
+      v32 = v25;
+      v31 = game_HashString(v25, v11);
+      GameRoutine_965220(&GameData_21da4a0, 0, (unsigned int)(v17 + v19),
+                         (unsigned int)(v18 + v20), &v31, v9);
+    LABEL_28:
+      v15 += 4;
+      if (v15 == v16) {
+        return;
+      }
+    }
+    v21 = *(char*)(*(_QWORD*)(v2 + 600) + 4LL * v24 + 2);
+  LABEL_37:
+    v25 = "UI_Bmap_Wall_Monster_NoDamage_Loop";
+    if (v10) {
+      goto LABEL_27;
+    }
+    goto LABEL_40;
+  }
+  if ((*(_WORD*)(v2 + 1872) & 0xFFF) != 0 && *(int*)(v2 + 592) >= 1) {
+    v12 = *(char*)(*(_QWORD*)(v2 + 600) + 2LL);
+    if (!v10) {
+      goto LABEL_21;
+    }
+  LABEL_45:
+    v14 = "UI_Bmap_Wall_Monster_NoDamage_Loop";
+    goto LABEL_46;
+  }
+  v12 = 0;
+  if (v10) {
+    goto LABEL_45;
+  }
+LABEL_21:
+  v13 = v12 & ~(v12 >> 31);
+  if (v13 >= 8) {
+    v13 = 8;
+  }
+  if (v12 >= 1) {
+    v14 = (const char*)GameData_1fb0250[v13];
+  LABEL_46:
+    v27 = *(_DWORD*)(v2 + 592);
+    v28 = *(char*)(v2 + 584);
+    v29 = *(char*)(v2 + 585);
+    v30 = v27 >> 1;
+    v32 = v14;
+    v31 = game_HashString(v14, v11);
+    GameRoutine_965220(&GameData_21da4a0, 0, (unsigned int)(v30 + v28),
+                       (unsigned int)(v30 + v29), &v31, v9);
+  }
 }
 
 #pragma GCC visibility pop

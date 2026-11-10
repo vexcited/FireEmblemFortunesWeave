@@ -67,6 +67,9 @@ __int64 LayoutEx_579180(__int64);
 __int64 LayoutEx_5791a0(__int64);
 __int64 ResFont_55eae0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 __int64 MultiArcResourceAccessor_Unknown20(__int64* a1, __int64 a2, __int64 a3);
+void GameRoutine_573860();
+__int64 MultiArcResourceAccessor_Unknown12(__int64 result, unsigned int a2,
+                                           __int64 a3, __int64 a4);
 
 __int64 MultiArcResourceAccessor_DeletingDestructor(_QWORD* a1)
 {
@@ -195,6 +198,21 @@ __int64 MultiArcResourceAccessor_Unknown8(__int64 a1, _QWORD* a2, int a3,
     if (v4 == v5) {
       return 0;
     }
+  }
+  return result;
+}
+
+__int64 MultiArcResourceAccessor_Unknown12(__int64 result, unsigned int a2,
+                                           __int64 a3, __int64 a4)
+{
+  __int64 v4;
+  __int64 i;
+
+  v4 = *(_QWORD*)(result + 16);
+  for (i = result + 8; v4 != i; v4 = *(_QWORD*)(v4 + 8)) {
+    result = ((__int64 (*)(_QWORD, __int64, _QWORD, __int64,
+                           __int64))GameRoutine_573860)(
+        *(_QWORD*)(v4 + 16), *(_QWORD*)(v4 + 16) + 64LL, a2, a3, a4);
   }
   return result;
 }

@@ -73,6 +73,17 @@ __int64 CorpsPoolMenu_Unknown7(__int64 a1, char a2);
 __int64
 game_gmap_anonymous_CorpsPoolMenu_AddItemList_closure0_Invoke(__int64 a1,
                                                               __int64* a2);
+__int64 BasicMenu_16e1f40(__int64 result, __int64, __int64);
+__int64 MapSortieMenu_871860(__int64, __int64, __int64, __int64, __int64);
+__int64 game_gmap_anonymous_CorpsMenuBase_UpdateCorpsInfo(_QWORD*);
+__int64 ui_LayoutAccessor_SetPaneVisible(__int64 result, __int64, char);
+__n128 GameRoutine_172f060(__int64*);
+extern __int64 (*GameData_20b5370[])();
+extern __int64 (*GameData_20b53f0[])();
+extern __int64 (*GameData_20b6268[])();
+extern __int64 (*GameData_20b62e8[])();
+__n128 game_gmap_anonymous_CorpsPoolMenu_SortAndFilter(__int64 a1);
+__int64 CorpsPoolMenu_Unknown141(__int64 a1);
 
 __int64 CorpsPoolMenu_Destructor(__int64 a1)
 {
@@ -377,6 +388,162 @@ __int64 CorpsPoolMenu_Unknown128(_QWORD* a1)
     } while (v3 != v4);
   }
   return result;
+}
+
+__n128 game_gmap_anonymous_CorpsPoolMenu_SortAndFilter(__int64 a1)
+{
+  __int64 v2;
+  unsigned __int64 v3;
+  int* v4;
+  int v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  unsigned __int64 v9;
+  _DWORD* v10;
+  __int64 v11;
+  struct {
+    _QWORD v13[4];
+    _QWORD* v14;
+  } v13_;
+  struct {
+    _QWORD v15[4];
+    _QWORD* v16;
+  } v15_;
+  int v17;
+
+  if (*(int*)(a1 + 656) < 1) {
+    v4 = *(int**)(a1 + 1072);
+  }
+  else {
+    v2 = *(_QWORD*)(a1 + 672);
+    v3 = *(int*)(a1 + 660);
+    if (v3 < (*(_QWORD*)(a1 + 680) - v2) >> 2) {
+      v3 = *(int*)(v2 + 4 * v3);
+    }
+    v4 = (int*)(*(_QWORD*)(a1 + 1072) + 4 * v3);
+  }
+  v5 = *v4;
+  v13_.v14 = v13_.v13;
+  v17 = v5;
+  v15_.v15[0] = GameData_20b5370;
+  v15_.v15[1] = &v17;
+  v15_.v16 = v15_.v15;
+  v13_.v13[0] = GameData_20b53f0;
+  v13_.v13[1] = a1;
+  BasicMenu_16e1f40(a1, (__int64)v15_.v15, (__int64)v13_.v13);
+  if (v13_.v14 == v13_.v13) {
+    v6 = 32;
+  }
+  else {
+    if (v13_.v14 == nullptr) {
+      goto LABEL_11;
+    }
+    v6 = 40;
+  }
+  (*(void (**)(__int64))(*v13_.v14 + v6))((__int64)v13_.v14);
+LABEL_11:
+  if (v15_.v16 == v15_.v15) {
+    v7 = 32;
+  }
+  else {
+    if (v15_.v16 == nullptr) {
+      goto LABEL_16;
+    }
+    v7 = 40;
+  }
+  (*(void (**)(__int64))(*v15_.v16 + v7))((__int64)v15_.v16);
+LABEL_16:
+  if (*(int*)(a1 + 656) < 1) {
+    v10 = *(_DWORD**)(a1 + 1072);
+  }
+  else {
+    v8 = *(_QWORD*)(a1 + 672);
+    v9 = *(int*)(a1 + 660);
+    if (v9 < (*(_QWORD*)(a1 + 680) - v8) >> 2) {
+      v9 = *(int*)(v8 + 4 * v9);
+    }
+    v10 = (_DWORD*)(*(_QWORD*)(a1 + 1072) + 4 * v9);
+  }
+  v11 = a1 + 952;
+  if (*v10 == -1) {
+    ui_LayoutAccessor_SetPaneVisible(v11, (__int64)"N_Corps", 0);
+  }
+  else {
+    ui_LayoutAccessor_SetPaneVisible(v11, (__int64)"N_Corps", 1);
+    game_gmap_anonymous_CorpsMenuBase_UpdateCorpsInfo((_QWORD*)a1);
+  }
+  return GameRoutine_172f060((__int64*)a1);
+}
+
+__int64 CorpsPoolMenu_Unknown141(__int64 a1)
+{
+  __int64 v1;
+  __int64 v2;
+  __int64 v4;
+  __int64 v5;
+  struct {
+    _QWORD v6[4];
+    _QWORD* v7;
+  } v6_;
+  struct {
+    _QWORD v8[4];
+    _QWORD* v9;
+  } v8_;
+  struct {
+    _QWORD v10[4];
+    _QWORD* v11;
+  } v10_;
+  const char* v12;
+
+  v1 = *(_QWORD*)(a1 + 1056);
+  if (v1 != 0) {
+    v1 = __dynamic_cast(v1, GameData_21319e8[0], &GameData_20b3420, 0);
+  }
+  if (*(_BYTE*)(v1 + 409) != 1) {
+    return 3;
+  }
+  v12 = "MID_CorpsMenu_Cancel_Confirm";
+  v10_.v10[0] = GameData_20b6268;
+  v6_.v7 = v6_.v6;
+  v10_.v11 = v10_.v10;
+  v8_.v9 = v8_.v8;
+  v8_.v8[0] = GameData_20b62e8;
+  v6_.v6[0] = GameData_20b62e8;
+  MapSortieMenu_871860(v1, (__int64)&v12, (__int64)v10_.v10, (__int64)v8_.v8,
+                       (__int64)v6_.v6);
+  if (v6_.v7 == v6_.v6) {
+    v2 = 32;
+  }
+  else {
+    if (v6_.v7 == nullptr) {
+      goto LABEL_10;
+    }
+    v2 = 40;
+  }
+  (*(void (**)(__int64))(*v6_.v7 + v2))((__int64)v6_.v7);
+LABEL_10:
+  if (v8_.v9 == v8_.v8) {
+    v4 = 32;
+  }
+  else {
+    if (v8_.v9 == nullptr) {
+      goto LABEL_15;
+    }
+    v4 = 40;
+  }
+  (*(void (**)(__int64))(*v8_.v9 + v4))((__int64)v8_.v9);
+LABEL_15:
+  if (v10_.v11 == v10_.v10) {
+    v5 = 32;
+    goto LABEL_19;
+  }
+  if (v10_.v11 != nullptr) {
+    v5 = 40;
+  LABEL_19:
+    (*(void (**)(__int64))(*v10_.v11 + v5))((__int64)v10_.v11);
+  }
+  return 11;
 }
 
 __int64 CorpsPoolMenu_Unknown143(_QWORD* a1)

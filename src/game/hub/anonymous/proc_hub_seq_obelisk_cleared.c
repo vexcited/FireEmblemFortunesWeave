@@ -34,6 +34,9 @@ __int64* ProcHubSeqObeliskCleared_fba300(__int64* result, int a2);
 __int64
 game_hub_anonymous_ProcHubSeqObeliskCleared_CallAchievementDialog_closure0_Invoke(
     __int64 a1, __int64* a2);
+extern __int64 GameData_21f3ca0;
+extern __int64 game_script_hub_g_frame_counter;
+float ProcHubSeqObeliskCleared_Unknown3(__int64 a1, float result);
 __int64*
 
 game_hub_anonymous_ProcHubSeqObeliskCleared_CallAchievementDialog(__int64 a1)
@@ -303,6 +306,45 @@ __int64 ProcHubSeqObeliskCleared_DeletingDestructor(__int64 a1)
     v6 = 56;
   }
   return nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v6);
+}
+
+float ProcHubSeqObeliskCleared_Unknown3(__int64 a1, float result)
+{
+
+#pragma clang fp contract(off)
+  float v2;
+  __int64 v3;
+
+  if (*(_BYTE*)(a1 + 188) == 1) {
+    result = *(float*)(a1 + 184);
+    v2 = fabsf((float)(*(float*)(game_script_hub_g_frame_counter + 160) *
+                       0x1.0aef000000000p+4f) /
+               0x1.f400000000000p+9f);
+    if (result <= 0x1.0000000000000p+0f) {
+      if (result >= 0x1.0000000000000p+0f) {
+        goto LABEL_8;
+      }
+      result = result + v2;
+      if (result <= 0x1.0000000000000p+0f) {
+        goto LABEL_8;
+      }
+    }
+    else {
+      result = result - v2;
+      if (result >= 0x1.0000000000000p+0f) {
+        goto LABEL_8;
+      }
+    }
+    result = 0x1.0000000000000p+0f;
+  LABEL_8:
+    *(float*)(a1 + 184) = result;
+  }
+  v3 = *(_QWORD*)(GameData_21f3ca0 + 8LL * *(int*)(a1 + 168) + 8);
+  if (v3 != 0) {
+    result = *(float*)(a1 + 184);
+    *(float*)(v3 + 56) = result;
+  }
+  return result;
 }
 
 #pragma GCC visibility pop

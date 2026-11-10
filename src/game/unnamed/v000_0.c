@@ -65,14 +65,6 @@ __int64 GameHr_f20() { return GameRoutine_1a0b9a0(GameRoutine_f30); }
 
 __int64 GameHr_10c0() { return GameRoutine_1a0b9a0(GameRoutine_1050); }
 
-__int64 GameHr_4c1c()
-{
-  __int64 v0;
-
-  v0 = ((__int64 (*)(void))GameRoutine_4c20)();
-  return GameRoutine_4c20(v0);
-}
-
 __int64 GameHr_d5ac(__int64 a1)
 {
   int v1;

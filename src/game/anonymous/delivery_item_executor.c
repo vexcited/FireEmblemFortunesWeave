@@ -16,6 +16,7 @@ __int64 DeliveryItemExecutor_DeletingDestructor(__int64 a1, __int64 a2,
                                                 unsigned int a3);
 __int64 DeliveryItemExecutor_1261a00(_QWORD* a1);
 __int64 DeliveryItemExecutor_Unknown6(__int64 result);
+bool DeliveryItemExecutor_Unknown4(__int64 a1);
 
 __int64 DeliveryItemExecutor_Destructor(__int64 a1, unsigned __int16* a2)
 {
@@ -34,6 +35,17 @@ __int64 DeliveryItemExecutor_DeletingDestructor(__int64 a1, __int64 a2,
   v5 = GameRoutine_1262240(a1 + 16, a2 + 8LL * (int)a3 + 828, 1);
   GameRoutine_12623a0(v5, a2, a3);
   return 0;
+}
+
+bool DeliveryItemExecutor_Unknown4(__int64 a1)
+{
+  __int64* v1;
+
+  v1 = (__int64*)(a1 + 32);
+  do {
+    v1 = (__int64*)*v1;
+  } while (v1 != nullptr && *((_DWORD*)v1 + 6) >= *(_DWORD*)(a1 + 8));
+  return v1 == nullptr;
 }
 
 __int64 DeliveryItemExecutor_1261a00(_QWORD* a1)

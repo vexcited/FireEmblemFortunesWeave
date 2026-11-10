@@ -24,6 +24,15 @@ __int64 SortiePlanBottomUpArgs_Unknown4(__int64 a1);
 __int64 SortiePlanBottomUpArgs_1427cd0(__int64 a1);
 __int64 SortiePlanBottomUpArgs_Unknown6(__int64 result, __int64 a2, __int64 a3);
 __int64 SortiePlanBottomUpArgs_Unknown5(__int64 result, __int64 a2, __int64 a3);
+__attribute__((swiftcall)) void
+game_12dd620(PSEUDO_X8, unsigned __int16* result, int, int, int);
+__int64 game_VariableManager_SetFlag(__int64 result, int);
+extern __int64 GameData_212c6c0[2];
+extern __int64 GameData_22492a8;
+extern __int64 game_gmap_GmapClock_instance_;
+extern __int64 game_gmap_GmapClock_kDefaultTime_ptr;
+__int64 SortiePlanBottomUpArgs_Unknown5_1427d10();
+__int64 SortiePlanBottomUpArgs_Unknown4_1427da0();
 
 _QWORD* SortiePlanBottomUpArgs_Destructor(_QWORD* result)
 {
@@ -338,6 +347,40 @@ __int64 SortiePlanBottomUpArgs_1427cd0(__int64 a1)
   result = GameRoutine_94d840();
   *(_DWORD*)(a1 + 56) = result;
   return result;
+}
+
+__int64 SortiePlanBottomUpArgs_Unknown5_1427d10()
+{
+  __int16* v0;
+  _WORD v2[6];
+
+  if (game_gmap_GmapClock_instance_ != 0) {
+    v0 = (__int16*)(game_gmap_GmapClock_instance_ + 8);
+  }
+  else {
+    v0 = (__int16*)game_gmap_GmapClock_kDefaultTime_ptr;
+  }
+  game_12dd620((void*)((__int64)v2), *(unsigned __int16**)GameData_212c6c0[0],
+               *v0, v0[1], v0[2]);
+  return game_VariableManager_SetFlag((__int64)&GameData_22492a8,
+                                      10000 * v2[0] + 100 * v2[1] + v2[2]);
+}
+
+__int64 SortiePlanBottomUpArgs_Unknown4_1427da0()
+{
+  __int16* v0;
+  _WORD v2[6];
+
+  if (game_gmap_GmapClock_instance_ != 0) {
+    v0 = (__int16*)(game_gmap_GmapClock_instance_ + 8);
+  }
+  else {
+    v0 = (__int16*)game_gmap_GmapClock_kDefaultTime_ptr;
+  }
+  game_12dd620((void*)((__int64)v2), *(unsigned __int16**)GameData_212c6c0[0],
+               *v0, v0[1], v0[2]);
+  return game_VariableManager_SetFlag((__int64)&GameData_22492a8,
+                                      10000 * v2[0] + 100 * v2[1] + v2[2]);
 }
 
 __int64 SortiePlanBottomUpArgs_Unknown6(__int64 result, __int64 a2, __int64 a3)

@@ -26,6 +26,74 @@ void ProcConversation_1496480();
 void game_facility_anonymous_ProcConversation_PlaySpecialTelop_closure_Invoke();
 __int64 ProcConversation_Destructor_14968a0(__int64* a1);
 __int64 ProcConversation_DeletingDestructor_14969d0(__int64* a1);
+_QWORD* ProcConversation_1495fa0(_QWORD* result);
+
+_QWORD* ProcConversation_1495fa0(_QWORD* result)
+{
+  __int64 v1;
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+
+  v1 = result[24];
+  if (v1 != 0 && (*(_BYTE*)(v1 + 136) & 1) == 0) {
+    result = *(_QWORD**)(v1 + 96);
+    *(_QWORD*)(v1 + 96) = 0;
+    *(_BYTE*)(v1 + 136) = 1;
+    if (result == (_QWORD*)(v1 + 64)) {
+      v2 = 32;
+    }
+    else {
+      if (result == nullptr) {
+        goto LABEL_8;
+      }
+      v2 = 40;
+    }
+    result = (_QWORD*)(*(__int64 (**)(__int64))(*result + v2))((__int64)result);
+  LABEL_8:
+    v3 = *(_QWORD*)(v1 + 112);
+    v4 = *(_QWORD*)(v1 + 120);
+    if (v3 == v4) {
+    LABEL_9:
+      *(_QWORD*)(v1 + 120) = v3;
+      return result;
+    }
+    while (1) {
+      result = *(_QWORD**)(v4 - 16);
+      *(_QWORD*)(v4 - 16) = 0;
+      if ((_QWORD*)(v4 - 48) == result) {
+        v6 = 32;
+      }
+      else {
+        if (result == nullptr) {
+          goto LABEL_13;
+        }
+        v6 = 40;
+      }
+      (*(void (**)(__int64))(*result + v6))((__int64)result);
+      result = *(_QWORD**)(v4 - 16);
+      if ((_QWORD*)(v4 - 48) == result) {
+        v5 = 32;
+      }
+      else {
+        if (result == nullptr) {
+          goto LABEL_13;
+        }
+        v5 = 40;
+      }
+      result =
+          (_QWORD*)(*(__int64 (**)(__int64))(*result + v5))((__int64)result);
+    LABEL_13:
+      v4 -= 64;
+      if (v4 == v3) {
+        goto LABEL_9;
+      }
+    }
+  }
+  return result;
+}
 
 void ProcConversation_1496480()
 {

@@ -17,6 +17,15 @@ extern __int64 ui_LayoutAccessor_empty_;
 __int64 RelianceMenuItem_Unknown75(__int64 a1);
 __int64 RelianceMenuItem_Unknown58(__int64 a1);
 __int64 RelianceMenuItem_Unknown55_1850910(__int64 a1);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, _QWORD, _QWORD,
+                                               _QWORD, _QWORD, _QWORD, _QWORD,
+                                               double, float);
+__int64 GameRoutine_1789b00(_QWORD);
+__int64 game_821090(_QWORD);
+__int64 game_anonymous_RuntimeTalk_GetCondition(_QWORD);
+__int64 snd_Fade_Destroy_Fade(_QWORD);
+__n128 snd_Fade_Fade_10c830(_QWORD, double);
+__int64 RelianceMenuItem_PlayDecideSe(__int64 result);
 
 __int64 RelianceMenuItem_Unknown75(__int64 a1)
 {
@@ -104,6 +113,62 @@ __int64 RelianceMenuItem_Unknown58(__int64 a1)
     v8 = 0;
   }
   return v8 & v7;
+}
+
+__int64 RelianceMenuItem_PlayDecideSe(__int64 result)
+{
+  __int64 v1;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  _QWORD v7[25];
+
+  if (*(_QWORD*)(result + 88) != 0) {
+    v1 = result;
+    result = game_821090(1);
+    if (game_GameModeData_instance_ != 0) {
+      result = game_GameVariableTable_Find(
+          *(_QWORD*)(game_GameModeData_instance_ + 48), result);
+      if (result != 0 && *(int*)(result + 32) >= 1 &&
+          *(_BYTE*)(v1 + 164) == 0) {
+        result = GameRoutine_8ca200(v1 + 104);
+        if (result != 0 && *(_BYTE*)(result + 64) != 4) {
+          if (game_GameModeData_instance_ == 0 ||
+              (v3 = result,
+               v4 = game_GameVariableTable_Find(
+                   *(_QWORD*)(game_GameModeData_instance_ + 48),
+                   *(_QWORD*)(result + 24) + 40LL),
+               result = v3, v4 == 0) ||
+              *(_DWORD*)(v4 + 32) == 0) {
+            result = game_anonymous_RuntimeTalk_GetCondition(result);
+            if ((_WORD)result == 0) {
+              if (*(_DWORD*)(v1 + 96) != 0 ||
+                  ((v5 = *(_QWORD*)(v1 + 88)) == 0 ||
+                   (*(_BYTE*)(v5 + 416) & 8) == 0) &&
+                      (result = game_821090(1),
+                       game_GameModeData_instance_ != 0) &&
+                      (result = game_GameVariableTable_Find(
+                           *(_QWORD*)(game_GameModeData_instance_ + 48),
+                           result)) != 0 &&
+                      *(int*)(result + 32) >= 1 && *(_BYTE*)(v1 + 164) == 0 &&
+                      (result = GameRoutine_8ca200(v1 + 104)) != 0 &&
+                      *(_BYTE*)(result + 64) != 4 &&
+                      (v7[0] = result,
+                       ((result = GameRoutine_1789b00(v7)) & 1) != 0)) {
+                snd_Fade_Fade_10c830(v7, 0.0f);
+                snd_play_ff2d0((void*)(&v6), "SE_SYS_Decide_H_Light",
+                               "SE_SYS_Decide_H_Light", v7, 0, 65537, 0, 0.0f,
+                               1.0f);
+                return snd_Fade_Destroy_Fade(v7);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  return result;
 }
 
 __int64 RelianceMenuItem_Unknown55_1850910(__int64 a1)

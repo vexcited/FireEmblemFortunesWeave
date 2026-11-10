@@ -9,6 +9,13 @@ __int64 timeline_OutputStream_Write(_QWORD);
 extern unsigned int GameData_1b37d88[29];
 int** ValueWriter_4ff0(int** result);
 int** ValueWriter_5280(int** result);
+__int64* ValueWriter_4ff0_alt1(__int64* result) __asm__("ValueWriter_4ff0");
+__int64* timeline_3dd0(__int64*, unsigned __int64);
+__int64* timeline_5aa0(__int64*, float);
+__int64 Value_2ad0_alt1(__int64*, __int64, __int64) __asm__("Value_2ad0");
+__int64 timeline_WriterStateStack_Back(unsigned int*);
+extern _DWORD GameData_1b37d88_alt1[29] __asm__("GameData_1b37d88");
+__int64* ValueWriter_5dc0(__int64* a1, float* a2, unsigned __int64 a3);
 
 int** ValueWriter_4ff0(int** result)
 {
@@ -318,6 +325,113 @@ int** ValueWriter_5280(int** result)
     }
   }
   return result;
+}
+
+__int64* ValueWriter_5dc0(__int64* a1, float* a2, unsigned __int64 a3)
+{
+
+#pragma clang fp contract(off)
+  unsigned __int64 v3;
+  __int64* v6;
+  __int64 v7;
+  float v8;
+  __int64 v9;
+  __int64 v10;
+  unsigned __int64 v11;
+  __int64 v12;
+  __int64 v13;
+  __int64 v14;
+  __int64 v15;
+  unsigned int v16;
+  unsigned __int64 v17;
+  unsigned __int64 v18;
+  __int64 v19;
+  int v20;
+  __int64 v21;
+  _DWORD* v23;
+  _DWORD* v24;
+
+  v3 = a3;
+  v6 = timeline_3dd0(a1, a3);
+  v7 = *v6;
+  if ((*(_BYTE*)(*v6 + 4) & 2) == 0) {
+    for (; v3 != 0; --v3) {
+      v8 = *a2++;
+      timeline_5aa0(a1, v8);
+    }
+  LABEL_21:
+    ValueWriter_4ff0_alt1(a1);
+    return a1;
+  }
+  if (v3 == 0) {
+  LABEL_17:
+    v17 = *(unsigned int*)(v7 + 16);
+    v18 = *(unsigned int*)(v7 + 20) - 1LL;
+    if (v18 >= v17) {
+      v20 = v18 - v17;
+      v21 = __clz(v20 + 16);
+      v19 = *(_QWORD*)(*(_QWORD*)(v7 + 32) + 8 * (27 - v21) + 8) +
+            8LL * (unsigned int)(v20 - GameData_1b37d88_alt1[28 - v21]);
+    }
+    else {
+      v19 = *(_QWORD*)(v7 + 24) + 8 * v18;
+    }
+    *(_DWORD*)(v19 + 4) = 0;
+    goto LABEL_21;
+  }
+  v9 = *(_QWORD*)(v7 + 8);
+  v10 = *(_QWORD*)(v7 + 80);
+  v11 = v7 + 152;
+  v12 = v7 + 88;
+  while (1) {
+    if (v10 + 5 > v11) {
+      v13 = v10 - v12;
+      *(_QWORD*)(v7 + 80) = v12;
+      if (v10 - v12 < 0) {
+        break;
+      }
+      v14 = *(_QWORD*)(v9 + 16);
+      if ((unsigned __int64)(v14 + v13) <= *(_QWORD*)(v9 + 32)) {
+        memcpy(*(_QWORD*)(v9 + 24) + v14, v7 + 88, v13);
+        *(_QWORD*)(v9 + 16) += v13;
+      }
+      else if ((Value_2ad0_alt1((__int64*)v9, v7 + 88, v13) & 1) == 0) {
+        goto LABEL_25;
+      }
+    }
+    v15 = *(_QWORD*)(v7 + 80);
+    v10 = v15 + 5;
+    if (v15 + 5 > v11) {
+      v10 = 0;
+      --v3;
+      ++a2;
+      *(_QWORD*)(v7 + 80) = 0;
+      if (v3 == 0) {
+        goto LABEL_17;
+      }
+    }
+    else {
+      v16 = *(_DWORD*)a2++;
+      *(_BYTE*)v15 = -54;
+      *(_DWORD*)(v15 + 1) = bswap32(v16);
+      --v3;
+      *(_QWORD*)(v7 + 80) = v10;
+      if (v3 == 0) {
+        goto LABEL_17;
+      }
+    }
+  }
+  if (*(_DWORD*)(v9 + 40) == 0) {
+    *(_DWORD*)(v9 + 40) = 22;
+  }
+LABEL_25:
+  v23 = (_DWORD*)*a1;
+  v24 = (_DWORD*)timeline_WriterStateStack_Back((unsigned int*)(v7 + 16));
+  if (*v23 == 0) {
+    *v23 = 8;
+  }
+  *v24 = 5;
+  return a1;
 }
 
 #pragma GCC visibility pop

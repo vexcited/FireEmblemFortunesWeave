@@ -9,16 +9,95 @@ __int64 strcmp(_QWORD, _QWORD);
 long double GameRoutine_5b6970(__int64);
 __int64 CalculateAllocatedSizeHeap_Unknown2(__int64 a1, __int64 a2);
 __int64 CalculateAllocatedSizeHeap_Unknown3(__int64 a1);
-
 __int64 CalculateAllocatedSizeHeap_5c7020(
     __int64 result, __int64 (*a2)(__int64*, _QWORD, __int64), __int64 a3);
-
 __int64 CalculateAllocatedSizeHeap_5c7360(
     __int64 result, __int64 (*a2)(__int64*, __int64, __int64), __int64 a3);
 void CalculateAllocatedSizeHeap_5c7400(__int64 a1, __int64 a2, __int64* a3);
 __int64 CalculateAllocatedSizeHeap_5c7840(__int64 a1, __int64 a2);
 __int64 CalculateAllocatedSizeHeap_5c7a00(_QWORD* a1, __int64 a2);
 __int64 CalculateAllocatedSizeHeap_5c7a60(__int64 a1, __int64 a2);
+__int64 CalculateAllocatedSizeHeap_5c7400_alt1(
+    __int64, __int64, __int64*) __asm__("CalculateAllocatedSizeHeap_5c7400");
+__int64 memcmp(_QWORD, _QWORD, _QWORD);
+__int64 memset(_QWORD, _QWORD, _QWORD);
+__int64 strlen(_QWORD);
+__int64 CalculateAllocatedSizeHeap_5c6e20(__int64 a1, __int64 a2, __int64* a3);
+__int64 CalculateAllocatedSizeHeap_5c78c0(__int64 a1, __int64 a2);
+
+__int64 CalculateAllocatedSizeHeap_5c6e20(__int64 a1, __int64 a2, __int64* a3)
+{
+  __int64 v3;
+  _DWORD* v7;
+  int v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 v16;
+  __int64 v17;
+  __int64 v18;
+  __int64 result;
+  __int64 v23;
+  _DWORD* v24;
+  __int64 v25;
+  unsigned int v26;
+  __int64 v27;
+
+  v3 = *(unsigned int*)(a2 + 8);
+  if ((_DWORD)v3 == -1) {
+    v8 = 0;
+  }
+  else {
+    v7 = (_DWORD*)(a2 + v3);
+    v8 = 0;
+    do {
+      v9 = (unsigned int)v7[3];
+      if (*v7 == 1413829445) {
+        ++v8;
+      }
+      v7 = (_DWORD*)((char*)v7 + v9);
+    } while ((_DWORD)v9 != -1);
+  }
+  v10 = *(_QWORD*)(a1 + 1112);
+  *(_DWORD*)(a1 + 76) = v8;
+  v11 = (*(__int64 (**)(__int64, __int64, __int64))(*(_QWORD*)v10 + 16LL))(
+      v10, 56LL * v8, 128);
+  v12 = *(_QWORD*)(a1 + 1120);
+  *(_QWORD*)(a1 + 88) = v11;
+  *(_QWORD*)(a1 + 1120) = v12 + 56LL * v8;
+  ++*(_DWORD*)(a1 + 1128);
+  memset(v11, 0, 56LL * *(int*)(a1 + 76));
+  v16 = *(int*)(a1 + 76);
+  v17 = (*(__int64 (**)(_QWORD, __int64, __int64))(
+      **(_QWORD**)(a1 + 1112) + 16LL))(*(_QWORD*)(a1 + 1112), 8 * v16, 128);
+  v18 = *(_QWORD*)(a1 + 1120);
+  *(_QWORD*)(a1 + 96) = v17;
+  *(_QWORD*)(a1 + 1120) = v18 + 8 * v16;
+  ++*(_DWORD*)(a1 + 1128);
+  result = memset(v17, 0, 8LL * *(int*)(a1 + 76));
+  v23 = *(unsigned int*)(a2 + 8);
+  if ((_DWORD)v23 != -1) {
+    v24 = (_DWORD*)(a2 + v23);
+    while (*v24 != 1413829445) {
+      v25 = (unsigned int)v24[3];
+      v24 = (_DWORD*)((char*)v24 + v25);
+      if ((_DWORD)v25 == -1) {
+        return result;
+      }
+    }
+    v26 = 0;
+    do {
+      *(_QWORD*)(*(_QWORD*)(a1 + 88) + 56LL * v26 + 8) = v24;
+      result = CalculateAllocatedSizeHeap_5c7400_alt1(
+          a1, *(_QWORD*)(a1 + 88) + 56LL * v26, a3);
+      v27 = (unsigned int)v24[3];
+      ++v26;
+      v24 = (_DWORD*)((char*)v24 + v27);
+    } while ((_DWORD)v27 != -1);
+  }
+  return result;
+}
 
 __int64 CalculateAllocatedSizeHeap_Unknown2(__int64 a1, __int64 a2)
 {
@@ -410,6 +489,71 @@ __int64 CalculateAllocatedSizeHeap_5c7840(__int64 a1, __int64 a2)
     }
   }
   return result;
+}
+
+__int64 CalculateAllocatedSizeHeap_5c78c0(__int64 a1, __int64 a2)
+{
+  __int64 v2;
+  __int64 v3;
+  __int64 v5;
+  __int64 v7;
+  __int64 v8;
+  unsigned __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  int v13;
+  __int64 v14;
+  bool v15;
+  unsigned __int64 v16;
+  unsigned __int16* v17;
+  unsigned __int64 v18;
+
+  if (a2 == -1) {
+    return 0;
+  }
+  v3 = *(_QWORD*)(a1 + 168);
+  v2 = *(_QWORD*)(a1 + 176);
+  if (v3 == 0 || v2 == 0) {
+    return 0;
+  }
+  while (*(_QWORD*)v2 != a2) {
+    v5 = *(unsigned int*)(v2 + 8);
+    v2 += v5;
+    if ((_DWORD)v5 == 0) {
+      return 0;
+    }
+  }
+  v7 = *(_QWORD*)(v3 + 56);
+  v8 = v2 + 16;
+  v9 = strlen(v2 + 16);
+  v10 = *(unsigned __int16*)(v7 + 12);
+  v11 = v7 + 8;
+  v12 = v7 + 8 + 16 * v10;
+  v13 = *(_DWORD*)v12;
+  if (*(_DWORD*)(v7 + 8) < *(_DWORD*)v12) {
+    do {
+      v16 = (__int64)v13 >> 3;
+      if (v9 > v16) {
+        v14 = (*(unsigned __int8*)(v8 + v9 + ~v16) >> (v13 & 7)) & 1;
+      }
+      else {
+        v14 = 0;
+      }
+      v10 = *(unsigned __int16*)(v7 + 12 + 16 * v10 + 2 * v14);
+      v15 = v13 < *(_DWORD*)(v11 + 16 * v10);
+      v13 = *(_DWORD*)(v11 + 16 * v10);
+    } while (v15);
+    v12 = v11 + 16 * v10;
+  }
+  v17 = *(unsigned __int16**)(v12 + 8);
+  if (v9 == *v17 && (unsigned int)memcmp(v17 + 1, v8, v9) == 0 &&
+      (~(v18 = v12 - v7 - 24) & 0xFFFFFFFF0LL) != 0) {
+    return *(_QWORD*)(*(_QWORD*)(v3 + 40) + 8LL * (int)(v18 >> 4));
+  }
+  else {
+    return 0;
+  }
 }
 
 __int64 CalculateAllocatedSizeHeap_5c7a00(_QWORD* a1, __int64 a2)

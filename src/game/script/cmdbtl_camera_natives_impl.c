@@ -1,5 +1,7 @@
 #include "decomp/pseudo_helpers.h"
 
+#include "decomp/pseudo_float.h"
+
 #pragma GCC visibility push(hidden)
 
 __int64 GameRoutine_e7fde0(_QWORD, _QWORD, _QWORD, _QWORD, float, double);
@@ -19,6 +21,12 @@ extern __int64 (*GameData_1fed038[])();
 extern __int64* GameData_212ea58;
 __int64 cmdbtl_camera_StartSelfie(int a1, __int128* a2, float a3, float a4,
                                   float a5, float a6);
+__int64 CmdbtlPartyNatives_e9ba00(__int64, __int64, unsigned int,
+                                  unsigned __int8, __int64*, __n128);
+__n128 std___1___shared_weak_count___release_weak_alt1(_QWORD) __asm__(
+    "std___1___shared_weak_count___release_weak");
+extern __int64 GameData_22054a8;
+void cmdbtl_camera_StartDefaultWithRelocate(char a1, float a2);
 
 __int64 cmdbtl_camera_StartSelfie(int a1, __int128* a2, float a3, float a4,
                                   float a5, float a6)
@@ -289,6 +297,70 @@ LABEL_31:
     return std___1___shared_weak_count___release_weak(v18);
   }
   return result;
+}
+
+void cmdbtl_camera_StartDefaultWithRelocate(char a1, float a2)
+{
+
+#pragma clang fp contract(off)
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __n128 v7;
+  _QWORD* v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  struct {
+    __int64 v12;
+    __int64 v13;
+  } v12_;
+
+  v4 = *as_g_script_manager_ptr;
+  v5 = *(
+      _QWORD*)(v4 +
+               8LL * (*(unsigned int (**)(__int64))(*(_QWORD*)as_g_thread_info +
+                                                    72LL))(as_g_thread_info) +
+               4384);
+  if (v5 != 0) {
+    v6 = (*(__int64 (**)(__int64))(*(_QWORD*)v5 + 472LL))(v5);
+  }
+  else {
+    v6 = 0;
+  }
+  (*(void (**)(_QWORD, __int64))(**(_QWORD**)(v6 + 24) + 448LL))(
+      *(_QWORD*)(v6 + 24), 1);
+  v8 = *(_QWORD**)(v6 + 2240);
+  *(_QWORD*)(v6 + 2240) = 0;
+  if (v8 == (_QWORD*)(v6 + 2208)) {
+    v9 = 32;
+    goto LABEL_8;
+  }
+  if (v8 != nullptr) {
+    v9 = 40;
+  LABEL_8:
+    (*(void (**)(__int64))(*v8 + v9))((__int64)v8);
+  }
+  if (GameData_22054a8 != 0 && (v10 = *(_QWORD*)(GameData_22054a8 + 80)) != 0) {
+    v11 = *(
+        _QWORD*)(*(_QWORD*)(*(_QWORD*)(GameData_22054a8 + 48) +
+                            8 * ((v10 + *(_QWORD*)(GameData_22054a8 + 72) - 1) /
+                                 0x33uLL)) +
+                 80 *
+                     ((v10 + *(_QWORD*)(GameData_22054a8 + 72) - 1) % 0x33uLL) +
+                 72);
+  }
+  else {
+    v11 = 0;
+  }
+  PSEUDO_LOW_LANE128(v7, n128_f32, a2);
+  v12_.v12 = 0;
+  v12_.v13 = 0;
+  CmdbtlPartyNatives_e9ba00(GameData_2203490, v11, (a1 & 1) == 0, 1u, &v12_.v12,
+                            v7);
+  if (v12_.v13 != 0) {
+    std___1___shared_weak_count___release_weak_alt1(v12_.v13);
+  }
 }
 
 #pragma GCC visibility pop

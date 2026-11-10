@@ -53,6 +53,77 @@ extern int GameData_21c6858;
 __int64 map_snd_StopSe(__int64 a1, unsigned int a2);
 __int64 map_snd_SetSeVol(__int64 a1, unsigned int a2, float a3);
 _QWORD* map_snd_WaitSe(__int64 a1);
+__int64 as_string_c_str(_QWORD);
+__int64 snd_play_ff2d0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD, double,
+                       float);
+__attribute__((swiftcall)) void map_snd_PlaySe(PSEUDO_X8 x8_, __int64 a1,
+                                               unsigned int a2);
+
+__attribute__((swiftcall)) void map_snd_PlaySe(PSEUDO_X8 x8_, __int64 a1,
+                                               unsigned int a2)
+{
+  __int64 a3 = (__int64)PSEUDO_X8_VALUE(x8_);
+  int v5;
+  int v6;
+  __int64 v8;
+  __int64 v9;
+  _QWORD* result;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
+  __int64 v14;
+  _BYTE v15[200];
+
+  if (game_ProcGameSkipView_instance_ != 0 &&
+      *(_BYTE*)(game_ProcGameSkipView_instance_ + 152) == 3) {
+    v5 = *(_DWORD*)(game_ProcGameSkipView_instance_ + 156);
+    v6 = (v5 & 8) != 0 ? 2 : 3;
+    if ((v6 & v5) == 0) {
+      v11 = as_g_script_manager;
+      v12 = *(_QWORD*)(v11 +
+                       8LL * (*(unsigned int (**)(__int64))(
+                                 *(_QWORD*)as_g_thread_info + 72LL))(
+                                 as_g_thread_info) +
+                       4384);
+      if (v12 != 0) {
+        v13 = (*(__int64 (**)(__int64))(*(_QWORD*)v12 + 472LL))(v12);
+      }
+      else {
+        v13 = 0;
+      }
+      (*(void (**)(_QWORD, __int64))(**(_QWORD**)(v13 + 24) + 448LL))(
+          *(_QWORD*)(v13 + 24), 1);
+      result = *(_QWORD**)(v13 + 2240);
+      *(_QWORD*)(v13 + 2240) = 0;
+      if (result == (_QWORD*)(v13 + 2208)) {
+        v14 = 32;
+      }
+      else {
+        if (result == nullptr) {
+        LABEL_17:
+          *(_QWORD*)a3 = 0;
+          *(_DWORD*)(a3 + 8) = 0x2000;
+          {
+            result;
+            return;
+          }
+        }
+        v14 = 40;
+      }
+      result =
+          (_QWORD*)(*(__int64 (**)(__int64))(*result + v14))((__int64)result);
+      goto LABEL_17;
+    }
+  }
+  v8 = as_string_c_str(a1);
+  v9 = as_string_c_str(a1);
+  snd_Fade_Fade_10c910(v15, a2);
+  snd_play_ff2d0(v8, v9, v15, 0, 65537, 0, 0.0f, 1.0f);
+  {
+    (_QWORD*)snd_Fade_Destroy_Fade(v15);
+    return;
+  }
+}
 
 __int64 map_snd_StopSe(__int64 a1, unsigned int a2)
 {

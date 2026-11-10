@@ -2,6 +2,9 @@
 
 #pragma GCC visibility push(hidden)
 
+struct PseudoSret {
+  _QWORD words[3];
+};
 __int64 GameRoutine_1386f80(_QWORD);
 __int64 GameRoutine_155e830(_QWORD, _QWORD);
 __int64 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
@@ -15,6 +18,46 @@ __int64 AreaNameTelop_DeletingDestructor(__int64 a1);
 __int64 TelopReliance_1386f80(_QWORD);
 __int64 AreaNameTelop_Destructor_17824b0(__int64 a1);
 __int64 AreaNameTelop_DeletingDestructor_1782540(__int64 a1);
+__int64 GameRoutine_60a020(_QWORD, _QWORD);
+__int64 LayoutAccessor_155e830(_QWORD, _QWORD);
+__int64 LayoutAccessor_1562060(_QWORD, _QWORD, _QWORD);
+__int64 LayoutAccessor_1562680(_QWORD, _QWORD, long double);
+__int64 snd_Fade_Destroy_Fade(_QWORD);
+__n128 snd_Fade_Fade_10c830(_QWORD, double);
+struct PseudoSret snd_play_ff2d0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
+                                 double, float);
+bool AreaNameTelop_1782140(__int64 a1);
+
+bool AreaNameTelop_1782140(__int64 a1)
+{
+  __int64 v1;
+  __int64 v2;
+  long double v3;
+  __int64 v5;
+  _BYTE v6[200];
+
+  v1 = GameData_2263c30;
+  if (GameData_2263c30 != 0) {
+    GameRoutine_60a020(GameData_2263c30 + 840, a1);
+    if ((*(_BYTE*)(v1 + 840) & 1) != 0) {
+      v2 = *(_QWORD*)(v1 + 856);
+    }
+    else {
+      v2 = v1 + 841;
+    }
+    LayoutAccessor_1562060(v1 + 168, "T_Title", v2);
+    *(_DWORD*)(v1 + 832) = 1;
+    LayoutAccessor_155e830(v1 + 168, 1);
+    LODWORD(v3) = 1.0;
+    LayoutAccessor_1562680(v1 + 168, "In", v3);
+    snd_Fade_Fade_10c830(v6, 0.0);
+    *(struct PseudoSret*)(&v5) =
+        snd_play_ff2d0("SE_SYS_Telop_AreaTelop", "SE_SYS_Telop_AreaTelop", v6,
+                       0, 65537, 0, 0.0, 1.0);
+    snd_Fade_Destroy_Fade(v6);
+  }
+  return v1 != 0;
+}
 
 __int64 AreaNameTelop_Unknown33(__int64 a1)
 {

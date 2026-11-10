@@ -11,6 +11,84 @@ extern __int64 GameData_22506e0;
 extern __int64 GameData_22549a8;
 extern __int64 game_GameModeData_instance_;
 __int64 game_gmap_anonymous_RecruitItem_ACall_closure_Invoke();
+_QWORD* MapSortieMenu_871860(__int64, __int64, __int64, __int64, __int64);
+extern __int64 (*GameData_20299c0[])();
+extern __int64 (*GameData_2029a40[])();
+__int64 game_gmap_anonymous_RecruitItem_ACall(_QWORD* a1);
+
+__int64 game_gmap_anonymous_RecruitItem_ACall(_QWORD* a1)
+{
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v6;
+  __int64 v7;
+  struct {
+    _QWORD v8[4];
+    _QWORD* v9;
+  } v8_;
+  struct {
+    _QWORD v10[4];
+    _QWORD* v11;
+  } v10_;
+  struct {
+    _QWORD v12[4];
+    _QWORD* v13;
+  } v12_;
+  const char* v14;
+
+  if (((*(__int64 (**)(_QWORD*))(*a1 + 464LL))(a1) & 1) == 0) {
+    return 1;
+  }
+  v2 = a1[1];
+  v14 = "MID_Gmap_Recruit_Confirm";
+  v12_.v12[0] = GameData_20299c0;
+  v8_.v9 = v8_.v8;
+  if (*(_QWORD*)(v2 + 152) != 0) {
+    v3 = *(_QWORD*)(v2 + 152);
+  }
+  else {
+    v3 = v2;
+  }
+  v12_.v13 = v12_.v12;
+  v10_.v11 = v10_.v10;
+  v10_.v10[0] = GameData_2029a40;
+  v8_.v8[0] = GameData_2029a40;
+  MapSortieMenu_871860(v3, (__int64)&v14, (__int64)v12_.v12, (__int64)v10_.v10,
+                       (__int64)v8_.v8);
+  if (v8_.v9 == v8_.v8) {
+    v4 = 32;
+  }
+  else {
+    if (v8_.v9 == nullptr) {
+      goto LABEL_11;
+    }
+    v4 = 40;
+  }
+  (*(void (**)(__int64))(*v8_.v9 + v4))((__int64)v8_.v9);
+LABEL_11:
+  if (v10_.v11 == v10_.v10) {
+    v6 = 32;
+  }
+  else {
+    if (v10_.v11 == nullptr) {
+      goto LABEL_16;
+    }
+    v6 = 40;
+  }
+  (*(void (**)(__int64))(*v10_.v11 + v6))((__int64)v10_.v11);
+LABEL_16:
+  if (v12_.v13 == v12_.v12) {
+    v7 = 32;
+    goto LABEL_20;
+  }
+  if (v12_.v13 != nullptr) {
+    v7 = 40;
+  LABEL_20:
+    (*(void (**)(__int64))(*v12_.v13 + v7))((__int64)v12_.v13);
+  }
+  return 12;
+}
 
 __int64 game_gmap_anonymous_RecruitItem_ACall_closure_Invoke()
 {

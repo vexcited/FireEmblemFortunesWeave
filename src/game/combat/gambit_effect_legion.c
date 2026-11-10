@@ -11,6 +11,7 @@ __int64 GambitEffectLegion_DeletingDestructor(__int64 a1);
 __int64 GameRoutine_e51940(_QWORD, _QWORD);
 extern __int64 (*GameData_1fe66c0[])();
 __int64 game_combat_GambitEffectLegion_Run(__int64 a1);
+__attribute__((swiftcall)) void GambitEffectLegion_Unknown3(PSEUDO_X8 x8_);
 
 __int64 game_combat_GambitEffectLegion_Run(__int64 a1)
 {
@@ -110,6 +111,13 @@ __int64 GambitEffectLegion_DeletingDestructor(__int64 a1)
     v6 = 56;
   }
   return nn_mem_StandardAllocator_Free(*(_QWORD*)v2 + v6);
+}
+
+__attribute__((swiftcall)) void GambitEffectLegion_Unknown3(PSEUDO_X8 x8_)
+{
+  _BYTE* a1 = (_BYTE*)PSEUDO_X8_VALUE(x8_);
+  *a1 = 24;
+  strcpy(a1 + 1, "EffectLegion");
 }
 
 #pragma GCC visibility pop

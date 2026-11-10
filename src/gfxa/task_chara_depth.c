@@ -21,6 +21,67 @@ __int64 gfxa_TaskCharaDepth_Impl_Execute(__int64 a1, _QWORD* a2, _QWORD* a3,
                                          _QWORD* a4, unsigned int* a5);
 void gfxa_TaskCharaDepth_Impl_Impl_lambda0_Invoke(__int64 a1, _WORD* a2);
 bool gfxa_TaskCharaDepth_Impl_Execute_lambda0_Invoke(__int64 a1, __int64 a2);
+_QWORD* GameRoutine_604020(_QWORD* result);
+__attribute__((swiftcall)) void GameRoutine_b34420(PSEUDO_X8, _QWORD*, __int64,
+                                                   unsigned __int64, __int64,
+                                                   unsigned __int64, __int64);
+__int64 GameRoutine_5fc230(__int64 result);
+__int64 GameRoutine_604060(__int64, __int64*, __int64);
+__int64 GameRoutine_615760(__int64, __int64);
+extern __int64 (*GameData_1fd2f68[])();
+extern __int64* game_g_frame_clock_ptr[3];
+_QWORD* gfxa_TaskCharaDepth_Impl_Impl(__int64 a1, __int64 a2);
+
+_QWORD* gfxa_TaskCharaDepth_Impl_Impl(__int64 a1, __int64 a2)
+{
+  __int64 v2;
+  __int64* v4;
+  __int64 v5;
+  _QWORD* result;
+  struct {
+    __int64 (**v7)();
+    int v8;
+    char gap12_[20];
+    __int64 (***v9)();
+  } v7_;
+  _QWORD v10[4];
+
+  *(_QWORD*)a1 = a2;
+  v2 = a1 + 8;
+  GameRoutine_604020((_QWORD*)(a1 + 8));
+  *(_QWORD*)(a1 + 136) = 0;
+  memset(v10, 0, sizeof(v10));
+  *(_QWORD*)(a1 + 128) = -1;
+  v7_.v9 = &v7_.v7;
+  *(_DWORD*)(a1 + 144) = -1;
+  v7_.v7 = GameData_1fd2f68;
+  GameRoutine_5fc230((__int64)v10);
+  if (v7_.v9 != nullptr) {
+    ((void (*)(__int64 (***)(void), _QWORD*))(*v7_.v9)[6])(v7_.v9, v10);
+  }
+  v4 = game_g_frame_clock_ptr[0];
+  GameRoutine_604060(v2, (__int64*)(*game_g_frame_clock_ptr[0] + 568),
+                     (__int64)v10);
+  *(_QWORD*)(a1 + 128) = GameRoutine_615760(*(_QWORD*)(*v4 + 552), v2);
+  if (v7_.v9 == &v7_.v7) {
+    v5 = 4;
+    goto LABEL_7;
+  }
+  if (v7_.v9 != nullptr) {
+    v5 = 5;
+  LABEL_7:
+    ((__int64 (*)(__int64))(*v7_.v9)[v5])((__int64)v7_.v9);
+  }
+  result = X8CALL_X0(
+      _QWORD*,
+      GameRoutine_b34420((void*)((__int64)&v7_.v7),
+                         *(_QWORD**)(*(_QWORD*)a1 + 13424LL),
+                         (__int64)"Graphics/Textures/character_default", 0x23u,
+                         (__int64)"CMN_Character_Dissolve_Noise", 0x1Cu, 0));
+  *(_QWORD*)(a1 + 136) = v7_.v7;
+  *(_DWORD*)(a1 + 144) = v7_.v8;
+  return result;
+}
 
 __int64 gfxa_TaskCharaDepth_Impl_Execute(__int64 a1, _QWORD* a2, _QWORD* a3,
                                          _QWORD* a4, unsigned int* a5)

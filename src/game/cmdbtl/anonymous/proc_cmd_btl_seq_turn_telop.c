@@ -12,6 +12,49 @@ extern __int64 GameData_225ca88;
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 ProcCmdBtlSeqTurnTelop_Destructor(__int64 a1);
 __int64 ProcCmdBtlSeqTurnTelop_DeletingDestructor(__int64 a1);
+__int64 GameRoutine_137c970(__int64);
+extern __int64 game_ProcFadeView_instance_;
+extern __int64 game_ProcGameSkipView_instance_;
+void ProcCmdBtlSeqTurnTelop_fac3a0(__int64 a1);
+
+void ProcCmdBtlSeqTurnTelop_fac3a0(__int64 a1)
+{
+
+#pragma clang fp contract(off)
+  int v2;
+  int v3;
+  unsigned __int64 v4;
+  __int128 v5;
+
+  if (game_ProcGameSkipView_instance_ == 0 ||
+      *(_BYTE*)(game_ProcGameSkipView_instance_ + 152) != 3 ||
+      (((v2 = *(_DWORD*)(game_ProcGameSkipView_instance_ + 156)) & 8) != 0
+           ? (v3 = 2)
+           : (v3 = 3),
+       (v3 & v2) != 0)) {
+    if (game_ProcFadeView_instance_ == 0) {
+      goto LABEL_14;
+    }
+    v4 = game_ProcFadeView_instance_ +
+         ((unsigned __int64)*(unsigned __int8*)(game_ProcFadeView_instance_ +
+                                                480)
+          << 6);
+    if (*(float*)(v4 + 172) == *(float*)(v4 + 168)) {
+      (*(void (**)(unsigned __int64))(*(_QWORD*)(v4 + 160) + 16LL))(v4 + 160);
+    }
+    else {
+      v5 = *(_OWORD*)(v4 + 208);
+    }
+    if (*((float*)&v5 + 3) != 0x1.0000000000000p+0f ||
+        LANES128_OF(((__n128 (*)(unsigned __int64, float)) *
+                     (_QWORD*)(*(_QWORD*)(v4 + 160) + 16LL))(
+                        v4 + 160, *((float*)&v5 + 3)))
+                .n128_f32[3] != 0x1.0000000000000p+0f) {
+    LABEL_14:
+      GameRoutine_137c970(a1);
+    }
+  }
+}
 
 __int64 ProcCmdBtlSeqTurnTelop_Destructor(__int64 a1)
 {

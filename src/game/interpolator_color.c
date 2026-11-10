@@ -6,6 +6,27 @@ float GameRoutine_734120(_QWORD, _QWORD, float, float);
 __n128 InterpolatorColor_Unknown2(__int64 a1);
 __int64 InterpolatorColor_Unknown3(__int64 result, long double a2,
                                    long double a3);
+__int64 InterpolatorColor_DeletingDestructor(__int64 a1, float32x4_t* a2,
+                                             float32x4_t* a3);
+
+__int64 InterpolatorColor_DeletingDestructor(__int64 a1, float32x4_t* a2,
+                                             float32x4_t* a3)
+{
+
+#pragma clang fp contract(off)
+  unsigned __int8 v3;
+  int32x4_t v4;
+  int16x4_t v5;
+
+  v3 = 1;
+  v4 = vceqq_f32(*a2, *a3);
+  LANES64(v5).n64_u64[0] = LANES64_OF(vmovn_s32(v4)).n64_u64[0];
+  if ((LANES64(v5).n64_u8[0] & 1) != 0 && (LANES64(v5).n64_u8[2] & 1) != 0 &&
+      (LANES64(v5).n64_u8[4] & 1) != 0) {
+    v3 = LANES64_OF(vmovn_s32(vmvnq_s8(v4))).n64_u8[6];
+  }
+  return v3 & 1;
+}
 
 __n128 InterpolatorColor_Unknown2(__int64 a1)
 {

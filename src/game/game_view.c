@@ -45,6 +45,13 @@ extern int GameData_216761c;
 extern int GameData_21d92e0;
 __int64 game_GameView_Update();
 __int64 GameView_7c5c00();
+__int64 __cxa_guard_acquire(_QWORD);
+__int64 __cxa_guard_release(_QWORD);
+__int64 wld_Crc32(int, unsigned __int8*, unsigned __int64);
+extern _UNKNOWN* GameData_212d308;
+extern _UNKNOWN GameData_21d9320;
+extern int GameData_21d9318;
+bool game_GameView_Update_lambda0_Invoke(__int64 a1, __int64* a2);
 
 __int64 game_GameView_Update()
 {
@@ -647,6 +654,46 @@ __int64 GameView_7c5c00()
     *(_BYTE*)(v10 + 2184) = 1;
   }
   return result;
+}
+
+bool game_GameView_Update_lambda0_Invoke(__int64 a1, __int64* a2)
+{
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 i;
+  int v7;
+  int v9;
+  __int64 v10;
+
+  v2 = *a2;
+  if ((atomic_load_explicit((atomic_uchar* volatile)GameData_212d308,
+                            memory_order_acquire) &
+       1) == 0) {
+    v10 = v2;
+    v9 = __cxa_guard_acquire(&GameData_21d9320);
+    v2 = v10;
+    if (v9 != 0) {
+      GameData_21d9318 = wld_Crc32(0, "MapAnimModule", 0xDu);
+      __cxa_guard_release(&GameData_21d9320);
+      v2 = v10;
+    }
+  }
+  v4 = *(_QWORD*)(v2 + 504);
+  v3 = *(_QWORD*)(v2 + 512);
+  v5 = v3;
+  for (i = v3; i != v4; i -= 16) {
+    v7 = *(_DWORD*)(i - 16);
+    v5 -= 16;
+    if (v7 == GameData_21d9318) {
+      if (v3 != v5) {
+        return *(_QWORD*)(v5 + 8) == 0;
+      }
+      return true;
+    }
+  }
+  return true;
 }
 
 #pragma GCC visibility pop

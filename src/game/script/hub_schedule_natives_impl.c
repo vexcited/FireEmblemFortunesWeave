@@ -14,6 +14,123 @@ extern __int64 game_hub_ProcHubSeqView_instance_;
 extern __int64* as_g_script_manager_ptr;
 _QWORD* HubScheduleNatives_dafab0(int* a1);
 bool HubScheduleNatives_db06b0(__int64 a1);
+__attribute__((swiftcall)) void GameRoutine_da1b80(PSEUDO_X8, __int64);
+__int64 GameRoutine_25eca0(_QWORD, _QWORD);
+__int64 fw_memory_HeapManager_Allocate(_QWORD, _QWORD, _QWORD, _QWORD);
+__int64 memmove(_QWORD, _QWORD, _QWORD);
+extern _QWORD GameData_1b89d10[9];
+extern _UNKNOWN** GameData_212f0f0;
+extern __int64 fw_memory_g_heap_manager;
+void __attribute__((noreturn)) String_60a1d0(_QWORD);
+__attribute__((swiftcall)) void hub_schedule_GameRouteToRouteMsg(PSEUDO_X8 x8_,
+                                                                 char a1);
+__attribute__((swiftcall)) void hub_schedule_StringToDate(PSEUDO_X8 x8_,
+                                                          __int64 a1);
+
+__attribute__((swiftcall)) void hub_schedule_GameRouteToRouteMsg(PSEUDO_X8 x8_,
+                                                                 char a1)
+{
+  __int64 a2 = (__int64)PSEUDO_X8_VALUE(x8_);
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  _QWORD* v7;
+  __int64 v8;
+  __int64 v9;
+  void* v10;
+  unsigned __int64 v11;
+  unsigned __int64 v12;
+  char* v13;
+  __int64 v14;
+  char* v15;
+  __int64 result;
+  __int64 v17;
+  _QWORD v18[2];
+  char* v19;
+
+  v4 = *as_g_script_manager_ptr;
+  v5 = *(
+      _QWORD*)(v4 +
+               8LL * (*(unsigned int (**)(__int64))(*(_QWORD*)as_g_thread_info +
+                                                    72LL))(as_g_thread_info) +
+               4384);
+  if (v5 != 0) {
+    v6 = (*(__int64 (**)(__int64))(*(_QWORD*)v5 + 472LL))(v5);
+  }
+  else {
+    v6 = 0;
+  }
+  (*(void (**)(_QWORD, __int64))(**(_QWORD**)(v6 + 24) + 448LL))(
+      *(_QWORD*)(v6 + 24), 1);
+  v7 = *(_QWORD**)(v6 + 2240);
+  *(_QWORD*)(v6 + 2240) = 0;
+  if (v7 == (_QWORD*)(v6 + 2208)) {
+    v8 = 32;
+  }
+  else {
+    if (v7 == nullptr) {
+      goto LABEL_9;
+    }
+    v8 = 40;
+  }
+  (*(void (**)(__int64))(*v7 + v8))((__int64)v7);
+LABEL_9:
+  if ((unsigned __int8)(a1 - 1) > 8u) {
+    v9 = 0;
+  }
+  else {
+    v9 = GameData_1b89d10[(unsigned __int8)(a1 - 1)];
+  }
+  v10 = GameData_212f0f0[2 * v9];
+  v11 = strlen(v10);
+  if (v11 >= 0xFFFFFFFFFFFFFFF7LL) {
+    String_60a1d0(v11);
+  }
+  v12 = v11;
+  if (v11 >= 0x17) {
+    if ((v11 | 7) == 0x17) {
+      v14 = 26;
+    }
+    else {
+      v14 = (v11 | 7) + 1;
+    }
+    v13 = (char*)fw_memory_HeapManager_Allocate(fw_memory_g_heap_manager, v14,
+                                                16, 0);
+    v18[1] = v12;
+    v19 = v13;
+    v18[0] = v14 | 1;
+    goto LABEL_20;
+  }
+  LOBYTE(v18[0]) = 2 * v11;
+  v13 = (char*)v18 + 1;
+  if (v11 != 0) {
+  LABEL_20:
+    memmove(v13, v10, v12);
+  }
+  v13[v12] = 0;
+  if ((v18[0] & 1) != 0) {
+    v15 = v19;
+  }
+  else {
+    v15 = (char*)v18 + 1;
+  }
+  result = GameRoutine_25eca0(a2, v15);
+  if ((v18[0] & 1) != 0 && v19 != nullptr) {
+    v17 = 128;
+    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+      v17 = 56;
+    }
+    {
+      nn_mem_StandardAllocator_Free(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v17, v19);
+      return;
+    }
+  }
+  {
+    result;
+    return;
+  }
+}
 
 _QWORD* HubScheduleNatives_dafab0(int* a1)
 {
@@ -102,6 +219,75 @@ LABEL_9:
     *(_DWORD*)(game_hub_ProcHubSeqView_instance_ + 152) = 2;
   }
   return result;
+}
+
+__attribute__((swiftcall)) void hub_schedule_StringToDate(PSEUDO_X8 x8_,
+                                                          __int64 a1)
+{
+  _DWORD* a2 = (_DWORD*)PSEUDO_X8_VALUE(x8_);
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  _QWORD* v7;
+  __int64 v8;
+  __int64 v9;
+  __int64 result;
+  int v11;
+  int v12;
+  int v13;
+  int v14;
+  int v15;
+  _WORD v16[6];
+
+  v4 = *as_g_script_manager_ptr;
+  v5 = *(
+      _QWORD*)(v4 +
+               8LL * (*(unsigned int (**)(__int64))(*(_QWORD*)as_g_thread_info +
+                                                    72LL))(as_g_thread_info) +
+               4384);
+  if (v5 != 0) {
+    v6 = (*(__int64 (**)(__int64))(*(_QWORD*)v5 + 472LL))(v5);
+  }
+  else {
+    v6 = 0;
+  }
+  (*(void (**)(_QWORD, __int64))(**(_QWORD**)(v6 + 24) + 448LL))(
+      *(_QWORD*)(v6 + 24), 1);
+  v7 = *(_QWORD**)(v6 + 2240);
+  *(_QWORD*)(v6 + 2240) = 0;
+  if (v7 == (_QWORD*)(v6 + 2208)) {
+    v8 = 32;
+  }
+  else {
+    if (v7 == nullptr) {
+      goto LABEL_9;
+    }
+    v8 = 40;
+  }
+  (*(void (**)(__int64))(*v7 + v8))((__int64)v7);
+LABEL_9:
+  if ((*(_BYTE*)a1 & 1) != 0) {
+    v9 = *(_QWORD*)(a1 + 16);
+  }
+  else {
+    v9 = a1 + 1;
+  }
+  result = X8CALL_X0(__int64, GameRoutine_da1b80((void*)((__int64)v16), v9));
+  v11 = v16[1];
+  v12 = v16[2];
+  v13 = v16[3];
+  v14 = v16[4];
+  *a2 = v16[0];
+  a2[1] = v11;
+  v15 = v16[5];
+  a2[2] = v12;
+  a2[3] = v13;
+  a2[4] = v14;
+  a2[5] = v15;
+  {
+    result;
+    return;
+  }
 }
 
 bool HubScheduleNatives_db06b0(__int64 a1)

@@ -55,6 +55,45 @@ __int64 gfxa_MainPassImageProcess_SetupDLSSPass_lambda1_Invoke(__int64 a1,
                                                                __int64* a3);
 __int64 gfxa_MainPassImageProcess_SetupDepthUpscalePass_lambda0_Invoke(
     __int64 a1, __int64** a2, __int64 a3);
+__int64* GameRoutine_b3f6c0(_QWORD*, __int64);
+__int64* GameRoutine_b3f800(_QWORD*, __int64);
+__int64 GameRoutine_b48f90(__int64, __int64);
+__int64 GameRoutine_b494f0(__int64, __int64, __int64*);
+__int64 GameRoutine_b4a3f0(__int64, __int64);
+__int64 GameRoutine_b4ba10(__int64*, __int64, __int64);
+__int64 GameRoutine_b509c0(__int64, __int64, __int64*);
+__int64 GameRoutine_b53d40(__int64, __int64, __int64*);
+__int64 GameRoutine_b54ca0(__int64, __int64, __int64*);
+__int64 GameRoutine_b5a5d0(__int64, __int64, __int64*);
+__int64 GameRoutine_b5acb0(__int64, __int64, __int64*);
+__int64 GameRoutine_b5b7e0(__int64, _QWORD*, _QWORD*, _QWORD*, __int64);
+__int64 GameRoutine_b6b560(__int64, _QWORD*, _QWORD*, __int64*, float32x4_t*);
+__int64 TaskMotionBlur_b6ef60(__int64, _QWORD*, _QWORD*, __int64*,
+                              unsigned int*);
+__int64 nn_os_ConvertToTimeSpan(_QWORD);
+extern __int128 GameData_1a82d20;
+extern __int128 GameData_1a834b0;
+extern __int128 GameData_1a83610;
+extern __int128 GameData_1a83620;
+extern __int64* game_g_frame_clock_ptr[3];
+extern __int64 as_g_base_frame_counter;
+float exp2f(float);
+__int64 gfxa_MainPassImageProcess_SetupHeightFogPass_lambda0_Invoke(
+    __int64 a1, float32x4_t** a2, __int64 a3);
+__int64 gfxa_MainPassImageProcess_SetupPostProcessPass1_lambda0_Invoke(
+    __int64 a1, __int64** a2, __int64 a3);
+__int64 gfxa_MainPassImageProcess_SetupPostProcessPass3_lambda1_Invoke(
+    __int64 a1, __int64 a2, __int64* a3);
+__int64 gfxa_MainPassImageProcess_SetupPostProcessPass4_lambda0_Invoke(
+    __int64 a1, _QWORD* a2, __int64 a3);
+__int64 gfxa_MainPassImageProcess_SetupPostProcessPass4_lambda1_Invoke(
+    __int64 a1, __int64 a2, _QWORD* a3);
+__int64 gfxa_MainPassImageProcess_SetupPostProcessPass4_lambda4_Invoke(
+    __int64 a1, __int64** a2, __int64 a3);
+__int64 gfxa_MainPassImageProcess_SetupOffscreenPostProcessPass_lambda0_Invoke(
+    __int64 a1, __int64** a2, __int64* a3);
+__int64 gfxa_MainPassImageProcess_SetupLensFlareSystemPass_lambda1_Invoke(
+    __int64 a1, __int64 a2, __int64* a3);
 
 __int64 gfxa_MainPassImageProcess_SetupFogPass(__int64 a1, __int64 a2,
                                                _QWORD* a3, __int64* a4)
@@ -1950,6 +1989,661 @@ __int64 gfxa_MainPassImageProcess_SetupLensFlareSystemPass(
   return result;
 }
 
+__int64 gfxa_MainPassImageProcess_SetupHeightFogPass_lambda0_Invoke(
+    __int64 a1, float32x4_t** a2, __int64 a3)
+{
+
+#pragma clang fp contract(off)
+  _QWORD* v3;
+  __int64 v5;
+  __int64 v6;
+  bool v7;
+  __int64* v8;
+  _QWORD* v9;
+  __int64 v10;
+  __int64 v11;
+  _QWORD* v12;
+  __int64 v13;
+  __int64 v14;
+  __int64 v15;
+  int v16;
+  int v17;
+  bool v18;
+  __int64 v19;
+  __int64 v20;
+  __int64* v21;
+  __int64 v22;
+  float32x4_t v23;
+  int8x16_t v24;
+  int8x16_t v25;
+  int8x16_t v26;
+  float v27;
+  __int64 v28;
+  __int64 v29;
+  __int64 v30;
+  __int64 v31;
+  int v32;
+  _QWORD* v33;
+  __int64 v34;
+  unsigned __int32 v35;
+  unsigned __int32 v36;
+  __int64 v37;
+  unsigned __int32 v38;
+  __int64 v39;
+  unsigned __int32 v40;
+  __int64 v41;
+  unsigned __int32 v42;
+  __int64 v43;
+  unsigned __int32 v44;
+  __int64 v45;
+  unsigned __int32 v46;
+  __int64 v47;
+  float v48;
+  __int64 v49;
+  float v50;
+  float v51;
+  __int64 v52;
+  unsigned __int64 v53;
+  unsigned __int32 v54;
+  unsigned __int32 v55;
+  __int64 v56;
+  unsigned __int32 v57;
+  __int64 v58;
+  unsigned __int32 v59;
+  __int64 v60;
+  unsigned __int32 v61;
+  __int64 v62;
+  unsigned __int8 v63;
+  __int64 v64;
+  float v65;
+  unsigned __int32 v66;
+  __int64 v67;
+  unsigned __int8 v68;
+  float32x4_t* v69;
+  __int64* v70;
+  __int64 result;
+  unsigned __int32 v72;
+  unsigned __int32 v73;
+  unsigned __int32 v74;
+  unsigned __int32 v75;
+  unsigned __int32 v76;
+  float v77;
+  int v78;
+  __int64 v79;
+  __int64 v80;
+  __int64 v81;
+  __int64 v82;
+  __int64 v83;
+  __int64 v84;
+  float32x4_t v85;
+  struct {
+    __int64 v87;
+    int v88;
+    int v89;
+    __int64 v90;
+    char v91;
+    char gap129_[3];
+    int v92;
+  } v87_;
+
+  v35 = COERCE_AS(__typeof__(v35),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v3 = *(_QWORD**)(a1 + 8);
+  v5 = *v3 + 13304LL;
+  v6 = *(_QWORD*)(v3[1] + 288LL);
+  v7 = *(_BYTE*)(*v3 + 16700LL) == 0;
+  v8 = *(__int64**)(a1 + 24);
+  v9 = (_QWORD*)(*(_QWORD*)(*v3 + 16672LL) + 24LL);
+  v10 = *(_QWORD*)(v6 + 792);
+  if (v7) {
+    v9 = (_QWORD*)v5;
+  }
+  v11 = *v8;
+  v12 = **(_QWORD***)(a1 + 32);
+  v7 = *(_BYTE*)(*v8 + 1234) == 0;
+  v13 = 1264;
+  if (!v7) {
+    v13 = 1233;
+  }
+  v14 = 1;
+  if ((*(_BYTE*)(v11 + v13) & 1) == 0) {
+    v14 = 4;
+  }
+  if (v10 == 0) {
+    goto LABEL_18;
+  }
+  v15 = v6 + 792;
+  v16 = *(_DWORD*)(v12[3] + 36LL);
+  do {
+    v17 = *(_DWORD*)(v10 + 32);
+    v18 = v17 < v16;
+    if (v17 >= v16) {
+      v19 = 0;
+    }
+    else {
+      v19 = 8;
+    }
+    if (!v18) {
+      v15 = v10;
+    }
+    v10 = *(_QWORD*)(v10 + v19);
+  } while (v10 != 0);
+  if (v15 != v6 + 792 && v16 >= *(_DWORD*)(v15 + 32)) {
+    v20 = *(_QWORD*)(v15 + 40);
+  }
+  else {
+  LABEL_18:
+    v20 = 0;
+  }
+  v21 = **(__int64***)(a1 + 16);
+  v22 = 720;
+  if (*(_BYTE*)(v11 + 672) != 0) {
+    v22 = 656;
+  }
+  v23 = *(float32x4_t*)(v11 + v22);
+  if ((unsigned int)(*(_DWORD*)(*game_g_frame_clock_ptr[0] + 13240) - 3) <= 3) {
+    v24 = vmulq_f32(v23, COERCE_AS(float32x4_t, GameData_1a83620));
+    LANES128(v24).n128_u64[0] =
+        LANES64_OF(
+            vadd_f32(COERCE_AS(float32x2_t,
+                               LANES128_OF(vextq_s8(v24, v24, 8u)).n128_u64[0]),
+                     COERCE_AS(float32x2_t, LANES128(v24).n128_u64[0])))
+            .n64_u64[0];
+    v25 = vmulq_f32(v23, COERCE_AS(float32x4_t, GameData_1a834b0));
+    LANES128(v25).n128_u64[0] =
+        LANES64_OF(
+            vadd_f32(COERCE_AS(float32x2_t,
+                               LANES128_OF(vextq_s8(v25, v25, 8u)).n128_u64[0]),
+                     COERCE_AS(float32x2_t, LANES128(v25).n128_u64[0])))
+            .n64_u64[0];
+    v26 = vmulq_f32(v23, COERCE_AS(float32x4_t, GameData_1a82d20));
+    LANES128(v26).n128_u64[0] =
+        LANES64_OF(
+            vadd_f32(COERCE_AS(float32x2_t,
+                               LANES128_OF(vextq_s8(v26, v26, 8u)).n128_u64[0]),
+                     COERCE_AS(float32x2_t, LANES128(v26).n128_u64[0])))
+            .n64_u64[0];
+    LANES128(v23).n128_u64[0] =
+        LANES64_OF(vpadd_f32(COERCE_AS(float32x2_t, LANES128(v24).n128_u64[0]),
+                             COERCE_AS(float32x2_t, LANES128(v24).n128_u64[0])))
+            .n64_u32[0] |
+        ((unsigned __int64)LANES64_OF(
+             vpadd_f32(COERCE_AS(float32x2_t, LANES128(v25).n128_u64[0]),
+                       COERCE_AS(float32x2_t, LANES128(v25).n128_u64[0])))
+             .n64_u32[0]
+         << 32);
+    LANES128(v23).n128_u64[1] =
+        LANES64_OF(vpadd_f32(COERCE_AS(float32x2_t, LANES128(v26).n128_u64[0]),
+                             COERCE_AS(float32x2_t, LANES128(v26).n128_u64[0])))
+            .n64_u32[0];
+  }
+  v80 = *v21;
+  v81 = v21[v14];
+  v82 = v21[63];
+  v83 = v21[65];
+  v84 = v21[16];
+  if (*(_BYTE*)(v11 + 1088) == 1) {
+    v27 = *(float*)(v11 + 1084);
+  }
+  else {
+    v28 = *(_QWORD*)(*(_QWORD*)(*v12 + 8LL) + 8LL);
+    v29 = 952;
+    if (*(_BYTE*)(v28 + 920) != 0) {
+      v29 = 916;
+    }
+    v27 = *(float*)(v28 + v29);
+  }
+  v30 = 120;
+  if (*(_BYTE*)(v11 + 90) != 0) {
+    v30 = 89;
+  }
+  v85 = v23;
+  if ((*(_BYTE*)(v11 + v30) & 1) != 0) {
+    v31 = 1040;
+    if (*(_BYTE*)(v11 + 1008) != 0) {
+      v31 = 1004;
+    }
+    v32 = *(_DWORD*)(v11 + v31);
+    if (v20 != 0 && v32 == 0) {
+      v33 = (_QWORD*)(v20 + 808);
+      goto LABEL_38;
+    }
+  }
+  else {
+    v32 = 3;
+  }
+  v33 = (_QWORD*)(*(_QWORD*)(v12[2] + 32LL) + 24LL);
+LABEL_38:
+  v78 = *v9;
+  v79 = HIDWORD(*v9);
+  v34 = (*(__int64 (**)(_QWORD))(*(_QWORD*)*v33 + 40LL))(*v33),
+  v35 = COERCE_AS(__typeof__(v35),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v36 = v35;
+  v37 = 280;
+  v77 = v27 + 0x1.0000000000000p+0f;
+  if (*(_BYTE*)(v11 + 248) != 0) {
+    v37 = 244;
+  }
+  v38 = *(_DWORD*)(v11 + v37);
+  v39 = 360;
+  v76 = v38;
+  if (*(_BYTE*)(v11 + 328) != 0) {
+    v39 = 324;
+  }
+  v40 = *(_DWORD*)(v11 + v39);
+  v41 = 440;
+  v75 = v40;
+  if (*(_BYTE*)(v11 + 408) != 0) {
+    v41 = 404;
+  }
+  v42 = *(_DWORD*)(v11 + v41);
+  v43 = 600;
+  v74 = v42;
+  if (*(_BYTE*)(v11 + 568) != 0) {
+    v43 = 564;
+  }
+  v44 = *(_DWORD*)(v11 + v43);
+  v45 = 520;
+  v73 = v44;
+  if (*(_BYTE*)(v11 + 488) != 0) {
+    v45 = 484;
+  }
+  v46 = *(_DWORD*)(v11 + v45);
+  v47 = 1344;
+  v72 = v46;
+  if (*(_BYTE*)(v11 + 1312) != 0) {
+    v47 = 1308;
+  }
+  v48 = *(float*)(v11 + v47);
+  v49 = 1424;
+  if (*(_BYTE*)(v11 + 1392) != 0) {
+    v49 = 1388;
+  }
+  v50 = v48 + 0x1.0000000000000p+0f;
+  v51 = exp2f(*(float*)(v11 + v49)),
+  v35 = COERCE_AS(__typeof__(v35),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v52 = 1504;
+  v53 = *(_QWORD*)(v6 + 576);
+  v54 = *(_DWORD*)(v6 + 584);
+  if (*(_BYTE*)(v11 + 1472) != 0) {
+    v52 = 1468;
+  }
+  v55 = *(_DWORD*)(v11 + v52);
+  v56 = 1584;
+  if (*(_BYTE*)(v11 + 1552) != 0) {
+    v56 = 1548;
+  }
+  v57 = *(_DWORD*)(v11 + v56);
+  v58 = 808;
+  if (*(_BYTE*)(v11 + 776) != 0) {
+    v58 = 772;
+  }
+  v59 = *(_DWORD*)(v11 + v58);
+  v60 = 200;
+  if (*(_BYTE*)(v11 + 168) != 0) {
+    v60 = 164;
+  }
+  v61 = *(_DWORD*)(v11 + v60);
+  v62 = 1192;
+  if (*(_BYTE*)(v11 + 1162) != 0) {
+    v62 = 1161;
+  }
+  v63 = *(_BYTE*)(v11 + v62);
+  v64 = 960;
+  if (*(_BYTE*)(v11 + 928) != 0) {
+    v64 = 924;
+  }
+  v65 = 0x1.0000000000000p+0f / *(float*)(v12[1] + 4LL);
+  v66 = *(_DWORD*)(v11 + v64);
+  v67 = 880;
+  if (*(_BYTE*)(v11 + 850) != 0) {
+    v67 = 849;
+  }
+  v68 = *(_BYTE*)(v11 + v67);
+  v69 = *a2;
+  LANES128(*(v69)).n128_u64[0] = GameRoutine_b48f90(a3, v80),
+  v35 = COERCE_AS(__typeof__(v35),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  LANES128(v69[2]).n128_u64[0] = ResourceBuilder_b5a4b0(a3, v81),
+  v35 = COERCE_AS(__typeof__(v35),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  LANES128(v69[2]).n128_u64[1] = GameRoutine_b4a3f0(a3, v82),
+  v35 = COERCE_AS(__typeof__(v35),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  LANES128(v69[3]).n128_u64[0] = GameRoutine_b4a3f0(a3, v83),
+  v35 = COERCE_AS(__typeof__(v35),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  LANES128(v69[3]).n128_u64[1] = GameRoutine_b48f90(a3, v84),
+  v35 = COERCE_AS(__typeof__(v35),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  LANES128(v69[6]).n128_f32[2] = v50;
+  LANES128(v69[6]).n128_f32[3] = v51;
+  LANES128(v69[7]).n128_u32[0] = v55;
+  LANES128(v69[7]).n128_u32[1] = v57;
+  LANES128(v69[7]).n128_u32[2] = v59;
+  LANES128(v69[7]).n128_u32[3] = v66;
+  v87_.v87 = 0x1400000000LL;
+  LANES128(v69[8]).n128_f32[0] = v65;
+  LANES128(v69[8]).n128_u32[1] = v61;
+  LANES128(v69[8]).n128_u32[2] = v32;
+  LANES128(v69[8]).n128_u8[12] = v63;
+  LANES128(v69[8]).n128_u8[13] = v68;
+  LANES128(v69[9]).n128_u64[0] = v34;
+  LANES128(v69[9]).n128_u32[2] = v36;
+  LANES128(v69[10]).n128_u64[0] = v53;
+  LANES128(v69[10]).n128_u32[2] = v54;
+  v87_.v92 = 0;
+  v87_.v90 = 0x100000001LL;
+  v87_.v91 = 1;
+  v69[4] = v85;
+  v87_.v88 = v78;
+  v87_.v89 = v79;
+  LANES128(v69[5]).n128_u32[0] = v76;
+  LANES128(v69[5]).n128_u32[1] = v75;
+  LANES128(v69[5]).n128_u32[2] = v74;
+  LANES128(v69[5]).n128_u32[3] = v72;
+  LANES128(v69[6]).n128_u32[0] = v73;
+  LANES128(v69[6]).n128_f32[1] = v77;
+  v70 = (__int64*)a2[1];
+  result = GameRoutine_b509c0(a3, (__int64)"DstColor", &v87_.v87),
+  v35 = COERCE_AS(__typeof__(v35),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  *v70 = result;
+  return result;
+}
+
+__int64 gfxa_MainPassImageProcess_SetupPostProcessPass1_lambda0_Invoke(
+    __int64 a1, __int64** a2, __int64 a3)
+{
+  __int64 v3;
+  __int64* v7;
+  __int64 v8;
+  __int64* v9;
+  __int64 v10;
+  unsigned __int64 v11;
+  __int64* v12;
+  __int64 result;
+  struct {
+    __int64 v14;
+    int v15;
+    int v16;
+    __int64 v17;
+    char v18;
+    char gap25_[3];
+    int v19;
+  } v14_;
+
+  v3 = *(_QWORD*)(a1 + 16);
+  (*a2)[1] = GameRoutine_b48f90(a3, ***(_QWORD***)(a1 + 8));
+  (*a2)[2] = ResourceBuilder_b5a4b0(a3, *(_QWORD*)(**(_QWORD**)(a1 + 8) + 8LL));
+  v8 = *(_QWORD*)(**(_QWORD**)(a1 + 8) + 520LL);
+  v9 = (__int64*)(*(_QWORD*)v3 + 13304LL);
+  if (*(_BYTE*)(*(_QWORD*)v3 + 16700LL) != 0) {
+    v9 = (__int64*)(*(_QWORD*)(*(_QWORD*)v3 + 16672LL) + 24LL);
+  }
+  v10 = *v9;
+  v11 = HIDWORD(*v9);
+  v7 = *a2;
+  *v7 = GameRoutine_b4a3f0(a3, v8);
+  v14_.v19 = 0;
+  v14_.v15 = v10;
+  v14_.v16 = v11;
+  v12 = a2[1];
+  v14_.v14 = 0x1400000000LL;
+  v14_.v17 = 0x100000001LL;
+  v14_.v18 = 1;
+  result = GameRoutine_b5a5d0(a3, (__int64)"MirageDst", &v14_.v14);
+  *v12 = result;
+  return result;
+}
+
+__int64 gfxa_MainPassImageProcess_SetupPostProcessPass3_lambda1_Invoke(
+    __int64 a1, __int64 a2, __int64* a3)
+{
+
+#pragma clang fp contract(off)
+  _QWORD* v3;
+  int* v6;
+  unsigned __int8* v7;
+  int v8;
+  int v9;
+  int v10;
+  bool v11;
+  __int64 v12;
+  unsigned __int32 v13;
+  __int64 v14;
+  float v15;
+  __int64 v16;
+  float v17;
+  __int64 v18;
+  float v19;
+  __int64 v20;
+  __int64 v21;
+  _QWORD* v22;
+  _QWORD* v23;
+  float v24;
+  int v25;
+  float v26;
+  bool v27;
+  int v28;
+  __int64 v29;
+  int32x2_t* v30;
+  _QWORD v32[2];
+  unsigned __int32 v33;
+  float v34;
+  float v35;
+
+  v3 = *(_QWORD**)(a1 + 8);
+  v6 = (int*)(*v3 + 13304LL);
+  v7 = *(unsigned __int8**)(*(_QWORD*)(**(_QWORD**)(a2 + 24) + 8LL) + 320LL);
+  if (*(_BYTE*)(*v3 + 16700LL) != 0) {
+    v6 = (int*)(*(_QWORD*)(*v3 + 16672LL) + 24LL);
+  }
+  v9 = *v6;
+  v8 = v6[1];
+  v32[1] = 0x43800000780LL;
+  v10 = v7[96];
+  v32[0] = __PAIR64__(v8, v9);
+  v11 = v10 == 0;
+  v12 = 128;
+  if (!v11) {
+    v12 = 92;
+  }
+  v13 = *(_DWORD*)&v7[v12];
+  v11 = v7[256] == 0;
+  v14 = 288;
+  v33 = v13;
+  if (!v11) {
+    v14 = 252;
+  }
+  v15 = *(float*)&v7[v14];
+  v16 = 208;
+  v17 = 0x1.0000000000000p+0f / v15;
+  if (v7[176] != 0) {
+    v16 = 172;
+  }
+  v18 = *(_QWORD*)(as_g_base_frame_counter + 8);
+  v19 = v17 * *(float*)&v7[v16];
+  v34 = v19;
+  v20 = nn_os_ConvertToTimeSpan(v18);
+  v21 = v3[23];
+  v23 = *(_QWORD**)a2;
+  v22 = *(_QWORD**)(a2 + 8);
+  v24 = (float)(v20 / 1000000);
+  v25 = *(_DWORD*)(v21 + 40);
+  v26 = 0x1.f400000000000p+9f / v24;
+  v27 = v25 < -1;
+  v28 = ((_BYTE)v25 + 1) & 1;
+  if (v27) {
+    v28 = -v28;
+  }
+  *(_DWORD*)(v21 + 40) = v28;
+  v29 = *(_QWORD*)(v21 + 8LL * v28 + 24);
+  v35 = 0x1.f400000000000p+9f / v24;
+  v30 = (int32x2_t*)(*(__int64 (**)(__int64))(*(_QWORD*)v29 + 56LL))(v29);
+  LANES64(*(v30)).n64_u32[0] = v13;
+  LANES64(*(v30)).n64_f32[1] = v19 * v26;
+  LANES64(v30[2]).n64_f32[0] = (float)v9;
+  LANES64(v30[2]).n64_f32[1] = (float)v8;
+  LANES64(v30[3]).n64_f32[0] = 0x1.0000000000000p+0f / (float)v9;
+  LANES64(v30[3]).n64_f32[1] = 0x1.0000000000000p+0f / (float)v8;
+  LANES64(v30[1]).n64_u64[0] =
+      LANES64_OF(vzip1_s32(vsqrt_f32(vpadd_f32(
+                               COERCE_AS(float32x2_t, 0x3C0C77653B31C71CLL),
+                               COERCE_AS(float32x2_t, 0x3C0C77653B31C71CLL))),
+                           vsqrt_f32(vpadd_f32(
+                               COERCE_AS(float32x2_t, 0x366623DF3591A2B5LL),
+                               COERCE_AS(float32x2_t, 0x366623DF3591A2B5LL)))))
+          .n64_u64[0];
+  (*(void (**)(__int64))(*(_QWORD*)v29 + 64LL))(v29);
+  return TaskMotionBlur_b6ef60(v21, v23, v22, a3, (unsigned int*)v32);
+}
+
+__int64 gfxa_MainPassImageProcess_SetupPostProcessPass4_lambda0_Invoke(
+    __int64 a1, _QWORD* a2, __int64 a3)
+{
+  __int64 v3;
+  __int64 v7;
+  __int64 v8;
+  __int64* v9;
+  __int64* v10;
+  __int64 v11;
+  __int64 result;
+  struct {
+    __int64 v13;
+    __int64 v14;
+    __int64 v15;
+    char v16;
+    char gap25_[3];
+    int v17;
+  } v13_;
+
+  v3 = *(_QWORD*)(a1 + 16);
+  *(_QWORD*)*a2 = GameRoutine_b48f90(a3, ***(_QWORD***)(a1 + 8));
+  *(_QWORD*)(*a2 + 8LL) =
+      ResourceBuilder_b5a4b0(a3, *(_QWORD*)(**(_QWORD**)(a1 + 8) + 8LL));
+  *(_QWORD*)(*a2 + 24LL) =
+      GameRoutine_b4a3f0(a3, *(_QWORD*)(**(_QWORD**)(a1 + 8) + 504LL));
+  v7 = **(_QWORD**)(a1 + 8);
+  v8 = *(_QWORD*)(v7 + 464);
+  if (v8 == 0) {
+    v8 = *(_QWORD*)(v7 + 456);
+  }
+  *(_QWORD*)(*a2 + 16LL) = GameRoutine_b48f90(a3, v8);
+  v9 = (__int64*)a2[1];
+  v10 = (__int64*)(*(_QWORD*)v3 + 13304LL);
+  if (*(_BYTE*)(*(_QWORD*)v3 + 16700LL) != 0) {
+    v10 = (__int64*)(*(_QWORD*)(*(_QWORD*)v3 + 16672LL) + 24LL);
+  }
+  v11 = *v10;
+  v13_.v16 = 1;
+  v13_.v17 = 0;
+  v13_.v13 = 0xD00000000LL;
+  v13_.v15 = 0x500000001LL;
+  LODWORD(v13_.v14) = (int)v11 / 2;
+  HIDWORD(v13_.v14) = SHIDWORD(v11) / 2;
+  *v9 = GameRoutine_b54ca0(a3, (__int64)"tmpHalfColorCoC", &v13_.v13);
+  LODWORD(v13_.v14) = (int)v11 / 2;
+  HIDWORD(v13_.v14) = SHIDWORD(v11) / 2;
+  HIDWORD(v13_.v15) = 1;
+  HIDWORD(v13_.v13) = 13;
+  v9[2] = GameRoutine_b5a5d0(a3, (__int64)"tmpGather", &v13_.v13);
+  LODWORD(v13_.v14) = (int)v11 / 2;
+  HIDWORD(v13_.v14) = SHIDWORD(v11) / 2;
+  HIDWORD(v13_.v15) = 1;
+  HIDWORD(v13_.v13) = 13;
+  v9[3] = GameRoutine_b494f0(a3, (__int64)"tmpGather2", &v13_.v13);
+  v13_.v14 = v11;
+  HIDWORD(v13_.v15) = 1;
+  HIDWORD(v13_.v13) = 20;
+  result = GameRoutine_b5acb0(a3, (__int64)"dstDoF", &v13_.v13);
+  v9[4] = result;
+  return result;
+}
+
+__int64 gfxa_MainPassImageProcess_SetupPostProcessPass4_lambda1_Invoke(
+    __int64 a1, __int64 a2, _QWORD* a3)
+{
+  _QWORD* v3;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  _QWORD* v8;
+  __int64* v9;
+  _QWORD* v10;
+  struct {
+    char gap0_[4];
+    _BYTE v12[4];
+    __int64 v13;
+  } v12_;
+
+  v3 = *(_QWORD**)(a1 + 8);
+  v5 = v3[17];
+  v6 = *(_QWORD*)(*(_QWORD*)(**(_QWORD**)(a2 + 24) + 8LL) + 128LL);
+  v7 = 360;
+  if (*(_BYTE*)(v6 + 330) != 0) {
+    v7 = 329;
+  }
+  v12_.v12[0] = *(_BYTE*)(v6 + v7);
+  v8 = *(_QWORD**)(a2 + 8);
+  v9 = (__int64*)(*v3 + 13304LL);
+  v10 = *(_QWORD**)a2;
+  if (*(_BYTE*)(*v3 + 16700LL) != 0) {
+    v9 = (__int64*)(*(_QWORD*)(*v3 + 16672LL) + 24LL);
+  }
+  v12_.v13 = *v9;
+  return GameRoutine_b5b7e0(v5, v10, v8, a3, (__int64)v12_.v12);
+}
+
+__int64 gfxa_MainPassImageProcess_SetupPostProcessPass4_lambda4_Invoke(
+    __int64 a1, __int64** a2, __int64 a3)
+{
+  __int64* v4;
+  __int64 v6;
+  int v7;
+  __int64 v8;
+  __int64* v9;
+  __int64* v10;
+  __int64 v11;
+  unsigned __int64 v12;
+  __int64* v13;
+  __int64 result;
+  struct {
+    __int64 v15;
+    int v16;
+    int v17;
+    __int64 v18;
+    char v19;
+    char gap25_[3];
+    int v20;
+  } v15_;
+
+  v6 = **(_QWORD**)(a1 + 8);
+  v7 = *(unsigned __int8*)(v6 + 16700);
+  v8 = *(_QWORD*)(v6 + 16672);
+  v9 = (__int64*)(v6 + 13304);
+  v10 = (__int64*)(v8 + 24);
+  if (v7 != 0) {
+    v9 = v10;
+  }
+  v11 = *v9;
+  v12 = HIDWORD(*v9);
+  v4 = *a2;
+  *v4 = GameRoutine_b48f90(a3, ***(_QWORD***)(a1 + 16));
+  v15_.v20 = 0;
+  v15_.v16 = v11;
+  v15_.v17 = v12;
+  v13 = a2[1];
+  v15_.v15 = 0x1400000000LL;
+  v15_.v18 = 0x100000001LL;
+  v15_.v19 = 1;
+  result = GameRoutine_b53d40(a3, (__int64)"RadialBlurDst", &v15_.v15);
+  *v13 = result;
+  return result;
+}
+
 __int64 gfxa_MainPassImageProcess_SetupDLSSPass_lambda1_Invoke(__int64 a1,
                                                                __int64 a2,
                                                                __int64* a3)
@@ -2037,6 +2731,115 @@ __int64 gfxa_MainPassImageProcess_SetupDepthUpscalePass_lambda0_Invoke(
   result = GameRoutine_b60f30(a3, "FullDepth", &v8);
   *a2[1] = result;
   return result;
+}
+
+__int64 gfxa_MainPassImageProcess_SetupOffscreenPostProcessPass_lambda0_Invoke(
+    __int64 a1, __int64** a2, __int64* a3)
+{
+
+#pragma clang fp contract(off)
+  __int64 v3;
+  __int64* v5;
+  __int64 v7;
+  int v8;
+  __int64 v9;
+  int* v10;
+  int* v11;
+  float v12;
+  signed int v13;
+  __int64 v14;
+  int v15;
+  __int64* v16;
+  __int64 result;
+  struct {
+    __int64 v18;
+    int v19;
+    signed int v20;
+    __int64 v21;
+    char v22;
+    char gap25_[3];
+    int v23;
+  } v18_;
+
+  v3 = *(_QWORD*)(a1 + 16);
+  v5 = *a2;
+  v7 = **(_QWORD**)(a1 + 8);
+  v8 = *(unsigned __int8*)(v7 + 16700);
+  v9 = *(_QWORD*)(v7 + 16672);
+  v10 = (int*)(v7 + 13304);
+  v11 = (int*)(v9 + 24);
+  if (v8 != 0) {
+    v10 = v11;
+  }
+  v12 = (float)v10[1];
+  v13 = ((int)(float)(v12 * 0x1.6666660000000p-1f) + 1) & 0xFFFFFFFE;
+  v14 = *(_QWORD*)(*(_QWORD*)v3 + 56LL);
+  v15 = (int)(float)((float)((float)*v10 / v12) * (float)v13);
+  *v5 = GameRoutine_b48f90((__int64)a3, *(_QWORD*)(*(_QWORD*)v3 + 96LL));
+  v5[1] = GameRoutine_b48f90((__int64)a3, v14);
+  v18_.v23 = 0;
+  v18_.v19 = v15;
+  v18_.v20 = v13;
+  v16 = a2[1];
+  v18_.v18 = 0xD00000000LL;
+  v18_.v21 = 0x100000001LL;
+  v18_.v22 = 1;
+  result = GameRoutine_b4ba10(a3, (__int64)"TimeSlipDst", (__int64)&v18_.v18);
+  *v16 = result;
+  return result;
+}
+
+__int64 gfxa_MainPassImageProcess_SetupLensFlareSystemPass_lambda1_Invoke(
+    __int64 a1, __int64 a2, __int64* a3)
+{
+
+#pragma clang fp contract(off)
+  _QWORD* v3;
+  int v4;
+  __int64 v5;
+  float32x4_t* v8;
+  __int64 v9;
+  _QWORD* v10;
+  _QWORD* v11;
+  __int64 v12;
+  __int64 v13;
+  struct {
+    float32x4_t v15;
+    float32x4_t v16;
+    int v17;
+    int v18;
+  } v15_;
+
+  v3 = *(_QWORD**)(a1 + 8);
+  v4 = *(_DWORD*)(a1 + 16);
+  v5 = *(_QWORD*)(a2 + 24);
+  v15_.v16 = COERCE_AS(float32x4_t, GameData_1a83610);
+  LANES128(v15_.v15).n128_u64[0] = v3[3];
+  if (v4 == 2) {
+    v8 = (float32x4_t*)GameRoutine_b3f800(
+        (_QWORD*)(*(_QWORD*)(v3[1] + 288LL) + 592LL), (__int64)"Moon");
+  }
+  else {
+    if (v4 != 1) {
+      goto LABEL_6;
+    }
+    v8 = (float32x4_t*)GameRoutine_b3f6c0(
+        (_QWORD*)(*(_QWORD*)(v3[1] + 288LL) + 592LL), (__int64)"Sun");
+  }
+  v15_.v16 = vsubq_f32(COERCE_AS(float32x4_t, 0), v8[3]);
+LABEL_6:
+  v9 = v3[20];
+  v10 = *(_QWORD**)a2;
+  v11 = *(_QWORD**)(a2 + 8);
+  LANES128(v15_.v15).n128_u64[1] = v3[5];
+  v15_.v18 = 1065353216;
+  v12 = **(_QWORD**)(*(_QWORD*)v5 + 8LL);
+  v13 = 128;
+  if (*(_BYTE*)(v12 + 96) != 0) {
+    v13 = 92;
+  }
+  v15_.v17 = *(_DWORD*)(v12 + v13);
+  return GameRoutine_b6b560(v9, v10, v11, a3, &v15_.v15);
 }
 
 #pragma GCC visibility pop

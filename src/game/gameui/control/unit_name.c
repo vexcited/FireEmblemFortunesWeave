@@ -19,6 +19,82 @@ extern __int64* msg_MessageManager_instance__ptr[2];
 __int64* UnitName_19ab340(__int64 a1);
 __int64* UnitName_19ab4a0(__int64 a1, __int64 a2);
 __int64* UnitName_19ab5c0(__int64 a1, __int64 a2);
+__int64 GameRoutine_1888c80(_QWORD, _QWORD, _QWORD);
+__int64 GameRoutine_18b26a0(_QWORD, _QWORD, _QWORD, _QWORD);
+__int64 GameRoutine_576600(_QWORD, _QWORD);
+__int64 LayoutEx_579160(_QWORD, _QWORD);
+__int64 fw_memory_HeapManager_Allocate(_QWORD, _QWORD, _QWORD, _QWORD);
+__int64 nn_mem_StandardAllocator_Free(_QWORD);
+__int64 strlen(_QWORD);
+extern __int64 (*GameData_211f638[])();
+extern __int64 (*GameData_211f660[])();
+extern __int64 (*GameData_211f6a0[])();
+extern __int64 (*GameData_211f878[])();
+extern __int64 (*GameData_211f8a0[])();
+extern __int64 (
+    *game_gameui_control_HelpableElement_Destroy_HelpableElement_18b3360_ptr
+        [])();
+extern __int64 (*game_gameui_control_UnitName_vtable[])();
+extern __int64 fw_memory_g_heap_manager_ptr;
+__attribute__((swiftcall)) void UnitName_19ab100(PSEUDO_X8 x8_, __int64 a1,
+                                                 __int64 a2, __int64 a3);
+
+__attribute__((swiftcall)) void UnitName_19ab100(PSEUDO_X8 x8_, __int64 a1,
+                                                 __int64 a2, __int64 a3)
+{
+  _QWORD* a4 = (_QWORD*)PSEUDO_X8_VALUE(x8_);
+  _QWORD* v8;
+  _QWORD* v9;
+  _QWORD* v10;
+  __int64 v11;
+  _QWORD* v12;
+  __int64 v13;
+  __int64 v14;
+  __int64 result;
+  __int64 v16;
+  __int64 v17;
+
+  v8 = (_QWORD*)LayoutEx_579160(1120, 8);
+  v9 = v8 + 3;
+  v10 = v8;
+  v8[1] = 0;
+  v8[2] = 0;
+  *v8 = GameData_211f6a0;
+  GameRoutine_18b26a0(v8 + 3, a1, a2, a3);
+  v10[138] = 0;
+  v10[139] = 0;
+  v10[3] = game_gameui_control_UnitName_vtable;
+  v10[12] = GameData_211f638;
+  v10[132] = GameData_211f660;
+  v11 = fw_memory_g_heap_manager_ptr;
+  v12 = (_QWORD*)fw_memory_HeapManager_Allocate(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr, 16, 16, 0);
+  *v12 = "Name";
+  v12[1] = 4;
+  v13 = GameRoutine_576600(a1, "Name");
+  if (v13 != 0) {
+    v16 = v13;
+    v17 = strlen(v13);
+    if (v17 != 0) {
+      GameRoutine_1888c80(v10 + 29, v12, &v16);
+    }
+  }
+  v14 = 128;
+  if (*(_QWORD*)(*(_QWORD*)v11 + 200LL) == 0) {
+    v14 = 56;
+  }
+  result = nn_mem_StandardAllocator_Free(*(_QWORD*)v11 + v14);
+  *a4 = v9;
+  a4[1] = v10;
+  v10[3] =
+      game_gameui_control_HelpableElement_Destroy_HelpableElement_18b3360_ptr;
+  v10[12] = GameData_211f878;
+  v10[132] = GameData_211f8a0;
+  {
+    result;
+    return;
+  }
+}
 
 __int64* UnitName_19ab340(__int64 a1)
 {

@@ -17,6 +17,18 @@ void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
 void __attribute__((noreturn)) GameRoutine_b32f50(void);
 __int64 gfxa_MainPassGeneral_SetupPrePass_lambda0_Invoke(__int64 a1, __int64 a2,
                                                          __int64* a3);
+__int64 ResourceBuilder_b7b290(_QWORD*, __int64, _QWORD*);
+__int64 ResourceBuilder_b7b380(__int64*, __int64*, __int64);
+__int64 gfxa_TaskGBuffer_Execute(_QWORD*, _QWORD*, __int64*, __int64);
+__int64 gfxa_MainPassGeneral_SetupGeometryPass_lambda3_Invoke(__int64 a1,
+                                                              __int64 a2,
+                                                              __int64* a3);
+__int64 gfxa_MainPassGeneral_SetupForwardPass_lambda2_Invoke(_QWORD* a1,
+                                                             _QWORD** a2,
+                                                             __int64* a3);
+__int64 gfxa_MainPassGeneral_SetupForwardPass_lambda4_Invoke(__int64 a1,
+                                                             __int64 a2,
+                                                             __int64* a3);
 
 __int64 gfxa_MainPassGeneral_SetupPrePass_lambda0_Invoke(__int64 a1, __int64 a2,
                                                          __int64* a3)
@@ -309,6 +321,192 @@ __int64 gfxa_MainPassGeneral_SetupPrePass_lambda0_Invoke(__int64 a1, __int64 a2,
     } while (v46 != v47);
   }
   return result;
+}
+
+__int64 gfxa_MainPassGeneral_SetupGeometryPass_lambda3_Invoke(__int64 a1,
+                                                              __int64 a2,
+                                                              __int64* a3)
+{
+  __int64* v3;
+  __int64 v4;
+  _QWORD* v5;
+  _QWORD* v6;
+  __int64 v7;
+  __int64 v8;
+  int v9;
+  char v10;
+  int v11;
+  struct {
+    _QWORD v13[2];
+    int v14;
+    int v15;
+    char v16;
+  } v13_;
+
+  v3 = *(__int64**)(a1 + 8);
+  v4 = *(_QWORD*)(a2 + 24);
+  v5 = *(_QWORD**)a2;
+  v6 = *(_QWORD**)(a2 + 8);
+  v7 = *v3;
+  v8 = v3[5];
+  LODWORD(v4) = *(unsigned __int8*)(v4 + 117);
+  v9 = *((_DWORD*)v3 + 23);
+  v13_.v13[0] = v7;
+  v13_.v13[1] = v8;
+  v10 = v4 ^ 1;
+  if ((_DWORD)v4 != 0) {
+    v11 = 0;
+  }
+  else {
+    v11 = 2;
+  }
+  v13_.v16 = v10;
+  v13_.v14 = v9;
+  v13_.v15 = v11;
+  return gfxa_TaskGBuffer_Execute(v5, v6, a3, (__int64)v13_.v13);
+}
+
+__int64 gfxa_MainPassGeneral_SetupForwardPass_lambda2_Invoke(_QWORD* a1,
+                                                             _QWORD** a2,
+                                                             __int64* a3)
+{
+  __int64 v3;
+  __int64 v4;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  __int64 v10;
+  __int64** v11;
+  _QWORD* v12;
+  __int64* v13;
+  __int64 v14;
+  __int64 v15;
+  __int64 v16;
+  __int64 v17;
+  __int64 v18;
+  __int64 v19;
+  __int64 v20;
+  struct {
+    _QWORD v22[9];
+    _BYTE v23[13];
+    char gap93_[3];
+    __int64 v24;
+    __int64 v25;
+    __int64 v26;
+    __int64 v27;
+    __int64 v28;
+    __int64 v29;
+    __int64 v30;
+    __int64 v31;
+    __int64 v32;
+    __int64 v33;
+    __int64 v34;
+    __int64 v35;
+  } v22_;
+
+  v4 = a1[5];
+  v3 = a1[6];
+  v22_.v24 = 0;
+  v22_.v22[4] = v4;
+  v22_.v22[5] = v3;
+  *(_QWORD*)&v22_.v23[5] = *(_QWORD*)((char*)a1 + 85);
+  v7 = a1[10];
+  v22_.v22[8] = a1[9];
+  *(_QWORD*)v22_.v23 = v7;
+  v8 = a1[8];
+  v22_.v22[6] = a1[7];
+  v22_.v22[7] = v8;
+  v9 = a1[2];
+  v22_.v22[0] = a1[1];
+  v22_.v22[1] = v9;
+  v10 = a1[4];
+  v22_.v22[2] = a1[3];
+  v22_.v22[3] = v10;
+  v11 = (__int64**)a1[12];
+  v12 = *a2;
+  v13 = *v11;
+  v15 = v13[59];
+  v14 = v13[60];
+  v22_.v32 = v13[5];
+  v22_.v29 = v13[6];
+  v22_.v31 = v13[7];
+  v16 = v13[1];
+  v22_.v34 = v14;
+  v17 = v13[63];
+  v22_.v30 = v16;
+  v22_.v33 = v13[9];
+  v18 = *v13;
+  v22_.v35 = v15;
+  v19 = v13[65];
+  v20 = v13[66];
+  v22_.v25 = v17;
+  v22_.v26 = v19;
+  v22_.v27 = v20;
+  v22_.v28 = v18;
+  ResourceBuilder_b7b290(v12, (__int64)a3, v22_.v22);
+  return ResourceBuilder_b7b380(a2[1], a3, (__int64)v22_.v22);
+}
+
+__int64 gfxa_MainPassGeneral_SetupForwardPass_lambda4_Invoke(__int64 a1,
+                                                             __int64 a2,
+                                                             __int64* a3)
+{
+  __int64 v3;
+  __int64 v4;
+  __int64* v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  struct {
+    _QWORD v11[9];
+    _BYTE v12[13];
+    char gap93_[3];
+    __int64 v13;
+    __int64 v14;
+    __int64 v15;
+    __int64 v16;
+    __int64 v17;
+    __int64 v18;
+    __int64 v19;
+    __int64 v20;
+    __int64 v21;
+    __int64 v22;
+    __int64 v23;
+    __int64 v24;
+  } v11_;
+
+  v4 = *(_QWORD*)(a1 + 40);
+  v3 = *(_QWORD*)(a1 + 48);
+  v11_.v23 = 0;
+  v11_.v24 = 0;
+  v11_.v21 = 0;
+  v11_.v22 = 0;
+  v11_.v19 = 0;
+  v11_.v20 = 0;
+  v11_.v17 = 0;
+  v11_.v18 = 0;
+  v5 = *(__int64**)(a2 + 8);
+  v11_.v15 = 0;
+  v11_.v16 = 0;
+  v11_.v14 = 0;
+  v11_.v11[4] = v4;
+  v11_.v11[5] = v3;
+  *(_QWORD*)&v11_.v12[5] = *(_QWORD*)(a1 + 85);
+  v6 = *(_QWORD*)(a1 + 80);
+  v11_.v11[8] = *(_QWORD*)(a1 + 72);
+  *(_QWORD*)v11_.v12 = v6;
+  v7 = *(_QWORD*)(a1 + 64);
+  v11_.v11[6] = *(_QWORD*)(a1 + 56);
+  v11_.v11[7] = v7;
+  v8 = *(_QWORD*)(a1 + 16);
+  v11_.v11[0] = *(_QWORD*)(a1 + 8);
+  v11_.v11[1] = v8;
+  v9 = *(_QWORD*)(a1 + 32);
+  v11_.v11[2] = *(_QWORD*)(a1 + 24);
+  v11_.v11[3] = v9;
+  v11_.v13 = ***(_QWORD***)(a1 + 96);
+  return ResourceBuilder_b7b380(v5, a3, (__int64)v11_.v11);
 }
 
 #pragma GCC visibility pop

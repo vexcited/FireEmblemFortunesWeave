@@ -24,6 +24,22 @@ extern __int64* GameData_212dec0[4];
 extern __int64* GameData_212f4e0[3];
 __int64 game_cmdbtl_anonymous_EscapeMenuItem_ACall_closure_Invoke();
 __int64 game_cmdbtl_anonymous_EscapeMenuItem_ACall_closure0_Invoke();
+__int64 Dialog_1649e50(__int64 result, __int64, char, char);
+__int64 GameRoutine_100b530(__int64 result);
+__int64 MapSortieMenu_871860(__int64, __int64, __int64, __int64, __int64);
+__int64 ProcList_9bd480(__int64);
+__int64 game_ProcList_Call_9bcfa0(__int64, __int64);
+extern __int64 (*GameData_2069e30[])();
+extern __int64 (*GameData_2069ea0[])();
+extern __int64 (*GameData_2069f20[])();
+extern __int64 (*GameData_2069fb0[])();
+extern __int64 GameData_22190a8;
+void __attribute__((noreturn))
+GameRoutine_8123d0_alt1() __asm__("GameRoutine_8123d0");
+__int64 EscapeMenuItem_Unknown25(_QWORD* a1);
+__int64
+game_cmdbtl_anonymous_EscapeMenuItem_ACall_closure_Invoke_161df00(__int64 a1,
+                                                                  __int64* a2);
 
 __int64 EscapeMenuItem_Unknown6()
 {
@@ -80,6 +96,147 @@ LABEL_9:
   else {
     return GameRoutine_ec1aa0();
   }
+}
+
+__int64 EscapeMenuItem_Unknown25(_QWORD* a1)
+{
+  unsigned int v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  struct {
+    _QWORD v10[4];
+    _QWORD* v11;
+  } v10_;
+
+  v2 = 1;
+  if (((*(__int64 (**)(_QWORD*))(*a1 + 464LL))(a1) & 1) != 0) {
+    GameRoutine_100b530(GameData_2219098);
+    *(_BYTE*)(GameData_22190a8 + 11) = 0;
+    *(_BYTE*)(GameData_22190a0 + 8) = 1;
+    v3 = a1[1];
+    if (*(_QWORD*)(v3 + 152) != 0) {
+      v4 = *(_QWORD*)(v3 + 152);
+    }
+    else {
+      v4 = a1[1];
+    }
+    v5 = ProcList_9bd480(v4);
+    if (v5 == 0) {
+      return 12;
+    }
+    v6 = v5;
+    v10_.v10[0] = GameData_2069e30;
+    v10_.v11 = v10_.v10;
+    game_ProcList_Call_9bcfa0(v5, (__int64)v10_.v10);
+    if (v10_.v11 == v10_.v10) {
+      v7 = 32;
+    }
+    else {
+      if (v10_.v11 == nullptr) {
+        goto LABEL_11;
+      }
+      v7 = 40;
+    }
+    (*(void (**)(__int64))(*v10_.v11 + v7))((__int64)v10_.v11);
+  LABEL_11:
+    v10_.v10[0] = GameData_2069fb0;
+    v10_.v11 = v10_.v10;
+    game_ProcList_Call_9bcfa0(v6, (__int64)v10_.v10);
+    if (v10_.v11 == v10_.v10) {
+      v8 = 32;
+    }
+    else {
+      if (v10_.v11 == nullptr) {
+        return 12;
+      }
+      v8 = 40;
+    }
+    (*(void (**)(__int64))(*v10_.v11 + v8))((__int64)v10_.v11);
+    return 12;
+  }
+  return v2;
+}
+
+__int64
+
+game_cmdbtl_anonymous_EscapeMenuItem_ACall_closure_Invoke_161df00(__int64 a1,
+                                                                  __int64* a2)
+{
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 result;
+  __int64 v7;
+  struct {
+    _QWORD v8[4];
+    _QWORD* v9;
+  } v8_;
+  struct {
+    _QWORD v10[4];
+    _QWORD* v11;
+  } v10_;
+  struct {
+    _QWORD v12[4];
+    _QWORD* v13;
+  } v12_;
+  const char* v14;
+
+  v2 = *a2;
+  v14 = "MID_Menu_Retired_Confirm";
+  v12_.v13 = v12_.v12;
+  v8_.v9 = v8_.v8;
+  v12_.v12[0] = GameData_2069ea0;
+  v10_.v11 = v10_.v10;
+  v10_.v10[0] = GameData_2069f20;
+  v8_.v8[0] = GameData_2069f20;
+  v3 = MapSortieMenu_871860(v2, (__int64)&v14, (__int64)v12_.v12,
+                            (__int64)v10_.v10, (__int64)v8_.v8);
+  if (v8_.v9 == v8_.v8) {
+    v4 = 32;
+  }
+  else {
+    if (v8_.v9 == nullptr) {
+      goto LABEL_6;
+    }
+    v4 = 40;
+  }
+  (*(void (**)(__int64))(*v8_.v9 + v4))((__int64)v8_.v9);
+LABEL_6:
+  if (v10_.v11 == v10_.v10) {
+    v5 = 32;
+  }
+  else {
+    if (v10_.v11 == nullptr) {
+      goto LABEL_11;
+    }
+    v5 = 40;
+  }
+  (*(void (**)(__int64))(*v10_.v11 + v5))((__int64)v10_.v11);
+LABEL_11:
+  result = (__int64)v12_.v13;
+  if (v12_.v13 == v12_.v12) {
+    v7 = 32;
+  }
+  else {
+    if (v12_.v13 == nullptr) {
+      goto LABEL_16;
+    }
+    v7 = 40;
+  }
+  result = (*(__int64 (**)(__int64))(*v12_.v13 + v7))((__int64)v12_.v13);
+LABEL_16:
+  if ((GameData_2216858 & 1) == 0) {
+    GameRoutine_8123d0_alt1();
+  }
+  if ((GameData_2216820 & 0x800000) != 0) {
+    return Dialog_1649e50(v3, (__int64)"MID_CmdBtl_Escape_Attention", 1, 0);
+  }
+  return result;
 }
 
 __int64 game_cmdbtl_anonymous_EscapeMenuItem_ACall_closure_Invoke()

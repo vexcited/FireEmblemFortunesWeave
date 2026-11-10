@@ -149,8 +149,6 @@ __int64 GameRoutine_b509c0(_QWORD, _QWORD, _QWORD);
 
 __int64 GameRoutine_b53170(_QWORD*, __int64, unsigned __int64, __int64*);
 
-__int64 GameRoutine_b53d40(_QWORD, _QWORD, _QWORD);
-
 __int64 GameRoutine_b5a4b0(__int64, __int64);
 
 __int64 GameRoutine_b6c7b0(__int64, __int64, _QWORD*, __int64);
@@ -3972,49 +3970,6 @@ __int64 GameHr_b87ec0(__int64 result)
     (*(void (**)(__int64))(*(_QWORD*)v6 + 16LL))(v6);
     return GameRoutine_1a09c50(v6);
   }
-  return result;
-}
-
-__int64 GameHr_ba96c0(__int64 a1, _QWORD** a2, __int64 a3)
-{
-  _QWORD* v4;
-  __int64 v6;
-  int v7;
-  __int64 v8;
-  __int64* v9;
-  __int64* v10;
-  __int64 v11;
-  unsigned __int64 v12;
-  __int64* v13;
-  __int64 result;
-  __int64 v15;
-  int v16;
-  int v17;
-  __int64 v18;
-  char v19;
-  int v20;
-
-  v6 = **(_QWORD**)(a1 + 8);
-  v7 = *(unsigned __int8*)(v6 + 16700);
-  v8 = *(_QWORD*)(v6 + 16672);
-  v9 = (__int64*)(v6 + 13304);
-  v10 = (__int64*)(v8 + 24);
-  if (v7 != 0) {
-    v9 = v10;
-  }
-  v11 = *v9;
-  v12 = HIDWORD(*v9);
-  v4 = *a2;
-  *v4 = GameRoutine_b48f90(a3, ***(_QWORD***)(a1 + 16));
-  v20 = 0;
-  v16 = v11;
-  v17 = v12;
-  v13 = a2[1];
-  v15 = 0x1400000000LL;
-  v18 = 0x100000001LL;
-  v19 = 1;
-  result = GameRoutine_b53d40(a3, "RadialBlurDst", &v15);
-  *v13 = result;
   return result;
 }
 

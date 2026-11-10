@@ -18,6 +18,12 @@ __int64 CharacterIshAppear_Unknown5(__int64 result);
 _QWORD* game_character_CharacterIshAppear_Disappear(_QWORD* a1);
 __n128 CharacterIshAppear_Destructor(_QWORD* a1);
 __int64 CharacterIshAppear_DeletingDestructor(_QWORD* a1);
+__int64 CharacterBuilder_1083e90(_QWORD*, __int64);
+extern __int64 (*GameData_20076d8[])();
+extern __int64 (*GameData_2007758[])();
+__int64 game_character_CharacterIshAppear_Appear_lambda0_Invoke(__int64 result);
+__int64
+game_character_CharacterIshAppear_Disappear_lambda0_Invoke(__int64 result);
 
 __int64 CharacterIshAppear_Unknown5(__int64 result)
 {
@@ -407,6 +413,128 @@ LABEL_14:
     v10 = 56;
   }
   return nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v10);
+}
+
+__int64 game_character_CharacterIshAppear_Appear_lambda0_Invoke(__int64 result)
+{
+
+#pragma clang fp contract(off)
+  _QWORD* v1;
+  __int64 v2;
+  __int64 v3;
+  __int64 v5;
+  __int64 v6;
+  struct {
+    __int64 (**v7)();
+    int v8;
+    char gap12_[20];
+    __int64 (***v9)();
+  } v7_;
+
+  v1 = *(_QWORD**)(result + 8);
+  v2 = v1[4];
+  if (v2 == 0) {
+    return result;
+  }
+  v3 = v1[5];
+  if (*(_QWORD*)(v2 + 8) == -1 || v3 == 0) {
+    return result;
+  }
+  *(_BYTE*)(v1[1] + 289LL) = 1;
+  if (*(float*)(v3 + 348) == 0x1.0000000000000p+0f) {
+    return result;
+  }
+  *(_DWORD*)(v3 + 348) = 1065353216;
+  v7_.v7 = GameData_20076d8;
+  v7_.v8 = 1065353216;
+  v7_.v9 = &v7_.v7;
+  CharacterBuilder_1083e90((_QWORD*)v3, (__int64)&v7_.v7);
+  if (v7_.v9 == &v7_.v7) {
+    v5 = 4;
+    goto LABEL_11;
+  }
+  if (v7_.v9 != nullptr) {
+    v5 = 5;
+  LABEL_11:
+    ((__int64 (*)(__int64))(*v7_.v9)[v5])((__int64)v7_.v9);
+  }
+  v7_.v7 = GameData_2007758;
+  v7_.v9 = &v7_.v7;
+  v7_.v8 = 1065353216;
+  CharacterBuilder_1083e90((_QWORD*)v3, (__int64)&v7_.v7);
+  result = (__int64)v7_.v9;
+  if (v7_.v9 == &v7_.v7) {
+    v6 = 4;
+  }
+  else {
+    if (v7_.v9 == nullptr) {
+      return result;
+    }
+    v6 = 5;
+  }
+  return ((__int64 (*)(__int64))(*v7_.v9)[v6])((__int64)v7_.v9);
+}
+
+__int64
+
+game_character_CharacterIshAppear_Disappear_lambda0_Invoke(__int64 result)
+{
+
+#pragma clang fp contract(off)
+  _QWORD* v1;
+  __int64 v2;
+  __int64 v3;
+  __int64 v5;
+  __int64 v6;
+  struct {
+    __int64 (**v7)();
+    int v8;
+    char gap12_[20];
+    __int64 (***v9)();
+  } v7_;
+
+  v1 = *(_QWORD**)(result + 8);
+  v2 = v1[4];
+  if (v2 == 0) {
+    return result;
+  }
+  v3 = v1[5];
+  if (*(_QWORD*)(v2 + 8) == -1 || v3 == 0) {
+    return result;
+  }
+  *(_BYTE*)(v1[1] + 289LL) = 0;
+  if (*(float*)(v3 + 348) == 0x0.0p+0f) {
+    return result;
+  }
+  *(_DWORD*)(v3 + 348) = 0;
+  v7_.v8 = 0;
+  v7_.v7 = GameData_20076d8;
+  v7_.v9 = &v7_.v7;
+  CharacterBuilder_1083e90((_QWORD*)v3, (__int64)&v7_.v7);
+  if (v7_.v9 == &v7_.v7) {
+    v5 = 4;
+    goto LABEL_11;
+  }
+  if (v7_.v9 != nullptr) {
+    v5 = 5;
+  LABEL_11:
+    ((__int64 (*)(__int64))(*v7_.v9)[v5])((__int64)v7_.v9);
+  }
+  v7_.v8 = 0;
+  v7_.v7 = GameData_2007758;
+  v7_.v9 = &v7_.v7;
+  CharacterBuilder_1083e90((_QWORD*)v3, (__int64)&v7_.v7);
+  result = (__int64)v7_.v9;
+  if (v7_.v9 == &v7_.v7) {
+    v6 = 4;
+  }
+  else {
+    if (v7_.v9 == nullptr) {
+      return result;
+    }
+    v6 = 5;
+  }
+  return ((__int64 (*)(__int64))(*v7_.v9)[v6])((__int64)v7_.v9);
 }
 
 #pragma GCC visibility pop

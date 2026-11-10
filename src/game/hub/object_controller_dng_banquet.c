@@ -9,6 +9,10 @@ extern __int64 (*game_hub_ObjectControllerDngBanquet_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 _QWORD* ObjectControllerDngBanquet_Destructor(_QWORD* result);
 __int64 ObjectControllerDngBanquet_DeletingDestructor(_QWORD* a1);
+__attribute__((swiftcall)) void Manager_d9ae80(PSEUDO_X8, __int64, __int64,
+                                               __int64, unsigned int);
+extern __int64 GameData_212dbb8[9];
+__int64 game_hub_ObjectControllerDngBanquet_InitializeImpl_lambda0_Invoke();
 
 _QWORD* ObjectControllerDngBanquet_Destructor(_QWORD* result)
 {
@@ -61,6 +65,16 @@ __int64 ObjectControllerDngBanquet_DeletingDestructor(_QWORD* a1)
   }
   return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
                                        v7);
+}
+
+__int64 game_hub_ObjectControllerDngBanquet_InitializeImpl_lambda0_Invoke()
+{
+  _BYTE v1[24];
+
+  return X8CALL_X0(__int64,
+                   Manager_d9ae80((void*)((__int64)v1),
+                                  *(_QWORD*)GameData_212dbb8[0] + 248LL,
+                                  (__int64)"CallRunDngBunquet", 17, 0));
 }
 
 #pragma GCC visibility pop

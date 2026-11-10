@@ -1,5 +1,7 @@
 #include "decomp/pseudo_helpers.h"
 
+#include "decomp/pseudo_float.h"
+
 #pragma GCC visibility push(hidden)
 
 __int64 GameRoutine_109f1e0(__int64, _BYTE*);
@@ -19,6 +21,26 @@ void GameRoutine_109d2e0(__int64, __int64, __int64, __int64, unsigned int);
 void game_character_IKChariot_IKChariot(__int64 a1, _QWORD* a2, __int64 a3);
 __n128 IKChariot_Destructor(__int64 a1);
 long double game_character_IKChariot_IKChariot_lambda5_Invoke(__int64 a1,
+                                                              __int64 a2,
+                                                              _DWORD** a3);
+__int64 GameRoutine_1085a10(_QWORD, _QWORD, _QWORD, _QWORD);
+__int64 __cxa_guard_acquire(_QWORD);
+__int64 __cxa_guard_release(_QWORD);
+extern _UNKNOWN* GameData_212c2f0;
+extern _UNKNOWN* GameData_212c558;
+extern _UNKNOWN GameData_21a6190;
+extern __int128 GameData_21a6180;
+extern __int64 GameData_212d270;
+float GameRoutine_1062d90(float*, float*);
+float GameRoutine_a5e890(float, float);
+float powf(float, float);
+float32x4_t
+math_Mtx43_SetRotate_alt1(float32x4_t*,
+                          float32x4_t*) __asm__("math_Mtx43_SetRotate");
+float IKChariot_Unknown3(__int64 a1, float result);
+void game_character_IKChariot_IKChariot_lambda3_Invoke(__int64 a1, __int64 a2,
+                                                       int8x16_t** a3);
+long double game_character_IKChariot_IKChariot_lambda4_Invoke(__int64 a1,
                                                               __int64 a2,
                                                               _DWORD** a3);
 
@@ -239,6 +261,55 @@ void game_character_IKChariot_IKChariot(__int64 a1, _QWORD* a2, __int64 a3)
   }
 }
 
+float IKChariot_Unknown3(__int64 a1, float result)
+{
+  __int64 v2;
+  __int64 v5;
+  float* v6;
+  float v7;
+  float v8;
+  float v9;
+  float v10;
+
+  if (*(_BYTE*)(a1 + 16) == 1) {
+    v2 = *(_QWORD*)(a1 + 24);
+    if (**(_DWORD**)(a1 + 8) == 0 && v2 != 0) {
+      v5 = *(_QWORD*)(v2 + 104);
+      v6 = *(float**)GameData_212d270;
+      v7 = (float)(*(float*)(v5 + 200) * 0x1.cccccc0000000p+1f) /
+           0x1.4000000000000p+5f;
+      v8 = 0x1.0000000000000p+0f;
+      if (v7 <= 0x1.0000000000000p+0f) {
+        v8 = (float)(*(float*)(v5 + 200) * 0x1.cccccc0000000p+1f) /
+             0x1.4000000000000p+5f;
+      }
+      if (v7 >= 0x0.0p+0f) {
+        v9 = v8;
+      }
+      else {
+        v9 = 0x0.0p+0f;
+      }
+      v10 = *(float*)(v5 + 204) + *(float*)(a1 + 352);
+      *(float*)(a1 + 352) = v10;
+      *(float*)(a1 + 356) =
+          v6[78] *
+          (float)(v9 * (float)((float)((float)(GameRoutine_a5e890(
+                                                   v10 * v6[79],
+                                                   0x1.4000000000000p+2f) *
+                                               0x1.0000000000000p-1f) +
+                                       0x1.0000000000000p-1f) *
+                               0x1.99999a0000000p-5f));
+      result = v6[80] *
+               (float)(v9 * (float)(GameRoutine_a5e890(
+                                        -(float)(*(float*)(a1 + 352) * v6[81]),
+                                        0x0.0p+0f) *
+                                    0x1.99999a0000000p-6f));
+      *(float*)(a1 + 360) = result;
+    }
+  }
+  return result;
+}
+
 __n128 IKChariot_Destructor(__int64 a1)
 {
   __int64 v2;
@@ -279,6 +350,467 @@ __n128 IKChariot_Destructor(__int64 a1)
   v8 = *(_QWORD*)(a1 + 96);
   if (v8 != 0) {
     return std___1___shared_weak_count___release_weak(v8);
+  }
+  return result;
+}
+
+void game_character_IKChariot_IKChariot_lambda3_Invoke(__int64 a1, __int64 a2,
+                                                       int8x16_t** a3)
+{
+  __int64 v3;
+  int8x16_t* v5;
+  int8x16_t v6;
+  float v7;
+  __int64 v8;
+  float32x4_t v9;
+  float v10;
+  __int64 v11;
+  int8x16_t v12;
+  float32x4_t v13;
+  float32x4_t v14;
+  int8x16_t v15;
+  float32x4_t v16;
+  float32x4_t v17;
+  int8x16_t v18;
+  float v19;
+  int8x16_t v20;
+  float v21;
+  float v22;
+  float v23;
+  float v24;
+  float v25;
+  int v26;
+  __int64 v27;
+  float v28;
+  float v29;
+  float v30;
+  float v31;
+  float v32;
+  float v33;
+  float v34;
+  float v35;
+  bool v36;
+  float v37;
+  float v38;
+  float v39;
+  float v41;
+  float v42;
+  float v43;
+  float v44;
+  float v45;
+  float* v46;
+  float32x4_t v47;
+  float32x4_t v48;
+  float32x4_t v49;
+  float32x4_t v50;
+  float32x4_t v51;
+  float32x4_t v52;
+  __int64 v53;
+  __int64 v54;
+  __int64 v55;
+  __int64 v56;
+  __int64 v57;
+  __int64 v58;
+  __int64 v59;
+  float32x4_t v60;
+  int8x16_t v61;
+  float v62;
+  float32x4_t v63;
+  float32x4_t v64;
+  float32x4_t v65;
+  float v66;
+  float32x4_t v67;
+  int8x16_t v68;
+  float32x4_t v69;
+  __int64 v70;
+  __int64 v71;
+  __int64 v72;
+  __int64 v73;
+  __int64 v74;
+  __int64 v75;
+
+  v59 = *(_QWORD*)(a1 + 8);
+  if (*(_BYTE*)(v59 + 16) == 1) {
+    v70 = v58;
+    v71 = v57;
+    v72 = v56;
+    v73 = v55;
+    v74 = v53;
+    v75 = v54;
+    v3 = v59;
+    if (**(_DWORD**)(v59 + 8) == 0 && *(_QWORD*)(v59 + 24) != 0) {
+      LANES128(*(a3[2])).n128_u32[0] &= 0x33FFFFFFu;
+      v5 = *a3;
+      v6 = (*a3)[3];
+      v7 = *(float*)(*(_QWORD*)(v59 + 40) + 308LL);
+      v8 = *(_QWORD*)(v59 + 24) + 160LL;
+      LANES128(v9).n128_u64[0] =
+          LANES128(v6).n128_u32[0] | 0x4348000000000000LL;
+      LANES128(v9).n128_u64[1] = LANES128_OF(vextq_s8(v6, v6, 8u)).n128_u32[0];
+      v63 = v9;
+      LANES128(v6).n128_u32[1] = -1027080192;
+      LANES128(v6).n128_u64[1] = LANES128(v9).n128_u64[1];
+      v69 = v6;
+      GameRoutine_1085a10(v8, &v63, &v69, 0);
+      v10 = v66;
+      v11 = *(_QWORD*)(v3 + 24);
+      v60 = v67;
+      if (v66 == -0x1.9000000000000p+6f) {
+        v10 = *(float*)(*(_QWORD*)(*(_QWORD*)(v11 + 104) + 8LL) + 308LL);
+      }
+      v12 = vaddq_f32(v5[3], v5[2]);
+      LANES128(v13).n128_u64[0] =
+          LANES128(v12).n128_u32[0] | 0x4348000000000000LL;
+      LANES128(v13).n128_u64[1] =
+          LANES128_OF(vextq_s8(v12, v12, 8u)).n128_u32[0];
+      v69 = v13;
+      LANES128(v12).n128_u32[1] = -1027080192;
+      LANES128(v12).n128_u64[1] = LANES128(v13).n128_u64[1];
+      v68 = v12;
+      GameRoutine_1085a10(v11 + 160, &v69, &v68, 0);
+      v14 = vaddq_f32(v60, v64);
+      v15 = vmulq_f32(v14, v14);
+      LANES128(v15).n128_u64[0] =
+          LANES64_OF(
+              vadd_f32(
+                  COERCE_AS(float32x2_t,
+                            LANES128_OF(vextq_s8(v15, v15, 8u)).n128_u64[0]),
+                  COERCE_AS(float32x2_t, LANES128(v15).n128_u64[0])))
+              .n64_u64[0];
+      LANES128(v15).n128_u64[0] =
+          LANES64_OF(
+              vpadd_f32(COERCE_AS(float32x2_t, LANES128(v15).n128_u64[0]),
+                        COERCE_AS(float32x2_t, LANES128(v15).n128_u64[0])))
+              .n64_u64[0];
+      LANES128(v15).n128_u64[1] = LANES128(v15).n128_u64[0];
+      v16 = vrsqrteq_f32(v15);
+      v17 = vmulq_f32(v16, vrsqrtsq_f32(v16, vmulq_f32(v15, v16)));
+      v18 = vbicq_s8(
+          vmulq_f32(v14,
+                    vmulq_f32(v17, vrsqrtsq_f32(v17, vmulq_f32(v15, v17)))),
+          vceqzq_f32(v15));
+      if ((atomic_load_explicit((atomic_uchar* volatile)&GameData_21a6190,
+                                memory_order_acquire) &
+           1) == 0) {
+        v61 = v18;
+        v26 = __cxa_guard_acquire(&GameData_21a6190);
+        v18 = v61;
+        if (v26 != 0) {
+          v27 = *((_QWORD*)GameData_212c558 + 1);
+          *(_QWORD*)&GameData_21a6180 = *(_QWORD*)GameData_212c558;
+          *((_QWORD*)&GameData_21a6180 + 1) = v27;
+          __cxa_guard_release(&GameData_21a6190);
+          v18 = v61;
+        }
+      }
+      v19 = -0x1.0000000000000p+0f;
+      v20 = vmulq_f32(v18, COERCE_AS(float32x4_t, GameData_21a6180));
+      LANES128(v20).n128_u64[0] =
+          LANES64_OF(
+              vadd_f32(
+                  COERCE_AS(float32x2_t,
+                            LANES128_OF(vextq_s8(v20, v20, 8u)).n128_u64[0]),
+                  COERCE_AS(float32x2_t, LANES128(v20).n128_u64[0])))
+              .n64_u64[0];
+      v21 = LANES64_OF(
+                vpadd_f32(COERCE_AS(float32x2_t, LANES128(v20).n128_u64[0]),
+                          COERCE_AS(float32x2_t, LANES128(v20).n128_u64[0])))
+                .n64_f32[0];
+      if (v21 > 0x1.0000000000000p+0f) {
+        v21 = 0x1.0000000000000p+0f;
+      }
+      if (v21 >= -0x1.0000000000000p+0f) {
+        v19 = v21;
+      }
+      v22 = sqrtf(0x1.0000000000000p+0f - (float)(v19 * v19));
+      if (v19 >= 0x0.0p+0f) {
+        v28 = *(float*)((char*)((_UNKNOWN**)0x8LL) + (_QWORD)GameData_212c2f0);
+        v29 = *(float*)((char*)((__int128*)0x10LL) + (_QWORD)GameData_212c2f0);
+        v30 = *(float*)((char*)((__int128*)0x10LL) + (_QWORD)GameData_212c2f0 +
+                        8);
+        v31 = v19 / v22;
+        v32 = v22 / v19;
+        v33 =
+            v32 * (float)((
+                              float)((float)((float)((float)(v30 + (float)((float)((
+                                                                                       float)((
+                                                                                                  float)(v29 + (float)((float)((float)((float)(v28 + (float)((float)((float)(*(float*)GameData_212c2f0 * (float)(v32 * v32)) - *((float*)GameData_212c2f0 + 1)) * (float)(v32 * v32))) * (float)(v32 * v32)) - *(
+                                                                                                                                                                                                                                                                                                                   float*)((char*)((_UNKNOWN**)0x8LL) + (_QWORD)GameData_212c2f0 + 4)) *
+                                                                                                                       (float)(v32 *
+                                                                                                                               v32))) *
+                                                                                              (float)(v32 *
+                                                                                                      v32)) -
+                                                                                   *(float*)((char*)((
+                                                                                                 __int128*)0x10LL) +
+                                                                                             (_QWORD)
+                                                                                                 GameData_212c2f0 +
+                                                                                             4)) *
+                                                                           (float)(v32 *
+                                                                                   v32))) *
+                                                     (float)(v32 * v32)) -
+                                             *(float*)((char*)((
+                                                           __int128*)0x10LL) +
+                                                       (_QWORD)
+                                                           GameData_212c2f0 +
+                                                       12)) *
+                                     (float)(v32 * v32)) +
+                          0x1.0000000000000p+0f);
+        v34 =
+            0x1.921fb60000000p+0f -
+            (float)(PSEUDO_UNFUSED(
+                v31 *
+                (float)((float)((float)((float)((float)(v30 +
+                                                        (float)((float)((float)((float)(v29 + (float)((
+                                                                                                          float)((float)((float)(v28 + (float)((float)((float)(*(float*)GameData_212c2f0 * (float)(v31 * v31)) - *((float*)GameData_212c2f0 +
+                                                                                                                                                                                                                   1)) *
+                                                                                                                                               (float)(v31 *
+                                                                                                                                                       v31))) *
+                                                                                                                         (float)(v31 *
+                                                                                                                                 v31)) -
+                                                                                                                 *(float*)((char*)((
+                                                                                                                               _UNKNOWN**)0x8LL) +
+                                                                                                                           (_QWORD)
+                                                                                                                               GameData_212c2f0 +
+                                                                                                                           4)) *
+                                                                                                      (float)(v31 *
+                                                                                                              v31))) *
+                                                                                (float)(v31 *
+                                                                                        v31)) -
+                                                                        *(float*)((char*)((
+                                                                                      __int128*)0x10LL) +
+                                                                                  (_QWORD)
+                                                                                      GameData_212c2f0 +
+                                                                                  4)) *
+                                                                (float)(v31 *
+                                                                        v31))) *
+                                                (float)(v31 * v31)) -
+                                        *(float*)((char*)((__int128*)0x10LL) +
+                                                  (_QWORD)GameData_212c2f0 +
+                                                  12)) *
+                                (float)(v31 * v31)) +
+                        0x1.0000000000000p+0f)));
+        if (v19 > 0x1.6a09e60000000p-1f) {
+          v24 = v33;
+        }
+        else {
+          v24 = v34;
+        }
+      }
+      else if (v19 >= -0x1.6a09e60000000p-1f) {
+        v25 = (float)-v19 / v22;
+        v24 = (float)(PSEUDO_UNFUSED(
+                  v25 *
+                  (float)((float)((float)-(float)(*(float*)((char*)((
+                                                                __int128*)0x10LL) +
+                                                            (_QWORD)
+                                                                GameData_212c2f0 +
+                                                            12) -
+                                                  (float)((float)(*(float*)((char*)((
+                                                                                __int128*)0x10LL) +
+                                                                            (_QWORD)
+                                                                                GameData_212c2f0 +
+                                                                            8) +
+                                                                  (float)((float)-(float)(*(float*)((char*)((__int128*)0x10LL) + (_QWORD)GameData_212c2f0 + 4) - (float)((float)(*(float*)((char*)((__int128*)0x10LL) + (_QWORD)GameData_212c2f0) + (float)((float)-(float)(*(float*)((char*)((_UNKNOWN**)0x8LL) + (_QWORD)GameData_212c2f0 + 4) -
+                                                                                                                                                                                                                                                                            (float)((
+                                                                                                                                                                                                                                                                                        float)(*(
+                                                                                                                                                                                                                                                                                                   float*)((char*)((
+                                                                                                                                                                                                                                                                                                               _UNKNOWN**)0x8LL) +
+                                                                                                                                                                                                                                                                                                           (_QWORD)GameData_212c2f0) +
+                                                                                                                                                                                                                                                                                               (float)((float)-(
+                                                                                                                                                                                                                                                                                                           float)(*((float*)GameData_212c2f0 + 1) - (float)(*(float*)GameData_212c2f0 * (float)(v25 *
+                                                                                                                                                                                                                                                                                                                                                                                                v25))) *
+                                                                                                                                                                                                                                                                                                       (float)(v25 *
+                                                                                                                                                                                                                                                                                                               v25))) *
+                                                                                                                                                                                                                                                                                    (float)(v25 *
+                                                                                                                                                                                                                                                                                            v25))) *
+                                                                                                                                                                                                                                                            (float)(v25 *
+                                                                                                                                                                                                                                                                    v25))) *
+                                                                                                                                                                         (float)(v25 *
+                                                                                                                                                                                 v25))) *
+                                                                          (float)(v25 *
+                                                                                  v25))) *
+                                                          (float)(v25 * v25))) *
+                                  (float)(v25 * v25)) +
+                          0x1.0000000000000p+0f))) +
+              0x1.921fb60000000p+0f;
+      }
+      else {
+        v23 = (float)-v22 / v19;
+        v24 = 0x1.921fb60000000p+1f -
+              (float)(PSEUDO_UNFUSED(
+                  v23 *
+                  (float)((float)((float)-(float)(*(float*)((char*)((
+                                                                __int128*)0x10LL) +
+                                                            (_QWORD)
+                                                                GameData_212c2f0 +
+                                                            12) -
+                                                  (float)((float)(*(float*)((char*)((
+                                                                                __int128*)0x10LL) +
+                                                                            (_QWORD)
+                                                                                GameData_212c2f0 +
+                                                                            8) +
+                                                                  (float)((float)-(float)(*(float*)((char*)((__int128*)0x10LL) + (_QWORD)GameData_212c2f0 + 4) - (float)((float)(*(float*)((char*)((__int128*)0x10LL) + (_QWORD)GameData_212c2f0) + (float)((float)-(float)(*(float*)((char*)((_UNKNOWN**)0x8LL) + (_QWORD)GameData_212c2f0 + 4) -
+                                                                                                                                                                                                                                                                            (float)((
+                                                                                                                                                                                                                                                                                        float)(*(
+                                                                                                                                                                                                                                                                                                   float*)((char*)((
+                                                                                                                                                                                                                                                                                                               _UNKNOWN**)0x8LL) +
+                                                                                                                                                                                                                                                                                                           (_QWORD)GameData_212c2f0) +
+                                                                                                                                                                                                                                                                                               (float)((float)-(
+                                                                                                                                                                                                                                                                                                           float)(*((float*)GameData_212c2f0 + 1) - (float)(*(float*)GameData_212c2f0 * (float)(v23 *
+                                                                                                                                                                                                                                                                                                                                                                                                v23))) *
+                                                                                                                                                                                                                                                                                                       (float)(v23 *
+                                                                                                                                                                                                                                                                                                               v23))) *
+                                                                                                                                                                                                                                                                                    (float)(v23 *
+                                                                                                                                                                                                                                                                                            v23))) *
+                                                                                                                                                                                                                                                            (float)(v23 *
+                                                                                                                                                                                                                                                                    v23))) *
+                                                                                                                                                                         (float)(v23 *
+                                                                                                                                                                                 v23))) *
+                                                                          (float)(v23 *
+                                                                                  v23))) *
+                                                          (float)(v23 * v23))) *
+                                  (float)(v23 * v23)) +
+                          0x1.0000000000000p+0f)));
+      }
+      v35 = vmuls_lane_f32(LANES128(v18).n128_f32[2], v18, 2) +
+            (float)(LANES128(v18).n128_f32[0] * LANES128(v18).n128_f32[0]);
+      v36 = v35 < 0x1.0000000000000p-23f;
+      v37 = 0x1.0000000000000p+0f / sqrtf(v35);
+      v38 = LANES128(v18).n128_f32[2] * v37;
+      if (v36) {
+        v39 = 0x0.0p+0f;
+      }
+      else {
+        v39 = LANES128(v18).n128_f32[0] * v37;
+      }
+      if (v36) {
+        v38 = 0x1.0000000000000p+0f;
+      }
+      LANES128(v68).n128_u64[0] = __PAIR64__(LODWORD(v38), LODWORD(v39));
+      LANES128(v63).n128_u64[0] =
+          LANES64_OF(
+              vzip1_s32(
+                  COERCE_AS(int32x2_t, LANES128(v5[2]).n128_u64[0]),
+                  COERCE_AS(
+                      int32x2_t,
+                      LANES128_OF(vextq_s8(v5[2], v5[2], 8u)).n128_u64[0])))
+              .n64_u64[0];
+      v41 = GameRoutine_1062d90((float*)&v68, (float*)&v63);
+      v42 = *(float*)(*(_QWORD*)GameData_212d270 + 208LL);
+      if (v42 > 0x0.0p+0f) {
+        v43 = -(float)((float)((float)(v41 / 0x1.921fb60000000p+0f) +
+                               -0x1.0000000000000p+0f) *
+                       v24);
+        if (v42 >= 0x1.0000000000000p+0f) {
+          v46 = (float*)(v3 + 268);
+          goto LABEL_35;
+        }
+        v44 = *(float*)(v3 + 32);
+        if (v44 > 0x0.0p+0f) {
+          v62 = -(float)((float)((float)(v41 / 0x1.921fb60000000p+0f) +
+                                 -0x1.0000000000000p+0f) *
+                         v24);
+          v45 = 0x1.0000000000000p+0f -
+                powf(0x1.0000000000000p+0f - v42, v44 * 0x1.df851e0000000p+4f);
+          v46 = (float*)(v3 + 268);
+          if (v45 <= 0x0.0p+0f) {
+            v43 = *(float*)(v3 + 268);
+          }
+          else if (v45 >= 0x1.0000000000000p+0f) {
+            v43 = v62;
+          }
+          else {
+            v43 = *(float*)(v3 + 268) +
+                  (float)((float)(v62 - *(float*)(v3 + 268)) * v45);
+          }
+          goto LABEL_35;
+        }
+      }
+      v43 = *(float*)(v3 + 268);
+      v46 = (float*)(v3 + 268);
+    LABEL_35:
+      *v46 = v43;
+      v69 = COERCE_AS(float32x4_t, LODWORD(v43));
+      math_Mtx43_SetRotate_alt1(&v63, &v69);
+      v47 = v63;
+      v48 = v64;
+      v49 = *v5;
+      v50 = v5[1];
+      v51 = v5[2];
+      v52 = v65;
+      LANES128(v5[3]).n128_f32[1] =
+          (float)(v10 - v7) + LANES128(v5[3]).n128_f32[1];
+      *v5 = vmlaq_laneq_f32(
+          vmlaq_lane_f32(vmulq_n_f32(v49, LANES128(v47).n128_f32[0]), v50,
+                         COERCE_AS(float32x2_t, LANES128(v47).n128_u64[0]), 1),
+          v51, v47, 2);
+      v5[1] = vmlaq_laneq_f32(
+          vmlaq_lane_f32(vmulq_n_f32(v49, LANES128(v48).n128_f32[0]), v50,
+                         COERCE_AS(float32x2_t, LANES128(v48).n128_u64[0]), 1),
+          v51, v48, 2);
+      v5[2] = vmlaq_laneq_f32(
+          vmlaq_lane_f32(vmulq_n_f32(v49, LANES128(v52).n128_f32[0]), v50,
+                         COERCE_AS(float32x2_t, LANES128(v52).n128_u64[0]), 1),
+          v51, v52, 2);
+    }
+  }
+}
+
+long double game_character_IKChariot_IKChariot_lambda4_Invoke(__int64 a1,
+                                                              __int64 a2,
+                                                              _DWORD** a3)
+{
+  __int64 v5;
+  float32x4_t v7;
+  __int64 v8;
+  float32x4_t v9;
+  float32x4_t v10;
+  float32x4_t v11;
+  float32x4_t v12;
+  long double result;
+  long double v14;
+  float32x4_t v15;
+  struct {
+    float32x4_t v16;
+    float32x4_t v17;
+    float32x4_t v18;
+  } v16_;
+
+  result = COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
+  v5 = *(_QWORD*)(a1 + 8);
+  if (*(_BYTE*)(v5 + 16) == 1 && **(_DWORD**)(v5 + 8) == 0 &&
+      *(_QWORD*)(v5 + 24) != 0) {
+    LANES128(v7).n128_u64[0] = 0;
+    LANES128(v7).n128_u32[3] = 0;
+    *a3[2] &= 0x33FFFFFFu;
+    v8 = (__int64)*a3;
+    LANES128(v7).n128_u32[2] = *(_DWORD*)(v5 + 272);
+    v14 = *((long double*)*a3 + 3);
+    v15 = v7;
+    math_Mtx43_SetRotate_alt1(&v16_.v16, &v15),
+        result =
+            COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
+    v9 = *(float32x4_t*)(v8 + 16);
+    v10 = *(float32x4_t*)(v8 + 32);
+    v11 = vmlaq_laneq_f32(
+        vmlaq_lane_f32(
+            vmulq_n_f32(*(float32x4_t*)v8, LANES128(v16_.v16).n128_f32[0]), v9,
+            COERCE_AS(float32x2_t, LANES128(v16_.v16).n128_u64[0]), 1),
+        v10, v16_.v16, 2);
+    v12 = vmlaq_laneq_f32(
+        vmlaq_lane_f32(
+            vmulq_n_f32(*(float32x4_t*)v8, LANES128(v16_.v17).n128_f32[0]), v9,
+            COERCE_AS(float32x2_t, LANES128(v16_.v17).n128_u64[0]), 1),
+        v10, v16_.v17, 2);
+    *(float32x4_t*)(v8 + 32) = vmlaq_laneq_f32(
+        vmlaq_lane_f32(
+            vmulq_n_f32(*(float32x4_t*)v8, LANES128(v16_.v18).n128_f32[0]), v9,
+            COERCE_AS(float32x2_t, LANES128(v16_.v18).n128_u64[0]), 1),
+        v10, v16_.v18, 2);
+    *(float32x4_t*)v8 = v11;
+    *(float32x4_t*)(v8 + 16) = v12;
+    *(long double*)(v8 + 48) = v14;
+    return v14;
   }
   return result;
 }

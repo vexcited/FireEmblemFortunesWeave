@@ -12,6 +12,10 @@ __int64 ExternalReadOnlyStream_Unknown14(__int64 a1, __int64 a2, __int64 a3);
 bool ExternalReadOnlyStream_Unknown16(_QWORD* a1);
 __int64 ExternalReadOnlyStream_Unknown20(_QWORD* a1);
 __int64 ExternalReadOnlyStream_Unknown21(_QWORD* a1);
+__int64 GameRoutine_2b47f0(__int64, __int64, int);
+__int64 ExternalReadOnlyStream_Unknown6(__int64 a1, __int64 a2, int a3);
+__int64 ExternalReadOnlyStream_DirectStream_Unknown6(__int64 a1, __int64 a2,
+                                                     int a3);
 
 __int64 ExternalReadOnlyStream_Unknown12(__int64 a1)
 {
@@ -74,6 +78,59 @@ __int64 ExternalReadOnlyStream_Unknown4(_QWORD* a1, __int64 a2, __int64 a3,
   return v11;
 }
 
+__int64 ExternalReadOnlyStream_Unknown6(__int64 a1, __int64 a2, int a3)
+{
+  __int64 result;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  __int64 v10;
+
+  if (((*(__int64 (**)(__int64))(*(_QWORD*)a1 + 128LL))(a1) & 1) != 0) {
+    return GameRoutine_2b47f0(a1 + 24, a2, a3);
+  }
+  v7 = (*(__int64 (**)(__int64))(*(_QWORD*)a1 + 64LL))(a1);
+  if (a3 != 2) {
+    if (a3 == 1) {
+      v8 = v7 - (a2 & (a2 >> 63));
+      goto LABEL_16;
+    }
+    if (a3 == 0) {
+      v8 = a2 & ~(a2 >> 63);
+      goto LABEL_16;
+    }
+  LABEL_15:
+    v8 = 0;
+    goto LABEL_16;
+  }
+  if (a2 >= 1) {
+    v8 = v7;
+    v9 = (*(__int64 (**)(__int64))(*(_QWORD*)a1 + 56LL))(a1);
+    if (v9 + a2 < v8) {
+      v8 = v9 + a2;
+    }
+    goto LABEL_16;
+  }
+  v10 = (*(__int64 (**)(__int64))(*(_QWORD*)a1 + 56LL))(a1);
+  v8 = v10;
+  if (a2 < 0) {
+    if (!((v10 + a2 < 0) ^ __OFADD__(v10, a2) | (v10 + a2 == 0))) {
+      v8 = (*(__int64 (**)(__int64))(*(_QWORD*)a1 + 56LL))(a1) + a2;
+      goto LABEL_16;
+    }
+    goto LABEL_15;
+  }
+LABEL_16:
+  if (((*(__int64 (**)(_QWORD, _QWORD))(**(_QWORD**)(a1 + 104) + 48LL))(
+           *(_QWORD*)(a1 + 104), *(_QWORD*)(a1 + 8)) &
+       1) == 0) {
+    return 0x80000000LL;
+  }
+  result = 0;
+  *(_QWORD*)(a1 + 8) = v8;
+  return result;
+}
+
 __int64 ExternalReadOnlyStream_Unknown14(__int64 a1, __int64 a2, __int64 a3)
 {
   __int64 v8;
@@ -118,6 +175,60 @@ __int64 ExternalReadOnlyStream_Unknown21(_QWORD* a1)
   else {
     return 0;
   }
+}
+
+__int64 ExternalReadOnlyStream_DirectStream_Unknown6(__int64 a1, __int64 a2,
+                                                     int a3)
+{
+  __int64 v3;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v10;
+  __int64 v11;
+
+  v3 = *(_QWORD*)(a1 + 8);
+  v6 = (*(__int64 (**)(__int64))(*(_QWORD*)v3 + 64LL))(v3);
+  if (a3 == 2) {
+    if (a2 < 1) {
+      v11 = (*(__int64 (**)(__int64))(*(_QWORD*)v3 + 56LL))(v3);
+      v8 = v11;
+      if (a2 < 0) {
+        if ((v11 + a2 < 0) ^ __OFADD__(v11, a2) | (v11 + a2 == 0)) {
+          v8 = 0;
+        }
+        else {
+          v8 = (*(__int64 (**)(__int64))(*(_QWORD*)v3 + 56LL))(v3) + a2;
+        }
+      }
+    }
+    else {
+      v8 = v6;
+      v10 = (*(__int64 (**)(__int64))(*(_QWORD*)v3 + 56LL))(v3);
+      if (v10 + a2 < v8) {
+        v8 = v10 + a2;
+      }
+    }
+  }
+  else {
+    v7 = a2 & ~(a2 >> 63);
+    if (a3 != 0) {
+      v7 = 0;
+    }
+    if (a3 == 1) {
+      v8 = v6 - (a2 & (a2 >> 63));
+    }
+    else {
+      v8 = v7;
+    }
+  }
+  if (((*(__int64 (**)(_QWORD, _QWORD))(**(_QWORD**)(v3 + 104) + 48LL))(
+           *(_QWORD*)(v3 + 104), *(_QWORD*)(v3 + 8)) &
+       1) == 0) {
+    return 0x80000000LL;
+  }
+  *(_QWORD*)(v3 + 8) = v8;
+  return 0;
 }
 
 #pragma GCC visibility pop

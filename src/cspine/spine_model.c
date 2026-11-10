@@ -48,6 +48,149 @@ __int64 cspine_SpineModel_Draw_lambda0_Invoke(_QWORD* a1, __int64* a2);
 _QWORD* SpineModel_1919040(_QWORD* a1, _QWORD* a2);
 void cspine_SpineModel_buildModel_lambda1_Invoke(__int64 a1, __int64 a2);
 void cspine_SpineModel_buildModel_lambda2_Invoke(__int64 a1, __int64 a2);
+__int64 GameRoutine_1efd0(_QWORD, _QWORD);
+__int64 spine_RTTI_isExactly(_QWORD, _QWORD);
+__int64 spine_Slot_getAttachment(_QWORD);
+__int64 spine_VertexAttachment_getWorldVerticesLength(_QWORD);
+extern _UNKNOWN GameData_2177268;
+extern _UNKNOWN GameData_2177278;
+extern __int64* GameData_21322b8[2];
+extern char GameData_1a9f09e;
+void GameRoutine_1bc10();
+void __attribute__((noreturn)) String_60a250(_QWORD);
+__int64* SpineModel_190e620(__int64* result, _QWORD* a2, __int64* a3,
+                            _QWORD* a4);
+_QWORD* SpineModel_19160e0(__int64 a1, _QWORD* a2);
+
+__int64* SpineModel_190e620(__int64* result, _QWORD* a2, __int64* a3,
+                            _QWORD* a4)
+{
+  __int64 v4;
+  unsigned __int64 v5;
+  unsigned __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  int v9;
+  __int64 v10;
+  int v11;
+  int v12;
+  unsigned __int64 v13;
+  unsigned __int64 v14;
+  unsigned __int64 v15;
+  unsigned __int64 v16;
+  unsigned __int64 v17;
+  unsigned __int64 v18;
+  bool v19;
+  unsigned __int64 v20;
+  __int64 v21;
+
+  *a2 = &GameData_1a9f09e;
+  a2[1] = 0;
+  *a3 = (__int64)&GameData_1a9f09e;
+  a3[1] = 0;
+  *a4 = &GameData_1a9f09e;
+  a4[1] = 0;
+  v4 = *result;
+  v5 = result[1];
+  v6 = v5;
+  if (v5 != 0) {
+    v7 = v4 - 1;
+    v8 = result[1];
+    while (v8 != 0) {
+      v9 = *(unsigned __int8*)(v7 + v8--);
+      if (v9 == 47) {
+        goto LABEL_9;
+      }
+    }
+    LODWORD(v8) = -1;
+  LABEL_9:
+    v10 = result[1];
+    while (v10 != 0) {
+      v11 = *(unsigned __int8*)(v7 + v10--);
+      if (v11 == 92) {
+        goto LABEL_12;
+      }
+    }
+  }
+  else {
+    LODWORD(v8) = -1;
+  }
+  LODWORD(v10) = -1;
+LABEL_12:
+  if ((int)v8 <= (int)v10) {
+    LODWORD(v8) = v10;
+  }
+  do {
+    if (v6 == 0) {
+      if ((_DWORD)v8 != -1) {
+        goto LABEL_26;
+      }
+      goto LABEL_37;
+    }
+    v12 = *(unsigned __int8*)(v4 - 1 + v6--);
+  } while (v12 != 46);
+  if ((_DWORD)v8 != -1) {
+    if (v6 != -1) {
+      if (v6 >= (int)v8) {
+        v13 = (int)v8 + 1LL;
+        if (v5 >= v13) {
+          v5 = (int)v8 + 1LL;
+        }
+        *a2 = v4;
+        a2[1] = v5;
+        v14 = result[1];
+        if (v14 > (int)v8) {
+          v15 = v14 - v13;
+          if (v15 >= ~(__int64)(int)v8 + v6) {
+            v15 = ~(__int64)(int)v8 + v6;
+          }
+          *a3 = *result + v13;
+          a3[1] = v15;
+          goto LABEL_34;
+        }
+        goto LABEL_39;
+      }
+      return result;
+    }
+  LABEL_26:
+    v16 = (int)v8 + 1LL;
+    if (v5 >= v16) {
+      v5 = (int)v8 + 1LL;
+    }
+    *a2 = v4;
+    a2[1] = v5;
+    v17 = result[1];
+    if (v17 <= (int)v8) {
+      goto LABEL_39;
+    }
+    *a3 = *result + v16;
+    a3[1] = v17 - v16;
+    return result;
+  }
+  if (v6 == -1) {
+  LABEL_37:
+    v21 = result[1];
+    *a3 = *result;
+    a3[1] = v21;
+    return result;
+  }
+  if (v5 >= v6) {
+    v5 = v6;
+  }
+  *a3 = v4;
+  a3[1] = v5;
+LABEL_34:
+  v18 = result[1];
+  v19 = v18 >= v6;
+  v20 = v18 - v6;
+  if (!v19) {
+  LABEL_39:
+    String_60a250("string_view::substr");
+  }
+  *a4 = *result + v6;
+  a4[1] = v20;
+  return result;
+}
 
 __int64 SpineModel_19119d0(__int64 result)
 {
@@ -884,6 +1027,147 @@ __int64 SpineModel_1912fc0(__int64 a1)
     *(_BYTE*)(a1 + 1042) = 0;
   }
   return result;
+}
+
+_QWORD* SpineModel_19160e0(__int64 a1, _QWORD* a2)
+{
+  __int64 v3;
+  __int64* v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  unsigned __int64 v10;
+  unsigned __int64 v11;
+  unsigned __int64 v12;
+  __int64 v13;
+  __int64 v14;
+  __int64 v15;
+  __int64 v16;
+  _QWORD* v17;
+  __int64 v18;
+  unsigned __int64 v19;
+  unsigned __int64 v20;
+  unsigned __int64 v21;
+  unsigned __int64 v22;
+  __int64 v23;
+  unsigned int v24;
+  int v25;
+  __int64 v26;
+  __int64 v27;
+  __int64 v28;
+  _QWORD* v29;
+  __int64 v30;
+  const char* v31;
+  __int64 v32;
+  _QWORD v34[2];
+  const char* v35;
+  char v36;
+
+  if (*(_BYTE*)(a1 + 1041) == 1) {
+    a2[1] = 0;
+    v3 = *(_QWORD*)(a1 + 96);
+    v36 = 0;
+    v4 = GameData_21322b8[0] + 2;
+    v34[0] = GameData_21322b8[0] + 2;
+    v34[1] = 6;
+    v35 = "Render";
+    v5 = GameRoutine_1efd0(v3, v34);
+    v6 = spine_Slot_getAttachment(v5);
+    if (v6 != 0) {
+      v7 = v6;
+      v8 = (*(__int64 (**)(__int64))(*(_QWORD*)v6 + 16LL))(v6);
+      v9 = spine_RTTI_isExactly(v8, &GameData_2177278);
+      if ((v9 & 1) != 0) {
+        v11 = a2[1];
+        v10 = a2[2];
+        v12 = 4;
+        a2[1] = 4;
+        if (v10 <= 3) {
+          v13 = a2[3];
+          a2[2] = 8;
+          v14 = GameRoutine_19e10(v9);
+          v15 = (*(__int64 (**)(__int64, __int64, __int64, const char*,
+                                __int64))(*(_QWORD*)v14 + 32LL))(
+              v14, v13, 256, "/Program/Externals/Spine/include\\spine/Vector.h",
+              82);
+          v12 = a2[1];
+          a2[3] = v15;
+        }
+        if (v11 < v12) {
+          v16 = 32 * v11;
+          do {
+            ++v11;
+            v17 = (_QWORD*)(a2[3] + v16);
+            v16 += 32;
+            v17[2] = 0;
+            v17[3] = 0;
+            *v17 = 0;
+            v17[1] = 0;
+          } while (v11 < a2[1]);
+        }
+        v6 = ((__int64 (*)(__int64, __int64, _QWORD, _QWORD,
+                           __int64))GameRoutine_1bc10)(v7, v5, a2[3], 0, 8);
+      }
+      else {
+        v18 = (*(__int64 (**)(__int64))(*(_QWORD*)v7 + 16LL))(v7);
+        v6 = spine_RTTI_isExactly(v18, &GameData_2177268);
+        if ((v6 & 1) != 0) {
+          v19 = spine_VertexAttachment_getWorldVerticesLength(v7);
+          v21 = a2[1];
+          v20 = a2[2];
+          v22 = v19 >> 1;
+          a2[1] = v19 >> 1;
+          if (v20 < v19 >> 1) {
+            v23 = a2[3];
+            v24 = (int)(float)((float)v22 * 1.75f);
+            if (v24 <= 8) {
+              v25 = 8;
+            }
+            else {
+              v25 = v24;
+            }
+            a2[2] = v25;
+            v26 = GameRoutine_19e10(v19);
+            v27 = (*(__int64 (**)(__int64, __int64, __int64, const char*,
+                                  __int64))(*(_QWORD*)v26 + 32LL))(
+                v26, v23, 32LL * v25,
+                "/Program/Externals/Spine/include\\spine/Vector.h", 82);
+            v22 = a2[1];
+            a2[3] = v27;
+          }
+          if (v21 < v22) {
+            v28 = 32 * v21;
+            do {
+              ++v21;
+              v29 = (_QWORD*)(a2[3] + v28);
+              v28 += 32;
+              v29[2] = 0;
+              v29[3] = 0;
+              *v29 = 0;
+              v29[1] = 0;
+            } while (v21 < a2[1]);
+          }
+          v30 = spine_VertexAttachment_getWorldVerticesLength(v7);
+          v6 = (*(__int64 (**)(__int64, __int64, _QWORD, __int64, _QWORD,
+                               _QWORD, __int64))(*(_QWORD*)v7 + 32LL))(
+              v7, v5, 0, v30, a2[3], 0, 8);
+        }
+      }
+    }
+    v31 = v35;
+    v34[0] = v4;
+    if (v35 != nullptr && (v36 & 1) != 0) {
+      v32 = GameRoutine_19e10(v6);
+      (*(void (**)(__int64, const char*, const char*, __int64))(*(_QWORD*)v32 +
+                                                                40LL))(
+          v32, v31, "/Program/Externals/Spine/include\\spine/SpineString.h",
+          206);
+    }
+    spine_SpineObject_Destroy_SpineObject_4e8a0(v34);
+  }
+  return a2;
 }
 
 _QWORD* cspine_SpineModel_Draw_lambda0_Clone(_QWORD* a1)

@@ -13,6 +13,9 @@ float GameRoutine_1003040(_QWORD, _QWORD, _QWORD, _QWORD);
 float game_map_CursorDrawInfo_GetHeightTop(__int64 a1, int a2, int a3,
                                            unsigned int a4, unsigned int a5,
                                            __int64 a6);
+__int64 game_map_CursorDrawInfo_GetHeightTop_lambda0_Invoke(_DWORD** a1,
+                                                            _DWORD* a2,
+                                                            _DWORD* a3);
 
 float game_map_CursorDrawInfo_GetHeightTop(__int64 a1, int a2, int a3,
                                            unsigned int a4, unsigned int a5,
@@ -259,6 +262,34 @@ LABEL_56:
     goto LABEL_44;
   }
   return v8 + v9;
+}
+
+__int64 game_map_CursorDrawInfo_GetHeightTop_lambda0_Invoke(_DWORD** a1,
+                                                            _DWORD* a2,
+                                                            _DWORD* a3)
+{
+  int v3;
+  int v4;
+  bool v5;
+  int v6;
+  int i;
+
+  v3 = *a1[1];
+  if (v3 < 1) {
+    return 0;
+  }
+  v4 = *a1[2];
+  v5 = __OFSUB__(v4, 1);
+  v6 = v4 - 1;
+  if (v6 < 0 != v5) {
+    return 0;
+  }
+  for (i = *a2 - *a1[3]; i != 0 || *a3 - *a1[4] > (unsigned int)v6; --i) {
+    if (--v3 == 0) {
+      return 0;
+    }
+  }
+  return 1;
 }
 
 #pragma GCC visibility pop

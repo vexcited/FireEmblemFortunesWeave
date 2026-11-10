@@ -16,6 +16,17 @@ __int64 GameRoutine_80cdc0(_QWORD);
 extern __int64 GameData_21c9600;
 __int64
 game_menu_anonymous_RestartCheckpointMenuItem_ACall_closure_Invoke(__int64 a1);
+__int64 fw_memory_HeapManager_Allocate(_QWORD, _QWORD, _QWORD, _QWORD);
+__int64 game_util_Format(const char*, ...);
+__int64 memmove(_QWORD, _QWORD, _QWORD);
+__int64 strlen(_QWORD);
+extern __int64 fw_memory_g_heap_manager;
+extern char GameData_1a9f09e;
+void __attribute__((noreturn)) String_60a1d0(_QWORD);
+__attribute__((swiftcall)) void
+RestartCheckpointMenuItem_Unknown70(PSEUDO_X8 x8_, __int64 a1);
+__attribute__((swiftcall)) void
+RestartCheckpointMenuItem_Unknown71(PSEUDO_X8 x8_, _DWORD* a1);
 
 __int64 RestartCheckpointMenuItem_Unknown3(__int64 a1)
 {
@@ -38,6 +49,108 @@ __int64 RestartCheckpointMenuItem_Unknown26(_QWORD* a1)
   v2 = __dynamic_cast(a1[1], GameData_212e030[0], &GameData_20b7100, 0);
   GameRoutine_173bc80(v2, 0);
   return 13;
+}
+
+__attribute__((swiftcall)) void
+
+RestartCheckpointMenuItem_Unknown70(PSEUDO_X8 x8_, __int64 a1)
+{
+  __int64* a2 = (__int64*)PSEUDO_X8_VALUE(x8_);
+  const char* v3;
+  __int64 v4;
+  unsigned __int64 result;
+  unsigned __int64 v6;
+  char* v7;
+  __int64 v8;
+  __int64 v9;
+
+  v3 = (const char*)(*(__int64 (**)(__int64))(*(_QWORD*)a1 + 24LL))(a1);
+  v4 = game_util_Format("%s_Help", v3);
+  result = strlen(v4);
+  if (result >= 0xFFFFFFFFFFFFFFF7LL) {
+    String_60a1d0(result);
+  }
+  v6 = result;
+  if (result >= 0x17) {
+    if ((result | 7) == 0x17) {
+      v8 = 26;
+    }
+    else {
+      v8 = (result | 7) + 1;
+    }
+    v9 = fw_memory_HeapManager_Allocate(fw_memory_g_heap_manager, v8, 16, 0);
+    a2[1] = v6;
+    a2[2] = v9;
+    *a2 = v8 | 1;
+    v7 = (char*)v9;
+  }
+  else {
+    *(_BYTE*)a2 = 2 * result;
+    v7 = (char*)a2 + 1;
+    if (result == 0) {
+      goto LABEL_10;
+    }
+  }
+  result = memmove(v7, v4, v6);
+LABEL_10:
+  v7[v6] = 0;
+  {
+    result;
+    return;
+  }
+}
+
+__attribute__((swiftcall)) void
+
+RestartCheckpointMenuItem_Unknown71(PSEUDO_X8 x8_, _DWORD* a1)
+{
+  __int64* a2 = (__int64*)PSEUDO_X8_VALUE(x8_);
+  char* v4;
+  const char* v5;
+  unsigned __int64 result;
+  unsigned __int64 v7;
+  char* v8;
+  __int64 v9;
+  __int64 v10;
+
+  v4 = &GameData_1a9f09e;
+  if (((*(__int64 (**)(_DWORD*))(*(_QWORD*)a1 + 464LL))(a1) & 1) == 0 &&
+      a1[42] == 4) {
+    v5 = (const char*)(*(__int64 (**)(_DWORD*))(*(_QWORD*)a1 + 24LL))(a1);
+    v4 = (char*)game_util_Format("%s_Disable", v5);
+  }
+  result = strlen(v4);
+  if (result >= 0xFFFFFFFFFFFFFFF7LL) {
+    String_60a1d0(result);
+  }
+  v7 = result;
+  if (result >= 0x17) {
+    if ((result | 7) == 0x17) {
+      v9 = 26;
+    }
+    else {
+      v9 = (result | 7) + 1;
+    }
+    v10 = fw_memory_HeapManager_Allocate(fw_memory_g_heap_manager, v9, 16, 0);
+    a2[1] = v7;
+    a2[2] = v10;
+    *a2 = v9 | 1;
+    v8 = (char*)v10;
+  }
+  else {
+    *(_BYTE*)a2 = 2 * result;
+    v8 = (char*)a2 + 1;
+    if (result == 0) {
+      goto LABEL_13;
+    }
+  }
+  result = memmove(v8, v4, v7);
+LABEL_13:
+  v8[v7] = 0;
+  {
+    result;
+    return;
+  }
 }
 
 __int64 RestartCheckpointMenuItem_Unknown73(__int64 a1)

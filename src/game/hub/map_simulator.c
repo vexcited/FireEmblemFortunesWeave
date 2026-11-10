@@ -34,6 +34,11 @@ _QWORD* game_hub_MapSimulator_Build_MinimapIcon(__int64 a1, __int64 a2,
                                                 unsigned __int64 a3);
 _QWORD* game_hub_MapSimulator_Build_CondTalk(__int64 a1, __int64 a2,
                                              unsigned __int64 a3);
+extern __int64 GameData_21ec7c0;
+extern __int64 GameData_21f3cb0;
+extern __int64 GameData_21f3d10;
+__attribute__((swiftcall)) void MapSimulator_102b410(PSEUDO_X8 x8_, __int64 a1,
+                                                     __n128 result);
 
 __n128 MapSimulator_Destructor(__int64 a1)
 {
@@ -421,6 +426,97 @@ __n128 MapSimulator_Destructor(__int64 a1)
     return nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v53);
   }
   return result;
+}
+
+__attribute__((swiftcall)) void MapSimulator_102b410(PSEUDO_X8 x8_, __int64 a1,
+                                                     __n128 result)
+{
+  __int64 a2 = (__int64)PSEUDO_X8_VALUE(x8_);
+  unsigned __int64 v4;
+  unsigned __int64 v5;
+  unsigned __int64 v6;
+  unsigned __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
+  __n128* v15;
+  float v16;
+  __int64 v17;
+
+  v4 = *(unsigned __int8*)(a1 + 8);
+  if ((v4 & 1) != 0) {
+    v5 = *(_QWORD*)(a1 + 16);
+  }
+  else {
+    v5 = v4 >> 1;
+  }
+  v6 = *(unsigned __int8*)(GameData_21f3d10 + 88);
+  v7 = *(_QWORD*)(GameData_21f3d10 + 96);
+  if ((v6 & 1) == 0) {
+    v7 = v6 >> 1;
+  }
+  if (v5 != v7) {
+    goto LABEL_14;
+  }
+  v8 = (v4 & 1) != 0 ? *(_QWORD*)(a1 + 24) : a1 + 9;
+  v9 = (v6 & 1) != 0 ? *(_QWORD*)(GameData_21f3d10 + 104)
+                     : GameData_21f3d10 + 89;
+  if ((unsigned int)memcmp(v8, v9, v5) != 0) {
+    goto LABEL_14;
+  }
+  v10 = *(_QWORD*)(GameData_21ec7c0 + 80);
+  if (v10 == 0) {
+    goto LABEL_14;
+  }
+  v11 = *(_QWORD*)(GameData_21ec7c0 + 72);
+  v12 = *(_QWORD*)(GameData_21ec7c0 + 80);
+  atomic_fetch_add_explicit((atomic_ullong* volatile)(v10 + 16), 1u,
+                            memory_order_relaxed);
+  v13 = std___1___shared_weak_count_lock(v12);
+  result = std___1___shared_weak_count___release_weak(v10);
+  if (v13 == 0 || v11 == 0) {
+    if (v13 == 0) {
+    LABEL_14:
+      *(_BYTE*)a2 = 0;
+      *(_BYTE*)(a2 + 32) = 0;
+      {
+        result;
+        return;
+      }
+    }
+  }
+  else {
+    v15 = *(__n128**)(*(_QWORD*)(v11 + 24) + 16LL);
+    result = v15[35];
+    v16 = *(float*)(LANES128(v15[30]).n128_u64[1] + 36);
+    LANES128(result).n128_u32[3] = 0;
+    *(_BYTE*)(a2 + 32) = 1;
+    *(__n128*)a2 = result;
+    v17 = GameData_21f3cb0;
+    *(float*)(a2 + 16) = v16 * 0x1.ca5dc20000000p+5;
+    *(_DWORD*)(a2 + 20) = *(_DWORD*)(v17 + 100);
+  }
+  if (atomic_fetch_add((atomic_ullong* volatile)(v13 + 8),
+                       0xFFFFFFFFFFFFFFFFLL) != 0) {
+    if (v11 == 0) {
+      goto LABEL_14;
+    }
+  }
+  else {
+    (*(void (**)(__int64, long double))(*(_QWORD*)v13 + 16LL))(
+        v13, *(long double*)&result);
+    result = std___1___shared_weak_count___release_weak(v13);
+    if (v11 == 0) {
+      goto LABEL_14;
+    }
+  }
+  {
+    result;
+    return;
+  }
 }
 
 _QWORD* game_hub_MapSimulator_Build_MinimapIcon(__int64 a1, __int64 a2,

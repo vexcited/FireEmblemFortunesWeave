@@ -24,6 +24,10 @@ __int64 AnimatorEx_Unknown29(_QWORD* a1);
 __int64 AnimatorEx_Unknown3(__int64 result, float a2);
 __int64 AnimatorEx_Unknown30(__int64 a1);
 __int64 AnimatorEx_Unknown32(__int64 result, __int64 a2);
+__int64 GameRoutine_56e670_alt1(__int64) __asm__("GameRoutine_56e670");
+extern int* GameData_2136208[16];
+__int64 AnimatorEx_Unknown34(__int64 a1, unsigned int a2, float a3);
+__int64 AnimatorEx_Unknown35(__int64 a1);
 
 __int64 AnimatorEx_Unknown4(__int64 a1, char a2)
 {
@@ -154,6 +158,36 @@ __int64 AnimatorEx_Unknown25(__int64 a1, int a2, float a3)
       *(_QWORD*)(*(_QWORD*)(a1 + 88) + 96LL), 1, a1);
 }
 
+__int64 AnimatorEx_Unknown34(__int64 a1, unsigned int a2, float a3)
+{
+
+#pragma clang fp contract(off)
+  unsigned __int16 v6;
+  int* v7;
+  int v8;
+  unsigned int v9;
+  unsigned int v10;
+  __int64 v11;
+  __int64 v12;
+
+  v6 = GameRoutine_56e670_alt1(a1);
+  v7 = GameData_2136208[0];
+  v8 = *(int*)((char*)GameData_2136208[0] +
+               (unsigned __int64)((_UNKNOWN**)0x8LL));
+  v9 = *(int*)((char*)GameData_2136208[0] +
+               (unsigned __int64)((_UNKNOWN**)0x8LL) + 4);
+  v10 = *GameData_2136208[0] ^ (*GameData_2136208[0] << 11);
+  *GameData_2136208[0] = GameData_2136208[0][1];
+  v7[1] = v8;
+  v11 = (v10 >> 8) ^ (v9 >> 19) ^ v10 ^ v9;
+  *(_DWORD*)((char*)((_UNKNOWN**)0x8LL) + (_QWORD)v7) = v9;
+  *(_DWORD*)((char*)((_UNKNOWN**)0x8LL) + (_QWORD)v7 + 4) = v11;
+  v12 = *(_QWORD*)a1;
+  *(float*)(a1 + 32) =
+      (float)((v11 + v6 * (unsigned __int64)(unsigned int)v11) >> 32);
+  return (*(__int64 (**)(__int64, _QWORD, float))(v12 + 200))(a1, a2, a3);
+}
+
 __int64 AnimatorEx_Unknown26(_QWORD* a1, float a2)
 {
   GameRoutine_5825a0((__int64)a1, a2);
@@ -187,6 +221,40 @@ __int64 AnimatorEx_Unknown29(_QWORD* a1)
   (*(void (**)(_QWORD*, __int64, float))(*a1 + 32LL))(a1, 1, v2);
   return (*(__int64 (**)(_QWORD, __int64, _QWORD*))(
       **(_QWORD**)(a1[11] + 96LL) + 120LL))(*(_QWORD*)(a1[11] + 96LL), 5, a1);
+}
+
+__int64 AnimatorEx_Unknown35(__int64 a1)
+{
+
+#pragma clang fp contract(off)
+  unsigned __int16 v2;
+  int* v3;
+  int v4;
+  unsigned int v5;
+  unsigned int v6;
+  __int64 v7;
+  int v8;
+
+  v2 = GameRoutine_56e670_alt1(a1);
+  v3 = GameData_2136208[0];
+  v4 = *(int*)((char*)GameData_2136208[0] +
+               (unsigned __int64)((_UNKNOWN**)0x8LL));
+  v5 = *(int*)((char*)GameData_2136208[0] +
+               (unsigned __int64)((_UNKNOWN**)0x8LL) + 4);
+  v6 = *GameData_2136208[0] ^ (*GameData_2136208[0] << 11);
+  *GameData_2136208[0] = GameData_2136208[0][1];
+  v3[1] = v4;
+  v7 = (v6 >> 8) ^ (v5 >> 19) ^ v6 ^ v5;
+  *(_DWORD*)((char*)((_UNKNOWN**)0x8LL) + (_QWORD)v3) = v5;
+  *(_DWORD*)((char*)((_UNKNOWN**)0x8LL) + (_QWORD)v3 + 4) = v7;
+  v8 = *(_DWORD*)(a1 + 68);
+  *(float*)(a1 + 32) =
+      (float)((v7 + v2 * (unsigned __int64)(unsigned int)v7) >> 32);
+  *(_DWORD*)(a1 + 68) = v8 & 0xFFFFFFF0;
+  (*(void (**)(__int64, __int64))(*(_QWORD*)a1 + 32LL))(a1, 1);
+  return (*(__int64 (**)(_QWORD, __int64, __int64))(
+      **(_QWORD**)(*(_QWORD*)(a1 + 88) + 96LL) + 120LL))(
+      *(_QWORD*)(*(_QWORD*)(a1 + 88) + 96LL), 2, a1);
 }
 
 __int64 AnimatorEx_Unknown3(__int64 result, float a2)

@@ -16,6 +16,12 @@ extern __int64* GameData_212d678[2];
 extern __int64* ui_LayoutAccessor_empty__ptr[3];
 __int64 TalkOtherClanMenuItem_Unknown25(__int64 a1);
 __int64 TalkOtherClanMenuItem_Unknown55(_QWORD* a1);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, _QWORD, _QWORD,
+                                               _QWORD, _QWORD, _QWORD, _QWORD,
+                                               double, float);
+__int64 snd_Fade_Destroy_Fade(_QWORD);
+__n128 snd_Fade_Fade_10c830(_QWORD, double);
+__int64 TalkOtherClanMenuItem_19e1c70();
 
 __int64 TalkOtherClanMenuItem_Unknown25(__int64 a1)
 {
@@ -32,6 +38,17 @@ __int64 TalkOtherClanMenuItem_Unknown25(__int64 a1)
   }
   GameRoutine_14d0010(v3, *(_QWORD*)(a1 + 88), a1);
   return 10;
+}
+
+__int64 TalkOtherClanMenuItem_19e1c70()
+{
+  __int64 v1;
+  _BYTE v2[200];
+
+  snd_Fade_Fade_10c830(v2, 0.0f);
+  snd_play_ff2d0((void*)(&v1), "SE_SYS_Decide_M", "SE_SYS_Decide_M", v2, 0,
+                 65537, 0, 0.0f, 1.0f);
+  return snd_Fade_Destroy_Fade(v2);
 }
 
 __int64 TalkOtherClanMenuItem_Unknown55(_QWORD* a1)

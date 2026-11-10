@@ -49,6 +49,8 @@ void WaveSoundPlayer_2adf30(__int64 a1, __int64 a2, __int64 a3);
 __int64 WaveSoundPlayer_Unknown10(__int64 result);
 __int64 WaveSoundPlayer_Unknown3_2adf80(__int64 result);
 __int64 WaveSoundPlayer_Unknown4(__int64 a1);
+__int64 BaseNx_2a9de0(__int64);
+__int64 WaveSoundPlayer_2ad6b0(__int64 a1, char a2);
 
 __int64 WaveSoundPlayer_Unknown2_2ad060(__int64 a1)
 {
@@ -375,6 +377,45 @@ __int64 WaveSoundPlayer_Unknown2_2ad630(__int64 result, unsigned __int64 a2,
       if (*(_BYTE*)(result - 135) == 1) {
         *(_BYTE*)(result - 135) = 0;
       }
+    }
+  }
+  return result;
+}
+
+__int64 WaveSoundPlayer_2ad6b0(__int64 a1, char a2)
+{
+  __int64 v2;
+  char v3;
+  __int64 v4;
+  __int64 v5;
+  bool v6;
+  char v7;
+  __int64 v8;
+  __int64 v9;
+  __int64 result;
+  char v11;
+
+  result = *(_QWORD*)(a1 + 360);
+  if (result != 0) {
+    v11 = a2 & 1;
+    if (*(_BYTE*)(result + 193) != 0) {
+      v2 = result;
+      v3 = v11;
+      result = BaseNx_2a9de0(*(_QWORD*)(result + 400));
+      if ((v3 & 1) != 0 && (*(_BYTE*)(v2 + 976) & 1) != 0) {
+        v4 = *(_QWORD*)(v2 + 968);
+        v5 = v4 - *(_QWORD*)(v2 + 960) + *(_QWORD*)(v2 + 432);
+        v6 = __OFSUB__(result, v5);
+        v8 = result - v5;
+        v7 = (v8 < 0) ^ v6 | (v8 == 0);
+        v9 = v8 + v4;
+        if (!v7) {
+          return v9;
+        }
+      }
+    }
+    else {
+      return 0;
     }
   }
   return result;

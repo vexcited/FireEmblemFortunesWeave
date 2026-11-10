@@ -36,6 +36,162 @@ __int64 ProcGrowSeq_7fb040(__int64 result);
 __int64 game_anonymous_ProcGrowSeq_LevelUp_closure_Invoke(__int64 result);
 __int64 game_anonymous_ProcGrowSeq_UpdateLearn_closure_Invoke(__int64 result,
                                                               __int64* a2);
+__int64* AchieveMap_9b19a0(__int64* result, unsigned __int8, unsigned __int8);
+__int64 GameRoutine_9b11a0(_QWORD*, unsigned __int64*, __int64);
+__int64 game_HashString(__int64 result);
+__int64 game_HashString32(__int64 result);
+__int64 game_telop_1745d80(__int64, __int64, int, char, __int64);
+extern _UNKNOWN GameData_1a8d262;
+extern _UNKNOWN GameData_1a8d283;
+extern _UNKNOWN GameData_1a94c11;
+extern _UNKNOWN GameData_1abf8e3;
+extern __int64 (*GameData_1f9ce78[])();
+extern __int64 GameData_21f61c0[];
+void game_Unit_LevelUp(__int64, char);
+__int64 game_anonymous_ProcGrowSeq_LevelUp(__int64 result);
+__int64* ProcGrowSeq_7fa8f0(__int64* result);
+
+__int64 game_anonymous_ProcGrowSeq_LevelUp(__int64 result)
+{
+  __int64 v1;
+  __int64 v2;
+  int v3;
+  char v4;
+  __int64 v5;
+  unsigned int v6;
+  char v7;
+  char v8;
+  int v9;
+  __int64 v10;
+  struct {
+    _QWORD v11[4];
+    _QWORD* v12;
+  } v11_;
+
+  v1 = result;
+  if ((*(_BYTE*)(result + 250) & 2) != 0 ||
+      (*(_BYTE*)(result + 474) & 1) != 0) {
+    result = *(_QWORD*)(result + 152);
+    v6 = *(unsigned __int8*)(result + 498);
+    if (*(_DWORD*)(v1 + 256) < (signed int)v6) {
+      do {
+        v7 = v6 - 1;
+        if (v6 > 0x64) {
+          v7 = 99;
+        }
+        if (v6 < 2) {
+          v8 = 1;
+        }
+        else {
+          v8 = v7;
+        }
+        game_Unit_LevelUp(result, v8);
+        result = *(_QWORD*)(v1 + 152);
+        v9 = *(_DWORD*)(v1 + 256) + 1;
+        *(_DWORD*)(v1 + 256) = v9;
+        v6 = *(unsigned __int8*)(result + 498);
+      } while (v9 < (int)v6);
+    }
+    return result;
+  }
+  v2 = *(_QWORD*)(result + 152);
+  v3 = *(_DWORD*)(result + 256);
+  if (v3 >= *(unsigned __int8*)(v2 + 498)) {
+    return result;
+  }
+  v4 = *(_BYTE*)(result + 473);
+  v11_.v11[0] = GameData_1f9ce78;
+  v11_.v11[1] = result;
+  v11_.v12 = v11_.v11;
+  game_telop_1745d80(result, v2, v3, v4, (__int64)v11_.v11);
+  if (v11_.v12 == v11_.v11) {
+    v5 = 32;
+  }
+  else {
+    if (v11_.v12 == nullptr) {
+      goto LABEL_17;
+    }
+    v5 = 40;
+  }
+  (*(void (**)(__int64))(*v11_.v12 + v5))((__int64)v11_.v12);
+LABEL_17:
+  ++*(_DWORD*)(v1 + 256);
+  result = game_HashString32((__int64)"LevelUp");
+  v10 = *(_QWORD*)(v1 + 8);
+  if (v10 != 0) {
+    while (1) {
+      if (*(_BYTE*)v10 == 2) {
+        if (*(_DWORD*)(v10 + 32) == (_DWORD)result) {
+          *(_QWORD*)(v1 + 16) = v10;
+          *(_WORD*)(v1 + 136) &= ~0x80u;
+          return result;
+        }
+      }
+      else if (*(_BYTE*)v10 == 0) {
+        return result;
+      }
+      v10 += 64;
+    }
+  }
+  return result;
+}
+
+__int64* ProcGrowSeq_7fa8f0(__int64* result)
+{
+  char* v1;
+  __int64* v2;
+  __int64 v3;
+  __int64 v4;
+  void* v5;
+  unsigned int v6;
+  struct {
+    __int64 v7;
+    void* v8;
+  } v7_;
+
+  v1 = (char*)result + 292;
+  v2 = result;
+  v3 = 0;
+  v4 = result[19] + 540;
+  do {
+    if (*(int*)&v1[4 * v3 - 112] >= 1) {
+      v6 = *(unsigned __int8*)(v4 + v3);
+      if ((unsigned __int8)v1[v3] < v6) {
+        if (*(unsigned __int8*)(v4 + v3) > 8u) {
+          if (v6 == 9) {
+            v7_.v8 = &GameData_1abf8e3;
+            v5 = &GameData_1abf8e3;
+          }
+          else {
+            if (v6 != 12) {
+              goto LABEL_4;
+            }
+            v7_.v8 = &GameData_1a8d283;
+            v5 = &GameData_1a8d283;
+          }
+        }
+        else if (v6 == 5) {
+          v7_.v8 = &GameData_1a94c11;
+          v5 = &GameData_1a94c11;
+        }
+        else {
+          if (v6 != 7) {
+            goto LABEL_4;
+          }
+          v7_.v8 = &GameData_1a8d262;
+          v5 = &GameData_1a8d262;
+        }
+        v7_.v7 = game_HashString((__int64)v5);
+        GameRoutine_9b11a0(GameData_21f61c0, (unsigned __int64*)&v7_.v7, 1);
+      LABEL_4:
+        v7_.v7 = *(_QWORD*)(v2[19] + 392);
+        result = AchieveMap_9b19a0(&v7_.v7, v3, v6);
+      }
+    }
+    ++v3;
+  } while (v3 != 13);
+  return result;
+}
 
 __int64 ProcGrowSeq_7faa40(__int64 result)
 {

@@ -20,6 +20,220 @@ __int64 StatusItem_188e530(__int64 a1, __int64 a2);
 __int64 StatusItem_188e720(_QWORD* a1);
 __int64 StatusItem_188e7e0(__int64 a1);
 __int64 StatusItem_188e890(__int64 a1, __int64* a2);
+__int64 Element_18850d0(_QWORD, _QWORD, _QWORD);
+__int64 GameRoutine_1888c80(__int64, __int64, __int64);
+__int64 GameRoutine_18b26a0(_QWORD, _QWORD, _QWORD, _QWORD);
+__int64 GameRoutine_576600(_QWORD, _QWORD);
+__int64 LayoutEx_579160(_QWORD, _QWORD);
+__int64 fw_memory_HeapManager_Allocate(_QWORD, _QWORD, _QWORD, _QWORD);
+__int64 fw_text_String_CopyTerminated(_QWORD, _QWORD, _QWORD);
+__int64 nn_mem_StandardAllocator_Free(_QWORD);
+__int64 strlen(_QWORD);
+__n128 GameRoutine_188d7a0(_QWORD*);
+extern __int64 (*GameData_2100080[])();
+extern __int64 (*GameData_2100120[])();
+extern __int64 (*GameData_21002f8[])();
+extern __int64 (*StatusItem_188e7e0_ptr[])();
+extern __int64 (
+    *game_gameui_control_StatusItem_Destroy_StatusItem_188ecc0_ptr[])();
+extern __int64 (*game_gameui_control_StatusItem_vtable[])();
+extern __int64* GameData_2132080[6];
+extern __int64 GameData_21000c8;
+extern __int64 GameData_21000d8;
+extern __int64 GameData_21000e8;
+extern __int64 GameData_21000f8;
+extern __int64 GameData_2100108;
+extern __int64 fw_memory_g_heap_manager_ptr;
+extern char* GameData_21000c0;
+extern char* GameData_21000d0;
+extern char* GameData_21000e0;
+extern char* GameData_21000f0;
+extern char* GameData_2100100;
+__attribute__((swiftcall)) void StatusItem_188dba0(PSEUDO_X8 x8_, __int64 a1,
+                                                   __int64 a2, __int64 a3);
+__attribute__((swiftcall)) void StatusItem_188de10(PSEUDO_X8 x8_, __int64 a1,
+                                                   __int64 a2);
+
+__attribute__((swiftcall)) void StatusItem_188dba0(PSEUDO_X8 x8_, __int64 a1,
+                                                   __int64 a2, __int64 a3)
+{
+  _QWORD* a4 = (_QWORD*)PSEUDO_X8_VALUE(x8_);
+  _QWORD* v8;
+  _QWORD* v9;
+  _QWORD* v10;
+  __int64 v11;
+  _QWORD* v12;
+  __int64 v13;
+  __int64 v14;
+  __int64 v15;
+  __int64 v16;
+  __int64 v17;
+  __int64 v18;
+  __int64 v19;
+  __int64 v20;
+  __int64 v21;
+  __int64 v22;
+  __int64 v23;
+  __int64 result;
+  __int64 v25;
+  __int64 v26;
+
+  v8 = (_QWORD*)LayoutEx_579160(1176, 8);
+  v9 = v8 + 3;
+  v10 = v8;
+  v8[1] = 0;
+  v8[2] = 0;
+  *v8 = GameData_2100120;
+  GameRoutine_18b26a0(v8 + 3, a1, a2, a3);
+  v10[138] = 0;
+  v10[139] = 0;
+  v10[140] = 0;
+  v10[3] = game_gameui_control_StatusItem_vtable;
+  v10[141] = 0;
+  v10[142] = 0;
+  v10[143] = 0;
+  v10[145] = 0;
+  v10[132] = StatusItem_188e7e0_ptr;
+  v10[12] = GameData_2100080;
+  *((_DWORD*)v10 + 288) = 42;
+  *(_QWORD*)((char*)v10 + 1166) = 0;
+  v11 = fw_memory_g_heap_manager_ptr;
+  v12 = (_QWORD*)fw_memory_HeapManager_Allocate(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr, 80, 16, 0);
+  v13 = GameData_21000f8;
+  v12[6] = GameData_21000f0;
+  v12[7] = v13;
+  v14 = GameData_2100108;
+  v12[8] = GameData_2100100;
+  v12[9] = v14;
+  v15 = GameData_21000d8;
+  v12[2] = GameData_21000d0;
+  v12[3] = v15;
+  v16 = GameData_21000e8;
+  v12[4] = GameData_21000e0;
+  v12[5] = v16;
+  v17 = GameData_21000c8;
+  *v12 = GameData_21000c0;
+  v12[1] = v17;
+  v18 = GameRoutine_576600(a1, "Name");
+  if (v18 != 0) {
+    v25 = v18;
+    v26 = strlen(v18);
+    if (v26 != 0) {
+      GameRoutine_1888c80((__int64)(v10 + 29), (__int64)v12, (__int64)&v25);
+    }
+  }
+  v19 = GameRoutine_576600(a1, v12[2]);
+  if (v19 != 0) {
+    v25 = v19;
+    v26 = strlen(v19);
+    if (v26 != 0) {
+      GameRoutine_1888c80((__int64)(v10 + 29), (__int64)(v12 + 2),
+                          (__int64)&v25);
+    }
+  }
+  v20 = GameRoutine_576600(a1, v12[4]);
+  if (v20 != 0) {
+    v25 = v20;
+    v26 = strlen(v20);
+    if (v26 != 0) {
+      GameRoutine_1888c80((__int64)(v10 + 29), (__int64)(v12 + 4),
+                          (__int64)&v25);
+    }
+  }
+  v21 = GameRoutine_576600(a1, v12[6]);
+  if (v21 != 0) {
+    v25 = v21;
+    v26 = strlen(v21);
+    if (v26 != 0) {
+      GameRoutine_1888c80((__int64)(v10 + 29), (__int64)(v12 + 6),
+                          (__int64)&v25);
+    }
+  }
+  v22 = GameRoutine_576600(a1, v12[8]);
+  if (v22 != 0) {
+    v25 = v22;
+    v26 = strlen(v22);
+    if (v26 != 0) {
+      GameRoutine_1888c80((__int64)(v10 + 29), (__int64)(v12 + 8),
+                          (__int64)&v25);
+    }
+  }
+  GameRoutine_188d7a0(v9);
+  v23 = 128;
+  if (*(_QWORD*)(*(_QWORD*)v11 + 200LL) == 0) {
+    v23 = 56;
+  }
+  result = nn_mem_StandardAllocator_Free(*(_QWORD*)v11 + v23);
+  *a4 = v9;
+  a4[1] = v10;
+  v10[3] = game_gameui_control_StatusItem_Destroy_StatusItem_188ecc0_ptr;
+  v10[12] = GameData_21002f8;
+  v10[132] = StatusItem_188e7e0_ptr;
+  {
+    result;
+    return;
+  }
+}
+
+__attribute__((swiftcall)) void StatusItem_188de10(PSEUDO_X8 x8_, __int64 a1,
+                                                   __int64 a2)
+{
+  _QWORD* a3 = (_QWORD*)PSEUDO_X8_VALUE(x8_);
+  _QWORD* v6;
+  _QWORD* v7;
+  _QWORD* v8;
+  _QWORD* v9;
+  __int64* v10;
+  __int64 v11;
+  __int64 v12;
+  int v13;
+
+  v6 = (_QWORD*)LayoutEx_579160(1176, 8);
+  v7 = v6 + 3;
+  v8 = v6;
+  v6[1] = 0;
+  v6[2] = 0;
+  *v6 = GameData_2100120;
+  Element_18850d0(v6 + 3, a1, a2);
+  v9 = v8 + 134;
+  v10 = GameData_2132080[0];
+  v8[3] = GameData_2132080[0] + 2;
+  v8[12] = v10 + 51;
+  v8[132] = v10 + 56;
+  *((_DWORD*)v8 + 266) = *(_DWORD*)(a1 + 1040);
+  *((_BYTE*)v8 + 1068) = *(_BYTE*)(a1 + 1044);
+  if ((*(_BYTE*)(a1 + 1048) & 1) != 0) {
+    fw_text_String_CopyTerminated(v9, *(_QWORD*)(a1 + 1064),
+                                  *(_QWORD*)(a1 + 1056));
+  }
+  else {
+    v11 = *(_QWORD*)(a1 + 1048);
+    v12 = *(_QWORD*)(a1 + 1064);
+    v8[135] = *(_QWORD*)(a1 + 1056);
+    v8[136] = v12;
+    *v9 = v11;
+  }
+  v8[138] = 0;
+  v8[139] = 0;
+  v8[3] = game_gameui_control_StatusItem_vtable;
+  v8[140] = 0;
+  v8[141] = 0;
+  v8[142] = 0;
+  v8[143] = 0;
+  v8[12] = GameData_2100080;
+  v8[132] = StatusItem_188e7e0_ptr;
+  v13 = *(_DWORD*)(a1 + 1128);
+  v8[145] = 0;
+  *((_DWORD*)v8 + 288) = v13;
+  *(_QWORD*)((char*)v8 + 1166) = 0;
+  GameRoutine_188d7a0(v7);
+  *a3 = v7;
+  a3[1] = v8;
+  v8[3] = game_gameui_control_StatusItem_Destroy_StatusItem_188ecc0_ptr;
+  v8[12] = GameData_21002f8;
+  v8[132] = StatusItem_188e7e0_ptr;
+}
 
 __int64 StatusItem_188e530(__int64 a1, __int64 a2)
 {

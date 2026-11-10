@@ -59,6 +59,109 @@ game_ConvergeConst_Part3ItemAdjuster_CheckAndAdjustAfterCommit_lambda0_Invoke(
 __int64
 game_ConvergeConst_Part3ItemAdjuster_CheckAndAdjustAfterCommit_lambda1_Invoke(
     __int64 result, __int64* a2, int* a3);
+_QWORD* game_UnitPool_Find_6ead60(__int64*, _DWORD*);
+__attribute__((swiftcall)) void LegionPool_936f60(PSEUDO_X8, __int64 result,
+                                                  unsigned __int8*, __int64);
+__attribute__((swiftcall)) void
+game_UnitUtil_UniqueMap_Commit_89abc0(PSEUDO_X8, __int64 result,
+                                      unsigned __int16*, __int64);
+__int64 ConvergeConst_8e68e0_alt2(unsigned __int8, __int64,
+                                  __int64) __asm__("ConvergeConst_8e68e0");
+__int64 GameRoutine_89aac0(_QWORD*, _QWORD*);
+__int64 LegionPool_938ca0(__int64);
+__int64 game_GameVariableTable_Find(_QWORD*, unsigned __int64*);
+__int64 game_GetHero_alt1(unsigned __int8) __asm__("game_GetHero");
+__int64 game_HashString(__int64 result);
+char* GameRoutine_89d1e0(unsigned __int64);
+extern _QWORD GameData_1f9cbe8[10];
+extern __int64 (*GameData_1fac7c0[])();
+extern __int64 (*GameData_1fac850[])();
+extern __int64 GameData_21c99b8;
+__int64 (**game_ConvergeConst_Part3ItemAdjuster_CheckBeforeCommit(
+    __int64 a1, unsigned __int8 a2))();
+__int64 game_ConvergeConst_Depository_Clone_lambda0_Invoke(__int64 a1,
+                                                           __int64 a2);
+char* game_ConvergeConst_Depository_Merge_lambda0_Invoke(char* result,
+                                                         __int64 a2);
+__int64 game_ConvergeConst_Depository_Merge_lambda1_Invoke(__int64 result,
+                                                           unsigned __int8* a2);
+
+__int64 (**game_ConvergeConst_Part3ItemAdjuster_CheckBeforeCommit(
+    __int64 a1, unsigned __int8 a2))()
+{
+  __int64 v2;
+  __int64 (**result)();
+  __int64 v6;
+  __int64 v7;
+  struct {
+    _QWORD v8[4];
+    _QWORD* v9;
+  } v8_;
+  struct {
+    __int64 (**v10)();
+    __int64 v11;
+    __int64* v12;
+    char gap72_[8];
+    __int64* v13;
+  } v10_;
+  __int64 v14;
+
+  v2 = *(_QWORD*)a1;
+  *(_BYTE*)(a1 + 48) = 0;
+  *(_QWORD*)(a1 + 8) = v2;
+  *(_QWORD*)(a1 + 32) = *(_QWORD*)(a1 + 24);
+  v10_.v11 = GameData_1f9cbe8[a2];
+  v10_.v10 = (__int64 (**)(void))game_HashString(v10_.v11);
+  if (game_GameModeData_instance_ != 0 &&
+          (result = (__int64 (**)(void))game_GameVariableTable_Find(
+               *(_QWORD**)(game_GameModeData_instance_ + 48),
+               (unsigned __int64*)&v10_.v10)) != nullptr &&
+          *((_DWORD*)result + 8) != 0 ||
+      (result = (__int64 (**)(void))game_GetHero_alt1(a2)) == nullptr) {
+    *(_BYTE*)(a1 + 48) = 0;
+    return result;
+  }
+  v10_.v10 = result;
+  LODWORD(v8_.v8[0]) = 241;
+  result = (__int64 (**)(void))game_UnitPool_Find_6ead60((__int64*)&v10_.v10,
+                                                         v8_.v8);
+  *(_BYTE*)(a1 + 48) = result != nullptr;
+  if (result == nullptr) {
+    return result;
+  }
+  v14 = 0;
+  v10_.v13 = (__int64*)&v10_.v10;
+  v8_.v9 = v8_.v8;
+  v10_.v10 = GameData_1fac7c0;
+  v10_.v11 = a1;
+  v10_.v12 = &v14;
+  v8_.v8[0] = GameData_1fac850;
+  v8_.v8[1] = &v14;
+  ConvergeConst_8e68e0_alt2(a2, (__int64)&v10_.v10, (__int64)v8_.v8);
+  if (v8_.v9 == v8_.v8) {
+    v6 = 32;
+  }
+  else {
+    if (v8_.v9 == nullptr) {
+      goto LABEL_12;
+    }
+    v6 = 40;
+  }
+  (*(void (**)(__int64))(*v8_.v9 + v6))((__int64)v8_.v9);
+LABEL_12:
+  result = (__int64 (**)(void))v10_.v13;
+  if (v10_.v13 == (__int64*)&v10_.v10) {
+    v7 = 32;
+  }
+  else {
+    if (v10_.v13 == nullptr) {
+      return result;
+    }
+    v7 = 40;
+  }
+  return (__int64 (**)(void))(*(__int64 (**)(__int64))(*v10_.v13 + v7))(
+      (__int64)v10_.v13);
+}
 
 __int64 ConvergeConst_8e68e0(__int64 a1, __int64 a2, __int64 a3)
 {
@@ -499,6 +602,17 @@ LABEL_42:
   return result;
 }
 
+__int64 game_ConvergeConst_Depository_Clone_lambda0_Invoke(__int64 a1,
+                                                           __int64 a2)
+{
+  _BYTE v3[8];
+
+  return X8CALL_X0(
+      __int64, game_UnitUtil_UniqueMap_Commit_89abc0(
+                   (void*)((__int64)v3), *(_QWORD*)(*(_QWORD*)(a1 + 8) + 8LL),
+                   (unsigned __int16*)(a2 + 4), *(unsigned __int16*)(a2 + 2)));
+}
+
 _QWORD* game_ConvergeConst_Depository_Clone_lambda1_Invoke(__int64 a1,
                                                            __int64 a2)
 {
@@ -517,6 +631,83 @@ _QWORD* game_ConvergeConst_Depository_Clone_lambda2_Invoke(__int64 a1,
   return (*(struct PseudoSret*)(&v3) = GameRoutine_93c6a0(
               *(_QWORD*)(*(_QWORD*)(a1 + 8) + 24LL), a2, 0, 1),
           (void*)(&v3));
+}
+
+char* game_ConvergeConst_Depository_Merge_lambda0_Invoke(char* result,
+                                                         __int64 a2)
+{
+  unsigned __int16* v2;
+  __int64 v3;
+  unsigned int v4;
+  unsigned __int16* v5;
+  _QWORD* v6;
+  struct {
+    _BYTE v7[4];
+    int v8;
+  } v7_;
+
+  v4 = *(unsigned __int16*)(a2 + 4);
+  v2 = (unsigned __int16*)(a2 + 4);
+  v3 = v4;
+  if (v4 != 0 &&
+      (*(_BYTE*)(*(_QWORD*)(*(_QWORD*)(GameData_21c99b8 + 64) + 8 * v3) +
+                 336LL) &
+       0x34) == 0) {
+    v5 = v2;
+    v6 = *(_QWORD**)(*((_QWORD*)result + 1) + 8LL);
+    result = (char*)GameRoutine_89aac0(v6, v2);
+    if ((_DWORD)result == -1 ||
+        *(_WORD*)(v6[1] + 12LL * (int)result + 2) == 0) {
+      result = (char*)X8CALL_X0(
+          __int64, game_UnitUtil_UniqueMap_Commit_89abc0(
+                       (void*)((__int64)v7_.v7), (__int64)v6, v5, 1));
+      if ((v7_.v8 & 0x80000000) == 0) {
+        return GameRoutine_89d1e0((unsigned __int64)v6);
+      }
+    }
+  }
+  return result;
+}
+
+__int64 game_ConvergeConst_Depository_Merge_lambda1_Invoke(__int64 result,
+                                                           unsigned __int8* a2)
+{
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  _QWORD* v5;
+  struct {
+    _BYTE v6[4];
+    int v7;
+  } v6_;
+
+  v2 = *(_QWORD*)(*(_QWORD*)(result + 8) + 40LL);
+  if (*a2 != 0 && (v3 = *(_QWORD*)a2, *(_QWORD*)a2 != 0)) {
+    v4 = 300;
+    v5 = (_QWORD*)(*(_QWORD*)(v2 + 48) + 56LL);
+    while (*(v5 - 7) != v3 && *(v5 - 6) != v3 && *(v5 - 5) != v3 &&
+           *(v5 - 4) != v3 && *(v5 - 3) != v3 && *(v5 - 2) != v3 &&
+           *(v5 - 1) != v3 && *v5 != v3 && v5[1] != v3 && v5[2] != v3 &&
+           v5[3] != v3 && v5[4] != v3 && v5[5] != v3 && v5[6] != v3 &&
+           v5[7] != v3) {
+      v4 -= 15;
+      v5 += 15;
+      if (v4 == 0) {
+        goto LABEL_20;
+      }
+    }
+  }
+  else {
+  LABEL_20:
+    result = X8CALL_X0(
+        __int64,
+        LegionPool_936f60((void*)((__int64)v6_.v6),
+                          *(_QWORD*)(*(_QWORD*)(result + 8) + 40LL), a2, 0));
+    if ((v6_.v7 & 0x80000000) == 0) {
+      return LegionPool_938ca0(v2);
+    }
+  }
+  return result;
 }
 
 _QWORD* game_ConvergeConst_Depository_Merge_lambda2_Invoke(__int64 a1,

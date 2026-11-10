@@ -168,6 +168,9 @@ union PseudoLanes128 {
   })
 
 // The flags of an addition or a subtraction in the wider operand type.
+// A helper left out of line would count as a call the original never makes.
+#define PSEUDO_INLINE static inline __attribute__((always_inline))
+
 #define PSEUDO_FLAG(helper, x, y) \
   ({ \
     __typeof__(x) x_ = (x); \
@@ -176,19 +179,19 @@ union PseudoLanes128 {
       8 * (sizeof(x_) < sizeof(y_) ? sizeof(y_) : sizeof(x_))); \
   })
 
-static inline int pseudo_overflow_add(unsigned long long x,
+PSEUDO_INLINE int pseudo_overflow_add(unsigned long long x,
   unsigned long long y, unsigned bits)
 {
   return (~(x ^ y) & (x ^ (x + y))) >> (bits - 1) & 1;
 }
 
-static inline int pseudo_overflow_sub(unsigned long long x,
+PSEUDO_INLINE int pseudo_overflow_sub(unsigned long long x,
   unsigned long long y, unsigned bits)
 {
   return ((x ^ y) & (x ^ (x - y))) >> (bits - 1) & 1;
 }
 
-static inline int pseudo_carry_add(unsigned long long x,
+PSEUDO_INLINE int pseudo_carry_add(unsigned long long x,
   unsigned long long y, unsigned bits)
 {
   unsigned long long mask = ~0ULL >> (64 - bits);
@@ -196,7 +199,7 @@ static inline int pseudo_carry_add(unsigned long long x,
   return ((x + y) & mask) < (x & mask);
 }
 
-static inline int pseudo_carry_sub(unsigned long long x,
+PSEUDO_INLINE int pseudo_carry_sub(unsigned long long x,
   unsigned long long y, unsigned bits)
 {
   unsigned long long mask = ~0ULL >> (64 - bits);

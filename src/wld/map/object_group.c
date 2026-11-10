@@ -15,6 +15,152 @@ extern _BYTE GameData_1b7f8a9[5];
 unsigned __int64
 wld_map_ObjectGroup_FadeMapEffects_lambda0_Invoke(__int64 a1,
                                                   unsigned __int64** a2);
+_QWORD* ObjectGroup_c25c00_alt1(__int64*, __int64*,
+                                _QWORD*) __asm__("ObjectGroup_c25c00");
+__int64* ObjectGroup_c24fe0(__int64* result);
+__int64* ObjectGroup_c25c00(__int64* a1, __int64* a2, __int64* a3);
+
+__int64* ObjectGroup_c24fe0(__int64* result)
+{
+  __int64* v1;
+  __int64* v2;
+  __int64* v3;
+  __int64 v4;
+  __int64* v5;
+  _QWORD* v7;
+  __int64 v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  __int64* v12;
+  __int64* v13;
+  __int64* v14;
+  __int64 v15;
+  __int64 v16;
+
+  v1 = (__int64*)result[25];
+  v2 = (__int64*)result[26];
+  v3 = result;
+  if (v1 != v2) {
+    while (1) {
+      v4 = *(_QWORD*)*v1;
+      if (v4 == 0 || *(_DWORD*)(v4 + 16) != *(_DWORD*)(*v1 + 8)) {
+        break;
+      }
+      v1 += 8;
+      if (v1 == v2) {
+        return result;
+      }
+    }
+  }
+  v5 = v1 + 8;
+  if (v1 != v2 && v5 != v2) {
+    while (1) {
+      v7 = (_QWORD*)*v5;
+      v8 = *(_QWORD*)*v5;
+      if (v8 != 0 && *(_DWORD*)(v8 + 16) == *((_DWORD*)v7 + 2)) {
+        break;
+      }
+    LABEL_13:
+      v5 += 8;
+      if (v5 == v2) {
+        v2 = (__int64*)v3[26];
+        goto LABEL_35;
+      }
+    }
+    v9 = v5[1];
+    if (v9 != 0) {
+      atomic_fetch_add_explicit((atomic_ullong* volatile)(v9 + 8), 1u,
+                                memory_order_relaxed);
+    }
+    v10 = v1[1];
+    *v1 = (__int64)v7;
+    v1[1] = v9;
+    if (v10 != 0) {
+      if (atomic_fetch_add((atomic_ullong* volatile)(v10 + 8),
+                           0xFFFFFFFFFFFFFFFFLL) == 0) {
+        (*(void (**)(__int64))(*(_QWORD*)v10 + 16LL))(v10);
+        std___1___shared_weak_count___release_weak(v10);
+      }
+      v9 = v1[1];
+    }
+    if (v9 != 0) {
+      atomic_fetch_add_explicit((atomic_ullong* volatile)(v9 + 8), 1u,
+                                memory_order_relaxed);
+      if (atomic_fetch_add((atomic_ullong* volatile)(v9 + 8),
+                           0xFFFFFFFFFFFFFFFFLL) == 0) {
+        (*(void (**)(__int64))(*(_QWORD*)v9 + 16LL))(v9);
+        std___1___shared_weak_count___release_weak(v9);
+      }
+    }
+    result = (__int64*)v1[6];
+    v1[6] = 0;
+    if (result == v1 + 2) {
+      v11 = 32;
+    }
+    else {
+      if (result == nullptr) {
+      LABEL_30:
+        v12 = (__int64*)v5[6];
+        if (v12 != nullptr) {
+          if (v5 + 2 == v12) {
+            v1[6] = (__int64)(v1 + 2);
+            result = (__int64*)(*(__int64 (**)(__int64, __int64*))(
+                *(_QWORD*)v5[6] + 24LL))(v5[6], v1 + 2);
+          }
+          else {
+            v1[6] = (__int64)v12;
+            v5[6] = 0;
+          }
+        }
+        else {
+          v1[6] = 0;
+        }
+        v1 += 8;
+        goto LABEL_13;
+      }
+      v11 = 40;
+    }
+    result =
+        (__int64*)(*(__int64 (**)(__int64))(*result + v11))((__int64)result);
+    goto LABEL_30;
+  }
+LABEL_35:
+  if (v1 != v2) {
+    result = ObjectGroup_c25c00_alt1(v2, v2, v1);
+    v13 = (__int64*)v3[26];
+    v14 = result;
+    if (v13 != result) {
+      while (1) {
+        result = (__int64*)*(v13 - 2);
+        if (v13 - 6 == result) {
+          break;
+        }
+        if (result != nullptr) {
+          v15 = 40;
+        LABEL_43:
+          result = (__int64*)(*(__int64 (**)(__int64))(*result + v15))(
+              (__int64)result);
+        }
+        v16 = *(v13 - 7);
+        if (v16 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v16 + 8),
+                                         0xFFFFFFFFFFFFFFFFLL) == 0) {
+          (*(void (**)(__int64))(*(_QWORD*)v16 + 16LL))(v16);
+          result = (__int64*)std___1___shared_weak_count___release_weak(v16);
+        }
+        v13 -= 8;
+        if (v13 == v14) {
+          goto LABEL_47;
+        }
+      }
+      v15 = 32;
+      goto LABEL_43;
+    }
+  LABEL_47:
+    v3[26] = (__int64)v14;
+  }
+  return result;
+}
 
 __int64* ObjectGroup_c25a40(__int64* result, _QWORD* a2)
 {
@@ -101,6 +247,82 @@ __int64* ObjectGroup_c25a40(__int64* result, _QWORD* a2)
   a2[3] = v16;
   *a2 = a2[1];
   return result;
+}
+
+__int64* ObjectGroup_c25c00(__int64* a1, __int64* a2, __int64* a3)
+{
+  __int64* v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  __int64* v9;
+  __int64 v10;
+  __int64* v11;
+
+  if (a1 != a2) {
+    v5 = a1;
+    while (1) {
+      v6 = *v5;
+      v7 = v5[1];
+      if (v7 != 0) {
+        atomic_fetch_add_explicit((atomic_ullong* volatile)(v7 + 8), 1u,
+                                  memory_order_relaxed);
+      }
+      v8 = a3[1];
+      *a3 = v6;
+      a3[1] = v7;
+      if (v8 != 0) {
+        if (atomic_fetch_add((atomic_ullong* volatile)(v8 + 8),
+                             0xFFFFFFFFFFFFFFFFLL) == 0) {
+          (*(void (**)(__int64))(*(_QWORD*)v8 + 16LL))(v8);
+          std___1___shared_weak_count___release_weak(v8);
+        }
+        v7 = a3[1];
+      }
+      if (v7 != 0) {
+        atomic_fetch_add_explicit((atomic_ullong* volatile)(v7 + 8), 1u,
+                                  memory_order_relaxed);
+        if (atomic_fetch_add((atomic_ullong* volatile)(v7 + 8),
+                             0xFFFFFFFFFFFFFFFFLL) == 0) {
+          (*(void (**)(__int64))(*(_QWORD*)v7 + 16LL))(v7);
+          std___1___shared_weak_count___release_weak(v7);
+        }
+      }
+      v9 = (__int64*)a3[6];
+      a3[6] = 0;
+      if (a3 + 2 == v9) {
+        break;
+      }
+      if (v9 != nullptr) {
+        v10 = 40;
+      LABEL_18:
+        (*(void (**)(__int64))(*v9 + v10))((__int64)v9);
+      }
+      v11 = (__int64*)v5[6];
+      if (v11 != nullptr) {
+        if (v5 + 2 == v11) {
+          a3[6] = (__int64)(a3 + 2);
+          (*(void (**)(__int64, __int64*))(*(_QWORD*)v5[6] + 24LL))(v5[6],
+                                                                    a3 + 2);
+        }
+        else {
+          a3[6] = (__int64)v11;
+          v5[6] = 0;
+        }
+      }
+      else {
+        a3[6] = 0;
+      }
+      v5 += 8;
+      a3 += 8;
+      if (v5 == a2) {
+        return a3;
+      }
+    }
+    v10 = 32;
+    goto LABEL_18;
+  }
+  return a3;
 }
 
 __int64 ObjectGroup_c25d60(__int64 a1, __int64 a2)

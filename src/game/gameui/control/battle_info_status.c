@@ -27,6 +27,185 @@ extern __int64* msg_MessageManager_instance__ptr[2];
 __int64* BattleInfoStatus_19ad660(__int64 a1, __int64 a2, int a3, char a4);
 bool BattleInfoStatus_19ad8a0(_QWORD* a1);
 __int64 BattleInfoStatus_19ad9c0(__int64 result, __int64* a2);
+__int64 GameRoutine_156c5d0(_QWORD, _QWORD, _QWORD);
+__int64 GameRoutine_1888c80(_QWORD, _QWORD, _QWORD);
+__int64 GameRoutine_18b26a0(_QWORD, _QWORD, _QWORD, _QWORD);
+__int64 GameRoutine_576600(_QWORD, _QWORD);
+__int64 LayoutEx_579160(_QWORD, _QWORD);
+__int64 Pane_58f8a0(_QWORD);
+__int64 fw_memory_HeapManager_Allocate(_QWORD, _QWORD, _QWORD, _QWORD);
+__int64 nn_mem_StandardAllocator_Free(_QWORD);
+__int64 strlen(_QWORD);
+extern _UNKNOWN* GameData_212da30;
+extern __int64 (*GameData_21202f0[])();
+extern __int64 (*GameData_2120318[])();
+extern __int64 (*GameData_2120378[])();
+extern __int64 (*GameData_2120550[])();
+extern __int64 (*GameData_2120578[])();
+extern __int64 (*game_gameui_control_BattleInfoStatus_vtable[])();
+extern __int64 (
+    *game_gameui_control_HelpableElement_Destroy_HelpableElement_18b3360_ptr
+        [])();
+extern __int64 GameData_2120338;
+extern __int64 GameData_2120348;
+extern __int64 fw_memory_g_heap_manager_ptr;
+extern char* GameData_2120330;
+extern char* GameData_2120340;
+__attribute__((swiftcall)) void
+BattleInfoStatus_19ad260(PSEUDO_X8 x8_, __int64 a1, __int64 a2, __int64 a3);
+__int64* BattleInfoStatus_19ad4e0(__int64 a1);
+__attribute__((swiftcall)) void
+
+BattleInfoStatus_19ad260(PSEUDO_X8 x8_, __int64 a1, __int64 a2, __int64 a3)
+{
+  _QWORD* a4 = (_QWORD*)PSEUDO_X8_VALUE(x8_);
+  _QWORD* v8;
+  _QWORD* v9;
+  _QWORD* v10;
+  __int64 v11;
+  _QWORD* v12;
+  __int64 v13;
+  __int64 v14;
+  __int64 v15;
+  __int64 v16;
+  __int64 v17;
+  __int64 result;
+  __int64 v19;
+  __int64 v20;
+
+  v8 = (_QWORD*)LayoutEx_579160(1120, 8);
+  v9 = v8 + 3;
+  v10 = v8;
+  v8[1] = 0;
+  v8[2] = 0;
+  *v8 = GameData_2120378;
+  GameRoutine_18b26a0(v8 + 3, a1, a2, a3);
+  v10[138] = 0;
+  v10[3] = game_gameui_control_BattleInfoStatus_vtable;
+  v10[12] = GameData_21202f0;
+  v10[132] = GameData_2120318;
+  v11 = fw_memory_g_heap_manager_ptr;
+  v12 = (_QWORD*)fw_memory_HeapManager_Allocate(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr, 32, 16, 0);
+  v13 = GameData_2120338;
+  *v12 = GameData_2120330;
+  v12[1] = v13;
+  v14 = GameData_2120348;
+  v12[2] = GameData_2120340;
+  v12[3] = v14;
+  v15 = GameRoutine_576600(a1, "Num");
+  if (v15 != 0) {
+    v19 = v15;
+    v20 = strlen(v15);
+    if (v20 != 0) {
+      GameRoutine_1888c80(v10 + 29, v12, &v19);
+    }
+  }
+  v16 = GameRoutine_576600(a1, v12[2]);
+  if (v16 != 0) {
+    v19 = v16;
+    v20 = strlen(v16);
+    if (v20 != 0) {
+      GameRoutine_1888c80(v10 + 29, v12 + 2, &v19);
+    }
+  }
+  v17 = 128;
+  if (*(_QWORD*)(*(_QWORD*)v11 + 200LL) == 0) {
+    v17 = 56;
+  }
+  result = nn_mem_StandardAllocator_Free(*(_QWORD*)v11 + v17);
+  *a4 = v9;
+  a4[1] = v10;
+  v10[3] =
+      game_gameui_control_HelpableElement_Destroy_HelpableElement_18b3360_ptr;
+  v10[12] = GameData_2120550;
+  v10[132] = GameData_2120578;
+  {
+    result;
+    return;
+  }
+}
+
+__int64* BattleInfoStatus_19ad4e0(__int64 a1)
+{
+  __int64* result;
+  __int64* v3;
+  int v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  _QWORD v9[4];
+  int v10;
+  int v11;
+  __int64 v12;
+  __int64 v13;
+  __int64 v14;
+  __int64 v15;
+  __int64 v16;
+  __int64 v17;
+  __int64 v18;
+  __int64 v19;
+  __int64 v20;
+  __int64 v21;
+  __int64 v22;
+  __int64 v23;
+  __int64 v24;
+
+  v9[0] = "Num";
+  v9[1] = 3;
+  result = (__int64*)Element_1886290(a1, v9);
+  v3 = result;
+  if ((atomic_load_explicit((atomic_uchar* volatile)GameData_2130ea8,
+                            memory_order_acquire) &
+       1) == 0) {
+    result = (__int64*)__cxa_guard_acquire(GameData_2130ea8);
+    if ((_DWORD)result != 0) {
+      *GameData_2130ea0 = nn_ui2d_Pane_GetRuntimeTypeInfoStatic();
+      result = (__int64*)__cxa_guard_release(GameData_2130ea8);
+    }
+  }
+  if (v3 != nullptr) {
+    result = (__int64*)(*(__int64 (**)(__int64*))(*v3 + 16))(v3);
+    if (result == GameData_2130ea0) {
+      goto LABEL_10;
+    }
+    do {
+      result = (__int64*)*result;
+    } while (result != GameData_2130ea0 && result != nullptr);
+    if (result != nullptr) {
+    LABEL_10:
+      v5 = *(int*)((char*)((int*)0x24LL) + (_QWORD)GameData_212da30);
+      v6 = Pane_58f8a0(v3);
+      if (v6 != 0) {
+        *(_DWORD*)(v6 + 12) = v5;
+      }
+      v12 = -1;
+      v13 = -1;
+      v14 = -1;
+      v15 = -1;
+      v7 = *msg_MessageManager_instance__ptr[0];
+      v16 = -1;
+      v17 = -1;
+      v18 = -1;
+      v19 = -1;
+      v20 = -1;
+      v21 = -1;
+      v22 = -1;
+      v23 = -1;
+      v9[0] = GameData_212e348 + 2;
+      v9[1] = 0xFFFF0001FFFF0000LL;
+      v9[2] = 0xFFFF0004FFFF0002LL;
+      v9[3] = 0xFFFF0006FFFF0005LL;
+      v24 = 8;
+      v10 = -65529;
+      v11 = -65528;
+      v8 = GameRoutine_a4dbe0(v7, "MID_Sys_ValueEmpty", 0, v9);
+      GameRoutine_156c5d0(v3, v8, 0);
+      return (__int64*)LayoutAccessor_1562cf0(a1 + 88, "Caution_Off");
+    }
+  }
+  return result;
+}
 
 __int64* BattleInfoStatus_19ad660(__int64 a1, __int64 a2, int a3, char a4)
 {

@@ -22,6 +22,16 @@ __int64 TelopTitle_Unknown30();
 __int64 TelopTitle_Unknown31(__int64 a1);
 __int64 TelopTitle_Unknown44(__int64 result);
 __int64 TelopTitle_Unknown12(__int64 result);
+__attribute__((swiftcall)) void snd_a30960(PSEUDO_X8, _QWORD, _QWORD);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, _QWORD, _QWORD,
+                                               _QWORD, _QWORD, _QWORD, _QWORD,
+                                               double, float);
+__int64 GameRoutine_112180(_QWORD, _QWORD);
+__int64 game_util_Format(const char*, ...);
+__n128 snd_Fade_Fade_10c830(_QWORD, double);
+extern __int64* game_sound_g_game_sound_ptr[5];
+extern __int64* game_vstring_kEmpty_ptr[2];
+__int64 TelopTitle_Unknown35(__int64 result);
 
 __int64 TelopTitle_Unknown30()
 {
@@ -170,6 +180,68 @@ __int64 TelopTitle_Unknown44(__int64 result)
     v11 = 300.0;
   }
   *(float*)(result + 416) = v11;
+  return result;
+}
+
+__int64 TelopTitle_Unknown35(__int64 result)
+{
+  __int64 v1;
+  __int64 v2;
+  __int64 v3;
+  int v4;
+  __int64* v5;
+  __int64* v6;
+  __int64 v7;
+  _QWORD v8[2];
+  __int64 v9;
+  int v10;
+
+  v1 = result;
+  if (*(_DWORD*)(result + 864) != 0) {
+    snd_Fade_Fade_10c830(&v9, 0.0f);
+    snd_play_ff2d0((void*)(v8), "AMB_BattleTitle", "AMB_BattleTitle", &v9, 0,
+                   65537, 0, 0.0f, 1.0f);
+    snd_Fade_Destroy_Fade(&v9);
+    return GameRoutine_112180(v1 + 912, v8);
+  }
+  else {
+    v2 = *(_QWORD*)(result + 832);
+    v3 = v2;
+    while (*(_BYTE*)(v3 + 33) != 10) {
+      v3 = *(_QWORD*)(*(_QWORD*)(v3 + 24) + 8LL);
+      if (v3 == 0) {
+        while (*(_BYTE*)(v2 + 33) != 10) {
+          v2 = *(_QWORD*)(*(_QWORD*)(v2 + 24) + 16LL);
+          if (v2 == 0) {
+            return result;
+          }
+        }
+        v3 = v2;
+        break;
+      }
+    }
+    v4 = *(unsigned __int16*)(v3 + 40);
+    v5 = *(__int64**)(v3 + 48);
+    if (v4 != 0) {
+      v6 = v5;
+    }
+    else {
+      v6 = game_vstring_kEmpty_ptr[0];
+    }
+    v7 = game_util_Format("V_%s", *v6);
+    if (*game_sound_g_game_sound_ptr[0] != 0) {
+      snd_a30960((void*)(&v9), *game_sound_g_game_sound_ptr[0], v7);
+    }
+    else {
+      v9 = 0;
+      v10 = 0x2000;
+    }
+    GameRoutine_112180(v1 + 888, &v9);
+    result = snd_fnd_WeakHandle_isValid(v1 + 888);
+    if ((result & 1) != 0) {
+      *(_BYTE*)(v1 + 904) = 1;
+    }
+  }
   return result;
 }
 

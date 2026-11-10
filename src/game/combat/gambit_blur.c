@@ -3,6 +3,7 @@
 #pragma GCC visibility push(hidden)
 
 __int64 GambitBlur_Unknown2(__int64 result);
+__attribute__((swiftcall)) void GambitBlur_Unknown3(PSEUDO_X8 x8_);
 
 __int64 GambitBlur_Unknown2(__int64 result)
 {
@@ -17,6 +18,13 @@ __int64 GambitBlur_Unknown2(__int64 result)
   *(_DWORD*)(v1 + 216) = v2;
   *(_DWORD*)(v1 + 220) = v2;
   return result;
+}
+
+__attribute__((swiftcall)) void GambitBlur_Unknown3(PSEUDO_X8 x8_)
+{
+  _BYTE* a1 = (_BYTE*)PSEUDO_X8_VALUE(x8_);
+  *a1 = 8;
+  strcpy(a1 + 1, "Blur");
 }
 
 #pragma GCC visibility pop

@@ -1046,8 +1046,6 @@ __int64 GameRoutine_60a060(_QWORD, _QWORD, _QWORD);
 
 void __attribute__((noreturn)) GameRoutine_60a1d0(_QWORD);
 
-void __attribute__((noreturn)) GameRoutine_60a1f0(_QWORD);
-
 void __attribute__((noreturn)) GameRoutine_60a230(_QWORD);
 
 void __attribute__((noreturn)) GameRoutine_60a310(_QWORD, _QWORD, _QWORD);
@@ -6207,8 +6205,6 @@ LABEL_25:
   }
   return result;
 }
-
-void __attribute__((noreturn)) GameHr_8184d0() { GameRoutine_60a1f0("vector"); }
 
 __int64 GameHr_818ec0(_QWORD* a1)
 {

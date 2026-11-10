@@ -364,17 +364,11 @@ __int64 GameRoutine_62c360(__int64 result, __int64);
 
 __int64 GameRoutine_6313f0(__int64, __int64, _BYTE*, __int64*, __int64, int*);
 
-unsigned __int64 GameRoutine_6326c0(__int64*, __int64);
-
 __int64 GameRoutine_6328c0(__int64, int);
 
 __int64 GameRoutine_632cd0(__int64, __int64);
 
 void __attribute__((noreturn)) GameRoutine_638240(const char*);
-
-__int64 GameRoutine_638380(void);
-
-__int64 GameRoutine_638520(_QWORD, _QWORD);
 
 __int64 GameRoutine_638de0(_QWORD, _QWORD, _QWORD);
 
@@ -385,8 +379,6 @@ __int64 GameRoutine_6390c0(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_639280(_QWORD, _QWORD);
 
 __int64 GameRoutine_639350(_QWORD);
-
-_QWORD* GameRoutine_639720(_QWORD* __return_ptr, _QWORD, _QWORD);
 
 __int64 GameRoutine_63b1a0(__int64, unsigned __int64, unsigned int, __int64,
                            __int64, __int64);
@@ -865,76 +857,6 @@ __int64 GameHr_637b00(__int64 result, _QWORD* a2)
   return result;
 }
 
-unsigned __int8* GameHr_638260(__int64 a1, unsigned __int8* a2,
-                               unsigned __int8** a3, _QWORD* a4)
-{
-  unsigned __int8* v7;
-  unsigned int v8;
-  int v9;
-  unsigned __int64 v10;
-  __int64* v11;
-  __int64 v12;
-  __int64 v13;
-  __int64* v14;
-  __int64 v15;
-  __int64 v16;
-  __int64 v17;
-  __int64 v18;
-  unsigned __int8* v19;
-  _QWORD v21[2];
-  __int64 v22;
-  __int64 v23;
-  _QWORD v24[3];
-  bool v25;
-
-  v7 = (unsigned __int8*)GameRoutine_638380();
-  if (a2 != v7) {
-    v9 = *v7;
-    v25 = v9 == 58;
-    if (v9 == 125) {
-      goto LABEL_5;
-    }
-    if (v9 == 58) {
-      ++v7;
-    LABEL_5:
-      *a3 = v7;
-      v24[0] = a3;
-      v24[1] = a4;
-      v10 = a4[1];
-      v24[2] = &v25;
-      if (v8 >= v10) {
-        LOBYTE(v22) = 0;
-      }
-      else if (v10 > 0xC) {
-        v14 = (__int64*)(a4[2] + 32LL * v8);
-        v16 = v14[2];
-        v15 = v14[3];
-        v17 = *v14;
-        v18 = *(_QWORD*)(a4[2] + 32LL * v8 + 8);
-        v22 = v16;
-        v23 = v15;
-        v21[0] = v17;
-        v21[1] = v18;
-      }
-      else {
-        v11 = (__int64*)(a4[2] + 16LL * v8);
-        v13 = *v11;
-        v12 = v11[1];
-        LOBYTE(v22) = (a4[3] >> (5 * (unsigned __int8)v8)) & 0x1F;
-        v21[0] = v13;
-        v21[1] = v12;
-      }
-      GameRoutine_638520(v24, v21);
-      v19 = *a3;
-      if (*a3 == a2 || *v19 != 125) {
-        GameRoutine_638240("The replacement field misses a terminating '}'");
-      }
-      return v19 + 1;
-    }
-  }
-  GameRoutine_638240("The argument index should end with a ':' or a '}'");
-}
-
 unsigned __int8* GameHr_638b90(char* a1, unsigned __int8** a2, __int16 a3)
 {
   unsigned __int8* result;
@@ -1121,49 +1043,6 @@ LABEL_23:
   result = 1;
   *a2 = v11 + 1;
   return result;
-}
-
-void __attribute__((noreturn)) GameHr_639520(__int64 a1)
-{
-  const char* v2;
-  __int64 v3[3];
-  _QWORD v4[3];
-  _QWORD v5[3];
-
-  GameRoutine_6326c0(v3,
-                     (__int64)"The type option contains an invalid value for ");
-  GameRoutine_639720(v4, v3, a1);
-  GameRoutine_639720(v5, v4, " formatting argument");
-  if ((v5[0] & 1) != 0) {
-    v2 = (const char*)v5[2];
-  }
-  else {
-    v2 = (char*)v5 + 1;
-  }
-  GameRoutine_638240(v2);
-}
-
-void __attribute__((noreturn)) GameHr_639690(__int64 a1, __int64 a2)
-{
-  const char* v4;
-  __int64 v5[3];
-  _QWORD v6[3];
-  _QWORD v7[3];
-  _QWORD v8[3];
-  _QWORD v9[3];
-
-  GameRoutine_6326c0(v5, (__int64)"The format specifier for ");
-  GameRoutine_639720(v6, v5, a1);
-  GameRoutine_639720(v7, v6, " does not allow the ");
-  GameRoutine_639720(v8, v7, a2);
-  GameRoutine_639720(v9, v8, " option");
-  if ((v9[0] & 1) != 0) {
-    v4 = (const char*)v9[2];
-  }
-  else {
-    v4 = (char*)v9 + 1;
-  }
-  GameRoutine_638240(v4);
 }
 
 __int64 GameHr_63b800(__int64 a1, __int64 a2, unsigned __int8* a3, __int64 a4,

@@ -736,8 +736,6 @@ __int64 GameRoutine_81d740(_QWORD);
 
 __int64 GameRoutine_828dc0(_QWORD, _QWORD, _QWORD);
 
-struct PseudoSret GameRoutine_89b3d0(_QWORD, _QWORD, _QWORD);
-
 __int64 GameRoutine_8e17a0(_QWORD, _QWORD, _QWORD);
 
 struct PseudoSret GameRoutine_906320(_QWORD, _QWORD);
@@ -4058,19 +4056,6 @@ LABEL_8:
     }
   }
   return result;
-}
-
-_QWORD* GameHr_1008b50()
-{
-  __int64 v1;
-
-  return (
-      *(struct PseudoSret*)(&v1) = GameRoutine_89b3d0(
-          *(_QWORD*)(*(_QWORD*)GameData_212cf78[0] + 8LL),
-          *(_QWORD*)(*(_QWORD*)(*(_QWORD*)GameData_212cf78[0] + 8LL) + 8LL) +
-              12LL * GameData_2167728 + 4,
-          1),
-      (void*)(&v1));
 }
 
 _QWORD* GameHr_1021500(__int64 a1)

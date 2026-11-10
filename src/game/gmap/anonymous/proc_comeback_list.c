@@ -23,6 +23,14 @@ _QWORD* game_gmap_anonymous_ProcComebackList_AddItemList_closure_Invoke(
     _QWORD* result, unsigned int* a2);
 __int64 game_gmap_anonymous_ProcComebackList_SortAndFilter_closure_Invoke(
     __int64 a1, unsigned __int8** a2);
+_QWORD* game_16f1350(_QWORD*, __int64, char);
+bool LegionPool_9374e0(_QWORD*, __int64);
+extern __int64 (*GameData_20a2560[])();
+extern __int64 GameData_21f4280;
+extern __int64 GameData_225e7a0;
+extern __int64 game_gameui_MenuAnimator_instance_;
+__int64 ProcComebackList_Unknown124(_QWORD* a1);
+__int64 ProcComebackList_Unknown128(_QWORD* a1);
 
 __int64 ProcComebackList_Destructor(_QWORD* a1)
 {
@@ -97,6 +105,93 @@ __int64 ProcComebackList_DeletingDestructor(_QWORD* a1)
     v7 = 56;
   }
   return nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v7, a1);
+}
+
+__int64 ProcComebackList_Unknown124(_QWORD* a1)
+{
+  char v2;
+  __int64* v3;
+  __int64* v4;
+  __int64 v5;
+  bool v15;
+  char v16;
+
+  if (((*(__int64 (**)(_QWORD*))(*a1 + 472LL))(a1) & 1) != 0) {
+    goto LABEL_2;
+  }
+  v3 = (__int64*)a1[74];
+  v4 = (__int64*)a1[75];
+  if (v3 == v4) {
+    goto LABEL_43;
+  }
+  do {
+    while (1) {
+      v5 = *v3;
+      if (*v3 != -1 && game_gameui_MenuAnimator_instance_ != 0) {
+        break;
+      }
+      if (++v3 == v4) {
+        goto LABEL_43;
+      }
+    }
+    v15 = v5 == *(_QWORD*)(game_gameui_MenuAnimator_instance_ + 272) ||
+          v5 == *(_QWORD*)(game_gameui_MenuAnimator_instance_ + 504) ||
+          v5 == *(_QWORD*)(game_gameui_MenuAnimator_instance_ + 736) ||
+          v5 == *(_QWORD*)(game_gameui_MenuAnimator_instance_ + 968) ||
+          v5 == *(_QWORD*)(game_gameui_MenuAnimator_instance_ + 1200) ||
+          v5 == *(_QWORD*)(game_gameui_MenuAnimator_instance_ + 1432) ||
+          v5 == *(_QWORD*)(game_gameui_MenuAnimator_instance_ + 1664) ||
+          v5 == *(_QWORD*)(game_gameui_MenuAnimator_instance_ + 1896) ||
+          v5 == *(_QWORD*)(game_gameui_MenuAnimator_instance_ + 2128) ||
+          v5 == *(_QWORD*)(game_gameui_MenuAnimator_instance_ + 2360);
+    v16 = v15;
+    if (v15) {
+      break;
+    }
+    ++v3;
+  } while (v3 != v4);
+  if ((v16 & 1) != 0) {
+  LABEL_2:
+    v2 = 0;
+  }
+  else {
+  LABEL_43:
+    v2 = GameData_225e7a0;
+    if (GameData_225e7a0 != 0) {
+      v2 = *(_BYTE*)(GameData_225e7a0 + 408);
+    }
+  }
+  return v2 & 1;
+}
+
+__int64 ProcComebackList_Unknown128(_QWORD* a1)
+{
+  __int64 result;
+  __int64 v3;
+  struct {
+    _QWORD v4[4];
+    _QWORD* v5;
+  } v4_;
+  int v6;
+
+  game_16f1350(a1, 0, 1);
+  v6 = 0;
+  v4_.v4[0] = GameData_20a2560;
+  v4_.v4[1] = a1;
+  v4_.v4[2] = &v6;
+  v4_.v5 = v4_.v4;
+  LegionPool_9374e0(*(_QWORD**)(GameData_21f4280 + 8), (__int64)v4_.v4);
+  result = (__int64)v4_.v5;
+  if (v4_.v5 == v4_.v4) {
+    v3 = 32;
+  }
+  else {
+    if (v4_.v5 == nullptr) {
+      return result;
+    }
+    v3 = 40;
+  }
+  return (*(__int64 (**)(__int64))(*v4_.v5 + v3))((__int64)v4_.v5);
 }
 
 _QWORD* game_gmap_anonymous_ProcComebackList_AddItemList_closure_Invoke(

@@ -10,6 +10,8 @@ extern __int64 game_GameModeData_instance_;
 extern __int64 game_UnitListSet_instance_;
 extern __int64* GameData_212e030[4];
 __int64 FacilityUnitMenuItem_15e7c40(__int64 a1);
+__int64 FacilityUnitMenuItem_15e7ef0(__int64 a1);
+__int64 FacilityUnitMenuItem_15e7f20(__int64 a1);
 
 __int64 FacilityUnitMenuItem_15e7c40(__int64 a1)
 {
@@ -96,6 +98,73 @@ LABEL_17:
     LOBYTE(v5) = (*(__int64 (**)(__int64))(*(_QWORD*)a1 + 712LL))(a1) ^ 1;
   }
   return v5 & 1;
+}
+
+__int64 FacilityUnitMenuItem_15e7ef0(__int64 a1)
+{
+  __int64 v1;
+
+  if ((*(_BYTE*)(a1 + 79) & 1) != 0) {
+    v1 = 520;
+  }
+  else {
+    v1 = 504;
+    *(_DWORD*)(a1 + 40) = 0;
+  }
+  return (*(__int64 (**)(__int64))(*(_QWORD*)a1 + v1))((__int64)a1);
+}
+
+__int64 FacilityUnitMenuItem_15e7f20(__int64 a1)
+{
+  __int64 v1;
+  __int64 v2;
+  _QWORD* v3;
+  __int64* v4;
+  __int64 v5;
+  __int64 v6;
+  int v7;
+  __int64 v8;
+  int v9;
+
+  if ((*(_BYTE*)(a1 + 79) & 1) != 0) {
+    v1 = 520;
+  }
+  else {
+    v2 = a1;
+    v3 = *(_QWORD**)(a1 + 8);
+    if (v3 != nullptr) {
+      v3 = (_QWORD*)__dynamic_cast(v3, GameData_212e030[0], &GameData_205e078,
+                                   0);
+    }
+    v4 = (__int64*)v3[148];
+    v5 = v3[149] - (_QWORD)v4;
+    if (v5 != 0) {
+      v6 = v5 >> 3;
+      v7 = 1;
+      while (1) {
+        v8 = *v4++;
+        if (v8 == 0) {
+          break;
+        }
+        ++v7;
+        if (--v6 == 0) {
+          goto LABEL_9;
+        }
+      }
+    }
+    else {
+    LABEL_9:
+      v7 = 0;
+    }
+    v9 = (*(__int64 (**)(_QWORD*))(*v3 + 1192LL))(v3) & 1;
+    a1 = v2;
+    *(_DWORD*)(v2 + 40) = v7 + v9;
+    v1 = 512;
+    if (*(_BYTE*)(v2 + 79) != 0) {
+      v1 = 520;
+    }
+  }
+  return (*(__int64 (**)(__int64))(*(_QWORD*)a1 + v1))((__int64)a1);
 }
 
 #pragma GCC visibility pop

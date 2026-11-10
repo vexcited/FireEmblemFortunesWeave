@@ -18,6 +18,108 @@ extern __int64* GameData_212d678[2];
 bool IconLegion_19abe40(__int64 a1, __int64 a2);
 bool IconLegion_19ac160(__int64 a1);
 __int64 IconLegion_19ac290(__int64 result, __int64* a2);
+__int64 GameRoutine_1888c80(_QWORD, _QWORD, _QWORD);
+__int64 GameRoutine_18b26a0(_QWORD, _QWORD, _QWORD, _QWORD);
+__int64 GameRoutine_576600(_QWORD, _QWORD);
+__int64 LayoutEx_579160(_QWORD, _QWORD);
+__int64 fw_memory_HeapManager_Allocate(_QWORD, _QWORD, _QWORD, _QWORD);
+__int64 nn_mem_StandardAllocator_Free(_QWORD);
+__int64 strlen(_QWORD);
+extern __int64 (*GameData_211fa68[])();
+extern __int64 (*GameData_211fa90[])();
+extern __int64 (*GameData_211fab8[])();
+extern __int64 (*GameData_211fc90[])();
+extern __int64 (*GameData_211fcb8[])();
+extern __int64 (
+    *game_gameui_control_HelpableElement_Destroy_HelpableElement_18b3360_ptr
+        [])();
+extern __int64 (*game_gameui_control_IconLegion_vtable[])();
+extern __int64 fw_memory_g_heap_manager_ptr;
+__attribute__((swiftcall)) void IconLegion_19abb70(PSEUDO_X8 x8_, __int64 a1,
+                                                   __int64 a2, __int64 a3);
+
+__attribute__((swiftcall)) void IconLegion_19abb70(PSEUDO_X8 x8_, __int64 a1,
+                                                   __int64 a2, __int64 a3)
+{
+  _QWORD* a4 = (_QWORD*)PSEUDO_X8_VALUE(x8_);
+  _QWORD* v8;
+  _QWORD* v9;
+  _QWORD* v10;
+  __int64 v11;
+  _QWORD* v12;
+  __int64 v13;
+  __int64* v14;
+  __int64 v15;
+  __int64 v16;
+  __int64 v17;
+  __int64 v18;
+  __int64 result;
+  __int64 v20;
+  __int64 v21;
+
+  v8 = (_QWORD*)LayoutEx_579160(1144, 8);
+  v9 = v8 + 3;
+  v10 = v8;
+  v8[1] = 0;
+  v8[2] = 0;
+  *v8 = GameData_211fab8;
+  GameRoutine_18b26a0(v8 + 3, a1, a2, a3);
+  v10[138] = 0;
+  v10[139] = 0;
+  v10[140] = 0;
+  v10[3] = game_gameui_control_IconLegion_vtable;
+  v10[141] = 0;
+  *((_BYTE*)v10 + 1136) = 0;
+  v10[12] = GameData_211fa68;
+  v10[132] = GameData_211fa90;
+  v11 = fw_memory_g_heap_manager_ptr;
+  v12 = (_QWORD*)fw_memory_HeapManager_Allocate(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr, 16, 16, 0);
+  *v12 = "Img";
+  v12[1] = 3;
+  v13 = GameRoutine_576600(a1, "Img");
+  if (v13 != 0) {
+    v20 = v13;
+    v21 = strlen(v13);
+    if (v21 != 0) {
+      GameRoutine_1888c80(v10 + 29, v12, &v20);
+    }
+  }
+  v14 = v10 + 138;
+  v15 = ui_LayoutAccessor_FindPane(v10 + 14, "Img");
+  if (v15 != 0) {
+    v16 = __dynamic_cast(v15, GameData_212d670[0], GameData_212d678[0], 0);
+    *v14 = v16;
+    if (v16 != 0) {
+      goto LABEL_11;
+    }
+  }
+  else {
+    *v14 = 0;
+  }
+  v17 = ui_LayoutAccessor_FindPane(v10 + 14, "Icon");
+  if (v17 != 0) {
+    v17 = __dynamic_cast(v17, GameData_212d670[0], GameData_212d678[0], 0);
+  }
+  *v14 = v17;
+LABEL_11:
+  (*(void (**)(_QWORD*, _QWORD))(v10[3] + 40LL))(v9, 0);
+  v18 = 128;
+  if (*(_QWORD*)(*(_QWORD*)v11 + 200LL) == 0) {
+    v18 = 56;
+  }
+  result = nn_mem_StandardAllocator_Free(*(_QWORD*)v11 + v18);
+  *a4 = v9;
+  a4[1] = v10;
+  v10[3] =
+      game_gameui_control_HelpableElement_Destroy_HelpableElement_18b3360_ptr;
+  v10[12] = GameData_211fc90;
+  v10[132] = GameData_211fcb8;
+  {
+    result;
+    return;
+  }
+}
 
 bool IconLegion_19abe40(__int64 a1, __int64 a2)
 {

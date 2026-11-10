@@ -10,6 +10,90 @@ extern __int64 (*game_character_FootprintModule2_vtable[])();
 extern __int64 (*kaneko_WPHolder_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 FootprintModule2_Destructor(_QWORD* a1);
+__n128 std___1___shared_weak_count___release_weak_alt1() __asm__(
+    "std___1___shared_weak_count___release_weak");
+extern __int64 GameData_21c6978;
+void game_10e91c0(_QWORD*, float32x4_t*, float32x4_t*, long double);
+void FootprintModule2_Unknown6(__int64 a1);
+
+void FootprintModule2_Unknown6(__int64 a1)
+{
+
+#pragma clang fp contract(off)
+  __int64 v1;
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  float32x4_t* v5;
+  __int64 v6;
+  float32x4_t v7;
+  float32x4_t v8;
+  int8x16_t v9;
+  float32x4_t v10;
+  float32x4_t v11;
+  float32x4_t v12;
+  float32x4_t v13;
+
+  v1 = *(_QWORD*)(a1 + 8);
+  if (*(_BYTE*)(v1 + 289) == 1 && (*(_BYTE*)(v1 + 288) & 1) != 0) {
+    while ((*(_BYTE*)(v1 + 300) & 0xFD) != 1) {
+      v1 = *(_QWORD*)(v1 + 736);
+      if (v1 == 0) {
+        v2 = *(_QWORD*)(GameData_21c6978 + 32);
+        if (*(_QWORD*)(GameData_21c6978 + 24) != v2) {
+          v3 = *(_QWORD*)(v2 - 8);
+          if (v3 != 0) {
+            v5 = *(float32x4_t**)(v3 + 24);
+            v4 = *(_QWORD*)(v3 + 32);
+            if (v4 != 0) {
+              atomic_fetch_add_explicit((atomic_ullong* volatile)(v4 + 8), 1u,
+                                        memory_order_relaxed);
+              if (atomic_fetch_add((atomic_ullong* volatile)(v4 + 8),
+                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
+                v6 = a1;
+                (*(void (**)(__int64))(*(_QWORD*)v4 + 16LL))(v4);
+                std___1___shared_weak_count___release_weak_alt1();
+                a1 = v6;
+              }
+            }
+            if (v5 != nullptr) {
+              v7 = v5[1];
+              v8 = vsubq_f32(v5[2], v7);
+              v9 = vmulq_f32(v8, v8);
+              LANES128(v9).n128_u64[0] =
+                  LANES64_OF(
+                      vadd_f32(
+                          COERCE_AS(
+                              float32x2_t,
+                              LANES128_OF(vextq_s8(v9, v9, 8u)).n128_u64[0]),
+                          COERCE_AS(float32x2_t, LANES128(v9).n128_u64[0])))
+                      .n64_u64[0];
+              LANES128(v9).n128_u64[0] =
+                  LANES64_OF(
+                      vpadd_f32(
+                          COERCE_AS(float32x2_t, LANES128(v9).n128_u64[0]),
+                          COERCE_AS(float32x2_t, LANES128(v9).n128_u64[0])))
+                      .n64_u64[0];
+              LANES128(v9).n128_u64[1] = LANES128(v9).n128_u64[0];
+              v10 = vrsqrteq_f32(v9);
+              v11 = vmulq_f32(v10, vrsqrtsq_f32(v10, vmulq_f32(v9, v10)));
+              v12 = vbicq_s8(
+                  vmulq_f32(v8, vmulq_f32(v11, vrsqrtsq_f32(
+                                                   v11, vmulq_f32(v9, v11)))),
+                  vceqzq_f32(v9));
+              v13 = v7;
+              game_10e91c0((_QWORD*)(a1 + 88), &v13, &v12, *(long double*)&v7);
+            }
+          }
+        }
+        return;
+      }
+      if (*(_BYTE*)(v1 + 289) != 1 || *(_BYTE*)(v1 + 288) != 1) {
+        return;
+      }
+    }
+  }
+}
 
 __int64 FootprintModule2_Destructor(_QWORD* a1)
 {

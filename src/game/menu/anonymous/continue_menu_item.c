@@ -10,6 +10,11 @@ extern __int64 (*GameData_2085518[])();
 extern __int64 game_g_game_setting_ptr;
 extern __int64* game_g_frame_clock_ptr[3];
 __int64 ContinueMenuItem_Unknown19(__int64 result);
+__int64 strlen(_QWORD);
+bool game_879ce0(__int64, _QWORD*, __int64);
+char* game_util_Format(const char*, ...);
+extern __int64 (*GameData_2085598[])();
+__int64 game_menu_anonymous_ContinueMenuItem_ACall(__int64 a1);
 
 __int64 ContinueMenuItem_Unknown19(__int64 result)
 {
@@ -104,6 +109,41 @@ __int64 ContinueMenuItem_Unknown19(__int64 result)
     }
   }
   return result;
+}
+
+__int64 game_menu_anonymous_ContinueMenuItem_ACall(__int64 a1)
+{
+  __int64 v1;
+  __int64 v2;
+  __int64 v3;
+  struct {
+    _QWORD v5[4];
+    _QWORD* v6;
+  } v5_;
+  _QWORD v7[2];
+
+  v1 = *(_QWORD*)(a1 + 8);
+  v5_.v6 = v5_.v5;
+  if (*(_QWORD*)(v1 + 152) != 0) {
+    v2 = *(_QWORD*)(v1 + 152);
+  }
+  else {
+    v2 = v1;
+  }
+  v5_.v5[0] = GameData_2085598;
+  v7[0] = game_util_Format("%s/%s", "000", "Auto");
+  v7[1] = strlen(v7[0]);
+  game_879ce0(v2, v7, (__int64)v5_.v5);
+  if (v5_.v6 == v5_.v5) {
+    v3 = 32;
+    goto LABEL_8;
+  }
+  if (v5_.v6 != nullptr) {
+    v3 = 40;
+  LABEL_8:
+    (*(void (**)(__int64))(*v5_.v6 + v3))((__int64)v5_.v6);
+  }
+  return 12;
 }
 
 #pragma GCC visibility pop

@@ -31,6 +31,13 @@ __int64 ProcDivinePerformance_196d6e0(__int64 result);
 unsigned __int64 ProcDivinePerformance_196d760();
 __int64 ProcDivinePerformance_Destructor(__int64* a1);
 __int64 ProcDivinePerformance_DeletingDestructor(__int64* a1);
+__attribute__((swiftcall)) void
+GameRoutine_1950740(__attribute__((swift_indirect_result)) void*, _QWORD*,
+                    __int64, unsigned int);
+__n128 std___1___shared_weak_count___release_weak_alt1(_QWORD) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__n128
+game_facility_anonymous_ProcDivinePerformance_StartPerformance_closure_Invoke();
 
 __int64 ProcDivinePerformance_196d6e0(__int64 result)
 {
@@ -169,6 +176,56 @@ LABEL_27:
     BYTE2(v17) = 1;
     LOWORD(v17) = 257;
     return SceneCharacter_1400a90(v8, &v17);
+  }
+  return result;
+}
+
+__n128
+
+game_facility_anonymous_ProcDivinePerformance_StartPerformance_closure_Invoke()
+{
+  __n128 result;
+  __int64 v1;
+  __int64 v2;
+  char v3;
+  _BYTE v4[13];
+  char v5;
+  __int64 v6;
+  char v7;
+  unsigned __int64 v8;
+  _BYTE v9[11];
+  char v10;
+  __int64* v11;
+  __int64 v12;
+
+  v10 = 0;
+  v5 = 0;
+  v7 = 38;
+  *(_DWORD*)&v9[7] = -1699813958;
+  *(_QWORD*)v9 = 0xBAA2E79C9EE690B5LL;
+  v8 = 0xE75F8481E3A08DE5LL;
+  v3 = 26;
+  *(_QWORD*)v4 = 0xE75F8481E3A08DE5LL;
+  *(_QWORD*)&v4[5] = 0x8AB8E4A49BE75F84LL;
+  GameRoutine_1950740((void*)(&v11), &v7, (__int64)&v3, 1u);
+  v1 = v12;
+  if (v12 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v12 + 8),
+                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v1 + 16LL))(v1);
+    result = std___1___shared_weak_count___release_weak_alt1(v1);
+    if ((v3 & 1) == 0) {
+      return result;
+    }
+  }
+  else if ((v3 & 1) == 0) {
+    return result;
+  }
+  if (v6 != 0) {
+    v2 = 128;
+    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+      v2 = 56;
+    }
+    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v2);
   }
   return result;
 }

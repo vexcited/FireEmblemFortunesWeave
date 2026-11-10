@@ -1,5 +1,7 @@
 #include "decomp/pseudo_helpers.h"
 
+#include "decomp/pseudo_float.h"
+
 #pragma GCC visibility push(hidden)
 
 __int64 std___1___shared_weak_count___release_weak(_QWORD);
@@ -47,6 +49,14 @@ __int64 Manager_d2ec20();
 __int64 Manager_d2ed90(__int64 result, int a2);
 __int64 Manager_d2ee80();
 __int64 game_zview_Manager_Initialize_lambda1_Invoke(__int64 result);
+__int64 Cursor_f57960(__int64);
+__int64 GameRoutine_f56f40(float32x4_t*);
+__int64 game_zview_d30720(__int64, __int64);
+extern __int64 GameData_21c6978;
+int8x16_t Camera_b3bb60(__int64);
+void GameRoutine_ceba80(__int64, long double);
+void GameRoutine_d28340();
+void game_zview_Manager_Initialize_lambda0_Invoke(__int64 a1, long double a2);
 
 __int64 Manager_Destructor_d2e850(__int64 a1)
 {
@@ -352,6 +362,92 @@ __int64 Manager_d2ee80()
     *(_BYTE*)(v9 + 256) = 0;
   }
   return result;
+}
+
+void game_zview_Manager_Initialize_lambda0_Invoke(__int64 a1, long double a2)
+{
+  __int64 v2;
+  __int64 v3;
+  __int64* v4;
+  __int64* i;
+  __int64 v6;
+  __int64* v7;
+  __int64* v8;
+  __int64 v9;
+  float32x4_t* v10;
+  bool v11;
+  __int64 v12;
+  __int64 v13;
+  __int64 v14;
+  __int64 v15;
+  int8x16_t v16;
+  int32x4_t v17;
+  float32x4_t v18;
+  __int64 v19;
+
+  if (GameData_21d96b8 != 0 && *(_BYTE*)(GameData_21d96b8 + 52) == 1) {
+    v2 = *(_QWORD*)(a1 + 8);
+    if (*(_BYTE*)(v2 + 54) != 0) {
+      *(_BYTE*)(v2 + 54) = 0;
+      v3 = GameData_220b6f0;
+      v4 = *(__int64**)(GameData_220b6f0 + 32);
+      for (i = *(__int64**)(GameData_220b6f0 + 40); v4 != i;
+           *(_DWORD*)(v6 + 592) = a1) {
+        a1 = game_zview_d30720(a1, *v4);
+        v6 = *v4;
+        v4 += 2;
+      }
+      v8 = *(__int64**)(v3 + 8);
+      v7 = *(__int64**)(v3 + 16);
+      while (v8 != v7) {
+        v9 = *v8;
+        v8 += 2;
+        GameRoutine_ceba80(v9, a2);
+      }
+      if (GameData_220f870 != 0) {
+        v10 = *(float32x4_t**)(GameData_220f870 + 8);
+        if (LANES128(v10[20]).n128_u8[0] == 1) {
+          if (LANES128(v10[21]).n128_i32[0] <= 0) {
+            v12 = *(_QWORD*)(*(_QWORD*)(GameData_21c6978 + 32) - 8LL);
+            v13 = *(_QWORD*)(v12 + 24);
+            v14 = *(_QWORD*)(v12 + 32);
+            if (v14 != 0) {
+              atomic_fetch_add_explicit((atomic_ullong* volatile)(v14 + 8), 1u,
+                                        memory_order_relaxed);
+              if (atomic_fetch_add((atomic_ullong* volatile)(v14 + 8),
+                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
+                v15 = v13;
+                (*(void (**)(__int64))(*(_QWORD*)v14 + 16LL))(v14);
+                std___1___shared_weak_count___release_weak(v14);
+                v13 = v15;
+              }
+            }
+            v16 = Camera_b3bb60(v13);
+            PSEUDO_LOW_LANE128(v17, n128_u64, LANES128(v10[17]).n128_u64[1]);
+            v18 = vsubq_f32(vzip1q_s32(v17, v16), v16);
+            v11 = (float)(LANES128_OF(vmulq_f32(v18, v18)).n128_f32[2] +
+                          (float)(LANES128(v18).n128_f32[0] *
+                                  LANES128(v18).n128_f32[0])) >=
+                  0x1.ce147a0000000p+1f;
+          }
+          else {
+            v11 = false;
+          }
+          LANES128(v10[20]).n128_u8[1] = v11;
+        }
+        GameRoutine_f56f40(v10);
+        Cursor_f57960((__int64)v10);
+        LANES128(v10[30]).n128_u8[1] = 0;
+      }
+      v19 = GameData_21f3cb0;
+      if (*(_DWORD*)(GameData_21f3cb0 + 1156) != 0) {
+        if (*(_QWORD*)(GameData_21f3cb0 + 1176) != 0) {
+          GameRoutine_d28340();
+        }
+        *(_DWORD*)(v19 + 1152) = 0;
+      }
+    }
+  }
 }
 
 __int64 game_zview_Manager_Initialize_lambda1_Invoke(__int64 result)

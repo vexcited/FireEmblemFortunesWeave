@@ -31,6 +31,11 @@ void ProcBanquetScene_194ec10();
 __int64 ProcBanquetScene_Unknown18();
 __int64 ProcBanquetScene_Destructor_194eee0(_QWORD* a1);
 __int64 ProcBanquetScene_Unknown2();
+__int64 ProcInst_657a50(_QWORD, _QWORD);
+__int64 game_809dc0(_QWORD, _QWORD, float);
+extern _UNKNOWN* GameData_212c960;
+extern __int64 game_ProcFadeView_instance_;
+__int64 ProcBanquetScene_194ec50(__int64 a1);
 
 __int64 ProcBanquetScene_Destructor(__int64 a1)
 {
@@ -156,6 +161,50 @@ void ProcBanquetScene_194ec10()
     *(_DWORD*)(*(_QWORD*)game_script_hub_g_frame_counter_ptr[0] + 156LL) =
         1065353216;
   }
+}
+
+__int64 ProcBanquetScene_194ec50(__int64 a1)
+{
+  __int64 result;
+  __int64 v3;
+  unsigned __int64 v4;
+  unsigned __int64 v5;
+  __int128 v6;
+  __int128* v7;
+  __int128 v8;
+
+  result = GameRoutine_1958ed0(a1 + 152, a1);
+  if (*(_BYTE*)(a1 + 164) == 1 && (*(_DWORD*)(a1 + 160) & 0x80000000) != 0) {
+    v3 = game_ProcFadeView_instance_;
+    if (game_ProcFadeView_instance_ != 0) {
+      v4 = game_ProcFadeView_instance_ +
+           ((unsigned __int64)*(unsigned __int8*)(game_ProcFadeView_instance_ +
+                                                  480)
+            << 6);
+      if (*(float*)(v4 + 172) == *(float*)(v4 + 168) &&
+          (v5 = v4 + 160,
+           LANES128_OF(((__n128 (*)(unsigned __int64)) *
+                        (_QWORD*)(*(_QWORD*)(v4 + 160) + 16LL))(v4 + 160))
+                   .n128_f32[3] == 1.0f)) {
+        if (*(float*)(v5 + 12) == *(float*)(v5 + 8)) {
+          (*(void (**)(unsigned __int64))(*(_QWORD*)v5 + 16LL))(v5);
+        }
+        else {
+          v6 = *(_OWORD*)(v5 + 48);
+        }
+        v8 = v6;
+        v7 = &v8;
+      }
+      else {
+        v7 = (__int128*)GameData_212c960;
+      }
+      result = game_809dc0(v3, v7, 0.0f);
+    }
+  }
+  if ((*(_WORD*)(a1 + 136) & 1) == 0) {
+    return ProcInst_657a50(a1, 1);
+  }
+  return result;
 }
 
 __int64 ProcBanquetScene_Unknown18()

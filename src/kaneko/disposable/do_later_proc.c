@@ -14,6 +14,8 @@ __int64 DoLaterProc_Destructor(__int64 a1);
 __int64 DoLaterProc_DeletingDestructor(__int64 a1);
 float DoLaterProc_Unknown18(__int64 a1);
 _QWORD* DoLaterProc_Unknown19(_QWORD* result);
+_BYTE* ProcInst_657a50(__int64, char);
+float* DoLaterProc_Unknown3(float* result);
 
 __int64 DoLaterProc_Destructor(__int64 a1)
 {
@@ -102,6 +104,30 @@ LABEL_6:
   }
   return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
                                        v7);
+}
+
+float* DoLaterProc_Unknown3(float* result)
+{
+
+#pragma clang fp contract(off)
+  float v1;
+  float v2;
+  __int64 v3;
+
+  v1 = result[49];
+  v2 = result[48] + (float)((float)(*(float*)(*((_QWORD*)result + 25) + 16LL) *
+                                    0x1.0aef000000000p+4f) /
+                            0x1.f400000000000p+9f);
+  result[48] = v2;
+  if (v2 >= v1) {
+    v3 = (__int64)result;
+    result =
+        (float*)(*(__int64 (**)(float*))(*(_QWORD*)result + 152LL))(result);
+    if ((*(_WORD*)(v3 + 136) & 1) == 0) {
+      return (float*)ProcInst_657a50(v3, 1);
+    }
+  }
+  return result;
 }
 
 float DoLaterProc_Unknown18(__int64 a1)

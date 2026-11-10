@@ -11,6 +11,8 @@ extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64* GameData_212e340[2];
 extern __int64* snd_g_fileIndex_ptr[2];
 __int64 eft_data_Manager_LoadAsync(_QWORD* a1);
+__int64 ElfFile_631220(__int64*, __int64);
+int* eft_data_Manager_LoadAsync_lambda0_Invoke(__int64 a1, __int64* a2);
 
 __int64 eft_data_Manager_LoadAsync(_QWORD* a1)
 {
@@ -59,6 +61,42 @@ __int64 eft_data_Manager_LoadAsync(_QWORD* a1)
   if (v9 != 0) {
     return std___1___shared_weak_count___release_weak(v9);
   }
+  return result;
+}
+
+int* eft_data_Manager_LoadAsync_lambda0_Invoke(__int64 a1, __int64* a2)
+{
+  __int64 v2;
+  __int64 v3;
+  int* v4;
+  int v5;
+  int* result;
+  int v7;
+
+  v2 = *a2;
+  v3 = *(_QWORD*)(a1 + 8);
+  *(_QWORD*)(v3 + 24) =
+      ElfFile_631220((__int64*)(*a2 + 800), (__int64)"eft::data::s_data");
+  v4 = (int*)ElfFile_631220((__int64*)(v2 + 800),
+                            (__int64)"eft::data::s_dataCount");
+  if (v4 != nullptr) {
+    v5 = *v4;
+  }
+  else {
+    v5 = 0;
+  }
+  *(_DWORD*)(v3 + 32) = v5;
+  *(_QWORD*)(v3 + 40) =
+      ElfFile_631220((__int64*)(v2 + 800), (__int64)"eft::data::s_category");
+  result = (int*)ElfFile_631220((__int64*)(v2 + 800),
+                                (__int64)"eft::data::s_categoryCount");
+  if (result != nullptr) {
+    v7 = *result;
+  }
+  else {
+    v7 = 0;
+  }
+  *(_DWORD*)(v3 + 48) = v7;
   return result;
 }
 

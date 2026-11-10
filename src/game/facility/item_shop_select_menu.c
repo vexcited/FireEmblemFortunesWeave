@@ -21,6 +21,12 @@ bool game_facility_ItemShopSelectMenu_SortAndFilter_lambda1_Invoke(__int64 a1,
 __int64
 game_facility_ItemShopSelectMenu_IsEnableSwitchItemInfoDetail_lambda0_Invoke(
     __int64 a1, _QWORD* a2);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, _QWORD, _QWORD,
+                                               _QWORD, _QWORD, _QWORD, _QWORD,
+                                               double, float);
+__int64 snd_Fade_Destroy_Fade(_QWORD);
+__n128 snd_Fade_Fade_10c830(_QWORD, double);
+__int64 ItemShopSelectMenu_1874440(__int64 a1, int a2);
 
 __int64 ItemShopSelectMenu_1874060(__int64 a1)
 {
@@ -51,6 +57,29 @@ __int64 ItemShopSelectMenu_1874060(__int64 a1)
     return GameRoutine_1567590("StatusChange", v5);
   }
   return result;
+}
+
+__int64 ItemShopSelectMenu_1874440(__int64 a1, int a2)
+{
+  __int64 v2;
+  const char* v4;
+  __int64 v5;
+  _BYTE v6[200];
+
+  if (a2 == 13) {
+    v2 = *(_QWORD*)(a1 + 336);
+    if (v2 != 0) {
+      return (*(__int64 (**)(__int64, __int64))(*(_QWORD*)v2 + 368LL))(v2, 13);
+    }
+    snd_Fade_Fade_10c830(v6, 0.0f);
+    v4 = "SE_SYS_List_Change";
+  }
+  else {
+    snd_Fade_Fade_10c830(v6, 0.0f);
+    v4 = "SE_SYS_NG";
+  }
+  snd_play_ff2d0((void*)(&v5), v4, v4, v6, 0, 65537, 0, 0.0f, 1.0f);
+  return snd_Fade_Destroy_Fade(v6);
 }
 
 __int64 game_facility_ItemShopSelectMenu_OnInit_lambda0_Invoke(__int64 a1,

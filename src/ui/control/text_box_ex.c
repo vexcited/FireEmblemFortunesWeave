@@ -18,6 +18,251 @@ extern char GameData_1a9f09e;
 __int64 TextBoxEx_188ab20(__int64 result, __int64 a2);
 __int64 TextBoxEx_188ac20(__int64 result, __int64 a2, unsigned __int16* a3);
 __int64 TextBoxEx_188aec0(__int64 result);
+__int64 GameRoutine_188a3a0(_QWORD);
+__int64 GameRoutine_188a480(_QWORD, _QWORD);
+__int64 GameRoutine_576600(_QWORD, _QWORD);
+__int64 LayoutEx_579160(_QWORD, _QWORD);
+__int64 __cxa_guard_acquire(_QWORD);
+__int64 __cxa_guard_release(_QWORD);
+__int64 nn_ui2d_Pane_GetRuntimeTypeInfoStatic(void);
+__int64 strlen(_QWORD);
+__int64 ui_ILayoutControl_UpdatePath(_QWORD);
+extern _UNKNOWN* GameData_212dfd0;
+extern _UNKNOWN* GameData_2130ea8;
+extern _UNKNOWN GameData_21f8028;
+extern _UNKNOWN GameData_22416d8;
+extern __int64 (*GameData_20ff568[])();
+extern __int64 (*TextBoxEx_188aec0_ptr[])();
+extern __int64 (*ui_control_TextBoxEx_vtable[])();
+extern __int64* GameData_212dfc8;
+extern __int64 GameData_21f8020;
+extern __int64 GameData_22416d0;
+extern char* GameData_20ff340[5];
+__attribute__((swiftcall)) void TextBoxEx_188a640(PSEUDO_X8 x8_, __int64 a1,
+                                                  __int64 a2, __int64 a3);
+__attribute__((swiftcall)) void TextBoxEx_188a7e0(PSEUDO_X8 x8_, __int64 a1,
+                                                  __int64 a2);
+__attribute__((swiftcall)) void TextBoxEx_188aa00(PSEUDO_X8 x8_,
+                                                  __int64* result, int a2);
+
+__attribute__((swiftcall)) void TextBoxEx_188a640(PSEUDO_X8 x8_, __int64 a1,
+                                                  __int64 a2, __int64 a3)
+{
+  _QWORD* a4 = (_QWORD*)PSEUDO_X8_VALUE(x8_);
+  _QWORD* v8;
+  _QWORD* v9;
+  _QWORD* v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
+  __int64 v14;
+  __int64 v15;
+  __int64 v16;
+  __int64 v17;
+  __int64* v18;
+  __int64 result;
+
+  v8 = (_QWORD*)LayoutEx_579160(112, 8);
+  v8[1] = 0;
+  v8[2] = 0;
+  v9 = v8;
+  *v8 = GameData_20ff568;
+  v8[4] = a2;
+  v8[5] = 0;
+  v8[6] = 0;
+  v8[7] = 0;
+  v8[8] = 0;
+  v8[9] = 0;
+  v8[10] = 0;
+  v8[11] = 0;
+  v8[3] = &ui_ILayoutControl_vtable;
+  v10 = v8 + 3;
+  v11 = *(_QWORD*)(a2 + 24) + 176LL;
+  v12 = strlen(v11);
+  v9[5] = v11;
+  v9[6] = v12;
+  v13 = *(_QWORD*)(a2 + 48);
+  v14 = strlen(v13);
+  v9[7] = v13;
+  v9[8] = v14;
+  ui_ILayoutControl_UpdatePath(v10);
+  v9[12] = a3;
+  v9[13] = 0;
+  *v10 = ui_control_TextBoxEx_vtable;
+  v15 = GameRoutine_576600(a1, "Text");
+  v17 = 0;
+  if (a2 != 0) {
+    v16 = v15;
+    if (v15 != 0) {
+      v17 = (*(__int64 (**)(_QWORD, __int64, __int64))(
+          **(_QWORD**)(a2 + 24) + 120LL))(*(_QWORD*)(a2 + 24), v15, 1);
+    }
+  }
+  if ((atomic_load_explicit((atomic_uchar* volatile)&GameData_22416d8,
+                            memory_order_acquire) &
+       1) == 0 &&
+      (unsigned int)__cxa_guard_acquire(&GameData_22416d8) != 0) {
+    GameData_22416d0 = nn_ui2d_Pane_GetRuntimeTypeInfoStatic();
+    __cxa_guard_release(&GameData_22416d8);
+  }
+  if (v17 == 0) {
+    goto LABEL_13;
+  }
+  v18 = (__int64*)(*(__int64 (**)(__int64, __int64))(*(_QWORD*)v17 + 16LL))(
+      v17, v16);
+  if (v18 != &GameData_22416d0) {
+    do {
+      v18 = (__int64*)*v18;
+    } while (v18 != &GameData_22416d0 && v18 != nullptr);
+    if (v18 == nullptr) {
+    LABEL_13:
+      v17 = 0;
+    }
+  }
+  v9[13] = v17;
+  result = GameRoutine_188a3a0(v10);
+  *a4 = v10;
+  a4[1] = v9;
+  v9[3] = TextBoxEx_188aec0_ptr;
+  {
+    result;
+    return;
+  }
+}
+
+__attribute__((swiftcall)) void TextBoxEx_188a7e0(PSEUDO_X8 x8_, __int64 a1,
+                                                  __int64 a2)
+{
+  _QWORD* a3 = (_QWORD*)PSEUDO_X8_VALUE(x8_);
+  _QWORD* v6;
+  _QWORD* v7;
+  _QWORD* v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
+  __int64 v14;
+  __int64* v15;
+  __int64 result;
+
+  v6 = (_QWORD*)LayoutEx_579160(112, 8);
+  v6[1] = 0;
+  v6[2] = 0;
+  v7 = v6;
+  *v6 = GameData_20ff568;
+  v6[4] = a2;
+  v6[5] = 0;
+  v6[6] = 0;
+  v6[7] = 0;
+  v6[8] = 0;
+  v6[9] = 0;
+  v6[10] = 0;
+  v6[11] = 0;
+  v6[3] = &ui_ILayoutControl_vtable;
+  v8 = v6 + 3;
+  v9 = *(_QWORD*)(a2 + 24) + 176LL;
+  v10 = strlen(v9);
+  v7[5] = v9;
+  v7[6] = v10;
+  v11 = *(_QWORD*)(a2 + 48);
+  v12 = strlen(v11);
+  v7[7] = v11;
+  v7[8] = v12;
+  ui_ILayoutControl_UpdatePath(v8);
+  *v8 = ui_control_TextBoxEx_vtable;
+  v7[12] = *(_QWORD*)(a1 + 72);
+  v7[13] = 0;
+  v13 = *(_QWORD*)(v7[4] + 24LL);
+  if (v13 != 0) {
+    v14 = (*(__int64 (**)(__int64, __int64, __int64))(*(_QWORD*)v13 + 120LL))(
+        v13, *(_QWORD*)(a1 + 80) + 176LL, 1);
+    if ((atomic_load_explicit((atomic_uchar* volatile)GameData_2130ea8,
+                              memory_order_acquire) &
+         1) == 0 &&
+        (unsigned int)__cxa_guard_acquire(&GameData_22416d8) != 0) {
+      GameData_22416d0 = nn_ui2d_Pane_GetRuntimeTypeInfoStatic();
+      __cxa_guard_release(&GameData_22416d8);
+    }
+    if (v14 == 0) {
+      goto LABEL_11;
+    }
+    v15 = (__int64*)(*(__int64 (**)(__int64))(*(_QWORD*)v14 + 16LL))(v14);
+    if (v15 != &GameData_22416d0) {
+      do {
+        v15 = (__int64*)*v15;
+      } while (v15 != &GameData_22416d0 && v15 != nullptr);
+      if (v15 == nullptr) {
+      LABEL_11:
+        v14 = 0;
+      }
+    }
+    v7[13] = v14;
+  }
+  result = GameRoutine_188a3a0(v8);
+  *a3 = v8;
+  a3[1] = v7;
+  v7[3] = TextBoxEx_188aec0_ptr;
+  {
+    result;
+    return;
+  }
+}
+
+__attribute__((swiftcall)) void TextBoxEx_188aa00(PSEUDO_X8 x8_,
+                                                  __int64* result, int a2)
+{
+  _QWORD* a3 = (_QWORD*)PSEUDO_X8_VALUE(x8_);
+  __int64 v3;
+  __int64* v4;
+  _QWORD* v5;
+  __int64* v6;
+
+  if (result[9] != 0) {
+    v3 = result[1];
+    v4 = result;
+    if (v3 != 0) {
+      result = *(__int64**)(v3 + 24);
+      if (result != nullptr) {
+        v5 = a3;
+        result = (__int64*)(*(__int64 (**)(__int64*, char*, __int64))(
+            *result + 120))(result, GameData_20ff340[a2], 1);
+        v6 = result;
+        if ((atomic_load_explicit((atomic_uchar* volatile)GameData_212dfd0,
+                                  memory_order_acquire) &
+             1) == 0) {
+          result = (__int64*)__cxa_guard_acquire(&GameData_21f8028);
+          if ((_DWORD)result != 0) {
+            GameData_21f8020 = nn_ui2d_Pane_GetRuntimeTypeInfoStatic();
+            result = (__int64*)__cxa_guard_release(&GameData_21f8028);
+          }
+        }
+        a3 = v5;
+        if (v6 != nullptr) {
+          result = (__int64*)(*(__int64 (**)(__int64*))(*v6 + 16))(v6);
+          a3 = v5;
+          if (result == GameData_212dfc8) {
+            (__int64*)GameRoutine_188a480(v4[9], v6);
+            return;
+          }
+          do {
+            result = (__int64*)*result;
+          } while (result != GameData_212dfc8 && result != nullptr);
+          if (result != nullptr) {
+            (__int64*)GameRoutine_188a480(v4[9], v6);
+            return;
+          }
+        }
+      }
+    }
+  }
+  *a3 = 0;
+  a3[1] = 0;
+  {
+    result;
+    return;
+  }
+}
 
 __int64 TextBoxEx_188ab20(__int64 result, __int64 a2)
 {

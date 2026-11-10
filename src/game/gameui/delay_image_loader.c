@@ -23,6 +23,24 @@ __int64 strlen(_QWORD);
 __int64 DelayImageLoader_19a37d0(__int64 a1, __int64 a2, unsigned int a3);
 bool DelayImageLoader_19a3bd0(__int64 a1);
 __int64 DelayImageLoader_19a3bf0(__int64 result);
+__attribute__((swiftcall)) void
+    DelayImageLoader_19a3b20_alt1(PSEUDO_X8,
+                                  _QWORD) __asm__("DelayImageLoader_19a3b20");
+__int64 DelayImageLoader_19a3bd0_alt1() __asm__("DelayImageLoader_19a3bd0");
+__int64 DelayImageLoader_19a3bf0_alt1() __asm__("DelayImageLoader_19a3bf0");
+__int64 __cxa_guard_acquire(_QWORD);
+__int64 __cxa_guard_release(_QWORD);
+__int64 fw_memory_HeapManager_Allocate(_QWORD, _QWORD, _QWORD, _QWORD);
+__int64 game_HashString32(_QWORD, _QWORD);
+__int64 game_ProcInst_Register(_QWORD);
+extern _QWORD GameData_2272148[];
+extern _UNKNOWN GameData_2272208;
+extern __int64 (*game_gameui_DelayImageLoader_ProcDelayImageLoader_vtable[])();
+extern __int64* GameData_212c628;
+extern __int64 GameData_212c608[2];
+__int64 DelayImageLoader_19a3910(__int64 a1, int a2);
+__attribute__((swiftcall)) void DelayImageLoader_19a3b20(PSEUDO_X8 x8_,
+                                                         __int64 result);
 
 __int64 DelayImageLoader_Destructor(_QWORD* a1)
 {
@@ -131,6 +149,184 @@ __int64 DelayImageLoader_19a37d0(__int64 a1, __int64 a2, unsigned int a3)
     return 0;
   }
   return result;
+}
+
+__int64 DelayImageLoader_19a3910(__int64 a1, int a2)
+{
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  char v10[8];
+  __int64 v11;
+  __int64 (*v12)();
+  __int64 v13;
+  int v14;
+  __int64 v15;
+  int v16;
+  __int64 v17;
+  char v18;
+  __int64 v19;
+  __int64 (*v20)();
+  __int64 v21;
+  int v22;
+  __int64 v23;
+  int v24;
+  __int64 v25;
+  char v26;
+  __int64 v27;
+  __int64 v28;
+  __int64 v29;
+  int v30;
+  __int64 v31;
+  int v32;
+  __int64 v33;
+
+  if ((atomic_load_explicit((atomic_uchar* volatile)&GameData_2272208,
+                            memory_order_acquire) &
+       1) == 0 &&
+      (unsigned int)__cxa_guard_acquire(&GameData_2272208) != 0) {
+    v14 = 0;
+    v15 = 0;
+    v11 = 0;
+    v16 = 0;
+    v17 = 0;
+    v21 = 0;
+    v22 = 0;
+    v23 = 0;
+    v24 = 0;
+    v25 = 0;
+    v10[0] = 15;
+    v26 = 0;
+    v31 = 0;
+    v32 = 0;
+    v33 = 0;
+    v30 = 0;
+    v28 = 0;
+    v29 = 0;
+    v27 = 0;
+    v12 = DelayImageLoader_19a3bd0_alt1;
+    v13 = 0;
+    v18 = 13;
+    v19 = 0;
+    v20 = DelayImageLoader_19a3bf0_alt1;
+    DelayImageLoader_19a3b20_alt1((void*)(GameData_2272148), v10);
+    __cxa_guard_release(&GameData_2272208);
+  }
+  v4 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
+                                      168, 16, 0);
+  v5 = GameData_212c608[0];
+  *(_QWORD*)(v4 + 96) = 0;
+  *(_QWORD*)(v4 + 104) = 0;
+  *(_QWORD*)(v4 + 112) = 0;
+  *(_QWORD*)(v4 + 120) = 0;
+  *(_QWORD*)(v4 + 128) = 0;
+  *(_WORD*)(v4 + 136) = 0;
+  *(_QWORD*)(v4 + 16) = 0;
+  *(_QWORD*)(v4 + 24) = "NULL";
+  *(_QWORD*)(v4 + 138) = 0;
+  *(_QWORD*)(v4 + 144) = 0;
+  *(_QWORD*)(v4 + 32) = 0;
+  *(_QWORD*)(v4 + 40) = 0;
+  *(_QWORD*)(v4 + 48) = 0;
+  *(_QWORD*)(v4 + 56) = 0;
+  *(_QWORD*)(v4 + 64) = 0;
+  *(_QWORD*)(v4 + 72) = 0;
+  *(_QWORD*)(v4 + 80) = 0;
+  *(_QWORD*)(v4 + 88) = 0;
+  *(_QWORD*)v4 = v5 + 16;
+  *(_QWORD*)(v4 + 8) = 0;
+  game_ProcInst_Register(v4);
+  *(_QWORD*)(v4 + 152) = a1;
+  *(_DWORD*)(v4 + 160) = a2;
+  *(_QWORD*)v4 = game_gameui_DelayImageLoader_ProcDelayImageLoader_vtable;
+  v7 = *(_QWORD*)((char*)((__int128*)0x10LL) + (_QWORD)GameData_212c628);
+  if (v7 != 0) {
+    v8 = *(_QWORD*)(v7 + 40);
+    if (v8 != 0) {
+      *(_QWORD*)(v8 + 48) = v4;
+      *(_QWORD*)(v4 + 56) = *(_QWORD*)(v7 + 40);
+    }
+    *(_QWORD*)(v7 + 40) = v4;
+    *(_QWORD*)(v4 + 24) = "ProcDelayImageLoader";
+    *(_QWORD*)(v4 + 32) = v7;
+    *(_DWORD*)(v4 + 140) = game_HashString32("ProcDelayImageLoader", v6);
+    *(_QWORD*)(v4 + 64) = 0;
+    *(_QWORD*)(v4 + 72) = 24;
+    *(_QWORD*)(v4 + 80) = 1;
+    *(_QWORD*)(v4 + 8) = GameData_2272148;
+    *(_QWORD*)(v4 + 16) = GameData_2272148;
+    (*(void (**)(__int64))(*(_QWORD*)v4 + 32LL))(v4);
+    if (((*(__int64 (**)(__int64))(*(_QWORD*)v4 + 136LL))(v4) & 1) != 0 &&
+        (*(_WORD*)(v4 + 136) & 0x100) == 0) {
+      *(_WORD*)(v4 + 136) |= 0x100u;
+    }
+  }
+  else if ((*(_WORD*)(v4 + 136) & 1) == 0) {
+    ProcInst_657a50(v4, 1);
+  }
+  return v4;
+}
+
+__attribute__((swiftcall)) void DelayImageLoader_19a3b20(PSEUDO_X8 x8_,
+                                                         __int64 result)
+{
+  __int64 a2 = (__int64)PSEUDO_X8_VALUE(x8_);
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  int v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+
+  v2 = *(_QWORD*)(result + 8);
+  v3 = *(_QWORD*)(result + 16);
+  v4 = *(_QWORD*)(result + 24);
+  *(_BYTE*)a2 = *(_BYTE*)result;
+  v5 = *(_DWORD*)(result + 32);
+  *(_QWORD*)(a2 + 8) = v2;
+  *(_QWORD*)(a2 + 16) = v3;
+  v6 = *(_QWORD*)(result + 40);
+  LODWORD(v3) = *(_DWORD*)(result + 48);
+  *(_QWORD*)(a2 + 24) = v4;
+  *(_DWORD*)(a2 + 32) = v5;
+  v7 = *(_QWORD*)(result + 56);
+  *(_QWORD*)(a2 + 40) = v6;
+  LOBYTE(v6) = *(_BYTE*)(result + 64);
+  *(_DWORD*)(a2 + 48) = v3;
+  v8 = *(_QWORD*)(result + 88);
+  *(_QWORD*)(a2 + 56) = v7;
+  *(_BYTE*)(a2 + 64) = v6;
+  v9 = *(_QWORD*)(result + 72);
+  v10 = *(_QWORD*)(result + 80);
+  *(_QWORD*)(a2 + 88) = v8;
+  v11 = *(_QWORD*)(result + 152);
+  *(_QWORD*)(a2 + 72) = v9;
+  *(_QWORD*)(a2 + 80) = v10;
+  LODWORD(v9) = *(_DWORD*)(result + 96);
+  *(_QWORD*)(a2 + 152) = v11;
+  *(_DWORD*)(a2 + 96) = v9;
+  *(_QWORD*)(a2 + 104) = *(_QWORD*)(result + 104);
+  *(_DWORD*)(a2 + 112) = *(_DWORD*)(result + 112);
+  *(_QWORD*)(a2 + 120) = *(_QWORD*)(result + 120);
+  *(_BYTE*)(a2 + 128) = *(_BYTE*)(result + 128);
+  v12 = *(_QWORD*)(result + 144);
+  *(_QWORD*)(a2 + 136) = *(_QWORD*)(result + 136);
+  *(_QWORD*)(a2 + 144) = v12;
+  *(_DWORD*)(a2 + 160) = *(_DWORD*)(result + 160);
+  *(_QWORD*)(a2 + 168) = *(_QWORD*)(result + 168);
+  *(_DWORD*)(a2 + 176) = *(_DWORD*)(result + 176);
+  *(_QWORD*)(a2 + 184) = *(_QWORD*)(result + 184);
+  {
+    result;
+    return;
+  }
 }
 
 bool DelayImageLoader_19a3bd0(__int64 a1)

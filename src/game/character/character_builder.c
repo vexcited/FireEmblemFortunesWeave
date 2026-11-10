@@ -149,11 +149,6 @@ __int64 game_character_CharacterBuilder_BuildImpl_lambda0_Invoke(__int64 result,
 void game_character_CharacterBuilder_CommitMaterialParams_lambda1_Invoke(
     __int64 a1, __int64 a2);
 __int64 CharacterBuilder_1089270(__int64 result, _BYTE* a2);
-
-void CharacterBuilder_1089340(__int64 a1, _QWORD* a2)
-{
-  *a2 = GameData_2007208;
-};
 void CharacterBuilder_1089370(__int64 a1, _DWORD* a2);
 void game_character_CharacterBuilder_CommitMaterialParams_lambda2_Invoke(
     __int64 a1, __int64 a2);
@@ -165,6 +160,9 @@ _QWORD* game_character_CharacterBuilder_SetMaterialColor_lambda0_CloneInto(
     _QWORD* result, _QWORD* a2);
 float game_character_CharacterBuilder_SetDitherAlpha_lambda1_Invoke(__int64 a1,
                                                                     __int64 a2);
+extern __int64 (*GameData_2006dc0[])();
+extern __int64 (*GameData_2006e40[])();
+__int64 game_character_CharacterBuilder_LateUpdate(__int64 result);
 
 __int64 CharacterBuilder_107b580(_QWORD* a1)
 {
@@ -2750,6 +2748,60 @@ __n128 CharacterBuilder_107e090(__int64 a1, __int64 a2)
   return result;
 }
 
+__int64 game_character_CharacterBuilder_LateUpdate(__int64 result)
+{
+  __int64 v1;
+  __int64 v2;
+  __int64 v3;
+  struct {
+    __int64 (**v4)();
+    char v5;
+    char gap9_[23];
+    __int64 (***v6)();
+  } v4_;
+
+  if (*(_DWORD*)(result + 384) != 0) {
+    v1 = result;
+    if ((*(_BYTE*)(result + 342) & 1) != 0) {
+      v4_.v5 = 0;
+      *(_DWORD*)(result + 384) = 2;
+      v4_.v6 = &v4_.v4;
+      v4_.v4 = GameData_2006dc0;
+      CharacterBuilder_1083e90((_QWORD*)result, (__int64)&v4_.v4);
+      if (v4_.v6 == &v4_.v4) {
+        v2 = 4;
+      }
+      else {
+        if (v4_.v6 == nullptr) {
+          goto LABEL_8;
+        }
+        v2 = 5;
+      }
+      ((__int64 (*)(__int64))(*v4_.v6)[v2])((__int64)v4_.v6);
+    LABEL_8:
+      v4_.v5 = 0;
+      v4_.v4 = GameData_2006e40;
+      v4_.v6 = &v4_.v4;
+      CharacterBuilder_1083e90((_QWORD*)v1, (__int64)&v4_.v4);
+      result = (__int64)v4_.v6;
+      if (v4_.v6 == &v4_.v4) {
+        v3 = 4;
+      }
+      else {
+        if (v4_.v6 == nullptr) {
+        LABEL_13:
+          *(_DWORD*)(v1 + 384) = 0;
+          return result;
+        }
+        v3 = 5;
+      }
+      result = ((__int64 (*)(__int64))(*v4_.v6)[v3])((__int64)v4_.v6);
+      goto LABEL_13;
+    }
+  }
+  return result;
+}
+
 __int64 CharacterBuilder_10823c0(_QWORD* a1)
 {
   __int64 v1;
@@ -5086,6 +5138,11 @@ __int64 CharacterBuilder_1089270(__int64 result, _BYTE* a2)
     **(_BYTE**)(result + 8) = 1;
   }
   return result;
+}
+
+void CharacterBuilder_1089340(__int64 a1, _QWORD* a2)
+{
+  *a2 = GameData_2007208;
 }
 
 void CharacterBuilder_1089370(__int64 a1, _DWORD* a2)

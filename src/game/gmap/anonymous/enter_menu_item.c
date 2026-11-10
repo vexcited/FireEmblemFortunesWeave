@@ -27,6 +27,12 @@ extern __int64 game_GameModeData_instance_;
 void __attribute__((noreturn)) String_60a1d0(void);
 __int64 game_gmap_anonymous_EnterMenuItem_ACall_closure_Invoke();
 __int64 game_gmap_anonymous_EnterMenuItem_ACall_closure1_Invoke(__int64 a1);
+__int64 GameRoutine_1522300(_QWORD, _QWORD);
+__int64 GameRoutine_8ab560(_QWORD);
+__int64 game_gmap_SpotMgr_GetCurrentSpot(void);
+extern __int128 GameData_22532c0;
+extern __int64 GameData_22506e0;
+__int64 game_gmap_anonymous_EnterMenuItem_ACall_closure3_Invoke();
 
 __int64 EnterMenuItem_131e070(__int64 a1, __int64 a2)
 {
@@ -227,6 +233,80 @@ LABEL_44:
     }
     nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v22);
   }
+  return 4;
+}
+
+__int64 game_gmap_anonymous_EnterMenuItem_ACall_closure3_Invoke()
+{
+  __int64 v0;
+  __int64 v1;
+  __int64* v2;
+  __int64* v3;
+  int v4;
+  __int64* v5;
+  __int64* v6;
+  int v8;
+  bool v9;
+  unsigned __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  __int64* v13;
+  __int64 v14;
+  __int64 v15;
+
+  v0 = game_GameModeData_instance_;
+  if (game_GameModeData_instance_ != 0 &&
+      *(_DWORD*)(game_GameModeData_instance_ + 64) == 6) {
+    *(_DWORD*)(*(_QWORD*)GameData_212d750 + 152LL) = 18;
+    v1 = *(_QWORD*)(GameData_21c96e8 + 8);
+    v2 = *(__int64**)(v1 + 8);
+    v3 = *(__int64**)(v1 + 16);
+    v4 = *(_DWORD*)(v1 + 56);
+    if (v4 < 0) {
+      for (; v2 != v3; ++v2) {
+        v5 = (__int64*)*v2;
+        if (*(_QWORD*)(*v2 + 96) == 0 && v5[69] == 0) {
+          goto LABEL_14;
+        }
+      }
+    }
+    else {
+      while (v2 != v3) {
+        v6 = (__int64*)*v2++;
+        v5 = v6;
+        if (*((_DWORD*)v6 + 21) == v4) {
+          goto LABEL_14;
+        }
+      }
+    }
+    v5 = nullptr;
+  LABEL_14:
+    v8 = *((_DWORD*)v5 + 135);
+    v9 = __OFSUB__(v8, 1);
+    v10 = (unsigned int)(v8 - 1);
+    if (((v10 & 0x80000000) != 0LL) == v9) {
+      v11 = v5[3];
+      v12 = v5[4] - v11;
+      v13 = (__int64*)(v11 + 8LL * (unsigned int)v10);
+      if (v10 < v12 >> 3) {
+        v5 = v13;
+      }
+    }
+    v14 = GameData_22506e0;
+    if (GameData_22506e0 != 0 && *(_DWORD*)(v0 + 60) == 3 &&
+        GameData_22532c0 == 0) {
+      v15 = *v5;
+      if (v15 != game_gmap_SpotMgr_GetCurrentSpot()) {
+        GameRoutine_1522300(v14, v15);
+      }
+    }
+    return 4;
+  }
+  GameRoutine_8ab560(4);
+  if (GameData_21c9600 != 0) {
+    *(_DWORD*)(GameData_21c9600 + 152) = 7;
+  }
+  *(_DWORD*)(*(_QWORD*)GameData_212d750 + 152LL) = 19;
   return 4;
 }
 

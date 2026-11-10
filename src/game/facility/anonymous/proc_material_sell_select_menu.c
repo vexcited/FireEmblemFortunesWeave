@@ -38,6 +38,33 @@ bool game_facility_anonymous_ProcMaterialSellSelectMenu_SortAndFilter_closure_In
 __int64
 game_facility_anonymous_ProcMaterialSellSelectMenu_SortAndFilter_closure_Invoke_170a990(
     __int64 a1, _QWORD* a2, __int64* a3);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, _QWORD, _QWORD,
+                                               _QWORD, _QWORD, _QWORD, _QWORD,
+                                               double, float);
+__int64 BasicMenu_16e1f40(__int64 result, __int64, __int64);
+__int64 GameRoutine_15dff80(_QWORD, _QWORD, _QWORD, _QWORD);
+__int64 GameRoutine_1873720(_QWORD, _QWORD, _QWORD);
+__int64 ShopMenuItemSell_1704ea0(_QWORD, _QWORD);
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 game_gameui_Util_EachMaterialItemFromTransporter(__int64);
+__int64 snd_Fade_Destroy_Fade(_QWORD);
+__n128 snd_Fade_Fade_10c830(_QWORD, double);
+extern __int64 (*GameData_20a8d88[])();
+extern __int64 (*GameData_20a8e08[])();
+extern __int64 (*GameData_20a92b8[])();
+extern __int64 (*GameData_20a9338[])();
+extern __int64 (*game_facility_EmptyShopMenuItem_Sell_vtable[])();
+extern __int64 GameData_212c610;
+extern __int64 GameData_2131c18[55];
+extern __int64 GameData_2131c88[41];
+__int64 game_facility_anonymous_ProcMaterialSellSelectMenu_LCall(__int64 a1);
+__int64 ProcMaterialSellSelectMenu_Unknown105(__int64 a1);
+__int64
+game_facility_anonymous_ProcMaterialSellSelectMenu_AddItemList(__int64 a1);
+__int64
+game_facility_anonymous_ProcMaterialSellSelectMenu_SortAndFilter(__int64 a1);
 
 __int64 ProcMaterialSellSelectMenu_Destructor(__int64 a1)
 {
@@ -105,6 +132,194 @@ __int64 ProcMaterialSellSelectMenu_Unknown88(__int64 a1)
     }
   }
   return GameRoutine_1567590("StatusChange", 1);
+}
+
+__int64 game_facility_anonymous_ProcMaterialSellSelectMenu_LCall(__int64 a1)
+{
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  _QWORD v6[4];
+  _QWORD* v7;
+  __int64 v8;
+  _BYTE v9[200];
+
+  v6[0] = GameData_20a8d88;
+  v7 = v6;
+  v2 = GameRoutine_15dff80(0, 0, v6, 1);
+  if (v7 == v6) {
+    v3 = 32;
+  }
+  else {
+    if (v7 == nullptr) {
+      goto LABEL_6;
+    }
+    v3 = 40;
+  }
+  (*(void (**)(__int64))(*v7 + v3))((__int64)v7);
+LABEL_6:
+  v4 = *(_QWORD*)(a1 + 152);
+  if (v4 == 0) {
+    v4 = a1;
+  }
+  ShopMenuItemSell_1704ea0(*(_QWORD*)(v4 + 32), v2);
+  snd_Fade_Fade_10c830(v9, 0.0f);
+  snd_play_ff2d0((void*)(&v8), "SE_SYS_UnitChange_Left",
+                 "SE_SYS_UnitChange_Left", v9, 0, 65537, 0, 0.0f, 1.0f);
+  snd_Fade_Destroy_Fade(v9);
+  GameRoutine_1873720(a1, v2, 0);
+  return 8;
+}
+
+__int64 ProcMaterialSellSelectMenu_Unknown105(__int64 a1)
+{
+  __int64 v1;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v8;
+  _BYTE v9[200];
+
+  v1 = *(_QWORD*)(a1 + 152);
+  if (v1 == 0) {
+    v1 = a1;
+  }
+  ShopMenuItemSell_1704ea0(*(_QWORD*)(v1 + 32), 0);
+  snd_Fade_Fade_10c830(v9, 0.0f);
+  snd_play_ff2d0((void*)(&v8), "SE_SYS_UnitChange_Right",
+                 "SE_SYS_UnitChange_Right", v9, 0, 65537, 0, 0.0f, 1.0f);
+  snd_Fade_Destroy_Fade(v9);
+  v3 = *(_QWORD*)(a1 + 152);
+  if (v3 == 0) {
+    v3 = a1;
+  }
+  v4 = *(_QWORD*)(v3 + 32);
+  if (v4 != 0) {
+    v5 = __dynamic_cast(v4, GameData_212c610, GameData_2131c18[0], 0);
+    if (v5 != 0) {
+      v6 = __dynamic_cast(v5, GameData_2131c18[0], GameData_2131c88[0], 0);
+      if (v6 != 0) {
+        *(_DWORD*)(v6 + 1392) = 0;
+      }
+    }
+  }
+  return 8;
+}
+
+__int64
+
+game_facility_anonymous_ProcMaterialSellSelectMenu_AddItemList(__int64 a1)
+{
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 result;
+  __int64 v6;
+  struct {
+    _QWORD v7[4];
+    _QWORD* v8;
+  } v7_;
+
+  v2 = fw_memory_HeapManager_Allocate_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr, 96, 16, 0);
+  *(_QWORD*)(v2 + 72) = 0;
+  *(_QWORD*)(v2 + 80) = 0;
+  *(_QWORD*)(v2 + 16) = 0;
+  *(_QWORD*)(v2 + 24) = 0;
+  v3 = v2;
+  *(_QWORD*)(v2 + 32) = 0;
+  *(_QWORD*)(v2 + 40) = 0;
+  *(_QWORD*)(v2 + 48) = 0;
+  *(_QWORD*)(v2 + 56) = 0;
+  *(_QWORD*)(v2 + 64) = 0;
+  *(_WORD*)(v2 + 80) = 257;
+  *(_BYTE*)(v2 + 82) = 1;
+  *(_DWORD*)(v2 + 84) = 1;
+  *(_QWORD*)(v2 + 88) = 0;
+  *(_QWORD*)v2 = game_facility_EmptyShopMenuItem_Sell_vtable;
+  *(_QWORD*)(v2 + 8) = 0;
+  v4 = *(_QWORD*)(a1 + 344);
+  if (v4 != 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v4 + 8LL))(v4);
+  }
+  *(_QWORD*)(v3 + 8) = a1;
+  *(_QWORD*)(a1 + 344) = v3;
+  v7_.v7[0] = GameData_20a8e08;
+  v7_.v7[1] = a1;
+  v7_.v8 = v7_.v7;
+  game_gameui_Util_EachMaterialItemFromTransporter((__int64)v7_.v7);
+  result = (__int64)v7_.v8;
+  if (v7_.v8 == v7_.v7) {
+    v6 = 32;
+  }
+  else {
+    if (v7_.v8 == nullptr) {
+      return result;
+    }
+    v6 = 40;
+  }
+  return (*(__int64 (**)(__int64))(*v7_.v8 + v6))((__int64)v7_.v8);
+}
+
+__int64
+
+game_facility_anonymous_ProcMaterialSellSelectMenu_SortAndFilter(__int64 a1)
+{
+  int v3;
+  __int64 v4;
+  __int64 v5;
+  bool v6;
+  unsigned __int64 v7;
+  __int64 result;
+  __int64 v9;
+  struct {
+    _QWORD v10[4];
+    _QWORD* v11;
+  } v10_;
+  struct {
+    __int64 (**v12)();
+    char v13;
+    char gap57_[23];
+    __int64 (***v14)();
+  } v12_;
+
+  v3 = *(_DWORD*)(a1 + 660);
+  v4 = *(_QWORD*)(a1 + 672);
+  if (v3 < (unsigned __int64)((*(_QWORD*)(a1 + 680) - v4) >> 2)) {
+    v3 = *(_DWORD*)(v4 + 4LL * v3);
+  }
+  v5 = 32;
+  v10_.v11 = v10_.v10;
+  v6 = (unsigned __int8)v3 >= 6u;
+  v12_.v12 = GameData_20a92b8;
+  v7 = 0x160E0D141320uLL >> (8 * (unsigned __int8)v3);
+  if (v6) {
+    LOBYTE(v7) = 32;
+  }
+  v12_.v13 = v7;
+  v12_.v14 = &v12_.v12;
+  v10_.v10[0] = GameData_20a9338;
+  BasicMenu_16e1f40(a1, (__int64)&v12_.v12, (__int64)v10_.v10);
+  if (v10_.v11 != v10_.v10) {
+    if (v10_.v11 == nullptr) {
+      goto LABEL_10;
+    }
+    v5 = 40;
+  }
+  (*(void (**)(__int64))(*v10_.v11 + v5))((__int64)v10_.v11);
+LABEL_10:
+  result = (__int64)v12_.v14;
+  if (v12_.v14 == &v12_.v12) {
+    v9 = 4;
+  }
+  else {
+    if (v12_.v14 == nullptr) {
+      return result;
+    }
+    v9 = 5;
+  }
+  return ((__int64 (*)(__int64))(*v12_.v14)[v9])((__int64)v12_.v14);
 }
 
 __int64 ProcMaterialSellSelectMenu_Unknown148(__int64 a1, __int64* a2)

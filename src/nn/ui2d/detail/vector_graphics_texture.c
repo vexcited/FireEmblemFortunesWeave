@@ -37,6 +37,12 @@ __int64 VectorGraphicsTexture_Unknown5(__int64 a1);
 __int64 VectorGraphicsTexture_Unknown6(__int64 result, __int64 a2);
 __int64 VectorGraphicsTexture_Unknown7(__int64 result, __int64 a2, __int64* a3,
                                        __int64 a4);
+_QWORD* GameRoutine_5fc3e0(_QWORD* result);
+__int64 DrawInfo_576aa0_alt1(__int64, __int64) __asm__("DrawInfo_576aa0");
+__int64 GameRoutine_5fc3f0(_QWORD);
+__int64 GameRoutine_5fd940(__int64, __int64, __int64, float, float, float,
+                           float);
+__int64 VectorGraphicsTexture_5adfc0(__int64 a1, _QWORD* a2, __int64 a3);
 
 __int64 VectorGraphicsTexture_DeletingDestructor(_QWORD* a1)
 {
@@ -295,6 +301,107 @@ __int64 VectorGraphicsTexture_Unknown7(__int64 result, __int64 a2, __int64* a3,
     }
   }
   return result;
+}
+
+__int64 VectorGraphicsTexture_5adfc0(__int64 a1, _QWORD* a2, __int64 a3)
+{
+
+#pragma clang fp contract(off)
+  __int64 v3;
+  __int64 v4;
+  __int64 v8;
+  unsigned int v9;
+  unsigned int v10;
+  float v11;
+  float v12;
+  float v13;
+  float v14;
+  __int64 v15;
+  __int64 v16;
+  __int64 v17;
+  __int64 v18;
+  __int64 v19;
+  __int64 v20;
+  __int64 v21;
+  __int64 v22;
+  struct {
+    __int64 v24;
+    __int64 v25;
+    __int64 v26;
+    __int64 v27;
+  } v24_;
+  struct {
+    __int64 v28;
+    __int64 v29;
+    __int64 v30;
+    __int64 v31;
+    __int64 v32;
+    __int64 v33;
+  } v28_;
+  __int64 var4;
+
+  v3 = *(_QWORD*)(a1 + 448);
+  v4 = *(_QWORD*)(a1 + 8);
+  v28_.v32 = 0;
+  v28_.v33 = 0;
+  v28_.v30 = 0;
+  v28_.v31 = 0;
+  v28_.v28 = 0;
+  v28_.v29 = 0;
+  if (v3 != 0) {
+    v8 = v3;
+  }
+  else {
+    v8 = v4;
+  }
+  (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64))(
+      *(_QWORD*)v8 + 32LL))((void*)(&v24_.v24), v8);
+  GameRoutine_5fc3e0(&v28_.v28);
+  LOWORD(v10) = WORD1(v24_.v24);
+  LOWORD(v9) = v24_.v24;
+  v24_.v27 = 0;
+  v28_.v28 = 0;
+  v24_.v25 = 0;
+  v24_.v26 = 0;
+  v24_.v24 = 0;
+  *(float*)&v28_.v29 = (float)v9;
+  *((float*)&v28_.v29 + 1) = (float)v10;
+  (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64))(
+      *(_QWORD*)v8 + 32LL))((void*)(&var4), v8);
+  GameRoutine_5fc3f0(&v24_.v24);
+  v11 = *(float*)(a1 + 320);
+  v12 = *(float*)(a1 + 324);
+  v13 = *(float*)(a1 + 328);
+  v14 = *(float*)(a1 + 332);
+  v24_.v24 = 0;
+  LODWORD(v24_.v25) = (unsigned __int16)var4;
+  HIDWORD(v24_.v25) = WORD1(var4);
+  GameRoutine_5fd940(a3, v8 + 64, 0, v11, v12, v13, v14);
+  v15 = v28_.v30;
+  v16 = v28_.v32;
+  v17 = v28_.v33;
+  a2[35] = v28_.v31;
+  a2[36] = v16;
+  v18 = v28_.v28;
+  a2[33] = v28_.v29;
+  a2[34] = v15;
+  v20 = v24_.v26;
+  v19 = v24_.v27;
+  a2[31] = v8 + 64;
+  a2[32] = v18;
+  a2[41] = v19;
+  a2[42] = a1 + 376;
+  v21 = v24_.v24;
+  a2[39] = v24_.v25;
+  a2[40] = v20;
+  a2[37] = v17;
+  a2[38] = v21;
+  v22 = *(_QWORD*)(a1 + 456);
+  if (v22 != 0) {
+    a2[44] = v22;
+  }
+  DrawInfo_576aa0_alt1((__int64)a2, a3);
+  return (*(__int64 (**)(_QWORD*, __int64))(*a2 + 24LL))(a2, a3);
 }
 
 #pragma GCC visibility pop

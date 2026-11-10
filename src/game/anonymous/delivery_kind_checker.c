@@ -4,6 +4,7 @@
 
 bool DeliveryKindChecker_Destructor(__int64 a1, __int64 a2);
 __int64 DeliveryKindChecker_DeletingDestructor(__int64 a1);
+bool DeliveryKindChecker_Unknown4(__int64 a1);
 
 bool DeliveryKindChecker_Destructor(__int64 a1, __int64 a2)
 {
@@ -20,6 +21,11 @@ __int64 DeliveryKindChecker_DeletingDestructor(__int64 a1)
 {
   ++*(_DWORD*)(a1 + 12);
   return 0;
+}
+
+bool DeliveryKindChecker_Unknown4(__int64 a1)
+{
+  return *(_DWORD*)(a1 + 12) >= *(_DWORD*)(a1 + 8);
 }
 
 #pragma GCC visibility pop

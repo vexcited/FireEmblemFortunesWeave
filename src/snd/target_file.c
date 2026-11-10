@@ -38,6 +38,22 @@ __int64 TargetFile_Unknown9(__int64 a1);
 __int64 TargetFile_Unknown10(__int64 a1);
 __int64 TargetFile_Unknown12(__int64 a1, __int64 a2, __int64 a3, __int64 a4);
 __int64 TargetFile_Unknown13(__int64 result);
+_BYTE* GameRoutine_190120(_BYTE* result, unsigned __int8*);
+_QWORD*
+ConstructString_1901f0_alt1(_QWORD* result) __asm__("ConstructString_1901f0");
+_QWORD* GameRoutine_a3a3a0(_QWORD*, __int64, unsigned __int64);
+__int64* GameRoutine_a3a260(__int64*, __int64, unsigned __int64);
+__int64 GameRoutine_190240_alt1(__int64) __asm__("GameRoutine_190240");
+__int64 GameRoutine_a392e0_alt2(__int64, __int64,
+                                ...) __asm__("GameRoutine_a392e0");
+__int64 fw_memory_HeapManager_Allocate(__int64, __int64, __int64, unsigned int);
+__int64 memmove(_QWORD, _QWORD, _QWORD);
+__int64 nn_fs_GetFileSize(_QWORD, _QWORD);
+__int64 nn_fs_OpenFile(_QWORD, _QWORD, _QWORD);
+__int64 strlen(_QWORD);
+extern __int64 fw_memory_g_heap_manager;
+void __attribute__((noreturn)) String_60a1d0();
+__int64 TargetFile_Unknown11(__int64 a1);
 
 __int64 TargetFile_Destructor(__int64 a1)
 {
@@ -301,6 +317,146 @@ __int64 TargetFile_Unknown10(__int64 a1)
     v2 = (unsigned int*)(a1 + 104);
   }
   return *v2;
+}
+
+__int64 TargetFile_Unknown11(__int64 a1)
+{
+  const char* v2;
+  const char* v3;
+  __int64 v4;
+  __int64 v5;
+  unsigned __int64 v6;
+  unsigned __int64 v7;
+  char* v8;
+  __int64 v9;
+  char* v10;
+  unsigned __int64 v11;
+  __int64* v12;
+  __int64 v13;
+  __int64 v14;
+  __int64 v15;
+  __int64 v16;
+  __int64 v17;
+  unsigned int v18;
+  int v19;
+  __int64 v21;
+  struct {
+    _QWORD v22[2];
+    char* v23;
+  } v22_;
+  _QWORD v24[3];
+  struct {
+    __int64 v25;
+    unsigned __int64 v26;
+    char* v27;
+  } v25_;
+  struct {
+    __int64 v28[2];
+    __int64 v29;
+  } v28_;
+
+  ConstructString_1901f0_alt1(v28_.v28);
+  v2 = (const char*)(*(__int64 (**)(__int64))(*(_QWORD*)snd_g_proxy + 128LL))(
+      snd_g_proxy);
+  v3 = (const char*)GameRoutine_190240_alt1(a1 + 40);
+  GameRoutine_a392e0_alt2((__int64)v28_.v28, (__int64)"%s%s", v2, v3);
+  v4 = snd_g_proxy;
+  v5 = GameRoutine_190240_alt1((__int64)v28_.v28);
+  v6 = strlen(v5);
+  if (v6 >= 0xFFFFFFFFFFFFFFF7LL) {
+    String_60a1d0();
+  }
+  v7 = v6;
+  if (v6 >= 0x17) {
+    if ((v6 | 7) == 0x17) {
+      v9 = 26;
+    }
+    else {
+      v9 = (v6 | 7) + 1;
+    }
+    v8 = (char*)fw_memory_HeapManager_Allocate(fw_memory_g_heap_manager, v9, 16,
+                                               0);
+    v22_.v22[1] = v7;
+    v22_.v23 = v8;
+    v22_.v22[0] = v9 | 1;
+    goto LABEL_9;
+  }
+  LOBYTE(v22_.v22[0]) = 2 * v6;
+  v8 = (char*)v22_.v22 + 1;
+  if (v6 != 0) {
+  LABEL_9:
+    memmove(v8, v5, v7);
+  }
+  v8[v7] = 0;
+  (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64, _QWORD*))(
+      *(_QWORD*)v4 + 184LL))((void*)(v24), v4, v22_.v22);
+  GameRoutine_190120(&v25_.v25, (unsigned __int8*)v24);
+  if ((v28_.v28[0] & 1) != 0) {
+    if ((v25_.v25 & 1) != 0) {
+      v10 = v25_.v27;
+    }
+    else {
+      v10 = (char*)&v25_.v25 + 1;
+    }
+    if ((v25_.v25 & 1) != 0) {
+      v11 = v25_.v26;
+    }
+    else {
+      v11 = (unsigned __int64)(unsigned __int8)v25_.v25 >> 1;
+    }
+    GameRoutine_a3a260(v28_.v28, (__int64)v10, v11);
+  }
+  else if ((v25_.v25 & 1) != 0) {
+    GameRoutine_a3a3a0(v28_.v28, (__int64)v25_.v27, v25_.v26);
+  }
+  else {
+    v28_.v28[0] = v25_.v25;
+    v28_.v28[1] = v25_.v26;
+    v28_.v29 = (__int64)v25_.v27;
+  }
+  v12 = snd_g_memory_ptr[0];
+  if ((v25_.v25 & 1) != 0) {
+    (*(void (**)(_QWORD, char*))(**(_QWORD**)snd_g_memory_ptr[0] + 24LL))(
+        *snd_g_memory_ptr[0], v25_.v27);
+  }
+  if ((v24[0] & 1) != 0 && v24[2] != 0) {
+    v13 = 128;
+    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+      v13 = 56;
+    }
+    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v13);
+  }
+  if ((v22_.v22[0] & 1) != 0 && v22_.v23 != nullptr) {
+    v14 = 128;
+    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+      v14 = 56;
+    }
+    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v14);
+  }
+  v15 = snd_g_proxy;
+  v16 = GameRoutine_190240_alt1((__int64)v28_.v28);
+  if (((*(__int64 (**)(__int64, __int64))(*(_QWORD*)v15 + 536LL))(v15, v16) &
+       1) != 0) {
+    v17 = GameRoutine_190240_alt1((__int64)v28_.v28);
+    v18 = 1;
+    v19 = nn_fs_OpenFile(a1 + 80, v17, 1);
+    *(_DWORD*)(a1 + 88) = v19;
+    if (v19 == 0) {
+      v21 = *(_QWORD*)(a1 + 80);
+      *(_BYTE*)(a1 + 92) = 1;
+      *(_DWORD*)(a1 + 88) = nn_fs_GetFileSize(a1 + 104, v21);
+      if ((v28_.v28[0] & 1) == 0) {
+        return v18;
+      }
+      goto LABEL_36;
+    }
+  }
+  v18 = 0;
+  if ((v28_.v28[0] & 1) != 0) {
+  LABEL_36:
+    (*(void (**)(__int64, __int64))(*(_QWORD*)*v12 + 24LL))(*v12, v28_.v29);
+  }
+  return v18;
 }
 
 __int64 TargetFile_Unknown12(__int64 a1, __int64 a2, __int64 a3, __int64 a4)

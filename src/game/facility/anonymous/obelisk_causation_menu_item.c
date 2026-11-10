@@ -40,6 +40,16 @@ extern char** msg_MessageManager_empty_text__ptr;
 __int64 ObeliskCausationMenuItem_Unknown2(__int64 a1);
 __int64 ObeliskCausationMenuItem_Unknown25(__int64 a1);
 __int64 ObeliskCausationMenuItem_Unknown58(__int64 a1);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, _QWORD, _QWORD,
+                                               _QWORD, _QWORD, _QWORD, _QWORD,
+                                               double, float);
+__int64 GameRoutine_9dc300(_QWORD);
+__int64 snd_Fade_Destroy_Fade(_QWORD);
+__n128 snd_Fade_Fade_10c830(_QWORD, double);
+extern __int64 GameData_21f84b8;
+__int64 ObeliskCausationMenuItem_PlayChangeSe(__int64 a1);
+__int64 game_facility_anonymous_ObeliskCausationMenuItem_ACall_closure_Invoke(
+    __int64 a1);
 
 __int64 ObeliskCausationMenuItem_Unknown2(__int64 a1)
 {
@@ -706,6 +716,30 @@ LABEL_35:
   }
 }
 
+__int64 ObeliskCausationMenuItem_PlayChangeSe(__int64 a1)
+{
+  _QWORD* v1;
+  __int64 v2;
+  const char* v3;
+  __int64 v5;
+  _BYTE v6[200];
+
+  v1 = (_QWORD*)(GameData_21f84b8 + 40LL * *(unsigned __int8*)(a1 + 96));
+  if (*v1 != 0 && game_GameModeData_instance_ != 0 &&
+      (v2 = game_GameVariableTable_Find(
+           *(_QWORD*)(game_GameModeData_instance_ + 48), v1)) != 0 &&
+      *(_BYTE*)(v2 + 32) == 1) {
+    snd_Fade_Fade_10c830(v6, 0.0f);
+    v3 = "SE_SYS_Switch_Off";
+  }
+  else {
+    snd_Fade_Fade_10c830(v6, 0.0f);
+    v3 = "SE_SYS_Switch_On";
+  }
+  snd_play_ff2d0((void*)(&v5), v3, v3, v6, 0, 65537, 0, 0.0f, 1.0f);
+  return snd_Fade_Destroy_Fade(v6);
+}
+
 __int64 ObeliskCausationMenuItem_Unknown58(__int64 a1)
 {
   unsigned int v1;
@@ -912,6 +946,24 @@ LABEL_8:
     goto LABEL_35;
   }
   return 0;
+}
+
+__int64 game_facility_anonymous_ObeliskCausationMenuItem_ACall_closure_Invoke(
+    __int64 a1)
+{
+  __int64 v1;
+  __int64 v4;
+  _BYTE v5[200];
+
+  v1 = *(_QWORD*)(a1 + 8);
+  snd_Fade_Fade_10c830(v5, 0.0f);
+  snd_play_ff2d0((void*)(&v4), "SE_SYS_Decide_M", "SE_SYS_Decide_M", v5, 0,
+                 65537, 0, 0.0f, 1.0f);
+  snd_Fade_Destroy_Fade(v5);
+  if ((GameRoutine_9dc300(*(_QWORD*)(a1 + 16)) & 1) != 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v1 + 96LL))(v1);
+  }
+  return 2;
 }
 
 #pragma GCC visibility pop

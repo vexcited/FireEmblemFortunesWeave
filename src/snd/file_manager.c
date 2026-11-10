@@ -20,6 +20,12 @@ __int64 FileManager_10e120(__int64 a1, __int64 a2, float a3);
 __int64 FileManager_10e200(__int64 result, __int64 a2);
 __int64 FileManager_10e2c0();
 bool snd_FileManager__destroyFile_lambda0_Invoke(__int64 a1, __int64* a2);
+__int64 snd_fnd_WeakHandle_set(__int64, __int64);
+extern __int64 snd_g_proxy_ptr[2];
+__attribute__((swiftcall)) void FileManager_10df70(PSEUDO_X8 x8_, __int64 a1,
+                                                   __int64 a2, unsigned int a3);
+__attribute__((swiftcall)) void FileManager_10e040(PSEUDO_X8 x8_, __int64 a1,
+                                                   __int64 a2, unsigned int a3);
 
 __int64 FileManager_Destructor(_QWORD* a1)
 {
@@ -36,6 +42,64 @@ __int64 FileManager_10def0(__int64 a1)
   GameRoutine_10de50(v2, a1);
   GameData_2178e68 = v2;
   return v2;
+}
+
+__attribute__((swiftcall)) void FileManager_10df70(PSEUDO_X8 x8_, __int64 a1,
+                                                   __int64 a2, unsigned int a3)
+{
+  __int64 a4 = (__int64)PSEUDO_X8_VALUE(x8_);
+  __int64 v6;
+
+  v6 = (*(__int64 (**)(_QWORD, _QWORD, __int64, _QWORD))(
+      **(_QWORD**)snd_g_proxy_ptr[0] + 512LL))(*(_QWORD*)snd_g_proxy_ptr[0],
+                                               *(_QWORD*)(a1 + 8), a2, a3);
+  nn_os_LockMutex(a1 + 56);
+  *(_QWORD*)(*(_QWORD*)(a1 + 32) + v6) = 0;
+  *(_QWORD*)(*(_QWORD*)(a1 + 32) + v6 + 8) = 0;
+  if (**(_QWORD**)(a1 + 48) != 0) {
+    *(_QWORD*)(*(_QWORD*)(a1 + 32) + *(_QWORD*)(a1 + 24) + 8LL) = v6;
+    *(_QWORD*)(*(_QWORD*)(a1 + 32) + v6) = **(_QWORD**)(a1 + 48);
+  }
+  else {
+    *(_QWORD*)(a1 + 16) = v6;
+  }
+  *(_QWORD*)(a1 + 24) = v6;
+  nn_os_UnlockMutex(a1 + 56);
+  *(_QWORD*)a4 = 0;
+  *(_DWORD*)(a4 + 8) = 0x2000;
+  {
+    snd_fnd_WeakHandle_set(a4, v6);
+    return;
+  }
+}
+
+__attribute__((swiftcall)) void FileManager_10e040(PSEUDO_X8 x8_, __int64 a1,
+                                                   __int64 a2, unsigned int a3)
+{
+  __int64 a4 = (__int64)PSEUDO_X8_VALUE(x8_);
+  __int64 v6;
+
+  v6 = (*(__int64 (**)(_QWORD, _QWORD, __int64, _QWORD))(
+      **(_QWORD**)snd_g_proxy_ptr[0] + 520LL))(*(_QWORD*)snd_g_proxy_ptr[0],
+                                               *(_QWORD*)(a1 + 8), a2, a3);
+  nn_os_LockMutex(a1 + 56);
+  *(_QWORD*)(*(_QWORD*)(a1 + 32) + v6) = 0;
+  *(_QWORD*)(*(_QWORD*)(a1 + 32) + v6 + 8) = 0;
+  if (**(_QWORD**)(a1 + 48) != 0) {
+    *(_QWORD*)(*(_QWORD*)(a1 + 32) + *(_QWORD*)(a1 + 24) + 8LL) = v6;
+    *(_QWORD*)(*(_QWORD*)(a1 + 32) + v6) = **(_QWORD**)(a1 + 48);
+  }
+  else {
+    *(_QWORD*)(a1 + 16) = v6;
+  }
+  *(_QWORD*)(a1 + 24) = v6;
+  nn_os_UnlockMutex(a1 + 56);
+  *(_QWORD*)a4 = 0;
+  *(_DWORD*)(a4 + 8) = 0x2000;
+  {
+    snd_fnd_WeakHandle_set(a4, v6);
+    return;
+  }
 }
 
 __int64 FileManager_10e120(__int64 a1, __int64 a2, float a3)

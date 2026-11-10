@@ -12,6 +12,109 @@ extern __int64 game_TransporterConst_List_instance__ptr[6];
 extern __int64 game_g_empty_item;
 __int64 game_gmap_anonymous_BoostFarmMenuItem_ACall_closure_Invoke(__int64 a1,
                                                                    __int64 a2);
+_QWORD* ProcObeliskDepositoryRideMenu_9d0620(__int64, __int64, __int64, __int64,
+                                             __int64);
+__int64 game_menu_1a06650(__int64, __int64, int);
+extern __int64 (*GameData_2094c50[])();
+extern __int64 (*GameData_2094cd0[])();
+extern __int64* GameData_212c878[6];
+__int64 game_gmap_anonymous_BoostFarmMenuItem_ACall(__int64 a1);
+
+__int64 game_gmap_anonymous_BoostFarmMenuItem_ACall(__int64 a1)
+{
+  __int64 v2;
+  __int64 v3;
+  _QWORD* v4;
+  __int64 v5;
+  __int64 v7;
+  __int64 v8;
+  unsigned int v9;
+  __int64* v10;
+  struct {
+    _QWORD v11[4];
+    _QWORD* v12;
+  } v11_;
+  struct {
+    _QWORD v13[4];
+    _QWORD* v14;
+  } v13_;
+  struct {
+    _QWORD v15[4];
+    _QWORD* v16;
+  } v15_;
+  const char* v17;
+
+  if (((*(__int64 (**)(__int64))(*(_QWORD*)a1 + 464LL))(a1) & 1) == 0) {
+    return 1;
+  }
+  v2 = *(_QWORD*)(a1 + 8);
+  v17 = "MID_Gmap_BoostFarm_Confirm";
+  v15_.v15[0] = GameData_2094c50;
+  v15_.v15[1] = a1;
+  v11_.v12 = v11_.v11;
+  if (*(_QWORD*)(v2 + 152) != 0) {
+    v3 = *(_QWORD*)(v2 + 152);
+  }
+  else {
+    v3 = v2;
+  }
+  v15_.v16 = v15_.v15;
+  v13_.v14 = v13_.v13;
+  v13_.v13[0] = GameData_2094cd0;
+  v11_.v11[0] = GameData_2094cd0;
+  v4 = ProcObeliskDepositoryRideMenu_9d0620(
+      v3, (__int64)&v17, (__int64)v15_.v15, (__int64)v13_.v13,
+      (__int64)v11_.v11);
+  if (v11_.v12 == v11_.v11) {
+    v5 = 32;
+  }
+  else {
+    if (v11_.v12 == nullptr) {
+      goto LABEL_11;
+    }
+    v5 = 40;
+  }
+  (*(void (**)(__int64))(*v11_.v12 + v5))((__int64)v11_.v12);
+LABEL_11:
+  if (v13_.v14 == v13_.v13) {
+    v7 = 32;
+  }
+  else {
+    if (v13_.v14 == nullptr) {
+      goto LABEL_16;
+    }
+    v7 = 40;
+  }
+  (*(void (**)(__int64))(*v13_.v14 + v7))((__int64)v13_.v14);
+LABEL_16:
+  if (v15_.v16 == v15_.v15) {
+    v8 = 32;
+    goto LABEL_20;
+  }
+  if (v15_.v16 != nullptr) {
+    v8 = 40;
+  LABEL_20:
+    (*(void (**)(__int64))(*v15_.v16 + v8))((__int64)v15_.v16);
+  }
+  v9 = *(_DWORD*)(a1 + 40);
+  if ((v9 & 0x80000000) != 0) {
+    v10 = &game_g_empty_item;
+  }
+  else {
+    v10 =
+        (__int64*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)
+                                             game_TransporterConst_List_instance__ptr
+                                                 [0] +
+                                         8LL) +
+                              8LL) +
+                   12LL * v9 + 4);
+  }
+  game_menu_1a06650((__int64)(v4 + 187),
+                    *(_QWORD*)(*(_QWORD*)(*GameData_212c878[0] + 64) +
+                               8LL * *(unsigned __int16*)v10),
+                    1);
+  return 12;
+}
 
 __int64 game_gmap_anonymous_BoostFarmMenuItem_ACall_closure_Invoke(__int64 a1,
                                                                    __int64 a2)

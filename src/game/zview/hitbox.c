@@ -7,6 +7,7 @@ extern __int64 (*GameData_1fdc1d8[36])();
 extern __int64 (*game_zview_Hitbox_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 Hitbox_Destructor(__int64 result);
+__int64 Hitbox_d4aa30(__int64 result, _DWORD* a2, _DWORD* a3);
 
 __int64 Hitbox_Destructor(__int64 result)
 {
@@ -240,6 +241,36 @@ LABEL_47:
       return nn_mem_StandardAllocator_Free(*(_QWORD*)v5 + v35, v34);
     }
   }
+  return result;
+}
+
+__int64 Hitbox_d4aa30(__int64 result, _DWORD* a2, _DWORD* a3)
+{
+  __int64 v3;
+  int v4;
+  __int128 v5;
+  _DWORD* v6;
+  char v7;
+
+  v3 = *(_QWORD*)result;
+  v4 = *(_DWORD*)(*(_QWORD*)result + 96LL);
+  if (v4 != -1) {
+    if (v4 == 5) {
+      *a2 = *a3;
+      a2[1] = a3[1];
+      v5 = *(_OWORD*)a2;
+      *((_QWORD*)&v5 + 1) = (unsigned int)a3[2];
+      *(_OWORD*)a2 = v5;
+      return result;
+    }
+    v6 = a3;
+    result = ((__int64 (*)(char*, __int64))GameData_1fdc1d8[v4])(&v7, v3);
+    a3 = v6;
+  }
+  *(_DWORD*)(v3 + 96) = -1;
+  *(_QWORD*)(v3 + 8) = *((_QWORD*)a3 + 1);
+  *(_QWORD*)v3 = *(_QWORD*)a3;
+  *(_DWORD*)(v3 + 96) = 5;
   return result;
 }
 

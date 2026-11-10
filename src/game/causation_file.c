@@ -42,6 +42,233 @@ __int64 game_CausationFile_EachFlag_lambda0_Invoke(__int64 a1,
                                                    unsigned __int8* a2);
 __int64 game_CausationFile_EachFlag_lambda1_Invoke(__int64 a1,
                                                    unsigned __int8* a2);
+__int64* GameVariable_82e4d0(int);
+__int64 __cxa_guard_acquire(_QWORD);
+__int64 __cxa_guard_release(_QWORD);
+__int64 game_GameVariableTable_Find(_QWORD*, unsigned __int64*);
+__int64 game_HashString(__int64 result);
+extern _UNKNOWN GameData_1a8585a;
+extern _UNKNOWN GameData_1a8d5b1;
+extern _UNKNOWN GameData_1a98eef;
+extern _UNKNOWN GameData_1abbd7d;
+extern _UNKNOWN GameData_1ade279;
+extern _UNKNOWN GameData_1ae5b38;
+extern _UNKNOWN GameData_21f8560;
+extern __int64* GameData_212c968[154];
+extern __int64 GameData_21f84d8;
+extern __int64 GameData_21f84e0;
+extern __int64 GameData_21f84f0;
+extern __int64 GameData_21f84f8;
+extern __int64 GameData_21f8508;
+extern __int64 GameData_21f8510;
+extern __int64 GameData_21f8520;
+extern __int64 GameData_21f8528;
+extern __int64 GameData_21f8538;
+extern __int64 GameData_21f8540;
+extern __int64 GameData_21f8550;
+extern __int64 GameData_21f8558;
+extern __int64 game_GameModeData_instance_;
+extern char GameData_21f84d0[];
+extern char GameData_21f84e8;
+extern char GameData_21f8500;
+extern char GameData_21f8518;
+extern char GameData_21f8530;
+extern char GameData_21f8548;
+__int64 CausationFile_9dbdc0(__int64 result);
+bool CausationFile_9dc200(__int64 a1);
+
+__int64 CausationFile_9dbdc0(__int64 result)
+{
+  __int64 v1;
+  _QWORD* v2;
+  unsigned __int64 v3;
+  unsigned __int64 v4;
+  unsigned __int64 v6;
+  unsigned __int64 v7;
+  _QWORD* v8;
+  _QWORD* v9;
+  unsigned __int64 v10;
+  __int64 v11;
+  int v12;
+  __int64 v13;
+
+  if (result != 0) {
+    if ((atomic_load_explicit((atomic_uchar* volatile)&GameData_21f8560,
+                              memory_order_acquire) &
+         1) == 0) {
+      v13 = result;
+      v12 = __cxa_guard_acquire(&GameData_21f8560);
+      result = v13;
+      if (v12 != 0) {
+        GameData_21f84d0[0] = 26;
+        GameData_21f84e0 = (__int64)&GameData_1a8585a;
+        GameData_21f84d8 = game_HashString((__int64)&GameData_1a8585a);
+        GameData_21f84e8 = 27;
+        GameData_21f84f8 = (__int64)&GameData_1abbd7d;
+        GameData_21f84f0 = game_HashString((__int64)&GameData_1abbd7d);
+        GameData_21f8500 = 28;
+        GameData_21f8510 = (__int64)&GameData_1a98eef;
+        GameData_21f8508 = game_HashString((__int64)&GameData_1a98eef);
+        GameData_21f8518 = 29;
+        GameData_21f8528 = (__int64)&GameData_1a8d5b1;
+        GameData_21f8520 = game_HashString((__int64)&GameData_1a8d5b1);
+        GameData_21f8530 = 30;
+        GameData_21f8540 = (__int64)&GameData_1ade279;
+        GameData_21f8538 = game_HashString((__int64)&GameData_1ade279);
+        GameData_21f8548 = 31;
+        GameData_21f8558 = (__int64)&GameData_1ae5b38;
+        GameData_21f8550 = game_HashString((__int64)&GameData_1ae5b38);
+        __cxa_guard_release(&GameData_21f8560);
+        result = v13;
+      }
+    }
+    v1 = 0;
+    v2 = (_QWORD*)*GameData_212c968[0];
+  LABEL_4:
+    v3 = *(_QWORD*)&GameData_21f84d0[v1 + 8];
+    if (v3 == 0) {
+      goto LABEL_28;
+    }
+    v4 = v2[12];
+    if (v4 == 0 || v2[14] == 0) {
+      goto LABEL_28;
+    }
+    v6 = v4 - 1;
+    if ((v4 & (v4 - 1)) != 0) {
+      v7 = *(_QWORD*)&GameData_21f84d0[v1 + 8];
+      if (v3 >= v4) {
+        v7 = v3 % v4;
+      }
+    }
+    else {
+      v7 = v6 & v3;
+    }
+    v8 = *(_QWORD**)(v2[11] + 8 * v7);
+    if (v8 == nullptr) {
+      goto LABEL_28;
+    }
+    v9 = (_QWORD*)*v8;
+    if (v9 == nullptr) {
+      goto LABEL_28;
+    }
+    if ((v4 & v6) == 0) {
+      while (1) {
+        v11 = v9[1];
+        if (v11 == v3) {
+          if (v9[2] == v3) {
+            goto LABEL_30;
+          }
+        }
+        else if ((v11 & v6) != v7) {
+          goto LABEL_28;
+        }
+        v9 = (_QWORD*)*v9;
+        if (v9 == nullptr) {
+          goto LABEL_28;
+        }
+      }
+    }
+    while (1) {
+      v10 = v9[1];
+      if (v10 == v3) {
+        if (v9[2] == v3) {
+        LABEL_30:
+          if (v9[3] == result) {
+            return (unsigned __int8)GameData_21f84d0[v1];
+          }
+        LABEL_28:
+          v1 += 24;
+          if (v1 == 144) {
+            return 0;
+          }
+          goto LABEL_4;
+        }
+      }
+      else {
+        if (v10 >= v4) {
+          v10 %= v4;
+        }
+        if (v10 != v7) {
+          goto LABEL_28;
+        }
+      }
+      v9 = (_QWORD*)*v9;
+      if (v9 == nullptr) {
+        goto LABEL_28;
+      }
+    }
+  }
+  return result;
+}
+
+bool CausationFile_9dc200(__int64 a1)
+{
+  int v2;
+  unsigned __int64* v3;
+  unsigned __int64 v4;
+  __int64 v5;
+  int v6;
+  __int64* v7;
+  __int64 v8;
+  __int64 v9;
+  int v10;
+  int v11;
+
+  v2 = **(_DWORD**)(a1 + 24);
+  v3 = (unsigned __int64*)(GameData_21f84a0 +
+                           40LL * *(unsigned __int8*)(a1 + 56));
+  v4 = *v3;
+  if (*v3 == 0 || (LODWORD(v4) = game_GameModeData_instance_,
+                   game_GameModeData_instance_ == 0)) {
+  LABEL_5:
+    if (v2 <= (int)v4) {
+      return false;
+    }
+    goto LABEL_6;
+  }
+  v5 = game_GameVariableTable_Find(
+      *(_QWORD**)(game_GameModeData_instance_ + 48), v3);
+  if (v5 != 0) {
+    LODWORD(v4) = *(_DWORD*)(v5 + 32);
+    goto LABEL_5;
+  }
+  if (v2 <= 0) {
+    return false;
+  }
+LABEL_6:
+  v6 = *(unsigned __int8*)(a1 + 59);
+  if (*(_BYTE*)(a1 + 59) == 0) {
+    v8 = game_GameModeData_instance_;
+    v10 = *(unsigned __int16*)(a1 + 60);
+    if (game_GameModeData_instance_ != 0) {
+      goto LABEL_11;
+    }
+    goto LABEL_15;
+  }
+  v7 = GameVariable_82e4d0(1);
+  v8 = game_GameModeData_instance_;
+  if (game_GameModeData_instance_ != 0 &&
+      (v9 = game_GameVariableTable_Find(
+           *(_QWORD**)(game_GameModeData_instance_ + 48),
+           (unsigned __int64*)v7)) != 0) {
+    if (*(_DWORD*)(v9 + 32) >= v6) {
+      goto LABEL_10;
+    }
+  }
+  else if (v6 <= 0) {
+  LABEL_10:
+    v10 = *(unsigned __int16*)(a1 + 60);
+    if (v8 != 0) {
+    LABEL_11:
+      v11 = *(_DWORD*)(v8 + 80);
+      return v11 >= v10;
+    }
+  LABEL_15:
+    v11 = 0;
+    return v11 >= v10;
+  }
+  return false;
+}
 
 _QWORD* game_CausationFile_EachFlag(__int64 a1)
 {

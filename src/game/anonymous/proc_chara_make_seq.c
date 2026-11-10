@@ -69,6 +69,19 @@ __int64 game_anonymous_ProcCharaMakeSeq_CreateMenu_closure1_Invoke(__int64 a1);
 __int64 game_anonymous_ProcCharaMakeSeq_CreateMenu_closure2_Invoke(__int64 a1);
 __int64 game_anonymous_ProcCharaMakeSeq_CreateMenu_closure3_Invoke(__int64 a1);
 __int64 game_anonymous_ProcCharaMakeSeq_CreateMenu_closure4_Invoke(__int64 a1);
+__int64 GameRoutine_1366260(__int64, char);
+__int64 GameRoutine_1366820(__int64 result);
+__int64 RenderTask_1369e30(__int64, unsigned int);
+extern __int64 GameData_21f1d98;
+extern __int64 GameData_21f1da0;
+extern __int64 GameData_21f1db0;
+extern __int64 GameData_21f1db8;
+extern __int64 GameData_21f1dc8;
+extern __int64 ui_Manager_instance_;
+extern char* GameData_1fa9470[9];
+extern char GameData_21f1dd8[];
+__int64 ProcCharaMakeSeq_Unknown4();
+__int64 ProcCharaMakeSeq_Unknown5();
 
 __int64 game_anonymous_ProcCharaMakeSeq_CreateCharacter(__int64 a1)
 {
@@ -814,6 +827,73 @@ __int64 ProcCharaMakeSeq_Destructor(__int64 a1)
   }
   game_ProcInst_Unregister(a1);
   return GameRoutine_658c00(a1 + 88);
+}
+
+__int64 ProcCharaMakeSeq_Unknown4()
+{
+  int* v0;
+  __int64 i;
+  __int64 v2;
+  __int64 result;
+  int* v4;
+  __int64 j;
+  __int64 v6;
+
+  result = COERCE_AS(__typeof__(result),
+                     PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  v0 = (int*)GameData_21f1db0;
+  for (i = GameData_21f1db8; v0 != (int*)i; ++v0) {
+    v2 = *v0;
+    if ((*((_BYTE*)&GameData_21f1dc8 + v2) & 1) == 0) {
+      result = RenderTask_1369e30(ui_Manager_instance_ + 1264, v2);
+      *((_BYTE*)&GameData_21f1dc8 + v2) = 1;
+    }
+  }
+  v4 = (int*)GameData_21f1d98;
+  for (j = GameData_21f1da0; v4 != (int*)j; ++v4) {
+    v6 = *v4;
+    if ((GameData_21f1dd8[v6] & 1) == 0) {
+      result = GameRoutine_1366260((__int64)GameData_1fa9470[v6], 0);
+      GameData_21f1dd8[v6] = 1;
+    }
+  }
+  return result;
+}
+
+__int64 ProcCharaMakeSeq_Unknown5()
+{
+  int* v0;
+  __int64 i;
+  __int64 v2;
+  __int64 v3;
+  int v4;
+  int* v5;
+  __int64 j;
+  __int64 v7;
+  __int64 result;
+
+  result = COERCE_AS(__typeof__(result),
+                     PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  v0 = (int*)GameData_21f1db0;
+  for (i = GameData_21f1db8; v0 != (int*)i; ++v0) {
+    v2 = *v0;
+    if (*((_BYTE*)&GameData_21f1dc8 + v2) == 1) {
+      v3 = ui_Manager_instance_ + 376LL * (unsigned int)v2;
+      v4 = *(_DWORD*)(v3 + 1636);
+      *(_DWORD*)(v3 + 1632) = 1;
+      *(_DWORD*)(v3 + 1636) = v4 - 1;
+      *((_BYTE*)&GameData_21f1dc8 + v2) = 0;
+    }
+  }
+  v5 = (int*)GameData_21f1d98;
+  for (j = GameData_21f1da0; v5 != (int*)j; ++v5) {
+    v7 = *v5;
+    if (GameData_21f1dd8[v7] == 1) {
+      result = GameRoutine_1366820((__int64)GameData_1fa9470[v7]);
+      GameData_21f1dd8[v7] = 0;
+    }
+  }
+  return result;
 }
 
 #pragma GCC visibility pop

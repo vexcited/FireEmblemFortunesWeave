@@ -29,6 +29,12 @@ void __attribute__((noreturn)) GameRoutine_164010(void);
 __int64 Sound3DActorNx_14b560(_QWORD* a1, __int64* a2, int a3, __int64 a4);
 __int64 Sound3DActorNx_277190(__int64 result);
 __int64 Sound3DActorNx_2771b0(__int64 result, _QWORD* a2);
+__int64 BaseNx_2a1b90(_QWORD);
+extern __int64 (*snd_fnd_Vec3_vtable[])();
+__attribute__((swiftcall)) void Sound3DActorNX_Unknown7(PSEUDO_X8 x8_,
+                                                        __int64 a1);
+__attribute__((swiftcall)) void Sound3DActorNX_Unknown10(PSEUDO_X8 x8_,
+                                                         __int64 a1);
 
 __int64 Sound3DActorNx_14b560(_QWORD* a1, __int64* a2, int a3, __int64 a4)
 {
@@ -381,6 +387,28 @@ __n128 Sound3DActorNX_Unknown6(__int64 a1, __int64 a2)
   return result;
 }
 
+__attribute__((swiftcall)) void Sound3DActorNX_Unknown7(PSEUDO_X8 x8_,
+                                                        __int64 a1)
+{
+  __int64 a2 = (__int64)PSEUDO_X8_VALUE(x8_);
+  __int64 v4;
+  __int64 v5;
+  __int128 v6;
+  __int64 v7;
+
+  v4 = BaseNx_2a1b90(a1);
+  v5 = nn_os_LockMutex(v4 + 840);
+  v6 = *(_OWORD*)(*(_QWORD*)(a1 + 48) + 256LL);
+  *(_QWORD*)(a2 + 8) = v6;
+  *(_QWORD*)a2 = snd_fnd_Vec3_vtable;
+  *(_DWORD*)(a2 + 16) = DWORD2(v6);
+  v7 = BaseNx_2a1b90(v5);
+  {
+    nn_os_UnlockMutex(v7 + 840);
+    return;
+  }
+}
+
 __n128 Sound3DActorNX_Unknown8(__int64 a1, __int64 a2)
 {
   __int64 v4;
@@ -419,6 +447,28 @@ __n128 Sound3DActorNX_Unknown9(__int64 a1, __int64 a2)
   v7 = GameRoutine_277160(v6, &v10);
   v8 = GameRoutine_2a1b90(v7);
   return nn_os_UnlockMutex(v8 + 840);
+}
+
+__attribute__((swiftcall)) void Sound3DActorNX_Unknown10(PSEUDO_X8 x8_,
+                                                         __int64 a1)
+{
+  __int64 a2 = (__int64)PSEUDO_X8_VALUE(x8_);
+  __int64 v4;
+  __int64 v5;
+  __int128 v6;
+  __int64 v7;
+
+  v4 = BaseNx_2a1b90(a1);
+  v5 = nn_os_LockMutex(v4 + 840);
+  v6 = *(_OWORD*)(*(_QWORD*)(a1 + 48) + 240LL);
+  *(_QWORD*)(a2 + 8) = v6;
+  *(_QWORD*)a2 = snd_fnd_Vec3_vtable;
+  *(_DWORD*)(a2 + 16) = DWORD2(v6);
+  v7 = BaseNx_2a1b90(v5);
+  {
+    nn_os_UnlockMutex(v7 + 840);
+    return;
+  }
 }
 
 __n128 Sound3DActorNX_Unknown11(__int64 a1)

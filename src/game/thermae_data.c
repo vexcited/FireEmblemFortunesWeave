@@ -13,6 +13,225 @@ void __attribute__((noreturn)) GameRoutine_9337e0(void);
 _QWORD* game_ThermaeData_GetLearnSkillList_lambda0_Invoke(_QWORD* result,
                                                           __int64* a2,
                                                           char* a3);
+__int64 GameRoutine_950d50(_QWORD, _QWORD, long double);
+__int64 GameRoutine_952000(void);
+__int64 memmove(_QWORD, _QWORD, _QWORD);
+__int64 nn_mem_StandardAllocator_Free_alt1(_QWORD, _QWORD) __asm__(
+    "nn_mem_StandardAllocator_Free");
+__int64 nn_os_LockMutex(_QWORD);
+__n128 nn_os_UnlockMutex(_QWORD);
+extern _UNKNOWN game_g_random_mutex;
+extern __int64 (*GameData_1faff28[])();
+__attribute__((swiftcall)) void
+game_ThermaeData_GetLearnSkillList(PSEUDO_X8 x8_, __int64 result, _DWORD* a2,
+                                   __int64 (**a3)());
+__attribute__((swiftcall)) void
+
+game_ThermaeData_GetLearnSkillList(PSEUDO_X8 x8_, __int64 result, _DWORD* a2,
+                                   __int64 (**a3)())
+{
+  __int64* a4 = (__int64*)PSEUDO_X8_VALUE(x8_);
+  __int64 v4;
+  __int64* v8;
+  __int64 (***v9)();
+  __int64 (**v10)();
+  __int64 (***v11)();
+  __int64 v12;
+  unsigned __int64 v13;
+  char v14;
+  __int64 (**v15)();
+  __int64 v16;
+  int v17;
+  __int64 v18;
+  __int64 v19;
+  __int64 v20;
+  unsigned int v21;
+  unsigned __int8* v22;
+  __int64 v23;
+  __int64 v24;
+  int v25;
+  int v26;
+  unsigned __int8* v27;
+  int v28;
+  int v29;
+  unsigned int v30;
+  unsigned int v31;
+  int v32;
+  unsigned int v33;
+  long double v34;
+  __int64 v35;
+  int v36;
+  __int64 v37;
+  __int64 v38;
+  __int64 v39;
+  __int64 v40;
+  __int64 v41;
+  __int64 v42;
+  __int64 v43;
+  __int64 v44;
+  __int64 v45;
+  __int64 v46;
+  __int64 v47;
+  __int64 v48;
+  __int64 v49;
+  __int64 v50;
+  char v51[4];
+  __int64 v52;
+
+  a4[1] = 0;
+  a4[2] = 0;
+  *a4 = 0;
+  if (a3 == nullptr) {
+    result;
+    return;
+  }
+  v49 = 0;
+  v50 = 0;
+  v47 = 0;
+  v48 = 0;
+  v4 = result;
+  v45 = 0;
+  v46 = 0;
+  v8 = (__int64*)fw_memory_g_heap_manager_ptr;
+  v9 = (__int64 (***)())fw_memory_HeapManager_Allocate(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr, 40, 16, 0);
+  v10 = GameData_1faff28;
+  v11 = v9;
+  v9[4] = (__int64 (**)())v4;
+  *v9 = GameData_1faff28;
+  v9[1] = (__int64 (**)())&v48;
+  v9[2] = (__int64 (**)())&v45;
+  v9[3] = a3;
+  if (*(_WORD*)(v4 + 72) != 0) {
+    v12 = 8;
+    v13 = 0;
+    do {
+      v14 = *(_BYTE*)(*(_QWORD*)(v4 + 96) + v13);
+      v52 = *(_QWORD*)(*(_QWORD*)(v4 + 80) + v12);
+      v15 = *v11;
+      v51[0] = v14;
+      ((void (*)(__int64 (***)(), __int64*, char*))v15[6])(v11, &v52, v51);
+      ++v13;
+      v12 += 16;
+    } while (v13 < *(unsigned __int16*)(v4 + 72));
+    v10 = *v11;
+  }
+  ((void (*)(__int64 (***)()))v10[5])(v11);
+  v16 = v45;
+  if (v49 == v48) {
+    goto LABEL_25;
+  }
+  v17 = v46 - v45;
+  if ((int)v46 - (int)v45 < 1) {
+    goto LABEL_25;
+  }
+  v18 = v17 & 0x7FFFFFFF;
+  v19 = v17 & 7;
+  if ((unsigned __int64)(v18 - 1) >= 7) {
+    v22 = (unsigned __int8*)(v45 + 3);
+    v23 = 0;
+    v21 = 0;
+    v24 = -(__int64)(v17 & 0x7FFFFFF8);
+    do {
+      v23 -= 8;
+      v25 = v21 + 100 * *(v22 - 3) + 100 * *(v22 - 2) + 100 * *(v22 - 1) +
+            100 * *v22 + 100 * v22[1] + 100 * v22[2] + 100 * v22[3];
+      v26 = v22[4];
+      v22 += 8;
+      v21 = v25 + 100 * v26;
+    } while (v24 != v23);
+    v20 = -v23;
+    if (v19 == 0) {
+      goto LABEL_16;
+    }
+    goto LABEL_14;
+  }
+  v20 = 0;
+  v21 = 0;
+  if ((v17 & 7) != 0) {
+  LABEL_14:
+    v27 = (unsigned __int8*)(v45 + v20);
+    do {
+      v28 = *v27++;
+      --v19;
+      v21 += 100 * v28;
+    } while (v19 != 0);
+  }
+LABEL_16:
+  if (v21 == 0) {
+  LABEL_26:
+    v41 = *v8;
+    v46 = v16;
+    v42 = 128;
+    if (*(_QWORD*)(v41 + 200) == 0) {
+      v42 = 56;
+    }
+    nn_mem_StandardAllocator_Free_alt1(v41 + v42, v16);
+    goto LABEL_29;
+  }
+  nn_os_LockMutex(&game_g_random_mutex);
+  v29 = a2[2];
+  v30 = a2[3];
+  v31 = *a2 ^ (*a2 << 11);
+  *a2 = a2[1];
+  a2[1] = v29;
+  v32 = (v31 >> 8) ^ (v30 >> 19) ^ v31 ^ v30;
+  a2[2] = v30;
+  a2[3] = v32;
+  v33 = v32 & 0x7FFFFFFF;
+  *(__n128*)&v34 = nn_os_UnlockMutex(&game_g_random_mutex);
+  v16 = v45;
+  v35 = 0;
+  v36 = v33 % v21;
+  while (1) {
+    if (*(_BYTE*)(v45 + v35) != 0) {
+      v36 -= 100 * *(unsigned __int8*)(v45 + v35);
+      if (v36 < 0) {
+        break;
+      }
+    }
+    if (v18 == ++v35) {
+      goto LABEL_26;
+    }
+  }
+  v37 = (unsigned int)v35;
+  GameRoutine_950d50(a4, v48 + 8LL * (unsigned int)v35, v34);
+  v38 = v48 + 8 * v37;
+  v39 = v49 - (v38 + 8);
+  if (v49 != v38 + 8) {
+    memmove(v48 + 8 * v37, v38 + 8, v49 - (v38 + 8));
+  }
+  v16 = v45;
+  v49 = v38 + v39;
+  v40 = v45 + v37 + 1;
+  if (v46 != v40) {
+    memmove(v45 + v37, v45 + v37 + 1, v46 - v40);
+    v16 = v45;
+  }
+LABEL_25:
+  if (v16 != 0) {
+    goto LABEL_26;
+  }
+LABEL_29:
+  if (v48 != 0) {
+    v43 = *v8;
+    v49 = v48;
+    v44 = 128;
+    if (*(_QWORD*)(v43 + 200) == 0) {
+      v44 = 56;
+    }
+    nn_mem_StandardAllocator_Free_alt1(v43 + v44, v48);
+  }
+  result = *a4;
+  if (*a4 != a4[1]) {
+    GameRoutine_952000();
+    return;
+  }
+  {
+    result;
+    return;
+  }
+}
 
 _QWORD* game_ThermaeData_GetLearnSkillList_lambda0_Invoke(_QWORD* result,
                                                           __int64* a2, char* a3)

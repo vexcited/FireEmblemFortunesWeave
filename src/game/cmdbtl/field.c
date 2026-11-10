@@ -17,6 +17,17 @@ void Field_Destructor(__int64 a1, __n128 a2);
 void Field_1012de0(__int64 a1);
 __int64 Field_1012de0_alt1(_QWORD) __asm__("Field_1012de0");
 __int64 Field_1012ce0(__int64 result);
+__int64 GameRoutine_2b0();
+__int64 GameRoutine_ecb40(void);
+__int64 __cxa_guard_acquire(_QWORD);
+__int64 __cxa_guard_release(_QWORD);
+extern _UNKNOWN GameData_21fdd90;
+extern _UNKNOWN GameData_21fde98;
+extern __int64 GameData_212c638;
+extern __int64 GameData_21fdde0;
+extern __int64 GameData_21fdde8;
+void Registration_a5aca0(__int64);
+__int64 Field_1012f40(__int64 a1);
 
 void Field_Destructor(__int64 a1, __n128 a2)
 {
@@ -201,6 +212,77 @@ void Field_1012de0(__int64 a1)
     v3 -= 2;
   }
   *(_QWORD*)(a1 + 32) = v2;
+}
+
+__int64 Field_1012f40(__int64 a1)
+{
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  _QWORD* v6;
+  __int64 v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+
+  v2 = *(_QWORD*)(*(_QWORD*)GameData_212c638 + 32LL);
+  if (*(_QWORD*)(*(_QWORD*)GameData_212c638 + 24LL) == v2) {
+    v3 = 0;
+    if ((GameRoutine_ecb40() & 1) == 0) {
+      return 1;
+    }
+  }
+  else {
+    v3 = *(_QWORD*)(v2 - 8);
+    if ((GameRoutine_ecb40() & 1) == 0) {
+      return 1;
+    }
+  }
+  v4 = *(_QWORD*)(v3 + 64);
+  if (v4 != 0) {
+    v5 = *(_QWORD*)(v4 + 96);
+    if (v5 == 0 || *(_DWORD*)(v5 + 240) != 5) {
+      return 1;
+    }
+    v6 = (_QWORD*)(v4 + 120);
+    while (1) {
+      v6 = (_QWORD*)*v6;
+      if (v6 == nullptr) {
+        break;
+      }
+      if (*(_DWORD*)(v6[5] + 240LL) != 5) {
+        return 1;
+      }
+    }
+  }
+  if ((atomic_load_explicit((atomic_uchar* volatile)&GameData_21fde98,
+                            memory_order_acquire) &
+       1) == 0 &&
+      (unsigned int)__cxa_guard_acquire(&GameData_21fde98) != 0) {
+    Registration_a5aca0((__int64)&GameData_21fdd90);
+    GameRoutine_2b0();
+    __cxa_guard_release(&GameData_21fde98);
+  }
+  if (GameData_21fdde0 == GameData_21fdde8) {
+    v8 = *(_QWORD*)(a1 + 72);
+    v9 = *(_QWORD*)(v8 + 8);
+    v10 = *(_QWORD*)(v8 + 16);
+    if (v9 == v10) {
+      return 0;
+    }
+    while (1) {
+      v11 = *(_QWORD*)(*(_QWORD*)v9 + 32LL);
+      if (v11 != 0 && (*(_BYTE*)(v11 + 342) & 1) == 0) {
+        break;
+      }
+      v9 += 16;
+      if (v9 == v10) {
+        return 0;
+      }
+    }
+  }
+  return 1;
 }
 
 #pragma GCC visibility pop

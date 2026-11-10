@@ -12,6 +12,11 @@ __int64 BoneVisibilityAnimObj_Unknown2(__int64 a1);
 __int64 BoneVisibilityAnimObj_Unknown5(__int64 a1, _QWORD* a2);
 __int64 BoneVisibilityAnimObj_Unknown3(__int64 result);
 __int64 BoneVisibilityAnimObj_Unknown7(__int64 result, __int64 a2);
+__int64
+MaterialAnimObj_5dfe60_alt1(__int64 result,
+                            unsigned __int16) __asm__("MaterialAnimObj_5dfe60");
+__int64 MaterialAnimObj_5dff40(__int64 result, __int64);
+__int64 BoneVisibilityAnimObj_Unknown6(__int64 a1, __int64 a2);
 
 __int64 BoneVisibilityAnimObj_5e0360(__int64 a1, __int64 a2)
 {
@@ -127,6 +132,46 @@ __int64 BoneVisibilityAnimObj_Unknown2(__int64 a1)
 __int64 BoneVisibilityAnimObj_Unknown5(__int64 a1, _QWORD* a2)
 {
   return (*(__int64 (**)(__int64, _QWORD))(*(_QWORD*)a1 + 32LL))(a1, *a2);
+}
+
+__int64 BoneVisibilityAnimObj_Unknown6(__int64 a1, __int64 a2)
+{
+  int v3;
+  int v4;
+  bool v5;
+  bool v6;
+  bool v7;
+  __int64 v8;
+  __int64 v9;
+
+  MaterialAnimObj_5dfe60_alt1(a1 + 88, *(_WORD*)(*(_QWORD*)(a2 + 24) + 56LL));
+  MaterialAnimObj_5dff40(a1 + 88, *(_QWORD*)(*(_QWORD*)(a1 + 104) + 32LL));
+  *(_WORD*)(a1 + 96) |= 1u;
+  v4 = *(_DWORD*)(a1 + 56);
+  v3 = *(_DWORD*)(a1 + 60);
+  if (v3 >= 1) {
+    v7 = __OFSUB__(v3, v4);
+    v5 = v3 == v4;
+    v6 = v3 - v4 < 0;
+  }
+  else {
+    v7 = false;
+    v5 = false;
+    v6 = false;
+  }
+  *(_DWORD*)(a1 + 64) = 2139095040;
+  if (v6 ^ v7 | v5) {
+    v8 = 0;
+    v9 = 0;
+    do {
+      ++v9;
+      *(_DWORD*)(*(_QWORD*)(a1 + 48) + v8) = 2139095040;
+      v8 += 12;
+    } while (v9 < *(int*)(a1 + 60));
+  }
+  return memcpy(*(_QWORD*)(a1 + 72), *(_QWORD*)(*(_QWORD*)(a1 + 104) + 48LL),
+                (((unsigned int)*(unsigned __int16*)(a1 + 100) + 31) >> 3) &
+                    0x3FFCLL);
 }
 
 __int64 BoneVisibilityAnimObj_Unknown3(__int64 result)

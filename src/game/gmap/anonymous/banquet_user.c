@@ -45,6 +45,13 @@ bool BanquetUser_Unknown148(__int64 a1);
 _DWORD* BanquetUser_Unknown149(__int64 a1);
 __int64 BanquetUser_Unknown155(__int64 a1, char a2);
 __int64 BanquetUser_Unknown156(__int64 a1, char a2);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, _QWORD, _QWORD,
+                                               _QWORD, _QWORD, _QWORD, _QWORD,
+                                               double, float);
+__int64 snd_Fade_Destroy_Fade(_QWORD);
+__n128 snd_Fade_Fade_10c830(_QWORD, double);
+__int64 BanquetUser_1642dc0(__int64 a1, int a2);
+__int64 BanquetUser_Unknown150(__int64 a1);
 
 void* BanquetUser_1642d70()
 {
@@ -57,6 +64,27 @@ void* BanquetUser_1642d70()
   if (*(_BYTE*)(GameData_21f3d10 + 9) == 1 &&
       *(_DWORD*)(GameData_21f3d10 + 136) == 1) {
     return &GameData_1a9e7d2;
+  }
+  return result;
+}
+
+__int64 BanquetUser_1642dc0(__int64 a1, int a2)
+{
+  __int64 v2;
+  __int64 v3;
+  __int64 result;
+  __int64 v5;
+  _BYTE v6[200];
+  __int64 v7;
+  __int64 v8;
+
+  if (a2 == 1) {
+    v7 = v2;
+    v8 = v3;
+    snd_Fade_Fade_10c830(v6, 0.0f);
+    snd_play_ff2d0((void*)(&v5), "SE_SYS_NG", "SE_SYS_NG", v6, 0, 65537, 0,
+                   0.0f, 1.0f);
+    return snd_Fade_Destroy_Fade(v6);
   }
   return result;
 }
@@ -328,6 +356,38 @@ _DWORD* BanquetUser_Unknown149(__int64 a1)
     v5 = result;
     game_menu_PageTab_Update(result + 164);
     return (_DWORD*)game_menu_BasicMenu_Unknown16de4d0(v5);
+  }
+  return result;
+}
+
+__int64 BanquetUser_Unknown150(__int64 a1)
+{
+  __int64 v1;
+  __int64 result;
+  __int64 v3;
+  int v4;
+
+  v1 = __dynamic_cast(*(_QWORD*)(a1 + 1056), GameData_21319e8[0],
+                      &GameData_20702e8, 0);
+  *(_BYTE*)(v1 + 440) = 0;
+  result = *(_QWORD*)(v1 + 312);
+  if (result != 0) {
+    result = __dynamic_cast(result, GameData_21319f0[0], &GameData_20718c8, 0);
+    v3 = result;
+    v4 = *(_DWORD*)(result + 660);
+    if (v4 == 0) {
+      return result;
+    }
+    goto LABEL_3;
+  }
+  v3 = 0;
+  v4 = (*(_DWORD*)0x294LL);
+  if ((*(_DWORD*)0x294LL) != 0) {
+  LABEL_3:
+    *(_DWORD*)(v3 + 664) = v4;
+    *(_DWORD*)(v3 + 660) = 0;
+    game_menu_PageTab_Update(v3 + 656);
+    return game_menu_BasicMenu_Unknown16de4d0(v3);
   }
   return result;
 }

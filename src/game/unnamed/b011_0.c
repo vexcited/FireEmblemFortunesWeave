@@ -274,8 +274,6 @@ __int64 GameRoutine_a19f00(_QWORD, _QWORD);
 
 long double GameRoutine_a77840(_QWORD, _QWORD, _QWORD);
 
-__int64 GameRoutine_a77c00(_QWORD, _QWORD);
-
 __int64 GameRoutine_a8c0c0(_QWORD);
 
 __int64 GameRoutine_ad5fc0();
@@ -385,8 +383,6 @@ void __attribute__((noreturn)) GameRoutine_d29c80(void);
 __int64 GameRoutine_d29fa0(__int64 result, int, float);
 
 __int64 GameRoutine_d2ae40(_QWORD);
-
-_QWORD* GameRoutine_d2b700(_QWORD* __return_ptr, _QWORD);
 
 __int64 GameRoutine_d2bbe0(_QWORD, _QWORD);
 
@@ -10141,73 +10137,6 @@ LABEL_52:
   if (v51 == 1) {
     *v50 = 0;
   }
-  return result;
-}
-
-_QWORD* GameHr_d2ae40(__int64 a1)
-{
-  _QWORD* result;
-  int* v3;
-  int* v4;
-  __int64 v5;
-  __int64 v6;
-  __int64 v7;
-  __int64 v8;
-  __int64 v9;
-  _BYTE* v10;
-  int v11;
-  int* v12;
-  int* v13;
-
-  result = GameRoutine_d2b700(&v12, a1);
-  v3 = v12;
-  v4 = v13;
-  if (v12 == v13) {
-    if (v12 == nullptr) {
-      goto LABEL_6;
-    }
-    goto LABEL_3;
-  }
-  do {
-    v7 = *v3;
-    result = (_QWORD*)GameRoutine_a77c00(*(_QWORD*)(*(_QWORD*)(a1 + 48) + 8LL),
-                                         (unsigned int)v7);
-    v8 = *(_QWORD*)(*(_QWORD*)(a1 + 48) + 16LL);
-    v9 = *(_QWORD*)(v8 + 56) + 8 * v7;
-    v11 = *(unsigned __int8*)(v9 + 4);
-    v10 = (_BYTE*)(v9 + 4);
-    if (v11 == 1) {
-      *v10 = 0;
-      result =
-          (_QWORD*)GameRoutine_a77c00(*(_QWORD*)(v8 + 24), (unsigned int)v7);
-    }
-    ++v3;
-  } while (v3 != v4);
-  v3 = v12;
-  if (v12 != nullptr) {
-  LABEL_3:
-    v13 = v3;
-    v5 = 128;
-    if (*(_QWORD*)(*(_QWORD*)GameData_212bf68 + 200LL) == 0) {
-      v5 = 56;
-    }
-    result = (_QWORD*)GameRoutine_1a0a4e0(*(_QWORD*)GameData_212bf68 + v5, v3);
-  }
-LABEL_6:
-  v6 = *(_QWORD*)(a1 + 8);
-  *(_QWORD*)a1 = 0;
-  *(_QWORD*)(a1 + 8) = 0;
-  if (v6 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v6 + 8),
-                                  0xFFFFFFFFFFFFFFFFLL) == 0) {
-    (*(void (**)(__int64))(*(_QWORD*)v6 + 16LL))(v6);
-    result = (_QWORD*)GameRoutine_1a09c50(v6);
-  }
-  if (*(_BYTE*)(a1 + 20) == 1) {
-    *(_BYTE*)(a1 + 20) = 0;
-  }
-  *(_QWORD*)(a1 + 24) = 0;
-  *(_QWORD*)(a1 + 32) = 0;
-  *(_WORD*)(a1 + 40) = 1;
   return result;
 }
 

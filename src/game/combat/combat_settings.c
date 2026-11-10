@@ -35,6 +35,25 @@ __int64 game_combat_CombatSettings_CombatSettings_lambda0_Invoke(__int64 a1,
                                                                  __int64 a2);
 bool game_combat_CombatSettings_RadialBlur_t_Play_lambda0_Invoke(__int64 a1,
                                                                  float* a2);
+__int64 GameRoutine_111f130(__int64, __int64, int*, unsigned int);
+__int64 GameRoutine_65f7a0(_QWORD*, unsigned int*, unsigned int);
+__int64 GameRoutine_6616e0(float*, unsigned int*);
+__int64 game_HashString32(__int64 result);
+void GameRoutine_111f220(__int64, __int64, float*, float);
+__int64 CombatSettings_General_t_Destructor(__int64 a1, __int64 a2);
+__int64 CombatSettings_HitStop_t_Destructor(__int64 a1, __int64 a2);
+void CombatSettings_CameraShake_t_Destructor(__int64 a1, __int64 a2);
+void CombatSettings_Camera_t_Destructor(float* a1, __int64 a2);
+void CombatSettings_FootIK_t_Destructor(__int64 a1, __int64 a2);
+void CombatSettings_Chariot_t_Destructor(float* a1, __int64 a2);
+void CombatSettings_Facial_t_Destructor(__int64 a1, __int64 a2);
+void CombatSettings_Eyedart_t_Destructor(float* a1, __int64 a2);
+__int64 CombatSettings_RadialBlur_t_Destructor(__int64 a1, __int64 a2);
+void CombatSettings_Onbt_t_Destructor(float* a1, __int64 a2);
+void CombatSettings_Footprint_t_Destructor(float* a1, __int64 a2);
+void CombatSettings_LookAt_t_Destructor(float* a1, __int64 a2);
+void CombatSettings_Illusion_t_Destructor(__int64 a1, __int64 a2);
+void CombatSettings_Physics_t_Destructor(float* a1, __int64 a2);
 
 __int64 game_combat_CombatSettings_CombatSettings(_QWORD* a1)
 {
@@ -120,6 +139,259 @@ LABEL_8:
   return (*(__int64 (**)(__int64))(*v8 + v6))((__int64)v8);
 }
 
+__int64 CombatSettings_General_t_Destructor(__int64 a1, __int64 a2)
+{
+
+#pragma clang fp contract(off)
+  GameRoutine_111f130(a2, (__int64)"General_t.DefaultBlendFrames",
+                      (int*)(a1 + 8), 0x14u);
+  GameRoutine_111f130(a2, (__int64)"General_t.FrameToDodge", (int*)(a1 + 12),
+                      0x12u);
+  GameRoutine_111f130(a2, (__int64)"General_t.FrameToGuard", (int*)(a1 + 16),
+                      8u);
+  GameRoutine_111f130(a2, (__int64)"General_t.FrameToParry", (int*)(a1 + 20),
+                      0xEu);
+  GameRoutine_111f220(a2, (__int64)"General_t.MaxRunSpeed", (float*)(a1 + 28),
+                      0x1.2000000000000p+4f);
+  GameRoutine_111f220(a2, (__int64)"General_t.TimeToMaxRunSpeed",
+                      (float*)(a1 + 48), 0x1.0000000000000p-1f);
+  GameRoutine_111f130(a2, (__int64)"General_t.InitialAttackRRate",
+                      (int*)(a1 + 32), 0x46u);
+  GameRoutine_111f130(a2, (__int64)"General_t.ParryFlyingRate", (int*)(a1 + 36),
+                      0x1Eu);
+  GameRoutine_111f220(a2, (__int64)"General_t.PABS_Distance", (float*)(a1 + 40),
+                      0x1.8000000000000p+0f);
+  GameRoutine_111f130(a2, (__int64)"General_t.PABS_Angle", (int*)(a1 + 24),
+                      0x2Du);
+  return GameRoutine_111f130(a2, (__int64)"General_t.DamagerAttackCrushedRate",
+                             (int*)(a1 + 44), 0x46u);
+}
+
+__int64 CombatSettings_HitStop_t_Destructor(__int64 a1, __int64 a2)
+{
+
+#pragma clang fp contract(off)
+  GameRoutine_111f220(a2, (__int64)"HitStop_t.MinDamageRate", (float*)(a1 + 8),
+                      0x1.99999a0000000p-3f);
+  GameRoutine_111f220(a2, (__int64)"HitStop_t.MaxDamageRate", (float*)(a1 + 12),
+                      0x1.99999a0000000p-1f);
+  GameRoutine_111f130(a2, (__int64)"HitStop_t.MinFrames", (int*)(a1 + 16), 7u);
+  GameRoutine_111f130(a2, (__int64)"HitStop_t.MaxFrames", (int*)(a1 + 20),
+                      0xDu);
+  return GameRoutine_111f130(a2, (__int64)"HitStop_t.GuardFrames",
+                             (int*)(a1 + 24), 0);
+}
+
+void CombatSettings_CameraShake_t_Destructor(__int64 a1, __int64 a2)
+{
+
+#pragma clang fp contract(off)
+  GameRoutine_111f130(a2, (__int64)"CameraShake_t.MidFrames", (int*)(a1 + 8),
+                      7u);
+  GameRoutine_111f130(a2, (__int64)"CameraShake_t.OutFrames", (int*)(a1 + 12),
+                      3u);
+  GameRoutine_111f220(a2, (__int64)"CameraShake_t.Magnitude", (float*)(a1 + 16),
+                      0x1.3333340000000p-2f);
+  GameRoutine_111f220(a2, (__int64)"CameraShake_t.Speed", (float*)(a1 + 20),
+                      0x1.4000000000000p+3f);
+  GameRoutine_111f130(a2, (__int64)"CameraShake_t.ArmorStepFrames",
+                      (int*)(a1 + 24), 3u);
+  GameRoutine_111f220(a2, (__int64)"CameraShake_t.ArmorStepMagnitude",
+                      (float*)(a1 + 28), 0x1.47ae140000000p-6f);
+  GameRoutine_111f220(a2, (__int64)"Scale0", (float*)(a1 + 32),
+                      0x1.99999a0000000p-3f);
+  GameRoutine_111f220(a2, (__int64)"Scale1", (float*)(a1 + 36),
+                      0x1.0000000000000p+0f);
+  GameRoutine_111f220(a2, (__int64)"Scale2", (float*)(a1 + 40),
+                      0x1.4000000000000p+1f);
+  GameRoutine_111f220(a2, (__int64)"CameraShake_t.DecayStart",
+                      (float*)(a1 + 44), 0x1.c000000000000p+3f);
+  GameRoutine_111f220(a2, (__int64)"CameraShake_t.DecayEnd", (float*)(a1 + 48),
+                      0x1.6000000000000p+4f);
+}
+
+void CombatSettings_Camera_t_Destructor(float* a1, __int64 a2)
+{
+
+#pragma clang fp contract(off)
+  GameRoutine_111f220(a2, (__int64)"Camera_t.AutoCameraInterval", a1 + 2,
+                      0x1.0000000000000p+2f);
+  GameRoutine_111f220(a2, (__int64)"Camera_t.LookAtHeightOffset", a1 + 9,
+                      0x1.99999a0000000p-5f);
+  GameRoutine_111f220(a2, (__int64)"Camera_t.SmoothDiffMin", a1 + 3,
+                      0x1.3333340000000p-2f);
+  GameRoutine_111f220(a2, (__int64)"Camera_t.SmoothDiffMax", a1 + 4,
+                      0x1.0000000000000p+0f);
+  GameRoutine_111f220(a2, (__int64)"Camera_t.SmoothDiffMinHuge", a1 + 5,
+                      0x1.3333340000000p+0f);
+  GameRoutine_111f220(a2, (__int64)"Camera_t.SmoothDiffMaxHuge", a1 + 6,
+                      0x1.0000000000000p+1f);
+  GameRoutine_111f220(a2, (__int64)"Camera_t.LerpMin", a1 + 7,
+                      0x1.47ae140000000p-7f);
+  GameRoutine_111f220(a2, (__int64)"Camera_t.LerpMax", a1 + 8,
+                      0x1.0000000000000p+0f);
+}
+
+void CombatSettings_FootIK_t_Destructor(__int64 a1, __int64 a2)
+{
+
+#pragma clang fp contract(off)
+  __int64 v4;
+  char v5;
+  unsigned int v6;
+  float* v7;
+  unsigned int v8;
+  __int64 v9;
+  unsigned int v10;
+  unsigned int v11[2];
+
+  GameRoutine_111f220(a2, (__int64)"FootIK_t.SinkSpeed", (float*)(a1 + 8),
+                      0x1.99999a0000000p-3f);
+  GameRoutine_111f220(a2, (__int64)"FootIK_t.StepoverSpeed", (float*)(a1 + 12),
+                      0x1.3333340000000p-2f);
+  GameRoutine_111f220(a2, (__int64)"FootIK_t.SlopeLeanWeight",
+                      (float*)(a1 + 16), 0x1.3333340000000p-3f);
+  GameRoutine_111f220(a2, (__int64)"FootIK_t.SoftDisableRate",
+                      (float*)(a1 + 20), 0x1.99999a0000000p-5f);
+  GameRoutine_111f220(a2, (__int64)"FootIK_t.AnkleMaxDegree", (float*)(a1 + 24),
+                      0x1.9000000000000p+4f);
+  GameRoutine_111f220(a2, (__int64)"FootIK_t.SpeedThreshold", (float*)(a1 + 28),
+                      0x1.4000000000000p+3f);
+  GameRoutine_111f220(a2, (__int64)"FootIK_t.MaxStepHeight.Human",
+                      (float*)(a1 + 32), 0x1.99999a0000000p-2f);
+  GameRoutine_111f220(a2, (__int64)"FootIK_t.MaxStepHeight.Giant",
+                      (float*)(a1 + 36), 0x1.0000000000000p+1f);
+  GameRoutine_111f220(a2, (__int64)"FootIK_t.MaxStepHeight.Others",
+                      (float*)(a1 + 40), 0x1.6666660000000p-1f);
+  GameRoutine_111f220(a2, (__int64)"FootIK_t.SlopeBiped.SpeedLimit",
+                      (float*)(a1 + 44), 0x1.8000000000000p+1f);
+  GameRoutine_111f220(a2, (__int64)"FootIK_t.SlopeBiped.LegsHeightDifference",
+                      (float*)(a1 + 48), 0x1.3333340000000p-2f);
+  GameRoutine_111f220(a2, (__int64)"FootIK_t.SlopeBiped.StartAngle",
+                      (float*)(a1 + 52), 0x1.4000000000000p+4f);
+  GameRoutine_111f220(a2, (__int64)"FootIK_t.SlopeBiped.LimitAngle",
+                      (float*)(a1 + 56), 0x1.4000000000000p+5f);
+  GameRoutine_111f220(a2, (__int64)"FootIK_t.SlopeBiped.Influence",
+                      (float*)(a1 + 60), 0x1.0000000000000p+1f);
+  GameRoutine_111f220(a2, (__int64)"FootIK_t.SlopeBiped.LerpRate",
+                      (float*)(a1 + 64), 0x1.99999a0000000p-5f);
+  GameRoutine_111f220(a2, (__int64)"FootIK_t.Biped2.StartTime1",
+                      (float*)(a1 + 68), 0x1.0000000000000p-2f);
+  GameRoutine_111f220(a2, (__int64)"FootIK_t.Biped2.StartTime2",
+                      (float*)(a1 + 72), 0x1.0000000000000p-1f);
+  GameRoutine_111f220(a2, (__int64)"FootIK_t.Biped2.NarrowingRate",
+                      (float*)(a1 + 76), 0x1.99999a0000000p-3f);
+  GameRoutine_111f220(a2, (__int64)"FootIK_t.Biped2.Duration",
+                      (float*)(a1 + 80), 0x1.3333340000000p+0f);
+  GameRoutine_111f130(a2, (__int64)"FootIK_t.Biped2.EasePower", (int*)(a1 + 84),
+                      7u);
+  GameRoutine_111f220(a2, (__int64)"FootIK_t.SlopeQuadrupedal.AntiSlopeFoots",
+                      (float*)(a1 + 88), 0x1.6666660000000p-1f);
+  GameRoutine_111f220(a2, (__int64)"FootIK_t.SlopeQuadrupedal.FootRadius",
+                      (float*)(a1 + 92), 0x1.eb851e0000000p-4f);
+  v4 = *(_QWORD*)(a2 + 8);
+  if (*(_BYTE*)(a2 + 64) == 1) {
+    v10 = game_HashString32((__int64)"FootIK_t.SlopeQuadrupedal.Slope");
+    v5 = GameRoutine_65f7a0((_QWORD*)v4, &v10, 0);
+  }
+  else {
+    v5 = *(_BYTE*)(a1 + 96);
+    v6 = game_HashString32((__int64)"FootIK_t.SlopeQuadrupedal.Slope");
+    v7 = *(float**)(v4 + 120);
+    v8 = *(_DWORD*)(v4 + 20);
+    v11[0] = v6;
+    v11[1] = v8;
+    GameRoutine_6616e0(v7, v11);
+    v9 = *(int*)(v4 + 20);
+    *(_DWORD*)(v4 + 20) = v9 + 1;
+    *(_BYTE*)(*(_QWORD*)(v4 + 8) + v9) = v5;
+  }
+  *(_BYTE*)(a1 + 96) = v5 != 0;
+  GameRoutine_111f220(a2,
+                      (__int64)"FootIK_t.SlopeQuadrupedal.IdleStabilizerMin",
+                      (float*)(a1 + 100), 0x1.3333340000000p-2f);
+  GameRoutine_111f220(a2,
+                      (__int64)"FootIK_t.SlopeQuadrupedal.IdleStabilizerMax",
+                      (float*)(a1 + 104), 0x1.99999a0000000p-2f);
+  GameRoutine_111f220(
+      a2, (__int64)"FootIK_t.SlopeQuadrupedal.RootRotationInterpolation",
+      (float*)(a1 + 108), 0x1.99999a0000000p-4f);
+}
+
+void CombatSettings_Chariot_t_Destructor(float* a1, __int64 a2)
+{
+
+#pragma clang fp contract(off)
+  GameRoutine_111f220(a2, (__int64)"Chariot_t.VirticalMag", a1 + 2,
+                      0x1.0000000000000p+0f);
+  GameRoutine_111f220(a2, (__int64)"Chariot_t.VirticalFreq", a1 + 3,
+                      0x1.0000000000000p+0f);
+  GameRoutine_111f220(a2, (__int64)"Chariot_t.RotationMag", a1 + 4,
+                      0x1.0000000000000p+0f);
+  GameRoutine_111f220(a2, (__int64)"Chariot_t.RotationFreq", a1 + 5,
+                      0x1.0000000000000p+0f);
+  GameRoutine_111f220(a2, (__int64)"Chariot_t.WheelSpeed", a1 + 6,
+                      0x1.0000000000000p+0f);
+}
+
+void CombatSettings_Facial_t_Destructor(__int64 a1, __int64 a2)
+{
+
+#pragma clang fp contract(off)
+  GameRoutine_111f220(a2, (__int64)"Facial_t.MinBlinkFrequency",
+                      (float*)(a1 + 8), 0x1.8000000000000p+1f);
+  GameRoutine_111f220(a2, (__int64)"Facial_t.MaxBlinkFrequency",
+                      (float*)(a1 + 12), 0x1.4000000000000p+2f);
+  GameRoutine_111f130(a2, (__int64)"Facial_t.BlinkRateOnChanged",
+                      (int*)(a1 + 16), 0x32u);
+  GameRoutine_111f220(a2, (__int64)"Facial_t.IrisBlendTime", (float*)(a1 + 20),
+                      0x1.99999a0000000p-4f);
+  GameRoutine_111f220(a2, (__int64)"Facial_t.FutureVoiceReading",
+                      (float*)(a1 + 24), 0x1.0000000000000p+2f);
+  GameRoutine_111f220(a2, (__int64)"Facial_t.VoiceInputSwitchingRate",
+                      (float*)(a1 + 28), 0x1.3333340000000p-3f);
+  GameRoutine_111f220(a2, (__int64)"Facial_t.MaxNodAngle", (float*)(a1 + 32),
+                      0x1.4000000000000p+2f);
+  GameRoutine_111f220(a2, (__int64)"Facial_t.NoddingSpeed", (float*)(a1 + 36),
+                      0x1.0000000000000p+0f);
+  GameRoutine_111f220(a2, (__int64)"Facial_t.MaxUsualBlend", (float*)(a1 + 40),
+                      0x1.0000000000000p+0f);
+  GameRoutine_111f220(a2, (__int64)"Facial_t.UsualBlendSpeed",
+                      (float*)(a1 + 44), 0x1.0000000000000p+0f);
+  GameRoutine_111f220(a2, (__int64)"Facial_t.MaxBrowup", (float*)(a1 + 48),
+                      0x1.0000000000000p+0f);
+  GameRoutine_111f220(a2, (__int64)"Facial_t.BrowupSpeed", (float*)(a1 + 52),
+                      0x1.0000000000000p+0f);
+}
+
+void CombatSettings_Eyedart_t_Destructor(float* a1, __int64 a2)
+{
+
+#pragma clang fp contract(off)
+  GameRoutine_111f220(a2, (__int64)"Eyedart_t.MinFrequency", a1 + 2,
+                      0x1.0000000000000p-1f);
+  GameRoutine_111f220(a2, (__int64)"Eyedart_t.MaxFrequency", a1 + 3,
+                      0x1.0000000000000p+1f);
+  GameRoutine_111f220(a2, (__int64)"Eyedart_t.HAmplitude", a1 + 4,
+                      0x1.47ae140000000p-6f);
+  GameRoutine_111f220(a2, (__int64)"Eyedart_t.VAmplitude", a1 + 5,
+                      0x1.0624de0000000p-8f);
+  GameRoutine_111f220(a2, (__int64)"Eyedart_t.SmoothRate", a1 + 6,
+                      0x1.0000000000000p-1f);
+}
+
+__int64 CombatSettings_RadialBlur_t_Destructor(__int64 a1, __int64 a2)
+{
+
+#pragma clang fp contract(off)
+  GameRoutine_111f220(a2, (__int64)"RadialBlur_t.Strength", (float*)(a1 + 16),
+                      0x1.4000000000000p+3f);
+  GameRoutine_111f130(a2, (__int64)"RadialBlur_t.SampleCount", (int*)(a1 + 12),
+                      0xAu);
+  return GameRoutine_111f130(a2, (__int64)"RadialBlur_t.FadeFrames",
+                             (int*)(a1 + 8), 0xCu);
+}
+
 __int64 game_combat_CombatSettings_RadialBlur_t_Play(__int64 a1, float a2)
 {
   __int64 v2;
@@ -198,6 +470,71 @@ LABEL_12:
     v15 = 40;
   }
   return (*(__int64 (**)(__int64))(*v20 + v15))((__int64)v20);
+}
+
+void CombatSettings_Onbt_t_Destructor(float* a1, __int64 a2)
+{
+
+#pragma clang fp contract(off)
+  GameRoutine_111f220(a2, (__int64)"Onbt_t.Speed", a1 + 2,
+                      0x1.0000000000000p+1f);
+  GameRoutine_111f220(a2, (__int64)"Onbt_t.PhaseInterval", a1 + 3,
+                      0x1.0000000000000p+0f);
+  GameRoutine_111f220(a2, (__int64)"Onbt_t.MagicEffectScale", a1 + 4,
+                      0x1.4000000000000p+1f);
+}
+
+void CombatSettings_Footprint_t_Destructor(float* a1, __int64 a2)
+{
+
+#pragma clang fp contract(off)
+  GameRoutine_111f220(a2, (__int64)"Footprint_t.Lifespan", a1 + 2,
+                      0x1.4000000000000p+4f);
+  GameRoutine_111f220(a2, (__int64)"Footprint_t.Distance", a1 + 3,
+                      0x1.4000000000000p+4f);
+  GameRoutine_111f220(a2, (__int64)"Footprint_t.Dot", a1 + 4,
+                      0x1.6666660000000p-1f);
+}
+
+void CombatSettings_LookAt_t_Destructor(float* a1, __int64 a2)
+{
+
+#pragma clang fp contract(off)
+  GameRoutine_111f220(a2, (__int64)"LookAt_t.ToHeadEaseRatio", a1 + 2,
+                      0x1.eb851e0000000p-6f);
+  GameRoutine_111f220(a2, (__int64)"LookAt_t.SignalWeightReductionRate", a1 + 3,
+                      0x1.6666660000000p-2f);
+  GameRoutine_111f220(a2, (__int64)"LookAt_t.SignalWeightExpansionRate", a1 + 4,
+                      0x1.eb851e0000000p-6f);
+}
+
+void CombatSettings_Illusion_t_Destructor(__int64 a1, __int64 a2)
+{
+
+#pragma clang fp contract(off)
+  GameRoutine_111f130(a2, (__int64)"Illusion_t.Interval", (int*)(a1 + 8), 1u);
+  GameRoutine_111f220(a2, (__int64)"Illusion_t.Lifespan", (float*)(a1 + 12),
+                      0x1.3333340000000p-3f);
+  GameRoutine_111f220(a2, (__int64)"Illusion_t.StartAlpha", (float*)(a1 + 16),
+                      0x1.0000000000000p+0f);
+}
+
+void CombatSettings_Physics_t_Destructor(float* a1, __int64 a2)
+{
+
+#pragma clang fp contract(off)
+  GameRoutine_111f220(a2, (__int64)"Physics_t.AngVelMinOnDie", a1 + 2,
+                      0x1.4000000000000p+3f);
+  GameRoutine_111f220(a2, (__int64)"Physics_t.AngVelMaxOnDie", a1 + 3,
+                      0x1.e000000000000p+3f);
+  GameRoutine_111f220(a2, (__int64)"Physics_t.HorizontalPowerOnDie", a1 + 4,
+                      0x1.c000000000000p+2f);
+  GameRoutine_111f220(a2, (__int64)"Physics_t.VerticalPowerOnDie", a1 + 5,
+                      0x1.4000000000000p+2f);
+  GameRoutine_111f220(a2, (__int64)"Physics_t.DropSound_HL", a1 + 6,
+                      0x1.4000000000000p+1f);
+  GameRoutine_111f220(a2, (__int64)"Physics_t.DropSound_LN", a1 + 7,
+                      0x1.99999a0000000p-1f);
 }
 
 __int64 game_combat_CombatSettings_CombatSettings_lambda0_Invoke(__int64 a1,

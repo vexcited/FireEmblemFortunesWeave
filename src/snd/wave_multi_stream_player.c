@@ -54,11 +54,8 @@ __int64 WaveMultiStreamPlayer_18a4e0(__int64 a1, int a2);
 __int64 WaveMultiStreamPlayer_18a920(__int64 a1);
 __int64 WaveMultiStreamPlayer_Unknown201(__int64 a1);
 __int64 WaveMultiStreamPlayer_Unknown202(__int64 a1);
-
-__int64 WaveMultiStreamPlayer_180950(__int64 a1)
-{
-  return *(unsigned __int8*)(a1 + 11504);
-}
+__int64* GameRoutine_180060_alt1(__int64) __asm__("GameRoutine_180060");
+double WaveMultiStreamPlayer_1809e0(__int64 a1, int a2);
 
 __int64 WaveMultiStreamPlayer_Destructor(__int64** a1)
 {
@@ -486,6 +483,35 @@ __int64 WaveMultiStreamPlayer_180720(__int64 a1, int a2, int a3, __int64 a4,
 LABEL_32:
   nn_os_UnlockMutex(a1 + 11512);
   return v21;
+}
+
+__int64 WaveMultiStreamPlayer_180950(__int64 a1)
+{
+  return *(unsigned __int8*)(a1 + 11504);
+}
+
+double WaveMultiStreamPlayer_1809e0(__int64 a1, int a2)
+{
+
+#pragma clang fp contract(off)
+  __int64 v2;
+  __int64* v3;
+  double result;
+
+  result = COERCE_AS(__typeof__(result), PSEUDO_REGISTER(double, "d0", "=w"));
+  v2 = *(_QWORD*)(a1 + 11160);
+  if (a2 >= (unsigned __int64)((*(_QWORD*)(a1 + 11168) - v2) >> 4)) {
+    return 0x0.0p+0;
+  }
+  v3 = GameRoutine_180060_alt1(v2 + 16LL * a2),
+  result = COERCE_AS(__typeof__(result), PSEUDO_REGISTER(double, "d0", "=w"));
+  if (v3 == nullptr) {
+    return 0x0.0p+0;
+  }
+  (*(void (**)(__int64*))(*v3 + 64))(v3),
+      result =
+          COERCE_AS(__typeof__(result), PSEUDO_REGISTER(double, "d0", "=w"));
+  return result;
 }
 
 _QWORD* WaveMultiStreamPlayer_180a30(_QWORD* result, int a2, __int64 a3)

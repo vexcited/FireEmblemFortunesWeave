@@ -15,6 +15,88 @@ extern __int64 GameData_21f8020;
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64 ui_Manager_instance_;
 __int64 EmbeddedImage_188a200(__int64 a1, __int64 a2);
+__int64 AsyncLoadImage_17e48a0(_QWORD, _QWORD, _QWORD, _QWORD);
+__int64 GameRoutine_576740(_QWORD, _QWORD);
+__int64 LayoutEx_579160(_QWORD, _QWORD);
+__int64 Pane_58fac0(_QWORD, _QWORD);
+__int64 strlen(_QWORD);
+__int64 ui_ILayoutControl_UpdatePath(_QWORD);
+extern __int64 (*EmbeddedImage_188a200_ptr[])();
+extern __int64 (*GameData_20ff378[])();
+__attribute__((swiftcall)) void EmbeddedImage_18895c0(PSEUDO_X8 x8_, __int64 a1,
+                                                      __int64 a2, __int64 a3);
+
+__attribute__((swiftcall)) void EmbeddedImage_18895c0(PSEUDO_X8 x8_, __int64 a1,
+                                                      __int64 a2, __int64 a3)
+{
+  _QWORD* a4 = (_QWORD*)PSEUDO_X8_VALUE(x8_);
+  _QWORD* v8;
+  _QWORD* v9;
+  _QWORD* v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
+  __int64 v14;
+  __int64 v15;
+  __int64 v16;
+  __int64 v17;
+  __int64 result;
+  _QWORD v19[2];
+
+  v8 = (_QWORD*)LayoutEx_579160(136, 8);
+  v8[1] = 0;
+  v8[2] = 0;
+  v9 = v8;
+  *v8 = GameData_20ff378;
+  v8[4] = a2;
+  v8[5] = 0;
+  v8[6] = 0;
+  v8[7] = 0;
+  v8[8] = 0;
+  v8[9] = 0;
+  v8[10] = 0;
+  v8[11] = 0;
+  v8[3] = &ui_ILayoutControl_vtable;
+  v10 = v8 + 3;
+  v11 = *(_QWORD*)(a2 + 24) + 176LL;
+  v12 = strlen(v11);
+  v9[5] = v11;
+  v9[6] = v12;
+  v13 = *(_QWORD*)(a2 + 48);
+  v14 = strlen(v13);
+  v9[7] = v13;
+  v9[8] = v14;
+  ui_ILayoutControl_UpdatePath(v10);
+  v9[12] = a3;
+  v9[13] = 0;
+  v9[14] = 0;
+  v9[15] = 0;
+  *((_DWORD*)v9 + 32) = 0;
+  *v10 = ui_control_EmbeddedImage_vtable;
+  v19[0] = "Image";
+  v19[1] = 5;
+  v9[13] = AsyncLoadImage_17e48a0(v10, a2, a1, v19);
+  v15 = Pane_58fac0(*(_QWORD*)(a2 + 24), "Margin");
+  if (v15 != 0 || (v15 = GameRoutine_576740(a1, "Margin")) != 0) {
+    *((float*)v9 + 30) = (float)*(int*)(v15 + *(unsigned int*)(v15 + 4));
+  }
+  v16 = Pane_58fac0(*(_QWORD*)(a2 + 24), "FixedWidth");
+  if (v16 != 0 || (v16 = GameRoutine_576740(a1, "FixedWidth")) != 0) {
+    *((float*)v9 + 31) = (float)*(int*)(v16 + *(unsigned int*)(v16 + 4));
+  }
+  v17 = Pane_58fac0(*(_QWORD*)(a2 + 24), "FixedHeight");
+  if (v17 != 0 || (v17 = GameRoutine_576740(a1, "FixedHeight")) != 0) {
+    *((float*)v9 + 32) = (float)*(int*)(v17 + *(unsigned int*)(v17 + 4));
+  }
+  result = (*(__int64 (**)(_QWORD*, _QWORD))(v9[3] + 40LL))(v10, 0);
+  *a4 = v10;
+  a4[1] = v9;
+  v9[3] = EmbeddedImage_188a200_ptr;
+  {
+    result;
+    return;
+  }
+}
 
 __int64 EmbeddedImage_188a200(__int64 a1, __int64 a2)
 {

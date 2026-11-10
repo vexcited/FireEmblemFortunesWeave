@@ -10,6 +10,17 @@ extern __int64 fw_memory_g_heap_manager_ptr;
 extern int GameData_220b694;
 __int64 MapScript_c8ccf0(__int64 a1);
 __int64 MapScript_c8cdc0(__int64 a1);
+__int64 GameRoutine_1a09ce0(_QWORD, _QWORD, _QWORD);
+__int64 strlen(_QWORD);
+__attribute__((swiftcall)) void MapScript_Unknown4_c8ce40(PSEUDO_X8 x8_);
+__attribute__((swiftcall)) void MapScript_Unknown2(PSEUDO_X8 x8_);
+__attribute__((swiftcall)) void MapScript_Unknown5(PSEUDO_X8 x8_, __int64 a1,
+                                                   __int64 a2);
+__attribute__((swiftcall)) void MapScript_Unknown3(PSEUDO_X8 x8_, __int64 a1,
+                                                   __int64 a2);
+__attribute__((swiftcall)) void MapScript_Unknown6(PSEUDO_X8 x8_, __int64 a1);
+__attribute__((swiftcall)) void MapScript_Unknown4_c8cfb0(PSEUDO_X8 x8_,
+                                                          __int64 a1);
 
 __int64 MapScript_c8ccf0(__int64 a1)
 {
@@ -40,6 +51,75 @@ __int64 MapScript_c8cdc0(__int64 a1)
   }
   return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
                                        v2);
+}
+
+__attribute__((swiftcall)) void MapScript_Unknown4_c8ce40(PSEUDO_X8 x8_)
+{
+  _BYTE* a1 = (_BYTE*)PSEUDO_X8_VALUE(x8_);
+  *a1 = 24;
+  strcpy(a1 + 1, "Script/bmap/");
+}
+
+__attribute__((swiftcall)) void MapScript_Unknown2(PSEUDO_X8 x8_)
+{
+  _BYTE* a1 = (_BYTE*)PSEUDO_X8_VALUE(x8_);
+  *a1 = 24;
+  strcpy(a1 + 1, "Script/bmap/");
+}
+
+__attribute__((swiftcall)) void MapScript_Unknown5(PSEUDO_X8 x8_, __int64 a1,
+                                                   __int64 a2)
+{
+  _QWORD* a3 = (_QWORD*)PSEUDO_X8_VALUE(x8_);
+  __int64 v5;
+
+  (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64))(
+      *(_QWORD*)a1 + 32LL))((void*)(a3), (__int64)a1);
+  v5 = strlen(a2);
+  GameRoutine_1a09ce0(a3, a2, v5);
+  {
+    GameRoutine_1a09ce0(a3, ".bin", 4);
+    return;
+  }
+}
+
+__attribute__((swiftcall)) void MapScript_Unknown3(PSEUDO_X8 x8_, __int64 a1,
+                                                   __int64 a2)
+{
+  _QWORD* a3 = (_QWORD*)PSEUDO_X8_VALUE(x8_);
+  __int64 v5;
+
+  (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64))(
+      *(_QWORD*)(a1 - 8) + 32LL))((void*)(a3), a1 - 8);
+  v5 = strlen(a2);
+  GameRoutine_1a09ce0(a3, a2, v5);
+  {
+    GameRoutine_1a09ce0(a3, ".bin", 4);
+    return;
+  }
+}
+
+__attribute__((swiftcall)) void MapScript_Unknown6(PSEUDO_X8 x8_, __int64 a1)
+{
+  _QWORD* a2 = (_QWORD*)PSEUDO_X8_VALUE(x8_);
+  (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64))(
+      *(_QWORD*)a1 + 32LL))((void*)(a2), (__int64)a1);
+  {
+    GameRoutine_1a09ce0(a2, "BmapEventTemplate.bin", 21);
+    return;
+  }
+}
+
+__attribute__((swiftcall)) void MapScript_Unknown4_c8cfb0(PSEUDO_X8 x8_,
+                                                          __int64 a1)
+{
+  _QWORD* a2 = (_QWORD*)PSEUDO_X8_VALUE(x8_);
+  (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64))(
+      *(_QWORD*)(a1 - 8) + 32LL))((void*)(a2), a1 - 8);
+  {
+    GameRoutine_1a09ce0(a2, "BmapEventTemplate.bin", 21);
+    return;
+  }
 }
 
 #pragma GCC visibility pop

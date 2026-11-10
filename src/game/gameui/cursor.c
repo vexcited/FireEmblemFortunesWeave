@@ -10,6 +10,10 @@ extern __int64 (*GameData_2103b10[])();
 extern __int64 GameData_21f1df0;
 extern int GameData_21f1df8;
 __int64 Cursor_Destructor_18a2440(_QWORD* a1);
+__attribute__((swiftcall)) void Cursor_Unknown4(PSEUDO_X8 x8_, __int64 result,
+                                                __int64 a2);
+__attribute__((swiftcall)) void
+Cursor_Unknown2_18a2640(PSEUDO_X8 x8_, __int64 result, __int64 a2);
 
 __int64 Cursor_Destructor_18a2440(_QWORD* a1)
 {
@@ -56,6 +60,35 @@ __int64 Cursor_Destructor_18a2440(_QWORD* a1)
     GameData_21f1df8 = 0;
   }
   return result;
+}
+
+__attribute__((swiftcall)) void Cursor_Unknown4(PSEUDO_X8 x8_, __int64 result,
+                                                __int64 a2)
+{
+  _DWORD* a3 = (_DWORD*)PSEUDO_X8_VALUE(x8_);
+  if (*(_DWORD*)(a2 + 8) == 1) {
+    *(_QWORD*)(result + 136) = 0;
+  }
+  *a3 = 0x8000;
+  {
+    result;
+    return;
+  }
+}
+
+__attribute__((swiftcall)) void
+
+Cursor_Unknown2_18a2640(PSEUDO_X8 x8_, __int64 result, __int64 a2)
+{
+  _DWORD* a3 = (_DWORD*)PSEUDO_X8_VALUE(x8_);
+  if (*(_DWORD*)(a2 + 8) == 1) {
+    *(_QWORD*)(result + 128) = 0;
+  }
+  *a3 = 0x8000;
+  {
+    result;
+    return;
+  }
 }
 
 #pragma GCC visibility pop

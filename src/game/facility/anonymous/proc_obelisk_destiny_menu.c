@@ -32,6 +32,16 @@ bool game_facility_anonymous_ProcObeliskDestinyMenu_SortAndFilter_closure_Invoke
     __int64 a1, __int64* a2);
 bool game_facility_anonymous_ProcObeliskDestinyMenu_SortAndFilter_closure_Invoke_1933110(
     __int64 a1, __int64* a2, __int64* a3);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, _QWORD, _QWORD,
+                                               _QWORD, _QWORD, _QWORD, _QWORD,
+                                               double, float);
+__int64 GameRoutine_16497b0(_QWORD, _QWORD);
+__int64 MapSortieMenu_871860(_QWORD);
+__int64 snd_Fade_Destroy_Fade(_QWORD);
+__n128 snd_Fade_Fade_10c830(_QWORD, double);
+extern __int64 (*GameData_2116200[])();
+extern __int64 (*GameData_2116280[])();
+__int64 game_facility_anonymous_ProcObeliskDestinyMenu_ZLCall(__int64 a1);
 
 __int64 ProcObeliskDestinyMenu_Unknown91(_QWORD* a1, int a2)
 {
@@ -98,6 +108,105 @@ __int64 ProcObeliskDestinyMenu_Unknown91(_QWORD* a1, int a2)
     return GameRoutine_1567590("AllRecieve", 1);
   }
   return result;
+}
+
+__int64 game_facility_anonymous_ProcObeliskDestinyMenu_ZLCall(__int64 a1)
+{
+  __int64* v1;
+  __int64* v2;
+  int v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  __int64 v11;
+  __int64 v12;
+  _QWORD v13[4];
+  _QWORD* v14;
+  _QWORD v15[4];
+  _QWORD* v16;
+  _QWORD v17[4];
+  _QWORD* v18;
+  const char* v19;
+
+  if (*(_BYTE*)(a1 + 1064) == 1) {
+    v1 = *(__int64**)(GameData_21c9c20 + 64);
+    v2 = *(__int64**)(GameData_21c9c20 + 72);
+    if (v1 != v2) {
+      v4 = 0;
+      do {
+        if (game_GameModeData_instance_ != 0) {
+          v5 = *v1;
+          v6 = game_GameVariableTable_Find(
+              *(_QWORD*)(game_GameModeData_instance_ + 48),
+              *(_QWORD*)(*v1 + 24) + 32LL);
+          if ((v6 == 0 || *(_BYTE*)(v6 + 32) != 4) &&
+              game_GameModeData_instance_ != 0) {
+            v7 = game_GameVariableTable_Find(
+                *(_QWORD*)(game_GameModeData_instance_ + 48),
+                *(_QWORD*)(v5 + 24) + 32LL);
+            if (v7 != 0 && *(_BYTE*)(v7 + 32) != 0) {
+              v4 += *(unsigned __int16*)(v5 + 64);
+            }
+          }
+        }
+        ++v1;
+      } while (v1 != v2);
+      if (v4 >= 1) {
+        v17[2] = (unsigned int)v4;
+        v19 = "MID_AchieveMenu_ReceiveAll_Confirm";
+        v15[0] = GameData_2116280;
+        v13[0] = GameData_2116280;
+        v14 = v13;
+        v17[0] = GameData_2116200;
+        v17[1] = a1;
+        v18 = v17;
+        v16 = v15;
+        v8 = MapSortieMenu_871860(a1);
+        if (v14 == v13) {
+          v9 = 32;
+        }
+        else {
+          if (v14 == nullptr) {
+            goto LABEL_20;
+          }
+          v9 = 40;
+        }
+        (*(void (**)(__int64))(*v14 + v9))((__int64)v14);
+      LABEL_20:
+        if (v16 == v15) {
+          v11 = 32;
+        }
+        else {
+          if (v16 == nullptr) {
+            goto LABEL_25;
+          }
+          v11 = 40;
+        }
+        (*(void (**)(__int64))(*v16 + v11))((__int64)v16);
+      LABEL_25:
+        if (v18 == v17) {
+          v12 = 32;
+        }
+        else {
+          if (v18 == nullptr) {
+          LABEL_30:
+            GameRoutine_16497b0(v8, "SE_SYS_Decide_L");
+            return 11;
+          }
+          v12 = 40;
+        }
+        (*(void (**)(__int64))(*v18 + v12))((__int64)v18);
+        goto LABEL_30;
+      }
+    }
+  }
+  snd_Fade_Fade_10c830(v17, 0.0f);
+  snd_play_ff2d0((void*)(v15), "SE_SYS_NG", "SE_SYS_NG", v17, 0, 65537, 0, 0.0f,
+                 1.0f);
+  snd_Fade_Destroy_Fade(v17);
+  return 0;
 }
 
 __int64 ProcObeliskDestinyMenu_Unknown128(__int64 a1)

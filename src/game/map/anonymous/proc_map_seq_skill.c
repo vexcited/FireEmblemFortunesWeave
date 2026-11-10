@@ -44,6 +44,75 @@ game_map_anonymous_ProcMapSeqSkill_CanUse_closure_Invoke(__int64 a1, _DWORD* a2,
                                                          unsigned int* a3);
 __int64 game_map_anonymous_ProcMapSeqSkill_TryGiveSkill_closure_Invoke(
     __int64 a1, _DWORD* a2, __int64 a3);
+__int64 Cursor_730ff0(_QWORD, _QWORD);
+__int64 Unit_6c7fa0(_QWORD, _QWORD);
+extern __int64* GameData_212cfc0[10];
+extern __int64* GameData_212cfc8[9];
+void Camera_7c0e80(__int64, __int64, char);
+void ProcMapSeqSkill_91a4d0(__int64 a1);
+
+void ProcMapSeqSkill_91a4d0(__int64 a1)
+{
+  __int64 v1;
+  __int64 v2;
+  __int64 v4;
+  __int64 v5;
+  int v6;
+  float v7;
+  __int128 v8;
+  unsigned int v9;
+  __int128 v10;
+  __int64 v11;
+  unsigned int v12;
+  __int128 v13;
+  __int64 v14;
+  __int64 v15;
+
+  if ((*(_DWORD*)(a1 + 160) & 0xFFF) != 0 &&
+      (*(_WORD*)(*(_QWORD*)(*(_QWORD*)(GameData_21c99b0 + 64) +
+                            8LL * (*(_DWORD*)(a1 + 160) & 0xFFF)) +
+                 754LL) &
+       1) != 0) {
+    v14 = v1;
+    v15 = v2;
+    v4 = *GameData_212cfc0[0];
+    v5 = *(_QWORD*)(a1 + 152);
+    v6 = *(_DWORD*)(v5 + 592);
+    v7 = (float)(unsigned int)(v6 - 1) * 2.5f;
+    if (v6 <= 0) {
+      v7 = 0.0f;
+    }
+    *(_QWORD*)&v8 = COERCE_UNSIGNED_INT(
+        (float)((float)((float)((float)(unsigned int)(*(char*)(v5 + 584) +
+                                                      256) *
+                                5.0f) +
+                        2.5f) +
+                -0x1.4000000000000p+10f) +
+        v7);
+    v11 = COERCE_UNSIGNED_INT(
+        (float)((float)((float)((float)(unsigned int)(*(char*)(v5 + 585) +
+                                                      256) *
+                                5.0f) +
+                        2.5f) +
+                -0x1.4000000000000p+10f) +
+        v7);
+    *(float*)&v12 =
+        (float)((float)((float)((float)(unsigned int)(*(char*)(v5 + 584) +
+                                                      256) *
+                                5.0f) +
+                        2.5f) +
+                -0x1.4000000000000p+10f) +
+        v7;
+    *((_QWORD*)&v8 + 1) = v11;
+    v13 = v8;
+    Unit_6c7fa0(v5, &v13);
+    *(_QWORD*)&v10 = __PAIR64__(v9, v12);
+    *((_QWORD*)&v10 + 1) = v11;
+    v13 = v10;
+    Cursor_730ff0(v4, &v13);
+    Camera_7c0e80(*GameData_212cfc8[0], a1, 1);
+  }
+}
 
 __int64 ProcMapSeqSkill_91a5f0(__int64 result)
 {

@@ -14,6 +14,20 @@ extern __int64 game_gmap_GmapClock_instance_;
 extern __int64 game_gmap_GmapClock_kDefaultTime_ptr;
 __int64 DiningMenuItem_Unknown55(__int64 a1);
 __int64 DiningMenuItem_Unknown72(__int64 a1, __int64 a2);
+_QWORD* GameRoutine_15e7650(_QWORD* result, int, __int64);
+_QWORD* GameRoutine_16ef210(_QWORD* result, _QWORD*);
+__int64 FacilityUnitList_145e440(__int64 result, __int64, char);
+__int64 GameRoutine_16ee520(__int64);
+__int64 GameRoutine_94a540();
+__int64 GameRoutine_94a820();
+__int64 __dynamic_cast(_QWORD, _QWORD, _QWORD, _QWORD);
+extern __int64* GameData_212dff0[12];
+extern __int64* GameData_212e030[4];
+extern __int64 GameData_212ddf8[2];
+extern __int64 game_GameModeData_instance_;
+extern __int64 game_UnitListSet_instance_;
+unsigned __int64 GameRoutine_16ee370(__int64, __int64, _BYTE*);
+__int64 DiningMenuItem_Unknown73(__int64 a1);
 
 __int64 DiningMenuItem_Unknown55(__int64 a1)
 {
@@ -93,6 +107,98 @@ __int64 DiningMenuItem_Unknown72(__int64 a1, __int64 a2)
   v3[1] = &GameData_1aa0a21;
   v3[0] = game_HashString(&GameData_1aa0a21, a2);
   return GameRoutine_143f2e0(v3);
+}
+
+__int64 DiningMenuItem_Unknown73(__int64 a1)
+{
+  __int64 v1;
+  __int64 v3;
+  __int64 v4;
+  int v5;
+  int v6;
+  int v7;
+  char v8;
+  __int64 v9;
+  __int64 v10;
+  int v11;
+  struct {
+    _QWORD v13[11];
+    char gap96_[4];
+    int v14;
+    int v15;
+    bool v16;
+    char gap109_[43];
+    char v17;
+    char gap153_[3];
+    int v18;
+    int v19;
+  } v13_;
+  struct {
+    _QWORD v20[2];
+    char v21;
+    char gap193_[3];
+    int v22;
+    int v23;
+    char v24;
+    char gap205_[3];
+    _QWORD* v25;
+  } v20_;
+  int v26;
+
+  v1 = *(_QWORD*)(a1 + 8);
+  if (v1 != 0 && (v3 = __dynamic_cast(*(_QWORD*)(a1 + 8), GameData_212e030[0],
+                                      GameData_212dff0[0], 0)) != 0) {
+    v4 = (*(__int64 (**)(__int64))(*(_QWORD*)v3 + 1112LL))(v3);
+  }
+  else {
+    v4 = v1 + 848;
+  }
+  GameRoutine_16ee370((__int64)v13_.v13, v4, "MID_HotelMenu_Dining_Help");
+  v5 = GameRoutine_94a540();
+  v6 = game_GameModeData_instance_;
+  if (game_GameModeData_instance_ != 0) {
+    v6 = *(_DWORD*)(game_GameModeData_instance_ + 72);
+  }
+  v13_.v14 = 0;
+  v13_.v15 = v5;
+  v13_.v16 = v6 < v5;
+  v7 = GameRoutine_94a820();
+  v8 = v7;
+  v20_.v25 = nullptr;
+  GameRoutine_15e7650(v13_.v13, v7, (__int64)v20_.v20);
+  v26 = 0;
+  v9 = *(_QWORD*)(game_UnitListSet_instance_ + 24);
+  v20_.v25 = v20_.v20;
+  v20_.v20[0] = GameData_212ddf8[0] + 16;
+  v20_.v20[1] = &v26;
+  FacilityUnitList_145e440(v9, (__int64)v20_.v20, 2);
+  if (v20_.v25 == v20_.v20) {
+    v10 = 32;
+  }
+  else {
+    if (v20_.v25 == nullptr) {
+      goto LABEL_12;
+    }
+    v10 = 40;
+  }
+  (*(void (**)(__int64))(*v20_.v25 + v10))((__int64)v20_.v25);
+LABEL_12:
+  if ((v8 & 0x40) != 0) {
+    v13_.v18 = v26;
+    v13_.v19 = 3;
+  }
+  v11 = (*(__int64 (**)(_QWORD))(**(_QWORD**)(a1 + 8) + 192LL))(
+      *(_QWORD*)(a1 + 8));
+  v20_.v24 = 0;
+  v20_.v25 = nullptr;
+  v20_.v20[0] = "Tutorial";
+  v20_.v20[1] = "MID_KeyHelp_Tutorial";
+  v20_.v21 = 1;
+  v20_.v22 = 10;
+  v20_.v23 = v11;
+  GameRoutine_16ef210(v13_.v13, v20_.v20);
+  v13_.v17 = 1;
+  return GameRoutine_16ee520((__int64)v13_.v13);
 }
 
 #pragma GCC visibility pop

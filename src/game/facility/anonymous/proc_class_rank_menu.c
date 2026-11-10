@@ -40,6 +40,54 @@ __int64 ProcClassRankMenu_16bb880(_QWORD* a1, __int64 a2);
 __int64
 game_facility_anonymous_ProcClassRankMenu_ChangeUnit_closure_Invoke(__int64 a1,
                                                                     _QWORD* a2);
+__int64* FloatingHelp_18af120(_QWORD*, __int64*);
+__int64 GameRoutine_18af980(__int64, __int64*);
+__int64 LayoutAccessor_155e830(__int64 result, char);
+extern __int64* GameData_212d890[2];
+extern __int64 game_gameui_Footer_instance_;
+extern __int64 game_gameui_Header_instance_;
+void LayoutAccessor_1566d90(__int64, char);
+void LayoutAccessor_1567000(__int64, char);
+void ProcClassRankMenu_Unknown94(__int64* a1);
+
+void ProcClassRankMenu_Unknown94(__int64* a1)
+{
+  _QWORD* v2;
+  char v3[4];
+  struct {
+    __int64* v4;
+    int v5;
+    char gap20_[4];
+    __int64 v6;
+  } v4_;
+
+  if (a1[78] != 0) {
+    a1[78] = 0;
+  }
+  LayoutAccessor_155e830((__int64)(a1 + 106), 0);
+  v2 = (_QWORD*)GameData_21f1e08;
+  if (GameData_21f1e08 != 0) {
+    if (*(_QWORD*)(GameData_21f1e08 + 152) != 0) {
+      v4_.v6 = 0;
+      v4_.v4 = GameData_212d890[0] + 2;
+      v4_.v5 = 44;
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64, __int64**))(
+          *(_QWORD*)(GameData_21f1e08 + 8) + 16LL))(
+          (void*)(v3), GameData_21f1e08 + 8, &v4_.v4);
+    }
+    v2[20] = 0;
+    FloatingHelp_18af120(v2, a1 + 106);
+    GameRoutine_18af980((__int64)v2, a1 + 106);
+  }
+  if ((*(unsigned int (**)(__int64*))(*a1 + 168))(a1) == 9) {
+    if (game_gameui_Header_instance_ != 0) {
+      LayoutAccessor_1566d90(game_gameui_Header_instance_, 0);
+    }
+    if (game_gameui_Footer_instance_ != 0) {
+      LayoutAccessor_1567000(game_gameui_Footer_instance_, 0);
+    }
+  }
+}
 
 __int64 ProcClassRankMenu_Unknown96(_QWORD* a1)
 {

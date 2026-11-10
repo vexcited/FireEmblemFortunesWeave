@@ -16,6 +16,11 @@ extern int GameData_22355f0;
 extern int* GameData_212fe98;
 void game_combat_anonymous_BMapZoomOut_Schedule_closure_Invoke(__int64 a1,
                                                                __int64* a2);
+__int64 GameRoutine_758bc0(float);
+extern __int64 GameData_21c96a8;
+void BattleUtil_7a96a0(float);
+__int64 game_combat_anonymous_BMapZoomOut_Schedule_closure0_Invoke(__int64 a1,
+                                                                   float* a2);
 
 __int64 BMapZoomOut_Unknown18(__int64* a1)
 {
@@ -167,6 +172,44 @@ void game_combat_anonymous_BMapZoomOut_Schedule_closure_Invoke(__int64 a1,
       return;
     }
   }
+}
+
+__int64 game_combat_anonymous_BMapZoomOut_Schedule_closure0_Invoke(__int64 a1,
+                                                                   float* a2)
+{
+
+#pragma clang fp contract(off)
+  float v2;
+  float v3;
+  __int64 result;
+
+  v2 = *a2;
+  BattleUtil_7a96a0(*a2);
+  if (v2 < 0x1.0000000000000p-1f) {
+    v3 = (float)((float)((float)(v2 * (float)(v2 * v2)) *
+                         0x1.0000000000000p-1f) *
+                 0x1.0000000000000p+3f) +
+         0x0.0p+0f;
+  }
+  else {
+    v3 =
+        (float)((float)((float)((float)(0x1.0000000000000p-1f -
+                                        (float)(v2 + -0x1.0000000000000p-1f)) *
+                                (float)((float)(0x1.0000000000000p-1f -
+                                                (float)(v2 +
+                                                        -0x1.0000000000000p-1f)) *
+                                        (float)(0x1.0000000000000p-1f -
+                                                (float)(v2 +
+                                                        -0x1.0000000000000p-1f)))) *
+                        -0x1.0000000000000p-1f) *
+                0x1.0000000000000p+3f) +
+        0x1.0000000000000p+0f;
+  }
+  result = GameRoutine_758bc0(v3);
+  if (GameData_21c96a8 != 0) {
+    *(float*)(*(_QWORD*)(GameData_21c96a8 + 8) + 32LL) = v3;
+  }
+  return result;
 }
 
 #pragma GCC visibility pop

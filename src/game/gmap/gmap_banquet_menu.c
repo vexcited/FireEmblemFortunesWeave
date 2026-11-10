@@ -68,6 +68,10 @@ extern __int64 GameData_22506e0;
 extern __int64 GameData_22549a8;
 bool game_gmap_GmapBanquetMenu_SubImpl_lambda0_Invoke(__int64 a1, __int64 a2);
 __int64 game_gmap_GmapBanquetMenu_Run_lambda0_Invoke(__int64 a1);
+__int64 MapSortieMenu_871860(__int64, __int64, __int64, __int64, __int64);
+extern __int64 (*GameData_20729a8[])();
+extern __int64 (*GameData_2072a28[])();
+bool game_gmap_GmapBanquetMenu_Cancel(__int64 a1);
 
 __int64 GmapBanquetMenu_Unknown48(__int64 a1, __int64* a2)
 {
@@ -1060,6 +1064,82 @@ LABEL_24:
     return GameRoutine_17871c0(a1, 2, 0);
   }
   return result;
+}
+
+bool game_gmap_GmapBanquetMenu_Cancel(__int64 a1)
+{
+  int v1;
+  const char* v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  struct {
+    _QWORD v7[4];
+    _QWORD* v8;
+  } v7_;
+  struct {
+    _QWORD v9[4];
+    _QWORD* v10;
+  } v9_;
+  struct {
+    _QWORD v11[4];
+    _QWORD* v12;
+  } v11_;
+  const char* v13;
+
+  v1 = *(_DWORD*)(a1 + 392);
+  if (v1 < 1) {
+    return v1 > 0;
+  }
+  if (GameData_21f3d10 != 0) {
+    v2 = "MID_BanquetMenu_Cancel_Confirm";
+    if (*(_BYTE*)(GameData_21f3d10 + 9) == 1 &&
+        *(_DWORD*)(GameData_21f3d10 + 136) == 1) {
+      v2 = "MID_Dungeon_BanquetMenu_Cancel_Confirm";
+    }
+  }
+  else {
+    v2 = "MID_BanquetMenu_Cancel_Confirm";
+  }
+  v13 = v2;
+  v11_.v11[0] = GameData_20729a8;
+  v11_.v12 = v11_.v11;
+  v7_.v8 = v7_.v7;
+  v9_.v9[0] = GameData_2072a28;
+  v9_.v10 = v9_.v9;
+  v7_.v7[0] = GameData_2072a28;
+  MapSortieMenu_871860(a1, (__int64)&v13, (__int64)v11_.v11, (__int64)v9_.v9,
+                       (__int64)v7_.v7);
+  if (v7_.v8 == v7_.v7) {
+    v3 = 32;
+  }
+  else {
+    if (v7_.v8 == nullptr) {
+      goto LABEL_13;
+    }
+    v3 = 40;
+  }
+  (*(void (**)(__int64))(*v7_.v8 + v3))((__int64)v7_.v8);
+LABEL_13:
+  if (v9_.v10 == v9_.v9) {
+    v4 = 32;
+    goto LABEL_17;
+  }
+  if (v9_.v10 != nullptr) {
+    v4 = 40;
+  LABEL_17:
+    (*(void (**)(__int64))(*v9_.v10 + v4))((__int64)v9_.v10);
+  }
+  if (v11_.v12 == v11_.v11) {
+    v5 = 32;
+    goto LABEL_22;
+  }
+  if (v11_.v12 != nullptr) {
+    v5 = 40;
+  LABEL_22:
+    (*(void (**)(__int64))(*v11_.v12 + v5))((__int64)v11_.v12);
+  }
+  return v1 > 0;
 }
 
 bool game_gmap_GmapBanquetMenu_SubImpl_lambda0_Invoke(__int64 a1, __int64 a2)

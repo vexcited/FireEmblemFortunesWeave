@@ -19,6 +19,9 @@ __int64 ScheduleNatives_869280(__int64 result, __int16*);
 extern __int64 game_gmap_GmapClock_instance_;
 extern __int64 game_gmap_GmapClock_kDefaultTime_ptr;
 __int16* ProcProgress_86b660(__int64 a1, int a2);
+extern __int64 game_ProcFadeView_instance_;
+extern __int64 game_g_frame_clock;
+__int16* ProcProgress_Unknown2(__int64 a1);
 
 __int16* ProcProgress_86b660(__int64 a1, int a2)
 {
@@ -222,6 +225,122 @@ __int64 ProcProgress_DeletingDestructor(__int64 a1)
     v20 = 56;
   }
   return nn_mem_StandardAllocator_Free(*(_QWORD*)v5 + v20, a1);
+}
+
+__int16* ProcProgress_Unknown2(__int64 a1)
+{
+
+#pragma clang fp contract(off)
+  int v2;
+  int v3;
+  unsigned __int64 v4;
+  __int128 v5;
+  float v6;
+  float v7;
+  float v8;
+  float v9;
+  float v10;
+  float v11;
+  float v12;
+  __int16* result;
+  unsigned __int8* v14;
+  unsigned int v15;
+  bool v16;
+  int v17;
+
+  if (game_ProcGameSkipView_instance_ != 0 &&
+      *(_BYTE*)(game_ProcGameSkipView_instance_ + 152) == 3) {
+    v2 = *(_DWORD*)(game_ProcGameSkipView_instance_ + 156);
+    v3 = (v2 & 8) != 0 ? 2 : 3;
+    if ((v3 & v2) == 0) {
+      goto LABEL_13;
+    }
+  }
+  if (game_ProcFadeView_instance_ == 0) {
+    goto LABEL_14;
+  }
+  v4 = game_ProcFadeView_instance_ +
+       ((unsigned __int64)*(unsigned __int8*)(game_ProcFadeView_instance_ + 480)
+        << 6);
+  if (*(float*)(v4 + 172) == *(float*)(v4 + 168)) {
+    (*(void (**)(unsigned __int64))(*(_QWORD*)(v4 + 160) + 16LL))(v4 + 160);
+  }
+  else {
+    v5 = *(_OWORD*)(v4 + 208);
+  }
+  if (*((float*)&v5 + 3) == 0x1.0000000000000p+0f &&
+      LANES128_OF(((__n128 (*)(unsigned __int64, float)) *
+                   (_QWORD*)(*(_QWORD*)(v4 + 160) + 16LL))(v4 + 160,
+                                                           *((float*)&v5 + 3)))
+              .n128_f32[3] == 0x1.0000000000000p+0f) {
+  LABEL_13:
+    *(_DWORD*)(a1 + 172) = *(_DWORD*)(a1 + 168);
+    v6 = 0x1.0000000000000p+0f;
+  }
+  else {
+  LABEL_14:
+    v6 = 0x1.0000000000000p+0f;
+    if ((float)(0x1.e000000000000p+5f /
+                (float)*(int*)(game_g_frame_clock + 476)) <= 0x0.0p+0f) {
+      v7 = 0x1.0000000000000p+0f;
+    }
+    else {
+      v7 = 0x1.e000000000000p+5f / (float)*(int*)(game_g_frame_clock + 476);
+    }
+    v8 = *(float*)(a1 + 168);
+    v9 = *(float*)(a1 + 172) + v7;
+    if (v8 < v9) {
+      v9 = *(float*)(a1 + 168);
+    }
+    *(float*)(a1 + 172) = v9;
+    if (v9 < v8) {
+      v10 = (float)(v9 / v8) + 0x0.0p+0f;
+      v11 = v10 +
+            (float)((float)(v9 *
+                            (float)((float)(0x1.0000000000000p+0f -
+                                            (float)((float)((float)(v8 - v9) *
+                                                            (float)(v8 - v9)) /
+                                                    (float)(v8 * v8))) -
+                                    v10)) /
+                    v8);
+      if (v11 <= 0x1.0000000000000p+0f) {
+        v12 =
+            v10 +
+            (float)((float)(v9 *
+                            (float)((float)(0x1.0000000000000p+0f -
+                                            (float)((float)((float)(v8 - v9) *
+                                                            (float)(v8 - v9)) /
+                                                    (float)(v8 * v8))) -
+                                    v10)) /
+                    v8);
+      }
+      else {
+        v12 = 0x1.0000000000000p+0f;
+      }
+      if (v11 >= 0x0.0p+0f) {
+        v6 = v12;
+      }
+      else {
+        v6 = 0x0.0p+0f;
+      }
+    }
+  }
+  result = ProcProgress_86b660(
+      a1 + 152,
+      (int)(float)((float)(v6 * (float)*(int*)(a1 + 164)) + 0x0.0p+0f));
+  if (*(float*)(a1 + 168) <= *(float*)(a1 + 172)) {
+    v14 = *(unsigned __int8**)(a1 + 16);
+    if (v14 != nullptr) {
+      v15 = *v14;
+      v16 = v15 > 0x10;
+      v17 = (1 << v15) & 0x1CE00;
+      if (!v16 && v17 != 0) {
+        *(_WORD*)(a1 + 136) |= 0x80u;
+      }
+    }
+    *(_WORD*)(a1 + 136) |= 8u;
+  }
+  return result;
 }
 
 #pragma GCC visibility pop

@@ -12,6 +12,18 @@ extern __int64* GameData_212c880[5];
 extern __int64* GameData_212ea58;
 __int64 CmdBtlSkillMenuItem_Unknown71(__int64 a1);
 __int64 CmdBtlSkillMenuItem_Unknown72(__int64 a1);
+__int64 CmdBtlSkillMenuItem_OnSelect(__int64 a1);
+
+__int64 CmdBtlSkillMenuItem_OnSelect(__int64 a1)
+{
+  __int64 v1;
+
+  v1 = 512;
+  if (*(_BYTE*)(a1 + 79) != 0) {
+    v1 = 520;
+  }
+  return (*(__int64 (**)(__int64))(*(_QWORD*)a1 + v1))((__int64)a1);
+}
 
 __int64 CmdBtlSkillMenuItem_Unknown71(__int64 a1)
 {

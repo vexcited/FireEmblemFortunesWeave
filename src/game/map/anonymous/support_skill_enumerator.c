@@ -26,6 +26,18 @@ game_map_anonymous_SupportSkillEnumerator_EachImpl_closure_Invoke_72e660(
     __int64 a1, _DWORD* a2);
 __int64 game_map_anonymous_SupportSkillEnumerator_EachImpl_closure0_Invoke(
     __int64 result, __int64 a2, __int64 a3, __int64 a4);
+__int64 game_68e4c0(_QWORD, _QWORD);
+__int64 game_68e4c0_alt1(__int64, _QWORD*) __asm__("game_68e4c0");
+extern _QWORD game_g_shared_system_skills_ptr;
+extern __int64 GameData_21ee1b0;
+void __attribute__((noreturn))
+GameRoutine_60a310_alt2(_QWORD, _QWORD, _QWORD) __asm__("GameRoutine_60a310");
+__int64
+game_map_anonymous_SupportSkillEnumerator_EachImpl_closure_Invoke_72e460(
+    __int64 result, __int64* a2, __int64 a3);
+__int64
+game_map_anonymous_SupportSkillEnumerator_EachImpl_closure_Invoke_72e9e0(
+    __int64 result, __int64* a2);
 __int64
 
 game_map_anonymous_SupportSkillEnumerator_EachImpl_closure_Invoke_72dfc0(
@@ -247,6 +259,48 @@ LABEL_17:
 
 __int64
 
+game_map_anonymous_SupportSkillEnumerator_EachImpl_closure_Invoke_72e460(
+    __int64 result, __int64* a2, __int64 a3)
+{
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  __int64* v6;
+  __int64 v7;
+  __int64 i;
+  __int64 v9;
+  __int64 v10;
+  int v11;
+
+  v3 = result;
+  v4 = **(_QWORD**)(result + 8);
+  if (v4 != 0 && *(int*)(v4 + 592) <= 1 &&
+      (v5 = *a2,
+       v11 = *(_DWORD*)((_BYTE*)((_UNKNOWN*)0x7CLL) +
+                        game_g_shared_system_skills_ptr + 4) &
+             0xFFF,
+       ((result = game_HasSkill(v4 + 1744, &v11)) & 1) == 0) &&
+      ((result = game_68e4c0(v5, v4)) & 1) != 0) {
+    v6 = *(__int64**)(v5 + 24);
+  }
+  else {
+    v6 = &GameData_21ee1b0;
+  }
+  v7 = v6[4];
+  for (i = v6[5]; v7 != i; v7 += 4) {
+    v9 = *(_QWORD*)(*(_QWORD*)(v3 + 16) + 32LL);
+    v10 = **(_QWORD**)(v3 + 8);
+    if (v9 == 0) {
+      GameRoutine_60a310_alt2(0, a2, a3);
+    }
+    result = (*(__int64 (**)(__int64, __int64*, __int64))(*(_QWORD*)v9 + 48LL))(
+        v9, &v10, v7);
+  }
+  return result;
+}
+
+__int64
+
 game_map_anonymous_SupportSkillEnumerator_EachImpl_closure_Invoke_72e660(
     __int64 a1, _DWORD* a2)
 {
@@ -409,6 +463,45 @@ LABEL_17:
             (*(__int64 (**)(__int64, __int64))(*(_QWORD*)v38 + 48LL))(v38, v36);
       }
     }
+  }
+  return result;
+}
+
+__int64
+
+game_map_anonymous_SupportSkillEnumerator_EachImpl_closure_Invoke_72e9e0(
+    __int64 result, __int64* a2)
+{
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64* v5;
+  __int64 v6;
+  __int64 i;
+  __int64 v8;
+  int v9;
+
+  v2 = result;
+  v3 = **(_QWORD**)(result + 8);
+  if (v3 != 0 && *(int*)(v3 + 592) <= 1 &&
+      (v4 = *a2,
+       v9 = *(_DWORD*)((_BYTE*)((_UNKNOWN*)0x7CLL) +
+                       game_g_shared_system_skills_ptr + 4) &
+            0xFFF,
+       ((result = game_HasSkill(v3 + 1744, &v9)) & 1) == 0) &&
+      ((result = game_68e4c0_alt1(v4, (_QWORD*)v3)) & 1) != 0) {
+    v5 = *(__int64**)(v4 + 24);
+  }
+  else {
+    v5 = &GameData_21ee1b0;
+  }
+  v6 = v5[4];
+  for (i = v5[5]; v6 != i; v6 += 4) {
+    v8 = *(_QWORD*)(*(_QWORD*)(v2 + 16) + 32LL);
+    if (v8 == 0) {
+      GameRoutine_60a310(0);
+    }
+    result = (*(__int64 (**)(__int64, __int64))(*(_QWORD*)v8 + 48LL))(v8, v6);
   }
   return result;
 }

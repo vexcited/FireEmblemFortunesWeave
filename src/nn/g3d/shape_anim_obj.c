@@ -20,6 +20,10 @@ void ShapeAnimObj_5e9180(__int64 a1, float* a2, unsigned __int8* a3,
 void ShapeAnimObj_5e9260(__int64 a1, float* a2, unsigned __int8* a3,
                          long double a4);
 float ShapeAnimObj_5e9320(__int64 a1, _DWORD* a2);
+__int64 MaterialAnimObj_5dfe60(__int64 result, unsigned __int16);
+__int64 MaterialAnimObj_5dff40(__int64 result, __int64);
+void ShapeAnimObj_Unknown6(__int64 a1, __int64 a2);
+
 void ShapeAnimObj_5e9180(__int64 a1, float* a2, unsigned __int8* a3,
                          long double a4)
 {
@@ -351,6 +355,198 @@ void ShapeAnimObj_Unknown2(__int64 a1)
 __int64 ShapeAnimObj_Unknown5(__int64 a1, _QWORD* a2)
 {
   return (*(__int64 (**)(__int64, _QWORD))(*(_QWORD*)a1 + 32LL))(a1, *a2);
+}
+
+void ShapeAnimObj_Unknown6(__int64 a1, __int64 a2)
+{
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  unsigned int v7;
+  __int64 v8;
+  char* v9;
+  __int64 v10;
+  int v11;
+  int v12;
+  __int64 v13;
+  int v14;
+  int v15;
+  int v16;
+  int v17;
+  int v18;
+  int v19;
+  int v20;
+  int v21;
+  int v22;
+  int v23;
+  int v24;
+  int v25;
+  int v26;
+  int v27;
+  int v28;
+  int v29;
+  int v30;
+  int v31;
+  int v32;
+  __int64 v33;
+  __int64 v34;
+  char* v35;
+  int v36;
+  int v37;
+  int v38;
+  bool v39;
+  __int64 v40;
+  __int64 v41;
+  __int64 v42;
+  __int64 v43;
+  __int64 v44;
+
+  MaterialAnimObj_5dfe60(a1 + 88, *(_WORD*)(a2 + 106));
+  MaterialAnimObj_5dff40(a1 + 88, *(_QWORD*)(*(_QWORD*)(a1 + 104) + 32LL));
+  v3 = *(unsigned __int16*)(a1 + 100);
+  if (*(_WORD*)(a1 + 100) != 0) {
+    v4 = 0;
+    do {
+      v5 = *(_DWORD*)(*(_QWORD*)(a1 + 88) + 4 * v4) & 0x7FFF;
+      if ((*(_DWORD*)(*(_QWORD*)(a1 + 88) + 4 * v4) & 0x7FFF) != 0x7FFF) {
+        v6 = *(_QWORD*)(*(_QWORD*)(a1 + 104) + 40LL) + 48 * v4;
+        v7 = *(unsigned __int16*)(v6 + 34);
+        if (*(_WORD*)(v6 + 34) != 0) {
+          v8 = *(int*)(v6 + 40);
+          v9 = *(char**)(v6 + 24);
+          if (v7 >= 8) {
+            v10 = 0;
+            v11 = 0;
+            do {
+              v12 = v9[9];
+              v13 = v8 + v10;
+              *(_BYTE*)(*(_QWORD*)(a1 + 128) + v8 + v10) = v9[9];
+              if (v12 >= 0) {
+                v14 = 1;
+              }
+              else {
+                v14 = 0x10000;
+              }
+              v10 += 8;
+              v15 = v14 | v11;
+              v16 = v9[25];
+              *(_BYTE*)(*(_QWORD*)(a1 + 128) + v13 + 1) = v9[25];
+              if (v16 >= 0) {
+                v17 = 1;
+              }
+              else {
+                v17 = 0x10000;
+              }
+              v18 = v9[41];
+              *(_BYTE*)(*(_QWORD*)(a1 + 128) + v13 + 2) = v9[41];
+              if (v18 >= 0) {
+                v19 = 1;
+              }
+              else {
+                v19 = 0x10000;
+              }
+              v20 = v19 | v17 | v15;
+              v21 = v9[57];
+              *(_BYTE*)(*(_QWORD*)(a1 + 128) + v13 + 3) = v9[57];
+              if (v21 >= 0) {
+                v22 = 1;
+              }
+              else {
+                v22 = 0x10000;
+              }
+              v23 = v9[73];
+              *(_BYTE*)(*(_QWORD*)(a1 + 128) + v13 + 4) = v9[73];
+              if (v23 >= 0) {
+                v24 = 1;
+              }
+              else {
+                v24 = 0x10000;
+              }
+              v25 = v24 | v22;
+              v26 = v9[89];
+              *(_BYTE*)(*(_QWORD*)(a1 + 128) + v13 + 5) = v9[89];
+              if (v26 >= 0) {
+                v27 = 1;
+              }
+              else {
+                v27 = 0x10000;
+              }
+              v28 = v27 | v25 | v20;
+              v29 = v9[105];
+              *(_BYTE*)(*(_QWORD*)(a1 + 128) + v13 + 6) = v9[105];
+              if (v29 >= 0) {
+                v30 = 1;
+              }
+              else {
+                v30 = 0x10000;
+              }
+              v31 = v9[121];
+              v9 += 128;
+              *(_BYTE*)(*(_QWORD*)(a1 + 128) + v13 + 7) = v31;
+              if (v31 >= 0) {
+                v32 = 1;
+              }
+              else {
+                v32 = 0x10000;
+              }
+              v11 = v32 | v30 | v28;
+            } while ((v7 & 0xFFF8) != v10);
+          }
+          else {
+            v10 = 0;
+            v11 = 0;
+          }
+          v33 = v7 & 7;
+          if (v33 != 0) {
+            v34 = v10 + v8;
+            v35 = v9 + 9;
+            do {
+              v36 = *v35;
+              v35 += 16;
+              *(_BYTE*)(*(_QWORD*)(a1 + 128) + v34++) = v36;
+              if (v36 >= 0) {
+                v37 = 1;
+              }
+              else {
+                v37 = 0x10000;
+              }
+              --v33;
+              v11 |= v37;
+            } while (v33 != 0);
+          }
+          if ((v11 & 0x10001) == 0x10000) {
+            *(_DWORD*)(*(_QWORD*)(a1 + 88) + 4 * v4) |= 0xC0007FFF;
+            *(_DWORD*)(*(_QWORD*)(a1 + 88) + 4 * v5) |= 0x3FFF8000u;
+          }
+        }
+      }
+      ++v4;
+    } while (v4 != v3);
+  }
+  *(_WORD*)(a1 + 96) |= 1u;
+  v38 = *(_DWORD*)(a1 + 60);
+  v39 = v38 >= 1 && v38 <= *(_DWORD*)(a1 + 56);
+  *(_DWORD*)(a1 + 64) = 2139095040;
+  if (v39) {
+    v40 = 0;
+    v41 = 0;
+    do {
+      ++v41;
+      *(_DWORD*)(*(_QWORD*)(a1 + 48) + v40) = 2139095040;
+      v40 += 12;
+    } while (v41 < *(int*)(a1 + 60));
+  }
+  if (*(_WORD*)(a1 + 100) != 0) {
+    v42 = 0;
+    v43 = 48LL * *(unsigned __int16*)(a1 + 100);
+    do {
+      v44 = *(_QWORD*)(*(_QWORD*)(a1 + 104) + 40LL) + v42;
+      ShapeAnimObj_5e9320(
+          v44, (_DWORD*)(*(_QWORD*)(a1 + 72) + 4LL * *(int*)(v44 + 40)));
+      v42 += 48;
+    } while (v43 != v42);
+  }
 }
 
 void ShapeAnimObj_Unknown3(__int64 a1, long double a2)

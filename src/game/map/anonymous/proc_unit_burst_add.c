@@ -10,6 +10,64 @@ extern __int64 game_GameModeData_instance_;
 extern __int64 game_ProcGameSkipView_instance_;
 extern __int64 game_map_UnitFlags_instance_;
 __int64 ProcUnitBurstAdd_Unknown26(__int64 a1);
+__int64 GameRoutine_961420(__int64, _BYTE**, __int64);
+__int64 MapBattleHUD_18c53e0(__int64 result, char);
+__int64 game_HasSkill(_QWORD*, unsigned int*);
+extern _QWORD game_g_shared_system_skills_ptr;
+const char* ProcUnitBurstAdd_Unknown19(__int64 a1);
+__int64 ProcUnitBurstAdd_Unknown24(__int64 a1);
+
+const char* ProcUnitBurstAdd_Unknown19(__int64 a1)
+{
+  __int64 v2;
+  _QWORD* v3;
+  __int64 v5;
+  int v6;
+
+  v2 = game_g_shared_system_skills_ptr;
+  v3 = (_QWORD*)(*(_QWORD*)(a1 + 152) + 1744LL);
+  v6 = *(_DWORD*)((_BYTE*)((_UNKNOWN*)0x21CLL) +
+                  game_g_shared_system_skills_ptr) &
+       0xFFF;
+  if ((game_HasSkill(v3, (unsigned int*)&v6) & 1) != 0) {
+    return nullptr;
+  }
+  v5 = *(_QWORD*)(a1 + 152);
+  v6 = *(_DWORD*)((_BYTE*)((_UNKNOWN*)0x17CLL) + v2) & 0xFFF;
+  if ((game_HasSkill((_QWORD*)(v5 + 1744), (unsigned int*)&v6) & 1) != 0) {
+    return "Bmap_OverBraze_C_Cancel";
+  }
+  v6 = *(_DWORD*)((_BYTE*)((_UNKNOWN*)0x180LL) + v2) & 0xFFF;
+  if ((game_HasSkill((_QWORD*)(v5 + 1744), (unsigned int*)&v6) & 1) != 0) {
+    return "Bmap_OverBraze_B_Cancel";
+  }
+  v6 = *(_DWORD*)((_BYTE*)((_UNKNOWN*)0x178LL) + v2) & 0xFFF;
+  game_HasSkill((_QWORD*)(v5 + 1744), (unsigned int*)&v6);
+  return "Bmap_OverBraze_A_Cancel";
+}
+
+__int64 ProcUnitBurstAdd_Unknown24(__int64 a1)
+{
+  _BYTE* v2;
+  __int64 v8;
+  __int64 result;
+  int v10;
+  _BYTE* v11;
+
+  v10 = COERCE_AS(__typeof__(v10), PSEUDO_REGISTER(float, "s0", "=w"));
+  v2 = (_BYTE*)(*(__int64 (**)(__int64))(*(_QWORD*)a1 + 144LL))(a1),
+  v10 = COERCE_AS(__typeof__(v10), PSEUDO_REGISTER(float, "s0", "=w"));
+  if (v2 != nullptr) {
+    v8 = *(_QWORD*)(a1 + 152);
+    v11 = v2;
+    GameRoutine_961420(a1, &v11, v8),
+        v10 = COERCE_AS(__typeof__(v10), PSEUDO_REGISTER(float, "s0", "=w"));
+  }
+  result = MapBattleHUD_18c53e0(*(_QWORD*)(a1 + 152), 0),
+  v10 = COERCE_AS(__typeof__(v10), PSEUDO_REGISTER(float, "s0", "=w"));
+  *(_DWORD*)(a1 + 160) = v10;
+  return result;
+}
 
 __int64 ProcUnitBurstAdd_Unknown26(__int64 a1)
 {

@@ -27,6 +27,138 @@ extern __int64 GameData_20c77f8;
 extern __int64* GameData_212e008[9];
 void __attribute__((noreturn)) GameRoutine_60a310(_QWORD, _QWORD, _QWORD);
 __int64 MapTroopMenu_178cd40(__int64 a1, __int64 a2);
+__attribute__((swiftcall)) void LayoutAccessor_1560070(PSEUDO_X8, _QWORD,
+                                                       _QWORD);
+__int64 GameRoutine_1593d90(_QWORD, _QWORD);
+__int64 LayoutAccessor_155fbe0(_QWORD, _QWORD);
+__int64 LayoutAccessor_1562cf0(_QWORD, _QWORD);
+__int64 game_UnitPool_Count_alt1(_QWORD,
+                                 long double) __asm__("game_UnitPool_Count");
+__int64 game_gameui_1593c60(_QWORD, _QWORD);
+__int64 std___1___shared_weak_count_lock(_QWORD);
+__n128 std___1___shared_weak_count___release_weak();
+__n128 ui_LayoutAccessor_SetPaneVisible(_QWORD, _QWORD, _QWORD);
+extern __int64* GameData_21319e8[10];
+extern __int64 GameData_2131c38[51];
+extern char GameData_1a9f09e;
+__n128 MapTroopMenu_Unknown84(__int64 a1);
+
+__n128 MapTroopMenu_Unknown84(__int64 a1)
+{
+  __int64 v2;
+  unsigned int v3;
+  __int64 v4;
+  _QWORD* v5;
+  __int64 v6;
+  unsigned int v7;
+  __n128 result;
+  __int64 v9;
+  char* v10;
+  unsigned __int8 v11;
+  __int64 v12;
+  __int64 v13;
+  unsigned __int8 v14;
+  __int64 v15;
+  const char* v16;
+  char* v17;
+  const char* v18;
+  char v19;
+  int v20;
+  unsigned int v21;
+  char v22;
+  __int64 v23;
+
+  ui_LayoutAccessor_SetPaneVisible(a1 + 848, "L_Key", 0);
+  ui_LayoutAccessor_SetPaneVisible(a1 + 848, "L_Num", 0);
+  v2 = __dynamic_cast(*(_QWORD*)(a1 + 1056), GameData_21319e8[0],
+                      GameData_2131c38[0], 0);
+  if (((*(__int64 (**)(__int64))(*(_QWORD*)v2 + 376LL))(v2) & 1) != 0) {
+    v3 = (*(__int64 (**)(__int64))(*(_QWORD*)a1 + 192LL))(a1);
+    game_gameui_1593c60(a1 + 952, v3);
+  }
+  v4 = LayoutAccessor_155fbe0(a1 + 848, "L_Key");
+  v5 = *(_QWORD**)(a1 + 1056);
+  if (v5 != nullptr) {
+    v6 = v4;
+    v7 = (unsigned int)(*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD))(
+        *v5 + 192LL))(v5, *(_QWORD*)(a1 + 1056));
+    v4 = v6;
+  }
+  else {
+    v7 = 2;
+  }
+  v22 = 0;
+  v23 = 0;
+  v17 = &GameData_1a9f09e;
+  v18 = "MID_KeyHelp_ForceChange";
+  v19 = 1;
+  v20 = 6;
+  v21 = v7;
+  GameRoutine_1593d90(v4, &v17);
+  LayoutAccessor_1560070((void*)(&v17), a1 + 848, "L_Key");
+  if (v18 != nullptr) {
+    v9 = std___1___shared_weak_count_lock(v18);
+    v10 = v17;
+    if (v18 != nullptr) {
+      result = std___1___shared_weak_count___release_weak();
+    }
+    if (v9 != 0 && v10 != nullptr) {
+      v11 = *(_BYTE*)(a1 + 1184);
+      while (1) {
+      LABEL_12:
+        if (((v11 + 1) & 0xFC) != 0) {
+          v11 = 0;
+        }
+        else {
+          ++v11;
+        }
+        LODWORD(v17) = 1 << v11;
+        if ((unsigned int)game_UnitPool_Count_alt1(
+                &v17, *(long double*)&result) != 0) {
+          v12 = *(_QWORD*)(GameData_21ca310 + 56) + 556000LL;
+          v13 = *(_QWORD*)(v12 + 24LL * v11);
+          if (v13 != 0) {
+            break;
+          }
+        }
+      }
+      while ((*(_BYTE*)(v13 + 417) & 0x1C) != 0) {
+        v13 = *(_QWORD*)(v13 + 432);
+        if (v13 == 0) {
+          goto LABEL_12;
+        }
+      }
+      if (*(unsigned __int8*)(a1 + 1184) == v11) {
+        v14 = v11 + 1;
+      }
+      else {
+        v14 = v11;
+      }
+      v15 = *(_QWORD*)(v12 + 24LL * v14);
+      if (v15 != 0) {
+        v16 = "Default";
+        while ((*(_BYTE*)(v15 + 417) & 0x1C) != 0) {
+          v15 = *(_QWORD*)(v15 + 432);
+          if (v15 == 0) {
+            v16 = "Disable";
+            break;
+          }
+        }
+      }
+      else {
+        v16 = "Disable";
+      }
+      LayoutAccessor_1562cf0(v10, v16);
+    }
+    if (v9 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v9 + 8),
+                                    0xFFFFFFFFFFFFFFFFLL) == 0) {
+      (*(void (**)(__int64, long double))(*(_QWORD*)v9 + 16LL))(
+          v9, *(long double*)&result);
+      return std___1___shared_weak_count___release_weak();
+    }
+  }
+  return result;
+}
 
 __int64 MapTroopMenu_Unknown85(__int64 a1)
 {

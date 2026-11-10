@@ -21,6 +21,11 @@ __int64 memcmp(_QWORD, _QWORD);
 __int64 strlen(_QWORD);
 __int64 MaterialAnimObj_Unknown4(__int64 a1, __int64 a2);
 __int64 MaterialAnimObj_Unknown6(__int64 a1, __int64 a2);
+__int64 GameRoutine_5e53f0(__int64, long double);
+__int64 MaterialAnimObj_5e75c0(__int64 result, __int64, __int16*, __int64,
+                               float);
+void GameRoutine_5e7340(__int64, __int64, __int64, __int64, float);
+void MaterialAnimObj_5e1980(__int64 a1, __int64 a2, int a3, long double a4);
 
 __int64 MaterialAnimObj_Unknown4(__int64 a1, __int64 a2)
 {
@@ -541,6 +546,52 @@ float MaterialAnimObj_Unknown3(__int64 a1)
     *(float*)(a1 + 64) = *v19;
   }
   return result;
+}
+
+void MaterialAnimObj_5e1980(__int64 a1, __int64 a2, int a3, long double a4)
+{
+
+#pragma clang fp contract(off)
+  float v7;
+  __int64 v8;
+  __int64 v9;
+  _DWORD* v10;
+  __int64 vars0;
+  __int64 vars8;
+  __int64 vars8a;
+  __int64 vars10;
+  __int64 vars18;
+  __int64 _28;
+
+  v7 = **(float**)(a1 + 8);
+  if (*(unsigned __int16*)(a2 + 40) != 0xFFFF) {
+    GameRoutine_5e7340(
+        a2, *(_QWORD*)(a1 + 72) + 4LL * *(unsigned __int16*)(a2 + 40),
+        *(_QWORD*)(a1 + 136) + 2LL * a3,
+        *(_QWORD*)(a1 + 48) + 12LL * *(unsigned __int16*)(a2 + 40),
+        **(float**)(a1 + 8));
+  }
+  v8 = *(unsigned __int16*)(a2 + 42);
+  if (v8 != 0xFFFF) {
+    MaterialAnimObj_5e75c0(
+        a2, *(_QWORD*)(a1 + 72) + 4 * v8,
+        (__int16*)(*(_QWORD*)(a1 + 136) +
+                   2LL * (a3 + *(unsigned __int16*)(a2 + 50))),
+        *(_QWORD*)(a1 + 48) + 12LL * *(unsigned __int16*)(a2 + 42), v7);
+  }
+  if (*(__int16*)(a2 + 46) != -1) {
+    *(float*)&a4 = v7;
+    v9 = vars8;
+    if (*(unsigned __int16*)(a2 + 46) != 0xFFFF) {
+      vars8a = vars0;
+      vars10 = v9;
+      vars18 = _28;
+      v10 =
+          (_DWORD*)(*(_QWORD*)(a1 + 72) + 4LL * *(unsigned __int16*)(a2 + 44));
+      *v10 = GameRoutine_5e53f0(
+          *(_QWORD*)(a2 + 24) + 48LL * *(unsigned __int16*)(a2 + 46), a4);
+    }
+  }
 }
 
 __int64 MaterialAnimObj_Unknown7(__int64 result, _QWORD* a2)

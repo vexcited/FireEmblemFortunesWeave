@@ -23,6 +23,16 @@ __int64 ChangeNumMenuItem_17117b0(__int64 a1);
 __int64 ChangeNumMenuItem_1711830(__int64 a1);
 __int64 ChangeNumMenuItem_17119f0(__int64 a1, char a2);
 __int64 ChangeNumMenuItem_Unknown72(__int64 a1);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, _QWORD, _QWORD,
+                                               _QWORD, _QWORD, _QWORD, _QWORD,
+                                               double, float);
+__int64
+    ChangeNumMenuItem_17119f0_alt1(_QWORD,
+                                   _QWORD) __asm__("ChangeNumMenuItem_17119f0");
+__int64 snd_Fade_Destroy_Fade(_QWORD);
+__n128 snd_Fade_Fade_10c830(_QWORD, double);
+__int64 ChangeNumMenuItem_17118b0(_DWORD* a1, char a2);
+__int64 ChangeNumMenuItem_1711bd0(_DWORD* a1, char a2);
 
 __int64 ChangeNumMenuItem_Unknown70(__int64 a1)
 {
@@ -215,6 +225,44 @@ __int64 ChangeNumMenuItem_1711830(__int64 a1)
   return result;
 }
 
+__int64 ChangeNumMenuItem_17118b0(_DWORD* a1, char a2)
+{
+  int v5;
+  unsigned int v6;
+  __int64 v7;
+  _QWORD v8[2];
+  _BYTE v9[200];
+
+  if (a1[48] == a1[49]) {
+    snd_Fade_Fade_10c830(v9, 0.0f);
+    snd_play_ff2d0((void*)(v8), "SE_SYS_List_Stop", "SE_SYS_List_Stop", v9, 0,
+                   65537, 0, 0.0f, 1.0f);
+    snd_Fade_Destroy_Fade(v9);
+    return 0;
+  }
+  v5 = (*(__int64 (**)(_DWORD*))(*(_QWORD*)a1 + 560LL))(a1);
+  v6 = a1[49];
+  if (v5 >= (int)v6) {
+    if ((a2 & 1) == 0) {
+      if (a1[72] != v6) {
+        snd_Fade_Fade_10c830(v9, 0.0f);
+        snd_play_ff2d0((void*)(v8), "SE_SYS_List_Stop", "SE_SYS_List_Stop", v9,
+                       0, 65537, 0, 0.0f, 1.0f);
+        snd_Fade_Destroy_Fade(v9);
+      }
+      (*(void (**)(_DWORD*, _QWORD))(*(_QWORD*)a1 + 568LL))(a1, v6);
+      return 0;
+    }
+    v7 = (unsigned int)a1[48];
+  }
+  else {
+    v7 = (unsigned int)(v5 + 1);
+  }
+  (*(void (**)(_DWORD*, __int64))(*(_QWORD*)a1 + 568LL))(a1, v7);
+  ChangeNumMenuItem_17119f0_alt1(a1, 0);
+  return 1;
+}
+
 __int64 ChangeNumMenuItem_17119f0(__int64 a1, char a2)
 {
   signed int v4;
@@ -313,6 +361,46 @@ __int64 ChangeNumMenuItem_17119f0(__int64 a1, char a2)
         result, &v24, &v23);
   }
   return result;
+}
+
+__int64 ChangeNumMenuItem_1711bd0(_DWORD* a1, char a2)
+{
+  unsigned int v2;
+  int v5;
+  unsigned int v6;
+  __int64 v7;
+  _QWORD v9[2];
+  _BYTE v10[200];
+
+  if (a1[48] != a1[49]) {
+    v5 = (*(__int64 (**)(_DWORD*))(*(_QWORD*)a1 + 560LL))(a1);
+    v6 = a1[48];
+    if (v5 <= (int)v6) {
+      if ((a2 & 1) == 0) {
+        if (a1[72] != v6) {
+          snd_Fade_Fade_10c830(v10, 0.0f);
+          snd_play_ff2d0((void*)(v9), "SE_SYS_List_Stop", "SE_SYS_List_Stop",
+                         v10, 0, 65537, 0, 0.0f, 1.0f);
+          snd_Fade_Destroy_Fade(v10);
+        }
+        (*(void (**)(_DWORD*, _QWORD))(*(_QWORD*)a1 + 568LL))(a1, v6);
+        return 0;
+      }
+      v7 = (unsigned int)a1[49];
+    }
+    else {
+      v7 = (unsigned int)(v5 - 1);
+    }
+    (*(void (**)(_DWORD*, __int64))(*(_QWORD*)a1 + 568LL))(a1, v7);
+    v2 = 1;
+    ChangeNumMenuItem_17119f0_alt1(a1, 1);
+    return v2;
+  }
+  snd_Fade_Fade_10c830(v10, 0.0f);
+  snd_play_ff2d0((void*)(v9), "SE_SYS_List_Stop", "SE_SYS_List_Stop", v10, 0,
+                 65537, 0, 0.0f, 1.0f);
+  snd_Fade_Destroy_Fade(v10);
+  return 0;
 }
 
 __int64 ChangeNumMenuItem_Unknown72(__int64 a1)

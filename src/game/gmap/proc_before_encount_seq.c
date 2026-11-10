@@ -21,6 +21,12 @@ __int64 game_gmap_ProcBeforeEncountSeq_HideAnimal_closure_Invoke(__int64 a1,
                                                                  __int64* a2);
 void game_gmap_ProcBeforeEncountSeq_EndStartBattle_closure_Invoke(__int64 a1,
                                                                   __int64 a2);
+__int64 game_gmap_TroopMgr_EachEncountTroop(__int64 (*)(), __int64);
+extern __int64 (*GameData_204c238[])();
+float GameRoutine_135bea0();
+__int64 game_gmap_ProcBeforeEncountSeq_EndStartBattle(__int64 a1);
+void game_gmap_ProcBeforeEncountSeq_WaitEncountMotionTick_closure_Invoke(
+    __int64 a1, __int64* a2);
 
 _QWORD* game_gmap_ProcBeforeEncountSeq_HideAnimal(__int64 a1, __int64 a2)
 {
@@ -78,6 +84,33 @@ void ProcBeforeEncountSeq_154f0e0()
   }
 }
 
+__int64 game_gmap_ProcBeforeEncountSeq_EndStartBattle(__int64 a1)
+{
+  __int64 (*v1)();
+  __int64 result;
+  __int64 v3;
+  struct {
+    _QWORD v4[4];
+    _QWORD* v5;
+  } v4_;
+
+  v1 = *(__int64 (**)(void))(a1 + 152);
+  v4_.v4[0] = GameData_204c238;
+  v4_.v5 = v4_.v4;
+  game_gmap_TroopMgr_EachEncountTroop(v1, (__int64)v4_.v4);
+  result = (__int64)v4_.v5;
+  if (v4_.v5 == v4_.v4) {
+    v3 = 32;
+  }
+  else {
+    if (v4_.v5 == nullptr) {
+      return result;
+    }
+    v3 = 40;
+  }
+  return (*(__int64 (**)(__int64))(*v4_.v5 + v3))((__int64)v4_.v5);
+}
+
 __int64 game_gmap_ProcBeforeEncountSeq_HideAnimal_closure_Invoke(__int64 a1,
                                                                  __int64* a2)
 {
@@ -98,6 +131,34 @@ __int64 game_gmap_ProcBeforeEncountSeq_HideAnimal_closure_Invoke(__int64 a1,
     }
   }
   return result;
+}
+
+void game_gmap_ProcBeforeEncountSeq_WaitEncountMotionTick_closure_Invoke(
+    __int64 a1, __int64* a2)
+{
+
+#pragma clang fp contract(off)
+  __int64 v2;
+  __int64 v3;
+  int v4;
+  float v6;
+
+  v2 = *a2;
+  v3 = *(_QWORD*)(*a2 + 376);
+  if (v3 != 0) {
+    v4 = *(_DWORD*)(*(_QWORD*)(v3 + 72) + 120LL);
+    if (v4 == 2017201876 || v4 == -1193575777) {
+      v6 = GameRoutine_135bea0();
+      v3 = *(_QWORD*)(v2 + 376);
+      if (v3 == 0) {
+        return;
+      }
+    }
+    else {
+      v6 = 0x1.0000000000000p+0f;
+    }
+    *(float*)(*(_QWORD*)(v3 + 304) + 12LL) = v6;
+  }
 }
 
 void game_gmap_ProcBeforeEncountSeq_EndStartBattle_closure_Invoke(__int64 a1,

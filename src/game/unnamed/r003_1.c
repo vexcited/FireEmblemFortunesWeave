@@ -2,8 +2,6 @@
 
 #pragma GCC visibility push(hidden)
 
-extern __int64 (*GameData_1fc7910[])();
-
 extern __int64* GameData_212c370;
 
 extern __int64 GameData_212cf60;
@@ -18,14 +16,6 @@ extern __int64 GameData_21c6978;
 
 extern __int64 GameData_21ee260;
 
-extern int GameData_21fdedc;
-
-extern int GameData_21fdee0;
-
-extern int GameData_21fdf08;
-
-extern int GameData_21fdf14;
-
 extern __int64 GameData_22127a8;
 
 __int64 GameRoutine_1a09b70(_QWORD);
@@ -36,107 +26,7 @@ __int64 GameRoutine_1a09c50(_QWORD);
 
 __int64 GameRoutine_1a0a0c0(_QWORD);
 
-__int64 GameRoutine_5f040(_QWORD);
-
-__int64 GameRoutine_5f050(_QWORD, _QWORD);
-
-__int64 GameRoutine_5f060(_QWORD);
-
-__int64 GameRoutine_5f070(_QWORD, _QWORD);
-
-__int64 GameRoutine_5f100(_QWORD, _QWORD);
-
-__int64 GameRoutine_5f200(_QWORD, _QWORD);
-
-__int64 GameRoutine_5f290(_QWORD, _QWORD);
-
-__int64 GameRoutine_a738c0(_QWORD, _QWORD, _QWORD);
-
-__int64 GameRoutine_a73d40(_QWORD, _QWORD);
-
 __int64 GameRoutine_d9d220(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
-
-__int64 GameHr_b762a0(__int64 a1, __int64 a2, __int64 a3, _QWORD* a4,
-                      __int64 a5)
-{
-  __int64 v5;
-  int v10;
-  __int64 v11;
-  __int64 v12;
-  __int64 v13;
-  __int64 v14;
-  __int64 v15;
-  unsigned int v16;
-  __int64 v17;
-  __int64 v18;
-  __int64 v19;
-  __int64 v20;
-  __int64 v21;
-  __int64 v22;
-  __int64 v23;
-  __int64 v24;
-  __int64 v25;
-  __int64 result;
-  _QWORD v27[4];
-  _QWORD* v28;
-
-  v5 = *(_QWORD*)(a5 + 64);
-  v27[0] = GameData_1fc7910;
-  v27[1] = a1;
-  v28 = v27;
-  v10 = GameRoutine_a738c0(v5, v27, 0);
-  if (v28 == v27) {
-    v11 = 32;
-  }
-  else {
-    if (v28 == nullptr) {
-      goto LABEL_6;
-    }
-    v11 = 40;
-  }
-  (*(void (**)(void))(*v28 + v11))();
-LABEL_6:
-  GameRoutine_5f040(a4[1]);
-  GameRoutine_5f050(a4[1], *a4);
-  v12 = a4[1];
-  GameRoutine_5f070(v12, (unsigned int)GameData_21fdedc);
-  GameRoutine_5f100(v12, (unsigned int)GameData_21fdee0);
-  GameRoutine_5f200(v12, (unsigned int)GameData_21fdf08);
-  GameRoutine_5f290(v12, (unsigned int)GameData_21fdf14);
-  GameRoutine_5f060(a4[1]);
-  v13 = *a4;
-  v14 = (*(__int64 (**)(_QWORD))(**(_QWORD**)(a2 + 16) + 16LL))(
-      *(_QWORD*)(a2 + 16));
-  v15 = v14 + 16LL * *(int*)(v14 + 16);
-  (*(void (**)(__int64, __int64, _QWORD, _QWORD, _QWORD))(
-      *(_QWORD*)v13 + 224LL))(v13, 3, 0, *(_QWORD*)(v15 + 24),
-                              *(_QWORD*)(v15 + 32));
-  LODWORD(v13) = *(_DWORD*)(a5 + 16);
-  v16 = *(_DWORD*)(a5 + 20);
-  (*(void (**)(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD))(*(_QWORD*)*a4 + 72LL))(
-      *a4, 0, 0, (unsigned int)v13, v16);
-  (*(void (**)(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD))(*(_QWORD*)*a4 + 88LL))(
-      *a4, 0, 0, (unsigned int)v13, v16);
-  v17 = *a4;
-  v18 = (*(__int64 (**)(_QWORD))(**(_QWORD**)(a3 + 16) + 16LL))(
-      *(_QWORD*)(a3 + 16));
-  v19 = (*(__int64 (**)(__int64))(*(_QWORD*)v18 + 32LL))(v18);
-  v21 = v20;
-  v22 = (*(__int64 (**)(_QWORD))(**(_QWORD**)(a2 + 8) + 16LL))(
-      *(_QWORD*)(a2 + 8));
-  v23 = (*(__int64 (**)(__int64))(*(_QWORD*)v22 + 32LL))(v22);
-  (*(void (**)(__int64, __int64, __int64, __int64, __int64))(
-      *(_QWORD*)v17 + 104LL))(v17, v19, v21, v23, v24);
-  v25 = *a4;
-  v27[0] = 0;
-  v27[1] = 0x3F80000000000000LL;
-  result = (*(__int64 (**)(__int64, _QWORD, _QWORD*))(*(_QWORD*)v25 + 144LL))(
-      v25, 0, v27);
-  if (v10 >= 1) {
-    return GameRoutine_a73d40(*(_QWORD*)(a5 + 64), a4);
-  }
-  return result;
-}
 
 __int64 GameHr_bd7d60(__int64 result)
 {

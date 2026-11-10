@@ -52,6 +52,8 @@ _QWORD* map_camera_MoveWait();
 __int64 map_camera_GetRoll();
 void map_camera_SetRoll(int a1);
 float map_camera_GetTilt(float a1);
+extern __int64 game_ProcFadeView_instance_;
+void map_camera_StartShake(unsigned int a1);
 
 _QWORD* map_camera_MoveWait()
 {
@@ -323,6 +325,136 @@ float map_camera_GetTilt(float a1)
     v5 = *(float*)(v1 + 88);
   }
   return (float)(v5 - v3) / (float)(v4 - v3);
+}
+
+void map_camera_StartShake(unsigned int a1)
+{
+
+#pragma clang fp contract(off)
+  __int64 v1;
+  int v2;
+  int v3;
+  unsigned __int64 v4;
+  __int128 v5;
+  int v6;
+  int v7;
+  unsigned __int64 v8;
+  __int128 v9;
+  int v10;
+  int v11;
+  unsigned __int64 v12;
+  __int128 v13;
+  __int64 v14;
+  __int64 v15;
+
+  if (a1 <= 2 && GameData_21cd140 != 0) {
+    v1 = *(_QWORD*)(GameData_21cd140 + 432);
+    if (a1 == 2) {
+      if (game_ProcGameSkipView_instance_ == 0 ||
+          *(_BYTE*)(game_ProcGameSkipView_instance_ + 152) != 3 ||
+          (((v6 = *(_DWORD*)(game_ProcGameSkipView_instance_ + 156)) & 8) != 0
+               ? (v7 = 2)
+               : (v7 = 3),
+           (v7 & v6) != 0)) {
+        if (game_ProcFadeView_instance_ == 0) {
+          goto LABEL_39;
+        }
+        v8 = game_ProcFadeView_instance_ +
+             ((unsigned __int64)*(
+                  unsigned __int8*)(game_ProcFadeView_instance_ + 480)
+              << 6);
+        if (*(float*)(v8 + 172) == *(float*)(v8 + 168)) {
+          (*(void (**)(unsigned __int64))(*(_QWORD*)(v8 + 160) + 16LL))(v8 +
+                                                                        160);
+        }
+        else {
+          v9 = *(_OWORD*)(v8 + 208);
+        }
+        if (*((float*)&v9 + 3) != 0x1.0000000000000p+0f ||
+            LANES128_OF(((__n128 (*)(unsigned __int64, float)) *
+                         (_QWORD*)(*(_QWORD*)(v8 + 160) + 16LL))(
+                            v8 + 160, *((float*)&v9 + 3)))
+                    .n128_f32[3] != 0x1.0000000000000p+0f) {
+        LABEL_39:
+          v14 = 0xC00000000LL;
+          v15 = 0x6441400000LL;
+          goto LABEL_45;
+        }
+      }
+    }
+    else if (a1 == 1) {
+      if (game_ProcGameSkipView_instance_ == 0 ||
+          *(_BYTE*)(game_ProcGameSkipView_instance_ + 152) != 3 ||
+          (((v2 = *(_DWORD*)(game_ProcGameSkipView_instance_ + 156)) & 8) != 0
+               ? (v3 = 2)
+               : (v3 = 3),
+           (v3 & v2) != 0)) {
+        if (game_ProcFadeView_instance_ == 0) {
+          goto LABEL_35;
+        }
+        v4 = game_ProcFadeView_instance_ +
+             ((unsigned __int64)*(
+                  unsigned __int8*)(game_ProcFadeView_instance_ + 480)
+              << 6);
+        if (*(float*)(v4 + 172) == *(float*)(v4 + 168)) {
+          (*(void (**)(unsigned __int64))(*(_QWORD*)(v4 + 160) + 16LL))(v4 +
+                                                                        160);
+        }
+        else {
+          v5 = *(_OWORD*)(v4 + 208);
+        }
+        if (*((float*)&v5 + 3) != 0x1.0000000000000p+0f ||
+            LANES128_OF(((__n128 (*)(unsigned __int64, float)) *
+                         (_QWORD*)(*(_QWORD*)(v4 + 160) + 16LL))(
+                            v4 + 160, *((float*)&v5 + 3)))
+                    .n128_f32[3] != 0x1.0000000000000p+0f) {
+        LABEL_35:
+          v14 = 0xA00000000LL;
+          v15 = 0x3C41200000LL;
+        LABEL_45:
+          *(_QWORD*)(v1 + 384) = v15;
+          *(_QWORD*)(v1 + 392) = v14;
+          *(_BYTE*)(v1 + 400) = 0;
+          return;
+        }
+      }
+    }
+    else if (game_ProcGameSkipView_instance_ == 0 ||
+             *(_BYTE*)(game_ProcGameSkipView_instance_ + 152) != 3 ||
+             (((v10 = *(_DWORD*)(game_ProcGameSkipView_instance_ + 156)) & 8) !=
+                      0
+                  ? (v11 = 2)
+                  : (v11 = 3),
+              (v11 & v10) != 0)) {
+      if (game_ProcFadeView_instance_ == 0) {
+        goto LABEL_44;
+      }
+      v12 = game_ProcFadeView_instance_ +
+            ((unsigned __int64)*(unsigned __int8*)(game_ProcFadeView_instance_ +
+                                                   480)
+             << 6);
+      if (*(float*)(v12 + 172) == *(float*)(v12 + 168)) {
+        (*(void (**)(unsigned __int64))(*(_QWORD*)(v12 + 160) + 16LL))(v12 +
+                                                                       160);
+      }
+      else {
+        v13 = *(_OWORD*)(v12 + 208);
+      }
+      if (*((float*)&v13 + 3) != 0x1.0000000000000p+0f ||
+          LANES128_OF(((__n128 (*)(unsigned __int64, float)) *
+                       (_QWORD*)(*(_QWORD*)(v12 + 160) + 16LL))(
+                          v12 + 160, *((float*)&v13 + 3)))
+                  .n128_f32[3] != 0x1.0000000000000p+0f) {
+      LABEL_44:
+        v14 = 0xA00000000LL;
+        v15 = 0x1E41200000LL;
+        goto LABEL_45;
+      }
+    }
+    *(_BYTE*)(v1 + 400) = 0;
+    *(_QWORD*)(v1 + 384) = 0;
+    *(_QWORD*)(v1 + 392) = 0;
+  }
 }
 
 #pragma GCC visibility pop

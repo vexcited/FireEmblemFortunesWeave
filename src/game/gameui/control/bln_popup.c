@@ -30,6 +30,128 @@ __int64 BlnPopup_19f25b0(__int64 a1);
 __int64 BlnPopup_19f2680(__int64 a1);
 __int64* BlnPopup_19f2740(__int64* result, char a2);
 __int64 BlnPopup_19f27a0(__int64 a1);
+__int64 Element_1884860(_QWORD, _QWORD, _QWORD, _QWORD);
+__int64 GameRoutine_1888c80(_QWORD, _QWORD, _QWORD);
+__int64 GameRoutine_576600(_QWORD, _QWORD);
+__int64 GameRoutine_576740(_QWORD, _QWORD);
+__int64 LayoutEx_579160(_QWORD, _QWORD);
+__int64 Pane_58fac0(_QWORD, _QWORD);
+__int64 strlen(_QWORD);
+extern __int64 (*Element_1888840_ptr[])();
+extern __int64 (*GameData_2126420[])();
+extern __int64 (*GameData_21264a0[])();
+extern __int64 (*GameData_2126658[])();
+extern __int64 (*game_gameui_control_BlnPopup_vtable[])();
+extern __int64 GameData_2126440;
+extern __int64 GameData_2126450;
+extern __int64 GameData_2126460;
+extern __int64 GameData_2126470;
+extern char* GameData_2126438;
+extern char* GameData_2126448;
+extern char* GameData_2126458;
+extern char* GameData_2126468;
+__attribute__((swiftcall)) void BlnPopup_19f1c50(PSEUDO_X8 x8_, __int64 a1,
+                                                 __int64 a2, __int64 a3);
+
+__attribute__((swiftcall)) void BlnPopup_19f1c50(PSEUDO_X8 x8_, __int64 a1,
+                                                 __int64 a2, __int64 a3)
+{
+  _QWORD* a4 = (_QWORD*)PSEUDO_X8_VALUE(x8_);
+  _QWORD* v8;
+  _QWORD* v9;
+  _QWORD* v10;
+  __int64 v11;
+  _QWORD* v12;
+  __int64 v13;
+  __int64 v14;
+  __int64 v15;
+  __int64 v16;
+  __int64 v17;
+  __int64 v18;
+  __int64 v19;
+  __int64 v20;
+  __int64 v21;
+  __int64 v22;
+  __int64 result;
+  __int64 v24;
+  __int64 v25;
+
+  v8 = (_QWORD*)LayoutEx_579160(1056, 8);
+  v9 = v8 + 3;
+  v10 = v8;
+  v8[1] = 0;
+  v8[2] = 0;
+  *v8 = GameData_21264a0;
+  Element_1884860(v8 + 3, a1, a2, a3);
+  *((_DWORD*)v10 + 263) = 0;
+  v10[3] = game_gameui_control_BlnPopup_vtable;
+  v10[12] = GameData_2126420;
+  v11 = fw_memory_g_heap_manager_ptr;
+  v12 = (_QWORD*)fw_memory_HeapManager_Allocate(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr, 64, 16, 0);
+  v13 = GameData_2126460;
+  v12[4] = GameData_2126458;
+  v12[5] = v13;
+  v14 = GameData_2126470;
+  v12[6] = GameData_2126468;
+  v12[7] = v14;
+  v15 = GameData_2126440;
+  *v12 = GameData_2126438;
+  v12[1] = v15;
+  v16 = GameData_2126450;
+  v12[2] = GameData_2126448;
+  v12[3] = v16;
+  v17 = GameRoutine_576600(a1, "Wdw_R");
+  if (v17 != 0) {
+    v24 = v17;
+    v25 = strlen(v17);
+    if (v25 != 0) {
+      GameRoutine_1888c80(v10 + 29, v12, &v24);
+    }
+  }
+  v18 = GameRoutine_576600(a1, v12[2]);
+  if (v18 != 0) {
+    v24 = v18;
+    v25 = strlen(v18);
+    if (v25 != 0) {
+      GameRoutine_1888c80(v10 + 29, v12 + 2, &v24);
+    }
+  }
+  v19 = GameRoutine_576600(a1, v12[4]);
+  if (v19 != 0) {
+    v24 = v19;
+    v25 = strlen(v19);
+    if (v25 != 0) {
+      GameRoutine_1888c80(v10 + 29, v12 + 4, &v24);
+    }
+  }
+  v20 = GameRoutine_576600(a1, v12[6]);
+  if (v20 != 0) {
+    v24 = v20;
+    v25 = strlen(v20);
+    if (v25 != 0) {
+      GameRoutine_1888c80(v10 + 29, v12 + 6, &v24);
+    }
+  }
+  v21 = Pane_58fac0(*(_QWORD*)(v10[4] + 24LL), "BlnMargin");
+  if (v21 != 0 || (v21 = GameRoutine_576740(a1, "BlnMargin")) != 0) {
+    *((float*)v10 + 263) = (float)*(int*)(v21 + *(unsigned int*)(v21 + 4));
+  }
+  (*(void (**)(_QWORD*, _QWORD))(v10[3] + 40LL))(v9, 0);
+  v22 = 128;
+  if (*(_QWORD*)(*(_QWORD*)v11 + 200LL) == 0) {
+    v22 = 56;
+  }
+  result = nn_mem_StandardAllocator_Free(*(_QWORD*)v11 + v22);
+  *a4 = v9;
+  a4[1] = v10;
+  v10[3] = Element_1888840_ptr;
+  v10[12] = GameData_2126658;
+  {
+    result;
+    return;
+  }
+}
 
 __int64* BlnPopup_19f1f60(__int64 a1)
 {

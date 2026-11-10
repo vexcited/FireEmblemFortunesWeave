@@ -59,6 +59,15 @@ bool game_cmdbtl_anonymous_CmdBtlSystemTroopMenu_SetupCmdBtlForce_closure1_Invok
 __int64
 game_cmdbtl_anonymous_CmdBtlSystemTroopMenu_PlusCall_closure_Invoke(__int64 a1);
 __int64 GameRoutine_1900180_alt1(__int64) __asm__("GameRoutine_1900180");
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, _QWORD, _QWORD,
+                                               _QWORD, _QWORD, _QWORD, _QWORD,
+                                               double, float);
+__int64 CmdBtlSystemSortieMenuItem_Unknown89(_QWORD);
+__int64 game_menu_178cf10(_QWORD);
+__int64 game_menu_BasicMenu_Unknown16dd9a0(_QWORD);
+__int64 snd_Fade_Destroy_Fade(_QWORD);
+__n128 snd_Fade_Fade_10c830(_QWORD, double);
+__int64 CmdBtlSystemTroopMenu_CmdBtlSystemSortieMenuItem_ACall(__int64 a1);
 
 __int64 CmdBtlSystemTroopMenu_Unknown101()
 {
@@ -256,6 +265,65 @@ __int64 CmdBtlSystemTroopMenu_Unknown128(__int64 result)
       ++v4;
       v2 = v7;
     } while (v7 != 0);
+  }
+  return result;
+}
+
+__int64 CmdBtlSystemTroopMenu_CmdBtlSystemSortieMenuItem_ACall(__int64 a1)
+{
+  __int64 result;
+  char v3;
+  char v4;
+  char v5;
+  const char* v6;
+  __int64 (***v7)();
+  _QWORD v8[2];
+  _BYTE v9[200];
+
+  if (((*(__int64 (**)(__int64))(*(_QWORD*)a1 + 584LL))(a1) & 1) != 0 ||
+      ((*(__int64 (**)(__int64))(*(_QWORD*)a1 + 576LL))(a1) & 1) != 0) {
+    return 1;
+  }
+  if (((*(__int64 (**)(__int64))(*(_QWORD*)a1 + 568LL))(a1) & 1) != 0) {
+    result = 1;
+  }
+  else {
+    v3 = (*(__int64 (**)(__int64))(*(_QWORD*)a1 + 712LL))(a1) ^ 1;
+    result = 1;
+    if ((v3 & 1) == 0) {
+      return result;
+    }
+  }
+  if (*(_QWORD*)(a1 + 88) != 0) {
+    v4 = CmdBtlSystemSortieMenuItem_Unknown89(a1);
+    if (*(_BYTE*)(a1 + 101) == 1) {
+      snd_Fade_Fade_10c830(v9, 0.0f);
+      snd_play_ff2d0((void*)(v8), "SE_SYS_Sortie_Exclude",
+                     "SE_SYS_Sortie_Exclude", v9, 0, 65537, 0, 0.0f, 1.0f);
+      snd_Fade_Destroy_Fade(v9);
+      v5 = 0;
+    }
+    else {
+      snd_Fade_Fade_10c830(v9, 0.0f);
+      if ((v4 & 1) != 0) {
+        v6 = "SE_SYS_NG";
+      }
+      else {
+        v6 = "SE_SYS_Sortie_Include";
+      }
+      snd_play_ff2d0((void*)(v8), v6, v6, v9, 0, 65537, 0, 0.0f, 1.0f);
+      snd_Fade_Destroy_Fade(v9);
+      v5 = 1;
+    }
+    *(_BYTE*)(a1 + 101) = v5;
+    game_menu_178cf10(a1);
+    v7 = *(__int64 (****)())(a1 + 8);
+    if (v7 != nullptr &&
+        *v7 == game_cmdbtl_anonymous_CmdBtlSystemTroopMenu_vtable &&
+        (v4 & 1) != (CmdBtlSystemSortieMenuItem_Unknown89(a1) & 1)) {
+      game_menu_BasicMenu_Unknown16dd9a0(v7);
+    }
+    return 13;
   }
   return result;
 }

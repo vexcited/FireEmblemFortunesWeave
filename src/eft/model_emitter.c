@@ -21,6 +21,104 @@ extern __int64 fw_memory_g_heap_manager_ptr;
 void __attribute__((noreturn)) GameRoutine_14a69f0(_QWORD);
 void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
 __int64 ModelEmitter_Unknown2(__int64 a1, __int64* a2);
+_QWORD* GameRoutine_a6df00(__int64);
+__int64 Model_a64140(__int64 result, long double);
+extern __int64 (*eft_ClampCurve_ptr)();
+__int64 ModelEmitter_14a5a10(__int64 a1, long double a2);
+
+__int64 ModelEmitter_14a5a10(__int64 a1, long double a2)
+{
+
+#pragma clang fp contract(off)
+  __int64 result;
+  __int64 v3;
+  __int64 v5;
+  __int64 v6;
+  _QWORD* v7;
+  __int64 v8;
+  _QWORD* v9;
+  _QWORD* v10;
+  _QWORD* v11;
+  __int64 v12;
+  __int64 v13;
+  float v14;
+  float v15;
+  float v16;
+  __int64 (*v17)();
+  bool v18;
+  bool v19;
+  bool v20;
+  __int64 v21;
+  __int64 v22;
+  __int64 v23;
+  __int64 v24;
+
+  if ((*(_BYTE*)(a1 + 32) & 1) != 0) {
+    return 1;
+  }
+  v3 = *(_QWORD*)(a1 + 40);
+  if (v3 != *(_QWORD*)(a1 + 48)) {
+    v5 = *(_QWORD*)(*(_QWORD*)(v3 + 8LL * *(int*)(a1 + 36)) + 24LL);
+    (*(void (**)(__int64))(*(_QWORD*)v5 + 24LL))(v5);
+    v6 = *(_QWORD*)(*(_QWORD*)(*(_QWORD*)(a1 + 40) + 8LL * *(int*)(a1 + 36)) +
+                    24LL);
+    (*(void (**)(__int64, __int64))(*(_QWORD*)v6 + 56LL))(v6,
+                                                          *(_QWORD*)a1 + 136LL);
+    GameRoutine_a6df00(
+        *(_QWORD*)(*(_QWORD*)(a1 + 40) + 8LL * *(int*)(a1 + 36)));
+    v7 = *(_QWORD**)(*(_QWORD*)(a1 + 40) + 8LL * *(int*)(a1 + 36));
+    v8 = v7[1];
+    v9 = (_QWORD*)v7[4];
+    if (v9 != nullptr && v9[13] != 0) {
+      (*(void (**)(_QWORD*, __int64))(*v9 + 56LL))(v9, v8);
+      v8 = v7[1];
+    }
+    v10 = (_QWORD*)v7[5];
+    if (v10 != nullptr && v10[13] != 0) {
+      (*(void (**)(_QWORD*, __int64))(*v10 + 56LL))(v10, v8);
+      v8 = v7[1];
+    }
+    v11 = (_QWORD*)v7[6];
+    if (v11 != nullptr && v11[13] != 0) {
+      (*(void (**)(_QWORD*, __int64))(*v11 + 56LL))(v11, v8);
+    }
+    v12 = *(_QWORD*)(*(_QWORD*)(a1 + 40) + 8LL * *(int*)(a1 + 36));
+    v13 = *(_QWORD*)(v12 + 16);
+    if (v13 != 0) {
+      *(_BYTE*)(v12 + 169) = 0;
+      v14 = *(float*)(v12 + 100);
+      v15 = *(float*)v13;
+      v16 = *(float*)(v13 + 8);
+      v17 = *(__int64 (**)(void))(v13 + 16);
+      v18 = *(float*)v13 >= v16 && v17 == eft_ClampCurve_ptr;
+      if (v18 ||
+          (v15 < v16 ? (v19 = v17 == eft_ClampCurve_ptr) : (v19 = true),
+           !v19 ? (v20 = (float)(v14 + v15) < v16) : (v20 = true), !v20)) {
+        *(_WORD*)(v12 + 168) = 257;
+      }
+      *(float*)(v13 + 12) = v14;
+      v21 = *(_QWORD*)(v12 + 16);
+      *(float*)&a2 =
+          (*(float (**)(_QWORD, __int64, float, float, float))(v21 + 16))(
+              *(_QWORD*)(v21 + 24), v8, *(float*)v21 + *(float*)(v21 + 12),
+              *(float*)(v21 + 4), *(float*)(v21 + 8));
+      *(_DWORD*)v21 = LODWORD(a2);
+    }
+    *(_BYTE*)(*(_QWORD*)a1 + 504LL) = 1;
+  }
+  Model_a64140(*(_QWORD*)a1, a2);
+  v22 = *(_QWORD*)(a1 + 40);
+  result = true;
+  if (v22 != *(_QWORD*)(a1 + 48)) {
+    v23 = *(_QWORD*)(v22 + 8LL * *(int*)(a1 + 36));
+    v24 = *(_QWORD*)(v23 + 16);
+    if (v24 != 0 && *(__int64 (**)(void))(v24 + 16) == eft_ClampCurve_ptr &&
+        (*(_BYTE*)(v23 + 168) & 1) != 0) {
+      return false;
+    }
+  }
+  return result;
+}
 
 __int64 ModelEmitter_Unknown2(__int64 a1, __int64* a2)
 {

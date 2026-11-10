@@ -16,6 +16,12 @@ __int64 std___1___shared_weak_count___release_weak(_QWORD);
 void __attribute__((noreturn)) GameRoutine_8123d0(_QWORD);
 __int64 AnimLayerCtrlModule_ce3880(__int64 a1, __int64 a2, int a3);
 __int64 AnimLayerCtrlModule_ce3970(__int64 a1, __int64 a2, __int64 a3, int a4);
+__attribute__((swiftcall)) void BlendLayer_d2b820(PSEUDO_X8, __int64 result);
+__int64 AnimLayerCtrlModule_ce49a0(__int64 a1, int a2);
+__attribute__((swiftcall)) void
+AnimLayerCtrlModule_ce5500(PSEUDO_X8 x8_, unsigned __int64* result,
+                           unsigned int a2, __int64 a3, unsigned int a4,
+                           __int64 a5);
 
 __int64 AnimLayerCtrlModule_Destructor(_QWORD* a1)
 {
@@ -313,6 +319,225 @@ LABEL_10:
     goto LABEL_12;
   }
   return (unsigned int)v11;
+}
+
+__int64 AnimLayerCtrlModule_ce49a0(__int64 a1, int a2)
+{
+  __int64 result;
+  int* v4;
+  int* v5;
+  __int64 v6;
+  _QWORD* v7;
+  __int64 v8;
+  __int64 v9;
+  __int64 v10;
+  struct {
+    int* v11;
+    int* v12;
+  } v11_;
+
+  result =
+      X8CALL_X0(__int64, BlendLayer_d2b820((void*)((__int64*)&v11_.v11),
+                                           *(_QWORD*)(a1 + 32) + 72LL * a2));
+  v4 = v11_.v11;
+  v5 = v11_.v12;
+  if (v11_.v11 != v11_.v12) {
+    do {
+      v6 = *(_QWORD*)(*(_QWORD*)(a1 + 24) + 72LL) + 104LL * *v4;
+      v8 = *(_QWORD*)(v6 + 16);
+      v7 = (_QWORD*)(v6 + 16);
+      if (v8 != 0) {
+        v9 = v7[1];
+        *v7 = 0;
+        v7[1] = 0;
+        if (v9 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v9 + 8),
+                                        0xFFFFFFFFFFFFFFFFLL) == 0) {
+          (*(void (**)(__int64))(*(_QWORD*)v9 + 16LL))(v9);
+          result = std___1___shared_weak_count___release_weak(v9);
+        }
+      }
+      ++v4;
+    } while (v4 != v5);
+    v4 = v11_.v11;
+  }
+  if (v4 != nullptr) {
+    v11_.v12 = v4;
+    v10 = 128;
+    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+      v10 = 56;
+    }
+    return nn_mem_StandardAllocator_Free(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v10);
+  }
+  return result;
+}
+
+__attribute__((swiftcall)) void
+
+AnimLayerCtrlModule_ce5500(PSEUDO_X8 x8_, unsigned __int64* result,
+                           unsigned int a2, __int64 a3, unsigned int a4,
+                           __int64 a5)
+{
+  __int64 a6 = (__int64)PSEUDO_X8_VALUE(x8_);
+  signed __int64 v6;
+  unsigned __int64 v7;
+  unsigned __int64 v8;
+  int v9;
+  unsigned __int64 v10;
+  __int64 v11;
+  unsigned __int64 v12;
+  __int64 v13;
+  unsigned int v14;
+  bool v15;
+  unsigned __int64 v16;
+  unsigned __int64 v17;
+  __int64 v18;
+  _QWORD* v19;
+  unsigned __int64 v20;
+  int v21;
+  _QWORD* v22;
+  __int64 v23;
+  unsigned __int64 v24;
+  __int64 v25;
+  __int64 v26;
+  unsigned __int64 v27;
+  _QWORD* v28;
+  unsigned __int64 v29;
+  _QWORD* v30;
+  unsigned __int64 v31;
+  _QWORD* v32;
+  unsigned __int64 v33;
+  unsigned __int64 v34;
+  __int64 v35;
+  __int64 v36;
+  _QWORD* v37;
+  _QWORD* v38;
+
+  v6 = a4 - (unsigned __int64)a2 + 8 * (a3 - (_QWORD)result);
+  if (v6 >= 1) {
+    if (a2 != 0) {
+      if (v6 >= (unsigned __int64)(64 - a2)) {
+        v7 = 64 - a2;
+      }
+      else {
+        v7 = a4 - (unsigned __int64)a2 + 8 * (a3 - (_QWORD)result);
+      }
+      v6 -= v7;
+      v8 = (0xFFFFFFFFFFFFFFFFLL >>
+            (64 - (unsigned __int8)a2 - (unsigned __int8)v7)) &
+           (-1LL << a2) & *result;
+      v9 = *(_DWORD*)(a5 + 8);
+      v10 = (unsigned int)(64 - v9);
+      v11 = -1LL << v9;
+      if (v7 >= v10) {
+        v12 = v10;
+      }
+      else {
+        v12 = v7;
+      }
+      v13 = v7 - v12;
+      **(_QWORD**)a5 &= ~((0xFFFFFFFFFFFFFFFFLL >>
+                           ((unsigned __int8)v10 - (unsigned __int8)v12)) &
+                          v11);
+      v14 = *(_DWORD*)(a5 + 8);
+      v15 = v14 > a2;
+      v16 = v8 >> ((unsigned __int8)a2 - (unsigned __int8)v14);
+      v17 = v8 << ((unsigned __int8)v14 - (unsigned __int8)a2);
+      if (!v15) {
+        v17 = v16;
+      }
+      **(_QWORD**)a5 |= v17;
+      v18 = *(unsigned int*)(a5 + 8);
+      v19 = *(_QWORD**)a5;
+      v20 = v12 + v18;
+      v21 = ((_BYTE)v18 + (_BYTE)v12) & 0x3F;
+      *(_DWORD*)(a5 + 8) = v21;
+      v22 = (_QWORD*)((char*)v19 + ((v20 >> 3) & 0x3FFFFFF8));
+      *(_QWORD*)a5 = v22;
+      if (v13 >= 1) {
+        v21 = v13;
+        *v22 &= ~(0xFFFFFFFFFFFFFFFFLL >> -(char)v13);
+        **(_QWORD**)a5 |= v8 >> ((unsigned __int8)v12 + (unsigned __int8)a2);
+        *(_DWORD*)(a5 + 8) = v13;
+      }
+      ++result;
+    }
+    else {
+      v21 = *(_DWORD*)(a5 + 8);
+    }
+    v23 = v6 - 64;
+    v24 = (unsigned int)(64 - v21);
+    if (v6 < 64) {
+      v23 = v6;
+    }
+    else {
+      v25 = -1LL << v21;
+      v26 = ~(-1LL << v21);
+      if ((v23 & 0x40) == 0) {
+        v27 = *result++;
+        **(_QWORD**)a5 &= v26;
+        **(_QWORD**)a5 |= v27 << *(_DWORD*)(a5 + 8);
+        v28 = *(_QWORD**)a5;
+        *(_QWORD*)a5 += 8LL;
+        v28[1] &= v25;
+        **(_QWORD**)a5 |= v27 >> v24;
+        v6 -= 64LL;
+      }
+      if ((unsigned __int64)v23 >= 0x40) {
+        do {
+          v29 = *result;
+          **(_QWORD**)a5 &= v26;
+          **(_QWORD**)a5 |= v29 << *(_DWORD*)(a5 + 8);
+          v30 = *(_QWORD**)a5;
+          *(_QWORD*)a5 += 8LL;
+          v30[1] &= v25;
+          **(_QWORD**)a5 |= v29 >> v24;
+          v31 = result[1];
+          result += 2;
+          **(_QWORD**)a5 &= v26;
+          **(_QWORD**)a5 |= v31 << *(_DWORD*)(a5 + 8);
+          v32 = *(_QWORD**)a5;
+          *(_QWORD*)a5 += 8LL;
+          v32[1] &= v25;
+          **(_QWORD**)a5 |= v31 >> v24;
+          v23 = v6 - 128;
+          v33 = v6 - 192;
+          v6 -= 128LL;
+        } while (v33 < 0xFFFFFFFFFFFFFF80LL);
+      }
+    }
+    if (v23 >= 1) {
+      v34 = *result & (0xFFFFFFFFFFFFFFFFLL >> -(char)v23);
+      if (v23 >= v24) {
+        v35 = v24;
+      }
+      else {
+        v35 = v23;
+      }
+      **(_QWORD**)a5 &= ~((-1LL << *(_DWORD*)(a5 + 8)) &
+                          (0xFFFFFFFFFFFFFFFFLL >>
+                           ((unsigned __int8)v24 - (unsigned __int8)v35)));
+      **(_QWORD**)a5 |= v34 << *(_DWORD*)(a5 + 8);
+      v36 = *(unsigned int*)(a5 + 8);
+      v37 = *(_QWORD**)a5;
+      *(_DWORD*)(a5 + 8) = ((_BYTE)v36 + (_BYTE)v35) & 0x3F;
+      v38 = (_QWORD*)((char*)v37 +
+                      (((unsigned __int64)(v35 + v36) >> 3) & 0x3FFFFFF8));
+      *(_QWORD*)a5 = v38;
+      if (v23 - v35 >= 1) {
+        *v38 &= ~(0xFFFFFFFFFFFFFFFFLL >>
+                  ((unsigned __int8)v35 - (unsigned __int8)v23));
+        **(_QWORD**)a5 |= v34 >> v35;
+        *(_DWORD*)(a5 + 8) = v23 - v35;
+      }
+    }
+  }
+  *(_QWORD*)a6 = *(_QWORD*)a5;
+  *(_DWORD*)(a6 + 8) = *(_DWORD*)(a5 + 8);
+  {
+    result;
+    return;
+  }
 }
 
 #pragma GCC visibility pop

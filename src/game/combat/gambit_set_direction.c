@@ -13,6 +13,7 @@ __n128 GambitSetDirection_Destructor(__int64 a1);
 __n128 GambitSetDirection_DeletingDestructor(__int64 a1);
 _QWORD* game_combat_GambitSetDirection_Run_lambda0_Invoke(__int64 a1,
                                                           __int64* a2, int* a3);
+__attribute__((swiftcall)) void GambitSetDirection_Unknown3(PSEUDO_X8 x8_);
 
 __int64 game_combat_GambitSetDirection_Run(__int64 a1)
 {
@@ -114,6 +115,13 @@ __n128 GambitSetDirection_DeletingDestructor(__int64 a1)
     v8 = 56;
   }
   return nn_mem_StandardAllocator_Free(*(_QWORD*)v5 + v8, a1);
+}
+
+__attribute__((swiftcall)) void GambitSetDirection_Unknown3(PSEUDO_X8 x8_)
+{
+  _BYTE* a1 = (_BYTE*)PSEUDO_X8_VALUE(x8_);
+  *a1 = 24;
+  strcpy(a1 + 1, "SetDirection");
 }
 
 _QWORD* game_combat_GambitSetDirection_Run_lambda0_Invoke(__int64 a1,

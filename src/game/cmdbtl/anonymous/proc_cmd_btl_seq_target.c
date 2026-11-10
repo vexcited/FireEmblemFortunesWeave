@@ -17,6 +17,8 @@ extern __int64 GameData_221b2e8;
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64* GameData_212da50[3];
 __int64 ProcCmdBtlSeqTarget_Destructor(__int64 a1);
+extern __int64 game_script_hub_g_frame_counter_ptr[3];
+double ProcCmdBtlSeqTarget_Unknown3(__int64 a1);
 
 __int64 ProcCmdBtlSeqTarget_Destructor(__int64 a1)
 {
@@ -153,6 +155,42 @@ __int64 ProcCmdBtlSeqTarget_Destructor(__int64 a1)
   }
   game_ProcInst_Unregister(a1);
   return GameRoutine_658c00(a1 + 88);
+}
+
+double ProcCmdBtlSeqTarget_Unknown3(__int64 a1)
+{
+
+#pragma clang fp contract(off)
+  _DWORD* v1;
+  double result;
+  float v3;
+
+  v1 = (_DWORD*)(a1 + 23044);
+  LODWORD(result) = *(_DWORD*)(a1 + 23044);
+  v3 =
+      fabsf((float)(*(float*)(*(_QWORD*)game_script_hub_g_frame_counter_ptr[0] +
+                              160LL) *
+                    0x1.0aef000000000p+4f) /
+            0x1.f400000000000p+9f);
+  if (*(float*)&result <= 0x0.0p+0f) {
+    if (*(float*)&result >= 0x0.0p+0f) {
+      goto LABEL_3;
+    }
+    *(float*)&result = *(float*)&result + v3;
+    if (*(float*)&result <= 0x0.0p+0f) {
+      goto LABEL_3;
+    }
+  }
+  else {
+    *(float*)&result = *(float*)&result - v3;
+    if (*(float*)&result >= 0x0.0p+0f) {
+    LABEL_3:
+      *v1 = LODWORD(result);
+      return result;
+    }
+  }
+  *v1 = 0;
+  return 0x0.0p+0;
 }
 
 #pragma GCC visibility pop

@@ -33,6 +33,177 @@ game_menu_anonymous_ProcDeliveryTransportMenu_BCall_closure_Invoke(__int64 a1);
 __int64
 game_menu_anonymous_ProcDeliveryTransportMenu_AddItemList_closure_Invoke(
     __int64 result, unsigned __int16* a2);
+__attribute__((swiftcall)) void GameSubquestData_1256d00(PSEUDO_X8,
+                                                         __int64 result);
+__int64 MapSortieMenu_871860(__int64, __int64, __int64, __int64, __int64);
+__int64 TransportMenu_170b4c0(__int64);
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 nn_mem_StandardAllocator_Free(_QWORD);
+__int64 ui_LayoutAccessor_SetPaneVisible(__int64 result, __int64, char);
+__n128 GameRoutine_171fd50(__int64);
+extern __int64 (*GameData_20b0a70[])();
+extern __int64 (*GameData_20b0af0[])();
+void game_gameui_15999a0(__int64*, int, int, __int64**);
+__int64 ProcDeliveryTransportMenu_Unknown85(__int64* a1);
+__int64 game_menu_anonymous_ProcDeliveryTransportMenu_BCall(_QWORD* a1);
+
+__int64 ProcDeliveryTransportMenu_Unknown85(__int64* a1)
+{
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  int v6;
+  int v7;
+  int v8;
+  __int64 v9;
+  __int64 v10;
+  __int64* v11;
+  __int64 v12;
+  __int64* v14[3];
+  struct {
+    __int64* v15;
+    __int64* v16;
+    __int64* v17;
+  } v15_;
+
+  TransportMenu_170b4c0((__int64)a1);
+  ui_LayoutAccessor_SetPaneVisible((__int64)(a1 + 106), (__int64)"A_Condition",
+                                   1);
+  v2 = a1[133];
+  v3 = fw_memory_g_heap_manager_ptr;
+  if (v2 == 0) {
+    v10 = a1[134];
+    if (v10 != 0) {
+      v9 = *(_QWORD*)(v10 + 88);
+      v8 = *(unsigned __int16*)(v10 + 96);
+    }
+    else {
+      v9 = 0;
+      v8 = 0;
+    }
+    goto LABEL_12;
+  }
+  v4 = *(_QWORD*)v2;
+  v5 = *(_QWORD*)(*(_QWORD*)v2 + 344LL);
+  if (v5 == 0 ||
+      (v6 = *(unsigned __int16*)(v5 + 40), *(_WORD*)(v5 + 40) == 0)) {
+    v8 = *(unsigned __int8*)(v4 + 368);
+    if (*(_WORD*)(v4 + 320) != 0) {
+      v9 = *(_QWORD*)(*(_QWORD*)(v4 + 328) + 8LL);
+    }
+    else {
+      v9 = 0;
+    }
+  LABEL_12:
+    v11 = (__int64*)fw_memory_HeapManager_Allocate_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr, 8, 16, 0);
+    v15_.v15 = v11;
+    *v11 = v9;
+    v15_.v16 = v11 + 1;
+    v15_.v17 = v11 + 1;
+    game_gameui_15999a0(a1 + 106, 1, v8, &v15_.v15);
+    if (v15_.v15 == nullptr) {
+      goto LABEL_17;
+    }
+    v15_.v16 = v15_.v15;
+    goto LABEL_14;
+  }
+  v7 = *(unsigned __int8*)(v4 + 368);
+  GameSubquestData_1256d00((void*)((__int64*)v14), v2);
+  game_gameui_15999a0(a1 + 106, v6, v7, v14);
+  if (v14[0] != nullptr) {
+    v14[1] = v14[0];
+  LABEL_14:
+    v12 = 128;
+    if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
+      v12 = 56;
+    }
+    nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v12);
+  }
+LABEL_17:
+  GameRoutine_171fd50((__int64)a1);
+  return ui_LayoutAccessor_SetPaneVisible((__int64)(a1 + 106),
+                                          (__int64)"L_EquipPool/L_Num", 0);
+}
+
+__int64 game_menu_anonymous_ProcDeliveryTransportMenu_BCall(_QWORD* a1)
+{
+  __int64 v1;
+  const char* v2;
+  __int64 v3;
+  __int64 v5;
+  __int64 v6;
+  struct {
+    _QWORD v7[4];
+    _QWORD* v8;
+  } v7_;
+  struct {
+    _QWORD v9[4];
+    _QWORD* v10;
+  } v9_;
+  struct {
+    _QWORD v11[4];
+    _QWORD* v12;
+  } v11_;
+  const char* v13;
+
+  if (a1[136] == a1[135]) {
+    (*(void (**)(_QWORD*))(a1[132] + 104LL))(a1 + 132);
+    return 3;
+  }
+  v1 = a1[133];
+  v7_.v8 = v7_.v7;
+  if (v1 != 0) {
+    v2 = "MID_DeliveryMenu_Cancel_Confirm";
+  }
+  else {
+    v2 = "MID_ScoutDeliveryMenu_Cancel_Confirm";
+  }
+  v13 = v2;
+  v9_.v10 = v9_.v9;
+  v11_.v11[0] = GameData_20b0a70;
+  v11_.v11[1] = a1;
+  v11_.v12 = v11_.v11;
+  v9_.v9[0] = GameData_20b0af0;
+  v7_.v7[0] = GameData_20b0af0;
+  MapSortieMenu_871860((__int64)a1, (__int64)&v13, (__int64)v11_.v11,
+                       (__int64)v9_.v9, (__int64)v7_.v7);
+  if (v7_.v8 == v7_.v7) {
+    v3 = 32;
+  }
+  else {
+    if (v7_.v8 == nullptr) {
+      goto LABEL_11;
+    }
+    v3 = 40;
+  }
+  (*(void (**)(__int64))(*v7_.v8 + v3))((__int64)v7_.v8);
+LABEL_11:
+  if (v9_.v10 == v9_.v9) {
+    v5 = 32;
+  }
+  else {
+    if (v9_.v10 == nullptr) {
+      goto LABEL_16;
+    }
+    v5 = 40;
+  }
+  (*(void (**)(__int64))(*v9_.v10 + v5))((__int64)v9_.v10);
+LABEL_16:
+  if (v11_.v12 == v11_.v11) {
+    v6 = 32;
+    goto LABEL_20;
+  }
+  if (v11_.v12 != nullptr) {
+    v6 = 40;
+  LABEL_20:
+    (*(void (**)(__int64))(*v11_.v12 + v6))((__int64)v11_.v12);
+  }
+  return 11;
+}
 
 const char* ProcDeliveryTransportMenu_Unknown141(__int64 a1)
 {

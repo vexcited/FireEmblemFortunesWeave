@@ -56,6 +56,20 @@ game_facility_anonymous_ProcDiningRecipeMenu_ACall_closure_Invoke_13fad90(
 __int64
 game_facility_anonymous_ProcDiningRecipeMenu_ACall_closure_Invoke_13faf40(
     __int64 a1);
+_QWORD* GameRoutine_13fa790(__int64, __int64, __int64, __int64, __int64);
+_QWORD* GameRoutine_654050(_QWORD* result, _QWORD*);
+__int64 GameRoutine_60a020(__int64, __int64);
+__int64 GameRoutine_67ed20(_QWORD*);
+__int64 GameRoutine_9244a0_alt1(__int64, __int64) __asm__("GameRoutine_9244a0");
+__int64 GameRoutine_94a700(__int16*);
+__n128 game_16ad210(__int64, __int64, char, __int64);
+extern __int64 (*GameData_2037950[])();
+extern __int64 (*GameData_2037ad0[])();
+extern __int64 (*game_sound_PlayDecideLightSe_ptr[6])();
+extern __int64* GameData_212cc30[65];
+extern __int64* GameData_212d2b8;
+void* game_97b2f0(__int64);
+__int64 game_facility_anonymous_ProcDiningRecipeMenu_ACall(__int64 a1);
 
 __int64 ProcDiningRecipeMenu_Unknown84(__int64 a1)
 {
@@ -357,6 +371,214 @@ LABEL_33:
   }
   v34 = GameRoutine_9244a0(v3, v21);
   return GameRoutine_1840740(v33, 0, v21, v34, 1);
+}
+
+__int64 game_facility_anonymous_ProcDiningRecipeMenu_ACall(__int64 a1)
+{
+
+#pragma clang fp contract(off)
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  __int64* v6;
+  __int64 v7;
+  int v8;
+  _QWORD* v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
+  unsigned __int64 v14;
+  __int64 v15;
+  __int64 v16;
+  __int64 v17;
+  __int64 v18;
+  __int64 v19;
+  __int16* v20;
+  double v21;
+  unsigned int v22;
+  double v23;
+  double v24;
+  double v25;
+  int v26;
+  __int64 v27;
+  __int64 v28;
+  unsigned __int64 v29;
+  __int64 v30;
+  char v31;
+  char v32;
+  __int64 v33;
+  struct {
+    _QWORD v34[4];
+    _QWORD* v35;
+  } v34_;
+  struct {
+    __int64 (*v36[4])();
+    __int64 (**v37)();
+  } v36_;
+  struct {
+    __int64 (*v38[4])();
+    __int64 (**v39)();
+  } v38_;
+  const char* v40;
+
+  v2 = *(_QWORD*)(a1 + 336);
+  if (v2 == 0) {
+    return 1;
+  }
+  v3 = a1;
+  v4 = __dynamic_cast(v2, GameData_212e008[0], &GameData_20378a8, 0);
+  if (v4 == 0) {
+    return 1;
+  }
+  v5 = v4;
+  if (((*(__int64 (**)(__int64))(*(_QWORD*)v4 + 464LL))(v4) & 1) == 0) {
+    return 1;
+  }
+  v6 = GameData_212dcd0;
+  v7 = *(_QWORD*)(v5 + 88);
+  if (v7 != 0) {
+    v8 = *(unsigned __int16*)(v7 + 16);
+  }
+  else {
+    v8 = -1;
+  }
+  *(_DWORD*)(*GameData_212dcd0 + 8) = v8;
+  v40 = "MID_DiningMenu_Confirm";
+  v38_.v38[0] = (__int64 (*)())GameData_2037950;
+  v38_.v38[1] = (__int64 (*)())v3;
+  v38_.v39 = v38_.v38;
+  v36_.v37 = v36_.v36;
+  v34_.v35 = v34_.v34;
+  v36_.v36[0] = (__int64 (*)())GameData_2037ad0;
+  v34_.v34[0] = GameData_2037ad0;
+  v10 = GameRoutine_13fa790(v3, (__int64)&v40, (__int64)v38_.v38,
+                            (__int64)v36_.v36, (__int64)v34_.v34);
+  if (v34_.v35 == v34_.v34) {
+    v11 = 32;
+  }
+  else {
+    if (v34_.v35 == nullptr) {
+      goto LABEL_14;
+    }
+    v11 = 40;
+  }
+  (*(void (**)(__int64))(*v34_.v35 + v11))((__int64)v34_.v35);
+LABEL_14:
+  if (v36_.v37 == v36_.v36) {
+    v12 = 32;
+  }
+  else {
+    if (v36_.v37 == nullptr) {
+      goto LABEL_19;
+    }
+    v12 = 40;
+  }
+  (*(void (**)(__int64))((char*)*v36_.v37 + v12))((__int64)v36_.v37);
+LABEL_19:
+  if (v38_.v39 == v38_.v38) {
+    v13 = 32;
+  }
+  else {
+    if (v38_.v39 == nullptr) {
+      goto LABEL_24;
+    }
+    v13 = 40;
+  }
+  (*(void (**)(__int64))((char*)*v38_.v39 + v13))((__int64)v38_.v39);
+LABEL_24:
+  v36_.v37 = v36_.v36;
+  v38_.v39 = v38_.v38;
+  v36_.v36[0] = (__int64 (*)())(GameData_212d2b8 + 2);
+  v36_.v36[1] = game_sound_PlayDecideLightSe_ptr[0];
+  v38_.v38[0] = (__int64 (*)())(GameData_212d2b8 + 2);
+  v38_.v38[1] = game_sound_PlayDecideLightSe_ptr[0];
+  GameRoutine_654050(v38_.v38, v10 + 144);
+  if (v38_.v39 == v38_.v38) {
+    v15 = 32;
+  }
+  else {
+    if (v38_.v39 == nullptr) {
+      goto LABEL_29;
+    }
+    v15 = 40;
+  }
+  (*(void (**)(__int64))((char*)*v38_.v39 + v15))((__int64)v38_.v39);
+LABEL_29:
+  if (v36_.v37 == v36_.v36) {
+    v16 = 32;
+  }
+  else {
+    if (v36_.v37 == nullptr) {
+      goto LABEL_34;
+    }
+    v16 = 40;
+  }
+  (*(void (**)(__int64))((char*)*v36_.v37 + v16))((__int64)v36_.v37);
+LABEL_34:
+  v17 = *(unsigned int*)(*v6 + 8);
+  if ((v17 & 0x80000000) == 0) {
+    v18 = *(_QWORD*)(*(_QWORD*)(*GameData_212cc30[0] + 64) + 8 * v17);
+    if (v18 != 0) {
+      v19 = *(_QWORD*)(v18 + 32);
+      if (v19 != 0) {
+        GameRoutine_60a020((__int64)(v10 + 187), v19);
+      }
+      if (game_gmap_GmapClock_instance_ != 0) {
+        v20 = (__int16*)(game_gmap_GmapClock_instance_ + 8);
+      }
+      else {
+        v20 = (__int16*)game_gmap_GmapClock_kDefaultTime_ptr;
+      }
+      LOWORD(v14) = *(_WORD*)(v18 + 52);
+      v21 = (double)v14;
+      v22 = GameRoutine_94a700(v20);
+      v23 = 0x1.0000000000000p+0;
+      v24 = (double)v22 / -0x1.9000000000000p+6 + 0x1.0000000000000p+0;
+      if (v24 <= 0x1.0000000000000p+0) {
+        v23 = (double)v22 / -0x1.9000000000000p+6 + 0x1.0000000000000p+0;
+      }
+      if (v24 >= 0x1.47ae147ae147bp-7) {
+        v25 = v23;
+      }
+      else {
+        v25 = 0x1.47ae147ae147bp-7;
+      }
+      v26 = (int)(v25 * v21);
+      if (v26 <= 1) {
+        v26 = 1;
+      }
+      *((_DWORD*)v10 + 392) = v26;
+      v27 = *(_QWORD*)(*v6 + 48);
+      v28 = *(_QWORD*)(*v6 + 56);
+      if ((int)((unsigned __int64)(v28 - v27) >> 3) >= 1) {
+        v29 = 0;
+        do {
+          if (v29 >= (v28 - v27) >> 3) {
+            GameRoutine_9244a0_alt1(v18, 0);
+          }
+          else {
+            v30 = *(_QWORD*)(v27 + 8 * v29);
+            v31 = GameRoutine_9244a0_alt1(v18, v30);
+            if (v30 != 0) {
+              v32 = v31;
+              if (*(_BYTE*)(v30 + 2136) != 0) {
+                v33 = (__int64)game_97b2f0(v30 + 2104);
+              }
+              else {
+                v33 = GameRoutine_67ed20(*(_QWORD**)(v30 + 392));
+              }
+              game_16ad210((__int64)v10, *(_QWORD*)(v30 + 392), v32, v33);
+            }
+          }
+          ++v29;
+          v27 = *(_QWORD*)(*v6 + 48);
+          v28 = *(_QWORD*)(*v6 + 56);
+        } while ((__int64)v29 < (int)((unsigned __int64)(v28 - v27) >> 3));
+      }
+    }
+  }
+  return 12;
 }
 
 __int64 ProcDiningRecipeMenu_13fa3e0(__int64 a1, unsigned int a2)

@@ -21,6 +21,50 @@ __int64 Spot_132b100(_QWORD, _QWORD);
 extern __int64* GameData_212d728[2];
 extern char GameData_1a9f09e;
 __int64 anonymous_EquipMenuItem_LegionPool_ACall_closure_Invoke(__int64 a1);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, _QWORD, _QWORD,
+                                               _QWORD, _QWORD, _QWORD, _QWORD,
+                                               double, float);
+__int64 snd_Fade_Destroy_Fade(_QWORD);
+__n128 snd_Fade_Fade_10c830(_QWORD, double);
+extern __int64 GameData_21caa2c;
+__int64 EquipMenuItem_LegionPool_Unknown41(__int64 a1);
+
+__int64 EquipMenuItem_LegionPool_Unknown41(__int64 a1)
+{
+  __int64 v2;
+  __int64* v3;
+  char* v4;
+  int v5;
+  __int64 v6;
+  const char* v7;
+  __int64 v9;
+  _BYTE v10[200];
+
+  v2 = *(unsigned int*)(a1 + 40);
+  v3 = &GameData_21caa2c;
+  if ((int)v2 >= 0) {
+    v3 = (__int64*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)GameData_212cf80[0] + 8LL) +
+                               48LL) +
+                    8 * v2);
+  }
+  v5 = *((unsigned __int8*)v3 + 1);
+  v4 = (char*)v3 + 1;
+  if (v5 != 0) {
+    v6 = game_UnitPool_Get(v4);
+  }
+  else {
+    v6 = 0;
+  }
+  if (v6 == *(_QWORD*)(a1 + 96)) {
+    v7 = "SE_SYS_Remove";
+  }
+  else {
+    v7 = "SE_SYS_Equip";
+  }
+  snd_Fade_Fade_10c830(v10, 0.0f);
+  snd_play_ff2d0((void*)(&v9), v7, v7, v10, 0, 65537, 0, 0.0f, 1.0f);
+  return snd_Fade_Destroy_Fade(v10);
+}
 
 __int64 EquipMenuItem_LegionPool_Unknown55(__int64 a1)
 {

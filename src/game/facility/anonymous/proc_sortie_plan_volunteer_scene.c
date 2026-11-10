@@ -15,6 +15,46 @@ extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64* GameData_2132488;
 __int64 ProcSortiePlanVolunteerScene_Destructor(__int64* a1);
 __int64 ProcSortiePlanVolunteerScene_DeletingDestructor(__int64* a1);
+__int64 game_ProcInst_Unregister_alt1(__int64 result) __asm__(
+    "game_ProcInst_Unregister");
+__int64
+game_facility_ReleaseGroups_alt1() __asm__("game_facility_ReleaseGroups");
+__n128 GameRoutine_658c00_alt1(_QWORD*) __asm__("GameRoutine_658c00");
+extern __int64 (*game_ProcInst_vtable[])();
+extern __int64 (*game_facility_FacilitySceneBase_vtable[])();
+extern __int64 GameData_21f4000;
+extern int GameData_2241730;
+void GameRoutine_1958ed0_alt1(__int64, __int64) __asm__("GameRoutine_1958ed0");
+__n128 ProcSortiePlanVolunteerScene_Destructor_1467650(__int64 a1);
+
+__n128 ProcSortiePlanVolunteerScene_Destructor_1467650(__int64 a1)
+{
+  __int64 v2;
+  _QWORD* v3;
+
+  v2 = GameData_212dd18[0] + 16;
+  *(_QWORD*)(a1 + 152) = GameData_212dd18[0] + 192;
+  v3 = (_QWORD*)(a1 + 152);
+  *(_QWORD*)a1 = v2;
+  GameRoutine_1958ed0_alt1(a1 + 152, a1);
+  *v3 = game_facility_FacilitySceneBase_vtable;
+  if (GameData_21f4000 != 0 && GameData_2241730-- <= 1) {
+    (*(void (**)(__int64))(*(_QWORD*)GameData_21f4000 + 24LL))(
+        (__int64)GameData_21f4000);
+    if (GameData_21f4000 != 0) {
+      (*(void (**)(__int64))(*(_QWORD*)GameData_21f4000 + 8LL))(
+          GameData_21f4000);
+    }
+    GameData_21f4000 = 0;
+  }
+  game_facility_ReleaseGroups_alt1();
+  *(_QWORD*)a1 = game_ProcInst_vtable;
+  if ((*(_WORD*)(a1 + 136) & 0x100) != 0) {
+    *(_WORD*)(a1 + 136) &= ~0x100u;
+  }
+  game_ProcInst_Unregister_alt1(a1);
+  return GameRoutine_658c00_alt1((_QWORD*)(a1 + 88));
+}
 
 __int64 ProcSortiePlanVolunteerScene_Destructor(__int64* a1)
 {

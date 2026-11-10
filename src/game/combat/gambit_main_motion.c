@@ -6,6 +6,7 @@ __int64 GameRoutine_1079580(_QWORD, _QWORD, float, float, float);
 __int64 std___1___shared_weak_count___release_weak(_QWORD);
 extern __int64* GameData_212d448[9];
 __int64 GambitMainMotion_Unknown2(__int64 result);
+__attribute__((swiftcall)) void GambitMainMotion_Unknown3(PSEUDO_X8 x8_);
 
 __int64 GambitMainMotion_Unknown2(__int64 result)
 {
@@ -68,6 +69,13 @@ __int64 GambitMainMotion_Unknown2(__int64 result)
     }
   }
   return result;
+}
+
+__attribute__((swiftcall)) void GambitMainMotion_Unknown3(PSEUDO_X8 x8_)
+{
+  _BYTE* a1 = (_BYTE*)PSEUDO_X8_VALUE(x8_);
+  *a1 = 20;
+  strcpy(a1 + 1, "MainMotion");
 }
 
 #pragma GCC visibility pop

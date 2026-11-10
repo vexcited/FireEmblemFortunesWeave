@@ -18,6 +18,13 @@ void* GameRoutine_2a2ae0();
 __int64 TaskThread_Destructor(__int64 a1);
 __int64 TaskThread_2a3180(__int64 result);
 __int64 TaskThread_Unknown2(__int64 a1);
+_DWORD* GameRoutine_2b4a20_alt1(_DWORD* result) __asm__("GameRoutine_2b4a20");
+__int64 GameRoutine_2b4910(__int64 result);
+__int64 GameRoutine_2b4950(__int64, __int64);
+__int64 TaskThread_2a3070(__int64);
+void* TaskThread_2a2ae0();
+__int64 TaskThread_2a3210(__int64 a1, unsigned int a2, __int64 a3, __int64 a4,
+                          unsigned int a5, unsigned int a6, unsigned int a7);
 
 __int64 TaskThread_Destructor(__int64 a1)
 {
@@ -51,6 +58,53 @@ __int64 TaskThread_2a3180(__int64 result)
     *(_BYTE*)(v1 + 537) = 0;
   }
   return result;
+}
+
+__int64 TaskThread_2a3210(__int64 a1, unsigned int a2, __int64 a3, __int64 a4,
+                          unsigned int a5, unsigned int a6, unsigned int a7)
+{
+  void* v14;
+  char v16;
+  struct {
+    const char* v18;
+    __int64 v19;
+    __int64 v20;
+    unsigned __int64 v21;
+    unsigned __int64 v22;
+    __int64 v23;
+    __int64 v24;
+  } v18_;
+
+  if (*(_BYTE*)(a1 + 537) == 1) {
+    atomic_store(1u, (unsigned __int8*)(a1 + 536));
+    v14 = TaskThread_2a2ae0();
+    TaskThread_2a3070((__int64)v14);
+    GameRoutine_2b4a10(a1 + 8);
+    GameRoutine_2b4a20_alt1((_DWORD*)(a1 + 8));
+    *(_BYTE*)(a1 + 537) = 0;
+  }
+  atomic_store(0, (unsigned __int8*)(a1 + 536));
+  v18_.v23 = 0;
+  v18_.v24 = 0;
+  v18_.v21 = 0;
+  v18_.v22 = 0;
+  v18_.v19 = 0;
+  v18_.v20 = 0;
+  v18_.v18 = nullptr;
+  GameRoutine_2b4910((__int64)&v18_.v18);
+  v18_.v20 = a4;
+  v18_.v21 = __PAIR64__(a6, a5);
+  v18_.v22 = __PAIR64__(a7, a2);
+  v18_.v23 = 0;
+  v18_.v24 = a1;
+  v18_.v18 = "nn::atk::detail::TaskThread";
+  v18_.v19 = a3;
+  v16 = GameRoutine_2b4950(a1 + 8, (__int64)&v18_.v18);
+  if ((v16 & 1) != 0) {
+    *(_DWORD*)(a1 + 540) = a7;
+    *(_BYTE*)(a1 + 537) = 1;
+  }
+  return v16 & 1;
 }
 
 __int64 TaskThread_Unknown2(__int64 a1)

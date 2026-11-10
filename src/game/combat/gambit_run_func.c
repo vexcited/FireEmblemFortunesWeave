@@ -8,6 +8,7 @@ extern __int64 (*game_combat_IGambitKey_vtable)();
 extern __int64 fw_memory_g_heap_manager_ptr;
 __n128 GambitRunFunc_Destructor(__int64 a1);
 __n128 GambitRunFunc_DeletingDestructor(__int64 a1);
+__attribute__((swiftcall)) void GambitRunFunc_Unknown3(PSEUDO_X8 x8_);
 
 __n128 GambitRunFunc_Destructor(__int64 a1)
 {
@@ -85,6 +86,13 @@ __n128 GambitRunFunc_DeletingDestructor(__int64 a1)
     v8 = 56;
   }
   return nn_mem_StandardAllocator_Free(*(_QWORD*)v5 + v8, a1);
+}
+
+__attribute__((swiftcall)) void GambitRunFunc_Unknown3(PSEUDO_X8 x8_)
+{
+  _BYTE* a1 = (_BYTE*)PSEUDO_X8_VALUE(x8_);
+  *a1 = 14;
+  strcpy(a1 + 1, "RunFunc");
 }
 
 #pragma GCC visibility pop

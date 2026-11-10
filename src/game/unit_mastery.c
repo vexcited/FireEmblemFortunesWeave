@@ -21,6 +21,20 @@ __int64 UnitMastery_7fd6e0(__int64 a1, __int64 a2, int a3, __int64 a4,
                            __int64 a5, __int64 a6);
 __int64 game_UnitMastery_GetMaxJobRank_lambda0_Invoke(__int64 result,
                                                       __int64 a2, _WORD* a3);
+_QWORD* GameRoutine_7fe910_alt1(_QWORD* result, unsigned __int64, __int64,
+                                __int64, __int64,
+                                __int64) __asm__("GameRoutine_7fe910");
+__int64 GameRoutine_2b0();
+__int64 memset_alt1(_QWORD, _QWORD, _QWORD) __asm__("memset");
+extern __int64 GameData_21da2ea;
+extern __int64 GameData_21da2f2;
+extern __int64 GameData_21da2fa;
+extern __int64 GameData_21da302;
+extern __int64 GameData_21da318;
+extern __int64 GameData_21da320;
+extern __int64 GameData_21da328;
+__int64 UnitMastery_7febc0(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
+                           __int64 a5, __int64 a6);
 
 __int64 game_UnitMastery_GetMaxJobRank(__int64 a1, __int64 a2, __int64 a3)
 {
@@ -2190,6 +2204,32 @@ __int64 game_UnitMastery_GetMaxJobRank_lambda0_Invoke(__int64 result,
     *v3 = v4;
   }
   return result;
+}
+
+__int64 UnitMastery_7febc0(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
+                           __int64 a5, __int64 a6)
+{
+  __int64 v6;
+
+  GameData_21da328 = 0;
+  GameData_21da320 = 0;
+  GameData_21da318 = 0;
+  GameData_21da2ea = 0;
+  GameData_21da2f2 = 0;
+  GameData_21da2fa = 0;
+  GameData_21da302 = 0;
+  *(__int64*)((char*)&GameData_21da302 + 7) = 0;
+  if (GameData_21c99c0 != 0) {
+    v6 = *(_QWORD*)(GameData_21c99c0 + 72) - *(_QWORD*)(GameData_21c99c0 + 64);
+    if ((unsigned int)((unsigned __int64)v6 >> 3) != 0) {
+      GameRoutine_7fe910_alt1(&GameData_21da318, (int)(v6 >> 3), a3, a4, a5,
+                              a6);
+      if (GameData_21da318 != GameData_21da320) {
+        memset_alt1(GameData_21da318, 0, GameData_21da320 - GameData_21da318);
+      }
+    }
+  }
+  return GameRoutine_2b0();
 }
 
 #pragma GCC visibility pop

@@ -1,5 +1,7 @@
 #include "decomp/pseudo_helpers.h"
 
+#include "decomp/pseudo_float.h"
+
 #pragma GCC visibility push(hidden)
 
 __int64 Actor_101e80_alt1(_QWORD, _QWORD) __asm__("Actor_101e80");
@@ -78,6 +80,13 @@ __int64 Actor_Unknown18(__int64 result, int a2);
 bool Actor_Unknown19(__int64 a1, int a2);
 _QWORD* snd_Actor_renewActorRestartVoice_lambda0_Invoke(__int64 a1,
                                                         __int64* a2);
+double snd_FadeRandom_getValue_alt1(__int64) __asm__("snd_FadeRandom_getValue");
+double snd_Fade_getValue_alt1(__int64) __asm__("snd_Fade_getValue");
+__attribute__((swiftcall)) void Actor_Unknown12(PSEUDO_X8 x8_, __int64 a1);
+__attribute__((swiftcall)) void Actor_Unknown131(PSEUDO_X8 x8_, __int64 a1);
+__attribute__((swiftcall)) void Actor_Unknown14(PSEUDO_X8 x8_, __int64 a1);
+__attribute__((swiftcall)) void Actor_Unknown135(PSEUDO_X8 x8_, __int64 a1);
+void Actor_Unknown24(__int64 a1);
 
 void Actor_DeletingDestructor_101be0(__int64 a1)
 {
@@ -566,6 +575,56 @@ float Actor_Unknown129(__int64 a1, _DWORD* a2, _DWORD* a3, float* a4, float a5)
   return result;
 }
 
+__attribute__((swiftcall)) void Actor_Unknown12(PSEUDO_X8 x8_, __int64 a1)
+{
+
+#pragma clang fp contract(off)
+  __int64 a2 = (__int64)PSEUDO_X8_VALUE(x8_);
+  float result;
+  int v4;
+  __int64 v5;
+  int v6;
+  float v7;
+
+  (*(void (**)(__int64, __int64, float*, int*))(*(_QWORD*)a1 + 88LL))(
+      a1, a2 + 8, &v7, &v6);
+  v4 = v6;
+  result = v7;
+  v5 = GameData_212e2d8 + 16;
+  *(float*)(a2 + 12) = v7;
+  *(_DWORD*)(a2 + 16) = v4;
+  *(_QWORD*)a2 = v5;
+  {
+    result;
+    return;
+  }
+}
+
+__attribute__((swiftcall)) void Actor_Unknown131(PSEUDO_X8 x8_, __int64 a1)
+{
+
+#pragma clang fp contract(off)
+  __int64 a2 = (__int64)PSEUDO_X8_VALUE(x8_);
+  float result;
+  int v4;
+  __int64 v5;
+  int v6;
+  float v7;
+
+  (*(void (**)(__int64, __int64, float*, int*))(*(_QWORD*)(a1 - 40) + 88LL))(
+      a1 - 40, a2 + 8, &v7, &v6);
+  v4 = v6;
+  result = v7;
+  v5 = GameData_212e2d8 + 16;
+  *(float*)(a2 + 12) = v7;
+  *(_DWORD*)(a2 + 16) = v4;
+  *(_QWORD*)a2 = v5;
+  {
+    result;
+    return;
+  }
+}
+
 float Actor_Unknown13(__int64 a1, _DWORD* a2, _DWORD* a3, float* a4, float a5)
 {
   __int64 v9;
@@ -602,6 +661,56 @@ float Actor_Unknown133(__int64 a1, _DWORD* a2, _DWORD* a3, float* a4, float a5)
     *a4 = result;
   }
   return result;
+}
+
+__attribute__((swiftcall)) void Actor_Unknown14(PSEUDO_X8 x8_, __int64 a1)
+{
+
+#pragma clang fp contract(off)
+  __int64 a2 = (__int64)PSEUDO_X8_VALUE(x8_);
+  float result;
+  int v4;
+  __int64 v5;
+  int v6;
+  float v7;
+
+  (*(void (**)(__int64, __int64, float*, int*))(*(_QWORD*)a1 + 104LL))(
+      a1, a2 + 8, &v7, &v6);
+  v4 = v6;
+  result = v7;
+  v5 = GameData_212e2d8 + 16;
+  *(float*)(a2 + 12) = v7;
+  *(_DWORD*)(a2 + 16) = v4;
+  *(_QWORD*)a2 = v5;
+  {
+    result;
+    return;
+  }
+}
+
+__attribute__((swiftcall)) void Actor_Unknown135(PSEUDO_X8 x8_, __int64 a1)
+{
+
+#pragma clang fp contract(off)
+  __int64 a2 = (__int64)PSEUDO_X8_VALUE(x8_);
+  float result;
+  int v4;
+  __int64 v5;
+  int v6;
+  float v7;
+
+  (*(void (**)(__int64, __int64, float*, int*))(*(_QWORD*)(a1 - 40) + 104LL))(
+      a1 - 40, a2 + 8, &v7, &v6);
+  v4 = v6;
+  result = v7;
+  v5 = GameData_212e2d8 + 16;
+  *(float*)(a2 + 12) = v7;
+  *(_DWORD*)(a2 + 16) = v4;
+  *(_QWORD*)a2 = v5;
+  {
+    result;
+    return;
+  }
 }
 
 __int64 Actor_Unknown20(__int64 a1)
@@ -719,6 +828,57 @@ void Actor_Unknown96(__int64 a1)
     }
   }
   *(float*)(a1 + 5488) = v4;
+}
+
+void Actor_Unknown24(__int64 a1)
+{
+  double v2;
+  float v3;
+  double v4;
+  float v5;
+  int v6;
+  int v7;
+  float v8;
+  float v9;
+  float v10;
+  int v11;
+
+  v2 = snd_Fade_getValue_alt1(a1 + 2064);
+  v3 = *(float*)&v2;
+  v4 = snd_FadeRandom_getValue_alt1(a1 + 3160);
+  v5 = v3 + *(float*)&v4;
+  if ((int)(float)(v5 * 0x1.8000000000000p+3f) <= -84) {
+    v6 = -84;
+  }
+  else {
+    v6 = (int)(float)(v5 * 0x1.8000000000000p+3f);
+  }
+  if (v6 >= 84) {
+    v7 = 84;
+  }
+  else {
+    v7 = v6;
+  }
+  v8 =
+      -(float)((float)(int)(float)(PSEUDO_UNFUSED(v5 * 0x1.8000000000000p+3f)) -
+               (float)(v5 * 0x1.8000000000000p+3f));
+  v9 = snd_g_semitoneRatios[v7 + 84];
+  if (v8 <= 0x0.0p+0f) {
+    if (v7 <= -83) {
+      v11 = -83;
+    }
+    else {
+      v11 = v7;
+    }
+    v10 = v9 - snd_g_semitoneRatios[v11 + 83];
+  }
+  else {
+    if (v6 >= 83) {
+      v6 = 83;
+    }
+    v10 = snd_g_semitoneRatios[v6 + 85] - v9;
+  }
+  *(float*)(a1 + 5532) = v9 + (float)(v10 * v8);
 }
 
 void Actor_Unknown97(__int64 a1)

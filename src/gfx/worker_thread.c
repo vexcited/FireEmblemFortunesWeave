@@ -17,6 +17,9 @@ long double GameRoutine_a8d980(_QWORD);
 __int64 WorkerThread_194daa0(__int64 a1, unsigned int a2, __int64 a3,
                              __int64* a4);
 __int64 WorkerThread_Unknown4(__int64 result);
+__int64 gxc_NvnStateCache_UnlockAll(_QWORD);
+__attribute__((swiftcall)) void WorkerThread_194dc70(PSEUDO_X8 x8_, _QWORD* a1);
+
 __int64 WorkerThread_194daa0(__int64 a1, unsigned int a2, __int64 a3,
                              __int64* a4)
 {
@@ -69,6 +72,29 @@ __int64 WorkerThread_194daa0(__int64 a1, unsigned int a2, __int64 a3,
   *(_DWORD*)(a1 + 608) = v7;
   fw_world_InitializeWorker(a1, (v7 << 32) | 0x20000006, a3);
   return nn_os_StartThread(a1 + 32);
+}
+
+__attribute__((swiftcall)) void WorkerThread_194dc70(PSEUDO_X8 x8_, _QWORD* a1)
+{
+  _QWORD* a2 = (_QWORD*)PSEUDO_X8_VALUE(x8_);
+  __int64 result;
+  __int64 v5;
+  __int64 v6;
+
+  nn_os_WaitLightEvent(a1 + 62);
+  result = gxc_NvnStateCache_UnlockAll(a1[71]);
+  v5 = a1[70];
+  a1[71] = 0;
+  a1[70] = 0;
+  *a2 = v5;
+  a2[1] = 0;
+  v6 = a1[72];
+  a1[72] = 0;
+  a2[2] = v6;
+  {
+    result;
+    return;
+  }
 }
 
 __int64 WorkerThread_Unknown4(__int64 result)

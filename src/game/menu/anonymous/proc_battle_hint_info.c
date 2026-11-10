@@ -44,6 +44,25 @@ const char* ProcBattleHintInfo_Unknown3(__int64 a1);
 const char* ProcBattleHintInfo_Unknown5(__int64 a1);
 unsigned __int64 ProcBattleHintInfo_16a64c0(unsigned __int64 result,
                                             __int64 a2);
+__int64 ProcBattleHintInfo_16a64c0_alt1(_QWORD, _QWORD) __asm__(
+    "ProcBattleHintInfo_16a64c0");
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 memcpy(_QWORD, _QWORD, _QWORD);
+__int64 nn_mem_StandardAllocator_Free(_QWORD);
+extern __int64 fw_memory_g_heap_manager;
+extern char GameData_1a9f09e;
+void __attribute__((noreturn)) GameRoutine_60a210();
+void __attribute__((noreturn)) GameRoutine_874520();
+__int64 ProcBattleHintInfo_Unknown142(__int64 result, __int64* a2);
+__attribute__((swiftcall)) void
+game_menu_anonymous_ProcBattleHintInfo_OnBuild_closure_Invoke(PSEUDO_X8 x8_,
+                                                              __int64 a1);
+__attribute__((swiftcall)) void
+game_menu_anonymous_ProcBattleHintInfo_OnBuild_closure0_Invoke(PSEUDO_X8 x8_,
+                                                               __int64 a1,
+                                                               int* a2);
 
 __int64 ProcBattleHintInfo_Unknown24(__int64 a1)
 {
@@ -287,6 +306,182 @@ const char* ProcBattleHintInfo_Unknown140(__int64 a1)
   }
 }
 
+__int64 ProcBattleHintInfo_Unknown142(__int64 result, __int64* a2)
+{
+  __int64 v3;
+  int v4;
+  unsigned __int64 v5;
+  unsigned __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  unsigned __int64 v10;
+  unsigned __int64 v11;
+  unsigned __int64 v12;
+  int v13;
+  __int64 v14;
+  __int64 v15;
+  unsigned __int64 v16;
+  __int64 v17;
+  unsigned __int64 v18;
+  unsigned __int64 v19;
+  __int64 v20;
+  __int64 v21;
+  __int64 v22;
+  unsigned __int64 v23;
+  __int64 v24;
+  unsigned __int64 v25;
+  unsigned __int64 v26;
+  int v27;
+  __int64 v28;
+  __int64 v29;
+  unsigned __int64 v30;
+  __int64 v31;
+
+  if (*(_DWORD*)(result + 1224) == 0) {
+    v3 = result;
+    v4 = (*(__int64 (**)(__int64))(*(_QWORD*)result + 192LL))(result);
+    v5 = a2[1];
+    v6 = a2[2];
+    if (v5 >= v6) {
+      v8 = *a2;
+      v9 = v5 - *a2;
+      v10 = 1 - 0x3333333333333333LL * (v9 >> 3);
+      if (v10 > 0x666666666666666LL) {
+        goto LABEL_38;
+      }
+      v11 = 0xCCCCCCCCCCCCCCCDLL * ((__int64)(v6 - v8) >> 3);
+      if (2 * v11 > v10) {
+        v10 = 2 * v11;
+      }
+      if (v11 >= 0x333333333333333LL) {
+        v12 = 0x666666666666666LL;
+      }
+      else {
+        v12 = v10;
+      }
+      if (v12 != 0) {
+        if (v12 > 0x666666666666666LL) {
+          goto LABEL_39;
+        }
+        v13 = v4;
+        v14 = fw_memory_HeapManager_Allocate_alt1(fw_memory_g_heap_manager,
+                                                  40 * v12, 16, 0);
+        v4 = v13;
+      }
+      else {
+        v14 = 0;
+      }
+      v15 = v14 + v9;
+      *(_QWORD*)v15 = "Tutorial";
+      *(_QWORD*)(v15 + 8) = "MID_KeyHelp_Tutorial";
+      *(_BYTE*)(v15 + 28) = 0;
+      *(_QWORD*)(v15 + 32) = 0;
+      *(_BYTE*)(v15 + 16) = 1;
+      v16 = v14 + 40 * v12;
+      v7 = v14 + v9 + 40;
+      *(_DWORD*)(v15 + 20) = 10;
+      *(_DWORD*)(v15 + 24) = v4;
+      memcpy(v14, v8, v9);
+      *a2 = v14;
+      a2[1] = v7;
+      a2[2] = v16;
+      if (v8 != 0) {
+        v17 = 128;
+        if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+          v17 = 56;
+        }
+        nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
+                                      v17);
+      }
+    }
+    else {
+      *(_BYTE*)(v5 + 28) = 0;
+      *(_QWORD*)(v5 + 32) = 0;
+      *(_QWORD*)v5 = "Tutorial";
+      *(_QWORD*)(v5 + 8) = "MID_KeyHelp_Tutorial";
+      v7 = v5 + 40;
+      *(_BYTE*)(v5 + 16) = 1;
+      *(_DWORD*)(v5 + 20) = 10;
+      *(_DWORD*)(v5 + 24) = v4;
+    }
+    result = v3;
+    a2[1] = v7;
+  }
+  if (*(_BYTE*)(result + 1456) != 1) {
+    return result;
+  }
+  result = (*(__int64 (**)(__int64))(*(_QWORD*)result + 192LL))(result);
+  v18 = a2[1];
+  v19 = a2[2];
+  if (v18 >= v19) {
+    v21 = *a2;
+    v22 = v18 - *a2;
+    v23 = 1 - 0x3333333333333333LL * (v22 >> 3);
+    if (v23 <= 0x666666666666666LL) {
+      v24 = fw_memory_g_heap_manager_ptr;
+      v25 = 0xCCCCCCCCCCCCCCCDLL * ((__int64)(v19 - v21) >> 3);
+      if (2 * v25 > v23) {
+        v23 = 2 * v25;
+      }
+      if (v25 >= 0x333333333333333LL) {
+        v26 = 0x666666666666666LL;
+      }
+      else {
+        v26 = v23;
+      }
+      if (v26 == 0) {
+        v28 = 0;
+      LABEL_32:
+        v29 = v28 + v22;
+        *(_QWORD*)v29 = &GameData_1a9f09e;
+        *(_QWORD*)(v29 + 8) = "MID_KeyHelp_Cancel";
+        *(_BYTE*)(v29 + 28) = 0;
+        *(_QWORD*)(v29 + 32) = 0;
+        *(_BYTE*)(v29 + 16) = 1;
+        v30 = v28 + 40 * v26;
+        *(_DWORD*)(v29 + 20) = 1;
+        *(_DWORD*)(v29 + 24) = result;
+        v20 = v28 + v22 + 40;
+        result = memcpy(v28, v21, v22);
+        *a2 = v28;
+        a2[1] = v20;
+        a2[2] = v30;
+        if (v21 != 0) {
+          v31 = 128;
+          if (*(_QWORD*)(*(_QWORD*)v24 + 200LL) == 0) {
+            v31 = 56;
+          }
+          result = nn_mem_StandardAllocator_Free(*(_QWORD*)v24 + v31);
+        }
+        goto LABEL_36;
+      }
+      if (v26 <= 0x666666666666666LL) {
+        v27 = result;
+        v28 = fw_memory_HeapManager_Allocate_alt1(
+            *(_QWORD*)fw_memory_g_heap_manager_ptr, 40 * v26, 16, 0);
+        LODWORD(result) = v27;
+        goto LABEL_32;
+      }
+    LABEL_39:
+      GameRoutine_60a210();
+    }
+  LABEL_38:
+    GameRoutine_874520();
+  }
+  *(_BYTE*)(v18 + 28) = 0;
+  *(_QWORD*)(v18 + 32) = 0;
+  *(_QWORD*)v18 = &GameData_1a9f09e;
+  *(_QWORD*)(v18 + 8) = "MID_KeyHelp_Cancel";
+  v20 = v18 + 40;
+  *(_BYTE*)(v18 + 16) = 1;
+  *(_DWORD*)(v18 + 20) = 1;
+  *(_DWORD*)(v18 + 24) = result;
+LABEL_36:
+  a2[1] = v20;
+  return result;
+}
+
 __int64 ProcBattleHintInfo_Unknown144(__int64 a1, __int64 a2, char a3)
 {
   __int64 v4;
@@ -344,6 +539,18 @@ const char* ProcBattleHintInfo_Unknown5(__int64 a1)
   }
   else {
     return nullptr;
+  }
+}
+
+__attribute__((swiftcall)) void
+
+game_menu_anonymous_ProcBattleHintInfo_OnBuild_closure_Invoke(PSEUDO_X8 x8_,
+                                                              __int64 a1)
+{
+  __int64 a2 = (__int64)PSEUDO_X8_VALUE(x8_);
+  {
+    ProcBattleHintInfo_16a64c0_alt1(a2, *(_QWORD*)(a1 + 16));
+    return;
   }
 }
 
@@ -525,6 +732,20 @@ unsigned __int64 ProcBattleHintInfo_16a64c0(unsigned __int64 result, __int64 a2)
 LABEL_39:
   v16[v15] = 0;
   return result;
+}
+
+__attribute__((swiftcall)) void
+
+game_menu_anonymous_ProcBattleHintInfo_OnBuild_closure0_Invoke(PSEUDO_X8 x8_,
+                                                               __int64 a1,
+                                                               int* a2)
+{
+  __int64 a3 = (__int64)PSEUDO_X8_VALUE(x8_);
+  {
+    ProcBattleHintInfo_16a64c0_alt1(
+        a3, *(_QWORD*)(*(_QWORD*)(a1 + 8) + 1200LL) + 72LL * *a2);
+    return;
+  }
 }
 
 #pragma GCC visibility pop

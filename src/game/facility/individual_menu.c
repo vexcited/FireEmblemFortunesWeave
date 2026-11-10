@@ -35,6 +35,15 @@ __int64 game_facility_IndividualMenu_CreateFirstReminderDialog_lambda1_Invoke(
 __int64 game_facility_IndividualMenu_Run_lambda0_Invoke_1937550(__int64 a1);
 __int64 game_facility_IndividualMenu_Run_lambda0_Invoke_19376d0(__int64 a1);
 __int64 game_facility_IndividualMenu_Run_lambda2_Invoke();
+__int64 GameRoutine_12dd710(_QWORD);
+__int64 GameRoutine_12dd7e0(void);
+__int64 GameRoutine_7a8220(_QWORD, _QWORD);
+__int64 memmove(_QWORD, _QWORD, _QWORD);
+__int64 strlen(_QWORD);
+extern __int64 GameData_21c9650;
+extern __int64 fw_memory_g_heap_manager;
+void __attribute__((noreturn)) String_60a1d0(_QWORD);
+__attribute__((swiftcall)) void IndividualMenu_Unknown33(PSEUDO_X8 x8_);
 
 __int64 IndividualMenu_Unknown50(__int64 a1, __int64* a2)
 {
@@ -310,6 +319,88 @@ LABEL_35:
     std___1___shared_weak_count___release_weak(v7);
   }
   return v2;
+}
+
+__attribute__((swiftcall)) void IndividualMenu_Unknown33(PSEUDO_X8 x8_)
+{
+  _QWORD* a1 = (_QWORD*)PSEUDO_X8_VALUE(x8_);
+  __int64 v2;
+  __int64 result;
+  __int64 v4;
+  unsigned __int64 v5;
+  unsigned __int64 v6;
+  char* v7;
+  __int64 v8;
+  __int64 v9;
+  __int128 v10;
+  char* v11;
+
+  a1[1] = 0;
+  a1[2] = 0;
+  *a1 = 0;
+  BYTE13(v10) = 0;
+  LOBYTE(v10) = 24;
+  *(_DWORD*)((char*)&v10 + 9) = -1785993844;
+  *(_QWORD*)((char*)&v10 + 1) = 0xA1E8A588E58B80E5LL;
+  GameRoutine_7a8220(a1, &v10);
+  if ((v10 & 1) != 0 && v11 != nullptr) {
+    v2 = 128;
+    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+      v2 = 56;
+    }
+    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v2);
+  }
+  result = GameRoutine_12dd710(GameData_21c9650);
+  if ((_DWORD)result == 2) {
+    result = GameRoutine_12dd7e0();
+    if (result != 0) {
+      v4 = *(_QWORD*)(result + 8);
+      v5 = strlen(v4);
+      if (v5 >= 0xFFFFFFFFFFFFFFF7LL) {
+        String_60a1d0(v5);
+      }
+      v6 = v5;
+      if (v5 >= 0x17) {
+        if ((v5 | 7) == 0x17) {
+          v8 = 26;
+        }
+        else {
+          v8 = (v5 | 7) + 1;
+        }
+        v7 = (char*)fw_memory_HeapManager_Allocate(fw_memory_g_heap_manager, v8,
+                                                   16, 0);
+        *((_QWORD*)&v10 + 1) = v6;
+        v11 = v7;
+        *(_QWORD*)&v10 = v8 | 1;
+      }
+      else {
+        LOBYTE(v10) = 2 * v5;
+        v7 = (char*)&v10 + 1;
+        if (v5 == 0) {
+          goto LABEL_17;
+        }
+      }
+      memmove(v7, v4, v6);
+    LABEL_17:
+      v7[v6] = 0;
+      result = GameRoutine_7a8220(a1, &v10);
+      if ((v10 & 1) != 0 && v11 != nullptr) {
+        v9 = 128;
+        if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+          v9 = 56;
+        }
+        {
+          nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
+                                        v9);
+          return;
+        }
+      }
+    }
+  }
+  {
+    result;
+    return;
+  }
 }
 
 __int64 game_facility_IndividualMenu_CreateFirstReminderDialog_lambda1_Invoke(

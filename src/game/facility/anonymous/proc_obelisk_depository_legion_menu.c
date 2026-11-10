@@ -41,6 +41,9 @@ game_facility_anonymous_ProcObeliskDepositoryLegionMenu_AddItemList_closure_Invo
     __int64 result, unsigned int* a2);
 bool game_facility_anonymous_ProcObeliskDepositoryLegionMenu_SortAndFilter_closure_Invoke(
     __int64 a1, _QWORD* a2);
+__int64 GameRoutine_20();
+extern __int64 GameData_212cf98[2];
+__int64 ProcObeliskDepositoryLegionMenu_DeletingDestructor(__int64 a1);
 
 __int64 ProcObeliskDepositoryLegionMenu_Destructor(__int64 a1)
 {
@@ -81,6 +84,64 @@ __int64 ProcObeliskDepositoryLegionMenu_Destructor(__int64 a1)
     GameData_21f4298 = v2 - 8;
   }
   return game_menu_BasicMenu_Destroy_BasicMenu(a1);
+}
+
+__int64 ProcObeliskDepositoryLegionMenu_DeletingDestructor(__int64 a1)
+{
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  bool v7;
+  unsigned __int64 v8;
+  unsigned __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
+  _QWORD* v14;
+  __int64 v15;
+  __int64 v16;
+  __int64 v17;
+
+  v2 = GameData_212cf98[0];
+  v4 = *(_QWORD*)((char*)GameRoutine_20 + GameData_212cf98[0]);
+  v3 = *(_QWORD*)((char*)GameRoutine_20 + GameData_212cf98[0] + 8);
+  v6 = *(__int64*)((char*)((_UNKNOWN**)0x8LL) + GameData_212cf98[0]);
+  v5 = *(__int64*)((char*)((_UNKNOWN**)0x8LL) + GameData_212cf98[0] + 8);
+  v7 = v5 == v6;
+  v8 = v3 - 1 + v4;
+  v9 = v8 >> 9;
+  v10 = v8 & 0x1FF;
+  v11 = ((v5 - v6) << 6) - 1;
+  v12 = *(_QWORD*)(v6 + 8 * v9);
+  if (v7) {
+    v11 = 0;
+  }
+  v13 = *(_QWORD*)(v12 + 8 * v10);
+  v14 = (_QWORD*)GameData_212cf80[0];
+  *(__int64*)((char*)(*(__int64 (*)[2])0x28LL) + GameData_212cf98[0]) = v3 - 1;
+  *v14 = v13;
+  v15 = fw_memory_g_heap_manager_ptr;
+  if ((unsigned __int64)(v11 - (v3 + v4) + 1) >= 0x400) {
+    if (*(_QWORD*)(v5 - 8) != 0) {
+      v16 = 128;
+      if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+        v16 = 56;
+      }
+      nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
+                                    v16);
+      v5 = *(_QWORD*)((char*)((__int128*)0x10LL) + v2);
+    }
+    *(_QWORD*)((char*)((__int128*)0x10LL) + v2) = v5 - 8;
+  }
+  game_menu_BasicMenu_Destroy_BasicMenu(a1);
+  v17 = 128;
+  if (*(_QWORD*)(*(_QWORD*)v15 + 200LL) == 0) {
+    v17 = 56;
+  }
+  return nn_mem_StandardAllocator_Free(*(_QWORD*)v15 + v17);
 }
 
 const char* ProcObeliskDepositoryLegionMenu_Unknown43(__int64 a1, char a2)

@@ -13,6 +13,35 @@ extern __int64 GameData_2259540;
 extern __int64 game_ProcGameSkipView_instance_;
 extern __int64* GameData_212e008[9];
 _DWORD* ExpListResultMenu_Unknown138(__int64 a1, char a2);
+__int64 BasicMenu_16dd280(_QWORD*);
+__int64 LayoutAccessor_1562680(_QWORD, _QWORD, long double);
+__n128 game_gameui_anonymous_ProcGameUIFade_In(_QWORD, _QWORD, _QWORD, _QWORD,
+                                               _QWORD, _QWORD);
+__int64 ExpListResultMenu_Unknown96(__int64 a1, __n128 a2);
+
+__int64 ExpListResultMenu_Unknown96(__int64 a1, __n128 a2)
+{
+  __int64 v3;
+  int v4;
+  unsigned int v5;
+  unsigned int v6;
+  unsigned int v7;
+
+  if (*(_BYTE*)(a1 + 1120) == 1) {
+    v3 = GameData_2259540;
+    if (GameData_2259540 != 0) {
+      v4 = BasicMenu_16dd280((_QWORD*)a1);
+      v5 = v4 - (*(__int64 (**)(__int64))(*(_QWORD*)a1 + 224LL))(a1);
+      v6 = (*(__int64 (**)(__int64))(*(_QWORD*)a1 + 488LL))(a1);
+      v7 = (*(__int64 (**)(__int64))(*(_QWORD*)a1 + 496LL))(a1);
+      a2 = game_gameui_anonymous_ProcGameUIFade_In(v3, v5, v6, v7, 1, a1);
+    }
+    LANES128(a2).n128_u32[0] = 1.0;
+    LayoutAccessor_1562680(a1 + 848, "In", *(long double*)&a2);
+    *(_BYTE*)(a1 + 1120) = 0;
+  }
+  return (*(__int64 (**)(__int64, _QWORD))(*(_QWORD*)a1 + 1104LL))(a1, 0);
+}
 
 _DWORD* ExpListResultMenu_Unknown138(__int64 a1, char a2)
 {

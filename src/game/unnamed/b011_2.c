@@ -1174,12 +1174,6 @@ extern int GameData_221382c;
 
 extern _UNKNOWN GameData_2213830;
 
-extern __int64 GameData_22167c8;
-
-extern __int64 GameData_22167d0;
-
-extern char GameData_2216858;
-
 extern __int64 GameData_221bea8;
 
 extern __int64 GameData_2241720;
@@ -1203,8 +1197,6 @@ extern __int64 GameData_2265ed8;
 extern __int64 GameData_2265ee0;
 
 extern __int64 GameData_2265ef0;
-
-__int64 GameRoutine_1033a80(_QWORD, _QWORD);
 
 __int64 GameRoutine_10c8e20(void);
 
@@ -7158,25 +7150,6 @@ __int64 GameHr_da2d40(__int64 a1)
   *(_QWORD*)v2 = GameData_1fdf2c8;
   return GameRoutine_657850(v2, &GameData_22132b0, "ProcHubSeqEncounterResult",
                             1, a1);
-}
-
-__int64 GameHr_da3180(__int64 result, long double a2)
-{
-  __int64 v2;
-  __int64 v3;
-
-  if ((GameData_2216858 & 1) == 0) {
-    GameRoutine_8123d0(result, a2);
-  }
-  v2 = GameData_22167c8;
-  v3 = GameData_22167d0;
-  while (v2 != v3) {
-    if (*(_DWORD*)(v2 + 64) == 1) {
-      result = GameRoutine_1033a80(v2, 1);
-    }
-    v2 += 88;
-  }
-  return result;
 }
 
 __int64 GameHr_da3940(__int64 result)

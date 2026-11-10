@@ -2,6 +2,10 @@
 
 #pragma GCC visibility push(hidden)
 
+void __attribute__((noreturn)) SceneObjectHolder_DeletingDestructor()
+{
+  __udf(0x8002u);
+};
 __int64 GameRoutine_13fec20(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_1462280(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_a7bee0(_QWORD, _QWORD);
@@ -19,13 +23,17 @@ extern int GameData_21ec968;
 void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
 void __attribute__((noreturn)) GameRoutine_d48080(void);
 __int64 SceneObjectHolder_1461dc0(_QWORD* a1, __int64 a2);
-
-void __attribute__((noreturn)) SceneObjectHolder_DeletingDestructor()
-{
-  __udf(0x8002u);
-};
 void game_facility_SceneObjectHolder_HideBindEffect_lambda0_Invoke(__int64 a1,
                                                                    __int64 a2);
+__int64 CharacterBuilder_1083e90(_QWORD*, __int64);
+__int64 wld_Crc32_alt1(int, unsigned __int8*,
+                       unsigned __int64) __asm__("wld_Crc32");
+extern _UNKNOWN* GameData_212d4a8;
+extern _UNKNOWN* GameData_212deb8;
+extern __int64 (*GameData_203fd68[])();
+extern int* GameData_212d4a0;
+extern int* GameData_212deb0;
+__int64 game_facility_SceneObjectHolder_HideBindEffect(__int64 result);
 
 __int64 SceneObjectHolder_1461dc0(_QWORD* a1, __int64 a2)
 {
@@ -157,6 +165,159 @@ __int64 SceneObjectHolder_1461dc0(_QWORD* a1, __int64 a2)
     }
   }
   return v7;
+}
+
+__int64 game_facility_SceneObjectHolder_HideBindEffect(__int64 result)
+{
+  __int64 v1;
+  unsigned __int8 explicit;
+  int* v3;
+  int v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  int v9;
+  _QWORD* v10;
+  __int64 v11;
+  __int64 v12;
+  unsigned __int8 v13;
+  int* v14;
+  int v15;
+  __int64 v16;
+  __int64 v17;
+  __int64 v18;
+  __int64 i;
+  int v20;
+  __int64 v21;
+  __int64 v22;
+  __int64 j;
+  __int64 v24;
+  __int64* v25;
+  __int64 v26;
+  int v27;
+  __int64 v28;
+  struct {
+    __int64 (**v29)();
+    char v30;
+    char gap25_[23];
+    __int64 (***v31)();
+    char gap56_[32];
+    __int64 v32;
+  } v29_;
+
+  v1 = *(_QWORD*)(result + 8);
+  explicit = atomic_load_explicit((atomic_uchar* volatile)GameData_212deb8,
+                                  memory_order_acquire);
+  v3 = GameData_212deb0;
+  if ((explicit & 1) == 0) {
+    v29_.v32 = result;
+    v28 = v1;
+    v27 = __cxa_guard_acquire(GameData_212deb8);
+    v3 = GameData_212deb0;
+    v1 = v28;
+    result = v29_.v32;
+    if (v27 != 0) {
+      *GameData_212deb0 = wld_Crc32_alt1(0, "CharacterBuilder", 0x10u);
+      __cxa_guard_release(GameData_212deb8);
+      v3 = GameData_212deb0;
+      v1 = v28;
+      result = v29_.v32;
+    }
+  }
+  v4 = *v3;
+  v6 = *(_QWORD*)(v1 + 504);
+  v5 = *(_QWORD*)(v1 + 512);
+  v7 = v5;
+  v8 = v5;
+  do {
+    if (v8 == v6) {
+      goto LABEL_10;
+    }
+    v9 = *(_DWORD*)(v8 - 16);
+    v8 -= 16;
+    v7 -= 16;
+  } while (v9 != v4);
+  if (v5 == v7 || (v10 = *(_QWORD**)(v7 + 8)) == nullptr) {
+  LABEL_10:
+    v12 = *(_QWORD*)(result + 8);
+    v13 = atomic_load_explicit((atomic_uchar* volatile)GameData_212d4a8,
+                               memory_order_acquire);
+    v14 = GameData_212d4a0;
+    if ((v13 & 1) == 0) {
+      v29_.v32 = v12;
+      result = __cxa_guard_acquire(GameData_212d4a8);
+      v14 = GameData_212d4a0;
+      v12 = v29_.v32;
+      if ((_DWORD)result != 0) {
+        *GameData_212d4a0 = wld_Crc32_alt1(0, "EffectModule", 0xCu);
+        result = __cxa_guard_release(GameData_212d4a8);
+        v14 = GameData_212d4a0;
+        v12 = v29_.v32;
+      }
+    }
+    v15 = *v14;
+    v17 = *(_QWORD*)(v12 + 504);
+    v16 = *(_QWORD*)(v12 + 512);
+    v18 = v16;
+    for (i = v16; i != v17; i -= 16) {
+      v20 = *(_DWORD*)(i - 16);
+      v18 -= 16;
+      if (v20 == v15) {
+        if (v16 != v18) {
+          v21 = *(_QWORD*)(v18 + 8);
+          if (v21 != 0) {
+            v22 = *(_QWORD*)(v21 + 8);
+            if (*(_BYTE*)(v22 + 289) == 1 && (*(_BYTE*)(v22 + 288) & 1) != 0) {
+              while ((*(_BYTE*)(v22 + 300) & 0xFD) != 1) {
+                v22 = *(_QWORD*)(v22 + 736);
+                if (v22 == 0) {
+                  if (*(_DWORD*)(v21 + 84) != 0) {
+                    *(_BYTE*)(v21 + 72) = 0;
+                    *(_DWORD*)(v21 + 84) = 0;
+                    *(_QWORD*)(v21 + 76) = 0;
+                  }
+                  v24 = *(_QWORD*)(v21 + 24);
+                  for (j = *(_QWORD*)(v21 + 32); v24 != j; v24 += 128) {
+                    v25 = *(__int64**)(v24 + 8);
+                    v26 = *v25;
+                    if (*v25 != 0 &&
+                        *(_DWORD*)(v26 + 16) == *((_DWORD*)v25 + 2)) {
+                      *(_BYTE*)(v26 + 33) = 0;
+                    }
+                    else {
+                      *(_BYTE*)(v24 + 36) = 1;
+                    }
+                  }
+                  return result;
+                }
+                if (*(_BYTE*)(v22 + 289) != 1 || *(_BYTE*)(v22 + 288) != 1) {
+                  return result;
+                }
+              }
+            }
+          }
+        }
+        return result;
+      }
+    }
+    return result;
+  }
+  v29_.v30 = 0;
+  v29_.v29 = GameData_203fd68;
+  v29_.v31 = &v29_.v29;
+  CharacterBuilder_1083e90(v10, (__int64)&v29_.v29);
+  result = (__int64)v29_.v31;
+  if (v29_.v31 == &v29_.v29) {
+    v11 = 4;
+  }
+  else {
+    if (v29_.v31 == nullptr) {
+      return result;
+    }
+    v11 = 5;
+  }
+  return ((__int64 (*)(__int64))(*v29_.v31)[v11])((__int64)v29_.v31);
 }
 
 void game_facility_SceneObjectHolder_HideBindEffect_lambda0_Invoke(__int64 a1,

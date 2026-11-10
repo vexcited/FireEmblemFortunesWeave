@@ -11,6 +11,8 @@ extern __int64* game_sound_g_game_sound_ptr[5];
 _QWORD* snd_bgm_WaitDoneChangeCtrlBGM();
 _QWORD* snd_bgm_EnableIgnoreStopBGM();
 _QWORD* snd_bgm_DisableIgnoreStopBGM();
+bool snd_BGM_isFinished();
+_QWORD* snd_bgm_WaitPrepared();
 
 _QWORD* snd_bgm_WaitDoneChangeCtrlBGM()
 {
@@ -52,6 +54,48 @@ _QWORD* snd_bgm_WaitDoneChangeCtrlBGM()
     v6 = 40;
   }
   return (_QWORD*)(*(__int64 (**)(void))(*result + v6))();
+}
+
+_QWORD* snd_bgm_WaitPrepared()
+{
+  bool v0;
+  __int64 v1;
+  __int64 v2;
+  __int64 v3;
+  __int64 (*v4)(void);
+  _QWORD* result;
+  __int64 v6;
+
+  v0 = snd_BGM_isFinished();
+  v1 = *as_g_script_manager_ptr;
+  v2 = *(
+      _QWORD*)(v1 +
+               8LL * (*(unsigned int (**)(__int64))(*(_QWORD*)as_g_thread_info +
+                                                    72LL))(as_g_thread_info) +
+               4384);
+  if (v2 != 0) {
+    v3 = (*(__int64 (**)(__int64))(*(_QWORD*)v2 + 472LL))(v2);
+  }
+  else {
+    v3 = 0;
+  }
+  v4 = *(__int64 (**)(void))(**(_QWORD**)(v3 + 24) + 448LL);
+  if (!v0) {
+    return (_QWORD*)v4();
+  }
+  v4();
+  result = *(_QWORD**)(v3 + 2240);
+  *(_QWORD*)(v3 + 2240) = 0;
+  if (result == (_QWORD*)(v3 + 2208)) {
+    v6 = 32;
+  }
+  else {
+    if (result == nullptr) {
+      return result;
+    }
+    v6 = 40;
+  }
+  return (_QWORD*)(*(__int64 (**)(__int64))(*result + v6))((__int64)result);
 }
 
 _QWORD* snd_bgm_EnableIgnoreStopBGM()

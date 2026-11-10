@@ -60,6 +60,12 @@ __int64 Impl_12a6c20(__int64 a1);
 __int64 Impl_12a6e80(unsigned __int64* a1);
 unsigned __int64 Impl_12a6fa0(__int64* a1, __int64 a2, char a3, char a4,
                               int a5);
+extern __int64 (*GameData_2021ed8[])();
+extern __int64* game_map_history_g_record_allocators_ptr[2];
+extern __int64* game_map_history_g_record_region_ptr[3];
+extern __int64 GameData_22408e8;
+__int64 Impl_Destructor_12ae0a0(__int64 result);
+__int64 Impl_DeletingDestructor_12ae180(__int64 a1);
 
 __int64 game_map_history_anonymous_Impl_RegisterAll(_QWORD* a1, __int64 a2)
 {
@@ -1445,6 +1451,113 @@ __int64 Impl_Destructor_12a72c0(__int64 result)
     game_script_map_obj_g_object_records = 0;
   }
   return result;
+}
+
+__int64 Impl_Destructor_12ae0a0(__int64 result)
+{
+  unsigned __int64 v1;
+  _QWORD* v2;
+  __int64* v3;
+  __int64* v4;
+  unsigned __int64 v5;
+  __int64 (**v6)(unsigned __int64);
+
+  v1 = *(_QWORD*)(result + 8);
+  v2 = (_QWORD*)result;
+  if (v1 != 0) {
+    v3 = game_map_history_g_record_region_ptr[0];
+    v4 = game_map_history_g_record_allocators_ptr[0];
+    while (1) {
+      v5 = v1;
+      v6 = *(__int64 (***)(unsigned __int64))v1;
+      v1 = *(_QWORD*)(v1 + 8);
+      result = (*v6)(v5);
+      if ((_UNKNOWN*)v5 <
+          *(_UNKNOWN**)((char*)((_UNKNOWN**)0x8LL) + (_QWORD)v3)) {
+        break;
+      }
+      result = v4[1];
+      if (result != 0) {
+        goto LABEL_9;
+      }
+    LABEL_3:
+      if (v1 == 0) {
+        goto LABEL_10;
+      }
+    }
+    if (v5 < *v3) {
+      goto LABEL_3;
+    }
+    result = *v4;
+    if (*v4 == 0) {
+      goto LABEL_3;
+    }
+  LABEL_9:
+    result = nn_mem_StandardAllocator_Free(result);
+    goto LABEL_3;
+  }
+LABEL_10:
+  *v2 = GameData_2021ed8;
+  v2[1] = 0;
+  if ((_QWORD*)GameData_22408e8 == v2) {
+    GameData_22408e8 = 0;
+  }
+  return result;
+}
+
+__int64 Impl_DeletingDestructor_12ae180(__int64 a1)
+{
+  unsigned __int64 v1;
+  __int64* v3;
+  __int64* v4;
+  unsigned __int64 v5;
+  void (**v6)(unsigned __int64);
+  __int64 v7;
+  __int64 v8;
+
+  v1 = *(_QWORD*)(a1 + 8);
+  if (v1 != 0) {
+    v3 = game_map_history_g_record_region_ptr[0];
+    v4 = game_map_history_g_record_allocators_ptr[0];
+    while (1) {
+      v5 = v1;
+      v6 = *(void (***)(unsigned __int64))v1;
+      v1 = *(_QWORD*)(v1 + 8);
+      (*v6)(v5);
+      if ((_UNKNOWN*)v5 <
+          *(_UNKNOWN**)((char*)((_UNKNOWN**)0x8LL) + (_QWORD)v3)) {
+        break;
+      }
+      v7 = v4[1];
+      if (v7 != 0) {
+        goto LABEL_9;
+      }
+    LABEL_3:
+      if (v1 == 0) {
+        goto LABEL_10;
+      }
+    }
+    if (v5 < *v3) {
+      goto LABEL_3;
+    }
+    v7 = *v4;
+    if (*v4 == 0) {
+      goto LABEL_3;
+    }
+  LABEL_9:
+    nn_mem_StandardAllocator_Free(v7);
+    goto LABEL_3;
+  }
+LABEL_10:
+  if (GameData_22408e8 == a1) {
+    GameData_22408e8 = 0;
+  }
+  v8 = 128;
+  if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+    v8 = 56;
+  }
+  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
+                                       v8);
 }
 
 #pragma GCC visibility pop

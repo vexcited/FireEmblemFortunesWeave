@@ -8,6 +8,7 @@ extern __int64 (*game_combat_IGambitKey_vtable)();
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 GambitEffect2D_Destructor(__int64 result);
 __int64 GambitEffect2D_DeletingDestructor(__int64 a1);
+__attribute__((swiftcall)) void GambitEffect2D_Unknown3(PSEUDO_X8 x8_);
 
 __int64 GambitEffect2D_Destructor(__int64 result)
 {
@@ -66,6 +67,13 @@ __int64 GambitEffect2D_DeletingDestructor(__int64 a1)
     v5 = 56;
   }
   return nn_mem_StandardAllocator_Free(*(_QWORD*)v2 + v5);
+}
+
+__attribute__((swiftcall)) void GambitEffect2D_Unknown3(PSEUDO_X8 x8_)
+{
+  _BYTE* a1 = (_BYTE*)PSEUDO_X8_VALUE(x8_);
+  *a1 = 16;
+  strcpy(a1 + 1, "Effect2D");
 }
 
 #pragma GCC visibility pop

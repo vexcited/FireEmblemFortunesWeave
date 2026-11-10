@@ -11,6 +11,24 @@ extern __int64* GameData_212dd88[5];
 extern __int64* GameData_212dda8;
 void __attribute__((noreturn)) GameRoutine_60a310(_QWORD, _QWORD);
 __int64 game_anonymous_DepositoryData_Commit(_BYTE* a1, _QWORD* a2);
+__attribute__((swiftcall)) void LegionPool_936f60(PSEUDO_X8, __int64 result,
+                                                  unsigned __int8*, __int64);
+__attribute__((swiftcall)) void
+RidePool_93c6a0(PSEUDO_X8, __int64 result, unsigned __int8*, __int64, char);
+__attribute__((swiftcall)) void
+game_UnitUtil_UniqueMap_Commit_89abc0(PSEUDO_X8, __int64 result,
+                                      unsigned __int16*, __int64);
+extern __int64 GameData_212cf80[5];
+extern __int64 GameData_212cf88[4];
+extern __int64 game_TransporterConst_List_instance__ptr[6];
+__int64 game_anonymous_DepositoryData_Commit_closure_Invoke_8f2ee0(__int64 a1,
+                                                                   __int64 a2);
+__int64
+game_anonymous_DepositoryData_Commit_closure_Invoke_8f3020(__int64 a1,
+                                                           unsigned __int8* a2);
+__int64
+game_anonymous_DepositoryData_Commit_closure_Invoke_8f3160(__int64 a1,
+                                                           unsigned __int8* a2);
 
 __int64 game_anonymous_DepositoryData_Commit(_BYTE* a1, _QWORD* a2)
 {
@@ -131,6 +149,61 @@ LABEL_27:
     v17 = 40;
   }
   return (*(__int64 (**)(__int64))(*v19 + v17))((__int64)v19);
+}
+
+__int64 game_anonymous_DepositoryData_Commit_closure_Invoke_8f2ee0(__int64 a1,
+                                                                   __int64 a2)
+{
+  _BYTE* v2;
+  __int64 result;
+  char v4;
+
+  v2 = *(_BYTE**)(a1 + 8);
+  result = X8CALL_X0(
+      __int64,
+      game_UnitUtil_UniqueMap_Commit_89abc0(
+          (void*)((__int64)&v4),
+          *(_QWORD*)(*(_QWORD*)game_TransporterConst_List_instance__ptr[0] +
+                     8LL),
+          (unsigned __int16*)(a2 + 4), *(unsigned __int16*)(a2 + 2)));
+  *v2 |= v4;
+  return result;
+}
+
+__int64
+
+game_anonymous_DepositoryData_Commit_closure_Invoke_8f3020(__int64 a1,
+                                                           unsigned __int8* a2)
+{
+  _BYTE* v2;
+  __int64 result;
+  char v4;
+
+  v2 = *(_BYTE**)(a1 + 8);
+  result = X8CALL_X0(
+      __int64, RidePool_93c6a0((void*)((__int64)&v4),
+                               *(_QWORD*)(*(_QWORD*)GameData_212cf88[0] + 8LL),
+                               a2, 0, 1));
+  *v2 |= v4;
+  return result;
+}
+
+__int64
+
+game_anonymous_DepositoryData_Commit_closure_Invoke_8f3160(__int64 a1,
+                                                           unsigned __int8* a2)
+{
+  _BYTE* v2;
+  __int64 result;
+  char v4;
+
+  v2 = *(_BYTE**)(a1 + 8);
+  result = X8CALL_X0(
+      __int64, LegionPool_936f60(
+                   (void*)((__int64)&v4),
+                   *(_QWORD*)(*(_QWORD*)GameData_212cf80[0] + 8LL), a2, 0));
+  *v2 |= v4;
+  return result;
 }
 
 #pragma GCC visibility pop

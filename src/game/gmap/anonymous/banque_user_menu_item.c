@@ -18,6 +18,20 @@ extern __int64 game_g_game_setting;
 __int64 game_gmap_anonymous_BanqueUserMenuItem_ACall_closure_Invoke(__int64 a1);
 __int64
 game_gmap_anonymous_BanqueUserMenuItem_ACall_closure0_Invoke(__int64 a1);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, _QWORD, _QWORD,
+                                               _QWORD, _QWORD, _QWORD, _QWORD,
+                                               double, float);
+__int64 BasicMenuCursor_16e0c00(_QWORD, _QWORD);
+__int64 GameRoutine_16eb960(_QWORD, _QWORD);
+__int64 GmapBanquetMenu_16420e0(_QWORD);
+__int64 fw_memory_HeapManager_Allocate(_QWORD, _QWORD, _QWORD, _QWORD);
+__int64 snd_Fade_Destroy_Fade(_QWORD);
+__n128 snd_Fade_Fade_10c830(_QWORD, double);
+extern __int64 (*GameData_20711d8[])();
+extern __int64 (*GameData_2071258[])();
+extern __int64* GameData_212d640[9];
+extern __int64 fw_memory_g_heap_manager_ptr;
+__int64 game_gmap_anonymous_BanqueUserMenuItem_ACall(_QWORD* a1);
 
 __int64 BanqueUserMenuItem_Unknown5(_QWORD* a1)
 {
@@ -124,6 +138,135 @@ __int64 BanqueUserMenuItem_Unknown5(_QWORD* a1)
 LABEL_8:
   v9 = 1;
   return v9 & 1;
+}
+
+__int64 game_gmap_anonymous_BanqueUserMenuItem_ACall(_QWORD* a1)
+{
+  __int64 v1;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  __int64 v10;
+  _QWORD* v11;
+  __int64 v12;
+  __int64* v13;
+  __int64 v14;
+  __int64 v15;
+  __int64 v16;
+  __int64 v17;
+  _QWORD v18[4];
+  _QWORD* v19;
+
+  v1 = *a1;
+  if ((*(_BYTE*)(a1[11] + 356LL) & 1) != 0) {
+    (*(void (**)(_QWORD*, _QWORD))(v1 + 328))(a1, 0);
+    GmapBanquetMenu_16420e0(a1[11]);
+    return 13;
+  }
+  if (((*(__int64 (**)(_QWORD*))(v1 + 480))(a1) & 1) != 0) {
+    snd_Fade_Fade_10c830(v18, 0.0f);
+    snd_play_ff2d0((void*)(&v17), "SE_SYS_Decide_L_Next",
+                   "SE_SYS_Decide_L_Next", v18, 0, 65537, 0, 0.0f, 1.0f);
+    snd_Fade_Destroy_Fade(v18);
+    *(_DWORD*)(a1[11] + 356LL) |= 2u;
+    v3 = a1[11];
+    *(_DWORD*)(v3 + 356) |= 1u;
+    (*(void (**)(_QWORD*, __int64))(*a1 + 64LL))(a1, 1);
+    MultiMenuSequence_17871c0(
+        v3,
+        *(_DWORD*)(*(_QWORD*)(v3 + 304 + 8LL * *(unsigned int*)(v3 + 352)) +
+                   1064LL) == 0,
+        0);
+    GameRoutine_1567590("Tutorial", 1);
+    GameRoutine_1567590("TroopList", 1);
+    v4 = *(_QWORD*)(v3 + 320);
+    (*(void (**)(__int64, _QWORD))(*(_QWORD*)v4 + 240LL))(v4, 0);
+    (*(void (**)(__int64, _QWORD))(*(_QWORD*)v4 + 248LL))(v4, 0);
+    v5 = *(_QWORD*)(v3 + 312);
+    LODWORD(v3) =
+        *(_DWORD*)(*(_QWORD*)(v3 + 304 + 8LL * *(unsigned int*)(v3 + 352)) +
+                   1064LL) != 0;
+    (*(void (**)(__int64, _QWORD))(*(_QWORD*)v5 + 240LL))(v5, (unsigned int)v3);
+    (*(void (**)(__int64, _QWORD))(*(_QWORD*)v5 + 248LL))(v5, (unsigned int)v3);
+    return 13;
+  }
+  v7 = a1[1];
+  v18[0] = a1;
+  *(_QWORD*)((char*)&v18[1] + 4) = 0;
+  v8 = *(_QWORD*)(v7 + 152);
+  LODWORD(v18[1]) = 1;
+  if (v8 != 0) {
+    v9 = v8;
+  }
+  else {
+    v9 = v7;
+  }
+  v10 = GameRoutine_16eb960(v9, v18);
+  v11 = (_QWORD*)fw_memory_g_heap_manager_ptr;
+  v12 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
+                                       144, 16, 0);
+  v19 = v18;
+  *(_DWORD*)(v12 + 40) = 0;
+  *(_QWORD*)(v12 + 48) = 0;
+  *(_QWORD*)(v12 + 56) = 0;
+  *(_QWORD*)(v12 + 64) = 0;
+  *(_QWORD*)(v12 + 72) = 0;
+  *(_BYTE*)(v12 + 82) = 1;
+  *(_BYTE*)(v12 + 16) = 30;
+  v18[0] = GameData_20711d8;
+  v18[1] = a1;
+  strcpy((char*)(v12 + 17), "MID_Menu_Cancel");
+  *(_WORD*)(v12 + 80) = 257;
+  v13 = GameData_212d640[0];
+  *(_QWORD*)(v12 + 96) = GameData_20711d8;
+  *(_QWORD*)(v12 + 104) = a1;
+  *(_QWORD*)v12 = v13 + 2;
+  *(_QWORD*)(v12 + 8) = 0;
+  *(_QWORD*)(v12 + 128) = v12 + 96;
+  BasicMenuCursor_16e0c00(v10, v12);
+  if (v19 == v18) {
+    v14 = 32;
+  }
+  else {
+    if (v19 == nullptr) {
+      goto LABEL_13;
+    }
+    v14 = 40;
+  }
+  (*(void (**)(__int64))(*v19 + v14))((__int64)v19);
+LABEL_13:
+  v15 = fw_memory_HeapManager_Allocate(*v11, 144, 16, 0);
+  *(_DWORD*)(v15 + 40) = 0;
+  *(_QWORD*)(v15 + 48) = 0;
+  *(_QWORD*)(v15 + 56) = 0;
+  *(_QWORD*)(v15 + 64) = 0;
+  *(_QWORD*)(v15 + 72) = 0;
+  *(_BYTE*)(v15 + 16) = 28;
+  v19 = v18;
+  v18[0] = GameData_2071258;
+  v18[1] = a1;
+  *(_QWORD*)(v15 + 96) = GameData_2071258;
+  *(_QWORD*)(v15 + 104) = a1;
+  strcpy((char*)(v15 + 17), "MID_Menu_Trade");
+  *(_WORD*)(v15 + 80) = 257;
+  *(_BYTE*)(v15 + 82) = 1;
+  *(_QWORD*)v15 = v13 + 2;
+  *(_QWORD*)(v15 + 8) = 0;
+  *(_QWORD*)(v15 + 128) = v15 + 96;
+  BasicMenuCursor_16e0c00(v10, v15);
+  if (v19 == v18) {
+    v16 = 32;
+    goto LABEL_17;
+  }
+  if (v19 != nullptr) {
+    v16 = 40;
+  LABEL_17:
+    (*(void (**)(__int64))(*v19 + v16))((__int64)v19);
+  }
+  return 10;
 }
 
 __int64 game_gmap_anonymous_BanqueUserMenuItem_ACall_closure_Invoke(__int64 a1)

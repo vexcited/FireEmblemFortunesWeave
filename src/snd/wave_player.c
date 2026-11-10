@@ -46,6 +46,38 @@ __int64 WavePlayer_183910(__int64 a1, __int64 a2);
 __int64 WavePlayer_184a90(__int64 result, __int64 a2, int a3, __int64 a4,
                           int a5, __int64 a6, float* a7);
 __int64 WavePlayer_187420(__int64 result, int a2, int a3);
+__attribute__((swiftcall)) void Manager_120450(PSEUDO_X8, __int64, __int64);
+__int64 GameRoutine_112180(__int64, __int64);
+__int64 GameRoutine_17bcd0(__int64, __int64);
+__int64 snd_fnd_WeakHandle_isValid(__int64*);
+__int64 snd_fnd_WeakHandle_set(__int64, __int64);
+extern __int64* snd_s_target_ptr;
+__int64 WavePlayer_17bc10(__int64 a1);
+
+__int64 WavePlayer_17bc10(__int64 a1)
+{
+  __int64 result;
+  __int64 v3;
+  struct {
+    __int64 v4;
+    int v5;
+  } v4_;
+
+  result = snd_fnd_WeakHandle_isValid((__int64*)(a1 + 256));
+  if ((result & 1) == 0) {
+    v3 = (*(__int64 (**)(_QWORD, const char*, __int64, __int64))(
+        *(_QWORD*)*snd_s_target_ptr + 1016LL))(*snd_s_target_ptr,
+                                               "FxPCMPlayerForFinalMix", 6, 5);
+    (*(void (**)(__int64, __int64))(*(_QWORD*)v3 + 192LL))(v3, 4800);
+    v4_.v4 = 0;
+    v4_.v5 = 0x2000;
+    snd_fnd_WeakHandle_set((__int64)&v4_.v4, v3 + 5592);
+    GameRoutine_112180(a1 + 256, (__int64)&v4_.v4);
+    Manager_120450((void*)((__int64)&v4_.v4), *(_QWORD*)(a1 + 8), v3);
+    return GameRoutine_17bcd0(a1, v3);
+  }
+  return result;
+}
 
 _QWORD* WavePlayer_BiQuad4_Destructor(_QWORD* result)
 {

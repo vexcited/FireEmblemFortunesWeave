@@ -26,6 +26,10 @@ __int64 EffectLightLimiter_Unknown3(__int64 a1, __int64 a2,
 bool EffectLightLimiter_2b1b40(__int64 a1, __int64 a2);
 __int64 EffectLightLimiter_Unknown8(__int64 a1, __int64 a2);
 __int64 EffectLightLimiter_2b1fd0(__int64 result);
+__int64 nn_audio_SetLightLimiterInputOutput(_QWORD, _QWORD, _QWORD, _QWORD);
+__n128 nn_os_UnlockMutex_alt1(_QWORD) __asm__("nn_os_UnlockMutex");
+void* SoundVoiceNX_14e360_alt1() __asm__("SoundVoiceNX_14e360");
+__n128 EffectLightLimiter_Unknown4(__int64 a1, __int64 a2);
 
 __int64 EffectLightLimiter_Unknown2(__int64 a1, __int64 a2)
 {
@@ -110,6 +114,81 @@ __int64 EffectLightLimiter_Unknown3(__int64 a1, __int64 a2,
   }
   nn_detail_UnexpectedDefaultImpl(v7, v8);
   __udf(0);
+}
+
+__n128 EffectLightLimiter_Unknown4(__int64 a1, __int64 a2)
+{
+  int v4;
+  __int64 v5;
+  __int64 v6;
+  unsigned int* v7;
+  __int64 v8;
+  char* v9;
+  char v10;
+  char v11;
+  __int64 v12;
+  unsigned int v13;
+  char* v14;
+  unsigned int* v15;
+  unsigned int v16;
+  char* v17;
+  char* v18;
+  struct {
+    int v20;
+    __int16 v21;
+  } v20_;
+
+  v4 = GameRoutine_2afd90(*(unsigned int*)(a1 + 112), a2);
+  v20_.v21 = 0;
+  v20_.v20 = 0;
+  if (v4 >= 1) {
+    v5 = v4 & 7;
+    if ((unsigned int)v4 < 8) {
+      v6 = 0;
+      if ((v4 & 7) == 0) {
+        goto LABEL_10;
+      }
+      goto LABEL_8;
+    }
+    v7 = (unsigned int*)(a1 + 144);
+    v8 = 0;
+    v9 = (char*)&v20_.v20 + 3;
+    do {
+      v8 -= 8;
+      v10 = *(_BYTE*)(a2 + *(v7 - 6));
+      *(v9 - 3) = *(_BYTE*)(a2 + *(v7 - 7));
+      *(v9 - 2) = v10;
+      v11 = *(_BYTE*)(a2 + *(v7 - 4));
+      *(v9 - 1) = *(_BYTE*)(a2 + *(v7 - 5));
+      *v9 = v11;
+      v12 = *(v7 - 2);
+      v9[1] = *(_BYTE*)(a2 + *(v7 - 3));
+      v9[2] = *(_BYTE*)(a2 + v12);
+      v9[3] = *(_BYTE*)(a2 + *(v7 - 1));
+      v13 = *v7;
+      v7 += 8;
+      v9[4] = *(_BYTE*)(a2 + v13);
+      v9 += 8;
+    } while (-(__int64)(v4 & 0x7FFFFFF8) != v8);
+    v6 = -v8;
+    if ((v4 & 7) != 0) {
+    LABEL_8:
+      v14 = (char*)&v20_.v20 + v6;
+      v15 = (unsigned int*)(a1 + 4 * v6 + 116);
+      do {
+        v16 = *v15++;
+        --v5;
+        *v14++ = *(_BYTE*)(a2 + v16);
+      } while (v5 != 0);
+    }
+  }
+LABEL_10:
+  v17 = (char*)SoundVoiceNX_14e360_alt1();
+  nn_os_LockMutex(v17 + 1720);
+  nn_audio_SetLightLimiterInputOutput(a1 + 104, &v20_.v20, &v20_.v20,
+                                      (unsigned int)v4);
+  v18 = (char*)SoundVoiceNX_14e360_alt1();
+  return nn_os_UnlockMutex_alt1(v18 + 1720);
 }
 
 bool EffectLightLimiter_2b1b40(__int64 a1, __int64 a2)

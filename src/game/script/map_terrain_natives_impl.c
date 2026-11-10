@@ -56,6 +56,49 @@ __int64 map_terrain_SetTargetByCircle(int a1, int a2, unsigned int a3,
 unsigned __int64 map_terrain_SetTargetByPid(int a1, int a2, __int64 a3);
 unsigned __int64 map_terrain_SetTargetBySid(int a1, int a2, __int64 a3);
 void map_terrain_UpdateTrickForContinue();
+__int64 GameRoutine_25eca0(_QWORD, _QWORD);
+extern __int64* GameData_212c930;
+extern __int64* GameData_212ce98[2];
+extern char GameData_1a9f09e;
+__attribute__((swiftcall)) void map_terrain_GetCoveredTID(PSEUDO_X8 x8_, int a1,
+                                                          int a2);
+__attribute__((swiftcall)) void map_terrain_GetCostId(PSEUDO_X8 x8_, int a1,
+                                                      int a2);
+
+__attribute__((swiftcall)) void map_terrain_GetCoveredTID(PSEUDO_X8 x8_, int a1,
+                                                          int a2)
+{
+  __int64 a3 = (__int64)PSEUDO_X8_VALUE(x8_);
+  __int64 v4;
+  unsigned int v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  char* v10;
+
+  v4 = *(_QWORD*)(*GameData_212cfb8[0] + 16);
+  v5 = a1 + 32 * a2;
+  if (v5 >= 0x400) {
+    v5 = 0;
+  }
+  v6 = *(__int16*)(v4 + 2LL * v5 + 12392);
+  if ((v6 & 0x8000000000000000LL) == 0 && (v7 = *(_QWORD*)(v4 + 8)) != 0 &&
+          (v8 = v7 + 144LL * (unsigned int)v6,
+           ((*(__int64 (**)(__int64))(*(_QWORD*)v8 + 16LL))(v8) & 1) != 0) &&
+          (*(unsigned __int8 (**)(__int64))(*(_QWORD*)v8 + 168LL))(v8) != 9 &&
+          (v9 = (*(__int64 (**)(__int64))(*(_QWORD*)v8 + 224LL))(v8)) != 0 ||
+      (v9 = **(_QWORD**)(GameData_21c9bd0 + 64)) != 0) {
+    v10 = *(char**)(v9 + 8);
+  }
+  else {
+    v10 = &GameData_1a9f09e;
+  }
+  {
+    GameRoutine_25eca0(a3, v10);
+    return;
+  }
+}
 
 bool map_terrain_IsTrickExist(int a1, int a2, __int64 a3)
 {
@@ -128,6 +171,38 @@ __int64 map_terrain_GetTrickPosByTID(__int64 a1, _DWORD* a2, _DWORD* a3)
   *a2 = (*(__int64 (**)(__int64))(*(_QWORD*)v11 + 56LL))(v11);
   *a3 = (*(__int64 (**)(__int64))(*(_QWORD*)v11 + 64LL))(v11);
   return 1;
+}
+
+__attribute__((swiftcall)) void map_terrain_GetCostId(PSEUDO_X8 x8_, int a1,
+                                                      int a2)
+{
+  __int64 a3 = (__int64)PSEUDO_X8_VALUE(x8_);
+  unsigned int v5;
+  __int64 v6;
+  char* v7;
+
+  v5 = a1 + 32 * a2;
+  if (v5 >= 0x400) {
+    v5 = 0;
+  }
+  v6 = *(
+      _QWORD*)(*(_QWORD*)(*(_QWORD*)(*GameData_212c930 + 64) +
+                          8LL *
+                              *(unsigned __int16*)(*(_QWORD*)(*GameData_212ce98
+                                                                  [0] +
+                                                              72) +
+                                                   2LL * v5 + 8)) +
+               48LL);
+  if (v6 != 0) {
+    v7 = *(char**)(v6 + 8);
+  }
+  else {
+    v7 = &GameData_1a9f09e;
+  }
+  {
+    GameRoutine_25eca0(a3, v7);
+    return;
+  }
 }
 
 __int64 map_terrain_IsCostEnable(__int64 a1, unsigned __int8 a2)

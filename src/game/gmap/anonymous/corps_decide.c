@@ -21,6 +21,10 @@ __int64 CorpsDecide_Unknown149(__int64 a1);
 __int64 CorpsDecide_Unknown150(__int64 a1);
 __int64 CorpsDecide_Unknown157(__int64 a1);
 __int64 CorpsDecide_Unknown158(__int64 a1);
+__int64 MapSortieMenu_871860(__int64, __int64, __int64, __int64, __int64);
+extern __int64 (*GameData_20b6268[])();
+extern __int64 (*GameData_20b62e8[])();
+__int64 CorpsDecide_Unknown141(__int64 a1);
 
 __int64 CorpsDecide_Unknown30(__int64 a1, char a2)
 {
@@ -125,6 +129,76 @@ __int64 CorpsDecide_Unknown137(__int64 a1)
     }
   }
   return result;
+}
+
+__int64 CorpsDecide_Unknown141(__int64 a1)
+{
+  __int64 v1;
+  __int64 v2;
+  __int64 v4;
+  __int64 v5;
+  struct {
+    _QWORD v6[4];
+    _QWORD* v7;
+  } v6_;
+  struct {
+    _QWORD v8[4];
+    _QWORD* v9;
+  } v8_;
+  struct {
+    _QWORD v10[4];
+    _QWORD* v11;
+  } v10_;
+  const char* v12;
+
+  v1 = *(_QWORD*)(a1 + 1056);
+  if (v1 != 0) {
+    v1 = __dynamic_cast(v1, GameData_21319e8[0], &GameData_20b3420, 0);
+  }
+  if (*(_BYTE*)(v1 + 409) != 1) {
+    return 3;
+  }
+  v12 = "MID_CorpsMenu_Cancel_Confirm";
+  v10_.v10[0] = GameData_20b6268;
+  v6_.v7 = v6_.v6;
+  v10_.v11 = v10_.v10;
+  v8_.v9 = v8_.v8;
+  v8_.v8[0] = GameData_20b62e8;
+  v6_.v6[0] = GameData_20b62e8;
+  MapSortieMenu_871860(v1, (__int64)&v12, (__int64)v10_.v10, (__int64)v8_.v8,
+                       (__int64)v6_.v6);
+  if (v6_.v7 == v6_.v6) {
+    v2 = 32;
+  }
+  else {
+    if (v6_.v7 == nullptr) {
+      goto LABEL_10;
+    }
+    v2 = 40;
+  }
+  (*(void (**)(__int64))(*v6_.v7 + v2))((__int64)v6_.v7);
+LABEL_10:
+  if (v8_.v9 == v8_.v8) {
+    v4 = 32;
+  }
+  else {
+    if (v8_.v9 == nullptr) {
+      goto LABEL_15;
+    }
+    v4 = 40;
+  }
+  (*(void (**)(__int64))(*v8_.v9 + v4))((__int64)v8_.v9);
+LABEL_15:
+  if (v10_.v11 == v10_.v10) {
+    v5 = 32;
+    goto LABEL_19;
+  }
+  if (v10_.v11 != nullptr) {
+    v5 = 40;
+  LABEL_19:
+    (*(void (**)(__int64))(*v10_.v11 + v5))((__int64)v10_.v11);
+  }
+  return 11;
 }
 
 __int64 CorpsDecide_Unknown146(__int64 a1)

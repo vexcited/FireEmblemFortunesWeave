@@ -16,6 +16,12 @@ extern __int64* GameData_212eda8[10];
 _QWORD* CameraStateFirstPerson_Destructor(__int64 a1);
 __int64 CameraStateFirstPerson_DeletingDestructor(__int64 a1);
 __int64 CameraStateFirstPerson_Unknown2(__int64 a1);
+extern __int64 GameData_212d310;
+extern __int64 GameData_220f848;
+extern __int64 game_ProcFadeView_instance_;
+float GameRoutine_d21160(__int64);
+void game_zview_d1f7d0(__int64, __int64);
+float CameraStateFirstPerson_Unknown3(__int64 a1);
 
 _QWORD* CameraStateFirstPerson_Destructor(__int64 a1)
 {
@@ -198,6 +204,157 @@ __int64 CameraStateFirstPerson_Unknown2(__int64 a1)
     }
   }
   return result;
+}
+
+float CameraStateFirstPerson_Unknown3(__int64 a1)
+{
+
+#pragma clang fp contract(off)
+  __int64 v1;
+  __int64 v2;
+  unsigned __int64 v3;
+  __int128 v4;
+  float v5;
+  __int64 v6;
+  unsigned __int64 v7;
+  __int128 v8;
+  float v9;
+  unsigned __int64 v10;
+  __int64 v11;
+  unsigned __int64 v12;
+  __int128 v13;
+  float v14;
+  unsigned __int64 v15;
+  __int64 v16;
+  __int64 v17;
+  __int64 v18;
+  int v19;
+  _BYTE v21[8];
+
+  if ((*(_BYTE*)(GameData_21f3cb0 + 1136) & 1) == 0) {
+    v1 = a1;
+    v2 = GameData_212d310;
+    if (*(_QWORD*)GameData_212d310 != 0 &&
+        *(_BYTE*)(*(_QWORD*)GameData_212d310 + 14LL) != 1) {
+      goto LABEL_38;
+    }
+    if (game_ProcFadeView_instance_ != 0) {
+      v3 = game_ProcFadeView_instance_ +
+           ((unsigned __int64)*(unsigned __int8*)(game_ProcFadeView_instance_ +
+                                                  480)
+            << 6);
+      if (*(float*)(v3 + 172) == *(float*)(v3 + 168)) {
+        (*(void (**)(unsigned __int64))(*(_QWORD*)(v3 + 160) + 16LL))(v3 + 160);
+        a1 = v1;
+      }
+      else {
+        v4 = *(_OWORD*)(v3 + 208);
+      }
+      if (*((float*)&v4 + 3) == 0x1.0000000000000p+0f) {
+        LODWORD(v5) = LANES128_OF(((__n128 (*)(unsigned __int64, float)) *
+                                   (_QWORD*)(*(_QWORD*)(v3 + 160) + 16LL))(
+                                      v3 + 160, *((float*)&v4 + 3)))
+                          .n128_u32[3];
+        a1 = v1;
+        if (v5 == 0x1.0000000000000p+0f) {
+          goto LABEL_38;
+        }
+      }
+    }
+    if (*(_QWORD*)v2 == 0 || *(_BYTE*)(*(_QWORD*)v2 + 14LL) == 1) {
+      v6 = game_ProcFadeView_instance_;
+      if (game_ProcFadeView_instance_ == 0 ||
+          (*(float*)((v7 = game_ProcFadeView_instance_ +
+                           ((unsigned __int64)*(
+                                unsigned __int8*)(game_ProcFadeView_instance_ +
+                                                  480)
+                            << 6)) +
+                     172) != *(float*)(v7 + 168)
+               ? (v8 = *(_OWORD*)(v7 + 208))
+               : ((*(void (**)(unsigned __int64))(*(_QWORD*)(v7 + 160) + 16LL))(
+                      v7 + 160),
+                  a1 = v1),
+           (*((float*)&v8 + 3) != 0x1.0000000000000p+0f ||
+            (LODWORD(v9) = LANES128_OF(((__n128 (*)(unsigned __int64, float)) *
+                                        (_QWORD*)(*(_QWORD*)(v7 + 160) + 16LL))(
+                                           v7 + 160, *((float*)&v8 + 3)))
+                               .n128_u32[3],
+             a1 = v1, v9 != 0x1.0000000000000p+0f)) &&
+               ((v6 = game_ProcFadeView_instance_,
+                 game_ProcFadeView_instance_ == 0) ||
+                *(float*)((v10 =
+                               game_ProcFadeView_instance_ +
+                               ((unsigned __int64)*(
+                                    unsigned __int8*)(game_ProcFadeView_instance_ +
+                                                      480)
+                                << 6)) +
+                          172) == *(float*)(v10 + 168)))) {
+        if (GameData_21f3cb0 == 0 || *(_BYTE*)(GameData_21f3cb0 + 816) != 1 ||
+            (*(_BYTE*)(GameData_21f3cb0 + 936) & 1) == 0) {
+          v11 = GameData_220f848;
+          if (*(_QWORD*)v2 != 0 && *(_BYTE*)(*(_QWORD*)v2 + 14LL) != 1) {
+            goto LABEL_38;
+          }
+          if (v6 != 0) {
+            v12 = v6 + ((unsigned __int64)*(unsigned __int8*)(v6 + 480) << 6);
+            if (*(float*)(v12 + 172) == *(float*)(v12 + 168)) {
+              (*(void (**)(unsigned __int64))(*(_QWORD*)(v12 + 160) + 16LL))(
+                  v12 + 160);
+              a1 = v1;
+            }
+            else {
+              v13 = *(_OWORD*)(v12 + 208);
+            }
+            if (*((float*)&v13 + 3) == 0x1.0000000000000p+0f) {
+              LODWORD(v14) =
+                  LANES128_OF(((__n128 (*)(unsigned __int64, float)) *
+                               (_QWORD*)(*(_QWORD*)(v12 + 160) + 16LL))(
+                                  v12 + 160, *((float*)&v13 + 3)))
+                      .n128_u32[3];
+              a1 = v1;
+              if (v14 == 0x1.0000000000000p+0f) {
+                goto LABEL_38;
+              }
+            }
+            if (game_ProcFadeView_instance_ != 0) {
+              v15 = game_ProcFadeView_instance_ +
+                    ((unsigned __int64)*(
+                         unsigned __int8*)(game_ProcFadeView_instance_ + 480)
+                     << 6);
+              if (*(float*)(v15 + 172) != *(float*)(v15 + 168)) {
+                goto LABEL_38;
+              }
+            }
+          }
+          if (GameData_21f3cb0 != 0 && *(_BYTE*)(GameData_21f3cb0 + 816) == 1 &&
+                  (*(_BYTE*)(GameData_21f3cb0 + 936) & 1) != 0 ||
+              (v16 = *(_QWORD*)(v11 + 112), *(_QWORD*)(v11 + 120) == v16) ||
+              (*(_BYTE*)(v16 + 8) & 1) == 0) {
+          LABEL_38:
+            if (*(_BYTE*)(a1 + 992) != 0) {
+              *(_BYTE*)(a1 + 992) = 0;
+              v17 = GameData_21f3cb0;
+              if (*(_BYTE*)(GameData_21f3cb0 + 1144) != 0) {
+                v18 = *(_QWORD*)v2;
+                *(_BYTE*)(GameData_21f3cb0 + 1144) = 0;
+                v19 = *(_DWORD*)(v18 + 24) - 1;
+                *(_DWORD*)(v18 + 24) = v19;
+                if (v19 == 0) {
+                  (*(void (**)(__int64))(*(_QWORD*)(v18 + 16) + 8LL))(v18 + 16);
+                  v17 = GameData_21f3cb0;
+                }
+              }
+              v21[0] = 0;
+              v21[4] = 0;
+              game_zview_d1f7d0(v17, (__int64)v21);
+              a1 = v1;
+            }
+          }
+        }
+      }
+    }
+  }
+  return GameRoutine_d21160(a1);
 }
 
 #pragma GCC visibility pop

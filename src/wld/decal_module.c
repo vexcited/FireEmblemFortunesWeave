@@ -26,6 +26,9 @@ __int64 DecalModule_a929a0(_QWORD* a1);
 __int64 DecalModule_a93060(__int64* a1, __int64 a2);
 __int64 DecalModule_a93340(_QWORD* a1);
 __int64 DecalModule_a933b0(__int64 a1);
+extern _UNKNOWN* GameData_212c2a0;
+_QWORD* DecalModule_Unknown6(_QWORD* result);
+void DecalModule_Unknown7(_QWORD* a1);
 
 __int64 DecalModule_Destructor(_QWORD* a1)
 {
@@ -548,6 +551,192 @@ __int64 DecalModule_a929a0(_QWORD* a1)
     }
   }
   return result;
+}
+
+_QWORD* DecalModule_Unknown6(_QWORD* result)
+{
+  __int64 v1;
+  bool v2;
+  float32x4_t* v3;
+  float32x4_t* v4;
+  float32x4_t v5;
+  void* v6;
+  float32x4_t v7;
+  float32x4_t* v8;
+  float32x4_t v9;
+  float32x4_t v10;
+  float32x4_t v11;
+  float32x4_t v12;
+  float32x4_t* v13;
+  float32x4_t v14;
+  float32x4_t v15;
+  float32x4_t v16;
+  float32x4_t v17;
+  float32x4_t* v18;
+  float32x4_t v19;
+  float32x4_t v20;
+  float32x4_t v21;
+  float32x4_t v22;
+  float32x4_t v23;
+  float32x4_t v24;
+
+  v1 = result[1];
+  v2 = false;
+  if (*(_BYTE*)(v1 + 289) == 1 && (*(_BYTE*)(v1 + 288) & 1) != 0) {
+    if ((*(_BYTE*)(v1 + 300) & 0xFD) == 1) {
+      v2 = false;
+    }
+    else {
+      do {
+        v1 = *(_QWORD*)(v1 + 736);
+        v2 = v1 == 0;
+      } while (v1 != 0 && *(_BYTE*)(v1 + 289) == 1 &&
+               *(_BYTE*)(v1 + 288) == 1 && (*(_BYTE*)(v1 + 300) & 0xFD) != 1);
+    }
+  }
+  v3 = (float32x4_t*)result[5];
+  v4 = (float32x4_t*)result[6];
+  if (v3 != v4) {
+    LANES128(v5).n128_u64[0] = 0xBF000000BF000000LL;
+    LANES128(v5).n128_u64[1] = 0xBF000000BF000000LL;
+    v6 = GameData_212c2a0;
+    LANES128(v7).n128_u64[0] = 0x3F0000003F000000LL;
+    LANES128(v7).n128_u64[1] = 0x3F0000003F000000LL;
+    do {
+      *(_BYTE*)(LANES128(*(v3)).n128_u64[0] + 32) = v2;
+      v8 = (float32x4_t*)result[1];
+      v9 = v3[2];
+      v10 = v3[3];
+      v11 = v3[4];
+      v12 = v3[5];
+      v13 = (float32x4_t*)LANES128(*(v3)).n128_u64[0];
+      v14 = v8[27];
+      v15 = v8[28];
+      v16 = v8[29];
+      v17 = v8[30];
+      LANES128(v13[26]).n128_u8[4] = 1;
+      v13[11] = vmlaq_laneq_f32(
+          vmlaq_lane_f32(vmulq_n_f32(v14, LANES128(v9).n128_f32[0]), v15,
+                         COERCE_AS(float32x2_t, LANES128(v9).n128_u64[0]), 1),
+          v16, v9, 2);
+      v13[12] = vmlaq_laneq_f32(
+          vmlaq_lane_f32(vmulq_n_f32(v14, LANES128(v10).n128_f32[0]), v15,
+                         COERCE_AS(float32x2_t, LANES128(v10).n128_u64[0]), 1),
+          v16, v10, 2);
+      v13[13] = vmlaq_laneq_f32(
+          vmlaq_lane_f32(vmulq_n_f32(v14, LANES128(v11).n128_f32[0]), v15,
+                         COERCE_AS(float32x2_t, LANES128(v11).n128_u64[0]), 1),
+          v16, v11, 2);
+      v13[14] = vaddq_f32(
+          vmlaq_laneq_f32(
+              vmlaq_lane_f32(vmulq_n_f32(v14, LANES128(v12).n128_f32[0]), v15,
+                             COERCE_AS(float32x2_t, LANES128(v12).n128_u64[0]),
+                             1),
+              v16, v12, 2),
+          v17);
+      *(_DWORD*)(LANES128(*(v3)).n128_u64[0] + 36) =
+          *(_DWORD*)(result[1] + 284LL);
+      v18 = (float32x4_t*)LANES128(*(v3)).n128_u64[0];
+      if (*(_BYTE*)(LANES128(*(v3)).n128_u64[0] + 420) == 1) {
+        v19 = v18[11];
+        v20 = v18[12];
+        v21 = v18[13];
+        v22 = v18[14];
+        LANES128(v18[26]).n128_u8[4] = 0;
+        v23 = vaddq_f32(
+            vmlaq_f32(
+                vmlaq_f32(vmulq_f32(v19, COERCE_AS(float32x4_t, 0LL)), v5, v20),
+                COERCE_AS(float32x4_t, 0LL), v21),
+            v22);
+        v24 = vaddq_f32(
+            vmlaq_f32(
+                vmlaq_f32(vmulq_f32(vabsq_f32(v19), v7), v7, vabsq_f32(v20)),
+                v7, vabsq_f32(v21)),
+            *(float32x4_t*)((char*)&(*(__int64 (*)[2])0x28LL)[1] + (_QWORD)v6));
+        v18[3] = vsubq_f32(v23, v24);
+        v18[4] = vaddq_f32(v23, v24);
+      }
+      v3 += 6;
+    } while (v3 != v4);
+  }
+  return result;
+}
+
+void DecalModule_Unknown7(_QWORD* a1)
+{
+
+#pragma clang fp contract(off)
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  float32x4_t** v6;
+  float32x4_t** v7;
+  __int64* v8;
+  float32x4_t* v9;
+  __int64 v10;
+  __int64 v11;
+  long double v12;
+  int32x4_t v13;
+  int16x4_t v14;
+  unsigned __int64 v15;
+
+  v2 = a1[4];
+  if (v2 != 0) {
+    v3 = std___1___shared_weak_count_lock(v2);
+    if (v3 != 0) {
+      v4 = a1[3];
+      v5 = v3;
+      if (v4 != 0) {
+        v6 = (float32x4_t**)a1[5];
+        v7 = (float32x4_t**)a1[6];
+        while (v6 != v7) {
+          v8 = *(__int64**)(v4 + 112);
+          v9 = *v6;
+          v10 = *v8;
+          v11 = v8[1];
+          if (v11 != 0) {
+            atomic_fetch_add_explicit((atomic_ullong* volatile)(v11 + 8), 1u,
+                                      memory_order_relaxed);
+          }
+          v12 = ((long double (*)(__int64)) *
+                 (_QWORD*)(*(_QWORD*)v10 + 40LL))(v10);
+          v13 = vcgtq_f32(v9[3], *(float32x4_t*)&v12);
+          LANES64(v14).n64_u64[0] = LANES64_OF(vmovn_s32(v13)).n64_u64[0];
+          if ((LANES64(v14).n64_u8[0] & 1) != 0 ||
+              (LANES64(v14).n64_u8[2] & 1) != 0) {
+            LANES128(v9[26]).n128_u32[2] = 0;
+            if (v11 != 0) {
+              goto LABEL_14;
+            }
+          }
+          else {
+            v15 =
+                LANES64_OF(
+                    vmovn_s32(vmvnq_s8(vcgtq_f32(*(float32x4_t*)&v12, v9[4]))))
+                    .n64_u64[0];
+            LANES128(v9[26]).n128_u32[2] =
+                LANES64_OF(vmovn_s32(vmvnq_s8(v13))).n64_u8[4] & v15 &
+                (unsigned __int8)(BYTE2(v15) & BYTE4(v15)) & 1;
+            if (v11 != 0) {
+            LABEL_14:
+              if (atomic_fetch_add((atomic_ullong* volatile)(v11 + 8),
+                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
+                (*(void (**)(__int64))(*(_QWORD*)v11 + 16LL))(v11);
+                std___1___shared_weak_count___release_weak(v11);
+              }
+            }
+          }
+          v6 += 12;
+        }
+      }
+      if (atomic_fetch_add((atomic_ullong* volatile)(v5 + 8),
+                           0xFFFFFFFFFFFFFFFFLL) == 0) {
+        (*(void (**)(__int64))(*(_QWORD*)v5 + 16LL))(v5);
+        std___1___shared_weak_count___release_weak(v5);
+      }
+    }
+  }
 }
 
 __int64 DecalModule_a93060(__int64* a1, __int64 a2)

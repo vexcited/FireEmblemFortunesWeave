@@ -2,6 +2,10 @@
 
 #pragma GCC visibility push(hidden)
 
+void __attribute__((noreturn)) GameReliance_IData_DeletingDestructor()
+{
+  __udf(0x8002u);
+};
 __int64 nn_mem_StandardAllocator_Free(_QWORD);
 extern __int64 (*game_GameReliance_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
@@ -80,11 +84,6 @@ extern char GameData_2166cf2;
 void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
 void __attribute__((noreturn)) GameRoutine_60a310(_QWORD, _QWORD);
 void __attribute__((noreturn)) GameRoutine_8e2ec0(_QWORD);
-
-void __attribute__((noreturn)) GameReliance_IData_DeletingDestructor()
-{
-  __udf(0x8002u);
-};
 __int64 GameReliance_8e0520(__int64 a1, int a2);
 __int64 GameReliance_8e05a0(__int64 a1, int a2);
 __int64 GameReliance_8e0880(__int64 result);
@@ -99,6 +98,7 @@ __int64 game_GameReliance_Impl_EachPlayer_closure_Invoke(__int64 result,
                                                          __int64 a2);
 __int64 game_GameReliance_Impl_EachScore_closure_Invoke(__int64 result,
                                                         __int64 a2);
+__int64 (***GameReliance_8e1730(__int64 a1, __int64 a2, __int64 a3))();
 
 __int64 GameReliance_8e0520(__int64 a1, int a2)
 {
@@ -1214,6 +1214,24 @@ LABEL_29:
 LABEL_27:
   *(_QWORD*)(v2 + 16) = v11;
   return result;
+}
+
+__int64 (***GameReliance_8e1730(__int64 a1, __int64 a2, __int64 a3))()
+{
+  _QWORD* v5;
+  unsigned int v6;
+
+  if (*(_QWORD*)(a2 + 16) == 0 || *(_QWORD*)(a3 + 16) == 0) {
+    return &game_GameReliance_Impl_Data_vtable_ptr;
+  }
+  v5 = *(_QWORD**)(a1 + 8);
+  v6 = GameReliance_8e17a0(v5, a2, a3);
+  if ((v6 & 0x80000000) != 0) {
+    return &game_GameReliance_Impl_Data_vtable_ptr;
+  }
+  else {
+    return (__int64 (***)(void))(v5[1] + 56LL * v6);
+  }
 }
 
 __int64 GameReliance_8e17a0(_QWORD* a1, __int64 a2, __int64 a3)

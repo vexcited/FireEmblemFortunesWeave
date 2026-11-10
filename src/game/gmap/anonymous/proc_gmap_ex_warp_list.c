@@ -32,6 +32,271 @@ extern char GameData_1a9f09e;
 void __attribute__((noreturn)) GameRoutine_60a1d0(void);
 __int64 ProcGmapExWarpList_Unknown100(__int64 a1);
 _QWORD* ProcGmapExWarpList_Unknown145(__int64 a1);
+_QWORD* GmapSpotList_167b0c0(__int64, __int64, char);
+__int64 BasicMenuCursor_16e0c00(_QWORD, _QWORD);
+__int64 ProcInst_657850(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
+__int64 game_1678f00(__int64, __int64);
+__int64 game_GameVariableTable_Find(_QWORD, _QWORD);
+__int64 game_HashString(_QWORD);
+__int64 game_gmap_SpotMgr_FindSpot(_QWORD);
+__int64 memcmp(_QWORD, _QWORD, _QWORD);
+__int64 memcpy(_QWORD, _QWORD, _QWORD);
+__int64 nn_mem_StandardAllocator_Free_alt1(_QWORD) __asm__(
+    "nn_mem_StandardAllocator_Free");
+extern _UNKNOWN* GameData_212c730;
+extern _UNKNOWN GameData_1af3123;
+extern __int64 (*GameData_2082138[])();
+extern __int64 (*game_gmap_anonymous_ProcGmapExWarpList_vtable[])();
+extern __int64 (*game_menu_MenuInput_InputUnknown00_ptr[])();
+extern __int64* GameData_212cc68[58];
+extern __int64* GameData_2131b38;
+extern __int64 game_GameModeData_instance_;
+void __attribute__((noreturn)) GameRoutine_12680d0(long double);
+void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
+__int64 ProcGmapExWarpList_1690440(__int64 result);
+
+__int64 ProcGmapExWarpList_1690440(__int64 result)
+{
+  __int64 v1;
+  __int64 v2;
+  __int64 v3;
+  int v4;
+  _QWORD* v5;
+  __int64 v6;
+  __int64 v7;
+  __int64* v8;
+  __int64* v9;
+  int v10;
+  __int64 v11;
+  __int64 v12;
+  int v13;
+  bool v14;
+  unsigned __int64 v15;
+  __int64 v16;
+  __int64 v17;
+  __int64 v18;
+  __int64 v19;
+  __int64* v20;
+  __int64 v21;
+  __int64 v22;
+  __int64 v23;
+  __int64 v24;
+  __int64 v25;
+  void* v26;
+  __int64 v27;
+  __int64 v28;
+  bool v30;
+  __int64 v31;
+  __int64 v32;
+  __int64 v33;
+  __int64 v34;
+  long double v35;
+  __int64* v36;
+  unsigned __int64 v37;
+  __int64 v38;
+  __int64 v39;
+  unsigned __int64 v40;
+  __int64 v41;
+  __int64 v42;
+  int v43;
+  unsigned __int64 v44;
+  __int64 v45;
+  __int64 v46;
+  unsigned __int64 v47;
+  __int64 v48;
+  __int64 v49;
+  _QWORD* v50;
+  __int64* v51;
+  __int64 v52;
+  _BYTE v53[12];
+  char v54;
+  __int64 v55;
+  void* v56;
+
+  if ((*(_QWORD*)GameData_212dbe0[0] | *(_QWORD*)GameData_212d750) == 0) {
+    return result;
+  }
+  v1 = result;
+  v53[0] = 0;
+  v56 = &GameData_1af3123;
+  v55 = game_HashString(&GameData_1af3123);
+  if (game_GameModeData_instance_ != 0 &&
+      (v2 = game_GameVariableTable_Find(
+           *(_QWORD*)(game_GameModeData_instance_ + 48), &v55)) != 0 &&
+      *(int*)(v2 + 32) >= 1) {
+    v3 = 12;
+    v4 = 0;
+    v54 = 0;
+    *(_DWORD*)&v53[8] = -1971067990;
+    *(_QWORD*)v53 = 0x83E3BF82E3AB82E3LL;
+  }
+  else {
+    v3 = 0;
+    v4 = 1;
+  }
+  v5 = (_QWORD*)fw_memory_g_heap_manager_ptr;
+  v6 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
+                                      1232, 16, 0);
+  GmapSpotList_167b0c0(v6, 0, 1);
+  *(_BYTE*)(v6 + 1193) = v4;
+  *(_QWORD*)(v6 + 1200) = 0;
+  *(_QWORD*)(v6 + 1208) = 0;
+  *(_QWORD*)v6 = game_gmap_anonymous_ProcGmapExWarpList_vtable;
+  *(_QWORD*)(v6 + 1216) = 0;
+  *(_QWORD*)(v6 + 176) = game_menu_MenuInput_InputUnknown00_ptr;
+  *(_QWORD*)(v6 + 1056) = GameData_2082138;
+  ProcInst_657850(v6, GameData_212c730, "ProcGmapExWarpList", 1, v1);
+  v7 = *(_QWORD*)(*GameData_212c790 + 8);
+  v8 = *(__int64**)(v7 + 8);
+  v9 = *(__int64**)(v7 + 16);
+  v10 = *(_DWORD*)(v7 + 56);
+  if (v10 < 0) {
+    for (; v8 != v9; ++v8) {
+      v11 = *v8;
+      if (*(_QWORD*)(*v8 + 96) == 0 && *(_QWORD*)(v11 + 552) == 0) {
+        goto LABEL_14;
+      }
+    }
+  }
+  else {
+    while (v8 != v9) {
+      v12 = *v8++;
+      v11 = v12;
+      if (*(_DWORD*)(v12 + 84) == v10) {
+        goto LABEL_14;
+      }
+    }
+  }
+  v11 = 0;
+LABEL_14:
+  v13 = *(_DWORD*)(v11 + 540);
+  v14 = __OFSUB__(v13, 1);
+  v15 = (unsigned int)(v13 - 1);
+  if (((v15 & 0x80000000) != 0LL) == v14) {
+    v16 = *(_QWORD*)(v11 + 24);
+    v17 = *(_QWORD*)(v11 + 32) - v16;
+    v18 = v16 + 8LL * (unsigned int)v15;
+    if (v15 < v17 >> 3) {
+      v11 = v18;
+    }
+  }
+  v19 = *(_QWORD*)(*(_QWORD*)v11 + 120LL);
+  *(_QWORD*)(v6 + 1208) = *(_QWORD*)(v6 + 1200);
+  v20 = GameData_212cc68[0];
+  v21 = *(_QWORD*)(*GameData_212cc68[0] + 64);
+  if ((int)((unsigned __int64)(*(_QWORD*)(*GameData_212cc68[0] + 72) - v21) >>
+            3) >= 1) {
+    v22 = 0;
+    v52 = v19;
+    v51 = (__int64*)(v6 + 1200);
+    do {
+      v24 = *(_QWORD*)(v21 + 8 * v22);
+      v25 = *(_QWORD*)(v24 + 24);
+      if ((*(_BYTE*)v25 & 1) != 0) {
+        v26 = *(void**)(v25 + 16);
+      }
+      else {
+        v26 = (void*)(v25 + 1);
+      }
+      v56 = v26;
+      v55 = game_HashString(v26);
+      if (game_GameModeData_instance_ != 0) {
+        v27 = game_GameVariableTable_Find(
+            *(_QWORD*)(game_GameModeData_instance_ + 48), &v55);
+        if (v27 != 0 && *(_DWORD*)(v27 + 32) != 0) {
+          v28 = *(_QWORD*)(v24 + 40);
+          if (v19 != v28 && v28 != 0) {
+            if ((v4 & 1) != 0) {
+              v30 = true;
+            }
+            else {
+              v31 = *(_QWORD*)(v28 + 8);
+              v30 =
+                  strlen(v31) == v3 && (unsigned int)memcmp(v53, v31, v3) == 0;
+            }
+            v32 = fw_memory_HeapManager_Allocate(*v5, 304, 16, 0);
+            v33 = game_gmap_SpotMgr_FindSpot(*(_QWORD*)(v24 + 40));
+            game_1678f00(v32, v33);
+            *(_BYTE*)(v32 + 288) = v30;
+            *(_QWORD*)(v32 + 296) = v24;
+            *(_QWORD*)v32 = game_gmap_anonymous_GmapExWarpMenuItem_vtable;
+            BasicMenuCursor_16e0c00(v6, v32);
+            v34 = game_gmap_SpotMgr_FindSpot(*(_QWORD*)(v24 + 40));
+            v36 = *(__int64**)(v6 + 1208);
+            v37 = *(_QWORD*)(v6 + 1216);
+            if ((unsigned __int64)v36 < v37) {
+              *v36 = v34;
+              v23 = (__int64)(v36 + 1);
+            }
+            else {
+              v38 = *v51;
+              v39 = (__int64)v36 - *v51;
+              v40 = (v39 >> 3) + 1;
+              if (v40 >> 61 != 0) {
+                GameRoutine_12680d0(v35);
+              }
+              v41 = v37 - v38;
+              v42 = v3;
+              v43 = v4;
+              if (v41 >> 2 > v40) {
+                v40 = v41 >> 2;
+              }
+              if ((unsigned __int64)v41 >= 0x7FFFFFFFFFFFFFF8LL) {
+                v44 = 0x1FFFFFFFFFFFFFFFLL;
+              }
+              else {
+                v44 = v40;
+              }
+              if (v44 != 0) {
+                if (v44 >> 61 != 0) {
+                  GameRoutine_60a210(v34);
+                }
+                v45 = v34;
+                v46 = fw_memory_HeapManager_Allocate(*v5, 8 * v44, 16, 0);
+                v34 = v45;
+              }
+              else {
+                v46 = 0;
+              }
+              v47 = v46 + 8 * v44;
+              v48 = v46 + v39 - 8 * (v39 >> 3);
+              *(_QWORD*)(v46 + v39) = v34;
+              v23 = v46 + v39 + 8;
+              memcpy(v48, v38, v39);
+              *(_QWORD*)(v6 + 1200) = v48;
+              *(_QWORD*)(v6 + 1208) = v23;
+              *(_QWORD*)(v6 + 1216) = v47;
+              if (v38 != 0) {
+                v49 = 128;
+                if (*(_QWORD*)(*v5 + 200LL) == 0) {
+                  v49 = 56;
+                }
+                nn_mem_StandardAllocator_Free_alt1(*v5 + v49);
+              }
+              v4 = v43;
+              v3 = v42;
+            }
+            v19 = v52;
+            v20 = GameData_212cc68[0];
+            *(_QWORD*)(v6 + 1208) = v23;
+          }
+        }
+      }
+      ++v22;
+      v21 = *(_QWORD*)(*v20 + 64);
+    } while (v22 < (int)((unsigned __int64)(*(_QWORD*)(*v20 + 72) - v21) >> 3));
+  }
+  v50 = (_QWORD*)fw_memory_HeapManager_Allocate(*v5, 288, 16, 0);
+  game_1678f00((__int64)v50, 0);
+  result = *(_QWORD*)(v6 + 344);
+  *v50 = GameData_2131b38 + 2;
+  if (result != 0) {
+    result = (*(__int64 (**)(__int64))(*(_QWORD*)result + 8LL))(result);
+  }
+  v50[1] = v6;
+  *(_QWORD*)(v6 + 344) = v50;
+  return result;
+}
 
 __int64 ProcGmapExWarpList_Unknown100(__int64 a1)
 {

@@ -28,6 +28,16 @@ _QWORD* game_facility_anonymous_ProcReaction_PlayMobMotion(__int64 a1);
 _QWORD* ProcReaction_1430380(__int64 a1, __int64 a2);
 __int64 ProcReaction_Destructor(__int64* a1);
 __int64 ProcReaction_DeletingDestructor(__int64* a1);
+__int64 GameRoutine_2b0();
+__int64 __cxa_guard_acquire(_QWORD);
+__int64 __cxa_guard_release(_QWORD);
+__int64 snd_Fade_Destroy_Fade(_QWORD*);
+__int64 snd_fnd_WeakHandle_get(__int64);
+__int64 snd_fnd_WeakHandle_isValid(__int64*);
+extern _UNKNOWN GameData_224ae08;
+extern __int64 GameData_224ae20;
+void snd_Fade_Fade_10c830(__int64, float);
+__int64 game_facility_anonymous_ProcReaction_StartCameraWork_closure1_Invoke();
 
 _QWORD* game_facility_anonymous_ProcReaction_ResetMotion(__int64 a1)
 {
@@ -408,6 +418,65 @@ _QWORD* ProcReaction_1430380(__int64 a1, __int64 a2)
           return (_QWORD*)nn_mem_StandardAllocator_Free(v28 + v29, v27);
         }
       }
+    }
+  }
+  return result;
+}
+
+__int64 game_facility_anonymous_ProcReaction_StartCameraWork_closure1_Invoke()
+{
+
+#pragma clang fp contract(off)
+  __int64 v0;
+  __int64 v1;
+  __int64 v2;
+  __int64 result;
+  float v4;
+  __int64* v5;
+  __int64* v6;
+  float v7;
+  __int64 v8;
+  __int64 v9;
+  int v10;
+  int v11;
+  _QWORD v12[33];
+
+  result = GameData_224ae20;
+  if (GameData_224ae20 != 0) {
+    v4 = 0x1.0000000000000p-1f;
+    v12[25] = v2;
+    v12[26] = v0;
+    v12[27] = v1;
+    if ((atomic_load_explicit((atomic_uchar* volatile)&GameData_224ae08,
+                              memory_order_acquire) &
+         1) == 0) {
+      v9 = result;
+      v10 = __cxa_guard_acquire(&GameData_224ae08);
+      v4 = 0x1.0000000000000p-1f;
+      v11 = v10;
+      result = v9;
+      if (v11 != 0) {
+        GameRoutine_2b0();
+        __cxa_guard_release(&GameData_224ae08);
+        v4 = 0x1.0000000000000p-1f;
+        result = v9;
+      }
+    }
+    v5 = *(__int64**)(result + 32);
+    v6 = *(__int64**)(result + 40);
+    if (v5 != v6) {
+      v7 = v4 * 0x1.f400000000000p+9f;
+      do {
+        result = snd_fnd_WeakHandle_isValid(v5);
+        if ((result & 1) != 0) {
+          v8 = snd_fnd_WeakHandle_get((__int64)v5);
+          snd_Fade_Fade_10c830((__int64)v12, v7);
+          (*(void (**)(__int64, _QWORD*, _QWORD, double))(
+              *(_QWORD*)(v8 - 5592) + 248LL))(v8 - 5592, v12, 0, 0x0.0p+0);
+          result = snd_Fade_Destroy_Fade(v12);
+        }
+        v5 += 2;
+      } while (v5 != v6);
     }
   }
   return result;

@@ -13,6 +13,20 @@ __int64 game_IsVibrationEnabled(_QWORD);
 __int64 game_menu_BasicMenu_Unknown16dd9a0(_QWORD);
 extern __int64 game_g_game_setting;
 __int64 BanquePoolMenuItem_Unknown25(__int64 a1);
+__int64 GameRoutine_156c910(_QWORD, const char*, ...);
+__int64 GameRoutine_157af40(_QWORD, _QWORD);
+__int64 GameRoutine_1644d80(__int64);
+__int64 Pane_58f8a0(void);
+__int64 __dynamic_cast(_QWORD, _QWORD, _QWORD, _QWORD);
+__int64 std___1___shared_weak_count___release_weak(_QWORD);
+__int64 std___1___shared_weak_count_lock(void);
+__int64 ui_LayoutAccessor_FindPane(_QWORD, _QWORD);
+__int64 ui_LayoutAccessor_FindTextBox(_QWORD, _QWORD);
+extern _UNKNOWN* GameData_212da30;
+extern __int64* GameData_212d670[3];
+extern __int64* ui_LayoutAccessor_empty__ptr[3];
+extern __int64 GameData_212d690;
+__int64 BanquePoolMenuItem_DrawText(__int64 a1);
 
 __int64 BanquePoolMenuItem_Unknown25(__int64 a1)
 {
@@ -174,6 +188,174 @@ __int64 BanquePoolMenuItem_Unknown25(__int64 a1)
     (*(void (**)(__int64, _BOOL4))(*(_QWORD*)v10 + 248LL))(v10, v11);
   }
   return 13;
+}
+
+__int64 BanquePoolMenuItem_DrawText(__int64 a1)
+{
+  __int64 v2;
+  __int64 v3;
+  atomic_ullong* v4;
+  __int64* v5;
+  __int64 v6;
+  __int64 v7;
+  atomic_ullong* v8;
+  __int64* v9;
+  __int64 v10;
+  __int64 v11;
+  int v12;
+  int v13;
+  int v14;
+  __int64 v15;
+  __int64 v16;
+  atomic_ullong* v17;
+  __int64* v18;
+  __int64 v19;
+  __int64 v20;
+  int v21;
+  __int64 v22;
+  __int64 v23;
+  atomic_ullong* v24;
+  __int64* v25;
+  __int64 result;
+  __int64* v27;
+  __int64* v28;
+  __int64* v29;
+  __int64* v30;
+
+  if (*(_QWORD*)(a1 + 56) == 0) {
+    goto LABEL_5;
+  }
+  v2 = std___1___shared_weak_count_lock();
+  if (v2 == 0) {
+    goto LABEL_5;
+  }
+  v3 = v2;
+  v4 = (atomic_ullong*)(v2 + 8);
+  v5 = *(__int64**)(a1 + 48);
+  if (atomic_fetch_add(v4, 0xFFFFFFFFFFFFFFFFLL) != 0) {
+    if (v5 != nullptr) {
+      goto LABEL_6;
+    }
+    goto LABEL_5;
+  }
+  v27 = v5;
+  (*(void (**)(__int64))(*(_QWORD*)v3 + 16LL))(v3);
+  std___1___shared_weak_count___release_weak(v3);
+  v5 = v27;
+  if (v27 == nullptr) {
+  LABEL_5:
+    v5 = ui_LayoutAccessor_empty__ptr[0];
+  }
+LABEL_6:
+  GameRoutine_157af40(v5, *(unsigned int*)(a1 + 40));
+  GameRoutine_1644d80(a1);
+  if (*(_QWORD*)(a1 + 56) == 0) {
+    goto LABEL_10;
+  }
+  v6 = std___1___shared_weak_count_lock();
+  if (v6 == 0) {
+    goto LABEL_10;
+  }
+  v7 = v6;
+  v8 = (atomic_ullong*)(v6 + 8);
+  v9 = *(__int64**)(a1 + 48);
+  if (atomic_fetch_add(v8, 0xFFFFFFFFFFFFFFFFLL) != 0) {
+    if (v9 != nullptr) {
+      goto LABEL_11;
+    }
+    goto LABEL_10;
+  }
+  v28 = v9;
+  (*(void (**)(__int64))(*(_QWORD*)v7 + 16LL))(v7);
+  std___1___shared_weak_count___release_weak(v7);
+  v9 = v28;
+  if (v28 == nullptr) {
+  LABEL_10:
+    v9 = ui_LayoutAccessor_empty__ptr[0];
+  }
+LABEL_11:
+  v10 = ui_LayoutAccessor_FindPane(v9, "T_MaxNum");
+  if (v10 != 0) {
+    v11 = __dynamic_cast(v10, GameData_212d670[0], GameData_212d690, 0);
+    if (v11 != 0) {
+      GameRoutine_156c910(v11, "%d", 1);
+    }
+  }
+  v12 = *(_DWORD*)(a1 + 96);
+  v13 = *(int*)((char*)((int*)0x24LL) + (_QWORD)GameData_212da30);
+  v14 = *(_DWORD*)((char*)(*(__int64 (*)[2])0x28LL) + (_QWORD)GameData_212da30 +
+                   4);
+  if (*(_QWORD*)(a1 + 56) == 0) {
+    goto LABEL_18;
+  }
+  v15 = std___1___shared_weak_count_lock();
+  if (v15 == 0) {
+    goto LABEL_18;
+  }
+  v16 = v15;
+  v17 = (atomic_ullong*)(v15 + 8);
+  v18 = *(__int64**)(a1 + 48);
+  if (atomic_fetch_add(v17, 0xFFFFFFFFFFFFFFFFLL) != 0) {
+    if (v18 != nullptr) {
+      goto LABEL_19;
+    }
+    goto LABEL_18;
+  }
+  v29 = v18;
+  (*(void (**)(__int64))(*(_QWORD*)v16 + 16LL))(v16);
+  std___1___shared_weak_count___release_weak(v16);
+  v18 = v29;
+  if (v29 == nullptr) {
+  LABEL_18:
+    v18 = ui_LayoutAccessor_empty__ptr[0];
+  }
+LABEL_19:
+  v19 = ui_LayoutAccessor_FindPane(v18, "T_BanquetNum");
+  if (v19 != 0) {
+    v20 = __dynamic_cast(v19, GameData_212d670[0], GameData_212d690, 0);
+    if (v20 != 0) {
+      GameRoutine_156c910(v20, "%d", 1);
+    }
+  }
+  if (v12 != 0) {
+    v21 = v14;
+  }
+  else {
+    v21 = v13;
+  }
+  if (*(_QWORD*)(a1 + 56) == 0) {
+    goto LABEL_29;
+  }
+  v22 = std___1___shared_weak_count_lock();
+  if (v22 == 0) {
+    goto LABEL_29;
+  }
+  v23 = v22;
+  v24 = (atomic_ullong*)(v22 + 8);
+  v25 = *(__int64**)(a1 + 48);
+  if (atomic_fetch_add(v24, 0xFFFFFFFFFFFFFFFFLL) != 0) {
+    if (v25 != nullptr) {
+      goto LABEL_30;
+    }
+    goto LABEL_29;
+  }
+  v30 = v25;
+  (*(void (**)(__int64))(*(_QWORD*)v23 + 16LL))(v23);
+  std___1___shared_weak_count___release_weak(v23);
+  v25 = v30;
+  if (v30 == nullptr) {
+  LABEL_29:
+    v25 = ui_LayoutAccessor_empty__ptr[0];
+  }
+LABEL_30:
+  result = ui_LayoutAccessor_FindTextBox(v25, "T_BanquetNum");
+  if (result != 0) {
+    result = Pane_58f8a0();
+    if (result != 0) {
+      *(_DWORD*)(result + 12) = v21;
+    }
+  }
+  return result;
 }
 
 #pragma GCC visibility pop

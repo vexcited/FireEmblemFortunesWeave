@@ -22,6 +22,7 @@ __n128 GambitAttack_DeletingDestructor(__int64 a1);
 __int64 game_combat_GambitAttack_Run_lambda0_Invoke(__int64 a1, __int64* a2,
                                                     _DWORD* a3, long double a4,
                                                     long double a5);
+__attribute__((swiftcall)) void GambitAttack_Unknown3(PSEUDO_X8 x8_);
 
 __int64 game_combat_GambitAttack_Run(__int64 a1)
 {
@@ -151,6 +152,13 @@ LABEL_6:
     v11 = 56;
   }
   return nn_mem_StandardAllocator_Free(*(_QWORD*)v6 + v11, a1);
+}
+
+__attribute__((swiftcall)) void GambitAttack_Unknown3(PSEUDO_X8 x8_)
+{
+  _BYTE* a1 = (_BYTE*)PSEUDO_X8_VALUE(x8_);
+  *a1 = 12;
+  strcpy(a1 + 1, "Attack");
 }
 
 __int64 game_combat_GambitAttack_Run_lambda0_Invoke(__int64 a1, __int64* a2,

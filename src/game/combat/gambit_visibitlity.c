@@ -9,6 +9,7 @@ extern __int64 (*GameData_1fe6540[])();
 __int64 game_combat_GambitVisibitlity_Run(__int64 a1);
 __int64 game_combat_GambitVisibitlity_Run_lambda0_Invoke(__int64 a1,
                                                          __int64 a2);
+__attribute__((swiftcall)) void GambitVisibitlity_Unknown3(PSEUDO_X8 x8_);
 
 __int64 game_combat_GambitVisibitlity_Run(__int64 a1)
 {
@@ -32,6 +33,13 @@ __int64 game_combat_GambitVisibitlity_Run(__int64 a1)
     v2 = 40;
   }
   return (*(__int64 (**)(__int64))(*v4 + v2))((__int64)v4);
+}
+
+__attribute__((swiftcall)) void GambitVisibitlity_Unknown3(PSEUDO_X8 x8_)
+{
+  _BYTE* a1 = (_BYTE*)PSEUDO_X8_VALUE(x8_);
+  *a1 = 22;
+  strcpy(a1 + 1, "Visibitlity");
 }
 
 __int64 game_combat_GambitVisibitlity_Run_lambda0_Invoke(__int64 a1, __int64 a2)

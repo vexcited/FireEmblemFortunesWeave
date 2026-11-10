@@ -22,6 +22,9 @@ __int64 WeaponHoldModule_DeletingDestructor(_QWORD* a1);
 __int64 game_character_WeaponHoldModule_Start(_QWORD* a1, __int64 a2,
                                               __int64 a3);
 __int64 WeaponHoldModule_112aaa0(__int64 a1);
+float32x4_t game_character_WeaponHoldModule_Start_lambda0_Invoke(__int64 a1,
+                                                                 __int64 a2,
+                                                                 __int64 a3);
 
 __n128 WeaponHoldModule_Destructor(_QWORD* a1)
 {
@@ -194,6 +197,70 @@ __int64 WeaponHoldModule_112aaa0(__int64 a1)
     }
   }
   return GameRoutine_109d5e0(a1 + 24);
+}
+
+float32x4_t game_character_WeaponHoldModule_Start_lambda0_Invoke(__int64 a1,
+                                                                 __int64 a2,
+                                                                 __int64 a3)
+{
+  __int64 v3;
+  float32x4_t* v4;
+  float32x2_t* v5;
+  __int64 v6;
+  float32x4_t v7;
+  float32x4_t v8;
+  float32x4_t v9;
+  float32x4_t v10;
+  float32x4_t v11;
+  float32x4_t v12;
+  float32x4_t v13;
+  float32x4_t v14;
+  float32x4_t v15;
+  float32x4_t* v16;
+  float32x4_t v17;
+  float32x4_t v18;
+  float32x4_t v19;
+  float32x4_t result;
+
+  v3 = *(_QWORD*)(a1 + 8);
+  if (*(_BYTE*)(v3 + 16) == 1) {
+    v6 = v3 + 56;
+    v4 = *(float32x4_t**)(v3 + 56);
+    v5 = *(float32x2_t**)(v6 + 8);
+    v7 = *v4;
+    v8 = v4[1];
+    v9 = *(float32x4_t*)LANES64(*(v5)).n64_u64;
+    v10 = *(float32x4_t*)LANES64(v5[2]).n64_u64;
+    v11 = v4[2];
+    v12 = v4[3];
+    v13 = *(float32x4_t*)LANES64(v5[4]).n64_u64;
+    v14 = *(float32x4_t*)LANES64(v5[6]).n64_u64;
+    v15 = vmlaq_lane_f32(
+        vmulq_n_f32(*v4, COERCE_FLOAT(*(_OWORD*)LANES64(*(v5)).n64_u64)), v8,
+        COERCE_AS(float32x2_t, LANES64(*(v5)).n64_u64[0]), 1);
+    **(_DWORD**)(a3 + 16) &= 0x33FFFFFFu;
+    v16 = *(float32x4_t**)a3;
+    v17 = vmlaq_laneq_f32(v15, v11, v9, 2);
+    v18 = vmlaq_laneq_f32(
+        vmlaq_lane_f32(vmulq_n_f32(v7, LANES128(v10).n128_f32[0]), v8,
+                       COERCE_AS(float32x2_t, LANES128(v10).n128_u64[0]), 1),
+        v11, v10, 2);
+    v19 = vmulq_n_f32(v7, LANES128(v13).n128_f32[0]);
+    *v16 = v17;
+    v16[1] = v18;
+    result = vaddq_f32(
+        v12, vmlaq_laneq_f32(
+                 vmlaq_lane_f32(
+                     vmulq_n_f32(v7, LANES128(v14).n128_f32[0]), v8,
+                     COERCE_AS(float32x2_t, LANES128(v14).n128_u64[0]), 1),
+                 v11, v14, 2));
+    v16[2] = vmlaq_laneq_f32(
+        vmlaq_lane_f32(v19, v8,
+                       COERCE_AS(float32x2_t, LANES128(v13).n128_u64[0]), 1),
+        v11, v13, 2);
+    v16[3] = result;
+  }
+  return result;
 }
 
 #pragma GCC visibility pop

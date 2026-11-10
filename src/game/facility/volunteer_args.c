@@ -93,6 +93,34 @@ __int64 VolunteerArgs_948220(__int16* a1);
 __int64 VolunteerArgs_948a50();
 __int64 VolunteerArgs_948b80();
 __int64 VolunteerArgs_958620(__int64 a1, char a2);
+_QWORD* SceneCharacter_14020c0(__int64);
+__int64* Registration_a4da40(__int64, __int64);
+__int64 FacilityDialogueFile_196eb20(__int64, __int64*, __int64);
+__int64 GameRoutine_196e120(_QWORD, _QWORD);
+__int64 Manager_a51640(__int64, __int64, _DWORD*);
+__int64 SceneCharacter_14020c0_alt1(_QWORD) __asm__("SceneCharacter_14020c0");
+__int64 SceneManager_138e5e0(__int64, __int64);
+__int64 SceneManager_138e5e0_alt1(_QWORD,
+                                  _QWORD) __asm__("SceneManager_138e5e0");
+__int64 SceneTalk_1497520(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
+__int64 fw_text_String_CopyTerminated(__int64*, __int64, unsigned __int64);
+__n128 nn_mem_StandardAllocator_Free_alt1(_QWORD) __asm__(
+    "nn_mem_StandardAllocator_Free");
+extern __int64 GameData_212dce8;
+extern __int64 GameData_21f4000;
+extern __int64 msg_MessageManager_instance_;
+void SceneTalk_1497180(_DWORD*, __int64, unsigned __int64, __int64, __int64,
+                       unsigned __int64, unsigned int);
+__attribute__((swiftcall)) void VolunteerArgs_141b050(PSEUDO_X8 x8_,
+                                                      __int64 a1);
+__attribute__((swiftcall)) void VolunteerArgs_Unknown13(PSEUDO_X8 x8_,
+                                                        __int64 result,
+                                                        __int64 a2,
+                                                        unsigned int a3);
+__attribute__((swiftcall)) void VolunteerArgs_Destructor(PSEUDO_X8 x8_,
+                                                         __int64 result,
+                                                         __int64 a2,
+                                                         unsigned int a3);
 
 void VolunteerArgs_946ed0()
 {
@@ -1446,6 +1474,248 @@ LABEL_15:
     GameRoutine_12b3d60(v20, v16);
   }
   return GameRoutine_19a7f00(*(_QWORD*)(a2 + 392), *(_QWORD*)(a3 + 392), v17);
+}
+
+__attribute__((swiftcall)) void VolunteerArgs_141b050(PSEUDO_X8 x8_, __int64 a1)
+{
+  __int64* a2 = (__int64*)PSEUDO_X8_VALUE(x8_);
+  unsigned int v4;
+  char v5;
+  __int64 v12;
+  __n128 result;
+  char v14;
+  _QWORD* v15;
+  char* v16;
+  char* v17;
+  unsigned __int64 v18;
+  __int64 v19;
+  __int64 v20;
+  __int64 v21;
+  __int64 v22;
+  __int64 v23;
+  struct {
+    __int64 v24;
+    unsigned __int64 v25;
+    char* v26;
+    char gap24_[8];
+    char v27;
+    char gap33_[15];
+    __int64 v28;
+    char gap56_[8];
+    char v29;
+    char gap65_[15];
+    __int64 v30;
+    char v31;
+    char gap89_[15];
+    __int64 v32;
+    char gap112_[8];
+    char v33;
+  } v24_;
+  struct {
+    char gap120_[1];
+    _BYTE v34[3];
+    char v35;
+    char gap125_[11];
+    __int64 v36;
+  } v34_;
+
+  result = COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
+  v4 = FacilityDialogueFile_196eb20(a1 + 8, (__int64*)(a1 + 16),
+                                    *(_QWORD*)(a1 + 72)),
+  result = COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
+  v5 = *(_BYTE*)(a1 + 48);
+  v12 = SceneManager_138e5e0(*(_QWORD*)GameData_212dce8, v4),
+  result = COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
+  if (v12 == 0) {
+    *(_WORD*)a2 = 0;
+    {
+      result;
+      return;
+    }
+  }
+  v24_.v33 = 6;
+  if ((v5 & 0xFE) == 2) {
+    v14 = 50;
+  }
+  else {
+    v14 = 51;
+  }
+  v34_.v34[2] = v14;
+  v34_.v35 = 0;
+  *(_WORD*)v34_.v34 = 12397;
+  v15 = SceneCharacter_14020c0(v12),
+  result = COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
+  SceneTalk_1497180(&v24_.v24, (__int64)"Serve", 5u, (__int64)v15,
+                    (__int64)v34_.v34, 3u, 1u),
+      result =
+          COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
+  if ((v24_.v24 & 1) != 0) {
+    v16 = v24_.v26;
+  }
+  else {
+    v16 = (char*)&v24_.v24 + 1;
+  }
+  if (((unsigned int)Registration_a4da40(msg_MessageManager_instance_,
+                                         (__int64)v16) &
+       1) == 0 ||
+      ((v24_.v24 & 1) != 0 ? (v17 = v24_.v26) : (v17 = (char*)&v24_.v24 + 1),
+       (Manager_a51640(msg_MessageManager_instance_, (__int64)v17, v17) & 1) ==
+           0)) {
+    *(_WORD*)a2 = 0;
+    if ((v24_.v31 & 1) == 0) {
+      goto LABEL_22;
+    }
+    goto LABEL_18;
+  }
+  if ((v24_.v24 & 1) == 0) {
+    v18 = v24_.v25;
+    *a2 = v24_.v24;
+    a2[1] = v18;
+    a2[2] = (__int64)v24_.v26;
+    if ((v24_.v31 & 1) == 0) {
+      goto LABEL_22;
+    }
+  LABEL_18:
+    if (v24_.v32 != 0) {
+      v19 = 128;
+      if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+        v19 = 56;
+      }
+      result = nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v19);
+    }
+    goto LABEL_22;
+  }
+  fw_text_String_CopyTerminated(a2, (__int64)v24_.v26, v24_.v25),
+      result =
+          COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
+  if ((v24_.v31 & 1) != 0) {
+    goto LABEL_18;
+  }
+LABEL_22:
+  if ((v24_.v29 & 1) != 0 && v24_.v30 != 0) {
+    v20 = 128;
+    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+      v20 = 56;
+    }
+    result = nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v20);
+  }
+  if ((v24_.v27 & 1) != 0 && v24_.v28 != 0) {
+    v21 = 128;
+    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+      v21 = 56;
+    }
+    result = nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v21);
+  }
+  if ((v24_.v24 & 1) != 0 && v24_.v26 != nullptr) {
+    v22 = 128;
+    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+      v22 = 56;
+    }
+    result = nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v22);
+  }
+  if ((v24_.v33 & 1) != 0 && v34_.v36 != 0) {
+    v23 = 128;
+    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+      v23 = 56;
+    }
+    {
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v23),
+          result = COERCE_AS(__typeof__(result),
+                             PSEUDO_REGISTER(__n128, "v0", "=w"));
+      return;
+    }
+  }
+  {
+    result;
+    return;
+  }
+}
+
+__attribute__((swiftcall)) void VolunteerArgs_Unknown13(PSEUDO_X8 x8_,
+                                                        __int64 result,
+                                                        __int64 a2,
+                                                        unsigned int a3)
+{
+  _WORD* a4 = (_WORD*)PSEUDO_X8_VALUE(x8_);
+  __int64 v5;
+  _QWORD* v6;
+  __int64 v7;
+  __int64 v8;
+
+  if (a2 != 0) {
+    v5 = result;
+    result = GameRoutine_196e120(a2, a3);
+    v6 = *(_QWORD**)(v5 + 16);
+    if (*(_QWORD*)(*v6 + 392LL) == result) {
+      v7 = 0;
+    }
+    else {
+      if (*(_QWORD*)(v6[1] + 392LL) != result) {
+        goto LABEL_8;
+      }
+      v7 = 1;
+    }
+    result = SceneManager_138e5e0_alt1(GameData_21f4000, v7);
+    if (result != 0) {
+      v8 = SceneCharacter_14020c0_alt1(result);
+      {
+        SceneTalk_1497520("Serve", 5, v8, "m01", 3, 6);
+        return;
+      }
+    }
+  }
+LABEL_8:
+  *a4 = 0;
+  {
+    result;
+    return;
+  }
+}
+
+__attribute__((swiftcall)) void VolunteerArgs_Destructor(PSEUDO_X8 x8_,
+                                                         __int64 result,
+                                                         __int64 a2,
+                                                         unsigned int a3)
+{
+  _WORD* a4 = (_WORD*)PSEUDO_X8_VALUE(x8_);
+  __int64 v5;
+  _QWORD* v6;
+  __int64 v7;
+  __int64 v8;
+
+  if (a2 != 0) {
+    v5 = result;
+    result = GameRoutine_196e120(a2, a3);
+    v6 = *(_QWORD**)(v5 + 8);
+    if (*(_QWORD*)(*v6 + 392LL) == result) {
+      v7 = 0;
+    }
+    else {
+      if (*(_QWORD*)(v6[1] + 392LL) != result) {
+        goto LABEL_8;
+      }
+      v7 = 1;
+    }
+    result = SceneManager_138e5e0_alt1(GameData_21f4000, v7);
+    if (result != 0) {
+      v8 = SceneCharacter_14020c0_alt1(result);
+      {
+        SceneTalk_1497520("Serve", 5, v8, "m01", 3, 6);
+        return;
+      }
+    }
+  }
+LABEL_8:
+  *a4 = 0;
+  {
+    result;
+    return;
+  }
 }
 
 __int64 VolunteerArgs_Unknown12(__int64 a1)

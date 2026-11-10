@@ -42,6 +42,192 @@ bool game_menu_anonymous_EquipMenuItem_UnitItem_ACall_closure_Invoke_15ccc00(
     __int64 a1, __int64* a2);
 __int64
 game_menu_anonymous_EquipMenuItem_UnitItem_ACall_closure0_Invoke(__int64 a1);
+_QWORD* GameRoutine_166a010(__int64, __int64, __int64, int, __int64);
+_QWORD* GameRoutine_166a500(__int64, char*, int, __int64);
+__attribute__((swiftcall)) void LayoutAccessor_1560070(PSEUDO_X8, __int64*,
+                                                       __int64);
+__int64 Util_15792c0(__int64*, unsigned __int16*, char, char, _QWORD*, __int64,
+                     __int64, char);
+__int64 std___1___shared_weak_count_lock(_QWORD);
+__int64 ui_LayoutAccessor_SetPaneVisible(__int64 result, __int64, char);
+__n128 std___1___shared_weak_count___release_weak();
+extern __int64 (*GameData_2058b60[])();
+extern __int64 (*GameData_20596e0[])();
+extern __int64 ui_LayoutAccessor_empty_;
+__n128 EquipMenuItem_UnitItem_Unknown55(_QWORD* a1);
+__int64
+game_menu_anonymous_EquipMenuItem_UnitItem_ACall_closure0_Invoke_15ccf90(
+    __int64 a1, _QWORD* a2);
+__int64
+game_menu_anonymous_EquipMenuItem_UnitItem_ACall_closure3_Invoke(__int64 a1,
+                                                                 _QWORD* a2);
+bool EquipMenuItem_UnitItem_Unknown5(__int64 a1);
+
+bool EquipMenuItem_UnitItem_Unknown5(__int64 a1)
+{
+  int v3;
+  bool v4;
+  int v5;
+
+  if (*(_WORD*)(*(__int64 (**)(__int64))(*(_QWORD*)a1 + 560LL))(a1) != 0) {
+    return true;
+  }
+  v3 = *(_DWORD*)(a1 + 40);
+  v4 = __OFSUB__(v3, 1);
+  v5 = v3 - 1;
+  return v5 < 0 != v4 ||
+         *(unsigned __int16*)(*(_QWORD*)(a1 + 88) + 8LL * (unsigned int)v5 +
+                              828) != 0;
+}
+
+__n128 EquipMenuItem_UnitItem_Unknown55(_QWORD* a1)
+{
+
+#pragma clang fp contract(off)
+  __int64 v2;
+  __int64 v3;
+  __int64* v4;
+  __int64 v5;
+  _QWORD* v6;
+  unsigned __int16* v7;
+  char v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  atomic_ullong* v12;
+  __int64* v13;
+  __n128 result;
+  __int64 v15;
+  __int64 v16;
+  __int64 v17;
+  __int64 v18;
+  __int64 v19;
+  __int64* v20;
+  struct {
+    __int64 v21;
+    __int64 v22;
+  } v21_;
+
+  result = COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
+  v2 = a1[7];
+  if (v2 == 0) {
+    goto LABEL_5;
+  }
+  v3 = std___1___shared_weak_count_lock(v2),
+  result = COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
+  if (v3 == 0) {
+    goto LABEL_5;
+  }
+  v4 = (__int64*)a1[6];
+  if (atomic_fetch_add((atomic_ullong* volatile)(v3 + 8),
+                       0xFFFFFFFFFFFFFFFFLL) != 0) {
+    if (v4 != nullptr) {
+      goto LABEL_6;
+    }
+    goto LABEL_5;
+  }
+  (*(void (**)(__int64))(*(_QWORD*)v3 + 16LL))(v3),
+      result =
+          COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
+  std___1___shared_weak_count___release_weak(),
+      result =
+          COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
+  if (v4 == nullptr) {
+  LABEL_5:
+    v4 = &ui_LayoutAccessor_empty_;
+  }
+LABEL_6:
+  v5 = (*(__int64 (**)(_QWORD*))(*a1 + 560LL))(a1),
+  result = COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
+  v6 = (_QWORD*)a1[11];
+  v7 = (unsigned __int16*)v5;
+  v8 = (*(__int64 (**)(_QWORD*))(*a1 + 464LL))(a1),
+  result = COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
+  Util_15792c0(v4, v7, 0, 1, v6, (__int64)"L_Icon", (__int64)"T_Txt", v8 & 1),
+      result =
+          COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
+  v9 = a1[7];
+  if (v9 == 0) {
+    goto LABEL_10;
+  }
+  v10 = std___1___shared_weak_count_lock(v9),
+  result = COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
+  if (v10 == 0) {
+    goto LABEL_10;
+  }
+  v11 = v10;
+  v12 = (atomic_ullong*)(v10 + 8);
+  v13 = (__int64*)a1[6];
+  if (atomic_fetch_add(v12, 0xFFFFFFFFFFFFFFFFLL) != 0) {
+    if (v13 != nullptr) {
+      goto LABEL_11;
+    }
+    goto LABEL_10;
+  }
+  v20 = v13;
+  (*(void (**)(__int64))(*(_QWORD*)v11 + 16LL))(v11),
+      result =
+          COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
+  std___1___shared_weak_count___release_weak(),
+      result =
+          COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
+  v13 = v20;
+  if (v20 == nullptr) {
+  LABEL_10:
+    v13 = &ui_LayoutAccessor_empty_;
+  }
+LABEL_11:
+  LayoutAccessor_1560070((void*)(&v21_.v21), v13, (__int64)"L_Icon"),
+      result =
+          COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
+  if (v21_.v22 == 0) {
+    return result;
+  }
+  v15 = std___1___shared_weak_count_lock(v21_.v22),
+  result = COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
+  v16 = v21_.v21;
+  if (v21_.v22 != 0) {
+    result = std___1___shared_weak_count___release_weak();
+  }
+  if (v15 != 0 && v16 != 0) {
+    atomic_fetch_add_explicit((atomic_ullong* volatile)(v15 + 16), 1u,
+                              memory_order_relaxed);
+    v17 = (*(__int64 (**)(_QWORD*, long double))(*a1 + 560LL))(
+        a1, *(long double*)&result),
+    result = COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
+    v18 = std___1___shared_weak_count_lock(v15),
+    result = COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
+    if (v18 != 0) {
+      v19 = v18;
+      ui_LayoutAccessor_SetPaneVisible(v16, (__int64)"IconLock",
+                                       (*(_BYTE*)(v17 + 3) & 0x10) != 0),
+          result = COERCE_AS(__typeof__(result),
+                             PSEUDO_REGISTER(__n128, "v0", "=w"));
+      if (atomic_fetch_add((atomic_ullong* volatile)(v19 + 8),
+                           0xFFFFFFFFFFFFFFFFLL) == 0) {
+        (*(void (**)(__int64))(*(_QWORD*)v19 + 16LL))(v19),
+            result = COERCE_AS(__typeof__(result),
+                               PSEUDO_REGISTER(__n128, "v0", "=w"));
+        std___1___shared_weak_count___release_weak(),
+            result = COERCE_AS(__typeof__(result),
+                               PSEUDO_REGISTER(__n128, "v0", "=w"));
+      }
+    }
+    result = std___1___shared_weak_count___release_weak();
+  }
+  else if (v15 == 0) {
+    return result;
+  }
+  if (atomic_fetch_add((atomic_ullong* volatile)(v15 + 8),
+                       0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64, long double))(*(_QWORD*)v15 + 16LL))(
+        v15, *(long double*)&result),
+        result =
+            COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
+    return std___1___shared_weak_count___release_weak();
+  }
+  return result;
+}
 
 __int64 EquipMenuItem_UnitItem_Unknown58(_QWORD* a1)
 {
@@ -651,6 +837,55 @@ bool game_menu_anonymous_EquipMenuItem_UnitItem_ACall_closure_Invoke_15ccc00(
 
 __int64
 
+game_menu_anonymous_EquipMenuItem_UnitItem_ACall_closure0_Invoke_15ccf90(
+    __int64 a1, _QWORD* a2)
+{
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  int v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  struct {
+    _QWORD v11[4];
+    _QWORD* v12;
+  } v11_;
+
+  v2 = *a2;
+  v3 = *(_QWORD*)(a1 + 8);
+  if (((*(__int64 (**)(_QWORD))(*(_QWORD*)*a2 + 464LL))(*a2) & 1) == 0) {
+    return 1;
+  }
+  v4 = *(_QWORD*)(v2 + 8);
+  v5 = *(_QWORD*)(v3 + 88);
+  v6 = *(_DWORD*)(v3 + 40);
+  v7 = *(_QWORD*)(v4 + 152);
+  v11_.v12 = v11_.v11;
+  if (v7 != 0) {
+    v8 = v7;
+  }
+  else {
+    v8 = v4;
+  }
+  v11_.v11[0] = GameData_2058b60;
+  v11_.v11[1] = v3;
+  GameRoutine_166a010(v8, v5, v5, v6, (__int64)v11_.v11);
+  if (v11_.v12 == v11_.v11) {
+    v9 = 32;
+    goto LABEL_10;
+  }
+  if (v11_.v12 != nullptr) {
+    v9 = 40;
+  LABEL_10:
+    (*(void (**)(__int64))(*v11_.v12 + v9))((__int64)v11_.v12);
+  }
+  return 12;
+}
+
+__int64
+
 game_menu_anonymous_EquipMenuItem_UnitItem_ACall_closure0_Invoke(__int64 a1)
 {
   __int64 v1;
@@ -680,6 +915,55 @@ game_menu_anonymous_EquipMenuItem_UnitItem_ACall_closure0_Invoke(__int64 a1)
     return (*(__int64 (**)(__int64))(*(_QWORD*)result + 1080LL))(result);
   }
   return result;
+}
+
+__int64
+
+game_menu_anonymous_EquipMenuItem_UnitItem_ACall_closure3_Invoke(__int64 a1,
+                                                                 _QWORD* a2)
+{
+  __int64 v2;
+  __int64 v3;
+  char* v5;
+  __int64 v6;
+  int v7;
+  __int64 v8;
+  __int64 v9;
+  struct {
+    _QWORD v11[4];
+    _QWORD* v12;
+  } v11_;
+
+  v2 = *a2;
+  v3 = *(_QWORD*)(a1 + 8);
+  if (((*(__int64 (**)(_QWORD))(*(_QWORD*)*a2 + 464LL))(*a2) & 1) == 0) {
+    return 1;
+  }
+  v5 = *(char**)(v3 + 88);
+  v6 = *(_QWORD*)(v2 + 8);
+  v7 = *(_DWORD*)(v3 + 40);
+  v11_.v11[2] = *(unsigned __int16*)(a1 + 16) |
+                ((unsigned __int64)*(unsigned __int8*)(a1 + 18) << 16);
+  v11_.v12 = v11_.v11;
+  if (*(_QWORD*)(v6 + 152) != 0) {
+    v8 = *(_QWORD*)(v6 + 152);
+  }
+  else {
+    v8 = v6;
+  }
+  v11_.v11[0] = GameData_20596e0;
+  v11_.v11[1] = v3;
+  GameRoutine_166a500(v8, v5, v7, (__int64)v11_.v11);
+  if (v11_.v12 == v11_.v11) {
+    v9 = 32;
+    goto LABEL_10;
+  }
+  if (v11_.v12 != nullptr) {
+    v9 = 40;
+  LABEL_10:
+    (*(void (**)(__int64))(*v11_.v12 + v9))((__int64)v11_.v12);
+  }
+  return 12;
 }
 
 #pragma GCC visibility pop

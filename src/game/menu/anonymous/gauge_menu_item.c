@@ -15,6 +15,15 @@ __int64 GameRoutine_15744f0(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_181bec0(_QWORD);
 __int64 GameRoutine_181c160(_QWORD);
 __int64 GaugeMenuItem_1674590(__int64 a1);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, _QWORD, _QWORD,
+                                               _QWORD, _QWORD, _QWORD, _QWORD,
+                                               double, float);
+__int64 GameRoutine_181bfe0(_QWORD, _QWORD);
+__int64 GaugeMenuItem_1674590_alt1(_QWORD) __asm__("GaugeMenuItem_1674590");
+__int64 snd_Fade_Destroy_Fade(_QWORD);
+__n128 snd_Fade_Fade_10c830(_QWORD, double);
+__int64 GaugeMenuItem_1674090(char* a1, char a2);
+__int64 GaugeMenuItem_16741d0(char* a1, char a2);
 
 __int64 GaugeMenuItem_1673f50(__int64 a1)
 {
@@ -64,6 +73,106 @@ __int64 GaugeMenuItem_1673fa0(char* a1)
   }
   GameRoutine_1674590(a1);
   return 13;
+}
+
+__int64 GaugeMenuItem_1674090(char* a1, char a2)
+{
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v10;
+  _BYTE v11[200];
+
+  if (((*(__int64 (**)(char*))(*(_QWORD*)a1 + 464LL))(a1) & 1) == 0) {
+    return 0;
+  }
+  if ((GameRoutine_181bec0(a1 + 140) & 1) != 0) {
+    if ((a2 & 1) != 0) {
+      snd_Fade_Fade_10c830(v11, 0.0f);
+      snd_play_ff2d0((void*)(&v10), "SE_SYS_Gauge_Stop", "SE_SYS_Gauge_Stop",
+                     v11, 0, 65537, 0, 0.0f, 1.0f);
+      snd_Fade_Destroy_Fade(v11);
+    }
+    return 0;
+  }
+  if ((GameRoutine_181bd40(a1 + 140, 0) & 1) == 0) {
+    return 0;
+  }
+  (*(void (**)(char*))(*(_QWORD*)a1 + 440LL))(a1);
+  v4 = *((_QWORD*)a1 + 16);
+  if (v4 != 0) {
+    v5 = *((_QWORD*)a1 + 15);
+    v6 = *((_QWORD*)a1 + 16);
+    atomic_fetch_add_explicit((atomic_ullong* volatile)(v4 + 16), 1u,
+                              memory_order_relaxed);
+    v7 = std___1___shared_weak_count_lock(v6);
+    if (v7 != 0) {
+      v8 = v7;
+      if (v5 != 0) {
+        GameRoutine_159e7c0(v5, 0);
+      }
+      if (atomic_fetch_add((atomic_ullong* volatile)(v8 + 8),
+                           0xFFFFFFFFFFFFFFFFLL) == 0) {
+        (*(void (**)(__int64))(*(_QWORD*)v8 + 16LL))(v8);
+        std___1___shared_weak_count___release_weak(v8);
+      }
+    }
+    std___1___shared_weak_count___release_weak(v4);
+  }
+  GaugeMenuItem_1674590_alt1(a1);
+  return 1;
+}
+
+__int64 GaugeMenuItem_16741d0(char* a1, char a2)
+{
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v10;
+  _BYTE v11[200];
+
+  if (((*(__int64 (**)(char*))(*(_QWORD*)a1 + 464LL))(a1) & 1) == 0) {
+    return 0;
+  }
+  if ((GameRoutine_181c160(a1 + 140) & 1) != 0) {
+    if ((a2 & 1) != 0) {
+      snd_Fade_Fade_10c830(v11, 0.0f);
+      snd_play_ff2d0((void*)(&v10), "SE_SYS_Gauge_Stop", "SE_SYS_Gauge_Stop",
+                     v11, 0, 65537, 0, 0.0f, 1.0f);
+      snd_Fade_Destroy_Fade(v11);
+    }
+    return 0;
+  }
+  if ((GameRoutine_181bfe0(a1 + 140, 0) & 1) == 0) {
+    return 0;
+  }
+  (*(void (**)(char*))(*(_QWORD*)a1 + 440LL))(a1);
+  v4 = *((_QWORD*)a1 + 16);
+  if (v4 != 0) {
+    v5 = *((_QWORD*)a1 + 15);
+    v6 = *((_QWORD*)a1 + 16);
+    atomic_fetch_add_explicit((atomic_ullong* volatile)(v4 + 16), 1u,
+                              memory_order_relaxed);
+    v7 = std___1___shared_weak_count_lock(v6);
+    if (v7 != 0) {
+      v8 = v7;
+      if (v5 != 0) {
+        GameRoutine_159e7c0(v5, 1);
+      }
+      if (atomic_fetch_add((atomic_ullong* volatile)(v8 + 8),
+                           0xFFFFFFFFFFFFFFFFLL) == 0) {
+        (*(void (**)(__int64))(*(_QWORD*)v8 + 16LL))(v8);
+        std___1___shared_weak_count___release_weak(v8);
+      }
+    }
+    std___1___shared_weak_count___release_weak(v4);
+  }
+  GaugeMenuItem_1674590_alt1(a1);
+  return 1;
 }
 
 __int64 GaugeMenuItem_1674590(__int64 a1)

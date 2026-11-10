@@ -24,6 +24,12 @@ _QWORD* map_effect_Shoot_1168c00(_QWORD* result, unsigned int a2,
                                  unsigned int a5, char a6);
 _QWORD* map_effect_Shoot_1168f80(_QWORD* result, unsigned int a2,
                                  unsigned int a3, int a4, char a5);
+__int64 game_968b60(__int64, __int64, __int64, __int64, __int64, __int64,
+                    __int64, __int64);
+extern __int64 GameData_22400f8;
+extern __int64 game_script_map_effect_g_effect_manager;
+__int64 map_effect_Delete(__int64 result, int a2, __int64 a3, __int64 a4,
+                          __int64 a5, __int64 a6, __int64 a7, __int64 a8);
 
 _QWORD* map_effect_PreloadAndWait(_QWORD* result)
 {
@@ -175,6 +181,45 @@ LABEL_14:
   v24 = (*(__int64 (**)(__int64))(*(_QWORD*)v23 + 472LL))(v23);
   return (_QWORD*)(*(__int64 (**)(_QWORD, _QWORD))(
       **(_QWORD**)(v24 + 24) + 448LL))(*(_QWORD*)(v24 + 24), 0);
+}
+
+__int64 map_effect_Delete(__int64 result, int a2, __int64 a3, __int64 a4,
+                          __int64 a5, __int64 a6, __int64 a7, __int64 a8)
+{
+  __int64* v8;
+  __int64* v9;
+  __int64 v10;
+  __int64 v11;
+
+  if (game_script_map_effect_g_sequence != 0) {
+    v8 = *(__int64**)(game_script_map_effect_g_effect_manager + 7152);
+    v9 = *(__int64**)(game_script_map_effect_g_effect_manager + 7160);
+    if (v8 == v9) {
+    LABEL_5:
+      v10 = 0;
+    }
+    else {
+      while (1) {
+        v11 = *v8++;
+        v10 = v11;
+        if (*(_DWORD*)(v11 + 40) + (*(_DWORD*)(v11 + 44) << 8) ==
+            (_DWORD)result + (a2 << 8)) {
+          break;
+        }
+        if (v8 == v9) {
+          goto LABEL_5;
+        }
+      }
+    }
+    result =
+        game_968b60(game_script_map_effect_g_effect_manager,
+                    game_script_map_effect_g_sequence, v10, a4, a5, a6, a7, a8);
+    if (GameData_22400f8 != 0 && *(_BYTE*)(GameData_22400f8 + 8) == 1 &&
+        (*(_BYTE*)(GameData_22400f8 + 9) & 1) == 0) {
+      *(_DWORD*)(GameData_22400f8 + 12) |= 0x8000u;
+    }
+  }
+  return result;
 }
 
 _QWORD* map_effect_Shoot_1168c00(_QWORD* result, unsigned int a2,

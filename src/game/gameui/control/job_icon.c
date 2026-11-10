@@ -31,6 +31,116 @@ __int64 JobIcon_19a9be0(__int64 a1, __int64 a2, __int64 a3);
 __int64 JobIcon_19a9d50(__int64 a1, __int64 a2, char a3, unsigned __int8 a4,
                         __int64 a5, int a6, char a7, __int64 a8, char a9,
                         __int16 a10);
+__int64 Element_18850d0(_QWORD, _QWORD, _QWORD);
+__int64 Element_1886290(_QWORD, _QWORD);
+__int64 LayoutEx_579160(_QWORD, _QWORD);
+__int64 __cxa_guard_acquire(_QWORD);
+__int64 __cxa_guard_release(_QWORD);
+__int64 fw_text_String_CopyTerminated(_QWORD, _QWORD, _QWORD);
+__int64 nn_ui2d_Pane_GetRuntimeTypeInfoStatic(void);
+extern _UNKNOWN* GameData_212dfd0;
+extern _UNKNOWN GameData_21f8028;
+extern __int64 (*GameData_211f070[])();
+extern __int64 (*GameData_211f098[])();
+extern __int64 (*GameData_211f100[])();
+extern __int64 (*GameData_211f2d8[])();
+extern __int64 (*GameData_211f300[])();
+extern __int64 (
+    *game_gameui_control_HelpableElement_Destroy_HelpableElement_18b3360_ptr
+        [])();
+extern __int64 (*game_gameui_control_JobIcon_vtable[])();
+extern __int64* GameData_2132080[6];
+extern __int64 GameData_21f8020;
+__attribute__((swiftcall)) void JobIcon_19a8a80(PSEUDO_X8 x8_, __int64 a1,
+                                                __int64 a2);
+
+__attribute__((swiftcall)) void JobIcon_19a8a80(PSEUDO_X8 x8_, __int64 a1,
+                                                __int64 a2)
+{
+  _QWORD* a3 = (_QWORD*)PSEUDO_X8_VALUE(x8_);
+  _QWORD* v6;
+  _QWORD* v7;
+  _QWORD* v8;
+  _QWORD* v9;
+  __int64* v10;
+  __int64 v11;
+  __int64 v12;
+  __int64* result;
+  __int64* v14;
+  _QWORD v16[2];
+
+  v6 = (_QWORD*)LayoutEx_579160(1136, 8);
+  v7 = v6 + 3;
+  v8 = v6;
+  v6[1] = 0;
+  v6[2] = 0;
+  *v6 = GameData_211f100;
+  Element_18850d0(v6 + 3, a1, a2);
+  v9 = v8 + 134;
+  v10 = GameData_2132080[0];
+  v8[3] = GameData_2132080[0] + 2;
+  v8[12] = v10 + 51;
+  v8[132] = v10 + 56;
+  *((_DWORD*)v8 + 266) = *(_DWORD*)(a1 + 1040);
+  *((_BYTE*)v8 + 1068) = *(_BYTE*)(a1 + 1044);
+  if ((*(_BYTE*)(a1 + 1048) & 1) != 0) {
+    fw_text_String_CopyTerminated(v9, *(_QWORD*)(a1 + 1064),
+                                  *(_QWORD*)(a1 + 1056));
+  }
+  else {
+    v11 = *(_QWORD*)(a1 + 1048);
+    v12 = *(_QWORD*)(a1 + 1064);
+    v8[135] = *(_QWORD*)(a1 + 1056);
+    v8[136] = v12;
+    *v9 = v11;
+  }
+  v8[138] = 0;
+  v8[139] = 0;
+  v8[3] = game_gameui_control_JobIcon_vtable;
+  v8[140] = 0;
+  *((_BYTE*)v8 + 1134) = 0;
+  v8[132] = GameData_211f098;
+  v8[12] = GameData_211f070;
+  *((_WORD*)v8 + 564) = 257;
+  *(_DWORD*)((char*)v8 + 1130) = 0;
+  v16[0] = "L_Gauge";
+  v16[1] = 7;
+  result = (__int64*)Element_1886290(v7, v16);
+  v14 = result;
+  if ((atomic_load_explicit((atomic_uchar* volatile)GameData_212dfd0,
+                            memory_order_acquire) &
+       1) == 0) {
+    result = (__int64*)__cxa_guard_acquire(&GameData_21f8028);
+    if ((_DWORD)result != 0) {
+      GameData_21f8020 = nn_ui2d_Pane_GetRuntimeTypeInfoStatic();
+      result = (__int64*)__cxa_guard_release(&GameData_21f8028);
+    }
+  }
+  if (v14 == nullptr) {
+    goto LABEL_13;
+  }
+  result = (__int64*)(*(__int64 (**)(__int64*))(*v14 + 16))(v14);
+  if (result != &GameData_21f8020) {
+    do {
+      result = (__int64*)*result;
+    } while (result != &GameData_21f8020 && result != nullptr);
+    if (result == nullptr) {
+    LABEL_13:
+      v14 = nullptr;
+    }
+  }
+  v8[138] = v14;
+  *a3 = v7;
+  a3[1] = v8;
+  v8[3] =
+      game_gameui_control_HelpableElement_Destroy_HelpableElement_18b3360_ptr;
+  v8[12] = GameData_211f2d8;
+  v8[132] = GameData_211f300;
+  {
+    result;
+    return;
+  }
+}
 
 __int64 JobIcon_19a8c50(__int64 a1, __int64 a2)
 {

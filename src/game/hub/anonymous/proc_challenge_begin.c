@@ -21,6 +21,65 @@ __int64 ProcChallengeBegin_fc34c0(__int64 result);
 __n128 ProcChallengeBegin_fc3840(_QWORD* a1);
 __int64 ProcChallengeBegin_fc3b20(__int64 a1);
 __int64 game_hub_anonymous_ProcChallengeBegin_Dialog_closure_Invoke(__int64 a1);
+__int64 GameRoutine_d799f0(__int64);
+extern __int64* GameData_212ebc0[5];
+void GameRoutine_1028300(__int64, __int64*);
+void GameRoutine_1028670(__int64, __int64*);
+void ProcChallengeBegin_fc3840_alt1(_QWORD*) __asm__(
+    "ProcChallengeBegin_fc3840");
+__n128 ProcChallengeBegin_fc3040(__int64 a1);
+__n128 ProcChallengeBegin_fc37f0(__int64 a1);
+
+__n128 ProcChallengeBegin_fc3040(__int64 a1)
+{
+  __int64 v2;
+  int v3;
+  int v4;
+  __n128 result;
+  struct {
+    __int64 v6;
+    __int64 v7;
+  } v6_;
+
+  result = COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
+  v2 = *GameData_212ebc0[0];
+  if ((*(_BYTE*)(*GameData_212ebc0[0] + 161) & 1) == 0) {
+    *(_BYTE*)(v2 + 161) = 1;
+    v3 = *(_DWORD*)(v2 + 176);
+    *(_DWORD*)(v2 + 176) = v3 + 1;
+    if (v3 == 0) {
+      (**(void (***)(__int64))(v2 + 168))(v2 + 168),
+          result = COERCE_AS(__typeof__(result),
+                             PSEUDO_REGISTER(__n128, "v0", "=w"));
+    }
+    GameRoutine_d799f0(v2),
+        result =
+            COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
+  }
+  if ((*(_BYTE*)(v2 + 162) & 1) == 0) {
+    *(_BYTE*)(v2 + 162) = 1;
+    v4 = *(_DWORD*)(v2 + 192);
+    *(_DWORD*)(v2 + 192) = v4 + 1;
+    if (v4 == 0) {
+      (**(void (***)(__int64))(v2 + 184))(v2 + 184),
+          result = COERCE_AS(__typeof__(result),
+                             PSEUDO_REGISTER(__n128, "v0", "=w"));
+    }
+    GameRoutine_d799f0(v2),
+        result =
+            COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
+  }
+  ProcChallengeBegin_fc3840_alt1(&v6_.v6),
+      result =
+          COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
+  GameRoutine_1028300(a1, &v6_.v6),
+      result =
+          COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
+  if (v6_.v7 != 0) {
+    return std___1___shared_weak_count___release_weak(v6_.v7);
+  }
+  return result;
+}
 
 __int64 game_hub_anonymous_ProcChallengeBegin_Dialog(__int64 a1)
 {
@@ -106,6 +165,27 @@ __int64 ProcChallengeBegin_fc34c0(__int64 result)
       }
       v2 += 64;
     }
+  }
+  return result;
+}
+
+__n128 ProcChallengeBegin_fc37f0(__int64 a1)
+{
+  __n128 result;
+  struct {
+    __int64 v3;
+    __int64 v4;
+  } v3_;
+
+  result = COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
+  ProcChallengeBegin_fc3840_alt1(&v3_.v3),
+      result =
+          COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
+  GameRoutine_1028670(a1, &v3_.v3),
+      result =
+          COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
+  if (v3_.v4 != 0) {
+    return std___1___shared_weak_count___release_weak(v3_.v4);
   }
   return result;
 }

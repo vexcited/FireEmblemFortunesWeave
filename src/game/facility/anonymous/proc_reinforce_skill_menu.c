@@ -33,6 +33,11 @@ extern __int64 (*game_facility_anonymous_ReinforceSkillMenuItem_vtable[])();
 __int64
 game_facility_anonymous_ProcReinforceSkillMenu_AddItemList_closure_Invoke(
     __int64 a1, unsigned int* a2);
+__int64 Unit_6d09e0(__int64, __int64, __int64);
+extern __int64 (*GameData_209a358[])();
+__int64 game_facility_anonymous_ProcReinforceSkillMenu_AddItemList(__int64 a1,
+                                                                   __int64 a2,
+                                                                   __int64 a3);
 
 __int64 ProcReinforceSkillMenu_16d7120(_QWORD* a1, char a2)
 {
@@ -258,6 +263,36 @@ __int64 ProcReinforceSkillMenu_Unknown88(__int64 a1)
     }
   }
   return result;
+}
+
+__int64 game_facility_anonymous_ProcReinforceSkillMenu_AddItemList(__int64 a1,
+                                                                   __int64 a2,
+                                                                   __int64 a3)
+{
+  __int64 v3;
+  __int64 result;
+  __int64 v5;
+  struct {
+    _QWORD v6[4];
+    _QWORD* v7;
+  } v6_;
+
+  v3 = *(_QWORD*)(a1 + 1064);
+  v6_.v6[0] = GameData_209a358;
+  v6_.v6[1] = a1;
+  v6_.v7 = v6_.v6;
+  Unit_6d09e0(v3, (__int64)v6_.v6, a3);
+  result = (__int64)v6_.v7;
+  if (v6_.v7 == v6_.v6) {
+    v5 = 32;
+  }
+  else {
+    if (v6_.v7 == nullptr) {
+      return result;
+    }
+    v5 = 40;
+  }
+  return (*(__int64 (**)(__int64))(*v6_.v7 + v5))((__int64)v6_.v7);
 }
 
 __int64

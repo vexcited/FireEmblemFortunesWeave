@@ -20,6 +20,9 @@ __int64 CaptureTexture_Unknown9(__int64 result);
 __int64 GameRoutine_575d70(void);
 extern __int64 (*nn_ui2d_CaptureTexture_vtable[])();
 __int64 CaptureTexture_DeletingDestructor(_QWORD* a1);
+__int64 GameRoutine_5fc4d0(__int64 result);
+__int64 GameRoutine_5fd760(__int64, __int64, int*, __int64, __int64, char);
+__int64 CaptureTexture_582150(_QWORD* a1, __int64 a2, __int64 a3);
 
 __int64 CaptureTexture_DeletingDestructor(_QWORD* a1)
 {
@@ -222,6 +225,76 @@ __int64 CaptureTexture_Unknown5(__int64 a1)
   else {
     return Pane_58e6c0();
   }
+}
+
+__int64 CaptureTexture_582150(_QWORD* a1, __int64 a2, __int64 a3)
+{
+  __int64 (*v3)(__int64, _QWORD*, _QWORD*, __int64, _QWORD*, _QWORD, _QWORD);
+  _QWORD* v4;
+  __int64 result;
+  __int64 v8;
+  __int64 v9;
+  __int64 v10;
+  int v11;
+  __int64 v12;
+  __int64 v13;
+  struct {
+    __int64 v14;
+    __int64 v15;
+    __int64 v16;
+    __int64 v17;
+    int v18;
+  } v14_;
+  struct {
+    _QWORD v19[2];
+    __int64 v20;
+    __int64 v21;
+    int v22;
+  } v19_;
+  _QWORD var4[2];
+
+  v3 = *(__int64 (**)(__int64, _QWORD*, _QWORD*, __int64, _QWORD*, _QWORD,
+                      _QWORD))(a2 + 376);
+  v4 = (_QWORD*)a1[1];
+  if (v3 == nullptr || ((result = v3(a3, v4 + 8, v4 + 1, a1[4] + 8LL, v4 + 17,
+                                     a1[7], *(_QWORD*)(a2 + 384))) &
+                        1) == 0) {
+    v8 = a1[4];
+    v9 = v4[3];
+    v19_.v19[0] = 0;
+    v19_.v19[1] = 0;
+    v10 = *(_QWORD*)(v8 + 24);
+    v19_.v22 = 0;
+    v19_.v20 = 0;
+    v19_.v21 = 0;
+    GameRoutine_5fc4d0((__int64)v19_.v19);
+    v19_.v19[0] = 0;
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v4 + 32LL))(
+        (void*)(&v14_.v14), v4);
+    HIDWORD(v19_.v19[1]) = (unsigned __int16)v14_.v14;
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v4 + 32LL))(
+        (void*)(&v14_.v14), v4);
+    v11 = WORD1(v14_.v14);
+    v14_.v18 = 0;
+    v14_.v16 = 0;
+    v14_.v17 = 0;
+    v14_.v14 = 0;
+    v14_.v15 = 0;
+    LODWORD(v19_.v20) = v11;
+    GameRoutine_5fc4d0((__int64)&v14_.v14);
+    v12 = a1[4];
+    v14_.v14 = 0;
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64))(
+        *(_QWORD*)v12 + 32LL))((void*)(var4), (__int64)v12);
+    v13 = a1[4];
+    HIDWORD(v14_.v15) = LOWORD(var4[0]);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64))(
+        *(_QWORD*)v13 + 32LL))((void*)(var4), (__int64)v13);
+    LODWORD(v14_.v16) = WORD1(var4[0]);
+    return GameRoutine_5fd760(a3, v9, (int*)v19_.v19, v10, (__int64)&v14_.v14,
+                              0);
+  }
+  return result;
 }
 
 __int64 CaptureTexture_Unknown9(__int64 result)

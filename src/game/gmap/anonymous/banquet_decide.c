@@ -38,6 +38,7 @@ __int64 BanquetDecide_Unknown146(__int64 a1);
 _DWORD* BanquetDecide_Unknown149(__int64 a1);
 __int64 BanquetDecide_Unknown157(__int64 a1);
 __int64 BanquetDecide_Unknown158(__int64 a1);
+__int64 BanquetDecide_Unknown150(__int64 a1);
 
 __int64 BanquetDecide_Unknown30(__int64 a1, char a2)
 {
@@ -358,6 +359,38 @@ _DWORD* BanquetDecide_Unknown149(__int64 a1)
     v5 = result;
     game_menu_PageTab_Update(result + 164);
     return (_DWORD*)game_menu_BasicMenu_Unknown16de4d0(v5);
+  }
+  return result;
+}
+
+__int64 BanquetDecide_Unknown150(__int64 a1)
+{
+  __int64 v1;
+  __int64 result;
+  __int64 v3;
+  int v4;
+
+  v1 = __dynamic_cast(*(_QWORD*)(a1 + 1056), GameData_21319e8[0],
+                      &GameData_20702e8, 0);
+  *(_BYTE*)(v1 + 440) = 1;
+  result = *(_QWORD*)(v1 + 312);
+  if (result != 0) {
+    result = __dynamic_cast(result, GameData_21319f0[0], &GameData_20718c8, 0);
+    v3 = result;
+    v4 = *(_DWORD*)(result + 660);
+    if (v4 == 0) {
+      return result;
+    }
+    goto LABEL_3;
+  }
+  v3 = 0;
+  v4 = (*(_DWORD*)0x294LL);
+  if ((*(_DWORD*)0x294LL) != 0) {
+  LABEL_3:
+    *(_DWORD*)(v3 + 664) = v4;
+    *(_DWORD*)(v3 + 660) = 0;
+    game_menu_PageTab_Update(v3 + 656);
+    return game_menu_BasicMenu_Unknown16de4d0(v3);
   }
   return result;
 }

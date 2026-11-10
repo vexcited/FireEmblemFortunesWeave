@@ -26,6 +26,8 @@ __int64 WaveReader_Unknown10(__int64 a1, __int64 a2, int a3);
 __int64 WaveReader_Unknown13(__int64 result);
 __int64 WaveReader_188ee0(__int64 a1);
 __int64 WaveReader_1897c0(_QWORD* a1, unsigned int a2);
+__int64 snd_fnd_WeakHandle_get_alt1(__int64) __asm__("snd_fnd_WeakHandle_get");
+__int64 WaveReader_Unknown14(__int64 a1, int a2);
 
 __int64 WaveReader_Destructor(__int64 a1)
 {
@@ -274,6 +276,43 @@ __int64 WaveReader_188ee0(__int64 a1)
         **(_QWORD**)snd_g_memory_ptr[0] + 24LL))(*(_QWORD**)snd_g_memory_ptr[0],
                                                  *snd_g_memory_ptr[0], v7);
     return v5;
+  }
+  return result;
+}
+
+__int64 WaveReader_Unknown14(__int64 a1, int a2)
+{
+  __int64 result;
+  unsigned int v5;
+  int v6;
+  __int64 v7;
+
+  result = (*(__int64 (**)(__int64, _QWORD, _QWORD))(*(_QWORD*)a1 + 64LL))(
+      a1, *(unsigned int*)(*(_QWORD*)(a1 + 160) + 64LL), 0);
+  *(_DWORD*)(*(_QWORD*)(a1 + 160) + 68LL) = 0;
+  if (a2 >= 1) {
+    do {
+      (*(void (**)(__int64, _QWORD, __int64))(*(_QWORD*)a1 + 72LL))(
+          a1, *(_QWORD*)(*(_QWORD*)(a1 + 160) + 72LL), 8);
+      v5 = bswap32(**(_DWORD**)(*(_QWORD*)(a1 + 160) + 72LL));
+      v6 =
+          (v5 + *(_DWORD*)(a1 + 76)) & ~((int)(v5 + *(_DWORD*)(a1 + 76)) >> 31);
+      v7 = *(_QWORD*)(a1 + 48);
+      *(_DWORD*)(a1 + 76) = v6;
+      result = snd_fnd_WeakHandle_get_alt1(v7 + 24);
+      if (result != 0) {
+        result = (*(__int64 (**)(__int64))(*(_QWORD*)result + 80LL))(result);
+      }
+      if (v6 > (int)result) {
+        result = snd_fnd_WeakHandle_get_alt1(*(_QWORD*)(a1 + 48) + 24LL);
+        if (result != 0) {
+          result = (*(__int64 (**)(__int64))(*(_QWORD*)result + 80LL))(result);
+        }
+        *(_DWORD*)(a1 + 76) = result;
+      }
+      --a2;
+      *(_DWORD*)(*(_QWORD*)(a1 + 160) + 68LL) += v5 + 8;
+    } while (a2 != 0);
   }
   return result;
 }

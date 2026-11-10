@@ -17,6 +17,86 @@ extern int GameData_21fdf08;
 extern int GameData_21fdf14;
 __int64 TaskCharaMask_bfa6d0(__int64 a1, _QWORD* a2, _QWORD* a3, _QWORD* a4,
                              unsigned int* a5);
+_QWORD* GameRoutine_604020(_QWORD* result);
+__attribute__((swiftcall)) void
+gfx_shader_Archive_CreateShader(PSEUDO_X8, __int64*, __int64, unsigned __int64,
+                                __int64, unsigned __int64);
+__int64 GameRoutine_5fc230(__int64 result);
+__int64 GameRoutine_604060(__int64, __int64*, __int64);
+__int64 GameRoutine_615760(__int64, __int64);
+__int64 GameRoutine_ad5280(__int64*);
+extern __int64 (*GameData_1fd0f08[])();
+extern __int64* game_g_frame_clock_ptr[3];
+__int64 gfxa_TaskCharaMask_Impl_Impl(__int64** a1, __int64* a2);
+
+__int64 gfxa_TaskCharaMask_Impl_Impl(__int64** a1, __int64* a2)
+{
+  __int64** v3;
+  __int64* v4;
+  __int64 v5;
+  __int64* v6;
+  __int64* v7;
+  __int64* v8;
+  __int64 v9;
+  struct {
+    __int64 (**v11)();
+    __int64 v12;
+    char gap16_[16];
+    __int64 (***v13)();
+  } v11_;
+  _QWORD v14[4];
+
+  *a1 = a2;
+  a1[2] = nullptr;
+  a1[1] = nullptr;
+  v3 = a1 + 1;
+  GameRoutine_604020(a1 + 3);
+  memset(v14, 0, sizeof(v14));
+  a1[18] = (__int64*)-1LL;
+  v11_.v13 = &v11_.v11;
+  v11_.v11 = GameData_1fd0f08;
+  GameRoutine_5fc230((__int64)v14);
+  if (v11_.v13 != nullptr) {
+    ((void (*)(__int64 (***)(void), _QWORD*))(*v11_.v13)[6])(v11_.v13, v14);
+  }
+  v4 = game_g_frame_clock_ptr[0];
+  GameRoutine_604060((__int64)(a1 + 3),
+                     (__int64*)(*game_g_frame_clock_ptr[0] + 568),
+                     (__int64)v14);
+  a1[18] =
+      (__int64*)GameRoutine_615760(*(_QWORD*)(*v4 + 552), (__int64)(a1 + 3));
+  if (v11_.v13 == &v11_.v11) {
+    v5 = 4;
+    goto LABEL_7;
+  }
+  if (v11_.v13 != nullptr) {
+    v5 = 5;
+  LABEL_7:
+    ((__int64 (*)(__int64))(*v11_.v13)[v5])((__int64)v11_.v13);
+  }
+  gfx_shader_Archive_CreateShader((void*)(&v11_.v11), (__int64*)(*a1)[1676],
+                                  (__int64)"ImageProcessing", 0xFu,
+                                  (__int64)"CharaMaskComp", 0xDu);
+  v6 = (__int64*)v11_.v11;
+  v7 = (__int64*)v11_.v12;
+  v8 = a1[2];
+  v11_.v11 = nullptr;
+  v11_.v12 = 0;
+  a1[1] = v6;
+  a1[2] = v7;
+  if (v8 != nullptr && atomic_fetch_add((atomic_ullong* volatile)(v8 + 1),
+                                        0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64*))(*v8 + 16))(v8);
+    std___1___shared_weak_count___release_weak(v8);
+  }
+  v9 = v11_.v12;
+  if (v11_.v12 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v11_.v12 + 8),
+                                        0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v9 + 16LL))(v9);
+    std___1___shared_weak_count___release_weak(v9);
+  }
+  return GameRoutine_ad5280(*v3);
+}
 
 __int64 TaskCharaMask_bfa6d0(__int64 a1, _QWORD* a2, _QWORD* a3, _QWORD* a4,
                              unsigned int* a5)

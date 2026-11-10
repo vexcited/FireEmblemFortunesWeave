@@ -74,6 +74,23 @@ __int64 SequenceSoundPlayer_28f860(__int64 result, unsigned int a2,
                                    unsigned int a3, float a4);
 __int64 SequenceSoundPlayer_Unknown3_290ff0(__int64 result);
 __int64 SequenceSoundPlayer_Unknown4(__int64 a1);
+__attribute__((swiftcall)) void nn_atk_detail_294f30(PSEUDO_X8, __int64 result,
+                                                     int);
+__int64 nn_detail_UnexpectedDefaultImpl(_QWORD, _QWORD);
+extern _UNKNOWN GameData_219d0d0;
+float SequenceSoundPlayer_2906c0(__int64, float*, _QWORD*);
+__int64 SequenceSoundPlayer_28e5c0(__int64 result, unsigned int a2, __int64 a3);
+__attribute__((swiftcall)) void
+SequenceSoundPlayer_28e690(PSEUDO_X8 x8_, __int64 result, int a2);
+float SequenceSoundPlayer_290500(__int64 a1, __int64 a2);
+__int64* GameRoutine_27cab0(__int64);
+__int64 GameRoutine_28fbe0(_QWORD*);
+__int64 GameRoutine_2a2c60(__int64, __int64, unsigned int);
+__int64 SequenceSoundPlayer_290000(__int64, __int64*);
+__int64 SequenceSoundPlayer_290180(__int64 result);
+__int64 nn_os_WaitEvent(_QWORD);
+void* TaskThread_2a2ae0();
+__int64 SequenceSoundPlayer_28fcd0(__int64 result, unsigned int a2);
 
 __int64 SequenceSoundPlayer_Unknown2(__int64 a1, __int64 a2, __int64 a3)
 {
@@ -414,6 +431,86 @@ __int64 SequenceSoundPlayer_28e5b0(__int64 result, __int64 a2, __int64 a3)
   *(_QWORD*)(result + 328) = a2;
   *(_QWORD*)(result + 336) = a3;
   return result;
+}
+
+__int64 SequenceSoundPlayer_28e5c0(__int64 result, unsigned int a2, __int64 a3)
+{
+  __int64 v3;
+  __int64 v4;
+  __int64 v7;
+  struct {
+    _QWORD v8[3];
+    __int64 v9;
+  } v8_;
+  struct {
+    __int64 v10;
+    __int64 v11;
+  } v10_;
+
+  if (*(_QWORD*)(result + 328) != 0) {
+    v3 = result;
+    v4 = result + 520;
+    nn_os_AcquireWriteLock(result + 472);
+    nn_os_AcquireWriteLock(&GameData_219d0d0);
+    v10_.v10 = 0;
+    v10_.v11 = 0;
+    nn_atk_detail_294f30((void*)(&v10_.v10), a3, 0);
+    v8_.v8[0] = v4;
+    v8_.v8[1] = GameData_2135328[0];
+    v8_.v8[2] = v10_.v10;
+    v8_.v9 = 0;
+    LOBYTE(v8_.v9) = *(_BYTE*)(a3 + 200);
+    (*(void (**)(_QWORD, _QWORD*, _QWORD))(v3 + 328))(a2, v8_.v8,
+                                                      *(_QWORD*)(v3 + 336));
+    v7 = v10_.v11;
+    *(_BYTE*)(a3 + 200) = v8_.v9;
+    if (v7 != 0) {
+      nn_os_ReleaseWriteLock(v7);
+    }
+    nn_os_ReleaseWriteLock(&GameData_219d0d0);
+    return nn_os_ReleaseWriteLock(v3 + 472);
+  }
+  return result;
+}
+
+__attribute__((swiftcall)) void
+
+SequenceSoundPlayer_28e690(PSEUDO_X8 x8_, __int64 result, int a2)
+{
+  _QWORD* a3 = (_QWORD*)PSEUDO_X8_VALUE(x8_);
+  __int64 v3;
+  __int64 v4;
+  void* v5;
+
+  if (a2 > 15) {
+    if ((unsigned int)a2 > 0x1F) {
+      *a3 = 0;
+      a3[1] = 0;
+    }
+    else {
+      v5 = GameData_2135338;
+      *a3 = (char*)GameData_2135328[0] + 2 * (unsigned int)(a2 - 16);
+      a3[1] = v5;
+      {
+        nn_os_AcquireWriteLock(v5);
+        return;
+      }
+    }
+  }
+  else {
+    v3 = result + 2LL * a2;
+    v4 = result + 472;
+    *a3 = v3 + 520;
+    a3[1] = v4;
+    {
+      nn_os_AcquireWriteLock(v4);
+      return;
+    }
+  }
+  {
+    result;
+    return;
+  }
 }
 
 __int64 SequenceSoundPlayer_28e6e0(__int64 a1, int a2, __int16 a3)
@@ -1229,6 +1326,349 @@ __int64 SequenceSoundPlayer_Unknown8(__int64 result, unsigned __int64 a2,
     if (a2 <= v47 && v47 <= a3) {
       return GameRoutine_28bc60((__int64)(v6 + 95));
     }
+  }
+  return result;
+}
+
+__int64 SequenceSoundPlayer_28fcd0(__int64 result, unsigned int a2)
+{
+
+#pragma clang fp contract(off)
+  int v2;
+  __int64 v4;
+  __int64 v5;
+  __int64* v6;
+  __int64* v7;
+  __int64 v8;
+  __int64* v9;
+  __int64* v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
+  __int64 v14;
+  __int64 v15;
+  __int64 v16;
+  __int64 v17;
+  __int64 v18;
+  __int64 v19;
+  __int64* v20;
+  __int64 v21;
+  __int64 v22;
+  __int64 v23;
+  __int64 v24;
+  __int64 v25;
+  __int64 v26;
+  __int64 v27;
+  __int64 v28;
+  __int64 v29;
+  __int64 v30;
+  int v31;
+  __int64 v32;
+  int v33;
+  int v34;
+  int v35;
+  __int64 v36;
+  __int64 v37;
+  __int64 v38;
+  __int64 v39;
+  __int64 v40;
+  __int64 v41;
+  int v42;
+  int v43;
+  int v44;
+  void* v45;
+  int v46;
+  bool v47;
+  int v48;
+  struct {
+    __int64 v49[9];
+    int v50;
+    int v51;
+    int v52;
+    int v53;
+    __int64 v54;
+  } v49_;
+
+  v2 = *(unsigned __int8*)(result + 784);
+  v4 = result;
+  if (v2 != 2) {
+    if (v2 != 1) {
+    LABEL_18:
+      v46 = *(_DWORD*)(v4 + 288);
+      v47 = __OFSUB__(v46, 1);
+      v48 = v46 - 1;
+      if (v48 < 0 != v47) {
+        if (*(_BYTE*)(v4 + 64) == 1 && (*(_BYTE*)(v4 + 65) & 1) != 0) {
+          if (*(_DWORD*)(v4 + 280) != 0 || *(float*)(v4 + 284) > 0x0.0p+0f) {
+            SequenceSoundPlayer_290180(v4);
+          }
+          else if ((*(_BYTE*)(v4 + 66) & 1) == 0) {
+            SequenceSoundPlayer_290500(v4, a2);
+          }
+          return GameRoutine_28fbe0((_QWORD*)v4);
+        }
+      }
+      else {
+        *(_DWORD*)(v4 + 288) = v48;
+      }
+      return result;
+    }
+    v5 = *(_QWORD*)(result + 816);
+    if (v5 == 0) {
+      return result;
+    }
+    v6 = *(__int64**)(v5 + 48);
+    if (v6 == (__int64*)(v5 + 40)) {
+      return result;
+    }
+    v7 = (__int64*)v6[1];
+    v8 = *v7;
+    *(_QWORD*)(*v6 + 8) = v7;
+    *v7 = *v6;
+    *(_QWORD*)(v8 + 8) = v6;
+    *v6 = v8;
+    *(_QWORD*)(result + 824) = v6 - 148;
+    *(_BYTE*)(result + 784) = 2;
+    nn_os_WaitEvent(v6 - 145);
+    result = nn_os_WaitEvent(v6 - 110);
+    *((_DWORD*)v6 - 280) = 0;
+    v9 = v6 - 126;
+    *v9 = 0;
+    v9[1] = 0;
+    v9[2] = 0;
+    v9[3] = 0;
+    v9[4] = 0;
+    v9[5] = 0;
+    v9[6] = 0;
+    v9[7] = 0;
+    v9[8] = 0;
+    *((_DWORD*)v9 + 18) = 0;
+    *((_BYTE*)v6 - 912) = 0;
+    v10 = v6 - 139;
+    *v10 = *(_QWORD*)(v4 + 832);
+    v11 = *(_QWORD*)(v4 + 840);
+    v12 = *(_QWORD*)(v4 + 848);
+    v13 = *(_QWORD*)(v4 + 864);
+    v10[3] = *(_QWORD*)(v4 + 856);
+    v10[4] = v13;
+    v10[1] = v11;
+    v10[2] = v12;
+    v14 = *(_QWORD*)(v4 + 872);
+    v15 = *(_QWORD*)(v4 + 880);
+    v16 = *(_QWORD*)(v4 + 896);
+    v10[7] = *(_QWORD*)(v4 + 888);
+    v10[8] = v16;
+    v10[5] = v14;
+    v10[6] = v15;
+    v17 = *(_QWORD*)(v4 + 904);
+    v18 = *(_QWORD*)(v4 + 912);
+    v19 = *(_QWORD*)(v4 + 928);
+    v10[11] = *(_QWORD*)(v4 + 920);
+    v10[12] = v19;
+    v10[9] = v17;
+    v10[10] = v18;
+    *(v6 - 116) = 0;
+    *(v6 - 115) = (__int64)(v6 - 89);
+    *((_DWORD*)v6 - 210) = 0;
+    v20 = v6 - 104;
+    *v20 = *(_QWORD*)(v4 + 832);
+    v21 = *(_QWORD*)(v4 + 840);
+    v22 = *(_QWORD*)(v4 + 848);
+    v23 = *(_QWORD*)(v4 + 864);
+    v20[3] = *(_QWORD*)(v4 + 856);
+    v20[4] = v23;
+    v20[1] = v21;
+    v20[2] = v22;
+    v24 = *(_QWORD*)(v4 + 872);
+    v25 = *(_QWORD*)(v4 + 880);
+    v26 = *(_QWORD*)(v4 + 896);
+    v20[7] = *(_QWORD*)(v4 + 888);
+    v20[8] = v26;
+    v20[5] = v24;
+    v20[6] = v25;
+    v27 = *(_QWORD*)(v4 + 904);
+    v28 = *(_QWORD*)(v4 + 912);
+    v29 = *(_QWORD*)(v4 + 928);
+    v20[11] = *(_QWORD*)(v4 + 920);
+    v20[12] = v29;
+    v20[9] = v27;
+    v20[10] = v28;
+    *(v6 - 91) = 0;
+    *(v6 - 90) = (__int64)(v6 - 89);
+  }
+  v30 = *(_QWORD*)(v4 + 824);
+  if (*(_QWORD*)(v30 + 256) == 0) {
+    result = (__int64)GameRoutine_27cab0(*(_QWORD*)(v30 + 88));
+    *(_QWORD*)(v30 + 256) = result;
+    if (result == 0) {
+      return result;
+    }
+  }
+  v31 = *(_DWORD*)(v30 + 64);
+  if ((unsigned int)(v31 - 3) < 2) {
+    v32 = *(_QWORD*)(v4 + 824);
+    if (*(_BYTE*)(v32 + 272) != 1) {
+      *(_BYTE*)(v4 + 67) = 1;
+      return SequenceSoundPlayer_28dff0(v4);
+    }
+    v33 = *(_DWORD*)(v4 + 800);
+    v34 = *(_DWORD*)(v4 + 804);
+    v35 = *(_DWORD*)(v4 + 808);
+    v49_.v54 = 0;
+    v49_.v52 = v33;
+    v49_.v53 = v34;
+    v36 = *(_QWORD*)(v32 + 176);
+    v37 = *(_QWORD*)(v32 + 184);
+    LODWORD(v49_.v54) = v35;
+    v49_.v49[0] = v36;
+    v49_.v49[1] = v37;
+    v38 = *(_QWORD*)(v32 + 200);
+    v49_.v49[2] = *(_QWORD*)(v32 + 192);
+    v49_.v49[3] = v38;
+    v39 = *(_QWORD*)(v32 + 216);
+    v49_.v49[4] = *(_QWORD*)(v32 + 208);
+    v49_.v49[5] = v39;
+    v40 = *(_QWORD*)(v32 + 232);
+    v49_.v49[6] = *(_QWORD*)(v32 + 224);
+    v49_.v49[7] = v40;
+    v41 = *(_QWORD*)(v32 + 240);
+    v42 = *(_DWORD*)(v32 + 248);
+    v49_.v49[8] = v41;
+    LODWORD(v41) = *(_DWORD*)(v4 + 788);
+    v49_.v50 = v42;
+    v49_.v51 = v41;
+    result = SequenceSoundPlayer_290000(v4, v49_.v49);
+    if (*(_BYTE*)(v4 + 64) == 1) {
+      v43 = *(_DWORD*)(v4 + 796);
+      v44 = *(_DWORD*)(v4 + 792);
+      if (v44 == 1) {
+        *(float*)(v4 + 284) = *(float*)(v4 + 284) + (float)v43;
+      }
+      else if (v44 == 0) {
+        *(_DWORD*)(v4 + 280) += v43;
+      }
+    }
+    goto LABEL_18;
+  }
+  if (v31 == 0) {
+    v45 = TaskThread_2a2ae0();
+    return GameRoutine_2a2c60((__int64)v45, v30, 1u);
+  }
+  return result;
+}
+
+float SequenceSoundPlayer_290500(__int64 a1, __int64 a2)
+{
+
+#pragma clang fp contract(off)
+  int v2;
+  float result;
+  unsigned __int64 v5;
+  char v6;
+  __int64 v7;
+  unsigned __int64 v8;
+  bool v9;
+  unsigned __int64 v10;
+  char v11;
+  float v12;
+  char v13;
+  unsigned __int64 v14;
+  float v15;
+
+  v11 = COERCE_AS(__typeof__(v11),
+                  PSEUDO_REGISTER(unsigned long long, "x0", "=r")),
+  v13 = COERCE_AS(__typeof__(v13),
+                  PSEUDO_REGISTER(unsigned long long, "x0", "=r")),
+  v6 = COERCE_AS(__typeof__(v6),
+                 PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  v2 = *(_DWORD*)(a1 + 260);
+  if (v2 == 1) {
+    v15 = (float)(*(float*)(a1 + 256) *
+                  (float)(*(unsigned __int16*)(a1 + 298) *
+                          (unsigned int)*(unsigned __int8*)(a1 + 297))) /
+          0x1.d4c0000000000p+15f;
+    result = v15;
+    if (v15 == 0x0.0p+0f) {
+      return result;
+    }
+    v5 = 327680LL * (int)a2;
+    v14 = (unsigned __int64)(float)((float)(*(float*)(a1 + 264) *
+                                            0x1.0000000000000p+16f) /
+                                    v15);
+    while (v14 < v5) {
+      v5 -= v14;
+      result = SequenceSoundPlayer_2906c0(a1, &v15, &v14),
+      v11 = COERCE_AS(__typeof__(v11),
+                      PSEUDO_REGISTER(unsigned long long, "x0", "=r")),
+      v13 = COERCE_AS(__typeof__(v13),
+                      PSEUDO_REGISTER(unsigned long long, "x0", "=r")),
+      v6 = COERCE_AS(__typeof__(v6),
+                     PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+      if ((v6 & 1) == 0) {
+        return result;
+      }
+    }
+    v12 = (float)(v14 - v5);
+    goto LABEL_20;
+  }
+  if (v2 != 0) {
+    nn_detail_UnexpectedDefaultImpl(a1, a2),
+        v11 = COERCE_AS(__typeof__(v11),
+                        PSEUDO_REGISTER(unsigned long long, "x0", "=r")),
+        v13 = COERCE_AS(__typeof__(v13),
+                        PSEUDO_REGISTER(unsigned long long, "x0", "=r")),
+        v6 = COERCE_AS(__typeof__(v6),
+                       PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+    __udf(0);
+  }
+  v15 = (float)(*(float*)(a1 + 256) *
+                (float)(*(unsigned __int16*)(a1 + 298) *
+                        (unsigned int)*(unsigned __int8*)(a1 + 297))) /
+        0x1.d4c0000000000p+15f;
+  result = v15;
+  if (v15 != 0x0.0p+0f) {
+    v7 = 327680LL * (int)a2;
+    v14 = (unsigned __int64)(float)((float)(*(float*)(a1 + 264) *
+                                            0x1.0000000000000p+16f) /
+                                    v15);
+    while (1) {
+      v8 = *(_QWORD*)(a1 + 272);
+      v10 = v14 - v8;
+      v9 = v14 == v8;
+      if (v14 >= v8) {
+        break;
+      }
+      *(_QWORD*)(a1 + 272) = v8 - v14;
+      result = SequenceSoundPlayer_2906c0(a1, &v15, &v14),
+      v11 = COERCE_AS(__typeof__(v11),
+                      PSEUDO_REGISTER(unsigned long long, "x0", "=r")),
+      v13 = COERCE_AS(__typeof__(v13),
+                      PSEUDO_REGISTER(unsigned long long, "x0", "=r")),
+      v6 = COERCE_AS(__typeof__(v6),
+                     PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+      if ((v11 & 1) == 0) {
+        return result;
+      }
+    }
+    v14 -= v8;
+    if (v9) {
+      result = SequenceSoundPlayer_2906c0(a1, &v15, &v14),
+      v11 = COERCE_AS(__typeof__(v11),
+                      PSEUDO_REGISTER(unsigned long long, "x0", "=r")),
+      v13 = COERCE_AS(__typeof__(v13),
+                      PSEUDO_REGISTER(unsigned long long, "x0", "=r")),
+      v6 = COERCE_AS(__typeof__(v6),
+                     PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+      if ((v13 & 1) == 0) {
+        return result;
+      }
+      v10 = v14;
+    }
+    *(_QWORD*)(a1 + 272) = v7;
+    v12 = (float)v10;
+  LABEL_20:
+    result = (float)(v15 * v12) * 0x1.0000000000000p-16f;
+    *(float*)(a1 + 264) = result;
   }
   return result;
 }

@@ -9,6 +9,8 @@ extern __int64 (*game_hub_anonymous_UnitMenuItem_vtable[])();
 extern __int64 (*game_menu_BasicMenuItem_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 UnitMenuItem_Destructor(__int64 a1);
+_QWORD* GameRoutine_169a430(__int64, char*);
+__int64 UnitMenuItem_ACall(_QWORD* a1);
 
 __int64 UnitMenuItem_Destructor(__int64 a1)
 {
@@ -50,6 +52,33 @@ __int64 UnitMenuItem_Destructor(__int64 a1)
       return nn_mem_StandardAllocator_Free(
           *(_QWORD*)fw_memory_g_heap_manager_ptr + v6, v5);
     }
+  }
+  return result;
+}
+
+__int64 UnitMenuItem_ACall(_QWORD* a1)
+{
+  char v2;
+  __int64 result;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  struct {
+    _QWORD v7[2];
+    char v8;
+  } v7_;
+
+  v2 = (*(__int64 (**)(_QWORD*))(*a1 + 464LL))(a1);
+  result = 1;
+  if ((v2 & 1) != 0) {
+    v4 = a1[17];
+    v7_.v8 = 1;
+    v6 = *(_QWORD*)(v4 + 48);
+    v5 = *(_QWORD*)(v4 + 56);
+    v7_.v7[0] = v6;
+    v7_.v7[1] = v5;
+    GameRoutine_169a430((__int64)a1, (char*)v7_.v7);
+    return 12;
   }
   return result;
 }

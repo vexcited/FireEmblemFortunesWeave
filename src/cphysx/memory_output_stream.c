@@ -6,6 +6,9 @@ __int64 nn_mem_StandardAllocator_Free(_QWORD);
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 MemoryOutputStream_DeletingDestructor(__int64 result);
 __int64 MemoryOutputStream_Unknown2(__int64 a1);
+__int64 fw_memory_HeapManager_Allocate(_QWORD, _QWORD, _QWORD, _QWORD);
+__int64 memcpy(_QWORD, _QWORD, _QWORD);
+__int64 MemoryOutputStream_Destructor(__int64 a1, __int64 a2, unsigned int a3);
 
 __int64 MemoryOutputStream_DeletingDestructor(__int64 result)
 {
@@ -47,6 +50,42 @@ __int64 MemoryOutputStream_Unknown2(__int64 a1)
     v4 = 56;
   }
   return nn_mem_StandardAllocator_Free(*(_QWORD*)v2 + v4);
+}
+
+__int64 MemoryOutputStream_Destructor(__int64 a1, __int64 a2, unsigned int a3)
+{
+  __int64 v3;
+  int v7;
+  __int64 v8;
+  unsigned int v9;
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
+
+  v3 = *(unsigned int*)(a1 + 8);
+  v7 = v3 + a3;
+  if ((unsigned int)v3 + a3 > *(_DWORD*)(a1 + 12)) {
+    v8 = fw_memory_g_heap_manager_ptr;
+    v9 = 1 << -(char)__clz(v7 - 1);
+    v10 = v9 <= 0x1000 ? 4096LL : v9;
+    v11 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
+                                         v10, 4096, 0);
+    memcpy(v11, *(_QWORD*)(a1 + 16), v3);
+    v12 = *(_QWORD*)(a1 + 16);
+    *(_QWORD*)(a1 + 16) = v11;
+    *(_DWORD*)(a1 + 12) = v10;
+    if (v12 != 0) {
+      v13 = 128;
+      if (*(_QWORD*)(*(_QWORD*)v8 + 200LL) == 0) {
+        v13 = 56;
+      }
+      nn_mem_StandardAllocator_Free(*(_QWORD*)v8 + v13);
+    }
+  }
+  memcpy(*(_QWORD*)(a1 + 16) + v3, a2, a3);
+  *(_DWORD*)(a1 + 8) = v7;
+  return a3;
 }
 
 #pragma GCC visibility pop

@@ -16,8 +16,6 @@ extern __int64 (*GameData_207d010[])();
 
 extern __int64 (*GameData_207d0e0[])();
 
-extern __int64 (*GameData_207d190[])();
-
 extern __int64 (*GameData_207d340[])();
 
 extern __int64 (*GameData_207d598[])();
@@ -86,11 +84,7 @@ extern __int64 GameData_21c96e8;
 
 extern __int64 GameData_21caab0;
 
-extern __int64 GameData_21cd128;
-
 extern __int64 GameData_21ed0a0;
-
-extern __int64 GameData_21f1e08;
 
 extern __int64 GameData_21f49b8;
 
@@ -184,8 +178,6 @@ __int64 GameRoutine_16e0c00(_QWORD, _QWORD);
 
 __int64 GameRoutine_16e6880(_QWORD, _QWORD, _QWORD, _QWORD);
 
-__int64 GameRoutine_16e6e00(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
-
 __int64 GameRoutine_1840740(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 
 __int64 GameRoutine_190a0c0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
@@ -235,8 +227,6 @@ __int64 GameRoutine_7a86e0(_QWORD, _QWORD);
 __int64 GameRoutine_821090(_QWORD);
 
 __int64 GameRoutine_8224a0(_QWORD);
-
-__int64 GameRoutine_825040(_QWORD, _QWORD);
 
 _QWORD* GameRoutine_a31e60(_QWORD* __return_ptr, _QWORD);
 
@@ -1362,52 +1352,6 @@ __int64 GameHr_1670ea0(__int64 a1)
   LABEL_25:
     v21 = 0;
     goto LABEL_37;
-  }
-  return result;
-}
-
-__int64 GameHr_1671300(__int64* a1)
-{
-  __int64 v2;
-  unsigned int v3;
-  __int64 v4;
-  __int64 result;
-  int v6;
-  _QWORD v7[4];
-  _QWORD* v8;
-  __int64 v9;
-  __int64 v10;
-
-  GameRoutine_1560070(&v9, a1 + 106, "L_PageTab");
-  v7[0] = GameData_207d190;
-  v2 = *a1;
-  v8 = v7;
-  v3 = (*(__int64 (**)(__int64*))(v2 + 192))(a1);
-  GameRoutine_16e6e00(a1 + 82, &v9, v7, v3, 4, 5);
-  if (v8 == v7) {
-    v4 = 32;
-  }
-  else {
-    if (v8 == nullptr) {
-      goto LABEL_6;
-    }
-    v4 = 40;
-  }
-  (*(void (**)(void))(*v8 + v4))();
-LABEL_6:
-  if (v10 != 0) {
-    GameRoutine_1a09c50(v10);
-  }
-  result = GameData_21cd128;
-  if (GameData_21cd128 != 0) {
-    result = GameRoutine_825040(GameData_21cd128, 15);
-  }
-  if (GameData_21f1e08 != 0) {
-    v6 = *(_DWORD*)(GameData_21f1e08 + 252);
-    if (v6 <= -1) {
-      v6 = -1;
-    }
-    *(_DWORD*)(GameData_21f1e08 + 252) = v6 + 1;
   }
   return result;
 }

@@ -13,6 +13,10 @@ extern __int64* snd_g_memory_ptr[2];
 _QWORD* SoundActorNX_Destructor(_QWORD* result);
 __int64 SoundActorNX_Unknown5(__int64 a1, __int64 a2, __int64 a3);
 __n128 SoundActorNX_Unknown9(_DWORD* a1, _DWORD* a2);
+extern __int64 (*snd_fnd_Vec3_vtable[])();
+__attribute__((swiftcall)) void SoundActorNX_Unknown10(PSEUDO_X8 x8_,
+                                                       __int64 a1);
+__attribute__((swiftcall)) void SoundActorNX_Unknown7(PSEUDO_X8 x8_);
 
 _QWORD* SoundActorNX_Destructor(_QWORD* result)
 {
@@ -106,6 +110,34 @@ __n128 SoundActorNX_Unknown9(_DWORD* a1, _DWORD* a2)
   }
   v9 = GameRoutine_2a1b90(v8);
   return nn_os_UnlockMutex(v9 + 840);
+}
+
+__attribute__((swiftcall)) void SoundActorNX_Unknown10(PSEUDO_X8 x8_,
+                                                       __int64 a1)
+{
+
+#pragma clang fp contract(off)
+  __int64 a2 = (__int64)PSEUDO_X8_VALUE(x8_);
+  float result;
+  __int64 v3;
+
+  result = *(float*)(a1 + 32);
+  v3 = *(_QWORD*)(a1 + 24);
+  *(_QWORD*)a2 = snd_fnd_Vec3_vtable;
+  *(_QWORD*)(a2 + 8) = v3;
+  *(float*)(a2 + 16) = result;
+  {
+    result;
+    return;
+  }
+}
+
+__attribute__((swiftcall)) void SoundActorNX_Unknown7(PSEUDO_X8 x8_)
+{
+  _QWORD* a1 = (_QWORD*)PSEUDO_X8_VALUE(x8_);
+  a1[2] = 0;
+  *a1 = snd_fnd_Vec3_vtable;
+  a1[1] = 0;
 }
 
 #pragma GCC visibility pop

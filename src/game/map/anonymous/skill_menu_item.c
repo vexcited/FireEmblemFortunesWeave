@@ -12,6 +12,10 @@ __int64 ui_LayoutAccessor_FindTextBox(_QWORD, _QWORD);
 extern _UNKNOWN GameData_22593b0;
 extern __int64 ui_LayoutAccessor_empty_;
 __int64 SkillMenuItem_15bee60(__int64 a1);
+__int64 game_map_ITarget_EachSelectable(__int64, __int64);
+extern __int64 (*GameData_1f97c90[])();
+__int64 game_map_anonymous_SkillMenuItem_CheckEnable_closure_Invoke(__int64 a1,
+                                                                    __int64 a2);
 
 __int64 SkillMenuItem_15bee60(__int64 a1)
 {
@@ -111,6 +115,33 @@ LABEL_11:
     }
   }
   return result;
+}
+
+__int64 game_map_anonymous_SkillMenuItem_CheckEnable_closure_Invoke(__int64 a1,
+                                                                    __int64 a2)
+{
+  __int64 v2;
+  struct {
+    _QWORD v4[4];
+    _QWORD* v5;
+  } v4_;
+  unsigned __int8 v6;
+
+  v6 = 0;
+  v4_.v4[0] = GameData_1f97c90;
+  v4_.v4[1] = &v6;
+  v4_.v5 = v4_.v4;
+  game_map_ITarget_EachSelectable(a2, (__int64)v4_.v4);
+  if (v4_.v5 == v4_.v4) {
+    v2 = 32;
+    goto LABEL_5;
+  }
+  if (v4_.v5 != nullptr) {
+    v2 = 40;
+  LABEL_5:
+    (*(void (**)(__int64))(*v4_.v5 + v2))((__int64)v4_.v5);
+  }
+  return v6;
 }
 
 #pragma GCC visibility pop
