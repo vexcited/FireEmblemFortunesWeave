@@ -26,6 +26,7 @@ extern __int64 GameData_21323e8[4];
 extern __int64 GameData_226b928;
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 eft_Stack_calcEmitter(__int64 result);
+void GameRoutine_18e4620_alt2(__int64, __int64) __asm__("GameRoutine_18e4620");
 
 __int64 eft_Stack_calcEmitter(__int64 result)
 {
@@ -372,7 +373,7 @@ _QWORD* Stack_bcc040(_QWORD* result)
         *m = v12;
       }
       v9 = m - 17;
-      GameRoutine_18e4620(*(_QWORD*)(v10 + 440), m - 17);
+      GameRoutine_18e4620_alt2(*(_QWORD*)(v10 + 440), (__int64)(m - 17));
       result = (_QWORD*)(*(__int64 (**)(__int64*))(*v9 + 8))(v9);
     }
   }

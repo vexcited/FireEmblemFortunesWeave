@@ -165,7 +165,8 @@ extern __int64 GameData_22190c0;
 extern __int64 game_ProcFadeView_instance_;
 void CmdBtlUnit_e7cc80(__int64);
 __n128 Manager_e9b1b0(_QWORD* a1);
-void game_cmdbtl_Manager_UnitRelocationImpl(_QWORD* a1, __int64 a2);
+void game_cmdbtl_Manager_UnitRelocationImpl_alt2(
+    _QWORD* a1, __int64 a2) __asm__("game_cmdbtl_Manager_UnitRelocationImpl");
 __int64
 game_cmdbtl_Manager_TryPhaseCameraCutResetLerp_lambda0_Invoke(__int64 result);
 __int64 game_cmdbtl_Manager_SeqBattleCombatUniverse_lambda0_Invoke(__int64 a1,
@@ -214,6 +215,11 @@ void game_cmdbtl_Manager_Manager(__int64 a1);
 __attribute__((swiftcall)) void Manager_e9af40(PSEUDO_X8 x8_, __int64 a1);
 void Manager_e9b550(__int64 a1, int a2, unsigned int a3);
 __n128 game_cmdbtl_Manager_FindBattleUnit(_QWORD* a1, __int64 a2, __int64 a3);
+_QWORD* GameRoutine_e74b60_alt1(__int64, __int64) __asm__("GameRoutine_e74b60");
+__int64 CmdBtlUnit_e7cc80_alt1(__int64) __asm__("CmdBtlUnit_e7cc80");
+__int64 Manager_e9a300_alt1(_QWORD*) __asm__("Manager_e9a300");
+__int64 game_809ba0(__int64, float);
+__int64 game_cmdbtl_Manager_UnitRelocationImpl(_QWORD* a1, __int64 a2);
 
 __int64 Manager_e63720()
 {
@@ -2386,26 +2392,29 @@ LABEL_9:
   return result;
 }
 
-void game_cmdbtl_Manager_UnitRelocationImpl(_QWORD* a1, __int64 a2)
+__int64 game_cmdbtl_Manager_UnitRelocationImpl(_QWORD* a1, __int64 a2)
 {
   char v4;
-  __int64 v5;
-  __int64* v6;
+  __int64 result;
+  __int64 v6;
   __int64* v7;
-  __int64 v8;
-  __int64* v9;
+  __int64* i;
+  __int64 v9;
   __int64* v10;
-  __int64 v11;
-  __int64* v12;
+  __int64* j;
+  __int64 v12;
   __int64* v13;
-  __int64 v14;
-  __int64* v15;
+  __int64* k;
+  __int64 v15;
   __int64* v16;
-  __int64 v17;
-  _QWORD v18[4];
-  _QWORD* v19;
+  __int64* m;
+  __int64 v18;
+  struct {
+    _QWORD v19[4];
+    _QWORD* v20;
+  } v19_;
 
-  Manager_e9a300((__int64)a1);
+  Manager_e9a300_alt1(a1);
   if ((*(_BYTE*)(a2 + 1) & 1) == 0) {
     Manager_e9b1b0_alt1(a1);
   }
@@ -2414,58 +2423,52 @@ void game_cmdbtl_Manager_UnitRelocationImpl(_QWORD* a1, __int64 a2)
     v4 = *(_BYTE*)(game_ProcFadeView_instance_ + 480);
     *(_BYTE*)(game_ProcFadeView_instance_ + 480) = 2;
     if (game_ProcFadeView_instance_ != 0) {
-      GameRoutine_809ba0(0.13333);
+      game_809ba0(game_ProcFadeView_instance_, 0x1.1111120000000p-3f);
       if (game_ProcFadeView_instance_ != 0) {
         *(_BYTE*)(game_ProcFadeView_instance_ + 480) = v4;
       }
     }
   }
-  GameRoutine_e74b60(a1 + 84, a2);
-  GameRoutine_e74b60(a1 + 100, a2);
-  GameRoutine_e74b60(a1 + 116, a2);
-  GameRoutine_e74b60(a1 + 132, a2);
-  v18[0] = GameData_1fecf38;
-  v19 = v18;
-  CmdbtlPartyNatives_e9a800_alt1(a1, (__int64)v18);
-  if (v19 == v18) {
-    v5 = 32;
+  GameRoutine_e74b60_alt1((__int64)(a1 + 84), a2);
+  GameRoutine_e74b60_alt1((__int64)(a1 + 100), a2);
+  GameRoutine_e74b60_alt1((__int64)(a1 + 116), a2);
+  GameRoutine_e74b60_alt1((__int64)(a1 + 132), a2);
+  v19_.v19[0] = GameData_1fecf38;
+  v19_.v20 = v19_.v19;
+  CmdbtlPartyNatives_e9a800_alt1(a1, (__int64)v19_.v19);
+  result = (__int64)v19_.v20;
+  if (v19_.v20 == v19_.v19) {
+    v6 = 32;
   }
   else {
-    if (v19 == nullptr) {
+    if (v19_.v20 == nullptr) {
       goto LABEL_13;
     }
-    v5 = 40;
+    v6 = 40;
   }
-  (*(void (**)(void*))(*v19 + v5))(v19);
+  result = (*(__int64 (**)(__int64))(*v19_.v20 + v6))((__int64)v19_.v20);
 LABEL_13:
-  v6 = (__int64*)a1[89];
-  v7 = (__int64*)a1[90];
-  while (v6 != v7) {
-    v8 = *v6;
-    v6 += 2;
-    CmdBtlUnit_e7cc80(v8);
+  v7 = (__int64*)a1[89];
+  for (i = (__int64*)a1[90]; v7 != i; result = CmdBtlUnit_e7cc80_alt1(v9)) {
+    v9 = *v7;
+    v7 += 2;
   }
-  v9 = (__int64*)a1[105];
-  v10 = (__int64*)a1[106];
-  while (v9 != v10) {
-    v11 = *v9;
-    v9 += 2;
-    CmdBtlUnit_e7cc80(v11);
+  v10 = (__int64*)a1[105];
+  for (j = (__int64*)a1[106]; v10 != j; result = CmdBtlUnit_e7cc80_alt1(v12)) {
+    v12 = *v10;
+    v10 += 2;
   }
-  v12 = (__int64*)a1[121];
-  v13 = (__int64*)a1[122];
-  while (v12 != v13) {
-    v14 = *v12;
-    v12 += 2;
-    CmdBtlUnit_e7cc80(v14);
+  v13 = (__int64*)a1[121];
+  for (k = (__int64*)a1[122]; v13 != k; result = CmdBtlUnit_e7cc80_alt1(v15)) {
+    v15 = *v13;
+    v13 += 2;
   }
-  v15 = (__int64*)a1[137];
-  v16 = (__int64*)a1[138];
-  while (v15 != v16) {
-    v17 = *v15;
-    v15 += 2;
-    CmdBtlUnit_e7cc80(v17);
+  v16 = (__int64*)a1[137];
+  for (m = (__int64*)a1[138]; v16 != m; result = CmdBtlUnit_e7cc80_alt1(v18)) {
+    v18 = *v16;
+    v16 += 2;
   }
+  return result;
 }
 
 __int64 Manager_e9cd90(__int64 result)

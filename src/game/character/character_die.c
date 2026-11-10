@@ -25,6 +25,8 @@ extern __int128 GameData_1a83610;
 extern __int64 (*game_character_CharacterDie_Body_vtable)();
 int32x2_t* WallCollisionModule_1105be0(_QWORD*, float);
 void CharacterDie_10bb840(__int64 a1, _QWORD* a2);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
 
 __int64 CharacterDie_Unknown5(__int64 a1)
 {
@@ -222,7 +224,7 @@ void CharacterDie_10bb840(__int64 a1, _QWORD* a2)
     if (atomic_fetch_add((atomic_ullong* volatile)(v6 + 8),
                          0xFFFFFFFFFFFFFFFFLL) == 0) {
       (*(void (**)(__int64))(*(_QWORD*)v6 + 16LL))(v6);
-      std___1___shared_weak_count___release_weak(v6);
+      std___1___shared_weak_count___release_weak_alt1(v6);
     }
   }
   else {
@@ -266,7 +268,7 @@ LABEL_12:
   *(float*)(a1 + 96) = v12 * v11;
   if (atomic_fetch_add(v10, 0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v9 + 16LL))(v9);
-    std___1___shared_weak_count___release_weak(v9);
+    std___1___shared_weak_count___release_weak_alt1(v9);
   }
   if ((*(_BYTE*)(a1 + 16) & 1) == 0) {
   LABEL_15:

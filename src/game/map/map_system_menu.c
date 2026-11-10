@@ -10,6 +10,10 @@ __int64 std___1___shared_weak_count_lock();
 extern __int64 game_script_hub_g_frame_counter;
 float GameRoutine_16df380(__int64);
 __int64 MapSystemMenu_Unknown3(__int64 a1);
+__int64 std___1___shared_weak_count___release_weak_alt1(_QWORD) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 std___1___shared_weak_count_lock_alt1(_QWORD) __asm__(
+    "std___1___shared_weak_count_lock");
 
 __int64 MapSystemMenu_Unknown3(__int64 a1)
 {
@@ -33,7 +37,7 @@ __int64 MapSystemMenu_Unknown3(__int64 a1)
   if (v11_.v12 == 0) {
     goto LABEL_21;
   }
-  v2 = std___1___shared_weak_count_lock();
+  v2 = std___1___shared_weak_count_lock_alt1(v11_.v12);
   if (v2 != 0) {
     v3 = v11_.v11;
   }
@@ -41,7 +45,7 @@ __int64 MapSystemMenu_Unknown3(__int64 a1)
     v3 = 0;
   }
   if (v11_.v12 != 0) {
-    std___1___shared_weak_count___release_weak();
+    std___1___shared_weak_count___release_weak_alt1(v11_.v12);
   }
   if (v3 != 0) {
     if (v2 != 0) {
@@ -77,9 +81,9 @@ __int64 MapSystemMenu_Unknown3(__int64 a1)
                                 memory_order_relaxed);
       GameRoutine_1a006e0(a1 + 1072, (__int64)&v11_.v11, (__int64*)(a1 + 1248),
                           (__int64*)(a1 + 1224), *(float*)(a1 + 1280));
-      std___1___shared_weak_count___release_weak();
+      std___1___shared_weak_count___release_weak_alt1(v2);
     }
-    std___1___shared_weak_count___release_weak();
+    std___1___shared_weak_count___release_weak_alt1(v2);
   }
   else if (v2 == 0) {
     goto LABEL_21;
@@ -87,7 +91,7 @@ __int64 MapSystemMenu_Unknown3(__int64 a1)
   if (atomic_fetch_add((atomic_ullong* volatile)(v2 + 8),
                        0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v2 + 16LL))(v2);
-    std___1___shared_weak_count___release_weak();
+    std___1___shared_weak_count___release_weak_alt1(v2);
   }
 LABEL_21:
   v6 = GameRoutine_16df380(a1);

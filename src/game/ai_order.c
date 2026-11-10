@@ -253,8 +253,10 @@ __int64 AIOrder_11ec3e0(__int64 result)
   char v32;
   int v33;
   int v34;
-  int v35;
-  char v36[4];
+  struct {
+    int v35;
+    char v36;
+  } v35_;
 
   v1 = result;
   v2 = *(_QWORD*)(*(_QWORD*)(GameData_21ca310 + 56) +
@@ -265,15 +267,17 @@ __int64 AIOrder_11ec3e0(__int64 result)
     do {
       if ((*(_BYTE*)(v2 + 416) & 0x31) == 0) {
         v34 = *(_DWORD*)((_BYTE*)((_UNKNOWN*)0x44LL) + v3) & 0xFFF;
-        result = game_HasSkill(v2 + 1744, &v34);
+        result = game_HasSkill_alt1((_QWORD*)(v2 + 1744), (unsigned int*)&v34);
         if ((result & 1) == 0) {
           if (*(_WORD*)(v2 + 492) != 0 || *(_BYTE*)(v2 + 496) != 0 ||
-              (v35 = *(_DWORD*)((_BYTE*)((_UNKNOWN*)0x144LL) + v3) & 0xFFF,
-               ((result = game_HasSkill(v2 + 1744, &v35)) & 1) == 0)) {
+              (v35_.v35 = *(_DWORD*)((_BYTE*)((_UNKNOWN*)0x144LL) + v3) & 0xFFF,
+               ((result = game_HasSkill_alt1((_QWORD*)(v2 + 1744),
+                                             (unsigned int*)&v35_.v35)) &
+                1) == 0)) {
             v4 = *(unsigned __int8*)(v2 + 1983);
             if (v4 >= 0x64) {
-              v36[0] = 10;
-              result = game_Unit_GetParam(v2, v36, 1);
+              v35_.v36 = 10;
+              result = game_Unit_GetParam_alt1(v2);
               *(_BYTE*)(v1 + *(int*)(v1 + 800)) = *(_BYTE*)(v2 + 490);
               *(_DWORD*)(v1 + 160 + 4LL * (int)(*(_DWORD*)(v1 + 800))++) =
                   ((v4 << 8) | 0x10) - result;

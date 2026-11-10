@@ -3935,7 +3935,7 @@ __int64 CudaDriverHr_f0f80(__int64 a1, __int64 a2)
   unsigned int v7;
 
   v4 = *(_QWORD*)(*(_QWORD*)a2 + 632LL);
-  (*(void (**)(void))(*(_QWORD*)(a1 + 184) + 2408LL))();
+  (*(void (**)(void*))(*(_QWORD*)(a1 + 184) + 2408LL))((void*)a1);
   CudaDriverRoutine_f5420(a2);
   if (*(_BYTE*)(a1 + 240) != 0 && *(_QWORD*)(a1 + 256) != 0) {
     v5 = -858993459 * ((unsigned __int64)(a2 - *(_QWORD*)(a1 + 80)) >> 4);

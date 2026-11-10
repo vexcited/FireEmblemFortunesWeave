@@ -107,38 +107,48 @@ unsigned __int64 FacilityVariable_1472560(unsigned __int64 result);
 __int64* FacilityVariable_1472720(__int64 a1);
 __int64 FacilityVariable_1472c90(__int64 a1);
 __int64 FacilityVariable_1472dc0(__int64 a1);
+_QWORD* GameVariable_826e40_alt1(__int64, unsigned int, _QWORD*, int, int, int,
+                                 int, char) __asm__("GameVariable_826e40");
+void __attribute__((noreturn))
+GameRoutine_60a310_alt1() __asm__("GameRoutine_60a310");
 
 void game_facility_FacilityVariable_EntryState()
 {
   __int64 v0;
   __int64 v1;
-  _QWORD v2[4];
-  _QWORD* v3;
+  struct {
+    _QWORD v2[4];
+    _QWORD* v3;
+  } v2_;
 
   if (game_GameModeData_instance_ != 0) {
     v0 = game_GameModeData_instance_ + 40;
-    GameRoutine_1472240();
-    v3 = v2;
-    GameVariable_826e40(v0, 9, &GameData_2249378, 0, 0, 0, 0xFFFFFFFFLL, 2,
-                        GameData_20417b0, v0);
-    if (v3 == nullptr ||
-        ((*(void (**)(_QWORD*, __int64*))(*v3 + 48LL))(v3, &GameData_22493a0),
-         v3 == nullptr) ||
-        ((*(void (**)(_QWORD*, __int64*))(*v3 + 48LL))(v3, &GameData_22493c8),
-         v3 == nullptr)) {
-      GameRoutine_60a310();
+    FacilityVariable_1472240();
+    v2_.v2[0] = GameData_20417b0;
+    v2_.v2[1] = v0;
+    v2_.v3 = v2_.v2;
+    GameVariable_826e40_alt1(v0, 9u, &GameData_2249378, 0, 0, 0, -1, 2);
+    if (v2_.v3 == nullptr ||
+        ((*(void (**)(_QWORD*, __int64*))(*v2_.v3 + 48LL))(v2_.v3,
+                                                           &GameData_22493a0),
+         v2_.v3 == nullptr) ||
+        ((*(void (**)(_QWORD*, __int64*))(*v2_.v3 + 48LL))(v2_.v3,
+                                                           &GameData_22493c8),
+         v2_.v3 == nullptr)) {
+      GameRoutine_60a310_alt1();
     }
-    (*(void (**)(_QWORD*, __int64*))(*v3 + 48LL))(v3, &GameData_22493f0);
-    if (v3 == v2) {
+    (*(void (**)(_QWORD*, __int64*))(*v2_.v3 + 48LL))(v2_.v3,
+                                                      &GameData_22493f0);
+    if (v2_.v3 == v2_.v2) {
       v1 = 32;
     }
     else {
-      if (v3 == nullptr) {
+      if (v2_.v3 == nullptr) {
         return;
       }
       v1 = 40;
     }
-    (*(void (**)(void*))(*v3 + v1))(v3);
+    (*(void (**)(__int64))(*v2_.v3 + v1))((__int64)v2_.v3);
   }
 }
 

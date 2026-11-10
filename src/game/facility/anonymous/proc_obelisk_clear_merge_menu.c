@@ -50,6 +50,12 @@ extern __int64* GameData_212e348;
 extern __int64* msg_MessageManager_instance__ptr[2];
 void GameRoutine_156c5d0(__int64, __int64, char);
 __int64 ProcObeliskClearMergeMenu_Unknown85(__int64 a1);
+__int64 ProcObeliskUnitMergeRouteSelectMenu_158ca00_alt1(
+    _QWORD*, __int64,
+    unsigned int) __asm__("ProcObeliskUnitMergeRouteSelectMenu_158ca00");
+__n128 ProcObeliskUnitMergeRouteSelectMenu_158c260_alt1(
+    __int64**, __int64, __int64, unsigned int,
+    char) __asm__("ProcObeliskUnitMergeRouteSelectMenu_158c260");
 
 __int64 ProcObeliskClearMergeMenu_Unknown85(__int64 a1)
 {
@@ -144,49 +150,63 @@ __n128 ProcObeliskClearMergeMenu_Unknown88(__int64 a1)
   __int64 v3;
   __n128 result;
   __int64 v5;
-  __int64 v6;
-  __int64 v7;
+  unsigned int v6;
+  unsigned int v7;
   __int64 v8;
-  __int64 v9;
-  __int64 v10;
-  __int64 v11;
-  __int64 v12;
+  struct {
+    __int64* v9;
+    __int64 v10;
+  } v9_;
+  struct {
+    __int64 v11;
+    __int64 v12;
+  } v11_;
 
+  result = COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
   v2 = *(_QWORD*)(a1 + 336);
   if (v2 == 0) {
     return result;
   }
-  v3 = __dynamic_cast(v2, GameData_212e008[0], &GameData_1ffc208, 0);
+  v3 = __dynamic_cast(v2, GameData_212e008[0], &GameData_1ffc208, 0),
+  result = COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
   if (v3 == 0) {
     return result;
   }
   v5 = v3;
   if (*(_BYTE*)(v3 + 4547) == 1) {
-    *(struct PseudoSret*)(&v11) =
-        GameRoutine_1560070(a1 + 848, "L_CompareInfo");
+    LayoutAccessor_1560070((void*)(&v11_.v11), (__int64*)(a1 + 848),
+                           (__int64)"L_CompareInfo"),
+        result =
+            COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
     if (game_GameModeData_instance_ != 0) {
       v6 = *(unsigned __int8*)(game_GameModeData_instance_ + 15);
     }
     else {
       v6 = 0;
     }
-    ProcObeliskUnitMergeRouteSelectMenu_158ca00(&v11, v5 + 2320, v6);
-    v8 = v12;
-    if (v12 == 0) {
+    ProcObeliskUnitMergeRouteSelectMenu_158ca00_alt1(&v11_.v11, v5 + 2320, v6),
+        result =
+            COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
+    v8 = v11_.v12;
+    if (v11_.v12 == 0) {
       return result;
     }
     return std___1___shared_weak_count___release_weak(v8);
   }
-  *(struct PseudoSret*)(&v9) = GameRoutine_1560070(a1 + 848, "L_CompareInfo");
+  LayoutAccessor_1560070((void*)(&v9_.v9), (__int64*)(a1 + 848),
+                         (__int64)"L_CompareInfo"),
+      result =
+          COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
   if (game_GameModeData_instance_ != 0) {
     v7 = *(unsigned __int8*)(game_GameModeData_instance_ + 15);
   }
   else {
     v7 = 0;
   }
-  ProcObeliskUnitMergeRouteSelectMenu_158c260(&v9, v5 + 96, v5 + 2320, v7, 1);
-  v8 = v10;
-  if (v10 != 0) {
+  result = ProcObeliskUnitMergeRouteSelectMenu_158c260_alt1(&v9_.v9, v5 + 96,
+                                                            v5 + 2320, v7, 1);
+  v8 = v9_.v10;
+  if (v9_.v10 != 0) {
     return std___1___shared_weak_count___release_weak(v8);
   }
   return result;

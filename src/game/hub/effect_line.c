@@ -14,6 +14,9 @@ extern __int64 (*GameData_1ffc7f8[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 __n128 EffectLine_Destructor(_QWORD* a1);
 long double EffectLine_fb6440(_QWORD* a1);
+__int64 GameRoutine_14a1390_alt1(__int64*, char) __asm__("GameRoutine_14a1390");
+__int64 std___1___shared_weak_count___release_weak_alt1(_QWORD) __asm__(
+    "std___1___shared_weak_count___release_weak");
 
 __n128 EffectLine_Destructor(_QWORD* a1)
 {
@@ -112,8 +115,10 @@ __n128 EffectLine_Destructor(_QWORD* a1)
 
 long double EffectLine_fb6440(_QWORD* a1)
 {
-  __int64 v1;
-  __int64 v2;
+
+#pragma clang fp contract(off)
+  __int64* v1;
+  __int64* v2;
   __int64 v4;
   unsigned int v5;
   __int128 v6;
@@ -122,22 +127,22 @@ long double EffectLine_fb6440(_QWORD* a1)
   __int64 v9;
   __int64 v10;
 
-  v1 = a1[1];
-  v2 = a1[2];
+  v1 = (__int64*)a1[1];
+  v2 = (__int64*)a1[2];
   if (v1 != v2) {
     do {
-      GameRoutine_14a1390(v1, 1);
-      v1 += 16;
+      GameRoutine_14a1390_alt1(v1, 1);
+      v1 += 2;
     } while (v1 != v2);
-    v1 = a1[1];
-    v2 = a1[2];
+    v1 = (__int64*)a1[1];
+    v2 = (__int64*)a1[2];
   }
-  for (; v2 != v1; v2 -= 16) {
-    v4 = *(_QWORD*)(v2 - 8);
+  for (; v2 != v1; v2 -= 2) {
+    v4 = *(v2 - 1);
     if (v4 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v4 + 8),
                                     0xFFFFFFFFFFFFFFFFLL) == 0) {
       (*(void (**)(__int64))(*(_QWORD*)v4 + 16LL))(v4);
-      std___1___shared_weak_count___release_weak(v4);
+      std___1___shared_weak_count___release_weak_alt1(v4);
     }
   }
   a1[2] = v1;

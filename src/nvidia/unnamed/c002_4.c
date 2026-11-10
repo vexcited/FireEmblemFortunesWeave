@@ -238,7 +238,7 @@ __int64 CudaDriverHr_10ebf0(__int64* a1, __int64 a2, _BYTE* a3)
           return 2;
         }
         if (v22[0] != 0) {
-          v12 = (*(__int64 (**)(void))(*a1 + 21048))();
+          v12 = (*(__int64 (**)(void*))(*a1 + 21048))(*(void**)a1);
           if ((_DWORD)v12 != 0) {
             v13 = v12;
             v14 = CudaDriverRoutine_b4720(v12);

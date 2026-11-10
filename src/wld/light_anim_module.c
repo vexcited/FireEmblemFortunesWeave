@@ -21,6 +21,12 @@ void LightAnimModule_c5fca0(__int64 a1, float*** a2, int a3, float a4);
 __int64 LightAnimModule_c51a60(__int64 result, int a2, long double a3);
 __int64 LightAnimModule_c60000(__int64 result);
 __int64** LightAnimModule_c60200(__int64** result);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
+    "std___1___shared_weak_count_lock");
+void LightAnimModule_c51a60_alt1(__int64, int,
+                                 float) __asm__("LightAnimModule_c51a60");
 
 __int64 LightAnimModule_c51a60(__int64 result, int a2, long double a3)
 {
@@ -190,6 +196,8 @@ __int64 LightAnimModule_c5f890(unsigned __int64 a1, __int64* a2)
 
 __int64 LightAnimModule_Unknown5(__int64 result)
 {
+
+#pragma clang fp contract(off)
   __int64 v1;
   __int64 v2;
   __int64 v3;
@@ -201,8 +209,8 @@ __int64 LightAnimModule_Unknown5(__int64 result)
   __int64* v9;
   __int64 v10;
   __int64 v11;
-  _QWORD* v12;
-  _QWORD* v13;
+  __int64 v12;
+  __int64 v13;
   float v14;
   float v15;
   __int64* v16;
@@ -228,7 +236,7 @@ __int64 LightAnimModule_Unknown5(__int64 result)
       if (*(_DWORD*)(v1 + 40) != v6) {
         result = *(_QWORD*)(v1 + 8);
         if (result != 0) {
-          result = std___1___shared_weak_count_lock(result);
+          result = std___1___shared_weak_count_lock_alt1(result);
           if (result != 0) {
             if (*(_QWORD*)v1 != 0 && *(_BYTE*)(*(_QWORD*)v1 + 60LL) == 1) {
               v7 = *(__int64**)(v1 + 16);
@@ -238,16 +246,18 @@ __int64 LightAnimModule_Unknown5(__int64 result)
               while (v7 != v9) {
                 v10 = *v7;
                 v7 += 2;
-                GameRoutine_c51a60(v10, 0, (float)v6 / 3600.0f);
+                LightAnimModule_c51a60_alt1(v10, 0,
+                                            (float)v6 / 0x1.c200000000000p+11f);
               }
-              LightAnimModule_c5fca0(v3, v1 + 16, 0, (float)v6 / 3600.0f);
+              LightAnimModule_c5fca0(v3, (float***)(v1 + 16), 0,
+                                     (float)v6 / 0x1.c200000000000p+11f);
               result = v8;
             }
             if (atomic_fetch_add((atomic_ullong* volatile)(result + 8),
                                  0xFFFFFFFFFFFFFFFFLL) == 0) {
               v11 = result;
               (*(void (**)(__int64))(*(_QWORD*)result + 16LL))(result);
-              result = std___1___shared_weak_count___release_weak(v11);
+              result = std___1___shared_weak_count___release_weak_alt1(v11);
             }
           }
         }
@@ -255,44 +265,45 @@ __int64 LightAnimModule_Unknown5(__int64 result)
       v1 += 48;
     } while (v1 != v2);
   }
-  v12 = *(_QWORD**)(v3 + 72);
-  v13 = *(_QWORD**)(v3 + 80);
+  v12 = *(_QWORD*)(v3 + 72);
+  v13 = *(_QWORD*)(v3 + 80);
   if (v12 != v13) {
     v14 = (float)(*(float*)(*(_QWORD*)(*(_QWORD*)(v3 + 8) + 496LL) + 16LL) *
-                  16.683f) /
-          1000.0f;
-    if (v14 != 0.0f) {
+                  0x1.0aef000000000p+4f) /
+          0x1.f400000000000p+9f;
+    if (v14 != 0x0.0p+0f) {
       v15 = v14 + *(float*)(v3 + 40);
-      if (v15 > 86394.0f) {
-        v15 = v15 + -86394.0f;
+      if (v15 > 0x1.5179cc0000000p+16f) {
+        v15 = v15 + -0x1.5179cc0000000p+16f;
       }
       *(float*)(v3 + 40) = v15;
       do {
-        result = v12[1];
+        result = *(_QWORD*)(v12 + 8);
         if (result != 0) {
-          result = std___1___shared_weak_count_lock(result);
+          result = std___1___shared_weak_count_lock_alt1(result);
           if (result != 0) {
-            if (*v12 != 0 && *(_BYTE*)(*v12 + 60LL) == 1) {
-              v16 = (__int64*)v12[2];
-              v17 = (__int64*)v12[3];
+            if (*(_QWORD*)v12 != 0 && *(_BYTE*)(*(_QWORD*)v12 + 60LL) == 1) {
+              v16 = *(__int64**)(v12 + 16);
+              v17 = *(__int64**)(v12 + 24);
               v18 = result;
               while (v16 != v17) {
                 v19 = *v16;
                 v16 += 2;
-                GameRoutine_c51a60(v19, 1, *(float*)(v3 + 40));
+                LightAnimModule_c51a60_alt1(v19, 1, *(float*)(v3 + 40));
               }
-              LightAnimModule_c5fca0(v3, v12 + 2, 1, *(float*)(v3 + 40));
+              LightAnimModule_c5fca0(v3, (float***)(v12 + 16), 1,
+                                     *(float*)(v3 + 40));
               result = v18;
             }
             if (atomic_fetch_add((atomic_ullong* volatile)(result + 8),
                                  0xFFFFFFFFFFFFFFFFLL) == 0) {
               v20 = result;
               (*(void (**)(__int64))(*(_QWORD*)result + 16LL))(result);
-              result = std___1___shared_weak_count___release_weak(v20);
+              result = std___1___shared_weak_count___release_weak_alt1(v20);
             }
           }
         }
-        v12 += 6;
+        v12 += 48;
       } while (v12 != v13);
     }
   }

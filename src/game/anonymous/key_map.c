@@ -45,7 +45,7 @@ void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
 void __attribute__((noreturn))
 GameRoutine_60a210_alt1() __asm__("GameRoutine_60a210");
 void __attribute__((noreturn)) String_60a250(_QWORD);
-__int64 KeyMap_1557b10(__int64 a1, int a2);
+__int64 KeyMap_1557b10_alt1(__int64 a1, int a2) __asm__("KeyMap_1557b10");
 _QWORD* KeyMap_1559360(_QWORD* result, int a2, int a3);
 void KeyMap_15596e0(__int64 a1, int* a2);
 void KeyMap_1559920(float* a1, unsigned __int64 a2);
@@ -66,203 +66,223 @@ _QWORD* KeyMap_155be20(_QWORD* a1);
 _QWORD* KeyMap_155c000(_QWORD* a1);
 _QWORD* KeyMap_155c1e0(_QWORD* result);
 _QWORD* KeyMap_155c3c0(_QWORD* result);
+__int64 GameRoutine_15591a0_alt1(_QWORD*) __asm__("GameRoutine_15591a0");
+void GameRoutine_1559c80_alt1(_QWORD*) __asm__("GameRoutine_1559c80");
+void GameRoutine_155aec0_alt1(_QWORD*, __int64) __asm__("GameRoutine_155aec0");
+void GameRoutine_155bd20_alt1(_QWORD*) __asm__("GameRoutine_155bd20");
+void KeyMap_1559360_alt2(_QWORD*, int, int) __asm__("KeyMap_1559360");
+void KeyMap_1559e20_alt2(_QWORD*, unsigned int, int,
+                         int) __asm__("KeyMap_1559e20");
+void KeyMap_155a740_alt2(_QWORD*) __asm__("KeyMap_155a740");
+void KeyMap_155a920_alt2(_QWORD*) __asm__("KeyMap_155a920");
+void KeyMap_155ab00_alt2(_QWORD*) __asm__("KeyMap_155ab00");
+void KeyMap_155ace0_alt2(_QWORD*) __asm__("KeyMap_155ace0");
+void KeyMap_155b060_alt2(_QWORD*) __asm__("KeyMap_155b060");
+void KeyMap_155b220_alt2(_QWORD*, unsigned int, int) __asm__("KeyMap_155b220");
+void KeyMap_155be20_alt2(_QWORD*) __asm__("KeyMap_155be20");
+void KeyMap_155c000_alt2(_QWORD*) __asm__("KeyMap_155c000");
+void __attribute__((noreturn))
+String_60a250_alt1(const char*) __asm__("String_60a250");
+void KeyMap_1557b10(__int64 a1, int a2);
 
-__int64 KeyMap_1557b10(__int64 a1, int a2)
+void KeyMap_1557b10(__int64 a1, int a2)
 {
-  __int64 result;
-  __int64 v5;
+  int v4;
+  int v5;
   __int64 v6;
-  __int64 v7;
+  unsigned __int64 v7;
   unsigned __int64 v8;
-  unsigned __int64 v9;
-  __int64 v10;
-  __int64** v11;
+  __int64 v9;
+  __int64** v10;
+  __int64* v11;
   __int64* v12;
-  __int64* v13;
+  unsigned __int64 v13;
   unsigned __int64 v14;
-  unsigned __int64 v15;
+  __int64 v15;
   __int64 v16;
-  __int64 v17;
+  unsigned __int64 v17;
   unsigned __int64 v18;
-  unsigned __int64 v19;
-  __int64 v20;
-  unsigned __int64 v21;
-  __int64 v22;
-  __int64** v23;
-  __int64* v24;
-  unsigned __int64 v25;
-  __int64 v26;
-  __int64** v27;
-  __int64* v28;
-  unsigned __int64 v29;
-  __int64 v30;
-  unsigned __int64 v31;
+  __int64 v19;
+  unsigned __int64 v20;
+  __int64 v21;
+  __int64** v22;
+  __int64* v23;
+  unsigned __int64 v24;
+  __int64 v25;
+  __int64** v26;
+  __int64* v27;
+  unsigned __int64 v28;
+  __int64 v29;
+  unsigned __int64 v30;
+  __int64 v31;
   __int64 v32;
   __int64 v33;
-  __int64 v34;
-  __int64** v35;
-  __int64* v36;
-  unsigned __int64 v37;
-  __int64 v38;
-  __int64** v39;
-  __int64* v40;
-  unsigned __int64 v41;
-  __int64 v42;
+  __int64** v34;
+  __int64* v35;
+  unsigned __int64 v36;
+  __int64 v37;
+  __int64** v38;
+  __int64* v39;
+  unsigned __int64 v40;
+  __int64 v41;
+  unsigned __int64 v42;
   unsigned __int64 v43;
-  unsigned __int64 v44;
-  __int64 v45;
-  __int64** v46;
-  __int64* v47;
-  unsigned __int64 v48;
+  __int64 v44;
+  __int64** v45;
+  __int64* v46;
+  unsigned __int64 v47;
+  __int64 v48;
   __int64 v49;
-  __int64 v50;
-  __int64** v51;
-  __int64* v52;
-  unsigned __int64 v53;
-  __int64 v54;
-  _QWORD v55[4];
-  _QWORD* v56;
+  __int64** v50;
+  __int64* v51;
+  unsigned __int64 v52;
+  __int64 v53;
+  struct {
+    _QWORD v54[4];
+    _QWORD* v55;
+  } v54_;
 
   *(_QWORD*)(a1 + 16) = 0;
   *(_QWORD*)(a1 + 24) = 0;
   *(_QWORD*)a1 = 0;
   *(_QWORD*)(a1 + 8) = 0;
   *(_DWORD*)(a1 + 32) = 1065353216;
-  ((void (*)(void))GameRoutine_15591a0)();
-  KeyMap_1559360_alt1(a1, 0, 0);
-  KeyMap_1559360_alt1(a1, 1, 1);
-  KeyMap_1559360_alt1(a1, 2, 2);
-  KeyMap_1559360_alt1(a1, 3, 3);
-  KeyMap_1559360_alt1(a1, 4, 4);
-  KeyMap_1559360_alt1(a1, 5, 5);
-  KeyMap_1559360_alt1(a1, 6, 6);
-  KeyMap_1559360_alt1(a1, 7, 7);
-  KeyMap_1559360_alt1(a1, 8, 8);
-  KeyMap_1559360_alt1(a1, 9, 9);
-  KeyMap_1559360_alt1(a1, 10, 10);
-  KeyMap_1559360_alt1(a1, 11, 11);
-  KeyMap_1559360_alt1(a1, 12, 12);
-  KeyMap_1559360_alt1(a1, 13, 13);
-  KeyMap_1559360_alt1(a1, 14, 14);
-  KeyMap_1559360_alt1(a1, 15, 15);
-  KeyMap_1559360_alt1(a1, 16, 16);
-  KeyMap_1559360_alt1(a1, 17, 17);
-  KeyMap_1559360_alt1(a1, 18, 18);
-  KeyMap_1559360_alt1(a1, 19, 19);
-  KeyMap_1559360_alt1(a1, 20, 20);
-  KeyMap_1559360_alt1(a1, 21, 21);
-  KeyMap_1559360_alt1(a1, 22, 22);
-  KeyMap_1559360_alt1(a1, 23, 23);
-  KeyMap_1559360_alt1(a1, 24, 24);
-  KeyMap_1559360_alt1(a1, 25, 25);
-  KeyMap_1559360_alt1(a1, 26, 26);
-  KeyMap_1559360_alt1(a1, 27, 27);
-  KeyMap_1559360_alt1(a1, 28, 28);
-  KeyMap_1559360_alt1(a1, 29, 29);
-  result = KeyMap_1559360_alt1(a1, 30, 30);
+  GameRoutine_15591a0_alt1((_QWORD*)a1);
+  KeyMap_1559360_alt2((_QWORD*)a1, 0, 0);
+  KeyMap_1559360_alt2((_QWORD*)a1, 1, 1);
+  KeyMap_1559360_alt2((_QWORD*)a1, 2, 2);
+  KeyMap_1559360_alt2((_QWORD*)a1, 3, 3);
+  KeyMap_1559360_alt2((_QWORD*)a1, 4, 4);
+  KeyMap_1559360_alt2((_QWORD*)a1, 5, 5);
+  KeyMap_1559360_alt2((_QWORD*)a1, 6, 6);
+  KeyMap_1559360_alt2((_QWORD*)a1, 7, 7);
+  KeyMap_1559360_alt2((_QWORD*)a1, 8, 8);
+  KeyMap_1559360_alt2((_QWORD*)a1, 9, 9);
+  KeyMap_1559360_alt2((_QWORD*)a1, 10, 10);
+  KeyMap_1559360_alt2((_QWORD*)a1, 11, 11);
+  KeyMap_1559360_alt2((_QWORD*)a1, 12, 12);
+  KeyMap_1559360_alt2((_QWORD*)a1, 13, 13);
+  KeyMap_1559360_alt2((_QWORD*)a1, 14, 14);
+  KeyMap_1559360_alt2((_QWORD*)a1, 15, 15);
+  KeyMap_1559360_alt2((_QWORD*)a1, 16, 16);
+  KeyMap_1559360_alt2((_QWORD*)a1, 17, 17);
+  KeyMap_1559360_alt2((_QWORD*)a1, 18, 18);
+  KeyMap_1559360_alt2((_QWORD*)a1, 19, 19);
+  KeyMap_1559360_alt2((_QWORD*)a1, 20, 20);
+  KeyMap_1559360_alt2((_QWORD*)a1, 21, 21);
+  KeyMap_1559360_alt2((_QWORD*)a1, 22, 22);
+  KeyMap_1559360_alt2((_QWORD*)a1, 23, 23);
+  KeyMap_1559360_alt2((_QWORD*)a1, 24, 24);
+  KeyMap_1559360_alt2((_QWORD*)a1, 25, 25);
+  KeyMap_1559360_alt2((_QWORD*)a1, 26, 26);
+  KeyMap_1559360_alt2((_QWORD*)a1, 27, 27);
+  KeyMap_1559360_alt2((_QWORD*)a1, 28, 28);
+  KeyMap_1559360_alt2((_QWORD*)a1, 29, 29);
+  KeyMap_1559360_alt2((_QWORD*)a1, 30, 30);
   *(_QWORD*)(a1 + 40) = 0x100000000LL;
   *(_QWORD*)(a1 + 48) = 0x300000002LL;
   switch (a2) {
   case 0:
-    return GameRoutine_1559c80(a1);
+    GameRoutine_1559c80_alt1((_QWORD*)a1);
+    return;
   case 1:
-    GameRoutine_1559c80(a1);
-    KeyMap_155a1a0_alt1(a1);
-    KeyMap_155a380_alt1(a1);
-    KeyMap_155a560_alt1(a1);
-    v14 = *(_QWORD*)(a1 + 8);
-    if (v14 == 0 || *(_QWORD*)(a1 + 24) == 0) {
+    GameRoutine_1559c80_alt1((_QWORD*)a1);
+    KeyMap_155a1a0((_QWORD*)a1);
+    KeyMap_155a380((_QWORD*)a1);
+    KeyMap_155a560((_QWORD*)a1);
+    v13 = *(_QWORD*)(a1 + 8);
+    if (v13 == 0 || *(_QWORD*)(a1 + 24) == 0) {
       goto LABEL_139;
     }
-    v15 = v14 - 1;
-    if ((v14 & (v14 - 1)) != 0) {
-      v16 = 11;
-      if (v14 <= 0xB) {
-        v16 = 0xBu % (unsigned __int8)*(_QWORD*)(a1 + 8);
+    v14 = v13 - 1;
+    if ((v13 & (v13 - 1)) != 0) {
+      v15 = 11;
+      if (v13 <= 0xB) {
+        v15 = 0xBu % (unsigned __int8)*(_QWORD*)(a1 + 8);
       }
     }
     else {
-      v16 = ((int)v14 - 1) & 0xBLL;
+      v15 = ((int)v13 - 1) & 0xBLL;
     }
-    v23 = *(__int64***)(*(_QWORD*)a1 + 8 * v16);
+    v22 = *(__int64***)(*(_QWORD*)a1 + 8 * v15);
+    if (v22 == nullptr) {
+      goto LABEL_139;
+    }
+    v23 = *v22;
     if (v23 == nullptr) {
       goto LABEL_139;
     }
-    v24 = *v23;
-    if (v24 == nullptr) {
-      goto LABEL_139;
-    }
-    if ((v14 & v15) == 0) {
+    if ((v13 & v14) == 0) {
       while (1) {
-        v26 = v24[1];
-        if (v26 == 11) {
-          if (*((_DWORD*)v24 + 4) == 11) {
+        v25 = v23[1];
+        if (v25 == 11) {
+          if (*((_DWORD*)v23 + 4) == 11) {
             goto LABEL_116;
           }
         }
-        else if ((v26 & v15) != v16) {
+        else if ((v25 & v14) != v15) {
           goto LABEL_139;
         }
-        v24 = (__int64*)*v24;
-        if (v24 == nullptr) {
+        v23 = (__int64*)*v23;
+        if (v23 == nullptr) {
           goto LABEL_139;
         }
       }
     }
     while (2) {
-      v25 = v24[1];
-      if (v25 == 11) {
-        if (*((_DWORD*)v24 + 4) == 11) {
+      v24 = v23[1];
+      if (v24 == 11) {
+        if (*((_DWORD*)v23 + 4) == 11) {
         LABEL_116:
-          if ((v14 & v15) != 0) {
-            v33 = 11;
-            if (v14 <= 0xB) {
-              v33 = 0xBu % (unsigned __int8)*(_QWORD*)(a1 + 8);
+          if ((v13 & v14) != 0) {
+            v32 = 11;
+            if (v13 <= 0xB) {
+              v32 = 0xBu % (unsigned __int8)*(_QWORD*)(a1 + 8);
             }
           }
           else {
-            v33 = ((int)v14 - 1) & 0xBLL;
+            v32 = ((int)v13 - 1) & 0xBLL;
           }
-          v35 = *(__int64***)(*(_QWORD*)a1 + 8 * v33);
-          if (v35 != nullptr) {
-            v36 = *v35;
-            if (v36 != nullptr) {
-              if ((v14 & v15) == 0) {
+          v34 = *(__int64***)(*(_QWORD*)a1 + 8 * v32);
+          if (v34 != nullptr) {
+            v35 = *v34;
+            if (v35 != nullptr) {
+              if ((v13 & v14) == 0) {
                 while (1) {
-                  v38 = v36[1];
-                  if (v38 == 11) {
-                    if (*((_DWORD*)v36 + 4) == 11) {
+                  v37 = v35[1];
+                  if (v37 == 11) {
+                    if (*((_DWORD*)v35 + 4) == 11) {
                       goto LABEL_138;
                     }
                   }
-                  else if ((v38 & v15) != v33) {
+                  else if ((v37 & v14) != v32) {
                     goto LABEL_200;
                   }
-                  v36 = (__int64*)*v36;
-                  if (v36 == nullptr) {
+                  v35 = (__int64*)*v35;
+                  if (v35 == nullptr) {
                     goto LABEL_200;
                   }
                 }
               }
               while (1) {
-                v37 = v36[1];
-                if (v37 == 11) {
-                  if (*((_DWORD*)v36 + 4) == 11) {
+                v36 = v35[1];
+                if (v36 == 11) {
+                  if (*((_DWORD*)v35 + 4) == 11) {
                   LABEL_138:
-                    v36[4] = v36[3];
+                    v35[4] = v35[3];
                     goto LABEL_139;
                   }
                 }
                 else {
-                  if (v37 >= v14) {
-                    v37 %= v14;
+                  if (v36 >= v13) {
+                    v36 %= v13;
                   }
-                  if (v37 != v33) {
+                  if (v36 != v32) {
                     goto LABEL_200;
                   }
                 }
-                v36 = (__int64*)*v36;
-                if (v36 == nullptr) {
+                v35 = (__int64*)*v35;
+                if (v35 == nullptr) {
                   goto LABEL_200;
                 }
               }
@@ -272,23 +292,24 @@ __int64 KeyMap_1557b10(__int64 a1, int a2)
         }
       }
       else {
-        if (v25 >= v14) {
-          v25 %= v14;
+        if (v24 >= v13) {
+          v24 %= v13;
         }
-        if (v25 != v16) {
+        if (v24 != v15) {
         LABEL_139:
-          KeyMap_1559360_alt1(a1, 12, 25);
-          KeyMap_1559360_alt1(a1, 13, 26);
-          KeyMap_1559360_alt1(a1, 10, 25);
-          KeyMap_1559360_alt1(a1, 11, 26);
-          KeyMap_155a740_alt1(a1);
-          KeyMap_155a920_alt1(a1);
-          KeyMap_155ab00_alt1(a1);
-          return KeyMap_155ace0_alt1(a1);
+          KeyMap_1559360_alt2((_QWORD*)a1, 12, 25);
+          KeyMap_1559360_alt2((_QWORD*)a1, 13, 26);
+          KeyMap_1559360_alt2((_QWORD*)a1, 10, 25);
+          KeyMap_1559360_alt2((_QWORD*)a1, 11, 26);
+          KeyMap_155a740_alt2((_QWORD*)a1);
+          KeyMap_155a920_alt2((_QWORD*)a1);
+          KeyMap_155ab00_alt2((_QWORD*)a1);
+          KeyMap_155ace0_alt2((_QWORD*)a1);
+          return;
         }
       }
-      v24 = (__int64*)*v24;
-      if (v24 == nullptr) {
+      v23 = (__int64*)*v23;
+      if (v23 == nullptr) {
         goto LABEL_139;
       }
       continue;
@@ -296,414 +317,426 @@ __int64 KeyMap_1557b10(__int64 a1, int a2)
   case 2:
   case 5:
   case 23:
-    v56 = nullptr;
-    GameRoutine_155aec0(a1, v55);
-    KeyMap_155a560_alt1(a1);
-    KeyMap_1559360_alt1(a1, 10, 10);
-    KeyMap_1559360_alt1(a1, 11, 12);
+    v54_.v55 = nullptr;
+    GameRoutine_155aec0_alt1((_QWORD*)a1, (__int64)v54_.v54);
+    KeyMap_155a560((_QWORD*)a1);
+    KeyMap_1559360_alt2((_QWORD*)a1, 10, 10);
+    KeyMap_1559360_alt2((_QWORD*)a1, 11, 12);
     *(_QWORD*)(a1 + 48) = 0x100000000LL;
-    KeyMap_1559360_alt1(a1, 23, 19);
-    KeyMap_1559360_alt1(a1, 24, 20);
-    KeyMap_1559360_alt1(a1, 25, 21);
-    v5 = 26;
-    v6 = 22;
-    return KeyMap_1559360_alt1(a1, v5, v6);
+    KeyMap_1559360_alt2((_QWORD*)a1, 23, 19);
+    KeyMap_1559360_alt2((_QWORD*)a1, 24, 20);
+    KeyMap_1559360_alt2((_QWORD*)a1, 25, 21);
+    v4 = 26;
+    v5 = 22;
+    goto LABEL_62;
   case 3:
-    v56 = nullptr;
-    return GameRoutine_155aec0(a1, v55);
+    v54_.v55 = nullptr;
+    GameRoutine_155aec0_alt1((_QWORD*)a1, (__int64)v54_.v54);
+    return;
   case 4:
-    v56 = nullptr;
-    GameRoutine_155aec0(a1, v55);
-    KeyMap_1559360_alt1(a1, 10, 21);
-    return KeyMap_1559360_alt1(a1, 11, 22);
+    v54_.v55 = nullptr;
+    GameRoutine_155aec0_alt1((_QWORD*)a1, (__int64)v54_.v54);
+    KeyMap_1559360_alt2((_QWORD*)a1, 10, 21);
+    KeyMap_1559360_alt2((_QWORD*)a1, 11, 22);
+    return;
   case 6:
-    v55[0] = GameData_204ca50;
-    v55[1] = a1;
-    v56 = v55;
-    GameRoutine_155aec0(a1, v55);
-    result = (__int64)v56;
-    if (v56 == v55) {
-      v17 = 32;
+    v54_.v54[0] = GameData_204ca50;
+    v54_.v54[1] = a1;
+    v54_.v55 = v54_.v54;
+    GameRoutine_155aec0_alt1((_QWORD*)a1, (__int64)v54_.v54);
+    if (v54_.v55 == v54_.v54) {
+      v16 = 32;
     }
     else {
-      if (v56 == nullptr) {
-        return result;
+      if (v54_.v55 == nullptr) {
+        return;
       }
-      v17 = 40;
+      v16 = 40;
     }
-    return (*(__int64 (**)(__int64))(*v56 + v17))((__int64)v56);
+    (*(void (**)(__int64))(*v54_.v55 + v16))((__int64)v54_.v55);
+    return;
   case 7:
-    v56 = nullptr;
-    GameRoutine_155aec0(a1, v55);
-    KeyMap_155a560_alt1(a1);
-    KeyMap_1559360_alt1(a1, 10, 10);
-    KeyMap_1559360_alt1(a1, 11, 12);
+    v54_.v55 = nullptr;
+    GameRoutine_155aec0_alt1((_QWORD*)a1, (__int64)v54_.v54);
+    KeyMap_155a560((_QWORD*)a1);
+    KeyMap_1559360_alt2((_QWORD*)a1, 10, 10);
+    KeyMap_1559360_alt2((_QWORD*)a1, 11, 12);
     *(_QWORD*)(a1 + 48) = 0x100000000LL;
-    KeyMap_1559360_alt1(a1, 23, 19);
-    KeyMap_1559360_alt1(a1, 24, 20);
-    KeyMap_1559360_alt1(a1, 25, 21);
-    KeyMap_1559360_alt1(a1, 26, 22);
-    KeyMap_155a560_alt1(a1);
-    KeyMap_155b5a0_alt1(a1);
-    return KeyMap_1559360_alt1(a1, 10, 5);
+    KeyMap_1559360_alt2((_QWORD*)a1, 23, 19);
+    KeyMap_1559360_alt2((_QWORD*)a1, 24, 20);
+    KeyMap_1559360_alt2((_QWORD*)a1, 25, 21);
+    KeyMap_1559360_alt2((_QWORD*)a1, 26, 22);
+    KeyMap_155a560((_QWORD*)a1);
+    KeyMap_155b5a0((_QWORD*)a1);
+    KeyMap_1559360_alt2((_QWORD*)a1, 10, 5);
+    return;
   case 8:
-    v56 = nullptr;
-    GameRoutine_155aec0(a1, v55);
-    KeyMap_155a560_alt1(a1);
-    KeyMap_1559360_alt1(a1, 10, 10);
-    KeyMap_1559360_alt1(a1, 11, 12);
+    v54_.v55 = nullptr;
+    GameRoutine_155aec0_alt1((_QWORD*)a1, (__int64)v54_.v54);
+    KeyMap_155a560((_QWORD*)a1);
+    KeyMap_1559360_alt2((_QWORD*)a1, 10, 10);
+    KeyMap_1559360_alt2((_QWORD*)a1, 11, 12);
     *(_QWORD*)(a1 + 48) = 0x100000000LL;
-    KeyMap_1559360_alt1(a1, 23, 19);
-    KeyMap_1559360_alt1(a1, 24, 20);
-    KeyMap_1559360_alt1(a1, 25, 21);
-    KeyMap_1559360_alt1(a1, 26, 22);
-    KeyMap_155a560_alt1(a1);
-    v8 = *(_QWORD*)(a1 + 8);
-    if (v8 == 0 || *(_QWORD*)(a1 + 24) == 0) {
+    KeyMap_1559360_alt2((_QWORD*)a1, 23, 19);
+    KeyMap_1559360_alt2((_QWORD*)a1, 24, 20);
+    KeyMap_1559360_alt2((_QWORD*)a1, 25, 21);
+    KeyMap_1559360_alt2((_QWORD*)a1, 26, 22);
+    KeyMap_155a560((_QWORD*)a1);
+    v7 = *(_QWORD*)(a1 + 8);
+    if (v7 == 0 || *(_QWORD*)(a1 + 24) == 0) {
       goto LABEL_114;
     }
-    v9 = v8 - 1;
-    v10 = 2;
-    if ((v8 & (v8 - 1)) == 0) {
-      v10 = ((_BYTE)v8 - 1) & 2;
+    v8 = v7 - 1;
+    v9 = 2;
+    if ((v7 & (v7 - 1)) == 0) {
+      v9 = ((_BYTE)v7 - 1) & 2;
     }
-    v11 = *(__int64***)(*(_QWORD*)a1 + 8 * v10);
+    v10 = *(__int64***)(*(_QWORD*)a1 + 8 * v9);
+    if (v10 == nullptr) {
+      goto LABEL_114;
+    }
+    v11 = *v10;
     if (v11 == nullptr) {
       goto LABEL_114;
     }
-    v12 = *v11;
-    if (v12 == nullptr) {
-      goto LABEL_114;
-    }
-    v13 = v12;
-    if ((v8 & v9) == 0) {
+    v12 = v11;
+    if ((v7 & v8) == 0) {
       while (1) {
-        v22 = v13[1];
-        if (v22 == 2) {
-          if (*((_DWORD*)v13 + 4) == 2) {
+        v21 = v12[1];
+        if (v21 == 2) {
+          if (*((_DWORD*)v12 + 4) == 2) {
             goto LABEL_100;
           }
         }
-        else if ((v22 & v9) != v10) {
+        else if ((v21 & v8) != v9) {
           goto LABEL_114;
         }
-        v13 = (__int64*)*v13;
-        if (v13 == nullptr) {
+        v12 = (__int64*)*v12;
+        if (v12 == nullptr) {
           goto LABEL_114;
         }
       }
     }
     while (2) {
-      v21 = v13[1];
-      if (v21 == 2) {
-        if (*((_DWORD*)v13 + 4) == 2) {
+      v20 = v12[1];
+      if (v20 == 2) {
+        if (*((_DWORD*)v12 + 4) == 2) {
         LABEL_100:
-          if ((v8 & v9) == 0) {
+          if ((v7 & v8) == 0) {
             while (1) {
-              v32 = v12[1];
-              if (v32 == 2) {
-                if (*((_DWORD*)v12 + 4) == 2) {
+              v31 = v11[1];
+              if (v31 == 2) {
+                if (*((_DWORD*)v11 + 4) == 2) {
                   goto LABEL_113;
                 }
               }
-              else if ((v32 & v9) != v10) {
+              else if ((v31 & v8) != v9) {
                 goto LABEL_200;
               }
-              v12 = (__int64*)*v12;
-              if (v12 == nullptr) {
+              v11 = (__int64*)*v11;
+              if (v11 == nullptr) {
                 goto LABEL_200;
               }
             }
           }
           while (1) {
-            v31 = v12[1];
-            if (v31 == 2) {
-              if (*((_DWORD*)v12 + 4) == 2) {
+            v30 = v11[1];
+            if (v30 == 2) {
+              if (*((_DWORD*)v11 + 4) == 2) {
               LABEL_113:
-                v12[4] = v12[3];
+                v11[4] = v11[3];
                 goto LABEL_114;
               }
             }
             else {
-              if (v31 >= v8) {
-                v31 %= v8;
+              if (v30 >= v7) {
+                v30 %= v7;
               }
-              if (v31 != v10) {
+              if (v30 != v9) {
                 goto LABEL_200;
               }
             }
-            v12 = (__int64*)*v12;
-            if (v12 == nullptr) {
+            v11 = (__int64*)*v11;
+            if (v11 == nullptr) {
               goto LABEL_200;
             }
           }
         }
       }
       else {
-        if (v21 >= v8) {
-          v21 %= v8;
+        if (v20 >= v7) {
+          v20 %= v7;
         }
-        if (v21 != v10) {
+        if (v20 != v9) {
         LABEL_114:
-          KeyMap_1559360_alt1(a1, 10, 2);
-          KeyMap_1559360_alt1(a1, 10, 0);
-          KeyMap_1559360_alt1(a1, 10, 1);
-          return KeyMap_1559360_alt1(a1, 10, 3);
+          KeyMap_1559360_alt2((_QWORD*)a1, 10, 2);
+          KeyMap_1559360_alt2((_QWORD*)a1, 10, 0);
+          KeyMap_1559360_alt2((_QWORD*)a1, 10, 1);
+          KeyMap_1559360_alt2((_QWORD*)a1, 10, 3);
+          return;
         }
       }
-      v13 = (__int64*)*v13;
-      if (v13 == nullptr) {
+      v12 = (__int64*)*v12;
+      if (v12 == nullptr) {
         goto LABEL_114;
       }
       continue;
     }
   case 9:
-    v56 = nullptr;
-    GameRoutine_155aec0(a1, v55);
-    KeyMap_155a560_alt1(a1);
-    KeyMap_1559360_alt1(a1, 10, 10);
-    KeyMap_1559360_alt1(a1, 11, 12);
+    v54_.v55 = nullptr;
+    GameRoutine_155aec0_alt1((_QWORD*)a1, (__int64)v54_.v54);
+    KeyMap_155a560((_QWORD*)a1);
+    KeyMap_1559360_alt2((_QWORD*)a1, 10, 10);
+    KeyMap_1559360_alt2((_QWORD*)a1, 11, 12);
     *(_QWORD*)(a1 + 48) = 0x100000000LL;
-    KeyMap_1559360_alt1(a1, 23, 19);
-    KeyMap_1559360_alt1(a1, 24, 20);
-    KeyMap_1559360_alt1(a1, 25, 21);
-    KeyMap_1559360_alt1(a1, 26, 22);
-    KeyMap_155b860_alt1(a1);
-    return KeyMap_1559360_alt1(a1, 7, 7);
+    KeyMap_1559360_alt2((_QWORD*)a1, 23, 19);
+    KeyMap_1559360_alt2((_QWORD*)a1, 24, 20);
+    KeyMap_1559360_alt2((_QWORD*)a1, 25, 21);
+    KeyMap_1559360_alt2((_QWORD*)a1, 26, 22);
+    KeyMap_155b860((_QWORD*)a1);
+    KeyMap_1559360_alt2((_QWORD*)a1, 7, 7);
+    return;
   case 10:
-    v55[0] = GameData_204cad0;
-    v55[1] = a1;
-    v56 = v55;
-    GameRoutine_155aec0(a1, v55);
-    if (v56 == v55) {
-      v7 = 32;
+    v54_.v54[0] = GameData_204cad0;
+    v54_.v54[1] = a1;
+    v54_.v55 = v54_.v54;
+    GameRoutine_155aec0_alt1((_QWORD*)a1, (__int64)v54_.v54);
+    if (v54_.v55 == v54_.v54) {
+      v6 = 32;
     }
     else {
-      if (v56 == nullptr) {
+      if (v54_.v55 == nullptr) {
         goto LABEL_61;
       }
-      v7 = 40;
+      v6 = 40;
     }
-    (*(void (**)(__int64))(*v56 + v7))((__int64)v56);
+    (*(void (**)(__int64))(*v54_.v55 + v6))((__int64)v54_.v55);
   LABEL_61:
-    KeyMap_1559e20_alt1(a1, 0, 0, 3);
+    KeyMap_1559e20_alt2((_QWORD*)a1, 0, 0, 3);
     *(_QWORD*)(a1 + 48) = 0x100000000LL;
-    KeyMap_1559360_alt1(a1, 23, 19);
-    KeyMap_1559360_alt1(a1, 24, 20);
-    KeyMap_1559360_alt1(a1, 25, 21);
-    KeyMap_1559360_alt1(a1, 26, 22);
-    KeyMap_155a1a0_alt1(a1);
-    KeyMap_155a380_alt1(a1);
-    KeyMap_155ba40_alt1(a1);
-    v5 = 3;
-    v6 = 16;
-    return KeyMap_1559360_alt1(a1, v5, v6);
+    KeyMap_1559360_alt2((_QWORD*)a1, 23, 19);
+    KeyMap_1559360_alt2((_QWORD*)a1, 24, 20);
+    KeyMap_1559360_alt2((_QWORD*)a1, 25, 21);
+    KeyMap_1559360_alt2((_QWORD*)a1, 26, 22);
+    KeyMap_155a1a0((_QWORD*)a1);
+    KeyMap_155a380((_QWORD*)a1);
+    KeyMap_155ba40((_QWORD*)a1);
+    v4 = 3;
+    v5 = 16;
+  LABEL_62:
+    KeyMap_1559360_alt2((_QWORD*)a1, v4, v5);
+    return;
   case 11:
-    GameRoutine_15591a0(a1);
-    KeyMap_1559e20_alt1(a1, 0, 0, 2);
-    KeyMap_1559e20_alt1(a1, 1, 1, 2);
-    KeyMap_1559360_alt1(a1, 2, 2);
-    KeyMap_1559360_alt1(a1, 2, 0);
-    KeyMap_1559360_alt1(a1, 2, 1);
-    KeyMap_1559360_alt1(a1, 2, 3);
-    KeyMap_1559360_alt1(a1, 2, 18);
-    KeyMap_1559e20_alt1(a1, 7, 1, 3);
-    KeyMap_1559360_alt1(a1, 7, 15);
-    KeyMap_1559360_alt1(a1, 12, 25);
-    KeyMap_1559360_alt1(a1, 13, 26);
-    KeyMap_1559360_alt1(a1, 3, 12);
-    KeyMap_155a560_alt1(a1);
-    KeyMap_1559360_alt1(a1, 10, 10);
-    KeyMap_155b060_alt1(a1);
-    KeyMap_1559360_alt1(a1, 11, 16);
+    GameRoutine_15591a0_alt1((_QWORD*)a1);
+    KeyMap_1559e20_alt2((_QWORD*)a1, 0, 0, 2);
+    KeyMap_1559e20_alt2((_QWORD*)a1, 1u, 1, 2);
+    KeyMap_1559360_alt2((_QWORD*)a1, 2, 2);
+    KeyMap_1559360_alt2((_QWORD*)a1, 2, 0);
+    KeyMap_1559360_alt2((_QWORD*)a1, 2, 1);
+    KeyMap_1559360_alt2((_QWORD*)a1, 2, 3);
+    KeyMap_1559360_alt2((_QWORD*)a1, 2, 18);
+    KeyMap_1559e20_alt2((_QWORD*)a1, 7u, 1, 3);
+    KeyMap_1559360_alt2((_QWORD*)a1, 7, 15);
+    KeyMap_1559360_alt2((_QWORD*)a1, 12, 25);
+    KeyMap_1559360_alt2((_QWORD*)a1, 13, 26);
+    KeyMap_1559360_alt2((_QWORD*)a1, 3, 12);
+    KeyMap_155a560((_QWORD*)a1);
+    KeyMap_1559360_alt2((_QWORD*)a1, 10, 10);
+    KeyMap_155b060_alt2((_QWORD*)a1);
+    KeyMap_1559360_alt2((_QWORD*)a1, 11, 16);
     *(_QWORD*)(a1 + 48) = 0x100000000LL;
-    KeyMap_1559360_alt1(a1, 23, 19);
-    KeyMap_1559360_alt1(a1, 24, 20);
-    KeyMap_1559360_alt1(a1, 25, 21);
-    result = KeyMap_1559360_alt1(a1, 26, 22);
+    KeyMap_1559360_alt2((_QWORD*)a1, 23, 19);
+    KeyMap_1559360_alt2((_QWORD*)a1, 24, 20);
+    KeyMap_1559360_alt2((_QWORD*)a1, 25, 21);
+    KeyMap_1559360_alt2((_QWORD*)a1, 26, 22);
     *(_QWORD*)(a1 + 40) = 0x400000004LL;
-    return result;
+    return;
   case 12:
     *(_QWORD*)(a1 + 48) = 0x300000002LL;
-    GameRoutine_15591a0(a1);
-    KeyMap_1559e20_alt1(a1, 0, 0, 2);
-    KeyMap_1559360_alt1(a1, 10, 10);
-    KeyMap_1559360_alt1(a1, 10, 5);
-    KeyMap_1559360_alt1(a1, 13, 12);
-    KeyMap_1559360_alt1(a1, 7, 2);
-    KeyMap_1559360_alt1(a1, 7, 0);
-    KeyMap_1559360_alt1(a1, 7, 1);
-    KeyMap_1559360_alt1(a1, 7, 3);
-    return KeyMap_1559e20_alt1(a1, 1, 1, 2);
+    GameRoutine_15591a0_alt1((_QWORD*)a1);
+    KeyMap_1559e20_alt2((_QWORD*)a1, 0, 0, 2);
+    KeyMap_1559360_alt2((_QWORD*)a1, 10, 10);
+    KeyMap_1559360_alt2((_QWORD*)a1, 10, 5);
+    KeyMap_1559360_alt2((_QWORD*)a1, 13, 12);
+    KeyMap_1559360_alt2((_QWORD*)a1, 7, 2);
+    KeyMap_1559360_alt2((_QWORD*)a1, 7, 0);
+    KeyMap_1559360_alt2((_QWORD*)a1, 7, 1);
+    KeyMap_1559360_alt2((_QWORD*)a1, 7, 3);
+    KeyMap_1559e20_alt2((_QWORD*)a1, 1u, 1, 2);
+    return;
   case 13:
-    GameRoutine_155bd20(a1);
-    return KeyMap_1559360_alt1(a1, 11, 16);
+    GameRoutine_155bd20_alt1((_QWORD*)a1);
+    KeyMap_1559360_alt2((_QWORD*)a1, 11, 16);
+    return;
   case 14:
-    GameRoutine_155bd20(a1);
-    KeyMap_1559e20_alt1(a1, 3, 0, 2);
-    return KeyMap_1559360_alt1(a1, 11, 17);
+    GameRoutine_155bd20_alt1((_QWORD*)a1);
+    KeyMap_1559e20_alt2((_QWORD*)a1, 3u, 0, 2);
+    KeyMap_1559360_alt2((_QWORD*)a1, 11, 17);
+    return;
   case 15:
     *(_QWORD*)(a1 + 48) = 0x300000002LL;
-    GameRoutine_15591a0(a1);
-    KeyMap_1559e20_alt1(a1, 0, 0, 2);
-    KeyMap_1559360_alt1(a1, 2, 2);
-    KeyMap_1559360_alt1(a1, 2, 0);
-    KeyMap_1559360_alt1(a1, 2, 1);
-    KeyMap_1559360_alt1(a1, 2, 3);
-    return KeyMap_1559e20_alt1(a1, 7, 1, 3);
+    GameRoutine_15591a0_alt1((_QWORD*)a1);
+    KeyMap_1559e20_alt2((_QWORD*)a1, 0, 0, 2);
+    KeyMap_1559360_alt2((_QWORD*)a1, 2, 2);
+    KeyMap_1559360_alt2((_QWORD*)a1, 2, 0);
+    KeyMap_1559360_alt2((_QWORD*)a1, 2, 1);
+    KeyMap_1559360_alt2((_QWORD*)a1, 2, 3);
+    KeyMap_1559e20_alt2((_QWORD*)a1, 7u, 1, 3);
+    return;
   case 16:
-    GameRoutine_15591a0(a1);
-    KeyMap_1559e20_alt1(a1, 0, 0, 2);
-    KeyMap_1559e20_alt1(a1, 1, 1, 2);
-    KeyMap_1559360_alt1(a1, 2, 2);
-    KeyMap_1559360_alt1(a1, 2, 0);
-    KeyMap_1559360_alt1(a1, 2, 1);
-    KeyMap_1559360_alt1(a1, 2, 3);
-    KeyMap_1559e20_alt1(a1, 7, 1, 3);
-    KeyMap_1559360_alt1(a1, 7, 15);
-    KeyMap_155a740_alt1(a1);
-    KeyMap_155a920_alt1(a1);
-    KeyMap_1559360_alt1(a1, 12, 25);
-    KeyMap_1559360_alt1(a1, 13, 26);
-    KeyMap_1559360_alt1(a1, 10, 25);
-    KeyMap_1559360_alt1(a1, 11, 26);
-    KeyMap_155b220_alt1(a1, 17, 3);
-    KeyMap_155b220_alt1(a1, 18, 4);
-    KeyMap_155be20_alt1(a1);
-    KeyMap_155c000_alt1(a1);
-    KeyMap_1559360_alt1(a1, 25, 17);
-    return KeyMap_1559360_alt1(a1, 26, 18);
+    GameRoutine_15591a0_alt1((_QWORD*)a1);
+    KeyMap_1559e20_alt2((_QWORD*)a1, 0, 0, 2);
+    KeyMap_1559e20_alt2((_QWORD*)a1, 1u, 1, 2);
+    KeyMap_1559360_alt2((_QWORD*)a1, 2, 2);
+    KeyMap_1559360_alt2((_QWORD*)a1, 2, 0);
+    KeyMap_1559360_alt2((_QWORD*)a1, 2, 1);
+    KeyMap_1559360_alt2((_QWORD*)a1, 2, 3);
+    KeyMap_1559e20_alt2((_QWORD*)a1, 7u, 1, 3);
+    KeyMap_1559360_alt2((_QWORD*)a1, 7, 15);
+    KeyMap_155a740_alt2((_QWORD*)a1);
+    KeyMap_155a920_alt2((_QWORD*)a1);
+    KeyMap_1559360_alt2((_QWORD*)a1, 12, 25);
+    KeyMap_1559360_alt2((_QWORD*)a1, 13, 26);
+    KeyMap_1559360_alt2((_QWORD*)a1, 10, 25);
+    KeyMap_1559360_alt2((_QWORD*)a1, 11, 26);
+    KeyMap_155b220_alt2((_QWORD*)a1, 0x11u, 3);
+    KeyMap_155b220_alt2((_QWORD*)a1, 0x12u, 4);
+    KeyMap_155be20_alt2((_QWORD*)a1);
+    KeyMap_155c000_alt2((_QWORD*)a1);
+    KeyMap_1559360_alt2((_QWORD*)a1, 25, 17);
+    KeyMap_1559360_alt2((_QWORD*)a1, 26, 18);
+    return;
   case 17:
-    GameRoutine_15591a0(a1);
+    GameRoutine_15591a0_alt1((_QWORD*)a1);
     *(_QWORD*)(a1 + 40) = 0x400000004LL;
     *(_QWORD*)(a1 + 48) = 0x400000004LL;
-    KeyMap_1559e20_alt1(a1, 0, 0, 2);
-    KeyMap_1559e20_alt1(a1, 1, 1, 2);
-    KeyMap_1559360_alt1(a1, 2, 2);
-    KeyMap_1559360_alt1(a1, 2, 0);
-    KeyMap_1559360_alt1(a1, 2, 1);
-    KeyMap_1559360_alt1(a1, 2, 3);
+    KeyMap_1559e20_alt2((_QWORD*)a1, 0, 0, 2);
+    KeyMap_1559e20_alt2((_QWORD*)a1, 1u, 1, 2);
+    KeyMap_1559360_alt2((_QWORD*)a1, 2, 2);
+    KeyMap_1559360_alt2((_QWORD*)a1, 2, 0);
+    KeyMap_1559360_alt2((_QWORD*)a1, 2, 1);
+    KeyMap_1559360_alt2((_QWORD*)a1, 2, 3);
     goto LABEL_39;
   case 18:
-    GameRoutine_15591a0(a1);
+    GameRoutine_15591a0_alt1((_QWORD*)a1);
     *(_QWORD*)(a1 + 40) = 0x400000004LL;
     *(_QWORD*)(a1 + 48) = 0x400000004LL;
-    KeyMap_1559e20_alt1(a1, 0, 0, 2);
-    KeyMap_1559e20_alt1(a1, 1, 1, 2);
-    KeyMap_1559360_alt1(a1, 2, 2);
-    KeyMap_1559360_alt1(a1, 2, 0);
-    KeyMap_1559360_alt1(a1, 2, 1);
-    KeyMap_1559360_alt1(a1, 2, 3);
-    v18 = *(_QWORD*)(a1 + 8);
-    if (v18 == 0 || *(_QWORD*)(a1 + 24) == 0) {
+    KeyMap_1559e20_alt2((_QWORD*)a1, 0, 0, 2);
+    KeyMap_1559e20_alt2((_QWORD*)a1, 1u, 1, 2);
+    KeyMap_1559360_alt2((_QWORD*)a1, 2, 2);
+    KeyMap_1559360_alt2((_QWORD*)a1, 2, 0);
+    KeyMap_1559360_alt2((_QWORD*)a1, 2, 1);
+    KeyMap_1559360_alt2((_QWORD*)a1, 2, 3);
+    v17 = *(_QWORD*)(a1 + 8);
+    if (v17 == 0 || *(_QWORD*)(a1 + 24) == 0) {
       goto LABEL_157;
     }
-    v19 = v18 - 1;
-    if ((v18 & (v18 - 1)) != 0) {
-      v20 = 15;
-      if (v18 <= 0xF) {
-        v20 = 0xFu % (unsigned __int8)*(_QWORD*)(a1 + 8);
+    v18 = v17 - 1;
+    if ((v17 & (v17 - 1)) != 0) {
+      v19 = 15;
+      if (v17 <= 0xF) {
+        v19 = 0xFu % (unsigned __int8)*(_QWORD*)(a1 + 8);
       }
     }
     else {
-      v20 = ((int)v18 - 1) & 0xFLL;
+      v19 = ((int)v17 - 1) & 0xFLL;
     }
-    v27 = *(__int64***)(*(_QWORD*)a1 + 8 * v20);
+    v26 = *(__int64***)(*(_QWORD*)a1 + 8 * v19);
+    if (v26 == nullptr) {
+      goto LABEL_157;
+    }
+    v27 = *v26;
     if (v27 == nullptr) {
       goto LABEL_157;
     }
-    v28 = *v27;
-    if (v28 == nullptr) {
-      goto LABEL_157;
-    }
-    if ((v18 & v19) == 0) {
+    if ((v17 & v18) == 0) {
       while (1) {
-        v30 = v28[1];
-        if (v30 == 15) {
-          if (*((_DWORD*)v28 + 4) == 15) {
+        v29 = v27[1];
+        if (v29 == 15) {
+          if (*((_DWORD*)v27 + 4) == 15) {
             goto LABEL_119;
           }
         }
-        else if ((v30 & v19) != v20) {
+        else if ((v29 & v18) != v19) {
           goto LABEL_157;
         }
-        v28 = (__int64*)*v28;
-        if (v28 == nullptr) {
+        v27 = (__int64*)*v27;
+        if (v27 == nullptr) {
           goto LABEL_157;
         }
       }
     }
     while (2) {
-      v29 = v28[1];
-      if (v29 == 15) {
-        if (*((_DWORD*)v28 + 4) == 15) {
+      v28 = v27[1];
+      if (v28 == 15) {
+        if (*((_DWORD*)v27 + 4) == 15) {
         LABEL_119:
-          if ((v18 & v19) != 0) {
-            v34 = 15;
-            if (v18 <= 0xF) {
-              v34 = 0xFu % (unsigned __int8)*(_QWORD*)(a1 + 8);
+          if ((v17 & v18) != 0) {
+            v33 = 15;
+            if (v17 <= 0xF) {
+              v33 = 0xFu % (unsigned __int8)*(_QWORD*)(a1 + 8);
             }
           }
           else {
-            v34 = ((_BYTE)v18 - 1) & 0xF;
+            v33 = ((_BYTE)v17 - 1) & 0xF;
           }
-          v39 = *(__int64***)(*(_QWORD*)a1 + 8 * v34);
+          v38 = *(__int64***)(*(_QWORD*)a1 + 8 * v33);
+          if (v38 == nullptr) {
+            goto LABEL_200;
+          }
+          v39 = *v38;
           if (v39 == nullptr) {
             goto LABEL_200;
           }
-          v40 = *v39;
-          if (v40 == nullptr) {
-            goto LABEL_200;
-          }
-          if ((v18 & v19) == 0) {
+          if ((v17 & v18) == 0) {
             while (1) {
-              v42 = v40[1];
-              if (v42 == 15) {
-                if (*((_DWORD*)v40 + 4) == 15) {
+              v41 = v39[1];
+              if (v41 == 15) {
+                if (*((_DWORD*)v39 + 4) == 15) {
                   goto LABEL_156;
                 }
               }
-              else if ((v42 & v19) != v34) {
+              else if ((v41 & v18) != v33) {
                 goto LABEL_200;
               }
-              v40 = (__int64*)*v40;
-              if (v40 == nullptr) {
+              v39 = (__int64*)*v39;
+              if (v39 == nullptr) {
                 goto LABEL_200;
               }
             }
           }
           while (1) {
-            v41 = v40[1];
-            if (v41 == 15) {
-              if (*((_DWORD*)v40 + 4) == 15) {
+            v40 = v39[1];
+            if (v40 == 15) {
+              if (*((_DWORD*)v39 + 4) == 15) {
               LABEL_156:
-                v40[4] = v40[3];
+                v39[4] = v39[3];
                 goto LABEL_157;
               }
             }
             else {
-              if (v41 >= v18) {
-                v41 %= v18;
+              if (v40 >= v17) {
+                v40 %= v17;
               }
-              if (v41 != v34) {
+              if (v40 != v33) {
                 goto LABEL_200;
               }
             }
-            v40 = (__int64*)*v40;
-            if (v40 == nullptr) {
+            v39 = (__int64*)*v39;
+            if (v39 == nullptr) {
               goto LABEL_200;
             }
           }
         }
         goto LABEL_89;
       }
-      if (v29 >= v18) {
-        v29 %= v18;
+      if (v28 >= v17) {
+        v28 %= v17;
       }
-      if (v29 == v20) {
+      if (v28 == v19) {
       LABEL_89:
-        v28 = (__int64*)*v28;
-        if (v28 == nullptr) {
+        v27 = (__int64*)*v27;
+        if (v27 == nullptr) {
           break;
         }
         continue;
@@ -711,209 +744,214 @@ __int64 KeyMap_1557b10(__int64 a1, int a2)
       break;
     }
   LABEL_157:
-    KeyMap_1559360_alt1(a1, 15, 15);
-    v43 = *(_QWORD*)(a1 + 8);
-    if (v43 != 0 && *(_QWORD*)(a1 + 24) != 0) {
-      v44 = v43 - 1;
-      if ((v43 & (v43 - 1)) != 0) {
-        v45 = 16;
-        if (v43 <= 0x10) {
-          v45 = 0x10u % (unsigned __int8)*(_QWORD*)(a1 + 8);
+    KeyMap_1559360_alt2((_QWORD*)a1, 15, 15);
+    v42 = *(_QWORD*)(a1 + 8);
+    if (v42 != 0 && *(_QWORD*)(a1 + 24) != 0) {
+      v43 = v42 - 1;
+      if ((v42 & (v42 - 1)) != 0) {
+        v44 = 16;
+        if (v42 <= 0x10) {
+          v44 = 0x10u % (unsigned __int8)*(_QWORD*)(a1 + 8);
         }
       }
       else {
-        v45 = ((int)v43 - 1) & 0x10LL;
+        v44 = ((int)v42 - 1) & 0x10LL;
       }
-      v46 = *(__int64***)(*(_QWORD*)a1 + 8 * v45);
-      if (v46 != nullptr) {
-        v47 = *v46;
-        if (v47 != nullptr) {
-          if ((v43 & v44) == 0) {
+      v45 = *(__int64***)(*(_QWORD*)a1 + 8 * v44);
+      if (v45 != nullptr) {
+        v46 = *v45;
+        if (v46 != nullptr) {
+          if ((v42 & v43) == 0) {
             while (1) {
-              v49 = v47[1];
-              if (v49 == 16) {
-                if (*((_DWORD*)v47 + 4) == 16) {
+              v48 = v46[1];
+              if (v48 == 16) {
+                if (*((_DWORD*)v46 + 4) == 16) {
                   goto LABEL_179;
                 }
               }
-              else if ((v49 & v44) != v45) {
+              else if ((v48 & v43) != v44) {
                 goto LABEL_199;
               }
-              v47 = (__int64*)*v47;
-              if (v47 == nullptr) {
+              v46 = (__int64*)*v46;
+              if (v46 == nullptr) {
                 goto LABEL_199;
               }
             }
           }
           do {
-            v48 = v47[1];
-            if (v48 == 16) {
-              if (*((_DWORD*)v47 + 4) == 16) {
+            v47 = v46[1];
+            if (v47 == 16) {
+              if (*((_DWORD*)v46 + 4) == 16) {
               LABEL_179:
-                if ((v43 & v44) != 0) {
-                  v50 = 16;
-                  if (v43 <= 0x10) {
-                    v50 = 0x10u % (unsigned __int8)*(_QWORD*)(a1 + 8);
+                if ((v42 & v43) != 0) {
+                  v49 = 16;
+                  if (v42 <= 0x10) {
+                    v49 = 0x10u % (unsigned __int8)*(_QWORD*)(a1 + 8);
                   }
                 }
                 else {
-                  v50 = ((_BYTE)v43 - 1) & 0x10;
+                  v49 = ((_BYTE)v42 - 1) & 0x10;
                 }
-                v51 = *(__int64***)(*(_QWORD*)a1 + 8 * v50);
-                if (v51 != nullptr) {
-                  v52 = *v51;
-                  if (v52 != nullptr) {
-                    if ((v43 & v44) == 0) {
+                v50 = *(__int64***)(*(_QWORD*)a1 + 8 * v49);
+                if (v50 != nullptr) {
+                  v51 = *v50;
+                  if (v51 != nullptr) {
+                    if ((v42 & v43) == 0) {
                       while (1) {
-                        v54 = v52[1];
-                        if (v54 == 16) {
-                          if (*((_DWORD*)v52 + 4) == 16) {
+                        v53 = v51[1];
+                        if (v53 == 16) {
+                          if (*((_DWORD*)v51 + 4) == 16) {
                             goto LABEL_198;
                           }
                         }
-                        else if ((v54 & v44) != v50) {
+                        else if ((v53 & v43) != v49) {
                           goto LABEL_200;
                         }
-                        v52 = (__int64*)*v52;
-                        if (v52 == nullptr) {
+                        v51 = (__int64*)*v51;
+                        if (v51 == nullptr) {
                           goto LABEL_200;
                         }
                       }
                     }
                     do {
-                      v53 = v52[1];
-                      if (v53 == 16) {
-                        if (*((_DWORD*)v52 + 4) == 16) {
+                      v52 = v51[1];
+                      if (v52 == 16) {
+                        if (*((_DWORD*)v51 + 4) == 16) {
                         LABEL_198:
-                          v52[4] = v52[3];
+                          v51[4] = v51[3];
                           goto LABEL_199;
                         }
                       }
                       else {
-                        if (v53 >= v43) {
-                          v53 %= v43;
+                        if (v52 >= v42) {
+                          v52 %= v42;
                         }
-                        if (v53 != v50) {
+                        if (v52 != v49) {
                           break;
                         }
                       }
-                      v52 = (__int64*)*v52;
-                    } while (v52 != nullptr);
+                      v51 = (__int64*)*v51;
+                    } while (v51 != nullptr);
                   }
                 }
               LABEL_200:
-                String_60a250("unordered_map::at: key not found");
+                String_60a250_alt1("unordered_map::at: key not found");
               }
             }
             else {
-              if (v48 >= v43) {
-                v48 %= v43;
+              if (v47 >= v42) {
+                v47 %= v42;
               }
-              if (v48 != v45) {
+              if (v47 != v44) {
                 break;
               }
             }
-            v47 = (__int64*)*v47;
-          } while (v47 != nullptr);
+            v46 = (__int64*)*v46;
+          } while (v46 != nullptr);
         }
       }
     }
   LABEL_199:
-    KeyMap_1559360_alt1(a1, 16, 16);
-    KeyMap_155ab00_alt1(a1);
-    KeyMap_155ace0_alt1(a1);
-    KeyMap_155c1e0_alt1(a1);
-    KeyMap_1559360_alt1(a1, 19, 19);
-    KeyMap_155c3c0_alt1(a1);
-    KeyMap_1559360_alt1(a1, 20, 20);
-    KeyMap_155be20_alt1(a1);
-    KeyMap_155c000_alt1(a1);
-    KeyMap_155b220_alt1(a1, 23, 1);
-    KeyMap_155b220_alt1(a1, 24, 2);
-    KeyMap_155b220_alt1(a1, 25, 3);
-    return KeyMap_155b220_alt1(a1, 26, 4);
+    KeyMap_1559360_alt2((_QWORD*)a1, 16, 16);
+    KeyMap_155ab00_alt2((_QWORD*)a1);
+    KeyMap_155ace0_alt2((_QWORD*)a1);
+    KeyMap_155c1e0((_QWORD*)a1);
+    KeyMap_1559360_alt2((_QWORD*)a1, 19, 19);
+    KeyMap_155c3c0((_QWORD*)a1);
+    KeyMap_1559360_alt2((_QWORD*)a1, 20, 20);
+    KeyMap_155be20_alt2((_QWORD*)a1);
+    KeyMap_155c000_alt2((_QWORD*)a1);
+    KeyMap_155b220_alt2((_QWORD*)a1, 0x17u, 1);
+    KeyMap_155b220_alt2((_QWORD*)a1, 0x18u, 2);
+    KeyMap_155b220_alt2((_QWORD*)a1, 0x19u, 3);
+    KeyMap_155b220_alt2((_QWORD*)a1, 0x1Au, 4);
+    return;
   case 19:
-    GameRoutine_15591a0(a1);
+    GameRoutine_15591a0_alt1((_QWORD*)a1);
     *(_QWORD*)(a1 + 40) = 0x400000004LL;
     *(_QWORD*)(a1 + 48) = 0x400000004LL;
-    KeyMap_1559e20_alt1(a1, 0, 0, 2);
-    KeyMap_1559e20_alt1(a1, 1, 1, 2);
-    KeyMap_1559360_alt1(a1, 2, 2);
-    KeyMap_1559360_alt1(a1, 2, 0);
-    KeyMap_1559360_alt1(a1, 2, 1);
-    KeyMap_1559360_alt1(a1, 2, 3);
-    KeyMap_155b220_alt1(a1, 15, 1);
-    KeyMap_155b220_alt1(a1, 16, 2);
-    KeyMap_155b220_alt1(a1, 17, 3);
-    KeyMap_155b220_alt1(a1, 18, 4);
-    KeyMap_1559e20_alt1(a1, 7, 1, 3);
-    KeyMap_1559360_alt1(a1, 7, 15);
-    KeyMap_1559360_alt1(a1, 3, 16);
-    KeyMap_155ba40_alt1(a1);
-    KeyMap_1559360_alt1(a1, 6, 6);
-    KeyMap_1559360_alt1(a1, 6, 10);
-    KeyMap_155a1a0_alt1(a1);
-    KeyMap_1559360_alt1(a1, 12, 12);
-    KeyMap_1559360_alt1(a1, 12, 23);
-    KeyMap_1559360_alt1(a1, 12, 24);
-    KeyMap_1559360_alt1(a1, 12, 25);
-    return KeyMap_1559360_alt1(a1, 12, 26);
+    KeyMap_1559e20_alt2((_QWORD*)a1, 0, 0, 2);
+    KeyMap_1559e20_alt2((_QWORD*)a1, 1u, 1, 2);
+    KeyMap_1559360_alt2((_QWORD*)a1, 2, 2);
+    KeyMap_1559360_alt2((_QWORD*)a1, 2, 0);
+    KeyMap_1559360_alt2((_QWORD*)a1, 2, 1);
+    KeyMap_1559360_alt2((_QWORD*)a1, 2, 3);
+    KeyMap_155b220_alt2((_QWORD*)a1, 0xFu, 1);
+    KeyMap_155b220_alt2((_QWORD*)a1, 0x10u, 2);
+    KeyMap_155b220_alt2((_QWORD*)a1, 0x11u, 3);
+    KeyMap_155b220_alt2((_QWORD*)a1, 0x12u, 4);
+    KeyMap_1559e20_alt2((_QWORD*)a1, 7u, 1, 3);
+    KeyMap_1559360_alt2((_QWORD*)a1, 7, 15);
+    KeyMap_1559360_alt2((_QWORD*)a1, 3, 16);
+    KeyMap_155ba40((_QWORD*)a1);
+    KeyMap_1559360_alt2((_QWORD*)a1, 6, 6);
+    KeyMap_1559360_alt2((_QWORD*)a1, 6, 10);
+    KeyMap_155a1a0((_QWORD*)a1);
+    KeyMap_1559360_alt2((_QWORD*)a1, 12, 12);
+    KeyMap_1559360_alt2((_QWORD*)a1, 12, 23);
+    KeyMap_1559360_alt2((_QWORD*)a1, 12, 24);
+    KeyMap_1559360_alt2((_QWORD*)a1, 12, 25);
+    KeyMap_1559360_alt2((_QWORD*)a1, 12, 26);
+    return;
   case 20:
-    GameRoutine_15591a0(a1);
+    GameRoutine_15591a0_alt1((_QWORD*)a1);
     *(_QWORD*)(a1 + 40) = 0x400000004LL;
     *(_QWORD*)(a1 + 48) = 0x400000004LL;
-    KeyMap_1559e20_alt1(a1, 0, 0, 2);
-    KeyMap_1559e20_alt1(a1, 1, 1, 2);
-    KeyMap_1559360_alt1(a1, 2, 2);
-    KeyMap_1559360_alt1(a1, 2, 0);
-    KeyMap_1559360_alt1(a1, 2, 1);
-    KeyMap_1559360_alt1(a1, 2, 3);
-    KeyMap_1559e20_alt1(a1, 7, 1, 3);
-    KeyMap_1559360_alt1(a1, 7, 15);
-    KeyMap_1559360_alt1(a1, 3, 16);
-    KeyMap_155b220_alt1(a1, 15, 1);
-    KeyMap_155b220_alt1(a1, 16, 2);
-    KeyMap_155b220_alt1(a1, 17, 3);
-    KeyMap_155b220_alt1(a1, 18, 4);
+    KeyMap_1559e20_alt2((_QWORD*)a1, 0, 0, 2);
+    KeyMap_1559e20_alt2((_QWORD*)a1, 1u, 1, 2);
+    KeyMap_1559360_alt2((_QWORD*)a1, 2, 2);
+    KeyMap_1559360_alt2((_QWORD*)a1, 2, 0);
+    KeyMap_1559360_alt2((_QWORD*)a1, 2, 1);
+    KeyMap_1559360_alt2((_QWORD*)a1, 2, 3);
+    KeyMap_1559e20_alt2((_QWORD*)a1, 7u, 1, 3);
+    KeyMap_1559360_alt2((_QWORD*)a1, 7, 15);
+    KeyMap_1559360_alt2((_QWORD*)a1, 3, 16);
+    KeyMap_155b220_alt2((_QWORD*)a1, 0xFu, 1);
+    KeyMap_155b220_alt2((_QWORD*)a1, 0x10u, 2);
+    KeyMap_155b220_alt2((_QWORD*)a1, 0x11u, 3);
+    KeyMap_155b220_alt2((_QWORD*)a1, 0x12u, 4);
     *(_QWORD*)(a1 + 40) = 0x300000004LL;
-    KeyMap_1559360_alt1(a1, 19, 23);
-    KeyMap_1559360_alt1(a1, 20, 24);
-    KeyMap_155ba40_alt1(a1);
-    KeyMap_1559360_alt1(a1, 6, 6);
-    KeyMap_155a1a0_alt1(a1);
-    KeyMap_1559360_alt1(a1, 12, 12);
-    KeyMap_155a560_alt1(a1);
-    return KeyMap_1559360_alt1(a1, 10, 10);
+    KeyMap_1559360_alt2((_QWORD*)a1, 19, 23);
+    KeyMap_1559360_alt2((_QWORD*)a1, 20, 24);
+    KeyMap_155ba40((_QWORD*)a1);
+    KeyMap_1559360_alt2((_QWORD*)a1, 6, 6);
+    KeyMap_155a1a0((_QWORD*)a1);
+    KeyMap_1559360_alt2((_QWORD*)a1, 12, 12);
+    KeyMap_155a560((_QWORD*)a1);
+    KeyMap_1559360_alt2((_QWORD*)a1, 10, 10);
+    return;
   case 21:
-    GameRoutine_15591a0(a1);
+    GameRoutine_15591a0_alt1((_QWORD*)a1);
     *(_QWORD*)(a1 + 40) = 0x400000004LL;
     *(_QWORD*)(a1 + 48) = 0x400000004LL;
-    KeyMap_1559e20_alt1(a1, 0, 0, 1);
+    KeyMap_1559e20_alt2((_QWORD*)a1, 0, 0, 1);
   LABEL_39:
-    KeyMap_1559e20_alt1(a1, 7, 1, 3);
-    return KeyMap_1559360_alt1(a1, 7, 15);
+    KeyMap_1559e20_alt2((_QWORD*)a1, 7u, 1, 3);
+    goto LABEL_46;
   case 22:
-    GameRoutine_1559c80(a1);
-    KeyMap_155b860_alt1(a1);
-    return KeyMap_1559360_alt1(a1, 7, 15);
+    GameRoutine_1559c80_alt1((_QWORD*)a1);
+    KeyMap_155b860((_QWORD*)a1);
+  LABEL_46:
+    KeyMap_1559360_alt2((_QWORD*)a1, 7, 15);
+    return;
   case 24:
-    v56 = nullptr;
-    GameRoutine_155aec0(a1, v55);
-    KeyMap_155a560_alt1(a1);
-    KeyMap_1559360_alt1(a1, 10, 10);
-    KeyMap_1559360_alt1(a1, 11, 12);
+    v54_.v55 = nullptr;
+    GameRoutine_155aec0_alt1((_QWORD*)a1, (__int64)v54_.v54);
+    KeyMap_155a560((_QWORD*)a1);
+    KeyMap_1559360_alt2((_QWORD*)a1, 10, 10);
+    KeyMap_1559360_alt2((_QWORD*)a1, 11, 12);
     *(_QWORD*)(a1 + 48) = 0x100000000LL;
-    KeyMap_1559360_alt1(a1, 23, 19);
-    KeyMap_1559360_alt1(a1, 24, 20);
-    KeyMap_1559360_alt1(a1, 25, 21);
-    KeyMap_1559360_alt1(a1, 26, 22);
-    KeyMap_1559360_alt1(a1, 6, 24);
-    KeyMap_155c1e0_alt1(a1);
-    result = KeyMap_155c3c0_alt1(a1);
+    KeyMap_1559360_alt2((_QWORD*)a1, 23, 19);
+    KeyMap_1559360_alt2((_QWORD*)a1, 24, 20);
+    KeyMap_1559360_alt2((_QWORD*)a1, 25, 21);
+    KeyMap_1559360_alt2((_QWORD*)a1, 26, 22);
+    KeyMap_1559360_alt2((_QWORD*)a1, 6, 24);
+    KeyMap_155c1e0((_QWORD*)a1);
+    KeyMap_155c3c0((_QWORD*)a1);
     *(_DWORD*)(a1 + 44) = 4;
-    return result;
+    return;
   default:
-    return result;
+    return;
   }
 }
 

@@ -1630,7 +1630,7 @@ _QWORD* MapUnitInfoDetail_18302e0(_QWORD* result, int* a2, _QWORD* a3,
           v35 = *(_QWORD*)v26;
           v26 += 2;
           *v27 = v35;
-          if ((char*)((char*)v26 - *v20) == (char*)GameRoutine_1000) {
+          if ((char*)((char*)v26 - *v20) == (char*)((char*)0x1000LL)) {
             v36 = (int*)v20[1];
             ++v20;
             v26 = v36;
@@ -1647,7 +1647,7 @@ _QWORD* MapUnitInfoDetail_18302e0(_QWORD* result, int* a2, _QWORD* a3,
               (unsigned int)*((unsigned __int8*)v24 + 4)) {
             v31 = *v24++;
             *v27 = v31;
-            if ((char*)((char*)v24 - *v28) == (char*)GameRoutine_1000) {
+            if ((char*)((char*)v24 - *v28) == (char*)((char*)0x1000LL)) {
               v32 = (__int64*)v28[1];
               ++v28;
               v24 = v32;
@@ -1657,7 +1657,7 @@ _QWORD* MapUnitInfoDetail_18302e0(_QWORD* result, int* a2, _QWORD* a3,
             v29 = *(_QWORD*)v26;
             v26 += 2;
             *v27 = v29;
-            if ((char*)((char*)v26 - *v20) == (char*)GameRoutine_1000) {
+            if ((char*)((char*)v26 - *v20) == (char*)((char*)0x1000LL)) {
               v30 = (int*)v20[1];
               ++v20;
               v26 = v30;
@@ -1671,7 +1671,7 @@ _QWORD* MapUnitInfoDetail_18302e0(_QWORD* result, int* a2, _QWORD* a3,
         while (v24 != (__int64*)v21) {
           v33 = *v24++;
           *v27 = v33;
-          if ((char*)((char*)v24 - *v28) == (char*)GameRoutine_1000) {
+          if ((char*)((char*)v24 - *v28) == (char*)((char*)0x1000LL)) {
             v34 = (__int64*)v28[1];
             ++v28;
             v24 = v34;
@@ -1686,7 +1686,7 @@ _QWORD* MapUnitInfoDetail_18302e0(_QWORD* result, int* a2, _QWORD* a3,
       *(_QWORD*)a6 = *(_QWORD*)a2;
       while (1) {
         a2 += 2;
-        if ((char*)((char*)a2 - *result) == (char*)GameRoutine_1000) {
+        if ((char*)((char*)a2 - *result) == (char*)((char*)0x1000LL)) {
           v9 = (__int64*)result[1];
           ++result;
           a2 = (int*)v9;
@@ -2440,7 +2440,7 @@ _QWORD* MapUnitInfoDetail_1831300(_QWORD* result, int* a2, _QWORD* a3,
           v35 = *(_QWORD*)v26;
           v26 += 2;
           *v27 = v35;
-          if ((char*)((char*)v26 - *v20) == (char*)GameRoutine_1000) {
+          if ((char*)((char*)v26 - *v20) == (char*)((char*)0x1000LL)) {
             v36 = (int*)v20[1];
             ++v20;
             v26 = v36;
@@ -2457,7 +2457,7 @@ _QWORD* MapUnitInfoDetail_1831300(_QWORD* result, int* a2, _QWORD* a3,
               (unsigned int)*((unsigned __int8*)v24 + 4)) {
             v31 = *v24++;
             *v27 = v31;
-            if ((char*)((char*)v24 - *v28) == (char*)GameRoutine_1000) {
+            if ((char*)((char*)v24 - *v28) == (char*)((char*)0x1000LL)) {
               v32 = (__int64*)v28[1];
               ++v28;
               v24 = v32;
@@ -2467,7 +2467,7 @@ _QWORD* MapUnitInfoDetail_1831300(_QWORD* result, int* a2, _QWORD* a3,
             v29 = *(_QWORD*)v26;
             v26 += 2;
             *v27 = v29;
-            if ((char*)((char*)v26 - *v20) == (char*)GameRoutine_1000) {
+            if ((char*)((char*)v26 - *v20) == (char*)((char*)0x1000LL)) {
               v30 = (int*)v20[1];
               ++v20;
               v26 = v30;
@@ -2481,7 +2481,7 @@ _QWORD* MapUnitInfoDetail_1831300(_QWORD* result, int* a2, _QWORD* a3,
         while (v24 != (__int64*)v21) {
           v33 = *v24++;
           *v27 = v33;
-          if ((char*)((char*)v24 - *v28) == (char*)GameRoutine_1000) {
+          if ((char*)((char*)v24 - *v28) == (char*)((char*)0x1000LL)) {
             v34 = (__int64*)v28[1];
             ++v28;
             v24 = v34;
@@ -2496,7 +2496,7 @@ _QWORD* MapUnitInfoDetail_1831300(_QWORD* result, int* a2, _QWORD* a3,
       *(_QWORD*)a6 = *(_QWORD*)a2;
       while (1) {
         a2 += 2;
-        if ((char*)((char*)a2 - *result) == (char*)GameRoutine_1000) {
+        if ((char*)((char*)a2 - *result) == (char*)((char*)0x1000LL)) {
           v9 = (__int64*)result[1];
           ++result;
           a2 = (int*)v9;

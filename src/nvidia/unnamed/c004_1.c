@@ -5223,7 +5223,7 @@ __int64 CudaDriverHr_20c310(__int64 a1, _QWORD* a2)
   }
   v3 = CudaDriverRoutine_98340(a1);
   if (a2 != nullptr) {
-    *a2 = (*(__int64 (**)(void))(*(_QWORD*)(v3 + 64) + 18440LL))();
+    *a2 = (*(__int64 (**)(void*))(*(_QWORD*)(v3 + 64) + 18440LL))((void*)v3);
   }
   return 0;
 }
@@ -5237,7 +5237,7 @@ __int64 CudaDriverHr_20c370(__int64 a1, _QWORD* a2)
   }
   v3 = CudaDriverRoutine_98340(a1);
   if (a2 != nullptr) {
-    *a2 = (*(__int64 (**)(void))(*(_QWORD*)(v3 + 16) + 18432LL))();
+    *a2 = (*(__int64 (**)(void*))(*(_QWORD*)(v3 + 16) + 18432LL))((void*)v3);
   }
   return 0;
 }

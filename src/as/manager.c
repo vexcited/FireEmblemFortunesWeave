@@ -112,12 +112,25 @@ __attribute__((swiftcall)) void Manager_d9b420(PSEUDO_X8 x8_, _QWORD* a1,
 __attribute__((swiftcall)) void Manager_d9b810(PSEUDO_X8 x8_, __int64 a1,
                                                __int64 a2, __int64 a3,
                                                __int64 a4, unsigned int a5);
-__attribute__((swiftcall)) void Manager_d9ba20(PSEUDO_X8 x8_, __int64 a1,
-                                               unsigned __int8* a2, _QWORD* a3);
+__attribute__((swiftcall)) void
+Manager_d9ba20_alt1(PSEUDO_X8 x8_, __int64 a1, unsigned __int8* a2,
+                    _QWORD* a3) __asm__("Manager_d9ba20");
 __int64 Manager_d9c8c0(__int64 a1, __int64* a2);
-_QWORD* Manager_d9d980(_QWORD* result);
+_QWORD* Manager_d9d980_alt1(_QWORD* result) __asm__("Manager_d9d980");
 extern _UNKNOWN GameData_1ac689a;
 __int64 Manager_6308c0(__int64 a1);
+__attribute__((swiftcall)) void
+Manager_629f20_alt2(PSEUDO_X8, __int64 result, _BYTE*, __int64, __int64,
+                    unsigned int, int, char) __asm__("Manager_629f20");
+__int64 std___1___shared_weak_count___release_weak_alt1(_QWORD) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 std___1___shared_weak_count___release_weak_alt2(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+__attribute__((swiftcall)) void Manager_d9ba20(PSEUDO_X8 x8_, __int64 a1,
+                                               __int64 a2, _QWORD* a3);
+void Manager_d9d980(_QWORD* a1);
 
 __int64 Manager_626d20(__int64 a1, __int64 a2)
 {
@@ -3310,14 +3323,14 @@ __attribute__((swiftcall)) void Manager_d9b810(PSEUDO_X8 x8_, __int64 a1,
 }
 
 __attribute__((swiftcall)) void Manager_d9ba20(PSEUDO_X8 x8_, __int64 a1,
-                                               unsigned __int8* a2, _QWORD* a3)
+                                               __int64 a2, _QWORD* a3)
 {
 
 #pragma clang fp contract(off)
   __int64 a4 = (__int64)PSEUDO_X8_VALUE(x8_);
-  __n128 result;
+  __int64 result;
   _BYTE* v9;
-  unsigned __int8* v10;
+  __int64 v10;
   __int64 v11;
   __int64 v12;
   __int64* v13;
@@ -3331,7 +3344,7 @@ __attribute__((swiftcall)) void Manager_d9ba20(PSEUDO_X8 x8_, __int64 a1,
   unsigned int v21;
   __int64 v22;
   int v23;
-  void (*v24)(void);
+  __int64 (*v24)(void);
   __int64 v25;
   __int64 v26;
   struct {
@@ -3348,8 +3361,8 @@ __attribute__((swiftcall)) void Manager_d9ba20(PSEUDO_X8 x8_, __int64 a1,
   *(_QWORD*)a4 = 0;
   *(_QWORD*)(a4 + 16) = 0;
   *(_DWORD*)(a4 + 8) = 0x2000;
-  result =
-      X8CALL_V0(__n128, Manager_d9b420((void*)(&v27_.v27), (_QWORD*)a1, a2));
+  result = X8CALL_X0(__int64, Manager_d9b420((void*)(&v27_.v27), (_QWORD*)a1,
+                                             (unsigned __int8*)a2));
   if (v27_.v27 != 0) {
     if ((*(_BYTE*)(a1 + 8) & 1) != 0) {
       v9 = *(_BYTE**)(a1 + 24);
@@ -3357,14 +3370,16 @@ __attribute__((swiftcall)) void Manager_d9ba20(PSEUDO_X8 x8_, __int64 a1,
     else {
       v9 = (_BYTE*)(a1 + 9);
     }
-    if ((*a2 & 1) != 0) {
-      v10 = *((unsigned __int8**)a2 + 2);
+    if ((*(_BYTE*)a2 & 1) != 0) {
+      v10 = *(_QWORD*)(a2 + 16);
     }
     else {
       v10 = a2 + 1;
     }
-    Manager_629f20_alt1((void*)((__int64)&v29_.v29), *as_g_script_manager_ptr,
-                        v9, v27_.v27, (__int64)v10, 0, 0x8000, 2, result);
+    result =
+        X8CALL_X0(__int64, Manager_629f20_alt2((void*)((__int64)&v29_.v29),
+                                               *as_g_script_manager_ptr, v9,
+                                               v27_.v27, v10, 0, 0x8000, 2));
     v11 = v29_.v29;
     v12 = v29_.v30;
     *(_QWORD*)a4 = v29_.v29;
@@ -3395,7 +3410,7 @@ __attribute__((swiftcall)) void Manager_d9ba20(PSEUDO_X8 x8_, __int64 a1,
               if (v23 > 2) {
                 switch (v23) {
                 case 3:
-                  (*(void (**)(_QWORD, _QWORD, float))(
+                  result = (*(__int64 (**)(_QWORD, _QWORD, float))(
                       **(_QWORD**)(v20[1] + 24LL) + 136LL))(
                       *(_QWORD*)(v20[1] + 24LL), v21, *(float*)v18);
                   break;
@@ -3408,16 +3423,17 @@ __attribute__((swiftcall)) void Manager_d9ba20(PSEUDO_X8 x8_, __int64 a1,
                     v26 = (__int64)v18 + 1;
                   }
                   GameRoutine_25eca0(&v29_.v29, v26);
-                  (*(void (**)(_QWORD, _QWORD, __int64*))(
+                  result = (*(__int64 (**)(_QWORD, _QWORD, __int64*))(
                       **(_QWORD**)(v25 + 24) + 160LL))(*(_QWORD*)(v25 + 24),
                                                        v21, &v29_.v29);
                   if ((v29_.v29 & 1) != 0) {
-                    GameRoutine_25ec90(v29_.v31,
-                                       v29_.v29 & 0xFFFFFFFFFFFFFFFELL);
+                    result = GameRoutine_25ec90(
+                        v29_.v31, v29_.v29 & 0xFFFFFFFFFFFFFFFELL);
                   }
                   break;
                 case 6:
-                  v24 = *(void (**)(void))(**(_QWORD**)(v20[1] + 24LL) + 104LL);
+                  v24 = *(__int64 (**)(void))(**(_QWORD**)(v20[1] + 24LL) +
+                                              104LL);
                   goto LABEL_34;
                 default:
                   break;
@@ -3428,15 +3444,16 @@ __attribute__((swiftcall)) void Manager_d9ba20(PSEUDO_X8 x8_, __int64 a1,
                 case 0:
                   goto LABEL_29;
                 case 1:
-                  (*(void (**)(_QWORD, _QWORD, _QWORD))(
+                  result = (*(__int64 (**)(_QWORD, _QWORD, _QWORD))(
                       **(_QWORD**)(v20[1] + 24LL) + 128LL))(
                       *(_QWORD*)(v20[1] + 24LL), v21, *v18);
                   break;
                 case 2:
                 LABEL_29:
-                  v24 = *(void (**)(void))(**(_QWORD**)(v20[1] + 24LL) + 120LL);
+                  v24 = *(__int64 (**)(void))(**(_QWORD**)(v20[1] + 24LL) +
+                                              120LL);
                 LABEL_34:
-                  v24();
+                  result = v24();
                   break;
                 default:
                   break;
@@ -3453,10 +3470,9 @@ __attribute__((swiftcall)) void Manager_d9ba20(PSEUDO_X8 x8_, __int64 a1,
   v22 = v27_.v28;
   if (v27_.v28 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v27_.v28 + 8),
                                         0xFFFFFFFFFFFFFFFFLL) == 0) {
-    (*(void (**)(__int64, long double))(*(_QWORD*)v22 + 16LL))(
-        v22, *(long double*)&result);
+    (*(void (**)(__int64))(*(_QWORD*)v22 + 16LL))(v22);
     {
-      std___1___shared_weak_count___release_weak(v22);
+      std___1___shared_weak_count___release_weak_alt1(v22);
       return;
     }
   }
@@ -3589,7 +3605,8 @@ __int64 Manager_d9c8c0(__int64 a1, __int64* a2)
   }
 LABEL_24:
   v65 = 0;
-  Manager_d9ba20((void*)((__int64)&v63), a1, (unsigned __int8*)a2 + 16, a2 + 5);
+  Manager_d9ba20_alt1((void*)((__int64)&v63), a1, (unsigned __int8*)a2 + 16,
+                      a2 + 5);
   if (v64 == 0x2000) {
     goto LABEL_34;
   }
@@ -3951,49 +3968,49 @@ LABEL_12:
   return v17;
 }
 
-_QWORD* Manager_d9d980(_QWORD* result)
+void Manager_d9d980(_QWORD* a1)
 {
   _QWORD* v1;
-  _QWORD* v2;
   __int64 v3;
   __int64 v4;
-  _QWORD* v5;
+  __int64 v5;
   __int64 v6;
   __int64 v7;
-  unsigned __int64 v8;
+  __int64 v8;
   unsigned __int64 v9;
-  __int64 v10;
-  unsigned __int64 v11;
-  __int64 v12;
+  unsigned __int64 v10;
+  __int64 v11;
+  unsigned __int64 v12;
   __int64 v13;
+  __int64 v14;
 
-  if (result[3] != 0) {
-    v1 = (_QWORD*)result[2];
-    v2 = result;
+  if (a1[3] != 0) {
+    v1 = (_QWORD*)a1[2];
     if (v1 != nullptr) {
       v3 = fw_memory_g_heap_manager_ptr;
       do {
-        v5 = v1;
+        v5 = (__int64)v1;
         v1 = (_QWORD*)*v1;
-        v6 = v5[6];
+        v6 = *(_QWORD*)(v5 + 48);
         if (v6 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v6 + 8),
                                         0xFFFFFFFFFFFFFFFFLL) == 0) {
           (*(void (**)(__int64))(*(_QWORD*)v6 + 16LL))(v6);
-          std___1___shared_weak_count___release_weak(v6);
-          if ((v5[2] & 1) != 0) {
+          std___1___shared_weak_count___release_weak_alt2(v6);
+          if ((*(_BYTE*)(v5 + 16) & 1) != 0) {
           LABEL_11:
-            if (v5[4] != 0) {
+            v7 = *(_QWORD*)(v5 + 32);
+            if (v7 != 0) {
               if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) != 0) {
-                v7 = 128;
+                v8 = 128;
               }
               else {
-                v7 = 56;
+                v8 = 56;
               }
-              nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v7);
+              nn_mem_StandardAllocator_Free_alt2(*(_QWORD*)v3 + v8, v7);
             }
           }
         }
-        else if ((v5[2] & 1) != 0) {
+        else if ((*(_BYTE*)(v5 + 16) & 1) != 0) {
           goto LABEL_11;
         }
         if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) != 0) {
@@ -4002,44 +4019,43 @@ _QWORD* Manager_d9d980(_QWORD* result)
         else {
           v4 = 56;
         }
-        result = (_QWORD*)nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v4);
+        nn_mem_StandardAllocator_Free_alt2(*(_QWORD*)v3 + v4, v5);
       } while (v1 != nullptr);
     }
-    v8 = v2[1];
-    v2[2] = 0;
-    if (v8 != 0) {
-      v9 = v8 & 7;
-      if (v8 >= 8) {
-        v11 = v8 & 0xFFFFFFFFFFFFFFF8LL;
-        v10 = 0;
+    v9 = a1[1];
+    a1[2] = 0;
+    if (v9 != 0) {
+      v10 = v9 & 7;
+      if (v9 >= 8) {
+        v12 = v9 & 0xFFFFFFFFFFFFFFF8LL;
+        v11 = 0;
         do {
-          *(_QWORD*)(*v2 + 8 * v10) = 0;
-          *(_QWORD*)(*v2 + 8 * v10 + 8) = 0;
-          *(_QWORD*)(*v2 + 8 * v10 + 16) = 0;
-          *(_QWORD*)(*v2 + 8 * v10 + 24) = 0;
-          *(_QWORD*)(*v2 + 8 * v10 + 32) = 0;
-          *(_QWORD*)(*v2 + 8 * v10 + 40) = 0;
-          *(_QWORD*)(*v2 + 8 * v10 + 48) = 0;
-          v12 = *v2 + 8 * v10;
-          v10 += 8;
-          *(_QWORD*)(v12 + 56) = 0;
-        } while (v11 != v10);
+          *(_QWORD*)(*a1 + 8 * v11) = 0;
+          *(_QWORD*)(*a1 + 8 * v11 + 8) = 0;
+          *(_QWORD*)(*a1 + 8 * v11 + 16) = 0;
+          *(_QWORD*)(*a1 + 8 * v11 + 24) = 0;
+          *(_QWORD*)(*a1 + 8 * v11 + 32) = 0;
+          *(_QWORD*)(*a1 + 8 * v11 + 40) = 0;
+          *(_QWORD*)(*a1 + 8 * v11 + 48) = 0;
+          v13 = *a1 + 8 * v11;
+          v11 += 8;
+          *(_QWORD*)(v13 + 56) = 0;
+        } while (v12 != v11);
       }
       else {
-        v10 = 0;
+        v11 = 0;
       }
-      if (v9 != 0) {
-        v13 = 8 * v10;
+      if (v10 != 0) {
+        v14 = 8 * v11;
         do {
-          --v9;
-          *(_QWORD*)(*v2 + v13) = 0;
-          v13 += 8;
-        } while (v9 != 0);
+          --v10;
+          *(_QWORD*)(*a1 + v14) = 0;
+          v14 += 8;
+        } while (v10 != 0);
       }
     }
-    v2[3] = 0;
+    a1[3] = 0;
   }
-  return result;
 }
 
 #pragma GCC visibility pop

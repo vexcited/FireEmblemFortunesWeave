@@ -9,12 +9,15 @@ extern __int64 (*GameData_1f98c80[])();
 void __attribute__((noreturn)) GameRoutine_60a310(_QWORD, _QWORD, _QWORD,
                                                   _QWORD);
 void* BattleScenes_7a7840(__int64 a1, __int64 a2, _BYTE* a3, _BYTE* a4);
-__int64 BattleScenes_7a7a20(__int64 a1, unsigned __int8* a2, __int64 a3,
-                            __int64 a4);
+__int64 BattleScenes_7a7a20_alt1(__int64 a1, unsigned __int8* a2, __int64 a3,
+                                 __int64 a4) __asm__("BattleScenes_7a7a20");
 __int64 game_map_BattleScenes_GetCurrentCount_lambda0_Invoke(__int64 result,
                                                              __int64 a2);
 __int64 game_map_BattleScenes_GetReverseCount_lambda0_Invoke(__int64 result,
                                                              __int64 a2);
+void __attribute__((noreturn))
+GameRoutine_60a310_alt1() __asm__("GameRoutine_60a310");
+__int64 BattleScenes_7a7a20(__int64 a1, unsigned __int8* a2, __int64 a3);
 
 void* BattleScenes_7a7840(__int64 a1, __int64 a2, _BYTE* a3, _BYTE* a4)
 {
@@ -114,75 +117,73 @@ void* BattleScenes_7a7840(__int64 a1, __int64 a2, _BYTE* a3, _BYTE* a4)
   return (void*)v7;
 }
 
-__int64 BattleScenes_7a7a20(__int64 a1, unsigned __int8* a2, __int64 a3,
-                            __int64 a4)
+__int64 BattleScenes_7a7a20(__int64 a1, unsigned __int8* a2, __int64 a3)
 {
-  __int64 v4;
-  __int64 v6;
-  _QWORD* v7;
-  int v8;
-  _DWORD* v9;
-  _QWORD* v10;
-  __int64 v11;
-  __int64 v12;
-  _QWORD v14[4];
-  _QWORD* v15;
-  unsigned int v16;
+  __int64 v3;
+  __int64 v5;
+  _QWORD* v6;
+  int v7;
+  _DWORD* v8;
+  __int64 v9;
+  __int64 v10;
+  struct {
+    _QWORD v12[4];
+    _QWORD* v13;
+  } v12_;
+  unsigned int v14;
 
-  v4 = *a2;
-  v6 = *(unsigned int*)(a1 + 8200);
-  v7 = v14;
-  v16 = 0;
-  v15 = v14;
-  v14[0] = GameData_1f98c80;
-  v14[1] = v4;
-  v14[2] = &v16;
-  if ((_DWORD)v6 != 0) {
-    v8 = a3;
+  v3 = *a2;
+  v5 = *(unsigned int*)(a1 + 8200);
+  v6 = v12_.v12;
+  v14 = 0;
+  v12_.v13 = v12_.v12;
+  v12_.v12[0] = GameData_1f98c80;
+  v12_.v12[1] = v3;
+  v12_.v12[2] = &v14;
+  if ((_DWORD)v5 != 0) {
+    v7 = a3;
     if ((_DWORD)a3 != 0) {
-      v9 = (_DWORD*)(a1 + 20);
+      v8 = (_DWORD*)(a1 + 20);
       while (1) {
-        if ((unsigned int)*((unsigned __int8*)v9 - 8) - 3 <= 1 &&
-            (v8 & ~*v9) == 0) {
-          v10 = v15;
-          if (v15 == nullptr) {
+        if ((unsigned int)*((unsigned __int8*)v8 - 8) - 3 <= 1 &&
+            (v7 & ~*v8) == 0) {
+          if (v12_.v13 == nullptr) {
             goto LABEL_20;
           }
-          (*(void (**)(_QWORD*, _DWORD*))(*v15 + 48LL))(v15, v9 - 3);
+          (*(void (**)(_QWORD*, _DWORD*))(*v12_.v13 + 48LL))(v12_.v13, v8 - 3);
         }
-        --v6;
-        v9 += 16;
-        if (v6 == 0) {
+        --v5;
+        v8 += 16;
+        if (v5 == 0) {
           goto LABEL_14;
         }
       }
     }
-    v11 = a1 + 8;
+    v9 = a1 + 8;
     do {
-      if ((unsigned int)*(unsigned __int8*)(v11 + 4) - 3 <= 1) {
-        v10 = v15;
-        if (v15 == nullptr) {
+      if ((unsigned int)*(unsigned __int8*)(v9 + 4) - 3 <= 1) {
+        if (v12_.v13 == nullptr) {
         LABEL_20:
-          GameRoutine_60a310(v10, a2, a3, a4);
+          GameRoutine_60a310_alt1();
         }
-        (*(void (**)(_QWORD*, __int64))(*v15 + 48LL))(v15, v11);
+        (*(void (**)(_QWORD*, __int64))(*v12_.v13 + 48LL))(v12_.v13, v9);
       }
-      --v6;
-      v11 += 64;
-    } while (v6 != 0);
+      --v5;
+      v9 += 64;
+    } while (v5 != 0);
   LABEL_14:
-    v7 = v15;
-    if (v15 != v14) {
-      if (v15 != nullptr) {
-        v12 = 40;
+    v6 = v12_.v13;
+    if (v12_.v13 != v12_.v12) {
+      if (v12_.v13 != nullptr) {
+        v10 = 40;
       LABEL_18:
-        (*(void (**)(_QWORD*, unsigned __int8*, __int64))(*v7 + v12))(v7, a2,
+        (*(void (**)(_QWORD*, unsigned __int8*, __int64))(*v6 + v10))(v6, a2,
                                                                       a3);
       }
-      return v16;
+      return v14;
     }
   }
-  v12 = 32;
+  v10 = 32;
   goto LABEL_18;
 }
 

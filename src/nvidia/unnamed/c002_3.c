@@ -637,7 +637,7 @@ LABEL_41:
         goto LABEL_63;
       }
       if (v24[0] != 0) {
-        v19 = (*(__int64 (**)(void))(*v17 + 21048LL))();
+        v19 = (*(__int64 (**)(void*))(*v17 + 21048LL))(*(void**)v17);
         if (v19 != 0) {
           break;
         }

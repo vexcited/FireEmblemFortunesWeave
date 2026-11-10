@@ -8,55 +8,53 @@ extern _UNKNOWN** GameData_2133058;
 extern __int64 (*GameData_2177cb0)(void*);
 void GameRoutine_651250(void*, unsigned __int64);
 __int64 NvnSwapChain_Destructor(_QWORD* a1);
+_QWORD* gxc_GpuMemory_Destroy_GpuMemory_alt1(_QWORD* result) __asm__(
+    "gxc_GpuMemory_Destroy_GpuMemory");
+extern __int64 (*GameData_2177cb0_alt1)(__int64) __asm__("GameData_2177cb0");
+void GameRoutine_651250_alt1(__int64) __asm__("GameRoutine_651250");
 
 __int64 NvnSwapChain_Destructor(_QWORD* a1)
 {
-  void** v2;
-  void** v3;
-  void* v4;
-  __int64 v5;
-  __int64 v6;
-  void* v7;
+  __int64* v2;
+  __int64* v3;
+  __int64 v4;
+  _QWORD* v5;
+  _QWORD* v6;
+  __int64 v7;
   __int64 v8;
-  void* v9;
-  __int64 v10;
-  void* v11;
-  __int64 v12;
+  __int64 v9;
 
   ((void (*)(_QWORD*))*GameData_2133058)(a1 + 1);
-  v2 = (void**)a1[81];
-  v3 = (void**)a1[82];
+  v2 = (__int64*)a1[81];
+  v3 = (__int64*)a1[82];
   while (v2 != v3) {
     v4 = *v2++;
-    GameData_2177cb0(v4);
-    GameRoutine_651250(v4, 0x80u);
+    GameData_2177cb0_alt1(v4);
+    GameRoutine_651250_alt1(v4);
   }
-  v5 = a1[87];
-  if (v5 != 0) {
-    v6 = a1[88];
-    v7 = (void*)a1[87];
+  v5 = (_QWORD*)a1[87];
+  if (v5 != nullptr) {
+    v6 = (_QWORD*)a1[88];
+    v7 = a1[87];
     if (v5 != v6) {
       do {
-        v6 -= 24;
-        gxc_GpuMemory_Destroy_GpuMemory(v6);
+        v6 -= 3;
+        gxc_GpuMemory_Destroy_GpuMemory_alt1(v6);
       } while (v6 != v5);
-      v7 = (void*)a1[87];
+      v7 = a1[87];
     }
-    v8 = a1[89];
     a1[88] = v5;
-    GameRoutine_651250(v7, v8 - (_QWORD)v7);
+    GameRoutine_651250_alt1(v7);
   }
-  v9 = (void*)a1[84];
-  if (v9 != nullptr) {
-    v10 = a1[86];
-    a1[85] = v9;
-    GameRoutine_651250(v9, v10 - (_QWORD)v9);
+  v8 = a1[84];
+  if (v8 != 0) {
+    a1[85] = v8;
+    GameRoutine_651250_alt1(v8);
   }
-  v11 = (void*)a1[81];
-  if (v11 != nullptr) {
-    v12 = a1[83];
-    a1[82] = v11;
-    GameRoutine_651250(v11, v12 - (_QWORD)v11);
+  v9 = a1[81];
+  if (v9 != 0) {
+    a1[82] = v9;
+    GameRoutine_651250_alt1(v9);
   }
   return gxc_DeviceChild_Destroy_DeviceChild(a1);
 }

@@ -72,12 +72,14 @@ __int64 CombatLegionManager_e2ce80(__int64 result);
 __int64 CombatLegionManager_e2cfa0(__int64 result, __int64 a2);
 _QWORD* game_combat_CombatLegionManager_SetAllSoundEnable(_QWORD* a1,
                                                           __int64 a2);
-__int64 CombatLegionManager_e2e820(__int64 result, _QWORD* a2, __int64 a3,
-                                   char a4);
+__int64
+CombatLegionManager_e2e820_alt1(__int64 result, _QWORD* a2, __int64 a3,
+                                char a4) __asm__("CombatLegionManager_e2e820");
 float* CombatLegionManager_e2f380(float* result, float* a2, float* a3);
 float* CombatLegionManager_e2f570(float* a1, float* a2, float* a3, float* a4,
                                   float* a5);
-bool CombatLegionManager_e2f8a0(__int64 a1, __int64 a2);
+bool CombatLegionManager_e2f8a0_alt2(__int64 a1, __int64 a2) __asm__(
+    "CombatLegionManager_e2f8a0");
 __int64 CombatLegionManager_e2fd80(__int64* a1, __int64 a2, __int64 a3);
 __int64 CombatLegionManager_e2ff40(__int64 a1, __int64 a2);
 __int64 CombatLegionManager_e30080(__int64* a1, int* a2, __int64* a3,
@@ -123,6 +125,15 @@ __attribute__((swiftcall)) void CombatLegionManager_e2dfe0(PSEUDO_X8 x8_,
 void CombatLegionManager_e2e6a0(__int64 a1);
 __int64 (***game_combat_CombatLegionManager_SetDieCamera(
     __int64 a1, unsigned __int8** a2))();
+__int64
+CombatLegionManager_e2ddb0_alt1(__int64, __int64,
+                                __int64) __asm__("CombatLegionManager_e2ddb0");
+__int64 GameRoutine_e9f200_alt1(__int64 result) __asm__("GameRoutine_e9f200");
+__int64 nn_mem_StandardAllocator_Free_alt3(_QWORD, _QWORD) __asm__(
+    "nn_mem_StandardAllocator_Free");
+__int64 CombatLegionManager_e2e820(__int64 result, float* a2, __int64 a3,
+                                   char a4);
+bool CombatLegionManager_e2f8a0(float* a1, __int64* a2);
 
 __int64 CombatLegionManager_Destructor(__int64 a1)
 {
@@ -715,13 +726,9 @@ float CombatLegionManager_e2c540(__int64 a1)
   char* v54[3];
   char v55[8];
 
-  v12 = COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(float, "s0", "=w")),
-  v3 = COERCE_AS(__typeof__(v3),
-                 PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
-  CombatLegionManager_e2d920((void*)(v54)),
-      v12 = COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(float, "s0", "=w")),
-      v3 = COERCE_AS(__typeof__(v3),
-                     PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  v12 = COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(float, "s0", "=w"));
+  v3 = X8CALL_X0(__int64, CombatLegionManager_e2d920((void*)(v54))),
+  v12 = COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(float, "s0", "=w"));
   v4 = v54[0];
   v5 = 0x0.0p+0f;
   if ((_BYTE*)(v54[1] - v54[0]) >= (_BYTE*)((_UNKNOWN**)0x8LL) + 1) {
@@ -751,10 +758,8 @@ float CombatLegionManager_e2c540(__int64 a1)
     v11 = *v7;
     v7 += 2;
     v10 = v11;
-    GameRoutine_e9f200(v11),
-        v12 = COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(float, "s0", "=w")),
-        v3 = COERCE_AS(__typeof__(v3),
-                       PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+    v3 = GameRoutine_e9f200_alt1(v11),
+    v12 = COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(float, "s0", "=w"));
     v13 = fmaxf(v12, 0x1.3333340000000p-1f);
     if ((*(_BYTE*)(v11 + 92) & (*(float*)(v11 + 88) < v13)) != 0) {
       v13 = *(float*)(v10 + 88);
@@ -769,17 +774,13 @@ float CombatLegionManager_e2c540(__int64 a1)
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v14 = 56;
     }
-    nn_mem_StandardAllocator_Free_alt2(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v14),
-        v12 = COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(float, "s0", "=w")),
-        v3 = COERCE_AS(__typeof__(v3),
-                       PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+    v3 = nn_mem_StandardAllocator_Free_alt3(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v14, v4),
+    v12 = COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(float, "s0", "=w"));
   }
 LABEL_14:
-  CombatLegionManager_e2ddb0(v3, (__int64)v54, (__int64)v55),
-      v12 = COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(float, "s0", "=w")),
-      v3 = COERCE_AS(__typeof__(v3),
-                     PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  CombatLegionManager_e2ddb0_alt1(v3, (__int64)v54, (__int64)v55),
+      v12 = COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(float, "s0", "=w"));
   v15 = *(_QWORD*)(a1 + 16);
   v16 = v54[0];
   v17 = 0x0.0p+0f;
@@ -810,14 +811,10 @@ LABEL_14:
                                0xFFFFFFFFFFFFFFFFLL) == 0) {
             (*(void (**)(unsigned __int8*))(*(_QWORD*)v23 + 16LL))(v23),
                 v12 = COERCE_AS(__typeof__(v12),
-                                PSEUDO_REGISTER(float, "s0", "=w")),
-                v3 = COERCE_AS(__typeof__(v3),
-                               PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
-            std___1___shared_weak_count___release_weak_alt1(v23),
+                                PSEUDO_REGISTER(float, "s0", "=w"));
+            std___1___shared_weak_count___release_weak(v23),
                 v12 = COERCE_AS(__typeof__(v12),
-                                PSEUDO_REGISTER(float, "s0", "=w")),
-                v3 = COERCE_AS(__typeof__(v3),
-                               PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+                                PSEUDO_REGISTER(float, "s0", "=w"));
           }
           goto LABEL_19;
         }
@@ -877,14 +874,10 @@ LABEL_14:
                                0xFFFFFFFFFFFFFFFFLL) == 0) {
             (*(void (**)(unsigned __int8*))(*(_QWORD*)v35 + 16LL))(v35),
                 v12 = COERCE_AS(__typeof__(v12),
-                                PSEUDO_REGISTER(float, "s0", "=w")),
-                v3 = COERCE_AS(__typeof__(v3),
-                               PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
-            std___1___shared_weak_count___release_weak_alt1(v35),
+                                PSEUDO_REGISTER(float, "s0", "=w"));
+            std___1___shared_weak_count___release_weak(v35),
                 v12 = COERCE_AS(__typeof__(v12),
-                                PSEUDO_REGISTER(float, "s0", "=w")),
-                v3 = COERCE_AS(__typeof__(v3),
-                               PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+                                PSEUDO_REGISTER(float, "s0", "=w"));
           }
           goto LABEL_40;
         }
@@ -944,14 +937,10 @@ LABEL_14:
                                0xFFFFFFFFFFFFFFFFLL) == 0) {
             (*(void (**)(unsigned __int8*))(*(_QWORD*)v47 + 16LL))(v47),
                 v12 = COERCE_AS(__typeof__(v12),
-                                PSEUDO_REGISTER(float, "s0", "=w")),
-                v3 = COERCE_AS(__typeof__(v3),
-                               PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
-            std___1___shared_weak_count___release_weak_alt1(v47),
+                                PSEUDO_REGISTER(float, "s0", "=w"));
+            std___1___shared_weak_count___release_weak(v47),
                 v12 = COERCE_AS(__typeof__(v12),
-                                PSEUDO_REGISTER(float, "s0", "=w")),
-                v3 = COERCE_AS(__typeof__(v3),
-                               PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+                                PSEUDO_REGISTER(float, "s0", "=w"));
           }
           goto LABEL_61;
         }
@@ -2587,9 +2576,11 @@ void CombatLegionManager_e2e6a0(__int64 a1)
   *(float*)(a1 + 84) = v8;
 }
 
-__int64 CombatLegionManager_e2e820(__int64 result, _QWORD* a2, __int64 a3,
+__int64 CombatLegionManager_e2e820(__int64 result, float* a2, __int64 a3,
                                    char a4)
 {
+
+#pragma clang fp contract(off)
   __int64 v7;
   unsigned __int64 v8;
   __int64 v9;
@@ -2609,10 +2600,10 @@ __int64 CombatLegionManager_e2e820(__int64 result, _QWORD* a2, __int64 a3,
   __int64 v23;
   __int64 v24;
   unsigned __int64 v25;
-  float* v26;
+  unsigned __int64 v26;
   float v27;
-  float* v28;
-  float* v29;
+  unsigned __int64 v28;
+  unsigned __int64 v29;
   float v30;
   unsigned __int64 v31;
   __int64 v32;
@@ -2624,11 +2615,11 @@ __int64 CombatLegionManager_e2e820(__int64 result, _QWORD* a2, __int64 a3,
   float v38;
   __int128 v39;
   __int128 v40;
-  char v41;
+  bool v41;
   unsigned __int64 v42;
   float v43;
-  float* v44;
-  float* v45;
+  unsigned __int64 v44;
+  unsigned __int64 v45;
   float v46;
   __int128 v47;
   __int64 v48;
@@ -2665,14 +2656,14 @@ __int64 CombatLegionManager_e2e820(__int64 result, _QWORD* a2, __int64 a3,
   __int64 v79;
   __int128 v80;
   __int128 v81;
-  _QWORD* v82;
+  float* v82;
   bool v84;
   __int64 v85;
-  float* v86;
+  unsigned __int64 v86;
   __int64 v87;
   __int128 v88;
   float v89;
-  _QWORD* v90;
+  float* v90;
   __int128 v91;
   __int64 v92;
   __int64 v93;
@@ -2714,7 +2705,7 @@ __int64 CombatLegionManager_e2e820(__int64 result, _QWORD* a2, __int64 a3,
   __int128 v129;
   float* v130;
   float v131;
-  _QWORD* v132;
+  float* v132;
   __int128 v133;
   __int64 v134;
   float* v135;
@@ -2735,23 +2726,25 @@ LABEL_2:
     if (v10 > 2) {
       switch (v10) {
       case 3LL:
-        return CombatLegionManager_e2f380_alt1(v8, v8 + 48, a2 - 6);
+        return (__int64)CombatLegionManager_e2f380((float*)v8,
+                                                   (float*)(v8 + 48), a2 - 12);
       case 4LL:
-        result = CombatLegionManager_e2f380_alt1(v8, v8 + 48, v8 + 96);
+        result = (__int64)CombatLegionManager_e2f380(
+            (float*)v8, (float*)(v8 + 48), (float*)(v8 + 96));
         v63 = *(float*)(v8 + 128);
-        if (*((float*)a2 - 4) < v63) {
+        if (*(a2 - 4) < v63) {
           v64 = *(_QWORD*)(v8 + 96);
           v65 = *(_OWORD*)(v8 + 112);
-          *(_QWORD*)(v8 + 96) = *(a2 - 6);
-          *(_DWORD*)(v8 + 112) = *((_DWORD*)a2 - 8);
-          *(_DWORD*)(v8 + 116) = *((_DWORD*)a2 - 7);
+          *(_QWORD*)(v8 + 96) = *((_QWORD*)a2 - 6);
+          *(float*)(v8 + 112) = *(a2 - 8);
+          *(float*)(v8 + 116) = *(a2 - 7);
           v66 = *(_OWORD*)(v8 + 112);
           *((_QWORD*)&v66 + 1) = *((unsigned int*)a2 - 6);
           *(_OWORD*)(v8 + 112) = v66;
-          *(_DWORD*)(v8 + 128) = *((_DWORD*)a2 - 4);
-          *(a2 - 4) = v65;
-          *(a2 - 6) = v64;
-          *((float*)a2 - 4) = v63;
+          *(float*)(v8 + 128) = *(a2 - 4);
+          *((_QWORD*)a2 - 4) = v65;
+          *((_QWORD*)a2 - 6) = v64;
+          *(a2 - 4) = v63;
           v67 = *((_OWORD*)a2 - 2);
           *((_QWORD*)&v67 + 1) = DWORD2(v65);
           *((_OWORD*)a2 - 2) = v67;
@@ -2796,8 +2789,9 @@ LABEL_2:
         }
         return result;
       case 5LL:
-        return CombatLegionManager_e2f570_alt1(v8, v8 + 48, v8 + 96, v8 + 144,
-                                               a2 - 6);
+        return (__int64)CombatLegionManager_e2f570(
+            (float*)v8, (float*)(v8 + 48), (float*)(v8 + 96),
+            (float*)(v8 + 144), a2 - 12);
       default:
         break;
       }
@@ -2808,19 +2802,19 @@ LABEL_2:
       }
       if (v10 == 2) {
         v58 = *(float*)(v8 + 32);
-        if (*((float*)a2 - 4) < v58) {
+        if (*(a2 - 4) < v58) {
           v59 = *(_QWORD*)v8;
           v60 = *(_OWORD*)(v8 + 16);
-          *(_QWORD*)v8 = *(a2 - 6);
-          *(_DWORD*)(v8 + 16) = *((_DWORD*)a2 - 8);
-          *(_DWORD*)(v8 + 20) = *((_DWORD*)a2 - 7);
+          *(_QWORD*)v8 = *((_QWORD*)a2 - 6);
+          *(float*)(v8 + 16) = *(a2 - 8);
+          *(float*)(v8 + 20) = *(a2 - 7);
           v61 = *(_OWORD*)(v8 + 16);
           *((_QWORD*)&v61 + 1) = *((unsigned int*)a2 - 6);
           *(_OWORD*)(v8 + 16) = v61;
-          *(_DWORD*)(v8 + 32) = *((_DWORD*)a2 - 4);
-          *(a2 - 4) = v60;
-          *(a2 - 6) = v59;
-          *((float*)a2 - 4) = v58;
+          *(float*)(v8 + 32) = *(a2 - 4);
+          *((_QWORD*)a2 - 4) = v60;
+          *((_QWORD*)a2 - 6) = v59;
+          *(a2 - 4) = v58;
           v62 = *((_OWORD*)a2 - 2);
           *((_QWORD*)&v62 + 1) = DWORD2(v60);
           *((_OWORD*)a2 - 2) = v62;
@@ -2832,7 +2826,7 @@ LABEL_2:
       break;
     }
     if (a3 == 0) {
-      if ((_QWORD*)v8 == a2) {
+      if ((float*)v8 == a2) {
         return result;
       }
       v98 = (unsigned __int64)(v10 - 2) >> 1;
@@ -2908,20 +2902,20 @@ LABEL_2:
           *(_OWORD*)(v120 + 16) = v118;
           *(_DWORD*)(v120 + 32) = *(_DWORD*)(v117 + 32);
         } while (v116 <= (__int64)((unsigned __int64)(v111 - 2) >> 1));
-        if ((_QWORD*)v117 == a2 - 6) {
+        if ((float*)v117 == a2 - 12) {
           *(_QWORD*)v117 = v115;
         }
         else {
-          *(_QWORD*)v117 = *(a2 - 6);
-          *(_DWORD*)(v117 + 16) = *((_DWORD*)a2 - 8);
-          *(_DWORD*)(v117 + 20) = *((_DWORD*)a2 - 7);
+          *(_QWORD*)v117 = *((_QWORD*)a2 - 6);
+          *(float*)(v117 + 16) = *(a2 - 8);
+          *(float*)(v117 + 20) = *(a2 - 7);
           v122 = *(_OWORD*)(v117 + 16);
           *((_QWORD*)&v122 + 1) = *((unsigned int*)a2 - 6);
           *(_OWORD*)(v117 + 16) = v122;
-          *(_DWORD*)(v117 + 32) = *((_DWORD*)a2 - 4);
-          *(a2 - 4) = v113;
-          *(a2 - 6) = v115;
-          *((float*)a2 - 4) = v114;
+          *(float*)(v117 + 32) = *(a2 - 4);
+          *((_QWORD*)a2 - 4) = v113;
+          *((_QWORD*)a2 - 6) = v115;
+          *(a2 - 4) = v114;
           v123 = *((_OWORD*)a2 - 2);
           v124 = v117 - v8 + 48;
           *((_QWORD*)&v123 + 1) = DWORD2(v113);
@@ -2963,7 +2957,7 @@ LABEL_2:
         *((_QWORD*)&v112 + 1) = DWORD2(v113);
         *(_OWORD*)(v117 + 16) = v112;
       LABEL_103:
-        a2 -= 6;
+        a2 -= 12;
         v101 = v111-- <= 2;
         if (v101) {
           return result;
@@ -2972,7 +2966,8 @@ LABEL_2:
     }
     v11 = v8 + 48 * ((unsigned __int64)v10 >> 1);
     if ((unsigned __int64)v9 < 0x1801) {
-      result = CombatLegionManager_e2f380_alt1(v11, v7, a2 - 6);
+      result =
+          (__int64)CombatLegionManager_e2f380((float*)v11, (float*)v7, a2 - 12);
       --a3;
       if ((a4 & 1) != 0) {
       LABEL_20:
@@ -2981,10 +2976,13 @@ LABEL_2:
       }
     }
     else {
-      CombatLegionManager_e2f380_alt1(v7, v11, a2 - 6);
-      CombatLegionManager_e2f380_alt1(v7 + 48, v11 - 48, a2 - 12);
-      CombatLegionManager_e2f380_alt1(v7 + 96, v11 + 48, a2 - 18);
-      result = CombatLegionManager_e2f380_alt1(v11 - 48, v11, v11 + 48);
+      CombatLegionManager_e2f380((float*)v7, (float*)v11, a2 - 12);
+      CombatLegionManager_e2f380((float*)(v7 + 48), (float*)(v11 - 48),
+                                 a2 - 24);
+      CombatLegionManager_e2f380((float*)(v7 + 96), (float*)(v11 + 48),
+                                 a2 - 36);
+      result = (__int64)CombatLegionManager_e2f380(
+          (float*)(v11 - 48), (float*)v11, (float*)(v11 + 48));
       v12 = *(_QWORD*)v7;
       v13 = *(_OWORD*)(v7 + 16);
       v14 = *(_DWORD*)(v7 + 32);
@@ -3018,13 +3016,13 @@ LABEL_2:
         v23 += 48;
       } while (*(float*)(v24 + 80) < v18);
       v25 = v7 + v23;
-      v26 = (float*)a2;
+      v26 = (unsigned __int64)a2;
       if (v23 == 48) {
-        v29 = (float*)a2;
-        while (v25 < (unsigned __int64)v29) {
-          v30 = *(v29 - 4);
-          v28 = v29 - 12;
-          v29 -= 12;
+        v29 = (unsigned __int64)a2;
+        while (v25 < v29) {
+          v30 = *(float*)(v29 - 16);
+          v28 = v29 - 48;
+          v29 -= 48LL;
           if (v30 < v18) {
             goto LABEL_31;
           }
@@ -3033,15 +3031,15 @@ LABEL_2:
       }
       else {
         do {
-          v27 = *(v26 - 4);
-          v28 = v26 - 12;
-          v26 -= 12;
+          v27 = *(float*)(v26 - 16);
+          v28 = v26 - 48;
+          v26 -= 48LL;
         } while (v27 >= v18);
       }
     LABEL_31:
       v8 = v25;
-      if (v25 < (unsigned __int64)v28) {
-        v31 = (unsigned __int64)v28;
+      if (v25 < v28) {
+        v31 = v28;
         do {
           v32 = *(_QWORD*)v8;
           v33 = *(_OWORD*)(v8 + 16);
@@ -3084,28 +3082,28 @@ LABEL_2:
       *(float*)(v8 - 16) = v18;
       *((_QWORD*)&v40 + 1) = DWORD2(v21);
       *(_OWORD*)(v8 - 32) = v40;
-      if (v25 < (unsigned __int64)v28) {
+      if (v25 < v28) {
       LABEL_42:
         result = CombatLegionManager_e2e820(v7, v8 - 48, a3, a4 & 1);
         a4 = 0;
       }
       else {
-        v41 = CombatLegionManager_e2f8a0_alt1(v7, v8 - 48);
-        result = CombatLegionManager_e2f8a0_alt1(v8, a2);
+        v41 = CombatLegionManager_e2f8a0_alt2(v7, v8 - 48);
+        result = CombatLegionManager_e2f8a0_alt2(v8, (__int64)a2);
         if ((result & 1) != 0) {
-          a2 = (_QWORD*)(v8 - 48);
-          if ((v41 & 1) != 0) {
+          a2 = (float*)(v8 - 48);
+          if (v41) {
             return result;
           }
           goto LABEL_2;
         }
-        if ((v41 & 1) == 0) {
+        if (!v41) {
           goto LABEL_42;
         }
       }
     }
     else {
-      if (v18 >= *((float*)a2 - 4)) {
+      if (v18 >= *(a2 - 4)) {
         v42 = v7 + 48;
         do {
           v8 = v42;
@@ -3124,41 +3122,41 @@ LABEL_2:
           v19 += 48;
         } while (v18 >= v20);
       }
-      v44 = (float*)a2;
+      v44 = (unsigned __int64)a2;
       if (v8 < (unsigned __int64)a2) {
-        v45 = (float*)a2;
+        v45 = (unsigned __int64)a2;
         do {
-          v46 = *(v45 - 4);
-          v44 = v45 - 12;
-          v45 -= 12;
+          v46 = *(float*)(v45 - 16);
+          v44 = v45 - 48;
+          v45 -= 48LL;
         } while (v18 < v46);
       }
       v47 = *(_OWORD*)(v7 + 16);
       v48 = *(_QWORD*)v7;
-      while (v8 < (unsigned __int64)v44) {
+      while (v8 < v44) {
         v49 = *(_QWORD*)v8;
         v50 = *(_OWORD*)(v8 + 16);
         v51 = *(_DWORD*)(v8 + 32);
         *(_QWORD*)v8 = *(_QWORD*)v44;
-        *(float*)(v8 + 16) = v44[4];
-        *(float*)(v8 + 20) = v44[5];
+        *(_DWORD*)(v8 + 16) = *(_DWORD*)(v44 + 16);
+        *(_DWORD*)(v8 + 20) = *(_DWORD*)(v44 + 20);
         v52 = *(_OWORD*)(v8 + 16);
-        *((_QWORD*)&v52 + 1) = *((unsigned int*)v44 + 6);
+        *((_QWORD*)&v52 + 1) = *(unsigned int*)(v44 + 24);
         *(_OWORD*)(v8 + 16) = v52;
-        *(float*)(v8 + 32) = v44[8];
-        *((_QWORD*)v44 + 2) = v50;
+        *(_DWORD*)(v8 + 32) = *(_DWORD*)(v44 + 32);
+        *(_QWORD*)(v44 + 16) = v50;
         *(_QWORD*)v44 = v49;
-        *((_DWORD*)v44 + 8) = v51;
-        v53 = *((_OWORD*)v44 + 1);
+        *(_DWORD*)(v44 + 32) = v51;
+        v53 = *(_OWORD*)(v44 + 16);
         *((_QWORD*)&v53 + 1) = DWORD2(v50);
-        *((_OWORD*)v44 + 1) = v53;
+        *(_OWORD*)(v44 + 16) = v53;
         do {
           v54 = *(float*)(v8 + 80);
           v8 += 48LL;
         } while (v18 >= v54);
         do {
-          v55 = *(v44 - 4);
-          v44 -= 12;
+          v55 = *(float*)(v44 - 16);
+          v44 -= 48LL;
         } while (v18 < v55);
       }
       if (v7 != v8 - 48) {
@@ -3179,18 +3177,18 @@ LABEL_2:
       *(_OWORD*)(v8 - 32) = v57;
     }
   }
-  v82 = (_QWORD*)(v8 + 48);
-  v84 = (_QWORD*)v8 == a2 || v82 == a2;
+  v82 = (float*)(v8 + 48);
+  v84 = (float*)v8 == a2 || v82 == a2;
   if ((a4 & 1) != 0) {
     if (!v84) {
       v85 = 0;
-      v86 = (float*)v8;
+      v86 = v8;
       do {
-        v89 = v86[20];
+        v89 = *(float*)(v86 + 80);
         v90 = v82;
-        if (v89 < v86[8]) {
-          v91 = *((_OWORD*)v86 + 4);
-          v92 = *v82;
+        if (v89 < *(float*)(v86 + 32)) {
+          v91 = *(_OWORD*)(v86 + 64);
+          v92 = *(_QWORD*)v82;
           v93 = v85;
           do {
             v94 = v8 + v93;
@@ -3218,10 +3216,10 @@ LABEL_2:
           *((_QWORD*)&v88 + 1) = DWORD2(v91);
           *(_OWORD*)(v87 + 16) = v88;
         }
-        v82 = v90 + 6;
+        v82 = v90 + 12;
         v85 += 48;
-        v86 = (float*)v90;
-      } while (v90 + 6 != a2);
+        v86 = (unsigned __int64)v90;
+      } while (v90 + 12 != a2);
     }
   }
   else if (!v84) {
@@ -3231,7 +3229,7 @@ LABEL_2:
       v132 = v82;
       if (v131 < *(float*)(v7 + 32)) {
         v133 = *(_OWORD*)(v7 + 64);
-        v134 = *v82;
+        v134 = *(_QWORD*)v82;
         v135 = v130;
         do {
           v136 = *((_DWORD*)v135 - 16);
@@ -3254,10 +3252,10 @@ LABEL_2:
         *((_QWORD*)&v141 + 1) = DWORD2(v133);
         *((_OWORD*)v135 - 1) = v141;
       }
-      v82 = v132 + 6;
+      v82 = v132 + 12;
       v130 += 12;
       v7 = (__int64)v132;
-    } while (v132 + 6 != a2);
+    } while (v132 + 12 != a2);
   }
   return result;
 }
@@ -3549,16 +3547,18 @@ float* CombatLegionManager_e2f570(float* a1, float* a2, float* a3, float* a4,
   return result;
 }
 
-bool CombatLegionManager_e2f8a0(__int64 a1, __int64 a2)
+bool CombatLegionManager_e2f8a0(float* a1, __int64* a2)
 {
+
+#pragma clang fp contract(off)
   signed __int64 v2;
   float v3;
   __int64 v4;
   __int128 v5;
   __int128 v6;
   __int128 v7;
-  __int64 v8;
-  __int64 v11;
+  float* v8;
+  float* v11;
   __int64 v12;
   int v13;
   __int64 v14;
@@ -3591,77 +3591,74 @@ bool CombatLegionManager_e2f8a0(__int64 a1, __int64 a2)
   __int128 v43;
   __int128 v44;
 
-  v2 = 0xAAAAAAAAAAAAAAABLL * ((a2 - a1) >> 4);
+  v2 = 0xAAAAAAAAAAAAAAABLL * (((char*)a2 - (char*)a1) >> 4);
   if (v2 > 2) {
     switch (v2) {
     case 3LL:
-      CombatLegionManager_e2f380((float*)a1, (float*)(a1 + 48),
-                                 (float*)(a2 - 48));
+      CombatLegionManager_e2f380(a1, a1 + 12, (float*)a2 - 12);
       break;
     case 4LL:
-      CombatLegionManager_e2f380((float*)a1, (float*)(a1 + 48),
-                                 (float*)(a1 + 96));
-      v26 = *(float*)(a1 + 128);
-      if (*(float*)(a2 - 16) < v26) {
-        v27 = *(_QWORD*)(a1 + 96);
-        v28 = *(_OWORD*)(a1 + 112);
-        *(_QWORD*)(a1 + 96) = *(_QWORD*)(a2 - 48);
-        *(_DWORD*)(a1 + 112) = *(_DWORD*)(a2 - 32);
-        *(_DWORD*)(a1 + 116) = *(_DWORD*)(a2 - 28);
-        v29 = *(_OWORD*)(a1 + 112);
-        *((_QWORD*)&v29 + 1) = *(unsigned int*)(a2 - 24);
-        *(_OWORD*)(a1 + 112) = v29;
-        *(_DWORD*)(a1 + 128) = *(_DWORD*)(a2 - 16);
-        *(_QWORD*)(a2 - 32) = v28;
-        *(_QWORD*)(a2 - 48) = v27;
-        *(float*)(a2 - 16) = v26;
-        v30 = *(_OWORD*)(a2 - 32);
+      CombatLegionManager_e2f380(a1, a1 + 12, a1 + 24);
+      v26 = a1[32];
+      if (*((float*)a2 - 4) < v26) {
+        v27 = *((_QWORD*)a1 + 12);
+        v28 = *((_OWORD*)a1 + 7);
+        *((_QWORD*)a1 + 12) = *(a2 - 6);
+        a1[28] = *((float*)a2 - 8);
+        a1[29] = *((float*)a2 - 7);
+        v29 = *((_OWORD*)a1 + 7);
+        *((_QWORD*)&v29 + 1) = *((unsigned int*)a2 - 6);
+        *((_OWORD*)a1 + 7) = v29;
+        a1[32] = *((float*)a2 - 4);
+        *(a2 - 4) = v28;
+        *(a2 - 6) = v27;
+        *((float*)a2 - 4) = v26;
+        v30 = *((_OWORD*)a2 - 2);
         *((_QWORD*)&v30 + 1) = DWORD2(v28);
-        *(_OWORD*)(a2 - 32) = v30;
-        v31 = *(float*)(a1 + 128);
-        v32 = *(float*)(a1 + 80);
+        *((_OWORD*)a2 - 2) = v30;
+        v31 = a1[32];
+        v32 = a1[20];
         if (v31 < v32) {
-          v33 = *(_OWORD*)(a1 + 112);
-          v34 = *(_OWORD*)(a1 + 64);
-          *(float*)(a1 + 128) = v32;
-          v35 = *(float*)(a1 + 32);
-          *(_QWORD*)(a1 + 64) = v33;
-          *(_QWORD*)(a1 + 112) = v34;
-          v36 = *(_QWORD*)(a1 + 48);
-          v37 = *(_QWORD*)(a1 + 96);
-          *(_QWORD*)(a1 + 48) = v37;
-          *(float*)(a1 + 80) = v31;
-          *(_QWORD*)(a1 + 96) = v36;
-          v38 = *(_OWORD*)(a1 + 64);
-          *(_QWORD*)&v39 = *(_QWORD*)(a1 + 64);
+          v33 = *((_OWORD*)a1 + 7);
+          v34 = *((_OWORD*)a1 + 4);
+          a1[32] = v32;
+          v35 = a1[8];
+          *((_QWORD*)a1 + 8) = v33;
+          *((_QWORD*)a1 + 14) = v34;
+          v36 = *((_QWORD*)a1 + 6);
+          v37 = *((_QWORD*)a1 + 12);
+          *((_QWORD*)a1 + 6) = v37;
+          a1[20] = v31;
+          *((_QWORD*)a1 + 12) = v36;
+          v38 = *((_OWORD*)a1 + 4);
+          *(_QWORD*)&v39 = *((_QWORD*)a1 + 8);
           *((_QWORD*)&v39 + 1) = DWORD2(v33);
-          *(_OWORD*)(a1 + 64) = v39;
-          v40 = *(_OWORD*)(a1 + 112);
+          *((_OWORD*)a1 + 4) = v39;
+          v40 = *((_OWORD*)a1 + 7);
           *((_QWORD*)&v40 + 1) = DWORD2(v34);
-          *(_OWORD*)(a1 + 112) = v40;
+          *((_OWORD*)a1 + 7) = v40;
           if (v31 < v35) {
-            v41 = *(_OWORD*)(a1 + 16);
-            *(_QWORD*)(a1 + 16) = v38;
-            *(float*)(a1 + 32) = v31;
+            v41 = *((_OWORD*)a1 + 1);
+            *((_QWORD*)a1 + 2) = v38;
+            a1[8] = v31;
             v42 = *(_QWORD*)a1;
             *(_QWORD*)a1 = v37;
-            *(float*)(a1 + 80) = v35;
-            v43 = *(_OWORD*)(a1 + 16);
+            a1[20] = v35;
+            v43 = *((_OWORD*)a1 + 1);
             *((_QWORD*)&v43 + 1) = DWORD2(v33);
-            *(_QWORD*)(a1 + 64) = v41;
-            v44 = *(_OWORD*)(a1 + 64);
-            *(_QWORD*)(a1 + 48) = v42;
+            *((_QWORD*)a1 + 8) = v41;
+            v44 = *((_OWORD*)a1 + 4);
+            *((_QWORD*)a1 + 6) = v42;
             *((_QWORD*)&v44 + 1) = DWORD2(v41);
-            *(_OWORD*)(a1 + 16) = v43;
-            *(_OWORD*)(a1 + 64) = v44;
+            *((_OWORD*)a1 + 1) = v43;
+            *((_OWORD*)a1 + 4) = v44;
           }
         }
       }
       return true;
     case 5LL:
-      CombatLegionManager_e2f570((float*)a1, (float*)(a1 + 48),
-                                 (float*)(a1 + 96), (float*)(a1 + 144),
-                                 (float*)(a2 - 48));
+      CombatLegionManager_e2f570(a1, a1 + 12, a1 + 24, a1 + 36,
+                                 (float*)a2 - 12);
       break;
     default:
       goto LABEL_11;
@@ -3672,59 +3669,59 @@ bool CombatLegionManager_e2f8a0(__int64 a1, __int64 a2)
     return true;
   }
   if (v2 == 2) {
-    v3 = *(float*)(a1 + 32);
-    if (*(float*)(a2 - 16) < v3) {
+    v3 = a1[8];
+    if (*((float*)a2 - 4) < v3) {
       v4 = *(_QWORD*)a1;
-      v5 = *(_OWORD*)(a1 + 16);
-      *(_QWORD*)a1 = *(_QWORD*)(a2 - 48);
-      *(_DWORD*)(a1 + 16) = *(_DWORD*)(a2 - 32);
-      *(_DWORD*)(a1 + 20) = *(_DWORD*)(a2 - 28);
-      v6 = *(_OWORD*)(a1 + 16);
-      *((_QWORD*)&v6 + 1) = *(unsigned int*)(a2 - 24);
-      *(_OWORD*)(a1 + 16) = v6;
-      *(_DWORD*)(a1 + 32) = *(_DWORD*)(a2 - 16);
-      *(_QWORD*)(a2 - 32) = v5;
-      *(_QWORD*)(a2 - 48) = v4;
-      *(float*)(a2 - 16) = v3;
-      v7 = *(_OWORD*)(a2 - 32);
+      v5 = *((_OWORD*)a1 + 1);
+      *(_QWORD*)a1 = *(a2 - 6);
+      a1[4] = *((float*)a2 - 8);
+      a1[5] = *((float*)a2 - 7);
+      v6 = *((_OWORD*)a1 + 1);
+      *((_QWORD*)&v6 + 1) = *((unsigned int*)a2 - 6);
+      *((_OWORD*)a1 + 1) = v6;
+      a1[8] = *((float*)a2 - 4);
+      *(a2 - 4) = v5;
+      *(a2 - 6) = v4;
+      *((float*)a2 - 4) = v3;
+      v7 = *((_OWORD*)a2 - 2);
       *((_QWORD*)&v7 + 1) = DWORD2(v5);
-      *(_OWORD*)(a2 - 32) = v7;
+      *((_OWORD*)a2 - 2) = v7;
     }
     return true;
   }
 LABEL_11:
-  v8 = a1 + 96;
-  CombatLegionManager_e2f380((float*)a1, (float*)(a1 + 48), (float*)(a1 + 96));
-  v11 = a1 + 144;
-  if (a1 + 144 == a2) {
+  v8 = a1 + 24;
+  CombatLegionManager_e2f380(a1, a1 + 12, a1 + 24);
+  v11 = a1 + 36;
+  if (a1 + 36 == (float*)a2) {
     return true;
   }
   v12 = 0;
   v13 = 0;
   while (1) {
-    v16 = *(float*)(v11 + 32);
-    if (v16 < *(float*)(v8 + 32)) {
-      v17 = *(_OWORD*)(v11 + 16);
+    v16 = v11[8];
+    if (v16 < v8[8]) {
+      v17 = *((_OWORD*)v11 + 1);
       v18 = *(_QWORD*)v11;
       v19 = v12;
       do {
-        v20 = a1 + v19;
-        v21 = *(_DWORD*)(a1 + v19 + 112);
-        v22 = *(_DWORD*)(a1 + v19 + 116);
-        *(_QWORD*)(v20 + 144) = *(_QWORD*)(a1 + v19 + 96);
+        v20 = (__int64)a1 + v19;
+        v21 = *(_DWORD*)((char*)a1 + v19 + 112);
+        v22 = *(_DWORD*)((char*)a1 + v19 + 116);
+        *(_QWORD*)(v20 + 144) = *(_QWORD*)((char*)a1 + v19 + 96);
         *(_DWORD*)(v20 + 160) = v21;
         *(_DWORD*)(v20 + 164) = v22;
-        v23 = *(_OWORD*)(a1 + v19 + 160);
-        *((_QWORD*)&v23 + 1) = *(unsigned int*)(a1 + v19 + 120);
+        v23 = *(_OWORD*)((char*)a1 + v19 + 160);
+        *((_QWORD*)&v23 + 1) = *(unsigned int*)((char*)a1 + v19 + 120);
         *(_OWORD*)(v20 + 160) = v23;
-        *(_DWORD*)(v20 + 176) = *(_DWORD*)(a1 + v19 + 128);
+        *(float*)(v20 + 176) = *(float*)((char*)a1 + v19 + 128);
         if (v19 == -96) {
-          v14 = a1;
+          v14 = (__int64)a1;
           goto LABEL_14;
         }
         v19 -= 48;
       } while (v16 < *(float*)(v20 + 80));
-      v14 = a1 + v19 + 144;
+      v14 = (__int64)a1 + v19 + 144;
     LABEL_14:
       *(_QWORD*)(v14 + 16) = v17;
       ++v13;
@@ -3734,13 +3731,13 @@ LABEL_11:
       *((_QWORD*)&v15 + 1) = DWORD2(v17);
       *(_OWORD*)(v14 + 16) = v15;
       if (v13 == 8) {
-        return v11 + 48 == a2;
+        return v11 + 12 == (float*)a2;
       }
     }
     v8 = v11;
-    v11 += 48;
+    v11 += 12;
     v12 += 48;
-    if (v11 == a2) {
+    if (v11 == (float*)a2) {
       return true;
     }
   }

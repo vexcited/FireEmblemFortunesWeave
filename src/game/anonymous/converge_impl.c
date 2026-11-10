@@ -114,6 +114,8 @@ void __attribute__((noreturn)) GameRoutine_64aa00();
 void __attribute__((noreturn))
 GameRoutine_8f2260_alt1() __asm__("GameRoutine_8f2260");
 bool ConvergeImpl_104f0e0(__int64 a1, __int64 a2);
+__int64* GameConverge_8f24c0_alt1(__int64*,
+                                  __int64*) __asm__("GameConverge_8f24c0");
 
 bool ConvergeImpl_104f0e0(__int64 a1, __int64 a2)
 {
@@ -1015,26 +1017,26 @@ __int64 game_anonymous_ConvergeImpl_TryRunConverge_closure_DeletingDestructor(
 
 _QWORD* game_anonymous_ConvergeImpl_TryRunConverge_closure_Clone(_QWORD* a1)
 {
-  _QWORD* v2;
+  __int64* v2;
   _QWORD* v3;
-  __int64 v4;
-  __int64 v5;
+  __int64* v4;
+  __int64* v5;
   __int64 v6;
   __int64 v7;
   _QWORD* v8;
   __int64 v9;
-  __int64 v10;
+  __int64* v10;
 
-  v2 = (_QWORD*)fw_memory_g_heap_manager_ptr;
-  v3 = (_QWORD*)fw_memory_HeapManager_Allocate(
+  v2 = (__int64*)fw_memory_g_heap_manager_ptr;
+  v3 = (_QWORD*)fw_memory_HeapManager_Allocate_alt1(
       *(_QWORD*)fw_memory_g_heap_manager_ptr, 48, 16, 0);
-  v4 = a1[3];
-  v5 = a1[4];
+  v4 = (__int64*)a1[3];
+  v5 = (__int64*)a1[4];
   v6 = a1[1];
   v7 = a1[2];
   v8 = v3;
-  v9 = v5 - v4;
-  *v3 = GameData_2004e18;
+  v9 = (char*)v5 - (char*)v4;
+  *v3 = game_anonymous_ConvergeImpl_TryRunConverge_closure_Destructor_ptr;
   v3[1] = v6;
   v3[2] = v7;
   v3[3] = 0;
@@ -1042,15 +1044,16 @@ _QWORD* game_anonymous_ConvergeImpl_TryRunConverge_closure_Clone(_QWORD* a1)
   v3[5] = 0;
   if (v5 != v4) {
     if (0xAAAAAAAAAAAAAAABLL * (v9 >> 4) >= 0x555555555555556LL) {
-      GameRoutine_8f2260();
+      GameRoutine_8f2260_alt1();
     }
-    v10 = fw_memory_HeapManager_Allocate(*v2, v5 - v4, 16, 0);
+    v10 = (__int64*)fw_memory_HeapManager_Allocate_alt1(
+        *v2, (char*)v5 - (char*)v4, 16, 0);
     v8[3] = v10;
-    v8[5] = v10 + v9;
+    v8[5] = (char*)v10 + v9;
     do {
-      GameConverge_8f24c0(v10, v4);
-      v4 += 48;
-      v10 += 48;
+      GameConverge_8f24c0_alt1(v10, v4);
+      v4 += 6;
+      v10 += 6;
     } while (v4 != v5);
     v8[4] = v10;
   }

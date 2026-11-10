@@ -11766,7 +11766,8 @@ __int64 CudaDriverHr_122f40(__int64 a1, long double a2)
   if (CudaDriverRoutine_12e2a0(v2 + 16472, a2) < 30000.0) {
     return 0;
   }
-  v4 = (*(__int64 (**)(void))(*(_QWORD*)(v2 + 64) + 21008LL))();
+  v4 = (*(__int64 (**)(void*))(*(_QWORD*)(v2 + 64) + 21008LL))(
+      *(void**)(v2 + 64));
   if (v4 == 0) {
     *(_DWORD*)(*(_QWORD*)(v2 + 64) + 3376LL) = 0;
     *(_DWORD*)(*(_QWORD*)(v2 + 64) + 3380LL) = 0;

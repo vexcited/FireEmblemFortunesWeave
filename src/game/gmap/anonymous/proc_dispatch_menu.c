@@ -33,6 +33,8 @@ extern __int64 GameData_21ca060;
 extern __int64 GameData_21f4280;
 __int64 game_gmap_anonymous_ProcDispatchMenu_AddItemList(__int64 a1);
 __int64 game_gmap_anonymous_ProcDispatchMenu_SortAndFilter(__int64 a1);
+void BasicMenu_16e1f40_alt1(_QWORD*, __int64,
+                            __int64) __asm__("BasicMenu_16e1f40");
 
 void* ProcDispatchMenu_Unknown67(__int64 a1)
 {
@@ -226,7 +228,7 @@ LABEL_40:
   v22_.v23 = v22_.v22;
   v24_.v25 = v24_.v24;
   v22_.v22[0] = GameData_20a0e10;
-  BasicMenu_16e1f40(a1, (__int64)v24_.v24, (__int64)v22_.v22);
+  BasicMenu_16e1f40_alt1((_QWORD*)a1, (__int64)v24_.v24, (__int64)v22_.v22);
   if (v22_.v23 == v22_.v22) {
     v19 = 32;
   }

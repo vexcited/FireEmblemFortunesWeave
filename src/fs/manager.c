@@ -769,7 +769,7 @@ LABEL_2:
           v68 = v64[94];
           v69 = v65[94];
           if (v68 == v69) {
-            if (v64[93] >= v65[93]) {
+            if ((signed __int64)v64[93] >= (signed __int64)v65[93]) {
               return result;
             }
           }
@@ -790,7 +790,7 @@ LABEL_2:
           v158 = v154[94];
           v159 = v155[94];
           if (v158 == v159) {
-            if (v154[93] >= v155[93]) {
+            if ((signed __int64)v154[93] >= (signed __int64)v155[93]) {
               return result;
             }
           }
@@ -810,7 +810,8 @@ LABEL_2:
           v163 = v154[94];
           v164 = *(_QWORD*)(v160 + 752);
           if (v163 == v164) {
-            if (v154[93] >= *(_QWORD*)(v160 + 744)) {
+            if ((signed __int64)v154[93] >=
+                (signed __int64)*(_QWORD*)(v160 + 744)) {
               return result;
             }
           }
@@ -856,7 +857,8 @@ LABEL_2:
             v146 = v142[94];
             v147 = *(_QWORD*)(v143 + 752);
             if (v146 == v147) {
-              if (v142[93] < *(_QWORD*)(v143 + 744)) {
+              if ((signed __int64)v142[93] <
+                  (signed __int64)*(_QWORD*)(v143 + 744)) {
                 goto LABEL_238;
               }
             }
@@ -883,7 +885,8 @@ LABEL_2:
                   if (v152 != v153) {
                     break;
                   }
-                  if (v142[93] >= *(_QWORD*)(v143 + 744)) {
+                  if ((signed __int64)v142[93] >=
+                      (signed __int64)*(_QWORD*)(v143 + 744)) {
                     goto LABEL_227;
                   }
                 }
@@ -917,7 +920,8 @@ LABEL_2:
         v81 = v77[94];
         v82 = *(_QWORD*)(v78 + 752);
         if (v81 == v82) {
-          if (v77[93] >= *(_QWORD*)(v78 + 744)) {
+          if ((signed __int64)v77[93] >=
+              (signed __int64)*(_QWORD*)(v78 + 744)) {
             goto LABEL_136;
           }
         }
@@ -943,7 +947,7 @@ LABEL_2:
           v88 = v77[94];
           v89 = v86[94];
           if (v88 == v89) {
-            if (v77[93] >= v86[93]) {
+            if ((signed __int64)v77[93] >= (signed __int64)v86[93]) {
               v75 = (__int64*)((char*)k + v83);
               goto LABEL_135;
             }
@@ -1009,7 +1013,8 @@ LABEL_2:
           v106 = *(_QWORD*)(v102 + 752);
           v107 = v103[94];
           if (v106 == v107) {
-            if (*(_QWORD*)(v102 + 744) < v103[93]) {
+            if ((signed __int64)*(_QWORD*)(v102 + 744) <
+                (signed __int64)v103[93]) {
               goto LABEL_158;
             }
           }
@@ -1046,7 +1051,8 @@ LABEL_2:
             result = *(_QWORD*)(v110 + 752);
             v113 = v111[94];
             if (result == v113) {
-              if (*(_QWORD*)(v110 + 744) < v111[93]) {
+              if ((signed __int64)*(_QWORD*)(v110 + 744) <
+                  (signed __int64)v111[93]) {
                 goto LABEL_184;
               }
             }
@@ -1162,7 +1168,8 @@ LABEL_2:
               v135 = *(_QWORD*)(v132 + 752);
               v136 = *(_QWORD*)(v118 + 752);
               if (v135 == v136) {
-                if (*(_QWORD*)(v132 + 744) < *(_QWORD*)(v118 + 744)) {
+                if ((signed __int64)*(_QWORD*)(v132 + 744) <
+                    (signed __int64)*(_QWORD*)(v118 + 744)) {
                   goto LABEL_214;
                 }
               }
@@ -1182,7 +1189,7 @@ LABEL_2:
       v100 = *(_QWORD*)(v96 + 752);
       v101 = v97[94];
       if (v100 == v101) {
-        if (*(_QWORD*)(v96 + 744) >= v97[93]) {
+        if ((signed __int64)*(_QWORD*)(v96 + 744) >= (signed __int64)v97[93]) {
           goto LABEL_167;
         }
       }
@@ -1255,7 +1262,8 @@ LABEL_2:
             v39 = *(_QWORD*)(v13 + 752);
             if (v38 == v39) {
               if (v25 >= (unsigned __int64)j ||
-                  *(_QWORD*)(v36 + 744) < *(_QWORD*)(v13 + 744)) {
+                  (signed __int64)*(_QWORD*)(v36 + 744) <
+                      (signed __int64)*(_QWORD*)(v13 + 744)) {
                 break;
               }
             }
@@ -1315,7 +1323,8 @@ LABEL_2:
             if (v34 != v35) {
               break;
             }
-            if (*(_QWORD*)(v27 + 744) < *(_QWORD*)(v13 + 744)) {
+            if ((signed __int64)*(_QWORD*)(v27 + 744) <
+                (signed __int64)*(_QWORD*)(v13 + 744)) {
               goto LABEL_36;
             }
           }
@@ -1363,7 +1372,7 @@ LABEL_2:
         v18 = v15[94];
         v19 = *(_QWORD*)(v13 + 752);
         if (v18 == v19) {
-          if (v15[93] < *(_QWORD*)(v13 + 744)) {
+          if ((signed __int64)v15[93] < (signed __int64)*(_QWORD*)(v13 + 744)) {
             goto LABEL_22;
           }
         }
@@ -1383,7 +1392,8 @@ LABEL_2:
         v43 = *(_QWORD*)(v13 + 752);
         v44 = *(_QWORD*)(v41 + 752);
         if (v43 == v44) {
-          if (*(_QWORD*)(v13 + 744) < *(_QWORD*)(v41 + 744)) {
+          if ((signed __int64)*(_QWORD*)(v13 + 744) <
+              (signed __int64)*(_QWORD*)(v41 + 744)) {
             goto LABEL_75;
           }
         }
@@ -1474,7 +1484,8 @@ LABEL_2:
               if (v55 != v56) {
                 break;
               }
-              if (*(_QWORD*)(v13 + 744) >= *(_QWORD*)(v50 + 744)) {
+              if ((signed __int64)*(_QWORD*)(v13 + 744) >=
+                  (signed __int64)*(_QWORD*)(v50 + 744)) {
                 goto LABEL_96;
               }
             }
@@ -1498,7 +1509,7 @@ LABEL_2:
     v62 = v58[94];
     v63 = *(_QWORD*)(v59 + 752);
     if (v62 == v63) {
-      if (v58[93] >= *(_QWORD*)(v59 + 744)) {
+      if ((signed __int64)v58[93] >= (signed __int64)*(_QWORD*)(v59 + 744)) {
         return result;
       }
     }

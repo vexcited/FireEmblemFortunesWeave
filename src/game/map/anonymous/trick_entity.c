@@ -169,6 +169,7 @@ GameRoutine_60a310_alt1() __asm__("GameRoutine_60a310");
 __int64 game_map_anonymous_TrickEntity_EachObject_closure_Invoke(__int64 a1,
                                                                  int* a2,
                                                                  int* a3);
+__int64 Trick_7d5160(__int64, char);
 
 __int64 game_map_anonymous_TrickEntity_TryBroken(__int64 a1, __int64 a2,
                                                  _WORD* a3)
@@ -177,8 +178,10 @@ __int64 game_map_anonymous_TrickEntity_TryBroken(__int64 a1, __int64 a2,
   __int64 result;
   __int64 v8;
   __int64 v9;
-  _QWORD v10[4];
-  _QWORD* v11;
+  struct {
+    _QWORD v10[4];
+    _QWORD* v11;
+  } v10_;
 
   if (a3 == nullptr) {
     return 0;
@@ -195,24 +198,24 @@ __int64 game_map_anonymous_TrickEntity_TryBroken(__int64 a1, __int64 a2,
   else {
     (*(void (**)(_WORD*))(*(_QWORD*)a3 + 416LL))(a3);
   }
-  v10[0] = GameData_1f9b328;
-  v10[1] = a2;
+  v10_.v10[0] = GameData_1f9b328;
+  v10_.v10[1] = a2;
   v8 = *(_QWORD*)a3;
-  v11 = v10;
-  (*(void (**)(_WORD*, _QWORD*))(v8 + 672))(a3, v10);
-  if (v11 == v10) {
+  v10_.v11 = v10_.v10;
+  (*(void (**)(_WORD*, _QWORD*))(v8 + 672))(a3, v10_.v10);
+  if (v10_.v11 == v10_.v10) {
     v9 = 32;
   }
   else {
-    if (v11 == nullptr) {
+    if (v10_.v11 == nullptr) {
       goto LABEL_13;
     }
     v9 = 40;
   }
-  (*(void (**)(void*))(*v11 + v9))(v11);
+  (*(void (**)(__int64))(*v10_.v11 + v9))((__int64)v10_.v11);
 LABEL_13:
   if (GameData_21d9958 == 0) {
-    GameRoutine_7d5160(*(_QWORD*)(*GameData_212cfb8[0] + 16), 1);
+    Trick_7d5160(*(_QWORD*)(*GameData_212cfb8[0] + 16), 1);
     if (GameData_22400f8 != 0 && *(_BYTE*)(GameData_22400f8 + 8) == 1 &&
         (*(_BYTE*)(GameData_22400f8 + 9) & 1) == 0) {
       *(_DWORD*)(GameData_22400f8 + 12) |= 0x402u;

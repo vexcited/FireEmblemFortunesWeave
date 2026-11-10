@@ -257,6 +257,9 @@ __int64
 game_gmap_TroopMgr_Impl_UpdateVisibleTroops_closure0_Invoke(__int64 result,
                                                             __int64 a2);
 _QWORD* TroopMgr_1355e40(float* a1, __int64* a2, _QWORD** a3);
+__int64 GameRoutine_ae0560_alt1() __asm__("GameRoutine_ae0560");
+__int64 GameSituation_906320(__int64, __int64*);
+__int64 game_GetHero_alt1(unsigned __int8) __asm__("game_GetHero");
 
 __int64 TroopMgr_Unknown2(__int64 a1)
 {
@@ -2219,9 +2222,11 @@ __int64 TroopMgr_1349260(unsigned __int8 a1)
   __int64 result;
   __int64 v3;
   __int64 v4;
-  _QWORD v5[2];
-  _QWORD v6[4];
-  __int64 v7;
+  struct {
+    __int64 v5[2];
+    char gap16_[32];
+    __int64 v6;
+  } v5_;
 
   if (game_gmap_GmapClock_instance_ == 0) {
     return 0;
@@ -2239,19 +2244,20 @@ __int64 TroopMgr_1349260(unsigned __int8 a1)
   if (v1 == a1) {
     return 0;
   }
-  result = game_GetHero();
+  result = game_GetHero_alt1(a1);
   if (result != 0) {
-    v5[0] = 0;
-    v5[1] = result;
-    GameRoutine_906320((void*)v6, game_GameModeData_instance_ + 136, v5);
-    if (v7 == 0) {
+    v5_.v5[0] = 0;
+    v5_.v5[1] = result;
+    GameSituation_906320(game_GameModeData_instance_ + 136, v5_.v5);
+    if (v5_.v6 == 0) {
       return 0;
     }
-    result = game_gmap_SpotMgr_FindSpot(*(_QWORD*)(v7 + 64));
+    result = (__int64)game_gmap_SpotMgr_FindSpot_alt1(
+        *(unsigned int**)(v5_.v6 + 64));
     if (result != 0) {
       v3 = *(_QWORD*)(result + 120);
       v4 = result;
-      if (v3 == GameRoutine_ae0560()) {
+      if (v3 == GameRoutine_ae0560_alt1()) {
         return 0;
       }
       else {

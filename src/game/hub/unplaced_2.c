@@ -715,7 +715,7 @@ __attribute__((swiftcall)) void game_hub_f7be00(PSEUDO_X8 x8_, __int64 a1,
 __int64 game_hub_f89710(__int64 a1, _DWORD* a2, __int64 a3);
 __n128 game_hub_f8b240();
 __n128 game_hub_f8b300(__n128 result);
-__n128 game_hub_f8b650();
+__n128 game_hub_f8b650_alt1() __asm__("game_hub_f8b650");
 __n128 game_hub_f8bf30(_QWORD* a1);
 __int64 game_hub_f960c0(_QWORD* a1, __int64* a2);
 __attribute__((swiftcall)) void game_hub_f96800(PSEUDO_X8 x8_, __int64 a1,
@@ -781,6 +781,10 @@ void game_hub_f71a70(__int64 a1);
 __attribute__((swiftcall)) void game_hub_f77fc0(PSEUDO_X8 x8_, _QWORD* a1,
                                                 __int64 a2, char a3);
 __int64 game_hub_102e240(__int64 a1, __int128* a2, unsigned __int8* a3);
+_QWORD* game_hub_f8bf30_alt1(_QWORD*) __asm__("game_hub_f8bf30");
+__int64 game_zview_d1ff20_alt1(__int64 result, _QWORD*,
+                               char) __asm__("game_zview_d1ff20");
+__int64 game_hub_f8b650();
 
 void game_hub_f5d880(float32x4_t* result)
 {
@@ -7543,30 +7547,27 @@ __n128 game_hub_f8b300(__n128 result)
   return result;
 }
 
-__n128 game_hub_f8b650()
+__int64 game_hub_f8b650()
 {
 
 #pragma clang fp contract(off)
   __int64 v0;
-  unsigned __int64 v1;
+  __int64 v1;
   float v2;
-  float32x4_t* v3;
-  __n128 result;
+  __int64 v3;
+  __int64 result;
   __int64 v5;
   __int64 v6;
   struct {
-    unsigned __int64 v7;
+    __int64 v7;
     __int64 v8;
   } v7_;
   struct {
-    unsigned __int64 v9;
+    __int64 v9;
     __int64 v10;
   } v9_;
 
-  result = COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
-  game_hub_f8bf30(&v9_.v9),
-      result =
-          COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
+  game_hub_f8bf30_alt1(&v9_.v9);
   v1 = v9_.v9;
   v0 = v9_.v10;
   v2 = *(float*)(v9_.v9 + 32);
@@ -7574,30 +7575,23 @@ __n128 game_hub_f8b650()
   *(float*)(v1 + 32) = v2 + -0x1.99999a0000000p-4f;
   v7_.v7 = v1;
   v7_.v8 = v0;
-  v3 = *(float32x4_t**)GameData_212dc38[0];
+  v3 = *(_QWORD*)GameData_212dc38[0];
   if (v0 != 0) {
     atomic_fetch_add_explicit((atomic_ullong* volatile)(v0 + 8), 1u,
                               memory_order_relaxed);
   }
-  game_zview_d1ff20(v3, &v7_.v7, 1),
-      result =
-          COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
+  result = game_zview_d1ff20_alt1(v3, &v7_.v7, 1);
   v5 = v7_.v8;
   if (v7_.v8 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v7_.v8 + 8),
                                       0xFFFFFFFFFFFFFFFFLL) == 0) {
-    (*(void (**)(__int64))(*(_QWORD*)v5 + 16LL))(v5),
-        result =
-            COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
-    result = std___1___shared_weak_count___release_weak(v5);
+    (*(void (**)(__int64))(*(_QWORD*)v5 + 16LL))(v5);
+    result = std___1___shared_weak_count___release_weak_alt1(v5);
   }
   v6 = v9_.v10;
   if (v9_.v10 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v9_.v10 + 8),
                                        0xFFFFFFFFFFFFFFFFLL) == 0) {
-    (*(void (**)(__int64, long double))(*(_QWORD*)v6 + 16LL))(
-        v6, *(long double*)&result),
-        result =
-            COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
-    return std___1___shared_weak_count___release_weak(v6);
+    (*(void (**)(__int64))(*(_QWORD*)v6 + 16LL))(v6);
+    return std___1___shared_weak_count___release_weak_alt1(v6);
   }
   return result;
 }

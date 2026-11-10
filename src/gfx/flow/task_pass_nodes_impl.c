@@ -289,7 +289,8 @@ __int64 TaskPassNodes_b8d210(__int64 a1, _QWORD** a2, __int64 a3);
 __int64 TaskPassNodes_b8d3e0(__int64 a1, __int64* a2, __int64 a3);
 __int64 TaskPassNodes_b8d780(__int64 a1, __int64 a2, __int64 a3);
 __int64 TaskPassNodes_b8d9e0(__int64 a1, __int64 a2, _QWORD* a3);
-__int64 TaskPassNodes_b8dd70(__int64 a1, __int64 a2, __int64 a3);
+__int64 TaskPassNodes_b8dd70_alt1(__int64 a1, __int64 a2,
+                                  __int64 a3) __asm__("TaskPassNodes_b8dd70");
 __int64 TaskPassNodes_b8dfb0(__int64 a1, _QWORD* a2, _QWORD* a3);
 __int64 TaskPassNodes_b8e350(__int64 a1, _QWORD** a2, __int64 a3);
 __int64 TaskPassNodes_b8e580(__int64 a1, __int64 a2, _QWORD* a3);
@@ -368,7 +369,8 @@ __int64 TaskPassNodes_ba6640(__int64 a1, __int64 a2, _QWORD* a3);
 __int64 TaskPassNodes_ba7440(__int64 a1, __int64* a2, _QWORD* a3);
 __int64 TaskPassNodes_ba7820(__int64 a1, __int64 a2, __int64 a3);
 __int64 TaskPassNodes_ba7a30(__int64 a1, __int64 a2, _QWORD* a3);
-__int64 TaskPassNodes_ba7ea0(__int64 a1, _QWORD** a2, __int64 a3);
+__int64 TaskPassNodes_ba7ea0_alt1(__int64 a1, _QWORD** a2,
+                                  __int64 a3) __asm__("TaskPassNodes_ba7ea0");
 __int64 TaskPassNodes_ba85a0(__int64 a1, _QWORD** a2, __int64 a3);
 __int64 TaskPassNodes_ba8770(__int64 a1, __int64 a2, _QWORD* a3);
 __int64 TaskPassNodes_ba91a0(__int64 a1, __int64** a2, __int64 a3);
@@ -384,7 +386,8 @@ __int64 TaskPassNodes_baae90(__int64 a1, _QWORD** a2, __int64 a3);
 __int64 TaskPassNodes_bab050(__int64 a1, __int64 a2, _QWORD* a3);
 __int64 TaskPassNodes_bab410(__int64 a1, __int64 a2, __int64 a3);
 __int64 TaskPassNodes_bab580(__int64 a1, __int64 a2, __int64 a3);
-__int64 TaskPassNodes_bab910(__int64 a1, _QWORD** a2, __int64 a3);
+__int64 TaskPassNodes_bab910_alt1(__int64 a1, _QWORD** a2,
+                                  __int64 a3) __asm__("TaskPassNodes_bab910");
 __int64 TaskPassNodes_babaf0(__int64 a1, __int64 a2, _QWORD* a3);
 __int64 TaskPassNodes_babec0(__int64 a1, _QWORD* a2, __int64 a3);
 __int64 TaskPassNodes_bac0c0(__int64 a1, __int64 a2, _QWORD* a3);
@@ -442,6 +445,24 @@ __int64 TaskPassNodes_bc2360(__int64 a1, __int64 a2, _QWORD* a3, __int64 a4);
 __int64 TaskPassNodes_bc32f0(__int64 a1, __int64* a2, __int64 a3);
 __int64 TaskPassNodes_bc3670(__int64 a1, _QWORD* a2, __int64 a3);
 __int64 TaskPassNodes_bc3990(__int64 a1, __int64 a2, _QWORD* a3);
+__int64 GameRoutine_b48f90_alt1(__int64, __int64) __asm__("GameRoutine_b48f90");
+__int64 GameRoutine_b4a3f0_alt1(__int64, __int64) __asm__("GameRoutine_b4a3f0");
+__int64 GameRoutine_b4a510_alt1(__int64, __int64) __asm__("GameRoutine_b4a510");
+__int64 GameRoutine_b509c0_alt1(__int64*, __int64,
+                                __int64) __asm__("GameRoutine_b509c0");
+__int64 GameRoutine_b50b10_alt1(__int64*, __int64,
+                                __int64) __asm__("GameRoutine_b50b10");
+__int64 GameRoutine_b50c60_alt1(__int64*, __int64,
+                                __int64) __asm__("GameRoutine_b50c60");
+__int64 GameRoutine_b53d40_alt1(__int64*, const char*,
+                                __int64) __asm__("GameRoutine_b53d40");
+__int64 GameRoutine_b54ca0_alt1(__int64*, const char*,
+                                __int64) __asm__("GameRoutine_b54ca0");
+__int64 TaskRadialBlur_b71980(__int64, _QWORD*, _QWORD*, _QWORD*,
+                              unsigned int*);
+__int64 TaskPassNodes_b8dd70(__int64 a1, __int64** a2, __int64* a3);
+__int64 TaskPassNodes_ba7ea0(__int64 a1, __int64** a2, __int64* a3);
+__int64 TaskPassNodes_bab910(__int64 a1, __int64** a2, __int64* a3);
 
 __int64 TaskPassNodes_b88c20(__int64 a1, __int64 a2, __int64 a3)
 {
@@ -1498,10 +1519,10 @@ __int64 TaskPassNodes_b8d9e0(__int64 a1, __int64 a2, _QWORD* a3)
   return GameRoutine_b70550((__int64)v6, v3, v4, a3);
 }
 
-__int64 TaskPassNodes_b8dd70(__int64 a1, __int64 a2, __int64 a3)
+__int64 TaskPassNodes_b8dd70(__int64 a1, __int64** a2, __int64* a3)
 {
-  _QWORD** v3;
-  _QWORD* v5;
+  __int64** v3;
+  __int64* v5;
   __int64 v7;
   int v8;
   __int64 v9;
@@ -1511,17 +1532,20 @@ __int64 TaskPassNodes_b8dd70(__int64 a1, __int64 a2, __int64 a3)
   __int64 v13;
   __int64 v14;
   unsigned __int64 v15;
-  _QWORD* v16;
+  __int64* v16;
   __int64 result;
-  __int64 v18;
-  int v19;
-  int v20;
-  __int64 v21;
-  char v22;
-  int v23;
+  struct {
+    __int64 v18;
+    int v19;
+    int v20;
+    __int64 v21;
+    char v22;
+    char gap25_[3];
+    int v23;
+  } v18_;
 
-  v3 = *(_QWORD***)(a1 + 16);
-  v5 = *(_QWORD**)a2;
+  v3 = *(__int64***)(a1 + 16);
+  v5 = *a2;
   v7 = **(_QWORD**)(a1 + 8);
   v8 = *(unsigned __int8*)(v7 + 16700);
   v9 = *(_QWORD*)(v7 + 16672);
@@ -1534,23 +1558,25 @@ __int64 TaskPassNodes_b8dd70(__int64 a1, __int64 a2, __int64 a3)
   v13 = (*v3)[15];
   v14 = (*v3)[16];
   v15 = HIDWORD(*v10);
-  *v5 = GameRoutine_b48f90(a3, **v3);
-  v5[1] = GameRoutine_b48f90(a3, v13);
-  v5[2] = GameRoutine_b48f90(a3, v14);
-  v23 = 0;
-  v19 = v12;
-  v20 = v15;
-  v16 = *(_QWORD**)(a2 + 8);
-  v18 = 0xD00000000LL;
-  v21 = 0x100000001LL;
-  v22 = 1;
-  v16[2] = GameRoutine_b509c0(a3, "DstColor", &v18);
-  v19 = (int)v12 / 2;
-  v20 = (int)(v15 + (v12 >> 63)) >> 1;
-  *v16 = GameRoutine_b50b10(a3, "TempHalfDownscale", &v18);
-  v19 = (int)v12 / 2;
-  v20 = (int)(v15 + (v12 >> 63)) >> 1;
-  result = GameRoutine_b50c60(a3, "TempHalfBlur", &v18);
+  *v5 = GameRoutine_b48f90_alt1((__int64)a3, **v3);
+  v5[1] = GameRoutine_b48f90_alt1((__int64)a3, v13);
+  v5[2] = GameRoutine_b48f90_alt1((__int64)a3, v14);
+  v18_.v23 = 0;
+  v18_.v19 = v12;
+  v18_.v20 = v15;
+  v16 = a2[1];
+  v18_.v18 = 0xD00000000LL;
+  v18_.v21 = 0x100000001LL;
+  v18_.v22 = 1;
+  v16[2] = GameRoutine_b509c0_alt1(a3, (__int64)"DstColor", (__int64)&v18_.v18);
+  v18_.v19 = (int)v12 / 2;
+  v18_.v20 = (int)(v15 + (v12 >> 63)) >> 1;
+  *v16 = GameRoutine_b50b10_alt1(a3, (__int64)"TempHalfDownscale",
+                                 (__int64)&v18_.v18);
+  v18_.v19 = (int)v12 / 2;
+  v18_.v20 = (int)(v15 + (v12 >> 63)) >> 1;
+  result =
+      GameRoutine_b50c60_alt1(a3, (__int64)"TempHalfBlur", (__int64)&v18_.v18);
   v16[1] = result;
   return result;
 }
@@ -7335,10 +7361,10 @@ __int64 TaskPassNodes_ba7a30(__int64 a1, __int64 a2, _QWORD* a3)
   return GameRoutine_b59e10((__int64)v6, v3, v4, a3);
 }
 
-__int64 TaskPassNodes_ba7ea0(__int64 a1, _QWORD** a2, __int64 a3)
+__int64 TaskPassNodes_ba7ea0(__int64 a1, __int64** a2, __int64* a3)
 {
-  _QWORD** v3;
-  _QWORD* v5;
+  __int64** v3;
+  __int64* v5;
   __int64 v7;
   int v8;
   __int64 v9;
@@ -7350,14 +7376,17 @@ __int64 TaskPassNodes_ba7ea0(__int64 a1, _QWORD** a2, __int64 a3)
   unsigned __int64 v15;
   __int64* v16;
   __int64 result;
-  __int64 v18;
-  int v19;
-  int v20;
-  __int64 v21;
-  char v22;
-  int v23;
+  struct {
+    __int64 v18;
+    int v19;
+    int v20;
+    __int64 v21;
+    char v22;
+    char gap25_[3];
+    int v23;
+  } v18_;
 
-  v3 = *(_QWORD***)(a1 + 16);
+  v3 = *(__int64***)(a1 + 16);
   v5 = *a2;
   v7 = **(_QWORD**)(a1 + 8);
   v8 = *(unsigned __int8*)(v7 + 16700);
@@ -7371,17 +7400,17 @@ __int64 TaskPassNodes_ba7ea0(__int64 a1, _QWORD** a2, __int64 a3)
   v13 = (*v3)[1];
   v14 = (*v3)[9];
   v15 = HIDWORD(*v10);
-  *v5 = GameRoutine_b48f90(a3, **v3);
-  v5[1] = GameRoutine_b48f90(a3, v14);
-  v5[2] = ResourceBuilder_b5a4b0(a3, v13);
-  v23 = 0;
-  v19 = v12;
-  v20 = v15;
+  *v5 = GameRoutine_b48f90_alt1((__int64)a3, **v3);
+  v5[1] = GameRoutine_b48f90_alt1((__int64)a3, v14);
+  v5[2] = ResourceBuilder_b5a4b0((__int64)a3, v13);
+  v18_.v23 = 0;
+  v18_.v19 = v12;
+  v18_.v20 = v15;
   v16 = a2[1];
-  v18 = 0x1400000000LL;
-  v21 = 0x100000001LL;
-  v22 = 1;
-  result = GameRoutine_b53d40(a3, "MotionBlurDst", &v18);
+  v18_.v18 = 0x1400000000LL;
+  v18_.v21 = 0x100000001LL;
+  v18_.v22 = 1;
+  result = GameRoutine_b53d40_alt1(a3, "MotionBlurDst", (__int64)&v18_.v18);
   *v16 = result;
   return result;
 }
@@ -7505,6 +7534,8 @@ __int64 TaskPassNodes_ba92f0(__int64 a1, __int64 a2, _QWORD* a3)
 
 __int64 TaskPassNodes_ba9880(__int64 a1, __int64 a2, _QWORD* a3)
 {
+
+#pragma clang fp contract(off)
   _QWORD* v3;
   _QWORD* v4;
   _QWORD* v5;
@@ -7531,9 +7562,11 @@ __int64 TaskPassNodes_ba9880(__int64 a1, __int64 a2, _QWORD* a3)
   int v27;
   __int64 v28;
   __int64 v29;
-  _QWORD v31[2];
-  int v32;
-  int v33;
+  struct {
+    _QWORD v31[2];
+    int v32;
+    int v33;
+  } v31_;
 
   v3 = *(_QWORD**)(a1 + 8);
   v4 = *(_QWORD**)a2;
@@ -7550,7 +7583,7 @@ __int64 TaskPassNodes_ba9880(__int64 a1, __int64 a2, _QWORD* a3)
   }
   v14 = *v10;
   v15 = (unsigned __int8)v12[256];
-  v31[0] = v14;
+  v31_.v31[0] = v14;
   v16 = v15 == 0;
   v17 = 288;
   if (!v16) {
@@ -7563,7 +7596,7 @@ __int64 TaskPassNodes_ba9880(__int64 a1, __int64 a2, _QWORD* a3)
   }
   v20 = v18 | ((unsigned __int64)*(unsigned int*)&v12[v19] << 32);
   v21 = (unsigned __int8)v12[176];
-  v31[1] = v20;
+  v31_.v31[1] = v20;
   v16 = v21 == 0;
   v22 = 208;
   if (!v16) {
@@ -7572,7 +7605,7 @@ __int64 TaskPassNodes_ba9880(__int64 a1, __int64 a2, _QWORD* a3)
   v23 = *(_DWORD*)&v12[v22];
   v16 = v12[96] == 0;
   v24 = 128;
-  v32 = v23;
+  v31_.v32 = v23;
   if (!v16) {
     v24 = 92;
   }
@@ -7584,17 +7617,17 @@ __int64 TaskPassNodes_ba9880(__int64 a1, __int64 a2, _QWORD* a3)
   }
   *(_DWORD*)(v7 + 40) = v26;
   v28 = *(_QWORD*)(v7 + 8LL * v26 + 24);
-  v33 = v27;
+  v31_.v33 = v27;
   v29 = (*(__int64 (**)(__int64))(*(_QWORD*)v28 + 56LL))(v28);
   *(_QWORD*)v29 = v20;
   *(_DWORD*)(v29 + 8) = v23;
   *(_DWORD*)(v29 + 12) = v27;
   *(float*)(v29 + 16) = (float)(int)v14;
   *(float*)(v29 + 20) = (float)SHIDWORD(v14);
-  *(float*)(v29 + 24) = 1.0 / (float)(int)v14;
-  *(float*)(v29 + 28) = 1.0 / (float)SHIDWORD(v14);
+  *(float*)(v29 + 24) = 0x1.0000000000000p+0f / (float)(int)v14;
+  *(float*)(v29 + 28) = 0x1.0000000000000p+0f / (float)SHIDWORD(v14);
   (*(void (**)(__int64))(*(_QWORD*)v28 + 64LL))(v28);
-  return GameRoutine_b71980(v7, v4, v5, a3, (unsigned int*)v31);
+  return TaskRadialBlur_b71980(v7, v4, v5, a3, (unsigned int*)v31_.v31);
 }
 
 __int64 TaskPassNodes_ba9d50(__int64 a1, __int64 a2, __int64 a3)
@@ -7945,9 +7978,9 @@ __int64 TaskPassNodes_bab580(__int64 a1, __int64 a2, __int64 a3)
                                 (__int64)&v6);
 }
 
-__int64 TaskPassNodes_bab910(__int64 a1, _QWORD** a2, __int64 a3)
+__int64 TaskPassNodes_bab910(__int64 a1, __int64** a2, __int64* a3)
 {
-  _QWORD* v4;
+  __int64* v4;
   __int64 v6;
   int v7;
   __int64* v8;
@@ -7957,12 +7990,15 @@ __int64 TaskPassNodes_bab910(__int64 a1, _QWORD** a2, __int64 a3)
   __int64 v12;
   __int64* v13;
   __int64 result;
-  __int64 v15;
-  int v16;
-  int v17;
-  __int64 v18;
-  char v19;
-  int v20;
+  struct {
+    __int64 v15;
+    int v16;
+    int v17;
+    __int64 v18;
+    char v19;
+    char gap25_[3];
+    int v20;
+  } v15_;
 
   v4 = *a2;
   v6 = **(_QWORD**)(a1 + 8);
@@ -7975,16 +8011,16 @@ __int64 TaskPassNodes_bab910(__int64 a1, _QWORD** a2, __int64 a3)
   v10 = *v9;
   v11 = HIDWORD(*v9);
   v12 = **(_QWORD**)(a1 + 24);
-  *v4 = GameRoutine_b48f90(a3, ***(_QWORD***)(a1 + 16));
-  v4[1] = GameRoutine_b48f90(a3, v12);
-  v20 = 0;
-  v16 = v10;
-  v17 = v11;
+  *v4 = GameRoutine_b48f90_alt1((__int64)a3, ***(_QWORD***)(a1 + 16));
+  v4[1] = GameRoutine_b48f90_alt1((__int64)a3, v12);
+  v15_.v20 = 0;
+  v15_.v16 = v10;
+  v15_.v17 = v11;
   v13 = a2[1];
-  v15 = 0x1400000000LL;
-  v18 = 0x100000001LL;
-  v19 = 1;
-  result = GameRoutine_b54ca0(a3, "ColorGradingDst", &v15);
+  v15_.v15 = 0x1400000000LL;
+  v15_.v18 = 0x100000001LL;
+  v15_.v19 = 1;
+  result = GameRoutine_b54ca0_alt1(a3, "ColorGradingDst", (__int64)&v15_.v15);
   *v13 = result;
   return result;
 }
@@ -9856,6 +9892,8 @@ __int64 TaskPassNodes_bb4bc0(__int64 result, __int64 a2, __int64 a3)
 
 __int64 TaskPassNodes_bb51a0(__int64 result, __int64* a2, __int64 a3)
 {
+
+#pragma clang fp contract(off)
   __int64* v3;
   __int64 v4;
   __int64 v6;
@@ -9881,29 +9919,33 @@ __int64 TaskPassNodes_bb51a0(__int64 result, __int64* a2, __int64 a3)
   __int64 v27;
   _QWORD* v28;
   __int64 v29;
-  _DWORD v31[16];
-  int v32;
-  __int64 v33;
-  __int64 v34;
-  __int64 v35;
-  __int64 v36;
-  __int64 v37;
+  struct {
+    _DWORD v31[16];
+    int v32;
+  } v31_;
+  struct {
+    __int64 v33;
+    __int64 v34;
+    __int64 v35;
+    __int64 v36;
+    __int64 v37;
+  } v33_;
 
   v4 = *(_QWORD*)(result + 8);
   v3 = *(__int64**)(result + 16);
-  memset(&v31[6], 0, 40);
+  memset(&v31_.v31[6], 0, 40);
   LODWORD(v6) = *(_DWORD*)(*(_QWORD*)v4 + 104LL);
-  v32 = v6;
+  v31_.v32 = v6;
   if ((int)v6 < 1) {
     v19 = *a2;
     v24 = **(_QWORD***)(result + 24);
     v25 = v24[20];
-    v35 = v24[19];
-    v36 = v25;
-    v37 = v24[21];
+    v33_.v35 = v24[19];
+    v33_.v36 = v25;
+    v33_.v37 = v24[21];
     v26 = v24[18];
-    v33 = v24[17];
-    v34 = v26;
+    v33_.v33 = v24[17];
+    v33_.v34 = v26;
     goto LABEL_14;
   }
   v7 = *v3;
@@ -9918,21 +9960,21 @@ __int64 TaskPassNodes_bb51a0(__int64 result, __int64* a2, __int64 a3)
   v14 = **(_QWORD***)(result + 24);
   v15 = (float)v12;
   do {
-    v16 = &v31[2 * v9];
-    v31[v9] = (int)(float)(*(float*)(v13 + 4 * v9) * v15);
+    v16 = &v31_.v31[2 * v9];
+    v31_.v31[v9] = (int)(float)(*(float*)(v13 + 4 * v9) * v15);
     v17 = v9++;
     *((_QWORD*)v16 + 3) = v14[v17 + 70];
-    v6 = v32;
-  } while (v9 < v32);
+    v6 = v31_.v32;
+  } while (v9 < v31_.v32);
   v18 = v14[20];
   v19 = *a2;
-  v35 = v14[19];
-  v36 = v18;
-  v37 = v14[21];
+  v33_.v35 = v14[19];
+  v33_.v36 = v18;
+  v33_.v37 = v14[21];
   v20 = v14[18];
-  v33 = v14[17];
-  v34 = v20;
-  if (v32 <= 0) {
+  v33_.v33 = v14[17];
+  v33_.v34 = v20;
+  if (v31_.v32 <= 0) {
   LABEL_14:
     *(_DWORD*)(v19 + 64) = v6;
     v23 = a2[1];
@@ -9944,15 +9986,15 @@ __int64 TaskPassNodes_bb51a0(__int64 result, __int64* a2, __int64 a3)
   v21 = 0;
   do {
     *(_QWORD*)(v19 + 8 * v21 + 24) =
-        GameRoutine_b4a3f0(a3, *(_QWORD*)&v31[2 * v21 + 6]);
-    *(_DWORD*)(v19 + 4 * v21) = v31[v21];
+        GameRoutine_b4a3f0_alt1(a3, *(_QWORD*)&v31_.v31[2 * v21 + 6]);
+    *(_DWORD*)(v19 + 4 * v21) = v31_.v31[v21];
     ++v21;
   } while (v6 != v21);
   *(_DWORD*)(v19 + 64) = v6;
   v22 = 0;
   v23 = a2[1];
   do {
-    result = GameRoutine_b4a510(a3, *(__int64*)((char*)&v33 + v22));
+    result = GameRoutine_b4a510_alt1(a3, *(__int64*)((char*)&v33_.v33 + v22));
     *(_QWORD*)(v23 + v22) = result;
     v22 += 8;
   } while (8 * v6 != v22);
@@ -9960,7 +10002,7 @@ __int64 TaskPassNodes_bb51a0(__int64 result, __int64* a2, __int64 a3)
   LABEL_15:
     v27 = (unsigned int)v6 + 1LL;
     v28 = (_QWORD*)(v23 + 8LL * (unsigned int)v6);
-    v29 = *(&v33 + (int)v6 - 1);
+    v29 = *(&v33_.v33 + (int)v6 - 1);
     do {
       *v28++ = v29;
     } while ((_DWORD)v27++ != 5);

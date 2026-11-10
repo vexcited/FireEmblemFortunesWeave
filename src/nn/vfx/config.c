@@ -40,6 +40,8 @@ __int64 Config_bc7660(__int64 a1, __int64 a2);
 __int64 Config_bc7840(__int64 a1, __int64 a2);
 __int64 Config_bc79a0(__int64 result, int a2);
 unsigned __int64 Config_bc7c20(__int64 a1);
+__int64 eft_EmitterSetHandle_Get_5b6700_alt1(_DWORD*) __asm__(
+    "eft_EmitterSetHandle_Get_5b6700");
 
 __int64 Config_bc4f00(__int64 a1, unsigned int a2, unsigned int a3)
 {
@@ -1005,7 +1007,9 @@ unsigned __int64 Config_bc7c20(__int64 a1)
           }
         }
         else {
-          if ((*(_BYTE*)(eft_EmitterSetHandle_Get_5b6700(v9 + 472) + 562) &
+          if ((*(_BYTE*)(eft_EmitterSetHandle_Get_5b6700_alt1(
+                             (_DWORD*)(v9 + 472)) +
+                         562) &
                4) != 0) {
             v10 = 0x80000000;
           }

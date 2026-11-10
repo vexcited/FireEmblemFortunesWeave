@@ -32,6 +32,8 @@ MaterialAnimObj_5dfe60_alt1(__int64 result,
 __int64 MaterialAnimObj_5dff40(__int64 result, __int64);
 extern __int64 (**ModelAnimObj_Unknown9_ptr_ptr)();
 __int64 SkeletalAnimObj_Unknown6(__int64 a1, __int64 a2);
+int memcmp_alt1(__int64, __int64, unsigned __int64) __asm__("memcmp");
+unsigned __int64 strlen_alt1(const char*) __asm__("strlen");
 
 __int64 SkeletalAnimObj_5f1520(__int64 a1, __int64 a2)
 {
@@ -39,7 +41,7 @@ __int64 SkeletalAnimObj_5f1520(__int64 a1, __int64 a2)
   __int64 v5;
   __int64 v6;
   unsigned int v7;
-  __int64 v8;
+  const char* v8;
   unsigned __int64 v9;
   __int64 v10;
   __int64 v11;
@@ -56,7 +58,7 @@ __int64 SkeletalAnimObj_5f1520(__int64 a1, __int64 a2)
   __int64 v22;
   __int64 v23;
 
-  MaterialAnimObj_5dfe60(a1 + 88, *(unsigned __int16*)(a2 + 56));
+  MaterialAnimObj_5dfe60_alt1(a1 + 88, *(_WORD*)(a2 + 56));
   v4 = *(unsigned __int16*)(a1 + 100);
   if (*(_WORD*)(a1 + 100) != 0) {
     v5 = *(_QWORD*)(a2 + 8);
@@ -64,29 +66,29 @@ __int64 SkeletalAnimObj_5f1520(__int64 a1, __int64 a2)
       v6 = 0;
       v7 = 0;
     LABEL_4:
-      v8 = *(_QWORD*)(*(_QWORD*)(a1 + 112) + 56 * v6) + 2LL;
-      v9 = strlen(v8);
+      v8 = (const char*)(*(_QWORD*)(*(_QWORD*)(a1 + 112) + 56 * v6) + 2LL);
+      v9 = strlen_alt1(v8);
       v10 = v5 + 8;
       v11 = *(unsigned __int16*)(v5 + 12);
       v12 = v5 + 8 + 16 * v11;
       v13 = *(_DWORD*)v12;
-      if (*(_DWORD*)(v5 + 8) < *(_DWORD*)v12) {
+      if ((signed __int32)*(_DWORD*)(v5 + 8) < (signed __int32)*(_DWORD*)v12) {
         do {
           v15 = (__int64)v13 >> 3;
           if (v9 > v15) {
-            v14 = (*(unsigned __int8*)(v8 + v9 + ~v15) >> (v13 & 7)) & 1;
+            v14 = ((unsigned __int8)v8[v9 + ~v15] >> (v13 & 7)) & 1;
           }
           else {
             v14 = 0;
           }
           v11 = *(unsigned __int16*)(v5 + 12 + 16 * v11 + 2 * v14);
-          v21 = v13 < *(_DWORD*)(v10 + 16 * v11);
+          v21 = v13 < (signed __int32)*(_DWORD*)(v10 + 16 * v11);
           v13 = *(_DWORD*)(v10 + 16 * v11);
         } while (v21);
         v12 = v10 + 16 * v11;
       }
       v16 = *(unsigned __int16**)(v12 + 8);
-      if (v9 != *v16 || (unsigned int)memcmp(v16 + 1, v8, v9) != 0 ||
+      if (v9 != *v16 || memcmp_alt1((__int64)(v16 + 1), (__int64)v8, v9) != 0 ||
           (v17 = v12 - v5 - 24, v18 = v17 >> 4,
            ((v17 >> 4) & 0x80000000) != 0)) {
         while (1) {
@@ -123,7 +125,7 @@ __int64 SkeletalAnimObj_5f1520(__int64 a1, __int64 a2)
   }
   *(_WORD*)(a1 + 96) |= 1u;
   v20 = *(_DWORD*)(a1 + 60);
-  v21 = v20 >= 1 && v20 <= *(_DWORD*)(a1 + 56);
+  v21 = v20 >= 1 && v20 <= (signed __int32)*(_DWORD*)(a1 + 56);
   *(_DWORD*)(a1 + 64) = 2139095040;
   if (v21) {
     v22 = 0;

@@ -168,6 +168,11 @@ __n128 cmdbtl_party_AddPrivateSkill(int a1, char* a2);
 __attribute__((swiftcall)) void cmdbtl_party_GetPosition(PSEUDO_X8 x8_, int a1);
 __n128 cmdbtl_party_SetPosition(int a1, _DWORD* a2);
 __n128 cmdbtl_party_PlayVoiceDirectLabel(int a1, __int64 a2);
+_QWORD* CmdbtlPartyNatives_eb7a80_alt1(_QWORD* result) __asm__(
+    "CmdbtlPartyNatives_eb7a80");
+__int64 GameRoutine_ebabe0_alt1(__int64 result, _QWORD*, unsigned __int64,
+                                __int64,
+                                signed __int64) __asm__("GameRoutine_ebabe0");
 
 bool CmdbtlPartyNatives_e73070(_QWORD* a1, __int64* a2)
 {
@@ -5130,30 +5135,30 @@ __int64 CmdbtlPartyNatives_eb7a80(__int64 result)
 
 __int64 CmdbtlPartyNatives_eb8c40(__int64 a1)
 {
-  __int64 v1;
-  __int64 v2;
+  char* v1;
+  char* v2;
   unsigned __int64 v4;
   __int64 v5;
   __int64 v6;
-  unsigned __int64 v7;
+  signed __int64 v7;
   bool v8;
   __int64 v10;
   __int64 v11;
 
-  v1 = *(_QWORD*)(a1 + 72);
-  v2 = *(_QWORD*)(a1 + 80);
+  v1 = *(char**)(a1 + 72);
+  v2 = *(char**)(a1 + 80);
   if (v1 != v2) {
     do {
-      CmdbtlPartyNatives_eb7a80(v1);
+      CmdbtlPartyNatives_eb7a80_alt1(v1);
       v1 += 88;
     } while (v1 != v2);
-    v1 = *(_QWORD*)(a1 + 72);
-    v2 = *(_QWORD*)(a1 + 80);
+    v1 = *(char**)(a1 + 72);
+    v2 = *(char**)(a1 + 80);
   }
   if (v2 - v1 < 1) {
     v7 = 0;
-    return GameRoutine_ebabe0(v1, v2, 0x2E8BA2E8BA2E8BA3LL * ((v2 - v1) >> 3),
-                              0, v7);
+    return GameRoutine_ebabe0_alt1(
+        (__int64)v1, v2, 0x2E8BA2E8BA2E8BA3LL * ((v2 - v1) >> 3), 0, v7);
   }
   else {
     v4 = 0x2E8BA2E8BA2E8BA3LL * ((v2 - v1) >> 3);
@@ -5167,12 +5172,13 @@ __int64 CmdbtlPartyNatives_eb8c40(__int64 a1)
       v8 = v4 > 1;
       v4 >>= 1;
       if (!v8) {
-        return GameRoutine_ebabe0(
-            v1, v2, 0x2E8BA2E8BA2E8BA3LL * ((v2 - v1) >> 3), 0, v7);
+        return GameRoutine_ebabe0_alt1(
+            (__int64)v1, v2, 0x2E8BA2E8BA2E8BA3LL * ((v2 - v1) >> 3), 0, v7);
       }
     }
     v10 = v6;
-    GameRoutine_ebabe0(v1, v2, 0x2E8BA2E8BA2E8BA3LL * ((v2 - v1) >> 3), v6, v4);
+    GameRoutine_ebabe0_alt1((__int64)v1, v2,
+                            0x2E8BA2E8BA2E8BA3LL * ((v2 - v1) >> 3), v6, v4);
     v11 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v11 = 56;

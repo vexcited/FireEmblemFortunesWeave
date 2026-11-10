@@ -3082,7 +3082,8 @@ bool CudaDriverHr_78750(__int64 a1)
 {
   int v3;
 
-  if ((*(unsigned int (**)(void))(*(_QWORD*)(a1 + 64) + 21288LL))() != 0) {
+  if ((*(unsigned int (**)(void*))(*(_QWORD*)(a1 + 64) + 21288LL))((void*)a1) !=
+      0) {
     return true;
   }
   if ((unsigned __int8)CudaDriverRoutine_9ad90(*(_QWORD*)(a1 + 64)) == 0) {
@@ -3097,7 +3098,8 @@ bool CudaDriverHr_787e0(__int64 a1)
 {
   int v3;
 
-  if ((*(unsigned int (**)(void))(*(_QWORD*)(a1 + 64) + 21288LL))() != 0) {
+  if ((*(unsigned int (**)(void*))(*(_QWORD*)(a1 + 64) + 21288LL))((void*)a1) !=
+      0) {
     return true;
   }
   if ((unsigned __int8)CudaDriverRoutine_9ad90(*(_QWORD*)(a1 + 64)) == 0) {

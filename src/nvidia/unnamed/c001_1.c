@@ -3184,7 +3184,8 @@ LABEL_3:
         (unsigned __int8)CudaDriverRoutine_944a0(v3 + 36) != 0) {
       for (i = v3[28]; i != 0; i = *(_QWORD*)(i + 1144)) {
         if (*(_QWORD*)(i + 944) != 0) {
-          v6 = (*(__int64 (**)(void))(*(_QWORD*)(a1 + 64) + 19400LL))();
+          v6 = (*(__int64 (**)(void*))(*(_QWORD*)(a1 + 64) + 19400LL))(
+              *(void**)(a1 + 64));
           if (v6 > v4) {
             v4 = v6;
           }
@@ -4777,7 +4778,7 @@ __int64 CudaDriverHr_985e0(__int64 a1, int a2, int a3)
   __int64 result;
 
   v5 = a1;
-  result = (*(__int64 (**)(void))(*(_QWORD*)(a1 + 64) + 19480LL))();
+  result = (*(__int64 (**)(void*))(*(_QWORD*)(a1 + 64) + 19480LL))((void*)a1);
   if ((_DWORD)result == 0) {
     if (*(_DWORD*)v5 == 1) {
       v5 = *(_QWORD*)(v5 + 168);

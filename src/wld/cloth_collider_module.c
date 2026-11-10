@@ -27,6 +27,11 @@ extern __int128 GameData_21a6160;
 extern __int128 GameData_21a6180;
 extern __int128 GameData_21a61a0;
 _QWORD* wld_ClothColliderModule_ClothColliderModule_lambda0_Invoke(__int64 a1);
+__int64 Model_a66980_alt1(__int64, __int64, int) __asm__("Model_a66980");
+__int64 wld_Crc32_alt1(int, unsigned __int8*,
+                       unsigned __int64) __asm__("wld_Crc32");
+int __cxa_guard_acquire_alt1(__int64) __asm__("__cxa_guard_acquire");
+void __cxa_guard_release_alt1(__int64) __asm__("__cxa_guard_release");
 
 __int64 wld_ClothColliderModule_ClothColliderModule(__int64 a1, __int64 a2)
 {
@@ -38,8 +43,10 @@ __int64 wld_ClothColliderModule_ClothColliderModule(__int64 a1, __int64 a2)
   __int64 v8;
   int v9;
   __int64 v10;
-  _QWORD v11[4];
-  _QWORD* v12;
+  struct {
+    _QWORD v11[4];
+    _QWORD* v12;
+  } v11_;
 
   *(_BYTE*)(a1 + 16) = 0;
   *(_QWORD*)(a1 + 24) = 0;
@@ -68,14 +75,11 @@ __int64 wld_ClothColliderModule_ClothColliderModule(__int64 a1, __int64 a2)
                             memory_order_acquire) &
        1) == 0) {
     v10 = a2;
-    v9 = __cxa_guard_acquire(&GameData_21f4d48);
+    v9 = __cxa_guard_acquire_alt1((__int64)&GameData_21f4d48);
     a2 = v10;
     if (v9 != 0) {
-      GameData_21f4d44 =
-          (unsigned int)(*(struct PseudoSret*)(&GameData_21f4d44) =
-                             wld_Crc32(0, "ModelModule", 11),
-                         (void*)(&GameData_21f4d44));
-      __cxa_guard_release(&GameData_21f4d48);
+      GameData_21f4d44 = wld_Crc32_alt1(0, "ModelModule", 0xBu);
+      __cxa_guard_release_alt1((__int64)&GameData_21f4d48);
       a2 = v10;
     }
   }
@@ -87,21 +91,21 @@ __int64 wld_ClothColliderModule_ClothColliderModule(__int64 a1, __int64 a2)
     v3 -= 16;
   } while (v5 != GameData_21f4d44);
   v6 = *(_QWORD*)(*(_QWORD*)(v3 + 8) + 24LL);
-  v12 = v11;
-  v11[0] = GameData_1fbfc70;
-  v11[1] = a1;
-  *(_DWORD*)(a1 + 168) = Model_a66980(v6, v11, 1);
-  result = (__int64)v12;
-  if (v12 == v11) {
+  v11_.v12 = v11_.v11;
+  v11_.v11[0] = GameData_1fbfc70;
+  v11_.v11[1] = a1;
+  *(_DWORD*)(a1 + 168) = Model_a66980_alt1(v6, (__int64)v11_.v11, 1);
+  result = (__int64)v11_.v12;
+  if (v11_.v12 == v11_.v11) {
     v8 = 32;
   }
   else {
-    if (v12 == nullptr) {
+    if (v11_.v12 == nullptr) {
       return result;
     }
     v8 = 40;
   }
-  return (*(__int64 (**)(__int64))(*v12 + v8))((__int64)v12);
+  return (*(__int64 (**)(__int64))(*v11_.v12 + v8))((__int64)v11_.v12);
 }
 
 _QWORD* wld_ClothColliderModule_ClothColliderModule_lambda0_Invoke(__int64 a1)

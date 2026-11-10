@@ -90,6 +90,9 @@ _QWORD* ScheduleNatives_11c05d0(char a1, __int64 a2, char a3, char a4,
                                 __int64 a5);
 _QWORD* ScheduleNatives_11c0b80(__int64 a1, __int64 a2, char a3, char a4,
                                 __int64 a5);
+__attribute__((swiftcall)) void Dir_70ea50(PSEUDO_X8, __int16* result,
+                                           __int16*);
+__int16* Dir_70dd80_alt1(__int16* result, __int16*) __asm__("Dir_70dd80");
 
 __int64 ScheduleNatives_869280(__int64 result, __int16* a2)
 {
@@ -215,10 +218,12 @@ __int64 ScheduleNatives_869ec0()
   __int16 v8;
   __int16 v9;
   __int16 v10;
-  __int16 v12;
-  __int16 v13;
-  __int16 v14;
-  _BYTE v15[6];
+  struct {
+    __int16 v12;
+    __int16 v13;
+    __int16 v14;
+    _BYTE v15[6];
+  } v12_;
 
   v0 = game_gmap_GmapClock_instance_;
   if (game_gmap_GmapClock_instance_ == 0) {
@@ -229,18 +234,19 @@ __int64 ScheduleNatives_869ec0()
   v3 = *(__int16*)(game_gmap_GmapClock_instance_ + 12);
   if (v2 * v1 * v3 != 0) {
     v4 = *(_WORD*)(game_gmap_GmapClock_instance_ + 14);
-    *(_DWORD*)&v15[2] = 0;
-    v12 = v1;
-    v13 = v2;
-    v14 = v3;
-    *(_DWORD*)v15 = 6 * game_script_hub_schedule_kHourCycles[v4 % 24] % 0x18u;
-    Dir_70dd80(&v12, game_gmap_GmapClock_instance_ + 20);
-    v5 = v12;
-    v6 = v13;
-    v7 = v14;
-    v8 = *(_WORD*)v15;
-    v9 = *(_WORD*)&v15[2];
-    v10 = *(_WORD*)&v15[4];
+    *(_DWORD*)&v12_.v15[2] = 0;
+    v12_.v12 = v1;
+    v12_.v13 = v2;
+    v12_.v14 = v3;
+    *(_DWORD*)v12_.v15 =
+        6 * game_script_hub_schedule_kHourCycles[v4 % 24] % 0x18u;
+    Dir_70dd80_alt1(&v12_.v12, (__int16*)(game_gmap_GmapClock_instance_ + 20));
+    v5 = v12_.v12;
+    v6 = v12_.v13;
+    v7 = v12_.v14;
+    v8 = *(_WORD*)v12_.v15;
+    v9 = *(_WORD*)&v12_.v15[2];
+    v10 = *(_WORD*)&v12_.v15[4];
   }
   else {
     v5 = game_gmap_GmapClock_kDefaultTime;
@@ -250,18 +256,20 @@ __int64 ScheduleNatives_869ec0()
     v9 = GameData_21caa04;
     v10 = HIWORD(GameData_21caa04);
   }
-  *(struct PseudoSret*)(&v12) = GameRoutine_70ea50(v0 + 8, v0 + 20);
+  Dir_70ea50((void*)((__int64)&v12_.v12), (__int16*)(v0 + 8),
+             (__int16*)(v0 + 20));
   if (((__int64)v6 << 24) + ((__int64)v5 << 32) + ((__int64)v7 << 18) +
           ((__int64)v8 << 12) + ((__int64)v9 << 6) + v10 >=
-      (unsigned __int64)(((__int64)v13 << 24) + ((__int64)v12 << 32) +
-                         ((__int64)v14 << 18) +
-                         ((__int64)*(__int16*)v15 << 12) +
-                         ((__int64)*(__int16*)&v15[2] << 6) +
-                         *(__int16*)&v15[4])) {
+      (unsigned __int64)(((__int64)v12_.v13 << 24) + ((__int64)v12_.v12 << 32) +
+                         ((__int64)v12_.v14 << 18) +
+                         ((__int64)*(__int16*)v12_.v15 << 12) +
+                         ((__int64)*(__int16*)&v12_.v15[2] << 6) +
+                         *(__int16*)&v12_.v15[4])) {
     return 0;
   }
-  *(struct PseudoSret*)(&v12) = GameRoutine_70ea50(v0 + 8, v0 + 20);
-  ScheduleNatives_869280(v0, &v12);
+  Dir_70ea50((void*)((__int64)&v12_.v12), (__int16*)(v0 + 8),
+             (__int16*)(v0 + 20));
+  ScheduleNatives_869280(v0, &v12_.v12);
   return 1;
 }
 

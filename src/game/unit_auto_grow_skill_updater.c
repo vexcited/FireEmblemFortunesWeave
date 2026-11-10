@@ -12,16 +12,26 @@ __int64 nn_mem_StandardAllocator_Free(_QWORD);
 extern __int64 (*GameData_2022c10[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64* GameData_212c880[5];
-__int64 game_UnitAutoGrowSkillUpdater_Update(__int64* a1);
+__int64 game_UnitAutoGrowSkillUpdater_Update_alt1(__int64* a1) __asm__(
+    "game_UnitAutoGrowSkillUpdater_Update");
 __int64 game_UnitAutoGrowSkillUpdater_Update_lambda0_Invoke(__int64 result,
                                                             __int64 a2);
+__int64 UnitSkillList_84cf20_alt1(__int64, __int64,
+                                  char) __asm__("UnitSkillList_84cf20");
+__int64
+UnitSkillList_84d980_alt1(__int64*,
+                          unsigned int*) __asm__("UnitSkillList_84d980");
+__int64 game_67ef00(__int64 result, __int64, __int64);
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void game_UnitAutoGrowSkillUpdater_Update(__int64* a1);
 
-__int64 game_UnitAutoGrowSkillUpdater_Update(__int64* a1)
+void game_UnitAutoGrowSkillUpdater_Update(__int64* a1)
 {
   __int64 v1;
-  __int64 result;
-  __int64 v4;
-  __int64 v5;
+  unsigned int* v3;
+  unsigned int* v4;
+  char v5;
   char v6;
   __int64 v7;
   __int64 v8;
@@ -55,59 +65,63 @@ __int64 game_UnitAutoGrowSkillUpdater_Update(__int64* a1)
   __int64 v36;
   __int64 v37;
   __int64 v38;
-  _QWORD v39[4];
-  _QWORD* v40;
-  __int64 v41;
-  __int64 v42;
-  __int64 v43;
-  int v44;
-  __int64 v45;
-  __int64 v46;
-  __int64 v47;
-  __int64 v48;
-  __int64 v49;
-  __int64 v50;
-  __int64 v51;
-  __int64 v52;
+  struct {
+    _QWORD v39[4];
+    _QWORD* v40;
+  } v39_;
+  struct {
+    __int64 v41;
+    __int64 v42;
+    __int64 v43;
+    int v44;
+    char gap76_[4];
+    __int64 v45;
+    __int64 v46;
+    __int64 v47;
+    __int64 v48;
+    __int64 v49;
+    __int64 v50;
+    __int64 v51;
+    __int64 v52;
+  } v41_;
 
   v1 = *a1;
-  v42 = 0;
-  v43 = 0;
-  v41 = 0;
-  v45 = 0;
-  v46 = 0;
-  v47 = 0;
-  v48 = 0;
-  v49 = 0;
-  v50 = 0;
-  v44 = 0;
-  v51 = 0;
-  v52 = 0;
-  result = UnitSkillList_84cf20(&v41, v1 + 1072, 1);
-  v4 = a1[5];
-  v5 = a1[6];
-  if (v4 == v5) {
-    v7 = v45;
-    v8 = v46;
+  v41_.v42 = 0;
+  v41_.v43 = 0;
+  v41_.v41 = 0;
+  v41_.v45 = 0;
+  v41_.v46 = 0;
+  v41_.v47 = 0;
+  v41_.v48 = 0;
+  v41_.v49 = 0;
+  v41_.v50 = 0;
+  v41_.v44 = 0;
+  v41_.v51 = 0;
+  v41_.v52 = 0;
+  UnitSkillList_84cf20_alt1((__int64)&v41_.v41, v1 + 1072, 1);
+  v3 = (unsigned int*)a1[5];
+  v4 = (unsigned int*)a1[6];
+  if (v3 == v4) {
+    v7 = v41_.v45;
+    v8 = v41_.v46;
   }
   else {
-    v6 = 0;
+    v5 = 0;
     do {
-      result = UnitSkillList_84d980(&v41, v4);
-      v4 += 4;
-      v6 |= result;
-    } while (v4 != v5);
-    v7 = v45;
-    v8 = v46;
-    if ((v6 & 1) != 0) {
-      v51 = 0;
-      v52 = 0;
-      if ((int)((unsigned __int64)(v46 - v45) >> 2) >= 1) {
-        v9 = (int)((v46 - v45) >> 2);
-        v10 = v9 <= 1 ? 1LL : (int)((v46 - v45) >> 2);
+      v6 = UnitSkillList_84d980_alt1(&v41_.v41, v3++);
+      v5 |= v6;
+    } while (v3 != v4);
+    v7 = v41_.v45;
+    v8 = v41_.v46;
+    if ((v5 & 1) != 0) {
+      v41_.v51 = 0;
+      v41_.v52 = 0;
+      if ((int)((unsigned __int64)(v41_.v46 - v41_.v45) >> 2) >= 1) {
+        v9 = (int)((v41_.v46 - v41_.v45) >> 2);
+        v10 = v9 <= 1 ? 1LL : (int)((v41_.v46 - v41_.v45) >> 2);
         v11 = *GameData_212c880[0];
         if (v9 >= 2) {
-          v17 = (int*)(v45 + 4);
+          v17 = (int*)(v41_.v45 + 4);
           v12 = 0;
           v13 = 0;
           v14 = 0;
@@ -118,27 +132,26 @@ __int64 game_UnitAutoGrowSkillUpdater_Update(__int64* a1)
             v18 = *(_QWORD*)(*(_QWORD*)(v11 + 64) + 8LL * (*(v17 - 1) & 0xFFF));
             v19 = v15 | (1 << *(_BYTE*)(v18 + 104));
             v20 = *(_BYTE*)(v18 + 250);
-            LOWORD(v51) = v19;
+            LOWORD(v41_.v51) = v19;
             v21 = (1LL << v20) | v14;
             v22 = *(_BYTE*)(v18 + 115);
-            v52 = v21;
-            HIDWORD(v51) = (1 << v22) | v13;
+            v41_.v52 = v21;
+            HIDWORD(v41_.v51) = (1 << v22) | v13;
             v23 = *(unsigned __int16*)(*(_QWORD*)(v18 + 24) + 1064LL) | v12;
-            WORD1(v51) = v23;
+            WORD1(v41_.v51) = v23;
             v24 = *v17;
             v17 += 2;
             v25 = *(_QWORD*)(*(_QWORD*)(v11 + 64) + 8LL * (v24 & 0xFFF));
             v15 = v19 | (1 << *(_BYTE*)(v25 + 104));
             v26 = *(_BYTE*)(v25 + 250);
-            LOWORD(v51) = v15;
+            LOWORD(v41_.v51) = v15;
             v14 = (1LL << v26) | v21;
             v27 = *(_BYTE*)(v25 + 115);
-            v52 = v14;
-            result = (unsigned int)(1 << v27);
-            v13 = result | HIDWORD(v51);
-            HIDWORD(v51) |= result;
+            v41_.v52 = v14;
+            v13 = (1 << v27) | HIDWORD(v41_.v51);
+            HIDWORD(v41_.v51) = v13;
             v12 = *(unsigned __int16*)(*(_QWORD*)(v25 + 24) + 1064LL) | v23;
-            WORD1(v51) = v12;
+            WORD1(v41_.v51) = v12;
           } while ((v10 & 0x7FFFFFFFFFFFFFFELL) != v16);
         }
         else {
@@ -150,64 +163,62 @@ __int64 game_UnitAutoGrowSkillUpdater_Update(__int64* a1)
         }
         if ((v10 & 1) != 0) {
           v28 = *(_QWORD*)(*(_QWORD*)(v11 + 64) +
-                           8LL * (*(_DWORD*)(v45 + 4 * v16) & 0xFFF));
-          LOWORD(v51) = v15 | (1 << *(_BYTE*)(v28 + 104));
-          v52 = (1LL << *(_BYTE*)(v28 + 250)) | v14;
-          HIDWORD(v51) = (1 << *(_BYTE*)(v28 + 115)) | v13;
-          WORD1(v51) = *(_WORD*)(*(_QWORD*)(v28 + 24) + 1064LL) | v12;
+                           8LL * (*(_DWORD*)(v41_.v45 + 4 * v16) & 0xFFF));
+          LOWORD(v41_.v51) = v15 | (1 << *(_BYTE*)(v28 + 104));
+          v41_.v52 = (1LL << *(_BYTE*)(v28 + 250)) | v14;
+          HIDWORD(v41_.v51) = (1 << *(_BYTE*)(v28 + 115)) | v13;
+          WORD1(v41_.v51) = *(_WORD*)(*(_QWORD*)(v28 + 24) + 1064LL) | v12;
         }
       }
     }
   }
   for (; v7 != v8; v7 += 4) {
     v30 = *a1;
-    v39[0] = GameData_2022c10;
-    v39[1] = v7;
-    v39[2] = a1;
+    v39_.v39[0] = GameData_2022c10;
+    v39_.v39[1] = v7;
+    v39_.v39[2] = a1;
     v31 = *(_QWORD*)(v30 + 392);
-    v40 = v39;
-    GameRoutine_67ef00(v31, v30, v39);
-    result = (__int64)v40;
-    if (v40 == v39) {
+    v39_.v40 = v39_.v39;
+    game_67ef00(v31, v30, (__int64)v39_.v39);
+    if (v39_.v40 == v39_.v39) {
       v29 = 32;
     }
     else {
-      if (v40 == nullptr) {
+      if (v39_.v40 == nullptr) {
         continue;
       }
       v29 = 40;
     }
-    result = (*(__int64 (**)(void*))(*v40 + v29))(v40);
+    (*(void (**)(__int64))(*v39_.v40 + v29))((__int64)v39_.v40);
   }
   v32 = (__int64*)fw_memory_g_heap_manager_ptr;
-  if (v48 != 0) {
+  if (v41_.v48 != 0) {
     v33 = *(_QWORD*)fw_memory_g_heap_manager_ptr;
-    v49 = v48;
+    v41_.v49 = v41_.v48;
     v34 = 128;
     if (*(_QWORD*)(v33 + 200) == 0) {
       v34 = 56;
     }
-    result = nn_mem_StandardAllocator_Free(v33 + v34);
+    nn_mem_StandardAllocator_Free_alt1(v33 + v34, v41_.v48);
   }
-  if (v45 != 0) {
+  if (v41_.v45 != 0) {
     v35 = *v32;
-    v46 = v45;
+    v41_.v46 = v41_.v45;
     v36 = 128;
     if (*(_QWORD*)(v35 + 200) == 0) {
       v36 = 56;
     }
-    result = nn_mem_StandardAllocator_Free(v35 + v36);
+    nn_mem_StandardAllocator_Free_alt1(v35 + v36, v41_.v45);
   }
-  if (v41 != 0) {
+  if (v41_.v41 != 0) {
     v37 = *v32;
-    v42 = v41;
+    v41_.v42 = v41_.v41;
     v38 = 128;
     if (*(_QWORD*)(v37 + 200) == 0) {
       v38 = 56;
     }
-    return nn_mem_StandardAllocator_Free(v37 + v38);
+    nn_mem_StandardAllocator_Free_alt1(v37 + v38, v41_.v41);
   }
-  return result;
 }
 
 __int64 game_UnitAutoGrowSkillUpdater_Update_lambda0_Invoke(__int64 result,

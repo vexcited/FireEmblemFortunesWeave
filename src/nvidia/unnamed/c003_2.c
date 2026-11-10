@@ -9212,7 +9212,7 @@ __int64 CudaDriverHr_1d3e30(__int64 a1, unsigned int a2)
   if (a2 != 0) {
     return CudaDriverRoutine_4eb0(a1, 4300304);
   }
-  result = (*(__int64 (**)(void))(*(_QWORD*)(a1 + 64) + 21352LL))();
+  result = (*(__int64 (**)(void*))(*(_QWORD*)(a1 + 64) + 21352LL))((void*)a1);
   if ((_DWORD)result == 801) {
     v5 = CudaDriverRoutine_98340(a1);
     return CudaDriverRoutine_110820(v5, 1, 1, &v6, &v8, &v7, 0);
@@ -9228,7 +9228,7 @@ __int64 CudaDriverHr_1d3ed0(__int64 a1)
   unsigned int v5;
   int v6;
 
-  result = (*(__int64 (**)(void))(*(_QWORD*)(a1 + 64) + 21360LL))();
+  result = (*(__int64 (**)(void*))(*(_QWORD*)(a1 + 64) + 21360LL))((void*)a1);
   if ((_DWORD)result == 801) {
     v6 = 4300304;
     v5 = 0x80000000;
@@ -9398,7 +9398,7 @@ __int64 CudaDriverHr_1d4180(__int64 a1, __int64 a2, __int64 a3, char* a4)
   int v23;
   int v24;
 
-  result = (*(__int64 (**)(void))(*(_QWORD*)(a1 + 64) + 21368LL))();
+  result = (*(__int64 (**)(void*))(*(_QWORD*)(a1 + 64) + 21368LL))((void*)a1);
   if ((_DWORD)result == 0) {
   LABEL_11:
     v12 = *(unsigned int*)(*(_QWORD*)(a1 + 64) + 3732LL);
@@ -9521,7 +9521,7 @@ __int64 CudaDriverHr_1d4620(__int64 a1)
   _BYTE v10[4];
   int v11;
 
-  result = (*(__int64 (**)(void))(*(_QWORD*)(a1 + 64) + 21392LL))();
+  result = (*(__int64 (**)(void*))(*(_QWORD*)(a1 + 64) + 21392LL))((void*)a1);
   if ((_DWORD)result == 801) {
     if (*(_DWORD*)(*(_QWORD*)(a1 + 64) + 3732LL) != 0) {
       v3 = 0;
@@ -9567,7 +9567,7 @@ __int64 CudaDriverHr_1d4740(__int64 a1, int a2)
   int v8;
   int v9;
 
-  result = (*(__int64 (**)(void))(*(_QWORD*)(a1 + 64) + 21344LL))();
+  result = (*(__int64 (**)(void*))(*(_QWORD*)(a1 + 64) + 21344LL))((void*)a1);
   if ((_DWORD)result == 801) {
     if (a2 == 1) {
       v5 = 0x10000;

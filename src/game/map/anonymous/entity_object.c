@@ -108,6 +108,11 @@ __int64 EntityObject_816d70(__int64 a1);
 __int64* EntityObject_817440(__int64 a1);
 __int64* EntityObject_817560(__int64 a1);
 void EntityObject_ProcState_Unknown2(__int64 a1);
+__int64 GameRoutine_f09600_alt1(__int64) __asm__("GameRoutine_f09600");
+int* GameRoutine_74df60_alt1(int* result,
+                             __int64) __asm__("GameRoutine_74df60");
+void __attribute__((noreturn))
+GameRoutine_60a310_alt1() __asm__("GameRoutine_60a310");
 
 __int64 EntityObject_Unknown24(__int64 a1, __int64 a2)
 {
@@ -330,10 +335,13 @@ __int64 EntityObject_8164a0(__int64 a1, unsigned __int8 a2, char a3)
   bool v27;
   int v28;
   int v29;
-  __int64 (**v30)();
-  __int64 v31;
-  int* v32;
-  __int64 (***v33)();
+  struct {
+    __int64 (**v30)();
+    __int64 v31;
+    int* v32;
+    char gap24_[8];
+    __int64 (***v33)();
+  } v30_;
   int v34;
   int v35;
 
@@ -373,15 +381,15 @@ __int64 EntityObject_8164a0(__int64 a1, unsigned __int8 a2, char a3)
       goto LABEL_24;
     }
   }
-  result = GameRoutine_816820(&v30, v12);
-  v13 = v31;
-  if (v31 != 0) {
-    v14 = std___1___shared_weak_count_lock(v31);
+  result = (__int64)EntityObject_816820(&v30_.v30, v12);
+  v13 = v30_.v31;
+  if (v30_.v31 != 0) {
+    v14 = std___1___shared_weak_count_lock(v30_.v31);
     if (v14 == 0) {
       v17 = v13;
       goto LABEL_23;
     }
-    v15 = v30;
+    v15 = v30_.v30;
     v16 = v14;
     result = std___1___shared_weak_count___release_weak(v13);
     if (v15 != nullptr) {
@@ -395,7 +403,6 @@ __int64 EntityObject_8164a0(__int64 a1, unsigned __int8 a2, char a3)
       result = std___1___shared_weak_count___release_weak(v17);
     }
   }
-
 LABEL_24:
   v18 = GameData_21ca2e8;
   if (GameData_21ca2e8 == 0) {
@@ -406,17 +413,17 @@ LABEL_24:
   if (v19 == 0) {
     (**(void (***)(__int64))(v18 + 61616))(v18 + 61616);
   }
-  result = (__int64)&v30;
-  v30 = GameData_1f9dd30;
-  v31 = v18;
+  result = (__int64)&v30_.v30;
+  v30_.v30 = GameData_1f9dd30;
+  v30_.v31 = v18;
   v20 = *(__int16*)(a1 + 106);
-  v33 = &v30;
+  v30_.v33 = &v30_.v30;
   if (v20 < 0) {
     goto LABEL_31;
   }
   v21 = *(__int16*)(a1 + 108);
   if (v21 < 0 || (v22 = *(__int16*)(a1 + 112), v21 > v22)) {
-    result = (__int64)&v30;
+    result = (__int64)&v30_.v30;
   LABEL_31:
     v23 = 32;
   LABEL_32:
@@ -431,10 +438,11 @@ LABEL_24:
       do {
         v34 = v21;
         v35 = v28;
-        if (v33 == nullptr) {
-          GameRoutine_60a310(0, v12);
+        if (v30_.v33 == nullptr) {
+          GameRoutine_60a310_alt1();
         }
-        ((void (*)(__int64 (***)(), int*, int*))(*v33)[6])(v33, &v35, &v34);
+        ((void (*)(__int64 (***)(void), int*, int*))(*v30_.v33)[6])(v30_.v33,
+                                                                    &v35, &v34);
         v27 = v28++ < *(__int16*)(a1 + 110);
       } while (v27);
       v26 = *(_WORD*)(a1 + 110);
@@ -442,15 +450,14 @@ LABEL_24:
     }
     v27 = v21++ < (__int16)v22;
   } while (v27);
-  result = (__int64)v33;
-  if (v33 == &v30) {
+  result = (__int64)v30_.v33;
+  if (v30_.v33 == &v30_.v30) {
     goto LABEL_31;
   }
-  if (v33 != nullptr) {
+  if (v30_.v33 != nullptr) {
     v23 = 40;
     goto LABEL_32;
   }
-
 LABEL_33:
   v24 = *(_DWORD*)(v18 + 61624) - 1;
   *(_DWORD*)(v18 + 61624) = v24;
@@ -459,23 +466,22 @@ LABEL_33:
   }
   (*(void (**)(__int64))(*(_QWORD*)(v18 + 61616) + 8LL))(v18 + 61616);
   LOBYTE(v35) = 0;
-  v30 = GameData_1f9a470;
-  v31 = v18;
-  v33 = &v30;
-  v32 = &v35;
-  GameRoutine_74df60(v18 + 61472, &v30);
-  result = (__int64)v33;
-  if (v33 == &v30) {
+  v30_.v30 = GameData_1f9a470;
+  v30_.v31 = v18;
+  v30_.v33 = &v30_.v30;
+  v30_.v32 = &v35;
+  GameRoutine_74df60_alt1((int*)(v18 + 61472), (__int64)&v30_.v30);
+  result = (__int64)v30_.v33;
+  if (v30_.v33 == &v30_.v30) {
     v25 = 4;
   }
   else {
-    if (v33 == nullptr) {
+    if (v30_.v33 == nullptr) {
       goto LABEL_49;
     }
     v25 = 5;
   }
-  result = (*v33)[v25]();
-
+  result = ((__int64 (*)(__int64))(*v30_.v33)[v25])((__int64)v30_.v33);
 LABEL_49:
   *(_QWORD*)(v18 + 61472) = 0x3E8000003E8LL;
   *(_QWORD*)(v18 + 61480) = -1;
@@ -499,7 +505,7 @@ LABEL_49:
   if (v29 == 1) {
     result = GameData_21cd120;
     if (GameData_21cd120 != 0) {
-      return GameRoutine_f09600();
+      return GameRoutine_f09600_alt1(GameData_21cd120);
     }
   }
   return result;

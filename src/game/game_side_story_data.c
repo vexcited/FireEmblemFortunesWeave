@@ -166,8 +166,9 @@ __int64 GameSideStoryData_12b4f80(__int64 result, __int64* a2);
 __int64 GameSideStoryData_12b50c0(__int64 result, __int64* a2);
 __int64 GameSideStoryData_12b51c0(__int64 a1, __int64* a2);
 __int64 GameSideStoryData_12b5380(__int64 result, __int64* a2);
-__int64 GameSideStoryData_12b5480(__int64 result, __int64* a2, __int64 a3,
-                                  __int64 a4);
+__int64
+GameSideStoryData_12b5480_alt1(__int64 result, __int64* a2, __int64 a3,
+                               __int64 a4) __asm__("GameSideStoryData_12b5480");
 __int64 GameSideStoryData_12b56c0(_QWORD* a1, unsigned __int64** a2);
 __int64 GameSideStoryData_12b57b0(__int64 a1, __int64 a2);
 __int64 GameSideStoryData_12b5980(_QWORD* a1, __int64 a2,
@@ -227,6 +228,11 @@ __int64 memmove(_QWORD, _QWORD, _QWORD);
 __int64* GameSideStoryData_12b8520(__int64* result, __int64* a2, __int64* a3,
                                    __int64 a4, __int64 a5, __int64 a6,
                                    __int64 a7);
+__int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
+void GameRoutine_12b4c30_alt1(__int64*, _QWORD*) __asm__("GameRoutine_12b4c30");
+void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void GameSideStoryData_12b5480(__int64 a1, __int64* a2, __int64 a3, __int64 a4);
 
 __attribute__((swiftcall)) void GameSideStoryData_12b3ba0(PSEUDO_X8 x8_,
                                                           __int64 result)
@@ -1193,13 +1199,11 @@ __int64 GameSideStoryData_12b5380(__int64 result, __int64* a2)
   return result;
 }
 
-__int64 GameSideStoryData_12b5480(__int64 result, __int64* a2, __int64 a3,
-                                  __int64 a4)
+void GameSideStoryData_12b5480(__int64 a1, __int64* a2, __int64 a3, __int64 a4)
 {
-  _QWORD* v4;
-  __int64 v8;
+  __int64 v4;
   __int64 v9;
-  __int64 v10;
+  unsigned __int64 v10;
   __int64 v11;
   __int64 v12;
   __int64** v13;
@@ -1221,27 +1225,26 @@ __int64 GameSideStoryData_12b5480(__int64 result, __int64* a2, __int64 a3,
   int v30;
   char* v32;
 
-  v4 = (_QWORD*)*a2;
-  v8 = result;
+  v4 = *a2;
   if ((unsigned __int64)(a2[2] - *a2) <= 0x4F) {
     v9 = fw_memory_g_heap_manager_ptr;
-    v10 = a2[1] - (_QWORD)v4;
-    v11 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
-                                         80, 16, 0);
-    result = memcpy(v11, v4, v10);
+    v10 = a2[1] - v4;
+    v11 = fw_memory_HeapManager_Allocate_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr, 80, 16, 0);
+    memcpy_alt1(v11, v4, v10);
     *a2 = v11;
     a2[1] = v11 + v10;
     a2[2] = v11 + 80;
-    if (v4 != nullptr) {
+    if (v4 != 0) {
       v12 = 128;
       if (*(_QWORD*)(*(_QWORD*)v9 + 200LL) == 0) {
         v12 = 56;
       }
-      result = nn_mem_StandardAllocator_Free(*(_QWORD*)v9 + v12);
+      nn_mem_StandardAllocator_Free_alt2(*(_QWORD*)v9 + v12, v4);
     }
   }
-  v13 = *(__int64***)(v8 + 16);
-  v14 = *(__int64***)(v8 + 24);
+  v13 = *(__int64***)(a1 + 16);
+  v14 = *(__int64***)(a1 + 24);
   if (v13 != v14) {
     v15 = game_GameModeData_instance_;
     do {
@@ -1280,7 +1283,7 @@ __int64 GameSideStoryData_12b5480(__int64 result, __int64* a2, __int64 a3,
                   if (v28 <= v29) {
                     v30 = *(unsigned __int8*)(v24 - 1);
                     if (v28 != v29 || v30 <= *(__int16*)(a4 + 4)) {
-                      result = GameRoutine_12b4c30(a2, v13);
+                      GameRoutine_12b4c30_alt1(a2, v13);
                       v15 = game_GameModeData_instance_;
                     }
                   }
@@ -1322,7 +1325,6 @@ __int64 GameSideStoryData_12b5480(__int64 result, __int64* a2, __int64 a3,
       ++v13;
     } while (v13 != v14);
   }
-  return result;
 }
 
 __int64 GameSideStoryData_12b56c0(_QWORD* a1, unsigned __int64** a2)

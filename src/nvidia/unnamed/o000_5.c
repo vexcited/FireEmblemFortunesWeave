@@ -39,7 +39,8 @@ __int64 CudaDriverHr_10e6a0(__int64 a1, __int64 a2, __int64 a3)
     CudaDriverRoutine_10ef20(a1, a2);
   }
   if (v11[0] != 0) {
-    (*(void (**)(__int64))(*(_QWORD*)a1 + 21056LL))((__int64)a1);
+    (*(void (**)(__int64, __int64))(*(_QWORD*)a1 + 21056LL))(*(_QWORD*)a1,
+                                                             *(_QWORD*)a2);
   }
   return 0;
 }

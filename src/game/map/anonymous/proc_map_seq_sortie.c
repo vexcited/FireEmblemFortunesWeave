@@ -83,6 +83,11 @@ void snd_Fade_Fade_10c830(__int64, float);
 __int64 game_map_anonymous_ProcMapSeqSortie_PickCursorTick(
     __int64 a1, double a2, double a3, double a4, long double a5, long double a6,
     long double a7, long double a8, long double a9);
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
 
 __int64 game_map_anonymous_ProcMapSeqSortie_PickCursorTick(
     __int64 a1, double a2, double a3, double a4, long double a5, long double a6,
@@ -664,8 +669,8 @@ _QWORD* ProcMapSeqSortie_Unknown3(__int64 a1)
     v4 = (unsigned __int8)v1 | ((unsigned __int8)*(_DWORD*)(a1 + 220) << 8);
   }
   v5 = *(_QWORD*)GameData_212d020[0];
-  result = (_QWORD*)fw_memory_HeapManager_Allocate(fw_memory_g_heap_manager, 40,
-                                                   16, 0);
+  result = (_QWORD*)fw_memory_HeapManager_Allocate_alt1(
+      fw_memory_g_heap_manager, 40, 16, 0);
   result[2] = 0;
   result[4] = 0;
   *result = GameData_1ff1408;
@@ -677,7 +682,7 @@ _QWORD* ProcMapSeqSortie_Unknown3(__int64 a1)
   if (v7 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v7 + 8),
                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v7 + 16LL))(v7);
-    result = (_QWORD*)std___1___shared_weak_count___release_weak(v7);
+    result = (_QWORD*)std___1___shared_weak_count___release_weak_alt1(v7);
   }
   **(_QWORD**)(v5 + 112) = v2;
   v8 = *(_QWORD*)(v5 + 112);

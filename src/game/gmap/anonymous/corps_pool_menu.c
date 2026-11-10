@@ -84,6 +84,16 @@ extern __int64 (*GameData_20b6268[])();
 extern __int64 (*GameData_20b62e8[])();
 __n128 game_gmap_anonymous_CorpsPoolMenu_SortAndFilter(__int64 a1);
 __int64 CorpsPoolMenu_Unknown141(__int64 a1);
+__int64 CorpsManager_9726e0(__int64);
+__int64 Troop_133ed80(__int64 result, __int64);
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 game_GameVariableTable_Find_alt1(_QWORD*, unsigned __int64*) __asm__(
+    "game_GameVariableTable_Find");
+__int64 game_HashString_alt1(__int64 result) __asm__("game_HashString");
+void BasicMenuCursor_16e0c00_alt1(_QWORD*,
+                                  __int64) __asm__("BasicMenuCursor_16e0c00");
 
 __int64 CorpsPoolMenu_Destructor(__int64 a1)
 {
@@ -159,7 +169,7 @@ __int64 CorpsPoolMenu_Unknown128(_QWORD* a1)
   __int64 result;
   int* v3;
   int* v4;
-  _QWORD* v5;
+  __int64* v5;
   int v6;
   int v7;
   int v8;
@@ -173,46 +183,48 @@ __int64 CorpsPoolMenu_Unknown128(_QWORD* a1)
   _QWORD* v16;
   __int64 v17;
   __int64 v18;
-  _QWORD* v19;
+  unsigned __int64* v19;
   unsigned __int64 i;
   __int64 v21;
   __int64 v22;
   int v23;
   __int64 v24;
   int v25;
-  _QWORD* v26;
+  unsigned __int64* v26;
   __int64 v27;
-  __int64 v28;
-  int v29;
-  __int64 v30;
+  int v28;
+  __int64 v29;
+  int v30;
   int v31;
-  int v32;
-  __int64 v33;
-  int v34;
-  int* v35;
-  char v36;
-  __int64 v37;
-  void* v38;
-  _QWORD* v39;
-  int v40;
-  __int64 v41;
+  __int64 v32;
+  int v33;
+  int* v34;
+  char v35;
+  struct {
+    __int64 v36;
+    void* v37;
+    char gap48_[16];
+    unsigned __int64* v38;
+  } v36_;
+  int v39;
+  __int64 v40;
 
   result = __dynamic_cast(a1[132], GameData_21319e8[0], &GameData_20b3420, 0);
   v3 = (int*)a1[134];
   v4 = (int*)a1[135];
-  v41 = result;
+  v40 = result;
   if (v3 != v4) {
-    v5 = (_QWORD*)fw_memory_g_heap_manager_ptr;
+    v5 = (__int64*)fw_memory_g_heap_manager_ptr;
     v6 = *(_DWORD*)(result + 376);
-    v35 = v4;
-    v34 = v6;
+    v34 = v4;
+    v33 = v6;
     do {
       v7 = *v3;
       if (*v3 != v6) {
         if (v7 != -1) {
           v8 = 1;
-          v36 = 0;
-          v40 = 1;
+          v35 = 0;
+          v39 = 1;
           if ((v7 & 0x80000000) == 0) {
             v9 = *(_QWORD*)(*GameData_212c790 + 8);
             v10 = *(__int64**)(v9 + 8);
@@ -229,38 +241,40 @@ __int64 CorpsPoolMenu_Unknown128(_QWORD* a1)
                   goto LABEL_28;
                 }
               }
-              v26 = (_QWORD*)fw_memory_HeapManager_Allocate(*v5, 48, 16, 0);
-              v39 = v26;
-              *v26 = GameData_20b52f0;
-              v26[1] = &v41;
-              v26[2] = v3;
-              v26[3] = &v40;
-              v26[4] = &v36;
-              v26[5] = a1;
-              GameRoutine_133ed80(v12, &v37, v27);
-              if (v39 == &v37) {
-                v28 = 32;
+              v26 = (unsigned __int64*)fw_memory_HeapManager_Allocate_alt1(
+                  *v5, 48, 16, 0);
+              v36_.v38 = v26;
+              *v26 = (unsigned __int64)GameData_20b52f0;
+              v26[1] = (unsigned __int64)&v40;
+              v26[2] = (unsigned __int64)v3;
+              v26[3] = (unsigned __int64)&v39;
+              v26[4] = (unsigned __int64)&v35;
+              v26[5] = (unsigned __int64)a1;
+              Troop_133ed80(v12, (__int64)&v36_.v36);
+              if (v36_.v38 == (unsigned __int64*)&v36_.v36) {
+                v27 = 32;
               LABEL_25:
-                (*(void (**)(void*))(*v39 + v28))(v39);
+                (*(void (**)(__int64))(*v36_.v38 + v27))((__int64)v36_.v38);
               }
-              else if (v39 != nullptr) {
-                v28 = 40;
+              else if (v36_.v38 != nullptr) {
+                v27 = 40;
                 goto LABEL_25;
               }
-              v8 = v40;
+              v8 = v39;
             }
           }
         LABEL_28:
           while (2) {
-            v38 = &GameData_1ada5b4;
-            result = game_HashString(&GameData_1ada5b4);
-            v29 = game_GameModeData_instance_;
-            v37 = result;
+            v36_.v37 = &GameData_1ada5b4;
+            result = game_HashString_alt1((__int64)&GameData_1ada5b4);
+            v28 = game_GameModeData_instance_;
+            v36_.v36 = result;
             if (game_GameModeData_instance_ != 0) {
-              result = game_GameVariableTable_Find(
-                  *(_QWORD*)(game_GameModeData_instance_ + 48), &v37);
+              result = game_GameVariableTable_Find_alt1(
+                  *(_QWORD**)(game_GameModeData_instance_ + 48),
+                  (unsigned __int64*)&v36_.v36);
               if (result != 0) {
-                v29 = *(_DWORD*)(result + 32);
+                v28 = *(_DWORD*)(result + 32);
                 goto LABEL_31;
               }
               if (v8 > 0) {
@@ -269,42 +283,42 @@ __int64 CorpsPoolMenu_Unknown128(_QWORD* a1)
             }
             else {
             LABEL_31:
-              if (v8 > v29) {
+              if (v8 > v28) {
                 goto LABEL_3;
               }
             }
-            v30 = fw_memory_HeapManager_Allocate(*v5, 120, 16, 0);
-            v31 = *v3;
+            v29 = fw_memory_HeapManager_Allocate_alt1(*v5, 120, 16, 0);
+            v30 = *v3;
+            v31 = v39;
             v32 = v40;
-            v33 = v41;
-            *(_WORD*)(v30 + 16) = 0;
-            *(_DWORD*)(v30 + 40) = 0;
-            *(_QWORD*)(v30 + 64) = 0;
-            *(_QWORD*)(v30 + 72) = 0;
-            *(_QWORD*)(v30 + 48) = 0;
-            *(_QWORD*)(v30 + 56) = 0;
-            *(_WORD*)(v30 + 80) = 257;
-            *(_BYTE*)(v30 + 82) = 1;
-            *(_BYTE*)(v30 + 104) = 0;
-            *(_BYTE*)(v30 + 116) = 0;
-            *(_QWORD*)v30 = game_gmap_anonymous_CorpsMenuItem_vtable;
-            *(_QWORD*)(v30 + 8) = 0;
-            *(_DWORD*)(v30 + 108) = v31;
-            *(_DWORD*)(v30 + 112) = v32;
-            LOBYTE(v31) = v36;
-            *(_QWORD*)(v30 + 88) = v33;
-            *(_QWORD*)(v30 + 96) = 0;
-            if ((v31 & 1) == 0) {
-              *(_BYTE*)(v30 + 116) = 1;
-              v36 = 1;
+            *(_WORD*)(v29 + 16) = 0;
+            *(_DWORD*)(v29 + 40) = 0;
+            *(_QWORD*)(v29 + 64) = 0;
+            *(_QWORD*)(v29 + 72) = 0;
+            *(_QWORD*)(v29 + 48) = 0;
+            *(_QWORD*)(v29 + 56) = 0;
+            *(_WORD*)(v29 + 80) = 257;
+            *(_BYTE*)(v29 + 82) = 1;
+            *(_BYTE*)(v29 + 104) = 0;
+            *(_BYTE*)(v29 + 116) = 0;
+            *(_QWORD*)v29 = game_gmap_anonymous_CorpsMenuItem_vtable;
+            *(_QWORD*)(v29 + 8) = 0;
+            *(_DWORD*)(v29 + 108) = v30;
+            *(_DWORD*)(v29 + 112) = v31;
+            LOBYTE(v30) = v35;
+            *(_QWORD*)(v29 + 88) = v32;
+            *(_QWORD*)(v29 + 96) = 0;
+            if ((v30 & 1) == 0) {
+              *(_BYTE*)(v29 + 116) = 1;
+              v35 = 1;
             }
-            GameRoutine_16e0c00(a1, v30);
-            v8 = ++v40;
+            BasicMenuCursor_16e0c00_alt1(a1, v29);
+            v8 = ++v39;
             continue;
           }
         }
-        v14 = fw_memory_HeapManager_Allocate(*v5, 120, 16, 0);
-        v15 = v41;
+        v14 = fw_memory_HeapManager_Allocate_alt1(*v5, 120, 16, 0);
+        v15 = v40;
         v16 = (_QWORD*)v14;
         *(_WORD*)(v14 + 16) = 0;
         *(_DWORD*)(v14 + 40) = 0;
@@ -329,24 +343,26 @@ __int64 CorpsPoolMenu_Unknown128(_QWORD* a1)
         v18 = *v5;
         v16[1] = a1;
         a1[43] = v16;
-        v40 = 1;
-        v19 = (_QWORD*)fw_memory_HeapManager_Allocate(v18, 40, 16, 0);
-        v39 = v19;
-        *v19 = GameData_20b5010;
-        v19[1] = a1;
-        v19[2] = &v41;
-        v19[3] = v3;
-        v19[4] = &v40;
-        GameRoutine_9726e0(&v37);
-        (*(void (**)(_QWORD*))(*v19 + 40LL))(v19);
+        v39 = 1;
+        v19 = (unsigned __int64*)fw_memory_HeapManager_Allocate_alt1(v18, 40,
+                                                                     16, 0);
+        v36_.v38 = v19;
+        *v19 = (unsigned __int64)GameData_20b5010;
+        v19[1] = (unsigned __int64)a1;
+        v19[2] = (unsigned __int64)&v40;
+        v19[3] = (unsigned __int64)v3;
+        v19[4] = (unsigned __int64)&v39;
+        CorpsManager_9726e0((__int64)&v36_.v36);
+        (*(void (**)(unsigned __int64*))(*v19 + 40))(v19);
         for (i = 0;; ++i) {
-          v38 = &GameData_1ada5b4;
-          result = game_HashString(&GameData_1ada5b4);
+          v36_.v37 = &GameData_1ada5b4;
+          result = game_HashString_alt1((__int64)&GameData_1ada5b4);
           v21 = game_GameModeData_instance_;
-          v37 = result;
+          v36_.v36 = result;
           if (game_GameModeData_instance_ != 0) {
-            result = game_GameVariableTable_Find(
-                *(_QWORD*)(game_GameModeData_instance_ + 48), &v37);
+            result = game_GameVariableTable_Find_alt1(
+                *(_QWORD**)(game_GameModeData_instance_ + 48),
+                (unsigned __int64*)&v36_.v36);
             if (result != 0) {
               v21 = *(int*)(result + 32);
             }
@@ -357,10 +373,10 @@ __int64 CorpsPoolMenu_Unknown128(_QWORD* a1)
           if (((__int64)(a1[135] - a1[134]) >> 2) * v21 <= i) {
             break;
           }
-          v22 = fw_memory_HeapManager_Allocate(*v5, 120, 16, 0);
+          v22 = fw_memory_HeapManager_Allocate_alt1(*v5, 120, 16, 0);
           v23 = *v3;
-          v24 = v41;
-          v25 = v40;
+          v24 = v40;
+          v25 = v39;
           *(_WORD*)(v22 + 16) = 0;
           *(_DWORD*)(v22 + 40) = 0;
           *(_QWORD*)(v22 + 64) = 0;
@@ -377,12 +393,12 @@ __int64 CorpsPoolMenu_Unknown128(_QWORD* a1)
           *(_QWORD*)(v22 + 96) = 0;
           *(_DWORD*)(v22 + 108) = v23;
           *(_DWORD*)(v22 + 112) = v25;
-          GameRoutine_16e0c00(a1, v22);
-          ++v40;
+          BasicMenuCursor_16e0c00_alt1(a1, v22);
+          ++v39;
         }
       LABEL_3:
-        v4 = v35;
-        v6 = v34;
+        v4 = v34;
+        v6 = v33;
       }
       ++v3;
     } while (v3 != v4);

@@ -3,93 +3,52 @@
 #pragma GCC visibility push(hidden)
 
 extern __int64 (*GameData_20baba8[])();
-
 extern __int64 (*GameData_20bb018[])();
-
 extern __int64 (*GameData_20bb100[])();
-
 extern __int64 GameData_20c62a8;
-
 extern __int64 GameData_20c9670;
-
 extern __int64 GameData_212bf68;
-
 extern _UNKNOWN* GameData_212c730;
-
 extern __int64* GameData_212c880[5];
-
 extern __int64* GameData_212d670[3];
-
 extern __int64* GameData_212d678[2];
-
 extern __int64* GameData_212e008[9];
-
 extern __int64* GameData_212e0c8[6];
-
 extern __int64* GameData_21319f0[9];
-
 extern __int64 GameData_2131ce0[30];
-
 extern __int64 GameData_2131ce8[29];
-
 extern __int64 GameData_22416f0;
-
 extern int GameData_2263c38;
-
 __int64 GameRoutine_136a920(_QWORD, _QWORD, _QWORD, _QWORD);
-
 __int64 GameRoutine_155f480(_QWORD, _QWORD);
-
 __int64 GameRoutine_15621a0(_QWORD, _QWORD);
-
 __int64 GameRoutine_1562cf0(_QWORD, _QWORD);
-
 __int64 GameRoutine_1567590(_QWORD, _QWORD);
-
 __int64 GameRoutine_156c5d0(_QWORD, _QWORD, _QWORD);
-
 __int64 GameRoutine_168c0a0(__int64 result, _QWORD*, unsigned __int64, __int64,
                             signed __int64);
-
 __int64 GameRoutine_1690120(_QWORD, _QWORD);
-
 __int64 GameRoutine_16e0c00(_QWORD, _QWORD);
-
 __int64 GameRoutine_16e4480(_QWORD, _QWORD, _QWORD, _QWORD);
-
 __int64 GameRoutine_16e45e0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
-
 __int64 GameRoutine_16e4700(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
-
 __int64 GameRoutine_16e4860(_QWORD, _QWORD, _QWORD);
-
 __int64 GameRoutine_16e7010(_QWORD, _QWORD, _QWORD);
-
 __int64 GameRoutine_1753970(_QWORD, _QWORD);
-
 __int64 GameRoutine_1760e40(_QWORD, _QWORD);
-
 void GameRoutine_17644e0(_QWORD*, __int64, __int64, __int64);
-
 __int64 GameRoutine_1a0a4e0(_QWORD);
-
 __int64 GameRoutine_1a0a6c0(_QWORD, _QWORD, _QWORD, _QWORD);
-
 __int64 GameRoutine_1a0b950(_QWORD, _QWORD, _QWORD);
-
 void __attribute__((noreturn)) GameRoutine_60a310(_QWORD, _QWORD);
-
 __int64 GameRoutine_651b90(_QWORD, _QWORD, _QWORD, _QWORD);
-
 __int64 GameRoutine_657850(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
-
 void __attribute__((noreturn)) GameRoutine_6e3e20(_QWORD);
-
 __int64 GameRoutine_6ed030(_QWORD);
-
 __int64 GameRoutine_7a7dc0(const char*, ...);
-
 __int64 GameRoutine_7fb7c0(_QWORD);
+bool GameRoutine_1690120_alt1(_DWORD*, int*) __asm__("GameRoutine_1690120");
+__int64 GameHr_168f760(__int64 result, int* a2, __int64 a3, char a4);
 
 __int64 GameHr_168c360(__int64 result, _QWORD* a2, unsigned __int64 a3,
                        _QWORD* a4)
@@ -309,10 +268,10 @@ __int64 GameHr_168f760(__int64 result, int* a2, __int64 a3, char a4)
   int v47;
   int v48;
   int* v49;
-  char v50;
-  char v51;
+  bool v50;
+  bool v51;
   int v52;
-  int* v53;
+  unsigned __int64 v53;
   int* v54;
   int v55;
   int v56;
@@ -908,13 +867,13 @@ __int64 GameHr_168f760(__int64 result, int* a2, __int64 a3, char a4)
           break;
         }
         if (v36 >= *(a2 - 1)) {
-          v53 = v8 + 1;
+          v53 = (unsigned __int64)(v8 + 1);
           do {
-            v8 = v53;
-            if (v53 >= a2) {
+            v8 = (int*)v53;
+            if (v53 >= (unsigned __int64)a2) {
               break;
             }
-            ++v53;
+            v53 += 4LL;
           } while (v36 >= *v8);
         }
         else {
@@ -1009,22 +968,22 @@ __int64 GameHr_168f760(__int64 result, int* a2, __int64 a3, char a4)
       if (v40 < v41) {
         goto LABEL_83;
       }
-      v50 = GameRoutine_1690120(v8, v49);
+      v50 = GameRoutine_1690120_alt1(v8, v49);
       v8 = v49 + 1;
       v51 = v50;
-      result = GameRoutine_1690120(v49 + 1, a2);
+      result = GameRoutine_1690120_alt1(v49 + 1, a2);
       if ((result & 1) != 0) {
         break;
       }
-      if ((v51 & 1) == 0) {
+      if (!v51) {
       LABEL_83:
-        result = GameHr_168f760(v7, v49, a3, a4 & 1);
+        result = GameHr_168f760((__int64)v7, v49, a3, a4 & 1);
         a4 = 0;
         v8 = v49 + 1;
       }
     }
     a2 = v49;
-    if ((v51 & 1) == 0) {
+    if (!v51) {
       continue;
     }
     return result;

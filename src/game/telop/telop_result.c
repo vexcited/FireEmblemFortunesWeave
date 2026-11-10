@@ -89,6 +89,17 @@ __n128 TelopResult_1762890(__int64 a1, unsigned int a2);
 void TelopResult_1762ce0(__int64 a1, __int64 a2, unsigned int a3, __int64 a4);
 __n128 TelopResult_17630f0(__int64 a1, unsigned __int8* a2, __int64 a3);
 __n128 TelopResult_1763ac0(__int64 a1, signed int a2, unsigned int a3);
+__int64 GameHr_1562680(__int64 result, const char*, float);
+__int64 GaugeUtil_174e4e0(__int64, int);
+__int64 GaugeUtil_174f600(__int64, int);
+__int64
+LayoutAccessor_155cda0_alt1(__int64 result, const char*,
+                            const char*) __asm__("LayoutAccessor_155cda0");
+__int64 Registration_a4da40_alt1(__int64,
+                                 __int64) __asm__("Registration_a4da40");
+__int64 TelopSequence_1374cc0_alt1(__int64,
+                                   char) __asm__("TelopSequence_1374cc0");
+float LayoutAccessor_155d940_alt1(__int64*) __asm__("LayoutAccessor_155d940");
 
 __int64 TelopResult_1760380(_QWORD* a1)
 {
@@ -233,24 +244,23 @@ __int64 TelopResult_1760680(__int64 a1)
   char v9;
   __int64 v10;
   int v11;
-  __int64 v12;
-  long double v13;
-  __int64 v14;
+  const char* v12;
+  __int64 v13;
+  unsigned __int64 v14;
   unsigned __int64 v15;
-  unsigned __int64 v16;
-  __int64 v17;
-  int v18;
+  __int64 v16;
+  int v17;
 
   v2 = (*(__int64 (**)(__int64))(*(_QWORD*)a1 + 344LL))(a1);
   v3 = 1;
-  v4 = GameRoutine_174f600(a1 + 984, 1);
+  v4 = GaugeUtil_174f600(a1 + 984, 1);
   v5 = *(_QWORD*)(a1 + 1128);
   v6 = v4 ^ 1;
   if (v5 != *(_QWORD*)(a1 + 1136)) {
     v7 = 0;
     v8 = 0;
     do {
-      v9 = GameRoutine_174e4e0(v5 + v7, 1);
+      v9 = GaugeUtil_174e4e0(v5 + v7, 1);
       ++v8;
       v7 += 184;
       v3 &= v9 ^ 1;
@@ -265,28 +275,27 @@ __int64 TelopResult_1760680(__int64 a1)
            (v11 & 2) == 0 && (*(_BYTE*)(game_g_game_setting + 944) & 8) == 0)) {
         goto LABEL_52;
       }
-      LayoutAccessor_155d940(a1 + 440);
-      LayoutAccessor_155cda0(a1 + 440, "Out", 0);
-      v12 = (*(__int64 (**)(__int64))(*(_QWORD*)a1 + 216LL))(a1);
-      LODWORD(v13) = 1.0;
-      LayoutAccessor_1562680(a1 + 168, v12, v13);
-      v14 = *(_QWORD*)(a1 + 8);
-      if (v14 == 0) {
+      LayoutAccessor_155d940_alt1((__int64*)(a1 + 440));
+      LayoutAccessor_155cda0_alt1(a1 + 440, "Out", nullptr);
+      v12 = (const char*)(*(__int64 (**)(__int64))(*(_QWORD*)a1 + 216LL))(a1);
+      GameHr_1562680(a1 + 168, v12, 0x1.0000000000000p+0f);
+      v13 = *(_QWORD*)(a1 + 8);
+      if (v13 == 0) {
         goto LABEL_52;
       }
       while (1) {
-        if (*(_BYTE*)v14 == 2) {
-          if (*(_DWORD*)(v14 + 32) == 7) {
+        if (*(_BYTE*)v13 == 2) {
+          if (*(_DWORD*)(v13 + 32) == 7) {
           LABEL_51:
-            *(_QWORD*)(a1 + 16) = v14;
+            *(_QWORD*)(a1 + 16) = v13;
             *(_WORD*)(a1 + 136) &= ~0x80u;
             goto LABEL_52;
           }
         }
-        else if (*(_BYTE*)v14 == 0) {
+        else if (*(_BYTE*)v13 == 0) {
           goto LABEL_52;
         }
-        v14 += 64;
+        v13 += 64;
       }
     }
     if (*(_QWORD*)(a1 + 944) != 0) {
@@ -306,14 +315,15 @@ __int64 TelopResult_1760680(__int64 a1)
       }
     }
     else {
-      v15 = *(unsigned __int8*)(a1 + 824);
-      v16 = *(_QWORD*)(a1 + 832);
-      if ((v15 & 1) == 0) {
-        v16 = v15 >> 1;
+      v14 = *(unsigned __int8*)(a1 + 824);
+      v15 = *(_QWORD*)(a1 + 832);
+      if ((v14 & 1) == 0) {
+        v15 = v14 >> 1;
       }
-      if (v16 != 0) {
-        v17 = (v15 & 1) != 0 ? *(_QWORD*)(a1 + 840) : a1 + 825;
-        if ((Registration_a4da40(*msg_MessageManager_instance__ptr[0], v17) &
+      if (v15 != 0) {
+        v16 = (v14 & 1) != 0 ? *(_QWORD*)(a1 + 840) : a1 + 825;
+        if ((Registration_a4da40_alt1(*msg_MessageManager_instance__ptr[0],
+                                      v16) &
              1) != 0) {
           v10 = *(_QWORD*)(a1 + 8);
           if (v10 == 0) {
@@ -335,31 +345,31 @@ __int64 TelopResult_1760680(__int64 a1)
           }
         }
       }
-      v18 = *(_DWORD*)(game_g_game_setting + 952);
-      if ((v18 & 1) != 0 ||
+      v17 = *(_DWORD*)(game_g_game_setting + 952);
+      if ((v17 & 1) != 0 ||
           *(_BYTE*)(a1 + 336) == 1 &&
-              ((v18 & 2) != 0 ||
+              ((v17 & 2) != 0 ||
                (*(_BYTE*)(game_g_game_setting + 944) & 8) != 0)) {
-        LayoutAccessor_155d940(a1 + 440);
-        LayoutAccessor_155cda0(a1 + 440, "Out", 0);
-        v14 = *(_QWORD*)(a1 + 8);
-        if (v14 != 0) {
+        LayoutAccessor_155d940_alt1((__int64*)(a1 + 440));
+        LayoutAccessor_155cda0_alt1(a1 + 440, "Out", nullptr);
+        v13 = *(_QWORD*)(a1 + 8);
+        if (v13 != 0) {
           while (1) {
-            if (*(_BYTE*)v14 == 2) {
-              if (*(_DWORD*)(v14 + 32) == 6) {
+            if (*(_BYTE*)v13 == 2) {
+              if (*(_DWORD*)(v13 + 32) == 6) {
                 goto LABEL_51;
               }
             }
-            else if (*(_BYTE*)v14 == 0) {
+            else if (*(_BYTE*)v13 == 0) {
               break;
             }
-            v14 += 64;
+            v13 += 64;
           }
         }
       }
     LABEL_52:
       if (*(_DWORD*)(a1 + 320) == 2) {
-        TelopSequence_1374cc0(a1, 1);
+        TelopSequence_1374cc0_alt1(a1, 1);
       }
     }
   }

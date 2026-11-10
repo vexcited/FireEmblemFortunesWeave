@@ -118,6 +118,13 @@ __int64 (***game_gameui_FloatingHelp_GetNeighbor_lambda1_Invoke(
 __int64 (
     ***game_gameui_FloatingHelp_CheckNeedUpdateTargetElement_lambda1_Invoke(
         __int64 a1, _QWORD* a2))(_QWORD);
+__int64 LayoutAccessor_155e140_alt1(__int64*) __asm__("LayoutAccessor_155e140");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+void GameRoutine_1563f90_alt1(__int64, __int64) __asm__("GameRoutine_1563f90");
+void GameRoutine_1564060_alt1(__int64*) __asm__("GameRoutine_1564060");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 __int64 FloatingHelp_Destructor(_QWORD* a1)
 {
@@ -151,16 +158,16 @@ __int64 FloatingHelp_Destructor(_QWORD* a1)
     if (v3 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v3 + 8),
                                     0xFFFFFFFFFFFFFFFFLL) == 0) {
       (*(void (**)(__int64))(*(_QWORD*)v3 + 16LL))(v3);
-      std___1___shared_weak_count___release_weak(v3);
+      std___1___shared_weak_count___release_weak_alt1(v3);
     }
   }
   v4 = a1[30];
   if (v4 != 0) {
-    std___1___shared_weak_count___release_weak(v4);
+    std___1___shared_weak_count___release_weak_alt1(v4);
   }
   v5 = a1[28];
   if (v5 != 0) {
-    std___1___shared_weak_count___release_weak(v5);
+    std___1___shared_weak_count___release_weak_alt1(v5);
   }
   v6 = a1[24];
   if (v6 == 0) {
@@ -173,7 +180,8 @@ __int64 FloatingHelp_Destructor(_QWORD* a1)
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v12 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v12);
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v12, v6);
     goto LABEL_24;
   }
   do {
@@ -187,16 +195,17 @@ __int64 FloatingHelp_Destructor(_QWORD* a1)
       }
       v9 = 40;
     }
-    (*(void (**)(void*))(*v8 + v9))(v8);
+    (*(void (**)(__int64))(*v8 + v9))((__int64)v8);
   LABEL_18:
     v10 = *(_QWORD*)(v7 - 56);
     if (v10 != 0) {
-      std___1___shared_weak_count___release_weak(v10);
+      std___1___shared_weak_count___release_weak_alt1(v10);
     }
     v7 -= 64;
   } while (v7 != v6);
   v11 = a1[24];
   a1[25] = v6;
+  v6 = v11;
   if (v11 != 0) {
     goto LABEL_21;
   }
@@ -210,44 +219,45 @@ LABEL_24:
     do {
       v15 = *(_QWORD*)(v14 - 8);
       if (v15 != 0) {
-        std___1___shared_weak_count___release_weak(v15);
+        std___1___shared_weak_count___release_weak_alt1(v15);
       }
       v14 -= 16;
     } while (v14 != v13);
     v16 = a1[21];
     a1[22] = v13;
+    v13 = v16;
     if (v16 != 0) {
     LABEL_31:
       v17 = 128;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
         v17 = 56;
       }
-      nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                    v17);
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v17, v13);
     }
   }
   v18 = a1[18];
   if (v18 != 0) {
-    std___1___shared_weak_count___release_weak(v18);
+    std___1___shared_weak_count___release_weak_alt1(v18);
   }
-  LayoutAccessor_155e140(a1 + 4);
+  LayoutAccessor_155e140_alt1(a1 + 4);
   v19 = a1[16];
   if (v19 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v19 + 8),
                                    0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v19 + 16LL))(v19);
-    std___1___shared_weak_count___release_weak(v19);
+    std___1___shared_weak_count___release_weak_alt1(v19);
   }
-  GameRoutine_1564060(a1 + 10);
-  GameRoutine_1563f90(a1 + 7, a1[8]);
+  GameRoutine_1564060_alt1(a1 + 10);
+  GameRoutine_1563f90_alt1((__int64)(a1 + 7), a1[8]);
   result = a1[5];
   if (result != 0) {
-    result = std___1___shared_weak_count___release_weak(result);
+    result = std___1___shared_weak_count___release_weak_alt1(result);
   }
   v21 = a1[3];
   if (v21 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v21 + 8),
                                    0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v21 + 16LL))(v21);
-    result = std___1___shared_weak_count___release_weak(v21);
+    result = std___1___shared_weak_count___release_weak_alt1(v21);
   }
   *a1 = GameData_21046b0;
   if ((_QWORD*)GameData_21f1e08 == a1) {

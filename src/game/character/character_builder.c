@@ -185,6 +185,11 @@ void CharacterFacialController_10b2280(__int64, unsigned int, float);
 void __attribute__((noreturn))
 GameRoutine_60a310_alt1() __asm__("GameRoutine_60a310");
 __int64 CharacterBuilder_Unknown5(__int64 a1, long double a2);
+__int64 WeaponHoldModule_112aaa0(__int64);
+__int64 wld_Crc32_alt1(int, unsigned __int8*,
+                       unsigned __int64) __asm__("wld_Crc32");
+int __cxa_guard_acquire_alt1(__int64) __asm__("__cxa_guard_acquire");
+void __cxa_guard_release_alt1(__int64) __asm__("__cxa_guard_release");
 
 __int64 CharacterBuilder_107b580(_QWORD* a1)
 {
@@ -4829,13 +4834,13 @@ _QWORD* CharacterBuilder_1084020(_QWORD* result)
          1) == 0) {
       v41 = result;
       v40 = v1;
-      v36 = __cxa_guard_acquire(&GameData_22356c8);
+      v36 = __cxa_guard_acquire_alt1((__int64)&GameData_22356c8);
       v1 = v40;
       v37 = v36;
       result = v41;
       if (v37 != 0) {
-        GameData_22356c0 = wld_Crc32(0, "WeaponHoldModule", 16);
-        __cxa_guard_release(&GameData_22356c8);
+        GameData_22356c0 = wld_Crc32_alt1(0, "WeaponHoldModule", 0x10u);
+        __cxa_guard_release_alt1((__int64)&GameData_22356c8);
         v1 = v40;
         result = v41;
       }
@@ -4851,7 +4856,7 @@ _QWORD* CharacterBuilder_1084020(_QWORD* result)
       if (v6 == GameData_22356c0) {
         if (v2 != v4 && *(_QWORD*)(v4 + 8) != 0) {
           v7 = result;
-          GameRoutine_112aaa0(*(_QWORD*)(v4 + 8));
+          WeaponHoldModule_112aaa0(*(_QWORD*)(v4 + 8));
           result = v7;
         }
         break;
@@ -4865,12 +4870,12 @@ _QWORD* CharacterBuilder_1084020(_QWORD* result)
          1) == 0) {
       v42 = result;
       v38 = v8;
-      v39 = __cxa_guard_acquire(&GameData_22356c8);
+      v39 = __cxa_guard_acquire_alt1((__int64)&GameData_22356c8);
       result = v42;
       v8 = v38;
       if (v39 != 0) {
-        GameData_22356c0 = wld_Crc32(0, "WeaponHoldModule", 16);
-        __cxa_guard_release(&GameData_22356c8);
+        GameData_22356c0 = wld_Crc32_alt1(0, "WeaponHoldModule", 0x10u);
+        __cxa_guard_release_alt1((__int64)&GameData_22356c8);
         result = v42;
         v8 = v38;
       }
@@ -4886,7 +4891,7 @@ _QWORD* CharacterBuilder_1084020(_QWORD* result)
       if (v13 == GameData_22356c0) {
         if (v9 != v11 && *(_QWORD*)(v11 + 8) != 0) {
           v14 = result;
-          GameRoutine_112aaa0(*(_QWORD*)(v11 + 8));
+          WeaponHoldModule_112aaa0(*(_QWORD*)(v11 + 8));
           result = v14;
         }
         break;

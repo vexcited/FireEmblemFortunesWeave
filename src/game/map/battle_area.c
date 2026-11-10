@@ -65,8 +65,9 @@ char* BattleArea_8be220(char* result, char* a2, _DWORD* a3, unsigned __int64 a4,
 void BattleArea_8becc0(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
                        __int64 a5, __int64 a6, __int64 a7, __int64 a8,
                        __int64 a9, __int64 a10, __int64 a11);
-char* BattleArea_8beda0(char* result, char* a2, __int64 a3, unsigned __int64 a4,
-                        char* a5, signed __int64 a6);
+char* BattleArea_8beda0_alt2(char* result, char* a2, __int64 a3,
+                             unsigned __int64 a4, char* a5,
+                             signed __int64 a6) __asm__("BattleArea_8beda0");
 char* BattleArea_8bf0e0(char* result, char* a2, __int64 a3, unsigned __int64 a4,
                         char* a5);
 _QWORD* game_map_BattleArea_CreateBorder_lambda0_Invoke(_QWORD* result,
@@ -142,6 +143,8 @@ char* BattleArea_8bde20(char* result, char* a2, _DWORD* a3, unsigned __int64 a4,
                         char* a5, __int64 a6);
 char* BattleArea_8bf520(char* result, char* a2, char* a3, __int64 a4,
                         __int64 a5, __int64 a6, char* a7, __int64 a8);
+char* BattleArea_8beda0(char* result, char* a2, __int64 a3, unsigned __int64 a4,
+                        char* a5, __int64 a6);
 
 __n128 BattleArea_8b9d00(__int64 a1)
 {
@@ -4223,7 +4226,7 @@ void BattleArea_8becc0(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
 }
 
 char* BattleArea_8beda0(char* result, char* a2, __int64 a3, unsigned __int64 a4,
-                        char* a5, signed __int64 a6)
+                        char* a5, __int64 a6)
 {
   int v6;
   int v7;
@@ -4236,7 +4239,7 @@ char* BattleArea_8beda0(char* result, char* a2, __int64 a3, unsigned __int64 a4,
   char* v14;
   __int64 v15;
   char* v16;
-  int* v17;
+  char* v17;
   int v18;
   char* v19;
   int v20;
@@ -4317,9 +4320,9 @@ char* BattleArea_8beda0(char* result, char* a2, __int64 a3, unsigned __int64 a4,
       if ((__int64)a4 <= a6) {
         v48 = result;
         v51 = a5;
-        ((void (*)(void))BattleArea_8bf0e0_alt1)();
+        BattleArea_8bf0e0(result, &result[4 * v41], a3, a4 >> 1, a5);
         v52 = &v51[4 * v41];
-        result = (char*)BattleArea_8bf0e0_alt1(&v48[4 * v41], a2, a3, v43, v52);
+        result = BattleArea_8bf0e0(&v48[4 * v41], a2, a3, v43, v52);
         v53 = &v51[4 * a4];
         v54 = v52;
         while (v54 != v53) {
@@ -4388,8 +4391,7 @@ char* BattleArea_8beda0(char* result, char* a2, __int64 a3, unsigned __int64 a4,
         v44 = result;
         BattleArea_8beda0(result, &result[4 * v41], a3, a4 >> 1, a5, a6);
         BattleArea_8beda0(&v44[4 * v41], a2, a3, v43, a5, a6);
-        return (char*)GameRoutine_8bf520(v44, &v44[4 * v41], a2, a3, v41, v43,
-                                         a5, a6);
+        return BattleArea_8bf520(v44, &v44[4 * v41], a2, a3, v41, v43, a5, a6);
       }
     }
     else if (result != a2) {
@@ -4428,7 +4430,7 @@ char* BattleArea_8beda0(char* result, char* a2, __int64 a3, unsigned __int64 a4,
               v31 = &result[v30];
               *(_DWORD*)&result[v30 + 4] = *(_DWORD*)&result[v30];
               if (v30 == 0) {
-                v17 = (int*)result;
+                v17 = result;
                 goto LABEL_19;
               }
               v30 -= 4;
@@ -4454,10 +4456,10 @@ char* BattleArea_8beda0(char* result, char* a2, __int64 a3, unsigned __int64 a4,
                 v40 = -v40;
               }
             } while (v36 < v40 + v39);
-            v17 = (int*)&result[v30 + 4];
+            v17 = &result[v30 + 4];
           LABEL_19:
-            *v17 = (unsigned __int8)v18 | ((unsigned __int8)v20 << 8) |
-                   (v28 << 16) | (v29 << 24);
+            *(_DWORD*)v17 = (unsigned __int8)v18 | ((unsigned __int8)v20 << 8) |
+                            (v28 << 16) | (v29 << 24);
           }
           v14 = v19 + 4;
           v15 += 4;

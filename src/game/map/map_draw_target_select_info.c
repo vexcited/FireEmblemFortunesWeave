@@ -137,9 +137,9 @@ __int64 game_map_MapDrawTargetSelectInfo_TryAddTargetItem(__int64 a1,
   unsigned int v5;
   unsigned int v6;
   bool v7;
-  unsigned int v8;
-  unsigned int v9;
-  __int64 v10;
+  int v8;
+  int v9;
+  __int64* v10;
   __int16 v11;
   __int64 v12;
   unsigned __int64 v13;
@@ -148,13 +148,15 @@ __int64 game_map_MapDrawTargetSelectInfo_TryAddTargetItem(__int64 a1,
   unsigned __int64 v16;
   __int64 v17;
   __int64 v18;
-  _QWORD v19[4];
-  _QWORD* v20;
+  struct {
+    _QWORD v19[4];
+    _QWORD* v20;
+  } v19_;
   __int64 (**v21)();
   _BYTE v22[4];
   unsigned __int64 v23;
   __int64 v24;
-  unsigned int v25;
+  int v25;
   __int64 v26;
   __int64 v27;
   char v28;
@@ -182,41 +184,42 @@ __int64 game_map_MapDrawTargetSelectInfo_TryAddTargetItem(__int64 a1,
   }
   LODWORD(v27) = 0;
   BYTE4(v24) = 3;
-  v8 = game_UnitItemList_Find_70f780(
-      v3 + 828, *(_QWORD*)(*(_QWORD*)(*GameData_212c878[0] + 64) + 8LL * *a2));
+  v8 = game_UnitItemList_Find_70f780_alt1(
+      (unsigned __int16*)(v3 + 828),
+      *(_QWORD*)(*(_QWORD*)(*GameData_212c878[0] + 64) + 8LL * *a2));
   v25 = v8;
-  if ((v8 & 0x80000000) != 0) {
+  if (v8 < 0) {
     v26 = 0;
   }
   else if (!v7) {
     v9 = v8;
-    if (game_UnitPool_Get(v22) != 0) {
-      v10 = game_UnitPool_Get(v22) + 8LL * v9;
-      v11 = *(_WORD*)(v10 + 828);
-      BYTE2(v26) = *(_BYTE*)(v10 + 830);
+    if (game_UnitPool_Get_alt1(v22) != nullptr) {
+      v10 = &game_UnitPool_Get_alt1(v22)[v9];
+      v11 = *((_WORD*)v10 + 414);
+      BYTE2(v26) = *((_BYTE*)v10 + 830);
       LOWORD(v26) = v11;
-      BYTE3(v26) = *(_BYTE*)(v10 + 831);
-      HIDWORD(v26) = *(_DWORD*)(v10 + 832);
+      BYTE3(v26) = *((_BYTE*)v10 + 831);
+      HIDWORD(v26) = *((_DWORD*)v10 + 208);
     }
   }
-  v19[0] = GameData_2004368;
-  v19[1] = v2;
-  v20 = v19;
-  GameRoutine_773420(&v21, v19);
-  if (v20 == v19) {
+  v19_.v19[0] = GameData_2004368;
+  v19_.v19[1] = v2;
+  v19_.v20 = v19_.v19;
+  ITarget_773420((__int64*)&v21, (__int64)v19_.v19);
+  if (v19_.v20 == v19_.v19) {
     v12 = 32;
   }
   else {
-    if (v20 == nullptr) {
+    if (v19_.v20 == nullptr) {
       goto LABEL_14;
     }
     v12 = 40;
   }
-  (*(void (**)(__int64))(*v20 + v12))((__int64)v20);
+  (*(void (**)(__int64))(*v19_.v20 + v12))((__int64)v19_.v20);
 LABEL_14:
   v13 = v2[4];
   if (v13 >= v2[5]) {
-    result = GameRoutine_1049fa0(v2 + 3, &v21);
+    result = GameRoutine_1049fa0_alt1(v2 + 3, (__int64)&v21);
   }
   else {
     result = v13 + 56;

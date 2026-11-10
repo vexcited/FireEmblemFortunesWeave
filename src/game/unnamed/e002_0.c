@@ -5,523 +5,274 @@
 struct PseudoSret {
   _QWORD words[3];
 };
-
 extern char GameData_1a9f09e;
-
 extern _UNKNOWN GameData_1adfa87;
-
 extern _DWORD GameData_1b39518[24];
-
 extern __int64 (*GameData_1f8faa8[])();
-
 extern __int64 (*GameData_1f94de8[])();
-
 extern __int64 (*GameData_1f99248[])();
-
 extern __int64 (*GameData_1f992c8[])();
-
 extern __int64 (*GameData_1f99348[])();
-
 extern __int64 (*GameData_1f993c8[])();
-
 extern __int64 (*GameData_1f997c8[])();
-
 extern __int64 (*GameData_1f998c8[])();
-
 extern __int64 (*GameData_1f99948[])();
-
 extern __int64 (*GameData_1f9b928[])();
-
 extern __int64 (*GameData_1f9c648[])();
-
 extern __int64 (*GameData_1f9f930[])();
-
 extern __int64 (*GameData_1f9fa40[])();
-
 extern __int64 (*GameData_1f9fb40[])();
-
 extern __int64 (*GameData_1f9fdc0[])();
-
 extern __int64 (*GameData_1f9fe40[])();
-
 extern __int64 (*GameData_1f9fec0[])();
-
 extern __int64 (*GameData_1f9ff40[])();
-
 extern __int64 (*GameData_1fa4320[])();
-
 extern __int64 (*GameData_1fa47b8[])();
-
 extern __int64 (*GameData_1fa4888[])();
-
 extern __int64 (*GameData_1fa4938[])();
-
 extern __int64 (*GameData_1fa4b98[])();
-
 extern __int64 (*GameData_1fa4df8[])();
-
 extern __int64 (*GameData_1fa5058[])();
-
 extern __int64 (*GameData_1fa52b8[])();
-
 extern __int64 (*GameData_1fa5518[])();
-
 extern __int64 (*GameData_1fa5898[])();
-
 extern char* GameData_1fa5c20[];
-
 extern char* GameData_1fa61f0[11];
-
 extern char* GameData_1fa6240;
-
 extern __int64 (*GameData_1fa8820[])();
-
 extern __int64 (*GameData_1fa88b0[])();
-
 extern __int64 (*GameData_1fa8a70[])();
-
 extern __int64 (*GameData_1fa8cf0[])();
-
 extern __int64 (*GameData_202d7c8[])();
-
 extern __int64 GameData_212bf68;
-
 extern __int64 GameData_212c470;
-
 extern __int64 GameData_212c638;
-
 extern _UNKNOWN* GameData_212c730;
-
 extern __int64* GameData_212c770[3];
-
 extern __int64* GameData_212c878[6];
-
 extern __int64* GameData_212c8f0[3];
-
 extern _UNKNOWN* GameData_212c960;
-
 extern __int64* GameData_212c998[148];
-
 extern __int64* GameData_212c9e8[138];
-
 extern __int64* GameData_212ce98[2];
-
 extern __int64* GameData_212cea0;
-
 extern __int64* GameData_212cfb8[11];
-
 extern __int64* GameData_212cfd0[8];
-
 extern __int64* GameData_212d468[5];
-
 extern __int64* GameData_212d480[2];
-
 extern __int64* GameData_212d660[5];
-
 extern __int64* GameData_212d668[4];
-
 extern __int64* GameData_212d6a8;
-
 extern _UNKNOWN* GameData_212d6b0;
-
 extern __int64* GameData_212d6b8[4];
-
 extern __int64* GameData_212d6d0;
-
 extern __int64* GameData_212d728[2];
-
 extern __int64 GameData_212d740[3];
-
 extern __int64* GameData_212ea58;
-
 extern __int64* GameData_21309c8[5];
-
 extern __int64* GameData_2130e70;
-
 extern __int64 GameData_2131910[19];
-
 extern __int64* GameData_2132010[2];
-
 extern int GameData_21668d4;
-
 extern __int64 GameData_21c9600;
-
 extern __int64 GameData_21c96a0;
-
 extern __int64 GameData_21c96e8;
-
 extern __int64 GameData_21c99a8;
-
 extern __int64 GameData_21c99b0;
-
 extern __int64 GameData_21c99b8;
-
 extern __int64 GameData_21ca310;
-
 extern __int64 GameData_21ca9fc;
-
 extern int GameData_21caa04;
-
 extern __int64 GameData_21caab0;
-
 extern __int64 GameData_21cd0c8;
-
 extern __int64 GameData_21cd108;
-
 extern __int64 GameData_21cd158;
-
 extern __int64 GameData_21d1e38;
-
 extern __int64 GameData_21d1e40;
-
 extern __int64 GameData_21d1e50;
-
 extern __int64 GameData_21d1f60;
-
 extern __int64 GameData_21d9000;
-
 extern __int64 GameData_21d9ac0;
-
 extern __int64 GameData_21d9ac8;
-
 extern __int64 GameData_21d9ad0;
-
 extern __int64 GameData_21d9ad8;
-
 extern int GameData_21d9ae0;
-
 extern __int64 GameData_21d9ae8;
-
 extern __int64 GameData_21d9af8;
-
 extern __int64 GameData_21d9b48;
-
 extern __int64 GameData_21d9b58;
-
 extern __int64 GameData_21d9ba8;
-
 extern __int64 GameData_21d9bb8;
-
 extern __int64 GameData_21d9c88;
-
 extern __int64 GameData_21d9c98;
-
 extern __int64 GameData_21d9cd8;
-
 extern __int64 GameData_21d9ce8;
-
 extern __int64 GameData_21d9cf0;
-
 extern __int64 GameData_21d9d00;
-
 extern __int64 GameData_21d9d18;
-
 extern __int64 GameData_21d9d60;
-
 extern __int64 GameData_21d9d68;
-
 extern char GameData_21d9d78;
-
 extern __int64 GameData_21d9d80;
-
 extern __int64 GameData_21d9d88;
-
 extern __int64 GameData_21d9d90;
-
 extern __int64 GameData_21d9d98;
-
 extern int GameData_21d9da0;
-
 extern __int64 GameData_21d9dc0;
-
 extern __int64 GameData_21d9dd8;
-
 extern __int64 GameData_21d9df0;
-
 extern __int64 GameData_21d9e08;
-
 extern __int64 GameData_21d9f50;
-
 extern __int64 GameData_21d9f58;
-
 extern __int64 GameData_21d9f60;
-
 extern _UNKNOWN GameData_21d9f68;
-
 extern int GameData_21d9f70;
-
 extern _UNKNOWN GameData_21d9f78;
-
 extern __int64 GameData_21ec550;
-
 extern __int64 GameData_21ec558;
-
 extern int GameData_21ec578;
-
 extern __int64 GameData_21ec7b0;
-
 extern __int64 GameData_21ed098;
-
 extern __int64 GameData_21ee240;
-
 extern __int64 GameData_21ee260;
-
 extern __int64 GameData_21eea40;
-
 extern __int64 GameData_21eea48;
-
 extern __int64 GameData_21eea50;
-
 extern __int64 GameData_21eea58;
-
 extern __int64 GameData_21f1618;
-
 extern __int64 GameData_21f1648;
-
 extern __int64 GameData_21f17e0;
-
 extern __int64 GameData_22400f8;
-
 extern __int64 GameData_2240160;
-
 extern __int64 GameData_2258ba8;
-
 extern __int64 GameData_2264c50;
-
 extern __int64 GameData_2265ef8;
-
 struct PseudoSret GameRoutine_100a50(_QWORD);
-
 __int64 GameRoutine_10c830(_QWORD, double);
-
 __int64 GameRoutine_10c910(_QWORD, _QWORD);
-
 __int64 GameRoutine_10cff0(_QWORD);
-
 __int64 GameRoutine_1120d0(_QWORD);
-
 __int64 GameRoutine_112290(_QWORD);
-
 __int64 GameRoutine_12274e0(_QWORD, _QWORD);
-
 __int64 GameRoutine_1341d60(_QWORD, _QWORD);
-
 __int64 GameRoutine_13460a0(_QWORD);
-
 __int64 GameRoutine_1349f40(void);
-
 __int64 GameRoutine_1369e0(_QWORD);
-
 __int64 GameRoutine_1530500(_QWORD);
-
 __int64 GameRoutine_15317a0(_QWORD);
-
 __int64 GameRoutine_1544280(_QWORD);
-
 __int64 GameRoutine_15446c0(_QWORD, _QWORD);
-
 __int64 GameRoutine_155e830(_QWORD, _QWORD);
-
 __int64 GameRoutine_1567000(_QWORD, _QWORD);
-
 __int64 GameRoutine_15b5f20(_QWORD);
-
 __int64 GameRoutine_16dcd30(_QWORD, _QWORD, _QWORD, _QWORD);
-
 __int64 GameRoutine_16dea40(_QWORD, _QWORD, _QWORD, _QWORD);
-
 __int64 GameRoutine_16e0c00(_QWORD, _QWORD);
-
 long double GameRoutine_17b8dd0(void);
-
 __int64 GameRoutine_17b8f40(_QWORD, _QWORD);
-
 __int64 GameRoutine_1855e60(_QWORD, _QWORD);
-
 __int64 GameRoutine_18c4dd0(_QWORD, _QWORD, _QWORD, _QWORD);
-
 __int64 GameRoutine_18c6110(_QWORD, _QWORD, _QWORD);
-
 __int64 GameRoutine_1990fb0(_QWORD);
-
 __int64 GameRoutine_1a09c50(_QWORD);
-
 __int64 GameRoutine_1a09c70(_QWORD);
-
 __int64 GameRoutine_1a09cf0(_QWORD, _QWORD, _QWORD);
-
 __int64 GameRoutine_1a09d00(_QWORD);
-
 __int64 GameRoutine_1a09d30(_QWORD, _QWORD);
-
 __int64 GameRoutine_1a09fd0(_QWORD);
-
 __int64 GameRoutine_1a09fe0(_QWORD);
-
 __int64 GameRoutine_1a0a060(_QWORD, _QWORD);
-
 __int64 GameRoutine_1a0a4e0(_QWORD, _QWORD);
-
 __int64 GameRoutine_1a0a750(_QWORD, _QWORD, _QWORD);
-
 __int64 GameRoutine_1a0b950(_QWORD, _QWORD, _QWORD);
-
 __int64 GameRoutine_1a0ba50(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
-
 __int64 GameRoutine_2b0(_QWORD);
-
 __int64 GameRoutine_60a020(_QWORD, _QWORD);
-
 void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
-
 void __attribute__((noreturn)) GameRoutine_60a230(void);
-
 void __attribute__((noreturn)) GameRoutine_60a310(_QWORD, _QWORD);
-
 void __attribute__((noreturn)) GameRoutine_60f930(void);
-
 __int64 GameRoutine_651b90(_QWORD, _QWORD, _QWORD, _QWORD);
-
 __int64 GameRoutine_654050(_QWORD, _QWORD);
-
 __int64 GameRoutine_657850(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
-
 __int64 GameRoutine_65c580(_QWORD, _QWORD);
-
 void __attribute__((noreturn)) GameRoutine_667c50(_QWORD);
-
 void __attribute__((noreturn)) GameRoutine_6b5390(void);
-
 __int64 GameRoutine_6c7fa0(_QWORD, _QWORD);
-
 __int64 GameRoutine_6ea8c0(_QWORD);
-
 __int64 GameRoutine_70dd80(_QWORD, _QWORD);
-
 __int64 GameRoutine_70e760(_QWORD, _QWORD);
-
 struct PseudoSret GameRoutine_70ea50(_QWORD, _QWORD);
-
 __int64 GameRoutine_714b20(_QWORD);
-
 __int64 GameRoutine_715780(_QWORD, _QWORD);
-
 __int64 GameRoutine_7160c0(_QWORD);
-
 __int64 GameRoutine_768a20(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
                            _QWORD, _QWORD, _QWORD, _QWORD);
-
 __int64 GameRoutine_7a7dc0(const char*, ...);
-
 __int64 GameRoutine_7a8520(_QWORD);
-
 __int64 GameRoutine_7a86e0(_QWORD, _QWORD);
-
 __int64 GameRoutine_7b6b80(_QWORD);
-
 __int64 GameRoutine_7b8a80(_QWORD, _QWORD);
-
 __int64 GameRoutine_7d16a0(_QWORD);
-
 void __attribute__((noreturn)) GameRoutine_7d18f0(void);
-
 __int64 GameRoutine_7d4b00(_QWORD);
-
 __int64 GameRoutine_7d6200(_QWORD, _QWORD);
-
 __int64 GameRoutine_7eb740(_QWORD);
-
 __int64 GameRoutine_7ebae0(_QWORD);
-
 __int64 GameRoutine_7ec000(_QWORD);
-
 __int64 GameRoutine_7ec520(_QWORD);
-
 __int64 GameRoutine_7eca40(_QWORD);
-
 __int64 GameRoutine_7ecc80(_QWORD, _QWORD, _QWORD);
-
 __int64 GameRoutine_7f16a0(void);
-
 __int64 GameRoutine_7f2ec0(_QWORD);
-
 void __attribute__((noreturn)) GameRoutine_7f33a0(void);
-
 __int64 GameRoutine_7f33c0();
-
 __int64 GameRoutine_7f3400(_QWORD, _QWORD);
-
 __int64 GameRoutine_7f3520(_QWORD, _QWORD);
-
 __int64 GameRoutine_7f3680(void);
-
 __int64 GameRoutine_809ba0(__int64, float);
-
 __int64 GameRoutine_809dc0(__int64, _QWORD*, __n128);
-
 struct PseudoSret GameRoutine_81d430(void);
-
 __int64 GameRoutine_8206b0(_QWORD);
-
 __int64 GameRoutine_827530(_QWORD);
-
 __int64 GameRoutine_829bb0(_QWORD, _QWORD, _QWORD);
-
 __int64 GameRoutine_8573a0(_QWORD, _QWORD, _QWORD, _QWORD);
-
 __int64 GameRoutine_857500(_QWORD, _QWORD);
-
 __int64 GameRoutine_85a540(_QWORD, _QWORD, _QWORD);
-
 __int64 GameRoutine_874970(__int64, unsigned __int8, unsigned int);
-
 __int64 GameRoutine_874e20(__int64*, __int64);
-
 __int64 GameRoutine_877330(unsigned __int8, unsigned __int8, int, int);
-
 __int64 GameRoutine_877b20(_QWORD, _QWORD, _QWORD, _QWORD);
-
 struct PseudoSret GameRoutine_878ea0(_QWORD);
-
 unsigned __int64 GameRoutine_8808c0(unsigned __int64 result, int32x4_t);
-
 __int64 GameRoutine_887600(_QWORD);
-
 __int64 GameRoutine_889be0(_QWORD);
-
 __int64 GameRoutine_88d500(_QWORD, _QWORD, _QWORD);
-
 __int64 GameRoutine_8aa110(_QWORD);
-
 __int64 GameRoutine_8fe1a0(_QWORD, _QWORD);
-
 struct PseudoSret GameRoutine_8fe8e0(_QWORD);
-
 struct PseudoSret GameRoutine_8fef10(_QWORD);
-
 struct PseudoSret GameRoutine_8ff080(_QWORD);
-
 __int64 GameRoutine_8ffa20(void);
-
 __int64 GameRoutine_961420(_QWORD, _QWORD, _QWORD);
-
 __int64 GameRoutine_963210(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
-
 __int64 GameRoutine_995200(_QWORD);
-
 __int64 GameRoutine_9a3180(void);
-
 __int64 GameRoutine_a2a3a0(_QWORD);
-
 __int64 GameRoutine_a2c820(_QWORD, _QWORD, _QWORD);
-
 __int64 GameRoutine_a2d080(_QWORD);
-
 struct PseudoSret GameRoutine_dabf0(_QWORD);
-
 struct PseudoSret GameRoutine_ff4e0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
                                     _QWORD, long double, float, float, double,
                                     float);
+__attribute__((swiftcall)) void Dir_70ea50(PSEUDO_X8, __int16* result,
+                                           __int16*);
+__int16* Dir_70dd80(__int16* result, __int16*);
+__int64 Dir_70e760(__int16*, __int16*);
+extern _DWORD game_script_hub_schedule_kHourCycles[24];
+extern __int64 game_gmap_GmapClock_instance_;
+extern __int64 game_gmap_GmapClock_kDefaultTime;
+__int64 GameHr_869d10();
 
 _BYTE* GameHr_7aa770(_BYTE* result, __int64 a2)
 {
@@ -6243,51 +5994,55 @@ __int64 GameHr_869d10()
   __int16 v8;
   __int16 v9;
   __int16 v10;
-  __int16 v12;
-  __int16 v13;
-  __int16 v14;
-  _BYTE v15[6];
+  struct {
+    __int16 v12;
+    __int16 v13;
+    __int16 v14;
+    _BYTE v15[6];
+  } v12_;
 
-  v0 = (__int16*)GameData_21ee260;
-  if (GameData_21ee260 == 0) {
+  v0 = (__int16*)game_gmap_GmapClock_instance_;
+  if (game_gmap_GmapClock_instance_ == 0) {
     return 0;
   }
-  v1 = *(__int16*)(GameData_21ee260 + 8);
-  v2 = *(__int16*)(GameData_21ee260 + 10);
-  v3 = *(__int16*)(GameData_21ee260 + 12);
+  v1 = *(__int16*)(game_gmap_GmapClock_instance_ + 8);
+  v2 = *(__int16*)(game_gmap_GmapClock_instance_ + 10);
+  v3 = *(__int16*)(game_gmap_GmapClock_instance_ + 12);
   if (v2 * v1 * v3 != 0) {
-    v4 = *(_WORD*)(GameData_21ee260 + 14);
-    *(_DWORD*)&v15[2] = 0;
-    v12 = v1;
-    v13 = v2;
-    v14 = v3;
-    *(_DWORD*)v15 = 6 * GameData_1b39518[v4 % 24] % 0x18u;
-    GameRoutine_70dd80(&v12, GameData_21ee260 + 20);
-    v5 = v12;
-    v6 = v13;
-    v7 = v14;
-    v8 = *(_WORD*)v15;
-    v9 = *(_WORD*)&v15[2];
-    v10 = *(_WORD*)&v15[4];
+    v4 = *(_WORD*)(game_gmap_GmapClock_instance_ + 14);
+    *(_DWORD*)&v12_.v15[2] = 0;
+    v12_.v12 = v1;
+    v12_.v13 = v2;
+    v12_.v14 = v3;
+    *(_DWORD*)v12_.v15 =
+        6 * game_script_hub_schedule_kHourCycles[v4 % 24] % 0x18u;
+    Dir_70dd80(&v12_.v12, (__int16*)(game_gmap_GmapClock_instance_ + 20));
+    v5 = v12_.v12;
+    v6 = v12_.v13;
+    v7 = v12_.v14;
+    v8 = *(_WORD*)v12_.v15;
+    v9 = *(_WORD*)&v12_.v15[2];
+    v10 = *(_WORD*)&v12_.v15[4];
   }
   else {
-    v5 = GameData_21ca9fc;
-    v6 = WORD1(GameData_21ca9fc);
-    v7 = WORD2(GameData_21ca9fc);
-    v8 = HIWORD(GameData_21ca9fc);
+    v5 = game_gmap_GmapClock_kDefaultTime;
+    v6 = WORD1(game_gmap_GmapClock_kDefaultTime);
+    v7 = WORD2(game_gmap_GmapClock_kDefaultTime);
+    v8 = HIWORD(game_gmap_GmapClock_kDefaultTime);
     v9 = GameData_21caa04;
     v10 = HIWORD(GameData_21caa04);
   }
-  *(struct PseudoSret*)(&v12) = GameRoutine_70ea50(v0 + 4, v0 + 10);
+  Dir_70ea50((void*)((__int64)&v12_.v12), v0 + 4, v0 + 10);
   if (((__int64)v6 << 24) + ((__int64)v5 << 32) + ((__int64)v7 << 18) +
               ((__int64)v8 << 12) + ((__int64)v9 << 6) + v10 <
-          (unsigned __int64)(((__int64)v13 << 24) + ((__int64)v12 << 32) +
-                             ((__int64)v14 << 18) +
-                             ((__int64)*(__int16*)v15 << 12) +
-                             ((__int64)*(__int16*)&v15[2] << 6) +
-                             *(__int16*)&v15[4]) &&
+          (unsigned __int64)(((__int64)v12_.v13 << 24) +
+                             ((__int64)v12_.v12 << 32) +
+                             ((__int64)v12_.v14 << 18) +
+                             ((__int64)*(__int16*)v12_.v15 << 12) +
+                             ((__int64)*(__int16*)&v12_.v15[2] << 6) +
+                             *(__int16*)&v12_.v15[4]) &&
       v0[11] * v0[10] * v0[12] != 0) {
-    return GameRoutine_70e760(v0 + 4, v0 + 10);
+    return Dir_70e760(v0 + 4, v0 + 10);
   }
   else {
     return 0;

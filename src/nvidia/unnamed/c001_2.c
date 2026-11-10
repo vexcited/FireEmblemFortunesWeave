@@ -6933,7 +6933,7 @@ bool CudaDriverHr_bbdf0(__int64 a1)
   __int64 v1;
 
   v1 = *(_QWORD*)(a1 + 1056);
-  return v1 != 0 && (*(unsigned __int8 (**)(void))(v1 + 8))() != 0;
+  return v1 != 0 && (*(unsigned __int8 (**)(void*))(v1 + 8))((void*)a1) != 0;
 }
 
 bool CudaDriverHr_bbe70(__int64 a1)

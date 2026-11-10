@@ -44,6 +44,8 @@ extern __int64 (*GameData_200ebf0[])();
 float GameRoutine_10a00a0(float, long double, float);
 __int64 (***CharacterIllusion_Unknown5(__int64 (***result)(), double a2,
                                        long double a3))();
+__int64 game_character_1084940_alt1(__int64 result, char,
+                                    float) __asm__("game_character_1084940");
 
 __int64 CharacterIllusion_11032f0(_QWORD* a1)
 {
@@ -451,17 +453,19 @@ __int64 (***CharacterIllusion_Unknown5(__int64 (***result)(), double a2,
     LODWORD(a3) = *((_DWORD*)*v3 + 101);
     if (*(float*)&a3 > 0x0.0p+0f) {
       v8 = GameRoutine_10a00a0(0x0.0p+0f, a3, *((float*)v7 + 100));
-      game_character_1084940(*((__int64 (****)())v7 + 1), 0,
-                             v8 * *((float*)v7 + 102));
+      game_character_1084940_alt1(*((_QWORD*)v7 + 1), 0,
+                                  v8 * *((float*)v7 + 102));
       *((float*)v7 + 101) = *((float*)v7 + 101) - v6;
     }
     ++v3;
   } while (v3 != v4);
   v9 = *(_DWORD*)(*(_QWORD*)GameData_212d270 + 532LL);
   v10 = *(_DWORD*)(*(_QWORD*)GameData_212d270 + 536LL);
-  v11 = v5[7][(int)(*GameData_212d280 /
-                    *(_DWORD*)(*(_QWORD*)GameData_212d270 + 528LL) %
-                    (unsigned __int64)(v5[8] - v5[7]))];
+  v11 =
+      v5[7]
+        [(int)((signed __int32)*GameData_212d280 /
+               (signed __int32)*(_DWORD*)(*(_QWORD*)GameData_212d270 + 528LL) %
+               (unsigned __int64)(v5[8] - v5[7]))];
   v12 = *(float32x4_t**)(*((_QWORD*)v11 + 1) + 8LL);
   v13 = v12[19];
   v14 = vaddq_f32(v13, COERCE_AS(float32x4_t, GameData_1a82f70));

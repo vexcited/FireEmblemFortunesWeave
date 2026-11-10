@@ -278,7 +278,7 @@ __int64 Registration_617e00();
 __int64 Registration_6260e0(__int64 result);
 __int64 Registration_6263d0(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
                             __int64 a5, __int64 a6);
-_QWORD* Registration_626c40(__int64 a1);
+_QWORD* Registration_626c40_alt1(__int64 a1) __asm__("Registration_626c40");
 __int64 Registration_6272c0(__int64 result);
 __int64 Registration_629e60(__int64 result);
 __int64 Registration_645d30(__int64 a1, __int64* a2);
@@ -324,6 +324,9 @@ __int64 Registration_17d6820(__int64 result);
 __int64 Registration_17d8860(__int64 result, char a2);
 __int64* Registration_17db960(__int64* result);
 __int64 Registration_17e4140();
+__attribute__((swiftcall)) void Manager_629620(PSEUDO_X8, __int64 result,
+                                               _BYTE*);
+__int64 Registration_626c40(__int64 a1);
 
 __int64 Registration_55dd00(__int64 a1)
 {
@@ -2259,36 +2262,38 @@ __int64 Registration_6263d0(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
   return result;
 }
 
-_QWORD* Registration_626c40(__int64 a1)
+__int64 Registration_626c40(__int64 a1)
 {
   __int64 v2;
-  _QWORD* result;
+  __int64 result;
   int v4;
   _QWORD* v5;
   __int64 v6;
-  __int64 v7;
-  unsigned int v8;
+  struct {
+    __int64 v7;
+    unsigned int v8;
+  } v7_;
 
   v2 = as_g_script_manager;
-  result = *(_QWORD**)(v2 +
-                       8LL * (*(unsigned int (**)(__int64))(
-                                 *(_QWORD*)as_g_thread_info + 72LL))(
-                                 as_g_thread_info) +
-                       4384);
-  if (result != nullptr) {
-    result = (_QWORD*)(*(__int64 (**)(_QWORD*))(*result + 472LL))(result);
-    if (result != nullptr) {
+  result = *(
+      _QWORD*)(v2 +
+               8LL * (*(unsigned int (**)(__int64))(*(_QWORD*)as_g_thread_info +
+                                                    72LL))(as_g_thread_info) +
+               4384);
+  if (result != 0) {
+    result = (*(__int64 (**)(__int64))(*(_QWORD*)result + 472LL))(result);
+    if (result != 0) {
       v4 = *(_DWORD*)(a1 + 8);
       result =
-          X8CALL_X0(_QWORD*, GameRoutine_629620((void*)&v7, as_g_script_manager,
-                                                *(_QWORD*)a1));
-      if (v8 != 0x2000) {
-        v5 = (_QWORD*)((char*)&as_g_context_slots + 16 * v8);
+          X8CALL_X0(__int64, Manager_629620((void*)((__int64)&v7_.v7),
+                                            as_g_script_manager, *(_BYTE**)a1));
+      if (v7_.v8 != 0x2000) {
+        v5 = (_QWORD*)((char*)&as_g_context_slots + 16 * v7_.v8);
         v6 = v5[1];
-        if (v6 != 0 && *v5 == v7 && (*(_BYTE*)(v6 + 326) & 1) == 0 &&
+        if (v6 != 0 && *v5 == v7_.v7 && (*(_BYTE*)(v6 + 326) & 1) == 0 &&
             v4 < 0x4000) {
-          return (_QWORD*)(*(__int64 (**)(_QWORD))(**(_QWORD**)(v6 + 24) +
-                                                   48LL))(*(_QWORD*)(v6 + 24));
+          return (*(__int64 (**)(_QWORD))(**(_QWORD**)(v6 + 24) + 48LL))(
+              *(_QWORD*)(v6 + 24));
         }
       }
     }

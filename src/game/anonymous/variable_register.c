@@ -70,6 +70,9 @@ __int64 std___1___next_prime(_QWORD);
 void __attribute__((noreturn)) GameRoutine_60a210();
 unsigned __int64 game_anonymous_VariableRegister_RegisterKeyMap_closure_Invoke(
     unsigned __int64 result, unsigned __int8* a2);
+int memcmp_alt1(__int64, __int64, unsigned __int64) __asm__("memcmp");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 _QWORD* game_anonymous_VariableRegister_RegisterSystem_closure_Invoke(
     __int64 a1, unsigned __int8* a2)
@@ -1129,32 +1132,34 @@ unsigned __int8* VariableRegister_8327a0(unsigned __int8* a1,
   char* v71;
   __int64 v73;
   __int64 v74;
-  __int64 v75;
-  unsigned __int64 v76;
-  char* v77;
-  __int64 v78;
-  __int64 v79;
-  __int64 v80;
+  struct {
+    __int64 v75;
+    unsigned __int64 v76;
+    char* v77;
+    __int64 v78;
+    __int64 v79;
+    __int64 v80;
+  } v75_;
 
   v2 = *((_QWORD*)a1 + 1);
   v3 = *((char**)a1 + 2);
   v4 = a2;
   v6 = (*(_QWORD*)a1 & 1) == 0;
-  v75 = *(_QWORD*)a1;
-  v76 = v2;
+  v75_.v75 = *(_QWORD*)a1;
+  v75_.v76 = v2;
   *(_QWORD*)a1 = 0;
   *((_QWORD*)a1 + 1) = 0;
   *((_QWORD*)a1 + 2) = 0;
-  v77 = v3;
+  v75_.v77 = v3;
   if (v6) {
-    v7 = (unsigned __int8)v75 >> 1;
+    v7 = (unsigned __int8)v75_.v75 >> 1;
   }
   else {
     v7 = v2;
   }
   v8 = *(a2 - 24);
   if (v6) {
-    v9 = (char*)&v75 + 1;
+    v9 = (char*)&v75_.v75 + 1;
   }
   else {
     v9 = v3;
@@ -1316,30 +1321,30 @@ LABEL_52:
   while (2) {
     v41 = *(_QWORD*)v18;
     v42 = *((_QWORD*)v18 + 2);
-    v79 = *((_QWORD*)v18 + 1);
-    v80 = v42;
-    v78 = v41;
+    v75_.v79 = *((_QWORD*)v18 + 1);
+    v75_.v80 = v42;
+    v75_.v78 = v41;
     v43 = *(_QWORD*)v4;
     v44 = *((_QWORD*)v4 + 2);
     *((_QWORD*)v18 + 1) = *((_QWORD*)v4 + 1);
     *((_QWORD*)v18 + 2) = v44;
     *(_QWORD*)v18 = v43;
-    v45 = v78;
-    v46 = v80;
-    *((_QWORD*)v4 + 1) = v79;
+    v45 = v75_.v78;
+    v46 = v75_.v80;
+    *((_QWORD*)v4 + 1) = v75_.v79;
     *((_QWORD*)v4 + 2) = v46;
     *(_QWORD*)v4 = v45;
-    if ((v75 & 1) != 0) {
-      v47 = v77;
+    if ((v75_.v75 & 1) != 0) {
+      v47 = v75_.v77;
     }
     else {
-      v47 = (char*)&v75 + 1;
+      v47 = (char*)&v75_.v75 + 1;
     }
-    if ((v75 & 1) != 0) {
-      v48 = v76;
+    if ((v75_.v75 & 1) != 0) {
+      v48 = v75_.v76;
     }
     else {
-      v48 = (unsigned __int64)(unsigned __int8)v75 >> 1;
+      v48 = (unsigned __int64)(unsigned __int8)v75_.v75 >> 1;
     }
     v49 = v18 + 24;
     while (1) {
@@ -1457,9 +1462,9 @@ LABEL_52:
     *(v18 - 23) = 0;
   }
 LABEL_116:
-  v70 = v75;
-  v71 = v77;
-  *((_QWORD*)v65 + 1) = v76;
+  v70 = v75_.v75;
+  v71 = v75_.v77;
+  *((_QWORD*)v65 + 1) = v75_.v76;
   *((_QWORD*)v65 + 2) = v71;
   *(_QWORD*)v65 = v70;
   return v18;
@@ -1479,14 +1484,14 @@ __int64* VariableRegister_832b40(__int64* a1, __int64 a2)
   __int64 v13;
   char* v14;
   unsigned __int64 v15;
-  char* v16;
+  __int64 v16;
   unsigned __int64 v17;
-  char* v18;
+  __int64 v18;
   char* v19;
   bool v20;
   unsigned __int64 v21;
   unsigned __int64 v22;
-  char* v23;
+  __int64 v23;
   unsigned __int64 v24;
   __int64* v25;
   unsigned __int8* v26;
@@ -1497,7 +1502,7 @@ __int64* VariableRegister_832b40(__int64* a1, __int64 a2)
   bool v31;
   unsigned __int64 v32;
   unsigned __int64 v33;
-  unsigned __int8* v34;
+  __int64 v34;
   unsigned __int64 v35;
   int v36;
   unsigned __int8* v37;
@@ -1505,7 +1510,7 @@ __int64* VariableRegister_832b40(__int64* a1, __int64 a2)
   bool v39;
   unsigned __int64 v40;
   unsigned __int64 v41;
-  unsigned __int8* v42;
+  __int64 v42;
   unsigned __int64 v43;
   unsigned __int8* v44;
   unsigned __int8* v45;
@@ -1523,7 +1528,7 @@ __int64* VariableRegister_832b40(__int64* a1, __int64 a2)
   bool v57;
   unsigned __int64 v58;
   unsigned __int64 v59;
-  char* v60;
+  __int64 v60;
   unsigned __int64 v61;
   unsigned __int8* v62;
   int v63;
@@ -1531,7 +1536,7 @@ __int64* VariableRegister_832b40(__int64* a1, __int64 a2)
   bool v65;
   unsigned __int64 v66;
   unsigned __int64 v67;
-  char* v68;
+  __int64 v68;
   unsigned __int64 v69;
   __int64 v70;
   __int64 v71;
@@ -1541,12 +1546,14 @@ __int64* VariableRegister_832b40(__int64* a1, __int64 a2)
   char* v75;
   __int64 v77;
   __int64 v78;
-  __int64 v79;
-  unsigned __int64 v80;
-  char* v81;
-  __int64 v82;
-  __int64 v83;
-  __int64 v84;
+  struct {
+    __int64 v79;
+    unsigned __int64 v80;
+    char* v81;
+    __int64 v82;
+    __int64 v83;
+    __int64 v84;
+  } v79_;
 
   v2 = *a1;
   v3 = a1[1];
@@ -1555,13 +1562,13 @@ __int64* VariableRegister_832b40(__int64* a1, __int64 a2)
   *a1 = 0;
   a1[1] = 0;
   a1[2] = 0;
-  v79 = v2;
-  v80 = v3;
+  v79_.v79 = v2;
+  v79_.v80 = v3;
   v8 = (v2 & 1) == 0;
   v9 = (unsigned __int8)v2 >> 1;
-  v81 = v4;
+  v79_.v81 = v4;
   if (v8) {
-    v10 = (char*)&v79 + 1;
+    v10 = (char*)&v79_.v79 + 1;
   }
   else {
     v10 = v4;
@@ -1576,10 +1583,10 @@ __int64* VariableRegister_832b40(__int64* a1, __int64 a2)
     v13 = v7;
     v14 = (char*)a1 + v7;
     v15 = (unsigned __int8)v14[24];
-    v16 = v14 + 25;
+    v16 = (__int64)(v14 + 25);
     v19 = v14 + 32;
     v17 = *((_QWORD*)v14 + 4);
-    v18 = *((char**)v19 + 1);
+    v18 = *((_QWORD*)v19 + 1);
     v20 = (v15 & 1) == 0;
     v21 = v15 >> 1;
     if (v20) {
@@ -1600,7 +1607,7 @@ __int64* VariableRegister_832b40(__int64* a1, __int64 a2)
     else {
       v24 = v11;
     }
-    v12 = memcmp(v23, v10, v24);
+    v12 = memcmp_alt1(v23, (__int64)v10, v24);
     if (v12 == 0) {
       if (v22 >= v11) {
         break;
@@ -1625,10 +1632,10 @@ __int64* VariableRegister_832b40(__int64* a1, __int64 a2)
         v33 = *((_QWORD*)v29 + 1);
       }
       if (v31) {
-        v34 = v29 + 1;
+        v34 = (__int64)(v29 + 1);
       }
       else {
-        v34 = *((unsigned __int8**)v29 + 2);
+        v34 = *((_QWORD*)v29 + 2);
       }
       if (v11 >= v33) {
         v35 = v33;
@@ -1636,7 +1643,7 @@ __int64* VariableRegister_832b40(__int64* a1, __int64 a2)
       else {
         v35 = v11;
       }
-      v28 = memcmp(v34, v10, v35);
+      v28 = memcmp_alt1(v34, (__int64)v10, v35);
       if (v28 == 0) {
         if (v33 == v11) {
           v28 = 0;
@@ -1670,10 +1677,10 @@ __int64* VariableRegister_832b40(__int64* a1, __int64 a2)
       v41 = *((_QWORD*)v29 + 1);
     }
     if (v39) {
-      v42 = v29 + 1;
+      v42 = (__int64)(v29 + 1);
     }
     else {
-      v42 = *((unsigned __int8**)v29 + 2);
+      v42 = *((_QWORD*)v29 + 2);
     }
     if (v11 >= v41) {
       v43 = v41;
@@ -1681,7 +1688,7 @@ __int64* VariableRegister_832b40(__int64* a1, __int64 a2)
     else {
       v43 = v11;
     }
-    v36 = memcmp(v42, v10, v43);
+    v36 = memcmp_alt1(v42, (__int64)v10, v43);
     if (v36 == 0) {
       if (v41 == v11) {
         v36 = 0;
@@ -1711,30 +1718,30 @@ LABEL_54:
   while (2) {
     v46 = *(_QWORD*)v44;
     v47 = *((_QWORD*)v44 + 2);
-    v83 = *((_QWORD*)v44 + 1);
-    v84 = v47;
-    v82 = v46;
+    v79_.v83 = *((_QWORD*)v44 + 1);
+    v79_.v84 = v47;
+    v79_.v82 = v46;
     v48 = *(_QWORD*)v45;
     v49 = *((_QWORD*)v45 + 2);
     *((_QWORD*)v44 + 1) = *((_QWORD*)v45 + 1);
     *((_QWORD*)v44 + 2) = v49;
     *(_QWORD*)v44 = v48;
-    v50 = v82;
-    v51 = v84;
-    *((_QWORD*)v45 + 1) = v83;
+    v50 = v79_.v82;
+    v51 = v79_.v84;
+    *((_QWORD*)v45 + 1) = v79_.v83;
     *((_QWORD*)v45 + 2) = v51;
     *(_QWORD*)v45 = v50;
-    if ((v79 & 1) != 0) {
-      v52 = v81;
+    if ((v79_.v79 & 1) != 0) {
+      v52 = v79_.v81;
     }
     else {
-      v52 = (char*)&v79 + 1;
+      v52 = (char*)&v79_.v79 + 1;
     }
-    if ((v79 & 1) != 0) {
-      v53 = v80;
+    if ((v79_.v79 & 1) != 0) {
+      v53 = v79_.v80;
     }
     else {
-      v53 = (unsigned __int64)(unsigned __int8)v79 >> 1;
+      v53 = (unsigned __int64)(unsigned __int8)v79_.v79 >> 1;
     }
     v54 = v44 + 24;
     while (2) {
@@ -1749,10 +1756,10 @@ LABEL_54:
         v59 = *((_QWORD*)v44 + 1);
       }
       if (v57) {
-        v60 = (char*)(v44 + 1);
+        v60 = (__int64)(v44 + 1);
       }
       else {
-        v60 = *((char**)v44 + 2);
+        v60 = *((_QWORD*)v44 + 2);
       }
       if (v53 >= v59) {
         v61 = v59;
@@ -1760,7 +1767,7 @@ LABEL_54:
       else {
         v61 = v53;
       }
-      v55 = memcmp(v60, v52, v61);
+      v55 = memcmp_alt1(v60, (__int64)v52, v61);
       if (v55 != 0) {
       LABEL_65:
         v54 = v44 + 24;
@@ -1789,10 +1796,10 @@ LABEL_54:
         v67 = *((_QWORD*)v45 + 1);
       }
       if (v65) {
-        v68 = (char*)(v45 + 1);
+        v68 = (__int64)(v45 + 1);
       }
       else {
-        v68 = *((char**)v45 + 2);
+        v68 = *((_QWORD*)v45 + 2);
       }
       if (v53 >= v67) {
         v69 = v67;
@@ -1800,7 +1807,7 @@ LABEL_54:
       else {
         v69 = v53;
       }
-      v63 = memcmp(v68, v52, v69);
+      v63 = memcmp_alt1(v68, (__int64)v52, v69);
       if (v63 == 0) {
         if (v67 != v53) {
           break;
@@ -1832,7 +1839,7 @@ LABEL_54:
         if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
           v78 = 56;
         }
-        nn_mem_StandardAllocator_Free(
+        nn_mem_StandardAllocator_Free_alt1(
             *(_QWORD*)fw_memory_g_heap_manager_ptr + v78, v77);
       }
     }
@@ -1845,7 +1852,7 @@ LABEL_54:
         if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
           v71 = 56;
         }
-        nn_mem_StandardAllocator_Free(
+        nn_mem_StandardAllocator_Free_alt1(
             *(_QWORD*)fw_memory_g_heap_manager_ptr + v71, v70);
       }
     }
@@ -1858,9 +1865,9 @@ LABEL_54:
     *(_WORD*)v25 = 0;
   }
 LABEL_102:
-  v74 = v79;
-  v75 = v81;
-  v25[1] = v80;
+  v74 = v79_.v79;
+  v75 = v79_.v81;
+  v25[1] = v79_.v80;
   v25[2] = (__int64)v75;
   *v25 = v74;
   return v25;

@@ -63,6 +63,11 @@ __int64 CmdBtlRecord_ebc930(__int64 a1);
 __int64 CmdBtlRecord_ebccc0(__int64 a1, int a2, int a3, char a4);
 _QWORD* CmdBtlRecord_ebd060(_QWORD* result, __int64 a2);
 __int64 CmdBtlRecord_ebd120(__int64 result);
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
 
 __int64 CmdBtlRecord_ebc930(__int64 a1)
 {
@@ -158,8 +163,8 @@ __int64 CmdBtlRecord_ebccc0(__int64 a1, int a2, int a3, char a4)
 
   *(_DWORD*)(a1 + 8) = a2;
   if (a2 == 1) {
-    v12 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
-                                         136, 16, 0);
+    v12 = fw_memory_HeapManager_Allocate_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr, 136, 16, 0);
     *(_QWORD*)(v12 + 16) = 0;
     *(_BYTE*)(v12 + 32) = 0;
     *(_QWORD*)(v12 + 48) = 0;
@@ -190,8 +195,8 @@ __int64 CmdBtlRecord_ebccc0(__int64 a1, int a2, int a3, char a4)
       goto LABEL_7;
     }
     v7 = (__int64*)fw_memory_g_heap_manager_ptr;
-    v8 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
-                                        128, 16, 0);
+    v8 = fw_memory_HeapManager_Allocate_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr, 128, 16, 0);
     *(_QWORD*)(v8 + 36) = 0xFFFFFFFF00000000LL;
     *(_QWORD*)(v8 + 8) = 0;
     *(_QWORD*)(v8 + 16) = 0;
@@ -208,7 +213,7 @@ __int64 CmdBtlRecord_ebccc0(__int64 a1, int a2, int a3, char a4)
     *(_QWORD*)v8 = GameData_1fecd18;
     v9 = *v7;
     *(_QWORD*)(v8 + 24) = game_cmdbtl_MindBtlInfo_vtable;
-    v10 = (_QWORD*)fw_memory_HeapManager_Allocate(v9, 88, 16, 0);
+    v10 = (_QWORD*)fw_memory_HeapManager_Allocate_alt1(v9, 88, 16, 0);
     v10[2] = 0;
     *v10 = GameData_1fef2b8;
     v10[1] = 0;
@@ -232,7 +237,7 @@ __int64 CmdBtlRecord_ebccc0(__int64 a1, int a2, int a3, char a4)
   if (atomic_fetch_add((atomic_ullong* volatile)(v11 + 8),
                        0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v11 + 16LL))(v11);
-    std___1___shared_weak_count___release_weak(v11);
+    std___1___shared_weak_count___release_weak_alt1(v11);
     v13 = *(_QWORD*)(a1 + 16);
     v14 = *(_QWORD*)(a1 + 24);
     if (v14 == 0) {
@@ -240,7 +245,6 @@ __int64 CmdBtlRecord_ebccc0(__int64 a1, int a2, int a3, char a4)
     }
     goto LABEL_8;
   }
-
 LABEL_7:
   v13 = *(_QWORD*)(a1 + 16);
   v14 = *(_QWORD*)(a1 + 24);
@@ -251,14 +255,13 @@ LABEL_7:
     if (atomic_fetch_add((atomic_ullong* volatile)(v14 + 8),
                          0xFFFFFFFFFFFFFFFFLL) == 0) {
       (*(void (**)(__int64))(*(_QWORD*)v14 + 16LL))(v14);
-      std___1___shared_weak_count___release_weak(v14);
+      std___1___shared_weak_count___release_weak_alt1(v14);
       if (v13 != 0) {
         goto LABEL_10;
       }
       goto LABEL_20;
     }
   }
-
 LABEL_9:
   if (v13 == 0) {
   LABEL_20:
@@ -270,11 +273,10 @@ LABEL_9:
       if (atomic_fetch_add((atomic_ullong* volatile)(v21 + 8),
                            0xFFFFFFFFFFFFFFFFLL) == 0) {
         (*(void (**)(__int64))(*(_QWORD*)v21 + 16LL))(v21);
-        std___1___shared_weak_count___release_weak(v21);
+        std___1___shared_weak_count___release_weak_alt1(v21);
       }
     }
   }
-
 LABEL_10:
   v15 = *(_QWORD*)(v13 + 40);
   *(_BYTE*)(v13 + 8) = 0;
@@ -284,7 +286,7 @@ LABEL_10:
   *(_DWORD*)(v13 + 12) = a3;
   *(_DWORD*)(v13 + 16) = -1;
   if (v15 != 0) {
-    std___1___shared_weak_count___release_weak(v15);
+    std___1___shared_weak_count___release_weak_alt1(v15);
   }
   *(_DWORD*)(v13 + 56) = 0;
   *(_QWORD*)(v13 + 48) = 0xFFFFFFFFLL;
@@ -296,7 +298,7 @@ LABEL_10:
                    atomic_fetch_add((atomic_ullong* volatile)(v17 + 8),
                                     0xFFFFFFFFFFFFFFFFLL) == 0)) {
     (*(void (**)(__int64))(*(_QWORD*)v17 + 16LL))(v17);
-    result = std___1___shared_weak_count___release_weak(v17);
+    result = std___1___shared_weak_count___release_weak_alt1(v17);
     if (v18 != 0) {
       goto LABEL_15;
     }
@@ -312,10 +314,9 @@ LABEL_10:
     if (atomic_fetch_add((atomic_ullong* volatile)(v22 + 8),
                          0xFFFFFFFFFFFFFFFFLL) == 0) {
       (*(void (**)(__int64))(*(_QWORD*)v22 + 16LL))(v22);
-      result = std___1___shared_weak_count___release_weak(v22);
+      result = std___1___shared_weak_count___release_weak_alt1(v22);
     }
   }
-
 LABEL_15:
   *(_BYTE*)(v18 + 8) = a4;
   v20 = *(_QWORD*)(a1 + 16);
@@ -325,7 +326,7 @@ LABEL_15:
                    atomic_fetch_add((atomic_ullong* volatile)(v19 + 8),
                                     0xFFFFFFFFFFFFFFFFLL) == 0)) {
     (*(void (**)(__int64))(*(_QWORD*)v19 + 16LL))(v19);
-    result = std___1___shared_weak_count___release_weak(v19);
+    result = std___1___shared_weak_count___release_weak_alt1(v19);
     if (v20 != 0) {
       goto LABEL_18;
     }
@@ -341,10 +342,9 @@ LABEL_15:
     if (atomic_fetch_add((atomic_ullong* volatile)(v23 + 8),
                          0xFFFFFFFFFFFFFFFFLL) == 0) {
       (*(void (**)(__int64))(*(_QWORD*)v23 + 16LL))(v23);
-      result = std___1___shared_weak_count___release_weak(v23);
+      result = std___1___shared_weak_count___release_weak_alt1(v23);
     }
   }
-
 LABEL_18:
   *(_DWORD*)(v20 + 56) |= 4u;
   return result;

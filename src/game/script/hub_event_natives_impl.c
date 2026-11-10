@@ -119,6 +119,9 @@ __attribute__((swiftcall)) void
 hub_event_GetEraceFlagByDisposLabel(PSEUDO_X8 x8_, __int64 a1);
 __int64 hub_event_PushArrangementCharaAnim(__int64 a1, __int64 a2);
 __int64* hub_event_SetGayaLabel(__int64 a1, __int64 a2);
+__attribute__((swiftcall)) void
+EventManager_cbc0c0_alt1(PSEUDO_X8, unsigned __int64 result, __int64, __int64,
+                         __int64) __asm__("EventManager_cbc0c0");
 
 _QWORD* HubEventNatives_d5b9c0(_QWORD* result)
 {
@@ -255,28 +258,22 @@ hub_event_GetHandleLabelArea(PSEUDO_X8 x8_, unsigned __int8* a1)
   __int64 v9;
   unsigned __int64 v10;
   bool v11;
-  unsigned __int64 v12;
-  unsigned __int64 v13;
-  unsigned __int64 v14;
-  unsigned __int8* v15;
-  __int64 v16;
-  unsigned __int64 v17;
+  __int64 v12;
+  __int64 v13;
+  __int64 v14;
+  __int64 v15;
+  unsigned __int64 result;
+  __int64 v17;
   __int64 v18;
   __int64 v19;
-  bool v20;
-  unsigned __int64 v21;
+  __int64* v20;
+  __int64 v21;
   __int64 v22;
-  unsigned __int64 v23;
-  _QWORD* result;
-  __int64 v25;
-  __int64 v26;
-  __int64 v27;
-  __int64* v28;
-  __int64 v29;
-  __int64 v30;
-  __int64 v31;
-  __int64 v32;
-  __int64 v33;
+  __int64 v23;
+  struct {
+    __int64 v24;
+    __int64 v25;
+  } v24_;
 
   v4 = *as_g_script_manager_ptr;
   v5 = *(
@@ -315,68 +312,58 @@ LABEL_9:
   else {
     v13 = *((_QWORD*)a1 + 1);
   }
-  v14 = *(unsigned __int8*)(v9 + 88);
   if (v11) {
-    v15 = a1 + 1;
+    v14 = (__int64)(a1 + 1);
   }
   else {
-    v15 = *((unsigned __int8**)a1 + 2);
+    v14 = *((_QWORD*)a1 + 2);
   }
-  v16 = v9 + 89;
-  v19 = v9 + 96;
-  v17 = *(_QWORD*)(v9 + 96);
-  v18 = *(_QWORD*)(v19 + 8);
-  v20 = (v14 & 1) == 0;
-  v21 = v14 >> 1;
-  if (v20) {
-    v22 = v16;
+  if ((*(_BYTE*)(v9 + 88) & 1) != 0) {
+    v15 = *(_QWORD*)(v9 + 104);
   }
   else {
-    v22 = v18;
+    v15 = v9 + 89;
   }
-  if (v20) {
-    v23 = v21;
-  }
-  else {
-    v23 = v17;
-  }
-  result = (EventManager_cbc0c0((void*)(&v32), *(_QWORD*)GameData_212dc68, v15,
-                                v13, v22, v23),
-            (void*)(&v32));
-  v25 = v32;
-  if (v32 != 0) {
+  result = X8CALL_X0(unsigned __int64,
+                     EventManager_cbc0c0_alt1((void*)(&v24_.v24),
+                                              *(_QWORD*)GameData_212dc68, v14,
+                                              v13, v15));
+  v17 = v24_.v24;
+  if (v24_.v24 != 0) {
     *(_QWORD*)(a2 + 24) = 0;
     *(_QWORD*)(a2 + 8) = 0;
     *(_QWORD*)(a2 + 16) = 0x100004000LL;
-    v26 = *(unsigned int*)(v25 + 12);
-    if ((_DWORD)v26 != 0x4000) {
-      v27 = *(unsigned int*)(v25 + 8);
-      v28 = (__int64*)(util_g_handle_slots_ptr[0][v27] + 16 * v26);
-      if (v28[1] == v25) {
-        v29 = *v28;
-        *(_DWORD*)(a2 + 16) = v26;
-        *(_DWORD*)(a2 + 20) = v27;
-        *(_QWORD*)(a2 + 24) = v25;
-        *(_QWORD*)(a2 + 8) = v29;
+    v18 = *(unsigned int*)(v17 + 12);
+    if ((_DWORD)v18 != 0x4000) {
+      v19 = *(unsigned int*)(v17 + 8);
+      v20 = (__int64*)(util_g_handle_slots_ptr[0][v19] + 16 * v18);
+      if (v20[1] == v17) {
+        v21 = *v20;
+        *(_DWORD*)(a2 + 16) = v18;
+        *(_DWORD*)(a2 + 20) = v19;
+        *(_QWORD*)(a2 + 24) = v17;
+        *(_QWORD*)(a2 + 8) = v21;
       }
     }
     *(_QWORD*)a2 = game_hub_AreaEventHandle_vtable;
-    v30 = v33;
-    if (v33 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v33 + 8),
-                                     0xFFFFFFFFFFFFFFFFLL) == 0) {
-      (*(void (**)(__int64))(*(_QWORD*)v30 + 16LL))(v30);
+    v22 = v24_.v25;
+    if (v24_.v25 != 0 &&
+        atomic_fetch_add((atomic_ullong* volatile)(v24_.v25 + 8),
+                         0xFFFFFFFFFFFFFFFFLL) == 0) {
+      (*(void (**)(__int64))(*(_QWORD*)v22 + 16LL))(v22);
       {
-        (_QWORD*)std___1___shared_weak_count___release_weak(v30);
+        std___1___shared_weak_count___release_weak(v22);
         return;
       }
     }
   }
   else {
-    v31 = v33;
-    if (v33 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v33 + 8),
-                                     0xFFFFFFFFFFFFFFFFLL) == 0) {
-      (*(void (**)(__int64))(*(_QWORD*)v31 + 16LL))(v31);
-      result = (_QWORD*)std___1___shared_weak_count___release_weak(v31);
+    v23 = v24_.v25;
+    if (v24_.v25 != 0 &&
+        atomic_fetch_add((atomic_ullong* volatile)(v24_.v25 + 8),
+                         0xFFFFFFFFFFFFFFFFLL) == 0) {
+      (*(void (**)(__int64))(*(_QWORD*)v23 + 16LL))(v23);
+      result = std___1___shared_weak_count___release_weak(v23);
     }
     *(_QWORD*)(a2 + 16) = 0x100004000LL;
     *(_QWORD*)(a2 + 24) = 0;

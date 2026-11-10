@@ -33,16 +33,26 @@ extern char** msg_MessageManager_empty_text__ptr;
 __int64 ProcWarRecordSeq_19b4d60(__int64 result, float a2);
 __int64 ProcWarRecordSeq_GroupDrawObj_Unknown3(__int64 a1);
 __int64 ProcWarRecordSeq_RecordDrawObj_Unknown3(__int64 a1);
+__int64 GameRoutine_155f760_alt1(__int64, __int64,
+                                 const char*) __asm__("GameRoutine_155f760");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
+    "std___1___shared_weak_count_lock");
+__int64 ui_LayoutAccessor_SetPaneVisible_alt1(
+    __int64 result, __int64, char) __asm__("ui_LayoutAccessor_SetPaneVisible");
 
 __int64 ProcWarRecordSeq_19b4d60(__int64 result, float a2)
 {
+
+#pragma clang fp contract(off)
   int v2;
   __int64 v4;
   float v5;
   __int64 v8;
   __int64 v9;
   __int64* v11;
-  __int64 v12;
+  const char* v12;
   __int64 v13;
   __int64 v14;
   _BOOL4 v15;
@@ -68,7 +78,7 @@ __int64 ProcWarRecordSeq_19b4d60(__int64 result, float a2)
   }
   v9 = *(_QWORD*)(v4 + 40);
   if (v9 != 0 && v5 >= *(float*)(v4 + 28)) {
-    result = ui_LayoutAccessor_SetPaneVisible(*(_QWORD*)(v4 + 32), v9, 0);
+    result = ui_LayoutAccessor_SetPaneVisible_alt1(*(_QWORD*)(v4 + 32), v9, 0);
     *(_QWORD*)(v4 + 40) = 0;
     return result;
   }
@@ -77,9 +87,9 @@ __int64 ProcWarRecordSeq_19b4d60(__int64 result, float a2)
     if (v11[2] != 0) {
       result = v11[1];
       if (result != 0) {
-        v12 = *(_QWORD*)(v4 + 40);
+        v12 = *(const char**)(v4 + 40);
         v23 = *(_QWORD*)(v4 + 8);
-        result = std___1___shared_weak_count_lock(result);
+        result = std___1___shared_weak_count_lock_alt1(result);
         if (result == 0) {
           goto LABEL_29;
         }
@@ -99,7 +109,7 @@ __int64 ProcWarRecordSeq_19b4d60(__int64 result, float a2)
                              0xFFFFFFFFFFFFFFFFLL) == 0) {
           v16 = result;
           (*(void (**)(__int64))(*(_QWORD*)result + 16LL))(result);
-          result = std___1___shared_weak_count___release_weak(v16);
+          result = std___1___shared_weak_count___release_weak_alt1(v16);
         }
         if (!v15) {
           if ((v2 & 1) == 0) {
@@ -115,7 +125,7 @@ __int64 ProcWarRecordSeq_19b4d60(__int64 result, float a2)
         }
         v18 = v11[2];
         if (v18 != 0) {
-          result = GameRoutine_155f760(v11, v18, v12);
+          result = GameRoutine_155f760_alt1((__int64)v11, v18, v12);
           if (result != 0) {
             LODWORD(v20) = v23;
             v21 = *(int32x2_t**)(result + 24);

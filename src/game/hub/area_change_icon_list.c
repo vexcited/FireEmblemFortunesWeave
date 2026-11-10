@@ -19,6 +19,8 @@ __n128 std___1___shared_weak_count___release_weak(_QWORD);
 char* GameRoutine_1038880(char**, _QWORD*);
 void LayoutAccessor_1562680(__int64*, __int64, float);
 void AreaChangeIconList_Unknown2(__int64 a1, __int64 a2);
+__int64 fmodf_alt1(float, float) __asm__("fmodf");
+void game_hub_1035650(__int64, __int64, __int64, float*);
 
 void AreaChangeIconList_Unknown2(__int64 a1, __int64 a2)
 {
@@ -454,6 +456,8 @@ LABEL_16:
 void AreaChangeIconList_Unknown4(__int64 a1, __int64 a2, int* a3, float* a4,
                                  __int64 a5)
 {
+
+#pragma clang fp contract(off)
   __int64 v5;
   __int64 v6;
   int v11;
@@ -477,6 +481,7 @@ void AreaChangeIconList_Unknown4(__int64 a1, __int64 a2, int* a3, float* a4,
   char v29;
   int v30;
 
+  v19 = COERCE_AS(__typeof__(v19), PSEUDO_REGISTER(float, "s0", "=w"));
   v5 = *(_QWORD*)(a2 + 184);
   v6 = *(_QWORD*)(a2 + 192);
   if (v5 != v6) {
@@ -504,16 +509,17 @@ void AreaChangeIconList_Unknown4(__int64 a1, __int64 a2, int* a3, float* a4,
     v17 = *(_QWORD*)(v15 + (v16 << 6));
     if (v17 != 0) {
       v18 = *(float*)(v5 + 92);
-      v19 = fmodf(a1, v18, 360.0);
+      fmodf_alt1(v18, 0x1.6800000000000p+8f),
+          v19 = COERCE_AS(__typeof__(v19), PSEUDO_REGISTER(float, "s0", "=w"));
       v20 = *a3;
-      if (v18 >= 0.0) {
+      if (v18 >= 0x0.0p+0f) {
         v21 = v19;
       }
       else {
-        v21 = v19 + 360.0;
+        v21 = v19 + 0x1.6800000000000p+8f;
       }
       if (v20 != 0) {
-        v22 = 0.0;
+        v22 = 0x0.0p+0f;
         if (v20 == 1) {
           v22 = *a4;
         }
@@ -521,12 +527,12 @@ void AreaChangeIconList_Unknown4(__int64 a1, __int64 a2, int* a3, float* a4,
       else {
         v22 = *(float*)a5;
       }
-      v27 = v22 / 2.5;
-      v28 = 1.0;
-      if (v27 <= 1.0) {
+      v27 = v22 / 0x1.4000000000000p+1f;
+      v28 = 0x1.0000000000000p+0f;
+      if (v27 <= 0x1.0000000000000p+0f) {
         v28 = v27;
-        if (v27 < 0.5) {
-          v28 = 0.5;
+        if (v27 < 0x1.0000000000000p-1f) {
+          v28 = 0x1.0000000000000p-1f;
         }
       }
       v29 = *(_BYTE*)(v17 + 88);
@@ -535,7 +541,9 @@ void AreaChangeIconList_Unknown4(__int64 a1, __int64 a2, int* a3, float* a4,
       *(_BYTE*)(v17 + 88) = v29 | 0x10;
       v30 = *a3;
       if (*a3 == 1) {
-        GameRoutine_1035650(a1, v17, v5, a4);
+        game_hub_1035650(a1, v17, v5, a4),
+            v19 =
+                COERCE_AS(__typeof__(v19), PSEUDO_REGISTER(float, "s0", "=w"));
         v30 = *a3;
       }
       if (v30 != 0) {
@@ -548,7 +556,10 @@ void AreaChangeIconList_Unknown4(__int64 a1, __int64 a2, int* a3, float* a4,
           v23 = *(float*)(a5 + 12);
           v25 = *(float*)a5;
           if (*(_BYTE*)(a5 + 16) == 1) {
-            fmodf(a1, *(float*)(*(_QWORD*)GameData_212dc38[0] + 100LL), 360.0);
+            fmodf_alt1(*(float*)(*(_QWORD*)GameData_212dc38[0] + 100LL),
+                       0x1.6800000000000p+8f),
+                v19 = COERCE_AS(__typeof__(v19),
+                                PSEUDO_REGISTER(float, "s0", "=w"));
             v13 = *(_BYTE*)(v17 + 88);
           }
           v26 = *(_OWORD*)v5;

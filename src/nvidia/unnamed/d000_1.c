@@ -576,7 +576,8 @@ LABEL_127:
     if (v37 > 0xA) {
       goto LABEL_179;
     }
-    if ((*(unsigned __int8 (**)(void))(v36 + 21112))() != 0) {
+    if ((*(unsigned __int8 (**)(void*))(v36 + 21112))(
+            *(void**)(*(_QWORD*)(*(_QWORD*)v63 + 8LL) + 64LL)) != 0) {
       goto LABEL_135;
     }
   }

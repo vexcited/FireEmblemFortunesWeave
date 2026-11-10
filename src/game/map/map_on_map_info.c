@@ -59,8 +59,10 @@ _QWORD* game_map_MapOnMapInfo_IconBlink_Update_lambda0_Invoke(__int64 a1,
                                                               _DWORD* a2);
 _QWORD* game_map_MapOnMapInfo_Info_SetBattleFactor_lambda0_Invoke_1602160(
     __int64 a1, _DWORD* a2, __int64 a3);
-__int64 game_map_MapOnMapInfo_Info_SetBattleFactor_lambda0_Invoke_1602350(
-    __int64 result, _DWORD* a2);
+__int64 game_map_MapOnMapInfo_Info_SetBattleFactor_lambda0_Invoke_1602350_alt1(
+    __int64 result,
+    _DWORD* a2) __asm__("game_map_MapOnMapInfo_Info_SetBattleFactor_lambda0_"
+                        "Invoke_1602350");
 _QWORD* game_map_MapOnMapInfo_Info_SetBattleFactor_lambda1_Invoke_1602540(
     __int64 a1, _DWORD* a2, __int64 a3);
 __int64 game_map_MapOnMapInfo_Info_SetBattleFactor_lambda1_Invoke_1602730(
@@ -143,6 +145,13 @@ __int64 Manager_136ac50_alt1(__int64, __int64,
 __int64 Manager_136b110(__int64, unsigned int, char*);
 extern char GameData_1a9f09e;
 _QWORD* MapOnMapInfo_15fbb90(_QWORD* a1, unsigned int a2);
+__int64 GameRoutine_1842ce0_alt1(__int64 result) __asm__("GameRoutine_1842ce0");
+bool game_HasActiveSkill_843420_alt1(_DWORD*, __int64) __asm__(
+    "game_HasActiveSkill_843420");
+void GameRoutine_15fba20_alt1(_QWORD*, __int64,
+                              __int64) __asm__("GameRoutine_15fba20");
+void game_map_MapOnMapInfo_Info_SetBattleFactor_lambda0_Invoke_1602350(
+    __int64 a1, unsigned int* a2);
 
 _QWORD* MapOnMapInfo_15fbb90(_QWORD* a1, unsigned int a2)
 {
@@ -1892,49 +1901,49 @@ _QWORD* game_map_MapOnMapInfo_Info_SetBattleFactor_lambda0_Invoke_1602160(
       result, a2, a3);
 }
 
-__int64 game_map_MapOnMapInfo_Info_SetBattleFactor_lambda0_Invoke_1602350(
-    __int64 result, _DWORD* a2)
+void game_map_MapOnMapInfo_Info_SetBattleFactor_lambda0_Invoke_1602350(
+    __int64 a1, unsigned int* a2)
 {
   unsigned __int64 v2;
   __int64 v3;
   __int64 v4;
   __int64 v5;
   __int64 v7;
-  unsigned int v8;
+  __int64 v8;
+  unsigned int v9;
+  __int64 v10;
 
-  v2 = (unsigned int)*a2;
-  v3 = **(_QWORD**)(result + 8);
+  v2 = *a2;
+  v3 = **(_QWORD**)(a1 + 8);
   v4 = *(_QWORD*)(v3 + 1744);
   if (((v2 >> 5) & 0x7F) + 1 <= (*(_QWORD*)(v3 + 1752) - v4) >> 2 &&
       ((*(_DWORD*)(v4 + 4 * ((v2 >> 5) & 0x7F)) >> v2) & 1) != 0) {
-    v5 = *(_QWORD*)(result + 16);
-    result = game_HasActiveSkill_843420(a2, v3 + 1744);
-    if ((result & 1) != 0) {
-      result = *(_QWORD*)(*(_QWORD*)(*GameData_212c880[0] + 64) +
-                          8LL * (*a2 & 0xFFF));
-      if (result != 0) {
-        if (((1 << *(_BYTE*)(result + 104)) & 0x2080) != 0) {
-          v7 = *(_QWORD*)(result + 880);
-          if (v7 != 0) {
-            v8 = *(unsigned __int16*)(result + 16);
-            result = Manager_136ac50(ui_Manager_instance_ + 1264, 7, v7);
-            if (result != 0) {
-              return (__int64)GameRoutine_15fba20((_QWORD*)(v5 + 16), v8,
-                                                  result);
+    v5 = *(_QWORD*)(a1 + 16);
+    if (game_HasActiveSkill_843420_alt1(a2, v3 + 1744)) {
+      v7 = *(_QWORD*)(*(_QWORD*)(*GameData_212c880[0] + 64) +
+                      8LL * (*a2 & 0xFFF));
+      if (v7 != 0) {
+        if (((1 << *(_BYTE*)(v7 + 104)) & 0x2080) != 0) {
+          v8 = *(_QWORD*)(v7 + 880);
+          if (v8 != 0) {
+            v9 = *(unsigned __int16*)(v7 + 16);
+            v10 = Manager_136ac50_alt1(ui_Manager_instance_ + 1264, 7, v8);
+            if (v10 != 0) {
+            LABEL_8:
+              GameRoutine_15fba20_alt1((_QWORD*)(v5 + 16), v9, v10);
             }
           }
         }
-        else if (*(_BYTE*)(result + 104) == 0 && *(_BYTE*)(result + 250) == 0) {
-          v8 = *(unsigned __int16*)(result + 16);
-          result = GameRoutine_1842ce0();
-          if (result != 0) {
-            return (__int64)GameRoutine_15fba20((_QWORD*)(v5 + 16), v8, result);
+        else if (*(_BYTE*)(v7 + 104) == 0 && *(_BYTE*)(v7 + 250) == 0) {
+          v9 = *(unsigned __int16*)(v7 + 16);
+          v10 = GameRoutine_1842ce0_alt1(v7);
+          if (v10 != 0) {
+            goto LABEL_8;
           }
         }
       }
     }
   }
-  return result;
 }
 
 _QWORD* game_map_MapOnMapInfo_Info_SetBattleFactor_lambda1_Invoke_1602540(

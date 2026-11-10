@@ -2118,8 +2118,9 @@ __int64 CudaDriverHr_220e10(__int64 a1)
   if (*(_DWORD*)a1 != 0) {
     return 201;
   }
-  return (*(__int64 (**)(void))(*(_QWORD*)(*(_QWORD*)(a1 + 72) + 33160LL) +
-                                136LL))();
+  return (*(__int64 (**)(void*))(*(_QWORD*)(*(_QWORD*)(a1 + 72) + 33160LL) +
+                                 136LL))(
+      *(void**)(*(_QWORD*)(a1 + 72) + 33160LL));
 }
 
 __int64 CudaDriverHr_220e60(int a1, __int64 a2)

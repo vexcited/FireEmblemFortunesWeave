@@ -3592,7 +3592,8 @@ __int64 CudaDriverHr_5df60(__int64 a1, unsigned int a2)
     return 0;
   }
   if ((unsigned __int8)CudaDriverRoutine_9aa40(v4) != 0) {
-    return (*(__int64 (**)(void))(*(_QWORD*)(a1 + 33160) + 184LL))();
+    return (*(__int64 (**)(void*))(*(_QWORD*)(a1 + 33160) + 184LL))(
+        *(void**)(a1 + 33160));
   }
   return (*(__int64 (**)(__int64, _QWORD))(*(_QWORD*)(v2 + 64) + 19784LL))(v2,
                                                                            a2);

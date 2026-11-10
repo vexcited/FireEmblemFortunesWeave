@@ -9,6 +9,12 @@ __int64 GameRoutine_2a5520(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 __int64 PlayerHeapDataManager_2915a0(_QWORD, _QWORD);
 unsigned int* GameRoutine_288140(_QWORD*, __int64, __int64);
 __int64 DataLoadTask_Unknown2_290b20(__int64 a1);
+__int64 BaseNx_286270(__int64, unsigned int, __int64, unsigned int, __int64);
+__int64 PlayerHeapDataManager_2915a0_alt1(__int64 result) __asm__(
+    "PlayerHeapDataManager_2915a0");
+__int64 SoundArchivePlayer_288010(_QWORD*, __int64);
+__int64 SoundArchivePlayer_2a5520(__int64, _BYTE*, __int64, __int64, __int64);
+unsigned int* nn_atk_detail_288140(__int64, __int64, __int64);
 
 __int64 DataLoadTask_Unknown2_290b20(__int64 a1)
 {
@@ -31,33 +37,40 @@ __int64 DataLoadTask_Unknown2_290b20(__int64 a1)
   __int64 v19;
   __int64 v20;
   char v21;
-  __int64 v22;
-  __int64 v23;
-  _DWORD v24[2];
-  __int64 v25;
-  _DWORD v26[2];
-  __int64 v27;
-  _DWORD v28[2];
-  __int64 v29;
+  struct {
+    __int64 v22;
+    __int64 v23;
+  } v22_;
+  struct {
+    _DWORD v24[2];
+    __int64 v25;
+  } v24_;
+  struct {
+    _DWORD v26[2];
+    __int64 v27;
+  } v26_;
+  struct {
+    _DWORD v28[2];
+    __int64 v29;
+  } v28_;
   int v30;
 
-  result =
-      PlayerHeapDataManager_2915a0(*(_QWORD*)(a1 + 264), *(_QWORD*)(a1 + 72));
+  result = PlayerHeapDataManager_2915a0_alt1(*(_QWORD*)(a1 + 264));
   if (*(_QWORD*)(a1 + 104) != 0 || (v5 = *(_DWORD*)(a1 + 96)) == -1) {
   LABEL_2:
     v3 = *(_QWORD*)(a1 + 120);
-    v27 = 0;
-    v28[1] = 0;
-    v25 = 0;
-    v26[1] = 0;
-    v23 = 0;
-    v24[1] = 0;
-    v29 = 0;
+    v26_.v27 = 0;
+    v28_.v28[1] = 0;
+    v24_.v25 = 0;
+    v26_.v26[1] = 0;
+    v22_.v23 = 0;
+    v24_.v24[1] = 0;
+    v28_.v29 = 0;
     v30 = 0;
-    v22 = 0xFFFFFFFFLL;
-    v24[0] = -1;
-    v26[0] = -1;
-    v28[0] = -1;
+    v22_.v22 = 0xFFFFFFFFLL;
+    v24_.v24[0] = -1;
+    v26_.v26[0] = -1;
+    v28_.v28[0] = -1;
     if (v3 != 0) {
       if (*(_DWORD*)(a1 + 112) == -1) {
         goto LABEL_18;
@@ -68,12 +81,13 @@ __int64 DataLoadTask_Unknown2_290b20(__int64 a1)
       if (v6 == -1) {
         goto LABEL_18;
       }
-      result = GameRoutine_286270(*(_QWORD*)(a1 + 264) + 24LL, v6,
-                                  *(_QWORD*)(a1 + 256), 4u, 0);
+      result = BaseNx_286270(*(_QWORD*)(a1 + 264) + 24LL, v6,
+                             *(_QWORD*)(a1 + 256), 4u, 0);
       if ((result & 1) == 0) {
         goto LABEL_49;
       }
-      result = GameRoutine_288010((_QWORD*)(*(_QWORD*)(a1 + 264) + 24LL), v6);
+      result =
+          SoundArchivePlayer_288010((_QWORD*)(*(_QWORD*)(a1 + 264) + 24LL), v6);
       v3 = result;
       *(_QWORD*)(a1 + 120) = result;
       if (*(_DWORD*)(a1 + 112) == -1) {
@@ -81,18 +95,19 @@ __int64 DataLoadTask_Unknown2_290b20(__int64 a1)
       }
     }
     if (v3 != 0) {
-      result = GameRoutine_2a5520(&v22, &v30, v3, *(_QWORD*)(a1 + 72),
-                                  *(_QWORD*)(a1 + 80) + 24LL);
+      result = SoundArchivePlayer_2a5520((__int64)&v22_.v22, &v30, v3,
+                                         *(_QWORD*)(a1 + 72),
+                                         *(_QWORD*)(a1 + 80) + 24LL);
       if ((_DWORD)result == 2 || (_DWORD)result == -1) {
-        result = (__int64)GameRoutine_288140(
-            (_QWORD*)(*(_QWORD*)(a1 + 264) + 24LL), *(_QWORD*)(a1 + 120),
-            *(_QWORD*)(a1 + 256));
+        result = (__int64)nn_atk_detail_288140(*(_QWORD*)(a1 + 264) + 24LL,
+                                               *(_QWORD*)(a1 + 120),
+                                               *(_QWORD*)(a1 + 256));
         if ((result & 1) == 0) {
           goto LABEL_49;
         }
-        result = GameRoutine_2a5520(&v22, &v30, *(_QWORD*)(a1 + 120),
-                                    *(_QWORD*)(a1 + 72),
-                                    *(_QWORD*)(a1 + 264) + 24LL);
+        result = SoundArchivePlayer_2a5520(
+            (__int64)&v22_.v22, &v30, *(_QWORD*)(a1 + 120), *(_QWORD*)(a1 + 72),
+            *(_QWORD*)(a1 + 264) + 24LL);
       }
     }
   LABEL_18:
@@ -107,12 +122,13 @@ __int64 DataLoadTask_Unknown2_290b20(__int64 a1)
       if (v8 == -1) {
         goto LABEL_28;
       }
-      result = GameRoutine_286270(*(_QWORD*)(a1 + 264) + 24LL, v8,
-                                  *(_QWORD*)(a1 + 256), 4u, 0);
+      result = BaseNx_286270(*(_QWORD*)(a1 + 264) + 24LL, v8,
+                             *(_QWORD*)(a1 + 256), 4u, 0);
       if ((result & 1) == 0) {
         goto LABEL_49;
       }
-      result = GameRoutine_288010((_QWORD*)(*(_QWORD*)(a1 + 264) + 24LL), v8);
+      result =
+          SoundArchivePlayer_288010((_QWORD*)(*(_QWORD*)(a1 + 264) + 24LL), v8);
       v7 = result;
       *(_QWORD*)(a1 + 136) = result;
       if (*(_DWORD*)(a1 + 128) == -1) {
@@ -120,18 +136,19 @@ __int64 DataLoadTask_Unknown2_290b20(__int64 a1)
       }
     }
     if (v7 != 0) {
-      result = GameRoutine_2a5520(v24, (char*)&v30 + 1, v7, *(_QWORD*)(a1 + 72),
-                                  *(_QWORD*)(a1 + 80) + 24LL);
+      result = SoundArchivePlayer_2a5520((__int64)v24_.v24, (_BYTE*)&v30 + 1,
+                                         v7, *(_QWORD*)(a1 + 72),
+                                         *(_QWORD*)(a1 + 80) + 24LL);
       if ((_DWORD)result == 2 || (_DWORD)result == -1) {
-        result = (__int64)GameRoutine_288140(
-            (_QWORD*)(*(_QWORD*)(a1 + 264) + 24LL), *(_QWORD*)(a1 + 136),
-            *(_QWORD*)(a1 + 256));
+        result = (__int64)nn_atk_detail_288140(*(_QWORD*)(a1 + 264) + 24LL,
+                                               *(_QWORD*)(a1 + 136),
+                                               *(_QWORD*)(a1 + 256));
         if ((result & 1) == 0) {
           goto LABEL_49;
         }
-        result = GameRoutine_2a5520(v24, (char*)&v30 + 1, *(_QWORD*)(a1 + 136),
-                                    *(_QWORD*)(a1 + 72),
-                                    *(_QWORD*)(a1 + 264) + 24LL);
+        result = SoundArchivePlayer_2a5520(
+            (__int64)v24_.v24, (_BYTE*)&v30 + 1, *(_QWORD*)(a1 + 136),
+            *(_QWORD*)(a1 + 72), *(_QWORD*)(a1 + 264) + 24LL);
       }
     }
   LABEL_28:
@@ -146,12 +163,13 @@ __int64 DataLoadTask_Unknown2_290b20(__int64 a1)
       if (v10 == -1) {
         goto LABEL_38;
       }
-      result = GameRoutine_286270(*(_QWORD*)(a1 + 264) + 24LL, v10,
-                                  *(_QWORD*)(a1 + 256), 4u, 0);
+      result = BaseNx_286270(*(_QWORD*)(a1 + 264) + 24LL, v10,
+                             *(_QWORD*)(a1 + 256), 4u, 0);
       if ((result & 1) == 0) {
         goto LABEL_49;
       }
-      result = GameRoutine_288010((_QWORD*)(*(_QWORD*)(a1 + 264) + 24LL), v10);
+      result = SoundArchivePlayer_288010((_QWORD*)(*(_QWORD*)(a1 + 264) + 24LL),
+                                         v10);
       v9 = result;
       *(_QWORD*)(a1 + 152) = result;
       if (*(_DWORD*)(a1 + 144) == -1) {
@@ -159,18 +177,19 @@ __int64 DataLoadTask_Unknown2_290b20(__int64 a1)
       }
     }
     if (v9 != 0) {
-      result = GameRoutine_2a5520(v26, (char*)&v30 + 2, v9, *(_QWORD*)(a1 + 72),
-                                  *(_QWORD*)(a1 + 80) + 24LL);
+      result = SoundArchivePlayer_2a5520((__int64)v26_.v26, (_BYTE*)&v30 + 2,
+                                         v9, *(_QWORD*)(a1 + 72),
+                                         *(_QWORD*)(a1 + 80) + 24LL);
       if ((_DWORD)result == 2 || (_DWORD)result == -1) {
-        result = (__int64)GameRoutine_288140(
-            (_QWORD*)(*(_QWORD*)(a1 + 264) + 24LL), *(_QWORD*)(a1 + 152),
-            *(_QWORD*)(a1 + 256));
+        result = (__int64)nn_atk_detail_288140(*(_QWORD*)(a1 + 264) + 24LL,
+                                               *(_QWORD*)(a1 + 152),
+                                               *(_QWORD*)(a1 + 256));
         if ((result & 1) == 0) {
           goto LABEL_49;
         }
-        result = GameRoutine_2a5520(v26, (char*)&v30 + 2, *(_QWORD*)(a1 + 152),
-                                    *(_QWORD*)(a1 + 72),
-                                    *(_QWORD*)(a1 + 264) + 24LL);
+        result = SoundArchivePlayer_2a5520(
+            (__int64)v26_.v26, (_BYTE*)&v30 + 2, *(_QWORD*)(a1 + 152),
+            *(_QWORD*)(a1 + 72), *(_QWORD*)(a1 + 264) + 24LL);
       }
     }
   LABEL_38:
@@ -185,12 +204,12 @@ __int64 DataLoadTask_Unknown2_290b20(__int64 a1)
         v16 = *(_QWORD*)(a1 + 152);
         *(_QWORD*)(a1 + 176) = v13;
         *(_QWORD*)(a1 + 184) = v14;
-        v17 = v25;
-        v18 = v23;
+        v17 = v24_.v25;
+        v18 = v22_.v23;
         *(_QWORD*)(a1 + 192) = v15;
         *(_QWORD*)(a1 + 200) = v16;
-        v19 = v27;
-        v20 = v29;
+        v19 = v26_.v27;
+        v20 = v28_.v29;
         *(_QWORD*)(a1 + 224) = v17;
         *(_QWORD*)(a1 + 232) = v19;
         LOBYTE(v17) = BYTE2(v30);
@@ -211,12 +230,13 @@ __int64 DataLoadTask_Unknown2_290b20(__int64 a1)
       if (v12 == -1) {
         goto LABEL_48;
       }
-      result = GameRoutine_286270(*(_QWORD*)(a1 + 264) + 24LL, v12,
-                                  *(_QWORD*)(a1 + 256), 4u, 0);
+      result = BaseNx_286270(*(_QWORD*)(a1 + 264) + 24LL, v12,
+                             *(_QWORD*)(a1 + 256), 4u, 0);
       if ((result & 1) == 0) {
         goto LABEL_49;
       }
-      result = GameRoutine_288010((_QWORD*)(*(_QWORD*)(a1 + 264) + 24LL), v12);
+      result = SoundArchivePlayer_288010((_QWORD*)(*(_QWORD*)(a1 + 264) + 24LL),
+                                         v12);
       v11 = result;
       *(_QWORD*)(a1 + 168) = result;
       if (*(_DWORD*)(a1 + 160) == -1) {
@@ -226,28 +246,30 @@ __int64 DataLoadTask_Unknown2_290b20(__int64 a1)
     if (v11 == 0) {
       goto LABEL_48;
     }
-    result = GameRoutine_2a5520(v28, (char*)&v30 + 3, v11, *(_QWORD*)(a1 + 72),
-                                *(_QWORD*)(a1 + 80) + 24LL);
+    result = SoundArchivePlayer_2a5520((__int64)v28_.v28, (_BYTE*)&v30 + 3, v11,
+                                       *(_QWORD*)(a1 + 72),
+                                       *(_QWORD*)(a1 + 80) + 24LL);
     if ((_DWORD)result != 2 && (_DWORD)result != -1) {
       goto LABEL_48;
     }
-    result =
-        (__int64)GameRoutine_288140((_QWORD*)(*(_QWORD*)(a1 + 264) + 24LL),
-                                    *(_QWORD*)(a1 + 168), *(_QWORD*)(a1 + 256));
+    result = (__int64)nn_atk_detail_288140(*(_QWORD*)(a1 + 264) + 24LL,
+                                           *(_QWORD*)(a1 + 168),
+                                           *(_QWORD*)(a1 + 256));
     if ((result & 1) != 0) {
-      result =
-          GameRoutine_2a5520(v28, (char*)&v30 + 3, *(_QWORD*)(a1 + 168),
-                             *(_QWORD*)(a1 + 72), *(_QWORD*)(a1 + 264) + 24LL);
+      result = SoundArchivePlayer_2a5520(
+          (__int64)v28_.v28, (_BYTE*)&v30 + 3, *(_QWORD*)(a1 + 168),
+          *(_QWORD*)(a1 + 72), *(_QWORD*)(a1 + 264) + 24LL);
       goto LABEL_48;
     }
   LABEL_49:
     v21 = 0;
     goto LABEL_50;
   }
-  result = GameRoutine_286270(*(_QWORD*)(a1 + 264) + 24LL, v5,
-                              *(_QWORD*)(a1 + 256), 1u, 0);
+  result = BaseNx_286270(*(_QWORD*)(a1 + 264) + 24LL, v5, *(_QWORD*)(a1 + 256),
+                         1u, 0);
   if ((result & 1) != 0) {
-    result = GameRoutine_288010((_QWORD*)(*(_QWORD*)(a1 + 264) + 24LL), v5);
+    result =
+        SoundArchivePlayer_288010((_QWORD*)(*(_QWORD*)(a1 + 264) + 24LL), v5);
     *(_QWORD*)(a1 + 104) = result;
     goto LABEL_2;
   }

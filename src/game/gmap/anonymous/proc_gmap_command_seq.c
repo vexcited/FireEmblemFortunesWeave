@@ -225,6 +225,12 @@ __int64 ProcGmapCommandSeq_14b2a00();
 __int64 ProcGmapCommandSeq_14b2c40(__int64 a1);
 __int64 ProcGmapCommandSeq_14b2e40(__int64 a1);
 __int64 ProcGmapCommandSeq_14b30c0();
+__int64 CorpsManager_9723f0_alt1(__int64) __asm__("CorpsManager_9723f0");
+__int64 GameRoutine_133f460_alt1(__int64) __asm__("GameRoutine_133f460");
+__int64 GameRoutine_175b880_alt2(__int64*) __asm__("GameRoutine_175b880");
+__int64 GameRoutine_175bde0_alt2(__int64*) __asm__("GameRoutine_175bde0");
+__int64 game_gmap_1341d60_alt1(__int64, char) __asm__("game_gmap_1341d60");
+void GameRoutine_17bcf90_alt2() __asm__("GameRoutine_17bcf90");
 
 __int64 game_gmap_anonymous_ProcGmapCommandSeq_EndDestroyHellGate()
 {
@@ -1650,14 +1656,14 @@ __int64 ProcGmapCommandSeq_14b1bc0()
   __int64 v0;
   int v1;
   __int64* v2;
-  __int64* v3;
-  __int64 v4;
+  __int64 v3;
+  __int64* v4;
   __int64 v5;
   __int64 v6;
-  __int64* v7;
+  __int64 v7;
   __int64* v8;
-  int v9;
-  __int64 v10;
+  __int64* v9;
+  int v10;
   __int64 v11;
   __int64 v12;
   __int64* v13;
@@ -1668,75 +1674,81 @@ __int64 ProcGmapCommandSeq_14b1bc0()
   v1 = *(_DWORD*)(v0 + 56);
   v2 = *(__int64**)(v0 + 8);
   if (v1 < 0) {
-    while (*(_QWORD*)(*v2 + 96) != 0 || *(_QWORD*)(*v2 + 552) != 0) {
+    while (1) {
+      v3 = *v2;
+      if (*(_QWORD*)(*v2 + 96) == 0 && *(_QWORD*)(v3 + 552) == 0) {
+        break;
+      }
       ++v2;
     }
   }
   else {
-    v4 = *v2;
-    v3 = v2 + 1;
-    if (*(_DWORD*)(v4 + 84) != v1) {
+    v5 = *v2;
+    v4 = v2 + 1;
+    v3 = v5;
+    if (*(_DWORD*)(v5 + 84) != v1) {
       do {
-        v5 = *v3++;
-      } while (*(_DWORD*)(v5 + 84) != v1);
+        v6 = *v4++;
+        v3 = v6;
+      } while (*(_DWORD*)(v6 + 84) != v1);
     }
   }
-  GameRoutine_133f460();
-  v6 = *(_QWORD*)(GameData_21c96e8 + 8);
-  v7 = *(__int64**)(v6 + 8);
-  v8 = *(__int64**)(v6 + 16);
-  v9 = *(_DWORD*)(v6 + 56);
-  if (v9 < 0) {
-    if (v7 == v8) {
+  GameRoutine_133f460_alt1(v3);
+  v7 = *(_QWORD*)(GameData_21c96e8 + 8);
+  v8 = *(__int64**)(v7 + 8);
+  v9 = *(__int64**)(v7 + 16);
+  v10 = *(_DWORD*)(v7 + 56);
+  if (v10 < 0) {
+    if (v8 == v9) {
     LABEL_14:
-      v10 = 0;
+      v11 = 0;
       if (((*(_DWORD*)0x54LL) & 0x80000000) != 0) {
         goto LABEL_23;
       }
       goto LABEL_22;
     }
     while (1) {
-      v10 = *v7;
-      if (*(_QWORD*)(*v7 + 96) == 0 && *(_QWORD*)(v10 + 552) == 0) {
+      v11 = *v8;
+      if (*(_QWORD*)(*v8 + 96) == 0 && *(_QWORD*)(v11 + 552) == 0) {
         break;
       }
-      if (++v7 == v8) {
+      if (++v8 == v9) {
         goto LABEL_14;
       }
     }
   }
-  else if (v7 == v8) {
-    v10 = 0;
+  else if (v8 == v9) {
+    v11 = 0;
   }
   else {
     while (1) {
-      v11 = *v7++;
-      v10 = v11;
-      if (*(_DWORD*)(v11 + 84) == v9) {
+      v12 = *v8++;
+      v11 = v12;
+      if (*(_DWORD*)(v12 + 84) == v10) {
         break;
       }
-      if (v7 == v8) {
+      if (v8 == v9) {
         goto LABEL_14;
       }
     }
   }
-  if ((*(_DWORD*)(v10 + 84) & 0x80000000) == 0) {
+  if ((*(_DWORD*)(v11 + 84) & 0x80000000) == 0) {
   LABEL_22:
-    game_gmap_1341d60(v10, 0);
-    CorpsManager_9723f0(*(unsigned int*)(v10 + 84));
-    v6 = *(_QWORD*)(GameData_21c96e8 + 8);
+    game_gmap_1341d60_alt1(v11, 0);
+    CorpsManager_9723f0_alt1(*(unsigned int*)(v11 + 84));
+    v7 = *(_QWORD*)(GameData_21c96e8 + 8);
   }
 LABEL_23:
-  v12 = TroopMgr_134d2e0_alt1(v6);
+  TroopMgr_134d2e0(v7);
   v13 = GameData_212d728[0];
   *(_DWORD*)(*(_QWORD*)(GameData_21c96e8 + 8) + 56LL) = -1;
   v14 = *v13;
   *(_BYTE*)(*(_QWORD*)(*v13 + 8) + 5844LL) = 0;
   *(_BYTE*)(*(_QWORD*)(v14 + 8) + 5835LL) = 1;
   *(_BYTE*)(*(_QWORD*)(v14 + 8) + 5837LL) = 1;
-  GameRoutine_17bcf90(v12);
-  GameRoutine_175bde0(*(_QWORD*)(*v13 + 8) + 5800LL);
-  result = GameRoutine_175b880(*(_QWORD*)(*v13 + 8) + 5800LL);
+  GameRoutine_17bcf90_alt2();
+  GameRoutine_175bde0_alt2((__int64*)(*(_QWORD*)(*v13 + 8) + 5800LL));
+  result = GameRoutine_175b880_alt2((__int64*)(*(_QWORD*)(*v13 + 8) + 5800LL));
   *(_DWORD*)(*(_QWORD*)(*v13 + 8) + 5856LL) |= 0x10u;
   return result;
 }

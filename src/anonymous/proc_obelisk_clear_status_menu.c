@@ -48,6 +48,11 @@ const char* ProcObeliskClearStatusMenu_Unknown149(__int64 a1);
 const char* ProcObeliskClearStatusMenu_Unknown150(__int64 a1);
 const char* ProcObeliskClearStatusMenu_Unknown3(__int64 a1);
 const char* ProcObeliskClearStatusMenu_Unknown5(__int64 a1);
+__attribute__((swiftcall)) void LayoutAccessor_1560070(PSEUDO_X8, __int64*,
+                                                       __int64);
+__int64 ProcObeliskUnitMergeRouteSelectMenu_158ca00_alt1(
+    _QWORD*, __int64,
+    unsigned int) __asm__("ProcObeliskUnitMergeRouteSelectMenu_158ca00");
 
 __int64 anonymous_ProcObeliskClearStatusMenu_CreateBindClear(__int64 a1,
                                                              char a2)
@@ -226,26 +231,35 @@ __n128 ProcObeliskClearStatusMenu_Unknown88(__int64 a1)
   __int64 v3;
   __n128 result;
   __int64 v5;
-  __int64 v6;
-  __int64 v7;
-  __int64 v8;
+  unsigned int v6;
+  struct {
+    __int64 v7;
+    __int64 v8;
+  } v7_;
 
+  result = COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
   v2 = *(_QWORD*)(a1 + 336);
   if (v2 != 0) {
-    v3 = __dynamic_cast(v2, GameData_212e008[0], GameData_212e0c8[0], 0);
+    v3 = __dynamic_cast(v2, GameData_212e008[0], GameData_212e0c8[0], 0),
+    result = COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
     if (v3 != 0) {
       v5 = v3;
-      *(struct PseudoSret*)(&v7) =
-          GameRoutine_1560070(a1 + 848, "L_CompareInfo");
+      LayoutAccessor_1560070((void*)(&v7_.v7), (__int64*)(a1 + 848),
+                             (__int64)"L_CompareInfo"),
+          result = COERCE_AS(__typeof__(result),
+                             PSEUDO_REGISTER(__n128, "v0", "=w"));
       if (game_GameModeData_instance_ != 0) {
         v6 = *(unsigned __int8*)(game_GameModeData_instance_ + 15);
       }
       else {
         v6 = 0;
       }
-      ProcObeliskUnitMergeRouteSelectMenu_158ca00(&v7, *(_QWORD*)(v5 + 88), v6);
-      if (v8 != 0) {
-        return std___1___shared_weak_count___release_weak(v8);
+      ProcObeliskUnitMergeRouteSelectMenu_158ca00_alt1(&v7_.v7,
+                                                       *(_QWORD*)(v5 + 88), v6),
+          result = COERCE_AS(__typeof__(result),
+                             PSEUDO_REGISTER(__n128, "v0", "=w"));
+      if (v7_.v8 != 0) {
+        return std___1___shared_weak_count___release_weak(v7_.v8);
       }
     }
   }
