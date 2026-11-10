@@ -6,18 +6,6 @@ struct PseudoSret {
   _QWORD words[3];
 };
 
-extern char SdkData_bba743[3];
-
-extern char SdkData_bbf545[9];
-
-extern char SdkData_bc86e9[17];
-
-extern _DWORD SdkData_d00eb0[16];
-
-extern _WORD SdkData_d00ef0[64];
-
-extern _WORD SdkData_d00f70[256];
-
 __int64 SdkRoutine_810f00(int, int, int, int, int, void*);
 
 __int64 SdkRoutine_812100(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
@@ -364,119 +352,6 @@ LABEL_54:
   SdkRoutine_87d0a0(&v36, v31, v17, v35, &v40, &v34, &v33);
   SdkRoutine_86ee60(&v33);
   return SdkRoutine_812100(a2, v35, v40, v34, a3, a4);
-}
-
-__int64 SdkHr_830500(__int64 a1, __int64 a2, unsigned __int64 a3)
-{
-  signed __int64 v3;
-  __int64 v5;
-  __int64 v6;
-  unsigned __int64 v7;
-  bool v8;
-  _BYTE* v9;
-
-  v3 = 64 - __clz(a3 | 1);
-  if (a2 - a1 < v3) {
-    return a2;
-  }
-  v5 = a1 + v3;
-  if (a3 < 0x11) {
-    v7 = a3;
-    v6 = v5;
-  }
-  else {
-    v6 = a1 + v3;
-    do {
-      v7 = a3 >> 4;
-      *(_DWORD*)(v6 - 4) = SdkData_d00eb0[a3 & 0xF];
-      v6 -= 4;
-      v8 = a3 > 0x10F;
-      a3 >>= 4;
-    } while (v8);
-  }
-  v9 = (_BYTE*)(v6 - 1);
-  do {
-    *v9-- = SdkData_bba743[v7 & 1];
-    v8 = v7 > 1;
-    v7 >>= 1;
-  } while (v8);
-  return v5;
-}
-
-__int64 SdkHr_8305c0(__int64 a1, __int64 a2, unsigned __int64 a3)
-{
-  __int64 v3;
-  __int64 v5;
-  __int64 v6;
-  unsigned __int64 v7;
-  __int16 v8;
-  _BYTE* v9;
-  bool v10;
-
-  v3 = (86 * (66 - (unsigned int)__clz(a3 | 1))) >> 8;
-  if (a2 - a1 < v3) {
-    return a2;
-  }
-  v5 = a1 + v3;
-  if (a3 < 0x41) {
-    v7 = a3;
-    v6 = v5;
-  }
-  else {
-    v6 = a1 + v3;
-    do {
-      v7 = a3 >> 6;
-      v8 = SdkData_d00ef0[a3 & 0x3F];
-      a3 = v7;
-      *(_WORD*)(v6 - 2) = v8;
-      v6 -= 2;
-    } while (v7 > 0x40);
-  }
-  v9 = (_BYTE*)(v6 - 1);
-  do {
-    *v9-- = SdkData_bbf545[v7 & 7];
-    v10 = v7 > 7;
-    v7 >>= 3;
-  } while (v10);
-  return v5;
-}
-
-__int64 SdkHr_8306a0(__int64 a1, __int64 a2, unsigned __int64 a3)
-{
-  signed __int64 v3;
-  __int64 v5;
-  __int64 v6;
-  unsigned __int64 v7;
-  __int16 v8;
-  _BYTE* v9;
-  bool v10;
-
-  v3 = (67 - __clz(a3 | 1)) >> 2;
-  if (a2 - a1 < v3) {
-    return a2;
-  }
-  v5 = a1 + v3;
-  if (a3 < 0x101) {
-    v7 = a3;
-    v6 = v5;
-  }
-  else {
-    v6 = a1 + v3;
-    do {
-      v7 = a3 >> 8;
-      v8 = SdkData_d00f70[(unsigned __int8)a3];
-      a3 = v7;
-      *(_WORD*)(v6 - 2) = v8;
-      v6 -= 2;
-    } while (v7 > 0x100);
-  }
-  v9 = (_BYTE*)(v6 - 1);
-  do {
-    *v9-- = SdkData_bc86e9[v7 & 0xF];
-    v10 = v7 > 0xF;
-    v7 >>= 4;
-  } while (v10);
-  return v5;
 }
 
 #pragma GCC visibility pop

@@ -1,25 +1,10 @@
 #include "decomp/pseudo_types.h"
+
 #pragma GCC visibility push(hidden)
 
 __int64 SdkRoutine_87cdc0(_QWORD, _QWORD);
+
 __int64 SdkRoutine_87cfb0(_QWORD, _QWORD, _QWORD);
-
-__int64 SdkHr_7f5280(_QWORD* a1, __int64 a2, int a3)
-{
-  __int64 v4;
-  char* v5;
-  __int64 v6;
-
-  v4 = SdkRoutine_87cfb0(a1 + 2, a2, a3 | 8u);
-  v5 = (char*)a1 + *(_QWORD*)(*a1 - 24LL);
-  if (v4 != 0) {
-    v6 = 0;
-  }
-  else {
-    v6 = *((_DWORD*)v5 + 8) | 4u;
-  }
-  return SdkRoutine_87cdc0(v5, v6);
-}
 
 __int64 SdkHr_7f53c0(_QWORD* a1, __int64 a2, int a3)
 {
