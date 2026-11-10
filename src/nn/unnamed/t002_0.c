@@ -3537,7 +3537,8 @@ __int64 SdkHr_73b160(__int64 a1)
     v11 = *v1;
     *v1 = (_QWORD*)v9;
     if (v11 != nullptr) {
-      (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v11 + 8LL))(v11, v11);
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v11 + 8LL))(
+          (void*)v11, v11);
     }
   }
   return v5;

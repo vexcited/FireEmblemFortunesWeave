@@ -26,6 +26,12 @@ float SkeletalAnimObj_5f6ab0(__int64 a1, int a2, float result);
 float SkeletalAnimObj_5f6c10(__int64 a1, int a2, float result);
 float SkeletalAnimObj_5f6da0(__int64 a1, int a2, float result);
 float SkeletalAnimObj_5f7690(float* a1, float a2, float a3, float a4);
+__int64
+MaterialAnimObj_5dfe60_alt1(__int64 result,
+                            unsigned __int16) __asm__("MaterialAnimObj_5dfe60");
+__int64 MaterialAnimObj_5dff40(__int64 result, __int64);
+extern __int64 (**ModelAnimObj_Unknown9_ptr_ptr)();
+__int64 SkeletalAnimObj_Unknown6(__int64 a1, __int64 a2);
 
 __int64 SkeletalAnimObj_5f1520(__int64 a1, __int64 a2)
 {
@@ -190,6 +196,56 @@ __int64 SkeletalAnimObj_5f1840(__int64 a1, __int64 a2)
   }
   ((void (*)(__int64, __int64))GameData_21365d8[2 * (v9 & 3)])(a1, v2);
   return v6;
+}
+
+__int64 SkeletalAnimObj_Unknown6(__int64 a1, __int64 a2)
+{
+
+#pragma clang fp contract(off)
+  __int64 v2;
+  __int16 v4;
+  long double v5;
+  int v6;
+  int v7;
+  bool v8;
+  bool v9;
+  bool v10;
+  __int64 v11;
+  __int64 v12;
+
+  v2 = *(_QWORD*)(a2 + 24);
+  *(_DWORD*)(a1 + 124) &= 0xFFFFFFFC;
+  MaterialAnimObj_5dfe60_alt1(a1 + 88, *(_WORD*)(v2 + 56));
+  MaterialAnimObj_5dff40(a1 + 88, *(_QWORD*)(*(_QWORD*)(a1 + 104) + 32LL));
+  v4 = *(_WORD*)(a1 + 96);
+  *(_QWORD*)(a1 + 136) = v2;
+  *(_WORD*)(a1 + 96) = v4 | 1;
+  LODWORD(v5) = 2139095040;
+  v7 = *(_DWORD*)(a1 + 56);
+  v6 = *(_DWORD*)(a1 + 60);
+  if (v6 >= 1) {
+    v10 = __OFSUB__(v6, v7);
+    v8 = v6 == v7;
+    v9 = v6 - v7 < 0;
+  }
+  else {
+    v10 = false;
+    v8 = false;
+    v9 = false;
+  }
+  *(_DWORD*)(a1 + 64) = 2139095040;
+  if (v9 ^ v10 | v8) {
+    v11 = 0;
+    v12 = 0;
+    do {
+      ++v12;
+      *(_DWORD*)(*(_QWORD*)(a1 + 48) + v11) = 2139095040;
+      v11 += 12;
+    } while (v12 < *(int*)(a1 + 60));
+  }
+  return ((__int64 (*)(__int64, __int64, long double))
+              ModelAnimObj_Unknown9_ptr_ptr[2 * (*(_DWORD*)(a1 + 124) & 3)])(
+      a1, v2, v5);
 }
 
 __int64 SkeletalAnimObj_Unknown2(__int64 result)

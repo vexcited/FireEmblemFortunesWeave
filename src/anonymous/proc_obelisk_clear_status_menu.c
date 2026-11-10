@@ -44,6 +44,10 @@ extern __int64 (*GameData_2001210[])();
 extern __int64 (*GameData_2001290[])();
 __int64 anonymous_ProcObeliskClearStatusMenu_CreateBindClear(__int64 a1,
                                                              char a2);
+const char* ProcObeliskClearStatusMenu_Unknown149(__int64 a1);
+const char* ProcObeliskClearStatusMenu_Unknown150(__int64 a1);
+const char* ProcObeliskClearStatusMenu_Unknown3(__int64 a1);
+const char* ProcObeliskClearStatusMenu_Unknown5(__int64 a1);
 
 __int64 anonymous_ProcObeliskClearStatusMenu_CreateBindClear(__int64 a1,
                                                              char a2)
@@ -246,6 +250,46 @@ __n128 ProcObeliskClearStatusMenu_Unknown88(__int64 a1)
     }
   }
   return result;
+}
+
+const char* ProcObeliskClearStatusMenu_Unknown149(__int64 a1)
+{
+  if (*(_BYTE*)(a1 + 1184) != 0) {
+    return "MID_ClearStatus_Title";
+  }
+  else {
+    return "MID_ChapterStatus_Title";
+  }
+}
+
+const char* ProcObeliskClearStatusMenu_Unknown150(__int64 a1)
+{
+  if (*(_BYTE*)(a1 + 1184) != 0) {
+    return "MID_ClearStatus_Help";
+  }
+  else {
+    return "MID_ChapterStatus_Title_Help";
+  }
+}
+
+const char* ProcObeliskClearStatusMenu_Unknown3(__int64 a1)
+{
+  if (*(_BYTE*)(a1 + 128) != 0) {
+    return "MID_ClearStatus_Title";
+  }
+  else {
+    return "MID_ChapterStatus_Title";
+  }
+}
+
+const char* ProcObeliskClearStatusMenu_Unknown5(__int64 a1)
+{
+  if (*(_BYTE*)(a1 + 128) != 0) {
+    return "MID_ClearStatus_Help";
+  }
+  else {
+    return "MID_ChapterStatus_Title_Help";
+  }
 }
 
 _QWORD* anonymous_ProcObeliskClearStatusMenu_CreateBindClear_closure0_Invoke(

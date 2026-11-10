@@ -38,6 +38,22 @@ __int64 ui_LayoutAccessor_Setup_155dea0(_QWORD, _QWORD);
 extern __int64 (*game_map_MapSkillInfo_SkillParts_vtable[])();
 __int64 MapSkillInfo_17cecb0(__int64 result);
 __int64 MapSkillInfo_17cf0c0(__int64 a1, _QWORD* a2);
+__attribute__((swiftcall)) void UnitActor_81d430(PSEUDO_X8, _QWORD);
+__attribute__((swiftcall)) void snd_playAt_ff5f0(PSEUDO_X8, _QWORD, _QWORD,
+                                                 _QWORD, _QWORD, _QWORD, _QWORD,
+                                                 _QWORD, double, float);
+__attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, _QWORD, _QWORD,
+                                               _QWORD, _QWORD, _QWORD, _QWORD,
+                                               double, float);
+__int64 GameRoutine_17cece0(void);
+__int64 GameRoutine_18c63a0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
+__int64 GameRoutine_6fb960(_QWORD, _QWORD);
+__int64 snd_Fade_Destroy_Fade(_QWORD);
+__n128 snd_Fade_Fade_10c830(_QWORD, double);
+extern __int64* GameData_212d1e0[2];
+extern __int64 GameData_21ec7b0;
+extern __int64 GameData_21ed098;
+__int64 MapSkillInfo_17ce980(__int64 result, __int64 a2, char a3, __int64 a4);
 
 __int64 MapSkillInfo_Destructor(_QWORD* a1)
 {
@@ -493,6 +509,77 @@ __int64 MapSkillInfo_17ce880(_QWORD* a1)
     GameRoutine_1563030(v10 + 8, 0, 0);
   }
   return result;
+}
+
+__int64 MapSkillInfo_17ce980(__int64 result, __int64 a2, char a3, __int64 a4)
+{
+  __int64 v4;
+  __int64 v6;
+  __int64 v7;
+  __int64 v9;
+  __int64 v10;
+  __int64* v11;
+  __int64* v12;
+  __int64 v13;
+  const char* v14;
+  __int64 v15;
+  _QWORD v16[3];
+  _QWORD v17[2];
+  int v18;
+  _QWORD v19[26];
+
+  v4 = 160;
+  if ((a3 & 1) != 0) {
+    v4 = 184;
+  }
+  if (GameData_21ec7b0 != 0 && (v6 = *(_QWORD*)(GameData_21ec7b0 + 8)) != 0 &&
+      (*(_BYTE*)(v6 + 113) & 0x80) != 0 &&
+      (v7 = GameData_21ed098, GameData_21ed098 != 0)) {
+    if (a2 != 0 && a4 != 0) {
+      UnitActor_81d430((void*)(v19), a4);
+      v9 = GameRoutine_6fb960(a2, a4);
+      GameRoutine_18c63a0(v7, v19, a2, v9, 0);
+    }
+    else if (a4 == 0) {
+      return result;
+    }
+    UnitActor_81d430((void*)(v16), a4);
+    v17[1] = v16[0];
+    v18 = v16[1];
+    v17[0] = GameData_212d1e0[0] + 2;
+    snd_Fade_Fade_10c830(v19, 0.0f);
+    snd_playAt_ff5f0((void*)(&v15), "SE_SYS_Telop_SkillActive_Bmap",
+                     "SE_SYS_Telop_SkillActive_Bmap", v17, v19, 0, 65537, 0,
+                     0.0f, 1.0f);
+  }
+  else {
+    v10 = result + v4;
+    v11 = *(__int64**)(result + v4);
+    v12 = *(__int64**)(v10 + 8);
+    if (v11 == v12) {
+      return result;
+    }
+    while (1) {
+      v13 = *v11++;
+      result = v13;
+      if (*(_DWORD*)(v13 + 112) != 1) {
+        break;
+      }
+      if (v11 == v12) {
+        return result;
+      }
+    }
+    if ((a3 & 1) != 0) {
+      v14 = "SE_SYS_Telop_SkillActive_Enemy";
+    }
+    else {
+      v14 = "SE_SYS_Telop_SkillActive_Player";
+    }
+    GameRoutine_17cece0();
+    snd_Fade_Fade_10c830(v19, 0.0f);
+    snd_play_ff2d0((void*)(v17), v14, v14, v19, 0, 65537, 0, 0.0f, 1.0f);
+  }
+  return snd_Fade_Destroy_Fade(v19);
 }
 
 __int64* MapSkillInfo_17ceb30(__int64* result, _QWORD* a2)

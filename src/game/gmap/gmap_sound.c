@@ -62,6 +62,22 @@ __int64 GmapSound_1531110(__int64 a1, __int64 a2);
 __int64 GmapSound_1531270(__int64 result);
 void game_gmap_GmapSound_Impl_HadesAtmos_getBgmVolumeTarget(__int64 a1);
 void GmapSound_15317a0(_BYTE* a1);
+__attribute__((swiftcall)) void game_gmap_13408e0(PSEUDO_X8, _QWORD);
+__int64* GameRoutine_714e40();
+__int64 GameRoutine_112180_alt1(__int64, __int64) __asm__("GameRoutine_112180");
+__int64 GameRoutine_60a020_alt1(__int64, __int64) __asm__("GameRoutine_60a020");
+__int64
+snd_fnd_WeakHandle_isValid_alt1(__int64*) __asm__("snd_fnd_WeakHandle_isValid");
+__int64 snd_playAt_ff5f0_alt1(__int64, __int64, __int64, __int64, unsigned int,
+                              unsigned int, int, float,
+                              float) __asm__("snd_playAt_ff5f0");
+__int64 snd_stop_ffc40(__int64*, __int64);
+__int64 strcmp(_QWORD, _QWORD);
+extern __int64* GameData_212d1e0[2];
+extern __int64 game_sound_g_game_sound;
+extern char GameData_1a9f09e;
+__int64 GmapSound_1530b00(__int64 result, __int64 a2);
+__int64 GmapSound_1530c60(__int64 result);
 
 __int64 GmapSound_1530270(__int64 a1)
 {
@@ -592,6 +608,123 @@ __int64 GmapSound_15309d0(__int64 a1)
     v7 = 0x2000;
   }
   return GameRoutine_112180(a1, &v6);
+}
+
+__int64 GmapSound_1530b00(__int64 result, __int64 a2)
+{
+  __int64 v3;
+  char* v4;
+  char v5;
+  __int64 v6;
+  __int64 v7;
+  _QWORD v8[2];
+  struct {
+    __int64 v9;
+    int v10;
+  } v9_;
+  struct {
+    _QWORD v11[2];
+    int v12;
+  } v11_;
+  _QWORD v13[25];
+
+  if (game_GameModeData_instance_ != 0 && a2 != 0 &&
+      *(_DWORD*)(game_GameModeData_instance_ + 60) == 3) {
+    v3 = result;
+    result = snd_fnd_WeakHandle_isValid_alt1((__int64*)result);
+    if ((result & 1) == 0) {
+      if (game_GameModeData_instance_ != 0 &&
+          *(_DWORD*)(game_GameModeData_instance_ + 60) == 3) {
+        if (*((_BYTE*)GameRoutine_714e40() + 32) == 1) {
+          v4 = "V_PTV_IsmM_Gmap_Battle";
+        }
+        else {
+          v4 = "V_PTV_IsmF_Gmap_Battle";
+        }
+      }
+      else {
+        v4 = &GameData_1a9f09e;
+      }
+      GameRoutine_60a020_alt1(v3 + 16, (__int64)v4);
+      v5 = *(_BYTE*)(v3 + 16);
+      v6 = *(_QWORD*)(v3 + 32);
+      game_gmap_13408e0((void*)(v8), a2);
+      if (game_sound_g_game_sound != 0) {
+        if ((v5 & 1) != 0) {
+          v7 = v6;
+        }
+        else {
+          v7 = v3 + 17;
+        }
+        v11_.v11[1] = v8[0];
+        v11_.v12 = v8[1];
+        v11_.v11[0] = GameData_212d1e0[0] + 2;
+        snd_Fade_Fade_10c830_alt1((__int64)v13, 0x0.0p+0f);
+        snd_playAt_ff5f0_alt1(v7, v7, (__int64)v11_.v11, (__int64)v13, 0,
+                              0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
+        snd_Fade_Destroy_Fade_alt1(v13);
+      }
+      else {
+        v9_.v9 = 0;
+        v9_.v10 = 0x2000;
+      }
+      return GameRoutine_112180_alt1(v3, (__int64)&v9_.v9);
+    }
+  }
+  return result;
+}
+
+__int64 GmapSound_1530c60(__int64 result)
+{
+  __int64 v1;
+  __int64 v2;
+  __int64 v3;
+  const char* v4;
+  struct {
+    __int64 v5;
+    int v6;
+  } v5_;
+  _QWORD v7[25];
+
+  if (game_GameModeData_instance_ != 0 &&
+      *(_DWORD*)(game_GameModeData_instance_ + 60) == 3) {
+    v1 = result;
+    result = snd_fnd_WeakHandle_isValid_alt1((__int64*)result);
+    if ((result & 1) != 0) {
+      if ((*(_BYTE*)(v1 + 16) & 1) != 0) {
+        v2 = *(_QWORD*)(v1 + 32);
+      }
+      else {
+        v2 = v1 + 17;
+      }
+      if (game_GameModeData_instance_ == 0 ||
+          *(_DWORD*)(game_GameModeData_instance_ + 60) != 3) {
+        result = strcmp(v2, &GameData_1a9f09e);
+        if ((_DWORD)result != 0) {
+          return result;
+        }
+        goto LABEL_15;
+      }
+      v3 = v2;
+      if (*((_BYTE*)GameRoutine_714e40() + 32) == 1) {
+        v4 = "V_PTV_IsmM_Gmap_Battle";
+      }
+      else {
+        v4 = "V_PTV_IsmF_Gmap_Battle";
+      }
+      result = strcmp(v3, v4);
+      if ((_DWORD)result == 0) {
+      LABEL_15:
+        v5_.v5 = 0;
+        v5_.v6 = 0x2000;
+        GameRoutine_112180_alt1((__int64)&v5_.v5, v1);
+        snd_Fade_Fade_10c830_alt1((__int64)v7, 0x0.0p+0f);
+        snd_stop_ffc40(&v5_.v5, (__int64)v7);
+        return snd_Fade_Destroy_Fade_alt1(v7);
+      }
+    }
+  }
+  return result;
 }
 
 __int64 GmapSound_1530d50()

@@ -5,6 +5,7 @@
 __int64 GameRoutine_e51940(_QWORD, _QWORD);
 extern __int64 (*GameData_1fe62f0[])();
 __int64 game_combat_GambitIdleMotion_Run(__int64 a1);
+__attribute__((swiftcall)) void GambitIdleMotion_Unknown3(PSEUDO_X8 x8_);
 
 __int64 game_combat_GambitIdleMotion_Run(__int64 a1)
 {
@@ -27,6 +28,12 @@ __int64 game_combat_GambitIdleMotion_Run(__int64 a1)
     v2 = 40;
   }
   return (*(__int64 (**)(__int64))(*v4 + v2))((__int64)v4);
+}
+
+__attribute__((swiftcall)) void GambitIdleMotion_Unknown3(PSEUDO_X8 x8_)
+{
+  char* a1 = (char*)PSEUDO_X8_VALUE(x8_);
+  strcpy(a1, " GambitIdleMotion");
 }
 
 #pragma GCC visibility pop

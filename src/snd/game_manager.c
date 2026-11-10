@@ -330,6 +330,10 @@ float* GameManager_setField(__int64 a1, unsigned __int8* a2);
 __int64 GameManager_onSuspend(__int64 result);
 __int64 (***snd_GameManager__updatePauseWorld_lambda0_Invoke_a38c40(
     __int64 a1, __int64 a2))();
+__int64 GameRoutine_a2af20(__int64, __int64, __int64, ...);
+__int64 GameRoutine_e8ff0(__int64, unsigned __int8*);
+extern int GameData_226b690;
+__int64 GameManager_a201c0();
 
 __int64 GameManager_Destructor(__int64 a1)
 {
@@ -763,6 +767,42 @@ __int64 GameManager_initialize(__int64 a1)
   result = GameRoutine_a201c0(v5);
   *(_BYTE*)(a1 + 48) = 1;
   return result;
+}
+
+__int64 GameManager_a201c0()
+{
+  const char* v0;
+  __int64* v1;
+  unsigned __int8 v3[256];
+
+  if (GameData_226b690 != 0) {
+    v0 = "voiceEN_%d";
+    GameRoutine_a2af20((__int64)v3, 256, (__int64)"voiceEN_%d", 0);
+  }
+  else {
+    v0 = "voiceJP_%d";
+    GameRoutine_a2af20((__int64)v3, 256, (__int64)"voiceJP_%d", 0);
+  }
+  v1 = game_sound_g_game_sound_ptr[0];
+  GameRoutine_e8ff0(*game_sound_g_game_sound_ptr[0], v3);
+  GameRoutine_a2af20((__int64)v3, 256, (__int64)v0, 1);
+  GameRoutine_e8ff0(*v1, v3);
+  GameRoutine_a2af20((__int64)v3, 256, (__int64)v0, 2);
+  GameRoutine_e8ff0(*v1, v3);
+  GameRoutine_a2af20((__int64)v3, 256, (__int64)v0, 3);
+  GameRoutine_e8ff0(*v1, v3);
+  GameRoutine_a2af20((__int64)v3, 256, (__int64)v0, 4);
+  GameRoutine_e8ff0(*v1, v3);
+  GameRoutine_a2af20((__int64)v3, 256, (__int64)v0, 5);
+  GameRoutine_e8ff0(*v1, v3);
+  GameRoutine_a2af20((__int64)v3, 256, (__int64)v0, 6);
+  GameRoutine_e8ff0(*v1, v3);
+  GameRoutine_a2af20((__int64)v3, 256, (__int64)v0, 7);
+  GameRoutine_e8ff0(*v1, v3);
+  GameRoutine_a2af20((__int64)v3, 256, (__int64)v0, 8);
+  GameRoutine_e8ff0(*v1, v3);
+  GameRoutine_a2af20((__int64)v3, 256, (__int64)v0, 9);
+  return GameRoutine_e8ff0(*v1, v3);
 }
 
 __int64 GameManager_a21ca0(__int64 result, char* a2, unsigned __int8* a3,

@@ -7,6 +7,11 @@ extern __int64 GameData_21cd158;
 extern __int64* GameData_212ce90[3];
 bool MapSystemMap_Unknown8(__int64 a1, int a2, int a3);
 __int64 MapSystemMap_Unknown6(__int64 a1, int a2, int a3);
+__int64 GameRoutine_1a09ce0(_QWORD, _QWORD, _QWORD);
+__attribute__((swiftcall)) void MapSystemMap_1a01880(PSEUDO_X8 x8_,
+                                                     __int64 unused_int0,
+                                                     unsigned __int8 a1,
+                                                     char a2, int a3, int a4);
 
 bool MapSystemMap_Unknown8(__int64 a1, int a2, int a3)
 {
@@ -43,6 +48,81 @@ bool MapSystemMap_Unknown8(__int64 a1, int a2, int a3)
             1) != 0;
   }
   return result;
+}
+
+__attribute__((swiftcall)) void MapSystemMap_1a01880(PSEUDO_X8 x8_,
+                                                     __int64 unused_int0,
+                                                     unsigned __int8 a1,
+                                                     char a2, int a3, int a4)
+{
+  char* a5 = (char*)PSEUDO_X8_VALUE(x8_);
+  __int64 result;
+  const char* v11;
+  const char* v12;
+  __int64 v13;
+  char* v14;
+  const char* v15;
+
+  strcpy(a5, "&Battle_MiniMapLarge");
+  result = GameRoutine_1a09ce0(a5, "_Unit", 5);
+  if (a4 == 2) {
+    v11 = "2x2";
+  }
+  else {
+    if (a4 != 3) {
+      goto LABEL_6;
+    }
+    v11 = "3x3";
+  }
+  result = GameRoutine_1a09ce0(a5, v11, 3);
+LABEL_6:
+  if (a1 <= 1u) {
+    if (a1 != 0) {
+      v12 = "_Enemy";
+    }
+    else {
+      if ((a2 & 1) == 0) {
+        v12 = "_Player";
+        v14 = a5;
+        v13 = 7;
+        goto LABEL_16;
+      }
+      v12 = "_Guest";
+    }
+    goto LABEL_15;
+  }
+  if (a1 == 2) {
+    v12 = "_Third";
+  LABEL_15:
+    v14 = a5;
+    v13 = 6;
+    goto LABEL_16;
+  }
+  if (a1 == 3) {
+    v12 = "_Ally";
+    v13 = 5;
+    v14 = a5;
+  LABEL_16:
+    result = GameRoutine_1a09ce0(v14, v12, v13);
+  }
+  if (a3 == 1) {
+    v15 = "Strong";
+    {
+      GameRoutine_1a09ce0(a5, v15, 6);
+      return;
+    }
+  }
+  if (a3 == 2) {
+    v15 = "Leader";
+    {
+      GameRoutine_1a09ce0(a5, v15, 6);
+      return;
+    }
+  }
+  {
+    result;
+    return;
+  }
 }
 
 __int64 MapSystemMap_Unknown6(__int64 a1, int a2, int a3)

@@ -116,6 +116,8 @@ __attribute__((swiftcall)) void Manager_d9ba20(PSEUDO_X8 x8_, __int64 a1,
                                                unsigned __int8* a2, _QWORD* a3);
 __int64 Manager_d9c8c0(__int64 a1, __int64* a2);
 _QWORD* Manager_d9d980(_QWORD* result);
+extern _UNKNOWN GameData_1ac689a;
+__int64 Manager_6308c0(__int64 a1);
 
 __int64 Manager_626d20(__int64 a1, __int64 a2)
 {
@@ -2436,6 +2438,68 @@ __int64* as_Manager_executeContext_lambda0_Invoke_630790(__int64* result,
     }
   }
   return result;
+}
+
+__int64 Manager_6308c0(__int64 a1)
+{
+
+#pragma clang fp contract(off)
+  (*(void (**)(__int64, const char*, const char*))(*(_QWORD*)a1 + 304LL))(
+      a1, "f64", "double");
+  (*(void (**)(__int64, const char*, const char*))(*(_QWORD*)a1 + 304LL))(
+      a1, "f32", "float");
+  (*(void (**)(__int64, const char*, const char*))(*(_QWORD*)a1 + 304LL))(
+      a1, "s64", "int64");
+  (*(void (**)(__int64, const char*, const char*))(*(_QWORD*)a1 + 304LL))(
+      a1, "u64", "uint64");
+  (*(void (**)(__int64, const char*, const char*))(*(_QWORD*)a1 + 304LL))(
+      a1, "s32", "int");
+  (*(void (**)(__int64, const char*, const char*))(*(_QWORD*)a1 + 304LL))(
+      a1, "u32", "uint");
+  (*(void (**)(__int64, const char*, const char*))(*(_QWORD*)a1 + 304LL))(
+      a1, "s16", "int16");
+  (*(void (**)(__int64, const char*, const char*))(*(_QWORD*)a1 + 304LL))(
+      a1, "u16", "uint16");
+  (*(void (**)(__int64, void*, const char*))(*(_QWORD*)a1 + 304LL))(
+      a1, &GameData_1ac689a, "int8");
+  (*(void (**)(__int64, const char*, const char*))(*(_QWORD*)a1 + 304LL))(
+      a1, "u8", "uint8");
+  (*(void (**)(__int64, const char*, const char*))(*(_QWORD*)a1 + 304LL))(
+      a1, "as_f64", "double");
+  (*(void (**)(__int64, const char*, const char*))(*(_QWORD*)a1 + 304LL))(
+      a1, "as_f32", "float");
+  (*(void (**)(__int64, const char*, const char*))(*(_QWORD*)a1 + 304LL))(
+      a1, "as_s64", "int64");
+  (*(void (**)(__int64, const char*, const char*))(*(_QWORD*)a1 + 304LL))(
+      a1, "as_u64", "uint64");
+  (*(void (**)(__int64, const char*, const char*))(*(_QWORD*)a1 + 304LL))(
+      a1, "as_s32", "int");
+  (*(void (**)(__int64, const char*, const char*))(*(_QWORD*)a1 + 304LL))(
+      a1, "as_u32", "uint");
+  (*(void (**)(__int64, const char*, const char*))(*(_QWORD*)a1 + 304LL))(
+      a1, "as_s16", "int16");
+  (*(void (**)(__int64, const char*, const char*))(*(_QWORD*)a1 + 304LL))(
+      a1, "as_u16", "uint16");
+  (*(void (**)(__int64, const char*, const char*))(*(_QWORD*)a1 + 304LL))(
+      a1, "as_s8", "int8");
+  (*(void (**)(__int64, const char*, const char*))(*(_QWORD*)a1 + 304LL))(
+      a1, "as_u8", "uint8");
+  (*(void (**)(__int64, const char*, const char*))(*(_QWORD*)a1 + 304LL))(
+      a1, "int64_t", "int64");
+  (*(void (**)(__int64, const char*, const char*))(*(_QWORD*)a1 + 304LL))(
+      a1, "uint64_t", "uint64");
+  (*(void (**)(__int64, const char*, const char*))(*(_QWORD*)a1 + 304LL))(
+      a1, "int32_t", "int");
+  (*(void (**)(__int64, const char*, const char*))(*(_QWORD*)a1 + 304LL))(
+      a1, "uint32_t", "uint");
+  (*(void (**)(__int64, const char*, const char*))(*(_QWORD*)a1 + 304LL))(
+      a1, "int16_t", "int16");
+  (*(void (**)(__int64, const char*, const char*))(*(_QWORD*)a1 + 304LL))(
+      a1, "uint16_t", "uint16");
+  (*(void (**)(__int64, const char*, const char*))(*(_QWORD*)a1 + 304LL))(
+      a1, "int8_t", "int8");
+  return (*(__int64 (**)(__int64, const char*, const char*))(
+      *(_QWORD*)a1 + 304LL))(a1, "uint8_t", "uint8");
 }
 
 void Manager_d9a760(__int64 a1)

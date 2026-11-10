@@ -257,6 +257,8 @@ __int64 Manager_136a920(__int64 a1, __int64 a2, int a3, unsigned int a4,
 __int64 Manager_136ad70(__int64 a1, __int64 a2, int a3, unsigned int a4,
                         char* a5);
 __int64 Manager_136b110(__int64 a1, unsigned int a2, char* a3);
+bool GameRoutine_91bb50(unsigned __int8*, unsigned __int8*);
+const char* Manager_a4aea0(__int64 a1);
 
 unsigned __int64 Manager_6326c0(__int64* a1, __int64 a2)
 {
@@ -3110,6 +3112,97 @@ char* Manager_a4a540(__int64 a1, unsigned __int8* a2)
     }
   }
   return nullptr;
+}
+
+const char* Manager_a4aea0(__int64 a1)
+{
+  unsigned int v1;
+  bool v4;
+  bool v6;
+  __int64 v7;
+  __int64 v8;
+
+  v1 = BYTE3(a1);
+  v8 = a1;
+  if ((unsigned __int8)a1 <= 0x68u) {
+    switch ((unsigned __int8)a1) {
+    case 'd':
+      if (BYTE1(a1) == 101 && BYTE2(a1) == 0) {
+        return "EUde";
+      }
+      break;
+    case 'e':
+      v4 = BYTE1(a1) == 110 && BYTE2(a1) == 45;
+      if (BYTE5(a1) == 0 && v1 == 85 && BYTE4(a1) == 83 && v4) {
+        return "USen";
+      }
+      if (BYTE2(a1) == 45 && (a1 & 0xFF000000000000LL) == 0 &&
+          BYTE5(a1) == 57 && BYTE4(a1) == 49 && BYTE1(a1) == 115 && v1 == 52) {
+        return "USes";
+      }
+      v6 = v1 == 71 && BYTE4(a1) == 66 && v4;
+      if (BYTE5(a1) == 0 && v6) {
+        return "EUen";
+      }
+      if (BYTE1(a1) == 115 && BYTE2(a1) == 0) {
+        return "EUes";
+      }
+      break;
+    case 'f':
+      if (BYTE5(a1) == 0 && BYTE4(a1) == 65 && v1 == 67 && BYTE1(a1) == 114 &&
+          BYTE2(a1) == 45) {
+        return "USfr";
+      }
+      if (BYTE1(a1) == 114 && BYTE2(a1) == 0) {
+        return "EUfr";
+      }
+      break;
+    default:
+      break;
+    }
+  }
+  else if ((unsigned __int8)a1 > 0x6Du) {
+    if ((unsigned __int8)a1 == 110) {
+      if (BYTE1(a1) == 108 && BYTE2(a1) == 0) {
+        return "EUnl";
+      }
+    }
+    else if ((unsigned __int8)a1 == 112 && BYTE5(a1) == 0 && BYTE4(a1) == 82 &&
+             v1 == 66 && BYTE1(a1) == 116 && BYTE2(a1) == 45) {
+      return "USpt";
+    }
+  }
+  else if ((unsigned __int8)a1 == 105) {
+    if (BYTE1(a1) == 116 && BYTE2(a1) == 0) {
+      return "EUit";
+    }
+  }
+  else if ((unsigned __int8)a1 == 106 && BYTE1(a1) == 97 && BYTE2(a1) == 0) {
+    return "JPja";
+  }
+  v7 = 29808;
+  if (GameRoutine_91bb50((unsigned __int8*)&v8, (unsigned __int8*)&v7)) {
+    return "EUpt";
+  }
+  v7 = 30066;
+  if (GameRoutine_91bb50((unsigned __int8*)&v8, (unsigned __int8*)&v7)) {
+    return "EUru";
+  }
+  v7 = 0x736E61482D687ALL;
+  if (GameRoutine_91bb50((unsigned __int8*)&v8, (unsigned __int8*)&v7)) {
+    return "CNzh";
+  }
+  v7 = 0x746E61482D687ALL;
+  if (GameRoutine_91bb50((unsigned __int8*)&v8, (unsigned __int8*)&v7)) {
+    return "TWzh";
+  }
+  v7 = 28523;
+  if (GameRoutine_91bb50((unsigned __int8*)&v8, (unsigned __int8*)&v7)) {
+    return "KRko";
+  }
+  else {
+    return "USen";
+  }
 }
 
 __int64 Manager_a4b3c0(__int64 a1)

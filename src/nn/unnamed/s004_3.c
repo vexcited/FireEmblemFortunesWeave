@@ -1,4 +1,4 @@
-#include "decomp/pseudo_types.h"
+#include "decomp/pseudo_helpers.h"
 #pragma GCC visibility push(hidden)
 
 extern __int64 (*SdkData_1045108)(_QWORD*, __int64);
@@ -298,7 +298,8 @@ __int64 SdkHr_6ead20(_BYTE* a1)
   }
   if (v8 != nullptr) {
     v6 = result;
-    (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v8 + 8LL))(v8, v8);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v8 + 8LL))(
+        (void*)v8, v8);
     result = v6;
   }
   if (v3) {

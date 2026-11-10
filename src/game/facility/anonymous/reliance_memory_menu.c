@@ -16,12 +16,74 @@ __int64 RelianceMemoryMenu_Unknown84(__int64 a1);
 __int64 RelianceMemoryMenu_Unknown128(__int64 a1);
 bool game_facility_anonymous_RelianceMemoryMenu_FindMenuItem_closure_Invoke(
     __int64 a1, __int64* a2);
+__attribute__((swiftcall)) void LayoutAccessor_1560070(PSEUDO_X8, __int64*,
+                                                       __int64);
+__int64 UnitUtil_15e0120(__int64);
+__int64 UnitUtil_15e0200(__int64);
+__int64 UnitUtil_15e04f0(__int64 result);
+__int64 __dynamic_cast(_QWORD, _QWORD, _QWORD, _QWORD);
+__int64 game_gameui_15997d0(__int64 result, __int64, char);
+__int64 game_menu_UnitGridSelectMenu_Unknown88(_QWORD*);
+__int64 std___1___shared_weak_count___release_weak(_QWORD);
+__int64 std___1___shared_weak_count_lock(_QWORD);
+extern __int64* GameData_212e008[9];
+extern __int64 GameData_2124380;
+__int64 RelianceMemoryMenu_Unknown88(_QWORD* a1);
 
 __int64 RelianceMemoryMenu_Unknown84(__int64 a1)
 {
   ui_LayoutAccessor_SetPaneVisible(a1 + 952, "L_Num", 0);
   return ui_LayoutAccessor_SetPaneVisible(a1 + 848,
                                           "L_UnitInfoDetail/L_BlnFavor", 0);
+}
+
+__int64 RelianceMemoryMenu_Unknown88(_QWORD* a1)
+{
+  __int64 v2;
+  __int64 v3;
+  char v4;
+  __int64 v5;
+  __int64 v6;
+  struct {
+    __int64 v8;
+    __int64 v9;
+  } v8_;
+  _BYTE v10[20];
+
+  v2 = a1[42];
+  if (v2 != 0) {
+    v3 = __dynamic_cast(v2, GameData_212e008[0], &GameData_2124380, 0);
+  }
+  else {
+    v3 = 0;
+  }
+  v4 = *(_BYTE*)(v3 + 96);
+  UnitUtil_15e0120((__int64)v10);
+  if ((v4 & 1) == 0) {
+    UnitUtil_15e0200((__int64)v10);
+  }
+  game_menu_UnitGridSelectMenu_Unknown88(a1);
+  LayoutAccessor_1560070((void*)(&v8_.v8), a1 + 106,
+                         (__int64)"L_UnitInfoDetail");
+  if (v8_.v9 != 0) {
+    v5 = std___1___shared_weak_count_lock(v8_.v9);
+    v6 = v8_.v8;
+    if (v8_.v9 != 0) {
+      std___1___shared_weak_count___release_weak(v8_.v9);
+    }
+    if (v5 != 0 && v6 != 0) {
+      game_gameui_15997d0(v6, *(_QWORD*)(v3 + 88), 0);
+    }
+    else if (v5 == 0) {
+      return UnitUtil_15e04f0((__int64)v10);
+    }
+    if (atomic_fetch_add((atomic_ullong* volatile)(v5 + 8),
+                         0xFFFFFFFFFFFFFFFFLL) == 0) {
+      (*(void (**)(__int64))(*(_QWORD*)v5 + 16LL))(v5);
+      std___1___shared_weak_count___release_weak(v5);
+    }
+  }
+  return UnitUtil_15e04f0((__int64)v10);
 }
 
 __int64 RelianceMemoryMenu_Unknown128(__int64 a1)

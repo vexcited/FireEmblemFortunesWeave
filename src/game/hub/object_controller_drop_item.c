@@ -1,5 +1,7 @@
 #include "decomp/pseudo_helpers.h"
 
+#include "decomp/pseudo_float.h"
+
 #pragma GCC visibility push(hidden)
 
 __attribute__((swiftcall)) void GameRoutine_e1b4d0(PSEUDO_X8);
@@ -49,6 +51,12 @@ extern __int64 GameData_21ec7c0;
 void ObjectControllerDropItem_ccc840(__int64 a1, __int64** a2);
 __attribute__((swiftcall)) void
 ObjectControllerDropItem_Unknown3(PSEUDO_X8 x8_, __int64 result);
+__int64 nn_os_LockMutex(_QWORD);
+__n128 nn_os_UnlockMutex(_QWORD);
+extern _UNKNOWN game_g_random_mutex;
+extern __int64* game_map_MapRandom_instance__ptr[3];
+void game_hub_ObjectControllerDropItem_InitializeImpl_lambda0_Invoke(
+    __int64 a1);
 
 void ObjectControllerDropItem_ccc840(__int64 a1, __int64** a2)
 {
@@ -620,6 +628,99 @@ ObjectControllerDropItem_Unknown3(PSEUDO_X8 x8_, __int64 result)
   {
     result;
     return;
+  }
+}
+
+void game_hub_ObjectControllerDropItem_InitializeImpl_lambda0_Invoke(__int64 a1)
+{
+  __int64 v1;
+  __int64* v2;
+  int v3;
+  unsigned int v4;
+  unsigned int v5;
+  int v6;
+  __n128 v7;
+  int v8;
+  unsigned int v9;
+  unsigned int v10;
+  int v11;
+  int v12;
+  unsigned int v13;
+  unsigned int v14;
+  int v15;
+  float32x4_t v16;
+  float32x4_t v17;
+  float32x4_t v18;
+  __int128 v19;
+  float v20;
+  __n128 v21;
+
+  v1 = *(_QWORD*)(a1 + 8);
+  if ((*(_BYTE*)(v1 + 112) & 1) == 0) {
+    *(_BYTE*)(v1 + 112) = 1;
+    nn_os_LockMutex(&game_g_random_mutex);
+    v2 = game_map_MapRandom_instance__ptr[0];
+    v3 = *(_DWORD*)((char*)game_map_MapRandom_instance__ptr[0] +
+                    (unsigned __int64)((_UNKNOWN**)0x8LL));
+    v4 = *(_DWORD*)((char*)game_map_MapRandom_instance__ptr[0] +
+                    (unsigned __int64)((_UNKNOWN**)0x8LL) + 4);
+    v5 = *(_DWORD*)game_map_MapRandom_instance__ptr[0] ^
+         (*(_DWORD*)game_map_MapRandom_instance__ptr[0] << 11);
+    *(_DWORD*)game_map_MapRandom_instance__ptr[0] =
+        *((_DWORD*)game_map_MapRandom_instance__ptr[0] + 1);
+    *((_DWORD*)v2 + 1) = v3;
+    v6 = (v5 >> 8) ^ (v4 >> 19) ^ v5 ^ v4;
+    *(_DWORD*)((char*)((_UNKNOWN**)0x8LL) + (_QWORD)v2) = v4;
+    *(_DWORD*)((char*)((_UNKNOWN**)0x8LL) + (_QWORD)v2 + 4) = v6;
+    v7 = nn_os_UnlockMutex(&game_g_random_mutex);
+    PSEUDO_LOW_LANE128(
+        v7, n128_f32,
+        (float)(fminf(fmaxf(vcvts_n_f32_u32((unsigned __int16)v6, 0x10u),
+                            0x0.0p+0f),
+                      0x1.0000000000000p+0f) *
+                0x1.0000000000000p+1f) +
+            -0x1.0000000000000p+0f);
+    v21 = v7;
+    nn_os_LockMutex(&game_g_random_mutex);
+    v8 = *(_DWORD*)((char*)((_UNKNOWN**)0x8LL) + (_QWORD)v2);
+    v9 = *(_DWORD*)((char*)((_UNKNOWN**)0x8LL) + (_QWORD)v2 + 4);
+    v10 = *(_DWORD*)v2 ^ (*(_DWORD*)v2 << 11);
+    *(_DWORD*)v2 = *((_DWORD*)v2 + 1);
+    *((_DWORD*)v2 + 1) = v8;
+    v11 = (v10 >> 8) ^ (v9 >> 19) ^ v10 ^ v9;
+    *(_DWORD*)((char*)((_UNKNOWN**)0x8LL) + (_QWORD)v2) = v9;
+    *(_DWORD*)((char*)((_UNKNOWN**)0x8LL) + (_QWORD)v2 + 4) = v11;
+    nn_os_UnlockMutex(&game_g_random_mutex);
+    v20 = (float)(fminf(fmaxf(vcvts_n_f32_u32((unsigned __int16)v11, 0x10u),
+                              0x0.0p+0f),
+                        0x1.0000000000000p+0f) *
+                  0x1.8000000000000p+0f) +
+          0x1.0000000000000p-1f;
+    nn_os_LockMutex(&game_g_random_mutex);
+    v12 = *(_DWORD*)((char*)((_UNKNOWN**)0x8LL) + (_QWORD)v2);
+    v13 = *(_DWORD*)((char*)((_UNKNOWN**)0x8LL) + (_QWORD)v2 + 4);
+    v14 = *(_DWORD*)v2 ^ (*(_DWORD*)v2 << 11);
+    *(_DWORD*)v2 = *((_DWORD*)v2 + 1);
+    *((_DWORD*)v2 + 1) = v12;
+    v15 = (v14 >> 8) ^ (v13 >> 19) ^ v14 ^ v13;
+    *(_DWORD*)((char*)((_UNKNOWN**)0x8LL) + (_QWORD)v2) = v13;
+    *(_DWORD*)((char*)((_UNKNOWN**)0x8LL) + (_QWORD)v2 + 4) = v15;
+    nn_os_UnlockMutex(&game_g_random_mutex);
+    v16 = v21;
+    LANES128(v16).n128_f32[1] = v20;
+    LANES128(v16).n128_f32[2] =
+        (float)(fminf(fmaxf(vcvts_n_f32_u32((unsigned __int16)v15, 0x10u),
+                            0x0.0p+0f),
+                      0x1.0000000000000p+0f) *
+                0x1.0000000000000p+1f) +
+        -0x1.0000000000000p+0f;
+    LANES128(v17).n128_u64[0] = 0x4040000040400000LL;
+    LANES128(v17).n128_u64[1] = 0x4040000040400000LL;
+    v18 = vmulq_f32(v16, v17);
+    *(_QWORD*)(v1 + 128) = LANES128(v18).n128_u64[0];
+    v19 = *(_OWORD*)(v1 + 128);
+    *((_QWORD*)&v19 + 1) = LANES128(v18).n128_u32[2];
+    *(_OWORD*)(v1 + 128) = v19;
   }
 }
 

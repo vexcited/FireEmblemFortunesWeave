@@ -118,6 +118,12 @@ __int64 UnitMake_1630620(__int64 a1);
 __int64 UnitMake_1630d20(__int64 result, char a2);
 __int64 UnitMake_16328c0(__int64 result);
 __int64 UnitMake_16337a0(__int64 a1);
+_QWORD* GameRoutine_6680e0(_QWORD* result, _QWORD*);
+__int64 GameRoutine_16497b0(__int64, __int64);
+__int64 game_menu_Dialog__CreateBind_game_menu_Dialog(__int64, __int64);
+extern __int64 game_GameGlobalData_unknown_;
+extern int game_script_hub_talk_g_choice_menu_result;
+__int64 UnitMake_1630780(__int64 a1);
 
 __int64 UnitMake_162e480(_QWORD* a1)
 {
@@ -482,6 +488,48 @@ __int64 UnitMake_1630620(__int64 a1)
     *(_WORD*)(v3 + 136) |= 2u;
   }
   return result;
+}
+
+__int64 UnitMake_1630780(__int64 a1)
+{
+  int v1;
+  const char* v2;
+  __int64 v3;
+  __int64 v4;
+  const char* v6;
+  struct {
+    _QWORD v7[4];
+    _QWORD* v8;
+  } v7_;
+
+  v1 = game_script_hub_talk_g_choice_menu_result;
+  if (game_GameGlobalData_unknown_ != 0) {
+    *(_BYTE*)game_GameGlobalData_unknown_ =
+        game_script_hub_talk_g_choice_menu_result > 1;
+  }
+  if (v1 <= 1) {
+    v2 = "MID_EV00_002_m15_Notice_Off";
+  }
+  else {
+    v2 = "MID_EV00_002_m15_Notice_On";
+  }
+  v6 = v2;
+  v3 = game_menu_Dialog__CreateBind_game_menu_Dialog(a1, (__int64)&v6);
+  if (v3 != 0) {
+    v7_.v8 = nullptr;
+    GameRoutine_6680e0(v7_.v7, (_QWORD*)(v3 + 1248));
+    if (v7_.v8 == v7_.v7) {
+      v4 = 32;
+      goto LABEL_11;
+    }
+    if (v7_.v8 != nullptr) {
+      v4 = 40;
+    LABEL_11:
+      (*(void (**)(__int64))(*v7_.v8 + v4))((__int64)v7_.v8);
+    }
+  }
+  *(_BYTE*)(v3 + 1301) = 1;
+  return GameRoutine_16497b0(v3, (__int64)"SE_SYS_Decide_End_CharaMake");
 }
 
 __int64 UnitMake_1630a00(_QWORD* a1)

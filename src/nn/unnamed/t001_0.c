@@ -42,8 +42,9 @@ __int64 SdkRoutine_858db0(_QWORD);
 __int64 SdkRoutine_85d430(_QWORD);
 __int64 SdkRoutine_85d9b0(_QWORD);
 __int64 SdkRoutine_85d9c0(_QWORD);
-_QWORD* SdkRoutine_86a7e0(_QWORD* __return_ptr, _QWORD, _QWORD, _QWORD, _QWORD,
-                          _QWORD, _QWORD, _QWORD);
+__attribute__((swiftcall)) void SdkRoutine_86a7e0(PSEUDO_X8, _QWORD, _QWORD,
+                                                  _QWORD, _QWORD, _QWORD,
+                                                  _QWORD, _QWORD);
 __int64 SdkRoutine_86aab0(_QWORD, _QWORD, _QWORD);
 __int64 SdkRoutine_86aac0(_QWORD);
 __int64 SdkRoutine_86abc0(_QWORD, _QWORD);
@@ -51,7 +52,7 @@ __int64 SdkRoutine_86ac80(_QWORD);
 __int64 SdkRoutine_86ac90(_QWORD, _QWORD);
 __int64 SdkRoutine_86aca0(_QWORD, _QWORD);
 __int64 SdkRoutine_874b90(_QWORD);
-_QWORD* SdkRoutine_875920(_QWORD* __return_ptr, _QWORD);
+__attribute__((swiftcall)) void SdkRoutine_875920(PSEUDO_X8, _QWORD);
 __int64 SdkRoutine_875a50(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 __int64 SdkRoutine_875a60(_QWORD);
 __int64 SdkRoutine_875a70(_QWORD, _QWORD, _QWORD, _QWORD);
@@ -366,7 +367,7 @@ __int64 SdkHr_5ed1a0(__int64* a1, __int64* a2, __int64 a3, unsigned int a4,
       else {
         v23 = 2;
       }
-      SdkRoutine_86a7e0(v60, v20, v21, v22, v18, v14, v19, v23);
+      SdkRoutine_86a7e0((void*)v60, v20, v21, v22, v18, v14, v19, v23);
       if ((_DWORD)v7 != 0) {
         v24 = 0;
         do {
@@ -438,7 +439,7 @@ __int64 SdkHr_5ed1a0(__int64* a1, __int64* a2, __int64 a3, unsigned int a4,
     v43 = i[1];
     HIDWORD(v50) = *i;
     LODWORD(v51) = v43;
-    SdkRoutine_875920(&v44, &v47);
+    SdkRoutine_875920((void*)&v44, &v47);
     if (v45 > (unsigned int)i[3] || (((_DWORD)v46 - 1) & i[4]) != 0) {
       break;
     }

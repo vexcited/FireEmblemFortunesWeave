@@ -37,6 +37,12 @@ void StripeSystem_5cb940(__int64 a1, __int64 a2);
 __int64 StripeSystem_5cc140(__int64 a1, int a2);
 __int64 StripeSystem_5cc7c0(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
                             int a5, char a6, __int64 a7, char a8);
+__int64 StripeSystem_5caf20(__int64, __int64, int8x16_t*);
+float game_5c0500(float32x4_t*, float32x2_t*, float32x2_t*, float32x2_t*,
+                  float32x2_t*, float);
+__int64 StripeSystem_5ca340(__int64 a1);
+float StripeSystem_5cacd0(float32x4_t* a1, float32x4_t* a2, __int64 a3, int a4,
+                          int a5, float a6);
 
 __int64 StripeSystem_5c9d00(__int64* a1)
 {
@@ -460,6 +466,28 @@ bool StripeSystem_5ca220(__int64 a1, double a2, long double a3)
   return v5 == 0;
 }
 
+__int64 StripeSystem_5ca340(__int64 a1)
+{
+  int8x16_t* v1;
+  __int64 v2;
+
+  v1 = *(int8x16_t**)(a1 + 8);
+  if (v1 == nullptr) {
+    return GameRoutine_5c02c0("Stripe instance is null\n");
+  }
+  if ((LANES128(v1[8]).n128_u8[4] & 1) == 0) {
+    return GameRoutine_5c02c0("Stripe instance is not used\n");
+  }
+  v2 = *(_QWORD*)(*(_QWORD*)(a1 + 16) + 1048LL);
+  if (v2 == 0) {
+    return GameRoutine_5c02c0("EmitterPluginUserData is empty\n");
+  }
+  if ((*(_BYTE*)(v2 + 16) & 1) != 0) {
+    return StripeSystem_5caf20(GameData_21a3a20, a1, v1);
+  }
+  return GameRoutine_5c02c0("Vertex buffer for stripe has not allocated\n");
+}
+
 __int64 StripeSystem_Destructor(__int64 a1)
 {
   __int64 v2;
@@ -602,6 +630,172 @@ void StripeSystem_5caa80(float a1, float a2, __int64 a3, __int64 a4, __int64 a5,
       } while (v12 != v27);
     }
   }
+}
+
+float StripeSystem_5cacd0(float32x4_t* a1, float32x4_t* a2, __int64 a3, int a4,
+                          int a5, float a6)
+{
+
+#pragma clang fp contract(off)
+  __int64 v6;
+  float32x4_t v7;
+  float32x4_t v8;
+  float32x4_t v9;
+  float32x4_t* v10;
+  float32x4_t v11;
+  float32x4_t v12;
+  float32x4_t v13;
+  float32x4_t v14;
+  float32x4_t v15;
+  float32x4_t v16;
+  float32x4_t v17;
+  float32x4_t v18;
+  float32x4_t v19;
+  float32x4_t v20;
+  float32x4_t v21;
+  __int64 v22;
+  float32x4_t v23;
+  float32x4_t v24;
+  float32x4_t* v25;
+  float32x4_t v26;
+  float32x4_t v27;
+  float32x4_t v28;
+  float32x4_t v29;
+  float32x4_t v30;
+  float32x4_t v31;
+  float32x4_t v32;
+  __int64 v33;
+  __int64 v34;
+  float32x4_t v35;
+  float32x4_t v36;
+  float32x4_t* v37;
+  float32x4_t v38;
+  float32x4_t v39;
+  float32x4_t v40;
+  float32x4_t v41;
+  float32x4_t v42;
+  float32x4_t v43;
+  float32x4_t v44;
+  float32x4_t* v45;
+  float32x4_t v46;
+  float32x4_t* v47;
+  float32x4_t v48;
+  float32x4_t v49;
+  float32x4_t v50;
+  float32x4_t v52;
+  float32x4_t v53;
+  float32x4_t v54;
+  float32x4_t v55;
+
+  if (a4 == 0) {
+    v20 = *(float32x4_t*)a3;
+    v21 = *(float32x4_t*)(a3 + 16);
+    v22 = *(_QWORD*)(a3 + 48);
+    LANES128(v23).n128_u64[0] = 0x3F0000003F000000LL;
+    LANES128(v23).n128_u64[1] = 0x3F0000003F000000LL;
+    v24 = *(float32x4_t*)a3;
+    v25 = *(float32x4_t**)(v22 + 48);
+    LANES128(v24).n128_u32[3] = 0;
+    v55 = v24;
+    v26 = *(float32x4_t*)v22;
+    v27 = *(float32x4_t*)(v22 + 16);
+    v28 = *(float32x4_t*)v22;
+    LANES128(v28).n128_u32[3] = 0;
+    v54 = v28;
+    v29 = vsubq_f32(*v25, v20);
+    v30 = vaddq_f32(vsubq_f32(v26, v20), vsubq_f32(v26, *v25));
+    LANES128(v26).n128_u64[0] = 0x3E8000003E800000LL;
+    LANES128(v26).n128_u64[1] = 0x3E8000003E800000LL;
+    v31 = vmulq_f32(v29, v23);
+    LANES128(v31).n128_u32[3] = 0;
+    v32 = vmulq_f32(v30, v26);
+    LANES128(v32).n128_u32[3] = 0;
+    v52 = v31;
+    v53 = v32;
+  LABEL_9:
+    v19 = vaddq_f32(vmulq_n_f32(v21, 0x1.0000000000000p+0f - a6),
+                    vmulq_n_f32(v27, a6));
+    goto LABEL_10;
+  }
+  if (a4 != a5 - 1) {
+    v33 = *(_QWORD*)(a3 + 48);
+    if (a4 == a5 - 2) {
+      v34 = *(_QWORD*)(v33 + 56);
+      LANES128(v35).n128_u64[0] = 0x3F0000003F000000LL;
+      LANES128(v35).n128_u64[1] = 0x3F0000003F000000LL;
+      v36 = *(float32x4_t*)v34;
+      v21 = *(float32x4_t*)(v34 + 16);
+      v37 = *(float32x4_t**)(v34 + 56);
+      v38 = *(float32x4_t*)v34;
+      LANES128(v38).n128_u32[3] = 0;
+      v55 = v38;
+      v39 = *(float32x4_t*)v33;
+      v27 = *(float32x4_t*)(v33 + 16);
+      v40 = *(float32x4_t*)v33;
+      LANES128(v40).n128_u32[3] = 0;
+      v54 = v40;
+      v41 = vmulq_f32(vsubq_f32(v39, *v37), v35);
+      v42 = vaddq_f32(vsubq_f32(v36, v39), vsubq_f32(v36, *v37));
+      LANES128(v39).n128_u64[0] = 0xBE800000BE800000LL;
+      LANES128(v39).n128_u64[1] = 0xBE800000BE800000LL;
+      LANES128(v41).n128_u32[3] = 0;
+      v43 = vmulq_f32(v42, v39);
+      v53 = v41;
+    }
+    else {
+      v44 = *(float32x4_t*)a3;
+      v21 = *(float32x4_t*)(a3 + 16);
+      v45 = *(float32x4_t**)(a3 + 56);
+      v46 = *(float32x4_t*)a3;
+      v47 = *(float32x4_t**)(v33 + 48);
+      LANES128(v46).n128_u32[3] = 0;
+      v55 = v46;
+      v48 = *(float32x4_t*)v33;
+      v27 = *(float32x4_t*)(v33 + 16);
+      v49 = *(float32x4_t*)v33;
+      LANES128(v49).n128_u32[3] = 0;
+      v54 = v49;
+      LANES128(v49).n128_u64[0] = 0x3F0000003F000000LL;
+      LANES128(v49).n128_u64[1] = 0x3F0000003F000000LL;
+      v50 = vmulq_f32(vsubq_f32(v48, *v45), v49);
+      LANES128(v50).n128_u32[3] = 0;
+      v53 = v50;
+      v43 = vmulq_f32(vsubq_f32(*v47, v44), v49);
+    }
+    LANES128(v43).n128_u32[3] = 0;
+    v52 = v43;
+    goto LABEL_9;
+  }
+  v6 = *(_QWORD*)(a3 + 56);
+  LANES128(v7).n128_u64[0] = 0x3F0000003F000000LL;
+  LANES128(v7).n128_u64[1] = 0x3F0000003F000000LL;
+  v8 = *(float32x4_t*)v6;
+  v9 = *(float32x4_t*)(v6 + 16);
+  v10 = *(float32x4_t**)(v6 + 56);
+  v11 = *(float32x4_t*)v6;
+  LANES128(v11).n128_u32[3] = 0;
+  v55 = v11;
+  v12 = *(float32x4_t*)a3;
+  v13 = *(float32x4_t*)(a3 + 16);
+  v14 = *(float32x4_t*)a3;
+  LANES128(v14).n128_u32[3] = 0;
+  v54 = v14;
+  v15 = vsubq_f32(v12, *v10);
+  v16 = vaddq_f32(vsubq_f32(v8, v12), vsubq_f32(v8, *v10));
+  LANES128(v12).n128_u64[0] = 0xBE800000BE800000LL;
+  LANES128(v12).n128_u64[1] = 0xBE800000BE800000LL;
+  v17 = vmulq_f32(v15, v7);
+  LANES128(v17).n128_u32[3] = 0;
+  v18 = vmulq_f32(v16, v12);
+  LANES128(v18).n128_u32[3] = 0;
+  v52 = v18;
+  v53 = v17;
+  v19 = vaddq_f32(vmulq_f32(v9, COERCE_AS(float32x4_t, 0)), v13);
+  a6 = 0x1.0000000000000p+0f;
+LABEL_10:
+  *a2 = v19;
+  return game_5c0500(a1, (float32x2_t*)&v55, (float32x2_t*)&v53,
+                     (float32x2_t*)&v54, (float32x2_t*)&v52, a6);
 }
 
 void StripeSystem_5cb940(__int64 a1, __int64 a2)

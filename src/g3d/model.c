@@ -108,6 +108,11 @@ __attribute__((swiftcall)) void Model_a66f60(PSEUDO_X8 x8_, __int64 result,
 __int64 GameRoutine_a6b310(__int64*, __int64*);
 __int64* Model_a6aa00(__int64* result, __int64* a2, __int64* a3, __int64 a4,
                       __int64 a5, __int64 a6, __int64 a7);
+__int64 GameRoutine_5e3ac0(_QWORD, _QWORD);
+__int64 GameRoutine_5e3bc0(_QWORD, _QWORD);
+__int64 Material_add560(_QWORD);
+void __attribute__((noreturn)) GameRoutine_8123d0(_QWORD);
+__int64 Model_Unknown2(__int64 a1);
 
 __int64 Model_a619c0(__int64 a1, __int64 a2, __int64 a3)
 {
@@ -3640,6 +3645,95 @@ void Model_a64b80(__int64 a1, long double a2)
 LABEL_24:
   *(float32x4_t*)(a1 + 48) = v11;
   *(float32x4_t*)(a1 + 64) = v12;
+}
+
+__int64 Model_Unknown2(__int64 a1)
+{
+  int v1;
+  bool v3;
+  int v4;
+  __int64 v5;
+  int v6;
+  bool v7;
+  int v8;
+  int v9;
+  int v10;
+  __int64 result;
+  int v12;
+  char v13;
+  __int64* v14;
+  __int64* i;
+  __int64 v16;
+  __int64* v17;
+  __int64* v18;
+  int v19;
+  __int64 v20;
+
+  v1 = *(_DWORD*)(a1 + 496);
+  v3 = v1 < -1;
+  v4 = ((_BYTE)v1 + 1) & 1;
+  if (v3) {
+    v4 = -v4;
+  }
+  *(_DWORD*)(a1 + 496) = v4;
+  v5 = (unsigned int)((*(_DWORD*)(a1 + 600) + 1) % 3);
+  v6 = *(_DWORD*)(a1 + 608);
+  *(_DWORD*)(a1 + 600) = v5;
+  v7 = __OFSUB__(v6, 1);
+  v8 = v6 - 1;
+  if (v8 < 0 != v7) {
+    if ((int)v5 >= 1) {
+      v10 = -1;
+    }
+    else {
+      v10 = 2;
+    }
+    v9 = v10 + v5;
+  }
+  else {
+    *(_DWORD*)(a1 + 608) = v8;
+    v9 = v5;
+  }
+  *(_DWORD*)(a1 + 604) = v9;
+  nn_g3d_5e3ab0(a1 + 136, v5);
+  result = GameRoutine_5e3bc0(a1 + 136, *(unsigned int*)(a1 + 496));
+  if ((*(_BYTE*)(a1 + 104) & 4) != 0) {
+    if (*(_BYTE*)(a1 + 516) == 1) {
+      result = GameRoutine_5e3ac0(a1 + 136, *(unsigned int*)(a1 + 496));
+      if ((*(_BYTE*)(a1 + 516) & 1) == 0) {
+        GameRoutine_8123d0(result);
+      }
+      v12 = *(_DWORD*)(a1 + 512);
+      v7 = __OFSUB__(v12--, 1);
+      *(_DWORD*)(a1 + 512) = v12;
+      if ((v12 < 0) ^ v7 | (v12 == 0)) {
+        v13 = 0;
+      }
+      else {
+        v13 = 1;
+      }
+      *(_BYTE*)(a1 + 516) = v13;
+    }
+  }
+  else {
+    result = GameRoutine_5e3ac0(a1 + 136, *(unsigned int*)(a1 + 496));
+  }
+  v14 = *(__int64**)(a1 + 312);
+  for (i = *(__int64**)(a1 + 320); v14 != i; result = Material_add560(v16)) {
+    v16 = *v14;
+    v14 += 2;
+  }
+  v17 = *(__int64**)(a1 + 288);
+  v18 = *(__int64**)(a1 + 296);
+  if (v17 != v18) {
+    v19 = *(_DWORD*)(a1 + 496);
+    do {
+      v20 = *v17;
+      v17 += 2;
+      *(_DWORD*)(v20 + 96) = v19;
+    } while (v17 != v18);
+  }
+  return result;
 }
 
 __int64 Model_Unknown3(__int64 result, char a2)

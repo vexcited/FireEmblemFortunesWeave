@@ -78,8 +78,6 @@ extern __int64 (*GameData_1fb46f8[])();
 
 extern __int64 (*GameData_1fb4a88[])();
 
-extern __int64 (*GameData_1fb5a68[])();
-
 extern __int64 GameData_212bf68;
 
 extern _UNKNOWN* GameData_212c028;
@@ -931,21 +929,13 @@ __int64 GameRoutine_14a1390(_QWORD, _QWORD);
 
 __int64 GameRoutine_14a4d00(_QWORD);
 
-__int64 GameRoutine_155fbe0(_QWORD, _QWORD);
-
-__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
-
 __int64 GameRoutine_1562680(_QWORD, _QWORD, float);
-
-__int64 GameRoutine_1562cf0(_QWORD, _QWORD);
 
 __int64 GameRoutine_1563380(_QWORD, _QWORD, _QWORD);
 
 __int64 GameRoutine_16dcd30(_QWORD, _QWORD, _QWORD, _QWORD);
 
 __int64 GameRoutine_16e0c00(_QWORD, _QWORD);
-
-__int64 GameRoutine_16e66c0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 
 __int64 GameRoutine_18e5e60(_QWORD);
 
@@ -1251,8 +1241,6 @@ __int64 GameRoutine_9b1ea0(_QWORD);
 __int64 GameRoutine_9b3560(_QWORD, _QWORD);
 
 __int64 GameRoutine_9b3b00(_QWORD);
-
-__int64 GameRoutine_9bfe50(_QWORD);
 
 __int64 GameRoutine_a4dbe0(_QWORD, _QWORD, _QWORD, _QWORD);
 
@@ -13386,52 +13374,6 @@ _QWORD* GameHr_9bea80(_QWORD* a1, _QWORD* a2)
     } while (v12 != nullptr);
   }
   return v12;
-}
-
-__int64 GameHr_9bf090(__int64* a1)
-{
-  __int64 v2;
-  unsigned int v3;
-  __int64 v4;
-  unsigned __int64 v5;
-  __int64 v6;
-  const char* v7;
-  _QWORD v9[4];
-  _QWORD* v10;
-  __int64 v11;
-  __int64 v12;
-
-  GameRoutine_1562cf0(a1 + 106, "Transport_On");
-  GameRoutine_9bfe50(a1);
-  GameRoutine_1560070((void*)&v11, a1 + 106, "L_PageTab");
-  v9[0] = GameData_1fb5a68;
-  v2 = *a1;
-  v10 = v9;
-  v3 = (*(__int64 (**)(__int64*))(v2 + 192))(a1);
-  GameRoutine_16e66c0(a1 + 82, &v11, v9, v3, 14, 15);
-  if (v10 == v9) {
-    v4 = 32;
-  }
-  else {
-    if (v10 == nullptr) {
-      goto LABEL_6;
-    }
-    v4 = 40;
-  }
-  (*(void (**)(void*))(*v10 + v4))(v10);
-LABEL_6:
-  if (v12 != 0) {
-    GameRoutine_1a09c50(v12);
-  }
-  v5 = (unsigned __int64)(a1[135] - a1[134]) >> 3;
-  v6 = GameRoutine_155fbe0(a1 + 106, "L_UnitInfo");
-  if ((int)v5 >= 1) {
-    v7 = "Info00";
-  }
-  else {
-    v7 = "Simple00";
-  }
-  return GameRoutine_1562cf0(v6, v7);
 }
 
 #pragma GCC visibility pop

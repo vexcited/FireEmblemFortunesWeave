@@ -72,6 +72,70 @@ __int64 MapSortieMenu_871860(__int64, __int64, __int64, __int64, __int64);
 extern __int64 (*GameData_20729a8[])();
 extern __int64 (*GameData_2072a28[])();
 bool game_gmap_GmapBanquetMenu_Cancel(__int64 a1);
+const char* GmapBanquetMenu_Unknown46();
+const char* GmapBanquetMenu_Unknown3();
+const char* GmapBanquetMenu_Unknown47();
+const char* GmapBanquetMenu_Unknown5();
+
+const char* GmapBanquetMenu_Unknown46()
+{
+  const char* result;
+
+  if (GameData_21f3d10 == 0) {
+    return "MID_GmapMenu_Banquet";
+  }
+  result = "MID_GmapMenu_Banquet";
+  if (*(_BYTE*)(GameData_21f3d10 + 9) == 1 &&
+      *(_DWORD*)(GameData_21f3d10 + 136) == 1) {
+    return "MID_Dungeon_Banquet";
+  }
+  return result;
+}
+
+const char* GmapBanquetMenu_Unknown3()
+{
+  const char* result;
+
+  if (GameData_21f3d10 == 0) {
+    return "MID_GmapMenu_Banquet";
+  }
+  result = "MID_GmapMenu_Banquet";
+  if (*(_BYTE*)(GameData_21f3d10 + 9) == 1 &&
+      *(_DWORD*)(GameData_21f3d10 + 136) == 1) {
+    return "MID_Dungeon_Banquet";
+  }
+  return result;
+}
+
+const char* GmapBanquetMenu_Unknown47()
+{
+  const char* result;
+
+  if (GameData_21f3d10 == 0) {
+    return "MID_BanquetMenu_Help";
+  }
+  result = "MID_BanquetMenu_Help";
+  if (*(_BYTE*)(GameData_21f3d10 + 9) == 1 &&
+      *(_DWORD*)(GameData_21f3d10 + 136) == 1) {
+    return "MID_Dungeon_BanquetMenu_Help";
+  }
+  return result;
+}
+
+const char* GmapBanquetMenu_Unknown5()
+{
+  const char* result;
+
+  if (GameData_21f3d10 == 0) {
+    return "MID_BanquetMenu_Help";
+  }
+  result = "MID_BanquetMenu_Help";
+  if (*(_BYTE*)(GameData_21f3d10 + 9) == 1 &&
+      *(_DWORD*)(GameData_21f3d10 + 136) == 1) {
+    return "MID_Dungeon_BanquetMenu_Help";
+  }
+  return result;
+}
 
 __int64 GmapBanquetMenu_Unknown48(__int64 a1, __int64* a2)
 {

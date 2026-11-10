@@ -182,6 +182,23 @@ snd_target_BaseNX_closeAdditionalArchive_lambda0_Invoke_166f40(__int64 a1,
                                                                __int64* a2);
 __int64 snd_target_BaseNX_closeAdditionalArchiveForCache_lambda0_Invoke_167190(
     __int64 a1, __int64* a2);
+_QWORD* Crc32List_118f90(__int64, float);
+_UNKNOWN** GameRoutine_2b8f70(_UNKNOWN** result, __int64, unsigned int);
+__int64 BaseNx_277d90(__int64, __int64);
+__int64 BaseNx_277df0(__int64, __int64, __int64, __int64);
+__int64 GameRoutine_278070(_QWORD, _QWORD);
+__int64 GameRoutine_2b90e0(int);
+__int64 GameRoutine_2b99d0(int);
+__int64 SoundArchivePlayer_279750(__int64, _QWORD*);
+__int64 SoundDataManager_27b710(__int64, __int64);
+__int64 memset_alt1(_QWORD, _QWORD, _QWORD) __asm__("memset");
+__int64 nn_audio_ListAudioOutputDeviceName(_QWORD, _QWORD);
+__int64 nn_audio_SetAudioDeviceOutputVolume(_QWORD, float);
+__int64 strcmp(_QWORD, _QWORD);
+bool SoundDataManager_27b740(__int64, __int64, __int64, __int64);
+char* GameRoutine_2b9870(char* result, __int64, unsigned int);
+float GameRoutine_118fc0(_QWORD);
+__n128 BaseNX_15a740(__int64 a1, __int64 a2, __int64 a3);
 
 __int64 BaseNX_1572a0(__int64 a1)
 {
@@ -911,6 +928,215 @@ LABEL_26:
         *snd_g_memory_ptr[0], v11_.v13);
   }
   return v9;
+}
+
+__n128 BaseNX_15a740(__int64 a1, __int64 a2, __int64 a3)
+{
+
+#pragma clang fp contract(off)
+  __int64 v6;
+  __int64* v7;
+  __int64 v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
+  __int64 v14;
+  __int64 v15;
+  __int64 v16;
+  __int64 v17;
+  __int64 v18;
+  __int64 v19;
+  __int64 v20;
+  __int64 v21;
+  __int64 v22;
+  __int64 v23;
+  __int64 v24;
+  __int64 v28;
+  int v29;
+  __int64 v30;
+  __int64 v31;
+  __int64 v32;
+  char* v33;
+  unsigned int v34;
+  int v35;
+  __int64 v36;
+  __int64 v37;
+  __int64 v38;
+  _UNKNOWN** v39;
+  unsigned int v40;
+  int v41;
+  _QWORD* v48;
+  __int64 i;
+  __int64 v50;
+  __int64 v63;
+  float v64;
+  int v65;
+  struct {
+    _QWORD v67[3];
+    __int64 v68;
+    __int64 v69;
+    __int64 v70;
+    __int64 v71;
+    __int64 v72;
+    char gap64_[8];
+    __int64 v73;
+    __int64 v74;
+  } v67_;
+
+  v6 = SoundDataManager_27b710(a2 + 3152, a3);
+  v7 = snd_g_memory_ptr[0];
+  v8 = (*(__int64 (**)(_QWORD, __int64, __int64))(
+      **(_QWORD**)snd_g_memory_ptr[0] + 16LL))(*snd_g_memory_ptr[0], v6, 8);
+  v9 = *(_QWORD*)(a2 + 3936);
+  *(_QWORD*)(a2 + 3936) = v8;
+  if (v9 != 0) {
+    (*(void (**)(__int64))(*(_QWORD*)*v7 + 24LL))(*v7);
+    v10 = *(_QWORD*)(a2 + 3936);
+  }
+  else {
+    v10 = v8;
+  }
+  SoundDataManager_27b740(a2 + 3152, a3, v10, v6);
+  v11 = BaseNx_277d90(a2 + 3728, a3);
+  v12 = (*(__int64 (**)(__int64, __int64, __int64))(*(_QWORD*)*v7 + 16LL))(
+      *v7, v11, 4);
+  v13 = *(_QWORD*)(a2 + 3976);
+  *(_QWORD*)(a2 + 3976) = v12;
+  if (v13 != 0) {
+    (*(void (**)(__int64))(*(_QWORD*)*v7 + 24LL))(*v7);
+    v14 = *(_QWORD*)(a2 + 3976);
+  }
+  else {
+    v14 = v12;
+  }
+  BaseNx_277df0(a2 + 3728, a3, v14, v11);
+  *(_DWORD*)(a2 + 3792) = 32;
+  *(_QWORD*)(a2 + 3796) = 0x40B555553F800000LL;
+  GameRoutine_278070(a2 + 3728, 0);
+  v15 = BaseNx_277d90(a2 + 3824, a3);
+  v16 = (*(__int64 (**)(__int64, __int64, __int64))(*(_QWORD*)*v7 + 16LL))(
+      *v7, v15, 4);
+  v17 = *(_QWORD*)(a2 + 3984);
+  *(_QWORD*)(a2 + 3984) = v16;
+  if (v17 != 0) {
+    (*(void (**)(__int64))(*(_QWORD*)*v7 + 24LL))(*v7);
+    v18 = *(_QWORD*)(a2 + 3984);
+  }
+  else {
+    v18 = v16;
+  }
+  BaseNx_277df0(a2 + 3824, a3, v18, v15);
+  *(_DWORD*)(a2 + 3888) = 32;
+  *(_QWORD*)(a2 + 3892) = 0x40B555553F800000LL;
+  GameRoutine_278070(a2 + 3824, 0);
+  BaseNX_15abf0((void*)((__int64)v67_.v67), a2, a3);
+  v19 = (*(__int64 (**)(__int64, __int64, __int64))(*(_QWORD*)*v7 + 16LL))(
+      *v7, v67_.v72, 64);
+  v20 = *(_QWORD*)(a2 + 3960);
+  *(_QWORD*)(a2 + 3960) = v19;
+  if (v20 != 0) {
+    (*(void (**)(__int64))(*(_QWORD*)*v7 + 24LL))(*v7);
+    v19 = *(_QWORD*)(a2 + 3960);
+  }
+  v21 = *(_QWORD*)a1;
+  v67_.v71 = v19;
+  v22 = (*(__int64 (**)(__int64, __int64, _QWORD))(v21 + 344))(a1, v67_.v70, 0);
+  *(_QWORD*)(a2 + 3952) = v22;
+  v67_.v69 = v22;
+  v23 = (*(__int64 (**)(__int64, __int64, _QWORD))(*(_QWORD*)a1 + 344LL))(
+      a1, v67_.v74, 0);
+  *(_QWORD*)(a2 + 3968) = v23;
+  v67_.v73 = v23;
+  v24 = (*(__int64 (**)(__int64, __int64, __int64))(*(_QWORD*)*v7 + 16LL))(
+      *v7, v67_.v68, 4096);
+  v28 = *(_QWORD*)(a2 + 3944);
+  *(_QWORD*)(a2 + 3944) = v24;
+  if (v28 != 0) {
+    (*(void (**)(__int64))(*(_QWORD*)*v7 + 24LL))(*v7);
+    v24 = *(_QWORD*)(a2 + 3944);
+  }
+  v67_.v67[2] = v24;
+  memset_alt1(v24, 0, v67_.v68);
+  SoundArchivePlayer_279750(a2 + 2336, v67_.v67);
+  if (*(_DWORD*)(a1 + 4144) == 1) {
+    if ((*(int (**)(__int64))(*(_QWORD*)snd_g_proxy + 304LL))(snd_g_proxy) >=
+        1) {
+      v29 = (*(__int64 (**)(__int64))(*(_QWORD*)snd_g_proxy + 304LL))(
+          snd_g_proxy);
+      v30 = GameRoutine_2b99d0(v29);
+      v31 = (*(__int64 (**)(__int64, __int64, __int64))(*(_QWORD*)*v7 + 16LL))(
+          *v7, v30, 32);
+      v32 = *(_QWORD*)(a1 + 4264);
+      *(_QWORD*)(a1 + 4264) = v31;
+      if (v32 != 0) {
+        (*(void (**)(__int64))(*(_QWORD*)*v7 + 24LL))(*v7);
+        v33 = *(char**)(a1 + 4264);
+      }
+      else {
+        v33 = (char*)v31;
+      }
+      v34 = (*(__int64 (**)(__int64))(*(_QWORD*)snd_g_proxy + 304LL))(
+          snd_g_proxy);
+      GameRoutine_2b9870(v33, v30, v34);
+    }
+    if ((*(int (**)(__int64))(*(_QWORD*)snd_g_proxy + 312LL))(snd_g_proxy) >=
+        1) {
+      v35 = (*(__int64 (**)(__int64))(*(_QWORD*)snd_g_proxy + 312LL))(
+          snd_g_proxy);
+      v36 = GameRoutine_2b90e0(v35);
+      v37 = (*(__int64 (**)(__int64, __int64, __int64))(*(_QWORD*)*v7 + 16LL))(
+          *v7, v36, 32);
+      v38 = *(_QWORD*)(a1 + 4272);
+      *(_QWORD*)(a1 + 4272) = v37;
+      if (v38 != 0) {
+        (*(void (**)(__int64))(*(_QWORD*)*v7 + 24LL))(*v7);
+        v39 = *(_UNKNOWN***)(a1 + 4272);
+      }
+      else {
+        v39 = (_UNKNOWN**)v37;
+      }
+      v40 = (*(__int64 (**)(__int64))(*(_QWORD*)snd_g_proxy + 312LL))(
+          snd_g_proxy);
+      GameRoutine_2b8f70(v39, v36, v40);
+    }
+    if (((*(__int64 (**)(__int64))(*(_QWORD*)snd_g_proxy + 408LL))(
+             snd_g_proxy) &
+         1) == 0) {
+      v41 = nn_audio_ListAudioOutputDeviceName(v67_.v67, 8);
+      if (v41 >= 1) {
+        v48 = v67_.v67;
+        for (i = (unsigned int)v41; i != 0; --i) {
+          if ((unsigned int)strcmp(v48, "AudioTvOutput") != 0) {
+            if ((unsigned int)strcmp(v48, "AudioBuiltInSpeakerOutput") != 0) {
+              if ((unsigned int)strcmp(v48, "AudioExternalOutput") != 0) {
+                goto LABEL_30;
+              }
+              v50 = 3092;
+            }
+            else {
+              v50 = 3088;
+            }
+          }
+          else {
+            v50 = 3084;
+          }
+          nn_audio_SetAudioDeviceOutputVolume(
+              v48, *(float*)(*(_QWORD*)(a1 + 8) + v50));
+        LABEL_30:
+          v48 += 32;
+        }
+      }
+    }
+    v63 = *(_QWORD*)(a1 + 8);
+    v64 = GameRoutine_118fc0(v63);
+    Crc32List_118f90(v63, v64);
+  }
+  v65 = *(_DWORD*)(a2 + 24);
+  *(_QWORD*)(a2 + 4032) = 0;
+  *(_DWORD*)(a2 + 4028) = v65;
+  return BaseNX_15ad00(a1, a2 + 4016);
 }
 
 __attribute__((swiftcall)) void BaseNX_15abf0(PSEUDO_X8 x8_, __int64 a1,

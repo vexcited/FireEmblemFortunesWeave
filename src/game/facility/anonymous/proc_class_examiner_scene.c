@@ -196,6 +196,7 @@ __n128 ProcClassExaminerScene_1470cc0(_QWORD* a1);
 __int64
 game_facility_anonymous_ProcClassExaminerScene_LoadJobSelectCharacter_closure_Invoke(
     __int64 a1, __int64* a2);
+__int64 ProcClassExaminerScene_146bfa0(__int64 result);
 
 void ProcClassExaminerScene_146b330()
 {
@@ -225,6 +226,67 @@ void ProcClassExaminerScene_146b330()
       (*(void (**)(__int64))(*v2_.v3 + v1))((__int64)v2_.v3);
     }
   }
+}
+
+__int64 ProcClassExaminerScene_146bfa0(__int64 result)
+{
+  int v1;
+  __int64 v2;
+  __int64 v3;
+  int v4;
+  __int64 v5;
+  __int64 v6;
+
+  v1 = *(unsigned __int8*)(result + 240);
+  v2 = result;
+  if (v1 == 2) {
+    result = *(_QWORD*)(result + 192);
+    v3 = v2 + 160;
+    v4 = 9;
+  }
+  else if (v1 == 1) {
+    result = *(_QWORD*)(result + 192);
+    v3 = v2 + 160;
+    v4 = 1;
+  }
+  else {
+    if (*(_BYTE*)(result + 240) != 0) {
+      return result;
+    }
+    result = *(_QWORD*)(result + 192);
+    v3 = v2 + 160;
+    v4 = 4;
+  }
+  *(_QWORD*)(v2 + 152) = 0;
+  *(_QWORD*)(v2 + 192) = 0;
+  if (result == v3) {
+    v5 = 32;
+  }
+  else {
+    if (result == 0) {
+      goto LABEL_12;
+    }
+    v5 = 40;
+  }
+  result = (*(__int64 (**)(__int64))(*(_QWORD*)result + v5))((__int64)result);
+LABEL_12:
+  v6 = *(_QWORD*)(v2 + 8);
+  if (v6 != 0) {
+    while (1) {
+      if (*(_BYTE*)v6 == 2) {
+        if (*(_DWORD*)(v6 + 32) == v4) {
+          *(_QWORD*)(v2 + 16) = v6;
+          *(_WORD*)(v2 + 136) &= ~0x80u;
+          return result;
+        }
+      }
+      else if (*(_BYTE*)v6 == 0) {
+        return result;
+      }
+      v6 += 64;
+    }
+  }
+  return result;
 }
 
 __int64 ProcClassExaminerScene_146c500(__int64 result)

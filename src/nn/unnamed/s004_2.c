@@ -1,4 +1,4 @@
-#include "decomp/pseudo_types.h"
+#include "decomp/pseudo_helpers.h"
 #pragma GCC visibility push(hidden)
 
 extern _QWORD SdkData_10439b8[735];
@@ -3989,7 +3989,8 @@ LABEL_4:
       if (v19 == nullptr) {
         return 0;
       }
-      (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v19 + 8LL))(v19, v19);
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v19 + 8LL))(
+          (void*)v19, v19);
       v16 = v20;
       if (v20 == nullptr) {
       LABEL_11:
@@ -4051,7 +4052,8 @@ __int64 SdkHr_6b1770(__int64 a1, __int64* a2, __int64 a3, unsigned int a4)
     v12 = (_QWORD*)*a2;
     *a2 = v10;
     if (v12 != nullptr) {
-      (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v12 + 8LL))(v12, v12);
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v12 + 8LL))(
+          (void*)v12, v12);
     }
     SdkRoutine_858b60(a1 + 24);
     v13 = *(_QWORD*)(a1 + 32);
@@ -4396,7 +4398,8 @@ __int64 SdkHr_6b9e10(__int64 a1, __int64 a2)
   }
   if (v8 != nullptr) {
     v7 = result;
-    (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v8 + 8LL))(v8, v8);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v8 + 8LL))(
+        (void*)v8, v8);
     return v7;
   }
   return result;
@@ -4418,7 +4421,8 @@ __int64 SdkHr_6b9ea0(__int64 a1)
   }
   if (v4 != nullptr) {
     v3 = result;
-    (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v4 + 8LL))(v4, v4);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v4 + 8LL))(
+        (void*)v4, v4);
     return v3;
   }
   return result;
@@ -4464,7 +4468,8 @@ __int64 SdkHr_6ba240(__int64 a1)
       }
     }
     v7 = result;
-    (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v6 + 8LL))(v6, v6);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v6 + 8LL))(
+        (void*)v6, v6);
     result = v7;
     goto LABEL_6;
   }
@@ -4491,7 +4496,8 @@ __int64 SdkHr_6baae0(__int64 a1, __int64 a2)
   }
   if (v8 != nullptr) {
     v7 = result;
-    (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v8 + 8LL))(v8, v8);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v8 + 8LL))(
+        (void*)v8, v8);
     return v7;
   }
   return result;
@@ -4513,7 +4519,8 @@ __int64 SdkHr_6bab70(__int64 a1)
   }
   if (v4 != nullptr) {
     v3 = result;
-    (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v4 + 8LL))(v4, v4);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v4 + 8LL))(
+        (void*)v4, v4);
     return v3;
   }
   return result;
@@ -4539,7 +4546,8 @@ __int64 SdkHr_6bb3b0(__int64 a1, __int64 a2)
   }
   if (v8 != nullptr) {
     v7 = result;
-    (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v8 + 8LL))(v8, v8);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v8 + 8LL))(
+        (void*)v8, v8);
     return v7;
   }
   return result;
@@ -4561,7 +4569,8 @@ __int64 SdkHr_6bb440(__int64 a1)
   }
   if (v4 != nullptr) {
     v3 = result;
-    (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v4 + 8LL))(v4, v4);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v4 + 8LL))(
+        (void*)v4, v4);
     return v3;
   }
   return result;
@@ -4607,7 +4616,8 @@ __int64 SdkHr_6c2ad0(__int64 a1)
       }
     }
     v7 = result;
-    (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v6 + 8LL))(v6, v6);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v6 + 8LL))(
+        (void*)v6, v6);
     result = v7;
     goto LABEL_6;
   }
@@ -4882,7 +4892,8 @@ __int64 SdkHr_6d9530(__int64 a1, __int64 a2)
   }
   if (v8 != nullptr) {
     v7 = result;
-    (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v8 + 8LL))(v8, v8);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v8 + 8LL))(
+        (void*)v8, v8);
     return v7;
   }
   return result;
@@ -4904,7 +4915,8 @@ __int64 SdkHr_6d95c0(__int64 a1)
   }
   if (v4 != nullptr) {
     v3 = result;
-    (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v4 + 8LL))(v4, v4);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v4 + 8LL))(
+        (void*)v4, v4);
     return v3;
   }
   return result;
@@ -4932,7 +4944,8 @@ __int64 SdkHr_6db680(_BYTE* a1, _DWORD* a2, unsigned int* a3)
   }
   if (v11 != nullptr) {
     v8 = result;
-    (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v11 + 8LL))(v11, v11);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v11 + 8LL))(
+        (void*)v11, v11);
     return v8;
   }
   return result;
@@ -4971,7 +4984,8 @@ __int64 SdkHr_6dba40(_DWORD* a1, __int64 a2, int a3)
     }
     if (v9 != nullptr) {
       v7 = result;
-      (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v9 + 8LL))(v9, v9);
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v9 + 8LL))(
+          (void*)v9, v9);
       return v7;
     }
   }
@@ -5787,7 +5801,8 @@ __int64 SdkHr_6e9ea0(__int64 a1, __int64 a2)
   }
   if (v6 != nullptr) {
     v5 = result;
-    (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v6 + 8LL))(v6, v6);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v6 + 8LL))(
+        (void*)v6, v6);
     return v5;
   }
   return result;
@@ -5809,7 +5824,8 @@ __int64 SdkHr_6e9f20(__int64 a1)
   }
   if (v4 != nullptr) {
     v3 = result;
-    (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v4 + 8LL))(v4, v4);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v4 + 8LL))(
+        (void*)v4, v4);
     return v3;
   }
   return result;
@@ -5831,7 +5847,8 @@ __int64 SdkHr_6ea660(__int64 a1, __int64 a2)
   }
   if (v6 != nullptr) {
     v5 = result;
-    (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v6 + 8LL))(v6, v6);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v6 + 8LL))(
+        (void*)v6, v6);
     return v5;
   }
   return result;
@@ -5853,7 +5870,8 @@ __int64 SdkHr_6ea6e0(__int64 a1)
   }
   if (v4 != nullptr) {
     v3 = result;
-    (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v4 + 8LL))(v4, v4);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v4 + 8LL))(
+        (void*)v4, v4);
     return v3;
   }
   return result;
@@ -5881,7 +5899,8 @@ __int64 SdkHr_6ebf20(__int64 a1, __int64 a2)
   }
   if (v6 != nullptr) {
     v5 = result;
-    (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v6 + 8LL))(v6, v6);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v6 + 8LL))(
+        (void*)v6, v6);
     return v5;
   }
   return result;
@@ -5903,7 +5922,8 @@ __int64 SdkHr_6ebfb0(__int64 a1)
   }
   if (v4 != nullptr) {
     v3 = result;
-    (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v4 + 8LL))(v4, v4);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v4 + 8LL))(
+        (void*)v4, v4);
     return v3;
   }
   return result;
@@ -5925,7 +5945,8 @@ __int64 SdkHr_6ed360(__int64 a1, __int64 a2)
   }
   if (v6 != nullptr) {
     v5 = result;
-    (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v6 + 8LL))(v6, v6);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v6 + 8LL))(
+        (void*)v6, v6);
     return v5;
   }
   return result;
@@ -5947,7 +5968,8 @@ __int64 SdkHr_6ed3f0(__int64 a1)
   }
   if (v4 != nullptr) {
     v3 = result;
-    (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v4 + 8LL))(v4, v4);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v4 + 8LL))(
+        (void*)v4, v4);
     return v3;
   }
   return result;
@@ -6124,7 +6146,8 @@ __int64 SdkHr_6f3fc0(__int64* a1)
       v12 = (_QWORD*)SdkData_1047900;
       SdkData_1047900 = v10;
       if (v12 != nullptr) {
-        (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v12 + 8LL))(v12, v12);
+        (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(
+            *v12 + 8LL))((void*)v12, v12);
       }
       atomic_store(1u, (unsigned __int8*)&SdkData_10478f4);
     }
@@ -6256,7 +6279,8 @@ __int64 SdkHr_6f8470(__int64* a1)
       v12 = (_QWORD*)SdkData_10481d0;
       SdkData_10481d0 = v10;
       if (v12 != nullptr) {
-        (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v12 + 8LL))(v12, v12);
+        (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(
+            *v12 + 8LL))((void*)v12, v12);
       }
       atomic_store(1u, (unsigned __int8*)&SdkData_10481c4);
     }

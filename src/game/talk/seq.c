@@ -235,6 +235,8 @@ void Seq_1134ae0(__int64 a1, __int64 a2);
 __int64 Seq_1135380(__int64 a1);
 __int64 Seq_11354e0(__int64 result);
 __int64 Seq_1137ba0(__int64 result);
+__int64 LayoutAccessor_1563280(__int64*, __int64, char);
+__int64 Seq_1133c40(__int64 result);
 
 __int64 Seq_Destructor_1130ae0(__int64 a1)
 {
@@ -2861,6 +2863,43 @@ __int64 Seq_1133ad0(__int64 result)
     }
   }
   *(_WORD*)(result + 136) |= 8u;
+  return result;
+}
+
+__int64 Seq_1133c40(__int64 result)
+{
+  __int64 v1;
+  int v2;
+  int v3;
+  unsigned __int8* v4;
+  unsigned int v5;
+  bool v6;
+  int v7;
+
+  v1 = result;
+  if (game_ProcGameSkipView_instance_ != 0 &&
+          *(_BYTE*)(game_ProcGameSkipView_instance_ + 152) == 3 &&
+          (((v2 = *(_DWORD*)(game_ProcGameSkipView_instance_ + 156)) & 8) != 0
+               ? (v3 = 2)
+               : (v3 = 3),
+           (v3 & v2) == 0) ||
+      ((result = LayoutAccessor_1563280(game_talk_g_window_layout_ptr[0],
+                                        (__int64)"In", 1)) &
+       1) == 0 &&
+          ((result = LayoutAccessor_1563280(game_talk_g_window_layout_ptr[0],
+                                            (__int64)"FaceIn", 1)) &
+           1) == 0) {
+    v4 = *(unsigned __int8**)(v1 + 16);
+    if (v4 != nullptr) {
+      v5 = *v4;
+      v6 = v5 > 0x10;
+      v7 = (1 << v5) & 0x1CE00;
+      if (!v6 && v7 != 0) {
+        *(_WORD*)(v1 + 136) |= 0x80u;
+      }
+    }
+    *(_WORD*)(v1 + 136) |= 8u;
+  }
   return result;
 }
 

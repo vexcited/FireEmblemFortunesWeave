@@ -148,10 +148,10 @@ __int64 NgxRoutine_7d820(void);
 __int64 NgxRoutine_97540(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 NgxRoutine_a2740(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 __int64 NgxRoutine_a3620(_QWORD, _QWORD);
-_QWORD* NgxRoutine_a3670(_QWORD* __return_ptr, _QWORD, _QWORD);
-_QWORD* NgxRoutine_a3890(_QWORD* __return_ptr, _QWORD, _QWORD);
-_QWORD* NgxRoutine_a3ab0(_QWORD* __return_ptr, _QWORD, _QWORD);
-_QWORD* NgxRoutine_a3cd0(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void NgxRoutine_a3670(PSEUDO_X8, _QWORD, _QWORD);
+__attribute__((swiftcall)) void NgxRoutine_a3890(PSEUDO_X8, _QWORD, _QWORD);
+__attribute__((swiftcall)) void NgxRoutine_a3ab0(PSEUDO_X8, _QWORD, _QWORD);
+__attribute__((swiftcall)) void NgxRoutine_a3cd0(PSEUDO_X8, _QWORD, _QWORD);
 __int64 NgxRoutine_a44e0(_QWORD, _QWORD);
 _QWORD* NgxRoutine_a55e0(_QWORD* result, __int64, unsigned __int64);
 __int64 NgxRoutine_a6360(_QWORD*);
@@ -1723,7 +1723,7 @@ __int64 NgxHr_65f70(__int64 a1, unsigned int a2)
   NgxRoutine_e3120(v12, v8, v10);
 LABEL_12:
   v12[v10] = 0;
-  NgxRoutine_a3670(&v24, v7, v22);
+  NgxRoutine_a3670((void*)&v24, v7, v22);
   v14 = v24;
   v15 = *v11;
   v24 = nullptr;
@@ -1762,7 +1762,7 @@ LABEL_12:
   *(_DWORD*)(a1 + 368) = v18;
   *(_DWORD*)(a1 + 376) = v20;
   *(_DWORD*)(a1 + 372) = HIDWORD(v18);
-  (*(void (**)(void))(v19 + 8))();
+  (*(void (**)(void*))(v19 + 8))((void*)*v11);
   return 0;
 }
 
@@ -1834,7 +1834,7 @@ __int64 NgxHr_671f0(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
     NgxRoutine_e3120(v15, v11, v13);
   }
   v15[v13] = 0;
-  NgxRoutine_a3670(&v27, v10, v25);
+  NgxRoutine_a3670((void*)&v27, v10, v25);
   v17 = v27;
   v18 = *v14;
   v27 = nullptr;
@@ -1873,7 +1873,7 @@ __int64 NgxHr_671f0(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
   *(_DWORD*)(a1 + 344) = v21;
   *(_DWORD*)(a1 + 352) = v23;
   *(_DWORD*)(a1 + 348) = HIDWORD(v21);
-  (*(void (**)(void))(v22 + 8))();
+  (*(void (**)(void*))(v22 + 8))((void*)*v14);
   return 0;
 }
 
@@ -2111,7 +2111,7 @@ __int64 NgxHr_69b00(__int64 a1)
     NgxRoutine_e3120(v13, v9, v12);
   LABEL_30:
     v13[v12] = 0;
-    NgxRoutine_a3ab0(&v30, v10, &v27);
+    NgxRoutine_a3ab0((void*)&v30, v10, &v27);
     v24 = v30;
     v25 = *(_QWORD*)(a1 + 360);
     v30 = 0;
@@ -2159,7 +2159,7 @@ __int64 NgxHr_69b00(__int64 a1)
   NgxRoutine_e3120(v8, v4, v7);
 LABEL_17:
   v8[v7] = 0;
-  NgxRoutine_a3cd0(&v30, v5, &v27);
+  NgxRoutine_a3cd0((void*)&v30, v5, &v27);
   v15 = v30;
   v16 = *(_QWORD*)(a1 + 352);
   v30 = 0;
@@ -2498,7 +2498,7 @@ __int64 NgxHr_6a9e0(__int64 a1, unsigned int a2)
     }
   LABEL_15:
     v15[v14] = 0;
-    NgxRoutine_a3890(&v25, v12, v23);
+    NgxRoutine_a3890((void*)&v25, v12, v23);
     v17 = v25;
     v18 = *(_QWORD*)(v6 - 8);
     v25 = 0;
@@ -18911,7 +18911,7 @@ __int64 NgxHr_bba70(__int64 a1, __int64 a2)
   v3 = (__int64*)NgxRoutine_db310(a2, NgxData_9512e8);
   v4 = *v3;
   *(_QWORD*)(a1 + 72) = v3;
-  *(_DWORD*)(a1 + 88) = (*(__int64 (**)(void))(v4 + 48))();
+  *(_DWORD*)(a1 + 88) = (*(__int64 (**)(void*))(v4 + 48))((void*)v3);
   result = (*(__int64 (**)(_QWORD))(**(_QWORD**)(a1 + 72) + 56LL))(
       *(_QWORD*)(a1 + 72));
   *(_BYTE*)(a1 + 97) = result & 1;
@@ -18981,7 +18981,7 @@ __int64 NgxHr_bbf30(__int64 a1, __int64 a2)
   v4 = (__int64*)NgxRoutine_db310(a2, NgxData_9512e8);
   v5 = *v4;
   *(_QWORD*)(a1 + 72) = v4;
-  result = (*(__int64 (**)(void))(v5 + 56))();
+  result = (*(__int64 (**)(void*))(v5 + 56))((void*)v4);
   *(_BYTE*)(a1 + 88) = result & 1;
   return result;
 }
@@ -19088,7 +19088,7 @@ __int64 NgxHr_bc2a0(__int64 a1, __int64 a2)
   v3 = (__int64*)NgxRoutine_db310(a2, NgxData_9512f0);
   v4 = *v3;
   *(_QWORD*)(a1 + 72) = v3;
-  *(_DWORD*)(a1 + 88) = (*(__int64 (**)(void))(v4 + 48))();
+  *(_DWORD*)(a1 + 88) = (*(__int64 (**)(void*))(v4 + 48))((void*)v3);
   result = (*(__int64 (**)(_QWORD))(**(_QWORD**)(a1 + 72) + 56LL))(
       *(_QWORD*)(a1 + 72));
   *(_BYTE*)(a1 + 97) = result & 1;
@@ -19270,7 +19270,7 @@ __int64 NgxHr_bc740(__int64 a1, __int64 a2)
   v4 = (__int64*)NgxRoutine_db310(a2, NgxData_9512f0);
   v5 = *v4;
   *(_QWORD*)(a1 + 72) = v4;
-  result = (*(__int64 (**)(void))(v5 + 56))();
+  result = (*(__int64 (**)(void*))(v5 + 56))((void*)v4);
   *(_BYTE*)(a1 + 88) = result & 1;
   return result;
 }

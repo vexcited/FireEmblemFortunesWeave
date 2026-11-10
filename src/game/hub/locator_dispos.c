@@ -186,6 +186,9 @@ game_hub_LocatorDispos_BuildInitTransformLocator(PSEUDO_X8 x8_,
                                                  __int64 unused_int2,
                                                  __int64** a2);
 __int64* LocatorDispos_db7380(__int64 a1, __int64 a2, unsigned __int64 a3);
+__int64 LocatorDispos_db2560_alt1(_QWORD,
+                                  _QWORD) __asm__("LocatorDispos_db2560");
+__int64 LocatorDispos_db26f0(char* a1);
 
 __attribute__((swiftcall)) void LocatorDispos_db1840(PSEUDO_X8 x8_)
 {
@@ -952,6 +955,57 @@ LABEL_19:
     nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v18);
   }
   return v13;
+}
+
+__int64 LocatorDispos_db26f0(char* a1)
+{
+  __int64 v2;
+  int* v3;
+  int v4;
+  int v5;
+  char v7;
+  __int64 v8;
+  char v10[24];
+  _QWORD v11[2];
+  int* v12;
+
+  LocatorDispos_db1e20((void*)(v11), a1);
+  v2 = LOBYTE(v11[0]) >> 1;
+  if ((v11[0] & 1) != 0) {
+    v2 = v11[1];
+  }
+  if (v2 != 7) {
+    goto LABEL_10;
+  }
+  v3 = v12;
+  if ((v11[0] & 1) == 0) {
+    v3 = (int*)((char*)v11 + 1);
+  }
+  v4 = *v3;
+  v5 = *(int*)((char*)v3 + 3);
+  if (v4 == 1600288072 && v5 == 808464479) {
+    v7 = 1;
+    if ((v11[0] & 1) == 0) {
+      return v7 & 1;
+    }
+  }
+  else {
+  LABEL_10:
+    strcpy(v10, " EnableTempleMenu");
+    v7 = LocatorDispos_db2560_alt1(a1, v10);
+    if ((v11[0] & 1) == 0) {
+      return v7 & 1;
+    }
+  }
+  if (v12 != nullptr) {
+    v8 = 128;
+    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+      v8 = 56;
+    }
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v8, v12);
+  }
+  return v7 & 1;
 }
 
 __attribute__((swiftcall)) void LocatorDispos_db2800(PSEUDO_X8 x8_,

@@ -177,7 +177,7 @@ __int64 NgxRoutine_430(_QWORD, _QWORD);
 __int64 NgxRoutine_baf00(_QWORD);
 void __attribute__((noreturn)) NgxRoutine_baf40(_QWORD);
 void __attribute__((noreturn)) NgxRoutine_be3e0(void);
-_QWORD* NgxRoutine_be650(_QWORD* __return_ptr, _QWORD);
+__attribute__((swiftcall)) void NgxRoutine_be650(PSEUDO_X8, _QWORD);
 __int64 NgxRoutine_beef0(void);
 __int64 NgxRoutine_bf010(_QWORD*, __int64);
 void __attribute__((noreturn)) NgxRoutine_bf0a0(__int64);
@@ -194,7 +194,8 @@ void __attribute__((noreturn)) NgxRoutine_bfba0(_QWORD);
 void __attribute__((noreturn)) NgxRoutine_bfea0(void);
 __int64 NgxRoutine_bfee0(_QWORD, _QWORD);
 __int64 NgxRoutine_bff80(_QWORD, _QWORD);
-_QWORD* NgxRoutine_c97d0(_QWORD* __return_ptr, _QWORD, _QWORD, _QWORD, _QWORD);
+__attribute__((swiftcall)) void NgxRoutine_c97d0(PSEUDO_X8, _QWORD, _QWORD,
+                                                 _QWORD, _QWORD);
 __int64 NgxRoutine_cd0e0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
                          _QWORD);
 __int64 NgxRoutine_cdb60(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
@@ -1702,7 +1703,7 @@ _QWORD* NgxHr_c9770(__int64 a1, __int64 a2, __int64 a3, __int64 a4, __int64 a5,
     NgxRoutine_430(a12, a10 & 0xFFFFFFFFFFFFFFFELL);
   }
   v13 = NgxRoutine_e3720(a1);
-  return NgxRoutine_c97d0(v17, v13, v14, v15, v16);
+  return X8CALL_X0(_QWORD*, NgxRoutine_c97d0((void*)v17, v13, v14, v15, v16));
 }
 
 void __attribute__((noreturn)) NgxHr_c994c(__int64 a1, __int64 a2, __int64 a3,
@@ -2173,7 +2174,7 @@ __int64 NgxHr_ca54c(__int64 a1, __int64 a2, __int64 a3, __int64 a4, __int64 a5,
   }
   v40 = (char*)&v47;
 LABEL_60:
-  NgxRoutine_be650(&v42, v18);
+  NgxRoutine_be650((void*)&v42, v18);
   NgxRoutine_cd0e0(&v46, v40, v27, v45, &v44, &v43, &v42);
   NgxRoutine_db240(&v42);
   return NgxRoutine_d6d40(v20, v45, v44, v43, v18, v16);
@@ -2342,7 +2343,7 @@ __int64 NgxHr_ca88c(__int64 a1, __int64 a2, __int64 a3, __int64 a4, __int64 a5,
   }
   v40 = (char*)&v47;
 LABEL_54:
-  NgxRoutine_be650(&v42, v18);
+  NgxRoutine_be650((void*)&v42, v18);
   NgxRoutine_cd0e0(&v46, v40, v26, v45, &v44, &v43, &v42);
   NgxRoutine_db240(&v42);
   return NgxRoutine_d6d40(v20, v45, v44, v43, v18, v16);
@@ -2555,7 +2556,7 @@ __int64 NgxHr_cba24(__int64 a1, __int64 a2, __int64 a3, __int64 a4, __int64 a5,
   }
   v44 = (char*)&v50;
 LABEL_62:
-  NgxRoutine_be650(&v46, v22);
+  NgxRoutine_be650((void*)&v46, v22);
   NgxRoutine_cdb60(&v49, v44, v31, v48, v53, &v47, &v46);
   NgxRoutine_db240(&v46);
   return NgxRoutine_d7f40(v24, v48, v53[0], v47, v22, v20);
@@ -2744,7 +2745,7 @@ __int64 NgxHr_cbd9c(__int64 a1, __int64 a2, __int64 a3, __int64 a4, __int64 a5,
   }
   v40 = (char*)&v46;
 LABEL_60:
-  NgxRoutine_be650(&v42, v18);
+  NgxRoutine_be650((void*)&v42, v18);
   NgxRoutine_cdb60(&v45, v40, v27, v44, v49, &v43, &v42);
   NgxRoutine_db240(&v42);
   return NgxRoutine_d7f40(v20, v44, v49[0], v43, v18, v16);
@@ -2913,7 +2914,7 @@ __int64 NgxHr_cc0dc(__int64 a1, __int64 a2, __int64 a3, __int64 a4, __int64 a5,
   }
   v40 = (char*)&v46;
 LABEL_54:
-  NgxRoutine_be650(&v42, v18);
+  NgxRoutine_be650((void*)&v42, v18);
   NgxRoutine_cdb60(&v45, v40, v26, v44, v49, &v43, &v42);
   NgxRoutine_db240(&v42);
   return NgxRoutine_d7f40(v20, v44, v49[0], v43, v18, v16);
@@ -6034,7 +6035,8 @@ void** NgxHr_db280(void** result, void** a2)
   }
   else {
     v3 = result;
-    (*(void (**)(char* __return_ptr, char*))(*(_QWORD*)v2 + 16LL))(v2, v2);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, char*))(
+        *(_QWORD*)v2 + 16LL))((void*)v2, v2);
     *v3 = *a2;
     return v3;
   }

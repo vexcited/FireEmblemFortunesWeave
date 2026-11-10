@@ -1,4 +1,4 @@
-#include "decomp/pseudo_types.h"
+#include "decomp/pseudo_helpers.h"
 #pragma GCC visibility push(hidden)
 
 extern _QWORD SdkData_10492f0[9];
@@ -78,7 +78,7 @@ extern _UNKNOWN* SdkData_ea91f8;
 void __attribute__((noreturn)) SdkRoutine_2b2f80(void);
 __int64 SdkRoutine_2d0();
 __int64 SdkRoutine_715fa0(_QWORD, _QWORD);
-_QWORD* SdkRoutine_717720(_QWORD* __return_ptr, _QWORD, _QWORD);
+__attribute__((swiftcall)) void SdkRoutine_717720(PSEUDO_X8, _QWORD, _QWORD);
 __int64 SdkRoutine_728fe0(void);
 unsigned __int64 SdkRoutine_730ec0(unsigned __int64*, unsigned __int64,
                                    unsigned __int64, unsigned __int64);
@@ -115,13 +115,13 @@ void* SdkRoutine_779020();
 __int64 SdkRoutine_779050();
 __int64 SdkRoutine_77a990(__int64);
 __int64 SdkRoutine_77a9a0(__int64);
-_QWORD* SdkRoutine_77b320(_QWORD* __return_ptr, _QWORD);
+__attribute__((swiftcall)) void SdkRoutine_77b320(PSEUDO_X8, _QWORD);
 __int64 SdkRoutine_77b500(_QWORD, _QWORD, _QWORD);
 __int64 SdkRoutine_78ead0(_QWORD);
 __int64 SdkRoutine_7939e0(_QWORD, _QWORD);
 __int64 SdkRoutine_7969e0(_QWORD, _QWORD);
 __int64 SdkRoutine_7a0620(__int64);
-_QWORD* SdkRoutine_7a89b0(_QWORD* __return_ptr, _QWORD);
+__attribute__((swiftcall)) void SdkRoutine_7a89b0(PSEUDO_X8, _QWORD);
 __int64 SdkRoutine_7bc8c0(void);
 __int64 SdkRoutine_7bd280(void);
 __int64 SdkRoutine_7bd8c0(void);
@@ -519,7 +519,7 @@ float SdkHr_72ba70(__int64 a1, __int64 a2)
   v126 = *(float*)(a1 + 7872) - v44;
   v123 = *(float*)(a1 + 7884) - v51;
   v124 = *(float*)(a1 + 7880) - v48;
-  SdkRoutine_717720(&v137, v60, v136);
+  SdkRoutine_717720((void*)&v137, v60, v136);
   v65 = v137;
   v66 = v138;
   v67 = v145;
@@ -7630,7 +7630,7 @@ LABEL_65:
 }
 
 bool SdkHr_7535e0(_QWORD* a1, __int64* a2, unsigned __int8* a3,
-                  void (*a4)(_BYTE* __return_ptr, __int16*))
+                  __attribute__((swiftcall)) void (*a4)(PSEUDO_X8, __int16*))
 {
   unsigned __int64 v4;
   __int64 v8;
@@ -8267,7 +8267,7 @@ LABEL_63:
   v118 = v60 | v59 | (4 * v79);
   v197 = v60 | v59 | (4 * v79);
   *(_QWORD*)v198 = (unsigned __int16)(v81 | (2 * v80));
-  a4(&v198[2], &v197);
+  a4((void*)&v198[2], &v197);
   v119 = a1[1];
   if (v119 < v195) {
     *(_QWORD*)(*a1 + 8 * v119) = *(_QWORD*)&v198[2];
@@ -8640,8 +8640,8 @@ LABEL_63:
     *(_QWORD*)&v198[2] = 0;
     v196[0] = v118;
     v196[1] = v117;
-    ((void (*)(_BYTE* __return_ptr, _WORD*, unsigned __int64))a4)(&v198[2],
-                                                                  v196, v147);
+    ((__attribute__((swiftcall)) void (*)(
+        PSEUDO_X8, _WORD*, unsigned __int64))a4)((void*)&v198[2], v196, v147);
     v192 = a1[1];
     v193 = (_QWORD*)(*a1 + 8 * v192++);
     *v193 = *(_QWORD*)&v198[2];
@@ -10292,7 +10292,7 @@ LABEL_65:
 }
 
 bool SdkHr_755e80(_QWORD* a1, __int64* a2, unsigned __int8* a3,
-                  void (*a4)(_BYTE* __return_ptr, __int16*))
+                  __attribute__((swiftcall)) void (*a4)(PSEUDO_X8, __int16*))
 {
   unsigned __int64 v4;
   unsigned __int64 v8;
@@ -10928,7 +10928,7 @@ LABEL_63:
   v118 = v60 | v59 | (4 * v79);
   v197 = v60 | v59 | (4 * v79);
   *(_QWORD*)v198 = (unsigned __int16)(v81 | (2 * v80));
-  a4(&v198[2], &v197);
+  a4((void*)&v198[2], &v197);
   v119 = a1[1];
   if (v119 < v4) {
     *(_QWORD*)(*a1 + 8 * v119) = *(_QWORD*)&v198[2];
@@ -11302,8 +11302,8 @@ LABEL_63:
     *(_QWORD*)&v198[2] = 0;
     v196[0] = v118;
     v196[1] = v117;
-    ((void (*)(_BYTE* __return_ptr, _WORD*, unsigned __int64))a4)(&v198[2],
-                                                                  v196, v147);
+    ((__attribute__((swiftcall)) void (*)(
+        PSEUDO_X8, _WORD*, unsigned __int64))a4)((void*)&v198[2], v196, v147);
     v193 = a1[1];
     v194 = (_QWORD*)(*a1 + 8 * v193++);
     *v194 = *(_QWORD*)&v198[2];
@@ -12169,7 +12169,8 @@ char* SdkHr_77ada0(const char* a1, __int64* a2, int a3, int* a4, __int64 a5,
       if ((unsigned int)v13 >= 0x169) {
         v20 = a6;
         v21 = a3;
-        v22 = (unsigned int)SdkRoutine_77b320((_QWORD*)v13, a4);
+        v22 = (unsigned int)X8CALL_X0(
+            _QWORD*, SdkRoutine_77b320((void*)(_QWORD*)v13, a4));
         a3 = v21;
         a6 = v20;
         if (v22 == 1) {
@@ -12183,7 +12184,8 @@ char* SdkHr_77ada0(const char* a1, __int64* a2, int a3, int* a4, __int64 a5,
     else {
       v15 = a6;
       v16 = a3;
-      v17 = (unsigned int)SdkRoutine_77b320((_QWORD*)v13, a4);
+      v17 = (unsigned int)X8CALL_X0(_QWORD*,
+                                    SdkRoutine_77b320((void*)(_QWORD*)v13, a4));
       a3 = v16;
       a6 = v15;
       if (v17 == 1) {
@@ -12239,7 +12241,8 @@ char* SdkHr_77ada0(const char* a1, __int64* a2, int a3, int* a4, __int64 a5,
     goto LABEL_61;
   case 'V':
     v37 = a6;
-    v38 = (unsigned int)SdkRoutine_77b320("%m/%d/%y", a4);
+    v38 = (unsigned int)X8CALL_X0(_QWORD*,
+                                  SdkRoutine_77b320((void*)"%m/%d/%y", a4));
     a6 = v37;
     v14 = v38;
     v10 = 48;
@@ -12339,7 +12342,7 @@ char* SdkHr_77ada0(const char* a1, __int64* a2, int a3, int* a4, __int64 a5,
     goto LABEL_73;
   case 's':
     v27 = a6;
-    v29 = SdkRoutine_7a89b0("%m/%d/%y", a4);
+    v29 = X8CALL_X0(_QWORD*, SdkRoutine_7a89b0((void*)"%m/%d/%y", a4));
     a6 = v27;
     v10 = 48;
     v23 = 1;

@@ -27,6 +27,10 @@ __int64 SubMix_Unknown11(_QWORD* a1);
 void SubMix_Unknown12(_QWORD* a1);
 __int64 SubMix_2af700(__int64 result, __int64 a2);
 __int64 SubMix_2b79b0(__int64 a1, int a2);
+__int64 nn_audio_SetSubMixVolume(_QWORD, long double, long double);
+__n128 BaseNx_2b72e0(__int64, int, int, unsigned int, unsigned int);
+__n128 nn_os_UnlockMutex_alt1(_QWORD) __asm__("nn_os_UnlockMutex");
+void SubMix_2b6e40(__int64 a1, int a2);
 
 __int64 SubMix_2af700(__int64 result, __int64 a2)
 {
@@ -40,6 +44,207 @@ __int64 SubMix_2af700(__int64 result, __int64 a2)
     } while (v2 < *(int*)(result + 44));
   }
   return result;
+}
+
+void SubMix_2b6e40(__int64 a1, int a2)
+{
+
+#pragma clang fp contract(off)
+  __int64 v4;
+  __int64 v5;
+  int v6;
+  int v7;
+  int v8;
+  int v9;
+  int v10;
+  int v11;
+  int v13;
+  int v14;
+  unsigned int v15;
+  int v16;
+  int v17;
+  unsigned int i;
+  __int64 v19;
+  __int64 v20;
+  int v21;
+  int v22;
+  int v23;
+  int v24;
+  int v25;
+  int v26;
+  int v28;
+  int v29;
+  unsigned int v30;
+  int v31;
+  int v32;
+  unsigned int j;
+  char v34;
+  int v35;
+  int v36;
+  int v37;
+  int v38;
+  float v39;
+  int v40;
+  int v41;
+  long double v42;
+  long double v43;
+
+  if (*(int*)(a1 + 172) >= 1) {
+    v4 = 0;
+    while (1) {
+      v5 = *(_QWORD*)(a1 + 112) + 20 * v4;
+      v6 = *(unsigned __int8*)(v5 + 18);
+      v7 = *(_DWORD*)(v5 + 8);
+      v8 = *(_DWORD*)(v5 + 12);
+      *(_BYTE*)(v5 + 18) = 0;
+      if (v8 < v7) {
+        break;
+      }
+      v10 = *(unsigned __int8*)(v5 + 16);
+      if (v10 != *(unsigned __int8*)(v5 + 17)) {
+        *(_BYTE*)(v5 + 17) = v10;
+      LABEL_12:
+        v11 = (*(__int64 (**)(_QWORD))(**(_QWORD**)(a1 + 104) + 16LL))(
+            *(_QWORD*)(a1 + 104));
+        if (v11 >= 1 && *(_DWORD*)(a1 + 168) >= 1) {
+          v13 = v11;
+          v14 = 0;
+          do {
+            v15 = 0;
+            do {
+              v16 = (*(__int64 (**)(_QWORD, _QWORD))(
+                  **(_QWORD**)(a1 + 104) + 48LL))(*(_QWORD*)(a1 + 104), v15);
+              if (v16 >= 1) {
+                v17 = v16;
+                for (i = 0; i != v17; ++i) {
+                  BaseNx_2b72e0(a1, v4, v14, v15, i);
+                }
+              }
+              ++v15;
+            } while (v15 != v13);
+            ++v14;
+          } while (v14 < *(_DWORD*)(a1 + 168));
+        }
+        goto LABEL_3;
+      }
+      if (v6 != 0) {
+        goto LABEL_12;
+      }
+    LABEL_3:
+      if (++v4 >= *(int*)(a1 + 172)) {
+        goto LABEL_24;
+      }
+    }
+    v9 = v8 + a2;
+    if (v8 + a2 >= v7) {
+      v9 = v7;
+    }
+    *(_DWORD*)(v5 + 12) = v9;
+    goto LABEL_12;
+  }
+LABEL_24:
+  if (*(int*)(a1 + 168) >= 1) {
+    v19 = 0;
+    while (1) {
+      v20 = *(_QWORD*)(a1 + 120) + 20 * v19;
+      v21 = *(unsigned __int8*)(v20 + 18);
+      v22 = *(_DWORD*)(v20 + 8);
+      v23 = *(_DWORD*)(v20 + 12);
+      *(_BYTE*)(v20 + 18) = 0;
+      if (v23 < v22) {
+        break;
+      }
+      v25 = *(unsigned __int8*)(v20 + 16);
+      if (v25 != *(unsigned __int8*)(v20 + 17)) {
+        *(_BYTE*)(v20 + 17) = v25;
+      LABEL_35:
+        v26 = (*(__int64 (**)(_QWORD))(**(_QWORD**)(a1 + 104) + 16LL))(
+            *(_QWORD*)(a1 + 104));
+        if (v26 >= 1 && *(_DWORD*)(a1 + 172) >= 1) {
+          v28 = v26;
+          v29 = 0;
+          do {
+            v30 = 0;
+            do {
+              v31 = (*(__int64 (**)(_QWORD, _QWORD))(
+                  **(_QWORD**)(a1 + 104) + 48LL))(*(_QWORD*)(a1 + 104), v30);
+              if (v31 >= 1) {
+                v32 = v31;
+                for (j = 0; j != v32; ++j) {
+                  BaseNx_2b72e0(a1, v29, v19, v30, j);
+                }
+              }
+              ++v30;
+            } while (v30 != v28);
+            ++v29;
+          } while (v29 < *(_DWORD*)(a1 + 172));
+        }
+        goto LABEL_26;
+      }
+      if (v21 != 0) {
+        goto LABEL_35;
+      }
+    LABEL_26:
+      if (++v19 >= *(int*)(a1 + 168)) {
+        goto LABEL_47;
+      }
+    }
+    v24 = v23 + a2;
+    if (v23 + a2 >= v22) {
+      v24 = v22;
+    }
+    *(_DWORD*)(v20 + 12) = v24;
+    goto LABEL_35;
+  }
+LABEL_47:
+  v34 = *(_BYTE*)(a1 + 146);
+  v35 = *(_DWORD*)(a1 + 136);
+  v36 = *(_DWORD*)(a1 + 140);
+  *(_BYTE*)(a1 + 146) = 0;
+  if (v36 >= v35) {
+    v38 = *(unsigned __int8*)(a1 + 144);
+    if (v38 == *(unsigned __int8*)(a1 + 145)) {
+      if ((v34 & 1) == 0) {
+        return;
+      }
+    }
+    else {
+      *(_BYTE*)(a1 + 145) = v38;
+    }
+  }
+  else {
+    v37 = v36 + a2;
+    if (v36 + a2 >= v35) {
+      v37 = v35;
+    }
+    *(_DWORD*)(a1 + 140) = v37;
+  }
+  nn_os_LockMutex(a1 + 184);
+  v39 = 0x0.0p+0f;
+  if ((*(_BYTE*)(a1 + 144) & 1) == 0) {
+    v40 = *(_DWORD*)(a1 + 136);
+    v41 = *(_DWORD*)(a1 + 140);
+    if (v41 >= v40) {
+      v39 = *(float*)(a1 + 132);
+    }
+    else {
+      v39 = *(float*)(a1 + 128) +
+            (float)((float)((float)(*(float*)(a1 + 132) - *(float*)(a1 + 128)) *
+                            (float)v41) /
+                    (float)v40);
+    }
+  }
+  *((_QWORD*)&v42 + 1) =
+      LANES128_OF(nn_os_UnlockMutex_alt1(a1 + 184)).n128_u64[1];
+  *(_QWORD*)&v42 = 0xC3000000C3000000LL;
+  *(_QWORD*)&v43 = 0x4300000043000000LL;
+  if (v39 >= -0x1.0000000000000p+7f) {
+    *(float*)&v42 = v39;
+  }
+  if (v39 > 0x1.0000000000000p+7f) {
+    *(float*)&v42 = 0x1.0000000000000p+7f;
+  }
+  nn_audio_SetSubMixVolume(a1 + 88, v42, v43);
 }
 
 __int64 SubMix_Unknown4(__int64 a1, int a2)

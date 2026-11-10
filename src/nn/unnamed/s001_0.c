@@ -1,4 +1,4 @@
-#include "decomp/pseudo_types.h"
+#include "decomp/pseudo_helpers.h"
 #pragma GCC visibility push(hidden)
 
 extern unsigned int SdkData_bb0590[8];
@@ -249,7 +249,7 @@ __int64 SdkRoutine_8608a0(void);
 __int64 SdkRoutine_860c50(_QWORD, _QWORD);
 __int64 SdkRoutine_860cb0(_QWORD);
 __int64 SdkRoutine_860cc0(_QWORD);
-_QWORD* SdkRoutine_860d80(_QWORD* __return_ptr);
+__attribute__((swiftcall)) void SdkRoutine_860d80(PSEUDO_X8);
 __int64 SdkRoutine_861250(_QWORD);
 __int64 SdkRoutine_8626a0(_QWORD);
 __int64 SdkRoutine_8626b0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
@@ -2800,7 +2800,7 @@ __int64 SdkHr_27aef0()
   __int64* v2;
 
   SdkData_f26ed8 = 0;
-  SdkRoutine_860d80(&v1);
+  SdkRoutine_860d80((void*)&v1);
   v2 = &SdkData_f26ed8;
   LODWORD(v2) =
       (*(__int64 (**)(__int64, __int64**))(*(_QWORD*)v1 + 56LL))(v1, &v2);
@@ -3974,7 +3974,8 @@ __int64 SdkHr_2b1e80(__int64 a1, __int64* a2, __int64 a3, unsigned int a4)
     v12 = (_QWORD*)*a2;
     *a2 = v10;
     if (v12 != nullptr) {
-      (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v12 + 8LL))(v12, v12);
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v12 + 8LL))(
+          (void*)v12, v12);
     }
     SdkRoutine_858b60(a1 + 24);
     v13 = *(_QWORD*)(a1 + 32);
@@ -5168,7 +5169,8 @@ LABEL_4:
       if (v19 == nullptr) {
         return 0;
       }
-      (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v19 + 8LL))(v19, v19);
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v19 + 8LL))(
+          (void*)v19, v19);
       v16 = v20;
       if (v20 == nullptr) {
       LABEL_11:
@@ -5230,7 +5232,8 @@ __int64 SdkHr_2c20c0(__int64 a1, __int64* a2, __int64 a3, unsigned int a4)
     v12 = (_QWORD*)*a2;
     *a2 = v10;
     if (v12 != nullptr) {
-      (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v12 + 8LL))(v12, v12);
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v12 + 8LL))(
+          (void*)v12, v12);
     }
     SdkRoutine_858b60(a1 + 24);
     v13 = *(_QWORD*)(a1 + 32);
@@ -11310,7 +11313,8 @@ LABEL_4:
       if (v19 == nullptr) {
         return 0;
       }
-      (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v19 + 8LL))(v19, v19);
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v19 + 8LL))(
+          (void*)v19, v19);
       v16 = v20;
       if (v20 == nullptr) {
       LABEL_11:
@@ -11372,7 +11376,8 @@ __int64 SdkHr_328510(__int64 a1, __int64* a2, __int64 a3, unsigned int a4)
     v12 = (_QWORD*)*a2;
     *a2 = v10;
     if (v12 != nullptr) {
-      (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v12 + 8LL))(v12, v12);
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v12 + 8LL))(
+          (void*)v12, v12);
     }
     SdkRoutine_858b60(a1 + 24);
     v13 = *(_QWORD*)(a1 + 32);

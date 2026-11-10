@@ -1,5 +1,7 @@
 #include "decomp/pseudo_helpers.h"
 
+#include "decomp/pseudo_float.h"
+
 #pragma GCC visibility push(hidden)
 
 __n128 nn_mem_StandardAllocator_Free(_QWORD);
@@ -12,6 +14,7 @@ void __attribute__((noreturn)) GameRoutine_60a210();
 void __attribute__((noreturn)) GameRoutine_f15920();
 void MeshData_f555a0(float32x4_t* a1, float32x4_t* a2, unsigned __int64* a3,
                      unsigned __int64* a4);
+unsigned __int64 MeshData_f557a0(__int64 a1);
 
 void MeshData_f555a0(float32x4_t* a1, float32x4_t* a2, unsigned __int64* a3,
                      unsigned __int64* a4)
@@ -143,6 +146,76 @@ void MeshData_f555a0(float32x4_t* a1, float32x4_t* a2, unsigned __int64* a3,
     LANES128(v8[3]).n128_u64[1] = v39;
   }
   LANES128(a1[6]).n128_u64[1] = v9;
+}
+
+unsigned __int64 MeshData_f557a0(__int64 a1)
+{
+  __int128 v1;
+  unsigned __int64 v3;
+  unsigned __int64 result;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  __int128 v9;
+  __int128 v10;
+  unsigned __int64 v11;
+  unsigned __int64 v12;
+  float32x2_t v13;
+  unsigned __int64 v14;
+  unsigned __int64 v15;
+
+  v1 = *(_OWORD*)(a1 + 176);
+  v3 = (((((unsigned int)v1 + 0x1FB68949BF00A3D6LL) ^ 0x9E3779B97F4A7C18LL)
+         << 12) +
+        ((((unsigned int)v1 + 0x1FB68949BF00A3D6LL) ^ 0x9E3779B97F4A7C18LL) >>
+         4) +
+        DWORD1(v1) - 0x61C8864680B583EBLL) ^
+       ((unsigned int)v1 + 0x1FB68949BF00A3D6LL) ^ 0x9E3779B97F4A7C18LL;
+  result = ((v3 << 12) + (v3 >> 4) + DWORD2(v1) - 0x61C8864680B583EBLL) ^ v3;
+  v5 = *(_QWORD*)(a1 + 96);
+  v6 = *(_QWORD*)(a1 + 104);
+  if (v6 != v5) {
+    v7 = (v6 - v5) >> 6;
+    v8 = v5 + 32;
+    do {
+      v9 = *(_OWORD*)(v8 - 16);
+      v10 = *(_OWORD*)(v8 + 16);
+      --v7;
+      v11 =
+          ((result << 12) - 0x61C8864680B583EBLL + (result >> 4) + 5) ^ result;
+      v12 =
+          ((v11 << 12) - 0x61C8864680B583EBLL + (v11 >> 4) + (unsigned int)v9) ^
+          v11;
+      PSEUDO_LOW_LANE64(v13, n64_u64, *(unsigned __int64*)v8);
+      v8 += 64;
+      v14 = (((((v12 << 12) - 0x61C8864680B583EBLL + (v12 >> 4) + DWORD1(v9)) ^
+               v12)
+              << 12) -
+             0x61C8864680B583EBLL +
+             ((((v12 << 12) - 0x61C8864680B583EBLL + (v12 >> 4) + DWORD1(v9)) ^
+               v12) >>
+              4) +
+             DWORD2(v9)) ^
+            ((v12 << 12) - 0x61C8864680B583EBLL + (v12 >> 4) + DWORD1(v9)) ^
+            v12;
+      v15 =
+          ((v14 << 12) - 0x61C8864680B583EBLL + (v14 >> 4) +
+           COERCE_UNSIGNED_INT(
+               (float)((float)(vmuls_lane_f32(0x1.6000000000000p+3f,
+                                              *(float32x2_t*)&v10, 1) +
+                               (float)(*(float*)&v10 * 0x1.a000000000000p+3f)) +
+                       (float)(0x1.c000000000000p+2f * *((float*)&v10 + 2))) +
+               (float)(0x1.8000000000000p+1f * *((float*)&v10 + 3)))) ^
+          v14;
+      result = ((v15 << 12) - 0x61C8864680B583EBLL + (v15 >> 4) +
+                COERCE_UNSIGNED_INT(
+                    vmuls_lane_f32(0x1.8000000000000p+1f, v13, 1) +
+                    (float)(LANES64(v13).n64_f32[0] * 0x1.c000000000000p+2f))) ^
+               v15;
+    } while (v7 != 0);
+  }
+  return result;
 }
 
 __n128 MeshData_DeletingDestructor(_QWORD* a1)

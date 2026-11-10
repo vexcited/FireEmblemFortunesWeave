@@ -36,6 +36,9 @@ __int64 physx_NpScene_NpScene(__int64 a1, __int64 a2, __int64 a3);
 __int64 physx_NpScene_addActorInternal(__int64 a1, __int64 a2, __int64 a3);
 __int64 physx_NpScene_unlockRead(__int64 a1);
 __int64 physx_NpScene_applySoftBodyData(__int64 a1);
+__int64 GameRoutine_2f32c0(_QWORD, _QWORD);
+__int64 PxGetBroadcastAllocator_alt1(_QWORD) __asm__("PxGetBroadcastAllocator");
+__int64 physx_NpScene_applyParticleBufferData(__int64 a1);
 
 __int64 physx_NpScene_NpScene(__int64 a1, __int64 a2, __int64 a3)
 {
@@ -452,6 +455,36 @@ __int64 physx_NpScene_applySoftBodyData(__int64 a1)
       v1, 8, "/Inside/Lib/PhysX/O/physx/source/physx/src/NpScene.cpp", 3709,
       "PxScene::applySoftBodyData() not allowed while simulation is running. "
       "Call will be ignored.");
+}
+
+__int64 physx_NpScene_applyParticleBufferData(__int64 a1)
+{
+  __int64 result;
+  __int64 v3;
+  const char* v4;
+  __int64 v5;
+  _BYTE v6[4];
+
+  result = *(_QWORD*)(a1 + 6048);
+  if (result == 0) {
+    v3 = PxGetBroadcastAllocator_alt1(v6);
+    if (v6[0] != 0) {
+      v4 = "static const char "
+           "*physx::PxReflectionAllocator<physx::NpDirectGPUAPI>::getName(bool)"
+           " [T = physx::NpDirectGPUAPI]";
+    }
+    else {
+      v4 = "<allocation names disabled>";
+    }
+    v5 = (*(__int64 (**)(__int64, __int64, const char*, const char*, __int64))(
+        *(_QWORD*)v3 + 16LL))(
+        v3, 16, v4, "/Inside/Lib/PhysX/O/physx/source/physx/src/NpScene.cpp",
+        3738);
+    GameRoutine_2f32c0(v5, a1);
+    *(_QWORD*)(a1 + 6048) = v5;
+    return v5;
+  }
+  return result;
 }
 
 #pragma GCC visibility pop

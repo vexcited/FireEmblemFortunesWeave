@@ -21,6 +21,21 @@ void GameRoutine_5b28f0();
 bool TaskEffectDecal_b617c0(__int64* a1);
 __int64 TaskEffectDecal_b620c0(__int64 a1, __int64 a2, _QWORD* a3, _QWORD* a4,
                                _QWORD* a5);
+extern _UNKNOWN* GameData_212c2a0;
+extern _UNKNOWN** GameData_212e4d8[2];
+extern __int128 GameData_1a828e0;
+extern __int128 GameData_1a829e0;
+extern __int128 GameData_1a82a50;
+extern __int128 GameData_1a82c60;
+extern __int128 GameData_1a82c90;
+extern __int128 GameData_1a82d20;
+extern __int128 GameData_1a82ff0;
+extern __int128 GameData_1a83000;
+extern __int128 GameData_1a83370;
+extern __int128 GameData_1a834b0;
+extern __int128 GameData_1a83530;
+extern __int128 GameData_1a83620;
+__int64 TaskEffectDecal_b61ab0(_DWORD* a1, __int64 a2, __int64 a3, __int64 a4);
 
 bool TaskEffectDecal_b617c0(__int64* a1)
 {
@@ -136,6 +151,174 @@ bool TaskEffectDecal_b617c0(__int64* a1)
   v38_.v38 = *(_QWORD*)(v34 + 24);
   v36 = ((__int64 (*)(__int64*))GameRoutine_5b28f0)(a1);
   return Resource_5c92d0(v36, v25, 2u, &v38_.v38, v35);
+}
+
+__int64 TaskEffectDecal_b61ab0(_DWORD* a1, __int64 a2, __int64 a3, __int64 a4)
+{
+  int v4;
+  bool v9;
+  int v10;
+  __int64 v11;
+  __int64 v12;
+  int v13;
+  __int128 v14;
+  int32x4_t v15;
+  int32x4_t v16;
+  int32x4_t v17;
+  __int64 v18;
+  __int64 v19;
+  int32x4_t* v20;
+  int32x4_t v21;
+  int32x4_t v22;
+  int32x4_t v23;
+  int32x4_t v24;
+  int32x4_t v25;
+  int32x4_t v26;
+  int32x4_t v27;
+  int32x4_t v28;
+  int32x4_t v29;
+  int32x4_t v30;
+  int32x4_t v31;
+  int32x4_t v32;
+  int32x4_t v33;
+  int32x4_t v34;
+  __int64 v35;
+  int32x4_t v36;
+  int32x4_t v37;
+  int32x4_t v38;
+  int32x4_t v39;
+  __int128 v40;
+  int32x4_t v41;
+  int32x4_t v42;
+  int32x4_t v43;
+  int32x4_t v44;
+  int32x4_t v45;
+  int32x4_t v46;
+  int32x4_t v47;
+  __int64 result;
+  int v49;
+  __int64 v50;
+  int v51;
+  __int64 v52;
+  _QWORD* v53;
+  __int64 v54;
+  __int64 (**v55)(__int64);
+  __int64 v56;
+  __int64 v57;
+
+  v4 = a1[180];
+  v9 = v4 < -1;
+  v10 = ((_BYTE)v4 + 1) & 1;
+  if (v9) {
+    v10 = -v10;
+  }
+  a1[180] = v10;
+  v11 = *(_QWORD*)&a1[2 * v10 + 176];
+  v12 = (*(__int64 (**)(__int64))(*(_QWORD*)v11 + 56LL))(v11);
+  v13 = *(_DWORD*)(*(_QWORD*)a1 + 13240LL);
+  if ((unsigned int)(v13 - 3) > 3) {
+    v18 = 128;
+    v19 = 112;
+    v20 = (int32x4_t*)GameData_212c2a0;
+    v21 = *((int32x4_t*)GameData_212c2a0 + 1);
+    v22 = *(int32x4_t*)((char*)((char*)0x20LL) + (_QWORD)GameData_212c2a0);
+    v23 = *(int32x4_t*)((char*)((char*)0x20LL) + (_QWORD)GameData_212c2a0 + 16);
+    v24 = vzip1q_s32(*(int32x4_t*)GameData_212c2a0, v22);
+    v25 = vzip2q_s32(*(int32x4_t*)GameData_212c2a0, v22);
+    v26 = vzip1q_s32(v21, v23);
+    *(int32x4_t*)v12 = vzip1q_s32(v24, v26);
+    *(int32x4_t*)(v12 + 16) = vzip2q_s32(v24, v26);
+    *(int32x4_t*)(v12 + 32) = vzip1q_s32(v25, vzip2q_s32(v21, v23));
+    v27 = v20[1];
+    v28 = *(int32x4_t*)((char*)((char*)0x20LL) + (_QWORD)v20);
+    v29 = *(int32x4_t*)((char*)((char*)0x20LL) + (_QWORD)v20 + 16);
+    v30 = vzip1q_s32(*v20, v28);
+    v31 = vzip2q_s32(*v20, v28);
+    v32 = vzip1q_s32(v27, v29);
+    v33 = vzip1q_s32(v31, vzip2q_s32(v27, v29));
+    *(int32x4_t*)(v12 + 48) = vzip1q_s32(v30, v32);
+    *(int32x4_t*)(v12 + 64) = vzip2q_s32(v30, v32);
+    v34 = *(int32x4_t*)((char*)&(*(__int64 (*)[2])0x28LL)[1] + (_QWORD)v20);
+    v35 = 144;
+    v36 = vzip1q_s32(v27, v34);
+    v37 = vzip2q_s32(v27, v34);
+    v38 = vzip2q_s32(v30, v36);
+    v39 = vzip1q_s32(v31, v37);
+    v40 = (__typeof__(v40)){0};
+    *(int32x4_t*)(v12 + 80) = v33;
+    *(int32x4_t*)(v12 + 96) = vzip1q_s32(v30, v36);
+  }
+  else {
+    if ((unsigned int)(v13 - 5) > 1) {
+      *(_OWORD*)v12 = GameData_1a83620;
+      *(_OWORD*)(v12 + 16) = GameData_1a834b0;
+      *(_OWORD*)(v12 + 32) = GameData_1a82d20;
+      v41 = *((int32x4_t*)GameData_212c2a0 + 1);
+      v42 = *(int32x4_t*)((char*)((char*)0x20LL) + (_QWORD)GameData_212c2a0);
+      v43 =
+          *(int32x4_t*)((char*)((char*)0x20LL) + (_QWORD)GameData_212c2a0 + 16);
+      v44 = vzip1q_s32(*(int32x4_t*)GameData_212c2a0, v42);
+      v45 = vzip2q_s32(*(int32x4_t*)GameData_212c2a0, v42);
+      v46 = vzip1q_s32(v41, v43);
+      v47 = vzip2q_s32(v41, v43);
+      v17 = vzip1q_s32(v44, v46);
+      v16 = vzip2q_s32(v44, v46);
+      v15 = vzip1q_s32(v45, v47);
+      v14 = (__typeof__(v14)){0};
+    }
+    else {
+      *(_QWORD*)&v14 = 0x3F8000003F800000LL;
+      *((_QWORD*)&v14 + 1) = 0x3F8000003F800000LL;
+      *(_OWORD*)v12 = GameData_1a82ff0;
+      *(_OWORD*)(v12 + 16) = GameData_1a82c60;
+      *(_OWORD*)(v12 + 32) = GameData_1a83530;
+      v15 = COERCE_AS(int32x4_t, GameData_1a829e0);
+      v16 = COERCE_AS(int32x4_t, GameData_1a83000);
+      v17 = COERCE_AS(int32x4_t, GameData_1a82a50);
+    }
+    *(int32x4_t*)(v12 + 48) = v17;
+    *(int32x4_t*)(v12 + 64) = v16;
+    v18 = 112;
+    v19 = 96;
+    v40 = GameData_1a828e0;
+    v38 = COERCE_AS(int32x4_t, GameData_1a82c90);
+    *(int32x4_t*)(v12 + 80) = v15;
+    v39 = COERCE_AS(int32x4_t, GameData_1a83370);
+    v35 = 128;
+    *(_OWORD*)(v12 + 144) = v14;
+  }
+  *(int32x4_t*)(v12 + v19) = v38;
+  *(int32x4_t*)(v12 + v18) = v39;
+  *(_OWORD*)(v12 + v35) = v40;
+  result = (*(__int64 (**)(__int64))(*(_QWORD*)v11 + 64LL))(v11);
+  if (*(_DWORD*)(a4 + 16) == 8) {
+    v49 = a1[194];
+    v50 = *(_QWORD*)a1;
+    v9 = v49 < -1;
+    v51 = ((_BYTE)v49 + 1) & 1;
+    if (v9) {
+      v51 = -v51;
+    }
+    a1[194] = v51;
+    v52 = *(_QWORD*)&a1[2 * v51 + 190];
+    v53 = (_QWORD*)(*(__int64 (**)(__int64))(*(_QWORD*)v52 + 56LL))(v52);
+    v54 = (*(__int64 (**)(_QWORD))(**(_QWORD**)(a3 + 64) + 16LL))(
+        *(_QWORD*)(a3 + 64));
+    (*(void (**)(__int64))(*(_QWORD*)v54 + 40LL))(v54);
+    v55 = (__int64 (**)(__int64))GameData_212e4d8[0];
+    *v53 = (*(__int64 (**)(__int64))GameData_212e4d8[0])(*(_QWORD*)(v50 + 256) +
+                                                         8LL);
+    v56 = (*(__int64 (**)(_QWORD))(**(_QWORD**)(a3 + 72) + 16LL))(
+        *(_QWORD*)(a3 + 72));
+    (*(void (**)(__int64))(*(_QWORD*)v56 + 40LL))(v56);
+    v53[1] = (*v55)(*(_QWORD*)(v50 + 256) + 8LL);
+    v57 = (*(__int64 (**)(_QWORD))(**(_QWORD**)(a2 + 8) + 16LL))(
+        *(_QWORD*)(a2 + 8));
+    (*(void (**)(__int64))(*(_QWORD*)v57 + 40LL))(v57);
+    v53[2] = (*v55)(*(_QWORD*)(v50 + 256) + 8LL);
+    return (*(__int64 (**)(__int64))(*(_QWORD*)v52 + 64LL))(v52);
+  }
+  return result;
 }
 
 __int64 TaskEffectDecal_b620c0(__int64 a1, __int64 a2, _QWORD* a3, _QWORD* a4,

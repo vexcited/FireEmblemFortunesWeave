@@ -32,6 +32,7 @@ extern _UNKNOWN* GameData_212c548;
 extern __int64* eft_g_effectSystem_ptr[3];
 extern char GameData_1a9f09e;
 __int64 TelopHonorLvUP_Unknown35(_QWORD* a1);
+const char* TelopHonorLvUP_Unknown51(__int64 a1);
 
 __int64 TelopHonorLvUP_Unknown35(_QWORD* a1)
 {
@@ -396,6 +397,16 @@ __int64 TelopHonorLvUP_Unknown34(__int64 result)
     **(_QWORD**)(v5 + 864) = 0;
   }
   return result;
+}
+
+const char* TelopHonorLvUP_Unknown51(__int64 a1)
+{
+  if (*(_BYTE*)(a1 + 824) != 0) {
+    return "L_Help/L_NextCursor";
+  }
+  else {
+    return "L_NextCursor";
+  }
 }
 
 __int64 TelopHonorLvUP_Destructor(_QWORD* a1)

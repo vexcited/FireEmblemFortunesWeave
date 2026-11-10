@@ -138,6 +138,46 @@ __int64 MapOnMapInfo_15ff4a0(__int64 a1);
 __attribute__((swiftcall)) void MapOnMapInfo_1600600(PSEUDO_X8 x8_, __int64 a1,
                                                      _QWORD** a2, _QWORD* a3,
                                                      _QWORD* a4);
+__int64 Manager_136ac50_alt1(__int64, __int64,
+                             __int64) __asm__("Manager_136ac50");
+__int64 Manager_136b110(__int64, unsigned int, char*);
+extern char GameData_1a9f09e;
+_QWORD* MapOnMapInfo_15fbb90(_QWORD* a1, unsigned int a2);
+
+_QWORD* MapOnMapInfo_15fbb90(_QWORD* a1, unsigned int a2)
+{
+  _QWORD* result;
+  __int64 v5;
+  char* v6;
+  const char* v7;
+
+  if (a2 == 2) {
+    result = (_QWORD*)Manager_136b110(ui_Manager_instance_ + 1264, 7u,
+                                      "OnMap_IconFactor_Critical");
+    v5 = (__int64)result;
+    if (result == nullptr) {
+      return result;
+    }
+    return GameRoutine_15fba20(a1, a2, v5);
+  }
+  v6 = &GameData_1a9f09e;
+  if (a2 == 1) {
+    v6 = "OnMap_IconFactor_Vantage";
+  }
+  if (a2 != 0) {
+    v7 = v6;
+  }
+  else {
+    v7 = "OnMap_IconFactor_Efficacy";
+  }
+  result = (_QWORD*)Manager_136ac50_alt1(ui_Manager_instance_ + 1264, 7,
+                                         (__int64)v7);
+  v5 = (__int64)result;
+  if (result != nullptr) {
+    return GameRoutine_15fba20(a1, a2, v5);
+  }
+  return result;
+}
 
 __int64 MapOnMapInfo_15fbc40(__int64 a1, __int64 a2)
 {

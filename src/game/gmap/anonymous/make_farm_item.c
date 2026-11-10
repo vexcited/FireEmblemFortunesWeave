@@ -14,6 +14,72 @@ extern __int64 game_GameModeData_instance_;
 extern char* game_menu_g_mid_cause_shortage_material_ptr[2];
 __int64 MakeFarmItem_Unknown25(_QWORD* a1);
 __int64 MakeFarmItem_Unknown70(_WORD* a1, __int64 a2);
+__int64 Impl_13261c0_alt1(__int64) __asm__("Impl_13261c0");
+const char* MakeFarmItem_Unknown3();
+const char* MakeFarmItem_Unknown74();
+
+const char* MakeFarmItem_Unknown3()
+{
+  __int64 v0;
+  int v1;
+  __int64* v2;
+  __int64* v3;
+  __int64 v4;
+  __int64 v5;
+  int v6;
+  bool v7;
+  unsigned __int64 v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+
+  v0 = *(_QWORD*)(GameData_21c96e8 + 8);
+  v1 = *(_DWORD*)(v0 + 56);
+  v2 = *(__int64**)(v0 + 8);
+  v3 = *(__int64**)(v0 + 16);
+  if ((v1 & 0x80000000) == 0) {
+    while (v2 != v3) {
+      v5 = *v2++;
+      v4 = v5;
+      if (*(_DWORD*)(v5 + 84) == v1) {
+        goto LABEL_8;
+      }
+    }
+  LABEL_7:
+    v4 = 0;
+    goto LABEL_8;
+  }
+  if (v2 == v3) {
+    goto LABEL_7;
+  }
+  while (1) {
+    v4 = *v2;
+    if (*(_QWORD*)(*v2 + 96) == 0 && *(_QWORD*)(v4 + 552) == 0) {
+      break;
+    }
+    if (++v2 == v3) {
+      goto LABEL_7;
+    }
+  }
+LABEL_8:
+  v6 = *(_DWORD*)(v4 + 540);
+  v7 = __OFSUB__(v6, 1);
+  v8 = (unsigned int)(v6 - 1);
+  if (((v8 & 0x80000000) != 0LL) == v7) {
+    v9 = *(_QWORD*)(v4 + 24);
+    v10 = *(_QWORD*)(v4 + 32) - v9;
+    v11 = v9 + 8LL * (unsigned int)v8;
+    if (v8 < v10 >> 3) {
+      v4 = v11;
+    }
+  }
+  if ((unsigned __int8)Impl_13261c0_alt1(*(_QWORD*)v4) == 14) {
+    return "MID_GmapMenu_ReMakeFarm";
+  }
+  else {
+    return "MID_GmapMenu_MakeFarm";
+  }
+}
 
 __int64 MakeFarmItem_Unknown25(_QWORD* a1)
 {
@@ -193,6 +259,69 @@ LABEL_20:
   }
   *(_DWORD*)(a2 + 72) = v28;
   return result;
+}
+
+const char* MakeFarmItem_Unknown74()
+{
+  __int64 v0;
+  int v1;
+  __int64* v2;
+  __int64* v3;
+  __int64 v4;
+  __int64 v5;
+  int v6;
+  bool v7;
+  unsigned __int64 v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+
+  v0 = *(_QWORD*)(GameData_21c96e8 + 8);
+  v1 = *(_DWORD*)(v0 + 56);
+  v2 = *(__int64**)(v0 + 8);
+  v3 = *(__int64**)(v0 + 16);
+  if ((v1 & 0x80000000) == 0) {
+    while (v2 != v3) {
+      v5 = *v2++;
+      v4 = v5;
+      if (*(_DWORD*)(v5 + 84) == v1) {
+        goto LABEL_8;
+      }
+    }
+  LABEL_7:
+    v4 = 0;
+    goto LABEL_8;
+  }
+  if (v2 == v3) {
+    goto LABEL_7;
+  }
+  while (1) {
+    v4 = *v2;
+    if (*(_QWORD*)(*v2 + 96) == 0 && *(_QWORD*)(v4 + 552) == 0) {
+      break;
+    }
+    if (++v2 == v3) {
+      goto LABEL_7;
+    }
+  }
+LABEL_8:
+  v6 = *(_DWORD*)(v4 + 540);
+  v7 = __OFSUB__(v6, 1);
+  v8 = (unsigned int)(v6 - 1);
+  if (((v8 & 0x80000000) != 0LL) == v7) {
+    v9 = *(_QWORD*)(v4 + 24);
+    v10 = *(_QWORD*)(v4 + 32) - v9;
+    v11 = v9 + 8LL * (unsigned int)v8;
+    if (v8 < v10 >> 3) {
+      v4 = v11;
+    }
+  }
+  if ((unsigned __int8)Impl_13261c0_alt1(*(_QWORD*)v4) == 14) {
+    return "MID_GmapMenu_ReMakeFarm_Help";
+  }
+  else {
+    return "MID_GmapMenu_MakeFarm_Help";
+  }
 }
 
 #pragma GCC visibility pop

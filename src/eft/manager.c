@@ -40,6 +40,11 @@ __int64 Manager_bc5490(__int64 a1, __int64 a2, int32x4_t* a3, __int128* a4,
                        float a5, float a6);
 __int64 Manager_bc57c0(__int64 a1, __int64 a2, __int64 a3);
 __int64* Manager_bc6460(float* a1, float32x4_t* a2, char a3);
+__int64* GameRoutine_a90ce0(__int64* result, unsigned __int64);
+__int64 memcmp(_QWORD, _QWORD, _QWORD);
+__int64 std___1___hash_memory(_QWORD, _QWORD);
+__int64 std___1___next_prime(_QWORD);
+__int64 Manager_bc8ac0(float* a1, unsigned __int8* a2, __int64** a3);
 
 __int64 Manager_bc5490(__int64 a1, __int64 a2, int32x4_t* a3, __int128* a4,
                        float a5, float a6)
@@ -994,6 +999,237 @@ __int64* Manager_bc6460(float* a1, float32x4_t* a2, char a3)
     std___1___shared_weak_count___release_weak(v17);
   }
   return v83;
+}
+
+__int64 Manager_bc8ac0(float* a1, unsigned __int8* a2, __int64** a3)
+{
+
+#pragma clang fp contract(off)
+  unsigned __int64 v3;
+  unsigned __int64 v4;
+  bool v7;
+  unsigned __int64 v8;
+  unsigned __int8* v9;
+  unsigned __int64 v10;
+  unsigned __int64 v11;
+  unsigned __int64 v12;
+  unsigned __int64 v13;
+  unsigned __int64 v14;
+  __int64* v15;
+  __int64 v16;
+  unsigned __int64 v17;
+  unsigned __int64 v18;
+  unsigned __int64 v19;
+  __int64 v20;
+  __int64 v21;
+  unsigned __int64 v22;
+  unsigned __int64 v23;
+  __int64 v24;
+  __int64 v25;
+  __int64* v26;
+  __int64 v27;
+  __int64 v28;
+  float v29;
+  float v30;
+  float v31;
+  _BOOL8 v32;
+  unsigned __int64 v33;
+  unsigned __int64 v34;
+  unsigned __int64 primeEm;
+  unsigned __int64 v36;
+  unsigned __int64 v37;
+  __int64 v38;
+  __int64 v39;
+  __int64* v40;
+  __int64 v41;
+  unsigned __int64 v42;
+
+  v4 = *a2;
+  v7 = (v4 & 1) == 0;
+  v8 = v4 >> 1;
+  if (v7) {
+    v9 = a2 + 1;
+  }
+  else {
+    v9 = *((unsigned __int8**)a2 + 2);
+  }
+  if (v7) {
+    v10 = v8;
+  }
+  else {
+    v10 = *((_QWORD*)a2 + 1);
+  }
+  v11 = std___1___hash_memory(v9, v10);
+  v12 = *((_QWORD*)a1 + 1);
+  v13 = v11;
+  if (v12 != 0) {
+    v14 = v12 - 1;
+    if ((v12 & (v12 - 1)) != 0) {
+      v3 = v11;
+      if (v11 >= v12) {
+        v3 = v11 % v12;
+      }
+    }
+    else {
+      v3 = v14 & v11;
+    }
+    v15 = *(__int64**)(*(_QWORD*)a1 + 8 * v3);
+    if (v15 != nullptr) {
+      v16 = *v15;
+      if (*v15 != 0) {
+        if ((v12 & v14) == 0) {
+          while (1) {
+            v21 = *(_QWORD*)(v16 + 8);
+            if (v21 == v13) {
+              v22 = *(unsigned __int8*)(v16 + 16);
+              v23 = *(_QWORD*)(v16 + 24);
+              if ((v22 & 1) == 0) {
+                v23 = v22 >> 1;
+              }
+              if (v23 == v10) {
+                v24 = (v22 & 1) != 0 ? *(_QWORD*)(v16 + 32) : v16 + 17;
+                if ((unsigned int)memcmp(v24, v9, v10) == 0) {
+                  return v16;
+                }
+              }
+            }
+            else if ((v21 & v14) != v3) {
+              goto LABEL_41;
+            }
+            v16 = *(_QWORD*)v16;
+            if (v16 == 0) {
+              goto LABEL_41;
+            }
+          }
+        }
+        do {
+          v17 = *(_QWORD*)(v16 + 8);
+          if (v17 == v13) {
+            v18 = *(unsigned __int8*)(v16 + 16);
+            v19 = *(_QWORD*)(v16 + 24);
+            if ((v18 & 1) == 0) {
+              v19 = v18 >> 1;
+            }
+            if (v19 == v10) {
+              v20 = (v18 & 1) != 0 ? *(_QWORD*)(v16 + 32) : v16 + 17;
+              if ((unsigned int)memcmp(v20, v9, v10) == 0) {
+                return v16;
+              }
+            }
+          }
+          else {
+            if (v17 >= v12) {
+              v17 %= v12;
+            }
+            if (v17 != v3) {
+              break;
+            }
+          }
+          v16 = *(_QWORD*)v16;
+        } while (v16 != 0);
+      }
+    }
+  }
+LABEL_41:
+  v25 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
+                                       48, 16, 0);
+  v26 = *a3;
+  *(_QWORD*)v25 = 0;
+  *(_QWORD*)(v25 + 8) = v13;
+  v16 = v25;
+  v27 = *v26;
+  v28 = v26[2];
+  *(_QWORD*)(v25 + 24) = v26[1];
+  *(_QWORD*)(v25 + 32) = v28;
+  *(_QWORD*)(v25 + 16) = v27;
+  v26[1] = 0;
+  v26[2] = 0;
+  *v26 = 0;
+  *(_DWORD*)(v25 + 40) = 0;
+  v29 = a1[8];
+  v30 = (float)(unsigned __int64)(*((_QWORD*)a1 + 3) + 1LL);
+  if (v12 == 0 || (float)(v29 * (float)v12) < v30) {
+    v31 = v30 / v29;
+    v32 = true;
+    if (v12 >= 3) {
+      v32 = (v12 & (v12 - 1)) != 0;
+    }
+    v33 = v32 | (2 * v12);
+    v34 = vcvtps_u64_f32(v31);
+    if (v33 <= v34) {
+      primeEm = v34;
+    }
+    else {
+      primeEm = v33;
+    }
+    if (primeEm == 1) {
+      primeEm = 2;
+    }
+    else if ((primeEm & (primeEm - 1)) != 0) {
+      primeEm = std___1___next_prime(primeEm);
+    }
+    v36 = *((_QWORD*)a1 + 1);
+    if (primeEm > v36) {
+      goto LABEL_53;
+    }
+    if (primeEm < v36) {
+      v37 = vcvtps_u64_f32((float)*((unsigned __int64*)a1 + 3) / a1[8]);
+      if (v36 < 3 || (v36 & (v36 - 1)) != 0) {
+        v37 = std___1___next_prime(v37);
+      }
+      else {
+        v38 = 1LL << -(char)__clz(v37 - 1);
+        if (v37 >= 2) {
+          v37 = v38;
+        }
+      }
+      if (primeEm <= v37) {
+        primeEm = v37;
+      }
+      if (primeEm < v36) {
+      LABEL_53:
+        GameRoutine_a90ce0((__int64*)a1, primeEm);
+      }
+    }
+    v12 = *((_QWORD*)a1 + 1);
+    if ((v12 & (v12 - 1)) != 0) {
+      if (v13 >= v12) {
+        v3 = v13 % v12;
+      }
+      else {
+        v3 = v13;
+      }
+    }
+    else {
+      v3 = (v12 - 1) & v13;
+    }
+  }
+  v39 = *(_QWORD*)a1;
+  v40 = *(__int64**)(*(_QWORD*)a1 + 8 * v3);
+  if (v40 != nullptr) {
+    *(_QWORD*)v16 = *v40;
+    *v40 = v16;
+  }
+  else {
+    v41 = *((_QWORD*)a1 + 2);
+    *((_QWORD*)a1 + 2) = v16;
+    *(_QWORD*)v16 = v41;
+    *(_QWORD*)(v39 + 8 * v3) = a1 + 4;
+    if (*(_QWORD*)v16 != 0) {
+      v42 = *(_QWORD*)(*(_QWORD*)v16 + 8LL);
+      if ((v12 & (v12 - 1)) != 0) {
+        if (v42 >= v12) {
+          v42 %= v12;
+        }
+      }
+      else {
+        v42 &= v12 - 1;
+      }
+      *(_QWORD*)(*(_QWORD*)a1 + 8 * v42) = v16;
+    }
+  }
+  ++*((_QWORD*)a1 + 3);
+  return v16;
 }
 
 #pragma GCC visibility pop

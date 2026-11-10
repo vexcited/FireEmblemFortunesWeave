@@ -65,6 +65,11 @@ void game_map_MapDrawConst_AddCellPlaneMask(__int64 a1, float32x4_t* a2, int a3,
 long double MapDrawConst_fcc280(__int64 a1, unsigned int** a2);
 _QWORD* MapDrawConst_fcc4f0(__int64 a1, _QWORD* a2, int a3, float32x4_t* a4,
                             __int64 a5, __int64 a6, char a7);
+void MeshData_f555a0(float32x4_t*, float32x4_t*, unsigned __int64*,
+                     unsigned __int64*);
+__int64 MapDrawConst_fcc820(__int64 a1, float32x4_t* a2, float32x4_t* a3,
+                            __int128* a4, unsigned __int64* a5,
+                            unsigned __int8 a6);
 
 void game_map_MapDrawConst_AddCellPlaneMask(__int64 a1, float32x4_t* a2, int a3,
                                             int a4, int a5,
@@ -997,6 +1002,226 @@ _QWORD* MapDrawConst_fcc660(_QWORD* result, __int64 a2)
   }
   v5[1] = v6;
   return result;
+}
+
+__int64 MapDrawConst_fcc820(__int64 a1, float32x4_t* a2, float32x4_t* a3,
+                            __int128* a4, unsigned __int64* a5,
+                            unsigned __int8 a6)
+{
+
+#pragma clang fp contract(off)
+  float v8;
+  float v9;
+  float v10;
+  float32x4_t v11;
+  float32x4_t v12;
+  unsigned __int32 v13;
+  float32x4_t v14;
+  float32x4_t v15;
+  __int128 v16;
+  float32x4_t v17;
+  float32x4_t v18;
+  float32x4_t v19;
+  float32x4_t v20;
+  float32x4_t v21;
+  float32x4_t v22;
+  float32x4_t v23;
+  __int128 v24;
+  unsigned __int32 v25;
+  float32x4_t v26;
+  __int128 v27;
+  float32x4_t v28;
+  float v29;
+  unsigned __int64 v31;
+  float32x4_t v37;
+  float32x4_t v38;
+  float32x4_t v39;
+  unsigned __int64 v40;
+  float32x4_t* v41;
+  unsigned __int64 v42;
+  float32x4_t v43;
+  float32x4_t v44;
+  int8x16_t v45;
+  float32x4_t v48;
+  __int64 v51;
+  float32x4_t v52;
+  unsigned __int64 v53[2];
+  float32x4_t v54;
+  float32x4_t v55;
+  float32x4_t v56;
+  float32x4_t v57;
+
+  v56 = (__typeof__(v56)){0};
+  v57 = (__typeof__(v57)){0};
+  v54 = (__typeof__(v54)){0};
+  v55 = (__typeof__(v55)){0};
+  v8 = 0x0.0p+0f;
+  if (a6 > 1u) {
+    if (a6 == 2) {
+      v21 = a3[2];
+      v22 = a3[3];
+      LANES128(v57).n128_u64[0] = LANES128(a3[2]).n128_u64[0];
+      LANES128(v56).n128_u64[0] = LANES128(v22).n128_u64[0];
+      v13 = LANES128(v22).n128_u32[1];
+      v12 = v57;
+      LANES128(v23).n128_u64[0] = LANES128(v57).n128_u64[0];
+      LANES128(v23).n128_u64[1] = LANES128(v21).n128_u32[2];
+      LANES128(v21).n128_u64[0] = LANES128(v22).n128_u64[0];
+      LANES128(v21).n128_u64[1] = LANES128(v22).n128_u32[2];
+      v24 = *a4++;
+      v16 = v24;
+      v56 = v21;
+      v57 = v23;
+    }
+    else {
+      v9 = 0x0.0p+0f;
+      v10 = 0x0.0p+0f;
+      if (a6 != 3) {
+        goto LABEL_13;
+      }
+      v17 = a3[1];
+      v18 = a3[2];
+      LANES128(v57).n128_u64[0] = LANES128(a3[1]).n128_u64[0];
+      v12 = v57;
+      LANES128(v19).n128_u64[0] = LANES128(v57).n128_u64[0];
+      LANES128(v19).n128_u64[1] = LANES128(v17).n128_u32[2];
+      v13 = LANES128(v18).n128_u32[1];
+      v57 = v19;
+      LANES128(v19).n128_u64[0] = LANES128(v18).n128_u64[0];
+      LANES128(v19).n128_u64[1] = LANES128(v18).n128_u32[2];
+      v56 = v19;
+      v16 = a4[3];
+    }
+    LANES128(v55).n128_u64[0] = v16;
+  }
+  else {
+    if (a6 != 0) {
+      v9 = 0x0.0p+0f;
+      v10 = 0x0.0p+0f;
+      if (a6 != 1) {
+        goto LABEL_13;
+      }
+      v15 = a3[3];
+      v11 = *a3;
+      LANES128(v57).n128_u64[0] = LANES128(a3[3]).n128_u64[0];
+      LANES128(v56).n128_u64[0] = LANES128(v11).n128_u64[0];
+      v13 = LANES128(v11).n128_u32[1];
+      v12 = v57;
+      LANES128(v14).n128_u64[0] = LANES128(v57).n128_u64[0];
+      LANES128(v14).n128_u32[2] = LANES128(v15).n128_u32[2];
+      LANES128(v15).n128_u64[0] = LANES128(v11).n128_u64[0];
+      LANES128(v15).n128_u32[2] = LANES128(v11).n128_u32[2];
+      v16 = a4[1];
+      a4 += 2;
+    }
+    else {
+      v15 = *a3;
+      v20 = a3[1];
+      LANES128(v57).n128_u64[0] = LANES128(*(a3)).n128_u64[0];
+      LANES128(v56).n128_u64[0] = LANES128(v20).n128_u64[0];
+      v13 = LANES128(v20).n128_u32[1];
+      v12 = v57;
+      LANES128(v14).n128_u64[0] = LANES128(v57).n128_u64[0];
+      LANES128(v14).n128_u32[2] = LANES128(v15).n128_u32[2];
+      LANES128(v15).n128_u64[0] = LANES128(v20).n128_u64[0];
+      LANES128(v15).n128_u32[2] = LANES128(v20).n128_u32[2];
+      v16 = a4[2];
+      a4 += 3;
+    }
+    LANES128(v14).n128_u32[3] = 0;
+    LANES128(v15).n128_u32[3] = 0;
+    LANES128(v55).n128_u64[0] = v16;
+    v56 = v15;
+    v57 = v14;
+  }
+  v25 = LANES128(v55).n128_u32[1];
+  LANES128(v26).n128_u64[0] = LANES128(v55).n128_u64[0];
+  LANES128(v26).n128_u64[1] = DWORD2(v16);
+  v55 = v26;
+  v27 = *a4;
+  v9 = *(float*)&v13;
+  LANES128(v54).n128_u64[0] = *(_QWORD*)a4;
+  LANES128(v26).n128_u64[0] = LANES128(v54).n128_u64[0];
+  v28 = vsubq_f32(v12, v54);
+  LANES128(v26).n128_u64[1] = DWORD2(v27);
+  v8 = *(float*)&v25;
+  v10 = LANES128(v28).n128_f32[1];
+  v54 = v26;
+LABEL_13:
+  v29 = vabds_f32(v9, v8);
+  if (fabsf(v10) <= 0x1.0000000000000p-23f && v29 <= 0x1.0000000000000p-23f) {
+    return 0;
+  }
+  v31 = *((_QWORD*)GameData_212c958 + 1);
+  v53[0] = *(_QWORD*)GameData_212c958;
+  v53[1] = v31;
+  MeshData_f555a0(a2, &v57, a5, v53);
+  MeshData_f555a0(a2, &v56, a5 + 1, v53);
+  MeshData_f555a0(a2, &v55, a5 + 2, v53);
+  MeshData_f555a0(a2, &v54, a5 + 3, v53);
+  if ((LANES128(a2[14]).n128_u8[12] & 1) == 0) {
+    if (LANES128(a2[15]).n128_u32[0] != 2) {
+      goto LABEL_22;
+    }
+  }
+  else if (*(_BYTE*)(*(_QWORD*)(*(_QWORD*)GameData_212d020[0] + 8LL) + 9LL) !=
+           1) {
+  LABEL_22:
+    if ((atomic_load_explicit((atomic_uchar* volatile)&GameData_21a6130,
+                              memory_order_acquire) &
+         1) == 0 &&
+        (unsigned int)__cxa_guard_acquire(&GameData_21a6130) != 0) {
+      v51 = *((_QWORD*)GameData_212c540 + 1);
+      *(_QWORD*)&GameData_21a6120 = *(_QWORD*)GameData_212c540;
+      *((_QWORD*)&GameData_21a6120 + 1) = v51;
+      __cxa_guard_release(&GameData_21a6130);
+    }
+    v39 = COERCE_AS(float32x4_t, GameData_21a6120);
+    v41 = (float32x4_t*)LANES128(a2[6]).n128_u64[0];
+    v40 = LANES128(a2[6]).n128_u64[1];
+    if ((float32x4_t*)v40 != v41) {
+      v42 = LANES128(a2[6]).n128_u64[0];
+      do {
+        v43 = *(float32x4_t*)(v42 + 16);
+        v42 += 64LL;
+        v39 = vaddq_f32(v39, v43);
+      } while (v42 != v40);
+      v39 = vmulq_n_f32(
+          v39,
+          0x1.0000000000000p+0f /
+              (float)(unsigned __int64)((__int64)(v40 - (_QWORD)v41) >> 6));
+      LANES128(v39).n128_u32[3] = 0;
+    }
+    v44 = vsubq_f32(v39, a2[11]);
+    v45 = vmulq_f32(v44, v44);
+    LANES128(v45).n128_u64[0] =
+        LANES64_OF(
+            vadd_f32(COERCE_AS(float32x2_t,
+                               LANES128_OF(vextq_s8(v45, v45, 8u)).n128_u64[0]),
+                     COERCE_AS(float32x2_t, LANES128(v45).n128_u64[0])))
+            .n64_u64[0];
+    if (LANES64_OF(vpadd_f32(COERCE_AS(float32x2_t, LANES128(v45).n128_u64[0]),
+                             COERCE_AS(float32x2_t, LANES128(v45).n128_u64[0])))
+                .n64_f32[0] > 0x0.0p+0f &&
+        v40 != (_QWORD)v41) {
+      do {
+        v41[1] = vsubq_f32(v41[1], v44);
+        v41 += 4;
+      } while (v41 != (float32x4_t*)v40);
+    }
+    LANES128(a2[11]).n128_u64[0] = LANES128(v39).n128_u64[0];
+    v48 = a2[11];
+    LANES128(v48).n128_u64[1] = LANES128(v39).n128_u32[2];
+    a2[11] = v48;
+    return 1;
+  }
+  LANES128(v37).n128_u64[0] = 0x3E8000003E800000LL;
+  LANES128(v37).n128_u64[1] = 0x3E8000003E800000LL;
+  v38 = vmulq_f32(vaddq_f32(vaddq_f32(vaddq_f32(v57, v56), v55), v54), v37);
+  LANES128(v38).n128_u32[3] = 0;
+  v52 = v38;
+  MeshData_f555a0(a2, &v52, a5 + 4, v53);
+  goto LABEL_22;
 }
 
 bool game_map_MapDrawConst_AddCellPlaneMask_lambda0_Invoke(__int64 a1,

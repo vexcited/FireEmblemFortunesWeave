@@ -32,6 +32,17 @@ extern __int64 GameData_2258138;
 extern __int64 GameData_2258178;
 extern __int64 game_GameModeData_instance_;
 void game_menu_anonymous_CalibrationDialog_Tick(__int64 a1);
+__int64 GameRoutine_155da20(__int64 result, long double);
+__int64 GameRoutine_156bee0(__int64 result, __int64, __int64, __int64, char,
+                            float, float);
+__int64 LayoutAccessor_155c910(__int64, __int64*);
+__int64 LayoutAccessor_155cda0(__int64 result, __int64, char*);
+__int64 ui_LayoutAccessor_FindPane(__int64*, __int64, long double);
+__int64 ui_LayoutAccessor_SetPaneSize(__int64 result, __int64, long double,
+                                      float);
+float ui_LayoutAccessor_GetPaneSize(__int64*, __int64);
+void GameRoutine_1648c60(__int64, long double);
+__int64 CalibrationDialog_Unknown135(__int64 a1, long double a2);
 
 void game_menu_anonymous_CalibrationDialog_Tick(__int64 a1)
 {
@@ -328,6 +339,58 @@ __int64 CalibrationDialog_Unknown96(__int64 a1)
 LABEL_18:
   *(_DWORD*)(a1 + 1492) = 0;
   return result;
+}
+
+__int64 CalibrationDialog_Unknown135(__int64 a1, long double a2)
+{
+  long double v4;
+  float v5;
+  long double v7;
+  int v8;
+  __int64 v9;
+  long double v10;
+  unsigned __int64 v11;
+  __int64 v13;
+  unsigned __int64 v14;
+  _BYTE v15[4];
+
+  GameRoutine_1648c60(a1, a2);
+  LayoutAccessor_155c910(a1 + 1504, (__int64*)(a1 + 848));
+  LayoutAccessor_155cda0(a1 + 1504, (__int64)"Gauge", nullptr);
+  *(_QWORD*)&v4 = 0;
+  v5 = 0x0.0p+0f;
+  GameRoutine_155da20(a1 + 1504, v4);
+  *(float*)&v7 =
+      ui_LayoutAccessor_GetPaneSize((__int64*)(a1 + 848), (__int64)"A_Txt");
+  v8 = LODWORD(v7);
+  v9 = ui_LayoutAccessor_FindPane((__int64*)(a1 + 848), (__int64)"A_Txt", v7);
+  v15[0] = 0;
+  v14 = 0xFF7FFFFF7F7FFFFFLL;
+  v13 = 0x7F7FFFFFFF7FFFFFLL;
+  if (v9 != 0) {
+    v11 = LANES128_OF(
+              vmulq_f32(*(float32x4_t*)(v9 + 128), *(float32x4_t*)(v9 + 128)))
+              .n128_u64[0];
+    GameRoutine_156bee0(
+        v9, (__int64)&v14, (__int64)&v13, (__int64)v15, 0,
+        sqrtf((float)(*(float*)&v11 +
+                      (float)(COERCE_FLOAT(*(_OWORD*)(v9 + 112)) *
+                              COERCE_FLOAT(*(_OWORD*)(v9 + 112)))) +
+              (float)(COERCE_FLOAT(*(_OWORD*)(v9 + 144)) *
+                      COERCE_FLOAT(*(_OWORD*)(v9 + 144)))) /
+            *(float*)(v9 + 72),
+        sqrtf((float)(*((float*)&v11 + 1) +
+                      (float)(COERCE_FLOAT(HIDWORD(*(_QWORD*)(v9 + 112))) *
+                              COERCE_FLOAT(HIDWORD(*(_QWORD*)(v9 + 112))))) +
+              (float)(COERCE_FLOAT(HIDWORD(*(_QWORD*)(v9 + 144))) *
+                      COERCE_FLOAT(HIDWORD(*(_QWORD*)(v9 + 144))))) /
+            *(float*)(v9 + 76));
+    if (v15[0] == 1) {
+      v5 = vabds_f32(*((float*)&v13 + 1), *((float*)&v14 + 1));
+    }
+  }
+  LODWORD(v10) = v8;
+  return ui_LayoutAccessor_SetPaneSize(a1 + 848, (__int64)"A_Txt", v10, v5);
 }
 
 #pragma GCC visibility pop

@@ -1,5 +1,7 @@
 #include "decomp/pseudo_helpers.h"
 
+#include "decomp/pseudo_float.h"
+
 #pragma GCC visibility push(hidden)
 
 __int64 DrawInfo_5769c0(_QWORD, _QWORD, _QWORD, _QWORD);
@@ -86,6 +88,12 @@ _QWORD* Layout_1364900(float* a1, _QWORD* a2, __int64 a3, __int64** a4);
 __attribute__((swiftcall)) void
 Layout_1685360(__attribute__((swift_indirect_result)) void* x8_, __int64 a1,
                __int64 a2, _QWORD* a3, _QWORD* a4, __n128 result);
+__int64 TextBox_59d3c0(__int64 result, __int64);
+extern __int64 game_g_frame_clock;
+float TextBox_59d550(__int64, __int64);
+unsigned int* GameRoutine_190a0c0(unsigned int* result, __int64, float*,
+                                  _QWORD*, __int64);
+void Layout_1363800(_QWORD* a1, __int64* a2, __int64 a3, __int64 a4);
 
 __int64 Layout_1363220(__int64 result)
 {
@@ -275,6 +283,79 @@ LABEL_11:
     v7 = 40;
   }
   return (*(__int64 (**)(__int64))(*v8_.v9 + v7))((__int64)v8_.v9);
+}
+
+void Layout_1363800(_QWORD* a1, __int64* a2, __int64 a3, __int64 a4)
+{
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v9;
+  __int64 v10;
+  float v13;
+  float v14;
+  float v15;
+  float v16;
+  float v17;
+  float v18;
+  float v20;
+  float v21;
+  __int16 v22;
+  bool v23;
+  float v24;
+  _BYTE v25[8];
+  unsigned int v26;
+  _QWORD v27[5];
+
+  if (*a1 == a3 || *a1 == a4) {
+    v27[1] = v7;
+    v27[2] = v6;
+    v27[3] = v4;
+    v27[4] = v5;
+    v9 = *a2;
+    v10 = a3;
+    v13 = *(float*)(ui_Manager_instance_ + 6912);
+    v14 =
+        (float)((float)*(int*)(game_g_frame_clock + 13312) /
+                0x1.e000000000000p+10f) *
+        (float)(vcvts_n_f32_u64((*(_QWORD*)(*a2 + 201) >> 15) & 0x7FFFLL, 6u) *
+                sqrtf((float)((float)(PSEUDO_UNFUSED(*(float*)(*a2 + 132) *
+                                                     *(float*)(*a2 + 132))) +
+                              (float)(*(float*)(*a2 + 116) *
+                                      *(float*)(*a2 + 116))) +
+                      (float)(*(float*)(*a2 + 148) * *(float*)(*a2 + 148))));
+    v15 = v14 / (float)(*(int (**)(__int64))(*(_QWORD*)a3 + 40LL))(a3);
+    if (*a1 == v10) {
+      v10 = a4;
+      if (v15 > (float)(v13 + -0x1.0000000000000p-23f)) {
+        return;
+      }
+    }
+    else if (v15 < (float)(v13 + 0x1.0000000000000p-23f)) {
+      return;
+    }
+    TextBox_59d3c0(v9, v10);
+    GameRoutine_190a0c0(&v26, (__int64)v25, &v24, (_QWORD*)v9,
+                        *(_QWORD*)(v9 + 216));
+    v27[0] = __PAIR64__(LODWORD(v17), LODWORD(v16));
+    v18 = vabds_f32(v17, *(float*)(v9 + 252));
+    if (vabds_f32(v16, *(float*)(v9 + 248)) > 0x1.0000000000000p-23f ||
+        v18 > 0x1.0000000000000p-23f) {
+      TextBox_59d550(v9, (__int64)v27);
+      v20 = v24;
+      v21 = *(float*)(v9 + 260);
+      v22 = *(_WORD*)(v9 + 276) & 4;
+      v23 = v21 == v24;
+      if (v21 != v24) {
+        v22 = 4;
+      }
+      *(_WORD*)(v9 + 276) = v22 | *(_WORD*)(v9 + 276) & 0xFFFB;
+      if (!v23) {
+        *(float*)(v9 + 260) = v20;
+      }
+    }
+  }
 }
 
 __int64* Layout_13639a0(__int64* result, __int64 a2)

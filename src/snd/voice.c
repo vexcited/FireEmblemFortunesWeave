@@ -95,6 +95,7 @@ float Voice_1498c0(__int64 a1);
 float Voice_149930(__int64 a1);
 float Voice_1499b0(__int64 a1);
 __int64 Voice_149b60(int* a1, int a2, float a3, float a4);
+__int64 Voice_143b80(__int64 result, const char* a2);
 
 __int64 Voice_1434a0(__int64 a1, __int64 a2, __int64 a3, char a4, int a5,
                      __int64 a6)
@@ -498,6 +499,236 @@ _BYTE* Voice_143ad0(__int64 a1)
         **(_QWORD**)snd_g_memory_ptr[0] + 24LL))(*snd_g_memory_ptr[0], v9_.v10);
   }
   return result;
+}
+
+__int64 Voice_143b80(__int64 result, const char* a2)
+{
+  const char* v3;
+  __int64 v4;
+  int v5;
+
+  switch ((int)result) {
+  case 0:
+    return result;
+  case 1:
+    v3 = "#SoundLibrary error : LowPriority : %s\n";
+    return (*(__int64 (**)(_QWORD, const char*, const char*))(
+        **(_QWORD**)snd_g_proxy_ptr[0] + 392LL))(*(_QWORD*)snd_g_proxy_ptr[0],
+                                                 v3, a2);
+  case 2:
+    v3 = "#SoundLibrary error : InvalidLabelString : %s\n";
+    return (*(__int64 (**)(_QWORD, const char*, const char*))(
+        **(_QWORD**)snd_g_proxy_ptr[0] + 392LL))(*(_QWORD*)snd_g_proxy_ptr[0],
+                                                 v3, a2);
+  case 3:
+    v3 = "#SoundLibrary error : InvalidSoundId : %s\n";
+    return (*(__int64 (**)(_QWORD, const char*, const char*))(
+        **(_QWORD**)snd_g_proxy_ptr[0] + 392LL))(*(_QWORD*)snd_g_proxy_ptr[0],
+                                                 v3, a2);
+  case 4:
+  case 5:
+  case 11:
+  case 12:
+  case 13:
+  case 14:
+  case 18:
+  case 23:
+  case 24:
+  case 25:
+  case 26:
+  case 27:
+  case 28:
+  case 29:
+  case 30:
+  case 31:
+  case 32:
+  case 33:
+  case 34:
+  case 35:
+  case 36:
+  case 37:
+  case 38:
+  case 39:
+  case 40:
+  case 41:
+  case 42:
+  case 43:
+  case 44:
+  case 45:
+  case 46:
+  case 47:
+  case 48:
+  case 49:
+  case 50:
+  case 51:
+  case 52:
+  case 53:
+  case 54:
+  case 55:
+  case 56:
+  case 57:
+  case 58:
+  case 59:
+  case 60:
+  case 61:
+  case 62:
+  case 63:
+  case 64:
+  case 65:
+  case 66:
+  case 67:
+  case 68:
+  case 69:
+  case 70:
+  case 71:
+  case 72:
+  case 73:
+  case 74:
+  case 75:
+  case 76:
+  case 77:
+  case 78:
+  case 79:
+  case 80:
+  case 81:
+  case 82:
+  case 83:
+  case 84:
+  case 85:
+  case 86:
+  case 87:
+  case 88:
+  case 89:
+  case 90:
+  case 91:
+  case 92:
+  case 93:
+  case 94:
+  case 95:
+  case 96:
+  case 97:
+  case 98:
+  case 99:
+  case 100:
+  case 101:
+  case 102:
+  case 103:
+  case 104:
+  case 105:
+  case 106:
+  case 107:
+  case 108:
+  case 109:
+  case 110:
+  case 111:
+  case 112:
+  case 113:
+  case 114:
+  case 115:
+  case 116:
+  case 117:
+  case 118:
+  case 119:
+  case 120:
+  case 121:
+  case 122:
+  case 123:
+  case 124:
+  case 125:
+  case 126:
+  case 127:
+    return (*(__int64 (**)(_QWORD, const char*, ...))(
+        **(_QWORD**)snd_g_proxy_ptr[0] + 392LL))(
+        *(_QWORD*)snd_g_proxy_ptr[0],
+        "#SoundLibrary error : ErrorCode[%d] : %s\n", result, a2);
+  case 6:
+    v3 = "#SoundLibrary error : NotSequenceLoaded : %s\n";
+    return (*(__int64 (**)(_QWORD, const char*, const char*))(
+        **(_QWORD**)snd_g_proxy_ptr[0] + 392LL))(*(_QWORD*)snd_g_proxy_ptr[0],
+                                                 v3, a2);
+  case 7:
+    v3 = "#SoundLibrary error : NotBankLoaded : %s\n";
+    return (*(__int64 (**)(_QWORD, const char*, const char*))(
+        **(_QWORD**)snd_g_proxy_ptr[0] + 392LL))(*(_QWORD*)snd_g_proxy_ptr[0],
+                                                 v3, a2);
+  case 8:
+    v3 = "#SoundLibrary error : NotWsdLoaded : %s\n";
+    return (*(__int64 (**)(_QWORD, const char*, const char*))(
+        **(_QWORD**)snd_g_proxy_ptr[0] + 392LL))(*(_QWORD*)snd_g_proxy_ptr[0],
+                                                 v3, a2);
+  case 9:
+    v3 = "#SoundLibrary error : NotWarcLoaded : %s\n";
+    return (*(__int64 (**)(_QWORD, const char*, const char*))(
+        **(_QWORD**)snd_g_proxy_ptr[0] + 392LL))(*(_QWORD*)snd_g_proxy_ptr[0],
+                                                 v3, a2);
+  case 10:
+    v3 = "#SoundLibrary error : NotEnoughPlayerHeap : %s\n";
+    return (*(__int64 (**)(_QWORD, const char*, const char*))(
+        **(_QWORD**)snd_g_proxy_ptr[0] + 392LL))(*(_QWORD*)snd_g_proxy_ptr[0],
+                                                 v3, a2);
+  case 15:
+    v3 = "#SoundLibrary error : InvalidParameter : %s\n";
+    return (*(__int64 (**)(_QWORD, const char*, const char*))(
+        **(_QWORD**)snd_g_proxy_ptr[0] + 392LL))(*(_QWORD*)snd_g_proxy_ptr[0],
+                                                 v3, a2);
+  case 16:
+    v3 = "#SoundLibrary error : InvalidSequenceStartLocationLabel : %s\n";
+    return (*(__int64 (**)(_QWORD, const char*, const char*))(
+        **(_QWORD**)snd_g_proxy_ptr[0] + 392LL))(*(_QWORD*)snd_g_proxy_ptr[0],
+                                                 v3, a2);
+  case 17:
+    v3 = "#SoundLibrary error : ActorNotInitialized : %s\n";
+    return (*(__int64 (**)(_QWORD, const char*, const char*))(
+        **(_QWORD**)snd_g_proxy_ptr[0] + 392LL))(*(_QWORD*)snd_g_proxy_ptr[0],
+                                                 v3, a2);
+  case 19:
+    v3 = "#SoundLibrary error : InvalidBankData : %s\n";
+    return (*(__int64 (**)(_QWORD, const char*, const char*))(
+        **(_QWORD**)snd_g_proxy_ptr[0] + 392LL))(*(_QWORD*)snd_g_proxy_ptr[0],
+                                                 v3, a2);
+  case 20:
+    v3 = "#SoundLibrary error : InvalidStreamFileId : %s\n";
+    return (*(__int64 (**)(_QWORD, const char*, const char*))(
+        **(_QWORD**)snd_g_proxy_ptr[0] + 392LL))(*(_QWORD*)snd_g_proxy_ptr[0],
+                                                 v3, a2);
+  case 21:
+    v3 = "#SoundLibrary error : InvalidStreamFilePath : %s\n";
+    return (*(__int64 (**)(_QWORD, const char*, const char*))(
+        **(_QWORD**)snd_g_proxy_ptr[0] + 392LL))(*(_QWORD*)snd_g_proxy_ptr[0],
+                                                 v3, a2);
+  case 22:
+    v3 = "#SoundLibrary error : CannotLoop : %s\n";
+    return (*(__int64 (**)(_QWORD, const char*, const char*))(
+        **(_QWORD**)snd_g_proxy_ptr[0] + 392LL))(*(_QWORD*)snd_g_proxy_ptr[0],
+                                                 v3, a2);
+  case 128:
+    v4 = *(_QWORD*)snd_g_proxy_ptr[0];
+    v5 = (*(__int64 (**)(_QWORD))(**(_QWORD**)snd_g_proxy_ptr[0] + 168LL))(
+        *(_QWORD*)snd_g_proxy_ptr[0]);
+    return (*(__int64 (**)(__int64, const char*, ...))(*(_QWORD*)v4 + 392LL))(
+        v4, "#SoundLibrary error : PlayLimitOver(%d) : %s\n", v5, a2);
+  case 129:
+    v3 = "#SoundLibrary error : NotFoundStreamFile : %s\n";
+    return (*(__int64 (**)(_QWORD, const char*, const char*))(
+        **(_QWORD**)snd_g_proxy_ptr[0] + 392LL))(*(_QWORD*)snd_g_proxy_ptr[0],
+                                                 v3, a2);
+  case 130:
+    v3 = "#SoundLibrary error : CanNotPlayMultiChStreamFile : %s\n";
+    return (*(__int64 (**)(_QWORD, const char*, const char*))(
+        **(_QWORD**)snd_g_proxy_ptr[0] + 392LL))(*(_QWORD*)snd_g_proxy_ptr[0],
+                                                 v3, a2);
+  default:
+    if ((_DWORD)result != 255) {
+      return (*(__int64 (**)(_QWORD, const char*, ...))(
+          **(_QWORD**)snd_g_proxy_ptr[0] + 392LL))(
+          *(_QWORD*)snd_g_proxy_ptr[0],
+          "#SoundLibrary error : ErrorCode[%d] : %s\n", result, a2);
+    }
+    v3 = "#SoundLibrary error : Unknown : %s\n";
+    return (*(__int64 (**)(_QWORD, const char*, const char*))(
+        **(_QWORD**)snd_g_proxy_ptr[0] + 392LL))(*(_QWORD*)snd_g_proxy_ptr[0],
+                                                 v3, a2);
+  }
 }
 
 double Voice_1446e0(__int64 a1)

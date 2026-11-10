@@ -512,15 +512,7 @@ __int64 GameRoutine_155ea30(_QWORD);
 
 __attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
 
-__int64 GameRoutine_15997d0(_QWORD, _QWORD, _QWORD);
-
 __int64 GameRoutine_159dda0(_QWORD, _QWORD, _QWORD);
-
-__int64 GameRoutine_15e0120(_QWORD);
-
-__int64 GameRoutine_15e0200(_QWORD);
-
-__int64 GameRoutine_15e04f0(_QWORD);
 
 __int64 GameRoutine_161f240(void);
 
@@ -535,8 +527,6 @@ __int64 GameRoutine_16de1f0(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_1789830(_QWORD, _QWORD);
 
 __int64 GameRoutine_1789cf0(_QWORD, _QWORD);
-
-__int64 GameRoutine_178a830(_QWORD);
 
 __int64* GameRoutine_19ef790(__int64* result, __int64, unsigned int);
 
@@ -577,8 +567,6 @@ __int64 GameRoutine_1a09c70(_QWORD);
 __int64 GameRoutine_1a09fd0(_QWORD);
 
 __int64 GameRoutine_1a09fe0(_QWORD);
-
-__int64 GameRoutine_1a0a0c0(void);
 
 __int64 GameRoutine_1a0a4e0(_QWORD);
 
@@ -942,52 +930,6 @@ LABEL_69:
   v3[30] = v3[29];
   (*(void (**)(_QWORD*))(*v3 + 1024LL))(v3);
   return (*(__int64 (**)(_QWORD*))(*v3 + 1032LL))(v3);
-}
-
-__int64 GameHr_19e8fe0(__int64 a1)
-{
-  __int64 v2;
-  __int64 v3;
-  char v4;
-  __int64 v5;
-  __int64 v6;
-  __int64 v8;
-  __int64 v9;
-  _BYTE v10[20];
-
-  v2 = *(_QWORD*)(a1 + 336);
-  if (v2 != 0) {
-    v3 = GameRoutine_1a0a6c0(v2, GameData_212e008[0], &GameData_2124380, 0);
-  }
-  else {
-    v3 = 0;
-  }
-  v4 = *(_BYTE*)(v3 + 96);
-  GameRoutine_15e0120(v10);
-  if ((v4 & 1) == 0) {
-    GameRoutine_15e0200(v10);
-  }
-  GameRoutine_178a830(a1);
-  GameRoutine_1560070((void*)&v8, a1 + 848, "L_UnitInfoDetail");
-  if (v9 != 0) {
-    v5 = GameRoutine_1a0a0c0();
-    v6 = v8;
-    if (v9 != 0) {
-      ((void (*)(void))GameRoutine_1a09c50)();
-    }
-    if (v5 != 0 && v6 != 0) {
-      GameRoutine_15997d0(v6, *(_QWORD*)(v3 + 88), 0);
-    }
-    else if (v5 == 0) {
-      return GameRoutine_15e04f0(v10);
-    }
-    if (atomic_fetch_add((atomic_ullong* volatile)(v5 + 8),
-                         0xFFFFFFFFFFFFFFFFLL) == 0) {
-      (*(void (**)(__int64))(*(_QWORD*)v5 + 16LL))(v5);
-      GameRoutine_1a09c50(v5);
-    }
-  }
-  return GameRoutine_15e04f0(v10);
 }
 
 __int64 GameHr_19e90e0(__int64 a1)

@@ -3697,7 +3697,7 @@ LABEL_16:
     goto LABEL_9;
   }
   if (v18 != 0) {
-    (*(void (**)(void))(*(_QWORD*)v18 + 8LL))();
+    (*(void (**)(void*))(*(_QWORD*)v18 + 8))((void*)v18);
   }
 LABEL_6:
   SdkRoutine_858b60(&SdkData_f27ef8);
@@ -10656,7 +10656,8 @@ __int64 SdkHr_3ff740(__int64 a1, __int64 a2, unsigned int a3)
     v14 = *(_QWORD**)(a1 + 32);
     *(_QWORD*)(a1 + 32) = v12;
     if (v14 != nullptr) {
-      (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v14 + 8LL))(v14, v14);
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v14 + 8LL))(
+          (void*)v14, v14);
       v12 = *(_QWORD*)(a1 + 32);
     }
     v9 = (*(__int64 (**)(__int64, _QWORD, __int64, _QWORD))(

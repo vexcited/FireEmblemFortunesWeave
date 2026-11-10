@@ -103,6 +103,8 @@ __int64 RidePool_93ce60(__int64* a1, __int64 a2, unsigned int a3);
 __attribute__((swiftcall)) void RidePool_93e420(PSEUDO_X8 x8_,
                                                 unsigned __int64 result,
                                                 unsigned int a2, __int64 a3);
+__int64* GameRoutine_68cdc0(__int64* result, unsigned __int64);
+__int64** RidePool_93e020(__int64 a1, unsigned __int64 a2, unsigned __int8* a3);
 
 __int64 RidePool_93bb80(__int64 a1)
 {
@@ -2087,6 +2089,140 @@ unsigned __int64 RidePool_93d9e0(unsigned __int64 result)
     ++v23;
   } while (v23 != 200);
   return result;
+}
+
+__int64** RidePool_93e020(__int64 a1, unsigned __int64 a2, unsigned __int8* a3)
+{
+
+#pragma clang fp contract(off)
+  unsigned __int64 v3;
+  unsigned __int64 v4;
+  unsigned __int64 v5;
+  __int64*** v6;
+  __int64** v7;
+  int v8;
+  unsigned __int64 v9;
+  __int64* v10;
+  float v11;
+  float v12;
+  float v13;
+  _BOOL8 v14;
+  unsigned __int64 v15;
+  unsigned __int64 v16;
+  unsigned __int64 primeEm;
+  __int64 v18;
+  unsigned __int64 v19;
+  __int64 v20;
+  __int64 v21;
+
+  v3 = *(_QWORD*)(a1 + 8);
+  if (v3 != 0) {
+    v4 = v3 - 1;
+    if ((v3 & (v3 - 1)) != 0) {
+      v5 = a2;
+      if (a2 >= v3) {
+        v5 = (unsigned __int8)a2 %
+             (unsigned int)(unsigned __int8)*(_QWORD*)(a1 + 8);
+      }
+    }
+    else {
+      v5 = (v3 + 255) & a2;
+    }
+    v6 = *(__int64****)(*(_QWORD*)a1 + 8 * v5);
+    if (v6 != nullptr) {
+      v7 = *v6;
+      if (v7 != nullptr) {
+        v8 = *a3;
+        if ((v3 & v4) == 0) {
+          while (1) {
+            v10 = v7[1];
+            if (v10 == (__int64*)a2) {
+              if (*((unsigned __int8*)v7 + 16) == v8) {
+                return v7;
+              }
+            }
+            else if (((unsigned __int64)v10 & v4) != v5) {
+              goto LABEL_21;
+            }
+            v7 = (__int64**)*v7;
+            if (v7 == nullptr) {
+              goto LABEL_21;
+            }
+          }
+        }
+        do {
+          v9 = (unsigned __int64)v7[1];
+          if (v9 == a2) {
+            if (*((unsigned __int8*)v7 + 16) == v8) {
+              return v7;
+            }
+          }
+          else {
+            if (v9 >= v3) {
+              v9 %= v3;
+            }
+            if (v9 != v5) {
+              break;
+            }
+          }
+          v7 = (__int64**)*v7;
+        } while (v7 != nullptr);
+      }
+    }
+  }
+LABEL_21:
+  v11 = *(float*)(a1 + 32);
+  v12 = (float)(unsigned __int64)(*(_QWORD*)(a1 + 24) + 1LL);
+  if (v3 == 0 || (float)(v11 * (float)v3) < v12) {
+    v13 = v12 / v11;
+    v14 = true;
+    if (v3 >= 3) {
+      v14 = (v3 & (v3 - 1)) != 0;
+    }
+    v15 = v14 | (2 * v3);
+    v16 = vcvtps_u64_f32(v13);
+    if (v15 <= v16) {
+      primeEm = v16;
+    }
+    else {
+      primeEm = v15;
+    }
+    if (primeEm == 1) {
+      primeEm = 2;
+    }
+    else if ((primeEm & (primeEm - 1)) != 0) {
+      v18 = a1;
+      primeEm = std___1___next_prime(primeEm);
+      a1 = v18;
+      v3 = *(_QWORD*)(v18 + 8);
+    }
+    if (primeEm > v3) {
+      goto LABEL_33;
+    }
+    if (primeEm < v3) {
+      v19 = vcvtps_u64_f32((float)*(unsigned __int64*)(a1 + 24) /
+                           *(float*)(a1 + 32));
+      if (v3 < 3 || (v3 & (v3 - 1)) != 0) {
+        v21 = a1;
+        v19 = std___1___next_prime(v19);
+        a1 = v21;
+      }
+      else {
+        v20 = 1LL << -(char)__clz(v19 - 1);
+        if (v19 >= 2) {
+          v19 = v20;
+        }
+      }
+      if (primeEm <= v19) {
+        primeEm = v19;
+      }
+      if (primeEm < v3) {
+      LABEL_33:
+        GameRoutine_68cdc0((__int64*)a1, primeEm);
+      }
+    }
+  }
+  return nullptr;
 }
 
 __int64 RidePool_93e230(__int64 a1, __int64 a2, unsigned int a3)

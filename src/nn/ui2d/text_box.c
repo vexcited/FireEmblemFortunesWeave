@@ -93,6 +93,7 @@ float TextBox_59d550(__int64 a1, __int64 a2);
 float TextBox_Unknown46(__int64 a1, __int64 a2);
 float TextBox_Unknown47(__int64 a1, __int64 a2);
 void TextBox_59d960(__int64 a1, __int64 a2, float a3);
+unsigned __int64 TextBox_59de80(unsigned __int64 result, float* a2, __int64 a3);
 
 __int64 TextBox_Unknown37(_QWORD* a1, __int64 a2, __int64 a3, __int64 a4,
                           __int64 a5)
@@ -2285,6 +2286,107 @@ void TextBox_59d960(__int64 a1, __int64 a2, float a3)
       v9 += 16;
     } while (v10 != v9);
   }
+}
+
+unsigned __int64 TextBox_59de80(unsigned __int64 result, float* a2, __int64 a3)
+{
+  unsigned __int64 v5;
+  int v6;
+  int v7;
+  float v8;
+  unsigned __int16* v9;
+  int v10;
+  float v11;
+  unsigned __int16* v12;
+  bool v13;
+  int i;
+  unsigned __int16* v15;
+  __int64 v17;
+  unsigned __int64 v18;
+  float v19;
+  char v20[4];
+  char v21[4];
+
+  v5 = result;
+  v6 = *(_DWORD*)(*(_QWORD*)(result + 328) + 156LL);
+  *a2 = 0x0.0p+0f;
+  v7 = *(unsigned __int16*)(result + 276);
+  if ((~v7 & 0x9000) != 0) {
+    if ((~v7 & 0x3000) != 0 && (v7 & 0x200) != 0 && v6 != 0) {
+      result = *(_QWORD*)(result + 216);
+      for (i = 0; i != v6; ++i) {
+        v21[0] = 0;
+        v15 = (unsigned __int16*)result;
+        while (1) {
+          result = (*(__int64 (**)(__int64, char*, unsigned __int16*))(
+              *(_QWORD*)a3 + 112LL))(a3, v21, v15);
+          if ((v21[0] & 1) != 0) {
+            break;
+          }
+          v13 = result > (unsigned __int64)v15;
+          v15 = (unsigned __int16*)result;
+          if (!v13 || result > *(_QWORD*)(v5 + 216) +
+                                   2 * (unsigned __int64)*(
+                                           unsigned __int16*)(v5 + 274)) {
+            return result;
+          }
+        }
+        if (result == 0) {
+          break;
+        }
+        if ((*(_WORD*)(v5 + 276) & 0x1000 | i) != 0) {
+          v17 = *v15;
+          v18 = result;
+          v19 = (float)(int)X8CALL_X0(
+              _QWORD*,
+              (*(__attribute__((swiftcall)) void (**)(
+                  PSEUDO_X8, _QWORD, __int64))(**(_QWORD**)(v5 + 240) + 128LL))(
+                  (void*)*(_QWORD**)(v5 + 240), *(_QWORD*)(v5 + 240), v17));
+          result = v18;
+          *a2 = *a2 + (float)(*(float*)(v5 + 260) + v19);
+        }
+      }
+    }
+  }
+  else {
+    v8 = *(float*)(result + 248);
+    v9 = *(unsigned __int16**)(result + 216);
+    result = (*(__int64 (**)(_QWORD))(**(_QWORD**)(result + 240) + 32LL))(
+        *(_QWORD*)(result + 240));
+    if (v6 != 0) {
+      v10 = 0;
+      v11 = v8 / (float)(int)result;
+      do {
+        v20[0] = 0;
+        v12 = v9;
+        while (1) {
+          result = (*(__int64 (**)(__int64, char*, unsigned __int16*))(
+              *(_QWORD*)a3 + 112LL))(a3, v20, v12);
+          if ((v20[0] & 1) != 0) {
+            break;
+          }
+          v13 = result > (unsigned __int64)v12;
+          v12 = (unsigned __int16*)result;
+          v13 = !v13 || result > *(_QWORD*)(v5 + 216) +
+                                     2 * (unsigned __int64)*(
+                                             unsigned __int16*)(v5 + 274);
+          if (v13) {
+            return result;
+          }
+        }
+        if (result == 0) {
+          break;
+        }
+        v9 = (unsigned __int16*)result;
+        result = (*(__int64 (**)(_QWORD, _QWORD))(
+            **(_QWORD**)(v5 + 240) + 128LL))(*(_QWORD*)(v5 + 240), *v12);
+        ++v10;
+        *a2 = *a2 +
+              (float)((float)(*(float*)(v5 + 260) + (float)(int)result) * v11);
+      } while (v10 != v6);
+    }
+  }
+  return result;
 }
 
 #pragma GCC visibility pop

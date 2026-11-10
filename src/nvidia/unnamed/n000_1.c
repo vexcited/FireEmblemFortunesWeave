@@ -6147,7 +6147,8 @@ __int64 NgxHr_70670(_QWORD* a1)
   a1[40] = 0;
   if (v1 != nullptr) {
     v2 = a1;
-    (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v1 + 120LL))(v1, v1);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v1 + 120LL))(
+        (void*)v1, v1);
     a1 = v2;
   }
   return NgxRoutine_70b00(a1);
@@ -6973,7 +6974,8 @@ __int64 NgxHr_75c60(__int64 a1, _QWORD* a2, char a3)
     }
   }
   else {
-    (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*a2 + 424LL))(a2, a2);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*a2 + 424LL))(
+        (void*)a2, a2);
     v11 = 208;
     if ((a3 & 1) != 0) {
       v11 = 216;
@@ -9302,13 +9304,16 @@ LABEL_9:
   }
   LODWORD(a6) = *((_DWORD*)a1 + 10);
   LODWORD(a7) = *((_DWORD*)a1 + 11);
-  v18 = (unsigned int)(*(
-      _QWORD * (**)(_QWORD * __return_ptr, _QWORD, _QWORD, _QWORD, _QWORD,
-                    _QWORD, _QWORD, _QWORD, _QWORD, long double, long double,
-                    __int64, _QWORD))(*(_QWORD*)*a1 + 504LL))(
-      (_QWORD*)*a1, *a1, a1[1], *((_DWORD*)a1 + 12) + 8 * v16,
-      *((_DWORD*)a1 + 13) + *((_DWORD*)a1 + 16) * v8, a1[9], a1[2],
-      *((unsigned int*)a1 + 6), *((unsigned int*)a1 + 7), a6, a7, a5, a1[4]);
+  v18 = (unsigned int)X8CALL_X0(
+      _QWORD*,
+      (*(__attribute__((swiftcall)) void (**)(
+          PSEUDO_X8, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
+          _QWORD, long double, long double, __int64,
+          _QWORD))(*(_QWORD*)*a1 + 504LL))(
+          (void*)(_QWORD*)*a1, *a1, a1[1], *((_DWORD*)a1 + 12) + 8 * v16,
+          *((_DWORD*)a1 + 13) + *((_DWORD*)a1 + 16) * v8, a1[9], a1[2],
+          *((unsigned int*)a1 + 6), *((unsigned int*)a1 + 7), a6, a7, a5,
+          a1[4]));
   LODWORD(v19) = *a2;
   LODWORD(v20) = a2[1];
   if (v18 != 0) {
@@ -12058,13 +12063,15 @@ _QWORD* NgxHr_a9a30(_QWORD* a1, _QWORD* a2, _QWORD* a3)
   __int64 v4;
 
   if (a1[10] == 0) {
-    return (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD*, _QWORD))(
-        *a2 + 216LL))(a2, a2, a1[8]);
+    return X8CALL_X0(_QWORD*, (*(__attribute__((swiftcall)) void (**)(
+                                  PSEUDO_X8, _QWORD*, _QWORD))(*a2 + 216LL))(
+                                  (void*)a2, a2, a1[8]));
   }
   v4 = a1[8];
   *a3 = a1[3];
-  return (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD*, __int64))(
-      *a2 + 232LL))(a2, a2, v4);
+  return X8CALL_X0(_QWORD*, (*(__attribute__((swiftcall)) void (**)(
+                                PSEUDO_X8, _QWORD*, __int64))(*a2 + 232LL))(
+                                (void*)a2, a2, v4));
 }
 
 __int64 NgxHr_a9a70(_QWORD* a1, __int64 a2, unsigned int a3, __int64 a4)
@@ -12097,13 +12104,15 @@ _QWORD* NgxHr_a9b20(_QWORD* a1, _QWORD* a2, _QWORD* a3)
   __int64 v4;
 
   if (a1[10] == 0) {
-    return (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD*, _QWORD))(
-        *a2 + 208LL))(a2, a2, a1[8]);
+    return X8CALL_X0(_QWORD*, (*(__attribute__((swiftcall)) void (**)(
+                                  PSEUDO_X8, _QWORD*, _QWORD))(*a2 + 208LL))(
+                                  (void*)a2, a2, a1[8]));
   }
   v4 = a1[8];
   *a3 = a1[3];
-  return (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD*, __int64))(
-      *a2 + 224LL))(a2, a2, v4);
+  return X8CALL_X0(_QWORD*, (*(__attribute__((swiftcall)) void (**)(
+                                PSEUDO_X8, _QWORD*, __int64))(*a2 + 224LL))(
+                                (void*)a2, a2, v4));
 }
 
 __int64 NgxHr_a9b70(__int64 a1, __int64 a2)
@@ -13298,8 +13307,9 @@ __int64 NgxHr_ae320(__int64 a1, _QWORD* a2)
     v4 = *(_QWORD**)(a1 + 32808);
     if (v4 != nullptr) {
       if (a2 != nullptr) {
-        *a2 = (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD*))(*v4 + 136LL))(
-            v4, v4);
+        *a2 = X8CALL_X0(_QWORD*,
+                        (*(__attribute__((swiftcall)) void (**)(
+                            PSEUDO_X8, _QWORD*))(*v4 + 136LL))((void*)v4, v4));
         return 1;
       }
       else {

@@ -103,6 +103,11 @@ extern int GameData_2175540;
 void __attribute__((noreturn)) GameRoutine_17139e0(void);
 __int64 ProcGuideMenu_Unknown84(__int64* a1);
 __int64 ProcGuideMenu_Unknown144(__int64 a1, int a2, char a3, char a4);
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+void __attribute__((noreturn)) String_60a1d0();
+unsigned __int64 ProcGuideMenu_1713820(unsigned __int64 result, int a2);
 
 __int64 ProcGuideMenu_Unknown84(__int64* a1)
 {
@@ -670,6 +675,97 @@ __int64 ProcGuideMenu_Unknown10(__int64 result, __int64* a2)
   if (*(_BYTE*)(result + 14) == 1) {
     return GuideBaseMenu_Unknown139_alt1(result - 1056, a2);
   }
+  return result;
+}
+
+unsigned __int64 ProcGuideMenu_1713820(unsigned __int64 result, int a2)
+{
+  _QWORD* v2;
+  const char* v3;
+  unsigned __int64 v4;
+  char* v5;
+  const char* v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  __int64 v10;
+
+  v2 = (_QWORD*)result;
+  if (a2 > 1) {
+    switch (a2) {
+    case 2:
+      *(_BYTE*)result = 34;
+      *(_WORD*)(result + 17) = 116;
+      v6 = "MID_SysMenu_Quest";
+      break;
+    case 3:
+      *(_BYTE*)result = 40;
+      strcpy((char*)(result + 17), "ndar");
+      v6 = "MID_SysMenu_Calendar";
+      break;
+    case 4:
+      result = fw_memory_HeapManager_Allocate_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr, 32, 16, 0);
+      *v2 = 33;
+      v2[1] = 24;
+      v2[2] = result;
+      strcpy((char*)result, "MID_PerchMenu_BattleHint");
+      return result;
+    default:
+      goto LABEL_19;
+    }
+  LABEL_18:
+    v8 = *(_QWORD*)v6;
+    v7 = *((_QWORD*)v6 + 1);
+    *(_QWORD*)(result + 1) = v8;
+    *(_QWORD*)(result + 9) = v7;
+    return result;
+  }
+  if (a2 == 0) {
+    *(_BYTE*)result = 34;
+    *(_WORD*)(result + 17) = 101;
+    v6 = "MID_SysMenu_Guide";
+    goto LABEL_18;
+  }
+  if (a2 != 1) {
+  LABEL_19:
+    *(_WORD*)result = 0;
+    return result;
+  }
+  v3 = "MID_SysMenu_Honor";
+  if (game_GameModeData_instance_ != 0 &&
+      *(_DWORD*)(game_GameModeData_instance_ + 60) == 3) {
+    v3 = "MID_SysMenu_Honor_Part3";
+  }
+  result = strlen(v3);
+  if (result >= 0xFFFFFFFFFFFFFFF7LL) {
+    String_60a1d0();
+  }
+  v4 = result;
+  if (result >= 0x17) {
+    if ((result | 7) == 0x17) {
+      v9 = 26;
+    }
+    else {
+      v9 = (result | 7) + 1;
+    }
+    v10 = fw_memory_HeapManager_Allocate_alt1(fw_memory_g_heap_manager, v9, 16,
+                                              0);
+    v2[1] = v4;
+    v2[2] = v10;
+    *v2 = v9 | 1;
+    v5 = (char*)v10;
+  }
+  else {
+    *(_BYTE*)v2 = 2 * result;
+    v5 = (char*)v2 + 1;
+    if (result == 0) {
+      goto LABEL_25;
+    }
+  }
+  result = memcpy(v5, v3, v4);
+LABEL_25:
+  v5[v4] = 0;
   return result;
 }
 

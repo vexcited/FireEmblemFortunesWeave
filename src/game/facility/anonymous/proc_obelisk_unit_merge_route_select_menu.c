@@ -107,6 +107,14 @@ extern __int64 GameData_21caa2c;
 extern __int64 game_g_empty_item;
 __int64 ProcObeliskUnitMergeRouteSelectMenu_Unknown84(__int64 a1);
 __int64 ProcObeliskUnitMergeRouteSelectMenu_9d3c00(__int64 a1);
+__int64 GameRoutine_60a020(__int64, __int64);
+__int64 Manager_a51e10(__int64, unsigned int, unsigned int, int);
+char* GameRoutine_a4dbe0_alt1(__int64, _BYTE*,
+                              char) __asm__("GameRoutine_a4dbe0");
+extern char** msg_MessageManager_empty_text__ptr;
+void GameRoutine_156c5d0_alt1(__int64, __int64,
+                              char) __asm__("GameRoutine_156c5d0");
+__int64 ProcObeliskUnitMergeRouteSelectMenu_9d3e90(__int64 a1);
 
 __int64 ProcObeliskUnitMergeRouteSelectMenu_Unknown84(__int64 a1)
 {
@@ -744,6 +752,510 @@ __int64 ProcObeliskUnitMergeRouteSelectMenu_9d3c00(__int64 a1)
     }
     v8 = (int*)(v5 + 36);
     goto LABEL_17;
+  }
+  return result;
+}
+
+__int64 ProcObeliskUnitMergeRouteSelectMenu_9d3e90(__int64 a1)
+{
+  __int64 v3;
+  unsigned __int64 v4;
+  int* v5;
+  signed int v6;
+  int v7;
+  __int64 result;
+  __int64 v9;
+  __int64* v10;
+  __int64* v11;
+  __int64* v12;
+  __int64 v13;
+  __int64* v14;
+  char* v15;
+  __int64 v16;
+  __int64 v17;
+  char* v18;
+  __int64 v19;
+  __int64 v20;
+  const char* v21;
+  __int64 v22;
+  __int64* v23;
+  char* v24;
+  __int64 v25;
+  __int64 v26;
+  char* v27;
+  __int64 v28;
+  __int64 v29;
+  __int64 v30;
+  char* v31;
+  __int64 v32;
+  __int64 v33;
+  __int64 v34;
+  __int64* v35;
+  char* v36;
+  __int64 v37;
+  __int64 v38;
+  char* v39;
+  __int64 v40;
+  __int64 v41;
+  __int64 v42;
+  __int64* v43;
+  char* v44;
+  __int64 v45;
+  __int64 v46;
+  char* v47;
+  __int64 v48;
+  __int64 v49;
+  __int64 v50;
+  char* v51;
+  __int64 v52;
+  __int64 v53;
+  __int64 v54;
+  char* v55;
+  __int64 v56;
+  __int64 v57;
+  __int64 v58;
+  char* v59;
+  __int64 v60;
+  __int64 v61;
+  struct {
+    __int64* v62;
+    unsigned __int64 v63;
+    unsigned __int64 v64;
+    unsigned __int64 v65;
+    int v66;
+    int v67;
+    __int64 v68;
+    __int64 v69;
+    __int64 v70;
+    __int64 v71;
+    __int64 v72;
+    __int64 v73;
+    __int64 v74;
+    __int64 v75;
+    __int64 v76;
+    __int64 v77;
+    __int64 v78;
+    __int64 v79;
+    __int64 v80;
+  } v62_;
+
+  v3 = *(_QWORD*)(a1 + 1232);
+  v4 = *(int*)(a1 + 1220);
+  if (v4 < (*(_QWORD*)(a1 + 1240) - v3) >> 2) {
+    v4 = *(int*)(v3 + 4 * v4);
+  }
+  v5 = (int*)(*(_QWORD*)(a1 + 1184) + 8 * v4);
+  v7 = *v5;
+  v6 = v5[1];
+  LayoutAccessor_1560070((void*)(&v62_.v62), (__int64*)(a1 + 848),
+                         (__int64)"L_CompareInfo");
+  result = v62_.v63;
+  if (v62_.v63 != 0) {
+    v9 = std___1___shared_weak_count_lock(v62_.v63);
+    v10 = v62_.v62;
+    result = v62_.v63;
+    if (v62_.v63 != 0) {
+      result = std___1___shared_weak_count___release_weak(v62_.v63);
+    }
+    if (v9 == 0 || v10 == nullptr) {
+      if (v9 == 0) {
+        return result;
+      }
+      goto LABEL_62;
+    }
+    ui_LayoutAccessor_SetPaneVisible_alt1((__int64)v10, (__int64)"L_PageTab",
+                                          1);
+    ui_LayoutAccessor_SetPaneVisible_alt1((__int64)v10, (__int64)"A_Get_Txt",
+                                          0);
+    v11 = msg_MessageManager_instance__ptr[0];
+    v12 = GameData_212e348;
+    if (v7 <= 1) {
+      if (v7 == 0) {
+        v54 = *msg_MessageManager_instance__ptr[0];
+        v62_.v68 = -1;
+        v62_.v69 = -1;
+        v62_.v70 = -1;
+        v62_.v71 = -1;
+        v62_.v72 = -1;
+        v62_.v73 = -1;
+        v62_.v74 = -1;
+        v62_.v75 = -1;
+        v62_.v76 = -1;
+        v62_.v77 = -1;
+        v62_.v78 = -1;
+        v62_.v79 = -1;
+        v62_.v62 = GameData_212e348 + 2;
+        v62_.v63 = 0xFFFF0001FFFF0000LL;
+        v62_.v64 = 0xFFFF0004FFFF0002LL;
+        v62_.v65 = 0xFFFF0006FFFF0005LL;
+        v62_.v80 = 8;
+        v62_.v66 = -65529;
+        v62_.v67 = -65528;
+        v55 = GameRoutine_a4dbe0_alt1(v54, "MID_Sys_SkillLv", 0);
+        if (v55 != nullptr) {
+          v56 = (__int64)v55;
+          v57 = ui_LayoutAccessor_FindTextBox_alt1(v10, (__int64)"T_Title");
+          if (v57 != 0) {
+            GameRoutine_156c5d0_alt1(v57, v56, 0);
+          }
+        }
+        v21 = "Page_Mastery";
+        goto LABEL_57;
+      }
+      if (v7 != 1) {
+        goto LABEL_58;
+      }
+      v22 = *msg_MessageManager_instance__ptr[0];
+      v23 = GameData_212e348 + 2;
+      v62_.v68 = -1;
+      v62_.v69 = -1;
+      v62_.v70 = -1;
+      v62_.v71 = -1;
+      v62_.v72 = -1;
+      v62_.v73 = -1;
+      v62_.v74 = -1;
+      v62_.v75 = -1;
+      v62_.v76 = -1;
+      v62_.v77 = -1;
+      v62_.v78 = -1;
+      v62_.v79 = -1;
+      v62_.v80 = 8;
+      v62_.v64 = 0xFFFF0004FFFF0002LL;
+      v62_.v65 = 0xFFFF0006FFFF0005LL;
+      v62_.v62 = GameData_212e348 + 2;
+      v62_.v63 = 0xFFFF0001FFFF0000LL;
+      v62_.v66 = -65529;
+      v62_.v67 = -65528;
+      v24 = GameRoutine_a4dbe0_alt1(v22, "MID_SysMenu_Arts", 0);
+      if (v24 != nullptr) {
+        v25 = (__int64)v24;
+      }
+      else {
+        v25 = (__int64)*msg_MessageManager_empty_text__ptr;
+      }
+      GameRoutine_60a020(*v11 + 14704, v25);
+      v26 = *v11;
+      v62_.v64 = 0xFFFF0004FFFF0002LL;
+      v62_.v62 = v23;
+      v62_.v63 = 0xFFFF0001FFFF0000LL;
+      v62_.v68 = -1;
+      v62_.v69 = -1;
+      v62_.v70 = -1;
+      v62_.v71 = -1;
+      v62_.v72 = -1;
+      v62_.v73 = -1;
+      v62_.v74 = -1;
+      v62_.v75 = -1;
+      v62_.v76 = -1;
+      v62_.v77 = -1;
+      v62_.v78 = -1;
+      v62_.v79 = -1;
+      v62_.v80 = 8;
+      v62_.v66 = -65529;
+      v62_.v67 = -65528;
+      v62_.v65 = 0xFFFF0006FFFF0005LL;
+      v27 = GameRoutine_a4dbe0_alt1(v26, "MID_UnitMergeMenu_Acquired", 0);
+      if (v27 != nullptr) {
+        v28 = (__int64)v27;
+        v29 = ui_LayoutAccessor_FindTextBox_alt1(v10, (__int64)"T_Title");
+        if (v29 != 0) {
+          GameRoutine_156c5d0_alt1(v29, v28, 0);
+        }
+      }
+      v30 = *v11;
+      v62_.v68 = -1;
+      v62_.v69 = -1;
+      v62_.v70 = -1;
+      v62_.v71 = -1;
+      v62_.v72 = -1;
+      v62_.v73 = -1;
+      v62_.v74 = -1;
+      v62_.v75 = -1;
+      v62_.v76 = -1;
+      v62_.v77 = -1;
+      v62_.v78 = -1;
+      v62_.v79 = -1;
+      v62_.v66 = -65529;
+      v62_.v67 = -65528;
+      v62_.v62 = v23;
+      v62_.v63 = 0xFFFF0001FFFF0000LL;
+      v62_.v64 = 0xFFFF0004FFFF0002LL;
+      v62_.v65 = 0xFFFF0006FFFF0005LL;
+      v62_.v80 = 8;
+      v31 = GameRoutine_a4dbe0_alt1(v30, "MID_BtlMenu_WeaponCost", 0);
+      if (v31 != nullptr) {
+        v32 = (__int64)v31;
+        v33 = ui_LayoutAccessor_FindTextBox_alt1(v10, (__int64)"T_Title_Cost");
+        v12 = GameData_212e348;
+        if (v33 != 0) {
+          GameRoutine_156c5d0_alt1(v33, v32, 0);
+        }
+        v21 = "Page_CombatArts";
+        goto LABEL_57;
+      }
+      v21 = "Page_CombatArts";
+    }
+    else {
+      switch (v7) {
+      case 2:
+        v34 = *msg_MessageManager_instance__ptr[0];
+        v35 = GameData_212e348 + 2;
+        v62_.v68 = -1;
+        v62_.v69 = -1;
+        v62_.v70 = -1;
+        v62_.v71 = -1;
+        v62_.v72 = -1;
+        v62_.v73 = -1;
+        v62_.v74 = -1;
+        v62_.v75 = -1;
+        v62_.v76 = -1;
+        v62_.v77 = -1;
+        v62_.v78 = -1;
+        v62_.v79 = -1;
+        v62_.v80 = 8;
+        v62_.v66 = -65529;
+        v62_.v67 = -65528;
+        v62_.v62 = GameData_212e348 + 2;
+        v62_.v63 = 0xFFFF0001FFFF0000LL;
+        v62_.v64 = 0xFFFF0004FFFF0002LL;
+        v62_.v65 = 0xFFFF0006FFFF0005LL;
+        v36 = GameRoutine_a4dbe0_alt1(v34, "MID_Sys_Skill", 0);
+        if (v36 != nullptr) {
+          v37 = (__int64)v36;
+        }
+        else {
+          v37 = (__int64)*msg_MessageManager_empty_text__ptr;
+        }
+        GameRoutine_60a020(*v11 + 14704, v37);
+        v38 = *v11;
+        v62_.v68 = -1;
+        v62_.v69 = -1;
+        v62_.v70 = -1;
+        v62_.v71 = -1;
+        v62_.v72 = -1;
+        v62_.v73 = -1;
+        v62_.v74 = -1;
+        v62_.v75 = -1;
+        v62_.v76 = -1;
+        v62_.v77 = -1;
+        v62_.v78 = -1;
+        v62_.v79 = -1;
+        v62_.v80 = 8;
+        v62_.v66 = -65529;
+        v62_.v67 = -65528;
+        v62_.v62 = v35;
+        v62_.v63 = 0xFFFF0001FFFF0000LL;
+        v62_.v64 = 0xFFFF0004FFFF0002LL;
+        v62_.v65 = 0xFFFF0006FFFF0005LL;
+        v39 = GameRoutine_a4dbe0_alt1(v38, "MID_UnitMergeMenu_Acquired", 0);
+        if (v39 != nullptr) {
+          v40 = (__int64)v39;
+          v41 = ui_LayoutAccessor_FindTextBox_alt1(v10, (__int64)"T_Title");
+          if (v41 != 0) {
+            GameRoutine_156c5d0_alt1(v41, v40, 0);
+          }
+        }
+        v21 = "Page_Skill";
+        break;
+      case 3:
+        v42 = *msg_MessageManager_instance__ptr[0];
+        v43 = GameData_212e348 + 2;
+        v62_.v68 = -1;
+        v62_.v69 = -1;
+        v62_.v70 = -1;
+        v62_.v71 = -1;
+        v62_.v72 = -1;
+        v62_.v73 = -1;
+        v62_.v74 = -1;
+        v62_.v75 = -1;
+        v62_.v76 = -1;
+        v62_.v77 = -1;
+        v62_.v78 = -1;
+        v62_.v79 = -1;
+        v62_.v80 = 8;
+        v62_.v64 = 0xFFFF0004FFFF0002LL;
+        v62_.v65 = 0xFFFF0006FFFF0005LL;
+        v62_.v62 = GameData_212e348 + 2;
+        v62_.v63 = 0xFFFF0001FFFF0000LL;
+        v62_.v66 = -65529;
+        v62_.v67 = -65528;
+        v44 = GameRoutine_a4dbe0_alt1(v42, "MID_Menu_Magic", 0);
+        if (v44 != nullptr) {
+          v45 = (__int64)v44;
+        }
+        else {
+          v45 = (__int64)*msg_MessageManager_empty_text__ptr;
+        }
+        GameRoutine_60a020(*v11 + 14704, v45);
+        v46 = *v11;
+        v62_.v64 = 0xFFFF0004FFFF0002LL;
+        v62_.v62 = v43;
+        v62_.v63 = 0xFFFF0001FFFF0000LL;
+        v62_.v68 = -1;
+        v62_.v69 = -1;
+        v62_.v70 = -1;
+        v62_.v71 = -1;
+        v62_.v72 = -1;
+        v62_.v73 = -1;
+        v62_.v74 = -1;
+        v62_.v75 = -1;
+        v62_.v76 = -1;
+        v62_.v77 = -1;
+        v62_.v78 = -1;
+        v62_.v79 = -1;
+        v62_.v80 = 8;
+        v62_.v66 = -65529;
+        v62_.v67 = -65528;
+        v62_.v65 = 0xFFFF0006FFFF0005LL;
+        v47 = GameRoutine_a4dbe0_alt1(v46, "MID_UnitMergeMenu_Acquired", 0);
+        if (v47 != nullptr) {
+          v48 = (__int64)v47;
+          v49 = ui_LayoutAccessor_FindTextBox_alt1(v10, (__int64)"T_Title");
+          if (v49 != 0) {
+            GameRoutine_156c5d0_alt1(v49, v48, 0);
+          }
+        }
+        v50 = *v11;
+        v62_.v68 = -1;
+        v62_.v69 = -1;
+        v62_.v70 = -1;
+        v62_.v71 = -1;
+        v62_.v72 = -1;
+        v62_.v73 = -1;
+        v62_.v74 = -1;
+        v62_.v75 = -1;
+        v62_.v76 = -1;
+        v62_.v77 = -1;
+        v62_.v78 = -1;
+        v62_.v79 = -1;
+        v62_.v66 = -65529;
+        v62_.v67 = -65528;
+        v62_.v62 = v43;
+        v62_.v63 = 0xFFFF0001FFFF0000LL;
+        v62_.v64 = 0xFFFF0004FFFF0002LL;
+        v62_.v65 = 0xFFFF0006FFFF0005LL;
+        v62_.v80 = 8;
+        v51 = GameRoutine_a4dbe0_alt1(v50, "MID_Sys_Remaining", 0);
+        if (v51 != nullptr) {
+          v52 = (__int64)v51;
+          v53 =
+              ui_LayoutAccessor_FindTextBox_alt1(v10, (__int64)"T_Title_Cost");
+          v12 = GameData_212e348;
+          if (v53 != 0) {
+            GameRoutine_156c5d0_alt1(v53, v52, 0);
+          }
+          v21 = "Page_Magic";
+          goto LABEL_57;
+        }
+        v21 = "Page_Magic";
+        break;
+      case 4:
+        v13 = *msg_MessageManager_instance__ptr[0];
+        v14 = GameData_212e348 + 2;
+        v62_.v68 = -1;
+        v62_.v69 = -1;
+        v62_.v70 = -1;
+        v62_.v71 = -1;
+        v62_.v72 = -1;
+        v62_.v73 = -1;
+        v62_.v74 = -1;
+        v62_.v75 = -1;
+        v62_.v76 = -1;
+        v62_.v77 = -1;
+        v62_.v78 = -1;
+        v62_.v79 = -1;
+        v62_.v80 = 8;
+        v62_.v66 = -65529;
+        v62_.v67 = -65528;
+        v62_.v62 = GameData_212e348 + 2;
+        v62_.v63 = 0xFFFF0001FFFF0000LL;
+        v62_.v64 = 0xFFFF0004FFFF0002LL;
+        v62_.v65 = 0xFFFF0006FFFF0005LL;
+        v15 = GameRoutine_a4dbe0_alt1(v13, "MID_Sys_Plural_Class", 0);
+        if (v15 != nullptr) {
+          v16 = (__int64)v15;
+        }
+        else {
+          v16 = (__int64)*msg_MessageManager_empty_text__ptr;
+        }
+        GameRoutine_60a020(*v11 + 14704, v16);
+        v17 = *v11;
+        v62_.v68 = -1;
+        v62_.v69 = -1;
+        v62_.v70 = -1;
+        v62_.v71 = -1;
+        v62_.v72 = -1;
+        v62_.v73 = -1;
+        v62_.v74 = -1;
+        v62_.v75 = -1;
+        v62_.v76 = -1;
+        v62_.v77 = -1;
+        v62_.v78 = -1;
+        v62_.v79 = -1;
+        v62_.v80 = 8;
+        v62_.v66 = -65529;
+        v62_.v67 = -65528;
+        v62_.v62 = v14;
+        v62_.v63 = 0xFFFF0001FFFF0000LL;
+        v62_.v64 = 0xFFFF0004FFFF0002LL;
+        v62_.v65 = 0xFFFF0006FFFF0005LL;
+        v18 = GameRoutine_a4dbe0_alt1(v17, "MID_UnitMergeMenu_Acquired", 0);
+        if (v18 != nullptr) {
+          v19 = (__int64)v18;
+          v20 = ui_LayoutAccessor_FindTextBox_alt1(v10, (__int64)"T_Title");
+          if (v20 != 0) {
+            GameRoutine_156c5d0_alt1(v20, v19, 0);
+          }
+        }
+        v21 = "Page_Class";
+        break;
+      default:
+        goto LABEL_58;
+      }
+    }
+    v12 = GameData_212e348;
+  LABEL_57:
+    LayoutAccessor_1562cf0((__int64)v10, (__int64)v21);
+  LABEL_58:
+    ui_LayoutAccessor_SetPaneVisible_alt1((__int64)v10, (__int64)"N_PageHelp",
+                                          v6 > 0);
+    Manager_a51e10(*v11 + 14704, 0, v6, 0);
+    v58 = *v11;
+    v62_.v68 = -1;
+    v62_.v69 = -1;
+    v62_.v70 = -1;
+    v62_.v71 = -1;
+    v62_.v72 = -1;
+    v62_.v73 = -1;
+    v62_.v74 = -1;
+    v62_.v75 = -1;
+    v62_.v76 = -1;
+    v62_.v77 = -1;
+    v62_.v78 = -1;
+    v62_.v79 = -1;
+    v62_.v62 = v12 + 2;
+    v62_.v63 = 0xFFFF0001FFFF0000LL;
+    v62_.v64 = 0xFFFF0004FFFF0002LL;
+    v62_.v65 = 0xFFFF0006FFFF0005LL;
+    v62_.v80 = 8;
+    v62_.v66 = -65529;
+    v62_.v67 = -65528;
+    v59 = GameRoutine_a4dbe0_alt1(v58, "MID_UnitMergeMenu_Acquired_Other", 0);
+    if (v59 != nullptr) {
+      v60 = (__int64)v59;
+      v61 = ui_LayoutAccessor_FindTextBox_alt1(v10, (__int64)"T_PageHelp");
+      if (v61 != 0) {
+        GameRoutine_156c5d0_alt1(v61, v60, 0);
+      }
+    }
+    result = ui_LayoutAccessor_SetPaneVisible_alt1((__int64)v10,
+                                                   (__int64)"T_PageHelp", 1);
+  LABEL_62:
+    if (atomic_fetch_add((atomic_ullong* volatile)(v9 + 8),
+                         0xFFFFFFFFFFFFFFFFLL) == 0) {
+      (*(void (**)(__int64))(*(_QWORD*)v9 + 16LL))(v9);
+      return std___1___shared_weak_count___release_weak(v9);
+    }
   }
   return result;
 }

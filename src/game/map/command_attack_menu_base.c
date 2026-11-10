@@ -123,7 +123,7 @@ __int64
 
 game_map_CommandAttackMenu_Base_CreateBindAttackMenu_lambda0_Invoke(__int64 a1)
 {
-  __int64 v1;
+  _QWORD* v1;
   __int64 v3;
   char v4;
   __int64 v5;
@@ -143,8 +143,8 @@ game_map_CommandAttackMenu_Base_CreateBindAttackMenu_lambda0_Invoke(__int64 a1)
   __int64 v19;
   __int64 v20;
 
-  v1 = *(_QWORD*)(a1 + 16);
-  v3 = (*(__int64 (**)(__int64))(*(_QWORD*)v1 + 1168LL))(v1);
+  v1 = *(_QWORD**)(a1 + 16);
+  v3 = (*(__int64 (**)(_QWORD*))(*v1 + 1168LL))(v1);
   v4 = (*(__int64 (**)(__int64))(*(_QWORD*)v3 + 48LL))(v3);
   v5 = *(_QWORD*)v3;
   if ((v4 & 1) == 0) {
@@ -152,7 +152,7 @@ game_map_CommandAttackMenu_Base_CreateBindAttackMenu_lambda0_Invoke(__int64 a1)
   }
   result = (*(__int64 (**)(__int64))(v5 + 464))(v3);
   if ((result & 1) != 0) {
-    return BasicMenuCursor_16e0c00(v1, v3);
+    return (__int64)BasicMenuCursor_16e0c00_alt1(v1, v3);
   }
   v7 = *(__int64**)(a1 + 24);
   v9 = (__int64*)v7[1];
@@ -162,7 +162,7 @@ game_map_CommandAttackMenu_Base_CreateBindAttackMenu_lambda0_Invoke(__int64 a1)
     v12 = (__int64)v9 - *v7;
     v13 = (v12 >> 3) + 1;
     if (v13 >> 61 != 0) {
-      GameRoutine_1620920();
+      GameRoutine_1620920_alt1();
     }
     v14 = v8 - v11;
     v15 = fw_memory_g_heap_manager_ptr;
@@ -177,9 +177,9 @@ game_map_CommandAttackMenu_Base_CreateBindAttackMenu_lambda0_Invoke(__int64 a1)
     }
     if (v16 != 0) {
       if (v16 >> 61 != 0) {
-        GameRoutine_60a210(result);
+        GameRoutine_60a210_alt1();
       }
-      v17 = fw_memory_HeapManager_Allocate(
+      v17 = fw_memory_HeapManager_Allocate_alt1(
           *(_QWORD*)fw_memory_g_heap_manager_ptr, 8 * v16, 16, 0);
     }
     else {

@@ -49,6 +49,15 @@ __int64 ProcQuestMenu_Unknown128(_QWORD* a1);
 __int64 ProcQuestMenu_Unknown139(__int64 a1, __int64* a2);
 bool game_menu_anonymous_ProcQuestMenu_SortAndFilter_closure_Invoke(__int64 a1,
                                                                     __int64 a2);
+extern __int64 (*msg_TagSelector_vtable[])();
+extern __int64 fw_memory_g_heap_manager;
+extern char* game_menu_kRouteQuestLabels[4];
+extern char* msg_MessageManager_empty_text_;
+void __attribute__((noreturn)) String_60a1d0(_QWORD);
+__attribute__((swiftcall)) void
+game_menu_anonymous_ProcQuestMenu_OnInit_closure_Invoke(PSEUDO_X8 x8_,
+                                                        __int64 unused_int0,
+                                                        int* a1);
 
 __int64 ProcQuestMenu_Destructor(__int64 a1)
 {
@@ -609,6 +618,124 @@ __int64 ProcQuestMenu_Unknown139(__int64 a1, __int64* a2)
     a2[1] = v7;
   }
   return result;
+}
+
+__attribute__((swiftcall)) void
+
+game_menu_anonymous_ProcQuestMenu_OnInit_closure_Invoke(PSEUDO_X8 x8_,
+                                                        __int64 unused_int0,
+                                                        int* a1)
+{
+  __int64* a2 = (__int64*)PSEUDO_X8_VALUE(x8_);
+  int v3;
+  const char* v4;
+  const char* v5;
+  __int64 v6;
+  char* v7;
+  unsigned __int64 result;
+  unsigned __int64 v9;
+  char* v10;
+  __int64 v11;
+  __int64 v12;
+  _QWORD v13[4];
+  int v14;
+  int v15;
+  __int64 v16;
+  __int64 v17;
+  __int64 v18;
+  __int64 v19;
+  __int64 v20;
+  __int64 v21;
+  __int64 v22;
+  __int64 v23;
+  __int64 v24;
+  __int64 v25;
+  __int64 v26;
+  __int64 v27;
+  __int64 v28;
+
+  v3 = *a1;
+  if (*a1 == 3) {
+    if (game_GameModeData_instance_ != 0 &&
+        (unsigned __int8)(*(_BYTE*)(game_GameModeData_instance_ + 15) - 1) <=
+            3u) {
+      v5 = game_menu_kRouteQuestLabels[(
+          unsigned __int8)(*(_BYTE*)(game_GameModeData_instance_ + 15) - 1)];
+    }
+    else {
+      v5 = "MID_QuestMenu_RouteQuest";
+    }
+  }
+  else {
+    v4 = "MID_QuestMenu_MaineQuest";
+    if (v3 == 1) {
+      v4 = "MID_QuestMenu_SubQuest";
+    }
+    if (v3 == 2) {
+      v5 = "MID_QuestMenu_SideStoryQuest";
+    }
+    else {
+      v5 = v4;
+    }
+  }
+  if (*v5 != 0) {
+    v16 = -1;
+    v17 = -1;
+    v18 = -1;
+    v19 = -1;
+    v6 = *msg_MessageManager_instance__ptr[0];
+    v20 = -1;
+    v21 = -1;
+    v22 = -1;
+    v23 = -1;
+    v24 = -1;
+    v25 = -1;
+    v26 = -1;
+    v27 = -1;
+    v13[0] = msg_TagSelector_vtable;
+    v13[1] = 0xFFFF0001FFFF0000LL;
+    v13[2] = 0xFFFF0004FFFF0002LL;
+    v13[3] = 0xFFFF0006FFFF0005LL;
+    v28 = 8;
+    v14 = -65529;
+    v15 = -65528;
+    v7 = (char*)GameRoutine_a4dbe0(v6, v5, 0, v13);
+  }
+  else {
+    v7 = msg_MessageManager_empty_text_;
+  }
+  result = strlen(v7);
+  if (result >= 0xFFFFFFFFFFFFFFF7LL) {
+    String_60a1d0(result);
+  }
+  v9 = result;
+  if (result >= 0x17) {
+    if ((result | 7) == 0x17) {
+      v11 = 26;
+    }
+    else {
+      v11 = (result | 7) + 1;
+    }
+    v12 = fw_memory_HeapManager_Allocate(fw_memory_g_heap_manager, v11, 16, 0);
+    a2[1] = v9;
+    a2[2] = v12;
+    *a2 = v11 | 1;
+    v10 = (char*)v12;
+  }
+  else {
+    *(_BYTE*)a2 = 2 * result;
+    v10 = (char*)a2 + 1;
+    if (result == 0) {
+      goto LABEL_19;
+    }
+  }
+  result = memmove(v10, v7, v9);
+LABEL_19:
+  v10[v9] = 0;
+  {
+    result;
+    return;
+  }
 }
 
 bool game_menu_anonymous_ProcQuestMenu_SortAndFilter_closure_Invoke(__int64 a1,

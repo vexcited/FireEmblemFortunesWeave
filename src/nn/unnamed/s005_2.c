@@ -1,4 +1,4 @@
-#include "decomp/pseudo_types.h"
+#include "decomp/pseudo_helpers.h"
 #pragma GCC visibility push(hidden)
 
 extern unsigned __int64 SdkData_105bf80[2048];
@@ -47,13 +47,13 @@ __int64 SdkRoutine_87c940(_QWORD, _QWORD);
 __int64 SdkRoutine_87c9c0(_QWORD);
 __int64 SdkRoutine_87cb10(_QWORD);
 __int64 SdkRoutine_87cb80(_QWORD, _QWORD, _QWORD);
-_QWORD* SdkRoutine_87cb90(_QWORD* __return_ptr, _QWORD);
+__attribute__((swiftcall)) void SdkRoutine_87cb90(PSEUDO_X8, _QWORD);
 __int64 SdkRoutine_87cba0(_QWORD);
 __int64 SdkRoutine_87cbb0(_QWORD);
 __int64 SdkRoutine_87cc40(_QWORD);
 __int64 SdkRoutine_87cd10(_QWORD, double);
 __int64 SdkRoutine_87cd30(_QWORD);
-_QWORD* SdkRoutine_87cd90(_QWORD* __return_ptr);
+__attribute__((swiftcall)) void SdkRoutine_87cd90(PSEUDO_X8);
 __int64 SdkRoutine_87cda0(_QWORD);
 __int64 SdkRoutine_87cdc0(void);
 __int64 SdkRoutine_87ce70(_QWORD, _QWORD);
@@ -539,7 +539,7 @@ void SdkHr_7e8090(__int64 a1, __int64 a2)
            ? (v6 = v5 == 1836016750)
            : (v6 = false),
        !v6)) {
-    SdkRoutine_87cb90(v9, "random device not supported ");
+    SdkRoutine_87cb90((void*)v9, "random device not supported ");
     if ((v9[0] & 1) != 0) {
       v7 = v10;
     }
@@ -1844,7 +1844,7 @@ __int64 SdkHr_804104(__int64 a1, __int64 a2, __int64 a3, __int64 a4, __int64 a5,
   }
   v45 = (char*)&v51;
 LABEL_62:
-  SdkRoutine_87cd90(&v47);
+  SdkRoutine_87cd90((void*)&v47);
   SdkRoutine_87d0a0(&v50, v45, v32, v49, v54, &v48, &v47);
   SdkRoutine_86ee60(&v47);
   return SdkRoutine_812100(v25, v49, v54[0], v48, v23, v21);

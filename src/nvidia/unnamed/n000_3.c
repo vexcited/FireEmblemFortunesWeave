@@ -3193,7 +3193,8 @@ __int64 NgxHr_beb00(__int64 result, __int64 a2, __int64* a3)
     if (v7 != 0) {
       NgxRoutine_bf2e0(a3, ": ", 2);
     }
-    (*(void (**)(_QWORD* __return_ptr))(**(_QWORD**)(a2 + 8) + 48LL))(v13);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, void*))(
+        **(_QWORD**)(a2 + 8) + 48LL))((void*)v13, (void*)*(_QWORD**)(a2 + 8));
     if ((v13[0] & 1) != 0) {
       v8 = v14;
     }

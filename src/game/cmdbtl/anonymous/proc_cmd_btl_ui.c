@@ -25,6 +25,15 @@ extern __int64 GameData_225ca88;
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 ProcCmdBtlUI_Destructor(__int64 a1);
 __int64 ProcCmdBtlUI_Unknown2(__int64 result);
+__int64 GameRoutine_1627bf0(__int64);
+__int64 LayoutAccessor_155e830(__int64 result, char);
+__int64 LayoutAccessor_1562680(__int64 result, __int64, float);
+__int64 LayoutAccessor_15636c0(__int64 result, __int64, char, float);
+__int64 ui_LayoutAccessor_SetPaneVisible_alt1(
+    __int64 result, __int64, char) __asm__("ui_LayoutAccessor_SetPaneVisible");
+extern __int64* ui_LayoutAccessor_empty__ptr[3];
+float LayoutAccessor_15638b0(__int64*, __int64, char);
+__int64 ProcCmdBtlUI_Unknown3(__int64 result);
 
 __int64 ProcCmdBtlUI_Destructor(__int64 a1)
 {
@@ -217,6 +226,100 @@ __int64 ProcCmdBtlUI_Unknown2(__int64 result)
           }
         }
       }
+    }
+  }
+  return result;
+}
+
+__int64 ProcCmdBtlUI_Unknown3(__int64 result)
+{
+
+#pragma clang fp contract(off)
+  int v1;
+  __int64 v2;
+  bool v3;
+  int v4;
+  __int64 v5;
+  __int64* v6;
+  __int64* v7;
+  __int64 v8;
+  __int64 v9;
+  const char* v10;
+  const char* v11;
+  float v12;
+  float v13;
+  float v14;
+
+  v1 = *(_DWORD*)(result + 1980);
+  v2 = result;
+  v3 = __OFSUB__(v1, 1);
+  v4 = v1 - 1;
+  if (v4 < 0 == v3) {
+    *(_DWORD*)(result + 1980) = v4;
+    if (v4 == 0) {
+      result = LayoutAccessor_155e830(result + 176,
+                                      *(_BYTE*)(result + 1976) &
+                                          *(_BYTE*)(result + 1977) & 1);
+    }
+  }
+  if (*(_BYTE*)(v2 + 1978) == 1) {
+    v5 = *(_QWORD*)(v2 + 1968);
+    if (v5 != 0) {
+      v6 = ui_LayoutAccessor_empty__ptr[0];
+      if (*(_QWORD*)(v5 + 168) != 0) {
+        v7 = *(__int64**)(v5 + 168);
+      }
+      else {
+        v7 = ui_LayoutAccessor_empty__ptr[0];
+      }
+      LayoutAccessor_155e830((__int64)v7, 1);
+      *(_DWORD*)(v5 + 388) = 0;
+      GameRoutine_1627bf0(v5 + 224);
+      if (*(_QWORD*)(v5 + 168) != 0) {
+        v8 = *(_QWORD*)(v5 + 168);
+      }
+      else {
+        v8 = (__int64)v6;
+      }
+      ui_LayoutAccessor_SetPaneVisible_alt1(v8, (__int64)"L_KeyHelp",
+                                            *(_BYTE*)(v5 + 409));
+      if (*(_QWORD*)(v5 + 168) != 0) {
+        v9 = *(_QWORD*)(v5 + 168);
+      }
+      else {
+        v9 = (__int64)v6;
+      }
+      ui_LayoutAccessor_SetPaneVisible_alt1(v9, (__int64)"L_KeyHelp01",
+                                            *(_BYTE*)(v5 + 409));
+      if ((*(_BYTE*)(v5 + 409) & *(_BYTE*)(v5 + 408) & 1) != 0) {
+        v10 = "KeyHelp_Cancel_In";
+      }
+      else {
+        v10 = "KeyHelp_Cancel_Out";
+      }
+      if ((*(_BYTE*)(v5 + 409) & *(_BYTE*)(v5 + 408) & 1) != 0) {
+        v11 = "KeyHelp_Auto_Out";
+      }
+      else {
+        v11 = "KeyHelp_Auto_In";
+      }
+      if (*(_QWORD*)(v5 + 168) != 0) {
+        v6 = *(__int64**)(v5 + 168);
+      }
+      LayoutAccessor_1562680((__int64)v6, (__int64)v10, 0x0.0p+0f);
+      v12 = LayoutAccessor_15638b0(v6, (__int64)v10, 0);
+      LayoutAccessor_15636c0((__int64)v6, (__int64)v10, 0, v12);
+      LayoutAccessor_1562680((__int64)v6, (__int64)v11, 0x0.0p+0f);
+      v13 = LayoutAccessor_15638b0(v6, (__int64)v11, 0);
+      LayoutAccessor_15636c0((__int64)v6, (__int64)v11, 0, v13);
+      LayoutAccessor_1562680((__int64)v6, (__int64)"KeyHelp_Skip_In",
+                             0x0.0p+0f);
+      v14 = LayoutAccessor_15638b0(v6, (__int64)"KeyHelp_Skip_In", 0);
+      result = LayoutAccessor_15636c0((__int64)v6, (__int64)"KeyHelp_Skip_In",
+                                      0, v14);
+      *(_BYTE*)(v5 + 410) = 1;
+      *(_BYTE*)(v5 + 412) = 1;
+      *(_BYTE*)(v2 + 1978) = 0;
     }
   }
   return result;

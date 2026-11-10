@@ -386,6 +386,10 @@ __int64 ProcHubSeq_d87d00(__int64 result);
 __int64 ProcHubSeq_d88a40(__int64 result);
 void ProcHubSeq_Unknown3(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
                          __int64 a5, __int64 a6);
+_QWORD* GameRoutine_e1e2d0(_QWORD*);
+__int64 LocatorDispos_db2560(__int64, unsigned __int8*);
+bool CharacterSituation_f94550();
+__int64 game_hub_anonymous_ProcHubSeq_CreateBindZView_closure0_Invoke();
 
 void ProcHubSeq_d85530()
 {
@@ -2599,6 +2603,71 @@ __int64 ProcHubSeq_d88a40(__int64 result)
     *(_WORD*)(v2 + 216) = 0;
   }
   return result;
+}
+
+__int64 game_hub_anonymous_ProcHubSeq_CreateBindZView_closure0_Invoke()
+{
+  __int64 v0;
+  __int64 v1;
+  _BYTE* v2;
+  __int64 v3;
+  __int64 v4;
+  __int64* v5;
+  __int64* v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v10;
+  __int64 v11;
+  int v12;
+  char v14[24];
+
+  v0 = GameData_212dbb8[0];
+  v1 = *(_QWORD*)GameData_212dbb8[0];
+  v2 = (_BYTE*)(*(_QWORD*)GameData_212dbb8[0] + 64LL);
+  v3 = *(_QWORD*)(*(_QWORD*)GameData_212dbb8[0] + 72LL);
+  v4 = GameData_212d310;
+  if ((*v2 & 1) == 0) {
+    v3 = *(_BYTE*)(*(_QWORD*)GameData_212dbb8[0] + 64LL) >> 1;
+  }
+  if (v3 == 10) {
+    v5 = *(__int64**)(v1 + 80);
+    v6 = (__int64*)(v1 + 65);
+    if ((*(_BYTE*)(*(_QWORD*)GameData_212dbb8[0] + 64LL) & 1) != 0) {
+      v6 = v5;
+    }
+    v7 = *v6;
+    v8 = *((unsigned __int16*)v6 + 4);
+    if (v7 == *(_QWORD*)"Hub_000_A1" && v8 == *(unsigned __int16*)"A1") {
+      *(_DWORD*)(*(_QWORD*)GameData_212d310 + 48LL) |= 2u;
+    }
+  }
+  v14[0] = 26;
+  strcpy(&v14[1], "HighAutoPitch");
+  if ((LocatorDispos_db2560((__int64)v2, (unsigned __int8*)v14) & 1) != 0) {
+    *(_DWORD*)(*(_QWORD*)v4 + 48LL) |= 4u;
+  }
+  v10 = *(_QWORD*)v0;
+  v14[0] = 30;
+  strcpy(&v14[1], "CamRayShielding");
+  if ((LocatorDispos_db2560(v10 + 64, (unsigned __int8*)v14) & 1) != 0) {
+    *(_DWORD*)(*(_QWORD*)v4 + 48LL) |= 0x10u;
+  }
+  strcpy(v14, "&CamFrequentlyStairs");
+  if ((LocatorDispos_db2560(*(_QWORD*)v0 + 64LL, (unsigned __int8*)v14) & 1) !=
+      0) {
+    *(_DWORD*)(*(_QWORD*)v4 + 48LL) |= 0x20u;
+  }
+  if (CharacterSituation_f94550()) {
+    *(_DWORD*)(*(_QWORD*)v4 + 48LL) |= 8u;
+  }
+  GameRoutine_e1e2d0(*(_QWORD**)GameData_212ebf8[0]);
+  v11 = *(_QWORD*)(*(_QWORD*)v0 + 216LL);
+  v12 = *(_DWORD*)(v11 + 232);
+  if (v12 <= 3) {
+    v12 = 3;
+  }
+  *(_DWORD*)(v11 + 232) = v12;
+  return GameRoutine_f482e0(v11);
 }
 
 __int64 ProcHubSeq_Destructor(__int64 a1)

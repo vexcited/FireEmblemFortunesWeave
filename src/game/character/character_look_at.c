@@ -1,5 +1,7 @@
 #include "decomp/pseudo_helpers.h"
 
+#include "decomp/pseudo_float.h"
+
 #pragma GCC visibility push(hidden)
 
 __int64 CharacterTrailModule_d3d7a0(_QWORD, _QWORD, _QWORD);
@@ -22,6 +24,17 @@ __int64 game_character_CharacterLookAt_Startup_lambda3_Invoke(__int64 result,
 extern __int64 GameData_2235728;
 float powf(_QWORD, float, float);
 float32x2_t* CharacterLookAt_Unknown5(float32x2_t* result);
+__attribute__((swiftcall)) void math_Quat_Slerp(PSEUDO_X8, float32x4_t* result,
+                                                float32x4_t*, float);
+__int64 __cxa_guard_acquire(_QWORD);
+__int64 __cxa_guard_release(_QWORD);
+extern _UNKNOWN* GameData_212c2f8;
+extern _UNKNOWN GameData_21a5680;
+extern __int128 GameData_1a837f0;
+extern __int128 GameData_21a5670;
+float32x4_t game_character_CharacterLookAt_Startup_lambda0_Invoke(__int64 a1,
+                                                                  __int64 a2,
+                                                                  __int64* a3);
 
 void CharacterLookAt_10b7fc0(__int64 a1)
 {
@@ -413,6 +426,136 @@ __n128 CharacterLookAt_Destructor(__int64 a1)
   *(_QWORD*)a1 = &game_character_CharacterBaseModule_vtable;
   if (v8 != 0) {
     return std___1___shared_weak_count___release_weak(v8);
+  }
+  return result;
+}
+
+float32x4_t game_character_CharacterLookAt_Startup_lambda0_Invoke(__int64 a1,
+                                                                  __int64 a2,
+                                                                  __int64* a3)
+{
+  float32x4_t* v5;
+  float32x4_t result;
+  __int64 v7;
+  unsigned __int64 v8;
+  float32x4_t v9;
+  float32x4_t v10;
+  unsigned __int64 v11;
+  float32x4_t v12;
+  float32x4_t v13;
+  float32x4_t v14;
+  float32x4_t v15;
+  float32x4_t v16;
+  float32x4_t v17;
+  int v18;
+  __int64 v19;
+  float32x4_t v20;
+  float32x4_t* v23;
+  int8x16x2_t v24;
+  int8x16x2_t v25;
+  int8x16x2_t v26;
+
+  v5 = *(float32x4_t**)(a1 + 8);
+  PSEUDO_LOW_LANE128(result, n128_u32, LANES128(v5[6]).n128_u32[2]);
+  if (LANES128(result).n128_f32[0] > 0x0.0p+0f &&
+      (LANES128(v5[1]).n128_u8[0] & 1) != 0) {
+    *(_DWORD*)a3[2] &= 0x33FFFFFFu;
+    v7 = *a3;
+    if ((atomic_load_explicit((atomic_uchar* volatile)&GameData_21a5680,
+                              memory_order_acquire) &
+         1) == 0) {
+      v23 = v5;
+      v18 = __cxa_guard_acquire(&GameData_21a5680);
+      v5 = v23;
+      if (v18 != 0) {
+        v19 = *((_QWORD*)GameData_212c2f8 + 1);
+        *(_QWORD*)&GameData_21a5670 = *(_QWORD*)GameData_212c2f8;
+        *((_QWORD*)&GameData_21a5670 + 1) = v19;
+        __cxa_guard_release(&GameData_21a5680);
+        v5 = v23;
+      }
+    }
+    math_Quat_Slerp((void*)(&v20), (float32x4_t*)&GameData_21a5670, v5 + 17,
+                    LANES128(v5[30]).n128_f32[0]);
+    v25.val[1] = v20;
+    LANES128(v25.val[1]).n128_u32[3] = 0;
+    v8 = LANES64_OF(
+             vqtbl1_s8(v25.val[1], COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL)))
+             .n64_u64[0];
+    LANES128(v9).n128_u64[0] =
+        LANES64_OF(vrev64_s32(COERCE_AS(int32x2_t, LANES128(v20).n128_u64[0])))
+            .n64_u64[0];
+    LANES128(v10).n128_u64[0] =
+        LANES64_OF(
+            vqtbl1_s8(v25.val[1], COERCE_AS(int8x8_t, 0xB0A09080B0A0908LL)))
+            .n64_u64[0];
+    v11 = LANES64_OF(
+              vqtbl1_s8(v25.val[1], COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL)))
+              .n64_u64[0];
+    LANES128(v9).n128_u64[1] = v8;
+    LANES128(v10).n128_u64[1] = v11;
+    v12 = vmulq_f32(v9, v9);
+    v24.val[1] = vmulq_f32(v10, v10);
+    v24.val[0] = vsubq_f32(
+        COERCE_AS(float32x4_t, GameData_1a837f0),
+        vaddq_f32(vaddq_f32(v24.val[1], v24.val[1]), vaddq_f32(v12, v12)));
+    LANES128(v13).n128_u64[0] =
+        LANES64_OF(
+            vqtbl1_s8(v25.val[1], COERCE_AS(int8x8_t, 0xB0A090807060504LL)))
+            .n64_u64[0];
+    LANES128(v13).n128_u64[1] = v8;
+    v14 = vmulq_f32(v13, v25.val[1]);
+    v15 = vaddq_f32(v14, v14);
+    LANES128(v25.val[1]).n128_u64[0] =
+        LANES64_OF(
+            vqtbl1_s8(v25.val[1], COERCE_AS(int8x8_t, 0x30201000B0A0908LL)))
+            .n64_u64[0];
+    LANES128(v25.val[1]).n128_u64[1] = v11;
+    v16 = vmulq_laneq_f32(v25.val[1], v20, 3);
+    v17 = vaddq_f32(v16, v16);
+    v26.val[0] = vaddq_f32(v15, v17);
+    v26.val[1] = vsubq_f32(v15, v17);
+    LANES128(v25.val[1]).n128_u64[0] =
+        LANES64_OF(vqtbl2_s8(v26, COERCE_AS(int8x8_t, 0x1B1A191803020100LL)))
+            .n64_u64[0];
+    LANES128(v24.val[1]).n128_u64[0] =
+        LANES64_OF(vqtbl2_s8(v26, COERCE_AS(int8x8_t, 0x171615140B0A0908LL)))
+            .n64_u64[0];
+    *(int8x8_t*)&LANES128(v25.val[1]).n128_i8[8] =
+        vqtbl2_s8(v26, COERCE_AS(int8x8_t, 0x706050413121110LL));
+    *(int8x8_t*)&LANES128(v24.val[1]).n128_i8[8] =
+        vqtbl2_s8(v26, COERCE_AS(int8x8_t, 0x1F1E1D1C1F1E1D1CLL));
+    v25.val[0] = v24.val[0];
+    LANES128(v15).n128_u64[0] =
+        LANES64_OF(vqtbl2_s8(v25, COERCE_AS(int8x8_t, 0x1312111003020100LL)))
+            .n64_u64[0];
+    *(int8x8_t*)&LANES128(v15).n128_i8[8] =
+        vqtbl2_s8(v25, COERCE_AS(int8x8_t, 0xF0E0D0C17161514LL));
+    LANES128(v26.val[0]).n128_u64[0] =
+        LANES64_OF(vqtbl2_s8(v25, COERCE_AS(int8x8_t, 0x70605041B1A1918LL)))
+            .n64_u64[0];
+    *(int8x8_t*)&LANES128(v26.val[0]).n128_i8[8] =
+        vqtbl2_s8(v25, COERCE_AS(int8x8_t, 0xF0E0D0C1F1E1D1CLL));
+    LANES128(v25.val[0]).n128_u64[0] =
+        LANES64_OF(vqtbl2_s8(v24, COERCE_AS(int8x8_t, 0x1716151413121110LL)))
+            .n64_u64[0];
+    v25.val[1] = *(int8x16_t*)(v7 + 32);
+    *(int8x8_t*)&LANES128(v25.val[0]).n128_i8[8] =
+        vqtbl2_s8(v24, COERCE_AS(int8x8_t, 0xF0E0D0C0B0A0908LL));
+    result = vmlaq_laneq_f32(
+        vmlaq_lane_f32(vmulq_n_f32(v15, COERCE_FLOAT(*(_OWORD*)(v7 + 16))),
+                       v26.val[0], *(float32x2_t*)(v7 + 16), 1),
+        v25.val[0], *(float32x4_t*)(v7 + 16), 2);
+    *(float32x4_t*)v7 = vmlaq_laneq_f32(
+        vmlaq_lane_f32(vmulq_n_f32(v15, COERCE_FLOAT(*(_OWORD*)v7)), v26.val[0],
+                       *(float32x2_t*)v7, 1),
+        v25.val[0], *(float32x4_t*)v7, 2);
+    *(float32x4_t*)(v7 + 16) = result;
+    *(float32x4_t*)(v7 + 32) = vmlaq_laneq_f32(
+        vmlaq_lane_f32(
+            vmulq_n_f32(v15, LANES128(v25.val[1]).n128_f32[0]), v26.val[0],
+            COERCE_AS(float32x2_t, LANES128(v25.val[1]).n128_u64[0]), 1),
+        v25.val[0], v25.val[1], 2);
   }
   return result;
 }

@@ -1,4 +1,4 @@
-#include "decomp/pseudo_types.h"
+#include "decomp/pseudo_helpers.h"
 #pragma GCC visibility push(hidden)
 
 extern char SdkData_103f248;
@@ -4184,7 +4184,8 @@ _QWORD* SdkHr_632590(_QWORD* result, __int64 a2, __int64 a3)
     *(_BYTE*)(v18 + 17) = 1;
     v19 = (_QWORD*)v13[8];
     if (v19 != nullptr) {
-      (*(void (**)(_QWORD* __return_ptr, _QWORD))(*v19 + 8LL))(v19, v13[8]);
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD))(*v19 + 8LL))(
+          (void*)v19, v13[8]);
       SdkRoutine_875b30(v13[8]);
       result = v13;
       v13[8] = 0;
@@ -5962,8 +5963,8 @@ __int64 SdkHr_636b20(__int64 a1, __int64 a2, __int64* a3)
       result = v13;
       *(_BYTE*)(v12 + 17) = 1;
       if (*a3 != 0) {
-        (*(void (**)(_QWORD* __return_ptr, __int64))(*(_QWORD*)*a3 + 8LL))(
-            (_QWORD*)*a3, *a3);
+        (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64))(
+            *(_QWORD*)*a3 + 8LL))((void*)(_QWORD*)*a3, *a3);
         SdkRoutine_875b30(*a3);
         *a3 = 0;
         return v13;
@@ -6058,7 +6059,9 @@ __int64 SdkHr_636e00(_QWORD* a1, _QWORD* a2)
   result = 2;
   if (v2 >= 4 && (SdkData_10406d1 & 1) == 0 &&
       (a1[45] & 0x100000000000LL) != 0) {
-    v6 = (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD*))(*a1 + 56LL))(a1, a1);
+    v6 = X8CALL_X0(_QWORD*,
+                   (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(
+                       *a1 + 56LL))((void*)a1, a1));
     *a2 = (*(unsigned int (**)(_QWORD*))(*v6 + 216LL))(v6);
     return 0;
   }

@@ -1,4 +1,4 @@
-#include "decomp/pseudo_types.h"
+#include "decomp/pseudo_helpers.h"
 #pragma GCC visibility push(hidden)
 
 extern _UNKNOWN SdkData_bb4350;
@@ -16978,7 +16978,8 @@ LABEL_4:
       if (v19 == nullptr) {
         return 0;
       }
-      (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v19 + 8LL))(v19, v19);
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v19 + 8LL))(
+          (void*)v19, v19);
       v16 = v20;
       if (v20 == nullptr) {
       LABEL_11:
@@ -17040,7 +17041,8 @@ __int64 SdkHr_45a7d0(__int64 a1, __int64* a2, __int64 a3, unsigned int a4)
     v12 = (_QWORD*)*a2;
     *a2 = v10;
     if (v12 != nullptr) {
-      (*(void (**)(_QWORD* __return_ptr, _QWORD*))(*v12 + 8LL))(v12, v12);
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*v12 + 8LL))(
+          (void*)v12, v12);
     }
     SdkRoutine_858b60(a1 + 24);
     v13 = *(_QWORD*)(a1 + 32);

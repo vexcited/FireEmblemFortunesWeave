@@ -160,6 +160,12 @@ _QWORD* SceneManager_13909c0(float* a1, unsigned __int64* a2, __int64 a3,
                              _QWORD** a4, _QWORD** a5);
 __attribute__((swiftcall)) void SceneManager_13910f0(PSEUDO_X8 x8_, __int64 a1);
 __n128 SceneManager_FacilityMapArgs_DeletingDestructor(_QWORD* a1);
+__attribute__((swiftcall)) void game_13f9460(PSEUDO_X8, float32x4_t*);
+__int64 GameRoutine_14886c0(__int64 result, long double);
+__int64 SceneCharacter_13ffd30(__int64);
+extern __int64 GameData_212dce8;
+__int64 game_facility_SceneManager_SceneManager_lambda0_Invoke(__int64 a1,
+                                                               long double a2);
 
 void __attribute__((noreturn)) SceneManager_IMapArgs_DeletingDestructor()
 {
@@ -3158,6 +3164,86 @@ LABEL_25:
     result;
     return;
   }
+}
+
+__int64 game_facility_SceneManager_SceneManager_lambda0_Invoke(__int64 a1,
+                                                               long double a2)
+{
+  _QWORD* v2;
+  __int64* v3;
+  __int64* v4;
+  __int64 v5;
+  __int64 v6;
+  float32x4_t* v7;
+  __int128 v8;
+  unsigned __int32 v9;
+  __int64 v10;
+  __int128 v11;
+  float v12;
+  float v13;
+  __int128 v14;
+  __int64* v15;
+  __int64* v16;
+  __int64 v17;
+  __int64* v18;
+  __int64* v19;
+  __int64 v20;
+  __int64 result;
+  float32x4_t v22;
+
+  v2 = *(_QWORD**)(a1 + 8);
+  v3 = (__int64*)v2[29];
+  v4 = (__int64*)v2[30];
+  if (v3 != v4) {
+    v5 = GameData_212dce8;
+    do {
+      v6 = *v3;
+      v7 = *(float32x4_t**)(*v3 + 8);
+      if (v7 != nullptr && (*(_BYTE*)(v6 + 128) & 1) == 0) {
+        *(_DWORD*)(v6 + 112) = LANES128(v7[22]).n128_u32[0];
+        *(_DWORD*)(v6 + 116) = LANES128(v7[22]).n128_u32[1];
+        v8 = *(_OWORD*)(v6 + 112);
+        *((_QWORD*)&v8 + 1) = LANES128(v7[22]).n128_u32[2];
+        *(_OWORD*)(v6 + 112) = v8;
+        game_13f9460((void*)(&v22), v7 + 19);
+        v9 = LANES128(v22).n128_u32[2];
+        v10 = *(_QWORD*)(v6 + 8);
+        *(_QWORD*)(v6 + 80) = LANES128(v22).n128_u64[0];
+        v11 = *(_OWORD*)(v6 + 80);
+        *((_QWORD*)&v11 + 1) = v9;
+        *(_OWORD*)(v6 + 80) = v11;
+        a2 = *(long double*)(v10 + 320);
+        v12 = 0x1.ca5dc00000000p+5f * *(float*)&a2;
+        v13 = (float)(0x1.ca5dc00000000p+5f * *((float*)&a2 + 1)) -
+              *(float*)(*(_QWORD*)v5 + 128LL);
+        *(float*)&a2 =
+            vmuls_lane_f32(0x1.ca5dc00000000p+5f, *(float32x4_t*)&a2, 2);
+        *(float*)(v6 + 96) = v12;
+        *(float*)(v6 + 100) = v13;
+        v14 = *(_OWORD*)(v6 + 96);
+        *((_QWORD*)&v14 + 1) = LODWORD(a2);
+        *(_OWORD*)(v6 + 96) = v14;
+      }
+      ++v3;
+    } while (v3 != v4);
+  }
+  v15 = (__int64*)v2[20];
+  v16 = (__int64*)v2[21];
+  while (v15 != v16) {
+    v17 = *v15++;
+    SceneCharacter_13ffd30(v17);
+  }
+  v19 = (__int64*)v2[26];
+  v18 = (__int64*)v2[27];
+  while (v19 != v18) {
+    v20 = *v19++;
+    SceneCharacter_13ffd30(v20);
+  }
+  result = GameData_224ae20;
+  if (GameData_224ae20 != 0) {
+    return GameRoutine_14886c0(GameData_224ae20, a2);
+  }
+  return result;
 }
 
 void game_facility_SceneManager_CreateMap_lambda0_Invoke_138f140(__int64 a1)

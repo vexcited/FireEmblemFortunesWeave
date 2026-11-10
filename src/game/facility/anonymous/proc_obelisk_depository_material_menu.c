@@ -51,6 +51,68 @@ __int64 ProcObeliskDepositoryMaterialMenu_Unknown88(__int64 a1);
 __int64 ProcObeliskDepositoryMaterialMenu_9bfe50(__int64 a1);
 bool game_facility_anonymous_ProcObeliskDepositoryMaterialMenu_SortAndFilter_closure_Invoke_9c04c0(
     __int64 a1, _QWORD* a2, __int64* a3);
+__attribute__((swiftcall)) void LayoutAccessor_1560070(PSEUDO_X8, __int64*,
+                                                       __int64);
+__int64 LayoutAccessor_1562cf0(__int64 result, __int64);
+__int64 game_menu_PageTab_SetupImage(int*, __int64, __int64, unsigned int,
+                                     unsigned int, unsigned int);
+__int64 std___1___shared_weak_count___release_weak(_QWORD);
+extern __int64 (*GameData_1fb5a68[])();
+__int64
+game_facility_anonymous_ProcObeliskDepositoryMaterialMenu_OnInit(__int64 a1);
+__int64
+
+game_facility_anonymous_ProcObeliskDepositoryMaterialMenu_OnInit(__int64 a1)
+{
+  __int64 v2;
+  unsigned int v3;
+  __int64 v4;
+  __int64 v5;
+  __int64* v6;
+  const char* v7;
+  struct {
+    _QWORD v9[4];
+    _QWORD* v10;
+  } v9_;
+  struct {
+    __int64 v11;
+    __int64 v12;
+  } v11_;
+
+  LayoutAccessor_1562cf0(a1 + 848, (__int64)"Transport_On");
+  ProcObeliskDepositoryMaterialMenu_9bfe50(a1);
+  LayoutAccessor_1560070((void*)(&v11_.v11), (__int64*)(a1 + 848),
+                         (__int64)"L_PageTab");
+  v9_.v9[0] = GameData_1fb5a68;
+  v2 = *(_QWORD*)a1;
+  v9_.v10 = v9_.v9;
+  v3 = (*(__int64 (**)(__int64))(v2 + 192))(a1);
+  game_menu_PageTab_SetupImage((int*)(a1 + 656), (__int64)&v11_.v11,
+                               (__int64)v9_.v9, v3, 0xEu, 0xFu);
+  if (v9_.v10 == v9_.v9) {
+    v4 = 32;
+  }
+  else {
+    if (v9_.v10 == nullptr) {
+      goto LABEL_6;
+    }
+    v4 = 40;
+  }
+  (*(void (**)(__int64))(*v9_.v10 + v4))((__int64)v9_.v10);
+LABEL_6:
+  if (v11_.v12 != 0) {
+    std___1___shared_weak_count___release_weak(v11_.v12);
+  }
+  v5 = (*(_QWORD*)(a1 + 1080) - *(_QWORD*)(a1 + 1072)) >> 3;
+  v6 = LayoutAccessor_155fbe0((__int64*)(a1 + 848), (__int64)"L_UnitInfo");
+  if ((int)v5 >= 1) {
+    v7 = "Info00";
+  }
+  else {
+    v7 = "Simple00";
+  }
+  return LayoutAccessor_1562cf0((__int64)v6, (__int64)v7);
+}
 
 __int64 ProcObeliskDepositoryMaterialMenu_Unknown85(__int64 a1)
 {

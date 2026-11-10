@@ -58,6 +58,9 @@ __int64 StatusNum_1890220(__int64 a1, int a2, int a3, int a4, char a5, char a6,
 __int64 StatusNum_1890420(__int64 a1, unsigned int a2, unsigned int a3,
                           unsigned int a4, char a5);
 __int64 StatusNum_1890620(__int64 a1, int a2, int a3, int a4, char a5, int a6);
+__int64 StatusNum_1890080_alt1(_QWORD) __asm__("StatusNum_1890080");
+extern _UNKNOWN GameData_1abdf8e;
+__int64 StatusNum_1890ba0(__int64 a1, int* a2, char a3, char a4, char a5);
 
 __attribute__((swiftcall)) void StatusNum_188fab0(PSEUDO_X8 x8_, __int64 a1,
                                                   __int64 a2, __int64 a3)
@@ -583,6 +586,179 @@ __int64* StatusNum_1890ac0(__int64 a1, int a2)
     }
   }
   return result;
+}
+
+__int64 StatusNum_1890ba0(__int64 a1, int* a2, char a3, char a4, char a5)
+{
+  __int64 v10;
+  __int64* v11;
+  int v13;
+  int v14;
+  __int64 v15;
+  unsigned int v16;
+  int v17;
+  unsigned int v19;
+  __int64 v20;
+  __int64 v21;
+  int v22;
+  int v23;
+  int v24;
+  int v25;
+  __int64 v26;
+  int v27;
+  bool v28;
+  int v29;
+  unsigned __int8 v30;
+  const char* v31;
+  _QWORD v32[2];
+  unsigned __int64 v33;
+  unsigned __int64 v34;
+  int v35;
+  int v36;
+  __int64 v37;
+  __int64 v38;
+  __int64 v39;
+  __int64 v40;
+  __int64 v41;
+  __int64 v42;
+  __int64 v43;
+  __int64 v44;
+  __int64 v45;
+  __int64 v46;
+  __int64 v47;
+  __int64 v48;
+  __int64 v49;
+
+  if ((a2[1] & 1) == 0) {
+    return StatusNum_1890080_alt1(a1);
+  }
+  (*(void (**)(__int64, __int64))(*(_QWORD*)a1 + 40LL))(a1, 1);
+  v32[0] = "Text";
+  v32[1] = 4;
+  v10 = Element_1886290_alt1(a1, v32);
+  if ((atomic_load_explicit((atomic_uchar* volatile)GameData_2130ea8,
+                            memory_order_acquire) &
+       1) == 0 &&
+      (unsigned int)__cxa_guard_acquire_alt1(GameData_2130ea8) != 0) {
+    *GameData_2130ea0 = nn_ui2d_Pane_GetRuntimeTypeInfoStatic_alt1();
+    __cxa_guard_release(GameData_2130ea8);
+  }
+  if (v10 == 0) {
+    return StatusNum_1890080_alt1(a1);
+  }
+  v11 = (__int64*)(*(__int64 (**)(__int64))(*(_QWORD*)v10 + 16LL))(v10);
+  if (v11 != GameData_2130ea0) {
+    do {
+      v11 = (__int64*)*v11;
+    } while (v11 != GameData_2130ea0 && v11 != nullptr);
+    if (v11 == nullptr) {
+      return StatusNum_1890080_alt1(a1);
+    }
+  }
+  v13 = *a2;
+  if ((unsigned int)(*a2 - 39) < 3) {
+    v14 = 0;
+    if ((a4 & 1) == 0) {
+      goto LABEL_24;
+    }
+  LABEL_22:
+    if ((v14 & 0x80000000) == 0) {
+      v37 = -1;
+      v38 = -1;
+      v39 = -1;
+      v40 = -1;
+      v21 = *msg_MessageManager_instance__ptr[0];
+      v41 = -1;
+      v42 = -1;
+      v43 = -1;
+      v44 = -1;
+      v45 = -1;
+      v46 = -1;
+      v47 = -1;
+      v48 = -1;
+      v32[0] = GameData_212e348 + 2;
+      v32[1] = 0xFFFF0001FFFF0000LL;
+      v33 = 0xFFFF0004FFFF0002LL;
+      v34 = 0xFFFF0006FFFF0005LL;
+      v49 = 8;
+      v35 = -65529;
+      v36 = -65528;
+      v22 = GameRoutine_a4dbe0(v21, "MID_Sys_Plus", 0, v32);
+      GameRoutine_156c910(v10, "%s%d", (_BYTE*)((_UNKNOWN*)0x0LL) + 2, v22);
+      goto LABEL_25;
+    }
+  LABEL_24:
+    GameRoutine_156c910(v10, "%d", 1);
+    goto LABEL_25;
+  }
+  if (v13 != 9) {
+    if (v13 != 17) {
+      v14 = a2[4];
+      if ((a4 & 1) == 0) {
+        goto LABEL_24;
+      }
+      goto LABEL_22;
+    }
+    v15 = (unsigned int)a2[4];
+    v16 = a2[5];
+    if ((int)(v16 + v15) >= 1) {
+      v17 = a2[6];
+      if ((_DWORD)v15 == v16) {
+        GameRoutine_156c910(v10, "%d", 1);
+      }
+      else {
+        if ((a5 & 1) != 0) {
+          v31 = (const char*)&GameData_1abdf8e;
+        }
+        else {
+          v31 = "-";
+        }
+        GameRoutine_156c910(v10, "%d%s%d", 3, v15, v31, v16);
+      }
+      v29 = -1;
+      v25 = a3 & 1;
+      v27 = -1;
+      v26 = a1;
+      v23 = v16;
+      v24 = v17;
+      v30 = 0;
+      return GameRoutine_188fdc0_alt1(v26, v25, v23, v24, v27, v30, 0, 0, v29);
+    }
+    return StatusNum_1890080_alt1(a1);
+  }
+  v19 = a2[4];
+  v37 = -1;
+  v38 = -1;
+  v39 = -1;
+  v40 = -1;
+  v41 = -1;
+  v42 = -1;
+  v20 = *msg_MessageManager_instance__ptr[0];
+  v43 = -1;
+  v44 = -1;
+  v45 = -1;
+  v46 = -1;
+  v47 = -1;
+  v48 = -1;
+  v32[0] = GameData_212e348 + 2;
+  v32[1] = 0xFFFF0001FFFF0000LL;
+  v33 = 0xFFFF0004FFFF0002LL;
+  v34 = 0xFFFF0006FFFF0005LL;
+  v49 = 8;
+  v35 = -65529;
+  v36 = -65528;
+  GameRoutine_a4dbe0(v20, "MID_Sys_Percent", 0, v32);
+  GameRoutine_156c910(v10, "%d%s", 2, (const char*)v19);
+LABEL_25:
+  v23 = a2[4];
+  v24 = a2[5];
+  v25 = a3 & 1;
+  v26 = a1;
+  v27 = a2[6];
+  v28 = *a2 == 38 || *a2 == 20;
+  v29 = a2[2];
+  v30 = v28;
+  return GameRoutine_188fdc0_alt1(v26, v25, v23, v24, v27, v30, 0, 0, v29);
 }
 
 #pragma GCC visibility pop

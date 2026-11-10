@@ -1,4 +1,4 @@
-#include "decomp/pseudo_types.h"
+#include "decomp/pseudo_helpers.h"
 #pragma GCC visibility push(hidden)
 
 extern __int64 SdkData_10556d8;
@@ -136,7 +136,7 @@ __int64 SdkRoutine_86eff0(_QWORD, _QWORD, _QWORD);
 __int64 SdkRoutine_86fc80(_QWORD, _QWORD, _QWORD);
 __int64 SdkRoutine_8719c0(_QWORD);
 __int64 SdkRoutine_877f80(long double);
-_QWORD* SdkRoutine_87b280(_QWORD* __return_ptr);
+__attribute__((swiftcall)) void SdkRoutine_87b280(PSEUDO_X8);
 __int64 SdkRoutine_87b8c0(_QWORD, _QWORD);
 __int64 SdkRoutine_87bf10(_QWORD, _QWORD);
 __int64 SdkRoutine_87bf30(_QWORD, _QWORD);
@@ -244,7 +244,7 @@ __int64 SdkHr_767ae0(__int64 result, float a2)
   if (v11 == v12) {
     *((float*)&SdkData_10556e0 + 1) = a2;
   LABEL_31:
-    SdkRoutine_87b280(&v15);
+    SdkRoutine_87b280((void*)&v15);
     v16 = (*(__int64 (**)(__int64, __int64*))(*(_QWORD*)v15 + 400LL))(
         v15, &SdkData_10556d8);
     if (v16 != 0) {
@@ -272,7 +272,7 @@ __int64 SdkHr_767c00(char a1)
   int v7;
 
   LOBYTE(SdkData_10556d8) = a1;
-  SdkRoutine_87b280(&v6);
+  SdkRoutine_87b280((void*)&v6);
   v7 = (*(__int64 (**)(__int64, __int64*))(*(_QWORD*)v6 + 400LL))(
       v6, &SdkData_10556d8);
   if (v7 != 0) {

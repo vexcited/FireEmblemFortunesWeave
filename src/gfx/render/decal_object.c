@@ -23,6 +23,7 @@ __int64 DecalObject_a91100(__int64* a1, __int64 a2, __int64 a3, __int64 a4);
 void gfx_render_DecalObject_DecalObject_lambda0_Invoke(__int64 a1, _WORD* a2);
 __int64 gfx_render_DecalObject_CollectElements_lambda0_Invoke(__int64 a1,
                                                               _QWORD* a2);
+__int64 DecalObject_Unknown2(__int64 a1);
 
 __int64 DecalObject_a91100(__int64* a1, __int64 a2, __int64 a3, __int64 a4)
 {
@@ -125,6 +126,225 @@ __int64 DecalObject_Destructor(__int64 a1)
     }
   }
   return result;
+}
+
+__int64 DecalObject_Unknown2(__int64 a1)
+{
+  int v1;
+  bool v3;
+  int v4;
+  __int64 v5;
+  __int64 v6;
+  int8x16_t v7;
+  int32x4_t v8;
+  int32x4_t v9;
+  int8x16_t v10;
+  float32x4_t v11;
+  float32x4_t v12;
+  float32x4_t v13;
+  float32x4_t v14;
+  float32x4_t v15;
+  float32x4_t v16;
+  float32x4_t v17;
+  float32x4_t v18;
+  float32x4_t v19;
+  int8x16_t v20;
+  float32x4_t v21;
+  int32x4_t v22;
+  int32x4_t v23;
+  int32x4_t v24;
+  int8x16_t v25;
+  int8x16_t v26;
+  int8x16_t v27;
+  float32x4_t v28;
+  unsigned __int64 v29;
+  float32x4_t v30;
+  float32x4_t v31;
+  float32x4_t v32;
+  float32x4_t v33;
+  int8x16_t v34;
+  int8x16_t v35;
+  int8x16_t v36;
+  int32x4_t v37;
+  int32x4_t v38;
+  float32x4_t v39;
+  int32x4_t v40;
+  int32x4_t v41;
+  int32x4_t v42;
+  int32x4_t v43;
+  int32x4_t v44;
+  float32x4_t v45;
+  float32x4_t v46;
+  float32x4_t v47;
+  float32x4_t v48;
+  float32x4_t v49;
+  float32x4_t v50;
+  int8x16_t v51;
+  float32x4_t v52;
+  float32x4_t v53;
+  int8x16_t v54;
+  int8x16_t v55;
+  float32x4_t v56;
+  float32x4_t v57;
+  int8x16_t v58;
+  int32x4_t v59;
+  int32x4_t v60;
+  int32x4_t v61;
+
+  v1 = *(_DWORD*)(a1 + 128);
+  v3 = v1 < -1;
+  v4 = ((_BYTE)v1 + 1) & 1;
+  if (v3) {
+    v4 = -v4;
+  }
+  *(_DWORD*)(a1 + 128) = v4;
+  v5 = *(_QWORD*)(a1 + 8LL * v4 + 112);
+  v6 = (*(__int64 (**)(__int64))(*(_QWORD*)v5 + 56LL))(v5);
+  v8 = *(int32x4_t*)(a1 + 176);
+  v7 = *(int8x16_t*)(a1 + 192);
+  v10 = *(int8x16_t*)(a1 + 208);
+  v9 = *(int32x4_t*)(a1 + 224);
+  LANES128(v11).n128_u64[0] =
+      LANES64_OF(vqtbl1_s8(v7, COERCE_AS(int8x8_t, 0xB0A090807060504LL)))
+          .n64_u64[0];
+  *(int8x8_t*)&LANES128(v11).n128_i8[8] =
+      vqtbl1_s8(v7, COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL));
+  LANES128(v12).n128_u64[0] =
+      LANES64_OF(vqtbl1_s8(v10, COERCE_AS(int8x8_t, 0x30201000B0A0908LL)))
+          .n64_u64[0];
+  *(int8x8_t*)&LANES128(v12).n128_i8[8] =
+      vqtbl1_s8(v10, COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL));
+  v13 = vmulq_f32(vmulq_f32(v8, v11), v12);
+  LANES128(v12).n128_u64[0] =
+      LANES64_OF(vqtbl1_s8(v7, COERCE_AS(int8x8_t, 0x30201000B0A0908LL)))
+          .n64_u64[0];
+  *(int8x8_t*)&LANES128(v12).n128_i8[8] =
+      vqtbl1_s8(v7, COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL));
+  LANES128(v14).n128_u64[0] =
+      LANES64_OF(vqtbl1_s8(v10, COERCE_AS(int8x8_t, 0xB0A090807060504LL)))
+          .n64_u64[0];
+  *(int8x8_t*)&LANES128(v14).n128_i8[8] =
+      vqtbl1_s8(v10, COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL));
+  v15 = vsubq_f32(v13, vmulq_f32(vmulq_f32(v8, v12), v14));
+  LANES128(v15).n128_u64[0] = LANES128_OF(vpaddq_f32(v15, v15)).n128_u64[0];
+  v16 = vaddq_f32(
+      vdupq_lane_s32(COERCE_AS(int32x2_t, LANES128(v15).n128_u64[0]), 0),
+      vdupq_lane_s32(COERCE_AS(int32x2_t, LANES128(v15).n128_u64[0]), 1));
+  v17 = vrecpeq_f32(v16);
+  v18 = vmulq_f32(v17, vrecpsq_f32(v17, v16));
+  v19 = vrecpsq_f32(v18, v16);
+  v20 = vceqzq_f32(v16);
+  v21 = vmulq_f32(v18, v19);
+  v22 = vzip1q_s32(v8, v10);
+  v23 = vzip2q_s32(v8, v10);
+  v24 = vzip1q_s32(v7, COERCE_AS(int32x4_t, 0));
+  v25 = vzip2q_s32(v22, v24);
+  v26 = vzip1q_s32(v23, vzip2q_s32(v7, COERCE_AS(int32x4_t, 0)));
+  v27 = vzip1q_s32(v22, v24);
+  LANES128(v28).n128_u64[0] =
+      LANES64_OF(vqtbl1_s8(v25, COERCE_AS(int8x8_t, 0xB0A090807060504LL)))
+          .n64_u64[0];
+  v29 = LANES64_OF(vqtbl1_s8(v26, COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL)))
+            .n64_u64[0];
+  LANES128(v30).n128_u64[0] =
+      LANES64_OF(vqtbl1_s8(v26, COERCE_AS(int8x8_t, 0xB0A090807060504LL)))
+          .n64_u64[0];
+  LANES128(v31).n128_u64[0] =
+      LANES64_OF(vqtbl1_s8(v27, COERCE_AS(int8x8_t, 0xB0A090807060504LL)))
+          .n64_u64[0];
+  *(int8x8_t*)&LANES128(v28).n128_i8[8] =
+      vqtbl1_s8(v25, COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL));
+  LANES128(v32).n128_u64[0] =
+      LANES64_OF(vqtbl1_s8(v26, COERCE_AS(int8x8_t, 0x30201000B0A0908LL)))
+          .n64_u64[0];
+  *(int8x8_t*)&LANES128(v30).n128_i8[8] =
+      vqtbl1_s8(v26, COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL));
+  LANES128(v26).n128_u64[0] =
+      LANES64_OF(vqtbl1_s8(v25, COERCE_AS(int8x8_t, 0x30201000B0A0908LL)))
+          .n64_u64[0];
+  LANES128(v33).n128_u64[0] =
+      LANES64_OF(vqtbl1_s8(v27, COERCE_AS(int8x8_t, 0x30201000B0A0908LL)))
+          .n64_u64[0];
+  LANES128(v32).n128_u64[1] = v29;
+  *(int8x8_t*)&LANES128(v31).n128_i8[8] =
+      vqtbl1_s8(v27, COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL));
+  *(int8x8_t*)&LANES128(v33).n128_i8[8] =
+      vqtbl1_s8(v27, COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL));
+  *(int8x8_t*)&LANES128(v26).n128_i8[8] =
+      vqtbl1_s8(v25, COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL));
+  v34 = vmulq_f32(v21, vmlsq_f32(vmulq_f32(v28, v32), v26, v30));
+  v35 = vmulq_f32(v21, vmlsq_f32(vmulq_f32(v30, v33), v32, v31));
+  v36 = vmulq_f32(v21, vmlsq_f32(vmulq_f32(v26, v31), v33, v28));
+  v37 = vbicq_s8(v34, v20);
+  v38 = vbicq_s8(v35, v20);
+  v39 =
+      vmlsq_lane_f32(vmulq_n_f32(vnegq_f32(v34), LANES128(v9).n128_f32[0]), v35,
+                     COERCE_AS(float32x2_t, LANES128(v9).n128_u64[0]), 1);
+  v40 = vbicq_s8(v36, v20);
+  v41 = vbicq_s8(vmlsq_laneq_f32(v39, v36, v9, 2), v20);
+  v42 = vzip1q_s32(v37, v40);
+  v43 = vzip1q_s32(v38, COERCE_AS(int32x4_t, 0));
+  v44 = vzip2q_s32(v37, v40);
+  v45 = vzip1q_s32(v42, v43);
+  v46 = vzip2q_s32(v42, v43);
+  v47 = vzip1q_s32(v44, vzip2q_s32(v38, COERCE_AS(int32x4_t, 0)));
+  v48 = vmulq_f32(v45, COERCE_AS(float32x4_t, 0));
+  v49 = vmlaq_f32(vmlaq_f32(v45, COERCE_AS(float32x4_t, 0), v46),
+                  COERCE_AS(float32x4_t, 0), v47);
+  v50 = vmlaq_f32(vaddq_f32(v46, v48), COERCE_AS(float32x4_t, 0), v47);
+  v51 = vmulq_f32(v50, v50);
+  LANES128(v51).n128_u64[0] =
+      LANES64_OF(
+          vadd_f32(COERCE_AS(float32x2_t,
+                             LANES128_OF(vextq_s8(v51, v51, 8u)).n128_u64[0]),
+                   COERCE_AS(float32x2_t, LANES128(v51).n128_u64[0])))
+          .n64_u64[0];
+  LANES128(v51).n128_u64[0] =
+      LANES64_OF(vpadd_f32(COERCE_AS(float32x2_t, LANES128(v51).n128_u64[0]),
+                           COERCE_AS(float32x2_t, LANES128(v51).n128_u64[0])))
+          .n64_u64[0];
+  LANES128(v51).n128_u64[1] = LANES128(v51).n128_u64[0];
+  v52 = vrsqrteq_f32(v51);
+  v53 = vmulq_f32(v52, vrsqrtsq_f32(v52, vmulq_f32(v51, v52)));
+  v54 = vbicq_s8(
+      vmulq_f32(vmulq_f32(v53, vrsqrtsq_f32(v53, vmulq_f32(v51, v53))), v50),
+      vceqzq_f32(v51));
+  v55 = vmulq_f32(v49, v49);
+  LANES128(v55).n128_u64[0] =
+      LANES64_OF(
+          vadd_f32(COERCE_AS(float32x2_t,
+                             LANES128_OF(vextq_s8(v55, v55, 8u)).n128_u64[0]),
+                   COERCE_AS(float32x2_t, LANES128(v55).n128_u64[0])))
+          .n64_u64[0];
+  LANES128(v55).n128_u64[0] =
+      LANES64_OF(vpadd_f32(COERCE_AS(float32x2_t, LANES128(v55).n128_u64[0]),
+                           COERCE_AS(float32x2_t, LANES128(v55).n128_u64[0])))
+          .n64_u64[0];
+  LANES128(v55).n128_u64[1] = LANES128(v55).n128_u64[0];
+  v56 = vrsqrteq_f32(v55);
+  v57 = vmulq_f32(v56, vrsqrtsq_f32(v56, vmulq_f32(v55, v56)));
+  v58 = vbicq_s8(
+      vmulq_f32(vmulq_f32(v57, vrsqrtsq_f32(v57, vmulq_f32(v55, v57))), v49),
+      vceqzq_f32(v55));
+  v59 = vzip1q_s32(v7, v9);
+  v60 = vzip1q_s32(v23, vzip2q_s32(v7, v9));
+  *(int32x4_t*)v6 = vzip1q_s32(v22, v59);
+  *(int32x4_t*)(v6 + 16) = vzip2q_s32(v22, v59);
+  v61 = vzip1q_s32(v38, v41);
+  *(int32x4_t*)(v6 + 32) = v60;
+  *(int32x4_t*)(v6 + 48) = vzip1q_s32(v42, v61);
+  *(int32x4_t*)(v6 + 64) = vzip2q_s32(v42, v61);
+  *(int32x4_t*)(v6 + 80) = vzip1q_s32(v44, vzip2q_s32(v38, v41));
+  *(_OWORD*)(v6 + 96) = *(_OWORD*)(a1 + 272);
+  LANES128(v60).n128_u64[0] = LANES128(v54).n128_u64[0];
+  LANES128(v60).n128_u64[1] =
+      LANES128(v54).n128_u32[2] |
+      ((unsigned __int64)*(unsigned int*)(a1 + 416) << 32);
+  LANES128(v61).n128_u64[0] = LANES128(v58).n128_u64[0];
+  LANES128(v61).n128_u64[1] = LANES128(v58).n128_u32[2] | 0x3F80000000000000LL;
+  *(int32x4_t*)(v6 + 112) = v60;
+  *(int32x4_t*)(v6 + 128) = v61;
+  return (*(__int64 (**)(__int64))(*(_QWORD*)v5 + 64LL))(v5);
 }
 
 void gfx_render_DecalObject_DecalObject_lambda0_Invoke(__int64 a1, _WORD* a2)

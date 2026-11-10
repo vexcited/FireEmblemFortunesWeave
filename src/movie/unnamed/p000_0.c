@@ -578,7 +578,8 @@ __int64 MovieHr_122d0(_QWORD* a1)
   v1 = (_QWORD*)a1[1];
   if (v1 != nullptr) {
     v2 = a1;
-    (*(void (**)(_QWORD* __return_ptr, _QWORD))(*v1 + 8LL))(v1, a1[1]);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD))(*v1 + 8LL))(
+        (void*)v1, a1[1]);
     a1 = v2;
   }
   return MovieRoutine_82870(a1, 24);
@@ -650,7 +651,7 @@ __int64 MovieHr_157c0(__int64 a1, __int64 a2)
     if (v26[0] != 0) {
       if (v28 != nullptr) {
         v32 = v26[0];
-        (*(void (**)(void))(*v28 + 48LL))();
+        (*(void (**)(void*))(*v28 + 48LL))((void*)v28);
         v6 = v26[0];
       }
       if (*(_QWORD*)(v6 + 456) != 0) {
@@ -695,7 +696,7 @@ __int64 MovieHr_157c0(__int64 a1, __int64 a2)
       }
       v10 = 40;
     }
-    (*(void (**)(void))(*v7 + v10))();
+    (*(void (**)(void*))(*v7 + v10))(v7);
     goto LABEL_23;
   }
 LABEL_28:
@@ -763,7 +764,7 @@ LABEL_33:
   if (v15 != nullptr) {
     v16 = 40;
   LABEL_45:
-    (*(void (**)(void))(*v15 + v16))();
+    (*(void (**)(void*))(*v15 + v16))(v15);
   }
   if (v30 != 0) {
     (*(void (**)(__int64))(*(_QWORD*)v30 + 8LL))(v30);
@@ -804,7 +805,7 @@ LABEL_56:
     }
     v23 = 40;
   }
-  (*(void (**)(void))(*v22 + v23))();
+  (*(void (**)(void*))(*v22 + v23))(v22);
 LABEL_61:
   if (v30 != 0) {
     (*(void (**)(__int64))(*(_QWORD*)v30 + 8LL))(v30);
@@ -820,7 +821,7 @@ LABEL_61:
     }
     v25 = 40;
   }
-  return (*(__int64 (**)(void))(*v28 + v25))();
+  return (*(__int64 (**)(void*))(*v28 + v25))(v28);
 }
 
 __int64 MovieHr_17cd0(__int64 a1, __int64 a2, int a3, __int64* a4, __int64* a5,
@@ -1940,7 +1941,8 @@ __int64 MovieHr_1ad50(_QWORD* a1)
   v1 = (_QWORD*)a1[1];
   if (v1 != nullptr) {
     v2 = a1;
-    (*(void (**)(_QWORD* __return_ptr, _QWORD))(*v1 + 8LL))(v1, a1[1]);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD))(*v1 + 8LL))(
+        (void*)v1, a1[1]);
     a1 = v2;
   }
   return MovieRoutine_82870(a1, 448);
@@ -1955,7 +1957,8 @@ __int64 MovieHr_1b670(_QWORD* a1)
   v1 = (_QWORD*)a1[1];
   if (v1 != nullptr) {
     v2 = a1;
-    (*(void (**)(_QWORD* __return_ptr, _QWORD))(*v1 + 8LL))(v1, a1[1]);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD))(*v1 + 8LL))(
+        (void*)v1, a1[1]);
     a1 = v2;
   }
   return MovieRoutine_82870(a1, 32);
@@ -1970,7 +1973,8 @@ __int64 MovieHr_1b850(_QWORD* a1)
   v1 = (_QWORD*)a1[1];
   if (v1 != nullptr) {
     v2 = a1;
-    (*(void (**)(_QWORD* __return_ptr, _QWORD))(*v1 + 8LL))(v1, a1[1]);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD))(*v1 + 8LL))(
+        (void*)v1, a1[1]);
     a1 = v2;
   }
   return MovieRoutine_82870(a1, 24);
