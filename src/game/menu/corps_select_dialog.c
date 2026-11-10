@@ -12,6 +12,10 @@ extern __int64* GameData_212e008[9];
 extern __int64* GameData_212e0c8[6];
 __int64 CorpsSelectDialog_Unknown128(__int64 result);
 __int64 CorpsSelectDialog_Unknown100(__int64 a1);
+__int64 game_GetHero(_QWORD);
+bool game_menu_CorpsSelectDialog_SortAndFilter_lambda0_Invoke(__int64 a1,
+                                                              __int64* a2,
+                                                              __int64* a3);
 
 __int64 CorpsSelectDialog_Unknown128(__int64 result)
 {
@@ -73,6 +77,58 @@ __int64 CorpsSelectDialog_Unknown100(__int64 a1)
     }
   }
   return 2;
+}
+
+bool game_menu_CorpsSelectDialog_SortAndFilter_lambda0_Invoke(__int64 a1,
+                                                              __int64* a2,
+                                                              __int64* a3)
+{
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  int v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  int v12;
+
+  v3 = *a2;
+  v4 = *a3;
+  v5 = *(_QWORD*)(*a2 + 88);
+  if (v5 != 0 && (v6 = *(_QWORD*)(v5 + 392)) != 0 &&
+      (v7 = game_GetHero(9)) != 0 &&
+      *(_QWORD*)(*(_QWORD*)(v6 + 24) + 1672LL) ==
+          *(_QWORD*)(*(_QWORD*)(v7 + 24) + 1672LL)) {
+    v8 = -1;
+    v9 = *(_QWORD*)(v4 + 88);
+    if (v9 == 0) {
+      goto LABEL_12;
+    }
+  }
+  else {
+    v8 = *(_DWORD*)(*(_QWORD*)(v3 + 96) + 84LL) &
+         ~(*(int*)(*(_QWORD*)(v3 + 96) + 84LL) >> 31);
+    v9 = *(_QWORD*)(v4 + 88);
+    if (v9 == 0) {
+    LABEL_12:
+      v12 = *(_DWORD*)(*(_QWORD*)(v4 + 96) + 84LL) &
+            ~(*(int*)(*(_QWORD*)(v4 + 96) + 84LL) >> 31);
+      return v8 < v12;
+    }
+  }
+  v10 = *(_QWORD*)(v9 + 392);
+  if (v10 == 0) {
+    goto LABEL_12;
+  }
+  v11 = game_GetHero(9);
+  if (v11 == 0 || *(_QWORD*)(*(_QWORD*)(v10 + 24) + 1672LL) !=
+                      *(_QWORD*)(*(_QWORD*)(v11 + 24) + 1672LL)) {
+    goto LABEL_12;
+  }
+  v12 = -1;
+  return v8 < v12;
 }
 
 #pragma GCC visibility pop

@@ -10,6 +10,9 @@ __int64 __dynamic_cast(_QWORD, _QWORD, _QWORD, _QWORD);
 extern __int64* GameData_212dff0[12];
 extern __int64* GameData_212e030[4];
 __int64 DivinationVisitorMenuItem_Unknown73(__int64 a1);
+extern __int64 GameData_226dcb0;
+__int64
+game_facility_anonymous_DivinationVisitorMenuItem_ACall_closure_Invoke();
 
 __int64 DivinationVisitorMenuItem_Unknown73(__int64 a1)
 {
@@ -45,6 +48,32 @@ __int64 DivinationVisitorMenuItem_Unknown73(__int64 a1)
   v12 = 0;
   v13 = v8;
   return GameRoutine_16ee520(v11);
+}
+
+__int64 game_facility_anonymous_DivinationVisitorMenuItem_ACall_closure_Invoke()
+{
+  unsigned __int64 v0;
+  unsigned __int64 v1;
+
+  if (GameData_226dcb0 == 0) {
+    return 4;
+  }
+  v1 = *(_QWORD*)(GameData_226dcb0 + 8);
+  v0 = *(_QWORD*)(GameData_226dcb0 + 16);
+  if (v1 > v0) {
+    return 4;
+  }
+  while (*(_BYTE*)v0 != 2) {
+    v0 -= 64LL;
+    if (v1 > v0) {
+      return 4;
+    }
+  }
+  if (*(_DWORD*)(v0 + 32) != 3) {
+    return 4;
+  }
+  *(_DWORD*)(GameData_226dcb0 + 152) = 4;
+  return 4;
 }
 
 #pragma GCC visibility pop

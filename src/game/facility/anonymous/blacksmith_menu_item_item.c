@@ -8,6 +8,10 @@ extern __int64 game_TransporterConst_List_instance__ptr[6];
 __int64 BlacksmithMenuItem_Item_Unknown25(__int64 a1);
 __int64 BlacksmithMenuItem_Item_Unknown58(__int64 a1);
 __int64 BlacksmithMenuItem_Item_Unknown70(__int64 a1);
+__int64 GameRoutine_120d940(_QWORD, _QWORD);
+__int64
+game_facility_anonymous_BlacksmithMenuItem_Item_CanRefine_closure_Invoke(
+    __int64 a1, unsigned int* a2);
 
 __int64 BlacksmithMenuItem_Item_Unknown25(__int64 a1)
 {
@@ -45,6 +49,25 @@ __int64 BlacksmithMenuItem_Item_Unknown70(__int64 a1)
                       8LL) +
            12LL * (int)v2 + 4;
   }
+}
+
+__int64
+
+game_facility_anonymous_BlacksmithMenuItem_Item_CanRefine_closure_Invoke(
+    __int64 a1, unsigned int* a2)
+{
+  unsigned int v3;
+  __int64 v4;
+  __int64 result;
+
+  v3 = *a2;
+  v4 = (*(__int64 (**)(_QWORD))(**(_QWORD**)(a1 + 8) + 560LL))(
+      *(_QWORD*)(a1 + 8));
+  result = GameRoutine_120d940(v4, v3);
+  if ((result & 1) != 0) {
+    ++**(_DWORD**)(a1 + 16);
+  }
+  return result;
 }
 
 #pragma GCC visibility pop

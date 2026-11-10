@@ -18,6 +18,8 @@ extern int GameData_21fdee0;
 extern int GameData_21fdf08;
 extern int GameData_21fdf14;
 __int64 FinalCompositeTask_Unknown3(__int64 a1, _QWORD* a2);
+void gfxa_FinalCompositeTask_FinalCompositeTask_lambda0_Invoke(__int64 a1,
+                                                               _WORD* a2);
 
 __int64 FinalCompositeTask_Unknown3(__int64 a1, _QWORD* a2)
 {
@@ -114,6 +116,13 @@ __int64 FinalCompositeTask_Unknown3(__int64 a1, _QWORD* a2)
   (*(void (**)(_QWORD, __int64))(*(_QWORD*)*a2 + 264LL))(*a2, 1);
   return (*(__int64 (**)(_QWORD, __int64, _QWORD))(*(_QWORD*)*a2 + 272LL))(
       *a2, 3, 0);
+}
+
+void gfxa_FinalCompositeTask_FinalCompositeTask_lambda0_Invoke(__int64 a1,
+                                                               _WORD* a2)
+{
+  *a2 = 514;
+  a2[3] = 42;
 }
 
 #pragma GCC visibility pop

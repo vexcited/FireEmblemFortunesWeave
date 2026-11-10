@@ -1,0 +1,31 @@
+#include "decomp/pseudo_helpers.h"
+
+#pragma GCC visibility push(hidden)
+
+__int64 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
+__n128 GameRoutine_d97500(_QWORD*, __n128 result);
+__n128 std___1___shared_weak_count___release_weak(_QWORD);
+extern __int64 (*game_hub_CharacterPath_vtable[])();
+extern __int64 fw_memory_g_heap_manager_ptr;
+__int64 CharacterPath_DeletingDestructor(_QWORD* a1, __n128 a2);
+
+__int64 CharacterPath_DeletingDestructor(_QWORD* a1, __n128 a2)
+{
+  __int64 v3;
+  __int64 v4;
+
+  *a1 = game_hub_CharacterPath_vtable;
+  GameRoutine_d97500(a1, a2);
+  v3 = a1[3];
+  if (v3 != 0) {
+    std___1___shared_weak_count___release_weak(v3);
+  }
+  v4 = 128;
+  if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+    v4 = 56;
+  }
+  return nn_mem_StandardAllocator_Free(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v4, a1);
+}
+
+#pragma GCC visibility pop

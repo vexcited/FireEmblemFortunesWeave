@@ -47,6 +47,10 @@ __int64 std___1___shared_weak_count_lock(_QWORD);
 extern __int64 GameData_20e2418;
 extern __int64 GameData_212c610;
 __int64 MapUnitInfo_182aaa0(__int64 a1, char a2);
+extern __int64* GameData_212c880[5];
+__int64 MapUnitInfo_DeletingDestructor(__int64 result);
+__int64 game_map_MapUnitInfo_TryUpdateDataSimple_lambda1_Invoke(__int64 result,
+                                                                _DWORD* a2);
 
 __int64 MapUnitInfo_Destructor(__int64 a1)
 {
@@ -360,6 +364,12 @@ __int64 MapUnitInfo_Unknown6(__int64 result)
   return result;
 }
 
+__int64 MapUnitInfo_DeletingDestructor(__int64 result)
+{
+  *(_DWORD*)(result + 360) = 2;
+  return result;
+}
+
 __int64 MapUnitInfo_182aaa0(__int64 a1, char a2)
 {
   int v2;
@@ -482,6 +492,28 @@ LABEL_29:
     }
     return (*(__int64 (**)(void))(*(_QWORD*)v21 + v19))();
   }
+  return result;
+}
+
+__int64 game_map_MapUnitInfo_TryUpdateDataSimple_lambda1_Invoke(__int64 result,
+                                                                _DWORD* a2)
+{
+  __int64 v2;
+  int v3;
+  int v4;
+  int v5;
+
+  v2 = *(_QWORD*)(*(_QWORD*)(*GameData_212c880[0] + 64) + 8 * (*a2 & 0xFFFLL));
+  v3 = *(unsigned __int8*)(v2 + 104);
+  v4 = *(unsigned __int8*)(v2 + 273);
+  if ((unsigned int)(v3 - 5) >= 2) {
+    v5 = 0;
+  }
+  else {
+    v5 = (*a2 >> 19) & 0x1F;
+  }
+  **(_DWORD**)(result + 8) = (v5 - ((*a2 >> 12) & 0x7F) + v4) &
+                             ~((v5 - ((*a2 >> 12) & 0x7F) + v4) >> 31);
   return result;
 }
 

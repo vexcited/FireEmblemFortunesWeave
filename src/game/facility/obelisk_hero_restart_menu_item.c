@@ -22,6 +22,11 @@ extern char* GameData_20660e0[8];
 extern char** msg_MessageManager_empty_text__ptr;
 void __attribute__((noreturn)) GameRoutine_60a1d0(void);
 __int64 ObeliskHeroRestartMenuItem_Unknown55(__int64 a1);
+__int64 GameRoutine_f8a870(_QWORD, _QWORD);
+extern __int64 GameData_212efc0;
+__int64
+game_facility_ObeliskHeroRestartMenuItem_CreateConfirmDialog_lambda0_Invoke(
+    __int64 a1);
 
 __int64 ObeliskHeroRestartMenuItem_Unknown55(__int64 a1)
 {
@@ -236,6 +241,35 @@ __int64 ObeliskHeroRestartMenuItem_Unknown55(__int64 a1)
     }
   }
   return result;
+}
+
+__int64
+
+game_facility_ObeliskHeroRestartMenuItem_CreateConfirmDialog_lambda0_Invoke(
+    __int64 a1)
+{
+  __int64 v2;
+  __int64 v3;
+  char v4;
+  int v6;
+  char v7;
+  int v8;
+  int v9;
+  char v10;
+
+  v2 = *(_QWORD*)GameData_212efc0;
+  if (*(_QWORD*)GameData_212efc0 != 0) {
+    v3 = *(_QWORD*)(a1 + 8);
+    v6 = 2;
+    v4 = *(_BYTE*)(v3 + 83);
+    LODWORD(v3) = *(_DWORD*)(v3 + 84);
+    v7 = v4;
+    v8 = v3;
+    v9 = -1;
+    v10 = 1;
+    GameRoutine_f8a870(v2, &v6);
+  }
+  return 4;
 }
 
 #pragma GCC visibility pop

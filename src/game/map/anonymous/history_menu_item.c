@@ -14,6 +14,7 @@ __int64 HistoryMenuItem_Unknown17(__int64 a1);
 __int64 HistoryMenuItem_Unknown20(__int64 a1);
 __int64 HistoryMenuItem_Unknown21(__int64 a1);
 __int64 HistoryMenuItem_Unknown26();
+__int64 game_map_anonymous_HistoryMenuItem_ACall_closure_Invoke(__int64 a1);
 
 __int64 HistoryMenuItem_Unknown17(__int64 a1)
 {
@@ -212,6 +213,36 @@ __int64 HistoryMenuItem_Unknown26()
   *(_QWORD*)(GameData_2240780 + 16) = v1;
   *(_WORD*)(v0 + 136) &= ~0x80u;
   return 3;
+}
+
+__int64 game_map_anonymous_HistoryMenuItem_ACall_closure_Invoke(__int64 a1)
+{
+  __int64 v1;
+  __int64 v2;
+
+  *(_BYTE*)(GameData_21cd130 + 24) = 0;
+  v1 = GameData_2240780;
+  if (GameData_2240780 == 0) {
+    return 4;
+  }
+  *(_WORD*)(GameData_2240780 + 164) = *(_WORD*)(a1 + 8);
+  v2 = *(_QWORD*)(v1 + 8);
+  if (v2 == 0) {
+    return 4;
+  }
+  while (*(_BYTE*)v2 != 2) {
+    if (*(_BYTE*)v2 == 0) {
+      return 4;
+    }
+  LABEL_5:
+    v2 += 64;
+  }
+  if (*(_DWORD*)(v2 + 32) != 0) {
+    goto LABEL_5;
+  }
+  *(_QWORD*)(v1 + 16) = v2;
+  *(_WORD*)(v1 + 136) &= ~0x80u;
+  return 4;
 }
 
 #pragma GCC visibility pop

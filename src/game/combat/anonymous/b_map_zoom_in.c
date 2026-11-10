@@ -7,6 +7,14 @@ __int64 GameRoutine_10a0720(__int64*, float*, float*, __int64);
 extern __int64 (*GameData_200cbe8[])();
 extern __int64 (*GameData_200cc68[])();
 __int64 BMapZoomIn_Unknown18(__int64* a1);
+__int64 CombatLegionManager_e2cca0(_QWORD);
+__int64 GameRoutine_10ecb60(long double);
+__int64 game_GameView_Update(void);
+__n128 GameRoutine_106e1a0(__int64);
+extern __int64 GameData_21cd0d0;
+extern __int64 GameData_21ec7b0;
+extern int GameData_21d92e0;
+__int64 game_combat_anonymous_BMapZoomIn_Schedule_closure_Invoke();
 
 __int64 BMapZoomIn_Unknown18(__int64* a1)
 {
@@ -76,6 +84,30 @@ LABEL_9:
     v8 = 40;
   }
   return (*(__int64 (**)(_QWORD*))(*v10 + v8))(v10);
+}
+
+__int64 game_combat_anonymous_BMapZoomIn_Schedule_closure_Invoke()
+{
+  __int64 v0;
+  int v1;
+  long double v2;
+  __int64 v3;
+
+  if (GameData_21d92e0 != 3) {
+    GameData_21d92e0 = 3;
+    game_GameView_Update();
+    if (GameData_21cd0d0 != 0) {
+      v0 = *(_QWORD*)(GameData_21cd0d0 + 8);
+      v1 = *(_DWORD*)(v0 + 8);
+      *(_DWORD*)(v0 + 8) = v1 + 1;
+      if (v1 == 0) {
+        (**(void (***)(__int64))v0)(v0);
+      }
+    }
+  }
+  *(__n128*)&v2 = GameRoutine_106e1a0(GameData_21ec7b0);
+  v3 = GameRoutine_10ecb60(v2);
+  return CombatLegionManager_e2cca0(v3);
 }
 
 #pragma GCC visibility pop

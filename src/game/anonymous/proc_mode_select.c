@@ -14,6 +14,52 @@ extern __int64 (*game_anonymous_ProcModeSelect_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 ProcModeSelect_Destructor(__int64 a1);
 __int64 ProcModeSelect_DeletingDestructor(__int64 a1);
+__int64 game_anonymous_ProcModeSelect_CreateDifficultyMenu_closure_Invoke(
+    __int64 result, _BYTE* a2);
+__int64 game_anonymous_ProcModeSelect_CreateModeMenu_closure_Invoke_a0b420(
+    __int64 result, _BYTE* a2);
+__int64 game_anonymous_ProcModeSelect_CreateModeMenu_closure_Invoke_a0b520(
+    __int64 result);
+
+__int64 game_anonymous_ProcModeSelect_CreateDifficultyMenu_closure_Invoke(
+    __int64 result, _BYTE* a2)
+{
+  *(_BYTE*)(*(_QWORD*)(result + 8) + 153LL) = *a2;
+  return result;
+}
+
+__int64 game_anonymous_ProcModeSelect_CreateModeMenu_closure_Invoke_a0b420(
+    __int64 result, _BYTE* a2)
+{
+  *(_BYTE*)(*(_QWORD*)(result + 8) + 152LL) = *a2;
+  return result;
+}
+
+__int64 game_anonymous_ProcModeSelect_CreateModeMenu_closure_Invoke_a0b520(
+    __int64 result)
+{
+  __int64 v1;
+  __int64 v2;
+
+  v1 = *(_QWORD*)(result + 8);
+  v2 = *(_QWORD*)(v1 + 8);
+  if (v2 != 0) {
+    while (1) {
+      if (*(_BYTE*)v2 == 2) {
+        if (*(_DWORD*)(v2 + 32) == 0) {
+          *(_QWORD*)(v1 + 16) = v2;
+          *(_WORD*)(v1 + 136) &= ~0x80u;
+          return result;
+        }
+      }
+      else if (*(_BYTE*)v2 == 0) {
+        return result;
+      }
+      v2 += 64;
+    }
+  }
+  return result;
+}
 
 __int64 ProcModeSelect_Destructor(__int64 a1)
 {

@@ -62,6 +62,11 @@ __int64 MultiArcResourceAccessor_Unknown10(__int64 a1, unsigned int a2,
                                            __int64 a3);
 __int64 MultiArcResourceAccessor_Unknown11(__int64 a1, unsigned int a2,
                                            __int64 a3);
+__int64 GameRoutine_55ea10(void);
+__int64 LayoutEx_579180(__int64);
+__int64 LayoutEx_5791a0(__int64);
+__int64 ResFont_55eae0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
+__int64 MultiArcResourceAccessor_Unknown20(__int64* a1, __int64 a2, __int64 a3);
 
 __int64 MultiArcResourceAccessor_DeletingDestructor(_QWORD* a1)
 {
@@ -716,6 +721,37 @@ __int64 MultiArcResourceAccessor_Unknown11(__int64 a1, unsigned int a2,
 {
   return (*(__int64 (**)(__int64, _QWORD, _QWORD, __int64))(
       *(_QWORD*)a1 + 72LL))(a1, 0, a2, a3);
+}
+
+__int64 MultiArcResourceAccessor_Unknown20(__int64* a1, __int64 a2, __int64 a3)
+{
+  __int64 v3;
+  __int64 v5;
+  __int64 v7;
+  __int64 result;
+  __int64 v9;
+  __int64 v10;
+
+  v3 = *a1;
+  v10 = 0;
+  v5 = (*(__int64 (**)(__int64*, __int64*, __int64, __int64))(v3 + 64))(
+      a1, &v10, 1718578804, a3);
+  if (v5 == 0 || v10 == 0) {
+    return 0;
+  }
+  v7 = v5;
+  result = LayoutEx_579180(264);
+  if (result == 0) {
+    return result;
+  }
+  v9 = result;
+  GameRoutine_55ea10();
+  if ((ResFont_55eae0(v9, a2, v7, 0, 0, 0) & 1) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v9 + 8LL))(v9);
+    LayoutEx_5791a0(v9);
+    return 0;
+  }
+  return v9;
 }
 
 #pragma GCC visibility pop

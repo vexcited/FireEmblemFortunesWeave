@@ -41,6 +41,15 @@ __int64 Picture_596c30(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
                        __int64 a5);
 __int64 Picture_Unknown28(__int64 result, __int64 a2, __int64 a3);
 __int64 Picture_5b2440(__int64 a1);
+__int64 GameRoutine_58c850(void);
+extern __int64 (*nn_ui2d_Picture_vtable[])();
+__int64 Picture_Destructor(_QWORD* a1);
+
+__int64 Picture_Destructor(_QWORD* a1)
+{
+  *a1 = nn_ui2d_Picture_vtable;
+  return GameRoutine_58c850();
+}
 
 __int64 Picture_Unknown3(__int64 a1, __int64 a2)
 {

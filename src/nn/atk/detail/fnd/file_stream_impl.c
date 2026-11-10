@@ -28,6 +28,34 @@ __int64 FileStreamImpl_2b3740(__int64 a1, __int64 a2, __int64 a3, int* a4);
 __int64 FileStreamImpl_2b37d0(_QWORD* a1, __int64 a2, __int64 a3, int* a4);
 __int64 FileStreamImpl_Unknown7(__int64 a1);
 bool FileStreamImpl_Unknown16(_QWORD* a1);
+__int64 FileStreamImpl_2b3740_alt1(_QWORD, _QWORD, _QWORD,
+                                   _QWORD) __asm__("FileStreamImpl_2b3740");
+__int64 FileStreamImpl_2b37d0_alt1(_QWORD, _QWORD, _QWORD,
+                                   _QWORD) __asm__("FileStreamImpl_2b37d0");
+__int64 GameRoutine_2b3fd0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
+__int64 GameRoutine_2b4480(_QWORD, _QWORD, _QWORD, _QWORD);
+__int64 FileStreamImpl_Unknown4(_QWORD* a1, __int64 a2, __int64 a3, __int64 a4);
+__int64 FileStreamImpl_Unknown5(__int64 a1, __int64 a2, __int64 a3, __int64 a4);
+
+__int64 FileStreamImpl_Unknown4(_QWORD* a1, __int64 a2, __int64 a3, __int64 a4)
+{
+  if (((*(__int64 (**)(_QWORD*))(*a1 + 128LL))(a1) & 1) != 0) {
+    return GameRoutine_2b3fd0(a1 + 5, a2, a3, a4, a1[15], a1);
+  }
+  else {
+    return FileStreamImpl_2b3740_alt1(a1, a2, a3, a4);
+  }
+}
+
+__int64 FileStreamImpl_Unknown5(__int64 a1, __int64 a2, __int64 a3, __int64 a4)
+{
+  if (((*(__int64 (**)(__int64))(*(_QWORD*)a1 + 128LL))(a1) & 1) != 0) {
+    return GameRoutine_2b4480(a1 + 40, a2, a3, a4);
+  }
+  else {
+    return FileStreamImpl_2b37d0_alt1(a1, a2, a3, a4);
+  }
+}
 
 __int64 FileStreamImpl_Unknown6(__int64 a1, __int64 a2, unsigned int a3)
 {

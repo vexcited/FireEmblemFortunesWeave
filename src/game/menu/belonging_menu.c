@@ -13,6 +13,8 @@ __int64 ui_LayoutAccessor_IsPaneVisible(_QWORD, _QWORD);
 __int64 ui_LayoutAccessor_SetPaneVisible(_QWORD, _QWORD, _QWORD);
 __int64 BelongingMenu_16ca500(__int64 a1);
 __int64 BelongingMenu_16ca580(__int64 a1);
+__int64 game_menu_BelongingMenu_OnInit_lambda0_Invoke(__int64 a1, _QWORD* a2,
+                                                      unsigned int* a3);
 
 __int64 BelongingMenu_16ca500(__int64 a1)
 {
@@ -63,6 +65,13 @@ __int64 BelongingMenu_16ca580(__int64 a1)
   }
   ui_LayoutAccessor_SetPaneVisible(a1 + 952, "MenuItemList", v2 & 1);
   return GameRoutine_16e7af0(a1 + 952);
+}
+
+__int64 game_menu_BelongingMenu_OnInit_lambda0_Invoke(__int64 a1, _QWORD* a2,
+                                                      unsigned int* a3)
+{
+  return (*(__int64 (**)(_QWORD, _QWORD, _QWORD))(
+      **(_QWORD**)(a1 + 8) + 1144LL))(*(_QWORD*)(a1 + 8), *a2, *a3);
 }
 
 #pragma GCC visibility pop

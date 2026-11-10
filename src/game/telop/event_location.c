@@ -17,6 +17,9 @@ extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 EventLocation_Unknown33(__int64 a1);
 __int64 EventLocation_Destructor(__int64 a1);
 __int64 EventLocation_DeletingDestructor(__int64 a1);
+__int64 TelopReliance_1386f80(_QWORD);
+__int64 EventLocation_Destructor_175f4d0(_QWORD* a1);
+__int64 EventLocation_DeletingDestructor_175f500(_QWORD* a1);
 
 __int64 EventLocation_Unknown33(__int64 a1)
 {
@@ -76,6 +79,37 @@ __int64 EventLocation_DeletingDestructor(__int64 a1)
   }
   return nn_mem_StandardAllocator_Free(
       *(_QWORD*)fw_memory_g_heap_manager_ptr + v2, a1);
+}
+
+__int64 EventLocation_Destructor_175f4d0(_QWORD* a1)
+{
+  _QWORD* v2;
+
+  v2 = a1 - 103;
+  *a1 = GameData_20bce10;
+  if ((_QWORD*)GameData_2263c20 == v2) {
+    GameData_2263c20 = 0;
+  }
+  return TelopReliance_1386f80(v2);
+}
+
+__int64 EventLocation_DeletingDestructor_175f500(_QWORD* a1)
+{
+  _QWORD* v1;
+  __int64 v2;
+
+  v1 = a1 - 103;
+  *a1 = GameData_20bce10;
+  if ((_QWORD*)GameData_2263c20 == a1 - 103) {
+    GameData_2263c20 = 0;
+  }
+  TelopReliance_1386f80(a1 - 103);
+  v2 = 128;
+  if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+    v2 = 56;
+  }
+  return nn_mem_StandardAllocator_Free(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v2, v1);
 }
 
 #pragma GCC visibility pop

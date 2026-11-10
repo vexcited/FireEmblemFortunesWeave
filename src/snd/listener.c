@@ -33,6 +33,9 @@ float Listener_112ba0(__int64 a1, __int64 a2);
 void Listener_112bd0(__int64 a1, float a2, float a3, float a4);
 __int64 Listener_112d70(__int64 a1, __int64 a2);
 __int64 Listener_Unknown8();
+__int64 Listener_Destructor_alt1(_QWORD) __asm__("Listener_Destructor");
+void GameRoutine_651250(void*, unsigned __int64);
+void Listener_DeletingDestructor(__int64 a1);
 
 __int64 Listener_Destructor(__int64 a1)
 {
@@ -57,6 +60,12 @@ __int64 Listener_Destructor(__int64 a1)
   snd_HandlePtr_unregisterHandle(a1 + 5592);
   Param_Destructor(v3);
   return snd_Obj_Destroy_Obj_126190(a1);
+}
+
+void Listener_DeletingDestructor(__int64 a1)
+{
+  Listener_Destructor_alt1(a1 - 5592);
+  GameRoutine_651250((void*)(a1 - 5592), 0x1688u);
 }
 
 float Listener_112890(__int64 a1, float a2)

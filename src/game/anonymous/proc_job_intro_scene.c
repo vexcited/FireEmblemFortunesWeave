@@ -32,6 +32,7 @@ __int64 ProcJobIntroScene_Destructor(__int64 a1);
 __int64 ProcJobIntroScene_a0eec0();
 void ProcJobIntroScene_a0eef0();
 __int64 ProcJobIntroScene_Unknown18(__int64 a1);
+__int64 ProcJobIntroScene_Unknown2(__int64 a1);
 
 __int64 ProcJobIntroScene_Destructor(__int64 a1)
 {
@@ -126,6 +127,28 @@ __int64 ProcJobIntroScene_Unknown18(__int64 a1)
   __int64 v5;
 
   v1 = ***(_QWORD***)(*(_QWORD*)(a1 + 192) + 40LL);
+  v4[0] = 0;
+  result = GameRoutine_1487e00(*(_QWORD*)(v1 + 120), v4, 0);
+  if ((v4[0] & 1) != 0 && v5 != 0) {
+    v3 = 128;
+    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+      v3 = 56;
+    }
+    return nn_mem_StandardAllocator_Free(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v3);
+  }
+  return result;
+}
+
+__int64 ProcJobIntroScene_Unknown2(__int64 a1)
+{
+  __int64 v1;
+  __int64 result;
+  __int64 v3;
+  _WORD v4[8];
+  __int64 v5;
+
+  v1 = ***(_QWORD***)(*(_QWORD*)(a1 + 40) + 40LL);
   v4[0] = 0;
   result = GameRoutine_1487e00(*(_QWORD*)(v1 + 120), v4, 0);
   if ((v4[0] & 1) != 0 && v5 != 0) {

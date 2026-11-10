@@ -9,6 +9,9 @@ __int64 Sound3DManager_Unknown3(__int64 a1, __int64 a2, unsigned int a3);
 __int64 Sound3DManager_Unknown5(__int64 result, __int64 a2);
 __int64 Sound3DManager_278060(__int64 result, __int64 a2);
 __int64 Sound3DManager_278080(__int64 result);
+void GameRoutine_651250(void*, unsigned __int64);
+void Sound3DManager_DeletingDestructor(__int64 a1);
+
 __int64 Sound3DManager_Unknown2(__int64 a1, __int64 a2, unsigned int a3,
                                 __int64 a4)
 {
@@ -61,6 +64,11 @@ __int64 Sound3DManager_278080(__int64 result)
   *(_WORD*)(result + 48) = 1;
   *(_DWORD*)(result + 52) = 1;
   return result;
+}
+
+void Sound3DManager_DeletingDestructor(__int64 a1)
+{
+  GameRoutine_651250((void*)(a1 - 8), 0x60u);
 }
 
 #pragma GCC visibility pop

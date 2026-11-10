@@ -10,6 +10,106 @@ extern __int64 (*game_gmap_ProcBeforeEncountSeq_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 ProcBeforeEncountSeq_Destructor(__int64 a1);
 __int64 ProcBeforeEncountSeq_DeletingDestructor(__int64 a1);
+__int64 GameRoutine_1340560(_QWORD, _QWORD);
+extern __int64 (*GameData_204c138[])();
+extern __int64 GameData_21c96e8;
+extern __int64 GameData_22566d8;
+void __attribute__((noreturn)) GameRoutine_60a310(_QWORD, _QWORD);
+_QWORD* game_gmap_ProcBeforeEncountSeq_HideAnimal(__int64 a1, __int64 a2);
+void ProcBeforeEncountSeq_154f0e0();
+__int64 game_gmap_ProcBeforeEncountSeq_HideAnimal_closure_Invoke(__int64 a1,
+                                                                 __int64* a2);
+void game_gmap_ProcBeforeEncountSeq_EndStartBattle_closure_Invoke(__int64 a1,
+                                                                  __int64 a2);
+
+_QWORD* game_gmap_ProcBeforeEncountSeq_HideAnimal(__int64 a1, __int64 a2)
+{
+  __int64 v2;
+  _QWORD* result;
+  __int64 v4;
+  _QWORD* v5;
+  _QWORD* v6;
+  __int64 v7;
+  _QWORD v8[4];
+  _QWORD* v9;
+  _QWORD* v10;
+
+  v2 = *(_QWORD*)(a1 + 152);
+  result = v8;
+  v8[0] = GameData_204c138;
+  v9 = v8;
+  if (v2 == 0) {
+    goto LABEL_11;
+  }
+  v4 = *(_QWORD*)(GameData_21c96e8 + 8);
+  v5 = *(_QWORD**)(v4 + 8);
+  v6 = *(_QWORD**)(v4 + 16);
+  if (v5 == v6) {
+    result = v8;
+  LABEL_11:
+    v7 = 32;
+    return (_QWORD*)(*(__int64 (**)(_QWORD*))(*result + v7))(result);
+  }
+  do {
+    if (*(_QWORD*)*v5 == v2) {
+      v10 = (_QWORD*)*v5;
+      if (v9 == nullptr) {
+        GameRoutine_60a310(0, a2);
+      }
+      (*(void (**)(_QWORD*, _QWORD**))(*v9 + 48LL))(v9, &v10);
+    }
+    ++v5;
+  } while (v5 != v6);
+  result = v9;
+  if (v9 == v8) {
+    goto LABEL_11;
+  }
+  if (v9 == nullptr) {
+    return result;
+  }
+  v7 = 40;
+  return (_QWORD*)(*(__int64 (**)(_QWORD*))(*result + v7))(result);
+}
+
+void ProcBeforeEncountSeq_154f0e0()
+{
+  if (GameData_22566d8 != 0) {
+    *(_BYTE*)(GameData_22566d8 + 284) = 1;
+  }
+}
+
+__int64 game_gmap_ProcBeforeEncountSeq_HideAnimal_closure_Invoke(__int64 a1,
+                                                                 __int64* a2)
+{
+  __int64 result;
+  __int64 v3;
+  bool v4;
+
+  result = *a2;
+  if (*(_QWORD*)(*a2 + 96) == 0) {
+    v3 = *(_QWORD*)(result + 552);
+    v4 = v3 != 0 && *(_QWORD*)(result + 104) == 0;
+    if (v4 &&
+        *(__int16*)(result + 642) * *(__int16*)(result + 640) *
+                *(__int16*)(result + 644) ==
+            0 &&
+        *(_QWORD*)(v3 + 352) != 0) {
+      return GameRoutine_1340560(result, 4);
+    }
+  }
+  return result;
+}
+
+void game_gmap_ProcBeforeEncountSeq_EndStartBattle_closure_Invoke(__int64 a1,
+                                                                  __int64 a2)
+{
+  __int64 v2;
+
+  v2 = *(_QWORD*)(*(_QWORD*)a2 + 376LL);
+  if (v2 != 0) {
+    *(_DWORD*)(*(_QWORD*)(v2 + 304) + 12LL) = 1065353216;
+  }
+}
 
 __int64 ProcBeforeEncountSeq_Destructor(__int64 a1)
 {

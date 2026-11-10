@@ -129,6 +129,99 @@ __int64 Slot_136c00(_QWORD* a1, __int64 a2);
 __int64 Slot_136e40(__int64** a1, __int64 a2);
 __int64 Slot_137080(__int64 a1);
 __int64* Slot_Unknown8();
+__int64 GameRoutine_190240(_QWORD);
+__int64 SeqVoice_12dce0(_QWORD*, __int64);
+__int64 memcmp(_QWORD, _QWORD, _QWORD);
+__int64 snd_Fade_Destroy_Fade_alt1(_QWORD) __asm__("snd_Fade_Destroy_Fade");
+__int64 snd_Param_isEnvelopeEnded(_QWORD);
+__int64 snd_Param_isEnvelopeFading(_QWORD);
+__int64 snd_Param_isEnvelopeReleased(_QWORD);
+__int64 snd_Voice_isDead(_QWORD);
+__int64 snd_Voice_startPitchChecked(_QWORD, _QWORD, float);
+__int64 strlen(_QWORD);
+void __attribute__((noreturn)) GameRoutine_a36650(_QWORD, _QWORD);
+__int64 snd_Slot_addVoice_lambda0_Invoke(__int64 a1, __int64* a2);
+bool snd_Slot_destroyVoice_lambda0_Invoke(__int64 a1, __int64* a2);
+__int64 snd_Slot_destroyVoice_lambda1_Invoke(__int64 a1, __int64* a2);
+__int64 snd_Slot_countVoice_lambda0_Invoke(__int64 a1, __int64* a2);
+__int64 snd_Slot_addSeqVoice_lambda0_Invoke(__int64 a1, __int64* a2);
+bool snd_Slot_destroySeqVoice_lambda0_Invoke(__int64 a1, __int64* a2);
+__int64 snd_Slot_destroySeqVoice_lambda1_Invoke(__int64 a1, __int64* a2);
+__int64 snd_Slot_addVibVoice_lambda0_Invoke(__int64 a1, __int64* a2);
+bool snd_Slot_destroyVibVoice_lambda0_Invoke(__int64 a1, __int64* a2);
+__int64 snd_Slot_destroyVibVoice_lambda1_Invoke(__int64 a1, __int64* a2);
+void snd_Slot_checkPriority_lambda0_Invoke_1394a0(__int64 a1, _QWORD* a2);
+void snd_Slot_checkPriority_lambda1_Invoke_139660(__int64 a1, _QWORD* a2);
+void snd_Slot_checkPriority_lambda2_Invoke_139800(__int64 a1, _QWORD* a2);
+void snd_Slot_checkPriority_lambda3_Invoke_139960(__int64 a1, _QWORD* a2);
+void snd_Slot_checkPriority_lambda4_Invoke_139ad0(_QWORD** a1, _QWORD* a2);
+void snd_Slot_checkPriority_lambda5_Invoke_139c70(_QWORD** a1, _QWORD* a2);
+void snd_Slot_checkPriority_lambda6_Invoke_139e00(__int64 a1, _QWORD* a2);
+void snd_Slot_checkPriority_lambda0_Invoke_13a010(__int64 a1, _QWORD* a2);
+void snd_Slot_checkPriority_lambda1_Invoke_13a1d0(__int64 a1, _QWORD* a2);
+__int64 snd_Slot_checkPriority_lambda2_Invoke_13a370(__int64 a1, _QWORD* a2);
+__int64 snd_Slot_checkPriority_lambda3_Invoke_13a4c0(__int64 a1, _QWORD* a2);
+__int64 snd_Slot_checkPriority_lambda4_Invoke_13a620(_QWORD** a1, _QWORD* a2);
+__int64 snd_Slot_checkPriority_lambda5_Invoke_13a7a0(_QWORD** a1, _QWORD* a2);
+void snd_Slot_checkPriority_lambda6_Invoke_13a910(__int64 a1, _QWORD* a2);
+__int64 snd_Slot_checkPriority_lambda0_Invoke_13ab20(__int64 a1, _QWORD* a2);
+__int64 snd_Slot_checkPriority_lambda1_Invoke_13aca0(__int64 a1, _QWORD* a2);
+__int64 snd_Slot_checkPriority_lambda2_Invoke_13ae00(_QWORD** a1, _QWORD* a2);
+void snd_Slot_checkPriority_lambda3_Invoke_13af50(__int64 a1, _QWORD* a2);
+bool snd_Slot_getVoiceNoActorCheck_lambda0_Invoke(__int64 a1, _QWORD* a2);
+bool snd_Slot_getVoiceNoActorCheck_lambda1_Invoke(__int64 a1, _QWORD* a2);
+bool snd_Slot_getVoiceNoActorCheck_lambda2_Invoke(__int64 a1, _QWORD* a2);
+__int64 snd_Slot_stop_lambda0_Invoke_13b530(__int64 a1, _QWORD* a2);
+__int64 snd_Slot_stop_lambda1_Invoke_13b610(__int64 a1, _QWORD* a2);
+__int64 snd_Slot_stop_lambda2_Invoke_13b6f0(__int64 a1, _QWORD* a2);
+__int64 snd_Slot_stop_lambda0_Invoke_13b7d0(__int64 a1, _QWORD* a2);
+__int64 snd_Slot_stop_lambda1_Invoke_13b8b0(__int64 a1, _QWORD* a2);
+__int64 snd_Slot_stop_lambda2_Invoke_13b990(__int64 a1, _QWORD* a2);
+__int64 snd_Slot_stopSoundKind_lambda0_Invoke(__int64 a1, __int64* a2);
+__int64 snd_Slot_stopSoundKind_lambda1_Invoke(__int64 a1, __int64* a2);
+__int64 snd_Slot_stopSoundKind_lambda2_Invoke(__int64 a1, __int64* a2);
+__int64 snd_Slot_kill_lambda0_Invoke(__int64 a1, _QWORD* a2);
+__int64 snd_Slot_kill_lambda1_Invoke(__int64 a1, _QWORD* a2);
+__int64 snd_Slot_kill_lambda2_Invoke(__int64 a1, _QWORD* a2);
+__int64 snd_Slot_mute_lambda0_Clone(__int64 a1);
+void snd_Slot_mute_lambda0_CloneInto(__int64 a1, __int64 a2);
+_QWORD* snd_Slot_mute_lambda0_Invoke(__int64 a1, _QWORD** a2);
+__int64 snd_Slot_mute_lambda1_Clone(__int64 a1);
+void snd_Slot_mute_lambda1_CloneInto(__int64 a1, __int64 a2);
+_QWORD* snd_Slot_mute_lambda1_Invoke(__int64 a1, _QWORD** a2);
+__int64 snd_Slot_mute_lambda2_Clone(__int64 a1);
+void snd_Slot_mute_lambda2_CloneInto(__int64 a1, __int64 a2);
+_QWORD* snd_Slot_mute_lambda2_Invoke(__int64 a1, _QWORD** a2);
+_QWORD* snd_Slot_resumeMute_lambda0_Invoke(__int64 a1, _QWORD** a2);
+_QWORD* snd_Slot_resumeMute_lambda1_Invoke(__int64 a1, _QWORD** a2);
+_QWORD* snd_Slot_resumeMute_lambda2_Invoke(__int64 a1, _QWORD** a2);
+_QWORD* snd_Slot_pause_lambda0_Invoke(__int64 a1, _QWORD** a2);
+_QWORD* snd_Slot_pause_lambda1_Invoke(__int64 a1, _QWORD** a2);
+_QWORD* snd_Slot_pause_lambda2_Invoke(__int64 a1, _QWORD** a2);
+_QWORD* snd_Slot_resumePause_lambda0_Invoke(__int64 a1, _QWORD** a2);
+_QWORD* snd_Slot_resumePause_lambda1_Invoke(__int64 a1, _QWORD** a2);
+_QWORD* snd_Slot_resumePause_lambda2_Invoke(__int64 a1, _QWORD** a2);
+__int64 snd_Slot_silent_lambda0_Destructor(_QWORD* a1);
+void snd_Slot_silent_lambda0_DeletingDestructor(_QWORD* a1);
+__int64 snd_Slot_silent_lambda0_Clone(__int64 a1);
+float snd_Slot_silent_lambda0_CloneInto(__int64 a1, __int64 a2);
+__int64 snd_Slot_silent_lambda0_Invoke(__int64 a1, _QWORD* a2);
+__int64 snd_Slot_silent_lambda1_Destructor(_QWORD* a1);
+void snd_Slot_silent_lambda1_DeletingDestructor(_QWORD* a1);
+__int64 snd_Slot_silent_lambda1_Clone(__int64 a1);
+float snd_Slot_silent_lambda1_CloneInto(__int64 a1, __int64 a2);
+__int64 snd_Slot_silent_lambda1_Invoke(__int64 a1, _QWORD* a2);
+__int64 snd_Slot_silent_lambda2_Destructor(_QWORD* a1);
+void snd_Slot_silent_lambda2_DeletingDestructor(_QWORD* a1);
+__int64 snd_Slot_silent_lambda2_Clone(__int64 a1);
+float snd_Slot_silent_lambda2_CloneInto(__int64 a1, __int64 a2);
+__int64 snd_Slot_silent_lambda2_Invoke(__int64 a1, _QWORD* a2);
+__int64 snd_Slot_isActive_lambda0_Invoke(__int64 a1, _QWORD* a2);
+__int64 snd_Slot_isActive_lambda1_Invoke(__int64 a1, _QWORD* a2);
+__int64 snd_Slot_isActive_lambda2_Invoke(__int64 a1, _QWORD* a2);
+__int64 snd_Slot_countActiveVoice_lambda0_Invoke(__int64 a1, _QWORD* a2);
+__int64 snd_Slot_countActiveVoice_lambda1_Invoke(__int64 a1, _QWORD** a2);
+__int64 snd_Slot_countActiveVoice_lambda2_Invoke(__int64 a1, _QWORD* a2);
 
 __int64 Slot_Destructor(__int64 a1)
 {
@@ -3088,6 +3181,1458 @@ __int64* Slot_Unknown8()
     __cxa_guard_release(GameData_2134680);
   }
   return GameData_2134688[0];
+}
+
+__int64 snd_Slot_addVoice_lambda0_Invoke(__int64 a1, __int64* a2)
+{
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 result;
+
+  v2 = *(_QWORD*)(a1 + 8);
+  v3 = *a2;
+  v4 = *a2;
+  ++*(_DWORD*)(v2 + 5920);
+  result = snd_Voice_isDead(v4);
+  if ((result & 1) == 0) {
+    result = snd_Param_isEnvelopeReleased(v3 + 40);
+    if ((result & 1) == 0) {
+      result = snd_Param_isEnvelopeFading(v3 + 40);
+      if ((result & 1) == 0) {
+        result = snd_Param_isEnvelopeEnded(v3 + 40);
+        if ((result & 1) == 0) {
+          ++*(_DWORD*)(v2 + 5912);
+        }
+      }
+    }
+  }
+  return result;
+}
+
+bool snd_Slot_destroyVoice_lambda0_Invoke(__int64 a1, __int64* a2)
+{
+  __int64* v2;
+  __int64 v3;
+  __int64 v4;
+  _QWORD* v5;
+  __int64 v6;
+  __int64* v7;
+  __int64 v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
+  __int64 v14;
+  _QWORD* v15;
+  unsigned __int64 v16;
+  unsigned __int16 v17;
+  __int64 v18;
+  int v19;
+
+  v2 = *(__int64**)(a1 + 8);
+  v3 = *a2;
+  v4 = *v2;
+  if (*a2 != *v2) {
+    return v3 == v4;
+  }
+  v5 = *(_QWORD**)(a1 + 16);
+  v6 = v5[726];
+  v7 = (__int64*)(v6 + v3);
+  v9 = *(_QWORD*)(v6 + v3);
+  v8 = *(_QWORD*)(v6 + v3 + 8);
+  if (v9 == 0) {
+    v5[724] = v8;
+    v10 = *v7;
+    v11 = v7[1];
+    if (v11 != 0) {
+      goto LABEL_4;
+    }
+  LABEL_6:
+    v5[725] = v10;
+    goto LABEL_7;
+  }
+  *(_QWORD*)(v6 + v9 + 8) = v8;
+  v6 = v5[726];
+  v7 = (__int64*)(v6 + v3);
+  v10 = *(_QWORD*)(v6 + v3);
+  v11 = *(_QWORD*)(v6 + v3 + 8);
+  if (v11 == 0) {
+    goto LABEL_6;
+  }
+LABEL_4:
+  *(_QWORD*)(v6 + v11) = v10;
+  v7 = (__int64*)(v5[726] + v3);
+LABEL_7:
+  *v7 = 0;
+  *(_QWORD*)(v5[726] + v3 + 8) = 0;
+  v12 = **(_QWORD**)(a1 + 8);
+  if (*(_BYTE*)(v12 + 5891) == 1) {
+    v13 = v5[4];
+    (**(void (***)(_QWORD))v12)(**(_QWORD**)(a1 + 8));
+    v14 = v13 + 2640;
+    nn_os_LockMutex(v13 + 2640);
+    v15 = (_QWORD*)(v13 + 2624);
+    v16 = (v12 - *(_QWORD*)(v13 + 2616)) / 0x17D0uLL;
+    v17 = *(_WORD*)(v13 + 2632) - 1;
+    *(_WORD*)(v13 + 2632) = v17;
+  }
+  else {
+    v18 = v5[4];
+    v19 = *(unsigned __int8*)(v12 + 5892);
+    (**(void (***)(_QWORD))v12)(**(_QWORD**)(a1 + 8));
+    if (v19 == 1) {
+      v14 = v18 + 2720;
+      nn_os_LockMutex(v18 + 2720);
+      v15 = (_QWORD*)(v18 + 2704);
+      v16 = (v12 - *(_QWORD*)(v18 + 2696)) / 0x17D0uLL;
+      v17 = *(_WORD*)(v18 + 2712) - 1;
+      *(_WORD*)(v18 + 2712) = v17;
+    }
+    else {
+      v14 = v18 + 2480;
+      nn_os_LockMutex(v18 + 2480);
+      v15 = (_QWORD*)(v18 + 2464);
+      v16 = (v12 - *(_QWORD*)(v18 + 2456)) / 0x17B8uLL;
+      v17 = *(_WORD*)(v18 + 2472) - 1;
+      *(_WORD*)(v18 + 2472) = v17;
+    }
+  }
+  *(_WORD*)(*v15 + 2LL * v17) = v16;
+  nn_os_UnlockMutex(v14);
+  return v3 == v4;
+}
+
+__int64 snd_Slot_destroyVoice_lambda1_Invoke(__int64 a1, __int64* a2)
+{
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 result;
+
+  v2 = *(_QWORD*)(a1 + 8);
+  v3 = *a2;
+  v4 = *a2;
+  ++*(_DWORD*)(v2 + 5920);
+  result = snd_Voice_isDead(v4);
+  if ((result & 1) == 0) {
+    result = snd_Param_isEnvelopeReleased(v3 + 40);
+    if ((result & 1) == 0) {
+      result = snd_Param_isEnvelopeFading(v3 + 40);
+      if ((result & 1) == 0) {
+        result = snd_Param_isEnvelopeEnded(v3 + 40);
+        if ((result & 1) == 0) {
+          ++*(_DWORD*)(v2 + 5912);
+        }
+      }
+    }
+  }
+  return result;
+}
+
+__int64 snd_Slot_countVoice_lambda0_Invoke(__int64 a1, __int64* a2)
+{
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 result;
+
+  v2 = *(_QWORD*)(a1 + 8);
+  v3 = *a2;
+  v4 = *a2;
+  ++*(_DWORD*)(v2 + 5920);
+  result = snd_Voice_isDead(v4);
+  if ((result & 1) == 0) {
+    result = snd_Param_isEnvelopeReleased(v3 + 40);
+    if ((result & 1) == 0) {
+      result = snd_Param_isEnvelopeFading(v3 + 40);
+      if ((result & 1) == 0) {
+        result = snd_Param_isEnvelopeEnded(v3 + 40);
+        if ((result & 1) == 0) {
+          ++*(_DWORD*)(v2 + 5912);
+        }
+      }
+    }
+  }
+  return result;
+}
+
+__int64 snd_Slot_addSeqVoice_lambda0_Invoke(__int64 a1, __int64* a2)
+{
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 result;
+
+  v2 = *(_QWORD*)(a1 + 8);
+  v3 = *a2;
+  v4 = *a2;
+  ++*(_DWORD*)(v2 + 5924);
+  result = snd_Voice_isDead(v4);
+  if ((result & 1) == 0) {
+    result = snd_Param_isEnvelopeReleased(v3 + 40);
+    if ((result & 1) == 0) {
+      result = snd_Param_isEnvelopeFading(v3 + 40);
+      if ((result & 1) == 0) {
+        result = snd_Param_isEnvelopeEnded(v3 + 40);
+        if ((result & 1) == 0) {
+          ++*(_DWORD*)(v2 + 5916);
+        }
+      }
+    }
+  }
+  return result;
+}
+
+bool snd_Slot_destroySeqVoice_lambda0_Invoke(__int64 a1, __int64* a2)
+{
+  __int64* v2;
+  __int64 v3;
+  __int64 v4;
+  _QWORD* v5;
+  __int64 v6;
+  __int64* v7;
+  __int64 v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  void (***v13)(_QWORD);
+  __int64 v14;
+  unsigned __int64 v15;
+  unsigned __int16 v16;
+
+  v2 = *(__int64**)(a1 + 8);
+  v3 = *a2;
+  v4 = *v2;
+  if (*a2 == *v2) {
+    v5 = *(_QWORD**)(a1 + 16);
+    v6 = v5[731];
+    v7 = (__int64*)(v6 + v3);
+    v9 = *(_QWORD*)(v6 + v3);
+    v8 = *(_QWORD*)(v6 + v3 + 8);
+    if (v9 != 0) {
+      *(_QWORD*)(v6 + v9 + 8) = v8;
+      v6 = v5[731];
+      v7 = (__int64*)(v6 + v3);
+      v10 = *(_QWORD*)(v6 + v3);
+      v11 = *(_QWORD*)(v6 + v3 + 8);
+      if (v11 != 0) {
+      LABEL_4:
+        *(_QWORD*)(v6 + v11) = v10;
+        v7 = (__int64*)(v5[731] + v3);
+      LABEL_7:
+        *v7 = 0;
+        *(_QWORD*)(v5[731] + v3 + 8) = 0;
+        v12 = v5[4];
+        v13 = **(void (*****)(_QWORD))(a1 + 8);
+        (**v13)(v13);
+        nn_os_LockMutex(v12 + 2560);
+        v14 = *(_QWORD*)(v12 + 2544);
+        v15 = ((unsigned __int64)v13 - *(_QWORD*)(v12 + 2536)) / 0x17E8;
+        v16 = *(_WORD*)(v12 + 2552) - 1;
+        *(_WORD*)(v12 + 2552) = v16;
+        *(_WORD*)(v14 + 2LL * v16) = v15;
+        nn_os_UnlockMutex(v12 + 2560);
+        return v3 == v4;
+      }
+    }
+    else {
+      v5[729] = v8;
+      v10 = *v7;
+      v11 = v7[1];
+      if (v11 != 0) {
+        goto LABEL_4;
+      }
+    }
+    v5[730] = v10;
+    goto LABEL_7;
+  }
+  return v3 == v4;
+}
+
+__int64 snd_Slot_destroySeqVoice_lambda1_Invoke(__int64 a1, __int64* a2)
+{
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 result;
+
+  v2 = *(_QWORD*)(a1 + 8);
+  v3 = *a2;
+  v4 = *a2;
+  ++*(_DWORD*)(v2 + 5924);
+  result = snd_Voice_isDead(v4);
+  if ((result & 1) == 0) {
+    result = snd_Param_isEnvelopeReleased(v3 + 40);
+    if ((result & 1) == 0) {
+      result = snd_Param_isEnvelopeFading(v3 + 40);
+      if ((result & 1) == 0) {
+        result = snd_Param_isEnvelopeEnded(v3 + 40);
+        if ((result & 1) == 0) {
+          ++*(_DWORD*)(v2 + 5916);
+        }
+      }
+    }
+  }
+  return result;
+}
+
+__int64 snd_Slot_addVibVoice_lambda0_Invoke(__int64 a1, __int64* a2)
+{
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 result;
+
+  v2 = *(_QWORD*)(a1 + 8);
+  v3 = *a2;
+  v4 = *a2;
+  ++*(_DWORD*)(v2 + 5932);
+  result = snd_Voice_isDead(v4);
+  if ((result & 1) == 0) {
+    result = snd_Param_isEnvelopeReleased(v3 + 40);
+    if ((result & 1) == 0) {
+      result = snd_Param_isEnvelopeFading(v3 + 40);
+      if ((result & 1) == 0) {
+        result = snd_Param_isEnvelopeEnded(v3 + 40);
+        if ((result & 1) == 0) {
+          ++*(_DWORD*)(v2 + 5928);
+        }
+      }
+    }
+  }
+  return result;
+}
+
+bool snd_Slot_destroyVibVoice_lambda0_Invoke(__int64 a1, __int64* a2)
+{
+  __int64* v2;
+  __int64 v3;
+  __int64 v4;
+  _QWORD* v5;
+  __int64 v6;
+  __int64* v7;
+  __int64 v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  void (***v13)(_QWORD);
+  __int64 v14;
+  unsigned __int64 v15;
+  unsigned __int16 v16;
+
+  v2 = *(__int64**)(a1 + 8);
+  v3 = *a2;
+  v4 = *v2;
+  if (*a2 == *v2) {
+    v5 = *(_QWORD**)(a1 + 16);
+    v6 = v5[736];
+    v7 = (__int64*)(v6 + v3);
+    v9 = *(_QWORD*)(v6 + v3);
+    v8 = *(_QWORD*)(v6 + v3 + 8);
+    if (v9 != 0) {
+      *(_QWORD*)(v6 + v9 + 8) = v8;
+      v6 = v5[736];
+      v7 = (__int64*)(v6 + v3);
+      v10 = *(_QWORD*)(v6 + v3);
+      v11 = *(_QWORD*)(v6 + v3 + 8);
+      if (v11 != 0) {
+      LABEL_4:
+        *(_QWORD*)(v6 + v11) = v10;
+        v7 = (__int64*)(v5[736] + v3);
+      LABEL_7:
+        *v7 = 0;
+        *(_QWORD*)(v5[736] + v3 + 8) = 0;
+        v12 = v5[4];
+        v13 = **(void (*****)(_QWORD))(a1 + 8);
+        (**v13)(v13);
+        nn_os_LockMutex(v12 + 2800);
+        v14 = *(_QWORD*)(v12 + 2784);
+        v15 = ((unsigned __int64)v13 - *(_QWORD*)(v12 + 2776)) / 0x1808;
+        v16 = *(_WORD*)(v12 + 2792) - 1;
+        *(_WORD*)(v12 + 2792) = v16;
+        *(_WORD*)(v14 + 2LL * v16) = v15;
+        nn_os_UnlockMutex(v12 + 2800);
+        return v3 == v4;
+      }
+    }
+    else {
+      v5[734] = v8;
+      v10 = *v7;
+      v11 = v7[1];
+      if (v11 != 0) {
+        goto LABEL_4;
+      }
+    }
+    v5[735] = v10;
+    goto LABEL_7;
+  }
+  return v3 == v4;
+}
+
+__int64 snd_Slot_destroyVibVoice_lambda1_Invoke(__int64 a1, __int64* a2)
+{
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 result;
+
+  v2 = *(_QWORD*)(a1 + 8);
+  v3 = *a2;
+  v4 = *a2;
+  ++*(_DWORD*)(v2 + 5932);
+  result = snd_Voice_isDead(v4);
+  if ((result & 1) == 0) {
+    result = snd_Param_isEnvelopeReleased(v3 + 40);
+    if ((result & 1) == 0) {
+      result = snd_Param_isEnvelopeFading(v3 + 40);
+      if ((result & 1) == 0) {
+        result = snd_Param_isEnvelopeEnded(v3 + 40);
+        if ((result & 1) == 0) {
+          ++*(_DWORD*)(v2 + 5928);
+        }
+      }
+    }
+  }
+  return result;
+}
+
+void snd_Slot_checkPriority_lambda0_Invoke_1394a0(__int64 a1, _QWORD* a2)
+{
+  _QWORD* v2;
+  unsigned __int64* v4;
+  unsigned __int64 v5;
+
+  v2 = (_QWORD*)*a2;
+  if ((snd_Voice_isDead(*a2) & 1) == 0 &&
+      (snd_Param_isEnvelopeReleased(v2 + 5) & 1) == 0 &&
+      (snd_Param_isEnvelopeFading(v2 + 5) & 1) == 0 &&
+      (snd_Param_isEnvelopeEnded(v2 + 5) & 1) == 0 &&
+      (*(float (**)(_QWORD*))(v2[5] + 328LL))(v2 + 5) == 0.0 &&
+      (*(unsigned int (**)(_QWORD*))(*v2 + 744LL))(v2) ==
+          *(_DWORD*)(**(_QWORD**)(a1 + 8) + 16LL)) {
+    ++**(_DWORD**)(a1 + 16);
+    if (v2[701] != *(_QWORD*)(**(_QWORD**)(a1 + 24) + 5608LL)) {
+      v4 = *(unsigned __int64**)(a1 + 32);
+      v5 = v2[703];
+      if (v5 > *v4) {
+        *v4 = v5;
+        **(_QWORD**)(a1 + 40) = v2;
+      }
+    }
+  }
+}
+
+void snd_Slot_checkPriority_lambda1_Invoke_139660(__int64 a1, _QWORD* a2)
+{
+  _QWORD* v2;
+  unsigned __int64* v4;
+  unsigned __int64 v5;
+
+  v2 = (_QWORD*)*a2;
+  if ((snd_Voice_isDead(*a2) & 1) == 0 &&
+      (snd_Param_isEnvelopeReleased(v2 + 5) & 1) == 0 &&
+      (snd_Param_isEnvelopeFading(v2 + 5) & 1) == 0 &&
+      (snd_Param_isEnvelopeEnded(v2 + 5) & 1) == 0 &&
+      (*(float (**)(_QWORD*))(v2[5] + 328LL))(v2 + 5) == 0.0 &&
+      (*(unsigned int (**)(_QWORD*))(*v2 + 744LL))(v2) ==
+          *(_DWORD*)(**(_QWORD**)(a1 + 8) + 16LL)) {
+    ++**(_DWORD**)(a1 + 16);
+    if (v2[701] != *(_QWORD*)(**(_QWORD**)(a1 + 24) + 5608LL)) {
+      v4 = *(unsigned __int64**)(a1 + 32);
+      v5 = v2[703];
+      if (v5 > *v4) {
+        *v4 = v5;
+        **(_QWORD**)(a1 + 40) = v2;
+      }
+    }
+  }
+}
+
+void snd_Slot_checkPriority_lambda2_Invoke_139800(__int64 a1, _QWORD* a2)
+{
+  _QWORD* v2;
+
+  v2 = (_QWORD*)*a2;
+  if ((snd_Voice_isDead(*a2) & 1) == 0 &&
+      (snd_Param_isEnvelopeReleased(v2 + 5) & 1) == 0 &&
+      (snd_Param_isEnvelopeFading(v2 + 5) & 1) == 0 &&
+      (snd_Param_isEnvelopeEnded(v2 + 5) & 1) == 0 &&
+      (*(float (**)(_QWORD*))(v2[5] + 328LL))(v2 + 5) == 0.0 &&
+      (*(unsigned int (**)(_QWORD*))(*v2 + 744LL))(v2) ==
+          *(_DWORD*)(**(_QWORD**)(a1 + 8) + 16LL)) {
+    ++**(_DWORD**)(a1 + 16);
+  }
+}
+
+void snd_Slot_checkPriority_lambda3_Invoke_139960(__int64 a1, _QWORD* a2)
+{
+  _QWORD* v2;
+
+  v2 = (_QWORD*)*a2;
+  if ((snd_Voice_isDead(*a2) & 1) == 0 &&
+      (snd_Param_isEnvelopeReleased(v2 + 5) & 1) == 0 &&
+      (snd_Param_isEnvelopeFading(v2 + 5) & 1) == 0 &&
+      (snd_Param_isEnvelopeEnded(v2 + 5) & 1) == 0 &&
+      (*(float (**)(_QWORD*))(v2[5] + 328LL))(v2 + 5) == 0.0 &&
+      (*(unsigned int (**)(_QWORD*))(*v2 + 744LL))(v2) ==
+          *(_DWORD*)(**(_QWORD**)(a1 + 8) + 16LL)) {
+    ++**(_DWORD**)(a1 + 16);
+  }
+}
+
+void snd_Slot_checkPriority_lambda4_Invoke_139ad0(_QWORD** a1, _QWORD* a2)
+{
+  _QWORD* v2;
+  unsigned __int64* v4;
+  unsigned __int64 v5;
+
+  v2 = (_QWORD*)*a2;
+  if ((snd_Voice_isDead(*a2) & 1) == 0 &&
+      (snd_Param_isEnvelopeReleased(v2 + 5) & 1) == 0 &&
+      (snd_Param_isEnvelopeFading(v2 + 5) & 1) == 0 &&
+      (snd_Param_isEnvelopeEnded(v2 + 5) & 1) == 0 &&
+      (*(float (**)(_QWORD*))(v2[5] + 328LL))(v2 + 5) == 0.0 &&
+      (*(unsigned int (**)(_QWORD*))(*v2 + 744LL))(v2) ==
+          *(_DWORD*)(*a1[1] + 16LL) &&
+      v2[701] != *(_QWORD*)(*a1[2] + 5608LL)) {
+    v4 = a1[3];
+    v5 = v2[703];
+    if (v5 < *v4) {
+      *v4 = v5;
+      *a1[4] = v2;
+    }
+  }
+}
+
+void snd_Slot_checkPriority_lambda5_Invoke_139c70(_QWORD** a1, _QWORD* a2)
+{
+  _QWORD* v2;
+  unsigned __int64* v4;
+  unsigned __int64 v5;
+
+  v2 = (_QWORD*)*a2;
+  if ((snd_Voice_isDead(*a2) & 1) == 0 &&
+      (snd_Param_isEnvelopeReleased(v2 + 5) & 1) == 0 &&
+      (snd_Param_isEnvelopeFading(v2 + 5) & 1) == 0 &&
+      (snd_Param_isEnvelopeEnded(v2 + 5) & 1) == 0 &&
+      (*(float (**)(_QWORD*))(v2[5] + 328LL))(v2 + 5) == 0.0 &&
+      (*(unsigned int (**)(_QWORD*))(*v2 + 744LL))(v2) ==
+          *(_DWORD*)(*a1[1] + 16LL) &&
+      v2[701] != *(_QWORD*)(*a1[2] + 5608LL)) {
+    v4 = a1[3];
+    v5 = v2[703];
+    if (v5 < *v4) {
+      *v4 = v5;
+      *a1[4] = v2;
+    }
+  }
+}
+
+void snd_Slot_checkPriority_lambda6_Invoke_139e00(__int64 a1, _QWORD* a2)
+{
+  _QWORD* v2;
+  int v4;
+  __int64 v5;
+  int v6;
+
+  v2 = (_QWORD*)*a2;
+  if ((snd_Voice_isDead(*a2) & 1) == 0 &&
+      (snd_Param_isEnvelopeReleased(v2 + 5) & 1) == 0 &&
+      (snd_Param_isEnvelopeFading(v2 + 5) & 1) == 0 &&
+      (snd_Param_isEnvelopeEnded(v2 + 5) & 1) == 0 &&
+      (*(float (**)(_QWORD*))(v2[5] + 328LL))(v2 + 5) == 0.0 &&
+      v2[701] != *(_QWORD*)(**(_QWORD**)(a1 + 8) + 5608LL)) {
+    ++**(_DWORD**)(a1 + 16);
+    v4 = (*(__int64 (**)(_QWORD*))(v2[5] + 344LL))(v2 + 5);
+    if (v4 < (*(int (**)(__int64))(*(_QWORD*)(**(_QWORD**)(a1 + 8) + 40LL) +
+                                   344LL))(**(_QWORD**)(a1 + 8) + 40LL)) {
+      v5 = *(_QWORD*)(a1 + 8);
+    LABEL_9:
+      *(_QWORD*)v5 = v2;
+      return;
+    }
+    v6 = (*(__int64 (**)(_QWORD*))(v2[5] + 344LL))(v2 + 5);
+    if (v6 ==
+        (*(unsigned int (**)(__int64))(*(_QWORD*)(**(_QWORD**)(a1 + 8) + 40LL) +
+                                       344LL))(**(_QWORD**)(a1 + 8) + 40LL)) {
+      v5 = *(_QWORD*)(a1 + 8);
+      if (v2[703] < *(_QWORD*)(*(_QWORD*)v5 + 5624LL)) {
+        goto LABEL_9;
+      }
+    }
+  }
+}
+
+void snd_Slot_checkPriority_lambda0_Invoke_13a010(__int64 a1, _QWORD* a2)
+{
+  _QWORD* v2;
+  unsigned __int64* v4;
+  unsigned __int64 v5;
+
+  v2 = (_QWORD*)*a2;
+  if ((snd_Voice_isDead(*a2) & 1) == 0 &&
+      (snd_Param_isEnvelopeReleased(v2 + 5) & 1) == 0 &&
+      (snd_Param_isEnvelopeFading(v2 + 5) & 1) == 0 &&
+      (snd_Param_isEnvelopeEnded(v2 + 5) & 1) == 0 &&
+      (*(float (**)(_QWORD*))(v2[5] + 328LL))(v2 + 5) == 0.0 &&
+      (*(unsigned int (**)(_QWORD*))(*v2 + 744LL))(v2) ==
+          *(_DWORD*)(**(_QWORD**)(a1 + 8) + 40LL)) {
+    ++**(_DWORD**)(a1 + 16);
+    if (v2[701] != *(_QWORD*)(**(_QWORD**)(a1 + 24) + 5608LL)) {
+      v4 = *(unsigned __int64**)(a1 + 32);
+      v5 = v2[703];
+      if (v5 > *v4) {
+        *v4 = v5;
+        **(_QWORD**)(a1 + 40) = v2;
+      }
+    }
+  }
+}
+
+void snd_Slot_checkPriority_lambda1_Invoke_13a1d0(__int64 a1, _QWORD* a2)
+{
+  _QWORD* v2;
+  unsigned __int64* v4;
+  unsigned __int64 v5;
+
+  v2 = (_QWORD*)*a2;
+  if ((snd_Voice_isDead(*a2) & 1) == 0 &&
+      (snd_Param_isEnvelopeReleased(v2 + 5) & 1) == 0 &&
+      (snd_Param_isEnvelopeFading(v2 + 5) & 1) == 0 &&
+      (snd_Param_isEnvelopeEnded(v2 + 5) & 1) == 0 &&
+      (*(float (**)(_QWORD*))(v2[5] + 328LL))(v2 + 5) == 0.0 &&
+      (*(unsigned int (**)(_QWORD*))(*v2 + 744LL))(v2) ==
+          *(_DWORD*)(**(_QWORD**)(a1 + 8) + 40LL)) {
+    ++**(_DWORD**)(a1 + 16);
+    if (v2[701] != *(_QWORD*)(**(_QWORD**)(a1 + 24) + 5608LL)) {
+      v4 = *(unsigned __int64**)(a1 + 32);
+      v5 = v2[703];
+      if (v5 > *v4) {
+        *v4 = v5;
+        **(_QWORD**)(a1 + 40) = v2;
+      }
+    }
+  }
+}
+
+__int64 snd_Slot_checkPriority_lambda2_Invoke_13a370(__int64 a1, _QWORD* a2)
+{
+  __int64 v2;
+  __int64 result;
+
+  v2 = *a2;
+  result = snd_Voice_isDead(*a2);
+  if ((result & 1) == 0) {
+    result = snd_Param_isEnvelopeReleased(v2 + 40);
+    if ((result & 1) == 0) {
+      result = snd_Param_isEnvelopeFading(v2 + 40);
+      if ((result & 1) == 0) {
+        result = snd_Param_isEnvelopeEnded(v2 + 40);
+        if ((result & 1) == 0) {
+          result = (*(__int64 (**)(__int64))(*(_QWORD*)v2 + 744LL))(v2);
+          if ((_DWORD)result == *(_DWORD*)(**(_QWORD**)(a1 + 8) + 40LL)) {
+            ++**(_DWORD**)(a1 + 16);
+          }
+        }
+      }
+    }
+  }
+  return result;
+}
+
+__int64 snd_Slot_checkPriority_lambda3_Invoke_13a4c0(__int64 a1, _QWORD* a2)
+{
+  __int64 v2;
+  __int64 result;
+
+  v2 = *a2;
+  result = snd_Voice_isDead(*a2);
+  if ((result & 1) == 0) {
+    result = snd_Param_isEnvelopeReleased(v2 + 40);
+    if ((result & 1) == 0) {
+      result = snd_Param_isEnvelopeFading(v2 + 40);
+      if ((result & 1) == 0) {
+        result = snd_Param_isEnvelopeEnded(v2 + 40);
+        if ((result & 1) == 0) {
+          result = (*(__int64 (**)(__int64))(*(_QWORD*)v2 + 744LL))(v2);
+          if ((_DWORD)result == *(_DWORD*)(**(_QWORD**)(a1 + 8) + 40LL)) {
+            ++**(_DWORD**)(a1 + 16);
+          }
+        }
+      }
+    }
+  }
+  return result;
+}
+
+__int64 snd_Slot_checkPriority_lambda4_Invoke_13a620(_QWORD** a1, _QWORD* a2)
+{
+  _QWORD* v2;
+  __int64 result;
+  unsigned __int64* v5;
+  unsigned __int64 v6;
+
+  v2 = (_QWORD*)*a2;
+  result = snd_Voice_isDead(*a2);
+  if ((result & 1) == 0) {
+    result = snd_Param_isEnvelopeReleased(v2 + 5);
+    if ((result & 1) == 0) {
+      result = snd_Param_isEnvelopeFading(v2 + 5);
+      if ((result & 1) == 0) {
+        result = snd_Param_isEnvelopeEnded(v2 + 5);
+        if ((result & 1) == 0) {
+          result = (*(__int64 (**)(_QWORD*))(*v2 + 744LL))(v2);
+          if ((_DWORD)result == *(_DWORD*)(*a1[1] + 40LL) &&
+              v2[701] != *(_QWORD*)(*a1[2] + 5608LL)) {
+            v5 = a1[3];
+            v6 = v2[703];
+            if (v6 < *v5) {
+              *v5 = v6;
+              *a1[4] = v2;
+            }
+          }
+        }
+      }
+    }
+  }
+  return result;
+}
+
+__int64 snd_Slot_checkPriority_lambda5_Invoke_13a7a0(_QWORD** a1, _QWORD* a2)
+{
+  _QWORD* v2;
+  __int64 result;
+  unsigned __int64* v5;
+  unsigned __int64 v6;
+
+  v2 = (_QWORD*)*a2;
+  result = snd_Voice_isDead(*a2);
+  if ((result & 1) == 0) {
+    result = snd_Param_isEnvelopeReleased(v2 + 5);
+    if ((result & 1) == 0) {
+      result = snd_Param_isEnvelopeFading(v2 + 5);
+      if ((result & 1) == 0) {
+        result = snd_Param_isEnvelopeEnded(v2 + 5);
+        if ((result & 1) == 0) {
+          result = (*(__int64 (**)(_QWORD*))(*v2 + 744LL))(v2);
+          if ((_DWORD)result == *(_DWORD*)(*a1[1] + 40LL) &&
+              v2[701] != *(_QWORD*)(*a1[2] + 5608LL)) {
+            v5 = a1[3];
+            v6 = v2[703];
+            if (v6 < *v5) {
+              *v5 = v6;
+              *a1[4] = v2;
+            }
+          }
+        }
+      }
+    }
+  }
+  return result;
+}
+
+void snd_Slot_checkPriority_lambda6_Invoke_13a910(__int64 a1, _QWORD* a2)
+{
+  _QWORD* v2;
+  int v4;
+  __int64 v5;
+  int v6;
+
+  v2 = (_QWORD*)*a2;
+  if ((snd_Voice_isDead(*a2) & 1) == 0 &&
+      (snd_Param_isEnvelopeReleased(v2 + 5) & 1) == 0 &&
+      (snd_Param_isEnvelopeFading(v2 + 5) & 1) == 0 &&
+      (snd_Param_isEnvelopeEnded(v2 + 5) & 1) == 0 &&
+      (*(float (**)(_QWORD*))(v2[5] + 328LL))(v2 + 5) == 0.0 &&
+      v2[701] != *(_QWORD*)(**(_QWORD**)(a1 + 8) + 5608LL)) {
+    ++**(_DWORD**)(a1 + 16);
+    v4 = (*(__int64 (**)(_QWORD*))(v2[5] + 344LL))(v2 + 5);
+    if (v4 < (*(int (**)(__int64))(*(_QWORD*)(**(_QWORD**)(a1 + 8) + 40LL) +
+                                   344LL))(**(_QWORD**)(a1 + 8) + 40LL)) {
+      v5 = *(_QWORD*)(a1 + 8);
+    LABEL_9:
+      *(_QWORD*)v5 = v2;
+      return;
+    }
+    v6 = (*(__int64 (**)(_QWORD*))(v2[5] + 344LL))(v2 + 5);
+    if (v6 ==
+        (*(unsigned int (**)(__int64))(*(_QWORD*)(**(_QWORD**)(a1 + 8) + 40LL) +
+                                       344LL))(**(_QWORD**)(a1 + 8) + 40LL)) {
+      v5 = *(_QWORD*)(a1 + 8);
+      if (v2[703] < *(_QWORD*)(*(_QWORD*)v5 + 5624LL)) {
+        goto LABEL_9;
+      }
+    }
+  }
+}
+
+__int64 snd_Slot_checkPriority_lambda0_Invoke_13ab20(__int64 a1, _QWORD* a2)
+{
+  _QWORD* v2;
+  __int64 result;
+  unsigned __int64* v5;
+  unsigned __int64 v6;
+
+  v2 = (_QWORD*)*a2;
+  result = snd_Voice_isDead(*a2);
+  if ((result & 1) == 0) {
+    result = snd_Param_isEnvelopeReleased(v2 + 5);
+    if ((result & 1) == 0) {
+      result = snd_Param_isEnvelopeFading(v2 + 5);
+      if ((result & 1) == 0) {
+        result = snd_Param_isEnvelopeEnded(v2 + 5);
+        if ((result & 1) == 0) {
+          result = (*(__int64 (**)(_QWORD*))(*v2 + 744LL))(v2);
+          if ((_DWORD)result == *(_DWORD*)(**(_QWORD**)(a1 + 8) + 4LL)) {
+            ++**(_DWORD**)(a1 + 16);
+            if (v2[701] != *(_QWORD*)(**(_QWORD**)(a1 + 24) + 5608LL)) {
+              v5 = *(unsigned __int64**)(a1 + 32);
+              v6 = v2[703];
+              if (v6 > *v5) {
+                *v5 = v6;
+                **(_QWORD**)(a1 + 40) = v2;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  return result;
+}
+
+__int64 snd_Slot_checkPriority_lambda1_Invoke_13aca0(__int64 a1, _QWORD* a2)
+{
+  __int64 v2;
+  __int64 result;
+
+  v2 = *a2;
+  result = snd_Voice_isDead(*a2);
+  if ((result & 1) == 0) {
+    result = snd_Param_isEnvelopeReleased(v2 + 40);
+    if ((result & 1) == 0) {
+      result = snd_Param_isEnvelopeFading(v2 + 40);
+      if ((result & 1) == 0) {
+        result = snd_Param_isEnvelopeEnded(v2 + 40);
+        if ((result & 1) == 0) {
+          result = (*(__int64 (**)(__int64))(*(_QWORD*)v2 + 744LL))(v2);
+          if ((_DWORD)result == *(_DWORD*)(**(_QWORD**)(a1 + 8) + 4LL)) {
+            ++**(_DWORD**)(a1 + 16);
+          }
+        }
+      }
+    }
+  }
+  return result;
+}
+
+__int64 snd_Slot_checkPriority_lambda2_Invoke_13ae00(_QWORD** a1, _QWORD* a2)
+{
+  _QWORD* v2;
+  __int64 result;
+  unsigned __int64* v5;
+  unsigned __int64 v6;
+
+  v2 = (_QWORD*)*a2;
+  result = snd_Voice_isDead(*a2);
+  if ((result & 1) == 0) {
+    result = (*(__int64 (**)(_QWORD*))(*v2 + 744LL))(v2);
+    if ((_DWORD)result == *(_DWORD*)(*a1[1] + 4LL) &&
+        v2[701] != *(_QWORD*)(*a1[2] + 5608LL)) {
+      v5 = a1[3];
+      v6 = v2[703];
+      if (v6 < *v5) {
+        *v5 = v6;
+        *a1[4] = v2;
+      }
+    }
+  }
+  return result;
+}
+
+void snd_Slot_checkPriority_lambda3_Invoke_13af50(__int64 a1, _QWORD* a2)
+{
+  _QWORD* v2;
+  int v4;
+  __int64 v5;
+  int v6;
+
+  v2 = (_QWORD*)*a2;
+  if ((snd_Voice_isDead(*a2) & 1) == 0 &&
+      (snd_Param_isEnvelopeReleased(v2 + 5) & 1) == 0 &&
+      (snd_Param_isEnvelopeFading(v2 + 5) & 1) == 0 &&
+      (snd_Param_isEnvelopeEnded(v2 + 5) & 1) == 0 &&
+      (*(float (**)(_QWORD*))(v2[5] + 328LL))(v2 + 5) == 0.0 &&
+      v2[701] != *(_QWORD*)(**(_QWORD**)(a1 + 8) + 5608LL)) {
+    ++**(_DWORD**)(a1 + 16);
+    v4 = (*(__int64 (**)(_QWORD*))(v2[5] + 344LL))(v2 + 5);
+    if (v4 < (*(int (**)(__int64))(*(_QWORD*)(**(_QWORD**)(a1 + 8) + 40LL) +
+                                   344LL))(**(_QWORD**)(a1 + 8) + 40LL)) {
+      v5 = *(_QWORD*)(a1 + 8);
+    LABEL_9:
+      *(_QWORD*)v5 = v2;
+      return;
+    }
+    v6 = (*(__int64 (**)(_QWORD*))(v2[5] + 344LL))(v2 + 5);
+    if (v6 ==
+        (*(unsigned int (**)(__int64))(*(_QWORD*)(**(_QWORD**)(a1 + 8) + 40LL) +
+                                       344LL))(**(_QWORD**)(a1 + 8) + 40LL)) {
+      v5 = *(_QWORD*)(a1 + 8);
+      if (v2[703] < *(_QWORD*)(*(_QWORD*)v5 + 5624LL)) {
+        goto LABEL_9;
+      }
+    }
+  }
+}
+
+bool snd_Slot_getVoiceNoActorCheck_lambda0_Invoke(__int64 a1, _QWORD* a2)
+{
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+
+  v2 = *(_QWORD*)(a1 + 8);
+  v3 = (*(__int64 (**)(_QWORD))(*(_QWORD*)*a2 + 24LL))(*a2);
+  v4 = strlen(v3);
+  v6 = *(_BYTE*)v2 >> 1;
+  if ((*(_BYTE*)v2 & 1) != 0) {
+    v6 = *(_QWORD*)(v2 + 8);
+  }
+  if (v4 != v6) {
+    return false;
+  }
+  v7 = v4;
+  if (v4 == -1) {
+    GameRoutine_a36650(-1, v5);
+  }
+  if ((*(_BYTE*)v2 & 1) != 0) {
+    v8 = *(_QWORD*)(v2 + 16);
+  }
+  else {
+    v8 = v2 + 1;
+  }
+  return (unsigned int)memcmp(v8, v3, v7) == 0;
+}
+
+bool snd_Slot_getVoiceNoActorCheck_lambda1_Invoke(__int64 a1, _QWORD* a2)
+{
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+
+  v2 = *(_QWORD*)(a1 + 8);
+  v3 = (*(__int64 (**)(_QWORD))(*(_QWORD*)*a2 + 24LL))(*a2);
+  v4 = strlen(v3);
+  v6 = *(_BYTE*)v2 >> 1;
+  if ((*(_BYTE*)v2 & 1) != 0) {
+    v6 = *(_QWORD*)(v2 + 8);
+  }
+  if (v4 != v6) {
+    return false;
+  }
+  v7 = v4;
+  if (v4 == -1) {
+    GameRoutine_a36650(-1, v5);
+  }
+  if ((*(_BYTE*)v2 & 1) != 0) {
+    v8 = *(_QWORD*)(v2 + 16);
+  }
+  else {
+    v8 = v2 + 1;
+  }
+  return (unsigned int)memcmp(v8, v3, v7) == 0;
+}
+
+bool snd_Slot_getVoiceNoActorCheck_lambda2_Invoke(__int64 a1, _QWORD* a2)
+{
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+
+  v2 = *(_QWORD*)(a1 + 8);
+  v3 = (*(__int64 (**)(_QWORD))(*(_QWORD*)*a2 + 24LL))(*a2);
+  v4 = strlen(v3);
+  v6 = *(_BYTE*)v2 >> 1;
+  if ((*(_BYTE*)v2 & 1) != 0) {
+    v6 = *(_QWORD*)(v2 + 8);
+  }
+  if (v4 != v6) {
+    return false;
+  }
+  v7 = v4;
+  if (v4 == -1) {
+    GameRoutine_a36650(-1, v5);
+  }
+  if ((*(_BYTE*)v2 & 1) != 0) {
+    v8 = *(_QWORD*)(v2 + 16);
+  }
+  else {
+    v8 = v2 + 1;
+  }
+  return (unsigned int)memcmp(v8, v3, v7) == 0;
+}
+
+__int64 snd_Slot_stop_lambda0_Invoke_13b530(__int64 a1, _QWORD* a2)
+{
+  return (*(__int64 (**)(_QWORD, _QWORD, _QWORD, _QWORD, double))(
+      *(_QWORD*)*a2 + 240LL))(*a2, *(_QWORD*)(a1 + 8), *(_QWORD*)(a1 + 16), 0,
+                              0.0);
+}
+
+__int64 snd_Slot_stop_lambda1_Invoke_13b610(__int64 a1, _QWORD* a2)
+{
+  return (*(__int64 (**)(_QWORD, _QWORD, _QWORD, _QWORD, double))(
+      *(_QWORD*)*a2 + 240LL))(*a2, *(_QWORD*)(a1 + 8), *(_QWORD*)(a1 + 16), 0,
+                              0.0);
+}
+
+__int64 snd_Slot_stop_lambda2_Invoke_13b6f0(__int64 a1, _QWORD* a2)
+{
+  return (*(__int64 (**)(_QWORD, _QWORD, _QWORD, _QWORD, double))(
+      *(_QWORD*)*a2 + 240LL))(*a2, *(_QWORD*)(a1 + 8), *(_QWORD*)(a1 + 16), 0,
+                              0.0);
+}
+
+__int64 snd_Slot_stop_lambda0_Invoke_13b7d0(__int64 a1, _QWORD* a2)
+{
+  return (*(__int64 (**)(_QWORD, _QWORD, _QWORD, double))(
+      *(_QWORD*)*a2 + 248LL))(*a2, *(_QWORD*)(a1 + 8), 0, 0.0);
+}
+
+__int64 snd_Slot_stop_lambda1_Invoke_13b8b0(__int64 a1, _QWORD* a2)
+{
+  return (*(__int64 (**)(_QWORD, _QWORD, _QWORD, double))(
+      *(_QWORD*)*a2 + 248LL))(*a2, *(_QWORD*)(a1 + 8), 0, 0.0);
+}
+
+__int64 snd_Slot_stop_lambda2_Invoke_13b990(__int64 a1, _QWORD* a2)
+{
+  return (*(__int64 (**)(_QWORD, _QWORD, _QWORD, double))(
+      *(_QWORD*)*a2 + 248LL))(*a2, *(_QWORD*)(a1 + 8), 0, 0.0);
+}
+
+__int64 snd_Slot_stopSoundKind_lambda0_Invoke(__int64 a1, __int64* a2)
+{
+  __int64 v2;
+  __int64 result;
+
+  v2 = *a2;
+  result = (*(__int64 (**)(__int64, _QWORD))(*(_QWORD*)v2 + 664LL))(
+      v2, *(unsigned int*)(a1 + 8));
+  if ((result & 1) != 0) {
+    return (*(__int64 (**)(__int64, _QWORD, _QWORD, double))(
+        *(_QWORD*)v2 + 248LL))(v2, *(_QWORD*)(a1 + 16), 0, 0.0);
+  }
+  return result;
+}
+
+__int64 snd_Slot_stopSoundKind_lambda1_Invoke(__int64 a1, __int64* a2)
+{
+  __int64 v2;
+  __int64 result;
+
+  v2 = *a2;
+  result = (*(__int64 (**)(__int64, _QWORD))(*(_QWORD*)v2 + 664LL))(
+      v2, *(unsigned int*)(a1 + 8));
+  if ((result & 1) != 0) {
+    return (*(__int64 (**)(__int64, _QWORD, _QWORD, double))(
+        *(_QWORD*)v2 + 248LL))(v2, *(_QWORD*)(a1 + 16), 0, 0.0);
+  }
+  return result;
+}
+
+__int64 snd_Slot_stopSoundKind_lambda2_Invoke(__int64 a1, __int64* a2)
+{
+  __int64 v2;
+  __int64 result;
+
+  v2 = *a2;
+  result = (*(__int64 (**)(__int64, _QWORD))(*(_QWORD*)v2 + 664LL))(
+      v2, *(unsigned int*)(a1 + 8));
+  if ((result & 1) != 0) {
+    return (*(__int64 (**)(__int64, _QWORD, _QWORD, double))(
+        *(_QWORD*)v2 + 248LL))(v2, *(_QWORD*)(a1 + 16), 0, 0.0);
+  }
+  return result;
+}
+
+__int64 snd_Slot_kill_lambda0_Invoke(__int64 a1, _QWORD* a2)
+{
+  return (*(__int64 (**)(_QWORD, _QWORD))(*(_QWORD*)*a2 + 256LL))(
+      *a2, *(_QWORD*)(a1 + 8));
+}
+
+__int64 snd_Slot_kill_lambda1_Invoke(__int64 a1, _QWORD* a2)
+{
+  return (*(__int64 (**)(_QWORD, _QWORD))(*(_QWORD*)*a2 + 256LL))(
+      *a2, *(_QWORD*)(a1 + 8));
+}
+
+__int64 snd_Slot_kill_lambda2_Invoke(__int64 a1, _QWORD* a2)
+{
+  return (*(__int64 (**)(_QWORD, _QWORD))(*(_QWORD*)*a2 + 256LL))(
+      *a2, *(_QWORD*)(a1 + 8));
+}
+
+__int64 snd_Slot_mute_lambda0_Clone(__int64 a1)
+{
+  __int64 v2;
+
+  v2 = GameRoutine_651190(0xD8u);
+  *(_QWORD*)v2 = GameData_1f5a178;
+  snd_Fade_Fade_10cd70(v2 + 8, a1 + 8);
+  *(_BYTE*)(v2 + 208) = *(_BYTE*)(a1 + 208);
+  return v2;
+}
+
+void snd_Slot_mute_lambda0_CloneInto(__int64 a1, __int64 a2)
+{
+  *(_QWORD*)a2 = GameData_1f5a178;
+  snd_Fade_Fade_10cd70(a2 + 8, a1 + 8);
+  *(_BYTE*)(a2 + 208) = *(_BYTE*)(a1 + 208);
+}
+
+_QWORD* snd_Slot_mute_lambda0_Invoke(__int64 a1, _QWORD** a2)
+{
+  return (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD, __int64, _QWORD))(
+      **a2 + 280LL))(*a2, *a2, a1 + 8, *(unsigned __int8*)(a1 + 208));
+}
+
+__int64 snd_Slot_mute_lambda1_Clone(__int64 a1)
+{
+  __int64 v2;
+
+  v2 = GameRoutine_651190(0xD8u);
+  *(_QWORD*)v2 = GameData_1f5a1f8;
+  snd_Fade_Fade_10cd70(v2 + 8, a1 + 8);
+  *(_BYTE*)(v2 + 208) = *(_BYTE*)(a1 + 208);
+  return v2;
+}
+
+void snd_Slot_mute_lambda1_CloneInto(__int64 a1, __int64 a2)
+{
+  *(_QWORD*)a2 = GameData_1f5a1f8;
+  snd_Fade_Fade_10cd70(a2 + 8, a1 + 8);
+  *(_BYTE*)(a2 + 208) = *(_BYTE*)(a1 + 208);
+}
+
+_QWORD* snd_Slot_mute_lambda1_Invoke(__int64 a1, _QWORD** a2)
+{
+  return (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD, __int64, _QWORD))(
+      **a2 + 280LL))(*a2, *a2, a1 + 8, *(unsigned __int8*)(a1 + 208));
+}
+
+__int64 snd_Slot_mute_lambda2_Clone(__int64 a1)
+{
+  __int64 v2;
+
+  v2 = GameRoutine_651190(0xD8u);
+  *(_QWORD*)v2 = GameData_1f5a278;
+  snd_Fade_Fade_10cd70(v2 + 8, a1 + 8);
+  *(_BYTE*)(v2 + 208) = *(_BYTE*)(a1 + 208);
+  return v2;
+}
+
+void snd_Slot_mute_lambda2_CloneInto(__int64 a1, __int64 a2)
+{
+  *(_QWORD*)a2 = GameData_1f5a278;
+  snd_Fade_Fade_10cd70(a2 + 8, a1 + 8);
+  *(_BYTE*)(a2 + 208) = *(_BYTE*)(a1 + 208);
+}
+
+_QWORD* snd_Slot_mute_lambda2_Invoke(__int64 a1, _QWORD** a2)
+{
+  return (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD, __int64, _QWORD))(
+      **a2 + 280LL))(*a2, *a2, a1 + 8, *(unsigned __int8*)(a1 + 208));
+}
+
+_QWORD* snd_Slot_resumeMute_lambda0_Invoke(__int64 a1, _QWORD** a2)
+{
+  return (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD, __int64))(
+      **a2 + 296LL))(*a2, *a2, a1 + 8);
+}
+
+_QWORD* snd_Slot_resumeMute_lambda1_Invoke(__int64 a1, _QWORD** a2)
+{
+  return (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD, __int64))(
+      **a2 + 296LL))(*a2, *a2, a1 + 8);
+}
+
+_QWORD* snd_Slot_resumeMute_lambda2_Invoke(__int64 a1, _QWORD** a2)
+{
+  return (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD, __int64))(
+      **a2 + 296LL))(*a2, *a2, a1 + 8);
+}
+
+_QWORD* snd_Slot_pause_lambda0_Invoke(__int64 a1, _QWORD** a2)
+{
+  return (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD, __int64, _QWORD))(
+      **a2 + 312LL))(*a2, *a2, a1 + 8, 0);
+}
+
+_QWORD* snd_Slot_pause_lambda1_Invoke(__int64 a1, _QWORD** a2)
+{
+  return (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD, __int64, _QWORD))(
+      **a2 + 312LL))(*a2, *a2, a1 + 8, 0);
+}
+
+_QWORD* snd_Slot_pause_lambda2_Invoke(__int64 a1, _QWORD** a2)
+{
+  return (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD, __int64, _QWORD))(
+      **a2 + 312LL))(*a2, *a2, a1 + 8, 0);
+}
+
+_QWORD* snd_Slot_resumePause_lambda0_Invoke(__int64 a1, _QWORD** a2)
+{
+  return (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD, __int64))(
+      **a2 + 328LL))(*a2, *a2, a1 + 8);
+}
+
+_QWORD* snd_Slot_resumePause_lambda1_Invoke(__int64 a1, _QWORD** a2)
+{
+  return (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD, __int64))(
+      **a2 + 328LL))(*a2, *a2, a1 + 8);
+}
+
+_QWORD* snd_Slot_resumePause_lambda2_Invoke(__int64 a1, _QWORD** a2)
+{
+  return (*(_QWORD * (**)(_QWORD * __return_ptr, _QWORD, __int64))(
+      **a2 + 328LL))(*a2, *a2, a1 + 8);
+}
+
+__int64 snd_Slot_silent_lambda0_Destructor(_QWORD* a1)
+{
+  *a1 = GameData_1f5a778;
+  return snd_Fade_Destroy_Fade_alt1(a1 + 2);
+}
+
+void snd_Slot_silent_lambda0_DeletingDestructor(_QWORD* a1)
+{
+  *a1 = GameData_1f5a778;
+  snd_Fade_Destroy_Fade(a1 + 2);
+  GameRoutine_651250(a1, 0xD8u);
+}
+
+__int64 snd_Slot_silent_lambda0_Clone(__int64 a1)
+{
+  __int64 v2;
+  int v3;
+  __int64 v4;
+
+  v2 = GameRoutine_651190(0xD8u);
+  v3 = *(_DWORD*)(a1 + 8);
+  v4 = v2;
+  *(_QWORD*)v2 = GameData_1f5a778;
+  *(_DWORD*)(v2 + 8) = v3;
+  snd_Fade_Fade_10cd70(v2 + 16, a1 + 16);
+  return v4;
+}
+
+float snd_Slot_silent_lambda0_CloneInto(__int64 a1, __int64 a2)
+{
+  *(_QWORD*)a2 = GameData_1f5a778;
+  *(_DWORD*)(a2 + 8) = *(_DWORD*)(a1 + 8);
+  return snd_Fade_Fade_10cd70(a2 + 16, a1 + 16);
+}
+
+__int64 snd_Slot_silent_lambda0_Invoke(__int64 a1, _QWORD* a2)
+{
+  return snd_Voice_startPitchChecked(*a2, a1 + 16, *(float*)(a1 + 8));
+}
+
+__int64 snd_Slot_silent_lambda1_Destructor(_QWORD* a1)
+{
+  *a1 = GameData_1f5a7f8;
+  return snd_Fade_Destroy_Fade_alt1(a1 + 2);
+}
+
+void snd_Slot_silent_lambda1_DeletingDestructor(_QWORD* a1)
+{
+  *a1 = GameData_1f5a7f8;
+  snd_Fade_Destroy_Fade(a1 + 2);
+  GameRoutine_651250(a1, 0xD8u);
+}
+
+__int64 snd_Slot_silent_lambda1_Clone(__int64 a1)
+{
+  __int64 v2;
+  int v3;
+  __int64 v4;
+
+  v2 = GameRoutine_651190(0xD8u);
+  v3 = *(_DWORD*)(a1 + 8);
+  v4 = v2;
+  *(_QWORD*)v2 = GameData_1f5a7f8;
+  *(_DWORD*)(v2 + 8) = v3;
+  snd_Fade_Fade_10cd70(v2 + 16, a1 + 16);
+  return v4;
+}
+
+float snd_Slot_silent_lambda1_CloneInto(__int64 a1, __int64 a2)
+{
+  *(_QWORD*)a2 = GameData_1f5a7f8;
+  *(_DWORD*)(a2 + 8) = *(_DWORD*)(a1 + 8);
+  return snd_Fade_Fade_10cd70(a2 + 16, a1 + 16);
+}
+
+__int64 snd_Slot_silent_lambda1_Invoke(__int64 a1, _QWORD* a2)
+{
+  return snd_Voice_startPitchChecked(*a2, a1 + 16, *(float*)(a1 + 8));
+}
+
+__int64 snd_Slot_silent_lambda2_Destructor(_QWORD* a1)
+{
+  *a1 = GameData_1f5a878;
+  return snd_Fade_Destroy_Fade_alt1(a1 + 2);
+}
+
+void snd_Slot_silent_lambda2_DeletingDestructor(_QWORD* a1)
+{
+  *a1 = GameData_1f5a878;
+  snd_Fade_Destroy_Fade(a1 + 2);
+  GameRoutine_651250(a1, 0xD8u);
+}
+
+__int64 snd_Slot_silent_lambda2_Clone(__int64 a1)
+{
+  __int64 v2;
+  int v3;
+  __int64 v4;
+
+  v2 = GameRoutine_651190(0xD8u);
+  v3 = *(_DWORD*)(a1 + 8);
+  v4 = v2;
+  *(_QWORD*)v2 = GameData_1f5a878;
+  *(_DWORD*)(v2 + 8) = v3;
+  snd_Fade_Fade_10cd70(v2 + 16, a1 + 16);
+  return v4;
+}
+
+float snd_Slot_silent_lambda2_CloneInto(__int64 a1, __int64 a2)
+{
+  *(_QWORD*)a2 = GameData_1f5a878;
+  *(_DWORD*)(a2 + 8) = *(_DWORD*)(a1 + 8);
+  return snd_Fade_Fade_10cd70(a2 + 16, a1 + 16);
+}
+
+__int64 snd_Slot_silent_lambda2_Invoke(__int64 a1, _QWORD* a2)
+{
+  return snd_Voice_startPitchChecked(*a2, a1 + 16, *(float*)(a1 + 8));
+}
+
+__int64 snd_Slot_isActive_lambda0_Invoke(__int64 a1, _QWORD* a2)
+{
+  return (*(__int64 (**)(_QWORD, _QWORD))(*(_QWORD*)*a2 + 368LL))(
+      *a2, *(_QWORD*)(a1 + 8));
+}
+
+__int64 snd_Slot_isActive_lambda1_Invoke(__int64 a1, _QWORD* a2)
+{
+  return (*(__int64 (**)(_QWORD, _QWORD))(*(_QWORD*)*a2 + 368LL))(
+      *a2, *(_QWORD*)(a1 + 8));
+}
+
+__int64 snd_Slot_isActive_lambda2_Invoke(__int64 a1, _QWORD* a2)
+{
+  return (*(__int64 (**)(_QWORD, _QWORD))(*(_QWORD*)*a2 + 368LL))(
+      *a2, *(_QWORD*)(a1 + 8));
+}
+
+__int64 snd_Slot_countActiveVoice_lambda0_Invoke(__int64 a1, _QWORD* a2)
+{
+  __int64 v2;
+  __int64 v4;
+  __int64 result;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+
+  v2 = *(_QWORD*)(a1 + 16);
+  v4 = GameRoutine_190240(*a2 + 5736LL);
+  result = strlen(v4);
+  v7 = *(_BYTE*)v2 >> 1;
+  if ((*(_BYTE*)v2 & 1) != 0) {
+    v7 = *(_QWORD*)(v2 + 8);
+  }
+  if (result == v7) {
+    v8 = result;
+    if (result == -1) {
+      GameRoutine_a36650(-1, v6);
+    }
+    if ((*(_BYTE*)v2 & 1) != 0) {
+      v9 = *(_QWORD*)(v2 + 16);
+    }
+    else {
+      v9 = v2 + 1;
+    }
+    result = memcmp(v9, v4, v8);
+    if ((_DWORD)result == 0) {
+      ++**(_DWORD**)(a1 + 8);
+    }
+  }
+  return result;
+}
+
+__int64 snd_Slot_countActiveVoice_lambda1_Invoke(__int64 a1, _QWORD** a2)
+{
+  __int64 result;
+
+  result = SeqVoice_12dce0(*a2, *(_QWORD*)(a1 + 16));
+  **(_DWORD**)(a1 + 8) += result;
+  return result;
+}
+
+__int64 snd_Slot_countActiveVoice_lambda2_Invoke(__int64 a1, _QWORD* a2)
+{
+  __int64 v2;
+  __int64 v4;
+  __int64 result;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+
+  v2 = *(_QWORD*)(a1 + 16);
+  v4 = GameRoutine_190240(*a2 + 5736LL);
+  result = strlen(v4);
+  v7 = *(_BYTE*)v2 >> 1;
+  if ((*(_BYTE*)v2 & 1) != 0) {
+    v7 = *(_QWORD*)(v2 + 8);
+  }
+  if (result == v7) {
+    v8 = result;
+    if (result == -1) {
+      GameRoutine_a36650(-1, v6);
+    }
+    if ((*(_BYTE*)v2 & 1) != 0) {
+      v9 = *(_QWORD*)(v2 + 16);
+    }
+    else {
+      v9 = v2 + 1;
+    }
+    result = memcmp(v9, v4, v8);
+    if ((_DWORD)result == 0) {
+      ++**(_DWORD**)(a1 + 8);
+    }
+  }
+  return result;
 }
 
 #pragma GCC visibility pop

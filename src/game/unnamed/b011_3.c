@@ -8,13 +8,9 @@ extern __int64 GameData_212c6a0[3];
 
 extern __int64* GameData_212d468[5];
 
-extern __int64 GameData_212dbb8[9];
-
 extern __int64 GameData_212dbe8[3];
 
 extern __int64 GameData_21c9608;
-
-extern __int64 GameData_21f3ce0;
 
 extern __int64 GameData_21f3d10;
 
@@ -35,8 +31,6 @@ __int64 GameRoutine_a2d8b0(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_cfa2a0(__int64 result, long double);
 
 __int64 GameRoutine_d6e320(__int64 result);
-
-__int64 GameRoutine_d9fe20(_QWORD*);
 
 _QWORD* GameRoutine_da42c0(__int64);
 
@@ -168,26 +162,6 @@ __int64 GameHr_d70690(__int64 a1)
     v2 = *(_QWORD*)(a1 + 152);
   }
   return GameRoutine_d6e320(v2);
-}
-
-__int64 GameHr_da13a0(__int64 a1)
-{
-  _QWORD* v1;
-  __int64 v2;
-  int v3;
-
-  v1 = *(_QWORD**)(a1 + 8);
-  v2 = *(_QWORD*)(*(_QWORD*)GameData_212dbb8[0] + 216LL);
-  if ((*(_BYTE*)(GameData_21f3ce0 + 80) & 1) == 0) {
-    *(_BYTE*)(GameData_21f3ce0 + 80) = 1;
-  }
-  v3 = *(_DWORD*)(v2 + 232);
-  if (v3 <= 2) {
-    v3 = 2;
-  }
-  *(_DWORD*)(v2 + 232) = v3;
-  GameRoutine_f482e0();
-  return GameRoutine_d9fe20(v1);
 }
 
 __int64 GameHr_da7580(__int64 a1)

@@ -26,6 +26,9 @@ void __attribute__((noreturn)) GameRoutine_a5dcd0(_QWORD);
 __int64 MapObjectModule_Destructor(__int64 result);
 __int64 MapObjectModule_a7d220(__int64 result);
 _QWORD* MapObjectModule_a7dcc0(__int64 a1);
+__int64
+MapObjectModule_a7d120_alt1(__int64 result) __asm__("MapObjectModule_a7d120");
+__int64 MapObjectModule_Unknown5(__int64 result);
 
 __int64 MapObjectModule_Destructor(__int64 result)
 {
@@ -363,6 +366,87 @@ __int64 MapObjectModule_a7d220(__int64 result)
         }
         *(_BYTE*)(v1 + 158) = v2;
       }
+    }
+  }
+  return result;
+}
+
+__int64 MapObjectModule_Unknown5(__int64 result)
+{
+  _BOOL4 v1;
+  unsigned __int64 v2;
+  unsigned __int64 v3;
+  int v4;
+  int v5;
+  __int64 v6;
+  int v7;
+  __int64 v8;
+  int v9;
+  __int64 v11;
+  int v12;
+
+  if ((*(_BYTE*)(result + 168) & 1) != 0) {
+    v1 = true;
+  }
+  else {
+    v2 = *(unsigned __int8*)(result + 72);
+    if ((v2 & 1) != 0) {
+      v3 = *(_QWORD*)(result + 80);
+    }
+    else {
+      v3 = v2 >> 1;
+    }
+    v1 = v3 == 0;
+  }
+  if (v1 && (*(_BYTE*)(result + 240) & 1 |
+             (*(_QWORD*)(result + 192) == *(_QWORD*)(result + 200))) != 0) {
+    v4 = *(unsigned __int8*)(result + 18);
+    *(_BYTE*)(result + 18) = v4 | 4;
+    if (v4 != (v4 | 4)) {
+      *(_BYTE*)(*(_QWORD*)(result + 8) + 664LL) = 0;
+    }
+  }
+  else {
+    v5 = *(unsigned __int8*)(result + 154);
+    if (v5 == 1) {
+      *(_BYTE*)(result + 154) = 0;
+    }
+    v6 = *(_QWORD*)(result + 8);
+    v7 = *(unsigned __int8*)(v6 + 288);
+    if (v7 == 1) {
+      v8 = *(_QWORD*)(result + 8);
+      do {
+        v8 = *(_QWORD*)(v8 + 736);
+        v9 = v8 == 0;
+      } while (v8 != 0 && (*(_BYTE*)(v8 + 288) & 1) != 0);
+    }
+    else {
+      v9 = 0;
+    }
+    if (*(unsigned __int8*)(result + 152) != v9 || v5 != 0) {
+      *(_BYTE*)(result + 152) = v9;
+      v11 = result;
+      MapObjectModule_a7d120_alt1(result);
+      v6 = *(_QWORD*)(v11 + 8);
+      result = v11;
+      LOBYTE(v7) = *(_BYTE*)(v6 + 288);
+    }
+    v12 = 0;
+    if (*(_BYTE*)(v6 + 289) == 1 && (v7 & 1) != 0) {
+      if ((*(_BYTE*)(v6 + 300) & 0xFD) == 1) {
+        v12 = 0;
+      }
+      else {
+        do {
+          v6 = *(_QWORD*)(v6 + 736);
+          v12 = v6 == 0;
+        } while (v6 != 0 && *(_BYTE*)(v6 + 289) == 1 &&
+                 *(_BYTE*)(v6 + 288) == 1 && (*(_BYTE*)(v6 + 300) & 0xFD) != 1);
+      }
+    }
+    if (*(unsigned __int8*)(result + 153) != v12 || v5 != 0) {
+      *(_BYTE*)(result + 153) = v12;
+      return MapObjectModule_a7d220(result);
     }
   }
   return result;

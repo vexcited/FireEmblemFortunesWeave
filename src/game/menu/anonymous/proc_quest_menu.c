@@ -47,6 +47,8 @@ __int64 ProcQuestMenu_Destructor(__int64 a1);
 __int64 ProcQuestMenu_Unknown102(__int64 a1);
 __int64 ProcQuestMenu_Unknown128(_QWORD* a1);
 __int64 ProcQuestMenu_Unknown139(__int64 a1, __int64* a2);
+bool game_menu_anonymous_ProcQuestMenu_SortAndFilter_closure_Invoke(__int64 a1,
+                                                                    __int64 a2);
 
 __int64 ProcQuestMenu_Destructor(__int64 a1)
 {
@@ -607,6 +609,12 @@ __int64 ProcQuestMenu_Unknown139(__int64 a1, __int64* a2)
     a2[1] = v7;
   }
   return result;
+}
+
+bool game_menu_anonymous_ProcQuestMenu_SortAndFilter_closure_Invoke(__int64 a1,
+                                                                    __int64 a2)
+{
+  return *(_DWORD*)(*(_QWORD*)a2 + 40LL) == *(_DWORD*)(a1 + 8);
 }
 
 #pragma GCC visibility pop

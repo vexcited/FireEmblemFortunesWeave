@@ -22,6 +22,22 @@ void __attribute__((noreturn)) GameRoutine_60a310(_QWORD, _QWORD);
 __int64 TextTagProcessor_Unknown6(__int64 a1, _DWORD** a2);
 __int64 TextTagProcessor_Unknown4(_QWORD* a1, __int64 a2, __int64* a3,
                                   unsigned int a4);
+__int64 nn_util_PickOutCharacterFromUtf8String(_QWORD, _QWORD);
+__int64 TextTagProcessor_561320(__int64 a1, _BYTE* a2, __int64 a3);
+
+__int64 TextTagProcessor_561320(__int64 a1, _BYTE* a2, __int64 a3)
+{
+  __int64 result;
+  int v5;
+  __int64 v6;
+
+  v6 = a3;
+  v5 = 0;
+  nn_util_PickOutCharacterFromUtf8String(&v5, &v6);
+  result = v6;
+  *a2 = 1;
+  return result;
+}
 
 __int64 TextTagProcessor_Unknown6(__int64 a1, _DWORD** a2)
 {

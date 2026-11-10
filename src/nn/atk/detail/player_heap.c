@@ -11,6 +11,7 @@ bool PlayerHeap_284190(_QWORD* a1, __int64 a2, __int64 a3);
 __int64 PlayerHeap_284200(_QWORD* a1);
 __int64 PlayerHeap_Unknown2(__int64 a1, __int64 a2);
 __int64 PlayerHeap_Unknown3(_QWORD* a1, __int64 a2, __int64 a3, __int64 a4);
+__int64 PlayerHeap_Unknown4(__int64 a1, __int64 a2);
 
 bool PlayerHeap_284190(_QWORD* a1, __int64 a2, __int64 a3)
 {
@@ -111,5 +112,7 @@ __int64 PlayerHeap_Unknown3(_QWORD* a1, __int64 a2, __int64 a3, __int64 a4)
   *v7 = v6;
   return result;
 }
+
+__int64 PlayerHeap_Unknown4(__int64 a1, __int64 a2) { return a2; }
 
 #pragma GCC visibility pop

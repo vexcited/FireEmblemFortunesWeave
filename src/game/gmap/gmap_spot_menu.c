@@ -27,6 +27,14 @@ void GmapSpotMenu_Unknown95();
 __int64 GmapSpotMenu_Unknown96(_QWORD* a1);
 __int64 GmapSpotMenu_Unknown133(__int64 a1);
 __int64 GmapSpotMenu_Unknown143(__int64 a1, __int64* a2);
+__int64 BasicMenuCursor_16e0c00(_QWORD, _QWORD);
+extern __int64 (*game_gmap_anonymous_TraderMenuItem_vtable[])();
+extern __int64 fw_memory_g_heap_manager;
+__int64 game_gmap_GmapSpotMenu_CreateBind_lambda0_Invoke(__int64 result,
+                                                         __int64* a2);
+__int64 game_gmap_GmapSpotMenu_CreateBind_lambda1_Invoke(__int64 a1,
+                                                         __int64** a2,
+                                                         __int64* a3);
 
 void GmapSpotMenu_Unknown95()
 {
@@ -196,6 +204,61 @@ __int64 GmapSpotMenu_Unknown143(__int64 a1, __int64* a2)
     a2[1] = v7;
   }
   return result;
+}
+
+__int64 game_gmap_GmapSpotMenu_CreateBind_lambda0_Invoke(__int64 result,
+                                                         __int64* a2)
+{
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+
+  v2 = *a2;
+  v3 = *(_QWORD*)(*a2 + 96);
+  if (v3 != 0 && *(_BYTE*)(v3 + 32) == 2) {
+    v4 = **(_QWORD**)(result + 8);
+    v5 = fw_memory_HeapManager_Allocate(fw_memory_g_heap_manager, 96, 16, 0);
+    v6 = *(_QWORD*)(v2 + 96);
+    *(_WORD*)(v5 + 16) = 0;
+    *(_DWORD*)(v5 + 40) = 0;
+    *(_QWORD*)(v5 + 64) = 0;
+    *(_QWORD*)(v5 + 72) = 0;
+    *(_QWORD*)(v5 + 48) = 0;
+    *(_QWORD*)(v5 + 56) = 0;
+    *(_WORD*)(v5 + 84) = 0;
+    *(_WORD*)(v5 + 80) = 257;
+    *(_BYTE*)(v5 + 82) = 1;
+    *(_QWORD*)v5 = game_gmap_anonymous_TraderMenuItem_vtable;
+    *(_QWORD*)(v5 + 8) = 0;
+    *(_QWORD*)(v5 + 88) = v6;
+    return BasicMenuCursor_16e0c00(v4, v5);
+  }
+  return result;
+}
+
+__int64 game_gmap_GmapSpotMenu_CreateBind_lambda1_Invoke(__int64 a1,
+                                                         __int64** a2,
+                                                         __int64* a3)
+{
+  __int64* v3;
+  __int64 v4;
+  int v5;
+  char v6;
+  __int64 v7;
+  int v9;
+
+  v3 = *a2;
+  v4 = *a3;
+  v5 = (*(__int64 (**)(__int64*))(**a2 + 464))(*a2) & 1;
+  v6 = (*(__int64 (**)(__int64))(*(_QWORD*)v4 + 464LL))(v4);
+  v7 = *v3;
+  if (v5 != (v6 & 1)) {
+    return (*(__int64 (**)(__int64*))(v7 + 464))(v3);
+  }
+  v9 = (*(__int64 (**)(__int64*))(v7 + 568))(v3);
+  return v9 < (*(int (**)(__int64))(*(_QWORD*)v4 + 568LL))(v4);
 }
 
 #pragma GCC visibility pop

@@ -12,6 +12,9 @@ extern __int64 GameData_2134730[21];
 extern __int64* snd_g_memory_ptr[2];
 __int64 FxLFE_Destructor(_QWORD* a1);
 float* FxLFE_Unknown5(float* result, __int64 a2, int* a3);
+__int64 snd_coef_BiQuadCoef_BiQuadCoef(void);
+extern __int64 GameData_2134738[20];
+__int64 FxLFE_176350(_QWORD* a1);
 
 __int64 FxLFE_Destructor(_QWORD* a1)
 {
@@ -180,6 +183,39 @@ float* FxLFE_Unknown5(float* result, __int64 a2, int* a3)
   }
   v46 = nn_diag_detail_AbortImpl_1a0a590(result);
   return (float*)GameRoutine_176350(v46);
+}
+
+__int64 FxLFE_176350(_QWORD* a1)
+{
+  __int64* v2;
+  __int64 v3;
+  void (***v4)(_QWORD);
+  __int64 v5;
+
+  *a1 = GameData_2134738[0] + 16;
+  a1[1] = 0;
+  v2 = snd_g_memory_ptr[0];
+  v3 = (*(__int64 (**)(_QWORD, __int64, __int64))(
+      **(_QWORD**)snd_g_memory_ptr[0] + 16LL))(*snd_g_memory_ptr[0], 248, 32);
+  snd_coef_BiQuadCoef_BiQuadCoef();
+  v4 = (void (***)(_QWORD))a1[1];
+  a1[1] = v3;
+  if (v4 != nullptr) {
+    (**v4)(v4);
+    (*(void (**)(__int64, void (***)(_QWORD)))(*(_QWORD*)*v2 + 24LL))(*v2, v4);
+    v3 = a1[1];
+  }
+  *(_WORD*)(*(_QWORD*)(v3 + 128) + 8LL) = -17536;
+  *(_WORD*)(*(_QWORD*)(a1[1] + 136LL) + 8LL) = -17536;
+  *(_WORD*)(*(_QWORD*)(a1[1] + 144LL) + 8LL) = -17536;
+  *(_WORD*)(*(_QWORD*)(a1[1] + 152LL) + 8LL) = -17536;
+  *(_WORD*)(*(_QWORD*)(a1[1] + 160LL) + 8LL) = -17536;
+  *(_WORD*)(*(_QWORD*)(a1[1] + 168LL) + 8LL) = -17536;
+  *(_WORD*)(*(_QWORD*)(a1[1] + 176LL) + 8LL) = -17536;
+  *(_WORD*)(*(_QWORD*)(a1[1] + 184LL) + 8LL) = -17536;
+  *(_WORD*)(*(_QWORD*)(a1[1] + 192LL) + 8LL) = -17536;
+  v5 = *(_QWORD*)(a1[1] + 8LL * *(unsigned int*)(a1[1] + 124LL) + 128);
+  return (*(__int64 (**)(__int64))(*(_QWORD*)v5 + 16LL))(v5);
 }
 
 #pragma GCC visibility pop

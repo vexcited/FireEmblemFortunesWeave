@@ -17,6 +17,21 @@ extern __int64 (*game_menu_TroopMenuItem_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64 game_GameModeData_instance_;
 __int64 SystemMenuItem_Info_Unknown25(__int64 a1);
+__int64 SystemMenuItem_Info_1855170(__int64 a1);
+
+__int64 SystemMenuItem_Info_1855170(__int64 a1)
+{
+  __int64 v2;
+  __int64 v3;
+  bool v4;
+
+  v2 = GameRoutine_820d50(11);
+  v4 = game_GameModeData_instance_ == 0 ||
+       (v3 = game_GameVariableTable_Find(
+            *(_QWORD*)(game_GameModeData_instance_ + 48), v2)) == 0 ||
+       *(_DWORD*)(v3 + 32) == 0;
+  return v4 & *(_BYTE*)(a1 + 82);
+}
 
 __int64 SystemMenuItem_Info_Unknown25(__int64 a1)
 {

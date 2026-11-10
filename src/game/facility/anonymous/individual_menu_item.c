@@ -18,10 +18,35 @@ __int64 IndividualMenuItem_Destructor_1935f60(__int64 a1);
 __int64 IndividualMenuItem_DeletingDestructor(__int64 a1);
 __int64 IndividualMenuItem_Unknown25(__int64 a1);
 __int64 IndividualMenuItem_Unknown39(__int64 a1, char a2);
+__int64 BasicMenuCursor_16ddaa0(_QWORD, _QWORD);
+__int64 GameRoutine_65a180(_QWORD);
+_QWORD* IndividualMenuItem_Unknown24(_QWORD* result);
 
 bool IndividualMenuItem_Unknown6()
 {
   return (unsigned int)GameRoutine_947af0() < 0x400000;
+}
+
+_QWORD* IndividualMenuItem_Unknown24(_QWORD* result)
+{
+  __int64 v1;
+
+  v1 = result[1];
+  if (game_script_hub_ui_g_talk_result == 1) {
+    if (v1 != 0) {
+    LABEL_3:
+      GameRoutine_65a180(result[1]);
+      return (_QWORD*)BasicMenuCursor_16ddaa0(v1, 4);
+    }
+  }
+  else if (v1 != 0 && game_script_hub_ui_g_talk_result == 2) {
+    goto LABEL_3;
+  }
+  if (*(_QWORD**)(v1 + 336) == result) {
+    return (_QWORD*)(*(__int64 (**)(_QWORD*, _QWORD))(*result + 64LL))(result,
+                                                                       0);
+  }
+  return result;
 }
 
 __int64 IndividualMenuItem_Destructor_1935f60(__int64 a1)

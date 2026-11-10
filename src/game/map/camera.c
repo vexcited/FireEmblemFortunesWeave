@@ -47,6 +47,12 @@ extern __int64 GameData_212d0b8[5];
 extern __int64* GameData_212d1d0[4];
 float GameRoutine_7c2010(void);
 __int64 Camera_7be4c0(__int64 a1, __int64 a2);
+__int64 GameRoutine_7c23c0(_QWORD);
+extern __int64 GameData_21c9648;
+__int64 game_map_Camera_Impl_Impl_closure0_Invoke(__int64 a1, char* a2);
+__int64 game_map_Camera_Impl_Impl_closure_Invoke_7c25a0(__int64 result,
+                                                        _BYTE* a2);
+bool game_map_Camera_Impl_Impl_closure_Invoke_7c2710(__int64 a1);
 
 __int64 Camera_7be4c0(__int64 a1, __int64 a2)
 {
@@ -849,6 +855,114 @@ LABEL_8:
 LABEL_15:
   *(_DWORD*)(a2 + 20) += 4;
   return Camera_7c0d80(v10);
+}
+
+__int64 game_map_Camera_Impl_Impl_closure0_Invoke(__int64 a1, char* a2)
+{
+  char v2;
+  __int64 result;
+
+  v2 = *a2;
+  result = *(_QWORD*)(a1 + 8);
+  *(_BYTE*)(result + 480) = (*a2 & 1) == 0;
+  if ((v2 & 1) != 0) {
+    return GameRoutine_7c23c0(result);
+  }
+  return result;
+}
+
+__int64 game_map_Camera_Impl_Impl_closure_Invoke_7c25a0(__int64 result,
+                                                        _BYTE* a2)
+{
+  __int64 v2;
+  int v3;
+  __int64 v4;
+  int v5;
+  __int64 (**v6)(__int64);
+  int v7;
+
+  v2 = *(_QWORD*)(result + 8);
+  v3 = (unsigned __int8)*a2;
+  if (*(unsigned __int8*)(v2 + 481) != v3) {
+    v4 = GameData_21c9648;
+    v5 = *(_DWORD*)(GameData_21c9648 + 16);
+    if (*a2 != 0) {
+      *(_DWORD*)(GameData_21c9648 + 16) = v5 + 1;
+      if (v5 == 0) {
+        v6 = *(__int64 (***)(__int64))(v4 + 8);
+      LABEL_7:
+        result = (*v6)(v4 + 8);
+      }
+    }
+    else {
+      v7 = v5 - 1;
+      *(_DWORD*)(GameData_21c9648 + 16) = v7;
+      if (v7 == 0) {
+        v6 = (__int64 (**)(__int64))(*(_QWORD*)(v4 + 8) + 8LL);
+        goto LABEL_7;
+      }
+    }
+    *(_BYTE*)(v2 + 481) = v3;
+  }
+  return result;
+}
+
+bool game_map_Camera_Impl_Impl_closure_Invoke_7c2710(__int64 a1)
+{
+  __int64 v1;
+  float v2;
+  float v3;
+  float v4;
+  float v5;
+  float v6;
+  float v7;
+  float v8;
+  float v9;
+  float v10;
+  __int64 v11;
+  float (**v12)(__int64);
+  float v13;
+  float v14;
+  float v15;
+
+  v1 = *(_QWORD*)(a1 + 8);
+  v2 = *(float*)(v1 + 252);
+  if (v2 != *(float*)(v1 + 248)) {
+    v3 = (**(float (***)(__int64))(v1 + 240))(v1 + 240);
+    v4 = *(float*)(v1 + 248);
+    v5 = v2 + v3;
+    if (v4 < v5) {
+      v5 = *(float*)(v1 + 248);
+    }
+    if (v5 != v4) {
+      return false;
+    }
+  }
+  v6 = *(float*)(v1 + 68);
+  if (v6 != *(float*)(v1 + 64)) {
+    v7 = (**(float (***)(__int64))(v1 + 56))(v1 + 56);
+    v8 = *(float*)(v1 + 64);
+    v9 = v6 + v7;
+    if (v8 < v9) {
+      v9 = *(float*)(v1 + 64);
+    }
+    if (v9 != v8) {
+      return false;
+    }
+  }
+  v10 = *(float*)(v1 + 28);
+  if (v10 == *(float*)(v1 + 24)) {
+    return true;
+  }
+  v12 = *(float (***)(__int64))(v1 + 16);
+  v11 = v1 + 16;
+  v13 = (*v12)(v11);
+  v14 = *(float*)(v11 + 8);
+  v15 = v10 + v13;
+  if (v14 < v15) {
+    v15 = *(float*)(v11 + 8);
+  }
+  return v15 == v14;
 }
 
 #pragma GCC visibility pop

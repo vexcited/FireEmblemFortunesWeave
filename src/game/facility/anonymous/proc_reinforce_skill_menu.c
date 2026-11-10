@@ -27,6 +27,12 @@ void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
 __int64 ProcReinforceSkillMenu_16d7120(_QWORD* a1, char a2);
 __int64 ProcReinforceSkillMenu_16d73d0(__int64 a1, __int64 a2);
 __int64 ProcReinforceSkillMenu_Unknown88(__int64 a1);
+__int64 BasicMenuCursor_16e0c00(_QWORD, _QWORD);
+__int64 GameRoutine_94cd60(_QWORD, _QWORD);
+extern __int64 (*game_facility_anonymous_ReinforceSkillMenuItem_vtable[])();
+__int64
+game_facility_anonymous_ProcReinforceSkillMenu_AddItemList_closure_Invoke(
+    __int64 a1, unsigned int* a2);
 
 __int64 ProcReinforceSkillMenu_16d7120(_QWORD* a1, char a2)
 {
@@ -252,6 +258,49 @@ __int64 ProcReinforceSkillMenu_Unknown88(__int64 a1)
     }
   }
   return result;
+}
+
+__int64
+
+game_facility_anonymous_ProcReinforceSkillMenu_AddItemList_closure_Invoke(
+    __int64 a1, unsigned int* a2)
+{
+  __int64 v2;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  int v7;
+  int v8;
+  unsigned __int64 v9;
+  __int64 v10;
+
+  v2 = *(_QWORD*)(a1 + 8);
+  v4 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
+                                      112, 16, 0);
+  v5 = *(_QWORD*)(v2 + 1064);
+  v6 = v4;
+  v7 = GameRoutine_94cd60(v5, a2);
+  *(_WORD*)(v6 + 16) = 0;
+  *(_DWORD*)(v6 + 40) = 0;
+  LOBYTE(v8) = 0;
+  *(_QWORD*)(v6 + 48) = 0;
+  *(_QWORD*)(v6 + 56) = 0;
+  *(_QWORD*)(v6 + 64) = 0;
+  *(_QWORD*)(v6 + 72) = 0;
+  *(_QWORD*)(v6 + 88) = v5;
+  *(_WORD*)(v6 + 80) = 257;
+  *(_QWORD*)v6 = game_facility_anonymous_ReinforceSkillMenuItem_vtable;
+  *(_QWORD*)(v6 + 8) = 0;
+  *(_BYTE*)(v6 + 82) = 1;
+  v9 = *a2;
+  *(_DWORD*)(v6 + 96) = v9;
+  *(_DWORD*)(v6 + 100) = v7;
+  v10 = *(_QWORD*)(v5 + 1168);
+  if (((v9 >> 5) & 0x7F) + 1 <= (*(_QWORD*)(v5 + 1176) - v10) >> 2) {
+    v8 = (*(_DWORD*)(v10 + 4 * ((v9 >> 5) & 0x7F)) >> v9) & 1;
+  }
+  *(_BYTE*)(v6 + 104) = v8;
+  return BasicMenuCursor_16e0c00(v2, v6);
 }
 
 #pragma GCC visibility pop

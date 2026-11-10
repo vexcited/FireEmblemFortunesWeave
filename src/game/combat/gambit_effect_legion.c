@@ -8,6 +8,33 @@ extern __int64 (*game_combat_IGambitKey_vtable)();
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 GambitEffectLegion_Destructor(__int64 result);
 __int64 GambitEffectLegion_DeletingDestructor(__int64 a1);
+__int64 GameRoutine_e51940(_QWORD, _QWORD);
+extern __int64 (*GameData_1fe66c0[])();
+__int64 game_combat_GambitEffectLegion_Run(__int64 a1);
+
+__int64 game_combat_GambitEffectLegion_Run(__int64 a1)
+{
+  __int64 result;
+  __int64 v2;
+  _QWORD v3[4];
+  _QWORD* v4;
+
+  v3[0] = GameData_1fe66c0;
+  v3[1] = a1;
+  v4 = v3;
+  GameRoutine_e51940(a1, v3);
+  result = (__int64)v4;
+  if (v4 == v3) {
+    v2 = 32;
+  }
+  else {
+    if (v4 == nullptr) {
+      return result;
+    }
+    v2 = 40;
+  }
+  return (*(__int64 (**)(__int64))(*v4 + v2))((__int64)v4);
+}
 
 __int64 GambitEffectLegion_Destructor(__int64 result)
 {

@@ -9,10 +9,10 @@ extern __int64 fw_memory_g_heap_manager;
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 ScratchMemoryResource_Destructor(_QWORD* a1);
 __int64 ScratchMemoryResource_DeletingDestructor(_QWORD* a1);
-
-bool ScratchMemoryResource_Unknown4(__int64 a1, __int64 a2) { return a1 == a2; }
-
 __int64 GameHr_1955080(__int64 a1);
+__int64 nn_lmem_AllocateFromFrameHeap(_QWORD, _QWORD, _QWORD);
+__int64 ScratchMemoryResource_Unknown2(__int64 a1, __int64 a2,
+                                       unsigned __int64 a3);
 
 __int64 ScratchMemoryResource_Destructor(_QWORD* a1)
 {
@@ -89,5 +89,21 @@ __int64 ScratchMemoryResource_DeletingDestructor(_QWORD* a1)
   }
   return nn_mem_StandardAllocator_Free(fw_memory_g_heap_manager + v6);
 }
+
+__int64 ScratchMemoryResource_Unknown2(__int64 a1, __int64 a2,
+                                       unsigned __int64 a3)
+{
+  unsigned __int64 v3;
+  __int64 v4;
+
+  v3 = *(_QWORD*)(a1 + 8);
+  v4 = *(_QWORD*)(a1 + 176);
+  if (a3 <= v3) {
+    a3 = v3;
+  }
+  return nn_lmem_AllocateFromFrameHeap(v4, a2, a3);
+}
+
+bool ScratchMemoryResource_Unknown4(__int64 a1, __int64 a2) { return a1 == a2; }
 
 #pragma GCC visibility pop

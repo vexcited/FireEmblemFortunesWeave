@@ -4,6 +4,63 @@
 
 __int64 GameRoutine_a7ad80(void);
 __int64 CursorLocatorModule_Unknown6(_QWORD* a1);
+__int64 LocatorModule_Destructor(_QWORD);
+__n128 nn_mem_StandardAllocator_Free(_QWORD);
+extern __int64 (*game_map_CursorLocatorModule_vtable[])();
+extern __int64 fw_memory_g_heap_manager_ptr;
+__int64 CursorLocatorModule_Destructor(_QWORD* a1);
+__n128 CursorLocatorModule_DeletingDestructor(_QWORD* a1);
+
+__int64 CursorLocatorModule_Destructor(_QWORD* a1)
+{
+  _QWORD* v2;
+  _QWORD* v3;
+  __int64 v4;
+
+  *a1 = game_map_CursorLocatorModule_vtable;
+  v2 = a1 + 8;
+  v3 = (_QWORD*)a1[12];
+  if (v3 == v2) {
+    v4 = 32;
+    goto LABEL_5;
+  }
+  if (v3 != nullptr) {
+    v4 = 40;
+  LABEL_5:
+    (*(void (**)(__int64))(*v3 + v4))((__int64)v3);
+  }
+  return LocatorModule_Destructor(a1);
+}
+
+__n128 CursorLocatorModule_DeletingDestructor(_QWORD* a1)
+{
+  _QWORD* v2;
+  _QWORD* v3;
+  __int64 v4;
+  __int64 v5;
+
+  *a1 = game_map_CursorLocatorModule_vtable;
+  v2 = a1 + 8;
+  v3 = (_QWORD*)a1[12];
+  if (v3 == v2) {
+    v4 = 32;
+  }
+  else {
+    if (v3 == nullptr) {
+      goto LABEL_6;
+    }
+    v4 = 40;
+  }
+  (*(void (**)(__int64))(*v3 + v4))((__int64)v3);
+LABEL_6:
+  LocatorModule_Destructor(a1);
+  v5 = 128;
+  if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+    v5 = 56;
+  }
+  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
+                                       v5);
+}
 
 __int64 CursorLocatorModule_Unknown6(_QWORD* a1)
 {

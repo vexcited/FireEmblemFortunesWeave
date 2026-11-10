@@ -43,6 +43,7 @@ __int64 CmdBtlInfoWindow_Unknown20(__int64 a1, __int64 a2, _QWORD* a3,
                                    __int64 a4);
 __int64 CmdBtlInfoWindow_Unknown21(__int64 a1, __int64 a2, __int64 a3, char a4);
 __int64 CmdBtlInfoWindow_17c7ba0(__int64 a1);
+__int64 CmdBtlInfoWindow_Destructor_17c7b80(__int64 a1);
 
 __int64 CmdBtlInfoWindow_DeletingDestructor(_QWORD* a1)
 {
@@ -522,6 +523,11 @@ __int64 CmdBtlInfoWindow_Unknown21(__int64 a1, __int64 a2, __int64 a3, char a4)
   }
   return GameRoutine_1835440(a1, a2, (unsigned int)(__int16)v8,
                              (unsigned int)(__int16)v11, v8 != v11, v12);
+}
+
+__int64 CmdBtlInfoWindow_Destructor_17c7b80(__int64 a1)
+{
+  return (*(__int64 (**)(__int64))(*(_QWORD*)(a1 - 248) + 32LL))(a1 - 248);
 }
 
 __int64 CmdBtlInfoWindow_17c7ba0(__int64 a1)

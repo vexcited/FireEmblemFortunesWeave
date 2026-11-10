@@ -7,6 +7,59 @@ __int64 GameRoutine_16dd280(void);
 extern __int64 (*GameData_20811e0[])();
 extern __int64 GameData_225e7a0;
 _QWORD* ProcGmapCarriageList_Unknown145(__int64 a1);
+__int64 GameRoutine_9db9e0(_QWORD, _QWORD);
+extern __int64 (*game_gmap_anonymous_GmapSpotCarriageMenuItem_vtable[])();
+extern __int64 GameData_212d750;
+extern __int64 GameData_21c96f8;
+extern __int64 GameData_22506e0;
+extern __int64 GameData_22549a8;
+extern __int64 game_GameModeData_instance_;
+__int64 ProcGmapCarriageList_Unknown100(__int64 a1);
+
+__int64 ProcGmapCarriageList_Unknown100(__int64 a1)
+{
+  __int64 v1;
+  int v3;
+  int v4;
+  __int64 v5;
+  int v6;
+
+  v1 = *(_QWORD*)(a1 + 336);
+  if (v1 == 0 ||
+      *(__int64 (***)())v1 !=
+          game_gmap_anonymous_GmapSpotCarriageMenuItem_vtable ||
+      *(_DWORD*)(v1 + 296) != 0) {
+    return 1;
+  }
+  v3 =
+      GameRoutine_9db9e0(23, *(unsigned __int16*)(*(_QWORD*)(v1 + 288) + 64LL));
+  if (game_GameModeData_instance_ != 0) {
+    v4 = (*(_DWORD*)(game_GameModeData_instance_ + 72) - v3) &
+         ~((*(_DWORD*)(game_GameModeData_instance_ + 72) - v3) >> 31);
+    if (v4 >= 9999999) {
+      v4 = 9999999;
+    }
+    *(_DWORD*)(game_GameModeData_instance_ + 72) = v4;
+  }
+  *(_QWORD*)(*(_QWORD*)(GameData_21c96f8 + 16) + 8LL) = *(_QWORD*)(v1 + 288);
+  if (GameData_22549a8 != 0) {
+    *(_DWORD*)(GameData_22549a8 + 272) = 7;
+  }
+  else {
+    v5 = GameData_22506e0;
+    if (GameData_22506e0 != 0) {
+      *(_DWORD*)(GameData_22506e0 + 208) = 7;
+      v6 = 5;
+    }
+    else {
+      v5 = *(_QWORD*)GameData_212d750;
+      *(_DWORD*)(*(_QWORD*)GameData_212d750 + 276LL) = 7;
+      v6 = 12;
+    }
+    *(_DWORD*)(v5 + 152) = v6;
+  }
+  return 4;
+}
 
 _QWORD* ProcGmapCarriageList_Unknown145(__int64 a1)
 {

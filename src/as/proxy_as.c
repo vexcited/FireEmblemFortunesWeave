@@ -17,6 +17,7 @@ __int64 ProxyAS_Unknown8(__int64 a1);
 __int64 ProxyAS_DeletingDestructor(__int64 a1);
 __int64 ProxyAS_Unknown5(__int64 a1, __int64 a2);
 __int64 ProxyAS_Unknown7(__int64 a1, __int64 a2);
+__int64 ProxyAS_Destructor(__int64 a1);
 
 __int64 ProxyAS_Unknown2(__int64 result)
 {
@@ -67,6 +68,12 @@ __int64 ProxyAS_Unknown8(__int64 a1)
     }
   }
   return result;
+}
+
+__int64 ProxyAS_Destructor(__int64 a1)
+{
+  *(_QWORD*)a1 = as_ProxyAS_vtable;
+  return nn_os_FreeTlsSlot(*(unsigned int*)(a1 + 16));
 }
 
 __int64 ProxyAS_DeletingDestructor(__int64 a1)

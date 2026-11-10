@@ -74,11 +74,7 @@ __int64 ProcItemShopMenu_Unknown153(__int64 a1, _QWORD* a2, _QWORD* a3);
 __int64 ProcItemShopMenu_Unknown154(_QWORD* a1, __int64 a2);
 __int64 ProcItemShopMenu_Unknown155(__int64 a1, int a2);
 __int64 ProcItemShopMenu_Unknown162(__int64 result, __int64* a2);
-
-bool ProcItemShopMenu_Unknown144(__int64 a1)
-{
-  return (*(_BYTE*)(a1 + 1160) & 1) == 0;
-}
+bool ProcItemShopMenu_Unknown150(__int64 a1);
 
 void* ProcItemShopMenu_Unknown67(__int64 a1)
 {
@@ -526,6 +522,16 @@ LABEL_30:
   }
   GameData_226b338 = 0;
   return result;
+}
+
+bool ProcItemShopMenu_Unknown144(__int64 a1)
+{
+  return (*(_BYTE*)(a1 + 1160) & 1) == 0;
+}
+
+bool ProcItemShopMenu_Unknown150(__int64 a1)
+{
+  return *(_QWORD*)(a1 + 1096) != *(_QWORD*)(a1 + 1104);
 }
 
 __int64 ProcItemShopMenu_Unknown153(__int64 a1, _QWORD* a2, _QWORD* a3)

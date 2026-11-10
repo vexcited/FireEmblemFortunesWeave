@@ -9,6 +9,8 @@ extern __int64 GameData_22587e8;
 extern __int64 ui_LayoutAccessor_empty_;
 __int64 BasicMenuItem_16e5110(__int64 a1, __int64* a2);
 __int64 BasicMenuItem_16e5340(__int64 result, char a2);
+__int64 ui_LayoutAccessor_FindPane(_QWORD, _QWORD);
+__int64 BasicMenuItem_16e5720(_QWORD* a1);
 
 __int64 BasicMenuItem_16e5110(__int64 a1, __int64* a2)
 {
@@ -279,6 +281,104 @@ LABEL_12:
 
 LABEL_33:
   *(_BYTE*)(v4 + 77) = a2 & 1;
+  return result;
+}
+
+__int64 BasicMenuItem_16e5720(_QWORD* a1)
+{
+  int v1;
+  __int64 result;
+  __int64* v4;
+  __int64 v5;
+  __int64 v6;
+  long double v7;
+  __int64 v8;
+  __int64 v9;
+  __int64 v10;
+  _BOOL4 v11;
+  __int64 v12;
+  __int64 v13;
+  __int64 v14;
+  __int64 v15;
+  __int64 v16;
+
+  result = a1[7];
+  if (result != 0) {
+    result = std___1___shared_weak_count_lock(result);
+    if (result != 0) {
+      v4 = (__int64*)a1[6];
+      if (v4 == nullptr || v4[2] == 0 || v4[1] == 0) {
+        goto LABEL_31;
+      }
+      v5 = result;
+      v6 = std___1___shared_weak_count_lock(v4[1]);
+      *(_QWORD*)&v7 = 0;
+      v8 = v6;
+      result = v5;
+      if (v8 == 0) {
+        goto LABEL_16;
+      }
+      v9 = *v4;
+      if (*v4 != 0) {
+        v1 = *(unsigned __int8*)(v9 + 24);
+        v10 = v9 + 152;
+        if (v1 == 0) {
+          v10 = 0;
+        }
+        v11 = v10 != v4[2];
+      }
+      else {
+        v11 = true;
+      }
+      if (atomic_fetch_add((atomic_ullong* volatile)(v8 + 8),
+                           0xFFFFFFFFFFFFFFFFLL) == 0) {
+        (*(void (**)(__int64, long double))(*(_QWORD*)v8 + 16LL))(v8, v7);
+        std___1___shared_weak_count___release_weak(v8);
+        result = v5;
+      }
+      if (!v11) {
+        if ((v1 & 1) == 0) {
+        LABEL_31:
+          if (atomic_fetch_add((atomic_ullong* volatile)(result + 8),
+                               0xFFFFFFFFFFFFFFFFLL) == 0) {
+            v16 = result;
+            (*(void (**)(__int64))(*(_QWORD*)result + 16LL))(result);
+            return std___1___shared_weak_count___release_weak(v16);
+          }
+          return result;
+        }
+      }
+      else {
+      LABEL_16:
+        v12 = v4[1];
+        if (v12 == 0 || *(_QWORD*)(v12 + 8) == -1) {
+          goto LABEL_31;
+        }
+      }
+      if (ui_LayoutAccessor_FindPane(v4, "LctCursor") != 0) {
+        result = v5;
+      }
+      else {
+        if (v4[2] != 0) {
+          v13 = v4[1];
+          if (v13 != 0) {
+            v14 = std___1___shared_weak_count_lock(v13);
+            if (v14 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v14 + 8),
+                                             0xFFFFFFFFFFFFFFFFLL) == 0) {
+              v15 = v14;
+              (*(void (**)(__int64))(*(_QWORD*)v14 + 16LL))(v14);
+              std___1___shared_weak_count___release_weak(v15);
+            }
+          }
+        }
+        if (ui_LayoutAccessor_FindPane(v4, "Frm") == 0) {
+          (*(void (**)(_QWORD*))(*a1 + 88LL))(a1);
+        }
+        result = v5;
+      }
+      goto LABEL_31;
+    }
+  }
   return result;
 }
 

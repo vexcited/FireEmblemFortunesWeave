@@ -12,6 +12,8 @@ extern __int64 GameData_21ca310;
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 CmdBtlInventoryUnitTroopListMenu_Unknown128(__int64 a1);
 __int64 CmdBtlInventoryUnitTroopListMenu_Unknown167(__int64 a1, __int64 a2);
+bool game_menu_anonymous_CmdBtlInventoryUnitTroopListMenu_Create_closure_Invoke(
+    __int64 a1, __int64 a2);
 
 __int64 CmdBtlInventoryUnitTroopListMenu_Unknown128(__int64 a1)
 {
@@ -148,6 +150,12 @@ __int64 CmdBtlInventoryUnitTroopListMenu_Unknown167(__int64 a1, __int64 a2)
     v2 = a1;
   }
   return GameRoutine_17ab020(*(_QWORD*)(v2 + 32), (int*)(a1 + 1192), a2);
+}
+
+bool game_menu_anonymous_CmdBtlInventoryUnitTroopListMenu_Create_closure_Invoke(
+    __int64 a1, __int64 a2)
+{
+  return *(_QWORD*)(*(_QWORD*)a2 + 88LL) == *(_QWORD*)(a1 + 8);
 }
 
 #pragma GCC visibility pop

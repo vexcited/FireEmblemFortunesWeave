@@ -262,7 +262,7 @@ void GmapDisposFile_Unknown4(long double a1)
                   v67 = true;
                 }
                 v68 = v67 | (2 * v56);
-                v69 = vcvtps_u32_f32(*(float*)&v47);
+                v69 = vcvtps_u64_f32(*(float*)&v47);
                 if (v68 <= v69) {
                   v70 = v69;
                 }
@@ -282,7 +282,7 @@ void GmapDisposFile_Unknown4(long double a1)
                 }
                 if (v70 < v56) {
                   *(float*)&v47 = (float)v85 / v86;
-                  v72 = vcvtps_u32_f32(*(float*)&v47);
+                  v72 = vcvtps_u64_f32(*(float*)&v47);
                   if (v56 < 3 || (v56 & (v56 - 1)) != 0) {
                     v72 = std___1___next_prime(v72);
                   }
@@ -509,7 +509,7 @@ void GmapDisposFile_Unknown4(long double a1)
           v35 = true;
         }
         v36 = v35 | (2 * v14);
-        v37 = vcvtps_u32_f32(v34);
+        v37 = vcvtps_u64_f32(v34);
         if (v36 <= v37) {
           v38 = v37;
         }
@@ -527,7 +527,7 @@ void GmapDisposFile_Unknown4(long double a1)
           goto LABEL_74;
         }
         if (v38 < v14) {
-          v39 = vcvtps_u32_f32((float)(unsigned __int64)GameData_21fe048 /
+          v39 = vcvtps_u64_f32((float)(unsigned __int64)GameData_21fe048 /
                                *(float*)&GameData_21fe050);
           if (v14 < 3 || (v14 & (v14 - 1)) != 0) {
             v39 = std___1___next_prime(v39);

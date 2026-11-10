@@ -74,6 +74,17 @@ __int64 ProcObeliskUnitMergeRouteSelectMenu_158ca00(__int64* a1, __int64 a2,
                                                     unsigned int a3);
 __int64 ProcObeliskUnitMergeRouteSelectMenu_158cac0(_QWORD* a1, _QWORD* a2,
                                                     _QWORD* a3);
+__int64 GameRoutine_1384630(_QWORD, _QWORD, _QWORD);
+__int64 GameRoutine_9d3c00(_QWORD);
+__int64 UnitVariables_6e2ce0(_QWORD, _QWORD, _QWORD);
+__int64 UnitVariables_6e31a0(_QWORD, _QWORD, _QWORD);
+extern __int64 (*GameData_1fb8e38[])();
+__int64
+game_facility_anonymous_ProcObeliskUnitMergeRouteSelectMenu_confirm_dialog(
+    __int64 a1);
+__int64
+game_facility_anonymous_ProcObeliskUnitMergeRouteSelectMenu_confirm_dialog_closure_Invoke(
+    __int64 a1, __int64* a2);
 
 __int64 ProcObeliskUnitMergeRouteSelectMenu_Unknown88(__int64 a1)
 {
@@ -520,6 +531,159 @@ __int64 ProcObeliskUnitMergeRouteSelectMenu_Unknown106(__int64 a1, char a2)
     }
   }
   return result;
+}
+
+__int64
+
+game_facility_anonymous_ProcObeliskUnitMergeRouteSelectMenu_confirm_dialog(
+    __int64 a1)
+{
+  __int64 v1;
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  int v5;
+  __int64 v6;
+  int v7;
+  __int64 v8;
+  int v9;
+  _QWORD* v10;
+  __int64 v11;
+  __int64 v12;
+  unsigned __int64 v13;
+  __int64* v14;
+  __int64 v15;
+  __int64 v16;
+  __int64 v17;
+  __int64 v18;
+  _QWORD v20[4];
+  _QWORD* v21;
+  __int64 v22;
+
+  v1 = *(_QWORD*)(a1 + 8);
+  v2 = *(_QWORD*)(v1 + 336);
+  if (v2 == 0) {
+    return 2;
+  }
+  v3 = __dynamic_cast(v2, GameData_212e008[0], &GameData_1fb8da0, 0);
+  if (v3 == 0) {
+    return 2;
+  }
+  v4 = v3;
+  if (game_GameModeData_instance_ == 0) {
+    goto LABEL_9;
+  }
+  v5 = *(_DWORD*)(game_GameModeData_instance_ + 80);
+  v6 = game_GameVariableTable_Find(*(_QWORD*)(game_GameModeData_instance_ + 48),
+                                   &GameData_21f81b0);
+  if (v6 != 0) {
+    v7 = *(_DWORD*)(v6 + 32);
+    v8 = game_GameModeData_instance_;
+    if (game_GameModeData_instance_ != 0) {
+    LABEL_6:
+      v9 = (v5 - v7) & ~((v5 - v7) >> 31);
+      if (v9 >= 99999) {
+        v9 = 99999;
+      }
+      *(_DWORD*)(v8 + 80) = v9;
+    }
+  }
+  else {
+    v7 = 0;
+    v8 = game_GameModeData_instance_;
+    if (game_GameModeData_instance_ != 0) {
+      goto LABEL_6;
+    }
+  }
+LABEL_9:
+  UnitVariables_6e2ce0(*(_QWORD*)(v4 + 88), *(_QWORD*)(v4 + 2320), 0);
+  *(_BYTE*)(v4 + 82) = 0;
+  v10 = v20;
+  *(_DWORD*)(v1 + 1344) = 0;
+  v12 = *(_QWORD*)(v1 + 232);
+  v11 = *(_QWORD*)(v1 + 240);
+  v20[0] = GameData_1fb8e38;
+  v21 = v20;
+  if (v11 == v12) {
+    goto LABEL_20;
+  }
+  v13 = 0;
+  v14 = GameData_212e008[0];
+  do {
+    v15 = *(_QWORD*)(v12 + 8 * v13);
+    if (v15 != 0) {
+      v16 = __dynamic_cast(v15, v14, &GameData_1fb8da0, 0);
+      if (v16 == 0) {
+        goto LABEL_11;
+      }
+      v22 = v16;
+      if (v21 == nullptr) {
+        GameRoutine_60a310(0, v17);
+      }
+      if (((*(__int64 (**)(_QWORD*, __int64*))(*v21 + 48LL))(v21, &v22) & 1) !=
+          0) {
+        break;
+      }
+      v12 = *(_QWORD*)(v1 + 232);
+      v11 = *(_QWORD*)(v1 + 240);
+    }
+  LABEL_11:
+    ++v13;
+  } while (v13 < (v11 - v12) >> 3);
+  v10 = v21;
+  if (v21 != v20) {
+    if (v21 != nullptr) {
+      v18 = 40;
+      goto LABEL_21;
+    }
+    goto LABEL_22;
+  }
+LABEL_20:
+  v18 = 32;
+LABEL_21:
+  (*(void (**)(_QWORD*))(*v10 + v18))(v10);
+LABEL_22:
+  GameRoutine_9d3c00(v1);
+  (*(void (**)(__int64))(*(_QWORD*)v1 + 704LL))(v1);
+  GameRoutine_1384630(v1, v4 + 96, *(_QWORD*)(v4 + 88));
+  return 2;
+}
+
+__int64
+
+game_facility_anonymous_ProcObeliskUnitMergeRouteSelectMenu_confirm_dialog_closure_Invoke(
+    __int64 a1, __int64* a2)
+{
+  __int64 v2;
+  __int64 v3;
+  int v4;
+  int v5;
+  __int64 v6;
+
+  v2 = *a2;
+  v3 = *(_QWORD*)(*a2 + 88);
+  if (v3 != 0) {
+    LOBYTE(v3) = UnitVariables_6e31a0(v3, *(_QWORD*)(v2 + 2320), 0);
+  }
+  *(_BYTE*)(v2 + 2328) = v3 & 1;
+  v4 = game_GameModeData_instance_;
+  if (game_GameModeData_instance_ != 0) {
+    v5 = *(_DWORD*)(game_GameModeData_instance_ + 80);
+    v6 = game_GameVariableTable_Find(
+        *(_QWORD*)(game_GameModeData_instance_ + 48), &GameData_21f81b0);
+    if (v6 != 0) {
+      v4 = *(_DWORD*)(v6 + 32);
+    }
+    else {
+      v4 = 0;
+    }
+  }
+  else {
+    v5 = 0;
+  }
+  *(_BYTE*)(v2 + 82) = (v5 >= v4) & *(_BYTE*)(v2 + 2328);
+  (*(void (**)(__int64))(*(_QWORD*)v2 + 96LL))(v2);
+  return 0;
 }
 
 __int64 ProcObeliskUnitMergeRouteSelectMenu_158ab40(__int64* a1, __int64 a2,

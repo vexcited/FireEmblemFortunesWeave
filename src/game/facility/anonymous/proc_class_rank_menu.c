@@ -37,6 +37,9 @@ __int64 _ZN4game4menu8GameMenu12Unknown16e9cd0Ev(_QWORD, _QWORD);
 extern __int64 (*GameData_208d828[])();
 void __attribute__((noreturn)) GameRoutine_60a310(_QWORD, _QWORD);
 __int64 ProcClassRankMenu_16bb880(_QWORD* a1, __int64 a2);
+__int64
+game_facility_anonymous_ProcClassRankMenu_ChangeUnit_closure_Invoke(__int64 a1,
+                                                                    _QWORD* a2);
 
 __int64 ProcClassRankMenu_Unknown96(_QWORD* a1)
 {
@@ -342,6 +345,16 @@ LABEL_12:
 LABEL_13:
   (*(void (**)(_QWORD*, __int64))(*v6 + v11))(v6, v3);
   return GameRoutine_16bb9c0(a1);
+}
+
+__int64
+
+game_facility_anonymous_ProcClassRankMenu_ChangeUnit_closure_Invoke(__int64 a1,
+                                                                    _QWORD* a2)
+{
+  (*(void (**)(_QWORD, _QWORD))(*(_QWORD*)*a2 + 560LL))(
+      *a2, *(_QWORD*)(*(_QWORD*)(a1 + 8) + 1064LL));
+  return 0;
 }
 
 #pragma GCC visibility pop

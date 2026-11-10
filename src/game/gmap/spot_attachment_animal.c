@@ -240,6 +240,60 @@ __int64 SpotAttachmentAnimal_14d3e60(__int64 a1);
 __int64 SpotAttachmentAnimal_14d3f50(__int64 a1);
 __int64 SpotAttachmentAnimal_14d3ff0(__int64 a1);
 __int64 SpotAttachmentAnimal_14d40f0(__int64 a1);
+__int64 GameRoutine_1536e70(_QWORD);
+__int64 Impl_13261c0(_QWORD);
+__int64 game_gmap_SpotAttachmentAnimal_GetData(_QWORD);
+bool SpotAttachmentAnimal_14d29e0(__int64 a1);
+
+bool SpotAttachmentAnimal_14d29e0(__int64 a1)
+{
+  _BOOL8 result;
+  __int64 v3;
+  __int64 v4;
+  unsigned __int8 v5;
+  __int64 v6;
+  unsigned __int8* v7;
+  int v8;
+
+  if ((GameRoutine_1536e70(0) & 1) == 0) {
+    return false;
+  }
+  result = false;
+  if (*(_BYTE*)(a1 + 176) != 3 || (*(_BYTE*)(a1 + 112) & 1) != 0) {
+    return result;
+  }
+  v3 = *(_QWORD*)(a1 + 280);
+  if (v3 != 0) {
+    v3 = (*(__int64 (**)(__int64))(*(_QWORD*)v3 + 24LL))(v3);
+    if (((unsigned __int8)v3 != 1 ||
+         ((v3 = (*(__int64 (**)(_QWORD))(**(_QWORD**)(a1 + 280) + 112LL))(
+               *(_QWORD*)(a1 + 280))) &
+          1) == 0) &&
+        *(_QWORD*)(a1 + 280) != 0) {
+      return false;
+    }
+  }
+  if (*(_QWORD*)(a1 + 120) == 0) {
+    return false;
+  }
+  v4 = game_gmap_SpotAttachmentAnimal_GetData(v3);
+  v5 = Impl_13261c0(a1);
+  v6 = *(unsigned __int16*)(v4 + 48);
+  if (*(_WORD*)(v4 + 48) == 0) {
+    return false;
+  }
+  v7 = *(unsigned __int8**)(v4 + 56);
+  while (1) {
+    v8 = *v7++;
+    if (v8 == v5) {
+      break;
+    }
+    if (--v6 == 0) {
+      return false;
+    }
+  }
+  return (unsigned __int8)Impl_13261c0(a1) == 6 && *(_QWORD*)(a1 + 152) != 0;
+}
 
 __int64 SpotAttachmentAnimal_Unknown35(__int64 a1)
 {

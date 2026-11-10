@@ -18,6 +18,20 @@ void __attribute__((noreturn)) GameRoutine_874520(_QWORD);
 __int64 ProcObeliskDestinyMenu_Unknown91(_QWORD* a1, int a2);
 __int64 ProcObeliskDestinyMenu_Unknown128(__int64 a1);
 __int64 ProcObeliskDestinyMenu_Unknown143(_BYTE* a1, __int64* a2);
+__int64 GameRoutine_990c70(_QWORD);
+__int64 ObeliskDestinyMenuItem_1a06510(_QWORD, _QWORD);
+__int64 ObeliskDestinyMenuItem_1a06cc0(_QWORD, _QWORD, _QWORD);
+__int64 Se_80e330(_QWORD, _QWORD);
+__int64 game_VariableManager_SetFlag(_QWORD, _QWORD);
+__int64 game_menu_BasicMenu_Unknown16de4d0(_QWORD);
+__int64 game_menu_PageTab_Move(_QWORD, _QWORD, _QWORD);
+__int64 ProcObeliskDestinyMenu_Unknown12(__int64 a1, __int64 a2, char a3);
+__int64 game_facility_anonymous_ProcObeliskDestinyMenu_ZLCall_closure_Invoke(
+    __int64 a1);
+bool game_facility_anonymous_ProcObeliskDestinyMenu_SortAndFilter_closure_Invoke_1932fe0(
+    __int64 a1, __int64* a2);
+bool game_facility_anonymous_ProcObeliskDestinyMenu_SortAndFilter_closure_Invoke_1933110(
+    __int64 a1, __int64* a2, __int64* a3);
 
 __int64 ProcObeliskDestinyMenu_Unknown91(_QWORD* a1, int a2)
 {
@@ -236,6 +250,185 @@ __int64 ProcObeliskDestinyMenu_Unknown143(_BYTE* a1, __int64* a2)
   }
   a2[1] = v8;
   return result;
+}
+
+__int64 ProcObeliskDestinyMenu_Unknown12(__int64 a1, __int64 a2, char a3)
+{
+  if (*(int*)(a1 + 480) < 1) {
+    return 0;
+  }
+  if ((game_menu_PageTab_Move(a1 + 480, a2, a3 & 1) & 1) == 0) {
+    return 14;
+  }
+  game_menu_BasicMenu_Unknown16de4d0(a1 - 176);
+  return 13;
+}
+
+__int64
+
+game_facility_anonymous_ProcObeliskDestinyMenu_ZLCall_closure_Invoke(__int64 a1)
+{
+  __int64 v1;
+  __int64* v3;
+  __int64* i;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  int v9;
+  __int64 v10;
+
+  v1 = *(_QWORD*)(a1 + 8);
+  if (*(_BYTE*)(v1 + 1064) == 1) {
+    v3 = *(__int64**)(GameData_21c9c20 + 64);
+    for (i = *(__int64**)(GameData_21c9c20 + 72); v3 != i; ++v3) {
+      if (game_GameModeData_instance_ != 0) {
+        v5 = *v3;
+        v6 = game_GameVariableTable_Find(
+            *(_QWORD*)(game_GameModeData_instance_ + 48),
+            *(_QWORD*)(*v3 + 24) + 32LL);
+        if ((v6 == 0 || *(_BYTE*)(v6 + 32) != 4) &&
+            game_GameModeData_instance_ != 0) {
+          v7 = game_GameVariableTable_Find(
+              *(_QWORD*)(game_GameModeData_instance_ + 48),
+              *(_QWORD*)(v5 + 24) + 32LL);
+          if (v7 != 0 && *(_BYTE*)(v7 + 32) != 0 &&
+              game_GameModeData_instance_ != 0) {
+            v8 = game_GameVariableTable_Find(
+                *(_QWORD*)(game_GameModeData_instance_ + 48),
+                *(_QWORD*)(v5 + 24) + 32LL);
+            if (v8 != 0 &&
+                (unsigned int)*(unsigned __int8*)(v8 + 32) - 1 <= 2) {
+              if (game_GameModeData_instance_ != 0) {
+                v9 = (*(_DWORD*)(game_GameModeData_instance_ + 80) +
+                      *(unsigned __int16*)(v5 + 64)) &
+                     ~((*(_DWORD*)(game_GameModeData_instance_ + 80) +
+                        *(unsigned __int16*)(v5 + 64)) >>
+                       31);
+                if (v9 >= 99999) {
+                  v9 = 99999;
+                }
+                *(_DWORD*)(game_GameModeData_instance_ + 80) = v9;
+              }
+              game_VariableManager_SetFlag(*(_QWORD*)(v5 + 24) + 32LL, 4);
+            }
+          }
+        }
+      }
+    }
+    *(_BYTE*)(v1 + 1064) = 0;
+    game_menu_BasicMenu_Unknown16de4d0(v1);
+  }
+  v10 = ObeliskDestinyMenuItem_1a06cc0(v1, "MID_AchieveMenu_ReceiveAll_Result",
+                                       0);
+  ObeliskDestinyMenuItem_1a06510(v10 + 824, *(unsigned int*)(a1 + 16));
+  Se_80e330(v10, "FF_Positive1");
+  GameRoutine_1567590("AllRecieve", 1);
+  return 5;
+}
+
+bool game_facility_anonymous_ProcObeliskDestinyMenu_SortAndFilter_closure_Invoke_1932fe0(
+    __int64 a1, __int64* a2)
+{
+  __int64 v2;
+  int v4;
+
+  v2 = *a2;
+  if ((GameRoutine_990c70(*(_QWORD*)(*a2 + 88)) & 1) == 0) {
+    return false;
+  }
+  v4 = *(_DWORD*)(a1 + 8);
+  return v4 == 0 || v4 == *(unsigned __int8*)(*(_QWORD*)(v2 + 88) + 40LL);
+}
+
+bool game_facility_anonymous_ProcObeliskDestinyMenu_SortAndFilter_closure_Invoke_1933110(
+    __int64 a1, __int64* a2, __int64* a3)
+{
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  _BOOL4 v6;
+  __int64 v7;
+  __int64 v8;
+  _BOOL4 v9;
+  __int64 v11;
+  _BOOL4 v12;
+  __int64 v13;
+  __int64 v14;
+  _BOOL4 v15;
+
+  v3 = *a2;
+  v4 = *a3;
+  if (game_GameModeData_instance_ == 0) {
+    return *(_DWORD*)(v3 + 40) < *(_DWORD*)(v4 + 40);
+  }
+  v5 = game_GameVariableTable_Find(*(_QWORD*)(game_GameModeData_instance_ + 48),
+                                   *(_QWORD*)(*(_QWORD*)(v3 + 88) + 24LL) +
+                                       32LL);
+  if (v5 != 0) {
+    v6 = (unsigned int)*(unsigned __int8*)(v5 + 32) - 1 < 3;
+    v7 = game_GameModeData_instance_;
+    if (game_GameModeData_instance_ == 0) {
+    LABEL_9:
+      if (v6) {
+        v9 = false;
+        return v6 && !v9;
+      }
+      goto LABEL_12;
+    }
+  }
+  else {
+    v6 = false;
+    v7 = game_GameModeData_instance_;
+    if (game_GameModeData_instance_ == 0) {
+      goto LABEL_9;
+    }
+  }
+  v8 = game_GameVariableTable_Find(
+      *(_QWORD*)(v7 + 48), *(_QWORD*)(*(_QWORD*)(v4 + 88) + 24LL) + 32LL);
+  if (v8 == 0) {
+    goto LABEL_9;
+  }
+  v9 = (unsigned int)*(unsigned __int8*)(v8 + 32) - 1 < 3;
+  if (((v6 ^ v9) & 1) != 0) {
+    return v6 && !v9;
+  }
+LABEL_12:
+  if (game_GameModeData_instance_ == 0) {
+    return *(_DWORD*)(v3 + 40) < *(_DWORD*)(v4 + 40);
+  }
+  v11 = game_GameVariableTable_Find(
+      *(_QWORD*)(game_GameModeData_instance_ + 48),
+      *(_QWORD*)(*(_QWORD*)(v3 + 88) + 24LL) + 32LL);
+  if (v11 != 0) {
+    v12 = *(unsigned __int8*)(v11 + 32) == 4;
+    v13 = game_GameModeData_instance_;
+    if (game_GameModeData_instance_ == 0) {
+    LABEL_20:
+      if (v12) {
+        v15 = false;
+        return v15 && !v12;
+      }
+      return *(_DWORD*)(v3 + 40) < *(_DWORD*)(v4 + 40);
+    }
+  }
+  else {
+    v12 = false;
+    v13 = game_GameModeData_instance_;
+    if (game_GameModeData_instance_ == 0) {
+      goto LABEL_20;
+    }
+  }
+  v14 = game_GameVariableTable_Find(
+      *(_QWORD*)(v13 + 48), *(_QWORD*)(*(_QWORD*)(v4 + 88) + 24LL) + 32LL);
+  if (v14 == 0) {
+    goto LABEL_20;
+  }
+  v15 = *(unsigned __int8*)(v14 + 32) == 4;
+  if (((v12 ^ v15) & 1) != 0) {
+    return v15 && !v12;
+  }
+  return *(_DWORD*)(v3 + 40) < *(_DWORD*)(v4 + 40);
 }
 
 #pragma GCC visibility pop

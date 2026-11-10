@@ -41,6 +41,8 @@ __int64 TimelineFile_890280(__int64 a1, __int64 a2);
 __int16* TimelineFile_890840(__int16* result);
 __int64 TimelineFile_890a20(__int64* a1);
 __int64 TimelineFile_890c00(unsigned __int8 a1);
+__int64 game_TimelineFile_GetFromBattle_lambda0_Invoke(__int64 result,
+                                                       _QWORD* a2);
 
 __int64 TimelineFile_Unknown5()
 {
@@ -549,6 +551,18 @@ __int64 TimelineFile_890c00(unsigned __int8 a1)
     }
   }
   return 0;
+}
+
+__int64 game_TimelineFile_GetFromBattle_lambda0_Invoke(__int64 result,
+                                                       _QWORD* a2)
+{
+  _QWORD* v2;
+
+  v2 = *(_QWORD**)(result + 8);
+  if (*v2 == 0) {
+    *v2 = *a2;
+  }
+  return result;
 }
 
 #pragma GCC visibility pop

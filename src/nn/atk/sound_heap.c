@@ -22,6 +22,7 @@ __int64 SoundHeap_27bfd0(__int64 a1, __int64 a2, unsigned __int64 a3);
 __int64 SoundHeap_Unknown2(__int64 a1, __int64 a2);
 _BYTE* SoundHeap_27c0d0(__int64 a1, __int64 a2);
 __int64 SoundHeap_Unknown3(__int64 a1, __int64 a2, __int64 a3, __int64 a4);
+__int64 SoundHeap_Unknown4(__int64 a1, __int64 a2);
 
 __int64 SoundHeap_27bef0(__int64 a1)
 {
@@ -114,5 +115,7 @@ __int64 SoundHeap_Unknown3(__int64 a1, __int64 a2, __int64 a3, __int64 a4)
   nn_os_UnlockMutex(a1 + 8);
   return v8;
 }
+
+__int64 SoundHeap_Unknown4(__int64 a1, __int64 a2) { return a2; }
 
 #pragma GCC visibility pop

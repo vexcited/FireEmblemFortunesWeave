@@ -7,6 +7,36 @@ bool GameRoutine_184ef30(unsigned int);
 extern __int64 game_GameModeData_instance_;
 extern __int64 game_script_map_effect_g_sequence;
 __int64 InfoSubMenuItem_Reliance_Unknown25_18556c0(__int64 a1);
+__int64 GameRoutine_820d50(_QWORD);
+__int64 game_GameVariableTable_Find(_QWORD, _QWORD);
+__int64 InfoSubMenuItem_Reliance_1855620(__int64 a1);
+bool InfoSubMenuItem_Reliance_1855680();
+
+__int64 InfoSubMenuItem_Reliance_1855620(__int64 a1)
+{
+  __int64 v2;
+  __int64 v3;
+  bool v4;
+
+  v2 = GameRoutine_820d50(3);
+  v4 = game_GameModeData_instance_ == 0 ||
+       (v3 = game_GameVariableTable_Find(
+            *(_QWORD*)(game_GameModeData_instance_ + 48), v2)) == 0 ||
+       *(_DWORD*)(v3 + 32) == 0;
+  return v4 & *(_BYTE*)(a1 + 81);
+}
+
+bool InfoSubMenuItem_Reliance_1855680()
+{
+  if (game_script_map_effect_g_sequence == 0) {
+    return GameRoutine_184ef30(1u);
+  }
+  if (game_GameModeData_instance_ != 0) {
+    return GameRoutine_184ef30(
+        *(_DWORD*)(game_GameModeData_instance_ + 92) & 1 ^ 3);
+  }
+  return GameRoutine_184ef30(3u);
+}
 
 __int64 InfoSubMenuItem_Reliance_Unknown25_18556c0(__int64 a1)
 {

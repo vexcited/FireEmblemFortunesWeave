@@ -24,6 +24,8 @@ __int64 DecalModule_Destructor(_QWORD* a1);
 __int64* DecalModule_a92840(__int64* result, _QWORD* a2);
 __int64 DecalModule_a929a0(_QWORD* a1);
 __int64 DecalModule_a93060(__int64* a1, __int64 a2);
+__int64 DecalModule_a93340(_QWORD* a1);
+__int64 DecalModule_a933b0(__int64 a1);
 
 __int64 DecalModule_Destructor(_QWORD* a1)
 {
@@ -686,6 +688,37 @@ LABEL_16:
   }
   a1[1] = v9;
   return 1;
+}
+
+__int64 DecalModule_a93340(_QWORD* a1)
+{
+  __int64 v2;
+  __int64 v3;
+
+  *a1 = GameData_1fc0ff0;
+  v2 = a1[2];
+  a1[2] = 0;
+  if (v2 != 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v2 + 8LL))(v2);
+  }
+  v3 = 128;
+  if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+    v3 = 56;
+  }
+  return nn_mem_StandardAllocator_Free(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v3, a1);
+}
+
+__int64 DecalModule_a933b0(__int64 a1)
+{
+  __int64 result;
+
+  result = *(_QWORD*)(a1 + 16);
+  *(_QWORD*)(a1 + 16) = 0;
+  if (result != 0) {
+    return (*(__int64 (**)(__int64))(*(_QWORD*)result + 8LL))(result);
+  }
+  return result;
 }
 
 #pragma GCC visibility pop

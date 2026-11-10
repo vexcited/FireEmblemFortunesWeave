@@ -8,6 +8,10 @@ __int64 std___1___shared_weak_count___release_weak(_QWORD);
 extern __int64 (*game_hub_MapSetup_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 MapSetup_Destructor(_QWORD* a1);
+float game_hub_MapSetup_Setup_Hub100_A1_lambda0_Invoke(__int64 a1, __int64 a2,
+                                                       float* a3);
+float game_hub_MapSetup_Setup_Hub100_A1_lambda1_Invoke(__int64 a1, __int64 a2,
+                                                       float* a3);
 
 __int64 MapSetup_Destructor(_QWORD* a1)
 {
@@ -74,6 +78,36 @@ __int64 MapSetup_Destructor(_QWORD* a1)
     }
   }
   return GameRoutine_f89400(a1 + 2, a1[3]);
+}
+
+float game_hub_MapSetup_Setup_Hub100_A1_lambda0_Invoke(__int64 a1, __int64 a2,
+                                                       float* a3)
+{
+  return *(float*)(a1 + 8) + (float)(fminf(fmaxf(*a3, 0.0), 1.0) *
+                                     (float)(1.0 - *(float*)(a1 + 8)));
+}
+
+float game_hub_MapSetup_Setup_Hub100_A1_lambda1_Invoke(__int64 a1, __int64 a2,
+                                                       float* a3)
+{
+  float result;
+  __int64 v4;
+
+  result = 0.0;
+  v4 = *(_QWORD*)(*(_QWORD*)a2 + 24LL);
+  if (*(_BYTE*)(v4 + 289) == 1 && (*(_BYTE*)(v4 + 288) & 1) != 0) {
+    while ((*(_BYTE*)(v4 + 300) & 0xFD) != 1) {
+      v4 = *(_QWORD*)(v4 + 736);
+      if (v4 == 0) {
+        return (float)(1.0 - *a3) *
+               (float)(1.0 - *(float*)(*(_QWORD*)a2 + 68LL));
+      }
+      if (*(_BYTE*)(v4 + 289) != 1 || *(_BYTE*)(v4 + 288) != 1) {
+        return result;
+      }
+    }
+  }
+  return result;
 }
 
 #pragma GCC visibility pop

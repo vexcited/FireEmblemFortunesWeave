@@ -5,6 +5,8 @@
 __int64 GameRoutine_10de7c0(_QWORD);
 extern __int64 GameData_21ec7b0;
 __int64 ActionPassiveSkill_Unknown5(__int64 result);
+extern __int64 game_g_frame_clock;
+float* ActionPassiveSkill_Unknown6(float* result);
 
 __int64 ActionPassiveSkill_Unknown5(__int64 result)
 {
@@ -59,6 +61,61 @@ __int64 ActionPassiveSkill_Unknown5(__int64 result)
         }
         v2 += 6;
       } while (v2 != v3);
+    }
+  }
+  return result;
+}
+
+float* ActionPassiveSkill_Unknown6(float* result)
+{
+  float v1;
+  int v2;
+  __int64 v3;
+  _DWORD* v4;
+  float* v5;
+  float v6;
+  float v7;
+  int v8;
+  int v10;
+
+  v1 = result[11];
+  if (v1 >= 0.0f) {
+    v6 = 60.0f / (float)*(int*)(game_g_frame_clock + 476);
+    if (v6 <= 0.0f) {
+      v7 = 0.0167f;
+    }
+    else {
+      v7 = v6 * 0.0167f;
+    }
+    result[11] = v1 - v7;
+  }
+  else {
+    v2 = *((_DWORD*)result + 10);
+    v3 = **((_QWORD**)result + 4);
+    if (0xAAAAAAAAAAAAAAABLL *
+            ((*(_QWORD*)(*((_QWORD*)result + 4) + 8LL) - v3) >> 3) <=
+        v2) {
+      v8 = *((_DWORD*)result + 4);
+      if (v8 != 1 && v8 != 3) {
+        if (v8 == 2) {
+          v10 = 3;
+        }
+        else {
+          v10 = 1;
+        }
+        *((_DWORD*)result + 4) = v10;
+      }
+    }
+    else {
+      v4 = (_DWORD*)(v3 + 24LL * v2);
+      if (*v4 == *(_DWORD*)(*((_QWORD*)result + 1) + 96LL)) {
+        v5 = result;
+        GameRoutine_10de7c0(v4);
+        result = v5;
+        v2 = *((_DWORD*)v5 + 10);
+        v5[11] = v5[6];
+      }
+      *((_DWORD*)result + 10) = v2 + 1;
     }
   }
   return result;

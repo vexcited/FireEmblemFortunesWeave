@@ -66,6 +66,14 @@ __int64 SequenceSoundPlayer_28f940(__int64 result, int a2, float a3);
 __int64 SequenceSoundPlayer_Unknown8(__int64 result, unsigned __int64 a2,
                                      unsigned __int64 a3);
 __int64 SequenceSoundPlayer_Unknown11(__int64 result);
+__int64 GameRoutine_28fcd0_alt1(_QWORD) __asm__("GameRoutine_28fcd0");
+__int64
+SequenceSoundPlayer_28f940_alt1(_QWORD, _QWORD,
+                                float) __asm__("SequenceSoundPlayer_28f940");
+__int64 SequenceSoundPlayer_28f860(__int64 result, unsigned int a2,
+                                   unsigned int a3, float a4);
+__int64 SequenceSoundPlayer_Unknown3_290ff0(__int64 result);
+__int64 SequenceSoundPlayer_Unknown4(__int64 a1);
 
 __int64 SequenceSoundPlayer_Unknown2(__int64 a1, __int64 a2, __int64 a3)
 {
@@ -1026,6 +1034,36 @@ __int64 SequenceSoundPlayer_28f780(__int64 result, unsigned int a2, float a3)
   return result;
 }
 
+__int64 SequenceSoundPlayer_28f860(__int64 result, unsigned int a2,
+                                   unsigned int a3, float a4)
+{
+  __int64 v5;
+  unsigned int v7;
+  unsigned __int64 v8;
+  bool v9;
+
+  if (a2 != 0) {
+    v5 = result + 344;
+    v7 = a2;
+    v8 = 0;
+    do {
+      if ((v7 & 1) != 0) {
+        result = *(_QWORD*)(v5 + 8 * v8);
+        if (result != 0) {
+          result = SequenceSoundPlayer_28f940_alt1(result, a3, a4);
+        }
+      }
+      if (v8 > 0xE) {
+        break;
+      }
+      ++v8;
+      v9 = v7 > 1;
+      v7 >>= 1;
+    } while (v9);
+  }
+  return result;
+}
+
 __int64 SequenceSoundPlayer_28f940(__int64 result, int a2, float a3)
 {
   *(float*)(result + 4LL * a2 + 92) = a3;
@@ -1201,6 +1239,19 @@ __int64 SequenceSoundPlayer_Unknown11(__int64 result)
     return GameRoutine_28fcd0();
   }
   return result;
+}
+
+__int64 SequenceSoundPlayer_Unknown3_290ff0(__int64 result)
+{
+  if (*(_DWORD*)(result + 712) == 0) {
+    return GameRoutine_28fcd0_alt1(result - 224);
+  }
+  return result;
+}
+
+__int64 SequenceSoundPlayer_Unknown4(__int64 a1)
+{
+  return (*(__int64 (**)(__int64))(*(_QWORD*)(a1 - 224) + 40LL))(a1 - 224);
 }
 
 #pragma GCC visibility pop

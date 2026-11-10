@@ -18,6 +18,166 @@ __int64 BillboardModel_Destructor(__int64 a1);
 __int64 BillboardModel_Unknown11(__int64 a1, __int64* a2);
 __int64 BillboardModel_Unknown12(__int64 a1, _QWORD* a2, __int64 a3, __int64 a4,
                                  unsigned int a5, unsigned int a6);
+__int64 DecalObject_a91100(__int64*, __int64, __int64, __int64);
+__int64 GameRoutine_5fc230(_QWORD);
+__int64 GameRoutine_604020(_QWORD);
+__int64 GameRoutine_604060(_QWORD, _QWORD, _QWORD);
+__int64 GameRoutine_615760(_QWORD, _QWORD);
+__int64 GameRoutine_a67640(_QWORD, _QWORD);
+__int64 GameRoutine_a677e0(_QWORD, _QWORD);
+__int64 GameRoutine_a67980(_QWORD, _QWORD);
+__int64 GameRoutine_adc200(__int64, __int64, __int64, __int64, unsigned __int64,
+                           __int64, unsigned __int64, __int64);
+__int64 fw_memory_HeapManager_Allocate(_QWORD, _QWORD, _QWORD, _QWORD);
+extern __int64 (*GameData_1fd17c0[])();
+extern __int64 (*GameData_1fd1810[])();
+extern __int64 fw_memory_g_heap_manager;
+__int64 gfx_render_BillboardModel_BillboardModel(__int64 a1, __int64 a2,
+                                                 unsigned __int64 a3,
+                                                 __int64 a4,
+                                                 unsigned __int64 a5,
+                                                 __int64* a6);
+void gfx_render_BillboardModel_BillboardModel_lambda0_Invoke(__int64 a1,
+                                                             _WORD* a2);
+
+__int64 gfx_render_BillboardModel_BillboardModel(__int64 a1, __int64 a2,
+                                                 unsigned __int64 a3,
+                                                 __int64 a4,
+                                                 unsigned __int64 a5,
+                                                 __int64* a6)
+{
+  __int64* v6;
+  __int64 v13;
+  __int64 v14;
+  __int64 v15;
+  __int64* v16;
+  __int64 v17;
+  __int64 v18;
+  __int64 v19;
+  __int64 v20;
+  __int64 v21;
+  __int64 v22;
+  __int64 v23;
+  _QWORD* v24;
+  __int64 v25;
+  unsigned __int64 v26;
+  _QWORD* v27;
+  _QWORD* v28;
+  __int64 v29;
+  __int64 result;
+  __int64 v31;
+  _QWORD v32[4];
+  _QWORD* v33;
+  __int64 v34;
+  unsigned __int64 v35;
+  __int64 v36;
+  __int64 v37;
+
+  *(_QWORD*)(a1 + 128) = 0;
+  v6 = (__int64*)(a1 + 128);
+  *(_QWORD*)(a1 + 16) = 0;
+  *(_QWORD*)(a1 + 24) = 0;
+  *(_DWORD*)(a1 + 36) = 0;
+  *(_BYTE*)(a1 + 32) = 1;
+  *(_QWORD*)(a1 + 48) = 0;
+  *(_QWORD*)(a1 + 56) = 0;
+  *(_QWORD*)(a1 + 64) = 0;
+  *(_QWORD*)(a1 + 72) = 0;
+  *(_QWORD*)(a1 + 80) = 0;
+  *(_QWORD*)(a1 + 88) = 0;
+  *(_QWORD*)(a1 + 96) = 0;
+  *(_QWORD*)(a1 + 104) = 0;
+  *(_BYTE*)(a1 + 216) = 0;
+  *(_BYTE*)(a1 + 224) = 0;
+  *(_BYTE*)(a1 + 240) = 0;
+  *(_DWORD*)(a1 + 144) = 0;
+  *(_QWORD*)(a1 + 136) = 0;
+  *(_QWORD*)a1 = gfx_render_BillboardModel_vtable;
+  *(_QWORD*)(a1 + 8) = 0;
+  *(_QWORD*)(a1 + 112) = 0;
+  *(_QWORD*)(a1 + 120) = 0;
+  *(_QWORD*)(a1 + 152) = 0;
+  *(_QWORD*)(a1 + 160) = 0;
+  *(_QWORD*)(a1 + 168) = 0;
+  *(_QWORD*)(a1 + 176) = 0;
+  *(_QWORD*)(a1 + 184) = 0;
+  *(_QWORD*)(a1 + 192) = 0;
+  *(_BYTE*)(a1 + 200) = 0;
+  GameRoutine_604020(a1 + 248);
+  v6[30] = -1;
+  v14 = *a6;
+  v13 = a6[1];
+  if (v13 != 0) {
+    atomic_fetch_add_explicit((atomic_ullong* volatile)(v13 + 16), 1u,
+                              memory_order_relaxed);
+  }
+  v15 = *(_QWORD*)(a1 + 120);
+  *(_QWORD*)(a1 + 112) = v14;
+  *(_QWORD*)(a1 + 120) = v13;
+  if (v15 != 0) {
+    std___1___shared_weak_count___release_weak(v15);
+  }
+  v16 = game_g_frame_clock_ptr[0];
+  v34 = a4;
+  v35 = a5;
+  v32[0] = a2;
+  v32[1] = a3;
+  v17 = *game_g_frame_clock_ptr[0];
+  v18 = GameRoutine_a67640(*(_QWORD*)(*game_g_frame_clock_ptr[0] + 13416), v32);
+  if (v18 != 0 &&
+      (v19 = v18, (v20 = GameRoutine_a677e0(v18 + 40, &v34)) != 0) &&
+      (v21 = v20 + 40, (v22 = GameRoutine_a67980(
+                            v19 + 80, *(_QWORD*)(v20 + 40) + 32LL)) != 0)) {
+    v23 = v22;
+    v24 = (_QWORD*)fw_memory_HeapManager_Allocate(fw_memory_g_heap_manager, 440,
+                                                  16, 0);
+    v25 = v34;
+    v26 = v35;
+    v27 = v24 + 3;
+    v28 = v24;
+    v24[1] = 0;
+    v24[2] = 0;
+    *v24 = GameData_1fd17c0;
+    GameRoutine_adc200((__int64)(v24 + 3), v23 + 40, 0, a2, a3, v25, v26, v21);
+  }
+  else {
+    v27 = nullptr;
+    v28 = nullptr;
+  }
+  v29 = *(_QWORD*)(a1 + 192);
+  *(_QWORD*)(a1 + 184) = v27;
+  *(_QWORD*)(a1 + 192) = v28;
+  if (v29 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v29 + 8),
+                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v29 + 16LL))(v29);
+    std___1___shared_weak_count___release_weak(v29);
+  }
+  DecalObject_a91100(v6, *(_QWORD*)(v17 + 312),
+                     *(_QWORD*)(*(_QWORD*)(v17 + 552) + 16LL), 48);
+  v36 = 0;
+  v37 = 0;
+  v34 = 0;
+  v35 = 0;
+  v32[0] = GameData_1fd1810;
+  v33 = v32;
+  GameRoutine_5fc230(&v34);
+  if (v33 != nullptr) {
+    (*(void (**)(_QWORD*, __int64*))(*v33 + 48LL))(v33, &v34);
+  }
+  GameRoutine_604060(v6 + 15, *v16 + 568, &v34);
+  *(_QWORD*)(a1 + 368) = GameRoutine_615760(*(_QWORD*)(*v16 + 552), v6 + 15);
+  result = (__int64)v33;
+  if (v33 == v32) {
+    v31 = 32;
+  }
+  else {
+    if (v33 == nullptr) {
+      return result;
+    }
+    v31 = 40;
+  }
+  return (*(__int64 (**)(_QWORD*))(*v33 + v31))(v33);
+}
 
 __int64 BillboardModel_Destructor(__int64 a1)
 {
@@ -137,6 +297,13 @@ __int64 BillboardModel_Unknown12(__int64 a1, _QWORD* a2, __int64 a3, __int64 a4,
   (*(void (**)(_QWORD, __int64))(*(_QWORD*)*a2 + 264LL))(*a2, 2);
   return (*(__int64 (**)(_QWORD, __int64, _QWORD, _QWORD, _QWORD))(
       *(_QWORD*)*a2 + 280LL))(*a2, 4, 0, a5, a6);
+}
+
+void gfx_render_BillboardModel_BillboardModel_lambda0_Invoke(__int64 a1,
+                                                             _WORD* a2)
+{
+  *a2 = 514;
+  a2[3] = 42;
 }
 
 #pragma GCC visibility pop

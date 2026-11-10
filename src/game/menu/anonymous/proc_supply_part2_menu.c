@@ -10,6 +10,97 @@ extern char GameData_1a9f09e;
 void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
 void __attribute__((noreturn)) GameRoutine_874520(_QWORD);
 _DWORD* ProcSupplyPart2Menu_Unknown139(_DWORD* result, __int64* a2);
+__int64 GameRoutine_1308480(void);
+__int64 GameRoutine_6680e0(_QWORD, _QWORD);
+__int64 ProcList_9bd480(_QWORD);
+__int64 game_ProcList_Call_9bcfa0(_QWORD, _QWORD);
+__int64 game_menu_Dialog__CreateBind_game_menu_Dialog(_QWORD, _QWORD);
+extern __int64 (*GameData_20d3c58[])();
+extern __int64 (*GameData_20d3cd8[])();
+__int64 game_menu_anonymous_ProcSupplyPart2Menu_CreateBind(__int64 a1,
+                                                           __int64* a2);
+__int64
+game_menu_anonymous_ProcSupplyPart2Menu_CreateBind_closure_Invoke(__int64 a1,
+                                                                  __int64* a2);
+
+__int64 game_menu_anonymous_ProcSupplyPart2Menu_CreateBind(__int64 a1,
+                                                           __int64* a2)
+{
+  __int64 v2;
+  __int64 result;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  _QWORD v7[4];
+  _QWORD* v8;
+
+  v2 = *a2;
+  GameRoutine_1308480();
+  result = ProcList_9bd480(v2);
+  if (result == 0) {
+    return result;
+  }
+  v4 = result;
+  v7[0] = GameData_20d3c58;
+  v8 = v7;
+  game_ProcList_Call_9bcfa0(result, v7);
+  if (v8 == v7) {
+    v5 = 32;
+    goto LABEL_6;
+  }
+  if (v8 != nullptr) {
+    v5 = 40;
+  LABEL_6:
+    (*(void (**)(__int64))(*v8 + v5))((__int64)v8);
+  }
+  v7[0] = GameData_20d3cd8;
+  v8 = v7;
+  game_ProcList_Call_9bcfa0(v4, v7);
+  result = (__int64)v8;
+  if (v8 == v7) {
+    v6 = 32;
+  }
+  else {
+    if (v8 == nullptr) {
+      return result;
+    }
+    v6 = 40;
+  }
+  return (*(__int64 (**)(__int64))(*v8 + v6))((__int64)v8);
+}
+
+__int64
+
+game_menu_anonymous_ProcSupplyPart2Menu_CreateBind_closure_Invoke(__int64 a1,
+                                                                  __int64* a2)
+{
+  __int64 v2;
+  __int64 result;
+  __int64 v4;
+  _BYTE v5[32];
+  _BYTE* v6;
+  const char* v7;
+
+  v2 = *a2;
+  v7 = "MID_Menu_Part2Sortie_Message";
+  result = game_menu_Dialog__CreateBind_game_menu_Dialog(v2, &v7);
+  if (result != 0) {
+    v6 = nullptr;
+    GameRoutine_6680e0(v5, result + 1248);
+    result = (__int64)v6;
+    if (v6 == v5) {
+      v4 = 32;
+    }
+    else {
+      if (v6 == nullptr) {
+        return result;
+      }
+      v4 = 40;
+    }
+    return (*(__int64 (**)(void))(*(_QWORD*)v6 + v4))();
+  }
+  return result;
+}
 
 _DWORD* ProcSupplyPart2Menu_Unknown139(_DWORD* result, __int64* a2)
 {

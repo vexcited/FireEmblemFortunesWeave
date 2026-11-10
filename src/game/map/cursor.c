@@ -32,6 +32,12 @@ void Cursor_7317c0(__int64 a1);
 bool Cursor_7339d0(__int64 a1, double a2, double a3, double a4, long double a5,
                    long double a6, long double a7, long double a8,
                    long double a9);
+__int64 GameRoutine_734a80_alt1(__int64,
+                                __int64*) __asm__("GameRoutine_734a80");
+float Cursor_7340d0(_DWORD* a1, _DWORD* a2, _DWORD* a3);
+float Cursor_734120(int a1, int a2, float a3, float a4, float a5, float a6);
+__int64 game_map_Cursor_Impl_Tick_closure_Invoke(__int64 a1, int* a2, int* a3,
+                                                 unsigned __int8* a4);
 
 void Cursor_730b20(__int64 a1, int a2, int a3)
 {
@@ -811,6 +817,609 @@ bool Cursor_7339d0(__int64 a1, double a2, double a3, double a4, long double a5,
     snd_Fade_Destroy_Fade(v12);
   }
   return v9;
+}
+
+float Cursor_7340d0(_DWORD* a1, _DWORD* a2, _DWORD* a3)
+{
+  __int128 v3;
+  __int128 v4;
+  float result;
+
+  a1[8] = *a2;
+  a1[9] = a2[1];
+  v3 = *((_OWORD*)a1 + 2);
+  *((_QWORD*)&v3 + 1) = (unsigned int)a2[2];
+  *((_OWORD*)a1 + 2) = v3;
+  a1[12] = *a3;
+  a1[13] = a3[1];
+  v4 = *((_OWORD*)a1 + 3);
+  *((_QWORD*)&v4 + 1) = (unsigned int)a3[2];
+  *((_OWORD*)a1 + 3) = v4;
+  LODWORD(result) = v4;
+  return result;
+}
+
+float Cursor_734120(int a1, int a2, float a3, float a4, float a5, float a6)
+{
+  float result;
+  float v7;
+  float v8;
+  float v9;
+  float v10;
+  float v11;
+  int v12;
+  unsigned int v13;
+  float v14;
+  float v15;
+  float v16;
+  float v17;
+  float v18;
+  float v19;
+  float v20;
+  int v21;
+  unsigned int v22;
+  float v23;
+  float v24;
+  float v25;
+  float v26;
+  int v27;
+  unsigned int v28;
+  float v29;
+  float v30;
+  float v31;
+  int v32;
+  unsigned int v33;
+  float v34;
+  int v35;
+  unsigned int v36;
+  float v37;
+  float v38;
+  float v39;
+  int v40;
+  unsigned int v41;
+  float v42;
+  float v43;
+  int v44;
+  unsigned int v45;
+  float v46;
+  float v47;
+  float v48;
+  int v49;
+  unsigned int v50;
+  float v51;
+  float v52;
+  float v53;
+  float v54;
+  float v55;
+  int v56;
+  unsigned int v57;
+  float v58;
+  float v59;
+  float v60;
+  int v61;
+  unsigned int v62;
+
+  switch (a1) {
+  case 1:
+    if (a2 < 2) {
+      v34 = a5;
+      v15 = a6;
+    }
+    else {
+      v15 = a6;
+      v34 = a5;
+      v35 = (a2 - 1) & 7;
+      if ((unsigned int)(a2 - 2) >= 7) {
+        v15 = a6;
+        v34 = a5;
+        v36 = (a2 - 1) & 0xFFFFFFF8;
+        do {
+          v36 -= 8;
+          v34 =
+              a5 *
+              (float)(a5 *
+                      (float)(a5 *
+                              (float)(a5 *
+                                      (float)(a5 *
+                                              (float)(a5 *
+                                                      (float)(a5 *
+                                                              (float)(a5 *
+                                                                      v34)))))));
+          v15 =
+              a6 *
+              (float)(a6 *
+                      (float)(a6 *
+                              (float)(a6 *
+                                      (float)(a6 *
+                                              (float)(a6 *
+                                                      (float)(a6 *
+                                                              (float)(a6 *
+                                                                      v15)))))));
+        } while (v36 != 0);
+      }
+      for (; v35 != 0; --v35) {
+        v34 = a5 * v34;
+        v15 = a6 * v15;
+      }
+    }
+    v17 = (float)(a4 - a3) * v34;
+    goto LABEL_84;
+  case 2:
+    v18 = a6 - a5;
+    if (a2 < 2) {
+      v20 = v18;
+      v19 = a6;
+    }
+    else {
+      v19 = a6;
+      v20 = v18;
+      v21 = (a2 - 1) & 7;
+      if ((unsigned int)(a2 - 2) >= 7) {
+        v19 = a6;
+        v20 = v18;
+        v22 = (a2 - 1) & 0xFFFFFFF8;
+        do {
+          v22 -= 8;
+          v20 =
+              v18 *
+              (float)(v18 *
+                      (float)(v18 *
+                              (float)(v18 *
+                                      (float)(v18 *
+                                              (float)(v18 *
+                                                      (float)(v18 *
+                                                              (float)(v18 *
+                                                                      v20)))))));
+          v19 =
+              a6 *
+              (float)(a6 *
+                      (float)(a6 *
+                              (float)(a6 *
+                                      (float)(a6 *
+                                              (float)(a6 *
+                                                      (float)(a6 *
+                                                              (float)(a6 *
+                                                                      v19)))))));
+        } while (v22 != 0);
+      }
+      for (; v21 != 0; --v21) {
+        v20 = v18 * v20;
+        v19 = a6 * v19;
+      }
+    }
+    return a4 - (float)((float)((float)(a4 - a3) * v20) / v19);
+  case 3:
+    v23 = a6 * 0.5;
+    v24 = a3 + (float)((float)(a4 - a3) * 0.5);
+    if (a5 >= v23) {
+      v58 = v23 - (float)(a5 - v23);
+      if (a2 < 2) {
+        v60 = v23 - (float)(a5 - v23);
+        v59 = v23;
+      }
+      else {
+        v59 = v23;
+        v60 = v58;
+        v61 = (a2 - 1) & 7;
+        if ((unsigned int)(a2 - 2) >= 7) {
+          v59 = v23;
+          v60 = v58;
+          v62 = (a2 - 1) & 0xFFFFFFF8;
+          do {
+            v62 -= 8;
+            v60 =
+                v58 *
+                (float)(v58 *
+                        (float)(v58 *
+                                (float)(v58 *
+                                        (float)(v58 *
+                                                (float)(v58 *
+                                                        (float)(v58 *
+                                                                (float)(v58 *
+                                                                        v60)))))));
+            v59 =
+                v23 *
+                (float)(v23 *
+                        (float)(v23 *
+                                (float)(v23 *
+                                        (float)(v23 *
+                                                (float)(v23 *
+                                                        (float)(v23 *
+                                                                (float)(v23 *
+                                                                        v59)))))));
+          } while (v62 != 0);
+        }
+        for (; v61 != 0; --v61) {
+          v60 = v58 * v60;
+          v59 = v23 * v59;
+        }
+      }
+      return a4 - (float)((float)((float)(a4 - v24) * v60) / v59);
+    }
+    else {
+      if (a2 < 2) {
+        v26 = a5;
+        v25 = v23;
+      }
+      else {
+        v25 = v23;
+        v26 = a5;
+        v27 = (a2 - 1) & 7;
+        if ((unsigned int)(a2 - 2) >= 7) {
+          v25 = v23;
+          v26 = a5;
+          v28 = (a2 - 1) & 0xFFFFFFF8;
+          do {
+            v28 -= 8;
+            v26 =
+                a5 *
+                (float)(a5 *
+                        (float)(a5 *
+                                (float)(a5 *
+                                        (float)(a5 *
+                                                (float)(a5 *
+                                                        (float)(a5 *
+                                                                (float)(a5 *
+                                                                        v26)))))));
+            v25 =
+                v23 *
+                (float)(v23 *
+                        (float)(v23 *
+                                (float)(v23 *
+                                        (float)(v23 *
+                                                (float)(v23 *
+                                                        (float)(v23 *
+                                                                (float)(v23 *
+                                                                        v25)))))));
+          } while (v28 != 0);
+        }
+        for (; v27 != 0; --v27) {
+          v26 = a5 * v26;
+          v25 = v23 * v25;
+        }
+      }
+      return a3 + (float)((float)((float)(v24 - a3) * v26) / v25);
+    }
+  case 4:
+    v7 = a6 * 0.5;
+    v8 = a3 + (float)((float)(a4 - a3) * 0.5);
+    if (a5 >= v7) {
+      v53 = a5 - v7;
+      if (a2 < 2) {
+        v55 = a5 - v7;
+        v54 = v7;
+      }
+      else {
+        v54 = v7;
+        v55 = v53;
+        v56 = (a2 - 1) & 7;
+        if ((unsigned int)(a2 - 2) >= 7) {
+          v54 = v7;
+          v55 = v53;
+          v57 = (a2 - 1) & 0xFFFFFFF8;
+          do {
+            v57 -= 8;
+            v55 =
+                v53 *
+                (float)(v53 *
+                        (float)(v53 *
+                                (float)(v53 *
+                                        (float)(v53 *
+                                                (float)(v53 *
+                                                        (float)(v53 *
+                                                                (float)(v53 *
+                                                                        v55)))))));
+            v54 =
+                v7 *
+                (float)(v7 *
+                        (float)(v7 *
+                                (float)(v7 *
+                                        (float)(v7 *
+                                                (float)(v7 *
+                                                        (float)(v7 *
+                                                                (float)(v7 *
+                                                                        v54)))))));
+          } while (v57 != 0);
+        }
+        for (; v56 != 0; --v56) {
+          v55 = v53 * v55;
+          v54 = v7 * v54;
+        }
+      }
+      return v8 + (float)((float)((float)(a4 - v8) * v55) / v54);
+    }
+    else {
+      v9 = v7 - a5;
+      if (a2 < 2) {
+        v11 = v7 - a5;
+        v10 = v7;
+      }
+      else {
+        v10 = v7;
+        v11 = v9;
+        v12 = (a2 - 1) & 7;
+        if ((unsigned int)(a2 - 2) >= 7) {
+          v10 = v7;
+          v11 = v9;
+          v13 = (a2 - 1) & 0xFFFFFFF8;
+          do {
+            v13 -= 8;
+            v11 =
+                v9 *
+                (float)(v9 *
+                        (float)(v9 *
+                                (float)(v9 *
+                                        (float)(v9 *
+                                                (float)(v9 *
+                                                        (float)(v9 *
+                                                                (float)(v9 *
+                                                                        v11)))))));
+            v10 =
+                v7 *
+                (float)(v7 *
+                        (float)(v7 *
+                                (float)(v7 *
+                                        (float)(v7 *
+                                                (float)(v7 *
+                                                        (float)(v7 *
+                                                                (float)(v7 *
+                                                                        v10)))))));
+          } while (v13 != 0);
+        }
+        for (; v12 != 0; --v12) {
+          v11 = v9 * v11;
+          v10 = v7 * v10;
+        }
+      }
+      return v8 - (float)((float)((float)(v8 - a3) * v11) / v10);
+    }
+  case 5:
+    v37 = a6 - a5;
+    if (a2 < 2) {
+      v39 = a6 - a5;
+      v38 = a6;
+    }
+    else {
+      v38 = a6;
+      v39 = a6 - a5;
+      v40 = (a2 - 1) & 7;
+      if ((unsigned int)(a2 - 2) >= 7) {
+        v38 = a6;
+        v39 = a6 - a5;
+        v41 = (a2 - 1) & 0xFFFFFFF8;
+        do {
+          v41 -= 8;
+          v39 =
+              v37 *
+              (float)(v37 *
+                      (float)(v37 *
+                              (float)(v37 *
+                                      (float)(v37 *
+                                              (float)(v37 *
+                                                      (float)(v37 *
+                                                              (float)(v37 *
+                                                                      v39)))))));
+          v38 =
+              a6 *
+              (float)(a6 *
+                      (float)(a6 *
+                              (float)(a6 *
+                                      (float)(a6 *
+                                              (float)(a6 *
+                                                      (float)(a6 *
+                                                              (float)(a6 *
+                                                                      v38)))))));
+        } while (v41 != 0);
+      }
+      for (; v40 != 0; --v40) {
+        v39 = v37 * v39;
+        v38 = a6 * v38;
+      }
+    }
+    v51 = (float)(a5 / a6) + 0.0;
+    v52 = 1.0 - (float)(v39 / v38);
+    goto LABEL_87;
+  case 6:
+    v42 = a5;
+    v43 = a6;
+    if (a2 >= 2) {
+      v43 = a6;
+      v42 = a5;
+      v44 = (a2 - 1) & 7;
+      if ((unsigned int)(a2 - 2) >= 7) {
+        v43 = a6;
+        v42 = a5;
+        v45 = (a2 - 1) & 0xFFFFFFF8;
+        do {
+          v45 -= 8;
+          v42 =
+              a5 *
+              (float)(a5 *
+                      (float)(a5 *
+                              (float)(a5 *
+                                      (float)(a5 *
+                                              (float)(a5 *
+                                                      (float)(a5 *
+                                                              (float)(a5 *
+                                                                      v42)))))));
+          v43 =
+              a6 *
+              (float)(a6 *
+                      (float)(a6 *
+                              (float)(a6 *
+                                      (float)(a6 *
+                                              (float)(a6 *
+                                                      (float)(a6 *
+                                                              (float)(a6 *
+                                                                      v43)))))));
+        } while (v45 != 0);
+      }
+      for (; v44 != 0; --v44) {
+        v42 = a5 * v42;
+        v43 = a6 * v43;
+      }
+    }
+    v46 = (float)((float)(a5 / a6) + 0.0) +
+          (float)((float)(a5 * (float)((float)((float)(v42 / v43) + 0.0) -
+                                       (float)((float)(a5 / a6) + 0.0))) /
+                  a6);
+    goto LABEL_88;
+  case 7:
+    v29 = a6 - a5;
+    if (a2 < 2) {
+      v31 = a6 - a5;
+      v30 = a6;
+    }
+    else {
+      v30 = a6;
+      v31 = a6 - a5;
+      v32 = (a2 - 1) & 7;
+      if ((unsigned int)(a2 - 2) >= 7) {
+        v30 = a6;
+        v31 = a6 - a5;
+        v33 = (a2 - 1) & 0xFFFFFFF8;
+        do {
+          v33 -= 8;
+          v31 =
+              v29 *
+              (float)(v29 *
+                      (float)(v29 *
+                              (float)(v29 *
+                                      (float)(v29 *
+                                              (float)(v29 *
+                                                      (float)(v29 *
+                                                              (float)(v29 *
+                                                                      v31)))))));
+          v30 =
+              a6 *
+              (float)(a6 *
+                      (float)(a6 *
+                              (float)(a6 *
+                                      (float)(a6 *
+                                              (float)(a6 *
+                                                      (float)(a6 *
+                                                              (float)(a6 *
+                                                                      v30)))))));
+        } while (v33 != 0);
+      }
+      for (; v32 != 0; --v32) {
+        v31 = v29 * v31;
+        v30 = a6 * v30;
+      }
+    }
+    v51 = 1.0 - (float)(v31 / v30);
+    v52 = (float)(a5 / a6) + 0.0;
+    goto LABEL_87;
+  case 8:
+    v47 = a5;
+    v48 = a6;
+    if (a2 >= 2) {
+      v48 = a6;
+      v47 = a5;
+      v49 = (a2 - 1) & 7;
+      if ((unsigned int)(a2 - 2) >= 7) {
+        v48 = a6;
+        v47 = a5;
+        v50 = (a2 - 1) & 0xFFFFFFF8;
+        do {
+          v50 -= 8;
+          v47 =
+              a5 *
+              (float)(a5 *
+                      (float)(a5 *
+                              (float)(a5 *
+                                      (float)(a5 *
+                                              (float)(a5 *
+                                                      (float)(a5 *
+                                                              (float)(a5 *
+                                                                      v47)))))));
+          v48 =
+              a6 *
+              (float)(a6 *
+                      (float)(a6 *
+                              (float)(a6 *
+                                      (float)(a6 *
+                                              (float)(a6 *
+                                                      (float)(a6 *
+                                                              (float)(a6 *
+                                                                      v48)))))));
+        } while (v50 != 0);
+      }
+      for (; v49 != 0; --v49) {
+        v47 = a5 * v47;
+        v48 = a6 * v48;
+      }
+    }
+    v51 = (float)(v47 / v48) + 0.0;
+    v52 = (float)(a5 / a6) + 0.0;
+  LABEL_87:
+    v46 = v51 + (float)((float)(a5 * (float)(v52 - v51)) / a6);
+  LABEL_88:
+    result = a3 + (float)((float)(a4 - a3) * v46);
+    break;
+  case 9:
+    v14 = a4 - a3;
+    v15 = a6 * 0.5;
+    v16 = a6 - a5;
+    if (a5 > v15) {
+      a5 = v16;
+    }
+    v17 = v14 * a5;
+  LABEL_84:
+    result = a3 + (float)(v17 / v15);
+    break;
+  default:
+    result = a3 + (float)((float)((float)(a4 - a3) * a5) / a6);
+    break;
+  }
+  return result;
+}
+
+__int64 game_map_Cursor_Impl_Tick_closure_Invoke(__int64 a1, int* a2, int* a3,
+                                                 unsigned __int8* a4)
+{
+  __int64 v4;
+  int v5;
+  int v6;
+  int v8;
+  __int64 v9;
+  __int128 v10;
+  __int64 result;
+  __int64 v12;
+  int v13;
+  __int128 v14;
+  __int128 v15;
+
+  v4 = *(_QWORD*)(a1 + 8);
+  v5 = *a2;
+  v6 = *a3;
+  v8 = *a4;
+  if (*(float*)(v4 + 28) == *(float*)(v4 + 24)) {
+    (*(void (**)(__int128* __return_ptr, __int64))(*(_QWORD*)(v4 + 16) + 16LL))(
+        &v15, v4 + 16);
+  }
+  else {
+    v9 = *(_QWORD*)(v4 + 72);
+    *(_QWORD*)&v15 = *(_QWORD*)(v4 + 64);
+    *((_QWORD*)&v15 + 1) = v9;
+  }
+  *(float*)&v15 = (float)((float)((float)(v5 + 256) * 5.0) + 2.5) + -1280.0;
+  *(_QWORD*)&v10 = v15;
+  *((float*)&v10 + 2) =
+      (float)((float)((float)(v6 + 256) * 5.0) + 2.5) + -1280.0;
+  HIDWORD(v10) = 0;
+  v15 = v10;
+  v14 = v10;
+  result = GameRoutine_734a80_alt1(v4 + 16, (__int64*)&v14);
+  if (v8 != 0 && (v12 = *(_QWORD*)(a1 + 16)) != 0) {
+    v13 = *(_DWORD*)(v12 + 592);
+  }
+  else {
+    v13 = 1;
+  }
+  *(_DWORD*)(v4 + 184) = v13;
+  *(_DWORD*)(v4 + 188) = v13;
+  return result;
 }
 
 #pragma GCC visibility pop

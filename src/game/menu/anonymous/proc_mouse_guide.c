@@ -27,6 +27,22 @@ __int64 ProcMouseGuide_Unknown96(__int64 a1);
 __int64 ProcMouseGuide_Unknown112(__int64 a1);
 __int64 ProcMouseGuide_Unknown140(__int64 a1, __int64* a2);
 __int64 ProcMouseGuide_Unknown142(__int64 result);
+_QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
+__int64 GameRoutine_1567590(_QWORD, _QWORD);
+__int64 GameRoutine_717fc0(_QWORD, _QWORD);
+__int64 LayoutAccessor_155fbe0(_QWORD, _QWORD);
+__int64 LayoutAccessor_1562680(_QWORD, _QWORD, long double);
+__int64 LayoutAccessor_1566d90(_QWORD, _QWORD);
+__int64 LayoutAccessor_1567000(_QWORD, _QWORD);
+__int64 game_HashString(void);
+__int64 std___1___shared_weak_count___release_weak();
+__int64 std___1___shared_weak_count_lock(_QWORD);
+extern _UNKNOWN GameData_1ab18ee;
+extern __int64 GameData_2258178;
+extern char* GameData_204d1d8[15];
+__int64 ProcMouseGuide_Unknown13(__int64 result);
+__int64 ProcMouseGuide_17a7290(__int64 a1);
+__int64 game_menu_anonymous_ProcMouseGuide_StickRCall_closure_Invoke();
 
 __int64 ProcMouseGuide_Unknown96(__int64 a1)
 {
@@ -434,6 +450,106 @@ __int64 ProcMouseGuide_Unknown142(__int64 result)
     }
   }
   return result;
+}
+
+__int64 ProcMouseGuide_Unknown13(__int64 result)
+{
+  if (*(_BYTE*)(result + 9) == 1) {
+    if (game_gameui_Header_instance_ != 0) {
+      LayoutAccessor_1566d90(game_gameui_Header_instance_, 0);
+    }
+    result = game_gameui_Footer_instance_;
+    if (game_gameui_Footer_instance_ != 0) {
+      return LayoutAccessor_1567000(game_gameui_Footer_instance_, 0);
+    }
+  }
+  return result;
+}
+
+__int64 ProcMouseGuide_17a7290(__int64 a1)
+{
+  char v1;
+  __int64 result;
+  __int64 v3;
+  __int64 v4;
+  char* v5;
+  __int64 v6;
+  long double v7;
+  __int64 v8;
+  long double v9;
+  __int64 v10;
+  __int64 v11;
+
+  if (*(_BYTE*)(game_g_game_setting + 807) == 1 &&
+      ((*(_BYTE*)(game_g_game_setting + 804) & 1) != 0 ||
+       *(_BYTE*)(game_g_game_setting + 940) == 1 &&
+           (*(_BYTE*)(game_g_game_setting + 805) & 1) != 0 &&
+           (*(_BYTE*)(game_g_game_setting + 806) & 1) != 0)) {
+    goto LABEL_8;
+  }
+  if (*(_BYTE*)(game_g_game_setting + 903) == 1) {
+    if ((*(_BYTE*)(game_g_game_setting + 900) & 1) != 0) {
+    LABEL_8:
+      v1 = 0;
+      goto LABEL_10;
+    }
+    v1 = 1;
+    if (*(_BYTE*)(game_g_game_setting + 940) == 1 &&
+        (*(_BYTE*)(game_g_game_setting + 901) & 1) != 0) {
+      v1 = *(_BYTE*)(game_g_game_setting + 902) ^ 1;
+    }
+  }
+  else {
+    v1 = 1;
+  }
+LABEL_10:
+  if (*(_BYTE*)(a1 + 1065) == 1) {
+    GameRoutine_1567590("MouseCalib", v1 & 1);
+    return GameRoutine_1567590("MouseReset", v1 & 1);
+  }
+  GameRoutine_1560070(&v10, a1 + 848, "L_Footer");
+  result = v11;
+  if (v11 != 0) {
+    v3 = std___1___shared_weak_count_lock(v11);
+    v4 = v10;
+    result = v11;
+    if (v11 != 0) {
+      result = std___1___shared_weak_count___release_weak();
+    }
+    if (v3 != 0 && v4 != 0) {
+      v5 = GameData_204d1d8[v1 & 1];
+      v6 = LayoutAccessor_155fbe0(v4, "L_KeyHelp00");
+      LODWORD(v7) = 1.0;
+      LayoutAccessor_1562680(v6, v5, v7);
+      v8 = LayoutAccessor_155fbe0(v4, "L_KeyHelp02");
+      LODWORD(v9) = 1.0;
+      result = LayoutAccessor_1562680(v8, v5, v9);
+    }
+    else if (v3 == 0) {
+      return result;
+    }
+    if (atomic_fetch_add((atomic_ullong* volatile)(v3 + 8),
+                         0xFFFFFFFFFFFFFFFFLL) == 0) {
+      (*(void (**)(__int64))(*(_QWORD*)v3 + 16LL))(v3);
+      return std___1___shared_weak_count___release_weak();
+    }
+  }
+  return result;
+}
+
+__int64 game_menu_anonymous_ProcMouseGuide_StickRCall_closure_Invoke()
+{
+  __int64 v0;
+  _QWORD v2[2];
+
+  v0 = GameData_2258178;
+  if (GameData_2258178 != 0) {
+    v2[1] = &GameData_1ab18ee;
+    v2[0] = game_HashString();
+    GameRoutine_717fc0(v2, 0);
+    *(_DWORD*)(v0 + 564) = 0;
+  }
+  return 2;
 }
 
 #pragma GCC visibility pop

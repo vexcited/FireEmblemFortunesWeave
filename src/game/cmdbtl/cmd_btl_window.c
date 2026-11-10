@@ -31,6 +31,7 @@ extern __int64 (*CmdBtlWindow_17c87e0_ptr[])();
 extern __int64 GameData_212f538;
 extern __int64 GameData_212f5c0[3];
 __int64 CmdBtlWindow_17c7dc0(__int64 a1);
+__int64 CmdBtlWindow_DeletingDestructor();
 
 __int64 CmdBtlWindow_17c7dc0(__int64 a1)
 {
@@ -390,6 +391,13 @@ __int64 CmdBtlWindow_17c87e0()
 }
 
 __int64 CmdBtlWindow_Unknown5()
+{
+  (*(void (**)(__int64))(*(_QWORD*)GameData_221b2e8 + 24LL))(GameData_221b2e8);
+  return (*(__int64 (**)(__int64))(*(_QWORD*)GameData_22197d8 + 24LL))(
+      GameData_22197d8);
+}
+
+__int64 CmdBtlWindow_DeletingDestructor()
 {
   (*(void (**)(__int64))(*(_QWORD*)GameData_221b2e8 + 24LL))(GameData_221b2e8);
   return (*(__int64 (**)(__int64))(*(_QWORD*)GameData_22197d8 + 24LL))(

@@ -47,6 +47,15 @@ __int64 Window_Unknown26(__int64 a1, _QWORD* a2);
 __int64 Window_5afc20(__int64 result, __int64 a2, __int64 a3);
 __int64 Window_5afee0(__int64 result, __int64 a2, __int64 a3);
 __int64 Window_Unknown28(__int64 result, __int64 a2, __int64 a3);
+__int64 GameRoutine_58c850(void);
+extern __int64 (*nn_ui2d_Window_vtable[])();
+__int64 Window_Destructor(_QWORD* a1);
+
+__int64 Window_Destructor(_QWORD* a1)
+{
+  *a1 = nn_ui2d_Window_vtable;
+  return GameRoutine_58c850();
+}
 
 __int64 Window_Unknown3(__int64 a1, __int64 a2)
 {

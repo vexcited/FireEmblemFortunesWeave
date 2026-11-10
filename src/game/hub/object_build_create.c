@@ -19,6 +19,11 @@ extern __int64 GameData_212c638;
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64* GameData_212f910[2];
 _QWORD* ObjectBuildCreate_Destructor(__int64 a1);
+__int64 GameRoutine_dfa520(_QWORD);
+__int64 GameRoutine_f2d770(_QWORD, _QWORD);
+bool ObjectBuildCreate_Unknown2(__int64 a1);
+__int64 game_hub_ObjectBuildCreate_CreateObject_lambda0_Invoke(__int64 a1,
+                                                               __int64* a2);
 
 _QWORD* ObjectBuildCreate_Destructor(__int64 a1)
 {
@@ -141,6 +146,33 @@ _QWORD* ObjectBuildCreate_Destructor(__int64 a1)
         *(_QWORD*)fw_memory_g_heap_manager_ptr + v21, v20);
   }
   return result;
+}
+
+bool ObjectBuildCreate_Unknown2(__int64 a1)
+{
+  return *(_QWORD*)(a1 + 16) != *(_QWORD*)(a1 + 8);
+}
+
+__int64 game_hub_ObjectBuildCreate_CreateObject_lambda0_Invoke(__int64 a1,
+                                                               __int64* a2)
+{
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+
+  v2 = *(_QWORD*)(a1 + 8);
+  v3 = *a2;
+  v4 = a2[1];
+  if (*a2 != v4) {
+    do {
+      GameRoutine_f2d770(v2 + 8, v3);
+      v3 += 8;
+    } while (v3 != v4);
+  }
+  v5 = *(_QWORD*)(v2 + 56);
+  *(_BYTE*)(v5 + 945) = 0;
+  return GameRoutine_dfa520(v5);
 }
 
 #pragma GCC visibility pop

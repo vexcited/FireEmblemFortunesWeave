@@ -13,6 +13,7 @@ extern __int64* GameData_2130640[3];
 extern int GameData_220b690;
 __int64 MapEventManager_Destructor(__int64 a1);
 __int64 MapEventManager_Unknown4(__int64 a1);
+__int64 MapEventManager_Unknown2(__int64 a1);
 
 __int64 MapEventManager_Destructor(__int64 a1)
 {
@@ -74,6 +75,17 @@ __int64 MapEventManager_Unknown4(__int64 a1)
   *(_WORD*)(a1 + 1576) = 0;
   *(_BYTE*)(a1 + 1578) = 0;
   *(_QWORD*)(a1 + 1584) = 0;
+  return result;
+}
+
+__int64 MapEventManager_Unknown2(__int64 a1)
+{
+  __int64 result;
+
+  result = EventManagerBase_Unknown2(a1);
+  *(_WORD*)(a1 + 1568) = 0;
+  *(_BYTE*)(a1 + 1570) = 0;
+  *(_QWORD*)(a1 + 1576) = 0;
   return result;
 }
 

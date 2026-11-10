@@ -64,6 +64,24 @@ bool BattleInfo_796d90(__int64 a1, __int64 a2);
 bool BattleInfo_797b50(__int64 a1);
 __int64 BattleInfo_797c80(__int64 a1);
 __int64 BattleInfo_797e40(__int64 a1, unsigned __int8* a2);
+__int64 BattleInfo_795fc0_alt1(_QWORD, _QWORD,
+                               _QWORD) __asm__("BattleInfo_795fc0");
+__int64 GameRoutine_798a60(_QWORD, _QWORD, _QWORD, _QWORD);
+__int64 GameRoutine_798a60_alt1(__int64, __int64, __int64,
+                                unsigned int) __asm__("GameRoutine_798a60");
+__int64 game_UnitPool_Get(_QWORD);
+__int64 game_map_BattleInfo_GiveSkillFromItem_lambda0_Invoke(__int64 a1,
+                                                             __int64 a2);
+__int64 game_map_BattleInfo_TryRelianceBind_lambda0_Invoke(__int64 a1,
+                                                           __int64 a2);
+__int64 game_map_BattleInfo_TryRelianceBind_lambda1_Invoke(__int64 a1,
+                                                           __int64* a2);
+__int64 game_map_BattleInfo_TryRelianceBind_lambda2_Invoke(__int64 a1,
+                                                           __int64 a2);
+__int64 game_map_BattleInfo_TryRelianceBind_lambda3_Invoke(__int64 a1,
+                                                           __int64* a2);
+__int64 game_map_BattleInfo_TryRelianceBind_lambda4_Invoke(__int64 a1,
+                                                           __int64* a2);
 
 __int64 BattleInfo_DeletingDestructor(_QWORD* a1)
 {
@@ -1252,6 +1270,105 @@ __int64 BattleInfo_797e40(__int64 a1, unsigned __int8* a2)
       goto LABEL_4;
     }
   }
+}
+
+__int64 game_map_BattleInfo_GiveSkillFromItem_lambda0_Invoke(__int64 a1,
+                                                             __int64 a2)
+{
+  return BattleInfo_795fc0_alt1(*(_QWORD*)(a1 + 8), *(_QWORD*)(a1 + 16), a2);
+}
+
+__int64 game_map_BattleInfo_TryRelianceBind_lambda0_Invoke(__int64 a1,
+                                                           __int64 a2)
+{
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  int v6;
+  __int64 v7;
+  __int64 result;
+
+  v3 = **(_QWORD**)(a1 + 16);
+  v4 = **(_QWORD**)(a1 + 24);
+  v6 = *(unsigned __int8*)(a2 + 5);
+  v5 = a2 + 5;
+  if (v6 != 0) {
+    v7 = game_UnitPool_Get(v5);
+  }
+  else {
+    v7 = 0;
+  }
+  result = GameRoutine_798a60(
+      v3, v4, v7, *(unsigned __int8*)(**(_QWORD**)(a1 + 32) + 277LL));
+  **(_BYTE**)(a1 + 8) |= result & 1;
+  return result;
+}
+
+__int64 game_map_BattleInfo_TryRelianceBind_lambda1_Invoke(__int64 a1,
+                                                           __int64* a2)
+{
+  __int64 result;
+
+  result = GameRoutine_798a60_alt1(
+      **(_QWORD**)(a1 + 16), **(_QWORD**)(a1 + 24), *a2,
+      *(unsigned __int8*)(**(_QWORD**)(a1 + 32) + 277LL));
+  **(_BYTE**)(a1 + 8) |= result & 1;
+  return result;
+}
+
+__int64 game_map_BattleInfo_TryRelianceBind_lambda2_Invoke(__int64 a1,
+                                                           __int64 a2)
+{
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  int v6;
+  __int64 v7;
+  __int64 result;
+
+  v3 = **(_QWORD**)(a1 + 16);
+  v4 = **(_QWORD**)(a1 + 24);
+  v6 = *(unsigned __int8*)(a2 + 5);
+  v5 = a2 + 5;
+  if (v6 != 0) {
+    v7 = game_UnitPool_Get(v5);
+  }
+  else {
+    v7 = 0;
+  }
+  result = GameRoutine_798a60_alt1(
+      v3, v4, v7,
+      *(unsigned __int8*)(*(_QWORD*)(*(_QWORD*)(*GameData_212c878[0] + 64) +
+                                     8LL * **(unsigned __int16**)(a1 + 32)) +
+                          91LL));
+  **(_BYTE**)(a1 + 8) |= result & 1;
+  return result;
+}
+
+__int64 game_map_BattleInfo_TryRelianceBind_lambda3_Invoke(__int64 a1,
+                                                           __int64* a2)
+{
+  __int64 result;
+
+  result = GameRoutine_798a60_alt1(
+      **(_QWORD**)(a1 + 16), **(_QWORD**)(a1 + 24), *a2,
+      *(unsigned __int8*)(*(_QWORD*)(*(_QWORD*)(*GameData_212c878[0] + 64) +
+                                     8LL * **(unsigned __int16**)(a1 + 32)) +
+                          91LL));
+  **(_BYTE**)(a1 + 8) |= result & 1;
+  return result;
+}
+
+__int64 game_map_BattleInfo_TryRelianceBind_lambda4_Invoke(__int64 a1,
+                                                           __int64* a2)
+{
+  __int64 result;
+
+  result = GameRoutine_798a60_alt1(
+      **(_QWORD**)(a1 + 16), **(_QWORD**)(a1 + 24), *a2,
+      *(unsigned __int8*)(**(_QWORD**)(a1 + 32) + 91LL));
+  **(_BYTE**)(a1 + 8) |= result & 1;
+  return result;
 }
 
 #pragma GCC visibility pop

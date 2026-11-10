@@ -27,6 +27,7 @@ __int64 SoundDataManager_Unknown3(__int64 a1, unsigned int a2, __int64 a3);
 __int64 SoundDataManager_27bb30(__int64 a1, unsigned int a2, __int64 a3);
 __int64 SoundDataManager_Unknown4(__int64 a1, unsigned int a2);
 __int64 SoundDataManager_287ff0(__int64 a1);
+__int64 SoundDataManager_Unknown3_27bb80(__int64 a1, unsigned int a2);
 
 __int64 SoundDataManager_27b710(__int64 a1, __int64 a2)
 {
@@ -225,6 +226,19 @@ __int64 SoundDataManager_Unknown4(__int64 a1, unsigned int a2)
   unsigned int* v2;
 
   v2 = *(unsigned int**)(a1 + 560);
+  if (v2 != nullptr && a2 < *v2) {
+    return *(_QWORD*)&v2[2 * a2 + 2];
+  }
+  else {
+    return 0;
+  }
+}
+
+__int64 SoundDataManager_Unknown3_27bb80(__int64 a1, unsigned int a2)
+{
+  unsigned int* v2;
+
+  v2 = *(unsigned int**)(a1 + 536);
   if (v2 != nullptr && a2 < *v2) {
     return *(_QWORD*)&v2[2 * a2 + 2];
   }

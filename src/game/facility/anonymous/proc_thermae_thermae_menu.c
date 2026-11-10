@@ -25,6 +25,9 @@ __int64 LayoutAccessor_1562cf0(_QWORD, _QWORD);
 __int64 game_util_Format(const char*, ...);
 extern __int64* GameData_212dcd0;
 __int64 ProcThermaeThermaeMenu_192c430(__int64 a1, unsigned int a2);
+__int64 BasicMenuCursor_16ddaa0(_QWORD, _QWORD);
+__int64
+game_facility_anonymous_ProcThermaeThermaeMenu_ACall_closure_Invoke(__int64 a1);
 
 __int64 ProcThermaeThermaeMenu_Unknown84(__int64 a1)
 {
@@ -163,6 +166,26 @@ __int64 ProcThermaeThermaeMenu_192c430(__int64 a1, unsigned int a2)
     }
   }
   return result;
+}
+
+__int64
+
+game_facility_anonymous_ProcThermaeThermaeMenu_ACall_closure_Invoke(__int64 a1)
+{
+  __int64 v1;
+  __int64 v2;
+
+  v1 = *(_QWORD*)(a1 + 8);
+  v2 = *GameData_212dcd0;
+  *(_DWORD*)(v2 + 8) = -1;
+  *(_DWORD*)(v2 + 44) = -1;
+  *(_QWORD*)(v2 + 56) = *(_QWORD*)(v2 + 48);
+  *(_QWORD*)(v2 + 80) = *(_QWORD*)(v2 + 72);
+  *(_QWORD*)(v2 + 12) = -1;
+  *(_QWORD*)(v2 + 20) = -1;
+  *(_QWORD*)(v2 + 28) = -1;
+  *(_QWORD*)(v2 + 36) = -1;
+  return BasicMenuCursor_16ddaa0(v1, 5);
 }
 
 #pragma GCC visibility pop

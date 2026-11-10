@@ -8,6 +8,10 @@ extern __int64 (*GameData_1fb4ff8[])();
 extern char GameData_1a9f09e;
 char* VolunteerSubMenuItem_Unknown3(__int64 a1);
 __int64 VolunteerSubMenuItem_Unknown25(_QWORD* a1);
+extern __int64 GameData_21f3ff8;
+extern __int64 GameData_2247280;
+__int64
+game_facility_anonymous_VolunteerSubMenuItem_ACall_closure_Invoke(__int64 a1);
 
 char* VolunteerSubMenuItem_Unknown3(__int64 a1)
 {
@@ -90,6 +94,27 @@ LABEL_16:
     (*(void (**)(__int64))(*v13 + v7))((__int64)v13);
   }
   return 12;
+}
+
+__int64
+
+game_facility_anonymous_VolunteerSubMenuItem_ACall_closure_Invoke(__int64 a1)
+{
+  __int64 v1;
+  int v2;
+
+  v1 = *(_QWORD*)(*(_QWORD*)(a1 + 8) + 144LL);
+  if (v1 != 0) {
+    v2 = *(unsigned __int16*)(v1 + 16);
+  }
+  else {
+    v2 = -1;
+  }
+  *(_DWORD*)(GameData_21f3ff8 + 8) = v2;
+  if (GameData_2247280 != 0) {
+    *(_DWORD*)(GameData_2247280 + 168) = 4;
+  }
+  return 4;
 }
 
 #pragma GCC visibility pop

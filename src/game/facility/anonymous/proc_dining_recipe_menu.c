@@ -44,6 +44,18 @@ __int64 GameRoutine_15758f0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
                             _QWORD);
 __int64 LayoutAccessor_1562cf0(_QWORD, _QWORD);
 __int64 ProcDiningRecipeMenu_13fa3e0(__int64 a1, unsigned int a2);
+__int64 BasicMenuCursor_16ddaa0(_QWORD, _QWORD);
+__int64 GameRoutine_928e80(_QWORD);
+__int64 GameRoutine_929c90(_QWORD, _QWORD);
+extern __int64 (*game_facility_DiningArgs_vtable)();
+extern __int64 GameData_21f3ff8;
+extern __int64 GameData_2243960;
+__int64
+game_facility_anonymous_ProcDiningRecipeMenu_ACall_closure_Invoke_13fad90(
+    __int64 a1, __int64* a2);
+__int64
+game_facility_anonymous_ProcDiningRecipeMenu_ACall_closure_Invoke_13faf40(
+    __int64 a1);
 
 __int64 ProcDiningRecipeMenu_Unknown84(__int64 a1)
 {
@@ -397,6 +409,67 @@ __int64 ProcDiningRecipeMenu_13fa3e0(__int64 a1, unsigned int a2)
     }
   }
   return result;
+}
+
+__int64
+
+game_facility_anonymous_ProcDiningRecipeMenu_ACall_closure_Invoke_13fad90(
+    __int64 a1, __int64* a2)
+{
+  __int64 v2;
+  __int64 v3;
+  __int64 result;
+  __int64 v6;
+  __int64 (**v7)();
+  __int64 v8;
+  __int64 v9;
+  __int64 v10;
+
+  if (GameData_2243960 != 0) {
+    v2 = *a2;
+    v3 = *(_QWORD*)(GameData_2243960 + 216);
+    if (*a2 != 0 && v3 != 0 && GameData_21f3ff8 != 0) {
+      *(_DWORD*)(GameData_21f3ff8 + 12) = *(unsigned __int16*)(v3 + 16);
+      v9 = 0;
+      v10 = 0;
+      v7 = &game_facility_DiningArgs_vtable;
+      v8 = 0;
+      GameRoutine_928e80(&v7);
+      result = GameRoutine_929c90(v2, &v7);
+      v7 = &game_facility_DiningArgs_vtable;
+      if (v8 != 0) {
+        v9 = v8;
+        v6 = 128;
+        if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+          v6 = 56;
+        }
+        return nn_mem_StandardAllocator_Free(
+            *(_QWORD*)fw_memory_g_heap_manager_ptr + v6);
+      }
+    }
+  }
+  return result;
+}
+
+__int64
+
+game_facility_anonymous_ProcDiningRecipeMenu_ACall_closure_Invoke_13faf40(
+    __int64 a1)
+{
+  __int64 v1;
+  __int64 v2;
+
+  v1 = *(_QWORD*)(a1 + 8);
+  v2 = *GameData_212dcd0;
+  *(_DWORD*)(v2 + 8) = -1;
+  *(_DWORD*)(v2 + 44) = -1;
+  *(_QWORD*)(v2 + 56) = *(_QWORD*)(v2 + 48);
+  *(_QWORD*)(v2 + 80) = *(_QWORD*)(v2 + 72);
+  *(_QWORD*)(v2 + 12) = -1;
+  *(_QWORD*)(v2 + 20) = -1;
+  *(_QWORD*)(v2 + 28) = -1;
+  *(_QWORD*)(v2 + 36) = -1;
+  return BasicMenuCursor_16ddaa0(v1, 5);
 }
 
 #pragma GCC visibility pop

@@ -8,6 +8,7 @@ __int64 std___1___shared_weak_count___release_weak(_QWORD);
 extern __int64 (*game_gmap_GmapSpotInfoSetter_vtable)();
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 GmapSpotInfoSetterForDispatch_DeletingDestructor(_QWORD* a1);
+double GmapSpotInfoSetterForDispatch_Unknown7() { return 0.0; };
 
 __int64 GmapSpotInfoSetterForDispatch_DeletingDestructor(_QWORD* a1)
 {

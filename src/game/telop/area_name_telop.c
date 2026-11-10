@@ -12,6 +12,9 @@ extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 AreaNameTelop_Unknown33(__int64 a1);
 __int64 AreaNameTelop_Destructor(__int64 a1);
 __int64 AreaNameTelop_DeletingDestructor(__int64 a1);
+__int64 TelopReliance_1386f80(_QWORD);
+__int64 AreaNameTelop_Destructor_17824b0(__int64 a1);
+__int64 AreaNameTelop_DeletingDestructor_1782540(__int64 a1);
 
 __int64 AreaNameTelop_Unknown33(__int64 a1)
 {
@@ -74,6 +77,72 @@ __int64 AreaNameTelop_DeletingDestructor(__int64 a1)
     v5 = 56;
   }
   return nn_mem_StandardAllocator_Free(*(_QWORD*)v2 + v5, a1);
+}
+
+__int64 AreaNameTelop_Destructor_17824b0(__int64 a1)
+{
+  char v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+
+  v2 = *(_BYTE*)(a1 + 16);
+  v3 = a1 - 824;
+  if ((v2 & 1) != 0) {
+    v4 = *(_QWORD*)(a1 + 32);
+    if (v4 != 0) {
+      v5 = v3;
+      v6 = 128;
+      if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+        v6 = 56;
+      }
+      nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v6,
+                                    v4);
+      v3 = v5;
+    }
+  }
+  *(_QWORD*)a1 = GameData_20c2a50;
+  if (GameData_2263c30 == v3) {
+    GameData_2263c30 = 0;
+  }
+  return TelopReliance_1386f80(v3);
+}
+
+__int64 AreaNameTelop_DeletingDestructor_1782540(__int64 a1)
+{
+  __int64 v1;
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+
+  v1 = a1 - 824;
+  v2 = fw_memory_g_heap_manager_ptr;
+  if ((*(_BYTE*)(a1 + 16) & 1) != 0) {
+    v3 = *(_QWORD*)(a1 + 32);
+    if (v3 != 0) {
+      v4 = a1;
+      v5 = 128;
+      if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+        v5 = 56;
+      }
+      nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v5,
+                                    v3);
+      a1 = v4;
+    }
+  }
+  *(_QWORD*)a1 = GameData_20c2a50;
+  if (GameData_2263c30 == v1) {
+    GameData_2263c30 = 0;
+  }
+  TelopReliance_1386f80(v1);
+  v6 = 128;
+  if (*(_QWORD*)(*(_QWORD*)v2 + 200LL) == 0) {
+    v6 = 56;
+  }
+  return nn_mem_StandardAllocator_Free(*(_QWORD*)v2 + v6, v1);
 }
 
 #pragma GCC visibility pop

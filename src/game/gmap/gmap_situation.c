@@ -59,6 +59,31 @@ __int64 GmapSituation_14dc4f0();
 __int64 GmapSituation_14dc560(__int64 result, __int64 a2);
 __int64 GmapSituation_14dc720(__int64 result, __int64 a2);
 __int64 GmapSituation_14dbeb0(__int64 result);
+__int64 GameRoutine_995200(_QWORD);
+extern __int64 GameData_21c99b0;
+extern __int64 GameData_21c99b8;
+extern __int64 GameData_21f1618;
+extern __int64 game_TransporterConst_List_instance__ptr[6];
+extern __int64* GameData_212c878[6];
+__int64 game_gmap_GmapSituation_CalcBanquet_lambda0_Invoke(__int64 result,
+                                                           int* a2);
+bool game_gmap_GmapSituation_CalcDestroyMiasma_lambda0_Invoke(__int64 a1,
+                                                              __int64 a2);
+bool game_gmap_GmapSituation_CalcTalk_lambda0_Invoke(__int64 a1, __int64* a2);
+__int64 game_gmap_GmapSituation_CalcCallAnimal_lambda0_Invoke(__int64 result,
+                                                              int* a2);
+__int64 game_gmap_GmapSituation_CalcMakeFarm_lambda0_Invoke(__int64 result,
+                                                            int* a2);
+__int64 game_gmap_GmapSituation_CalcBoostFarm_lambda0_Invoke(__int64 a1,
+                                                             int* a2);
+__int64
+game_gmap_GmapSituation_CalcBladeResonance_lambda0_Invoke(__int64 result,
+                                                          unsigned __int16* a2);
+__int64
+game_gmap_GmapSituation_CalcBladeResonance_lambda1_Invoke(__int64 result,
+                                                          int* a2);
+__int64 game_gmap_GmapSituation_CheckHellGate_lambda0_Invoke(__int64 a1,
+                                                             __int64* a2);
 
 __int64 GmapSituation_14d7f60()
 {
@@ -1275,6 +1300,201 @@ LABEL_40:
     }
     return result;
   }
+}
+
+__int64 game_gmap_GmapSituation_CalcBanquet_lambda0_Invoke(__int64 result,
+                                                           int* a2)
+{
+  __int64 v2;
+
+  v2 = *(_QWORD*)(*(_QWORD*)(*(_QWORD*)
+                                 game_TransporterConst_List_instance__ptr[0] +
+                             8LL) +
+                  8LL) +
+       12LL * *a2;
+  if (*(_WORD*)(v2 + 4) != 0) {
+    **(_DWORD**)(result + 8) += *(unsigned __int16*)(v2 + 2);
+  }
+  return result;
+}
+
+bool game_gmap_GmapSituation_CalcDestroyMiasma_lambda0_Invoke(__int64 a1,
+                                                              __int64 a2)
+{
+  __int64 v2;
+
+  v2 = *(_QWORD*)(*(_QWORD*)a2 + 96LL);
+  return v2 != 0 && (unsigned int)*(unsigned __int8*)(v2 + 32) - 3 < 2;
+}
+
+bool game_gmap_GmapSituation_CalcTalk_lambda0_Invoke(__int64 a1, __int64* a2)
+{
+  __int64 v2;
+  bool v3;
+  int v4;
+  int v5;
+  int v6;
+
+  v2 = *a2;
+  v3 = *(_QWORD*)(*a2 + 96) != 0 || *(_QWORD*)(*a2 + 552) == 0;
+  if (v3 || *(_QWORD*)(v2 + 104) == 0) {
+    return false;
+  }
+  v4 = *(__int16*)(v2 + 642);
+  v5 = *(__int16*)(v2 + 640);
+  v6 = *(__int16*)(v2 + 644);
+  return v4 == 0 || v5 == 0 || v6 == 0;
+}
+
+__int64 game_gmap_GmapSituation_CalcCallAnimal_lambda0_Invoke(__int64 result,
+                                                              int* a2)
+{
+  __int64 v2;
+
+  v2 = *(_QWORD*)(*(_QWORD*)(*(_QWORD*)
+                                 game_TransporterConst_List_instance__ptr[0] +
+                             8LL) +
+                  8LL) +
+       12LL * *a2;
+  if (*(_WORD*)(v2 + 4) != 0) {
+    **(_DWORD**)(result + 8) += *(unsigned __int16*)(v2 + 2);
+  }
+  return result;
+}
+
+__int64 game_gmap_GmapSituation_CalcMakeFarm_lambda0_Invoke(__int64 result,
+                                                            int* a2)
+{
+  __int64 v2;
+
+  v2 = *(_QWORD*)(*(_QWORD*)(*(_QWORD*)
+                                 game_TransporterConst_List_instance__ptr[0] +
+                             8LL) +
+                  8LL) +
+       12LL * *a2;
+  if (*(_WORD*)(v2 + 4) != 0 &&
+      *(_BYTE*)(*(_QWORD*)(*(_QWORD*)(GameData_21c99b8 + 64) +
+                           8LL * *(unsigned __int16*)(v2 + 4)) +
+                94LL) == 2) {
+    **(_DWORD**)(result + 8) += *(unsigned __int16*)(v2 + 2);
+  }
+  return result;
+}
+
+__int64 game_gmap_GmapSituation_CalcBoostFarm_lambda0_Invoke(__int64 a1,
+                                                             int* a2)
+{
+  __int64 v3;
+  __int64 result;
+
+  v3 = *(_QWORD*)(*(_QWORD*)(*(_QWORD*)
+                                 game_TransporterConst_List_instance__ptr[0] +
+                             8LL) +
+                  8LL) +
+       12LL * *a2;
+  result = (*(__int64 (**)(_QWORD, _QWORD))(**(_QWORD**)(a1 + 16) + 152LL))(
+      *(_QWORD*)(a1 + 16), *(_QWORD*)(*(_QWORD*)(*GameData_212c878[0] + 64) +
+                                      8LL * *(unsigned __int16*)(v3 + 4)));
+  if ((result & 1) != 0 && *(_WORD*)(v3 + 4) != 0) {
+    **(_DWORD**)(a1 + 8) += *(unsigned __int16*)(v3 + 2);
+  }
+  return result;
+}
+
+__int64
+
+game_gmap_GmapSituation_CalcBladeResonance_lambda0_Invoke(__int64 result,
+                                                          unsigned __int16* a2)
+{
+  _BYTE* v2;
+  __int64 v3;
+  int* v4;
+  int* v5;
+  int v6;
+
+  v2 = *(_BYTE**)(result + 8);
+  if ((*v2 & 1) == 0) {
+    v3 = *(
+        _QWORD*)(*(_QWORD*)(*(_QWORD*)(*GameData_212c878[0] + 64) + 8LL * *a2) +
+                 24LL);
+    v4 = *(int**)(v3 + 136);
+    v5 = *(int**)(v3 + 144);
+    if (v4 != v5) {
+      while (1) {
+        v6 = *v4++;
+        if (*(_QWORD*)(*(_QWORD*)(GameData_21c99b0 + 64) +
+                       8LL * (v6 & 0xFFF)) == *(_QWORD*)(result + 16)) {
+          break;
+        }
+        if (v4 == v5) {
+          return result;
+        }
+      }
+      *v2 = 1;
+    }
+  }
+  return result;
+}
+
+__int64
+
+game_gmap_GmapSituation_CalcBladeResonance_lambda1_Invoke(__int64 result,
+                                                          int* a2)
+{
+  _BYTE* v2;
+  __int64 v3;
+  int* v4;
+  int* v5;
+  int v6;
+
+  v2 = *(_BYTE**)(result + 8);
+  if ((*v2 & 1) == 0) {
+    v3 = *(
+        _QWORD*)(*(_QWORD*)(*(_QWORD*)(*GameData_212c878[0] + 64) +
+                            8LL *
+                                *(unsigned __int16*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)game_TransporterConst_List_instance__ptr
+                                                                               [0] +
+                                                                           8LL) +
+                                                                8LL) +
+                                                     12LL * *a2 + 4)) +
+                 24LL);
+    v4 = *(int**)(v3 + 136);
+    v5 = *(int**)(v3 + 144);
+    if (v4 != v5) {
+      while (1) {
+        v6 = *v4++;
+        if (*(_QWORD*)(*(_QWORD*)(GameData_21c99b0 + 64) +
+                       8LL * (v6 & 0xFFF)) == *(_QWORD*)(result + 16)) {
+          break;
+        }
+        if (v4 == v5) {
+          return result;
+        }
+      }
+      *v2 = 1;
+    }
+  }
+  return result;
+}
+
+__int64 game_gmap_GmapSituation_CheckHellGate_lambda0_Invoke(__int64 a1,
+                                                             __int64* a2)
+{
+  __int64 v2;
+  __int64 v3;
+  __int64 result;
+
+  v2 = *a2;
+  if ((*(_WORD*)(*a2 + 544) & 0x800) == 0) {
+    v3 = *(_QWORD*)(v2 + 96);
+    if (v3 != 0 && (unsigned int)*(unsigned __int8*)(v3 + 32) - 3 <= 1) {
+      *(_WORD*)(v2 + 544) = *(_WORD*)(*a2 + 544) | 0x800;
+      if (GameData_21f1618 != 0) {
+        return GameRoutine_995200(v2 + 112);
+      }
+    }
+  }
+  return result;
 }
 
 #pragma GCC visibility pop

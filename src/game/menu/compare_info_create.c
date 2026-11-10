@@ -15,6 +15,8 @@ extern __int64* ui_LayoutAccessor_empty__ptr[3];
 extern int GameData_225d700;
 __int64 CompareInfoCreate_Unknown28(_QWORD* a1);
 __int64 CompareInfoCreate_DeletingDestructor(__int64 a1);
+__int64 CompareInfoCreate_Destructor(_QWORD* a1);
+__int64 CompareInfoCreate_DeletingDestructor_166cd50(_QWORD* a1);
 
 __int64 CompareInfoCreate_Unknown28(_QWORD* a1)
 {
@@ -82,6 +84,39 @@ __int64 CompareInfoCreate_DeletingDestructor(__int64 a1)
   }
   return nn_mem_StandardAllocator_Free(
       *(_QWORD*)fw_memory_g_heap_manager_ptr + v2, a1);
+}
+
+__int64 CompareInfoCreate_Destructor(_QWORD* a1)
+{
+  __int64 v1;
+
+  *a1 = GameData_207cad8;
+  v1 = (__int64)(a1 - 26);
+  if (GameData_225d6f8 == v1) {
+    GameData_225d6f8 = 0;
+    GameData_225d700 = 0;
+  }
+  return GameRoutine_15e5e00(v1);
+}
+
+__int64 CompareInfoCreate_DeletingDestructor_166cd50(_QWORD* a1)
+{
+  _QWORD* v1;
+  __int64 v2;
+
+  *a1 = GameData_207cad8;
+  v1 = a1 - 26;
+  if ((_QWORD*)GameData_225d6f8 == a1 - 26) {
+    GameData_225d6f8 = 0;
+    GameData_225d700 = 0;
+  }
+  GameRoutine_15e5e00((__int64)(a1 - 26));
+  v2 = 128;
+  if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+    v2 = 56;
+  }
+  return nn_mem_StandardAllocator_Free(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v2, v1);
 }
 
 #pragma GCC visibility pop

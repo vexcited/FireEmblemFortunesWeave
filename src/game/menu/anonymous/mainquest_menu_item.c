@@ -9,11 +9,10 @@ extern __int64 (*game_menu_anonymous_BaseQuestMenuItem_vtable)();
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 MainquestMenuItem_DeletingDestructor(__int64 a1);
 __int64 MainquestMenuItem_Unknown75(__int64 a1);
-
-bool MainquestMenuItem_Unknown73(__int64 a1)
-{
-  return (*(_BYTE*)(a1 + 160) & 1) == 0;
-}
+__int64 MainquestMenuItem_Unknown74(__int64 a1);
+__int64 MainquestMenuItem_Destructor(__int64 a1);
+__int64 MainquestMenuItem_DeletingDestructor_18466e0(__int64 a1);
+bool MainquestMenuItem_Unknown13(__int64 a1);
 
 __int64 MainquestMenuItem_DeletingDestructor(__int64 a1)
 {
@@ -53,6 +52,16 @@ __int64 MainquestMenuItem_DeletingDestructor(__int64 a1)
   return nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v7, a1);
 }
 
+bool MainquestMenuItem_Unknown73(__int64 a1)
+{
+  return (*(_BYTE*)(a1 + 160) & 1) == 0;
+}
+
+__int64 MainquestMenuItem_Unknown74(__int64 a1)
+{
+  return *(_QWORD*)(*(_QWORD*)(a1 + 152) + 24LL) + 96LL;
+}
+
 __int64 MainquestMenuItem_Unknown75(__int64 a1)
 {
   if ((*(_BYTE*)(a1 + 16) & 1) != 0) {
@@ -61,6 +70,26 @@ __int64 MainquestMenuItem_Unknown75(__int64 a1)
   else {
     return a1 + 17;
   }
+}
+
+__int64 MainquestMenuItem_Destructor(__int64 a1)
+{
+  return *(_QWORD*)(*(_QWORD*)(a1 + 8) + 24LL) + 96LL;
+}
+
+__int64 MainquestMenuItem_DeletingDestructor_18466e0(__int64 a1)
+{
+  if ((*(_BYTE*)(a1 - 128) & 1) != 0) {
+    return *(_QWORD*)(a1 - 112);
+  }
+  else {
+    return a1 - 127;
+  }
+}
+
+bool MainquestMenuItem_Unknown13(__int64 a1)
+{
+  return (*(_BYTE*)(a1 + 16) & 1) == 0;
 }
 
 #pragma GCC visibility pop

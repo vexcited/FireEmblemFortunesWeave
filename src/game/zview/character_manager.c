@@ -11,6 +11,12 @@ extern __int64 GameData_220b6f0;
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern int GameData_220f814;
 __int64 CharacterManager_Destructor(_QWORD* a1);
+extern __int64 GameData_21323e8[4];
+float GameRoutine_ceb570(__int64, float result);
+void game_zview_CharacterManager_PersistentImpl_lambda0_Invoke(__int64 a1,
+                                                               float a2,
+                                                               __int64 a3,
+                                                               atomic_uint* a4);
 
 __int64 CharacterManager_Destructor(_QWORD* a1)
 {
@@ -217,6 +223,63 @@ __int64 CharacterManager_Destructor(_QWORD* a1)
     GameData_220f814 = 0;
   }
   return result;
+}
+
+void game_zview_CharacterManager_PersistentImpl_lambda0_Invoke(__int64 a1,
+                                                               float a2,
+                                                               __int64 a3,
+                                                               atomic_uint* a4)
+{
+  int v4;
+  unsigned int v7;
+  signed int add;
+  int v9;
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+
+  v4 = *(_DWORD*)(a1 + 16);
+  if (v4 >= 1) {
+    if (v4 / (int)((((*(_QWORD*)(*(_QWORD*)GameData_21323e8[0] + 2088LL) -
+                      *(_QWORD*)(*(_QWORD*)GameData_21323e8[0] + 2080LL)) >>
+                     2) &
+                    0xFFFFFFFE) +
+                   2) <=
+        1) {
+      v7 = 1;
+    }
+    else {
+      v7 = v4 / (int)((((*(_QWORD*)(*(_QWORD*)GameData_21323e8[0] + 2088LL) -
+                         *(_QWORD*)(*(_QWORD*)GameData_21323e8[0] + 2080LL)) >>
+                        2) &
+                       0xFFFFFFFE) +
+                      2);
+    }
+    do {
+      add = atomic_fetch_add(a4, v7);
+      if (add < v4) {
+        v9 = add + v7;
+        v10 = add;
+        v11 = 16LL * add;
+        if ((int)(add + v7) >= v4) {
+          v9 = v4;
+        }
+        v12 = v9;
+        do {
+          a2 = GameRoutine_ceb570(*(_QWORD*)(*(_QWORD*)(a1 + 8) + v11), a2);
+          ++v10;
+          v11 += 16;
+        } while (v10 < v12);
+        add = v10;
+      }
+      if (v7 >> 1 <= 1) {
+        v7 = 1;
+      }
+      else {
+        v7 >>= 1;
+      }
+    } while (add < v4);
+  }
 }
 
 #pragma GCC visibility pop

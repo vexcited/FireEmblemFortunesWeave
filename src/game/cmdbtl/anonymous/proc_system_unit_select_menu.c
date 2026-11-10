@@ -16,6 +16,12 @@ void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
 void __attribute__((noreturn)) GameRoutine_874520(_QWORD);
 __int64 ProcSystemUnitSelectMenu_Unknown101(__int64 a1);
 __int64 ProcSystemUnitSelectMenu_Unknown139(__int64 a1, __int64* a2);
+__int64 GameRoutine_1625030(void);
+extern __int64 GameData_225ca88;
+__int64 game_cmdbtl_anonymous_ProcSystemUnitSelectMenu_PlusCall_closure_Invoke(
+    __int64 a1);
+bool game_cmdbtl_anonymous_ProcSystemUnitSelectMenu_CreateBind_closure_Invoke(
+    __int64 a1, __int64 a2);
 
 __int64 ProcSystemUnitSelectMenu_Unknown101(__int64 a1)
 {
@@ -201,6 +207,22 @@ LABEL_29:
 LABEL_33:
   a2[1] = v21;
   return result;
+}
+
+__int64 game_cmdbtl_anonymous_ProcSystemUnitSelectMenu_PlusCall_closure_Invoke(
+    __int64 a1)
+{
+  GameRoutine_1638380(*(_QWORD*)(a1 + 8));
+  if (GameData_225ca88 != 0) {
+    GameRoutine_1625030();
+  }
+  return 4;
+}
+
+bool game_cmdbtl_anonymous_ProcSystemUnitSelectMenu_CreateBind_closure_Invoke(
+    __int64 a1, __int64 a2)
+{
+  return *(_QWORD*)(*(_QWORD*)a2 + 88LL) == *(_QWORD*)(a1 + 8);
 }
 
 #pragma GCC visibility pop

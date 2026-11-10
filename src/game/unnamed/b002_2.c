@@ -54,8 +54,6 @@ extern __int64 (*GameData_1f8a4e8[])();
 
 extern __int64 (*GameData_1f8a780[])();
 
-extern __int64 (*GameData_1f8aa88)();
-
 extern __int64 (*GameData_21322a8)();
 
 extern __int64 GameData_2135520[5];
@@ -79,10 +77,6 @@ extern __int64* GameData_2135f30[3];
 extern __int64* GameData_2135f38[2];
 
 extern __int64* GameData_2135f80[2];
-
-extern __int64* GameData_2135fb0[4];
-
-extern __int64* GameData_2135fc0[2];
 
 extern __int64 (*GameData_2135fe8)();
 
@@ -317,8 +311,6 @@ __int64 GameRoutine_55cc20(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 
 __int64 GameRoutine_55d690(__int64 result, __int64, __int16, __int16, __int16,
                            __int16, char);
-
-__int64 GameRoutine_55d6c0(__int64 result);
 
 __int64 GameRoutine_55ef40(void);
 
@@ -5323,38 +5315,6 @@ __int64 GameHr_55ea10(_QWORD* a1)
   return result;
 }
 
-__int64 GameHr_55ef40(__int64 a1)
-{
-  __int64* v2;
-  __int64* v3;
-  __int64 v4;
-
-  GameRoutine_55d6c0(a1);
-  v2 = GameData_2135fb0[0];
-  *(_QWORD*)(a1 + 16) = 0;
-  *(_QWORD*)(a1 + 24) = 0;
-  *(_QWORD*)a1 = v2 + 2;
-  *(_QWORD*)(a1 + 72) = -1;
-  *(_QWORD*)(a1 + 40) = &GameData_1f8aa88;
-  GameRoutine_55d690(a1 + 40, 0, 12, 0, 0, 0, 1);
-  *(_BYTE*)(a1 + 65) = 0;
-  v3 = GameData_2135fc0[0];
-  *(_QWORD*)(a1 + 72) = -1;
-  *(_QWORD*)(a1 + 80) = 0;
-  *(_QWORD*)(a1 + 40) = v3 + 2;
-  GameRoutine_55d690(a1 + 40, 0, 12, 0, 0, 0, 1);
-  v4 = *(_QWORD*)a1;
-  *(_QWORD*)(a1 + 72) = -1;
-  *(_BYTE*)(a1 + 65) = 0;
-  *(_QWORD*)(a1 + 32) = 0;
-  *(_QWORD*)(a1 + 96) = 0;
-  *(_QWORD*)(a1 + 104) = 0;
-  *(_QWORD*)(a1 + 112) = 0;
-  *(_QWORD*)(a1 + 120) = 0;
-  *(_DWORD*)(a1 + 128) = 0;
-  return (*(__int64 (**)(__int64, __int64, __int64))(v4 + 224))(a1, 1, 1);
-}
-
 __int64 GameHr_55f1e0(__int64 a1)
 {
   __int64 v1;
@@ -6306,20 +6266,6 @@ __int64 GameHr_561100(__int64 a1, float* a2, __int64* a3, int a4)
   a2[1] = v26;
   a2[2] = v11;
   a2[3] = v12;
-  return result;
-}
-
-__int64 GameHr_561320(__int64 a1, _BYTE* a2, __int64 a3)
-{
-  __int64 result;
-  int v5;
-  __int64 v6;
-
-  v6 = a3;
-  v5 = 0;
-  GameRoutine_1a0cd40(&v5, &v6);
-  result = v6;
-  *a2 = 1;
   return result;
 }
 

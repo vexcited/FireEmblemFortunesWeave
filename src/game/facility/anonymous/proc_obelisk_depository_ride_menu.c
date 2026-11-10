@@ -27,7 +27,6 @@ extern _QWORD GameData_1fae980[6];
 extern __int64 (*GameData_1fb7800[])();
 extern __int64 (*GameData_1fb7880[])();
 extern __int64 (*GameData_1fb7ce8[])();
-
 extern __int64 (
     *game_facility_anonymous_ObeliskDepositoryRideMenuItem_vtable[])();
 extern __int64 GameData_21f42d0;
@@ -48,6 +47,19 @@ __int64 ProcObeliskDepositoryRideMenu_Unknown149(__int64 a1, __int64 a2,
                                                  __int64 a3, __int64 a4, int a5,
                                                  int a6);
 __int64 ProcObeliskDepositoryRideMenu_Unknown151(__int64 a1);
+__int64 BasicMenuCursor_16e0c00(_QWORD, _QWORD);
+__int64 GameRoutine_16f9b50(_QWORD, _QWORD, _QWORD);
+__int64 GameRoutine_931120(_QWORD);
+__int64 RidePool_93d820(_QWORD);
+__int64 game_UnitPool_Get(_QWORD);
+__int64 strlen(_QWORD);
+extern __int64 GameData_212cf88[4];
+__int64
+game_facility_anonymous_ProcObeliskDepositoryRideMenu_ZRCall_closure_Invoke(
+    __int64 a1);
+__int64
+game_facility_anonymous_ProcObeliskDepositoryRideMenu_OnAddItemList_closure_Invoke(
+    __int64 a1, int* a2);
 
 const char* ProcObeliskDepositoryRideMenu_Unknown43(__int64 a1, char a2)
 {
@@ -449,6 +461,61 @@ __int64 ProcObeliskDepositoryRideMenu_Unknown151(__int64 a1)
     v2 = 40;
   }
   return (*(__int64 (**)(__int64))(*v4 + v2))((__int64)v4);
+}
+
+__int64
+
+game_facility_anonymous_ProcObeliskDepositoryRideMenu_ZRCall_closure_Invoke(
+    __int64 a1)
+{
+  __int64 v1;
+  _QWORD v4[2];
+  _QWORD v5[2];
+
+  v1 = *(_QWORD*)(a1 + 8);
+  v4[0] = GameRoutine_931120(
+      *(_QWORD*)(*(_QWORD*)(*(_QWORD*)GameData_212cf88[0] + 8LL) + 120LL) +
+      ((__int64)*(int*)(*(_QWORD*)(a1 + 16) + 40LL) << 6));
+  v5[0] = "MID_ReleaseMenu_Result";
+  v5[1] = 22;
+  v4[1] = strlen(v4[0]);
+  GameRoutine_16f9b50(v1, v5, v4);
+  RidePool_93d820(*(unsigned int*)(*(_QWORD*)(a1 + 16) + 40LL));
+  (*(void (**)(__int64))(*(_QWORD*)v1 + 1112LL))(v1);
+  return 2;
+}
+
+__int64
+
+game_facility_anonymous_ProcObeliskDepositoryRideMenu_OnAddItemList_closure_Invoke(
+    __int64 a1, int* a2)
+{
+  __int64 v2;
+  _QWORD* v3;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 result;
+
+  v2 = *a2;
+  v3 = *(_QWORD**)(a1 + 8);
+  v5 = v3[133];
+  v6 = *(_QWORD*)(*(_QWORD*)(*(_QWORD*)GameData_212cf88[0] + 8LL) + 120LL) +
+       (v2 << 6);
+  if (*(_BYTE*)(v6 + 3) != 0) {
+    v7 = game_UnitPool_Get(v6 + 3);
+  }
+  else {
+    v7 = 0;
+  }
+  result = (*(__int64 (**)(_QWORD*, __int64, __int64, __int64, _QWORD, _QWORD))(
+      *v3 + 1192LL))(v3, v6, v5, v7, (unsigned int)v2,
+                     **(unsigned int**)(a1 + 16));
+  if (result != 0) {
+    result = BasicMenuCursor_16e0c00(v3, result);
+    ++**(_DWORD**)(a1 + 16);
+  }
+  return result;
 }
 
 #pragma GCC visibility pop

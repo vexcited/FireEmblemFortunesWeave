@@ -59,6 +59,8 @@ __int64 SeqVoice_Unknown20(__int64 result);
 bool SeqVoice_1471b0(__int64 a1);
 unsigned __int64* GameRoutine_f33e0(unsigned __int64* result);
 unsigned __int64* SeqVoice_f3540(__int64 a1);
+__int64 GameRoutine_12e0c0(_QWORD, _QWORD);
+__int64 SeqVoice_Unknown93(__int64 a1);
 
 unsigned __int64* SeqVoice_f3540(__int64 a1)
 {
@@ -934,6 +936,11 @@ __int64 SeqVoice_12dce0(_QWORD* a1, __int64 a2)
     v11 = 0;
     goto LABEL_56;
   }
+}
+
+__int64 SeqVoice_Unknown93(__int64 a1)
+{
+  return GameRoutine_12e0c0(a1 - 40, 0);
 }
 
 __int64 SeqVoice_Unknown16(__int64 a1)

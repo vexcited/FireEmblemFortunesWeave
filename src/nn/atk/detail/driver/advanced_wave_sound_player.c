@@ -25,6 +25,11 @@ _BYTE* AdvancedWaveSoundPlayer_Unknown5(_BYTE* result);
 __int64 AdvancedWaveSoundPlayer_27f6e0(__int64 a1, __int64 a2);
 __int64 AdvancedWaveSoundPlayer_27f940(__int64 a1, double a2, float a3);
 __int64 AdvancedWaveSoundPlayer_Unknown8(__int64 result, double a2, float a3);
+__int64 BaseNx_2a1b90(_QWORD);
+__int64 AdvancedWaveSoundPlayer_Unknown9(__int64 result, double a2, float a3);
+__int64 AdvancedWaveSoundPlayer_Unknown3_27fe60(__int64 result, double a2,
+                                                float a3);
+__int64 AdvancedWaveSoundPlayer_Unknown4(__int64 a1);
 
 __int64 AdvancedWaveSoundPlayer_Unknown2(__int64 result)
 {
@@ -504,6 +509,66 @@ __int64 AdvancedWaveSoundPlayer_Unknown8(__int64 result, double a2, float a3)
     }
   }
   return result;
+}
+
+__int64 AdvancedWaveSoundPlayer_Unknown9(__int64 result, double a2, float a3)
+{
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+
+  if (*(_DWORD*)(result + 1904) == 0 && (*(_BYTE*)(result + 64) & 1) != 0 &&
+      *(_BYTE*)(result + 65) == 1 && (*(_BYTE*)(result + 66) & 1) == 0) {
+    v3 = result;
+    result = AdvancedWaveSoundPlayer_27f940(result, a2, a3);
+    if ((result & 1) != 0) {
+      v4 = v3;
+      *(_BYTE*)(v3 + 67) = 1;
+      if (*(_BYTE*)(v3 + 1914) == 1) {
+        v5 = BaseNx_2a1b90(result);
+        result = SoundThread_2a1fd0(v5, v3 + 200);
+        v4 = v3;
+        *(_BYTE*)(v3 + 1914) = 0;
+      }
+      if (*(_BYTE*)(v4 + 65) == 1) {
+        *(_BYTE*)(v4 + 65) = 0;
+      }
+    }
+  }
+  return result;
+}
+
+__int64 AdvancedWaveSoundPlayer_Unknown3_27fe60(__int64 result, double a2,
+                                                float a3)
+{
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+
+  if (*(_DWORD*)(result + 1704) == 0 && (*(_BYTE*)(result - 136) & 1) != 0 &&
+      *(_BYTE*)(result - 135) == 1 && (*(_BYTE*)(result - 134) & 1) == 0) {
+    v3 = result;
+    result = AdvancedWaveSoundPlayer_27f940(result - 200, a2, a3);
+    if ((result & 1) != 0) {
+      v4 = v3;
+      *(_BYTE*)(v3 - 133) = 1;
+      if (*(_BYTE*)(v3 + 1714) == 1) {
+        v5 = BaseNx_2a1b90(result);
+        result = SoundThread_2a1fd0(v5, v3);
+        v4 = v3;
+        *(_BYTE*)(v3 + 1714) = 0;
+      }
+      if (*(_BYTE*)(v4 - 135) == 1) {
+        *(_BYTE*)(v4 - 135) = 0;
+      }
+    }
+  }
+  return result;
+}
+
+__int64 AdvancedWaveSoundPlayer_Unknown4(__int64 a1)
+{
+  return (*(__int64 (**)(__int64))(*(_QWORD*)(a1 - 200) + 40LL))(a1 - 200);
 }
 
 #pragma GCC visibility pop

@@ -7,6 +7,7 @@ extern __int64* GameData_2134c00[3];
 extern __int64* GameData_2134c08[2];
 extern __int64* snd_g_memory_ptr[2];
 __int64 WaveMixer_Destructor(_QWORD* a1);
+__int64 WaveMixer_17e300(__int64 result);
 
 __int64 WaveMixer_Destructor(_QWORD* a1)
 {
@@ -154,6 +155,22 @@ __int64 WaveMixer_Destructor(_QWORD* a1)
     (*(void (**)(__int64))(*(_QWORD*)v28 + 24LL))(v28);
   }
   return Param_Destructor(a1);
+}
+
+__int64 WaveMixer_17e300(__int64 result)
+{
+  int v1;
+  int v2;
+
+  v1 = *(_DWORD*)(result + 5728);
+  if (v1 <= 1) {
+    v2 = v1 + 1;
+  }
+  else {
+    v2 = 0;
+  }
+  *(_DWORD*)(result + 5728) = v2;
+  return result;
 }
 
 #pragma GCC visibility pop

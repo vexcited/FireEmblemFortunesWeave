@@ -31,6 +31,8 @@ __int64 MapScoreInfo_Destructor(_QWORD* a1);
 __int64 MapScoreInfo_19aa850(__int64 result);
 __int64 MapScoreInfo_19aad80(__int64 result);
 __int64 MapScoreInfo_Unknown5(__int64 result);
+__int64 LayoutAccessor_155e830(_QWORD, _QWORD);
+__int64 MapScoreInfo_DeletingDestructor(__int64 result);
 
 __int64 MapScoreInfo_Destructor(_QWORD* a1)
 {
@@ -212,6 +214,31 @@ __int64 MapScoreInfo_Unknown5(__int64 result)
         result = v1;
         if (v2 != 0) {
           return GameRoutine_155e830(result + 40, 1);
+        }
+      }
+    }
+  }
+  return result;
+}
+
+__int64 MapScoreInfo_DeletingDestructor(__int64 result)
+{
+  __int64 v1;
+  int v2;
+
+  if (GameData_21ed088 == 0 || *(int*)(GameData_21ed088 + 16) <= 0) {
+    if (GameData_21ca2f8 == 0) {
+      return LayoutAccessor_155e830(result + 32, 1);
+    }
+    if (game_GameModeData_instance_ != 0) {
+      v1 = result;
+      result = game_GameVariableTable_Find(
+          *(_QWORD*)(game_GameModeData_instance_ + 48), &GameData_21d1f10);
+      if (result != 0) {
+        v2 = *(unsigned __int8*)(result + 32);
+        result = v1;
+        if (v2 != 0) {
+          return LayoutAccessor_155e830(result + 32, 1);
         }
       }
     }

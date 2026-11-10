@@ -10,6 +10,9 @@ extern __int64 fw_memory_g_heap_manager_ptr;
 void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
 void __attribute__((noreturn)) GameRoutine_874520(_QWORD);
 __int64 ProcTempleTrialUnitMenu_Unknown139(__int64 a1, __int64* a2);
+extern __int64 GameData_2243f70;
+__int64
+game_facility_anonymous_ProcTempleTrialUnitMenu_PlusCall_closure_Invoke();
 
 __int64 ProcTempleTrialUnitMenu_Unknown139(__int64 a1, __int64* a2)
 {
@@ -97,6 +100,16 @@ __int64 ProcTempleTrialUnitMenu_Unknown139(__int64 a1, __int64* a2)
   }
   a2[1] = v7;
   return result;
+}
+
+__int64
+
+game_facility_anonymous_ProcTempleTrialUnitMenu_PlusCall_closure_Invoke()
+{
+  if (GameData_2243f70 != 0) {
+    *(_DWORD*)(GameData_2243f70 + 152) = 3;
+  }
+  return 4;
 }
 
 #pragma GCC visibility pop

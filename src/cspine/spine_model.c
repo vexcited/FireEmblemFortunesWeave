@@ -32,6 +32,22 @@ extern __int64* game_g_frame_clock_ptr[3];
 __int64 SpineModel_19119d0(__int64 result);
 bool SpineModel_1912e70(__int64 a1, __int64 a2);
 __int64 SpineModel_1912fc0(__int64 a1);
+__int64 GameRoutine_5fb900(_QWORD);
+__int64 memcmp(_QWORD, _QWORD, _QWORD);
+__int64 std___1___hash_memory(_QWORD, _QWORD);
+extern _UNKNOWN** GameData_212e4d8[2];
+extern _UNKNOWN** GameData_212e4e0;
+extern _UNKNOWN** GameData_212e888[3];
+extern _UNKNOWN** GameData_2132328[3];
+extern _UNKNOWN** GameData_2132330[2];
+extern _UNKNOWN** GameData_2132338;
+extern __int64 (*GameData_2110200[])();
+_QWORD* cspine_SpineModel_Draw_lambda0_Clone(_QWORD* a1);
+__int64 cspine_SpineModel_Draw_lambda0_CloneInto(_QWORD* a1, _QWORD* a2);
+__int64 cspine_SpineModel_Draw_lambda0_Invoke(_QWORD* a1, __int64* a2);
+_QWORD* SpineModel_1919040(_QWORD* a1, _QWORD* a2);
+void cspine_SpineModel_buildModel_lambda1_Invoke(__int64 a1, __int64 a2);
+void cspine_SpineModel_buildModel_lambda2_Invoke(__int64 a1, __int64 a2);
 
 __int64 SpineModel_19119d0(__int64 result)
 {
@@ -868,6 +884,234 @@ __int64 SpineModel_1912fc0(__int64 a1)
     *(_BYTE*)(a1 + 1042) = 0;
   }
   return result;
+}
+
+_QWORD* cspine_SpineModel_Draw_lambda0_Clone(_QWORD* a1)
+{
+  _QWORD* v2;
+  _QWORD* v3;
+  _QWORD* v4;
+
+  v2 = (_QWORD*)fw_memory_HeapManager_Allocate(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr, 128, 16, 0);
+  *v2 = GameData_2110200;
+  v2[2] = a1[2];
+  v3 = (_QWORD*)a1[8];
+  if (v3 == nullptr) {
+    v2[8] = 0;
+    v4 = (_QWORD*)a1[14];
+    if (v4 != nullptr) {
+      goto LABEL_6;
+    }
+    goto LABEL_9;
+  }
+  if (v3 == a1 + 4) {
+    v2[8] = v2 + 4;
+    (*(void (**)(_QWORD*))(*v3 + 24LL))(v3);
+    v4 = (_QWORD*)a1[14];
+    if (v4 != nullptr) {
+      goto LABEL_6;
+    }
+  LABEL_9:
+    v2[14] = 0;
+    return v2;
+  }
+  v2[8] = (*(__int64 (**)(_QWORD*))(*v3 + 16LL))(v3);
+  v4 = (_QWORD*)a1[14];
+  if (v4 == nullptr) {
+    goto LABEL_9;
+  }
+LABEL_6:
+  if (v4 == a1 + 10) {
+    v2[14] = v2 + 10;
+    (*(void (**)(_QWORD*))(*v4 + 24LL))(v4);
+  }
+  else {
+    v2[14] = (*(__int64 (**)(_QWORD*))(*v4 + 16LL))(v4);
+  }
+  return v2;
+}
+
+__int64 cspine_SpineModel_Draw_lambda0_CloneInto(_QWORD* a1, _QWORD* a2)
+{
+  _QWORD* v4;
+  __int64 result;
+
+  *a2 = GameData_2110200;
+  a2[2] = a1[2];
+  v4 = (_QWORD*)a1[8];
+  if (v4 == nullptr) {
+    a2[8] = 0;
+    result = a1[14];
+    if (result != 0) {
+      goto LABEL_6;
+    }
+    goto LABEL_9;
+  }
+  if (v4 == a1 + 4) {
+    a2[8] = a2 + 4;
+    (*(void (**)(_QWORD))(*(_QWORD*)a1[8] + 24LL))(a1[8]);
+    result = a1[14];
+    if (result != 0) {
+      goto LABEL_6;
+    }
+  LABEL_9:
+    a2[14] = 0;
+    return result;
+  }
+  a2[8] = (*(__int64 (**)(_QWORD*))(*v4 + 16LL))(v4);
+  result = a1[14];
+  if (result == 0) {
+    goto LABEL_9;
+  }
+LABEL_6:
+  if ((_QWORD*)result == a1 + 10) {
+    a2[14] = a2 + 10;
+    return (*(__int64 (**)(_QWORD))(*(_QWORD*)a1[14] + 24LL))(a1[14]);
+  }
+  else {
+    result = (*(__int64 (**)(__int64))(*(_QWORD*)result + 16LL))(result);
+    a2[14] = result;
+  }
+  return result;
+}
+
+__int64 cspine_SpineModel_Draw_lambda0_Invoke(_QWORD* a1, __int64* a2)
+{
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
+  __int64 v15;
+
+  v3 = *a2;
+  v4 = a1[2];
+  v5 = a1[14];
+  if (v5 != 0) {
+    v15 = v4;
+    (*(void (**)(__int64, __int64*))(*(_QWORD*)v5 + 48LL))(v5, &v15);
+  }
+  v6 = a1[8];
+  if (v6 != 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v6 + 48LL))(v6);
+  }
+  (*(void (**)(_QWORD))(**(_QWORD**)(v4 + 808) + 40LL))(*(_QWORD*)(v4 + 808));
+  v7 = (*(__int64 (**)(__int64))GameData_212e4d8[0])(
+      *(_QWORD*)(*game_g_frame_clock_ptr[0] + 256) + 8LL);
+  ((void (*)(__int64, __int64, _QWORD, __int64))*GameData_212e4e0)(v3 + 8, 1, 0,
+                                                                   v7);
+  v8 = *(_QWORD*)(v4 + 256 + 8LL * *(_QWORD*)(v4 + 848));
+  v9 = (*(__int64 (**)(__int64))(*(_QWORD*)v8 + 48LL))(v8);
+  v10 = *(_QWORD*)(v4 + 256 + 8LL * *(_QWORD*)(v4 + 848));
+  v11 = (*(__int64 (**)(__int64))(*(_QWORD*)v10 + 40LL))(v10);
+  (*(void (**)(__int64, _QWORD, __int64, __int64))GameData_2132328[0])(
+      v3 + 8, 0, v9, v11);
+  (*(void (**)(__int64, __int64))GameData_212e888[0])(v3 + 8, v4 + 944);
+  v12 = GameRoutine_5fb900(*(_QWORD*)(**(_QWORD**)(v4 + 976) + 136LL));
+  (*(void (**)(__int64, _QWORD, __int64))GameData_2132330[0])(
+      v3 + 8, *(_QWORD*)(v12 + 8), 3);
+  v13 = (*(__int64 (**)(_QWORD))(**(_QWORD**)(v4 + 272) + 48LL))(
+      *(_QWORD*)(v4 + 272));
+  return ((__int64 (*)(__int64, __int64, __int64, __int64,
+                       __int64))*GameData_2132338)(v3 + 8, 4, 1, 6, v13);
+}
+
+_QWORD* SpineModel_1919040(_QWORD* a1, _QWORD* a2)
+{
+  unsigned __int64 v2;
+  __int64 v4;
+  __int64 v5;
+  unsigned __int64 v7;
+  unsigned __int64 v8;
+  unsigned __int64 v9;
+  unsigned __int64 v10;
+  _QWORD* v11;
+  _QWORD* v12;
+  unsigned __int64 v13;
+  __int64 v14;
+
+  v2 = a1[1];
+  if (v2 == 0 || a1[3] == 0) {
+    return nullptr;
+  }
+  v4 = *a2;
+  v5 = a2[1];
+  v7 = std___1___hash_memory(*a2, v5);
+  v8 = v2 - 1;
+  v9 = v7;
+  if ((v2 & (v2 - 1)) != 0) {
+    v10 = v7;
+    if (v7 >= v2) {
+      v10 = v7 % v2;
+    }
+  }
+  else {
+    v10 = v7 & v8;
+  }
+  v11 = *(_QWORD**)(*a1 + 8 * v10);
+  if (v11 == nullptr) {
+    return nullptr;
+  }
+  v12 = (_QWORD*)*v11;
+  if (*v11 != 0) {
+    if ((v2 & v8) == 0) {
+      while (1) {
+        v14 = v12[1];
+        if (v14 == v9) {
+          if (v12[3] == v5 && (unsigned int)memcmp(v12[2], v4, v5) == 0) {
+            return v12;
+          }
+        }
+        else if ((v14 & v8) != v10) {
+          return nullptr;
+        }
+        v12 = (_QWORD*)*v12;
+        if (v12 == nullptr) {
+          return v12;
+        }
+      }
+    }
+    do {
+      v13 = v12[1];
+      if (v13 == v9) {
+        if (v12[3] == v5 && (unsigned int)memcmp(v12[2], v4, v5) == 0) {
+          return v12;
+        }
+      }
+      else {
+        if (v13 >= v2) {
+          v13 %= v2;
+        }
+        if (v13 != v10) {
+          return nullptr;
+        }
+      }
+      v12 = (_QWORD*)*v12;
+    } while (v12 != nullptr);
+  }
+  return v12;
+}
+
+void cspine_SpineModel_buildModel_lambda1_Invoke(__int64 a1, __int64 a2)
+{
+  *(_WORD*)a2 = 0;
+  *(_BYTE*)(a2 + 2) = 0;
+  *(_WORD*)(a2 + 6) = 42;
+}
+
+void cspine_SpineModel_buildModel_lambda2_Invoke(__int64 a1, __int64 a2)
+{
+  *(_WORD*)(a2 + 6) = 42;
+  *(_BYTE*)(a2 + 4) = 2;
+  *(_WORD*)a2 = 771;
+  *(_BYTE*)(a2 + 2) = 3;
 }
 
 #pragma GCC visibility pop

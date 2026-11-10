@@ -35,6 +35,12 @@ __int64 ItemMenuItem_Unknown58(__int64 a1);
 bool ItemMenuItem_15c2230(__int64 a1);
 __int64 ItemMenuItem_Unknown70(__int64 a1, __int64 a2);
 bool ItemMenuItem_Unknown71(__int64 a1);
+__int64 __dynamic_cast(_QWORD, _QWORD, _QWORD, _QWORD);
+__int64 game_menu_BasicMenu_Unknown16defa0(_QWORD);
+extern __int64 GameData_20543b0;
+extern __int64* GameData_212e030[4];
+__int64
+game_map_anonymous_ItemMenuItem_CreateSubMenu_closure0_Invoke(__int64 a1);
 
 bool ItemMenuItem_15c1e60(__int64 a1)
 {
@@ -712,6 +718,46 @@ LABEL_36:
           *(_DWORD*)(v37 + 32) == 0;
   }
   return v6 || v18 || v23 || v34;
+}
+
+__int64
+
+game_map_anonymous_ItemMenuItem_CreateSubMenu_closure0_Invoke(__int64 a1)
+{
+  __int64 v1;
+  __int64 v2;
+  _QWORD* v3;
+  _QWORD* v4;
+  __int64 v5;
+  int v6;
+  __int64 v7;
+
+  v1 = *(_QWORD*)(*(_QWORD*)(a1 + 8) + 8LL);
+  if (v1 == 0) {
+    return 5;
+  }
+  v2 = __dynamic_cast(v1, GameData_212e030[0], &GameData_20543b0, 0);
+  if (v2 == 0) {
+    return 5;
+  }
+  v3 = *(_QWORD**)(v2 + 232);
+  v4 = *(_QWORD**)(v2 + 240);
+  if (v3 != v4) {
+    v5 = v2;
+    v6 = 0;
+    do {
+      v7 = *v3;
+      if (((*(__int64 (**)(_QWORD))(*(_QWORD*)*v3 + 48LL))(*v3) & 1) != 0) {
+        v6 += (*(__int64 (**)(__int64))(*(_QWORD*)v7 + 40LL))(v7) & 1;
+      }
+      ++v3;
+    } while (v3 != v4);
+    if (v6 != 0) {
+      game_menu_BasicMenu_Unknown16defa0(v5);
+      return 5;
+    }
+  }
+  return 4;
 }
 
 #pragma GCC visibility pop

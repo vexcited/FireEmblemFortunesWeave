@@ -7,6 +7,8 @@ __int64 std___1___shared_weak_count___release_weak(_QWORD);
 extern __int64 (*gfx_light_Actor_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 Actor_DeletingDestructor(_QWORD* a1);
+extern _UNKNOWN* GameData_212c2a0;
+long double Actor_Unknown2();
 
 __int64 Actor_DeletingDestructor(_QWORD* a1)
 {
@@ -36,5 +38,7 @@ __int64 Actor_DeletingDestructor(_QWORD* a1)
   return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
                                        v4);
 }
+
+long double Actor_Unknown2() { return *(long double*)GameData_212c2a0; }
 
 #pragma GCC visibility pop

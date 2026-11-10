@@ -26,6 +26,15 @@ __int64 ProcObeliskDepositoryMaterialMenu_Unknown85(__int64 a1);
 __int64 ProcObeliskDepositoryMaterialMenu_Unknown109(_QWORD* a1);
 _QWORD* ProcObeliskDepositoryMaterialMenu_Unknown128(__int64 a1);
 __int64 ProcObeliskDepositoryMaterialMenu_Unknown148(__int64 a1, __int64* a2);
+__int64 BasicMenuCursor_16e0c00(_QWORD, _QWORD);
+extern __int64 (*GameData_1fb5f90[])();
+extern __int64 (*game_facility_DepositoryMenuItem_vtable[])();
+extern __int64* GameData_212c878[6];
+__int64
+game_facility_anonymous_ProcObeliskDepositoryMaterialMenu_AddItemList_closure_Invoke(
+    __int64 result, __int64 a2);
+bool game_facility_anonymous_ProcObeliskDepositoryMaterialMenu_SortAndFilter_closure_Invoke(
+    __int64 a1, _QWORD* a2);
 
 __int64 ProcObeliskDepositoryMaterialMenu_Unknown85(__int64 a1)
 {
@@ -286,6 +295,57 @@ __int64 ProcObeliskDepositoryMaterialMenu_Unknown148(__int64 a1, __int64* a2)
   }
   a2[1] = v6;
   return result;
+}
+
+__int64
+
+game_facility_anonymous_ProcObeliskDepositoryMaterialMenu_AddItemList_closure_Invoke(
+    __int64 result, __int64 a2)
+{
+  __int64 v2;
+  __int64 v3;
+  __int64 v5;
+
+  v2 = *(_QWORD*)(*(_QWORD*)(*GameData_212c878[0] + 64) +
+                  8LL * *(unsigned __int16*)(a2 + 4));
+  if ((((0x10000000000LL << *(_BYTE*)(v2 + 72)) | (1LL << *(_BYTE*)(v2 + 73))) &
+       0xFFBFFFFFFFA39FFFLL) == 0) {
+    v3 = *(_QWORD*)(result + 8);
+    v5 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
+                                        112, 16, 0);
+    *(_WORD*)(v5 + 16) = 0;
+    *(_DWORD*)(v5 + 40) = 0;
+    *(_QWORD*)(v5 + 48) = 0;
+    *(_QWORD*)(v5 + 56) = 0;
+    *(_QWORD*)(v5 + 64) = 0;
+    *(_QWORD*)(v5 + 72) = 0;
+    *(_BYTE*)(v5 + 82) = 1;
+    *(_DWORD*)(v5 + 84) = 1;
+    *(_BYTE*)(v5 + 88) = 0;
+    *(_WORD*)(v5 + 80) = 257;
+    *(_QWORD*)v5 = game_facility_DepositoryMenuItem_vtable;
+    *(_QWORD*)(v5 + 8) = 0;
+    *(_QWORD*)(v5 + 96) = GameData_1fb5f90;
+    *(_QWORD*)(v5 + 104) = a2;
+    return BasicMenuCursor_16e0c00(v3, v5);
+  }
+  return result;
+}
+
+bool game_facility_anonymous_ProcObeliskDepositoryMaterialMenu_SortAndFilter_closure_Invoke(
+    __int64 a1, _QWORD* a2)
+{
+  int v2;
+
+  v2 = *(unsigned __int8*)(a1 + 8);
+  return v2 == 32 ||
+         v2 == *(unsigned __int8*)(*(_QWORD*)(*(_QWORD*)(*GameData_212c878[0] +
+                                                         64) +
+                                              8LL * *(unsigned __int16*)(*(
+                                                        __int64 (**)(_QWORD))(
+                                                        *(_QWORD*)*a2 + 560LL))(
+                                                        *a2)) +
+                                   73LL);
 }
 
 #pragma GCC visibility pop

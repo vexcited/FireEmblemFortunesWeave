@@ -28,6 +28,12 @@ __int64 MapDrawTargetLine_Destructor(__int64 a1);
 __int64 MapDrawTargetLine_f21270();
 bool MapDrawTargetLine_f21470(__int64 a1, __int64 a2);
 bool MapDrawTargetLine_Unknown6(__int64 a1);
+__int64 game_map_MapDrawTargetLine_UpdateMesh_lambda0_Invoke(__int64 a1,
+                                                             _DWORD* a2,
+                                                             _DWORD* a3);
+__int64 game_map_MapDrawTargetLine_UpdateMesh_lambda1_Invoke(__int64 a1,
+                                                             _DWORD* a2,
+                                                             _DWORD* a3);
 
 __int64 MapDrawTargetLine_Destructor(__int64 a1)
 {
@@ -260,6 +266,26 @@ bool MapDrawTargetLine_Unknown6(__int64 a1)
   return *(_DWORD*)(*(_QWORD*)v2 + 4368LL) != 7 ||
          (GameRoutine_788a40() & 1) != 0 &&
              *(_BYTE*)(*(_QWORD*)(GameData_21cd130 + 48) + 240LL) == 1;
+}
+
+__int64 game_map_MapDrawTargetLine_UpdateMesh_lambda0_Invoke(__int64 a1,
+                                                             _DWORD* a2,
+                                                             _DWORD* a3)
+{
+  return (*(_DWORD*)(**(_QWORD**)(a1 + 8) + 4LL * ((*a2 + 32 * *a3) >> 5) +
+                     2120) >>
+          *a2) &
+         1;
+}
+
+__int64 game_map_MapDrawTargetLine_UpdateMesh_lambda1_Invoke(__int64 a1,
+                                                             _DWORD* a2,
+                                                             _DWORD* a3)
+{
+  return (*(_DWORD*)(**(_QWORD**)(a1 + 8) + 4LL * ((*a2 + 32 * *a3) >> 5) +
+                     2376) >>
+          *a2) &
+         1;
 }
 
 #pragma GCC visibility pop

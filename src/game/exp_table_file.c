@@ -24,6 +24,7 @@ extern int GameData_21d99c0;
 unsigned __int64 ExpTableFile_Unknown4(__int64 a1, __int64 a2);
 void ExpTableFile_Unknown5();
 void ExpTableFile_7d6750();
+__int64 ExpTableFile_7d67c0(int a1);
 
 unsigned __int64 ExpTableFile_Unknown4(__int64 a1, __int64 a2)
 {
@@ -235,6 +236,52 @@ void ExpTableFile_7d6750()
   GameData_21d99b0 = GameData_21d99a8;
   GameData_21d99c0 = 0;
   GameData_21d99d0 = GameData_21d99c8;
+}
+
+__int64 ExpTableFile_7d67c0(int a1)
+{
+  unsigned __int64 v1;
+  __int64 result;
+  int v4;
+  int v5;
+  unsigned int v6;
+  int v7;
+
+  v1 = (unsigned __int64)(GameData_21d9990 - GameData_21d9988) >> 2;
+  if ((int)v1 < 1) {
+    return 0;
+  }
+  LODWORD(result) = 0;
+  v4 = *(_DWORD*)(GameData_21d9988 + 4LL * (unsigned int)(v1 - 1));
+  if (v4 >= a1) {
+    v4 = a1;
+  }
+  if (a1 >= *(_DWORD*)GameData_21d9988) {
+    v5 = v4;
+  }
+  else {
+    v5 = *(_DWORD*)GameData_21d9988;
+  }
+  while (1) {
+    v6 = (unsigned int)(result + v1) >> 1;
+    v7 = *(_DWORD*)(GameData_21d9988 + 4LL * v6);
+    if (v5 == v7) {
+      break;
+    }
+    if (v5 >= v7) {
+      result = v6 + 1;
+    }
+    else {
+      result = (unsigned int)result;
+    }
+    if (v5 < v7) {
+      LODWORD(v1) = v6;
+    }
+    if ((int)result >= (int)v1) {
+      return result;
+    }
+  }
+  return v6 + 1;
 }
 
 #pragma GCC visibility pop

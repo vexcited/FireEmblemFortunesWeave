@@ -19,6 +19,8 @@ __int64 game_Unit_Unknown6c4610(_QWORD);
 __int64 game_Unit_Unknown6ccf10(_QWORD, _QWORD, _QWORD);
 __int64 SkillChangeMenu_15debb0(__int64 result, __int64 a2, _WORD* a3,
                                 __int64 a4);
+__int64 game_menu_SkillChangeMenu_CreateLeftMenu_lambda0_Invoke(__int64 a1,
+                                                                _QWORD* a2);
 
 const char* SkillChangeMenu_Unknown49(__int64 a1)
 {
@@ -202,6 +204,13 @@ LABEL_44:
   v28 = *(unsigned __int8*)(a1 + 376);
   v30 = v27;
   return GameRoutine_15debb0(v28, v26, &v31, &v30);
+}
+
+__int64 game_menu_SkillChangeMenu_CreateLeftMenu_lambda0_Invoke(__int64 a1,
+                                                                _QWORD* a2)
+{
+  return (*(__int64 (**)(_QWORD, _QWORD))(**(_QWORD**)(a1 + 8) + 376LL))(
+      *(_QWORD*)(a1 + 8), *a2);
 }
 
 __int64 SkillChangeMenu_15debb0(__int64 result, __int64 a2, _WORD* a3,

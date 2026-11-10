@@ -45,6 +45,11 @@ __int64 ProcObeliskMemorySoundMenu_Unknown101(__int64 a1);
 __int64 ProcObeliskMemorySoundMenu_Unknown129(__int64 a1);
 __int64 ProcObeliskMemorySoundMenu_Unknown135(__int64 a1, __int64 a2);
 __int64 ProcObeliskMemorySoundMenu_Unknown143(__int64 a1, __int64* a2);
+__int64 GameRoutine_16ac260(_QWORD, _QWORD, _QWORD);
+__int64 ProcObeliskMemorySoundMenu_Unknown7(__int64 a1, unsigned int a2);
+__int64 ProcObeliskMemorySoundMenu_Unknown8(__int64 a1, unsigned int a2);
+bool game_facility_anonymous_ProcObeliskMemorySoundMenu_SortAndFilter_closure_Invoke(
+    __int64 a1, __int64 a2, __int64 a3);
 
 __int64 ProcObeliskMemorySoundMenu_Unknown2(__int64 a1)
 {
@@ -448,6 +453,32 @@ LABEL_29:
 LABEL_33:
   a2[1] = v21;
   return result;
+}
+
+__int64 ProcObeliskMemorySoundMenu_Unknown7(__int64 a1, unsigned int a2)
+{
+  return GameRoutine_16ac260(a1 - 176, 1, a2);
+}
+
+__int64 ProcObeliskMemorySoundMenu_Unknown8(__int64 a1, unsigned int a2)
+{
+  return GameRoutine_16ac260(a1 - 176, 0, a2);
+}
+
+bool game_facility_anonymous_ProcObeliskMemorySoundMenu_SortAndFilter_closure_Invoke(
+    __int64 a1, __int64 a2, __int64 a3)
+{
+  int v3;
+  int v4;
+  bool v5;
+
+  v3 = *(_DWORD*)(*(_QWORD*)a2 + 92LL);
+  v4 = *(_DWORD*)(*(_QWORD*)a3 + 92LL);
+  v5 = v3 < v4;
+  if (v3 == v4) {
+    return *(_DWORD*)(*(_QWORD*)a2 + 40LL) < *(_DWORD*)(*(_QWORD*)a3 + 40LL);
+  }
+  return v5;
 }
 
 #pragma GCC visibility pop

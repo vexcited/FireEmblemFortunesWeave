@@ -8,6 +8,9 @@ __int64 std___1___shared_weak_count___release_weak(_QWORD);
 extern __int64 (*gfxa_GrassInfluenceMapUpdateTask_vtable[])();
 extern __int64 game_g_frame_clock;
 __int64 GrassInfluenceMapUpdateTask_Destructor(_QWORD* a1);
+__int64 GrassInfluenceMapUpdateTask_c61c90(__int64 a1);
+void gfxa_GrassInfluenceMapUpdateTask_initialize_lambda0_Invoke(__int64 a1,
+                                                                __int64 a2);
 
 __int64 GrassInfluenceMapUpdateTask_Destructor(_QWORD* a1)
 {
@@ -272,6 +275,32 @@ __int64 GrassInfluenceMapUpdateTask_Destructor(_QWORD* a1)
     return std___1___shared_weak_count___release_weak(v42);
   }
   return result;
+}
+
+__int64 GrassInfluenceMapUpdateTask_c61c90(__int64 a1)
+{
+  __int64 v2;
+  __int64 result;
+
+  v2 = *(_QWORD*)(a1 + 40);
+  *(_QWORD*)(a1 + 40) = 0;
+  if (v2 != 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v2 + 8LL))(v2);
+  }
+  result = *(_QWORD*)(a1 + 32);
+  *(_QWORD*)(a1 + 32) = 0;
+  if (result != 0) {
+    return (*(__int64 (**)(__int64))(*(_QWORD*)result + 8LL))(result);
+  }
+  return result;
+}
+
+void gfxa_GrassInfluenceMapUpdateTask_initialize_lambda0_Invoke(__int64 a1,
+                                                                __int64 a2)
+{
+  *(_WORD*)a2 = 771;
+  *(_BYTE*)(a2 + 4) = 2;
+  *(_WORD*)(a2 + 6) = 21;
 }
 
 #pragma GCC visibility pop

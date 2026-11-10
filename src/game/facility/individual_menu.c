@@ -23,6 +23,18 @@ void __attribute__((noreturn)) GameRoutine_60a310(_QWORD, _QWORD);
 void __attribute__((noreturn)) GameRoutine_874520(_QWORD);
 __int64 IndividualMenu_Unknown50(__int64 a1, __int64* a2);
 __int64 IndividualMenu_Unknown35(__int64 a1);
+__int64 GameRoutine_17b8f40(_QWORD, _QWORD);
+extern __int64 GameData_2243960;
+extern __int64 game_GameModeData_instance_;
+extern __int64 game_hub_ProgressDisplayView_instance_;
+extern __int64 game_hub_ProgressEventView_instance_;
+extern __int64* GameData_212dcd0;
+extern char GameData_226b868;
+__int64 game_facility_IndividualMenu_CreateFirstReminderDialog_lambda1_Invoke(
+    __int64 a1, __int64 a2);
+__int64 game_facility_IndividualMenu_Run_lambda0_Invoke_1937550(__int64 a1);
+__int64 game_facility_IndividualMenu_Run_lambda0_Invoke_19376d0(__int64 a1);
+__int64 game_facility_IndividualMenu_Run_lambda2_Invoke();
 
 __int64 IndividualMenu_Unknown50(__int64 a1, __int64* a2)
 {
@@ -298,6 +310,80 @@ LABEL_35:
     std___1___shared_weak_count___release_weak(v7);
   }
   return v2;
+}
+
+__int64 game_facility_IndividualMenu_CreateFirstReminderDialog_lambda1_Invoke(
+    __int64 a1, __int64 a2)
+{
+  *(_BYTE*)(*(_QWORD*)a2 + 83LL) = 1;
+  return 0;
+}
+
+__int64 game_facility_IndividualMenu_Run_lambda0_Invoke_1937550(__int64 a1)
+{
+  int v1;
+  int v2;
+
+  v1 = *(_DWORD*)(a1 + 8);
+  if (v1 <= 1) {
+    v1 = 1;
+  }
+  *(_DWORD*)(*GameData_212dcd0 + 16) = v1;
+  if (GameData_2243960 != 0) {
+    v2 = 2;
+    if (game_GameModeData_instance_ != 0) {
+      if (*(_DWORD*)(game_GameModeData_instance_ + 60) == 3) {
+        v2 = 6;
+      }
+      else {
+        v2 = 2;
+      }
+    }
+    *(_DWORD*)(GameData_2243960 + 152) = v2;
+  }
+  GameData_226b868 = 1;
+  if (game_hub_ProgressEventView_instance_ != 0) {
+    GameRoutine_17b8f40(game_hub_ProgressEventView_instance_, 1);
+  }
+  return 6;
+}
+
+__int64 game_facility_IndividualMenu_Run_lambda0_Invoke_19376d0(__int64 a1)
+{
+  int v1;
+  int v2;
+
+  v1 = *(_DWORD*)(a1 + 8);
+  if (v1 <= 1) {
+    v1 = 1;
+  }
+  *(_DWORD*)(*GameData_212dcd0 + 16) = v1;
+  if (GameData_2243960 != 0) {
+    v2 = 2;
+    if (game_GameModeData_instance_ != 0) {
+      if (*(_DWORD*)(game_GameModeData_instance_ + 60) == 3) {
+        v2 = 6;
+      }
+      else {
+        v2 = 2;
+      }
+    }
+    *(_DWORD*)(GameData_2243960 + 152) = v2;
+  }
+  GameData_226b868 = 1;
+  if (game_hub_ProgressEventView_instance_ != 0) {
+    GameRoutine_17b8f40(game_hub_ProgressEventView_instance_, 1);
+  }
+  return 6;
+}
+
+__int64 game_facility_IndividualMenu_Run_lambda2_Invoke()
+{
+  if (game_hub_ProgressEventView_instance_ != 0 &&
+      game_hub_ProgressDisplayView_instance_ != 0) {
+    *(_BYTE*)(game_hub_ProgressDisplayView_instance_ + 153) = 1;
+  }
+  return 3;
 }
 
 #pragma GCC visibility pop

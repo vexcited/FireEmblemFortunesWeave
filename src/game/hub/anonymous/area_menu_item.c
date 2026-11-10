@@ -4,6 +4,13 @@
 
 __int64 GameRoutine_169a430(_QWORD, _QWORD);
 __int64 AreaMenuItem_Unknown25(__int64 a1);
+__int64 AreaMenuItem_Unknown3(__int64 a1);
+
+__int64 AreaMenuItem_Unknown3(__int64 a1)
+{
+  return *(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(a1 + 112) + 8LL) + 8LL) +
+                    40LL);
+}
 
 __int64 AreaMenuItem_Unknown25(__int64 a1)
 {

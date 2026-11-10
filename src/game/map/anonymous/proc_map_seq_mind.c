@@ -25,6 +25,7 @@ extern __int64* GameData_212cfd0[8];
 extern __int64* game_g_empty_item_ptr;
 __int64 ProcMapSeqMind_Destructor(__int64 a1);
 __int64 ProcMapSeqMind_Unknown18();
+__int64 ProcMapSeqMind_Unknown5();
 
 __int64 ProcMapSeqMind_Destructor(__int64 a1)
 {
@@ -95,6 +96,28 @@ __int64 ProcMapSeqMind_Destructor(__int64 a1)
 }
 
 __int64 ProcMapSeqMind_Unknown18()
+{
+  unsigned int v0;
+  __int64 v1;
+  __int64 v2;
+
+  v0 = *(unsigned __int16*)(*GameData_212cfd0[0] + 44);
+  if (*(_WORD*)(*GameData_212cfd0[0] + 44) == 0) {
+    v0 = *(unsigned __int16*)game_g_empty_item_ptr;
+  }
+  if ((*(_DWORD*)(*GameData_212cfd0[0] + 56) & 0xFFF) != 0) {
+    v1 = *(_QWORD*)(*(_QWORD*)(*GameData_212c880[0] + 64) +
+                    8LL * (*(_DWORD*)(*GameData_212cfd0[0] + 56) & 0xFFF));
+  }
+  else {
+    v1 = 0;
+  }
+  v2 = GameRoutine_80e6f0(
+      *(_QWORD*)(*(_QWORD*)(*GameData_212c878[0] + 64) + 8LL * v0), v1);
+  return GameRoutine_80e800(v2);
+}
+
+__int64 ProcMapSeqMind_Unknown5()
 {
   unsigned int v0;
   __int64 v1;

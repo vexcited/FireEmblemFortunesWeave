@@ -32,6 +32,8 @@ extern __int64 GameData_21ca310;
 extern __int64 GameData_21f1618;
 extern __int64 game_script_map_effect_g_sequence;
 __int64 ProcConfigMenu_822b00();
+bool game_menu_anonymous_ProcConfigMenu_SortAndFilter_closure_Invoke(
+    __int64 a1, __int64 a2);
 
 __int64 ProcConfigMenu_822b00()
 {
@@ -354,6 +356,13 @@ LABEL_29:
 LABEL_33:
   a2[1] = v21;
   return result;
+}
+
+bool game_menu_anonymous_ProcConfigMenu_SortAndFilter_closure_Invoke(__int64 a1,
+                                                                     __int64 a2)
+{
+  return **(unsigned __int8**)(*(_QWORD*)a2 + 88LL) ==
+         *(unsigned __int8*)(a1 + 8);
 }
 
 #pragma GCC visibility pop

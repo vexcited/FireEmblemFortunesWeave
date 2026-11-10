@@ -16,6 +16,9 @@ __int64 EventDate_Unknown33(__int64 a1);
 __int64 EventDate_Unknown44(__int64 result);
 __int64 EventDate_Destructor(__int64 a1);
 __int64 EventDate_DeletingDestructor(__int64 a1);
+__int64 TelopReliance_1386f80(_QWORD);
+__int64 EventDate_Destructor_175f700(__int64 a1);
+__int64 EventDate_DeletingDestructor_175f7a0(__int64 a1);
 
 __int64 EventDate_Unknown33(__int64 a1)
 {
@@ -119,6 +122,74 @@ __int64 EventDate_DeletingDestructor(__int64 a1)
     v5 = 56;
   }
   return nn_mem_StandardAllocator_Free(*(_QWORD*)v2 + v5, a1);
+}
+
+__int64 EventDate_Destructor_175f700(__int64 a1)
+{
+  _QWORD* v2;
+  __int64 v3;
+  _QWORD* v4;
+  __int64 v5;
+
+  v2 = (_QWORD*)(a1 - 824);
+  *v2 = game_telop_EventDate_vtable;
+  *(_QWORD*)a1 = GameData_20bcd80;
+  if ((*(_BYTE*)(a1 + 8) & 1) != 0) {
+    v3 = *(_QWORD*)(a1 + 24);
+    if (v3 != 0) {
+      v4 = v2;
+      v5 = 128;
+      if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+        v5 = 56;
+      }
+      nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v5,
+                                    v3);
+      v2 = v4;
+    }
+  }
+  *(_QWORD*)a1 = GameData_20bce40;
+  if ((_QWORD*)GameData_2263c28 == v2) {
+    GameData_2263c28 = 0;
+  }
+  return TelopReliance_1386f80(v2);
+}
+
+__int64 EventDate_DeletingDestructor_175f7a0(__int64 a1)
+{
+  __int64 v1;
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+
+  v1 = a1 - 824;
+  *(_QWORD*)(a1 - 824) = game_telop_EventDate_vtable;
+  *(_QWORD*)a1 = GameData_20bcd80;
+  v2 = fw_memory_g_heap_manager_ptr;
+  if ((*(_BYTE*)(a1 + 8) & 1) != 0) {
+    v3 = *(_QWORD*)(a1 + 24);
+    if (v3 != 0) {
+      v4 = a1;
+      v5 = 128;
+      if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+        v5 = 56;
+      }
+      nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v5,
+                                    v3);
+      a1 = v4;
+    }
+  }
+  *(_QWORD*)a1 = GameData_20bce40;
+  if (GameData_2263c28 == v1) {
+    GameData_2263c28 = 0;
+  }
+  TelopReliance_1386f80(v1);
+  v6 = 128;
+  if (*(_QWORD*)(*(_QWORD*)v2 + 200LL) == 0) {
+    v6 = 56;
+  }
+  return nn_mem_StandardAllocator_Free(*(_QWORD*)v2 + v6, v1);
 }
 
 #pragma GCC visibility pop

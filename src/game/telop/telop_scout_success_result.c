@@ -24,6 +24,12 @@ extern __int64* GameData_212e348;
 extern __int64* msg_MessageManager_instance__ptr[2];
 extern char** msg_MessageManager_empty_text__ptr;
 __int64 TelopScoutSuccessResult_Unknown57(__int64 a1);
+__int64 GameRoutine_162aea0(_QWORD, _QWORD);
+__int64 GameRoutine_887920(_QWORD, _QWORD);
+extern _UNKNOWN GameData_1ab1fcb;
+__int64
+game_telop_TelopScoutSuccessResult_CreateBind_lambda1_Invoke(__int64 a1,
+                                                             __int64* a2);
 
 __int64 TelopScoutSuccessResult_Unknown57(__int64 a1)
 {
@@ -160,6 +166,19 @@ __int64 TelopScoutSuccessResult_Unknown57(__int64 a1)
     }
   }
   return result;
+}
+
+__int64
+
+game_telop_TelopScoutSuccessResult_CreateBind_lambda1_Invoke(__int64 a1,
+                                                             __int64* a2)
+{
+  __int64 v2;
+  char v4;
+
+  v2 = *a2;
+  GameRoutine_887920(&v4, &GameData_1ab1fcb);
+  return GameRoutine_162aea0(v2, &v4);
 }
 
 #pragma GCC visibility pop

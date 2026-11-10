@@ -10,6 +10,10 @@ extern __int64 GameData_2246c60;
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 LessonFile_Unknown5();
 __int64 LessonFile_1457ea0();
+__int64 game_HashString(_QWORD);
+extern __int64 game_GameModeData_instance_;
+unsigned __int64 game_LessonFile_GetCompleteCount_lambda0_Invoke(__int64 a1,
+                                                                 __int64 a2);
 
 __int64 LessonFile_Unknown5()
 {
@@ -188,6 +192,94 @@ __int64 LessonFile_1457ea0()
     }
   }
   GameData_2246c60 = 0;
+  return result;
+}
+
+unsigned __int64 game_LessonFile_GetCompleteCount_lambda0_Invoke(__int64 a1,
+                                                                 __int64 a2)
+{
+  __int64 v3;
+  __int64 v4;
+  unsigned __int64 result;
+  _QWORD* v7;
+  unsigned __int64 v8;
+  unsigned __int64 v10;
+  unsigned __int64 v11;
+  _QWORD* v12;
+  _QWORD* v13;
+  unsigned __int64 v14;
+  __int64 v15;
+  __int64 v16;
+
+  v3 = *(_QWORD*)(*(_QWORD*)a2 + 24LL);
+  if ((*(_BYTE*)v3 & 1) != 0) {
+    v4 = *(_QWORD*)(v3 + 16);
+  }
+  else {
+    v4 = v3 + 1;
+  }
+  result = game_HashString(v4);
+  if (result != 0 && game_GameModeData_instance_ != 0) {
+    v7 = *(_QWORD**)(game_GameModeData_instance_ + 48);
+    v8 = v7[2];
+    if (v8 != 0 && v7[4] != 0) {
+      v10 = v8 - 1;
+      if ((v8 & (v8 - 1)) != 0) {
+        v11 = result;
+        if (result >= v8) {
+          v11 = result % v8;
+        }
+      }
+      else {
+        v11 = v10 & result;
+      }
+      v12 = *(_QWORD**)(v7[1] + 8 * v11);
+      if (v12 != nullptr) {
+        v13 = (_QWORD*)*v12;
+        if (v13 != nullptr) {
+          if ((v8 & v10) == 0) {
+            while (1) {
+              v15 = v13[1];
+              if (result == v15) {
+                if (v13[2] == result) {
+                  goto LABEL_32;
+                }
+              }
+              else if ((v15 & v10) != v11) {
+                return result;
+              }
+              v13 = (_QWORD*)*v13;
+              if (v13 == nullptr) {
+                return result;
+              }
+            }
+          }
+          do {
+            v14 = v13[1];
+            if (result == v14) {
+              if (v13[2] == result) {
+              LABEL_32:
+                v16 = v13[3];
+                if (v16 != 0 && *(int*)(v16 + 32) >= 1) {
+                  ++**(_DWORD**)(a1 + 8);
+                }
+                return result;
+              }
+            }
+            else {
+              if (v14 >= v8) {
+                v14 %= v8;
+              }
+              if (v14 != v11) {
+                return result;
+              }
+            }
+            v13 = (_QWORD*)*v13;
+          } while (v13 != nullptr);
+        }
+      }
+    }
+  }
   return result;
 }
 

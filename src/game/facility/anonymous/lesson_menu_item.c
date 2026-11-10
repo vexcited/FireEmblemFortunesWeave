@@ -13,6 +13,10 @@ extern __int64 GameData_21c9718;
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64* GameData_212dcd0;
 __int64 LessonMenuItem_Unknown25(_QWORD* a1);
+__int64 GameRoutine_1433810_alt1(_QWORD, _QWORD) __asm__("GameRoutine_1433810");
+extern __int64 GameData_21f3ff8;
+__int64 game_facility_anonymous_LessonMenuItem_ACall_closure_Invoke(__int64 a1,
+                                                                    __int64 a2);
 
 __int64 LessonMenuItem_Unknown25(_QWORD* a1)
 {
@@ -170,6 +174,24 @@ LABEL_44:
     return v16;
   }
   return result;
+}
+
+__int64 game_facility_anonymous_LessonMenuItem_ACall_closure_Invoke(__int64 a1,
+                                                                    __int64 a2)
+{
+  __int64 v2;
+  int v3;
+
+  v2 = *(_QWORD*)(*(_QWORD*)(a1 + 8) + 88LL);
+  if (v2 != 0) {
+    v3 = *(unsigned __int16*)(v2 + 16);
+  }
+  else {
+    v3 = -1;
+  }
+  *(_DWORD*)(GameData_21f3ff8 + 8) = v3;
+  GameRoutine_1433810_alt1(a1, a2);
+  return 4;
 }
 
 #pragma GCC visibility pop

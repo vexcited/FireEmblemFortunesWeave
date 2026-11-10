@@ -18,6 +18,12 @@ __int64 ProcItemSellMenu_Destructor(__int64 a1);
 __int64 ProcItemSellMenu_DeletingDestructor(__int64 a1);
 __int64 ProcItemSellMenu_Unknown154(_QWORD* a1, __int64 a2);
 __int64 ProcItemSellMenu_Unknown160(__int64 a1, __int64* a2);
+_QWORD* BasicMenuCursor_16e0c00(_QWORD* result, __int64);
+extern __int64 (*GameData_20a6b78[])();
+extern __int64 (*game_facility_ShopMenuItem_Sell_vtable[])();
+_QWORD*
+game_facility_anonymous_ProcItemSellMenu_AddItemList_closure_Invoke(__int64 a1,
+                                                                    int* a2);
 
 __int64 ProcItemSellMenu_Destructor(__int64 a1)
 {
@@ -187,6 +193,36 @@ __int64 ProcItemSellMenu_Unknown160(__int64 a1, __int64* a2)
   }
   a2[1] = v5;
   return GameRoutine_1874560(a1, a2, 1);
+}
+
+_QWORD*
+
+game_facility_anonymous_ProcItemSellMenu_AddItemList_closure_Invoke(__int64 a1,
+                                                                    int* a2)
+{
+  _QWORD* v2;
+  int v3;
+  __int64 v4;
+
+  v2 = *(_QWORD**)(a1 + 8);
+  v3 = *a2;
+  v4 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
+                                      112, 16, 0);
+  *(_WORD*)(v4 + 16) = 0;
+  *(_QWORD*)(v4 + 48) = 0;
+  *(_QWORD*)(v4 + 56) = 0;
+  *(_QWORD*)(v4 + 64) = 0;
+  *(_QWORD*)(v4 + 72) = 0;
+  *(_BYTE*)(v4 + 88) = 0;
+  *(_DWORD*)(v4 + 40) = v3;
+  *(_WORD*)(v4 + 80) = 257;
+  *(_BYTE*)(v4 + 82) = 1;
+  *(_DWORD*)(v4 + 84) = 1;
+  *(_QWORD*)v4 = game_facility_ShopMenuItem_Sell_vtable;
+  *(_QWORD*)(v4 + 8) = 0;
+  *(_QWORD*)(v4 + 96) = GameData_20a6b78;
+  *(_QWORD*)(v4 + 104) = 0;
+  return BasicMenuCursor_16e0c00(v2, v4);
 }
 
 #pragma GCC visibility pop

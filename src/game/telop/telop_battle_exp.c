@@ -31,6 +31,7 @@ __int64 TelopBattleExp_Unknown37(__int64 a1);
 __int64 TelopBattleExp_1744940(__int64 result);
 __int64 TelopBattleExp_Unknown47(__int64 a1);
 __int64 TelopBattleExp_Destructor(__int64 a1);
+__int64 TelopBattleExp_Unknown46(__int64 result);
 
 __int64 TelopBattleExp_Unknown35(__int64 result, long double a2)
 {
@@ -571,6 +572,12 @@ __int64 TelopBattleExp_1744940(__int64 result)
     v91[0] = *(_QWORD*)(v64 + 392);
     return GameRoutine_931c00(v49 + 1880, v91, v63);
   }
+  return result;
+}
+
+__int64 TelopBattleExp_Unknown46(__int64 result)
+{
+  *(_DWORD*)(result + 1352) = 0;
   return result;
 }
 

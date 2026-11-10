@@ -17,6 +17,8 @@ extern __int64* GameData_212e008[9];
 __int64 MapSortieTroopMenu_Unknown109(_QWORD* a1);
 __int64 MapSortieTroopMenu_Unknown112(__int64 a1);
 __int64 MapSortieTroopMenu_Unknown128(__int64 a1);
+bool game_map_anonymous_MapSortieTroopMenu_MapSortieTroopMenu_closure_Invoke(
+    __int64 a1, __int64 a2);
 
 __int64 MapSortieTroopMenu_Unknown109(_QWORD* a1)
 {
@@ -172,6 +174,12 @@ __int64 MapSortieTroopMenu_Unknown128(__int64 a1)
     }
   }
   return result;
+}
+
+bool game_map_anonymous_MapSortieTroopMenu_MapSortieTroopMenu_closure_Invoke(
+    __int64 a1, __int64 a2)
+{
+  return *(_QWORD*)(*(_QWORD*)a2 + 88LL) == *(_QWORD*)(a1 + 8);
 }
 
 #pragma GCC visibility pop

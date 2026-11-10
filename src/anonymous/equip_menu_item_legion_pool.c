@@ -14,6 +14,13 @@ extern __int64* GameData_212ceb0;
 extern __int64* ui_LayoutAccessor_empty__ptr[3];
 __int64 EquipMenuItem_LegionPool_Unknown55(__int64 a1);
 bool EquipMenuItem_LegionPool_Unknown58(__int64 a1);
+__int64 LegionPoolMenu_Unknown139(_QWORD*);
+__int64 LegionPool_9377a0(_QWORD, _QWORD, _QWORD);
+__int64 SpotMgr_132ffa0(_QWORD);
+__int64 Spot_132b100(_QWORD, _QWORD);
+extern __int64* GameData_212d728[2];
+extern char GameData_1a9f09e;
+__int64 anonymous_EquipMenuItem_LegionPool_ACall_closure_Invoke(__int64 a1);
 
 __int64 EquipMenuItem_LegionPool_Unknown55(__int64 a1)
 {
@@ -176,6 +183,39 @@ bool EquipMenuItem_LegionPool_Unknown58(__int64 a1)
     }
   }
   return result;
+}
+
+__int64 anonymous_EquipMenuItem_LegionPool_ACall_closure_Invoke(__int64 a1)
+{
+  __int64 v1;
+  __int64 v2;
+  __int64* v3;
+  __int64 v4;
+  unsigned int v5;
+  __int64 v6;
+  _QWORD v8[2];
+
+  v1 = *(_QWORD*)(a1 + 8);
+  v2 = *(unsigned int*)(v1 + 40);
+  v3 = GameData_212ceb0;
+  v4 = GameData_212cf80[0];
+  if ((int)v2 >= 0) {
+    v3 = (__int64*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)GameData_212cf80[0] + 8LL) +
+                               48LL) +
+                    8 * v2);
+  }
+  v5 = *((_DWORD*)v3 + 1);
+  v8[1] = &GameData_1a9f09e;
+  v8[0] = v5;
+  v6 = SpotMgr_132ffa0(v8);
+  Spot_132b100(v6, 0);
+  if (*GameData_212d728[0] != 0) {
+    *(_BYTE*)(*(_QWORD*)(*GameData_212d728[0] + 8) + 5835LL) = 1;
+  }
+  LegionPool_9377a0(*(_QWORD*)(*(_QWORD*)v4 + 8LL), *(_QWORD*)(v1 + 96),
+                    *(unsigned int*)(v1 + 40));
+  LegionPoolMenu_Unknown139(*(_QWORD**)(v1 + 8));
+  return 2;
 }
 
 #pragma GCC visibility pop

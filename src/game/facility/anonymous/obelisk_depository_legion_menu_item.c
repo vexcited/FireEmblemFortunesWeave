@@ -18,6 +18,7 @@ __int64* ObeliskDepositoryLegionMenuItem_Unknown70(__int64 a1);
 __int64 ObeliskDepositoryLegionMenuItem_Unknown73(__int64 a1);
 __int64 ObeliskDepositoryLegionMenuItem_Unknown74(__int64 a1);
 __int64 ObeliskDepositoryLegionMenuItem_Unknown79(__int64 a1);
+__int64 ObeliskDepositoryLegionMenuItem_Unknown10(__int64 a1);
 
 __int64* ObeliskDepositoryLegionMenuItem_Unknown70(__int64 a1)
 {
@@ -212,6 +213,17 @@ __int64 ObeliskDepositoryLegionMenuItem_Unknown79(__int64 a1)
   __int64 result;
 
   result = *(_QWORD*)(a1 + 8);
+  if (result != 0) {
+    return __dynamic_cast(result, GameData_212e030[0], GameData_2132048, 0);
+  }
+  return result;
+}
+
+__int64 ObeliskDepositoryLegionMenuItem_Unknown10(__int64 a1)
+{
+  __int64 result;
+
+  result = *(_QWORD*)(a1 - 80);
   if (result != 0) {
     return __dynamic_cast(result, GameData_212e030[0], GameData_2132048, 0);
   }

@@ -42,6 +42,23 @@ __int64 ProcItemSelectMenu_Unknown84_187a6d0(_BYTE* a1);
 __int64 ProcItemSelectMenu_Unknown154_187b4c0(__int64 a1, __int64 a2);
 __int64 ProcItemSelectMenu_Unknown155_187b500(__int64 a1, int a2);
 __int64 ProcItemSelectMenu_Unknown157_187b520(__int64 a1, __int16* a2);
+__int64 ItemShopSelectMenu_1874560(_QWORD, _QWORD, _QWORD);
+__int64 ProcItemSelectMenu_Unknown10_1876a80(__int64 a1, __int64 a2);
+__int64 ProcItemSelectMenu_Unknown10_18798a0(__int64 a1, __int64 a2);
+__int64 ProcItemSelectMenu_Unknown10_187b600(__int64 a1, __int64 a2);
+__int64 BasicMenuCursor_16e0c00(_QWORD, _QWORD);
+__int64 fw_memory_HeapManager_Allocate(_QWORD, _QWORD, _QWORD, _QWORD);
+extern __int64 (*GameData_20fa208[])();
+extern __int64 (*game_facility_anonymous_BlacksmithMenuItem_Item_vtable[])();
+extern __int64 (*game_facility_anonymous_BlacksmithMenuItem_Repair_vtable[])();
+extern __int64 fw_memory_g_heap_manager_ptr;
+extern __int64 game_TransporterConst_List_instance__ptr[6];
+__int64
+game_facility_anonymous_ProcItemSelectMenu_AddItemList_closure_Invoke_1879b60(
+    __int64 a1, int* a2);
+__int64
+game_facility_anonymous_ProcItemSelectMenu_AddItemList_closure_Invoke_187c290(
+    __int64 a1, int* a2);
 
 __int64 ProcItemSelectMenu_Unknown155_1874a60(__int64 a1, unsigned int a2)
 {
@@ -209,6 +226,11 @@ __int64 ProcItemSelectMenu_Unknown157_18769a0(__int64 a1, __int16* a2)
   return GameRoutine_15d2280(v5, a2, a1 + 1108, v6);
 }
 
+__int64 ProcItemSelectMenu_Unknown10_1876a80(__int64 a1, __int64 a2)
+{
+  return ItemShopSelectMenu_1874560(a1 - 1056, a2, 1);
+}
+
 __int64 ProcItemSelectMenu_Unknown84_1878db0(_BYTE* a1)
 {
   __int64 result;
@@ -324,6 +346,48 @@ __int64 ProcItemSelectMenu_Unknown157_18797c0(__int64 a1, __int16* a2)
   return GameRoutine_15d2000(v5, a2, v6);
 }
 
+__int64 ProcItemSelectMenu_Unknown10_18798a0(__int64 a1, __int64 a2)
+{
+  return ItemShopSelectMenu_1874560(a1 - 1056, a2, 1);
+}
+
+__int64
+
+game_facility_anonymous_ProcItemSelectMenu_AddItemList_closure_Invoke_1879b60(
+    __int64 a1, int* a2)
+{
+  _QWORD* v2;
+  int v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+
+  v2 = *(_QWORD**)(a1 + 8);
+  v3 = *a2;
+  v4 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
+                                      120, 16, 0);
+  v5 = v2[133];
+  *(_QWORD*)(v4 + 8) = 0;
+  *(_WORD*)(v4 + 16) = 0;
+  *(_QWORD*)(v4 + 64) = 0;
+  *(_QWORD*)(v4 + 72) = 0;
+  *(_QWORD*)(v4 + 48) = 0;
+  *(_QWORD*)(v4 + 56) = 0;
+  *(_BYTE*)(v4 + 88) = 0;
+  *(_WORD*)(v4 + 80) = 257;
+  *(_BYTE*)(v4 + 82) = 1;
+  *(_DWORD*)(v4 + 84) = 1;
+  v6 = v2[137];
+  v7 = v2[136];
+  *(_DWORD*)(v4 + 40) = v3;
+  *(_QWORD*)(v4 + 112) = v5;
+  *(_QWORD*)(v4 + 96) = v7;
+  *(_QWORD*)(v4 + 104) = v6;
+  *(_QWORD*)v4 = game_facility_anonymous_BlacksmithMenuItem_Item_vtable;
+  return BasicMenuCursor_16e0c00(v2, v4);
+}
+
 __int64 ProcItemSelectMenu_Unknown84_187a6d0(_BYTE* a1)
 {
   __int64 result;
@@ -369,6 +433,60 @@ __int64 ProcItemSelectMenu_Unknown157_187b520(__int64 a1, __int16* a2)
     v6 = 0;
   }
   return GameRoutine_15d2000(v5, a2, v6);
+}
+
+__int64 ProcItemSelectMenu_Unknown10_187b600(__int64 a1, __int64 a2)
+{
+  return ItemShopSelectMenu_1874560(a1 - 1056, a2, 1);
+}
+
+__int64
+
+game_facility_anonymous_ProcItemSelectMenu_AddItemList_closure_Invoke_187c290(
+    __int64 a1, int* a2)
+{
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  unsigned __int16* v6;
+
+  v2 = *(_QWORD*)(a1 + 8);
+  v3 = *a2;
+  v4 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
+                                      120, 16, 0);
+  v5 = *(_QWORD*)(v2 + 1064);
+  *(_WORD*)(v4 + 16) = 0;
+  *(_QWORD*)(v4 + 64) = 0;
+  *(_QWORD*)(v4 + 72) = 0;
+  *(_QWORD*)(v4 + 48) = 0;
+  *(_QWORD*)(v4 + 56) = 0;
+  *(_BYTE*)(v4 + 88) = 0;
+  *(_DWORD*)(v4 + 40) = v3;
+  *(_WORD*)(v4 + 80) = 257;
+  *(_BYTE*)(v4 + 82) = 1;
+  *(_DWORD*)(v4 + 84) = 1;
+  *(_QWORD*)v4 = game_facility_anonymous_BlacksmithMenuItem_Repair_vtable;
+  *(_QWORD*)(v4 + 8) = 0;
+  *(_QWORD*)(v4 + 96) = GameData_20fa208;
+  *(_QWORD*)(v4 + 104) = v5;
+  if (v5 != 0) {
+    v6 = (unsigned __int16*)(v5 + 8 * v3 + 828);
+  }
+  else {
+    v6 =
+        (unsigned __int16*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)
+                                                      game_TransporterConst_List_instance__ptr
+                                                          [0] +
+                                                  8LL) +
+                                       8LL) +
+                            12LL * (int)v3 + 4);
+  }
+  *(_QWORD*)(v4 + 112) =
+      *(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*GameData_212c878[0] + 64) + 8LL * *v6) +
+                 24LL) +
+      512LL;
+  return BasicMenuCursor_16e0c00(v2, v4);
 }
 
 #pragma GCC visibility pop

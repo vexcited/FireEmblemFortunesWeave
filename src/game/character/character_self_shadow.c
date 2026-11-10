@@ -11,6 +11,15 @@ extern _UNKNOWN* GameData_212df10;
 extern __int64 (*game_character_CharacterSelfShadow_vtable[])();
 extern int* GameData_212df08;
 __int64 CharacterSelfShadow_Destructor(__int64 result);
+__int64 game_character_CharacterSelfShadow_CharacterSelfShadow_lambda3_Invoke(
+    __int64 a1, _QWORD* a2);
+extern __int128 GameData_1a82c50;
+long double
+game_character_CharacterSelfShadow_CharacterSelfShadow_lambda0_Invoke(
+    __int64 a1);
+long double
+game_character_CharacterSelfShadow_CharacterSelfShadow_lambda1_Invoke(
+    __int64 a1);
 
 __int64 CharacterSelfShadow_Destructor(__int64 result)
 {
@@ -61,6 +70,62 @@ __int64 CharacterSelfShadow_Destructor(__int64 result)
     return GameRoutine_bf8240(*(_QWORD*)(v8 + 40), *(_QWORD*)(v8 + 24));
   }
   return result;
+}
+
+long double
+
+game_character_CharacterSelfShadow_CharacterSelfShadow_lambda0_Invoke(
+    __int64 a1)
+{
+  __int64 v1;
+  long double result;
+  __int64 v3;
+  __int64 v4;
+
+  v1 = *(_QWORD*)(a1 + 16);
+  result = *(long double*)&GameData_1a82c50;
+  if (v1 != 0) {
+    v3 = *(_QWORD*)(v1 + 8);
+    v4 = *(_QWORD*)(a1 + 24);
+    if (v3 != -1 && v4 != 0) {
+      return *(long double*)(*(_QWORD*)(v4 + 8) + 464LL);
+    }
+  }
+  return result;
+}
+
+long double
+
+game_character_CharacterSelfShadow_CharacterSelfShadow_lambda1_Invoke(
+    __int64 a1)
+{
+  __int64 v1;
+  long double result;
+  __int64 v3;
+  __int64 v4;
+
+  v1 = *(_QWORD*)(a1 + 16);
+  *(_OWORD*)&result = 0u;
+  if (v1 != 0) {
+    v3 = *(_QWORD*)(v1 + 8);
+    v4 = *(_QWORD*)(a1 + 24);
+    if (v3 != -1 && v4 != 0) {
+      return *(long double*)(*(_QWORD*)(v4 + 8) + 304LL);
+    }
+  }
+  return result;
+}
+
+__int64 game_character_CharacterSelfShadow_CharacterSelfShadow_lambda3_Invoke(
+    __int64 a1, _QWORD* a2)
+{
+  __int64 v2;
+
+  v2 = *(_QWORD*)(*(_QWORD*)(a1 + 8) + 40LL) +
+       16LL * *(int*)(*(_QWORD*)(*(_QWORD*)(a1 + 8) + 40LL) + 112LL);
+  return (*(__int64 (**)(_QWORD, __int64, __int64, _QWORD, _QWORD))(
+      *(_QWORD*)*a2 + 224LL))(*a2, 3, 13, *(_QWORD*)(v2 + 120),
+                              *(_QWORD*)(v2 + 128));
 }
 
 #pragma GCC visibility pop

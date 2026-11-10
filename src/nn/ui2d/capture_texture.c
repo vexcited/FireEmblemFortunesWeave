@@ -17,6 +17,16 @@ __int64 CaptureTexture_Unknown3(__int64 a1);
 __int64 CaptureTexture_Unknown4(__int64 a1, __int64 a2, __int64* a3);
 __int64 CaptureTexture_Unknown5(__int64 a1);
 __int64 CaptureTexture_Unknown9(__int64 result);
+__int64 GameRoutine_575d70(void);
+extern __int64 (*nn_ui2d_CaptureTexture_vtable[])();
+__int64 CaptureTexture_DeletingDestructor(_QWORD* a1);
+
+__int64 CaptureTexture_DeletingDestructor(_QWORD* a1)
+{
+  *a1 = nn_ui2d_CaptureTexture_vtable;
+  return GameRoutine_575d70();
+}
+
 void CaptureTexture_5815d0(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
                            __int64 a5, char a6)
 {

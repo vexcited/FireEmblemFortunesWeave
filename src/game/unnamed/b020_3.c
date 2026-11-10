@@ -10,8 +10,6 @@ extern __int64 (*GameData_204eb98[])();
 
 extern __int64 (*GameData_204eca8[])();
 
-extern __int64 GameData_20543b0;
-
 extern __int64* GameData_212c738[2];
 
 extern __int64* GameData_212d670[3];
@@ -21,8 +19,6 @@ extern __int64* GameData_212d678[2];
 extern __int64 GameData_212d690;
 
 extern __int64 GameData_212dbb8[9];
-
-extern __int64* GameData_212e030[4];
 
 extern __int64* GameData_212e348;
 
@@ -65,8 +61,6 @@ __int64 GameRoutine_159d8d0(_QWORD*);
 __int64 GameRoutine_15b59e0(_QWORD);
 
 __int64 GameRoutine_15b5f20(_QWORD);
-
-__int64 GameRoutine_16defa0(_QWORD);
 
 __int64 GameRoutine_1840740(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 
@@ -753,82 +747,6 @@ __int64 GameHr_159dcc0(__int64 result, __int64 a2)
     return GameRoutine_159d8d0(v2);
   }
   return result;
-}
-
-__int64 GameHr_15c3880(__int64 a1)
-{
-  __int64 v1;
-  __int64 v2;
-  _QWORD* v3;
-  _QWORD* v4;
-  __int64 v5;
-  int v6;
-  __int64 v7;
-
-  v1 = *(_QWORD*)(*(_QWORD*)(a1 + 8) + 8LL);
-  if (v1 == 0) {
-    return 5;
-  }
-  v2 = GameRoutine_1a0a6c0(v1, GameData_212e030[0], &GameData_20543b0, 0);
-  if (v2 == 0) {
-    return 5;
-  }
-  v3 = *(_QWORD**)(v2 + 232);
-  v4 = *(_QWORD**)(v2 + 240);
-  if (v3 != v4) {
-    v5 = v2;
-    v6 = 0;
-    do {
-      v7 = *v3;
-      if (((*(__int64 (**)(_QWORD))(*(_QWORD*)*v3 + 48LL))(*v3) & 1) != 0) {
-        v6 += (*(__int64 (**)(__int64))(*(_QWORD*)v7 + 40LL))(v7) & 1;
-      }
-      ++v3;
-    } while (v3 != v4);
-    if (v6 != 0) {
-      GameRoutine_16defa0(v5);
-      return 5;
-    }
-  }
-  return 4;
-}
-
-__int64 GameHr_15c5000(__int64 a1)
-{
-  __int64 v1;
-  __int64 v2;
-  _QWORD* v3;
-  _QWORD* v4;
-  __int64 v5;
-  int v6;
-  __int64 v7;
-
-  v1 = *(_QWORD*)(*(_QWORD*)(a1 + 8) + 8LL);
-  if (v1 == 0) {
-    return 5;
-  }
-  v2 = GameRoutine_1a0a6c0(v1, GameData_212e030[0], &GameData_20543b0, 0);
-  if (v2 == 0) {
-    return 5;
-  }
-  v3 = *(_QWORD**)(v2 + 232);
-  v4 = *(_QWORD**)(v2 + 240);
-  if (v3 != v4) {
-    v5 = v2;
-    v6 = 0;
-    do {
-      v7 = *v3;
-      if (((*(__int64 (**)(_QWORD))(*(_QWORD*)*v3 + 48LL))(*v3) & 1) != 0) {
-        v6 += (*(__int64 (**)(__int64))(*(_QWORD*)v7 + 40LL))(v7) & 1;
-      }
-      ++v3;
-    } while (v3 != v4);
-    if (v6 != 0) {
-      GameRoutine_16defa0(v5);
-      return 5;
-    }
-  }
-  return 4;
 }
 
 #pragma GCC visibility pop

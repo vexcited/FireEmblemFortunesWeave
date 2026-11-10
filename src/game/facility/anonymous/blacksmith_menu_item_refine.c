@@ -15,6 +15,7 @@ extern __int64* GameData_212e030[4];
 __int64 BlacksmithMenuItem_Refine_Unknown58(__int64 a1);
 __int64 BlacksmithMenuItem_Refine_Unknown81(__int64 a1);
 __int64 BlacksmithMenuItem_Refine_Unknown82(__int64 a1, __int64 a2, __int64 a3);
+__int64 BlacksmithMenuItem_Refine_Unknown5(__int64 a1, __int64 a2, __int64 a3);
 
 __int64 BlacksmithMenuItem_Refine_Unknown58(__int64 a1)
 {
@@ -107,6 +108,18 @@ __int64 BlacksmithMenuItem_Refine_Unknown82(__int64 a1, __int64 a2, __int64 a3)
   __int64 v3;
 
   v3 = *(_QWORD*)(a1 + 8);
+  if (v3 != 0) {
+    v3 = __dynamic_cast(v3, GameData_212e030[0], GameData_212e000[0], 0);
+  }
+  return GameRoutine_16d88b0(v3, "MID_RefineMenu_Confirm",
+                             "MID_Shop_Consumption", a2, a3, a3);
+}
+
+__int64 BlacksmithMenuItem_Refine_Unknown5(__int64 a1, __int64 a2, __int64 a3)
+{
+  __int64 v3;
+
+  v3 = *(_QWORD*)(a1 - 88);
   if (v3 != 0) {
     v3 = __dynamic_cast(v3, GameData_212e030[0], GameData_212e000[0], 0);
   }

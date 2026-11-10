@@ -11,6 +11,9 @@ extern __int64 GameData_2134740[19];
 extern __int64* snd_g_memory_ptr[2];
 __int64 FxMS_Destructor(_QWORD* a1);
 void FxMS_Unknown5(__int64 a1, __int64 a2, int* a3);
+__int64 snd_coef_BiQuadCoef_BiQuadCoef(void);
+extern __int64 GameData_2134748[18];
+__int64 FxMS_16d650(_QWORD* a1);
 
 __int64 FxMS_Destructor(_QWORD* a1)
 {
@@ -384,6 +387,68 @@ void FxMS_Unknown5(__int64 a1, __int64 a2, int* a3)
       ++v11;
     } while (v11 != v9);
   }
+}
+
+__int64 FxMS_16d650(_QWORD* a1)
+{
+  __int64 v2;
+  __int64* v3;
+  __int64 v4;
+  void (***v5)(_QWORD);
+  __int64 v6;
+  void (***v7)(_QWORD);
+  __int64 v8;
+  __int64 v9;
+  __int64 result;
+
+  v2 = GameData_2134748[0];
+  a1[2] = 0;
+  *a1 = v2 + 16;
+  a1[1] = 0;
+  v3 = snd_g_memory_ptr[0];
+  v4 = (*(__int64 (**)(_QWORD, __int64, __int64))(
+      **(_QWORD**)snd_g_memory_ptr[0] + 16LL))(*snd_g_memory_ptr[0], 248, 32);
+  snd_coef_BiQuadCoef_BiQuadCoef();
+  v5 = (void (***)(_QWORD))a1[1];
+  a1[1] = v4;
+  if (v5 != nullptr) {
+    (**v5)(v5);
+    (*(void (**)(__int64, void (***)(_QWORD)))(*(_QWORD*)*v3 + 24LL))(*v3, v5);
+  }
+  v6 = (*(__int64 (**)(__int64, __int64, __int64))(*(_QWORD*)*v3 + 16LL))(
+      *v3, 248, 32);
+  snd_coef_BiQuadCoef_BiQuadCoef();
+  v7 = (void (***)(_QWORD))a1[2];
+  a1[2] = v6;
+  if (v7 != nullptr) {
+    (**v7)(v7);
+    (*(void (**)(__int64, void (***)(_QWORD)))(*(_QWORD*)*v3 + 24LL))(*v3, v7);
+  }
+  *(_WORD*)(*(_QWORD*)(a1[1] + 128LL) + 8LL) = -17536;
+  *(_WORD*)(*(_QWORD*)(a1[1] + 136LL) + 8LL) = -17536;
+  *(_WORD*)(*(_QWORD*)(a1[1] + 144LL) + 8LL) = -17536;
+  *(_WORD*)(*(_QWORD*)(a1[1] + 152LL) + 8LL) = -17536;
+  *(_WORD*)(*(_QWORD*)(a1[1] + 160LL) + 8LL) = -17536;
+  *(_WORD*)(*(_QWORD*)(a1[1] + 168LL) + 8LL) = -17536;
+  *(_WORD*)(*(_QWORD*)(a1[1] + 176LL) + 8LL) = -17536;
+  *(_WORD*)(*(_QWORD*)(a1[1] + 184LL) + 8LL) = -17536;
+  *(_WORD*)(*(_QWORD*)(a1[1] + 192LL) + 8LL) = -17536;
+  v8 = *(_QWORD*)(a1[1] + 8LL * *(unsigned int*)(a1[1] + 124LL) + 128);
+  (*(void (**)(__int64))(*(_QWORD*)v8 + 16LL))(v8);
+  *(_DWORD*)(a1[1] + 204LL) = 0;
+  *(_WORD*)(*(_QWORD*)(a1[2] + 128LL) + 8LL) = -17536;
+  *(_WORD*)(*(_QWORD*)(a1[2] + 136LL) + 8LL) = -17536;
+  *(_WORD*)(*(_QWORD*)(a1[2] + 144LL) + 8LL) = -17536;
+  *(_WORD*)(*(_QWORD*)(a1[2] + 152LL) + 8LL) = -17536;
+  *(_WORD*)(*(_QWORD*)(a1[2] + 160LL) + 8LL) = -17536;
+  *(_WORD*)(*(_QWORD*)(a1[2] + 168LL) + 8LL) = -17536;
+  *(_WORD*)(*(_QWORD*)(a1[2] + 176LL) + 8LL) = -17536;
+  *(_WORD*)(*(_QWORD*)(a1[2] + 184LL) + 8LL) = -17536;
+  *(_WORD*)(*(_QWORD*)(a1[2] + 192LL) + 8LL) = -17536;
+  v9 = *(_QWORD*)(a1[2] + 8LL * *(unsigned int*)(a1[2] + 124LL) + 128);
+  result = (*(__int64 (**)(__int64))(*(_QWORD*)v9 + 16LL))(v9);
+  *(_DWORD*)(a1[2] + 204LL) = 0;
+  return result;
 }
 
 #pragma GCC visibility pop

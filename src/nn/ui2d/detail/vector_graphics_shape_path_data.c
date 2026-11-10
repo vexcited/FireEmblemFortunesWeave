@@ -12,8 +12,8 @@ void VectorGraphicsShapePathData_Unknown5(__int64 a1, float a2);
 __int64 VectorGraphicsShapePathData_Unknown9(_QWORD* a1);
 bool VectorGraphicsShapePathData_Unknown14(__int64 a1);
 bool VectorGraphicsShapePathData_5ae140(__int64 a1);
-
-double VectorGraphicsShapePathData_Unknown6() { return 0.0; }
+__int64 VectorGraphicsShapePathData_Unknown4(__int64 a1);
+__int64 VectorGraphicsShapePathData_Unknown10(__int64 a1);
 
 __int64 VectorGraphicsShapePathData_Unknown2(__int64 result, __int64 a2,
                                              __int64 a3, __int64 a4, __int64 a5,
@@ -104,9 +104,21 @@ bool VectorGraphicsShapePathData_Unknown14(__int64 a1)
   return (*(_BYTE*)(*(_QWORD*)(a1 + 32) + 1LL) & 2) != 0;
 }
 
+double VectorGraphicsShapePathData_Unknown6() { return 0.0; }
+
 bool VectorGraphicsShapePathData_5ae140(__int64 a1)
 {
   return *(float*)(a1 + 12) < 1.0 || *(float*)(a1 + 8) > 0.0;
+}
+
+__int64 VectorGraphicsShapePathData_Unknown4(__int64 a1)
+{
+  return **(unsigned __int8**)(a1 + 32);
+}
+
+__int64 VectorGraphicsShapePathData_Unknown10(__int64 a1)
+{
+  return *(_BYTE*)(*(_QWORD*)(a1 + 32) + 28LL) & 1;
 }
 
 #pragma GCC visibility pop

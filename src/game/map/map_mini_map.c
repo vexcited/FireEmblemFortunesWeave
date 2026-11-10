@@ -16,6 +16,7 @@ __int64 MapMiniMap_Destructor(__int64 a1);
 __int64 MapMiniMap_Unknown4(__int64 result);
 __int64 MapMiniMap_18e99d0(__int64 result);
 __int64 MapMiniMap_Unknown5(__int64 result);
+__int64 MapMiniMap_DeletingDestructor(__int64 result);
 
 __int64 MapMiniMap_Destructor(__int64 a1)
 {
@@ -231,6 +232,15 @@ __int64 MapMiniMap_Unknown5(__int64 result)
   if ((*(_BYTE*)(result + 20) & 1) == 0) {
     *(_BYTE*)(result + 20) = 1;
     *(_BYTE*)(result + 220) = 1;
+  }
+  return result;
+}
+
+__int64 MapMiniMap_DeletingDestructor(__int64 result)
+{
+  if ((*(_BYTE*)(result + 12) & 1) == 0) {
+    *(_BYTE*)(result + 12) = 1;
+    *(_BYTE*)(result + 212) = 1;
   }
   return result;
 }

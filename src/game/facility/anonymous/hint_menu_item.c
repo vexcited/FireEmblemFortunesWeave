@@ -19,6 +19,11 @@ extern __int64* GameData_212e030[4];
 extern char* game_menu_g_mid_cause_invalid_ptr[7];
 __int64 HintMenuItem_Unknown55(__int64 a1);
 __int64 HintMenuItem_Unknown73(_QWORD* a1);
+__int64 GameRoutine_f9f860(_QWORD);
+__int64 GameRoutine_f9f980(_QWORD, _QWORD);
+__int64
+game_facility_anonymous_HintMenuItem_OnDecide_closure_Invoke(__int64 a1,
+                                                             _QWORD* a2);
 
 __int64 HintMenuItem_Unknown55(__int64 a1)
 {
@@ -107,6 +112,20 @@ __int64 HintMenuItem_Unknown73(_QWORD* a1)
   v11 = v6;
   GameRoutine_16ef210(v14, v8);
   return GameRoutine_16ee520(v14);
+}
+
+__int64 game_facility_anonymous_HintMenuItem_OnDecide_closure_Invoke(__int64 a1,
+                                                                     _QWORD* a2)
+{
+  __int64 v2;
+  __int64 result;
+
+  v2 = *a2;
+  result = GameRoutine_f9f860(*a2);
+  if ((result & 1) != 0) {
+    return GameRoutine_f9f980(v2, 1);
+  }
+  return result;
 }
 
 #pragma GCC visibility pop

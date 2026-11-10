@@ -11,6 +11,8 @@ unsigned __int64 GameRoutine_12c7260(unsigned __int64 result);
 unsigned __int64 CalendarDetailFile_Unknown4(__int64 a1);
 unsigned __int64 CalendarDetailFile_12c8890(__int64 a1);
 __int64 CalendarDetailFile_Unknown5(__int64 result);
+__int64 CalendarDetailFile_12d65a0(_QWORD);
+__int64 CalendarDetailFile_Unknown6(__int64 result);
 
 unsigned __int64 CalendarDetailFile_Unknown4(__int64 a1)
 {
@@ -89,6 +91,25 @@ __int64 CalendarDetailFile_Unknown5(__int64 result)
   *(_QWORD*)(result + 264) = 0;
   if (v1 != 0) {
     GameRoutine_12d65a0(v1);
+    v2 = 128;
+    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+      v2 = 56;
+    }
+    return nn_mem_StandardAllocator_Free(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v2);
+  }
+  return result;
+}
+
+__int64 CalendarDetailFile_Unknown6(__int64 result)
+{
+  __int64 v1;
+  __int64 v2;
+
+  v1 = *(_QWORD*)(result + 256);
+  *(_QWORD*)(result + 256) = 0;
+  if (v1 != 0) {
+    CalendarDetailFile_12d65a0(v1);
     v2 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v2 = 56;

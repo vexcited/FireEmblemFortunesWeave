@@ -10,15 +10,13 @@ void GameRoutine_651250(void*, unsigned __int64);
 __int64 StartInfoNX_Unknown3(__int64 result, int a2);
 __int64 StartInfoNX_Unknown4(__int64 result);
 __int64 StartInfoNX_Unknown8(__int64 a1);
-
-__int64 StartInfoNX_14b920() { return snd_target_s_platform; }
-
 __int64 StartInfoNX_Unknown14(__int64 result);
 __int64 StartInfoNX_Unknown11(__int64 a1, __int64 a2);
 __int64 StartInfoNX_14bbe0(_DWORD* a1, _DWORD* a2);
 __int64 StartInfoNX_Unknown15(__int64 a1, __int64 a2);
 __int64 StartInfoNX_Destructor(__int64 result);
 void StartInfoNX_DeletingDestructor(_QWORD* a1);
+__int64 StartInfoNX_Unknown14(__int64 result);
 
 __int64 StartInfoNX_Unknown3(__int64 result, int a2)
 {
@@ -44,6 +42,8 @@ __int64 StartInfoNX_Unknown8(__int64 a1)
   }
   return result;
 }
+
+__int64 StartInfoNX_14b920() { return snd_target_s_platform; }
 
 __int64 StartInfoNX_Unknown11(__int64 a1, __int64 a2)
 {
@@ -73,6 +73,13 @@ __int64 StartInfoNX_14bbe0(_DWORD* a1, _DWORD* a2)
   a2[1482] = v2;
   (*(void (**)(_DWORD*, __int64))(*(_QWORD*)a2 + 720LL))(a2, 0xFFFFFFFFLL);
   return 1;
+}
+
+__int64 StartInfoNX_Unknown14(__int64 result)
+{
+  *(_BYTE*)(result + 324) = 0;
+  *(_DWORD*)(result + 320) = 1;
+  return result;
 }
 
 __int64 StartInfoNX_Unknown15(__int64 a1, __int64 a2)

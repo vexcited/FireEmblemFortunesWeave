@@ -21,6 +21,7 @@ __int64 ScalableFont_Unknown20(__int64 a1, __int64 a2);
 __int64 ScalableFont_Unknown23(__int64 a1, __int64 a2, __int64 a3);
 __int64 ScalableFont_Unknown35(__int64 a1);
 __int64 ScalableFont_Unknown36(__int64 a1, __int64 a2, unsigned int a3);
+__int64 ScalableFont_Unknown7(__int64 a1);
 
 __int64 ScalableFont_5603e0(__int64 a1, __int64 a2)
 {
@@ -88,6 +89,11 @@ __int64 ScalableFont_5603e0(__int64 a1, __int64 a2)
     }
   }
   return result;
+}
+
+__int64 ScalableFont_Unknown7(__int64 a1)
+{
+  return (unsigned int)(*(_DWORD*)(a1 + 28) - *(_DWORD*)(a1 + 32));
 }
 
 __int64 ScalableFont_Unknown12(__int64 a1)

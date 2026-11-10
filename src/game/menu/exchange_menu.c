@@ -22,6 +22,12 @@ void __attribute__((noreturn)) GameRoutine_60a310(_QWORD, _QWORD);
 __int64 ExchangeMenu_Unknown39(__int64 result, __int64 a2);
 __int64 ExchangeMenu_Unknown5(__int64 result);
 __int64 ExchangeMenu_15c7680(__int64 a1);
+bool game_menu_ExchangeMenu_OnPostCreate_lambda0_Invoke(__int64 a1, __int64 a2);
+bool game_menu_ExchangeMenu_OnPostCreate_lambda1_Invoke(__int64 a1, __int64 a2);
+__int64 game_menu_ExchangeMenu_OnPageActive_lambda0_Invoke(__int64 a1,
+                                                           _QWORD* a2);
+__int64 game_menu_ExchangeMenu_OnPageActive_lambda1_Invoke(__int64 a1,
+                                                           _QWORD* a2);
 
 __int64 ExchangeMenu_Unknown39(__int64 result, __int64 a2)
 {
@@ -386,6 +392,32 @@ LABEL_6:
     (*(void (**)(_QWORD*))(*v17 + v20))(v17);
   }
   return v12;
+}
+
+bool game_menu_ExchangeMenu_OnPostCreate_lambda0_Invoke(__int64 a1, __int64 a2)
+{
+  return *(_DWORD*)(*(_QWORD*)a2 + 40LL) ==
+         *(_DWORD*)(*(_QWORD*)(a1 + 8) + 380LL);
+}
+
+bool game_menu_ExchangeMenu_OnPostCreate_lambda1_Invoke(__int64 a1, __int64 a2)
+{
+  return *(_DWORD*)(*(_QWORD*)a2 + 40LL) ==
+         *(_DWORD*)(*(_QWORD*)(a1 + 8) + 384LL);
+}
+
+__int64 game_menu_ExchangeMenu_OnPageActive_lambda0_Invoke(__int64 a1,
+                                                           _QWORD* a2)
+{
+  return (*(__int64 (**)(_QWORD, _QWORD))(**(_QWORD**)(a1 + 8) + 376LL))(
+      *(_QWORD*)(a1 + 8), *a2);
+}
+
+__int64 game_menu_ExchangeMenu_OnPageActive_lambda1_Invoke(__int64 a1,
+                                                           _QWORD* a2)
+{
+  return (*(__int64 (**)(_QWORD, _QWORD))(**(_QWORD**)(a1 + 8) + 376LL))(
+      *(_QWORD*)(a1 + 8), *a2);
 }
 
 #pragma GCC visibility pop

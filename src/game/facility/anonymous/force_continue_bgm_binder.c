@@ -10,6 +10,20 @@ extern int GameData_224ae10;
 __int64 ForceContinueBGMBinder_DeletingDestructor(__int64 a1);
 __int64 ForceContinueBGMBinder_Unknown4(__int64 result);
 __int64 ForceContinueBGMBinder_Unknown5(__int64 result);
+extern __int64 (*GameData_20430e0[])();
+_QWORD* ForceContinueBGMBinder_1488be0(_QWORD* result);
+__int64 ForceContinueBGMBinder_Destructor(__int64 result);
+__int64 ForceContinueBGMBinder_DeletingDestructor_1488ce0(__int64 result);
+
+_QWORD* ForceContinueBGMBinder_1488be0(_QWORD* result)
+{
+  *result = GameData_20430e0;
+  if ((_QWORD*)GameData_224ae18 == result) {
+    GameData_224ae18 = 0;
+    GameData_224ae10 = 0;
+  }
+  return result;
+}
 
 __int64 ForceContinueBGMBinder_DeletingDestructor(__int64 a1)
 {
@@ -39,6 +53,22 @@ __int64 ForceContinueBGMBinder_Unknown5(__int64 result)
 {
   if (game_sound_g_game_sound != 0) {
     *(_BYTE*)(game_sound_g_game_sound + 3128) = *(_BYTE*)(result + 20);
+  }
+  return result;
+}
+
+__int64 ForceContinueBGMBinder_Destructor(__int64 result)
+{
+  if (game_sound_g_game_sound != 0) {
+    *(_BYTE*)(result + 12) = *(_BYTE*)(game_sound_g_game_sound + 3128);
+  }
+  return result;
+}
+
+__int64 ForceContinueBGMBinder_DeletingDestructor_1488ce0(__int64 result)
+{
+  if (game_sound_g_game_sound != 0) {
+    *(_BYTE*)(game_sound_g_game_sound + 3128) = *(_BYTE*)(result + 12);
   }
   return result;
 }

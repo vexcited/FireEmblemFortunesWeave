@@ -40,6 +40,88 @@ extern _UNKNOWN GameData_1ab7f34;
 extern __int64 GameData_21c9ed0;
 bool SpotAttachmentExplore_15199c0(__int64 a1, __int64 a2);
 __int64 SpotAttachmentExplore_151a420();
+__int64 GameRoutine_1328d60(_QWORD);
+__int64 GameRoutine_8ae640(_QWORD, _QWORD, _QWORD);
+__int64 GameRoutine_8af240(_QWORD, _QWORD);
+extern __int64 GameData_21f1618;
+extern __int64 GameData_2241720;
+extern __int64* GameData_212c998[148];
+extern __int64* GameData_212ceb0;
+__int64 SpotAttachmentExplore_15197c0(_QWORD* a1, char a2);
+__int64 SpotAttachmentExplore_15198a0(__int64 a1);
+
+__int64 SpotAttachmentExplore_15197c0(_QWORD* a1, char a2)
+{
+  __int64 result;
+  __int64 v4;
+  _QWORD v5[3];
+
+  if ((a2 & 1) == 0) {
+    return (*(__int64 (**)(_QWORD*, _QWORD))(*a1 + 88LL))(a1, 0);
+  }
+  GameRoutine_8af240(v5, a1 + 6);
+  result = GameRoutine_8ae640(v5, 0, 0);
+  if (v5[0] != 0) {
+    v5[1] = v5[0];
+    v4 = 128;
+    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+      v4 = 56;
+    }
+    result = nn_mem_StandardAllocator_Free(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v4, v5[0]);
+  }
+  if (GameData_2241720 != 0) {
+    *(_BYTE*)(GameData_2241720 + 1688) = 1;
+  }
+  if (GameData_21f1618 != 0) {
+    return GameRoutine_1328d60(a1[4]);
+  }
+  return result;
+}
+
+__int64 SpotAttachmentExplore_15198a0(__int64 a1)
+{
+  __int64 v1;
+  __int64 v2;
+  __int64 v3;
+  __int64* v4;
+  __int64* v5;
+  __int64 v6;
+  unsigned int v7;
+  _QWORD v10[2];
+
+  v1 = *(_QWORD*)(a1 + 32);
+  if (v1 != 0) {
+    v2 = 0;
+    v3 = *(_QWORD*)(*(_QWORD*)GameData_212cf80[0] + 8LL);
+    v4 = GameData_212ceb0;
+    v5 = GameData_212c780;
+    while (1) {
+      v6 = *(_QWORD*)(v3 + 48);
+      if (*(_BYTE*)(v6 + v2) != 0) {
+        v7 = *(_DWORD*)(v6 + v2 + 4);
+        if (v7 != 0 && *v5 != 0) {
+          v10[1] = &GameData_1a9f09e;
+          v10[0] = v7;
+          if (SpotMgr_132ffa0(v10) == v1) {
+            break;
+          }
+        }
+      }
+      v2 += 8;
+      if (v2 == 2400) {
+        return *(_QWORD*)(*(_QWORD*)(*GameData_212c998[0] + 64) +
+                          8LL * *(unsigned __int8*)v4);
+      }
+    }
+    v4 = (__int64*)(*(_QWORD*)(v3 + 48) + v2);
+  }
+  else {
+    v4 = GameData_212ceb0;
+  }
+  return *(_QWORD*)(*(_QWORD*)(*GameData_212c998[0] + 64) +
+                    8LL * *(unsigned __int8*)v4);
+}
 
 bool SpotAttachmentExplore_15199c0(__int64 a1, __int64 a2)
 {

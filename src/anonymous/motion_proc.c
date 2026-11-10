@@ -23,6 +23,19 @@ extern _UNKNOWN GameData_220f858;
 extern __int64 (*eft_ClampCurve_ptr)();
 extern int GameData_220f854;
 bool MotionProc_118a440(_BOOL8 result);
+__int64 anonymous_MotionProc_Create_closure_Invoke(__int64 result, __int64* a2);
+
+__int64 anonymous_MotionProc_Create_closure_Invoke(__int64 result, __int64* a2)
+{
+  __int64 v2;
+
+  v2 = *a2;
+  if (*(_QWORD*)(*a2 + 152) == **(_QWORD**)(result + 8)) {
+    **(_BYTE**)(result + 16) = 1;
+    *(_BYTE*)(v2 + 160) = **(_BYTE**)(result + 24);
+  }
+  return result;
+}
 
 __int64 MotionProc_Destructor(__int64 a1)
 {

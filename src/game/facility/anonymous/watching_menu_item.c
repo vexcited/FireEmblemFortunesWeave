@@ -7,6 +7,8 @@ extern __int64 game_gmap_GmapClock_instance_;
 extern __int64 game_gmap_GmapClock_kDefaultTime_ptr;
 extern __int64* GameData_212cc78[56];
 bool WatchingMenuItem_Unknown58();
+extern __int64 GameData_225c918;
+__int64 game_facility_anonymous_WatchingMenuItem_ACall_closure_Invoke();
 
 bool WatchingMenuItem_Unknown58()
 {
@@ -39,6 +41,14 @@ bool WatchingMenuItem_Unknown58()
     }
   }
   return *(_QWORD*)(*(_QWORD*)(*v0 + 64) + 8 * v5) != 0;
+}
+
+__int64 game_facility_anonymous_WatchingMenuItem_ACall_closure_Invoke()
+{
+  if (GameData_225c918 != 0) {
+    *(_DWORD*)(GameData_225c918 + 152) = 3;
+  }
+  return 4;
 }
 
 #pragma GCC visibility pop

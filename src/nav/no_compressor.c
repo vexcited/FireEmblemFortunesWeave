@@ -4,6 +4,9 @@
 
 __int64 memcpy(_QWORD, _QWORD, _QWORD);
 __int64 std___1___shared_weak_count___release_weak(void);
+__int64 NoCompressor_Unknown2(__int64 a1, unsigned int a2);
+__int64 NoCompressor_Unknown2(__int64 a1, unsigned int a2) { return a2; }
+
 __int64 NoCompressor_Unknown3(__int64 a1, __int64 a2, int a3, __int64 a4,
                               __int64 a5, _DWORD* a6)
 {

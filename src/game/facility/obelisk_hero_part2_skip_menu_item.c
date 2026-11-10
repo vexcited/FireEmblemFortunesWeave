@@ -12,6 +12,11 @@ __int64 ui_LayoutAccessor_FindTextBox(_QWORD, _QWORD);
 extern __int64* GameData_212e348;
 extern __int64* msg_MessageManager_instance__ptr[2];
 __int64 ObeliskHeroPart2SkipMenuItem_Unknown55(__int64 a1);
+__int64 GameRoutine_8799d0(_QWORD, _QWORD, _QWORD, _QWORD);
+extern __int64 GameData_2212268;
+__int64
+game_facility_ObeliskHeroPart2SkipMenuItem_CreateConfirmDialog_lambda0_Invoke(
+    __int64 a1);
 
 __int64 ObeliskHeroPart2SkipMenuItem_Unknown55(__int64 a1)
 {
@@ -85,6 +90,30 @@ __int64 ObeliskHeroPart2SkipMenuItem_Unknown55(__int64 a1)
     }
   }
   return result;
+}
+
+__int64
+
+game_facility_ObeliskHeroPart2SkipMenuItem_CreateConfirmDialog_lambda0_Invoke(
+    __int64 a1)
+{
+  __int64 v1;
+  __int64 v2;
+  __int64 v3;
+
+  if (GameData_2212268 != 0) {
+    v1 = *(_QWORD*)(a1 + 8);
+    v2 = *(_QWORD*)(v1 + 8);
+    if (*(_QWORD*)(v2 + 152) != 0) {
+      v3 = *(_QWORD*)(v2 + 152);
+    }
+    else {
+      v3 = *(_QWORD*)(v1 + 8);
+    }
+    GameRoutine_8799d0(v3, (unsigned int)*(unsigned __int8*)(v1 + 89) + 5,
+                       *(unsigned __int8*)(v1 + 83), 2);
+  }
+  return 4;
 }
 
 #pragma GCC visibility pop

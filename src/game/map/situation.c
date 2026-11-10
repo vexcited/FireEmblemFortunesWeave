@@ -106,6 +106,18 @@ __int64 Situation_7656c0(__int64 a1);
 __int64 Situation_765b20(__int64 a1);
 __int64 Situation_Unknown7(__int64 a1, __int64 a2, int a3);
 __int64 Situation_7671b0(__int64 a1, __int64 a2, __int64 a3, __int64 a4);
+__int64 BonusExpList_7ffec0(_QWORD, _QWORD);
+__int64 GameRoutine_67ed20(_QWORD);
+__int64 GameRoutine_97b2f0(_QWORD);
+extern char** msg_MessageManager_empty_text__ptr;
+__int64 game_map_Situation_GetWinRuleName_lambda0_Invoke(__int64 a1,
+                                                         __int64* a2,
+                                                         unsigned int* a3);
+__int64 game_map_Situation_GetLoseRuleName_lambda0_Invoke(__int64 a1,
+                                                          __int64* a2,
+                                                          unsigned int* a3);
+__int64 game_map_Situation_EachBonusExpUnit_lambda0_Invoke(__int64 result,
+                                                           _QWORD* a2);
 
 __int64 Situation_763930(unsigned int a1, float a2)
 {
@@ -2126,6 +2138,103 @@ __int64 Situation_7671b0(__int64 a1, __int64 a2, __int64 a3, __int64 a4)
     }
   }
   GameRoutine_60a310(v5, a2, a3, a4);
+}
+
+__int64 game_map_Situation_GetWinRuleName_lambda0_Invoke(__int64 a1,
+                                                         __int64* a2,
+                                                         unsigned int* a3)
+{
+  __int64 v3;
+  unsigned int v4;
+  __int64 v5;
+  __int64 v6;
+  unsigned int v7;
+  __int64 v8;
+
+  v3 = *a2;
+  v4 = *a3;
+  v5 = *msg_MessageManager_instance__ptr[0];
+  if (*(_BYTE*)(*a2 + 2136) != 0) {
+    v6 = GameRoutine_97b2f0(v3 + 2104);
+  }
+  else {
+    v6 = GameRoutine_67ed20(*(_QWORD*)(v3 + 392));
+  }
+  if (v4 <= 7) {
+    v7 = v4;
+  }
+  else {
+    v7 = 0;
+  }
+  if (v6 != 0) {
+    v8 = v6;
+  }
+  else {
+    v8 = (__int64)*msg_MessageManager_empty_text__ptr;
+  }
+  return GameRoutine_60a020(v5 + 24LL * v7 + 14704, v8);
+}
+
+__int64 game_map_Situation_GetLoseRuleName_lambda0_Invoke(__int64 a1,
+                                                          __int64* a2,
+                                                          unsigned int* a3)
+{
+  __int64 v3;
+  unsigned int v4;
+  __int64 v5;
+  __int64 v6;
+  unsigned int v7;
+  __int64 v8;
+
+  v3 = *a2;
+  v4 = *a3;
+  v5 = *msg_MessageManager_instance__ptr[0];
+  if (*(_BYTE*)(*a2 + 2136) != 0) {
+    v6 = GameRoutine_97b2f0(v3 + 2104);
+  }
+  else {
+    v6 = GameRoutine_67ed20(*(_QWORD*)(v3 + 392));
+  }
+  if (v4 <= 7) {
+    v7 = v4;
+  }
+  else {
+    v7 = 0;
+  }
+  if (v6 != 0) {
+    v8 = v6;
+  }
+  else {
+    v8 = (__int64)*msg_MessageManager_empty_text__ptr;
+  }
+  return GameRoutine_60a020(v5 + 24LL * v7 + 14704, v8);
+}
+
+__int64 game_map_Situation_EachBonusExpUnit_lambda0_Invoke(__int64 result,
+                                                           _QWORD* a2)
+{
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  int v8;
+  __int64 v9;
+
+  v2 = *(_QWORD*)(result + 16);
+  if (*(_QWORD*)(v2 + 32) != 0) {
+    v3 = *a2;
+    v8 = BonusExpList_7ffec0(*(_QWORD*)(result + 8) + 296LL, *a2);
+    v7 = *(_QWORD*)(v2 + 32);
+    v9 = v3;
+    if (v7 == 0) {
+      GameRoutine_60a310(0, v4, v5, v6);
+    }
+    return (*(__int64 (**)(__int64, __int64*, int*))(*(_QWORD*)v7 + 48LL))(
+        v7, &v9, &v8);
+  }
+  return result;
 }
 
 #pragma GCC visibility pop

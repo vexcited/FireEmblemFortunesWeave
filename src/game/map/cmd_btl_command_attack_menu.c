@@ -18,6 +18,9 @@ extern __int64* GameData_212ea58;
 extern __int64* game_g_empty_item_ptr;
 __int64 CmdBtlCommandAttackMenu_1620370(__int64 a1, __int64 a2, int a3,
                                         char a4);
+__int64 game_map_CmdBtlCommandAttackMenu_CreateBind_lambda0_Invoke(__int64 a1,
+                                                                   _QWORD* a2);
+
 __int64 CmdBtlCommandAttackMenu_Unknown146(__int64 a1, __int64 a2,
                                            unsigned int a3, unsigned int a4)
 {
@@ -134,6 +137,20 @@ __int64 CmdBtlCommandAttackMenu_1620370(__int64 a1, __int64 a2, int a3, char a4)
     }
   }
   return result;
+}
+
+__int64 game_map_CmdBtlCommandAttackMenu_CreateBind_lambda0_Invoke(__int64 a1,
+                                                                   _QWORD* a2)
+{
+  __int64 v2;
+
+  v2 = *a2;
+  if (((*(__int64 (**)(_QWORD))(*(_QWORD*)*a2 + 496LL))(*a2) & 1) != 0) {
+    return (*(__int64 (**)(__int64))(*(_QWORD*)v2 + 464LL))(v2);
+  }
+  else {
+    return 0;
+  }
 }
 
 #pragma GCC visibility pop

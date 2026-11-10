@@ -4,6 +4,8 @@
 
 __int64 VectorGraphicsShapePathStar_Unknown9(int* a1);
 bool VectorGraphicsShapePathStar_Unknown14(__int64 a1);
+__int64 VectorGraphicsShapePathStar_Unknown4(__int64 a1);
+float VectorGraphicsShapePathStar_Unknown6(__int64 a1);
 
 __int64 VectorGraphicsShapePathStar_Unknown9(int* a1)
 {
@@ -27,6 +29,16 @@ __int64 VectorGraphicsShapePathStar_Unknown9(int* a1)
 bool VectorGraphicsShapePathStar_Unknown14(__int64 a1)
 {
   return (*(_BYTE*)(*(_QWORD*)(a1 + 32) + 1LL) & 2) != 0;
+}
+
+__int64 VectorGraphicsShapePathStar_Unknown4(__int64 a1)
+{
+  return **(unsigned __int8**)(a1 + 32);
+}
+
+float VectorGraphicsShapePathStar_Unknown6(__int64 a1)
+{
+  return *(float*)(a1 + 56);
 }
 
 #pragma GCC visibility pop

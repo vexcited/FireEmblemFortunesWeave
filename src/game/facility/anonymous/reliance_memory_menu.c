@@ -14,6 +14,8 @@ extern __int64 GameData_21ca310;
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 RelianceMemoryMenu_Unknown84(__int64 a1);
 __int64 RelianceMemoryMenu_Unknown128(__int64 a1);
+bool game_facility_anonymous_RelianceMemoryMenu_FindMenuItem_closure_Invoke(
+    __int64 a1, __int64* a2);
 
 __int64 RelianceMemoryMenu_Unknown84(__int64 a1)
 {
@@ -171,6 +173,23 @@ __int64 RelianceMemoryMenu_Unknown128(__int64 a1)
     } while (v15 != 0);
   }
   return result;
+}
+
+bool game_facility_anonymous_RelianceMemoryMenu_FindMenuItem_closure_Invoke(
+    __int64 a1, __int64* a2)
+{
+  __int64 v2;
+  __int64 v3;
+
+  v2 = *a2;
+  if (*a2 != 0) {
+    v3 = *(_QWORD*)(*(_QWORD*)(v2 + 88) + 392LL);
+    if (v3 != 0 && *(_QWORD*)(*(_QWORD*)(*(_QWORD*)(a1 + 8) + 24LL) + 1672LL) ==
+                       *(_QWORD*)(*(_QWORD*)(v3 + 24) + 1672LL)) {
+      **(_QWORD**)(a1 + 16) = v2;
+    }
+  }
+  return **(_QWORD**)(a1 + 16) != 0;
 }
 
 #pragma GCC visibility pop

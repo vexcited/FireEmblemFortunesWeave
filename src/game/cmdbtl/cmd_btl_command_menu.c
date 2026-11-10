@@ -25,6 +25,10 @@ __int64 CmdBtlCommandMenu_161ac20(__int64 a1);
 __int64 CmdBtlCommandMenu_Unknown121(__int64 a1);
 __int64 CmdBtlCommandMenu_161ad60(__int64 a1);
 __int64 CmdBtlCommandMenu_Unknown135(__int64 a1);
+bool game_cmdbtl_CmdBtlCommandMenu_CreateBind_lambda0_Invoke(__int64 a1,
+                                                             __int64 a2);
+bool game_cmdbtl_CmdBtlCommandMenu_OpenImpl_lambda0_Invoke(__int64 a1,
+                                                           __int64 a2);
 
 __int64 CmdBtlCommandMenu_Unknown85(__int64 a1)
 {
@@ -383,6 +387,26 @@ __int64 CmdBtlCommandMenu_Unknown135(__int64 a1)
 LABEL_27:
   GameData_225c920 = 0;
   return result;
+}
+
+bool game_cmdbtl_CmdBtlCommandMenu_CreateBind_lambda0_Invoke(__int64 a1,
+                                                             __int64 a2)
+{
+  int v2;
+
+  if (GameData_225c920 != 0) {
+    v2 = 1;
+  }
+  else {
+    v2 = GameData_2174ef4;
+  }
+  return *(_DWORD*)(*(_QWORD*)a2 + 40LL) == v2;
+}
+
+bool game_cmdbtl_CmdBtlCommandMenu_OpenImpl_lambda0_Invoke(__int64 a1,
+                                                           __int64 a2)
+{
+  return *(_DWORD*)(*(_QWORD*)a2 + 40LL) == 1;
 }
 
 #pragma GCC visibility pop

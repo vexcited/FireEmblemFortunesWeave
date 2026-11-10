@@ -12,6 +12,14 @@ extern __int64 GameData_21ed098;
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern int GameData_226b670;
 __int64 MapBattleHUD_Destructor(_QWORD* a1);
+__int64 GameRoutine_18c0480(__int64, int);
+__int64 fw_memory_HeapManager_Allocate(_QWORD, _QWORD, _QWORD, _QWORD);
+__int64 memcpy(_QWORD, _QWORD, _QWORD);
+void __attribute__((noreturn)) GameRoutine_18c70b0(void);
+void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
+__int64* MapBattleHUD_18c47d0(__int64* result);
+__int64 game_map_MapBattleHUD_DamagePopupFactory_lambda9_Invoke(__int64 a1,
+                                                                __int64* a2);
 
 __int64 MapBattleHUD_Destructor(_QWORD* a1)
 {
@@ -209,6 +217,133 @@ __int64 MapBattleHUD_Destructor(_QWORD* a1)
     GameData_226b670 = 0;
   }
   return result;
+}
+
+__int64* MapBattleHUD_18c47d0(__int64* result)
+{
+  _QWORD* v1;
+  __int64 v2;
+  __int64 v3;
+  _QWORD* v4;
+  _QWORD* v5;
+  unsigned __int64 v6;
+  _QWORD* v7;
+  __int64 v8;
+  __int64 v9;
+  __int64 v10;
+  unsigned __int64 v11;
+  __int64 v12;
+  unsigned __int64 v13;
+  __int64 v14;
+  __int64 v15;
+  _QWORD* v16;
+  unsigned __int64 v17;
+  _QWORD* v18;
+  __int64 v19;
+
+  v1 = (_QWORD*)GameData_21ed098;
+  if (GameData_21ed098 != 0) {
+    v3 = *result;
+    v2 = result[1];
+    if (v2 != 0) {
+      v4 = (_QWORD*)(GameData_21ed098 + 360);
+      atomic_fetch_add_explicit((atomic_ullong* volatile)(v2 + 16), 1u,
+                                memory_order_relaxed);
+      v5 = (_QWORD*)v1[45];
+      v6 = v1[46];
+      if ((unsigned __int64)v5 < v6) {
+        *v5 = v3;
+        v5[1] = v2;
+        v7 = v5 + 2;
+        atomic_fetch_add_explicit((atomic_ullong* volatile)(v2 + 16), 1u,
+                                  memory_order_relaxed);
+        goto LABEL_20;
+      }
+    }
+    else {
+      v5 = *(_QWORD**)(GameData_21ed098 + 360);
+      v6 = *(_QWORD*)(GameData_21ed098 + 368);
+      v4 = (_QWORD*)(GameData_21ed098 + 360);
+      if ((unsigned __int64)v5 < v6) {
+        *v5 = v3;
+        v5[1] = 0;
+        v7 = v5 + 2;
+      LABEL_20:
+        *v4 = v7;
+        if (v2 != 0) {
+          return (__int64*)std___1___shared_weak_count___release_weak(v2);
+        }
+        return result;
+      }
+    }
+    v8 = v1[44];
+    v9 = (__int64)v5 - v8;
+    v10 = ((__int64)v5 - v8) >> 4;
+    v11 = v10 + 1;
+    if ((unsigned __int64)(v10 + 1) >> 60 != 0) {
+      GameRoutine_18c70b0();
+    }
+    v12 = v6 - v8;
+    if (v12 >> 3 > v11) {
+      v11 = v12 >> 3;
+    }
+    if ((unsigned __int64)v12 >= 0x7FFFFFFFFFFFFFF0LL) {
+      v13 = 0xFFFFFFFFFFFFFFFLL;
+    }
+    else {
+      v13 = v11;
+    }
+    if (v13 >> 60 != 0) {
+      GameRoutine_60a210(result);
+    }
+    v14 = fw_memory_g_heap_manager_ptr;
+    v15 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
+                                         16 * v13, 16, 0);
+    v16 = (_QWORD*)(v15 + v9);
+    v17 = v15 + 16 * v13;
+    *v16 = v3;
+    v16[1] = v2;
+    if (v2 != 0) {
+      atomic_fetch_add_explicit((atomic_ullong* volatile)(v2 + 16), 1u,
+                                memory_order_relaxed);
+      v8 = v1[44];
+      v9 = v1[45] - v8;
+      v10 = v9 >> 4;
+    }
+    v18 = &v16[-2 * v10];
+    v7 = v16 + 2;
+    result = (__int64*)memcpy(v18, v8, v9);
+    v1[44] = v18;
+    v1[45] = v7;
+    v1[46] = v17;
+    if (v8 != 0) {
+      v19 = 128;
+      if (*(_QWORD*)(*(_QWORD*)v14 + 200LL) == 0) {
+        v19 = 56;
+      }
+      result = (__int64*)nn_mem_StandardAllocator_Free(*(_QWORD*)v14 + v19);
+    }
+    goto LABEL_20;
+  }
+  return result;
+}
+
+__int64 game_map_MapBattleHUD_DamagePopupFactory_lambda9_Invoke(__int64 a1,
+                                                                __int64* a2)
+{
+  _DWORD* v2;
+  __int64 v3;
+  int v4;
+
+  v2 = *(_DWORD**)(a1 + 8);
+  v3 = *a2;
+  if ((*v2 & 0x400) != 0) {
+    v4 = 1;
+  }
+  else {
+    v4 = -1;
+  }
+  return GameRoutine_18c0480(v3, v4);
 }
 
 #pragma GCC visibility pop

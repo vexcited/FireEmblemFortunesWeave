@@ -41,6 +41,22 @@ void BladeResonance_14b7840();
 __int64 BladeResonance_14b7950();
 bool BladeResonance_14b8210();
 __int64 BladeResonance_14b8270(__int64 a1);
+__int64 BladeResonance_14b8500(_QWORD);
+__int64 GameRoutine_133dba0(_QWORD, _QWORD);
+__int64 GameRoutine_1347b30(_QWORD, _QWORD, _QWORD);
+__int64 GameRoutine_1536e70(_QWORD);
+__int64 SpotMgr_1334160(_QWORD, _QWORD);
+__int64 TelopParts_17cc7d0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
+__int64 TroopMgr_13485a0(void);
+__int64 game_VariableManager_SetFlag(_QWORD, _QWORD);
+__int64 game_gmap_SpotMgr_GetCurrentSpot(_QWORD, _QWORD);
+extern _UNKNOWN GameData_1aa2459;
+extern _UNKNOWN GameData_1ac4924;
+extern __int64 GameData_2241720;
+extern __int64* GameData_212c790;
+extern __int64* GameData_212caf0[105];
+__int64 BladeResonance_14b7200(__int64 a1);
+__int64 BladeResonance_14b7d00(__int64 result);
 
 __int64 BladeResonance_Unknown2(__int64 a1)
 {
@@ -532,6 +548,118 @@ LABEL_28:
   return result;
 }
 
+__int64 BladeResonance_14b7200(__int64 a1)
+{
+  __int64 result;
+  __int64 v3;
+  __int64 v4;
+  int v5;
+  __int64** v6;
+  __int64** v7;
+  __int64* v8;
+  __int64* v9;
+  __int64 v10;
+  __int64 v11;
+  int v12;
+  __int64 v13;
+  int v14;
+  int v15;
+  __int64 v16;
+  int v17;
+  __int64 v18;
+  __int64 v19;
+  _UNKNOWN** v20;
+
+  result = GameRoutine_1536e70(5);
+  if ((result & 1) == 0) {
+    return result;
+  }
+  if (*(_QWORD*)(a1 + 16) != 0) {
+    v4 = *(_QWORD*)(GameData_21c96e8 + 8);
+    v5 = *(_DWORD*)(v4 + 56);
+    v6 = *(__int64***)(v4 + 8);
+    v7 = *(__int64***)(v4 + 16);
+    if (v5 < 0) {
+      for (; v6 != v7; ++v6) {
+        v8 = *v6;
+        if ((*v6)[12] == 0 && v8[69] == 0) {
+          goto LABEL_13;
+        }
+      }
+    }
+    else if (v6 != v7) {
+      while (1) {
+        v9 = *v6++;
+        v8 = v9;
+        if (*((_DWORD*)v9 + 21) == v5) {
+          break;
+        }
+        if (v6 == v7) {
+          goto LABEL_9;
+        }
+      }
+    LABEL_13:
+      result = *v8;
+      goto LABEL_14;
+    }
+  LABEL_9:
+    result = game_gmap_SpotMgr_GetCurrentSpot(result, v3);
+  LABEL_14:
+    if (result == *(_QWORD*)a1) {
+      return result;
+    }
+    BladeResonance_14b8500(a1);
+  }
+  v20 = (_UNKNOWN**)&GameData_1ac4924;
+  v19 = game_HashString(&GameData_1ac4924);
+  if (game_GameModeData_instance_ == 0 ||
+      (v10 = game_GameVariableTable_Find(
+           *(_QWORD*)(game_GameModeData_instance_ + 48), &v19)) == 0 ||
+      *(_DWORD*)(v10 + 32) == 0) {
+    v20 = (_UNKNOWN**)&GameData_1aa2459;
+    v11 = game_HashString(&GameData_1aa2459);
+    v12 = game_GameModeData_instance_;
+    v19 = v11;
+    if (game_GameModeData_instance_ != 0) {
+      v13 = game_GameVariableTable_Find(
+          *(_QWORD*)(game_GameModeData_instance_ + 48), &v19);
+      if (v13 != 0) {
+        v12 = *(_DWORD*)(v13 + 32);
+      }
+      else {
+        v12 = 0;
+      }
+    }
+    v14 = *(_DWORD*)(a1 + 36);
+    v20 = &GameData_1afe67f;
+    v15 = v14 + v12;
+    v16 = game_HashString(&GameData_1afe67f);
+    v17 = game_GameModeData_instance_;
+    v19 = v16;
+    if (game_GameModeData_instance_ != 0) {
+      v18 = game_GameVariableTable_Find(
+          *(_QWORD*)(game_GameModeData_instance_ + 48), &v19);
+      if (v18 != 0) {
+        v17 = *(_DWORD*)(v18 + 32);
+      }
+      else {
+        v17 = 0;
+      }
+    }
+    if (v17 >= v15) {
+      v17 = v15;
+    }
+    *(_DWORD*)(a1 + 36) = v17;
+    if (v14 < v17 && GameData_2241720 != 0) {
+      TelopParts_17cc7d0(GameData_2241720, "MID_Sys_InfoTelop_Recover_Blade", 0,
+                         0, 0, 0);
+    }
+  }
+  v20 = (_UNKNOWN**)&GameData_1ac4924;
+  v19 = game_HashString(&GameData_1ac4924);
+  return game_VariableManager_SetFlag(&v19, 1);
+}
+
 __int64 BladeResonance_14b7680()
 {
   __int64 v0;
@@ -742,6 +870,80 @@ __int64 BladeResonance_14b7950()
 LABEL_17:
   *(_BYTE*)(v3 + 105) = 1;
   return 1;
+}
+
+__int64 BladeResonance_14b7d00(__int64 result)
+{
+  __int64 v1;
+  __int64* v2;
+  __int64 v3;
+  __int64 v4;
+  __int64* v5;
+  bool v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  __int64* v13;
+  __int64* v14;
+  __int64 v15;
+  __int64 v16;
+
+  v1 = *(_QWORD*)(*(_QWORD*)(*GameData_212caf0[0] + 64) +
+                  8LL * *(int*)(result + 32));
+  if (v1 != 0) {
+    *(_QWORD*)(result + 16) = v1;
+    v2 = (__int64*)result;
+    v3 = game_gmap_SpotMgr_FindSpot(*(_QWORD*)(v1 + 40));
+    *v2 = v3;
+    v4 = v3;
+    v5 = GameData_212c790;
+    v6 = *(_BYTE*)(v3 + 176) == 3 && *(_BYTE*)(v3 + 112) == 0;
+    if (v6 || (SpotMgr_1334160(*(_QWORD*)(GameData_21c9700 + 8), v3), v4 = *v2,
+               *v2 != 0)) {
+      v7 = *(_QWORD*)(*v5 + 8);
+      v8 = *(_QWORD*)(v7 + 8);
+      v9 = *(_QWORD*)(v7 + 16);
+      while (v8 != v9) {
+        if (**(_QWORD**)v8 == v4) {
+          v10 = *(_QWORD*)(*(_QWORD*)v8 + 96LL);
+          if (v10 != 0 && *(_BYTE*)(v10 + 32) == 1) {
+            TroopMgr_13485a0();
+            break;
+          }
+        }
+        v8 += 8;
+      }
+    }
+    v11 = *(_QWORD*)(v1 + 56);
+    if (*v5 != 0) {
+      GameRoutine_1347b30(*(_QWORD*)(*v5 + 8), *v2, v11);
+      v11 = *(_QWORD*)(v1 + 56);
+    }
+    if (v11 == 0 || (v12 = *(_QWORD*)(*v5 + 8), v13 = *(__int64**)(v12 + 8),
+                     v14 = *(__int64**)(v12 + 16), v13 == v14)) {
+    LABEL_20:
+      v2[1] = 0;
+    }
+    else {
+      while (1) {
+        v16 = *v13++;
+        v15 = v16;
+        if (*(_QWORD*)(v16 + 96) == v11) {
+          break;
+        }
+        if (v13 == v14) {
+          goto LABEL_20;
+        }
+      }
+      v2[1] = v15;
+      GameRoutine_133dba0(v15, 5);
+    }
+    return BladeResonance_14b8500(v2);
+  }
+  return result;
 }
 
 bool BladeResonance_14b8210()

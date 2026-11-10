@@ -19,6 +19,15 @@ extern __int64 game_GameModeData_instance_;
 struct PseudoSret GameRoutine_878ea0(_QWORD);
 bool SystemMenuItem_RetirePart3_Unknown58();
 __int64 SystemMenuItem_RetirePart3_Unknown25(__int64 a1);
+__int64 GameRoutine_879610(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
+__int64 GameRoutine_dbce10(_QWORD, _QWORD);
+__int64 snd_Fade_Destroy_Fade(_QWORD);
+__n128 snd_Fade_Fade_10c830(_QWORD, double);
+extern __int64 GameData_212c6a0[3];
+struct PseudoSret snd_play_ff2d0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
+                                 double, float);
+__int64
+game_map_anonymous_SystemMenuItem_RetirePart3_ACall_closure_Invoke(__int64 a1);
 
 bool SystemMenuItem_RetirePart3_Unknown58()
 {
@@ -174,6 +183,34 @@ LABEL_25:
         v6, "MID_Restart_ReturnObelisk_Part3_Chapter1_Annotation", 1, 0);
   }
   return 12;
+}
+
+__int64
+
+game_map_anonymous_SystemMenuItem_RetirePart3_ACall_closure_Invoke(__int64 a1)
+{
+  __int64 v1;
+  __int64 v2;
+  __int64 v4;
+  _BYTE v5[200];
+
+  v1 = *(_QWORD*)(*(_QWORD*)(a1 + 8) + 8LL);
+  if (*(_QWORD*)(v1 + 152) != 0) {
+    v2 = *(_QWORD*)(v1 + 152);
+  }
+  else {
+    v2 = *(_QWORD*)(*(_QWORD*)(a1 + 8) + 8LL);
+  }
+  if ((GameRoutine_879610(v2, 6, 9, 3, 0) & 1) == 0) {
+    return 1;
+  }
+  GameRoutine_dbce10(*(_QWORD*)GameData_212c6a0[0], 1);
+  snd_Fade_Fade_10c830(v5, 0.0f);
+  *(struct PseudoSret*)(&v4) =
+      snd_play_ff2d0("SE_SYS_Decide_H_Light", "SE_SYS_Decide_H_Light", v5, 0,
+                     65537, 0, 0.0f, 1.0f);
+  snd_Fade_Destroy_Fade(v5);
+  return 4;
 }
 
 #pragma GCC visibility pop

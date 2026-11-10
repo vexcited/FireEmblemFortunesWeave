@@ -11,6 +11,10 @@ void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
 void __attribute__((noreturn)) GameRoutine_874520(_QWORD);
 __int64 TransporterMenu_Unknown51(__int64 a1, __int64* a2);
 __int64 TransporterMenu_Unknown41(__int64 result);
+__int64 game_menu_TransporterMenu_CreateLeftMenu_lambda0_Invoke(__int64 a1,
+                                                                _QWORD* a2);
+__int64 game_menu_TransporterMenu_ChangeUnit_lambda0_Invoke(__int64 a1,
+                                                            _QWORD* a2);
 
 __int64 TransporterMenu_Unknown51(__int64 a1, __int64* a2)
 {
@@ -140,6 +144,20 @@ __int64 TransporterMenu_Unknown41(__int64 result)
     return (*(__int64 (**)(__int64, _BOOL4))(*(_QWORD*)v7 + 248LL))(v7, v8);
   }
   return result;
+}
+
+__int64 game_menu_TransporterMenu_CreateLeftMenu_lambda0_Invoke(__int64 a1,
+                                                                _QWORD* a2)
+{
+  return (*(__int64 (**)(_QWORD, _QWORD))(**(_QWORD**)(a1 + 8) + 376LL))(
+      *(_QWORD*)(a1 + 8), *a2);
+}
+
+__int64 game_menu_TransporterMenu_ChangeUnit_lambda0_Invoke(__int64 a1,
+                                                            _QWORD* a2)
+{
+  return (*(__int64 (**)(_QWORD, _QWORD))(**(_QWORD**)(a1 + 8) + 376LL))(
+      *(_QWORD*)(a1 + 8), *a2);
 }
 
 #pragma GCC visibility pop

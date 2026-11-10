@@ -5,6 +5,11 @@
 extern __int64 (*cphysx_RigidActor_vtable)();
 __int64 RigidActor_Destructor(_QWORD* a1);
 
+void __attribute__((noreturn)) RigidActor_DeletingDestructor()
+{
+  __udf(0x8002u);
+};
+
 __int64 RigidActor_Destructor(_QWORD* a1)
 {
   __int64 result;

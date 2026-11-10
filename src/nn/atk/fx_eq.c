@@ -13,6 +13,9 @@ extern __int64* snd_g_memory_ptr[2];
 __int64 FxEQ_Destructor(_QWORD* a1);
 void FxEQ_Unknown5(__int64 a1, __int64 a2, int* a3);
 __n128 FxEq_16a840(__int64 a1, char a2);
+__int64 snd_coef_BiQuadCoef_BiQuadCoef(void);
+extern __int64 GameData_2134710[25];
+__int64 FxEQ_16a8a0(_QWORD* a1);
 
 __int64 FxEQ_Destructor(_QWORD* a1)
 {
@@ -208,6 +211,139 @@ __n128 FxEq_16a840(__int64 a1, char a2)
   nn_os_LockMutex(a1 + 112);
   *(_BYTE*)(a1 + 144) = a2;
   return nn_os_UnlockMutex(a1 + 112);
+}
+
+__int64 FxEQ_16a8a0(_QWORD* a1)
+{
+  __int64 v2;
+  __int64* v3;
+  __int64* v4;
+  __int64 v5;
+  void (***v6)(_QWORD);
+  __int64 v7;
+  void (***v8)(_QWORD);
+  __int64 v9;
+  void (***v10)(_QWORD);
+  __int64 v11;
+  void (***v12)(_QWORD);
+  __int64 v13;
+  void (***v14)(_QWORD);
+  __int64 v15;
+  void (***v16)(_QWORD);
+  __int64 v17;
+  void (***v18)(_QWORD);
+  __int64 v19;
+  void (***v20)(_QWORD);
+  __int64 i;
+  void (**v22)(_QWORD);
+  __int64 result;
+  void (***v24)(_QWORD);
+
+  v2 = GameData_2134710[0];
+  a1[1] = 0;
+  v3 = a1 + 1;
+  a1[2] = 0;
+  a1[3] = 0;
+  a1[4] = 0;
+  a1[5] = 0;
+  a1[6] = 0;
+  a1[7] = 0;
+  a1[8] = 0;
+  *a1 = v2 + 16;
+  v4 = snd_g_memory_ptr[0];
+  v5 = (*(__int64 (**)(_QWORD, __int64, __int64))(
+      **(_QWORD**)snd_g_memory_ptr[0] + 16LL))(*snd_g_memory_ptr[0], 248, 32);
+  snd_coef_BiQuadCoef_BiQuadCoef();
+  v6 = (void (***)(_QWORD))*v3;
+  *v3 = v5;
+  if (v6 != nullptr) {
+    (**v6)(v6);
+    (*(void (**)(__int64, void (***)(_QWORD)))(*(_QWORD*)*v4 + 24LL))(*v4, v6);
+  }
+  v7 = (*(__int64 (**)(__int64, __int64, __int64))(*(_QWORD*)*v4 + 16LL))(
+      *v4, 248, 32);
+  snd_coef_BiQuadCoef_BiQuadCoef();
+  v8 = (void (***)(_QWORD))a1[2];
+  a1[2] = v7;
+  if (v8 != nullptr) {
+    (**v8)(v8);
+    (*(void (**)(__int64, void (***)(_QWORD)))(*(_QWORD*)*v4 + 24LL))(*v4, v8);
+  }
+  v9 = (*(__int64 (**)(__int64, __int64, __int64))(*(_QWORD*)*v4 + 16LL))(
+      *v4, 248, 32);
+  snd_coef_BiQuadCoef_BiQuadCoef();
+  v10 = (void (***)(_QWORD))a1[3];
+  a1[3] = v9;
+  if (v10 != nullptr) {
+    (**v10)(v10);
+    (*(void (**)(__int64, void (***)(_QWORD)))(*(_QWORD*)*v4 + 24LL))(*v4, v10);
+  }
+  v11 = (*(__int64 (**)(__int64, __int64, __int64))(*(_QWORD*)*v4 + 16LL))(
+      *v4, 248, 32);
+  snd_coef_BiQuadCoef_BiQuadCoef();
+  v12 = (void (***)(_QWORD))a1[4];
+  a1[4] = v11;
+  if (v12 != nullptr) {
+    (**v12)(v12);
+    (*(void (**)(__int64, void (***)(_QWORD)))(*(_QWORD*)*v4 + 24LL))(*v4, v12);
+  }
+  v13 = (*(__int64 (**)(__int64, __int64, __int64))(*(_QWORD*)*v4 + 16LL))(
+      *v4, 248, 32);
+  snd_coef_BiQuadCoef_BiQuadCoef();
+  v14 = (void (***)(_QWORD))a1[5];
+  a1[5] = v13;
+  if (v14 != nullptr) {
+    (**v14)(v14);
+    (*(void (**)(__int64, void (***)(_QWORD)))(*(_QWORD*)*v4 + 24LL))(*v4, v14);
+  }
+  v15 = (*(__int64 (**)(__int64, __int64, __int64))(*(_QWORD*)*v4 + 16LL))(
+      *v4, 248, 32);
+  snd_coef_BiQuadCoef_BiQuadCoef();
+  v16 = (void (***)(_QWORD))a1[6];
+  a1[6] = v15;
+  if (v16 != nullptr) {
+    (**v16)(v16);
+    (*(void (**)(__int64, void (***)(_QWORD)))(*(_QWORD*)*v4 + 24LL))(*v4, v16);
+  }
+  v17 = (*(__int64 (**)(__int64, __int64, __int64))(*(_QWORD*)*v4 + 16LL))(
+      *v4, 248, 32);
+  snd_coef_BiQuadCoef_BiQuadCoef();
+  v18 = (void (***)(_QWORD))a1[7];
+  a1[7] = v17;
+  if (v18 != nullptr) {
+    (**v18)(v18);
+    (*(void (**)(__int64, void (***)(_QWORD)))(*(_QWORD*)*v4 + 24LL))(*v4, v18);
+  }
+  v19 = (*(__int64 (**)(__int64, __int64, __int64))(*(_QWORD*)*v4 + 16LL))(
+      *v4, 248, 32);
+  snd_coef_BiQuadCoef_BiQuadCoef();
+  v20 = (void (***)(_QWORD))a1[8];
+  a1[8] = v19;
+  if (v20 != nullptr) {
+    (**v20)(v20);
+    (*(void (**)(__int64, void (***)(_QWORD)))(*(_QWORD*)*v4 + 24LL))(*v4, v20);
+  }
+  for (i = 0; i != 8; ++i) {
+    *(_WORD*)(*(_QWORD*)(v3[i] + 128) + 8LL) = -17536;
+    *(_WORD*)(*(_QWORD*)(v3[i] + 136) + 8LL) = -17536;
+    *(_WORD*)(*(_QWORD*)(v3[i] + 144) + 8LL) = -17536;
+    *(_WORD*)(*(_QWORD*)(v3[i] + 152) + 8LL) = -17536;
+    *(_WORD*)(*(_QWORD*)(v3[i] + 160) + 8LL) = -17536;
+    *(_WORD*)(*(_QWORD*)(v3[i] + 168) + 8LL) = -17536;
+    *(_WORD*)(*(_QWORD*)(v3[i] + 176) + 8LL) = -17536;
+    *(_WORD*)(*(_QWORD*)(v3[i] + 184) + 8LL) = -17536;
+    *(_WORD*)(*(_QWORD*)(v3[i] + 192) + 8LL) = -17536;
+    v22 = *(void (***)(_QWORD))(v3[i] + 8LL * *(unsigned int*)(v3[i] + 124) +
+                                128);
+    result = (*((__int64 (**)(_QWORD))*v22 + 2))(v22);
+    *(_DWORD*)(v3[i] + 208) = 0;
+    *(_DWORD*)(v3[i] + 212) = 0;
+    *(_DWORD*)(v3[i] + 216) = 0;
+    *(_DWORD*)(v3[i] + 220) = 0;
+    v24 = (void (***)(_QWORD))v3[i];
+    *((_DWORD*)v24 + 51) = 0;
+  }
+  return result;
 }
 
 #pragma GCC visibility pop

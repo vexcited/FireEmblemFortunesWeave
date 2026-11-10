@@ -19,6 +19,11 @@ void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
 __int64 ProcPerchFoodMenu_Unknown103(__int64 a1);
 __int64 ProcPerchFoodMenu_Unknown105(__int64 a1);
 __int64 ProcPerchFoodMenu_Unknown143(__int64 a1, __int64 a2, __int64 a3);
+__int64 BasicMenuCursor_16e0c00(_QWORD, _QWORD);
+extern __int64 (*game_facility_anonymous_PerchFoodMenuItem_vtable[])();
+__int64
+game_facility_anonymous_ProcPerchFoodMenu_AddItemList_closure_Invoke(__int64 a1,
+                                                                     int* a2);
 
 __int64 ProcPerchFoodMenu_Unknown103(__int64 a1)
 {
@@ -245,6 +250,32 @@ LABEL_4:
   v7[2] = 0;
   v8 = 0;
   return GameRoutine_19ef8e0(v9, v7) & 1;
+}
+
+__int64
+
+game_facility_anonymous_ProcPerchFoodMenu_AddItemList_closure_Invoke(__int64 a1,
+                                                                     int* a2)
+{
+  __int64 v2;
+  int v3;
+  __int64 v4;
+
+  v2 = *(_QWORD*)(a1 + 8);
+  v3 = *a2;
+  v4 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
+                                      88, 16, 0);
+  *(_WORD*)(v4 + 16) = 0;
+  *(_QWORD*)(v4 + 48) = 0;
+  *(_QWORD*)(v4 + 56) = 0;
+  *(_QWORD*)(v4 + 64) = 0;
+  *(_QWORD*)(v4 + 72) = 0;
+  *(_DWORD*)(v4 + 40) = v3;
+  *(_WORD*)(v4 + 80) = 257;
+  *(_BYTE*)(v4 + 82) = 1;
+  *(_QWORD*)v4 = game_facility_anonymous_PerchFoodMenuItem_vtable;
+  *(_QWORD*)(v4 + 8) = 0;
+  return BasicMenuCursor_16e0c00(v2, v4);
 }
 
 #pragma GCC visibility pop

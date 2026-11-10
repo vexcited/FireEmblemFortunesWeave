@@ -6,6 +6,17 @@ __int64 GameRoutine_10a04e0(__int64*, float*, float*, __int64);
 extern __int64 (*GameData_200dee8[])();
 extern __int64 (*GameData_200df68[])();
 __int64 DirectOut_Unknown18(__int64* a1);
+__int64 GameRoutine_758bc0(_QWORD, float);
+__int64 GameRoutine_7a96a0(double);
+__int64 GameRoutine_809ba0(float);
+__int64 game_GameView_Update(_QWORD);
+__n128 CombatLegionManager_e2cca0(_QWORD);
+extern __int64 GameData_21c96a8;
+extern __int64 GameData_21cd0d0;
+extern __int64 game_ProcFadeView_instance_;
+extern int GameData_21d92e0;
+float DirectOut_Unknown19() { return 0.2; };
+__int64 game_combat_transition_DirectOut_Schedule_closure_Invoke(__int64 a1);
 
 __int64 DirectOut_Unknown18(__int64* a1)
 {
@@ -75,6 +86,51 @@ LABEL_9:
     v8 = 40;
   }
   return (*(__int64 (**)(_QWORD*))(*v10 + v8))(v10);
+}
+
+__int64 game_combat_transition_DirectOut_Schedule_closure_Invoke(__int64 a1)
+{
+  _DWORD* v1;
+  int v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 result;
+  char v6;
+
+  if (GameData_21d92e0 != 1) {
+    GameData_21d92e0 = 1;
+    game_GameView_Update(a1);
+    if (GameData_21cd0d0 != 0) {
+      v1 = *(_DWORD**)(GameData_21cd0d0 + 8);
+      v2 = v1[2] - 1;
+      v1[2] = v2;
+      if (v2 == 0) {
+        (*(void (**)(_DWORD*))(*(_QWORD*)v1 + 8LL))(v1);
+      }
+    }
+  }
+  v3 = GameRoutine_7a96a0(0.0f);
+  v4 = GameRoutine_758bc0(v3, 0.0f);
+  if (GameData_21c96a8 != 0) {
+    *(_DWORD*)(*(_QWORD*)(GameData_21c96a8 + 8) + 32LL) = 0;
+  }
+  CombatLegionManager_e2cca0(v4);
+  result = game_ProcFadeView_instance_;
+  if (game_ProcFadeView_instance_ != 0) {
+    result = GameRoutine_809ba0(0.2f);
+    if (game_ProcFadeView_instance_ != 0) {
+      v6 = *(_BYTE*)(game_ProcFadeView_instance_ + 480);
+      *(_BYTE*)(game_ProcFadeView_instance_ + 480) = 2;
+      result = game_ProcFadeView_instance_;
+      if (game_ProcFadeView_instance_ != 0) {
+        result = GameRoutine_809ba0(0.2f);
+        if (game_ProcFadeView_instance_ != 0) {
+          *(_BYTE*)(game_ProcFadeView_instance_ + 480) = v6;
+        }
+      }
+    }
+  }
+  return result;
 }
 
 #pragma GCC visibility pop

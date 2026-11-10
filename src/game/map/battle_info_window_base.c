@@ -11,6 +11,11 @@ __int64 std___1___shared_weak_count___release_weak(_QWORD);
 extern __int64 (*game_map_BattleInfoWindowBase_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 BattleInfoWindowBase_DeletingDestructor(_QWORD* a1);
+__int64 GameRoutine_6e3d00(_QWORD, _QWORD);
+__int64 memmove(_QWORD, _QWORD, _QWORD);
+__int64
+game_map_BattleInfoWindowBase_SetSkillIcons_lambda1_Invoke(__int64 result,
+                                                           _DWORD* a2);
 
 __int64 BattleInfoWindowBase_DeletingDestructor(_QWORD* a1)
 {
@@ -87,6 +92,43 @@ __int64 BattleInfoWindowBase_DeletingDestructor(_QWORD* a1)
                                    0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v13 + 16LL))(v13);
     return std___1___shared_weak_count___release_weak(v13);
+  }
+  return result;
+}
+
+__int64
+
+game_map_BattleInfoWindowBase_SetSkillIcons_lambda1_Invoke(__int64 result,
+                                                           _DWORD* a2)
+{
+  __int64 v2;
+  _DWORD* v3;
+  _DWORD* v4;
+  __int64 v5;
+  __int64 v6;
+  char* v7;
+  signed __int64 v8;
+
+  v2 = *(_QWORD*)(result + 8);
+  v4 = *(_DWORD**)v2;
+  v3 = *(_DWORD**)(v2 + 8);
+  if (v4 != v3) {
+    while (((*v4 ^ *a2) & 0xFFF) != 0) {
+      if (++v4 == v3) {
+        return result;
+      }
+    }
+  }
+  if (v4 != v3) {
+    v5 = result;
+    result = GameRoutine_6e3d00(*(_QWORD*)(result + 16), v4);
+    v6 = *(_QWORD*)(v5 + 8);
+    v7 = *(char**)(v6 + 8);
+    v8 = v7 - (char*)(v4 + 1);
+    if (v7 != (char*)(v4 + 1)) {
+      result = memmove(v4, v4 + 1, v7 - (char*)(v4 + 1));
+    }
+    *(_QWORD*)(v6 + 8) = (char*)v4 + v8;
   }
   return result;
 }

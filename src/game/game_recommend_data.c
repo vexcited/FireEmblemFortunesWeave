@@ -23,6 +23,7 @@ __int64 GameRecommendData_130cec0(__int64 result);
 __int64 GameRecommendData_Unknown8(__int64 result, __int64 a2);
 __int64 GameRecommendData_130d040(__int64 result, __int64 a2);
 _QWORD* GameRecommendData_Unknown9(_QWORD* result, __int64 a2);
+__int64 GameRecommendData_Unknown6(__int64 result);
 
 __int64 GameRecommendData_Destructor(_QWORD* a1)
 {
@@ -150,6 +151,12 @@ __int64 GameRecommendData_130cd90(_QWORD* a1)
     v7 = 56;
   }
   return nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v7);
+}
+
+__int64 GameRecommendData_Unknown6(__int64 result)
+{
+  *(_QWORD*)(result + 24) = *(_QWORD*)(result + 16);
+  return result;
 }
 
 __int64 GameRecommendData_130cec0(__int64 result)

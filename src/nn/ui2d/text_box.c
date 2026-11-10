@@ -75,6 +75,14 @@ __int64 TextBox_Unknown44(__int64 a1, __int64 a2, unsigned __int16 a3,
 __int64 TextBox_59d3c0(__int64 result, __int64 a2);
 __int64 TextBox_59d8e0(__int64 result, int a2, float a3);
 float TextBox_59d920(__int64 a1, int a2);
+__int64 LayoutEx_579180(__int64);
+__int64 LayoutEx_5791a0(__int64);
+__int64 TextBox_55c600(_QWORD);
+__int64 TextBox_55c650(_QWORD, _QWORD, _QWORD);
+__int64 TextBox_55c6e0(_QWORD);
+__int64 TextBox_Unknown39(__int64 result, __int64 a2, unsigned __int16 a3,
+                          unsigned __int16 a4);
+
 __int64 TextBox_Unknown37(_QWORD* a1, __int64 a2, __int64 a3, __int64 a4,
                           __int64 a5)
 {
@@ -1249,6 +1257,183 @@ __int64 TextBox_Unknown38(__int64 a1, __int64 a2, __int64 a3)
 {
   return (*(__int64 (**)(__int64, __int64, __int64, _QWORD))(
       *(_QWORD*)a1 + 312LL))(a1, a2, a3, (unsigned int)a3);
+}
+
+__int64 TextBox_Unknown39(__int64 result, __int64 a2, unsigned __int16 a3,
+                          unsigned __int16 a4)
+{
+  __int64 v4;
+  __int64 v5;
+  unsigned int v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v10;
+  __int64 v11;
+  char v12;
+  __int64 v13;
+  __int64 v14;
+  __int64 v15;
+  __int64 v16;
+  __int64 v17;
+  __int64 v18;
+  __int64 v19;
+  __int64 v21;
+  __int64 v22;
+  __int16 v23;
+  _QWORD v24[2];
+  unsigned int v25;
+  bool v26;
+  bool v27;
+  bool v28;
+  bool v29;
+  _QWORD v30[2];
+  unsigned int v31;
+  int v32;
+  __int64 v33;
+  __int64 v34;
+
+  if (a3 == 0) {
+    return result;
+  }
+  v33 = v4;
+  v34 = v5;
+  v6 = a4;
+  if (a4 == 0) {
+    return result;
+  }
+  v7 = result;
+  if (a3 < (unsigned int)*(unsigned __int16*)(result + 272)) {
+    v8 = *(_QWORD*)(result + 328);
+    if (v8 != 0 && *(_DWORD*)(v8 + 152) >= (int)a4) {
+      return result;
+    }
+  }
+  v10 = (unsigned int)a3 + 1;
+  (*(void (**)(__int64))(*(_QWORD*)result + 320LL))(result);
+  v30[1] = 0;
+  v32 = 0;
+  v30[0] = 0;
+  v31 = v6;
+  v11 = TextBox_55c6e0(v30);
+  v12 = 1;
+  if (*(_BYTE*)(v7 + 279) != 0) {
+    v12 = 2;
+  }
+  v13 = LayoutEx_579180(v10 << v12);
+  result = LayoutEx_579180(v11 + 192);
+  v14 = result;
+  if (*(_QWORD*)(v7 + 336) != 0) {
+    result = LayoutEx_579180(52LL * v6);
+    if (result != 0) {
+      v15 = v6 & 3;
+      if (v6 - 1 >= 3) {
+        v17 = result + 104;
+        v18 = 0;
+        do {
+          *(_QWORD*)(v17 - 104) = 0x3F8000003F800000LL;
+          *(_DWORD*)(v17 - 96) = 1065353216;
+          v18 -= 4;
+          *(_DWORD*)(v17 - 84) = 0;
+          *(_QWORD*)(v17 - 92) = 0x3F8000003F800000LL;
+          *(_QWORD*)(v17 - 80) = 0;
+          *(_QWORD*)(v17 - 72) = 0;
+          *(_QWORD*)(v17 - 64) = 0xFFFFFFFF00000000LL;
+          *(_DWORD*)(v17 - 56) = -1;
+          *(_QWORD*)(v17 - 52) = 0x3F8000003F800000LL;
+          *(_QWORD*)(v17 - 44) = 0x3F8000003F800000LL;
+          *(_QWORD*)(v17 - 32) = 0;
+          *(_QWORD*)(v17 - 20) = 0;
+          *(_DWORD*)(v17 - 36) = 1065353216;
+          *(_DWORD*)(v17 - 24) = 0;
+          *(_QWORD*)(v17 - 12) = 0xFFFFFFFF00000000LL;
+          *(_DWORD*)(v17 - 4) = -1;
+          *(_QWORD*)v17 = 0x3F8000003F800000LL;
+          *(_DWORD*)(v17 + 8) = 1065353216;
+          *(_DWORD*)(v17 + 20) = 0;
+          *(_QWORD*)(v17 + 12) = 0x3F8000003F800000LL;
+          *(_QWORD*)(v17 + 24) = 0;
+          *(_QWORD*)(v17 + 32) = 0;
+          *(_QWORD*)(v17 + 40) = 0xFFFFFFFF00000000LL;
+          *(_DWORD*)(v17 + 48) = -1;
+          *(_QWORD*)(v17 + 52) = 0x3F8000003F800000LL;
+          *(_DWORD*)(v17 + 60) = 1065353216;
+          *(_DWORD*)(v17 + 72) = 0;
+          *(_QWORD*)(v17 + 84) = 0;
+          *(_QWORD*)(v17 + 64) = 0x3F8000003F800000LL;
+          *(_QWORD*)(v17 + 76) = 0;
+          *(_QWORD*)(v17 + 92) = 0xFFFFFFFF00000000LL;
+          *(_DWORD*)(v17 + 100) = -1;
+          v17 += 208;
+        } while (-(__int64)((unsigned __int16)v6 & 0xFFFC) != v18);
+        v16 = -v18;
+        if ((v6 & 3) == 0) {
+          goto LABEL_18;
+        }
+      }
+      else {
+        v16 = 0;
+        if ((v6 & 3) == 0) {
+          goto LABEL_18;
+        }
+      }
+      v19 = result + 52 * v16 + 24;
+      do {
+        *(_QWORD*)(v19 - 24) = 0x3F8000003F800000LL;
+        *(_DWORD*)(v19 - 16) = 1065353216;
+        --v15;
+        *(_DWORD*)(v19 - 4) = 0;
+        *(_QWORD*)(v19 - 12) = 0x3F8000003F800000LL;
+        *(_QWORD*)v19 = 0;
+        *(_QWORD*)(v19 + 8) = 0;
+        *(_QWORD*)(v19 + 16) = 0xFFFFFFFF00000000LL;
+        *(_DWORD*)(v19 + 24) = -1;
+        v19 += 52;
+      } while (v15 != 0);
+    }
+  LABEL_18:
+    *(_QWORD*)(*(_QWORD*)(v7 + 336) + 8LL) = result;
+  }
+  if (v13 == 0 || v14 == 0) {
+    if (v13 == 0) {
+      if (v14 == 0) {
+        goto LABEL_27;
+      }
+      goto LABEL_26;
+    }
+  }
+  else {
+    v22 = *(_QWORD*)(v7 + 336);
+    if (v22 == 0 || *(_QWORD*)(v22 + 8) != 0) {
+      *(_QWORD*)(v7 + 216) = v13;
+      *(_WORD*)(v7 + 272) = v10;
+      TextBox_55c600(v14);
+      *(_QWORD*)(v7 + 328) = v14;
+      v25 = v6;
+      v24[0] = v14 + 192;
+      v24[1] = 0;
+      v23 = *(_WORD*)(v7 + 276);
+      v26 = (v23 & 8) != 0;
+      v27 = (v23 & 0x20) != 0;
+      v28 = (v23 & 0x80) != 0;
+      v29 = (v23 & 0x400) != 0;
+      return TextBox_55c650(v14, a2, v24);
+    }
+  }
+  result = LayoutEx_5791a0(v13);
+  if (v14 != 0) {
+  LABEL_26:
+    result = LayoutEx_5791a0(v14);
+  }
+LABEL_27:
+  v21 = *(_QWORD*)(v7 + 336);
+  if (v21 != 0) {
+    result = *(_QWORD*)(v21 + 8);
+    if (result != 0) {
+      result = LayoutEx_5791a0(result);
+      *(_QWORD*)(*(_QWORD*)(v7 + 336) + 8LL) = 0;
+    }
+  }
+  return result;
 }
 
 __int64 TextBox_Unknown40(__int64 a1)

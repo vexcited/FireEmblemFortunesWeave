@@ -7,6 +7,14 @@ extern __int64 (*game_gmap_TroopUnitList_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 _QWORD* TroopUnitList_Destructor(_QWORD* result);
 __int64 TroopUnitList_DeletingDestructor(_QWORD* a1);
+__int64 GameRoutine_6c2b50(_QWORD);
+__int64 GameRoutine_6c3470(_QWORD, _QWORD);
+__int64 GameRoutine_6d7010(_QWORD, _QWORD, _QWORD);
+__int64 game_Unit_Destroy_Unit(_QWORD);
+char* GameRoutine_9964e0(char**, __int64);
+extern __int64 (*game_gmap_TroopUnit_vtable[])();
+__int64 game_gmap_TroopUnitList_CreateReinforce_lambda0_Invoke(__int64 a1,
+                                                               __int64* a2);
 
 _QWORD* TroopUnitList_Destructor(_QWORD* result)
 {
@@ -88,6 +96,35 @@ __int64 TroopUnitList_DeletingDestructor(_QWORD* a1)
     v9 = 56;
   }
   return nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v9);
+}
+
+__int64 game_gmap_TroopUnitList_CreateReinforce_lambda0_Invoke(__int64 a1,
+                                                               __int64* a2)
+{
+  __int64 v2;
+  __int64 v3;
+  __int64 v5;
+  _QWORD* v6;
+  char* v7;
+  _QWORD v9[278];
+
+  v2 = *a2;
+  v3 = *(_QWORD*)(a1 + 8);
+  GameRoutine_6c2b50(v9);
+  v5 = *(unsigned int*)(a1 + 16);
+  v9[0] = game_gmap_TroopUnit_vtable;
+  GameRoutine_6d7010(v9, v2, v5);
+  v6 = *(_QWORD**)(v3 + 16);
+  if ((unsigned __int64)v6 >= *(_QWORD*)(v3 + 24)) {
+    v7 = GameRoutine_9964e0((char**)(v3 + 8), (__int64)v9);
+  }
+  else {
+    GameRoutine_6c3470(*(_QWORD*)(v3 + 16), v9);
+    *v6 = game_gmap_TroopUnit_vtable;
+    v7 = (char*)(v6 + 278);
+  }
+  *(_QWORD*)(v3 + 16) = v7;
+  return game_Unit_Destroy_Unit(v9);
 }
 
 #pragma GCC visibility pop

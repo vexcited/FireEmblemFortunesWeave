@@ -22,6 +22,12 @@ extern __int64* GameData_212c878[6];
 extern __int64* GameData_212e008[9];
 extern __int64* GameData_212fbc0[2];
 __int64 GiftTransportMenu_ff0050(__int64 a1);
+__int64 BasicMenuCursor_16e0c00(_QWORD, _QWORD);
+extern __int64 (*game_menu_TransportMenuItem_vtable[])();
+extern __int64 GameData_2232000;
+__int64 game_menu_anonymous_GiftTransportMenu_ACall_closure_Invoke(__int64 a1);
+__int64 game_menu_anonymous_GiftTransportMenu_AddItemList_closure_Invoke(
+    __int64 result, unsigned __int16* a2);
 
 __int64 GiftTransportMenu_Unknown85(__int64 a1)
 {
@@ -178,6 +184,57 @@ _QWORD* GiftTransportMenu_Unknown128(__int64 a1)
   }
   return (_QWORD*)(*(__int64 (**)(_QWORD*, __int64))(*result + v11))(result,
                                                                      v3);
+}
+
+__int64 game_menu_anonymous_GiftTransportMenu_ACall_closure_Invoke(__int64 a1)
+{
+  __int64 v1;
+  __int64 v2;
+
+  v1 = __dynamic_cast(*(_QWORD*)(*(_QWORD*)(a1 + 8) + 336LL),
+                      GameData_212e008[0], GameData_212fbc0[0], 0);
+  v2 = *(unsigned __int16*)(*(__int64 (**)(__int64))(*(_QWORD*)v1 + 560LL))(v1);
+  GameData_2232000 = *(_QWORD*)(*(_QWORD*)(*GameData_212c878[0] + 64) + 8 * v2);
+  return 4;
+}
+
+__int64 game_menu_anonymous_GiftTransportMenu_AddItemList_closure_Invoke(
+    __int64 result, unsigned __int16* a2)
+{
+  __int64 v2;
+  int v3;
+  int v4;
+  __int64 v6;
+  __int64 v8;
+  int v9;
+
+  if (a2[2] != 0) {
+    v2 = *(_QWORD*)(*(_QWORD*)(*GameData_212c878[0] + 64) + 8LL * a2[2]);
+    v3 = *(unsigned __int8*)(v2 + 72);
+    if ((((0x10000000000LL << v3) | (1LL << *(_BYTE*)(v2 + 73))) &
+         0xFFBFFFFFFFA39FFFLL) != 0) {
+      v4 = *(_DWORD*)(v2 + 336) & 3;
+      if (v3 != 15 && v4 == 0) {
+        v6 = *(_QWORD*)(result + 8);
+        v8 = fw_memory_HeapManager_Allocate(
+            *(_QWORD*)fw_memory_g_heap_manager_ptr, 96, 16, 0);
+        *(_WORD*)(v8 + 16) = 0;
+        *(_QWORD*)(v8 + 48) = 0;
+        *(_QWORD*)(v8 + 56) = 0;
+        v9 = *a2;
+        *(_QWORD*)(v8 + 64) = 0;
+        *(_QWORD*)(v8 + 72) = 0;
+        *(_WORD*)(v8 + 80) = 257;
+        *(_BYTE*)(v8 + 82) = 1;
+        *(_QWORD*)(v8 + 88) = 0;
+        *(_DWORD*)(v8 + 40) = v9;
+        *(_QWORD*)v8 = game_menu_TransportMenuItem_vtable;
+        *(_QWORD*)(v8 + 8) = 0;
+        return BasicMenuCursor_16e0c00(v6, v8);
+      }
+    }
+  }
+  return result;
 }
 
 #pragma GCC visibility pop

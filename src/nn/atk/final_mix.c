@@ -48,6 +48,9 @@ __int64 FinalMix_Unknown13(_QWORD* a1, _QWORD* a2, unsigned int a3, __int64 a4,
                            __int64 a5);
 __int64 FinalMix_Unknown14(__int64 a1, _QWORD* a2, unsigned int a3, __int64 a4,
                            __int64 a5);
+__int64 FinalMix_2b4fd0_alt1(_QWORD, _QWORD, _QWORD) __asm__("FinalMix_2b4fd0");
+__int64 FinalMix_2b5220(__int64 result, unsigned int a2, char a3, __int64 a4,
+                        __int64 a5);
 
 __int64 FinalMix_DeletingDestructor(__int64 a1)
 {
@@ -275,6 +278,211 @@ __int64 FinalMix_2b51f0(int a1, char a2)
   else {
     return 0;
   }
+}
+
+__int64 FinalMix_2b5220(__int64 result, unsigned int a2, char a3, __int64 a4,
+                        __int64 a5)
+{
+  __int64 v6;
+  __int64 v8;
+  __int64 v9;
+  __int64 v10;
+  _QWORD* v11;
+  __int64 v12;
+  __int64 v13;
+  __int64 v14;
+  __int64 v15;
+  __int64 v16;
+  __int64 v17;
+  __int64 v18;
+  __int64 v19;
+  _QWORD* v20;
+  __int64 v21;
+  __int64 v22;
+  __int64 v23;
+  __int64 v24;
+  __int64 v25;
+  __int64 v26;
+  __int64 v27;
+  __int64 v28;
+  __int64 v29;
+  __int64 v30;
+  __int64 v31;
+  _QWORD* v32;
+  __int64 v33;
+  _QWORD* v34;
+  __int64 v35;
+  __int64 v36;
+  __int64 v37;
+  __int64 v38;
+  __int64 v39;
+  __int64 v40;
+  __int64 v41;
+  __int64 v42;
+  __int64 v43;
+  __int64 v44;
+  _QWORD* v45;
+  __int64 v46;
+  _QWORD* v47;
+  __int64 v48[3];
+
+  v6 = result;
+  if ((a3 & 1) != 0) {
+    memset(v48, 0, sizeof(v48));
+    FinalMix_2b4fd0_alt1(v48, a4, a5);
+    *(_QWORD*)(v6 + 40) = FinalMix_2b5040(v48, 16, 8, a2);
+    if ((int)a2 < 1) {
+      *(_QWORD*)(v6 + 48) = FinalMix_2b5040(v48, 16, 8, a2);
+      result = FinalMix_2b5040(v48, 16, 8, a2);
+      *(_QWORD*)(v6 + 56) = result;
+    }
+    else {
+      v8 = a2 & 7;
+      if (a2 >= 8) {
+        v10 = 0;
+        v9 = 0;
+        do {
+          v9 += 8;
+          v11 = (_QWORD*)(*(_QWORD*)(v6 + 40) + v10);
+          *v11 = v11;
+          v11[1] = v11;
+          v12 = *(_QWORD*)(v6 + 40) + v10;
+          *(_QWORD*)(v12 + 16) = v12 + 16;
+          *(_QWORD*)(v12 + 24) = v12 + 16;
+          v13 = *(_QWORD*)(v6 + 40) + v10;
+          *(_QWORD*)(v13 + 32) = v13 + 32;
+          *(_QWORD*)(v13 + 40) = v13 + 32;
+          v14 = *(_QWORD*)(v6 + 40) + v10;
+          *(_QWORD*)(v14 + 48) = v14 + 48;
+          *(_QWORD*)(v14 + 56) = v14 + 48;
+          v15 = *(_QWORD*)(v6 + 40) + v10;
+          *(_QWORD*)(v15 + 64) = v15 + 64;
+          *(_QWORD*)(v15 + 72) = v15 + 64;
+          v16 = *(_QWORD*)(v6 + 40) + v10;
+          *(_QWORD*)(v16 + 80) = v16 + 80;
+          *(_QWORD*)(v16 + 88) = v16 + 80;
+          v17 = *(_QWORD*)(v6 + 40) + v10;
+          *(_QWORD*)(v17 + 96) = v17 + 96;
+          *(_QWORD*)(v17 + 104) = v17 + 96;
+          v18 = *(_QWORD*)(v6 + 40) + v10;
+          v10 += 128;
+          *(_QWORD*)(v18 + 112) = v18 + 112;
+          *(_QWORD*)(v18 + 120) = v18 + 112;
+        } while (((16LL * a2) & 0x7FFFFFF80LL) != v10);
+      }
+      else {
+        v9 = 0;
+      }
+      if ((a2 & 7) != 0) {
+        v19 = 16 * v9;
+        do {
+          --v8;
+          v20 = (_QWORD*)(*(_QWORD*)(v6 + 40) + v19);
+          v19 += 16;
+          *v20 = v20;
+          v20[1] = v20;
+        } while (v8 != 0);
+      }
+      v21 = FinalMix_2b5040(v48, 16, 8, a2);
+      v22 = a2 & 7;
+      *(_QWORD*)(v6 + 48) = v21;
+      if (a2 >= 8) {
+        v24 = 120;
+        v23 = 0;
+        do {
+          v23 += 8;
+          v25 = *(_QWORD*)(v6 + 48) + v24;
+          *(_QWORD*)(v25 - 120) = v25 - 120;
+          *(_QWORD*)(v25 - 112) = v25 - 120;
+          v26 = *(_QWORD*)(v6 + 48) + v24;
+          *(_QWORD*)(v26 - 104) = v26 - 104;
+          *(_QWORD*)(v26 - 96) = v26 - 104;
+          v27 = *(_QWORD*)(v6 + 48) + v24;
+          *(_QWORD*)(v27 - 88) = v27 - 88;
+          *(_QWORD*)(v27 - 80) = v27 - 88;
+          v28 = *(_QWORD*)(v6 + 48) + v24;
+          *(_QWORD*)(v28 - 72) = v28 - 72;
+          *(_QWORD*)(v28 - 64) = v28 - 72;
+          v29 = *(_QWORD*)(v6 + 48) + v24;
+          *(_QWORD*)(v29 - 56) = v29 - 56;
+          *(_QWORD*)(v29 - 48) = v29 - 56;
+          v30 = *(_QWORD*)(v6 + 48) + v24;
+          *(_QWORD*)(v30 - 40) = v30 - 40;
+          *(_QWORD*)(v30 - 32) = v30 - 40;
+          v31 = *(_QWORD*)(v6 + 48) + v24;
+          *(_QWORD*)(v31 - 24) = v31 - 24;
+          *(_QWORD*)(v31 - 16) = v31 - 24;
+          v32 = (_QWORD*)(*(_QWORD*)(v6 + 48) + v24);
+          v24 += 128;
+          *(v32 - 1) = v32 - 1;
+          *v32 = v32 - 1;
+        } while ((a2 & 0x7FFFFFF8) != v23);
+      }
+      else {
+        v23 = 0;
+      }
+      if ((a2 & 7) != 0) {
+        v33 = 16 * v23;
+        do {
+          --v22;
+          v34 = (_QWORD*)(*(_QWORD*)(v6 + 48) + v33);
+          v33 += 16;
+          *v34 = v34;
+          v34[1] = v34;
+        } while (v22 != 0);
+      }
+      result = FinalMix_2b5040(v48, 16, 8, a2);
+      v35 = a2 & 7;
+      *(_QWORD*)(v6 + 56) = result;
+      if (a2 >= 8) {
+        v37 = 120;
+        v36 = 0;
+        do {
+          v36 += 8;
+          v38 = *(_QWORD*)(v6 + 56) + v37;
+          *(_QWORD*)(v38 - 120) = v38 - 120;
+          *(_QWORD*)(v38 - 112) = v38 - 120;
+          v39 = *(_QWORD*)(v6 + 56) + v37;
+          *(_QWORD*)(v39 - 104) = v39 - 104;
+          *(_QWORD*)(v39 - 96) = v39 - 104;
+          v40 = *(_QWORD*)(v6 + 56) + v37;
+          *(_QWORD*)(v40 - 88) = v40 - 88;
+          *(_QWORD*)(v40 - 80) = v40 - 88;
+          v41 = *(_QWORD*)(v6 + 56) + v37;
+          *(_QWORD*)(v41 - 72) = v41 - 72;
+          *(_QWORD*)(v41 - 64) = v41 - 72;
+          v42 = *(_QWORD*)(v6 + 56) + v37;
+          *(_QWORD*)(v42 - 56) = v42 - 56;
+          *(_QWORD*)(v42 - 48) = v42 - 56;
+          v43 = *(_QWORD*)(v6 + 56) + v37;
+          *(_QWORD*)(v43 - 40) = v43 - 40;
+          *(_QWORD*)(v43 - 32) = v43 - 40;
+          v44 = *(_QWORD*)(v6 + 56) + v37;
+          *(_QWORD*)(v44 - 24) = v44 - 24;
+          *(_QWORD*)(v44 - 16) = v44 - 24;
+          v45 = (_QWORD*)(*(_QWORD*)(v6 + 56) + v37);
+          v37 += 128;
+          *(v45 - 1) = v45 - 1;
+          *v45 = v45 - 1;
+        } while ((a2 & 0x7FFFFFF8) != v36);
+      }
+      else {
+        v36 = 0;
+      }
+      if ((a2 & 7) != 0) {
+        v46 = 16 * v36;
+        do {
+          --v35;
+          v47 = (_QWORD*)(*(_QWORD*)(v6 + 56) + v46);
+          v46 += 16;
+          *v47 = v47;
+          v47[1] = v47;
+        } while (v35 != 0);
+      }
+    }
+  }
+  *(_BYTE*)(v6 + 64) = a3 & 1;
+  return result;
 }
 
 bool FinalMix_2b55d0(__int64 a1, int a2)

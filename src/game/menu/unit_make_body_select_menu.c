@@ -29,6 +29,8 @@ __int64 UnitMakeBodySelectMenu_Unknown57(__int64 result, __int64 a2);
 __int64 UnitMakeBodySelectMenu_Unknown85(__int64 a1, long double a2);
 __int64 UnitMakeBodySelectMenu_Unknown93();
 __int64 UnitMakeBodySelectMenu_Unknown144(__int64 a1, int a2, char a3);
+__int64 game_menu_UnitMakeBodySelectMenu_MoveToLR_lambda0_Invoke(__int64 a1,
+                                                                 _QWORD* a2);
 
 __int64 UnitMakeBodySelectMenu_Unknown57(__int64 result, __int64 a2)
 {
@@ -304,6 +306,13 @@ LABEL_22:
   result = 13;
   *(_BYTE*)(v24 + 168) = 1;
   return result;
+}
+
+__int64 game_menu_UnitMakeBodySelectMenu_MoveToLR_lambda0_Invoke(__int64 a1,
+                                                                 _QWORD* a2)
+{
+  (*(void (**)(_QWORD))(*(_QWORD*)*a2 + 504LL))(*a2);
+  return 0;
 }
 
 #pragma GCC visibility pop

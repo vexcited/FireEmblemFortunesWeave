@@ -7,6 +7,7 @@ extern __int64 GameData_1fbb878;
 extern __int64* GameData_212e008[9];
 __int64 DiffMenu_a09f90(__int64 a1);
 __int64 DiffMenu_a0a000(__int64 a1);
+bool game_anonymous_DiffMenu_CreateBind_closure_Invoke(__int64 a1, __int64 a2);
 
 __int64 DiffMenu_a09f90(__int64 a1)
 {
@@ -40,6 +41,12 @@ __int64 DiffMenu_a0a000(__int64 a1)
     return 3;
   }
   return result;
+}
+
+bool game_anonymous_DiffMenu_CreateBind_closure_Invoke(__int64 a1, __int64 a2)
+{
+  return *(unsigned __int8*)(*(_QWORD*)a2 + 83LL) ==
+         *(unsigned __int8*)(a1 + 8);
 }
 
 #pragma GCC visibility pop

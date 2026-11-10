@@ -8,6 +8,17 @@ __int64 Primitive_Unknown10(__int64 a1, unsigned int a2);
 __int64 Primitive_Unknown11(__int64 a1, __int64 a2, unsigned int a3);
 __int64 Primitive_Unknown12(__int64 a1, __int64 a2, unsigned int a3,
                             unsigned int a4);
+__int64 Primitive_Unknown4(__int64 result, _QWORD* a2);
+
+__int64 Primitive_Unknown4(__int64 result, _QWORD* a2)
+{
+  __int64 v2;
+
+  v2 = *(_QWORD*)(result + 64);
+  *a2 = *(_QWORD*)(result + 56);
+  a2[1] = v2;
+  return result;
+}
 
 __int64 Primitive_Unknown10(__int64 a1, unsigned int a2)
 {

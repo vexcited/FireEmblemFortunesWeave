@@ -15,6 +15,28 @@ extern __int64 game_g_game_setting;
 __int64 ProcLoadingSeq_Destructor(__int64 a1);
 __int64 ProcLoadingSeq_DeletingDestructor(__int64 a1);
 _QWORD* ProcLoadingSeq_Unknown2(_QWORD* a1);
+__int64 GameRoutine_136a920(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
+extern __int64 ui_Manager_instance_;
+__int64
+game_anonymous_ProcLoadingSeq_UpdateByCurrentTips_closure_Invoke(__int64 a1,
+                                                                 __int64* a2);
+__int64
+
+game_anonymous_ProcLoadingSeq_UpdateByCurrentTips_closure_Invoke(__int64 a1,
+                                                                 __int64* a2)
+{
+  __int64 v2;
+  __int64 v3;
+
+  v2 = *a2;
+  if ((*(_BYTE*)(a1 + 8) & 1) != 0) {
+    v3 = *(_QWORD*)(a1 + 24);
+  }
+  else {
+    v3 = a1 + 9;
+  }
+  return GameRoutine_136a920(ui_Manager_instance_ + 1264, v2, 0, 7, v3);
+}
 
 __int64 ProcLoadingSeq_Destructor(__int64 a1)
 {

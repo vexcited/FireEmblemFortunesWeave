@@ -19,6 +19,8 @@ void __attribute__((noreturn)) GameRoutine_874520(_QWORD);
 __int64 SortieUnitSelectMenu_Unknown112(__int64 a1);
 __int64 SortieUnitSelectMenu_Unknown128(__int64 a1);
 __int64 SortieUnitSelectMenu_Unknown139(__int64 a1, __int64* a2);
+bool game_map_anonymous_SortieUnitSelectMenu_CreateBind_closure_Invoke(
+    __int64 a1, __int64 a2);
 
 __int64 SortieUnitSelectMenu_Unknown112(__int64 a1)
 {
@@ -316,6 +318,12 @@ LABEL_29:
 LABEL_33:
   a2[1] = v21;
   return result;
+}
+
+bool game_map_anonymous_SortieUnitSelectMenu_CreateBind_closure_Invoke(
+    __int64 a1, __int64 a2)
+{
+  return *(_QWORD*)(*(_QWORD*)a2 + 88LL) == *(_QWORD*)(a1 + 8);
 }
 
 #pragma GCC visibility pop

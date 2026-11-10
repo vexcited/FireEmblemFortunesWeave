@@ -29,6 +29,8 @@ __int64 ProcBanquetScene_DeletingDestructor(__int64 a1);
 __int64 ProcBanquetScene_194ebe0();
 void ProcBanquetScene_194ec10();
 __int64 ProcBanquetScene_Unknown18();
+__int64 ProcBanquetScene_Destructor_194eee0(_QWORD* a1);
+__int64 ProcBanquetScene_Unknown2();
 
 __int64 ProcBanquetScene_Destructor(__int64 a1)
 {
@@ -157,6 +159,82 @@ void ProcBanquetScene_194ec10()
 }
 
 __int64 ProcBanquetScene_Unknown18()
+{
+  __int64 result;
+  __int64 v1;
+  char v2;
+  unsigned __int64 v3;
+  __int16 v4;
+  char v5;
+  __int64 v6;
+
+  v5 = 0;
+  v2 = 20;
+  v4 = -19282;
+  v3 = 0xE597A5E95F4D4742LL;
+  result = GameRoutine_1487cc0(&v2, 0x13F000000LL);
+  if ((v2 & 1) != 0 && v6 != 0) {
+    v1 = 128;
+    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+      v1 = 56;
+    }
+    return nn_mem_StandardAllocator_Free(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v1);
+  }
+  return result;
+}
+
+__int64 ProcBanquetScene_Destructor_194eee0(_QWORD* a1)
+{
+  _QWORD* v2;
+  __int64* v3;
+  __int64 v4;
+  __int64 v5;
+  _QWORD* v6;
+  __int64 v7;
+
+  *(a1 - 19) = game_facility_anonymous_ProcBanquetScene_vtable;
+  v2 = a1 - 19;
+  *a1 = GameData_2118bb8;
+  v3 = GameData_2131480;
+  (*(void (**)(_QWORD))(*(_QWORD*)*GameData_2131480 + 24LL))(*GameData_2131480);
+  if (*v3 != 0) {
+    (*(void (**)(__int64))(*(_QWORD*)*v3 + 8LL))(*v3);
+  }
+  v4 = a1[4];
+  *v3 = 0;
+  if (v4 != 0) {
+    a1[5] = v4;
+    v5 = 128;
+    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+      v5 = 56;
+    }
+    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v5);
+  }
+  *(a1 - 19) = GameData_2118c88;
+  *a1 = GameData_2118d38;
+  GameRoutine_1958ed0(a1, v2);
+  *a1 = GameData_2132488 + 2;
+  v6 = (_QWORD*)GameData_212dce8;
+  v7 = *(_QWORD*)GameData_212dce8;
+  if (*(_QWORD*)GameData_212dce8 != 0 && (*GameData_2130fb8)-- <= 1) {
+    (*(void (**)(__int64))(*(_QWORD*)v7 + 24LL))(v7);
+    if (*v6 != 0) {
+      (*(void (**)(_QWORD))(*(_QWORD*)*v6 + 8LL))(*v6);
+    }
+    *v6 = 0;
+  }
+  game_facility_ReleaseGroups();
+  GameData_226bb60 = 0;
+  *(a1 - 19) = GameData_212c608[0] + 16;
+  if ((*(_WORD*)(a1 - 2) & 0x100) != 0) {
+    *((_WORD*)a1 - 8) &= ~0x100u;
+  }
+  game_ProcInst_Unregister(v2);
+  return GameRoutine_658c00(a1 - 8);
+}
+
+__int64 ProcBanquetScene_Unknown2()
 {
   __int64 result;
   __int64 v1;

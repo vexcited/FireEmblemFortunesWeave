@@ -42,6 +42,11 @@ __int64 LegionShopMenuItem_Sell_Unknown72(__int64 a1);
 bool LegionShopMenuItem_Sell_Unknown73(__int64 a1);
 __int64 LegionShopMenuItem_Sell_Unknown74(__int64 a1);
 __int64 LegionShopMenuItem_Sell_Unknown78(__int64 a1);
+__int64 LegionShopMenuItem_Sell_Unknown72_alt1(_QWORD, _QWORD) __asm__(
+    "LegionShopMenuItem_Sell_Unknown72");
+__int64 LegionShopMenuItem_Sell_Unknown2(__int64 a1);
+bool LegionShopMenuItem_Sell_Unknown3(__int64 a1);
+__int64 LegionShopMenuItem_Sell_Unknown10(__int64 a1);
 
 __int64 LegionShopMenuItem_Sell_Unknown55(__int64 a1)
 {
@@ -581,6 +586,41 @@ __int64 LegionShopMenuItem_Sell_Unknown78(__int64 a1)
   __int64 result;
 
   result = *(_QWORD*)(a1 + 8);
+  if (result != 0) {
+    return __dynamic_cast(result, GameData_212e030[0], GameData_2132048, 0);
+  }
+  return result;
+}
+
+__int64 LegionShopMenuItem_Sell_Unknown2(__int64 a1)
+{
+  return LegionShopMenuItem_Sell_Unknown72_alt1(a1 - 88, 0);
+}
+
+bool LegionShopMenuItem_Sell_Unknown3(__int64 a1)
+{
+  __int64 v1;
+  __int64* v2;
+
+  v1 = *(unsigned int*)(a1 - 48);
+  if ((int)v1 >= 0) {
+    v2 = (__int64*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)GameData_212cf80[0] + 8LL) +
+                               48LL) +
+                    8 * v1);
+  }
+  else {
+    v2 = GameData_212ceb0;
+  }
+  return *(unsigned __int16*)(*(_QWORD*)(*(_QWORD*)(*GameData_212c998[0] + 64) +
+                                         8LL * *(unsigned __int8*)v2) +
+                              152LL) != 0;
+}
+
+__int64 LegionShopMenuItem_Sell_Unknown10(__int64 a1)
+{
+  __int64 result;
+
+  result = *(_QWORD*)(a1 - 80);
   if (result != 0) {
     return __dynamic_cast(result, GameData_212e030[0], GameData_2132048, 0);
   }

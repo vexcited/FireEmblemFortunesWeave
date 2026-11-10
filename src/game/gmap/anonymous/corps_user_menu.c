@@ -54,6 +54,17 @@ __int64 CorpsUserMenu_Unknown149(__int64 a1);
 __int64 CorpsUserMenu_Unknown150(__int64 a1);
 __int64 CorpsUserMenu_Unknown155(__int64 a1, char a2);
 __int64 CorpsUserMenu_Unknown156(__int64 a1, char a2);
+__int64 BasicMenuCursor_16e0c00(_QWORD, _QWORD);
+__int64 fw_memory_HeapManager_Allocate(_QWORD, _QWORD, _QWORD, _QWORD);
+extern __int64 (*game_gmap_anonymous_CorpsMenuItem_vtable[])();
+__int64
+game_gmap_anonymous_CorpsUserMenu_CorpsUserMenu_closure_Invoke(__int64 result,
+                                                               __int64 a2);
+__int64
+game_gmap_anonymous_CorpsUserMenu_AddItemList_closure_Invoke(__int64 result,
+                                                             __int64* a2);
+bool game_gmap_anonymous_CorpsUserMenu_SortAndFilter_closure_Invoke(
+    __int64 a1, _QWORD* a2, _DWORD** a3);
 
 __int64 CorpsUserMenu_Unknown161(__int64 a1)
 {
@@ -495,6 +506,125 @@ __int64 CorpsUserMenu_Unknown156(__int64 a1, char a2)
 LABEL_10:
   v10 = a2 | (*(_DWORD*)(a1 + 1064) == 0);
   return v10 & 1;
+}
+
+__int64
+
+game_gmap_anonymous_CorpsUserMenu_CorpsUserMenu_closure_Invoke(__int64 result,
+                                                               __int64 a2)
+{
+  int v2;
+  int v3;
+
+  v2 = *(_DWORD*)(*(_QWORD*)a2 + 416LL);
+  v3 = *(unsigned __int8*)(*(_QWORD*)a2 + 501LL);
+  if ((v2 & 0x100000) == 0) {
+    v3 = -1;
+  }
+  if ((v2 & 0x80000) != 0 && v3 == **(_DWORD**)(result + 8)) {
+    *(_DWORD*)(*(_QWORD*)(result + 16) + 1068LL) =
+        *(__int16*)(*(_QWORD*)a2 + 490LL);
+  }
+  return result;
+}
+
+__int64
+
+game_gmap_anonymous_CorpsUserMenu_AddItemList_closure_Invoke(__int64 result,
+                                                             __int64* a2)
+{
+  __int64 v2;
+  int v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  _BYTE* v8;
+  int v9;
+
+  v2 = *a2;
+  if ((*(_BYTE*)(*a2 + 418) & 0x10) != 0) {
+    v3 = *(unsigned __int8*)(*a2 + 501);
+  }
+  else {
+    v3 = -1;
+  }
+  if (v3 == **(_DWORD**)(result + 8)) {
+    v4 = *(_QWORD*)(result + 16);
+    v5 = result;
+    v6 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
+                                        120, 16, 0);
+    v7 = *(_QWORD*)(v4 + 1056);
+    if (v7 != 0) {
+      v7 = __dynamic_cast(v7, GameData_21319e8[0], &GameData_20b3420, 0);
+    }
+    v8 = *(_BYTE**)(v5 + 32);
+    v9 = **(_DWORD**)(v5 + 24);
+    *(_WORD*)(v6 + 16) = 0;
+    *(_DWORD*)(v6 + 40) = 0;
+    *(_QWORD*)(v6 + 48) = 0;
+    *(_QWORD*)(v6 + 56) = 0;
+    *(_QWORD*)(v6 + 64) = 0;
+    *(_QWORD*)(v6 + 72) = 0;
+    *(_QWORD*)(v6 + 88) = v7;
+    *(_QWORD*)(v6 + 96) = v2;
+    *(_BYTE*)(v6 + 116) = 0;
+    *(_WORD*)(v6 + 80) = 257;
+    *(_BYTE*)(v6 + 82) = 1;
+    *(_BYTE*)(v6 + 104) = 1;
+    *(_DWORD*)(v6 + 108) = v3;
+    *(_DWORD*)(v6 + 112) = v9;
+    *(_QWORD*)v6 = game_gmap_anonymous_CorpsMenuItem_vtable;
+    *(_QWORD*)(v6 + 8) = 0;
+    if ((*v8 & 1) == 0) {
+      *(_BYTE*)(v6 + 116) = 1;
+      *v8 = 1;
+    }
+    result = BasicMenuCursor_16e0c00(v4, v6);
+    ++**(_DWORD**)(v5 + 24);
+  }
+  return result;
+}
+
+bool game_gmap_anonymous_CorpsUserMenu_SortAndFilter_closure_Invoke(__int64 a1,
+                                                                    _QWORD* a2,
+                                                                    _DWORD** a3)
+{
+  _DWORD* v3;
+  _DWORD* v4;
+  int v5;
+  int v6;
+  int v7;
+
+  v3 = *a3;
+  if (*a2 != 0) {
+    v4 =
+        (_DWORD*)__dynamic_cast(*a2, GameData_212e008[0], &GameData_20b33d8, 0);
+    if (v3 == nullptr) {
+      goto LABEL_4;
+    }
+    goto LABEL_3;
+  }
+  v4 = nullptr;
+  if (v3 != nullptr) {
+  LABEL_3:
+    v3 = (_DWORD*)__dynamic_cast(v3, GameData_212e008[0], &GameData_20b33d8, 0);
+  }
+LABEL_4:
+  if ((*(__int64 (**)(_DWORD*))(*(_QWORD*)v4 + 560LL))(v4) != 0) {
+    v5 = 0;
+  }
+  else {
+    v5 = 0x10000;
+  }
+  v6 = v5 + v4[28];
+  if ((*(__int64 (**)(_DWORD*))(*(_QWORD*)v3 + 560LL))(v3) != 0) {
+    v7 = 0;
+  }
+  else {
+    v7 = 0x10000;
+  }
+  return v6 < v7 + v3[28];
 }
 
 #pragma GCC visibility pop

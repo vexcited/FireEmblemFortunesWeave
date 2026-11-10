@@ -5,6 +5,11 @@
 __int64 GameRoutine_e40be0(_QWORD, _QWORD);
 __int64 LegionStackWalkAndSee_Unknown4(__int64 result);
 
+bool LegionStackWalkAndSee_Unknown5(__int64 a1)
+{
+  return *(float*)(a1 + 52) <= 0.0;
+};
+
 __int64 LegionStackWalkAndSee_Unknown4(__int64 result)
 {
   __int64 v1;

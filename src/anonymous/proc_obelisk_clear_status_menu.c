@@ -2,13 +2,275 @@
 
 #pragma GCC visibility push(hidden)
 
+struct PseudoSret {
+  _QWORD words[3];
+};
 __int64 ui_LayoutAccessor_SetPaneVisible(_QWORD, _QWORD, _QWORD);
 __int64 ProcObeliskClearStatusMenu_Unknown85(__int64 a1);
+__int64 BasicMenuCursor_16e0c00(_QWORD, _QWORD);
+__int64 GameRoutine_1789cf0(_QWORD, _QWORD);
+__int64 Impl_717e30(_QWORD);
+__int64 ProcInst_657850(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
+__int64 ProcObeliskUnitMergeRouteSelectMenu_158ca00(_QWORD, _QWORD, _QWORD);
+__int64 __dynamic_cast(_QWORD, _QWORD, _QWORD, _QWORD);
+__int64 fw_memory_HeapManager_Allocate(_QWORD, _QWORD, _QWORD, _QWORD);
+__int64 game_menu_BasicMenu_Destroy_BasicMenu(_QWORD);
+__int64 memmove(_QWORD, _QWORD, _QWORD);
+__n128 nn_mem_StandardAllocator_Free(_QWORD);
+__n128 std___1___shared_weak_count___release_weak(_QWORD);
+extern _UNKNOWN* GameData_212c730;
+extern __int64 (*GameData_2001010[])();
+extern __int64 (*anonymous_ProcObeliskClearStatusMenu_vtable[])();
+extern __int64 (*game_menu_GameMenuImpl_ImplUnknown00_ptr[])();
+extern __int64 GameData_212db10[3];
+extern __int64 GameData_2259500;
+extern __int64 fw_memory_g_heap_manager_ptr;
+extern __int64 game_GameModeData_instance_;
+extern __int64 game_menu_UnitGridSelectMenu_listeners_;
+extern __int64* GameData_212e008[9];
+extern __int64* GameData_212e0c0[7];
+extern __int64* GameData_212e0c8[6];
+extern __int64* GameData_21319b0[6];
+struct PseudoSret GameRoutine_1560070(_QWORD, _QWORD);
+void __attribute__((noreturn)) GameRoutine_60a310(_QWORD, _QWORD);
+__n128 ProcObeliskClearStatusMenu_DeletingDestructor(_QWORD* a1);
+__n128 ProcObeliskClearStatusMenu_Unknown88(__int64 a1);
+_QWORD* anonymous_ProcObeliskClearStatusMenu_CreateBindClear_closure0_Invoke(
+    __int64 a1, __int64* a2);
+
+__n128 ProcObeliskClearStatusMenu_DeletingDestructor(_QWORD* a1)
+{
+  _QWORD* v1;
+  __int64* v3;
+  _QWORD* v4;
+  unsigned __int64 v5;
+  __int64 v6;
+  _QWORD* v7;
+  __int64 v8;
+  _QWORD* v9;
+  __int64 v10;
+  _QWORD* v11;
+  __int64 v12;
+  __int64 v13;
+
+  v1 = a1 + 134;
+  v3 = GameData_212e0c0[0];
+  *a1 = GameData_212e0c0[0] + 2;
+  a1[132] = v3 + 179;
+  a1[22] = v3 + 153;
+  v4 = (_QWORD*)game_menu_UnitGridSelectMenu_listeners_;
+  if (game_menu_UnitGridSelectMenu_listeners_ != GameData_2259500) {
+    v5 = GameData_2259500 - game_menu_UnitGridSelectMenu_listeners_ - 8;
+    if ((~(_BYTE)v5 & 0x18) != 0) {
+      v6 = ((unsigned __int8)((unsigned int)v5 >> 3) + 1) & 3;
+      while ((_QWORD*)*v4 != v1) {
+        ++v4;
+        if (--v6 == 0) {
+          goto LABEL_6;
+        }
+      }
+    }
+    else {
+    LABEL_6:
+      if (v5 < 0x18) {
+        goto LABEL_21;
+      }
+      v4 += 2;
+      while (1) {
+        if ((_QWORD*)*(v4 - 2) == v1) {
+          v4 -= 2;
+          goto LABEL_17;
+        }
+        if ((_QWORD*)*(v4 - 1) == v1) {
+          --v4;
+          goto LABEL_17;
+        }
+        if ((_QWORD*)*v4 == v1) {
+          goto LABEL_17;
+        }
+        if ((_QWORD*)v4[1] == v1) {
+          break;
+        }
+        v7 = v4 + 2;
+        v4 += 4;
+        if (v7 == (_QWORD*)GameData_2259500) {
+          goto LABEL_21;
+        }
+      }
+      ++v4;
+    }
+  }
+LABEL_17:
+  if (v4 != (_QWORD*)GameData_2259500) {
+    v8 = GameData_2259500 - (_QWORD)(v4 + 1);
+    if ((_QWORD*)GameData_2259500 != v4 + 1) {
+      memmove(v4, v4 + 1, GameData_2259500 - (_QWORD)(v4 + 1));
+    }
+    GameData_2259500 = (__int64)v4 + v8;
+  }
+LABEL_21:
+  v9 = (_QWORD*)a1[144];
+  if (v9 == a1 + 140) {
+    v10 = 32;
+  }
+  else {
+    if (v9 == nullptr) {
+      goto LABEL_26;
+    }
+    v10 = 40;
+  }
+  (*(void (**)(__int64))(*v9 + v10))((__int64)v9);
+LABEL_26:
+  v11 = (_QWORD*)a1[138];
+  if (v11 == v1) {
+    v12 = 32;
+  }
+  else {
+    if (v11 == nullptr) {
+      goto LABEL_31;
+    }
+    v12 = 40;
+  }
+  (*(void (**)(__int64))(*v11 + v12))((__int64)v11);
+LABEL_31:
+  game_menu_BasicMenu_Destroy_BasicMenu(a1);
+  v13 = 128;
+  if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+    v13 = 56;
+  }
+  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
+                                       v13);
+}
 
 __int64 ProcObeliskClearStatusMenu_Unknown85(__int64 a1)
 {
   ui_LayoutAccessor_SetPaneVisible(a1 + 848, "T_Get_Skill", 0);
   return ui_LayoutAccessor_SetPaneVisible(a1 + 848, "T_Get_CombatArts", 0);
+}
+
+__n128 ProcObeliskClearStatusMenu_Unknown88(__int64 a1)
+{
+  __int64 v2;
+  __int64 v3;
+  __n128 result;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+
+  v2 = *(_QWORD*)(a1 + 336);
+  if (v2 != 0) {
+    v3 = __dynamic_cast(v2, GameData_212e008[0], GameData_212e0c8[0], 0);
+    if (v3 != 0) {
+      v5 = v3;
+      *(struct PseudoSret*)(&v7) =
+          GameRoutine_1560070(a1 + 848, "L_CompareInfo");
+      if (game_GameModeData_instance_ != 0) {
+        v6 = *(unsigned __int8*)(game_GameModeData_instance_ + 15);
+      }
+      else {
+        v6 = 0;
+      }
+      ProcObeliskUnitMergeRouteSelectMenu_158ca00(&v7, *(_QWORD*)(v5 + 88), v6);
+      if (v8 != 0) {
+        return std___1___shared_weak_count___release_weak(v8);
+      }
+    }
+  }
+  return result;
+}
+
+_QWORD* anonymous_ProcObeliskClearStatusMenu_CreateBindClear_closure0_Invoke(
+    __int64 a1, __int64* a2)
+{
+  __int64 v3;
+  _QWORD* v4;
+  __int64 v5;
+  __int64 v6;
+  unsigned int v7;
+  _QWORD* result;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
+  __int64* v14;
+  __int64* v15;
+  __int64* v16;
+  __int64 v17;
+  __int64 v18;
+  _QWORD v19[4];
+  _QWORD* v20;
+  __int64 v21;
+
+  v3 = *a2;
+  Impl_717e30(*(unsigned __int8*)(a1 + 8));
+  v4 = (_QWORD*)fw_memory_g_heap_manager_ptr;
+  v5 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
+                                      1200, 16, 0);
+  GameRoutine_1789cf0(v5, "ObeliskClearStatusMenu");
+  *(_QWORD*)v5 = anonymous_ProcObeliskClearStatusMenu_vtable;
+  *(_QWORD*)(v5 + 1056) = game_menu_GameMenuImpl_ImplUnknown00_ptr;
+  *(_QWORD*)(v5 + 176) = GameData_2001010;
+  *(_BYTE*)(v5 + 1184) = 1;
+  ProcInst_657850(v5, GameData_212c730, "ProcObeliskClearStatusMenu", 1, v3);
+  v7 = *(unsigned __int8*)(a1 + 8);
+  result = v19;
+  v9 = *(_QWORD*)(game_GameModeData_instance_ + 176);
+  *(_QWORD*)(v9 + 2424) = *(_QWORD*)(v9 + 2416);
+  v10 = v9 + 216LL * v7;
+  v20 = v19;
+  v19[0] = GameData_212db10[0] + 16;
+  v19[1] = v9;
+  v11 = *(_QWORD*)(v10 + 256);
+  v12 = *(_QWORD*)(v10 + 264);
+  if (v11 == v12) {
+    goto LABEL_7;
+  }
+  do {
+    v21 = v11;
+    if (v20 == nullptr) {
+      GameRoutine_60a310(0, v6);
+    }
+    (*(void (**)(_QWORD*, __int64*))(*v20 + 48LL))(v20, &v21);
+    v11 += 2224;
+  } while (v11 != v12);
+  result = v20;
+  if (v20 == v19) {
+  LABEL_7:
+    v13 = 32;
+  }
+  else {
+    if (v20 == nullptr) {
+      goto LABEL_9;
+    }
+    v13 = 40;
+  }
+  result =
+      (_QWORD*)(*(__int64 (**)(_QWORD*, __int64))(*result + v13))(result, v6);
+LABEL_9:
+  v14 = *(__int64**)(v9 + 2416);
+  v15 = *(__int64**)(v9 + 2424);
+  if (v14 != v15) {
+    v16 = GameData_21319b0[0] + 2;
+    do {
+      v17 = *v14++;
+      v18 = fw_memory_HeapManager_Allocate(*v4, 96, 16, 0);
+      *(_WORD*)(v18 + 16) = 0;
+      *(_DWORD*)(v18 + 40) = 0;
+      *(_QWORD*)(v18 + 48) = 0;
+      *(_QWORD*)(v18 + 56) = 0;
+      *(_QWORD*)(v18 + 64) = 0;
+      *(_QWORD*)(v18 + 72) = 0;
+      *(_WORD*)(v18 + 80) = 257;
+      *(_BYTE*)(v18 + 82) = 1;
+      *(_QWORD*)v18 = v16;
+      *(_QWORD*)(v18 + 8) = 0;
+      *(_QWORD*)(v18 + 88) = v17;
+      result = (_QWORD*)BasicMenuCursor_16e0c00(v5, v18);
+    } while (v14 != v15);
+  }
+  return result;
 }
 
 #pragma GCC visibility pop

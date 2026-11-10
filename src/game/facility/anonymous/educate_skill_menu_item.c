@@ -24,6 +24,12 @@ extern __int64* GameData_212d670[3];
 extern __int64* GameData_212d678[2];
 extern char GameData_1a9f09e;
 __int64 EducateSkillMenuItem_Unknown55(_DWORD* a1);
+__int64 GameRoutine_16dd280(_QWORD);
+__int64 game_gameui_anonymous_ProcGameUIFade_In(_QWORD, _QWORD, _QWORD, _QWORD,
+                                                _QWORD, _QWORD);
+extern __int64 GameData_2259540;
+__int64 game_facility_anonymous_EducateSkillMenuItem_ACall_closure_Invoke(
+    __int64 result);
 
 __int64 EducateSkillMenuItem_Unknown55(_DWORD* a1)
 {
@@ -198,6 +204,26 @@ __int64 EducateSkillMenuItem_Unknown55(_DWORD* a1)
       }
       goto LABEL_16;
     }
+  }
+  return result;
+}
+
+__int64 game_facility_anonymous_EducateSkillMenuItem_ACall_closure_Invoke(
+    __int64 result)
+{
+  __int64 v1;
+  __int64 v2;
+  int v3;
+  unsigned int v4;
+  unsigned int v5;
+
+  v1 = GameData_2259540;
+  if (GameData_2259540 != 0) {
+    v2 = *(_QWORD*)(*(_QWORD*)(result + 8) + 8LL);
+    v3 = GameRoutine_16dd280(v2);
+    v4 = v3 - (*(__int64 (**)(__int64))(*(_QWORD*)v2 + 224LL))(v2);
+    v5 = (*(__int64 (**)(__int64))(*(_QWORD*)v2 + 496LL))(v2);
+    return game_gameui_anonymous_ProcGameUIFade_In(v1, v4, 0, v5, 1, v2);
   }
   return result;
 }

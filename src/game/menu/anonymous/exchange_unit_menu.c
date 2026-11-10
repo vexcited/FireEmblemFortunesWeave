@@ -27,6 +27,9 @@ __int64 ExchangeUnitMenu_Unknown135(_QWORD* a1);
 __int64 ExchangeUnitMenu_Unknown147(_QWORD* a1, unsigned __int8 a2);
 __int64 ExchangeUnitMenu_Unknown148(_QWORD* a1, unsigned __int8 a2);
 __int64 ExchangeUnitMenu_Unknown162(__int64 a1, __int64 a2, int a3);
+__int64
+game_menu_anonymous_ExchangeUnitMenu_FindDecideItem_closure_Invoke(__int64 a1,
+                                                                   __int64 a2);
 
 __int64 ExchangeUnitMenu_Unknown101(__int64* a1)
 {
@@ -469,6 +472,14 @@ __int64 ExchangeUnitMenu_Unknown162(__int64 a1, __int64 a2, int a3)
   *(_BYTE*)(result + 82) = 1;
   *(_BYTE*)(result + 104) = v9;
   return result;
+}
+
+__int64
+
+game_menu_anonymous_ExchangeUnitMenu_FindDecideItem_closure_Invoke(__int64 a1,
+                                                                   __int64 a2)
+{
+  return *(unsigned __int8*)(*(_QWORD*)a2 + 79LL);
 }
 
 #pragma GCC visibility pop

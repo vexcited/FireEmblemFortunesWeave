@@ -22,6 +22,44 @@ __int64 ProcDeleteAnimalMenu_Unknown149(__int64 a1, __int64 a2, __int64 a3,
                                         __int64 a4, int a5, int a6);
 bool ProcDeleteAnimalMenu_Unknown150(__int64 a1, _DWORD* a2, _DWORD* a3);
 __int64 ProcDeleteAnimalMenu_Unknown151(__int64 a1);
+__int64 GameRoutine_6680e0(_QWORD, _QWORD);
+__int64 game_menu_Dialog__CreateBind_game_menu_Dialog(_QWORD, _QWORD);
+__int64
+game_menu_anonymous_ProcDeleteAnimalMenu_CreateBind_closure_Invoke(__int64 a1,
+                                                                   __int64* a2);
+__int64
+
+game_menu_anonymous_ProcDeleteAnimalMenu_CreateBind_closure_Invoke(__int64 a1,
+                                                                   __int64* a2)
+{
+  __int64 v2;
+  __int64 result;
+  __int64 v4;
+  _BYTE v5[32];
+  _BYTE* v6;
+  const char* v7;
+
+  v2 = *a2;
+  v7 = "MID_StableMenu_FullRelease_Message";
+  result = game_menu_Dialog__CreateBind_game_menu_Dialog(v2, &v7);
+  if (result != 0) {
+    v6 = nullptr;
+    GameRoutine_6680e0(v5, result + 1248);
+    result = (__int64)v6;
+    if (v6 == v5) {
+      v4 = 32;
+    }
+    else {
+      if (v6 == nullptr) {
+        return result;
+      }
+      v4 = 40;
+    }
+    return (*(__int64 (**)(void))(*(_QWORD*)v6 + v4))();
+  }
+  return result;
+}
+
 __int64 ProcDeleteAnimalMenu_Unknown149(__int64 a1, __int64 a2, __int64 a3,
                                         __int64 a4, int a5, int a6)
 {

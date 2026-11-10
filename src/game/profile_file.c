@@ -220,7 +220,7 @@ _QWORD* ProfileFile_Unknown4(_QWORD* result)
         v17 = true;
       }
       v18 = v17 | (2 * v108);
-      v19 = vcvtps_u32_f32(v16);
+      v19 = vcvtps_u64_f32(v16);
       if (v18 <= v19) {
         v20 = v19;
       }
@@ -239,7 +239,7 @@ _QWORD* ProfileFile_Unknown4(_QWORD* result)
         if (v20 >= v7) {
           goto LABEL_88;
         }
-        result = (_QWORD*)vcvtps_u32_f32((float)v110 / v111);
+        result = (_QWORD*)vcvtps_u64_f32((float)v110 / v111);
         if (v7 < 3 || (v7 & (v7 - 1)) != 0) {
           result = (_QWORD*)std___1___next_prime(result);
         }

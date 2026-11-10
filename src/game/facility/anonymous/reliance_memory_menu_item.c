@@ -8,6 +8,11 @@ __int64 GameRoutine_15e0200(_QWORD);
 __int64 GameRoutine_15e04f0(_QWORD);
 __int64 RelianceMemoryMenuItem_Unknown55(__int64 a1);
 
+bool RelianceMemoryMenuItem_Unknown87(__int64 a1)
+{
+  return (*(_BYTE*)(a1 + 96) & 1) == 0;
+};
+
 __int64 RelianceMemoryMenuItem_Unknown55(__int64 a1)
 {
   char v1;

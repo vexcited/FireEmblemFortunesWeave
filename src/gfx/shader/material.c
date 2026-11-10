@@ -27,6 +27,14 @@ __int64 Material_ade2c0(__int64 result);
 _QWORD* Material_addb00(_QWORD* result, __int64 a2, __int64 a3,
                         unsigned int a4);
 _QWORD* Material_addbe0(_QWORD* result, __int64 a2, __int64 a3, char a4);
+__int64 GameRoutine_5fb840_alt1(_QWORD, _QWORD) __asm__("GameRoutine_5fb840");
+__int64 GameRoutine_ad5500_alt1(_QWORD*, __int64, __int64,
+                                unsigned int) __asm__("GameRoutine_ad5500");
+void __attribute__((noreturn)) String_60a250(_QWORD);
+_QWORD* Material_ade0e0(_QWORD* result, _QWORD* a2, __int64 a3, __int64 a4,
+                        unsigned int a5);
+__int64* Material_ade1f0(__int64* result, int a2, __int64 a3, __int64 a4,
+                         unsigned int a5);
 
 __int64 Material_add560(__int64 result)
 {
@@ -605,6 +613,81 @@ LABEL_45:
 
 LABEL_49:
   v8[31] = v17;
+  return result;
+}
+
+_QWORD* Material_ade0e0(_QWORD* result, _QWORD* a2, __int64 a3, __int64 a4,
+                        unsigned int a5)
+{
+  int* v5;
+  int* i;
+  unsigned int v11;
+  _QWORD* v12;
+  unsigned int v13;
+  __int64 v14;
+
+  if (result[40] != 0) {
+    v5 = (int*)result[33];
+    for (i = (int*)result[34]; v5 != i; v5 += 6) {
+      result = *(_QWORD**)v5;
+      if (*(_QWORD*)v5 != 0) {
+        v11 = *(_DWORD*)(g3d_g_passKinds + 4LL * v5[4]);
+        if (v11 >= 6) {
+          String_60a250("bitset test argument out of range");
+        }
+        if (((*a2 >> v11) & 1) != 0) {
+          GameRoutine_ad5500_alt1(result, a3, a4, a5);
+          v12 = *(_QWORD**)v5;
+          v13 = GameRoutine_5fba80(*(_QWORD*)(*(_QWORD*)v5 + 120LL),
+                                   *(_QWORD*)(*(_QWORD*)v5 + 200LL));
+          v14 = v12[15];
+          if ((v13 & 0x80000000) != 0) {
+            v13 = *(_DWORD*)(v14 + 224) & ~(*(int*)(v14 + 224) >> 31);
+          }
+          v12[17] = *(_QWORD*)(v14 + 136) + ((unsigned __int64)v13 << 6);
+          GameRoutine_5fb840();
+          result = (_QWORD*)GameRoutine_5fb900(v12[17]);
+          v12[18] = result[1];
+        }
+      }
+    }
+  }
+  return result;
+}
+
+__int64* Material_ade1f0(__int64* result, int a2, __int64 a3, __int64 a4,
+                         unsigned int a5)
+{
+  __int64 v5;
+  __int64** v6;
+  __int64* v7;
+  unsigned int v8;
+  __int64 v9;
+  unsigned __int64 v10;
+  __int64 v11;
+
+  if (result[40] != 0) {
+    v5 = result[33];
+    if (0xAAAAAAAAAAAAAAABLL * ((result[34] - v5) >> 3) > a2) {
+      v6 = (__int64**)(v5 + 24LL * a2);
+      result = *v6;
+      if (*v6 != nullptr) {
+        GameRoutine_ad5500_alt1(result, a3, a4, a5);
+        v7 = *v6;
+        v8 = GameRoutine_5fba80(v7[15], v7[25]);
+        v9 = v7[15];
+        if ((v8 & 0x80000000) != 0) {
+          v8 = *(_DWORD*)(v9 + 224) & ~(*(int*)(v9 + 224) >> 31);
+        }
+        v10 = *(_QWORD*)(v9 + 136) + ((unsigned __int64)v8 << 6);
+        v11 = *v7;
+        v7[17] = v10;
+        GameRoutine_5fb840_alt1(v10, v11 + 568);
+        result = (__int64*)GameRoutine_5fb900(v7[17]);
+        v7[18] = result[1];
+      }
+    }
+  }
   return result;
 }
 

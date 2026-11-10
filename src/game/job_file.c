@@ -17,6 +17,8 @@ void __attribute__((noreturn)) GameRoutine_67afd0(void);
 __int64* JobFile_676c00(__int64* result, __int64 a2);
 __int64 JobFile_676ef0(__int64* a1);
 unsigned __int64 JobFile_6774a0(_QWORD* a1, __int64 a2);
+__int64 game_JobFile_GetFromClassChangeCondition_lambda0_Invoke(__int64 result,
+                                                                _QWORD* a2);
 
 __int64* JobFile_676c00(__int64* result, __int64 a2)
 {
@@ -259,6 +261,15 @@ LABEL_25:
 
 LABEL_26:
   *a1 = v11;
+  return result;
+}
+
+__int64 game_JobFile_GetFromClassChangeCondition_lambda0_Invoke(__int64 result,
+                                                                _QWORD* a2)
+{
+  if (**(_QWORD**)(result + 8) == *a2) {
+    **(_BYTE**)(result + 16) = 1;
+  }
   return result;
 }
 

@@ -10,6 +10,9 @@ extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64* game_g_empty_item_ptr;
 __int64 MapUnitCommandAttackMenu_Unknown146(__int64 a1, __int64 a2, int a3,
                                             char a4);
+__int64 game_map_MapUnitCommandAttackMenu_CreateBind_lambda0_Invoke(__int64 a1,
+                                                                    _QWORD* a2);
+
 __int64 MapUnitCommandAttackMenu_Unknown146(__int64 a1, __int64 a2, int a3,
                                             char a4)
 {
@@ -52,6 +55,20 @@ __int64 MapUnitCommandAttackMenu_Unknown146(__int64 a1, __int64 a2, int a3,
   }
   *(_BYTE*)(result + 82) = v8 & 1;
   return result;
+}
+
+__int64 game_map_MapUnitCommandAttackMenu_CreateBind_lambda0_Invoke(__int64 a1,
+                                                                    _QWORD* a2)
+{
+  __int64 v2;
+
+  v2 = *a2;
+  if (((*(__int64 (**)(_QWORD))(*(_QWORD*)*a2 + 496LL))(*a2) & 1) != 0) {
+    return (*(__int64 (**)(__int64))(*(_QWORD*)v2 + 464LL))(v2);
+  }
+  else {
+    return 0;
+  }
 }
 
 #pragma GCC visibility pop

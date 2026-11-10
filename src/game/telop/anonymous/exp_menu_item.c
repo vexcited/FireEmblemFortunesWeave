@@ -34,6 +34,10 @@ __int64 ExpMenuItem_Destructor(__int64 a1);
 __int64 ExpMenuItem_Unknown55(__int64 a1);
 __int64 ExpMenuItem_Unknown72(__int64 result, long double a2);
 bool ExpMenuItem_Unknown73(__int64 a1);
+__int64 ExpMenuItem_1756170(_QWORD, _QWORD);
+__int64 GameRoutine_1756280_alt1(_QWORD) __asm__("GameRoutine_1756280");
+__int64 GameRoutine_17565c0_alt1(_QWORD, _QWORD) __asm__("GameRoutine_17565c0");
+__int64 ExpMenuItem_Unknown75(__int64 a1);
 
 __int64 ExpMenuItem_Destructor(__int64 a1)
 {
@@ -452,6 +456,36 @@ bool ExpMenuItem_Unknown73(__int64 a1)
     }
   }
   return true;
+}
+
+__int64 ExpMenuItem_Unknown75(__int64 a1)
+{
+  __int64 result;
+  __int64 v3;
+
+  if (*(_DWORD*)(a1 + 108) == 0) {
+    GameRoutine_1756280_alt1(a1);
+  }
+  if (*(float*)(a1 + 136) != 0.0) {
+    GameRoutine_17565c0_alt1(a1, 2);
+  }
+  result = *(_QWORD*)(a1 + 384);
+  if (result != 0) {
+    result = std___1___shared_weak_count_lock(result);
+    if (result != 0) {
+      v3 = *(_QWORD*)(a1 + 376);
+      if (atomic_fetch_add((atomic_ullong* volatile)(result + 8),
+                           0xFFFFFFFFFFFFFFFFLL) == 0) {
+        (*(void (**)(__int64))(*(_QWORD*)result + 16LL))(result);
+        result = std___1___shared_weak_count___release_weak();
+      }
+      if (v3 != 0 && *(float*)(a1 + 264) != 0.0) {
+        result = ExpMenuItem_1756170(a1, 2);
+      }
+    }
+  }
+  *(_DWORD*)(a1 + 108) = 2;
+  return result;
 }
 
 #pragma GCC visibility pop

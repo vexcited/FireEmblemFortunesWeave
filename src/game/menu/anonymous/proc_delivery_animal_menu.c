@@ -32,6 +32,14 @@ __int64 ProcDeliveryAnimalMenu_Unknown149(__int64 a1, __int64 a2, __int64 a3,
                                           __int64 a4, int a5, int a6);
 __int64 ProcDeliveryAnimalMenu_Unknown150(__int64 a1, _DWORD* a2, _DWORD* a3);
 __int64 ProcDeliveryAnimalMenu_Unknown151(__int64 result);
+_QWORD* ProcDeliveryAnimalMenu_171e4f0(_QWORD* result);
+__int64 GameRoutine_187dc60(_QWORD, _QWORD, _QWORD);
+extern __int64 GameData_212c610;
+extern __int64 GameData_2131c18[55];
+__int64
+game_menu_anonymous_ProcDeliveryAnimalMenu_ACall_closure0_Invoke(__int64 a1);
+__int64
+game_menu_anonymous_ProcDeliveryAnimalMenu_BCall_closure_Invoke(__int64 a1);
 
 __int64 ProcDeliveryAnimalMenu_Unknown84(__int64 a1)
 {
@@ -423,6 +431,67 @@ __int64 ProcDeliveryAnimalMenu_Unknown151(__int64 result)
     v2 += 64;
   } while (v3 != 200);
   return result;
+}
+
+_QWORD* ProcDeliveryAnimalMenu_171e4f0(_QWORD* result)
+{
+  _QWORD* v1;
+  __int64 v2;
+
+  if (result != nullptr) {
+    v1 = result;
+    ProcDeliveryAnimalMenu_171e4f0(*result);
+    ProcDeliveryAnimalMenu_171e4f0(v1[1]);
+    v2 = 128;
+    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+      v2 = 56;
+    }
+    return (_QWORD*)nn_mem_StandardAllocator_Free(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v2, v1);
+  }
+  return result;
+}
+
+__int64
+
+game_menu_anonymous_ProcDeliveryAnimalMenu_ACall_closure0_Invoke(__int64 a1)
+{
+  __int64 v1;
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+
+  v1 = *(_QWORD*)(a1 + 8);
+  (*(void (**)(__int64))(*(_QWORD*)(v1 + 1056) + 104LL))(v1 + 1056);
+  v2 = v1;
+  v3 = v1;
+  v4 = GameData_212c610;
+  v5 = GameData_2131c18[0];
+  do {
+    v6 = __dynamic_cast(v3, v4, v5, 0);
+    v3 = *(_QWORD*)(v3 + 32);
+    if (v6 != 0) {
+      v2 = v6;
+    }
+  } while (v3 != 0);
+  v7 = *(_QWORD*)(v2 + 152);
+  if (v7 == 0) {
+    v7 = v2;
+  }
+  GameRoutine_187dc60(*(_QWORD*)(v7 + 32), *(_QWORD*)(v1 + 1080), v1 + 1088);
+  return 4;
+}
+
+__int64
+
+game_menu_anonymous_ProcDeliveryAnimalMenu_BCall_closure_Invoke(__int64 a1)
+{
+  (*(void (**)(__int64))(*(_QWORD*)(*(_QWORD*)(a1 + 8) + 1056LL) + 104LL))(
+      *(_QWORD*)(a1 + 8) + 1056LL);
+  return 5;
 }
 
 #pragma GCC visibility pop

@@ -36,6 +36,8 @@ __int64 WaveStreamReader_Unknown13(__int64 a1);
 __int64 WaveStreamReader_Unknown14(__int64 a1, int a2);
 bool WaveStreamReader_Unknown15(__int64 a1, int a2, int a3, int a4);
 __int64 WaveStreamReader_18d1e0(__int64 a1);
+__int64 WaveStreamReader_Unknown10(__int64 a1, __int64 a2, int a3, __int64 a4,
+                                   __int64 a5, __int64 a6);
 
 __int64 WaveStreamReader_Destructor(_QWORD* a1)
 {
@@ -378,6 +380,28 @@ __int64 WaveStreamReader_Unknown9(__int64 a1, __int64 a2, int a3, __int64 a4,
     }
   }
   return result;
+}
+
+__int64 WaveStreamReader_Unknown10(__int64 a1, __int64 a2, int a3, __int64 a4,
+                                   __int64 a5, __int64 a6)
+{
+  __int64 v7;
+
+  if (*(_DWORD*)(a1 + 72) == 7) {
+    memset(a2, 0, a3, a4, a5, a6);
+    return 0;
+  }
+  else {
+    v7 = *(_QWORD*)(a1 + 168);
+    if (a3 <= *(_DWORD*)(v7 + 4)) {
+      memcpy(a2, v7 + 12, a3);
+      return 1;
+    }
+    else {
+      *(_DWORD*)(a1 + 72) = 7;
+      return 0;
+    }
+  }
 }
 
 bool WaveStreamReader_Unknown11(__int64 a1, int a2)

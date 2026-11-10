@@ -108,6 +108,7 @@ __int64 SoundArchivePlayer_27a400(__int64 a1, _QWORD* a2, unsigned int a3,
                                   __int64 a4, __int64 a5, char a6, __int64 a7,
                                   __int64 a8);
 __int64 SoundArchivePlayer_Unknown4(__int64 a1, __int64 a2, __int64 a3);
+__int64 SoundArchivePlayer_Unknown3(__int64 a1, __int64 a2);
 
 _QWORD* SoundArchivePlayer_Destructor(_QWORD* a1)
 {
@@ -1143,6 +1144,12 @@ LABEL_148:
   BasicSound_282870(v46, &SystemTickEv);
   GameRoutine_27bdc0(a2, v46);
   return 0;
+}
+
+__int64 SoundArchivePlayer_Unknown3(__int64 a1, __int64 a2)
+{
+  return (*(__int64 (**)(__int64, __int64, _QWORD))(*(_QWORD*)a1 + 32LL))(
+      a1, a2, 0);
 }
 
 __int64 SoundArchivePlayer_Unknown4(__int64 a1, __int64 a2, __int64 a3)

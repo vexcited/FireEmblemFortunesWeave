@@ -2,6 +2,9 @@
 
 #pragma GCC visibility push(hidden)
 
+struct PseudoSret {
+  _QWORD words[3];
+};
 __int64 GameRoutine_193ab40(_QWORD);
 __int64 GameRoutine_193b240(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_193b3e0(_QWORD, _QWORD, _QWORD, _QWORD);
@@ -22,6 +25,18 @@ __int64 LODModule_Unknown7(__int64 result);
 __int64 LODModule_Unknown8(__int64 result);
 __int64 LODModule_Unknown9(__int64 result);
 __int64 LODModule_a98560(__int64 result);
+__int64 GameRoutine_193ac30(_QWORD, _QWORD);
+__int64 GameRoutine_a991b0(_QWORD, _QWORD);
+__int64 GameRoutine_a993a0(_QWORD, _QWORD, _QWORD);
+__int64 LODModule_a98560_alt1(_QWORD) __asm__("LODModule_a98560");
+__int64 fw_memory_HeapManager_Allocate(_QWORD, _QWORD, _QWORD, _QWORD);
+__int64 memset(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
+__int64 nn_mem_StandardAllocator_Free_alt1(_QWORD, long double) __asm__(
+    "nn_mem_StandardAllocator_Free");
+__int64 std___1___shared_weak_count_lock(void);
+struct PseudoSret GameRoutine_a99c80(_QWORD, _QWORD);
+__int64 LODModule_a98be0(__int64 result, __int64 a2, __int64 a3,
+                         unsigned int a4);
 
 __int64 LODModule_Destructor(__int64 a1)
 {
@@ -1180,6 +1195,188 @@ __int64 LODModule_a98560(__int64 result)
         ++v22;
         *(_QWORD*)(result + 96) = 0;
       } while (v22 != v3);
+    }
+  }
+  return result;
+}
+
+__int64 LODModule_a98be0(__int64 result, __int64 a2, __int64 a3,
+                         unsigned int a4)
+{
+  int v4;
+  __int64 v5;
+  __int64 v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  unsigned __int64 v12;
+  __int64 v13;
+  __int64 v14;
+  __int64 v15;
+  __int64 v16;
+  __int64 v17;
+  __int64 v18;
+  unsigned int v19;
+  __int64 v20;
+  unsigned int v21;
+  unsigned __int64 v22;
+  __int64 v23;
+  _DWORD* v24;
+  __int64 v25;
+  __int64 v26;
+  unsigned __int64 v27;
+  __int64 v28;
+  __int64 v29;
+  __int64 v30;
+  __int64 v31;
+  __int64 v32;
+  __int64 v33;
+  __int64 v34;
+  __int64 v35;
+  __int64 v36;
+  unsigned __int64 v37;
+  long double v38;
+  __int64 v39;
+  _QWORD v40[9];
+  __int64 v41;
+  int v42;
+  unsigned int v43;
+  __int64 v44;
+  __int64 v45;
+  __int64 v46;
+
+  v4 = *(_DWORD*)(result + 208);
+  v46 = a2;
+  if (v4 == 0) {
+    v5 = result;
+    result = *(_QWORD*)(result + 32);
+    if (result != 0) {
+      result = std___1___shared_weak_count_lock();
+      if (result != 0) {
+        v8 = *(_QWORD*)(v5 + 24);
+        v9 = result;
+        if (v8 != 0) {
+          GameRoutine_a993a0(v5 + 168, &v46, &v46);
+          v10 = *(_QWORD*)(v46 + 24);
+          if (*(_QWORD*)(v46 + 32) != 0) {
+            v10 = *(_QWORD*)(v46 + 32);
+          }
+          v11 = fw_memory_g_heap_manager_ptr;
+          v12 = *(_QWORD*)(v10 + 88) - *(_QWORD*)(v10 + 80);
+          v13 = (unsigned int)(v12 >> 5);
+          if ((unsigned int)(v12 >> 5) != 0) {
+            v14 = fw_memory_HeapManager_Allocate(
+                *(_QWORD*)fw_memory_g_heap_manager_ptr, 4 * v13, 16, 0);
+            memset(v14, 0, 4 * v13, v15, v16, v17);
+            v18 = v14 + 4 * v13;
+            v19 = a4;
+            if (a4 != 0) {
+            LABEL_10:
+              v20 = 0;
+              v21 = 0;
+              v22 = v19;
+              while (1) {
+                v23 = *(unsigned int*)(a3 + 4 * v20);
+                if ((_DWORD)v23 != 0) {
+                  v24 = (_DWORD*)(v14 + 4LL * v21);
+                  v25 = v23 & 7;
+                  if ((v23 & 7) != 0) {
+                    v26 = v23 - v25;
+                    do {
+                      *v24++ = v20;
+                      --v25;
+                    } while (v25 != 0);
+                    if ((unsigned int)v23 < 8) {
+                      goto LABEL_11;
+                    }
+                  LABEL_19:
+                    v27 = v26 - 1;
+                    do {
+                      *v24 = v20;
+                      v24[1] = v20;
+                      v24[2] = v20;
+                      v24[3] = v20;
+                      v27 -= 8LL;
+                      v24[4] = v20;
+                      v24[5] = v20;
+                      v24[6] = v20;
+                      v24[7] = v20;
+                      v24 += 8;
+                    } while (v27 < 0xFFFFFFFFFFFFFFFELL);
+                    goto LABEL_11;
+                  }
+                  v26 = *(unsigned int*)(a3 + 4 * v20);
+                  if ((unsigned int)v23 >= 8) {
+                    goto LABEL_19;
+                  }
+                }
+              LABEL_11:
+                v21 += v23;
+                if (++v20 == v19) {
+                  goto LABEL_24;
+                }
+              }
+            }
+          }
+          else {
+            v18 = 0;
+            v14 = 0;
+            v19 = a4;
+            if (a4 != 0) {
+              goto LABEL_10;
+            }
+          }
+          v22 = 0;
+        LABEL_24:
+          v28 = *(_QWORD*)(v8 + 296);
+          v29 = (v18 - v14) >> 2;
+          v30 = 80;
+          if (*(_QWORD*)(v46 + 32) == 0) {
+            v30 = 72;
+          }
+          v31 = *(_QWORD*)(v46 + v30);
+          v44 = v14;
+          v45 = v29;
+          v41 = v31;
+          v42 = 2;
+          v43 = v19;
+          *(struct PseudoSret*)(v40) = GameRoutine_a99c80(v28, &v41);
+          GameRoutine_193ac30(v5 + 40, v40);
+          GameRoutine_193ab40(v40);
+          v35 = *(_QWORD*)(v5 + 136);
+          v36 = *(_QWORD*)(v5 + 144);
+          v37 = 0xAAAAAAAAAAAAAAABLL * (v36 - v35);
+          if (v22 <= v37) {
+            if (v22 < v37) {
+              v36 = v35 + 3 * v22;
+              *(_QWORD*)(v5 + 144) = v36;
+            }
+          }
+          else {
+            GameRoutine_a991b0(v5 + 136, v22 - v37);
+            v35 = *(_QWORD*)(v5 + 136);
+            v36 = *(_QWORD*)(v5 + 144);
+          }
+          if (v35 != v36) {
+            memset(v35, 0, 3 * ((v36 - v35 - 3) / 3uLL) + 3, v32, v33, v34);
+          }
+          result = LODModule_a98560_alt1(v5);
+          *(_DWORD*)(v5 + 208) = 4;
+          if (v14 != 0) {
+            v39 = 128;
+            if (*(_QWORD*)(*(_QWORD*)v11 + 200LL) == 0) {
+              v39 = 56;
+            }
+            result =
+                nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v11 + v39, v38);
+          }
+        }
+        if (atomic_fetch_add((atomic_ullong* volatile)(v9 + 8),
+                             0xFFFFFFFFFFFFFFFFLL) == 0) {
+          (*(void (**)(__int64))(*(_QWORD*)v9 + 16LL))(v9);
+          return std___1___shared_weak_count___release_weak(v9);
+        }
+      }
     }
   }
   return result;

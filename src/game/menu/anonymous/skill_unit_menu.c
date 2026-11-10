@@ -18,6 +18,9 @@ struct PseudoSret GameRoutine_1560070(_QWORD, _QWORD);
 __int64 SkillUnitMenu_Unknown88(__int64 a1);
 __int64 SkillUnitMenu_Unknown90(_QWORD* a1);
 __int64 SkillUnitMenu_Unknown139(__int64 a1);
+bool GameRoutine_157b780(_BOOL8 result, _DWORD*);
+bool game_menu_anonymous_SkillUnitMenu_OnAddArtsMenuItem_closure_Invoke(
+    __int64 a1, int* a2);
 
 __int64 SkillUnitMenu_Unknown88(__int64 a1)
 {
@@ -142,6 +145,17 @@ __int64 SkillUnitMenu_Unknown139(__int64 a1)
 {
   (*(void (**)(__int64, __int64))(*(_QWORD*)a1 + 240LL))(a1, 1);
   return (*(__int64 (**)(__int64, __int64))(*(_QWORD*)a1 + 248LL))(a1, 1);
+}
+
+bool game_menu_anonymous_SkillUnitMenu_OnAddArtsMenuItem_closure_Invoke(
+    __int64 a1, int* a2)
+{
+  __int64 v2;
+  int v4;
+
+  v2 = *(_QWORD*)(*(_QWORD*)(a1 + 8) + 1072LL);
+  v4 = *a2;
+  return GameRoutine_157b780(v2, &v4);
 }
 
 #pragma GCC visibility pop

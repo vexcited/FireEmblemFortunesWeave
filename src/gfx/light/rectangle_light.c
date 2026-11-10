@@ -7,11 +7,10 @@ extern __int128 GameData_1b80310;
 extern __int64 (*gfx_light_Instance_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 float RectangleLight_Unknown2(__int64 a1);
-
-long double RectangleLight_c53f00() { return *(long double*)&GameData_1b80310; }
-
 __int64 GameHr_c76f00(__int64 a1, __int64 a2);
 _QWORD* RectangleLight_c541a0(_QWORD* result);
+extern __int128 GameData_1b80320;
+long double RectangleLight_c53f10();
 
 float RectangleLight_Unknown2(__int64 a1)
 {
@@ -32,6 +31,10 @@ float RectangleLight_Unknown2(__int64 a1)
   }
   return (float)(v1 * *(float*)(a1 + 72)) * (float)(*(float*)(a1 + 68) + 1.0f);
 }
+
+long double RectangleLight_c53f00() { return *(long double*)&GameData_1b80310; }
+
+long double RectangleLight_c53f10() { return *(long double*)&GameData_1b80320; }
 
 _QWORD* RectangleLight_c541a0(_QWORD* result)
 {

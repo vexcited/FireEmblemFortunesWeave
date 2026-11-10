@@ -12,6 +12,7 @@ __int64 PlayerHeapDataManager_Unknown3(__int64 a1, int a2, __int64 a3);
 __int64 PlayerHeapDataManager_2918b0(__int64 a1, int a2, __int64 a3);
 __int64 PlayerHeapDataManager_Unknown4(__int64 a1, int a2);
 __int64 PlayerHeapDataManager_291c30(__int64 a1, int a2);
+__int64 PlayerHeapDataManager_Unknown4_291d70(__int64 a1);
 
 __int64 PlayerHeapDataManager_Destructor(__int64 a1)
 {
@@ -427,6 +428,11 @@ __int64 PlayerHeapDataManager_291c30(__int64 a1, int a2)
     return *(_QWORD*)(a1 + 672);
   }
   return 0;
+}
+
+__int64 PlayerHeapDataManager_Unknown4_291d70(__int64 a1)
+{
+  return (*(__int64 (**)(__int64))(*(_QWORD*)(a1 - 24) + 32LL))(a1 - 24);
 }
 
 #pragma GCC visibility pop

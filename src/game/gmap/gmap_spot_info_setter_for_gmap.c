@@ -16,6 +16,7 @@ extern __int64* GameData_212fc70[2];
 __int64 GmapSpotInfoSetterForGmap_Unknown6(__int64 a1);
 __int64 GmapSpotInfoSetterForGmap_DeletingDestructor(_QWORD* a1);
 _QWORD* GmapSpotInfoSetterForGmap_1657240(_QWORD* result);
+float GmapSpotInfoSetterForGmap_Unknown7() { return 742.0; };
 
 _QWORD* GmapSpotInfoSetterForGmap_1657240(_QWORD* result)
 {

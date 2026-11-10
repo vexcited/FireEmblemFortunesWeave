@@ -28,6 +28,7 @@ __int64 TargetVibration_Unknown18(__int64 a1);
 __int64 TargetVibration_Unknown19(__int64 a1);
 __int64 TargetVibration_Unknown20(__int64 a1, __int64 a2);
 __int64 TargetVibration_Unknown21(__int64 a1, __int64 a2, unsigned int a3);
+__int64 TargetVibration_Unknown15(__int64 result);
 
 __int64 TargetVibration_Destructor(_QWORD* a1)
 {
@@ -178,6 +179,12 @@ __int64 TargetVibration_Unknown13(__int64 a1)
   else {
     return nn_hid_VibrationPlayer_IsPlaying(*(_QWORD*)(a1 + 40) + 8LL);
   }
+}
+
+__int64 TargetVibration_Unknown15(__int64 result)
+{
+  *(_BYTE*)(result + 64) = 0;
+  return result;
 }
 
 __int64 TargetVibration_Unknown17(__int64 result)

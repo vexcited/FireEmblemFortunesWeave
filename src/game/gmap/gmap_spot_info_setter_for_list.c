@@ -9,6 +9,7 @@ extern __int64 (*game_gmap_GmapSpotInfoSetter_vtable)();
 extern __int64 fw_memory_g_heap_manager_ptr;
 const char* GmapSpotInfoSetterForList_Unknown8(__int64 a1, char a2);
 __int64 GmapSpotInfoSetterForList_DeletingDestructor(_QWORD* a1);
+float GmapSpotInfoSetterForList_Unknown7() { return 230.0; };
 
 const char* GmapSpotInfoSetterForList_Unknown8(__int64 a1, char a2)
 {

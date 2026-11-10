@@ -7,10 +7,13 @@ extern __int64 (*GameData_200dca0[])();
 extern __int64 (*GameData_200dd20[])();
 extern __int64 (*GameData_200dda0[])();
 __int64 DirectIn_Unknown18(__int64* a1);
-
-float DirectIn_Unknown19() { return 0.4; }
-
 __int64 WallCollisionModule_Unknown8(__int64 result);
+__int64 GameRoutine_809ba0(float);
+__int64 GameRoutine_809dc0(_QWORD, _QWORD, long double);
+extern _UNKNOWN* GameData_212c960;
+extern __int64 game_ProcFadeView_instance_;
+__int64 game_combat_transition_DirectIn_Schedule_closure_Invoke(long double a1);
+__int64 game_combat_transition_DirectIn_Schedule_closure1_Invoke();
 
 __int64 DirectIn_Unknown18(__int64* a1)
 {
@@ -113,6 +116,32 @@ LABEL_17:
     v11 = 40;
   }
   return (*(__int64 (**)(_QWORD*))(*v13 + v11))(v13);
+}
+
+float DirectIn_Unknown19() { return 0.4; }
+
+__int64 game_combat_transition_DirectIn_Schedule_closure_Invoke(long double a1)
+{
+  __int64 result;
+
+  result = game_ProcFadeView_instance_;
+  if (game_ProcFadeView_instance_ != 0) {
+    LODWORD(a1) = 1045220557;
+    return GameRoutine_809dc0(game_ProcFadeView_instance_, GameData_212c960,
+                              a1);
+  }
+  return result;
+}
+
+__int64 game_combat_transition_DirectIn_Schedule_closure1_Invoke()
+{
+  __int64 result;
+
+  result = game_ProcFadeView_instance_;
+  if (game_ProcFadeView_instance_ != 0) {
+    return GameRoutine_809ba0(0.2);
+  }
+  return result;
 }
 
 #pragma GCC visibility pop

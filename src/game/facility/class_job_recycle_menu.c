@@ -20,6 +20,17 @@ extern __int64* GameData_212e348;
 extern __int64* msg_MessageManager_instance__ptr[2];
 extern char* GameData_20e21b8[3];
 __int64 ClassJobRecycleMenu_Unknown88(__int64 a1);
+__int64 GameRoutine_16dd280(_QWORD);
+__int64 game_gameui_anonymous_ProcGameUIFade_In(_QWORD, _QWORD, _QWORD, _QWORD,
+                                                _QWORD, _QWORD);
+extern __int64 GameData_2259540;
+bool game_facility_ClassJobRecycleMenu_SortAndFilter_lambda0_Invoke(__int64 a1,
+                                                                    __int64 a2,
+                                                                    __int64 a3);
+__int64
+game_facility_ClassJobRecycleMenu_OnUnbindImpl_lambda0_Invoke(__int64 result);
+__int64 game_facility_ClassJobRecycleMenu_ACall_lambda0_Invoke(__int64 a1);
+__int64 game_facility_ClassJobRecycleMenu_ACall_lambda2_Invoke(__int64 a1);
 
 __int64 ClassJobRecycleMenu_Unknown88(__int64 a1)
 {
@@ -157,6 +168,68 @@ __int64 ClassJobRecycleMenu_Unknown88(__int64 a1)
     }
   }
   return result;
+}
+
+bool game_facility_ClassJobRecycleMenu_SortAndFilter_lambda0_Invoke(__int64 a1,
+                                                                    __int64 a2,
+                                                                    __int64 a3)
+{
+  int v3;
+  int v4;
+
+  if (*(_QWORD*)(*(_QWORD*)a2 + 88LL) != 0) {
+    v3 = 10000;
+  }
+  else {
+    v3 = 0;
+  }
+  if (*(_QWORD*)(*(_QWORD*)a3 + 88LL) != 0) {
+    v4 = 10000;
+  }
+  else {
+    v4 = 0;
+  }
+  return v3 - *(unsigned __int16*)(*(_QWORD*)(*(_QWORD*)a2 + 96LL) + 16LL) >
+         v4 - *(unsigned __int16*)(*(_QWORD*)(*(_QWORD*)a3 + 96LL) + 16LL);
+}
+
+__int64
+
+game_facility_ClassJobRecycleMenu_OnUnbindImpl_lambda0_Invoke(__int64 result)
+{
+  __int64 v1;
+  __int64 v2;
+  int v3;
+  unsigned int v4;
+  unsigned int v5;
+
+  v1 = GameData_2259540;
+  if (GameData_2259540 != 0) {
+    v2 = *(_QWORD*)(result + 8);
+    v3 = GameRoutine_16dd280(v2);
+    v4 = v3 - (*(__int64 (**)(__int64))(*(_QWORD*)v2 + 224LL))(v2);
+    v5 = (*(__int64 (**)(__int64))(*(_QWORD*)v2 + 496LL))(v2);
+    return game_gameui_anonymous_ProcGameUIFade_In(v1, v4, 0, v5, 1, v2);
+  }
+  return result;
+}
+
+__int64 game_facility_ClassJobRecycleMenu_ACall_lambda0_Invoke(__int64 a1)
+{
+  __int64 v1;
+
+  v1 = *(_QWORD*)(a1 + 8);
+  *(_BYTE*)(v1 + 1064) = 1;
+  return 2;
+}
+
+__int64 game_facility_ClassJobRecycleMenu_ACall_lambda2_Invoke(__int64 a1)
+{
+  __int64 v1;
+
+  v1 = *(_QWORD*)(a1 + 8);
+  *(_BYTE*)(v1 + 1065) = 1;
+  return 2;
 }
 
 #pragma GCC visibility pop

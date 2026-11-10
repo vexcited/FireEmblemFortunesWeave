@@ -18,6 +18,18 @@ void GameRoutine_17644e0(_QWORD*, __int64, __int64, __int64);
 __int64 TelopSkillLearnIndividually_Unknown57(__int64 a1);
 void TelopSkillLearnIndividually_Unknown63(_QWORD* a1, int* a2, char* a3);
 __int64 TelopSkillLearnIndividually_DeletingDestructor(_QWORD* a1);
+__int64 GameRoutine_1767f90(_QWORD, _QWORD, _QWORD);
+__int64 fw_memory_HeapManager_Allocate(_QWORD, _QWORD, _QWORD, _QWORD);
+__int64 memcpy(_QWORD, _QWORD, _QWORD);
+extern __int64 (*GameData_20c2420[])();
+void __attribute__((noreturn)) GameRoutine_6881c0(_QWORD);
+_QWORD*
+game_telop_TelopSkillLearnIndividually_CreateBind_lambda0_Clone(_QWORD* a1);
+_QWORD* game_telop_TelopSkillLearnIndividually_CreateBind_lambda0_CloneInto(
+    _QWORD* result, _QWORD* a2);
+__int64
+game_telop_TelopSkillLearnIndividually_CreateBind_lambda1_Invoke(__int64 a1,
+                                                                 _QWORD* a2);
 
 __int64 TelopSkillLearnIndividually_Unknown57(__int64 a1)
 {
@@ -156,6 +168,94 @@ __int64 TelopSkillLearnIndividually_DeletingDestructor(_QWORD* a1)
     v9 = 56;
   }
   return nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v9, a1);
+}
+
+_QWORD*
+
+game_telop_TelopSkillLearnIndividually_CreateBind_lambda0_Clone(_QWORD* a1)
+{
+  _QWORD* v2;
+  _QWORD* v3;
+  __int64 v4;
+  __int64 v5;
+  _QWORD* v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  __int64 v10;
+
+  v2 = (_QWORD*)fw_memory_g_heap_manager_ptr;
+  v3 = (_QWORD*)fw_memory_HeapManager_Allocate(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr, 48, 16, 0);
+  v4 = a1[1];
+  v5 = a1[2];
+  v6 = v3;
+  v3[2] = 0;
+  v3[3] = 0;
+  v3[4] = 0;
+  *v3 = GameData_20c2420;
+  v3[1] = v4;
+  v7 = a1[3];
+  v8 = v7 - v5;
+  if (v7 != v5) {
+    if (v8 < 0) {
+      GameRoutine_6881c0(v3);
+    }
+    v9 = fw_memory_HeapManager_Allocate(*v2, v7 - v5, 16, 0);
+    v10 = v9 + v8;
+    v6[2] = v9;
+    v6[4] = v9 + v8;
+    memcpy(v9, v5, v8);
+    v6[3] = v10;
+  }
+  v6[5] = a1[5];
+  return v6;
+}
+
+_QWORD* game_telop_TelopSkillLearnIndividually_CreateBind_lambda0_CloneInto(
+    _QWORD* result, _QWORD* a2)
+{
+  _QWORD* v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+
+  v3 = result;
+  *a2 = GameData_20c2420;
+  v4 = result[1];
+  a2[3] = 0;
+  a2[4] = 0;
+  a2[1] = v4;
+  a2[2] = 0;
+  v6 = result[2];
+  v5 = result[3];
+  v7 = v5 - v6;
+  if (v5 != v6) {
+    if (v7 < 0) {
+      GameRoutine_6881c0(result);
+    }
+    v8 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
+                                        v5 - v6, 16, 0);
+    v9 = v8 + v7;
+    a2[2] = v8;
+    a2[3] = v8;
+    a2[4] = v8 + v7;
+    result = (_QWORD*)memcpy(v8, v6, v7);
+    a2[3] = v9;
+  }
+  a2[5] = v3[5];
+  return result;
+}
+
+__int64
+
+game_telop_TelopSkillLearnIndividually_CreateBind_lambda1_Invoke(__int64 a1,
+                                                                 _QWORD* a2)
+{
+  return GameRoutine_1767f90(*a2, *(_QWORD*)(a1 + 8), *(_QWORD*)(a1 + 16));
 }
 
 #pragma GCC visibility pop

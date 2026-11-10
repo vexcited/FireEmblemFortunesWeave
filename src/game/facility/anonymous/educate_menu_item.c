@@ -4,6 +4,9 @@
 
 __int64 GameRoutine_16dac80(_QWORD);
 __int64 EducateMenuItem_Unknown25(_QWORD* a1);
+__int64 GameRoutine_16ef100(_QWORD, _QWORD);
+__int64 game_facility_anonymous_EducateMenuItem_UpdateHelp_closure_Invoke(
+    __int64 a1, __int64 a2, __int64 a3);
 
 __int64 EducateMenuItem_Unknown25(_QWORD* a1)
 {
@@ -22,6 +25,17 @@ __int64 EducateMenuItem_Unknown25(_QWORD* a1)
   }
   GameRoutine_16dac80(v3);
   return 9;
+}
+
+__int64 game_facility_anonymous_EducateMenuItem_UpdateHelp_closure_Invoke(
+    __int64 a1, __int64 a2, __int64 a3)
+{
+  __int64 result;
+
+  if ((*(_BYTE*)(a3 + 1) & 0x10) != 0) {
+    return GameRoutine_16ef100(a2, "MID_Menu_Cause_NotHero_Educate");
+  }
+  return result;
 }
 
 #pragma GCC visibility pop

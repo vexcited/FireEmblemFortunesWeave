@@ -9,11 +9,7 @@ void VectorGraphicsShapePathEllipse_Unknown5(__int64 a1, float a2);
 __int64 VectorGraphicsShapePathEllipse_Unknown8(__int64 a1);
 bool VectorGraphicsShapePathEllipse_Unknown14(__int64 a1);
 __int64 VectorGraphicsShapePathEllipse_Unknown9(__int64 a1);
-
-__int64 VectorGraphicsShapePathEllipse_Unknown4(__int64 a1)
-{
-  return **(unsigned __int8**)(a1 + 32);
-}
+float VectorGraphicsShapePathEllipse_Unknown6(__int64 a1);
 
 void VectorGraphicsShapePathEllipse_Unknown5(__int64 a1, float a2)
 {
@@ -64,6 +60,16 @@ __int64 VectorGraphicsShapePathEllipse_Unknown8(__int64 a1)
 bool VectorGraphicsShapePathEllipse_Unknown14(__int64 a1)
 {
   return (*(_BYTE*)(*(_QWORD*)(a1 + 32) + 1LL) & 2) != 0;
+}
+
+__int64 VectorGraphicsShapePathEllipse_Unknown4(__int64 a1)
+{
+  return **(unsigned __int8**)(a1 + 32);
+}
+
+float VectorGraphicsShapePathEllipse_Unknown6(__int64 a1)
+{
+  return *(float*)(a1 + 40);
 }
 
 __int64 VectorGraphicsShapePathEllipse_Unknown9(__int64 a1)

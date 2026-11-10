@@ -7,6 +7,8 @@ extern __int64 (*game_GameUnitRecord_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 GameUnitRecord_Destructor(_QWORD* a1);
 __int64 GameUnitRecord_DeletingDestructor(_QWORD* a1);
+void GameUnitRecord_130c3f0(__int64 a1, _QWORD* a2) { *a2 = 0; };
+void GameUnitRecord_130c400(__int64 a1, _DWORD* a2) { *a2 = 0; };
 
 __int64 GameUnitRecord_Destructor(_QWORD* a1)
 {

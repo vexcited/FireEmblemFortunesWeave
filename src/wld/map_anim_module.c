@@ -44,6 +44,8 @@ __int64 MapAnimModule_c09200(__int64 result, int a2, float a3);
 __int64 MapAnimModule_Unknown5(__int64 result);
 __int64 MapAnimModule_c09f40(__int64 a1, _QWORD* a2);
 __int64 MapAnimModule_c0a840(__int64 a1);
+__int64 wld_MapAnimModule_initializeMaterialTable_lambda0_Invoke(__int64 result,
+                                                                 _BYTE* a2);
 
 _QWORD* MapAnimModule_Destructor(_QWORD* result)
 {
@@ -1064,6 +1066,13 @@ LABEL_52:
   *(_BYTE*)(a1 + 576) = 1;
   nn_os_UnlockMutex(GameData_212df28);
   return v3;
+}
+
+__int64 wld_MapAnimModule_initializeMaterialTable_lambda0_Invoke(__int64 result,
+                                                                 _BYTE* a2)
+{
+  *(_BYTE*)(*(_QWORD*)(result + 8) + 22LL) = *a2;
+  return result;
 }
 
 #pragma GCC visibility pop

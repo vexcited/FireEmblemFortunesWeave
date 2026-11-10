@@ -16,6 +16,16 @@ extern __int64* GameData_212dcd0;
 extern __int64* GameData_212e008[9];
 __int64 ProcStableBreedingFoodMenu_Unknown88(__int64 a1);
 __int64 ProcStableBreedingFoodMenu_Unknown101(_QWORD* a1);
+__int64 BasicMenuCursor_16e0c00(_QWORD, _QWORD);
+__int64 fw_memory_HeapManager_Allocate(_QWORD, _QWORD, _QWORD, _QWORD);
+extern __int64 fw_memory_g_heap_manager_ptr;
+extern __int64* GameData_212c878[6];
+unsigned __int16* GameRoutine_16bfbb0(__int64, int, unsigned __int8*);
+__int64
+game_facility_anonymous_ProcStableBreedingFoodMenu_AddItemList_closure_Invoke(
+    __int64 a1, int* a2);
+bool game_facility_anonymous_ProcStableBreedingFoodMenu_SortAndFilter_closure_Invoke(
+    __int64 a1, _QWORD* a2);
 
 __int64 ProcStableBreedingFoodMenu_Unknown88(__int64 a1)
 {
@@ -85,6 +95,38 @@ __int64 ProcStableBreedingFoodMenu_Unknown101(_QWORD* a1)
     return (*(__int64 (**)(__int64))(*(_QWORD*)result + 208LL))(result);
   }
   return result;
+}
+
+__int64
+
+game_facility_anonymous_ProcStableBreedingFoodMenu_AddItemList_closure_Invoke(
+    __int64 a1, int* a2)
+{
+  int v2;
+  __int64 v3;
+  __int64 v5;
+
+  v2 = *a2;
+  v3 = *(_QWORD*)(a1 + 8);
+  if (*a2 == **(_DWORD**)(a1 + 24)) {
+    **(_BYTE**)(a1 + 32) = 1;
+  }
+  v5 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
+                                      88, 16, 0);
+  GameRoutine_16bfbb0(v5, v2, *(unsigned __int8**)(a1 + 16));
+  return BasicMenuCursor_16e0c00(v3, v5);
+}
+
+bool game_facility_anonymous_ProcStableBreedingFoodMenu_SortAndFilter_closure_Invoke(
+    __int64 a1, _QWORD* a2)
+{
+  return *(_BYTE*)(a1 + 8) == 3 ||
+         *(unsigned __int8*)(*(_QWORD*)(*(_QWORD*)(*GameData_212c878[0] + 64) +
+                                        8LL *
+                                            *(unsigned __int16*)(*(
+                                                __int64 (**)(_QWORD))(
+                                                *(_QWORD*)*a2 + 560LL))(*a2)) +
+                             94LL) == *(unsigned __int8*)(a1 + 8);
 }
 
 #pragma GCC visibility pop

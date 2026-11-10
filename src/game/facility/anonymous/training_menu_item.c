@@ -27,6 +27,8 @@ __int64 TrainingMenuItem_Unknown25(__int64 a1);
 __int64 TrainingMenuItem_Unknown76(__int64 a1, __int64 a2, int a3);
 __int64 TrainingMenuItem_Unknown55(__int64 a1);
 __int64 TrainingMenuItem_Unknown73_15f65b0(_QWORD* a1);
+extern __int64 GameData_2247280;
+__int64 game_facility_anonymous_TrainingMenuItem_ACall_closure_Invoke();
 
 __int64 TrainingMenuItem_Unknown25(__int64 a1)
 {
@@ -111,6 +113,14 @@ __int64 TrainingMenuItem_Unknown76(__int64 a1, __int64 a2, int a3)
     return GameRoutine_16ef100(a2, "MID_Menu_Cause_NotPerson_BottomUp");
   }
   return result;
+}
+
+__int64 game_facility_anonymous_TrainingMenuItem_ACall_closure_Invoke()
+{
+  if (GameData_2247280 != 0) {
+    *(_DWORD*)(GameData_2247280 + 168) = 3;
+  }
+  return 4;
 }
 
 __int64 TrainingMenuItem_Unknown55(__int64 a1)

@@ -10,6 +10,11 @@ extern __int64 (*game_character_CharacterDamageFalldown_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 CharacterDamageFalldown_Destructor(_QWORD* a1);
 __int64 CharacterDamageFalldown_DeletingDestructor(_QWORD* a1);
+extern __int128 GameData_1a83610;
+long double
+game_character_CharacterDamageFalldown_OnEnable_lambda0_Invoke(__int64 a1);
+__int64
+game_character_CharacterDamageFalldown_OnEnable_lambda1_Invoke(__int64 result);
 
 __int64 CharacterDamageFalldown_Destructor(_QWORD* a1)
 {
@@ -53,6 +58,59 @@ __int64 CharacterDamageFalldown_DeletingDestructor(_QWORD* a1)
   }
   return nn_mem_StandardAllocator_Free(
       *(_QWORD*)fw_memory_g_heap_manager_ptr + v4, a1);
+}
+
+long double
+
+game_character_CharacterDamageFalldown_OnEnable_lambda0_Invoke(__int64 a1)
+{
+  __int64 v1;
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  bool v5;
+  long double result;
+
+  v1 = *(_QWORD*)(a1 + 8);
+  v2 = *(_QWORD*)(v1 + 32);
+  if (v2 != 0) {
+    v3 = *(_QWORD*)(v2 + 8);
+    v4 = *(_QWORD*)(v1 + 40);
+    v5 = v3 == -1 || v4 == 0;
+    if (!v5 && *(_DWORD*)(*(_QWORD*)(v4 + 72) + 120LL) == -1193575788) {
+      *(_DWORD*)(*(_QWORD*)(v4 + 104) + 56LL) |= 0x400u;
+      *(_DWORD*)(v1 + 80) = 1;
+      *(_OWORD*)(v1 + 64) = GameData_1a83610;
+      return *(long double*)&GameData_1a83610;
+    }
+  }
+  return result;
+}
+
+__int64
+
+game_character_CharacterDamageFalldown_OnEnable_lambda1_Invoke(__int64 result)
+{
+  __int64 v1;
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  bool v5;
+
+  v1 = *(_QWORD*)(result + 8);
+  if (*(_DWORD*)(v1 + 80) == 1) {
+    v2 = *(_QWORD*)(v1 + 32);
+    if (v2 != 0) {
+      v3 = *(_QWORD*)(v2 + 8);
+      v4 = *(_QWORD*)(v1 + 40);
+      v5 = v3 == -1 || v4 == 0;
+      if (!v5 && *(_DWORD*)(*(_QWORD*)(v4 + 72) + 120LL) == -1193575788) {
+        *(_DWORD*)(*(_QWORD*)(v4 + 104) + 56LL) &= ~0x400u;
+        *(_DWORD*)(v1 + 80) = 2;
+      }
+    }
+  }
+  return result;
 }
 
 #pragma GCC visibility pop

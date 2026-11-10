@@ -17,6 +17,8 @@ extern __int64* GameData_2135018[6];
 __int64 Sound3DActor_Destructor(__int64 a1);
 __int64 Sound3DActor_Unknown5(__int64 a1, __int64* a2, unsigned int a3,
                               __int64 a4, __int64 a5);
+__int64 Sound3DActor_2771d0(__int64 result, __int64 a2);
+__int64 Sound3DActor_Unknown2(__int64 result, __int64 a2);
 
 __int64 Sound3DActor_Destructor(__int64 a1)
 {
@@ -126,6 +128,26 @@ __int64 Sound3DActor_Unknown5(__int64 a1, __int64* a2, unsigned int a3,
     BasicSound_282750(v18, 3);
     return v19;
   }
+  return result;
+}
+
+__int64 Sound3DActor_2771d0(__int64 result, __int64 a2)
+{
+  *(_QWORD*)(a2 + 8) = *(_QWORD*)(result + 248);
+  *(_QWORD*)a2 = *(_QWORD*)(result + 240);
+  *(_QWORD*)(a2 + 24) = *(_QWORD*)(result + 264);
+  *(_QWORD*)(a2 + 16) = *(_QWORD*)(result + 256);
+  *(_DWORD*)(a2 + 36) = *(_DWORD*)(result + 232);
+  return result;
+}
+
+__int64 Sound3DActor_Unknown2(__int64 result, __int64 a2)
+{
+  *(_QWORD*)(a2 + 8) = *(_QWORD*)(result + 40);
+  *(_QWORD*)a2 = *(_QWORD*)(result + 32);
+  *(_QWORD*)(a2 + 24) = *(_QWORD*)(result + 56);
+  *(_QWORD*)(a2 + 16) = *(_QWORD*)(result + 48);
+  *(_DWORD*)(a2 + 36) = *(_DWORD*)(result + 24);
   return result;
 }
 

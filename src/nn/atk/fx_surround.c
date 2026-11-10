@@ -11,6 +11,21 @@ extern __int64 GameData_21347a0[7];
 extern __int64* snd_g_memory_ptr[2];
 __int64 FxSurround_Destructor(_QWORD* a1);
 __int64 FxSurround_Unknown5(__int64 result, __int64 a2, int* a3);
+__int64 snd_coef_BiQuadCoef_BiQuadCoef(void);
+__int64 snd_coef_PeakingEQ_setFrequency(_QWORD, _QWORD);
+__int64 snd_coef_PeakingEQ_setGain(_QWORD, float);
+__int64 snd_coef_PeakingEQ_setQ(_QWORD, float);
+extern __int64 GameData_21347a8[6];
+__int64 FxSurround_175420(__int64 a1, unsigned int a2);
+__int64 FxSurround_175480(__int64 a1, int a2);
+__int64 FxSurround_1754e0(__int64 a1, int a2);
+__int64 FxSurround_175540(__int64 a1, int a2);
+__int64 FxSurround_1755a0(__int64 a1, unsigned int a2);
+__int64 FxSurround_175600(__int64 a1, int a2);
+__int64 FxSurround_175660(__int64 a1, int a2, float a3);
+__int64 FxSurround_175740(__int64 a1, int a2, unsigned __int16 a3);
+__int64 FxSurround_175800(__int64 a1, int a2, float a3);
+__int64 FxSurround_1758d0(_QWORD* a1);
 
 __int64 FxSurround_Destructor(_QWORD* a1)
 {
@@ -402,6 +417,240 @@ __int64 FxSurround_Unknown5(__int64 result, __int64 a2, int* a3)
     return nn_os_UnlockMutex(v12 + 6192);
   }
   return result;
+}
+
+__int64 FxSurround_175420(__int64 a1, unsigned int a2)
+{
+  unsigned int v4;
+
+  nn_os_LockMutex(a1 + 24768);
+  if (a2 <= 1) {
+    v4 = 1;
+  }
+  else {
+    v4 = a2;
+  }
+  if (v4 >= 0x3FF) {
+    v4 = 1023;
+  }
+  *(_DWORD*)(a1 + 108) = v4;
+  return nn_os_UnlockMutex(a1 + 24768);
+}
+
+__int64 FxSurround_175480(__int64 a1, int a2)
+{
+  int v4;
+
+  nn_os_LockMutex(a1 + 24768);
+  v4 = a2 & ~(a2 >> 31);
+  if (v4 >= 128) {
+    v4 = 128;
+  }
+  *(_DWORD*)(a1 + 112) = v4;
+  return nn_os_UnlockMutex(a1 + 24768);
+}
+
+__int64 FxSurround_1754e0(__int64 a1, int a2)
+{
+  int v4;
+
+  nn_os_LockMutex(a1 + 24768);
+  v4 = a2 & ~(a2 >> 31);
+  if (v4 >= 128) {
+    v4 = 128;
+  }
+  *(_DWORD*)(a1 + 116) = v4;
+  return nn_os_UnlockMutex(a1 + 24768);
+}
+
+__int64 FxSurround_175540(__int64 a1, int a2)
+{
+  int v4;
+
+  nn_os_LockMutex(a1 + 24768);
+  v4 = a2 & ~(a2 >> 31);
+  if (v4 >= 128) {
+    v4 = 128;
+  }
+  *(_DWORD*)(a1 + 120) = v4;
+  return nn_os_UnlockMutex(a1 + 24768);
+}
+
+__int64 FxSurround_1755a0(__int64 a1, unsigned int a2)
+{
+  unsigned int v4;
+
+  nn_os_LockMutex(a1 + 24768);
+  if (a2 <= 1) {
+    v4 = 1;
+  }
+  else {
+    v4 = a2;
+  }
+  if (v4 >= 0x3FF) {
+    v4 = 1023;
+  }
+  *(_DWORD*)(a1 + 124) = v4;
+  return nn_os_UnlockMutex(a1 + 24768);
+}
+
+__int64 FxSurround_175600(__int64 a1, int a2)
+{
+  int v4;
+
+  nn_os_LockMutex(a1 + 24768);
+  v4 = a2 & ~(a2 >> 31);
+  if (v4 >= 128) {
+    v4 = 128;
+  }
+  *(_DWORD*)(a1 + 128) = v4;
+  return nn_os_UnlockMutex(a1 + 24768);
+}
+
+__int64 FxSurround_175660(__int64 a1, int a2, float a3)
+{
+  __int64 v6;
+  float v7;
+  __int64 v8;
+  __int64 v9;
+
+  nn_os_LockMutex(a1 + 24768);
+  v6 = a1 + 4LL * a2;
+  v7 = 100.0;
+  if (a3 <= 100.0) {
+    v7 = a3;
+  }
+  if (v7 < 0.1) {
+    v7 = 0.1;
+  }
+  *(float*)(v6 + 24804) = v7;
+  v8 = *(_QWORD*)(*(_QWORD*)(a1 + 24760) + 8LL * a2 + 8);
+  v9 = *(_QWORD*)(v8 + 8LL * *(unsigned int*)(v8 + 124) + 128);
+  snd_coef_PeakingEQ_setFrequency(v9,
+                                  *(unsigned __int16*)(a1 + 2LL * a2 + 24800));
+  snd_coef_PeakingEQ_setQ(v9, *(float*)(v6 + 24804));
+  snd_coef_PeakingEQ_setGain(v9, *(float*)(v6 + 24812));
+  (*(void (**)(__int64))(*(_QWORD*)v9 + 16LL))(v9);
+  return nn_os_UnlockMutex(a1 + 24768);
+}
+
+__int64 FxSurround_175740(__int64 a1, int a2, unsigned __int16 a3)
+{
+  unsigned int v5;
+  unsigned int v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  __int64 v10;
+
+  v5 = a3;
+  nn_os_LockMutex(a1 + 24768);
+  if (v5 <= 0x64) {
+    v6 = 100;
+  }
+  else {
+    v6 = v5;
+  }
+  if (v6 >= 0x5DBF) {
+    v7 = 23999;
+  }
+  else {
+    v7 = v6;
+  }
+  *(_WORD*)(a1 + 2LL * a2 + 24800) = v7;
+  v8 = *(_QWORD*)(*(_QWORD*)(a1 + 24760) + 8LL * a2 + 8);
+  v9 = *(_QWORD*)(v8 + 8LL * *(unsigned int*)(v8 + 124) + 128);
+  snd_coef_PeakingEQ_setFrequency(v9, v7);
+  v10 = a1 + 4LL * a2;
+  snd_coef_PeakingEQ_setQ(v9, *(float*)(v10 + 24804));
+  snd_coef_PeakingEQ_setGain(v9, *(float*)(v10 + 24812));
+  (*(void (**)(__int64))(*(_QWORD*)v9 + 16LL))(v9);
+  return nn_os_UnlockMutex(a1 + 24768);
+}
+
+__int64 FxSurround_175800(__int64 a1, int a2, float a3)
+{
+  float v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+
+  nn_os_LockMutex(a1 + 24768);
+  v6 = 10.0;
+  v7 = a1 + 4LL * a2;
+  if (a3 <= 10.0) {
+    v6 = a3;
+  }
+  if (v6 < -10.0) {
+    v6 = -10.0;
+  }
+  *(float*)(v7 + 24812) = v6;
+  v8 = *(_QWORD*)(*(_QWORD*)(a1 + 24760) + 8LL * a2 + 8);
+  v9 = *(_QWORD*)(v8 + 8LL * *(unsigned int*)(v8 + 124) + 128);
+  snd_coef_PeakingEQ_setFrequency(v9,
+                                  *(unsigned __int16*)(a1 + 2LL * a2 + 24800));
+  snd_coef_PeakingEQ_setQ(v9, *(float*)(v7 + 24804));
+  snd_coef_PeakingEQ_setGain(v9, *(float*)(v7 + 24812));
+  (*(void (**)(__int64))(*(_QWORD*)v9 + 16LL))(v9);
+  return nn_os_UnlockMutex(a1 + 24768);
+}
+
+__int64 FxSurround_1758d0(_QWORD* a1)
+{
+  __int64 v2;
+  __int64* v3;
+  __int64 v4;
+  void (***v5)(_QWORD);
+  __int64 v6;
+  void (***v7)(_QWORD);
+  __int64 v8;
+  __int64 v9;
+
+  v2 = GameData_21347a8[0];
+  a1[2] = 0;
+  *a1 = v2 + 16;
+  a1[1] = 0;
+  v3 = snd_g_memory_ptr[0];
+  v4 = (*(__int64 (**)(_QWORD, __int64, __int64))(
+      **(_QWORD**)snd_g_memory_ptr[0] + 16LL))(*snd_g_memory_ptr[0], 248, 32);
+  snd_coef_BiQuadCoef_BiQuadCoef();
+  v5 = (void (***)(_QWORD))a1[1];
+  a1[1] = v4;
+  if (v5 != nullptr) {
+    (**v5)(v5);
+    (*(void (**)(__int64, void (***)(_QWORD)))(*(_QWORD*)*v3 + 24LL))(*v3, v5);
+  }
+  v6 = (*(__int64 (**)(__int64, __int64, __int64))(*(_QWORD*)*v3 + 16LL))(
+      *v3, 248, 32);
+  snd_coef_BiQuadCoef_BiQuadCoef();
+  v7 = (void (***)(_QWORD))a1[2];
+  a1[2] = v6;
+  if (v7 != nullptr) {
+    (**v7)(v7);
+    (*(void (**)(__int64, void (***)(_QWORD)))(*(_QWORD*)*v3 + 24LL))(*v3, v7);
+  }
+  *(_WORD*)(*(_QWORD*)(a1[1] + 128LL) + 8LL) = -17536;
+  *(_WORD*)(*(_QWORD*)(a1[1] + 136LL) + 8LL) = -17536;
+  *(_WORD*)(*(_QWORD*)(a1[1] + 144LL) + 8LL) = -17536;
+  *(_WORD*)(*(_QWORD*)(a1[1] + 152LL) + 8LL) = -17536;
+  *(_WORD*)(*(_QWORD*)(a1[1] + 160LL) + 8LL) = -17536;
+  *(_WORD*)(*(_QWORD*)(a1[1] + 168LL) + 8LL) = -17536;
+  *(_WORD*)(*(_QWORD*)(a1[1] + 176LL) + 8LL) = -17536;
+  *(_WORD*)(*(_QWORD*)(a1[1] + 184LL) + 8LL) = -17536;
+  *(_WORD*)(*(_QWORD*)(a1[1] + 192LL) + 8LL) = -17536;
+  v8 = *(_QWORD*)(a1[1] + 8LL * *(unsigned int*)(a1[1] + 124LL) + 128);
+  (*(void (**)(__int64))(*(_QWORD*)v8 + 16LL))(v8);
+  *(_WORD*)(*(_QWORD*)(a1[2] + 128LL) + 8LL) = -17536;
+  *(_WORD*)(*(_QWORD*)(a1[2] + 136LL) + 8LL) = -17536;
+  *(_WORD*)(*(_QWORD*)(a1[2] + 144LL) + 8LL) = -17536;
+  *(_WORD*)(*(_QWORD*)(a1[2] + 152LL) + 8LL) = -17536;
+  *(_WORD*)(*(_QWORD*)(a1[2] + 160LL) + 8LL) = -17536;
+  *(_WORD*)(*(_QWORD*)(a1[2] + 168LL) + 8LL) = -17536;
+  *(_WORD*)(*(_QWORD*)(a1[2] + 176LL) + 8LL) = -17536;
+  *(_WORD*)(*(_QWORD*)(a1[2] + 184LL) + 8LL) = -17536;
+  *(_WORD*)(*(_QWORD*)(a1[2] + 192LL) + 8LL) = -17536;
+  v9 = *(_QWORD*)(a1[2] + 8LL * *(unsigned int*)(a1[2] + 124LL) + 128);
+  return (*(__int64 (**)(__int64))(*(_QWORD*)v9 + 16LL))(v9);
 }
 
 #pragma GCC visibility pop

@@ -17,6 +17,7 @@ void __attribute__((noreturn)) GameRoutine_13a2010(void);
 void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
 __int64 FacilitySceneObjectFile_Unknown4(__int64 result);
 void FacilitySceneObjectFile_Unknown5();
+void FacilitySceneObjectFile_Unknown6();
 
 __int64 FacilitySceneObjectFile_Unknown4(__int64 result)
 {
@@ -166,6 +167,12 @@ __int64 FacilitySceneObjectFile_Unknown4(__int64 result)
 }
 
 void FacilitySceneObjectFile_Unknown5()
+{
+  GameData_2241790 = GameData_2241788;
+  GameData_2241778 = GameData_2241770;
+}
+
+void FacilitySceneObjectFile_Unknown6()
 {
   GameData_2241790 = GameData_2241788;
   GameData_2241778 = GameData_2241770;
