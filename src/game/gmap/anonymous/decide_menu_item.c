@@ -5,9 +5,9 @@
 __int64 GameRoutine_155fbe0(_QWORD, _QWORD);
 __int64 GameRoutine_15d2910(__int64, unsigned __int16*);
 extern __int64 game_g_empty_item;
-__int64 DecideMenuItem_Unknown20(__int64 a1);
+__int64 DecideMenuItem_OnSelect(__int64 a1);
 
-__int64 DecideMenuItem_Unknown20(__int64 a1)
+__int64 DecideMenuItem_OnSelect(__int64 a1)
 {
   __int64 v2;
   __int64 v3;

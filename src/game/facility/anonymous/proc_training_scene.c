@@ -7,11 +7,11 @@ __int64 GameRoutine_1487cc0(_QWORD, _QWORD);
 __int64 nn_mem_StandardAllocator_Free(_QWORD);
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64* GameData_2131458[2];
-__int64 ProcTrainingScene_Unknown18();
+__int64 ProcTrainingScene_StartFade();
 __int64 ProcTrainingScene_Unknown2();
 __int64 ProcTrainingScene_Unknown4();
 
-__int64 ProcTrainingScene_Unknown18()
+__int64 ProcTrainingScene_StartFade()
 {
   __int64 result;
   __int64 v1;

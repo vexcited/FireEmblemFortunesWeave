@@ -7,11 +7,11 @@ __int64 GameRoutine_1562680(_QWORD, _QWORD, float);
 __int64 std___1___shared_weak_count___release_weak(_QWORD);
 __int64 std___1___shared_weak_count_lock(_QWORD);
 extern __int64 ui_LayoutAccessor_empty_;
-__int64 ChoiceMenuItem_Unknown12(_QWORD* a1);
-__int64 ChoiceMenuItem_Unknown20(__int64 a1);
-__int64 ChoiceMenuItem_Unknown21(__int64 a1);
+__int64 ChoiceMenuItem_Draw(_QWORD* a1);
+__int64 ChoiceMenuItem_OnSelect(__int64 a1);
+__int64 ChoiceMenuItem_OnDeselect(__int64 a1);
 
-__int64 ChoiceMenuItem_Unknown12(_QWORD* a1)
+__int64 ChoiceMenuItem_Draw(_QWORD* a1)
 {
   __int64 v2;
   __int64 v3;
@@ -89,7 +89,7 @@ LABEL_11:
   return GameRoutine_1562680(v10, v11, 1.0);
 }
 
-__int64 ChoiceMenuItem_Unknown20(__int64 a1)
+__int64 ChoiceMenuItem_OnSelect(__int64 a1)
 {
   __int64 v2;
   __int64 v3;
@@ -126,7 +126,7 @@ __int64 ChoiceMenuItem_Unknown20(__int64 a1)
   return GameRoutine_1562680(v6, "Select", 1.0);
 }
 
-__int64 ChoiceMenuItem_Unknown21(__int64 a1)
+__int64 ChoiceMenuItem_OnDeselect(__int64 a1)
 {
   __int64 v2;
   __int64 v3;

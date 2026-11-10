@@ -4,7 +4,7 @@
 
 __int64 GameRoutine_166160(_QWORD);
 __int64 nn_atk_EffectAux_IsEnabled(_QWORD);
-void FxMSCtrlNX_Unknown9(__int64 a1);
+void FxMSCtrlNX_updateFx(__int64 a1);
 __int64 __cxa_guard_acquire(_QWORD);
 __int64 __cxa_guard_release(_QWORD);
 __int64 snd_fnd_WeakHandle_get(_QWORD, float);
@@ -13,7 +13,7 @@ extern _UNKNOWN* GameData_2134a70;
 extern __int64* GameData_2134a78;
 __int64* FxMsCtrlNx_166160(__int64 a1, float a2);
 
-void FxMSCtrlNX_Unknown9(__int64 a1)
+void FxMSCtrlNX_updateFx(__int64 a1)
 {
   __int64 v2;
   long double v3;

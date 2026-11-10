@@ -3,7 +3,7 @@
 #pragma GCC visibility push(hidden)
 
 _QWORD* GameRoutine_1560070(_QWORD* __return_ptr, _QWORD, _QWORD);
-__int64 WarpArrow_Unknown2(__int64, __int64*, int);
+__int64 WarpArrow_Setup(__int64, __int64*, int);
 __int64 __dynamic_cast(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 game_map_ObjectMapChip_Setup(_QWORD, _QWORD, _QWORD);
 __int64 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
@@ -293,11 +293,11 @@ __int64 WarpChip_Unknown2(__int64 a1, __int64* a2, unsigned int a3)
   v10[0] = v7;
   v10[1] = v8;
   if (v8 == 0) {
-    return WarpArrow_Unknown2(a1 + 40, v10, a3);
+    return WarpArrow_Setup(a1 + 40, v10, a3);
   }
   atomic_fetch_add_explicit((atomic_ullong* volatile)(v8 + 16), 1u,
                             memory_order_relaxed);
-  WarpArrow_Unknown2(a1 + 40, v10, a3);
+  WarpArrow_Setup(a1 + 40, v10, a3);
   return std___1___shared_weak_count___release_weak(v8);
 }
 

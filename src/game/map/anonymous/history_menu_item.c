@@ -11,9 +11,9 @@ extern __int64 GameData_21cd130;
 extern __int64 GameData_2240780;
 extern __int64 ui_LayoutAccessor_empty_;
 __int64 HistoryMenuItem_Unknown17(__int64 a1);
-__int64 HistoryMenuItem_Unknown20(__int64 a1);
-__int64 HistoryMenuItem_Unknown21(__int64 a1);
-__int64 HistoryMenuItem_Unknown26();
+__int64 HistoryMenuItem_OnSelect(__int64 a1);
+__int64 HistoryMenuItem_OnDeselect(__int64 a1);
+__int64 HistoryMenuItem_BCall();
 __int64 game_map_anonymous_HistoryMenuItem_ACall_closure_Invoke(__int64 a1);
 _QWORD* MapSortieMenu_871860(__int64, __int64, __int64, __int64, __int64);
 extern __int64 (*GameData_201eca8[])();
@@ -62,7 +62,7 @@ LABEL_6:
   return result;
 }
 
-__int64 HistoryMenuItem_Unknown20(__int64 a1)
+__int64 HistoryMenuItem_OnSelect(__int64 a1)
 {
   __int64 v2;
   __int64 v3;
@@ -147,7 +147,7 @@ LABEL_13:
   return result;
 }
 
-__int64 HistoryMenuItem_Unknown21(__int64 a1)
+__int64 HistoryMenuItem_OnDeselect(__int64 a1)
 {
   __int64 v2;
   __int64 v3;
@@ -293,7 +293,7 @@ __int64 game_map_anonymous_HistoryMenuItem_ACall(__int64 a1)
   return 2;
 }
 
-__int64 HistoryMenuItem_Unknown26()
+__int64 HistoryMenuItem_BCall()
 {
   __int64 v0;
   __int64 v1;

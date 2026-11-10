@@ -9,7 +9,7 @@ extern __int64 game_GameModeData_instance_;
 extern __int64 game_GameRestartData_unknown_;
 extern __int64* GameData_212e030[4];
 __int64 RestartCheckpointMenuItem_Unknown3(__int64 a1);
-__int64 RestartCheckpointMenuItem_Unknown26(_QWORD* a1);
+__int64 RestartCheckpointMenuItem_BCall(_QWORD* a1);
 __int64 RestartCheckpointMenuItem_Unknown73(__int64 a1);
 bool RestartCheckpointMenuItem_Unknown74(__int64 a1);
 __int64 GameRoutine_80cdc0(_QWORD);
@@ -38,7 +38,7 @@ __int64 RestartCheckpointMenuItem_Unknown3(__int64 a1)
   }
 }
 
-__int64 RestartCheckpointMenuItem_Unknown26(_QWORD* a1)
+__int64 RestartCheckpointMenuItem_BCall(_QWORD* a1)
 {
   __int64 v2;
 

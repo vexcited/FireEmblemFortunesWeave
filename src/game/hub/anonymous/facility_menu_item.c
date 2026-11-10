@@ -36,7 +36,7 @@ extern __int64* GameData_212e348;
 extern __int64* msg_MessageManager_instance__ptr[2];
 extern __int64* ui_LayoutAccessor_empty__ptr[3];
 void __attribute__((noreturn)) GameRoutine_60a1d0(void);
-__int64 FacilityMenuItem_Unknown55(_QWORD* a1);
+__int64 FacilityMenuItem_DrawText(_QWORD* a1);
 _QWORD* GameRoutine_169a430(__int64, char*);
 __int64 FacilityMenuItem_ACall(_QWORD* a1);
 
@@ -67,7 +67,7 @@ __int64 FacilityMenuItem_ACall(_QWORD* a1)
   return result;
 }
 
-__int64 FacilityMenuItem_Unknown55(_QWORD* a1)
+__int64 FacilityMenuItem_DrawText(_QWORD* a1)
 {
   __int64 v2;
   __int64 v3;

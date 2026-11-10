@@ -75,7 +75,7 @@ bool Pane_590310(__int64 a1);
 bool Pane_590370(__int64 a1);
 bool Pane_5903d0(__int64 a1);
 float Pane_590430(__int64 a1);
-__int64* Pane_Unknown2();
+__int64* Pane_GetRuntimeTypeInfo();
 _OWORD* GameRoutine_59fb40(_OWORD* result, __int64);
 __int16* LayoutPaneFactory_599ea0(__int16* result);
 __int64* Pane_591760(__int64*, __int64);
@@ -2181,7 +2181,7 @@ float Pane_590430(__int64 a1)
   return result;
 }
 
-__int64* Pane_Unknown2()
+__int64* Pane_GetRuntimeTypeInfo()
 {
   __int64 v1;
 

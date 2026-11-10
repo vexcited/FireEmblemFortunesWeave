@@ -11,8 +11,8 @@ extern __int64 GameData_21c9608;
 extern __int64 GameData_21f3ce8;
 extern __int64 game_GameModeData_instance_;
 extern __int64 game_gmap_GmapClock_instance_;
-__int64 HubMenuItem_ExitGmap_Unknown6(__int64 a1);
-bool HubMenuItem_ExitGmap_Unknown58();
+__int64 HubMenuItem_ExitGmap_IsDecidable(__int64 a1);
+bool HubMenuItem_ExitGmap_IsActive();
 bool HubMenuItemExitGmap_d9fc90();
 __int64 GameRoutine_efbb60(_QWORD, _QWORD, _QWORD);
 extern __int64 GameData_212dbf0[2];
@@ -22,7 +22,7 @@ extern __int64 game_hub_ProcHubSeqView_instance_;
 extern __int64 game_script_hub_talk_g_select_menu;
 __int64 game_hub_anonymous_HubMenuItem_ExitGmap_ACall_closure_Invoke();
 
-__int64 HubMenuItem_ExitGmap_Unknown6(__int64 a1)
+__int64 HubMenuItem_ExitGmap_IsDecidable(__int64 a1)
 {
   __int64 v2;
   __int64 v3;
@@ -125,7 +125,7 @@ __int64 HubMenuItem_ExitGmap_Unknown6(__int64 a1)
   return v5 & 1;
 }
 
-bool HubMenuItem_ExitGmap_Unknown58()
+bool HubMenuItem_ExitGmap_IsActive()
 {
   __int64 v0;
   int v1;

@@ -4,7 +4,7 @@
 
 extern __int64 game_GameModeData_instance_;
 extern __int64 game_GameRestartData_unknown_;
-bool SystemMenuItem_Restart_Unknown58(__int64 a1);
+bool SystemMenuItem_Restart_IsActive(__int64 a1);
 __attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, _QWORD, _QWORD,
                                                _QWORD, _QWORD, _QWORD, _QWORD,
                                                double, float);
@@ -15,7 +15,7 @@ extern __int64 GameData_21c9600;
 __int64
 game_menu_anonymous_SystemMenuItem_Restart_ACall_closure_Invoke(__int64 a1);
 
-bool SystemMenuItem_Restart_Unknown58(__int64 a1)
+bool SystemMenuItem_Restart_IsActive(__int64 a1)
 {
   __int64 v1;
 

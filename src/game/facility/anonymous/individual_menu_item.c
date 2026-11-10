@@ -17,10 +17,10 @@ extern int game_script_hub_ui_g_talk_result;
 __int64 IndividualMenuItem_Destructor_1935f60(__int64 a1);
 __int64 IndividualMenuItem_DeletingDestructor(__int64 a1);
 __int64 IndividualMenuItem_Unknown25(__int64 a1);
-__int64 IndividualMenuItem_Unknown39(__int64 a1, char a2);
+__int64 IndividualMenuItem_UpCall(__int64 a1, char a2);
 __int64 BasicMenuCursor_16ddaa0(_QWORD, _QWORD);
 __int64 GameRoutine_65a180(_QWORD);
-_QWORD* IndividualMenuItem_Unknown24(_QWORD* result);
+_QWORD* IndividualMenuItem_OnClose(_QWORD* result);
 __int64 ProcInst_657850(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 __int64 ProcNextSeq_16af630(_QWORD);
 __int64 fw_memory_HeapManager_Allocate(_QWORD, _QWORD, _QWORD, _QWORD);
@@ -35,12 +35,12 @@ extern char* GameData_2131b68[4];
 extern int* GameData_2131b58[2];
 __int64 IndividualMenuItem_ACall(_QWORD* a1);
 
-bool IndividualMenuItem_Unknown6()
+bool IndividualMenuItem_IsDecidable()
 {
   return (unsigned int)GameRoutine_947af0() < 0x400000;
 }
 
-_QWORD* IndividualMenuItem_Unknown24(_QWORD* result)
+_QWORD* IndividualMenuItem_OnClose(_QWORD* result)
 {
   __int64 v1;
 
@@ -251,7 +251,7 @@ __int64 IndividualMenuItem_Unknown25(__int64 a1)
   return v1;
 }
 
-__int64 IndividualMenuItem_Unknown39(__int64 a1, char a2)
+__int64 IndividualMenuItem_UpCall(__int64 a1, char a2)
 {
   __int64 v2;
   __int64* v4;

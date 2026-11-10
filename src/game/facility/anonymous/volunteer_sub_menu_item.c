@@ -7,7 +7,7 @@ extern __int64 (*GameData_1fb4f78[])();
 extern __int64 (*GameData_1fb4ff8[])();
 extern char GameData_1a9f09e;
 char* VolunteerSubMenuItem_Unknown3(__int64 a1);
-__int64 VolunteerSubMenuItem_Unknown25(_QWORD* a1);
+__int64 VolunteerSubMenuItem_ACall(_QWORD* a1);
 extern __int64 GameData_21f3ff8;
 extern __int64 GameData_2247280;
 __int64
@@ -26,7 +26,7 @@ char* VolunteerSubMenuItem_Unknown3(__int64 a1)
   }
 }
 
-__int64 VolunteerSubMenuItem_Unknown25(_QWORD* a1)
+__int64 VolunteerSubMenuItem_ACall(_QWORD* a1)
 {
   __int64 v2;
   __int64 v3;

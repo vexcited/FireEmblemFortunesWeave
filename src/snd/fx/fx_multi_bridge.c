@@ -15,8 +15,8 @@ extern __int64* snd_g_memory_ptr[2];
 void GameRoutine_651250(void*, unsigned __int64);
 __int64 FxMultiBridge_Destructor_178880(_QWORD* a1);
 void FxMultiBridge_178a80(__int64 a1);
-__int64 FxMultiBridge_Unknown6(__int64 a1);
-__int64 FxMultiBridge_Unknown9(__int64 a1, float a2);
+__int64 FxMultiBridge_mainUnlocked(__int64 a1);
+__int64 FxMultiBridge_updateFx(__int64 a1, float a2);
 __int64 FxMultiBridge_Unknown24(_QWORD* a1, __int64 a2);
 __int64 FxMultiBridge_Unknown25(__int64 a1, __int64 a2);
 
@@ -81,7 +81,7 @@ void FxMultiBridge_178a80(__int64 a1)
   GameRoutine_651250((void*)(a1 - 5592), 0x1668u);
 }
 
-__int64 FxMultiBridge_Unknown6(__int64 a1)
+__int64 FxMultiBridge_mainUnlocked(__int64 a1)
 {
   __int64 v2;
   __int64 v3;
@@ -106,7 +106,7 @@ __int64 FxMultiBridge_Unknown6(__int64 a1)
   return nn_os_UnlockMutex(a1 + 5704);
 }
 
-__int64 FxMultiBridge_Unknown9(__int64 a1, float a2)
+__int64 FxMultiBridge_updateFx(__int64 a1, float a2)
 {
   __int64 v4;
   __int64 v5;

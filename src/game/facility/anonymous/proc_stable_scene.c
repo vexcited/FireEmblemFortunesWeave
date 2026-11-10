@@ -23,7 +23,7 @@ extern __int64* GameData_2132470[2];
 extern __int64* GameData_2132488;
 __int64 ProcStableScene_Destructor(__int64 a1);
 __int64 ProcStableScene_DeletingDestructor(__int64 a1);
-__int64 ProcStableScene_Unknown18();
+__int64 ProcStableScene_StartFade();
 __int64 ProcStableScene_Destructor_1955bd0(__int64 a1);
 __int64 ProcStableScene_DeletingDestructor_1955d80(__int64 a1);
 __int64 GameRoutine_1130770(_QWORD, _QWORD, _QWORD);
@@ -364,7 +364,7 @@ __int64 ProcStableScene_DeletingDestructor(__int64 a1)
   return nn_mem_StandardAllocator_Free(*(_QWORD*)v5 + v12);
 }
 
-__int64 ProcStableScene_Unknown18()
+__int64 ProcStableScene_StartFade()
 {
   unsigned __int64 v0;
   unsigned __int64 v1;

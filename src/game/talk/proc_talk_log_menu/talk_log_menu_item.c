@@ -19,11 +19,11 @@ extern __int64* GameData_212e030[4];
 extern __int64* game_talk_g_window_layout_ptr[5];
 extern __int64* ui_LayoutAccessor_empty__ptr[3];
 __int64 TalkLogMenuItem_Destructor(__int64 a1);
-__int64 TalkLogMenuItem_Unknown64(__int64 a1);
-__int64 TalkLogMenuItem_Unknown63(__int64 a1);
-__int64 TalkLogMenuItem_Unknown20(__int64 a1);
-__int64 TalkLogMenuItem_Unknown21(__int64 a1);
-__int64 TalkLogMenuItem_Unknown18(__int64 result);
+__int64 TalkLogMenuItem_PlayCursorAnimation(__int64 a1);
+__int64 TalkLogMenuItem_PlayIdleAnimation(__int64 a1);
+__int64 TalkLogMenuItem_OnSelect(__int64 a1);
+__int64 TalkLogMenuItem_OnDeselect(__int64 a1);
+__int64 TalkLogMenuItem_Update(__int64 result);
 __int64 TalkLogMenuItem_Unknown9(__int64 result, __int64 a2);
 
 __int64 TalkLogMenuItem_Destructor(__int64 a1)
@@ -51,7 +51,7 @@ __int64 TalkLogMenuItem_Destructor(__int64 a1)
   return result;
 }
 
-__int64 TalkLogMenuItem_Unknown64(__int64 a1)
+__int64 TalkLogMenuItem_PlayCursorAnimation(__int64 a1)
 {
   __int64 v2;
   __int64 v3;
@@ -97,7 +97,7 @@ LABEL_6:
   return GameRoutine_1562680(v6, v7, 1.0);
 }
 
-__int64 TalkLogMenuItem_Unknown63(__int64 a1)
+__int64 TalkLogMenuItem_PlayIdleAnimation(__int64 a1)
 {
   __int64 v2;
   __int64 v3;
@@ -143,7 +143,7 @@ LABEL_6:
   return GameRoutine_1562680(v6, v7, 1.0);
 }
 
-__int64 TalkLogMenuItem_Unknown20(__int64 a1)
+__int64 TalkLogMenuItem_OnSelect(__int64 a1)
 {
   __int64 v2;
   __int64 v3;
@@ -232,7 +232,7 @@ __int64 TalkLogMenuItem_Unknown20(__int64 a1)
   return (*(__int64 (**)(__int64))(*(_QWORD*)a1 + v16))(a1);
 }
 
-__int64 TalkLogMenuItem_Unknown21(__int64 a1)
+__int64 TalkLogMenuItem_OnDeselect(__int64 a1)
 {
   __int64 v2;
   __int64 v3;
@@ -323,7 +323,7 @@ __int64 TalkLogMenuItem_Unknown21(__int64 a1)
   return (*(__int64 (**)(__int64))(*(_QWORD*)a1 + v17))(a1);
 }
 
-__int64 TalkLogMenuItem_Unknown18(__int64 result)
+__int64 TalkLogMenuItem_Update(__int64 result)
 {
   if ((*(_BYTE*)(result + 93) & 1) != 0 || (*(_BYTE*)(result + 94) & 1) == 0) {
     return game_menu_BasicMenuItem_Update();

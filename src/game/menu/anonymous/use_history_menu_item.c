@@ -3,7 +3,7 @@
 #pragma GCC visibility push(hidden)
 
 extern __int64 game_script_map_effect_g_sequence;
-__int64 UseHistoryMenuItem_Unknown25(_QWORD* a1);
+__int64 UseHistoryMenuItem_ACall(_QWORD* a1);
 __int64 fw_memory_HeapManager_Allocate(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 game_util_Format(const char*, ...);
 __int64 memmove(_QWORD, _QWORD, _QWORD);
@@ -16,7 +16,7 @@ __attribute__((swiftcall)) void UseHistoryMenuItem_Unknown70(PSEUDO_X8 x8_,
 __attribute__((swiftcall)) void UseHistoryMenuItem_Unknown71(PSEUDO_X8 x8_,
                                                              __int64 a1);
 
-__int64 UseHistoryMenuItem_Unknown25(_QWORD* a1)
+__int64 UseHistoryMenuItem_ACall(_QWORD* a1)
 {
   __int64 v2;
 

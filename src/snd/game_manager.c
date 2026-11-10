@@ -150,12 +150,12 @@ struct PseudoSret snd_findSlot_100a50(_QWORD);
 void GameManager_a2c6e0(__int64, __int64, _BYTE*, float);
 void __attribute__((noreturn)) GameRoutine_60a230(void);
 __int64 GameManager_Destructor(__int64 a1);
-__int64 GameManager_Unknown2(__int64 a1);
+__int64 GameManager_initialize(__int64 a1);
 __int64* GameManager_a223a0(__int64 a1);
-void GameManager_Unknown8(__int64 a1);
+void GameManager_stopField(__int64 a1);
 __int64 GameManager_a22bd0();
-__int64 GameManager_Unknown9(__int64 a1);
-__int64 GameManager_Unknown10(__int64 a1, __int64 a2);
+__int64 GameManager_reset(__int64 a1);
+__int64 GameManager_stopWithoutBGM(__int64 a1, __int64 a2);
 __int64 GameManager_a22fd0(__int64 result, __int64 a2);
 _QWORD* GameManager_a28c50(__int64 a1);
 __int64 GameManager_a2a3a0(__int64 result);
@@ -215,8 +215,8 @@ void __attribute__((noreturn)) GameRoutine_60a310(_QWORD);
 void __attribute__((noreturn)) String_60a1d0(_QWORD, _QWORD, _QWORD, _QWORD,
                                              _QWORD);
 void __attribute__((noreturn)) String_60a230(void);
-float GameManager_Unknown7();
-__int64 GameManager_Unknown11(__int64 a1);
+float GameManager_getMasterScale();
+__int64 GameManager_setupFields(__int64 a1);
 _QWORD* snd_GameManager_main_lambda0_Invoke(__int64 a1, __int64 a2);
 __n128 snd_GameManager_stopWithoutBGM_lambda0_Invoke_a36f60(__int64 a1,
                                                             __int64* a2);
@@ -734,7 +734,7 @@ __int64 GameManager_Destructor(__int64 a1)
   return GameRoutine_e7a00(a1);
 }
 
-__int64 GameManager_Unknown2(__int64 a1)
+__int64 GameManager_initialize(__int64 a1)
 {
   __int64 v2;
   _QWORD* v3;
@@ -1590,12 +1590,12 @@ __int64 snd_GameManager_UpdateListenerPos(__int64 result)
   return result;
 }
 
-float GameManager_Unknown7()
+float GameManager_getMasterScale()
 {
   return *(float*)(as_g_base_frame_counter + 104);
 }
 
-void GameManager_Unknown8(__int64 a1)
+void GameManager_stopField(__int64 a1)
 {
   __int64 v2;
 
@@ -1647,7 +1647,7 @@ __int64 GameManager_a22bd0()
   return result;
 }
 
-__int64 GameManager_Unknown9(__int64 a1)
+__int64 GameManager_reset(__int64 a1)
 {
   __int64 v2;
   __int64 v3;
@@ -1697,7 +1697,7 @@ __int64 GameManager_Unknown9(__int64 a1)
   return (*(__int64 (**)(__int64))(*(_QWORD*)a1 + 184LL))(a1);
 }
 
-__int64 GameManager_Unknown10(__int64 a1, __int64 a2)
+__int64 GameManager_stopWithoutBGM(__int64 a1, __int64 a2)
 {
   _BYTE* v4;
   __int64 v5;
@@ -7063,7 +7063,7 @@ float* GameManager_setField(__int64 a1, unsigned __int8* a2)
   return result;
 }
 
-__int64 GameManager_Unknown11(__int64 a1)
+__int64 GameManager_setupFields(__int64 a1)
 {
   __int64 result;
   __int64 v3;

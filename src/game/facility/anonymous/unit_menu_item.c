@@ -8,7 +8,7 @@ __int64 game_GameVariableTable_Find(_QWORD, _QWORD);
 __int64 std___1___shared_weak_count___release_weak(_QWORD);
 __int64 std___1___shared_weak_count_lock(_QWORD);
 extern __int64 game_GameModeData_instance_;
-__int64 UnitMenuItem_Unknown64(__int64 a1);
+__int64 UnitMenuItem_PlayCursorAnimation(__int64 a1);
 __int64 GameRoutine_158a7c0(_QWORD);
 __int64 GameRoutine_1840a20(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 __int64 GameVariable_82e7c0(_QWORD, _QWORD);
@@ -191,7 +191,7 @@ LABEL_51:
   return result;
 }
 
-__int64 UnitMenuItem_Unknown64(__int64 a1)
+__int64 UnitMenuItem_PlayCursorAnimation(__int64 a1)
 {
   __int64 result;
   __int64 v3;

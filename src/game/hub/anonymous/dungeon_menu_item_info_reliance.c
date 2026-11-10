@@ -6,9 +6,9 @@ __int64 GameRoutine_184ef30(_QWORD);
 __int64 GameRoutine_184ff20(_QWORD, _QWORD);
 extern __int64 game_GameModeData_instance_;
 extern __int64 game_script_map_effect_g_sequence;
-__int64 DungeonMenuItem_Info_Reliance_Unknown25(__int64 a1);
+__int64 DungeonMenuItem_Info_Reliance_ACall(__int64 a1);
 
-__int64 DungeonMenuItem_Info_Reliance_Unknown25(__int64 a1)
+__int64 DungeonMenuItem_Info_Reliance_ACall(__int64 a1)
 {
   __int64 v2;
   __int64 v3;

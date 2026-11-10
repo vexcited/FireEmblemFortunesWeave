@@ -16,7 +16,7 @@ extern __int64 (*game_menu_BasicMenuItem_vtable[])();
 extern __int64 (*game_menu_anonymous_BaseQuestMenuItem_vtable)();
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 EmptyMenuItem_Unknown55_1710fc0(__int64 a1);
-__int64 EmptyMenuItem_Unknown20(__int64 a1);
+__int64 EmptyMenuItem_OnSelect(__int64 a1);
 __int64 EmptyMenuItem_Unknown55_17b04a0(__int64 a1);
 __int64 EmptyMenuItem_DeletingDestructor(__int64 a1);
 
@@ -45,7 +45,7 @@ __int64 EmptyMenuItem_Unknown55_1710fc0(__int64 a1)
   return result;
 }
 
-__int64 EmptyMenuItem_Unknown20(__int64 a1)
+__int64 EmptyMenuItem_OnSelect(__int64 a1)
 {
   __int64 v2;
   __int64 result;

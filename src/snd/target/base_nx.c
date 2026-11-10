@@ -82,30 +82,31 @@ void __attribute__((noreturn)) GameRoutine_a36650(_QWORD, _QWORD);
 __int64 BaseNX_159820(__int64 a1);
 __int64 BaseNX_1599e0(__int64 a1);
 __int64 BaseNX_159a40();
-__int64 BaseNX_Unknown2(__int64 result);
+__int64 BaseNX_initialize(__int64 result);
 __int64 BaseNX_159d40(__int64 result, unsigned int* a2);
-__int64 BaseNX_Unknown4(__int64 result);
+__int64 BaseNX_stop(__int64 result);
 __n128 BaseNX_15ad00(__int64 a1, __int64 a2);
-__int64 BaseNX_Unknown12(__int64 result, const char* a2, const char* a3,
-                         char a4);
-__int64 BaseNX_Unknown13(__int64 result, __int64 a2, const char* a3);
-__int64 BaseNX_Unknown14(__int64 result, const char* a2);
+__int64 BaseNX_loadArchive(__int64 result, const char* a2, const char* a3,
+                           char a4);
+__int64 BaseNX_loadMemoryArchive(__int64 result, __int64 a2, const char* a3);
+__int64 BaseNX_unloadArchive(__int64 result, const char* a2);
 __n128 BaseNX_15b4c0(__int64 a1, __int64 a2);
-__int64 BaseNX_Unknown24(__int64 a1, unsigned int a2, int a3, __int64 a4);
-__int64 BaseNX_Unknown25(__int64 a1, __int64 a2);
+__int64 BaseNX_getSoundUserParam(__int64 a1, unsigned int a2, int a3,
+                                 __int64 a4);
+__int64 BaseNX_startSound(__int64 a1, __int64 a2);
 __int64 BaseNX_15d7e0(__int64 result);
-__int64 BaseNX_Unknown27(__int64 a1, __int64 a2);
-__int64 BaseNX_Unknown33(__int64 a1, const char* a2);
+__int64 BaseNX_prepareSound(__int64 a1, __int64 a2);
+__int64 BaseNX_existsFile(__int64 a1, const char* a2);
 __int64 BaseNX_Unknown35(__int64 a1, __int64 a2, __int64 a3, int a4);
 __int64 BaseNX_Unknown36(__int64 a1, const char* a2, __int64 a3, int a4);
-__int64 BaseNX_Unknown37(__int64 a1, const char* a2, __int64 a3, int a4);
-__int64 BaseNX_Unknown40(__int64 a1, __int64 a2, int a3);
-__int64 BaseNX_Unknown63(__int64 a1, __int64 a2, int a3, int a4);
-__int64 BaseNX_Unknown71(__int64 a1, __int64 a2);
-__int64 BaseNX_Unknown72(__int64 a1, __int64 a2);
-__int64 BaseNX_Unknown73(__int64 a1, __int64 a2, __int64 a3);
-__int64 BaseNX_Unknown75(__int64 a1, __int64 a2);
-__int64 BaseNX_Unknown163(__int64 a1, const char* a2);
+__int64 BaseNX_loadDataByLabel(__int64 a1, const char* a2, __int64 a3, int a4);
+__int64 BaseNX_loadData(__int64 a1, __int64 a2, int a3);
+__int64 BaseNX_attachSound3DListener(__int64 a1, __int64 a2, int a3, int a4);
+__int64 BaseNX_updateVoice(__int64 a1, __int64 a2);
+__int64 BaseNX_stopVoice(__int64 a1, __int64 a2);
+__int64 BaseNX_startVoice(__int64 a1, __int64 a2, __int64 a3);
+__int64 BaseNX_updateVoiceParam(__int64 a1, __int64 a2);
+__int64 BaseNX_findArchive(__int64 a1, const char* a2);
 __int64 BaseNx_278770(_QWORD, _QWORD);
 __int64 BaseNx_27d9e0(_QWORD);
 __int64 BaseNx_28aca0(_QWORD, _QWORD, _QWORD);
@@ -126,9 +127,9 @@ __int64 nn_os_StartThread(_QWORD);
 extern __int64 (*GameData_2134928[2])();
 extern __int64 (*GameData_2134930)();
 void* SoundVoiceNX_14e360_alt1() __asm__("SoundVoiceNX_14e360");
-__int64 BaseNX_Unknown3(__int64 result);
-__int64 BaseNX_Unknown5(__int64 result);
-__int64 BaseNX_Unknown140(__int64 a1, __int64 a2, __int64 a3);
+__int64 BaseNX_start(__int64 result);
+__int64 BaseNX_finalize(__int64 result);
+__int64 BaseNX_setAuxBus(__int64 a1, __int64 a2, __int64 a3);
 __int64 snd_target_BaseNX_closeAdditionalArchive_lambda0_Invoke(__int64 a1,
                                                                 __int64* a2);
 __int64 snd_target_BaseNX_closeAdditionalArchiveForCache_lambda0_Invoke(
@@ -373,7 +374,7 @@ __int64 BaseNX_159a40()
   return result;
 }
 
-__int64 BaseNX_Unknown2(__int64 result)
+__int64 BaseNX_initialize(__int64 result)
 {
   __int64 v1;
   __int64 v2;
@@ -529,7 +530,7 @@ __int64 BaseNX_159d40(__int64 result, unsigned int* a2)
   return result;
 }
 
-__int64 BaseNX_Unknown3(__int64 result)
+__int64 BaseNX_start(__int64 result)
 {
   __int64 v1;
   _QWORD* v2;
@@ -612,7 +613,7 @@ __int64 BaseNX_Unknown3(__int64 result)
   return result;
 }
 
-__int64 BaseNX_Unknown4(__int64 result)
+__int64 BaseNX_stop(__int64 result)
 {
   _QWORD* v1;
   __int64 v2;
@@ -692,7 +693,7 @@ __int64 BaseNX_Unknown4(__int64 result)
   return result;
 }
 
-__int64 BaseNX_Unknown5(__int64 result)
+__int64 BaseNX_finalize(__int64 result)
 {
   __int64 v1;
   __int64 v2;
@@ -1069,8 +1070,8 @@ LABEL_31:
   return nn_os_UnlockMutex(v28 + 840);
 }
 
-__int64 BaseNX_Unknown12(__int64 result, const char* a2, const char* a3,
-                         char a4)
+__int64 BaseNX_loadArchive(__int64 result, const char* a2, const char* a3,
+                           char a4)
 {
   __int64 v6;
   const char* v7;
@@ -1155,7 +1156,7 @@ __int64 BaseNX_Unknown12(__int64 result, const char* a2, const char* a3,
   return result;
 }
 
-__int64 BaseNX_Unknown13(__int64 result, __int64 a2, const char* a3)
+__int64 BaseNX_loadMemoryArchive(__int64 result, __int64 a2, const char* a3)
 {
   __int64 v4;
   const char* v5;
@@ -1210,7 +1211,7 @@ __int64 BaseNX_Unknown13(__int64 result, __int64 a2, const char* a3)
   return result;
 }
 
-__int64 BaseNX_Unknown14(__int64 result, const char* a2)
+__int64 BaseNX_unloadArchive(__int64 result, const char* a2)
 {
   __int64 v2;
   const char* v3;
@@ -1479,7 +1480,8 @@ LABEL_31:
   return nn_os_UnlockMutex(v28 + 840);
 }
 
-__int64 BaseNX_Unknown24(__int64 a1, unsigned int a2, int a3, __int64 a4)
+__int64 BaseNX_getSoundUserParam(__int64 a1, unsigned int a2, int a3,
+                                 __int64 a4)
 {
   __int64 v8;
   __int64 v9;
@@ -1675,7 +1677,7 @@ LABEL_53:
   return v46;
 }
 
-__int64 BaseNX_Unknown25(__int64 a1, __int64 a2)
+__int64 BaseNX_startSound(__int64 a1, __int64 a2)
 {
   unsigned int v2;
   unsigned int v3;
@@ -1766,7 +1768,7 @@ LABEL_14:
   return result;
 }
 
-__int64 BaseNX_Unknown27(__int64 a1, __int64 a2)
+__int64 BaseNX_prepareSound(__int64 a1, __int64 a2)
 {
   unsigned int v2;
   unsigned int v3;
@@ -1781,7 +1783,7 @@ __int64 BaseNX_Unknown27(__int64 a1, __int64 a2)
       *(_QWORD*)a1 + 224LL))(a1, v2, v3, v4, v6);
 }
 
-__int64 BaseNX_Unknown33(__int64 a1, const char* a2)
+__int64 BaseNX_existsFile(__int64 a1, const char* a2)
 {
   const char* v3;
   __int64 v4;
@@ -1957,7 +1959,7 @@ __int64 BaseNX_Unknown36(__int64 a1, const char* a2, __int64 a3, int a4)
   return (unsigned int)v9;
 }
 
-__int64 BaseNX_Unknown37(__int64 a1, const char* a2, __int64 a3, int a4)
+__int64 BaseNX_loadDataByLabel(__int64 a1, const char* a2, __int64 a3, int a4)
 {
   const char* v7;
   __int64 v8;
@@ -2018,7 +2020,7 @@ __int64 BaseNX_Unknown37(__int64 a1, const char* a2, __int64 a3, int a4)
   return (unsigned int)v9;
 }
 
-__int64 BaseNX_Unknown40(__int64 a1, __int64 a2, int a3)
+__int64 BaseNX_loadData(__int64 a1, __int64 a2, int a3)
 {
   unsigned int v4;
   __int64 v5;
@@ -2033,7 +2035,7 @@ __int64 BaseNX_Unknown40(__int64 a1, __int64 a2, int a3)
   return result;
 }
 
-__int64 BaseNX_Unknown63(__int64 a1, __int64 a2, int a3, int a4)
+__int64 BaseNX_attachSound3DListener(__int64 a1, __int64 a2, int a3, int a4)
 {
   __int64 v4;
 
@@ -2178,7 +2180,7 @@ float BaseNX_calcSound3DDistance(__int64 a1, int a2, float a3, float a4,
   return v6;
 }
 
-__int64 BaseNX_Unknown71(__int64 a1, __int64 a2)
+__int64 BaseNX_updateVoice(__int64 a1, __int64 a2)
 {
   __int64 v4;
   int v5;
@@ -2208,7 +2210,7 @@ __int64 BaseNX_Unknown71(__int64 a1, __int64 a2)
   return v7;
 }
 
-__int64 BaseNX_Unknown72(__int64 a1, __int64 a2)
+__int64 BaseNX_stopVoice(__int64 a1, __int64 a2)
 {
   __int64 v4;
   int v5;
@@ -2238,7 +2240,7 @@ __int64 BaseNX_Unknown72(__int64 a1, __int64 a2)
   return v7;
 }
 
-__int64 BaseNX_Unknown73(__int64 a1, __int64 a2, __int64 a3)
+__int64 BaseNX_startVoice(__int64 a1, __int64 a2, __int64 a3)
 {
   __int64 v6;
   int v7;
@@ -2269,7 +2271,7 @@ __int64 BaseNX_Unknown73(__int64 a1, __int64 a2, __int64 a3)
   return v9;
 }
 
-__int64 BaseNX_Unknown75(__int64 a1, __int64 a2)
+__int64 BaseNX_updateVoiceParam(__int64 a1, __int64 a2)
 {
   __int64 result;
   __int64* v5;
@@ -2362,7 +2364,7 @@ __int64 BaseNX_Unknown75(__int64 a1, __int64 a2)
   return result;
 }
 
-__int64 BaseNX_Unknown140(__int64 a1, __int64 a2, __int64 a3)
+__int64 BaseNX_setAuxBus(__int64 a1, __int64 a2, __int64 a3)
 {
   int v4;
   __int64 result;
@@ -2375,7 +2377,7 @@ __int64 BaseNX_Unknown140(__int64 a1, __int64 a2, __int64 a3)
   return result;
 }
 
-__int64 BaseNX_Unknown163(__int64 a1, const char* a2)
+__int64 BaseNX_findArchive(__int64 a1, const char* a2)
 {
   const char* v3;
   __int64 v4;

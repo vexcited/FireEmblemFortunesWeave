@@ -9,12 +9,12 @@ extern __int64 (*game_combat_IGambitKey_vtable)();
 extern __int64 GameData_220f8c8;
 extern __int64 fw_memory_g_heap_manager_ptr;
 void __attribute__((noreturn)) GameRoutine_d38e30(_QWORD);
-__int64 GambitCameraSpotName_Unknown2(__int64 a1);
+__int64 GambitCameraSpotName_Dispatch(__int64 a1);
 __int64 GambitCameraSpotName_Destructor(__int64 result);
 __int64 GambitCameraSpotName_DeletingDestructor(__int64 a1);
 __attribute__((swiftcall)) void GambitCameraSpotName_Unknown3(PSEUDO_X8 x8_);
 
-__int64 GambitCameraSpotName_Unknown2(__int64 a1)
+__int64 GambitCameraSpotName_Dispatch(__int64 a1)
 {
   char v1;
   int v2;

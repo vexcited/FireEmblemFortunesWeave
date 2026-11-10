@@ -6,7 +6,7 @@ __int64 GameRoutine_173bc80(__int64, int);
 __int64 __dynamic_cast(_QWORD, _QWORD, _QWORD, _QWORD);
 extern __int64 GameData_20b7100;
 extern __int64* GameData_212e030[4];
-__int64 ChangeRestartPageItem_Unknown25(_QWORD* a1);
+__int64 ChangeRestartPageItem_ACall(_QWORD* a1);
 __int64 fw_memory_HeapManager_Allocate(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 game_util_Format(const char*, ...);
 __int64 memmove(_QWORD, _QWORD, _QWORD);
@@ -16,7 +16,7 @@ void __attribute__((noreturn)) String_60a1d0(_QWORD);
 __attribute__((swiftcall)) void ChangeRestartPageItem_Unknown70(PSEUDO_X8 x8_,
                                                                 __int64 a1);
 
-__int64 ChangeRestartPageItem_Unknown25(_QWORD* a1)
+__int64 ChangeRestartPageItem_ACall(_QWORD* a1)
 {
   __int64 v2;
 

@@ -3,9 +3,9 @@
 #pragma GCC visibility push(hidden)
 
 extern __int64 game_GameModeData_instance_;
-__int64 MaterialDepositoryMenuItem_Unknown55(__int64 result);
+__int64 MaterialDepositoryMenuItem_DrawText(__int64 result);
 
-__int64 MaterialDepositoryMenuItem_Unknown55(__int64 result)
+__int64 MaterialDepositoryMenuItem_DrawText(__int64 result)
 {
   *(_BYTE*)(result + 82) =
       *(_DWORD*)(*(_QWORD*)(*(_QWORD*)(game_GameModeData_instance_ + 176) +

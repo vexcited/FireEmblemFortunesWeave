@@ -5,9 +5,9 @@
 __int64 std___1___shared_weak_count___release_weak();
 __int64 std___1___shared_weak_count_lock(_QWORD);
 __int64 ui_LayoutAccessor_SetPaneVisible(_QWORD, _QWORD, _QWORD);
-__int64 UnitMakeInvisibleMenuItem_Unknown55(__int64 a1);
+__int64 UnitMakeInvisibleMenuItem_DrawText(__int64 a1);
 
-__int64 UnitMakeInvisibleMenuItem_Unknown55(__int64 a1)
+__int64 UnitMakeInvisibleMenuItem_DrawText(__int64 a1)
 {
   __int64 result;
   __int64 v3;

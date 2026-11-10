@@ -5,7 +5,7 @@
 __int64 GameRoutine_1487cc0(_QWORD, _QWORD);
 __int64 nn_mem_StandardAllocator_Free(_QWORD, _QWORD);
 extern __int64 fw_memory_g_heap_manager_ptr;
-__int64 ProcSkillEducateScene_Unknown18();
+__int64 ProcSkillEducateScene_StartFade();
 __int64 GameRoutine_1475b00(__int64, unsigned __int8*);
 __int64 GameRoutine_1958ed0(_QWORD, _QWORD);
 __int64 GameRoutine_658c00(_QWORD);
@@ -24,7 +24,7 @@ __int64 ProcSkillEducateScene_DeletingDestructor(__int64* a1);
 __int64 ProcSkillEducateScene_Unknown2();
 __int64 ProcSkillEducateScene_Unknown4();
 
-__int64 ProcSkillEducateScene_Unknown18()
+__int64 ProcSkillEducateScene_StartFade()
 {
   __int64 result;
   __int64 v1;

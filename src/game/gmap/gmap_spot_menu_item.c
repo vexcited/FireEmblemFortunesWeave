@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-bool GmapSpotMenuItem_Unknown58(__int64 a1);
+bool GmapSpotMenuItem_IsActive(__int64 a1);
 __int64 nn_mem_StandardAllocator_Free(_QWORD);
 __n128 std___1___shared_weak_count___release_weak(_QWORD);
 extern __int64 (*game_gmap_GmapSpotMenuItem_vtable[])();
@@ -11,7 +11,7 @@ extern __int64* GameData_2131b00[8];
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 GmapSpotMenuItem_DeletingDestructor(__int64 a1);
 
-bool GmapSpotMenuItem_Unknown58(__int64 a1)
+bool GmapSpotMenuItem_IsActive(__int64 a1)
 {
   __int64 v1;
 

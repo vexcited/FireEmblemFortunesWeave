@@ -12,7 +12,7 @@ __int64 _ZN4game4menu9BasicMenu13Unknown16dea40Ebbb(_QWORD, _QWORD, _QWORD,
 __int64 game_IsVibrationEnabled(_QWORD);
 __int64 game_menu_BasicMenu_Unknown16dd9a0(_QWORD);
 extern __int64 game_g_game_setting;
-__int64 BanquePoolMenuItem_Unknown25(__int64 a1);
+__int64 BanquePoolMenuItem_ACall(__int64 a1);
 __int64 GameRoutine_156c910(_QWORD, const char*, ...);
 __int64 GameRoutine_157af40(_QWORD, _QWORD);
 __int64 GameRoutine_1644d80(__int64);
@@ -28,7 +28,7 @@ extern __int64* ui_LayoutAccessor_empty__ptr[3];
 extern __int64 GameData_212d690;
 __int64 BanquePoolMenuItem_DrawText(__int64 a1);
 
-__int64 BanquePoolMenuItem_Unknown25(__int64 a1)
+__int64 BanquePoolMenuItem_ACall(__int64 a1)
 {
   __int64 v2;
   int v3;

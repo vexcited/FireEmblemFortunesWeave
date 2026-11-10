@@ -21,7 +21,7 @@ extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64 game_GameModeData_instance_;
 extern __int64* GameData_212c878[6];
 extern __int64* game_g_empty_item_ptr;
-__int64 CmdBtlItemMenuItem_Unknown58(__int64 a1);
+__int64 CmdBtlItemMenuItem_IsActive(__int64 a1);
 __int64 CmdBtlItemMenuItem_Unknown70(__int64 a1, __int64 a2);
 bool CmdBtlItemMenuItem_Unknown71(__int64 a1);
 __int64 __dynamic_cast(_QWORD, _QWORD, _QWORD, _QWORD);
@@ -31,7 +31,7 @@ extern __int64* GameData_212e030[4];
 __int64
 game_map_anonymous_CmdBtlItemMenuItem_CreateSubMenu_closure0_Invoke(__int64 a1);
 
-__int64 CmdBtlItemMenuItem_Unknown58(__int64 a1)
+__int64 CmdBtlItemMenuItem_IsActive(__int64 a1)
 {
   __int64 v1;
   __int64 v2;

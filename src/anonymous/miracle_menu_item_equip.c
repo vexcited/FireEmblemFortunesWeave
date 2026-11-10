@@ -33,11 +33,11 @@ extern __int64* GameData_212d678[2];
 extern __int64* GameData_212e348;
 extern __int64* msg_MessageManager_instance__ptr[2];
 extern __int64* ui_LayoutAccessor_empty__ptr[3];
-__int64 MiracleMenuItem_Equip_Unknown58(__int64 a1);
-__int64 MiracleMenuItem_Equip_Unknown20(__int64 a1);
-__int64 MiracleMenuItem_Equip_Unknown21(__int64 a1);
-unsigned __int64 MiracleMenuItem_Equip_Unknown55(_QWORD* a1);
-bool MiracleMenuItem_Equip_Unknown61(__int64 a1);
+__int64 MiracleMenuItem_Equip_IsActive(__int64 a1);
+__int64 MiracleMenuItem_Equip_OnSelect(__int64 a1);
+__int64 MiracleMenuItem_Equip_OnDeselect(__int64 a1);
+unsigned __int64 MiracleMenuItem_Equip_DrawText(_QWORD* a1);
+bool MiracleMenuItem_Equip_IsFixed(__int64 a1);
 __int64 GameRoutine_743a00(_QWORD);
 __int64 LayoutAccessor_1566d90(_QWORD, _QWORD);
 __int64 LayoutAccessor_1567000(_QWORD, _QWORD);
@@ -47,7 +47,7 @@ extern __int64 game_gameui_Header_instance_;
 extern __int64* GameData_212cfd0[8];
 __int64 anonymous_MiracleMenuItem_Equip_ACall_closure_Invoke(__int64 a1);
 
-__int64 MiracleMenuItem_Equip_Unknown58(__int64 a1)
+__int64 MiracleMenuItem_Equip_IsActive(__int64 a1)
 {
   char v2;
   char v3;
@@ -76,7 +76,7 @@ __int64 MiracleMenuItem_Equip_Unknown58(__int64 a1)
   return v4 & 1;
 }
 
-__int64 MiracleMenuItem_Equip_Unknown20(__int64 a1)
+__int64 MiracleMenuItem_Equip_OnSelect(__int64 a1)
 {
   __int64 v2;
 
@@ -88,7 +88,7 @@ __int64 MiracleMenuItem_Equip_Unknown20(__int64 a1)
   return GameRoutine_185c1a0(a1);
 }
 
-__int64 MiracleMenuItem_Equip_Unknown21(__int64 a1)
+__int64 MiracleMenuItem_Equip_OnDeselect(__int64 a1)
 {
   __int64 v2;
 
@@ -100,7 +100,7 @@ __int64 MiracleMenuItem_Equip_Unknown21(__int64 a1)
   return GameRoutine_185c1a0(a1);
 }
 
-unsigned __int64 MiracleMenuItem_Equip_Unknown55(_QWORD* a1)
+unsigned __int64 MiracleMenuItem_Equip_DrawText(_QWORD* a1)
 {
   __int64 v2;
   __int64* v3;
@@ -591,7 +591,7 @@ LABEL_89:
   return result;
 }
 
-bool MiracleMenuItem_Equip_Unknown61(__int64 a1)
+bool MiracleMenuItem_Equip_IsFixed(__int64 a1)
 {
   return GameData_21ca2f8 != 0 &&
          **(_DWORD**)(a1 + 96) == *(char*)(GameData_21ca2f8 + 28);

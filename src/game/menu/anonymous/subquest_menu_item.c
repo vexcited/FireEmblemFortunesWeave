@@ -9,7 +9,7 @@ extern __int64 (*game_menu_BasicMenuItem_vtable[])();
 extern __int64 (*game_menu_anonymous_BaseQuestMenuItem_vtable)();
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 SubquestMenuItem_DeletingDestructor(__int64 a1);
-__int64 SubquestMenuItem_Unknown25(__int64 a1);
+__int64 SubquestMenuItem_ACall(__int64 a1);
 
 __int64 SubquestMenuItem_DeletingDestructor(__int64 a1)
 {
@@ -49,7 +49,7 @@ __int64 SubquestMenuItem_DeletingDestructor(__int64 a1)
   return nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v7, a1);
 }
 
-__int64 SubquestMenuItem_Unknown25(__int64 a1)
+__int64 SubquestMenuItem_ACall(__int64 a1)
 {
   if (((*(__int64 (**)(__int64))(*(_QWORD*)a1 + 568LL))(a1) & 1) != 0) {
     return GameRoutine_1847120(a1);

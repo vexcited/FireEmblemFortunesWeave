@@ -10,8 +10,8 @@ extern __int64 (*game_telop_JobInfo_vtable[])();
 extern __int64 GameData_2263be8;
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern char GameData_1a9f09e;
-char* JobInfo_Unknown26(__int64 a1);
-char* JobInfo_Unknown27(__int64 a1);
+char* JobInfo_GetInAnimation(__int64 a1);
+char* JobInfo_GetOutAnimation(__int64 a1);
 __int64 JobInfo_Unknown44(__int64 result);
 __int64 JobInfo_Destructor(__int64 a1);
 __int64 JobInfo_DeletingDestructor(__int64 a1);
@@ -19,7 +19,7 @@ __int64 TelopReliance_1386f80(_QWORD);
 __int64 JobInfo_Destructor_175e660(__int64 a1);
 __int64 JobInfo_DeletingDestructor_175e700(__int64 a1);
 
-char* JobInfo_Unknown26(__int64 a1)
+char* JobInfo_GetInAnimation(__int64 a1)
 {
   if (*(_DWORD*)(a1 + 848) == 1) {
     return &GameData_1a9f09e;
@@ -29,7 +29,7 @@ char* JobInfo_Unknown26(__int64 a1)
   }
 }
 
-char* JobInfo_Unknown27(__int64 a1)
+char* JobInfo_GetOutAnimation(__int64 a1)
 {
   if (*(_DWORD*)(a1 + 848) == 1) {
     return &GameData_1a9f09e;

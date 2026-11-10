@@ -12,13 +12,13 @@ extern __int64 (*GameData_1ffa410[])();
 extern __int64 GameData_21c9718;
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64* GameData_212dcd0;
-__int64 LessonMenuItem_Unknown25(_QWORD* a1);
+__int64 LessonMenuItem_ACall(_QWORD* a1);
 __int64 GameRoutine_1433810_alt1(_QWORD, _QWORD) __asm__("GameRoutine_1433810");
 extern __int64 GameData_21f3ff8;
 __int64 game_facility_anonymous_LessonMenuItem_ACall_closure_Invoke(__int64 a1,
                                                                     __int64 a2);
 
-__int64 LessonMenuItem_Unknown25(_QWORD* a1)
+__int64 LessonMenuItem_ACall(_QWORD* a1)
 {
   __int64 v2;
   __int64 v3;

@@ -31,7 +31,7 @@ extern __int64* GameData_212dec0[4];
 extern __int64* GameData_212ea58;
 extern __int64* ui_LayoutAccessor_empty__ptr[3];
 extern char* GameData_206d198[3];
-__int64 LinkUnitMenuItem_Unknown55(_QWORD* a1);
+__int64 LinkUnitMenuItem_DrawText(_QWORD* a1);
 __int64 GameRoutine_e6cfa0(_QWORD, _QWORD);
 extern _QWORD GameData_1b01768[4];
 extern __int64 GameData_2203490;
@@ -166,7 +166,7 @@ LABEL_5:
   return 4;
 }
 
-__int64 LinkUnitMenuItem_Unknown55(_QWORD* a1)
+__int64 LinkUnitMenuItem_DrawText(_QWORD* a1)
 {
   __int64* v2;
   __int64 v3;

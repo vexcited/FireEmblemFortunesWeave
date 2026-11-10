@@ -10,9 +10,9 @@ __int64 GameRoutine_60a020(_QWORD, _QWORD);
 __int64 sprintf(_QWORD, const char*, ...);
 __int64 std___1___shared_weak_count___release_weak(_QWORD);
 __int64 std___1___shared_weak_count_lock(_QWORD, _QWORD);
-__int64 WarpArrow_Unknown2(__int64 a1, __int64* a2, int a3);
+__int64 WarpArrow_Setup(__int64 a1, __int64* a2, int a3);
 
-__int64 WarpArrow_Unknown2(__int64 a1, __int64* a2, int a3)
+__int64 WarpArrow_Setup(__int64 a1, __int64* a2, int a3)
 {
   __int64 result;
   __int64 v7;

@@ -34,7 +34,7 @@ __int64 WaveStreamReader_Unknown9(__int64 a1, __int64 a2, int a3, __int64 a4,
 bool WaveStreamReader_Unknown11(__int64 a1, int a2);
 __int64 WaveStreamReader_Unknown13(__int64 a1);
 __int64 WaveStreamReader_Unknown14(__int64 a1, int a2);
-bool WaveStreamReader_Unknown15(__int64 a1, int a2, int a3, int a4);
+bool WaveStreamReader_GetSubTypeCount(__int64 a1, int a2, int a3, int a4);
 __int64 WaveStreamReader_18d1e0(__int64 a1);
 __int64 WaveStreamReader_Unknown10(__int64 a1, __int64 a2, int a3, __int64 a4,
                                    __int64 a5, __int64 a6);
@@ -787,7 +787,7 @@ __int64 WaveStreamReader_Unknown14(__int64 a1, int a2)
   return nn_os_UnlockMutex(a1 + 120);
 }
 
-bool WaveStreamReader_Unknown15(__int64 a1, int a2, int a3, int a4)
+bool WaveStreamReader_GetSubTypeCount(__int64 a1, int a2, int a3, int a4)
 {
   __int64 v8;
   __int64 v9;

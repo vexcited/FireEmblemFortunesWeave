@@ -11,8 +11,8 @@ extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64* GameData_212d630[11];
 __int64 SideStoryMenuItem_Destructor(__int64 a1);
 __int64 SideStoryMenuItem_DeletingDestructor(__int64 a1);
-__int64 SideStoryMenuItem_Unknown25(__int64 a1);
-bool SideStoryMenuItem_Unknown58(__int64 a1);
+__int64 SideStoryMenuItem_ACall(__int64 a1);
+bool SideStoryMenuItem_IsActive(__int64 a1);
 bool SideStoryMenuItem_Unknown71(__int64 a1);
 
 __int64 SideStoryMenuItem_Destructor(__int64 a1)
@@ -138,7 +138,7 @@ __int64 SideStoryMenuItem_DeletingDestructor(__int64 a1)
   return nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v13, a1);
 }
 
-__int64 SideStoryMenuItem_Unknown25(__int64 a1)
+__int64 SideStoryMenuItem_ACall(__int64 a1)
 {
   if ((*(_BYTE*)(*(_QWORD*)(a1 + 152) + 8LL) & 0xFE) == 4 ||
       (unsigned int)(*(_DWORD*)(a1 + 96) - 1) > 1) {
@@ -149,7 +149,7 @@ __int64 SideStoryMenuItem_Unknown25(__int64 a1)
   }
 }
 
-bool SideStoryMenuItem_Unknown58(__int64 a1)
+bool SideStoryMenuItem_IsActive(__int64 a1)
 {
   return (*(_BYTE*)(*(_QWORD*)(a1 + 152) + 8LL) & 0xFE) != 4;
 }

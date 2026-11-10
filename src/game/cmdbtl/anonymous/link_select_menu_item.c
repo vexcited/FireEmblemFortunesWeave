@@ -11,10 +11,10 @@ extern char GameData_1a9f09e;
 extern char GameData_225c920;
 extern char* GameData_206a130[3];
 extern int GameData_225c924;
-__int64 LinkSelectMenuItem_Unknown25(unsigned int* a1);
+__int64 LinkSelectMenuItem_ACall(unsigned int* a1);
 __int64 LinkSelectMenuItem_Unknown70(__int64 a1, __int64 a2);
 
-__int64 LinkSelectMenuItem_Unknown25(unsigned int* a1)
+__int64 LinkSelectMenuItem_ACall(unsigned int* a1)
 {
   char v2;
   __int64 result;

@@ -17,10 +17,10 @@ extern __int64 ui_LayoutAccessor_empty_;
 extern __int64* GameData_212e348;
 extern __int64* msg_MessageManager_instance__ptr[2];
 extern __int64* ui_LayoutAccessor_empty__ptr[3];
-__int64 GmapSpotCarriageMenuItem_Unknown55(__int64 a1);
+__int64 GmapSpotCarriageMenuItem_DrawText(__int64 a1);
 __int64 GmapSpotCarriageMenuItem_Unknown70(__int64 result);
 
-__int64 GmapSpotCarriageMenuItem_Unknown55(__int64 a1)
+__int64 GmapSpotCarriageMenuItem_DrawText(__int64 a1)
 {
   __int64 result;
   __int64 v3;

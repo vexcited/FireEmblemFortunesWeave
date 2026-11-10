@@ -43,7 +43,7 @@ extern __int64* GameData_212dff0[12];
 extern __int64* GameData_212e030[4];
 extern char GameData_1a9f09e;
 __int64 VolunteerMenuItem_Unknown25_9bbfc0(__int64 a1);
-__int64 VolunteerMenuItem_Unknown38(__int64 a1);
+__int64 VolunteerMenuItem_RightCall(__int64 a1);
 __int64 VolunteerMenuItem_Unknown75(__int64 a1, __int64 a2);
 __int64 VolunteerMenuItem_Unknown76(__int64 a1, __int64 a2, int a3);
 __int64 VolunteerMenuItem_Unknown25_19261a0(_QWORD* a1);
@@ -174,7 +174,7 @@ __int64 VolunteerMenuItem_Unknown25_9bbfc0(__int64 a1)
   return result;
 }
 
-__int64 VolunteerMenuItem_Unknown38(__int64 a1)
+__int64 VolunteerMenuItem_RightCall(__int64 a1)
 {
   __int64 v1;
   __int64 v2;

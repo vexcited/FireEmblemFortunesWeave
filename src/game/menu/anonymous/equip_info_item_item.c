@@ -17,12 +17,12 @@ extern __int64 game_g_empty_item;
 extern __int64* GameData_212c878[6];
 extern __int64* game_g_empty_item_ptr;
 extern __int64* ui_LayoutAccessor_empty__ptr[3];
-__int64 EquipInfoItem_Item_Unknown55(__int64 a1);
-unsigned __int64 EquipInfoItem_Item_Unknown58(__int64 a1);
-bool EquipInfoItem_Item_Unknown60(__int64 a1);
+__int64 EquipInfoItem_Item_DrawText(__int64 a1);
+unsigned __int64 EquipInfoItem_Item_IsActive(__int64 a1);
+bool EquipInfoItem_Item_IsEmpty(__int64 a1);
 __int64 EquipInfoItem_Item_Unknown70(__int64 a1, __int64* a2);
 
-__int64 EquipInfoItem_Item_Unknown55(__int64 a1)
+__int64 EquipInfoItem_Item_DrawText(__int64 a1)
 {
   __int64 v2;
   __int64 v3;
@@ -105,7 +105,7 @@ LABEL_6:
   return result;
 }
 
-unsigned __int64 EquipInfoItem_Item_Unknown58(__int64 a1)
+unsigned __int64 EquipInfoItem_Item_IsActive(__int64 a1)
 {
   __int64 v1;
   __int64* v3;
@@ -190,7 +190,7 @@ LABEL_19:
   return v15 & 1;
 }
 
-bool EquipInfoItem_Item_Unknown60(__int64 a1)
+bool EquipInfoItem_Item_IsEmpty(__int64 a1)
 {
   __int64 v1;
   __int64* v2;

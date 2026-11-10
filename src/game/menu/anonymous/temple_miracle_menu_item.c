@@ -5,11 +5,11 @@
 __int64 GameRoutine_1464830(_QWORD);
 __int64 GameRoutine_90c9e0(_QWORD);
 extern __int64 game_GameModeData_instance_;
-__int64 TempleMiracleMenuItem_Unknown20(__int64 a1);
-__int64 TempleMiracleMenuItem_Unknown21(__int64 a1);
-bool TempleMiracleMenuItem_Unknown58(__int64 a1);
+__int64 TempleMiracleMenuItem_OnSelect(__int64 a1);
+__int64 TempleMiracleMenuItem_OnDeselect(__int64 a1);
+bool TempleMiracleMenuItem_IsActive(__int64 a1);
 
-__int64 TempleMiracleMenuItem_Unknown20(__int64 a1)
+__int64 TempleMiracleMenuItem_OnSelect(__int64 a1)
 {
   __int64 v2;
 
@@ -21,7 +21,7 @@ __int64 TempleMiracleMenuItem_Unknown20(__int64 a1)
   return GameRoutine_1464830(a1);
 }
 
-__int64 TempleMiracleMenuItem_Unknown21(__int64 a1)
+__int64 TempleMiracleMenuItem_OnDeselect(__int64 a1)
 {
   __int64 v2;
 
@@ -33,7 +33,7 @@ __int64 TempleMiracleMenuItem_Unknown21(__int64 a1)
   return GameRoutine_1464830(a1);
 }
 
-bool TempleMiracleMenuItem_Unknown58(__int64 a1)
+bool TempleMiracleMenuItem_IsActive(__int64 a1)
 {
   __int64 v3;
   int v4;

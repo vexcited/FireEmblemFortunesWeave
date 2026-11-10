@@ -31,7 +31,7 @@ extern __int64* game_g_empty_item_ptr;
 extern __int64* ui_LayoutAccessor_empty__ptr[3];
 bool ItemMenuItem_15c1e60(__int64 a1);
 __int64 ItemMenuItem_15c1fe0(__int64 a1);
-__int64 ItemMenuItem_Unknown58(__int64 a1);
+__int64 ItemMenuItem_IsActive(__int64 a1);
 bool ItemMenuItem_15c2230(__int64 a1);
 __int64 ItemMenuItem_Unknown70(__int64 a1, __int64 a2);
 bool ItemMenuItem_Unknown71(__int64 a1);
@@ -187,7 +187,7 @@ LABEL_14:
   return result;
 }
 
-__int64 ItemMenuItem_Unknown58(__int64 a1)
+__int64 ItemMenuItem_IsActive(__int64 a1)
 {
   __int64 v1;
   __int64 v2;

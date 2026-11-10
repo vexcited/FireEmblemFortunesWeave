@@ -10,7 +10,7 @@ extern __int64 (*GameData_1faf7f8[])();
 extern __int64 GameData_212c6c0[2];
 extern __int64 game_gmap_GmapClock_instance_;
 extern __int64 game_gmap_GmapClock_kDefaultTime_ptr;
-__int64 ThermaeThermaeMenuItem_Unknown25(_QWORD* a1);
+__int64 ThermaeThermaeMenuItem_ACall(_QWORD* a1);
 __int64 ThermaeThermaeMenuItem_Unknown55(__int64 a1);
 __int64 GameRoutine_143de80(_QWORD);
 __int64 GameRoutine_145e440(_QWORD, _QWORD, _QWORD);
@@ -66,7 +66,7 @@ bool ThermaeThermaeMenuItem_94efe0(__int64 a1, __int64 a2)
   return result;
 }
 
-__int64 ThermaeThermaeMenuItem_Unknown25(_QWORD* a1)
+__int64 ThermaeThermaeMenuItem_ACall(_QWORD* a1)
 {
   __int64 v2;
   __int64 v3;

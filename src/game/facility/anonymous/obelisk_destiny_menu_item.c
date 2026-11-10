@@ -8,10 +8,10 @@ __int64 GameRoutine_80e330(_QWORD, _QWORD);
 __int64 game_GameVariableTable_Find(_QWORD, _QWORD);
 __int64 game_VariableManager_SetFlag(_QWORD, _QWORD);
 extern __int64 game_GameModeData_instance_;
-__int64 ObeliskDestinyMenuItem_Unknown25(_QWORD* a1);
-bool ObeliskDestinyMenuItem_Unknown58(__int64 a1);
+__int64 ObeliskDestinyMenuItem_ACall(_QWORD* a1);
+bool ObeliskDestinyMenuItem_IsActive(__int64 a1);
 
-__int64 ObeliskDestinyMenuItem_Unknown25(_QWORD* a1)
+__int64 ObeliskDestinyMenuItem_ACall(_QWORD* a1)
 {
   __int64 v2;
   __int64 v3;
@@ -62,7 +62,7 @@ __int64 ObeliskDestinyMenuItem_Unknown25(_QWORD* a1)
   return 12;
 }
 
-bool ObeliskDestinyMenuItem_Unknown58(__int64 a1)
+bool ObeliskDestinyMenuItem_IsActive(__int64 a1)
 {
   __int64 v1;
 

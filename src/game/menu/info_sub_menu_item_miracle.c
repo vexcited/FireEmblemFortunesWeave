@@ -4,7 +4,7 @@
 
 __int64 GameRoutine_1462780(_QWORD, _QWORD);
 __int64 GameRoutine_1462ac0(_QWORD, _QWORD);
-__int64 InfoSubMenuItem_Miracle_Unknown25(__int64 a1, __int64 a2);
+__int64 InfoSubMenuItem_Miracle_ACall(__int64 a1, __int64 a2);
 __int64 GameRoutine_82e5c0(_QWORD);
 __int64 game_GameVariableTable_Find(_QWORD, _QWORD);
 extern __int64 game_GameModeData_instance_;
@@ -12,7 +12,7 @@ __int64
 game_menu_InfoSubMenuItem_Miracle_InfoSubMenuItem_Miracle_lambda0_Invoke(
     __int64 a1, unsigned __int8* a2);
 
-__int64 InfoSubMenuItem_Miracle_Unknown25(__int64 a1, __int64 a2)
+__int64 InfoSubMenuItem_Miracle_ACall(__int64 a1, __int64 a2)
 {
   __int64 v2;
   __int64 v3;

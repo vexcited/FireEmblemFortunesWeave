@@ -10,10 +10,10 @@ __int64 game_GameVariableTable_Find(_QWORD, _QWORD);
 extern _UNKNOWN* GameData_212c730;
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64 game_GameModeData_instance_;
-__int64 InfoSubMenuItem_Material_Unknown6(__int64 a1);
-__int64 InfoSubMenuItem_Material_Unknown25(__int64 a1);
+__int64 InfoSubMenuItem_Material_IsDecidable(__int64 a1);
+__int64 InfoSubMenuItem_Material_ACall(__int64 a1);
 
-__int64 InfoSubMenuItem_Material_Unknown6(__int64 a1)
+__int64 InfoSubMenuItem_Material_IsDecidable(__int64 a1)
 {
   __int64 v2;
   __int64 v3;
@@ -27,7 +27,7 @@ __int64 InfoSubMenuItem_Material_Unknown6(__int64 a1)
   return v4 & *(_BYTE*)(a1 + 81);
 }
 
-__int64 InfoSubMenuItem_Material_Unknown25(__int64 a1)
+__int64 InfoSubMenuItem_Material_ACall(__int64 a1)
 {
   __int64 v1;
   __int64 v2;

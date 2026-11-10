@@ -15,8 +15,8 @@ extern __int64 (*game_menu_anonymous_SettingMenuItem_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 BgmEncountMenuItem_Destructor(__int64 a1);
 __int64 BgmEncountMenuItem_Unknown19(__int64 result);
-__int64 BgmEncountMenuItem_Unknown20(__int64 a1);
-__int64 BgmEncountMenuItem_Unknown58(__int64 a1);
+__int64 BgmEncountMenuItem_OnSelect(__int64 a1);
+__int64 BgmEncountMenuItem_IsActive(__int64 a1);
 __int64 BgmEncountMenuItem_1675e00_alt1(_QWORD) __asm__(
     "BgmEncountMenuItem_1675e00");
 __int64 GameManager_a2f940(_QWORD, _QWORD, _QWORD, _QWORD, double);
@@ -153,7 +153,7 @@ __int64 BgmEncountMenuItem_Unknown19(__int64 result)
   return result;
 }
 
-__int64 BgmEncountMenuItem_Unknown20(__int64 a1)
+__int64 BgmEncountMenuItem_OnSelect(__int64 a1)
 {
   __int64 v2;
   _QWORD v4[2];
@@ -454,7 +454,7 @@ LABEL_10:
   return 1;
 }
 
-__int64 BgmEncountMenuItem_Unknown58(__int64 a1)
+__int64 BgmEncountMenuItem_IsActive(__int64 a1)
 {
   return (unsigned int)GameRoutine_80ca30(a1) &
          (*(_QWORD*)(a1 + 160) != *(_QWORD*)(a1 + 152));

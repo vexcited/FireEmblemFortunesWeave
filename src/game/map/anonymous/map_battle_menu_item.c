@@ -4,16 +4,16 @@
 
 __int64 Cursor_730e40(_QWORD, _QWORD);
 extern __int64 GameData_21cd130;
-bool MapBattleMenuItem_Unknown6(__int64 a1);
-__int64 MapBattleMenuItem_Unknown25(__int64 a1);
+bool MapBattleMenuItem_IsDecidable(__int64 a1);
+__int64 MapBattleMenuItem_ACall(__int64 a1);
 bool MapBattleMenuItem_Unknown58(__int64 a1);
 
-bool MapBattleMenuItem_Unknown6(__int64 a1)
+bool MapBattleMenuItem_IsDecidable(__int64 a1)
 {
   return (*(_BYTE*)(*(_QWORD*)(a1 + 88) + 417LL) & 0x1C) == 0;
 }
 
-__int64 MapBattleMenuItem_Unknown25(__int64 a1)
+__int64 MapBattleMenuItem_ACall(__int64 a1)
 {
   if (GameData_21cd130 == 0) {
     return 0;

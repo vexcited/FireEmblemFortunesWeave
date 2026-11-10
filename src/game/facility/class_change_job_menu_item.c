@@ -12,7 +12,7 @@ __int64 game_menu_GameMenuItem_DrawText(void);
 __int64 std___1___shared_weak_count___release_weak(_QWORD);
 __int64 std___1___shared_weak_count_lock(_QWORD);
 __int64 ui_LayoutAccessor_SetPaneVisible(_QWORD, _QWORD, _QWORD);
-__int64 ClassChangeJobMenuItem_Unknown55(_QWORD* a1);
+__int64 ClassChangeJobMenuItem_DrawText(_QWORD* a1);
 __attribute__((swiftcall)) void game_95eaa0(PSEUDO_X8, __int64 result, __int64);
 __int64 GameRoutine_1952d00(__int64, __int64, __int64);
 extern __int64 (*GameData_20416b0[])();
@@ -21,7 +21,7 @@ extern __int64 game_facility_FacilityView_instance_;
 __int64 ClassChangeJobMenuItem_16b3c70(__int64 a1);
 bool ClassChangeJobMenuItem_IsActive(__int64 a1);
 
-__int64 ClassChangeJobMenuItem_Unknown55(_QWORD* a1)
+__int64 ClassChangeJobMenuItem_DrawText(_QWORD* a1)
 {
   __int64 result;
   __int64 v3;

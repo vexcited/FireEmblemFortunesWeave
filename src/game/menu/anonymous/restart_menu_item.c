@@ -8,7 +8,7 @@ extern __int64 GameData_20b7100;
 extern __int64 game_GameModeData_instance_;
 extern __int64 game_GameRestartData_unknown_;
 extern __int64* GameData_212e030[4];
-__int64 RestartMenuItem_Unknown26(_QWORD* a1);
+__int64 RestartMenuItem_BCall(_QWORD* a1);
 __int64 RestartMenuItem_Unknown73_173b7a0(__int64 a1);
 bool RestartMenuItem_Unknown74(__int64 a1);
 __int64 GameRoutine_80cdc0(_QWORD);
@@ -24,7 +24,7 @@ void __attribute__((noreturn)) String_60a1d0(_QWORD);
 __attribute__((swiftcall)) void RestartMenuItem_Unknown70(PSEUDO_X8 x8_,
                                                           __int64 a1);
 
-__int64 RestartMenuItem_Unknown26(_QWORD* a1)
+__int64 RestartMenuItem_BCall(_QWORD* a1)
 {
   __int64 v2;
 

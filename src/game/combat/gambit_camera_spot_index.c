@@ -3,10 +3,10 @@
 #pragma GCC visibility push(hidden)
 
 __int64 GameRoutine_e5a4a0(_QWORD, _QWORD, _QWORD, _QWORD);
-__int64 GambitCameraSpotIndex_Unknown2(__int64 a1);
+__int64 GambitCameraSpotIndex_Dispatch(__int64 a1);
 __attribute__((swiftcall)) void GambitCameraSpotIndex_Unknown3(PSEUDO_X8 x8_);
 
-__int64 GambitCameraSpotIndex_Unknown2(__int64 a1)
+__int64 GambitCameraSpotIndex_Dispatch(__int64 a1)
 {
   char v1;
   int v2;

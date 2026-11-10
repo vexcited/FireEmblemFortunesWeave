@@ -5,9 +5,9 @@
 __int64 GameRoutine_136a920(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_136ac50(_QWORD, _QWORD, _QWORD);
 extern __int64 ui_Manager_instance_;
-__int64 ThirdLeaderChip_Unknown4(__int64 result, __int64 a2);
+__int64 ThirdLeaderChip_SetIcon(__int64 result, __int64 a2);
 
-__int64 ThirdLeaderChip_Unknown4(__int64 result, __int64 a2)
+__int64 ThirdLeaderChip_SetIcon(__int64 result, __int64 a2)
 {
   __int64 v2;
   int v3;

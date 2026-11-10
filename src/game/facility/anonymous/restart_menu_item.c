@@ -15,7 +15,7 @@ extern __int64 game_GameModeData_instance_;
 extern __int64 game_GameRestartData_unknown_;
 extern __int64* GameData_212e348;
 extern __int64* msg_MessageManager_instance__ptr[2];
-__int64 RestartMenuItem_Unknown27(__int64 a1);
+__int64 RestartMenuItem_XCall(__int64 a1);
 __int64 RestartMenuItem_Unknown55(__int64 a1);
 __int64 GameRoutine_16ee370(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_16ee520(_QWORD);
@@ -211,7 +211,7 @@ __int64 game_facility_anonymous_RestartMenuItem_ACall_closure_Invoke(__int64 a1)
   return 13;
 }
 
-__int64 RestartMenuItem_Unknown27(__int64 a1)
+__int64 RestartMenuItem_XCall(__int64 a1)
 {
   __int64 v1;
   __int64 v2;

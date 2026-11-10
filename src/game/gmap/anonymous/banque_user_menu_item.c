@@ -5,7 +5,7 @@
 __int64 __dynamic_cast(_QWORD, _QWORD, _QWORD, _QWORD);
 extern __int64 GameData_2071168;
 extern __int64* GameData_212e008[9];
-__int64 BanqueUserMenuItem_Unknown5(_QWORD* a1);
+__int64 BanqueUserMenuItem_IsEnable(_QWORD* a1);
 __int64 GameRoutine_1567590(_QWORD, _QWORD);
 __int64 GmapBanquetMenu_16415a0(__int64 result, __int64);
 __int64 GmapBanquetMenu_16416e0(__int64);
@@ -33,7 +33,7 @@ extern __int64* GameData_212d640[9];
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 game_gmap_anonymous_BanqueUserMenuItem_ACall(_QWORD* a1);
 
-__int64 BanqueUserMenuItem_Unknown5(_QWORD* a1)
+__int64 BanqueUserMenuItem_IsEnable(_QWORD* a1)
 {
   __int64 v2;
   char* v3;

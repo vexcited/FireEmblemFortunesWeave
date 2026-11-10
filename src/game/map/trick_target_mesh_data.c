@@ -6,9 +6,9 @@ extern _UNKNOWN* GameData_212c958;
 extern __int128 GameData_1a82dd0;
 extern __int128 GameData_1a83090;
 extern __int128 GameData_1a83610;
-float TrickTargetMeshData_Unknown5(__int64 a1);
+float TrickTargetMeshData_ResetMatrix(__int64 a1);
 
-float TrickTargetMeshData_Unknown5(__int64 a1)
+float TrickTargetMeshData_ResetMatrix(__int64 a1)
 {
   _QWORD* v1;
   __int64 v2;

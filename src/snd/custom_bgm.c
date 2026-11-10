@@ -6,8 +6,8 @@ __int64 GameManager_a360a0(_QWORD, _QWORD);
 __int64 snd_BGM_isStoppingNow(void);
 __int64 snd_BGM_start(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, float, float);
 extern __int64* game_sound_g_game_sound_ptr[5];
-__int64 CustomBGM_Unknown3(__int64 a1, __int64 a2, __int64 a3, unsigned int a4,
-                           float a5, float a6);
+__int64 CustomBGM_requestPlay(__int64 a1, __int64 a2, __int64 a3,
+                              unsigned int a4, float a5, float a6);
 __attribute__((swiftcall)) void snd_BGM_getFirstHandle(PSEUDO_X8, _QWORD);
 __int64 GameRoutine_10d050(_QWORD, _QWORD);
 __int64 snd_BGM_checkFinished(_QWORD);
@@ -294,8 +294,8 @@ __int64 CustomBGM_update(__int64 a1)
   return snd_BGM_update(a1);
 }
 
-__int64 CustomBGM_Unknown3(__int64 a1, __int64 a2, __int64 a3, unsigned int a4,
-                           float a5, float a6)
+__int64 CustomBGM_requestPlay(__int64 a1, __int64 a2, __int64 a3,
+                              unsigned int a4, float a5, float a6)
 {
   __int64 result;
   _QWORD v13[7];

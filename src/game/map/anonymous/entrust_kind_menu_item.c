@@ -12,7 +12,7 @@ extern __int64 game_script_map_effect_g_sequence;
 extern char GameData_1a9f09e;
 extern int GameData_1b4a3f0[];
 char* EntrustKindMenuItem_Unknown3(__int64 a1);
-__int64 EntrustKindMenuItem_Unknown25(__int64 a1, __int64 a2);
+__int64 EntrustKindMenuItem_ACall(__int64 a1, __int64 a2);
 
 char* EntrustKindMenuItem_Unknown3(__int64 a1)
 {
@@ -25,7 +25,7 @@ char* EntrustKindMenuItem_Unknown3(__int64 a1)
   }
 }
 
-__int64 EntrustKindMenuItem_Unknown25(__int64 a1, __int64 a2)
+__int64 EntrustKindMenuItem_ACall(__int64 a1, __int64 a2)
 {
   _QWORD v3[2];
 

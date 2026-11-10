@@ -17,10 +17,10 @@ extern __int64 GameData_21c9988;
 extern __int64 GameData_21f3ff8;
 extern __int64* GameData_212d670[3];
 extern __int64* GameData_212d678[2];
-__int64 ClassJobRecycleMenuItem_Unknown20(__int64 a1);
-__int64 ClassJobRecycleMenuItem_Unknown55(_QWORD* a1);
+__int64 ClassJobRecycleMenuItem_OnSelect(__int64 a1);
+__int64 ClassJobRecycleMenuItem_DrawText(_QWORD* a1);
 
-__int64 ClassJobRecycleMenuItem_Unknown20(__int64 a1)
+__int64 ClassJobRecycleMenuItem_OnSelect(__int64 a1)
 {
   __int64 v2;
   __int64 v3;
@@ -50,7 +50,7 @@ __int64 ClassJobRecycleMenuItem_Unknown20(__int64 a1)
   return GameRoutine_1467a30(*(_QWORD*)(a1 + 88));
 }
 
-__int64 ClassJobRecycleMenuItem_Unknown55(_QWORD* a1)
+__int64 ClassJobRecycleMenuItem_DrawText(_QWORD* a1)
 {
   __int64 result;
   __int64 v3;

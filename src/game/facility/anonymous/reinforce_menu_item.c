@@ -15,7 +15,7 @@ extern __int64 game_UnitListSet_instance_;
 extern __int64* GameData_212dff0[12];
 extern __int64* GameData_212e030[4];
 bool ReinforceMenuItem_Unknown83(__int64 a1);
-__int64 ReinforceMenuItem_Unknown25(_QWORD* a1);
+__int64 ReinforceMenuItem_ACall(_QWORD* a1);
 __int64 ReinforceMenuItem_Unknown73(__int64 a1);
 
 bool ReinforceMenuItem_Unknown83(__int64 a1)
@@ -66,7 +66,7 @@ bool ReinforceMenuItem_Unknown83(__int64 a1)
   return (v7 & 8) == 0 && (v7 & 0x3B) != 0;
 }
 
-__int64 ReinforceMenuItem_Unknown25(_QWORD* a1)
+__int64 ReinforceMenuItem_ACall(_QWORD* a1)
 {
   __int64 v2;
   __int64 v3;

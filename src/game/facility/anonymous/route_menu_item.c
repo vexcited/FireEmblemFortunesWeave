@@ -39,7 +39,7 @@ void __attribute__((noreturn)) GameRoutine_60a1d0(_QWORD, _QWORD, _QWORD,
                                                   _QWORD, _QWORD);
 __int64 RouteMenuItem_Destructor(__int64 a1);
 __int64 RouteMenuItem_DeletingDestructor(__int64 a1);
-__int64 RouteMenuItem_Unknown55(__int64 a1);
+__int64 RouteMenuItem_DrawText(__int64 a1);
 
 __int64 RouteMenuItem_Destructor(__int64 a1)
 {
@@ -93,7 +93,7 @@ __int64 RouteMenuItem_DeletingDestructor(__int64 a1)
   return nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v5);
 }
 
-__int64 RouteMenuItem_Unknown55(__int64 a1)
+__int64 RouteMenuItem_DrawText(__int64 a1)
 {
   __int64 result;
   __int64 v3;

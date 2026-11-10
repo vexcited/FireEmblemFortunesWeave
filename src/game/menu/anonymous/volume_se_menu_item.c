@@ -6,7 +6,7 @@ __int64 GameRoutine_1572370(_QWORD, _QWORD);
 __int64 GameRoutine_1673c10(__int64*, char);
 __int64 std___1___shared_weak_count___release_weak(_QWORD);
 __int64 std___1___shared_weak_count_lock(_QWORD);
-__int64 VolumeSeMenuItem_Unknown21(__int64 a1);
+__int64 VolumeSeMenuItem_OnDeselect(__int64 a1);
 __attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, _QWORD, _QWORD,
                                                _QWORD, _QWORD, _QWORD, _QWORD,
                                                double, float);
@@ -51,7 +51,7 @@ __int64 VolumeSeMenuItem_Unknown19(__int64 result)
   return result;
 }
 
-__int64 VolumeSeMenuItem_Unknown21(__int64 a1)
+__int64 VolumeSeMenuItem_OnDeselect(__int64 a1)
 {
   int v1;
   __int64 v2;

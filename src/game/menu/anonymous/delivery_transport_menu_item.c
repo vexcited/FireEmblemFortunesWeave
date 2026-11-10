@@ -4,10 +4,10 @@
 
 __int64 game_menu_GameMenuItem_PlayCursorAnimation(void);
 __int64 game_menu_GameMenuItem_PlayIdleAnimation(void);
-__int64 DeliveryTransportMenuItem_Unknown63(_BYTE* a1);
-__int64 DeliveryTransportMenuItem_Unknown64(_BYTE* a1);
+__int64 DeliveryTransportMenuItem_PlayIdleAnimation(_BYTE* a1);
+__int64 DeliveryTransportMenuItem_PlayCursorAnimation(_BYTE* a1);
 
-__int64 DeliveryTransportMenuItem_Unknown63(_BYTE* a1)
+__int64 DeliveryTransportMenuItem_PlayIdleAnimation(_BYTE* a1)
 {
   if (a1[96] == 1) {
     return (*(__int64 (**)(_BYTE*))(*(_QWORD*)a1 + 520LL))(a1);
@@ -17,7 +17,7 @@ __int64 DeliveryTransportMenuItem_Unknown63(_BYTE* a1)
   }
 }
 
-__int64 DeliveryTransportMenuItem_Unknown64(_BYTE* a1)
+__int64 DeliveryTransportMenuItem_PlayCursorAnimation(_BYTE* a1)
 {
   if (a1[96] == 1) {
     return (*(__int64 (**)(_BYTE*))(*(_QWORD*)a1 + 520LL))(a1);

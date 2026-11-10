@@ -23,14 +23,14 @@ extern __int64* GameData_212dff0[12];
 extern __int64* GameData_212e030[4];
 extern __int64* GameData_212e348;
 extern __int64* msg_MessageManager_instance__ptr[2];
-__int64 TrainingMenuItem_Unknown25(__int64 a1);
+__int64 TrainingMenuItem_ACall(__int64 a1);
 __int64 TrainingMenuItem_Unknown76(__int64 a1, __int64 a2, int a3);
 __int64 TrainingMenuItem_Unknown55(__int64 a1);
 __int64 TrainingMenuItem_Unknown73_15f65b0(_QWORD* a1);
 extern __int64 GameData_2247280;
 __int64 game_facility_anonymous_TrainingMenuItem_ACall_closure_Invoke();
 
-__int64 TrainingMenuItem_Unknown25(__int64 a1)
+__int64 TrainingMenuItem_ACall(__int64 a1)
 {
   __int64 v1;
   __int64 v2;

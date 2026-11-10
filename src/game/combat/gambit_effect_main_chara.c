@@ -9,12 +9,12 @@ extern __int64 (*game_combat_GambitEffectMainChara_vtable[])();
 extern __int64 (*game_combat_IGambitKey_vtable)();
 extern __int64 GameData_21ec7b0;
 extern __int64 fw_memory_g_heap_manager_ptr;
-__int64 GambitEffectMainChara_Unknown2(__int64 a1);
+__int64 GambitEffectMainChara_Dispatch(__int64 a1);
 __int64 GambitEffectMainChara_Destructor(__int64 result);
 __int64 GambitEffectMainChara_DeletingDestructor(__int64 a1);
 __attribute__((swiftcall)) void GambitEffectMainChara_Unknown3(PSEUDO_X8 x8_);
 
-__int64 GambitEffectMainChara_Unknown2(__int64 a1)
+__int64 GambitEffectMainChara_Dispatch(__int64 a1)
 {
   __int64 v2;
   __int64 v3;

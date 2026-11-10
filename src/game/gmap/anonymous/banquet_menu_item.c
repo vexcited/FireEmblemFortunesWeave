@@ -7,9 +7,9 @@ __int64 GameRoutine_657850(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 __int64 fw_memory_HeapManager_Allocate(_QWORD, _QWORD, _QWORD, _QWORD);
 extern _UNKNOWN* GameData_21319e0;
 extern __int64 fw_memory_g_heap_manager_ptr;
-__int64 BanquetMenuItem_Unknown25(_QWORD* a1);
+__int64 BanquetMenuItem_ACall(_QWORD* a1);
 
-__int64 BanquetMenuItem_Unknown25(_QWORD* a1)
+__int64 BanquetMenuItem_ACall(_QWORD* a1)
 {
   __int64 v2;
   __int64 v3;

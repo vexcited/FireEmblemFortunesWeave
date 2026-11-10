@@ -18,7 +18,7 @@ extern __int64 game_gmap_GmapClock_kDefaultTime_ptr;
 extern __int64* GameData_212c868;
 extern __int64* GameData_212dff0[12];
 extern __int64* GameData_212e030[4];
-__int64 ClassChangeMenuItem_Unknown58();
+__int64 ClassChangeMenuItem_IsActive();
 __int64 ClassChangeMenuItem_Unknown73(__int64 a1);
 __int64 ClassChangeMenuItem_Unknown70(_QWORD* a1, __int64 a2);
 __int64 GameRoutine_16dd280(_QWORD);
@@ -97,7 +97,7 @@ LABEL_13:
   return 9;
 }
 
-__int64 ClassChangeMenuItem_Unknown58()
+__int64 ClassChangeMenuItem_IsActive()
 {
   __int64 v0;
   __int64 v1;

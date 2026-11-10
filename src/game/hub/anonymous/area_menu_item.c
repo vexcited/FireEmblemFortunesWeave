@@ -3,7 +3,7 @@
 #pragma GCC visibility push(hidden)
 
 __int64 GameRoutine_169a430(_QWORD, _QWORD);
-__int64 AreaMenuItem_Unknown25(__int64 a1);
+__int64 AreaMenuItem_ACall(__int64 a1);
 __int64 AreaMenuItem_Unknown3(__int64 a1);
 
 __int64 AreaMenuItem_Unknown3(__int64 a1)
@@ -12,7 +12,7 @@ __int64 AreaMenuItem_Unknown3(__int64 a1)
                     40LL);
 }
 
-__int64 AreaMenuItem_Unknown25(__int64 a1)
+__int64 AreaMenuItem_ACall(__int64 a1)
 {
   _BYTE v3[32];
 

@@ -37,9 +37,9 @@ extern __int64* GameData_212e348;
 extern __int64* game_g_empty_item_ptr;
 extern __int64* msg_MessageManager_instance__ptr[2];
 extern char** msg_MessageManager_empty_text__ptr;
-__int64 ObeliskCausationMenuItem_Unknown2(__int64 a1);
-__int64 ObeliskCausationMenuItem_Unknown25(__int64 a1);
-__int64 ObeliskCausationMenuItem_Unknown58(__int64 a1);
+__int64 ObeliskCausationMenuItem_GetText(__int64 a1);
+__int64 ObeliskCausationMenuItem_ACall(__int64 a1);
+__int64 ObeliskCausationMenuItem_IsActive(__int64 a1);
 __attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, _QWORD, _QWORD,
                                                _QWORD, _QWORD, _QWORD, _QWORD,
                                                double, float);
@@ -51,7 +51,7 @@ __int64 ObeliskCausationMenuItem_PlayChangeSe(__int64 a1);
 __int64 game_facility_anonymous_ObeliskCausationMenuItem_ACall_closure_Invoke(
     __int64 a1);
 
-__int64 ObeliskCausationMenuItem_Unknown2(__int64 a1)
+__int64 ObeliskCausationMenuItem_GetText(__int64 a1)
 {
   __int64 v1;
   __int64 v2;
@@ -99,7 +99,7 @@ __int64 ObeliskCausationMenuItem_Unknown2(__int64 a1)
   return GameRoutine_a4dbe0(v2, v1, 0, v4);
 }
 
-__int64 ObeliskCausationMenuItem_Unknown25(__int64 a1)
+__int64 ObeliskCausationMenuItem_ACall(__int64 a1)
 {
   unsigned int v1;
   _QWORD* v3;
@@ -740,7 +740,7 @@ __int64 ObeliskCausationMenuItem_PlayChangeSe(__int64 a1)
   return snd_Fade_Destroy_Fade(v6);
 }
 
-__int64 ObeliskCausationMenuItem_Unknown58(__int64 a1)
+__int64 ObeliskCausationMenuItem_IsActive(__int64 a1)
 {
   unsigned int v1;
   _QWORD* v3;

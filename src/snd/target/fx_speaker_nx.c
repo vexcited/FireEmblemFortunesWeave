@@ -5,10 +5,10 @@
 __int64 nn_os_LockMutex(_QWORD);
 __n128 nn_os_UnlockMutex(_QWORD);
 float GameRoutine_178710(_QWORD, _QWORD, _QWORD);
-float FxSpeakerNX_Unknown24(__int64 a1, unsigned int a2, unsigned int a3);
+float FxSpeakerNX_unknown24(__int64 a1, unsigned int a2, unsigned int a3);
 float FxSpeakerNx_178710(__int64 a1, int a2, int a3);
 
-float FxSpeakerNX_Unknown24(__int64 a1, unsigned int a2, unsigned int a3)
+float FxSpeakerNX_unknown24(__int64 a1, unsigned int a2, unsigned int a3)
 {
   float v6;
 

@@ -3,9 +3,9 @@
 #pragma GCC visibility push(hidden)
 
 __int64 GameRoutine_1670c60(_QWORD, _QWORD, _QWORD);
-__int64 SystemMenuItem_Config_Unknown25(__int64 a1);
+__int64 SystemMenuItem_Config_ACall(__int64 a1);
 
-__int64 SystemMenuItem_Config_Unknown25(__int64 a1)
+__int64 SystemMenuItem_Config_ACall(__int64 a1)
 {
   __int64 v1;
 

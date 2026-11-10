@@ -2,7 +2,7 @@
 
 #pragma GCC visibility push(hidden)
 
-__int64 SubExchangeMenuItem_Unknown25_17b30e0(_QWORD* a1);
+__int64 SubExchangeMenuItem_ACall(_QWORD* a1);
 __n128 nn_mem_StandardAllocator_Free(_QWORD);
 __n128 std___1___shared_weak_count___release_weak();
 extern __int64 (*game_menu_BasicMenuItem_vtable[])();
@@ -54,7 +54,7 @@ LABEL_6:
   return nn_mem_StandardAllocator_Free(*(_QWORD*)v6 + v8);
 }
 
-__int64 SubExchangeMenuItem_Unknown25_17b30e0(_QWORD* a1)
+__int64 SubExchangeMenuItem_ACall(_QWORD* a1)
 {
   __int64 v2;
   __int64 v4;

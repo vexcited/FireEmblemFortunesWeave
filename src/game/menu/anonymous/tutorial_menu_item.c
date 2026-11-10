@@ -13,9 +13,9 @@ extern __int64 game_GameModeData_instance_;
 extern __int64 ui_LayoutAccessor_empty_;
 extern char game_menu_TutorialMenu_unknown_225d650_;
 __int64 TutorialMenuItem_Unknown3(__int64 a1);
-__int64 TutorialMenuItem_Unknown21(__int64 a1);
+__int64 TutorialMenuItem_OnDeselect(__int64 a1);
 __int64 TutorialMenuItem_Unknown23(__int64 result);
-__int64 TutorialMenuItem_Unknown55(_QWORD* a1);
+__int64 TutorialMenuItem_DrawText(_QWORD* a1);
 
 __int64 TutorialMenuItem_Unknown3(__int64 a1)
 {
@@ -34,7 +34,7 @@ __int64 TutorialMenuItem_Unknown3(__int64 a1)
   }
 }
 
-__int64 TutorialMenuItem_Unknown21(__int64 a1)
+__int64 TutorialMenuItem_OnDeselect(__int64 a1)
 {
   __int64 v2;
   __int64 result;
@@ -124,7 +124,7 @@ __int64 TutorialMenuItem_Unknown23(__int64 result)
   return result;
 }
 
-__int64 TutorialMenuItem_Unknown55(_QWORD* a1)
+__int64 TutorialMenuItem_DrawText(_QWORD* a1)
 {
   bool v1;
   __int64 v3;

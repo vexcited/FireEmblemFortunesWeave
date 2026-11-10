@@ -6,10 +6,10 @@ __int64 GameRoutine_1789830(_QWORD, _QWORD);
 __int64 GameRoutine_82e3a0(_QWORD);
 extern __int64 GameData_21c9ac0;
 extern __int64 GameData_21c9ac8;
-__int64 MemoryRelianceMenuItem_Unknown58();
+__int64 MemoryRelianceMenuItem_IsActive();
 const char* MemoryRelianceMenuItem_Unknown71();
 
-__int64 MemoryRelianceMenuItem_Unknown58()
+__int64 MemoryRelianceMenuItem_IsActive()
 {
   __int64* v0;
   __int64 v1;

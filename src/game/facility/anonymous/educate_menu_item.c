@@ -3,12 +3,12 @@
 #pragma GCC visibility push(hidden)
 
 __int64 GameRoutine_16dac80(_QWORD);
-__int64 EducateMenuItem_Unknown25(_QWORD* a1);
+__int64 EducateMenuItem_ACall(_QWORD* a1);
 __int64 GameRoutine_16ef100(_QWORD, _QWORD);
 __int64 game_facility_anonymous_EducateMenuItem_UpdateHelp_closure_Invoke(
     __int64 a1, __int64 a2, __int64 a3);
 
-__int64 EducateMenuItem_Unknown25(_QWORD* a1)
+__int64 EducateMenuItem_ACall(_QWORD* a1)
 {
   __int64 v2;
   __int64 v3;

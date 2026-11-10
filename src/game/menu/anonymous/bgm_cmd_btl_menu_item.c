@@ -17,9 +17,9 @@ extern __int64 fw_memory_g_heap_manager_ptr;
 void GameRoutine_16758d0(__int64, _QWORD*);
 __int64 BgmCmdBtlMenuItem_Destructor(__int64 a1);
 void BgmCmdBtlMenuItem_Unknown19(__int64 a1);
-__int64 BgmCmdBtlMenuItem_Unknown20(__int64 a1);
-__int64 BgmCmdBtlMenuItem_Unknown39(_QWORD* a1, char a2);
-__int64 BgmCmdBtlMenuItem_Unknown40(__int64 a1, char a2);
+__int64 BgmCmdBtlMenuItem_OnSelect(__int64 a1);
+__int64 BgmCmdBtlMenuItem_UpCall(_QWORD* a1, char a2);
+__int64 BgmCmdBtlMenuItem_DownCall(__int64 a1, char a2);
 __int64 GameManager_a31fd0(_QWORD, _QWORD);
 __int64 GameManager_a32140(_QWORD);
 __int64 GameRoutine_1572370(_QWORD, _QWORD);
@@ -157,7 +157,7 @@ void BgmCmdBtlMenuItem_Unknown19(__int64 a1)
   }
 }
 
-__int64 BgmCmdBtlMenuItem_Unknown20(__int64 a1)
+__int64 BgmCmdBtlMenuItem_OnSelect(__int64 a1)
 {
   __int64 v2;
   __int64 v4[2];
@@ -345,7 +345,7 @@ __int64 BgmCmdBtlMenuItem_BCall(_BYTE* a1)
   return 3;
 }
 
-__int64 BgmCmdBtlMenuItem_Unknown39(_QWORD* a1, char a2)
+__int64 BgmCmdBtlMenuItem_UpCall(_QWORD* a1, char a2)
 {
   unsigned __int64 v4;
   __int64 v5;
@@ -401,7 +401,7 @@ LABEL_7:
   return 1;
 }
 
-__int64 BgmCmdBtlMenuItem_Unknown40(__int64 a1, char a2)
+__int64 BgmCmdBtlMenuItem_DownCall(__int64 a1, char a2)
 {
   unsigned __int64 v4;
   __int64 v5;

@@ -17,10 +17,10 @@ extern __int64* GameData_212e348;
 extern __int64* msg_MessageManager_instance__ptr[2];
 extern __int64* ui_LayoutAccessor_empty__ptr[3];
 extern char GameData_1a9f09e;
-__int64 GmapSpotWarpMenuItem_Unknown58(__int64 a1);
+__int64 GmapSpotWarpMenuItem_IsActive(__int64 a1);
 __int64 GmapSpotWarpMenuItem_Unknown70(__int64 a1);
 
-__int64 GmapSpotWarpMenuItem_Unknown58(__int64 a1)
+__int64 GmapSpotWarpMenuItem_IsActive(__int64 a1)
 {
   __int64 v1;
   __int64 v3;

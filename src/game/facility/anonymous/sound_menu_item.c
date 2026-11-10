@@ -9,10 +9,10 @@ __int64 game_menu_GameMenuItem_PlayIdleAnimation(void);
 __int64 std___1___shared_weak_count___release_weak(_QWORD);
 __int64 std___1___shared_weak_count_lock(_QWORD);
 extern __int64 ui_LayoutAccessor_empty_;
-__int64 SoundMenuItem_Unknown63(__int64 a1);
-__int64 SoundMenuItem_Unknown64(__int64 a1);
+__int64 SoundMenuItem_PlayIdleAnimation(__int64 a1);
+__int64 SoundMenuItem_PlayCursorAnimation(__int64 a1);
 
-__int64 SoundMenuItem_Unknown63(__int64 a1)
+__int64 SoundMenuItem_PlayIdleAnimation(__int64 a1)
 {
   __int64 v2;
   __int64 v3;
@@ -53,7 +53,7 @@ __int64 SoundMenuItem_Unknown63(__int64 a1)
   return game_menu_GameMenuItem_PlayIdleAnimation();
 }
 
-__int64 SoundMenuItem_Unknown64(__int64 a1)
+__int64 SoundMenuItem_PlayCursorAnimation(__int64 a1)
 {
   __int64 v2;
   __int64 v3;

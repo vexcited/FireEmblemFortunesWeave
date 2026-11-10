@@ -5,7 +5,7 @@
 __int64 GameRoutine_18659c0(_QWORD, _QWORD);
 void __attribute__((noreturn)) GameRoutine_8a5530(_QWORD, _QWORD);
 __int64 FacilityWeaponMenuItem_Unknown3(__int64 a1, __int64 a2);
-__int64 FacilityWeaponMenuItem_Unknown25(__int64 a1);
+__int64 FacilityWeaponMenuItem_ACall(__int64 a1);
 
 __int64 FacilityWeaponMenuItem_Unknown3(__int64 a1, __int64 a2)
 {
@@ -25,7 +25,7 @@ __int64 FacilityWeaponMenuItem_Unknown3(__int64 a1, __int64 a2)
   return *(_QWORD*)(*(_QWORD*)v3 + 32LL);
 }
 
-__int64 FacilityWeaponMenuItem_Unknown25(__int64 a1)
+__int64 FacilityWeaponMenuItem_ACall(__int64 a1)
 {
   __int64 v1;
   __int64 v2;

@@ -6,7 +6,7 @@ __int64 GameRoutine_14877f0(_QWORD, _QWORD);
 __int64 game_HashString(_QWORD);
 extern _UNKNOWN GameData_1a9e2d1;
 extern __int64 GameData_21f4010;
-__int64 ProcThermaeScene_Unknown18();
+__int64 ProcThermaeScene_StartFade();
 __int64 GameRoutine_1462640(_QWORD, _QWORD, _QWORD);
 __int64 game_facility_anonymous_ProcThermaeScene_InitialLoadImpl_closure_Invoke(
     __int64 a1, __int64* a2);
@@ -40,7 +40,7 @@ __n128 game_facility_anonymous_ProcThermaeScene_InitialLoadImpl(
     __int64 a1, __int64 a2, __int64 a3, __int64 a4, __int64 a5, __int64 a6,
     __int64 a7, __int64 a8);
 
-__int64 ProcThermaeScene_Unknown18()
+__int64 ProcThermaeScene_StartFade()
 {
   unsigned __int64 v0;
   unsigned __int64 v1;
