@@ -1,177 +1,22 @@
 #include "decomp/pseudo_helpers.h"
+
 #pragma GCC visibility push(hidden)
 
 extern int SdkData_1042070;
+
 extern __int64 SdkData_10420b8;
+
 extern __int64 (*SdkData_e76558[])();
-__int64 SdkRoutine_6589a0(_QWORD, _QWORD);
+
 __int64 SdkRoutine_66d330(void);
+
 __int64 SdkRoutine_66db20(void);
+
 __int64 SdkRoutine_66dba0(void);
+
 __int64 SdkRoutine_66dd40(void);
+
 __int64 SdkRoutine_858d70(_QWORD);
-__int64 SdkRoutine_875df0(_QWORD, _QWORD, _QWORD, _QWORD);
-
-__int64 SdkHr_644ce0(__int64 a1, int a2)
-{
-  return SdkRoutine_875df0(a1, a2 & 0xC000FFFF, 0, 0);
-}
-
-bool SdkHr_6457c0(__int64 a1) { return a1 == 0 || a1 == 3221225473LL; }
-
-__int64 SdkHr_645820(__int64 a1, _QWORD* a2)
-{
-  *a2 = a1;
-  return 0;
-}
-
-__int64 SdkHr_645b30(__int64 a1, __int64 a2) { return *(_QWORD*)(a2 + 120); }
-
-__int64 SdkHr_645b40(__int64 a1, __int64 a2, __int64 a3, __int64 a4)
-{
-  *(_QWORD*)(a2 + 120) = a3;
-  *(_QWORD*)(a2 + 128) = a4;
-  return 0;
-}
-
-__int64 SdkHr_646610(__int64 a1) { return *(_QWORD*)(a1 + 368) >> 3; }
-
-__int64 SdkHr_6468a0(__int64 a1, _QWORD* a2)
-{
-  *a2 = a1;
-  return 0;
-}
-
-__int64 SdkHr_646b60(__int64 a1)
-{
-  return *(_QWORD*)(a1 + 8LL * *(unsigned int*)(a1 + 236) + 216);
-}
-
-__int64 SdkHr_647010(__int64 a1, int a2)
-{
-  *(_DWORD*)(a1 + 292) = a2;
-  return 0;
-}
-
-__int64 SdkHr_647020(__int64 a1, _DWORD* a2)
-{
-  int v2;
-
-  v2 = *(_DWORD*)(a1 + 292);
-  *a2 = v2;
-  return 0;
-}
-
-__int64 SdkHr_647030(__int64 a1)
-{
-  return *(
-      unsigned int*)(*(_QWORD*)(a1 + 8LL * *(unsigned int*)(a1 + 236) + 216) +
-                     100LL);
-}
-
-_QWORD* SdkHr_6496c0(_QWORD* result)
-{
-  result[2] = 0;
-  result[3] = 0;
-  result[4] = 0;
-  return result;
-}
-
-_QWORD* SdkHr_6496d0(_QWORD* result, __int64 a2, __int64 a3, __int64 a4)
-{
-  result[2] = a2;
-  result[3] = a3;
-  result[4] = a4;
-  return result;
-}
-
-__int64 SdkHr_6497e0(__int64 a1)
-{
-  return *(_QWORD*)(a1 + 24) + *(_QWORD*)(*(_QWORD*)(a1 + 16) + 24LL);
-}
-
-__int64 SdkHr_6497f0(__int64 a1, __int64 a2)
-{
-  return SdkRoutine_6589a0(*(_QWORD*)(a1 + 16), *(_QWORD*)(a1 + 24) + a2);
-}
-
-__int64 SdkHr_649800(__int64 a1, __int64 a2)
-{
-  return SdkRoutine_6589a0(*(_QWORD*)(a1 + 16), *(_QWORD*)(a1 + 24) + a2);
-}
-
-__int64 SdkHr_64a190(__int64 result)
-{
-  *(_DWORD*)(result + 16) = 2;
-  return result;
-}
-
-__int64 SdkHr_64b3a0(__int64 a1)
-{
-  return *(_QWORD*)(a1 + 32) - *(_QWORD*)(a1 + 56);
-}
-
-__int64 SdkHr_64b3b0(_QWORD* a1) { return *a1 - a1[7]; }
-
-__int64 SdkHr_64b3c0(_QWORD* a1) { return a1[4] - *a1; }
-
-__int64 SdkHr_64b3d0(__int64 a1)
-{
-  return *(_QWORD*)(a1 + 48) - *(_QWORD*)(a1 + 64) + 16LL;
-}
-
-__int64 SdkHr_64b3f0(__int64 a1)
-{
-  return *(_QWORD*)(a1 + 40) - *(_QWORD*)(a1 + 64);
-}
-
-__int64 SdkHr_64b400(__int64 a1)
-{
-  return *(_QWORD*)(a1 + 48) - *(_QWORD*)(a1 + 40) + 16LL;
-}
-
-_DWORD* SdkHr_64eda0(_DWORD* result, int a2, int a3, int a4, int a5)
-{
-  result[24] = a5;
-  result[25] = a2;
-  result[10] = a3;
-  result[23] = a4;
-  return result;
-}
-
-__int64 SdkHr_64edb0(__int64 result, __int64 a2, int a3, int a4, __int64 a5)
-{
-  *(_QWORD*)(result + 48) = a2;
-  *(_DWORD*)(result + 56) = a3;
-  *(_DWORD*)(result + 60) = a4;
-  *(_QWORD*)(result + 64) = a5;
-  return result;
-}
-
-__int64 SdkHr_64edc0(__int64 result, __int64 a2, int a3, int a4, __int64 a5)
-{
-  *(_DWORD*)(result + 44) = a3;
-  *(_DWORD*)(result + 88) = a4;
-  *(_QWORD*)(result + 72) = a2;
-  *(_QWORD*)(result + 80) = a5;
-  return result;
-}
-
-__int64 SdkHr_64edd0(__int64 result, int a2, int a3)
-{
-  *(_DWORD*)(result + 104) = a2;
-  *(_DWORD*)(result + 108) = a3;
-  return result;
-}
-
-_BYTE* SdkHr_64ede0(_BYTE* result, char a2, char a3, char a4, char a5)
-{
-  result[112] = a2;
-  result[113] = a3;
-  result[114] = a4;
-  result[115] = a5;
-  return result;
-}
 
 _QWORD* SdkHr_650070(_QWORD* result)
 {

@@ -1,21 +1,33 @@
 #include "decomp/pseudo_helpers.h"
+
 #pragma GCC visibility push(hidden)
 
 extern __int64 (*SdkData_e84c60[])();
+
 extern __int64 (*SdkData_e84cd8[])();
-extern __int64 (*SdkData_e855c0[])();
+
 __int64 SdkRoutine_8332c0(unsigned __int8**);
+
 __int64 SdkRoutine_833e70(_QWORD);
-__int64 SdkRoutine_835780(unsigned __int8**, __int64, __int64);
+
 __int64 SdkRoutine_8363a0(_QWORD, _QWORD);
+
 __int64 SdkRoutine_8393e0(_QWORD);
+
 __int64 SdkRoutine_83ae20(_QWORD);
+
 __int64 SdkRoutine_840a60(_QWORD, _QWORD);
+
 __int64 SdkRoutine_8571c0(_QWORD, _QWORD, _QWORD);
+
 __int64 SdkRoutine_857810(void);
+
 __int64 SdkRoutine_8578d0(_QWORD);
+
 __int64 SdkRoutine_858a50(_QWORD, _QWORD, _QWORD);
+
 __int64 SdkRoutine_859610(_QWORD);
+
 __int64 SdkRoutine_87c7b0(_QWORD);
 
 __int64 SdkHr_835ee0(__int64 a1)
@@ -229,92 +241,6 @@ __int64 SdkHr_835ee0(__int64 a1)
       return 0;
     }
     goto LABEL_17;
-  }
-  return result;
-}
-
-__int64 SdkHr_847d60(__int64 a1, __int64 a2, __int64 a3)
-{
-  unsigned __int8* v3;
-  __int64 result;
-  unsigned __int8* v5;
-  int v6;
-  const char* v7;
-  __int64 v8;
-  __int64 v9;
-  _QWORD* v10;
-  __int64 v11;
-  __int64 v12;
-  _QWORD* v13;
-  __int64 v14;
-  char* v15;
-
-  v3 = *(unsigned __int8**)a1;
-  if (*(_QWORD*)(a1 + 8) - *(_QWORD*)a1 < 2u) {
-    return SdkRoutine_835780((unsigned __int8**)a1, 0, a3);
-  }
-  if (*(_WORD*)v3 == 29524) {
-    v7 = "struct";
-    v8 = 6;
-    v9 = a1;
-    *(_QWORD*)a1 = v3 + 2;
-    result = SdkRoutine_835780((unsigned __int8**)a1, 0, a3);
-    if (result == 0) {
-      return result;
-    }
-    goto LABEL_11;
-  }
-  if (*(_WORD*)v3 == 30036) {
-    v7 = "union";
-    v8 = 5;
-    v9 = a1;
-    *(_QWORD*)a1 = v3 + 2;
-    result = SdkRoutine_835780((unsigned __int8**)a1, 0, a3);
-    if (result == 0) {
-      return result;
-    }
-    goto LABEL_11;
-  }
-  v6 = *(unsigned __int16*)v3;
-  v5 = v3 + 2;
-  if (v6 != 25940) {
-    return SdkRoutine_835780((unsigned __int8**)a1, 0, a3);
-  }
-  v7 = "enum";
-  v8 = 4;
-  v9 = a1;
-  *(_QWORD*)a1 = v5;
-  result = SdkRoutine_835780((unsigned __int8**)a1, 0, a3);
-  if (result != 0) {
-  LABEL_11:
-    v10 = *(_QWORD**)(v9 + 4912);
-    v11 = v10[1];
-    if ((unsigned __int64)(v11 - 4032) <= 0xFFFFFFFFFFFFF00FLL) {
-      v12 = result;
-      v13 = (_QWORD*)SdkRoutine_8578d0(4096);
-      if (v13 == nullptr) {
-        SdkRoutine_87c7b0(0);
-        __udf(0);
-      }
-      v11 = 0;
-      *v13 = v10;
-      v13[1] = 0;
-      v10 = v13;
-      *(_QWORD*)(v9 + 4912) = v13;
-      result = v12;
-    }
-    v14 = v11 + 48;
-    v15 = (char*)v10 + v11;
-    v10[1] = v14;
-    *((_QWORD*)v15 + 2) = SdkData_e855c0;
-    v15 += 16;
-    v15[8] = 6;
-    LOWORD(v14) = *(_WORD*)(v15 + 9);
-    *((_QWORD*)v15 + 2) = v7;
-    *((_QWORD*)v15 + 3) = v8;
-    *((_QWORD*)v15 + 4) = result;
-    *(_WORD*)(v15 + 9) = v14 & 0xF000 | 0x540;
-    return (__int64)v15;
   }
   return result;
 }

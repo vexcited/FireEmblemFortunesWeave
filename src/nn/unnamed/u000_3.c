@@ -1,9 +1,13 @@
 #include "decomp/pseudo_helpers.h"
+
 #pragma GCC visibility push(hidden)
 
 void __attribute__((noreturn)) SdkRoutine_7cd620(_QWORD);
+
 __int64 SdkRoutine_82dd20(_QWORD);
+
 __int64 SdkRoutine_87c790(_QWORD);
+
 __int64 SdkRoutine_87c8e0(void);
 
 void __attribute__((noreturn)) SdkHr_7e9bd0(__int64 a1)
@@ -170,27 +174,7 @@ void __attribute__((noreturn)) SdkHr_830958(__int64 a1)
   SdkRoutine_7cd620(a1);
 }
 
-void __attribute__((noreturn)) SdkHr_84b2dc(__int64 a1)
-{
-  SdkRoutine_7cd620(a1);
-}
-
 void __attribute__((noreturn)) SdkHr_84b35c(__int64 a1)
-{
-  SdkRoutine_7cd620(a1);
-}
-
-void __attribute__((noreturn)) SdkHr_84bb68(__int64 a1)
-{
-  SdkRoutine_7cd620(a1);
-}
-
-void __attribute__((noreturn)) SdkHr_84bc78(__int64 a1)
-{
-  SdkRoutine_7cd620(a1);
-}
-
-void __attribute__((noreturn)) SdkHr_84e3cc(__int64 a1)
 {
   SdkRoutine_7cd620(a1);
 }

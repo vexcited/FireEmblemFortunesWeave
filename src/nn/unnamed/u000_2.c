@@ -1,85 +1,94 @@
 #include "decomp/pseudo_helpers.h"
+
 #pragma GCC visibility push(hidden)
+
 struct PseudoSret {
   _QWORD words[3];
 };
 
 extern char SdkData_10450b0;
+
 extern _UNKNOWN* SdkData_10450b8;
-extern __int64 (*SdkData_10450e0)(__int64, __int64);
-extern __int64 (*SdkData_10450e8)(__int64, __int64, __int64);
-extern __int64 SdkData_10450f0;
-extern __int64 SdkData_e89380;
-extern __int64 SdkData_e89388;
+
 extern int SdkData_ea8514;
+
 extern char SdkData_ea8518;
-__int64 SdkRoutine_134260(_QWORD, _QWORD, _QWORD);
-__int64 SdkRoutine_1ddd40(_QWORD, _QWORD, _QWORD, _QWORD);
+
 __int64 SdkRoutine_699e40(_QWORD, _QWORD, _QWORD);
-__int64 SdkRoutine_6f1350(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
-__int64 SdkRoutine_6f23f0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
-__int64 SdkRoutine_6f6300(_QWORD, _QWORD, _QWORD, _QWORD);
-__int64 SdkRoutine_6f6750(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
-__int64 SdkRoutine_6f69a0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
-__int64 SdkRoutine_6f6ae0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
-__int64 SdkRoutine_6f6da0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
-__int64 SdkRoutine_6f7760(_QWORD, _QWORD, _QWORD, _QWORD);
-__int64 SdkRoutine_6f7870(_QWORD, _QWORD, _QWORD);
-__int64 SdkRoutine_6f7970(_QWORD, _QWORD, _QWORD, _QWORD);
-__int64 SdkRoutine_6f7a80(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
-__int64 SdkRoutine_6f7bf0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
-__int64 SdkRoutine_6faf90(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
-__int64 SdkRoutine_6fbbd0(_QWORD, _QWORD, _QWORD, _QWORD);
-__int64 SdkRoutine_6fce90(_QWORD, _QWORD, _QWORD, _QWORD);
-__int64 SdkRoutine_76dbf0(_QWORD, _QWORD, _QWORD, _QWORD);
-__int64 SdkRoutine_76e030(_QWORD, _QWORD, _QWORD, _QWORD);
-__int64 SdkRoutine_76e250(_QWORD, _QWORD, _QWORD, _QWORD);
+
 __int64 SdkRoutine_7786e0(void);
-__int64 SdkRoutine_778800(void);
+
 __int64 SdkRoutine_778820(void);
+
 void __attribute__((noreturn)) SdkRoutine_7cd620(void);
+
 __int64 SdkRoutine_7e62a0(_QWORD);
+
 __int64 SdkRoutine_7ed750(double);
+
 __int64 SdkRoutine_7f2dd0(double);
+
 __int64 SdkRoutine_8087a0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
+
 __int64 SdkRoutine_810f00(int, int, int, int, int, void*);
+
 __int64 SdkRoutine_812100(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
+
 __int64 SdkRoutine_82dd20(_QWORD);
+
 __int64 SdkRoutine_830290(_QWORD, _QWORD, _QWORD, _QWORD);
+
 __int64 SdkRoutine_830970(_QWORD);
+
 void __attribute__((noreturn)) SdkRoutine_84c1f0(_QWORD);
+
 __int64 SdkRoutine_857220(_QWORD, _QWORD);
+
 __int64 SdkRoutine_857cc0(_QWORD, _QWORD);
+
 __int64 SdkRoutine_859cb0(void);
+
 __int64 SdkRoutine_85cc20(_QWORD, _QWORD);
+
 __int64 SdkRoutine_85d220(_QWORD, _QWORD);
+
 __int64 SdkRoutine_86ee50(_QWORD);
+
 __int64 SdkRoutine_86ee60(_QWORD);
-__int64 SdkRoutine_87b570(void);
+
 __int64 SdkRoutine_87c790(_QWORD);
+
 __int64 SdkRoutine_87c7a0(void);
+
 __int64 SdkRoutine_87c800(_QWORD);
+
 __int64 SdkRoutine_87c810(_QWORD, _QWORD);
+
 __int64 SdkRoutine_87c840(_QWORD);
-__int64 SdkRoutine_87c8f0(_QWORD);
-__int64 SdkRoutine_87c910(_QWORD, _QWORD, _QWORD);
+
 __int64 SdkRoutine_87c920(_QWORD);
+
 __int64 SdkRoutine_87c9d0(_QWORD);
+
 __int64 SdkRoutine_87c9e0(_QWORD);
-__int64 SdkRoutine_87ca10(void);
-__int64 SdkRoutine_87ca20(_QWORD, _QWORD, _QWORD);
+
 __int64 SdkRoutine_87cc80(_QWORD);
+
 __int64 SdkRoutine_87cca0(_QWORD);
+
 __int64 SdkRoutine_87ccf0(_QWORD, _QWORD);
+
 __int64 SdkRoutine_87cd70(_QWORD, _QWORD);
+
 __int64 SdkRoutine_87cd80(_QWORD, _QWORD);
+
 struct PseudoSret SdkRoutine_87cd90(_QWORD);
+
 __int64 SdkRoutine_87d080(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
                           _QWORD);
+
 __int64 SdkRoutine_87d0a0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
                           _QWORD);
-__int64 SdkRoutine_e80a0(_QWORD, _QWORD, _QWORD);
-__int64 SdkRoutine_f1e30(_QWORD, _QWORD, _QWORD);
 
 __int64 SdkHr_6684e0(_QWORD* a1, __int64 a2)
 {
@@ -498,217 +507,6 @@ __int64 SdkHr_6a8ef0(__int64 result)
   return result;
 }
 
-__int64 SdkHr_6af910(__int64 a1)
-{
-  return SdkData_10450e0(a1, SdkData_10450f0);
-}
-
-__int64 SdkHr_6af930(__int64 a1, __int64 a2)
-{
-  return SdkData_10450e8(a1, a2, SdkData_10450f0);
-}
-
-__int64 SdkHr_6c70b0(__int64 a1, __int64 a2)
-{
-  unsigned __int64* v2;
-
-  v2 = (unsigned __int64*)(a1 + 32);
-  atomic_store(a2 + 1024, v2);
-  return 0;
-}
-
-__int64 SdkHr_6eb030(__int64 a1, __int64 a2)
-{
-  *(_QWORD*)(a1 + 24) = a2 + 254592;
-  return 0;
-}
-
-__int64 SdkHr_6eb050(__int64 a1)
-{
-  *(_QWORD*)(a1 + 24) = 0;
-  return 0;
-}
-
-__int64 SdkHr_6ef0d0(__int64 a1, __int64 a2, unsigned int a3, __int64 a4,
-                     unsigned __int16 a5)
-{
-  return SdkRoutine_6f1350(a1 + 8, a2, a3, a4, a5, 213);
-}
-
-__int64 SdkHr_6ef390(__int64 a1, __int64 a2, __int64 a3, _QWORD* a4)
-{
-  return SdkRoutine_6f23f0(a1 + 8, a2, a3, *a4, a4[1], 514);
-}
-
-__int64 SdkHr_6f45b0(__int64 a1, unsigned __int8 a2)
-{
-  return SdkRoutine_134260(a1 + 8, a2, 170);
-}
-
-__int64 SdkHr_6f48e0(__int64 a1, __int64 a2, __int64 a3, unsigned __int8 a4)
-{
-  return SdkRoutine_6f6750(a1 + 8, a2, a3, a4, 247);
-}
-
-__int64 SdkHr_6f4930(__int64 a1, __int64 a2, __int64 a3, unsigned __int8 a4)
-{
-  return SdkRoutine_6f69a0(a1 + 8, a2, a3, a4, 251);
-}
-
-__int64 SdkHr_6f49a0(__int64 a1, __int64 a2, unsigned __int8 a3, __int64 a4)
-{
-  return SdkRoutine_6f6ae0(a1 + 8, a2, a3, a4, 261);
-}
-
-__int64 SdkHr_6f49d0(__int64 a1, __int64 a2, unsigned __int8 a3, __int64 a4)
-{
-  return SdkRoutine_6f6da0(a1 + 8, a2, a3, a4, 267);
-}
-
-__int64 SdkHr_6f4b40(__int64 a1, __int64 a2, __int64 a3)
-{
-  return SdkRoutine_6f7760(a1 + 8, a2, a3 & 0xFFFFFFFFFFFFLL, 601);
-}
-
-__int64 SdkHr_6f4b60(__int64 a1, __int64 a2)
-{
-  return SdkRoutine_6f7870(a1 + 8, a2 & 0xFFFFFFFFFFFFLL, 603);
-}
-
-__int64 SdkHr_6f4b80(__int64 a1, char a2, __int64 a3)
-{
-  return SdkRoutine_6f7970(a1 + 8, a2 & 1, a3 & 0xFFFFFFFFFFFFLL, 605);
-}
-
-__int64 SdkHr_6f4bb0(__int64 a1, __int64 a2, __int64 a3)
-{
-  return SdkRoutine_6f7760(a1 + 8, a2, a3 & 0xFFFFFFFFFFFFLL, 607);
-}
-
-__int64 SdkHr_6f4be0(__int64 a1, __int64 a2, __int64 a3)
-{
-  return SdkRoutine_6f7a80(a1 + 8, a2, 496, a3 & 0xFFFFFFFFFFFFLL, 610);
-}
-
-__int64 SdkHr_6f4c00(__int64 a1, __int64 a2, __int64 a3)
-{
-  return SdkRoutine_6f7a80(a1 + 8, a2, 272, a3 & 0xFFFFFFFFFFFFLL, 611);
-}
-
-__int64 SdkHr_6f4c20(__int64 a1, __int64 a2, __int64 a3)
-{
-  return SdkRoutine_6f7a80(a1 + 8, a2, 272, a3 & 0xFFFFFFFFFFFFLL, 612);
-}
-
-__int64 SdkHr_6f4c50(__int64 a1, __int64 a2, __int64 a3)
-{
-  return SdkRoutine_6f7bf0(a1 + 8, a2, 496, a3 & 0xFFFFFFFFFFFFLL, 614);
-}
-
-__int64 SdkHr_6f4c70(__int64 a1, __int64 a2, __int64 a3)
-{
-  return SdkRoutine_6f7bf0(a1 + 8, a2, 272, a3 & 0xFFFFFFFFFFFFLL, 615);
-}
-
-__int64 SdkHr_6f4c90(__int64 a1, __int64 a2, __int64 a3)
-{
-  return SdkRoutine_6f7bf0(a1 + 8, a2, 272, a3 & 0xFFFFFFFFFFFFLL, 616);
-}
-
-__int64 SdkHr_6f8980(__int64 a1, unsigned __int8 a2, __int64 a3)
-{
-  return SdkRoutine_6f6300(a1 + 8, a2, a3, 242);
-}
-
-__int64 SdkHr_6f89a0(__int64 a1, unsigned __int8 a2, __int64 a3)
-{
-  return SdkRoutine_6f6300(a1 + 8, a2, a3, 244);
-}
-
-__int64 SdkHr_6f89d0(__int64 a1, unsigned __int8 a2, __int64 a3)
-{
-  return SdkRoutine_6f6300(a1 + 8, a2, a3, 247);
-}
-
-__int64 SdkHr_6f8c40(__int64 a1, __int64 a2, char a3, unsigned __int8 a4)
-{
-  return SdkRoutine_6faf90(a1 + 8, a2, a3 & 1, a4, 501);
-}
-
-__int64 SdkHr_6f9090(__int64 a1, unsigned __int16 a2, __int64 a3)
-{
-  return SdkRoutine_6fbbd0(a1 + 8, a2, a3, 743);
-}
-
-__int64 SdkHr_6f9cc0(__int64 a1, __int64 a2, float a3)
-{
-  return SdkRoutine_1ddd40(a1 + 8, LODWORD(a3), a2, 1455);
-}
-
-__int64 SdkHr_6f9d60(__int64 a1, unsigned __int8 a2, __int64 a3)
-{
-  return SdkRoutine_6fce90(a1 + 8, a2, a3, 1470);
-}
-
-__int64 SdkHr_74bd50(_BYTE* a1, char a2)
-{
-  *a1 = a2;
-  return 0;
-}
-
-__int64 SdkHr_7605e0(__int64 a1, unsigned __int8 a2)
-{
-  return SdkRoutine_f1e30(a1 + 8, a2, 207);
-}
-
-__int64 SdkHr_760720(__int64 a1, unsigned __int16 a2)
-{
-  return SdkRoutine_e80a0(a1 + 8, a2, 505);
-}
-
-__int64 SdkHr_760730(__int64 a1, unsigned __int16 a2)
-{
-  return SdkRoutine_e80a0(a1 + 8, a2, 600);
-}
-
-__int64 SdkHr_76d680(__int64 a1, __int64 a2, unsigned __int8 a3)
-{
-  return SdkRoutine_76dbf0(a1 + 8, a2, a3, 6);
-}
-
-__int64 SdkHr_76d720(__int64 a1, __int64 a2, unsigned __int8 a3)
-{
-  return SdkRoutine_76e030(a1 + 8, a2, a3, 42);
-}
-
-__int64 SdkHr_76d730(__int64 a1, __int64 a2, unsigned __int8 a3)
-{
-  return SdkRoutine_76e030(a1 + 8, a2, a3, 43);
-}
-
-__int64 SdkHr_76d740(__int64 a1, unsigned __int8 a2)
-{
-  return SdkRoutine_134260(a1 + 8, a2, 70);
-}
-
-__int64 SdkHr_76d870(__int64 a1, __int64 a2, unsigned __int8 a3)
-{
-  return SdkRoutine_76e250(a1 + 8, a2, a3, 200);
-}
-
-__int64 SdkHr_76d950(__int64 a1, unsigned __int8 a2)
-{
-  return SdkRoutine_134260(a1 + 8, a2, 508);
-}
-
-__int64 SdkHr_76f960(__int64 result)
-{
-  if (*(_BYTE*)(result + 80) == 1) {
-    return SdkRoutine_87b570();
-  }
-  return result;
-}
-
 __int64 SdkHr_778690(__int64 a1)
 {
   *(_QWORD*)(a1 + 72) = SdkRoutine_778820;
@@ -719,12 +517,6 @@ __int64 SdkHr_7786a0(__int64 a1)
 {
   *(_QWORD*)(a1 + 64) = SdkRoutine_7786e0;
   return SdkRoutine_7786e0();
-}
-
-__int64 SdkHr_7789b0(__int64 a1)
-{
-  *(_QWORD*)(a1 + 80) = SdkRoutine_778800;
-  return SdkRoutine_778800();
 }
 
 __int64 SdkHr_7bc520()
@@ -746,12 +538,6 @@ __int64 SdkHr_7bc520()
   }
 }
 
-void __attribute__((noreturn)) SdkHr_7cd61c() { SdkRoutine_7cd620(); }
-
-void __attribute__((noreturn)) SdkHr_7ce5dc() { SdkRoutine_7cd620(); }
-
-void __attribute__((noreturn)) SdkHr_7cead8() { SdkRoutine_7cd620(); }
-
 __int64 SdkHr_7d3320(__int64* a1, __int64* a2)
 {
   __int64 v2;
@@ -761,31 +547,9 @@ __int64 SdkHr_7d3320(__int64* a1, __int64* a2)
   return SdkRoutine_87c800(v2);
 }
 
-void __attribute__((noreturn)) SdkHr_7d72bc() { SdkRoutine_7cd620(); }
-
-void __attribute__((noreturn)) SdkHr_7d72dc() { SdkRoutine_7cd620(); }
-
-void __attribute__((noreturn)) SdkHr_7d8050()
-{
-  __int64 v0;
-  __int64 v1;
-  __int64 v2;
-
-  SdkRoutine_87ca10();
-  v0 = SdkRoutine_87c8f0(8);
-  SdkRoutine_87ca20(v0, v1, v2);
-  SdkRoutine_87c910(v0, SdkData_e89380, SdkData_e89388);
-  __udf(0);
-}
-
 void __attribute__((noreturn)) SdkHr_7ddedc() { SdkRoutine_7cd620(); }
 
 void __attribute__((noreturn)) SdkHr_7e01ac() { SdkRoutine_7cd620(); }
-
-unsigned __int64 SdkHr_7e59c0(atomic_ullong* a1)
-{
-  return atomic_load_explicit(a1, memory_order_acquire);
-}
 
 __int64 SdkHr_7e631c(__int64 a1)
 {
@@ -900,15 +664,7 @@ __int64 SdkHr_7e631c(__int64 a1)
   }
 }
 
-void __attribute__((noreturn)) SdkHr_7e6a88() { SdkRoutine_7cd620(); }
-
-void __attribute__((noreturn)) SdkHr_7e6a8c() { SdkRoutine_7cd620(); }
-
-void __attribute__((noreturn)) SdkHr_7e725c() { SdkRoutine_7cd620(); }
-
 double SdkHr_7e81c0() { return 0.0; }
-
-void __attribute__((noreturn)) SdkHr_7e886c() { SdkRoutine_7cd620(); }
 
 __int64 SdkHr_7e896c(__int64 a1)
 {
@@ -1880,18 +1636,6 @@ __int64 SdkHr_83095c(__int64 a1)
   SdkRoutine_82dd20(v1 - 40);
   v3 = SdkRoutine_87c790(a1);
   return SdkRoutine_830970(v3);
-}
-
-__int64 SdkHr_844a30(__int64 a1)
-{
-  return (*(__int64 (**)(_QWORD))(**(_QWORD**)(a1 + 24) + 40LL))(
-      *(_QWORD*)(a1 + 24));
-}
-
-__int64 SdkHr_845150(__int64 a1)
-{
-  return (*(__int64 (**)(_QWORD))(**(_QWORD**)(a1 + 16) + 40LL))(
-      *(_QWORD*)(a1 + 16));
 }
 
 void __attribute__((noreturn)) SdkHr_84b34c()
