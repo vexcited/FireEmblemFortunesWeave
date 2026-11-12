@@ -1,34 +1,37 @@
 #include "decomp/pseudo_helpers.h"
+
 #pragma GCC visibility push(hidden)
 
 extern __int64 (*NgxData_94c3f8[])();
-extern __int64 (*NgxData_94d1c0[])();
-extern __int64 (*NgxData_94d2b8[])();
-extern __int64 (*NgxData_94d358[])();
-extern __int64 (*NgxData_94d3f8[])();
-extern __int64 (*NgxData_94d498[])();
-extern __int64 (*NgxData_94d538[])();
-extern __int64 (*NgxData_94d5d8[])();
-extern __int64 (*NgxData_94d678[])();
-extern __int64 (*NgxData_94d718[])();
-extern __int64 (*NgxData_94d7b8[])();
-extern __int64 (*NgxData_94d858[])();
+
 extern __int64 (*NgxData_94f350[])();
+
 extern __int64 (*NgxData_94f470[])();
-extern _QWORD NgxData_f77b8[28];
-extern unsigned int NgxData_f7898[28];
+
 __int64 NgxRoutine_430(_QWORD, _QWORD);
+
 __int64 NgxRoutine_baf00(void);
+
 void __attribute__((noreturn)) NgxRoutine_baf40(_QWORD);
+
 __int64 NgxRoutine_be660(_QWORD);
+
 __int64 NgxRoutine_be820(_QWORD);
+
 __int64 NgxRoutine_bf010(_QWORD);
+
 __int64 NgxRoutine_db240(_QWORD);
+
 __int64 NgxRoutine_dfc20(_QWORD);
+
 __int64 NgxRoutine_e1af0(_QWORD);
+
 __int64 NgxRoutine_e36d0(_QWORD);
+
 __int64 NgxRoutine_e3720(_QWORD);
+
 __int64 NgxRoutine_e37a0(void);
+
 __int64 NgxRoutine_e37e0(_QWORD);
 
 void __attribute__((noreturn)) NgxHr_0() { __udf(1u); }
@@ -321,148 +324,6 @@ __int64 NgxHr_28c20(_QWORD* a1)
   return NgxRoutine_baf00();
 }
 
-__int64 NgxHr_3ab70() { return 20316928; }
-
-__int64 NgxHr_76860(_QWORD* a1)
-{
-  *a1 = NgxData_94d1c0;
-  return NgxRoutine_baf00();
-}
-
-__int64 NgxHr_772b0(_QWORD* a1)
-{
-  *a1 = NgxData_94d2b8;
-  return NgxRoutine_baf00();
-}
-
-__int64 NgxHr_77aa0(_QWORD* a1)
-{
-  *a1 = NgxData_94d358;
-  return NgxRoutine_baf00();
-}
-
-__int64 NgxHr_782a0(_QWORD* a1)
-{
-  *a1 = NgxData_94d3f8;
-  return NgxRoutine_baf00();
-}
-
-__int64 NgxHr_78aa0(_QWORD* a1)
-{
-  *a1 = NgxData_94d498;
-  return NgxRoutine_baf00();
-}
-
-__int64 NgxHr_792a0(_QWORD* a1)
-{
-  *a1 = NgxData_94d538;
-  return NgxRoutine_baf00();
-}
-
-__int64 NgxHr_79aa0(_QWORD* a1)
-{
-  *a1 = NgxData_94d5d8;
-  return NgxRoutine_baf00();
-}
-
-__int64 NgxHr_7a2a0(_QWORD* a1)
-{
-  *a1 = NgxData_94d678;
-  return NgxRoutine_baf00();
-}
-
-__int64 NgxHr_7aaa0(_QWORD* a1)
-{
-  *a1 = NgxData_94d718;
-  return NgxRoutine_baf00();
-}
-
-__int64 NgxHr_7b2a0(_QWORD* a1)
-{
-  *a1 = NgxData_94d7b8;
-  return NgxRoutine_baf00();
-}
-
-__int64 NgxHr_7baa0(_QWORD* a1)
-{
-  *a1 = NgxData_94d858;
-  return NgxRoutine_baf00();
-}
-
-__int64 NgxHr_a6330(__int64 a1, int a2) { return NgxData_f77b8[a2]; }
-
-__int64 NgxHr_a6340(__int64 a1, int a2) { return NgxData_f7898[a2]; }
-
-__int64 NgxHr_a64f0(__int64 a1, _QWORD* a2)
-{
-  __int64 v2;
-
-  v2 = a1 + 200;
-  *a2 = v2;
-  return 0;
-}
-
-__int64 NgxHr_a6500(__int64 a1, int a2)
-{
-  *(_DWORD*)(a1 + 832) = a2;
-  return 0;
-}
-
-__int64 NgxHr_a6a70(__int64 a1, _DWORD* a2)
-{
-  int v2;
-
-  v2 = *(_DWORD*)(a1 + 288);
-  *a2 = v2;
-  return 0;
-}
-
-__int64 NgxHr_a6a80(__int64 a1, _DWORD* a2)
-{
-  int v2;
-
-  v2 = *(_DWORD*)(a1 + 292);
-  *a2 = v2;
-  return 0;
-}
-
-__int64 NgxHr_a7cf0(__int64 a1, _DWORD* a2)
-{
-  *a2 = 5;
-  return 0;
-}
-
-__int64 NgxHr_a7e80(__int64 a1, __int64 a2, __int64 a3, __int64 a4)
-{
-  *(_QWORD*)(a1 + 840) = a4;
-  return 0;
-}
-
-__int64 NgxHr_a9960(__int64 result, int a2, int a3)
-{
-  *(_DWORD*)(result + 48) = a2;
-  *(_DWORD*)(result + 52) = a3;
-  return result;
-}
-
-__int64 NgxHr_a9970(__int64 result, __int64 a2)
-{
-  *(_QWORD*)(result + 32) = a2;
-  *(_QWORD*)(result + 40) = a2;
-  return result;
-}
-
-__int64 NgxHr_ac180() { return 3134193680LL; }
-
-_QWORD* NgxHr_ae450(_QWORD* result, __int64 a2, __int64 a3)
-{
-  *(_QWORD*)(a2 + 16) = a3;
-  *result = a2;
-  return result;
-}
-
-__int64 NgxHr_b0460() { return 3134193682LL; }
-
 __int64 NgxHr_b1080(__int64 a1)
 {
   __int64 result;
@@ -472,18 +333,6 @@ __int64 NgxHr_b1080(__int64 a1)
     return NgxRoutine_430(result, 16);
   }
   return result;
-}
-
-__int64 NgxHr_b7a30(__int64 a1, _DWORD* a2)
-{
-  *a2 = 2;
-  return 0;
-}
-
-__int64 NgxHr_b7ee0(__int64 a1, __int64 a2, __int64 a3, __int64 a4)
-{
-  *(_QWORD*)(a1 + 1632) = a4;
-  return 0;
 }
 
 __int64 NgxHr_ba2b0(__int64 a1, __int64 a2, __int64 a3, __int64 a4, __int64 a5,

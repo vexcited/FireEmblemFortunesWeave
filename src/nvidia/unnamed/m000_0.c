@@ -1,2752 +1,5486 @@
 #include "decomp/pseudo_helpers.h"
+
 #pragma GCC visibility push(hidden)
 
 extern __int64 NgxData_2b6c700;
+
 extern __int64 NgxData_2b6c708;
+
 extern __int64 NgxData_2b6c710;
+
 extern __int64 NgxData_2b6c718;
+
 extern __int64 NgxData_2b6c720;
+
 extern __int64 NgxData_2b6c728;
+
 extern __int64 NgxData_2b6c730;
+
 extern __int64 NgxData_2b6c738;
+
 extern __int64 NgxData_2b6c740;
+
 extern __int64 NgxData_2b6c748;
+
 extern __int64 NgxData_2b6c750;
+
 extern __int64 NgxData_2b6c758;
+
 extern __int64 NgxData_2b6c760;
+
 extern __int64 NgxData_2b6c768;
+
 extern __int64 NgxData_2b6c770;
+
 extern __int64 NgxData_2b6c778;
+
 extern __int64 NgxData_2b6c780;
+
 extern __int64 NgxData_2b6c788;
+
 extern __int64 NgxData_2b6c790;
+
 extern __int64 NgxData_2b6c798;
+
 extern __int64 NgxData_2b6c7a0;
+
 extern __int64 NgxData_2b6c7a8;
+
 extern __int64 NgxData_2b6c7b0;
+
 extern __int64 NgxData_2b6c7b8;
+
 extern __int64 NgxData_2b6c7c0;
+
 extern __int64 NgxData_2b6c7c8;
+
 extern __int64 NgxData_2b6c7d0;
+
 extern __int64 NgxData_2b6c7d8;
+
 extern __int64 NgxData_2b6c7e0;
+
 extern __int64 NgxData_2b6c7e8;
+
 extern __int64 NgxData_2b6c7f0;
+
 extern __int64 NgxData_2b6c7f8;
+
 extern __int64 NgxData_2b6c800;
+
 extern __int64 NgxData_2b6c808;
+
 extern __int64 NgxData_2b6c810;
+
 extern __int64 NgxData_2b6c818;
+
 extern __int64 NgxData_2b6c820;
+
 extern __int64 NgxData_2b6c828;
+
 extern __int64 NgxData_2b6c830;
+
 extern __int64 NgxData_2b6c838;
+
 extern __int64 NgxData_2b6c840;
+
 extern __int64 NgxData_2b6c848;
+
 extern __int64 NgxData_2b6c850;
+
 extern __int64 NgxData_2b6c858;
+
 extern __int64 NgxData_2b6c860;
+
 extern __int64 NgxData_2b6c868;
+
 extern __int64 NgxData_2b6c870;
+
 extern __int64 NgxData_2b6c878;
+
 extern __int64 NgxData_2b6c880;
+
 extern __int64 NgxData_2b6c888;
+
 extern __int64 NgxData_2b6c890;
+
 extern __int64 NgxData_2b6c898;
+
 extern __int64 NgxData_2b6c8a0;
+
 extern __int64 NgxData_2b6c8a8;
+
 extern __int64 NgxData_2b6c8b0;
+
 extern __int64 NgxData_2b6c8b8;
+
 extern __int64 NgxData_2b6c8c0;
+
 extern __int64 NgxData_2b6c8c8;
+
 extern __int64 NgxData_2b6c8d0;
+
 extern __int64 NgxData_2b6c8d8;
+
 extern __int64 NgxData_2b6c8e0;
+
 extern __int64 NgxData_2b6c8e8;
+
 extern __int64 NgxData_2b6c8f0;
+
 extern __int64 NgxData_2b6c8f8;
+
 extern __int64 NgxData_2b6c900;
+
 extern __int64 NgxData_2b6c908;
+
 extern __int64 NgxData_2b6c910;
+
 extern __int64 NgxData_2b6c918;
+
 extern __int64 NgxData_2b6c920;
+
 extern __int64 NgxData_2b6c928;
+
 extern __int64 NgxData_2b6c930;
+
 extern __int64 NgxData_2b6c938;
+
 extern __int64 NgxData_2b6c940;
+
 extern __int64 NgxData_2b6c948;
+
 extern __int64 NgxData_2b6c950;
+
 extern __int64 NgxData_2b6c958;
+
 extern __int64 NgxData_2b6c960;
+
 extern __int64 NgxData_2b6c968;
+
 extern __int64 NgxData_2b6c970;
+
 extern __int64 NgxData_2b6c978;
+
 extern __int64 NgxData_2b6c980;
+
 extern __int64 NgxData_2b6c988;
+
 extern __int64 NgxData_2b6c990;
+
 extern __int64 NgxData_2b6c998;
+
 extern __int64 NgxData_2b6c9a0;
+
 extern __int64 NgxData_2b6c9a8;
+
 extern __int64 NgxData_2b6c9b0;
+
 extern __int64 NgxData_2b6c9b8;
+
 extern __int64 NgxData_2b6c9c0;
+
 extern __int64 NgxData_2b6c9c8;
+
 extern __int64 NgxData_2b6c9d0;
+
 extern __int64 NgxData_2b6c9d8;
+
 extern __int64 NgxData_2b6c9e0;
+
 extern __int64 NgxData_2b6c9e8;
+
 extern __int64 NgxData_2b6c9f0;
+
 extern __int64 NgxData_2b6c9f8;
+
 extern __int64 NgxData_2b6ca00;
+
 extern __int64 NgxData_2b6ca08;
+
 extern __int64 NgxData_2b6ca10;
+
 extern __int64 NgxData_2b6ca18;
+
 extern __int64 NgxData_2b6ca20;
+
 extern __int64 NgxData_2b6ca28;
+
 extern __int64 NgxData_2b6ca30;
+
 extern __int64 NgxData_2b6ca38;
+
 extern __int64 NgxData_2b6ca40;
+
 extern __int64 NgxData_2b6ca48;
+
 extern __int64 NgxData_2b6ca50;
+
 extern __int64 NgxData_2b6ca58;
+
 extern __int64 NgxData_2b6ca60;
+
 extern __int64 NgxData_2b6ca68;
+
 extern __int64 NgxData_2b6ca70;
+
 extern __int64 NgxData_2b6ca78;
+
 extern __int64 NgxData_2b6ca80;
+
 extern __int64 NgxData_2b6ca88;
+
 extern __int64 NgxData_2b6ca90;
+
 extern __int64 NgxData_2b6ca98;
+
 extern __int64 NgxData_2b6caa0;
+
 extern __int64 NgxData_2b6caa8;
+
 extern __int64 NgxData_2b6cab0;
+
 extern __int64 NgxData_2b6cab8;
+
 extern __int64 NgxData_2b6cac0;
+
 extern __int64 NgxData_2b6cac8;
+
 extern __int64 NgxData_2b6cad0;
+
 extern __int64 NgxData_2b6cad8;
+
 extern __int64 NgxData_2b6cae0;
+
 extern __int64 NgxData_2b6cae8;
+
 extern __int64 NgxData_2b6caf0;
+
 extern __int64 NgxData_2b6caf8;
+
 extern __int64 NgxData_2b6cb00;
+
 extern __int64 NgxData_2b6cb08;
+
 extern __int64 NgxData_2b6cb10;
+
 extern __int64 NgxData_2b6cb18;
+
 extern __int64 NgxData_2b6cb20;
+
 extern __int64 NgxData_2b6cb28;
+
 extern __int64 NgxData_2b6cb30;
+
 extern __int64 NgxData_2b6cb38;
+
 extern __int64 NgxData_2b6cb40;
+
 extern __int64 NgxData_2b6cb48;
+
 extern __int64 NgxData_2b6cb50;
+
 extern __int64 NgxData_2b6cb58;
+
 extern __int64 NgxData_2b6cb60;
+
 extern __int64 NgxData_2b6cb68;
+
 extern __int64 NgxData_2b6cb70;
+
 extern __int64 NgxData_2b6cb78;
+
 extern __int64 NgxData_2b6cb80;
+
 extern __int64 NgxData_2b6cb88;
+
 extern __int64 NgxData_2b6cb90;
+
 extern __int64 NgxData_2b6cb98;
+
 extern __int64 NgxData_2b6cba0;
+
 extern __int64 NgxData_2b6cba8;
+
 extern __int64 NgxData_2b6cbb0;
+
 extern __int64 NgxData_2b6cbb8;
+
 extern __int64 NgxData_2b6cbc0;
+
 extern __int64 NgxData_2b6cbc8;
+
 extern __int64 NgxData_2b6cbd0;
+
 extern __int64 NgxData_2b6cbd8;
+
 extern __int64 NgxData_2b6cbe0;
+
 extern __int64 NgxData_2b6cbe8;
+
 extern __int64 NgxData_2b6cbf0;
+
 extern __int64 NgxData_2b6cbf8;
+
 extern __int64 NgxData_2b6cc00;
+
 extern __int64 NgxData_2b6cc08;
+
 extern __int64 NgxData_2b6cc10;
+
 extern __int64 NgxData_2b6cc18;
+
 extern int NgxData_2b6cc20;
+
 extern int NgxData_2b6cc24;
+
 extern __int64 NgxData_2b6cc28;
+
 extern __int64 NgxData_2b6cc30;
+
 extern __int64 NgxData_2b6cc38;
+
 extern __int64 NgxData_2b6cc40;
+
 extern __int64 NgxData_2b6cc48;
+
 extern __int64 NgxData_2b6cc50;
+
 extern __int64 NgxData_2b6cc58;
+
 extern int NgxData_2b6cc60;
+
 extern int NgxData_2b6cc64;
+
 extern __int64 NgxData_2b6cc68;
+
 extern __int64 NgxData_2b6cc70;
+
 extern __int64 NgxData_2b6cc78;
+
 extern __int64 NgxData_2b6cc80;
+
 extern __int64 NgxData_2b6cc88;
+
 extern __int64 NgxData_2b6cc90;
+
 extern __int64 NgxData_2b6cc98;
+
 extern int NgxData_2b6cca0;
+
 extern int NgxData_2b6cca4;
+
 extern __int64 NgxData_2b6cca8;
+
 extern __int64 NgxData_2b6ccb0;
+
 extern __int64 NgxData_2b6ccb8;
+
 extern __int64 NgxData_2b6ccc0;
+
 extern __int64 NgxData_2b6ccc8;
+
 extern __int64 NgxData_2b6ccd0;
+
 extern __int64 NgxData_2b6ccd8;
+
 extern int NgxData_2b6cce0;
+
 extern int NgxData_2b6cce4;
+
 extern __int64 NgxData_2b6cce8;
+
 extern __int64 NgxData_2b6ccf0;
+
 extern __int64 NgxData_2b6ccf8;
+
 extern __int64 NgxData_2b6cd00;
+
 extern __int64 NgxData_2b6cd08;
+
 extern __int64 NgxData_2b6cd10;
+
 extern __int64 NgxData_2b6cd18;
+
 extern int NgxData_2b6cd20;
+
 extern int NgxData_2b6cd24;
+
 extern __int64 NgxData_2b6cd28;
+
 extern __int64 NgxData_2b6cd30;
+
 extern __int64 NgxData_2b6cd38;
+
 extern __int64 NgxData_2b6cd40;
+
 extern __int64 NgxData_2b6cd48;
+
 extern __int64 NgxData_2b6cd50;
+
 extern __int64 NgxData_2b6cd58;
+
 extern int NgxData_2b6cd60;
+
 extern int NgxData_2b6cd64;
+
 extern __int64 NgxData_2b6cd68;
+
 extern __int64 NgxData_2b6cd70;
+
 extern __int64 NgxData_2b6cd78;
+
 extern __int64 NgxData_2b6cd80;
+
 extern __int64 NgxData_2b6cd88;
+
 extern __int64 NgxData_2b6cd90;
+
 extern __int64 NgxData_2b6cd98;
+
 extern int NgxData_2b6cda0;
+
 extern int NgxData_2b6cda4;
+
 extern __int64 NgxData_2b6cda8;
+
 extern __int64 NgxData_2b6cdb0;
+
 extern __int64 NgxData_2b6cdb8;
+
 extern __int64 NgxData_2b6cdc0;
+
 extern __int64 NgxData_2b6cdc8;
+
 extern __int64 NgxData_2b6cdd0;
+
 extern __int64 NgxData_2b6cdd8;
+
 extern int NgxData_2b6cde0;
+
 extern int NgxData_2b6cde4;
+
 extern __int64 NgxData_2b6cde8;
+
 extern __int64 NgxData_2b6cdf0;
+
 extern __int64 NgxData_2b6cdf8;
+
 extern __int64 NgxData_2b6ce00;
+
 extern __int64 NgxData_2b6ce08;
+
 extern __int64 NgxData_2b6ce10;
+
 extern __int64 NgxData_2b6ce18;
+
 extern int NgxData_2b6ce20;
+
 extern int NgxData_2b6ce24;
+
 extern __int64 NgxData_2b6ce28;
+
 extern __int64 NgxData_2b6ce30;
+
 extern __int64 NgxData_2b6ce38;
+
 extern __int64 NgxData_2b6ce40;
+
 extern __int64 NgxData_2b6ce48;
+
 extern __int64 NgxData_2b6ce50;
+
 extern __int64 NgxData_2b6ce58;
+
 extern int NgxData_2b6ce60;
+
 extern int NgxData_2b6ce64;
+
 extern __int64 NgxData_2b6ce68;
+
 extern __int64 NgxData_2b6ce70;
+
 extern __int64 NgxData_2b6ce78;
+
 extern __int64 NgxData_2b6ce80;
+
 extern __int64 NgxData_2b6ce88;
+
 extern __int64 NgxData_2b6ce90;
+
 extern __int64 NgxData_2b6ce98;
+
 extern int NgxData_2b6cea0;
+
 extern int NgxData_2b6cea4;
+
 extern __int64 NgxData_2b6cea8;
+
 extern __int64 NgxData_2b6ceb0;
+
 extern __int64 NgxData_2b6ceb8;
+
 extern __int64 NgxData_2b6cec0;
+
 extern __int64 NgxData_2b6cec8;
+
 extern __int64 NgxData_2b6ced0;
+
 extern __int64 NgxData_2b6ced8;
+
 extern int NgxData_2b6cee0;
+
 extern int NgxData_2b6cee4;
+
 extern __int64 NgxData_2b6cee8;
+
 extern __int64 NgxData_2b6cef0;
+
 extern __int64 NgxData_2b6cef8;
+
 extern __int64 NgxData_2b6cf00;
+
 extern __int64 NgxData_2b6cf08;
+
 extern __int64 NgxData_2b6cf10;
+
 extern __int64 NgxData_2b6cf18;
+
 extern int NgxData_2b6cf20;
+
 extern int NgxData_2b6cf24;
+
 extern __int64 NgxData_2b6cf28;
+
 extern __int64 NgxData_2b6cf30;
+
 extern __int64 NgxData_2b6cf38;
+
 extern __int64 NgxData_2b6cf40;
+
 extern __int64 NgxData_2b6cf48;
+
 extern __int64 NgxData_2b6cf50;
+
 extern __int64 NgxData_2b6cf58;
+
 extern int NgxData_2b6cf60;
+
 extern int NgxData_2b6cf64;
+
 extern __int64 NgxData_2b6cf68;
+
 extern __int64 NgxData_2b6cf70;
+
 extern __int64 NgxData_2b6cf78;
+
 extern __int64 NgxData_2b6cf80;
+
 extern __int64 NgxData_2b6cf88;
+
 extern __int64 NgxData_2b6cf90;
+
 extern __int64 NgxData_2b6cf98;
+
 extern int NgxData_2b6cfa0;
+
 extern int NgxData_2b6cfa4;
+
 extern __int64 NgxData_2b6cfa8;
+
 extern __int64 NgxData_2b6cfb0;
+
 extern __int64 NgxData_2b6cfb8;
+
 extern __int64 NgxData_2b6cfc0;
+
 extern __int64 NgxData_2b6cfc8;
+
 extern __int64 NgxData_2b6cfd0;
+
 extern __int64 NgxData_2b6cfd8;
+
 extern int NgxData_2b6cfe0;
+
 extern int NgxData_2b6cfe4;
+
 extern __int64 NgxData_2b6cfe8;
+
 extern __int64 NgxData_2b6cff0;
+
 extern __int64 NgxData_2b6cff8;
+
 extern __int64 NgxData_2b6d000;
+
 extern __int64 NgxData_2b6d008;
+
 extern __int64 NgxData_2b6d010;
+
 extern __int64 NgxData_2b6d018;
+
 extern int NgxData_2b6d020;
+
 extern int NgxData_2b6d024;
+
 extern __int64 NgxData_2b6d028;
+
 extern __int64 NgxData_2b6d030;
+
 extern __int64 NgxData_2b6d038;
+
 extern __int64 NgxData_2b6d040;
+
 extern __int64 NgxData_2b6d048;
+
 extern __int64 NgxData_2b6d050;
+
 extern __int64 NgxData_2b6d058;
+
 extern int NgxData_2b6d060;
+
 extern int NgxData_2b6d064;
+
 extern __int64 NgxData_2b6d068;
+
 extern __int64 NgxData_2b6d070;
+
 extern __int64 NgxData_2b6d078;
+
 extern __int64 NgxData_2b6d080;
+
 extern __int64 NgxData_2b6d088;
+
 extern __int64 NgxData_2b6d090;
+
 extern __int64 NgxData_2b6d098;
+
 extern int NgxData_2b6d0a0;
+
 extern int NgxData_2b6d0a4;
+
 extern __int64 NgxData_2b6d0a8;
+
 extern __int64 NgxData_2b6d0b0;
+
 extern __int64 NgxData_2b6d0b8;
+
 extern __int64 NgxData_2b6d0c0;
+
 extern __int64 NgxData_2b6d0c8;
+
 extern __int64 NgxData_2b6d0d0;
+
 extern __int64 NgxData_2b6d0d8;
+
 extern int NgxData_2b6d0e0;
+
 extern int NgxData_2b6d0e4;
+
 extern __int64 NgxData_2b6d0e8;
+
 extern __int64 NgxData_2b6d0f0;
+
 extern __int64 NgxData_2b6d0f8;
+
 extern __int64 NgxData_2b6d100;
+
 extern __int64 NgxData_2b6d108;
+
 extern __int64 NgxData_2b6d110;
+
 extern __int64 NgxData_2b6d118;
+
 extern int NgxData_2b6d120;
+
 extern int NgxData_2b6d124;
+
 extern __int64 NgxData_2b6d128;
+
 extern __int64 NgxData_2b6d130;
+
 extern __int64 NgxData_2b6d138;
+
 extern __int64 NgxData_2b6d140;
+
 extern __int64 NgxData_2b6d148;
+
 extern __int64 NgxData_2b6d150;
+
 extern __int64 NgxData_2b6d158;
+
 extern int NgxData_2b6d160;
+
 extern int NgxData_2b6d164;
+
 extern __int64 NgxData_2b6d168;
+
 extern __int64 NgxData_2b6d170;
+
 extern __int64 NgxData_2b6d178;
+
 extern __int64 NgxData_2b6d180;
+
 extern __int64 NgxData_2b6d188;
+
 extern __int64 NgxData_2b6d190;
+
 extern __int64 NgxData_2b6d198;
+
 extern int NgxData_2b6d1a0;
+
 extern int NgxData_2b6d1a4;
+
 extern __int64 NgxData_2b6d1a8;
+
 extern __int64 NgxData_2b6d1b0;
+
 extern __int64 NgxData_2b6d1b8;
+
 extern __int64 NgxData_2b6d1c0;
+
 extern __int64 NgxData_2b6d1c8;
+
 extern __int64 NgxData_2b6d1d0;
+
 extern __int64 NgxData_2b6d1d8;
+
 extern int NgxData_2b6d1e0;
+
 extern int NgxData_2b6d1e4;
+
 extern __int64 NgxData_2b6d1e8;
+
 extern __int64 NgxData_2b6d1f0;
+
 extern __int64 NgxData_2b6d1f8;
+
 extern __int64 NgxData_2b6d200;
+
 extern __int64 NgxData_2b6d208;
+
 extern __int64 NgxData_2b6d210;
+
 extern __int64 NgxData_2b6d218;
+
 extern int NgxData_2b6d220;
+
 extern int NgxData_2b6d224;
+
 extern __int64 NgxData_2b6d228;
+
 extern __int64 NgxData_2b6d230;
+
 extern __int64 NgxData_2b6d238;
+
 extern __int64 NgxData_2b6d240;
+
 extern __int64 NgxData_2b6d248;
+
 extern __int64 NgxData_2b6d250;
+
 extern __int64 NgxData_2b6d258;
+
 extern int NgxData_2b6d260;
+
 extern int NgxData_2b6d264;
+
 extern __int64 NgxData_2b6d268;
+
 extern __int64 NgxData_2b6d270;
+
 extern __int64 NgxData_2b6d278;
+
 extern __int64 NgxData_2b6d280;
+
 extern __int64 NgxData_2b6d288;
+
 extern __int64 NgxData_2b6d290;
+
 extern __int64 NgxData_2b6d298;
+
 extern int NgxData_2b6d2a0;
+
 extern int NgxData_2b6d2a4;
+
 extern __int64 NgxData_2b6d2a8;
+
 extern __int64 NgxData_2b6d2b0;
+
 extern __int64 NgxData_2b6d2b8;
+
 extern __int64 NgxData_2b6d2c0;
+
 extern __int64 NgxData_2b6d2c8;
+
 extern __int64 NgxData_2b6d2d0;
+
 extern __int64 NgxData_2b6d2d8;
+
 extern int NgxData_2b6d2e0;
+
 extern int NgxData_2b6d2e4;
+
 extern __int64 NgxData_2b6d2e8;
+
 extern __int64 NgxData_2b6d2f0;
+
 extern __int64 NgxData_2b6d2f8;
+
 extern __int64 NgxData_2b6d300;
+
 extern __int64 NgxData_2b6d308;
+
 extern __int64 NgxData_2b6d310;
+
 extern __int64 NgxData_2b6d318;
+
 extern int NgxData_2b6d320;
+
 extern int NgxData_2b6d324;
+
 extern __int64 NgxData_2b6d328;
+
 extern __int64 NgxData_2b6d330;
+
 extern __int64 NgxData_2b6d338;
+
 extern __int64 NgxData_2b6d340;
+
 extern __int64 NgxData_2b6d348;
+
 extern __int64 NgxData_2b6d350;
+
 extern __int64 NgxData_2b6d358;
+
 extern int NgxData_2b6d360;
+
 extern int NgxData_2b6d364;
+
 extern __int64 NgxData_2b6d368;
+
 extern __int64 NgxData_2b6d370;
+
 extern __int64 NgxData_2b6d378;
+
 extern __int64 NgxData_2b6d380;
+
 extern __int64 NgxData_2b6d388;
+
 extern __int64 NgxData_2b6d390;
+
 extern __int64 NgxData_2b6d398;
+
 extern int NgxData_2b6d3a0;
+
 extern int NgxData_2b6d3a4;
+
 extern __int64 NgxData_2b6d3a8;
+
 extern __int64 NgxData_2b6d3b0;
+
 extern __int64 NgxData_2b6d3b8;
+
 extern __int64 NgxData_2b6d3c0;
+
 extern __int64 NgxData_2b6d3c8;
+
 extern __int64 NgxData_2b6d3d0;
+
 extern __int64 NgxData_2b6d3d8;
+
 extern int NgxData_2b6d3e0;
+
 extern int NgxData_2b6d3e4;
+
 extern __int64 NgxData_2b6d3e8;
+
 extern __int64 NgxData_2b6d3f0;
+
 extern __int64 NgxData_2b6d3f8;
+
 extern __int64 NgxData_2b6d400;
+
 extern __int64 NgxData_2b6d408;
+
 extern __int64 NgxData_2b6d410;
+
 extern __int64 NgxData_2b6d418;
+
 extern int NgxData_2b6d420;
+
 extern int NgxData_2b6d424;
+
 extern __int64 NgxData_2b6d428;
+
 extern __int64 NgxData_2b6d430;
+
 extern __int64 NgxData_2b6d438;
+
 extern __int64 NgxData_2b6d440;
+
 extern __int64 NgxData_2b6d448;
+
 extern __int64 NgxData_2b6d450;
+
 extern __int64 NgxData_2b6d458;
+
 extern int NgxData_2b6d460;
+
 extern int NgxData_2b6d464;
+
 extern __int64 NgxData_2b6d468;
+
 extern __int64 NgxData_2b6d470;
+
 extern __int64 NgxData_2b6d478;
+
 extern __int64 NgxData_2b6d480;
+
 extern __int64 NgxData_2b6d488;
+
 extern __int64 NgxData_2b6d490;
+
 extern __int64 NgxData_2b6d498;
+
 extern int NgxData_2b6d4a0;
+
 extern int NgxData_2b6d4a4;
+
 extern __int64 NgxData_2b6d4a8;
+
 extern __int64 NgxData_2b6d4b0;
+
 extern __int64 NgxData_2b6d4b8;
+
 extern __int64 NgxData_2b6d4c0;
+
 extern __int64 NgxData_2b6d4c8;
+
 extern __int64 NgxData_2b6d4d0;
+
 extern __int64 NgxData_2b6d4d8;
+
 extern int NgxData_2b6d4e0;
+
 extern int NgxData_2b6d4e4;
+
 extern __int64 NgxData_2b6d4e8;
+
 extern __int64 NgxData_2b6d4f0;
+
 extern __int64 NgxData_2b6d4f8;
+
 extern __int64 NgxData_2b6d500;
+
 extern __int64 NgxData_2b6d508;
+
 extern __int64 NgxData_2b6d510;
+
 extern __int64 NgxData_2b6d518;
+
 extern int NgxData_2b6d520;
+
 extern int NgxData_2b6d524;
+
 extern __int64 NgxData_2b6d528;
+
 extern __int64 NgxData_2b6d530;
+
 extern __int64 NgxData_2b6d538;
+
 extern __int64 NgxData_2b6d540;
+
 extern __int64 NgxData_2b6d548;
+
 extern __int64 NgxData_2b6d550;
+
 extern __int64 NgxData_2b6d558;
+
 extern int NgxData_2b6d560;
+
 extern int NgxData_2b6d564;
+
 extern __int64 NgxData_2b6d568;
+
 extern __int64 NgxData_2b6d570;
+
 extern __int64 NgxData_2b6d578;
+
 extern __int64 NgxData_2b6d580;
+
 extern __int64 NgxData_2b6d588;
+
 extern __int64 NgxData_2b6d590;
+
 extern __int64 NgxData_2b6d598;
+
 extern int NgxData_2b6d5a0;
+
 extern int NgxData_2b6d5a4;
+
 extern __int64 NgxData_2b6d5a8;
+
 extern __int64 NgxData_2b6d5b0;
+
 extern __int64 NgxData_2b6d5b8;
+
 extern __int64 NgxData_2b6d5c0;
+
 extern __int64 NgxData_2b6d5c8;
+
 extern __int64 NgxData_2b6d5d0;
+
 extern __int64 NgxData_2b6d5d8;
+
 extern int NgxData_2b6d5e0;
+
 extern int NgxData_2b6d5e4;
+
 extern __int64 NgxData_2b6d5e8;
+
 extern __int64 NgxData_2b6d5f0;
+
 extern __int64 NgxData_2b6d5f8;
+
 extern __int64 NgxData_2b6d600;
+
 extern __int64 NgxData_2b6d608;
+
 extern __int64 NgxData_2b6d610;
+
 extern __int64 NgxData_2b6d618;
+
 extern int NgxData_2b6d620;
+
 extern int NgxData_2b6d624;
+
 extern __int64 NgxData_2b6d628;
+
 extern __int64 NgxData_2b6d630;
+
 extern __int64 NgxData_2b6d638;
+
 extern __int64 NgxData_2b6d640;
+
 extern __int64 NgxData_2b6d648;
+
 extern __int64 NgxData_2b6d650;
+
 extern __int64 NgxData_2b6d658;
+
 extern int NgxData_2b6d660;
+
 extern int NgxData_2b6d664;
+
 extern __int64 NgxData_2b6d668;
+
 extern __int64 NgxData_2b6d670;
+
 extern __int64 NgxData_2b6d678;
+
 extern __int64 NgxData_2b6d680;
+
 extern __int64 NgxData_2b6d688;
+
 extern __int64 NgxData_2b6d690;
+
 extern __int64 NgxData_2b6d698;
+
 extern int NgxData_2b6d6a0;
+
 extern int NgxData_2b6d6a4;
+
 extern __int64 NgxData_2b6d6a8;
+
 extern __int64 NgxData_2b6d6b0;
+
 extern __int64 NgxData_2b6d6b8;
+
 extern __int64 NgxData_2b6d6c0;
+
 extern __int64 NgxData_2b6d6c8;
+
 extern __int64 NgxData_2b6d6d0;
+
 extern __int64 NgxData_2b6d6d8;
+
 extern int NgxData_2b6d6e0;
+
 extern int NgxData_2b6d6e4;
+
 extern __int64 NgxData_2b6d6e8;
+
 extern __int64 NgxData_2b6d6f0;
+
 extern __int64 NgxData_2b6d6f8;
+
 extern __int64 NgxData_2b6d700;
+
 extern __int64 NgxData_2b6d708;
+
 extern __int64 NgxData_2b6d710;
+
 extern __int64 NgxData_2b6d718;
+
 extern int NgxData_2b6d720;
+
 extern int NgxData_2b6d724;
+
 extern __int64 NgxData_2b6d728;
+
 extern __int64 NgxData_2b6d730;
+
 extern __int64 NgxData_2b6d738;
+
 extern __int64 NgxData_2b6d740;
+
 extern __int64 NgxData_2b6d748;
+
 extern __int64 NgxData_2b6d750;
+
 extern __int64 NgxData_2b6d758;
+
 extern int NgxData_2b6d760;
+
 extern int NgxData_2b6d764;
+
 extern __int64 NgxData_2b6d768;
+
 extern __int64 NgxData_2b6d770;
+
 extern __int64 NgxData_2b6d778;
+
 extern __int64 NgxData_2b6d780;
+
 extern __int64 NgxData_2b6d788;
+
 extern __int64 NgxData_2b6d790;
+
 extern __int64 NgxData_2b6d798;
+
 extern int NgxData_2b6d7a0;
+
 extern int NgxData_2b6d7a4;
+
 extern __int64 NgxData_2b6d7a8;
+
 extern __int64 NgxData_2b6d7b0;
+
 extern __int64 NgxData_2b6d7b8;
+
 extern __int64 NgxData_2b6d7c0;
+
 extern __int64 NgxData_2b6d7c8;
+
 extern __int64 NgxData_2b6d7d0;
+
 extern __int64 NgxData_2b6d7d8;
+
 extern int NgxData_2b6d7e0;
+
 extern int NgxData_2b6d7e4;
+
 extern __int64 NgxData_2b6d7e8;
+
 extern __int64 NgxData_2b6d7f0;
+
 extern __int64 NgxData_2b6d7f8;
+
 extern __int64 NgxData_2b6d800;
+
 extern __int64 NgxData_2b6d808;
+
 extern __int64 NgxData_2b6d810;
+
 extern __int64 NgxData_2b6d818;
+
 extern int NgxData_2b6d820;
+
 extern int NgxData_2b6d824;
+
 extern __int64 NgxData_2b6d828;
+
 extern __int64 NgxData_2b6d830;
+
 extern __int64 NgxData_2b6d838;
+
 extern __int64 NgxData_2b6d840;
+
 extern __int64 NgxData_2b6d848;
+
 extern __int64 NgxData_2b6d850;
+
 extern __int64 NgxData_2b6d858;
+
 extern int NgxData_2b6d860;
+
 extern int NgxData_2b6d864;
+
 extern __int64 NgxData_2b6d868;
+
 extern __int64 NgxData_2b6d870;
+
 extern __int64 NgxData_2b6d878;
+
 extern __int64 NgxData_2b6d880;
+
 extern __int64 NgxData_2b6d888;
+
 extern __int64 NgxData_2b6d890;
+
 extern __int64 NgxData_2b6d898;
+
 extern int NgxData_2b6d8a0;
+
 extern int NgxData_2b6d8a4;
+
 extern __int64 NgxData_2b6d8a8;
+
 extern __int64 NgxData_2b6d8b0;
+
 extern __int64 NgxData_2b6d8b8;
+
 extern __int64 NgxData_2b6d8c0;
+
 extern __int64 NgxData_2b6d8c8;
+
 extern __int64 NgxData_2b6d8d0;
+
 extern __int64 NgxData_2b6d8d8;
+
 extern int NgxData_2b6d8e0;
+
 extern int NgxData_2b6d8e4;
+
 extern __int64 NgxData_2b6d8e8;
+
 extern __int64 NgxData_2b6d8f0;
+
 extern __int64 NgxData_2b6d8f8;
+
 extern __int64 NgxData_2b6d900;
+
 extern __int64 NgxData_2b6d908;
+
 extern __int64 NgxData_2b6d910;
+
 extern __int64 NgxData_2b6d918;
+
 extern int NgxData_2b6d920;
+
 extern int NgxData_2b6d924;
+
 extern __int64 NgxData_2b6d928;
+
 extern __int64 NgxData_2b6d930;
+
 extern __int64 NgxData_2b6d938;
+
 extern __int64 NgxData_2b6d940;
+
 extern __int64 NgxData_2b6d948;
+
 extern __int64 NgxData_2b6d950;
+
 extern __int64 NgxData_2b6d958;
+
 extern int NgxData_2b6d960;
+
 extern int NgxData_2b6d964;
+
 extern __int64 NgxData_2b6d968;
+
 extern __int64 NgxData_2b6d970;
+
 extern __int64 NgxData_2b6d978;
+
 extern __int64 NgxData_2b6d980;
+
 extern __int64 NgxData_2b6d988;
+
 extern __int64 NgxData_2b6d990;
+
 extern __int64 NgxData_2b6d998;
+
 extern int NgxData_2b6d9a0;
+
 extern int NgxData_2b6d9a4;
+
 extern __int64 NgxData_2b6d9a8;
+
 extern __int64 NgxData_2b6d9b0;
+
 extern __int64 NgxData_2b6d9b8;
+
 extern __int64 NgxData_2b6d9c0;
+
 extern __int64 NgxData_2b6d9c8;
+
 extern __int64 NgxData_2b6d9d0;
+
 extern __int64 NgxData_2b6d9d8;
+
 extern int NgxData_2b6d9e0;
+
 extern int NgxData_2b6d9e4;
+
 extern __int64 NgxData_2b6d9e8;
+
 extern __int64 NgxData_2b6d9f0;
+
 extern __int64 NgxData_2b6d9f8;
+
 extern __int64 NgxData_2b6da00;
+
 extern __int64 NgxData_2b6da08;
+
 extern __int64 NgxData_2b6da10;
+
 extern __int64 NgxData_2b6da18;
+
 extern int NgxData_2b6da20;
+
 extern int NgxData_2b6da24;
+
 extern __int64 NgxData_2b6da28;
+
 extern __int64 NgxData_2b6da30;
+
 extern __int64 NgxData_2b6da38;
+
 extern __int64 NgxData_2b6da40;
+
 extern __int64 NgxData_2b6da48;
+
 extern __int64 NgxData_2b6da50;
+
 extern __int64 NgxData_2b6da58;
+
 extern int NgxData_2b6da60;
+
 extern int NgxData_2b6da64;
+
 extern __int64 NgxData_2b6da68;
+
 extern __int64 NgxData_2b6da70;
+
 extern __int64 NgxData_2b6da78;
+
 extern __int64 NgxData_2b6da80;
+
 extern __int64 NgxData_2b6da88;
+
 extern __int64 NgxData_2b6da90;
+
 extern __int64 NgxData_2b6da98;
+
 extern int NgxData_2b6daa0;
+
 extern int NgxData_2b6daa4;
+
 extern __int64 NgxData_2b6daa8;
+
 extern __int64 NgxData_2b6dab0;
+
 extern __int64 NgxData_2b6dab8;
+
 extern __int64 NgxData_2b6dac0;
+
 extern __int64 NgxData_2b6dac8;
+
 extern __int64 NgxData_2b6dad0;
+
 extern __int64 NgxData_2b6dad8;
+
 extern int NgxData_2b6dae0;
+
 extern int NgxData_2b6dae4;
+
 extern __int64 NgxData_2b6dae8;
+
 extern __int64 NgxData_2b6daf0;
+
 extern __int64 NgxData_2b6daf8;
+
 extern __int64 NgxData_2b6db00;
+
 extern __int64 NgxData_2b6db08;
+
 extern __int64 NgxData_2b6db10;
+
 extern __int64 NgxData_2b6db18;
+
 extern int NgxData_2b6db20;
+
 extern int NgxData_2b6db24;
+
 extern __int64 NgxData_2b6db28;
+
 extern __int64 NgxData_2b6db30;
+
 extern __int64 NgxData_2b6db38;
+
 extern __int64 NgxData_2b6db40;
+
 extern __int64 NgxData_2b6db48;
+
 extern __int64 NgxData_2b6db50;
+
 extern __int64 NgxData_2b6db58;
+
 extern int NgxData_2b6db60;
+
 extern int NgxData_2b6db64;
+
 extern __int64 NgxData_2b6db68;
+
 extern __int64 NgxData_2b6db70;
+
 extern __int64 NgxData_2b6db78;
+
 extern __int64 NgxData_2b6db80;
+
 extern __int64 NgxData_2b6db88;
+
 extern __int64 NgxData_2b6db90;
+
 extern __int64 NgxData_2b6db98;
+
 extern int NgxData_2b6dba0;
+
 extern int NgxData_2b6dba4;
+
 extern __int64 NgxData_2b6dba8;
+
 extern __int64 NgxData_2b6dbb0;
+
 extern __int64 NgxData_2b6dbb8;
+
 extern __int64 NgxData_2b6dbc0;
+
 extern __int64 NgxData_2b6dbc8;
+
 extern __int64 NgxData_2b6dbd0;
+
 extern __int64 NgxData_2b6dbd8;
+
 extern int NgxData_2b6dbe0;
+
 extern int NgxData_2b6dbe4;
+
 extern __int64 NgxData_2b6dbe8;
+
 extern __int64 NgxData_2b6dbf0;
+
 extern __int64 NgxData_2b6dbf8;
+
 extern __int64 NgxData_2b6dc00;
+
 extern __int64 NgxData_2b6dc08;
+
 extern __int64 NgxData_2b6dc10;
+
 extern __int64 NgxData_2b6dc18;
+
 extern int NgxData_2b6dc20;
+
 extern int NgxData_2b6dc24;
+
 extern __int64 NgxData_2b6dc28;
+
 extern __int64 NgxData_2b6dc30;
+
 extern __int64 NgxData_2b6dc38;
+
 extern __int64 NgxData_2b6dc40;
+
 extern __int64 NgxData_2b6dc48;
+
 extern __int64 NgxData_2b6dc50;
+
 extern __int64 NgxData_2b6dc58;
+
 extern int NgxData_2b6dc60;
+
 extern int NgxData_2b6dc64;
+
 extern __int64 NgxData_2b6dc68;
+
 extern __int64 NgxData_2b6dc70;
+
 extern __int64 NgxData_2b6dc78;
+
 extern __int64 NgxData_2b6dc80;
+
 extern __int64 NgxData_2b6dc88;
+
 extern __int64 NgxData_2b6dc90;
+
 extern __int64 NgxData_2b6dc98;
+
 extern int NgxData_2b6dca0;
+
 extern int NgxData_2b6dca4;
+
 extern __int64 NgxData_2b6dca8;
+
 extern __int64 NgxData_2b6dcb0;
+
 extern __int64 NgxData_2b6dcb8;
+
 extern __int64 NgxData_2b6dcc0;
+
 extern __int64 NgxData_2b6dcc8;
+
 extern __int64 NgxData_2b6dcd0;
+
 extern __int64 NgxData_2b6dcd8;
+
 extern int NgxData_2b6dce0;
+
 extern int NgxData_2b6dce4;
+
 extern __int64 NgxData_2b6dce8;
+
 extern __int64 NgxData_2b6dcf0;
+
 extern __int64 NgxData_2b6dcf8;
+
 extern __int64 NgxData_2b6dd00;
+
 extern __int64 NgxData_2b6dd08;
+
 extern __int64 NgxData_2b6dd10;
+
 extern __int64 NgxData_2b6dd18;
+
 extern int NgxData_2b6dd20;
+
 extern int NgxData_2b6dd24;
+
 extern __int64 NgxData_2b6dd28;
+
 extern __int64 NgxData_2b6dd30;
+
 extern __int64 NgxData_2b6dd38;
+
 extern __int64 NgxData_2b6dd40;
+
 extern __int64 NgxData_2b6dd48;
+
 extern __int64 NgxData_2b6dd50;
+
 extern __int64 NgxData_2b6dd58;
+
 extern int NgxData_2b6dd60;
+
 extern int NgxData_2b6dd64;
+
 extern __int64 NgxData_2b6dd68;
+
 extern __int64 NgxData_2b6dd70;
+
 extern __int64 NgxData_2b6dd78;
+
 extern __int64 NgxData_2b6dd80;
+
 extern __int64 NgxData_2b6dd88;
+
 extern __int64 NgxData_2b6dd90;
+
 extern __int64 NgxData_2b6dd98;
+
 extern int NgxData_2b6dda0;
+
 extern int NgxData_2b6dda4;
+
 extern __int64 NgxData_2b6dda8;
+
 extern __int64 NgxData_2b6ddb0;
+
 extern __int64 NgxData_2b6ddb8;
+
 extern __int64 NgxData_2b6ddc0;
+
 extern __int64 NgxData_2b6ddc8;
+
 extern __int64 NgxData_2b6ddd0;
+
 extern __int64 NgxData_2b6ddd8;
+
 extern int NgxData_2b6dde0;
+
 extern int NgxData_2b6dde4;
+
 extern __int64 NgxData_2b6dde8;
+
 extern __int64 NgxData_2b6ddf0;
+
 extern __int64 NgxData_2b6ddf8;
+
 extern __int64 NgxData_2b6de00;
+
 extern __int64 NgxData_2b6de08;
+
 extern __int64 NgxData_2b6de10;
+
 extern __int64 NgxData_2b6de18;
+
 extern int NgxData_2b6de20;
+
 extern int NgxData_2b6de24;
+
 extern __int64 NgxData_2b6de28;
+
 extern __int64 NgxData_2b6de30;
+
 extern __int64 NgxData_2b6de38;
+
 extern __int64 NgxData_2b6de40;
+
 extern __int64 NgxData_2b6de48;
+
 extern __int64 NgxData_2b6de50;
+
 extern __int64 NgxData_2b6de58;
+
 extern int NgxData_2b6de60;
+
 extern int NgxData_2b6de64;
+
 extern __int64 NgxData_2b6de68;
+
 extern __int64 NgxData_2b6de70;
+
 extern __int64 NgxData_2b6de78;
+
 extern __int64 NgxData_2b6de80;
+
 extern __int64 NgxData_2b6de88;
+
 extern __int64 NgxData_2b6de90;
+
 extern __int64 NgxData_2b6de98;
+
 extern int NgxData_2b6dea0;
+
 extern int NgxData_2b6dea4;
+
 extern __int64 NgxData_2b6dea8;
+
 extern __int64 NgxData_2b6deb0;
+
 extern __int64 NgxData_2b6deb8;
+
 extern __int64 NgxData_2b6dec0;
+
 extern __int64 NgxData_2b6dec8;
+
 extern __int64 NgxData_2b6ded0;
+
 extern __int64 NgxData_2b6ded8;
+
 extern int NgxData_2b6dee0;
+
 extern int NgxData_2b6dee4;
+
 extern __int64 NgxData_2b6dee8;
+
 extern __int64 NgxData_2b6def0;
+
 extern __int64 NgxData_2b6def8;
+
 extern __int64 NgxData_2b6df00;
+
 extern __int64 NgxData_2b6df08;
+
 extern __int64 NgxData_2b6df10;
+
 extern __int64 NgxData_2b6df18;
+
 extern int NgxData_2b6df20;
+
 extern int NgxData_2b6df24;
+
 extern __int64 NgxData_2b6df28;
+
 extern __int64 NgxData_2b6df30;
+
 extern __int64 NgxData_2b6df38;
+
 extern __int64 NgxData_2b6df40;
+
 extern __int64 NgxData_2b6df48;
+
 extern __int64 NgxData_2b6df50;
+
 extern __int64 NgxData_2b6df58;
+
 extern int NgxData_2b6df60;
+
 extern int NgxData_2b6df64;
+
 extern __int64 NgxData_2b6df68;
+
 extern __int64 NgxData_2b6df70;
+
 extern __int64 NgxData_2b6df78;
+
 extern __int64 NgxData_2b6df80;
+
 extern __int64 NgxData_2b6df88;
+
 extern __int64 NgxData_2b6df90;
+
 extern __int64 NgxData_2b6df98;
+
 extern int NgxData_2b6dfa0;
+
 extern int NgxData_2b6dfa4;
+
 extern __int64 NgxData_2b6dfa8;
+
 extern __int64 NgxData_2b6dfb0;
+
 extern __int64 NgxData_2b6dfb8;
+
 extern __int64 NgxData_2b6dfc0;
+
 extern __int64 NgxData_2b6dfc8;
+
 extern __int64 NgxData_2b6dfd0;
+
 extern __int64 NgxData_2b6dfd8;
+
 extern int NgxData_2b6dfe0;
+
 extern int NgxData_2b6dfe4;
+
 extern __int64 NgxData_2b6dfe8;
+
 extern __int64 NgxData_2b6dff0;
+
 extern __int64 NgxData_2b6dff8;
+
 extern __int64 NgxData_2b6e000;
+
 extern __int64 NgxData_2b6e008;
+
 extern __int64 NgxData_2b6e010;
+
 extern __int64 NgxData_2b6e018;
+
 extern int NgxData_2b6e020;
+
 extern int NgxData_2b6e024;
+
 extern __int64 NgxData_2b6e028;
+
 extern __int64 NgxData_2b6e030;
+
 extern __int64 NgxData_2b6e038;
+
 extern __int64 NgxData_2b6e040;
+
 extern __int64 NgxData_2b6e048;
+
 extern __int64 NgxData_2b6e050;
+
 extern __int64 NgxData_2b6e058;
+
 extern int NgxData_2b6e060;
+
 extern int NgxData_2b6e064;
+
 extern __int64 NgxData_2b6e068;
+
 extern __int64 NgxData_2b6e070;
+
 extern __int64 NgxData_2b6e078;
+
 extern __int64 NgxData_2b6e080;
+
 extern __int64 NgxData_2b6e088;
+
 extern __int64 NgxData_2b6e090;
+
 extern __int64 NgxData_2b6e098;
+
 extern int NgxData_2b6e0a0;
+
 extern int NgxData_2b6e0a4;
+
 extern __int64 NgxData_2b6e0a8;
+
 extern __int64 NgxData_2b6e0b0;
+
 extern __int64 NgxData_2b6e0b8;
+
 extern __int64 NgxData_2b6e0c0;
+
 extern __int64 NgxData_2b6e0c8;
+
 extern __int64 NgxData_2b6e0d0;
+
 extern __int64 NgxData_2b6e0d8;
+
 extern int NgxData_2b6e0e0;
+
 extern int NgxData_2b6e0e4;
+
 extern __int64 NgxData_2b6e0e8;
+
 extern __int64 NgxData_2b6e0f0;
+
 extern __int64 NgxData_2b6e0f8;
+
 extern __int64 NgxData_2b6e100;
+
 extern __int64 NgxData_2b6e108;
+
 extern __int64 NgxData_2b6e110;
+
 extern __int64 NgxData_2b6e118;
+
 extern int NgxData_2b6e120;
+
 extern int NgxData_2b6e124;
+
 extern __int64 NgxData_2b6e128;
+
 extern __int64 NgxData_2b6e130;
+
 extern __int64 NgxData_2b6e138;
+
 extern __int64 NgxData_2b6e140;
+
 extern __int64 NgxData_2b6e148;
+
 extern __int64 NgxData_2b6e150;
+
 extern __int64 NgxData_2b6e158;
+
 extern int NgxData_2b6e160;
+
 extern int NgxData_2b6e164;
+
 extern __int64 NgxData_2b6e168;
+
 extern __int64 NgxData_2b6e170;
+
 extern __int64 NgxData_2b6e178;
+
 extern __int64 NgxData_2b6e180;
+
 extern __int64 NgxData_2b6e188;
+
 extern __int64 NgxData_2b6e190;
+
 extern __int64 NgxData_2b6e198;
+
 extern int NgxData_2b6e1a0;
+
 extern int NgxData_2b6e1a4;
+
 extern __int64 NgxData_2b6e1a8;
+
 extern __int64 NgxData_2b6e1b0;
+
 extern __int64 NgxData_2b6e1b8;
+
 extern __int64 NgxData_2b6e1c0;
+
 extern __int64 NgxData_2b6e1c8;
+
 extern __int64 NgxData_2b6e1d0;
+
 extern __int64 NgxData_2b6e1d8;
+
 extern int NgxData_2b6e1e0;
+
 extern int NgxData_2b6e1e4;
+
 extern __int64 NgxData_2b6e1e8;
+
 extern __int64 NgxData_2b6e1f0;
+
 extern __int64 NgxData_2b6e1f8;
+
 extern __int64 NgxData_2b6e200;
+
 extern __int64 NgxData_2b6e208;
+
 extern __int64 NgxData_2b6e210;
+
 extern __int64 NgxData_2b6e218;
+
 extern int NgxData_2b6e220;
+
 extern int NgxData_2b6e224;
+
 extern __int64 NgxData_2b6e228;
+
 extern __int64 NgxData_2b6e230;
+
 extern __int64 NgxData_2b6e238;
+
 extern __int64 NgxData_2b6e240;
+
 extern __int64 NgxData_2b6e248;
+
 extern __int64 NgxData_2b6e250;
+
 extern __int64 NgxData_2b6e258;
+
 extern int NgxData_2b6e260;
+
 extern int NgxData_2b6e264;
+
 extern __int64 NgxData_2b6e268;
+
 extern __int64 NgxData_2b6e270;
+
 extern __int64 NgxData_2b6e278;
+
 extern __int64 NgxData_2b6e280;
+
 extern __int64 NgxData_2b6e288;
+
 extern __int64 NgxData_2b6e290;
+
 extern __int64 NgxData_2b6e298;
+
 extern int NgxData_2b6e2a0;
+
 extern int NgxData_2b6e2a4;
+
 extern __int64 NgxData_2b6e2a8;
+
 extern __int64 NgxData_2b6e2b0;
+
 extern __int64 NgxData_2b6e2b8;
+
 extern __int64 NgxData_2b6e2c0;
+
 extern __int64 NgxData_2b6e2c8;
+
 extern __int64 NgxData_2b6e2d0;
+
 extern __int64 NgxData_2b6e2d8;
+
 extern int NgxData_2b6e2e0;
+
 extern int NgxData_2b6e2e4;
+
 extern __int64 NgxData_2b6e2e8;
+
 extern __int64 NgxData_2b6e2f0;
+
 extern __int64 NgxData_2b6e2f8;
+
 extern __int64 NgxData_2b6e300;
+
 extern __int64 NgxData_2b6e308;
+
 extern __int64 NgxData_2b6e310;
+
 extern __int64 NgxData_2b6e318;
+
 extern int NgxData_2b6e320;
+
 extern int NgxData_2b6e324;
+
 extern __int64 NgxData_2b6e328;
+
 extern __int64 NgxData_2b6e330;
+
 extern __int64 NgxData_2b6e338;
+
 extern __int64 NgxData_2b6e340;
+
 extern __int64 NgxData_2b6e348;
+
 extern __int64 NgxData_2b6e350;
+
 extern __int64 NgxData_2b6e358;
+
 extern int NgxData_2b6e360;
+
 extern int NgxData_2b6e364;
+
 extern __int64 NgxData_2b6e368;
+
 extern __int64 NgxData_2b6e370;
+
 extern __int64 NgxData_2b6e378;
+
 extern __int64 NgxData_2b6e380;
+
 extern __int64 NgxData_2b6e388;
+
 extern __int64 NgxData_2b6e390;
+
 extern __int64 NgxData_2b6e398;
+
 extern int NgxData_2b6e3a0;
+
 extern int NgxData_2b6e3a4;
+
 extern __int64 NgxData_2b6e3a8;
+
 extern __int64 NgxData_2b6e3b0;
+
 extern __int64 NgxData_2b6e3b8;
+
 extern __int64 NgxData_2b6e3c0;
+
 extern __int64 NgxData_2b6e3c8;
+
 extern __int64 NgxData_2b6e3d0;
+
 extern __int64 NgxData_2b6e3d8;
+
 extern int NgxData_2b6e3e0;
+
 extern int NgxData_2b6e3e4;
+
 extern __int64 NgxData_2b6e3e8;
+
 extern __int64 NgxData_2b6e3f0;
+
 extern __int64 NgxData_2b6e3f8;
+
 extern __int64 NgxData_2b6e400;
+
 extern __int64 NgxData_2b6e408;
+
 extern __int64 NgxData_2b6e410;
+
 extern __int64 NgxData_2b6e418;
+
 extern int NgxData_2b6e420;
+
 extern int NgxData_2b6e424;
+
 extern __int64 NgxData_2b6e428;
+
 extern __int64 NgxData_2b6e430;
+
 extern __int64 NgxData_2b6e438;
+
 extern __int64 NgxData_2b6e440;
+
 extern __int64 NgxData_2b6e448;
+
 extern __int64 NgxData_2b6e450;
+
 extern __int64 NgxData_2b6e458;
+
 extern int NgxData_2b6e460;
+
 extern int NgxData_2b6e464;
+
 extern __int64 NgxData_2b6e468;
+
 extern __int64 NgxData_2b6e470;
+
 extern __int64 NgxData_2b6e478;
+
 extern __int64 NgxData_2b6e480;
+
 extern __int64 NgxData_2b6e488;
+
 extern __int64 NgxData_2b6e490;
+
 extern __int64 NgxData_2b6e498;
+
 extern int NgxData_2b6e4a0;
+
 extern int NgxData_2b6e4a4;
+
 extern __int64 NgxData_2b6e4a8;
+
 extern __int64 NgxData_2b6e4b0;
+
 extern __int64 NgxData_2b6e4b8;
+
 extern __int64 NgxData_2b6e4c0;
+
 extern __int64 NgxData_2b6e4c8;
+
 extern __int64 NgxData_2b6e4d0;
+
 extern __int64 NgxData_2b6e4d8;
+
 extern int NgxData_2b6e4e0;
+
 extern int NgxData_2b6e4e4;
+
 extern __int64 NgxData_2b6e4e8;
+
 extern __int64 NgxData_2b6e4f0;
+
 extern __int64 NgxData_2b6e4f8;
+
 extern __int64 NgxData_2b6e500;
+
 extern __int64 NgxData_2b6e508;
+
 extern __int64 NgxData_2b6e510;
+
 extern __int64 NgxData_2b6e518;
+
 extern int NgxData_2b6e520;
+
 extern int NgxData_2b6e524;
+
 extern __int64 NgxData_2b6e528;
+
 extern __int64 NgxData_2b6e530;
+
 extern __int64 NgxData_2b6e538;
+
 extern __int64 NgxData_2b6e540;
+
 extern __int64 NgxData_2b6e548;
+
 extern __int64 NgxData_2b6e550;
+
 extern __int64 NgxData_2b6e558;
+
 extern int NgxData_2b6e560;
+
 extern int NgxData_2b6e564;
+
 extern __int64 NgxData_2b6e568;
+
 extern __int64 NgxData_2b6e570;
+
 extern __int64 NgxData_2b6e578;
+
 extern __int64 NgxData_2b6e580;
+
 extern __int64 NgxData_2b6e588;
+
 extern __int64 NgxData_2b6e590;
+
 extern __int64 NgxData_2b6e598;
+
 extern int NgxData_2b6e5a0;
+
 extern int NgxData_2b6e5a4;
+
 extern __int64 NgxData_2b6e5a8;
+
 extern __int64 NgxData_2b6e5b0;
+
 extern __int64 NgxData_2b6e5b8;
+
 extern __int64 NgxData_2b6e5c0;
+
 extern __int64 NgxData_2b6e5c8;
+
 extern __int64 NgxData_2b6e5d0;
+
 extern __int64 NgxData_2b6e5d8;
+
 extern int NgxData_2b6e5e0;
+
 extern int NgxData_2b6e5e4;
+
 extern __int64 NgxData_2b6e5e8;
+
 extern __int64 NgxData_2b6e5f0;
+
 extern __int64 NgxData_2b6e5f8;
+
 extern __int64 NgxData_2b6e600;
+
 extern __int64 NgxData_2b6e608;
+
 extern __int64 NgxData_2b6e610;
+
 extern __int64 NgxData_2b6e618;
+
 extern int NgxData_2b6e620;
+
 extern int NgxData_2b6e624;
+
 extern __int64 NgxData_2b6e628;
+
 extern __int64 NgxData_2b6e630;
+
 extern __int64 NgxData_2b6e638;
+
 extern __int64 NgxData_2b6e640;
+
 extern __int64 NgxData_2b6e648;
+
 extern __int64 NgxData_2b6e650;
+
 extern __int64 NgxData_2b6e658;
+
 extern int NgxData_2b6e660;
+
 extern int NgxData_2b6e664;
+
 extern __int64 NgxData_2b6e668;
+
 extern __int64 NgxData_2b6e670;
+
 extern __int64 NgxData_2b6e678;
+
 extern __int64 NgxData_2b6e680;
+
 extern __int64 NgxData_2b6e688;
+
 extern __int64 NgxData_2b6e690;
+
 extern __int64 NgxData_2b6e698;
+
 extern int NgxData_2b6e6a0;
+
 extern int NgxData_2b6e6a4;
+
 extern __int64 NgxData_2b6e6a8;
+
 extern __int64 NgxData_2b6e6b0;
+
 extern __int64 NgxData_2b6e6b8;
+
 extern __int64 NgxData_2b6e6c0;
+
 extern __int64 NgxData_2b6e6c8;
+
 extern __int64 NgxData_2b6e6d0;
+
 extern __int64 NgxData_2b6e6d8;
+
 extern int NgxData_2b6e6e0;
+
 extern int NgxData_2b6e6e4;
+
 extern __int64 NgxData_2b6e6e8;
+
 extern __int64 NgxData_2b6e6f0;
+
 extern __int64 NgxData_2b6e6f8;
+
 extern __int64 NgxData_2b6e700;
+
 extern __int64 NgxData_2b6e708;
+
 extern __int64 NgxData_2b6e710;
+
 extern __int64 NgxData_2b6e718;
+
 extern int NgxData_2b6e720;
+
 extern int NgxData_2b6e724;
+
 extern __int64 NgxData_2b6e728;
+
 extern __int64 NgxData_2b6e730;
+
 extern __int64 NgxData_2b6e738;
+
 extern __int64 NgxData_2b6e740;
+
 extern __int64 NgxData_2b6e748;
+
 extern __int64 NgxData_2b6e750;
+
 extern __int64 NgxData_2b6e758;
+
 extern int NgxData_2b6e760;
+
 extern int NgxData_2b6e764;
+
 extern __int64 NgxData_2b6e768;
+
 extern __int64 NgxData_2b6e770;
+
 extern __int64 NgxData_2b6e778;
+
 extern __int64 NgxData_2b6e780;
+
 extern __int64 NgxData_2b6e788;
+
 extern __int64 NgxData_2b6e790;
+
 extern __int64 NgxData_2b6e798;
+
 extern int NgxData_2b6e7a0;
+
 extern int NgxData_2b6e7a4;
+
 extern __int64 NgxData_2b6e7a8;
+
 extern __int64 NgxData_2b6e7b0;
+
 extern __int64 NgxData_2b6e7b8;
+
 extern __int64 NgxData_2b6e7c0;
+
 extern __int64 NgxData_2b6e7c8;
+
 extern __int64 NgxData_2b6e7d0;
+
 extern __int64 NgxData_2b6e7d8;
+
 extern int NgxData_2b6e7e0;
+
 extern int NgxData_2b6e7e4;
+
 extern __int64 NgxData_2b6e7e8;
+
 extern __int64 NgxData_2b6e7f0;
+
 extern __int64 NgxData_2b6e7f8;
+
 extern __int64 NgxData_2b6e800;
+
 extern __int64 NgxData_2b6e808;
+
 extern __int64 NgxData_2b6e810;
+
 extern __int64 NgxData_2b6e818;
+
 extern int NgxData_2b6e820;
+
 extern int NgxData_2b6e824;
+
 extern __int64 NgxData_2b6e828;
+
 extern __int64 NgxData_2b6e830;
+
 extern __int64 NgxData_2b6e838;
+
 extern __int64 NgxData_2b6e840;
+
 extern __int64 NgxData_2b6e848;
+
 extern __int64 NgxData_2b6e850;
+
 extern __int64 NgxData_2b6e858;
+
 extern int NgxData_2b6e860;
+
 extern int NgxData_2b6e864;
+
 extern __int64 NgxData_2b6e868;
+
 extern __int64 NgxData_2b6e870;
+
 extern __int64 NgxData_2b6e878;
+
 extern __int64 NgxData_2b6e880;
+
 extern __int64 NgxData_2b6e888;
+
 extern __int64 NgxData_2b6e890;
+
 extern __int64 NgxData_2b6e898;
+
 extern __int64 NgxData_2b6e8a0;
+
 extern __int64 NgxData_2b6e8a8;
+
 extern __int64 NgxData_2b6e8b0;
+
 extern __int64 NgxData_2b6e8b8;
+
 extern __int64 NgxData_2b6e8c0;
+
 extern __int64 NgxData_2b6e8c8;
+
 extern __int64 NgxData_2b6e8d0;
+
 extern __int64 NgxData_2b6e8d8;
+
 extern __int64 NgxData_2b6e8e0;
+
 extern __int64 NgxData_2b6e8e8;
+
 extern __int64 NgxData_2b6e8f0;
+
 extern __int64 NgxData_2b6e8f8;
+
 extern __int64 NgxData_2b6e900;
+
 extern __int64 NgxData_2b6e908;
+
 extern __int64 NgxData_2b6e910;
+
 extern __int64 NgxData_2b6e918;
+
 extern __int64 NgxData_2b6e920;
+
 extern __int64 NgxData_2b6e928;
+
 extern __int64 NgxData_2b6e930;
+
 extern __int64 NgxData_2b6e938;
+
 extern __int64 NgxData_2b6e940;
+
 extern __int64 NgxData_2b6e948;
+
 extern __int64 NgxData_2b6e950;
+
 extern __int64 NgxData_2b6e958;
+
 extern __int64 NgxData_2b6e960;
+
 extern __int64 NgxData_2b6e968;
+
 extern __int64 NgxData_2b6e970;
+
 extern __int64 NgxData_2b6e978;
+
 extern __int64 NgxData_2b6e980;
+
 extern __int64 NgxData_2b6e988;
+
 extern __int64 NgxData_2b6e990;
+
 extern __int64 NgxData_2b6e998;
+
 extern __int64 NgxData_2b6e9a0;
+
 extern __int64 NgxData_2b6e9a8;
+
 extern __int64 NgxData_2b6e9b0;
+
 extern __int64 NgxData_2b6e9b8;
+
 extern __int64 NgxData_2b6e9c0;
+
 extern __int64 NgxData_2b6e9c8;
+
 extern __int64 NgxData_2b6e9d0;
+
 extern __int64 NgxData_2b6e9d8;
+
 extern __int64 NgxData_2b6e9e0;
+
 extern __int64 NgxData_2b6e9e8;
+
 extern __int64 NgxData_2b6e9f0;
+
 extern __int64 NgxData_2b6e9f8;
+
 extern __int64 NgxData_2b6ea00;
+
 extern __int64 NgxData_2b6ea08;
+
 extern __int64 NgxData_2b6ea10;
+
 extern __int64 NgxData_2b6ea18;
+
 extern __int64 NgxData_2b6ea20;
+
 extern __int64 NgxData_2b6ea28;
+
 extern __int64 NgxData_2b6ea30;
+
 extern __int64 NgxData_2b6ea38;
+
 extern __int64 NgxData_2b6ea40;
+
 extern __int64 NgxData_2b6ea48;
+
 extern __int64 NgxData_2b6ea50;
+
 extern __int64 NgxData_2b6ea58;
+
 extern __int64 NgxData_2b6ea60;
+
 extern __int64 NgxData_2b6ea68;
+
 extern __int64 NgxData_2b6ea70;
+
 extern __int64 NgxData_2b6ea78;
+
 extern __int64 NgxData_2b6ea80;
+
 extern __int64 NgxData_2b6ea88;
+
 extern __int64 NgxData_2b6ea90;
+
 extern __int64 NgxData_2b6ea98;
+
 extern __int64 NgxData_2b6eaa0;
+
 extern __int64 NgxData_2b6eaa8;
+
 extern __int64 NgxData_2b6eab0;
+
 extern __int64 NgxData_2b6eab8;
+
 extern __int64 NgxData_2b6eac0;
+
 extern __int64 NgxData_2b6eac8;
+
 extern __int64 NgxData_2b6ead0;
+
 extern __int64 NgxData_2b6ead8;
+
 extern __int64 NgxData_2b6eae0;
+
 extern __int64 NgxData_2b6eae8;
+
 extern __int64 NgxData_2b6eaf0;
+
 extern __int64 NgxData_2b6eaf8;
+
 extern __int64 NgxData_2b6eb00;
+
 extern __int64 NgxData_2b6eb08;
+
 extern __int64 NgxData_2b6eb10;
+
 extern __int64 NgxData_2b6eb18;
+
 extern __int64 NgxData_2b6eb20;
+
 extern __int64 NgxData_2b6eb28;
+
 extern __int64 NgxData_2b6eb30;
+
 extern __int64 NgxData_2b6eb38;
+
 extern __int64 NgxData_2b6eb40;
+
 extern __int64 NgxData_2b6eb48;
+
 extern __int64 NgxData_2b6eb50;
+
 extern __int64 NgxData_2b6eb58;
+
 extern __int64 NgxData_2b6eb60;
+
 extern __int64 NgxData_2b6eb68;
+
 extern __int64 NgxData_2b6eb70;
+
 extern __int64 NgxData_2b6eb78;
+
 extern __int64 NgxData_2b6eb80;
+
 extern __int64 NgxData_2b6eb88;
+
 extern __int64 NgxData_2b6eb90;
+
 extern __int64 NgxData_2b6eb98;
+
 extern __int64 NgxData_2b6eba0;
+
 extern __int64 NgxData_2b6eba8;
+
 extern __int64 NgxData_2b6ebb0;
+
 extern __int64 NgxData_2b6ebb8;
+
 extern __int64 NgxData_2b6ebc0;
+
 extern __int64 NgxData_2b6ebc8;
+
 extern __int64 NgxData_2b6ebd0;
+
 extern __int64 NgxData_2b6ebd8;
+
 extern __int64 NgxData_2b6ebe0;
+
 extern __int64 NgxData_2b6ebe8;
+
 extern __int64 NgxData_2b6ebf0;
+
 extern __int64 NgxData_2b6ebf8;
+
 extern __int64 NgxData_2b6ec00;
+
 extern __int64 NgxData_2b6ec08;
+
 extern __int64 NgxData_2b6ec10;
+
 extern __int64 NgxData_2b6ec18;
+
 extern __int64 NgxData_2b6ec20;
+
 extern __int64 NgxData_2b6ec28;
+
 extern __int64 NgxData_2b6ec30;
+
 extern __int64 NgxData_2b6ec38;
+
 extern __int64 NgxData_2b6ec40;
+
 extern __int64 NgxData_2b6ec48;
+
 extern __int64 NgxData_2b6ec50;
+
 extern __int64 NgxData_2b6ec58;
+
 extern __int64 NgxData_2b6ec60;
+
 extern __int64 NgxData_2b6ec68;
+
 extern __int64 NgxData_2b6ec70;
+
 extern __int64 NgxData_2b6ec78;
+
 extern __int64 NgxData_2b6ec80;
+
 extern __int64 NgxData_2b6ec88;
+
 extern __int64 NgxData_2b6ec90;
+
 extern __int64 NgxData_2b6ec98;
+
 extern __int64 NgxData_2b6eca0;
+
 extern __int64 NgxData_2b6eca8;
+
 extern __int64 NgxData_2b6ecb0;
+
 extern __int64 NgxData_2b6ecb8;
+
 extern __int64 NgxData_2b6ecc0;
+
 extern __int64 NgxData_2b6ecc8;
+
 extern __int64 NgxData_2b6ecd0;
+
 extern __int64 NgxData_2b6ecd8;
+
 extern __int64 NgxData_2b6ece0;
+
 extern __int64 NgxData_2b6ece8;
+
 extern __int64 NgxData_2b6ecf0;
+
 extern __int64 NgxData_2b6ecf8;
+
 extern __int64 NgxData_2b6ed00;
+
 extern __int64 NgxData_2b6ed08;
+
 extern __int64 NgxData_2b6ed10;
+
 extern __int64 NgxData_2b6ed18;
+
 extern __int64 NgxData_2b6ed20;
+
 extern __int64 NgxData_2b6ed28;
+
 extern __int64 NgxData_2b6ed30;
+
 extern __int64 NgxData_2b6ed38;
+
 extern __int64 NgxData_2b6ed40;
+
 extern __int64 NgxData_2b6ed48;
+
 extern __int64 NgxData_2b6ed50;
+
 extern __int64 NgxData_2b6ed58;
+
 extern __int64 NgxData_2b6ed60;
+
 extern __int64 NgxData_2b6ed68;
+
 extern __int64 NgxData_2b6ed70;
+
 extern __int64 NgxData_2b6ed78;
+
 extern __int64 NgxData_2b6ed80;
+
 extern __int64 NgxData_2b6ed88;
+
 extern __int64 NgxData_2b6ed90;
+
 extern __int64 NgxData_2b6ed98;
+
 extern int NgxData_2b6eda0;
+
 extern int NgxData_2b6eda4;
+
 extern __int64 NgxData_2b6eda8;
+
 extern __int64 NgxData_2b6edb0;
+
 extern __int64 NgxData_2b6edb8;
+
 extern __int64 NgxData_2b6edc0;
+
 extern __int64 NgxData_2b6edc8;
+
 extern __int64 NgxData_2b6edd0;
+
 extern __int64 NgxData_2b6edd8;
+
 extern int NgxData_2b6ede0;
+
 extern int NgxData_2b6ede4;
+
 extern __int64 NgxData_2b6ede8;
+
 extern __int64 NgxData_2b6edf0;
+
 extern __int64 NgxData_2b6edf8;
+
 extern __int64 NgxData_2b6ee00;
+
 extern __int64 NgxData_2b6ee08;
+
 extern __int64 NgxData_2b6ee10;
+
 extern __int64 NgxData_2b6ee18;
+
 extern int NgxData_2b6ee20;
+
 extern int NgxData_2b6ee24;
+
 extern __int64 NgxData_2b6ee28;
+
 extern __int64 NgxData_2b6ee30;
+
 extern __int64 NgxData_2b6ee38;
+
 extern __int64 NgxData_2b6ee40;
+
 extern __int64 NgxData_2b6ee48;
+
 extern __int64 NgxData_2b6ee50;
+
 extern __int64 NgxData_2b6ee58;
+
 extern int NgxData_2b6ee60;
+
 extern int NgxData_2b6ee64;
+
 extern __int64 NgxData_2b6ee68;
+
 extern __int64 NgxData_2b6ee70;
+
 extern __int64 NgxData_2b6ee78;
+
 extern __int64 NgxData_2b6ee80;
+
 extern __int64 NgxData_2b6ee88;
+
 extern __int64 NgxData_2b6ee90;
+
 extern __int64 NgxData_2b6ee98;
+
 extern int NgxData_2b6eea0;
+
 extern int NgxData_2b6eea4;
+
 extern __int64 NgxData_2b6eea8;
+
 extern __int64 NgxData_2b6eeb0;
+
 extern __int64 NgxData_2b6eeb8;
+
 extern __int64 NgxData_2b6eec0;
+
 extern __int64 NgxData_2b6eec8;
+
 extern __int64 NgxData_2b6eed0;
+
 extern __int64 NgxData_2b6eed8;
+
 extern int NgxData_2b6eee0;
+
 extern int NgxData_2b6eee4;
+
 extern __int64 NgxData_2b6eee8;
+
 extern __int64 NgxData_2b6eef0;
+
 extern __int64 NgxData_2b6eef8;
+
 extern __int64 NgxData_2b6ef00;
+
 extern __int64 NgxData_2b6ef08;
+
 extern __int64 NgxData_2b6ef10;
+
 extern __int64 NgxData_2b6ef18;
+
 extern int NgxData_2b6ef20;
+
 extern int NgxData_2b6ef24;
+
 extern __int64 NgxData_2b6ef28;
+
 extern __int64 NgxData_2b6ef30;
+
 extern __int64 NgxData_2b6ef38;
+
 extern __int64 NgxData_2b6ef40;
+
 extern __int64 NgxData_2b6ef48;
+
 extern __int64 NgxData_2b6ef50;
+
 extern __int64 NgxData_2b6ef58;
+
 extern int NgxData_2b6ef60;
+
 extern int NgxData_2b6ef64;
+
 extern __int64 NgxData_2b6ef68;
+
 extern __int64 NgxData_2b6ef70;
+
 extern __int64 NgxData_2b6ef78;
+
 extern __int64 NgxData_2b6ef80;
+
 extern __int64 NgxData_2b6ef88;
+
 extern __int64 NgxData_2b6ef90;
+
 extern __int64 NgxData_2b6ef98;
+
 extern int NgxData_2b6efa0;
+
 extern int NgxData_2b6efa4;
+
 extern __int64 NgxData_2b6efa8;
+
 extern __int64 NgxData_2b6efb0;
+
 extern __int64 NgxData_2b6efb8;
+
 extern __int64 NgxData_2b6efc0;
+
 extern __int64 NgxData_2b6efc8;
+
 extern __int64 NgxData_2b6efd0;
+
 extern __int64 NgxData_2b6efd8;
+
 extern int NgxData_2b6efe0;
+
 extern int NgxData_2b6efe4;
+
 extern __int64 NgxData_2b6efe8;
+
 extern __int64 NgxData_2b6eff0;
+
 extern __int64 NgxData_2b6eff8;
+
 extern __int64 NgxData_2b6f000;
+
 extern __int64 NgxData_2b6f008;
+
 extern __int64 NgxData_2b6f010;
+
 extern __int64 NgxData_2b6f018;
+
 extern int NgxData_2b6f020;
+
 extern int NgxData_2b6f024;
+
 extern __int64 NgxData_2b6f028;
+
 extern __int64 NgxData_2b6f030;
+
 extern __int64 NgxData_2b6f038;
+
 extern __int64 NgxData_2b6f040;
+
 extern __int64 NgxData_2b6f048;
+
 extern __int64 NgxData_2b6f050;
+
 extern __int64 NgxData_2b6f058;
+
 extern int NgxData_2b6f060;
+
 extern int NgxData_2b6f064;
+
 extern __int64 NgxData_2b6f068;
+
 extern __int64 NgxData_2b6f070;
+
 extern __int64 NgxData_2b6f078;
+
 extern __int64 NgxData_2b6f080;
+
 extern __int64 NgxData_2b6f088;
+
 extern __int64 NgxData_2b6f090;
+
 extern __int64 NgxData_2b6f098;
+
 extern int NgxData_2b6f0a0;
+
 extern int NgxData_2b6f0a4;
+
 extern __int64 NgxData_2b6f0a8;
+
 extern __int64 NgxData_2b6f0b0;
+
 extern __int64 NgxData_2b6f0b8;
+
 extern __int64 NgxData_2b6f0c0;
+
 extern __int64 NgxData_2b6f0c8;
+
 extern __int64 NgxData_2b6f0d0;
+
 extern __int64 NgxData_2b6f0d8;
+
 extern int NgxData_2b6f0e0;
+
 extern int NgxData_2b6f0e4;
+
 extern __int64 NgxData_2b6f0e8;
+
 extern __int64 NgxData_2b6f0f0;
+
 extern __int64 NgxData_2b6f0f8;
+
 extern __int64 NgxData_2b6f100;
+
 extern __int64 NgxData_2b6f108;
+
 extern __int64 NgxData_2b6f110;
+
 extern __int64 NgxData_2b6f118;
+
 extern int NgxData_2b6f120;
+
 extern int NgxData_2b6f124;
+
 extern __int64 NgxData_2b6f128;
+
 extern __int64 NgxData_2b6f130;
+
 extern __int64 NgxData_2b6f138;
+
 extern __int64 NgxData_2b6f140;
+
 extern __int64 NgxData_2b6f148;
+
 extern __int64 NgxData_2b6f150;
+
 extern __int64 NgxData_2b6f158;
+
 extern int NgxData_2b6f160;
+
 extern int NgxData_2b6f164;
+
 extern __int64 NgxData_2b6f168;
+
 extern __int64 NgxData_2b6f170;
+
 extern __int64 NgxData_2b6f178;
+
 extern __int64 NgxData_2b6f180;
+
 extern __int64 NgxData_2b6f188;
+
 extern __int64 NgxData_2b6f190;
+
 extern __int64 NgxData_2b6f198;
+
 extern int NgxData_2b6f1a0;
+
 extern int NgxData_2b6f1a4;
+
 extern __int64 NgxData_2b6f1a8;
+
 extern __int64 NgxData_2b6f1b0;
+
 extern __int64 NgxData_2b6f1b8;
+
 extern __int64 NgxData_2b6f1c0;
+
 extern __int64 NgxData_2b6f1c8;
+
 extern __int64 NgxData_2b6f1d0;
+
 extern __int64 NgxData_2b6f1d8;
+
 extern int NgxData_2b6f1e0;
+
 extern int NgxData_2b6f1e4;
+
 extern __int64 NgxData_2b6f1e8;
+
 extern __int64 NgxData_2b6f1f0;
+
 extern __int64 NgxData_2b6f1f8;
+
 extern __int64 NgxData_2b6f200;
+
 extern __int64 NgxData_2b6f208;
+
 extern __int64 NgxData_2b6f210;
+
 extern __int64 NgxData_2b6f218;
+
 extern int NgxData_2b6f220;
+
 extern int NgxData_2b6f224;
+
 extern __int64 NgxData_2b6f228;
+
 extern __int64 NgxData_2b6f230;
+
 extern __int64 NgxData_2b6f238;
+
 extern __int64 NgxData_2b6f240;
+
 extern __int64 NgxData_2b6f248;
+
 extern __int64 NgxData_2b6f250;
+
 extern __int64 NgxData_2b6f258;
+
 extern int NgxData_2b6f260;
+
 extern int NgxData_2b6f264;
+
 extern __int64 NgxData_2b6f268;
+
 extern __int64 NgxData_2b6f270;
+
 extern __int64 NgxData_2b6f278;
+
 extern __int64 NgxData_2b6f280;
+
 extern __int64 NgxData_2b6f288;
+
 extern __int64 NgxData_2b6f290;
+
 extern __int64 NgxData_2b6f298;
+
 extern int NgxData_2b6f2a0;
+
 extern int NgxData_2b6f2a4;
+
 extern __int64 NgxData_2b6f2a8;
+
 extern __int64 NgxData_2b6f2b0;
+
 extern __int64 NgxData_2b6f2b8;
+
 extern __int64 NgxData_2b6f2c0;
+
 extern __int64 NgxData_2b6f2c8;
+
 extern __int64 NgxData_2b6f2d0;
+
 extern __int64 NgxData_2b6f2d8;
+
 extern int NgxData_2b6f2e0;
+
 extern int NgxData_2b6f2e4;
+
 extern __int64 NgxData_2b6f2e8;
+
 extern __int64 NgxData_2b6f2f0;
+
 extern __int64 NgxData_2b6f2f8;
+
 extern __int64 NgxData_2b6f300;
+
 extern __int64 NgxData_2b6f308;
+
 extern __int64 NgxData_2b6f310;
+
 extern __int64 NgxData_2b6f318;
+
 extern int NgxData_2b6f320;
+
 extern int NgxData_2b6f324;
+
 extern __int64 NgxData_2b6f328;
+
 extern __int64 NgxData_2b6f330;
+
 extern __int64 NgxData_2b6f338;
+
 extern __int64 NgxData_2b6f340;
+
 extern __int64 NgxData_2b6f348;
+
 extern __int64 NgxData_2b6f350;
+
 extern __int64 NgxData_2b6f358;
+
 extern int NgxData_2b6f360;
+
 extern int NgxData_2b6f364;
+
 extern __int64 NgxData_2b6f368;
+
 extern __int64 NgxData_2b6f370;
+
 extern __int64 NgxData_2b6f378;
+
 extern __int64 NgxData_2b6f380;
+
 extern __int64 NgxData_2b6f388;
+
 extern __int64 NgxData_2b6f390;
+
 extern __int64 NgxData_2b6f398;
+
 extern int NgxData_2b6f3a0;
+
 extern int NgxData_2b6f3a4;
+
 extern __int64 NgxData_2b6f3a8;
+
 extern __int64 NgxData_2b6f3b0;
+
 extern __int64 NgxData_2b6f3b8;
+
 extern __int64 NgxData_2b6f3c0;
+
 extern __int64 NgxData_2b6f3c8;
+
 extern __int64 NgxData_2b6f3d0;
+
 extern __int64 NgxData_2b6f3d8;
+
 extern int NgxData_2b6f3e0;
+
 extern int NgxData_2b6f3e4;
+
 extern __int64 NgxData_2b6f3e8;
+
 extern __int64 NgxData_2b6f3f0;
+
 extern __int64 NgxData_2b6f3f8;
+
 extern __int64 NgxData_2b6f400;
+
 extern __int64 NgxData_2b6f408;
+
 extern __int64 NgxData_2b6f410;
+
 extern __int64 NgxData_2b6f418;
+
 extern int NgxData_2b6f420;
+
 extern int NgxData_2b6f424;
+
 extern __int64 NgxData_2b6f428;
+
 extern __int64 NgxData_2b6f430;
+
 extern __int64 NgxData_2b6f438;
+
 extern __int64 NgxData_2b6f440;
+
 extern __int64 NgxData_2b6f448;
+
 extern __int64 NgxData_2b6f450;
+
 extern __int64 NgxData_2b6f458;
+
 extern int NgxData_2b6f460;
+
 extern int NgxData_2b6f464;
+
 extern __int64 NgxData_2b6f468;
+
 extern __int64 NgxData_2b6f470;
+
 extern __int64 NgxData_2b6f478;
+
 extern __int64 NgxData_2b6f480;
+
 extern __int64 NgxData_2b6f488;
+
 extern __int64 NgxData_2b6f490;
+
 extern __int64 NgxData_2b6f498;
+
 extern int NgxData_2b6f4a0;
+
 extern int NgxData_2b6f4a4;
+
 extern __int64 NgxData_2b6f4a8;
+
 extern __int64 NgxData_2b6f4b0;
+
 extern __int64 NgxData_2b6f4b8;
+
 extern __int64 NgxData_2b6f4c0;
+
 extern __int64 NgxData_2b6f4c8;
+
 extern __int64 NgxData_2b6f4d0;
+
 extern __int64 NgxData_2b6f4d8;
+
 extern int NgxData_2b6f4e0;
+
 extern int NgxData_2b6f4e4;
+
 extern __int64 NgxData_2b6f4e8;
+
 extern __int64 NgxData_2b6f4f0;
+
 extern __int64 NgxData_2b6f4f8;
+
 extern __int64 NgxData_2b6f500;
+
 extern __int64 NgxData_2b6f508;
+
 extern __int64 NgxData_2b6f510;
+
 extern __int64 NgxData_2b6f518;
+
 extern int NgxData_2b6f520;
+
 extern int NgxData_2b6f524;
+
 extern __int64 NgxData_2b6f528;
+
 extern __int64 NgxData_2b6f530;
+
 extern __int64 NgxData_2b6f538;
+
 extern __int64 NgxData_2b6f540;
+
 extern __int64 NgxData_2b6f548;
+
 extern __int64 NgxData_2b6f550;
+
 extern __int64 NgxData_2b6f558;
+
 extern int NgxData_2b6f560;
+
 extern int NgxData_2b6f564;
+
 extern __int64 NgxData_2b6f568;
+
 extern __int64 NgxData_2b6f570;
+
 extern __int64 NgxData_2b6f578;
+
 extern __int64 NgxData_2b6f580;
+
 extern __int64 NgxData_2b6f588;
+
 extern __int64 NgxData_2b6f590;
+
 extern __int64 NgxData_2b6f598;
+
 extern int NgxData_2b6f5a0;
+
 extern int NgxData_2b6f5a4;
+
 extern __int64 NgxData_2b6f5a8;
+
 extern __int64 NgxData_2b6f5b0;
+
 extern __int64 NgxData_2b6f5b8;
+
 extern __int64 NgxData_2b6f5c0;
+
 extern __int64 NgxData_2b6f5c8;
+
 extern __int64 NgxData_2b6f5d0;
+
 extern __int64 NgxData_2b6f5d8;
+
 extern int NgxData_2b6f5e0;
+
 extern int NgxData_2b6f5e4;
+
 extern __int64 NgxData_2b6f5e8;
+
 extern __int64 NgxData_2b6f5f0;
+
 extern __int64 NgxData_2b6f5f8;
+
 extern __int64 NgxData_2b6f600;
+
 extern __int64 NgxData_2b6f608;
+
 extern __int64 NgxData_2b6f610;
+
 extern __int64 NgxData_2b6f618;
+
 extern int NgxData_2b6f620;
+
 extern int NgxData_2b6f624;
+
 extern __int64 NgxData_2b6f628;
+
 extern __int64 NgxData_2b6f630;
+
 extern __int64 NgxData_2b6f638;
+
 extern __int64 NgxData_2b6f640;
+
 extern __int64 NgxData_2b6f648;
+
 extern __int64 NgxData_2b6f650;
+
 extern __int64 NgxData_2b6f658;
+
 extern int NgxData_2b6f660;
+
 extern int NgxData_2b6f664;
+
 extern __int64 NgxData_2b6f668;
+
 extern __int64 NgxData_2b6f670;
+
 extern __int64 NgxData_2b6f678;
+
 extern __int64 NgxData_2b6f680;
+
 extern __int64 NgxData_2b6f688;
+
 extern __int64 NgxData_2b6f690;
+
 extern __int64 NgxData_2b6f698;
+
 extern int NgxData_2b6f6a0;
+
 extern int NgxData_2b6f6a4;
+
 extern __int64 NgxData_2b6f6a8;
+
 extern __int64 NgxData_2b6f6b0;
+
 extern __int64 NgxData_2b6f6b8;
+
 extern __int64 NgxData_2b6f6c0;
+
 extern __int64 NgxData_2b6f6c8;
+
 extern __int64 NgxData_2b6f6d0;
+
 extern __int64 NgxData_2b6f6d8;
+
 extern int NgxData_2b6f6e0;
+
 extern int NgxData_2b6f6e4;
+
 extern __int64 NgxData_2b6f6e8;
+
 extern __int64 NgxData_2b6f6f0;
+
 extern __int64 NgxData_2b6f6f8;
+
 extern __int64 NgxData_2b6f700;
+
 extern __int64 NgxData_2b6f708;
+
 extern __int64 NgxData_2b6f710;
+
 extern __int64 NgxData_2b6f718;
+
 extern int NgxData_2b6f720;
+
 extern int NgxData_2b6f724;
+
 extern __int64 NgxData_2b6f728;
+
 extern __int64 NgxData_2b6f730;
+
 extern __int64 NgxData_2b6f738;
+
 extern __int64 NgxData_2b6f740;
+
 extern __int64 NgxData_2b6f748;
+
 extern __int64 NgxData_2b6f750;
+
 extern __int64 NgxData_2b6f758;
+
 extern int NgxData_2b6f760;
+
 extern int NgxData_2b6f764;
+
 extern __int64 NgxData_2b6f768;
+
 extern __int64 NgxData_2b6f770;
+
 extern __int64 NgxData_2b6f778;
+
 extern __int64 NgxData_2b6f780;
+
 extern __int64 NgxData_2b6f788;
+
 extern __int64 NgxData_2b6f790;
+
 extern __int64 NgxData_2b6f798;
+
 extern int NgxData_2b6f7a0;
+
 extern int NgxData_2b6f7a4;
+
 extern __int64 NgxData_2b6f7a8;
+
 extern __int64 NgxData_2b6f7b0;
+
 extern __int64 NgxData_2b6f7b8;
+
 extern __int64 NgxData_2b6f7c0;
+
 extern __int64 NgxData_2b6f7c8;
+
 extern __int64 NgxData_2b6f7d0;
+
 extern __int64 NgxData_2b6f7d8;
+
 extern int NgxData_2b6f7e0;
+
 extern int NgxData_2b6f7e4;
+
 extern __int64 NgxData_2b6f7e8;
+
 extern __int64 NgxData_2b6f7f0;
+
 extern __int64 NgxData_2b6f7f8;
+
 extern __int64 NgxData_2b6f800;
+
 extern __int64 NgxData_2b6f808;
+
 extern __int64 NgxData_2b6f810;
+
 extern __int64 NgxData_2b6f818;
+
 extern int NgxData_2b6f820;
+
 extern int NgxData_2b6f824;
+
 extern __int64 NgxData_2b6f828;
+
 extern __int64 NgxData_2b6f830;
+
 extern __int64 NgxData_2b6f838;
+
 extern __int64 NgxData_2b6f840;
+
 extern __int64 NgxData_2b6f848;
+
 extern __int64 NgxData_2b6f850;
+
 extern __int64 NgxData_2b6f858;
+
 extern int NgxData_2b6f860;
+
 extern int NgxData_2b6f864;
+
 extern __int64 NgxData_2b6f868;
+
 extern __int64 NgxData_2b6f870;
+
 extern __int64 NgxData_2b6f878;
+
 extern __int64 NgxData_2b6f880;
+
 extern __int64 NgxData_2b6f888;
+
 extern __int64 NgxData_2b6f890;
+
 extern __int64 NgxData_2b6f898;
+
 extern int NgxData_2b6f8a0;
+
 extern int NgxData_2b6f8a4;
+
 extern __int64 NgxData_2b6f8a8;
+
 extern __int64 NgxData_2b6f8b0;
+
 extern __int64 NgxData_2b6f8b8;
+
 extern __int64 NgxData_2b6f8c0;
+
 extern __int64 NgxData_2b6f8c8;
+
 extern __int64 NgxData_2b6f8d0;
+
 extern __int64 NgxData_2b6f8d8;
+
 extern int NgxData_2b6f8e0;
+
 extern int NgxData_2b6f8e4;
+
 extern __int64 NgxData_2b6f8e8;
+
 extern __int64 NgxData_2b6f8f0;
+
 extern __int64 NgxData_2b6f8f8;
+
 extern __int64 NgxData_2b6f900;
+
 extern __int64 NgxData_2b6f908;
+
 extern __int64 NgxData_2b6f910;
+
 extern __int64 NgxData_2b6f918;
+
 extern int NgxData_2b6f920;
+
 extern int NgxData_2b6f924;
+
 extern __int64 NgxData_2b6f928;
+
 extern __int64 NgxData_2b6f930;
+
 extern __int64 NgxData_2b6f938;
+
 extern __int64 NgxData_2b6f940;
+
 extern __int64 NgxData_2b6f948;
+
 extern __int64 NgxData_2b6f950;
+
 extern __int64 NgxData_2b6f958;
+
 extern int NgxData_2b6f960;
+
 extern int NgxData_2b6f964;
+
 extern __int64 NgxData_2b6f968;
+
 extern __int64 NgxData_2b6f970;
+
 extern __int64 NgxData_2b6f978;
+
 extern __int64 NgxData_2b6f980;
+
 extern __int64 NgxData_2b6f988;
+
 extern __int64 NgxData_2b6f990;
+
 extern __int64 NgxData_2b6f998;
+
 extern int NgxData_2b6f9a0;
+
 extern int NgxData_2b6f9a4;
+
 extern __int64 NgxData_2b6f9a8;
+
 extern __int64 NgxData_2b6f9b0;
+
 extern __int64 NgxData_2b6f9b8;
+
 extern __int64 NgxData_2b6f9c0;
+
 extern __int64 NgxData_2b6f9c8;
+
 extern __int64 NgxData_2b6f9d0;
+
 extern __int64 NgxData_2b6f9d8;
+
 extern int NgxData_2b6f9e0;
+
 extern int NgxData_2b6f9e4;
+
 extern __int64 NgxData_2b6f9e8;
+
 extern __int64 NgxData_2b6f9f0;
+
 extern __int64 NgxData_2b6f9f8;
+
 extern __int64 NgxData_2b6fa00;
+
 extern __int64 NgxData_2b6fa08;
+
 extern __int64 NgxData_2b6fa10;
+
 extern __int64 NgxData_2b6fa18;
+
 extern int NgxData_2b6fa20;
+
 extern int NgxData_2b6fa24;
+
 extern __int64 NgxData_2b6fa28;
+
 extern __int64 NgxData_2b6fa30;
+
 extern __int64 NgxData_2b6fa38;
+
 extern __int64 NgxData_2b6fa40;
+
 extern __int64 NgxData_2b6fa48;
+
 extern __int64 NgxData_2b6fa50;
+
 extern __int64 NgxData_2b6fa58;
+
 extern int NgxData_2b6fa60;
+
 extern int NgxData_2b6fa64;
+
 extern __int64 NgxData_2b6fa68;
+
 extern __int64 NgxData_2b6fa70;
+
 extern __int64 NgxData_2b6fa78;
+
 extern __int64 NgxData_2b6fa80;
+
 extern __int64 NgxData_2b6fa88;
+
 extern __int64 NgxData_2b6fa90;
+
 extern __int64 NgxData_2b6fa98;
+
 extern int NgxData_2b6faa0;
+
 extern int NgxData_2b6faa4;
+
 extern __int64 NgxData_2b6faa8;
+
 extern __int64 NgxData_2b6fab0;
+
 extern __int64 NgxData_2b6fab8;
+
 extern __int64 NgxData_2b6fac0;
+
 extern __int64 NgxData_2b6fac8;
+
 extern __int64 NgxData_2b6fad0;
+
 extern __int64 NgxData_2b6fad8;
+
 extern int NgxData_2b6fae0;
+
 extern int NgxData_2b6fae4;
+
 extern __int64 NgxData_2b6fae8;
+
 extern __int64 NgxData_2b6faf0;
+
 extern __int64 NgxData_2b6faf8;
+
 extern __int64 NgxData_2b6fb00;
+
 extern __int64 NgxData_2b6fb08;
+
 extern __int64 NgxData_2b6fb10;
+
 extern __int64 NgxData_2b6fb18;
+
 extern int NgxData_2b6fb20;
+
 extern int NgxData_2b6fb24;
+
 extern __int64 NgxData_2b6fb28;
+
 extern __int64 NgxData_2b6fb30;
+
 extern __int64 NgxData_2b6fb38;
+
 extern __int64 NgxData_2b6fb40;
+
 extern __int64 NgxData_2b6fb48;
+
 extern __int64 NgxData_2b6fb50;
+
 extern __int64 NgxData_2b6fb58;
+
 extern int NgxData_2b6fb60;
+
 extern int NgxData_2b6fb64;
+
 extern __int64 NgxData_2b6fb68;
+
 extern __int64 NgxData_2b6fb70;
+
 extern __int64 NgxData_2b6fb78;
+
 extern __int64 NgxData_2b6fb80;
+
 extern __int64 NgxData_2b6fb88;
+
 extern __int64 NgxData_2b6fb90;
+
 extern __int64 NgxData_2b6fb98;
+
 extern int NgxData_2b6fba0;
+
 extern int NgxData_2b6fba4;
+
 extern __int64 NgxData_2b6fba8;
+
 extern __int64 NgxData_2b6fbb0;
+
 extern __int64 NgxData_2b6fbb8;
+
 extern __int64 NgxData_2b6fbc0;
+
 extern __int64 NgxData_2b6fbc8;
+
 extern __int64 NgxData_2b6fbd0;
+
 extern __int64 NgxData_2b6fbd8;
+
 extern int NgxData_2b6fbe0;
+
 extern int NgxData_2b6fbe4;
+
 extern __int64 NgxData_2b6fbe8;
+
 extern __int64 NgxData_2b6fbf0;
+
 extern __int64 NgxData_2b6fbf8;
+
 extern __int64 NgxData_2b6fc00;
+
 extern __int64 NgxData_2b6fc08;
+
 extern __int64 NgxData_2b6fc10;
+
 extern __int64 NgxData_2b6fc18;
+
 extern int NgxData_2b6fc20;
+
 extern int NgxData_2b6fc24;
+
 extern __int64 NgxData_2b6fc28;
+
 extern __int64 NgxData_2b6fc30;
+
 extern __int64 NgxData_2b6fc38;
+
 extern __int64 NgxData_2b6fc40;
+
 extern __int64 NgxData_2b6fc48;
+
 extern __int64 NgxData_2b6fc50;
+
 extern __int64 NgxData_2b6fc58;
+
 extern int NgxData_2b6fc60;
+
 extern int NgxData_2b6fc64;
+
 extern __int64 NgxData_2b6fc68;
+
 extern __int64 NgxData_2b6fc70;
+
 extern __int64 NgxData_2b6fc78;
+
 extern __int64 NgxData_2b6fc80;
+
 extern __int64 NgxData_2b6fc88;
+
 extern __int64 NgxData_2b6fc90;
+
 extern __int64 NgxData_2b6fc98;
+
 extern int NgxData_2b6fca0;
+
 extern int NgxData_2b6fca4;
+
 extern __int64 NgxData_2b6fca8;
+
 extern __int64 NgxData_2b6fcb0;
+
 extern __int64 NgxData_2b6fcb8;
+
 extern __int64 NgxData_2b6fcc0;
+
 extern __int64 NgxData_2b6fcc8;
+
 extern __int64 NgxData_2b6fcd0;
+
 extern __int64 NgxData_2b6fcd8;
+
 extern int NgxData_2b6fce0;
+
 extern int NgxData_2b6fce4;
+
 extern __int64 NgxData_2b6fce8;
+
 extern __int64 NgxData_2b6fcf0;
+
 extern __int64 NgxData_2b6fcf8;
+
 extern __int64 NgxData_2b6fd00;
+
 extern __int64 NgxData_2b6fd08;
+
 extern __int64 NgxData_2b6fd10;
+
 extern __int64 NgxData_2b6fd18;
+
 extern int NgxData_2b6fd20;
+
 extern int NgxData_2b6fd24;
+
 extern __int64 NgxData_2b6fd28;
+
 extern __int64 NgxData_2b6fd30;
+
 extern __int64 NgxData_2b6fd38;
+
 extern __int64 NgxData_2b6fd40;
+
 extern __int64 NgxData_2b6fd48;
+
 extern __int64 NgxData_2b6fd50;
+
 extern __int64 NgxData_2b6fd58;
+
 extern int NgxData_2b6fd60;
+
 extern int NgxData_2b6fd64;
+
 extern __int64 NgxData_2b6fd68;
+
 extern __int64 NgxData_2b6fd70;
+
 extern __int64 NgxData_2b6fd78;
+
 extern __int64 NgxData_2b6fd80;
+
 extern __int64 NgxData_2b6fd88;
+
 extern __int64 NgxData_2b6fd90;
+
 extern __int64 NgxData_2b6fd98;
+
 extern int NgxData_2b6fda0;
+
 extern int NgxData_2b6fda4;
+
 extern __int64 NgxData_2b6fda8;
+
 extern __int64 NgxData_2b6fdb0;
+
 extern __int64 NgxData_2b6fdb8;
+
 extern __int64 NgxData_2b6fdc0;
+
 extern __int64 NgxData_2b6fdc8;
+
 extern __int64 NgxData_2b6fdd0;
+
 extern __int64 NgxData_2b6fdd8;
+
 extern int NgxData_2b6fde0;
+
 extern int NgxData_2b6fde4;
+
 extern __int64 NgxData_2b6fde8;
+
 extern __int64 NgxData_2b6fdf0;
+
 extern __int64 NgxData_2b6fdf8;
+
 extern __int64 NgxData_2b6fe00;
+
 extern __int64 NgxData_2b6fe08;
+
 extern __int64 NgxData_2b6fe10;
+
 extern __int64 NgxData_2b6fe18;
+
 extern int NgxData_2b6fe20;
+
 extern int NgxData_2b6fe24;
+
 extern __int64 NgxData_2b6fe28;
+
 extern __int64 NgxData_2b6fe30;
+
 extern __int64 NgxData_2b6fe38;
+
 extern __int64 NgxData_2b6fe40;
+
 extern __int64 NgxData_2b6fe48;
+
 extern __int64 NgxData_2b6fe50;
+
 extern __int64 NgxData_2b6fe58;
+
 extern int NgxData_2b6fe60;
+
 extern int NgxData_2b6fe64;
+
 extern __int64 NgxData_2b6fe68;
+
 extern __int64 NgxData_2b6fe70;
+
 extern __int64 NgxData_2b6fe78;
+
 extern __int64 NgxData_2b6fe80;
+
 extern __int64 NgxData_2b6fe88;
+
 extern __int64 NgxData_2b6fe90;
+
 extern __int64 NgxData_2b6fe98;
+
 extern int NgxData_2b6fea0;
+
 extern int NgxData_2b6fea4;
+
 extern __int64 NgxData_2b6fea8;
+
 extern __int64 NgxData_2b6feb0;
+
 extern __int64 NgxData_2b6feb8;
+
 extern __int64 NgxData_2b6fec0;
+
 extern __int64 NgxData_2b6fec8;
+
 extern __int64 NgxData_2b6fed0;
+
 extern __int64 NgxData_2b6fed8;
+
 extern int NgxData_2b6fee0;
+
 extern int NgxData_2b6fee4;
+
 extern __int64 NgxData_2b6fee8;
+
 extern __int64 NgxData_2b6fef0;
+
 extern __int64 NgxData_2b6fef8;
+
 extern __int64 NgxData_2b6ff00;
+
 extern __int64 NgxData_2b6ff08;
+
 extern __int64 NgxData_2b6ff10;
+
 extern __int64 NgxData_2b6ff18;
+
 extern int NgxData_2b6ff20;
+
 extern int NgxData_2b6ff24;
+
 extern __int64 NgxData_2b6ff28;
+
 extern __int64 NgxData_2b6ff30;
+
 extern __int64 NgxData_2b6ff38;
+
 extern __int64 NgxData_2b6ff40;
+
 extern __int64 NgxData_2b6ff48;
+
 extern __int64 NgxData_2b6ff50;
+
 extern __int64 NgxData_2b6ff58;
+
 extern int NgxData_2b6ff60;
+
 extern int NgxData_2b6ff64;
+
 extern __int64 NgxData_2b6ff68;
+
 extern __int64 NgxData_2b6ff70;
+
 extern __int64 NgxData_2b6ff78;
+
 extern __int64 NgxData_2b6ff80;
+
 extern __int64 NgxData_2b6ff88;
+
 extern __int64 NgxData_2b6ff90;
+
 extern __int64 NgxData_2b6ff98;
+
 extern int NgxData_2b6ffa0;
+
 extern int NgxData_2b6ffa4;
+
 extern __int64 NgxData_2b6ffa8;
+
 extern __int64 NgxData_2b6ffb0;
+
 extern __int64 NgxData_2b6ffb8;
+
 extern __int64 NgxData_2b6ffc0;
+
 extern __int64 NgxData_2b6ffc8;
+
 extern __int64 NgxData_2b6ffd0;
+
 extern __int64 NgxData_2b6ffd8;
+
 extern int NgxData_2b6ffe0;
+
 extern int NgxData_2b6ffe4;
+
 extern __int64 NgxData_2b6ffe8;
+
 extern __int64 NgxData_2b6fff0;
+
 extern __int64 NgxData_2b6fff8;
+
 extern __int64 NgxData_2b70000;
+
 extern __int64 NgxData_2b70008;
+
 extern __int64 NgxData_2b70010;
+
 extern __int64 NgxData_2b70018;
+
 extern int NgxData_2b70020;
+
 extern int NgxData_2b70024;
+
 extern __int64 NgxData_2b70028;
+
 extern __int64 NgxData_2b70030;
+
 extern __int64 NgxData_2b70038;
+
 extern __int64 NgxData_2b70040;
+
 extern __int64 NgxData_2b70048;
+
 extern __int64 NgxData_2b70050;
+
 extern __int64 NgxData_2b70058;
+
 extern int NgxData_2b70060;
+
 extern int NgxData_2b70064;
+
 extern __int64 NgxData_2b70068;
+
 extern __int64 NgxData_2b70070;
+
 extern __int64 NgxData_2b70078;
+
 extern __int64 NgxData_2b70080;
+
 extern __int64 NgxData_2b70088;
+
 extern __int64 NgxData_2b70090;
+
 extern __int64 NgxData_2b70098;
+
 extern int NgxData_2b700a0;
+
 extern int NgxData_2b700a4;
+
 extern __int64 NgxData_2b700a8;
+
 extern __int64 NgxData_2b700b0;
+
 extern __int64 NgxData_2b700b8;
+
 extern __int64 NgxData_2b700c0;
+
 extern __int64 NgxData_2b700c8;
+
 extern __int64 NgxData_2b700d0;
+
 extern __int64 NgxData_2b700d8;
+
 extern int NgxData_2b700e0;
+
 extern int NgxData_2b700e4;
+
 extern __int64 NgxData_2b700e8;
+
 extern __int64 NgxData_2b700f0;
+
 extern __int64 NgxData_2b700f8;
+
 extern __int64 NgxData_2b70100;
+
 extern __int64 NgxData_2b70108;
+
 extern __int64 NgxData_2b70110;
+
 extern __int64 NgxData_2b70118;
+
 extern int NgxData_2b70120;
+
 extern int NgxData_2b70124;
+
 extern __int64 NgxData_2b70128;
+
 extern __int64 NgxData_2b70130;
+
 extern __int64 NgxData_2b70138;
+
 extern __int64 NgxData_2b70140;
+
 extern __int64 NgxData_2b70148;
+
 extern __int64 NgxData_2b70150;
+
 extern __int64 NgxData_2b70158;
+
 extern int NgxData_2b70160;
+
 extern int NgxData_2b70164;
+
 extern __int64 NgxData_2b70168;
+
 extern __int64 NgxData_2b70170;
+
 extern __int64 NgxData_2b70178;
+
 extern __int64 NgxData_2b70180;
+
 extern __int64 NgxData_2b70188;
+
 extern __int64 NgxData_2b70190;
+
 extern __int64 NgxData_2b70198;
+
 extern int NgxData_2b701a0;
+
 extern int NgxData_2b701a4;
+
 extern __int64 NgxData_2b701a8;
+
 extern __int64 NgxData_2b701b0;
+
 extern __int64 NgxData_2b701b8;
+
 extern __int64 NgxData_2b701c0;
+
 extern __int64 NgxData_2b701c8;
+
 extern __int64 NgxData_2b701d0;
+
 extern __int64 NgxData_2b701d8;
+
 extern int NgxData_2b701e0;
+
 extern int NgxData_2b701e4;
+
 extern __int64 NgxData_2b701e8;
+
 extern __int64 NgxData_2b701f0;
+
 extern __int64 NgxData_2b701f8;
+
 extern __int64 NgxData_2b70200;
+
 extern __int64 NgxData_2b70208;
+
 extern __int64 NgxData_2b70210;
+
 extern __int64 NgxData_2b70218;
+
 extern int NgxData_2b70220;
+
 extern int NgxData_2b70224;
+
 extern __int64 NgxData_2b70228;
+
 extern __int64 NgxData_2b70230;
+
 extern __int64 NgxData_2b70238;
+
 extern __int64 NgxData_2b70240;
+
 extern __int64 NgxData_2b70248;
+
 extern __int64 NgxData_2b70250;
+
 extern __int64 NgxData_2b70258;
+
 extern int NgxData_2b70260;
+
 extern int NgxData_2b70264;
+
 extern __int64 NgxData_2b70268;
+
 extern __int64 NgxData_2b70270;
+
 extern __int64 NgxData_2b70278;
+
 extern __int64 NgxData_2b70280;
+
 extern __int64 NgxData_2b70288;
+
 extern __int64 NgxData_2b70290;
+
 extern __int64 NgxData_2b70298;
+
 extern int NgxData_2b702a0;
+
 extern int NgxData_2b702a4;
+
 extern __int64 NgxData_2b702a8;
+
 extern __int64 NgxData_2b702b0;
+
 extern __int64 NgxData_2b702b8;
+
 extern __int64 NgxData_2b702c0;
+
 extern __int64 NgxData_2b702c8;
+
 extern __int64 NgxData_2b702d0;
+
 extern __int64 NgxData_2b702d8;
+
 extern int NgxData_2b702e0;
+
 extern int NgxData_2b702e4;
+
 extern __int64 NgxData_2b702e8;
+
 extern __int64 NgxData_2b702f0;
+
 extern __int64 NgxData_2b702f8;
+
 extern __int64 NgxData_2b70300;
+
 extern __int64 NgxData_2b70308;
+
 extern __int64 NgxData_2b70310;
+
 extern __int64 NgxData_2b70318;
+
 extern int NgxData_2b70320;
+
 extern int NgxData_2b70324;
+
 extern __int64 NgxData_2b70328;
+
 extern __int64 NgxData_2b70330;
+
 extern __int64 NgxData_2b70338;
+
 extern __int64 NgxData_2b70340;
+
 extern __int64 NgxData_2b70348;
+
 extern __int64 NgxData_2b70350;
+
 extern __int64 NgxData_2b70358;
+
 extern int NgxData_2b70360;
+
 extern int NgxData_2b70364;
+
 extern __int64 NgxData_2b70368;
+
 extern __int64 NgxData_2b70370;
+
 extern __int64 NgxData_2b70378;
+
 extern __int64 NgxData_2b70380;
+
 extern __int64 NgxData_2b70388;
+
 extern __int64 NgxData_2b70390;
+
 extern __int64 NgxData_2b70398;
+
 extern int NgxData_2b703a0;
+
 extern int NgxData_2b703a4;
+
 extern __int64 NgxData_2b703a8;
+
 extern __int64 NgxData_2b703b0;
+
 extern __int64 NgxData_2b703b8;
+
 extern __int64 NgxData_2b703c0;
+
 extern __int64 NgxData_2b703c8;
+
 extern __int64 NgxData_2b703d0;
+
 extern __int64 NgxData_2b703d8;
+
 extern int NgxData_2b703e0;
+
 extern int NgxData_2b703e4;
+
 extern __int64 NgxData_2b703e8;
+
 extern __int64 NgxData_2b703f0;
+
 extern __int64 NgxData_2b703f8;
+
 extern __int64 NgxData_2b70400;
+
 extern __int64 NgxData_2b70408;
+
 extern __int64 NgxData_2b70410;
+
 extern __int64 NgxData_2b70418;
+
 extern int NgxData_2b70420;
+
 extern int NgxData_2b70424;
+
 extern __int64 NgxData_2b70428;
+
 extern __int64 NgxData_2b70430;
+
 extern __int64 NgxData_2b70438;
+
 extern __int64 NgxData_2b70440;
+
 extern __int64 NgxData_2b70448;
+
 extern __int64 NgxData_2b70450;
+
 extern __int64 NgxData_2b70458;
+
 extern int NgxData_2b70460;
+
 extern int NgxData_2b70464;
+
 extern __int64 NgxData_2b70468;
+
 extern __int64 NgxData_2b70470;
+
 extern __int64 NgxData_2b70478;
+
 extern __int64 NgxData_2b70480;
+
 extern __int64 NgxData_2b70488;
+
 extern __int64 NgxData_2b70490;
+
 extern __int64 NgxData_2b70498;
+
 extern int NgxData_2b704a0;
+
 extern int NgxData_2b704a4;
+
 extern __int64 NgxData_2b704a8;
+
 extern __int64 NgxData_2b704b0;
+
 extern __int64 NgxData_2b704b8;
+
 extern __int64 NgxData_2b704c0;
+
 extern __int64 NgxData_2b704c8;
+
 extern __int64 NgxData_2b704d0;
+
 extern __int64 NgxData_2b704d8;
+
 extern int NgxData_2b704e0;
+
 extern int NgxData_2b704e4;
+
 extern __int64 NgxData_2b704e8;
+
 extern __int64 NgxData_2b704f0;
+
 extern __int64 NgxData_2b704f8;
+
 extern __int64 NgxData_2b70500;
+
 extern __int64 NgxData_2b70508;
+
 extern __int64 NgxData_2b70510;
+
 extern __int64 NgxData_2b70518;
+
 extern int NgxData_2b70520;
+
 extern int NgxData_2b70524;
+
 extern __int64 NgxData_2b70528;
+
 extern __int64 NgxData_2b70530;
+
 extern __int64 NgxData_2b70538;
+
 extern __int64 NgxData_2b70540;
+
 extern __int64 NgxData_2b70548;
+
 extern __int64 NgxData_2b70550;
+
 extern __int64 NgxData_2b70558;
+
 extern int NgxData_2b70560;
+
 extern int NgxData_2b70564;
+
 extern __int64 NgxData_2b70568;
+
 extern __int64 NgxData_2b70570;
+
 extern __int64 NgxData_2b70578;
+
 extern __int64 NgxData_2b70580;
+
 extern __int64 NgxData_2b70588;
+
 extern __int64 NgxData_2b70590;
+
 extern __int64 NgxData_2b70598;
+
 extern int NgxData_2b705a0;
+
 extern int NgxData_2b705a4;
+
 extern __int64 NgxData_2b705a8;
+
 extern __int64 NgxData_2b705b0;
+
 extern __int64 NgxData_2b705b8;
+
 extern __int64 NgxData_2b705c0;
+
 extern __int64 NgxData_2b705c8;
+
 extern __int64 NgxData_2b705d0;
+
 extern __int64 NgxData_2b705d8;
+
 extern int NgxData_2b705e0;
+
 extern int NgxData_2b705e4;
+
 extern __int64 NgxData_2b705e8;
+
 extern __int64 NgxData_2b705f0;
+
 extern __int64 NgxData_2b705f8;
+
 extern __int64 NgxData_2b70600;
+
 extern __int64 NgxData_2b70608;
+
 extern __int64 NgxData_2b70610;
+
 extern __int64 NgxData_2b70618;
+
 extern int NgxData_2b70620;
+
 extern int NgxData_2b70624;
+
 extern __int64 NgxData_2b70628;
+
 extern __int64 NgxData_2b70630;
+
 extern __int64 NgxData_2b70638;
+
 extern __int64 NgxData_2b70640;
+
 extern __int64 NgxData_2b70648;
+
 extern __int64 NgxData_2b70650;
+
 extern __int64 NgxData_2b70658;
+
 extern int NgxData_2b70660;
+
 extern int NgxData_2b70664;
+
 extern __int64 NgxData_2b70668;
+
 extern __int64 NgxData_2b70670;
+
 extern __int64 NgxData_2b70678;
+
 extern __int64 NgxData_2b70680;
+
 extern __int64 NgxData_2b70688;
+
 extern __int64 NgxData_2b70690;
+
 extern __int64 NgxData_2b70698;
+
 extern int NgxData_2b706a0;
+
 extern int NgxData_2b706a4;
+
 extern __int64 NgxData_2b706a8;
+
 extern __int64 NgxData_2b706b0;
+
 extern __int64 NgxData_2b706b8;
+
 extern __int64 NgxData_2b706c0;
+
 extern __int64 NgxData_2b706c8;
+
 extern __int64 NgxData_2b706d0;
+
 extern __int64 NgxData_2b706d8;
+
 extern int NgxData_2b706e0;
+
 extern int NgxData_2b706e4;
+
 extern __int64 NgxData_2b706e8;
+
 extern __int64 NgxData_2b706f0;
+
 extern __int64 NgxData_2b706f8;
+
 extern __int64 NgxData_2b70700;
+
 extern __int64 NgxData_2b70708;
+
 extern __int64 NgxData_2b70710;
+
 extern __int64 NgxData_2b70718;
+
 extern int NgxData_2b70720;
+
 extern int NgxData_2b70724;
+
 extern __int64 NgxData_2b70728;
+
 extern __int64 NgxData_2b70730;
+
 extern __int64 NgxData_2b70738;
+
 extern __int64 NgxData_2b70740;
+
 extern __int64 NgxData_2b70748;
+
 extern __int64 NgxData_2b70750;
+
 extern __int64 NgxData_2b70758;
+
 extern int NgxData_2b70760;
+
 extern int NgxData_2b70764;
+
 extern __int64 NgxData_2b70768;
+
 extern __int64 NgxData_2b70770;
+
 extern __int64 NgxData_2b70778;
+
 extern __int64 NgxData_2b70780;
+
 extern __int64 NgxData_2b70788;
+
 extern __int64 NgxData_2b70790;
+
 extern __int64 NgxData_2b70798;
+
 extern int NgxData_2b707a0;
+
 extern int NgxData_2b707a4;
+
 extern __int64 NgxData_2b707a8;
+
 extern __int64 NgxData_2b707b0;
+
 extern __int64 NgxData_2b707b8;
+
 extern __int64 NgxData_2b707c0;
+
 extern __int64 NgxData_2b707c8;
+
 extern __int64 NgxData_2b707d0;
+
 extern __int64 NgxData_2b707d8;
+
 extern int NgxData_2b707e0;
+
 extern int NgxData_2b707e4;
+
 extern __int64 NgxData_2b707e8;
+
 extern __int64 NgxData_2b707f0;
+
 extern __int64 NgxData_2b707f8;
+
 extern __int64 NgxData_2b70800;
+
 extern __int64 NgxData_2b70808;
+
 extern __int64 NgxData_2b70810;
+
 extern __int64 NgxData_2b70818;
+
 extern int NgxData_2b70820;
+
 extern int NgxData_2b70824;
+
 extern __int64 NgxData_2b70828;
+
 extern __int64 NgxData_2b70830;
+
 extern __int64 NgxData_2b70838;
+
 extern __int64 NgxData_2b70840;
+
 extern __int64 NgxData_2b70848;
+
 extern __int64 NgxData_2b70850;
+
 extern __int64 NgxData_2b70858;
+
 extern int NgxData_2b70860;
+
 extern int NgxData_2b70864;
+
 extern __int64 NgxData_2b70868;
+
 extern __int64 NgxData_2b70870;
+
 extern __int64 NgxData_2b70878;
+
 extern __int64 NgxData_2b70880;
+
 extern __int64 NgxData_2b70888;
+
 extern __int64 NgxData_2b70890;
+
 extern __int64 NgxData_2b70898;
+
 extern int NgxData_2b708a0;
+
 extern int NgxData_2b708a4;
+
 extern __int64 NgxData_2b708a8;
+
 extern __int64 NgxData_2b708b0;
+
 extern __int64 NgxData_2b708b8;
+
 extern __int64 NgxData_2b708c0;
+
 extern __int64 NgxData_2b708c8;
+
 extern __int64 NgxData_2b708d0;
+
 extern __int64 NgxData_2b708d8;
+
 extern int NgxData_2b708e0;
+
 extern int NgxData_2b708e4;
+
 extern __int64 NgxData_2b708e8;
+
 extern __int64 NgxData_2b708f0;
+
 extern __int64 NgxData_2b708f8;
+
 extern __int64 NgxData_2b70900;
+
 extern __int64 NgxData_2b70908;
+
 extern __int64 NgxData_2b70910;
+
 extern __int64 NgxData_2b70918;
+
 extern int NgxData_2b70920;
+
 extern int NgxData_2b70924;
+
 extern __int64 NgxData_2b70928;
+
 extern __int64 NgxData_2b70930;
+
 extern __int64 NgxData_2b70938;
+
 extern __int64 NgxData_2b70940;
+
 extern __int64 NgxData_2b70948;
+
 extern __int64 NgxData_2b70950;
+
 extern __int64 NgxData_2b70958;
+
 extern int NgxData_2b70960;
+
 extern int NgxData_2b70964;
+
 extern __int64 NgxData_2b70968;
+
 extern __int64 NgxData_2b70970;
+
 extern __int64 NgxData_2b70978;
+
 extern __int64 NgxData_2b70980;
+
 extern __int64 NgxData_2b70988;
+
 extern __int64 NgxData_2b70990;
+
 extern __int64 NgxData_2b70998;
+
 extern int NgxData_2b709a0;
+
 extern int NgxData_2b709a4;
+
 extern __int64 NgxData_2b709a8;
+
 extern __int64 NgxData_2b709b0;
+
 extern __int64 NgxData_2b709b8;
+
 extern __int64 NgxData_2b709c0;
+
 extern __int64 NgxData_2b709c8;
+
 extern __int64 NgxData_2b709d0;
+
 extern __int64 NgxData_2b709d8;
+
 extern int NgxData_2b709e0;
+
 extern int NgxData_2b709e4;
+
 extern __int64 NgxData_2b709e8;
+
 extern __int64 NgxData_2b709f0;
+
 extern __int64 NgxData_2b709f8;
+
 extern __int64 NgxData_2b8a118;
+
 extern __int64 NgxData_2b8a128;
+
 extern __int64 NgxData_2b8a130;
+
 extern __int64 NgxData_2b8a140;
+
 extern __int64 NgxData_2b8a328;
+
 extern __int64 NgxData_2b8a338;
+
 extern __int64 NgxData_2b8a340;
+
 extern __int64 NgxData_2b8a350;
+
 extern __int64 NgxData_2b8a358;
+
 extern __int64 NgxData_2b8a368;
+
 extern __int64 NgxData_2b8a370;
+
 extern __int64 NgxData_2b8a380;
+
 extern __int64 NgxData_2b8a388;
+
 extern __int64 NgxData_2b8a398;
+
 extern __int64 NgxData_2b8a3a0;
+
 extern __int64 NgxData_2b8a3b0;
+
 extern __int64 NgxData_2b8a3b8;
+
 extern __int64 NgxData_2b8a3c8;
+
 extern __int64 NgxData_2b8a3d0;
+
 extern __int64 NgxData_2b8a3e0;
+
 extern __int64 NgxData_2b8a3e8;
+
 extern __int64 NgxData_2b8a3f8;
+
 extern __int64 NgxData_2b8a400;
+
 extern __int64 NgxData_2b8a410;
+
 extern __int64 NgxData_2b8a418;
+
 extern __int64 NgxData_2b8a428;
+
 extern __int64 NgxData_2b8a430;
+
 extern __int64 NgxData_2b8a440;
+
 extern __int64 NgxData_2b8a448;
+
 extern __int64 NgxData_2b8a458;
+
 extern __int64 NgxData_2b8a460;
+
 extern __int64 NgxData_2b8a470;
+
 extern __int64 NgxData_2b8a6b8;
+
 extern __int64 NgxData_2b8a6c8;
+
 extern __int64 NgxData_2b8a6d0;
+
 extern __int64 NgxData_2b8a6e0;
+
 extern __int64 NgxData_2b8a6e8;
+
 extern __int64 NgxData_2b8a6f8;
+
 extern __int64 NgxData_2b8a700;
+
 extern __int64 NgxData_2b8a710;
+
 extern __int64 NgxData_2b8a718;
+
 extern __int64 NgxData_2b8a728;
+
 extern __int64 NgxData_2b8a730;
+
 extern __int64 NgxData_2b8a740;
+
 extern __int64 NgxData_2b8a748;
+
 extern __int64 NgxData_2b8a758;
+
 extern __int64 NgxData_2b8a760;
+
 extern __int64 NgxData_2b8a770;
+
 extern __int64 NgxData_2b8a778;
+
 extern __int64 NgxData_2b8a788;
+
 extern __int64 NgxData_2b8a790;
+
 extern __int64 NgxData_2b8a7a0;
+
 extern __int64 NgxData_2b8a7a8;
+
 extern __int64 NgxData_2b8a7b8;
+
 extern __int64 NgxData_2b8a7c0;
+
 extern __int64 NgxData_2b8a7d0;
+
 extern __int64 NgxData_2b8a7d8;
+
 extern __int64 NgxData_2b8a7e8;
+
 extern __int64 NgxData_2b8a7f0;
+
 extern __int64 NgxData_2b8a800;
+
 extern __int64 NgxData_2b8a808;
+
 extern __int64 NgxData_2b8a818;
+
 extern __int64 NgxData_2b8a820;
+
 extern __int64 NgxData_2b8a830;
+
 extern __int64 NgxData_2b8a838;
+
 extern __int64 NgxData_2b8a848;
+
 extern __int64 NgxData_2b8a850;
+
 extern __int64 NgxData_2b8a860;
+
 extern __int64 NgxData_2b8a868;
+
 extern __int64 NgxData_2b8a878;
+
 extern __int64 NgxData_2b8a880;
+
 extern __int64 NgxData_2b8a890;
+
 extern __int64 NgxData_2b8a898;
+
 extern __int64 NgxData_2b8a8a8;
+
 extern __int64 NgxData_2b8a8b0;
+
 extern __int64 NgxData_2b8a8c0;
+
 extern __int64 NgxData_2b8a8c8;
+
 extern __int64 NgxData_2b8a8d8;
+
 extern __int64 NgxData_2b8a8e0;
+
 extern __int64 NgxData_2b8a8f0;
+
 extern _UNKNOWN* NgxData_94c0b0;
+
 extern __int64 NgxData_9513e8;
-extern __int64* NgxData_952220;
+
 extern char* NgxData_953d80[268];
+
 extern char* NgxData_953d88[267];
+
 extern char* NgxData_953d90[266];
+
 extern char* NgxData_953d98[265];
+
 extern char* NgxData_953da0[264];
+
 extern char* NgxData_953da8[263];
+
 extern char* NgxData_953db0[262];
+
 extern char* NgxData_953db8[261];
+
 extern char* NgxData_953dc0[260];
+
 extern char* NgxData_953dc8[259];
+
 extern char* NgxData_953dd0[258];
+
 extern char* NgxData_953dd8[257];
+
 extern char* NgxData_953de0[256];
+
 extern char* NgxData_953de8[255];
+
 extern char* NgxData_953df0[254];
+
 extern char* NgxData_953df8[253];
+
 extern char* NgxData_953e00[252];
+
 extern char* NgxData_953e08[251];
+
 extern char* NgxData_953e10[250];
+
 extern char* NgxData_953e18[249];
+
 extern char* NgxData_953e20[248];
+
 extern char* NgxData_953e28[247];
+
 extern char* NgxData_953e30[246];
+
 extern char* NgxData_953e38[245];
+
 extern char* NgxData_953e40[244];
+
 extern char* NgxData_953e48[243];
+
 extern char* NgxData_953e50[242];
+
 extern char* NgxData_953e58[241];
+
 extern char* NgxData_953e60[240];
+
 extern char* NgxData_953e68[239];
+
 extern char* NgxData_953e70[238];
+
 extern char* NgxData_953e78[237];
+
 extern char* NgxData_953e80[236];
+
 extern char* NgxData_953e88[235];
+
 extern char* NgxData_953e90[234];
+
 extern char* NgxData_953e98[233];
+
 extern char* NgxData_953ea0[232];
+
 extern char* NgxData_953ea8[231];
+
 extern char* NgxData_953eb0[230];
+
 extern char* NgxData_953eb8[229];
+
 extern char* NgxData_953ec0[228];
+
 extern char* NgxData_953ec8[227];
+
 extern char* NgxData_953ed0[226];
+
 extern char* NgxData_953ed8[225];
+
 extern char* NgxData_953ee0[224];
+
 extern char* NgxData_953ee8[223];
+
 extern char* NgxData_953ef0[222];
+
 extern char* NgxData_953ef8[221];
+
 extern char* NgxData_953f00[220];
+
 extern char* NgxData_953f08[219];
+
 extern char* NgxData_953f10[218];
+
 extern char* NgxData_953f18[217];
+
 extern char* NgxData_953f20[216];
+
 extern char* NgxData_953f28[215];
+
 extern char* NgxData_953f30[214];
+
 extern char* NgxData_953f38[213];
+
 extern char* NgxData_953f40[212];
+
 extern char* NgxData_953f48[211];
+
 extern char* NgxData_953f50[210];
+
 extern char* NgxData_953f58[209];
+
 extern char* NgxData_953f60[208];
+
 extern char* NgxData_953f68[207];
+
 extern char* NgxData_953f70[206];
+
 extern char* NgxData_953f78[205];
+
 extern char* NgxData_953f80[204];
+
 extern char* NgxData_953f88[203];
+
 extern char* NgxData_953f90[202];
+
 extern char* NgxData_953f98[201];
+
 extern char* NgxData_953fa0[200];
+
 extern char* NgxData_953fa8[199];
+
 extern char* NgxData_953fb0[198];
+
 extern char* NgxData_953fb8[197];
+
 extern char* NgxData_953fc0[196];
+
 extern char* NgxData_953fc8[195];
+
 extern char* NgxData_953fd0[194];
+
 extern char* NgxData_953fd8[193];
+
 extern char* NgxData_953fe0[192];
+
 extern char* NgxData_953fe8[191];
+
 extern char* NgxData_953ff0[190];
+
 extern char* NgxData_953ff8[189];
+
 extern char* NgxData_954000[188];
+
 extern char* NgxData_954008[187];
+
 extern char* NgxData_954010[186];
+
 extern char* NgxData_954018[185];
+
 extern char* NgxData_954020[184];
+
 extern char* NgxData_954028[183];
+
 extern char* NgxData_954030[182];
+
 extern char* NgxData_954038[181];
+
 extern char* NgxData_954040[180];
+
 extern char* NgxData_954048[179];
+
 extern char* NgxData_954050[178];
+
 extern char* NgxData_954058[177];
+
 extern char* NgxData_954060[176];
+
 extern char* NgxData_954068[175];
+
 extern char* NgxData_954070[174];
+
 extern char* NgxData_954078[173];
+
 extern char* NgxData_954080[172];
+
 extern char* NgxData_954088[171];
+
 extern char* NgxData_954090[170];
+
 extern char* NgxData_954098[169];
+
 extern char* NgxData_9540a0[168];
+
 extern char* NgxData_9540a8[167];
+
 extern char* NgxData_9540b0[166];
+
 extern char* NgxData_9540b8[165];
+
 extern char* NgxData_9540c0[164];
+
 extern char* NgxData_9540c8[163];
+
 extern char* NgxData_9540d0[162];
+
 extern char* NgxData_9540d8[161];
+
 extern char* NgxData_9540e0[160];
+
 extern char* NgxData_9540e8[159];
+
 extern char* NgxData_9540f0[158];
+
 extern char* NgxData_9540f8[157];
+
 extern char* NgxData_954100[156];
+
 extern char* NgxData_954108[155];
+
 extern char* NgxData_954110[154];
+
 extern char* NgxData_954118[153];
+
 extern char* NgxData_954120[152];
+
 extern char* NgxData_954128[151];
+
 extern char* NgxData_954130[150];
+
 extern char* NgxData_954138[149];
+
 extern char* NgxData_954140[148];
+
 extern char* NgxData_954148[147];
+
 extern char* NgxData_954150[146];
+
 extern char* NgxData_954158[145];
+
 extern char* NgxData_954160[144];
+
 extern char* NgxData_954168[143];
+
 extern char* NgxData_954170[142];
+
 extern char* NgxData_954178[141];
+
 extern char* NgxData_954180[140];
+
 extern char* NgxData_954188[139];
+
 extern char* NgxData_954190[138];
+
 extern char* NgxData_954198[137];
+
 extern char* NgxData_9541a0[136];
+
 extern char* NgxData_9541a8[135];
+
 extern char* NgxData_9541b0[134];
+
 extern char* NgxData_9541b8[133];
+
 extern char* NgxData_9541c0[132];
+
 extern char* NgxData_9541c8[131];
+
 extern char* NgxData_9541d0[130];
+
 extern char* NgxData_9541d8[129];
+
 extern char* NgxData_9541e0[128];
+
 extern char* NgxData_9541e8[127];
+
 extern char* NgxData_9541f0[126];
+
 extern char* NgxData_9541f8[125];
+
 extern char* NgxData_954200[124];
+
 extern char* NgxData_954208[123];
+
 extern char* NgxData_954210[122];
+
 extern char* NgxData_954218[121];
+
 extern char* NgxData_954220[120];
+
 extern char* NgxData_954228[119];
+
 extern char* NgxData_954230[118];
+
 extern char* NgxData_954238[117];
+
 extern char* NgxData_954240[116];
+
 extern char* NgxData_954248[115];
+
 extern char* NgxData_954250[114];
+
 extern char* NgxData_954258[113];
+
 extern char* NgxData_954260[112];
+
 extern char* NgxData_954268[111];
+
 extern char* NgxData_954270[110];
+
 extern char* NgxData_954278[109];
+
 extern char* NgxData_954280[108];
+
 extern char* NgxData_954288[107];
+
 extern char* NgxData_954290[106];
+
 extern char* NgxData_954298[105];
+
 extern char* NgxData_9542a0[104];
+
 extern char* NgxData_9542a8[103];
+
 extern char* NgxData_9542b0[102];
+
 extern char* NgxData_9542b8[101];
+
 extern char* NgxData_9542c0[100];
+
 extern char* NgxData_9542c8[99];
+
 extern char* NgxData_9542d0[98];
+
 extern char* NgxData_9542d8[97];
+
 extern char* NgxData_9542e0[96];
+
 extern char* NgxData_9542e8[95];
+
 extern char* NgxData_9542f0[94];
+
 extern char* NgxData_9542f8[93];
+
 extern char* NgxData_954300[92];
+
 extern char* NgxData_954308[91];
+
 extern char* NgxData_954310[90];
+
 extern char* NgxData_954318[89];
+
 extern char* NgxData_954320[88];
+
 extern char* NgxData_954328[87];
+
 extern char* NgxData_954330[86];
+
 extern char* NgxData_954338[85];
+
 extern char* NgxData_954340[84];
+
 extern char* NgxData_954348[83];
+
 extern char* NgxData_954350[82];
+
 extern char* NgxData_954358[81];
+
 extern char* NgxData_954360[80];
+
 extern char* NgxData_954368[79];
+
 extern char* NgxData_954370[78];
+
 extern char* NgxData_954378[77];
+
 extern char* NgxData_954380[76];
+
 extern char* NgxData_954388[75];
+
 extern char* NgxData_954390[74];
+
 extern char* NgxData_954398[73];
+
 extern char* NgxData_9543a0[72];
+
 extern char* NgxData_9543a8[71];
+
 extern char* NgxData_9543b0[70];
+
 extern char* NgxData_9543b8[69];
+
 extern char* NgxData_9543c0[68];
+
 extern char* NgxData_9543c8[67];
+
 extern char* NgxData_9543d0[66];
+
 extern char* NgxData_9543d8[65];
+
 extern char* NgxData_9543e0[64];
+
 extern char* NgxData_9543e8[63];
+
 extern char* NgxData_9543f0[62];
+
 extern char* NgxData_9543f8[61];
+
 extern char* NgxData_954400[60];
+
 extern char* NgxData_954408[59];
+
 extern char* NgxData_954410[58];
+
 extern char* NgxData_954418[57];
+
 extern char* NgxData_954420[56];
+
 extern char* NgxData_954428[55];
+
 extern char* NgxData_954430[54];
+
 extern char* NgxData_954438[53];
+
 extern char* NgxData_954440[52];
+
 extern char* NgxData_954448[51];
+
 extern char* NgxData_954450[50];
+
 extern char* NgxData_954458[49];
+
 extern char* NgxData_954460[48];
+
 extern char* NgxData_954468[47];
+
 extern char* NgxData_954470[46];
+
 extern char* NgxData_954478[45];
+
 extern char* NgxData_954480[44];
+
 extern char* NgxData_954488[43];
+
 extern char* NgxData_954490[42];
+
 extern char* NgxData_954498[41];
+
 extern char* NgxData_9544a0[40];
+
 extern char* NgxData_9544a8[39];
+
 extern char* NgxData_9544b0[38];
+
 extern char* NgxData_9544b8[37];
+
 extern char* NgxData_9544c0[36];
+
 extern char* NgxData_9544c8[35];
+
 extern char* NgxData_9544d0[34];
+
 extern char* NgxData_9544d8[33];
+
 extern char* NgxData_9544e0[32];
+
 extern char* NgxData_9544e8[31];
+
 extern char* NgxData_9544f0[30];
+
 extern char* NgxData_9544f8[29];
+
 extern char* NgxData_954500[28];
+
 extern char* NgxData_954508[27];
+
 extern char* NgxData_954510[26];
+
 extern char* NgxData_954518[25];
+
 extern char* NgxData_954520[24];
+
 extern char* NgxData_954528[23];
+
 extern char* NgxData_954530[22];
+
 extern char* NgxData_954538[21];
+
 extern char* NgxData_954540[20];
+
 extern char* NgxData_954548[19];
+
 extern char* NgxData_954550[18];
+
 extern char* NgxData_954558[17];
+
 extern char* NgxData_954560[16];
+
 extern char* NgxData_954568[15];
+
 extern char* NgxData_954570[14];
+
 extern char* NgxData_954578[13];
+
 extern char* NgxData_954580[12];
+
 extern char* NgxData_954588[11];
+
 extern char* NgxData_954590[10];
+
 extern char* NgxData_954598[9];
+
 extern char* NgxData_9545a0[8];
+
 extern char* NgxData_9545a8[7];
+
 extern char* NgxData_9545b0[6];
+
 extern char* NgxData_9545b8[5];
+
 extern char* NgxData_9545c0[4];
+
 extern char* NgxData_9545c8[3];
+
 extern char* NgxData_9545d0[2];
+
 extern char* NgxData_9545d8;
+
 __int64 NgxRoutine_2b0(_QWORD, _QWORD, _QWORD);
+
 __int64 NgxRoutine_36f0(_QWORD, _QWORD);
+
 __int64 NgxRoutine_420(_QWORD);
+
 __int64 NgxRoutine_430(_QWORD, _QWORD);
+
 __int64 NgxRoutine_76570(_QWORD);
+
 __int64 NgxRoutine_9e9c0();
+
 __int64 NgxRoutine_a2480();
-__int64 NgxRoutine_a6cc0(_QWORD, _QWORD);
-__int64 NgxRoutine_a9980(_QWORD, _QWORD, _QWORD, _QWORD);
-__int64 NgxRoutine_a9a70(_QWORD, _QWORD, _QWORD, _QWORD);
-__int64 NgxRoutine_b4b90(_QWORD, _QWORD, _QWORD, const char*, ...);
+
 __int64 NgxRoutine_bfa50(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
                          _QWORD);
+
 __int64 NgxRoutine_d1ce0();
+
 __int64 NgxRoutine_d3a70(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
                          _QWORD, _QWORD, _QWORD);
+
 __int64 NgxRoutine_d5c30(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
                          _QWORD, _QWORD, _QWORD);
+
 void __attribute__((noreturn)) NgxRoutine_e2320(void);
+
 __int64 NgxRoutine_e3100(_QWORD, _QWORD, _QWORD);
+
 __int64 NgxRoutine_e3110(_QWORD, _QWORD);
+
 __int64 NgxRoutine_e3120(_QWORD, _QWORD, _QWORD);
+
 __int64 NgxRoutine_e37f0(_QWORD, _QWORD);
+
 __int64 NgxRoutine_e3810(_QWORD);
 
 __int64 NgxHr_4760(__int64 a1)
@@ -2970,1170 +5704,6 @@ LABEL_11:
       64 - 2 * *(int*)(result + 52) *
                (*(int*)(result + 76) * (__int64)*(int*)(result + 72) - 1);
   return result;
-}
-
-__int64 NgxHr_675c0(__int64 a1, unsigned int a2)
-{
-  _QWORD* v3;
-  __int64 v5;
-  __int64* v6;
-  __int64 v7;
-  __int64 v8;
-  __int64* v9;
-  __int64 v10;
-  __int64 v11;
-  int v12;
-  int v13;
-  int v14;
-  unsigned int v15;
-  int v16;
-  __int64 v17;
-  __int64 v18;
-  unsigned int v19;
-  int v20;
-  unsigned int v21;
-  int v22;
-  unsigned int v23;
-  int v24;
-  unsigned int v25;
-  int v26;
-  int v27;
-  __int64 v28;
-  __int64 v29;
-  unsigned int v30;
-  int v31;
-  unsigned int v32;
-  int v33;
-  unsigned int v34;
-  int v35;
-  unsigned int v36;
-  int v37;
-  unsigned int v38;
-  int v39;
-  unsigned int v40;
-  int v41;
-  unsigned int v42;
-  int v43;
-  unsigned int v44;
-  int v45;
-  unsigned int v46;
-  int v47;
-  unsigned int v48;
-  int v49;
-  unsigned int v50;
-  int v51;
-  unsigned int v52;
-  int v53;
-  unsigned int v54;
-  int v55;
-  unsigned int v56;
-  int v57;
-  unsigned int v58;
-  int v59;
-  unsigned int v60;
-  int v61;
-  unsigned int v62;
-  int v63;
-  unsigned int v64;
-  int v65;
-  unsigned int v66;
-  int v67;
-  unsigned int v68;
-  int v69;
-  unsigned int v70;
-  int v71;
-  unsigned int v72;
-  int v73;
-  unsigned int v74;
-  int v75;
-  unsigned int v76;
-  int v77;
-  unsigned int v78;
-  int v79;
-  unsigned int v80;
-  int v81;
-  unsigned int v82;
-  int v83;
-  unsigned int v84;
-  int v85;
-  unsigned int v86;
-  int v87;
-  unsigned int v88;
-  int v89;
-  unsigned int v90;
-  int v91;
-  unsigned int v92;
-  int v93;
-  unsigned int v94;
-  int v95;
-  unsigned int v96;
-  int v97;
-  unsigned int v98;
-  int v99;
-  unsigned int v100;
-  int v101;
-  unsigned int v102;
-  int v103;
-  unsigned int v104;
-  int v105;
-  unsigned int v106;
-  int v107;
-  unsigned int v108;
-  int v109;
-  unsigned int v110;
-  int v111;
-  unsigned int v112;
-  int v113;
-  unsigned int v114;
-  int v115;
-  unsigned int v116;
-  int v117;
-  unsigned int v118;
-  int v119;
-  unsigned int v120;
-  int v121;
-  unsigned int v122;
-  int v123;
-  unsigned int v124;
-  int v125;
-  unsigned int v126;
-  int v127;
-  unsigned int v128;
-  int v129;
-  unsigned int v130;
-  int v131;
-  unsigned int v132;
-  int v133;
-  unsigned int v134;
-  int v135;
-  unsigned int v136;
-  int v137;
-  unsigned int v138;
-  int v139;
-  unsigned int v140;
-  int v141;
-  unsigned int v142;
-  int v143;
-  unsigned int v144;
-  int v145;
-  unsigned int v146;
-  int v147;
-  unsigned int v148;
-  int v149;
-  unsigned int v150;
-  int v151;
-  unsigned int v152;
-  int v153;
-  unsigned int v154;
-  int v155;
-  unsigned int v156;
-  int v157;
-  int v158;
-  __int64 v159;
-  __int64 v161;
-  int v162;
-  __int64 v163;
-  __int64 v164;
-
-  v3 = (_QWORD*)(a1 + 8);
-  v5 = *(_QWORD*)(a1 + 440 + 16LL * a2 + 8);
-  v6 = NgxData_952220;
-  if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, _QWORD))(
-          **(_QWORD**)(a1 + 8) + 360LL))(
-          *(_QWORD*)(a1 + 8), *NgxData_952220,
-          *(_QWORD*)(*(_QWORD*)(*(_QWORD*)(a1 + 16) + 120LL) + 64LL), 0) != 0) {
-    v7 = (*(unsigned int (**)(_QWORD, __int64, _QWORD, _QWORD))(
-        **(_QWORD**)(a1 + 8) + 360LL))(
-        *(_QWORD*)(a1 + 8), *v6,
-        *(_QWORD*)(*(_QWORD*)(*(_QWORD*)(a1 + 16) + 120LL) + 64LL), 0);
-    NgxRoutine_b4b90(
-        "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/nvn2/dlss/"
-        "rel/source/features/dlaa/dltss_network.cpp",
-        458, "Dispatch", "Error: NVAPI failed %d", v7);
-  }
-  else {
-    if (v5 != 0) {
-      v8 = a2;
-    }
-    else {
-      v8 = 0;
-    }
-    v9 = &v3[2 * v8 + 54];
-    if ((*(unsigned int (**)(_QWORD, __int64))(*(_QWORD*)*v3 + 240LL))(
-            *v3, v9[1]) != 0) {
-      v10 = (*(unsigned int (**)(_QWORD, __int64))(*(_QWORD*)*v3 + 240LL))(
-          *v3, v9[1]);
-      NgxRoutine_b4b90(
-          "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/nvn2/dlss/"
-          "rel/source/features/dlaa/dltss_network.cpp",
-          461, "Dispatch", "Error: NVAPI failed %d", v10);
-    }
-    else {
-      v11 = *v9;
-      if ((unsigned int)NgxRoutine_a9980(
-              *(_QWORD*)(a1 + 120), *(_QWORD*)(a1 + 8), 3, a1 + 360) != 0) {
-        v12 = NgxRoutine_a9980(*(_QWORD*)(a1 + 120), *(_QWORD*)(a1 + 8), 3,
-                               a1 + 360);
-        NgxRoutine_b4b90(
-            "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/nvn2/"
-            "dlss/rel/source/features/dlaa/dltss_network.cpp",
-            472, "Dispatch", "Error: NVAPI failed %d", v12);
-      }
-      if ((unsigned int)NgxRoutine_a9980(
-              *(_QWORD*)(*(_QWORD*)(a1 + 48) + 120LL), *(_QWORD*)(a1 + 8), 5,
-              a1 + 360) != 0) {
-        v13 = NgxRoutine_a9980(*(_QWORD*)(*(_QWORD*)(a1 + 48) + 120LL),
-                               *(_QWORD*)(a1 + 8), 5, a1 + 360);
-        NgxRoutine_b4b90(
-            "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/nvn2/"
-            "dlss/rel/source/features/dlaa/dltss_network.cpp",
-            474, "Dispatch", "Error: NVAPI failed %d", v13);
-      }
-      if ((unsigned int)NgxRoutine_a9a70(
-              *(_QWORD*)(*(_QWORD*)(a1 + 16) + 120LL), *(_QWORD*)(a1 + 8), 0,
-              a1 + 360) != 0) {
-        v14 = NgxRoutine_a9a70(*(_QWORD*)(*(_QWORD*)(a1 + 16) + 120LL),
-                               *(_QWORD*)(a1 + 8), 1, a1 + 360);
-        NgxRoutine_b4b90(
-            "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/nvn2/"
-            "dlss/rel/source/features/dlaa/dltss_network.cpp",
-            476, "Dispatch", "Error: NVAPI failed %d", v14);
-        v15 = 2;
-      }
-      else {
-        v15 = 1;
-      }
-      v16 = (*(__int64 (**)(_QWORD, _QWORD, __int64*))(
-          **(_QWORD**)(a1 + 8) + 208LL))(*(_QWORD*)(a1 + 8),
-                                         *(_QWORD*)(a1 + 136), &v164);
-      v17 = *(_QWORD*)(a1 + 8);
-      if (v16 != 0) {
-        v18 = (*(unsigned int (**)(__int64, _QWORD, __int64*))(
-            *(_QWORD*)v17 + 208LL))(v17, *(_QWORD*)(a1 + 136), &v164);
-        NgxRoutine_b4b90(
-            "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/nvn2/"
-            "dlss/rel/source/features/dlaa/dltss_network.cpp",
-            1315, "GetWeightsVirtualAddress", "Error: NVAPI failed %d", v18);
-      }
-      else {
-        v19 = v15 + 1;
-        if ((*(unsigned int (**)(__int64, _QWORD, __int64, __int64, _QWORD))(
-                *(_QWORD*)v17 + 288LL))(v17, v15, v164, a1 + 360, 0) != 0) {
-          v20 = (*(__int64 (**)(_QWORD, _QWORD, __int64, __int64, _QWORD))(
-              *(_QWORD*)*v3 + 288LL))(*v3, v19, v164, a1 + 360, 0);
-          NgxRoutine_b4b90(
-              "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/nvn2/"
-              "dlss/rel/source/features/dlaa/dltss_network.cpp",
-              479, "Dispatch", "Error: NVAPI failed %d", v20);
-          v19 = v15 + 2;
-        }
-        v21 = v19 + 1;
-        if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64))(
-                *(_QWORD*)*v3 + 328LL))(*v3, v19, 0, a1 + 360) != 0) {
-          v22 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64))(
-              *(_QWORD*)*v3 + 328LL))(*v3, v21, 0, a1 + 360);
-          NgxRoutine_b4b90(
-              "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/nvn2/"
-              "dlss/rel/source/features/dlaa/dltss_network.cpp",
-              480, "Dispatch", "Error: NVAPI failed %d", v22);
-          v21 = v19 + 2;
-        }
-        v23 = v21 + 2;
-        if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64))(
-                *(_QWORD*)*v3 + 328LL))(*v3, v21 + 1, 0, a1 + 360) != 0) {
-          v24 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64))(
-              *(_QWORD*)*v3 + 328LL))(*v3, v23, 0, a1 + 360);
-          NgxRoutine_b4b90(
-              "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/nvn2/"
-              "dlss/rel/source/features/dlaa/dltss_network.cpp",
-              483, "Dispatch", "Error: NVAPI failed %d", v24);
-          v23 = v21 + 3;
-        }
-        v25 = v23 + 2;
-        if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64))(
-                *(_QWORD*)*v3 + 328LL))(*v3, v23 + 1, 0, a1 + 360) != 0) {
-          v26 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64))(
-              *(_QWORD*)*v3 + 328LL))(*v3, v25, 0, a1 + 360);
-          NgxRoutine_b4b90(
-              "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/nvn2/"
-              "dlss/rel/source/features/dlaa/dltss_network.cpp",
-              486, "Dispatch", "Error: NVAPI failed %d", v26);
-          v25 = v23 + 3;
-        }
-        v27 = (*(__int64 (**)(_QWORD, _QWORD, __int64*))(
-            **(_QWORD**)(a1 + 8) + 208LL))(*(_QWORD*)(a1 + 8),
-                                           *(_QWORD*)(a1 + 168), &v163);
-        v28 = *(_QWORD*)(a1 + 8);
-        if (v27 != 0) {
-          v29 = (*(unsigned int (**)(__int64, _QWORD, __int64*))(
-              *(_QWORD*)v28 + 208LL))(v28, *(_QWORD*)(a1 + 168), &v163);
-          NgxRoutine_b4b90(
-              "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/nvn2/"
-              "dlss/rel/source/features/dlaa/dltss_network.cpp",
-              1321, "GetBiasesVirtualAddress", "Error: NVAPI failed %d", v29);
-        }
-        else {
-          v30 = v25 + 1;
-          if ((*(unsigned int (**)(__int64, _QWORD, __int64, __int64, _QWORD))(
-                  *(_QWORD*)v28 + 288LL))(v28, v25, v163, a1 + 360, 0) != 0) {
-            v31 = (*(__int64 (**)(_QWORD, _QWORD, __int64, __int64, _QWORD))(
-                *(_QWORD*)*v3 + 288LL))(*v3, v30, v163, a1 + 360, 0);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                489, "Dispatch", "Error: NVAPI failed %d", v31);
-            v30 = v25 + 2;
-          }
-          v32 = v30 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64))(
-                  *(_QWORD*)*v3 + 328LL))(*v3, v30, 0, a1 + 360) != 0) {
-            v33 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64))(
-                *(_QWORD*)*v3 + 328LL))(*v3, v32, 0, a1 + 360);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                490, "Dispatch", "Error: NVAPI failed %d", v33);
-            v32 = v30 + 2;
-          }
-          v34 = v32 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 272LL))(*v3, v32, *(unsigned int*)(v11 + 632),
-                                          a1 + 360, 72) != 0) {
-            v35 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 272LL))(*v3, v34, *(unsigned int*)(v11 + 632),
-                                        a1 + 360, 72);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                492, "Dispatch", "Error: NVAPI failed %d", v35);
-            v34 = v32 + 2;
-          }
-          v36 = v34 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 272LL))(*v3, v34, *(unsigned int*)(v11 + 636),
-                                          a1 + 360, 76) != 0) {
-            v37 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 272LL))(*v3, v36, *(unsigned int*)(v11 + 636),
-                                        a1 + 360, 76);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                493, "Dispatch", "Error: NVAPI failed %d", v37);
-            v36 = v34 + 2;
-          }
-          v38 = v36 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 272LL))(*v3, v36, *(unsigned int*)(v11 + 640),
-                                          a1 + 360, 80) != 0) {
-            v39 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 272LL))(*v3, v38, *(unsigned int*)(v11 + 640),
-                                        a1 + 360, 80);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                494, "Dispatch", "Error: NVAPI failed %d", v39);
-            v38 = v36 + 2;
-          }
-          v40 = v38 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 272LL))(*v3, v38, *(unsigned int*)(v11 + 644),
-                                          a1 + 360, 84) != 0) {
-            v41 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 272LL))(*v3, v40, *(unsigned int*)(v11 + 644),
-                                        a1 + 360, 84);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                495, "Dispatch", "Error: NVAPI failed %d", v41);
-            v40 = v38 + 2;
-          }
-          v42 = v40 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 272LL))(*v3, v40, *(unsigned int*)(v11 + 648),
-                                          a1 + 360, 88) != 0) {
-            v43 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 272LL))(*v3, v42, *(unsigned int*)(v11 + 648),
-                                        a1 + 360, 88);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                496, "Dispatch", "Error: NVAPI failed %d", v43);
-            v42 = v40 + 2;
-          }
-          v44 = v42 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 272LL))(*v3, v42, *(unsigned int*)(v11 + 652),
-                                          a1 + 360, 92) != 0) {
-            v45 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 272LL))(*v3, v44, *(unsigned int*)(v11 + 652),
-                                        a1 + 360, 92);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                497, "Dispatch", "Error: NVAPI failed %d", v45);
-            v44 = v42 + 2;
-          }
-          v46 = v44 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 272LL))(*v3, v44, *(unsigned int*)(v11 + 656),
-                                          a1 + 360, 96) != 0) {
-            v47 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 272LL))(*v3, v46, *(unsigned int*)(v11 + 656),
-                                        a1 + 360, 96);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                498, "Dispatch", "Error: NVAPI failed %d", v47);
-            v46 = v44 + 2;
-          }
-          v48 = v46 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 272LL))(*v3, v46, *(unsigned int*)(v11 + 660),
-                                          a1 + 360, 100) != 0) {
-            v49 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 272LL))(*v3, v48, *(unsigned int*)(v11 + 660),
-                                        a1 + 360, 100);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                499, "Dispatch", "Error: NVAPI failed %d", v49);
-            v48 = v46 + 2;
-          }
-          v50 = v48 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 272LL))(*v3, v48, *(unsigned int*)(v11 + 664),
-                                          a1 + 360, 104) != 0) {
-            v51 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 272LL))(*v3, v50, *(unsigned int*)(v11 + 664),
-                                        a1 + 360, 104);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                500, "Dispatch", "Error: NVAPI failed %d", v51);
-            v50 = v48 + 2;
-          }
-          v52 = v50 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 272LL))(*v3, v50, *(unsigned int*)(v11 + 668),
-                                          a1 + 360, 108) != 0) {
-            v53 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 272LL))(*v3, v52, *(unsigned int*)(v11 + 668),
-                                        a1 + 360, 108);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                501, "Dispatch", "Error: NVAPI failed %d", v53);
-            v52 = v50 + 2;
-          }
-          v54 = v52 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 272LL))(*v3, v52, *(unsigned int*)(v11 + 672),
-                                          a1 + 360, 112) != 0) {
-            v55 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 272LL))(*v3, v54, *(unsigned int*)(v11 + 672),
-                                        a1 + 360, 112);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                502, "Dispatch", "Error: NVAPI failed %d", v55);
-            v54 = v52 + 2;
-          }
-          v56 = v54 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 272LL))(*v3, v54, *(unsigned int*)(v11 + 676),
-                                          a1 + 360, 116) != 0) {
-            v57 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 272LL))(*v3, v56, *(unsigned int*)(v11 + 676),
-                                        a1 + 360, 116);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                503, "Dispatch", "Error: NVAPI failed %d", v57);
-            v56 = v54 + 2;
-          }
-          v58 = v56 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 272LL))(*v3, v56, *(unsigned int*)(v11 + 680),
-                                          a1 + 360, 120) != 0) {
-            v59 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 272LL))(*v3, v58, *(unsigned int*)(v11 + 680),
-                                        a1 + 360, 120);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                504, "Dispatch", "Error: NVAPI failed %d", v59);
-            v58 = v56 + 2;
-          }
-          v60 = v58 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 272LL))(*v3, v58, *(unsigned int*)(v11 + 684),
-                                          a1 + 360, 124) != 0) {
-            v61 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 272LL))(*v3, v60, *(unsigned int*)(v11 + 684),
-                                        a1 + 360, 124);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                505, "Dispatch", "Error: NVAPI failed %d", v61);
-            v60 = v58 + 2;
-          }
-          v62 = v60 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 272LL))(*v3, v60, *(unsigned int*)(v11 + 688),
-                                          a1 + 360, 128) != 0) {
-            v63 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 272LL))(*v3, v62, *(unsigned int*)(v11 + 688),
-                                        a1 + 360, 128);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                506, "Dispatch", "Error: NVAPI failed %d", v63);
-            v62 = v60 + 2;
-          }
-          v64 = v62 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 272LL))(*v3, v62, *(unsigned int*)(v11 + 692),
-                                          a1 + 360, 132) != 0) {
-            v65 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 272LL))(*v3, v64, *(unsigned int*)(v11 + 692),
-                                        a1 + 360, 132);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                507, "Dispatch", "Error: NVAPI failed %d", v65);
-            v64 = v62 + 2;
-          }
-          v66 = v64 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 272LL))(*v3, v64, *(unsigned int*)(v11 + 696),
-                                          a1 + 360, 136) != 0) {
-            v67 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 272LL))(*v3, v66, *(unsigned int*)(v11 + 696),
-                                        a1 + 360, 136);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                508, "Dispatch", "Error: NVAPI failed %d", v67);
-            v66 = v64 + 2;
-          }
-          v68 = v66 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 272LL))(*v3, v66, *(unsigned int*)(v11 + 700),
-                                          a1 + 360, 140) != 0) {
-            v69 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 272LL))(*v3, v68, *(unsigned int*)(v11 + 700),
-                                        a1 + 360, 140);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                509, "Dispatch", "Error: NVAPI failed %d", v69);
-            v68 = v66 + 2;
-          }
-          v70 = v68 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 272LL))(*v3, v68, *(unsigned int*)(v11 + 704),
-                                          a1 + 360, 144) != 0) {
-            v71 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 272LL))(*v3, v70, *(unsigned int*)(v11 + 704),
-                                        a1 + 360, 144);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                510, "Dispatch", "Error: NVAPI failed %d", v71);
-            v70 = v68 + 2;
-          }
-          v72 = v70 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 272LL))(*v3, v70, *(unsigned int*)(v11 + 708),
-                                          a1 + 360, 148) != 0) {
-            v73 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 272LL))(*v3, v72, *(unsigned int*)(v11 + 708),
-                                        a1 + 360, 148);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                511, "Dispatch", "Error: NVAPI failed %d", v73);
-            v72 = v70 + 2;
-          }
-          v74 = v72 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 272LL))(*v3, v72, *(unsigned int*)(v11 + 712),
-                                          a1 + 360, 152) != 0) {
-            v75 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 272LL))(*v3, v74, *(unsigned int*)(v11 + 712),
-                                        a1 + 360, 152);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                512, "Dispatch", "Error: NVAPI failed %d", v75);
-            v74 = v72 + 2;
-          }
-          v76 = v74 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 288LL))(*v3, v74, *(_QWORD*)(v11 + 720),
-                                          a1 + 360, 160) != 0) {
-            v77 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 288LL))(*v3, v76, *(_QWORD*)(v11 + 720),
-                                        a1 + 360, 160);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                513, "Dispatch", "Error: NVAPI failed %d", v77);
-            v76 = v74 + 2;
-          }
-          v78 = v76 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 288LL))(*v3, v76, *(_QWORD*)(v11 + 728),
-                                          a1 + 360, 168) != 0) {
-            v79 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 288LL))(*v3, v78, *(_QWORD*)(v11 + 728),
-                                        a1 + 360, 168);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                514, "Dispatch", "Error: NVAPI failed %d", v79);
-            v78 = v76 + 2;
-          }
-          v80 = v78 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 288LL))(*v3, v78, *(_QWORD*)(v11 + 736),
-                                          a1 + 360, 176) != 0) {
-            v81 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 288LL))(*v3, v80, *(_QWORD*)(v11 + 736),
-                                        a1 + 360, 176);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                515, "Dispatch", "Error: NVAPI failed %d", v81);
-            v80 = v78 + 2;
-          }
-          v82 = v80 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 288LL))(*v3, v80, *(_QWORD*)(v11 + 744),
-                                          a1 + 360, 184) != 0) {
-            v83 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 288LL))(*v3, v82, *(_QWORD*)(v11 + 744),
-                                        a1 + 360, 184);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                516, "Dispatch", "Error: NVAPI failed %d", v83);
-            v82 = v80 + 2;
-          }
-          v84 = v82 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 288LL))(*v3, v82, *(_QWORD*)(v11 + 752),
-                                          a1 + 360, 192) != 0) {
-            v85 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 288LL))(*v3, v84, *(_QWORD*)(v11 + 752),
-                                        a1 + 360, 192);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                517, "Dispatch", "Error: NVAPI failed %d", v85);
-            v84 = v82 + 2;
-          }
-          v86 = v84 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 288LL))(*v3, v84, *(_QWORD*)(v11 + 760),
-                                          a1 + 360, 200) != 0) {
-            v87 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 288LL))(*v3, v86, *(_QWORD*)(v11 + 760),
-                                        a1 + 360, 200);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                518, "Dispatch", "Error: NVAPI failed %d", v87);
-            v86 = v84 + 2;
-          }
-          v88 = v86 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 288LL))(*v3, v86, *(_QWORD*)(v11 + 768),
-                                          a1 + 360, 208) != 0) {
-            v89 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 288LL))(*v3, v88, *(_QWORD*)(v11 + 768),
-                                        a1 + 360, 208);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                519, "Dispatch", "Error: NVAPI failed %d", v89);
-            v88 = v86 + 2;
-          }
-          v90 = v88 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 288LL))(*v3, v88, *(_QWORD*)(v11 + 776),
-                                          a1 + 360, 216) != 0) {
-            v91 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 288LL))(*v3, v90, *(_QWORD*)(v11 + 776),
-                                        a1 + 360, 216);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                520, "Dispatch", "Error: NVAPI failed %d", v91);
-            v90 = v88 + 2;
-          }
-          v92 = v90 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 288LL))(*v3, v90, *(_QWORD*)(v11 + 784),
-                                          a1 + 360, 224) != 0) {
-            v93 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 288LL))(*v3, v92, *(_QWORD*)(v11 + 784),
-                                        a1 + 360, 224);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                521, "Dispatch", "Error: NVAPI failed %d", v93);
-            v92 = v90 + 2;
-          }
-          v94 = v92 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 288LL))(*v3, v92, *(_QWORD*)(v11 + 792),
-                                          a1 + 360, 232) != 0) {
-            v95 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 288LL))(*v3, v94, *(_QWORD*)(v11 + 792),
-                                        a1 + 360, 232);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                522, "Dispatch", "Error: NVAPI failed %d", v95);
-            v94 = v92 + 2;
-          }
-          v96 = v94 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 272LL))(*v3, v94, *(unsigned int*)(v11 + 800),
-                                          a1 + 360, 240) != 0) {
-            v97 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 272LL))(*v3, v96, *(unsigned int*)(v11 + 800),
-                                        a1 + 360, 240);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                523, "Dispatch", "Error: NVAPI failed %d", v97);
-            v96 = v94 + 2;
-          }
-          v98 = v96 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 272LL))(*v3, v96, *(unsigned int*)(v11 + 804),
-                                          a1 + 360, 244) != 0) {
-            v99 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 272LL))(*v3, v98, *(unsigned int*)(v11 + 804),
-                                        a1 + 360, 244);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                524, "Dispatch", "Error: NVAPI failed %d", v99);
-            v98 = v96 + 2;
-          }
-          v100 = v98 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 272LL))(*v3, v98, *(unsigned int*)(v11 + 808),
-                                          a1 + 360, 248) != 0) {
-            v101 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 272LL))(*v3, v100, *(unsigned int*)(v11 + 808),
-                                        a1 + 360, 248);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                525, "Dispatch", "Error: NVAPI failed %d", v101);
-            v100 = v98 + 2;
-          }
-          v102 = v100 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 272LL))(
-                  *v3, v100, *(unsigned int*)(v11 + 812), a1 + 360, 252) != 0) {
-            v103 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 272LL))(*v3, v102, *(unsigned int*)(v11 + 812),
-                                        a1 + 360, 252);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                526, "Dispatch", "Error: NVAPI failed %d", v103);
-            v102 = v100 + 2;
-          }
-          v104 = v102 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 280LL))(
-                  *v3, v102, *(unsigned int*)(v11 + 816), a1 + 360, 256) != 0) {
-            v105 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 280LL))(*v3, v104, *(unsigned int*)(v11 + 816),
-                                        a1 + 360, 256);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                527, "Dispatch", "Error: NVAPI failed %d", v105);
-            v104 = v102 + 2;
-          }
-          v106 = v104 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, __int64, __int64, _QWORD))(
-                  *(_QWORD*)*v3 + 288LL))(*v3, v104, v164, a1 + 360, 0) != 0) {
-            v107 = (*(__int64 (**)(_QWORD, _QWORD, __int64, __int64, _QWORD))(
-                *(_QWORD*)*v3 + 288LL))(*v3, v106, v164, a1 + 360, 0);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                528, "Dispatch", "Error: NVAPI failed %d", v107);
-            v106 = v104 + 2;
-          }
-          v108 = v106 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 272LL))(
-                  *v3, v106, *(unsigned int*)(v11 + 832), a1 + 360, 272) != 0) {
-            v109 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 272LL))(*v3, v108, *(unsigned int*)(v11 + 832),
-                                        a1 + 360, 272);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                529, "Dispatch", "Error: NVAPI failed %d", v109);
-            v108 = v106 + 2;
-          }
-          v110 = v108 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 272LL))(
-                  *v3, v108, *(unsigned int*)(v11 + 836), a1 + 360, 276) != 0) {
-            v111 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 272LL))(*v3, v110, *(unsigned int*)(v11 + 836),
-                                        a1 + 360, 276);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                530, "Dispatch", "Error: NVAPI failed %d", v111);
-            v110 = v108 + 2;
-          }
-          v112 = v110 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 272LL))(
-                  *v3, v110, *(unsigned int*)(v11 + 840), a1 + 360, 280) != 0) {
-            v113 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 272LL))(*v3, v112, *(unsigned int*)(v11 + 840),
-                                        a1 + 360, 280);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                531, "Dispatch", "Error: NVAPI failed %d", v113);
-            v112 = v110 + 2;
-          }
-          v114 = v112 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 272LL))(
-                  *v3, v112, *(unsigned int*)(v11 + 844), a1 + 360, 284) != 0) {
-            v115 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 272LL))(*v3, v114, *(unsigned int*)(v11 + 844),
-                                        a1 + 360, 284);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                532, "Dispatch", "Error: NVAPI failed %d", v115);
-            v114 = v112 + 2;
-          }
-          v116 = v114 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 272LL))(
-                  *v3, v114, *(unsigned int*)(v11 + 848), a1 + 360, 288) != 0) {
-            v117 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 272LL))(*v3, v116, *(unsigned int*)(v11 + 848),
-                                        a1 + 360, 288);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                533, "Dispatch", "Error: NVAPI failed %d", v117);
-            v116 = v114 + 2;
-          }
-          v118 = v116 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 272LL))(
-                  *v3, v116, *(unsigned int*)(v11 + 852), a1 + 360, 292) != 0) {
-            v119 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 272LL))(*v3, v118, *(unsigned int*)(v11 + 852),
-                                        a1 + 360, 292);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                534, "Dispatch", "Error: NVAPI failed %d", v119);
-            v118 = v116 + 2;
-          }
-          v120 = v118 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 272LL))(
-                  *v3, v118, *(unsigned int*)(v11 + 856), a1 + 360, 296) != 0) {
-            v121 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 272LL))(*v3, v120, *(unsigned int*)(v11 + 856),
-                                        a1 + 360, 296);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                535, "Dispatch", "Error: NVAPI failed %d", v121);
-            v120 = v118 + 2;
-          }
-          v122 = v120 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 272LL))(
-                  *v3, v120, *(unsigned int*)(v11 + 860), a1 + 360, 300) != 0) {
-            v123 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 272LL))(*v3, v122, *(unsigned int*)(v11 + 860),
-                                        a1 + 360, 300);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                536, "Dispatch", "Error: NVAPI failed %d", v123);
-            v122 = v120 + 2;
-          }
-          v124 = v122 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 272LL))(
-                  *v3, v122, *(unsigned int*)(v11 + 864), a1 + 360, 304) != 0) {
-            v125 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 272LL))(*v3, v124, *(unsigned int*)(v11 + 864),
-                                        a1 + 360, 304);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                537, "Dispatch", "Error: NVAPI failed %d", v125);
-            v124 = v122 + 2;
-          }
-          v126 = v124 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 272LL))(
-                  *v3, v124, *(unsigned int*)(v11 + 868), a1 + 360, 308) != 0) {
-            v127 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 272LL))(*v3, v126, *(unsigned int*)(v11 + 868),
-                                        a1 + 360, 308);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                538, "Dispatch", "Error: NVAPI failed %d", v127);
-            v126 = v124 + 2;
-          }
-          v128 = v126 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 280LL))(
-                  *v3, v126, *(unsigned int*)(v11 + 872), a1 + 360, 312) != 0) {
-            v129 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 280LL))(*v3, v128, *(unsigned int*)(v11 + 872),
-                                        a1 + 360, 312);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                539, "Dispatch", "Error: NVAPI failed %d", v129);
-            v128 = v126 + 2;
-          }
-          v130 = v128 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 280LL))(
-                  *v3, v128, *(unsigned int*)(v11 + 876), a1 + 360, 316) != 0) {
-            v131 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 280LL))(*v3, v130, *(unsigned int*)(v11 + 876),
-                                        a1 + 360, 316);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                540, "Dispatch", "Error: NVAPI failed %d", v131);
-            v130 = v128 + 2;
-          }
-          v132 = v130 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 280LL))(
-                  *v3, v130, *(unsigned int*)(v11 + 880), a1 + 360, 320) != 0) {
-            v133 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 280LL))(*v3, v132, *(unsigned int*)(v11 + 880),
-                                        a1 + 360, 320);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                541, "Dispatch", "Error: NVAPI failed %d", v133);
-            v132 = v130 + 2;
-          }
-          v134 = v132 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 280LL))(
-                  *v3, v132, *(unsigned int*)(v11 + 884), a1 + 360, 324) != 0) {
-            v135 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 280LL))(*v3, v134, *(unsigned int*)(v11 + 884),
-                                        a1 + 360, 324);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                542, "Dispatch", "Error: NVAPI failed %d", v135);
-            v134 = v132 + 2;
-          }
-          v136 = v134 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 272LL))(
-                  *v3, v134, *(unsigned int*)(v11 + 888), a1 + 360, 328) != 0) {
-            v137 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 272LL))(*v3, v136, *(unsigned int*)(v11 + 888),
-                                        a1 + 360, 328);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                543, "Dispatch", "Error: NVAPI failed %d", v137);
-            v136 = v134 + 2;
-          }
-          v138 = v136 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 272LL))(
-                  *v3, v136, *(unsigned int*)(v11 + 892), a1 + 360, 332) != 0) {
-            v139 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 272LL))(*v3, v138, *(unsigned int*)(v11 + 892),
-                                        a1 + 360, 332);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                544, "Dispatch", "Error: NVAPI failed %d", v139);
-            v138 = v136 + 2;
-          }
-          v140 = v138 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 272LL))(
-                  *v3, v138, *(unsigned int*)(v11 + 896), a1 + 360, 336) != 0) {
-            v141 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 272LL))(*v3, v140, *(unsigned int*)(v11 + 896),
-                                        a1 + 360, 336);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                545, "Dispatch", "Error: NVAPI failed %d", v141);
-            v140 = v138 + 2;
-          }
-          v142 = v140 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 272LL))(
-                  *v3, v140, *(unsigned int*)(v11 + 900), a1 + 360, 340) != 0) {
-            v143 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 272LL))(*v3, v142, *(unsigned int*)(v11 + 900),
-                                        a1 + 360, 340);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                546, "Dispatch", "Error: NVAPI failed %d", v143);
-            v142 = v140 + 2;
-          }
-          v144 = v142 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 272LL))(
-                  *v3, v142, *(unsigned int*)(v11 + 904), a1 + 360, 344) != 0) {
-            v145 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 272LL))(*v3, v144, *(unsigned int*)(v11 + 904),
-                                        a1 + 360, 344);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                547, "Dispatch", "Error: NVAPI failed %d", v145);
-            v144 = v142 + 2;
-          }
-          v146 = v144 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 272LL))(
-                  *v3, v144, *(unsigned int*)(v11 + 908), a1 + 360, 348) != 0) {
-            v147 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 272LL))(*v3, v146, *(unsigned int*)(v11 + 908),
-                                        a1 + 360, 348);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                548, "Dispatch", "Error: NVAPI failed %d", v147);
-            v146 = v144 + 2;
-          }
-          v148 = v146 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 272LL))(
-                  *v3, v146, *(unsigned int*)(v11 + 912), a1 + 360, 352) != 0) {
-            v149 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 272LL))(*v3, v148, *(unsigned int*)(v11 + 912),
-                                        a1 + 360, 352);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                549, "Dispatch", "Error: NVAPI failed %d", v149);
-            v148 = v146 + 2;
-          }
-          v150 = v148 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 272LL))(
-                  *v3, v148, *(unsigned int*)(v11 + 916), a1 + 360, 356) != 0) {
-            v151 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 272LL))(*v3, v150, *(unsigned int*)(v11 + 916),
-                                        a1 + 360, 356);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                550, "Dispatch", "Error: NVAPI failed %d", v151);
-            v150 = v148 + 2;
-          }
-          v152 = v150 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 288LL))(*v3, v150, *(_QWORD*)(v11 + 920),
-                                          a1 + 360, 360) != 0) {
-            v153 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 288LL))(*v3, v152, *(_QWORD*)(v11 + 920),
-                                        a1 + 360, 360);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                553, "Dispatch", "Error: NVAPI failed %d", v153);
-            v152 = v150 + 2;
-          }
-          v154 = v152 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 288LL))(*v3, v152, *(_QWORD*)(v11 + 928),
-                                          a1 + 360, 368) != 0) {
-            v155 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 288LL))(*v3, v154, *(_QWORD*)(v11 + 928),
-                                        a1 + 360, 368);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                554, "Dispatch", "Error: NVAPI failed %d", v155);
-            v154 = v152 + 2;
-          }
-          v156 = v154 + 1;
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 288LL))(*v3, v154, *(_QWORD*)(v11 + 936),
-                                          a1 + 360, 376) != 0) {
-            v157 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 288LL))(*v3, v156, *(_QWORD*)(v11 + 936),
-                                        a1 + 360, 376);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                555, "Dispatch", "Error: NVAPI failed %d", v157);
-            v156 = v154 + 2;
-          }
-          if ((*(unsigned int (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                  *(_QWORD*)*v3 + 288LL))(*v3, v156, *(_QWORD*)(v11 + 944),
-                                          a1 + 360, 384) != 0) {
-            v158 = (*(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64, __int64))(
-                *(_QWORD*)*v3 + 288LL))(*v3, v156 + 1, *(_QWORD*)(v11 + 944),
-                                        a1 + 360, 384);
-            NgxRoutine_b4b90(
-                "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/"
-                "nvn2/dlss/rel/source/features/dlaa/dltss_network.cpp",
-                556, "Dispatch", "Error: NVAPI failed %d", v158);
-          }
-          if ((*(unsigned int (**)(_QWORD, __int64, __int64, _QWORD, _QWORD,
-                                   _QWORD))(**(_QWORD**)(a1 + 8) + 344LL))(
-                  *(_QWORD*)(a1 + 8), a1 + 360, *v6, *(unsigned int*)(a1 + 344),
-                  *(unsigned int*)(a1 + 348),
-                  *(unsigned int*)(a1 + 352)) == 0) {
-            v161 = *(_QWORD*)(a1 + 48);
-            v162 = *(_DWORD*)(a1 + 4 * v8 + 336);
-            *(_DWORD*)(a1 + 112) = v162;
-            *(_DWORD*)(v161 + 112) = v162;
-            return 1;
-          }
-          v159 = (*(unsigned int (**)(_QWORD, __int64, __int64, _QWORD, _QWORD,
-                                      _QWORD))(**(_QWORD**)(a1 + 8) + 344LL))(
-              *(_QWORD*)(a1 + 8), a1 + 360, *v6, *(unsigned int*)(a1 + 344),
-              *(unsigned int*)(a1 + 348), *(unsigned int*)(a1 + 352));
-          NgxRoutine_b4b90(
-              "C:/dvs/git/dirty/git-master_hos/gpu/drv_secured_g/drivers/nvn2/"
-              "dlss/rel/source/features/dlaa/dltss_network.cpp",
-              559, "Dispatch", "Error: NVAPI failed %d", v159);
-        }
-      }
-    }
-  }
-  return 0;
 }
 
 __int64 NgxHr_72b20(__int64 a1, unsigned int a2, unsigned int a3, char a4)
@@ -12320,80 +13890,6 @@ __int64 NgxHr_9ea40()
   NgxData_2b709f8 = (__int64)(v267 + 1);
   NgxData_2b709f0 = (__int64)(v267 + 1);
   return NgxRoutine_2b0(NgxRoutine_a2480, 0, &NgxData_94c0b0);
-}
-
-__int64 NgxHr_a7720(_QWORD* a1, unsigned __int64* a2)
-{
-  __int64 result;
-  _QWORD* v4;
-  unsigned __int64 v5;
-  _QWORD* v6;
-  __int64 i;
-  unsigned __int64 v8;
-  bool v9;
-  __int64 v10;
-  unsigned __int64 v11;
-  _QWORD* v12;
-  _QWORD* v13;
-  _QWORD* v14;
-  _QWORD* v15;
-  bool v16;
-
-  v4 = a1 + 1;
-  result = a1[1];
-  if (result != 0) {
-    v5 = *a2;
-    v6 = v4;
-    for (i = result; i != 0; i = *(_QWORD*)(i + v10)) {
-      v8 = *(_QWORD*)(i + 32);
-      v9 = v8 >= v5;
-      if (v8 >= v5) {
-        v10 = 0;
-      }
-      else {
-        v10 = 8;
-      }
-      if (v9) {
-        v6 = (_QWORD*)i;
-      }
-    }
-    if (v6 == v4) {
-      return 0;
-    }
-    v11 = v6[4];
-    v12 = v5 >= v11 ? v6 : v4;
-    if (v5 < v11) {
-      return 0;
-    }
-    else {
-      v13 = (_QWORD*)v12[1];
-      if (v13 != nullptr) {
-        do {
-          v14 = v13;
-          v13 = (_QWORD*)*v13;
-        } while (v13 != nullptr);
-      }
-      else {
-        v15 = v12;
-        do {
-          v14 = (_QWORD*)v15[2];
-          v16 = v15 == (_QWORD*)*v14;
-          v15 = v14;
-        } while (!v16);
-      }
-      if ((_QWORD*)*a1 == v12) {
-        *a1 = v14;
-      }
-      --a1[2];
-      NgxRoutine_a6cc0(result, v12);
-      if ((v12[14] & 1) != 0) {
-        NgxRoutine_430(v12[16], v12[14] & 0xFFFFFFFFFFFFFFFELL);
-      }
-      NgxRoutine_430(v12, 144);
-      return 1;
-    }
-  }
-  return result;
 }
 
 __int64 NgxHr_d1d00(_QWORD* a1, _QWORD* a2, char a3, __int64 a4, __int16 a5,
