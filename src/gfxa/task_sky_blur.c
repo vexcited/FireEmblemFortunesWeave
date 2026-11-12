@@ -1353,8 +1353,8 @@ __int64 TaskSkyBlur_b75c60(_DWORD* a1, __int64 a2, __int64 a3)
   float32x4_t v78;
   float32x4x4_t v79;
 
-  result = COERCE_AS(__typeof__(result),
-                     PSEUDO_REGISTER(unsigned long long, "x0", "=r")),
+  result = COERCE_AS(
+    __typeof__(result), PSEUDO_REGISTER(unsigned long long, "x0", "=r")),
   v30 = COERCE_AS(__typeof__(v30), PSEUDO_REGISTER(__n128, "v1", "=w")),
   v31 = COERCE_AS(__typeof__(v31), PSEUDO_REGISTER(__n128, "v2", "=w")),
   v32 = COERCE_AS(__typeof__(v32), PSEUDO_REGISTER(__n128, "v0", "=w")),
@@ -1370,8 +1370,8 @@ __int64 TaskSkyBlur_b75c60(_DWORD* a1, __int64 a2, __int64 a3)
   a1[70] = v7;
   v8 = *(_QWORD*)&a1[2 * v7 + 66];
   v9 = (*(__int64 (**)(__int64))(*(_QWORD*)v8 + 56LL))(v8),
-  result = COERCE_AS(__typeof__(result),
-                     PSEUDO_REGISTER(unsigned long long, "x0", "=r")),
+  result = COERCE_AS(
+    __typeof__(result), PSEUDO_REGISTER(unsigned long long, "x0", "=r")),
   v30 = COERCE_AS(__typeof__(v30), PSEUDO_REGISTER(__n128, "v1", "=w")),
   v31 = COERCE_AS(__typeof__(v31), PSEUDO_REGISTER(__n128, "v2", "=w")),
   v32 = COERCE_AS(__typeof__(v32), PSEUDO_REGISTER(__n128, "v0", "=w")),
@@ -1403,7 +1403,7 @@ __int64 TaskSkyBlur_b75c60(_DWORD* a1, __int64 a2, __int64 a3)
   LANES128(v13).n128_f32[2] = v17;
   LANES128(v13).n128_u32[3] = *(_DWORD*)&v10[v18];
   v19 = (float)((float)(LANES128(v13).n128_f32[0] + v15) + v17) +
-        LANES128(v13).n128_f32[3];
+    LANES128(v13).n128_f32[3];
   if (v19 > 0x0.0p+0f) {
     v13 = vmulq_n_f32(v13, 0x1.0000000000000p+0f / v19);
   }
@@ -1414,21 +1414,15 @@ __int64 TaskSkyBlur_b75c60(_DWORD* a1, __int64 a2, __int64 a3)
     v20 = 172;
   }
   *(float*)(v9 +
-            16) = exp2f(*(float*)(*(_QWORD*)a3 + v20)),
-            result = COERCE_AS(__typeof__(result),
-                               PSEUDO_REGISTER(unsigned long long, "x0", "=r")),
-            v30 =
-                COERCE_AS(__typeof__(v30), PSEUDO_REGISTER(__n128, "v1", "=w")),
-            v31 =
-                COERCE_AS(__typeof__(v31), PSEUDO_REGISTER(__n128, "v2", "=w")),
-            v32 =
-                COERCE_AS(__typeof__(v32), PSEUDO_REGISTER(__n128, "v0", "=w")),
-            v33 =
-                COERCE_AS(__typeof__(v33), PSEUDO_REGISTER(__n128, "v1", "=w")),
-            v34 =
-                COERCE_AS(__typeof__(v34), PSEUDO_REGISTER(__n128, "v2", "=w")),
-            v37 =
-                COERCE_AS(__typeof__(v37), PSEUDO_REGISTER(float, "s1", "=w"));
+    16) = exp2f(*(float*)(*(_QWORD*)a3 + v20)),
+    result = COERCE_AS(
+      __typeof__(result), PSEUDO_REGISTER(unsigned long long, "x0", "=r")),
+    v30 = COERCE_AS(__typeof__(v30), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v31 = COERCE_AS(__typeof__(v31), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v32 = COERCE_AS(__typeof__(v32), PSEUDO_REGISTER(__n128, "v0", "=w")),
+    v33 = COERCE_AS(__typeof__(v33), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v34 = COERCE_AS(__typeof__(v34), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v37 = COERCE_AS(__typeof__(v37), PSEUDO_REGISTER(float, "s1", "=w"));
   v21 = 128;
   if (*(_BYTE*)(*(_QWORD*)a3 + 96LL) != 0) {
     v21 = 92;
@@ -1447,16 +1441,16 @@ __int64 TaskSkyBlur_b75c60(_DWORD* a1, __int64 a2, __int64 a3)
     v25 = 332;
   }
   *(float*)(v11 + 28) =
-      0x1.0000000000000p+0f / (float)(*(float*)(*(_QWORD*)a3 + v25) - v24);
+    0x1.0000000000000p+0f / (float)(*(float*)(*(_QWORD*)a3 + v25) - v24);
   (*(void (**)(__int64))(*(_QWORD*)v8 + 64LL))(v8),
-      result = COERCE_AS(__typeof__(result),
-                         PSEUDO_REGISTER(unsigned long long, "x0", "=r")),
-      v30 = COERCE_AS(__typeof__(v30), PSEUDO_REGISTER(__n128, "v1", "=w")),
-      v31 = COERCE_AS(__typeof__(v31), PSEUDO_REGISTER(__n128, "v2", "=w")),
-      v32 = COERCE_AS(__typeof__(v32), PSEUDO_REGISTER(__n128, "v0", "=w")),
-      v33 = COERCE_AS(__typeof__(v33), PSEUDO_REGISTER(__n128, "v1", "=w")),
-      v34 = COERCE_AS(__typeof__(v34), PSEUDO_REGISTER(__n128, "v2", "=w")),
-      v37 = COERCE_AS(__typeof__(v37), PSEUDO_REGISTER(float, "s1", "=w"));
+    result = COERCE_AS(
+      __typeof__(result), PSEUDO_REGISTER(unsigned long long, "x0", "=r")),
+    v30 = COERCE_AS(__typeof__(v30), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v31 = COERCE_AS(__typeof__(v31), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v32 = COERCE_AS(__typeof__(v32), PSEUDO_REGISTER(__n128, "v0", "=w")),
+    v33 = COERCE_AS(__typeof__(v33), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v34 = COERCE_AS(__typeof__(v34), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v37 = COERCE_AS(__typeof__(v37), PSEUDO_REGISTER(float, "s1", "=w"));
   v26 = a1[84];
   v6 = v26 < -1;
   v27 = ((_BYTE)v26 + 1) & 1;
@@ -1466,19 +1460,18 @@ __int64 TaskSkyBlur_b75c60(_DWORD* a1, __int64 a2, __int64 a3)
   a1[84] = v27;
   v28 = *(_QWORD*)&a1[2 * v27 + 80];
   v29 = (*(__int64 (**)(__int64))(*(_QWORD*)v28 + 56LL))(v28),
-  result = COERCE_AS(__typeof__(result),
-                     PSEUDO_REGISTER(unsigned long long, "x0", "=r")),
+  result = COERCE_AS(
+    __typeof__(result), PSEUDO_REGISTER(unsigned long long, "x0", "=r")),
   v30 = COERCE_AS(__typeof__(v30), PSEUDO_REGISTER(__n128, "v1", "=w")),
   v31 = COERCE_AS(__typeof__(v31), PSEUDO_REGISTER(__n128, "v2", "=w")),
   v32 = COERCE_AS(__typeof__(v32), PSEUDO_REGISTER(__n128, "v0", "=w")),
   v33 = COERCE_AS(__typeof__(v33), PSEUDO_REGISTER(__n128, "v1", "=w")),
   v34 = COERCE_AS(__typeof__(v34), PSEUDO_REGISTER(__n128, "v2", "=w")),
   v37 = COERCE_AS(__typeof__(v37), PSEUDO_REGISTER(float, "s1", "=w"));
-  v75 = COERCE_FLOAT32X4_T(
-      ((long double (*)(_QWORD)) *
-       (_QWORD*)(**(_QWORD**)(a3 + 8) + 16LL))(*(_QWORD*)(a3 + 8))),
-  result = COERCE_AS(__typeof__(result),
-                     PSEUDO_REGISTER(unsigned long long, "x0", "=r")),
+  v75 = COERCE_FLOAT32X4_T(((long double (*)(_QWORD)) *
+    (_QWORD*)(**(_QWORD**)(a3 + 8) + 16LL))(*(_QWORD*)(a3 + 8))),
+  result = COERCE_AS(
+    __typeof__(result), PSEUDO_REGISTER(unsigned long long, "x0", "=r")),
   v30 = COERCE_AS(__typeof__(v30), PSEUDO_REGISTER(__n128, "v1", "=w")),
   v31 = COERCE_AS(__typeof__(v31), PSEUDO_REGISTER(__n128, "v2", "=w")),
   v32 = COERCE_AS(__typeof__(v32), PSEUDO_REGISTER(__n128, "v0", "=w")),
@@ -1489,19 +1482,19 @@ __int64 TaskSkyBlur_b75c60(_DWORD* a1, __int64 a2, __int64 a3)
   v77 = v31;
   v78 = *(float32x4_t*)GameData_212c540;
   (*(void (**)(_QWORD))(**(_QWORD**)(a3 + 8) + 24LL))(*(_QWORD*)(a3 + 8)),
-      result = COERCE_AS(__typeof__(result),
-                         PSEUDO_REGISTER(unsigned long long, "x0", "=r")),
-      v30 = COERCE_AS(__typeof__(v30), PSEUDO_REGISTER(__n128, "v1", "=w")),
-      v31 = COERCE_AS(__typeof__(v31), PSEUDO_REGISTER(__n128, "v2", "=w")),
-      v32 = COERCE_AS(__typeof__(v32), PSEUDO_REGISTER(__n128, "v0", "=w")),
-      v33 = COERCE_AS(__typeof__(v33), PSEUDO_REGISTER(__n128, "v1", "=w")),
-      v34 = COERCE_AS(__typeof__(v34), PSEUDO_REGISTER(__n128, "v2", "=w")),
-      v37 = COERCE_AS(__typeof__(v37), PSEUDO_REGISTER(float, "s1", "=w"));
+    result = COERCE_AS(
+      __typeof__(result), PSEUDO_REGISTER(unsigned long long, "x0", "=r")),
+    v30 = COERCE_AS(__typeof__(v30), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v31 = COERCE_AS(__typeof__(v31), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v32 = COERCE_AS(__typeof__(v32), PSEUDO_REGISTER(__n128, "v0", "=w")),
+    v33 = COERCE_AS(__typeof__(v33), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v34 = COERCE_AS(__typeof__(v34), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v37 = COERCE_AS(__typeof__(v37), PSEUDO_REGISTER(float, "s1", "=w"));
   if (LANES128(v35).n128_f32[3] == 0x1.0000000000000p+0f) {
-    v36 = (*(float (**)(_QWORD))(**(_QWORD**)(a3 + 8) + 80LL))(
-        *(_QWORD*)(a3 + 8)),
-    result = COERCE_AS(__typeof__(result),
-                       PSEUDO_REGISTER(unsigned long long, "x0", "=r")),
+    v36 =
+      (*(float (**)(_QWORD))(**(_QWORD**)(a3 + 8) + 80LL))(*(_QWORD*)(a3 + 8)),
+    result = COERCE_AS(
+      __typeof__(result), PSEUDO_REGISTER(unsigned long long, "x0", "=r")),
     v30 = COERCE_AS(__typeof__(v30), PSEUDO_REGISTER(__n128, "v1", "=w")),
     v31 = COERCE_AS(__typeof__(v31), PSEUDO_REGISTER(__n128, "v2", "=w")),
     v32 = COERCE_AS(__typeof__(v32), PSEUDO_REGISTER(__n128, "v0", "=w")),
@@ -1509,20 +1502,20 @@ __int64 TaskSkyBlur_b75c60(_DWORD* a1, __int64 a2, __int64 a3)
     v34 = COERCE_AS(__typeof__(v34), PSEUDO_REGISTER(__n128, "v2", "=w")),
     v37 = COERCE_AS(__typeof__(v37), PSEUDO_REGISTER(float, "s1", "=w"));
     v38 = v36 / v37;
-    v39 = (*(float (**)(_QWORD))(**(_QWORD**)(a3 + 8) + 56LL))(
-        *(_QWORD*)(a3 + 8)),
-    result = COERCE_AS(__typeof__(result),
-                       PSEUDO_REGISTER(unsigned long long, "x0", "=r")),
+    v39 =
+      (*(float (**)(_QWORD))(**(_QWORD**)(a3 + 8) + 56LL))(*(_QWORD*)(a3 + 8)),
+    result = COERCE_AS(
+      __typeof__(result), PSEUDO_REGISTER(unsigned long long, "x0", "=r")),
     v30 = COERCE_AS(__typeof__(v30), PSEUDO_REGISTER(__n128, "v1", "=w")),
     v31 = COERCE_AS(__typeof__(v31), PSEUDO_REGISTER(__n128, "v2", "=w")),
     v32 = COERCE_AS(__typeof__(v32), PSEUDO_REGISTER(__n128, "v0", "=w")),
     v33 = COERCE_AS(__typeof__(v33), PSEUDO_REGISTER(__n128, "v1", "=w")),
     v34 = COERCE_AS(__typeof__(v34), PSEUDO_REGISTER(__n128, "v2", "=w")),
     v37 = COERCE_AS(__typeof__(v37), PSEUDO_REGISTER(float, "s1", "=w"));
-    v40 = (*(float (**)(_QWORD))(**(_QWORD**)(a3 + 8) + 64LL))(
-        *(_QWORD*)(a3 + 8)),
-    result = COERCE_AS(__typeof__(result),
-                       PSEUDO_REGISTER(unsigned long long, "x0", "=r")),
+    v40 =
+      (*(float (**)(_QWORD))(**(_QWORD**)(a3 + 8) + 64LL))(*(_QWORD*)(a3 + 8)),
+    result = COERCE_AS(
+      __typeof__(result), PSEUDO_REGISTER(unsigned long long, "x0", "=r")),
     v30 = COERCE_AS(__typeof__(v30), PSEUDO_REGISTER(__n128, "v1", "=w")),
     v31 = COERCE_AS(__typeof__(v31), PSEUDO_REGISTER(__n128, "v2", "=w")),
     v32 = COERCE_AS(__typeof__(v32), PSEUDO_REGISTER(__n128, "v0", "=w")),
@@ -1536,112 +1529,141 @@ __int64 TaskSkyBlur_b75c60(_DWORD* a1, __int64 a2, __int64 a3)
     *(float*)&v42 = v40 * v41;
     *(float*)&v43 = (float)(v39 * v40) * v41;
     LANES128(v32).n128_f32[0] =
-        (float)(0x1.0000000000000p+0f / (float)((float)((float)((float)((float)-(float)(*(float*)((char*)((__int128*)0x10LL) + (_QWORD)GameData_212c190) - (float)((float)(*(float*)((char*)((_UNKNOWN**)0x8LL) + (_QWORD)GameData_212c190 + 4) + (float)((float)-(float)(*(float*)((char*)((_UNKNOWN**)0x8LL) + (_QWORD)GameData_212c190) - (float)((float)(*((float*)GameData_212c190 + 1) - (float)(*(float*)GameData_212c190 * 0x1.3bd3ca0000000p-1f)) * 0x1.3bd3ca0000000p-1f)) * 0x1.3bd3ca0000000p-1f)) * 0x1.3bd3ca0000000p-1f)) * 0x1.3bd3ca0000000p-1f) + 0x1.0000000000000p+0f) * 0x1.921fb40000000p-1f) / (float)((float)((float)-(
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          float)(*(float*)((char*)((__int128*)0x10LL) + (_QWORD)GameData_212c188) - (float)((
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                float)(*(float*)((char*)((_UNKNOWN**)0x8LL) + (_QWORD)GameData_212c188 + 4) + (float)((float)-(
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          float)(*(float*)((char*)((_UNKNOWN**)0x8LL) + (_QWORD)GameData_212c188) - (float)((float)(*((float*)GameData_212c188 + 1) - (float)(*(float*)
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  GameData_212c188 *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              0x1.3bd3ca0000000p-1f)) *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            0x1.3bd3ca0000000p-1f)) *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      0x1.3bd3ca0000000p-1f)) *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            0x1.3bd3ca0000000p-1f)) *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      0x1.3bd3ca0000000p-1f) +
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              0x1.0000000000000p+0f))) /
-        v38;
+      (float)(0x1.0000000000000p+0f /
+        (float)((float)((float)((float)((float)-(
+                                          float)(*(float*)((char*)((
+                                                             __int128*)0x10LL) +
+                                                   (_QWORD)GameData_212c190) -
+                                          (float)((float)(*(float*)((char*)((
+                                                                      _UNKNOWN**)0x8LL) +
+                                                            (_QWORD)
+                                                              GameData_212c190 +
+                                                            4) +
+                                                    (float)((float)-(
+                                                              float)(*(float*)((char*)((
+                                                                                 _UNKNOWN**)0x8LL) +
+                                                                       (_QWORD)
+                                                                         GameData_212c190) -
+                                                              (float)((float)(*((float*)
+                                                                                  GameData_212c190 +
+                                                                                1) -
+                                                                        (float)(*(float*)
+                                                                                  GameData_212c190 *
+                                                                          0x1.3bd3ca0000000p-1f)) *
+                                                                0x1.3bd3ca0000000p-1f)) *
+                                                      0x1.3bd3ca0000000p-1f)) *
+                                            0x1.3bd3ca0000000p-1f)) *
+                                  0x1.3bd3ca0000000p-1f) +
+                          0x1.0000000000000p+0f) *
+                  0x1.921fb40000000p-1f) /
+          (float)((float)((float)-(float)(*(float*)((char*)((__int128*)0x10LL) +
+                                            (_QWORD)GameData_212c188) -
+                            (float)((float)(*(float*)((char*)((
+                                                        _UNKNOWN**)0x8LL) +
+                                              (_QWORD)GameData_212c188 + 4) +
+                                      (float)((float)-(
+                                                float)(*(float*)((char*)((
+                                                                   _UNKNOWN**)0x8LL) +
+                                                         (_QWORD)
+                                                           GameData_212c188) -
+                                                (float)((float)(*((float*)
+                                                                    GameData_212c188 +
+                                                                  1) -
+                                                          (float)(*(float*)
+                                                                    GameData_212c188 *
+                                                            0x1.3bd3ca0000000p-1f)) *
+                                                  0x1.3bd3ca0000000p-1f)) *
+                                        0x1.3bd3ca0000000p-1f)) *
+                              0x1.3bd3ca0000000p-1f)) *
+                    0x1.3bd3ca0000000p-1f) +
+            0x1.0000000000000p+0f))) /
+      v38;
     LANES128(v33).n128_u32[0] = 0;
     LANES128(v33).n128_u64[1] = 0;
     LANES128(v35).n128_u64[1] = v43;
-    LANES128(v33).n128_f32[1] =
-        0x1.0000000000000p+0f /
-        (float)((float)((float)((float)((float)-(
-                                            float)(*(float*)((char*)((
-                                                                 __int128*)0x10LL) +
-                                                             (_QWORD)
-                                                                 GameData_212c190) -
-                                                   (float)((float)(*(float*)((char*)((
-                                                                                 _UNKNOWN**)0x8LL) +
-                                                                             (_QWORD)
-                                                                                 GameData_212c190 +
-                                                                             4) +
-                                                                   (float)((float)-(
-                                                                               float)(*(float*)((char*)((
-                                                                                                    _UNKNOWN**)0x8LL) +
-                                                                                                (_QWORD)
-                                                                                                    GameData_212c190) -
-                                                                                      (float)((float)(*((float*)
-                                                                                                            GameData_212c190 +
-                                                                                                        1) -
-                                                                                                      (float)(*(float*)
-                                                                                                                  GameData_212c190 *
-                                                                                                              0x1.3bd3ca0000000p-1f)) *
-                                                                                              0x1.3bd3ca0000000p-1f)) *
-                                                                           0x1.3bd3ca0000000p-1f)) *
-                                                           0x1.3bd3ca0000000p-1f)) *
-                                        0x1.3bd3ca0000000p-1f) +
-                                0x1.0000000000000p+0f) *
-                        0x1.921fb40000000p-1f) /
-                (float)((float)((float)-(
-                                    float)(*(float*)((char*)((
-                                                         __int128*)0x10LL) +
-                                                     (_QWORD)GameData_212c188) -
-                                           (float)((float)(*(float*)((char*)((
-                                                                         _UNKNOWN**)0x8LL) +
+    LANES128(v33).n128_f32[1] = 0x1.0000000000000p+0f /
+      (float)((float)((float)((float)((float)-(
+                                        float)(*(float*)((char*)((
+                                                           __int128*)0x10LL) +
+                                                 (_QWORD)GameData_212c190) -
+                                        (float)((float)(*(float*)((char*)((
+                                                                    _UNKNOWN**)0x8LL) +
+                                                          (_QWORD)
+                                                            GameData_212c190 +
+                                                          4) +
+                                                  (float)((float)-(
+                                                            float)(*(float*)((char*)((
+                                                                               _UNKNOWN**)0x8LL) +
                                                                      (_QWORD)
-                                                                         GameData_212c188 +
-                                                                     4) +
-                                                           (float)((float)-(
-                                                                       float)(*(float*)((char*)((
-                                                                                            _UNKNOWN**)0x8LL) +
-                                                                                        (_QWORD)
-                                                                                            GameData_212c188) -
-                                                                              (float)((float)(*((float*)
-                                                                                                    GameData_212c188 +
-                                                                                                1) -
-                                                                                              (float)(*(float*)
-                                                                                                          GameData_212c188 *
-                                                                                                      0x1.3bd3ca0000000p-1f)) *
-                                                                                      0x1.3bd3ca0000000p-1f)) *
-                                                                   0x1.3bd3ca0000000p-1f)) *
-                                                   0x1.3bd3ca0000000p-1f)) *
+                                                                       GameData_212c190) -
+                                                            (float)((float)(*((float*)
+                                                                                GameData_212c190 +
+                                                                              1) -
+                                                                      (float)(*(float*)
+                                                                                GameData_212c190 *
+                                                                        0x1.3bd3ca0000000p-1f)) *
+                                                              0x1.3bd3ca0000000p-1f)) *
+                                                    0x1.3bd3ca0000000p-1f)) *
+                                          0x1.3bd3ca0000000p-1f)) *
                                 0x1.3bd3ca0000000p-1f) +
-                        0x1.0000000000000p+0f));
+                        0x1.0000000000000p+0f) *
+                0x1.921fb40000000p-1f) /
+        (float)((float)((float)-(float)(*(float*)((char*)((__int128*)0x10LL) +
+                                          (_QWORD)GameData_212c188) -
+                          (float)((float)(*(float*)((char*)((_UNKNOWN**)0x8LL) +
+                                            (_QWORD)GameData_212c188 + 4) +
+                                    (float)((float)-(
+                                              float)(*(float*)((char*)((
+                                                                 _UNKNOWN**)0x8LL) +
+                                                       (_QWORD)
+                                                         GameData_212c188) -
+                                              (float)((float)(*((float*)
+                                                                  GameData_212c188 +
+                                                                1) -
+                                                        (float)(*(float*)
+                                                                  GameData_212c188 *
+                                                          0x1.3bd3ca0000000p-1f)) *
+                                                0x1.3bd3ca0000000p-1f)) *
+                                      0x1.3bd3ca0000000p-1f)) *
+                            0x1.3bd3ca0000000p-1f)) *
+                  0x1.3bd3ca0000000p-1f) +
+          0x1.0000000000000p+0f));
     LANES128(v34).n128_u64[0] = 0;
     LANES128(v34).n128_u64[1] = __PAIR64__(-0x1.0000000000000p+0f, v42);
   }
   v44 = *(_DWORD*)(a3 + 16);
   v45 = *(_DWORD*)(a3 + 20) / 2;
   *(float*)&v46 =
-      (float)(*(float*)(a3 + 24) + *(float*)(a3 + 24)) / (float)(v44 / 2);
+    (float)(*(float*)(a3 + 24) + *(float*)(a3 + 24)) / (float)(v44 / 2);
   *((float*)&v46 + 1) =
-      (float)(*(float*)(a3 + 28) * -0x1.0000000000000p+1f) / (float)v45;
+    (float)(*(float*)(a3 + 28) * -0x1.0000000000000p+1f) / (float)v45;
   v47 = vsubq_f32(v34, COERCE_AS(float32x4_t, v46));
   v79.val[0] = vmlaq_laneq_f32(
-      vmlaq_lane_f32(vmulq_n_f32(v32, LANES128(v75).n128_f32[0]), v33,
-                     COERCE_AS(float32x2_t, LANES128(v75).n128_u64[0]), 1),
-      v47, v75, 2);
+    vmlaq_lane_f32(vmulq_n_f32(v32, LANES128(v75).n128_f32[0]), v33,
+      COERCE_AS(float32x2_t, LANES128(v75).n128_u64[0]), 1),
+    v47, v75, 2);
   v79.val[1] = vmlaq_laneq_f32(
-      vmlaq_lane_f32(vmulq_n_f32(v32, LANES128(v76).n128_f32[0]), v33,
-                     COERCE_AS(float32x2_t, LANES128(v76).n128_u64[0]), 1),
-      v47, v76, 2);
+    vmlaq_lane_f32(vmulq_n_f32(v32, LANES128(v76).n128_f32[0]), v33,
+      COERCE_AS(float32x2_t, LANES128(v76).n128_u64[0]), 1),
+    v47, v76, 2);
   v79.val[2] = vmlaq_laneq_f32(
-      vmlaq_lane_f32(vmulq_n_f32(v32, LANES128(v77).n128_f32[0]), v33,
-                     COERCE_AS(float32x2_t, LANES128(v77).n128_u64[0]), 1),
-      v47, v77, 2);
-  v79.val[3] = vaddq_f32(
-      v35,
-      vmlaq_laneq_f32(
-          vmlaq_lane_f32(vmulq_n_f32(v32, LANES128(v78).n128_f32[0]), v33,
-                         COERCE_AS(float32x2_t, LANES128(v78).n128_u64[0]), 1),
-          v47, v78, 2));
+    vmlaq_lane_f32(vmulq_n_f32(v32, LANES128(v77).n128_f32[0]), v33,
+      COERCE_AS(float32x2_t, LANES128(v77).n128_u64[0]), 1),
+    v47, v77, 2);
+  v79.val[3] = vaddq_f32(v35,
+    vmlaq_laneq_f32(
+      vmlaq_lane_f32(vmulq_n_f32(v32, LANES128(v78).n128_f32[0]), v33,
+        COERCE_AS(float32x2_t, LANES128(v78).n128_u64[0]), 1),
+      v47, v78, 2));
   vst4q_f32((float*)v29, v79);
   *(_DWORD*)(v29 + 68) = v45;
   *(_DWORD*)(v29 + 64) = v44 / 2;
   *(_DWORD*)(v29 + 72) = *(_DWORD*)(a3 + 32);
   *(float*)(v29 + 76) = *(float*)(a3 + 36) + 0x1.0000000000000p+0f;
   v48 = sinf((float)(0x1.6800000000000p+6f - *(float*)(a3 + 48)) *
-             0x1.1df46a0000000p-6f),
-  result = COERCE_AS(__typeof__(result),
-                     PSEUDO_REGISTER(unsigned long long, "x0", "=r")),
+    0x1.1df46a0000000p-6f),
+  result = COERCE_AS(
+    __typeof__(result), PSEUDO_REGISTER(unsigned long long, "x0", "=r")),
   v30 = COERCE_AS(__typeof__(v30), PSEUDO_REGISTER(__n128, "v1", "=w")),
   v31 = COERCE_AS(__typeof__(v31), PSEUDO_REGISTER(__n128, "v2", "=w")),
   v32 = COERCE_AS(__typeof__(v32), PSEUDO_REGISTER(__n128, "v0", "=w")),
@@ -1649,8 +1671,8 @@ __int64 TaskSkyBlur_b75c60(_DWORD* a1, __int64 a2, __int64 a3)
   v34 = COERCE_AS(__typeof__(v34), PSEUDO_REGISTER(__n128, "v2", "=w")),
   v37 = COERCE_AS(__typeof__(v37), PSEUDO_REGISTER(float, "s1", "=w"));
   v49 = sinf(*(float*)(a3 + 52) * 0x1.1df46a0000000p-6f),
-  result = COERCE_AS(__typeof__(result),
-                     PSEUDO_REGISTER(unsigned long long, "x0", "=r")),
+  result = COERCE_AS(
+    __typeof__(result), PSEUDO_REGISTER(unsigned long long, "x0", "=r")),
   v30 = COERCE_AS(__typeof__(v30), PSEUDO_REGISTER(__n128, "v1", "=w")),
   v31 = COERCE_AS(__typeof__(v31), PSEUDO_REGISTER(__n128, "v2", "=w")),
   v32 = COERCE_AS(__typeof__(v32), PSEUDO_REGISTER(__n128, "v0", "=w")),
@@ -1675,14 +1697,14 @@ __int64 TaskSkyBlur_b75c60(_DWORD* a1, __int64 a2, __int64 a3)
   *(_DWORD*)(v29 + 116) = v52;
   *(_DWORD*)(v29 + 120) = *(_DWORD*)(*(_QWORD*)(a3 + 56) + 4LL);
   (*(void (**)(__int64))(*(_QWORD*)v28 + 64LL))(v28),
-      result = COERCE_AS(__typeof__(result),
-                         PSEUDO_REGISTER(unsigned long long, "x0", "=r")),
-      v30 = COERCE_AS(__typeof__(v30), PSEUDO_REGISTER(__n128, "v1", "=w")),
-      v31 = COERCE_AS(__typeof__(v31), PSEUDO_REGISTER(__n128, "v2", "=w")),
-      v32 = COERCE_AS(__typeof__(v32), PSEUDO_REGISTER(__n128, "v0", "=w")),
-      v33 = COERCE_AS(__typeof__(v33), PSEUDO_REGISTER(__n128, "v1", "=w")),
-      v34 = COERCE_AS(__typeof__(v34), PSEUDO_REGISTER(__n128, "v2", "=w")),
-      v37 = COERCE_AS(__typeof__(v37), PSEUDO_REGISTER(float, "s1", "=w"));
+    result = COERCE_AS(
+      __typeof__(result), PSEUDO_REGISTER(unsigned long long, "x0", "=r")),
+    v30 = COERCE_AS(__typeof__(v30), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v31 = COERCE_AS(__typeof__(v31), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v32 = COERCE_AS(__typeof__(v32), PSEUDO_REGISTER(__n128, "v0", "=w")),
+    v33 = COERCE_AS(__typeof__(v33), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v34 = COERCE_AS(__typeof__(v34), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v37 = COERCE_AS(__typeof__(v37), PSEUDO_REGISTER(float, "s1", "=w"));
   if (*(_BYTE*)(*(_QWORD*)(a3 + 56) + 120LL) == 1) {
     v53 = a1[98];
     v6 = v53 < -1;
@@ -1693,8 +1715,8 @@ __int64 TaskSkyBlur_b75c60(_DWORD* a1, __int64 a2, __int64 a3)
     a1[98] = v54;
     v55 = *(_QWORD*)&a1[2 * v54 + 94];
     v56 = (*(__int64 (**)(__int64))(*(_QWORD*)v55 + 56LL))(v55),
-    result = COERCE_AS(__typeof__(result),
-                       PSEUDO_REGISTER(unsigned long long, "x0", "=r")),
+    result = COERCE_AS(
+      __typeof__(result), PSEUDO_REGISTER(unsigned long long, "x0", "=r")),
     v30 = COERCE_AS(__typeof__(v30), PSEUDO_REGISTER(__n128, "v1", "=w")),
     v31 = COERCE_AS(__typeof__(v31), PSEUDO_REGISTER(__n128, "v2", "=w")),
     v32 = COERCE_AS(__typeof__(v32), PSEUDO_REGISTER(__n128, "v0", "=w")),
@@ -1709,14 +1731,14 @@ __int64 TaskSkyBlur_b75c60(_DWORD* a1, __int64 a2, __int64 a3)
     *(_QWORD*)(v56 + 12) = 0x41CB3333C16A4D3CLL;
     *(_DWORD*)(v56 + 20) = 1025589893;
     (*(void (**)(__int64))(*(_QWORD*)v55 + 64LL))(v55),
-        result = COERCE_AS(__typeof__(result),
-                           PSEUDO_REGISTER(unsigned long long, "x0", "=r")),
-        v30 = COERCE_AS(__typeof__(v30), PSEUDO_REGISTER(__n128, "v1", "=w")),
-        v31 = COERCE_AS(__typeof__(v31), PSEUDO_REGISTER(__n128, "v2", "=w")),
-        v32 = COERCE_AS(__typeof__(v32), PSEUDO_REGISTER(__n128, "v0", "=w")),
-        v33 = COERCE_AS(__typeof__(v33), PSEUDO_REGISTER(__n128, "v1", "=w")),
-        v34 = COERCE_AS(__typeof__(v34), PSEUDO_REGISTER(__n128, "v2", "=w")),
-        v37 = COERCE_AS(__typeof__(v37), PSEUDO_REGISTER(float, "s1", "=w"));
+      result = COERCE_AS(
+        __typeof__(result), PSEUDO_REGISTER(unsigned long long, "x0", "=r")),
+      v30 = COERCE_AS(__typeof__(v30), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v31 = COERCE_AS(__typeof__(v31), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v32 = COERCE_AS(__typeof__(v32), PSEUDO_REGISTER(__n128, "v0", "=w")),
+      v33 = COERCE_AS(__typeof__(v33), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v34 = COERCE_AS(__typeof__(v34), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v37 = COERCE_AS(__typeof__(v37), PSEUDO_REGISTER(float, "s1", "=w"));
   }
   v59 = a1 + 108;
   for (i = 0; i != 4; ++i) {
@@ -1735,8 +1757,8 @@ __int64 TaskSkyBlur_b75c60(_DWORD* a1, __int64 a2, __int64 a3)
     }
     v66 = *v65;
     v67 = (*(__int64 (**)(__int64))(*(_QWORD*)v64 + 56LL))(v64),
-    result = COERCE_AS(__typeof__(result),
-                       PSEUDO_REGISTER(unsigned long long, "x0", "=r")),
+    result = COERCE_AS(
+      __typeof__(result), PSEUDO_REGISTER(unsigned long long, "x0", "=r")),
     v30 = COERCE_AS(__typeof__(v30), PSEUDO_REGISTER(__n128, "v1", "=w")),
     v31 = COERCE_AS(__typeof__(v31), PSEUDO_REGISTER(__n128, "v2", "=w")),
     v32 = COERCE_AS(__typeof__(v32), PSEUDO_REGISTER(__n128, "v0", "=w")),
@@ -1746,14 +1768,14 @@ __int64 TaskSkyBlur_b75c60(_DWORD* a1, __int64 a2, __int64 a3)
     *(_DWORD*)(v67 + 4) = 0;
     *(float*)v67 = 0x1.0000000000000p+0f / (float)(v66 / v62);
     (*(void (**)(__int64))(*(_QWORD*)v64 + 64LL))(v64),
-        result = COERCE_AS(__typeof__(result),
-                           PSEUDO_REGISTER(unsigned long long, "x0", "=r")),
-        v30 = COERCE_AS(__typeof__(v30), PSEUDO_REGISTER(__n128, "v1", "=w")),
-        v31 = COERCE_AS(__typeof__(v31), PSEUDO_REGISTER(__n128, "v2", "=w")),
-        v32 = COERCE_AS(__typeof__(v32), PSEUDO_REGISTER(__n128, "v0", "=w")),
-        v33 = COERCE_AS(__typeof__(v33), PSEUDO_REGISTER(__n128, "v1", "=w")),
-        v34 = COERCE_AS(__typeof__(v34), PSEUDO_REGISTER(__n128, "v2", "=w")),
-        v37 = COERCE_AS(__typeof__(v37), PSEUDO_REGISTER(float, "s1", "=w"));
+      result = COERCE_AS(
+        __typeof__(result), PSEUDO_REGISTER(unsigned long long, "x0", "=r")),
+      v30 = COERCE_AS(__typeof__(v30), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v31 = COERCE_AS(__typeof__(v31), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v32 = COERCE_AS(__typeof__(v32), PSEUDO_REGISTER(__n128, "v0", "=w")),
+      v33 = COERCE_AS(__typeof__(v33), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v34 = COERCE_AS(__typeof__(v34), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v37 = COERCE_AS(__typeof__(v37), PSEUDO_REGISTER(float, "s1", "=w"));
     v68 = v59[18];
     v6 = v68 < -1;
     v69 = ((_BYTE)v68 + 1) & 1;
@@ -1768,8 +1790,8 @@ __int64 TaskSkyBlur_b75c60(_DWORD* a1, __int64 a2, __int64 a3)
     }
     v72 = *(_DWORD*)(v71 + 4);
     v73 = (*(__int64 (**)(__int64))(*(_QWORD*)v70 + 56LL))(v70),
-    result = COERCE_AS(__typeof__(result),
-                       PSEUDO_REGISTER(unsigned long long, "x0", "=r")),
+    result = COERCE_AS(
+      __typeof__(result), PSEUDO_REGISTER(unsigned long long, "x0", "=r")),
     v30 = COERCE_AS(__typeof__(v30), PSEUDO_REGISTER(__n128, "v1", "=w")),
     v31 = COERCE_AS(__typeof__(v31), PSEUDO_REGISTER(__n128, "v2", "=w")),
     v32 = COERCE_AS(__typeof__(v32), PSEUDO_REGISTER(__n128, "v0", "=w")),

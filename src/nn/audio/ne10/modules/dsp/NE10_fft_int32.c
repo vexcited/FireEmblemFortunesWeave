@@ -963,44 +963,53 @@ static void ne10_fft_split_r2c_1d_int32 (ne10_fft_cpx_int32_t *dst,
         ne10_int32_t ncfft,
         ne10_int32_t scaled_flag)
 {
-    ne10_int32_t k;
-    ne10_fft_cpx_int32_t fpnk, fpk, f1k, f2k, tw, tdc;
+  ne10_int32_t k;
+  ne10_fft_cpx_int32_t fpnk, fpk, f1k, f2k, tw, tdc;
 
-    tdc.r = src[0].r;
-    tdc.i = src[0].i;
+  tdc.r = src[0].r;
+  tdc.i = src[0].i;
 
-    if (scaled_flag)
-        NE10_F2I32_FIXDIV (tdc, 2);
+  if (scaled_flag) {
+    NE10_F2I32_FIXDIV(tdc, 2);
+  }
 
-    dst[0].r = tdc.r + tdc.i;
-    dst[ncfft].r = tdc.r - tdc.i;
-    dst[ncfft].i = dst[0].i = 0;
+  dst[0].r = tdc.r + tdc.i;
+  dst[ncfft].r = tdc.r - tdc.i;
+  dst[ncfft].i = dst[0].i = 0;
 
-    for (k = 1; k <= ncfft / 2 ; ++k)
-    {
-        fpk    = src[k];
-        fpnk.r =   src[ncfft - k].r;
-        fpnk.i = - src[ncfft - k].i;
-        if (scaled_flag)
-        {
-            NE10_F2I32_FIXDIV (fpk, 2);
-            NE10_F2I32_FIXDIV (fpnk, 2);
-        }
-
-        f1k.r = fpk.r + fpnk.r;
-        f1k.i = fpk.i + fpnk.i;
-
-        f2k.r = fpk.r - fpnk.r;
-        f2k.i = fpk.i - fpnk.i;
-
-        tw.r = ( ( (ne10_int32_t) ( ( (NE10_F2I32_SAMPPROD) f2k.r * (twiddles[k - 1]).r) >> 32)) - ( (ne10_int32_t) ( ( (NE10_F2I32_SAMPPROD) f2k.i * (twiddles[k - 1]).i) >> 32))) << 1;
-        tw.i = ( ( (ne10_int32_t) ( ( (NE10_F2I32_SAMPPROD) f2k.r * (twiddles[k - 1]).i) >> 32)) + ( (ne10_int32_t) ( ( (NE10_F2I32_SAMPPROD) f2k.i * (twiddles[k - 1]).r) >> 32))) << 1;
-
-        dst[k].r = (f1k.r + tw.r) >> 1;
-        dst[k].i = (f1k.i + tw.i) >> 1;
-        dst[ncfft - k].r = (f1k.r - tw.r) >> 1;
-        dst[ncfft - k].i = (tw.i - f1k.i) >> 1;
+  for (k = 1; k <= ncfft / 2; ++k) {
+    fpk = src[k];
+    fpnk.r = src[ncfft - k].r;
+    fpnk.i = -src[ncfft - k].i;
+    if (scaled_flag) {
+      NE10_F2I32_FIXDIV(fpk, 2);
+      NE10_F2I32_FIXDIV(fpnk, 2);
     }
+
+    f1k.r = fpk.r + fpnk.r;
+    f1k.i = fpk.i + fpnk.i;
+
+    f2k.r = fpk.r - fpnk.r;
+    f2k.i = fpk.i - fpnk.i;
+
+    tw.r =
+      (((ne10_int32_t)(((NE10_F2I32_SAMPPROD)f2k.r * (twiddles[k - 1]).r) >>
+         32)) -
+        ((ne10_int32_t)(((NE10_F2I32_SAMPPROD)f2k.i * (twiddles[k - 1]).i) >>
+          32)))
+      << 1;
+    tw.i =
+      (((ne10_int32_t)(((NE10_F2I32_SAMPPROD)f2k.r * (twiddles[k - 1]).i) >>
+         32)) +
+        ((ne10_int32_t)(((NE10_F2I32_SAMPPROD)f2k.i * (twiddles[k - 1]).r) >>
+          32)))
+      << 1;
+
+    dst[k].r = (f1k.r + tw.r) >> 1;
+    dst[k].i = (f1k.i + tw.i) >> 1;
+    dst[ncfft - k].r = (f1k.r - tw.r) >> 1;
+    dst[ncfft - k].i = (tw.i - f1k.i) >> 1;
+  }
 }
 
 static void ne10_fft_split_c2r_1d_int32 (ne10_fft_cpx_int32_t *dst,
@@ -1010,42 +1019,50 @@ static void ne10_fft_split_c2r_1d_int32 (ne10_fft_cpx_int32_t *dst,
         ne10_int32_t scaled_flag)
 {
 
-    ne10_int32_t k;
-    ne10_fft_cpx_int32_t fk, fnkc, fek, fok, tmp;
+  ne10_int32_t k;
+  ne10_fft_cpx_int32_t fk, fnkc, fek, fok, tmp;
 
+  dst[0].r = src[0].r + src[ncfft].r;
+  dst[0].i = src[0].r - src[ncfft].r;
 
-    dst[0].r = src[0].r + src[ncfft].r;
-    dst[0].i = src[0].r - src[ncfft].r;
+  if (scaled_flag) {
+    NE10_F2I32_FIXDIV(dst[0], 2);
+  }
 
-    if (scaled_flag)
-        NE10_F2I32_FIXDIV (dst[0], 2);
-
-    for (k = 1; k <= ncfft / 2; k++)
-    {
-        fk = src[k];
-        fnkc.r = src[ncfft - k].r;
-        fnkc.i = -src[ncfft - k].i;
-        if (scaled_flag)
-        {
-            NE10_F2I32_FIXDIV (fk, 2);
-            NE10_F2I32_FIXDIV (fnkc, 2);
-        }
-
-        fek.r = fk.r + fnkc.r;
-        fek.i = fk.i + fnkc.i;
-
-        tmp.r = fk.r - fnkc.r;
-        tmp.i = fk.i - fnkc.i;
-
-        fok.r = ( ( (ne10_int32_t) ( ( (NE10_F2I32_SAMPPROD) tmp.r * (twiddles[k - 1]).r) >> 32)) + ( (ne10_int32_t) ( ( (NE10_F2I32_SAMPPROD) tmp.i * (twiddles[k - 1]).i) >> 32))) << 1;
-        fok.i = ( ( (ne10_int32_t) ( ( (NE10_F2I32_SAMPPROD) tmp.i * (twiddles[k - 1]).r) >> 32)) - ( (ne10_int32_t) ( ( (NE10_F2I32_SAMPPROD) tmp.r * (twiddles[k - 1]).i) >> 32))) << 1;
-
-        dst[k].r = fek.r + fok.r;
-        dst[k].i = fek.i + fok.i;
-
-        dst[ncfft - k].r = fek.r - fok.r;
-        dst[ncfft - k].i = fok.i - fek.i;
+  for (k = 1; k <= ncfft / 2; k++) {
+    fk = src[k];
+    fnkc.r = src[ncfft - k].r;
+    fnkc.i = -src[ncfft - k].i;
+    if (scaled_flag) {
+      NE10_F2I32_FIXDIV(fk, 2);
+      NE10_F2I32_FIXDIV(fnkc, 2);
     }
+
+    fek.r = fk.r + fnkc.r;
+    fek.i = fk.i + fnkc.i;
+
+    tmp.r = fk.r - fnkc.r;
+    tmp.i = fk.i - fnkc.i;
+
+    fok.r =
+      (((ne10_int32_t)(((NE10_F2I32_SAMPPROD)tmp.r * (twiddles[k - 1]).r) >>
+         32)) +
+        ((ne10_int32_t)(((NE10_F2I32_SAMPPROD)tmp.i * (twiddles[k - 1]).i) >>
+          32)))
+      << 1;
+    fok.i =
+      (((ne10_int32_t)(((NE10_F2I32_SAMPPROD)tmp.i * (twiddles[k - 1]).r) >>
+         32)) -
+        ((ne10_int32_t)(((NE10_F2I32_SAMPPROD)tmp.r * (twiddles[k - 1]).i) >>
+          32)))
+      << 1;
+
+    dst[k].r = fek.r + fok.r;
+    dst[k].i = fek.i + fok.i;
+
+    dst[ncfft - k].r = fek.r - fok.r;
+    dst[ncfft - k].i = fok.i - fek.i;
+  }
 }
 
 /**

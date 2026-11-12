@@ -147,11 +147,10 @@ float math_733a20(_QWORD* a1, float a2)
   v100 = v2[7];
   v107 = (float)((float)(a2 * a2) * v120) - (float)((float)(v9 * v9) * v102);
   v95 = (float)((float)((float)(a2 * a2) * *(float*)*a1) -
-                (float)((float)(v9 * v9) * *v2)) /
-        (float)((float)((float)(a2 * *(float*)*a1) +
-                        (float)((float)(1.0 - a2) * *v2)) *
-                (float)((float)(a2 * *(float*)*a1) +
-                        (float)((float)(1.0 - a2) * *v2)));
+          (float)((float)(v9 * v9) * *v2)) /
+    (float)((float)((float)(a2 * *(float*)*a1) +
+              (float)((float)(1.0 - a2) * *v2)) *
+      (float)((float)(a2 * *(float*)*a1) + (float)((float)(1.0 - a2) * *v2)));
   v15 = v2[16];
   v16 = v2[17];
   v17 = (float)((float)(a2 * a2) * v13) - (float)((float)(v9 * v9) * v6);
@@ -196,17 +195,18 @@ float math_733a20(_QWORD* a1, float a2)
   v43 = (float)(a2 * v36) + (float)((float)(1.0 - a2) * v15);
   v44 = (float)(v9 * v9) * v42;
   v45 = (float)(1.0 - a2) * v42;
-  v46 = v10 / (float)((float)(v40 + (float)((float)(1.0 - a2) * v8)) *
-                      (float)(v40 + (float)((float)(1.0 - a2) * v8)));
+  v46 = v10 /
+    (float)((float)(v40 + (float)((float)(1.0 - a2) * v8)) *
+      (float)(v40 + (float)((float)(1.0 - a2) * v8)));
   v47 = (float)((float)(a2 * a2) * v35) - (float)((float)(v9 * v9) * v16);
   v48 = (float)(a2 * v35) + (float)((float)(1.0 - a2) * v16);
   v93 = v46;
   v114 = (float)((float)((float)(a2 * a2) * *(float*)(*a1 + 8LL)) -
-                 (float)((float)(v9 * v9) * v2[2])) /
-         (float)((float)((float)(a2 * *(float*)(*a1 + 8LL)) +
-                         (float)((float)(1.0 - a2) * v2[2])) *
-                 (float)((float)(a2 * *(float*)(*a1 + 8LL)) +
-                         (float)((float)(1.0 - a2) * v2[2])));
+           (float)((float)(v9 * v9) * v2[2])) /
+    (float)((float)((float)(a2 * *(float*)(*a1 + 8LL)) +
+              (float)((float)(1.0 - a2) * v2[2])) *
+      (float)((float)(a2 * *(float*)(*a1 + 8LL)) +
+        (float)((float)(1.0 - a2) * v2[2])));
   v50 = *(float*)(*a1 + 72LL);
   v49 = *(float*)(*a1 + 76LL);
   v51 = (float)((float)(a2 * a2) * v50) - v44;
@@ -215,11 +215,11 @@ float math_733a20(_QWORD* a1, float a2)
   v54 = (float)(a2 * a2) * v49;
   v55 = a2 * v49;
   v108 = (float)((float)((float)(a2 * a2) * *(float*)(*a1 + 12LL)) -
-                 (float)((float)(v9 * v9) * v2[3])) /
-         (float)((float)((float)(a2 * *(float*)(*a1 + 12LL)) +
-                         (float)((float)(1.0 - a2) * v2[3])) *
-                 (float)((float)(a2 * *(float*)(*a1 + 12LL)) +
-                         (float)((float)(1.0 - a2) * v2[3])));
+           (float)((float)(v9 * v9) * v2[3])) /
+    (float)((float)((float)(a2 * *(float*)(*a1 + 12LL)) +
+              (float)((float)(1.0 - a2) * v2[3])) *
+      (float)((float)(a2 * *(float*)(*a1 + 12LL)) +
+        (float)((float)(1.0 - a2) * v2[3])));
   v56 = v54 - v52;
   v57 = *(float*)(*a1 + 80LL);
   v58 = v2[20];
@@ -232,21 +232,23 @@ float math_733a20(_QWORD* a1, float a2)
   v63 = a2 * v96;
   v64 = a2 * v50;
   v117 = (float)((float)((float)(a2 * a2) * *(float*)(*a1 + 16LL)) -
-                 (float)((float)(v9 * v9) * v2[4])) /
-         (float)((float)((float)(a2 * *(float*)(*a1 + 16LL)) +
-                         (float)((float)(1.0 - a2) * v2[4])) *
-                 (float)((float)(a2 * *(float*)(*a1 + 16LL)) +
-                         (float)((float)(1.0 - a2) * v2[4])));
+           (float)((float)(v9 * v9) * v2[4])) /
+    (float)((float)((float)(a2 * *(float*)(*a1 + 16LL)) +
+              (float)((float)(1.0 - a2) * v2[4])) *
+      (float)((float)(a2 * *(float*)(*a1 + 16LL)) +
+        (float)((float)(1.0 - a2) * v2[4])));
   v65 = a2 * v119;
   v66 = (float)(a2 * v120) + (float)((float)(1.0 - a2) * v102);
   v67 = a2 * v116;
   v68 = a2 * v57;
   v69 = v63 + (float)(v9 * v97);
   v70 = v66 * v66;
-  v71 = v106 / (float)((float)(v65 + (float)(v9 * v2[6])) *
-                       (float)(v65 + (float)(v9 * v2[6])));
-  v72 = v105 / (float)((float)(v62 + (float)(v9 * v100)) *
-                       (float)(v62 + (float)(v9 * v100)));
+  v71 = v106 /
+    (float)((float)(v65 + (float)(v9 * v2[6])) *
+      (float)(v65 + (float)(v9 * v2[6])));
+  v72 = v105 /
+    (float)((float)(v62 + (float)(v9 * v100)) *
+      (float)(v62 + (float)(v9 * v100)));
   v73 = (float)(v67 + (float)(v9 * v98)) * (float)(v67 + (float)(v9 * v98));
   v74 = v9 * v99;
   v75 = v22 + (float)(v9 * v101);
@@ -266,66 +268,63 @@ float math_733a20(_QWORD* a1, float a2)
   v89 = v108 * (float)(v59[3] * v59[3]);
   v90 = v71 * (float)(v59[6] * v59[6]);
   v91 = (float)(v110 / (float)((float)(v33 + v34) * (float)(v33 + v34))) *
-        (float)(v59[13] * v59[13]);
-  return -(float)((
-                      float)((
-                                 float)((
-                                            float)((
-                                                       float)((float)((float)((float)((
-                                                                                          float)((
-                                                                                                     float)((
-                                                                                                                float)((
-                                                                                                                           float)((
-                                                                                                                                      float)((
-                                                                                                                                                 float)((
-                                                                                                                                                            float)((float)((float)((float)((float)((float)((float)((float)(v95 * (float)(*v59 * *v59)) + 0.0) + v87) + v88) + v89) + (float)(v117 *
-                                                                                                                                                                                                                                                                                             (float)(v59[4] * v59[4]))) +
-                                                                                                                                                                           (float)((float)(v107 / v70) *
-                                                                                                                                                                                   (float)(v59[5] * v59[5]))) +
-                                                                                                                                                                   v90) +
-                                                                                                                                                        (float)(v72 *
-                                                                                                                                                                (float)(v59[7] *
-                                                                                                                                                                        v59[7]))) +
-                                                                                                                                             (float)((float)(v104 / v73) * (float)(v59[8] *
-                                                                                                                                                                                   v59[8]))) +
-                                                                                                                                  (float)((
-                                                                                                                                              float)(v103 /
-                                                                                                                                                     (float)(v69 *
-                                                                                                                                                             v69)) *
-                                                                                                                                          (float)(v59[9] *
-                                                                                                                                                  v59[9]))) +
-                                                                                                                       (float)((
-                                                                                                                                   float)(v112 /
-                                                                                                                                          (float)(v75 *
-                                                                                                                                                  v75)) *
-                                                                                                                               (float)(v59[10] *
-                                                                                                                                       v59[10]))) +
-                                                                                                            (float)((float)(v113 /
-                                                                                                                            v80) *
-                                                                                                                    (float)(v59[11] *
-                                                                                                                            v59[11]))) +
-                                                                                                 (float)(v81 *
-                                                                                                         (float)(v59[12] *
-                                                                                                                 v59[12]))) +
-                                                                                      v91) +
-                                                                              (float)(v82 *
-                                                                                      (float)(v59[14] *
-                                                                                              v59[14]))) +
-                                                                      (float)(v83 *
-                                                                              (float)(v59[15] *
-                                                                                      v59[15]))) +
-                                                              (float)(v84 *
-                                                                      (float)(v59[16] *
-                                                                              v59[16]))) +
-                                                   (float)(v86 *
-                                                           (float)(v59[17] *
-                                                                   v59[17]))) +
-                                        (float)(v85 *
-                                                (float)(v59[18] * v59[18]))) +
-                             (float)((float)(v94 / (float)(v78 * v78)) *
-                                     (float)(v59[19] * v59[19]))) +
-                  (float)((float)(v115 / (float)(v79 * v79)) *
-                          (float)(v59[20] * v59[20])));
+    (float)(v59[13] * v59[13]);
+  return -(float)((float)((float)((float)((float)((float)((float)((float)((float)((
+                                                                                    float)((
+                                                                                             float)((
+                                                                                                      float)((
+                                                                                                               float)((float)((float)((float)((float)((float)((float)((float)((float)((float)(v95 * (float)(*v59 * *v59)) + 0.0) + v87) + v88) + v89) +
+                                                                                                                                                (float)(v117 *
+                                                                                                                                                  (float)(v59
+                                                                                                                                                            [4] *
+                                                                                                                                                    v59[4]))) +
+                                                                                                                                        (float)((float)(v107 /
+                                                                                                                                                  v70) *
+                                                                                                                                          (float)(v59
+                                                                                                                                                    [5] *
+                                                                                                                                            v59[5]))) +
+                                                                                                                                v90) +
+                                                                                                                        (float)(v72 *
+                                                                                                                          (float)(v59[7] * v59[7]))) +
+                                                                                                               (float)((float)(v104 / v73) * (float)(v59[8] * v59[8]))) +
+                                                                                                      (float)((float)(v103 /
+                                                                                                                (float)(v69 *
+                                                                                                                  v69)) *
+                                                                                                        (float)(v59
+                                                                                                                  [9] *
+                                                                                                          v59[9]))) +
+                                                                                             (float)((float)(v112 /
+                                                                                                       (float)(v75 *
+                                                                                                         v75)) *
+                                                                                               (float)(v59
+                                                                                                         [10] *
+                                                                                                 v59
+                                                                                                   [10]))) +
+                                                                                    (float)((float)(v113 /
+                                                                                              v80) *
+                                                                                      (float)(v59
+                                                                                                [11] *
+                                                                                        v59
+                                                                                          [11]))) +
+                                                                            (float)(v81 *
+                                                                              (float)(v59
+                                                                                        [12] *
+                                                                                v59
+                                                                                  [12]))) +
+                                                                    v91) +
+                                                            (float)(v82 *
+                                                              (float)(v59[14] *
+                                                                v59[14]))) +
+                                                    (float)(v83 *
+                                                      (float)(v59[15] *
+                                                        v59[15]))) +
+                                            (float)(v84 *
+                                              (float)(v59[16] * v59[16]))) +
+                                    (float)(v86 * (float)(v59[17] * v59[17]))) +
+                            (float)(v85 * (float)(v59[18] * v59[18]))) +
+                    (float)((float)(v94 / (float)(v78 * v78)) *
+                      (float)(v59[19] * v59[19]))) +
+    (float)((float)(v115 / (float)(v79 * v79)) * (float)(v59[20] * v59[20])));
 }
 
 #pragma GCC visibility pop

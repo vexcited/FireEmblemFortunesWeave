@@ -109,7 +109,7 @@ cc78,4,verified,src/timeline/unplaced_5.c,timeline_cc78
 cf00,296,verified,src/timeline/unplaced_5.c,timeline_cf00
 d078,4,verified,src/timeline/unplaced_5.c,timeline_d078
 d218,4,verified,src/timeline/unplaced_5.c,timeline_d218
-d240,332,disputed,src/game/unnamed/e000_0.c,GameHr_d240
+d240,332,verified,src/game/unnamed/e000_0.c,GameHr_d240
 d470,288,verified,src/game/unnamed/r000_0.c,GameHr_d470
 d5ac,4,verified,src/game/unnamed/v000_0.c,GameHr_d5ac
 d5b0,196,verified,src/game/unnamed/r000_0.c,GameHr_d5b0
@@ -2180,7 +2180,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 104420,512,verified,src/game/unnamed/b000_0.c,GameHr_104420
 104640,4,verified,src/game/game_trivial.cpp,_Z15GameStub_104640v
 104660,100,verified,src/game/unnamed/b000_0.c,GameHr_104660
-1046e0,1004,disputed,src/game/unnamed/e000_0.c,GameHr_1046e0
+1046e0,1004,verified,src/game/unnamed/e000_0.c,GameHr_1046e0
 105310,60,verified,src/game/unnamed/b000_0.c,GameHr_105310
 105350,396,verified,src/game/unnamed/b000_0.c,GameHr_105350
 1054e0,436,verified,src/game/unnamed/b000_0.c,GameHr_1054e0
@@ -5631,7 +5631,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 176830,72,verified,src/game/unnamed/b001_0.c,GameHr_176830
 176880,4,verified,src/game/game_trivial.cpp,_Z15GameStub_176880v
 176890,48,verified,src/memory/new_delete.cpp,deleting destructor at 0x176890
-1768c0,324,disputed,src/game/unnamed/e000_0.c,GameHr_1768c0
+1768c0,324,verified,src/game/unnamed/e000_0.c,GameHr_1768c0
 176f50,68,verified,src/snd/fx/fx.cpp,_ZN3snd2fx10FxWaveformC2EPNS_7ManagerEPKcii
 176fa0,4,verified,src/snd/fx/fx.cpp,_ZN3snd2fx10FxWaveform7destroyEv
 176fb0,48,verified,src/memory/new_delete.cpp,deleting destructor at 0x176fb0
@@ -12262,7 +12262,7 @@ fff90,116,verified,src/snd/api.cpp,_ZN3snd10startPitchERKNS_3fnd10WeakHandleERKN
 3abce0,252,verified,src/physx/source/lowlevelaabb/src/BpBroadPhaseABP.cpp,_ZN5physx7PxArrayIN11internalABP11DelayedPairENS_21PxReflectionAllocatorIS2_EEE8recreateEj
 3abde0,136,verified,src/physx/source/lowlevelaabb/src/BpBroadPhaseABP.cpp,_ZN5physx7PxArrayIN11internalABP11DelayedPairENS_21PxReflectionAllocatorIS2_EEE6resizeEjRKS2_
 3abe70,76,verified,src/physx/source/lowlevel/software/src/PxsNphaseImplementationContext.cpp,_ZN15PxsCMUpdateTask7releaseEv
-3abec0,404,disputed,src/game/unnamed/e000_0.c,GameHr_3abec0
+3abec0,404,verified,src/game/unnamed/e000_0.c,GameHr_3abec0
 3ac070,32,verified,src/physx/source/lowlevel/software/src/PxsNphaseImplementationContext.cpp,_ZN5physx30PxsNphaseImplementationContext31processContactManagerSecondPassEfPNS_10PxBaseTaskE
 3ac090,160,verified,src/physx/source/lowlevel/software/src/PxsNphaseImplementationContext.cpp,_ZN5physx30PxsNphaseImplementationContext20updateContactManagerEfbPNS_10PxBaseTaskES2_PNS_2Cm10FanoutTaskE
 3ac130,32,verified,src/physx/source/lowlevel/software/src/PxsNphaseImplementationContext.cpp,_ZN5physx30PxsNphaseImplementationContext30secondPassUpdateContactManagerEfPNS_10PxBaseTaskE

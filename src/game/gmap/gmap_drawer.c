@@ -4535,7 +4535,7 @@ LABEL_8:
   v1429 = -v24;
   v1430 = v23;
   v1428 =
-      -*(float*)((char*)((__int128*)0x10LL) + (_QWORD)GameData_212c2f0 + 12);
+    -*(float*)((char*)((__int128*)0x10LL) + (_QWORD)GameData_212c2f0 + 12);
   LODWORD(v26) = 0;
   HIDWORD(v26) = 0x1.0000000000000p+0;
   v1447 = COERCE_AS(float32x4_t, v26);
@@ -4545,22 +4545,23 @@ LABEL_8:
     v33 = *(_QWORD*)(v31 + 24);
     v32 = *(__int64**)(v31 + 32);
     if (v32 != nullptr) {
-      atomic_fetch_add_explicit((atomic_ullong* volatile)(v32 + 1), 1u,
-                                memory_order_relaxed);
+      atomic_fetch_add_explicit(
+        (atomic_ullong* volatile)(v32 + 1), 1u, memory_order_relaxed);
     }
     *(_OWORD*)v1577 =
-        ((long double (*)(__int64)) * (_QWORD*)(*(_QWORD*)v33 + 16LL))(v33);
+      ((long double (*)(__int64)) * (_QWORD*)(*(_QWORD*)v33 + 16LL))(v33);
     v1578 = v34;
     v1579 = v35;
     v1580 = v36;
     *(_OWORD*)v1582 =
-        ((long double (*)(__int64)) * (_QWORD*)(*(_QWORD*)v33 + 24LL))(v33);
+      ((long double (*)(__int64)) * (_QWORD*)(*(_QWORD*)v33 + 24LL))(v33);
     *(_OWORD*)&v1582[2] = v37;
     v1583 = v38;
     v1584 = v39;
     v43 = GameRoutine_a6c440(&v1545[2], v1577, v1582);
-    if (v32 != nullptr && atomic_fetch_add((atomic_ullong* volatile)(v32 + 1),
-                                           0xFFFFFFFFFFFFFFFFLL) == 0) {
+    if (v32 != nullptr &&
+      atomic_fetch_add(
+        (atomic_ullong* volatile)(v32 + 1), 0xFFFFFFFFFFFFFFFFLL) == 0) {
       v44 = *v32;
       v1547 = v43;
       (*(void (**)(__int64*))(v44 + 16))(v32);
@@ -4568,10 +4569,10 @@ LABEL_8:
       v43 = v1547;
     }
     v27 = LANES128(v43).n128_f32[2] > 0.0 ||
-          LANES128(v43).n128_f32[0] < -0x1.9000000000000p+5;
+      LANES128(v43).n128_f32[0] < -0x1.9000000000000p+5;
     if (!v27 && LANES128(v43).n128_f32[0] <= 0x1.ec80000000000p+10 &&
-        LANES128(v43).n128_f32[1] >= -0x1.9000000000000p+5 &&
-        LANES128(v43).n128_f32[1] <= 0x1.1a80000000000p+10) {
+      LANES128(v43).n128_f32[1] >= -0x1.9000000000000p+5 &&
+      LANES128(v43).n128_f32[1] <= 0x1.1a80000000000p+10) {
       v45 = (unsigned __int64)&v1548;
       v1456 = v15;
       v46 = (float32x4_t***)LANES128(v1545[3]).n128_u64[0];
@@ -4639,7 +4640,7 @@ LABEL_8:
         }
       LABEL_674:
         primeEm = (_QWORD*)fw_memory_HeapManager_Allocate(
-            *(_QWORD*)fw_memory_g_heap_manager_ptr, 24, 16, 0);
+          *(_QWORD*)fw_memory_g_heap_manager_ptr, 24, 16, 0);
         primeEm[2] = v1545;
         v1390 = v1574;
         v1391 = primeEm;
@@ -5034,8 +5035,8 @@ LABEL_8:
           v68 = LANES128(v59[11]).n128_u8[0];
           v1489 = v61;
           if (v68 == 2 || v68 == 3 && (LANES128(v59[7]).n128_u8[0] & 1) != 0 ||
-              (v69 = LANES128(v54[11]).n128_u8[0]) == 2 ||
-              v69 == 3 && LANES128(v54[7]).n128_u8[0] == 1) {
+            (v69 = LANES128(v54[11]).n128_u8[0]) == 2 ||
+            v69 == 3 && LANES128(v54[7]).n128_u8[0] == 1) {
             v70 = (float32x4_t*)(*v58 + 208);
           }
           else {
@@ -5052,10 +5053,10 @@ LABEL_8:
           *(float*)&v1511 = vmuls_lane_f32(v51, *v70, 3) + 0.0;
           v1547 = COERCE_INT32X4_T(powf(COERCE_FLOAT(*v70), v12));
           v1501 =
-              COERCE_UNSIGNED_INT128(powf(LANES128(v1521).n128_f32[1], v12));
+            COERCE_UNSIGNED_INT128(powf(LANES128(v1521).n128_f32[1], v12));
           v72 = powf(LANES128(v1521).n128_f32[2], v12);
           LANES128(v73).n128_u64[0] =
-              __PAIR64__(v1501, LANES128(v1547).n128_u32[0]);
+            __PAIR64__(v1501, LANES128(v1547).n128_u32[0]);
           v74 = LANES128(v59[7]).n128_u8[3];
           LANES128(v73).n128_u64[1] = __PAIR64__(v1511, LODWORD(v72));
           v1547 = v73;
@@ -5092,62 +5093,48 @@ LABEL_8:
                 v89 = (float32x4_t*)(v52 + 12);
               }
               v90 = vaddq_f32(
-                  vaddq_f32(
-                      vaddq_f32(
-                          vmulq_n_f32(v86, v87 * v88),
-                          vmulq_n_f32(v84,
-                                      v83 * (float)(v87 * (float)(v87 * v20)))),
-                      vmulq_n_f32(v85,
-                                  v83 * (float)(v83 * (float)(v87 * v20)))),
-                  vmulq_n_f32(*v89, v83 * (float)(v83 * v83)));
+                vaddq_f32(
+                  vaddq_f32(vmulq_n_f32(v86, v87 * v88),
+                    vmulq_n_f32(v84, v83 * (float)(v87 * (float)(v87 * v20)))),
+                  vmulq_n_f32(v85, v83 * (float)(v83 * (float)(v87 * v20)))),
+                vmulq_n_f32(*v89, v83 * (float)(v83 * v83)));
               v91 = v90;
               LANES128(v91).n128_u32[3] = 0;
               v92 = vsubq_f32(*((float32x4_t*)&v1548 + (int)v79 - 1), v91);
               v93 = vmulq_f32(v92, v92);
-              LANES128(v93).n128_u64[0] =
-                  LANES64_OF(
-                      vadd_f32(
-                          COERCE_AS(
-                              float32x2_t,
-                              LANES128_OF(vextq_s8(v93, v93, 8u)).n128_u64[0]),
-                          COERCE_AS(float32x2_t, LANES128(v93).n128_u64[0])))
-                      .n64_u64[0];
+              LANES128(v93).n128_u64[0] = LANES64_OF(
+                vadd_f32(COERCE_AS(float32x2_t,
+                           LANES128_OF(vextq_s8(v93, v93, 8u)).n128_u64[0]),
+                  COERCE_AS(float32x2_t, LANES128(v93).n128_u64[0])))
+                                            .n64_u64[0];
               if (LANES64_OF(
-                      vpadd_f32(
-                          COERCE_AS(float32x2_t, LANES128(v93).n128_u64[0]),
-                          COERCE_AS(float32x2_t, LANES128(v93).n128_u64[0])))
-                      .n64_f32[0] > v80) {
+                    vpadd_f32(COERCE_AS(float32x2_t, LANES128(v93).n128_u64[0]),
+                      COERCE_AS(float32x2_t, LANES128(v93).n128_u64[0])))
+                    .n64_f32[0] > v80) {
                 v94 = vsubq_f32(v91, v54[2]);
                 v95 = vmulq_f32(v94, v94);
-                LANES128(v95).n128_u64[0] =
-                    LANES64_OF(
-                        vadd_f32(
-                            COERCE_AS(float32x2_t,
-                                      LANES128_OF(vextq_s8(v95, v95, 8u))
-                                          .n128_u64[0]),
-                            COERCE_AS(float32x2_t, LANES128(v95).n128_u64[0])))
-                        .n64_u64[0];
+                LANES128(v95).n128_u64[0] = LANES64_OF(
+                  vadd_f32(COERCE_AS(float32x2_t,
+                             LANES128_OF(vextq_s8(v95, v95, 8u)).n128_u64[0]),
+                    COERCE_AS(float32x2_t, LANES128(v95).n128_u64[0])))
+                                              .n64_u64[0];
                 if (LANES64_OF(
-                        vpadd_f32(
-                            COERCE_AS(float32x2_t, LANES128(v95).n128_u64[0]),
-                            COERCE_AS(float32x2_t, LANES128(v95).n128_u64[0])))
-                        .n64_f32[0] > v81) {
+                      vpadd_f32(
+                        COERCE_AS(float32x2_t, LANES128(v95).n128_u64[0]),
+                        COERCE_AS(float32x2_t, LANES128(v95).n128_u64[0])))
+                      .n64_f32[0] > v81) {
                   v96 = vsubq_f32(v91, v59[2]);
                   v97 = vmulq_f32(v96, v96);
-                  LANES128(v97).n128_u64[0] =
-                      LANES64_OF(
-                          vadd_f32(COERCE_AS(float32x2_t,
-                                             LANES128_OF(vextq_s8(v97, v97, 8u))
-                                                 .n128_u64[0]),
-                                   COERCE_AS(float32x2_t,
-                                             LANES128(v97).n128_u64[0])))
-                          .n64_u64[0];
+                  LANES128(v97).n128_u64[0] = LANES64_OF(
+                    vadd_f32(COERCE_AS(float32x2_t,
+                               LANES128_OF(vextq_s8(v97, v97, 8u)).n128_u64[0]),
+                      COERCE_AS(float32x2_t, LANES128(v97).n128_u64[0])))
+                                                .n64_u64[0];
                   if (LANES64_OF(
-                          vpadd_f32(
-                              COERCE_AS(float32x2_t, LANES128(v97).n128_u64[0]),
-                              COERCE_AS(float32x2_t,
-                                        LANES128(v97).n128_u64[0])))
-                          .n64_f32[0] > v81) {
+                        vpadd_f32(
+                          COERCE_AS(float32x2_t, LANES128(v97).n128_u64[0]),
+                          COERCE_AS(float32x2_t, LANES128(v97).n128_u64[0])))
+                        .n64_f32[0] > v81) {
                     v98 = (int)v79;
                     LODWORD(v79) = v79 + 1;
                     v99 = &v1548 + v98;
@@ -5172,38 +5159,38 @@ LABEL_8:
           LABEL_106:
             v102 = (float32x4_t*)&v1548;
             do {
-              v103 = *(_QWORD*)(*(_QWORD*)(*(_QWORD*)GameData_212c638 + 32LL) -
-                                8LL);
+              v103 =
+                *(_QWORD*)(*(_QWORD*)(*(_QWORD*)GameData_212c638 + 32LL) - 8LL);
               v105 = *(_QWORD*)(v103 + 24);
               v104 = *(_QWORD*)(v103 + 32);
               if (v104 != 0) {
                 atomic_fetch_add_explicit((atomic_ullong* volatile)(v104 + 8),
-                                          1u, memory_order_relaxed);
+                  1u, memory_order_relaxed);
               }
               *(_OWORD*)v1577 = ((long double (*)(__int64)) *
-                                 (_QWORD*)(*(_QWORD*)v105 + 16LL))(v105);
+                (_QWORD*)(*(_QWORD*)v105 + 16LL))(v105);
               v1578 = v106;
               v1579 = v107;
               v1580 = v108;
               *(_OWORD*)v1582 = ((long double (*)(__int64)) *
-                                 (_QWORD*)(*(_QWORD*)v105 + 24LL))(v105);
+                (_QWORD*)(*(_QWORD*)v105 + 24LL))(v105);
               *(_OWORD*)&v1582[2] = v109;
               v1583 = v110;
               v1584 = v111;
               v112 = GameRoutine_a6c440(v102, v1577, v1582);
               if (v104 != 0 &&
-                  atomic_fetch_add((atomic_ullong* volatile)(v104 + 8),
-                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
+                atomic_fetch_add((atomic_ullong* volatile)(v104 + 8),
+                  0xFFFFFFFFFFFFFFFFLL) == 0) {
                 v1522 = v112;
                 (*(void (**)(__int64))(*(_QWORD*)v104 + 16LL))(v104);
                 std___1___shared_weak_count___release_weak(v104);
                 v112 = v1522;
               }
               if (LANES128(v112).n128_f32[2] <= 0.0 &&
-                  LANES128(v112).n128_f32[0] >= 0.0 &&
-                  LANES128(v112).n128_f32[0] <= 0x1.e000000000000p+10 &&
-                  LANES128(v112).n128_f32[1] >= 0.0 &&
-                  LANES128(v112).n128_f32[1] <= 0x1.0e00000000000p+10) {
+                LANES128(v112).n128_f32[0] >= 0.0 &&
+                LANES128(v112).n128_f32[0] <= 0x1.e000000000000p+10 &&
+                LANES128(v112).n128_f32[1] >= 0.0 &&
+                LANES128(v112).n128_f32[1] <= 0x1.0e00000000000p+10) {
                 v113 = GameData_2130e00;
                 v114 = (float*)*GameData_2130e00;
                 v115 = *(_DWORD*)(*GameData_2130e00 + 548);
@@ -5215,8 +5202,8 @@ LABEL_8:
                 }
                 if (v60) {
                   v117 = 160;
-                  v118 = v114[96] + (float)((float)(v114[97] - v114[96]) *
-                                            *((float*)a1 + 16));
+                  v118 = v114[96] +
+                    (float)((float)(v114[97] - v114[96]) * *((float*)a1 + 16));
                 }
                 else {
                   v118 = v114[36];
@@ -5224,27 +5211,23 @@ LABEL_8:
                 }
                 v119 = v114[167] * (float)(v116 + 1);
                 v120 = vsubq_f32(v54[2], v1545[2]);
-                LANES128(v121).n128_u64[0] =
-                    LANES64_OF(vqtbl1_s8(v120, COERCE_AS(int8x8_t,
-                                                         0xB0A090807060504LL)))
-                        .n64_u64[0];
-                LANES128(v122).n128_u64[0] =
-                    LANES64_OF(vqtbl1_s8(v120, COERCE_AS(int8x8_t,
-                                                         0x30201000B0A0908LL)))
-                        .n64_u64[0];
+                LANES128(v121).n128_u64[0] = LANES64_OF(
+                  vqtbl1_s8(v120, COERCE_AS(int8x8_t, 0xB0A090807060504LL)))
+                                               .n64_u64[0];
+                LANES128(v122).n128_u64[0] = LANES64_OF(
+                  vqtbl1_s8(v120, COERCE_AS(int8x8_t, 0x30201000B0A0908LL)))
+                                               .n64_u64[0];
                 LANES128(v123).n128_u64[0] =
-                    LANES64_OF(
-                        vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
-                                  COERCE_AS(int8x8_t, 0x30201000B0A0908LL)))
-                        .n64_u64[0];
+                  LANES64_OF(vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
+                               COERCE_AS(int8x8_t, 0x30201000B0A0908LL)))
+                    .n64_u64[0];
                 v124 = **a1;
                 LANES64(v125).n64_u64[0] =
-                    LANES64_OF(
-                        vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
-                                  COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL)))
-                        .n64_u64[0];
+                  LANES64_OF(vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
+                               COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL)))
+                    .n64_u64[0];
                 *(int8x8_t*)&LANES128(v121).n128_i8[8] =
-                    vqtbl1_s8(v120, COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL));
+                  vqtbl1_s8(v120, COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL));
                 LANES128(v126).n128_u64[0] = LANES128(v123).n128_u64[0];
                 v127 = *(_QWORD*)(v124 + 18736);
                 v128 = *(_DWORD*)(v124 + 19200);
@@ -5252,67 +5235,52 @@ LABEL_8:
                 *(int8x8_t*)&LANES128(v126).n128_i8[8] = v125;
                 v130 = vmulq_f32(v121, v126);
                 *(int8x8_t*)&LANES128(v122).n128_i8[8] =
-                    vqtbl1_s8(v120, COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL));
+                  vqtbl1_s8(v120, COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL));
                 LANES128(v131).n128_u64[0] =
-                    LANES64_OF(
-                        vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
-                                  COERCE_AS(int8x8_t, 0xB0A090807060504LL)))
-                        .n64_u64[0];
+                  LANES64_OF(vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
+                               COERCE_AS(int8x8_t, 0xB0A090807060504LL)))
+                    .n64_u64[0];
                 *(int8x8_t*)&LANES128(v131).n128_i8[8] =
-                    vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
-                              COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL));
+                  vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
+                    COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL));
                 v132 = vmulq_f32(v120, v120);
                 v133 = vmlsq_f32(v130, v131, v122);
-                LANES128(v132).n128_u64[0] =
-                    LANES64_OF(
-                        vadd_f32(
-                            COERCE_AS(float32x2_t,
-                                      LANES128_OF(vextq_s8(v132, v132, 8u))
-                                          .n128_u64[0]),
-                            COERCE_AS(float32x2_t, LANES128(v132).n128_u64[0])))
-                        .n64_u64[0];
-                LANES128(v132).n128_u64[0] =
-                    LANES64_OF(
-                        vpadd_f32(
-                            COERCE_AS(float32x2_t, LANES128(v132).n128_u64[0]),
-                            COERCE_AS(float32x2_t, LANES128(v132).n128_u64[0])))
-                        .n64_u64[0];
+                LANES128(v132).n128_u64[0] = LANES64_OF(
+                  vadd_f32(COERCE_AS(float32x2_t,
+                             LANES128_OF(vextq_s8(v132, v132, 8u)).n128_u64[0]),
+                    COERCE_AS(float32x2_t, LANES128(v132).n128_u64[0])))
+                                               .n64_u64[0];
+                LANES128(v132).n128_u64[0] = LANES64_OF(
+                  vpadd_f32(COERCE_AS(float32x2_t, LANES128(v132).n128_u64[0]),
+                    COERCE_AS(float32x2_t, LANES128(v132).n128_u64[0])))
+                                               .n64_u64[0];
                 LANES128(v132).n128_u64[1] = LANES128(v132).n128_u64[0];
                 v134 = vrsqrteq_f32(v132);
                 v135 =
-                    vmulq_f32(v134, vrsqrtsq_f32(v134, vmulq_f32(v132, v134)));
+                  vmulq_f32(v134, vrsqrtsq_f32(v134, vmulq_f32(v132, v134)));
                 v136 = vbicq_s8(
-                    vmulq_f32(
-                        v120,
-                        vmulq_f32(v135,
-                                  vrsqrtsq_f32(v135, vmulq_f32(v132, v135)))),
-                    vceqzq_f32(v132));
+                  vmulq_f32(v120,
+                    vmulq_f32(v135, vrsqrtsq_f32(v135, vmulq_f32(v132, v135)))),
+                  vceqzq_f32(v132));
                 v137 = vmulq_f32(v133, v133);
                 v138 = vmulq_n_f32(v136, v118);
-                LANES128(v137).n128_u64[0] =
-                    LANES64_OF(
-                        vadd_f32(
-                            COERCE_AS(float32x2_t,
-                                      LANES128_OF(vextq_s8(v137, v137, 8u))
-                                          .n128_u64[0]),
-                            COERCE_AS(float32x2_t, LANES128(v137).n128_u64[0])))
-                        .n64_u64[0];
-                LANES128(v137).n128_u64[0] =
-                    LANES64_OF(
-                        vpadd_f32(
-                            COERCE_AS(float32x2_t, LANES128(v137).n128_u64[0]),
-                            COERCE_AS(float32x2_t, LANES128(v137).n128_u64[0])))
-                        .n64_u64[0];
+                LANES128(v137).n128_u64[0] = LANES64_OF(
+                  vadd_f32(COERCE_AS(float32x2_t,
+                             LANES128_OF(vextq_s8(v137, v137, 8u)).n128_u64[0]),
+                    COERCE_AS(float32x2_t, LANES128(v137).n128_u64[0])))
+                                               .n64_u64[0];
+                LANES128(v137).n128_u64[0] = LANES64_OF(
+                  vpadd_f32(COERCE_AS(float32x2_t, LANES128(v137).n128_u64[0]),
+                    COERCE_AS(float32x2_t, LANES128(v137).n128_u64[0])))
+                                               .n64_u64[0];
                 LANES128(v137).n128_u64[1] = LANES128(v137).n128_u64[0];
                 v139 = vrsqrteq_f32(v137);
                 v140 =
-                    vmulq_f32(v139, vrsqrtsq_f32(v139, vmulq_f32(v137, v139)));
+                  vmulq_f32(v139, vrsqrtsq_f32(v139, vmulq_f32(v137, v139)));
                 v141 = vbicq_s8(
-                    vmulq_f32(
-                        v133,
-                        vmulq_f32(v140,
-                                  vrsqrtsq_f32(v140, vmulq_f32(v137, v140)))),
-                    vceqzq_f32(v137));
+                  vmulq_f32(v133,
+                    vmulq_f32(v140, vrsqrtsq_f32(v140, vmulq_f32(v137, v140)))),
+                  vceqzq_f32(v137));
                 v142 = *v102;
                 *(_DWORD*)(v124 + 19200) = v128 + 1;
                 v143 = vmulq_n_f32(v141, v118);
@@ -5324,11 +5292,11 @@ LABEL_8:
                   *(_DWORD*)(v146 + 12) = 0;
                   *(_DWORD*)(v146 + 8) = LANES128(v145).n128_u32[2];
                   LANES128(v145).n128_f32[1] =
-                      v119 + LANES128(v145).n128_f32[1];
+                    v119 + LANES128(v145).n128_f32[1];
                   *(_QWORD*)v146 = LANES128(v145).n128_u64[0];
                   *(int32x4_t*)(v146 + 24) = v1547;
                   v147 = v127 + 1440LL * v129 +
-                         4LL * *(int*)(v127 + 1440LL * v129 + 256);
+                    4LL * *(int*)(v127 + 1440LL * v129 + 256);
                   ++*(_DWORD*)(v147 + 260);
                 }
                 v148 = **a1;
@@ -5343,11 +5311,11 @@ LABEL_8:
                   *(_DWORD*)(v153 + 12) = 0;
                   *(_DWORD*)(v153 + 8) = LANES128(v152).n128_u32[2];
                   LANES128(v152).n128_f32[1] =
-                      v119 + LANES128(v152).n128_f32[1];
+                    v119 + LANES128(v152).n128_f32[1];
                   *(_QWORD*)v153 = LANES128(v152).n128_u64[0];
                   *(int32x4_t*)(v153 + 24) = v1547;
                   v154 = v149 + 1440LL * v151 +
-                         4LL * *(int*)(v149 + 1440LL * v151 + 256);
+                    4LL * *(int*)(v149 + 1440LL * v151 + 256);
                   ++*(_DWORD*)(v154 + 260);
                 }
                 v155 = vaddq_f32(v138, v142);
@@ -5363,11 +5331,11 @@ LABEL_8:
                   *(_DWORD*)(v161 + 12) = 0;
                   *(_DWORD*)(v161 + 8) = LANES128(v160).n128_u32[2];
                   LANES128(v160).n128_f32[1] =
-                      v119 + LANES128(v160).n128_f32[1];
+                    v119 + LANES128(v160).n128_f32[1];
                   *(_QWORD*)v161 = LANES128(v160).n128_u64[0];
                   *(int32x4_t*)(v161 + 24) = v1547;
                   v162 = v157 + 1440LL * v159 +
-                         4LL * *(int*)(v157 + 1440LL * v159 + 256);
+                    4LL * *(int*)(v157 + 1440LL * v159 + 256);
                   ++*(_DWORD*)(v162 + 260);
                 }
                 v163 = **a1;
@@ -5382,33 +5350,29 @@ LABEL_8:
                   *(_DWORD*)(v168 + 12) = 0;
                   *(_DWORD*)(v168 + 8) = LANES128(v167).n128_u32[2];
                   LANES128(v167).n128_f32[1] =
-                      v119 + LANES128(v167).n128_f32[1];
+                    v119 + LANES128(v167).n128_f32[1];
                   v169 = v1547;
                   *(_QWORD*)v168 = LANES128(v167).n128_u64[0];
                   *(int32x4_t*)(v168 + 24) = v169;
                   v170 = v164 + 1440LL * v166 +
-                         4LL * *(int*)(v164 + 1440LL * v166 + 256);
+                    4LL * *(int*)(v164 + 1440LL * v166 + 256);
                   ++*(_DWORD*)(v170 + 260);
                 }
                 *(int8x8_t*)&LANES128(v123).n128_i8[8] = v125;
                 v171 = *(_DWORD*)(*v113 + 544);
                 v172 = vsubq_f32(v54[2], v1545[2]);
-                LANES128(v173).n128_u64[0] =
-                    LANES64_OF(vqtbl1_s8(v172, COERCE_AS(int8x8_t,
-                                                         0xB0A090807060504LL)))
-                        .n64_u64[0];
-                LANES64(v174).n64_u64[0] =
-                    LANES64_OF(vqtbl1_s8(v172, COERCE_AS(int8x8_t,
-                                                         0xF0E0D0C03020100LL)))
-                        .n64_u64[0];
-                LANES128(v175).n128_u64[0] =
-                    LANES64_OF(vqtbl1_s8(v172, COERCE_AS(int8x8_t,
-                                                         0x30201000B0A0908LL)))
-                        .n64_u64[0];
-                LANES64(v176).n64_u64[0] =
-                    LANES64_OF(vqtbl1_s8(v172, COERCE_AS(int8x8_t,
-                                                         0xF0E0D0C07060504LL)))
-                        .n64_u64[0];
+                LANES128(v173).n128_u64[0] = LANES64_OF(
+                  vqtbl1_s8(v172, COERCE_AS(int8x8_t, 0xB0A090807060504LL)))
+                                               .n64_u64[0];
+                LANES64(v174).n64_u64[0] = LANES64_OF(
+                  vqtbl1_s8(v172, COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL)))
+                                             .n64_u64[0];
+                LANES128(v175).n128_u64[0] = LANES64_OF(
+                  vqtbl1_s8(v172, COERCE_AS(int8x8_t, 0x30201000B0A0908LL)))
+                                               .n64_u64[0];
+                LANES64(v176).n64_u64[0] = LANES64_OF(
+                  vqtbl1_s8(v172, COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL)))
+                                             .n64_u64[0];
                 if (v171 > *(_DWORD*)(*v113 + 576)) {
                   v171 += 16;
                 }
@@ -5422,55 +5386,41 @@ LABEL_8:
                 v182 = *(_QWORD*)(v179 + 18736);
                 v183 = *(_DWORD*)(v179 + 19200);
                 v184 = *(_DWORD*)(v179 + 17280);
-                LANES128(v181).n128_u64[0] =
-                    LANES64_OF(
-                        vadd_f32(
-                            COERCE_AS(float32x2_t,
-                                      LANES128_OF(vextq_s8(v181, v181, 8u))
-                                          .n128_u64[0]),
-                            COERCE_AS(float32x2_t, LANES128(v181).n128_u64[0])))
-                        .n64_u64[0];
-                LANES128(v181).n128_u64[0] =
-                    LANES64_OF(
-                        vpadd_f32(
-                            COERCE_AS(float32x2_t, LANES128(v181).n128_u64[0]),
-                            COERCE_AS(float32x2_t, LANES128(v181).n128_u64[0])))
-                        .n64_u64[0];
+                LANES128(v181).n128_u64[0] = LANES64_OF(
+                  vadd_f32(COERCE_AS(float32x2_t,
+                             LANES128_OF(vextq_s8(v181, v181, 8u)).n128_u64[0]),
+                    COERCE_AS(float32x2_t, LANES128(v181).n128_u64[0])))
+                                               .n64_u64[0];
+                LANES128(v181).n128_u64[0] = LANES64_OF(
+                  vpadd_f32(COERCE_AS(float32x2_t, LANES128(v181).n128_u64[0]),
+                    COERCE_AS(float32x2_t, LANES128(v181).n128_u64[0])))
+                                               .n64_u64[0];
                 LANES128(v181).n128_u64[1] = LANES128(v181).n128_u64[0];
                 v185 = vrsqrteq_f32(v181);
                 v186 =
-                    vmulq_f32(v185, vrsqrtsq_f32(v185, vmulq_f32(v181, v185)));
+                  vmulq_f32(v185, vrsqrtsq_f32(v185, vmulq_f32(v181, v185)));
                 v187 = vbicq_s8(
-                    vmulq_f32(
-                        v172,
-                        vmulq_f32(v186,
-                                  vrsqrtsq_f32(v186, vmulq_f32(v181, v186)))),
-                    vceqzq_f32(v181));
+                  vmulq_f32(v172,
+                    vmulq_f32(v186, vrsqrtsq_f32(v186, vmulq_f32(v181, v186)))),
+                  vceqzq_f32(v181));
                 v188 = vmulq_f32(v180, v180);
-                LANES128(v188).n128_u64[0] =
-                    LANES64_OF(
-                        vadd_f32(
-                            COERCE_AS(float32x2_t,
-                                      LANES128_OF(vextq_s8(v188, v188, 8u))
-                                          .n128_u64[0]),
-                            COERCE_AS(float32x2_t, LANES128(v188).n128_u64[0])))
-                        .n64_u64[0];
-                LANES128(v188).n128_u64[0] =
-                    LANES64_OF(
-                        vpadd_f32(
-                            COERCE_AS(float32x2_t, LANES128(v188).n128_u64[0]),
-                            COERCE_AS(float32x2_t, LANES128(v188).n128_u64[0])))
-                        .n64_u64[0];
+                LANES128(v188).n128_u64[0] = LANES64_OF(
+                  vadd_f32(COERCE_AS(float32x2_t,
+                             LANES128_OF(vextq_s8(v188, v188, 8u)).n128_u64[0]),
+                    COERCE_AS(float32x2_t, LANES128(v188).n128_u64[0])))
+                                               .n64_u64[0];
+                LANES128(v188).n128_u64[0] = LANES64_OF(
+                  vpadd_f32(COERCE_AS(float32x2_t, LANES128(v188).n128_u64[0]),
+                    COERCE_AS(float32x2_t, LANES128(v188).n128_u64[0])))
+                                               .n64_u64[0];
                 LANES128(v188).n128_u64[1] = LANES128(v188).n128_u64[0];
                 v189 = vrsqrteq_f32(v188);
                 v190 =
-                    vmulq_f32(v189, vrsqrtsq_f32(v189, vmulq_f32(v188, v189)));
+                  vmulq_f32(v189, vrsqrtsq_f32(v189, vmulq_f32(v188, v189)));
                 v191 = vbicq_s8(
-                    vmulq_f32(
-                        v180,
-                        vmulq_f32(v190,
-                                  vrsqrtsq_f32(v190, vmulq_f32(v188, v190)))),
-                    vceqzq_f32(v188));
+                  vmulq_f32(v180,
+                    vmulq_f32(v190, vrsqrtsq_f32(v190, vmulq_f32(v188, v190)))),
+                  vceqzq_f32(v188));
                 v192 = *v102;
                 v193 = vmulq_n_f32(v187, v178);
                 *(_DWORD*)(v179 + 19200) = v183 + 1;
@@ -5483,11 +5433,11 @@ LABEL_8:
                   *(_DWORD*)(v197 + 12) = 0;
                   *(_DWORD*)(v197 + 8) = LANES128(v196).n128_u32[2];
                   LANES128(v196).n128_f32[1] =
-                      v177 + LANES128(v196).n128_f32[1];
+                    v177 + LANES128(v196).n128_f32[1];
                   *(_QWORD*)v197 = LANES128(v196).n128_u64[0];
                   *(long double*)(v197 + 24) = v1546;
                   v198 = v182 + 1440LL * v184 +
-                         4LL * *(int*)(v182 + 1440LL * v184 + 256);
+                    4LL * *(int*)(v182 + 1440LL * v184 + 256);
                   ++*(_DWORD*)(v198 + 260);
                 }
                 v199 = **a1;
@@ -5502,11 +5452,11 @@ LABEL_8:
                   *(_DWORD*)(v204 + 12) = 0;
                   *(_DWORD*)(v204 + 8) = LANES128(v203).n128_u32[2];
                   LANES128(v203).n128_f32[1] =
-                      v177 + LANES128(v203).n128_f32[1];
+                    v177 + LANES128(v203).n128_f32[1];
                   *(_QWORD*)v204 = LANES128(v203).n128_u64[0];
                   *(long double*)(v204 + 24) = v1546;
                   v205 = v200 + 1440LL * v202 +
-                         4LL * *(int*)(v200 + 1440LL * v202 + 256);
+                    4LL * *(int*)(v200 + 1440LL * v202 + 256);
                   ++*(_DWORD*)(v205 + 260);
                 }
                 v206 = vaddq_f32(v193, v192);
@@ -5522,11 +5472,11 @@ LABEL_8:
                   *(_DWORD*)(v212 + 12) = 0;
                   *(_DWORD*)(v212 + 8) = LANES128(v211).n128_u32[2];
                   LANES128(v211).n128_f32[1] =
-                      v177 + LANES128(v211).n128_f32[1];
+                    v177 + LANES128(v211).n128_f32[1];
                   *(_QWORD*)v212 = LANES128(v211).n128_u64[0];
                   *(long double*)(v212 + 24) = v1546;
                   v213 = v208 + 1440LL * v210 +
-                         4LL * *(int*)(v208 + 1440LL * v210 + 256);
+                    4LL * *(int*)(v208 + 1440LL * v210 + 256);
                   ++*(_DWORD*)(v213 + 260);
                 }
                 v214 = **a1;
@@ -5541,11 +5491,11 @@ LABEL_8:
                   *(_DWORD*)(v219 + 12) = 0;
                   *(_DWORD*)(v219 + 8) = LANES128(v218).n128_u32[2];
                   LANES128(v218).n128_f32[1] =
-                      v177 + LANES128(v218).n128_f32[1];
+                    v177 + LANES128(v218).n128_f32[1];
                   *(_QWORD*)v219 = LANES128(v218).n128_u64[0];
                   *(long double*)(v219 + 24) = v1546;
                   v220 = v215 + 1440LL * v217 +
-                         4LL * *(int*)(v215 + 1440LL * v217 + 256);
+                    4LL * *(int*)(v215 + 1440LL * v217 + 256);
                   ++*(_DWORD*)(v220 + 260);
                 }
               }
@@ -5583,29 +5533,28 @@ LABEL_8:
                 v226 = 4;
               }
               do {
-                v227 =
-                    *(_QWORD*)(*(_QWORD*)(*(_QWORD*)GameData_212c638 + 32LL) -
-                               8LL);
+                v227 = *(
+                  _QWORD*)(*(_QWORD*)(*(_QWORD*)GameData_212c638 + 32LL) - 8LL);
                 v229 = *(_QWORD*)(v227 + 24);
                 v228 = *(__int64**)(v227 + 32);
                 if (v228 != nullptr) {
                   atomic_fetch_add_explicit((atomic_ullong* volatile)(v228 + 1),
-                                            1u, memory_order_relaxed);
+                    1u, memory_order_relaxed);
                 }
                 *(_OWORD*)v1577 = ((long double (*)(__int64)) *
-                                   (_QWORD*)(*(_QWORD*)v229 + 16LL))(v229);
+                  (_QWORD*)(*(_QWORD*)v229 + 16LL))(v229);
                 v1578 = v230;
                 v1579 = v231;
                 v1580 = v232;
                 *(_OWORD*)v1582 = ((long double (*)(__int64)) *
-                                   (_QWORD*)(*(_QWORD*)v229 + 24LL))(v229);
+                  (_QWORD*)(*(_QWORD*)v229 + 24LL))(v229);
                 *(_OWORD*)&v1582[2] = v233;
                 v1583 = v234;
                 v1584 = v235;
                 v236 = GameRoutine_a6c440(v223, v1577, v1582);
                 if (v228 != nullptr &&
-                    atomic_fetch_add((atomic_ullong* volatile)(v228 + 1),
-                                     0xFFFFFFFFFFFFFFFFLL) == 0) {
+                  atomic_fetch_add((atomic_ullong* volatile)(v228 + 1),
+                    0xFFFFFFFFFFFFFFFFLL) == 0) {
                   v237 = *v228;
                   v1547 = v236;
                   (*(void (**)(__int64*))(v237 + 16))(v228);
@@ -5613,10 +5562,10 @@ LABEL_8:
                   v236 = v1547;
                 }
                 if (LANES128(v236).n128_f32[2] <= 0.0 &&
-                    LANES128(v236).n128_f32[0] >= 0.0 &&
-                    LANES128(v236).n128_f32[0] <= 0x1.e000000000000p+10 &&
-                    LANES128(v236).n128_f32[1] >= 0.0 &&
-                    LANES128(v236).n128_f32[1] <= 0x1.0e00000000000p+10) {
+                  LANES128(v236).n128_f32[0] >= 0.0 &&
+                  LANES128(v236).n128_f32[0] <= 0x1.e000000000000p+10 &&
+                  LANES128(v236).n128_f32[1] >= 0.0 &&
+                  LANES128(v236).n128_f32[1] <= 0x1.0e00000000000p+10) {
                   v238 = *((float*)a1 + 16);
                   v239 = *GameData_2130e00;
                   v240 = *(_DWORD*)(*GameData_2130e00 + 4 * v226 + 544);
@@ -5627,10 +5576,8 @@ LABEL_8:
                   LANES128(v236).n128_u32[0] = *(_DWORD*)(v239 + 384);
                   v242 = *(float*)(v239 + 388);
                   v243 = v239 + 400;
-                  LANES128(v236).n128_f32[0] =
-                      LANES128(v236).n128_f32[0] +
-                      (float)((float)(v242 - LANES128(v236).n128_f32[0]) *
-                              v238);
+                  LANES128(v236).n128_f32[0] = LANES128(v236).n128_f32[0] +
+                    (float)((float)(v242 - LANES128(v236).n128_f32[0]) * v238);
                   v244 = v1545[2];
                   v1547 = v236;
                   v245 = vsubq_f32(v54[2], v244);
@@ -5638,112 +5585,92 @@ LABEL_8:
                   v1523 = v245;
                   v247 = vsubq_f32(*(float32x4_t*)(v243 + 16 * v225), v246);
                   v248 = LANES128(v246).n128_f32[1] +
-                         vmuls_lane_f32(
-                             v238,
-                             COERCE_AS(float32x2_t, LANES128(v247).n128_u64[0]),
-                             1);
-                  v249 = LANES128(v246).n128_f32[2] +
-                         vmuls_lane_f32(v238, v247, 2);
-                  *(float*)&v1512 = LANES128(v246).n128_f32[3] +
-                                    vmuls_lane_f32(v238, v247, 3);
-                  v1502 = COERCE_UNSIGNED_INT128(
-                      powf(LANES128(v246).n128_f32[0] +
-                               (float)(v238 * LANES128(v247).n128_f32[0]),
-                           v12));
+                    vmuls_lane_f32(v238,
+                      COERCE_AS(float32x2_t, LANES128(v247).n128_u64[0]), 1);
+                  v249 =
+                    LANES128(v246).n128_f32[2] + vmuls_lane_f32(v238, v247, 2);
+                  *(float*)&v1512 =
+                    LANES128(v246).n128_f32[3] + vmuls_lane_f32(v238, v247, 3);
+                  v1502 =
+                    COERCE_UNSIGNED_INT128(powf(LANES128(v246).n128_f32[0] +
+                        (float)(v238 * LANES128(v247).n128_f32[0]),
+                      v12));
                   v1490 = COERCE_UNSIGNED_INT128(powf(v248, v12));
                   *(long double*)&v250 = powf(v249, v12);
                   *(_QWORD*)&v251 = __PAIR64__(v1490, v1502);
                   *((_QWORD*)&v251 + 1) =
-                      __PAIR64__(v1512, LANES128(v250).n128_u32[0]);
-                  LANES128(v252).n128_u64[0] =
-                      LANES64_OF(
-                          vqtbl1_s8(v1523,
-                                    COERCE_AS(int8x8_t, 0xB0A090807060504LL)))
-                          .n64_u64[0];
+                    __PAIR64__(v1512, LANES128(v250).n128_u32[0]);
+                  LANES128(v252).n128_u64[0] = LANES64_OF(
+                    vqtbl1_s8(v1523, COERCE_AS(int8x8_t, 0xB0A090807060504LL)))
+                                                 .n64_u64[0];
                   LANES128(v253).n128_u64[0] =
-                      LANES64_OF(
-                          vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
-                                    COERCE_AS(int8x8_t, 0x30201000B0A0908LL)))
-                          .n64_u64[0];
+                    LANES64_OF(vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
+                                 COERCE_AS(int8x8_t, 0x30201000B0A0908LL)))
+                      .n64_u64[0];
                   LANES128(v250).n128_u64[0] =
-                      LANES64_OF(
-                          vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
-                                    COERCE_AS(int8x8_t, 0xB0A090807060504LL)))
-                          .n64_u64[0];
+                    LANES64_OF(vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
+                                 COERCE_AS(int8x8_t, 0xB0A090807060504LL)))
+                      .n64_u64[0];
                   v254 = **a1;
                   v255 = LANES128(v1547).n128_f32[0];
-                  *(int8x8_t*)&LANES128(v252).n128_i8[8] = vqtbl1_s8(
-                      v1523, COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL));
-                  LANES128(v256).n128_u64[0] =
-                      LANES64_OF(
-                          vqtbl1_s8(v1523,
-                                    COERCE_AS(int8x8_t, 0x30201000B0A0908LL)))
-                          .n64_u64[0];
+                  *(int8x8_t*)&LANES128(v252).n128_i8[8] =
+                    vqtbl1_s8(v1523, COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL));
+                  LANES128(v256).n128_u64[0] = LANES64_OF(
+                    vqtbl1_s8(v1523, COERCE_AS(int8x8_t, 0x30201000B0A0908LL)))
+                                                 .n64_u64[0];
                   *(int8x8_t*)&LANES128(v250).n128_i8[8] =
-                      vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
-                                COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL));
+                    vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
+                      COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL));
                   v257 = *(_QWORD*)(v254 + 18736);
                   *(int8x8_t*)&LANES128(v253).n128_i8[8] =
-                      vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
-                                COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL));
+                    vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
+                      COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL));
                   v258 = *(_DWORD*)(v254 + 19200);
                   v259 = *(_DWORD*)(v254 + 17280);
-                  *(int8x8_t*)&LANES128(v256).n128_i8[8] = vqtbl1_s8(
-                      v1523, COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL));
+                  *(int8x8_t*)&LANES128(v256).n128_i8[8] =
+                    vqtbl1_s8(v1523, COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL));
                   v260 = vmlsq_f32(vmulq_f32(v252, v253), v250, v256);
                   v261 = vmulq_f32(v1523, v1523);
-                  LANES128(v261).n128_u64[0] =
-                      LANES64_OF(
-                          vadd_f32(
-                              COERCE_AS(float32x2_t,
-                                        LANES128_OF(vextq_s8(v261, v261, 8u))
-                                            .n128_u64[0]),
-                              COERCE_AS(float32x2_t,
-                                        LANES128(v261).n128_u64[0])))
-                          .n64_u64[0];
-                  LANES128(v261).n128_u64[0] =
-                      LANES64_OF(
-                          vpadd_f32(COERCE_AS(float32x2_t,
-                                              LANES128(v261).n128_u64[0]),
-                                    COERCE_AS(float32x2_t,
-                                              LANES128(v261).n128_u64[0])))
-                          .n64_u64[0];
+                  LANES128(v261).n128_u64[0] = LANES64_OF(
+                    vadd_f32(
+                      COERCE_AS(float32x2_t,
+                        LANES128_OF(vextq_s8(v261, v261, 8u)).n128_u64[0]),
+                      COERCE_AS(float32x2_t, LANES128(v261).n128_u64[0])))
+                                                 .n64_u64[0];
+                  LANES128(v261).n128_u64[0] = LANES64_OF(
+                    vpadd_f32(
+                      COERCE_AS(float32x2_t, LANES128(v261).n128_u64[0]),
+                      COERCE_AS(float32x2_t, LANES128(v261).n128_u64[0])))
+                                                 .n64_u64[0];
                   LANES128(v261).n128_u64[1] = LANES128(v261).n128_u64[0];
                   v262 = vrsqrteq_f32(v261);
-                  v263 = vmulq_f32(v262,
-                                   vrsqrtsq_f32(v262, vmulq_f32(v261, v262)));
-                  v264 = vbicq_s8(
-                      vmulq_f32(
-                          v1523,
-                          vmulq_f32(v263,
-                                    vrsqrtsq_f32(v263, vmulq_f32(v261, v263)))),
+                  v263 =
+                    vmulq_f32(v262, vrsqrtsq_f32(v262, vmulq_f32(v261, v262)));
+                  v264 =
+                    vbicq_s8(vmulq_f32(v1523,
+                               vmulq_f32(v263,
+                                 vrsqrtsq_f32(v263, vmulq_f32(v261, v263)))),
                       vceqzq_f32(v261));
                   v265 = vmulq_f32(v260, v260);
-                  LANES128(v265).n128_u64[0] =
-                      LANES64_OF(
-                          vadd_f32(
-                              COERCE_AS(float32x2_t,
-                                        LANES128_OF(vextq_s8(v265, v265, 8u))
-                                            .n128_u64[0]),
-                              COERCE_AS(float32x2_t,
-                                        LANES128(v265).n128_u64[0])))
-                          .n64_u64[0];
-                  LANES128(v265).n128_u64[0] =
-                      LANES64_OF(
-                          vpadd_f32(COERCE_AS(float32x2_t,
-                                              LANES128(v265).n128_u64[0]),
-                                    COERCE_AS(float32x2_t,
-                                              LANES128(v265).n128_u64[0])))
-                          .n64_u64[0];
+                  LANES128(v265).n128_u64[0] = LANES64_OF(
+                    vadd_f32(
+                      COERCE_AS(float32x2_t,
+                        LANES128_OF(vextq_s8(v265, v265, 8u)).n128_u64[0]),
+                      COERCE_AS(float32x2_t, LANES128(v265).n128_u64[0])))
+                                                 .n64_u64[0];
+                  LANES128(v265).n128_u64[0] = LANES64_OF(
+                    vpadd_f32(
+                      COERCE_AS(float32x2_t, LANES128(v265).n128_u64[0]),
+                      COERCE_AS(float32x2_t, LANES128(v265).n128_u64[0])))
+                                                 .n64_u64[0];
                   LANES128(v265).n128_u64[1] = LANES128(v265).n128_u64[0];
                   v266 = vrsqrteq_f32(v265);
-                  v267 = vmulq_f32(v266,
-                                   vrsqrtsq_f32(v266, vmulq_f32(v265, v266)));
-                  v268 = vbicq_s8(
-                      vmulq_f32(
-                          v260,
-                          vmulq_f32(v267,
-                                    vrsqrtsq_f32(v267, vmulq_f32(v265, v267)))),
+                  v267 =
+                    vmulq_f32(v266, vrsqrtsq_f32(v266, vmulq_f32(v265, v266)));
+                  v268 =
+                    vbicq_s8(vmulq_f32(v260,
+                               vmulq_f32(v267,
+                                 vrsqrtsq_f32(v267, vmulq_f32(v265, v267)))),
                       vceqzq_f32(v265));
                   v269 = *v223;
                   v270 = vmulq_n_f32(v264, LANES128(v1547).n128_f32[0]);
@@ -5758,10 +5685,10 @@ LABEL_8:
                     *(_OWORD*)(v274 + 24) = v251;
                     *(_DWORD*)(v274 + 8) = LANES128(v273).n128_u32[2];
                     LANES128(v273).n128_f32[1] =
-                        v241 + LANES128(v273).n128_f32[1];
+                      v241 + LANES128(v273).n128_f32[1];
                     *(_QWORD*)v274 = LANES128(v273).n128_u64[0];
                     v275 = v257 + 1440LL * v259 +
-                           4LL * *(int*)(v257 + 1440LL * v259 + 256);
+                      4LL * *(int*)(v257 + 1440LL * v259 + 256);
                     ++*(_DWORD*)(v275 + 260);
                   }
                   v276 = **a1;
@@ -5777,10 +5704,10 @@ LABEL_8:
                     *(_OWORD*)(v281 + 24) = v251;
                     *(_DWORD*)(v281 + 8) = LANES128(v280).n128_u32[2];
                     LANES128(v280).n128_f32[1] =
-                        v241 + LANES128(v280).n128_f32[1];
+                      v241 + LANES128(v280).n128_f32[1];
                     *(_QWORD*)v281 = LANES128(v280).n128_u64[0];
                     v282 = v277 + 1440LL * v279 +
-                           4LL * *(int*)(v277 + 1440LL * v279 + 256);
+                      4LL * *(int*)(v277 + 1440LL * v279 + 256);
                     ++*(_DWORD*)(v282 + 260);
                   }
                   v283 = vaddq_f32(v270, v269);
@@ -5798,10 +5725,10 @@ LABEL_8:
                     *(_OWORD*)(v289 + 24) = v251;
                     *(_DWORD*)(v289 + 8) = LANES128(v288).n128_u32[2];
                     LANES128(v288).n128_f32[1] =
-                        v241 + LANES128(v288).n128_f32[1];
+                      v241 + LANES128(v288).n128_f32[1];
                     *(_QWORD*)v289 = LANES128(v288).n128_u64[0];
                     v290 = v285 + 1440LL * v287 +
-                           4LL * *(int*)(v285 + 1440LL * v287 + 256);
+                      4LL * *(int*)(v285 + 1440LL * v287 + 256);
                     ++*(_DWORD*)(v290 + 260);
                   }
                   v291 = **a1;
@@ -5817,10 +5744,10 @@ LABEL_8:
                     *(_OWORD*)(v296 + 24) = v251;
                     *(_DWORD*)(v296 + 8) = LANES128(v295).n128_u32[2];
                     LANES128(v295).n128_f32[1] =
-                        v241 + LANES128(v295).n128_f32[1];
+                      v241 + LANES128(v295).n128_f32[1];
                     *(_QWORD*)v296 = LANES128(v295).n128_u64[0];
                     v297 = v292 + 1440LL * v294 +
-                           4LL * *(int*)(v292 + 1440LL * v294 + 256);
+                      4LL * *(int*)(v292 + 1440LL * v294 + 256);
                     ++*(_DWORD*)(v297 + 260);
                   }
                 }
@@ -5840,8 +5767,8 @@ LABEL_8:
             v302 = 2;
             v303 = *((float32x4_t*)v52 + 6);
             v46 = v1468;
-            v304 = vaddq_f32(
-                vaddq_f32(vaddq_f32((*v52)[2],
+            v304 =
+              vaddq_f32(vaddq_f32(vaddq_f32((*v52)[2],
                                     vmulq_f32(v300, COERCE_AS(float32x4_t, 0))),
                           vmulq_f32(v301, COERCE_AS(float32x4_t, 0))),
                 vmulq_f32(v303, COERCE_AS(float32x4_t, 0)));
@@ -5849,12 +5776,10 @@ LABEL_8:
             *((_QWORD*)&v305 + 1) = LANES128(v304).n128_u32[2];
             v1548 = v305;
             v306 = 2;
-            v307 = vaddq_f32(
-                vmulq_f32(v303, vdupq_n_s32(0x381B5839u)),
-                vaddq_f32(
-                    vmulq_f32(v301, vdupq_n_s32(0x3B532BEBu)),
-                    vaddq_f32(vmulq_f32(v300, vdupq_n_s32(0x3DBF5FCCu)),
-                              vmulq_f32((*v52)[2], vdupq_n_s32(0x3F673E6Bu)))));
+            v307 = vaddq_f32(vmulq_f32(v303, vdupq_n_s32(0x381B5839u)),
+              vaddq_f32(vmulq_f32(v301, vdupq_n_s32(0x3B532BEBu)),
+                vaddq_f32(vmulq_f32(v300, vdupq_n_s32(0x3DBF5FCCu)),
+                  vmulq_f32((*v52)[2], vdupq_n_s32(0x3F673E6Bu)))));
             LANES128(v304).n128_u64[0] = LANES128(v307).n128_u64[0];
             LANES128(v304).n128_u64[1] = LANES128(v307).n128_u32[2];
             v1549 = v304;
@@ -5881,15 +5806,12 @@ LABEL_8:
                 }
                 v315 = &v1548 + v302++;
                 v316 = vaddq_f32(
-                    vaddq_f32(
-                        vaddq_f32(
-                            vmulq_n_f32(v308, v312 * v314),
-                            vmulq_n_f32(
-                                v310,
+                  vaddq_f32(vaddq_f32(vmulq_n_f32(v308, v312 * v314),
+                              vmulq_n_f32(v310,
                                 v311 * (float)(v312 * (float)(v312 * v20)))),
-                        vmulq_n_f32(
-                            v309, v311 * (float)(v311 * (float)(v312 * v20)))),
-                    vmulq_n_f32(*v313, v311 * (float)(v311 * v311)));
+                    vmulq_n_f32(
+                      v309, v311 * (float)(v311 * (float)(v312 * v20)))),
+                  vmulq_n_f32(*v313, v311 * (float)(v311 * v311)));
                 *(_QWORD*)v315 = LANES128(v316).n128_u64[0];
                 v317 = *v315;
                 *((_QWORD*)&v317 + 1) = LANES128(v316).n128_u32[2];
@@ -5906,398 +5828,383 @@ LABEL_8:
             v319 = 21;
           LABEL_184:
             v320 =
-                *(_QWORD*)(*(_QWORD*)(*(_QWORD*)GameData_212c638 + 32LL) - 8LL);
+              *(_QWORD*)(*(_QWORD*)(*(_QWORD*)GameData_212c638 + 32LL) - 8LL);
             v322 = *(_QWORD*)(v320 + 24);
             v321 = *(_QWORD*)(v320 + 32);
             if (v321 != 0) {
-              atomic_fetch_add_explicit((atomic_ullong* volatile)(v321 + 8), 1u,
-                                        memory_order_relaxed);
+              atomic_fetch_add_explicit(
+                (atomic_ullong* volatile)(v321 + 8), 1u, memory_order_relaxed);
             }
             *(_OWORD*)v1577 = ((long double (*)(__int64)) *
-                               (_QWORD*)(*(_QWORD*)v322 + 16LL))(v322);
+              (_QWORD*)(*(_QWORD*)v322 + 16LL))(v322);
             v1578 = v323;
             v1579 = v324;
             v1580 = v325;
             *(_OWORD*)v1582 = ((long double (*)(__int64)) *
-                               (_QWORD*)(*(_QWORD*)v322 + 24LL))(v322);
+              (_QWORD*)(*(_QWORD*)v322 + 24LL))(v322);
             *(_OWORD*)&v1582[2] = v326;
             v1583 = v327;
             v1584 = v328;
             v329 = GameRoutine_a6c440(&v1548, v1577, v1582);
             if (v321 != 0 &&
-                atomic_fetch_add((atomic_ullong* volatile)(v321 + 8),
-                                 0xFFFFFFFFFFFFFFFFLL) == 0) {
+              atomic_fetch_add((atomic_ullong* volatile)(v321 + 8),
+                0xFFFFFFFFFFFFFFFFLL) == 0) {
               v1524 = v329;
               (*(void (**)(__int64))(*(_QWORD*)v321 + 16LL))(v321);
               std___1___shared_weak_count___release_weak(v321);
               v329 = v1524;
             }
             if (LANES128(v329).n128_f32[2] > 0.0 ||
-                LANES128(v329).n128_f32[0] < 0.0 ||
-                LANES128(v329).n128_f32[0] > 0x1.e000000000000p+10 ||
-                LANES128(v329).n128_f32[1] < 0.0 ||
-                LANES128(v329).n128_f32[1] > 0x1.0e00000000000p+10) {
-              v330 = *(_QWORD*)(*(_QWORD*)(*(_QWORD*)GameData_212c638 + 32LL) -
-                                8LL);
+              LANES128(v329).n128_f32[0] < 0.0 ||
+              LANES128(v329).n128_f32[0] > 0x1.e000000000000p+10 ||
+              LANES128(v329).n128_f32[1] < 0.0 ||
+              LANES128(v329).n128_f32[1] > 0x1.0e00000000000p+10) {
+              v330 =
+                *(_QWORD*)(*(_QWORD*)(*(_QWORD*)GameData_212c638 + 32LL) - 8LL);
               v332 = *(_QWORD*)(v330 + 24);
               v331 = *(_QWORD*)(v330 + 32);
               if (v331 != 0) {
                 atomic_fetch_add_explicit((atomic_ullong* volatile)(v331 + 8),
-                                          1u, memory_order_relaxed);
+                  1u, memory_order_relaxed);
               }
               *(_OWORD*)v1577 = ((long double (*)(__int64)) *
-                                 (_QWORD*)(*(_QWORD*)v332 + 16LL))(v332);
+                (_QWORD*)(*(_QWORD*)v332 + 16LL))(v332);
               v1578 = v333;
               v1579 = v334;
               v1580 = v335;
               *(_OWORD*)v1582 = ((long double (*)(__int64)) *
-                                 (_QWORD*)(*(_QWORD*)v332 + 24LL))(v332);
+                (_QWORD*)(*(_QWORD*)v332 + 24LL))(v332);
               *(_OWORD*)&v1582[2] = v336;
               v1583 = v337;
               v1584 = v338;
               v339 = GameRoutine_a6c440(&v1549, v1577, v1582);
               if (v331 != 0 &&
-                  atomic_fetch_add((atomic_ullong* volatile)(v331 + 8),
-                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
+                atomic_fetch_add((atomic_ullong* volatile)(v331 + 8),
+                  0xFFFFFFFFFFFFFFFFLL) == 0) {
                 v1525 = v339;
                 (*(void (**)(__int64))(*(_QWORD*)v331 + 16LL))(v331);
                 std___1___shared_weak_count___release_weak(v331);
                 v339 = v1525;
               }
               if (LANES128(v339).n128_f32[2] > 0.0 ||
-                  LANES128(v339).n128_f32[0] < 0.0 ||
-                  LANES128(v339).n128_f32[0] > 0x1.e000000000000p+10 ||
-                  LANES128(v339).n128_f32[1] < 0.0 ||
-                  LANES128(v339).n128_f32[1] > 0x1.0e00000000000p+10) {
-                v340 =
-                    *(_QWORD*)(*(_QWORD*)(*(_QWORD*)GameData_212c638 + 32LL) -
-                               8LL);
+                LANES128(v339).n128_f32[0] < 0.0 ||
+                LANES128(v339).n128_f32[0] > 0x1.e000000000000p+10 ||
+                LANES128(v339).n128_f32[1] < 0.0 ||
+                LANES128(v339).n128_f32[1] > 0x1.0e00000000000p+10) {
+                v340 = *(
+                  _QWORD*)(*(_QWORD*)(*(_QWORD*)GameData_212c638 + 32LL) - 8LL);
                 v342 = *(_QWORD*)(v340 + 24);
                 v341 = *(_QWORD*)(v340 + 32);
                 if (v341 != 0) {
                   atomic_fetch_add_explicit((atomic_ullong* volatile)(v341 + 8),
-                                            1u, memory_order_relaxed);
+                    1u, memory_order_relaxed);
                 }
                 *(_OWORD*)v1577 = ((long double (*)(__int64)) *
-                                   (_QWORD*)(*(_QWORD*)v342 + 16LL))(v342);
+                  (_QWORD*)(*(_QWORD*)v342 + 16LL))(v342);
                 v1578 = v343;
                 v1579 = v344;
                 v1580 = v345;
                 *(_OWORD*)v1582 = ((long double (*)(__int64)) *
-                                   (_QWORD*)(*(_QWORD*)v342 + 24LL))(v342);
+                  (_QWORD*)(*(_QWORD*)v342 + 24LL))(v342);
                 *(_OWORD*)&v1582[2] = v346;
                 v1583 = v347;
                 v1584 = v348;
                 v349 = GameRoutine_a6c440(&v1550, v1577, v1582);
                 if (v341 != 0 &&
-                    atomic_fetch_add((atomic_ullong* volatile)(v341 + 8),
-                                     0xFFFFFFFFFFFFFFFFLL) == 0) {
+                  atomic_fetch_add((atomic_ullong* volatile)(v341 + 8),
+                    0xFFFFFFFFFFFFFFFFLL) == 0) {
                   v1526 = v349;
                   (*(void (**)(__int64))(*(_QWORD*)v341 + 16LL))(v341);
                   std___1___shared_weak_count___release_weak(v341);
                   v349 = v1526;
                 }
                 if (LANES128(v349).n128_f32[2] > 0.0 ||
-                    LANES128(v349).n128_f32[0] < 0.0 ||
-                    LANES128(v349).n128_f32[0] > 0x1.e000000000000p+10 ||
-                    LANES128(v349).n128_f32[1] < 0.0 ||
-                    LANES128(v349).n128_f32[1] > 0x1.0e00000000000p+10) {
+                  LANES128(v349).n128_f32[0] < 0.0 ||
+                  LANES128(v349).n128_f32[0] > 0x1.e000000000000p+10 ||
+                  LANES128(v349).n128_f32[1] < 0.0 ||
+                  LANES128(v349).n128_f32[1] > 0x1.0e00000000000p+10) {
                   v350 =
-                      *(_QWORD*)(*(_QWORD*)(*(_QWORD*)GameData_212c638 + 32LL) -
-                                 8LL);
+                    *(_QWORD*)(*(_QWORD*)(*(_QWORD*)GameData_212c638 + 32LL) -
+                      8LL);
                   v352 = *(_QWORD*)(v350 + 24);
                   v351 = *(_QWORD*)(v350 + 32);
                   if (v351 != 0) {
                     atomic_fetch_add_explicit(
-                        (atomic_ullong* volatile)(v351 + 8), 1u,
-                        memory_order_relaxed);
+                      (atomic_ullong* volatile)(v351 + 8), 1u,
+                      memory_order_relaxed);
                   }
                   *(_OWORD*)v1577 = ((long double (*)(__int64)) *
-                                     (_QWORD*)(*(_QWORD*)v352 + 16LL))(v352);
+                    (_QWORD*)(*(_QWORD*)v352 + 16LL))(v352);
                   v1578 = v353;
                   v1579 = v354;
                   v1580 = v355;
                   *(_OWORD*)v1582 = ((long double (*)(__int64)) *
-                                     (_QWORD*)(*(_QWORD*)v352 + 24LL))(v352);
+                    (_QWORD*)(*(_QWORD*)v352 + 24LL))(v352);
                   *(_OWORD*)&v1582[2] = v356;
                   v1583 = v357;
                   v1584 = v358;
                   v359 = GameRoutine_a6c440(&v1551, v1577, v1582);
                   if (v351 != 0 &&
-                      atomic_fetch_add((atomic_ullong* volatile)(v351 + 8),
-                                       0xFFFFFFFFFFFFFFFFLL) == 0) {
+                    atomic_fetch_add((atomic_ullong* volatile)(v351 + 8),
+                      0xFFFFFFFFFFFFFFFFLL) == 0) {
                     v1527 = v359;
                     (*(void (**)(__int64))(*(_QWORD*)v351 + 16LL))(v351);
                     std___1___shared_weak_count___release_weak(v351);
                     v359 = v1527;
                   }
                   if (LANES128(v359).n128_f32[2] > 0.0 ||
-                      LANES128(v359).n128_f32[0] < 0.0 ||
-                      LANES128(v359).n128_f32[0] > 0x1.e000000000000p+10 ||
-                      LANES128(v359).n128_f32[1] < 0.0 ||
-                      LANES128(v359).n128_f32[1] > 0x1.0e00000000000p+10) {
-                    v360 = *(
-                        _QWORD*)(*(_QWORD*)(*(_QWORD*)GameData_212c638 + 32LL) -
-                                 8LL);
+                    LANES128(v359).n128_f32[0] < 0.0 ||
+                    LANES128(v359).n128_f32[0] > 0x1.e000000000000p+10 ||
+                    LANES128(v359).n128_f32[1] < 0.0 ||
+                    LANES128(v359).n128_f32[1] > 0x1.0e00000000000p+10) {
+                    v360 =
+                      *(_QWORD*)(*(_QWORD*)(*(_QWORD*)GameData_212c638 + 32LL) -
+                        8LL);
                     v362 = *(_QWORD*)(v360 + 24);
                     v361 = *(_QWORD*)(v360 + 32);
                     if (v361 != 0) {
                       atomic_fetch_add_explicit(
-                          (atomic_ullong* volatile)(v361 + 8), 1u,
-                          memory_order_relaxed);
+                        (atomic_ullong* volatile)(v361 + 8), 1u,
+                        memory_order_relaxed);
                     }
                     *(_OWORD*)v1577 = ((long double (*)(__int64)) *
-                                       (_QWORD*)(*(_QWORD*)v362 + 16LL))(v362);
+                      (_QWORD*)(*(_QWORD*)v362 + 16LL))(v362);
                     v1578 = v363;
                     v1579 = v364;
                     v1580 = v365;
                     *(_OWORD*)v1582 = ((long double (*)(__int64)) *
-                                       (_QWORD*)(*(_QWORD*)v362 + 24LL))(v362);
+                      (_QWORD*)(*(_QWORD*)v362 + 24LL))(v362);
                     *(_OWORD*)&v1582[2] = v366;
                     v1583 = v367;
                     v1584 = v368;
                     v369 = GameRoutine_a6c440(&v1552, v1577, v1582);
                     if (v361 != 0 &&
-                        atomic_fetch_add((atomic_ullong* volatile)(v361 + 8),
-                                         0xFFFFFFFFFFFFFFFFLL) == 0) {
+                      atomic_fetch_add((atomic_ullong* volatile)(v361 + 8),
+                        0xFFFFFFFFFFFFFFFFLL) == 0) {
                       v1528 = v369;
                       (*(void (**)(__int64))(*(_QWORD*)v361 + 16LL))(v361);
                       std___1___shared_weak_count___release_weak(v361);
                       v369 = v1528;
                     }
                     if (LANES128(v369).n128_f32[2] > 0.0 ||
-                        LANES128(v369).n128_f32[0] < 0.0 ||
-                        LANES128(v369).n128_f32[0] > 0x1.e000000000000p+10 ||
-                        LANES128(v369).n128_f32[1] < 0.0 ||
-                        LANES128(v369).n128_f32[1] > 0x1.0e00000000000p+10) {
-                      v370 = *(_QWORD*)(*(_QWORD*)(*(_QWORD*)GameData_212c638 +
-                                                   32LL) -
-                                        8LL);
+                      LANES128(v369).n128_f32[0] < 0.0 ||
+                      LANES128(v369).n128_f32[0] > 0x1.e000000000000p+10 ||
+                      LANES128(v369).n128_f32[1] < 0.0 ||
+                      LANES128(v369).n128_f32[1] > 0x1.0e00000000000p+10) {
+                      v370 = *(
+                        _QWORD*)(*(_QWORD*)(*(_QWORD*)GameData_212c638 + 32LL) -
+                        8LL);
                       v372 = *(_QWORD*)(v370 + 24);
                       v371 = *(_QWORD*)(v370 + 32);
                       if (v371 != 0) {
                         atomic_fetch_add_explicit(
-                            (atomic_ullong* volatile)(v371 + 8), 1u,
-                            memory_order_relaxed);
+                          (atomic_ullong* volatile)(v371 + 8), 1u,
+                          memory_order_relaxed);
                       }
-                      *(_OWORD*)v1577 =
-                          ((long double (*)(__int64)) *
-                           (_QWORD*)(*(_QWORD*)v372 + 16LL))(v372);
+                      *(_OWORD*)v1577 = ((long double (*)(__int64)) *
+                        (_QWORD*)(*(_QWORD*)v372 + 16LL))(v372);
                       v1578 = v373;
                       v1579 = v374;
                       v1580 = v375;
-                      *(_OWORD*)v1582 =
-                          ((long double (*)(__int64)) *
-                           (_QWORD*)(*(_QWORD*)v372 + 24LL))(v372);
+                      *(_OWORD*)v1582 = ((long double (*)(__int64)) *
+                        (_QWORD*)(*(_QWORD*)v372 + 24LL))(v372);
                       *(_OWORD*)&v1582[2] = v376;
                       v1583 = v377;
                       v1584 = v378;
                       v379 = GameRoutine_a6c440(&v1553, v1577, v1582);
                       if (v371 != 0 &&
-                          atomic_fetch_add((atomic_ullong* volatile)(v371 + 8),
-                                           0xFFFFFFFFFFFFFFFFLL) == 0) {
+                        atomic_fetch_add((atomic_ullong* volatile)(v371 + 8),
+                          0xFFFFFFFFFFFFFFFFLL) == 0) {
                         v1529 = v379;
                         (*(void (**)(__int64))(*(_QWORD*)v371 + 16LL))(v371);
                         std___1___shared_weak_count___release_weak(v371);
                         v379 = v1529;
                       }
                       if (LANES128(v379).n128_f32[2] > 0.0 ||
-                          LANES128(v379).n128_f32[0] < 0.0 ||
-                          LANES128(v379).n128_f32[0] > 0x1.e000000000000p+10 ||
-                          LANES128(v379).n128_f32[1] < 0.0 ||
-                          LANES128(v379).n128_f32[1] > 0x1.0e00000000000p+10) {
+                        LANES128(v379).n128_f32[0] < 0.0 ||
+                        LANES128(v379).n128_f32[0] > 0x1.e000000000000p+10 ||
+                        LANES128(v379).n128_f32[1] < 0.0 ||
+                        LANES128(v379).n128_f32[1] > 0x1.0e00000000000p+10) {
                         v380 =
-                            *(_QWORD*)(*(_QWORD*)(*(_QWORD*)GameData_212c638 +
-                                                  32LL) -
-                                       8LL);
+                          *(_QWORD*)(*(_QWORD*)(*(_QWORD*)GameData_212c638 +
+                                       32LL) -
+                            8LL);
                         v382 = *(_QWORD*)(v380 + 24);
                         v381 = *(_QWORD*)(v380 + 32);
                         if (v381 != 0) {
                           atomic_fetch_add_explicit(
-                              (atomic_ullong* volatile)(v381 + 8), 1u,
-                              memory_order_relaxed);
+                            (atomic_ullong* volatile)(v381 + 8), 1u,
+                            memory_order_relaxed);
                         }
-                        *(_OWORD*)v1577 =
-                            ((long double (*)(__int64)) *
-                             (_QWORD*)(*(_QWORD*)v382 + 16LL))(v382);
+                        *(_OWORD*)v1577 = ((long double (*)(__int64)) *
+                          (_QWORD*)(*(_QWORD*)v382 + 16LL))(v382);
                         v1578 = v383;
                         v1579 = v384;
                         v1580 = v385;
-                        *(_OWORD*)v1582 =
-                            ((long double (*)(__int64)) *
-                             (_QWORD*)(*(_QWORD*)v382 + 24LL))(v382);
+                        *(_OWORD*)v1582 = ((long double (*)(__int64)) *
+                          (_QWORD*)(*(_QWORD*)v382 + 24LL))(v382);
                         *(_OWORD*)&v1582[2] = v386;
                         v1583 = v387;
                         v1584 = v388;
                         v389 = GameRoutine_a6c440(&v1554, v1577, v1582);
                         if (v381 != 0 &&
-                            atomic_fetch_add(
-                                (atomic_ullong* volatile)(v381 + 8),
-                                0xFFFFFFFFFFFFFFFFLL) == 0) {
+                          atomic_fetch_add((atomic_ullong* volatile)(v381 + 8),
+                            0xFFFFFFFFFFFFFFFFLL) == 0) {
                           v1530 = v389;
                           (*(void (**)(__int64))(*(_QWORD*)v381 + 16LL))(v381);
                           std___1___shared_weak_count___release_weak(v381);
                           v389 = v1530;
                         }
                         if (LANES128(v389).n128_f32[2] > 0.0 ||
-                            LANES128(v389).n128_f32[0] < 0.0 ||
-                            LANES128(v389).n128_f32[0] >
-                                0x1.e000000000000p+10 ||
-                            LANES128(v389).n128_f32[1] < 0.0 ||
-                            LANES128(v389).n128_f32[1] >
-                                0x1.0e00000000000p+10) {
+                          LANES128(v389).n128_f32[0] < 0.0 ||
+                          LANES128(v389).n128_f32[0] > 0x1.e000000000000p+10 ||
+                          LANES128(v389).n128_f32[1] < 0.0 ||
+                          LANES128(v389).n128_f32[1] > 0x1.0e00000000000p+10) {
                           v390 =
-                              *(_QWORD*)(*(_QWORD*)(*(_QWORD*)GameData_212c638 +
-                                                    32LL) -
-                                         8LL);
+                            *(_QWORD*)(*(_QWORD*)(*(_QWORD*)GameData_212c638 +
+                                         32LL) -
+                              8LL);
                           v392 = *(_QWORD*)(v390 + 24);
                           v391 = *(_QWORD*)(v390 + 32);
                           if (v391 != 0) {
                             atomic_fetch_add_explicit(
-                                (atomic_ullong* volatile)(v391 + 8), 1u,
-                                memory_order_relaxed);
+                              (atomic_ullong* volatile)(v391 + 8), 1u,
+                              memory_order_relaxed);
                           }
-                          *(_OWORD*)v1577 =
-                              ((long double (*)(__int64)) *
-                               (_QWORD*)(*(_QWORD*)v392 + 16LL))(v392);
+                          *(_OWORD*)v1577 = ((long double (*)(__int64)) *
+                            (_QWORD*)(*(_QWORD*)v392 + 16LL))(v392);
                           v1578 = v393;
                           v1579 = v394;
                           v1580 = v395;
-                          *(_OWORD*)v1582 =
-                              ((long double (*)(__int64)) *
-                               (_QWORD*)(*(_QWORD*)v392 + 24LL))(v392);
+                          *(_OWORD*)v1582 = ((long double (*)(__int64)) *
+                            (_QWORD*)(*(_QWORD*)v392 + 24LL))(v392);
                           *(_OWORD*)&v1582[2] = v396;
                           v1583 = v397;
                           v1584 = v398;
                           v399 = GameRoutine_a6c440(&v1555, v1577, v1582);
                           if (v391 != 0 &&
-                              atomic_fetch_add(
-                                  (atomic_ullong* volatile)(v391 + 8),
-                                  0xFFFFFFFFFFFFFFFFLL) == 0) {
+                            atomic_fetch_add(
+                              (atomic_ullong* volatile)(v391 + 8),
+                              0xFFFFFFFFFFFFFFFFLL) == 0) {
                             v1531 = v399;
                             (*(void (**)(__int64))(*(_QWORD*)v391 + 16LL))(
-                                v391);
+                              v391);
                             std___1___shared_weak_count___release_weak(v391);
                             v399 = v1531;
                           }
                           if (LANES128(v399).n128_f32[2] > 0.0 ||
-                              LANES128(v399).n128_f32[0] < 0.0 ||
-                              LANES128(v399).n128_f32[0] >
-                                  0x1.e000000000000p+10 ||
-                              LANES128(v399).n128_f32[1] < 0.0 ||
-                              LANES128(v399).n128_f32[1] >
-                                  0x1.0e00000000000p+10) {
-                            v400 = *(
-                                _QWORD*)(*(_QWORD*)(*(_QWORD*)GameData_212c638 +
-                                                    32LL) -
-                                         8LL);
+                            LANES128(v399).n128_f32[0] < 0.0 ||
+                            LANES128(v399).n128_f32[0] >
+                              0x1.e000000000000p+10 ||
+                            LANES128(v399).n128_f32[1] < 0.0 ||
+                            LANES128(v399).n128_f32[1] >
+                              0x1.0e00000000000p+10) {
+                            v400 =
+                              *(_QWORD*)(*(_QWORD*)(*(_QWORD*)GameData_212c638 +
+                                           32LL) -
+                                8LL);
                             v402 = *(_QWORD*)(v400 + 24);
                             v401 = *(_QWORD*)(v400 + 32);
                             if (v401 != 0) {
                               atomic_fetch_add_explicit(
-                                  (atomic_ullong* volatile)(v401 + 8), 1u,
-                                  memory_order_relaxed);
+                                (atomic_ullong* volatile)(v401 + 8), 1u,
+                                memory_order_relaxed);
                             }
-                            *(_OWORD*)v1577 =
-                                ((long double (*)(__int64)) *
-                                 (_QWORD*)(*(_QWORD*)v402 + 16LL))(v402);
+                            *(_OWORD*)v1577 = ((long double (*)(__int64)) *
+                              (_QWORD*)(*(_QWORD*)v402 + 16LL))(v402);
                             v1578 = v403;
                             v1579 = v404;
                             v1580 = v405;
-                            *(_OWORD*)v1582 =
-                                ((long double (*)(__int64)) *
-                                 (_QWORD*)(*(_QWORD*)v402 + 24LL))(v402);
+                            *(_OWORD*)v1582 = ((long double (*)(__int64)) *
+                              (_QWORD*)(*(_QWORD*)v402 + 24LL))(v402);
                             *(_OWORD*)&v1582[2] = v406;
                             v1583 = v407;
                             v1584 = v408;
                             v409 = GameRoutine_a6c440(&v1556, v1577, v1582);
                             if (v401 != 0 &&
-                                atomic_fetch_add(
-                                    (atomic_ullong* volatile)(v401 + 8),
-                                    0xFFFFFFFFFFFFFFFFLL) == 0) {
+                              atomic_fetch_add(
+                                (atomic_ullong* volatile)(v401 + 8),
+                                0xFFFFFFFFFFFFFFFFLL) == 0) {
                               v1532 = v409;
                               (*(void (**)(__int64))(*(_QWORD*)v401 + 16LL))(
-                                  v401);
+                                v401);
                               std___1___shared_weak_count___release_weak(v401);
                               v409 = v1532;
                             }
                             if (LANES128(v409).n128_f32[2] > 0.0 ||
-                                LANES128(v409).n128_f32[0] < 0.0 ||
-                                LANES128(v409).n128_f32[0] >
-                                    0x1.e000000000000p+10 ||
-                                LANES128(v409).n128_f32[1] < 0.0 ||
-                                LANES128(v409).n128_f32[1] >
-                                    0x1.0e00000000000p+10) {
-                              v410 =
-                                  *(_QWORD*)(*(_QWORD*)(*(_QWORD*)
-                                                            GameData_212c638 +
-                                                        32LL) -
-                                             8LL);
+                              LANES128(v409).n128_f32[0] < 0.0 ||
+                              LANES128(v409).n128_f32[0] >
+                                0x1.e000000000000p+10 ||
+                              LANES128(v409).n128_f32[1] < 0.0 ||
+                              LANES128(v409).n128_f32[1] >
+                                0x1.0e00000000000p+10) {
+                              v410 = *(
+                                _QWORD*)(*(_QWORD*)(*(_QWORD*)GameData_212c638 +
+                                           32LL) -
+                                8LL);
                               v412 = *(_QWORD*)(v410 + 24);
                               v411 = *(_QWORD*)(v410 + 32);
                               if (v411 != 0) {
                                 atomic_fetch_add_explicit(
-                                    (atomic_ullong* volatile)(v411 + 8), 1u,
-                                    memory_order_relaxed);
+                                  (atomic_ullong* volatile)(v411 + 8), 1u,
+                                  memory_order_relaxed);
                               }
-                              *(_OWORD*)v1577 =
-                                  ((long double (*)(__int64)) *
-                                   (_QWORD*)(*(_QWORD*)v412 + 16LL))(v412);
+                              *(_OWORD*)v1577 = ((long double (*)(__int64)) *
+                                (_QWORD*)(*(_QWORD*)v412 + 16LL))(v412);
                               v1578 = v413;
                               v1579 = v414;
                               v1580 = v415;
-                              *(_OWORD*)v1582 =
-                                  ((long double (*)(__int64)) *
-                                   (_QWORD*)(*(_QWORD*)v412 + 24LL))(v412);
+                              *(_OWORD*)v1582 = ((long double (*)(__int64)) *
+                                (_QWORD*)(*(_QWORD*)v412 + 24LL))(v412);
                               *(_OWORD*)&v1582[2] = v416;
                               v1583 = v417;
                               v1584 = v418;
                               v419 = GameRoutine_a6c440(&v1557, v1577, v1582);
                               if (v411 != 0 &&
-                                  atomic_fetch_add(
-                                      (atomic_ullong* volatile)(v411 + 8),
-                                      0xFFFFFFFFFFFFFFFFLL) == 0) {
+                                atomic_fetch_add(
+                                  (atomic_ullong* volatile)(v411 + 8),
+                                  0xFFFFFFFFFFFFFFFFLL) == 0) {
                                 v1533 = v419;
                                 (*(void (**)(__int64))(*(_QWORD*)v411 + 16LL))(
-                                    v411);
+                                  v411);
                                 std___1___shared_weak_count___release_weak(
-                                    v411);
+                                  v411);
                                 v419 = v1533;
                               }
                               LODWORD(v420) = LANES128(v419).n128_u32[2];
                               if (LANES128(v419).n128_f32[2] > 0.0 ||
-                                  LANES128(v419).n128_f32[0] < 0.0 ||
-                                  (LODWORD(v420) = 1156579328,
-                                   LANES128(v419).n128_f32[0] >
-                                       0x1.e000000000000p+10) ||
-                                  LANES128(v419).n128_f32[1] < 0.0 ||
-                                  (LODWORD(v420) = 1149698048,
-                                   LANES128(v419).n128_f32[1] >
-                                       0x1.0e00000000000p+10)) {
+                                LANES128(v419).n128_f32[0] < 0.0 ||
+                                (LODWORD(v420) = 1156579328,
+                                  LANES128(v419).n128_f32[0] >
+                                    0x1.e000000000000p+10) ||
+                                LANES128(v419).n128_f32[1] < 0.0 ||
+                                (LODWORD(v420) = 1149698048,
+                                  LANES128(v419).n128_f32[1] >
+                                    0x1.0e00000000000p+10)) {
                                 if ((GameRoutine_135bd70(&v1558, 0.0, v420) &
-                                     1) == 0 &&
-                                    (GameRoutine_135bd70(&v1559, 0.0, v421) &
-                                     1) == 0 &&
-                                    (GameRoutine_135bd70(&v1560, 0.0, v422) &
-                                     1) == 0 &&
-                                    (GameRoutine_135bd70(&v1561, 0.0, v423) &
-                                     1) == 0 &&
-                                    (GameRoutine_135bd70(&v1562, 0.0, v424) &
-                                     1) == 0 &&
-                                    (GameRoutine_135bd70(&v1563, 0.0, v425) &
-                                     1) == 0 &&
-                                    (GameRoutine_135bd70(&v1564, 0.0, v426) &
-                                     1) == 0 &&
-                                    (GameRoutine_135bd70(&v1565, 0.0, v427) &
-                                     1) == 0 &&
-                                    (GameRoutine_135bd70(&v1566, 0.0, v428) &
-                                     1) == 0 &&
-                                    (GameRoutine_135bd70(&v1567, 0.0, v429) &
-                                     1) == 0 &&
-                                    (GameRoutine_135bd70(&v1568, 0.0, v430) &
-                                     1) == 0 &&
-                                    (GameRoutine_135bd70(&v1569, 0.0, v431) &
-                                     1) == 0) {
+                                      1) == 0 &&
+                                  (GameRoutine_135bd70(&v1559, 0.0, v421) &
+                                    1) == 0 &&
+                                  (GameRoutine_135bd70(&v1560, 0.0, v422) &
+                                    1) == 0 &&
+                                  (GameRoutine_135bd70(&v1561, 0.0, v423) &
+                                    1) == 0 &&
+                                  (GameRoutine_135bd70(&v1562, 0.0, v424) &
+                                    1) == 0 &&
+                                  (GameRoutine_135bd70(&v1563, 0.0, v425) &
+                                    1) == 0 &&
+                                  (GameRoutine_135bd70(&v1564, 0.0, v426) &
+                                    1) == 0 &&
+                                  (GameRoutine_135bd70(&v1565, 0.0, v427) &
+                                    1) == 0 &&
+                                  (GameRoutine_135bd70(&v1566, 0.0, v428) &
+                                    1) == 0 &&
+                                  (GameRoutine_135bd70(&v1567, 0.0, v429) &
+                                    1) == 0 &&
+                                  (GameRoutine_135bd70(&v1568, 0.0, v430) &
+                                    1) == 0 &&
+                                  (GameRoutine_135bd70(&v1569, 0.0, v431) &
+                                    1) == 0) {
                                   goto LABEL_38;
                                 }
                               }
@@ -6321,30 +6228,28 @@ LABEL_8:
                 v766 = 1;
               }
               LANES128(v767).n128_u64[0] =
-                  LANES64_OF(
-                      vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
-                                COERCE_AS(int8x8_t, 0x30201000B0A0908LL)))
-                      .n64_u64[0];
+                LANES64_OF(vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
+                             COERCE_AS(int8x8_t, 0x30201000B0A0908LL)))
+                  .n64_u64[0];
               *(int8x8_t*)&LANES128(v767).n128_i8[8] =
-                  vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
-                            COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL));
+                vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
+                  COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL));
               v768 = v319;
               LANES128(v769).n128_u64[0] =
-                  LANES64_OF(
-                      vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
-                                COERCE_AS(int8x8_t, 0xB0A090807060504LL)))
-                      .n64_u64[0];
+                LANES64_OF(vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
+                             COERCE_AS(int8x8_t, 0xB0A090807060504LL)))
+                  .n64_u64[0];
               *(int8x8_t*)&LANES128(v769).n128_i8[8] =
-                  vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
-                            COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL));
+                vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
+                  COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL));
               do {
                 v770 = *v764;
                 if (v60) {
                   v771 = 160;
                   v772 = *(float*)(v770 + 384) +
-                         (float)((float)(*(float*)(v770 + 388) -
-                                         *(float*)(v770 + 384)) *
-                                 *((float*)a1 + 16));
+                    (float)((float)(*(float*)(v770 + 388) -
+                              *(float*)(v770 + 384)) *
+                      *((float*)a1 + 16));
                 }
                 else {
                   v772 = *(float*)(v770 + 140);
@@ -6366,117 +6271,99 @@ LABEL_8:
                 LANES128(v781).n128_u64[1] = 0;
                 v780 = **a1;
                 LANES128(v781).n128_f32[1] = v779;
-                LANES128(v782).n128_u64[0] =
-                    LANES64_OF(vqtbl1_s8(v778, COERCE_AS(int8x8_t,
-                                                         0xB0A090807060504LL)))
-                        .n64_u64[0];
+                LANES128(v782).n128_u64[0] = LANES64_OF(
+                  vqtbl1_s8(v778, COERCE_AS(int8x8_t, 0xB0A090807060504LL)))
+                                               .n64_u64[0];
                 v783 = *(_QWORD*)(v780 + 18736);
                 v784 = *(_DWORD*)(v780 + 19200);
                 v785 = *(_DWORD*)(v780 + 17280);
                 *(int8x8_t*)&LANES128(v782).n128_i8[8] =
-                    vqtbl1_s8(v778, COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL));
-                LANES128(v786).n128_u64[0] =
-                    LANES64_OF(vqtbl1_s8(v778, COERCE_AS(int8x8_t,
-                                                         0x30201000B0A0908LL)))
-                        .n64_u64[0];
+                  vqtbl1_s8(v778, COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL));
+                LANES128(v786).n128_u64[0] = LANES64_OF(
+                  vqtbl1_s8(v778, COERCE_AS(int8x8_t, 0x30201000B0A0908LL)))
+                                               .n64_u64[0];
                 *(_DWORD*)(v780 + 19200) = v784 + 1;
                 *(int8x8_t*)&LANES128(v786).n128_i8[8] =
-                    vqtbl1_s8(v778, COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL));
+                  vqtbl1_s8(v778, COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL));
                 v787 = vmlsq_f32(vmulq_f32(v782, v767), v769, v786);
                 v788 = vmulq_f32(v787, v787);
-                LANES128(v788).n128_u64[0] =
-                    LANES64_OF(
-                        vadd_f32(
-                            COERCE_AS(float32x2_t,
-                                      LANES128_OF(vextq_s8(v788, v788, 8u))
-                                          .n128_u64[0]),
-                            COERCE_AS(float32x2_t, LANES128(v788).n128_u64[0])))
-                        .n64_u64[0];
-                LANES128(v788).n128_u64[0] =
-                    LANES64_OF(
-                        vpadd_f32(
-                            COERCE_AS(float32x2_t, LANES128(v788).n128_u64[0]),
-                            COERCE_AS(float32x2_t, LANES128(v788).n128_u64[0])))
-                        .n64_u64[0];
+                LANES128(v788).n128_u64[0] = LANES64_OF(
+                  vadd_f32(COERCE_AS(float32x2_t,
+                             LANES128_OF(vextq_s8(v788, v788, 8u)).n128_u64[0]),
+                    COERCE_AS(float32x2_t, LANES128(v788).n128_u64[0])))
+                                               .n64_u64[0];
+                LANES128(v788).n128_u64[0] = LANES64_OF(
+                  vpadd_f32(COERCE_AS(float32x2_t, LANES128(v788).n128_u64[0]),
+                    COERCE_AS(float32x2_t, LANES128(v788).n128_u64[0])))
+                                               .n64_u64[0];
                 LANES128(v788).n128_u64[1] = LANES128(v788).n128_u64[0];
                 v789 = vrsqrteq_f32(v788);
                 v790 =
-                    vmulq_f32(v789, vrsqrtsq_f32(v789, vmulq_f32(v788, v789)));
+                  vmulq_f32(v789, vrsqrtsq_f32(v789, vmulq_f32(v788, v789)));
                 v791 = vbicq_s8(
-                    vmulq_f32(
-                        v787,
-                        vmulq_f32(v790,
-                                  vrsqrtsq_f32(v790, vmulq_f32(v788, v790)))),
-                    vceqzq_f32(v788));
+                  vmulq_f32(v787,
+                    vmulq_f32(v790, vrsqrtsq_f32(v790, vmulq_f32(v788, v790)))),
+                  vceqzq_f32(v788));
                 if (v784 <= 262142) {
                   v792 = *(_QWORD*)(v780 + 19136) + 40LL * (v784 + 1);
                   *(_QWORD*)(v792 + 16) = 0;
                   *(_DWORD*)(v792 + 12) = 0;
                   v793 =
-                      vaddq_f32(v781, vaddq_f32(v777, vmulq_n_f32(v791, v772)));
+                    vaddq_f32(v781, vaddq_f32(v777, vmulq_n_f32(v791, v772)));
                   *(_QWORD*)v792 = LANES128(v793).n128_u64[0];
                   *(_DWORD*)(v792 + 8) = LANES128(v793).n128_u32[2];
                   *(int32x4_t*)(v792 + 24) = v1547;
                   v794 = v783 + 1440LL * v785 +
-                         4LL * *(int*)(v783 + 1440LL * v785 + 256);
+                    4LL * *(int*)(v783 + 1440LL * v785 + 256);
                   ++*(_DWORD*)(v794 + 260);
                 }
                 LANES128(v773).n128_u32[3] = 0;
                 v795 = **a1;
                 v796 = vsubq_f32(v773, v777);
                 v797 = *(_QWORD*)(v795 + 18736);
-                LANES128(v798).n128_u64[0] =
-                    LANES64_OF(vqtbl1_s8(v796, COERCE_AS(int8x8_t,
-                                                         0xB0A090807060504LL)))
-                        .n64_u64[0];
+                LANES128(v798).n128_u64[0] = LANES64_OF(
+                  vqtbl1_s8(v796, COERCE_AS(int8x8_t, 0xB0A090807060504LL)))
+                                               .n64_u64[0];
                 v799 = *(_DWORD*)(v795 + 19200);
                 v800 = *(_DWORD*)(v795 + 17280);
                 *(int8x8_t*)&LANES128(v798).n128_i8[8] =
-                    vqtbl1_s8(v796, COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL));
-                LANES128(v801).n128_u64[0] =
-                    LANES64_OF(vqtbl1_s8(v796, COERCE_AS(int8x8_t,
-                                                         0x30201000B0A0908LL)))
-                        .n64_u64[0];
+                  vqtbl1_s8(v796, COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL));
+                LANES128(v801).n128_u64[0] = LANES64_OF(
+                  vqtbl1_s8(v796, COERCE_AS(int8x8_t, 0x30201000B0A0908LL)))
+                                               .n64_u64[0];
                 *(_DWORD*)(v795 + 19200) = v799 + 1;
                 *(int8x8_t*)&LANES128(v801).n128_i8[8] =
-                    vqtbl1_s8(v796, COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL));
+                  vqtbl1_s8(v796, COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL));
                 v802 = vmlsq_f32(vmulq_f32(v767, v798), v769, v801);
                 v803 = vmulq_f32(v802, v802);
-                LANES128(v803).n128_u64[0] =
-                    LANES64_OF(
-                        vadd_f32(
-                            COERCE_AS(float32x2_t,
-                                      LANES128_OF(vextq_s8(v803, v803, 8u))
-                                          .n128_u64[0]),
-                            COERCE_AS(float32x2_t, LANES128(v803).n128_u64[0])))
-                        .n64_u64[0];
-                LANES128(v803).n128_u64[0] =
-                    LANES64_OF(
-                        vpadd_f32(
-                            COERCE_AS(float32x2_t, LANES128(v803).n128_u64[0]),
-                            COERCE_AS(float32x2_t, LANES128(v803).n128_u64[0])))
-                        .n64_u64[0];
+                LANES128(v803).n128_u64[0] = LANES64_OF(
+                  vadd_f32(COERCE_AS(float32x2_t,
+                             LANES128_OF(vextq_s8(v803, v803, 8u)).n128_u64[0]),
+                    COERCE_AS(float32x2_t, LANES128(v803).n128_u64[0])))
+                                               .n64_u64[0];
+                LANES128(v803).n128_u64[0] = LANES64_OF(
+                  vpadd_f32(COERCE_AS(float32x2_t, LANES128(v803).n128_u64[0]),
+                    COERCE_AS(float32x2_t, LANES128(v803).n128_u64[0])))
+                                               .n64_u64[0];
                 LANES128(v803).n128_u64[1] = LANES128(v803).n128_u64[0];
                 v804 = vrsqrteq_f32(v803);
                 v805 =
-                    vmulq_f32(v804, vrsqrtsq_f32(v804, vmulq_f32(v803, v804)));
+                  vmulq_f32(v804, vrsqrtsq_f32(v804, vmulq_f32(v803, v804)));
                 v806 = vbicq_s8(
-                    vmulq_f32(
-                        v802,
-                        vmulq_f32(v805,
-                                  vrsqrtsq_f32(v805, vmulq_f32(v803, v805)))),
-                    vceqzq_f32(v803));
+                  vmulq_f32(v802,
+                    vmulq_f32(v805, vrsqrtsq_f32(v805, vmulq_f32(v803, v805)))),
+                  vceqzq_f32(v803));
                 if (v799 <= 262142) {
                   v807 = *(_QWORD*)(v795 + 19136) + 40LL * (v799 + 1);
                   *(_QWORD*)(v807 + 16) = 0;
                   *(_DWORD*)(v807 + 12) = 0;
                   v808 =
-                      vaddq_f32(v781, vaddq_f32(v773, vmulq_n_f32(v806, v772)));
+                    vaddq_f32(v781, vaddq_f32(v773, vmulq_n_f32(v806, v772)));
                   *(_QWORD*)v807 = LANES128(v808).n128_u64[0];
                   *(_DWORD*)(v807 + 8) = LANES128(v808).n128_u32[2];
                   *(int32x4_t*)(v807 + 24) = v1547;
                   v809 = v797 + 1440LL * v800 +
-                         4LL * *(int*)(v797 + 1440LL * v800 + 256);
+                    4LL * *(int*)(v797 + 1440LL * v800 + 256);
                   ++*(_DWORD*)(v809 + 260);
                 }
                 v810 = -v772;
@@ -6490,12 +6377,12 @@ LABEL_8:
                   *(_QWORD*)(v815 + 16) = 0;
                   *(_DWORD*)(v815 + 12) = 0;
                   v816 =
-                      vaddq_f32(v781, vaddq_f32(v773, vmulq_n_f32(v806, v810)));
+                    vaddq_f32(v781, vaddq_f32(v773, vmulq_n_f32(v806, v810)));
                   *(_QWORD*)v815 = LANES128(v816).n128_u64[0];
                   *(_DWORD*)(v815 + 8) = LANES128(v816).n128_u32[2];
                   *(int32x4_t*)(v815 + 24) = v1547;
                   v817 = v812 + 1440LL * v814 +
-                         4LL * *(int*)(v812 + 1440LL * v814 + 256);
+                    4LL * *(int*)(v812 + 1440LL * v814 + 256);
                   ++*(_DWORD*)(v817 + 260);
                 }
                 v818 = **a1;
@@ -6508,12 +6395,12 @@ LABEL_8:
                   *(_QWORD*)(v822 + 16) = 0;
                   *(_DWORD*)(v822 + 12) = 0;
                   v823 =
-                      vaddq_f32(v781, vaddq_f32(v777, vmulq_n_f32(v791, v810)));
+                    vaddq_f32(v781, vaddq_f32(v777, vmulq_n_f32(v791, v810)));
                   *(_QWORD*)v822 = LANES128(v823).n128_u64[0];
                   *(_DWORD*)(v822 + 8) = LANES128(v823).n128_u32[2];
                   *(int32x4_t*)(v822 + 24) = v1547;
                   v824 = v819 + 1440LL * v821 +
-                         4LL * *(int*)(v819 + 1440LL * v821 + 256);
+                    4LL * *(int*)(v819 + 1440LL * v821 + 256);
                   ++*(_DWORD*)(v824 + 260);
                 }
                 v825 = *(float*)(*v764 + v771);
@@ -6535,12 +6422,12 @@ LABEL_8:
                   *(_QWORD*)(v833 + 16) = 0;
                   *(_DWORD*)(v833 + 12) = 0;
                   v834 =
-                      vaddq_f32(vaddq_f32(v777, vmulq_n_f32(v791, v825)), v829);
+                    vaddq_f32(vaddq_f32(v777, vmulq_n_f32(v791, v825)), v829);
                   *(_QWORD*)v833 = LANES128(v834).n128_u64[0];
                   *(_DWORD*)(v833 + 8) = LANES128(v834).n128_u32[2];
                   *(long double*)(v833 + 24) = v1546;
                   v835 = v830 + 1440LL * v832 +
-                         4LL * *(int*)(v830 + 1440LL * v832 + 256);
+                    4LL * *(int*)(v830 + 1440LL * v832 + 256);
                   ++*(_DWORD*)(v835 + 260);
                 }
                 v836 = **a1;
@@ -6553,12 +6440,12 @@ LABEL_8:
                   *(_QWORD*)(v840 + 16) = 0;
                   *(_DWORD*)(v840 + 12) = 0;
                   v841 =
-                      vaddq_f32(vaddq_f32(v773, vmulq_n_f32(v806, v825)), v829);
+                    vaddq_f32(vaddq_f32(v773, vmulq_n_f32(v806, v825)), v829);
                   *(_QWORD*)v840 = LANES128(v841).n128_u64[0];
                   *(_DWORD*)(v840 + 8) = LANES128(v841).n128_u32[2];
                   *(long double*)(v840 + 24) = v1546;
                   v842 = v837 + 1440LL * v839 +
-                         4LL * *(int*)(v837 + 1440LL * v839 + 256);
+                    4LL * *(int*)(v837 + 1440LL * v839 + 256);
                   ++*(_DWORD*)(v842 + 260);
                 }
                 v843 = -v825;
@@ -6572,12 +6459,12 @@ LABEL_8:
                   *(_QWORD*)(v848 + 16) = 0;
                   *(_DWORD*)(v848 + 12) = 0;
                   v849 =
-                      vaddq_f32(vaddq_f32(v773, vmulq_n_f32(v806, v843)), v829);
+                    vaddq_f32(vaddq_f32(v773, vmulq_n_f32(v806, v843)), v829);
                   *(_QWORD*)v848 = LANES128(v849).n128_u64[0];
                   *(_DWORD*)(v848 + 8) = LANES128(v849).n128_u32[2];
                   *(long double*)(v848 + 24) = v1546;
                   v850 = v845 + 1440LL * v847 +
-                         4LL * *(int*)(v845 + 1440LL * v847 + 256);
+                    4LL * *(int*)(v845 + 1440LL * v847 + 256);
                   ++*(_DWORD*)(v850 + 260);
                 }
                 v851 = **a1;
@@ -6590,12 +6477,12 @@ LABEL_8:
                   *(_QWORD*)(v855 + 16) = 0;
                   *(_DWORD*)(v855 + 12) = 0;
                   v856 =
-                      vaddq_f32(vaddq_f32(v777, vmulq_n_f32(v791, v843)), v829);
+                    vaddq_f32(vaddq_f32(v777, vmulq_n_f32(v791, v843)), v829);
                   *(_QWORD*)v855 = LANES128(v856).n128_u64[0];
                   *(_DWORD*)(v855 + 8) = LANES128(v856).n128_u32[2];
                   *(long double*)(v855 + 24) = v1546;
                   v857 = v852 + 1440LL * v854 +
-                         4LL * *(int*)(v852 + 1440LL * v854 + 256);
+                    4LL * *(int*)(v852 + 1440LL * v854 + 256);
                   ++*(_DWORD*)(v857 + 260);
                 }
                 --v768;
@@ -6632,21 +6519,19 @@ LABEL_8:
               v864 = (int32x4_t*)(&v1548 + v319);
               v865 = v864;
               LANES128(v866).n128_u64[0] =
-                  LANES64_OF(
-                      vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
-                                COERCE_AS(int8x8_t, 0x30201000B0A0908LL)))
-                      .n64_u64[0];
+                LANES64_OF(vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
+                             COERCE_AS(int8x8_t, 0x30201000B0A0908LL)))
+                  .n64_u64[0];
               LANES128(v867).n128_u64[0] =
-                  LANES64_OF(
-                      vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
-                                COERCE_AS(int8x8_t, 0xB0A090807060504LL)))
-                      .n64_u64[0];
+                LANES64_OF(vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
+                             COERCE_AS(int8x8_t, 0xB0A090807060504LL)))
+                  .n64_u64[0];
               *(int8x8_t*)&LANES128(v866).n128_i8[8] =
-                  vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
-                            COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL));
+                vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
+                  COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL));
               *(int8x8_t*)&LANES128(v867).n128_i8[8] =
-                  vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
-                            COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL));
+                vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
+                  COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL));
               v1458 = v867;
               v1464 = v866;
               do {
@@ -6677,61 +6562,49 @@ LABEL_8:
                 v883 = v873 + 400;
                 LODWORD(v884) = 0;
                 *((float*)&v884 + 1) = v882 * (float)(v880 + 1);
-                LANES128(v885).n128_u64[0] =
-                    LANES64_OF(vqtbl1_s8(v878, COERCE_AS(int8x8_t,
-                                                         0xB0A090807060504LL)))
-                        .n64_u64[0];
+                LANES128(v885).n128_u64[0] = LANES64_OF(
+                  vqtbl1_s8(v878, COERCE_AS(int8x8_t, 0xB0A090807060504LL)))
+                                               .n64_u64[0];
                 v1506 = COERCE_AS(float32x4_t, v884);
                 *(int8x8_t*)&LANES128(v885).n128_i8[8] =
-                    vqtbl1_s8(v878, COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL));
-                LANES128(v886).n128_u64[0] =
-                    LANES64_OF(vqtbl1_s8(v878, COERCE_AS(int8x8_t,
-                                                         0x30201000B0A0908LL)))
-                        .n64_u64[0];
+                  vqtbl1_s8(v878, COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL));
+                LANES128(v886).n128_u64[0] = LANES64_OF(
+                  vqtbl1_s8(v878, COERCE_AS(int8x8_t, 0x30201000B0A0908LL)))
+                                               .n64_u64[0];
                 *(int8x8_t*)&LANES128(v886).n128_i8[8] =
-                    vqtbl1_s8(v878, COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL));
+                  vqtbl1_s8(v878, COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL));
                 v887 = vmlsq_f32(vmulq_f32(v885, v866), v867, v886);
                 v888 = vmulq_f32(v887, v887);
-                LANES128(v888).n128_u64[0] =
-                    LANES64_OF(
-                        vadd_f32(
-                            COERCE_AS(float32x2_t,
-                                      LANES128_OF(vextq_s8(v888, v888, 8u))
-                                          .n128_u64[0]),
-                            COERCE_AS(float32x2_t, LANES128(v888).n128_u64[0])))
-                        .n64_u64[0];
-                LANES128(v888).n128_u64[0] =
-                    LANES64_OF(
-                        vpadd_f32(
-                            COERCE_AS(float32x2_t, LANES128(v888).n128_u64[0]),
-                            COERCE_AS(float32x2_t, LANES128(v888).n128_u64[0])))
-                        .n64_u64[0];
+                LANES128(v888).n128_u64[0] = LANES64_OF(
+                  vadd_f32(COERCE_AS(float32x2_t,
+                             LANES128_OF(vextq_s8(v888, v888, 8u)).n128_u64[0]),
+                    COERCE_AS(float32x2_t, LANES128(v888).n128_u64[0])))
+                                               .n64_u64[0];
+                LANES128(v888).n128_u64[0] = LANES64_OF(
+                  vpadd_f32(COERCE_AS(float32x2_t, LANES128(v888).n128_u64[0]),
+                    COERCE_AS(float32x2_t, LANES128(v888).n128_u64[0])))
+                                               .n64_u64[0];
                 LANES128(v888).n128_u64[1] = LANES128(v888).n128_u64[0];
                 v889 = vrsqrteq_f32(v888);
                 v890 =
-                    vmulq_f32(v889, vrsqrtsq_f32(v889, vmulq_f32(v888, v889)));
+                  vmulq_f32(v889, vrsqrtsq_f32(v889, vmulq_f32(v888, v889)));
                 v891 = vbicq_s8(
-                    vmulq_f32(
-                        v887,
-                        vmulq_f32(v890,
-                                  vrsqrtsq_f32(v890, vmulq_f32(v888, v890)))),
-                    vceqzq_f32(v888));
+                  vmulq_f32(v887,
+                    vmulq_f32(v890, vrsqrtsq_f32(v890, vmulq_f32(v888, v890)))),
+                  vceqzq_f32(v888));
                 v892 = *(float32x4_t*)(v883 + 16 * v861);
                 v1537 = v891;
                 v893 = vsubq_f32(*(float32x4_t*)(v883 + 16 * v862), v892);
-                v894 =
-                    LANES128(v892).n128_f32[1] +
-                    vmuls_lane_f32(
-                        v879,
-                        COERCE_AS(float32x2_t, LANES128(v893).n128_u64[0]), 1);
+                v894 = LANES128(v892).n128_f32[1] +
+                  vmuls_lane_f32(v879,
+                    COERCE_AS(float32x2_t, LANES128(v893).n128_u64[0]), 1);
                 v895 =
-                    LANES128(v892).n128_f32[2] + vmuls_lane_f32(v879, v893, 2);
+                  LANES128(v892).n128_f32[2] + vmuls_lane_f32(v879, v893, 2);
                 *(float*)&v1485 =
-                    LANES128(v892).n128_f32[3] + vmuls_lane_f32(v879, v893, 3);
-                v1476 = COERCE_UNSIGNED_INT128(
-                    powf(LANES128(v892).n128_f32[0] +
-                             (float)(v879 * LANES128(v893).n128_f32[0]),
-                         v12));
+                  LANES128(v892).n128_f32[3] + vmuls_lane_f32(v879, v893, 3);
+                v1476 = COERCE_UNSIGNED_INT128(powf(LANES128(v892).n128_f32[0] +
+                    (float)(v879 * LANES128(v893).n128_f32[0]),
+                  v12));
                 v1470 = COERCE_UNSIGNED_INT128(powf(v894, v12));
                 v896 = powf(v895, v12);
                 *(_QWORD*)&v901 = __PAIR64__(v1470, v1476);
@@ -6746,12 +6619,12 @@ LABEL_8:
                   *(_QWORD*)(v902 + 16) = 0;
                   *(_DWORD*)(v902 + 12) = 0;
                   *(_OWORD*)(v902 + 24) = v901;
-                  v903 = vaddq_f32(v1506,
-                                   vaddq_f32(v1495, vmulq_n_f32(v1537, v1515)));
+                  v903 = vaddq_f32(
+                    v1506, vaddq_f32(v1495, vmulq_n_f32(v1537, v1515)));
                   *(_QWORD*)v902 = LANES128(v903).n128_u64[0];
                   *(_DWORD*)(v902 + 8) = LANES128(v903).n128_u32[2];
                   v904 = v898 + 1440LL * v900 +
-                         4LL * *(int*)(v898 + 1440LL * v900 + 256);
+                    4LL * *(int*)(v898 + 1440LL * v900 + 256);
                   ++*(_DWORD*)(v904 + 260);
                 }
                 v905 = v1547;
@@ -6763,56 +6636,47 @@ LABEL_8:
                 v908 = *(_DWORD*)(v906 + 19200);
                 v909 = *(_DWORD*)(v906 + 17280);
                 v910 = vsubq_f32(v905, v1495);
-                LANES128(v911).n128_u64[0] =
-                    LANES64_OF(vqtbl1_s8(v910, COERCE_AS(int8x8_t,
-                                                         0xB0A090807060504LL)))
-                        .n64_u64[0];
+                LANES128(v911).n128_u64[0] = LANES64_OF(
+                  vqtbl1_s8(v910, COERCE_AS(int8x8_t, 0xB0A090807060504LL)))
+                                               .n64_u64[0];
                 *(_DWORD*)(v906 + 19200) = v908 + 1;
                 *(int8x8_t*)&LANES128(v911).n128_i8[8] =
-                    vqtbl1_s8(v910, COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL));
-                LANES128(v912).n128_u64[0] =
-                    LANES64_OF(vqtbl1_s8(v910, COERCE_AS(int8x8_t,
-                                                         0x30201000B0A0908LL)))
-                        .n64_u64[0];
+                  vqtbl1_s8(v910, COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL));
+                LANES128(v912).n128_u64[0] = LANES64_OF(
+                  vqtbl1_s8(v910, COERCE_AS(int8x8_t, 0x30201000B0A0908LL)))
+                                               .n64_u64[0];
                 *(int8x8_t*)&LANES128(v912).n128_i8[8] =
-                    vqtbl1_s8(v910, COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL));
+                  vqtbl1_s8(v910, COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL));
                 v913 = vmlsq_f32(vmulq_f32(v1464, v911), v1458, v912);
                 v914 = vmulq_f32(v913, v913);
-                LANES128(v914).n128_u64[0] =
-                    LANES64_OF(
-                        vadd_f32(
-                            COERCE_AS(float32x2_t,
-                                      LANES128_OF(vextq_s8(v914, v914, 8u))
-                                          .n128_u64[0]),
-                            COERCE_AS(float32x2_t, LANES128(v914).n128_u64[0])))
-                        .n64_u64[0];
-                LANES128(v914).n128_u64[0] =
-                    LANES64_OF(
-                        vpadd_f32(
-                            COERCE_AS(float32x2_t, LANES128(v914).n128_u64[0]),
-                            COERCE_AS(float32x2_t, LANES128(v914).n128_u64[0])))
-                        .n64_u64[0];
+                LANES128(v914).n128_u64[0] = LANES64_OF(
+                  vadd_f32(COERCE_AS(float32x2_t,
+                             LANES128_OF(vextq_s8(v914, v914, 8u)).n128_u64[0]),
+                    COERCE_AS(float32x2_t, LANES128(v914).n128_u64[0])))
+                                               .n64_u64[0];
+                LANES128(v914).n128_u64[0] = LANES64_OF(
+                  vpadd_f32(COERCE_AS(float32x2_t, LANES128(v914).n128_u64[0]),
+                    COERCE_AS(float32x2_t, LANES128(v914).n128_u64[0])))
+                                               .n64_u64[0];
                 LANES128(v914).n128_u64[1] = LANES128(v914).n128_u64[0];
                 v915 = vrsqrteq_f32(v914);
                 v916 =
-                    vmulq_f32(v915, vrsqrtsq_f32(v915, vmulq_f32(v914, v915)));
+                  vmulq_f32(v915, vrsqrtsq_f32(v915, vmulq_f32(v914, v915)));
                 v917 = vbicq_s8(
-                    vmulq_f32(
-                        v913,
-                        vmulq_f32(v916,
-                                  vrsqrtsq_f32(v916, vmulq_f32(v914, v916)))),
-                    vceqzq_f32(v914));
+                  vmulq_f32(v913,
+                    vmulq_f32(v916, vrsqrtsq_f32(v916, vmulq_f32(v914, v916)))),
+                  vceqzq_f32(v914));
                 if (v908 <= 262142) {
                   v918 = *(_QWORD*)(v906 + 19136) + 40LL * (v908 + 1);
                   *(_QWORD*)(v918 + 16) = 0;
                   *(_DWORD*)(v918 + 12) = 0;
                   *(_OWORD*)(v918 + 24) = v901;
-                  v919 = vaddq_f32(v1506,
-                                   vaddq_f32(v905, vmulq_n_f32(v917, v1515)));
+                  v919 =
+                    vaddq_f32(v1506, vaddq_f32(v905, vmulq_n_f32(v917, v1515)));
                   *(_QWORD*)v918 = LANES128(v919).n128_u64[0];
                   *(_DWORD*)(v918 + 8) = LANES128(v919).n128_u32[2];
                   v920 = v907 + 1440LL * v909 +
-                         4LL * *(int*)(v907 + 1440LL * v909 + 256);
+                    4LL * *(int*)(v907 + 1440LL * v909 + 256);
                   ++*(_DWORD*)(v920 + 260);
                 }
                 v921 = -v1515;
@@ -6826,12 +6690,12 @@ LABEL_8:
                   *(_QWORD*)(v926 + 16) = 0;
                   *(_DWORD*)(v926 + 12) = 0;
                   *(_OWORD*)(v926 + 24) = v901;
-                  v927 = vaddq_f32(v1506,
-                                   vaddq_f32(v905, vmulq_n_f32(v917, v921)));
+                  v927 =
+                    vaddq_f32(v1506, vaddq_f32(v905, vmulq_n_f32(v917, v921)));
                   *(_QWORD*)v926 = LANES128(v927).n128_u64[0];
                   *(_DWORD*)(v926 + 8) = LANES128(v927).n128_u32[2];
                   v928 = v923 + 1440LL * v925 +
-                         4LL * *(int*)(v923 + 1440LL * v925 + 256);
+                    4LL * *(int*)(v923 + 1440LL * v925 + 256);
                   ++*(_DWORD*)(v928 + 260);
                 }
                 v929 = **a1;
@@ -6844,12 +6708,12 @@ LABEL_8:
                   *(_QWORD*)(v933 + 16) = 0;
                   *(_DWORD*)(v933 + 12) = 0;
                   *(_OWORD*)(v933 + 24) = v901;
-                  v934 = vaddq_f32(v1506,
-                                   vaddq_f32(v1495, vmulq_n_f32(v1537, v921)));
+                  v934 = vaddq_f32(
+                    v1506, vaddq_f32(v1495, vmulq_n_f32(v1537, v921)));
                   *(_QWORD*)v933 = LANES128(v934).n128_u64[0];
                   *(_DWORD*)(v933 + 8) = LANES128(v934).n128_u32[2];
                   v935 = v930 + 1440LL * v932 +
-                         4LL * *(int*)(v930 + 1440LL * v932 + 256);
+                    4LL * *(int*)(v930 + 1440LL * v932 + 256);
                   ++*(_DWORD*)(v935 + 260);
                 }
                 --v319;
@@ -6890,13 +6754,13 @@ LABEL_8:
           }
           v1463 = v445;
           if ((LANES128(v59[7]).n128_u8[3] & 1) == 0 &&
-              LANES128(v440[7]).n128_u8[3] != 1) {
+            LANES128(v440[7]).n128_u8[3] != 1) {
             v938 = *((float32x4_t*)v443 + 2);
             v939 = *((float32x4_t*)v443 + 3);
             v940 = 2;
             v941 = *((float32x4_t*)v443 + 6);
-            v942 = vaddq_f32(
-                vaddq_f32(vaddq_f32((*v443)[2],
+            v942 =
+              vaddq_f32(vaddq_f32(vaddq_f32((*v443)[2],
                                     vmulq_f32(v938, COERCE_AS(float32x4_t, 0))),
                           vmulq_f32(v939, COERCE_AS(float32x4_t, 0))),
                 vmulq_f32(v941, COERCE_AS(float32x4_t, 0)));
@@ -6904,12 +6768,10 @@ LABEL_8:
             *((_QWORD*)&v943 + 1) = LANES128(v942).n128_u32[2];
             *(_OWORD*)v1577 = v943;
             v944 = 2;
-            v945 = vaddq_f32(
-                vmulq_f32(v941, vdupq_n_s32(0x381B5839u)),
-                vaddq_f32(vmulq_f32(v939, vdupq_n_s32(0x3B532BEBu)),
-                          vaddq_f32(vmulq_f32(v938, vdupq_n_s32(0x3DBF5FCCu)),
-                                    vmulq_f32((*v443)[2],
-                                              vdupq_n_s32(0x3F673E6Bu)))));
+            v945 = vaddq_f32(vmulq_f32(v941, vdupq_n_s32(0x381B5839u)),
+              vaddq_f32(vmulq_f32(v939, vdupq_n_s32(0x3B532BEBu)),
+                vaddq_f32(vmulq_f32(v938, vdupq_n_s32(0x3DBF5FCCu)),
+                  vmulq_f32((*v443)[2], vdupq_n_s32(0x3F673E6Bu)))));
             LANES128(v942).n128_u64[0] = LANES128(v945).n128_u64[0];
             LANES128(v942).n128_u64[1] = LANES128(v945).n128_u32[2];
             v1578 = v942;
@@ -6934,17 +6796,16 @@ LABEL_8:
                   v952 = v950 * v950;
                   v951 = (float32x4_t*)(v443 + 12);
                 }
-                v953 = vaddq_f32(
-                    vaddq_f32(
-                        vmulq_n_f32(v946, v950 * v952),
-                        vmulq_n_f32(
-                            v948, v949 * (float)(v950 * (float)(v950 * v20)))),
-                    vmulq_n_f32(v947,
-                                v949 * (float)(v949 * (float)(v950 * v20))));
+                v953 =
+                  vaddq_f32(vaddq_f32(vmulq_n_f32(v946, v950 * v952),
+                              vmulq_n_f32(v948,
+                                v949 * (float)(v950 * (float)(v950 * v20)))),
+                    vmulq_n_f32(
+                      v947, v949 * (float)(v949 * (float)(v950 * v20))));
                 v954 = *v951;
                 v955 = 2LL * v940++;
                 v956 = vaddq_f32(
-                    v953, vmulq_n_f32(v954, v949 * (float)(v949 * v949)));
+                  v953, vmulq_n_f32(v954, v949 * (float)(v949 * v949)));
                 v1577[v955] = LANES128(v956).n128_u64[0];
                 v957 = *(_OWORD*)&v1577[v955];
                 *((_QWORD*)&v957 + 1) = LANES128(v956).n128_u32[2];
@@ -6978,23 +6839,20 @@ LABEL_8:
             v961 = v440[2];
             v962 = v959;
             v963 = (float)(*(float*)(v960 + 172) * 0x1.0000000000000p-1) *
-                   (float)(*(float*)(v960 + 172) * 0x1.0000000000000p-1);
+              (float)(*(float*)(v960 + 172) * 0x1.0000000000000p-1);
             while (1) {
               v964 = vsubq_f32(v961, *(float32x4_t*)&v1577[2 * v962]);
               v965 = vmulq_f32(v964, v964);
-              LANES128(v965).n128_u64[0] =
-                  LANES64_OF(
-                      vadd_f32(
-                          COERCE_AS(float32x2_t,
-                                    LANES128_OF(vextq_s8(v965, v965, 8u))
-                                        .n128_u64[0]),
-                          COERCE_AS(float32x2_t, LANES128(v965).n128_u64[0])))
-                      .n64_u64[0];
+              LANES128(v965).n128_u64[0] = LANES64_OF(
+                vadd_f32(COERCE_AS(float32x2_t,
+                           LANES128_OF(vextq_s8(v965, v965, 8u)).n128_u64[0]),
+                  COERCE_AS(float32x2_t, LANES128(v965).n128_u64[0])))
+                                             .n64_u64[0];
               if (LANES64_OF(
-                      vpadd_f32(
-                          COERCE_AS(float32x2_t, LANES128(v965).n128_u64[0]),
-                          COERCE_AS(float32x2_t, LANES128(v965).n128_u64[0])))
-                      .n64_f32[0] >= (float)(v963 * 0x1.6666660000000p-1)) {
+                    vpadd_f32(
+                      COERCE_AS(float32x2_t, LANES128(v965).n128_u64[0]),
+                      COERCE_AS(float32x2_t, LANES128(v965).n128_u64[0])))
+                    .n64_f32[0] >= (float)(v963 * 0x1.6666660000000p-1)) {
                 break;
               }
               v27 = v962-- <= 2;
@@ -7009,22 +6867,17 @@ LABEL_8:
                     v970 = v969;
                     v971 = vsubq_f32(v961, v969);
                     v972 = vmulq_f32(v971, v971);
-                    LANES128(v972).n128_u64[0] =
-                        LANES64_OF(
-                            vadd_f32(
-                                COERCE_AS(float32x2_t,
-                                          LANES128_OF(vextq_s8(v972, v972, 8u))
-                                              .n128_u64[0]),
-                                COERCE_AS(float32x2_t,
-                                          LANES128(v972).n128_u64[0])))
-                            .n64_u64[0];
-                    LANES128(v972).n128_f32[0] =
-                        LANES64_OF(
-                            vpadd_f32(COERCE_AS(float32x2_t,
-                                                LANES128(v972).n128_u64[0]),
-                                      COERCE_AS(float32x2_t,
-                                                LANES128(v972).n128_u64[0])))
-                            .n64_f32[0];
+                    LANES128(v972).n128_u64[0] = LANES64_OF(
+                      vadd_f32(
+                        COERCE_AS(float32x2_t,
+                          LANES128_OF(vextq_s8(v972, v972, 8u)).n128_u64[0]),
+                        COERCE_AS(float32x2_t, LANES128(v972).n128_u64[0])))
+                                                   .n64_u64[0];
+                    LANES128(v972).n128_f32[0] = LANES64_OF(
+                      vpadd_f32(
+                        COERCE_AS(float32x2_t, LANES128(v972).n128_u64[0]),
+                        COERCE_AS(float32x2_t, LANES128(v972).n128_u64[0])))
+                                                   .n64_f32[0];
                     v593 = LANES128(v972).n128_f32[0] >= v966;
                     if (LANES128(v972).n128_f32[0] >= v966) {
                       break;
@@ -7040,8 +6893,8 @@ LABEL_8:
                 LABEL_489:
                   v974 = *(float*)(v960 + 340);
                   if ((unsigned __int8)Impl_13261c0(v440) == 13 ||
-                      (unsigned __int8)Impl_13261c0(v440) == 12 ||
-                      (unsigned __int8)Impl_13261c0(v440) == 11) {
+                    (unsigned __int8)Impl_13261c0(v440) == 12 ||
+                    (unsigned __int8)Impl_13261c0(v440) == 11) {
                     goto LABEL_494;
                   }
                 LABEL_495:
@@ -7061,8 +6914,7 @@ LABEL_8:
                       if (**v977 == v440) {
                         v980 = v979[12];
                         if (v980 != nullptr &&
-                            (unsigned int)LANES128(v980[2]).n128_u8[0] - 3 <
-                                2) {
+                          (unsigned int)LANES128(v980[2]).n128_u8[0] - 3 < 2) {
                           break;
                         }
                       }
@@ -7075,8 +6927,7 @@ LABEL_8:
                     }
                   LABEL_506:
                     v975 = (float*)(v981 +
-                                    4LL * (unsigned __int8)Impl_13261c0(v440) +
-                                    80);
+                      4LL * (unsigned __int8)Impl_13261c0(v440) + 80);
                   }
                 LABEL_507:
                   v982 = *v975 * 0x1.ddddde0000000p-5;
@@ -7088,22 +6939,20 @@ LABEL_8:
                     LANES64(v986).n64_u64[0] = 0xF0E0D0C07060504LL;
                     LANES64(v987).n64_u64[0] = 0xB0A090807060504LL;
                     LANES64(v988).n64_u64[0] = 0xF0E0D0C03020100LL;
-                    LANES128(v989).n128_u64[0] =
-                        LANES64_OF(
-                            vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
-                                      COERCE_AS(int8x8_t, 0x30201000B0A0908LL)))
-                            .n64_u64[0];
+                    LANES128(v989).n128_u64[0] = LANES64_OF(
+                      vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
+                        COERCE_AS(int8x8_t, 0x30201000B0A0908LL)))
+                                                   .n64_u64[0];
                     *(int8x8_t*)&LANES128(v989).n128_i8[8] =
-                        vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
-                                  COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL));
-                    LANES128(v990).n128_u64[0] =
-                        LANES64_OF(
-                            vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
-                                      COERCE_AS(int8x8_t, 0xB0A090807060504LL)))
-                            .n64_u64[0];
+                      vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
+                        COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL));
+                    LANES128(v990).n128_u64[0] = LANES64_OF(
+                      vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
+                        COERCE_AS(int8x8_t, 0xB0A090807060504LL)))
+                                                   .n64_u64[0];
                     *(int8x8_t*)&LANES128(v990).n128_i8[8] =
-                        vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
-                                  COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL));
+                      vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
+                        COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL));
                     v1516 = v989;
                     v1507 = v990;
                     do {
@@ -7115,9 +6964,9 @@ LABEL_8:
                       v1486 = v993 + (float)(v994 * v992);
                       *(float*)&v1496 = vmuls_lane_f32(v1463, v1547, 3) + 0.0;
                       v1538 = COERCE_UNSIGNED_INT128(
-                          powf(LANES128(v1547).n128_f32[0], v12));
+                        powf(LANES128(v1547).n128_f32[0], v12));
                       v1477 = COERCE_UNSIGNED_INT128(
-                          powf(LANES128(v1547).n128_f32[1], v12));
+                        powf(LANES128(v1547).n128_f32[1], v12));
                       v995 = powf(LANES128(v1547).n128_f32[2], v12);
                       *(_QWORD*)&v1001 = __PAIR64__(v1477, v1538);
                       v996 = v984 - 1;
@@ -7137,48 +6986,41 @@ LABEL_8:
                       v1004 = vsubq_f32(v1000, v1003);
                       v1005 = **a1;
                       LANES128(v997).n128_f32[1] =
-                          *(float*)(*v991 + 668) * (float)(v1002 + 1);
+                        *(float*)(*v991 + 668) * (float)(v1002 + 1);
                       LANES128(v1006).n128_u64[0] =
-                          LANES64_OF(vqtbl1_s8(v1004, v987)).n64_u64[0];
+                        LANES64_OF(vqtbl1_s8(v1004, v987)).n64_u64[0];
                       v1007 = *(_QWORD*)(v1005 + 18736);
                       v1008 = *(_DWORD*)(v1005 + 19200);
                       v1009 = *(_DWORD*)(v1005 + 17280);
                       *(int8x8_t*)&LANES128(v1006).n128_i8[8] =
-                          vqtbl1_s8(v1004, v988);
+                        vqtbl1_s8(v1004, v988);
                       *(_DWORD*)(v1005 + 19200) = v1008 + 1;
                       LANES128(v1010).n128_u64[0] =
-                          LANES64_OF(vqtbl1_s8(v1004, v985)).n64_u64[0];
+                        LANES64_OF(vqtbl1_s8(v1004, v985)).n64_u64[0];
                       *(int8x8_t*)&LANES128(v1010).n128_i8[8] =
-                          vqtbl1_s8(v1004, v986);
+                        vqtbl1_s8(v1004, v986);
                       v1011 = vmlsq_f32(vmulq_f32(v1516, v1006), v1507, v1010);
                       v1012 = vmulq_f32(v1011, v1011);
-                      LANES128(v1012).n128_u64[0] =
-                          LANES64_OF(
-                              vadd_f32(COERCE_AS(float32x2_t,
-                                                 LANES128_OF(
-                                                     vextq_s8(v1012, v1012, 8u))
-                                                     .n128_u64[0]),
-                                       COERCE_AS(float32x2_t,
-                                                 LANES128(v1012).n128_u64[0])))
-                              .n64_u64[0];
-                      LANES128(v1012).n128_u64[0] =
-                          LANES64_OF(
-                              vpadd_f32(COERCE_AS(float32x2_t,
-                                                  LANES128(v1012).n128_u64[0]),
-                                        COERCE_AS(float32x2_t,
-                                                  LANES128(v1012).n128_u64[0])))
-                              .n64_u64[0];
+                      LANES128(v1012).n128_u64[0] = LANES64_OF(
+                        vadd_f32(COERCE_AS(float32x2_t,
+                                   LANES128_OF(vextq_s8(v1012, v1012, 8u))
+                                     .n128_u64[0]),
+                          COERCE_AS(float32x2_t, LANES128(v1012).n128_u64[0])))
+                                                      .n64_u64[0];
+                      LANES128(v1012).n128_u64[0] = LANES64_OF(
+                        vpadd_f32(
+                          COERCE_AS(float32x2_t, LANES128(v1012).n128_u64[0]),
+                          COERCE_AS(float32x2_t, LANES128(v1012).n128_u64[0])))
+                                                      .n64_u64[0];
                       LANES128(v1012).n128_u64[1] = LANES128(v1012).n128_u64[0];
                       v1013 = vrsqrteq_f32(v1012);
                       v1014 = vmulq_f32(
-                          v1013, vrsqrtsq_f32(v1013, vmulq_f32(v1012, v1013)));
+                        v1013, vrsqrtsq_f32(v1013, vmulq_f32(v1012, v1013)));
                       v1015 = vbicq_s8(
-                          vmulq_f32(
-                              v1011,
-                              vmulq_f32(v1014,
-                                        vrsqrtsq_f32(v1014,
-                                                     vmulq_f32(v1012, v1014)))),
-                          vceqzq_f32(v1012));
+                        vmulq_f32(v1011,
+                          vmulq_f32(v1014,
+                            vrsqrtsq_f32(v1014, vmulq_f32(v1012, v1014)))),
+                        vceqzq_f32(v1012));
                       v1016 = vaddq_f32(v1000, vmulq_n_f32(v1015, v1486));
                       v1017 = vaddq_f32(v997, v1016);
                       v1018 = LANES128(v1017).n128_u32[2];
@@ -7190,7 +7032,7 @@ LABEL_8:
                         *(_DWORD*)(v1019 + 12) = 0;
                         *(_OWORD*)(v1019 + 24) = v1001;
                         v1020 = v1007 + 1440LL * v1009 +
-                                4LL * *(int*)(v1007 + 1440LL * v1009 + 256);
+                          4LL * *(int*)(v1007 + 1440LL * v1009 + 256);
                         ++*(_DWORD*)(v1020 + 260);
                       }
                       LANES128(v999).n128_u32[3] = 0;
@@ -7198,45 +7040,38 @@ LABEL_8:
                       v1022 = vsubq_f32(v999, v1000);
                       v1023 = *(_QWORD*)(v1021 + 18736);
                       LANES128(v1024).n128_u64[0] =
-                          LANES64_OF(vqtbl1_s8(v1022, v987)).n64_u64[0];
+                        LANES64_OF(vqtbl1_s8(v1022, v987)).n64_u64[0];
                       v1025 = *(_DWORD*)(v1021 + 19200);
                       v1026 = *(_DWORD*)(v1021 + 17280);
                       *(int8x8_t*)&LANES128(v1024).n128_i8[8] =
-                          vqtbl1_s8(v1022, v988);
+                        vqtbl1_s8(v1022, v988);
                       *(_DWORD*)(v1021 + 19200) = v1025 + 1;
                       LANES128(v1027).n128_u64[0] =
-                          LANES64_OF(vqtbl1_s8(v1022, v985)).n64_u64[0];
+                        LANES64_OF(vqtbl1_s8(v1022, v985)).n64_u64[0];
                       *(int8x8_t*)&LANES128(v1027).n128_i8[8] =
-                          vqtbl1_s8(v1022, v986);
+                        vqtbl1_s8(v1022, v986);
                       v1028 = vmlsq_f32(vmulq_f32(v1516, v1024), v1507, v1027);
                       v1029 = vmulq_f32(v1028, v1028);
-                      LANES128(v1029).n128_u64[0] =
-                          LANES64_OF(
-                              vadd_f32(COERCE_AS(float32x2_t,
-                                                 LANES128_OF(
-                                                     vextq_s8(v1029, v1029, 8u))
-                                                     .n128_u64[0]),
-                                       COERCE_AS(float32x2_t,
-                                                 LANES128(v1029).n128_u64[0])))
-                              .n64_u64[0];
-                      LANES128(v1029).n128_u64[0] =
-                          LANES64_OF(
-                              vpadd_f32(COERCE_AS(float32x2_t,
-                                                  LANES128(v1029).n128_u64[0]),
-                                        COERCE_AS(float32x2_t,
-                                                  LANES128(v1029).n128_u64[0])))
-                              .n64_u64[0];
+                      LANES128(v1029).n128_u64[0] = LANES64_OF(
+                        vadd_f32(COERCE_AS(float32x2_t,
+                                   LANES128_OF(vextq_s8(v1029, v1029, 8u))
+                                     .n128_u64[0]),
+                          COERCE_AS(float32x2_t, LANES128(v1029).n128_u64[0])))
+                                                      .n64_u64[0];
+                      LANES128(v1029).n128_u64[0] = LANES64_OF(
+                        vpadd_f32(
+                          COERCE_AS(float32x2_t, LANES128(v1029).n128_u64[0]),
+                          COERCE_AS(float32x2_t, LANES128(v1029).n128_u64[0])))
+                                                      .n64_u64[0];
                       LANES128(v1029).n128_u64[1] = LANES128(v1029).n128_u64[0];
                       v1030 = vrsqrteq_f32(v1029);
                       v1031 = vmulq_f32(
-                          v1030, vrsqrtsq_f32(v1030, vmulq_f32(v1029, v1030)));
+                        v1030, vrsqrtsq_f32(v1030, vmulq_f32(v1029, v1030)));
                       v1032 = vbicq_s8(
-                          vmulq_f32(
-                              v1028,
-                              vmulq_f32(v1031,
-                                        vrsqrtsq_f32(v1031,
-                                                     vmulq_f32(v1029, v1031)))),
-                          vceqzq_f32(v1029));
+                        vmulq_f32(v1028,
+                          vmulq_f32(v1031,
+                            vrsqrtsq_f32(v1031, vmulq_f32(v1029, v1031)))),
+                        vceqzq_f32(v1029));
                       v1033 = vaddq_f32(v999, vmulq_n_f32(v1032, v1486));
                       v1034 = vaddq_f32(v997, v1033);
                       if (v1025 <= 262142) {
@@ -7247,7 +7082,7 @@ LABEL_8:
                         *(_OWORD*)(v1035 + 24) = v1001;
                         *(_DWORD*)(v1035 + 8) = LANES128(v1034).n128_u32[2];
                         v1036 = v1023 + 1440LL * v1026 +
-                                4LL * *(int*)(v1023 + 1440LL * v1026 + 256);
+                          4LL * *(int*)(v1023 + 1440LL * v1026 + 256);
                         ++*(_DWORD*)(v1036 + 260);
                       }
                       v1037 = **a1;
@@ -7265,7 +7100,7 @@ LABEL_8:
                         *(_OWORD*)(v1043 + 24) = v1001;
                         *(_DWORD*)(v1043 + 8) = LANES128(v1041).n128_u32[2];
                         v1044 = v1039 + 1440LL * v1042 +
-                                4LL * *(int*)(v1039 + 1440LL * v1042 + 256);
+                          4LL * *(int*)(v1039 + 1440LL * v1042 + 256);
                         ++*(_DWORD*)(v1044 + 260);
                       }
                       v1045 = vaddq_f32(v1000, vmulq_n_f32(v1015, -v1486));
@@ -7283,7 +7118,7 @@ LABEL_8:
                         *(_OWORD*)(v1051 + 24) = v1001;
                         *(_DWORD*)(v1051 + 8) = LANES128(v1047).n128_u32[2];
                         v1052 = v1048 + 1440LL * v1050 +
-                                4LL * *(int*)(v1048 + 1440LL * v1050 + 256);
+                          4LL * *(int*)(v1048 + 1440LL * v1050 + 256);
                         ++*(_DWORD*)(v1052 + 260);
                       }
                       v1053 = v440[2];
@@ -7297,9 +7132,9 @@ LABEL_8:
                       v1487 = v999;
                       v1497 = v1000;
                       if (*(float*)&v1054 <=
-                              (float)(v983 + LANES128(v1053).n128_f32[0]) &&
-                          *(float*)&v1054 >=
-                              (float)(LANES128(v1053).n128_f32[0] - v983)) {
+                          (float)(v983 + LANES128(v1053).n128_f32[0]) &&
+                        *(float*)&v1054 >=
+                          (float)(LANES128(v1053).n128_f32[0] - v983)) {
                         v1059 = v983;
                         v1060 = LANES64(v988).n64_u64[0];
                         v1061 = LANES64(v987).n64_u64[0];
@@ -7307,7 +7142,7 @@ LABEL_8:
                         v1063 = LANES64(v985).n64_u64[0];
                         LODWORD(v1064) = v1577[2 * v984 + 1];
                         if (*((float*)&v1054 + 2) >
-                            (float)(v1059 + LANES128(v1053).n128_f32[2])) {
+                          (float)(v1059 + LANES128(v1053).n128_f32[2])) {
                           LANES64(v985).n64_u64[0] = v1063;
                           LANES64(v986).n64_u64[0] = v1062;
                           LANES64(v987).n64_u64[0] = v1061;
@@ -7315,7 +7150,7 @@ LABEL_8:
                           v983 = v1059;
                         }
                         else if (*((float*)&v1054 + 2) <
-                                 (float)(LANES128(v1053).n128_f32[2] - v1059)) {
+                          (float)(LANES128(v1053).n128_f32[2] - v1059)) {
                           LANES64(v985).n64_u64[0] = v1063;
                           LANES64(v986).n64_u64[0] = v1062;
                           LANES64(v987).n64_u64[0] = v1061;
@@ -7339,10 +7174,9 @@ LABEL_8:
                               if (**v1067 == v59) {
                                 v1070 = v1069[12];
                                 if (v1070 != nullptr &&
-                                    (unsigned int)LANES128(v1070[2])
-                                                .n128_u8[0] -
-                                            3 <
-                                        2) {
+                                  (unsigned int)LANES128(v1070[2]).n128_u8[0] -
+                                      3 <
+                                    2) {
                                   break;
                                 }
                               }
@@ -7383,7 +7217,7 @@ LABEL_8:
                             v997 = v1445;
                             v1034 = v1459;
                             LANES128(v1017).n128_u32[0] =
-                                LANES128(v1547).n128_u32[0];
+                              LANES128(v1547).n128_u32[0];
                             v1001 = v1539;
                             v1047 = v1449;
                             v1041 = v1451;
@@ -7395,8 +7229,8 @@ LABEL_8:
                           v1076 = LANES128(v1074).n128_f32[0] - v1073;
                           v1077 = COERCE_FLOAT(LANES128(v59[2]).n128_u64[1]);
                           v1078 = v1073 + v1077;
-                          v1079 = *(float*)&v1054 > v1075 ||
-                                  *(float*)&v1054 < v1076;
+                          v1079 =
+                            *(float*)&v1054 > v1075 || *(float*)&v1054 < v1076;
                           v1080 = v1077 - v1073;
                           v1082 = v1079 || v1064 > v1078 || v1064 < v1080;
                           LANES64(v985).n64_u64[0] = v1063;
@@ -7410,8 +7244,8 @@ LABEL_8:
                               v1083 += 16;
                             }
                             LANES128(v997).n128_f32[1] =
-                                *(float*)(*GameData_2130e00 + 668) *
-                                (float)(v1083 + 1);
+                              *(float*)(*GameData_2130e00 + 668) *
+                              (float)(v1083 + 1);
                             v1017 = vaddq_f32(v1016, v997);
                             v1034 = vaddq_f32(v1033, v997);
                             v1041 = vaddq_f32(v1038, v997);
@@ -7438,7 +7272,7 @@ LABEL_8:
                         *(_DWORD*)(v1088 + 12) = 0;
                         *(_OWORD*)(v1088 + 24) = v1001;
                         v1089 = v1085 + 1440LL * v1087 +
-                                4LL * *(int*)(v1085 + 1440LL * v1087 + 256);
+                          4LL * *(int*)(v1085 + 1440LL * v1087 + 256);
                         ++*(_DWORD*)(v1089 + 260);
                       }
                       v1090 = **a1;
@@ -7453,9 +7287,9 @@ LABEL_8:
                         *(_OWORD*)(v1094 + 24) = v1001;
                         *(_DWORD*)(v1094 + 8) = LANES128(v1034).n128_u32[2];
                         *(_QWORD*)v1094 =
-                            __PAIR64__(v1056, LANES128(v1034).n128_u32[0]);
+                          __PAIR64__(v1056, LANES128(v1034).n128_u32[0]);
                         v1095 = v1091 + 1440LL * v1093 +
-                                4LL * *(int*)(v1091 + 1440LL * v1093 + 256);
+                          4LL * *(int*)(v1091 + 1440LL * v1093 + 256);
                         ++*(_DWORD*)(v1095 + 260);
                       }
                       v1096 = **a1;
@@ -7470,9 +7304,9 @@ LABEL_8:
                         *(_OWORD*)(v1100 + 24) = v1001;
                         *(_DWORD*)(v1100 + 8) = LANES128(v1041).n128_u32[2];
                         *(_QWORD*)v1100 =
-                            __PAIR64__(v1057, LANES128(v1041).n128_u32[0]);
+                          __PAIR64__(v1057, LANES128(v1041).n128_u32[0]);
                         v1101 = v1097 + 1440LL * v1099 +
-                                4LL * *(int*)(v1097 + 1440LL * v1099 + 256);
+                          4LL * *(int*)(v1097 + 1440LL * v1099 + 256);
                         ++*(_DWORD*)(v1101 + 260);
                       }
                       v1102 = **a1;
@@ -7487,18 +7321,18 @@ LABEL_8:
                         *(_OWORD*)(v1106 + 24) = v1001;
                         *(_DWORD*)(v1106 + 8) = LANES128(v1047).n128_u32[2];
                         *(_QWORD*)v1106 =
-                            __PAIR64__(v1058, LANES128(v1047).n128_u32[0]);
+                          __PAIR64__(v1058, LANES128(v1047).n128_u32[0]);
                         v1107 = v1103 + 1440LL * v1105 +
-                                4LL * *(int*)(v1103 + 1440LL * v1105 + 256);
+                          4LL * *(int*)(v1103 + 1440LL * v1105 + 256);
                         ++*(_DWORD*)(v1107 + 260);
                       }
                       v1108 = GameData_2130e00;
                       v1540 = *(float*)(*GameData_2130e00 + 160);
                       v1547 = *(int32x4_t*)(*GameData_2130e00 + 192);
                       v1460 = COERCE_UNSIGNED_INT128(
-                          powf(LANES128(v1547).n128_f32[0], v12));
+                        powf(LANES128(v1547).n128_f32[0], v12));
                       v1452 = COERCE_UNSIGNED_INT128(
-                          powf(LANES128(v1547).n128_f32[1], v12));
+                        powf(LANES128(v1547).n128_f32[1], v12));
                       v1109 = powf(LANES128(v1547).n128_f32[2], v12);
                       *(_QWORD*)&v1110 = __PAIR64__(v1452, v1460);
                       v1111 = *(_DWORD*)(*v1108 + 544);
@@ -7506,13 +7340,13 @@ LABEL_8:
                         v1111 += 16;
                       }
                       DWORD1(v1109) =
-                          LANES64_OF(vdup_laneq_s32(v1547, 3)).n64_u32[0];
+                        LANES64_OF(vdup_laneq_s32(v1547, 3)).n64_u32[0];
                       *((_QWORD*)&v1110 + 1) = *(_QWORD*)&v1109;
                       v1112 = **a1;
                       LANES128(v1113).n128_u32[0] = 0;
                       LANES128(v1113).n128_u64[1] = 0;
                       LANES128(v1113).n128_f32[1] =
-                          *(float*)(*v1108 + 668) * (float)(v1111 + 1);
+                        *(float*)(*v1108 + 668) * (float)(v1111 + 1);
                       v1114 = *(_QWORD*)(v1112 + 18736);
                       v1115 = *(_DWORD*)(v1112 + 19200);
                       v1116 = *(_DWORD*)(v1112 + 17280);
@@ -7523,11 +7357,11 @@ LABEL_8:
                         *(_DWORD*)(v1117 + 12) = 0;
                         *(_OWORD*)(v1117 + 24) = v1110;
                         v1118 = vaddq_f32(
-                            vaddq_f32(v1497, vmulq_n_f32(v1478, v1540)), v1113);
+                          vaddq_f32(v1497, vmulq_n_f32(v1478, v1540)), v1113);
                         *(_QWORD*)v1117 = LANES128(v1118).n128_u64[0];
                         *(_DWORD*)(v1117 + 8) = LANES128(v1118).n128_u32[2];
                         v1119 = v1114 + 1440LL * v1116 +
-                                4LL * *(int*)(v1114 + 1440LL * v1116 + 256);
+                          4LL * *(int*)(v1114 + 1440LL * v1116 + 256);
                         ++*(_DWORD*)(v1119 + 260);
                       }
                       v1120 = **a1;
@@ -7541,11 +7375,11 @@ LABEL_8:
                         *(_DWORD*)(v1124 + 12) = 0;
                         *(_OWORD*)(v1124 + 24) = v1110;
                         v1125 = vaddq_f32(
-                            vaddq_f32(v1487, vmulq_n_f32(v1471, v1540)), v1113);
+                          vaddq_f32(v1487, vmulq_n_f32(v1471, v1540)), v1113);
                         *(_QWORD*)v1124 = LANES128(v1125).n128_u64[0];
                         *(_DWORD*)(v1124 + 8) = LANES128(v1125).n128_u32[2];
                         v1126 = v1121 + 1440LL * v1123 +
-                                4LL * *(int*)(v1121 + 1440LL * v1123 + 256);
+                          4LL * *(int*)(v1121 + 1440LL * v1123 + 256);
                         ++*(_DWORD*)(v1126 + 260);
                       }
                       v1127 = -v1540;
@@ -7560,11 +7394,11 @@ LABEL_8:
                         *(_DWORD*)(v1132 + 12) = 0;
                         *(_OWORD*)(v1132 + 24) = v1110;
                         v1133 = vaddq_f32(
-                            vaddq_f32(v1487, vmulq_n_f32(v1471, v1127)), v1113);
+                          vaddq_f32(v1487, vmulq_n_f32(v1471, v1127)), v1113);
                         *(_QWORD*)v1132 = LANES128(v1133).n128_u64[0];
                         *(_DWORD*)(v1132 + 8) = LANES128(v1133).n128_u32[2];
                         v1134 = v1129 + 1440LL * v1131 +
-                                4LL * *(int*)(v1129 + 1440LL * v1131 + 256);
+                          4LL * *(int*)(v1129 + 1440LL * v1131 + 256);
                         ++*(_DWORD*)(v1134 + 260);
                       }
                       v1135 = **a1;
@@ -7578,11 +7412,11 @@ LABEL_8:
                         *(_DWORD*)(v1139 + 12) = 0;
                         *(_OWORD*)(v1139 + 24) = v1110;
                         v1140 = vaddq_f32(
-                            vaddq_f32(v1497, vmulq_n_f32(v1478, v1127)), v1113);
+                          vaddq_f32(v1497, vmulq_n_f32(v1478, v1127)), v1113);
                         *(_QWORD*)v1139 = LANES128(v1140).n128_u64[0];
                         *(_DWORD*)(v1139 + 8) = LANES128(v1140).n128_u32[2];
                         v1141 = v1136 + 1440LL * v1138 +
-                                4LL * *(int*)(v1136 + 1440LL * v1138 + 256);
+                          4LL * *(int*)(v1136 + 1440LL * v1138 + 256);
                         ++*(_DWORD*)(v1141 + 260);
                       }
                       v984 = v996;
@@ -7603,21 +7437,19 @@ LABEL_8:
                   }
                   v1175 = 2;
                   LANES128(v1176).n128_u64[0] =
-                      LANES64_OF(
-                          vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
-                                    COERCE_AS(int8x8_t, 0x30201000B0A0908LL)))
-                          .n64_u64[0];
+                    LANES64_OF(vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
+                                 COERCE_AS(int8x8_t, 0x30201000B0A0908LL)))
+                      .n64_u64[0];
                   *(int8x8_t*)&LANES128(v1176).n128_i8[8] =
-                      vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
-                                COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL));
+                    vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
+                      COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL));
                   LANES128(v1177).n128_u64[0] =
-                      LANES64_OF(
-                          vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
-                                    COERCE_AS(int8x8_t, 0xB0A090807060504LL)))
-                          .n64_u64[0];
+                    LANES64_OF(vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
+                                 COERCE_AS(int8x8_t, 0xB0A090807060504LL)))
+                      .n64_u64[0];
                   *(int8x8_t*)&LANES128(v1177).n128_i8[8] =
-                      vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
-                                COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL));
+                    vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
+                      COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL));
                   v1498 = v1176;
                   v1479 = v1177;
                   while (2) {
@@ -7637,71 +7469,60 @@ LABEL_8:
                     }
                     LODWORD(v1185) = 0;
                     *((float*)&v1185 + 1) =
-                        *(float*)(*GameData_2130e00 + 668) * (float)(v1184 + 1);
+                      *(float*)(*GameData_2130e00 + 668) * (float)(v1184 + 1);
                     v1541 = COERCE_AS(float32x4_t, v1185);
                     v1472 = LANES128(v1183[24]).n128_f32[0] +
-                            (float)((float)(LANES128(v1183[24]).n128_f32[1] -
-                                            LANES128(v1183[24]).n128_f32[0]) *
-                                    v1182);
+                      (float)((float)(LANES128(v1183[24]).n128_f32[1] -
+                                LANES128(v1183[24]).n128_f32[0]) *
+                        v1182);
                     LANES128(v1186).n128_u64[0] =
-                        LANES64_OF(
-                            vqtbl1_s8(v1181,
-                                      COERCE_AS(int8x8_t, 0xB0A090807060504LL)))
-                            .n64_u64[0];
+                      LANES64_OF(vqtbl1_s8(v1181,
+                                   COERCE_AS(int8x8_t, 0xB0A090807060504LL)))
+                        .n64_u64[0];
                     *(int8x8_t*)&LANES128(v1186).n128_i8[8] = vqtbl1_s8(
-                        v1181, COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL));
+                      v1181, COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL));
                     LANES128(v1187).n128_u64[0] =
-                        LANES64_OF(
-                            vqtbl1_s8(v1181,
-                                      COERCE_AS(int8x8_t, 0x30201000B0A0908LL)))
-                            .n64_u64[0];
+                      LANES64_OF(vqtbl1_s8(v1181,
+                                   COERCE_AS(int8x8_t, 0x30201000B0A0908LL)))
+                        .n64_u64[0];
                     *(int8x8_t*)&LANES128(v1187).n128_i8[8] = vqtbl1_s8(
-                        v1181, COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL));
+                      v1181, COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL));
                     v1188 = vmlsq_f32(vmulq_f32(v1498, v1186), v1479, v1187);
                     v1189 = vmulq_f32(v1188, v1188);
-                    LANES128(v1189).n128_u64[0] =
-                        LANES64_OF(
-                            vadd_f32(COERCE_AS(
-                                         float32x2_t,
-                                         LANES128_OF(vextq_s8(v1189, v1189, 8u))
-                                             .n128_u64[0]),
-                                     COERCE_AS(float32x2_t,
-                                               LANES128(v1189).n128_u64[0])))
-                            .n64_u64[0];
-                    LANES128(v1189).n128_u64[0] =
-                        LANES64_OF(
-                            vpadd_f32(COERCE_AS(float32x2_t,
-                                                LANES128(v1189).n128_u64[0]),
-                                      COERCE_AS(float32x2_t,
-                                                LANES128(v1189).n128_u64[0])))
-                            .n64_u64[0];
+                    LANES128(v1189).n128_u64[0] = LANES64_OF(
+                      vadd_f32(
+                        COERCE_AS(float32x2_t,
+                          LANES128_OF(vextq_s8(v1189, v1189, 8u)).n128_u64[0]),
+                        COERCE_AS(float32x2_t, LANES128(v1189).n128_u64[0])))
+                                                    .n64_u64[0];
+                    LANES128(v1189).n128_u64[0] = LANES64_OF(
+                      vpadd_f32(
+                        COERCE_AS(float32x2_t, LANES128(v1189).n128_u64[0]),
+                        COERCE_AS(float32x2_t, LANES128(v1189).n128_u64[0])))
+                                                    .n64_u64[0];
                     LANES128(v1189).n128_u64[1] = LANES128(v1189).n128_u64[0];
                     v1190 = vrsqrteq_f32(v1189);
                     v1191 = vmulq_f32(
-                        v1190, vrsqrtsq_f32(v1190, vmulq_f32(v1189, v1190)));
+                      v1190, vrsqrtsq_f32(v1190, vmulq_f32(v1189, v1190)));
                     v1517 = vbicq_s8(
+                      vmulq_f32(v1188,
                         vmulq_f32(
-                            v1188,
-                            vmulq_f32(
-                                v1191,
-                                vrsqrtsq_f32(v1191, vmulq_f32(v1189, v1191)))),
-                        vceqzq_f32(v1189));
+                          v1191, vrsqrtsq_f32(v1191, vmulq_f32(v1189, v1191)))),
+                      vceqzq_f32(v1189));
                     v1192 = v1183[27];
                     v1193 = vsubq_f32(v1183[28], v1192);
                     v1194 =
-                        COERCE_FLOAT(HIDWORD(LANES128(v1183[27]).n128_u64[0])) +
-                        vmuls_lane_f32(
-                            v1182,
-                            COERCE_AS(float32x2_t, LANES128(v1193).n128_u64[0]),
-                            1);
+                      COERCE_FLOAT(HIDWORD(LANES128(v1183[27]).n128_u64[0])) +
+                      vmuls_lane_f32(v1182,
+                        COERCE_AS(float32x2_t, LANES128(v1193).n128_u64[0]), 1);
                     v1195 = COERCE_FLOAT(LANES128(v1183[27]).n128_u64[1]) +
-                            vmuls_lane_f32(v1182, v1193, 2);
+                      vmuls_lane_f32(v1182, v1193, 2);
                     *(float*)&v1465 = LANES128(v1192).n128_f32[3] +
-                                      vmuls_lane_f32(v1182, v1193, 3);
-                    v1461 = COERCE_UNSIGNED_INT128(
-                        powf(LANES128(v1192).n128_f32[0] +
-                                 (float)(v1182 * LANES128(v1193).n128_f32[0]),
-                             v12));
+                      vmuls_lane_f32(v1182, v1193, 3);
+                    v1461 =
+                      COERCE_UNSIGNED_INT128(powf(LANES128(v1192).n128_f32[0] +
+                          (float)(v1182 * LANES128(v1193).n128_f32[0]),
+                        v12));
                     v1453 = COERCE_UNSIGNED_INT128(powf(v1194, v12));
                     v1196 = powf(v1195, v12);
                     *(_QWORD*)&v1202 = __PAIR64__(v1453, v1461);
@@ -7718,11 +7539,11 @@ LABEL_8:
                       *(_DWORD*)(v1203 + 12) = 0;
                       *(_OWORD*)(v1203 + 24) = v1202;
                       v1204 = vaddq_f32(
-                          v1541, vaddq_f32(v1508, vmulq_n_f32(v1517, v1472)));
+                        v1541, vaddq_f32(v1508, vmulq_n_f32(v1517, v1472)));
                       *(_QWORD*)v1203 = LANES128(v1204).n128_u64[0];
                       *(_DWORD*)(v1203 + 8) = LANES128(v1204).n128_u32[2];
                       v1205 = v1199 + 1440LL * v1201 +
-                              4LL * *(int*)(v1199 + 1440LL * v1201 + 256);
+                        4LL * *(int*)(v1199 + 1440LL * v1201 + 256);
                       ++*(_DWORD*)(v1205 + 260);
                     }
                     v1206 = v1547;
@@ -7733,60 +7554,51 @@ LABEL_8:
                     v1210 = *(_DWORD*)(v1207 + 17280);
                     v1211 = vsubq_f32(v1206, v1508);
                     LANES128(v1212).n128_u64[0] =
-                        LANES64_OF(
-                            vqtbl1_s8(v1211,
-                                      COERCE_AS(int8x8_t, 0xB0A090807060504LL)))
-                            .n64_u64[0];
+                      LANES64_OF(vqtbl1_s8(v1211,
+                                   COERCE_AS(int8x8_t, 0xB0A090807060504LL)))
+                        .n64_u64[0];
                     *(_DWORD*)(v1207 + 19200) = v1209 + 1;
                     *(int8x8_t*)&LANES128(v1212).n128_i8[8] = vqtbl1_s8(
-                        v1211, COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL));
+                      v1211, COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL));
                     LANES128(v1213).n128_u64[0] =
-                        LANES64_OF(
-                            vqtbl1_s8(v1211,
-                                      COERCE_AS(int8x8_t, 0x30201000B0A0908LL)))
-                            .n64_u64[0];
+                      LANES64_OF(vqtbl1_s8(v1211,
+                                   COERCE_AS(int8x8_t, 0x30201000B0A0908LL)))
+                        .n64_u64[0];
                     *(int8x8_t*)&LANES128(v1213).n128_i8[8] = vqtbl1_s8(
-                        v1211, COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL));
+                      v1211, COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL));
                     v1214 = vmlsq_f32(vmulq_f32(v1498, v1212), v1479, v1213);
                     v1215 = vmulq_f32(v1214, v1214);
-                    LANES128(v1215).n128_u64[0] =
-                        LANES64_OF(
-                            vadd_f32(COERCE_AS(
-                                         float32x2_t,
-                                         LANES128_OF(vextq_s8(v1215, v1215, 8u))
-                                             .n128_u64[0]),
-                                     COERCE_AS(float32x2_t,
-                                               LANES128(v1215).n128_u64[0])))
-                            .n64_u64[0];
-                    LANES128(v1215).n128_u64[0] =
-                        LANES64_OF(
-                            vpadd_f32(COERCE_AS(float32x2_t,
-                                                LANES128(v1215).n128_u64[0]),
-                                      COERCE_AS(float32x2_t,
-                                                LANES128(v1215).n128_u64[0])))
-                            .n64_u64[0];
+                    LANES128(v1215).n128_u64[0] = LANES64_OF(
+                      vadd_f32(
+                        COERCE_AS(float32x2_t,
+                          LANES128_OF(vextq_s8(v1215, v1215, 8u)).n128_u64[0]),
+                        COERCE_AS(float32x2_t, LANES128(v1215).n128_u64[0])))
+                                                    .n64_u64[0];
+                    LANES128(v1215).n128_u64[0] = LANES64_OF(
+                      vpadd_f32(
+                        COERCE_AS(float32x2_t, LANES128(v1215).n128_u64[0]),
+                        COERCE_AS(float32x2_t, LANES128(v1215).n128_u64[0])))
+                                                    .n64_u64[0];
                     LANES128(v1215).n128_u64[1] = LANES128(v1215).n128_u64[0];
                     v1216 = vrsqrteq_f32(v1215);
                     v1217 = vmulq_f32(
-                        v1216, vrsqrtsq_f32(v1216, vmulq_f32(v1215, v1216)));
+                      v1216, vrsqrtsq_f32(v1216, vmulq_f32(v1215, v1216)));
                     v1218 = vbicq_s8(
+                      vmulq_f32(v1214,
                         vmulq_f32(
-                            v1214,
-                            vmulq_f32(
-                                v1217,
-                                vrsqrtsq_f32(v1217, vmulq_f32(v1215, v1217)))),
-                        vceqzq_f32(v1215));
+                          v1217, vrsqrtsq_f32(v1217, vmulq_f32(v1215, v1217)))),
+                      vceqzq_f32(v1215));
                     if (v1209 <= 262142) {
                       v1219 = *(_QWORD*)(v1207 + 19136) + 40LL * (v1209 + 1);
                       *(_QWORD*)(v1219 + 16) = 0;
                       *(_DWORD*)(v1219 + 12) = 0;
                       *(_OWORD*)(v1219 + 24) = v1202;
                       v1220 = vaddq_f32(
-                          v1541, vaddq_f32(v1206, vmulq_n_f32(v1218, v1472)));
+                        v1541, vaddq_f32(v1206, vmulq_n_f32(v1218, v1472)));
                       *(_QWORD*)v1219 = LANES128(v1220).n128_u64[0];
                       *(_DWORD*)(v1219 + 8) = LANES128(v1220).n128_u32[2];
                       v1221 = v1208 + 1440LL * v1210 +
-                              4LL * *(int*)(v1208 + 1440LL * v1210 + 256);
+                        4LL * *(int*)(v1208 + 1440LL * v1210 + 256);
                       ++*(_DWORD*)(v1221 + 260);
                     }
                     v1222 = -v1472;
@@ -7801,11 +7613,11 @@ LABEL_8:
                       *(_DWORD*)(v1227 + 12) = 0;
                       *(_OWORD*)(v1227 + 24) = v1202;
                       v1228 = vaddq_f32(
-                          v1541, vaddq_f32(v1206, vmulq_n_f32(v1218, v1222)));
+                        v1541, vaddq_f32(v1206, vmulq_n_f32(v1218, v1222)));
                       *(_QWORD*)v1227 = LANES128(v1228).n128_u64[0];
                       *(_DWORD*)(v1227 + 8) = LANES128(v1228).n128_u32[2];
                       v1229 = v1224 + 1440LL * v1226 +
-                              4LL * *(int*)(v1224 + 1440LL * v1226 + 256);
+                        4LL * *(int*)(v1224 + 1440LL * v1226 + 256);
                       ++*(_DWORD*)(v1229 + 260);
                     }
                     v1230 = *a1;
@@ -7822,24 +7634,24 @@ LABEL_8:
                       *(_DWORD*)(v1235 + 12) = 0;
                       *(_OWORD*)(v1235 + 24) = v1202;
                       v1236 = vaddq_f32(
-                          v1541, vaddq_f32(v1508, vmulq_n_f32(v1517, v1222)));
+                        v1541, vaddq_f32(v1508, vmulq_n_f32(v1517, v1222)));
                       *(_QWORD*)v1235 = LANES128(v1236).n128_u64[0];
                       *(_DWORD*)(v1235 + 8) = LANES128(v1236).n128_u32[2];
                       v1237 = v1232 + 1440LL * v1234 +
-                              4LL * *(int*)(v1232 + 1440LL * v1234 + 256);
+                        4LL * *(int*)(v1232 + 1440LL * v1234 + 256);
                       ++*(_DWORD*)(v1237 + 260);
                     }
                     v1238 = v440[2];
                     v1239 = *(_OWORD*)&v1577[2 * v1175];
                     if (*(float*)&v1239 >
-                            (float)(v983 + LANES128(v1238).n128_f32[0]) ||
-                        *(float*)&v1239 <
-                            (float)(LANES128(v1238).n128_f32[0] - v983) ||
-                        (LODWORD(v1240) = v1577[2 * v1175 + 1],
-                         *((float*)&v1239 + 2) >
-                             (float)(v983 + LANES128(v1238).n128_f32[2])) ||
-                        *((float*)&v1239 + 2) <
-                            (float)(LANES128(v1238).n128_f32[2] - v983)) {
+                        (float)(v983 + LANES128(v1238).n128_f32[0]) ||
+                      *(float*)&v1239 <
+                        (float)(LANES128(v1238).n128_f32[0] - v983) ||
+                      (LODWORD(v1240) = v1577[2 * v1175 + 1],
+                        *((float*)&v1239 + 2) >
+                          (float)(v983 + LANES128(v1238).n128_f32[2])) ||
+                      *((float*)&v1239 + 2) <
+                        (float)(LANES128(v1238).n128_f32[2] - v983)) {
                       v1241 = (float32x4_t*)*GameData_2130e00;
                     }
                     else {
@@ -7863,9 +7675,9 @@ LABEL_8:
                             if (**v1244 == v59) {
                               v1298 = v1297[12];
                               if (v1298 != nullptr &&
-                                  (unsigned int)LANES128(v1298[2]).n128_u8[0] -
-                                          3 <
-                                      2) {
+                                (unsigned int)LANES128(v1298[2]).n128_u8[0] -
+                                    3 <
+                                  2) {
                                 break;
                               }
                             }
@@ -7895,41 +7707,38 @@ LABEL_8:
                       v1253 = COERCE_FLOAT(LANES128(v59[2]).n128_u64[1]);
                       v1254 = v1249 + v1253;
                       v1255 =
-                          *(float*)&v1239 > v1251 || *(float*)&v1239 < v1252;
+                        *(float*)&v1239 > v1251 || *(float*)&v1239 < v1252;
                       v1256 = v1253 - v1249;
                       if (v1255 || v1240 > v1254 || v1240 < v1256) {
                         v1259 = LANES128(v1241[36]).n128_i32[3];
                         if (v1259 >
-                            (signed __int32)LANES128(v1241[36]).n128_u32[0]) {
+                          (signed __int32)LANES128(v1241[36]).n128_u32[0]) {
                           v1259 += 16;
                         }
                         LANES128(v1198).n128_f32[1] =
-                            LANES128(v1241[41]).n128_f32[3] *
-                            (float)(v1259 + 1);
+                          LANES128(v1241[41]).n128_f32[3] * (float)(v1259 + 1);
                         v1541 = v1198;
                       }
                     }
                     v1260 = *((float*)a1 + 16);
                     v1467 = LANES128(v1241[24]).n128_f32[0] +
-                            (float)((float)(LANES128(v1241[24]).n128_f32[1] -
-                                            LANES128(v1241[24]).n128_f32[0]) *
-                                    v1260);
+                      (float)((float)(LANES128(v1241[24]).n128_f32[1] -
+                                LANES128(v1241[24]).n128_f32[0]) *
+                        v1260);
                     v1261 = v1241[27];
                     v1262 = vsubq_f32(v1241[28], v1261);
                     v1263 =
-                        COERCE_FLOAT(HIDWORD(LANES128(v1241[27]).n128_u64[0])) +
-                        vmuls_lane_f32(
-                            v1260,
-                            COERCE_AS(float32x2_t, LANES128(v1262).n128_u64[0]),
-                            1);
+                      COERCE_FLOAT(HIDWORD(LANES128(v1241[27]).n128_u64[0])) +
+                      vmuls_lane_f32(v1260,
+                        COERCE_AS(float32x2_t, LANES128(v1262).n128_u64[0]), 1);
                     v1264 = COERCE_FLOAT(LANES128(v1241[27]).n128_u64[1]) +
-                            vmuls_lane_f32(v1260, v1262, 2);
+                      vmuls_lane_f32(v1260, v1262, 2);
                     *(float*)&v1462 = LANES128(v1261).n128_f32[3] +
-                                      vmuls_lane_f32(v1260, v1262, 3);
-                    v1454 = COERCE_UNSIGNED_INT128(
-                        powf(LANES128(v1261).n128_f32[0] +
-                                 (float)(v1260 * LANES128(v1262).n128_f32[0]),
-                             v12));
+                      vmuls_lane_f32(v1260, v1262, 3);
+                    v1454 =
+                      COERCE_UNSIGNED_INT128(powf(LANES128(v1261).n128_f32[0] +
+                          (float)(v1260 * LANES128(v1262).n128_f32[0]),
+                        v12));
                     v1450 = COERCE_UNSIGNED_INT128(powf(v1263, v12));
                     v1265 = powf(v1264, v12);
                     *(_QWORD*)&v1270 = __PAIR64__(v1450, v1454);
@@ -7945,11 +7754,11 @@ LABEL_8:
                       *(_DWORD*)(v1271 + 12) = 0;
                       *(_OWORD*)(v1271 + 24) = v1270;
                       v1272 = vaddq_f32(
-                          v1541, vaddq_f32(v1508, vmulq_n_f32(v1517, v1467)));
+                        v1541, vaddq_f32(v1508, vmulq_n_f32(v1517, v1467)));
                       *(_QWORD*)v1271 = LANES128(v1272).n128_u64[0];
                       *(_DWORD*)(v1271 + 8) = LANES128(v1272).n128_u32[2];
                       v1273 = v1267 + 1440LL * v1269 +
-                              4LL * *(int*)(v1267 + 1440LL * v1269 + 256);
+                        4LL * *(int*)(v1267 + 1440LL * v1269 + 256);
                       ++*(_DWORD*)(v1273 + 260);
                     }
                     v1274 = v1547;
@@ -7965,11 +7774,11 @@ LABEL_8:
                       *(_DWORD*)(v1279 + 12) = 0;
                       *(_OWORD*)(v1279 + 24) = v1270;
                       v1280 = vaddq_f32(
-                          v1541, vaddq_f32(v1274, vmulq_n_f32(v1473, v1467)));
+                        v1541, vaddq_f32(v1274, vmulq_n_f32(v1473, v1467)));
                       *(_QWORD*)v1279 = LANES128(v1280).n128_u64[0];
                       *(_DWORD*)(v1279 + 8) = LANES128(v1280).n128_u32[2];
                       v1281 = v1276 + 1440LL * v1278 +
-                              4LL * *(int*)(v1276 + 1440LL * v1278 + 256);
+                        4LL * *(int*)(v1276 + 1440LL * v1278 + 256);
                       ++*(_DWORD*)(v1281 + 260);
                     }
                     v1282 = -v1467;
@@ -7984,11 +7793,11 @@ LABEL_8:
                       *(_DWORD*)(v1287 + 12) = 0;
                       *(_OWORD*)(v1287 + 24) = v1270;
                       v1288 = vaddq_f32(
-                          v1541, vaddq_f32(v1274, vmulq_n_f32(v1473, v1282)));
+                        v1541, vaddq_f32(v1274, vmulq_n_f32(v1473, v1282)));
                       *(_QWORD*)v1287 = LANES128(v1288).n128_u64[0];
                       *(_DWORD*)(v1287 + 8) = LANES128(v1288).n128_u32[2];
                       v1289 = v1284 + 1440LL * v1286 +
-                              4LL * *(int*)(v1284 + 1440LL * v1286 + 256);
+                        4LL * *(int*)(v1284 + 1440LL * v1286 + 256);
                       ++*(_DWORD*)(v1289 + 260);
                     }
                     v1290 = **a1;
@@ -8002,11 +7811,11 @@ LABEL_8:
                       *(_DWORD*)(v1294 + 12) = 0;
                       *(_OWORD*)(v1294 + 24) = v1270;
                       v1295 = vaddq_f32(
-                          v1541, vaddq_f32(v1508, vmulq_n_f32(v1517, v1282)));
+                        v1541, vaddq_f32(v1508, vmulq_n_f32(v1517, v1282)));
                       *(_QWORD*)v1294 = LANES128(v1295).n128_u64[0];
                       *(_DWORD*)(v1294 + 8) = LANES128(v1295).n128_u32[2];
                       v1296 = v1291 + 1440LL * v1293 +
-                              4LL * *(int*)(v1291 + 1440LL * v1293 + 256);
+                        4LL * *(int*)(v1291 + 1440LL * v1293 + 256);
                       ++*(_DWORD*)(v1296 + 260);
                     }
                     if (++v1175 > (unsigned __int64)(int)v959) {
@@ -8035,7 +7844,7 @@ LABEL_8:
           *(_OWORD*)v1577 = v448;
           v449 = 1;
           v450 = *(float*)(*GameData_2130e00 + 164) *
-                 *(float*)(*GameData_2130e00 + 164);
+            *(float*)(*GameData_2130e00 + 164);
           do {
             v451 = (float)v449 / 0x1.e000000000000p+5;
             if (v451 >= 0x1.0000000000000p-1) {
@@ -8057,46 +7866,36 @@ LABEL_8:
               v458 = (float32x4_t*)(v443 + 12);
             }
             v459 = vaddq_f32(
-                vaddq_f32(
-                    vaddq_f32(
-                        vmulq_n_f32(v455, v456 * v457),
-                        vmulq_n_f32(
+              vaddq_f32(vaddq_f32(vmulq_n_f32(v455, v456 * v457),
+                          vmulq_n_f32(
                             v453, v452 * (float)(v456 * (float)(v456 * v20)))),
-                    vmulq_n_f32(v454,
-                                v452 * (float)(v452 * (float)(v456 * v20)))),
-                vmulq_n_f32(*v458, v452 * (float)(v452 * v452)));
+                vmulq_n_f32(v454, v452 * (float)(v452 * (float)(v456 * v20)))),
+              vmulq_n_f32(*v458, v452 * (float)(v452 * v452)));
             v460 = v459;
             LANES128(v460).n128_u32[3] = 0;
             v461 = vsubq_f32(*(float32x4_t*)&v1577[2 * (int)v446 - 2], v460);
             v462 = vmulq_f32(v461, v461);
-            LANES128(v462).n128_u64[0] =
-                LANES64_OF(
-                    vadd_f32(
-                        COERCE_AS(
-                            float32x2_t,
-                            LANES128_OF(vextq_s8(v462, v462, 8u)).n128_u64[0]),
-                        COERCE_AS(float32x2_t, LANES128(v462).n128_u64[0])))
-                    .n64_u64[0];
+            LANES128(v462).n128_u64[0] = LANES64_OF(
+              vadd_f32(COERCE_AS(float32x2_t,
+                         LANES128_OF(vextq_s8(v462, v462, 8u)).n128_u64[0]),
+                COERCE_AS(float32x2_t, LANES128(v462).n128_u64[0])))
+                                           .n64_u64[0];
             if (LANES64_OF(
-                    vpadd_f32(
-                        COERCE_AS(float32x2_t, LANES128(v462).n128_u64[0]),
-                        COERCE_AS(float32x2_t, LANES128(v462).n128_u64[0])))
-                    .n64_f32[0] > v450) {
+                  vpadd_f32(COERCE_AS(float32x2_t, LANES128(v462).n128_u64[0]),
+                    COERCE_AS(float32x2_t, LANES128(v462).n128_u64[0])))
+                  .n64_f32[0] > v450) {
               v463 = vsubq_f32(v460, v440[2]);
               v464 = vmulq_f32(v463, v463);
-              LANES128(v464).n128_u64[0] =
-                  LANES64_OF(
-                      vadd_f32(
-                          COERCE_AS(float32x2_t,
-                                    LANES128_OF(vextq_s8(v464, v464, 8u))
-                                        .n128_u64[0]),
-                          COERCE_AS(float32x2_t, LANES128(v464).n128_u64[0])))
-                      .n64_u64[0];
+              LANES128(v464).n128_u64[0] = LANES64_OF(
+                vadd_f32(COERCE_AS(float32x2_t,
+                           LANES128_OF(vextq_s8(v464, v464, 8u)).n128_u64[0]),
+                  COERCE_AS(float32x2_t, LANES128(v464).n128_u64[0])))
+                                             .n64_u64[0];
               if (LANES64_OF(
-                      vpadd_f32(
-                          COERCE_AS(float32x2_t, LANES128(v464).n128_u64[0]),
-                          COERCE_AS(float32x2_t, LANES128(v464).n128_u64[0])))
-                      .n64_f32[0] > (float)(v450 * v19)) {
+                    vpadd_f32(
+                      COERCE_AS(float32x2_t, LANES128(v464).n128_u64[0]),
+                      COERCE_AS(float32x2_t, LANES128(v464).n128_u64[0])))
+                    .n64_f32[0] > (float)(v450 * v19)) {
                 v446 = (int)v446 + 1LL;
                 v465 = &v1577[2 * v446];
                 *v465 = LANES128(v459).n128_u64[0];
@@ -8123,27 +7922,27 @@ LABEL_8:
           v469 = v467 + 1LL;
           do {
             v470 =
-                *(_QWORD*)(*(_QWORD*)(*(_QWORD*)GameData_212c638 + 32LL) - 8LL);
+              *(_QWORD*)(*(_QWORD*)(*(_QWORD*)GameData_212c638 + 32LL) - 8LL);
             v472 = *(_QWORD*)(v470 + 24);
             v471 = *(__int64**)(v470 + 32);
             if (v471 != nullptr) {
-              atomic_fetch_add_explicit((atomic_ullong* volatile)(v471 + 1), 1u,
-                                        memory_order_relaxed);
+              atomic_fetch_add_explicit(
+                (atomic_ullong* volatile)(v471 + 1), 1u, memory_order_relaxed);
             }
             *(_OWORD*)v1582 = ((long double (*)(__int64)) *
-                               (_QWORD*)(*(_QWORD*)v472 + 16LL))(v472);
+              (_QWORD*)(*(_QWORD*)v472 + 16LL))(v472);
             *(_OWORD*)&v1582[2] = v473;
             v1583 = v474;
             v1584 = v475;
             *(_OWORD*)v1581 = ((long double (*)(__int64)) *
-                               (_QWORD*)(*(_QWORD*)v472 + 24LL))(v472);
+              (_QWORD*)(*(_QWORD*)v472 + 24LL))(v472);
             *(_OWORD*)&v1581[2] = v476;
             *(_OWORD*)&v1581[4] = v477;
             *(_OWORD*)&v1581[6] = v478;
             v479 = GameRoutine_a6c440(v468, v1582, v1581);
             if (v471 != nullptr &&
-                atomic_fetch_add((atomic_ullong* volatile)(v471 + 1),
-                                 0xFFFFFFFFFFFFFFFFLL) == 0) {
+              atomic_fetch_add((atomic_ullong* volatile)(v471 + 1),
+                0xFFFFFFFFFFFFFFFFLL) == 0) {
               v480 = *v471;
               v1547 = v479;
               (*(void (**)(__int64*))(v480 + 16))(v471);
@@ -8151,31 +7950,28 @@ LABEL_8:
               v479 = v1547;
             }
             if (LANES128(v479).n128_f32[2] <= 0.0 &&
-                LANES128(v479).n128_f32[0] >= 0.0 &&
-                LANES128(v479).n128_f32[0] <= 0x1.e000000000000p+10 &&
-                LANES128(v479).n128_f32[1] >= 0.0 &&
-                LANES128(v479).n128_f32[1] <= 0x1.0e00000000000p+10) {
+              LANES128(v479).n128_f32[0] >= 0.0 &&
+              LANES128(v479).n128_f32[0] <= 0x1.e000000000000p+10 &&
+              LANES128(v479).n128_f32[1] >= 0.0 &&
+              LANES128(v479).n128_f32[1] <= 0x1.0e00000000000p+10) {
               v481 = *v468;
               v482 = (int32x4_t**)GameData_2130e00;
               v483 = vsubq_f32(v440[2], *v468);
               v484 = vmulq_f32(v483, v483);
-              LANES128(v484).n128_u64[0] =
-                  LANES64_OF(
-                      vadd_f32(
-                          COERCE_AS(float32x2_t,
-                                    LANES128_OF(vextq_s8(v484, v484, 8u))
-                                        .n128_u64[0]),
-                          COERCE_AS(float32x2_t, LANES128(v484).n128_u64[0])))
-                      .n64_u64[0];
+              LANES128(v484).n128_u64[0] = LANES64_OF(
+                vadd_f32(COERCE_AS(float32x2_t,
+                           LANES128_OF(vextq_s8(v484, v484, 8u)).n128_u64[0]),
+                  COERCE_AS(float32x2_t, LANES128(v484).n128_u64[0])))
+                                             .n64_u64[0];
               if (LANES64_OF(
-                      vpadd_f32(
-                          COERCE_AS(float32x2_t, LANES128(v484).n128_u64[0]),
-                          COERCE_AS(float32x2_t, LANES128(v484).n128_u64[0])))
-                      .n64_f32[0] >=
-                  (float)((float)(*(float*)(*GameData_2130e00 + 172) *
-                                  0x1.0000000000000p-1) *
-                          (float)(*(float*)(*GameData_2130e00 + 172) *
-                                  0x1.0000000000000p-1))) {
+                    vpadd_f32(
+                      COERCE_AS(float32x2_t, LANES128(v484).n128_u64[0]),
+                      COERCE_AS(float32x2_t, LANES128(v484).n128_u64[0])))
+                    .n64_f32[0] >=
+                (float)((float)(*(float*)(*GameData_2130e00 + 172) *
+                          0x1.0000000000000p-1) *
+                  (float)(*(float*)(*GameData_2130e00 + 172) *
+                    0x1.0000000000000p-1))) {
                 v467 = v469 - 1;
                 v593 = true;
                 v1446 = v481;
@@ -8186,10 +7982,10 @@ LABEL_8:
               }
               v1547 = *(int32x4_t*)(*GameData_2130e00 + 176);
               v1534 = vmuls_lane_f32(v1463, v1547, 3) + 0.0;
-              v1513 = COERCE_UNSIGNED_INT128(
-                  powf(LANES128(v1547).n128_f32[0], v12));
-              v1503 = COERCE_UNSIGNED_INT128(
-                  powf(LANES128(v1547).n128_f32[1], v12));
+              v1513 =
+                COERCE_UNSIGNED_INT128(powf(LANES128(v1547).n128_f32[0], v12));
+              v1503 =
+                COERCE_UNSIGNED_INT128(powf(LANES128(v1547).n128_f32[1], v12));
               v485 = powf(LANES128(v1547).n128_f32[2], v12);
               *(_QWORD*)&v486 = __PAIR64__(v1503, v1513);
               v487 = *v482;
@@ -8202,94 +7998,78 @@ LABEL_8:
               v490 = LANES128(v487[24]).n128_f32[0];
               v491 = **a1;
               v492 = v490 +
-                     (float)((float)(LANES128((*v482)[24]).n128_f32[1] - v490) *
-                             *((float*)a1 + 16));
-              v493 = LANES64_OF(
-                         vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
-                                   COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL)))
-                         .n64_u64[0];
+                (float)((float)(LANES128((*v482)[24]).n128_f32[1] - v490) *
+                  *((float*)a1 + 16));
+              v493 =
+                LANES64_OF(vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
+                             COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL)))
+                  .n64_u64[0];
               LANES64(v1535).n64_u64[0] =
-                  LANES64_OF(
-                      vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
-                                COERCE_AS(int8x8_t, 0x30201000B0A0908LL)))
-                      .n64_u64[0];
+                LANES64_OF(vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
+                             COERCE_AS(int8x8_t, 0x30201000B0A0908LL)))
+                  .n64_u64[0];
               v494 = *(_QWORD*)(v491 + 18736);
               v495 = *(_DWORD*)(v491 + 19200);
               v496 = *(_DWORD*)(v491 + 17280);
               v497 = vsubq_f32(v440[2], v59[2]);
-              LANES128(v498).n128_u64[0] =
-                  LANES64_OF(
-                      vqtbl1_s8(v497, COERCE_AS(int8x8_t, 0xB0A090807060504LL)))
-                      .n64_u64[0];
+              LANES128(v498).n128_u64[0] = LANES64_OF(
+                vqtbl1_s8(v497, COERCE_AS(int8x8_t, 0xB0A090807060504LL)))
+                                             .n64_u64[0];
               *(int8x8_t*)&LANES128(v498).n128_i8[8] =
-                  vqtbl1_s8(v497, COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL));
+                vqtbl1_s8(v497, COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL));
               LANES128(v499).n128_u64[0] = LANES64(v1535).n64_u64[0];
               LANES128(v499).n128_u64[1] = v493;
               v500 = vmulq_f32(v498, v499);
-              LANES128(v499).n128_u64[0] =
-                  LANES64_OF(
-                      vqtbl1_s8(v497, COERCE_AS(int8x8_t, 0x30201000B0A0908LL)))
-                      .n64_u64[0];
+              LANES128(v499).n128_u64[0] = LANES64_OF(
+                vqtbl1_s8(v497, COERCE_AS(int8x8_t, 0x30201000B0A0908LL)))
+                                             .n64_u64[0];
               *(int8x8_t*)&LANES128(v499).n128_i8[8] =
-                  vqtbl1_s8(v497, COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL));
+                vqtbl1_s8(v497, COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL));
               LANES128(v501).n128_u64[0] =
-                  LANES64_OF(
-                      vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
-                                COERCE_AS(int8x8_t, 0xB0A090807060504LL)))
-                      .n64_u64[0];
+                LANES64_OF(vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
+                             COERCE_AS(int8x8_t, 0xB0A090807060504LL)))
+                  .n64_u64[0];
               *(int8x8_t*)&LANES128(v501).n128_i8[8] =
-                  vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
-                            COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL));
+                vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
+                  COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL));
               v502 = vmlsq_f32(v500, v501, v499);
               v503 = vmulq_f32(v497, v497);
               v1504 = v501;
               v1514 = v493;
-              LANES128(v503).n128_u64[0] =
-                  LANES64_OF(
-                      vadd_f32(
-                          COERCE_AS(float32x2_t,
-                                    LANES128_OF(vextq_s8(v503, v503, 8u))
-                                        .n128_u64[0]),
-                          COERCE_AS(float32x2_t, LANES128(v503).n128_u64[0])))
-                      .n64_u64[0];
-              LANES128(v503).n128_u64[0] =
-                  LANES64_OF(
-                      vpadd_f32(
-                          COERCE_AS(float32x2_t, LANES128(v503).n128_u64[0]),
-                          COERCE_AS(float32x2_t, LANES128(v503).n128_u64[0])))
-                      .n64_u64[0];
+              LANES128(v503).n128_u64[0] = LANES64_OF(
+                vadd_f32(COERCE_AS(float32x2_t,
+                           LANES128_OF(vextq_s8(v503, v503, 8u)).n128_u64[0]),
+                  COERCE_AS(float32x2_t, LANES128(v503).n128_u64[0])))
+                                             .n64_u64[0];
+              LANES128(v503).n128_u64[0] = LANES64_OF(
+                vpadd_f32(COERCE_AS(float32x2_t, LANES128(v503).n128_u64[0]),
+                  COERCE_AS(float32x2_t, LANES128(v503).n128_u64[0])))
+                                             .n64_u64[0];
               LANES128(v503).n128_u64[1] = LANES128(v503).n128_u64[0];
               v504 = vrsqrteq_f32(v503);
               v505 = vmulq_f32(v504, vrsqrtsq_f32(v504, vmulq_f32(v503, v504)));
               v506 = vbicq_s8(
-                  vmulq_f32(v497,
-                            vmulq_f32(v505, vrsqrtsq_f32(
-                                                v505, vmulq_f32(v503, v505)))),
-                  vceqzq_f32(v503));
+                vmulq_f32(v497,
+                  vmulq_f32(v505, vrsqrtsq_f32(v505, vmulq_f32(v503, v505)))),
+                vceqzq_f32(v503));
               v507 = vmulq_f32(v502, v502);
               v508 = vmulq_n_f32(v506, v492);
-              LANES128(v507).n128_u64[0] =
-                  LANES64_OF(
-                      vadd_f32(
-                          COERCE_AS(float32x2_t,
-                                    LANES128_OF(vextq_s8(v507, v507, 8u))
-                                        .n128_u64[0]),
-                          COERCE_AS(float32x2_t, LANES128(v507).n128_u64[0])))
-                      .n64_u64[0];
-              LANES128(v507).n128_u64[0] =
-                  LANES64_OF(
-                      vpadd_f32(
-                          COERCE_AS(float32x2_t, LANES128(v507).n128_u64[0]),
-                          COERCE_AS(float32x2_t, LANES128(v507).n128_u64[0])))
-                      .n64_u64[0];
+              LANES128(v507).n128_u64[0] = LANES64_OF(
+                vadd_f32(COERCE_AS(float32x2_t,
+                           LANES128_OF(vextq_s8(v507, v507, 8u)).n128_u64[0]),
+                  COERCE_AS(float32x2_t, LANES128(v507).n128_u64[0])))
+                                             .n64_u64[0];
+              LANES128(v507).n128_u64[0] = LANES64_OF(
+                vpadd_f32(COERCE_AS(float32x2_t, LANES128(v507).n128_u64[0]),
+                  COERCE_AS(float32x2_t, LANES128(v507).n128_u64[0])))
+                                             .n64_u64[0];
               LANES128(v507).n128_u64[1] = LANES128(v507).n128_u64[0];
               v509 = vrsqrteq_f32(v507);
               v510 = vmulq_f32(v509, vrsqrtsq_f32(v509, vmulq_f32(v507, v509)));
               v511 = vbicq_s8(
-                  vmulq_f32(v502,
-                            vmulq_f32(v510, vrsqrtsq_f32(
-                                                v510, vmulq_f32(v507, v510)))),
-                  vceqzq_f32(v507));
+                vmulq_f32(v502,
+                  vmulq_f32(v510, vrsqrtsq_f32(v510, vmulq_f32(v507, v510)))),
+                vceqzq_f32(v507));
               v512 = *v468;
               *(_DWORD*)(v491 + 19200) = v495 + 1;
               v513 = vmulq_n_f32(v511, v492);
@@ -8304,7 +8084,7 @@ LABEL_8:
                 LANES128(v515).n128_f32[1] = v489 + LANES128(v515).n128_f32[1];
                 *(_QWORD*)v516 = LANES128(v515).n128_u64[0];
                 v517 = v494 + 1440LL * v496 +
-                       4LL * *(int*)(v494 + 1440LL * v496 + 256);
+                  4LL * *(int*)(v494 + 1440LL * v496 + 256);
                 ++*(_DWORD*)(v517 + 260);
               }
               v518 = **a1;
@@ -8322,7 +8102,7 @@ LABEL_8:
                 LANES128(v522).n128_f32[1] = v489 + LANES128(v522).n128_f32[1];
                 *(_QWORD*)v523 = LANES128(v522).n128_u64[0];
                 v524 = v519 + 1440LL * v521 +
-                       4LL * *(int*)(v519 + 1440LL * v521 + 256);
+                  4LL * *(int*)(v519 + 1440LL * v521 + 256);
                 ++*(_DWORD*)(v524 + 260);
               }
               v525 = vaddq_f32(v508, v512);
@@ -8341,7 +8121,7 @@ LABEL_8:
                 LANES128(v530).n128_f32[1] = v489 + LANES128(v530).n128_f32[1];
                 *(_QWORD*)v531 = LANES128(v530).n128_u64[0];
                 v532 = v527 + 1440LL * v529 +
-                       4LL * *(int*)(v527 + 1440LL * v529 + 256);
+                  4LL * *(int*)(v527 + 1440LL * v529 + 256);
                 ++*(_DWORD*)(v532 + 260);
               }
               v533 = **a1;
@@ -8359,14 +8139,14 @@ LABEL_8:
                 LANES128(v537).n128_f32[1] = v489 + LANES128(v537).n128_f32[1];
                 *(_QWORD*)v538 = LANES128(v537).n128_u64[0];
                 v539 = v534 + 1440LL * v536 +
-                       4LL * *(int*)(v534 + 1440LL * v536 + 256);
+                  4LL * *(int*)(v534 + 1440LL * v536 + 256);
                 ++*(_DWORD*)(v539 + 260);
               }
               v1547 = (*v482)[12];
-              v1491 = COERCE_UNSIGNED_INT128(
-                  powf(LANES128(v1547).n128_f32[0], v12));
-              v1481 = COERCE_UNSIGNED_INT128(
-                  powf(LANES128(v1547).n128_f32[1], v12));
+              v1491 =
+                COERCE_UNSIGNED_INT128(powf(LANES128(v1547).n128_f32[0], v12));
+              v1481 =
+                COERCE_UNSIGNED_INT128(powf(LANES128(v1547).n128_f32[1], v12));
               v540 = powf(LANES128(v1547).n128_f32[2], v12);
               LANES128(v542).n128_u64[0] = LANES64(v1535).n64_u64[0];
               v541 = vsubq_f32(v440[2], v59[2]);
@@ -8374,26 +8154,23 @@ LABEL_8:
               *(_QWORD*)&v543 = __PAIR64__(v1481, v1491);
               v544 = *v482;
               v545 = LANES128((*v482)[34]).n128_i32[0];
-              LANES128(v546).n128_u64[0] =
-                  LANES64_OF(
-                      vqtbl1_s8(v541, COERCE_AS(int8x8_t, 0xB0A090807060504LL)))
-                      .n64_u64[0];
-              LANES64(v547).n64_u64[0] =
-                  LANES64_OF(
-                      vqtbl1_s8(v541, COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL)))
-                      .n64_u64[0];
+              LANES128(v546).n128_u64[0] = LANES64_OF(
+                vqtbl1_s8(v541, COERCE_AS(int8x8_t, 0xB0A090807060504LL)))
+                                             .n64_u64[0];
+              LANES64(v547).n64_u64[0] = LANES64_OF(
+                vqtbl1_s8(v541, COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL)))
+                                           .n64_u64[0];
               if (v545 > (signed __int32)LANES128((*v482)[36]).n128_u32[0]) {
                 v545 += 16;
               }
               DWORD1(v540) = LANES64_OF(vdup_laneq_s32(v1547, 3)).n64_u32[0];
               *(int8x8_t*)&LANES128(v546).n128_i8[8] = v547;
-              LANES128(v548).n128_u64[0] =
-                  LANES64_OF(
-                      vqtbl1_s8(v541, COERCE_AS(int8x8_t, 0x30201000B0A0908LL)))
-                      .n64_u64[0];
+              LANES128(v548).n128_u64[0] = LANES64_OF(
+                vqtbl1_s8(v541, COERCE_AS(int8x8_t, 0x30201000B0A0908LL)))
+                                             .n64_u64[0];
               *((_QWORD*)&v543 + 1) = *(_QWORD*)&v540;
               *(int8x8_t*)&LANES128(v548).n128_i8[8] =
-                  vqtbl1_s8(v541, COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL));
+                vqtbl1_s8(v541, COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL));
               v549 = LANES128(v544[41]).n128_f32[3] * (float)(v545 + 1);
               v550 = LANES128(v544[10]).n128_f32[0];
               v551 = **a1;
@@ -8402,52 +8179,40 @@ LABEL_8:
               v554 = *(_QWORD*)(v551 + 18736);
               v555 = *(_DWORD*)(v551 + 19200);
               v556 = *(_DWORD*)(v551 + 17280);
-              LANES128(v553).n128_u64[0] =
-                  LANES64_OF(
-                      vadd_f32(
-                          COERCE_AS(float32x2_t,
-                                    LANES128_OF(vextq_s8(v553, v553, 8u))
-                                        .n128_u64[0]),
-                          COERCE_AS(float32x2_t, LANES128(v553).n128_u64[0])))
-                      .n64_u64[0];
-              LANES128(v553).n128_u64[0] =
-                  LANES64_OF(
-                      vpadd_f32(
-                          COERCE_AS(float32x2_t, LANES128(v553).n128_u64[0]),
-                          COERCE_AS(float32x2_t, LANES128(v553).n128_u64[0])))
-                      .n64_u64[0];
+              LANES128(v553).n128_u64[0] = LANES64_OF(
+                vadd_f32(COERCE_AS(float32x2_t,
+                           LANES128_OF(vextq_s8(v553, v553, 8u)).n128_u64[0]),
+                  COERCE_AS(float32x2_t, LANES128(v553).n128_u64[0])))
+                                             .n64_u64[0];
+              LANES128(v553).n128_u64[0] = LANES64_OF(
+                vpadd_f32(COERCE_AS(float32x2_t, LANES128(v553).n128_u64[0]),
+                  COERCE_AS(float32x2_t, LANES128(v553).n128_u64[0])))
+                                             .n64_u64[0];
               LANES128(v553).n128_u64[1] = LANES128(v553).n128_u64[0];
               v557 = vrsqrteq_f32(v553);
               v558 = vmulq_f32(v557, vrsqrtsq_f32(v557, vmulq_f32(v553, v557)));
               v559 = vbicq_s8(
-                  vmulq_f32(v541,
-                            vmulq_f32(v558, vrsqrtsq_f32(
-                                                v558, vmulq_f32(v553, v558)))),
-                  vceqzq_f32(v553));
+                vmulq_f32(v541,
+                  vmulq_f32(v558, vrsqrtsq_f32(v558, vmulq_f32(v553, v558)))),
+                vceqzq_f32(v553));
               v560 = vmulq_f32(v552, v552);
               v561 = vmulq_n_f32(v559, v550);
-              LANES128(v560).n128_u64[0] =
-                  LANES64_OF(
-                      vadd_f32(
-                          COERCE_AS(float32x2_t,
-                                    LANES128_OF(vextq_s8(v560, v560, 8u))
-                                        .n128_u64[0]),
-                          COERCE_AS(float32x2_t, LANES128(v560).n128_u64[0])))
-                      .n64_u64[0];
-              LANES128(v560).n128_u64[0] =
-                  LANES64_OF(
-                      vpadd_f32(
-                          COERCE_AS(float32x2_t, LANES128(v560).n128_u64[0]),
-                          COERCE_AS(float32x2_t, LANES128(v560).n128_u64[0])))
-                      .n64_u64[0];
+              LANES128(v560).n128_u64[0] = LANES64_OF(
+                vadd_f32(COERCE_AS(float32x2_t,
+                           LANES128_OF(vextq_s8(v560, v560, 8u)).n128_u64[0]),
+                  COERCE_AS(float32x2_t, LANES128(v560).n128_u64[0])))
+                                             .n64_u64[0];
+              LANES128(v560).n128_u64[0] = LANES64_OF(
+                vpadd_f32(COERCE_AS(float32x2_t, LANES128(v560).n128_u64[0]),
+                  COERCE_AS(float32x2_t, LANES128(v560).n128_u64[0])))
+                                             .n64_u64[0];
               LANES128(v560).n128_u64[1] = LANES128(v560).n128_u64[0];
               v562 = vrsqrteq_f32(v560);
               v563 = vmulq_f32(v562, vrsqrtsq_f32(v562, vmulq_f32(v560, v562)));
               v564 = vbicq_s8(
-                  vmulq_f32(v552,
-                            vmulq_f32(v563, vrsqrtsq_f32(
-                                                v563, vmulq_f32(v560, v563)))),
-                  vceqzq_f32(v560));
+                vmulq_f32(v552,
+                  vmulq_f32(v563, vrsqrtsq_f32(v563, vmulq_f32(v560, v563)))),
+                vceqzq_f32(v560));
               v565 = *v468;
               *(_DWORD*)(v551 + 19200) = v555 + 1;
               v566 = vmulq_n_f32(v564, v550);
@@ -8462,7 +8227,7 @@ LABEL_8:
                 LANES128(v568).n128_f32[1] = v549 + LANES128(v568).n128_f32[1];
                 *(_QWORD*)v569 = LANES128(v568).n128_u64[0];
                 v570 = v554 + 1440LL * v556 +
-                       4LL * *(int*)(v554 + 1440LL * v556 + 256);
+                  4LL * *(int*)(v554 + 1440LL * v556 + 256);
                 ++*(_DWORD*)(v570 + 260);
               }
               v571 = **a1;
@@ -8480,7 +8245,7 @@ LABEL_8:
                 LANES128(v575).n128_f32[1] = v549 + LANES128(v575).n128_f32[1];
                 *(_QWORD*)v576 = LANES128(v575).n128_u64[0];
                 v577 = v572 + 1440LL * v574 +
-                       4LL * *(int*)(v572 + 1440LL * v574 + 256);
+                  4LL * *(int*)(v572 + 1440LL * v574 + 256);
                 ++*(_DWORD*)(v577 + 260);
               }
               v578 = vaddq_f32(v561, v565);
@@ -8499,7 +8264,7 @@ LABEL_8:
                 LANES128(v583).n128_f32[1] = v549 + LANES128(v583).n128_f32[1];
                 *(_QWORD*)v584 = LANES128(v583).n128_u64[0];
                 v585 = v580 + 1440LL * v582 +
-                       4LL * *(int*)(v580 + 1440LL * v582 + 256);
+                  4LL * *(int*)(v580 + 1440LL * v582 + 256);
                 ++*(_DWORD*)(v585 + 260);
               }
               v586 = **a1;
@@ -8517,7 +8282,7 @@ LABEL_8:
                 LANES128(v590).n128_f32[1] = v549 + LANES128(v590).n128_f32[1];
                 *(_QWORD*)v591 = LANES128(v590).n128_u64[0];
                 v592 = v587 + 1440LL * v589 +
-                       4LL * *(int*)(v587 + 1440LL * v589 + 256);
+                  4LL * *(int*)(v587 + 1440LL * v589 + 256);
                 ++*(_DWORD*)(v592 + 260);
               }
               v467 = v469 - 1;
@@ -8536,19 +8301,19 @@ LABEL_8:
           v594 = 2LL * v467;
           v45 = (unsigned __int64)&v1548;
           LANES128(v595).n128_u64[0] =
-              LANES64_OF(vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
-                                   COERCE_AS(int8x8_t, 0x30201000B0A0908LL)))
-                  .n64_u64[0];
+            LANES64_OF(vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
+                         COERCE_AS(int8x8_t, 0x30201000B0A0908LL)))
+              .n64_u64[0];
           LANES128(v596).n128_u64[0] =
-              LANES64_OF(vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
-                                   COERCE_AS(int8x8_t, 0xB0A090807060504LL)))
-                  .n64_u64[0];
+            LANES64_OF(vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
+                         COERCE_AS(int8x8_t, 0xB0A090807060504LL)))
+              .n64_u64[0];
           *(int8x8_t*)&LANES128(v595).n128_i8[8] =
-              vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
-                        COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL));
+            vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
+              COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL));
           *(int8x8_t*)&LANES128(v596).n128_i8[8] =
-              vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
-                        COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL));
+            vqtbl1_s8(COERCE_AS(int8x16_t, GameData_1a83610),
+              COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL));
           v1536 = v595;
           v1505 = v596;
           do {
@@ -8556,9 +8321,9 @@ LABEL_8:
             v1547 = *(int32x4_t*)(*GameData_2130e00 + 240);
             v1492 = vmuls_lane_f32(v1463, v1547, 3) + 0.0;
             v1482 =
-                COERCE_UNSIGNED_INT128(powf(LANES128(v1547).n128_f32[0], v12));
+              COERCE_UNSIGNED_INT128(powf(LANES128(v1547).n128_f32[0], v12));
             v1474 =
-                COERCE_UNSIGNED_INT128(powf(LANES128(v1547).n128_f32[1], v12));
+              COERCE_UNSIGNED_INT128(powf(LANES128(v1547).n128_f32[1], v12));
             v600 = powf(LANES128(v1547).n128_f32[2], v12);
             *(_QWORD*)&v601 = __PAIR64__(v1474, v1482);
             v602 = *v599;
@@ -8574,69 +8339,55 @@ LABEL_8:
             v608 = *(_DWORD*)(v606 + 19200);
             v609 = *(_DWORD*)(v606 + 17280);
             v610 = v605 +
-                   (float)((float)(LANES128((*v599)[24]).n128_f32[1] - v605) *
-                           *((float*)a1 + 16));
+              (float)((float)(LANES128((*v599)[24]).n128_f32[1] - v605) *
+                *((float*)a1 + 16));
             v611 = vsubq_f32(v440[2], v59[2]);
-            LANES128(v612).n128_u64[0] =
-                LANES64_OF(
-                    vqtbl1_s8(v611, COERCE_AS(int8x8_t, 0xB0A090807060504LL)))
-                    .n64_u64[0];
+            LANES128(v612).n128_u64[0] = LANES64_OF(
+              vqtbl1_s8(v611, COERCE_AS(int8x8_t, 0xB0A090807060504LL)))
+                                           .n64_u64[0];
             *(int8x8_t*)&LANES128(v612).n128_i8[8] =
-                vqtbl1_s8(v611, COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL));
-            LANES128(v613).n128_u64[0] =
-                LANES64_OF(
-                    vqtbl1_s8(v611, COERCE_AS(int8x8_t, 0x30201000B0A0908LL)))
-                    .n64_u64[0];
+              vqtbl1_s8(v611, COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL));
+            LANES128(v613).n128_u64[0] = LANES64_OF(
+              vqtbl1_s8(v611, COERCE_AS(int8x8_t, 0x30201000B0A0908LL)))
+                                           .n64_u64[0];
             *(int8x8_t*)&LANES128(v613).n128_i8[8] =
-                vqtbl1_s8(v611, COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL));
+              vqtbl1_s8(v611, COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL));
             v614 = vmlsq_f32(vmulq_f32(v1536, v612), v1505, v613);
             v615 = vmulq_f32(v611, v611);
-            LANES128(v615).n128_u64[0] =
-                LANES64_OF(
-                    vadd_f32(
-                        COERCE_AS(
-                            float32x2_t,
-                            LANES128_OF(vextq_s8(v615, v615, 8u)).n128_u64[0]),
-                        COERCE_AS(float32x2_t, LANES128(v615).n128_u64[0])))
-                    .n64_u64[0];
-            LANES128(v615).n128_u64[0] =
-                LANES64_OF(
-                    vpadd_f32(
-                        COERCE_AS(float32x2_t, LANES128(v615).n128_u64[0]),
-                        COERCE_AS(float32x2_t, LANES128(v615).n128_u64[0])))
-                    .n64_u64[0];
+            LANES128(v615).n128_u64[0] = LANES64_OF(
+              vadd_f32(COERCE_AS(float32x2_t,
+                         LANES128_OF(vextq_s8(v615, v615, 8u)).n128_u64[0]),
+                COERCE_AS(float32x2_t, LANES128(v615).n128_u64[0])))
+                                           .n64_u64[0];
+            LANES128(v615).n128_u64[0] = LANES64_OF(
+              vpadd_f32(COERCE_AS(float32x2_t, LANES128(v615).n128_u64[0]),
+                COERCE_AS(float32x2_t, LANES128(v615).n128_u64[0])))
+                                           .n64_u64[0];
             LANES128(v615).n128_u64[1] = LANES128(v615).n128_u64[0];
             v616 = vrsqrteq_f32(v615);
             v617 = vmulq_f32(v616, vrsqrtsq_f32(v616, vmulq_f32(v615, v616)));
             v618 = vbicq_s8(
-                vmulq_f32(
-                    v611,
-                    vmulq_f32(v617, vrsqrtsq_f32(v617, vmulq_f32(v615, v617)))),
-                vceqzq_f32(v615));
+              vmulq_f32(v611,
+                vmulq_f32(v617, vrsqrtsq_f32(v617, vmulq_f32(v615, v617)))),
+              vceqzq_f32(v615));
             v619 = vmulq_f32(v614, v614);
             v620 = vmulq_n_f32(v618, v610);
-            LANES128(v619).n128_u64[0] =
-                LANES64_OF(
-                    vadd_f32(
-                        COERCE_AS(
-                            float32x2_t,
-                            LANES128_OF(vextq_s8(v619, v619, 8u)).n128_u64[0]),
-                        COERCE_AS(float32x2_t, LANES128(v619).n128_u64[0])))
-                    .n64_u64[0];
-            LANES128(v619).n128_u64[0] =
-                LANES64_OF(
-                    vpadd_f32(
-                        COERCE_AS(float32x2_t, LANES128(v619).n128_u64[0]),
-                        COERCE_AS(float32x2_t, LANES128(v619).n128_u64[0])))
-                    .n64_u64[0];
+            LANES128(v619).n128_u64[0] = LANES64_OF(
+              vadd_f32(COERCE_AS(float32x2_t,
+                         LANES128_OF(vextq_s8(v619, v619, 8u)).n128_u64[0]),
+                COERCE_AS(float32x2_t, LANES128(v619).n128_u64[0])))
+                                           .n64_u64[0];
+            LANES128(v619).n128_u64[0] = LANES64_OF(
+              vpadd_f32(COERCE_AS(float32x2_t, LANES128(v619).n128_u64[0]),
+                COERCE_AS(float32x2_t, LANES128(v619).n128_u64[0])))
+                                           .n64_u64[0];
             LANES128(v619).n128_u64[1] = LANES128(v619).n128_u64[0];
             v621 = vrsqrteq_f32(v619);
             v622 = vmulq_f32(v621, vrsqrtsq_f32(v621, vmulq_f32(v619, v621)));
             v623 = vbicq_s8(
-                vmulq_f32(
-                    v614,
-                    vmulq_f32(v622, vrsqrtsq_f32(v622, vmulq_f32(v619, v622)))),
-                vceqzq_f32(v619));
+              vmulq_f32(v614,
+                vmulq_f32(v622, vrsqrtsq_f32(v622, vmulq_f32(v619, v622)))),
+              vceqzq_f32(v619));
             v624 = *(float32x4_t*)&v1577[v594];
             *(_DWORD*)(v606 + 19200) = v608 + 1;
             v625 = vmulq_n_f32(v623, v610);
@@ -8651,7 +8402,7 @@ LABEL_8:
               LANES128(v627).n128_f32[1] = v604 + LANES128(v627).n128_f32[1];
               *(_QWORD*)v628 = LANES128(v627).n128_u64[0];
               v629 = v607 + 1440LL * v609 +
-                     4LL * *(int*)(v607 + 1440LL * v609 + 256);
+                4LL * *(int*)(v607 + 1440LL * v609 + 256);
               ++*(_DWORD*)(v629 + 260);
             }
             v630 = **a1;
@@ -8669,7 +8420,7 @@ LABEL_8:
               LANES128(v634).n128_f32[1] = v604 + LANES128(v634).n128_f32[1];
               *(_QWORD*)v635 = LANES128(v634).n128_u64[0];
               v636 = v631 + 1440LL * v633 +
-                     4LL * *(int*)(v631 + 1440LL * v633 + 256);
+                4LL * *(int*)(v631 + 1440LL * v633 + 256);
               ++*(_DWORD*)(v636 + 260);
             }
             v637 = vaddq_f32(v620, v624);
@@ -8688,7 +8439,7 @@ LABEL_8:
               LANES128(v642).n128_f32[1] = v604 + LANES128(v642).n128_f32[1];
               *(_QWORD*)v643 = LANES128(v642).n128_u64[0];
               v644 = v639 + 1440LL * v641 +
-                     4LL * *(int*)(v639 + 1440LL * v641 + 256);
+                4LL * *(int*)(v639 + 1440LL * v641 + 256);
               ++*(_DWORD*)(v644 + 260);
             }
             v645 = **a1;
@@ -8706,41 +8457,37 @@ LABEL_8:
               LANES128(v649).n128_f32[1] = v604 + LANES128(v649).n128_f32[1];
               *(_QWORD*)v650 = LANES128(v649).n128_u64[0];
               v651 = v646 + 1440LL * v648 +
-                     4LL * *(int*)(v646 + 1440LL * v648 + 256);
+                4LL * *(int*)(v646 + 1440LL * v648 + 256);
               ++*(_DWORD*)(v651 + 260);
             }
             v1547 = (*v599)[12];
             v1493 =
-                COERCE_UNSIGNED_INT128(powf(LANES128(v1547).n128_f32[0], v12));
+              COERCE_UNSIGNED_INT128(powf(LANES128(v1547).n128_f32[0], v12));
             v1483 =
-                COERCE_UNSIGNED_INT128(powf(LANES128(v1547).n128_f32[1], v12));
+              COERCE_UNSIGNED_INT128(powf(LANES128(v1547).n128_f32[1], v12));
             v652 = powf(LANES128(v1547).n128_f32[2], v12);
             *(_QWORD*)&v653 = __PAIR64__(v1483, v1493);
             v654 = vsubq_f32(v440[2], v59[2]);
             v655 = *v599;
             v656 = LANES128((*v599)[34]).n128_i32[0];
-            LANES64(v657).n64_u64[0] =
-                LANES64_OF(
-                    vqtbl1_s8(v654, COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL)))
-                    .n64_u64[0];
-            LANES64(v658).n64_u64[0] =
-                LANES64_OF(
-                    vqtbl1_s8(v654, COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL)))
-                    .n64_u64[0];
+            LANES64(v657).n64_u64[0] = LANES64_OF(
+              vqtbl1_s8(v654, COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL)))
+                                         .n64_u64[0];
+            LANES64(v658).n64_u64[0] = LANES64_OF(
+              vqtbl1_s8(v654, COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL)))
+                                         .n64_u64[0];
             if (v656 > (signed __int32)LANES128((*v599)[36]).n128_u32[0]) {
               v656 += 16;
             }
-            LANES128(v659).n128_u64[0] =
-                LANES64_OF(
-                    vqtbl1_s8(v654, COERCE_AS(int8x8_t, 0xB0A090807060504LL)))
-                    .n64_u64[0];
+            LANES128(v659).n128_u64[0] = LANES64_OF(
+              vqtbl1_s8(v654, COERCE_AS(int8x8_t, 0xB0A090807060504LL)))
+                                           .n64_u64[0];
             DWORD1(v652) = LANES64_OF(vdup_laneq_s32(v1547, 3)).n64_u32[0];
             *(int8x8_t*)&LANES128(v659).n128_i8[8] = v657;
             *((_QWORD*)&v653 + 1) = *(_QWORD*)&v652;
-            LANES128(v660).n128_u64[0] =
-                LANES64_OF(
-                    vqtbl1_s8(v654, COERCE_AS(int8x8_t, 0x30201000B0A0908LL)))
-                    .n64_u64[0];
+            LANES128(v660).n128_u64[0] = LANES64_OF(
+              vqtbl1_s8(v654, COERCE_AS(int8x8_t, 0x30201000B0A0908LL)))
+                                           .n64_u64[0];
             v661 = LANES128(v655[41]).n128_f32[3] * (float)(v656 + 1);
             v662 = LANES128(v655[10]).n128_f32[0];
             *(int8x8_t*)&LANES128(v660).n128_i8[8] = v658;
@@ -8750,52 +8497,40 @@ LABEL_8:
             v666 = *(_QWORD*)(v663 + 18736);
             v667 = *(_DWORD*)(v663 + 19200);
             v668 = *(_DWORD*)(v663 + 17280);
-            LANES128(v665).n128_u64[0] =
-                LANES64_OF(
-                    vadd_f32(
-                        COERCE_AS(
-                            float32x2_t,
-                            LANES128_OF(vextq_s8(v665, v665, 8u)).n128_u64[0]),
-                        COERCE_AS(float32x2_t, LANES128(v665).n128_u64[0])))
-                    .n64_u64[0];
-            LANES128(v665).n128_u64[0] =
-                LANES64_OF(
-                    vpadd_f32(
-                        COERCE_AS(float32x2_t, LANES128(v665).n128_u64[0]),
-                        COERCE_AS(float32x2_t, LANES128(v665).n128_u64[0])))
-                    .n64_u64[0];
+            LANES128(v665).n128_u64[0] = LANES64_OF(
+              vadd_f32(COERCE_AS(float32x2_t,
+                         LANES128_OF(vextq_s8(v665, v665, 8u)).n128_u64[0]),
+                COERCE_AS(float32x2_t, LANES128(v665).n128_u64[0])))
+                                           .n64_u64[0];
+            LANES128(v665).n128_u64[0] = LANES64_OF(
+              vpadd_f32(COERCE_AS(float32x2_t, LANES128(v665).n128_u64[0]),
+                COERCE_AS(float32x2_t, LANES128(v665).n128_u64[0])))
+                                           .n64_u64[0];
             LANES128(v665).n128_u64[1] = LANES128(v665).n128_u64[0];
             v669 = vrsqrteq_f32(v665);
             v670 = vmulq_f32(v669, vrsqrtsq_f32(v669, vmulq_f32(v665, v669)));
             v671 = vbicq_s8(
-                vmulq_f32(
-                    v654,
-                    vmulq_f32(v670, vrsqrtsq_f32(v670, vmulq_f32(v665, v670)))),
-                vceqzq_f32(v665));
+              vmulq_f32(v654,
+                vmulq_f32(v670, vrsqrtsq_f32(v670, vmulq_f32(v665, v670)))),
+              vceqzq_f32(v665));
             v672 = vmulq_f32(v664, v664);
             v673 = vmulq_n_f32(v671, v662);
-            LANES128(v672).n128_u64[0] =
-                LANES64_OF(
-                    vadd_f32(
-                        COERCE_AS(
-                            float32x2_t,
-                            LANES128_OF(vextq_s8(v672, v672, 8u)).n128_u64[0]),
-                        COERCE_AS(float32x2_t, LANES128(v672).n128_u64[0])))
-                    .n64_u64[0];
-            LANES128(v672).n128_u64[0] =
-                LANES64_OF(
-                    vpadd_f32(
-                        COERCE_AS(float32x2_t, LANES128(v672).n128_u64[0]),
-                        COERCE_AS(float32x2_t, LANES128(v672).n128_u64[0])))
-                    .n64_u64[0];
+            LANES128(v672).n128_u64[0] = LANES64_OF(
+              vadd_f32(COERCE_AS(float32x2_t,
+                         LANES128_OF(vextq_s8(v672, v672, 8u)).n128_u64[0]),
+                COERCE_AS(float32x2_t, LANES128(v672).n128_u64[0])))
+                                           .n64_u64[0];
+            LANES128(v672).n128_u64[0] = LANES64_OF(
+              vpadd_f32(COERCE_AS(float32x2_t, LANES128(v672).n128_u64[0]),
+                COERCE_AS(float32x2_t, LANES128(v672).n128_u64[0])))
+                                           .n64_u64[0];
             LANES128(v672).n128_u64[1] = LANES128(v672).n128_u64[0];
             v674 = vrsqrteq_f32(v672);
             v675 = vmulq_f32(v674, vrsqrtsq_f32(v674, vmulq_f32(v672, v674)));
             v676 = vbicq_s8(
-                vmulq_f32(
-                    v664,
-                    vmulq_f32(v675, vrsqrtsq_f32(v675, vmulq_f32(v672, v675)))),
-                vceqzq_f32(v672));
+              vmulq_f32(v664,
+                vmulq_f32(v675, vrsqrtsq_f32(v675, vmulq_f32(v672, v675)))),
+              vceqzq_f32(v672));
             v677 = *(float32x4_t*)&v1577[v594];
             *(_DWORD*)(v663 + 19200) = v667 + 1;
             v678 = vmulq_n_f32(v676, v662);
@@ -8810,7 +8545,7 @@ LABEL_8:
               LANES128(v680).n128_f32[1] = v661 + LANES128(v680).n128_f32[1];
               *(_QWORD*)v681 = LANES128(v680).n128_u64[0];
               v682 = v666 + 1440LL * v668 +
-                     4LL * *(int*)(v666 + 1440LL * v668 + 256);
+                4LL * *(int*)(v666 + 1440LL * v668 + 256);
               ++*(_DWORD*)(v682 + 260);
             }
             v683 = **a1;
@@ -8828,7 +8563,7 @@ LABEL_8:
               LANES128(v687).n128_f32[1] = v661 + LANES128(v687).n128_f32[1];
               *(_QWORD*)v688 = LANES128(v687).n128_u64[0];
               v689 = v684 + 1440LL * v686 +
-                     4LL * *(int*)(v684 + 1440LL * v686 + 256);
+                4LL * *(int*)(v684 + 1440LL * v686 + 256);
               ++*(_DWORD*)(v689 + 260);
             }
             v690 = vaddq_f32(v673, v677);
@@ -8847,7 +8582,7 @@ LABEL_8:
               LANES128(v695).n128_f32[1] = v661 + LANES128(v695).n128_f32[1];
               *(_QWORD*)v696 = LANES128(v695).n128_u64[0];
               v697 = v692 + 1440LL * v694 +
-                     4LL * *(int*)(v692 + 1440LL * v694 + 256);
+                4LL * *(int*)(v692 + 1440LL * v694 + 256);
               ++*(_DWORD*)(v697 + 260);
             }
             v698 = **a1;
@@ -8865,7 +8600,7 @@ LABEL_8:
               LANES128(v702).n128_f32[1] = v661 + LANES128(v702).n128_f32[1];
               *(_QWORD*)v703 = LANES128(v702).n128_u64[0];
               v704 = v699 + 1440LL * v701 +
-                     4LL * *(int*)(v699 + 1440LL * v701 + 256);
+                4LL * *(int*)(v699 + 1440LL * v701 + 256);
               ++*(_DWORD*)(v704 + 260);
             }
             v705 = *(__int64**)**a1;
@@ -8879,29 +8614,26 @@ LABEL_8:
               v710 += 16;
             }
             v711 = *(float*)(*GameData_2130e00 + 668) * (float)(v710 + 1);
-            LANES128(v707).n128_f32[0] =
-                LANES128(v709[24]).n128_f32[0] +
-                (float)((float)(LANES128(v709[24]).n128_f32[1] -
-                                LANES128(v709[24]).n128_f32[0]) *
-                        v708);
+            LANES128(v707).n128_f32[0] = LANES128(v709[24]).n128_f32[0] +
+              (float)((float)(LANES128(v709[24]).n128_f32[1] -
+                        LANES128(v709[24]).n128_f32[0]) *
+                v708);
             v712 = v59[2];
             v1547 = v707;
             v713 = vsubq_f32(v440[2], v712);
             v714 = v709[27];
             v715 = vsubq_f32(v709[28], v714);
             v716 = COERCE_FLOAT(HIDWORD(LANES128(v709[27]).n128_u64[0])) +
-                   vmuls_lane_f32(
-                       v708, COERCE_AS(float32x2_t, LANES128(v715).n128_u64[0]),
-                       1);
+              vmuls_lane_f32(
+                v708, COERCE_AS(float32x2_t, LANES128(v715).n128_u64[0]), 1);
             v717 = COERCE_FLOAT(LANES128(v709[27]).n128_u64[1]) +
-                   vmuls_lane_f32(v708, v715, 2);
+              vmuls_lane_f32(v708, v715, 2);
             *(float*)&v1484 =
-                LANES128(v714).n128_f32[3] + vmuls_lane_f32(v708, v715, 3);
+              LANES128(v714).n128_f32[3] + vmuls_lane_f32(v708, v715, 3);
             v1494 = v713;
-            v1475 = COERCE_UNSIGNED_INT128(
-                powf(LANES128(v714).n128_f32[0] +
-                         (float)(v708 * LANES128(v715).n128_f32[0]),
-                     v12));
+            v1475 = COERCE_UNSIGNED_INT128(powf(LANES128(v714).n128_f32[0] +
+                (float)(v708 * LANES128(v715).n128_f32[0]),
+              v12));
             v1469 = COERCE_UNSIGNED_INT128(powf(v716, v12));
             *(long double*)&v718 = powf(v717, v12);
             *(_QWORD*)&v723 = __PAIR64__(v1469, v1475);
@@ -8910,68 +8642,54 @@ LABEL_8:
             v721 = *(_DWORD*)(v719 + 19200);
             v722 = *(_DWORD*)(v719 + 17280);
             *((_QWORD*)&v723 + 1) =
-                __PAIR64__(v1484, LANES128(v718).n128_u32[0]);
-            LANES128(v718).n128_u64[0] =
-                LANES64_OF(
-                    vqtbl1_s8(v1494, COERCE_AS(int8x8_t, 0xB0A090807060504LL)))
-                    .n64_u64[0];
+              __PAIR64__(v1484, LANES128(v718).n128_u32[0]);
+            LANES128(v718).n128_u64[0] = LANES64_OF(
+              vqtbl1_s8(v1494, COERCE_AS(int8x8_t, 0xB0A090807060504LL)))
+                                           .n64_u64[0];
             *(int8x8_t*)&LANES128(v718).n128_i8[8] =
-                vqtbl1_s8(v1494, COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL));
-            LANES128(v724).n128_u64[0] =
-                LANES64_OF(
-                    vqtbl1_s8(v1494, COERCE_AS(int8x8_t, 0x30201000B0A0908LL)))
-                    .n64_u64[0];
+              vqtbl1_s8(v1494, COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL));
+            LANES128(v724).n128_u64[0] = LANES64_OF(
+              vqtbl1_s8(v1494, COERCE_AS(int8x8_t, 0x30201000B0A0908LL)))
+                                           .n64_u64[0];
             *(int8x8_t*)&LANES128(v724).n128_i8[8] =
-                vqtbl1_s8(v1494, COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL));
+              vqtbl1_s8(v1494, COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL));
             v725 = vmlsq_f32(vmulq_f32(v1536, v718), v1505, v724);
             v726 = vmulq_f32(v1494, v1494);
-            LANES128(v726).n128_u64[0] =
-                LANES64_OF(
-                    vadd_f32(
-                        COERCE_AS(
-                            float32x2_t,
-                            LANES128_OF(vextq_s8(v726, v726, 8u)).n128_u64[0]),
-                        COERCE_AS(float32x2_t, LANES128(v726).n128_u64[0])))
-                    .n64_u64[0];
-            LANES128(v726).n128_u64[0] =
-                LANES64_OF(
-                    vpadd_f32(
-                        COERCE_AS(float32x2_t, LANES128(v726).n128_u64[0]),
-                        COERCE_AS(float32x2_t, LANES128(v726).n128_u64[0])))
-                    .n64_u64[0];
+            LANES128(v726).n128_u64[0] = LANES64_OF(
+              vadd_f32(COERCE_AS(float32x2_t,
+                         LANES128_OF(vextq_s8(v726, v726, 8u)).n128_u64[0]),
+                COERCE_AS(float32x2_t, LANES128(v726).n128_u64[0])))
+                                           .n64_u64[0];
+            LANES128(v726).n128_u64[0] = LANES64_OF(
+              vpadd_f32(COERCE_AS(float32x2_t, LANES128(v726).n128_u64[0]),
+                COERCE_AS(float32x2_t, LANES128(v726).n128_u64[0])))
+                                           .n64_u64[0];
             LANES128(v726).n128_u64[1] = LANES128(v726).n128_u64[0];
             v727 = vrsqrteq_f32(v726);
             v728 = vmulq_f32(v727, vrsqrtsq_f32(v727, vmulq_f32(v726, v727)));
             v729 = vbicq_s8(
-                vmulq_f32(
-                    v1494,
-                    vmulq_f32(v728, vrsqrtsq_f32(v728, vmulq_f32(v726, v728)))),
-                vceqzq_f32(v726));
+              vmulq_f32(v1494,
+                vmulq_f32(v728, vrsqrtsq_f32(v728, vmulq_f32(v726, v728)))),
+              vceqzq_f32(v726));
             v730 = vmulq_f32(v725, v725);
-            LANES128(v730).n128_u64[0] =
-                LANES64_OF(
-                    vadd_f32(
-                        COERCE_AS(
-                            float32x2_t,
-                            LANES128_OF(vextq_s8(v730, v730, 8u)).n128_u64[0]),
-                        COERCE_AS(float32x2_t, LANES128(v730).n128_u64[0])))
-                    .n64_u64[0];
-            LANES128(v730).n128_u64[0] =
-                LANES64_OF(
-                    vpadd_f32(
-                        COERCE_AS(float32x2_t, LANES128(v730).n128_u64[0]),
-                        COERCE_AS(float32x2_t, LANES128(v730).n128_u64[0])))
-                    .n64_u64[0];
+            LANES128(v730).n128_u64[0] = LANES64_OF(
+              vadd_f32(COERCE_AS(float32x2_t,
+                         LANES128_OF(vextq_s8(v730, v730, 8u)).n128_u64[0]),
+                COERCE_AS(float32x2_t, LANES128(v730).n128_u64[0])))
+                                           .n64_u64[0];
+            LANES128(v730).n128_u64[0] = LANES64_OF(
+              vpadd_f32(COERCE_AS(float32x2_t, LANES128(v730).n128_u64[0]),
+                COERCE_AS(float32x2_t, LANES128(v730).n128_u64[0])))
+                                           .n64_u64[0];
             LANES128(v730).n128_u64[1] = LANES128(v730).n128_u64[0];
             v731 = vrsqrteq_f32(v730);
             v732 = vmulq_f32(v731, vrsqrtsq_f32(v731, vmulq_f32(v730, v731)));
             v733 = LANES128(v1547).n128_f32[0];
             v734 = vmulq_n_f32(v729, LANES128(v1547).n128_f32[0]);
             v735 = vbicq_s8(
-                vmulq_f32(
-                    v725,
-                    vmulq_f32(v732, vrsqrtsq_f32(v732, vmulq_f32(v730, v732)))),
-                vceqzq_f32(v730));
+              vmulq_f32(v725,
+                vmulq_f32(v732, vrsqrtsq_f32(v732, vmulq_f32(v730, v732)))),
+              vceqzq_f32(v730));
             v736 = *(float32x4_t*)&v1577[v594];
             *(_DWORD*)(v719 + 19200) = v721 + 1;
             v737 = vmulq_n_f32(v735, v733);
@@ -8986,7 +8704,7 @@ LABEL_8:
               LANES128(v739).n128_f32[1] = v711 + LANES128(v739).n128_f32[1];
               *(_QWORD*)v740 = LANES128(v739).n128_u64[0];
               v741 = v720 + 1440LL * v722 +
-                     4LL * *(int*)(v720 + 1440LL * v722 + 256);
+                4LL * *(int*)(v720 + 1440LL * v722 + 256);
               ++*(_DWORD*)(v741 + 260);
             }
             v742 = **a1;
@@ -9004,7 +8722,7 @@ LABEL_8:
               LANES128(v746).n128_f32[1] = v711 + LANES128(v746).n128_f32[1];
               *(_QWORD*)v747 = LANES128(v746).n128_u64[0];
               v748 = v743 + 1440LL * v745 +
-                     4LL * *(int*)(v743 + 1440LL * v745 + 256);
+                4LL * *(int*)(v743 + 1440LL * v745 + 256);
               ++*(_DWORD*)(v748 + 260);
             }
             v749 = vaddq_f32(v734, v736);
@@ -9023,7 +8741,7 @@ LABEL_8:
               LANES128(v754).n128_f32[1] = v711 + LANES128(v754).n128_f32[1];
               *(_QWORD*)v755 = LANES128(v754).n128_u64[0];
               v756 = v751 + 1440LL * v753 +
-                     4LL * *(int*)(v751 + 1440LL * v753 + 256);
+                4LL * *(int*)(v751 + 1440LL * v753 + 256);
               ++*(_DWORD*)(v756 + 260);
             }
             v757 = **a1;
@@ -9041,7 +8759,7 @@ LABEL_8:
               LANES128(v761).n128_f32[1] = v711 + LANES128(v761).n128_f32[1];
               *(_QWORD*)v762 = LANES128(v761).n128_u64[0];
               v763 = v758 + 1440LL * v760 +
-                     4LL * *(int*)(v758 + 1440LL * v760 + 256);
+                4LL * *(int*)(v758 + 1440LL * v760 + 256);
               ++*(_DWORD*)(v763 + 260);
             }
             v597 = *(__int64**)**a1;
@@ -9073,7 +8791,7 @@ LABEL_8:
           v1155 = *v1154;
           *((_BYTE*)v1154 + 17393) = 1;
           v1156 =
-              *(__int64***)PrimitiveDrawManager_19935e0(v1155, "Arrow", 5, 0);
+            *(__int64***)PrimitiveDrawManager_19935e0(v1155, "Arrow", 5, 0);
           *((_BYTE*)v1156 + 17392) = 1;
           v1157 = *v1156;
           v1158 = *v1157;
@@ -9104,57 +8822,56 @@ LABEL_8:
                 goto LABEL_639;
               }
               v1299 = v1170 / LANES128(v1164).n128_f32[2];
-              v1165 = -(
-                  float)(v1299 *
-                         (float)((float)((float)(v1428 +
-                                                 (float)((float)(v1432 +
-                                                                 (float)((float)(v1429 + (float)((float)(v1433 + (float)((
-                                                                                                                             float)(v1430 + (float)((
-                                                                                                                                                        float)(v1434 + (float)((
-                                                                                                                                                                                   float)(v1431 + (float)(v1435 * (float)(v1299 * v1299))) *
-                                                                                                                                                                               (float)(v1299 *
-                                                                                                                                                                                       v1299))) *
-                                                                                                                                                    (float)(v1299 *
-                                                                                                                                                            v1299))) *
-                                                                                                                         (float)(v1299 *
-                                                                                                                                 v1299))) *
-                                                                                                 (float)(v1299 *
-                                                                                                         v1299))) *
-                                                                         (float)(v1299 *
-                                                                                 v1299))) *
-                                                         (float)(v1299 *
-                                                                 v1299))) *
-                                         (float)(v1299 * v1299)) +
-                                 0x1.0000000000000p+0));
+              v1165 = -(float)(v1299 *
+                (float)((float)((float)(v1428 +
+                                  (float)((float)(v1432 +
+                                            (float)((float)(v1429 +
+                                                      (float)((float)(v1433 +
+                                                                (float)((float)(v1430 +
+                                                                          (float)((float)(v1434 +
+                                                                                    (float)((float)(v1431 +
+                                                                                              (float)(v1435 *
+                                                                                                (float)(v1299 *
+                                                                                                  v1299))) *
+                                                                                      (float)(v1299 *
+                                                                                        v1299))) *
+                                                                            (float)(v1299 *
+                                                                              v1299))) *
+                                                                  (float)(v1299 *
+                                                                    v1299))) *
+                                                        (float)(v1299 *
+                                                          v1299))) *
+                                              (float)(v1299 * v1299))) *
+                                    (float)(v1299 * v1299))) *
+                          (float)(v1299 * v1299)) +
+                  0x1.0000000000000p+0));
               goto LABEL_644;
             }
             if (LANES128(v1164).n128_f32[2] >= v1163) {
               v1300 = v1163 / LANES128(v1164).n128_f32[2];
-              v1165 =
-                  v1300 *
-                  (float)((float)((float)(v1428 +
-                                          (float)((float)(v1432 +
-                                                          (float)((float)(v1429 +
-                                                                          (float)((float)(v1433 +
-                                                                                          (float)((float)(v1430 +
-                                                                                                          (float)((float)(v1434 +
-                                                                                                                          (float)((float)(v1431 +
-                                                                                                                                          (float)(v1435 *
-                                                                                                                                                  (float)(v1300 *
-                                                                                                                                                          v1300))) *
-                                                                                                                                  (float)(v1300 *
-                                                                                                                                          v1300))) *
-                                                                                                                  (float)(v1300 *
-                                                                                                                          v1300))) *
-                                                                                                  (float)(v1300 *
-                                                                                                          v1300))) *
-                                                                                  (float)(v1300 *
-                                                                                          v1300))) *
+              v1165 = v1300 *
+                (float)((float)((float)(v1428 +
+                                  (float)((float)(v1432 +
+                                            (float)((float)(v1429 +
+                                                      (float)((float)(v1433 +
+                                                                (float)((float)(v1430 +
+                                                                          (float)((float)(v1434 +
+                                                                                    (float)((float)(v1431 +
+                                                                                              (float)(v1435 *
+                                                                                                (float)(v1300 *
+                                                                                                  v1300))) *
+                                                                                      (float)(v1300 *
+                                                                                        v1300))) *
+                                                                            (float)(v1300 *
+                                                                              v1300))) *
                                                                   (float)(v1300 *
-                                                                          v1300))) *
-                                                  (float)(v1300 * v1300))) *
-                                  (float)(v1300 * v1300)) +
-                          0x1.0000000000000p+0);
+                                                                    v1300))) *
+                                                        (float)(v1300 *
+                                                          v1300))) *
+                                              (float)(v1300 * v1300))) *
+                                    (float)(v1300 * v1300))) *
+                          (float)(v1300 * v1300)) +
+                  0x1.0000000000000p+0);
               goto LABEL_644;
             }
             v1166 = LANES128(v1164).n128_f32[2] / v1163;
@@ -9176,51 +8893,56 @@ LABEL_8:
               v1173 = v1431;
               v1174 = -0x1.921fb60000000p+1;
             LABEL_639:
-              v1165 = (float)(v1171 *
-                              (float)((float)((float)(v1428 +
-                                                      (float)((float)(v1432 +
-                                                                      (float)((float)(v1429 + (float)((float)(v1433 + (float)((
-                                                                                                                                  float)(v1430 + (float)((float)(v1434 + (float)((float)(v1173 + (float)(v1172 * (float)(v1171 * v1171))) *
-                                                                                                                                                                                 (float)(v1171 *
-                                                                                                                                                                                         v1171))) *
-                                                                                                                                                         (float)(v1171 *
-                                                                                                                                                                 v1171))) *
-                                                                                                                              (float)(v1171 *
-                                                                                                                                      v1171))) *
-                                                                                                      (float)(v1171 *
-                                                                                                              v1171))) *
+              v1165 =
+                (float)(v1171 *
+                  (float)((float)((float)(v1428 +
+                                    (float)((float)(v1432 +
+                                              (float)((float)(v1429 +
+                                                        (float)((float)(v1433 +
+                                                                  (float)((float)(v1430 +
+                                                                            (float)((float)(v1434 +
+                                                                                      (float)((float)(v1173 +
+                                                                                                (float)(v1172 *
+                                                                                                  (float)(v1171 *
+                                                                                                    v1171))) *
+                                                                                        (float)(v1171 *
+                                                                                          v1171))) *
                                                                               (float)(v1171 *
-                                                                                      v1171))) *
-                                                              (float)(v1171 *
+                                                                                v1171))) *
+                                                                    (float)(v1171 *
                                                                       v1171))) *
-                                              (float)(v1171 * v1171)) +
-                                      0x1.0000000000000p+0)) +
-                      v1174;
+                                                          (float)(v1171 *
+                                                            v1171))) *
+                                                (float)(v1171 * v1171))) *
+                                      (float)(v1171 * v1171))) *
+                            (float)(v1171 * v1171)) +
+                    0x1.0000000000000p+0)) +
+                v1174;
             LABEL_644:
               if ((atomic_load_explicit(
-                       (atomic_uchar* volatile)&GameData_21a55c0,
-                       memory_order_acquire) &
-                   1) == 0 &&
-                  (unsigned int)__cxa_guard_acquire(&GameData_21a55c0) != 0) {
+                     (atomic_uchar* volatile)&GameData_21a55c0,
+                     memory_order_acquire) &
+                    1) == 0 &&
+                (unsigned int)__cxa_guard_acquire(&GameData_21a55c0) != 0) {
                 v1381 = *(_QWORD*)((char*)((char*)0x20LL) +
-                                   (_QWORD)GameData_212c2a0 + 8);
-                *(_QWORD*)&GameData_21a55a0 = *(
-                    _QWORD*)((char*)((char*)0x20LL) + (_QWORD)GameData_212c2a0);
+                  (_QWORD)GameData_212c2a0 + 8);
+                *(_QWORD*)&GameData_21a55a0 =
+                  *(_QWORD*)((char*)((char*)0x20LL) + (_QWORD)GameData_212c2a0);
                 *((_QWORD*)&GameData_21a55a0 + 1) = v1381;
                 v1382 = *(__int64*)((char*)&(*(__int64 (*)[2])0x28LL)[2] +
-                                    (_QWORD)GameData_212c2a0);
+                  (_QWORD)GameData_212c2a0);
                 *(_QWORD*)&GameData_21a55b0 =
-                    *(__int64*)((char*)&(*(__int64 (*)[2])0x28LL)[1] +
-                                (_QWORD)GameData_212c2a0);
+                  *(__int64*)((char*)&(*(__int64 (*)[2])0x28LL)[1] +
+                    (_QWORD)GameData_212c2a0);
                 *((_QWORD*)&GameData_21a55b0 + 1) = v1382;
                 v1383 = *((_QWORD*)GameData_212c2a0 + 1);
                 *(_QWORD*)&GameData_21a5580 = *(_QWORD*)GameData_212c2a0;
                 *((_QWORD*)&GameData_21a5580 + 1) = v1383;
                 v1384 = *(_QWORD*)((char*)((__int128*)0x10LL) +
-                                   (_QWORD)GameData_212c2a0 + 8);
+                  (_QWORD)GameData_212c2a0 + 8);
                 *(_QWORD*)&GameData_21a5590 =
-                    *(_QWORD*)((char*)((__int128*)0x10LL) +
-                               (_QWORD)GameData_212c2a0);
+                  *(_QWORD*)((char*)((__int128*)0x10LL) +
+                    (_QWORD)GameData_212c2a0);
                 *((_QWORD*)&GameData_21a5590 + 1) = v1384;
                 __cxa_guard_release(&GameData_21a55c0);
               }
@@ -9228,24 +8950,23 @@ LABEL_8:
               LANES128(v1159).n128_u32[0] = LANES128((*v1162)[10]).n128_u32[2];
               LANES128(v1301).n128_u64[1] = LANES128((*v1162)[10]).n128_u32[3];
               v1542 = vmlaq_laneq_f32(
-                  vmlaq_lane_f32(vmulq_n_f32(v1159, *(float*)&GameData_21a5580),
-                                 v1447, *(float32x2_t*)&GameData_21a5580, 1),
-                  v1301, COERCE_AS(float32x4_t, GameData_21a5580), 2);
+                vmlaq_lane_f32(vmulq_n_f32(v1159, *(float*)&GameData_21a5580),
+                  v1447, *(float32x2_t*)&GameData_21a5580, 1),
+                v1301, COERCE_AS(float32x4_t, GameData_21a5580), 2);
               v1518 = vmlaq_laneq_f32(
-                  vmlaq_lane_f32(vmulq_n_f32(v1159, *(float*)&GameData_21a5590),
-                                 v1447, *(float32x2_t*)&GameData_21a5590, 1),
-                  v1301, COERCE_AS(float32x4_t, GameData_21a5590), 2);
+                vmlaq_lane_f32(vmulq_n_f32(v1159, *(float*)&GameData_21a5590),
+                  v1447, *(float32x2_t*)&GameData_21a5590, 1),
+                v1301, COERCE_AS(float32x4_t, GameData_21a5590), 2);
               v1509 = vmlaq_laneq_f32(
-                  vmlaq_lane_f32(vmulq_n_f32(v1159, *(float*)&GameData_21a55a0),
-                                 v1447, *(float32x2_t*)&GameData_21a55a0, 1),
-                  v1301, COERCE_AS(float32x4_t, GameData_21a55a0), 2);
+                vmlaq_lane_f32(vmulq_n_f32(v1159, *(float*)&GameData_21a55a0),
+                  v1447, *(float32x2_t*)&GameData_21a55a0, 1),
+                v1301, COERCE_AS(float32x4_t, GameData_21a55a0), 2);
               v1499 = vaddq_f32(
-                  vmlaq_laneq_f32(
-                      vmlaq_lane_f32(
-                          vmulq_n_f32(v1159, *(float*)&GameData_21a55b0), v1447,
-                          *(float32x2_t*)&GameData_21a55b0, 1),
-                      v1301, COERCE_AS(float32x4_t, GameData_21a55b0), 2),
-                  COERCE_AS(float32x4_t, 0));
+                vmlaq_laneq_f32(
+                  vmlaq_lane_f32(vmulq_n_f32(v1159, *(float*)&GameData_21a55b0),
+                    v1447, *(float32x2_t*)&GameData_21a55b0, 1),
+                  v1301, COERCE_AS(float32x4_t, GameData_21a55b0), 2),
+                COERCE_AS(float32x4_t, 0));
               v1302 = v1165 * -0x1.0000000000000p-1;
               v1303 = cos(v1302);
               v1304 = sin(v1302);
@@ -9254,138 +8975,119 @@ LABEL_8:
               *(float*)&v1304 = v1304 + v1303 * 0.0;
               LANES128(v1307).n128_u64[0] = __PAIR64__(LODWORD(v1304), v1306);
               LANES128(v1307).n128_u64[1] = v1306;
-              v1308 =
-                  LANES64_OF(vqtbl1_s8(v1307, COERCE_AS(int8x8_t,
-                                                        0xF0E0D0C03020100LL)))
-                      .n64_u64[0];
-              LANES128(v1309).n128_u64[0] =
-                  LANES64_OF(vrev64_s32(COERCE_AS(int32x2_t,
-                                                  LANES128(v1307).n128_u64[0])))
-                      .n64_u64[0];
-              LANES128(v1310).n128_u64[0] =
-                  LANES64_OF(vqtbl1_s8(v1307, COERCE_AS(int8x8_t,
-                                                        0xB0A09080B0A0908LL)))
-                      .n64_u64[0];
-              v1311 =
-                  LANES64_OF(vqtbl1_s8(v1307, COERCE_AS(int8x8_t,
-                                                        0xF0E0D0C07060504LL)))
-                      .n64_u64[0];
+              v1308 = LANES64_OF(
+                vqtbl1_s8(v1307, COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL)))
+                        .n64_u64[0];
+              LANES128(v1309).n128_u64[0] = LANES64_OF(
+                vrev64_s32(COERCE_AS(int32x2_t, LANES128(v1307).n128_u64[0])))
+                                              .n64_u64[0];
+              LANES128(v1310).n128_u64[0] = LANES64_OF(
+                vqtbl1_s8(v1307, COERCE_AS(int8x8_t, 0xB0A09080B0A0908LL)))
+                                              .n64_u64[0];
+              v1311 = LANES64_OF(
+                vqtbl1_s8(v1307, COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL)))
+                        .n64_u64[0];
               LANES128(v1309).n128_u64[1] = v1308;
               LANES128(v1310).n128_u64[1] = v1311;
               v1312 = vmulq_f32(v1309, v1309);
               v1313 = vmulq_f32(v1310, v1310);
-              v1587.val[0] = vsubq_f32(
-                  COERCE_AS(float32x4_t, GameData_1a837f0),
-                  vaddq_f32(vaddq_f32(v1313, v1313), vaddq_f32(v1312, v1312)));
-              LANES128(v1312).n128_u64[0] =
-                  LANES64_OF(vqtbl1_s8(v1307, COERCE_AS(int8x8_t,
-                                                        0xB0A090807060504LL)))
-                      .n64_u64[0];
+              v1587.val[0] = vsubq_f32(COERCE_AS(float32x4_t, GameData_1a837f0),
+                vaddq_f32(vaddq_f32(v1313, v1313), vaddq_f32(v1312, v1312)));
+              LANES128(v1312).n128_u64[0] = LANES64_OF(
+                vqtbl1_s8(v1307, COERCE_AS(int8x8_t, 0xB0A090807060504LL)))
+                                              .n64_u64[0];
               LANES128(v1312).n128_u64[1] = v1308;
               v1314 = vmulq_f32(v1312, v1307);
               v1315 = vaddq_f32(v1314, v1314);
-              LANES128(v1312).n128_u64[0] =
-                  LANES64_OF(vqtbl1_s8(v1307, COERCE_AS(int8x8_t,
-                                                        0x30201000B0A0908LL)))
-                      .n64_u64[0];
+              LANES128(v1312).n128_u64[0] = LANES64_OF(
+                vqtbl1_s8(v1307, COERCE_AS(int8x8_t, 0x30201000B0A0908LL)))
+                                              .n64_u64[0];
               LANES128(v1312).n128_u64[1] = v1311;
               v1316 = vmulq_n_f32(v1312, v1305);
               v1585.val[1] = vaddq_f32(v1316, v1316);
               v1586.val[0] = vaddq_f32(v1585.val[1], v1315);
               v1586.val[1] = vsubq_f32(v1315, v1585.val[1]);
-              LANES128(v1585.val[1]).n128_u64[0] =
-                  LANES64_OF(vqtbl2_s8(v1586, COERCE_AS(int8x8_t,
-                                                        0x1B1A191803020100LL)))
-                      .n64_u64[0];
-              LANES128(v1587.val[1]).n128_u64[0] =
-                  LANES64_OF(vqtbl2_s8(v1586, COERCE_AS(int8x8_t,
-                                                        0x171615140B0A0908LL)))
-                      .n64_u64[0];
+              LANES128(v1585.val[1]).n128_u64[0] = LANES64_OF(
+                vqtbl2_s8(v1586, COERCE_AS(int8x8_t, 0x1B1A191803020100LL)))
+                                                     .n64_u64[0];
+              LANES128(v1587.val[1]).n128_u64[0] = LANES64_OF(
+                vqtbl2_s8(v1586, COERCE_AS(int8x8_t, 0x171615140B0A0908LL)))
+                                                     .n64_u64[0];
               *(int8x8_t*)&LANES128(v1585.val[1]).n128_i8[8] =
-                  vqtbl2_s8(v1586, COERCE_AS(int8x8_t, 0x706050413121110LL));
+                vqtbl2_s8(v1586, COERCE_AS(int8x8_t, 0x706050413121110LL));
               *(int8x8_t*)&LANES128(v1587.val[1]).n128_i8[8] =
-                  vqtbl2_s8(v1586, COERCE_AS(int8x8_t, 0x1F1E1D1C1F1E1D1CLL));
+                vqtbl2_s8(v1586, COERCE_AS(int8x8_t, 0x1F1E1D1C1F1E1D1CLL));
               v1585.val[0] = v1587.val[0];
-              LANES128(v1317).n128_u64[0] =
-                  LANES64_OF(vqtbl2_s8(v1585, COERCE_AS(int8x8_t,
-                                                        0x1312111003020100LL)))
-                      .n64_u64[0];
+              LANES128(v1317).n128_u64[0] = LANES64_OF(
+                vqtbl2_s8(v1585, COERCE_AS(int8x8_t, 0x1312111003020100LL)))
+                                              .n64_u64[0];
               *(int8x8_t*)&LANES128(v1317).n128_i8[8] =
-                  vqtbl2_s8(v1585, COERCE_AS(int8x8_t, 0xF0E0D0C17161514LL));
-              LANES128(v1318).n128_u64[0] =
-                  LANES64_OF(vqtbl2_s8(v1585, COERCE_AS(int8x8_t,
-                                                        0x70605041B1A1918LL)))
-                      .n64_u64[0];
+                vqtbl2_s8(v1585, COERCE_AS(int8x8_t, 0xF0E0D0C17161514LL));
+              LANES128(v1318).n128_u64[0] = LANES64_OF(
+                vqtbl2_s8(v1585, COERCE_AS(int8x8_t, 0x70605041B1A1918LL)))
+                                              .n64_u64[0];
               *(int8x8_t*)&LANES128(v1318).n128_i8[8] =
-                  vqtbl2_s8(v1585, COERCE_AS(int8x8_t, 0xF0E0D0C1F1E1D1CLL));
+                vqtbl2_s8(v1585, COERCE_AS(int8x8_t, 0xF0E0D0C1F1E1D1CLL));
               v1319 = *v1162;
-              LANES128(v1321).n128_u64[0] =
-                  LANES64_OF(vqtbl2_s8(v1587, COERCE_AS(int8x8_t,
-                                                        0x1716151413121110LL)))
-                      .n64_u64[0];
+              LANES128(v1321).n128_u64[0] = LANES64_OF(
+                vqtbl2_s8(v1587, COERCE_AS(int8x8_t, 0x1716151413121110LL)))
+                                              .n64_u64[0];
               v1320 = LANES128((*v1162)[36]).n128_i32[1];
               *(int8x8_t*)&LANES128(v1321).n128_i8[8] =
-                  vqtbl2_s8(v1587, COERCE_AS(int8x8_t, 0xF0E0D0C0B0A0908LL));
+                vqtbl2_s8(v1587, COERCE_AS(int8x8_t, 0xF0E0D0C0B0A0908LL));
               v1322 = vmulq_n_f32(v1317, LANES128(v1542).n128_f32[0]);
               if (v1320 > (signed __int32)LANES128((*v1162)[36]).n128_u32[0]) {
                 v1320 += 16;
               }
               v1323 = vmlaq_laneq_f32(
-                  vmlaq_lane_f32(
-                      v1322, v1318,
-                      COERCE_AS(float32x2_t, LANES128(v1542).n128_u64[0]), 1),
-                  v1321, v1542, 2);
+                vmlaq_lane_f32(v1322, v1318,
+                  COERCE_AS(float32x2_t, LANES128(v1542).n128_u64[0]), 1),
+                v1321, v1542, 2);
               v1324 = vmlaq_laneq_f32(
-                  vmlaq_lane_f32(
-                      vmulq_n_f32(v1317, LANES128(v1518).n128_f32[0]), v1318,
-                      COERCE_AS(float32x2_t, LANES128(v1518).n128_u64[0]), 1),
-                  v1321, v1518, 2);
+                vmlaq_lane_f32(vmulq_n_f32(v1317, LANES128(v1518).n128_f32[0]),
+                  v1318, COERCE_AS(float32x2_t, LANES128(v1518).n128_u64[0]),
+                  1),
+                v1321, v1518, 2);
               v1325 = vmlaq_laneq_f32(
-                  vmlaq_lane_f32(
-                      vmulq_n_f32(v1317, LANES128(v1509).n128_f32[0]), v1318,
-                      COERCE_AS(float32x2_t, LANES128(v1509).n128_u64[0]), 1),
-                  v1321, v1509, 2);
+                vmlaq_lane_f32(vmulq_n_f32(v1317, LANES128(v1509).n128_f32[0]),
+                  v1318, COERCE_AS(float32x2_t, LANES128(v1509).n128_u64[0]),
+                  1),
+                v1321, v1509, 2);
               v1326 = vaddq_f32(
-                  vmlaq_laneq_f32(
-                      vmlaq_lane_f32(
-                          vmulq_n_f32(v1317, LANES128(v1499).n128_f32[0]),
-                          v1318,
-                          COERCE_AS(float32x2_t, LANES128(v1499).n128_u64[0]),
-                          1),
-                      v1321, v1499, 2),
-                  COERCE_AS(float32x4_t, 0LL));
+                vmlaq_laneq_f32(
+                  vmlaq_lane_f32(
+                    vmulq_n_f32(v1317, LANES128(v1499).n128_f32[0]), v1318,
+                    COERCE_AS(float32x2_t, LANES128(v1499).n128_u64[0]), 1),
+                  v1321, v1499, 2),
+                COERCE_AS(float32x4_t, 0LL));
               LODWORD(v1327) = 0;
               *((float*)&v1327 + 1) =
-                  LANES128(v1319[41]).n128_f32[3] * (float)(v1320 + 1);
+                LANES128(v1319[41]).n128_f32[3] * (float)(v1320 + 1);
               v1328 = vmlaq_laneq_f32(
-                  vmlaq_lane_f32(
-                      vmulq_n_f32(v1547, LANES128(v1324).n128_f32[0]),
-                      COERCE_AS(float32x4_t, GameData_1a83610),
-                      COERCE_AS(float32x2_t, LANES128(v1324).n128_u64[0]), 1),
-                  COERCE_AS(float32x4_t, GameData_1a83090), v1324, 2);
+                vmlaq_lane_f32(vmulq_n_f32(v1547, LANES128(v1324).n128_f32[0]),
+                  COERCE_AS(float32x4_t, GameData_1a83610),
+                  COERCE_AS(float32x2_t, LANES128(v1324).n128_u64[0]), 1),
+                COERCE_AS(float32x4_t, GameData_1a83090), v1324, 2);
               v1543 = vmlaq_laneq_f32(
-                  vmlaq_lane_f32(
-                      vmulq_n_f32(v1547, LANES128(v1323).n128_f32[0]),
-                      COERCE_AS(float32x4_t, GameData_1a83610),
-                      COERCE_AS(float32x2_t, LANES128(v1323).n128_u64[0]), 1),
-                  COERCE_AS(float32x4_t, GameData_1a83090), v1323, 2);
+                vmlaq_lane_f32(vmulq_n_f32(v1547, LANES128(v1323).n128_f32[0]),
+                  COERCE_AS(float32x4_t, GameData_1a83610),
+                  COERCE_AS(float32x2_t, LANES128(v1323).n128_u64[0]), 1),
+                COERCE_AS(float32x4_t, GameData_1a83090), v1323, 2);
               v1500 = vmlaq_laneq_f32(
-                  vmlaq_lane_f32(
-                      vmulq_n_f32(v1547, LANES128(v1325).n128_f32[0]),
-                      COERCE_AS(float32x4_t, GameData_1a83610),
-                      COERCE_AS(float32x2_t, LANES128(v1325).n128_u64[0]), 1),
-                  COERCE_AS(float32x4_t, GameData_1a83090), v1325, 2);
+                vmlaq_lane_f32(vmulq_n_f32(v1547, LANES128(v1325).n128_f32[0]),
+                  COERCE_AS(float32x4_t, GameData_1a83610),
+                  COERCE_AS(float32x2_t, LANES128(v1325).n128_u64[0]), 1),
+                COERCE_AS(float32x4_t, GameData_1a83090), v1325, 2);
               v1488 = vaddq_f32(
-                  vmlaq_laneq_f32(
-                      vmlaq_lane_f32(
-                          vmulq_n_f32(v1547, LANES128(v1326).n128_f32[0]),
-                          COERCE_AS(float32x4_t, GameData_1a83610),
-                          COERCE_AS(float32x2_t, LANES128(v1326).n128_u64[0]),
-                          1),
-                      COERCE_AS(float32x4_t, GameData_1a83090), v1326, 2),
-                  vaddq_f32(v440[2], COERCE_AS(float32x4_t, v1327)));
-              v1510 = vmlaq_f32(vnegq_f32(v1543), COERCE_AS(float32x4_t, 0LL),
-                                v1328);
+                vmlaq_laneq_f32(
+                  vmlaq_lane_f32(
+                    vmulq_n_f32(v1547, LANES128(v1326).n128_f32[0]),
+                    COERCE_AS(float32x4_t, GameData_1a83610),
+                    COERCE_AS(float32x2_t, LANES128(v1326).n128_u64[0]), 1),
+                  COERCE_AS(float32x4_t, GameData_1a83090), v1326, 2),
+                vaddq_f32(v440[2], COERCE_AS(float32x4_t, v1327)));
+              v1510 =
+                vmlaq_f32(vnegq_f32(v1543), COERCE_AS(float32x4_t, 0LL), v1328);
               v1519 = v1328;
               v1547 = v1319[15];
               v1329 = powf(LANES128(v1547).n128_f32[0], v12);
@@ -9398,17 +9100,16 @@ LABEL_8:
               v1335 = (*v1162)[27];
               v1336 = vsubq_f32((*v1162)[28], v1335);
               v1337 =
-                  COERCE_FLOAT(HIDWORD(LANES128((*v1162)[27]).n128_u64[0])) +
-                  vmuls_lane_f32(
-                      v1334,
-                      COERCE_AS(float32x2_t, LANES128(v1336).n128_u64[0]), 1);
+                COERCE_FLOAT(HIDWORD(LANES128((*v1162)[27]).n128_u64[0])) +
+                vmuls_lane_f32(v1334,
+                  COERCE_AS(float32x2_t, LANES128(v1336).n128_u64[0]), 1);
               v1338 =
-                  LANES128(v1335).n128_f32[3] + vmuls_lane_f32(v1334, v1336, 3);
+                LANES128(v1335).n128_f32[3] + vmuls_lane_f32(v1334, v1336, 3);
               v1339 = COERCE_FLOAT(LANES128((*v1162)[27]).n128_u64[1]) +
-                      vmuls_lane_f32(v1334, v1336, 2);
+                vmuls_lane_f32(v1334, v1336, 2);
               v1340 = powf(LANES128(v1335).n128_f32[0] +
-                               (float)(v1334 * LANES128(v1336).n128_f32[0]),
-                           v12);
+                  (float)(v1334 * LANES128(v1336).n128_f32[0]),
+                v12);
               v1341 = *(float*)&v1340;
               v1342 = powf(v1337, v12);
               v1343 = *(float*)&v1342;
@@ -9433,7 +9134,7 @@ LABEL_8:
                 *(_QWORD*)v1351 = LANES128(v1352).n128_u64[0];
                 *(_DWORD*)(v1351 + 8) = LANES128(v1352).n128_u32[2];
                 v1353 = v1346 + 1440LL * v1348 +
-                        4LL * *(int*)(v1346 + 1440LL * v1348 + 256);
+                  4LL * *(int*)(v1346 + 1440LL * v1348 + 256);
                 ++*(_DWORD*)(v1353 + 260);
               }
               v1354 = a1[5];
@@ -9457,7 +9158,7 @@ LABEL_8:
                 *(_QWORD*)v1360 = LANES128(v1361).n128_u64[0];
                 *(_DWORD*)(v1360 + 8) = LANES128(v1361).n128_u32[2];
                 v1362 = v1357 + 1440LL * v1359 +
-                        4LL * *(int*)(v1357 + 1440LL * v1359 + 256);
+                  4LL * *(int*)(v1357 + 1440LL * v1359 + 256);
                 ++*(_DWORD*)(v1362 + 260);
               }
               v1363 = vmlaq_f32(v1543, COERCE_AS(float32x4_t, 0), v1519);
@@ -9476,7 +9177,7 @@ LABEL_8:
                 *(_QWORD*)v1370 = LANES128(v1369).n128_u64[0];
                 *(_DWORD*)(v1370 + 8) = LANES128(v1369).n128_u32[2];
                 v1371 = v1366 + 1440LL * v1368 +
-                        4LL * *(int*)(v1366 + 1440LL * v1368 + 256);
+                  4LL * *(int*)(v1366 + 1440LL * v1368 + 256);
                 ++*(_DWORD*)(v1371 + 260);
               }
               v1372 = a1[6];
@@ -9496,7 +9197,7 @@ LABEL_8:
                 *(_QWORD*)v1379 = LANES128(v1378).n128_u64[0];
                 *(_DWORD*)(v1379 + 8) = LANES128(v1378).n128_u32[2];
                 v1380 = v1375 + 1440LL * v1377 +
-                        4LL * *(int*)(v1375 + 1440LL * v1377 + 256);
+                  4LL * *(int*)(v1375 + 1440LL * v1377 + 256);
                 ++*(_DWORD*)(v1380 + 260);
               }
               PrimitiveDrawManager_1994180(*(_QWORD*)**a1);
@@ -9516,25 +9217,29 @@ LABEL_8:
             v1169 = 0x1.921fb60000000p+1;
           }
         LABEL_642:
-          v1165 =
-              v1169 -
-              (float)(v1166 *
-                      (float)((float)((float)(v1428 +
-                                              (float)((float)(v1432 + (float)((float)(v1429 + (float)((float)(v1433 + (float)((
-                                                                                                                                  float)(v1430 + (float)((float)(v1434 + (float)((float)(v1168 + (float)(v1167 * (float)(v1166 * v1166))) *
-                                                                                                                                                                                 (float)(v1166 *
-                                                                                                                                                                                         v1166))) *
-                                                                                                                                                         (float)(v1166 *
-                                                                                                                                                                 v1166))) *
-                                                                                                                              (float)(v1166 *
-                                                                                                                                      v1166))) *
-                                                                                                      (float)(v1166 *
-                                                                                                              v1166))) *
-                                                                              (float)(v1166 *
+          v1165 = v1169 -
+            (float)(v1166 *
+              (float)((float)((float)(v1428 +
+                                (float)((float)(v1432 +
+                                          (float)((float)(v1429 +
+                                                    (float)((float)(v1433 +
+                                                              (float)((float)(v1430 +
+                                                                        (float)((float)(v1434 +
+                                                                                  (float)((float)(v1168 +
+                                                                                            (float)(v1167 *
+                                                                                              (float)(v1166 *
+                                                                                                v1166))) *
+                                                                                    (float)(v1166 *
                                                                                       v1166))) *
+                                                                          (float)(v1166 *
+                                                                            v1166))) *
+                                                                (float)(v1166 *
+                                                                  v1166))) *
                                                       (float)(v1166 * v1166))) *
-                                      (float)(v1166 * v1166)) +
-                              0x1.0000000000000p+0));
+                                            (float)(v1166 * v1166))) *
+                                  (float)(v1166 * v1166))) *
+                        (float)(v1166 * v1166)) +
+                0x1.0000000000000p+0));
           goto LABEL_644;
         }
       LABEL_38:

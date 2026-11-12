@@ -636,32 +636,33 @@ float task_618640(int a1, float result, float a3, float a4, float a5)
   case 5:
     v36 = a3 - result;
     v19 = result + v36;
-    v20 = v36 * (float)((float)(a5 - a4) *
-                        (float)((float)(a5 - a4) * (float)(a5 - a4)));
+    v20 = v36 *
+      (float)((float)(a5 - a4) * (float)((float)(a5 - a4) * (float)(a5 - a4)));
     v37 = a5 * a5;
     goto LABEL_32;
   case 6:
     v40 = a3 - result;
     v19 = result + v40;
-    v20 = v40 * (float)((float)(a5 - a4) *
-                        (float)((float)(a5 - a4) *
-                                (float)((float)(a5 - a4) * (float)(a5 - a4))));
+    v20 = v40 *
+      (float)((float)(a5 - a4) *
+        (float)((float)(a5 - a4) *
+          (float)((float)(a5 - a4) * (float)(a5 - a4))));
     v37 = a5 * (float)(a5 * a5);
   LABEL_32:
     v21 = a5 * v37;
     return v19 - (float)(v20 / v21);
   case 7:
     v24 = a3 - result;
-    v34 = (float)((float)(a4 / a5) * 0x1.921fb60000000p+1f) *
-          0x1.0000000000000p+2f;
+    v34 =
+      (float)((float)(a4 / a5) * 0x1.921fb60000000p+1f) * 0x1.0000000000000p+2f;
     v35 = v34 * 0x1.45f3060000000p-3f;
     goto LABEL_37;
   case 8:
     v24 = a3 - result;
-    v34 = (float)((float)((float)((float)(a4 * a4) / a5) *
-                          0x1.921fb60000000p+1f) *
-                  0x1.0000000000000p+2f) /
-          (float)((float)(a5 * 0x1.e000000000000p+3f) / 0x1.9000000000000p+6f);
+    v34 =
+      (float)((float)((float)((float)(a4 * a4) / a5) * 0x1.921fb60000000p+1f) *
+        0x1.0000000000000p+2f) /
+      (float)((float)(a5 * 0x1.e000000000000p+3f) / 0x1.9000000000000p+6f);
     v35 = v34 * 0x1.45f3060000000p-3f;
   LABEL_37:
     v44 = v34 + (float)(roundf(v35) * -0x1.921fb60000000p+2f);
@@ -681,31 +682,44 @@ float task_618640(int a1, float result, float a3, float a4, float a5)
     v47 = v44 * v44;
     a4 = a5 - a4;
     return a3 -
-           (float)((
-                       float)(a4 *
-                              (float)(a4 *
-                                      (float)(v24 *
-                                              (float)(v46 * (float)((float)((float)-(
-                                                                                float)(*(float*)((char*)((__int128*)0x10LL) + (_QWORD)GameData_212c188) - (float)((float)(*(float*)((char*)((_UNKNOWN**)0x8LL) + (_QWORD)GameData_212c188 + 4) + (float)((float)-(float)(*(float*)((char*)((_UNKNOWN**)0x8LL) + (_QWORD)GameData_212c188) - (float)((float)(*((float*)
-                                                                                                                                                                                                                                                                                                                                                                  GameData_212c188 +
-                                                                                                                                                                                                                                                                                                                                                              1) -
-                                                                                                                                                                                                                                                                                                                                                            (float)(*(float*)
-                                                                                                                                                                                                                                                                                                                                                                        GameData_212c188 *
-                                                                                                                                                                                                                                                                                                                                                                    v47)) *
-                                                                                                                                                                                                                                                                                                                                                    v47)) *
-                                                                                                                                                                                                                                                         v47)) *
-                                                                                                                                                                  v47)) *
-                                                                            v47) +
-                                                                    0x1.0000000000000p+0f))))) /
-                   (float)(a5 * a5));
+      (float)((float)(a4 *
+                (float)(a4 *
+                  (float)(v24 *
+                    (float)(v46 *
+                      (float)((float)((float)-(
+                                        float)(*(float*)((char*)((
+                                                           __int128*)0x10LL) +
+                                                 (_QWORD)GameData_212c188) -
+                                        (float)((float)(*(float*)((char*)((
+                                                                    _UNKNOWN**)0x8LL) +
+                                                          (_QWORD)
+                                                            GameData_212c188 +
+                                                          4) +
+                                                  (float)((float)-(
+                                                            float)(*(float*)((char*)((
+                                                                               _UNKNOWN**)0x8LL) +
+                                                                     (_QWORD)
+                                                                       GameData_212c188) -
+                                                            (float)((float)(*((float*)
+                                                                                GameData_212c188 +
+                                                                              1) -
+                                                                      (float)(*(float*)
+                                                                                GameData_212c188 *
+                                                                        v47)) *
+                                                              v47)) *
+                                                    v47)) *
+                                          v47)) *
+                                v47) +
+                        0x1.0000000000000p+0f))))) /
+        (float)(a5 * a5));
   case 9:
     v24 = a3 - result;
-    v25 = (float)((float)((float)((float)(a4 * a4) / a5) *
-                          0x1.921fb60000000p+1f) *
-                  0x1.0000000000000p+2f) /
-          (float)((float)(a5 * 0x1.e000000000000p+3f) / 0x1.9000000000000p+6f);
+    v25 =
+      (float)((float)((float)((float)(a4 * a4) / a5) * 0x1.921fb60000000p+1f) *
+        0x1.0000000000000p+2f) /
+      (float)((float)(a5 * 0x1.e000000000000p+3f) / 0x1.9000000000000p+6f);
     v26 = v25 +
-          (float)(roundf(v25 * 0x1.45f3060000000p-3f) * -0x1.921fb60000000p+2f);
+      (float)(roundf(v25 * 0x1.45f3060000000p-3f) * -0x1.921fb60000000p+2f);
     if (v26 <= 0x1.921fb60000000p+0f) {
       v46 = 0x1.0000000000000p+0f;
       if (v26 >= -0x1.921fb60000000p+0f) {
@@ -721,30 +735,43 @@ float task_618640(int a1, float result, float a3, float a4, float a5)
   LABEL_67:
     v47 = v26 * v26;
     return a3 -
-           (float)((
-                       float)(a4 *
-                              (float)(a4 *
-                                      (float)(v24 *
-                                              (float)(v46 * (float)((float)((float)-(
-                                                                                float)(*(float*)((char*)((__int128*)0x10LL) + (_QWORD)GameData_212c188) - (float)((float)(*(float*)((char*)((_UNKNOWN**)0x8LL) + (_QWORD)GameData_212c188 + 4) + (float)((float)-(float)(*(float*)((char*)((_UNKNOWN**)0x8LL) + (_QWORD)GameData_212c188) - (float)((float)(*((float*)
-                                                                                                                                                                                                                                                                                                                                                                  GameData_212c188 +
-                                                                                                                                                                                                                                                                                                                                                              1) -
-                                                                                                                                                                                                                                                                                                                                                            (float)(*(float*)
-                                                                                                                                                                                                                                                                                                                                                                        GameData_212c188 *
-                                                                                                                                                                                                                                                                                                                                                                    v47)) *
-                                                                                                                                                                                                                                                                                                                                                    v47)) *
-                                                                                                                                                                                                                                                         v47)) *
-                                                                                                                                                                  v47)) *
-                                                                            v47) +
-                                                                    0x1.0000000000000p+0f))))) /
-                   (float)(a5 * a5));
+      (float)((float)(a4 *
+                (float)(a4 *
+                  (float)(v24 *
+                    (float)(v46 *
+                      (float)((float)((float)-(
+                                        float)(*(float*)((char*)((
+                                                           __int128*)0x10LL) +
+                                                 (_QWORD)GameData_212c188) -
+                                        (float)((float)(*(float*)((char*)((
+                                                                    _UNKNOWN**)0x8LL) +
+                                                          (_QWORD)
+                                                            GameData_212c188 +
+                                                          4) +
+                                                  (float)((float)-(
+                                                            float)(*(float*)((char*)((
+                                                                               _UNKNOWN**)0x8LL) +
+                                                                     (_QWORD)
+                                                                       GameData_212c188) -
+                                                            (float)((float)(*((float*)
+                                                                                GameData_212c188 +
+                                                                              1) -
+                                                                      (float)(*(float*)
+                                                                                GameData_212c188 *
+                                                                        v47)) *
+                                                              v47)) *
+                                                    v47)) *
+                                          v47)) *
+                                v47) +
+                        0x1.0000000000000p+0f))))) /
+        (float)(a5 * a5));
   case 10:
-    v41 = (float)((float)((float)((float)(a4 * a4) / a5) *
-                          0x1.921fb60000000p+1f) *
-                  0x1.0000000000000p+2f) /
-          (float)((float)(a5 * 0x1.4000000000000p+5f) / 0x1.9000000000000p+6f);
+    v41 =
+      (float)((float)((float)((float)(a4 * a4) / a5) * 0x1.921fb60000000p+1f) *
+        0x1.0000000000000p+2f) /
+      (float)((float)(a5 * 0x1.4000000000000p+5f) / 0x1.9000000000000p+6f);
     v42 = v41 +
-          (float)(roundf(v41 * 0x1.45f3060000000p-3f) * -0x1.921fb60000000p+2f);
+      (float)(roundf(v41 * 0x1.45f3060000000p-3f) * -0x1.921fb60000000p+2f);
     if (v42 <= 0x1.921fb60000000p+0f) {
       v92 = 0x1.0000000000000p+0f;
       if (v42 >= -0x1.921fb60000000p+0f) {
@@ -761,36 +788,32 @@ float task_618640(int a1, float result, float a3, float a4, float a5)
     v93 = v42 * v42;
     v94 = a3 - result;
     v95 =
+      (float)((float)(a5 - a4) *
         (float)((float)(a5 - a4) *
-                (float)((float)(a5 - a4) *
-                        (float)(v92 *
-                                (float)((float)((float)-(
-                                                    float)(*(float*)((char*)((
-                                                                         __int128*)0x10LL) +
-                                                                     (_QWORD)
-                                                                         GameData_212c188) -
-                                                           (float)((float)(*(float*)((char*)((
-                                                                                         _UNKNOWN**)0x8LL) +
-                                                                                     (_QWORD)
-                                                                                         GameData_212c188 +
-                                                                                     4) +
-                                                                           (float)((float)-(
-                                                                                       float)(*(float*)((char*)((
-                                                                                                            _UNKNOWN**)0x8LL) +
-                                                                                                        (_QWORD)
-                                                                                                            GameData_212c188) -
-                                                                                              (float)((float)(*((float*)
-                                                                                                                    GameData_212c188 +
-                                                                                                                1) -
-                                                                                                              (float)(*(float*)
-                                                                                                                          GameData_212c188 *
-                                                                                                                      v93)) *
-                                                                                                      v93)) *
-                                                                                   v93)) *
-                                                                   v93)) *
-                                                v93) +
-                                        0x1.0000000000000p+0f)))) /
-        (float)(a5 * a5);
+          (float)(v92 *
+            (float)((float)((float)-(
+                              float)(*(float*)((char*)((__int128*)0x10LL) +
+                                       (_QWORD)GameData_212c188) -
+                              (float)((float)(*(float*)((char*)((
+                                                          _UNKNOWN**)0x8LL) +
+                                                (_QWORD)GameData_212c188 + 4) +
+                                        (float)((float)-(
+                                                  float)(*(float*)((char*)((
+                                                                     _UNKNOWN**)0x8LL) +
+                                                           (_QWORD)
+                                                             GameData_212c188) -
+                                                  (float)((float)(*((float*)
+                                                                      GameData_212c188 +
+                                                                    1) -
+                                                            (float)(*(float*)
+                                                                      GameData_212c188 *
+                                                              v93)) *
+                                                    v93)) *
+                                          v93)) *
+                                v93)) *
+                      v93) +
+              0x1.0000000000000p+0f)))) /
+      (float)(a5 * a5);
     if (v95 < 0x0.0p+0f) {
       v95 = -v95;
     }
@@ -798,9 +821,9 @@ float task_618640(int a1, float result, float a3, float a4, float a5)
   case 11:
     v13 = a3 - result;
     v16 = (float)((float)(a4 * 0x1.921fb60000000p+1f) / a5) +
-          (float)(roundf((float)((float)(a4 * 0x1.921fb60000000p+1f) / a5) *
-                         0x1.45f3060000000p-3f) *
-                  -0x1.921fb60000000p+2f);
+      (float)(roundf((float)((float)(a4 * 0x1.921fb60000000p+1f) / a5) *
+                0x1.45f3060000000p-3f) *
+        -0x1.921fb60000000p+2f);
     if (v16 <= 0x1.921fb60000000p+0f) {
       v51 = 0x1.0000000000000p+0f;
       if (v16 >= -0x1.921fb60000000p+0f) {
@@ -815,40 +838,34 @@ float task_618640(int a1, float result, float a3, float a4, float a5)
     v51 = -0x1.0000000000000p+0f;
   LABEL_54:
     v52 = v16 * v16;
-    v14 =
-        0x1.0000000000000p+0f -
-        (float)(PSEUDO_UNFUSED(
-            v51 *
-            (float)((float)((float)-(
-                                float)(*(float*)((char*)((__int128*)0x10LL) +
-                                                 (_QWORD)GameData_212c188) -
-                                       (float)((float)(*(float*)((char*)((
-                                                                     _UNKNOWN**)0x8LL) +
-                                                                 (_QWORD)
-                                                                     GameData_212c188 +
-                                                                 4) +
-                                                       (float)((float)-(
-                                                                   float)(*(float*)((char*)((
-                                                                                        _UNKNOWN**)0x8LL) +
-                                                                                    (_QWORD)
-                                                                                        GameData_212c188) -
-                                                                          (float)((float)(*((float*)
-                                                                                                GameData_212c188 +
-                                                                                            1) -
-                                                                                          (float)(*(float*)
-                                                                                                      GameData_212c188 *
-                                                                                                  v52)) *
-                                                                                  v52)) *
-                                                               v52)) *
-                                               v52)) *
-                            v52) +
-                    0x1.0000000000000p+0f)));
+    v14 = 0x1.0000000000000p+0f -
+      (float)(PSEUDO_UNFUSED(v51 *
+        (float)((float)((float)-(float)(*(float*)((char*)((__int128*)0x10LL) +
+                                          (_QWORD)GameData_212c188) -
+                          (float)((float)(*(float*)((char*)((_UNKNOWN**)0x8LL) +
+                                            (_QWORD)GameData_212c188 + 4) +
+                                    (float)((float)-(
+                                              float)(*(float*)((char*)((
+                                                                 _UNKNOWN**)0x8LL) +
+                                                       (_QWORD)
+                                                         GameData_212c188) -
+                                              (float)((float)(*((float*)
+                                                                  GameData_212c188 +
+                                                                1) -
+                                                        (float)(*(float*)
+                                                                  GameData_212c188 *
+                                                          v52)) *
+                                                v52)) *
+                                      v52)) *
+                            v52)) *
+                  v52) +
+          0x1.0000000000000p+0f)));
     goto LABEL_88;
   case 12:
     v22 = (float)((float)(a4 * 0x1.921fb60000000p+1f) / a5) +
-          (float)(roundf((float)((float)(a4 * 0x1.921fb60000000p+1f) / a5) *
-                         0x1.45f3060000000p-3f) *
-                  -0x1.921fb60000000p+2f);
+      (float)(roundf((float)((float)(a4 * 0x1.921fb60000000p+1f) / a5) *
+                0x1.45f3060000000p-3f) *
+        -0x1.921fb60000000p+2f);
     if (v22 <= 0x1.921fb60000000p+0f) {
       v53 = 0x1.0000000000000p+0f;
       if (v22 >= -0x1.921fb60000000p+0f) {
@@ -870,27 +887,22 @@ float task_618640(int a1, float result, float a3, float a4, float a5)
     v57 = *(float*)((char*)((_UNKNOWN**)0x8LL) + (_QWORD)GameData_212c188 + 4);
     v59 = -v58;
     v60 = -v56;
-    v61 = -(
-        float)(v56 -
-               (float)((float)(v57 +
-                               (float)((float)-(
-                                           float)(v58 -
-                                                  (float)((float)(v55 -
-                                                                  (float)(*(float*)
-                                                                              GameData_212c188 *
-                                                                          v54)) *
-                                                          v54)) *
-                                       v54)) *
-                       v54));
+    v61 = -(float)(v56 -
+      (float)((float)(v57 +
+                (float)((float)-(float)(v58 -
+                          (float)((float)(v55 -
+                                    (float)(*(float*)GameData_212c188 * v54)) *
+                            v54)) *
+                  v54)) *
+        v54));
     v62 = 0x1.0000000000000p+0f;
     v63 = (float)((float)(0x1.0000000000000p+0f -
-                          (float)(PSEUDO_UNFUSED(
-                              v53 * (float)((float)(v61 * v54) +
-                                            0x1.0000000000000p+0f)))) *
-                  0x1.0000000000000p-1f) *
-          0x1.921fb60000000p+1f;
+                    (float)(PSEUDO_UNFUSED(v53 *
+                      (float)((float)(v61 * v54) + 0x1.0000000000000p+0f)))) *
+            0x1.0000000000000p-1f) *
+      0x1.921fb60000000p+1f;
     v64 = v63 +
-          (float)(roundf(v63 * 0x1.45f3060000000p-3f) * -0x1.921fb60000000p+2f);
+      (float)(roundf(v63 * 0x1.45f3060000000p-3f) * -0x1.921fb60000000p+2f);
     if (v64 <= 0x1.921fb60000000p+0f) {
       if (v64 >= -0x1.921fb60000000p+0f) {
         goto LABEL_63;
@@ -904,29 +916,25 @@ float task_618640(int a1, float result, float a3, float a4, float a5)
     v62 = -0x1.0000000000000p+0f;
   LABEL_63:
     v66 = 0x1.0000000000000p+0f;
-    v67 =
-        v62 *
-        (float)((float)((float)(v60 +
-                                (float)((float)(v57 +
-                                                (float)((float)(v59 +
-                                                                (float)((float)(v55 +
-                                                                                (float)((float)-*(
-                                                                                            float*)
-                                                                                            GameData_212c188 *
-                                                                                        (float)(v64 *
-                                                                                                v64))) *
-                                                                        (float)(v64 *
-                                                                                v64))) *
+    v67 = v62 *
+      (float)((float)((float)(v60 +
+                        (float)((float)(v57 +
+                                  (float)((float)(v59 +
+                                            (float)((float)(v55 +
+                                                      (float)((float)-*(float*)
+                                                                GameData_212c188 *
                                                         (float)(v64 * v64))) *
-                                        (float)(v64 * v64))) *
-                        (float)(v64 * v64)) +
-                0x1.0000000000000p+0f);
+                                              (float)(v64 * v64))) *
+                                    (float)(v64 * v64))) *
+                          (float)(v64 * v64))) *
+                (float)(v64 * v64)) +
+        0x1.0000000000000p+0f);
     goto LABEL_87;
   case 13:
     v38 = (float)((float)(a4 * 0x1.921fb60000000p+1f) / a5) +
-          (float)(roundf((float)((float)(a4 * 0x1.921fb60000000p+1f) / a5) *
-                         0x1.45f3060000000p-3f) *
-                  -0x1.921fb60000000p+2f);
+      (float)(roundf((float)((float)(a4 * 0x1.921fb60000000p+1f) / a5) *
+                0x1.45f3060000000p-3f) *
+        -0x1.921fb60000000p+2f);
     if (v38 <= 0x1.921fb60000000p+0f) {
       v70 = 0x1.0000000000000p+0f;
       if (v38 >= -0x1.921fb60000000p+0f) {
@@ -948,27 +956,22 @@ float task_618640(int a1, float result, float a3, float a4, float a5)
     v75 = *(float*)((char*)((_UNKNOWN**)0x8LL) + (_QWORD)GameData_212c188 + 4);
     v77 = -v76;
     v78 = -v73;
-    v79 = -(
-        float)(v73 -
-               (float)((float)(v75 +
-                               (float)((float)-(
-                                           float)(v76 -
-                                                  (float)((float)(v72 -
-                                                                  (float)(*(float*)
-                                                                              GameData_212c188 *
-                                                                          v71)) *
-                                                          v71)) *
-                                       v71)) *
-                       v71));
+    v79 = -(float)(v73 -
+      (float)((float)(v75 +
+                (float)((float)-(float)(v76 -
+                          (float)((float)(v72 -
+                                    (float)(*(float*)GameData_212c188 * v71)) *
+                            v71)) *
+                  v71)) *
+        v71));
     v80 = 0x1.0000000000000p+0f;
     v81 = (float)((float)(0x1.0000000000000p+0f -
-                          (float)(PSEUDO_UNFUSED(
-                              v70 * (float)((float)(v79 * v71) +
-                                            0x1.0000000000000p+0f)))) *
-                  0x1.0000000000000p-1f) *
-          0x1.921fb60000000p+1f;
+                    (float)(PSEUDO_UNFUSED(v70 *
+                      (float)((float)(v79 * v71) + 0x1.0000000000000p+0f)))) *
+            0x1.0000000000000p-1f) *
+      0x1.921fb60000000p+1f;
     v82 = v81 +
-          (float)(roundf(v81 * 0x1.45f3060000000p-3f) * -0x1.921fb60000000p+2f);
+      (float)(roundf(v81 * 0x1.45f3060000000p-3f) * -0x1.921fb60000000p+2f);
     if (v82 <= 0x1.921fb60000000p+0f) {
       if (v82 >= -0x1.921fb60000000p+0f) {
         goto LABEL_81;
@@ -983,26 +986,22 @@ float task_618640(int a1, float result, float a3, float a4, float a5)
   LABEL_81:
     v84 = v82 * v82;
     v13 = a3 - result;
-    v85 =
-        v78 +
-        (float)((float)(v75 +
-                        (float)((float)(v77 +
-                                        (float)((float)(v72 +
-                                                        (float)(v74 *
-                                                                (float)(v82 *
-                                                                        v82))) *
-                                                (float)(v82 * v82))) *
-                                (float)(v82 * v82))) *
-                (float)(v82 * v82));
+    v85 = v78 +
+      (float)((float)(v75 +
+                (float)((float)(v77 +
+                          (float)((float)(v72 +
+                                    (float)(v74 * (float)(v82 * v82))) *
+                            (float)(v82 * v82))) *
+                  (float)(v82 * v82))) *
+        (float)(v82 * v82));
     v86 = 0x1.0000000000000p+0f;
     v87 = (float)((float)(0x1.0000000000000p+0f -
-                          (float)(PSEUDO_UNFUSED(
-                              v80 * (float)((float)(v85 * v84) +
-                                            0x1.0000000000000p+0f)))) *
-                  0x1.0000000000000p-1f) *
-          0x1.921fb60000000p+1f;
+                    (float)(PSEUDO_UNFUSED(v80 *
+                      (float)((float)(v85 * v84) + 0x1.0000000000000p+0f)))) *
+            0x1.0000000000000p-1f) *
+      0x1.921fb60000000p+1f;
     v88 = v87 +
-          (float)(roundf(v87 * 0x1.45f3060000000p-3f) * -0x1.921fb60000000p+2f);
+      (float)(roundf(v87 * 0x1.45f3060000000p-3f) * -0x1.921fb60000000p+2f);
     if (v88 <= 0x1.921fb60000000p+0f) {
       if (v88 >= -0x1.921fb60000000p+0f) {
         goto LABEL_86;
@@ -1018,17 +1017,14 @@ float task_618640(int a1, float result, float a3, float a4, float a5)
     v90 = v88 * v88;
     v91 = v72 + (float)(v74 * v90);
     v66 = 0x1.0000000000000p+0f;
-    v67 =
-        v86 *
-        (float)((float)((float)(v78 +
-                                (float)((float)(v75 +
-                                                (float)((float)(v77 +
-                                                                (float)(v91 *
-                                                                        v90)) *
-                                                        v90)) *
-                                        v90)) *
-                        v90) +
-                0x1.0000000000000p+0f);
+    v67 = v86 *
+      (float)((float)((float)(v78 +
+                        (float)((float)(v75 +
+                                  (float)((float)(v77 + (float)(v91 * v90)) *
+                                    v90)) *
+                          v90)) *
+                v90) +
+        0x1.0000000000000p+0f);
   LABEL_87:
     v14 = v66 - v67;
   LABEL_88:
@@ -1037,9 +1033,9 @@ float task_618640(int a1, float result, float a3, float a4, float a5)
   case 14:
     v13 = a3 - result;
     v14 = (float)((float)(a4 * 0x1.921fb60000000p+0f) / a5) +
-          (float)(roundf((float)((float)(a4 * 0x1.921fb60000000p+0f) / a5) *
-                         0x1.45f3060000000p-3f) *
-                  -0x1.921fb60000000p+2f);
+      (float)(roundf((float)((float)(a4 * 0x1.921fb60000000p+0f) / a5) *
+                0x1.45f3060000000p-3f) *
+        -0x1.921fb60000000p+2f);
     if (v14 <= 0x1.921fb60000000p+0f) {
       if (v14 >= -0x1.921fb60000000p+0f) {
         goto LABEL_50;
@@ -1052,38 +1048,31 @@ float task_618640(int a1, float result, float a3, float a4, float a5)
     v14 = v15 - v14;
   LABEL_50:
     v50 =
-        (float)((float)-(
-                    float)(*(float*)((char*)((__int128*)0x10LL) +
-                                     (_QWORD)GameData_212c190) -
-                           (float)((float)(*(float*)((char*)((
-                                                         _UNKNOWN**)0x8LL) +
-                                                     (_QWORD)GameData_212c190 +
-                                                     4) +
-                                           (float)((float)-(
-                                                       float)(*(float*)((char*)((
-                                                                            _UNKNOWN**)0x8LL) +
-                                                                        (_QWORD)
-                                                                            GameData_212c190) -
-                                                              (float)((float)(*((float*)
-                                                                                    GameData_212c190 +
-                                                                                1) -
-                                                                              (float)(*(float*)
-                                                                                          GameData_212c190 *
-                                                                                      (float)(v14 *
-                                                                                              v14))) *
-                                                                      (float)(v14 *
-                                                                              v14))) *
-                                                   (float)(v14 * v14))) *
-                                   (float)(v14 * v14))) *
-                (float)(v14 * v14)) +
-        0x1.0000000000000p+0f;
+      (float)((float)-(float)(*(float*)((char*)((__int128*)0x10LL) +
+                                (_QWORD)GameData_212c190) -
+                (float)((float)(*(float*)((char*)((_UNKNOWN**)0x8LL) +
+                                  (_QWORD)GameData_212c190 + 4) +
+                          (float)((float)-(
+                                    float)(*(float*)((char*)((
+                                                       _UNKNOWN**)0x8LL) +
+                                             (_QWORD)GameData_212c190) -
+                                    (float)((float)(*((float*)GameData_212c190 +
+                                                      1) -
+                                              (float)(*(float*)
+                                                        GameData_212c190 *
+                                                (float)(v14 * v14))) *
+                                      (float)(v14 * v14))) *
+                            (float)(v14 * v14))) *
+                  (float)(v14 * v14))) *
+        (float)(v14 * v14)) +
+      0x1.0000000000000p+0f;
     return result + (float)(v13 * (float)(v14 * v50));
   case 15:
     v30 = a3 - result;
     v31 = (float)((float)(a4 * 0x1.921fb60000000p+0f) / a5) +
-          (float)(roundf((float)((float)(a4 * 0x1.921fb60000000p+0f) / a5) *
-                         0x1.45f3060000000p-3f) *
-                  -0x1.921fb60000000p+2f);
+      (float)(roundf((float)((float)(a4 * 0x1.921fb60000000p+0f) / a5) *
+                0x1.45f3060000000p-3f) *
+        -0x1.921fb60000000p+2f);
     if (v31 <= 0x1.921fb60000000p+0f) {
       v68 = 0x1.0000000000000p+0f;
       if (v31 >= -0x1.921fb60000000p+0f) {
@@ -1099,44 +1088,39 @@ float task_618640(int a1, float result, float a3, float a4, float a5)
   LABEL_72:
     v69 = v31 * v31;
     return result +
-           (float)(v30 *
-                   (float)(0x1.0000000000000p+0f -
-                           (float)(PSEUDO_UNFUSED(
-                               v68 *
-                               (float)((float)((float)-(
-                                                   float)(*(float*)((char*)((
-                                                                        __int128*)0x10LL) +
-                                                                    (_QWORD)
-                                                                        GameData_212c188) -
-                                                          (float)((float)(*(float*)((char*)((
-                                                                                        _UNKNOWN**)0x8LL) +
-                                                                                    (_QWORD)
-                                                                                        GameData_212c188 +
-                                                                                    4) +
-                                                                          (float)((float)-(
-                                                                                      float)(*(float*)((char*)((
-                                                                                                           _UNKNOWN**)0x8LL) +
-                                                                                                       (_QWORD)
-                                                                                                           GameData_212c188) -
-                                                                                             (float)((float)(*((float*)
-                                                                                                                   GameData_212c188 +
-                                                                                                               1) -
-                                                                                                             (float)(*(float*)
-                                                                                                                         GameData_212c188 *
-                                                                                                                     v69)) *
-                                                                                                     v69)) *
-                                                                                  v69)) *
-                                                                  v69)) *
-                                               v69) +
-                                       0x1.0000000000000p+0f)))));
+      (float)(v30 *
+        (float)(0x1.0000000000000p+0f -
+          (float)(PSEUDO_UNFUSED(v68 *
+            (float)((float)((float)-(
+                              float)(*(float*)((char*)((__int128*)0x10LL) +
+                                       (_QWORD)GameData_212c188) -
+                              (float)((float)(*(float*)((char*)((
+                                                          _UNKNOWN**)0x8LL) +
+                                                (_QWORD)GameData_212c188 + 4) +
+                                        (float)((float)-(
+                                                  float)(*(float*)((char*)((
+                                                                     _UNKNOWN**)0x8LL) +
+                                                           (_QWORD)
+                                                             GameData_212c188) -
+                                                  (float)((float)(*((float*)
+                                                                      GameData_212c188 +
+                                                                    1) -
+                                                            (float)(*(float*)
+                                                                      GameData_212c188 *
+                                                              v69)) *
+                                                    v69)) *
+                                          v69)) *
+                                v69)) *
+                      v69) +
+              0x1.0000000000000p+0f)))));
   case 16:
     v8 = a3 - result;
     v9 = result + (float)(v8 * 0x1.0000000000000p-1f);
     v10 = v8 * 0x1.0000000000000p-1f;
     v11 = (float)((float)(a4 * 0x1.921fb60000000p+1f) / a5) +
-          (float)(roundf((float)((float)(a4 * 0x1.921fb60000000p+1f) / a5) *
-                         0x1.45f3060000000p-3f) *
-                  -0x1.921fb60000000p+2f);
+      (float)(roundf((float)((float)(a4 * 0x1.921fb60000000p+1f) / a5) *
+                0x1.45f3060000000p-3f) *
+        -0x1.921fb60000000p+2f);
     if (v11 <= 0x1.921fb60000000p+0f) {
       v48 = 0x1.0000000000000p+0f;
       if (v11 >= -0x1.921fb60000000p+0f) {
@@ -1151,37 +1135,33 @@ float task_618640(int a1, float result, float a3, float a4, float a5)
     v48 = -0x1.0000000000000p+0f;
   LABEL_46:
     v49 = v11 * v11;
-    result =
-        v9 +
-        (float)(v10 *
-                (float)-(
-                    float)((float)((float)((float)-(
-                                               float)(*(float*)((char*)((
-                                                                    __int128*)0x10LL) +
+    result = v9 +
+      (float)(v10 *
+        (float)-(
+          float)((float)((float)((float)-(
+                                   float)(*(float*)((char*)((__int128*)0x10LL) +
+                                            (_QWORD)GameData_212c188) -
+                                   (float)((float)(*(float*)((char*)((
+                                                               _UNKNOWN**)0x8LL) +
+                                                     (_QWORD)GameData_212c188 +
+                                                     4) +
+                                             (float)((float)-(
+                                                       float)(*(float*)((char*)((
+                                                                          _UNKNOWN**)0x8LL) +
                                                                 (_QWORD)
-                                                                    GameData_212c188) -
-                                                      (float)((float)(*(float*)((char*)((
-                                                                                    _UNKNOWN**)0x8LL) +
-                                                                                (_QWORD)
-                                                                                    GameData_212c188 +
-                                                                                4) +
-                                                                      (float)((float)-(
-                                                                                  float)(*(float*)((char*)((
-                                                                                                       _UNKNOWN**)0x8LL) +
-                                                                                                   (_QWORD)
-                                                                                                       GameData_212c188) -
-                                                                                         (float)((float)(*((float*)
-                                                                                                               GameData_212c188 +
-                                                                                                           1) -
-                                                                                                         (float)(*(float*)
-                                                                                                                     GameData_212c188 *
-                                                                                                                 v49)) *
-                                                                                                 v49)) *
-                                                                              v49)) *
-                                                              v49)) *
-                                           v49) +
-                                   0x1.0000000000000p+0f) *
-                           v48));
+                                                                  GameData_212c188) -
+                                                       (float)((float)(*((float*)
+                                                                           GameData_212c188 +
+                                                                         1) -
+                                                                 (float)(*(float*)
+                                                                           GameData_212c188 *
+                                                                   v49)) *
+                                                         v49)) *
+                                               v49)) *
+                                     v49)) *
+                           v49) +
+                   0x1.0000000000000p+0f) *
+          v48));
     break;
   default:
     return result;
