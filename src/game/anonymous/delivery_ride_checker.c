@@ -4,6 +4,7 @@
 
 bool DeliveryRideChecker_Unknown2(__int64 a1);
 __int64 DeliveryRideChecker_Unknown3(__int64 a1);
+bool DeliveryRideChecker_Unknown4(__int64 a1);
 
 bool DeliveryRideChecker_Unknown2(__int64 a1)
 {
@@ -20,6 +21,12 @@ __int64 DeliveryRideChecker_Unknown3(__int64 a1)
 {
   ++*(_DWORD*)(a1 + 12);
   return 0;
+}
+
+bool DeliveryRideChecker_Unknown4(__int64 a1)
+{
+  return (signed __int32)*(_DWORD*)(a1 + 12) >=
+         (signed __int32)*(_DWORD*)(a1 + 8);
 }
 
 #pragma GCC visibility pop

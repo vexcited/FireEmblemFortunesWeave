@@ -16,6 +16,7 @@ extern __int64 fw_memory_g_heap_manager_ptr;
 void GameRoutine_7a6cc0(__int64*, unsigned __int64);
 void DeliveryItemChecker_1265c20(unsigned __int64 result, int* a2, int* a3,
                                  int* a4);
+bool DeliveryItemChecker_Unknown4(__int64 a1);
 
 __int64 DeliveryItemChecker_Destructor(__int64 a1, __int64 a2)
 {
@@ -27,6 +28,18 @@ __int64 DeliveryItemChecker_DeletingDestructor(__int64 a1, __int64 a2, int a3)
 {
   GameRoutine_1265f00(a1, a2 + 8LL * a3 + 828, 1);
   return 0;
+}
+
+bool DeliveryItemChecker_Unknown4(__int64 a1)
+{
+  __int64* v1;
+
+  v1 = (__int64*)(a1 + 32);
+  do {
+    v1 = (__int64*)*v1;
+  } while (v1 != nullptr && (signed __int32)*((_DWORD*)v1 + 5) >=
+                                (signed __int32)*(_DWORD*)(a1 + 8));
+  return v1 == nullptr;
 }
 
 void DeliveryItemChecker_1265c20(unsigned __int64 result, int* a2, int* a3,

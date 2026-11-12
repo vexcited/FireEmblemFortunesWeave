@@ -38,6 +38,103 @@ void __attribute__((noreturn)) GameRoutine_e66f80(_QWORD);
 __int64 ExchangeNumDialog_Unknown135(__int64 a1);
 __int64
 game_menu_ExchangeNumDialog_CreateBindExchange_lambda0_Invoke(__int64 a1);
+__int64 GameRoutine_16477d0(__int64, const char*, __int64, __int64);
+__int64 GameRoutine_164cfc0(__int64, _QWORD*);
+__int64 GameRoutine_60a020(__int64, const char*);
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+extern __int64 (*GameData_2074db8[])();
+extern __int64 (*game_menu_ChangeNumMenuItem_vtable[])();
+extern __int64 (*game_menu_anonymous_ExchangeNumMenuItem_vtable[])();
+extern char GameData_1a9f09e;
+void BasicMenuCursor_16e0c00(_QWORD*, __int64);
+_QWORD* game_menu_ExchangeNumDialog_CreateBindExchange(
+    __int64 a1, int a2, int a3, int a4, __int64 a5, const char* a6, __int64 a7,
+    __int64 a8, __int64 a9, __int64 a10);
+
+_QWORD* game_menu_ExchangeNumDialog_CreateBindExchange(
+    __int64 a1, int a2, int a3, int a4, __int64 a5, const char* a6, __int64 a7,
+    __int64 a8, __int64 a9, __int64 a10)
+{
+  __int64 v16;
+  _QWORD* v17;
+  __int64* v18;
+  __int64 v19;
+  __int64 v20;
+  int v21;
+  int v22;
+  __int64 v23;
+  __int64 v24;
+  __int64 v25;
+  struct {
+    _QWORD v27[4];
+    _QWORD* v28;
+  } v27_;
+
+  v27_.v27[0] = a5;
+  v16 = GameRoutine_164cfc0(a1, v27_.v27);
+  v17 = (_QWORD*)v16;
+  if (v16 != 0) {
+    *(_DWORD*)(v16 + 1572) = a2;
+    GameRoutine_60a020(v16 + 1496, a6);
+    v18 = (__int64*)fw_memory_g_heap_manager_ptr;
+    v19 = fw_memory_HeapManager_Allocate_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr, 304, 16, 0);
+    v27_.v28 = v27_.v27;
+    v27_.v27[0] = GameData_2074db8;
+    v27_.v27[1] = v17;
+    GameRoutine_16477d0(v19, &GameData_1a9f09e, (__int64)v27_.v27, a10);
+    v20 = *(_QWORD*)(a7 + 32);
+    *(_DWORD*)(v19 + 192) = a3;
+    *(_DWORD*)(v19 + 196) = a4;
+    *(_QWORD*)(v19 + 200) = 0;
+    *(_QWORD*)(v19 + 208) = 0;
+    *(_QWORD*)(v19 + 216) = 0;
+    *(_QWORD*)(v19 + 224) = 0;
+    *(_QWORD*)v19 = game_menu_ChangeNumMenuItem_vtable;
+    if (v20 != 0) {
+      if (v20 == a7) {
+        *(_QWORD*)(v19 + 272) = v19 + 240;
+        (*(void (**)(__int64))(*(_QWORD*)v20 + 24LL))(v20);
+      }
+      else {
+        *(_QWORD*)(v19 + 272) =
+            (*(__int64 (**)(__int64))(*(_QWORD*)v20 + 16LL))(v20);
+      }
+    }
+    else {
+      *(_QWORD*)(v19 + 272) = 0;
+    }
+    v21 = *(_DWORD*)(v19 + 192);
+    v22 = *(_DWORD*)(v19 + 196);
+    *(_DWORD*)(v19 + 288) = a3;
+    *(_BYTE*)(v19 + 82) = v21 != v22;
+    *(_BYTE*)(v19 + 80) =
+        (*(__int64 (**)(__int64))(*(_QWORD*)v19 + 464LL))(v19) & 1;
+    *(_QWORD*)v19 = game_menu_anonymous_ExchangeNumMenuItem_vtable;
+    BasicMenuCursor_16e0c00(v17, v19);
+    if (v27_.v28 == v27_.v27) {
+      v23 = 32;
+    }
+    else {
+      if (v27_.v28 == nullptr) {
+      LABEL_12:
+        v24 = fw_memory_HeapManager_Allocate_alt1(*v18, 192, 16, 0);
+        GameRoutine_16477d0(v24, "MID_Sys_Yes", a8, a10);
+        BasicMenuCursor_16e0c00(v17, v24);
+        v25 = fw_memory_HeapManager_Allocate_alt1(*v18, 192, 16, 0);
+        GameRoutine_16477d0(v25, "MID_Sys_No", a9, a10);
+        BasicMenuCursor_16e0c00(v17, v25);
+        return v17;
+      }
+      v23 = 40;
+    }
+    (*(void (**)(__int64))(*v27_.v28 + v23))((__int64)v27_.v28);
+    goto LABEL_12;
+  }
+  return v17;
+}
 
 __int64 ExchangeNumDialog_Unknown135(__int64 a1)
 {

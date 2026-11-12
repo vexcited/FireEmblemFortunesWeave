@@ -36,6 +36,53 @@ extern __int64 fw_memory_g_heap_manager_ptr;
 void LayoutAccessor_1562680(__int64*, __int64, float);
 __n128 SpineFace_1027910(__int64 a1);
 void SpineFace_1027c80(__int64 a1);
+__int64 GameRoutine_190bf00(__int64, _QWORD*);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 SpineFace_1027780(__int64 result);
+
+__int64 SpineFace_1027780(__int64 result)
+{
+  __int64 v1;
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  struct {
+    __int64 v7;
+    __int64 v8;
+  } v7_;
+
+  v1 = *(_QWORD*)(result + 168);
+  if (v1 != 0) {
+    v2 = result;
+    v3 = *game_spine_g_resource_releaser_ptr;
+    v4 = *(_QWORD*)(v2 + 176);
+    v7_.v7 = v1;
+    v7_.v8 = v4;
+    if (v4 != 0) {
+      atomic_fetch_add_explicit((atomic_ullong* volatile)(v4 + 8), 1u,
+                                memory_order_relaxed);
+    }
+    result = GameRoutine_190bf00(v3, &v7_.v7);
+    v5 = v7_.v8;
+    if (v7_.v8 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v7_.v8 + 8),
+                                        0xFFFFFFFFFFFFFFFFLL) == 0) {
+      (*(void (**)(__int64))(*(_QWORD*)v5 + 16LL))(v5);
+      result = std___1___shared_weak_count___release_weak_alt1(v5);
+    }
+    v6 = *(_QWORD*)(v2 + 176);
+    *(_QWORD*)(v2 + 168) = 0;
+    *(_QWORD*)(v2 + 176) = 0;
+    if (v6 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v6 + 8),
+                                    0xFFFFFFFFFFFFFFFFLL) == 0) {
+      (*(void (**)(__int64))(*(_QWORD*)v6 + 16LL))(v6);
+      return std___1___shared_weak_count___release_weak_alt1(v6);
+    }
+  }
+  return result;
+}
 
 __n128 SpineFace_1027910(__int64 a1)
 {

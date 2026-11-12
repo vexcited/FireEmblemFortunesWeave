@@ -22,6 +22,9 @@ __int64 HelpableElement_18b2d50(_QWORD* a1);
 __int64 HelpableElement_18b2e10(_QWORD* a1);
 __int64 HelpableElement_18b2ed0(_QWORD* a1);
 __int64 HelpableElement_18b2f90(_QWORD* a1);
+extern __int64* GameData_212d890[2];
+_QWORD* HelpableElement_18b2c60();
+_QWORD* HelpableElement_18b2cd0(_QWORD* result);
 
 __attribute__((swiftcall)) void HelpableElement_18b2990(PSEUDO_X8 x8_,
                                                         _QWORD* a1, __int64 a2)
@@ -141,6 +144,56 @@ __int64 HelpableElement_18b2b00(_QWORD* a1)
     v3 = 0;
   }
   return v3 & 1;
+}
+
+_QWORD* HelpableElement_18b2c60()
+{
+  _QWORD* result;
+  char v1[4];
+  struct {
+    __int64* v2;
+    int v3;
+    char gap20_[4];
+    __int64 v4;
+  } v2_;
+
+  result = (_QWORD*)GameData_21f1e08;
+  if (GameData_21f1e08 != 0 && *(_QWORD*)(GameData_21f1e08 + 152) != 0) {
+    v2_.v4 = 0;
+    v2_.v2 = GameData_212d890[0] + 2;
+    v2_.v3 = 44;
+    return X8CALL_X0(
+        _QWORD*,
+        (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64, __int64**))(
+            *(_QWORD*)(GameData_21f1e08 + 8) + 16LL))(
+            (void*)v1, GameData_21f1e08 + 8, &v2_.v2));
+  }
+  return result;
+}
+
+_QWORD* HelpableElement_18b2cd0(_QWORD* result)
+{
+  char v3[4];
+  struct {
+    __int64* v4;
+    int v5;
+    char gap20_[4];
+    __int64 v6;
+  } v4_;
+
+  if (*((_BYTE*)result + 1072) == 1) {
+    result = (_QWORD*)GameData_21f1e08;
+    if (GameData_21f1e08 != 0 && *(_QWORD*)(GameData_21f1e08 + 152) != 0) {
+      v4_.v6 = 0;
+      v4_.v4 = GameData_212d890[0] + 2;
+      v4_.v5 = 44;
+      return X8CALL_X0(_QWORD*, (*(__attribute__((swiftcall)) void (**)(
+                                    PSEUDO_X8, __int64, __int64**))(
+                                    *(_QWORD*)(GameData_21f1e08 + 8) + 16LL))(
+                                    (void*)v3, GameData_21f1e08 + 8, &v4_.v4));
+    }
+  }
+  return result;
 }
 
 __int64 HelpableElement_18b2d50(_QWORD* a1)

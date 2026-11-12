@@ -64,6 +64,10 @@ void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void RelianceUnitSelectMenu_184e860(__int64 a1);
 void RelianceUnitSelectMenu_184fca0(__int64 a1, __int64* a2);
+_QWORD* MapSortieMenu_871860(__int64, __int64, __int64, __int64, __int64);
+extern __int64 (*GameData_20e8fb8[])();
+extern __int64 (*GameData_20e90c8[])();
+__int64 game_menu_RelianceUnitSelectMenu_ZLCall(__int64 a1);
 
 void RelianceUnitSelectMenu_184e860(__int64 a1)
 {
@@ -364,6 +368,74 @@ _QWORD* RelianceUnitSelectMenu_184f060(__int64 a1, unsigned int a2)
   (*(void (**)(_QWORD*))(*v4 + 1024LL))(v4);
   (*(void (**)(_QWORD*))(*v4 + 1032LL))(v4);
   return v4;
+}
+
+__int64 game_menu_RelianceUnitSelectMenu_ZLCall(__int64 a1)
+{
+  unsigned int v1;
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  struct {
+    _BYTE v6[32];
+    _BYTE* v7;
+  } v6_;
+  struct {
+    _QWORD v8[4];
+    _QWORD* v9;
+  } v8_;
+  struct {
+    _QWORD v10[4];
+    _QWORD* v11;
+  } v10_;
+  const char* v12;
+
+  v1 = 0;
+  if (*(_DWORD*)(a1 + 1184) == 0 && (*(_BYTE*)(a1 + 1188) & 1) != 0) {
+    v6_.v7 = nullptr;
+    v12 = "MID_RelianceMenu_AllRead_Confirm";
+    v8_.v9 = v8_.v8;
+    v10_.v10[0] = GameData_20e8fb8;
+    v10_.v10[1] = a1;
+    v10_.v11 = v10_.v10;
+    v8_.v8[0] = GameData_20e90c8;
+    MapSortieMenu_871860(a1, (__int64)&v12, (__int64)v10_.v10, (__int64)v8_.v8,
+                         (__int64)v6_.v6);
+    if (v6_.v7 == v6_.v6) {
+      v2 = 32;
+    }
+    else {
+      if (v6_.v7 == nullptr) {
+        goto LABEL_8;
+      }
+      v2 = 40;
+    }
+    (*(void (**)(__int64))(*(_QWORD*)v6_.v7 + v2))((__int64)v6_.v7);
+  LABEL_8:
+    if (v8_.v9 == v8_.v8) {
+      v3 = 32;
+    }
+    else {
+      if (v8_.v9 == nullptr) {
+        goto LABEL_13;
+      }
+      v3 = 40;
+    }
+    (*(void (**)(__int64))(*v8_.v9 + v3))((__int64)v8_.v9);
+  LABEL_13:
+    if (v10_.v11 == v10_.v10) {
+      v4 = 32;
+    }
+    else {
+      if (v10_.v11 == nullptr) {
+        return 12;
+      }
+      v4 = 40;
+    }
+    (*(void (**)(__int64))(*v10_.v11 + v4))((__int64)v10_.v11);
+    return 12;
+  }
+  return v1;
 }
 
 __int64 RelianceUnitSelectMenu_184fb20(__int64 a1)

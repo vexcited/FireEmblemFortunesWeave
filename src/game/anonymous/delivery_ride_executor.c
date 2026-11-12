@@ -17,6 +17,7 @@ __int64 DeliveryRideExecutor_Unknown5(__int64 result);
 __int64 RidePool_93d820_alt1(__int64 result) __asm__("RidePool_93d820");
 __int64 UnitHeroes_6d2b90_alt1(__int64,
                                unsigned __int8*) __asm__("UnitHeroes_6d2b90");
+bool DeliveryRideExecutor_Unknown4(__int64 a1);
 
 bool DeliveryRideExecutor_Unknown2(__int64 a1, __int64 a2, int a3)
 {
@@ -44,6 +45,12 @@ bool DeliveryRideExecutor_Unknown3(__int64 a1, __int64 a2, int a3)
   v8 = *(_DWORD*)(a1 + 52) + 1;
   *(_DWORD*)(a1 + 52) = v8;
   return v8 >= v7;
+}
+
+bool DeliveryRideExecutor_Unknown4(__int64 a1)
+{
+  return (signed __int32)*(_DWORD*)(a1 + 52) >=
+         (signed __int32)*(_DWORD*)(a1 + 48);
 }
 
 __int64 DeliveryRideExecutor_Unknown5(__int64 result)

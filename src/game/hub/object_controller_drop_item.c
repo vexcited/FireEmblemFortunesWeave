@@ -71,6 +71,9 @@ __int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
 __int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
     "std___1___shared_weak_count_lock");
 __int64 ObjectControllerDropItem_dfca40(__int64 a1, __int64 a2, float a3);
+__int64 game_14a3920(__int64 result);
+void game_hub_ObjectControllerDropItem_PlayGetItem_lambda0_Invoke(__int64 a1,
+                                                                  __int64** a2);
 
 void ObjectControllerDropItem_ccc840(__int64 a1, __int64** a2)
 {
@@ -742,6 +745,68 @@ void game_hub_ObjectControllerDropItem_InitializeImpl_lambda0_Invoke(__int64 a1)
     v19 = *(_OWORD*)(v1 + 128);
     *((_QWORD*)&v19 + 1) = LANES128(v18).n128_u32[2];
     *(_OWORD*)(v1 + 128) = v19;
+  }
+}
+
+void game_hub_ObjectControllerDropItem_PlayGetItem_lambda0_Invoke(__int64 a1,
+                                                                  __int64** a2)
+{
+
+#pragma clang fp contract(off)
+  __int64 v2;
+  __int64 v3;
+  __int64 v5;
+  __int64 v6;
+  __int64* v8;
+  __int64 v9;
+  unsigned int v10;
+  unsigned int v11;
+  float32x4_t v12;
+  float32x4_t* v13;
+
+  v2 = *(_QWORD*)(GameData_21ec7c0 + 80);
+  if (v2 != 0) {
+    v3 = *(_QWORD*)(GameData_21ec7c0 + 72);
+    v5 = *(_QWORD*)(GameData_21ec7c0 + 80);
+    atomic_fetch_add_explicit((atomic_ullong* volatile)(v2 + 16), 1u,
+                              memory_order_relaxed);
+    v6 = std___1___shared_weak_count_lock_alt1(v5);
+    std___1___shared_weak_count___release_weak_alt1(v2);
+    if (v6 == 0 || v3 == 0) {
+      if (v6 == 0) {
+        return;
+      }
+    }
+    else {
+      v8 = *a2;
+      v9 = **a2;
+      if (v9 != 0 && *(_DWORD*)(v9 + 16) == *((_DWORD*)v8 + 2)) {
+        v10 = *(_DWORD*)(v9 + 36);
+        if (v10 != 0) {
+          v11 = 0;
+          v12 = vaddq_f32(
+              *(float32x4_t*)(*(_QWORD*)(*(_QWORD*)(v3 + 24) + 16LL) + 560LL),
+              COERCE_AS(float32x4_t, GameData_1a82cb0));
+          do {
+            if ((int)v10 > (int)v11) {
+              v13 = *(float32x4_t**)(v9 + 40 + 8LL * (int)v11);
+              if (v13 != nullptr) {
+                v13[1] = v12;
+                LANES128(v13[8]).n128_u8[0] = 1;
+                v10 = *(_DWORD*)(v9 + 36);
+              }
+            }
+            ++v11;
+          } while (v11 < v10);
+        }
+      }
+      game_14a3920((__int64)v8);
+    }
+    if (atomic_fetch_add((atomic_ullong* volatile)(v6 + 8),
+                         0xFFFFFFFFFFFFFFFFLL) == 0) {
+      (*(void (**)(__int64))(*(_QWORD*)v6 + 16LL))(v6);
+      std___1___shared_weak_count___release_weak_alt1(v6);
+    }
   }
 }
 

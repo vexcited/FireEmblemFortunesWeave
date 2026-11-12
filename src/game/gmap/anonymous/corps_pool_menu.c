@@ -102,6 +102,7 @@ __int64 game_menu_PageTab_Move_alt1(int*, int,
 void __attribute__((noreturn))
 GameRoutine_60a310_alt1() __asm__("GameRoutine_60a310");
 __int64 game_gmap_anonymous_CorpsPoolMenu_MoveTab(__int64 a1, int a2, char a3);
+__int64 CorpsPoolMenu_Unknown148(__int64 a1, unsigned __int8 a2);
 
 __int64 CorpsPoolMenu_Destructor(__int64 a1)
 {
@@ -626,6 +627,21 @@ bool CorpsPoolMenu_Unknown147(__int64 a1)
 {
   return (*(_DWORD*)(*(_QWORD*)(a1 + 1056) + 356LL) & 1 |
           *(_DWORD*)(a1 + 660)) == 0;
+}
+
+__int64 CorpsPoolMenu_Unknown148(__int64 a1, unsigned __int8 a2)
+{
+  __int64 result;
+
+  if ((signed __int32)*(_DWORD*)(a1 + 660) <
+      (signed __int32)*(_DWORD*)(a1 + 656)) {
+    return 0;
+  }
+  result = (*(__int64 (**)(__int64))(*(_QWORD*)a1 + 1120LL))(a1);
+  if ((_DWORD)result != 0) {
+    return a2 & ((*(_BYTE*)(*(_QWORD*)(a1 + 1056) + 356LL) & 1) == 0);
+  }
+  return result;
 }
 
 __int64 CorpsPoolMenu_Unknown161(__int64 a1)

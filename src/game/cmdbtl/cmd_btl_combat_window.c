@@ -162,6 +162,35 @@ float ui_LayoutAccessor_SetPaneTranslate_alt1(
     __int64*, __int64, __int64) __asm__("ui_LayoutAccessor_SetPaneTranslate");
 void CmdBtlCombatWindow_17c3890(__int64 a1);
 void CmdBtlCombatWindow_17c4570(__int64 a1, unsigned __int8 a2);
+__int64 BattleInfoWindow_1835140(__int64, __int64*, unsigned int, __int64, char,
+                                 char);
+__int64 BattleInfoWindow_18352d0(__int64, __int64*, unsigned int, __int64, char,
+                                 char);
+__int64 GameHr_1562680_alt1(__int64 result, unsigned int*,
+                            float) __asm__("GameHr_1562680");
+__int64 GameRoutine_17c3690(__int64, int);
+__int64 LayoutAccessor_1562cf0(__int64 result, unsigned int*);
+__int64 LayoutAccessor_15636c0_alt2(__int64 result, __int64, char,
+                                    float) __asm__("LayoutAccessor_15636c0");
+__int64 memcpy(__int64, __int64, unsigned __int64);
+__int64 ui_LayoutAccessor_FindPane_alt2(__int64*, const char*) __asm__(
+    "ui_LayoutAccessor_FindPane");
+__int64 ui_LayoutAccessor_SetPaneVisible_alt2(
+    __int64 result, const char*,
+    char) __asm__("ui_LayoutAccessor_SetPaneVisible");
+float LayoutAccessor_15638b0_alt2(__int64*, char*,
+                                  char) __asm__("LayoutAccessor_15638b0");
+void BattleInfoWindow_18337f0(__int64, char, int, int, char);
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+__int64 CmdBtlCombatWindow_17c2620(__int64 a1, unsigned __int64 a2, int a3,
+                                   unsigned __int64 a4, int a5, __int64 a6,
+                                   int a7, int a8);
+void CmdBtlCombatWindow_17c34b0(__int64 a1, char a2, int a3, int a4, int a5);
+__int64 CmdBtlCombatWindow_Unknown16(__int64 a1, __int64* a2);
+__int64 CmdBtlCombatWindow_Unknown18(__int64 a1, __int64* a2);
+__int64 CmdBtlCombatWindow_Unknown30(__int64* a1);
+__int64 CmdBtlCombatWindow_DeletingDestructor_17c4c70(__int64 a1);
 
 __int64 CmdBtlCombatWindow_DeletingDestructor(_QWORD* a1)
 {
@@ -668,6 +697,334 @@ __int64 CmdBtlCombatWindow_17c2410(__int64 result, unsigned __int64 a2,
   return GameRoutine_18337f0(v5, 1, (unsigned int)v6, a3, 1);
 }
 
+__int64 CmdBtlCombatWindow_17c2620(__int64 a1, unsigned __int64 a2, int a3,
+                                   unsigned __int64 a4, int a5, __int64 a6,
+                                   int a7, int a8)
+{
+
+#pragma clang fp contract(off)
+  unsigned __int64 v8;
+  _DWORD* v10;
+  unsigned __int64 v11;
+  unsigned __int64 v12;
+  int v13;
+  int v14;
+  __int64 v15;
+  int v16;
+  int v17;
+  __int64 v18;
+  __int64 v19;
+  int v20;
+  int v21;
+  __int64 v22;
+  int v23;
+  __int64 v24;
+  int v25;
+  int v26;
+  __int64 v27;
+  int v28;
+  int v29;
+  int v30;
+  int v31;
+  int v32;
+  int v33;
+  int v34;
+  int v35;
+  float v36;
+  unsigned int v37;
+  int v38;
+  __int64* v39;
+  float v40;
+  int v41;
+  int v42;
+  __int64 v43;
+  __int64 v44;
+  int v45;
+  int v46;
+  __int64 v47;
+  char* v48;
+  unsigned int v49;
+  __int64 v50;
+  __int64 v51;
+  unsigned int v52;
+  __int64 v53;
+  __int64 v54;
+  unsigned int v55;
+  int v56;
+  __int64* v57;
+  float v58;
+  int v59;
+  int v60;
+  __int64 v61;
+  __int64 v62;
+  struct {
+    __int64 v64;
+    void* v65;
+  } v64_;
+
+  v8 = HIDWORD(a2);
+  *(_DWORD*)(a1 + 304) = a2;
+  *(_DWORD*)(a1 + 308) = a3;
+  if (SHIDWORD(a2) >= a3) {
+    LODWORD(v8) = a3;
+  }
+  *(_DWORD*)(a1 + 300) = v8 & ~((int)v8 >> 31);
+  v10 = (_DWORD*)*GameData_212ea58;
+  if ((a4 & 0x8000000000000000LL) != 0) {
+    if (v10[170] != 0 || (*(_BYTE*)(*GameData_212dec0[0] + 12) & 1) != 0) {
+      LODWORD(v11) = 0;
+    }
+    else {
+      v13 = a4;
+      v14 = a5;
+      v15 = a6;
+      v16 = a7;
+      v17 = a8;
+      v64_.v65 = &GameData_1af5ec9;
+      v64_.v64 = game_HashString_alt1((__int64)&GameData_1af5ec9);
+      LODWORD(v11) = game_GameModeData_instance_;
+      if (game_GameModeData_instance_ != 0) {
+        v18 = game_GameVariableTable_Find_alt1(
+            *(_QWORD**)(game_GameModeData_instance_ + 48),
+            (unsigned __int64*)&v64_.v64);
+        if (v18 != 0) {
+          LODWORD(v11) = *(_DWORD*)(v18 + 32);
+        }
+        else {
+          LODWORD(v11) = 0;
+        }
+      }
+      a8 = v17;
+      a7 = v16;
+      a6 = v15;
+      a5 = v14;
+      LODWORD(a4) = v13;
+    }
+  }
+  else {
+    v11 = HIDWORD(a4);
+  }
+  v12 = HIDWORD(a6);
+  *(_DWORD*)(a1 + 324) = v11;
+  if ((a4 & 0x80000000) == 0) {
+    *(_DWORD*)(a1 + 328) = a4;
+    if ((a5 & 0x80000000) == 0) {
+      goto LABEL_32;
+    }
+    goto LABEL_10;
+  }
+  if (v10[170] != 0) {
+    *(_DWORD*)(a1 + 328) = 0;
+    if ((a5 & 0x80000000) == 0) {
+      goto LABEL_32;
+    }
+    goto LABEL_10;
+  }
+  if ((*(_BYTE*)(*GameData_212dec0[0] + 12) & 1) != 0) {
+    *(_DWORD*)(a1 + 328) = 0;
+    if ((a5 & 0x80000000) == 0) {
+      goto LABEL_32;
+    }
+    goto LABEL_10;
+  }
+  v23 = a5;
+  v24 = a6;
+  v25 = a7;
+  v26 = a8;
+  v64_.v65 = &GameData_1af5ec9;
+  v64_.v64 = game_HashString_alt1((__int64)&GameData_1af5ec9);
+  if (game_GameModeData_instance_ != 0 &&
+      (v27 = game_GameVariableTable_Find_alt1(
+           *(_QWORD**)(game_GameModeData_instance_ + 48),
+           (unsigned __int64*)&v64_.v64)) != 0) {
+    v28 = *(_DWORD*)(v27 + 32);
+  }
+  else {
+    v28 = 0;
+  }
+  a8 = v26;
+  a7 = v25;
+  a6 = v24;
+  a5 = v23;
+  *(_DWORD*)(a1 + 328) = v28;
+  if (v23 < 0) {
+  LABEL_10:
+    if (v10[170] != 0 || (*(_BYTE*)(*GameData_212dec0[0] + 12) & 1) != 0) {
+      a5 = 0;
+    }
+    else {
+      v19 = a6;
+      v20 = a7;
+      v21 = a8;
+      v64_.v65 = &GameData_1ad7123;
+      v64_.v64 = game_HashString_alt1((__int64)&GameData_1ad7123);
+      if (game_GameModeData_instance_ != 0 &&
+          (v22 = game_GameVariableTable_Find_alt1(
+               *(_QWORD**)(game_GameModeData_instance_ + 48),
+               (unsigned __int64*)&v64_.v64)) != 0) {
+        a5 = *(_DWORD*)(v22 + 32);
+      }
+      else {
+        a5 = 0;
+      }
+      a8 = v21;
+      a7 = v20;
+      a6 = v19;
+    }
+  }
+LABEL_32:
+  v29 = *(_DWORD*)(a1 + 324);
+  *(_DWORD*)(a1 + 332) = a5;
+  if (v29 >= a5) {
+    v29 = a5;
+  }
+  *(_DWORD*)(a1 + 324) = v29 & ~(v29 >> 31);
+  v30 = v10[203];
+  if (a6 >= 0) {
+    v30 = v12;
+  }
+  *(_DWORD*)(a1 + 312) = v30;
+  v31 = v10[203];
+  if ((int)a6 >= 0) {
+    v31 = a6;
+  }
+  *(_DWORD*)(a1 + 316) = v31;
+  if (a7 < 0) {
+    if (v10[205] + v10[204] <= 1) {
+      a7 = 1;
+    }
+    else {
+      a7 = v10[205] + v10[204];
+    }
+  }
+  *(_DWORD*)(a1 + 320) = a7;
+  if (v30 >= a7) {
+    v30 = a7;
+  }
+  v32 = v30 & ~(v30 >> 31);
+  if (a8 <= -1) {
+    v33 = -1;
+  }
+  else {
+    v33 = a8;
+  }
+  *(_DWORD*)(a1 + 312) = v32;
+  v34 = v10[206];
+  *(_DWORD*)(a1 + 352) = v33;
+  *(_DWORD*)(a1 + 360) = 1;
+  *(_DWORD*)(a1 + 336) = v34;
+  if (a8 > -1) {
+    v35 = a8 + 1;
+  }
+  else {
+    v35 = v34;
+  }
+  v36 = 0x1.4000000000000p+5f;
+  if (a8 > -1) {
+    v36 = 0x0.0p+0f;
+  }
+  *(float*)(a1 + 356) = v36;
+  GameRoutine_17c3690(a1, v35);
+  *(_DWORD*)(a1 + 340) = 1;
+  v37 = *(_DWORD*)(a1 + 300);
+  v38 = *(_DWORD*)(a1 + 308);
+  v39 = LayoutAccessor_155fbe0_alt1((__int64*)(a1 + 24), "L_PlayerHP_Gauge");
+  GameHr_1562680_alt1((__int64)v39, (unsigned int*)"GaugeSize", 0x0.0p+0f);
+  v40 = LayoutAccessor_15638b0_alt2(v39, "GaugeSize", 0);
+  if (v38 >= 320) {
+    v41 = 320;
+  }
+  else {
+    v41 = v38;
+  }
+  v42 = v41 - 40;
+  if (v38 < 40) {
+    v42 = 0;
+  }
+  LayoutAccessor_15636c0_alt2((__int64)v39, (__int64)"GaugeSize", 0,
+                              v40 *
+                                  (float)((float)v42 / 0x1.1800000000000p+8f));
+  v43 = ui_LayoutAccessor_FindPane_alt2((__int64*)(a1 + 24), "T_PlayerHP_Num");
+  if (v43 != 0) {
+    v44 = __dynamic_cast(v43, GameData_212d670[0], GameData_212d690, 0);
+    if (v44 != 0) {
+      GameRoutine_156c910_alt1(v44, "%d", 1, v37);
+    }
+  }
+  CmdBtlCombatWindow_17c34b0(a1, 1, v37, v37, v38);
+  BattleInfoWindow_18337f0(a1, 1, v37, v38, 1);
+  BattleInfoWindow_18337f0(a1, 1, v37, v38, 1);
+  v45 = *(_DWORD*)(a1 + 324);
+  v46 = *(_DWORD*)(a1 + 328);
+  ui_LayoutAccessor_SetPaneVisible_alt2(a1 + 24, "N_LinkInfo", 0);
+  v47 = a1 + 24;
+  if (v45 == v46) {
+    ui_LayoutAccessor_SetPaneVisible_alt2(v47, "N_Link_Gauge", 0);
+  }
+  else {
+    ui_LayoutAccessor_SetPaneVisible_alt2(v47, "N_Link_Gauge", 1);
+    GameHr_1562680_alt1(a1 + 24, (unsigned int*)"Pos_CmdBtl",
+                        0x1.0000000000000p+0f);
+    if ((signed __int32)*(_DWORD*)(a1 + 324) >=
+        (signed __int32)*(_DWORD*)(a1 + 328)) {
+      v48 = "GaugeChangeType_Heal";
+    }
+    else {
+      v48 = "GaugeChangeType_GaugeDown";
+    }
+    GameHr_1562680_alt1(a1 + 24, (unsigned int*)v48, 0x1.0000000000000p+0f);
+    v49 = *(_DWORD*)(a1 + 328);
+    v50 = ui_LayoutAccessor_FindPane_alt2((__int64*)(a1 + 24),
+                                          "T_Link_NumBefore");
+    if (v50 != 0) {
+      v51 = __dynamic_cast(v50, GameData_212d670[0], GameData_212d690, 0);
+      if (v51 != 0) {
+        GameRoutine_156c910_alt1(v51, "%d", 1, v49);
+      }
+    }
+    v52 = *(_DWORD*)(a1 + 328);
+    v53 =
+        ui_LayoutAccessor_FindPane_alt2((__int64*)(a1 + 24), "T_Link_NumAfter");
+    if (v53 != 0) {
+      v54 = __dynamic_cast(v53, GameData_212d670[0], GameData_212d690, 0);
+      if (v54 != 0) {
+        GameRoutine_156c910_alt1(v54, "%d", 1, v52);
+      }
+    }
+    CmdBtlCombatWindow_17c3890(a1);
+  }
+  v55 = *(_DWORD*)(a1 + 312);
+  v56 = *(_DWORD*)(a1 + 320);
+  v57 = LayoutAccessor_155fbe0_alt1((__int64*)(a1 + 24), "L_TargetHP_Gauge");
+  GameHr_1562680_alt1((__int64)v57, (unsigned int*)"GaugeSize", 0x0.0p+0f);
+  v58 = LayoutAccessor_15638b0_alt2(v57, "GaugeSize", 0);
+  if (v56 >= 320) {
+    v59 = 320;
+  }
+  else {
+    v59 = v56;
+  }
+  v60 = v59 - 40;
+  if (v56 < 40) {
+    v60 = 0;
+  }
+  LayoutAccessor_15636c0_alt2((__int64)v57, (__int64)"GaugeSize", 0,
+                              v58 *
+                                  (float)((float)v60 / 0x1.1800000000000p+8f));
+  v61 = ui_LayoutAccessor_FindPane_alt2((__int64*)(a1 + 24), "T_TargetHP_Num");
+  if (v61 != 0) {
+    v62 = __dynamic_cast(v61, GameData_212d670[0], GameData_212d690, 0);
+    if (v62 != 0) {
+      GameRoutine_156c910_alt1(v62, "%d", 1, v55);
+    }
+  }
+  CmdBtlCombatWindow_17c34b0(a1, 0, v55, v55, v56);
+  BattleInfoWindow_18337f0(a1, 0, v55, v56, 1);
+  BattleInfoWindow_18337f0(a1, 0, v55, v56, 1);
+  LayoutAccessor_1562cf0(a1 + 24, (unsigned int*)"Info_Combat_CmdBtl");
+  return ui_LayoutAccessor_SetPaneVisible_alt2(a1 + 24, "N_KeyA", 0);
+}
+
 void CmdBtlCombatWindow_17c2ec0(__int64 a1, char a2)
 {
   int v2;
@@ -964,6 +1321,102 @@ __int64 CmdBtlCombatWindow_17c33f0(__int64 result, int a2)
   *(_DWORD*)(v3 + 360) = a2;
   *(_DWORD*)(v3 + 356) = 0;
   return result;
+}
+
+void CmdBtlCombatWindow_17c34b0(__int64 a1, char a2, int a3, int a4, int a5)
+{
+
+#pragma clang fp contract(off)
+  bool v9;
+  __int64* v10;
+  const char* v11;
+  const char* v12;
+  unsigned __int64 v13;
+  __int64 v14;
+  __int64* v15;
+  int v16;
+  const char* v17;
+  char* v18;
+  char* v19;
+  unsigned int* v20;
+  float v21;
+  float v22;
+  __int64 v23;
+  struct {
+    _BYTE v24[16];
+    __int64 v25;
+  } v24_;
+
+  v9 = (a2 & 1) == 0;
+  v10 = (__int64*)(a1 + 24);
+  if ((a2 & 1) != 0) {
+    v11 = "L_PlayerHP_Gauge";
+  }
+  else {
+    v11 = "L_TargetHP_Gauge";
+  }
+  if (v9) {
+    v12 = "Color_Enemy";
+  }
+  else {
+    v12 = "Color_Player";
+  }
+  if (v9) {
+    v13 = 11;
+  }
+  else {
+    v13 = 12;
+  }
+  if (v9) {
+    v14 = 12;
+  }
+  else {
+    v14 = 13;
+  }
+  v15 = LayoutAccessor_155fbe0_alt1(v10, v11);
+  v24_.v24[0] = 2 * v13;
+  memcpy((__int64)&v24_.v24[1], (__int64)v12, v13);
+  v24_.v24[v14] = 0;
+  GameHr_1562680_alt1((__int64)v15, (unsigned int*)&v24_.v24[1],
+                      0x1.0000000000000p+0f);
+  v16 = *(unsigned __int8*)(a1 + 349);
+  v17 = "GaugeChangeType_Heal";
+  if (a3 <= a4) {
+    v18 = "GaugeUp";
+  }
+  else {
+    v17 = "GaugeChangeType_Damage";
+    v18 = "GaugeChangeUp";
+  }
+  if (a3 <= a4) {
+    v19 = "GaugeChangeUp";
+  }
+  else {
+    v19 = "GaugeUp";
+  }
+  if (v16 != 0) {
+    v20 = (unsigned int*)"GaugeChangeType_GaugeUp";
+  }
+  else {
+    v20 = (unsigned int*)v17;
+  }
+  GameHr_1562680_alt1((__int64)v15, v20, 0x1.0000000000000p+0f);
+  GameHr_1562680_alt1((__int64)v15, (unsigned int*)v18, 0x0.0p+0f);
+  v21 = LayoutAccessor_15638b0_alt2(v15, v18, 0);
+  LayoutAccessor_15636c0_alt2((__int64)v15, (__int64)v18, 0,
+                              (float)((float)a3 / (float)a5) * v21);
+  GameHr_1562680_alt1((__int64)v15, (unsigned int*)v19, 0x0.0p+0f);
+  v22 = LayoutAccessor_15638b0_alt2(v15, v19, 0);
+  LayoutAccessor_15636c0_alt2((__int64)v15, (__int64)v19, 0,
+                              (float)((float)a4 / (float)a5) * v22);
+  if ((v24_.v24[0] & 1) != 0 && v24_.v25 != 0) {
+    v23 = 128;
+    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+      v23 = 56;
+    }
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v23, v24_.v25);
+  }
 }
 
 __int64 CmdBtlCombatWindow_Unknown5(__int64 a1, _BYTE* a2)
@@ -1595,6 +2048,20 @@ LABEL_38:
   CmdBtlCombatWindow_17c3890(a1);
 }
 
+__int64 CmdBtlCombatWindow_Unknown16(__int64 a1, __int64* a2)
+{
+  return BattleInfoWindow_1835140(
+      a1, a2, 0x10u, *(_QWORD*)(a1 + 152) + 16LL,
+      (*(_DWORD*)(*(_QWORD*)(a1 + 152) + 11276LL) & 0x100000) != 0, 0);
+}
+
+__int64 CmdBtlCombatWindow_Unknown18(__int64 a1, __int64* a2)
+{
+  return BattleInfoWindow_18352d0(
+      a1, a2, 0x10u, *(_QWORD*)(a1 + 152) + 16LL,
+      (*(_DWORD*)(*(_QWORD*)(a1 + 152) + 11276LL) & 0x200000) != 0, 0);
+}
+
 __int64 CmdBtlCombatWindow_Unknown20(__int64 a1, __int64 a2, _QWORD* a3,
                                      __int64 a4)
 {
@@ -1699,6 +2166,24 @@ __int64 CmdBtlCombatWindow_17c4c00(__int64 a1)
   }
   *(_DWORD*)(a1 - 32) = -1;
   return result;
+}
+
+__int64 CmdBtlCombatWindow_Unknown30(__int64* a1)
+{
+  __int64 v1;
+
+  v1 = *a1;
+  *((_BYTE*)a1 + 296) = 0;
+  return (*(__int64 (**)(__int64))(v1 + 24))((__int64)a1);
+}
+
+__int64 CmdBtlCombatWindow_DeletingDestructor_17c4c70(__int64 a1)
+{
+  __int64 v1;
+
+  v1 = *(_QWORD*)(a1 - 248);
+  *(_BYTE*)(a1 + 48) = 0;
+  return (*(__int64 (**)(void*))(v1 + 24))((void*)(a1 - 248));
 }
 
 #pragma GCC visibility pop

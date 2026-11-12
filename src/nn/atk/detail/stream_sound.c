@@ -26,6 +26,9 @@ __int64 StreamSound_2964c0(__int64 a1);
 __int64 StreamSound_2964e0(__int64 a1, char a2);
 __int64 StreamSound_Unknown5(_BYTE* a1);
 __int64 StreamSound_DeletingDestructor(__int64 a1);
+_DWORD* BasicSound_281a40(_DWORD* result);
+_DWORD* StreamSound_Unknown10(__int64 a1);
+
 __int64 StreamSound_Unknown3(__int64 a1, unsigned __int64 a2, __int64 a3,
                              __int64 a4, __int64 a5, __int64 a6)
 {
@@ -558,6 +561,72 @@ __int64 StreamSound_295a80(__int64 a1, __int64 a2, __int64 a3)
   *(_QWORD*)(v7 + 24) = a1 + 768;
   memcpy(v7 + 32, a3, 728);
   return GameRoutine_2a0e80(v6, v7);
+}
+
+_DWORD* StreamSound_Unknown10(__int64 a1)
+{
+  _DWORD* result;
+  __int16 v3;
+  int v4;
+  int v5;
+  int v6;
+  int v7;
+  int v8;
+  int v9;
+  int v10;
+  int v11;
+
+  result = BasicSound_281a40((_DWORD*)a1);
+  v3 = *(_WORD*)(a1 + 704);
+  if ((v3 & 1) != 0) {
+    v4 = *(_DWORD*)(a1 + 588);
+    if (v4 < (signed __int32)*(_DWORD*)(a1 + 584)) {
+      *(_DWORD*)(a1 + 588) = v4 + 1;
+    }
+  }
+  if ((v3 & 2) != 0) {
+    v5 = *(_DWORD*)(a1 + 604);
+    if (v5 < (signed __int32)*(_DWORD*)(a1 + 600)) {
+      *(_DWORD*)(a1 + 604) = v5 + 1;
+    }
+  }
+  if ((v3 & 4) != 0) {
+    v6 = *(_DWORD*)(a1 + 620);
+    if (v6 < (signed __int32)*(_DWORD*)(a1 + 616)) {
+      *(_DWORD*)(a1 + 620) = v6 + 1;
+    }
+  }
+  if ((v3 & 8) != 0) {
+    v7 = *(_DWORD*)(a1 + 636);
+    if (v7 < (signed __int32)*(_DWORD*)(a1 + 632)) {
+      *(_DWORD*)(a1 + 636) = v7 + 1;
+    }
+  }
+  if ((v3 & 0x10) != 0) {
+    v8 = *(_DWORD*)(a1 + 652);
+    if (v8 < (signed __int32)*(_DWORD*)(a1 + 648)) {
+      *(_DWORD*)(a1 + 652) = v8 + 1;
+    }
+  }
+  if ((v3 & 0x20) != 0) {
+    v9 = *(_DWORD*)(a1 + 668);
+    if (v9 < (signed __int32)*(_DWORD*)(a1 + 664)) {
+      *(_DWORD*)(a1 + 668) = v9 + 1;
+    }
+  }
+  if ((v3 & 0x40) != 0) {
+    v10 = *(_DWORD*)(a1 + 684);
+    if (v10 < (signed __int32)*(_DWORD*)(a1 + 680)) {
+      *(_DWORD*)(a1 + 684) = v10 + 1;
+    }
+  }
+  if ((v3 & 0x80) != 0) {
+    v11 = *(_DWORD*)(a1 + 700);
+    if (v11 < (signed __int32)*(_DWORD*)(a1 + 696)) {
+      *(_DWORD*)(a1 + 700) = v11 + 1;
+    }
+  }
+  return result;
 }
 
 __int64 StreamSound_Unknown11(__int64 a1, __int64 a2)

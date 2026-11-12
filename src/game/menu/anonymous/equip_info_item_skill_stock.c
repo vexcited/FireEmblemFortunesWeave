@@ -33,6 +33,98 @@ extern __int64 fw_memory_g_heap_manager_ptr;
 __attribute__((swiftcall)) void
 EquipInfoItem_SkillStock_16cce20(PSEUDO_X8 x8_, __int64 a1, __int64 a2,
                                  _QWORD* a3, _QWORD* a4, __n128 result);
+_QWORD* GameRoutine_189afa0(__int64, int, int);
+__int64 EquipInfoItem_Unknown17(_QWORD*);
+__int64 std___1___shared_weak_count___release_weak_alt2(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
+    "std___1___shared_weak_count_lock");
+extern __int64* GameData_212d890[2];
+extern __int64* GameData_2131a58[13];
+void Element_1886580(__int64, char);
+void MenuItemSkill_1899480(__int64, unsigned int, char, char);
+__int64* EquipInfoItem_SkillStock_Unknown17(__int64 a1);
+
+__int64* EquipInfoItem_SkillStock_Unknown17(__int64 a1)
+{
+  __int64* result;
+  __int64* v3;
+  __int64* v4;
+  __int64** v5;
+  __int64 v6;
+  __int64 v7;
+  int v8;
+  __int64 v9;
+  struct {
+    __int64* v10;
+    __int64 v11;
+  } v10_;
+  char v12;
+  struct {
+    __int64* v13;
+    __int64* v14;
+    __int64 v15;
+  } v13_;
+
+  EquipInfoItem_Unknown17((_QWORD*)a1);
+  result = *(__int64**)(a1 + 112);
+  v13_.v13 = nullptr;
+  v13_.v14 = nullptr;
+  if (result != nullptr &&
+      (result =
+           (__int64*)std___1___shared_weak_count_lock_alt1((__int64)result),
+       v13_.v14 = result, result != nullptr) &&
+      (v3 = result, result = *(__int64**)(a1 + 104), v13_.v13 = result,
+       result != nullptr) &&
+      (v4 = v3, (result = (__int64*)__dynamic_cast(result, GameData_2131a58[0],
+                                                   GameData_2131a20[0], 0)) !=
+                    nullptr)) {
+    v5 = &v13_.v13;
+    v10_.v10 = result;
+    v10_.v11 = (__int64)v4;
+  }
+  else {
+    v5 = &v10_.v10;
+  }
+  *v5 = nullptr;
+  v5[1] = nullptr;
+  v6 = (__int64)v13_.v14;
+  if (v13_.v14 != nullptr &&
+      atomic_fetch_add((atomic_ullong* volatile)(v13_.v14 + 1),
+                       0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v6 + 16LL))(v6);
+    result = (__int64*)std___1___shared_weak_count___release_weak_alt2(v6);
+  }
+  v7 = (__int64)v10_.v10;
+  if (v10_.v10 != nullptr) {
+    *((_BYTE*)v10_.v10 + 1072) = 0;
+    GameRoutine_189afa0(v7, *(_DWORD*)(a1 + 128), *(_DWORD*)(a1 + 132));
+    v8 = *(_DWORD*)(a1 + 136);
+    if ((*(_BYTE*)(v7 + 1080) & 1) == 0) {
+      *(_BYTE*)(v7 + 1080) = 1;
+    }
+    *(_DWORD*)(v7 + 1076) = v8;
+    *(_QWORD*)(v7 + 1096) = *(_QWORD*)(a1 + 96);
+    MenuItemSkill_1899480(v7, 1u, 0, 0);
+    (*(void (**)(__int64, __int64))(*(_QWORD*)v7 + 40LL))(v7, 1);
+    Element_1886580(v7, 1);
+    (*(void (**)(__int64))(*(_QWORD*)v7 + 384LL))(v7);
+    v13_.v15 = 0;
+    v13_.v13 = GameData_212d890[0] + 2;
+    LODWORD(v13_.v14) = 20;
+    result = X8CALL_X0(
+        _QWORD*,
+        (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64, __int64**))(
+            *(_QWORD*)(v7 + 72) + 16LL))((void*)&v12, v7 + 72, &v13_.v13));
+  }
+  v9 = v10_.v11;
+  if (v10_.v11 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v10_.v11 + 8),
+                                        0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v9 + 16LL))(v9);
+    return (__int64*)std___1___shared_weak_count___release_weak_alt2(v9);
+  }
+  return result;
+}
 
 __int64 EquipInfoItem_SkillStock_Unknown70(__int64 a1, __int64* a2)
 {

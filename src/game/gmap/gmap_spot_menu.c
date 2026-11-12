@@ -185,6 +185,16 @@ void BasicMenuCursor_16e0c00_alt1(_QWORD*,
 void __attribute__((noreturn))
 GameRoutine_60a310_alt1() __asm__("GameRoutine_60a310");
 _QWORD* GmapSpotMenu_131b660(_QWORD* result);
+_QWORD* GameRoutine_654050(_QWORD* result, _QWORD*);
+__int64 GameHr_1712520(__int64, int, char);
+__int64 GameRoutine_17b8e80_alt1(__int64, char) __asm__("GameRoutine_17b8e80");
+__int64 GameRoutine_17b8f40_alt1(__int64, char) __asm__("GameRoutine_17b8f40");
+__int64 GameRoutine_8229c0_alt1() __asm__("GameRoutine_8229c0");
+__int64 LayoutAccessor_155e830(__int64 result, char);
+__int64 LayoutAccessor_1567000(__int64, char);
+extern __int64 (*GameData_202b890[])();
+extern __int64 game_hub_ProgressEventView_instance_;
+__int64 game_gmap_GmapSpotMenu_XCall(__int64 a1);
 
 _QWORD* GmapSpotMenu_131b660(_QWORD* result)
 {
@@ -1592,6 +1602,72 @@ __int64 GmapSpotMenu_Unknown143(__int64 a1, __int64* a2)
     a2[1] = v7;
   }
   return result;
+}
+
+__int64 game_gmap_GmapSpotMenu_XCall(__int64 a1)
+{
+  __int64 v2;
+  __int64 v3;
+  unsigned int v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v8;
+  struct {
+    _QWORD v9[4];
+    _QWORD* v10;
+  } v9_;
+  struct {
+    _QWORD v11[4];
+    _QWORD* v12;
+  } v11_;
+
+  if ((GameRoutine_8229c0_alt1() & 1) == 0) {
+    return 0;
+  }
+  v2 = *(_QWORD*)(*GameData_212d728[0] + 8);
+  LayoutAccessor_155e830(*(_QWORD*)(v2 + 16), 0);
+  if (game_hub_ProgressEventView_instance_ != 0) {
+    GameRoutine_17b8f40_alt1(game_hub_ProgressEventView_instance_, 1);
+  }
+  v3 = game_gameui_Footer_instance_;
+  v4 = *(_DWORD*)(v2 + 5856) & 0xFFFEFFFF;
+  *(_DWORD*)(v2 + 5856) = v4;
+  if (v3 != 0) {
+    LayoutAccessor_1567000(v3, 0);
+    v4 = *(_DWORD*)(v2 + 5856);
+  }
+  v5 = game_hub_ProgressEventView_instance_;
+  *(_DWORD*)(v2 + 5856) = v4 & 0xFFFDFFFF;
+  if (v5 != 0) {
+    GameRoutine_17b8e80_alt1(v5, 1);
+  }
+  GameHr_1712520(a1, 5, 0);
+  v9_.v9[0] = GameData_202b890;
+  v9_.v10 = v9_.v9;
+  v11_.v12 = v11_.v11;
+  v11_.v11[0] = GameData_202b890;
+  GameRoutine_654050(v11_.v11, (_QWORD*)(a1 + 288));
+  if (v11_.v12 == v11_.v11) {
+    v6 = 32;
+  }
+  else {
+    if (v11_.v12 == nullptr) {
+      goto LABEL_14;
+    }
+    v6 = 40;
+  }
+  (*(void (**)(__int64))(*v11_.v12 + v6))((__int64)v11_.v12);
+LABEL_14:
+  if (v9_.v10 == v9_.v9) {
+    v8 = 32;
+    goto LABEL_18;
+  }
+  if (v9_.v10 != nullptr) {
+    v8 = 40;
+  LABEL_18:
+    (*(void (**)(__int64))(*v9_.v10 + v8))((__int64)v9_.v10);
+  }
+  return 9;
 }
 
 __int64 game_gmap_GmapSpotMenu_CreateBind_lambda0_Invoke(__int64 result,

@@ -110,6 +110,13 @@ __int64 game_1373e60_alt1(__int64 result, __int64, unsigned int, char,
 __int64 game_telop_TelopRelianceLvUp_CreateBind_alt1(
     __int64, __int64, __int64, char,
     unsigned __int8) __asm__("game_telop_TelopRelianceLvUp_CreateBind");
+__int64 game_UnitUtil_UniqueMap_Commit_1212e40_alt1(
+    _QWORD*, __int64,
+    __int64) __asm__("game_UnitUtil_UniqueMap_Commit_1212e40");
+extern __int64 (*GameData_2019ad8[])();
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void game_UnitUtil_UniqueMap_Commit(_QWORD* a1, _WORD* a2, __int64 a3);
 __attribute__((swiftcall)) void
 
 game_UnitUtil_UniqueMap_Commit_89abc0(PSEUDO_X8 x8_, __int64 result,
@@ -1281,6 +1288,99 @@ __int64 UnitUtil_1212520(unsigned __int16* a1, __int64 a2)
     (*(void (**)(_QWORD*, __int64))(*v3 + v21))(v3, a2);
   }
   return v26;
+}
+
+void game_UnitUtil_UniqueMap_Commit(_QWORD* a1, _WORD* a2, __int64 a3)
+{
+  _QWORD* v5;
+  __int64 v6;
+  _QWORD* v7;
+  __int64 v8;
+  unsigned __int64 v9;
+  unsigned __int64 v10;
+  __int64 v11;
+  unsigned __int64 v12;
+  __int64 v13;
+  __int64 v14;
+  __int64 v15;
+  __int64 v16;
+  struct {
+    _QWORD v17[4];
+    _QWORD* v18;
+  } v17_;
+
+  if (a1[3] != 0) {
+    v5 = (_QWORD*)a1[2];
+    if (v5 != nullptr) {
+      v6 = fw_memory_g_heap_manager_ptr;
+      do {
+        v7 = (_QWORD*)*v5;
+        if (*(_QWORD*)(*(_QWORD*)v6 + 200LL) != 0) {
+          v8 = 128;
+        }
+        else {
+          v8 = 56;
+        }
+        nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v6 + v8, (__int64)v5);
+        v5 = v7;
+      } while (v7 != nullptr);
+    }
+    v9 = a1[1];
+    a1[2] = 0;
+    if (v9 != 0) {
+      v10 = v9 & 7;
+      if (v9 >= 8) {
+        v12 = v9 & 0xFFFFFFFFFFFFFFF8LL;
+        v11 = 0;
+        do {
+          *(_QWORD*)(*a1 + 8 * v11) = 0;
+          *(_QWORD*)(*a1 + 8 * v11 + 8) = 0;
+          *(_QWORD*)(*a1 + 8 * v11 + 16) = 0;
+          *(_QWORD*)(*a1 + 8 * v11 + 24) = 0;
+          *(_QWORD*)(*a1 + 8 * v11 + 32) = 0;
+          *(_QWORD*)(*a1 + 8 * v11 + 40) = 0;
+          *(_QWORD*)(*a1 + 8 * v11 + 48) = 0;
+          v13 = *a1 + 8 * v11;
+          v11 += 8;
+          *(_QWORD*)(v13 + 56) = 0;
+        } while (v12 != v11);
+      }
+      else {
+        v11 = 0;
+      }
+      if (v10 != 0) {
+        v14 = 8 * v11;
+        do {
+          --v10;
+          *(_QWORD*)(*a1 + v14) = 0;
+          v14 += 8;
+        } while (v10 != 0);
+      }
+    }
+    a1[3] = 0;
+  }
+  if (*a2 != 0) {
+    v15 = *(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(GameData_21c99b8 + 64) +
+                                           8LL * (unsigned __int16)*a2) +
+                                24LL) +
+                     600LL);
+    if (v15 != 0) {
+      v17_.v17[0] = GameData_2019ad8;
+      v17_.v17[1] = v15;
+      v17_.v18 = v17_.v17;
+      game_UnitUtil_UniqueMap_Commit_1212e40_alt1(a1, (__int64)v17_.v17, a3);
+      if (v17_.v18 == v17_.v17) {
+        v16 = 32;
+      }
+      else {
+        if (v17_.v18 == nullptr) {
+          return;
+        }
+        v16 = 40;
+      }
+      (*(void (**)(__int64))(*v17_.v18 + v16))((__int64)v17_.v18);
+    }
+  }
 }
 
 __int64 UnitUtil_1212ac0(_QWORD* a1, _WORD* a2)

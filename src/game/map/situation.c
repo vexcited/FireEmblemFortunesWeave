@@ -159,6 +159,8 @@ char* Situation_763f30(__int64 a1);
 void Situation_764fc0(__int64 a1);
 __int64 game_map_Situation_EachBonusExpUnit_lambda0_Invoke(__int64 result,
                                                            __int64* a2);
+__int64 game_map_Situation_GetMvpUnit_lambda0_Invoke(__int64 result,
+                                                     __int64* a2);
 
 __int64 Situation_763930(unsigned int a1, float a2)
 {
@@ -2750,6 +2752,23 @@ __int64 game_map_Situation_EachBonusExpUnit_lambda0_Invoke(__int64 result,
     }
     return (*(__int64 (**)(__int64, __int64*, int*))(*(_QWORD*)v4 + 48LL))(
         v4, &v6, &v5);
+  }
+  return result;
+}
+
+__int64 game_map_Situation_GetMvpUnit_lambda0_Invoke(__int64 result,
+                                                     __int64* a2)
+{
+  __int64 v2;
+  _DWORD* v3;
+  int v4;
+
+  v2 = *a2;
+  v3 = *(_DWORD**)(result + 8);
+  v4 = *(unsigned __int16*)(*a2 + 2096);
+  if ((signed __int32)*v3 < v4) {
+    *v3 = v4;
+    **(_QWORD**)(result + 16) = v2;
   }
   return result;
 }

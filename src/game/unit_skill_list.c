@@ -54,11 +54,14 @@ __int64 game_UnitSkillList_EachIndirectSkill(__int64 a1, _WORD* a2, __int64 a3);
 bool game_UnitSkillList_UpdateLearn_alt1(__int64* a1, __int64 a2) __asm__(
     "game_UnitSkillList_UpdateLearn");
 __int64 game_UnitSkillList_GetRangeAddImpl_lambda0_Clone(__int64 a1);
-__int64 game_UnitSkillList_GetRangeAddImpl_lambda0_CloneInto(__int64 a1,
-                                                             __int64 a2);
+__int64 game_UnitSkillList_GetRangeAddImpl_lambda0_CloneInto_alt1(
+    __int64 a1,
+    __int64 a2) __asm__("game_UnitSkillList_GetRangeAddImpl_lambda0_CloneInto");
 __int64 game_UnitSkillList_GetUseFactorImpl_lambda0_Clone(__int64 a1);
-__int64 game_UnitSkillList_GetUseFactorImpl_lambda0_CloneInto(__int64 a1,
-                                                              __int64 a2);
+__int64 game_UnitSkillList_GetUseFactorImpl_lambda0_CloneInto_alt1(
+    __int64 a1,
+    __int64
+        a2) __asm__("game_UnitSkillList_GetUseFactorImpl_lambda0_CloneInto");
 _QWORD* game_UnitSkillList_EachDirectSkill_lambda0_Clone(__int64 a1);
 __int64 game_UnitSkillList_EachDirectSkill_lambda0_Invoke(__int64 result,
                                                           _DWORD* a2,
@@ -119,6 +122,14 @@ void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 bool game_UnitSkillList_Remove(__int64 a1, _WORD* a2);
 bool game_UnitSkillList_UpdateLearn(__int64 a1, __int64 a2);
+__int64*
+GameRoutine_7fb7c0_alt2(__int64* result, __int64, __int64,
+                        unsigned __int64) __asm__("GameRoutine_7fb7c0");
+__int64 game_UnitSkillList_GetUseFactorImpl(__int64 a1, __int64 a2);
+__int64* game_UnitSkillList_GetRangeAddImpl_lambda0_CloneInto(__int64 a1,
+                                                              __int64 a2);
+__int64* game_UnitSkillList_GetUseFactorImpl_lambda0_CloneInto(__int64 a1,
+                                                               __int64 a2);
 
 bool game_UnitSkillList_Remove(__int64 a1, _WORD* a2)
 {
@@ -459,6 +470,105 @@ __int64 game_UnitSkillList_GetRangeAddImpl(__int64 a1, __int64 a2)
         v17 = 56;
       }
       nn_mem_StandardAllocator_Free(v16 + v17, v18_.v18);
+    }
+    return v23;
+  }
+  return result;
+}
+
+__int64 game_UnitSkillList_GetUseFactorImpl(__int64 a1, __int64 a2)
+{
+  char v3;
+  __int64 result;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  __int64* v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
+  __int64* v14;
+  __int64 v15;
+  __int64 v16;
+  __int64 v17;
+  struct {
+    __int64 v18;
+    __int64 v19;
+    __int64 v20;
+    int v21;
+    char gap28_[4];
+    unsigned int* v22;
+  } v18_;
+  unsigned int v23;
+
+  v3 = *(_BYTE*)(a1 + 88);
+  result = 1;
+  v23 = 1;
+  if ((v3 & 0x10) != 0) {
+    v18_.v21 = 0;
+    v18_.v19 = 0;
+    v18_.v20 = 0;
+    v18_.v18 = 0;
+    if (&v18_.v18 == (__int64*)a2) {
+      v6 = 0;
+      v7 = 0;
+    }
+    else {
+      v5 = a2;
+      GameRoutine_7fb7c0_alt2(&v18_.v18, *(_QWORD*)a2, *(_QWORD*)(a2 + 8),
+                              (__int64)(*(_QWORD*)(a2 + 8) - *(_QWORD*)a2) >>
+                                  2);
+      v7 = v18_.v18;
+      v6 = v18_.v19;
+      a2 = v5;
+    }
+    v18_.v21 = *(_DWORD*)(a2 + 24);
+    v18_.v22 = &v23;
+    v8 = (__int64*)fw_memory_g_heap_manager_ptr;
+    v9 = fw_memory_HeapManager_Allocate_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr, 48, 16, 0);
+    *(_QWORD*)(v9 + 16) = 0;
+    *(_QWORD*)(v9 + 24) = 0;
+    *(_DWORD*)(v9 + 32) = 0;
+    *(_QWORD*)v9 = GameData_1fa10e8;
+    *(_QWORD*)(v9 + 8) = 0;
+    GameRoutine_7fb7c0_alt2((__int64*)(v9 + 8), v7, v6, (v6 - v7) >> 2);
+    *(_DWORD*)(v9 + 32) = v18_.v21;
+    *(_QWORD*)(v9 + 40) = v18_.v22;
+    if ((*(_BYTE*)(a1 + 88) & 0x10) != 0) {
+      v10 = *(_QWORD*)(a1 + 32);
+      v11 = *(_QWORD*)(a1 + 40);
+      if ((int)((unsigned __int64)(v11 - v10) >> 2) >= 1) {
+        v12 = 0;
+        v13 = 0;
+        v14 = GameData_212c880[0];
+        v15 = *GameData_212c880[0];
+        do {
+          if (*(_BYTE*)(*(_QWORD*)(*(_QWORD*)(v15 + 64) +
+                                   8LL * (*(_DWORD*)(v10 + v12) & 0xFFF)) +
+                        250LL) == 4) {
+            (*(void (**)(__int64, __int64))(*(_QWORD*)v9 + 48LL))(v9,
+                                                                  v10 + v12);
+            v15 = *v14;
+            v10 = *(_QWORD*)(a1 + 32);
+            v11 = *(_QWORD*)(a1 + 40);
+          }
+          ++v13;
+          v12 += 4;
+        } while (v13 < (int)((unsigned __int64)(v11 - v10) >> 2));
+      }
+    }
+    (*(void (**)(__int64))(*(_QWORD*)v9 + 40LL))(v9);
+    if (v18_.v18 != 0) {
+      v16 = *v8;
+      v18_.v19 = v18_.v18;
+      v17 = 128;
+      if (*(_QWORD*)(v16 + 200) == 0) {
+        v17 = 56;
+      }
+      nn_mem_StandardAllocator_Free_alt1(v16 + v17, v18_.v18);
     }
     return v23;
   }
@@ -2117,7 +2227,7 @@ __int64 game_UnitSkillList_GetRangeAddImpl_lambda0_Clone(__int64 a1)
   __int64 result;
   __int64 v3;
 
-  result = fw_memory_HeapManager_Allocate(
+  result = fw_memory_HeapManager_Allocate_alt1(
       *(_QWORD*)fw_memory_g_heap_manager_ptr, 48, 16, 0);
   *(_QWORD*)(result + 16) = 0;
   *(_QWORD*)(result + 24) = 0;
@@ -2126,7 +2236,9 @@ __int64 game_UnitSkillList_GetRangeAddImpl_lambda0_Clone(__int64 a1)
   *(_QWORD*)(result + 8) = 0;
   if (result != a1) {
     v3 = result;
-    GameRoutine_7fb7c0(result + 8);
+    GameRoutine_7fb7c0_alt2(
+        (__int64*)(result + 8), *(_QWORD*)(a1 + 8), *(_QWORD*)(a1 + 16),
+        (__int64)(*(_QWORD*)(a1 + 16) - *(_QWORD*)(a1 + 8)) >> 2);
     result = v3;
   }
   *(_DWORD*)(result + 32) = *(_DWORD*)(a1 + 32);
@@ -2134,19 +2246,21 @@ __int64 game_UnitSkillList_GetRangeAddImpl_lambda0_Clone(__int64 a1)
   return result;
 }
 
-__int64 game_UnitSkillList_GetRangeAddImpl_lambda0_CloneInto(__int64 a1,
-                                                             __int64 a2)
+__int64* game_UnitSkillList_GetRangeAddImpl_lambda0_CloneInto(__int64 a1,
+                                                              __int64 a2)
 {
-  __int64 result;
+  __int64* result;
 
   *(_QWORD*)(a2 + 8) = 0;
-  result = a2 + 8;
+  result = (__int64*)(a2 + 8);
   *(_QWORD*)(a2 + 16) = 0;
   *(_QWORD*)(a2 + 24) = 0;
   *(_DWORD*)(a2 + 32) = 0;
   *(_QWORD*)a2 = GameData_1fa1068;
   if (a2 != a1) {
-    result = GameRoutine_7fb7c0(result);
+    result = GameRoutine_7fb7c0_alt2(
+        result, *(_QWORD*)(a1 + 8), *(_QWORD*)(a1 + 16),
+        (__int64)(*(_QWORD*)(a1 + 16) - *(_QWORD*)(a1 + 8)) >> 2);
   }
   *(_DWORD*)(a2 + 32) = *(_DWORD*)(a1 + 32);
   *(_QWORD*)(a2 + 40) = *(_QWORD*)(a1 + 40);
@@ -2158,7 +2272,7 @@ __int64 game_UnitSkillList_GetUseFactorImpl_lambda0_Clone(__int64 a1)
   __int64 result;
   __int64 v3;
 
-  result = fw_memory_HeapManager_Allocate(
+  result = fw_memory_HeapManager_Allocate_alt1(
       *(_QWORD*)fw_memory_g_heap_manager_ptr, 48, 16, 0);
   *(_QWORD*)(result + 16) = 0;
   *(_QWORD*)(result + 24) = 0;
@@ -2167,7 +2281,9 @@ __int64 game_UnitSkillList_GetUseFactorImpl_lambda0_Clone(__int64 a1)
   *(_QWORD*)(result + 8) = 0;
   if (result != a1) {
     v3 = result;
-    GameRoutine_7fb7c0(result + 8);
+    GameRoutine_7fb7c0_alt2(
+        (__int64*)(result + 8), *(_QWORD*)(a1 + 8), *(_QWORD*)(a1 + 16),
+        (__int64)(*(_QWORD*)(a1 + 16) - *(_QWORD*)(a1 + 8)) >> 2);
     result = v3;
   }
   *(_DWORD*)(result + 32) = *(_DWORD*)(a1 + 32);
@@ -2175,19 +2291,21 @@ __int64 game_UnitSkillList_GetUseFactorImpl_lambda0_Clone(__int64 a1)
   return result;
 }
 
-__int64 game_UnitSkillList_GetUseFactorImpl_lambda0_CloneInto(__int64 a1,
-                                                              __int64 a2)
+__int64* game_UnitSkillList_GetUseFactorImpl_lambda0_CloneInto(__int64 a1,
+                                                               __int64 a2)
 {
-  __int64 result;
+  __int64* result;
 
   *(_QWORD*)(a2 + 8) = 0;
-  result = a2 + 8;
+  result = (__int64*)(a2 + 8);
   *(_QWORD*)(a2 + 16) = 0;
   *(_QWORD*)(a2 + 24) = 0;
   *(_DWORD*)(a2 + 32) = 0;
   *(_QWORD*)a2 = GameData_1fa10e8;
   if (a2 != a1) {
-    result = GameRoutine_7fb7c0(result);
+    result = GameRoutine_7fb7c0_alt2(
+        result, *(_QWORD*)(a1 + 8), *(_QWORD*)(a1 + 16),
+        (__int64)(*(_QWORD*)(a1 + 16) - *(_QWORD*)(a1 + 8)) >> 2);
   }
   *(_DWORD*)(a2 + 32) = *(_DWORD*)(a1 + 32);
   *(_QWORD*)(a2 + 40) = *(_QWORD*)(a1 + 40);

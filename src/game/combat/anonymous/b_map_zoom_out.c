@@ -21,6 +21,24 @@ extern __int64 GameData_21c96a8;
 void BattleUtil_7a96a0(float);
 __int64 game_combat_anonymous_BMapZoomOut_Schedule_closure0_Invoke(__int64 a1,
                                                                    float* a2);
+__int64 CombatLegionManager_e2cca0();
+__int64 CombatLegionManager_e2cfa0(__int64 result, __int64);
+__int64 Config_bc5620(__int64, __int64);
+__int64 Config_bc7840(__int64, __int64);
+__int64 GameRoutine_10a2b90(__int64);
+__int64 GameRoutine_14a4d00(__int64 result);
+__int64 GameRoutine_18c8060(__int64);
+__int64 game_GameView_Update();
+__int64 game_combat_106c820(_QWORD*, __int64);
+extern __int64 (*GameData_200ce20[])();
+extern __int64* GameData_212fff8[2];
+extern __int64* GameData_21320e8;
+extern __int64 GameData_21cd0d0;
+extern __int64 GameData_21ec7b0;
+extern __int64 GameData_224b668;
+extern __int64 eft_g_effectSystem;
+extern int GameData_21d92e0;
+__int64 game_combat_anonymous_BMapZoomOut_Schedule_closure_Invoke_10ed780();
 
 __int64 BMapZoomOut_Unknown18(__int64* a1)
 {
@@ -90,6 +108,131 @@ LABEL_9:
     v8 = 40;
   }
   return (*(__int64 (**)(_QWORD*))(*v10 + v8))(v10);
+}
+
+__int64 game_combat_anonymous_BMapZoomOut_Schedule_closure_Invoke_10ed780()
+{
+  _DWORD* v0;
+  int v1;
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __int64* v7;
+  __int64* v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 result;
+  __int64 v14;
+  struct {
+    _QWORD v15[4];
+    _QWORD* v16;
+  } v15_;
+
+  if (GameData_21d92e0 != 1) {
+    GameData_21d92e0 = 1;
+    game_GameView_Update();
+    if (GameData_21cd0d0 != 0) {
+      v0 = *(_DWORD**)(GameData_21cd0d0 + 8);
+      v1 = v0[2] - 1;
+      v0[2] = v1;
+      if (v1 == 0) {
+        (*(void (**)(_DWORD*))(*(_QWORD*)v0 + 8LL))(v0);
+      }
+    }
+  }
+  if (GameData_21ec7b0 != 0) {
+    v15_.v15[0] = GameData_200ce20;
+    v15_.v16 = v15_.v15;
+    game_combat_106c820((_QWORD*)GameData_21ec7b0, (__int64)v15_.v15);
+    if (v15_.v16 == v15_.v15) {
+      v2 = 32;
+    }
+    else {
+      if (v15_.v16 == nullptr) {
+        goto LABEL_11;
+      }
+      v2 = 40;
+    }
+    (*(void (**)(__int64))(*v15_.v16 + v2))((__int64)v15_.v16);
+  }
+LABEL_11:
+  v15_.v16 = v15_.v15;
+  v15_.v15[0] = GameData_21320e8 + 2;
+  GameRoutine_18c8060((__int64)v15_.v15);
+  if (v15_.v16 == v15_.v15) {
+    v3 = 32;
+    goto LABEL_15;
+  }
+  if (v15_.v16 != nullptr) {
+    v3 = 40;
+  LABEL_15:
+    (*(void (**)(__int64))(*v15_.v16 + v3))((__int64)v15_.v16);
+  }
+  if (GameData_21ec7b0 != 0) {
+    v4 = *(_QWORD*)(GameData_21ec7b0 + 128);
+    if (v4 != 0) {
+      *(_QWORD*)(v4 + 472) = 0;
+      *(_DWORD*)(v4 + 464) = 0;
+    }
+  }
+  v15_.v16 = v15_.v15;
+  v15_.v15[0] = GameData_212fff8[0] + 2;
+  GameRoutine_10a2b90((__int64)v15_.v15);
+  if (v15_.v16 == v15_.v15) {
+    v5 = 32;
+    goto LABEL_23;
+  }
+  if (v15_.v16 != nullptr) {
+    v5 = 40;
+  LABEL_23:
+    (*(void (**)(__int64))(*v15_.v16 + v5))((__int64)v15_.v16);
+  }
+  v6 = *(_QWORD*)(eft_g_effectSystem + 296);
+  v7 = *(__int64**)(v6 - 24);
+  v8 = *(__int64**)(v6 - 16);
+  while (v7 != v8) {
+    v9 = *v7;
+    if (*v7 != 0 && *(_DWORD*)(v9 + 4) == 7) {
+      while (1) {
+        v10 = *(_QWORD*)(v9 + 56);
+        if (v10 == v9 + 48) {
+          break;
+        }
+        Config_bc7840(eft_g_effectSystem, v10);
+      }
+      while (1) {
+        v11 = *(_QWORD*)(v9 + 72);
+        if (v11 == v9 + 64) {
+          break;
+        }
+        Config_bc5620(eft_g_effectSystem, v11 - 136);
+      }
+    }
+    ++v7;
+  }
+  GameRoutine_14a4d00((__int64)&GameData_224b668);
+  v12 = *(_QWORD*)(GameData_21ec7b0 + 120);
+  if (v12 != 0 && *(_DWORD*)(v12 + 80) != 4) {
+    *(_DWORD*)(v12 + 80) = 4;
+    if (*(_BYTE*)(v12 + 104) == 1) {
+      *(_BYTE*)(v12 + 104) = 0;
+    }
+    CombatLegionManager_e2cfa0(v12, *(_QWORD*)(v12 + 16));
+    CombatLegionManager_e2cfa0(v12, *(_QWORD*)(v12 + 24));
+    CombatLegionManager_e2cfa0(v12, *(_QWORD*)(v12 + 32));
+  }
+  result = CombatLegionManager_e2cca0();
+  if (GameData_21ec7b0 != 0) {
+    v14 = *(_QWORD*)(GameData_21ec7b0 + 8);
+    if (v14 != 0) {
+      *(_DWORD*)(v14 + 112) |= 0x1000000u;
+    }
+  }
+  return result;
 }
 
 void game_combat_anonymous_BMapZoomOut_Schedule_closure_Invoke(__int64 a1,

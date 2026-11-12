@@ -97,6 +97,8 @@ __int64 nn_util_ReferSymbol(_QWORD);
 extern char GameData_2143000[];
 bool RectDrawer_Unknown2(__int64 a1, __int64 a2, __int64 a3, int a4, __int64 a5,
                          __int64 a6);
+__int64 RectDrawer_Unknown4(__int64 result, __int64 a2, unsigned int* a3,
+                            __int64 a4);
 
 __int64 RectDrawer_Destructor(_QWORD* a1)
 {
@@ -201,6 +203,58 @@ __int64 RectDrawer_Unknown3(__int64 result, __int64 a2)
 __int64 RectDrawer_56a540(__int64 a1, __int64 (*a2)(__int64, __int64))
 {
   return a2(a1 + 1032, a1 + 912);
+}
+
+__int64 RectDrawer_Unknown4(__int64 result, __int64 a2, unsigned int* a3,
+                            __int64 a4)
+{
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  _QWORD* v9;
+  unsigned int v10;
+  __int64 v11;
+  __int64 v12;
+  unsigned int* v13;
+  __int64 v14;
+  __int64 v15;
+  _QWORD v16[2];
+  _QWORD v17[4];
+
+  if ((int)a3[38] >= 1) {
+    v6 = *((_QWORD*)a3 + 22);
+    if ((*(_BYTE*)v6 & 2) == 0 &&
+        (signed __int32)*(_DWORD*)(result + 140) >= (signed int)a3[39]) {
+      v17[2] = v4;
+      v17[3] = v5;
+      v7 = a3[1];
+      v9 = (_QWORD*)(*(_QWORD*)(v6 + 16) + 16LL * *(int*)(v6 + 48));
+      v10 = a3[2];
+      v11 = v9[1];
+      v17[0] = *v9 + *a3;
+      v17[1] = v11;
+      v12 = v9[1];
+      v16[0] = *v9 + v7;
+      v16[1] = v12;
+      if (*((_BYTE*)a3 + 185) == 1) {
+        v13 = a3;
+        v14 = result;
+        v15 = a2;
+        RectDrawer_56a680(result, a2, (__int64)(a3 + 4), v10 & 0xFE,
+                          (__int64)v17, v16, a4);
+        LOBYTE(v10) = v10 | 1;
+        a3 = v13;
+        result = v14;
+        a2 = v15;
+        v17[0] += (*(_QWORD*)(*((_QWORD*)v13 + 22) + 32LL) + 127LL) &
+                  -*(_QWORD*)(*((_QWORD*)v13 + 22) + 32LL);
+      }
+      return RectDrawer_56a680(result, a2, (__int64)(a3 + 4), v10, (__int64)v17,
+                               v16, a4);
+    }
+  }
+  return result;
 }
 
 __int64 RectDrawer_56a680(__int64 result, __int64 a2, __int64 a3, char a4,

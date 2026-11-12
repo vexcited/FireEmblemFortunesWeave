@@ -37,6 +37,9 @@ void LocatorModule_a7c180_alt2(__int64*,
                                _QWORD*) __asm__("LocatorModule_a7c180");
 void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
+int memcmp_alt1(__int64, __int64, unsigned __int64) __asm__("memcmp");
+unsigned __int64 strlen_alt1(const char*) __asm__("strlen");
+__int64 LocatorModule_a7c540(__int64 a1, const char* a2);
 
 _QWORD* LocatorModule_Destructor(_QWORD* result)
 {
@@ -556,6 +559,82 @@ LABEL_19:
   }
   v6[6] = (__int64)v12;
   return result;
+}
+
+__int64 LocatorModule_a7c540(__int64 a1, const char* a2)
+{
+  __int64 v3;
+  const char* v4;
+  unsigned __int64 v5;
+  unsigned __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  int v10;
+  __int64 v11;
+  bool v12;
+  unsigned __int64 v13;
+  unsigned __int16* v14;
+  unsigned __int64 v15;
+  __int64 v16;
+  __int64 v17;
+
+  v3 = *(_QWORD*)(**(_QWORD**)(a1 + 32) + 8LL);
+  if (v3 == 0) {
+    goto LABEL_14;
+  }
+  if (a2 != nullptr) {
+    v4 = a2;
+    v5 = strlen_alt1(a2);
+    a2 = v4;
+    v6 = v5;
+  }
+  else {
+    v6 = 0;
+  }
+  v7 = v3 + 8;
+  v8 = *(unsigned __int16*)(v3 + 12);
+  v9 = v3 + 8 + 16 * v8;
+  v10 = *(_DWORD*)v9;
+  if ((signed __int32)*(_DWORD*)(v3 + 8) < (signed __int32)*(_DWORD*)v9) {
+    do {
+      v13 = (__int64)v10 >> 3;
+      if (v6 > v13) {
+        v11 = ((unsigned __int8)a2[v6 + ~v13] >> (v10 & 7)) & 1;
+      }
+      else {
+        v11 = 0;
+      }
+      v8 = *(unsigned __int16*)(v3 + 12 + 16 * v8 + 2 * v11);
+      v12 = v10 < (signed __int32)*(_DWORD*)(v7 + 16 * v8);
+      v10 = *(_DWORD*)(v7 + 16 * v8);
+    } while (v12);
+    v9 = v7 + 16 * v8;
+  }
+  v14 = *(unsigned __int16**)(v9 + 8);
+  if (v6 == *v14 && memcmp_alt1((__int64)(v14 + 1), (__int64)a2, v6) == 0) {
+    v15 = (unsigned __int64)(v9 - v3 - 24) >> 4;
+  }
+  else {
+  LABEL_14:
+    LODWORD(v15) = -1;
+  }
+  v16 = *(_QWORD*)(a1 + 40);
+  v17 = *(_QWORD*)(a1 + 48);
+  if (v16 != v17) {
+    while (*(_DWORD*)(*(_QWORD*)v16 + 16LL) != (_DWORD)v15) {
+      v16 += 8;
+      if (v16 == v17) {
+        return 0;
+      }
+    }
+  }
+  if (v16 == v17) {
+    return 0;
+  }
+  else {
+    return *(_QWORD*)v16;
+  }
 }
 
 long double

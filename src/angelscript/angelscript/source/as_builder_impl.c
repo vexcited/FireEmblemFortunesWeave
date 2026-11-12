@@ -62,6 +62,17 @@ __attribute__((swiftcall)) void
 asCBuilder_CreateDataTypeFromNode(PSEUDO_X8 x8_, __int64 a1, __int64 a2,
                                   __int64 a3, __int64 a4, char a5, __int64 a6,
                                   char a7, _BYTE* a8);
+__int64 asCBuilder_WriteError_1e0ca0(__int64 result);
+
+__int64 asCBuilder_WriteError_1e0ca0(__int64 result)
+{
+  ++*(_DWORD*)result;
+  if ((*(_BYTE*)(result + 8) & 1) == 0) {
+    return (*(__int64 (**)(void*))(**(_QWORD**)(result + 16) + 56LL))(
+        (void*)*(_QWORD**)(result + 16));
+  }
+  return result;
+}
 
 __int64 asCBuilder_CheckNameConflict(__int64 a1, __int64 a2, __int64 a3,
                                      unsigned int* a4, unsigned __int64 a5,

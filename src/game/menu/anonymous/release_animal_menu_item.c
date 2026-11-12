@@ -7,6 +7,93 @@ __int64 GameRoutine_931120(_QWORD);
 __int64 strlen(_QWORD);
 __int64
 game_menu_anonymous_ReleaseAnimalMenuItem_ACall_closure_Invoke(__int64 a1);
+_QWORD* ProcObeliskDepositoryRideMenu_9d0620(__int64, __int64, __int64, __int64,
+                                             __int64);
+extern __int64 (*GameData_21261a8[])();
+extern __int64 (*GameData_2126228[])();
+void ObeliskDestinyMenuItem_1a06b90(_QWORD*, __int64, int);
+__int64 game_menu_anonymous_ReleaseAnimalMenuItem_ACall(_QWORD* a1);
+
+__int64 game_menu_anonymous_ReleaseAnimalMenuItem_ACall(_QWORD* a1)
+{
+  __int64 v2;
+  __int64 v3;
+  _QWORD* v4;
+  __int64 v5;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  struct {
+    _QWORD v10[4];
+    _QWORD* v11;
+  } v10_;
+  struct {
+    _QWORD v12[4];
+    _QWORD* v13;
+  } v12_;
+  struct {
+    _QWORD v14[4];
+    _QWORD* v15;
+  } v14_;
+  const char* v16;
+
+  if (((*(__int64 (**)(_QWORD*))(*a1 + 464LL))(a1) & 1) == 0) {
+    return 1;
+  }
+  v2 = a1[1];
+  v16 = "MID_ReleaselMenu_Confirm";
+  v14_.v14[0] = GameData_21261a8;
+  v14_.v14[1] = a1;
+  v10_.v11 = v10_.v10;
+  if (*(_QWORD*)(v2 + 152) != 0) {
+    v3 = *(_QWORD*)(v2 + 152);
+  }
+  else {
+    v3 = v2;
+  }
+  v14_.v15 = v14_.v14;
+  v12_.v13 = v12_.v12;
+  v12_.v12[0] = GameData_2126228;
+  v10_.v10[0] = GameData_2126228;
+  v4 = ProcObeliskDepositoryRideMenu_9d0620(
+      v3, (__int64)&v16, (__int64)v14_.v14, (__int64)v12_.v12,
+      (__int64)v10_.v10);
+  if (v10_.v11 == v10_.v10) {
+    v5 = 32;
+  }
+  else {
+    if (v10_.v11 == nullptr) {
+      goto LABEL_11;
+    }
+    v5 = 40;
+  }
+  (*(void (**)(__int64))(*v10_.v11 + v5))((__int64)v10_.v11);
+LABEL_11:
+  if (v12_.v13 == v12_.v12) {
+    v7 = 32;
+  }
+  else {
+    if (v12_.v13 == nullptr) {
+      goto LABEL_16;
+    }
+    v7 = 40;
+  }
+  (*(void (**)(__int64))(*v12_.v13 + v7))((__int64)v12_.v13);
+LABEL_16:
+  if (v14_.v15 == v14_.v14) {
+    v8 = 32;
+    goto LABEL_20;
+  }
+  if (v14_.v15 != nullptr) {
+    v8 = 40;
+  LABEL_20:
+    (*(void (**)(__int64))(*v14_.v15 + v8))((__int64)v14_.v15);
+  }
+  v9 = (*(__int64 (**)(_QWORD*))(*a1 + 560LL))(a1);
+  ObeliskDestinyMenuItem_1a06b90(v4 + 187, v9, 1);
+  return 12;
+}
+
 __int64
 
 game_menu_anonymous_ReleaseAnimalMenuItem_ACall_closure_Invoke(__int64 a1)

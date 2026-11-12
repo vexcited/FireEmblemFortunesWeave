@@ -31,6 +31,10 @@ __int64 gfxa_MainPassLighting_SetupAOPass2_lambda0_Invoke(__int64 a1,
 __int64 gfxa_MainPassLighting_SetupLightingPass_lambda1_Invoke(__int64 a1,
                                                                __int64 a2,
                                                                __int64* a3);
+__int64 gfxa_TaskLocalShadow_Execute(__int64, __int64, _QWORD*, __int64);
+__int64 gfxa_MainPassLighting_SetupLocalShadowPass_lambda1_Invoke(__int64 a1,
+                                                                  __int64* a2,
+                                                                  _QWORD* a3);
 
 __int64 gfxa_MainPassLighting_SetupAOPass1_lambda1_Invoke(__int64 a1,
                                                           __int64 a2,
@@ -470,6 +474,75 @@ __int64 gfxa_MainPassLighting_SetupLightingPass_lambda1_Invoke(__int64 a1,
   else {
     return TaskDeferredLit_b58e40((__int64)v12, v5, v6, a3, (__int64)&v28_.v28);
   }
+}
+
+__int64 gfxa_MainPassLighting_SetupLocalShadowPass_lambda1_Invoke(__int64 a1,
+                                                                  __int64* a2,
+                                                                  _QWORD* a3)
+{
+  __int64 v3;
+  __int64 v4;
+  int v5;
+  __int64* v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  _QWORD* v10;
+  __int64 v11;
+  __int64* v12;
+  __int64 v13;
+  __int64 v14;
+  __int64 v15;
+  _QWORD* v16;
+  __int64 v17;
+  __int64 v18;
+  __int64 v19;
+  struct {
+    _QWORD v21[33];
+    int v22;
+    int v23;
+    int v24;
+    int v25;
+  } v21_;
+
+  v3 = *(_QWORD*)(a1 + 8);
+  v4 = *(_QWORD*)(v3 + 104);
+  v21_.v24 = *(_DWORD*)(v4 + 180);
+  v5 = *(_DWORD*)(v4 + 232);
+  v21_.v25 = v5;
+  v21_.v21[0] = *(_QWORD*)(v3 + 8);
+  if (v21_.v24 >= 1) {
+    v6 = *(__int64**)(v3 + 72);
+    v7 = *(_QWORD*)(v4 + 208);
+    v8 = 0;
+    do {
+      v9 = *v6;
+      v6 += 2;
+      v10 = &v21_.v21[v8];
+      v11 = 8 * v8++;
+      v10[17] = v9;
+      v10[1] = *(_QWORD*)(v7 + v11);
+    } while (v8 < v21_.v24);
+    v5 = v21_.v25;
+  }
+  if (v5 >= 1) {
+    v12 = *(__int64**)(v3 + 88);
+    v13 = *(_QWORD*)(v4 + 264);
+    v14 = 0;
+    do {
+      v15 = *v12;
+      v12 += 2;
+      v16 = &v21_.v21[v14];
+      v17 = 8 * v14++;
+      v16[25] = v15;
+      v16[9] = *(_QWORD*)(v13 + v17);
+    } while (v14 < v21_.v25);
+  }
+  v18 = *a2;
+  v19 = a2[1];
+  v21_.v22 = *(_DWORD*)(v3 + 144);
+  v21_.v23 = *(_DWORD*)(v3 + 148);
+  return gfxa_TaskLocalShadow_Execute(v18, v19, a3, (__int64)v21_.v21);
 }
 
 #pragma GCC visibility pop

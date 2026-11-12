@@ -60,6 +60,15 @@ __int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
 __int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
     "std___1___shared_weak_count_lock");
 char* game_util_Format_alt1(const char*, ...) __asm__("game_util_Format");
+__int64 GameRoutine_156d580(__int64);
+__int64
+LayoutAccessor_1562cf0_alt1(__int64 result,
+                            const char*) __asm__("LayoutAccessor_1562cf0");
+__int64 ui_LayoutAccessor_SetPaneVisible(__int64 result, __int64, char);
+extern __int64 (*GameData_211cdf8[])();
+__int64
+game_facility_anonymous_ProcTrainingKindMenu_ACall_closure_Invoke(__int64 a1,
+                                                                  __int64 a2);
 
 __int64 ProcTrainingKindMenu_Unknown84(__int64 a1)
 {
@@ -429,6 +438,56 @@ game_facility_anonymous_ProcTrainingKindMenu_ACall_closure_Invoke_197e330(
   *(_QWORD*)(v2 + 28) = -1;
   *(_QWORD*)(v2 + 36) = -1;
   return BasicMenuCursor_16ddaa0(v1, 5);
+}
+
+__int64
+
+game_facility_anonymous_ProcTrainingKindMenu_ACall_closure_Invoke(__int64 a1,
+                                                                  __int64 a2)
+{
+  __int64 v3;
+  __int64 result;
+  __int64 v5;
+  int v6;
+  char* v7;
+  int v8;
+  struct {
+    _QWORD v9[4];
+    _QWORD* v10;
+  } v9_;
+  int v11;
+
+  v3 = a1 + 8;
+  LayoutAccessor_1562cf0_alt1(a2, "Training");
+  v11 = 0;
+  v9_.v9[0] = GameData_211cdf8;
+  v9_.v9[1] = a2;
+  v9_.v9[2] = v3;
+  v9_.v9[3] = &v11;
+  v9_.v10 = v9_.v9;
+  GameRoutine_156d580((__int64)v9_.v9);
+  result = (__int64)v9_.v10;
+  if (v9_.v10 == v9_.v9) {
+    v5 = 32;
+  }
+  else {
+    if (v9_.v10 == nullptr) {
+      goto LABEL_6;
+    }
+    v5 = 40;
+  }
+  result = (*(__int64 (**)(__int64))(*v9_.v10 + v5))((__int64)v9_.v10);
+LABEL_6:
+  v6 = v11;
+  if (v11 <= 3) {
+    do {
+      v7 = game_util_Format_alt1("IconMastery%02d", v6);
+      result = ui_LayoutAccessor_SetPaneVisible(a2, (__int64)v7, 0);
+      v8 = v11;
+      v6 = ++v11;
+    } while (v8 < 3);
+  }
+  return result;
 }
 
 #pragma GCC visibility pop

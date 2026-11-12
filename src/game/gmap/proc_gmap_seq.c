@@ -192,7 +192,7 @@ __int64 ProcGmapSeq_884ff0(__int64 result);
 __int64 ProcGmapSeq_885160(__int64 a1);
 void ProcGmapSeq_8855f0();
 __int64 ProcGmapSeq_885840(__int64 a1);
-__int64 ProcGmapSeq_8866a0();
+__int64 ProcGmapSeq_8866a0_alt2() __asm__("ProcGmapSeq_8866a0");
 __int64 ProcGmapSeq_886770(__int64 a1);
 __int64 ProcGmapSeq_886870();
 __int64 ProcGmapSeq_8868e0(__int64 result);
@@ -541,6 +541,14 @@ unsigned __int64 ProcGmapSeq_881560(unsigned __int64 a1, __int64 a2);
 void ProcGmapSeq_8818a0(__int64 a1);
 __int64 ProcGmapSeq_883220(__int64 a1);
 void ProcGmapSeq_883540(__int64 a1);
+_QWORD* GameManager_a2c820_alt2(__int64, __int64,
+                                char) __asm__("GameManager_a2c820");
+__int64
+snd_Fade_Fade_10cb00_alt1(__int64,
+                          unsigned __int8*) __asm__("snd_Fade_Fade_10cb00");
+void GameManager_a2f660_alt1(__int64) __asm__("GameManager_a2f660");
+void TroopMgr_1349f40_alt1() __asm__("TroopMgr_1349f40");
+void ProcGmapSeq_8866a0();
 
 __int64 game_gmap_ProcGmapSeq_Initialize(__int64 a1)
 {
@@ -5906,34 +5914,32 @@ void ProcGmapSeq_8865e0(__int64 a1)
   }
 }
 
-__int64 ProcGmapSeq_8866a0()
+void ProcGmapSeq_8866a0()
 {
   __int64 v0;
   int v1;
-  __int64 result;
-  __int64 v3;
-  _BYTE v4[200];
+  __int64 v2;
+  _QWORD v3[25];
 
   if (game_GameModeData_instance_ != 0 &&
       (*(_BYTE*)(game_GameModeData_instance_ + 92) & 2) != 0) {
-    v3 = *(_QWORD*)(GameData_21f1648 + 8);
-    result = GameManager_a2f660(game_sound_g_game_sound);
+    v2 = *(_QWORD*)(GameData_21f1648 + 8);
+    GameManager_a2f660_alt1(game_sound_g_game_sound);
     *(_BYTE*)(*(_QWORD*)(GameData_21f1648 + 8) + 40LL) = 0;
-    *(_BYTE*)(v3 + 56) = 1;
+    *(_BYTE*)(v2 + 56) = 1;
   }
   else {
-    TroopMgr_1349f40();
-    snd_Fade_Fade_10cb00(v4, "FadeTime_BGM_Gmap_Out");
+    TroopMgr_1349f40_alt1();
+    snd_Fade_Fade_10cb00_alt1((__int64)v3, "FadeTime_BGM_Gmap_Out");
     v0 = game_sound_g_game_sound;
     v1 = *(_DWORD*)(game_sound_g_game_sound + 620);
     if (v1 != 0) {
       *(_DWORD*)(game_sound_g_game_sound + 620) = v1 - 1;
-      GameManager_a2c820(v0, v4);
+      GameManager_a2c820_alt2(v0, (__int64)v3, 1);
     }
-    result = snd_Fade_Destroy_Fade(v4);
+    snd_Fade_Destroy_Fade_alt1(v3);
     *(_BYTE*)(*(_QWORD*)(GameData_21f1648 + 8) + 40LL) = 0;
   }
-  return result;
 }
 
 __int64 ProcGmapSeq_886770(__int64 a1)

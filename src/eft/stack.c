@@ -27,6 +27,8 @@ extern __int64 GameData_226b928;
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 eft_Stack_calcEmitter(__int64 result);
 void GameRoutine_18e4620_alt2(__int64, __int64) __asm__("GameRoutine_18e4620");
+__int64 eft_Stack_calcEmitter_lambda0_Invoke(__int64 result, __int64 a2,
+                                             atomic_uint* a3);
 
 __int64 eft_Stack_calcEmitter(__int64 result)
 {
@@ -451,6 +453,130 @@ __int64 Stack_bcc1a0(__int64 result, int a2)
       }
       v14 = v18;
     } while (v18 != v15);
+  }
+  return result;
+}
+
+__int64 eft_Stack_calcEmitter_lambda0_Invoke(__int64 result, __int64 a2,
+                                             atomic_uint* a3)
+{
+  __int64 v3;
+  _QWORD******* v4;
+  unsigned int v5;
+  signed int add;
+  _QWORD******* v7;
+  __int64 v9;
+  signed int v10;
+  int v11;
+  unsigned int v12;
+  int i;
+  unsigned int v14;
+  int v15;
+  int v16;
+  unsigned int v17;
+  unsigned int v18;
+  __int64 v21;
+
+  v3 = *(_QWORD*)(result + 8);
+  v4 = (_QWORD*******)(v3 + 64);
+  if ((signed __int32)*(_DWORD*)(result + 16) /
+          (int)((((*(_QWORD*)(*(_QWORD*)GameData_21323e8[0] + 2088LL) -
+                   *(_QWORD*)(*(_QWORD*)GameData_21323e8[0] + 2080LL)) >>
+                  2) &
+                 0xFFFFFFFE) +
+                2) <=
+      1) {
+    v5 = 1;
+  }
+  else {
+    v5 = (signed __int32)*(_DWORD*)(result + 16) /
+         (int)((((*(_QWORD*)(*(_QWORD*)GameData_21323e8[0] + 2088LL) -
+                  *(_QWORD*)(*(_QWORD*)GameData_21323e8[0] + 2080LL)) >>
+                 2) &
+                0xFFFFFFFE) +
+               2);
+  }
+  add = atomic_fetch_add(a3, v5);
+  v7 = *(_QWORD********)(v3 + 72);
+  if (add < (signed __int32)*(_DWORD*)(result + 16) && v7 != v4) {
+    v9 = result;
+    v10 = 0;
+    v11 = 0;
+    while (1) {
+      v12 = add - v11;
+      if (add - v11 >= 0) {
+        if (v12 != 0) {
+          for (i = v12 & 7; i != 0; --i) {
+            v7 = (_QWORD*******)v7[1];
+            --v12;
+          }
+          if ((unsigned int)(v11 - add) <= 0xFFFFFFF8) {
+            v14 = v12 - 1;
+            do {
+              v14 -= 8;
+              v7 = *(_QWORD********)(v7[1][1][1][1][1][1][1] + 8LL);
+            } while (v14 < 0xFFFFFFFE);
+          }
+        }
+        goto LABEL_22;
+      }
+      v15 = ((_BYTE)v11 - (_BYTE)add) & 7;
+      if ((((_BYTE)v11 - (_BYTE)add) & 7) != 0) {
+        break;
+      }
+      v16 = add - v11;
+      if (v12 <= 0xFFFFFFF8) {
+        goto LABEL_21;
+      }
+    LABEL_22:
+      if (v7 == v4) {
+        v11 = add;
+      }
+      else {
+        v17 = 1;
+        do {
+          if (*((_BYTE*)v7 + 208) == 1) {
+            *(_BYTE*)(v3 + 96) = 1;
+          }
+          result = ((__int64 (*)(_QWORD*******))(*(v7 - 17))[12])(v7 - 17);
+          if ((result & 1) == 0) {
+            v21 = *(_QWORD*)(v9 + 32);
+            result = ((__int64 (*)(_QWORD*******, __int64*))(*(v7 - 17))[3])(
+                v7 - 17, &v21);
+            if ((result & 1) == 0) {
+              ++v10;
+              *((_BYTE*)v7 + 137) = 1;
+            }
+          }
+          v7 = (_QWORD*******)v7[1];
+          v18 = v17 + 1;
+        } while (v7 != v4 && v17++ < v5);
+        v11 = add + v18 - 1;
+      }
+      v5 = (v5 + 1) >> 1;
+      add = atomic_fetch_add(a3, v5);
+      if (add >= (signed __int32)*(_DWORD*)(v9 + 16) || v7 == v4) {
+        if (v10 >= 1) {
+          atomic_fetch_add(*(atomic_uint* volatile*)(v9 + 24), v10);
+        }
+        return result;
+      }
+    }
+    v16 = add - v11;
+    do {
+      v7 = (_QWORD*******)*v7;
+      ++v16;
+      --v15;
+    } while (v15 != 0);
+    if (v12 > 0xFFFFFFF8) {
+      goto LABEL_22;
+    }
+    do {
+    LABEL_21:
+      v16 += 8;
+      v7 = *(_QWORD********)*******v7;
+    } while (v16 != 0);
+    goto LABEL_22;
   }
   return result;
 }

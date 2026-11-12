@@ -124,6 +124,62 @@ void __attribute__((noreturn)) String_60a1d0_alt1() __asm__("String_60a1d0");
 void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void ProcMouseGuide_Unknown140(__int64 a1, __int64* a2);
+__int64 MapSortieMenu_871860(__int64, __int64, __int64, __int64, __int64);
+extern __int64 (*GameData_20d0de0[])();
+extern __int64 (*GameData_20d15b0[])();
+extern __int64 (*GameData_20d1630[])();
+void GameRoutine_16497b0(__int64, const char*);
+void GameRoutine_17a7440(__int64, int);
+void game_menu_PageTab_SetupText(int*, __int64, __int64, int, unsigned int,
+                                 unsigned int);
+void game_menu_anonymous_ProcMouseGuide_OnInit(__int64 a1);
+__int64 game_menu_anonymous_ProcMouseGuide_StickRCall(__int64 a1);
+
+void game_menu_anonymous_ProcMouseGuide_OnInit(__int64 a1)
+{
+  __int64 v2;
+  int v3;
+  __int64 v4;
+  int v5;
+  __int64 v6;
+  struct {
+    _QWORD v7[4];
+    _QWORD* v8;
+  } v7_;
+  struct {
+    __int64 v9;
+    __int64 v10;
+  } v9_;
+
+  LayoutAccessor_1560070_alt1((void*)(&v9_.v9), (__int64*)(a1 + 848),
+                              "L_PageTab");
+  v7_.v7[0] = GameData_20d0de0;
+  v2 = *(_QWORD*)a1;
+  v7_.v8 = v7_.v7;
+  v3 = (*(__int64 (**)(__int64))(v2 + 192))(a1);
+  game_menu_PageTab_SetupText((int*)(a1 + 656), (__int64)&v9_.v9,
+                              (__int64)v7_.v7, v3, 0xEu, 0xFu);
+  if (v7_.v8 == v7_.v7) {
+    v4 = 32;
+  }
+  else {
+    if (v7_.v8 == nullptr) {
+      goto LABEL_6;
+    }
+    v4 = 40;
+  }
+  (*(void (**)(__int64))(*v7_.v8 + v4))((__int64)v7_.v8);
+LABEL_6:
+  if (v9_.v10 != 0) {
+    std___1___shared_weak_count___release_weak_alt2(v9_.v10);
+  }
+  v5 = *(_DWORD*)(a1 + 660);
+  v6 = *(_QWORD*)(a1 + 672);
+  if (v5 < (unsigned __int64)((*(_QWORD*)(a1 + 680) - v6) >> 2)) {
+    v5 = *(_DWORD*)(v6 + 4LL * v5);
+  }
+  GameRoutine_17a7440(a1, v5);
+}
 
 __int64 ProcMouseGuide_Unknown96(__int64 a1)
 {
@@ -280,6 +336,101 @@ LABEL_25:
                        PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   }
   return 12;
+}
+
+__int64 game_menu_anonymous_ProcMouseGuide_StickRCall(__int64 a1)
+{
+  __int64 v1;
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  unsigned int v8;
+  struct {
+    _QWORD v10[4];
+    _QWORD* v11;
+  } v10_;
+  struct {
+    _QWORD v12[4];
+    _QWORD* v13;
+  } v12_;
+  struct {
+    _QWORD v14[4];
+    _QWORD* v15;
+  } v14_;
+  _QWORD v16[3];
+
+  if (*(_BYTE*)(game_g_game_setting + 807) != 1 ||
+      (*(_BYTE*)(game_g_game_setting + 804) & 1) == 0 &&
+          (*(_BYTE*)(game_g_game_setting + 940) != 1 ||
+           (*(_BYTE*)(game_g_game_setting + 805) & 1) == 0 ||
+           (*(_BYTE*)(game_g_game_setting + 806) & 1) == 0)) {
+    if (*(_BYTE*)(game_g_game_setting + 903) != 1) {
+      return 1;
+    }
+    if ((*(_BYTE*)(game_g_game_setting + 900) & 1) == 0) {
+      v8 = 1;
+      if (*(_BYTE*)(game_g_game_setting + 940) != 1 ||
+          (*(_BYTE*)(game_g_game_setting + 901) & 1) == 0) {
+        return v8;
+      }
+      if (*(_BYTE*)(game_g_game_setting + 902) != 1) {
+        return 1;
+      }
+    }
+  }
+  v16[1] = v1;
+  v16[2] = v2;
+  v16[0] = "MID_MouseGuide_Reset_Message";
+  v3 = *(_QWORD*)(a1 + 152);
+  v14_.v14[0] = GameData_20d15b0;
+  v10_.v11 = v10_.v10;
+  v12_.v13 = v12_.v12;
+  if (v3 != 0) {
+    a1 = v3;
+  }
+  v14_.v15 = v14_.v14;
+  v12_.v12[0] = GameData_20d1630;
+  v10_.v10[0] = GameData_20d1630;
+  v4 = MapSortieMenu_871860(a1, (__int64)v16, (__int64)v14_.v14,
+                            (__int64)v12_.v12, (__int64)v10_.v10);
+  if (v10_.v11 == v10_.v10) {
+    v5 = 32;
+  }
+  else {
+    if (v10_.v11 == nullptr) {
+      goto LABEL_15;
+    }
+    v5 = 40;
+  }
+  (*(void (**)(__int64))(*v10_.v11 + v5))((__int64)v10_.v11);
+LABEL_15:
+  if (v12_.v13 == v12_.v12) {
+    v6 = 32;
+  }
+  else {
+    if (v12_.v13 == nullptr) {
+      goto LABEL_20;
+    }
+    v6 = 40;
+  }
+  (*(void (**)(__int64))(*v12_.v13 + v6))((__int64)v12_.v13);
+LABEL_20:
+  if (v14_.v15 == v14_.v14) {
+    v7 = 32;
+  }
+  else {
+    if (v14_.v15 == nullptr) {
+    LABEL_25:
+      GameRoutine_16497b0(v4, "SE_SYS_MouseAdjust_Success");
+      return 12;
+    }
+    v7 = 40;
+  }
+  (*(void (**)(__int64))(*v14_.v15 + v7))((__int64)v14_.v15);
+  goto LABEL_25;
 }
 
 void ProcMouseGuide_Unknown140(__int64 a1, __int64* a2)

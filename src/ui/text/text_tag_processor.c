@@ -50,6 +50,22 @@ GameRoutine_60a310_alt1() __asm__("GameRoutine_60a310");
 void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 __int64 TextTagProcessor_Unknown4(_QWORD* a1, __int64 a2, __int64 a3, int a4);
+__int64 GameRoutine_560fc0(_QWORD);
+__int64 GameRoutine_5662e0(_QWORD);
+extern __int64 (*GameData_210fc28[])();
+extern __int64 (*GameData_210fcc8[])();
+extern __int64 (*GameData_210fd68[])();
+extern __int64 (*ui_text_TextTagProcessor_vtable[])();
+void GameRoutine_1905ad0();
+void GameRoutine_1905b30();
+void GameRoutine_1905b40();
+__int64 TextTagProcessor_DeletingDestructor(__int64 a1);
+__attribute__((swiftcall)) void
+TextTagProcessor_1908c60(PSEUDO_X8 x8_, __int64 a1, __int64 a2);
+__attribute__((swiftcall)) void
+TextTagProcessor_1908f00(PSEUDO_X8 x8_, __int64 a1, __int64 a2);
+__attribute__((swiftcall)) void
+TextTagProcessor_19091a0(PSEUDO_X8 x8_, __int64 a1, __int64 a2);
 
 __int64 TextTagProcessor_561320(__int64 a1, _BYTE* a2, __int64 a3)
 {
@@ -63,6 +79,659 @@ __int64 TextTagProcessor_561320(__int64 a1, _BYTE* a2, __int64 a3)
   result = v6;
   *a2 = 1;
   return result;
+}
+
+__int64 TextTagProcessor_DeletingDestructor(__int64 a1)
+{
+  _QWORD* v2;
+  _QWORD* v3;
+  __int64 v4;
+  _QWORD* v5;
+  __int64 v6;
+  _QWORD* v7;
+  __int64 v8;
+  _QWORD* v9;
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+
+  *(_QWORD*)a1 = ui_text_TextTagProcessor_vtable;
+  v2 = (_QWORD*)(a1 + 336);
+  v3 = *(_QWORD**)(a1 + 368);
+  if (v3 == v2) {
+    v4 = 32;
+  }
+  else {
+    if (v3 == nullptr) {
+      goto LABEL_6;
+    }
+    v4 = 40;
+  }
+  (*(void (**)(__int64))(*v3 + v4))((__int64)v3);
+LABEL_6:
+  v5 = *(_QWORD**)(a1 + 320);
+  if (v5 == (_QWORD*)(a1 + 288)) {
+    v6 = 32;
+  }
+  else {
+    if (v5 == nullptr) {
+      goto LABEL_11;
+    }
+    v6 = 40;
+  }
+  (*(void (**)(__int64))(*v5 + v6))((__int64)v5);
+LABEL_11:
+  v7 = *(_QWORD**)(a1 + 272);
+  if (v7 == (_QWORD*)(a1 + 240)) {
+    v8 = 32;
+  }
+  else {
+    if (v7 == nullptr) {
+      goto LABEL_16;
+    }
+    v8 = 40;
+  }
+  (*(void (**)(__int64))(*v7 + v8))((__int64)v7);
+LABEL_16:
+  v9 = *(_QWORD**)(a1 + 224);
+  if (v9 == (_QWORD*)(a1 + 192)) {
+    v10 = 32;
+    goto LABEL_20;
+  }
+  if (v9 != nullptr) {
+    v10 = 40;
+  LABEL_20:
+    (*(void (**)(__int64))(*v9 + v10))((__int64)v9);
+  }
+  if ((*(_BYTE*)(a1 + 152) & 1) != 0) {
+    v11 = *(_QWORD*)(a1 + 168);
+    if (v11 != 0) {
+      v12 = 128;
+      if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+        v12 = 56;
+      }
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v12, v11);
+    }
+  }
+  GameRoutine_5662e0(a1 + 8);
+  return GameRoutine_560fc0(a1);
+}
+
+__attribute__((swiftcall)) void TextTagProcessor_1908c60(PSEUDO_X8 x8_,
+                                                         __int64 a1, __int64 a2)
+{
+  __int64 a3 = (__int64)PSEUDO_X8_VALUE(x8_);
+  _BYTE* v4;
+  _BYTE* v5;
+  __int64 v7;
+  _QWORD* v8;
+  __int64 v9;
+  _BYTE* v10;
+  _QWORD* v11;
+  _BYTE* v12;
+  _BYTE* v13;
+  __int64 v14;
+  __int64 v15;
+  __int64 v16;
+  __int64 result;
+  __int64 v18;
+  struct {
+    _QWORD v19[4];
+    _QWORD* v20;
+  } v19_;
+  struct {
+    _BYTE v21[32];
+    _BYTE* v22;
+  } v21_;
+  _QWORD v23[4];
+
+  v9 = COERCE_AS(__typeof__(v9),
+                 PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v4 = (_BYTE*)(a1 + 240);
+  v5 = *(_BYTE**)(a1 + 272);
+  if (v5 == nullptr) {
+    *(_QWORD*)(a3 + 32) = 0;
+    v7 = *(_QWORD*)(a2 + 32);
+    if (v7 != 0) {
+      goto LABEL_6;
+    }
+    goto LABEL_11;
+  }
+  if (v5 == v4) {
+    *(_QWORD*)(a3 + 32) = a3;
+    (*(void (**)(_BYTE*, __int64))(*(_QWORD*)v5 + 24LL))(v5, a3),
+        v9 = COERCE_AS(__typeof__(v9),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v7 = *(_QWORD*)(a2 + 32);
+    if (v7 != 0) {
+      goto LABEL_6;
+    }
+  LABEL_11:
+    v19_.v19[0] = GameData_210fc28;
+    v19_.v19[1] = &GameRoutine_1905ad0;
+    v8 = v19_.v19;
+    v19_.v20 = v19_.v19;
+  LABEL_12:
+    v21_.v22 = v21_.v21;
+    (*(void (**)(_QWORD*, _BYTE*))(*v8 + 24LL))(v8, v21_.v21),
+        v9 = COERCE_AS(__typeof__(v9),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    goto LABEL_15;
+  }
+  *(_QWORD*)(a3 +
+             32) = (*(__int64 (**)(_BYTE*))(*(_QWORD*)v5 + 16LL))(v5),
+             v9 = COERCE_AS(__typeof__(v9),
+                            PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v7 = *(_QWORD*)(a2 + 32);
+  if (v7 == 0) {
+    goto LABEL_11;
+  }
+LABEL_6:
+  if (v7 == a2) {
+    v19_.v20 = v19_.v19;
+    (*(void (**)(__int64, _QWORD*))(*(_QWORD*)v7 + 24LL))(v7, v19_.v19),
+        v9 = COERCE_AS(__typeof__(v9),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v8 = v19_.v20;
+    if (v19_.v20 != nullptr) {
+    LABEL_8:
+      if (v8 != v19_.v19) {
+        v21_.v22 = (_BYTE*)(*(__int64 (**)(_QWORD*))(*v8 + 16LL))(v8),
+        v9 = COERCE_AS(__typeof__(v9),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        goto LABEL_15;
+      }
+      goto LABEL_12;
+    }
+  }
+  else {
+    v8 = (_QWORD*)(*(__int64 (**)(__int64))(*(_QWORD*)v7 + 16LL))(v7),
+    v9 = COERCE_AS(__typeof__(v9),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v19_.v20 = v8;
+    if (v8 != nullptr) {
+      goto LABEL_8;
+    }
+  }
+  v21_.v22 = nullptr;
+LABEL_15:
+  if (v4 != v21_.v21) {
+    v10 = v21_.v22;
+    v11 = *(_QWORD**)(a1 + 272);
+    if (v21_.v22 == v21_.v21) {
+      if (v11 == (_QWORD*)v4) {
+        (*(void (**)(_BYTE*, _QWORD*))(*(_QWORD*)v21_.v22 + 24LL))(v21_.v22,
+                                                                   v23),
+            v9 = COERCE_AS(__typeof__(v9),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        (*(void (**)(_BYTE*))(*(_QWORD*)v21_.v22 + 32LL))(v21_.v22),
+            v9 = COERCE_AS(__typeof__(v9),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        v14 = *(_QWORD*)(a1 + 272);
+        v21_.v22 = nullptr;
+        (*(void (**)(__int64, _BYTE*))(*(_QWORD*)v14 + 24LL))(v14, v21_.v21),
+            v9 = COERCE_AS(__typeof__(v9),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        (*(void (**)(_QWORD))(**(_QWORD**)(a1 + 272) + 32LL))(
+            *(_QWORD*)(a1 + 272)),
+            v9 = COERCE_AS(__typeof__(v9),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        v15 = v23[0];
+        *(_QWORD*)(a1 + 272) = 0;
+        v21_.v22 = v21_.v21;
+        (*(void (**)(_QWORD*, _BYTE*))(v15 + 24))(v23, v4),
+            v9 = COERCE_AS(__typeof__(v9),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        (*(void (**)(_QWORD*))(v23[0] + 32LL))(v23),
+            v9 = COERCE_AS(__typeof__(v9),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        *(_QWORD*)(a1 + 272) = v4;
+      }
+      else {
+        (*(void (**)(_BYTE*, _BYTE*))(*(_QWORD*)v21_.v22 + 24LL))(v21_.v22, v4),
+            v9 = COERCE_AS(__typeof__(v9),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        (*(void (**)(_BYTE*))(*(_QWORD*)v21_.v22 + 32LL))(v21_.v22),
+            v9 = COERCE_AS(__typeof__(v9),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        v12 = *(_BYTE**)(a1 + 272);
+        *(_QWORD*)(a1 + 272) = v4;
+        v21_.v22 = v12;
+      }
+    }
+    else if (v11 == (_QWORD*)v4) {
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD, _BYTE*))(
+          *v11 + 24LL))((void*)(v11), *(_QWORD*)(a1 + 272), v21_.v21),
+          v9 = COERCE_AS(__typeof__(v9),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+      (*(void (**)(_QWORD))(**(_QWORD**)(a1 + 272) + 32LL))(
+          *(_QWORD*)(a1 + 272)),
+          v9 = COERCE_AS(__typeof__(v9),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+      v13 = v21_.v22;
+      v21_.v22 = v21_.v21;
+      *(_QWORD*)(a1 + 272) = v13;
+    }
+    else {
+      v21_.v22 = *(_BYTE**)(a1 + 272);
+      *(_QWORD*)(a1 + 272) = v10;
+    }
+  }
+  if (v21_.v22 == v21_.v21) {
+    v16 = 32;
+  }
+  else {
+    if (v21_.v22 == nullptr) {
+      goto LABEL_28;
+    }
+    v16 = 40;
+  }
+  (*(void (**)(_BYTE*, __int64))(*(_QWORD*)v21_.v22 + v16))(v21_.v22, v9),
+      v9 = COERCE_AS(__typeof__(v9),
+                     PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+LABEL_28:
+  result = (__int64)v19_.v20;
+  if (v19_.v20 == v19_.v19) {
+    v18 = 32;
+  }
+  else {
+    if (v19_.v20 == nullptr) {
+      result;
+      return;
+    }
+    v18 = 40;
+  }
+  {
+    (*(__int64 (**)(_QWORD*, __int64))(*v19_.v20 + v18))(v19_.v20, v9),
+        v9 = COERCE_AS(__typeof__(v9),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    return;
+  }
+}
+
+__attribute__((swiftcall)) void TextTagProcessor_1908f00(PSEUDO_X8 x8_,
+                                                         __int64 a1, __int64 a2)
+{
+  __int64 a3 = (__int64)PSEUDO_X8_VALUE(x8_);
+  _BYTE* v4;
+  _BYTE* v5;
+  __int64 v7;
+  _QWORD* v8;
+  __int64 v9;
+  _BYTE* v10;
+  _QWORD* v11;
+  _BYTE* v12;
+  _BYTE* v13;
+  __int64 v14;
+  __int64 v15;
+  __int64 v16;
+  __int64 result;
+  __int64 v18;
+  struct {
+    _QWORD v19[4];
+    _QWORD* v20;
+  } v19_;
+  struct {
+    _BYTE v21[32];
+    _BYTE* v22;
+  } v21_;
+  _QWORD v23[4];
+
+  v9 = COERCE_AS(__typeof__(v9),
+                 PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v4 = (_BYTE*)(a1 + 288);
+  v5 = *(_BYTE**)(a1 + 320);
+  if (v5 == nullptr) {
+    *(_QWORD*)(a3 + 32) = 0;
+    v7 = *(_QWORD*)(a2 + 32);
+    if (v7 != 0) {
+      goto LABEL_6;
+    }
+    goto LABEL_11;
+  }
+  if (v5 == v4) {
+    *(_QWORD*)(a3 + 32) = a3;
+    (*(void (**)(_BYTE*, __int64))(*(_QWORD*)v5 + 24LL))(v5, a3),
+        v9 = COERCE_AS(__typeof__(v9),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v7 = *(_QWORD*)(a2 + 32);
+    if (v7 != 0) {
+      goto LABEL_6;
+    }
+  LABEL_11:
+    v19_.v19[0] = GameData_210fcc8;
+    v19_.v19[1] = &GameRoutine_1905b30;
+    v8 = v19_.v19;
+    v19_.v20 = v19_.v19;
+  LABEL_12:
+    v21_.v22 = v21_.v21;
+    (*(void (**)(_QWORD*, _BYTE*))(*v8 + 24LL))(v8, v21_.v21),
+        v9 = COERCE_AS(__typeof__(v9),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    goto LABEL_15;
+  }
+  *(_QWORD*)(a3 +
+             32) = (*(__int64 (**)(_BYTE*))(*(_QWORD*)v5 + 16LL))(v5),
+             v9 = COERCE_AS(__typeof__(v9),
+                            PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v7 = *(_QWORD*)(a2 + 32);
+  if (v7 == 0) {
+    goto LABEL_11;
+  }
+LABEL_6:
+  if (v7 == a2) {
+    v19_.v20 = v19_.v19;
+    (*(void (**)(__int64, _QWORD*))(*(_QWORD*)v7 + 24LL))(v7, v19_.v19),
+        v9 = COERCE_AS(__typeof__(v9),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v8 = v19_.v20;
+    if (v19_.v20 != nullptr) {
+    LABEL_8:
+      if (v8 != v19_.v19) {
+        v21_.v22 = (_BYTE*)(*(__int64 (**)(_QWORD*))(*v8 + 16LL))(v8),
+        v9 = COERCE_AS(__typeof__(v9),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        goto LABEL_15;
+      }
+      goto LABEL_12;
+    }
+  }
+  else {
+    v8 = (_QWORD*)(*(__int64 (**)(__int64))(*(_QWORD*)v7 + 16LL))(v7),
+    v9 = COERCE_AS(__typeof__(v9),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v19_.v20 = v8;
+    if (v8 != nullptr) {
+      goto LABEL_8;
+    }
+  }
+  v21_.v22 = nullptr;
+LABEL_15:
+  if (v4 != v21_.v21) {
+    v10 = v21_.v22;
+    v11 = *(_QWORD**)(a1 + 320);
+    if (v21_.v22 == v21_.v21) {
+      if (v11 == (_QWORD*)v4) {
+        (*(void (**)(_BYTE*, _QWORD*))(*(_QWORD*)v21_.v22 + 24LL))(v21_.v22,
+                                                                   v23),
+            v9 = COERCE_AS(__typeof__(v9),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        (*(void (**)(_BYTE*))(*(_QWORD*)v21_.v22 + 32LL))(v21_.v22),
+            v9 = COERCE_AS(__typeof__(v9),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        v14 = *(_QWORD*)(a1 + 320);
+        v21_.v22 = nullptr;
+        (*(void (**)(__int64, _BYTE*))(*(_QWORD*)v14 + 24LL))(v14, v21_.v21),
+            v9 = COERCE_AS(__typeof__(v9),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        (*(void (**)(_QWORD))(**(_QWORD**)(a1 + 320) + 32LL))(
+            *(_QWORD*)(a1 + 320)),
+            v9 = COERCE_AS(__typeof__(v9),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        v15 = v23[0];
+        *(_QWORD*)(a1 + 320) = 0;
+        v21_.v22 = v21_.v21;
+        (*(void (**)(_QWORD*, _BYTE*))(v15 + 24))(v23, v4),
+            v9 = COERCE_AS(__typeof__(v9),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        (*(void (**)(_QWORD*))(v23[0] + 32LL))(v23),
+            v9 = COERCE_AS(__typeof__(v9),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        *(_QWORD*)(a1 + 320) = v4;
+      }
+      else {
+        (*(void (**)(_BYTE*, _BYTE*))(*(_QWORD*)v21_.v22 + 24LL))(v21_.v22, v4),
+            v9 = COERCE_AS(__typeof__(v9),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        (*(void (**)(_BYTE*))(*(_QWORD*)v21_.v22 + 32LL))(v21_.v22),
+            v9 = COERCE_AS(__typeof__(v9),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        v12 = *(_BYTE**)(a1 + 320);
+        *(_QWORD*)(a1 + 320) = v4;
+        v21_.v22 = v12;
+      }
+    }
+    else if (v11 == (_QWORD*)v4) {
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD, _BYTE*))(
+          *v11 + 24LL))((void*)(v11), *(_QWORD*)(a1 + 320), v21_.v21),
+          v9 = COERCE_AS(__typeof__(v9),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+      (*(void (**)(_QWORD))(**(_QWORD**)(a1 + 320) + 32LL))(
+          *(_QWORD*)(a1 + 320)),
+          v9 = COERCE_AS(__typeof__(v9),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+      v13 = v21_.v22;
+      v21_.v22 = v21_.v21;
+      *(_QWORD*)(a1 + 320) = v13;
+    }
+    else {
+      v21_.v22 = *(_BYTE**)(a1 + 320);
+      *(_QWORD*)(a1 + 320) = v10;
+    }
+  }
+  if (v21_.v22 == v21_.v21) {
+    v16 = 32;
+  }
+  else {
+    if (v21_.v22 == nullptr) {
+      goto LABEL_28;
+    }
+    v16 = 40;
+  }
+  (*(void (**)(_BYTE*, __int64))(*(_QWORD*)v21_.v22 + v16))(v21_.v22, v9),
+      v9 = COERCE_AS(__typeof__(v9),
+                     PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+LABEL_28:
+  result = (__int64)v19_.v20;
+  if (v19_.v20 == v19_.v19) {
+    v18 = 32;
+  }
+  else {
+    if (v19_.v20 == nullptr) {
+      result;
+      return;
+    }
+    v18 = 40;
+  }
+  {
+    (*(__int64 (**)(_QWORD*, __int64))(*v19_.v20 + v18))(v19_.v20, v9),
+        v9 = COERCE_AS(__typeof__(v9),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    return;
+  }
+}
+
+__attribute__((swiftcall)) void TextTagProcessor_19091a0(PSEUDO_X8 x8_,
+                                                         __int64 a1, __int64 a2)
+{
+  __int64 a3 = (__int64)PSEUDO_X8_VALUE(x8_);
+  _BYTE* v4;
+  _BYTE* v5;
+  __int64 v7;
+  _QWORD* v8;
+  __int64 v9;
+  _BYTE* v10;
+  _QWORD* v11;
+  _BYTE* v12;
+  _BYTE* v13;
+  __int64 v14;
+  __int64 v15;
+  __int64 v16;
+  __int64 result;
+  __int64 v18;
+  struct {
+    _QWORD v19[4];
+    _QWORD* v20;
+  } v19_;
+  struct {
+    _BYTE v21[32];
+    _BYTE* v22;
+  } v21_;
+  _QWORD v23[4];
+
+  v9 = COERCE_AS(__typeof__(v9),
+                 PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v4 = (_BYTE*)(a1 + 336);
+  v5 = *(_BYTE**)(a1 + 368);
+  if (v5 == nullptr) {
+    *(_QWORD*)(a3 + 32) = 0;
+    v7 = *(_QWORD*)(a2 + 32);
+    if (v7 != 0) {
+      goto LABEL_6;
+    }
+    goto LABEL_11;
+  }
+  if (v5 == v4) {
+    *(_QWORD*)(a3 + 32) = a3;
+    (*(void (**)(_BYTE*, __int64))(*(_QWORD*)v5 + 24LL))(v5, a3),
+        v9 = COERCE_AS(__typeof__(v9),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v7 = *(_QWORD*)(a2 + 32);
+    if (v7 != 0) {
+      goto LABEL_6;
+    }
+  LABEL_11:
+    v19_.v19[0] = GameData_210fd68;
+    v19_.v19[1] = &GameRoutine_1905b40;
+    v8 = v19_.v19;
+    v19_.v20 = v19_.v19;
+  LABEL_12:
+    v21_.v22 = v21_.v21;
+    (*(void (**)(_QWORD*, _BYTE*))(*v8 + 24LL))(v8, v21_.v21),
+        v9 = COERCE_AS(__typeof__(v9),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    goto LABEL_15;
+  }
+  *(_QWORD*)(a3 +
+             32) = (*(__int64 (**)(_BYTE*))(*(_QWORD*)v5 + 16LL))(v5),
+             v9 = COERCE_AS(__typeof__(v9),
+                            PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v7 = *(_QWORD*)(a2 + 32);
+  if (v7 == 0) {
+    goto LABEL_11;
+  }
+LABEL_6:
+  if (v7 == a2) {
+    v19_.v20 = v19_.v19;
+    (*(void (**)(__int64, _QWORD*))(*(_QWORD*)v7 + 24LL))(v7, v19_.v19),
+        v9 = COERCE_AS(__typeof__(v9),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v8 = v19_.v20;
+    if (v19_.v20 != nullptr) {
+    LABEL_8:
+      if (v8 != v19_.v19) {
+        v21_.v22 = (_BYTE*)(*(__int64 (**)(_QWORD*))(*v8 + 16LL))(v8),
+        v9 = COERCE_AS(__typeof__(v9),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        goto LABEL_15;
+      }
+      goto LABEL_12;
+    }
+  }
+  else {
+    v8 = (_QWORD*)(*(__int64 (**)(__int64))(*(_QWORD*)v7 + 16LL))(v7),
+    v9 = COERCE_AS(__typeof__(v9),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v19_.v20 = v8;
+    if (v8 != nullptr) {
+      goto LABEL_8;
+    }
+  }
+  v21_.v22 = nullptr;
+LABEL_15:
+  if (v4 != v21_.v21) {
+    v10 = v21_.v22;
+    v11 = *(_QWORD**)(a1 + 368);
+    if (v21_.v22 == v21_.v21) {
+      if (v11 == (_QWORD*)v4) {
+        (*(void (**)(_BYTE*, _QWORD*))(*(_QWORD*)v21_.v22 + 24LL))(v21_.v22,
+                                                                   v23),
+            v9 = COERCE_AS(__typeof__(v9),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        (*(void (**)(_BYTE*))(*(_QWORD*)v21_.v22 + 32LL))(v21_.v22),
+            v9 = COERCE_AS(__typeof__(v9),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        v14 = *(_QWORD*)(a1 + 368);
+        v21_.v22 = nullptr;
+        (*(void (**)(__int64, _BYTE*))(*(_QWORD*)v14 + 24LL))(v14, v21_.v21),
+            v9 = COERCE_AS(__typeof__(v9),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        (*(void (**)(_QWORD))(**(_QWORD**)(a1 + 368) + 32LL))(
+            *(_QWORD*)(a1 + 368)),
+            v9 = COERCE_AS(__typeof__(v9),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        v15 = v23[0];
+        *(_QWORD*)(a1 + 368) = 0;
+        v21_.v22 = v21_.v21;
+        (*(void (**)(_QWORD*, _BYTE*))(v15 + 24))(v23, v4),
+            v9 = COERCE_AS(__typeof__(v9),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        (*(void (**)(_QWORD*))(v23[0] + 32LL))(v23),
+            v9 = COERCE_AS(__typeof__(v9),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        *(_QWORD*)(a1 + 368) = v4;
+      }
+      else {
+        (*(void (**)(_BYTE*, _BYTE*))(*(_QWORD*)v21_.v22 + 24LL))(v21_.v22, v4),
+            v9 = COERCE_AS(__typeof__(v9),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        (*(void (**)(_BYTE*))(*(_QWORD*)v21_.v22 + 32LL))(v21_.v22),
+            v9 = COERCE_AS(__typeof__(v9),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        v12 = *(_BYTE**)(a1 + 368);
+        *(_QWORD*)(a1 + 368) = v4;
+        v21_.v22 = v12;
+      }
+    }
+    else if (v11 == (_QWORD*)v4) {
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD, _BYTE*))(
+          *v11 + 24LL))((void*)(v11), *(_QWORD*)(a1 + 368), v21_.v21),
+          v9 = COERCE_AS(__typeof__(v9),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+      (*(void (**)(_QWORD))(**(_QWORD**)(a1 + 368) + 32LL))(
+          *(_QWORD*)(a1 + 368)),
+          v9 = COERCE_AS(__typeof__(v9),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+      v13 = v21_.v22;
+      v21_.v22 = v21_.v21;
+      *(_QWORD*)(a1 + 368) = v13;
+    }
+    else {
+      v21_.v22 = *(_BYTE**)(a1 + 368);
+      *(_QWORD*)(a1 + 368) = v10;
+    }
+  }
+  if (v21_.v22 == v21_.v21) {
+    v16 = 32;
+  }
+  else {
+    if (v21_.v22 == nullptr) {
+      goto LABEL_28;
+    }
+    v16 = 40;
+  }
+  (*(void (**)(_BYTE*, __int64))(*(_QWORD*)v21_.v22 + v16))(v21_.v22, v9),
+      v9 = COERCE_AS(__typeof__(v9),
+                     PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+LABEL_28:
+  result = (__int64)v19_.v20;
+  if (v19_.v20 == v19_.v19) {
+    v18 = 32;
+  }
+  else {
+    if (v19_.v20 == nullptr) {
+      result;
+      return;
+    }
+    v18 = 40;
+  }
+  {
+    (*(__int64 (**)(_QWORD*, __int64))(*v19_.v20 + v18))(v19_.v20, v9),
+        v9 = COERCE_AS(__typeof__(v9),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    return;
+  }
 }
 
 __int64 TextTagProcessor_Unknown6(__int64 a1, _DWORD** a2)

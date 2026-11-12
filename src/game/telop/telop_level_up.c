@@ -76,6 +76,12 @@ __int64 std___1___shared_weak_count___release_weak_alt2(__int64) __asm__(
     "std___1___shared_weak_count___release_weak");
 __int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
     "std___1___shared_weak_count_lock");
+__int64 TelopStatusChange_17484f0(_QWORD*);
+extern __int64 (*game_telop_TelopLevelUp_vtable[])();
+extern __int64 fw_memory_g_heap_manager_ptr;
+void TelopReliance_1386f80(__int64);
+void nn_mem_StandardAllocator_Free(__int64, __int64);
+void TelopLevelUp_Destructor(__int64 a1);
 
 __int64 TelopLevelUp_Unknown34(__int64 a1)
 {
@@ -1072,6 +1078,67 @@ LABEL_40:
     (*(void (**)(__int64))(*(_QWORD*)a1 + 360LL))(a1);
   }
   return (*(__int64 (**)(__int64))(*(_QWORD*)a1 + 400LL))(a1);
+}
+
+void TelopLevelUp_Destructor(__int64 a1)
+{
+  _QWORD* v2;
+  _QWORD* v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+
+  *(_QWORD*)a1 = game_telop_TelopLevelUp_vtable;
+  v2 = (_QWORD*)(a1 + 1328);
+  v3 = *(_QWORD**)(a1 + 1360);
+  if (v3 == v2) {
+    v4 = 32;
+    goto LABEL_5;
+  }
+  if (v3 != nullptr) {
+    v4 = 40;
+  LABEL_5:
+    (*(void (**)(__int64))(*v3 + v4))((__int64)v3);
+  }
+  TelopStatusChange_17484f0((_QWORD*)(a1 + 928));
+  v5 = *(_QWORD*)(a1 + 920);
+  if (v5 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v5 + 8),
+                                  0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v5 + 16LL))(v5);
+    std___1___shared_weak_count___release_weak_alt2(v5);
+  }
+  v6 = *(_QWORD*)(a1 + 904);
+  if (v6 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v6 + 8),
+                                  0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v6 + 16LL))(v6);
+    std___1___shared_weak_count___release_weak_alt2(v6);
+  }
+  v7 = *(_QWORD*)(a1 + 888);
+  if (v7 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v7 + 8),
+                                  0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v7 + 16LL))(v7);
+    std___1___shared_weak_count___release_weak_alt2(v7);
+    if ((*(_BYTE*)(a1 + 840) & 1) == 0) {
+      goto LABEL_20;
+    }
+  }
+  else if ((*(_BYTE*)(a1 + 840) & 1) == 0) {
+    goto LABEL_20;
+  }
+  v8 = *(_QWORD*)(a1 + 856);
+  if (v8 != 0) {
+    v9 = 128;
+    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+      v9 = 56;
+    }
+    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v9,
+                                  v8);
+  }
+LABEL_20:
+  TelopReliance_1386f80(a1);
 }
 
 __attribute__((swiftcall)) void TelopLevelUp_1748710(PSEUDO_X8 x8_, __int64 a1)

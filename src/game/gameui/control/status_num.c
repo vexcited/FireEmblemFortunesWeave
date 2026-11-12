@@ -61,6 +61,20 @@ __int64 StatusNum_1890620(__int64 a1, int a2, int a3, int a4, char a5, int a6);
 __int64 StatusNum_1890080_alt1(_QWORD) __asm__("StatusNum_1890080");
 extern _UNKNOWN GameData_1abdf8e;
 __int64 StatusNum_1890ba0(__int64 a1, int* a2, char a3, char a4, char a5);
+_QWORD* Element_1886290_alt2(__int64, const char**) __asm__("Element_1886290");
+__int64* nn_ui2d_Pane_GetRuntimeTypeInfoStatic_alt2() __asm__(
+    "nn_ui2d_Pane_GetRuntimeTypeInfoStatic");
+__int64 GameHr_1562680(__int64 result, const char*, float);
+__int64 LayoutAccessor_1562cf0(__int64 result, const char*);
+__int64 Pane_58f8a0_alt1(__int64) __asm__("Pane_58f8a0");
+__int64 __dynamic_cast(_QWORD, _QWORD, _QWORD, _QWORD);
+__int64 ui_LayoutAccessor_FindPane(__int64*, __int64);
+extern __int64* GameData_212d670[3];
+extern __int64* GameData_212d678[2];
+int __cxa_guard_acquire_alt2(__int64) __asm__("__cxa_guard_acquire");
+void __cxa_guard_release_alt1(__int64) __asm__("__cxa_guard_release");
+_QWORD* StatusNum_188fdc0(__int64 a1, int a2, int a3, int a4, int a5,
+                          unsigned __int8 a6, int a7, char a8, int a9);
 
 __attribute__((swiftcall)) void StatusNum_188fab0(PSEUDO_X8 x8_, __int64 a1,
                                                   __int64 a2, __int64 a3)
@@ -156,6 +170,153 @@ __attribute__((swiftcall)) void StatusNum_188fab0(PSEUDO_X8 x8_, __int64 a1,
     result;
     return;
   }
+}
+
+_QWORD* StatusNum_188fdc0(__int64 a1, int a2, int a3, int a4, int a5,
+                          unsigned __int8 a6, int a7, char a8, int a9)
+{
+
+#pragma clang fp contract(off)
+  char v9;
+  int v15;
+  int v16;
+  int v17;
+  _QWORD* v18;
+  int v19;
+  __int64* v20;
+  int v22;
+  __int64 v23;
+  int v24;
+  int v25;
+  __int64 v26;
+  int v27;
+  const char* v28;
+  __int64 v29;
+  __int64 v30;
+  float v31;
+  char v32;
+  float v33;
+  __int64 v34;
+  _QWORD* result;
+  int v36;
+  char v38;
+  const char* v40[2];
+
+  v9 = a2;
+  v15 = (a3 != a4) & a6;
+  v16 = a2 & ((a3 > a4) ^ v15);
+  if ((a2 & 1) != 0) {
+    v17 = (a3 < a4) ^ v15;
+  }
+  else {
+    v17 = 0;
+  }
+  v40[0] = "Text";
+  v40[1] = (_BYTE*)((_UNKNOWN*)0x4LL);
+  v18 = Element_1886290_alt2(a1, v40);
+  if ((atomic_load_explicit((atomic_uchar* volatile)GameData_2130ea8,
+                            memory_order_acquire) &
+       1) == 0 &&
+      __cxa_guard_acquire_alt2((__int64)GameData_2130ea8) != 0) {
+    *GameData_2130ea0 = (__int64)nn_ui2d_Pane_GetRuntimeTypeInfoStatic_alt2();
+    __cxa_guard_release_alt1((__int64)GameData_2130ea8);
+  }
+  v19 = a7 | v16;
+  if (v18 != nullptr) {
+    v20 = (__int64*)(*(__int64 (**)(_QWORD*))(*v18 + 16LL))(v18);
+    if (v20 == GameData_2130ea0) {
+      goto LABEL_15;
+    }
+    do {
+      v20 = (__int64*)*v20;
+    } while (v20 != GameData_2130ea0 && v20 != nullptr);
+    if (v20 != nullptr) {
+    LABEL_15:
+      if ((v9 & 1) != 0 && a3 != a4 || (a7 & 1) != 0) {
+        v24 = *(_DWORD*)((char*)&(*(__int64 (*)[2])0x28LL)[1] +
+                         (_QWORD)GameData_212da30 + 4);
+        v25 = *(_DWORD*)((char*)&(*(__int64 (*)[2])0x28LL)[2] +
+                         (_QWORD)GameData_212da30);
+        v26 = Pane_58f8a0_alt1((__int64)v18);
+        if (v26 != 0) {
+          if ((v19 & 1) != 0) {
+            v27 = v24;
+          }
+          else {
+            v27 = v25;
+          }
+          *(_DWORD*)(v26 + 12) = v27;
+        }
+      }
+      else {
+        v22 = *(int*)((char*)((int*)0x24LL) + (_QWORD)GameData_212da30);
+        v23 = Pane_58f8a0_alt1((__int64)v18);
+        if (v23 != 0) {
+          *(_DWORD*)(v23 + 12) = v22;
+        }
+      }
+    }
+  }
+  if ((a8 & 1) != 0 || ((v19 | v17) & 1) == 0) {
+    GameHr_1562680(a1 + 88, "UpDownOff", 0x1.0000000000000p+0f);
+    v34 =
+        ui_LayoutAccessor_FindPane((__int64*)(a1 + 88), (__int64)"IconUpDown");
+    if (v34 != 0) {
+      v30 = __dynamic_cast(v34, GameData_212d670[0], GameData_212d678[0], 0);
+      if (v30 != 0) {
+        v32 = *(_BYTE*)(v30 + 88) & 0xFE;
+      LABEL_40:
+        *(_BYTE*)(v30 + 88) = v32;
+      }
+    }
+  }
+  else {
+    if ((v19 & 1) != 0) {
+      v28 = "Up";
+    }
+    else {
+      v28 = "Down";
+    }
+    LayoutAccessor_1562cf0(a1 + 88, v28);
+    v29 =
+        ui_LayoutAccessor_FindPane((__int64*)(a1 + 88), (__int64)"IconUpDown");
+    if (v29 != 0) {
+      v30 = __dynamic_cast(v29, GameData_212d670[0], GameData_212d678[0], 0);
+      if (v30 != 0) {
+        v31 = 0x1.6800000000000p+7f;
+        if ((v19 & 1) != 0) {
+          v31 = 0x0.0p+0f;
+        }
+        v32 = *(_BYTE*)(v30 + 88) | 0x11;
+        v33 = v31 + 0x1.6800000000000p+7f;
+        if ((float)(v31 + 0x1.6800000000000p+7f) >= 0x1.6800000000000p+8f) {
+          v33 = v33 + -0x1.6800000000000p+8f;
+        }
+        if (v15 != 0) {
+          v31 = v33;
+        }
+        *(float*)(v30 + 68) = v31;
+        goto LABEL_40;
+      }
+    }
+  }
+  v40[0] = "Max";
+  v40[1] = (_BYTE*)(((_UNKNOWN*)0x0LL) + 3);
+  result = Element_1886290_alt2(a1, v40);
+  if (result != nullptr) {
+    v36 = a9;
+    if (a9 < 0) {
+      v36 = a4;
+    }
+    if (a5 <= 0 || v36 < a5) {
+      v38 = result[11] & 0xFE;
+    }
+    else {
+      v38 = (result[11] & 0xFE) + 1;
+    }
+    *((_BYTE*)result + 88) = v38;
+  }
+  return result;
 }
 
 _QWORD* StatusNum_1890080(__int64 a1)

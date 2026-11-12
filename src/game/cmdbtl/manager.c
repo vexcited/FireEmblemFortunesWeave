@@ -230,6 +230,11 @@ __int64 MindBtlInfo_edb660_alt1(__int64) __asm__("MindBtlInfo_edb660");
 __int64 std___1___shared_weak_count___release_weak_alt3(__int64) __asm__(
     "std___1___shared_weak_count___release_weak");
 void game_cmdbtl_MindBtlInfo_CalcCmdBtlInfo(__int64, __int64, int);
+__int64 CmdbtlPartyNatives_e9ba00_alt1(
+    __int64, __int64, unsigned int, unsigned __int8, __int64*,
+    long double) __asm__("CmdbtlPartyNatives_e9ba00");
+extern __int64 (*GameData_1fed138[])();
+__int64 game_cmdbtl_Manager_OnEndEventManager(__int64 a1, long double a2);
 
 __int64 Manager_e63720()
 {
@@ -257,6 +262,74 @@ __int64 Manager_e63720()
   }
   *(_BYTE*)(*GameData_212f4e0[0] + 9) = 1;
   return result;
+}
+
+__int64 game_cmdbtl_Manager_OnEndEventManager(__int64 a1, long double a2)
+{
+
+#pragma clang fp contract(off)
+  __int64* v3;
+  __int64 v4;
+  unsigned int v5;
+  char v6;
+  char v7;
+  _QWORD* v8;
+  __int64 result;
+  __int64 v10;
+  struct {
+    __int64 v11;
+    __int64 v12;
+  } v11_;
+  struct {
+    __int64 v13;
+    __int64 v14;
+  } v13_;
+  struct {
+    __int64 (**v15)();
+    char v16;
+    char gap41_[23];
+    __int64 (***v17)();
+  } v15_;
+
+  v3 = GameData_212ea58;
+  v4 = *GameData_212ea58;
+  v5 = *(_DWORD*)(*GameData_212ea58 + 608);
+  if (v5 != 0) {
+    v11_.v11 = 0;
+    v11_.v12 = 0;
+    LODWORD(a2) = 1053609165;
+    CmdbtlPartyNatives_e9ba00_alt1(v4, a1, v5, 0, &v11_.v11, a2);
+    if (v11_.v12 != 0) {
+      std___1___shared_weak_count___release_weak_alt3(v11_.v12);
+    }
+    v6 = 1;
+  }
+  else {
+    *(_QWORD*)&a2 = 0;
+    v13_.v13 = 0;
+    v13_.v14 = 0;
+    v7 = CmdbtlPartyNatives_e9ba00_alt1(v4, a1, 0, 0, &v13_.v13, a2);
+    if (v13_.v14 != 0) {
+      std___1___shared_weak_count___release_weak_alt3(v13_.v14);
+    }
+    v6 = v7 ^ 1;
+  }
+  v8 = (_QWORD*)*v3;
+  v15_.v15 = GameData_1fed138;
+  v15_.v16 = v6 & 1;
+  v15_.v17 = &v15_.v15;
+  CmdbtlPartyNatives_e9a800_alt1(v8, (__int64)&v15_.v15);
+  result = (__int64)v15_.v17;
+  if (v15_.v17 == &v15_.v15) {
+    v10 = 4;
+  }
+  else {
+    if (v15_.v17 == nullptr) {
+      return result;
+    }
+    v10 = 5;
+  }
+  return ((__int64 (*)(__int64))(*v15_.v17)[v10])((__int64)v15_.v17);
 }
 
 void game_cmdbtl_Manager_Manager(__int64 a1)

@@ -40,6 +40,12 @@ void TutorialInfo_162b900_alt1(__int64,
                                __int64) __asm__("TutorialInfo_162b900");
 void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
+__int64 game_159e540(__int64);
+__int64 std___1___shared_weak_count___release_weak(__int64);
+__int64 MultiMenu_1788420(_QWORD* a1, char a2);
+__int64 MultiMenu_1788530(_QWORD* a1, char a2);
+__int64 MultiMenu_1788690(_QWORD* a1, char a2);
+__int64 MultiMenu_17887a0(_QWORD* a1, char a2);
 
 __int64 MultiMenu_1788180(_QWORD* a1)
 {
@@ -164,6 +170,142 @@ __int64 MultiMenu_17883f0(__int64 a1)
                             304) +
                  1064LL) == 0,
       1);
+}
+
+__int64 MultiMenu_1788420(_QWORD* a1, char a2)
+{
+  __int64 v5;
+  struct {
+    __int64 v6;
+    __int64 v7;
+  } v6_;
+
+  if (((*(__int64 (**)(_QWORD*))(*a1 + 1176LL))(a1) & 1) != 0) {
+    (*(void (**)(_QWORD*))(*a1 + 1192LL))(a1);
+    (*(void (**)(_QWORD*))(a1[22] + 144LL))(a1 + 22);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*a1 + 368LL))(
+        (void*)(&v6_.v6), a1);
+    game_159e540((__int64)&v6_.v6);
+    if (v6_.v7 != 0) {
+      std___1___shared_weak_count___release_weak(v6_.v7);
+    }
+    (*(void (**)(_QWORD*))(*a1 + 1168LL))(a1);
+    return 0;
+  }
+  else if ((*(unsigned int (**)(_QWORD*))a1[22])(a1 + 22) == 0 &&
+           (v5 = *(_QWORD*)(a1[23] + 336LL)) != 0 &&
+           ((*(__int64 (**)(__int64, _QWORD))(*(_QWORD*)v5 + 320LL))(v5,
+                                                                     a2 & 1) &
+            1) != 0) {
+    return 13;
+  }
+  else {
+    return (*(__int64 (**)(_QWORD*, __int64, _QWORD))(a1[22] + 96LL))(
+        a1 + 22, 0xFFFFFFFFLL, a2 & 1);
+  }
+}
+
+__int64 MultiMenu_1788530(_QWORD* a1, char a2)
+{
+  _QWORD* v2;
+  __int64 v6;
+  struct {
+    __int64 v7;
+    __int64 v8;
+  } v7_;
+
+  v2 = a1 - 22;
+  if (((*(__int64 (**)(_QWORD*))(*(a1 - 22) + 1176LL))(a1 - 22) & 1) != 0) {
+    (*(void (**)(_QWORD*))(*(a1 - 22) + 1192LL))(v2);
+    (*(void (**)(_QWORD*))(*a1 + 144LL))(a1);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(
+        *(a1 - 22) + 368LL))((void*)(&v7_.v7), v2);
+    game_159e540((__int64)&v7_.v7);
+    if (v7_.v8 != 0) {
+      std___1___shared_weak_count___release_weak(v7_.v8);
+    }
+    (*(void (**)(_QWORD*))(*v2 + 1168LL))(v2);
+    return 0;
+  }
+  else if ((*(unsigned int (**)(_QWORD*))*a1)(a1) == 0 &&
+           (v6 = *(_QWORD*)(a1[1] + 336LL)) != 0 &&
+           ((*(__int64 (**)(__int64, _QWORD))(*(_QWORD*)v6 + 320LL))(v6,
+                                                                     a2 & 1) &
+            1) != 0) {
+    return 13;
+  }
+  else {
+    return (*(__int64 (**)(_QWORD*, __int64, _QWORD))(*a1 + 96LL))(
+        a1, 0xFFFFFFFFLL, a2 & 1);
+  }
+}
+
+__int64 MultiMenu_1788690(_QWORD* a1, char a2)
+{
+  __int64 v5;
+  struct {
+    __int64 v6;
+    __int64 v7;
+  } v6_;
+
+  if (((*(__int64 (**)(_QWORD*))(*a1 + 1184LL))(a1) & 1) != 0) {
+    (*(void (**)(_QWORD*))(*a1 + 1200LL))(a1);
+    (*(void (**)(_QWORD*))(a1[22] + 144LL))(a1 + 22);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(*a1 + 376LL))(
+        (void*)(&v6_.v6), a1);
+    game_159e540((__int64)&v6_.v6);
+    if (v6_.v7 != 0) {
+      std___1___shared_weak_count___release_weak(v6_.v7);
+    }
+    (*(void (**)(_QWORD*))(*a1 + 1168LL))(a1);
+    return 0;
+  }
+  else if ((*(unsigned int (**)(_QWORD*))a1[22])(a1 + 22) == 0 &&
+           (v5 = *(_QWORD*)(a1[23] + 336LL)) != 0 &&
+           ((*(__int64 (**)(__int64, _QWORD))(*(_QWORD*)v5 + 312LL))(v5,
+                                                                     a2 & 1) &
+            1) != 0) {
+    return 13;
+  }
+  else {
+    return (*(__int64 (**)(_QWORD*, __int64, _QWORD))(a1[22] + 96LL))(
+        a1 + 22, 1, a2 & 1);
+  }
+}
+
+__int64 MultiMenu_17887a0(_QWORD* a1, char a2)
+{
+  _QWORD* v2;
+  __int64 v6;
+  struct {
+    __int64 v7;
+    __int64 v8;
+  } v7_;
+
+  v2 = a1 - 22;
+  if (((*(__int64 (**)(_QWORD*))(*(a1 - 22) + 1184LL))(a1 - 22) & 1) != 0) {
+    (*(void (**)(_QWORD*))(*(a1 - 22) + 1200LL))(v2);
+    (*(void (**)(_QWORD*))(*a1 + 144LL))(a1);
+    (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD*))(
+        *(a1 - 22) + 376LL))((void*)(&v7_.v7), v2);
+    game_159e540((__int64)&v7_.v7);
+    if (v7_.v8 != 0) {
+      std___1___shared_weak_count___release_weak(v7_.v8);
+    }
+    (*(void (**)(_QWORD*))(*v2 + 1168LL))(v2);
+    return 0;
+  }
+  else if ((*(unsigned int (**)(_QWORD*))*a1)(a1) == 0 &&
+           (v6 = *(_QWORD*)(a1[1] + 336LL)) != 0 &&
+           ((*(__int64 (**)(__int64, _QWORD))(*(_QWORD*)v6 + 312LL))(v6,
+                                                                     a2 & 1) &
+            1) != 0) {
+    return 13;
+  }
+  else {
+    return (*(__int64 (**)(_QWORD*, __int64, _QWORD))(*a1 + 96LL))(a1, 1,
+                                                                   a2 & 1);
+  }
 }
 
 __int64 MultiMenu_1788900(_QWORD* a1, char a2, char a3)

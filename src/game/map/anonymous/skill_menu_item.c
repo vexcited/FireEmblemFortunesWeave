@@ -27,6 +27,98 @@ __int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
 __int64 ui_LayoutAccessor_FindTextBox_alt1(__int64*, __int64) __asm__(
     "ui_LayoutAccessor_FindTextBox");
 void Util_157e3a0(__int64*, unsigned int*, unsigned int, __int64);
+__int64* game_UnitPool_Get(_BYTE*);
+__int64 GameRoutine_77aca0(__int64, __int16, __int16);
+__int64 GameRoutine_f09ca0(_QWORD*, __int64);
+__int64 VTarget_779120(__int64);
+extern __int64* GameData_212c880[5];
+extern __int64 GameData_21cd0e8;
+extern __int64 GameData_21cd108;
+extern __int64 GameData_21cd120;
+extern __int64 fw_memory_g_heap_manager_ptr;
+void nn_mem_StandardAllocator_Free(__int64, __int64);
+void SkillMenuItem_OnSelect(__int64 a1);
+
+void SkillMenuItem_OnSelect(__int64 a1)
+{
+  __int64 v2;
+  unsigned int v3;
+  __int64* v4;
+  char v5;
+  __int64 v6;
+  __int64 v7;
+  struct {
+    __int64* v8;
+    __int64 v9;
+    char v10;
+    char gap17_[7];
+    __int64 v11;
+    __int64 v12;
+    __int64 v13;
+    char v14;
+    char v15;
+    char gap50_[2];
+    int v16;
+    char v17;
+  } v8_;
+  struct {
+    char gap56_[1];
+    char v18[14];
+    char gap71_[1];
+    __int64 v19;
+  } v18_;
+
+  v2 = 512;
+  if (*(_BYTE*)(a1 + 79) != 0) {
+    v2 = 520;
+  }
+  (*(void (**)(__int64))(*(_QWORD*)a1 + v2))((__int64)a1);
+  if (((*(__int64 (**)(__int64))(*(_QWORD*)a1 + 568LL))(a1) & 1) != 0 &&
+      (GameRoutine_77aca0(GameData_21cd0e8 + 8,
+                          *(_DWORD*)(GameData_21cd108 + 12),
+                          *(_DWORD*)(GameData_21cd108 + 16)),
+       v3 = VTarget_779120(GameData_21cd0e8 + 8),
+       *(_BYTE*)(GameData_21cd0e8 + 16) != 0)) {
+    v4 = game_UnitPool_Get((_BYTE*)(GameData_21cd0e8 + 16));
+    v5 = 1;
+    v6 = 0;
+    if ((v3 & 0x80000000) == 0 && v4 != nullptr) {
+      v5 = 0;
+      v6 = *(__int64*)((char*)&v4[v3 + 103] + 4);
+    }
+  }
+  else {
+    v6 = 0;
+    v5 = 1;
+  }
+  if (GameData_21cd120 != 0) {
+    LOBYTE(v8_.v9) = 0;
+    v8_.v10 = 0;
+    v8_.v12 = 0;
+    v8_.v13 = 0;
+    v8_.v16 = 0;
+    v8_.v15 = 1;
+    v8_.v8 = MapUnitCommandSkillMenu_15bdea0_alt1();
+    if ((v5 & 1) == 0) {
+      v8_.v9 = v6;
+      v8_.v10 = 1;
+    }
+    v8_.v11 = *(_QWORD*)(*(_QWORD*)(*GameData_212c880[0] + 64) +
+                         8LL * (*(_DWORD*)(a1 + 84) & 0xFFF));
+    v8_.v14 = *(_BYTE*)(GameData_21cd108 + 20);
+    v8_.v17 = 26;
+    strcpy(v18_.v18, "SkillMenuItem");
+    GameRoutine_f09ca0((_QWORD*)GameData_21cd120, (__int64)&v8_.v8);
+    if ((v8_.v17 & 1) != 0 && v18_.v19 != 0) {
+      v7 = 128;
+      if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+        v7 = 56;
+      }
+      nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v7,
+                                    v18_.v19);
+    }
+  }
+}
 
 __int64 SkillMenuItem_15bee60(__int64 a1)
 {

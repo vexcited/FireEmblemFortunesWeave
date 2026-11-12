@@ -27,6 +27,13 @@ __int64 CinematicZoom_10e0fc0(__int64 result);
 float GameRoutine_618640_alt1(int, float result, float, float,
                               float) __asm__("GameRoutine_618640");
 void CinematicZoom_10e1030(int a1);
+__int64 GameRoutine_111ef70(__int64, __int64, ...);
+__int64 GameRoutine_65f9a0(_QWORD*, unsigned int*, unsigned int);
+__int64 game_6616e0(float*, unsigned int*);
+__int64 game_combat_10e0730(__int64, __int64);
+const char* game_HashString32(const char* result);
+__int64 game_combat_CinematicZoom_CinematicZoom_lambda0_Invoke(__int64 a1,
+                                                               __int64 a2);
 
 __int64 game_combat_CinematicZoom_CinematicZoom(__int64 a1)
 {
@@ -934,6 +941,194 @@ LABEL_144:
       }
     }
   }
+}
+
+__int64 game_combat_CinematicZoom_CinematicZoom_lambda0_Invoke(__int64 a1,
+                                                               __int64 a2)
+{
+
+#pragma clang fp contract(off)
+  __int64 v2;
+  __int64 v3;
+  unsigned int v5;
+  float* v6;
+  unsigned int v7;
+  __int64 v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
+  __int64 v14;
+  __int64 v15;
+  __int64 v16;
+  __int64 v17;
+  __int64 v18;
+  __int64 v19;
+  __int64 v20;
+  __int64 v21;
+  __int64 v22;
+  __int64 v23;
+  __int64 v24;
+  unsigned int v26;
+  unsigned int v27[2];
+
+  v2 = *(_QWORD*)(a1 + 8);
+  v3 = *(_QWORD*)(a2 + 8);
+  if (*(_BYTE*)(a2 + 64) == 1) {
+    v26 = (unsigned int)game_HashString32("CineZoom");
+    GameRoutine_65f9a0((_QWORD*)v3, &v26, 0);
+  }
+  else {
+    v5 = (unsigned int)game_HashString32("CineZoom");
+    v6 = *(float**)(v3 + 120);
+    v7 = *(_DWORD*)(v3 + 20);
+    v27[0] = v5;
+    v27[1] = v7;
+    game_6616e0(v6, v27);
+    v8 = *(int*)(v3 + 20);
+    *(_DWORD*)(v3 + 20) = v8 + 1;
+    *(_BYTE*)(*(_QWORD*)(v3 + 8) + v8) = 15;
+    v9 = *(int*)(v3 + 20);
+    *(_DWORD*)(v3 + 20) = v9 + 1;
+    *(_BYTE*)(*(_QWORD*)(v3 + 8) + v9) = 0;
+  }
+  GameRoutine_111ef70(a2, (__int64)"%s[%d]", "CineZoom", 0);
+  game_combat_10e0730(v2 + 8, a2);
+  if (*(_BYTE*)(a2 + 64) != 0) {
+    v10 = 24;
+  }
+  else {
+    v10 = 8;
+  }
+  (*(void (**)(void*))(**(_QWORD**)(a2 + 8) + v10))((void*)*(_QWORD**)(a2 + 8));
+  GameRoutine_111ef70(a2, (__int64)"%s[%d]", "CineZoom", 1);
+  game_combat_10e0730(v2 + 72, a2);
+  if (*(_BYTE*)(a2 + 64) != 0) {
+    v11 = 24;
+  }
+  else {
+    v11 = 8;
+  }
+  (*(void (**)(void*))(**(_QWORD**)(a2 + 8) + v11))((void*)*(_QWORD**)(a2 + 8));
+  GameRoutine_111ef70(a2, (__int64)"%s[%d]", "CineZoom", 2);
+  game_combat_10e0730(v2 + 136, a2);
+  if (*(_BYTE*)(a2 + 64) != 0) {
+    v12 = 24;
+  }
+  else {
+    v12 = 8;
+  }
+  (*(void (**)(void*))(**(_QWORD**)(a2 + 8) + v12))((void*)*(_QWORD**)(a2 + 8));
+  GameRoutine_111ef70(a2, (__int64)"%s[%d]", "CineZoom", 3);
+  game_combat_10e0730(v2 + 200, a2);
+  if (*(_BYTE*)(a2 + 64) != 0) {
+    v13 = 24;
+  }
+  else {
+    v13 = 8;
+  }
+  (*(void (**)(void*))(**(_QWORD**)(a2 + 8) + v13))((void*)*(_QWORD**)(a2 + 8));
+  GameRoutine_111ef70(a2, (__int64)"%s[%d]", "CineZoom", 4);
+  game_combat_10e0730(v2 + 264, a2);
+  if (*(_BYTE*)(a2 + 64) != 0) {
+    v14 = 24;
+  }
+  else {
+    v14 = 8;
+  }
+  (*(void (**)(void*))(**(_QWORD**)(a2 + 8) + v14))((void*)*(_QWORD**)(a2 + 8));
+  GameRoutine_111ef70(a2, (__int64)"%s[%d]", "CineZoom", 5);
+  game_combat_10e0730(v2 + 328, a2);
+  if (*(_BYTE*)(a2 + 64) != 0) {
+    v15 = 24;
+  }
+  else {
+    v15 = 8;
+  }
+  (*(void (**)(void*))(**(_QWORD**)(a2 + 8) + v15))((void*)*(_QWORD**)(a2 + 8));
+  GameRoutine_111ef70(a2, (__int64)"%s[%d]", "CineZoom", 6);
+  game_combat_10e0730(v2 + 392, a2);
+  if (*(_BYTE*)(a2 + 64) != 0) {
+    v16 = 24;
+  }
+  else {
+    v16 = 8;
+  }
+  (*(void (**)(void*))(**(_QWORD**)(a2 + 8) + v16))((void*)*(_QWORD**)(a2 + 8));
+  GameRoutine_111ef70(a2, (__int64)"%s[%d]", "CineZoom", 7);
+  game_combat_10e0730(v2 + 456, a2);
+  if (*(_BYTE*)(a2 + 64) != 0) {
+    v17 = 24;
+  }
+  else {
+    v17 = 8;
+  }
+  (*(void (**)(void*))(**(_QWORD**)(a2 + 8) + v17))((void*)*(_QWORD**)(a2 + 8));
+  GameRoutine_111ef70(a2, (__int64)"%s[%d]", "CineZoom", 8);
+  game_combat_10e0730(v2 + 520, a2);
+  if (*(_BYTE*)(a2 + 64) != 0) {
+    v18 = 24;
+  }
+  else {
+    v18 = 8;
+  }
+  (*(void (**)(void*))(**(_QWORD**)(a2 + 8) + v18))((void*)*(_QWORD**)(a2 + 8));
+  GameRoutine_111ef70(a2, (__int64)"%s[%d]", "CineZoom", 9);
+  game_combat_10e0730(v2 + 584, a2);
+  if (*(_BYTE*)(a2 + 64) != 0) {
+    v19 = 24;
+  }
+  else {
+    v19 = 8;
+  }
+  (*(void (**)(void*))(**(_QWORD**)(a2 + 8) + v19))((void*)*(_QWORD**)(a2 + 8));
+  GameRoutine_111ef70(a2, (__int64)"%s[%d]", "CineZoom", 10);
+  game_combat_10e0730(v2 + 648, a2);
+  if (*(_BYTE*)(a2 + 64) != 0) {
+    v20 = 24;
+  }
+  else {
+    v20 = 8;
+  }
+  (*(void (**)(void*))(**(_QWORD**)(a2 + 8) + v20))((void*)*(_QWORD**)(a2 + 8));
+  GameRoutine_111ef70(a2, (__int64)"%s[%d]", "CineZoom", 11);
+  game_combat_10e0730(v2 + 712, a2);
+  if (*(_BYTE*)(a2 + 64) != 0) {
+    v21 = 24;
+  }
+  else {
+    v21 = 8;
+  }
+  (*(void (**)(void*))(**(_QWORD**)(a2 + 8) + v21))((void*)*(_QWORD**)(a2 + 8));
+  GameRoutine_111ef70(a2, (__int64)"%s[%d]", "CineZoom", 12);
+  game_combat_10e0730(v2 + 776, a2);
+  if (*(_BYTE*)(a2 + 64) != 0) {
+    v22 = 24;
+  }
+  else {
+    v22 = 8;
+  }
+  (*(void (**)(void*))(**(_QWORD**)(a2 + 8) + v22))((void*)*(_QWORD**)(a2 + 8));
+  GameRoutine_111ef70(a2, (__int64)"%s[%d]", "CineZoom", 13);
+  game_combat_10e0730(v2 + 840, a2);
+  if (*(_BYTE*)(a2 + 64) != 0) {
+    v23 = 24;
+  }
+  else {
+    v23 = 8;
+  }
+  (*(void (**)(void*))(**(_QWORD**)(a2 + 8) + v23))((void*)*(_QWORD**)(a2 + 8));
+  GameRoutine_111ef70(a2, (__int64)"%s[%d]", "CineZoom", 14);
+  game_combat_10e0730(v2 + 904, a2);
+  if (*(_BYTE*)(a2 + 64) != 0) {
+    v24 = 24;
+  }
+  else {
+    v24 = 8;
+  }
+  return (*(__int64 (**)(void*))(**(_QWORD**)(a2 + 8) + v24))(
+      (void*)*(_QWORD**)(a2 + 8));
 }
 
 #pragma GCC visibility pop

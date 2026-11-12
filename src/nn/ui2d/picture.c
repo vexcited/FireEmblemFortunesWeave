@@ -88,6 +88,9 @@ void GameRoutine_596660_alt1(__int64, __int64, char, char, int, float*, int,
                              float) __asm__("GameRoutine_596660");
 __int64 Picture_596c30(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
                        _DWORD* a5);
+__int16* GameRoutine_599ec0(__int16* result, __int64);
+unsigned __int8* DynamicRenderingTexture_575ee0(unsigned __int8* result, int);
+unsigned __int8* Picture_Unknown37(unsigned __int8* result, __int64 a2);
 
 __int64 Picture_Destructor(_QWORD* a1)
 {
@@ -153,6 +156,68 @@ __int64 Picture_Unknown11(_QWORD* a1, int a2)
   else {
     return a1[27];
   }
+}
+
+unsigned __int8* Picture_Unknown37(unsigned __int8* result, __int64 a2)
+{
+
+#pragma clang fp contract(off)
+  __int64 v2;
+  int v3;
+  unsigned int v4;
+  __int64 v6;
+  unsigned __int8* v7;
+  unsigned __int64 v8;
+  __int64 v9;
+  unsigned int v10;
+  unsigned int v11;
+  __int64 var4;
+
+  v2 = *((_QWORD*)result + 27);
+  v3 = *(_DWORD*)(v2 + 20);
+  v4 = *(unsigned __int8*)(v2 + 16);
+  if ((v3 & 3u) < (v4 & 3) &&
+      (((unsigned __int8)*(_DWORD*)(v2 + 20) >> 4) & 3u) < ((v4 >> 4) & 3)) {
+    v6 = 16LL * (v3 & 3);
+    v7 = result;
+    GameRoutine_599ec0((__int16*)(*(_QWORD*)(v2 + 24) + v6), a2);
+    *(_DWORD*)(v2 + 20) = *(_DWORD*)(v2 + 20) & 0xFFFFFFFC |
+                          ((unsigned __int8)*(_DWORD*)(v2 + 20) + 1) & 3;
+    *(_DWORD*)(*((_QWORD*)v7 + 27) + 20LL) =
+        *(_DWORD*)(*((_QWORD*)v7 + 27) + 20LL) & 0xFFFFFFCF |
+        (16 * (*(_DWORD*)(*((_QWORD*)v7 + 27) + 20LL) & 3));
+    v8 =
+        *(_QWORD*)(*((_QWORD*)v7 + 27) + 24LL) + v6 +
+        16 * (*(_DWORD*)(*((_QWORD*)v7 + 27) + 16LL) & 3LL) +
+        20 * (((unsigned __int64)*(unsigned int*)(*((_QWORD*)v7 + 27) + 16LL) >>
+               2) &
+              3);
+    *(_DWORD*)v8 = 0;
+    *(_QWORD*)(v8 + 8) = 0;
+    result = DynamicRenderingTexture_575ee0(
+        v7 + 240, *(_DWORD*)(*((_QWORD*)v7 + 27) + 20LL) & 3);
+    if (*((float*)v7 + 20) == 0x0.0p+0f && *((float*)v7 + 21) == 0x0.0p+0f) {
+      v9 = *((_QWORD*)v7 + 27);
+      if ((*(_DWORD*)(v9 + 20) & 3) == 1) {
+        result = *(unsigned __int8**)(*(_QWORD*)(v9 + 24) + 8LL);
+        if (result != nullptr) {
+          result = (unsigned __int8*)X8CALL_X0(
+              _QWORD*,
+              (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, void*))(
+                  *(_QWORD*)result + 32LL))((void*)&var4, (void*)result));
+          LOWORD(v11) = WORD1(var4);
+          LOWORD(v10) = var4;
+          *((float*)v7 + 20) = (float)v10;
+          *((float*)v7 + 21) = (float)v11;
+        }
+        else {
+          *((_QWORD*)v7 + 10) = 0;
+        }
+        v7[88] |= 0x10u;
+      }
+    }
+  }
+  return result;
 }
 
 __int64 Picture_Unknown4(__int64 a1, int a2)

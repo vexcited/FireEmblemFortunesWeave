@@ -71,6 +71,7 @@ snd_coef_BiQuadCoef_process_alt1(__int64, unsigned int,
                                  int) __asm__("snd_coef_BiQuadCoef_process");
 float WavePlayer_184a90(__int64 a1, __int64 a2, int a3, float result,
                         __int64 a5, int a6, __int64 a7, float* a8);
+__int64 WavePlayer_186740(__int64 a1, int a2, int* a3, _DWORD* a4);
 
 __int64 WavePlayer_17bc10(__int64 a1)
 {
@@ -875,6 +876,35 @@ float WavePlayer_184f70(float result, __int64 a2, __int64 a3)
         }
       }
     }
+  }
+  return result;
+}
+
+__int64 WavePlayer_186740(__int64 a1, int a2, int* a3, _DWORD* a4)
+{
+  int v7;
+  __int64 result;
+  int v9;
+  int v10;
+
+  v7 = a2 / (signed __int32)*(_DWORD*)(a1 + 10716);
+  *a3 = v7;
+  *a4 = a2 - *(_DWORD*)(a1 + 10716) * v7;
+  result = WaveReader_188ee0_alt1(*(_QWORD*)(a1 + 5664));
+  if ((result & 1) != 0) {
+    v9 = *a3;
+    v10 = *(_DWORD*)(a1 + 10736);
+    if (*a3 > v10) {
+      do {
+        v9 += ~v10 + *(_DWORD*)(a1 + 10748);
+        *a3 = v9;
+        v10 = *(_DWORD*)(a1 + 10736);
+      } while (v9 > v10);
+    }
+  }
+  else if (*a3 > (signed __int32)*(_DWORD*)(a1 + 10736)) {
+    *a3 = 0;
+    *a4 = 0;
   }
   return result;
 }

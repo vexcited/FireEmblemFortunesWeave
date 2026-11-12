@@ -22,6 +22,11 @@ __int64 game_cmdbtl_anonymous_ProcSystemUnitSelectMenu_PlusCall_closure_Invoke(
     __int64 a1);
 bool game_cmdbtl_anonymous_ProcSystemUnitSelectMenu_CreateBind_closure_Invoke(
     __int64 a1, __int64 a2);
+_QWORD* GameRoutine_17859d0(__int64, char, _QWORD*);
+__int64 CmdbtlUnitSelectMenu_1637be0(__int64, __int64);
+extern __int64 (*GameData_210d478[])();
+__int64 game_cmdbtl_anonymous_ProcSystemUnitSelectMenu_PlusCall(__int64 a1,
+                                                                __int64 a2);
 
 __int64 ProcSystemUnitSelectMenu_Unknown101(__int64 a1)
 {
@@ -36,6 +41,42 @@ __int64 ProcSystemUnitSelectMenu_Unknown101(__int64 a1)
   else {
     return 3;
   }
+}
+
+__int64 game_cmdbtl_anonymous_ProcSystemUnitSelectMenu_PlusCall(__int64 a1,
+                                                                __int64 a2)
+{
+  char v3;
+  _QWORD* v4;
+  __int64 v5;
+  struct {
+    _QWORD v7[4];
+    _QWORD* v8;
+  } v7_;
+
+  if ((int)CmdbtlUnitSelectMenu_1637be0(a1, a2) < 1) {
+    return 1;
+  }
+  v3 = *(_BYTE*)(a1 + 1384);
+  v7_.v7[0] = GameData_210d478;
+  v7_.v7[1] = a1;
+  v7_.v8 = v7_.v7;
+  v4 = GameRoutine_17859d0(a1, v3, v7_.v7);
+  if (v7_.v8 == v7_.v7) {
+    v5 = 32;
+  }
+  else {
+    if (v7_.v8 == nullptr) {
+      goto LABEL_7;
+    }
+    v5 = 40;
+  }
+  (*(void (**)(__int64))(*v7_.v8 + v5))((__int64)v7_.v8);
+LABEL_7:
+  if (v4 != nullptr) {
+    return 12;
+  }
+  return 1;
 }
 
 __int64 ProcSystemUnitSelectMenu_Unknown139(__int64 a1, __int64* a2)

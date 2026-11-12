@@ -20,6 +20,83 @@ __attribute__((swiftcall)) void ReturnTitleMenuItem_Unknown70(PSEUDO_X8 x8_,
 __int64
 game_menu_anonymous_ReturnTitleMenuItem_ACall_closure_Invoke(__int64 a1,
                                                              __int64* a2);
+__int64 Dialog_16499c0(__int64 result);
+__int64 MapSortieMenu_871860(__int64, __int64, __int64, __int64, __int64);
+char* game_util_Format_alt1(const char*, ...) __asm__("game_util_Format");
+extern __int64 (*GameData_20b8988[])();
+extern __int64 (*GameData_20b8a08[])();
+__int64 game_menu_anonymous_ReturnTitleMenuItem_ACall(_QWORD* a1);
+
+__int64 game_menu_anonymous_ReturnTitleMenuItem_ACall(_QWORD* a1)
+{
+  __int64 v2;
+  const char* v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v7;
+  __int64 v8;
+  struct {
+    _QWORD v9[4];
+    _QWORD* v10;
+  } v9_;
+  struct {
+    _QWORD v11[4];
+    _QWORD* v12;
+  } v11_;
+  struct {
+    _QWORD v13[4];
+    _QWORD* v14;
+  } v13_;
+  char* v15;
+
+  if (((*(__int64 (**)(_QWORD*))(*a1 + 464LL))(a1) & 1) == 0) {
+    return 1;
+  }
+  v2 = a1[1];
+  v3 = (const char*)(*(__int64 (**)(_QWORD*))(*a1 + 24LL))(a1);
+  v15 = game_util_Format_alt1("%s_Confirm", v3);
+  v13_.v13[0] = GameData_20b8988;
+  v13_.v14 = v13_.v13;
+  v9_.v10 = v9_.v9;
+  v11_.v11[0] = GameData_20b8a08;
+  v11_.v12 = v11_.v11;
+  v9_.v9[0] = GameData_20b8a08;
+  v4 = MapSortieMenu_871860(v2, (__int64)&v15, (__int64)v13_.v13,
+                            (__int64)v11_.v11, (__int64)v9_.v9);
+  if (v9_.v10 == v9_.v9) {
+    v5 = 32;
+  }
+  else {
+    if (v9_.v10 == nullptr) {
+      goto LABEL_8;
+    }
+    v5 = 40;
+  }
+  (*(void (**)(__int64))(*v9_.v10 + v5))((__int64)v9_.v10);
+LABEL_8:
+  if (v11_.v12 == v11_.v11) {
+    v7 = 32;
+  }
+  else {
+    if (v11_.v12 == nullptr) {
+      goto LABEL_13;
+    }
+    v7 = 40;
+  }
+  (*(void (**)(__int64))(*v11_.v12 + v7))((__int64)v11_.v12);
+LABEL_13:
+  if (v13_.v14 == v13_.v13) {
+    v8 = 32;
+    goto LABEL_17;
+  }
+  if (v13_.v14 != nullptr) {
+    v8 = 40;
+  LABEL_17:
+    (*(void (**)(__int64))(*v13_.v14 + v8))((__int64)v13_.v14);
+  }
+  Dialog_16499c0(v4);
+  return 12;
+}
 
 __attribute__((swiftcall)) void ReturnTitleMenuItem_Unknown70(PSEUDO_X8 x8_,
                                                               __int64 a1)

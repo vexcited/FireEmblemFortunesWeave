@@ -45,6 +45,17 @@ void __attribute__((noreturn)) GameRoutine_60a310(_QWORD, _QWORD);
 bool ThermaeThermaeMenuItem_94efe0(__int64 a1, __int64 a2);
 __int64 ThermaeThermaeMenuItem_15e69c0(__int64 a1);
 _QWORD* ThermaeThermaeMenuItem_15e6c00(__int64 a1);
+__attribute__((swiftcall)) void GameRoutine_1114920(PSEUDO_X8, __int64*,
+                                                    __int64*);
+__int64 GameHr_16eb610(_QWORD*, unsigned int, const char*, __int64, __int64,
+                       unsigned int, int);
+__int64 GameRoutine_9db9e0_alt1(unsigned int,
+                                unsigned int) __asm__("GameRoutine_9db9e0");
+__int64 LayoutAccessor_1562060(__int64 result, __int64, __int64);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 std___1___shared_weak_count_lock(__int64);
+__int64 ThermaeThermaeMenuItem_Unknown55_192ca20(__int64 result);
 
 bool ThermaeThermaeMenuItem_94efe0(__int64 a1, __int64 a2)
 {
@@ -377,6 +388,74 @@ LABEL_21:
   v17 = 32;
   return (_QWORD*)(*(__int64 (**)(_QWORD*, __int64))(*result + v17))(result,
                                                                      v9);
+}
+
+__int64 ThermaeThermaeMenuItem_Unknown55_192ca20(__int64 result)
+{
+  __int64* v1;
+  __int64* v2;
+  __int64 v3;
+  unsigned int v4;
+  char v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8[2];
+  struct {
+    __int64 v9;
+    __int64 v10;
+  } v9_;
+
+  if (*(_QWORD*)(result + 88) != 0) {
+    v1 = (__int64*)result;
+    result = *(_QWORD*)(result + 56);
+    if (result != 0) {
+      result = std___1___shared_weak_count_lock(result);
+      if (result != 0) {
+        v2 = (__int64*)v1[6];
+        v3 = result;
+        if (v2 != nullptr) {
+          LayoutAccessor_1562060(v1[6], (__int64)"T_Txt",
+                                 *(_QWORD*)(v1[11] + 32));
+          v4 =
+              GameRoutine_9db9e0_alt1(0x15u, *(unsigned __int16*)(v1[11] + 68));
+          v5 = (*(__int64 (**)(__int64*))(*v1 + 560))(v1);
+          GameHr_16eb610(v1, 0, "L_Gold", (__int64)"Icon", (__int64)"T_Num", v4,
+                         (v5 & 0x10) != 0);
+          v8[0] = (__int64)"L_Special";
+          v8[1] = 9;
+          GameRoutine_1114920((void*)(&v9_.v9), v2, v8);
+          result = v9_.v10;
+          if (v9_.v10 != 0) {
+            v6 = std___1___shared_weak_count_lock(v9_.v10);
+            v7 = v9_.v9;
+            result = v9_.v10;
+            if (v9_.v10 != 0) {
+              result = std___1___shared_weak_count___release_weak_alt1(v9_.v10);
+            }
+            if (v6 != 0 && v7 != 0) {
+              result = (*(__int64 (**)(__int64, bool))(*(_QWORD*)v7 + 40LL))(
+                  v7, *(_BYTE*)(v1[11] + 66) != 0);
+              goto LABEL_12;
+            }
+            if (v6 != 0) {
+            LABEL_12:
+              if (atomic_fetch_add((atomic_ullong* volatile)(v6 + 8),
+                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
+                (*(void (**)(__int64))(*(_QWORD*)v6 + 16LL))(v6);
+                result = std___1___shared_weak_count___release_weak_alt1(v6);
+              }
+            }
+          }
+        }
+        if (atomic_fetch_add((atomic_ullong* volatile)(v3 + 8),
+                             0xFFFFFFFFFFFFFFFFLL) == 0) {
+          (*(void (**)(__int64))(*(_QWORD*)v3 + 16LL))(v3);
+          return std___1___shared_weak_count___release_weak_alt1(v3);
+        }
+      }
+    }
+  }
+  return result;
 }
 
 #pragma GCC visibility pop

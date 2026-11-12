@@ -22,6 +22,9 @@ __int64 game_gmap_GmapTargetLine_Impl_TryAdd_closure_Invoke(__int64 result,
 void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void GmapTargetLine_Unknown6(__int64 a1);
+extern __int64* GameData_2130e00;
+extern __int64 game_script_hub_g_frame_counter_ptr[3];
+__int64 GmapTargetLine_Unknown3(__int64 result);
 
 _QWORD* GmapTargetLine_Destructor(_QWORD* result)
 {
@@ -79,6 +82,32 @@ _QWORD* GmapTargetLine_Destructor(_QWORD* result)
 bool GmapTargetLine_Unknown2(__int64 a1)
 {
   return *(_QWORD*)(*(_QWORD*)(a1 + 8) + 8LL) != **(_QWORD**)(a1 + 8);
+}
+
+__int64 GmapTargetLine_Unknown3(__int64 result)
+{
+  float*** v1;
+  float** v2;
+  float** v3;
+  __int64* v4;
+  __int64 v5;
+  float* v6;
+
+  v1 = *(float****)(result + 8);
+  v2 = *v1;
+  v3 = v1[1];
+  if (v2 != v3) {
+    v4 = GameData_2130e00;
+    v5 = game_script_hub_g_frame_counter_ptr[0];
+    do {
+      v6 = *v2++;
+      *v6 = *v6 + (float)(*(float*)(*v4 + 596) *
+                          (float)((float)(*(float*)(*(_QWORD*)v5 + 160LL) *
+                                          0x1.0aef000000000p+4f) /
+                                  0x1.f400000000000p+9f));
+    } while (v2 != v3);
+  }
+  return result;
 }
 
 __int64 GmapTargetLine_Unknown5(__int64 result)

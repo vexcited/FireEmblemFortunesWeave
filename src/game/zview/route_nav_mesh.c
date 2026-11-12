@@ -17,7 +17,8 @@ extern __int64 (*game_zview_RouteNavMesh_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64* GameData_212ee30[4];
 __n128 RouteNavMesh_Unknown5(_QWORD* a1);
-__int64 RouteNavMesh_fe6b60(_QWORD* a1, __int64 a2, __n128 a3);
+__int64 RouteNavMesh_fe6b60_alt1(_QWORD* a1, __int64 a2,
+                                 __n128 a3) __asm__("RouteNavMesh_fe6b60");
 __int64 GameRoutine_268800(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_634d80(__int64, __int64);
 __int64 GameRoutine_fe7900_alt1(__int64 result,
@@ -82,6 +83,21 @@ void GameRoutine_fe7ea0_alt1(__int64*,
                              unsigned __int64) __asm__("GameRoutine_fe7ea0");
 void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
+__int64 GameRoutine_fe7660_alt1(__int64) __asm__("GameRoutine_fe7660");
+__int64 RouteNavMesh_fe6c60_alt1(_QWORD*,
+                                 unsigned int**) __asm__("RouteNavMesh_fe6c60");
+__int64 RouteNavMesh_fe7820_alt1(_QWORD*,
+                                 __int64) __asm__("RouteNavMesh_fe7820");
+__int64 dtTileCache_removeObstacle(__int64, int);
+__int64 dtTileCache_update_alt1(__int64, __int64,
+                                bool*) __asm__("dtTileCache_update");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 std___1___shared_weak_count_lock(__int64);
+unsigned __int64 strlen_alt1(const char*) __asm__("strlen");
+_QWORD* RouteNavMesh_fe6920(_QWORD* result);
+__int64 RouteNavMesh_fe6b60(_QWORD* a1, __int64 a2);
+unsigned int* RouteNavMesh_fe6c60(_QWORD* a1, unsigned int** a2);
 
 __n128 RouteNavMesh_Unknown5(_QWORD* a1)
 {
@@ -132,6 +148,88 @@ __n128 RouteNavMesh_Unknown5(_QWORD* a1)
   return result;
 }
 
+_QWORD* RouteNavMesh_fe6920(_QWORD* result)
+{
+  _QWORD* v1;
+  _QWORD* v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  __int64 i;
+  __int64 v11;
+  __int64 v12;
+  unsigned int* v13[2];
+
+  v1 = result;
+  ++*(_QWORD*)(*GameData_212ee30[0] + 80);
+  v2 = (_QWORD*)result[1];
+  if (v2 != nullptr) {
+    v3 = result[3];
+    v4 = result[4];
+    if (v3 != v4) {
+      do {
+        v5 = *(_QWORD*)(v3 + 8);
+        v13[0] = *(unsigned int**)v3;
+        v13[1] = (unsigned int*)v5;
+        if (v5 != 0) {
+          atomic_fetch_add_explicit((atomic_ullong* volatile)(v5 + 16), 1u,
+                                    memory_order_relaxed);
+          RouteNavMesh_fe6c60_alt1(v1, v13);
+          std___1___shared_weak_count___release_weak_alt1(v5);
+        }
+        else {
+          RouteNavMesh_fe6c60_alt1(v1, v13);
+        }
+        v3 += 16;
+      } while (v3 != v4);
+      v2 = (_QWORD*)v1[1];
+    }
+    v6 = v2[39];
+    if (v6 != 0) {
+      GameRoutine_634d80(*(_QWORD*)(v6 + 8), v6);
+      v2[39] = 0;
+    }
+    v7 = v2[5];
+    if (v7 != 0) {
+      dtFreeNavMeshQuery(v7);
+      v2[5] = 0;
+    }
+    v8 = v2[4];
+    if (v8 != 0) {
+      dtFreeNavMesh(v8);
+      v2[4] = 0;
+    }
+    result = (_QWORD*)v2[3];
+    if (result != nullptr) {
+      result = (_QWORD*)dtFreeTileCache((__int64)result);
+      v2[3] = 0;
+    }
+  }
+  v9 = v1[3];
+  for (i = v1[4]; i != v9; i -= 16) {
+    v11 = *(_QWORD*)(i - 8);
+    if (v11 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v11 + 8),
+                                     0xFFFFFFFFFFFFFFFFLL) == 0) {
+      (*(void (**)(__int64))(*(_QWORD*)v11 + 16LL))(v11);
+      result = (_QWORD*)std___1___shared_weak_count___release_weak_alt1(v11);
+    }
+  }
+  v12 = v1[2];
+  v1[4] = v9;
+  v1[1] = 0;
+  v1[2] = 0;
+  if (v12 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v12 + 8),
+                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v12 + 16LL))(v12);
+    return (_QWORD*)std___1___shared_weak_count___release_weak_alt1(v12);
+  }
+  return result;
+}
+
 __int64 RouteNavMesh_Destructor(__int64 a1)
 {
 
@@ -148,45 +246,155 @@ __int64 RouteNavMesh_Destructor(__int64 a1)
   return result;
 }
 
-__int64 RouteNavMesh_fe6b60(_QWORD* a1, __int64 a2, __n128 a3)
+__int64 RouteNavMesh_fe6b60(_QWORD* a1, __int64 a2)
 {
+  _QWORD* v4;
   _QWORD* v5;
   _QWORD* v6;
-  _QWORD* v7;
-  __int64 v8;
-  __int64 v9;
-  __int64 v10;
-  _QWORD v12[2];
+  __int64 v7;
+  _QWORD* v8;
+  const char* v9;
+  _QWORD v11[2];
 
-  GameRoutine_fe6920_alt1(a1, a3);
-  v5 = (_QWORD*)fw_memory_HeapManager_Allocate(
+  RouteNavMesh_fe6920(a1);
+  v4 = (_QWORD*)fw_memory_HeapManager_Allocate_alt1(
       *(_QWORD*)fw_memory_g_heap_manager_ptr, 376, 16, 0);
-  v6 = v5 + 3;
-  v7 = v5;
-  v5[1] = 0;
-  v5[2] = 0;
-  *v5 = GameData_1ffe6f8;
-  GameRoutine_fe7660(v5 + 3);
-  v8 = a1[2];
-  a1[1] = v6;
-  a1[2] = v7;
-  if (v8 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v8 + 8),
+  v5 = v4 + 3;
+  v6 = v4;
+  v4[1] = 0;
+  v4[2] = 0;
+  *v4 = GameData_1ffe6f8;
+  GameRoutine_fe7660_alt1((__int64)(v4 + 3));
+  v7 = a1[2];
+  a1[1] = v5;
+  a1[2] = v6;
+  if (v7 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v7 + 8),
                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
-    (*(void (**)(__int64))(*(_QWORD*)v8 + 16LL))(v8);
-    std___1___shared_weak_count___release_weak(v8);
+    (*(void (**)(__int64))(*(_QWORD*)v7 + 16LL))(v7);
+    std___1___shared_weak_count___release_weak_alt1(v7);
   }
-  v9 = a1[1];
+  v8 = (_QWORD*)a1[1];
   if ((*(_BYTE*)a2 & 1) != 0) {
-    v10 = *(_QWORD*)(a2 + 16);
+    v9 = *(const char**)(a2 + 16);
   }
   else {
-    v10 = a2 + 1;
+    v9 = (const char*)(a2 + 1);
   }
-  v12[0] = v10;
-  v12[1] = strlen(v10);
-  GameRoutine_fe7820(v9, v12);
+  v11[0] = v9;
+  v11[1] = strlen_alt1(v9);
+  RouteNavMesh_fe7820_alt1(v8, (__int64)v11);
   ++*(_QWORD*)(*GameData_212ee30[0] + 80);
-  return GameRoutine_fe7900(0.0f);
+  return GameRoutine_fe7900_alt1(a1[1], 0x0.0p+0f);
+}
+
+unsigned int* RouteNavMesh_fe6c60(_QWORD* a1, unsigned int** a2)
+{
+  unsigned int* result;
+  int* v5;
+  unsigned int* v6;
+  __int64 v7;
+  int v8;
+  __int64* v9;
+  __int64* v10;
+  __int64 v11;
+  int* v12;
+  __int64* v13;
+  __int64 v14;
+  __int64 v15;
+  __int64 v16;
+  __int64 v17;
+
+  result = a2[1];
+  if (result != nullptr) {
+    result = (unsigned int*)std___1___shared_weak_count_lock((__int64)result);
+    if (result != nullptr) {
+      v5 = (int*)*a2;
+      v6 = result;
+      if (*a2 != nullptr) {
+        v7 = a1[1];
+        if (v7 != 0) {
+          if (*(_QWORD*)(v7 + 24) != 0) {
+            v8 = *v5;
+            nn_os_LockMutex_alt1(v7 + 320);
+            dtTileCache_removeObstacle(*(_QWORD*)(v7 + 24), v8);
+            dtTileCache_update_alt1(*(_QWORD*)(v7 + 24), *(_QWORD*)(v7 + 32),
+                                    nullptr);
+            result = (unsigned int*)nn_os_UnlockMutex_alt1(v7 + 320);
+          }
+          v10 = (__int64*)a1[3];
+          v9 = (__int64*)a1[4];
+          if (v10 != v9) {
+            while (1) {
+              v12 = (int*)*v10;
+              v11 = v10[1];
+              if (v11 != 0) {
+                atomic_fetch_add_explicit((atomic_ullong* volatile)(v11 + 8),
+                                          1u, memory_order_relaxed);
+                if (atomic_fetch_add((atomic_ullong* volatile)(v11 + 8),
+                                     0xFFFFFFFFFFFFFFFFLL) == 0) {
+                  (*(void (**)(__int64))(*(_QWORD*)v11 + 16LL))(v11);
+                  result = (unsigned int*)
+                      std___1___shared_weak_count___release_weak_alt1(v11);
+                }
+              }
+              if (v12 == v5) {
+                break;
+              }
+              v10 += 2;
+              if (v10 == v9) {
+                v10 = v9;
+                break;
+              }
+            }
+            v9 = (__int64*)a1[4];
+          }
+          if (v10 != v9) {
+            v13 = v10 + 2;
+            if (v10 + 2 != v9) {
+              do {
+                v15 = *v13;
+                v14 = v13[1];
+                v16 = *(v13 - 1);
+                *v13 = 0;
+                v13[1] = 0;
+                *(v13 - 2) = v15;
+                *(v13 - 1) = v14;
+                if (v16 != 0 &&
+                    atomic_fetch_add((atomic_ullong* volatile)(v16 + 8),
+                                     0xFFFFFFFFFFFFFFFFLL) == 0) {
+                  (*(void (**)(__int64))(*(_QWORD*)v16 + 16LL))(v16);
+                  result = (unsigned int*)
+                      std___1___shared_weak_count___release_weak_alt1(v16);
+                }
+                v13 += 2;
+              } while (v13 != v9);
+              v9 = (__int64*)a1[4];
+              v10 = v13 - 2;
+            }
+            for (; v9 != v10; v9 -= 2) {
+              v17 = *(v9 - 1);
+              if (v17 != 0 &&
+                  atomic_fetch_add((atomic_ullong* volatile)(v17 + 8),
+                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
+                (*(void (**)(__int64))(*(_QWORD*)v17 + 16LL))(v17);
+                result = (unsigned int*)
+                    std___1___shared_weak_count___release_weak_alt1(v17);
+              }
+            }
+            a1[4] = v10;
+          }
+          ++*(_QWORD*)(GameData_220f8b0 + 80);
+        }
+      }
+      if (atomic_fetch_add((atomic_ullong* volatile)(v6 + 2),
+                           0xFFFFFFFFFFFFFFFFLL) == 0) {
+        (*(void (**)(unsigned int*))(*(_QWORD*)v6 + 16LL))(v6);
+        return (unsigned int*)std___1___shared_weak_count___release_weak_alt1(
+            (__int64)v6);
+      }
+    }
+  }
+  return result;
 }
 
 __attribute__((swiftcall)) void RouteNavMesh_fe7000(PSEUDO_X8 x8_, _QWORD* a1,

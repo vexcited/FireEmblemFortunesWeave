@@ -59,6 +59,9 @@ void __cxa_guard_release_alt1(__int64) __asm__("__cxa_guard_release");
 void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 __int64* MapObjectModule_a7dcc0(__int64 a1);
+extern _QWORD GameData_21fdd90_alt1[] __asm__("GameData_21fdd90");
+void GameRoutine_a5cc60(_QWORD*, unsigned __int8**);
+void MapObjectModule_a7d780(__int64 a1);
 
 __int64 MapObjectModule_Destructor(__int64 result)
 {
@@ -581,6 +584,53 @@ LABEL_15:
     return std___1___shared_weak_count___release_weak(v16);
   }
   return result;
+}
+
+void MapObjectModule_a7d780(__int64 a1)
+{
+  unsigned __int8* v1;
+  __int64 v2;
+  __int64 v3;
+  struct {
+    unsigned __int8* v4;
+    __int64 v5;
+  } v4_;
+  struct {
+    unsigned __int8* v6;
+    __int64 v7;
+  } v6_;
+
+  MapObjectModule_a7d410((void*)(&v6_.v6), a1);
+  v1 = v6_.v6;
+  if (v6_.v6 != nullptr) {
+    if ((atomic_load_explicit((atomic_uchar* volatile)&GameData_21fde98,
+                              memory_order_acquire) &
+         1) == 0 &&
+        __cxa_guard_acquire_alt1((__int64)&GameData_21fde98) != 0) {
+      GameHr_a5aca0((__int64)GameData_21fdd90_alt1);
+      GameRoutine_2b0_alt1();
+      __cxa_guard_release_alt1((__int64)&GameData_21fde98);
+    }
+    v4_.v4 = v1;
+    v4_.v5 = v6_.v7;
+    if (v6_.v7 != 0) {
+      atomic_fetch_add_explicit((atomic_ullong* volatile)(v6_.v7 + 8), 1u,
+                                memory_order_relaxed);
+    }
+    GameRoutine_a5cc60(GameData_21fdd90_alt1, &v4_.v4);
+    v2 = v4_.v5;
+    if (v4_.v5 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v4_.v5 + 8),
+                                        0xFFFFFFFFFFFFFFFFLL) == 0) {
+      (*(void (**)(__int64))(*(_QWORD*)v2 + 16LL))(v2);
+      std___1___shared_weak_count___release_weak_alt1(v2);
+    }
+  }
+  v3 = v6_.v7;
+  if (v6_.v7 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v6_.v7 + 8),
+                                      0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v3 + 16LL))(v3);
+    std___1___shared_weak_count___release_weak_alt1(v3);
+  }
 }
 
 __int64 MapObjectModule_Unknown5(__int64 result)

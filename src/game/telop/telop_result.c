@@ -117,6 +117,167 @@ char* GameRoutine_a4dbe0_alt1(__int64, const char*,
 void GameRoutine_156c5d0_alt1(__int64, __int64,
                               char) __asm__("GameRoutine_156c5d0");
 __int64 TelopResult_1763ac0(__int64 a1, signed int a2, unsigned int a3);
+__int64*
+LayoutAccessor_155fbe0_alt1(__int64*,
+                            const char*) __asm__("LayoutAccessor_155fbe0");
+__int64
+ControlCreator_13633c0_alt1(__int64 result) __asm__("ControlCreator_13633c0");
+__int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
+    "std___1___shared_weak_count_lock");
+__int64 ui_LayoutAccessor_GetPaneAlpha(__int64*, const char*);
+__int64 ui_LayoutAccessor_SetPaneAlpha(__int64 result, const char*, char);
+char* game_util_Format_alt1(const char*, ...) __asm__("game_util_Format");
+double ui_LayoutAccessor_GetPaneTranslate(__int64*, const char*);
+float ui_LayoutAccessor_SetPaneTranslate(__int64*, const char*, __int64);
+void TelopResult_175ff40(__int64 a1);
+
+void TelopResult_175ff40(__int64 a1)
+{
+
+#pragma clang fp contract(off)
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  double v6;
+  int v7;
+  int v8;
+  double v9;
+  __int64 v10;
+  __int64 v11;
+  int v12;
+  int v13;
+  int v14;
+  const char* v15;
+  char* v16;
+  __int64* v17;
+  char v18;
+  char v19;
+  _DWORD v20[3];
+  _DWORD v21[3];
+
+  v12 = COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(float, "s1", "=w")),
+  v13 = COERCE_AS(__typeof__(v13), PSEUDO_REGISTER(float, "s2", "=w")),
+  v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w")),
+  v8 = COERCE_AS(__typeof__(v8), PSEUDO_REGISTER(float, "s2", "=w"));
+  v2 = *(_QWORD*)(a1 + 176);
+  if (v2 != 0) {
+    v3 = std___1___shared_weak_count_lock_alt1(v2),
+    v12 = COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(float, "s1", "=w")),
+    v13 = COERCE_AS(__typeof__(v13), PSEUDO_REGISTER(float, "s2", "=w")),
+    v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w")),
+    v8 = COERCE_AS(__typeof__(v8), PSEUDO_REGISTER(float, "s2", "=w"));
+    if (v3 != 0) {
+      v4 = v3;
+      v5 = *(_QWORD*)(a1 + 168);
+      if (v5 != 0) {
+        ControlCreator_13633c0_alt1(v5),
+            v12 =
+                COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(float, "s1", "=w")),
+            v13 =
+                COERCE_AS(__typeof__(v13), PSEUDO_REGISTER(float, "s2", "=w")),
+            v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w")),
+            v8 = COERCE_AS(__typeof__(v8), PSEUDO_REGISTER(float, "s2", "=w"));
+      }
+      if (atomic_fetch_add((atomic_ullong* volatile)(v4 + 8),
+                           0xFFFFFFFFFFFFFFFFLL) == 0) {
+        (*(void (**)(__int64))(*(_QWORD*)v4 + 16LL))(v4),
+            v12 =
+                COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(float, "s1", "=w")),
+            v13 =
+                COERCE_AS(__typeof__(v13), PSEUDO_REGISTER(float, "s2", "=w")),
+            v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w")),
+            v8 = COERCE_AS(__typeof__(v8), PSEUDO_REGISTER(float, "s2", "=w"));
+        std___1___shared_weak_count___release_weak_alt1(v4),
+            v12 =
+                COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(float, "s1", "=w")),
+            v13 =
+                COERCE_AS(__typeof__(v13), PSEUDO_REGISTER(float, "s2", "=w")),
+            v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w")),
+            v8 = COERCE_AS(__typeof__(v8), PSEUDO_REGISTER(float, "s2", "=w"));
+      }
+    }
+  }
+  v19 =
+      ui_LayoutAccessor_GetPaneAlpha((__int64*)(a1 + 168), "N_TlpIO_Contents"),
+  v12 = COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(float, "s1", "=w")),
+  v13 = COERCE_AS(__typeof__(v13), PSEUDO_REGISTER(float, "s2", "=w")),
+  v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w")),
+  v8 = COERCE_AS(__typeof__(v8), PSEUDO_REGISTER(float, "s2", "=w"));
+  v18 = ui_LayoutAccessor_GetPaneAlpha((__int64*)(a1 + 168), "N_TlpIO_Overlay"),
+  v12 = COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(float, "s1", "=w")),
+  v13 = COERCE_AS(__typeof__(v13), PSEUDO_REGISTER(float, "s2", "=w")),
+  v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w")),
+  v8 = COERCE_AS(__typeof__(v8), PSEUDO_REGISTER(float, "s2", "=w"));
+  v6 = ui_LayoutAccessor_GetPaneTranslate((__int64*)(a1 + 168),
+                                          "N_TlpIO_Contents"),
+  v12 = COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(float, "s1", "=w")),
+  v13 = COERCE_AS(__typeof__(v13), PSEUDO_REGISTER(float, "s2", "=w")),
+  v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w")),
+  v8 = COERCE_AS(__typeof__(v8), PSEUDO_REGISTER(float, "s2", "=w"));
+  v21[0] = LODWORD(v6);
+  v21[1] = v7;
+  v21[2] = v8;
+  v9 = ui_LayoutAccessor_GetPaneTranslate((__int64*)(a1 + 168),
+                                          "N_TlpIO_Overlay"),
+  v12 = COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(float, "s1", "=w")),
+  v13 = COERCE_AS(__typeof__(v13), PSEUDO_REGISTER(float, "s2", "=w")),
+  v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w")),
+  v8 = COERCE_AS(__typeof__(v8), PSEUDO_REGISTER(float, "s2", "=w"));
+  v10 = a1 + 864;
+  v11 = 0;
+  v20[0] = LODWORD(v9);
+  v20[1] = v12;
+  v20[2] = v13;
+  do {
+    if (*(int*)(v10 + 4 * v11) >= 1) {
+      v14 = 0;
+      v15 = GameData_20bd060[v11];
+      do {
+        v16 = game_util_Format_alt1("%s_%02d", v15, v14),
+        v12 = COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(float, "s1", "=w")),
+        v13 = COERCE_AS(__typeof__(v13), PSEUDO_REGISTER(float, "s2", "=w")),
+        v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w")),
+        v8 = COERCE_AS(__typeof__(v8), PSEUDO_REGISTER(float, "s2", "=w"));
+        v17 = LayoutAccessor_155fbe0_alt1((__int64*)(a1 + 168), v16),
+        v12 = COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(float, "s1", "=w")),
+        v13 = COERCE_AS(__typeof__(v13), PSEUDO_REGISTER(float, "s2", "=w")),
+        v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w")),
+        v8 = COERCE_AS(__typeof__(v8), PSEUDO_REGISTER(float, "s2", "=w"));
+        ui_LayoutAccessor_SetPaneAlpha((__int64)v17, "N_Contents", v19),
+            v12 =
+                COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(float, "s1", "=w")),
+            v13 =
+                COERCE_AS(__typeof__(v13), PSEUDO_REGISTER(float, "s2", "=w")),
+            v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w")),
+            v8 = COERCE_AS(__typeof__(v8), PSEUDO_REGISTER(float, "s2", "=w"));
+        ui_LayoutAccessor_SetPaneAlpha((__int64)v17, "N_Overlay", v18),
+            v12 =
+                COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(float, "s1", "=w")),
+            v13 =
+                COERCE_AS(__typeof__(v13), PSEUDO_REGISTER(float, "s2", "=w")),
+            v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w")),
+            v8 = COERCE_AS(__typeof__(v8), PSEUDO_REGISTER(float, "s2", "=w"));
+        ui_LayoutAccessor_SetPaneTranslate(v17, "N_Contents", (__int64)v21),
+            v12 =
+                COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(float, "s1", "=w")),
+            v13 =
+                COERCE_AS(__typeof__(v13), PSEUDO_REGISTER(float, "s2", "=w")),
+            v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w")),
+            v8 = COERCE_AS(__typeof__(v8), PSEUDO_REGISTER(float, "s2", "=w"));
+        ui_LayoutAccessor_SetPaneTranslate(v17, "N_Overlay", (__int64)v20),
+            v12 =
+                COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(float, "s1", "=w")),
+            v13 =
+                COERCE_AS(__typeof__(v13), PSEUDO_REGISTER(float, "s2", "=w")),
+            v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w")),
+            v8 = COERCE_AS(__typeof__(v8), PSEUDO_REGISTER(float, "s2", "=w"));
+        ++v14;
+      } while (v14 < (signed __int32)*(_DWORD*)(v10 + 4 * v11));
+    }
+    ++v11;
+  } while (v11 != 20);
+}
 
 __int64 TelopResult_1760380(_QWORD* a1)
 {

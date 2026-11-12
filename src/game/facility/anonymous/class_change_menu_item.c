@@ -38,6 +38,11 @@ unsigned __int64 GameHr_16ee370(__int64, __int64, _BYTE*);
 void GameRoutine_16ee520_alt1(__int64) __asm__("GameRoutine_16ee520");
 void GameRoutine_16ef210_alt1(_QWORD*, _QWORD*) __asm__("GameRoutine_16ef210");
 void ClassChangeMenuItem_Unknown73(__int64 a1);
+__int64 ClassTrialMenuItem_Unknown55(__int64);
+__int64 LayoutAccessor_1562cf0(__int64 result, unsigned int*);
+__int64 std___1___shared_weak_count___release_weak(__int64);
+__int64 std___1___shared_weak_count_lock(__int64);
+__int64 ClassChangeMenuItem_Unknown55(__int64* a1);
 
 __int64 ClassChangeMenuItem_Unknown25(_QWORD* a1)
 {
@@ -161,6 +166,40 @@ void ClassChangeMenuItem_Unknown73(__int64 a1)
   v6_.v9 = v5;
   GameRoutine_16ef210_alt1(v12, v6_.v6);
   GameRoutine_16ee520_alt1((__int64)v12);
+}
+
+__int64 ClassChangeMenuItem_Unknown55(__int64* a1)
+{
+  __int64 result;
+  __int64 v3;
+  __int64 v4;
+  char* v5;
+
+  ClassTrialMenuItem_Unknown55((__int64)a1);
+  result = a1[7];
+  if (result != 0) {
+    result = std___1___shared_weak_count_lock(result);
+    if (result != 0) {
+      v3 = a1[6];
+      v4 = result;
+      if (v3 != 0) {
+        LayoutAccessor_1562cf0(a1[6], (unsigned int*)"LvOff");
+        if (((*(__int64 (**)(__int64*))(*a1 + 464))(a1) & 1) != 0) {
+          v5 = "IconRank_Default";
+        }
+        else {
+          v5 = "IconRank_Disable";
+        }
+        result = LayoutAccessor_1562cf0(v3, (unsigned int*)v5);
+      }
+      if (atomic_fetch_add((atomic_ullong* volatile)(v4 + 8),
+                           0xFFFFFFFFFFFFFFFFLL) == 0) {
+        (*(void (**)(__int64))(*(_QWORD*)v4 + 16LL))(v4);
+        return std___1___shared_weak_count___release_weak(v4);
+      }
+    }
+  }
+  return result;
 }
 
 __int64 ClassChangeMenuItem_Unknown70(_QWORD* a1, __int64 a2)

@@ -67,6 +67,21 @@ char* GameRoutine_a4dbe0_alt1(__int64, _BYTE*,
 void GameHr_1874730(__int64*, char);
 void GameRoutine_156c5d0_alt1(__int64, __int64,
                               char) __asm__("GameRoutine_156c5d0");
+__int64*
+LayoutAccessor_155fbe0_alt1(__int64*,
+                            const char*) __asm__("LayoutAccessor_155fbe0");
+__int64
+LayoutAccessor_1562cf0_alt1(__int64 result,
+                            const char*) __asm__("LayoutAccessor_1562cf0");
+__int64 ui_LayoutAccessor_FindPane(__int64*, __int64);
+char* GameRoutine_a4dbe0_alt2(__int64, const char*,
+                              char) __asm__("GameRoutine_a4dbe0");
+extern __int64* GameData_212d670[3];
+extern __int64* GameData_212e028[5];
+extern __int64 GameData_212d690;
+void GameRoutine_156c910(__int64, const char*, int, ...);
+void GameRoutine_157cb40(__int64*, int, __int64, __int64, unsigned int, char);
+void ProcObeliskDepositoryMaterialMenu_Unknown141(__int64* a1);
 __int64
 
 game_facility_anonymous_ProcObeliskDepositoryMaterialMenu_OnInit(__int64 a1)
@@ -350,6 +365,150 @@ _QWORD* ProcObeliskDepositoryMaterialMenu_Unknown128(__int64 a1)
   }
   return (_QWORD*)(*(__int64 (**)(_QWORD*, __int64))(*result + v11))(result,
                                                                      v3);
+}
+
+void ProcObeliskDepositoryMaterialMenu_Unknown141(__int64* a1)
+{
+  __int64 v1;
+  __int64 v2;
+  __int64 v4;
+  const char* v5;
+  unsigned __int64 v6;
+  __int64* v7;
+  const char* v8;
+  __int64* v9;
+  char* v10;
+  __int64 v11;
+  __int64 v12;
+  char* v13;
+  __int64 v14;
+  __int64 v15;
+  __int64* v16;
+  _QWORD* v17;
+  _QWORD* v18;
+  __int64* v19;
+  unsigned int v20;
+  __int64* v21;
+  __int64* v22;
+  __int64* v23;
+  __int64* v24;
+  __int64 v25;
+  __int64 v26;
+  __int64 v27;
+  _QWORD* v28;
+  _QWORD* v29;
+  unsigned int v30;
+  __int64* v31;
+  __int64* v32;
+  __int64 v33;
+  __int64 v34;
+  __int64 v35;
+
+  v1 = a1[135];
+  v2 = a1[134];
+  v4 = (__int64)(a1 + 106);
+  if ((int)((unsigned __int64)(v1 - v2) >> 3) <= 0) {
+    v5 = "Transport_On";
+  }
+  else {
+    v5 = "TransportCost_On";
+  }
+  LayoutAccessor_1562cf0_alt1(v4, v5);
+  v6 = (unsigned __int64)(a1[135] - a1[134]) >> 3;
+  v7 = LayoutAccessor_155fbe0_alt1(a1 + 106, "L_UnitInfo");
+  if ((int)v6 >= 1) {
+    v8 = "Info00";
+  }
+  else {
+    v8 = "Simple00";
+  }
+  LayoutAccessor_1562cf0_alt1((__int64)v7, v8);
+  v9 = msg_MessageManager_instance__ptr[0];
+  v10 = GameRoutine_a4dbe0_alt2(*msg_MessageManager_instance__ptr[0],
+                                "MID_DepositoryMenu_TotalNum", 0);
+  if (v10 != nullptr) {
+    v11 = (__int64)v10;
+    v12 = ui_LayoutAccessor_FindTextBox_alt1(a1 + 106, (__int64)"T_NumTitle");
+    if (v12 != 0) {
+      GameRoutine_156c5d0_alt1(v12, v11, 0);
+    }
+  }
+  v13 = GameRoutine_a4dbe0_alt2(*v9, "MID_DepositoryMenu_TotalPrice", 0);
+  if (v13 != nullptr) {
+    v14 = (__int64)v13;
+    v15 = ui_LayoutAccessor_FindTextBox_alt1(a1 + 106, (__int64)"T_CostTitle");
+    if (v15 != 0) {
+      GameRoutine_156c5d0_alt1(v15, v14, 0);
+    }
+  }
+  v16 = LayoutAccessor_155fbe0_alt1(a1 + 106, "L_CostGold");
+  v17 = (_QWORD*)a1[134];
+  v18 = (_QWORD*)a1[135];
+  v19 = v16;
+  if (v17 == v18) {
+    v20 = 0;
+  }
+  else {
+    v20 = 0;
+    v21 = GameData_212e008[0];
+    v22 = GameData_212e028[0];
+    v23 = GameData_212c878[0];
+    v24 = GameData_212cd68[0];
+    do {
+      if (*v17 != 0) {
+        v25 = __dynamic_cast(*v17, v21, v22, 0);
+        if (v25 != 0) {
+          v26 = v25;
+          v27 = *(
+              _QWORD*)(*(_QWORD*)(*v24 + 64) +
+                       8LL *
+                           *(unsigned __int8*)(*(_QWORD*)(*(_QWORD*)(*v23 +
+                                                                     64) +
+                                                          8LL *
+                                                              *(unsigned __int16*)(*(
+                                                                  __int64 (**)(
+                                                                      __int64))(
+                                                                  *(_QWORD*)
+                                                                      v25 +
+                                                                  560LL))(
+                                                                  v25)) +
+                                               84LL));
+          if (v27 != 0) {
+            LODWORD(v27) = *(unsigned __int16*)(v27 + 32);
+          }
+          v20 += *(_DWORD*)(v26 + 84) * v27;
+        }
+      }
+      ++v17;
+    } while (v17 != v18);
+  }
+  GameRoutine_157cb40(v19, 3, (__int64)"Icon", (__int64)"T_Num", v20, 1);
+  v28 = (_QWORD*)a1[134];
+  v29 = (_QWORD*)a1[135];
+  if (v28 == v29) {
+    v30 = 0;
+  }
+  else {
+    v30 = 0;
+    v31 = GameData_212e008[0];
+    v32 = GameData_212e028[0];
+    do {
+      if (*v28 != 0) {
+        v33 = __dynamic_cast(*v28, v31, v32, 0);
+        if (v33 != 0) {
+          v30 += *(_DWORD*)(v33 + 84);
+        }
+      }
+      ++v28;
+    } while (v28 != v29);
+  }
+  v34 = ui_LayoutAccessor_FindPane(a1 + 106, (__int64)"T_CountNum");
+  if (v34 != 0) {
+    v35 = __dynamic_cast(v34, GameData_212d670[0], GameData_212d690, 0);
+    if (v35 != 0) {
+      GameRoutine_156c910(v35, "%d", 1, v30);
+    }
+  }
 }
 
 __int64 ProcObeliskDepositoryMaterialMenu_Unknown148(__int64 a1, __int64* a2)

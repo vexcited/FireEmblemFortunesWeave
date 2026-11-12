@@ -497,6 +497,16 @@ void Unit_6cdf80(__int64 a1, char a2, __int64 a3);
 void Unit_6d1530(__int64 a1, __int64 a2, __int64 a3, int a4);
 void Unit_6d8390(unsigned __int64 a1, __int64 a2, int a3);
 void Unit_6db740(__int64 a1, char a2, char a3);
+__int64 memmove_alt1(__int64, __int64, unsigned __int64) __asm__("memmove");
+char* GameRoutine_6e7840(char*, char*, char*);
+char* Unit_6e7460_alt1(char* result, char*, int*, _QWORD*, __int64, __int64,
+                       __int64, __int64) __asm__("Unit_6e7460");
+int* Unit_6e6fa0(int* result, int* a2, _QWORD* a3, unsigned __int64 a4, int* a5,
+                 __int64 a6);
+int* Unit_6e7200(int* result, int* a2, _QWORD* a3, unsigned __int64 a4,
+                 int* a5);
+char* Unit_6e7460(char* result, char* a2, char* a3, _QWORD* a4, __int64 a5,
+                  __int64 a6, __int64 a7, __int64 a8);
 
 float Unit_6c7fa0(__int64 a1, _OWORD* a2)
 {
@@ -14591,6 +14601,528 @@ LABEL_121:
     GameRoutine_6c6da0(a1);
     result = game_6c6ec0(a1);
     *(_DWORD*)(a1 + 416) &= ~0x10000000u;
+  }
+  return result;
+}
+
+int* Unit_6e6fa0(int* result, int* a2, _QWORD* a3, unsigned __int64 a4, int* a5,
+                 __int64 a6)
+{
+  __int64 v6;
+  __int64 v7;
+  int* v8;
+  __int64 v9;
+  int* v10;
+  int* v11;
+  int v12;
+  __int64 v13;
+  __int64 v14;
+  unsigned __int64 v15;
+  unsigned __int64 v17;
+  char* v18;
+  int* v22;
+  int* v25;
+  int* v26;
+  int* v27;
+  int* v28;
+  __int64 v29;
+  int v30;
+  int v31;
+  __int64 v32;
+  __int64 v33;
+  int v34;
+  int v35;
+
+  if (a4 >= 2) {
+    if (a4 == 2) {
+      v6 = *(a2 - 1);
+      v7 = *result;
+      if ((signed __int32)*(_DWORD*)(*a3 + 4 * v6) >
+          (signed __int32)*(_DWORD*)(*a3 + 4 * v7)) {
+        *result = v6;
+        *(a2 - 1) = v7;
+      }
+    }
+    else if ((__int64)a4 > 128) {
+      v15 = a4 >> 1;
+      v17 = a4 - (a4 >> 1);
+      if ((__int64)a4 <= a6) {
+        v22 = result;
+        v25 = a5;
+        Unit_6e7200(result, &result[v15], a3, a4 >> 1, a5);
+        v26 = &v25[v15];
+        result = Unit_6e7200(&v22[v15], a2, a3, v17, v26);
+        v27 = &v25[a4];
+        v28 = v26;
+        while (v28 != v27) {
+          v29 = *v28;
+          v30 = *(_DWORD*)(*a3 + 4 * v29);
+          v31 = *(_DWORD*)(*a3 + 4LL * *v25);
+          if (v30 > v31) {
+            v32 = 0;
+          }
+          else {
+            LODWORD(v29) = *v25;
+            v32 = 4;
+          }
+          v25 = (int*)((char*)v25 + v32);
+          if (v30 <= v31) {
+            v33 = 0;
+          }
+          else {
+            v33 = 4;
+          }
+          *v22++ = v29;
+          v28 = (int*)((char*)v28 + v33);
+          if (v25 == v26) {
+            while (v28 != v27) {
+              v35 = *v28++;
+              *v22++ = v35;
+            }
+            return result;
+          }
+        }
+        while (v25 != v26) {
+          v34 = *v25++;
+          *v22++ = v34;
+        }
+      }
+      else {
+        v18 = (char*)result;
+        Unit_6e6fa0(result, &result[v15], a3, a4 >> 1, a5, a6);
+        Unit_6e6fa0((int*)&v18[4 * v15], a2, a3, v17, a5, a6);
+        return (int*)Unit_6e7460_alt1(v18, &v18[4 * v15], a2, a3, v15, v17,
+                                      (__int64)a5, a6);
+      }
+    }
+    else if (result != a2) {
+      v8 = result + 1;
+      if (result + 1 != a2) {
+        v9 = 0;
+        v10 = result;
+        do {
+          LODWORD(v13) = *v10;
+          v12 = v10[1];
+          v10 = v8;
+          if ((signed __int32)*(_DWORD*)(*a3 + 4LL * v12) >
+              (signed __int32)*(_DWORD*)(*a3 + 4LL * (int)v13)) {
+            v14 = v9;
+            do {
+              *(int*)((char*)result + v14 + 4) = v13;
+              if (v14 == 0) {
+                v11 = result;
+                goto LABEL_11;
+              }
+              v13 = *(int*)((char*)result + v14 - 4);
+              v14 -= 4;
+            } while ((signed __int32)*(_DWORD*)(*a3 + 4LL * v12) >
+                     (signed __int32)*(_DWORD*)(*a3 + 4 * v13));
+            v11 = (int*)((char*)result + v14 + 4);
+          LABEL_11:
+            *v11 = v12;
+          }
+          v8 = v10 + 1;
+          v9 += 4;
+        } while (v10 + 1 != a2);
+      }
+    }
+  }
+  return result;
+}
+
+int* Unit_6e7200(int* result, int* a2, _QWORD* a3, unsigned __int64 a4, int* a5)
+{
+  __int64 v5;
+  __int64 v6;
+  int v7;
+  int v8;
+  __int64 v9;
+  int* v10;
+  int* v11;
+  int v12;
+  __int64 v13;
+  __int64 v14;
+  int* v15;
+  __int64 v16;
+  __int64 v17;
+  unsigned __int64 v18;
+  int* v19;
+  int* v24;
+  unsigned __int64 v25;
+  int* v26;
+  int* v27;
+  int* v28;
+  int* v29;
+  __int64 v30;
+  int v31;
+  int v32;
+  __int64 v33;
+  __int64 v34;
+  int v35;
+  int v36;
+
+  if (a4 != 0) {
+    if (a4 == 2) {
+      v5 = *(a2 - 1);
+      v6 = *result;
+      if ((signed __int32)*(_DWORD*)(*a3 + 4 * v5) <=
+          (signed __int32)*(_DWORD*)(*a3 + 4 * v6)) {
+        *a5 = v6;
+        v7 = *(a2 - 1);
+      }
+      else {
+        *a5 = v5;
+        v7 = *result;
+      }
+      a5[1] = v7;
+    }
+    else if (a4 == 1) {
+      *a5 = *result;
+    }
+    else if ((__int64)a4 > 8) {
+      v18 = a4 >> 1;
+      v19 = result;
+      v24 = &result[a4 >> 1];
+      v25 = 4 * (a4 >> 1);
+      Unit_6e6fa0(result, v24, a3, v18, a5, v18);
+      result = Unit_6e6fa0(v24, a2, a3, a4 - v18, &a5[v18], a4 - v18);
+      if (v25 != 0) {
+        v26 = v24;
+        v27 = a5;
+        v28 = a2;
+        v29 = v19;
+        while (v26 != a2) {
+          v30 = *v26;
+          v31 = *(_DWORD*)(*a3 + 4 * v30);
+          v32 = *(_DWORD*)(*a3 + 4LL * *v29);
+          if (v31 > v32) {
+            v33 = 4;
+          }
+          else {
+            LODWORD(v30) = *v29;
+            v33 = 0;
+          }
+          v26 = (int*)((char*)v26 + v33);
+          if (v31 <= v32) {
+            v34 = 4;
+          }
+          else {
+            v34 = 0;
+          }
+          *v27++ = v30;
+          v29 = (int*)((char*)v29 + v34);
+          if (v29 == v24) {
+            goto LABEL_38;
+          }
+        }
+        while (v29 != v24) {
+          v35 = *v29++;
+          *v27++ = v35;
+        }
+      }
+      else {
+        v26 = v24;
+        v27 = a5;
+        v28 = a2;
+      LABEL_38:
+        while (v26 != v28) {
+          v36 = *v26++;
+          *v27++ = v36;
+        }
+      }
+    }
+    else if (result != a2) {
+      v8 = *result++;
+      *a5 = v8;
+      if (result != a2) {
+        v9 = 0;
+        v10 = a5;
+        v11 = a5;
+        do {
+          v13 = *v11++;
+          v12 = v13;
+          v14 = *result;
+          if ((signed __int32)*(_DWORD*)(*a3 + 4 * v14) <=
+              (signed __int32)*(_DWORD*)(*a3 + 4 * v13)) {
+            *v11 = v14;
+          }
+          else {
+            v10[1] = v12;
+            v15 = a5;
+            if (v10 != a5) {
+              v16 = v9;
+              while (1) {
+                v15 = (int*)((char*)a5 + v16);
+                v17 = *(int*)((char*)a5 + v16 - 4);
+                if ((signed __int32)*(_DWORD*)(*a3 + 4LL * *result) <=
+                    (signed __int32)*(_DWORD*)(*a3 + 4 * v17)) {
+                  break;
+                }
+                v16 -= 4;
+                *v15 = v17;
+                if (v16 == 0) {
+                  v15 = a5;
+                  break;
+                }
+              }
+            }
+            *v15 = *result;
+          }
+          ++result;
+          v9 += 4;
+          v10 = v11;
+        } while (result != a2);
+      }
+    }
+  }
+  return result;
+}
+
+char* Unit_6e7460(char* result, char* a2, char* a3, _QWORD* a4, __int64 a5,
+                  __int64 a6, __int64 a7, __int64 a8)
+{
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
+  __int64 v14;
+  __int64 v15;
+  __int64 v16;
+  char* v17;
+  char* v18;
+  unsigned __int64 v19;
+  unsigned __int64 v20;
+  char* v21;
+  char* v22;
+  __int64 v23;
+  char* v24;
+  __int64 v25;
+  char* v26;
+  unsigned __int64 v27;
+  unsigned __int64 v28;
+  char* v29;
+  char* v30;
+  __int64 v31;
+  char* v32;
+  __int64 v33;
+  __int64 v34;
+  __int64 v35;
+  __int64 v36;
+  char* v37;
+  char* v38;
+  __int64 v39;
+  __int64 v40;
+  __int64 v41;
+  __int64 v42;
+  _DWORD* v43;
+  char* v44;
+  int v45;
+  __int64 v46;
+  int v47;
+  int v48;
+  __int64 v49;
+  __int64 v50;
+  __int64 v51;
+  int v52;
+  char* v53;
+  __int64 v54;
+  _QWORD* v55;
+  char* v56;
+  __int64 v57;
+
+  if (a6 != 0) {
+    while (a5 > a8 && a6 > a8) {
+      if (a5 == 0) {
+        return result;
+      }
+      v10 = *(int*)a2;
+      v11 = *a4;
+      v12 = 0;
+      v13 = 0;
+      while (1) {
+        v14 = *(int*)&result[4 * v13];
+        if ((signed __int32)*(_DWORD*)(*a4 + 4 * v10) >
+            (signed __int32)*(_DWORD*)(v11 + 4 * v14)) {
+          break;
+        }
+        ++v13;
+        v12 -= 4;
+        if (a5 == v13) {
+          return result;
+        }
+      }
+      v15 = a5 - v13;
+      v56 = a3;
+      v57 = a7;
+      v54 = a8;
+      v55 = a4;
+      v53 = &result[-v12];
+      if (a5 - v13 >= a6) {
+        if (a5 - 1 == v13) {
+          *(_DWORD*)&result[4 * v13] = v10;
+          *(_DWORD*)a2 = v14;
+          return result;
+        }
+        v25 = v15 / 2;
+        v26 = &result[4 * (v15 / 2)];
+        if (a3 == a2) {
+          v17 = a3;
+          v32 = a3;
+        }
+        else {
+          v27 = (a3 - a2) >> 2;
+          v17 = a2;
+          do {
+            v28 = v27 >> 1;
+            v29 = &v17[4 * (v27 >> 1)];
+            v31 = *(int*)v29;
+            v30 = v29 + 4;
+            v27 += ~(v27 >> 1);
+            if ((signed __int32)*(_DWORD*)(v11 + 4 * v31) >
+                (signed __int32)*(_DWORD*)(v11 + 4LL * *(int*)&v26[4 * v13])) {
+              v17 = v30;
+            }
+            else {
+              v27 = v28;
+            }
+          } while (v27 != 0);
+          v32 = a2;
+        }
+        v18 = &v26[-v12];
+        v16 = (v17 - v32) >> 2;
+      }
+      else {
+        v16 = a6 / 2;
+        v17 = &a2[4 * (a6 / 2)];
+        if (&result[-v12] == a2) {
+          v18 = a2;
+          v24 = a2;
+        }
+        else {
+          v18 = &result[-v12];
+          v19 = (a2 - result + v12) >> 2;
+          do {
+            v20 = v19 >> 1;
+            v21 = &v18[4 * (v19 >> 1)];
+            v23 = *(int*)v21;
+            v22 = v21 + 4;
+            v19 += ~(v19 >> 1);
+            if ((signed __int32)*(_DWORD*)(v11 + 4LL * *(int*)v17) >
+                (signed __int32)*(_DWORD*)(v11 + 4 * v23)) {
+              v19 = v20;
+            }
+            else {
+              v18 = v22;
+            }
+          } while (v19 != 0);
+          v24 = &result[-v12];
+        }
+        v25 = (v18 - v24) >> 2;
+      }
+      v33 = a6 - v16;
+      v34 = a5;
+      v35 = a6;
+      v36 = a5 - v25 - v13;
+      v37 = GameRoutine_6e7840(v18, a2, v17);
+      v38 = v37;
+      if (v25 + v16 >= v35 + v34 - (v25 + v16) - v13) {
+        a7 = v57;
+        a4 = v55;
+        Unit_6e7460(v37, v17, v56, v55, v36, v33, v57, v54);
+        result = v53;
+        v17 = v18;
+        v33 = v16;
+        v36 = v25;
+        a8 = v54;
+        a3 = v38;
+      }
+      else {
+        a4 = v55;
+        a7 = v57;
+        Unit_6e7460(v53, v18, v37, v55, v25, v16, v57, v54);
+        a3 = v56;
+        a8 = v54;
+        result = v38;
+      }
+      a5 = v36;
+      a6 = v33;
+      a2 = v17;
+      if (v33 == 0) {
+        return result;
+      }
+    }
+    if (a5 <= a6) {
+      if (result != a2) {
+        v42 = -a7;
+        v43 = (_DWORD*)a7;
+        v44 = result;
+        do {
+          v45 = *(_DWORD*)v44;
+          v44 += 4;
+          v42 -= 4;
+          *v43++ = v45;
+        } while (v44 != a2);
+        while (a2 != a3) {
+          v46 = *(int*)a2;
+          v47 = *(_DWORD*)(*a4 + 4 * v46);
+          v48 = *(_DWORD*)(*a4 + 4LL * *(int*)a7);
+          if (v47 > v48) {
+            v49 = 4;
+          }
+          else {
+            LODWORD(v46) = *(_DWORD*)a7;
+            v49 = 0;
+          }
+          a2 += v49;
+          if (v47 <= v48) {
+            v50 = 4;
+          }
+          else {
+            v50 = 0;
+          }
+          *(_DWORD*)result = v46;
+          result += 4;
+          a7 += v50;
+          if (v43 == (_DWORD*)a7) {
+            return result;
+          }
+        }
+        return (char*)memmove_alt1((__int64)result, a7, -(a7 + v42));
+      }
+    }
+    else if (a2 != a3) {
+      v39 = 0;
+      do {
+        *(_DWORD*)(a7 + v39) = *(_DWORD*)&a2[v39];
+        v39 += 4;
+      } while (&a2[v39] != a3);
+      v40 = a7 + v39;
+      while (a2 != result) {
+        v41 = *((int*)a2 - 1);
+        if ((signed __int32)*(_DWORD*)(*a4 + 4LL * *(int*)(v40 - 4)) >
+            (signed __int32)*(_DWORD*)(*a4 + 4 * v41)) {
+          a2 -= 4;
+        }
+        else {
+          LODWORD(v41) = *(_DWORD*)(v40 - 4);
+          v40 -= 4;
+        }
+        *((_DWORD*)a3 - 1) = v41;
+        a3 -= 4;
+        if (v40 == a7) {
+          return result;
+        }
+      }
+      if (a7 != v40) {
+        v51 = -4;
+        do {
+          v52 = *(_DWORD*)(v40 - 4);
+          v40 -= 4;
+          *(_DWORD*)&a3[v51] = v52;
+          v51 -= 4;
+        } while (v40 != a7);
+      }
+    }
   }
   return result;
 }

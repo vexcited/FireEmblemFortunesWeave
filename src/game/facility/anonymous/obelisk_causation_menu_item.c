@@ -50,6 +50,17 @@ extern __int64 GameData_21f84b8;
 __int64 ObeliskCausationMenuItem_PlayChangeSe(__int64 a1);
 __int64 game_facility_anonymous_ObeliskCausationMenuItem_ACall_closure_Invoke(
     __int64 a1);
+__int64* GameRoutine_9db8a0_alt1(unsigned __int8,
+                                 int) __asm__("GameRoutine_9db8a0");
+__int64 LayoutAccessor_1562cf0(__int64 result, const char*);
+__int64 game_19307a0(__int64, char);
+__int64 game_GameVariableTable_Find_alt1(_QWORD*, unsigned __int64*) __asm__(
+    "game_GameVariableTable_Find");
+__int64 std___1___shared_weak_count___release_weak(__int64);
+__int64 std___1___shared_weak_count_lock(__int64);
+extern __int64 ui_LayoutAccessor_empty_;
+__int64 ObeliskCausationMenuItem_OnSelect(__int64 a1);
+__int64 ObeliskCausationMenuItem_OnDeselect(__int64 a1);
 
 __int64 ObeliskCausationMenuItem_GetText(__int64 a1)
 {
@@ -97,6 +108,214 @@ __int64 ObeliskCausationMenuItem_GetText(__int64 a1)
   v5 = -65529;
   v6 = -65528;
   return GameRoutine_a4dbe0(v2, v1, 0, v4);
+}
+
+__int64 ObeliskCausationMenuItem_OnSelect(__int64 a1)
+{
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  atomic_ullong* v6;
+  __int64* v7;
+  __int64 v8;
+  __int64 v9;
+  __int64* v10;
+  unsigned __int64* v11;
+  __int64 v12;
+  bool v13;
+  unsigned int v14;
+  unsigned __int64* v15;
+  __int64 v16;
+  int v17;
+  const char* v18;
+  __int64* v20;
+  __int64 v21;
+
+  v2 = 512;
+  if (*(_BYTE*)(a1 + 79) != 0) {
+    v2 = 520;
+  }
+  (*(void (**)(__int64))(*(_QWORD*)a1 + v2))((__int64)a1);
+  game_19307a0(a1, 1);
+  v3 = *(_QWORD*)(a1 + 56);
+  if (v3 == 0) {
+    goto LABEL_7;
+  }
+  v4 = std___1___shared_weak_count_lock(v3);
+  if (v4 == 0) {
+    goto LABEL_7;
+  }
+  v5 = v4;
+  v6 = (atomic_ullong*)(v4 + 8);
+  v7 = *(__int64**)(a1 + 48);
+  if (atomic_fetch_add(v6, 0xFFFFFFFFFFFFFFFFLL) != 0) {
+    if (v7 != nullptr) {
+      goto LABEL_8;
+    }
+    goto LABEL_7;
+  }
+  v20 = v7;
+  (*(void (**)(__int64))(*(_QWORD*)v5 + 16LL))(v5);
+  std___1___shared_weak_count___release_weak(v5);
+  v7 = v20;
+  if (v20 == nullptr) {
+  LABEL_7:
+    v7 = &ui_LayoutAccessor_empty_;
+  }
+LABEL_8:
+  LayoutAccessor_1562cf0((__int64)v7, "KeyOn");
+  v8 = *(_QWORD*)(a1 + 56);
+  if (v8 == 0) {
+    goto LABEL_12;
+  }
+  v9 = std___1___shared_weak_count_lock(v8);
+  if (v9 == 0) {
+    goto LABEL_12;
+  }
+  v10 = *(__int64**)(a1 + 48);
+  if (atomic_fetch_add((atomic_ullong* volatile)(v9 + 8),
+                       0xFFFFFFFFFFFFFFFFLL) == 0) {
+    v21 = v9;
+    (*(void (**)(__int64))(*(_QWORD*)v9 + 16LL))(v9);
+    std___1___shared_weak_count___release_weak(v21);
+    if (v10 != nullptr) {
+      goto LABEL_13;
+    }
+    goto LABEL_12;
+  }
+  if (v10 == nullptr) {
+  LABEL_12:
+    v10 = &ui_LayoutAccessor_empty_;
+  }
+LABEL_13:
+  v11 = (unsigned __int64*)(GameData_21f84b8 +
+                            40LL * *(unsigned __int8*)(a1 + 96));
+  v13 = *v11 == 0 || game_GameModeData_instance_ == 0 ||
+        (v12 = game_GameVariableTable_Find_alt1(
+             *(_QWORD**)(game_GameModeData_instance_ + 48), v11)) == 0 ||
+        *(_BYTE*)(v12 + 32) != 1;
+  v14 = *(unsigned __int8*)(a1 + 96);
+  v15 = (unsigned __int64*)(GameData_21f84a0 + 40LL * v14);
+  if (*v15 != 0 && game_GameModeData_instance_ != 0 &&
+      (v16 = game_GameVariableTable_Find_alt1(
+           *(_QWORD**)(game_GameModeData_instance_ + 48), v15)) != 0) {
+    v17 = *(_DWORD*)(v16 + 32);
+  }
+  else {
+    v17 = 0;
+  }
+  if ((v13 & (GameRoutine_9db8a0_alt1(v14, v17) != nullptr)) != 0) {
+    v18 = "KeyOn";
+  }
+  else {
+    v18 = "KeyOff";
+  }
+  return LayoutAccessor_1562cf0((__int64)v10, v18);
+}
+
+__int64 ObeliskCausationMenuItem_OnDeselect(__int64 a1)
+{
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  atomic_ullong* v6;
+  __int64* v7;
+  __int64 v8;
+  __int64 v9;
+  __int64* v10;
+  unsigned __int64* v11;
+  __int64 v12;
+  bool v13;
+  unsigned int v14;
+  unsigned __int64* v15;
+  __int64 v16;
+  int v17;
+  const char* v18;
+  __int64* v20;
+  __int64 v21;
+
+  v2 = 504;
+  if (*(_BYTE*)(a1 + 79) != 0) {
+    v2 = 520;
+  }
+  (*(void (**)(__int64))(*(_QWORD*)a1 + v2))((__int64)a1);
+  game_19307a0(a1, 0);
+  v3 = *(_QWORD*)(a1 + 56);
+  if (v3 == 0) {
+    goto LABEL_7;
+  }
+  v4 = std___1___shared_weak_count_lock(v3);
+  if (v4 == 0) {
+    goto LABEL_7;
+  }
+  v5 = v4;
+  v6 = (atomic_ullong*)(v4 + 8);
+  v7 = *(__int64**)(a1 + 48);
+  if (atomic_fetch_add(v6, 0xFFFFFFFFFFFFFFFFLL) != 0) {
+    if (v7 != nullptr) {
+      goto LABEL_8;
+    }
+    goto LABEL_7;
+  }
+  v20 = v7;
+  (*(void (**)(__int64))(*(_QWORD*)v5 + 16LL))(v5);
+  std___1___shared_weak_count___release_weak(v5);
+  v7 = v20;
+  if (v20 == nullptr) {
+  LABEL_7:
+    v7 = &ui_LayoutAccessor_empty_;
+  }
+LABEL_8:
+  LayoutAccessor_1562cf0((__int64)v7, "KeyOff");
+  v8 = *(_QWORD*)(a1 + 56);
+  if (v8 == 0) {
+    goto LABEL_12;
+  }
+  v9 = std___1___shared_weak_count_lock(v8);
+  if (v9 == 0) {
+    goto LABEL_12;
+  }
+  v10 = *(__int64**)(a1 + 48);
+  if (atomic_fetch_add((atomic_ullong* volatile)(v9 + 8),
+                       0xFFFFFFFFFFFFFFFFLL) == 0) {
+    v21 = v9;
+    (*(void (**)(__int64))(*(_QWORD*)v9 + 16LL))(v9);
+    std___1___shared_weak_count___release_weak(v21);
+    if (v10 != nullptr) {
+      goto LABEL_13;
+    }
+    goto LABEL_12;
+  }
+  if (v10 == nullptr) {
+  LABEL_12:
+    v10 = &ui_LayoutAccessor_empty_;
+  }
+LABEL_13:
+  v11 = (unsigned __int64*)(GameData_21f84b8 +
+                            40LL * *(unsigned __int8*)(a1 + 96));
+  v13 = *v11 == 0 || game_GameModeData_instance_ == 0 ||
+        (v12 = game_GameVariableTable_Find_alt1(
+             *(_QWORD**)(game_GameModeData_instance_ + 48), v11)) == 0 ||
+        *(_BYTE*)(v12 + 32) != 1;
+  v14 = *(unsigned __int8*)(a1 + 96);
+  v15 = (unsigned __int64*)(GameData_21f84a0 + 40LL * v14);
+  if (*v15 != 0 && game_GameModeData_instance_ != 0 &&
+      (v16 = game_GameVariableTable_Find_alt1(
+           *(_QWORD**)(game_GameModeData_instance_ + 48), v15)) != 0) {
+    v17 = *(_DWORD*)(v16 + 32);
+  }
+  else {
+    v17 = 0;
+  }
+  if ((v13 & (GameRoutine_9db8a0_alt1(v14, v17) != nullptr)) != 0) {
+    v18 = "KeyOn";
+  }
+  else {
+    v18 = "KeyOff";
+  }
+  return LayoutAccessor_1562cf0((__int64)v10, v18);
 }
 
 __int64 ObeliskCausationMenuItem_ACall(__int64 a1)

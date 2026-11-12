@@ -19,6 +19,20 @@ __attribute__((swiftcall)) void KeyIcon_17aa270(PSEUDO_X8 x8_, __int64 result,
                                                 __int64 a2);
 __attribute__((swiftcall)) void KeyIcon_17aa2f0(PSEUDO_X8 x8_, __int64 result,
                                                 __int64 a2);
+_QWORD* Element_1886290(__int64, const char**);
+__attribute__((swiftcall)) void game_1603b10(PSEUDO_X8,
+                                             unsigned __int64 result);
+__int64* nn_ui2d_Pane_GetRuntimeTypeInfoStatic();
+__int64 GameRoutine_156ddc0(unsigned int, __int64);
+extern _UNKNOWN* GameData_2130ea8;
+extern _UNKNOWN GameData_22416d8;
+extern __int64 GameData_22416d0;
+int __cxa_guard_acquire(__int64);
+unsigned __int64 strlen(const char*);
+void GameRoutine_156c5d0(__int64, __int64, char);
+void __cxa_guard_release(__int64);
+void nn_mem_StandardAllocator_Free(__int64, __int64);
+void KeyIcon_17aa380(__int64 a1, const char* a2, unsigned int a3);
 
 __attribute__((swiftcall)) void KeyIcon_17aa140(PSEUDO_X8 x8_, __int64 a1,
                                                 __int64 a2)
@@ -133,6 +147,59 @@ __attribute__((swiftcall)) void KeyIcon_17aa2f0(PSEUDO_X8 x8_, __int64 result,
   {
     result;
     return;
+  }
+}
+
+void KeyIcon_17aa380(__int64 a1, const char* a2, unsigned int a3)
+{
+  _QWORD* v5;
+  __int64* v6;
+  const char** v8;
+  __int64 v9;
+  struct {
+    const char* v10[2];
+    const char** v11;
+  } v10_;
+
+  v10_.v10[0] = a2;
+  v10_.v10[1] = (const char*)strlen(a2);
+  v5 = Element_1886290(a1, v10_.v10);
+  if ((atomic_load_explicit((atomic_uchar* volatile)GameData_2130ea8,
+                            memory_order_acquire) &
+       1) == 0 &&
+      __cxa_guard_acquire((__int64)&GameData_22416d8) != 0) {
+    GameData_22416d0 = (__int64)nn_ui2d_Pane_GetRuntimeTypeInfoStatic();
+    __cxa_guard_release((__int64)&GameData_22416d8);
+  }
+  if (v5 != nullptr) {
+    v6 = (__int64*)(*(__int64 (**)(_QWORD*))(*v5 + 16LL))(v5);
+    if (v6 == &GameData_22416d0) {
+      goto LABEL_10;
+    }
+    do {
+      v6 = (__int64*)*v6;
+    } while (v6 != &GameData_22416d0 && v6 != nullptr);
+    if (v6 != nullptr) {
+    LABEL_10:
+      if ((*(_BYTE*)(a1 + 1040) & 1) == 0) {
+        a3 = GameRoutine_156ddc0(*(_DWORD*)(a1 + 1036), a3);
+      }
+      if (a3 != 36) {
+        game_1603b10((void*)((__int64)v10_.v10), a3);
+        v8 = ((__int64)v10_.v10[0] & 1) != 0
+                 ? v10_.v11
+                 : (const char**)((char*)v10_.v10 + 1);
+        GameRoutine_156c5d0((__int64)v5, (__int64)v8, 0);
+        if (((__int64)v10_.v10[0] & 1) != 0 && v10_.v11 != nullptr) {
+          v9 = 128;
+          if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+            v9 = 56;
+          }
+          nn_mem_StandardAllocator_Free(
+              *(_QWORD*)fw_memory_g_heap_manager_ptr + v9, (__int64)v10_.v11);
+        }
+      }
+    }
   }
 }
 

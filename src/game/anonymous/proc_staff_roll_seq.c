@@ -38,6 +38,20 @@ extern __int64 fw_memory_g_heap_manager;
 void __attribute__((noreturn)) String_60a1d0(_QWORD);
 __attribute__((swiftcall)) void ProcStaffRollSeq_19c1860(PSEUDO_X8 x8_,
                                                          __int64 a1);
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+char* GameRoutine_60a020(char*, const char*);
+extern __int64 (*GameData_2121098[])();
+extern __int64 (*game_anonymous_ProcStaffRollSeq_MiddleDrawObj_vtable[])();
+extern __int64 (*game_anonymous_ProcStaffRollSeq_StaffDrawObj_vtable[])();
+extern char GameData_1a9f09e;
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+__int64 ProcStaffRollSeq_19c14a0(__int64* a1, __int64 a2, const char* a3,
+                                 float a4);
+__int64 ProcStaffRollSeq_19c16a0(__int64 a1, __int64 a2, const char* a3,
+                                 const char* a4, const char* a5, float a6);
 
 __int64 ProcStaffRollSeq_Destructor(__int64 a1)
 {
@@ -733,6 +747,178 @@ LABEL_43:
     } while (i != v35);
   }
   return v88;
+}
+
+__int64 ProcStaffRollSeq_19c14a0(__int64* a1, __int64 a2, const char* a3,
+                                 float a4)
+{
+
+#pragma clang fp contract(off)
+  __int64 v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  const char* v13;
+  __int64 result;
+  __int64 v15[3];
+
+  v8 = fw_memory_g_heap_manager_ptr;
+  v9 = fw_memory_HeapManager_Allocate_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr, 168, 16, 0);
+  *(_QWORD*)(v9 + 8) = 0;
+  *(_QWORD*)(v9 + 16) = 0;
+  *(_BYTE*)(v9 + 32) = 0;
+  *(_QWORD*)(v9 + 48) = 0;
+  *(_QWORD*)(v9 + 56) = 0;
+  *(_QWORD*)(v9 + 64) = 0;
+  *(_QWORD*)(v9 + 72) = 0;
+  *(_QWORD*)(v9 + 80) = 0;
+  *(_QWORD*)(v9 + 88) = 0;
+  *(_QWORD*)(v9 + 96) = 0;
+  *(_QWORD*)(v9 + 104) = 0;
+  *(_DWORD*)(v9 + 112) = 0;
+  *(_QWORD*)v9 = GameData_2121098;
+  *(_QWORD*)(v9 + 40) = 0;
+  *(float*)(v9 + 116) = a4;
+  *(_QWORD*)(v9 + 120) = 0;
+  *(_QWORD*)(v9 + 128) = 0;
+  *(_QWORD*)(v9 + 136) = a2;
+  *(_QWORD*)(v9 + 144) = 0;
+  *(_QWORD*)(v9 + 152) = 0;
+  *(_QWORD*)(v9 + 160) = 0;
+  *(_QWORD*)(v9 + 24) = game_anonymous_ProcStaffRollSeq_MiddleDrawObj_vtable;
+  v10 = v9 + 24;
+  ProcStaffRollSeq_19c1860((void*)(v15), v9 + 24);
+  if ((*(_BYTE*)(v9 + 144) & 1) != 0) {
+    v11 = *(_QWORD*)(v9 + 160);
+    if (v11 != 0) {
+      v12 = 128;
+      if (*(_QWORD*)(*(_QWORD*)v8 + 200LL) == 0) {
+        v12 = 56;
+      }
+      nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v8 + v12, v11);
+    }
+  }
+  qmemcpy((void*)(v9 + 144), v15, 24);
+  if (a3 != nullptr) {
+    v13 = a3;
+  }
+  else {
+    v13 = &GameData_1a9f09e;
+  }
+  GameRoutine_60a020((char*)(v9 + 40), v13);
+  result = (*(__int64 (**)(__int64))(*(_QWORD*)(v9 + 24) + 40LL))(v10);
+  *a1 = v10;
+  a1[1] = v9;
+  return result;
+}
+
+__int64 ProcStaffRollSeq_19c16a0(__int64 a1, __int64 a2, const char* a3,
+                                 const char* a4, const char* a5, float a6)
+{
+
+#pragma clang fp contract(off)
+  char* v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
+  __int64 v14;
+  bool v15;
+  const char* v16;
+  int v17;
+  int v18;
+  const char* v19;
+  int v20;
+  const char* v21;
+  int v22;
+  __int64 v23;
+  __int64 v25[3];
+
+  *(_BYTE*)(a1 + 8) = 0;
+  *(_QWORD*)(a1 + 24) = 0;
+  *(_QWORD*)(a1 + 32) = 0;
+  *(_QWORD*)(a1 + 40) = 0;
+  *(_QWORD*)(a1 + 48) = 0;
+  *(_QWORD*)a1 = game_anonymous_ProcStaffRollSeq_StaffDrawObj_vtable;
+  *(_QWORD*)(a1 + 16) = 0;
+  v10 = (char*)(a1 + 16);
+  *(_QWORD*)(a1 + 56) = 0;
+  *(_QWORD*)(a1 + 64) = 0;
+  *(_QWORD*)(a1 + 72) = 0;
+  *(_QWORD*)(a1 + 80) = 0;
+  *(_DWORD*)(a1 + 88) = 0;
+  *(float*)(a1 + 92) = a6;
+  *(_QWORD*)(a1 + 96) = 0;
+  *(_QWORD*)(a1 + 104) = 0;
+  *(_QWORD*)(a1 + 112) = a2;
+  *(_QWORD*)(a1 + 120) = 0;
+  v11 = a1 + 120;
+  *(_QWORD*)(a1 + 128) = 0;
+  *(_QWORD*)(a1 + 136) = 0;
+  *(_DWORD*)(a1 + 144) = 0;
+  *(_BYTE*)(a1 + 148) = 1;
+  ProcStaffRollSeq_19c1860((void*)(v25), a1);
+  if ((*(_BYTE*)v11 & 1) != 0) {
+    v12 = *(_QWORD*)(a1 + 136);
+    if (v12 != 0) {
+      v13 = 128;
+      if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+        v13 = 56;
+      }
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v13, v12);
+    }
+  }
+  v14 = v25[1];
+  v15 = a3 == nullptr;
+  if (a3 != nullptr) {
+    v16 = a3;
+  }
+  else {
+    v16 = &GameData_1a9f09e;
+  }
+  if (a3 != nullptr) {
+    v17 = 2;
+  }
+  else {
+    v17 = 1;
+  }
+  *(_QWORD*)v11 = v25[0];
+  *(_QWORD*)(v11 + 8) = v14;
+  *(_QWORD*)(v11 + 16) = v25[2];
+  v18 = !v15;
+  GameRoutine_60a020(v10, v16);
+  if (a4 != nullptr) {
+    v19 = a4;
+  }
+  else {
+    v19 = &GameData_1a9f09e;
+  }
+  if (a4 != nullptr) {
+    v20 = v17;
+  }
+  else {
+    v20 = v18;
+  }
+  GameRoutine_60a020((char*)(a1 + 40), v19);
+  if (a5 != nullptr) {
+    v21 = a5;
+  }
+  else {
+    v21 = &GameData_1a9f09e;
+  }
+  if (a5 != nullptr) {
+    v22 = v20 + 1;
+  }
+  else {
+    v22 = v20;
+  }
+  GameRoutine_60a020((char*)(a1 + 64), v21);
+  v23 = *(_QWORD*)a1;
+  *(_DWORD*)(a1 + 144) = v22;
+  *(_BYTE*)(a1 + 148) = 0;
+  return (*(__int64 (**)(__int64))(v23 + 40))(a1);
 }
 
 __attribute__((swiftcall)) void ProcStaffRollSeq_19c1860(PSEUDO_X8 x8_,

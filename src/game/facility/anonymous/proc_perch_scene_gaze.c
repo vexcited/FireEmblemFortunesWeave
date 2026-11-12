@@ -156,6 +156,32 @@ _QWORD* ProcPerchSceneGaze_CameraStateShoulder_Unknown4(__n128 a1);
 void ProcPerchSceneGaze_CameraStateShoulder_Unknown6();
 _QWORD* ProcPerchSceneGaze_CameraStateFromQuestion_Unknown2(__n128 a1);
 __int64 ProcPerchSceneGaze_143cd70();
+_QWORD* SceneCameraWorkUpdater_14559c0(__int64, unsigned __int64*, __int64,
+                                       _QWORD**, __int64*);
+__attribute__((swiftcall)) void game_facility_144f120(PSEUDO_X8, __int64,
+                                                      __int64);
+__int64 game_HashString(__int64 result);
+__int64 memcpy(__int64, __int64, unsigned __int64);
+__int64 std___1___shared_weak_count___release_weak_alt2(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
+    "std___1___shared_weak_count_lock");
+extern _UNKNOWN* std___1_piecewise_construct_ptr;
+extern _UNKNOWN GameData_1ab175e;
+extern _UNKNOWN GameData_1abd603;
+extern _UNKNOWN GameData_1ad060c;
+extern __int64 (*GameData_203de90[])();
+extern __int64 (*GameData_203df10[])();
+extern __int64 (*GameData_203df90[])();
+extern __int64 fw_memory_g_heap_manager;
+unsigned __int64 strlen_alt1(const char*) __asm__("strlen");
+void __attribute__((noreturn)) String_60a1d0_alt1() __asm__("String_60a1d0");
+void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void ProcPerchSceneGaze_1439890(_QWORD* a1, const char* a2);
+__int64*
+game_facility_anonymous_ProcPerchSceneGaze_CameraStateBase_AddGazeCameraWorkSe(
+    __int64* result);
 
 _QWORD* ProcPerchSceneGaze_14376e0(__int64 a1)
 {
@@ -1340,6 +1366,176 @@ game_facility_anonymous_ProcPerchSceneGaze_CameraStateBase_SetCharacterLookAt_cl
 
   v2 = *(_OWORD*)(*(_QWORD*)(a1 + 8) + 16LL);
   return GameRoutine_13f9200(&v2);
+}
+
+void ProcPerchSceneGaze_1439890(_QWORD* a1, const char* a2)
+{
+  __int64 v3;
+  __int64 v4;
+  __int64 v6;
+  __int64 v7;
+  unsigned __int64 v8;
+  unsigned __int64 v9;
+  char* v10;
+  __int64 v11;
+  __int64 v12;
+  struct {
+    _QWORD v13[2];
+    char* v14;
+  } v13_;
+
+  v3 = *(_QWORD*)(*(_QWORD*)GameData_212dce8 + 264LL);
+  if (v3 == 0) {
+    goto LABEL_20;
+  }
+  v4 = *(_QWORD*)(*(_QWORD*)GameData_212dce8 + 256LL);
+  v6 = *(_QWORD*)(*(_QWORD*)GameData_212dce8 + 264LL);
+  atomic_fetch_add_explicit((atomic_ullong* volatile)(v3 + 16), 1u,
+                            memory_order_relaxed);
+  v7 = std___1___shared_weak_count_lock_alt1(v6);
+  std___1___shared_weak_count___release_weak_alt2(v3);
+  if (v7 == 0) {
+    goto LABEL_20;
+  }
+  if (v4 == 0) {
+    goto LABEL_18;
+  }
+  v8 = strlen_alt1(a2);
+  if (v8 >= 0xFFFFFFFFFFFFFFF7LL) {
+    String_60a1d0_alt1();
+  }
+  v9 = v8;
+  if (v8 >= 0x17) {
+    if ((v8 | 7) == 0x17) {
+      v11 = 26;
+    }
+    else {
+      v11 = (v8 | 7) + 1;
+    }
+    v10 = (char*)fw_memory_HeapManager_Allocate_alt1(fw_memory_g_heap_manager,
+                                                     v11, 16, 0);
+    v13_.v13[1] = v9;
+    v13_.v14 = v10;
+    v13_.v13[0] = v11 | 1;
+  }
+  else {
+    LOBYTE(v13_.v13[0]) = 2 * v8;
+    v10 = (char*)v13_.v13 + 1;
+    if (v8 == 0) {
+      goto LABEL_13;
+    }
+  }
+  memcpy((__int64)v10, (__int64)a2, v9);
+LABEL_13:
+  v10[v9] = 0;
+  game_facility_144f120((void*)(a1), v4, (__int64)v13_.v13);
+  if ((v13_.v13[0] & 1) != 0 && v13_.v14 != nullptr) {
+    v12 = 128;
+    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+      v12 = 56;
+    }
+    nn_mem_StandardAllocator_Free_alt2(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v12, (__int64)v13_.v14);
+  }
+LABEL_18:
+  if (atomic_fetch_add((atomic_ullong* volatile)(v7 + 8),
+                       0xFFFFFFFFFFFFFFFFLL) != 0) {
+    if (v4 != 0) {
+      return;
+    }
+    goto LABEL_20;
+  }
+  (*(void (**)(__int64))(*(_QWORD*)v7 + 16LL))(v7);
+  std___1___shared_weak_count___release_weak_alt2(v7);
+  if (v4 == 0) {
+  LABEL_20:
+    *a1 = 0;
+    a1[1] = 0;
+  }
+}
+
+__int64*
+
+game_facility_anonymous_ProcPerchSceneGaze_CameraStateBase_AddGazeCameraWorkSe(
+    __int64* result)
+{
+  __int64 v1;
+  __int64* v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  struct {
+    _QWORD v8[4];
+    __int64* v9;
+  } v8_;
+  __int64 v10;
+  _QWORD* v11;
+  __int64* v12;
+
+  v1 = *result;
+  if (*result == 0) {
+    return result;
+  }
+  v2 = result;
+  v8_.v8[0] = GameData_203de90;
+  v8_.v9 = v8_.v8;
+  v10 = game_HashString((__int64)&GameData_1ad060c);
+  v11 = v8_.v8;
+  v12 = &v10;
+  SceneCameraWorkUpdater_14559c0(v1 + 144, (unsigned __int64*)&v10,
+                                 (__int64)std___1_piecewise_construct_ptr, &v12,
+                                 (__int64*)&v11);
+  if (v8_.v9 == v8_.v8) {
+    v3 = 32;
+  }
+  else {
+    if (v8_.v9 == nullptr) {
+      goto LABEL_7;
+    }
+    v3 = 40;
+  }
+  (*(void (**)(__int64))(*v8_.v9 + v3))((__int64)v8_.v9);
+LABEL_7:
+  v4 = *v2;
+  v8_.v8[0] = GameData_203df10;
+  v8_.v9 = v8_.v8;
+  v10 = game_HashString((__int64)&GameData_1ab175e);
+  v11 = v8_.v8;
+  v12 = &v10;
+  SceneCameraWorkUpdater_14559c0(v4 + 144, (unsigned __int64*)&v10,
+                                 (__int64)std___1_piecewise_construct_ptr, &v12,
+                                 (__int64*)&v11);
+  if (v8_.v9 == v8_.v8) {
+    v5 = 32;
+    goto LABEL_11;
+  }
+  if (v8_.v9 != nullptr) {
+    v5 = 40;
+  LABEL_11:
+    (*(void (**)(__int64))(*v8_.v9 + v5))((__int64)v8_.v9);
+  }
+  v6 = *v2;
+  v8_.v8[0] = GameData_203df90;
+  v8_.v9 = v8_.v8;
+  v10 = game_HashString((__int64)&GameData_1abd603);
+  v11 = v8_.v8;
+  v12 = &v10;
+  SceneCameraWorkUpdater_14559c0(v6 + 144, (unsigned __int64*)&v10,
+                                 (__int64)std___1_piecewise_construct_ptr, &v12,
+                                 (__int64*)&v11);
+  result = v8_.v9;
+  if (v8_.v9 == v8_.v8) {
+    v7 = 32;
+  }
+  else {
+    if (v8_.v9 == nullptr) {
+      return result;
+    }
+    v7 = 40;
+  }
+  return (__int64*)(*(__int64 (**)(__int64))(*v8_.v9 + v7))((__int64)v8_.v9);
 }
 
 __int64 ProcPerchSceneGaze_1439bb0()

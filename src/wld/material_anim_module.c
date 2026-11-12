@@ -205,6 +205,11 @@ void MaterialAnimModule_beaa40(__int64 a1, __int64 a2, __int64 a3,
                                unsigned __int64 a4);
 __int64 wld_MaterialAnimModule_LoadAnimAsync_lambda0_Invoke(__int64 a1,
                                                             __int64* a2);
+__int64 memset(__int64, int, unsigned __int64);
+void MaterialAnimModule_beb520_alt2(__int64**) __asm__(
+    "MaterialAnimModule_beb520");
+void __attribute__((noreturn)) GameRoutine_bea7e0();
+void MaterialAnimModule_bea560(__int64* a1, unsigned __int64 a2);
 
 void MaterialAnimModule_be3840(__int64 a1, __int64 a2)
 {
@@ -3867,6 +3872,132 @@ __int64 MaterialAnimModule_bea360(__int64 result)
   return result;
 }
 
+void MaterialAnimModule_bea560(__int64* a1, unsigned __int64 a2)
+{
+  __int64 v2;
+  __int64* v3;
+  __int64 v5;
+  __int64 v6;
+  unsigned __int64 v7;
+  __int64 v8;
+  unsigned __int64 v9;
+  unsigned __int64 v10;
+  unsigned __int64 v11;
+  __int64 v12;
+  unsigned __int64 v13;
+  __int64 v14;
+  unsigned __int64 v15;
+  unsigned __int64 v16;
+  unsigned __int64 v17;
+  __int64* v18;
+  _QWORD* v19;
+  __int64 v20;
+  __int64 v21;
+  __int64 v22;
+  __int64 v23;
+  __int64 v24;
+  __int64* v25;
+
+  v3 = (__int64*)a1[1];
+  v2 = a1[2];
+  if (0xAAAAAAAAAAAAAAABLL * ((v2 - (__int64)v3) >> 4) >= a2) {
+    if (a2 != 0) {
+      v13 = 48 * ((48 * a2 - 48) / 0x30) + 48;
+      memset(a1[1], 0, v13);
+      v3 = (__int64*)((char*)v3 + v13);
+    }
+    a1[1] = (__int64)v3;
+  }
+  else {
+    v5 = *a1;
+    v6 = (__int64)v3 - *a1;
+    v7 = a2 - 0x5555555555555555LL * (v6 >> 4);
+    if (v7 > 0x555555555555555LL) {
+      GameRoutine_bea7e0();
+    }
+    v8 = fw_memory_g_heap_manager_ptr;
+    v9 = 0xAAAAAAAAAAAAAAABLL * ((v2 - v5) >> 4);
+    if (2 * v9 > v7) {
+      v7 = 2 * v9;
+    }
+    if (v9 >= 0x2AAAAAAAAAAAAAALL) {
+      v10 = 0x555555555555555LL;
+    }
+    else {
+      v10 = v7;
+    }
+    if (v10 != 0) {
+      if (v10 > 0x555555555555555LL) {
+        GameRoutine_60a210_alt1();
+      }
+      v11 = a2;
+      v12 = fw_memory_HeapManager_Allocate_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr, 48 * v10, 16, 0);
+      a2 = v11;
+    }
+    else {
+      v12 = 0;
+    }
+    v14 = v12 + v6;
+    v15 = v12 + 48 * v10;
+    v16 = 48 * ((48 * a2 - 48) / 0x30) + 48;
+    memset(v14, 0, v16);
+    v17 = v14 + v16;
+    if ((__int64*)v5 != v3) {
+      v18 = (__int64*)v5;
+      v19 = (_QWORD*)v12;
+      do {
+        v20 = *v18;
+        v21 = v18[2];
+        v19[1] = v18[1];
+        v19[2] = v21;
+        *v19 = v20;
+        v18[1] = 0;
+        v18[2] = 0;
+        *v18 = 0;
+        v19[4] = 0;
+        v19[5] = 0;
+        v19[3] = v18[3];
+        v19[4] = v18[4];
+        v19[5] = v18[5];
+        v18[4] = 0;
+        v18[5] = 0;
+        v18[3] = 0;
+        v18 += 6;
+        v19 += 6;
+      } while (v18 != v3);
+      do {
+        v25 = (__int64*)(v5 + 24);
+        MaterialAnimModule_beb520_alt2(&v25);
+        if ((*(_BYTE*)v5 & 1) != 0) {
+          v22 = *(_QWORD*)(v5 + 16);
+          if (v22 != 0) {
+            if (*(_QWORD*)(*(_QWORD*)v8 + 200LL) != 0) {
+              v23 = 128;
+            }
+            else {
+              v23 = 56;
+            }
+            nn_mem_StandardAllocator_Free_alt2(*(_QWORD*)v8 + v23, v22);
+          }
+        }
+        v5 += 48;
+      } while ((__int64*)v5 != v3);
+      v5 = *a1;
+    }
+    *a1 = v12;
+    a1[1] = v17;
+    a1[2] = v15;
+    if (v5 != 0) {
+      v24 = 128;
+      if (*(_QWORD*)(*(_QWORD*)v8 + 200LL) == 0) {
+        v24 = 56;
+      }
+      nn_mem_StandardAllocator_Free_alt2(*(_QWORD*)v8 + v24, v5);
+    }
+  }
+}
+
 void MaterialAnimModule_beaa40(__int64 a1, __int64 a2, __int64 a3,
                                unsigned __int64 a4)
 {
@@ -5853,7 +5984,7 @@ __int64 wld_MaterialAnimModule_LoadAnimAsync_lambda0_Invoke(__int64 a1,
     *(_DWORD*)(v40 + 60) = 0;
     *(_QWORD*)(v40 + 64) = v37;
     *(_QWORD*)(v40 + 72) = v38;
-    memset(&v387[4], 0, 24);
+    __builtin_memset(&v387[4], 0, 24);
     *(_QWORD*)v40 = nn_nlib_MemoryInputStream_vtable;
     *(_QWORD*)(v40 + 8) = 0;
     v387[0] = 0x2000;

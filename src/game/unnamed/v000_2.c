@@ -259,11 +259,6 @@ __int64 GameHr_122f620()
   return result;
 }
 
-bool GameHr_1264320(__int64 a1)
-{
-  return *(_DWORD*)(a1 + 52) >= *(_DWORD*)(a1 + 48);
-}
-
 __int64 GameHr_126ca40(__int64 result)
 {
   if (*(_DWORD*)(result + 160) == 2) {
@@ -271,10 +266,6 @@ __int64 GameHr_126ca40(__int64 result)
   }
   return result;
 }
-
-bool GameHr_12a2b30(__int64 a1, _DWORD* a2) { return *a2 > 0; }
-
-bool GameHr_12a2d20(__int64 a1, _DWORD* a2) { return *a2 > 0; }
 
 bool GameHr_12c6110(__int64 a1, __int64 a2)
 {

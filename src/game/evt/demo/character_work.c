@@ -90,6 +90,220 @@ void CharacterWork_11c5ae0_alt1(__int64) __asm__("CharacterWork_11c5ae0");
 unsigned __int8*
 game_evt_demo_CharacterWork_CharacterWork_lambda0_Invoke_11c6440(
     unsigned __int8* result, _QWORD* a2);
+_QWORD* CharacterBuilder_107e090(_QWORD* result, __int64);
+__int64 CharacterAppearance_10735d0(__int64);
+__int64 CharacterBuilder_1083e90(_QWORD*, __int64);
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 wld_Crc32_alt1(int, unsigned __int8*,
+                       unsigned __int64) __asm__("wld_Crc32");
+char* GameRoutine_60a020(char*, const char*);
+extern _UNKNOWN* GameData_212deb8;
+extern __int64 (*GameData_20169d0[])();
+extern __int64* GameData_212d3c8[3];
+extern __int64 GameData_21d9ce8;
+extern __int64 GameData_21d9cf0;
+extern __int64 GameData_21d9d00;
+extern __int64 GameData_21d9d18;
+extern __int64 GameData_21d9d20;
+extern __int64 GameData_21d9d30;
+extern __int64 GameData_21d9d38;
+extern __int64 GameData_21d9d48;
+extern __int64 GameData_21d9d50;
+extern __int64 GameData_21d9d60;
+extern __int64 GameData_21d9d68;
+extern __int64 GameData_21d9d70;
+extern char GameData_21d9d78;
+extern int* GameData_212deb0;
+extern int GameData_21d9d7c;
+int __cxa_guard_acquire_alt1(__int64) __asm__("__cxa_guard_acquire");
+unsigned __int64 GameHr_11c4280(__int64, __int64);
+void CharacterBuilder_107e140(__int64, __int64*, __int64);
+void TrickEntity_7d1480(__int64);
+void __cxa_guard_release_alt1(__int64) __asm__("__cxa_guard_release");
+void game_character_CharacterAppearance_Setup(unsigned __int64, __int64);
+void game_evt_demo_CharacterWork_Equip(__int64 a1, const char* a2, __int128* a3,
+                                       __int128* a4, __int128* a5,
+                                       __int128* a6);
+void game_evt_demo_CharacterWork_SetClothControl(__int64 a1, char a2,
+                                                 __int64 a3);
+
+void game_evt_demo_CharacterWork_Equip(__int64 a1, const char* a2, __int128* a3,
+                                       __int128* a4, __int128* a5, __int128* a6)
+{
+  int* v11;
+  __int64 v12;
+  __int64 v13;
+  __int64* v14;
+  _QWORD* v15;
+  unsigned __int64 v16;
+  __int64 v17;
+  __int64 v18;
+  unsigned __int8 explicit;
+  int* v20;
+  __int64 v21;
+  __int64 v22;
+  int v23;
+  _QWORD* v24;
+  __int64 v25;
+  __int64 v26;
+  __int64 v27;
+  __int64 v28;
+  __int128 v29;
+  __int128 v30;
+  __int128 v31;
+  __int128 v32;
+  struct {
+    _BYTE v33[32];
+    _BYTE* v34;
+  } v33_;
+  struct {
+    unsigned __int64 v35;
+    __int64 v36;
+  } v35_;
+  struct {
+    _QWORD v37[48];
+    int v38;
+    char gap516_[4];
+    __int64 v39;
+    __int64 v40;
+    __int64 v41;
+    __int64 v42;
+    __int64 v43;
+    __int64 v44;
+    __int64 v45;
+    __int64 v46;
+    __int64 v47;
+  } v37_;
+
+  GameRoutine_60a020((char*)(a1 + 96), a2);
+  v37_.v37[25] = 0;
+  v37_.v37[27] = 0;
+  memset(v37_.v37, 0, 192);
+  v37_.v38 = 1065353216;
+  v11 = (int*)GameData_21d9d18;
+  v12 = GameData_21d9d20;
+  v37_.v37[40] = 0;
+  v37_.v37[41] = 0;
+  memset(&v37_.v37[43], 0, 40);
+  v37_.v39 = 0;
+  v37_.v40 = 0;
+  v37_.v41 = 0;
+  v37_.v42 = 0;
+  v37_.v43 = 0;
+  v37_.v44 = 0;
+  v37_.v45 = 0;
+  v37_.v46 = 0;
+  v37_.v47 = 0;
+  if (GameData_21d9d18 != GameData_21d9d20) {
+    do {
+      v13 = *v11++;
+      *(_QWORD*)(GameData_21d9d00 + 8 * v13) = 0;
+    } while (v11 != (int*)v12);
+    v11 = (int*)GameData_21d9d18;
+  }
+  GameData_21d9d20 = (__int64)v11;
+  GameData_21d9d60 = 0;
+  GameData_21d9d68 = 0;
+  GameData_21d9d70 = 0;
+  GameData_21d9d7c = 0;
+  GameData_21d9d38 = GameData_21d9d30;
+  GameData_21d9cf0 = GameData_21d9ce8;
+  GameData_21d9d50 = GameData_21d9d48;
+  GameData_21d9d78 = 8;
+  GameHr_11c4280(a1, (__int64)v37_.v37);
+  v14 = (__int64*)fw_memory_g_heap_manager_ptr;
+  v15 = (_QWORD*)fw_memory_HeapManager_Allocate_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr, 11832, 16, 0);
+  v15[2] = 0;
+  v16 = (unsigned __int64)(v15 + 3);
+  v17 = (__int64)v15;
+  *v15 = GameData_212d3c8[0] + 2;
+  v15[1] = 0;
+  CharacterAppearance_10735d0((__int64)(v15 + 3));
+  v35_.v35 = v16;
+  v35_.v36 = v17;
+  game_character_CharacterAppearance_Setup(v16, (__int64)v37_.v37);
+  v18 = *(_QWORD*)(a1 + 152);
+  if (v18 != 0) {
+    explicit = atomic_load_explicit((atomic_uchar* volatile)GameData_212deb8,
+                                    memory_order_acquire);
+    v20 = GameData_212deb0;
+    if ((explicit & 1) == 0 &&
+        __cxa_guard_acquire_alt1((__int64)GameData_212deb8) != 0) {
+      *v20 = wld_Crc32_alt1(0, "CharacterBuilder", 0x10u);
+      __cxa_guard_release_alt1((__int64)GameData_212deb8);
+    }
+    v21 = *(_QWORD*)(v18 + 512);
+    v22 = v21;
+    while (v22 != *(_QWORD*)(v18 + 504)) {
+      v23 = *(_DWORD*)(v22 - 16);
+      v22 -= 16;
+      v21 -= 16;
+      if (v23 == *v20) {
+        if (*(_QWORD*)(v18 + 512) != v21) {
+          v24 = *(_QWORD**)(v21 + 8);
+          goto LABEL_12;
+        }
+        break;
+      }
+    }
+    v24 = nullptr;
+  LABEL_12:
+    v33_.v34 = nullptr;
+    CharacterBuilder_107e140((__int64)v24, (__int64*)&v35_.v35,
+                             (__int64)v33_.v33);
+    if (v33_.v34 == v33_.v33) {
+      v25 = 32;
+    }
+    else {
+      if (v33_.v34 == nullptr) {
+        goto LABEL_17;
+      }
+      v25 = 40;
+    }
+    (*(void (**)(__int64))(*(_QWORD*)v33_.v34 + v25))((__int64)v33_.v34);
+  LABEL_17:
+    v26 = *v14;
+    *(_BYTE*)(a1 + 130) = 1;
+    v31 = *a4;
+    v32 = *a3;
+    v29 = *a6;
+    v30 = *a5;
+    v27 = fw_memory_HeapManager_Allocate_alt1(v26, 96, 16, 0);
+    *(_QWORD*)(v27 + 16) = a1;
+    v33_.v34 = (_BYTE*)v27;
+    *(_QWORD*)v27 = GameData_2016950;
+    *(_OWORD*)(v27 + 32) = v32;
+    *(_OWORD*)(v27 + 48) = v31;
+    *(_OWORD*)(v27 + 64) = v30;
+    *(_OWORD*)(v27 + 80) = v29;
+    CharacterBuilder_107e090(v24, (__int64)v33_.v33);
+    if (v33_.v34 == v33_.v33) {
+      v28 = 32;
+    }
+    else {
+      if (v33_.v34 == nullptr) {
+        goto LABEL_22;
+      }
+      v28 = 40;
+    }
+    (*(void (**)(__int64))(*(_QWORD*)v33_.v34 + v28))((__int64)v33_.v34);
+  LABEL_22:
+    v17 = v35_.v36;
+    if (v35_.v36 == 0) {
+      goto LABEL_25;
+    }
+  }
+  if (atomic_fetch_add((atomic_ullong* volatile)(v17 + 8),
+                       0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v17 + 16LL))(v17);
+    std___1___shared_weak_count___release_weak_alt1(v17);
+  }
+LABEL_25:
+  TrickEntity_7d1480((__int64)v37_.v37);
+}
 
 __int64 CharacterWork_11c56e0(__int64 a1)
 {
@@ -230,6 +444,80 @@ __int64 CharacterWork_11c5860(__int64 a1, __int64 a2)
     }
   }
   return result;
+}
+
+void game_evt_demo_CharacterWork_SetClothControl(__int64 a1, char a2,
+                                                 __int64 a3)
+{
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 i;
+  int v8;
+  _QWORD* v9;
+  __int64 v10;
+  int v11;
+  __int64 v12;
+  char v13;
+  struct {
+    _QWORD v14[4];
+    _QWORD* v15;
+    char gap56_[32];
+    __int64 v16;
+  } v14_;
+
+  v3 = *(_QWORD*)(a1 + 152);
+  if (v3 != 0) {
+    if ((atomic_load_explicit((atomic_uchar* volatile)&GameData_21f4cb8,
+                              memory_order_acquire) &
+         1) == 0) {
+      v14_.v16 = a3;
+      v12 = v3;
+      v13 = a2;
+      v11 = __cxa_guard_acquire_alt1((__int64)&GameData_21f4cb8);
+      v3 = v12;
+      a2 = v13;
+      a3 = v14_.v16;
+      if (v11 != 0) {
+        GameData_21f4cb0 = wld_Crc32_alt1(0, "CharacterBuilder", 0x10u);
+        __cxa_guard_release_alt1((__int64)&GameData_21f4cb8);
+        v3 = v12;
+        a2 = v13;
+        a3 = v14_.v16;
+      }
+    }
+    v5 = *(_QWORD*)(v3 + 504);
+    v4 = *(_QWORD*)(v3 + 512);
+    v6 = v4;
+    for (i = v4; i != v5; i -= 16) {
+      v8 = *(_DWORD*)(i - 16);
+      v6 -= 16;
+      if (v8 == GameData_21f4cb0) {
+        if (v4 != v6) {
+          v9 = *(_QWORD**)(v6 + 8);
+          if (v9 != nullptr) {
+            v14_.v14[2] = a3;
+            v14_.v14[0] = GameData_20169d0;
+            v14_.v14[1] = a2 & 1;
+            v14_.v15 = v14_.v14;
+            CharacterBuilder_1083e90(v9, (__int64)v14_.v14);
+            if (v14_.v15 == v14_.v14) {
+              v10 = 32;
+            }
+            else {
+              if (v14_.v15 == nullptr) {
+                return;
+              }
+              v10 = 40;
+            }
+            (*(void (**)(__int64))(*v14_.v15 + v10))((__int64)v14_.v15);
+          }
+        }
+        return;
+      }
+    }
+  }
 }
 
 __int64

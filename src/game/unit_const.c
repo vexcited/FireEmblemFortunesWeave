@@ -49,6 +49,10 @@ extern __int64 (*game_UnitConst_TalentList_Commit_lambda0_Destructor_ptr[])();
 void __attribute__((noreturn))
 GameRoutine_6e3e20_alt1() __asm__("GameRoutine_6e3e20");
 __int64 UnitConst_8f7920(__int64 a1, __int64 a2);
+__int64*
+GameRoutine_7fb7c0_alt2(__int64* result, __int64, __int64,
+                        unsigned __int64) __asm__("GameRoutine_7fb7c0");
+__int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
 
 __int64 UnitConst_8f7920(__int64 a1, __int64 a2)
 {
@@ -666,15 +670,15 @@ __int64 UnitConst_8f8560(__int64 a1, __int64* a2)
   int v6;
   __int64 v7;
   __int64 v8;
-  _QWORD* v9;
-  __int64 v10;
+  __int64* v9;
+  unsigned __int64 v10;
   __int64 v11;
-  __int64 v12;
+  unsigned __int64 v12;
   __int64 v13;
   __int64 v14;
-  __int64 v15;
+  unsigned __int64 v15;
   __int64 v16;
-  __int64 v17;
+  unsigned __int64 v17;
   __int64 v18;
 
   *(_QWORD*)a1 = GameData_1fac9e0;
@@ -686,7 +690,8 @@ __int64 UnitConst_8f8560(__int64 a1, __int64* a2)
   *(_DWORD*)(result + 24) = 0;
   *(_QWORD*)(result - 8) = v4;
   if ((__int64*)result != a2 + 1) {
-    result = GameRoutine_7fb7c0(result);
+    result = (__int64)GameRoutine_7fb7c0_alt2((__int64*)result, a2[1], a2[2],
+                                              (a2[2] - a2[1]) >> 2);
   }
   v6 = *((_DWORD*)a2 + 8);
   *(_QWORD*)(a1 + 48) = 0;
@@ -695,19 +700,19 @@ __int64 UnitConst_8f8560(__int64 a1, __int64* a2)
   *(_DWORD*)(a1 + 40) = v6;
   v8 = a2[5];
   v7 = a2[6];
-  v9 = (_QWORD*)fw_memory_g_heap_manager_ptr;
+  v9 = (__int64*)fw_memory_g_heap_manager_ptr;
   v10 = v7 - v8;
   if (v7 != v8) {
-    if (v10 < 0) {
+    if ((v10 & 0x8000000000000000LL) != 0) {
       goto LABEL_10;
     }
-    v11 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
-                                         v7 - v8, 16, 0);
+    v11 = fw_memory_HeapManager_Allocate_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr, v7 - v8, 16, 0);
     v12 = v11 + v10;
     *(_QWORD*)(a1 + 48) = v11;
     *(_QWORD*)(a1 + 56) = v11;
     *(_QWORD*)(a1 + 64) = v11 + v10;
-    result = memcpy(v11, v8, v10);
+    result = memcpy_alt1(v11, v8, v10);
     *(_QWORD*)(a1 + 56) = v12;
   }
   *(_QWORD*)(a1 + 80) = 0;
@@ -718,17 +723,17 @@ __int64 UnitConst_8f8560(__int64 a1, __int64* a2)
   v15 = v13 - v14;
   if (v13 != v14) {
     if ((v15 & 0x8000000000000000LL) == 0) {
-      v16 = fw_memory_HeapManager_Allocate(*v9, v13 - v14, 16, 0);
+      v16 = fw_memory_HeapManager_Allocate_alt1(*v9, v13 - v14, 16, 0);
       v17 = v16 + v15;
       *(_QWORD*)(a1 + 72) = v16;
       *(_QWORD*)(a1 + 80) = v16;
       *(_QWORD*)(a1 + 88) = v16 + v15;
-      result = memcpy(v16, v14, v15);
+      result = memcpy_alt1(v16, v14, v15);
       *(_QWORD*)(a1 + 80) = v17;
       goto LABEL_9;
     }
   LABEL_10:
-    GameRoutine_6e3e20(result);
+    GameRoutine_6e3e20_alt1();
   }
 LABEL_9:
   v18 = a2[12];

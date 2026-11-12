@@ -26,6 +26,9 @@ __int64 MaterialAnimObj_5e75c0(__int64 result, __int64, __int16*, __int64,
                                float);
 void GameRoutine_5e7340(__int64, __int64, __int64, __int64, float);
 void MaterialAnimObj_5e1980(__int64 a1, __int64 a2, int a3, long double a4);
+int memcmp_alt1(__int64, __int64, unsigned __int64) __asm__("memcmp");
+unsigned __int64 strlen_alt1(const char*) __asm__("strlen");
+__int64 MaterialAnimObj_5e1080(__int64 a1, __int64 a2, __int64 a3, int a4);
 
 __int64 MaterialAnimObj_Unknown4(__int64 a1, __int64 a2)
 {
@@ -138,6 +141,176 @@ __int64 MaterialAnimObj_Unknown4(__int64 a1, __int64 a2)
     } while (v28 < *(int*)(a1 + 60));
   }
   return v7;
+}
+
+__int64 MaterialAnimObj_5e1080(__int64 a1, __int64 a2, __int64 a3, int a4)
+{
+  __int64 v4;
+  _QWORD* v8;
+  __int64 v9;
+  unsigned int v10;
+  __int64 v11;
+  const char* v12;
+  unsigned __int64 v13;
+  __int64 v14;
+  __int64 v15;
+  __int64 v16;
+  int v17;
+  __int64 v18;
+  bool v19;
+  unsigned __int64 v20;
+  unsigned __int16* v21;
+  unsigned __int64 v22;
+  int v23;
+  __int64 v24;
+  _QWORD* v25;
+  int v26;
+  __int64 v27;
+  __int64 v28;
+  const char* v29;
+  unsigned __int64 v30;
+  __int64 v31;
+  __int64 v32;
+  __int64 v33;
+  int v34;
+  __int64 v35;
+  unsigned __int64 v36;
+  unsigned __int16* v37;
+  unsigned __int64 v38;
+  __int64 v40;
+
+  v4 = *(unsigned __int16*)(a2 + 50);
+  if (*(_WORD*)(a2 + 50) != 0) {
+    v8 = *(_QWORD**)(a2 + 8);
+    v9 = 0;
+    v10 = 0;
+    v40 = a2;
+    while (1) {
+      v11 = *(_QWORD*)(a3 + 88);
+      if (v11 == 0) {
+        goto LABEL_13;
+      }
+      v12 = (const char*)(*v8 + 2LL);
+      v13 = strlen_alt1(v12);
+      v14 = v11 + 8;
+      v15 = *(unsigned __int16*)(v11 + 12);
+      v16 = v11 + 8 + 16 * v15;
+      v17 = *(_DWORD*)v16;
+      if ((signed __int32)*(_DWORD*)(v11 + 8) < (signed __int32)*(_DWORD*)v16) {
+        do {
+          v20 = (__int64)v17 >> 3;
+          if (v13 > v20) {
+            v18 = ((unsigned __int8)v12[v13 + ~v20] >> (v17 & 7)) & 1;
+          }
+          else {
+            v18 = 0;
+          }
+          v15 = *(unsigned __int16*)(v11 + 12 + 16 * v15 + 2 * v18);
+          v19 = v17 < (signed __int32)*(_DWORD*)(v14 + 16 * v15);
+          v17 = *(_DWORD*)(v14 + 16 * v15);
+        } while (v19);
+        v16 = v14 + 16 * v15;
+      }
+      v21 = *(unsigned __int16**)(v16 + 8);
+      if (v13 == *v21 &&
+          memcmp_alt1((__int64)(v21 + 1), (__int64)v12, v13) == 0) {
+        v22 = v16 - v11 - 24;
+        *(_WORD*)(*(_QWORD*)(a1 + 136) + 2 * v9 + 2LL * a4) = v22 >> 4;
+        if ((v22 & 0x800000000LL) != 0) {
+          goto LABEL_14;
+        }
+        ++v9;
+        v8 += 3;
+        v10 |= 1u;
+        if (v9 == v4) {
+        LABEL_18:
+          a2 = v40;
+          v23 = *(unsigned __int16*)(v40 + 50);
+          v24 = *(unsigned __int16*)(v40 + 52);
+          if (*(_WORD*)(v40 + 52) == 0) {
+            return v10;
+          }
+        LABEL_21:
+          v25 = *(_QWORD**)(a2 + 16);
+          v26 = a4 + v23;
+          v27 = 0;
+          while (2) {
+            while (1) {
+              v28 = *(_QWORD*)(a3 + 72);
+              if (v28 == 0) {
+                break;
+              }
+              v29 = (const char*)(*v25 + 2LL);
+              v30 = strlen_alt1(v29);
+              v31 = v28 + 8;
+              v32 = *(unsigned __int16*)(v28 + 12);
+              v33 = v28 + 8 + 16 * v32;
+              v34 = *(_DWORD*)v33;
+              if ((signed __int32)*(_DWORD*)(v28 + 8) <
+                  (signed __int32)*(_DWORD*)v33) {
+                do {
+                  v36 = (__int64)v34 >> 3;
+                  if (v30 > v36) {
+                    v35 = ((unsigned __int8)v29[v30 + ~v36] >> (v34 & 7)) & 1;
+                  }
+                  else {
+                    v35 = 0;
+                  }
+                  v32 = *(unsigned __int16*)(v28 + 12 + 16 * v32 + 2 * v35);
+                  v19 = v34 < (signed __int32)*(_DWORD*)(v31 + 16 * v32);
+                  v34 = *(_DWORD*)(v31 + 16 * v32);
+                } while (v19);
+                v33 = v31 + 16 * v32;
+              }
+              v37 = *(unsigned __int16**)(v33 + 8);
+              if (v30 != *v37 ||
+                  memcmp_alt1((__int64)(v37 + 1), (__int64)v29, v30) != 0) {
+                break;
+              }
+              v38 = v33 - v28 - 24;
+              *(_WORD*)(*(_QWORD*)(a1 + 136) + 2 * v27 + 2LL * v26) = v38 >> 4;
+              if ((v38 & 0x800000000LL) != 0) {
+                goto LABEL_33;
+              }
+              ++v27;
+              v25 += 2;
+              v10 |= 1u;
+              if (v27 == v24) {
+                return v10;
+              }
+            }
+            *(_WORD*)(*(_QWORD*)(a1 + 136) + 2 * v27 + 2LL * v26) = -1;
+          LABEL_33:
+            ++v27;
+            v25 += 2;
+            v10 |= 0x10000u;
+            if (v27 == v24) {
+              return v10;
+            }
+            continue;
+          }
+        }
+      }
+      else {
+      LABEL_13:
+        *(_WORD*)(*(_QWORD*)(a1 + 136) + 2 * v9 + 2LL * a4) = -1;
+      LABEL_14:
+        ++v9;
+        v8 += 3;
+        v10 |= 0x10000u;
+        if (v9 == v4) {
+          goto LABEL_18;
+        }
+      }
+    }
+  }
+  v23 = 0;
+  v10 = 0;
+  v24 = *(unsigned __int16*)(a2 + 52);
+  if (*(_WORD*)(a2 + 52) != 0) {
+    goto LABEL_21;
+  }
+  return v10;
 }
 
 __int64 MaterialAnimObj_Unknown5(__int64 a1, _QWORD* a2)

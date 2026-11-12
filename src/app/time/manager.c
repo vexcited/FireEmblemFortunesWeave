@@ -8,6 +8,9 @@ extern __int64 GameData_2131e20[2];
 extern __int64 fw_memory_g_heap_manager_ptr;
 _QWORD* Manager_Destructor_17da880(_QWORD* result);
 __int64 Manager_DeletingDestructor_17da980(_QWORD* a1);
+__int64 nn_os_ConvertToTimeSpan(_QWORD);
+extern __int64 game_g_frame_clock;
+float Manager_Unknown2_17daa80(__int64 a1, _QWORD* a2);
 
 _QWORD* Manager_Destructor_17da880(_QWORD* result)
 {
@@ -117,6 +120,38 @@ __int64 Manager_DeletingDestructor_17da980(_QWORD* a1)
     v11 = 56;
   }
   return nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v11, a1);
+}
+
+float Manager_Unknown2_17daa80(__int64 a1, _QWORD* a2)
+{
+
+#pragma clang fp contract(off)
+  __int64 v3;
+  float v4;
+  float v5;
+  float v6;
+  float result;
+
+  v3 = nn_os_ConvertToTimeSpan(*a2);
+  v4 = (float)(v3 / 1000) / 0x1.04ad660000000p+14f;
+  if (game_g_frame_clock != 0) {
+    v5 = 0x1.e000000000000p+5f / (float)*(int*)(game_g_frame_clock + 476);
+    if (v4 >= (float)(v5 + 0x1.99999a0000000p-4f)) {
+      v5 = (float)(v3 / 1000) / 0x1.04ad660000000p+14f;
+    }
+  }
+  else {
+    v5 = (float)(int)(float)(v4 + 0x1.99999a0000000p-4f);
+  }
+  v6 = (float)*(int*)(a1 + 360);
+  result = 0x1.0000000000000p+1f;
+  if (v5 <= (float)(v6 + 0x1.4000000000000p+3f)) {
+    result = v5;
+    if (v5 > v6) {
+      return (float)*(int*)(a1 + 360);
+    }
+  }
+  return result;
 }
 
 #pragma GCC visibility pop

@@ -19,6 +19,66 @@ __int64 WorkerThread_194daa0(__int64 a1, unsigned int a2, __int64 a3,
 __int64 WorkerThread_Unknown4(__int64 result);
 __int64 gxc_NvnStateCache_UnlockAll(_QWORD);
 __attribute__((swiftcall)) void WorkerThread_194dc70(PSEUDO_X8 x8_, _QWORD* a1);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+extern __int64 (*base_thread_ExecutorBase_vtable[])();
+void gxc_NvnStateCache_Destroy_NvnStateCache_alt1(_QWORD*) __asm__(
+    "gxc_NvnStateCache_Destroy_NvnStateCache");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void WorkerThread_Unknown2(_QWORD* a1);
+
+void WorkerThread_Unknown2(_QWORD* a1)
+{
+  _QWORD* v1;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  _QWORD* v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+
+  v1 = (_QWORD*)a1[75];
+  a1[75] = 0;
+  v3 = fw_memory_g_heap_manager_ptr;
+  if (v1 != nullptr) {
+    gxc_NvnStateCache_Destroy_NvnStateCache_alt1(v1);
+    v4 = 128;
+    if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
+      v4 = 56;
+    }
+    nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v4, (__int64)v1);
+  }
+  v5 = a1[74];
+  if (v5 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v5 + 8),
+                                  0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v5 + 16LL))(v5);
+    std___1___shared_weak_count___release_weak_alt1(v5);
+  }
+  v6 = (_QWORD*)a1[68];
+  if (v6 == a1 + 64) {
+    v7 = 32;
+  }
+  else {
+    if (v6 == nullptr) {
+      goto LABEL_13;
+    }
+    v7 = 40;
+  }
+  (*(void (**)(__int64))(*v6 + v7))((__int64)v6);
+LABEL_13:
+  v8 = a1[3];
+  a1[3] = 0;
+  *a1 = base_thread_ExecutorBase_vtable;
+  if (v8 != 0) {
+    v9 = 128;
+    if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
+      v9 = 56;
+    }
+    nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v9, v8);
+  }
+}
 
 __int64 WorkerThread_194daa0(__int64 a1, unsigned int a2, __int64 a3,
                              __int64* a4)

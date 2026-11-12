@@ -239,6 +239,8 @@ GameRoutine_64aa00_alt1() __asm__("GameRoutine_64aa00");
 void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void game_hub_anonymous_ProcHubSeqEnter_RunRecallData(__int64 a1);
+extern __int64 game_ProcFadeView_instance_;
+__int64 ProcHubSeqEnter_916320(__int64 a1);
 
 __int64 game_hub_anonymous_ProcHubSeqEnter_RunNextTimeline(__int64 result)
 {
@@ -1199,6 +1201,48 @@ LABEL_24:
     }
   }
   return result;
+}
+
+__int64 ProcHubSeqEnter_916320(__int64 a1)
+{
+
+#pragma clang fp contract(off)
+  unsigned __int8 v2;
+  unsigned __int64 v3;
+  __int128 v4;
+  int v5;
+  __int64 v6;
+
+  v2 = game_ProcFadeView_instance_;
+  if (game_ProcFadeView_instance_ != 0) {
+    v3 = game_ProcFadeView_instance_ +
+         ((unsigned __int64)*(unsigned __int8*)(game_ProcFadeView_instance_ +
+                                                480)
+          << 6);
+    if (*(float*)(v3 + 172) == *(float*)(v3 + 168)) {
+      (*(void (**)(unsigned __int64))(*(_QWORD*)(v3 + 160) + 16LL))(v3 + 160);
+    }
+    else {
+      v4 = *(_OWORD*)(v3 + 208);
+    }
+    v2 = *((float*)&v4 + 3) == 0x1.0000000000000p+0f &&
+         LANES128_OF(((__n128 (*)(unsigned __int64, float)) *
+                      (_QWORD*)(*(_QWORD*)(v3 + 160) + 16LL))(
+                         v3 + 160, *((float*)&v4 + 3)))
+                 .n128_f32[3] == 0x1.0000000000000p+0f;
+  }
+  if ((v2 & ((signed __int32)*(_DWORD*)(a1 + 236) > 1)) != 0) {
+    v5 = 2;
+  }
+  else {
+    v5 = 1;
+  }
+  v6 = *(_QWORD*)(*(_QWORD*)GameData_212dbb8[0] + 216LL);
+  if ((signed __int32)*(_DWORD*)(v6 + 232) > v5) {
+    v5 = *(_DWORD*)(v6 + 232);
+  }
+  *(_DWORD*)(v6 + 232) = v5;
+  return GameRoutine_f482e0_alt1(v6);
 }
 
 __int64 ProcHubSeqEnter_9163f0()

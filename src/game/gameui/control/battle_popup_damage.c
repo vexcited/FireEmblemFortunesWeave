@@ -25,6 +25,8 @@ __attribute__((swiftcall)) void
 BattlePopupDamage_18bf160(PSEUDO_X8 x8_, __int64 a1, __int64 a2, __int64 a3);
 __attribute__((swiftcall)) void
 BattlePopupDamage_18bf230(PSEUDO_X8 x8_, __int64 a1, __int64 a2);
+__int64 LayoutAccessor_1562cf0(__int64 result, const char*);
+__int64 BattlePopupDamage_18bf3f0(_DWORD* a1);
 __attribute__((swiftcall)) void
 
 BattlePopupDamage_18bf160(PSEUDO_X8 x8_, __int64 a1, __int64 a2, __int64 a3)
@@ -140,6 +142,22 @@ BattlePopupDamage_18bf230(PSEUDO_X8 x8_, __int64 a1, __int64 a2)
     result;
     return;
   }
+}
+
+__int64 BattlePopupDamage_18bf3f0(_DWORD* a1)
+{
+  const char* v2;
+  __int64 v4;
+
+  v4 = 0x3F8000003F800000LL;
+  (*(void (**)(_DWORD*, __int64*))(*(_QWORD*)a1 + 88LL))(a1, &v4);
+  if (a1[58] == 1) {
+    v2 = "Size_OnMap_Default";
+  }
+  else {
+    v2 = "Size_Combat_Default";
+  }
+  return LayoutAccessor_1562cf0((__int64)(a1 + 20), v2);
 }
 
 __int64 BattlePopupDamage_DeletingDestructor(__int64 a1)

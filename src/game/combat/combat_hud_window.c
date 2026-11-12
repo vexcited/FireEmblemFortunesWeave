@@ -60,6 +60,8 @@ __int64 LayoutAccessor_1563380(_QWORD, _QWORD, _QWORD);
 extern __int64 game_ProcFadeView_instance_;
 extern __int64 game_ProcGameSkipView_instance_;
 __int64 CombatHUDWindow_183dbe0(__int64 result);
+__int64 CombatHUDWindow_Unknown30(__int64 result);
+__int64 CombatHUDWindow_DeletingDestructor_183eaf0(__int64 result);
 
 __int64 CombatHudWindow_1832b70(__int64 a1, unsigned int a2, char a3)
 {
@@ -642,6 +644,30 @@ __int64 CombatHUDWindow_183ea70(__int64 a1)
     *(_BYTE*)(a1 - 35) = 0;
   }
   *(_DWORD*)(a1 - 32) = -1;
+  return result;
+}
+
+__int64 CombatHUDWindow_Unknown30(__int64 result)
+{
+  __int64 v1;
+
+  if (*(_BYTE*)(result + 289) == 1) {
+    v1 = *(_QWORD*)result;
+    *(_BYTE*)(result + 288) = 0;
+    return (*(__int64 (**)(__int64))(v1 + 24))((__int64)result);
+  }
+  return result;
+}
+
+__int64 CombatHUDWindow_DeletingDestructor_183eaf0(__int64 result)
+{
+  __int64 v1;
+
+  if (*(_BYTE*)(result + 41) == 1) {
+    v1 = *(_QWORD*)(result - 248);
+    *(_BYTE*)(result + 40) = 0;
+    return (*(__int64 (**)(void*))(v1 + 24))((void*)(result - 248));
+  }
   return result;
 }
 

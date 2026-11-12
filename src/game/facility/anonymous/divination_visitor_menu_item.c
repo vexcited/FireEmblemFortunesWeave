@@ -13,6 +13,113 @@ __int64 DivinationVisitorMenuItem_Unknown73(__int64 a1);
 extern __int64 GameData_226dcb0;
 __int64
 game_facility_anonymous_DivinationVisitorMenuItem_ACall_closure_Invoke();
+_QWORD* GameRoutine_13fa790(__int64, __int64, __int64, __int64, __int64);
+_QWORD* GameRoutine_654050(_QWORD* result, _QWORD*);
+extern __int64 (*GameData_211b298[])();
+extern __int64 (*GameData_211b318[])();
+extern __int64 (*game_sound_PlayDecideLightSe_ptr[6])();
+extern __int64* GameData_212d2b8;
+__int64 game_facility_anonymous_DivinationVisitorMenuItem_ACall(__int64 a1);
+
+__int64 game_facility_anonymous_DivinationVisitorMenuItem_ACall(__int64 a1)
+{
+  __int64 v2;
+  _QWORD* v3;
+  __int64 v4;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  struct {
+    _QWORD v10[4];
+    _QWORD* v11;
+  } v10_;
+  struct {
+    __int64 (*v12[4])();
+    __int64 (**v13)();
+  } v12_;
+  struct {
+    __int64 (*v14[4])();
+    __int64 (**v15)();
+  } v14_;
+  const char* v16;
+
+  if (((*(__int64 (**)(__int64))(*(_QWORD*)a1 + 464LL))(a1) & 1) == 0) {
+    return 1;
+  }
+  v2 = *(_QWORD*)(a1 + 8);
+  v16 = "MID_DivinationMenu_DivinationVisiter_Confirm";
+  v14_.v15 = v14_.v14;
+  v10_.v11 = v10_.v10;
+  v14_.v14[0] = (__int64 (*)())GameData_211b298;
+  v12_.v13 = v12_.v12;
+  v12_.v12[0] = (__int64 (*)())GameData_211b318;
+  v10_.v10[0] = GameData_211b318;
+  v3 = GameRoutine_13fa790(v2, (__int64)&v16, (__int64)v14_.v14,
+                           (__int64)v12_.v12, (__int64)v10_.v10);
+  if (v10_.v11 == v10_.v10) {
+    v4 = 32;
+  }
+  else {
+    if (v10_.v11 == nullptr) {
+      goto LABEL_8;
+    }
+    v4 = 40;
+  }
+  (*(void (**)(__int64))(*v10_.v11 + v4))((__int64)v10_.v11);
+LABEL_8:
+  if (v12_.v13 == v12_.v12) {
+    v6 = 32;
+  }
+  else {
+    if (v12_.v13 == nullptr) {
+      goto LABEL_13;
+    }
+    v6 = 40;
+  }
+  (*(void (**)(__int64))((char*)*v12_.v13 + v6))((__int64)v12_.v13);
+LABEL_13:
+  if (v14_.v15 == v14_.v14) {
+    v7 = 32;
+  }
+  else {
+    if (v14_.v15 == nullptr) {
+      goto LABEL_18;
+    }
+    v7 = 40;
+  }
+  (*(void (**)(__int64))((char*)*v14_.v15 + v7))((__int64)v14_.v15);
+LABEL_18:
+  v12_.v13 = v12_.v12;
+  v14_.v15 = v14_.v14;
+  v12_.v12[0] = (__int64 (*)())(GameData_212d2b8 + 2);
+  v12_.v12[1] = game_sound_PlayDecideLightSe_ptr[0];
+  v14_.v14[0] = (__int64 (*)())(GameData_212d2b8 + 2);
+  v14_.v14[1] = game_sound_PlayDecideLightSe_ptr[0];
+  GameRoutine_654050(v14_.v14, v3 + 144);
+  if (v14_.v15 == v14_.v14) {
+    v8 = 32;
+  }
+  else {
+    if (v14_.v15 == nullptr) {
+      goto LABEL_23;
+    }
+    v8 = 40;
+  }
+  (*(void (**)(__int64))((char*)*v14_.v15 + v8))((__int64)v14_.v15);
+LABEL_23:
+  if (v12_.v13 == v12_.v12) {
+    v9 = 32;
+    goto LABEL_27;
+  }
+  if (v12_.v13 != nullptr) {
+    v9 = 40;
+  LABEL_27:
+    (*(void (**)(__int64))((char*)*v12_.v13 + v9))((__int64)v12_.v13);
+  }
+  *((_DWORD*)v3 + 392) = *(_DWORD*)(a1 + 84);
+  return 12;
+}
 
 __int64 DivinationVisitorMenuItem_Unknown73(__int64 a1)
 {

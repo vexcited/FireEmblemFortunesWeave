@@ -80,6 +80,18 @@ __int64 snd_play_ff2d0_alt1(__int64, __int64, __int64, unsigned int,
                             unsigned int, int, float,
                             float) __asm__("snd_play_ff2d0");
 void snd_Fade_Fade_10c830_alt1(__int64, float) __asm__("snd_Fade_Fade_10c830");
+__int64 FloatingHelp_18af980(__int64, __int64*);
+__int64 LayoutAccessor_155e830(__int64 result, char);
+__int64 RidePool_93d8e0(__int64);
+__int64 game_UnitPool_GetFirst(int*);
+extern __int64* GameData_212c8a0;
+extern __int64* GameData_212d890[2];
+extern __int64 GameData_212cf88[4];
+extern __int64 GameData_21ca310;
+void BasicMenuCursor_16e0c00(_QWORD*, __int64);
+void GameHr_18af120(_QWORD*, __int64*);
+__int64 AnimalPoolMenu_1862600(__int64 a1);
+void AnimalPoolMenu_1862a60(_QWORD* a1);
 
 __int64 game_menu_AnimalPoolMenu_OnInit(__int64* a1)
 {
@@ -956,6 +968,39 @@ __int64 AnimalPoolMenu_18621a0(__int64 a1)
   return (*(__int64 (**)(__int64))(*(_QWORD*)a1 + 1216LL))(a1);
 }
 
+__int64 AnimalPoolMenu_1862600(__int64 a1)
+{
+  __int64 result;
+  _QWORD* v3;
+  char v4[4];
+  struct {
+    __int64* v5;
+    int v6;
+    char gap20_[4];
+    __int64 v7;
+  } v5_;
+
+  if (*(_QWORD*)(a1 + 624) != 0) {
+    *(_QWORD*)(a1 + 624) = 0;
+  }
+  result = LayoutAccessor_155e830(a1 + 848, 0);
+  v3 = (_QWORD*)GameData_21f1e08;
+  if (GameData_21f1e08 != 0) {
+    if (*(_QWORD*)(GameData_21f1e08 + 152) != 0) {
+      v5_.v7 = 0;
+      v5_.v5 = GameData_212d890[0] + 2;
+      v5_.v6 = 44;
+      (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64, __int64**))(
+          *(_QWORD*)(GameData_21f1e08 + 8) + 16LL))(
+          (void*)(v4), GameData_21f1e08 + 8, &v5_.v5);
+    }
+    v3[20] = 0;
+    GameHr_18af120(v3, (__int64*)(a1 + 848));
+    return FloatingHelp_18af980((__int64)v3, (__int64*)(a1 + 848));
+  }
+  return result;
+}
+
 __int64 AnimalPoolMenu_18626c0(__int64 a1, int a2)
 {
   __int64 v2;
@@ -1102,6 +1147,161 @@ __int64 AnimalPoolMenu_18629b0(__int64* a1)
   v4[1] = a1;
   a1[43] = (__int64)v4;
   return (*(__int64 (**)(__int64*))(v6 + 1208))(a1);
+}
+
+void AnimalPoolMenu_1862a60(_QWORD* a1)
+{
+  __int64 v2;
+  __int64* v3;
+  __int64 v4;
+  __int64 v5;
+  unsigned int v6;
+  unsigned int v7;
+  __int64* v8;
+  __int64 v9;
+  __int64 v10;
+  unsigned int v11;
+  __int64* v13;
+  __int64 v14;
+  __int64 v15;
+  unsigned int v16;
+  __int64 v17;
+  __int64 v18;
+  unsigned int v19;
+  unsigned int v20;
+  __int64 v21;
+  __int64 v22;
+  __int64 v23;
+  __int64 v24;
+  __int64 v25;
+  unsigned int v26;
+  int v27;
+
+  v27 = 17;
+  v2 = game_UnitPool_GetFirst(&v27);
+  v3 = GameData_212c8a0;
+  if (v2 != 0) {
+    v4 = *(_QWORD*)(v2 + 432);
+    v5 = v2;
+    if (v4 == 0) {
+      v4 = *(_QWORD*)(v2 + 440);
+      if (v4 != 0) {
+        v6 = *(unsigned __int8*)(v4 + 16);
+        if (v6 <= 8) {
+          v26 = v6 - 3;
+          while (1) {
+            if (v26 == 0) {
+              v4 = *(_QWORD*)(*(_QWORD*)(GameData_21ca310 + 56) + 556096LL);
+              if (v4 != 0) {
+                break;
+              }
+            }
+            if (++v26 == 6) {
+              goto LABEL_5;
+            }
+          }
+        }
+        else {
+        LABEL_5:
+          v4 = 0;
+        }
+      }
+    }
+    v7 = 0;
+    v8 = GameData_212c8b0[0];
+    while (1) {
+    LABEL_8:
+      v9 = *(_QWORD*)(v5 + 400);
+      v10 = v4;
+      v11 = *(unsigned __int8*)(v5 + 1880);
+      if (*(_BYTE*)(v9 + 96) == 2 && v11 == 0) {
+        v14 = *(_QWORD*)(v9 + 112);
+        if (v14 != 0) {
+          v13 = &GameData_21f4018[8 * (unsigned __int64)*(
+                                          unsigned __int8*)(v14 + 32)];
+        }
+        else {
+          v13 = v8;
+        }
+        v11 = *(unsigned __int8*)v13;
+        if (*(_BYTE*)v13 == 0) {
+          goto LABEL_21;
+        }
+      }
+      else {
+        v13 = (__int64*)(v5 + 1880);
+        if (*(_BYTE*)(v5 + 1880) == 0) {
+          goto LABEL_21;
+        }
+      }
+      if (*(_BYTE*)(*(_QWORD*)(*(_QWORD*)(*v3 + 64) + 8LL * v11) + 109LL) !=
+          0) {
+        v15 = a1[133];
+        v16 = RidePool_93d8e0(v5);
+        v17 =
+            (*(__int64 (**)(_QWORD*, __int64*, __int64, __int64, _QWORD,
+                            _QWORD))(*a1 + 1192LL))(a1, v13, v15, v5, v16, v7);
+        if (v17 != 0) {
+          BasicMenuCursor_16e0c00(a1, v17);
+          ++v7;
+        }
+      }
+    LABEL_21:
+      if (v10 == 0) {
+        goto LABEL_31;
+      }
+      v4 = *(_QWORD*)(v10 + 432);
+      v5 = v10;
+      if (v4 == 0) {
+        v18 = *(_QWORD*)(v10 + 440);
+        v5 = v10;
+        if (v18 != 0) {
+          v19 = *(unsigned __int8*)(v18 + 16);
+          v4 = 0;
+          v5 = v10;
+          if (v19 <= 8) {
+            v20 = v19 - 3;
+            while (1) {
+              if (v20 == 0) {
+                v4 = *(_QWORD*)(*(_QWORD*)(GameData_21ca310 + 56) + 556096LL);
+                if (v4 != 0) {
+                  break;
+                }
+              }
+              if (++v20 == 6) {
+                v4 = 0;
+                v5 = v10;
+                goto LABEL_8;
+              }
+            }
+            v5 = v10;
+          }
+        }
+      }
+    }
+  }
+  v7 = 0;
+LABEL_31:
+  v21 = 0;
+  v22 = 0;
+  v23 = GameData_212cf88[0];
+  do {
+    v24 = *(_QWORD*)(*(_QWORD*)(*(_QWORD*)v23 + 8LL) + 120LL);
+    if (*(_BYTE*)(v24 + v21) != 0 &&
+        *(_BYTE*)(*(_QWORD*)(*(_QWORD*)(*v3 + 64) +
+                             8LL * *(unsigned __int8*)(v24 + v21)) +
+                  109LL) != 0 &&
+        *(_BYTE*)(v24 + v21 + 3) == 0) {
+      v25 = (*(__int64 (**)(_QWORD*, __int64, _QWORD, _QWORD, _QWORD, _QWORD))(
+          *a1 + 1192LL))(a1, v24 + v21, a1[133], 0, (unsigned int)v22, v7);
+      if (v25 != 0) {
+        BasicMenuCursor_16e0c00(a1, v25);
+        ++v7;
+      }
+    }
+    ++v22;
+    v21 += 64;
+  } while (v22 != 200);
 }
 
 __int64 AnimalPoolMenu_Unknown149(__int64 a1, __int64 a2, __int64 a3,

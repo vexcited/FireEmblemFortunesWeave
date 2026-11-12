@@ -32,6 +32,40 @@ extern __int64* GameData_212e348;
 extern __int64* msg_MessageManager_instance__ptr[2];
 extern __int64 game_GameModeData_instance_;
 __int64 ListResultMenuBase_1753ea0(__int64 a1);
+__attribute__((swiftcall)) void
+LayoutAccessor_1560070_alt1(PSEUDO_X8, __int64*,
+                            const char*) __asm__("LayoutAccessor_1560070");
+__int64 GameRoutine_173f310(__int64, __int64*, char, __int64, __int64, float);
+__int64 GameRoutine_173ff00(__int64, const char*);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+void game_menu_BasicMenu_Unknown57(__int64, __int64*);
+__int64 ListResultMenuBase_1753b90(__int64 a1, __int64* a2);
+
+__int64 ListResultMenuBase_1753b90(__int64 a1, __int64* a2)
+{
+  __int64 v3;
+  __int64 v4;
+  _QWORD v6[2];
+  _QWORD v7[2];
+  __int64 v8[2];
+
+  game_menu_BasicMenu_Unknown57(a1, a2);
+  LayoutAccessor_1560070_alt1((void*)(v8), (__int64*)(a1 + 848), "L_Title");
+  v7[0] = "In_Judege01";
+  v7[1] = 11;
+  v6[0] = "Out";
+  v6[1] = 3;
+  v3 = GameRoutine_173f310(a1, v8, 0, (__int64)v7, (__int64)v6,
+                           -0x1.0000000000000p+0f);
+  v4 = v8[1];
+  *(_QWORD*)(a1 + 1064) = v3;
+  if (v4 != 0) {
+    std___1___shared_weak_count___release_weak_alt1(v4);
+    v3 = *(_QWORD*)(a1 + 1064);
+  }
+  return GameRoutine_173ff00(v3, "TitleTxt_Judege01");
+}
 
 __int64 ListResultMenuBase_1753ea0(__int64 a1)
 {

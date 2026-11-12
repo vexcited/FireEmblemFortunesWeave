@@ -140,6 +140,80 @@ void GameRoutine_1967f30_alt1(__int64) __asm__("GameRoutine_1967f30");
 void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void ProcDivinationSceneHost_19677c0(__int64 a1);
+_QWORD* GameRoutine_14514d0(_QWORD* result, _QWORD*);
+__int64 SceneCharacter_1401ce0(__int64, _QWORD*);
+__int64 game_facility_14107c0(__int64, __int64);
+__int64 std___1___shared_weak_count_lock(__int64);
+extern __int64 (*GameData_211a1f8[])();
+void game_facility_anonymous_196a8f0(__int64, unsigned __int8);
+void game_facility_anonymous_ProcDivinationSceneHost_PrepareScene();
+void ProcDivinationSceneHost_1966c10();
+void ProcDivinationSceneHost_1966f60(__int64 a1);
+
+void game_facility_anonymous_ProcDivinationSceneHost_PrepareScene()
+{
+  __int64 v0;
+  __int64 v1;
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  struct {
+    _QWORD v6[4];
+    _QWORD* v7;
+  } v6_;
+  struct {
+    _QWORD v8[4];
+    _QWORD* v9;
+  } v8_;
+
+  v0 = *(_QWORD*)(GameData_21f4000 + 264);
+  if (v0 != 0) {
+    v1 = *(_QWORD*)(GameData_21f4000 + 256);
+    v2 = *(_QWORD*)(GameData_21f4000 + 264);
+    atomic_fetch_add_explicit((atomic_ullong* volatile)(v0 + 16), 1u,
+                              memory_order_relaxed);
+    v3 = std___1___shared_weak_count_lock(v2);
+    std___1___shared_weak_count___release_weak_alt2(v0);
+    if (v3 != 0) {
+      if (v1 == 0) {
+        goto LABEL_14;
+      }
+      v6_.v6[0] = GameData_211a1f8;
+      v6_.v7 = v6_.v6;
+      v8_.v9 = v8_.v8;
+      v8_.v8[0] = GameData_211a1f8;
+      GameRoutine_14514d0(v8_.v8, (_QWORD*)(v1 + 272));
+      if (v8_.v9 == v8_.v8) {
+        v4 = 32;
+      }
+      else {
+        if (v8_.v9 == nullptr) {
+          goto LABEL_9;
+        }
+        v4 = 40;
+      }
+      (*(void (**)(__int64))(*v8_.v9 + v4))((__int64)v8_.v9);
+    LABEL_9:
+      if (v6_.v7 == v6_.v6) {
+        v5 = 32;
+      }
+      else {
+        if (v6_.v7 == nullptr) {
+          goto LABEL_14;
+        }
+        v5 = 40;
+      }
+      (*(void (**)(__int64))(*v6_.v7 + v5))((__int64)v6_.v7);
+    LABEL_14:
+      if (atomic_fetch_add((atomic_ullong* volatile)(v3 + 8),
+                           0xFFFFFFFFFFFFFFFFLL) == 0) {
+        (*(void (**)(__int64))(*(_QWORD*)v3 + 16LL))(v3);
+        std___1___shared_weak_count___release_weak_alt2(v3);
+      }
+    }
+  }
+}
 
 __int64 ProcDivinationSceneHost_1966760(__int64 a1)
 {
@@ -371,6 +445,57 @@ LABEL_10:
   return result;
 }
 
+void ProcDivinationSceneHost_1966c10()
+{
+  __int64 v0;
+  __int64 v1;
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  struct {
+    _QWORD v6[2];
+    __int64 v7;
+  } v6_;
+  struct {
+    _QWORD v8[2];
+    __int64 v9;
+  } v8_;
+
+  v0 = ProcDivinationSceneHost_1967c00();
+  if (v0 != 0) {
+    v1 = v0;
+    v2 = fw_memory_g_heap_manager_ptr;
+    v3 = fw_memory_HeapManager_Allocate_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr, 48, 16, 0);
+    v6_.v6[0] = 49;
+    v6_.v6[1] = 41;
+    v6_.v7 = v3;
+    *(_WORD*)(v3 + 40) = 180;
+    *(_QWORD*)(v3 + 16) = 0xB383E3A783E3B782LL;
+    *(_QWORD*)(v3 + 24) = 0x5F8481E3A08DE55FLL;
+    *(_QWORD*)(v3 + 32) = 0xA0E5A585E5A2AEE5LL;
+    *(_QWORD*)v3 = 0x83E3A383E3AD82E3LL;
+    *(_QWORD*)(v3 + 8) = 0xE3BC83E3A283E3A9LL;
+    game_facility_14107c0((__int64)v8_.v8, (__int64)v6_.v6);
+    SceneCharacter_1401ce0(v1, v8_.v8);
+    if ((v8_.v8[0] & 1) != 0 && v8_.v9 != 0) {
+      v4 = 128;
+      if (*(_QWORD*)(*(_QWORD*)v2 + 200LL) == 0) {
+        v4 = 56;
+      }
+      nn_mem_StandardAllocator_Free_alt2(*(_QWORD*)v2 + v4, v8_.v9);
+    }
+    if ((v6_.v6[0] & 1) != 0 && v6_.v7 != 0) {
+      v5 = 128;
+      if (*(_QWORD*)(*(_QWORD*)v2 + 200LL) == 0) {
+        v5 = 56;
+      }
+      nn_mem_StandardAllocator_Free_alt2(*(_QWORD*)v2 + v5, v6_.v7);
+    }
+  }
+}
+
 __int64 ProcDivinationSceneHost_1966d10()
 {
   __int64 result;
@@ -477,6 +602,31 @@ __int64 ProcDivinationSceneHost_1966f00(__int64 result)
     }
   }
   return result;
+}
+
+void ProcDivinationSceneHost_1966f60(__int64 a1)
+{
+  unsigned int v1;
+  unsigned __int8 v2;
+
+  v1 = *(unsigned __int8*)(*(_QWORD*)(a1 + 224) + 40LL);
+  if (v1 <= 6) {
+    if (v1 <= 3) {
+      if (v1 >= 2) {
+        v2 = 2;
+      }
+      else {
+        v2 = 3;
+      }
+    }
+    else {
+      v2 = 1;
+    }
+  }
+  else {
+    v2 = 0;
+  }
+  game_facility_anonymous_196a8f0(a1, v2);
 }
 
 __int64 ProcDivinationSceneHost_1966fa0(__int64 result)

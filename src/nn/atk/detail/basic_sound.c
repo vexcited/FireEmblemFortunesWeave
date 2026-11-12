@@ -64,6 +64,7 @@ __int64 GameRoutine_28b4e0_alt1(__int64, int) __asm__("GameRoutine_28b4e0");
 __int64 memset_alt1(__int64, int, unsigned __int64) __asm__("memset");
 __int64 nn_os_ClearEvent_alt1(__int64) __asm__("nn_os_ClearEvent");
 __int64 BasicSound_Unknown3(__int64 a1, unsigned __int64 a2, __int64 a3);
+_DWORD* BasicSound_281a40(_DWORD* result);
 
 __int64 BasicSound_27c5a0(__int64 result, __int64 a2)
 {
@@ -987,6 +988,41 @@ __int64 BasicSound_280a00(__int64 a1)
     }
     (*(void (**)(__int64))(*(_QWORD*)a1 + 80LL))(a1);
     goto LABEL_33;
+  }
+  return result;
+}
+
+_DWORD* BasicSound_281a40(_DWORD* result)
+{
+  int v1;
+  int v2;
+  int v3;
+
+  v1 = result[52];
+  if (v1 < (signed __int32)result[51]) {
+    result[52] = v1 + 1;
+    v2 = result[60];
+    if (v2 >= (signed __int32)result[59]) {
+    LABEL_3:
+      v3 = result[87];
+      if (v3 >= (signed __int32)result[86]) {
+        return result;
+      }
+    LABEL_7:
+      result[87] = v3 + 1;
+      return result;
+    }
+  }
+  else {
+    v2 = result[60];
+    if (v2 >= (signed __int32)result[59]) {
+      goto LABEL_3;
+    }
+  }
+  result[60] = v2 + 1;
+  v3 = result[87];
+  if (v3 < (signed __int32)result[86]) {
+    goto LABEL_7;
   }
   return result;
 }

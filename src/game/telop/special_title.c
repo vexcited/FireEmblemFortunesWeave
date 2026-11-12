@@ -29,6 +29,13 @@ __int64 GameRoutine_14a1390_alt1(__int64*, char) __asm__("GameRoutine_14a1390");
 __int64 GameRoutine_14a1520_alt1(__int64*, char) __asm__("GameRoutine_14a1520");
 __int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
     "std___1___shared_weak_count___release_weak");
+__int64* Manager_bc6460(_QWORD*, __int64, char);
+__int64 GameHr_14a10d0(_QWORD*, __int64, __int64, __int64);
+extern _UNKNOWN* GameData_212c540;
+extern _UNKNOWN* GameData_212c548;
+extern __int64* eft_g_effectSystem_ptr[3];
+extern char GameData_1a9f09e;
+__int64 SpecialTitle_Unknown35(__int64 result);
 
 __int64 SpecialTitle_Unknown41(__int64 a1)
 {
@@ -95,6 +102,130 @@ __int64 SpecialTitle_Unknown34(__int64 result)
       result = std___1___shared_weak_count___release_weak_alt1(v4);
     }
     **(_QWORD**)(v5 + 864) = 0;
+  }
+  return result;
+}
+
+__int64 SpecialTitle_Unknown35(__int64 result)
+{
+  int v1;
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  const char* v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  __int64* v10;
+  unsigned int v11;
+  __int64 v12;
+  __int64 v13;
+  __int64 v14;
+  __int64 v15;
+  struct {
+    __int64 v16;
+    __int64 v17;
+  } v16_;
+  struct {
+    _QWORD v18[3];
+    int v19;
+    char gap44_[4];
+    __int64 v20;
+    __int64 v21;
+    __int64 v22;
+    __int64 v23;
+    __int64 v24;
+    __int64 v25;
+  } v18_;
+
+  v11 = COERCE_AS(__typeof__(v11),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v1 = *(_DWORD*)(result + 832);
+  v2 = result;
+  if (v1 == 1) {
+    v18_.v18[0] = 0;
+    v18_.v18[1] = 0;
+    v7 = *((_QWORD*)GameData_212c540 + 1);
+    v9 = *(_QWORD*)GameData_212c548;
+    v8 = *((_QWORD*)GameData_212c548 + 1);
+    v18_.v20 = *(_QWORD*)GameData_212c540;
+    v18_.v21 = v7;
+    v18_.v24 = v18_.v20;
+    v18_.v25 = v7;
+    v18_.v22 = v9;
+    v18_.v23 = v8;
+    v18_.v19 = 9;
+    v6 = "UI_Theater_Special_Performance";
+  }
+  else {
+    if (v1 != 0) {
+      return result;
+    }
+    v18_.v18[0] = 0;
+    v18_.v18[1] = 0;
+    v3 = *((_QWORD*)GameData_212c540 + 1);
+    v5 = *(_QWORD*)GameData_212c548;
+    v4 = *((_QWORD*)GameData_212c548 + 1);
+    v18_.v20 = *(_QWORD*)GameData_212c540;
+    v18_.v21 = v3;
+    v18_.v24 = v18_.v20;
+    v18_.v25 = v3;
+    v18_.v22 = v5;
+    v18_.v23 = v4;
+    v18_.v19 = 9;
+    v6 = "UI_Theater_Special_Ripples";
+  }
+  v18_.v18[2] = v6;
+  v10 = Manager_bc6460(*(_QWORD**)eft_g_effectSystem_ptr[0], (__int64)v18_.v18,
+                       0),
+  v11 = COERCE_AS(__typeof__(v11),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  result =
+      GameHr_14a10d0(&v16_.v16, (__int64)v10, v11, (__int64)&GameData_1a9f09e),
+  v11 = COERCE_AS(__typeof__(v11),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v12 = v16_.v16;
+  v13 = v16_.v17;
+  if (v16_.v17 != 0) {
+    atomic_fetch_add_explicit((atomic_ullong* volatile)(v16_.v17 + 8), 1u,
+                              memory_order_relaxed);
+  }
+  v14 = *(_QWORD*)(v2 + 872);
+  *(_QWORD*)(v2 + 864) = v12;
+  *(_QWORD*)(v2 + 872) = v13;
+  if (v14 != 0) {
+    if (atomic_fetch_add((atomic_ullong* volatile)(v14 + 8),
+                         0xFFFFFFFFFFFFFFFFLL) == 0) {
+      (*(void (**)(__int64))(*(_QWORD*)v14 + 16LL))(v14),
+          v11 = COERCE_AS(__typeof__(v11),
+                          PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+      result = std___1___shared_weak_count___release_weak_alt1(v14),
+      v11 = COERCE_AS(__typeof__(v11),
+                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    }
+    v13 = *(_QWORD*)(v2 + 872);
+  }
+  if (v13 != 0) {
+    atomic_fetch_add_explicit((atomic_ullong* volatile)(v13 + 8), 1u,
+                              memory_order_relaxed);
+    if (atomic_fetch_add((atomic_ullong* volatile)(v13 + 8),
+                         0xFFFFFFFFFFFFFFFFLL) == 0) {
+      (*(void (**)(__int64))(*(_QWORD*)v13 + 16LL))(v13),
+          v11 = COERCE_AS(__typeof__(v11),
+                          PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+      result = std___1___shared_weak_count___release_weak_alt1(v13),
+      v11 = COERCE_AS(__typeof__(v11),
+                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    }
+  }
+  v15 = v16_.v17;
+  if (v16_.v17 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v16_.v17 + 8),
+                                        0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v15 + 16LL))(v15),
+        v11 = COERCE_AS(__typeof__(v11),
+                        PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    return std___1___shared_weak_count___release_weak_alt1(v15);
   }
   return result;
 }

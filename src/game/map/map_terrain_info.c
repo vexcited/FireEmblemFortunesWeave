@@ -43,6 +43,14 @@ __int64 game_map_MapTerrainInfo_SetSkillIcon_lambda0_Invoke(__int64 result,
                                                             _DWORD* a2);
 __int64 game_map_MapTerrainInfo_SetSkillIcon_lambda1_Invoke(__int64 a1,
                                                             __int64 a2);
+__attribute__((swiftcall)) void Pane_58dfa0(PSEUDO_X8, __int64);
+__int64
+ui_LayoutAccessor_FindPane_alt1(__int64*,
+                                __int64) __asm__("ui_LayoutAccessor_FindPane");
+__int64 ui_LayoutAccessor_SetPaneVisible(__int64 result, __int64, char);
+char* game_util_Format(const char*, ...);
+const char* Pane_58fac0(__int64, const char*);
+__int64 MapTerrainInfo_1824db0(__int64 a1);
 
 __int64 MapTerrainInfo_Destructor(_QWORD* a1)
 {
@@ -170,6 +178,87 @@ __int64 MapTerrainInfo_Destructor(_QWORD* a1)
   if ((_QWORD*)GameData_21ed0a0 == a1) {
     GameData_21ed0a0 = 0;
     GameData_226b240 = 0;
+  }
+  return result;
+}
+
+__int64 MapTerrainInfo_1824db0(__int64 a1)
+{
+
+#pragma clang fp contract(off)
+  __int64 v6;
+  float v7;
+  float v8;
+  int v9;
+  char* v10;
+  __int64 v11;
+  float v12;
+  float v13;
+  __int64 result;
+  int v15;
+  __int64 v16;
+  float v17;
+  float v18;
+  float v19;
+  char v20;
+  struct {
+    float v21;
+    float v22;
+    float v23;
+    float v24;
+  } v21_;
+  struct {
+    float v25;
+    float v26;
+    float v27;
+    float v28;
+  } v25_;
+
+  if (*(int*)(a1 + 428) < 1) {
+    return ui_LayoutAccessor_SetPaneVisible(a1 + 40, (__int64)"Skill_Bg", 0);
+  }
+  ui_LayoutAccessor_SetPaneVisible(a1 + 40, (__int64)"Skill_Bg", 1);
+  v6 = ui_LayoutAccessor_FindPane_alt1((__int64*)(a1 + 40),
+                                       (__int64)"L_Skill00");
+  v7 = *(float*)(v6 + 124);
+  v8 = *(float*)(v6 + 140);
+  Pane_58dfa0((void*)(&v25_.v25), v6);
+  v9 = *(_DWORD*)(a1 + 428) - 1;
+  v25_.v25 = v7 + v25_.v25;
+  v25_.v26 = v8 + v25_.v26;
+  v25_.v27 = v7 + v25_.v27;
+  v25_.v28 = v8 + v25_.v28;
+  v10 = game_util_Format("L_Skill%02d", v9);
+  v11 = ui_LayoutAccessor_FindPane_alt1((__int64*)(a1 + 40), (__int64)v10);
+  v12 = *(float*)(v11 + 124);
+  v13 = *(float*)(v11 + 140);
+  Pane_58dfa0((void*)(&v21_.v21), v11);
+  v21_.v21 = v12 + v21_.v21;
+  v21_.v22 = v13 + v21_.v22;
+  v21_.v23 = v12 + v21_.v23;
+  v21_.v24 = v13 + v21_.v24;
+  result =
+      ui_LayoutAccessor_FindPane_alt1((__int64*)(a1 + 40), (__int64)"Skill_Bg");
+  if (result != 0) {
+    result =
+        __dynamic_cast(result, GameData_212d670[0], GameData_212fc70[0], 0);
+    if (result != 0) {
+      v15 = *(_DWORD*)(result + 84);
+      v16 = result;
+      result = (__int64)Pane_58fac0(result, "Margin_Width");
+      if (result != 0) {
+        v17 = (float)*(int*)(result + *(unsigned int*)(result + 4));
+      }
+      else {
+        v17 = 0x0.0p+0f;
+      }
+      v18 = v21_.v23;
+      v19 = v25_.v25;
+      v20 = *(_BYTE*)(v16 + 88) | 0x10;
+      *(_DWORD*)(v16 + 84) = v15;
+      *(_BYTE*)(v16 + 88) = v20;
+      *(float*)(v16 + 80) = v17 + (float)(v18 - v19);
+    }
   }
   return result;
 }

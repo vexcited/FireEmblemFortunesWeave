@@ -32,6 +32,7 @@ __int64 DeliveryKindExecutor_12634c0(__int64 result, unsigned int* a2,
                                      __int64** a3, unsigned __int64 a4,
                                      unsigned int* a5, signed __int64 a6);
 bool DeliveryKindExecutor_12638e0(_QWORD* a1, int a2, int a3);
+bool DeliveryKindExecutor_Unknown4(__int64 a1);
 
 __int64 DeliveryKindExecutor_Destructor(__int64 a1, unsigned __int16* a2)
 {
@@ -73,6 +74,12 @@ __int64 DeliveryKindExecutor_DeletingDestructor(__int64 a1, __int64 a2, int a3)
   GameRoutine_12623a0(v6, a2, a3);
   ++*(_DWORD*)(a1 + 96);
   return 0;
+}
+
+bool DeliveryKindExecutor_Unknown4(__int64 a1)
+{
+  return (signed __int32)*(_DWORD*)(a1 + 96) >=
+         (signed __int32)*(_DWORD*)(a1 + 8);
 }
 
 __int64 DeliveryKindExecutor_Unknown6(__int64 a1)

@@ -42,6 +42,195 @@ __int64
 gxc_NvnStateCache_Reset_alt1(__int64 result) __asm__("gxc_NvnStateCache_Reset");
 float32x4_t GameRoutine_b3bca0_alt1(float*,
                                     float32x4_t*) __asm__("GameRoutine_b3bca0");
+_QWORD* GameRoutine_604020(_QWORD* result);
+_QWORD* GameRoutine_ad5000(_QWORD*, __int64, unsigned __int64, int);
+__attribute__((swiftcall)) void
+gfx_shader_Archive_CreateShader(PSEUDO_X8, __int64*, __int64, unsigned __int64,
+                                __int64, unsigned __int64);
+__int64 DecalObject_a91100(__int64*, __int64, __int64, __int64);
+__int64 GameHr_ad5280(_QWORD*);
+__int64 GameRoutine_5fc230(__int64 result);
+__int64 GameRoutine_604060(__int64, __int64*, __int64);
+__int64 Model_a636e0(__int64*, __int64, __int64, __int64);
+__int64 game_615760(__int64, __int64);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+extern _UNKNOWN** GameData_212e490[11];
+extern _UNKNOWN** GameData_212e498[10];
+extern _UNKNOWN** GameData_212e4a0[9];
+extern _UNKNOWN** GameData_212e4a8[8];
+extern _UNKNOWN** GameData_212e848[11];
+extern _UNKNOWN** GameData_212e880[4];
+extern __int64 (*GameData_2109c48[])();
+extern __int64 (*GameData_2109cc8[])();
+__int64 gfxa_TaskCapsuleAO_Impl_Impl(_QWORD* a1, __int64 a2);
+
+__int64 gfxa_TaskCapsuleAO_Impl_Impl(_QWORD* a1, __int64 a2)
+{
+  __int64* v3;
+  __int64* v4;
+  __int64 v5;
+  __int64 (**v6)();
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  _QWORD* v10;
+  __int64 (**v11)();
+  __int64 v12;
+  __int64 v13;
+  __int64 v14;
+  _QWORD* v15;
+  __int64* v16;
+  __int64 v17;
+  __int64 v18;
+  struct {
+    __int64 (**v20)();
+    __int64 v21;
+    char gap16_[16];
+    __int64 (***v22)();
+  } v20_;
+  struct {
+    _QWORD v23[2];
+    __int64 v24;
+    __int64 v25;
+  } v23_;
+
+  a1[15] = 0;
+  a1[16] = 0;
+  a1[17] = 0;
+  a1[18] = 0;
+  *a1 = a2;
+  a1[1] = 0;
+  a1[2] = 0;
+  a1[3] = 0;
+  a1[4] = 0;
+  a1[6] = 0;
+  *((_DWORD*)a1 + 14) = 0;
+  a1[8] = 0;
+  a1[9] = 0;
+  a1[10] = 0;
+  a1[11] = 0;
+  a1[13] = 0;
+  *((_DWORD*)a1 + 28) = 0;
+  *((_DWORD*)a1 + 38) = 1;
+  a1[5] = 0;
+  v3 = a1 + 5;
+  a1[12] = 0;
+  v4 = a1 + 12;
+  GameRoutine_604020(a1 + 29);
+  a1[44] = -1;
+  GameRoutine_604020(a1 + 45);
+  v5 = *a1;
+  a1[60] = -1;
+  gfx_shader_Archive_CreateShader((void*)(&v20_.v20), *(__int64**)(v5 + 13408),
+                                  (__int64)"Lighting", 8u, (__int64)"CapsuleAO",
+                                  9u);
+  v6 = v20_.v20;
+  v7 = v20_.v21;
+  v8 = a1[2];
+  v20_.v20 = nullptr;
+  v20_.v21 = 0;
+  a1[1] = v6;
+  a1[2] = v7;
+  if (v8 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v8 + 8),
+                                  0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v8 + 16LL))(v8);
+    std___1___shared_weak_count___release_weak_alt1(v8);
+  }
+  v9 = v20_.v21;
+  if (v20_.v21 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v20_.v21 + 8),
+                                        0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v9 + 16LL))(v9);
+    std___1___shared_weak_count___release_weak_alt1(v9);
+  }
+  v10 = GameRoutine_ad5000((_QWORD*)a1[1], (__int64)"pass", 4u, 0);
+  GameHr_ad5280(v10);
+  gfx_shader_Archive_CreateShader(
+      (void*)(&v20_.v20), *(__int64**)(*a1 + 13408LL), (__int64)"Lighting", 8u,
+      (__int64)"CapsuleAO", 9u);
+  v11 = v20_.v20;
+  v12 = v20_.v21;
+  v13 = a1[4];
+  v20_.v20 = nullptr;
+  v20_.v21 = 0;
+  a1[3] = v11;
+  a1[4] = v12;
+  if (v13 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v13 + 8),
+                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v13 + 16LL))(v13);
+    std___1___shared_weak_count___release_weak_alt1(v13);
+  }
+  v14 = v20_.v21;
+  if (v20_.v21 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v20_.v21 + 8),
+                                        0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v14 + 16LL))(v14);
+    std___1___shared_weak_count___release_weak_alt1(v14);
+  }
+  v15 = GameRoutine_ad5000((_QWORD*)a1[3], (__int64)"pass", 4u, 1);
+  GameHr_ad5280(v15);
+  Model_a636e0(v3, *(_QWORD*)(*a1 + 312LL),
+               *(_QWORD*)(*(_QWORD*)(*a1 + 552LL) + 16LL), 24576);
+  DecalObject_a91100(v4, *(_QWORD*)(*a1 + 312LL),
+                     *(_QWORD*)(*(_QWORD*)(*a1 + 552LL) + 16LL), 72);
+  v23_.v24 = 0;
+  v23_.v25 = 0;
+  v23_.v23[0] = 0;
+  v23_.v23[1] = 0;
+  v20_.v20 = GameData_2109c48;
+  v20_.v22 = &v20_.v20;
+  GameRoutine_5fc230((__int64)v23_.v23);
+  if (v20_.v22 != nullptr) {
+    ((void (*)(__int64 (***)(void), _QWORD*))(*v20_.v22)[6])(v20_.v22,
+                                                             v23_.v23);
+  }
+  v16 = game_g_frame_clock_ptr[0];
+  GameRoutine_604060((__int64)(a1 + 29),
+                     (__int64*)(*game_g_frame_clock_ptr[0] + 568),
+                     (__int64)v23_.v23);
+  a1[44] = game_615760(*(_QWORD*)(*v16 + 552), (__int64)(a1 + 29));
+  if (v20_.v22 == &v20_.v20) {
+    v17 = 4;
+  }
+  else {
+    if (v20_.v22 == nullptr) {
+      goto LABEL_20;
+    }
+    v17 = 5;
+  }
+  ((__int64 (*)(__int64))(*v20_.v22)[v17])((__int64)v20_.v22);
+LABEL_20:
+  v23_.v24 = 0;
+  v23_.v25 = 0;
+  v23_.v23[0] = 0;
+  v23_.v23[1] = 0;
+  v20_.v20 = GameData_2109cc8;
+  v20_.v22 = &v20_.v20;
+  GameRoutine_5fc230((__int64)v23_.v23);
+  if (v20_.v22 != nullptr) {
+    ((void (*)(__int64 (***)(void), _QWORD*))(*v20_.v22)[6])(v20_.v22,
+                                                             v23_.v23);
+  }
+  GameRoutine_604060((__int64)(a1 + 45), (__int64*)(*v16 + 568),
+                     (__int64)v23_.v23);
+  a1[60] = game_615760(*(_QWORD*)(*v16 + 552), (__int64)(a1 + 45));
+  if (v20_.v22 == &v20_.v20) {
+    v18 = 4;
+    goto LABEL_26;
+  }
+  if (v20_.v22 != nullptr) {
+    v18 = 5;
+  LABEL_26:
+    ((__int64 (*)(__int64))(*v20_.v22)[v18])((__int64)v20_.v22);
+  }
+  (*(void (**)(_QWORD*))GameData_212e490[0])(a1 + 20);
+  (*(void (**)(_QWORD*, _QWORD))GameData_212e880[0])(a1 + 20, 0);
+  (*(void (**)(_QWORD*))GameData_212e4a0[0])(a1 + 28);
+  (*(void (**)(_QWORD*, _QWORD, _QWORD))GameData_212e4a8[0])(a1 + 28, 0, 0);
+  (*(void (**)(__int64))GameData_212e498[0])((__int64)a1 + 228);
+  return (*(__int64 (**)(__int64, _QWORD, _QWORD, __int64, _QWORD,
+                         _QWORD))GameData_212e848[0])((__int64)a1 + 228, 0, 0,
+                                                      1, 0, 0);
+}
 
 __int64 TaskCapsuleAO_18dfe10(_QWORD* a1)
 {

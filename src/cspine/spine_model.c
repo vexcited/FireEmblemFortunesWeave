@@ -64,6 +64,11 @@ _QWORD* SpineModel_19160e0(__int64 a1, _QWORD* a2);
 __int64 GameRoutine_1918840(_QWORD, _QWORD);
 __int64 std___1___next_prime(_QWORD);
 _QWORD* SpineModel_19184e0(float* a1, _QWORD* a2, __int64** a3);
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+_QWORD* cspine_SpineModel_Draw_lambda0_Destructor(_QWORD* a1);
+void cspine_SpineModel_Draw_lambda0_DeletingDestructor(_QWORD* a1);
+_QWORD* cspine_SpineModel_Draw_lambda0_Destroy(_QWORD* a1);
 
 __int64* SpineModel_190e620(__int64* result, _QWORD* a2, __int64* a3,
                             _QWORD* a4)
@@ -1370,6 +1375,84 @@ LABEL_25:
   return v13;
 }
 
+_QWORD* cspine_SpineModel_Draw_lambda0_Destructor(_QWORD* a1)
+{
+  _QWORD* v2;
+  _QWORD* v3;
+  __int64 v4;
+  _QWORD* result;
+  __int64 v6;
+
+  *a1 = GameData_2110200;
+  v2 = a1 + 10;
+  v3 = (_QWORD*)a1[14];
+  if (v3 == v2) {
+    v4 = 32;
+  }
+  else {
+    if (v3 == nullptr) {
+      goto LABEL_6;
+    }
+    v4 = 40;
+  }
+  (*(void (**)(__int64))(*v3 + v4))((__int64)v3);
+LABEL_6:
+  result = (_QWORD*)a1[8];
+  if (result == a1 + 4) {
+    v6 = 32;
+  }
+  else {
+    if (result == nullptr) {
+      return result;
+    }
+    v6 = 40;
+  }
+  return (_QWORD*)(*(__int64 (**)(__int64))(*result + v6))((__int64)result);
+}
+
+void cspine_SpineModel_Draw_lambda0_DeletingDestructor(_QWORD* a1)
+{
+  _QWORD* v2;
+  _QWORD* v3;
+  __int64 v4;
+  _QWORD* v5;
+  __int64 v6;
+  __int64 v7;
+
+  *a1 = GameData_2110200;
+  v2 = a1 + 10;
+  v3 = (_QWORD*)a1[14];
+  if (v3 == v2) {
+    v4 = 32;
+  }
+  else {
+    if (v3 == nullptr) {
+      goto LABEL_6;
+    }
+    v4 = 40;
+  }
+  (*(void (**)(__int64))(*v3 + v4))((__int64)v3);
+LABEL_6:
+  v5 = (_QWORD*)a1[8];
+  if (v5 == a1 + 4) {
+    v6 = 32;
+  }
+  else {
+    if (v5 == nullptr) {
+      goto LABEL_11;
+    }
+    v6 = 40;
+  }
+  (*(void (**)(__int64))(*v5 + v6))((__int64)v5);
+LABEL_11:
+  v7 = 128;
+  if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+    v7 = 56;
+  }
+  nn_mem_StandardAllocator_Free_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v7, (__int64)a1);
+}
+
 _QWORD* cspine_SpineModel_Draw_lambda0_Clone(_QWORD* a1)
 {
   _QWORD* v2;
@@ -1458,6 +1541,40 @@ LABEL_6:
     a2[14] = result;
   }
   return result;
+}
+
+_QWORD* cspine_SpineModel_Draw_lambda0_Destroy(_QWORD* a1)
+{
+  _QWORD* v2;
+  _QWORD* v3;
+  __int64 v4;
+  _QWORD* result;
+  __int64 v6;
+
+  v2 = a1 + 10;
+  v3 = (_QWORD*)a1[14];
+  if (v3 == v2) {
+    v4 = 32;
+  }
+  else {
+    if (v3 == nullptr) {
+      goto LABEL_6;
+    }
+    v4 = 40;
+  }
+  (*(void (**)(__int64))(*v3 + v4))((__int64)v3);
+LABEL_6:
+  result = (_QWORD*)a1[8];
+  if (result == a1 + 4) {
+    v6 = 32;
+  }
+  else {
+    if (result == nullptr) {
+      return result;
+    }
+    v6 = 40;
+  }
+  return (_QWORD*)(*(__int64 (**)(__int64))(*result + v6))((__int64)result);
 }
 
 __int64 cspine_SpineModel_Draw_lambda0_Invoke(_QWORD* a1, __int64* a2)

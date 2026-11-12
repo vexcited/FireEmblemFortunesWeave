@@ -124,6 +124,7 @@ void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 __attribute__((swiftcall)) void
 ProxySnd_Unknown60(PSEUDO_X8 x8_, __int64 unused_int0, const char* a1);
+__int64 snd_Voice_setLabel_alt2(__int64, char*) __asm__("snd_Voice_setLabel");
 __attribute__((swiftcall)) void
 
 ProxySnd_Unknown23(PSEUDO_X8 x8_, __int64 unused_int0, __int64* a1)
@@ -156,8 +157,6 @@ ProxySnd_Unknown23(PSEUDO_X8 x8_, __int64 unused_int0, __int64* a1)
 
 __int64 ProxySnd_Unknown52(__int64 a1, __int64 a2, _BYTE* a3)
 {
-  __int64 v3;
-  __int64 v4;
   int v5;
   char v7;
   char v8;
@@ -165,12 +164,12 @@ __int64 ProxySnd_Unknown52(__int64 a1, __int64 a2, _BYTE* a3)
   __int64 v10;
   int v11;
   __int64 v12;
-  __int16 v13;
-  char v14;
-  char v15;
-  char v16;
-  __int64 v17;
-  __int64 v18;
+  struct {
+    __int16 v13;
+    char v14;
+    char v15;
+    char v16;
+  } v13_;
 
   if (*a3 != 86 || a3[1] != 95) {
     return 0;
@@ -187,11 +186,8 @@ __int64 ProxySnd_Unknown52(__int64 a1, __int64 a2, _BYTE* a3)
   if (a3[4] == 95) {
     return 1;
   }
-
 LABEL_11:
-  v17 = v3;
-  v18 = v4;
-  v13 = 24406;
+  v13_.v13 = 24406;
   if (GameData_226b690 != 0) {
     v7 = 69;
   }
@@ -204,14 +200,14 @@ LABEL_11:
   else {
     v8 = 80;
   }
-  v14 = v7;
-  v15 = v8;
-  v16 = 95;
+  v13_.v14 = v7;
+  v13_.v15 = v8;
+  v13_.v16 = 95;
   if (v5 != 0) {
     v9 = a3 + 3;
     v10 = 5;
     do {
-      *((_BYTE*)&v13 + v10) = v5;
+      *((_BYTE*)&v13_.v13 + v10) = v5;
       v11 = *v9++;
       LOBYTE(v5) = v11;
       ++v10;
@@ -221,8 +217,8 @@ LABEL_11:
   else {
     v12 = 5;
   }
-  *((_BYTE*)&v13 + v12) = 0;
-  snd_Voice_setLabel(a2, &v13);
+  *((_BYTE*)&v13_.v13 + v12) = 0;
+  snd_Voice_setLabel_alt2(a2, (char*)&v13_.v13);
   return 1;
 }
 

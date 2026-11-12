@@ -44,6 +44,8 @@ __int64 gfxa_render_GrassObject_CollectElements(__int64 result, __int64 a2,
                                                 _QWORD* a3);
 __int64* GrassObject_c761a0(__int64* result, char* a2, _QWORD** a3,
                             unsigned __int64 a4, __int64* a5, __int64 a6);
+__int64 GrassObject_c75d80(__int64 result, _QWORD* a2, unsigned int a3,
+                           __int64 a4, char a5);
 
 _QWORD* GrassObject_Destructor(_QWORD* result)
 {
@@ -986,6 +988,95 @@ __int64 gfxa_render_GrassObject_CollectElements(__int64 result, __int64 a2,
         ++v8;
       }
     }
+  }
+  return result;
+}
+
+__int64 GrassObject_c75d80(__int64 result, _QWORD* a2, unsigned int a3,
+                           __int64 a4, char a5)
+{
+  unsigned int v5;
+  _QWORD* v6;
+  int v7;
+  char v8;
+  __int64 v11;
+  int v13;
+  char v14;
+  __int64 v15;
+  __int64 v16;
+  __int64 i;
+  __int64 v18;
+  _QWORD* v19;
+  __int64 v20;
+  __int64 v21;
+  _QWORD* v22;
+  __int64 v23;
+  __int64 v24;
+  _QWORD* v27;
+
+  v5 = *(_DWORD*)(result + 276);
+  if ((signed int)v5 <= (signed __int32)*(_DWORD*)(result + 280)) {
+    v6 = (_QWORD*)(result + 120);
+    v7 = a5 & 1;
+    v8 = a5;
+    v11 = result;
+    v27 = (_QWORD*)(result + 136);
+    v24 = result + 120;
+    do {
+      result = (*(__int64 (**)(_QWORD, _QWORD, _QWORD))(
+          **(_QWORD**)(v11 + 120) + 112LL))(*(_QWORD*)(v11 + 120), a3, v5);
+      if ((result & 1) != 0) {
+        v13 = *(_DWORD*)(v11 + 272);
+        if (v13 >= 1) {
+          v14 = 1;
+          v15 = 0;
+          v16 = 0;
+          for (i = 0; i < v13; ++i) {
+            v18 = *(_QWORD*)(v11 + 248);
+            if (*(_DWORD*)(v18 + v16 + 4) != 0 && *(_DWORD*)(v18 + v16) == v5 &&
+                *(unsigned __int8*)(v18 + v16 + 8) == v7) {
+              if ((v14 & 1) != 0) {
+                if ((v8 & 1) != 0) {
+                  v19 = v27;
+                }
+                else {
+                  v19 = v6;
+                }
+                (*(void (**)(_QWORD, _QWORD*, _QWORD, _QWORD, __int64))(
+                    *(_QWORD*)*v19 + 88LL))(*v19, a2, a3, v5, a4);
+                v20 = *v19;
+                v8 = a5;
+                v6 = (_QWORD*)v24;
+                (*(void (**)(__int64, _QWORD*, _QWORD, _QWORD, __int64))(
+                    *(_QWORD*)v20 + 80LL))(v20, a2, a3, v5, a4);
+              }
+              v21 = *(_QWORD*)(v11 + 200) + v15 +
+                    16LL * *(int*)(*(_QWORD*)(v11 + 200) + v15 + 16);
+              (*(void (**)(_QWORD, __int64, __int64, _QWORD, _QWORD))(
+                  *(_QWORD*)*a2 + 224LL))(*a2, 1, 11, *(_QWORD*)(v21 + 24),
+                                          *(_QWORD*)(v21 + 32));
+              v22 = v6;
+              if ((v8 & 1) != 0) {
+                v23 = *(_QWORD*)(v11 + 224) + v15 +
+                      16LL * *(int*)(*(_QWORD*)(v11 + 224) + v15 + 16);
+                (*(void (**)(_QWORD, __int64, __int64, _QWORD, _QWORD))(
+                    *(_QWORD*)*a2 + 224LL))(*a2, 1, 12, *(_QWORD*)(v23 + 24),
+                                            *(_QWORD*)(v23 + 32));
+                v22 = v27;
+              }
+              result = (*(__int64 (**)(_QWORD, _QWORD*, _QWORD, _QWORD, _QWORD,
+                                       _QWORD))(*(_QWORD*)*v22 + 96LL))(
+                  *v22, a2, a3, v5,
+                  *(unsigned int*)(*(_QWORD*)(v11 + 248) + v16 + 4), 0);
+              v13 = *(_DWORD*)(v11 + 272);
+              v14 = 0;
+            }
+            v16 += 12;
+            v15 += 56;
+          }
+        }
+      }
+    } while ((int)v5++ < (signed __int32)*(_DWORD*)(v11 + 280));
   }
   return result;
 }

@@ -33,6 +33,20 @@ extern __int64* GameData_2130240[8];
 extern __int64 GameData_212c608[2];
 extern __int64 GameData_2131678;
 __int64 TelopStatusChange_174aca0(__int64 a1);
+_QWORD* ui_LayoutAccessor_Setup_155dda0(__int64*, __int64*);
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 game_telop_1748da0(__int64, _QWORD*, __int64*, __int64, __int64,
+                           _QWORD*);
+__int64 game_telop_1749040(__int64);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
+    "std___1___shared_weak_count_lock");
+extern __int64 (*GameData_1fa9430[])();
+void GameRoutine_97e2c0(__int64, _QWORD*);
+void TelopStatusChange_Unknown33(_QWORD* a1);
 
 __int64 TelopStatusChange_17484f0(_QWORD* a1)
 {
@@ -698,6 +712,114 @@ __int64 TelopStatusChange_174aca0(__int64 a1)
   *(_QWORD*)(a1 + 1288) = 0;
   *(_DWORD*)(a1 + 1296) = 0;
   return result;
+}
+
+void TelopStatusChange_Unknown33(_QWORD* a1)
+{
+  __int64 v2;
+  __int64 v3;
+  __int64* v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  _QWORD* v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
+  __int64 v14;
+  __int64 v15;
+  __int64 v16;
+  _QWORD v17[3];
+  struct {
+    __int64 v18;
+    __int64 v19;
+  } v18_;
+  struct {
+    __int64 v20;
+    __int64 v21;
+  } v20_;
+
+  v2 = fw_memory_HeapManager_Allocate_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr, 128, 16, 0);
+  *(_QWORD*)(v2 + 16) = 0;
+  v3 = a1[153];
+  *(_QWORD*)(v2 + 32) = 0;
+  *(_QWORD*)(v2 + 40) = 0;
+  *(_QWORD*)(v2 + 64) = 0;
+  *(_QWORD*)(v2 + 72) = 0;
+  *(_QWORD*)(v2 + 80) = 0;
+  *(_QWORD*)(v2 + 88) = 0;
+  *(_QWORD*)(v2 + 96) = 0;
+  *(_QWORD*)(v2 + 112) = 0;
+  *(_QWORD*)(v2 + 120) = 0;
+  a1[153] = v2;
+  *(_QWORD*)v2 = GameData_1fa9430;
+  *(_QWORD*)(v2 + 8) = 0;
+  *(_QWORD*)(v2 + 56) = 0;
+  *(_QWORD*)(v2 + 48) = v2 + 56;
+  *(_DWORD*)(v2 + 104) = 1065353216;
+  *(_QWORD*)(v2 + 24) = 0;
+  a1[152] = v2 + 24;
+  if (v3 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v3 + 8),
+                                  0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v3 + 16LL))(v3);
+    std___1___shared_weak_count___release_weak_alt1(v3);
+  }
+  v4 = (__int64*)a1[152];
+  v5 = a1[22];
+  v20_.v20 = 0;
+  v20_.v21 = 0;
+  if (v5 != 0 && (v6 = std___1___shared_weak_count_lock_alt1(v5), v20_.v21 = v6,
+                  v6 != 0)) {
+    v7 = v6;
+    v20_.v20 = a1[21];
+    ui_LayoutAccessor_Setup_155dda0(v4, &v20_.v20);
+    if (atomic_fetch_add((atomic_ullong* volatile)(v7 + 8),
+                         0xFFFFFFFFFFFFFFFFLL) == 0) {
+      (*(void (**)(__int64))(*(_QWORD*)v7 + 16LL))(v7);
+      std___1___shared_weak_count___release_weak_alt1(v7);
+    }
+  }
+  else {
+    ui_LayoutAccessor_Setup_155dda0(v4, &v20_.v20);
+  }
+  v8 = (_QWORD*)a1[154];
+  v9 = a1[153];
+  v18_.v18 = a1[152];
+  v18_.v19 = v9;
+  if (v9 != 0) {
+    atomic_fetch_add_explicit((atomic_ullong* volatile)(v9 + 16), 1u,
+                              memory_order_relaxed);
+    v10 = a1[155];
+    v11 = *(_QWORD*)((char*)a1 + 1286);
+    v12 = *(_QWORD*)((char*)a1 + 1292);
+    v17[0] = *(_QWORD*)((char*)a1 + 1278);
+    v17[1] = v11;
+    *(_QWORD*)((char*)&v17[1] + 6) = v12;
+    game_telop_1748da0((__int64)(a1 + 103), v8, &v18_.v18, v10,
+                       (__int64)(a1 + 157), v17);
+    std___1___shared_weak_count___release_weak_alt1(v9);
+  }
+  else {
+    v13 = a1[155];
+    v14 = *(_QWORD*)((char*)a1 + 1286);
+    v15 = *(_QWORD*)((char*)a1 + 1292);
+    v17[0] = *(_QWORD*)((char*)a1 + 1278);
+    v17[1] = v14;
+    *(_QWORD*)((char*)&v17[1] + 6) = v15;
+    game_telop_1748da0((__int64)(a1 + 103), v8, &v18_.v18, v13,
+                       (__int64)(a1 + 157), v17);
+  }
+  game_telop_1749040((__int64)(a1 + 103));
+  v16 = a1[154];
+  v18_.v18 = v16;
+  v18_.v19 = 0;
+  if (v16 != 0) {
+    v18_.v19 = *(_QWORD*)(v16 + 392);
+  }
+  GameRoutine_97e2c0((__int64)(a1 + 163), &v18_.v18);
 }
 
 __int64 TelopStatusChange_Unknown34(__int64 a1)

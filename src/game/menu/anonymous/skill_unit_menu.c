@@ -92,6 +92,10 @@ unsigned __int64 strlen_alt1(const char*) __asm__("strlen");
 void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 __int64 SkillUnitMenu_15ba6a0(__int64 a1, int32x2_t* a2, int a3);
+void BasicMenuCursor_16e0c00_alt1(_QWORD*,
+                                  __int64) __asm__("BasicMenuCursor_16e0c00");
+void game_menu_anonymous_SkillUnitMenu_OnAddSkillMenuItem_closure_Invoke(
+    __int64 a1, int* a2);
 
 void SkillUnitMenu_Unknown85(__int64 a1)
 {
@@ -1166,6 +1170,58 @@ bool game_menu_anonymous_SkillUnitMenu_OnAddArtsMenuItem_closure_Invoke(
   v2 = *(_QWORD*)(*(_QWORD*)(a1 + 8) + 1072LL);
   v4 = *a2;
   return GameRoutine_157b780(v2, &v4);
+}
+
+void game_menu_anonymous_SkillUnitMenu_OnAddSkillMenuItem_closure_Invoke(
+    __int64 a1, int* a2)
+{
+  __int64 v2;
+  int v3;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  int v10;
+  __int64* v11;
+
+  if ((signed __int32)**(_DWORD**)(a1 + 24) <
+      (signed __int32)*(_DWORD*)(a1 + 56)) {
+    v2 = *(_QWORD*)(a1 + 8);
+    v3 = *(unsigned __int8*)(a1 + 40);
+    v6 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
+                                        128, 16, 0);
+    v7 = *(_QWORD*)(v2 + 1072);
+    v8 = *(_QWORD*)(a1 + 48);
+    v9 = *(_QWORD*)(*(_QWORD*)(a1 + 32) + 8LL);
+    *(_BYTE*)(v6 + 104) = *(_BYTE*)(v2 + 1080);
+    v10 = *a2;
+    *(_WORD*)(v6 + 80) = 257;
+    *(_QWORD*)(v6 + 8) = 0;
+    *(_WORD*)(v6 + 16) = 0;
+    *(_QWORD*)(v6 + 48) = 0;
+    *(_QWORD*)(v6 + 56) = 0;
+    *(_QWORD*)(v6 + 64) = 0;
+    *(_QWORD*)(v6 + 72) = 0;
+    *(_QWORD*)(v6 + 88) = v7;
+    *(_QWORD*)(v6 + 96) = v8;
+    *(_BYTE*)(v6 + 82) = 1;
+    *(_DWORD*)(v6 + 40) = -1;
+    *(_DWORD*)(v6 + 108) = v10;
+    *(_QWORD*)(v6 + 120) = v9;
+    *(_DWORD*)(v6 + 112) = game_15df0e0(v7, a2);
+    if (v3 == 1) {
+      *(_QWORD*)v6 = game_menu_anonymous_EquipMenuItem_SkillEquip_vtable;
+      v11 = *(__int64**)(a1 + 16);
+      if (*v11 == 0) {
+        *v11 = v6;
+      }
+    }
+    else {
+      *(_QWORD*)v6 = game_menu_anonymous_EquipMenuItem_SkillFix_vtable;
+    }
+    BasicMenuCursor_16e0c00_alt1((_QWORD*)v2, v6);
+    ++**(_DWORD**)(a1 + 24);
+  }
 }
 
 #pragma GCC visibility pop

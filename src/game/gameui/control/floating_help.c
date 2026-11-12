@@ -48,6 +48,16 @@ extern char* GameData_2104120;
 __int64 FloatingHelp_18a4560(__int64 a1, int a2);
 __attribute__((swiftcall)) void FloatingHelp_18a4c80(PSEUDO_X8 x8_, __int64 a1,
                                                      __int64 a2, __int64 a3);
+__attribute__((swiftcall)) void
+LayoutAccessor_1560070_alt1(PSEUDO_X8, __int64*,
+                            const char*) __asm__("LayoutAccessor_1560070");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
+    "std___1___shared_weak_count_lock");
+float ui_LayoutAccessor_SetTranslate(__int64*, __int64);
+void __attribute__((noreturn)) GameRoutine_8123d0();
+void FloatingHelp_18a55a0(__int64 a1, float a2);
 
 __int64 FloatingHelp_18a4560(__int64 a1, int a2)
 {
@@ -350,6 +360,77 @@ __attribute__((swiftcall)) void FloatingHelp_18a4c80(PSEUDO_X8 x8_, __int64 a1,
   {
     result;
     return;
+  }
+}
+
+void FloatingHelp_18a55a0(__int64 a1, float a2)
+{
+
+#pragma clang fp contract(off)
+  __int64 v4;
+  long double v5;
+  __int64* v6;
+  float v7;
+  char v8;
+  float v9;
+  struct {
+    unsigned __int64 v10;
+    __int64 v11;
+  } v10_;
+
+  v5 = COERCE_AS(__typeof__(v5), PSEUDO_REGISTER(__n128, "v0", "=w"));
+  if (*(float*)(a1 + 1096) <= 0x1.0000000000000p+2f &&
+      *(_BYTE*)(a1 + 1076) == 1 && *(_BYTE*)(a1 + 1092) == 1) {
+    LayoutAccessor_1560070_alt1((void*)(&v10_.v10), (__int64*)(a1 + 88),
+                                "L_Cursor"),
+        v5 = COERCE_AS(__typeof__(v5), PSEUDO_REGISTER(__n128, "v0", "=w"));
+    if (v10_.v11 != 0) {
+      v4 = std___1___shared_weak_count_lock_alt1(v10_.v11),
+      v5 = COERCE_AS(__typeof__(v5), PSEUDO_REGISTER(__n128, "v0", "=w"));
+      v6 = (__int64*)v10_.v10;
+      if (v10_.v11 != 0) {
+        std___1___shared_weak_count___release_weak_alt1(v10_.v11),
+            v5 = COERCE_AS(__typeof__(v5), PSEUDO_REGISTER(__n128, "v0", "=w"));
+      }
+      if (v4 != 0 && v6 != nullptr) {
+        v7 = *(float*)(a1 + 1096);
+        v8 = *(_BYTE*)(a1 + 1076);
+        LODWORD(v10_.v11) = 0;
+        v9 = a2 + v7;
+        *(float*)(a1 + 1096) = v9;
+        if (v9 > 0x1.0000000000000p+2f) {
+          v9 = 0x1.0000000000000p+2f;
+        }
+        if ((v8 & 1) == 0 || (*(_BYTE*)(a1 + 1092) & 1) == 0) {
+          GameRoutine_8123d0(),
+              v5 = COERCE_AS(__typeof__(v5),
+                             PSEUDO_REGISTER(__n128, "v0", "=w"));
+        }
+        v10_.v10 = __PAIR64__(
+            (float)(*(float*)(a1 + 1068) +
+                    (float)((float)(v9 * (float)(*(float*)(a1 + 1084) -
+                                                 *(float*)(a1 + 1068))) *
+                            0x1.0000000000000p-2f)) +
+                0x0.0p+0f,
+            (float)(*(float*)(a1 + 1064) +
+                    (float)((float)(v9 * (float)(*(float*)(a1 + 1080) -
+                                                 *(float*)(a1 + 1064))) *
+                            0x1.0000000000000p-2f)) +
+                0x0.0p+0f);
+        *(float*)&v5 = ui_LayoutAccessor_SetTranslate(v6, (__int64)&v10_.v10),
+        v5 = COERCE_AS(__typeof__(v5), PSEUDO_REGISTER(__n128, "v0", "=w"));
+      }
+      else if (v4 == 0) {
+        return;
+      }
+      if (atomic_fetch_add((atomic_ullong* volatile)(v4 + 8),
+                           0xFFFFFFFFFFFFFFFFLL) == 0) {
+        (*(void (**)(__int64, long double))(*(_QWORD*)v4 + 16LL))(v4, v5),
+            v5 = COERCE_AS(__typeof__(v5), PSEUDO_REGISTER(__n128, "v0", "=w"));
+        std___1___shared_weak_count___release_weak_alt1(v4),
+            v5 = COERCE_AS(__typeof__(v5), PSEUDO_REGISTER(__n128, "v0", "=w"));
+      }
+    }
   }
 }
 

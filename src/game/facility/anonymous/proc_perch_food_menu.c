@@ -24,6 +24,13 @@ extern __int64 (*game_facility_anonymous_PerchFoodMenuItem_vtable[])();
 __int64
 game_facility_anonymous_ProcPerchFoodMenu_AddItemList_closure_Invoke(__int64 a1,
                                                                      int* a2);
+__int64 FacilityUtil_9494a0(__int64);
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+extern __int64 (*GameData_2114d78[])();
+extern __int64 (*game_menu_MaterialMenuItem_Empty_vtable[])();
+__int64 game_facility_anonymous_ProcPerchFoodMenu_AddItemList(__int64 a1);
 
 __int64 ProcPerchFoodMenu_Unknown103(__int64 a1)
 {
@@ -213,6 +220,53 @@ LABEL_8:
   _ZN4game4menu8GameMenu12Unknown16e9cd0Ev(a1);
   GameRoutine_192d3d0(a1);
   return 13;
+}
+
+__int64 game_facility_anonymous_ProcPerchFoodMenu_AddItemList(__int64 a1)
+{
+  __int64 v2;
+  __int64 v4;
+  __int64 v5;
+  __int64 result;
+  __int64 v7;
+  struct {
+    _QWORD v8[4];
+    _QWORD* v9;
+  } v8_;
+
+  v2 = fw_memory_HeapManager_Allocate_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr, 88, 16, 0);
+  *(_WORD*)(v2 + 16) = 0;
+  *(_QWORD*)(v2 + 48) = 0;
+  *(_QWORD*)(v2 + 56) = 0;
+  v4 = v2;
+  *(_QWORD*)(v2 + 64) = 0;
+  *(_QWORD*)(v2 + 72) = 0;
+  *(_WORD*)(v2 + 80) = 257;
+  *(_BYTE*)(v2 + 82) = 1;
+  *(_QWORD*)v2 = game_menu_MaterialMenuItem_Empty_vtable;
+  *(_DWORD*)(v2 + 40) = -1;
+  v5 = *(_QWORD*)(a1 + 344);
+  if (v5 != 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v5 + 8LL))(v5);
+  }
+  *(_QWORD*)(v4 + 8) = a1;
+  *(_QWORD*)(a1 + 344) = v4;
+  v8_.v8[0] = GameData_2114d78;
+  v8_.v8[1] = a1;
+  v8_.v9 = v8_.v8;
+  FacilityUtil_9494a0((__int64)v8_.v8);
+  result = (__int64)v8_.v9;
+  if (v8_.v9 == v8_.v8) {
+    v7 = 32;
+  }
+  else {
+    if (v8_.v9 == nullptr) {
+      return result;
+    }
+    v7 = 40;
+  }
+  return (*(__int64 (**)(__int64))(*v8_.v9 + v7))((__int64)v8_.v9);
 }
 
 __int64 ProcPerchFoodMenu_Unknown143(__int64 a1, __int64 a2, __int64 a3)

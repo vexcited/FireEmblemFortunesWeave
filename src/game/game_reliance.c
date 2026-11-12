@@ -129,6 +129,12 @@ void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
 void GameReliance_8e0880(float* a1);
 void game_GameReliance_Impl_EachPlayer(__int64 a1, __int64 a2);
 void game_GameReliance_Impl_EachScore(__int64 a1, char a2, __int64 a3);
+__int64* game_820d50(int);
+__int64 game_GameVariableTable_Find_alt1(_QWORD*, unsigned __int64*) __asm__(
+    "game_GameVariableTable_Find");
+bool game_HasSkill(_QWORD*, _DWORD*);
+extern _QWORD game_g_shared_system_skills_ptr;
+__int64 GameReliance_8e18b0(_QWORD* a1, _QWORD* a2, _QWORD* a3);
 
 void __attribute__((noreturn)) GameReliance_IData_DeletingDestructor()
 {
@@ -1374,6 +1380,141 @@ __int64 GameReliance_8e17a0(_QWORD* a1, __int64 a2, __int64 a3)
     }
   }
   return 0xFFFFFFFFLL;
+}
+
+__int64 GameReliance_8e18b0(_QWORD* a1, _QWORD* a2, _QWORD* a3)
+{
+  _QWORD* v3;
+  _QWORD* v4;
+  __int64 v5;
+  __int64 v6;
+  char v7;
+  _QWORD* v8;
+  _QWORD* v9;
+  _QWORD* v10;
+  __int64 v11;
+  __int64* v12;
+  __int64 v13;
+  __int64 v14;
+  char v15;
+  __int64* v16;
+  __int64 v17;
+  __int64 v18;
+  int v19;
+  __int64 v20;
+  int v21;
+  int v23;
+
+  v3 = (_QWORD*)*a2;
+  if (*a2 == 0) {
+    goto LABEL_38;
+  }
+  v4 = (_QWORD*)*a3;
+  if (*a3 == 0) {
+    goto LABEL_38;
+  }
+  v5 = v3[49];
+  if (v5 != 0) {
+    v5 = *(_QWORD*)(v5 + 272);
+    if (v5 != 0) {
+      v6 = v3[55];
+      if (v6 != 0) {
+        v7 = *(_BYTE*)(v6 + 16);
+      }
+      else {
+        v7 = 9;
+      }
+      if (((1 << v7) & 0xF1) == 0) {
+        goto LABEL_10;
+      }
+      v8 = a1;
+      v9 = a2;
+      v10 = a3;
+      v11 = game_g_shared_system_skills_ptr;
+      v23 = *(_DWORD*)((_BYTE*)((_UNKNOWN*)0x168LL) +
+                       game_g_shared_system_skills_ptr) &
+            0xFFF;
+      if (game_HasSkill(v3 + 218, &v23)) {
+        goto LABEL_10;
+      }
+      v12 = game_820d50(3);
+      if (game_GameModeData_instance_ != 0) {
+        v13 = game_GameVariableTable_Find_alt1(
+            *(_QWORD**)(game_GameModeData_instance_ + 48),
+            (unsigned __int64*)v12);
+        if (v13 != 0 && *(_DWORD*)(v13 + 32) != 0) {
+          goto LABEL_10;
+        }
+      }
+      v5 = v4[49];
+      if (v5 != 0) {
+        v5 = *(_QWORD*)(v5 + 272);
+        if (v5 != 0) {
+          v14 = v4[55];
+          if (v14 != 0) {
+            v15 = *(_BYTE*)(v14 + 16);
+          }
+          else {
+            v15 = 9;
+          }
+          if (((1 << v15) & 0xF1) != 0) {
+            v23 = *(_DWORD*)((_BYTE*)((_UNKNOWN*)0x168LL) + v11) & 0xFFF;
+            if (!game_HasSkill(v4 + 218, &v23)) {
+              v16 = game_820d50(3);
+              if (game_GameModeData_instance_ == 0 ||
+                  (v17 = game_GameVariableTable_Find_alt1(
+                       *(_QWORD**)(game_GameModeData_instance_ + 48),
+                       (unsigned __int64*)v16)) == 0 ||
+                  *(_DWORD*)(v17 + 32) == 0) {
+                v23 = *(_DWORD*)((_BYTE*)((_UNKNOWN*)0x15CLL) + v11) & 0xFFF;
+                if (!game_HasSkill(v3 + 218, &v23)) {
+                  v23 = *(_DWORD*)((_BYTE*)((_UNKNOWN*)0x15CLL) + v11) & 0xFFF;
+                  if (!game_HasSkill(v4 + 218, &v23)) {
+                    v18 = v3[55];
+                    if (v18 != 0) {
+                      v19 = *(unsigned __int8*)(v18 + 16);
+                    }
+                    else {
+                      v19 = 9;
+                    }
+                    v20 = v4[55];
+                    a3 = v10;
+                    a2 = v9;
+                    a1 = v8;
+                    if (v20 != 0) {
+                      v21 = *(unsigned __int8*)(v20 + 16);
+                    }
+                    else {
+                      v21 = 9;
+                    }
+                    if (v19 == v21) {
+                      goto LABEL_38;
+                    }
+                    if (v19 != 0) {
+                      LODWORD(v5) = 0;
+                      if (v19 != 3 || v21 != 0) {
+                        return (unsigned int)v5;
+                      }
+                    LABEL_38:
+                      LODWORD(v5) = (int)GameReliance_8e17a0(a1, (__int64)a2,
+                                                             (__int64)a3) >= 0;
+                      return (unsigned int)v5;
+                    }
+                    if (v21 == 3) {
+                      goto LABEL_38;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        LABEL_10:
+          LODWORD(v5) = 0;
+        }
+      }
+    }
+  }
+  return (unsigned int)v5;
 }
 
 void game_GameReliance_Impl_EachPlayer(__int64 a1, __int64 a2)

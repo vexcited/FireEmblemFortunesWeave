@@ -24,6 +24,110 @@ __int64 game_menu_TalkSelectQuestMenu_CreateBindNoChoice_lambda0_Invoke(
     __int64 result, __int64* a2, _BYTE** a3);
 __int64 game_menu_TalkSelectQuestMenu_CreateBindNoChoice_lambda1_Invoke(
     __int64 a1, __int64* a2, __int64* a3);
+__int64 GameRoutine_187d450(__int64, __int64, __int64, char);
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
+extern __int64 (*GameData_20fd628[])();
+extern __int64 fw_memory_g_heap_manager;
+void __attribute__((noreturn))
+GameRoutine_1267e70_alt1() __asm__("GameRoutine_1267e70");
+void nn_mem_StandardAllocator_Free(__int64, __int64);
+__int64 game_menu_TalkSelectQuestMenu_CreateBindNoChoice(__int64 a1, __int64 a2,
+                                                         __int64* a3);
+
+__int64 game_menu_TalkSelectQuestMenu_CreateBindNoChoice(__int64 a1, __int64 a2,
+                                                         __int64* a3)
+{
+  __int64 v3;
+  __int64 v4;
+  unsigned __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  unsigned __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  unsigned __int64 v12;
+  _QWORD* v13;
+  __int64 v14;
+  unsigned __int64 v15;
+  __int64 v16;
+  struct {
+    _QWORD v18[4];
+    _QWORD* v19;
+  } v18_;
+
+  if ((*(_BYTE*)(a2 + 9) & 0xFE) != 2) {
+    v18_.v18[0] = GameData_20fd628;
+    v18_.v19 = v18_.v18;
+    v10 = GameRoutine_187d450(a1, a2, (__int64)v18_.v18, 0);
+    if (v18_.v19 == v18_.v18) {
+      v11 = 32;
+    }
+    else {
+      if (v18_.v19 == nullptr) {
+        return v10;
+      }
+      v11 = 40;
+    }
+    (*(void (**)(__int64))(*v18_.v19 + v11))((__int64)v18_.v19);
+    return v10;
+  }
+  v4 = *a3;
+  v3 = a3[1];
+  v5 = v3 - *a3;
+  if (v3 == *a3) {
+    v6 = a1;
+    v7 = a2;
+    v8 = 0;
+    v9 = 0;
+  }
+  else {
+    if ((v5 & 0x8000000000000000LL) != 0) {
+      goto LABEL_19;
+    }
+    v6 = a1;
+    v7 = a2;
+    v8 = fw_memory_HeapManager_Allocate_alt1(fw_memory_g_heap_manager, v5, 16,
+                                             0);
+    v9 = v8 + v5;
+    memcpy_alt1(v8, v4, v5);
+  }
+  v12 = v9 - v8;
+  v13 = (_QWORD*)fw_memory_HeapManager_Allocate_alt1(fw_memory_g_heap_manager,
+                                                     32, 16, 0);
+  v13[2] = 0;
+  v13[3] = 0;
+  *v13 = GameData_20fd598;
+  v13[1] = 0;
+  if (v9 != v8) {
+    if ((v12 & 0x8000000000000000LL) != 0) {
+    LABEL_19:
+      GameRoutine_1267e70_alt1();
+    }
+    v14 = fw_memory_HeapManager_Allocate_alt1(fw_memory_g_heap_manager, v9 - v8,
+                                              16, 0);
+    v15 = v14 + v12;
+    v13[1] = v14;
+    v13[3] = v14 + v12;
+    memcpy_alt1(v14, v8, v12);
+    v13[2] = v15;
+  }
+  v18_.v19 = v13;
+  v10 = GameRoutine_187d450(v6, v7, (__int64)v18_.v18, 1);
+  (*(void (**)(_QWORD*))(*v13 + 40LL))(v13);
+  if (v8 != 0) {
+    v16 = 128;
+    if (*(_QWORD*)(fw_memory_g_heap_manager + 200) == 0) {
+      v16 = 56;
+    }
+    nn_mem_StandardAllocator_Free(fw_memory_g_heap_manager + v16, v8);
+  }
+  return v10;
+}
+
 _QWORD*
 
 game_menu_TalkSelectQuestMenu_CreateBindNoChoice_lambda0_Clone(__int64 a1)

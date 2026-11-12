@@ -20,6 +20,17 @@ __int64 ui_LayoutAccessor_FindPane(__int64*, __int64, long double);
 __int64 ui_LayoutAccessor_SetPaneVisible(__int64 result, __int64, char,
                                          long double);
 void GmapSpotInfoSetterForList_Unknown6(__int64 a1, long double a2);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
+    "std___1___shared_weak_count_lock");
+__int64 ui_LayoutAccessor_FindPane_alt1(__int64*, const char*) __asm__(
+    "ui_LayoutAccessor_FindPane");
+__int64 ui_LayoutAccessor_SetPaneVisible_alt1(
+    __int64 result, const char*,
+    char) __asm__("ui_LayoutAccessor_SetPaneVisible");
+float32x4_t* GameRoutine_156c240(float32x4_t* result);
+__int64 GmapSpotInfoSetterForList_Unknown9(__int64 a1, __int64* a2, int a3);
 
 void GmapSpotInfoSetterForList_Unknown6(__int64 a1, long double a2)
 {
@@ -284,6 +295,147 @@ const char* GmapSpotInfoSetterForList_Unknown8(__int64 a1, char a2)
   else {
     return "A_ItemL";
   }
+}
+
+__int64 GmapSpotInfoSetterForList_Unknown9(__int64 a1, __int64* a2, int a3)
+{
+
+#pragma clang fp contract(off)
+  __int64 result;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  __int64* v9;
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
+  __int64 v14;
+  __int64 v15;
+  const char* v16;
+  __int64 v17;
+  __int64 v18;
+  __int64 v19;
+  float32x4_t v20;
+  __int64 v21;
+  __int64 v22;
+  __int64 v23;
+  __int64 v24;
+  __int64 v25;
+
+  result = a2[1];
+  if (result != 0) {
+    result = std___1___shared_weak_count_lock_alt1(result);
+    if (result != 0) {
+      v6 = *a2;
+      v7 = result;
+      if (*a2 == 0) {
+        goto LABEL_23;
+      }
+      ui_LayoutAccessor_SetPaneVisible_alt1(*a2, "Gauge00", a3 < 5);
+      result = ui_LayoutAccessor_SetPaneVisible_alt1(v6, "N_Gauge01", a3 > 4);
+      v9 = (__int64*)*a2;
+      v8 = a2[1];
+      if (a3 < 5) {
+        if (v8 == 0) {
+          goto LABEL_23;
+        }
+        v17 = a2[1];
+        atomic_fetch_add_explicit((atomic_ullong* volatile)(v8 + 16), 1u,
+                                  memory_order_relaxed);
+        v18 = std___1___shared_weak_count_lock_alt1(v17);
+        if (v18 == 0) {
+        LABEL_22:
+          result = std___1___shared_weak_count___release_weak_alt1(v8);
+        LABEL_23:
+          if (atomic_fetch_add((atomic_ullong* volatile)(v7 + 8),
+                               0xFFFFFFFFFFFFFFFFLL) == 0) {
+            (*(void (**)(__int64))(*(_QWORD*)v7 + 16LL))(v7);
+            return std___1___shared_weak_count___release_weak_alt1(v7);
+          }
+          return result;
+        }
+        v15 = v18;
+        if (v9 == nullptr) {
+        LABEL_20:
+          if (atomic_fetch_add((atomic_ullong* volatile)(v15 + 8),
+                               0xFFFFFFFFFFFFFFFFLL) == 0) {
+            (*(void (**)(__int64))(*(_QWORD*)v15 + 16LL))(v15);
+            std___1___shared_weak_count___release_weak_alt1(v15);
+          }
+          goto LABEL_22;
+        }
+        v24 = 0;
+        v25 = 0;
+        v22 = 0;
+        v23 = 0;
+        v21 = 0;
+        v19 = ui_LayoutAccessor_FindPane_alt1(v9, "Gauge00");
+        v16 = "A_ItemL";
+        LANES128(v20).n128_u64[0] = v19;
+      }
+      else {
+        if (v8 == 0) {
+          goto LABEL_23;
+        }
+        v10 = a2[1];
+        atomic_fetch_add_explicit((atomic_ullong* volatile)(v8 + 16), 1u,
+                                  memory_order_relaxed);
+        v11 = std___1___shared_weak_count_lock_alt1(v10);
+        if (v11 != 0) {
+          v12 = v11;
+          if (v9 != nullptr) {
+            v24 = 0;
+            v25 = 16777472;
+            v22 = 0;
+            v23 = 0;
+            v21 = 0;
+            LANES128(v20).n128_u64[0] =
+                ui_LayoutAccessor_FindPane_alt1(v9, "Gauge01_L");
+            LANES128(v20).n128_u64[1] =
+                ui_LayoutAccessor_FindPane_alt1(v9, "A_ItemL");
+            GameRoutine_156c240(&v20);
+          }
+          if (atomic_fetch_add((atomic_ullong* volatile)(v12 + 8),
+                               0xFFFFFFFFFFFFFFFFLL) == 0) {
+            (*(void (**)(__int64))(*(_QWORD*)v12 + 16LL))(v12);
+            std___1___shared_weak_count___release_weak_alt1(v12);
+          }
+        }
+        result = std___1___shared_weak_count___release_weak_alt1(v8);
+        v8 = a2[1];
+        if (v8 == 0) {
+          goto LABEL_23;
+        }
+        v9 = (__int64*)*a2;
+        v13 = a2[1];
+        atomic_fetch_add_explicit((atomic_ullong* volatile)(v8 + 16), 1u,
+                                  memory_order_relaxed);
+        v14 = std___1___shared_weak_count_lock_alt1(v13);
+        if (v14 == 0) {
+          goto LABEL_22;
+        }
+        v15 = v14;
+        if (v9 == nullptr) {
+          goto LABEL_20;
+        }
+        v24 = 0;
+        v25 = 0;
+        v22 = 0;
+        v23 = 0;
+        v21 = 0;
+        LANES128(v20).n128_u64[0] =
+            ui_LayoutAccessor_FindPane_alt1(v9, "Gauge01_R");
+        v16 = "A_ItemR";
+      }
+      LANES128(v20).n128_u64[1] = ui_LayoutAccessor_FindPane_alt1(v9, v16);
+      BYTE1(v25) = 1;
+      BYTE3(v25) = 1;
+      GameRoutine_156c240(&v20);
+      goto LABEL_20;
+    }
+  }
+  return result;
 }
 
 __int64 GmapSpotInfoSetterForList_DeletingDestructor(_QWORD* a1)

@@ -54,6 +54,7 @@ __int64 fw_memory_HeapManager_Allocate_alt1(
     unsigned int) __asm__("fw_memory_HeapManager_Allocate");
 void __attribute__((noreturn))
 GameRoutine_60a310_alt1() __asm__("GameRoutine_60a310");
+__int64 BanquetPool_Unknown148(__int64 a1, unsigned __int8 a2);
 
 const char* BanquetPool_Unknown43(__int64 a1, char a2)
 {
@@ -315,6 +316,21 @@ bool BanquetPool_Unknown147(__int64 a1)
 {
   return (*(_DWORD*)(*(_QWORD*)(a1 + 1056) + 356LL) & 1 |
           *(_DWORD*)(a1 + 660)) == 0;
+}
+
+__int64 BanquetPool_Unknown148(__int64 a1, unsigned __int8 a2)
+{
+  __int64 result;
+
+  if ((signed __int32)*(_DWORD*)(a1 + 660) <
+      (signed __int32)*(_DWORD*)(a1 + 656)) {
+    return 0;
+  }
+  result = (*(__int64 (**)(__int64))(*(_QWORD*)a1 + 1120LL))(a1);
+  if ((_DWORD)result != 0) {
+    return a2 & ((*(_BYTE*)(*(_QWORD*)(a1 + 1056) + 356LL) & 1) == 0);
+  }
+  return result;
 }
 
 __int64 BanquetPool_Unknown7(__int64 a1, char a2)

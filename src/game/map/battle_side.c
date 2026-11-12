@@ -169,6 +169,19 @@ void game_map_BattleSide_EachMaskSkill(__int64 a1, _DWORD* a2, char a3,
                                        __int64 a4);
 __int64 BattleSide_7a4700(__int64 result, __int64* a2, __int64* a3,
                           unsigned __int64 a4, __int64* a5, __int64 a6);
+__attribute__((swiftcall)) void Manager_e9af40(PSEUDO_X8, _QWORD*);
+__int64 GameRoutine_1a09d20(unsigned __int64, __int64);
+__int64 GameRoutine_7570a0(__int64 result, int, int, int, __int64);
+__int64 memcpy(__int64, __int64, unsigned __int64);
+bool GameRoutine_7a0850(__int64, __int64);
+extern __int64 (*GameData_1f98978[])();
+extern __int64 GameData_212c060;
+extern __int64 GameData_21ca300;
+extern __int64 GameData_2203490;
+void __attribute__((noreturn)) GameRoutine_60a210();
+void __attribute__((noreturn)) GameRoutine_740050();
+void game_map_BattleSide_UpdateCoop(__int64 a1);
+void game_map_BattleSide_UpdateCoop_lambda0_Invoke(__int64 a1, __int64* a2);
 
 void BattleSide_Destructor(_QWORD* a1)
 {
@@ -1566,6 +1579,224 @@ unsigned __int64 game_map_BattleSide_GetHealPower(unsigned __int64 result)
     goto LABEL_84;
   }
   return result;
+}
+
+void game_map_BattleSide_UpdateCoop(__int64 a1)
+{
+  __int64 v1;
+  int v3;
+  __int64 v4;
+  char v5;
+  __int64 v6;
+  char v7;
+  __int64* v8;
+  __int64* v9;
+  __int64 v10;
+  __int64 v11;
+  __int64* v12;
+  unsigned __int64 v13;
+  __int64 v14;
+  char* v15;
+  __int64 v16;
+  unsigned __int64 v17;
+  __int64 v18;
+  unsigned __int64 v19;
+  __int64 v20;
+  unsigned __int64 v21;
+  unsigned __int64 v22;
+  __int64 v23;
+  __int64 v24;
+  __int64 v25;
+  int v26;
+  int v27;
+  int v28;
+  __int64 v29;
+  _QWORD* v30;
+  __int64 v31;
+  unsigned __int64 v32;
+  __int64 v33;
+  __int64* v34;
+  signed __int64 v35;
+  bool v36;
+  __int64 v37;
+  __int64 v38;
+  __int64 v39;
+  struct {
+    __int64 (**v40)();
+    __int64 (***v41)();
+    __int64 v42;
+    char gap24_[8];
+    __int64* v43;
+  } v40_;
+  __int64 (**v44)();
+
+  v1 = *(_QWORD*)(a1 + 24);
+  *(_QWORD*)(a1 + 720) = *(_QWORD*)(a1 + 712);
+  v44 = (__int64 (**)(void))v1;
+  if (v1 == 0) {
+    return;
+  }
+  v3 = *(_DWORD*)(*(_QWORD*)(a1 + 8) + 11276LL);
+  if ((v3 & 0x10000) != 0) {
+    v6 = *(_QWORD*)(v1 + 440);
+    if (v6 != 0) {
+      v7 = *(_BYTE*)(v6 + 16);
+    }
+    else {
+      v7 = 9;
+    }
+    if (((1 << v7) & 0xF1) != 0 && GameData_2203490 != 0) {
+      Manager_e9af40((void*)((__int64*)&v40_.v40), (_QWORD*)GameData_2203490);
+      v8 = (__int64*)v40_.v40;
+      v9 = (__int64*)v40_.v41;
+      if (v40_.v40 != (__int64 (**)(void))v40_.v41) {
+        do {
+          v11 = *v8;
+          if (GameRoutine_7a0850(v1, *v8)) {
+            v12 = *(__int64**)(a1 + 720);
+            v13 = *(_QWORD*)(a1 + 728);
+            if ((unsigned __int64)v12 < v13) {
+              *v12 = v11;
+              v10 = (__int64)(v12 + 1);
+            }
+            else {
+              v14 = *(_QWORD*)(a1 + 712);
+              v15 = (char*)v12 - v14;
+              v16 = ((__int64)v12 - v14) >> 3;
+              v17 = v16 + 1;
+              if ((unsigned __int64)(v16 + 1) >> 61 != 0) {
+                GameRoutine_740050();
+              }
+              v18 = v13 - v14;
+              if (v18 >> 2 > v17) {
+                v17 = v18 >> 2;
+              }
+              if ((unsigned __int64)v18 >= 0x7FFFFFFFFFFFFFF8LL) {
+                v19 = 0x1FFFFFFFFFFFFFFFLL;
+              }
+              else {
+                v19 = v17;
+              }
+              if (v19 != 0) {
+                if (v19 >> 61 != 0) {
+                  GameRoutine_60a210();
+                }
+                v20 = fw_memory_HeapManager_Allocate_alt1(
+                    *(_QWORD*)fw_memory_g_heap_manager_ptr, 8 * v19, 16, 0);
+              }
+              else {
+                v20 = 0;
+              }
+              v21 = v20 + 8 * v19;
+              v22 = (unsigned __int64)v12 - v14;
+              v23 = (__int64)&v15[v20 + -8 * v16];
+              *(_QWORD*)&v15[v20] = v11;
+              v10 = (__int64)&v15[v20 + 8];
+              memcpy(v23, v14, v22);
+              *(_QWORD*)(a1 + 712) = v23;
+              *(_QWORD*)(a1 + 720) = v10;
+              *(_QWORD*)(a1 + 728) = v21;
+              if (v14 != 0) {
+                v24 = 128;
+                if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr +
+                               200LL) == 0) {
+                  v24 = 56;
+                }
+                nn_mem_StandardAllocator_Free_alt1(
+                    *(_QWORD*)fw_memory_g_heap_manager_ptr + v24, v14);
+              }
+            }
+            *(_QWORD*)(a1 + 720) = v10;
+          }
+          ++v8;
+        } while (v8 != v9);
+        v8 = (__int64*)v40_.v40;
+      }
+      if (v8 != nullptr) {
+        v40_.v41 = (__int64 (***)(void))v8;
+        v25 = 128;
+        if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+          v25 = 56;
+        }
+        nn_mem_StandardAllocator_Free_alt1(
+            *(_QWORD*)fw_memory_g_heap_manager_ptr + v25, (__int64)v8);
+      }
+    }
+  }
+  else {
+    if ((v3 & 0x10) != 0 || GameData_21ca300 == 0) {
+      return;
+    }
+    v4 = *(_QWORD*)(v1 + 440);
+    if (v4 != 0) {
+      v5 = *(_BYTE*)(v4 + 16);
+    }
+    else {
+      v5 = 9;
+    }
+    if (((1 << v5) & 0xF1) == 0) {
+      goto LABEL_45;
+    }
+    v26 = *(_DWORD*)(a1 + 72);
+    v27 = *(_DWORD*)(a1 + 76);
+    v28 = *(_DWORD*)(a1 + 88);
+    v40_.v42 = a1;
+    v40_.v40 = GameData_1f98978;
+    v40_.v41 = &v44;
+    v40_.v43 = (__int64*)&v40_.v40;
+    GameRoutine_7570a0(v1, v26, v27, v28, (__int64)&v40_.v40);
+    if (v40_.v43 == (__int64*)&v40_.v40) {
+      v29 = 32;
+    }
+    else {
+      if (v40_.v43 == nullptr) {
+        goto LABEL_45;
+      }
+      v29 = 40;
+    }
+    (*(void (**)(__int64))(*v40_.v43 + v29))((__int64)v40_.v43);
+  }
+LABEL_45:
+  v30 = *(_QWORD**)(a1 + 720);
+  v31 = *(_QWORD*)(a1 + 712);
+  if (v30 != (_QWORD*)v31) {
+    v40_.v40 = v44;
+    if (((__int64)v30 - v31) >> 3 < 129) {
+      v35 = 0;
+    LABEL_52:
+      BattleSide_7a4700_alt1(v31, v30, (__int64*)&v40_.v40,
+                             ((__int64)v30 - v31) >> 3, nullptr, v35);
+    }
+    else {
+      v32 = ((__int64)v30 - v31) >> 3;
+      v33 = GameData_212c060;
+      while (1) {
+        v34 = (__int64*)GameRoutine_1a09d20(8 * v32, v33);
+        if (v34 != nullptr) {
+          break;
+        }
+        v35 = v32 >> 1;
+        v36 = v32 > 1;
+        v32 >>= 1;
+        if (!v36) {
+          goto LABEL_52;
+        }
+      }
+      v37 = (__int64)v34;
+      BattleSide_7a4700_alt1(v31, v30, (__int64*)&v40_.v40,
+                             ((__int64)v30 - v31) >> 3, v34, v32);
+      v38 = 128;
+      if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+        v38 = 56;
+      }
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v38, v37);
+    }
+    v39 = *(_QWORD*)(a1 + 712);
+    if ((unsigned __int64)(*(_QWORD*)(a1 + 720) - v39) >= 0x21) {
+      *(_QWORD*)(a1 + 720) = v39 + 32;
+    }
+  }
 }
 
 __int64 BattleSide_79e8e0(_QWORD* a1)
@@ -4497,6 +4728,85 @@ __int64 game_map_BattleSide_GetHealPower_lambda0_Invoke(__int64 a1, _WORD* a2)
     goto LABEL_9;
   }
   return 1;
+}
+
+void game_map_BattleSide_UpdateCoop_lambda0_Invoke(__int64 a1, __int64* a2)
+{
+  _QWORD* v2;
+  __int64 v3;
+  __int64* v4;
+  unsigned __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  char* v8;
+  __int64 v9;
+  unsigned __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  unsigned __int64 v13;
+  __int64 v14;
+  unsigned __int64 v15;
+  unsigned __int64 v16;
+  __int64 v17;
+  __int64 v18;
+
+  v2 = *(_QWORD**)(a1 + 16);
+  v3 = *a2;
+  if (GameRoutine_7a0850(**(_QWORD**)(a1 + 8), *a2)) {
+    v4 = (__int64*)v2[90];
+    v5 = v2[91];
+    if ((unsigned __int64)v4 >= v5) {
+      v7 = v2[89];
+      v8 = (char*)v4 - v7;
+      v9 = ((__int64)v4 - v7) >> 3;
+      v10 = v9 + 1;
+      if ((unsigned __int64)(v9 + 1) >> 61 != 0) {
+        GameRoutine_740050();
+      }
+      v11 = v5 - v7;
+      v12 = fw_memory_g_heap_manager_ptr;
+      if (v11 >> 2 > v10) {
+        v10 = v11 >> 2;
+      }
+      if ((unsigned __int64)v11 >= 0x7FFFFFFFFFFFFFF8LL) {
+        v13 = 0x1FFFFFFFFFFFFFFFLL;
+      }
+      else {
+        v13 = v10;
+      }
+      if (v13 != 0) {
+        if (v13 >> 61 != 0) {
+          GameRoutine_60a210();
+        }
+        v14 = fw_memory_HeapManager_Allocate_alt1(
+            *(_QWORD*)fw_memory_g_heap_manager_ptr, 8 * v13, 16, 0);
+      }
+      else {
+        v14 = 0;
+      }
+      v15 = v14 + 8 * v13;
+      v16 = (unsigned __int64)v4 - v7;
+      v17 = (__int64)&v8[v14 + -8 * v9];
+      *(_QWORD*)&v8[v14] = v3;
+      v6 = (__int64)&v8[v14 + 8];
+      memcpy(v17, v7, v16);
+      v2[89] = v17;
+      v2[90] = v6;
+      v2[91] = v15;
+      if (v7 != 0) {
+        v18 = 128;
+        if (*(_QWORD*)(*(_QWORD*)v12 + 200LL) == 0) {
+          v18 = 56;
+        }
+        nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v12 + v18, v7);
+      }
+    }
+    else {
+      *v4 = v3;
+      v6 = (__int64)(v4 + 1);
+    }
+    v2[90] = v6;
+  }
 }
 
 __int64 BattleSide_7a4700(__int64 result, __int64* a2, __int64* a3,

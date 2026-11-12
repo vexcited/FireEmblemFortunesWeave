@@ -82,6 +82,13 @@ extern __int64* game_map_MapRandom_instance__ptr[3];
 extern __int64 game_TransporterConst_List_instance__ptr[6];
 __int64 ShopMenuItem_Buy_BCall(__int64 a1);
 __int64 game_facility_ShopMenuItem_Buy_OnDialogYes_lambda2_Invoke(__int64 a1);
+__int64 GameRoutine_9d1500_alt1(__int64, __int64, const char*, __int64, __int64,
+                                __int64) __asm__("GameRoutine_9d1500");
+__int64 game_facility_ItemShopMenuItem_CreateDialog(__int64*, __int64, __int64);
+extern __int64 (*GameData_20f73c0[])();
+extern __int64 (*GameData_20f7440[])();
+__int64 ShopMenuItem_Buy_Unknown2(__int64 a1);
+__int64 ShopMenuItem_Buy_Unknown77(__int64* a1, __int64 a2, __int64 a3);
 
 __int64 ShopMenuItem_Buy_Unknown17(_QWORD* a1)
 {
@@ -359,6 +366,67 @@ bool ShopMenuItem_Buy_1868b60(__int64 a1)
   }
 }
 
+__int64 ShopMenuItem_Buy_Unknown2(__int64 a1)
+{
+  __int64 v2;
+  __int64 v3;
+  bool v4;
+  char v5;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  struct {
+    _QWORD v10[4];
+    _QWORD* v11;
+  } v10_;
+  struct {
+    _QWORD v12[4];
+    _QWORD* v13;
+  } v12_;
+
+  v2 = *(_QWORD*)(a1 - 88);
+  v4 = false;
+  if (v2 != 0) {
+    v3 = __dynamic_cast(v2, GameData_212e030[0], GameData_2131c68[0], -2);
+    if (v3 != 0 && (int)((*(_QWORD*)(v3 + 16) - *(_QWORD*)(v3 + 8)) >> 3) > 0) {
+      v4 = true;
+    }
+  }
+  v5 = (*(__int64 (**)(__int64))(*(_QWORD*)a1 + 24LL))(a1);
+  if (!v4 && (v5 & 1) == 0) {
+    return (*(__int64 (**)(__int64))(*(_QWORD*)a1 + 56LL))(a1);
+  }
+  v12_.v12[0] = GameData_20f73c0;
+  v12_.v12[1] = a1;
+  v10_.v11 = v10_.v10;
+  v12_.v13 = v12_.v12;
+  v10_.v10[0] = GameData_20f7440;
+  v7 = (*(__int64 (**)(__int64, _QWORD*, _QWORD*))(*(_QWORD*)a1 + 40LL))(
+      a1, v12_.v12, v10_.v10);
+  if (v10_.v11 == v10_.v10) {
+    v8 = 32;
+  }
+  else {
+    if (v10_.v11 == nullptr) {
+      goto LABEL_14;
+    }
+    v8 = 40;
+  }
+  (*(void (**)(__int64))(*v10_.v11 + v8))((__int64)v10_.v11);
+LABEL_14:
+  if (v12_.v13 == v12_.v12) {
+    v9 = 32;
+    goto LABEL_18;
+  }
+  if (v12_.v13 != nullptr) {
+    v9 = 40;
+  LABEL_18:
+    (*(void (**)(__int64))(*v12_.v13 + v9))((__int64)v12_.v13);
+  }
+  (*(void (**)(__int64, __int64))(*(_QWORD*)a1 + 48LL))(a1, v7);
+  return 12;
+}
+
 __int64 ShopMenuItem_Buy_Unknown83(_QWORD* a1)
 {
   __int64 result;
@@ -457,6 +525,33 @@ __int64 ShopMenuItem_Buy_BCall(__int64 a1)
                  "SE_SYS_Multiple_CancelAll", v7, 0, 65537, 0, 0.0f, 1.0f);
   snd_Fade_Destroy_Fade(v7);
   return 13;
+}
+
+__int64 ShopMenuItem_Buy_Unknown77(__int64* a1, __int64 a2, __int64 a3)
+{
+  __int64* v5;
+  __int64 v6;
+  __int64 v7;
+  __int64* v8;
+  __int64 v9;
+  __int64 v10;
+  const char* v11;
+
+  if (a1[1] == 0) {
+    return game_facility_ItemShopMenuItem_CreateDialog(a1, a2, a3);
+  }
+  v5 = a1;
+  v6 = __dynamic_cast(a1[1], GameData_212e030[0], GameData_2131c68[0], -2);
+  a1 = v5;
+  if (v6 == 0 || (int)((*(_QWORD*)(v6 + 16) - *(_QWORD*)(v6 + 8)) >> 3) < 1) {
+    return game_facility_ItemShopMenuItem_CreateDialog(a1, a2, a3);
+  }
+  v7 = v5[12];
+  v8 = v5 + 12;
+  v9 = (*(__int64 (**)(void*))(v7 + 80))((void*)&v5[12]);
+  v10 = (*(__int64 (**)(__int64*))(*v8 + 64))(v8);
+  v11 = (const char*)(*(__int64 (**)(__int64*))(*v8 + 72))(v8);
+  return GameRoutine_9d1500_alt1(v9, v10, v11, a2, a3, a3);
 }
 
 __int64 ShopMenuItem_Buy_186a5f0(__int64 a1, __int64 a2, __int64 a3)

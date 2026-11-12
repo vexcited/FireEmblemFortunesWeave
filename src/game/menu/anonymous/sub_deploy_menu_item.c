@@ -23,6 +23,11 @@ bool SubDeployMenuItem_159ede0(_BOOL8 result);
 __int64 SubDeployMenuItem_185cd60(_QWORD* a1);
 void __attribute__((noreturn))
 GameRoutine_60a310_alt1() __asm__("GameRoutine_60a310");
+__int64 GameRoutine_15b5f20(__int64);
+extern __int64 GameData_212dbb8[9];
+extern __int64 GameData_2131910[19];
+extern char game_facility_g_unknown_2259368;
+__int64 SubDeployMenuItem_Unknown6(__int64 a1);
 
 bool SubDeployMenuItem_159ede0(_BOOL8 result)
 {
@@ -131,6 +136,44 @@ bool SubDeployMenuItem_159ede0(_BOOL8 result)
     }
   }
   return result;
+}
+
+__int64 SubDeployMenuItem_Unknown6(__int64 a1)
+{
+  __int64 v2;
+  char v3;
+  __int64 v4;
+  struct {
+    _QWORD v6[4];
+    _QWORD* v7;
+  } v6_;
+  __int64 v8;
+
+  v2 = *(_QWORD*)GameData_212dbb8[0];
+  if (*(_QWORD*)GameData_212dbb8[0] != 0 && *(_BYTE*)(v2 + 9) == 1 &&
+      *(_DWORD*)(v2 + 136) == 1) {
+    v3 = 0;
+    return v3 & 1;
+  }
+  v8 = 0;
+  v6_.v7 = v6_.v6;
+  v6_.v6[0] = GameData_2131910[0] + 16;
+  v6_.v6[1] = &v8;
+  GameRoutine_15b5f20((__int64)v6_.v6);
+  if (v6_.v7 == v6_.v6) {
+    v4 = 32;
+    goto LABEL_9;
+  }
+  if (v6_.v7 != nullptr) {
+    v4 = 40;
+  LABEL_9:
+    (*(void (**)(__int64))(*v6_.v7 + v4))((__int64)v6_.v7);
+  }
+  v3 = 0;
+  if (v8 == 0 && (game_facility_g_unknown_2259368 & 1) == 0) {
+    v3 = *(_BYTE*)(a1 + 81);
+  }
+  return v3 & 1;
 }
 
 __int64 SubDeployMenuItem_Unknown25(_QWORD* a1)

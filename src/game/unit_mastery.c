@@ -35,6 +35,14 @@ extern __int64 GameData_21da320;
 extern __int64 GameData_21da328;
 __int64 UnitMastery_7febc0(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
                            __int64 a5, __int64 a6);
+__int64 fw_memory_HeapManager_Allocate(__int64, __int64, __int64, unsigned int);
+__int64 memcpy(__int64, __int64, unsigned __int64);
+__int64 memset_alt2(__int64, int, unsigned __int64) __asm__("memset");
+void __attribute__((noreturn)) GameRoutine_60a210();
+void __attribute__((noreturn)) GameRoutine_7fb7a0();
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void UnitMastery_7fe910(__int64* a1, unsigned __int64 a2);
 
 __int64 game_UnitMastery_GetMaxJobRank(__int64 a1, __int64 a2, __int64 a3)
 {
@@ -2187,6 +2195,77 @@ LABEL_182:
     }
   }
   return (*(__int64 (**)(__int64, _QWORD))(*(_QWORD*)a2 + 24LL))(a2, 0);
+}
+
+void UnitMastery_7fe910(__int64* a1, unsigned __int64 a2)
+{
+  __int64 v2;
+  __int64 v3;
+  __int64 v6;
+  signed __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  unsigned __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
+  __int64 v14;
+  __int64 v15;
+  __int64 v16;
+
+  v3 = a1[1];
+  v2 = a1[2];
+  if (a2 <= (v2 - v3) >> 1) {
+    if (a2 != 0) {
+      memset_alt2(a1[1], 0, 2 * a2);
+      v3 += 2 * a2;
+    }
+    a1[1] = v3;
+  }
+  else {
+    v6 = *a1;
+    v7 = v3 - *a1;
+    v8 = v7 >> 1;
+    v9 = (v7 >> 1) + a2;
+    if (v9 < 0) {
+      GameRoutine_7fb7a0();
+    }
+    v10 = v2 - v6;
+    v11 = fw_memory_g_heap_manager_ptr;
+    if (v10 > v9) {
+      v9 = v10;
+    }
+    if (v10 >= 0x7FFFFFFFFFFFFFFELL) {
+      v12 = 0x7FFFFFFFFFFFFFFFLL;
+    }
+    else {
+      v12 = v9;
+    }
+    if (v12 != 0) {
+      if (v12 < 0) {
+        GameRoutine_60a210();
+      }
+      v13 = fw_memory_HeapManager_Allocate(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr, 2 * v12, 16, 0);
+    }
+    else {
+      v13 = 0;
+    }
+    v14 = v13 + v7;
+    v15 = v13 + 2 * v12;
+    memset_alt2(v13 + v7, 0, 2 * a2);
+    memcpy(v14 - 2 * v8, v6, v7);
+    *a1 = v14 - 2 * v8;
+    a1[1] = v14 + 2 * a2;
+    a1[2] = v15;
+    if (v6 != 0) {
+      v16 = 128;
+      if (*(_QWORD*)(*(_QWORD*)v11 + 200LL) == 0) {
+        v16 = 56;
+      }
+      nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v11 + v16, v6);
+    }
+  }
 }
 
 __int64 game_UnitMastery_GetMaxJobRank_lambda0_Invoke(__int64 result,

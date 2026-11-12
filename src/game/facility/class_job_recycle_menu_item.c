@@ -19,6 +19,11 @@ extern __int64* GameData_212d670[3];
 extern __int64* GameData_212d678[2];
 __int64 ClassJobRecycleMenuItem_OnSelect(__int64 a1);
 __int64 ClassJobRecycleMenuItem_DrawText(_QWORD* a1);
+__attribute__((swiftcall)) void game_95eea0(PSEUDO_X8, __int64 result, __int64);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+extern __int64 game_UnitListSet_instance_;
+bool ClassJobRecycleMenuItem_IsActive(__int64 a1);
 
 __int64 ClassJobRecycleMenuItem_OnSelect(__int64 a1)
 {
@@ -48,6 +53,66 @@ __int64 ClassJobRecycleMenuItem_OnSelect(__int64 a1)
     *(_DWORD*)(v3 + v5) = v6;
   }
   return GameRoutine_1467a30(*(_QWORD*)(a1 + 88));
+}
+
+bool ClassJobRecycleMenuItem_IsActive(__int64 a1)
+{
+  __int64 v1;
+  __int64 v2;
+  _QWORD* v3;
+  _QWORD* v4;
+  _QWORD* v5;
+  __int64 v7;
+  int v8;
+  __int64 v9;
+  __int16 v10;
+
+  v1 = *(_QWORD*)(a1 + 88);
+  if (v1 == 0) {
+    return false;
+  }
+  v2 = *(_QWORD*)(game_UnitListSet_instance_ + 24);
+  v3 = *(_QWORD**)v2;
+  v4 = *(_QWORD**)(v2 + 8);
+  if (v3 == v4) {
+    return false;
+  }
+  while (1) {
+    v5 = (_QWORD*)*v3;
+    if (*(_QWORD*)*v3 == v1) {
+      break;
+    }
+    v3 += 2;
+    if (v3 == v4) {
+      return false;
+    }
+  }
+  v7 = v3[1];
+  if (v7 != 0) {
+    atomic_fetch_add_explicit((atomic_ullong* volatile)(v7 + 8), 1u,
+                              memory_order_relaxed);
+    v8 = v5[6] & 0x3F;
+    if (atomic_fetch_add((atomic_ullong* volatile)(v7 + 8),
+                         0xFFFFFFFFFFFFFFFFLL) != 0) {
+      if (v8 != 0) {
+        return false;
+      }
+    }
+    else {
+      v9 = a1;
+      (*(void (**)(__int64))(*(_QWORD*)v7 + 16LL))(v7);
+      std___1___shared_weak_count___release_weak_alt1(v7);
+      a1 = v9;
+      if (v8 != 0) {
+        return false;
+      }
+    }
+  }
+  else if ((v5[6] & 0x3F) != 0) {
+    return false;
+  }
+  game_95eea0((void*)(&v10), *(_QWORD*)(a1 + 88), *(_QWORD*)(a1 + 96));
+  return (v10 & 0x800) != 0;
 }
 
 __int64 ClassJobRecycleMenuItem_DrawText(_QWORD* a1)

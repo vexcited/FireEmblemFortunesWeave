@@ -22,6 +22,11 @@ __int64 game_menu_anonymous_ProcSupplyPart2Menu_CreateBind(__int64 a1,
 __int64
 game_menu_anonymous_ProcSupplyPart2Menu_CreateBind_closure_Invoke(__int64 a1,
                                                                   __int64* a2);
+__int64 GameRoutine_17ab880(__int64);
+__int64 MapSortieMenu_871860(__int64, __int64, __int64, __int64, __int64);
+extern __int64 (*GameData_20d43b8[])();
+extern __int64 (*GameData_20d4438[])();
+__int64 game_menu_anonymous_ProcSupplyPart2Menu_BCall(__int64 a1);
 
 __int64 game_menu_anonymous_ProcSupplyPart2Menu_CreateBind(__int64 a1,
                                                            __int64* a2)
@@ -98,6 +103,74 @@ game_menu_anonymous_ProcSupplyPart2Menu_CreateBind_closure_Invoke(__int64 a1,
       v4 = 40;
     }
     return (*(__int64 (**)(void*))(*(_QWORD*)v6 + v4))((void*)v6);
+  }
+  return result;
+}
+
+__int64 game_menu_anonymous_ProcSupplyPart2Menu_BCall(__int64 a1)
+{
+  __int64 result;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  struct {
+    _QWORD v6[4];
+    _QWORD* v7;
+  } v6_;
+  struct {
+    _QWORD v8[4];
+    _QWORD* v9;
+  } v8_;
+  struct {
+    _QWORD v10[4];
+    _QWORD* v11;
+  } v10_;
+  const char* v12;
+
+  result = GameRoutine_17ab880(a1);
+  if ((_DWORD)result == 3) {
+    v12 = "MID_Menu_Part2Sortie_Confirm";
+    v10_.v10[0] = GameData_20d43b8;
+    v6_.v7 = v6_.v6;
+    v10_.v11 = v10_.v10;
+    v8_.v9 = v8_.v8;
+    v8_.v8[0] = GameData_20d4438;
+    v6_.v6[0] = GameData_20d4438;
+    MapSortieMenu_871860(a1, (__int64)&v12, (__int64)v10_.v10, (__int64)v8_.v8,
+                         (__int64)v6_.v6);
+    if (v6_.v7 == v6_.v6) {
+      v3 = 32;
+    }
+    else {
+      if (v6_.v7 == nullptr) {
+        goto LABEL_7;
+      }
+      v3 = 40;
+    }
+    (*(void (**)(__int64))(*v6_.v7 + v3))((__int64)v6_.v7);
+  LABEL_7:
+    if (v8_.v9 == v8_.v8) {
+      v4 = 32;
+    }
+    else {
+      if (v8_.v9 == nullptr) {
+        goto LABEL_12;
+      }
+      v4 = 40;
+    }
+    (*(void (**)(__int64))(*v8_.v9 + v4))((__int64)v8_.v9);
+  LABEL_12:
+    if (v10_.v11 == v10_.v10) {
+      v5 = 32;
+    }
+    else {
+      if (v10_.v11 == nullptr) {
+        return 11;
+      }
+      v5 = 40;
+    }
+    (*(void (**)(__int64))(*v10_.v11 + v5))((__int64)v10_.v11);
+    return 11;
   }
   return result;
 }

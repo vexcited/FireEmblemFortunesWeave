@@ -101,6 +101,48 @@ float snd_fnd_normalizeAngle_alt1(float result) __asm__(
 float snd_fnd_rotate_alt1(float*, float*, float) __asm__("snd_fnd_rotate");
 void __attribute__((noreturn))
 GameRoutine_60a310_alt1() __asm__("GameRoutine_60a310");
+__int64 Param_Destructor(_QWORD*);
+__int64 nn_os_FinalizeMutex(__int64);
+__int64 snd_HandlePtr_unregisterHandle(__int64 result);
+__int64 snd_Obj_Destroy_Obj_126190(__int64);
+extern __int64* GameData_2134248[3];
+extern __int64* GameData_2134488;
+__int64 Actor_Destructor_101a70(__int64 a1);
+
+__int64 Actor_Destructor_101a70(__int64 a1)
+{
+  __int64* v2;
+  _QWORD* v3;
+  __int64* v4;
+  bool v5;
+  __int64 v6;
+  _QWORD* v7;
+
+  v2 = GameData_2134488;
+  *(_QWORD*)a1 = GameData_2134488 + 2;
+  *(_QWORD*)(a1 + 5592) = v2 + 177;
+  *(_QWORD*)(a1 + 40) = v2 + 36;
+  v3 = (_QWORD*)(a1 + 40);
+  LODWORD(v2) = *(unsigned __int8*)(a1 + 5720);
+  v4 = snd_s_target_ptr;
+  *(_QWORD*)(a1 + 5624) = 0;
+  v5 = (_DWORD)v2 == 0;
+  v6 = 480;
+  if (!v5) {
+    v6 = 464;
+  }
+  (*(void (**)(void*))(*(_QWORD*)*v4 + v6))((void*)*v4);
+  if (*(_QWORD*)(a1 + 5632) != 0) {
+    v7 = (_QWORD*)*v4;
+    *(_QWORD*)(a1 + 5632) = 0;
+    (*(void (**)(_QWORD*))(*v7 + 480LL))(v7);
+  }
+  nn_os_FinalizeMutex(a1 + 5736);
+  *(_QWORD*)(a1 + 5592) = GameData_2134248[0] + 2;
+  snd_HandlePtr_unregisterHandle(a1 + 5592);
+  Param_Destructor(v3);
+  return snd_Obj_Destroy_Obj_126190(a1);
+}
 
 void Actor_DeletingDestructor_101be0(__int64 a1)
 {

@@ -63,6 +63,100 @@ void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void wld_map_ObjectEffectLoader_LoadAsync_lambda0_Invoke(__int64 a1,
                                                          __int64* a2);
+_QWORD* GameRoutine_a934d0(_QWORD* result, _QWORD*);
+__int64 fs_Manager_createFileAsync_fs_ElfFile(__int64, __int64);
+__int64 std___1___shared_weak_count___release_weak(__int64);
+extern __int64 (*GameData_1fbf780[])();
+extern __int64 (*GameData_211d728[])();
+extern __int64* snd_g_fileIndex_ptr[2];
+extern __int64 GameData_2203100;
+unsigned __int64 fs_6360e0(__int64, __int64, unsigned __int64, char, int);
+__int64 wld_map_ObjectEffectLoader_LoadAsync(__int64 a1, __int64 a2,
+                                             unsigned __int64 a3);
+
+__int64 wld_map_ObjectEffectLoader_LoadAsync(__int64 a1, __int64 a2,
+                                             unsigned __int64 a3)
+{
+  __int64* v6;
+  _QWORD* v7;
+  __int64 v8;
+  _QWORD* v9;
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
+  __int64 v14;
+  __int64 v15;
+  struct {
+    _QWORD v17[2];
+    __int64 v18;
+    __int64 v19;
+    _QWORD* v20;
+    int v21;
+  } v17_;
+
+  v6 = snd_g_fileIndex_ptr[0];
+  if ((fs_6360e0(*snd_g_fileIndex_ptr[0], a2, a3, 0, 0) & 1) == 0) {
+    return 0;
+  }
+  v7 = (_QWORD*)fw_memory_HeapManager_Allocate_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr, 80, 16, 0);
+  v7[2] = 0;
+  v8 = *(_QWORD*)(a1 + 16);
+  v7[8] = 0;
+  *v7 = GameData_1fbf780;
+  v7[1] = 0;
+  *(_QWORD*)(a1 + 8) = v7 + 4;
+  *(_QWORD*)(a1 + 16) = v7;
+  if (v8 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v8 + 8),
+                                  0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v8 + 16LL))(v8);
+    std___1___shared_weak_count___release_weak(v8);
+  }
+  v9 = *(_QWORD**)(a1 + 8);
+  v17_.v17[0] = GameData_211d728;
+  v17_.v17[1] = a1;
+  v17_.v20 = v17_.v17;
+  GameRoutine_a934d0(v17_.v17, v9);
+  if (v17_.v20 == v17_.v17) {
+    v10 = 32;
+    goto LABEL_10;
+  }
+  if (v17_.v20 != nullptr) {
+    v10 = 40;
+  LABEL_10:
+    (*(void (**)(__int64))(*v17_.v20 + v10))((__int64)v17_.v20);
+  }
+  v12 = *v6;
+  v13 = *(_QWORD*)(a1 + 8);
+  v14 = *(_QWORD*)(a1 + 16);
+  if (v14 != 0) {
+    atomic_fetch_add_explicit((atomic_ullong* volatile)(v14 + 16), 1u,
+                              memory_order_relaxed);
+    v17_.v18 = v13;
+    v17_.v19 = v14;
+    v15 = GameData_2203100;
+    atomic_fetch_add_explicit((atomic_ullong* volatile)(v14 + 16), 1u,
+                              memory_order_relaxed);
+  }
+  else {
+    v17_.v18 = v13;
+    v17_.v19 = 0;
+    v15 = GameData_2203100;
+  }
+  v17_.v17[0] = a2;
+  v17_.v17[1] = a3;
+  v17_.v20 = (_QWORD*)v15;
+  v17_.v21 = 0;
+  v11 = fs_Manager_createFileAsync_fs_ElfFile(v12, (__int64)v17_.v17);
+  if (v17_.v19 != 0) {
+    std___1___shared_weak_count___release_weak(v17_.v19);
+  }
+  if (v14 != 0) {
+    std___1___shared_weak_count___release_weak(v14);
+  }
+  return v11;
+}
 
 void wld_map_ObjectEffectLoader_LoadAsync_lambda0_Invoke(__int64 a1,
                                                          __int64* a2)

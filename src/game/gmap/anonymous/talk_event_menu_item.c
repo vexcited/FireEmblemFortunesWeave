@@ -13,6 +13,11 @@ __int64 ui_LayoutAccessor_SetPaneVisible(_QWORD, _QWORD, _QWORD);
 extern __int64 game_GameModeData_instance_;
 __int64 TalkEventMenuItem_Unknown55(_QWORD* a1);
 __int64 TalkEventMenuItem_Unknown70(__int64 a1);
+__int64 LayoutAccessor_155e830(__int64 result, char);
+__int64 TalkOtherClanMenuItem_14cfb10(__int64, __int64);
+extern __int64 GameData_2131860;
+void GameRoutine_1526260(__int64, __int64);
+__int64 TalkEventMenuItem_Unknown25(__int64 a1);
 
 __int64 TalkEventMenuItem_Unknown55(_QWORD* a1)
 {
@@ -45,6 +50,38 @@ __int64 TalkEventMenuItem_Unknown55(_QWORD* a1)
     }
   }
   return result;
+}
+
+__int64 TalkEventMenuItem_Unknown25(__int64 a1)
+{
+  __int64* v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+
+  v2 = (__int64*)GameData_2131860;
+  if (*(_QWORD*)GameData_2131860 != 0) {
+    GameRoutine_1526260(*(_QWORD*)GameData_2131860, *(_QWORD*)(a1 + 88));
+    v3 = *v2;
+    if (*v2 != 0) {
+      if (*(_QWORD*)(v3 + 224) != *(_QWORD*)(v3 + 216)) {
+        goto LABEL_4;
+      }
+      TalkOtherClanMenuItem_14cfb10(v3, *(_QWORD*)(a1 + 88));
+    }
+    return 4;
+  }
+LABEL_4:
+  LayoutAccessor_155e830(*(_QWORD*)(a1 + 8) + 848LL, 0);
+  v4 = *(_QWORD*)(a1 + 8);
+  if (*(_QWORD*)(v4 + 152) != 0) {
+    v5 = *(_QWORD*)(v4 + 152);
+  }
+  else {
+    v5 = *(_QWORD*)(a1 + 8);
+  }
+  TalkOtherClanMenuItem_14cfb10(v5, *(_QWORD*)(a1 + 88));
+  return 10;
 }
 
 __int64 TalkEventMenuItem_Unknown70(__int64 a1)

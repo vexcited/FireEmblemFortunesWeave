@@ -39,6 +39,103 @@ void __attribute__((noreturn)) GameRoutine_60a1d0(void);
 __int64 FacilityMenuItem_DrawText(_QWORD* a1);
 _QWORD* GameRoutine_169a430(__int64, char*);
 __int64 FacilityMenuItem_ACall(_QWORD* a1);
+__int64* LayoutAccessor_155fbe0(__int64*, const char*);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
+    "std___1___shared_weak_count_lock");
+double ui_LayoutAccessor_GetPaneTranslate(__int64*, const char*);
+extern __int64 ui_LayoutAccessor_empty_;
+float ui_LayoutAccessor_GetPaneSize(__int64*, const char*);
+void FacilityMenuItem_Unknown17(__int64 a1);
+
+void FacilityMenuItem_Unknown17(__int64 a1)
+{
+
+#pragma clang fp contract(off)
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  atomic_ullong* v5;
+  __int64* v6;
+  __int64* v7;
+  int v8;
+  double v9;
+  int v10;
+  int v11;
+  __int64* v12;
+
+  v10 = COERCE_AS(__typeof__(v10), PSEUDO_REGISTER(float, "s1", "=w")),
+  v11 = COERCE_AS(__typeof__(v11), PSEUDO_REGISTER(float, "s2", "=w")),
+  v8 = COERCE_AS(__typeof__(v8), PSEUDO_REGISTER(float, "s1", "=w"));
+  if ((*(_BYTE*)(a1 + 136) & 1) == 0) {
+    *(_BYTE*)(a1 + 136) = 1;
+    v2 = *(_QWORD*)(a1 + 56);
+    if (v2 != 0) {
+      v3 = std___1___shared_weak_count_lock_alt1(v2),
+      v10 = COERCE_AS(__typeof__(v10), PSEUDO_REGISTER(float, "s1", "=w")),
+      v11 = COERCE_AS(__typeof__(v11), PSEUDO_REGISTER(float, "s2", "=w")),
+      v8 = COERCE_AS(__typeof__(v8), PSEUDO_REGISTER(float, "s1", "=w"));
+      if (v3 != 0) {
+        v4 = v3;
+        v5 = (atomic_ullong*)(v3 + 8);
+        v6 = *(__int64**)(a1 + 48);
+        if (atomic_fetch_add(v5, 0xFFFFFFFFFFFFFFFFLL) != 0) {
+          if (v6 != nullptr) {
+          LABEL_7:
+            v7 = LayoutAccessor_155fbe0(v6, "L_ReceptionTime"),
+            v10 =
+                COERCE_AS(__typeof__(v10), PSEUDO_REGISTER(float, "s1", "=w")),
+            v11 =
+                COERCE_AS(__typeof__(v11), PSEUDO_REGISTER(float, "s2", "=w")),
+            v8 = COERCE_AS(__typeof__(v8), PSEUDO_REGISTER(float, "s1", "=w"));
+            *(float*)(a1 + 140) = ui_LayoutAccessor_GetPaneSize(v7, "Bg"),
+                           v10 = COERCE_AS(__typeof__(v10),
+                                           PSEUDO_REGISTER(float, "s1", "=w")),
+                           v11 = COERCE_AS(__typeof__(v11),
+                                           PSEUDO_REGISTER(float, "s2", "=w")),
+                           v8 = COERCE_AS(__typeof__(v8),
+                                          PSEUDO_REGISTER(float, "s1", "=w"));
+            *(_DWORD*)(a1 + 144) = v8;
+            v9 = ui_LayoutAccessor_GetPaneTranslate(v7, "L_ReceptionTime"),
+            v10 =
+                COERCE_AS(__typeof__(v10), PSEUDO_REGISTER(float, "s1", "=w")),
+            v11 =
+                COERCE_AS(__typeof__(v11), PSEUDO_REGISTER(float, "s2", "=w")),
+            v8 = COERCE_AS(__typeof__(v8), PSEUDO_REGISTER(float, "s1", "=w"));
+            *(_DWORD*)(a1 + 148) = LODWORD(v9);
+            *(_DWORD*)(a1 + 152) = v10;
+            *(_DWORD*)(a1 + 156) = v11;
+            return;
+          }
+        }
+        else {
+          v12 = v6;
+          (*(void (**)(__int64))(*(_QWORD*)v4 + 16LL))(v4),
+              v10 = COERCE_AS(__typeof__(v10),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v11 = COERCE_AS(__typeof__(v11),
+                              PSEUDO_REGISTER(float, "s2", "=w")),
+              v8 =
+                  COERCE_AS(__typeof__(v8), PSEUDO_REGISTER(float, "s1", "=w"));
+          std___1___shared_weak_count___release_weak_alt1(v4),
+              v10 = COERCE_AS(__typeof__(v10),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v11 = COERCE_AS(__typeof__(v11),
+                              PSEUDO_REGISTER(float, "s2", "=w")),
+              v8 =
+                  COERCE_AS(__typeof__(v8), PSEUDO_REGISTER(float, "s1", "=w"));
+          v6 = v12;
+          if (v12 != nullptr) {
+            goto LABEL_7;
+          }
+        }
+      }
+    }
+    v6 = &ui_LayoutAccessor_empty_;
+    goto LABEL_7;
+  }
+}
 
 __int64 FacilityMenuItem_ACall(_QWORD* a1)
 {

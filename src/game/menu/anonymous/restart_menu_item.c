@@ -23,6 +23,22 @@ extern __int64 fw_memory_g_heap_manager;
 void __attribute__((noreturn)) String_60a1d0(_QWORD);
 __attribute__((swiftcall)) void RestartMenuItem_Unknown70(PSEUDO_X8 x8_,
                                                           __int64 a1);
+const char* RestartMenuItem_Unknown3(__int64 a1);
+
+const char* RestartMenuItem_Unknown3(__int64 a1)
+{
+  const char* result;
+
+  if (((*(_DWORD*)(a1 + 144) - 6) & 0xFFFFFFFD) == 0) {
+    return "MID_Restart_Battle";
+  }
+  result = "MID_Restart_Chapter";
+  if (game_GameModeData_instance_ != 0 &&
+      *(_DWORD*)(game_GameModeData_instance_ + 60) == 3) {
+    return "MID_Restart_Chapter_Part3";
+  }
+  return result;
+}
 
 __int64 RestartMenuItem_BCall(_QWORD* a1)
 {

@@ -70,6 +70,7 @@ extern int GameData_2258d70;
 void __attribute__((noreturn)) String_60a1d0(_QWORD);
 __int64 ProcTransitionAnim_156af20(__int64 a1, int a2, int a3, __int64* a4,
                                    __int64 a5, __int64 a6);
+__int64 ProcTransitionAnim_156bb70();
 
 __int64 ProcTransitionAnim_Destructor(__int64 a1)
 {
@@ -1029,6 +1030,19 @@ LABEL_181:
     }
   }
   return *(_QWORD*)v74;
+}
+
+__int64 ProcTransitionAnim_156bb70()
+{
+  __int64 result;
+
+  result = game_gameui_MenuAnimator_instance_;
+  if (game_gameui_MenuAnimator_instance_ != 0) {
+    return (
+        *(__int64 (**)(__int64))(*(_QWORD*)game_gameui_MenuAnimator_instance_ +
+                                 24LL))(game_gameui_MenuAnimator_instance_);
+  }
+  return result;
 }
 
 #pragma GCC visibility pop

@@ -82,6 +82,38 @@ char* GameRoutine_a4dbe0_alt1(__int64, _BYTE*,
                               char) __asm__("GameRoutine_a4dbe0");
 unsigned __int64 strlen_alt1(const char*) __asm__("strlen");
 void __attribute__((noreturn)) String_60a1d0_alt1() __asm__("String_60a1d0");
+__attribute__((swiftcall)) void
+LayoutAccessor_1560070_alt1(PSEUDO_X8, __int64*,
+                            const char*) __asm__("LayoutAccessor_1560070");
+__int64 Alignment_56b600(__int64 result);
+__int64 GameRoutine_19fc5c0(__int64, __int64, float);
+__int64 GameRoutine_85ee30(__int64 result, __int64);
+__int64 LayoutAccessor_155e830(__int64 result, char);
+__int64 Manager_136a920(__int64, __int64, int, unsigned int, _BYTE*);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 std___1___shared_weak_count_lock(__int64);
+__int64 ui_LayoutAccessor_FindAlignment(__int64*, const char*);
+__int64 ui_LayoutAccessor_FindPane(__int64*, const char*);
+__int64 ui_LayoutAccessor_FindTextBox(__int64*, const char*);
+__int64 ui_LayoutAccessor_SetPaneVisible(__int64 result, const char*, char);
+bool GameHr_6b3be0(const char*, const char*);
+bool GameRoutine_6bebe0(_QWORD*);
+char* GameRoutine_a4dbe0_alt2(__int64, const char*,
+                              char) __asm__("GameRoutine_a4dbe0");
+extern __int64* GameData_212c770[3];
+extern __int64* GameData_212ce40;
+extern __int64* GameData_212ce58;
+extern __int64* GameData_212d670[3];
+extern __int64* GameData_212d678[2];
+extern __int64 ui_Manager_instance_;
+extern char* GameData_2088840[22];
+void GameRoutine_156c5d0(__int64, __int64, char);
+void LayoutAccessor_1562060(__int64*, const char*, const char*);
+void MapTerrainFile_6b38a0();
+void game_6b98c0(const char*, char);
+void game_gameui_1594340(__int64*, __int64);
+void ProcBattleHintInfo_16a5f40(__int64 a1, __int64 a2);
 
 __int64 ProcBattleHintInfo_Unknown24(__int64 a1)
 {
@@ -569,6 +601,269 @@ const char* ProcBattleHintInfo_Unknown5(__int64 a1)
   }
   else {
     return nullptr;
+  }
+}
+
+void ProcBattleHintInfo_16a5f40(__int64 a1, __int64 a2)
+{
+
+#pragma clang fp contract(off)
+  __int64 v2;
+  __int64 v5;
+  __int64 v6;
+  char v7;
+  int v8;
+  __int64 v9;
+  char* v10;
+  __int64 v11;
+  __int64 v12;
+  const char* v13;
+  const char* v14;
+  int v15;
+  __int64 v16;
+  __int64 v17;
+  __int64 v18;
+  char* v19;
+  __int64 v20;
+  __int64 v21;
+  __int64 v22;
+  __int64* v23;
+  unsigned int v24;
+  __int64 v25;
+  __int64 v26;
+  char v27;
+  __int64* v28;
+  __int64* v29;
+  struct {
+    __int64* v30;
+    __int64 v31;
+  } v30_;
+  _BYTE v32[24];
+  struct {
+    __int64* v33;
+    __int64 v34;
+    unsigned __int64 v35;
+    unsigned __int64 v36;
+    int v37;
+    int v38;
+    __int64 v39;
+    __int64 v40;
+    __int64 v41;
+    __int64 v42;
+    __int64 v43;
+    __int64 v44;
+    __int64 v45;
+    __int64 v46;
+    __int64 v47;
+    __int64 v48;
+    __int64 v49;
+    __int64 v50;
+    __int64 v51;
+  } v33_;
+
+  v2 = *(_QWORD*)a2;
+  GameRoutine_85ee30((__int64)v32, *(_QWORD*)a2);
+  v5 = game_GameModeData_instance_;
+  if (game_GameModeData_instance_ != 0) {
+    v5 = *(_QWORD*)(game_GameModeData_instance_ + 16);
+  }
+  if (v5 == v2) {
+    MapTerrainFile_6b38a0();
+    GameRoutine_6bebe0((_QWORD*)(*GameData_212ce58 + 8));
+    if (*(_QWORD*)a2 != 0) {
+      GameHr_6b3be0(*(const char**)(*(_QWORD*)a2 + 32LL),
+                    *(const char**)(*(_QWORD*)a2 + 48LL));
+    }
+    else {
+      MapTerrainFile_6b38a0();
+    }
+    v6 = *(_QWORD*)a2;
+    if (*GameData_212c770[0] != 0 && game_GameModeData_instance_ != 0) {
+      v7 = *(_BYTE*)(game_GameModeData_instance_ + 15);
+      if (v6 == 0) {
+        goto LABEL_13;
+      }
+    }
+    else {
+      v7 = 0;
+      if (v6 == 0) {
+        goto LABEL_13;
+      }
+    }
+    game_6b98c0(*(const char**)(v6 + 64), v7);
+  }
+LABEL_13:
+  v8 = *(_DWORD*)(a2 + 64);
+  if (v8 == 2) {
+    if ((*(_BYTE*)(a2 + 40) & 1) != 0) {
+      v13 = *(const char**)(a2 + 56);
+    }
+    else {
+      v13 = (const char*)(a2 + 41);
+    }
+    LayoutAccessor_1562060((__int64*)(a1 + 848), "T_Title", v13);
+  }
+  else {
+    if (v8 == 1) {
+      if ((*(_BYTE*)(a2 + 40) & 1) != 0) {
+        v11 = *(_QWORD*)(a2 + 56);
+      }
+      else {
+        v11 = a2 + 41;
+      }
+      if (v11 == 0) {
+        goto LABEL_28;
+      }
+    }
+    else {
+      if (v8 != 0) {
+        goto LABEL_28;
+      }
+      v33_.v39 = -1;
+      v33_.v40 = -1;
+      v33_.v41 = -1;
+      v33_.v42 = -1;
+      v9 = *msg_MessageManager_instance__ptr[0];
+      v33_.v43 = -1;
+      v33_.v44 = -1;
+      v33_.v45 = -1;
+      v33_.v46 = -1;
+      v33_.v47 = -1;
+      v33_.v48 = -1;
+      v33_.v49 = -1;
+      v33_.v50 = -1;
+      v33_.v33 = GameData_212e348 + 2;
+      v33_.v34 = 0xFFFF0001FFFF0000LL;
+      v33_.v35 = 0xFFFF0004FFFF0002LL;
+      v33_.v36 = 0xFFFF0006FFFF0005LL;
+      v33_.v51 = 8;
+      v33_.v37 = -65529;
+      v33_.v38 = -65528;
+      v10 = GameRoutine_a4dbe0_alt2(v9, "MID_BattleHintMenu_MainBattle", 0);
+      if (v10 == nullptr) {
+        goto LABEL_28;
+      }
+      v11 = (__int64)v10;
+    }
+    v12 = ui_LayoutAccessor_FindTextBox((__int64*)(a1 + 848), "T_Title");
+    if (v12 != 0) {
+      GameRoutine_156c5d0(v12, v11, 0);
+    }
+  }
+LABEL_28:
+  if ((*(_BYTE*)(a2 + 8) & 1) != 0) {
+    v14 = *(const char**)(a2 + 24);
+  }
+  else {
+    v14 = (const char*)(a2 + 9);
+  }
+  LayoutAccessor_1562060((__int64*)(a1 + 848), "T_Spot", v14);
+  v15 = *(_DWORD*)(a2 + 32);
+  ui_LayoutAccessor_SetPaneVisible(a1 + 848, "IconSpot", v15 != 22);
+  if (v15 != 22) {
+    v16 = ui_LayoutAccessor_FindPane((__int64*)(a1 + 848), "IconSpot");
+    if (v16 != 0) {
+      v17 = __dynamic_cast(v16, GameData_212d670[0], GameData_212d678[0], 0);
+      if (v17 != 0) {
+        v18 = *(unsigned int*)(a2 + 32);
+        if ((unsigned int)v18 > 0x15) {
+          v19 = &GameData_1a9f09e;
+        }
+        else {
+          v19 = GameData_2088840[v18];
+        }
+        Manager_136a920(ui_Manager_instance_ + 1264, v17, 0, 7u, v19);
+      }
+    }
+  }
+  v20 = ui_LayoutAccessor_FindAlignment((__int64*)(a1 + 848), "A_Spot");
+  if (v20 != 0) {
+    Alignment_56b600(v20);
+  }
+  game_gameui_1594340((__int64*)(a1 + 848), v2);
+  *(_DWORD*)(a1 + 1228) = 0;
+  LayoutAccessor_1560070_alt1((void*)(&v33_.v33), (__int64*)(a1 + 848),
+                              "L_Minimap");
+  if (v33_.v34 != 0) {
+    v21 = std___1___shared_weak_count_lock(v33_.v34);
+    v22 = (__int64)v33_.v33;
+    if (v21 != 0) {
+      v23 = v33_.v33;
+    }
+    else {
+      v23 = nullptr;
+    }
+    if (v33_.v34 != 0) {
+      std___1___shared_weak_count___release_weak_alt1(v33_.v34);
+    }
+    if (v23 != nullptr) {
+      LayoutAccessor_155e830(v22, *(_BYTE*)(v2 + 272) == 1);
+      if (*(_BYTE*)(v2 + 272) == 1) {
+        v30_.v30 = v23;
+        v30_.v31 = v21;
+        if (v21 != 0) {
+          atomic_fetch_add_explicit((atomic_ullong* volatile)(v21 + 16), 1u,
+                                    memory_order_relaxed);
+        }
+        LOWORD(v24) = *(_WORD*)(v2 + 134);
+        GameRoutine_19fc5c0(a1 + 1232, (__int64)&v30_.v30, (float)v24);
+        if (v30_.v31 != 0) {
+          std___1___shared_weak_count___release_weak_alt1(v30_.v31);
+        }
+      }
+    }
+    if (v21 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v21 + 8),
+                                     0xFFFFFFFFFFFFFFFFLL) == 0) {
+      (*(void (**)(__int64))(*(_QWORD*)v21 + 16LL))(v21);
+      std___1___shared_weak_count___release_weak_alt1(v21);
+    }
+  }
+  v25 = game_GameModeData_instance_;
+  if (game_GameModeData_instance_ != 0) {
+    v25 = *(_QWORD*)(game_GameModeData_instance_ + 16);
+  }
+  if (v25 == v2) {
+    MapTerrainFile_6b38a0();
+    GameRoutine_6bebe0((_QWORD*)(*GameData_212ce58 + 8));
+    if (*(_QWORD*)a2 != 0) {
+      GameHr_6b3be0(*(const char**)(*(_QWORD*)a2 + 32LL),
+                    *(const char**)(*(_QWORD*)a2 + 40LL));
+    }
+    else {
+      MapTerrainFile_6b38a0();
+    }
+    v26 = *(_QWORD*)a2;
+    if (*GameData_212c770[0] != 0 && game_GameModeData_instance_ != 0) {
+      v27 = *(_BYTE*)(game_GameModeData_instance_ + 15);
+      if (v26 == 0) {
+        goto LABEL_67;
+      }
+    }
+    else {
+      v27 = 0;
+      if (v26 == 0) {
+        goto LABEL_67;
+      }
+    }
+    game_6b98c0(*(const char**)(v26 + 56), v27);
+  }
+LABEL_67:
+  if (v32[16] == 1) {
+    v28 = GameData_212ce58;
+    GameRoutine_6bebe0((_QWORD*)(*GameData_212ce58 + 8));
+    MapTerrainFile_6b38a0();
+    (*(void (**)(__int64))(*(_QWORD*)*v28 + 24LL))(*v28);
+    if (*v28 != 0) {
+      (*(void (**)(__int64))(*(_QWORD*)*v28 + 8LL))(*v28);
+    }
+    *v28 = 0;
+    v29 = GameData_212ce40;
+    (*(void (**)(_QWORD))(*(_QWORD*)*GameData_212ce40 + 24LL))(
+        *GameData_212ce40);
+    if (*v29 != 0) {
+      (*(void (**)(__int64))(*(_QWORD*)*v29 + 8LL))(*v29);
+    }
+    *v29 = 0;
   }
 }
 

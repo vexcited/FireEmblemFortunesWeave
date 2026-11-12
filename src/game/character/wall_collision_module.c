@@ -1,5 +1,7 @@
 #include "decomp/pseudo_helpers.h"
 
+#include "decomp/pseudo_float.h"
+
 #pragma GCC visibility push(hidden)
 
 __int64 WallCollisionModule_Unknown8(__int64 result);
@@ -25,6 +27,10 @@ int __cxa_guard_acquire_alt1(__int64) __asm__("__cxa_guard_acquire");
 void __cxa_guard_release_alt1(__int64) __asm__("__cxa_guard_release");
 void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
+__attribute__((swiftcall)) void collision_6725f0(PSEUDO_X8, float32x4_t* result,
+                                                 float32x4_t*, __int64, float);
+void WallCollisionModule_1106720(float* a1, float* a2, float* a3, float a4,
+                                 float a5, float a6);
 
 int32x2_t* WallCollisionModule_1105be0(_QWORD* a1, float a2)
 {
@@ -127,6 +133,269 @@ __int64 WallCollisionModule_Unknown8(__int64 result)
   *(_QWORD*)(result + 32) = 0;
   *(_QWORD*)(result + 40) = 0;
   return result;
+}
+
+void WallCollisionModule_1106720(float* a1, float* a2, float* a3, float a4,
+                                 float a5, float a6)
+{
+  float32x4_t v10;
+  float v11;
+  float v12;
+  float v13;
+  bool v14;
+  float v15;
+  float v16;
+  float v17;
+  float v18;
+  bool v19;
+  float v20;
+  float v21;
+  unsigned int v22;
+  int8x8_t v23;
+  float v24;
+  bool v25;
+  int8x8_t v26;
+  unsigned int v27;
+  unsigned __int64 v28;
+  float32x4_t v29;
+  float32x4_t v30;
+  float v31;
+  int8x16_t v32;
+  float32x4_t v33;
+  float v34;
+  unsigned __int64 v35;
+  float32x4_t v36;
+  float32x4_t v37;
+  float32x4_t v38;
+  unsigned __int64 v39;
+  float v40;
+  float v41;
+  float v42;
+  float v43;
+  float v44;
+  float v45;
+  bool v46;
+  float v47;
+  bool v48;
+  float v49;
+  float v50;
+  float v51;
+  float v52;
+  float v53;
+  float v54;
+  float v55;
+  unsigned __int64 v56;
+  float v57;
+  float v58;
+  float v59;
+  float v60;
+  float32x4_t v61;
+  float32x4_t v62;
+  struct {
+    float32x4_t v63;
+    float32x4_t v64;
+    char gap112_[48];
+    char v65;
+  } v63_;
+
+  WallCollisionModule_1106aa0((float*)&v63_.v63, a4, a5, a6);
+  LANES128(v10).n128_u32[0] = LANES128(v63_.v63).n128_u32[0];
+  if (a3 != nullptr &&
+      ((v11 = a3[1], v13 = a3[2], v12 = a3[3], *a3 < v13) ? (v14 = v11 < v12)
+                                                          : (v14 = false),
+       v14)) {
+    v15 = a6 + 0x1.47ae140000000p-8f;
+    v16 = (float)(a6 + 0x1.47ae140000000p-8f) + *a3;
+    v17 = v13 - (float)(a6 + 0x1.47ae140000000p-8f);
+    if (LANES128(v63_.v63).n128_f32[0] >= v16) {
+      v18 = LANES128(v63_.v63).n128_f32[0];
+    }
+    else {
+      v18 = (float)(a6 + 0x1.47ae140000000p-8f) + *a3;
+    }
+    if (v18 > v17) {
+      v19 = true;
+    }
+    else {
+      v17 = v18;
+      v19 = LANES128(v63_.v63).n128_f32[0] < v16;
+    }
+    LANES128(v10).n128_u32[1] = LANES128(v63_.v63).n128_u32[1];
+    v20 = v15 + v11;
+    v21 = v12 - v15;
+    if (v19) {
+      v22 = -1;
+    }
+    else {
+      v22 = 0;
+    }
+    LANES64(v23).n64_u64[0] =
+        LANES64_OF(vbsl_s8(vdup_n_s32(v22),
+                           COERCE_AS(int8x8_t,
+                                     __PAIR64__(LANES128(v63_.v63).n128_u32[1],
+                                                LODWORD(v17))),
+                           COERCE_AS(int8x8_t, LANES128(v10).n128_u64[0])))
+            .n64_u64[0];
+    if (LANES64(v23).n64_f32[1] >= v20) {
+      v24 = LANES64(v23).n64_f32[1];
+    }
+    else {
+      v24 = v20;
+    }
+    if (v24 > v21) {
+      v25 = true;
+    }
+    else {
+      v21 = v24;
+      v25 = LANES64(v23).n64_f32[1] < v20;
+    }
+    LANES64(v26).n64_u32[0] = LANES64(v23).n64_u32[0];
+    if (v25) {
+      v27 = -1;
+    }
+    else {
+      v27 = 0;
+    }
+    LANES64(v26).n64_f32[1] = v21;
+    LANES128(v10).n128_u64[0] =
+        LANES64_OF(vbsl_s8(vdup_n_s32(v27), v26, v23)).n64_u64[0];
+  }
+  else {
+    LANES128(v10).n128_u32[1] = LANES128(v63_.v63).n128_u32[1];
+  }
+  v57 = *a2;
+  v59 = a2[1];
+  v28 = LANES128(v10).n128_u32[1];
+  LANES128(v10).n128_u32[1] = 0;
+  LANES128(v10).n128_u64[1] = v28;
+  v62 = v10;
+  LANES128(v29).n128_u64[0] = LODWORD(v57);
+  LANES128(v29).n128_u64[1] = LODWORD(v59);
+  v61 = v29;
+  collision_6725f0((void*)((__int64)&v63_.v63), &v62, &v61, 8, a6);
+  if ((v63_.v65 & 1) != 0) {
+    v31 = a6 + 0x1.47ae140000000p-8f;
+    LANES128(v30).n128_f32[0] =
+        (float)(a6 + 0x1.47ae140000000p-8f) * LANES128(v63_.v64).n128_f32[0];
+    LANES128(v30).n128_u32[2] =
+        vmuls_lane_f32(a6 + 0x1.47ae140000000p-8f, v63_.v64, 2);
+    v32 = vaddq_f32(v63_.v63, v30);
+    LANES128(v33).n128_u64[0] =
+        LANES64_OF(
+            vzip1_s32(
+                COERCE_AS(int32x2_t, LANES128(v32).n128_u64[0]),
+                COERCE_AS(int32x2_t,
+                          LANES128_OF(vextq_s8(v32, v32, 8u)).n128_u64[0])))
+            .n64_u64[0];
+    LANES128(v32).n128_f32[0] =
+        vmuls_lane_f32(LANES128(v32).n128_f32[2] - v59, v63_.v64, 2) +
+        (float)((float)(LANES128(v32).n128_f32[0] - v57) *
+                LANES128(v63_.v64).n128_f32[0]);
+    v34 = vmuls_lane_f32(LANES128(v32).n128_f32[0], v63_.v64, 2);
+    LANES128(v32).n128_f32[0] =
+        v57 + (float)(PSEUDO_UNFUSED(LANES128(v32).n128_f32[0] *
+                                     LANES128(v63_.v64).n128_f32[0]));
+    v58 = LANES128(v32).n128_f32[0];
+    v60 = v59 + v34;
+    LANES128(v32).n128_f32[1] = v60;
+    v35 = LANES128(v33).n128_u32[1];
+    LANES128(v33).n128_u32[1] = 0;
+    v56 = LANES128(v32).n128_u64[0];
+    LANES128(v33).n128_u64[1] = v35;
+    LANES128(v36).n128_u64[0] = LANES128(v32).n128_u32[0];
+    LANES128(v36).n128_u64[1] = LODWORD(v60);
+    v61 = v36;
+    v62 = v33;
+    collision_6725f0((void*)((__int64)&v63_.v63), &v62, &v61, 8, a6);
+    if ((v63_.v65 & 1) != 0) {
+      LANES128(v37).n128_f32[0] = v31 * LANES128(v63_.v64).n128_f32[0];
+      LANES128(v37).n128_u32[2] = vmuls_lane_f32(v31, v63_.v64, 2);
+      v38 = vaddq_f32(v63_.v63, v37);
+      LANES128(v38).n128_f32[0] =
+          vmuls_lane_f32(LANES128(v38).n128_f32[2] - v60, v63_.v64, 2) +
+          (float)((float)(LANES128(v38).n128_f32[0] - v58) *
+                  LANES128(v63_.v64).n128_f32[0]);
+      *(float*)&v39 =
+          v58 + (float)(PSEUDO_UNFUSED(LANES128(v38).n128_f32[0] *
+                                       LANES128(v63_.v64).n128_f32[0]));
+      *((float*)&v39 + 1) =
+          v60 + vmuls_lane_f32(LANES128(v38).n128_f32[0], v63_.v64, 2);
+    }
+    else {
+      v39 = v56;
+    }
+    WallCollisionModule_1106aa0((float*)&v63_.v63, *(float*)&v39,
+                                *((float*)&v39 + 1), a6);
+    v40 = LANES128(v63_.v63).n128_f32[1];
+    v41 = LANES128(v63_.v63).n128_f32[0];
+    if (a3 != nullptr) {
+      v50 = a3[2];
+      if (*a3 < v50) {
+        v51 = a3[1];
+        v52 = a3[3];
+        if (v51 < v52) {
+          v53 = v50 - v31;
+          v54 = v31 + v51;
+          v55 = v52 - v31;
+          if (LANES128(v63_.v63).n128_f32[0] < (float)(v31 + *a3)) {
+            v41 = v31 + *a3;
+          }
+          if (v41 > v53) {
+            v41 = v53;
+          }
+          if (LANES128(v63_.v63).n128_f32[1] < v54) {
+            v40 = v54;
+          }
+          if (v40 > v55) {
+            v40 = v55;
+          }
+        }
+      }
+    }
+    goto LABEL_60;
+  }
+  WallCollisionModule_1106aa0((float*)&v63_.v63, v57, v59, a6);
+  v40 = LANES128(v63_.v63).n128_f32[1];
+  v41 = LANES128(v63_.v63).n128_f32[0];
+  if (a3 == nullptr ||
+      ((v42 = *a3, v43 = a3[1], v45 = a3[2], v44 = a3[3], *a3 < v45)
+           ? (v46 = v43 < v44)
+           : (v46 = false),
+       !v46)) {
+  LABEL_60:
+    *a1 = v41;
+    goto LABEL_61;
+  }
+  *a1 = LANES128(v63_.v63).n128_f32[0];
+  a1[1] = v40;
+  v47 = v45 - (float)(a6 + 0x1.47ae140000000p-8f);
+  if (v41 >= (float)((float)(a6 + 0x1.47ae140000000p-8f) + v42)) {
+    v48 = v41 <= v47;
+  }
+  else {
+    v41 = (float)(a6 + 0x1.47ae140000000p-8f) + v42;
+    v48 = false;
+  }
+  if (!v48) {
+    if (v41 > v47) {
+      v41 = v47;
+    }
+    *a1 = v41;
+  }
+  v49 = v44 - (float)(a6 + 0x1.47ae140000000p-8f);
+  if (v40 >= (float)((float)(a6 + 0x1.47ae140000000p-8f) + v43)) {
+    if (v40 <= v49) {
+      return;
+    }
+  }
+  else {
+    v40 = (float)(a6 + 0x1.47ae140000000p-8f) + v43;
+  }
+  if (v40 > v49) {
+    v40 = v44 - (float)(a6 + 0x1.47ae140000000p-8f);
+  }
+LABEL_61:
+  a1[1] = v40;
 }
 
 void WallCollisionModule_1106aa0(float* a1, float a2, float a3, float a4)

@@ -266,6 +266,8 @@ void game_character_CharacterAppearance_Setup_alt1(
 void UnitActor_81b740(__int64 a1);
 unsigned __int64 UnitActor_81c000(unsigned __int64 result, const char* a2);
 __int64 game_UnitActor_TryReload_lambda0_Invoke(__int64 a1, _QWORD** a2);
+__int64 CharacterBuilder_1084a50(__int64, _BYTE*);
+__attribute__((swiftcall)) void UnitActor_81d430(PSEUDO_X8 x8_, __int64 a1);
 
 __int64 UnitActor_819160(__int64 a1)
 {
@@ -3376,6 +3378,75 @@ LABEL_11:
     result;
     return;
   }
+}
+
+__attribute__((swiftcall)) void UnitActor_81d430(PSEUDO_X8 x8_, __int64 a1)
+{
+
+#pragma clang fp contract(off)
+  float32x4_t* a2 = (float32x4_t*)PSEUDO_X8_VALUE(x8_);
+  __int64 v4;
+  __int64 v5;
+  float32x4_t v6;
+  float v7;
+  float v8;
+  __int128 v9;
+  float v10;
+  float v11;
+  float v12;
+  float v13;
+  float v14;
+  float32x4_t v15;
+  float v16;
+  unsigned int v17;
+  __int128 v18;
+
+  v4 = *(_QWORD*)(a1 + 264);
+  v18 = GameData_1a83610;
+  if (v4 != 0) {
+    v5 = CharacterBuilder_1084a50(v4, "Loc_C_Center");
+    if (v5 == 0) {
+      UnitActor_81d0c0((void*)(a2), a1, (float32x4_t*)&v18);
+      return;
+    }
+    v6 = *(float32x4_t*)(v5 + 48);
+  }
+  else {
+    v8 = *(float*)(a1 + 56);
+    v7 = *(float*)(a1 + 60);
+    v9 = *(_OWORD*)(a1 + 96);
+    if (v7 >= v8) {
+      LODWORD(v11) = HIDWORD(*(_QWORD*)(a1 + 96));
+    }
+    else {
+      v10 = Cursor_734120_alt1(*(_DWORD*)(a1 + 64), *(_DWORD*)(a1 + 68),
+                               *(float*)(a1 + 80), *(float*)&v9, v7, v8);
+      v11 = *(float*)(a1 + 100);
+      v8 = *(float*)(a1 + 56);
+      v7 = *(float*)(a1 + 60);
+      *(float*)&v9 = v10;
+    }
+    v17 = v9;
+    if (v7 < v8) {
+      v12 = Cursor_734120_alt1(*(_DWORD*)(a1 + 64), *(_DWORD*)(a1 + 68),
+                               *(float*)(a1 + 84), v11, v7, v8);
+      v8 = *(float*)(a1 + 56);
+      v7 = *(float*)(a1 + 60);
+      v11 = v12;
+    }
+    v13 = *(float*)(a1 + 104);
+    if (v7 < v8) {
+      v16 = v11;
+      v14 = Cursor_734120_alt1(*(_DWORD*)(a1 + 64), *(_DWORD*)(a1 + 68),
+                               *(float*)(a1 + 88), v13, v7, v8);
+      v11 = v16;
+      v13 = v14;
+    }
+    LANES128(v15).n128_u64[0] = __PAIR64__(LODWORD(v11), v17);
+    LANES128(v15).n128_u64[1] = LODWORD(v13);
+    v6 = vaddq_f32(v15, COERCE_AS(float32x4_t, GameData_1a83610));
+  }
+  *a2 = v6;
 }
 
 void UnitActor_81d540(__int64 a1, long double a2)

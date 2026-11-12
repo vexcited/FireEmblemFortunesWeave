@@ -254,6 +254,10 @@ __int64 nn_prepo_Struct_Add_1a0aea0_alt1(__int64, const char*, __int64) __asm__(
 __int64 nn_prepo_Struct_Clear_alt1(__int64) __asm__("nn_prepo_Struct_Clear");
 void nn_prepo_PlayReport_Clear_alt2(__int64) __asm__(
     "nn_prepo_PlayReport_Clear");
+__int64 strncpy_alt1(__int64, const char*, unsigned __int64) __asm__("strncpy");
+extern __int64 GameData_21c99b8;
+extern __int64 game_TransporterConst_List_instance_;
+void Manager_130fb60(__int64 a1);
 
 __int64 Manager_Destructor_130d940(_QWORD* a1)
 {
@@ -1809,6 +1813,106 @@ __int64 Manager_130f9a0(__int64 a1)
     }
   }
   return result;
+}
+
+void Manager_130fb60(__int64 a1)
+{
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  _BYTE* v8;
+  const char* v9;
+  char v10;
+  char v11;
+  char v12;
+  char v13;
+  char v14;
+  struct {
+    char gap16_[5];
+    _BYTE v15[251];
+    const char* v16;
+  } v15_;
+
+  v10 = 0;
+  v15_.v16 = &v10;
+  if ((unsigned int)nn_prepo_PlayReport_SetEventId_alt1(a1, "material") == 0) {
+    *(_BYTE*)(a1 + 88) = 1;
+  }
+  Manager_13114c0(a1);
+  nn_prepo_Array_Clear_alt1(a1 + 176);
+  v2 = game_TransporterConst_List_instance_;
+  v3 = *(_QWORD*)(game_TransporterConst_List_instance_ + 8);
+  if (*(int*)(v3 + 76) >= 1) {
+    v4 = *(int*)(v3 + 72);
+    v5 = 12 * v4;
+    do {
+      v6 = *(_QWORD*)(v3 + 8) + v5;
+      if (*(_WORD*)(v6 + 4) != 0 && *(_WORD*)(v6 + 2) != 0) {
+        v7 = *(_QWORD*)(*(_QWORD*)(GameData_21c99b8 + 64) +
+                        8LL * *(unsigned __int16*)(v6 + 4));
+        if (*(_BYTE*)(v7 + 73) != 18) {
+          v8 = *(_BYTE**)(v7 + 32);
+          if (v8 != nullptr && *v8 != 0) {
+            nn_prepo_Struct_Clear_alt1(a1 + 96);
+            v9 = &v10;
+            strncpy_alt1(
+                (__int64)&v10,
+                *(const char**)(*(_QWORD*)(*(_QWORD*)(GameData_21c99b8 + 64) +
+                                           8LL * *(unsigned __int16*)(v6 + 4)) +
+                                32LL),
+                0x100u);
+            v15_.v15[250] = 0;
+            v15_.v16 = &v10;
+            if (v10 != 0) {
+              v15_.v16 = &v11;
+              v9 = &v11;
+              if (v11 != 0) {
+                v15_.v16 = &v12;
+                v9 = &v12;
+                if (v12 != 0) {
+                  v15_.v16 = &v13;
+                  v9 = &v13;
+                  if (v13 != 0) {
+                    if (v14 != 0) {
+                      v9 = v15_.v15;
+                    }
+                    else {
+                      v9 = &v14;
+                    }
+                    v15_.v16 = v9;
+                  }
+                }
+              }
+            }
+            nn_prepo_Struct_Add_1a0ae90_alt1(a1 + 96, "Name", v9);
+            nn_prepo_Struct_Add_1a0aea0_alt1(a1 + 96, "Count",
+                                             *(unsigned __int16*)(v6 + 2));
+            nn_prepo_Array_Add_1a0af20_alt1(a1 + 176, a1 + 96);
+            v2 = game_TransporterConst_List_instance_;
+          }
+        }
+      }
+      v3 = *(_QWORD*)(v2 + 8);
+      ++v4;
+      v5 += 12;
+    } while (v4 < *(int*)(v3 + 76) + (__int64)*(int*)(v3 + 72));
+  }
+  if (*(_BYTE*)(a1 + 88) == 1) {
+    nn_prepo_PlayReport_Add_1a0ae20_alt1(a1, "Material", a1 + 176);
+    if (*(_BYTE*)(a1 + 88) == 1) {
+      if ((int)nn_prepo_PlayReport_GetCount_alt1(a1) < 2 ||
+          *(_OWORD*)(a1 + 72) == 0) {
+        nn_prepo_PlayReport_Clear_alt2(a1);
+      }
+      else {
+        nn_prepo_PlayReport_Save_alt1(a1, a1 + 72);
+      }
+      *(_BYTE*)(a1 + 88) = 0;
+    }
+  }
 }
 
 __int64 Manager_130fdc0(__int64 a1)

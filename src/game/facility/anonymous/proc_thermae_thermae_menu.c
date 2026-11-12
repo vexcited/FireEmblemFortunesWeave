@@ -28,6 +28,19 @@ __int64 ProcThermaeThermaeMenu_192c430(__int64 a1, unsigned int a2);
 __int64 BasicMenuCursor_16ddaa0(_QWORD, _QWORD);
 __int64
 game_facility_anonymous_ProcThermaeThermaeMenu_ACall_closure_Invoke(__int64 a1);
+_QWORD* GameRoutine_13fa790(__int64, __int64, __int64, __int64, __int64);
+_QWORD* GameRoutine_654050(_QWORD* result, _QWORD*);
+__int64 GameRoutine_9db9e0(unsigned int, unsigned int);
+char* GameHr_67ed20(_QWORD*);
+char* GameRoutine_60a020(char*, const char*);
+extern __int64 (*GameData_2114398[])();
+extern __int64 (*GameData_2114498[])();
+extern __int64 (*game_sound_PlayDecideLightSe_ptr[6])();
+extern __int64* GameData_212cc58[60];
+extern __int64* GameData_212d2b8;
+void* game_97b2f0(__int64);
+void game_16ad210(__int64, __int64, char, __int64);
+__int64 ProcThermaeThermaeMenu_Unknown100(__int64 a1);
 
 __int64 ProcThermaeThermaeMenu_Unknown84(__int64 a1)
 {
@@ -112,6 +125,181 @@ __int64 ProcThermaeThermaeMenu_Unknown88(__int64 a1)
     }
   }
   return result;
+}
+
+__int64 ProcThermaeThermaeMenu_Unknown100(__int64 a1)
+{
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  __int64* v6;
+  __int64 v7;
+  int v8;
+  char* v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
+  __int64 v14;
+  __int64 v15;
+  __int64 v16;
+  __int64 v17;
+  const char* v18;
+  int v19;
+  __int64 v20;
+  __int64 v21;
+  __int64 v22;
+  unsigned __int64 v23;
+  void* v24;
+  __int64 v25;
+  struct {
+    _QWORD v26[4];
+    _QWORD* v27;
+  } v26_;
+  struct {
+    __int64 (*v28[4])();
+    __int64 (**v29)();
+  } v28_;
+  const char* v30;
+  struct {
+    __int64* v31;
+    __int64 (*v32)();
+    char gap128_[16];
+    __int64** v33;
+  } v31_;
+
+  v2 = *(_QWORD*)(a1 + 336);
+  if (v2 == 0) {
+    return 1;
+  }
+  v3 = a1;
+  v4 = __dynamic_cast(v2, GameData_212e008[0], &GameData_2114370, 0);
+  if (v4 == 0) {
+    return 1;
+  }
+  v5 = v4;
+  if (((*(__int64 (**)(__int64))(*(_QWORD*)v4 + 464LL))(v4) & 1) == 0) {
+    return 1;
+  }
+  v6 = GameData_212dcd0;
+  v7 = *(_QWORD*)(v5 + 88);
+  if (v7 != 0) {
+    v8 = *(unsigned __int16*)(v7 + 16);
+  }
+  else {
+    v8 = -1;
+  }
+  *(_DWORD*)(*GameData_212dcd0 + 8) = v8;
+  v31_.v32 = (__int64 (*)())v3;
+  v30 = "MID_ThermaeMenu_Confirm";
+  v31_.v31 = (__int64*)GameData_2114398;
+  v26_.v27 = v26_.v26;
+  v31_.v33 = &v31_.v31;
+  v28_.v29 = v28_.v28;
+  v28_.v28[0] = (__int64 (*)())GameData_2114498;
+  v26_.v26[0] = GameData_2114498;
+  v10 = (char*)GameRoutine_13fa790(v3, (__int64)&v30, (__int64)&v31_.v31,
+                                   (__int64)v28_.v28, (__int64)v26_.v26);
+  if (v26_.v27 == v26_.v26) {
+    v11 = 32;
+  }
+  else {
+    if (v26_.v27 == nullptr) {
+      goto LABEL_14;
+    }
+    v11 = 40;
+  }
+  (*(void (**)(__int64))(*v26_.v27 + v11))((__int64)v26_.v27);
+LABEL_14:
+  if (v28_.v29 == v28_.v28) {
+    v12 = 32;
+  }
+  else {
+    if (v28_.v29 == nullptr) {
+      goto LABEL_19;
+    }
+    v12 = 40;
+  }
+  (*(void (**)(__int64))((char*)*v28_.v29 + v12))((__int64)v28_.v29);
+LABEL_19:
+  if (v31_.v33 == &v31_.v31) {
+    v13 = 4;
+  }
+  else {
+    if (v31_.v33 == nullptr) {
+      goto LABEL_24;
+    }
+    v13 = 5;
+  }
+  ((void (*)(void*))(*v31_.v33)[v13])(v31_.v33);
+LABEL_24:
+  v28_.v29 = v28_.v28;
+  v31_.v33 = &v31_.v31;
+  v28_.v28[0] = (__int64 (*)())(GameData_212d2b8 + 2);
+  v28_.v28[1] = game_sound_PlayDecideLightSe_ptr[0];
+  v31_.v31 = GameData_212d2b8 + 2;
+  v31_.v32 = game_sound_PlayDecideLightSe_ptr[0];
+  GameRoutine_654050(&v31_.v31, (_QWORD*)v10 + 144);
+  if (v31_.v33 == &v31_.v31) {
+    v14 = 4;
+  }
+  else {
+    if (v31_.v33 == nullptr) {
+      goto LABEL_29;
+    }
+    v14 = 5;
+  }
+  ((void (*)(void*))(*v31_.v33)[v14])(v31_.v33);
+LABEL_29:
+  if (v28_.v29 == v28_.v28) {
+    v15 = 32;
+  }
+  else {
+    if (v28_.v29 == nullptr) {
+      goto LABEL_34;
+    }
+    v15 = 40;
+  }
+  (*(void (**)(__int64))((char*)*v28_.v29 + v15))((__int64)v28_.v29);
+LABEL_34:
+  v16 = *(unsigned int*)(*v6 + 8);
+  if ((v16 & 0x80000000) == 0) {
+    v17 = *(_QWORD*)(*(_QWORD*)(*GameData_212cc58[0] + 64) + 8 * v16);
+    if (v17 != 0) {
+      v18 = *(const char**)(v17 + 32);
+      if (v18 != nullptr) {
+        GameRoutine_60a020(v10 + 1496, v18);
+      }
+      v19 = GameRoutine_9db9e0(0x15u, *(unsigned __int16*)(v17 + 68));
+      v20 = *v6;
+      *((_DWORD*)v10 + 392) = v19;
+      v21 = *(_QWORD*)(v20 + 48);
+      v22 = *(_QWORD*)(v20 + 56);
+      if ((int)((unsigned __int64)(v22 - v21) >> 3) >= 1) {
+        v23 = 0;
+        do {
+          if (v23 < (v22 - v21) >> 3) {
+            v25 = *(_QWORD*)(v21 + 8 * v23);
+            if (v25 != 0) {
+              if (*(_BYTE*)(v25 + 2136) != 0) {
+                v24 = game_97b2f0(v25 + 2104);
+              }
+              else {
+                v24 = GameHr_67ed20(*(_QWORD**)(v25 + 392));
+              }
+              game_16ad210((__int64)v10, *(_QWORD*)(v25 + 392), 6,
+                           (__int64)v24);
+              v20 = *v6;
+            }
+          }
+          v21 = *(_QWORD*)(v20 + 48);
+          v22 = *(_QWORD*)(v20 + 56);
+          ++v23;
+        } while ((__int64)v23 < (int)((unsigned __int64)(v22 - v21) >> 3));
+      }
+    }
+  }
+  return 12;
 }
 
 __int64 ProcThermaeThermaeMenu_192c430(__int64 a1, unsigned int a2)

@@ -40,6 +40,15 @@ __int64 _ZN4game4menu9BasicMenu13Unknown16dea40Ebbb_alt1(
 __int64 game_IsVibrationEnabled_alt1(_BYTE*) __asm__("game_IsVibrationEnabled");
 __int64 game_menu_BasicMenu_Unknown16dd9a0_alt1(__int64 result) __asm__(
     "game_menu_BasicMenu_Unknown16dd9a0");
+__int64 GameHr_157b310(__int64*, unsigned __int16*, __int64);
+__int64 std___1___shared_weak_count___release_weak(__int64);
+__int64 std___1___shared_weak_count_lock(__int64);
+extern __int64 (*GameData_204d688[])();
+extern __int64* game_g_empty_item_ptr;
+extern __int64 ui_LayoutAccessor_empty_;
+void GameHr_157af40(__int64*, unsigned int);
+void game_gmap_anonymous_1644d80(__int64);
+void BanqueUserMenuItem_DrawText(__int64 a1);
 
 __int64 BanqueUserMenuItem_IsEnable(_QWORD* a1)
 {
@@ -275,6 +284,73 @@ LABEL_13:
     (*(void (**)(__int64))(*v19 + v16))((__int64)v19);
   }
   return 10;
+}
+
+void BanqueUserMenuItem_DrawText(__int64 a1)
+{
+  char v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  atomic_ullong* v6;
+  __int64* v7;
+  __int64 v8;
+  __int64* v9;
+  struct {
+    _QWORD v10[4];
+    _QWORD* v11;
+  } v10_;
+
+  v2 = (*(__int64 (**)(__int64))(*(_QWORD*)a1 + 480LL))(a1);
+  v3 = *(_QWORD*)(a1 + 56);
+  if (v3 != 0) {
+    v4 = std___1___shared_weak_count_lock(v3);
+    if (v4 != 0) {
+      v5 = v4;
+      v6 = (atomic_ullong*)(v4 + 8);
+      v7 = *(__int64**)(a1 + 48);
+      if (atomic_fetch_add(v6, 0xFFFFFFFFFFFFFFFFLL) != 0) {
+        if (v7 != nullptr) {
+          goto LABEL_5;
+        }
+      }
+      else {
+        v9 = v7;
+        (*(void (**)(__int64))(*(_QWORD*)v5 + 16LL))(v5);
+        std___1___shared_weak_count___release_weak(v5);
+        v7 = v9;
+        if (v9 != nullptr) {
+        LABEL_5:
+          if ((v2 & 1) != 0) {
+            goto LABEL_6;
+          }
+        LABEL_13:
+          GameHr_157af40(v7, *(_DWORD*)(a1 + 40));
+          goto LABEL_14;
+        }
+      }
+    }
+  }
+  v7 = &ui_LayoutAccessor_empty_;
+  if ((v2 & 1) == 0) {
+    goto LABEL_13;
+  }
+LABEL_6:
+  v10_.v10[0] = GameData_204d688;
+  v10_.v11 = v10_.v10;
+  GameHr_157b310(v7, (unsigned __int16*)game_g_empty_item_ptr,
+                 (__int64)v10_.v10);
+  if (v10_.v11 == v10_.v10) {
+    v8 = 32;
+    goto LABEL_10;
+  }
+  if (v10_.v11 != nullptr) {
+    v8 = 40;
+  LABEL_10:
+    (*(void (**)(__int64))(*v10_.v11 + v8))((__int64)v10_.v11);
+  }
+LABEL_14:
+  game_gmap_anonymous_1644d80(a1);
 }
 
 __int64 game_gmap_anonymous_BanqueUserMenuItem_ACall_closure_Invoke(__int64 a1)

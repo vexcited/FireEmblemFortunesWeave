@@ -8,6 +8,10 @@ extern __int64 game_GameModeData_instance_;
 const char* SystemMenuItem_Retired_1857480(__int64 a1);
 __int64 SystemMenuItem_Retired_18574e0(__int64 a1, __int64 a2);
 __int64 game_menu_SystemMenuItem_Retired_ACall_lambda0_Invoke(__int64 a1);
+_QWORD* MapSortieMenu_871860(__int64, __int64, __int64, __int64, __int64);
+extern __int64 (*GameData_20ebc48[])();
+extern __int64 (*GameData_20ebcc8[])();
+__int64 game_menu_SystemMenuItem_Retired_ACall(__int64 a1);
 
 const char* SystemMenuItem_Retired_1857480(__int64 a1)
 {
@@ -53,6 +57,74 @@ __int64 SystemMenuItem_Retired_18574e0(__int64 a1, __int64 a2)
     }
   }
   return (unsigned __int8)v2 & *(_BYTE*)(a1 + 81) & 1;
+}
+
+__int64 game_menu_SystemMenuItem_Retired_ACall(__int64 a1)
+{
+  __int64 v3;
+  __int64 v4;
+  __int64 v6;
+  __int64 v7;
+  struct {
+    _QWORD v8[4];
+    _QWORD* v9;
+  } v8_;
+  struct {
+    _QWORD v10[4];
+    _QWORD* v11;
+  } v10_;
+  struct {
+    _QWORD v12[4];
+    _QWORD* v13;
+  } v12_;
+  const char* v16;
+
+  if (*(_BYTE*)(a1 + 82) != 1) {
+    return 1;
+  }
+  v16 = "MID_Menu_Retired_Confirm";
+  v3 = *(_QWORD*)(a1 + 8);
+  v12_.v12[0] = GameData_20ebc48;
+  v12_.v12[1] = a1;
+  v10_.v11 = v10_.v10;
+  v8_.v9 = v8_.v8;
+  v12_.v13 = v12_.v12;
+  v10_.v10[0] = GameData_20ebcc8;
+  v8_.v8[0] = GameData_20ebcc8;
+  MapSortieMenu_871860(v3, (__int64)&v16, (__int64)v12_.v12, (__int64)v10_.v10,
+                       (__int64)v8_.v8);
+  if (v8_.v9 == v8_.v8) {
+    v4 = 32;
+  }
+  else {
+    if (v8_.v9 == nullptr) {
+      goto LABEL_8;
+    }
+    v4 = 40;
+  }
+  (*(void (**)(__int64))(*v8_.v9 + v4))((__int64)v8_.v9);
+LABEL_8:
+  if (v10_.v11 == v10_.v10) {
+    v6 = 32;
+  }
+  else {
+    if (v10_.v11 == nullptr) {
+      goto LABEL_13;
+    }
+    v6 = 40;
+  }
+  (*(void (**)(__int64))(*v10_.v11 + v6))((__int64)v10_.v11);
+LABEL_13:
+  if (v12_.v13 == v12_.v12) {
+    v7 = 32;
+    goto LABEL_17;
+  }
+  if (v12_.v13 != nullptr) {
+    v7 = 40;
+  LABEL_17:
+    (*(void (**)(__int64))(*v12_.v13 + v7))((__int64)v12_.v13);
+  }
+  return 12;
 }
 
 __int64 game_menu_SystemMenuItem_Retired_ACall_lambda0_Invoke(__int64 a1)

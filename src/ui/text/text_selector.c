@@ -21,7 +21,8 @@ __int64 TextSelector_Unknown3(__int64 a1, unsigned __int16 a2,
                               unsigned __int16 a3);
 __int64 EmbeddedImage_188a0a0(_QWORD, _QWORD, _QWORD);
 __int64 TextSelector_1905ba0(_QWORD, _QWORD);
-__int64 TextSelector_1907d20(_QWORD, _QWORD, _QWORD);
+__int64 TextSelector_1907d20_alt1(_QWORD, _QWORD,
+                                  _QWORD) __asm__("TextSelector_1907d20");
 __int64 memcpy(_QWORD, _QWORD, _QWORD);
 __int64 memset(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 extern char* GameData_20ff340[5];
@@ -29,6 +30,9 @@ __attribute__((swiftcall)) void TextSelector_19063a0(PSEUDO_X8 x8_,
                                                      _QWORD* result, __int64 a2,
                                                      __int64 a3, __int64 a4,
                                                      int a5);
+__int64 GameRoutine_1a09ce0(__int64, const char*, unsigned __int64);
+char* GameRoutine_60a060(char*, __int64, unsigned __int64);
+char* TextSelector_1907d20(char* result, __int64 a2, __int64* a3);
 
 __int64 TextSelector_Unknown2(__int64 result)
 {
@@ -658,7 +662,7 @@ __attribute__((swiftcall)) void TextSelector_19063a0(PSEUDO_X8 x8_,
       v178 = 0;
       v179 = nullptr;
       v177 = 0;
-      result = (_QWORD*)TextSelector_1907d20(&v169, &v177, v81);
+      result = (_QWORD*)TextSelector_1907d20_alt1(&v169, &v177, v81);
       v95 = v179;
       v96 = v177 & 1;
       v97 = (char*)&v177 + 1;
@@ -1643,6 +1647,110 @@ LABEL_161:
     nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v81);
   }
   return v40;
+}
+
+char* TextSelector_1907d20(char* result, __int64 a2, __int64* a3)
+{
+  __int64 v3;
+  __int64 v4;
+  int v8;
+  int v9;
+  __int64 v10;
+  __int64 v11;
+  __int64 v16;
+  int v17;
+  __int64 v18;
+  __int64 v20;
+  __int64 v23;
+  int v24;
+  unsigned __int64 v25;
+  unsigned __int16* v26;
+  char* v27;
+  int v28;
+  __int64 v29;
+  __int64 v31;
+
+  v3 = *a3;
+  if (a3[1] != *a3) {
+    v4 = *(_QWORD*)(v3 + 8);
+    if (*(_DWORD*)v3 != 0 && v4 != 0 && *(_DWORD*)v3 == 1 &&
+        *(_WORD*)(v3 + 16) != 0 && (*(_BYTE*)v4 & 0xFE) == 0xE &&
+        *(_WORD*)(v4 + 1) == 0) {
+      v8 = *(unsigned __int16*)(v4 + 3);
+      if (v8 == 16) {
+        v17 = *(_DWORD*)(v3 + 24);
+        v18 = *(_QWORD*)(v3 + 32);
+        if (v17 != 0 && v18 != 0) {
+          v20 = *(unsigned __int16*)(v3 + 40);
+          if (v17 != 1 && (_DWORD)v20 != 0) {
+            v23 = a2;
+            if ((*result & 1) != 0) {
+              **((_BYTE**)result + 2) = 0;
+              *((_QWORD*)result + 1) = 0;
+            }
+            else {
+              *(_WORD*)result = 0;
+            }
+            result = (char*)GameRoutine_1a09ce0(
+                (__int64)result, (const char*)(v18 + 2), v20 - 2);
+            v3 = *a3;
+            a2 = v23;
+          }
+        }
+        v28 = *(_DWORD*)(v3 + 48);
+        v29 = *(_QWORD*)(v3 + 56);
+        if (v28 != 0 && v29 != 0) {
+          v31 = *(unsigned __int16*)(v3 + 64);
+          if (v28 != 1 && (_DWORD)v31 != 0) {
+            if ((*(_BYTE*)a2 & 1) != 0) {
+              **(_BYTE**)(a2 + 16) = 0;
+              *(_QWORD*)(a2 + 8) = 0;
+            }
+            else {
+              *(_WORD*)a2 = 0;
+            }
+            return (char*)GameRoutine_1a09ce0(a2, (const char*)(v29 + 2),
+                                              v31 - 2);
+          }
+        }
+      }
+      else if (v8 == 0) {
+        v9 = *(_DWORD*)(v3 + 48);
+        v10 = *(_QWORD*)(v3 + 56);
+        v11 = *(unsigned __int16*)(v3 + 64);
+        if (v9 != 0 && v10 != 0 && v9 != 1 && (_DWORD)v11 != 0) {
+          v16 = a2;
+          if ((*result & 1) != 0) {
+            **((_BYTE**)result + 2) = 0;
+            *((_QWORD*)result + 1) = 0;
+          }
+          else {
+            *(_WORD*)result = 0;
+          }
+          GameRoutine_1a09ce0((__int64)result, (const char*)(v10 + 2), v11 - 2);
+          v3 = *a3;
+          a2 = v16;
+        }
+        v24 = *(_DWORD*)(v3 + 24);
+        v25 = 0;
+        if (v24 != 0) {
+          v26 = *(unsigned __int16**)(v3 + 32);
+          v27 = (char*)a2;
+          if (v26 != nullptr) {
+            v25 = 0;
+            if (v24 != 1 && *(_WORD*)(v3 + 40) != 0) {
+              v25 = *v26;
+            }
+          }
+        }
+        else {
+          v27 = (char*)a2;
+        }
+        return GameRoutine_60a060(v27, v10 + v11, v25);
+      }
+    }
+  }
+  return result;
 }
 
 __int64 TextSelector_1907f20(char* a1)

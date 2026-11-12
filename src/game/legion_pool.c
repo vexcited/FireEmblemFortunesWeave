@@ -97,6 +97,14 @@ __int64 SpotMgr_132ffa0_alt1(unsigned int*) __asm__("SpotMgr_132ffa0");
 bool UnitHeroes_6d2c90_alt1(__int64, __int64*) __asm__("UnitHeroes_6d2c90");
 void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
+extern __int64 GameData_212c998_alt1[148] __asm__("GameData_212c998");
+unsigned __int8*
+LegionPool_93a310_alt1(unsigned __int8*, unsigned __int8*, unsigned __int8*,
+                       unsigned __int8*,
+                       unsigned __int8*) __asm__("LegionPool_93a310");
+unsigned __int8* LegionPool_939f20(unsigned __int8* result, unsigned __int8* a2,
+                                   unsigned __int8* a3);
+bool LegionPool_93a560(unsigned __int8* a1, unsigned __int8* a2);
 
 __int64 LegionPool_9369a0(__int64 result)
 {
@@ -2987,6 +2995,131 @@ __int64 LegionPool_9392a0(__int64 result, unsigned __int8* a2, __int64 a3,
   }
 }
 
+unsigned __int8* LegionPool_939f20(unsigned __int8* result, unsigned __int8* a2,
+                                   unsigned __int8* a3)
+{
+  __int64 v3;
+  __int64 v4;
+  int v5;
+  int v6;
+  int v7;
+  unsigned __int64 v8;
+  unsigned __int64 v9;
+  unsigned __int64 v10;
+  int v11;
+  unsigned __int8 v12;
+  unsigned __int64 v13;
+  int v14;
+  int v15;
+  int v16;
+
+  v3 = GameData_212c998_alt1[0];
+  v4 = *(_QWORD*)(*(_QWORD*)GameData_212c998_alt1[0] + 64LL);
+  v5 = *(_DWORD*)(*(_QWORD*)(*(_QWORD*)(v4 + 8LL * *a2) + 24LL) + 88LL);
+  v6 = *(_DWORD*)(*(_QWORD*)(*(_QWORD*)(v4 + 8LL * *result) + 24LL) + 88LL);
+  v7 = *(_DWORD*)(*(_QWORD*)(*(_QWORD*)(v4 + 8LL * *a3) + 24LL) + 88LL);
+  if (v5 >= v6) {
+    if (v7 < v5) {
+      v9 = *a2 != 0 ? *(_QWORD*)a2 : 0LL;
+      *(_WORD*)a2 = *(_WORD*)a3;
+      a2[2] = a3[2];
+      v12 = a3[7];
+      *(_DWORD*)(a2 + 3) = *(_DWORD*)(a3 + 3);
+      a2[7] = v12;
+      *(_WORD*)a3 = v9;
+      a3[2] = BYTE2(v9);
+      *(_DWORD*)(a3 + 3) = v9 >> 24;
+      a3[7] = HIBYTE(v9);
+      if ((signed __int32)*(
+              _DWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)v3 + 64LL) +
+                                             8LL * *a2) +
+                                  24LL) +
+                       88LL) <
+          (signed __int32)*(
+              _DWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)v3 + 64LL) +
+                                             8LL * *result) +
+                                  24LL) +
+                       88LL)) {
+        if (*result != 0) {
+          v13 = *(_QWORD*)result;
+        }
+        else {
+          v13 = 0;
+        }
+        *(_WORD*)result = *(_WORD*)a2;
+        result[2] = a2[2];
+        v15 = *(_DWORD*)(a2 + 3);
+        result[7] = a2[7];
+        *(_DWORD*)(result + 3) = v15;
+        *(_WORD*)a2 = v13;
+        a2[2] = BYTE2(v13);
+        a2[7] = HIBYTE(v13);
+        *(_DWORD*)(a2 + 3) = v13 >> 24;
+      }
+    }
+  }
+  else {
+    if (v7 < v5) {
+      if (*result != 0) {
+        v8 = *(_QWORD*)result;
+      }
+      else {
+        v8 = 0;
+      }
+      *(_WORD*)result = *(_WORD*)a3;
+      result[2] = a3[2];
+      v11 = *(_DWORD*)(a3 + 3);
+      result[7] = a3[7];
+      *(_DWORD*)(result + 3) = v11;
+    LABEL_24:
+      *(_WORD*)a3 = v8;
+      a3[2] = BYTE2(v8);
+      a3[7] = HIBYTE(v8);
+      *(_DWORD*)(a3 + 3) = v8 >> 24;
+      return result;
+    }
+    if (*result != 0) {
+      v10 = *(_QWORD*)result;
+    }
+    else {
+      v10 = 0;
+    }
+    *(_WORD*)result = *(_WORD*)a2;
+    result[2] = a2[2];
+    v14 = *(_DWORD*)(a2 + 3);
+    result[7] = a2[7];
+    *(_DWORD*)(result + 3) = v14;
+    a2[2] = BYTE2(v10);
+    *(_WORD*)a2 = v10;
+    *(_DWORD*)(a2 + 3) = v10 >> 24;
+    a2[7] = HIBYTE(v10);
+    if ((signed __int32)*(
+            _DWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)v3 + 64LL) +
+                                           8LL * *a3) +
+                                24LL) +
+                     88LL) <
+        (signed __int32)*(
+            _DWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)v3 + 64LL) +
+                                           8LL * (unsigned __int8)v10) +
+                                24LL) +
+                     88LL)) {
+      if ((_BYTE)v10 != 0) {
+        v8 = *(_QWORD*)a2;
+      }
+      else {
+        v8 = 0;
+      }
+      *(_WORD*)a2 = *(_WORD*)a3;
+      a2[2] = a3[2];
+      v16 = *(_DWORD*)(a3 + 3);
+      a2[7] = a3[7];
+      *(_DWORD*)(a2 + 3) = v16;
+      goto LABEL_24;
+    }
+  }
+  return result;
+}
+
 unsigned __int8* LegionPool_93a150(unsigned __int8* a1, unsigned __int8* a2,
                                    unsigned __int8* a3, unsigned __int8* a4)
 {
@@ -3060,6 +3193,148 @@ unsigned __int8* LegionPool_93a150(unsigned __int8* a1, unsigned __int8* a2,
     }
   }
   return result;
+}
+
+bool LegionPool_93a560(unsigned __int8* a1, unsigned __int8* a2)
+{
+  __int64 v2;
+  unsigned __int64 v3;
+  unsigned __int8* v4;
+  unsigned __int8* v7;
+  __int64 v8;
+  int v9;
+  __int64 v10;
+  __int64 v11;
+  unsigned __int64 v12;
+  __int64 v13;
+  unsigned __int8* v14;
+  __int64 v15;
+  int v17;
+
+  v2 = (a2 - a1) >> 3;
+  if (v2 > 2) {
+    switch (v2) {
+    case 3LL:
+      LegionPool_939f20(a1, a1 + 8, a2 - 8);
+      return true;
+    case 4LL:
+      LegionPool_93a150(a1, a1 + 8, a1 + 16, a2 - 8);
+      return true;
+    case 5LL:
+      LegionPool_93a310_alt1(a1, a1 + 8, a1 + 16, a1 + 24, a2 - 8);
+      return true;
+    default:
+      break;
+    }
+  }
+  else {
+    if ((unsigned __int64)v2 < 2) {
+      return true;
+    }
+    if (v2 == 2) {
+      if ((signed __int32)*(
+              _DWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)
+                                                            GameData_212c998_alt1
+                                                                [0] +
+                                                        64LL) +
+                                             8LL * *(a2 - 8)) +
+                                  24LL) +
+                       88LL) <
+          (signed __int32)*(
+              _DWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)
+                                                            GameData_212c998_alt1
+                                                                [0] +
+                                                        64LL) +
+                                             8LL * *a1) +
+                                  24LL) +
+                       88LL)) {
+        if (*a1 != 0) {
+          v3 = *(_QWORD*)a1;
+        }
+        else {
+          v3 = 0;
+        }
+        *(_WORD*)a1 = *((_WORD*)a2 - 4);
+        a1[2] = *(a2 - 6);
+        v17 = *(_DWORD*)(a2 - 5);
+        a1[7] = *(a2 - 1);
+        *(_DWORD*)(a1 + 3) = v17;
+        *((_WORD*)a2 - 4) = v3;
+        *(a2 - 6) = BYTE2(v3);
+        *(a2 - 1) = HIBYTE(v3);
+        *(_DWORD*)(a2 - 5) = v3 >> 24;
+      }
+      return true;
+    }
+  }
+  v4 = a1 + 16;
+  LegionPool_939f20(a1, a1 + 8, a1 + 16);
+  v7 = a1 + 24;
+  if (a1 + 24 != a2) {
+    v8 = 0;
+    v9 = 0;
+    v10 = GameData_212c998_alt1[0];
+    v11 = *(_QWORD*)GameData_212c998_alt1[0];
+    do {
+      if ((signed __int32)*(
+              _DWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(v11 + 64) + 8LL * *v7) +
+                                  24LL) +
+                       88LL) <
+          (signed __int32)*(
+              _DWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(v11 + 64) + 8LL * *v4) +
+                                  24LL) +
+                       88LL)) {
+        if (*v7 != 0) {
+          v12 = *(_QWORD*)v7;
+        }
+        else {
+          v12 = 0;
+        }
+        v13 = v8;
+        while (1) {
+          v14 = &a1[v13];
+          *((_WORD*)v14 + 12) = *(_WORD*)&a1[v13 + 16];
+          v14[26] = a1[v13 + 18];
+          *(_DWORD*)(v14 + 27) = *(_DWORD*)&a1[v13 + 19];
+          v14[31] = a1[v13 + 23];
+          if (v13 == -16) {
+            break;
+          }
+          v13 -= 8;
+          if ((signed __int32)*(
+                  _DWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)v10 +
+                                                            64LL) +
+                                                 8LL * (unsigned __int8)v12) +
+                                      24LL) +
+                           88LL) >=
+              (signed __int32)*(
+                  _DWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)v10 +
+                                                            64LL) +
+                                                 8LL * v14[8]) +
+                                      24LL) +
+                           88LL)) {
+            v15 = (__int64)&a1[v13 + 24];
+            goto LABEL_24;
+          }
+        }
+        v15 = (__int64)a1;
+      LABEL_24:
+        *(_WORD*)v15 = v12;
+        ++v9;
+        *(_BYTE*)(v15 + 2) = BYTE2(v12);
+        v14[23] = HIBYTE(v12);
+        *(_DWORD*)(v14 + 19) = v12 >> 24;
+        if (v9 == 8) {
+          return v7 + 8 == a2;
+        }
+        v11 = *(_QWORD*)v10;
+      }
+      v4 = v7;
+      v7 += 8;
+      v8 += 8;
+    } while (v7 != a2);
+  }
+  return true;
 }
 
 __int64 game_LegionPool_List_Impl_EachData_closure_Invoke(__int64 a1,

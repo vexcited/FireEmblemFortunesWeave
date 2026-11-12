@@ -51,6 +51,78 @@ ui_LayoutAccessor_FindPane_alt1(__int64*,
 char* game_util_Format_alt1(const char*, ...) __asm__("game_util_Format");
 __int64 TelopRecruitResult_Unknown36(__int64* a1);
 __int64 TelopRecruitResult_Unknown39(__int64* a1);
+void GameRoutine_1761b30(__int64, int, char, __int64, __int64, __int64,
+                         unsigned int**);
+void Se_80e330(__int64, const char*);
+void TelopRecruitResult_Unknown56(__int64 a1);
+
+void TelopRecruitResult_Unknown56(__int64 a1)
+{
+  unsigned int v1;
+  const char* v2;
+  unsigned int* v3;
+  const char* v4;
+  const char* v5;
+  __int64 v6;
+  _QWORD v7[2];
+  _QWORD v8[2];
+  _QWORD v9[2];
+  unsigned int* v10[2];
+
+  v10[0] = (unsigned int*)"Type_Judge00";
+  v10[1] = (_DWORD*)(((_UNKNOWN**)0x8LL) + 4);
+  v9[0] = "In_Judege00";
+  v9[1] = 11;
+  v1 = *(unsigned __int8*)(*(_QWORD*)(a1 + 1168) + 50LL);
+  if (v1 <= 0xA) {
+    if (v1 < 9) {
+      if (v1 < 7) {
+        if (v1 < 5) {
+          if (v1 < 3) {
+            v5 = "SE_SYS_Join_Legion_E";
+            v10[0] = (unsigned int*)"Type_RankE";
+            v10[1] = (_DWORD*)(((_UNKNOWN**)0x8LL) + 2);
+            goto LABEL_8;
+          }
+          v5 = "SE_SYS_Join_Legion_D";
+          v10[0] = (unsigned int*)"Type_Judge01";
+          v10[1] = (_DWORD*)(((_UNKNOWN**)0x8LL) + 4);
+          v4 = "In_Judege01";
+        }
+        else {
+          v5 = "SE_SYS_Join_Legion_C";
+          v10[0] = (unsigned int*)"Type_Judge02";
+          v10[1] = (_DWORD*)(((_UNKNOWN**)0x8LL) + 4);
+          v4 = "In_Judege02";
+        }
+      LABEL_7:
+        v9[0] = v4;
+      LABEL_8:
+        v6 = a1;
+        Se_80e330(a1, v5);
+        a1 = v6;
+        goto LABEL_9;
+      }
+      v2 = "Type_Judge03";
+      v3 = (_DWORD*)(((_UNKNOWN**)0x8LL) + 4);
+    }
+    else {
+      v2 = "Type_RankA";
+      v3 = (_DWORD*)(((_UNKNOWN**)0x8LL) + 2);
+    }
+    v10[0] = (unsigned int*)v2;
+    v10[1] = v3;
+    v4 = "In_Judege03";
+    v5 = "SE_SYS_Join_Legion_AB";
+    goto LABEL_7;
+  }
+LABEL_9:
+  v8[0] = "MID_Sys_Result_Headline_Recruit";
+  v8[1] = 31;
+  v7[0] = &GameData_1a9f09e;
+  v7[1] = 0;
+  GameRoutine_1761b30(a1, 0, 1, (__int64)v8, (__int64)v7, (__int64)v9, v10);
+}
 
 __int64 TelopRecruitResult_Unknown36(__int64* a1)
 {

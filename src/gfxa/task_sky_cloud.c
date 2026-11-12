@@ -20,6 +20,7 @@ __int64 GameHr_ad5280(_QWORD*);
 __int64 game_615760(__int64, __int64);
 __int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
     "std___1___shared_weak_count___release_weak");
+__int64 TaskSkyCloud_b77550(__int64 a1, _QWORD* a2, __int64 a3);
 
 __int64 gfxa_TaskSkyCloud_Updater_Updater(__int64* a1, __int64 a2)
 {
@@ -101,6 +102,80 @@ __int64 gfxa_TaskSkyCloud_Updater_Updater(__int64* a1, __int64 a2)
   }
   return DecalObject_a91100(a1 + 19, *(_QWORD*)(*a1 + 312),
                             *(_QWORD*)(*(_QWORD*)(*a1 + 552) + 16LL), 48);
+}
+
+__int64 TaskSkyCloud_b77550(__int64 a1, _QWORD* a2, __int64 a3)
+{
+
+#pragma clang fp contract(off)
+  int v3;
+  int v4;
+  int v8;
+  int v9;
+  _DWORD* v10;
+  int v11;
+  int v12;
+  int v13;
+  bool v14;
+  int v15;
+  __int64 v16;
+  __int64 v17;
+  __int128 v18;
+  int8x16_t v19;
+  __int64 v20;
+  __int64 v21;
+  __int64 v22;
+  unsigned int v23;
+
+  v3 = *(_DWORD*)(a3 + 24);
+  v4 = *(_DWORD*)(a3 + 28);
+  v8 = v3 / v4;
+  v9 = v3 % v4;
+  v10 = *(_DWORD**)(a3 + 16);
+  v11 = (signed __int32)*v10 / v4;
+  v12 = *(_DWORD*)(a1 + 168);
+  v13 = (signed __int32)v10[1] / v4;
+  v14 = v12 < -1;
+  v15 = ((_BYTE)v12 + 1) & 1;
+  if (v14) {
+    v15 = -v15;
+  }
+  *(_DWORD*)(a1 + 168) = v15;
+  v16 = *(_QWORD*)(a1 + 8LL * v15 + 152);
+  v17 = (*(__int64 (**)(__int64))(*(_QWORD*)v16 + 56LL))(v16);
+  *(float*)(v17 + 32) = (float)(v11 * v9);
+  *(float*)(v17 + 36) = (float)(v13 * v8);
+  v18 = *(_OWORD*)(a1 + 208);
+  *(_QWORD*)v17 = v18;
+  *(_DWORD*)(v17 + 8) = DWORD2(v18);
+  *(_DWORD*)(v17 + 12) = *(_DWORD*)(a1 + 224);
+  v19 = *(int8x16_t*)(a1 + 240);
+  *(_QWORD*)(v17 + 40) = 0x3B8D3AE73E9F3B64LL;
+  *(_QWORD*)(v17 + 16) = LANES128(v19).n128_u64[0];
+  *(_QWORD*)(v17 + 24) = LANES128_OF(vextq_s8(v19, v19, 8u)).n128_u64[0];
+  (*(void (**)(__int64))(*(_QWORD*)v16 + 64LL))(v16);
+  (*(void (**)(_QWORD, __int64, _QWORD))(*(_QWORD*)*a2 + 200LL))(
+      *a2, 8, *(_QWORD*)(*(_QWORD*)(a1 + 8) + 144LL));
+  (*(void (**)(_QWORD, __int64, _QWORD, _QWORD, _QWORD, _QWORD))(
+      *(_QWORD*)*a2 + 248LL))(*a2, 8, 0, *(_QWORD*)a3, *(_QWORD*)(a3 + 8),
+                              *(unsigned int*)(a1 + 144));
+  v20 = a1 + 16LL * *(int*)(a1 + 168);
+  (*(void (**)(_QWORD, __int64, _QWORD, _QWORD, _QWORD))(
+      *(_QWORD*)*a2 + 224LL))(*a2, 8, 0, *(_QWORD*)(v20 + 176),
+                              *(_QWORD*)(v20 + 184));
+  v21 = *(_QWORD*)(a3 + 16);
+  v22 = 16;
+  if (*(_BYTE*)(v21 + 24) == 0) {
+    v22 = 8;
+  }
+  v23 = (*(__int64 (**)(_QWORD))(**(_QWORD**)(v21 + v22) + 48LL))(
+      *(_QWORD*)(v21 + v22));
+  (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, _QWORD, __int64, _QWORD,
+                                          _QWORD))(*(_QWORD*)*a2 + 256LL))(
+      (void*)((_QWORD*)*a2), *a2, 8, 0, v23);
+  return (
+      *(__int64 (**)(_QWORD, _QWORD, _QWORD, __int64))(*(_QWORD*)*a2 + 304LL))(
+      *a2, (unsigned int)(v11 / 8), (unsigned int)(v13 / 8), 1);
 }
 
 #pragma GCC visibility pop

@@ -15,6 +15,12 @@ __int64 game_menu_DeployPoolMenu_LCall_lambda0_Invoke(__int64 a1, _QWORD* a2);
 __int64 game_menu_DeployPoolMenu_RCall_lambda0_Invoke(__int64 a1, _QWORD* a2);
 __int64 game_menu_DeployPoolMenu_SetSelectEquipItem_lambda0_Invoke(__int64 a1,
                                                                    _QWORD* a2);
+__int64 GameRoutine_15dff80(__int64, char, __int64, char);
+__int64 game_gameui_UnitUtil_GetNext(__int64, char, __int64, char);
+extern __int64 (*GameData_20ee050[])();
+extern __int64 (*GameData_20ee0d0[])();
+__int64 game_menu_DeployPoolMenu_LCall(_QWORD* a1);
+__int64 game_menu_DeployPoolMenu_RCall(_QWORD* a1);
 
 __int64 game_menu_DeployPoolMenu_Apply(_QWORD* a1)
 {
@@ -67,6 +73,82 @@ LABEL_12:
 LABEL_13:
   (*(void (**)(_QWORD*, _QWORD))(*a1 + 1136LL))(a1, a1[133]);
   return game_menu_BasicMenu_Unknown16dd9a0(a1);
+}
+
+__int64 game_menu_DeployPoolMenu_LCall(_QWORD* a1)
+{
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 result;
+  struct {
+    _QWORD v6[4];
+    _QWORD* v7;
+  } v6_;
+
+  if (((*(__int64 (**)(_QWORD*))(*a1 + 1144LL))(a1) & 1) == 0) {
+    return 0;
+  }
+  v2 = a1[133];
+  v6_.v6[0] = GameData_20ee050;
+  v6_.v6[1] = a1;
+  v6_.v7 = v6_.v6;
+  v3 = GameRoutine_15dff80(v2, 0, (__int64)v6_.v6, 0);
+  if (v6_.v7 == v6_.v6) {
+    v4 = 32;
+  }
+  else {
+    if (v6_.v7 == nullptr) {
+      goto LABEL_8;
+    }
+    v4 = 40;
+  }
+  (*(void (**)(__int64))(*v6_.v7 + v4))((__int64)v6_.v7);
+LABEL_8:
+  result = 0;
+  if (v3 != 0 && v3 != a1[133]) {
+    (*(void (**)(_QWORD*, __int64))(*a1 + 1160LL))(a1, v3);
+    return 13;
+  }
+  return result;
+}
+
+__int64 game_menu_DeployPoolMenu_RCall(_QWORD* a1)
+{
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 result;
+  struct {
+    _QWORD v6[4];
+    _QWORD* v7;
+  } v6_;
+
+  if (((*(__int64 (**)(_QWORD*))(*a1 + 1144LL))(a1) & 1) == 0) {
+    return 0;
+  }
+  v2 = a1[133];
+  v6_.v6[0] = GameData_20ee0d0;
+  v6_.v6[1] = a1;
+  v6_.v7 = v6_.v6;
+  v3 = game_gameui_UnitUtil_GetNext(v2, 0, (__int64)v6_.v6, 0);
+  if (v6_.v7 == v6_.v6) {
+    v4 = 32;
+  }
+  else {
+    if (v6_.v7 == nullptr) {
+      goto LABEL_8;
+    }
+    v4 = 40;
+  }
+  (*(void (**)(__int64))(*v6_.v7 + v4))((__int64)v6_.v7);
+LABEL_8:
+  result = 0;
+  if (v3 != 0 && v3 != a1[133]) {
+    (*(void (**)(_QWORD*, __int64))(*a1 + 1160LL))(a1, v3);
+    return 13;
+  }
+  return result;
 }
 
 __int64 game_menu_DeployPoolMenu_Apply_lambda0_Invoke(__int64 a1, _QWORD* a2)

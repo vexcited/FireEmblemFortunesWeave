@@ -20,6 +20,9 @@ __int64 BufferAllocator_5b2c60(__int64 result);
 __int64 BufferAllocator_5b2ef0(__int64 result);
 __int64 BufferAllocator_5b56a0(__int64 a1, __int64 a2);
 __int64 BufferAllocator_5b57b0(__int64 a1);
+__int64 GameRoutine_5c02b0(_QWORD, _QWORD);
+__int64 GameRoutine_5c02c0(const char*, ...);
+__int64 BufferAllocator_5b4b20(__int64 a1, __int64 a2, __int64 a3);
 
 __int64 BufferAllocator_5b2c60(__int64 result)
 {
@@ -257,6 +260,127 @@ __int64 BufferAllocator_Unknown2(__int64 a1, __int64 a2)
   }
   GameRoutine_5fcb10(a1 + 8, a2);
   return GameRoutine_5fe3b0(a1 + 80, a2);
+}
+
+__int64 BufferAllocator_5b4b20(__int64 a1, __int64 a2, __int64 a3)
+{
+  __int64 v3;
+  __int64 v4;
+  int v5;
+  int v6;
+  __int64 v7;
+  __int64 v8;
+  _QWORD* v10;
+  _QWORD* v11;
+  __int64 v12;
+  __int64 v13;
+  __int64 v14;
+  __int64 v15;
+  __int64 v16;
+  __int64 v17;
+  __int64 v18;
+  int v19;
+  _QWORD* v21;
+  __int64 v22;
+  __int64 v23;
+  int v24;
+  __int64 v25;
+
+  v3 = *(unsigned int*)(a1 + 436);
+  if ((int)v3 <= (signed __int32)*(_DWORD*)(a1 + 432)) {
+    GameRoutine_5c02c0("GpuBuffer management domain is lacking. \n");
+    return 0;
+  }
+  v4 = *(_QWORD*)(a1 + 464);
+  if (v4 == 0) {
+    v5 = *(_DWORD*)(a1 + 448);
+    if (v5 + 1 == (_DWORD)v3) {
+      v6 = 0;
+    }
+    else {
+      v6 = v5 + 1;
+    }
+    v4 = *(_QWORD*)(a1 + 424);
+    *(_DWORD*)(a1 + 448) = v6;
+    v7 = v4 + 56LL * v6;
+    if (*(_QWORD*)(v7 + 8) != 0) {
+      if ((int)v3 < 1) {
+      LABEL_11:
+        v4 = 0;
+      }
+      else {
+        v8 = 0;
+        while (*(_QWORD*)(v4 + 8) != 0) {
+          ++v8;
+          v4 += 56;
+          if (v3 == v8) {
+            goto LABEL_11;
+          }
+        }
+        *(_QWORD*)(a1 + 464) = v4;
+        *(_DWORD*)(a1 + 448) = v8;
+      }
+    }
+    else {
+      *(_QWORD*)(a1 + 464) = v7;
+      v4 = v7;
+    }
+  }
+  v10 = *(_QWORD**)(a1 + 392);
+  v11 = (_QWORD*)(a1 + 384);
+  v12 = a3 - 1;
+  v13 = -a3;
+  v14 = *(_QWORD*)(a1 + 368);
+  if (v10 == (_QWORD*)(a1 + 384)) {
+  LABEL_18:
+    v18 = (v12 + v14) & v13;
+    if (*(_QWORD*)(a1 + 368) + *(_QWORD*)(a1 + 376) - v18 < a2) {
+      v19 = a2;
+      GameRoutine_5c02b0(0, 4096);
+      GameRoutine_5c02c0(
+          "GpuBuffer Allocation Failed. Allocated size : %d Byte.\n", v19);
+      GameRoutine_5c02c0("Current GpuBuffer Allocation : %d/%d.\n",
+                         *(_QWORD*)(a1 + 440), *(_QWORD*)(a1 + 376));
+      return 0;
+    }
+    v22 = *(_QWORD*)(v4 + 24);
+    v21 = (_QWORD*)(v4 + 24);
+    *(v21 - 2) = v18;
+    *(v21 - 1) = a2;
+    *v21 = *(_QWORD*)(a1 + 384);
+    *(_QWORD*)(v22 + 8) = v11;
+    *(_QWORD*)(*(_QWORD*)(a1 + 384) + 8LL) = v21;
+    *(_QWORD*)(a1 + 384) = v22;
+  }
+  else {
+    while (1) {
+      v15 = *(v10 - 2);
+      v16 = (v12 + v14) & v13;
+      if (v15 - v16 >= a2) {
+        break;
+      }
+      v17 = *(v10 - 1);
+      v10 = (_QWORD*)v10[1];
+      v14 = v15 + v17;
+      if (v10 == v11) {
+        goto LABEL_18;
+      }
+    }
+    v23 = *(_QWORD*)(v4 + 24);
+    v21 = (_QWORD*)(v4 + 24);
+    *(v21 - 2) = v16;
+    *(v21 - 1) = a2;
+    *v21 = *v10;
+    *(_QWORD*)(v23 + 8) = v10;
+    *(_QWORD*)(*v10 + 8LL) = v21;
+    *v10 = v23;
+  }
+  v24 = *(_DWORD*)(a1 + 432);
+  *(_QWORD*)(a1 + 464) = 0;
+  v25 = *(_QWORD*)(a1 + 440);
+  *(_DWORD*)(a1 + 432) = v24 + 1;
+  *(_QWORD*)(a1 + 440) = v25 + *(v21 - 1);
+  return *(v21 - 2);
 }
 
 __int64 BufferAllocator_5b4d20(__int64 result, __int64 a2, char a3)

@@ -25,7 +25,7 @@ extern __int64* GameData_212ce90[3];
 extern __int64* GameData_212ce98[2];
 extern int GameData_21d92e0;
 __int64 MapDrawTargetLine_Destructor(__int64 a1);
-__int64 MapDrawTargetLine_f21270();
+__int64 MapDrawTargetLine_f21270_alt1() __asm__("MapDrawTargetLine_f21270");
 bool MapDrawTargetLine_f21470(__int64 a1, __int64 a2);
 bool MapDrawTargetLine_Unknown6(__int64 a1);
 __int64 game_map_MapDrawTargetLine_UpdateMesh_lambda0_Invoke(__int64 a1,
@@ -48,6 +48,11 @@ extern __int64 game_script_hub_g_frame_counter_ptr[3];
 void __attribute__((noreturn)) GameRoutine_60a210();
 void __attribute__((noreturn)) GameRoutine_740050();
 void MapDrawTargetLine_Unknown2(__int64 a1);
+__int64 std___1___shared_weak_count___release_weak_alt2(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
+    "std___1___shared_weak_count_lock");
+__int64* MapDrawTargetLine_f21270();
 
 __int64 MapDrawTargetLine_Destructor(__int64 a1)
 {
@@ -362,7 +367,7 @@ LABEL_34:
   }
 }
 
-__int64 MapDrawTargetLine_f21270()
+__int64* MapDrawTargetLine_f21270()
 {
   __int64 v0;
   __int64 v1;
@@ -377,12 +382,14 @@ __int64 MapDrawTargetLine_f21270()
   __int64 v10;
   __int64 v11;
   bool v12;
-  __int64 v13;
-  __int64 v14;
-  unsigned int v15;
+  unsigned int v13;
+  unsigned int v14;
+  __int64 v15;
   __int64 v16;
-  bool v17;
+  unsigned int v17;
   __int64 v18;
+  bool v19;
+  __int64 v20;
 
   v0 = GameData_212d038[0];
   v1 = *(_QWORD*)GameData_212d038[0];
@@ -398,8 +405,8 @@ __int64 MapDrawTargetLine_f21270()
   v8 = *(_QWORD*)(*(_QWORD*)GameData_212d020[0] + 104LL);
   atomic_fetch_add_explicit((atomic_ullong* volatile)(v6 + 16), 1u,
                             memory_order_relaxed);
-  v9 = std___1___shared_weak_count_lock(v8);
-  std___1___shared_weak_count___release_weak(v6);
+  v9 = std___1___shared_weak_count_lock_alt1(v8);
+  std___1___shared_weak_count___release_weak_alt2(v6);
   if (v9 == 0) {
     v4 = *(_QWORD*)v0;
   LABEL_6:
@@ -423,41 +430,51 @@ __int64 MapDrawTargetLine_f21270()
   if (atomic_fetch_add((atomic_ullong* volatile)(v9 + 8),
                        0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v9 + 16LL))(v9);
-    std___1___shared_weak_count___release_weak(v9);
+    std___1___shared_weak_count___release_weak_alt2(v9);
   }
-
 LABEL_14:
   v11 = *(_QWORD*)(v5 + v10 + 127192);
   v12 = (*(_QWORD*)(v5 + v10 + 127168) | v11) == 0 || v5 == 0;
-  if (v12 || *(_DWORD*)(v5 + v10) != 0) {
-    if (*(_DWORD*)(*(_QWORD*)v3 + 4368LL) != 1) {
-      return GameRoutine_752850();
-    }
-    LODWORD(v13) = *(char*)(v1 + 82) + 32 * *(char*)(v1 + 83);
-    v13 = (unsigned int)v13 >= 0x400 ? 0LL : (unsigned int)v13;
-    v14 = *(_QWORD*)(*GameData_212ce98[0] + 96) + v13;
-    v15 = *(unsigned __int8*)(v14 + 8);
-    if (*(_BYTE*)(v14 + 8) == 0) {
-      return GameRoutine_752850();
-    }
-    v16 = *(_QWORD*)(GameData_21ca310 + 56) +
-          2224LL * *(unsigned __int8*)(v14 + 8);
-    v11 = v16 - 2224;
-    v17 = v15 > 0xFA || v16 == 2224;
-    if (v17 || *(_QWORD*)(v16 - 1832) == 0) {
-      return GameRoutine_752850();
-    }
-    v18 = *(_QWORD*)(v16 - 1784);
-    if (v18 != 0) {
-      if (*(unsigned __int8*)(v18 + 16) != v2) {
-        return GameRoutine_752850();
-      }
-    }
-    else if (v2 != 9) {
-      return GameRoutine_752850();
-    }
+  if (!v12 && *(_DWORD*)(v5 + v10) == 0) {
+    return (__int64*)v11;
   }
-  return v11;
+  if (*(_DWORD*)(*(_QWORD*)v3 + 4368LL) != 1) {
+    v13 = *(char*)(v1 + 82);
+    v14 = *(char*)(v1 + 83);
+    return GameRoutine_752850_alt1(v13, v14, v2);
+  }
+  v13 = *(char*)(v1 + 82);
+  v14 = *(char*)(v1 + 83);
+  LODWORD(v15) = v13 + 32 * v14;
+  if ((unsigned int)v15 >= 0x400) {
+    v15 = 0;
+  }
+  else {
+    v15 = (unsigned int)v15;
+  }
+  v16 = *(_QWORD*)(*GameData_212ce98[0] + 96) + v15;
+  v17 = *(unsigned __int8*)(v16 + 8);
+  if (*(_BYTE*)(v16 + 8) == 0) {
+    return GameRoutine_752850_alt1(v13, v14, v2);
+  }
+  v18 =
+      *(_QWORD*)(GameData_21ca310 + 56) + 2224LL * *(unsigned __int8*)(v16 + 8);
+  v11 = v18 - 2224;
+  v19 = v17 > 0xFA || v18 == 2224;
+  if (v19 || *(_QWORD*)(v18 - 1832) == 0) {
+    return GameRoutine_752850_alt1(v13, v14, v2);
+  }
+  v20 = *(_QWORD*)(v18 - 1784);
+  if (v20 != 0) {
+    if (*(unsigned __int8*)(v20 + 16) == v2) {
+      return (__int64*)v11;
+    }
+    return GameRoutine_752850_alt1(v13, v14, v2);
+  }
+  if (v2 != 9) {
+    return GameRoutine_752850_alt1(v13, v14, v2);
+  }
+  return (__int64*)v11;
 }
 
 bool MapDrawTargetLine_f21470(__int64 a1, __int64 a2)

@@ -14,6 +14,17 @@ extern _UNKNOWN* GameData_212c960;
 extern __int64 game_ProcFadeView_instance_;
 __int64 game_combat_transition_DirectIn_Schedule_closure_Invoke(long double a1);
 __int64 game_combat_transition_DirectIn_Schedule_closure1_Invoke();
+__int64 CombatLegionManager_e2cca0();
+__int64 GameHr_106e1a0(__int64 result);
+__int64 GameRoutine_758bc0(float);
+__int64 game_GameView_Update();
+extern __int64 GameData_21c96a8;
+extern __int64 GameData_21cd0d0;
+extern __int64 GameData_21ec7b0;
+extern int GameData_21d92e0;
+void BattleUtil_7a96a0(float);
+void GameRoutine_10ecb60();
+__int64 game_combat_transition_DirectIn_Schedule_closure0_Invoke();
 
 __int64 DirectIn_Unknown18(__int64* a1)
 {
@@ -131,6 +142,33 @@ __int64 game_combat_transition_DirectIn_Schedule_closure_Invoke(long double a1)
                               a1);
   }
   return result;
+}
+
+__int64 game_combat_transition_DirectIn_Schedule_closure0_Invoke()
+{
+  __int64 v0;
+  int v1;
+
+  if (GameData_21d92e0 != 3) {
+    GameData_21d92e0 = 3;
+    game_GameView_Update();
+    if (GameData_21cd0d0 != 0) {
+      v0 = *(_QWORD*)(GameData_21cd0d0 + 8);
+      v1 = *(_DWORD*)(v0 + 8);
+      *(_DWORD*)(v0 + 8) = v1 + 1;
+      if (v1 == 0) {
+        (**(void (***)(__int64))v0)(v0);
+      }
+    }
+  }
+  GameHr_106e1a0(GameData_21ec7b0);
+  GameRoutine_10ecb60();
+  BattleUtil_7a96a0(0x1.0000000000000p+0f);
+  GameRoutine_758bc0(0x1.0000000000000p+0f);
+  if (GameData_21c96a8 != 0) {
+    *(_DWORD*)(*(_QWORD*)(GameData_21c96a8 + 8) + 32LL) = 1065353216;
+  }
+  return CombatLegionManager_e2cca0();
 }
 
 __int64 game_combat_transition_DirectIn_Schedule_closure1_Invoke()

@@ -44,6 +44,15 @@ bool game_facility_anonymous_ProcObeliskDepositoryLegionMenu_SortAndFilter_closu
 __int64 GameRoutine_20();
 extern __int64 GameData_212cf98[2];
 __int64 ProcObeliskDepositoryLegionMenu_DeletingDestructor(__int64 a1);
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+bool LegionPool_9374e0(_QWORD*, __int64);
+extern __int64 (*GameData_211e348[])();
+extern __int64 (
+    *game_facility_anonymous_ObeliskDepositoryLegionMenuItem_Empty_vtable[])();
+__int64
+game_facility_anonymous_ProcObeliskDepositoryLegionMenu_AddItemList(__int64 a1);
 
 __int64 ProcObeliskDepositoryLegionMenu_Destructor(__int64 a1)
 {
@@ -242,6 +251,64 @@ LABEL_14:
     return (*(__int64 (**)(_QWORD*))(a1[132] + 96LL))(a1 + 132);
   }
   return result;
+}
+
+__int64
+
+game_facility_anonymous_ProcObeliskDepositoryLegionMenu_AddItemList(__int64 a1)
+{
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 result;
+  __int64 v6;
+  struct {
+    _QWORD v7[4];
+    _QWORD* v8;
+  } v7_;
+  int v9;
+
+  v2 = fw_memory_HeapManager_Allocate_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr, 88, 16, 0);
+  *(_QWORD*)(v2 + 80) = 0;
+  v3 = v2;
+  *(_QWORD*)(v2 + 16) = 0;
+  *(_QWORD*)(v2 + 24) = 0;
+  *(_QWORD*)(v2 + 32) = 0;
+  *(_QWORD*)(v2 + 40) = 0;
+  *(_QWORD*)(v2 + 48) = 0;
+  *(_QWORD*)(v2 + 56) = 0;
+  *(_QWORD*)(v2 + 64) = 0;
+  *(_QWORD*)(v2 + 72) = 0;
+  *(_WORD*)(v2 + 80) = 257;
+  *(_BYTE*)(v2 + 82) = 1;
+  *(_DWORD*)(v2 + 84) = 1;
+  *(_QWORD*)v2 =
+      game_facility_anonymous_ObeliskDepositoryLegionMenuItem_Empty_vtable;
+  *(_QWORD*)(v2 + 8) = 0;
+  v4 = *(_QWORD*)(a1 + 344);
+  if (v4 != 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v4 + 8LL))(v4);
+  }
+  *(_QWORD*)(v3 + 8) = a1;
+  *(_QWORD*)(a1 + 344) = v3;
+  v9 = 0;
+  v7_.v7[0] = GameData_211e348;
+  v7_.v7[1] = a1;
+  v7_.v7[2] = &v9;
+  v7_.v8 = v7_.v7;
+  LegionPool_9374e0(*(_QWORD**)(GameData_21f4280 + 8), (__int64)v7_.v7);
+  result = (__int64)v7_.v8;
+  if (v7_.v8 == v7_.v7) {
+    v6 = 32;
+  }
+  else {
+    if (v7_.v8 == nullptr) {
+      return result;
+    }
+    v6 = 40;
+  }
+  return (*(__int64 (**)(__int64))(*v7_.v8 + v6))((__int64)v7_.v8);
 }
 
 __int64 ProcObeliskDepositoryLegionMenu_Unknown140(__int64 a1)

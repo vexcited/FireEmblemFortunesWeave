@@ -12,6 +12,10 @@ __int64 std___1___shared_weak_count___release_weak(_QWORD);
 extern __int64 (*game_ProcInst_vtable[])();
 extern __int64 (*game_anonymous_ProcFinSeq_vtable[])();
 __int64 ProcFinSeq_Destructor(__int64 a1);
+extern __int64 game_ProcGameSkipView_instance_;
+extern __int64 game_g_frame_clock;
+extern __int64 game_g_game_setting;
+__int64 ProcFinSeq_Unknown2(__int64 result);
 
 __int64 ProcFinSeq_Destructor(__int64 a1)
 {
@@ -68,6 +72,67 @@ __int64 ProcFinSeq_Destructor(__int64 a1)
   }
   game_ProcInst_Unregister(a1);
   return GameRoutine_658c00(a1 + 88);
+}
+
+__int64 ProcFinSeq_Unknown2(__int64 result)
+{
+  int v1;
+  int v2;
+  float v3;
+  float v4;
+  float v5;
+  unsigned __int8* v6;
+  unsigned int v7;
+  bool v8;
+  int v9;
+  __int16 v11;
+  __int64 v12;
+
+  if (game_ProcGameSkipView_instance_ == 0 ||
+      *(_BYTE*)(game_ProcGameSkipView_instance_ + 152) != 3 ||
+      (((v1 = *(_DWORD*)(game_ProcGameSkipView_instance_ + 156)) & 8) != 0
+           ? (v2 = 2)
+           : (v2 = 3),
+       (v2 & v1) != 0)) {
+    if ((*(_BYTE*)(game_g_game_setting + 944) & 1) != 0 ||
+        ((v3 = 0x1.e000000000000p+5f /
+               (float)*(int*)(game_g_frame_clock + 476)) <= 0x0.0p+0f
+             ? (v4 = 0x1.119ce00000000p-6f)
+             : (v4 = v3 * 0x1.119ce00000000p-6f),
+         v5 = *(float*)(result + 152) + (float)(v4 * 0x1.f400000000000p+9f),
+         *(float*)(result + 152) = v5, v5 >= 0x1.3880000000000p+12f)) {
+      v6 = *(unsigned __int8**)(result + 16);
+      if (v6 != nullptr) {
+        v7 = *v6;
+        v8 = v7 > 0x10;
+        v9 = (1 << v7) & 0x1CE00;
+        if (!v8 && v9 != 0) {
+          v11 = *(_WORD*)(result + 136) | 0x80;
+          goto LABEL_18;
+        }
+      }
+    }
+    return result;
+  }
+  v12 = *(_QWORD*)(result + 8);
+  if (v12 == 0) {
+    return result;
+  }
+  while (*(_BYTE*)v12 != 2) {
+    if (*(_BYTE*)v12 == 0) {
+      return result;
+    }
+  LABEL_23:
+    v12 += 64;
+  }
+  if (*(_DWORD*)(v12 + 32) != 1) {
+    goto LABEL_23;
+  }
+  *(_QWORD*)(result + 16) = v12;
+  v11 = *(_WORD*)(result + 136) & 0xFF7F;
+LABEL_18:
+  *(_WORD*)(result + 136) = v11;
+  return result;
 }
 
 #pragma GCC visibility pop

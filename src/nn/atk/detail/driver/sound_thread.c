@@ -107,6 +107,25 @@ __int64 nn_audio_PerformanceInfo_GetVoiceDropCount_alt1(__int64) __asm__(
 __int64 nn_audio_PerformanceInfo_IsRenderingTimeLimitExceeded_alt1(
     __int64) __asm__("nn_audio_PerformanceInfo_IsRenderingTimeLimitExceeded");
 _DWORD* SoundThread_2a1de0(_DWORD* result);
+__int64 BaseNx_2a72a0(__int64 result, unsigned int);
+__int64 BaseNx_2a7340(__int64 result, unsigned int);
+__int64 BaseNx_2aa6c0(__int64 result);
+__int64 BaseNx_2aa720(__int64 result);
+__int64 BaseNx_2aa780(__int64 result);
+__int64 BaseNx_2aa800(__int64 result);
+__int64 GameHr_2899c0(__int64 result);
+__int64 GameHr_28b020(__int64, unsigned int);
+__int64 GameRoutine_2a54e0();
+__int64 GameRoutine_2b82d0(__int64 result, __int64, unsigned __int64, __int64);
+__int64 nn_audio_PerformanceInfo_Destroy_PerformanceInfo(__int64);
+__int64 nn_audio_PerformanceInfo_MoveToNextFrame(__int64);
+__int64 nn_audio_PerformanceInfo_PerformanceInfo(__int64);
+__int64 nn_audio_PerformanceInfo_SetBuffer(__int64, __int64, unsigned __int64);
+__int64 nn_audio_SetPerformanceFrameBuffer(__int64, __int64, unsigned __int64);
+void* BaseNx_2a6df0();
+void* BaseNx_2aa100();
+__int64 SoundThread_2a1e60(__int64 a1);
+__int64 SoundThread_2a2020(__int64 a1, int a2);
 
 __int64 SoundThread_289fa0(__int64 a1)
 {
@@ -220,6 +239,30 @@ _DWORD* SoundThread_2a1de0(_DWORD* result)
   return result;
 }
 
+__int64 SoundThread_2a1e60(__int64 a1)
+{
+  __int64 v2;
+  __int64 result;
+  __int64 v4;
+
+  v2 = a1 + 920;
+  result = *(_QWORD*)(a1 + 928);
+  if (result != v2) {
+    do {
+      v4 = *(_QWORD*)(result + 8);
+      (*(void (**)(void*))(*(_QWORD*)(result - 8) + 32LL))((void*)(result - 8));
+      result = v4;
+    } while (v4 != v2);
+  }
+  *(_QWORD*)(a1 + 1144) = 0;
+  *(_QWORD*)(a1 + 1072) = 0;
+  *(_QWORD*)(a1 + 1080) = 0;
+  *(_QWORD*)(a1 + 1088) = 0;
+  *(_QWORD*)(a1 + 1096) = 0;
+  *(_DWORD*)(a1 + 1104) = 0;
+  return result;
+}
+
 __int64 SoundThread_2a1ee0(__int64 a1, _QWORD* a2)
 {
   __int64 v4;
@@ -277,6 +320,175 @@ __int64 SoundThread_2a1fd0(__int64 result, __int64 a2)
     *(_QWORD*)(v3 + 8) = a2 + 8;
     *(_QWORD*)(a2 + 8) = v3;
   }
+  return result;
+}
+
+__int64 SoundThread_2a2020(__int64 a1, int a2)
+{
+  void* v4;
+  void* v5;
+  void* v6;
+  __int64 v7;
+  void* v8;
+  int v9;
+  int v10;
+  __int64 SystemTickEv;
+  __int64 v12;
+  __int64 v13;
+  __int64 v14;
+  void* v15;
+  void* v16;
+  void* v17;
+  __int64 v18;
+  __int64 v19;
+  unsigned int v20;
+  __int64 v21;
+  __int64 v22;
+  void* v23;
+  void* v24;
+  void* v25;
+  void* v26;
+  void* v27;
+  __int64 v28;
+  __int64 v29;
+  void (*v30)(_QWORD);
+  void* v31;
+  __int64 result;
+  __int64 v33;
+  __int64 v34;
+  _QWORD v35[5];
+
+  nn_os_LockMutex_alt1(a1 + 840);
+  v4 = SoundVoiceNX_14e360_alt2();
+  if (*(_BYTE*)(a1 + 1108) == 1) {
+    v5 = v4;
+    v6 = SoundVoiceNX_14e360_alt2();
+    nn_os_LockMutex_alt1((__int64)v6 + 1720);
+    v7 = nn_audio_SetPerformanceFrameBuffer(
+        (__int64)v5 + 24, *(_QWORD*)(a1 + 8LL * *(int*)(a1 + 1104) + 1072),
+        *(_QWORD*)(a1 + 1096));
+    v8 = SoundVoiceNX_14e360_alt2();
+    nn_os_UnlockMutex_alt1((__int64)v8 + 1720);
+    v9 = *(_DWORD*)(a1 + 1104);
+    if (v9 <= 1) {
+      v10 = v9 + 1;
+    }
+    else {
+      v10 = 0;
+    }
+    *(_DWORD*)(a1 + 1104) = v10;
+  }
+  else {
+    v7 = 0;
+  }
+  SystemTickEv = nn_os_GetSystemTick_alt1();
+  nn_os_LockMutex_alt1(a1 + 872);
+  v12 = *(_QWORD*)(a1 + 912);
+  v13 = a1 + 904;
+  if (v12 != a1 + 904) {
+    do {
+      v14 = *(_QWORD*)(v12 + 8);
+      (*(void (**)(void*))(*(_QWORD*)(v12 - 8) + 16LL))((void*)(v12 - 8));
+      v12 = v14;
+    } while (v14 != v13);
+  }
+  v15 = BaseNx_2aa100();
+  if (a2 != 0) {
+    BaseNx_2aa6c0((__int64)v15);
+  }
+  else {
+    BaseNx_2aa720((__int64)v15);
+  }
+  do {
+    v16 = BaseNx_2a18e0_alt1();
+  } while ((SoundThread_2a0ec0((__int64)v16) & 1) != 0);
+  do {
+    v17 = BaseNx_2a1860_alt1();
+  } while ((SoundThread_2a0ec0((__int64)v17) & 1) != 0);
+  v18 = a1 + 920;
+  v19 = *(_QWORD*)(a1 + 928);
+  if (*(_BYTE*)(a1 + 1053) != 0) {
+    v20 = 1;
+  }
+  else {
+    v20 = (*(_DWORD*)(a1 + 1440) - *(_DWORD*)(a1 + 1432)) &
+          ~((*(_DWORD*)(a1 + 1440) - *(_DWORD*)(a1 + 1432)) >> 31);
+  }
+  if (v19 == v18) {
+    if (a2 != 0) {
+    LABEL_24:
+      v23 = BaseNx_2a6df0();
+      BaseNx_2a72a0((__int64)v23, v20);
+      v24 = BaseNx_2aa100();
+      BaseNx_2aa780((__int64)v24);
+      goto LABEL_26;
+    }
+  }
+  else {
+    if (a2 != 0) {
+      do {
+        v21 = *(_QWORD*)(v19 + 8);
+        (*(void (**)(void*))(*(_QWORD*)(v19 - 8) + 16LL))((void*)(v19 - 8));
+        v19 = v21;
+      } while (v21 != v18);
+      goto LABEL_24;
+    }
+    do {
+      v22 = *(_QWORD*)(v19 + 8);
+      (*(void (**)(void*))(*(_QWORD*)(v19 - 8) + 24LL))((void*)(v19 - 8));
+      v19 = v22;
+    } while (v22 != v18);
+  }
+  v25 = BaseNx_2a6df0();
+  BaseNx_2a7340((__int64)v25, v20);
+  v26 = BaseNx_2aa100();
+  BaseNx_2aa800((__int64)v26);
+LABEL_26:
+  nn_os_UnlockMutex_alt1(a1 + 872);
+  v27 = SoundVoiceNX_14e360_alt2();
+  GameHr_28b020((__int64)v27, v20);
+  GameRoutine_2a54e0();
+  nn_os_LockMutex_alt1(a1 + 872);
+  v28 = *(_QWORD*)(a1 + 912);
+  if (v28 != v13) {
+    do {
+      v29 = *(_QWORD*)(v28 + 8);
+      (*(void (**)(void*))(*(_QWORD*)(v28 - 8) + 24LL))((void*)(v28 - 8));
+      v28 = v29;
+    } while (v29 != v13);
+  }
+  nn_os_UnlockMutex_alt1(a1 + 872);
+  v30 = *(void (**)(_QWORD))(a1 + 936);
+  if (v30 != nullptr) {
+    v30(*(_QWORD*)(a1 + 944));
+  }
+  v31 = SoundVoiceNX_14e360_alt2();
+  GameHr_2899c0((__int64)v31);
+  nn_os_UnlockMutex_alt1(a1 + 840);
+  result = nn_os_GetSystemTick_alt1();
+  v33 = result;
+  if (v7 != 0 && (*(_BYTE*)(a1 + 1108) & 1) != 0) {
+    __builtin_memset(v35, 0, sizeof(v35));
+    nn_audio_PerformanceInfo_PerformanceInfo((__int64)v35);
+    if ((nn_audio_PerformanceInfo_SetBuffer((__int64)v35, v7,
+                                            *(_QWORD*)(a1 + 1096)) &
+         1) != 0) {
+      do {
+        SoundThread_2a2320(a1, (__int64)v35, *(_QWORD*)(a1 + 1056),
+                           *(_QWORD*)(a1 + 1064), 0);
+      } while ((nn_audio_PerformanceInfo_MoveToNextFrame((__int64)v35) & 1) !=
+               0);
+    }
+    nn_os_AcquireReadLock_alt1(a1 + 1152);
+    v34 = *(_QWORD*)(a1 + 1144);
+    if (v34 != 0) {
+      GameRoutine_2b82d0(v34, v7, *(_QWORD*)(a1 + 1096), SystemTickEv);
+    }
+    nn_os_ReleaseReadLock_alt1(a1 + 1152);
+    result = nn_audio_PerformanceInfo_Destroy_PerformanceInfo((__int64)v35);
+  }
+  *(_QWORD*)(a1 + 1056) = SystemTickEv;
+  *(_QWORD*)(a1 + 1064) = v33;
   return result;
 }
 

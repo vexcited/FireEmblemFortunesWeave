@@ -59,6 +59,114 @@ void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
 void ObjectControllerAccessDropItem_e05790(unsigned __int64 a1);
 void game_hub_ObjectControllerAccessDropItem_InitializeImpl_lambda0_Invoke(
     __int64 a1);
+_QWORD* ObjectControllerAccessDropItem_e05790_alt2(__int64) __asm__(
+    "ObjectControllerAccessDropItem_e05790");
+__int64 game_hub_Object_EnableAccess(__int64, __int64, unsigned int);
+extern __int64 (*GameData_1fe2878[])();
+void game_d58e20(__int64, int, __int64*, int);
+_QWORD* game_hub_ObjectControllerAccessDropItem_InitializeImpl(__int64 a1);
+
+_QWORD* game_hub_ObjectControllerAccessDropItem_InitializeImpl(__int64 a1)
+{
+  _QWORD* result;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  __int128 v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
+  __int64 v14;
+  __int64 v15;
+  char* v16;
+  __int64 v17[3];
+  struct {
+    _QWORD v18[4];
+    _QWORD* v19;
+  } v18_;
+
+  result = (_QWORD*)GameHr_dbc2c0(*(_QWORD**)GameData_212c6a0[0],
+                                  *(_QWORD*)(a1 + 8));
+  if (result == nullptr) {
+    return result;
+  }
+  v3 = *(_QWORD*)(a1 + 8);
+  v18_.v18[0] = GameData_1fe2878;
+  v18_.v18[1] = a1;
+  v18_.v19 = v18_.v18;
+  game_hub_Object_EnableAccess(v3, (__int64)v18_.v18, 1u);
+  if (v18_.v19 == v18_.v18) {
+    v4 = 32;
+  }
+  else {
+    if (v18_.v19 == nullptr) {
+      goto LABEL_7;
+    }
+    v4 = 40;
+  }
+  (*(void (**)(__int64))(*v18_.v19 + v4))((__int64)v18_.v19);
+LABEL_7:
+  v5 = *(_QWORD*)(a1 + 8);
+  v6 = *(_QWORD*)(v5 + 712);
+  if (v6 != 0) {
+    v7 = *(_QWORD*)(v5 + 704);
+    v8 = *(_QWORD*)(v5 + 712);
+    atomic_fetch_add_explicit((atomic_ullong* volatile)(v6 + 16), 1u,
+                              memory_order_relaxed);
+    v9 = std___1___shared_weak_count_lock_alt1(v8);
+    std___1___shared_weak_count___release_weak_alt1(v6);
+    if (v9 != 0) {
+      if (v7 != 0) {
+        LOBYTE(v17[0]) = 30;
+        strcpy((char*)v17 + 1, "SE_SYS_Item_Get");
+        game_d58e20(v7, 0, v17, 0);
+        *(_QWORD*)(v7 + 16) = 0x3F19999A00000000LL;
+        v10 = *(_OWORD*)(v7 + 16);
+        *(_DWORD*)(v7 + 1760) &= ~0x40u;
+        *(_OWORD*)(v7 + 16) = (unsigned __int64)v10;
+      }
+      if (atomic_fetch_add((atomic_ullong* volatile)(v9 + 8),
+                           0xFFFFFFFFFFFFFFFFLL) == 0) {
+        (*(void (**)(__int64))(*(_QWORD*)v9 + 16LL))(v9);
+        std___1___shared_weak_count___release_weak_alt1(v9);
+      }
+    }
+  }
+  v11 = *(_QWORD*)(a1 + 8);
+  v12 = *(_QWORD*)(v11 + 728);
+  if (v12 != 0) {
+    v13 = *(_QWORD*)(v11 + 720);
+    v14 = *(_QWORD*)(v11 + 728);
+    atomic_fetch_add_explicit((atomic_ullong* volatile)(v12 + 16), 1u,
+                              memory_order_relaxed);
+    v15 = std___1___shared_weak_count_lock_alt1(v14);
+    std___1___shared_weak_count___release_weak_alt1(v12);
+    if (v15 != 0) {
+      if (v13 != 0) {
+        if ((*(_BYTE*)(v13 + 232) & 1) != 0) {
+          *(_QWORD*)(v13 + 240) = 17;
+          v16 = *(char**)(v13 + 248);
+        }
+        else {
+          *(_BYTE*)(v13 + 232) = 34;
+          v16 = (char*)(v13 + 233);
+        }
+        strcpy(v16, "MID_Access_Common");
+        *(_BYTE*)(v13 + 218) = 1;
+      }
+      if (atomic_fetch_add((atomic_ullong* volatile)(v15 + 8),
+                           0xFFFFFFFFFFFFFFFFLL) == 0) {
+        (*(void (**)(__int64))(*(_QWORD*)v15 + 16LL))(v15);
+        std___1___shared_weak_count___release_weak_alt1(v15);
+      }
+    }
+  }
+  return ObjectControllerAccessDropItem_e05790_alt2(a1);
+}
 
 void ObjectControllerAccessDropItem_e05790(unsigned __int64 a1)
 {
