@@ -126,6 +126,35 @@ __int64 nandroid_PlaylistFetcher_setAccessUnitProperties(__int64 a1, __int64 a2,
 __int64 PlaylistFetcher_5342f0(_QWORD* a1);
 __int64 PlaylistFetcher_534360(_QWORD* a1);
 __int64 PlaylistFetcher_534480(_QWORD* a1);
+__attribute__((swiftcall)) void
+    nandroid_AnotherPacketSource_getLatestEnqueuedMeta_plt(PSEUDO_X8, _QWORD);
+__int64 nandroid_AMessage_AMessage_plt_86ddc0_alt1(
+    __int64, unsigned int,
+    __int64) __asm__("nandroid_AMessage_AMessage_plt_86ddc0");
+__int64
+nandroid_AMessage_post_plt_alt1(__int64,
+                                __int64) __asm__("nandroid_AMessage_post_plt");
+__int64 nandroid_AMessage_setInt32_plt_alt1(__int64, const char*, int) __asm__(
+    "nandroid_AMessage_setInt32_plt");
+__int64 nandroid_AnotherPacketSource_getBufferedDurationUs_plt(__int64,
+                                                               __int64);
+__int64 nandroid_M3UParser_getTargetDuration_plt(__int64);
+__int64 nandroid_PlaylistFetcher_delayUsToRefreshPlaylist_plt(__int64);
+__int64 nandroid_PlaylistFetcher_postMonitorQueue_plt_alt1(
+    __int64, __int64,
+    __int64) __asm__("nandroid_PlaylistFetcher_postMonitorQueue_plt");
+__int64 nandroid_PlaylistFetcher_refreshPlaylist_plt(__int64);
+__int64 nandroid_RefBase_decStrong_plt_alt1(__int64, __int64) __asm__(
+    "nandroid_RefBase_decStrong_plt");
+__int64 nandroid_RefBase_incStrong_plt_alt1(__int64, __int64) __asm__(
+    "nandroid_RefBase_incStrong_plt");
+__int64 nandroid_SortedVectorImpl_indexOf_plt_alt1(__int64, __int64) __asm__(
+    "nandroid_SortedVectorImpl_indexOf_plt");
+__int64
+nn_os_GetTlsValue_plt_alt1(unsigned int) __asm__("nn_os_GetTlsValue_plt");
+int __cxa_guard_acquire_plt_alt1(__int64) __asm__("__cxa_guard_acquire_plt");
+void __cxa_guard_release_plt_alt1(__int64) __asm__("__cxa_guard_release_plt");
+_QWORD* nandroid_PlaylistFetcher_onMonitorQueue(void* this_);
 
 __int64 nandroid_PlaylistFetcher_decryptBuffer(__int64 a1, __int64 a2,
                                                __int64 a3, char a4)
@@ -932,6 +961,177 @@ __int64 nandroid_PlaylistFetcher_onStop(__int64 a1, _QWORD* a2)
   *(_DWORD*)(a1 + 496) = -1082130432;
   nn_os_UnlockMutex_plt(a1 + 464);
   return nandroid_HTTPDownloader_disconnect_plt(*(_QWORD*)(a1 + 104));
+}
+
+_QWORD* nandroid_PlaylistFetcher_onMonitorQueue(void* this_)
+{
+  int v2;
+  int v3;
+  __int64 v4;
+  _QWORD* result;
+  __int64 v6;
+  __int64 v7;
+  int v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  unsigned __int64 v12;
+  __int64 v13;
+  __int64 v14;
+  __int64 v15;
+  unsigned __int8 explicit;
+  unsigned int* v17;
+  _QWORD** v18;
+  _QWORD* v19;
+  __int64 v20;
+  __int64 v21;
+  int v22;
+  void* v23;
+  _QWORD* v24;
+  _QWORD* v25;
+  int v26;
+
+  if ((*(_BYTE*)(*((_QWORD*)this_ + 63) + 16LL) & 1) == 0) {
+    v2 = nandroid_PlaylistFetcher_refreshPlaylist_plt((__int64)this_);
+    if (v2 != 0) {
+      v3 = *((_DWORD*)this_ + 78);
+      if (v3 <= 4) {
+        *((_DWORD*)this_ + 78) = v3 + 1;
+        v4 = nandroid_PlaylistFetcher_delayUsToRefreshPlaylist_plt(
+            (__int64)this_);
+        return (_QWORD*)nandroid_PlaylistFetcher_postMonitorQueue_plt_alt1(
+            (__int64)this_, v4, 0);
+      }
+      v21 = *((_QWORD*)this_ + 11);
+      v24 = nullptr;
+      v22 = v2;
+      nandroid_AMessage_dup_plt_alt1((void*)(&v24), v21);
+      nandroid_AMessage_setInt32_plt_alt1((__int64)v24, "what", 3);
+      nandroid_AMessage_setInt32_plt_alt1((__int64)v24, "err", v22);
+      nandroid_AMessage_post_plt_alt1((__int64)v24, 0);
+      result = v24;
+      if (v24 != nullptr) {
+        return (_QWORD*)nandroid_RefBase_decStrong_plt_alt1((__int64)result,
+                                                            (__int64)&v24);
+      }
+      return result;
+    }
+    *((_DWORD*)this_ + 78) = 0;
+  }
+  v6 = *((_QWORD*)this_ + 37);
+  if (v6 != 0) {
+    v7 = nandroid_M3UParser_getTargetDuration_plt(v6) / 2;
+    v8 = *((_DWORD*)this_ + 37);
+    v26 = 0;
+    if (v8 == 4) {
+    LABEL_8:
+      LODWORD(v24) = v8;
+      v25 = nullptr;
+      v9 = nandroid_SortedVectorImpl_indexOf_plt_alt1((__int64)this_ + 192,
+                                                      (__int64)&v24);
+      if (v25 != nullptr) {
+        nandroid_RefBase_decStrong_plt_alt1(
+            (__int64)v25 + *(_QWORD*)(*v25 - 24LL), (__int64)&v25);
+      }
+      v24 = *(_QWORD**)(*((_QWORD*)this_ + 25) + 16 * v9 + 8);
+      nandroid_RefBase_incStrong_plt_alt1(
+          (__int64)v24 + *(_QWORD*)(*v24 - 24LL), (__int64)&v24);
+      v10 = nandroid_AnotherPacketSource_getBufferedDurationUs_plt(
+          (__int64)v24, (__int64)&v26);
+      if (v24 != nullptr) {
+        nandroid_RefBase_decStrong_plt_alt1(
+            (__int64)v24 + *(_QWORD*)(*v24 - 24LL), (__int64)&v24);
+      }
+      goto LABEL_26;
+    }
+  }
+  else {
+    v7 = 5000000;
+    v8 = *((_DWORD*)this_ + 37);
+    v26 = 0;
+    if (v8 == 4) {
+      goto LABEL_8;
+    }
+  }
+  if (*((_QWORD*)this_ + 26) == 0) {
+    goto LABEL_25;
+  }
+  v10 = -1;
+  v11 = 0;
+  v12 = 0;
+  do {
+    v13 = *((_QWORD*)this_ + 25);
+    if ((*(_DWORD*)(v13 + v11) & *((_DWORD*)this_ + 37)) != 0) {
+      nandroid_AnotherPacketSource_getLatestEnqueuedMeta_plt(
+          (void*)(&v24), *(_QWORD*)(v13 + v11 + 8));
+      if (v24 != nullptr) {
+        nandroid_RefBase_decStrong_plt_alt1((__int64)v24, (__int64)&v24);
+        v14 = nandroid_AnotherPacketSource_getBufferedDurationUs_plt(
+            *(_QWORD*)(*((_QWORD*)this_ + 25) + v11 + 8), (__int64)&v26);
+        if (v14 >= v10) {
+          v15 = v10;
+        }
+        else {
+          v15 = v14;
+        }
+        if (v10 == -1) {
+          v10 = v14;
+        }
+        else {
+          v10 = v15;
+        }
+      }
+    }
+    ++v12;
+    v11 += 16;
+  } while (v12 < *((_QWORD*)this_ + 26));
+  if (v10 == -1) {
+  LABEL_25:
+    v10 = 0;
+  }
+LABEL_26:
+  if (v26 != 0 || v10 > 9999999) {
+    if (v10 - 9000000 >= v7) {
+      v20 = v7;
+    }
+    else {
+      v20 = v10 - 9000000;
+    }
+    return (_QWORD*)nandroid_PlaylistFetcher_postMonitorQueue_plt_alt1(
+        (__int64)this_, v20, 0);
+  }
+  else {
+    v24 = nullptr;
+    explicit = atomic_load_explicit((atomic_uchar* volatile)SdkData_e88330,
+                                    memory_order_acquire);
+    v17 = (unsigned int*)SdkData_e88338[0];
+    if ((explicit & 1) == 0 &&
+        __cxa_guard_acquire_plt_alt1(SdkData_e88330) != 0) {
+      *v17 = 0;
+      *((_BYTE*)((__int64*)0x4LL) + (_QWORD)v17) = 1;
+      __cxa_guard_release_plt_alt1(SdkData_e88330);
+    }
+    v18 = (_QWORD**)nn_os_GetTlsValue_plt_alt1(*v17);
+    v19 = (_QWORD*)SdkRoutine_4c3860(16, 1344, v18);
+    v23 = this_;
+    nandroid_RefBase_incStrong_plt_alt1((__int64)this_, (__int64)&v23);
+    nandroid_AMessage_AMessage_plt_86ddc0_alt1((__int64)v19, 0x646C6E78u,
+                                               (__int64)&v23);
+    v24 = v19;
+    nandroid_RefBase_incStrong_plt_alt1((__int64)v19, (__int64)&v24);
+    if (v23 != nullptr) {
+      nandroid_RefBase_decStrong_plt_alt1((__int64)v23, (__int64)&v23);
+    }
+    nandroid_AMessage_setInt32_plt_alt1((__int64)v24, "generation",
+                                        *((_DWORD*)this_ + 86));
+    nandroid_AMessage_post_plt_alt1((__int64)v24, 1000);
+    result = v24;
+    if (v24 != nullptr) {
+      return (_QWORD*)nandroid_RefBase_decStrong_plt_alt1((__int64)result,
+                                                          (__int64)&v24);
+    }
+  }
+  return result;
 }
 
 __int64 nandroid_PlaylistFetcher_onDownloadNext(void* this_)

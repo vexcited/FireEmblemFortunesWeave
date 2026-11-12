@@ -210,6 +210,7 @@ __int64 nn_fs_101580(__int64 a1, _QWORD* a2, __int64 a3, __int64 a4, __int64 a5,
 __int64 nn_fs_1020b0(_QWORD* a1);
 __int64 nn_fs_102110(_QWORD* a1);
 __int64 nn_fs_102170(_QWORD* a1);
+__int64* std___1___tree___emplace_unique_impl(__int64** a1, __int64* a2);
 
 __int64 nn_fs_Commit(void* this_, const char* const* a2)
 {
@@ -3846,6 +3847,138 @@ __int64* nn_fs_dc120(__int64* result, __int64* a2)
     } while (v3 != result);
   }
   return result;
+}
+
+__int64* std___1___tree___emplace_unique_impl(__int64** a1, __int64* a2)
+{
+  _QWORD* v4;
+  __int64 v5;
+  __int64 v6;
+  __int64* v7;
+  __int64 v8;
+  __int64 v9;
+  __int64* v10;
+  __int64** v11;
+  unsigned __int64 v12;
+  __int64 v13;
+  char* v14;
+  unsigned __int64 v15;
+  __int64* v16;
+  unsigned __int64 v17;
+  bool v18;
+  unsigned __int64 v19;
+  unsigned __int64 v20;
+  __int64 v21;
+  __int64 v22;
+  int v23;
+  int v24;
+  __int64* v25;
+  __int64* v26;
+
+  v4 = (_QWORD*)(*(__int64 (**)(__int64*, __int64, __int64))(*a1[2] + 16))(
+      a1[2], 88, 16);
+  if (v4 == nullptr) {
+    nn_diag_detail_AbortImpl_plt_856170(0);
+    __udf(0);
+  }
+  v5 = *a2;
+  v6 = a2[2];
+  v7 = v4;
+  v4[5] = a2[1];
+  v4[6] = v6;
+  v4[4] = v5;
+  v4[7] = a2[3];
+  a2[1] = 0;
+  a2[2] = 0;
+  *a2 = 0;
+  v8 = a2[4];
+  v9 = a2[6];
+  v4[9] = a2[5];
+  v4[10] = v9;
+  v4[8] = v8;
+  v11 = a1 + 1;
+  v10 = a1[1];
+  if (v10 != nullptr) {
+    v12 = *((unsigned __int8*)v4 + 32);
+    v13 = v4[6];
+    if ((v12 & 1) != 0) {
+      v14 = (char*)v4[6];
+    }
+    else {
+      v14 = (char*)v4 + 33;
+    }
+    if ((v12 & 1) != 0) {
+      v15 = v4[5];
+    }
+    else {
+      v15 = v12 >> 1;
+    }
+    while (1) {
+      while (1) {
+        v16 = v10;
+        v17 = *((unsigned __int8*)v10 + 32);
+        v18 = (v17 & 1) == 0;
+        v19 = v17 >> 1;
+        v20 = v18 ? v19 : v16[5];
+        v21 = v18 ? (__int64)v16 + 33 : v16[6];
+        v22 = v20 >= v15 ? v15 : v20;
+        v23 = memcmp_plt(v14, v21, v22);
+        if (v23 != 0) {
+          break;
+        }
+        if (v15 >= v20) {
+          goto LABEL_23;
+        }
+      LABEL_9:
+        v10 = (__int64*)*v16;
+        v11 = (__int64**)v16;
+        if (*v16 == 0) {
+          goto LABEL_30;
+        }
+      }
+      if (v23 < 0) {
+        goto LABEL_9;
+      }
+    LABEL_23:
+      v24 = memcmp_plt(v21, v14, v22);
+      if (v24 != 0) {
+        if ((v24 & 0x80000000) == 0) {
+          goto LABEL_33;
+        }
+      }
+      else if (v20 >= v15) {
+      LABEL_33:
+        if ((v12 & 1) != 0) {
+          (*(void (**)(__int64, __int64, unsigned __int64, __int64))(
+              *(_QWORD*)v7[7] + 24LL))(v7[7], v13, v7[4] & 0xFFFFFFFFFFFFFFFELL,
+                                       16);
+        }
+        (*(void (**)(__int64*, __int64*, __int64, __int64))(*a1[2] + 24))(
+            a1[2], v7, 88, 16);
+        return v16;
+      }
+      v10 = (__int64*)v16[1];
+      if (v10 == nullptr) {
+        v11 = (__int64**)(v16 + 1);
+        goto LABEL_30;
+      }
+    }
+  }
+  v16 = (__int64*)(a1 + 1);
+LABEL_30:
+  *v7 = 0;
+  v7[1] = 0;
+  v7[2] = (__int64)v16;
+  v25 = v7;
+  *v11 = v7;
+  v26 = (__int64*)**a1;
+  if (v26 != nullptr) {
+    *a1 = v26;
+    v25 = *v11;
+  }
+  nn_fs_dc120(a1[1], v25);
+  a1[3] = (__int64*)((char*)a1[3] + 1);
+  return v7;
 }
 
 void __attribute__((noreturn)) nn_fs_dc4d0()

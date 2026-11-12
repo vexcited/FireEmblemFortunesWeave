@@ -196,6 +196,27 @@ __int64 nn_movie_detail_HlsMediaExtractor_SetTrackSampleAvailableEventType(
     __int64 a1, int a2, __int64 a3);
 __int64 nn_movie_detail_HlsMediaExtractor_HlsSample_HlsSample(__int64 this_);
 void nn_movie_detail_HlsMediaExtractor_HlsSample_Destroy_HlsSample(void* this_);
+__int64 nandroid_ALooper_stop_plt(__int64);
+__int64 nandroid_ALooper_unregisterHandler_plt(__int64, int);
+__int64 nandroid_RefBase_decStrong_plt_alt1(__int64, __int64) __asm__(
+    "nandroid_RefBase_decStrong_plt");
+__int64 nn_movie_detail_HlsMediaExtractor_TrackInfo_Destroy_TrackInfo_plt_alt1(
+    __int64) __asm__("nn_movie_detail_HlsMediaExtractor_TrackInfo_Destroy_"
+                     "TrackInfo_plt");
+__int64 nn_movie_detail_MediaExtractorState_ValidateCurrentState_plt_alt1(
+    __int64, int) __asm__("nn_movie_detail_MediaExtractorState_"
+                          "ValidateCurrentState_plt");
+__int64 nn_movie_detail_MediaState_SetState_plt_alt1(
+    __int64, unsigned int) __asm__("nn_movie_detail_MediaState_SetState_plt");
+__int64 nn_os_LockMutex_plt_alt1(__int64) __asm__("nn_os_LockMutex_plt");
+__int64 nn_os_UnlockMutex_plt_alt1(__int64) __asm__("nn_os_UnlockMutex_plt");
+__int64 std___1___shared_weak_count___release_weak_plt_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak_plt");
+void nandroid_sp_report_race_plt_alt1(__int64) __asm__(
+    "nandroid_sp_report_race_plt");
+void nn_movie_detail_FreeMemory_alt1(__int64, _DWORD*) __asm__(
+    "nn_movie_detail_FreeMemory");
+__int64 nn_movie_detail_HlsMediaExtractor_Finalize(void* this_);
 
 __int64 nn_movie_detail_HlsMediaExtractor_TrackInfo_TrackInfo(__int64 this_)
 {
@@ -558,6 +579,334 @@ __int64 nn_movie_detail_HlsMediaExtractor_Initialize_4d44a0(void* this_,
     else {
       return 259840;
     }
+  }
+  return result;
+}
+
+__int64 nn_movie_detail_HlsMediaExtractor_Finalize(void* this_)
+{
+  __int64 result;
+  __int64 v3;
+  __int64 v4;
+  __int64* v5;
+  __int64 v6;
+  __int64 v7;
+  __int64* v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  __int64* v12;
+  __int64 v13;
+  __int64 v14;
+  _QWORD* v15;
+  _QWORD* v16;
+  _QWORD* v17;
+  __int64* v18;
+  __int64 v19;
+  __int64 v20;
+  _QWORD* v21;
+  _QWORD* v22;
+  _QWORD* v23;
+  _QWORD* v24;
+  __int64 v25;
+  _QWORD* v26;
+  _QWORD* v27;
+  _QWORD* v28;
+  _QWORD* v29;
+  _QWORD* v30;
+  __int64 v31;
+  _QWORD* v32;
+  _DWORD* v33;
+  _QWORD* v34;
+  _QWORD* v35;
+  _QWORD* v36;
+  _QWORD* v37;
+  __int64 v38;
+  _QWORD* v39;
+  _QWORD* v40;
+  _QWORD* v41;
+  _QWORD* v42;
+  _QWORD* v43;
+  __int64 v44;
+  _QWORD* v45;
+  _DWORD* v46;
+  _QWORD* v47;
+  _QWORD* v48;
+  _QWORD* v49;
+  _QWORD* v50;
+  _QWORD* v51;
+  _QWORD* v52;
+  _QWORD* v53;
+  _QWORD* v54;
+  _DWORD* v55;
+
+  result = nn_movie_detail_MediaExtractorState_ValidateCurrentState_plt_alt1(
+      (__int64)this_ + 48, 1);
+  if ((_DWORD)result == 0 || (result & 0x3FFFFF) == 0x40100) {
+    if ((*((_BYTE*)this_ + 40) & 1) == 0) {
+      nn_movie_detail_MediaState_SetState_plt_alt1((__int64)this_ + 48, 0);
+      *((_BYTE*)this_ + 40) = 1;
+    }
+    v3 = *((_QWORD*)this_ + 177);
+    if (v3 != 0) {
+      v4 = *((_QWORD*)this_ + 178);
+      v5 = (__int64*)((char*)this_ + 1416);
+      if (v4 != 0) {
+        nandroid_ALooper_unregisterHandler_plt(v3, *(_DWORD*)(v4 + 16));
+        v3 = *v5;
+      }
+      v3 = nandroid_ALooper_stop_plt(v3);
+      v6 = *v5;
+      if (*v5 != 0) {
+        v3 = nandroid_RefBase_decStrong_plt_alt1(*v5, (__int64)this_ + 1416);
+        if (v6 != *v5) {
+          nandroid_sp_report_race_plt_alt1(v3);
+        }
+        *v5 = 0;
+      }
+      v7 = *v5;
+      if (*v5 != 0) {
+        v3 = nandroid_RefBase_decStrong_plt_alt1(*v5, (__int64)this_ + 1416);
+      }
+      if (v7 != *v5) {
+        nandroid_sp_report_race_plt_alt1(v3);
+      }
+      *v5 = 0;
+    }
+    if (*((_QWORD*)this_ + 178) != 0) {
+      v8 = (__int64*)((char*)this_ + 1424);
+      v9 = *((_QWORD*)this_ + 178);
+      if (v9 != 0) {
+        v3 = nandroid_RefBase_decStrong_plt_alt1(*((_QWORD*)this_ + 178),
+                                                 (__int64)this_ + 1424);
+        if (v9 != *v8) {
+          nandroid_sp_report_race_plt_alt1(v3);
+        }
+        *v8 = 0;
+      }
+      v10 = *v8;
+      if (*v8 != 0) {
+        v3 = nandroid_RefBase_decStrong_plt_alt1(*v8, (__int64)this_ + 1424);
+      }
+      if (v10 != *v8) {
+        nandroid_sp_report_race_plt_alt1(v3);
+      }
+      *v8 = 0;
+    }
+    v11 = *((_QWORD*)this_ + 176);
+    if (v11 != 0) {
+      v12 = (__int64*)((char*)this_ + 1408);
+      v11 = (*(__int64 (**)(__int64))(*(_QWORD*)v11 + 248LL))(v11);
+      v13 = *((_QWORD*)this_ + 176);
+      if (v13 != 0) {
+        v11 = nandroid_RefBase_decStrong_plt_alt1(*v12, (__int64)this_ + 1408);
+        if (v13 != *v12) {
+          nandroid_sp_report_race_plt_alt1(v11);
+        }
+        *v12 = 0;
+      }
+      v14 = *v12;
+      if (*v12 != 0) {
+        v11 = nandroid_RefBase_decStrong_plt_alt1(*v12, (__int64)this_ + 1408);
+      }
+      if (v14 != *v12) {
+        nandroid_sp_report_race_plt_alt1(v11);
+      }
+      *v12 = 0;
+    }
+    if (*((_QWORD*)this_ + 179) != 0) {
+      v15 = (_QWORD*)((char*)this_ + 1432);
+      v16 = *((_QWORD**)this_ + 179);
+      if (v16 != nullptr) {
+        v11 = nandroid_RefBase_decStrong_plt_alt1(
+            (__int64)v16 + *(_QWORD*)(*v16 - 24LL), (__int64)this_ + 1432);
+        if (v16 != (_QWORD*)*v15) {
+          nandroid_sp_report_race_plt_alt1(v11);
+        }
+        *v15 = 0;
+      }
+      v17 = (_QWORD*)*v15;
+      if (*v15 != 0) {
+        v11 = nandroid_RefBase_decStrong_plt_alt1(
+            (__int64)v17 + *(_QWORD*)(*v17 - 24LL), (__int64)this_ + 1432);
+      }
+      if (v17 != (_QWORD*)*v15) {
+        nandroid_sp_report_race_plt_alt1(v11);
+      }
+      *v15 = 0;
+    }
+    if (*((_QWORD*)this_ + 180) != 0) {
+      v18 = (__int64*)((char*)this_ + 1440);
+      v19 = *((_QWORD*)this_ + 180);
+      if (v19 != 0) {
+        v11 = nandroid_RefBase_decStrong_plt_alt1(*((_QWORD*)this_ + 180),
+                                                  (__int64)this_ + 1440);
+        if (v19 != *v18) {
+          nandroid_sp_report_race_plt_alt1(v11);
+        }
+        *v18 = 0;
+      }
+      v20 = *v18;
+      if (*v18 != 0) {
+        v11 = nandroid_RefBase_decStrong_plt_alt1(*v18, (__int64)this_ + 1440);
+      }
+      if (v20 != *v18) {
+        nandroid_sp_report_race_plt_alt1(v11);
+      }
+      *v18 = 0;
+    }
+    nn_os_LockMutex_plt_alt1((__int64)this_ + 1528);
+    v21 = *((_QWORD**)this_ + 185);
+    if (v21 != nullptr) {
+      if (v21[2] != 0) {
+        v22 = (_QWORD*)v21[1];
+        v23 = *(_QWORD**)(*v21 + 8LL);
+        *(_QWORD*)(*v22 + 8LL) = v23;
+        *v23 = *v22;
+        v21[2] = 0;
+        if (v22 != v21) {
+          do {
+            v24 = (_QWORD*)v22[1];
+            v25 = v22[3];
+            if (v25 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v25 + 8),
+                                             0xFFFFFFFFFFFFFFFFLL) == 0) {
+              v26 = v22;
+              (*(void (**)(__int64))(*(_QWORD*)v25 + 16LL))(v25);
+              std___1___shared_weak_count___release_weak_plt_alt1(v25);
+              v22 = v26;
+            }
+            nn_movie_detail_FreeMemory_alt1((__int64)v22, (_DWORD*)v21[3]);
+            v22 = v24;
+          } while (v24 != v21);
+        }
+      }
+      v27 = *((_QWORD**)this_ + 185);
+      if (v27[2] != 0) {
+        v28 = (_QWORD*)v27[1];
+        v29 = *(_QWORD**)(*v27 + 8LL);
+        *(_QWORD*)(*v28 + 8LL) = v29;
+        *v29 = *v28;
+        v27[2] = 0;
+        if (v28 != v27) {
+          do {
+            v30 = (_QWORD*)v28[1];
+            v31 = v28[3];
+            if (v31 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v31 + 8),
+                                             0xFFFFFFFFFFFFFFFFLL) == 0) {
+              v32 = v28;
+              (*(void (**)(__int64))(*(_QWORD*)v31 + 16LL))(v31);
+              std___1___shared_weak_count___release_weak_plt_alt1(v31);
+              v28 = v32;
+            }
+            nn_movie_detail_FreeMemory_alt1((__int64)v28, (_DWORD*)v27[3]);
+            v28 = v30;
+          } while (v30 != v27);
+        }
+      }
+      v33 = *((_DWORD**)this_ + 171);
+      if (v33 != nullptr) {
+        nn_movie_detail_FreeMemory_alt1(*((_QWORD*)this_ + 185), v33);
+      }
+      *((_QWORD*)this_ + 185) = 0;
+    }
+    v34 = *((_QWORD**)this_ + 186);
+    if (v34 != nullptr) {
+      if (v34[2] != 0) {
+        v35 = (_QWORD*)v34[1];
+        v36 = *(_QWORD**)(*v34 + 8LL);
+        *(_QWORD*)(*v35 + 8LL) = v36;
+        *v36 = *v35;
+        v34[2] = 0;
+        if (v35 != v34) {
+          do {
+            v37 = (_QWORD*)v35[1];
+            v38 = v35[3];
+            if (v38 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v38 + 8),
+                                             0xFFFFFFFFFFFFFFFFLL) == 0) {
+              v39 = v35;
+              (*(void (**)(__int64))(*(_QWORD*)v38 + 16LL))(v38);
+              std___1___shared_weak_count___release_weak_plt_alt1(v38);
+              v35 = v39;
+            }
+            nn_movie_detail_FreeMemory_alt1((__int64)v35, (_DWORD*)v34[3]);
+            v35 = v37;
+          } while (v37 != v34);
+        }
+      }
+      v40 = *((_QWORD**)this_ + 186);
+      if (v40[2] != 0) {
+        v41 = (_QWORD*)v40[1];
+        v42 = *(_QWORD**)(*v40 + 8LL);
+        *(_QWORD*)(*v41 + 8LL) = v42;
+        *v42 = *v41;
+        v40[2] = 0;
+        if (v41 != v40) {
+          do {
+            v43 = (_QWORD*)v41[1];
+            v44 = v41[3];
+            if (v44 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v44 + 8),
+                                             0xFFFFFFFFFFFFFFFFLL) == 0) {
+              v45 = v41;
+              (*(void (**)(__int64))(*(_QWORD*)v44 + 16LL))(v44);
+              std___1___shared_weak_count___release_weak_plt_alt1(v44);
+              v41 = v45;
+            }
+            nn_movie_detail_FreeMemory_alt1((__int64)v41, (_DWORD*)v40[3]);
+            v41 = v43;
+          } while (v43 != v40);
+        }
+      }
+      v46 = *((_DWORD**)this_ + 171);
+      if (v46 != nullptr) {
+        nn_movie_detail_FreeMemory_alt1(*((_QWORD*)this_ + 186), v46);
+      }
+      *((_QWORD*)this_ + 186) = 0;
+    }
+    nn_os_UnlockMutex_plt_alt1((__int64)this_ + 1528);
+    nn_os_LockMutex_plt_alt1((__int64)this_ + 1328);
+    v47 = *((_QWORD**)this_ + 165);
+    if (v47 != nullptr) {
+      if (v47[2] != 0) {
+        v48 = (_QWORD*)v47[1];
+        v49 = *(_QWORD**)(*v47 + 8LL);
+        *(_QWORD*)(*v48 + 8LL) = v49;
+        *v49 = *v48;
+        v47[2] = 0;
+        if (v48 != v47) {
+          do {
+            v50 = (_QWORD*)v48[1];
+            nn_movie_detail_HlsMediaExtractor_TrackInfo_Destroy_TrackInfo_plt_alt1(
+                (__int64)(v48 + 2));
+            nn_movie_detail_FreeMemory_alt1((__int64)v48, (_DWORD*)v47[3]);
+            v48 = v50;
+          } while (v50 != v47);
+        }
+      }
+      v51 = *((_QWORD**)this_ + 165);
+      if (v51[2] != 0) {
+        v52 = (_QWORD*)v51[1];
+        v53 = *(_QWORD**)(*v51 + 8LL);
+        *(_QWORD*)(*v52 + 8LL) = v53;
+        *v53 = *v52;
+        v51[2] = 0;
+        if (v52 != v51) {
+          do {
+            v54 = (_QWORD*)v52[1];
+            nn_movie_detail_HlsMediaExtractor_TrackInfo_Destroy_TrackInfo_plt_alt1(
+                (__int64)(v52 + 2));
+            nn_movie_detail_FreeMemory_alt1((__int64)v52, (_DWORD*)v51[3]);
+            v52 = v54;
+          } while (v54 != v51);
+        }
+      }
+      v55 = *((_DWORD**)this_ + 171);
+      if (v55 != nullptr) {
+        nn_movie_detail_FreeMemory_alt1(*((_QWORD*)this_ + 165), v55);
+      }
+      *((_QWORD*)this_ + 165) = 0;
+    }
+    nn_os_UnlockMutex_plt_alt1((__int64)this_ + 1328);
+    return 0;
   }
   return result;
 }

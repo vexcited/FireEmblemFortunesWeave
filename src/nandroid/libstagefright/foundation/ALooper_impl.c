@@ -79,6 +79,73 @@ __int64 ALooper_4ddda0(__int64 a1);
 __int64 nandroid_ALooper_loop(void* this_);
 __int64 nandroid_ALooper_awaitResponse(__int64 a1, __int64* a2, __int64* a3);
 __int64 nandroid_ALooper_postReply(__int64 a1, _QWORD* a2, __int64 a3);
+__int64 nandroid_AString_AString_plt_86d9f0(__int64);
+__int64 nandroid_RefBase_RefBase_plt(__int64);
+__int64 nandroid_SortedVectorImpl_SortedVectorImpl_plt(__int64,
+                                                       unsigned __int64,
+                                                       unsigned int);
+__int64
+nn_os_GetTlsValue_plt_alt1(unsigned int) __asm__("nn_os_GetTlsValue_plt");
+__int64 nn_os_InitializeConditionVariable_plt(__int64);
+__int64 nn_os_InitializeMutex_plt(__int64, bool, int);
+int __cxa_guard_acquire_plt_alt1(__int64) __asm__("__cxa_guard_acquire_plt");
+void __cxa_guard_release_plt_alt1(__int64) __asm__("__cxa_guard_release_plt");
+__int64 nandroid_ALooper_ALooper(void* this_);
+
+__int64 nandroid_ALooper_ALooper(void* this_)
+{
+  atomic_uchar* v2;
+  unsigned __int8 explicit;
+  unsigned int* v4;
+  _QWORD** v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 result;
+
+  nandroid_RefBase_RefBase_plt((__int64)this_);
+  *(_QWORD*)this_ = SdkData_e885a0 + 16;
+  nn_os_InitializeMutex_plt((__int64)this_ + 16, false, 0);
+  nn_os_InitializeConditionVariable_plt((__int64)this_ + 48);
+  nn_os_InitializeConditionVariable_plt((__int64)this_ + 48);
+  nandroid_AString_AString_plt_86d9f0((__int64)this_ + 56);
+  *((_QWORD*)this_ + 10) = SdkData_e885a8 + 16;
+  v2 = (atomic_uchar*)SdkData_e88330;
+  explicit = atomic_load_explicit((atomic_uchar* volatile)SdkData_e88330,
+                                  memory_order_acquire);
+  v4 = (unsigned int*)SdkData_e88338[0];
+  if ((explicit & 1) == 0 &&
+      __cxa_guard_acquire_plt_alt1(SdkData_e88330) != 0) {
+    *v4 = 0;
+    *((_BYTE*)((__int64*)0x4LL) + (_QWORD)v4) = 1;
+    __cxa_guard_release_plt_alt1(SdkData_e88330);
+  }
+  v5 = (_QWORD**)nn_os_GetTlsValue_plt_alt1(*v4);
+  v6 = SdkRoutine_4c3860(16, 32, v5);
+  *((_QWORD*)this_ + 11) = v6;
+  *(_QWORD*)(v6 + 16) = v6;
+  *(_QWORD*)(*((_QWORD*)this_ + 11) + 24LL) = *((_QWORD*)this_ + 11);
+  nn_os_InitializeMutex_plt((__int64)this_ + 96, false, 0);
+  nn_os_InitializeConditionVariable_plt((__int64)this_ + 128);
+  nn_os_InitializeConditionVariable_plt((__int64)this_ + 128);
+  *((_QWORD*)this_ + 17) = 0;
+  nandroid_SortedVectorImpl_SortedVectorImpl_plt((__int64)this_ + 144, 0x18u,
+                                                 0);
+  v7 = SdkData_e885b0;
+  *((_QWORD*)this_ + 26) = 0;
+  *((_QWORD*)this_ + 23) = 0;
+  *((_QWORD*)this_ + 24) = 0;
+  *((_BYTE*)this_ + 200) = 0;
+  *((_QWORD*)this_ + 18) = v7 + 16;
+  if ((atomic_load_explicit(v2, memory_order_acquire) & 1) == 0 &&
+      __cxa_guard_acquire_plt_alt1(SdkData_e88330) != 0) {
+    *v4 = 0;
+    *((_BYTE*)((__int64*)0x4LL) + (_QWORD)v4) = 1;
+    __cxa_guard_release_plt_alt1(SdkData_e88330);
+  }
+  result = nn_os_GetTlsValue_plt_alt1(*v4);
+  *((_QWORD*)this_ + 26) = result;
+  return result;
+}
 
 void nandroid_ALooper_Destroy_ALooper_4dd650(void* this_)
 {

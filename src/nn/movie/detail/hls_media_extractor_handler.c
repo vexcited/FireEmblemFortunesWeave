@@ -21,6 +21,41 @@ void nn_movie_detail_HlsMediaExtractorHandler_Destroy_HlsMediaExtractorHandler(
     void* this_);
 __int64 nn_movie_detail_HlsMediaExtractorHandler_onMessageReceived(__int64 a1,
                                                                    __int64* a2);
+__int64 nandroid_RefBase_RefBase_plt(__int64);
+__int64 nandroid_SortedVectorImpl_SortedVectorImpl_plt(__int64,
+                                                       unsigned __int64,
+                                                       unsigned int);
+extern __int64 SdkData_e88528;
+extern __int64 SdkData_e88530;
+extern __int64 SdkData_e88538;
+__int64
+nn_movie_detail_HlsMediaExtractorHandler_HlsMediaExtractorHandler(void* this_,
+                                                                  void* a2);
+__int64
+
+nn_movie_detail_HlsMediaExtractorHandler_HlsMediaExtractorHandler(void* this_,
+                                                                  void* a2)
+{
+  __int64 v4;
+  __int64 result;
+  __int64 v6;
+
+  nandroid_RefBase_RefBase_plt((__int64)this_);
+  v4 = SdkData_e88528;
+  *((_DWORD*)this_ + 4) = 0;
+  *((_DWORD*)this_ + 11) = 0;
+  *((_QWORD*)this_ + 3) = 0;
+  *((_QWORD*)this_ + 4) = 0;
+  *((_BYTE*)this_ + 40) = 0;
+  *(_QWORD*)this_ = v4 + 16;
+  result = nandroid_SortedVectorImpl_SortedVectorImpl_plt((__int64)this_ + 48,
+                                                          8u, 7u);
+  *((_QWORD*)this_ + 6) = SdkData_e88530 + 16;
+  v6 = SdkData_e88538;
+  *((_QWORD*)this_ + 11) = a2;
+  *(_QWORD*)this_ = v6 + 16;
+  return result;
+}
 
 void nn_movie_detail_HlsMediaExtractorHandler_Destroy_HlsMediaExtractorHandler(
     void* this_)

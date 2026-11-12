@@ -203,6 +203,743 @@ void __attribute__((noreturn)) cornflower_rook_00389_2b270(const char* a1);
 __int64 cornflower_rook_00389_6d240(__int64** a1, __int64* a2, __int64 a3,
                                     __int64 a4, __int64 a5);
 __int64 cornflower_rook_00389_98850();
+_QWORD* NgxRoutine_28900(_QWORD*, __int64, __int64);
+_QWORD* NgxRoutine_29e50(_QWORD*);
+_QWORD* NgxRoutine_bcd70(_QWORD*);
+_QWORD* NgxRoutine_bd1d0(_QWORD*, unsigned __int8);
+__attribute__((swiftcall)) void NgxRoutine_be650(PSEUDO_X8, __int64);
+__attribute__((swiftcall)) void
+nvidia_dlss_rel_source_features_dlaa_weights_cornflower_rook_00389_2cb50(
+    PSEUDO_X8, unsigned __int8* result, unsigned __int64, unsigned __int64);
+__int64 NgxRoutine_2ca80(unsigned __int8*, const char*, unsigned __int64);
+__int64 NgxRoutine_db240(__int64*);
+__int64 NgxRoutine_db310(__int64*, __int64);
+__int64 isdigit_plt(_QWORD);
+__int64 memchr_plt(__int64, int, unsigned __int64);
+__int64 memcpy_plt_alt1(__int64, __int64,
+                        unsigned __int64) __asm__("memcpy_plt");
+__int64 memmove_plt(__int64, __int64, unsigned __int64);
+bool NgxRoutine_2cc20(__int64, const char*);
+extern _UNKNOWN* NgxData_9511b8;
+extern __int64 NgxData_951178[7];
+int atoi_plt(const char*);
+int memcmp_plt(__int64, __int64, unsigned __int64);
+unsigned __int64
+NgxRoutine_2ca80_alt1(unsigned __int8*, const char*,
+                      unsigned __int64) __asm__("NgxRoutine_2ca80");
+unsigned __int64 strlen_plt_alt1(const char*) __asm__("strlen_plt");
+__int64 cornflower_rook_00389_29ee0(__int64 a1);
+_QWORD* cornflower_rook_00389_2b4a0(__int64 a1);
+__int64 cornflower_rook_00389_2e600(__int64 a1);
+
+__int64 cornflower_rook_00389_29ee0(__int64 a1)
+{
+  unsigned __int64 v1;
+  signed __int64 v2;
+  __int64 v4;
+  __int64 v5;
+  signed __int64 v6;
+  signed __int64 v7;
+  signed __int64 v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  unsigned __int64 v13;
+  unsigned __int64 v14;
+  unsigned __int64 v15;
+  bool v16;
+  unsigned __int64 v17;
+  __int64 v18;
+  unsigned __int64 v19;
+  char* v20;
+  __int64 v21;
+  unsigned __int64 v22;
+  unsigned __int64 v23;
+  unsigned __int64 v24;
+  __int64* v25;
+  unsigned __int64 v26;
+  unsigned __int64 v27;
+  unsigned __int64 v28;
+  char* v29;
+  unsigned __int64 v30;
+  _QWORD* v31;
+  __int64 v32;
+  unsigned __int8 v33;
+  __int64 result;
+  unsigned __int64 v35;
+  _QWORD* v36;
+  __int64 v37;
+  unsigned __int8 v38;
+  int v39;
+  unsigned __int64 v40;
+  unsigned __int64 v41;
+  unsigned __int64 v42;
+  unsigned __int64 v43;
+  char* v44;
+  __int64 v45;
+  unsigned __int64 v46;
+  unsigned __int64 v47;
+  char* v48;
+  signed __int64 v49;
+  signed __int64 v50;
+  signed __int64 v51;
+  char* v52;
+  __int64 v53;
+  __int64 v54;
+  __int64 v55;
+  unsigned __int64 v56;
+  unsigned __int64 v57;
+  char* v58;
+  unsigned __int64 v59;
+  char* v60;
+  __int64 v61;
+  unsigned __int64 v62;
+  char v63;
+  unsigned __int64 v64;
+  unsigned __int64 v65;
+  char* v66;
+  int v67;
+  _BOOL4 v68;
+  const char* v69;
+  unsigned __int64 v70;
+  _QWORD* v71;
+  __int64 v72;
+  unsigned __int8 v73;
+  unsigned __int64 v74;
+  unsigned __int64 v75;
+  unsigned __int64 v76;
+  char* v77;
+  char* v78;
+  __int64 v79;
+  char v80;
+  signed __int64 v81;
+  unsigned __int8 v82;
+  char* v83;
+  signed __int64 v84;
+  signed __int64 v85;
+  signed __int64 v86;
+  char* v87;
+  __int64 v88;
+  __int64 v89;
+  __int64 v90;
+  unsigned __int64 v91;
+  unsigned __int8* v92;
+  int v93;
+  unsigned __int64 v94;
+  unsigned __int64 v95;
+  unsigned __int64 v96;
+  unsigned __int64 v97;
+  char* v98;
+  char* v99;
+  __int64 v100;
+  char v101;
+  char v102;
+  unsigned __int64 v103;
+  unsigned __int64 v104;
+  char* v105;
+  int v106;
+  char v107;
+  unsigned __int64 v108;
+  unsigned __int64 v109;
+  unsigned __int64 v110;
+  char* v111;
+  int v112;
+  char v113;
+  unsigned __int64 v114;
+  unsigned __int64 v115;
+  unsigned __int64 v116;
+  char* v117;
+  char v118;
+  struct {
+    __int64 v119;
+    unsigned __int64 v120;
+    char* v121;
+  } v119_;
+  __int64 v122;
+  struct {
+    unsigned __int64 v123;
+    char* v124;
+  } v123_;
+  struct {
+    __int64 v125;
+    unsigned __int64 v126;
+    char* v127;
+  } v125_;
+
+  v1 = *(unsigned __int8*)(a1 + 32);
+  v2 = *(_QWORD*)(a1 + 40);
+  v4 = a1 + 33;
+  if ((v1 & 1) != 0) {
+    v5 = *(_QWORD*)(a1 + 48);
+  }
+  else {
+    v5 = a1 + 33;
+  }
+  v6 = strlen_plt_alt1("_");
+  if (v6 != 0) {
+    v7 = v1 >> 1;
+    v8 = v6;
+    if ((v1 & 1) != 0) {
+      v7 = v2;
+    }
+    if (v7 < v6) {
+      goto LABEL_49;
+    }
+    v9 = v5 + v7;
+    v10 = v5;
+    while (1) {
+      v11 = memchr_plt(v10, 95, v7 - v8 + 1);
+      if (v11 == 0) {
+        goto LABEL_49;
+      }
+      v12 = v11;
+      if (memcmp_plt(v11, (__int64)"_", v8) == 0) {
+        break;
+      }
+      v10 = v12 + 1;
+      v7 = v9 - (v12 + 1);
+      if (v7 < v8) {
+        goto LABEL_49;
+      }
+    }
+    if (v12 == v9 || (v13 = v12 - v5, v12 - v5 == -1)) {
+    LABEL_49:
+      v35 = strlen_plt_alt1("No layout in layer name");
+      v36 = NgxRoutine_28900((_QWORD*)NgxData_951178[0],
+                             (__int64)"No layout in layer name", v35);
+      NgxRoutine_be650((void*)((__int64)&v125_.v125),
+                       (__int64)v36 + *(_QWORD*)(*v36 - 24LL));
+      v37 = NgxRoutine_db310(&v125_.v125, (__int64)NgxData_9511b8);
+      v38 = (*(__int64 (**)(__int64, __int64))(*(_QWORD*)v37 + 56LL))(v37, 10);
+      NgxRoutine_db240(&v125_.v125);
+      NgxRoutine_bd1d0(v36, v38);
+      result = (__int64)NgxRoutine_bcd70(v36);
+      *(_DWORD*)(a1 + 84) = 2;
+      return result;
+    }
+  }
+  else {
+    v13 = 0;
+  }
+  v14 = *(unsigned __int8*)(a1 + 32);
+  v15 = v14 >> 1;
+  v16 = (v14 & 1) == 0;
+  v17 = *(_QWORD*)(a1 + 40);
+  if (v16) {
+    v17 = v15;
+    v18 = v4;
+  }
+  else {
+    v18 = *(_QWORD*)(a1 + 48);
+  }
+  if (v17 >= v13) {
+    v19 = v13;
+  }
+  else {
+    v19 = v17;
+  }
+  if (v19 >= 0xFFFFFFFFFFFFFFF7LL) {
+    goto LABEL_211;
+  }
+  if (v19 >= 0x17) {
+    if ((v19 | 7) == 0x17) {
+      v21 = 26;
+    }
+    else {
+      v21 = (v19 | 7) + 1;
+    }
+    v20 = (char*)NgxRoutine_420(v21);
+    v125_.v126 = v19;
+    v125_.v127 = v20;
+    v125_.v125 = v21 | 1;
+  }
+  else {
+    LOBYTE(v125_.v125) = 2 * v19;
+    v20 = (char*)&v125_.v125 + 1;
+    if (v19 == 0) {
+      goto LABEL_29;
+    }
+  }
+  memmove_plt((__int64)v20, v18, v19);
+LABEL_29:
+  v20[v19] = 0;
+  v22 = strlen_plt_alt1("nhwc");
+  v23 = (unsigned __int8)v125_.v125 >> 1;
+  if ((v125_.v125 & 1) != 0) {
+    v23 = v125_.v126;
+  }
+  if (v22 != v23) {
+    goto LABEL_37;
+  }
+  v24 = v22;
+  if (v22 == -1) {
+    goto LABEL_212;
+  }
+  v25 = (v125_.v125 & 1) != 0 ? (__int64*)v125_.v127
+                              : (__int64*)((char*)&v125_.v125 + 1);
+  if (memcmp_plt((__int64)v25, (__int64)"nhwc", v24) == 0) {
+    v39 = 0;
+  }
+  else {
+  LABEL_37:
+    v26 = strlen_plt_alt1("nchw8");
+    v27 = (unsigned __int8)v125_.v125 >> 1;
+    if ((v125_.v125 & 1) != 0) {
+      v27 = v125_.v126;
+    }
+    if (v26 != v27) {
+    LABEL_45:
+      v30 = strlen_plt_alt1("Unknown layout type");
+      v31 = NgxRoutine_28900((_QWORD*)NgxData_951178[0],
+                             (__int64)"Unknown layout type", v30);
+      NgxRoutine_be650((void*)((__int64)&v122),
+                       (__int64)v31 + *(_QWORD*)(*v31 - 24LL));
+      v32 = NgxRoutine_db310(&v122, (__int64)NgxData_9511b8);
+      v33 = (*(__int64 (**)(__int64, __int64))(*(_QWORD*)v32 + 56LL))(v32, 10);
+      NgxRoutine_db240(&v122);
+      NgxRoutine_bd1d0(v31, v33);
+      result = (__int64)NgxRoutine_bcd70(v31);
+      *(_DWORD*)(a1 + 84) = 2;
+      if ((v125_.v125 & 1) == 0) {
+        return result;
+      }
+      return NgxRoutine_430(v125_.v127, v125_.v125 & 0xFFFFFFFFFFFFFFFELL);
+    }
+    v28 = v26;
+    if (v26 == -1) {
+      goto LABEL_212;
+    }
+    if ((v125_.v125 & 1) != 0) {
+      v29 = v125_.v127;
+    }
+    else {
+      v29 = (char*)&v125_.v125 + 1;
+    }
+    if (memcmp_plt((__int64)v29, (__int64)"nchw8", v28) != 0) {
+      goto LABEL_45;
+    }
+    v39 = 1;
+  }
+  v40 = *(unsigned __int8*)(a1 + 32);
+  *(_DWORD*)(a1 + 1844) = v39;
+  v41 = *(_QWORD*)(a1 + 40);
+  if ((v40 & 1) == 0) {
+    v41 = v40 >> 1;
+  }
+  if (v13 >= v41) {
+    goto LABEL_212;
+  }
+  v42 = v13 + 1;
+  v43 = v41 - (v13 + 1);
+  if ((v40 & 1) != 0) {
+    v4 = *(_QWORD*)(a1 + 48);
+  }
+  if (v43 >= 0xFFFFFFFFFFFFFFF7LL) {
+    goto LABEL_211;
+  }
+  if (v43 >= 0x17) {
+    if ((v43 | 7) == 0x17) {
+      v45 = 26;
+    }
+    else {
+      v45 = (v43 | 7) + 1;
+    }
+    v44 = (char*)NgxRoutine_420(v45);
+    v123_.v123 = v43;
+    v123_.v124 = v44;
+    v122 = v45 | 1;
+    goto LABEL_65;
+  }
+  LOBYTE(v122) = 2 * v43;
+  v44 = (char*)&v122 + 1;
+  if (v41 != v42) {
+  LABEL_65:
+    memmove_plt((__int64)v44, v4 + v42, v43);
+  }
+  v44[v43] = 0;
+  v46 = (unsigned __int8)v122;
+  v47 = v123_.v123;
+  if ((v122 & 1) != 0) {
+    v48 = v123_.v124;
+  }
+  else {
+    v48 = (char*)&v122 + 1;
+  }
+  v49 = strlen_plt_alt1("_");
+  if (v49 != 0) {
+    v50 = v46 >> 1;
+    v51 = v49;
+    if ((v46 & 1) != 0) {
+      v50 = v47;
+    }
+    if (v50 < v49) {
+      goto LABEL_106;
+    }
+    v52 = &v48[v50];
+    v53 = (__int64)v48;
+    while (1) {
+      v54 = memchr_plt(v53, 95, v50 - v51 + 1);
+      if (v54 == 0) {
+        goto LABEL_106;
+      }
+      v55 = v54;
+      if (memcmp_plt(v54, (__int64)"_", v51) == 0) {
+        break;
+      }
+      v53 = v55 + 1;
+      v50 = (signed __int64)&v52[-v55 - 1];
+      if (v50 < v51) {
+        goto LABEL_106;
+      }
+    }
+    if ((char*)v55 == v52) {
+      goto LABEL_106;
+    }
+    v56 = v55 - (_QWORD)v48;
+    if (v55 - (_QWORD)v48 == -1) {
+      goto LABEL_106;
+    }
+  }
+  else {
+    v56 = 0;
+  }
+  v57 = v123_.v123;
+  if ((v122 & 1) != 0) {
+    v58 = v123_.v124;
+  }
+  else {
+    v57 = (unsigned __int64)(unsigned __int8)v122 >> 1;
+    v58 = (char*)&v122 + 1;
+  }
+  if (v57 >= v56) {
+    v59 = v56;
+  }
+  else {
+    v59 = v57;
+  }
+  if (v59 >= 0xFFFFFFFFFFFFFFF7LL) {
+    goto LABEL_211;
+  }
+  if (v59 >= 0x17) {
+    if ((v59 | 7) == 0x17) {
+      v61 = 26;
+    }
+    else {
+      v61 = (v59 | 7) + 1;
+    }
+    v60 = (char*)NgxRoutine_420(v61);
+    v119_.v120 = v59;
+    v119_.v121 = v60;
+    v119_.v119 = v61 | 1;
+    goto LABEL_93;
+  }
+  LOBYTE(v119_.v119) = 2 * v59;
+  v60 = (char*)&v119_.v119 + 1;
+  if (v59 != 0) {
+  LABEL_93:
+    memmove_plt((__int64)v60, (__int64)v58, v59);
+  }
+  v60[v59] = 0;
+  v62 = strlen_plt_alt1("conv");
+  v63 = v119_.v119;
+  v64 = (unsigned __int8)v119_.v119 >> 1;
+  if ((v119_.v119 & 1) != 0) {
+    v64 = v119_.v120;
+  }
+  if (v62 == v64) {
+    v65 = v62;
+    if (v62 == -1) {
+      goto LABEL_212;
+    }
+    if ((v119_.v119 & 1) != 0) {
+      v66 = v119_.v121;
+    }
+    else {
+      v66 = (char*)&v119_.v119 + 1;
+    }
+    v67 = memcmp_plt((__int64)v66, (__int64)"conv", v65);
+    v63 = v119_.v119;
+    v68 = v67 != 0;
+  }
+  else {
+    v68 = true;
+  }
+  if ((v63 & 1) != 0) {
+    NgxRoutine_430(v119_.v121, v119_.v119 & 0xFFFFFFFFFFFFFFFELL);
+  }
+  if (v68) {
+  LABEL_106:
+    v69 = "No conv in layer name";
+  LABEL_107:
+    v70 = strlen_plt_alt1(v69);
+    v71 = NgxRoutine_28900((_QWORD*)NgxData_951178[0], (__int64)v69, v70);
+    NgxRoutine_be650((void*)((__int64)&v119_.v119),
+                     (__int64)v71 + *(_QWORD*)(*v71 - 24LL));
+    v72 = NgxRoutine_db310(&v119_.v119, (__int64)NgxData_9511b8);
+    v73 = (*(__int64 (**)(__int64, __int64))(*(_QWORD*)v72 + 56LL))(v72, 10);
+    NgxRoutine_db240(&v119_.v119);
+    NgxRoutine_bd1d0(v71, v73);
+    result = (__int64)NgxRoutine_bcd70(v71);
+    *(_DWORD*)(a1 + 84) = 2;
+    goto LABEL_108;
+  }
+  v74 = v123_.v123;
+  if ((v122 & 1) == 0) {
+    v74 = (unsigned __int64)(unsigned __int8)v122 >> 1;
+  }
+  if (v56 >= v74) {
+  LABEL_212:
+    cornflower_rook_00389_2b250();
+  }
+  v75 = v56 + 1;
+  v76 = v74 - (v56 + 1);
+  if ((v122 & 1) != 0) {
+    v77 = v123_.v124;
+  }
+  else {
+    v77 = (char*)&v122 + 1;
+  }
+  if (v76 >= 0xFFFFFFFFFFFFFFF7LL) {
+  LABEL_211:
+    NgxRoutine_27cb0();
+  }
+  if (v76 >= 0x17) {
+    if ((v76 | 7) == 0x17) {
+      v79 = 26;
+    }
+    else {
+      v79 = (v76 | 7) + 1;
+    }
+    v78 = (char*)NgxRoutine_420(v79);
+    v119_.v120 = v76;
+    v119_.v121 = v78;
+    v119_.v119 = v79 | 1;
+    goto LABEL_128;
+  }
+  LOBYTE(v119_.v119) = 2 * v76;
+  v78 = (char*)&v119_.v119 + 1;
+  if (v74 != v75) {
+  LABEL_128:
+    memmove_plt((__int64)v78, (__int64)&v77[v75], v76);
+  }
+  v80 = v122;
+  v78[v76] = 0;
+  if ((v80 & 1) != 0) {
+    NgxRoutine_430(v123_.v124, v122 & 0xFFFFFFFFFFFFFFFELL);
+  }
+  v82 = v119_.v119;
+  v81 = v119_.v120;
+  v122 = v119_.v119;
+  v123_.v123 = v119_.v120;
+  v123_.v124 = v119_.v121;
+  if ((v119_.v119 & 1) != 0) {
+    v83 = v119_.v121;
+  }
+  else {
+    v83 = (char*)&v122 + 1;
+  }
+  v84 = strlen_plt_alt1("_");
+  if (v84 != 0) {
+    v85 = v84;
+    if ((v82 & 1) != 0) {
+      v86 = v81;
+    }
+    else {
+      v86 = (unsigned __int64)v82 >> 1;
+    }
+    if (v86 < v84) {
+      goto LABEL_210;
+    }
+    v87 = &v83[v86];
+    v88 = (__int64)v83;
+    while (1) {
+      v89 = memchr_plt(v88, 95, v86 - v85 + 1);
+      if (v89 == 0) {
+        goto LABEL_210;
+      }
+      v90 = v89;
+      if (memcmp_plt(v89, (__int64)"_", v85) == 0) {
+        break;
+      }
+      v88 = v90 + 1;
+      v86 = (signed __int64)&v87[-v90 - 1];
+      if (v86 < v85) {
+        goto LABEL_210;
+      }
+    }
+    if ((char*)v90 == v87 ||
+        (v91 = v90 - (_QWORD)v83, v90 - (_QWORD)v83 == -1)) {
+    LABEL_210:
+      v69 = "No conv size in layer name";
+      goto LABEL_107;
+    }
+  }
+  else {
+    v91 = 0;
+  }
+  if ((v122 & 1) != 0) {
+    v92 = (unsigned __int8*)v123_.v124;
+  }
+  else {
+    v92 = (unsigned __int8*)&v122 + 1;
+  }
+  v93 = *v92;
+  if ((unsigned int)isdigit_plt(*v92) == 0) {
+    v69 = "Convolution kernel size is not digit";
+    goto LABEL_107;
+  }
+  v94 = (unsigned __int8)v122;
+  *(_DWORD*)(a1 + 1828) = v93 - 48;
+  *(_DWORD*)(a1 + 1832) = v93 - 48;
+  v95 = v123_.v123;
+  if ((v94 & 1) == 0) {
+    v95 = v94 >> 1;
+  }
+  if (v91 >= v95) {
+    goto LABEL_212;
+  }
+  v96 = v91 + 1;
+  v97 = v95 - (v91 + 1);
+  if ((v94 & 1) != 0) {
+    v98 = v123_.v124;
+  }
+  else {
+    v98 = (char*)&v122 + 1;
+  }
+  if (v97 >= 0xFFFFFFFFFFFFFFF7LL) {
+    goto LABEL_211;
+  }
+  if (v97 >= 0x17) {
+    if ((v97 | 7) == 0x17) {
+      v100 = 26;
+    }
+    else {
+      v100 = (v97 | 7) + 1;
+    }
+    v99 = (char*)NgxRoutine_420(v100);
+    v119_.v120 = v97;
+    v119_.v121 = v99;
+    v119_.v119 = v100 | 1;
+    goto LABEL_167;
+  }
+  LOBYTE(v119_.v119) = 2 * v97;
+  v99 = (char*)&v119_.v119 + 1;
+  if (v95 != v96) {
+  LABEL_167:
+    memmove_plt((__int64)v99, (__int64)&v98[v96], v97);
+  }
+  v101 = v122;
+  v99[v97] = 0;
+  if ((v101 & 1) != 0) {
+    NgxRoutine_430(v123_.v124, v122 & 0xFFFFFFFFFFFFFFFELL);
+  }
+  v102 = v119_.v119;
+  v103 = v119_.v120;
+  v122 = v119_.v119;
+  v123_.v123 = v119_.v120;
+  v123_.v124 = v119_.v121;
+  if ((v119_.v119 & 1) == 0) {
+    v103 = (unsigned __int8)v119_.v119 >> 1;
+  }
+  if (v103 >= 3) {
+    v104 = 3;
+  }
+  else {
+    v104 = v103;
+  }
+  LOBYTE(v119_.v119) = 2 * v104;
+  if (v103 != 0) {
+    if ((v102 & 1) != 0) {
+      v105 = v119_.v121;
+    }
+    else {
+      v105 = (char*)&v122 + 1;
+    }
+    memmove_plt((__int64)&v119_.v119 + 1, (__int64)v105, v104);
+  }
+  *((_BYTE*)&v119_.v119 + v104 + 1) = 0;
+  v106 = atoi_plt((const char*)&v119_.v119 + 1);
+  v107 = v119_.v119;
+  *(_DWORD*)(a1 + 1856) = v106;
+  if ((v107 & 1) != 0) {
+    NgxRoutine_430(v119_.v121, v119_.v119 & 0xFFFFFFFFFFFFFFFELL);
+  }
+  v108 = (unsigned __int64)(unsigned __int8)v122 >> 1;
+  if ((v122 & 1) != 0) {
+    v108 = v123_.v123;
+  }
+  if (v108 <= 3) {
+    goto LABEL_212;
+  }
+  v109 = v108 - 4;
+  if (v109 >= 3) {
+    v110 = 3;
+  }
+  else {
+    v110 = v109;
+  }
+  LOBYTE(v119_.v119) = 2 * v110;
+  if (v109 != 0) {
+    if ((v122 & 1) != 0) {
+      v111 = v123_.v124 + 4;
+    }
+    else {
+      v111 = (char*)&v122 + 5;
+    }
+    memmove_plt((__int64)&v119_.v119 + 1, (__int64)v111, v110);
+  }
+  *((_BYTE*)&v119_.v119 + v110 + 1) = 0;
+  v112 = atoi_plt((const char*)&v119_.v119 + 1);
+  v113 = v119_.v119;
+  *(_DWORD*)(a1 + 1860) = v112;
+  if ((v113 & 1) != 0) {
+    NgxRoutine_430(v119_.v121, v119_.v119 & 0xFFFFFFFFFFFFFFFELL);
+  }
+  v114 = (unsigned __int64)(unsigned __int8)v122 >> 1;
+  if ((v122 & 1) != 0) {
+    v114 = v123_.v123;
+  }
+  if (v114 <= 7) {
+    goto LABEL_212;
+  }
+  v115 = v114 - 8;
+  if (v115 >= 3) {
+    v116 = 3;
+  }
+  else {
+    v116 = v115;
+  }
+  LOBYTE(v119_.v119) = 2 * v116;
+  if (v115 != 0) {
+    if ((v122 & 1) != 0) {
+      v117 = v123_.v124 + 8;
+    }
+    else {
+      v117 = (char*)&v123_.v123 + 1;
+    }
+    memmove_plt((__int64)&v119_.v119 + 1, (__int64)v117, v116);
+  }
+  *((_BYTE*)&v119_.v119 + v116 + 1) = 0;
+  result = atoi_plt((const char*)&v119_.v119 + 1);
+  v118 = v119_.v119;
+  *(_DWORD*)(a1 + 1864) = result;
+  if ((v118 & 1) != 0) {
+    result = NgxRoutine_430(v119_.v121, v119_.v119 & 0xFFFFFFFFFFFFFFFELL);
+  }
+LABEL_108:
+  if ((v122 & 1) == 0) {
+    if ((v125_.v125 & 1) == 0) {
+      return result;
+    }
+    return NgxRoutine_430(v125_.v127, v125_.v125 & 0xFFFFFFFFFFFFFFFELL);
+  }
+  result = NgxRoutine_430(v123_.v124, v122 & 0xFFFFFFFFFFFFFFFELL);
+  if ((v125_.v125 & 1) != 0) {
+    return NgxRoutine_430(v125_.v127, v125_.v125 & 0xFFFFFFFFFFFFFFFELL);
+  }
+  return result;
+}
 
 __int64 cornflower_rook_00389_2a920(__int64 a1)
 {
@@ -437,6 +1174,2568 @@ void __attribute__((noreturn)) cornflower_rook_00389_2b270(const char* a1)
   NgxRoutine_e2370(
       "out_of_range was thrown in -fno-exceptions mode with message \"%s\"",
       a1);
+}
+
+_QWORD* cornflower_rook_00389_2b4a0(__int64 a1)
+{
+  unsigned __int64 v1;
+  __int64 v2;
+  __int64 v4;
+  __int64 v5;
+  signed __int64 v6;
+  signed __int64 v7;
+  signed __int64 v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  unsigned __int64 v13;
+  signed __int64 v14;
+  __int64 v15;
+  signed __int64 v16;
+  signed __int64 v17;
+  signed __int64 v18;
+  __int64 v19;
+  __int64 v20;
+  __int64 v21;
+  __int64 v22;
+  __int64 v23;
+  unsigned __int64 v24;
+  __int64 v25;
+  unsigned __int64 v26;
+  char* v27;
+  __int64 v28;
+  unsigned __int64 v29;
+  unsigned __int64 v30;
+  unsigned __int64 v31;
+  unsigned __int64 v32;
+  unsigned __int64 v33;
+  __int64 v34;
+  char* v35;
+  char v36;
+  unsigned __int64 v37;
+  signed __int64 v38;
+  __int64 v39;
+  signed __int64 v40;
+  signed __int64 v41;
+  signed __int64 v42;
+  __int64 v43;
+  __int64 v44;
+  __int64 v45;
+  __int64 v46;
+  __int64 v47;
+  char v48;
+  unsigned __int64 v49;
+  unsigned __int64 v50;
+  char* v51;
+  __int64 v52;
+  unsigned __int64 v53;
+  unsigned __int64 v54;
+  unsigned __int64 v55;
+  unsigned __int64 v56;
+  char* v57;
+  char* v58;
+  char v59;
+  unsigned __int64 v60;
+  signed __int64 v61;
+  __int64 v62;
+  signed __int64 v63;
+  signed __int64 v64;
+  signed __int64 v65;
+  __int64 v66;
+  __int64 v67;
+  __int64 v68;
+  __int64 v69;
+  __int64 v70;
+  char v71;
+  unsigned __int64 v72;
+  unsigned __int64 v73;
+  char* v74;
+  __int64 v75;
+  unsigned __int64 v76;
+  unsigned __int64 v77;
+  unsigned __int64 v78;
+  unsigned __int64 v79;
+  char* v80;
+  char* v81;
+  char v82;
+  char v83;
+  char* v84;
+  char* v85;
+  int v86;
+  _QWORD* result;
+  int v88;
+  unsigned __int64 v89;
+  signed __int64 v90;
+  __int64 v91;
+  signed __int64 v92;
+  signed __int64 v93;
+  signed __int64 v94;
+  __int64 v95;
+  __int64 v96;
+  __int64 v97;
+  __int64 v98;
+  unsigned __int64 v99;
+  unsigned __int64 v100;
+  unsigned __int64 v101;
+  bool v102;
+  unsigned __int64 v103;
+  __int64 v104;
+  unsigned __int64 v105;
+  char* v106;
+  __int64 v107;
+  unsigned __int64 v108;
+  unsigned __int64 v109;
+  unsigned __int64 v110;
+  __int64* v111;
+  unsigned __int64 v112;
+  unsigned __int64 v113;
+  unsigned __int64 v114;
+  char* v115;
+  unsigned __int64 v116;
+  _QWORD* v117;
+  __int64 v118;
+  unsigned __int8 v119;
+  unsigned __int64 v120;
+  _QWORD* v121;
+  __int64 v122;
+  unsigned __int8 v123;
+  __int64 v124;
+  char v125;
+  unsigned __int64 v126;
+  _QWORD* v127;
+  __int64 v128;
+  unsigned __int8 v129;
+  int v130;
+  unsigned __int64 v131;
+  unsigned __int64 v132;
+  unsigned __int64 v133;
+  unsigned __int64 v134;
+  char* v135;
+  __int64 v136;
+  unsigned __int64 v137;
+  unsigned __int64 v138;
+  char* v139;
+  signed __int64 v140;
+  signed __int64 v141;
+  signed __int64 v142;
+  char* v143;
+  __int64 v144;
+  __int64 v145;
+  __int64 v146;
+  unsigned __int64 v147;
+  unsigned __int64 v148;
+  char* v149;
+  unsigned __int64 v150;
+  char* v151;
+  __int64 v152;
+  unsigned __int64 v153;
+  char v154;
+  unsigned __int64 v155;
+  unsigned __int64 v156;
+  char* v157;
+  int v158;
+  _BOOL4 v159;
+  const char* v160;
+  unsigned __int64 v161;
+  _QWORD* v162;
+  __int64 v163;
+  unsigned __int8 v164;
+  unsigned __int64 v165;
+  unsigned __int64 v166;
+  unsigned __int64 v167;
+  char* v168;
+  char* v169;
+  __int64 v170;
+  char v171;
+  signed __int64 v172;
+  unsigned __int8 v173;
+  char* v174;
+  signed __int64 v175;
+  signed __int64 v176;
+  signed __int64 v177;
+  char* v178;
+  __int64 v179;
+  __int64 v180;
+  __int64 v181;
+  unsigned __int64 v182;
+  unsigned __int64 v183;
+  char* v184;
+  unsigned __int64 v185;
+  char* v186;
+  __int64 v187;
+  unsigned __int64 v188;
+  char v189;
+  unsigned __int64 v190;
+  unsigned __int64 v191;
+  char* v192;
+  int v193;
+  _BOOL4 v194;
+  unsigned __int64 v195;
+  unsigned __int64 v196;
+  unsigned __int64 v197;
+  char* v198;
+  char* v199;
+  __int64 v200;
+  char v201;
+  signed __int64 v202;
+  unsigned __int8 v203;
+  char* v204;
+  signed __int64 v205;
+  signed __int64 v206;
+  signed __int64 v207;
+  char* v208;
+  __int64 v209;
+  __int64 v210;
+  __int64 v211;
+  unsigned __int64 v212;
+  unsigned __int64 v213;
+  char* v214;
+  unsigned __int64 v215;
+  char* v216;
+  __int64 v217;
+  unsigned __int64 v218;
+  char v219;
+  unsigned __int64 v220;
+  unsigned __int64 v221;
+  char* v222;
+  int v223;
+  _BOOL4 v224;
+  unsigned __int64 v225;
+  unsigned __int64 v226;
+  unsigned __int64 v227;
+  char* v228;
+  char* v229;
+  __int64 v230;
+  char v231;
+  signed __int64 v232;
+  unsigned __int8 v233;
+  char* v234;
+  signed __int64 v235;
+  signed __int64 v236;
+  signed __int64 v237;
+  char* v238;
+  __int64 v239;
+  __int64 v240;
+  __int64 v241;
+  __int64 v242;
+  unsigned __int8* v243;
+  int v244;
+  unsigned __int64 v245;
+  bool v246;
+  unsigned __int8* v247;
+  int v248;
+  const char* v249;
+  unsigned __int64 v250;
+  _QWORD* v251;
+  struct {
+    __int64 v252;
+    unsigned __int64 v253;
+    char* v254;
+  } v252_;
+  struct {
+    __int64 v255;
+    unsigned __int64 v256;
+    char* v257;
+  } v255_;
+  struct {
+    __int64 v258;
+    unsigned __int64 v259;
+    char* v260;
+  } v258_;
+
+  v1 = *(unsigned __int8*)(a1 + 32);
+  v2 = *(_QWORD*)(a1 + 40);
+  v4 = a1 + 33;
+  if ((v1 & 1) != 0) {
+    v5 = *(_QWORD*)(a1 + 48);
+  }
+  else {
+    v5 = a1 + 33;
+  }
+  v6 = strlen_plt_alt1("dfn");
+  if (v6 != 0) {
+    v7 = v1 >> 1;
+    v8 = v6;
+    if ((v1 & 1) != 0) {
+      v7 = v2;
+    }
+    if (v7 >= v6) {
+      v9 = v5 + v7;
+      v10 = v5;
+      do {
+        v11 = memchr_plt(v10, 100, v7 - v8 + 1);
+        if (v11 == 0) {
+          break;
+        }
+        v12 = v11;
+        if (memcmp_plt(v11, (__int64)"dfn", v8) == 0) {
+          if (v12 == v9 || v12 - v5 == -1) {
+            break;
+          }
+          goto LABEL_15;
+        }
+        v10 = v12 + 1;
+        v7 = v9 - (v12 + 1);
+      } while (v7 >= v8);
+    }
+  }
+  else {
+  LABEL_15:
+    *(_BYTE*)(a1 + 3232) = 1;
+  }
+  v13 = *(unsigned __int8*)(a1 + 32);
+  v14 = *(_QWORD*)(a1 + 40);
+  if ((v13 & 1) != 0) {
+    v15 = *(_QWORD*)(a1 + 48);
+  }
+  else {
+    v15 = v4;
+  }
+  v16 = strlen_plt_alt1("aniso_gaussian_dfn");
+  if (v16 != 0) {
+    v17 = v13 >> 1;
+    v18 = v16;
+    if ((v13 & 1) != 0) {
+      v17 = v14;
+    }
+    if (v17 < v16) {
+      goto LABEL_151;
+    }
+    v19 = v15 + v17;
+    v20 = v15;
+    while (1) {
+      v21 = memchr_plt(v20, 97, v17 - v18 + 1);
+      if (v21 == 0) {
+        goto LABEL_151;
+      }
+      v22 = v21;
+      if (memcmp_plt(v21, (__int64)"aniso_gaussian_dfn", v18) == 0) {
+        break;
+      }
+      v20 = v22 + 1;
+      v17 = v19 - (v22 + 1);
+      if (v17 < v18) {
+        goto LABEL_151;
+      }
+    }
+    if (v22 == v19) {
+      goto LABEL_151;
+    }
+    v23 = v22 - v15;
+    if (v22 - v15 == -1) {
+      goto LABEL_151;
+    }
+  }
+  else {
+    v23 = 0;
+  }
+  v24 = strlen_plt_alt1("aniso_gaussian_dfn");
+  if (v24 >= 0xFFFFFFFFFFFFFFF7LL) {
+    goto LABEL_454;
+  }
+  v25 = v23 + 1;
+  v26 = v24;
+  if (v24 >= 0x17) {
+    if ((v24 | 7) == 0x17) {
+      v28 = 26;
+    }
+    else {
+      v28 = (v24 | 7) + 1;
+    }
+    v27 = (char*)NgxRoutine_420(v28);
+    v255_.v256 = v26;
+    v255_.v257 = v27;
+    v255_.v255 = v28 | 1;
+    goto LABEL_37;
+  }
+  LOBYTE(v255_.v255) = 2 * v24;
+  v27 = (char*)&v255_.v255 + 1;
+  if (v24 != 0) {
+  LABEL_37:
+    memcpy_plt_alt1((__int64)v27, (__int64)"aniso_gaussian_dfn", v26);
+  }
+  v27[v26] = 0;
+  if ((v255_.v255 & 1) != 0) {
+    v29 = v255_.v256;
+  }
+  else {
+    v29 = (unsigned __int64)(unsigned __int8)v255_.v255 >> 1;
+  }
+  v30 = *(unsigned __int8*)(a1 + 32);
+  v31 = v25 + v29;
+  v32 = *(_QWORD*)(a1 + 40);
+  if ((v30 & 1) == 0) {
+    v32 = v30 >> 1;
+  }
+  v33 = v32 - v31;
+  if (v32 < v31) {
+    goto LABEL_455;
+  }
+  if ((v30 & 1) != 0) {
+    v34 = *(_QWORD*)(a1 + 48);
+  }
+  else {
+    v34 = v4;
+  }
+  if (v33 >= 0xFFFFFFFFFFFFFFF7LL) {
+    goto LABEL_454;
+  }
+  if (v33 >= 0x17) {
+    if ((v33 | 7) == 0x17) {
+      v47 = 26;
+    }
+    else {
+      v47 = (v33 | 7) + 1;
+    }
+    v35 = (char*)NgxRoutine_420(v47);
+    v258_.v259 = v33;
+    v258_.v260 = v35;
+    v258_.v258 = v47 | 1;
+  LABEL_68:
+    memmove_plt((__int64)v35, v34 + v31, v33);
+    v48 = v255_.v255;
+    v35[v33] = 0;
+    if ((v48 & 1) == 0) {
+      goto LABEL_52;
+    }
+    goto LABEL_51;
+  }
+  LOBYTE(v258_.v258) = 2 * v33;
+  v35 = (char*)&v258_.v258 + 1;
+  if (v32 != v31) {
+    goto LABEL_68;
+  }
+  v36 = v255_.v255;
+  *((_BYTE*)&v258_.v258 + v33 + 1) = 0;
+  if ((v36 & 1) != 0) {
+  LABEL_51:
+    NgxRoutine_430(v255_.v257, v255_.v255 & 0xFFFFFFFFFFFFFFFELL);
+  }
+LABEL_52:
+  v37 = *(unsigned __int8*)(a1 + 32);
+  v38 = *(_QWORD*)(a1 + 40);
+  if ((v37 & 1) != 0) {
+    v39 = *(_QWORD*)(a1 + 48);
+  }
+  else {
+    v39 = v4;
+  }
+  v40 = strlen_plt_alt1("fastpath");
+  if (v40 != 0) {
+    v41 = v37 >> 1;
+    v42 = v40;
+    if ((v37 & 1) != 0) {
+      v41 = v38;
+    }
+    if (v41 < v40) {
+      goto LABEL_99;
+    }
+    v43 = v39 + v41;
+    v44 = v39;
+    while (1) {
+      v45 = memchr_plt(v44, 102, v41 - v42 + 1);
+      if (v45 == 0) {
+        goto LABEL_99;
+      }
+      v46 = v45;
+      if (memcmp_plt(v45, (__int64)"fastpath", v42) == 0) {
+        break;
+      }
+      v44 = v46 + 1;
+      v41 = v43 - (v46 + 1);
+      if (v41 < v42) {
+        goto LABEL_99;
+      }
+    }
+    if (v46 == v43 || v46 - v39 == -1) {
+      goto LABEL_99;
+    }
+  }
+  v49 = strlen_plt_alt1("fastpath");
+  if (v49 >= 0xFFFFFFFFFFFFFFF7LL) {
+    goto LABEL_454;
+  }
+  v50 = v49;
+  if (v49 >= 0x17) {
+    if ((v49 | 7) == 0x17) {
+      v52 = 26;
+    }
+    else {
+      v52 = (v49 | 7) + 1;
+    }
+    v51 = (char*)NgxRoutine_420(v52);
+    v252_.v253 = v50;
+    v252_.v254 = v51;
+    v252_.v252 = v52 | 1;
+    goto LABEL_83;
+  }
+  LOBYTE(v252_.v252) = 2 * v49;
+  v51 = (char*)&v252_.v252 + 1;
+  if (v49 != 0) {
+  LABEL_83:
+    memcpy_plt_alt1((__int64)v51, (__int64)"fastpath", v50);
+  }
+  v51[v50] = 0;
+  if ((v252_.v252 & 1) != 0) {
+    v53 = v252_.v253;
+  }
+  else {
+    v53 = (unsigned __int64)(unsigned __int8)v252_.v252 >> 1;
+  }
+  v54 = v53 + 1;
+  v55 = v258_.v259;
+  if ((v258_.v258 & 1) == 0) {
+    v55 = (unsigned __int64)(unsigned __int8)v258_.v258 >> 1;
+  }
+  v56 = v55 - v54;
+  if (v55 < v54) {
+    goto LABEL_455;
+  }
+  if ((v258_.v258 & 1) != 0) {
+    v57 = v258_.v260;
+  }
+  else {
+    v57 = (char*)&v258_.v258 + 1;
+  }
+  if (v56 >= 0xFFFFFFFFFFFFFFF7LL) {
+    goto LABEL_454;
+  }
+  if (v56 >= 0x17) {
+    if ((v56 | 7) == 0x17) {
+      v70 = 26;
+    }
+    else {
+      v70 = (v56 | 7) + 1;
+    }
+    v58 = (char*)NgxRoutine_420(v70);
+    v255_.v256 = v56;
+    v255_.v257 = v58;
+    v255_.v255 = v70 | 1;
+  }
+  else {
+    LOBYTE(v255_.v255) = 2 * v56;
+    v58 = (char*)&v255_.v255 + 1;
+    if (v55 == v54) {
+      v59 = v258_.v258;
+      *((_BYTE*)&v255_.v255 + v56 + 1) = 0;
+      if ((v59 & 1) == 0) {
+        goto LABEL_97;
+      }
+    LABEL_116:
+      NgxRoutine_430(v258_.v260, v258_.v258 & 0xFFFFFFFFFFFFFFFELL);
+      v258_.v258 = v255_.v255;
+      v258_.v259 = v255_.v256;
+      v258_.v260 = v255_.v257;
+      if ((v252_.v252 & 1) == 0) {
+        goto LABEL_99;
+      }
+      goto LABEL_98;
+    }
+  }
+  memmove_plt((__int64)v58, (__int64)&v57[v54], v56);
+  v71 = v258_.v258;
+  v58[v56] = 0;
+  if ((v71 & 1) != 0) {
+    goto LABEL_116;
+  }
+LABEL_97:
+  v258_.v258 = v255_.v255;
+  v258_.v259 = v255_.v256;
+  v258_.v260 = v255_.v257;
+  if ((v252_.v252 & 1) != 0) {
+  LABEL_98:
+    NgxRoutine_430(v252_.v254, v252_.v252 & 0xFFFFFFFFFFFFFFFELL);
+  }
+LABEL_99:
+  v60 = *(unsigned __int8*)(a1 + 32);
+  v61 = *(_QWORD*)(a1 + 40);
+  if ((v60 & 1) != 0) {
+    v62 = *(_QWORD*)(a1 + 48);
+  }
+  else {
+    v62 = v4;
+  }
+  v63 = strlen_plt_alt1("mid");
+  if (v63 != 0) {
+    v64 = v60 >> 1;
+    v65 = v63;
+    if ((v60 & 1) != 0) {
+      v64 = v61;
+    }
+    if (v64 < v63) {
+      goto LABEL_144;
+    }
+    v66 = v62 + v64;
+    v67 = v62;
+    while (1) {
+      v68 = memchr_plt(v67, 109, v64 - v65 + 1);
+      if (v68 == 0) {
+        goto LABEL_144;
+      }
+      v69 = v68;
+      if (memcmp_plt(v68, (__int64)"mid", v65) == 0) {
+        break;
+      }
+      v67 = v69 + 1;
+      v64 = v66 - (v69 + 1);
+      if (v64 < v65) {
+        goto LABEL_144;
+      }
+    }
+    if (v69 == v66 || v69 - v62 == -1) {
+      goto LABEL_144;
+    }
+  }
+  v72 = strlen_plt_alt1("mid");
+  if (v72 >= 0xFFFFFFFFFFFFFFF7LL) {
+    goto LABEL_454;
+  }
+  v73 = v72;
+  if (v72 >= 0x17) {
+    if ((v72 | 7) == 0x17) {
+      v75 = 26;
+    }
+    else {
+      v75 = (v72 | 7) + 1;
+    }
+    v74 = (char*)NgxRoutine_420(v75);
+    v252_.v253 = v73;
+    v252_.v254 = v74;
+    v252_.v252 = v75 | 1;
+    goto LABEL_128;
+  }
+  LOBYTE(v252_.v252) = 2 * v72;
+  v74 = (char*)&v252_.v252 + 1;
+  if (v72 != 0) {
+  LABEL_128:
+    memcpy_plt_alt1((__int64)v74, (__int64)"mid", v73);
+  }
+  v74[v73] = 0;
+  if ((v252_.v252 & 1) != 0) {
+    v76 = v252_.v253;
+  }
+  else {
+    v76 = (unsigned __int64)(unsigned __int8)v252_.v252 >> 1;
+  }
+  v77 = v76 + 1;
+  v78 = v258_.v259;
+  if ((v258_.v258 & 1) == 0) {
+    v78 = (unsigned __int64)(unsigned __int8)v258_.v258 >> 1;
+  }
+  v79 = v78 - v77;
+  if (v78 < v77) {
+    goto LABEL_455;
+  }
+  if ((v258_.v258 & 1) != 0) {
+    v80 = v258_.v260;
+  }
+  else {
+    v80 = (char*)&v258_.v258 + 1;
+  }
+  if (v79 >= 0xFFFFFFFFFFFFFFF7LL) {
+    goto LABEL_454;
+  }
+  if (v79 >= 0x17) {
+    if ((v79 | 7) == 0x17) {
+      v124 = 26;
+    }
+    else {
+      v124 = (v79 | 7) + 1;
+    }
+    v81 = (char*)NgxRoutine_420(v124);
+    v255_.v256 = v79;
+    v255_.v257 = v81;
+    v255_.v255 = v124 | 1;
+  LABEL_202:
+    memmove_plt((__int64)v81, (__int64)&v80[v77], v79);
+    v125 = v258_.v258;
+    v81[v79] = 0;
+    if ((v125 & 1) == 0) {
+    LABEL_142:
+      v258_.v258 = v255_.v255;
+      v258_.v259 = v255_.v256;
+      v258_.v260 = v255_.v257;
+      if ((v252_.v252 & 1) == 0) {
+        goto LABEL_144;
+      }
+      goto LABEL_143;
+    }
+    goto LABEL_203;
+  }
+  LOBYTE(v255_.v255) = 2 * v79;
+  v81 = (char*)&v255_.v255 + 1;
+  if (v78 != v77) {
+    goto LABEL_202;
+  }
+  v82 = v258_.v258;
+  *((_BYTE*)&v255_.v255 + v79 + 1) = 0;
+  if ((v82 & 1) == 0) {
+    goto LABEL_142;
+  }
+LABEL_203:
+  NgxRoutine_430(v258_.v260, v258_.v258 & 0xFFFFFFFFFFFFFFFELL);
+  v258_.v258 = v255_.v255;
+  v258_.v259 = v255_.v256;
+  v258_.v260 = v255_.v257;
+  if ((v252_.v252 & 1) != 0) {
+  LABEL_143:
+    NgxRoutine_430(v252_.v254, v252_.v252 & 0xFFFFFFFFFFFFFFFELL);
+  }
+LABEL_144:
+  v83 = v258_.v258;
+  v84 = v258_.v260;
+  if ((v258_.v258 & 1) != 0) {
+    v85 = v258_.v260;
+  }
+  else {
+    v85 = (char*)&v258_.v258 + 1;
+  }
+  v86 = (unsigned __int8)*v85;
+  result = (_QWORD*)isdigit_plt((unsigned __int8)*v85);
+  v88 = (int)result;
+  if ((_DWORD)result != 0) {
+    *(_DWORD*)(a1 + 3256) = v86 - 48;
+    *(_DWORD*)(a1 + 3260) = v86 - 48;
+    if ((v83 & 1) == 0) {
+      goto LABEL_150;
+    }
+    goto LABEL_149;
+  }
+  v120 = strlen_plt_alt1("DFN kernel size is not digit");
+  v121 = NgxRoutine_28900((_QWORD*)NgxData_951178[0],
+                          (__int64)"DFN kernel size is not digit", v120);
+  NgxRoutine_be650((void*)((__int64)&v255_.v255),
+                   (__int64)v121 + *(_QWORD*)(*v121 - 24LL));
+  v122 = NgxRoutine_db310(&v255_.v255, (__int64)NgxData_9511b8);
+  v123 = (*(__int64 (**)(__int64, __int64))(*(_QWORD*)v122 + 56LL))(v122, 10);
+  NgxRoutine_db240(&v255_.v255);
+  NgxRoutine_bd1d0(v121, v123);
+  result = NgxRoutine_bcd70(v121);
+  *(_DWORD*)(a1 + 84) = 2;
+  if ((v83 & 1) != 0) {
+  LABEL_149:
+    result = (_QWORD*)NgxRoutine_430(v84, v258_.v258 & 0xFFFFFFFFFFFFFFFELL);
+  }
+LABEL_150:
+  if (v88 == 0) {
+    return result;
+  }
+LABEL_151:
+  v89 = *(unsigned __int8*)(a1 + 32);
+  v90 = *(_QWORD*)(a1 + 40);
+  if ((v89 & 1) != 0) {
+    v91 = *(_QWORD*)(a1 + 48);
+  }
+  else {
+    v91 = v4;
+  }
+  v92 = strlen_plt_alt1("_");
+  if (v92 != 0) {
+    v93 = v89 >> 1;
+    v94 = v92;
+    if ((v89 & 1) != 0) {
+      v93 = v90;
+    }
+    if (v93 < v92) {
+      goto LABEL_207;
+    }
+    v95 = v91 + v93;
+    v96 = v91;
+    while (1) {
+      v97 = memchr_plt(v96, 95, v93 - v94 + 1);
+      if (v97 == 0) {
+        goto LABEL_207;
+      }
+      v98 = v97;
+      if (memcmp_plt(v97, (__int64)"_", v94) == 0) {
+        break;
+      }
+      v96 = v98 + 1;
+      v93 = v95 - (v98 + 1);
+      if (v93 < v94) {
+        goto LABEL_207;
+      }
+    }
+    if (v98 == v95 || (v99 = v98 - v91, v98 - v91 == -1)) {
+    LABEL_207:
+      v126 = strlen_plt_alt1("No layout in layer name");
+      v127 = NgxRoutine_28900((_QWORD*)NgxData_951178[0],
+                              (__int64)"No layout in layer name", v126);
+      NgxRoutine_be650((void*)((__int64)&v258_.v258),
+                       (__int64)v127 + *(_QWORD*)(*v127 - 24LL));
+      v128 = NgxRoutine_db310(&v258_.v258, (__int64)NgxData_9511b8);
+      v129 =
+          (*(__int64 (**)(__int64, __int64))(*(_QWORD*)v128 + 56LL))(v128, 10);
+      NgxRoutine_db240(&v258_.v258);
+      NgxRoutine_bd1d0(v127, v129);
+      result = NgxRoutine_bcd70(v127);
+      *(_DWORD*)(a1 + 84) = 2;
+      return result;
+    }
+  }
+  else {
+    v99 = 0;
+  }
+  v100 = *(unsigned __int8*)(a1 + 32);
+  v101 = v100 >> 1;
+  v102 = (v100 & 1) == 0;
+  v103 = *(_QWORD*)(a1 + 40);
+  if (v102) {
+    v103 = v101;
+    v104 = v4;
+  }
+  else {
+    v104 = *(_QWORD*)(a1 + 48);
+  }
+  if (v103 >= v99) {
+    v105 = v99;
+  }
+  else {
+    v105 = v103;
+  }
+  if (v105 >= 0xFFFFFFFFFFFFFFF7LL) {
+    goto LABEL_454;
+  }
+  if (v105 >= 0x17) {
+    if ((v105 | 7) == 0x17) {
+      v107 = 26;
+    }
+    else {
+      v107 = (v105 | 7) + 1;
+    }
+    v106 = (char*)NgxRoutine_420(v107);
+    v258_.v259 = v105;
+    v258_.v260 = v106;
+    v258_.v258 = v107 | 1;
+  }
+  else {
+    LOBYTE(v258_.v258) = 2 * v105;
+    v106 = (char*)&v258_.v258 + 1;
+    if (v105 == 0) {
+      goto LABEL_179;
+    }
+  }
+  memmove_plt((__int64)v106, v104, v105);
+LABEL_179:
+  v106[v105] = 0;
+  v108 = strlen_plt_alt1("nhwc");
+  v109 = (unsigned __int8)v258_.v258 >> 1;
+  if ((v258_.v258 & 1) != 0) {
+    v109 = v258_.v259;
+  }
+  if (v108 != v109) {
+    goto LABEL_187;
+  }
+  v110 = v108;
+  if (v108 == -1) {
+    goto LABEL_455;
+  }
+  v111 = (v258_.v258 & 1) != 0 ? (__int64*)v258_.v260
+                               : (__int64*)((char*)&v258_.v258 + 1);
+  if (memcmp_plt((__int64)v111, (__int64)"nhwc", v110) == 0) {
+    v130 = 0;
+  }
+  else {
+  LABEL_187:
+    v112 = strlen_plt_alt1("nchw8");
+    v113 = (unsigned __int8)v258_.v258 >> 1;
+    if ((v258_.v258 & 1) != 0) {
+      v113 = v258_.v259;
+    }
+    if (v112 != v113) {
+      goto LABEL_195;
+    }
+    v114 = v112;
+    if (v112 == -1) {
+      goto LABEL_455;
+    }
+    if ((v258_.v258 & 1) != 0) {
+      v115 = v258_.v260;
+    }
+    else {
+      v115 = (char*)&v258_.v258 + 1;
+    }
+    if (memcmp_plt((__int64)v115, (__int64)"nchw8", v114) != 0) {
+    LABEL_195:
+      v116 = strlen_plt_alt1("Unknown layout type");
+      v117 = NgxRoutine_28900((_QWORD*)NgxData_951178[0],
+                              (__int64)"Unknown layout type", v116);
+      NgxRoutine_be650((void*)((__int64)&v255_.v255),
+                       (__int64)v117 + *(_QWORD*)(*v117 - 24LL));
+      v118 = NgxRoutine_db310(&v255_.v255, (__int64)NgxData_9511b8);
+      v119 =
+          (*(__int64 (**)(__int64, __int64))(*(_QWORD*)v118 + 56LL))(v118, 10);
+      NgxRoutine_db240(&v255_.v255);
+      NgxRoutine_bd1d0(v117, v119);
+      result = NgxRoutine_bcd70(v117);
+      *(_DWORD*)(a1 + 84) = 2;
+      goto LABEL_267;
+    }
+    v130 = 1;
+  }
+  v131 = *(unsigned __int8*)(a1 + 32);
+  *(_DWORD*)(a1 + 3252) = v130;
+  v132 = *(_QWORD*)(a1 + 40);
+  if ((v131 & 1) == 0) {
+    v132 = v131 >> 1;
+  }
+  if (v99 >= v132) {
+    goto LABEL_455;
+  }
+  v133 = v99 + 1;
+  v134 = v132 - (v99 + 1);
+  if ((v131 & 1) != 0) {
+    v4 = *(_QWORD*)(a1 + 48);
+  }
+  if (v134 >= 0xFFFFFFFFFFFFFFF7LL) {
+    goto LABEL_454;
+  }
+  if (v134 >= 0x17) {
+    if ((v134 | 7) == 0x17) {
+      v136 = 26;
+    }
+    else {
+      v136 = (v134 | 7) + 1;
+    }
+    v135 = (char*)NgxRoutine_420(v136);
+    v255_.v256 = v134;
+    v255_.v257 = v135;
+    v255_.v255 = v136 | 1;
+    goto LABEL_223;
+  }
+  LOBYTE(v255_.v255) = 2 * v134;
+  v135 = (char*)&v255_.v255 + 1;
+  if (v132 != v133) {
+  LABEL_223:
+    memmove_plt((__int64)v135, v4 + v133, v134);
+  }
+  v135[v134] = 0;
+  v137 = (unsigned __int8)v255_.v255;
+  v138 = v255_.v256;
+  if ((v255_.v255 & 1) != 0) {
+    v139 = v255_.v257;
+  }
+  else {
+    v139 = (char*)&v255_.v255 + 1;
+  }
+  v140 = strlen_plt_alt1("_");
+  if (v140 != 0) {
+    v141 = v137 >> 1;
+    v142 = v140;
+    if ((v137 & 1) != 0) {
+      v141 = v138;
+    }
+    if (v141 < v140) {
+      goto LABEL_264;
+    }
+    v143 = &v139[v141];
+    v144 = (__int64)v139;
+    while (1) {
+      v145 = memchr_plt(v144, 95, v141 - v142 + 1);
+      if (v145 == 0) {
+        goto LABEL_264;
+      }
+      v146 = v145;
+      if (memcmp_plt(v145, (__int64)"_", v142) == 0) {
+        break;
+      }
+      v144 = v146 + 1;
+      v141 = (signed __int64)&v143[-v146 - 1];
+      if (v141 < v142) {
+        goto LABEL_264;
+      }
+    }
+    if ((char*)v146 == v143) {
+      goto LABEL_264;
+    }
+    v147 = v146 - (_QWORD)v139;
+    if (v146 - (_QWORD)v139 == -1) {
+      goto LABEL_264;
+    }
+  }
+  else {
+    v147 = 0;
+  }
+  v148 = v255_.v256;
+  if ((v255_.v255 & 1) != 0) {
+    v149 = v255_.v257;
+  }
+  else {
+    v148 = (unsigned __int64)(unsigned __int8)v255_.v255 >> 1;
+    v149 = (char*)&v255_.v255 + 1;
+  }
+  if (v148 >= v147) {
+    v150 = v147;
+  }
+  else {
+    v150 = v148;
+  }
+  if (v150 >= 0xFFFFFFFFFFFFFFF7LL) {
+    goto LABEL_454;
+  }
+  if (v150 >= 0x17) {
+    if ((v150 | 7) == 0x17) {
+      v152 = 26;
+    }
+    else {
+      v152 = (v150 | 7) + 1;
+    }
+    v151 = (char*)NgxRoutine_420(v152);
+    v252_.v253 = v150;
+    v252_.v254 = v151;
+    v252_.v252 = v152 | 1;
+    goto LABEL_251;
+  }
+  LOBYTE(v252_.v252) = 2 * v150;
+  v151 = (char*)&v252_.v252 + 1;
+  if (v150 != 0) {
+  LABEL_251:
+    memmove_plt((__int64)v151, (__int64)v149, v150);
+  }
+  v151[v150] = 0;
+  v153 = strlen_plt_alt1("bilinear");
+  v154 = v252_.v252;
+  v155 = (unsigned __int8)v252_.v252 >> 1;
+  if ((v252_.v252 & 1) != 0) {
+    v155 = v252_.v253;
+  }
+  if (v153 == v155) {
+    v156 = v153;
+    if (v153 == -1) {
+      goto LABEL_455;
+    }
+    if ((v252_.v252 & 1) != 0) {
+      v157 = v252_.v254;
+    }
+    else {
+      v157 = (char*)&v252_.v252 + 1;
+    }
+    v158 = memcmp_plt((__int64)v157, (__int64)"bilinear", v156);
+    v154 = v252_.v252;
+    v159 = v158 != 0;
+  }
+  else {
+    v159 = true;
+  }
+  if ((v154 & 1) != 0) {
+    NgxRoutine_430(v252_.v254, v252_.v252 & 0xFFFFFFFFFFFFFFFELL);
+  }
+  if (v159) {
+  LABEL_264:
+    v160 = "No bilinear in layer name";
+    goto LABEL_265;
+  }
+  v165 = v255_.v256;
+  if ((v255_.v255 & 1) == 0) {
+    v165 = (unsigned __int64)(unsigned __int8)v255_.v255 >> 1;
+  }
+  if (v147 >= v165) {
+    goto LABEL_455;
+  }
+  v166 = v147 + 1;
+  v167 = v165 - (v147 + 1);
+  if ((v255_.v255 & 1) != 0) {
+    v168 = v255_.v257;
+  }
+  else {
+    v168 = (char*)&v255_.v255 + 1;
+  }
+  if (v167 >= 0xFFFFFFFFFFFFFFF7LL) {
+    goto LABEL_454;
+  }
+  if (v167 >= 0x17) {
+    if ((v167 | 7) == 0x17) {
+      v170 = 26;
+    }
+    else {
+      v170 = (v167 | 7) + 1;
+    }
+    v169 = (char*)NgxRoutine_420(v170);
+    v252_.v253 = v167;
+    v252_.v254 = v169;
+    v252_.v252 = v170 | 1;
+    goto LABEL_284;
+  }
+  LOBYTE(v252_.v252) = 2 * v167;
+  v169 = (char*)&v252_.v252 + 1;
+  if (v165 != v166) {
+  LABEL_284:
+    memmove_plt((__int64)v169, (__int64)&v168[v166], v167);
+  }
+  v171 = v255_.v255;
+  v169[v167] = 0;
+  if ((v171 & 1) != 0) {
+    NgxRoutine_430(v255_.v257, v255_.v255 & 0xFFFFFFFFFFFFFFFELL);
+  }
+  v173 = v252_.v252;
+  v172 = v252_.v253;
+  v255_.v255 = v252_.v252;
+  v255_.v256 = v252_.v253;
+  v255_.v257 = v252_.v254;
+  if ((v252_.v252 & 1) != 0) {
+    v174 = v252_.v254;
+  }
+  else {
+    v174 = (char*)&v255_.v255 + 1;
+  }
+  v175 = strlen_plt_alt1("_");
+  if (v175 != 0) {
+    v176 = v175;
+    if ((v173 & 1) != 0) {
+      v177 = v172;
+    }
+    else {
+      v177 = (unsigned __int64)v173 >> 1;
+    }
+    if (v177 < v175) {
+      goto LABEL_331;
+    }
+    v178 = &v174[v177];
+    v179 = (__int64)v174;
+    while (1) {
+      v180 = memchr_plt(v179, 95, v177 - v176 + 1);
+      if (v180 == 0) {
+        goto LABEL_331;
+      }
+      v181 = v180;
+      if (memcmp_plt(v180, (__int64)"_", v176) == 0) {
+        break;
+      }
+      v179 = v181 + 1;
+      v177 = (signed __int64)&v178[-v181 - 1];
+      if (v177 < v176) {
+        goto LABEL_331;
+      }
+    }
+    if ((char*)v181 == v178) {
+      goto LABEL_331;
+    }
+    v182 = v181 - (_QWORD)v174;
+    if (v181 - (_QWORD)v174 == -1) {
+      goto LABEL_331;
+    }
+  }
+  else {
+    v182 = 0;
+  }
+  v183 = v255_.v256;
+  if ((v255_.v255 & 1) != 0) {
+    v184 = v255_.v257;
+  }
+  else {
+    v183 = (unsigned __int64)(unsigned __int8)v255_.v255 >> 1;
+    v184 = (char*)&v255_.v255 + 1;
+  }
+  if (v183 >= v182) {
+    v185 = v182;
+  }
+  else {
+    v185 = v183;
+  }
+  if (v185 >= 0xFFFFFFFFFFFFFFF7LL) {
+    goto LABEL_454;
+  }
+  if (v185 >= 0x17) {
+    if ((v185 | 7) == 0x17) {
+      v187 = 26;
+    }
+    else {
+      v187 = (v185 | 7) + 1;
+    }
+    v186 = (char*)NgxRoutine_420(v187);
+    v252_.v253 = v185;
+    v252_.v254 = v186;
+    v252_.v252 = v187 | 1;
+    goto LABEL_318;
+  }
+  LOBYTE(v252_.v252) = 2 * v185;
+  v186 = (char*)&v252_.v252 + 1;
+  if (v185 != 0) {
+  LABEL_318:
+    memmove_plt((__int64)v186, (__int64)v184, v185);
+  }
+  v186[v185] = 0;
+  v188 = strlen_plt_alt1("upsample");
+  v189 = v252_.v252;
+  v190 = (unsigned __int8)v252_.v252 >> 1;
+  if ((v252_.v252 & 1) != 0) {
+    v190 = v252_.v253;
+  }
+  if (v188 == v190) {
+    v191 = v188;
+    if (v188 == -1) {
+      goto LABEL_455;
+    }
+    if ((v252_.v252 & 1) != 0) {
+      v192 = v252_.v254;
+    }
+    else {
+      v192 = (char*)&v252_.v252 + 1;
+    }
+    v193 = memcmp_plt((__int64)v192, (__int64)"upsample", v191);
+    v189 = v252_.v252;
+    v194 = v193 != 0;
+  }
+  else {
+    v194 = true;
+  }
+  if ((v189 & 1) != 0) {
+    NgxRoutine_430(v252_.v254, v252_.v252 & 0xFFFFFFFFFFFFFFFELL);
+  }
+  if (v194) {
+  LABEL_331:
+    v160 = "No upsample in layer name";
+    goto LABEL_265;
+  }
+  v195 = v255_.v256;
+  if ((v255_.v255 & 1) == 0) {
+    v195 = (unsigned __int64)(unsigned __int8)v255_.v255 >> 1;
+  }
+  if (v182 >= v195) {
+    goto LABEL_455;
+  }
+  v196 = v182 + 1;
+  v197 = v195 - (v182 + 1);
+  if ((v255_.v255 & 1) != 0) {
+    v198 = v255_.v257;
+  }
+  else {
+    v198 = (char*)&v255_.v255 + 1;
+  }
+  if (v197 >= 0xFFFFFFFFFFFFFFF7LL) {
+  LABEL_454:
+    NgxRoutine_27cb0();
+  }
+  if (v197 >= 0x17) {
+    if ((v197 | 7) == 0x17) {
+      v200 = 26;
+    }
+    else {
+      v200 = (v197 | 7) + 1;
+    }
+    v199 = (char*)NgxRoutine_420(v200);
+    v252_.v253 = v197;
+    v252_.v254 = v199;
+    v252_.v252 = v200 | 1;
+    goto LABEL_346;
+  }
+  LOBYTE(v252_.v252) = 2 * v197;
+  v199 = (char*)&v252_.v252 + 1;
+  if (v195 != v196) {
+  LABEL_346:
+    memmove_plt((__int64)v199, (__int64)&v198[v196], v197);
+  }
+  v201 = v255_.v255;
+  v199[v197] = 0;
+  if ((v201 & 1) != 0) {
+    NgxRoutine_430(v255_.v257, v255_.v255 & 0xFFFFFFFFFFFFFFFELL);
+  }
+  v203 = v252_.v252;
+  v202 = v252_.v253;
+  v255_.v255 = v252_.v252;
+  v255_.v256 = v252_.v253;
+  v255_.v257 = v252_.v254;
+  if ((v252_.v252 & 1) != 0) {
+    v204 = v252_.v254;
+  }
+  else {
+    v204 = (char*)&v255_.v255 + 1;
+  }
+  v205 = strlen_plt_alt1("_");
+  if (v205 != 0) {
+    v206 = v205;
+    if ((v203 & 1) != 0) {
+      v207 = v202;
+    }
+    else {
+      v207 = (unsigned __int64)v203 >> 1;
+    }
+    if (v207 < v205) {
+      goto LABEL_393;
+    }
+    v208 = &v204[v207];
+    v209 = (__int64)v204;
+    while (1) {
+      v210 = memchr_plt(v209, 95, v207 - v206 + 1);
+      if (v210 == 0) {
+        goto LABEL_393;
+      }
+      v211 = v210;
+      if (memcmp_plt(v210, (__int64)"_", v206) == 0) {
+        break;
+      }
+      v209 = v211 + 1;
+      v207 = (signed __int64)&v208[-v211 - 1];
+      if (v207 < v206) {
+        goto LABEL_393;
+      }
+    }
+    if ((char*)v211 == v208) {
+      goto LABEL_393;
+    }
+    v212 = v211 - (_QWORD)v204;
+    if (v211 - (_QWORD)v204 == -1) {
+      goto LABEL_393;
+    }
+  }
+  else {
+    v212 = 0;
+  }
+  v213 = v255_.v256;
+  if ((v255_.v255 & 1) != 0) {
+    v214 = v255_.v257;
+  }
+  else {
+    v213 = (unsigned __int64)(unsigned __int8)v255_.v255 >> 1;
+    v214 = (char*)&v255_.v255 + 1;
+  }
+  if (v213 >= v212) {
+    v215 = v212;
+  }
+  else {
+    v215 = v213;
+  }
+  if (v215 >= 0xFFFFFFFFFFFFFFF7LL) {
+    goto LABEL_454;
+  }
+  if (v215 >= 0x17) {
+    if ((v215 | 7) == 0x17) {
+      v217 = 26;
+    }
+    else {
+      v217 = (v215 | 7) + 1;
+    }
+    v216 = (char*)NgxRoutine_420(v217);
+    v252_.v253 = v215;
+    v252_.v254 = v216;
+    v252_.v252 = v217 | 1;
+    goto LABEL_380;
+  }
+  LOBYTE(v252_.v252) = 2 * v215;
+  v216 = (char*)&v252_.v252 + 1;
+  if (v215 != 0) {
+  LABEL_380:
+    memmove_plt((__int64)v216, (__int64)v214, v215);
+  }
+  v216[v215] = 0;
+  v218 = strlen_plt_alt1("conv");
+  v219 = v252_.v252;
+  v220 = (unsigned __int8)v252_.v252 >> 1;
+  if ((v252_.v252 & 1) != 0) {
+    v220 = v252_.v253;
+  }
+  if (v218 == v220) {
+    v221 = v218;
+    if (v218 == -1) {
+      goto LABEL_455;
+    }
+    if ((v252_.v252 & 1) != 0) {
+      v222 = v252_.v254;
+    }
+    else {
+      v222 = (char*)&v252_.v252 + 1;
+    }
+    v223 = memcmp_plt((__int64)v222, (__int64)"conv", v221);
+    v219 = v252_.v252;
+    v224 = v223 != 0;
+  }
+  else {
+    v224 = true;
+  }
+  if ((v219 & 1) != 0) {
+    NgxRoutine_430(v252_.v254, v252_.v252 & 0xFFFFFFFFFFFFFFFELL);
+  }
+  if (v224) {
+  LABEL_393:
+    v160 = "No conv in layer name";
+  LABEL_265:
+    v161 = strlen_plt_alt1(v160);
+    v162 = NgxRoutine_28900((_QWORD*)NgxData_951178[0], (__int64)v160, v161);
+    NgxRoutine_be650((void*)((__int64)&v252_.v252),
+                     (__int64)v162 + *(_QWORD*)(*v162 - 24LL));
+    v163 = NgxRoutine_db310(&v252_.v252, (__int64)NgxData_9511b8);
+    v164 = (*(__int64 (**)(__int64, __int64))(*(_QWORD*)v163 + 56LL))(v163, 10);
+    NgxRoutine_db240(&v252_.v252);
+    NgxRoutine_bd1d0(v162, v164);
+    result = NgxRoutine_bcd70(v162);
+    *(_DWORD*)(a1 + 84) = 2;
+    if ((v255_.v255 & 1) == 0) {
+      goto LABEL_267;
+    }
+    goto LABEL_266;
+  }
+  v225 = v255_.v256;
+  if ((v255_.v255 & 1) == 0) {
+    v225 = (unsigned __int64)(unsigned __int8)v255_.v255 >> 1;
+  }
+  if (v212 >= v225) {
+  LABEL_455:
+    cornflower_rook_00389_2b250();
+  }
+  v226 = v212 + 1;
+  v227 = v225 - (v212 + 1);
+  if ((v255_.v255 & 1) != 0) {
+    v228 = v255_.v257;
+  }
+  else {
+    v228 = (char*)&v255_.v255 + 1;
+  }
+  if (v227 >= 0xFFFFFFFFFFFFFFF7LL) {
+    goto LABEL_454;
+  }
+  if (v227 >= 0x17) {
+    if ((v227 | 7) == 0x17) {
+      v230 = 26;
+    }
+    else {
+      v230 = (v227 | 7) + 1;
+    }
+    v229 = (char*)NgxRoutine_420(v230);
+    v252_.v253 = v227;
+    v252_.v254 = v229;
+    v252_.v252 = v230 | 1;
+    goto LABEL_408;
+  }
+  LOBYTE(v252_.v252) = 2 * v227;
+  v229 = (char*)&v252_.v252 + 1;
+  if (v225 != v226) {
+  LABEL_408:
+    memmove_plt((__int64)v229, (__int64)&v228[v226], v227);
+  }
+  v231 = v255_.v255;
+  v229[v227] = 0;
+  if ((v231 & 1) != 0) {
+    NgxRoutine_430(v255_.v257, v255_.v255 & 0xFFFFFFFFFFFFFFFELL);
+  }
+  v233 = v252_.v252;
+  v232 = v252_.v253;
+  v255_.v255 = v252_.v252;
+  v255_.v256 = v252_.v253;
+  v255_.v257 = v252_.v254;
+  if ((v252_.v252 & 1) != 0) {
+    v234 = v252_.v254;
+  }
+  else {
+    v234 = (char*)&v255_.v255 + 1;
+  }
+  v235 = strlen_plt_alt1("_");
+  if (v235 == 0) {
+    v242 = 0;
+  LABEL_428:
+    if ((v255_.v255 & 1) != 0) {
+      v243 = (unsigned __int8*)v255_.v257;
+    }
+    else {
+      v243 = (unsigned __int8*)&v255_.v255 + 1;
+    }
+    v244 = *v243;
+    if ((unsigned int)isdigit_plt(*v243) != 0) {
+      *(_DWORD*)(a1 + 3236) = v244 - 48;
+      *(_DWORD*)(a1 + 3240) = v244 - 48;
+      nvidia_dlss_rel_source_features_dlaa_weights_cornflower_rook_00389_2cb50(
+          (void*)(&v252_.v252), (unsigned __int8*)&v255_.v255, v242 + 1,
+          0xFFFFFFFFFFFFFFFFLL);
+      if ((v255_.v255 & 1) != 0) {
+        NgxRoutine_430(v255_.v257, v255_.v255 & 0xFFFFFFFFFFFFFFFELL);
+      }
+      v255_.v255 = v252_.v252;
+      v255_.v256 = v252_.v253;
+      v255_.v257 = v252_.v254;
+      v245 = NgxRoutine_2ca80((unsigned __int8*)&v255_.v255, "_", 0);
+      if (v245 == -1) {
+        goto LABEL_447;
+      }
+      nvidia_dlss_rel_source_features_dlaa_weights_cornflower_rook_00389_2cb50(
+          (void*)(&v252_.v252), (unsigned __int8*)&v255_.v255, 0, v245);
+      v246 = NgxRoutine_2cc20((__int64)&v252_.v252, "conv");
+      if ((v252_.v252 & 1) != 0) {
+        NgxRoutine_430(v252_.v254, v252_.v252 & 0xFFFFFFFFFFFFFFFELL);
+      }
+      if (!v246) {
+      LABEL_447:
+        v249 = "No conv in layer name";
+        goto LABEL_452;
+      }
+      nvidia_dlss_rel_source_features_dlaa_weights_cornflower_rook_00389_2cb50(
+          (void*)(&v252_.v252), (unsigned __int8*)&v255_.v255, v226,
+          0xFFFFFFFFFFFFFFFFLL);
+      if ((v255_.v255 & 1) != 0) {
+        NgxRoutine_430(v255_.v257, v255_.v255 & 0xFFFFFFFFFFFFFFFELL);
+      }
+      v255_.v255 = v252_.v252;
+      v255_.v256 = v252_.v253;
+      v255_.v257 = v252_.v254;
+      if (NgxRoutine_2ca80((unsigned __int8*)&v255_.v255, "_", 0) == -1) {
+        goto LABEL_451;
+      }
+      if ((v255_.v255 & 1) != 0) {
+        v247 = (unsigned __int8*)v255_.v257;
+      }
+      else {
+        v247 = (unsigned __int8*)&v255_.v255 + 1;
+      }
+      v248 = *v247;
+      result = (_QWORD*)isdigit_plt(*v247);
+      if ((_DWORD)result != 0) {
+        *(_DWORD*)(a1 + 3244) = v248 - 48;
+        *(_DWORD*)(a1 + 3248) = v248 - 48;
+        if ((v255_.v255 & 1) == 0) {
+          goto LABEL_267;
+        }
+      LABEL_266:
+        result = (_QWORD*)NgxRoutine_430(v255_.v257,
+                                         v255_.v255 & 0xFFFFFFFFFFFFFFFELL);
+        goto LABEL_267;
+      }
+    }
+    v249 = "Convolution kernel size is not digit";
+    goto LABEL_452;
+  }
+  v236 = v235;
+  if ((v233 & 1) != 0) {
+    v237 = v232;
+  }
+  else {
+    v237 = (unsigned __int64)v233 >> 1;
+  }
+  if (v237 >= v235) {
+    v238 = &v234[v237];
+    v239 = (__int64)v234;
+    do {
+      v240 = memchr_plt(v239, 95, v237 - v236 + 1);
+      if (v240 == 0) {
+        break;
+      }
+      v241 = v240;
+      if (memcmp_plt(v240, (__int64)"_", v236) == 0) {
+        if ((char*)v241 != v238) {
+          v242 = v241 - (_QWORD)v234;
+          if (v241 - (_QWORD)v234 != -1) {
+            goto LABEL_428;
+          }
+        }
+        break;
+      }
+      v239 = v241 + 1;
+      v237 = (signed __int64)&v238[-v241 - 1];
+    } while (v237 >= v236);
+  }
+LABEL_451:
+  v249 = "No conv size in layer name";
+LABEL_452:
+  v250 = strlen_plt_alt1(v249);
+  v251 = NgxRoutine_28900((_QWORD*)NgxData_951178[0], (__int64)v249, v250);
+  result = NgxRoutine_29e50(v251);
+  *(_DWORD*)(a1 + 84) = 2;
+  if ((v255_.v255 & 1) != 0) {
+    goto LABEL_266;
+  }
+LABEL_267:
+  if ((v258_.v258 & 1) != 0) {
+    return (_QWORD*)NgxRoutine_430(v258_.v260,
+                                   v258_.v258 & 0xFFFFFFFFFFFFFFFELL);
+  }
+  return result;
+}
+
+__int64 cornflower_rook_00389_2e600(__int64 a1)
+{
+  unsigned __int64 v1;
+  signed __int64 v2;
+  __int64 v4;
+  __int64 v5;
+  signed __int64 v6;
+  signed __int64 v7;
+  signed __int64 v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  unsigned __int64 v13;
+  unsigned __int64 v14;
+  unsigned __int64 v15;
+  bool v16;
+  unsigned __int64 v17;
+  __int64 v18;
+  unsigned __int64 v19;
+  char* v20;
+  __int64 v21;
+  unsigned __int64 v22;
+  unsigned __int64 v23;
+  unsigned __int64 v24;
+  __int64* v25;
+  unsigned __int64 v26;
+  unsigned __int64 v27;
+  unsigned __int64 v28;
+  char* v29;
+  unsigned __int64 v30;
+  _QWORD* v31;
+  __int64 v32;
+  unsigned __int8 v33;
+  __int64 result;
+  unsigned __int64 v35;
+  _QWORD* v36;
+  __int64 v37;
+  unsigned __int8 v38;
+  int v39;
+  unsigned __int64 v40;
+  unsigned __int64 v41;
+  unsigned __int64 v42;
+  unsigned __int64 v43;
+  char* v44;
+  __int64 v45;
+  unsigned __int64 v46;
+  unsigned __int64 v47;
+  char* v48;
+  signed __int64 v49;
+  signed __int64 v50;
+  signed __int64 v51;
+  char* v52;
+  __int64 v53;
+  __int64 v54;
+  __int64 v55;
+  unsigned __int64 v56;
+  unsigned __int64 v57;
+  char* v58;
+  unsigned __int64 v59;
+  char* v60;
+  __int64 v61;
+  unsigned __int64 v62;
+  char v63;
+  unsigned __int64 v64;
+  unsigned __int64 v65;
+  char* v66;
+  int v67;
+  _BOOL4 v68;
+  const char* v69;
+  unsigned __int64 v70;
+  _QWORD* v71;
+  __int64 v72;
+  unsigned __int8 v73;
+  unsigned __int64 v74;
+  unsigned __int64 v75;
+  unsigned __int64 v76;
+  char* v77;
+  char* v78;
+  __int64 v79;
+  char v80;
+  signed __int64 v81;
+  unsigned __int8 v82;
+  char* v83;
+  signed __int64 v84;
+  signed __int64 v85;
+  signed __int64 v86;
+  char* v87;
+  __int64 v88;
+  __int64 v89;
+  __int64 v90;
+  unsigned __int64 v91;
+  unsigned __int8* v92;
+  int v93;
+  unsigned __int64 v94;
+  unsigned __int64 v95;
+  unsigned __int64 v96;
+  unsigned __int64 v97;
+  char* v98;
+  char* v99;
+  __int64 v100;
+  char v101;
+  signed __int64 v102;
+  unsigned __int8 v103;
+  char* v104;
+  signed __int64 v105;
+  signed __int64 v106;
+  signed __int64 v107;
+  char* v108;
+  __int64 v109;
+  __int64 v110;
+  __int64 v111;
+  unsigned __int64 v112;
+  unsigned __int64 v113;
+  char* v114;
+  unsigned __int64 v115;
+  char* v116;
+  __int64 v117;
+  unsigned __int64 v118;
+  char v119;
+  unsigned __int64 v120;
+  unsigned __int64 v121;
+  char* v122;
+  int v123;
+  _BOOL4 v124;
+  unsigned __int64 v125;
+  unsigned __int64 v126;
+  unsigned __int64 v127;
+  char* v128;
+  char* v129;
+  __int64 v130;
+  char v131;
+  signed __int64 v132;
+  unsigned __int8 v133;
+  char* v134;
+  signed __int64 v135;
+  signed __int64 v136;
+  char* v137;
+  __int64 v138;
+  unsigned __int64 v139;
+  unsigned __int64 v140;
+  char* v141;
+  unsigned __int64 v142;
+  char* v143;
+  __int64 v144;
+  char v145;
+  unsigned __int64 v146;
+  unsigned __int64 v147;
+  char* v148;
+  _BOOL4 v149;
+  unsigned __int8* v150;
+  int v151;
+  const char* v152;
+  unsigned __int64 v153;
+  _QWORD* v154;
+  struct {
+    __int64 v155;
+    unsigned __int64 v156;
+    char* v157;
+  } v155_;
+  struct {
+    __int64 v158;
+    unsigned __int64 v159;
+    char* v160;
+  } v158_;
+  struct {
+    __int64 v161;
+    unsigned __int64 v162;
+    char* v163;
+  } v161_;
+
+  v1 = *(unsigned __int8*)(a1 + 32);
+  v2 = *(_QWORD*)(a1 + 40);
+  v4 = a1 + 33;
+  if ((v1 & 1) != 0) {
+    v5 = *(_QWORD*)(a1 + 48);
+  }
+  else {
+    v5 = a1 + 33;
+  }
+  v6 = strlen_plt_alt1("_");
+  if (v6 != 0) {
+    v7 = v1 >> 1;
+    v8 = v6;
+    if ((v1 & 1) != 0) {
+      v7 = v2;
+    }
+    if (v7 < v6) {
+      goto LABEL_48;
+    }
+    v9 = v5 + v7;
+    v10 = v5;
+    while (1) {
+      v11 = memchr_plt(v10, 95, v7 - v8 + 1);
+      if (v11 == 0) {
+        goto LABEL_48;
+      }
+      v12 = v11;
+      if (memcmp_plt(v11, (__int64)"_", v8) == 0) {
+        break;
+      }
+      v10 = v12 + 1;
+      v7 = v9 - (v12 + 1);
+      if (v7 < v8) {
+        goto LABEL_48;
+      }
+    }
+    if (v12 == v9 || (v13 = v12 - v5, v12 - v5 == -1)) {
+    LABEL_48:
+      v35 = strlen_plt_alt1("No layout in layer name");
+      v36 = NgxRoutine_28900((_QWORD*)NgxData_951178[0],
+                             (__int64)"No layout in layer name", v35);
+      NgxRoutine_be650((void*)((__int64)&v161_.v161),
+                       (__int64)v36 + *(_QWORD*)(*v36 - 24LL));
+      v37 = NgxRoutine_db310(&v161_.v161, (__int64)NgxData_9511b8);
+      v38 = (*(__int64 (**)(__int64, __int64))(*(_QWORD*)v37 + 56LL))(v37, 10);
+      NgxRoutine_db240(&v161_.v161);
+      NgxRoutine_bd1d0(v36, v38);
+      result = (__int64)NgxRoutine_bcd70(v36);
+      *(_DWORD*)(a1 + 84) = 2;
+      return result;
+    }
+  }
+  else {
+    v13 = 0;
+  }
+  v14 = *(unsigned __int8*)(a1 + 32);
+  v15 = v14 >> 1;
+  v16 = (v14 & 1) == 0;
+  v17 = *(_QWORD*)(a1 + 40);
+  if (v16) {
+    v17 = v15;
+    v18 = v4;
+  }
+  else {
+    v18 = *(_QWORD*)(a1 + 48);
+  }
+  if (v17 >= v13) {
+    v19 = v13;
+  }
+  else {
+    v19 = v17;
+  }
+  if (v19 >= 0xFFFFFFFFFFFFFFF7LL) {
+    goto LABEL_289;
+  }
+  if (v19 >= 0x17) {
+    if ((v19 | 7) == 0x17) {
+      v21 = 26;
+    }
+    else {
+      v21 = (v19 | 7) + 1;
+    }
+    v20 = (char*)NgxRoutine_420(v21);
+    v161_.v162 = v19;
+    v161_.v163 = v20;
+    v161_.v161 = v21 | 1;
+  }
+  else {
+    LOBYTE(v161_.v161) = 2 * v19;
+    v20 = (char*)&v161_.v161 + 1;
+    if (v19 == 0) {
+      goto LABEL_29;
+    }
+  }
+  memmove_plt((__int64)v20, v18, v19);
+LABEL_29:
+  v20[v19] = 0;
+  v22 = strlen_plt_alt1("nhwc");
+  v23 = (unsigned __int8)v161_.v161 >> 1;
+  if ((v161_.v161 & 1) != 0) {
+    v23 = v161_.v162;
+  }
+  if (v22 == v23) {
+    v24 = v22;
+    if (v22 == -1) {
+      goto LABEL_290;
+    }
+    v25 = (v161_.v161 & 1) != 0 ? (__int64*)v161_.v163
+                                : (__int64*)((char*)&v161_.v161 + 1);
+    if (memcmp_plt((__int64)v25, (__int64)"nhwc", v24) == 0) {
+      v39 = 0;
+      goto LABEL_51;
+    }
+  }
+  v26 = strlen_plt_alt1("nchw8");
+  v27 = (unsigned __int8)v161_.v161 >> 1;
+  if ((v161_.v161 & 1) != 0) {
+    v27 = v161_.v162;
+  }
+  if (v26 != v27) {
+    goto LABEL_45;
+  }
+  v28 = v26;
+  if (v26 == -1) {
+    goto LABEL_290;
+  }
+  if ((v161_.v161 & 1) != 0) {
+    v29 = v161_.v163;
+  }
+  else {
+    v29 = (char*)&v161_.v161 + 1;
+  }
+  if (memcmp_plt((__int64)v29, (__int64)"nchw8", v28) == 0) {
+    v39 = 1;
+  LABEL_51:
+    v40 = *(unsigned __int8*)(a1 + 32);
+    *(_DWORD*)(a1 + 2132) = v39;
+    v41 = *(_QWORD*)(a1 + 40);
+    if ((v40 & 1) == 0) {
+      v41 = v40 >> 1;
+    }
+    if (v13 >= v41) {
+      goto LABEL_290;
+    }
+    v42 = v13 + 1;
+    v43 = v41 - (v13 + 1);
+    if ((v40 & 1) != 0) {
+      v4 = *(_QWORD*)(a1 + 48);
+    }
+    if (v43 >= 0xFFFFFFFFFFFFFFF7LL) {
+      goto LABEL_289;
+    }
+    if (v43 >= 0x17) {
+      if ((v43 | 7) == 0x17) {
+        v45 = 26;
+      }
+      else {
+        v45 = (v43 | 7) + 1;
+      }
+      v44 = (char*)NgxRoutine_420(v45);
+      v158_.v159 = v43;
+      v158_.v160 = v44;
+      v158_.v158 = v45 | 1;
+    }
+    else {
+      LOBYTE(v158_.v158) = 2 * v43;
+      v44 = (char*)&v158_.v158 + 1;
+      if (v41 == v42) {
+      LABEL_65:
+        v44[v43] = 0;
+        v46 = (unsigned __int8)v158_.v158;
+        v47 = v158_.v159;
+        if ((v158_.v158 & 1) != 0) {
+          v48 = v158_.v160;
+        }
+        else {
+          v48 = (char*)&v158_.v158 + 1;
+        }
+        v49 = strlen_plt_alt1("_");
+        if (v49 != 0) {
+          v50 = v46 >> 1;
+          v51 = v49;
+          if ((v46 & 1) != 0) {
+            v50 = v47;
+          }
+          if (v50 < v49) {
+            goto LABEL_105;
+          }
+          v52 = &v48[v50];
+          v53 = (__int64)v48;
+          while (1) {
+            v54 = memchr_plt(v53, 95, v50 - v51 + 1);
+            if (v54 == 0) {
+              goto LABEL_105;
+            }
+            v55 = v54;
+            if (memcmp_plt(v54, (__int64)"_", v51) == 0) {
+              break;
+            }
+            v53 = v55 + 1;
+            v50 = (signed __int64)&v52[-v55 - 1];
+            if (v50 < v51) {
+              goto LABEL_105;
+            }
+          }
+          if ((char*)v55 == v52) {
+            goto LABEL_105;
+          }
+          v56 = v55 - (_QWORD)v48;
+          if (v55 - (_QWORD)v48 == -1) {
+            goto LABEL_105;
+          }
+        }
+        else {
+          v56 = 0;
+        }
+        v57 = v158_.v159;
+        if ((v158_.v158 & 1) != 0) {
+          v58 = v158_.v160;
+        }
+        else {
+          v57 = (unsigned __int64)(unsigned __int8)v158_.v158 >> 1;
+          v58 = (char*)&v158_.v158 + 1;
+        }
+        if (v57 >= v56) {
+          v59 = v56;
+        }
+        else {
+          v59 = v57;
+        }
+        if (v59 >= 0xFFFFFFFFFFFFFFF7LL) {
+          goto LABEL_289;
+        }
+        if (v59 >= 0x17) {
+          if ((v59 | 7) == 0x17) {
+            v61 = 26;
+          }
+          else {
+            v61 = (v59 | 7) + 1;
+          }
+          v60 = (char*)NgxRoutine_420(v61);
+          v155_.v156 = v59;
+          v155_.v157 = v60;
+          v155_.v155 = v61 | 1;
+        }
+        else {
+          LOBYTE(v155_.v155) = 2 * v59;
+          v60 = (char*)&v155_.v155 + 1;
+          if (v59 == 0) {
+          LABEL_93:
+            v60[v59] = 0;
+            v62 = strlen_plt_alt1("conv");
+            v63 = v155_.v155;
+            v64 = (unsigned __int8)v155_.v155 >> 1;
+            if ((v155_.v155 & 1) != 0) {
+              v64 = v155_.v156;
+            }
+            if (v62 == v64) {
+              v65 = v62;
+              if (v62 == -1) {
+                goto LABEL_290;
+              }
+              if ((v155_.v155 & 1) != 0) {
+                v66 = v155_.v157;
+              }
+              else {
+                v66 = (char*)&v155_.v155 + 1;
+              }
+              v67 = memcmp_plt((__int64)v66, (__int64)"conv", v65);
+              v63 = v155_.v155;
+              v68 = v67 != 0;
+            }
+            else {
+              v68 = true;
+            }
+            if ((v63 & 1) != 0) {
+              NgxRoutine_430(v155_.v157, v155_.v155 & 0xFFFFFFFFFFFFFFFELL);
+            }
+            if (v68) {
+            LABEL_105:
+              v69 = "No conv in layer name";
+            LABEL_106:
+              v70 = strlen_plt_alt1(v69);
+              v71 = NgxRoutine_28900((_QWORD*)NgxData_951178[0], (__int64)v69,
+                                     v70);
+              NgxRoutine_be650((void*)((__int64)&v155_.v155),
+                               (__int64)v71 + *(_QWORD*)(*v71 - 24LL));
+              v72 = NgxRoutine_db310(&v155_.v155, (__int64)NgxData_9511b8);
+              v73 = (*(__int64 (**)(__int64, __int64))(*(_QWORD*)v72 + 56LL))(
+                  v72, 10);
+              NgxRoutine_db240(&v155_.v155);
+              NgxRoutine_bd1d0(v71, v73);
+              result = (__int64)NgxRoutine_bcd70(v71);
+              goto LABEL_107;
+            }
+            v74 = v158_.v159;
+            if ((v158_.v158 & 1) == 0) {
+              v74 = (unsigned __int64)(unsigned __int8)v158_.v158 >> 1;
+            }
+            if (v56 >= v74) {
+              goto LABEL_290;
+            }
+            v75 = v56 + 1;
+            v76 = v74 - (v56 + 1);
+            if ((v158_.v158 & 1) != 0) {
+              v77 = v158_.v160;
+            }
+            else {
+              v77 = (char*)&v158_.v158 + 1;
+            }
+            if (v76 >= 0xFFFFFFFFFFFFFFF7LL) {
+              goto LABEL_289;
+            }
+            if (v76 >= 0x17) {
+              if ((v76 | 7) == 0x17) {
+                v79 = 26;
+              }
+              else {
+                v79 = (v76 | 7) + 1;
+              }
+              v78 = (char*)NgxRoutine_420(v79);
+              v155_.v156 = v76;
+              v155_.v157 = v78;
+              v155_.v155 = v79 | 1;
+            }
+            else {
+              LOBYTE(v155_.v155) = 2 * v76;
+              v78 = (char*)&v155_.v155 + 1;
+              if (v74 == v75) {
+              LABEL_128:
+                v80 = v158_.v158;
+                v78[v76] = 0;
+                if ((v80 & 1) != 0) {
+                  NgxRoutine_430(v158_.v160, v158_.v158 & 0xFFFFFFFFFFFFFFFELL);
+                }
+                v82 = v155_.v155;
+                v81 = v155_.v156;
+                v158_.v158 = v155_.v155;
+                v158_.v159 = v155_.v156;
+                v158_.v160 = v155_.v157;
+                if ((v155_.v155 & 1) != 0) {
+                  v83 = v155_.v157;
+                }
+                else {
+                  v83 = (char*)&v158_.v158 + 1;
+                }
+                v84 = strlen_plt_alt1("_");
+                if (v84 != 0) {
+                  v85 = v84;
+                  if ((v82 & 1) != 0) {
+                    v86 = v81;
+                  }
+                  else {
+                    v86 = (unsigned __int64)v82 >> 1;
+                  }
+                  if (v86 < v84) {
+                    goto LABEL_184;
+                  }
+                  v87 = &v83[v86];
+                  v88 = (__int64)v83;
+                  while (1) {
+                    v89 = memchr_plt(v88, 95, v86 - v85 + 1);
+                    if (v89 == 0) {
+                      goto LABEL_184;
+                    }
+                    v90 = v89;
+                    if (memcmp_plt(v89, (__int64)"_", v85) == 0) {
+                      break;
+                    }
+                    v88 = v90 + 1;
+                    v86 = (signed __int64)&v87[-v90 - 1];
+                    if (v86 < v85) {
+                      goto LABEL_184;
+                    }
+                  }
+                  if ((char*)v90 == v87 ||
+                      (v91 = v90 - (_QWORD)v83, v90 - (_QWORD)v83 == -1)) {
+                  LABEL_184:
+                    v69 = "No conv size in layer name";
+                    goto LABEL_106;
+                  }
+                }
+                else {
+                  v91 = 0;
+                }
+                if ((v158_.v158 & 1) != 0) {
+                  v92 = (unsigned __int8*)v158_.v160;
+                }
+                else {
+                  v92 = (unsigned __int8*)&v158_.v158 + 1;
+                }
+                v93 = *v92;
+                if ((unsigned int)isdigit_plt(*v92) == 0) {
+                  v69 = "Convolution kernel size is not digit";
+                  goto LABEL_106;
+                }
+                v94 = (unsigned __int8)v158_.v158;
+                *(_DWORD*)(a1 + 2116) = v93 - 48;
+                *(_DWORD*)(a1 + 2120) = v93 - 48;
+                v95 = v158_.v159;
+                if ((v94 & 1) == 0) {
+                  v95 = v94 >> 1;
+                }
+                if (v91 >= v95) {
+                  goto LABEL_290;
+                }
+                v96 = v91 + 1;
+                v97 = v95 - (v91 + 1);
+                if ((v94 & 1) != 0) {
+                  v98 = v158_.v160;
+                }
+                else {
+                  v98 = (char*)&v158_.v158 + 1;
+                }
+                if (v97 >= 0xFFFFFFFFFFFFFFF7LL) {
+                  goto LABEL_289;
+                }
+                if (v97 >= 0x17) {
+                  if ((v97 | 7) == 0x17) {
+                    v100 = 26;
+                  }
+                  else {
+                    v100 = (v97 | 7) + 1;
+                  }
+                  v99 = (char*)NgxRoutine_420(v100);
+                  v155_.v156 = v97;
+                  v155_.v157 = v99;
+                  v155_.v155 = v100 | 1;
+                }
+                else {
+                  LOBYTE(v155_.v155) = 2 * v97;
+                  v99 = (char*)&v155_.v155 + 1;
+                  if (v95 == v96) {
+                  LABEL_167:
+                    v101 = v158_.v158;
+                    v99[v97] = 0;
+                    if ((v101 & 1) != 0) {
+                      NgxRoutine_430(v158_.v160,
+                                     v158_.v158 & 0xFFFFFFFFFFFFFFFELL);
+                    }
+                    v103 = v155_.v155;
+                    v102 = v155_.v156;
+                    v158_.v158 = v155_.v155;
+                    v158_.v159 = v155_.v156;
+                    v158_.v160 = v155_.v157;
+                    if ((v155_.v155 & 1) != 0) {
+                      v104 = v155_.v157;
+                    }
+                    else {
+                      v104 = (char*)&v158_.v158 + 1;
+                    }
+                    v105 = strlen_plt_alt1("_");
+                    if (v105 != 0) {
+                      v106 = v105;
+                      if ((v103 & 1) != 0) {
+                        v107 = v102;
+                      }
+                      else {
+                        v107 = (unsigned __int64)v103 >> 1;
+                      }
+                      if (v107 < v105) {
+                        goto LABEL_213;
+                      }
+                      v108 = &v104[v107];
+                      v109 = (__int64)v104;
+                      while (1) {
+                        v110 = memchr_plt(v109, 95, v107 - v106 + 1);
+                        if (v110 == 0) {
+                          goto LABEL_213;
+                        }
+                        v111 = v110;
+                        if (memcmp_plt(v110, (__int64)"_", v106) == 0) {
+                          break;
+                        }
+                        v109 = v111 + 1;
+                        v107 = (signed __int64)&v108[-v111 - 1];
+                        if (v107 < v106) {
+                          goto LABEL_213;
+                        }
+                      }
+                      if ((char*)v111 == v108) {
+                        goto LABEL_213;
+                      }
+                      v112 = v111 - (_QWORD)v104;
+                      if (v111 - (_QWORD)v104 == -1) {
+                        goto LABEL_213;
+                      }
+                    }
+                    else {
+                      v112 = 0;
+                    }
+                    v113 = v158_.v159;
+                    if ((v158_.v158 & 1) != 0) {
+                      v114 = v158_.v160;
+                    }
+                    else {
+                      v113 = (unsigned __int64)(unsigned __int8)v158_.v158 >> 1;
+                      v114 = (char*)&v158_.v158 + 1;
+                    }
+                    if (v113 >= v112) {
+                      v115 = v112;
+                    }
+                    else {
+                      v115 = v113;
+                    }
+                    if (v115 >= 0xFFFFFFFFFFFFFFF7LL) {
+                      goto LABEL_289;
+                    }
+                    if (v115 >= 0x17) {
+                      if ((v115 | 7) == 0x17) {
+                        v117 = 26;
+                      }
+                      else {
+                        v117 = (v115 | 7) + 1;
+                      }
+                      v116 = (char*)NgxRoutine_420(v117);
+                      v155_.v156 = v115;
+                      v155_.v157 = v116;
+                      v155_.v155 = v117 | 1;
+                    }
+                    else {
+                      LOBYTE(v155_.v155) = 2 * v115;
+                      v116 = (char*)&v155_.v155 + 1;
+                      if (v115 == 0) {
+                      LABEL_201:
+                        v116[v115] = 0;
+                        v118 = strlen_plt_alt1("pool");
+                        v119 = v155_.v155;
+                        v120 = (unsigned __int8)v155_.v155 >> 1;
+                        if ((v155_.v155 & 1) != 0) {
+                          v120 = v155_.v156;
+                        }
+                        if (v118 == v120) {
+                          v121 = v118;
+                          if (v118 == -1) {
+                            goto LABEL_290;
+                          }
+                          if ((v155_.v155 & 1) != 0) {
+                            v122 = v155_.v157;
+                          }
+                          else {
+                            v122 = (char*)&v155_.v155 + 1;
+                          }
+                          v123 =
+                              memcmp_plt((__int64)v122, (__int64)"pool", v121);
+                          v119 = v155_.v155;
+                          v124 = v123 != 0;
+                        }
+                        else {
+                          v124 = true;
+                        }
+                        if ((v119 & 1) != 0) {
+                          NgxRoutine_430(v155_.v157,
+                                         v155_.v155 & 0xFFFFFFFFFFFFFFFELL);
+                        }
+                        if (v124) {
+                        LABEL_213:
+                          v69 = "No pool in layer name";
+                          goto LABEL_106;
+                        }
+                        v125 = v158_.v159;
+                        if ((v158_.v158 & 1) == 0) {
+                          v125 =
+                              (unsigned __int64)(unsigned __int8)v158_.v158 >>
+                              1;
+                        }
+                        if (v112 < v125) {
+                          v126 = v112 + 1;
+                          v127 = v125 - (v112 + 1);
+                          if ((v158_.v158 & 1) != 0) {
+                            v128 = v158_.v160;
+                          }
+                          else {
+                            v128 = (char*)&v158_.v158 + 1;
+                          }
+                          if (v127 >= 0xFFFFFFFFFFFFFFF7LL) {
+                            goto LABEL_289;
+                          }
+                          if (v127 >= 0x17) {
+                            if ((v127 | 7) == 0x17) {
+                              v130 = 26;
+                            }
+                            else {
+                              v130 = (v127 | 7) + 1;
+                            }
+                            v129 = (char*)NgxRoutine_420(v130);
+                            v155_.v156 = v127;
+                            v155_.v157 = v129;
+                            v155_.v155 = v130 | 1;
+                          }
+                          else {
+                            LOBYTE(v155_.v155) = 2 * v127;
+                            v129 = (char*)&v155_.v155 + 1;
+                            if (v125 == v126) {
+                            LABEL_229:
+                              v131 = v158_.v158;
+                              v129[v127] = 0;
+                              if ((v131 & 1) != 0) {
+                                NgxRoutine_430(v158_.v160,
+                                               v158_.v158 &
+                                                   0xFFFFFFFFFFFFFFFELL);
+                              }
+                              v133 = v155_.v155;
+                              v132 = v155_.v156;
+                              v158_.v158 = v155_.v155;
+                              v158_.v159 = v155_.v156;
+                              v158_.v160 = v155_.v157;
+                              if ((v155_.v155 & 1) != 0) {
+                                v134 = v155_.v157;
+                              }
+                              else {
+                                v134 = (char*)&v158_.v158 + 1;
+                              }
+                              result = strlen_plt_alt1("_");
+                              if (result != 0) {
+                                v135 = result;
+                                if ((v133 & 1) != 0) {
+                                  v136 = v132;
+                                }
+                                else {
+                                  v136 = (unsigned __int64)v133 >> 1;
+                                }
+                                if (v136 < result) {
+                                  goto LABEL_108;
+                                }
+                                v137 = &v134[v136];
+                                result = (__int64)v134;
+                                while (1) {
+                                  result =
+                                      memchr_plt(result, 95, v136 - v135 + 1);
+                                  if (result == 0) {
+                                    goto LABEL_108;
+                                  }
+                                  v138 = result;
+                                  result =
+                                      memcmp_plt(result, (__int64)"_", v135);
+                                  if ((_DWORD)result == 0) {
+                                    break;
+                                  }
+                                  result = v138 + 1;
+                                  v136 = (signed __int64)&v137[-v138 - 1];
+                                  if (v136 < v135) {
+                                    goto LABEL_108;
+                                  }
+                                }
+                                if ((char*)v138 == v137) {
+                                  goto LABEL_108;
+                                }
+                                v139 = v138 - (_QWORD)v134;
+                                if (v138 - (_QWORD)v134 == -1) {
+                                  goto LABEL_108;
+                                }
+                              }
+                              else {
+                                v139 = 0;
+                              }
+                              v140 = v158_.v159;
+                              if ((v158_.v158 & 1) != 0) {
+                                v141 = v158_.v160;
+                              }
+                              else {
+                                v140 = (unsigned __int64)(unsigned __int8)
+                                           v158_.v158 >>
+                                       1;
+                                v141 = (char*)&v158_.v158 + 1;
+                              }
+                              if (v140 >= v139) {
+                                v142 = v139;
+                              }
+                              else {
+                                v142 = v140;
+                              }
+                              if (v142 < 0xFFFFFFFFFFFFFFF7LL) {
+                                if (v142 >= 0x17) {
+                                  if ((v142 | 7) == 0x17) {
+                                    v144 = 26;
+                                  }
+                                  else {
+                                    v144 = (v142 | 7) + 1;
+                                  }
+                                  v143 = (char*)NgxRoutine_420(v144);
+                                  v155_.v156 = v142;
+                                  v155_.v157 = v143;
+                                  v155_.v155 = v144 | 1;
+                                }
+                                else {
+                                  LOBYTE(v155_.v155) = 2 * v142;
+                                  v143 = (char*)&v155_.v155 + 1;
+                                  if (v142 == 0) {
+                                    goto LABEL_263;
+                                  }
+                                }
+                                memmove_plt((__int64)v143, (__int64)v141, v142);
+                              LABEL_263:
+                                v143[v142] = 0;
+                                result = strlen_plt_alt1("conv");
+                                v145 = v155_.v155;
+                                v146 = (unsigned __int8)v155_.v155 >> 1;
+                                if ((v155_.v155 & 1) != 0) {
+                                  v146 = v155_.v156;
+                                }
+                                if (result != v146) {
+                                  v149 = false;
+                                LABEL_272:
+                                  if ((v145 & 1) != 0) {
+                                    result = NgxRoutine_430(
+                                        v155_.v157,
+                                        v155_.v155 & 0xFFFFFFFFFFFFFFFELL);
+                                  }
+                                  if (!v149) {
+                                    goto LABEL_108;
+                                  }
+                                  *(_BYTE*)(a1 + 2113) = 1;
+                                  nvidia_dlss_rel_source_features_dlaa_weights_cornflower_rook_00389_2cb50(
+                                      (void*)(&v155_.v155),
+                                      (unsigned __int8*)&v158_.v158, v139 + 1,
+                                      0xFFFFFFFFFFFFFFFFLL);
+                                  if ((v158_.v158 & 1) != 0) {
+                                    NgxRoutine_430(v158_.v160,
+                                                   v158_.v158 &
+                                                       0xFFFFFFFFFFFFFFFELL);
+                                  }
+                                  v158_.v158 = v155_.v155;
+                                  v158_.v159 = v155_.v156;
+                                  v158_.v160 = v155_.v157;
+                                  if (NgxRoutine_2ca80_alt1(
+                                          (unsigned __int8*)&v158_.v158, "_",
+                                          0) == -1) {
+                                    v152 = "No conv size in layer name";
+                                  }
+                                  else {
+                                    if ((v158_.v158 & 1) != 0) {
+                                      v150 = (unsigned __int8*)v158_.v160;
+                                    }
+                                    else {
+                                      v150 = (unsigned __int8*)&v158_.v158 + 1;
+                                    }
+                                    v151 = *v150;
+                                    result = isdigit_plt(*v150);
+                                    if ((_DWORD)result != 0) {
+                                      *(_DWORD*)(a1 + 2124) = v151 - 48;
+                                      *(_DWORD*)(a1 + 2128) = v151 - 48;
+                                    LABEL_108:
+                                      if ((v158_.v158 & 1) != 0) {
+                                        result = NgxRoutine_430(
+                                            v158_.v160,
+                                            v158_.v158 & 0xFFFFFFFFFFFFFFFELL);
+                                      }
+                                      goto LABEL_110;
+                                    }
+                                    v152 =
+                                        "Convolution kernel size is not digit";
+                                  }
+                                  v153 = strlen_plt_alt1(v152);
+                                  v154 = NgxRoutine_28900(
+                                      (_QWORD*)NgxData_951178[0], (__int64)v152,
+                                      v153);
+                                  result = (__int64)NgxRoutine_29e50(v154);
+                                LABEL_107:
+                                  *(_DWORD*)(a1 + 84) = 2;
+                                  goto LABEL_108;
+                                }
+                                v147 = result;
+                                if (result != -1) {
+                                  if ((v155_.v155 & 1) != 0) {
+                                    v148 = v155_.v157;
+                                  }
+                                  else {
+                                    v148 = (char*)&v155_.v155 + 1;
+                                  }
+                                  result = memcmp_plt((__int64)v148,
+                                                      (__int64)"conv", v147);
+                                  v145 = v155_.v155;
+                                  v149 = result == 0;
+                                  goto LABEL_272;
+                                }
+                                goto LABEL_290;
+                              }
+                            LABEL_289:
+                              NgxRoutine_27cb0();
+                            }
+                          }
+                          memmove_plt((__int64)v129, (__int64)&v128[v126],
+                                      v127);
+                          goto LABEL_229;
+                        }
+                      LABEL_290:
+                        cornflower_rook_00389_2b250();
+                      }
+                    }
+                    memmove_plt((__int64)v116, (__int64)v114, v115);
+                    goto LABEL_201;
+                  }
+                }
+                memmove_plt((__int64)v99, (__int64)&v98[v96], v97);
+                goto LABEL_167;
+              }
+            }
+            memmove_plt((__int64)v78, (__int64)&v77[v75], v76);
+            goto LABEL_128;
+          }
+        }
+        memmove_plt((__int64)v60, (__int64)v58, v59);
+        goto LABEL_93;
+      }
+    }
+    memmove_plt((__int64)v44, v4 + v42, v43);
+    goto LABEL_65;
+  }
+LABEL_45:
+  v30 = strlen_plt_alt1("Unknown layout type");
+  v31 = NgxRoutine_28900((_QWORD*)NgxData_951178[0],
+                         (__int64)"Unknown layout type", v30);
+  NgxRoutine_be650((void*)((__int64)&v158_.v158),
+                   (__int64)v31 + *(_QWORD*)(*v31 - 24LL));
+  v32 = NgxRoutine_db310(&v158_.v158, (__int64)NgxData_9511b8);
+  v33 = (*(__int64 (**)(__int64, __int64))(*(_QWORD*)v32 + 56LL))(v32, 10);
+  NgxRoutine_db240(&v158_.v158);
+  NgxRoutine_bd1d0(v31, v33);
+  result = (__int64)NgxRoutine_bcd70(v31);
+  *(_DWORD*)(a1 + 84) = 2;
+LABEL_110:
+  if ((v161_.v161 & 1) != 0) {
+    return NgxRoutine_430(v161_.v163, v161_.v161 & 0xFFFFFFFFFFFFFFFELL);
+  }
+  return result;
 }
 
 __int64 cornflower_rook_00389_6d240(__int64** a1, __int64* a2, __int64 a3,

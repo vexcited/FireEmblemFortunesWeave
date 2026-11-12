@@ -2,151 +2,13 @@
 
 #pragma GCC visibility push(hidden)
 
-extern __int64 NgxData_2b6adc0;
-
-extern __int64 NgxData_2b6adc8;
-
-extern __int64 NgxData_2b6add0;
-
-extern __int64 NgxData_2b6add8;
-
-extern __int64 NgxData_2b6ade0;
-
-extern int NgxData_2b6ade8;
-
-extern _UNKNOWN NgxData_2b70a50;
-
-extern _UNKNOWN* NgxData_2b70a58;
-
-extern _UNKNOWN* NgxData_2b70a60;
-
-extern _UNKNOWN* NgxData_2b70a68;
-
-extern _UNKNOWN* NgxData_2b70a70;
-
-extern _UNKNOWN* NgxData_2b70a78;
-
-extern _UNKNOWN* NgxData_2b70a80;
-
-extern _UNKNOWN* NgxData_2b70a88;
-
-extern _UNKNOWN* NgxData_2b70a90;
-
-extern _UNKNOWN* NgxData_2b70a98;
-
-extern _UNKNOWN* NgxData_2b70aa0;
-
-extern _UNKNOWN* NgxData_2b70aa8;
-
-extern _UNKNOWN* NgxData_2b70ab0;
-
-extern _UNKNOWN* NgxData_2b70ab8;
-
-extern _UNKNOWN* NgxData_2b70ac0;
-
-extern __int64 NgxData_2b70ac8;
-
-extern _UNKNOWN* NgxData_2b70ad0;
-
-extern _UNKNOWN* NgxData_2b70ad8;
-
-extern _UNKNOWN* NgxData_2b70ae0;
-
-extern _UNKNOWN* NgxData_2b70ae8;
-
-extern __int64 NgxData_2b70af0;
-
-extern __int64 NgxData_2b70af8;
-
-extern __int64 NgxData_2b88b98;
-
-extern __int64 NgxData_2b88ee0;
-
-extern __int64 NgxData_2b88ee8;
-
-extern __int64 NgxData_2b88ef0;
-
-extern __int64 NgxData_2b88ef8;
-
-extern __int64 NgxData_2b88f00;
-
-extern __int64 NgxData_2b88f08;
-
-extern __int64 NgxData_2b88f10;
-
-extern __int64 NgxData_2b88f18;
-
-extern __int64 NgxData_2b88f20;
-
-extern __int64 NgxData_2b88f28;
-
-extern __int64 NgxData_2b88f30;
-
-extern __int64 NgxData_2b88f38;
-
-extern __int64 NgxData_2b88f40;
-
-extern __int64 NgxData_2b88f48;
-
-extern int NgxData_2b88f50;
-
-extern __int64 NgxData_2b88f58;
-
-extern __int64 NgxData_2b88f60;
-
-extern __int64 NgxData_2b88f68;
-
-extern __int64 NgxData_2b88f70;
-
-extern __int64 NgxData_2b88f80;
-
-extern __int64 NgxData_2b88f88;
-
-extern __int64 NgxData_2b88f90;
-
-extern int NgxData_2b88f98;
-
-extern int NgxData_2b88f9c;
-
-extern __int64 NgxData_2b88fa0;
-
-extern __int64 NgxData_2b88fa8;
-
-extern __int64 NgxData_2b88fb8;
-
-extern __int64 NgxData_2b88fc0;
-
-extern __int64 NgxData_2b88fc8;
-
-extern int NgxData_2b88fd0;
-
-extern int NgxData_2b88fd4;
-
-extern __int64 NgxData_2b88fd8;
-
-extern __int64 NgxData_2b88fe0;
-
-extern int NgxData_2b891f0;
-
-extern char NgxData_2b891f4;
-
-extern __int64 NgxData_2b891f8;
-
-extern __int64 (*NgxData_94e9c0[])();
-
 extern __int64* NgxData_952220;
 
 extern __int64* NgxData_952a48;
 
-extern _UNKNOWN* NgxData_954600;
-
-extern __int64* NgxData_9547d8;
-
 __int64 NgxRoutine_27bf0(_DWORD*, __int64);
 
 __int64 NgxRoutine_29cc0(_QWORD);
-
-__int64 NgxRoutine_2b0();
 
 void __attribute__((noreturn)) NgxRoutine_2b250();
 
@@ -154,17 +16,11 @@ __int64 NgxRoutine_430(_QWORD, _QWORD);
 
 __int64 NgxRoutine_6aed0(_QWORD, _QWORD);
 
-__int64 NgxRoutine_7c330(void);
-
-__int64 NgxRoutine_a8840(_QWORD);
-
 __int64 NgxRoutine_a9430(_QWORD);
 
 __int64 NgxRoutine_b4b90(_QWORD, _QWORD, _QWORD, const char*, ...);
 
 __int64 NgxRoutine_baf70(_QWORD, _QWORD);
-
-__int64 NgxRoutine_e2cc0(_QWORD);
 
 __int64 NgxRoutine_e30e0(_QWORD, _QWORD, _QWORD);
 
@@ -173,8 +29,6 @@ __int64 NgxRoutine_e30f0(_QWORD);
 __int64 NgxRoutine_e3110(_QWORD, _QWORD);
 
 __int64 NgxRoutine_e3130(_QWORD, _QWORD, _QWORD);
-
-__int64 NgxRoutine_e3340(_QWORD, _QWORD, _QWORD);
 
 __int64 NgxHr_29ba0(__int64 a1, _DWORD** a2)
 {
@@ -452,62 +306,6 @@ bool NgxHr_2cc20(__int64 a1, __int64 a2)
   return (unsigned int)NgxRoutine_e3110(v6, a2) == 0;
 }
 
-__int64 NgxHr_5e9c0(__int64 a1)
-{
-  __int64 result;
-
-  result = NgxRoutine_7c330();
-  *(_QWORD*)(a1 + 128) = 0;
-  *(_QWORD*)(a1 + 136) = 0;
-  *(_QWORD*)(a1 + 144) = 0;
-  *(_QWORD*)(a1 + 152) = 0;
-  *(_QWORD*)(a1 + 160) = 0;
-  *(_QWORD*)(a1 + 168) = 0;
-  *(_QWORD*)(a1 + 176) = 0;
-  *(_QWORD*)(a1 + 184) = 0;
-  *(_QWORD*)(a1 + 192) = 0;
-  *(_QWORD*)(a1 + 200) = 0;
-  *(_QWORD*)(a1 + 208) = 0;
-  *(_QWORD*)(a1 + 216) = 0;
-  *(_QWORD*)(a1 + 224) = 0;
-  *(_QWORD*)(a1 + 232) = 0;
-  *(_QWORD*)(a1 + 240) = 0;
-  *(_QWORD*)(a1 + 248) = 0;
-  *(_QWORD*)(a1 + 256) = 0;
-  *(_QWORD*)(a1 + 264) = 0;
-  *(_QWORD*)(a1 + 272) = 0;
-  *(_QWORD*)(a1 + 280) = 0;
-  *(_QWORD*)(a1 + 288) = 0;
-  *(_QWORD*)(a1 + 296) = 0;
-  *(_QWORD*)(a1 + 304) = a1 + 312;
-  *(_QWORD*)(a1 + 312) = 0;
-  *(_QWORD*)(a1 + 336) = 0;
-  *(_QWORD*)(a1 + 344) = 0;
-  *(_QWORD*)(a1 + 352) = 0;
-  *(_QWORD*)(a1 + 360) = 0;
-  *(_QWORD*)(a1 + 368) = 0;
-  *(_QWORD*)(a1 + 376) = 0;
-  *(_QWORD*)(a1 + 384) = 0;
-  *(_QWORD*)(a1 + 392) = 0;
-  *(_BYTE*)(a1 + 400) = 0;
-  *(_BYTE*)(a1 + 408) = 0;
-  *(_BYTE*)(a1 + 416) = 0;
-  *(_BYTE*)(a1 + 424) = 0;
-  *(_DWORD*)(a1 + 428) = 0;
-  *(_BYTE*)(a1 + 432) = 0;
-  *(_QWORD*)(a1 + 320) = 0;
-  *(_QWORD*)(a1 + 328) = a1 + 336;
-  *(_BYTE*)(a1 + 440) = 0;
-  *(_DWORD*)(a1 + 444) = 0;
-  *(_BYTE*)(a1 + 448) = 0;
-  *(_DWORD*)(a1 + 452) = 0;
-  *(_DWORD*)(a1 + 404) = 1;
-  *(_DWORD*)(a1 + 412) = 1065353216;
-  *(_DWORD*)(a1 + 420) = 1065353216;
-  *(_DWORD*)(a1 + 436) = 1065353216;
-  return result;
-}
-
 __int64 NgxHr_6ac30(__int64 a1, unsigned int a2, __int64 a3, __int64 a4,
                     _DWORD* a5)
 {
@@ -749,88 +547,6 @@ __int64 NgxHr_76440(__int64 a1, unsigned __int8* a2)
     }
   }
   return v2;
-}
-
-__int64 NgxHr_a2500()
-{
-  NgxData_2b6adc8 = 0;
-  NgxData_2b6add0 = 0;
-  NgxData_2b6add8 = 0;
-  NgxData_2b6ade0 = 0;
-  NgxData_2b6ade8 = 1065353216;
-  NgxRoutine_2b0();
-  NgxData_2b6adc0 = (__int64)NgxData_94e9c0;
-  return NgxRoutine_e3340("dlss", 1, NgxData_954600);
-}
-
-__int64 NgxHr_a2580()
-{
-  NgxData_2b70a58 = nullptr;
-  NgxData_2b70a60 = nullptr;
-  NgxData_2b70a68 = nullptr;
-  NgxData_2b70a70 = nullptr;
-  NgxData_2b70a78 = nullptr;
-  NgxData_2b70a80 = nullptr;
-  NgxData_2b70a88 = nullptr;
-  NgxData_2b70a90 = nullptr;
-  NgxData_2b70a98 = nullptr;
-  NgxData_2b70aa0 = nullptr;
-  NgxData_2b70aa8 = nullptr;
-  NgxData_2b70ab0 = nullptr;
-  NgxData_2b70ab8 = nullptr;
-  NgxData_2b70ac0 = nullptr;
-  NgxData_2b70ac8 = 0;
-  NgxData_2b70ad0 = nullptr;
-  NgxData_2b70ad8 = nullptr;
-  NgxData_2b70ae0 = nullptr;
-  NgxData_2b70ae8 = nullptr;
-  NgxData_2b70af0 = 0;
-  NgxData_2b70af8 = 0;
-  NgxRoutine_e2cc0(&NgxData_2b70a50);
-  return NgxRoutine_2b0();
-}
-
-__int64 NgxHr_a2620()
-{
-  NgxRoutine_a8840(&NgxData_2b88b98);
-  NgxData_2b88ee0 = 0;
-  NgxData_2b88ee8 = 0;
-  NgxData_2b88ef0 = 0;
-  NgxData_2b88ef8 = 0;
-  NgxData_2b88f00 = 0;
-  NgxData_2b88f88 = (__int64)&NgxData_2b88f90 + 1;
-  NgxData_2b88f08 = 0;
-  NgxData_2b88f10 = 0;
-  NgxData_2b88f18 = 0;
-  NgxData_2b88f20 = 0;
-  NgxData_2b88f28 = 0;
-  NgxData_2b88f30 = 0;
-  NgxData_2b88f38 = 0;
-  NgxData_2b88f40 = 0;
-  NgxData_2b88f48 = 0;
-  NgxData_2b88f50 = 0;
-  NgxData_2b88f58 = 0;
-  NgxData_2b88f60 = 0;
-  NgxData_2b88f68 = 0;
-  NgxData_2b88f80 = 0;
-  NgxData_2b88f9c = 5;
-  NgxData_2b88fa0 = 0;
-  NgxData_2b88fa8 = 0x3E0000003F400000LL;
-  NgxData_2b88f90 = (__int64)&NgxData_2b88f88 + 2;
-  NgxData_2b88fb8 = 0;
-  NgxData_2b88fd4 = 5;
-  NgxData_2b88fd8 = 0;
-  NgxData_2b88fe0 = 0x3E0000003F400000LL;
-  NgxData_2b88b98 = (__int64)(NgxData_9547d8 + 2);
-  NgxData_2b88f70 = 1;
-  NgxData_2b88f98 = -1;
-  NgxData_2b88fd0 = -1;
-  NgxData_2b88fc0 = (__int64)&NgxData_2b88fc8 + 1;
-  NgxData_2b88fc8 = (__int64)&NgxData_2b88fc0 + 2;
-  NgxData_2b891f0 = 0;
-  NgxData_2b891f4 = 0;
-  NgxData_2b891f8 = 0;
-  return NgxRoutine_2b0();
 }
 
 __int64* NgxHr_a30a0(__int64 a1, _QWORD* a2, unsigned __int8* a3)

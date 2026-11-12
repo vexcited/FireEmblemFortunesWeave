@@ -182,6 +182,15 @@ __int64 mkvparser_55d7e0(_QWORD* a1);
 __int64 mkvparser_55d880(_QWORD* a1);
 __int64 mkvparser_55d8a0(_QWORD* a1);
 void mkvparser_Track_Destroy_Track_55d940(void* this_);
+__int64 mkvparser_Block_Destroy_Block_plt_alt1(__int64) __asm__(
+    "mkvparser_Block_Destroy_Block_plt");
+__int64
+nn_os_GetTlsValue_plt_alt1(unsigned int) __asm__("nn_os_GetTlsValue_plt");
+int __cxa_guard_acquire_plt_alt1(__int64) __asm__("__cxa_guard_acquire_plt");
+void __cxa_guard_release_plt_alt1(__int64) __asm__("__cxa_guard_release_plt");
+void nn_movie_detail_FreeMemory_alt1(__int64, _DWORD*) __asm__(
+    "nn_movie_detail_FreeMemory");
+void mkvparser_Cluster_Destroy_Cluster(void* this_);
 
 __int64 mkvparser_UnserializeString(__int64 (***a1)(_QWORD, __int64,
                                                     unsigned __int64, void*),
@@ -4729,6 +4738,118 @@ __int64 mkvparser_Cluster_Cluster_55bef0(void* this_, void* a2, __int64 a3,
   *((_QWORD*)this_ + 14) = result;
   *((_QWORD*)this_ + 15) = 0;
   return result;
+}
+
+void mkvparser_Cluster_Destroy_Cluster(void* this_)
+{
+  __int64 v1;
+  __int64 i;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  atomic_uchar* v7;
+  unsigned int* v8;
+  unsigned __int64 v9;
+  __int64 v10;
+  _DWORD* v11;
+  __int64 v12;
+  _DWORD* v13;
+  __int64 v14;
+  __int64 v15;
+  atomic_uchar* v16;
+  unsigned int* v17;
+  _DWORD* v18;
+  unsigned __int64 v19;
+  __int64 v20;
+  _DWORD* v21;
+  void(__attribute__((noreturn)) * v22)();
+
+  v1 = *((_QWORD*)this_ + 8);
+  if (v1 < 1) {
+    v15 = *((_QWORD*)this_ + 6);
+    v16 = (atomic_uchar*)SdkData_e88330;
+    if ((atomic_load_explicit((atomic_uchar* volatile)SdkData_e88330,
+                              memory_order_acquire) &
+         1) == 0 &&
+        __cxa_guard_acquire_plt_alt1(SdkData_e88330) != 0) {
+      v22 = SdkData_e88338[0];
+      *(_DWORD*)SdkData_e88338[0] = 0;
+      *((_BYTE*)((__int64*)0x4LL) + (_QWORD)v22) = 1;
+      __cxa_guard_release_plt_alt1(SdkData_e88330);
+    }
+    v17 = (unsigned int*)SdkData_e88338[0];
+    v18 = (_DWORD*)nn_os_GetTlsValue_plt_alt1(*(_DWORD*)SdkData_e88338[0]);
+    nn_movie_detail_FreeMemory_alt1(v15, v18);
+    v14 = *((_QWORD*)this_ + 11);
+    if (*((_QWORD*)this_ + 12) != v14) {
+      v19 = 0;
+      do {
+        v20 = *(_QWORD*)(v14 + 8 * v19);
+        if ((atomic_load_explicit(v16, memory_order_acquire) & 1) == 0 &&
+            __cxa_guard_acquire_plt_alt1((__int64)v16) != 0) {
+          *v17 = 0;
+          *((_BYTE*)((__int64*)0x4LL) + (_QWORD)v17) = 1;
+          __cxa_guard_release_plt_alt1((__int64)v16);
+        }
+        v21 = (_DWORD*)nn_os_GetTlsValue_plt_alt1(*v17);
+        nn_movie_detail_FreeMemory_alt1(v20, v21);
+        v14 = *((_QWORD*)this_ + 11);
+        ++v19;
+      } while (v19 < (*((_QWORD*)this_ + 12) - v14) >> 3);
+    }
+    *((_QWORD*)this_ + 12) = v14;
+    if (v14 != 0) {
+      goto LABEL_17;
+    }
+  }
+  else {
+    for (i = 0; i < v1; ++i) {
+      v4 = *(_QWORD*)(*((_QWORD*)this_ + 6) + 8 * i);
+      if (v4 != 0) {
+        v5 = (*(__int64 (**)(__int64))(*(_QWORD*)v4 + 16LL))(v4);
+        if (v5 != 0) {
+          mkvparser_Block_Destroy_Block_plt_alt1(v5);
+        }
+        *(_QWORD*)(*((_QWORD*)this_ + 6) + 8 * i) = 0;
+        v1 = *((_QWORD*)this_ + 8);
+      }
+    }
+    v6 = *((_QWORD*)this_ + 11);
+    v7 = (atomic_uchar*)SdkData_e88330;
+    v8 = (unsigned int*)SdkData_e88338[0];
+    if (*((_QWORD*)this_ + 12) != v6) {
+      v9 = 0;
+      do {
+        v10 = *(_QWORD*)(v6 + 8 * v9);
+        if ((atomic_load_explicit(v7, memory_order_acquire) & 1) == 0 &&
+            __cxa_guard_acquire_plt_alt1((__int64)v7) != 0) {
+          *v8 = 0;
+          *((_BYTE*)((__int64*)0x4LL) + (_QWORD)v8) = 1;
+          __cxa_guard_release_plt_alt1((__int64)v7);
+        }
+        v11 = (_DWORD*)nn_os_GetTlsValue_plt_alt1(*v8);
+        nn_movie_detail_FreeMemory_alt1(v10, v11);
+        v6 = *((_QWORD*)this_ + 11);
+        ++v9;
+      } while (v9 < (*((_QWORD*)this_ + 12) - v6) >> 3);
+    }
+    *((_QWORD*)this_ + 12) = v6;
+    v12 = *((_QWORD*)this_ + 6);
+    if ((atomic_load_explicit(v7, memory_order_acquire) & 1) == 0 &&
+        __cxa_guard_acquire_plt_alt1(SdkData_e88330) != 0) {
+      *v8 = 0;
+      *((_BYTE*)((__int64*)0x4LL) + (_QWORD)v8) = 1;
+      __cxa_guard_release_plt_alt1(SdkData_e88330);
+    }
+    v13 = (_DWORD*)nn_os_GetTlsValue_plt_alt1(*v8);
+    nn_movie_detail_FreeMemory_alt1(v12, v13);
+    v14 = *((_QWORD*)this_ + 11);
+    if (v14 != 0) {
+    LABEL_17:
+      *((_QWORD*)this_ + 12) = v14;
+      nn_movie_detail_FreeMemory_alt1(v14, *((_DWORD**)this_ + 14));
+    }
+  }
 }
 
 __int64 mkvparser_Cluster_GetFirstTime(void* this_)

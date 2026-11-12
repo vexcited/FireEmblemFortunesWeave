@@ -18,8 +18,6 @@ __int64 SdkRoutine_421b40(_QWORD, _QWORD, _QWORD, _QWORD);
 
 __int64 SdkRoutine_421c60(_QWORD, _QWORD);
 
-__int64 SdkRoutine_462860(void);
-
 __int64 SdkRoutine_469140(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
                           _QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
                           _QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
@@ -33,12 +31,6 @@ __int64 SdkRoutine_857150(_QWORD);
 __int64 SdkRoutine_858b60(_QWORD);
 
 __int64 SdkRoutine_858b80(_QWORD);
-
-__int64 SdkRoutine_858db0(_QWORD);
-
-__int64 SdkRoutine_85a870(_QWORD);
-
-__int64 SdkRoutine_85a880(_QWORD, _QWORD);
 
 __int64 SdkRoutine_85b0e0(_QWORD);
 
@@ -129,41 +121,6 @@ __int64 SdkHr_421e90(__int64 a1, _DWORD* a2, __int64 a3)
     }
   }
   return result;
-}
-
-__int64 SdkHr_4627a0(__int64 a1)
-{
-  __int64 v1;
-  unsigned int v2;
-  unsigned int v4;
-  int v5;
-
-  if (a1 == 0) {
-    v2 = 3072514;
-    if ((SdkRoutine_85a870(3072514) & 1) == 0) {
-      return v2;
-    }
-    SdkRoutine_85a880(3072514, "EnsureApplicationBcatDeliveryCacheStorage");
-    v5 = 3072514;
-    SdkRoutine_858db0(&v5);
-    goto LABEL_7;
-  }
-  v2 = SdkRoutine_462860();
-  v1 = v2;
-  if ((SdkRoutine_85a870(v2) & 1) != 0) {
-  LABEL_7:
-    SdkRoutine_85a880(v1, "EnsureApplicationBcatDeliveryCacheStorage");
-    v4 = v2;
-    if (v2 != 0) {
-      SdkRoutine_858db0(&v4);
-      __udf(0);
-    }
-    return 0;
-  }
-  if (v2 != 0) {
-    return v2;
-  }
-  return 0;
 }
 
 __int64 SdkHr_468f40(_QWORD* a1, __int64 a2, __int64 a3, __int64 a4, __int64 a5,

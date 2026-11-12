@@ -20,10 +20,6 @@ extern _UNKNOWN* SdkData_e89bd8;
 
 void __attribute__((noreturn)) SdkRoutine_0(_QWORD, _QWORD, _QWORD);
 
-__int64 SdkRoutine_134890(_QWORD, _QWORD, _QWORD, _QWORD);
-
-__int64 SdkRoutine_1de500(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
-
 __int64 SdkRoutine_5e6a80(_QWORD, _QWORD, _QWORD);
 
 __int64 SdkRoutine_5e8340(_QWORD, _QWORD, _QWORD, _QWORD);
@@ -4312,16 +4308,6 @@ int* SdkHr_6e6c60(int* result, __int64 a2, int a3)
     goto LABEL_16;
   }
   return result;
-}
-
-__int64 SdkHr_6f4220(__int64 a1, _QWORD* a2)
-{
-  return SdkRoutine_134890(a1 + 8, *a2, 40LL * a2[1], 11);
-}
-
-__int64 SdkHr_6f42a0(__int64 a1, __int64 a2, _QWORD* a3)
-{
-  return SdkRoutine_1de500(a1 + 8, a2, *a3, 40LL * a3[1], 18);
 }
 
 float SdkHr_7283c0(__int64 a1, __int64 a2)

@@ -20,8 +20,6 @@ extern __int64 SdkData_103f230;
 
 extern _UNKNOWN SdkData_103f238;
 
-extern int SdkData_10406a8;
-
 extern _UNKNOWN SdkData_e72c20;
 
 extern _UNKNOWN SdkData_e72c98;
@@ -75,8 +73,6 @@ __int64 SdkRoutine_602840(_QWORD);
 
 __int64 SdkRoutine_602d30(_QWORD);
 
-__int64 SdkRoutine_60b500(void);
-
 __int64 SdkRoutine_617a60(void);
 
 __int64 SdkRoutine_617a70(_QWORD);
@@ -84,10 +80,6 @@ __int64 SdkRoutine_617a70(_QWORD);
 __int64 SdkRoutine_619420(_QWORD, _QWORD, _QWORD, _QWORD);
 
 __int64 SdkRoutine_624b80(void);
-
-__int64 SdkRoutine_625d50(char*);
-
-__int64 SdkRoutine_628ea0(void);
 
 __int64 SdkRoutine_628f90(_QWORD*);
 
@@ -178,12 +170,6 @@ __int64 SdkRoutine_875fa0(_QWORD);
 __int64 SdkRoutine_875fb0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 
 __int64 SdkRoutine_875fc0(_QWORD);
-
-__int64 SdkRoutine_876490(void);
-
-__int64 SdkRoutine_8764c0(void);
-
-__int64 SdkRoutine_8764d0(_QWORD);
 
 __int64 SdkRoutine_ce990();
 
@@ -912,28 +898,6 @@ bool SdkHr_6022f0(__int64 a1)
              a1 + 71136LL * *(unsigned int*)(a1 + 142288) + 16) == 0;
 }
 
-__int64 SdkHr_60b3f0(__int64 a1)
-{
-  int v1;
-  __int64 result;
-  __int64 v3;
-
-  v1 = *(_DWORD*)(a1 + 12);
-  result = SdkRoutine_875b00(24LL * v1 + 40);
-  if (result != 0) {
-    *(_DWORD*)(result + 16) = v1;
-    *(_QWORD*)(result + 24) = 0;
-    v3 = result;
-    *(_DWORD*)(result + 32) = 0;
-    *(_QWORD*)result = 0;
-    *(_QWORD*)(result + 8) = 1;
-    *(_BYTE*)(result + 20) = 1;
-    SdkRoutine_60b500();
-    return v3;
-  }
-  return result;
-}
-
 __int64 SdkHr_60b640(__int64 a1, unsigned int a2)
 {
   int v4;
@@ -1050,44 +1014,6 @@ __int64 SdkHr_624080(_QWORD* a1, unsigned __int64 a2)
         *v6 = 0;
         v6[1] = 0;
         v5 = a1[1] + 1LL;
-      }
-    }
-    else {
-      a1[1] = a2;
-    }
-  }
-  return result;
-}
-
-__int64 SdkHr_625d00()
-{
-  char* v0;
-
-  if ((unsigned int)SdkRoutine_8764d0(0) != 0) {
-    return 15;
-  }
-  SdkData_10406a8 = SdkRoutine_876490();
-  v0 = (char*)SdkRoutine_8764c0();
-  return SdkRoutine_625d50(v0);
-}
-
-__int64 SdkHr_6280e0(__int64* a1, unsigned __int64 a2)
-{
-  __int64 result;
-  unsigned __int64 v5;
-  __int64 v6;
-
-  result = SdkRoutine_628ea0();
-  if ((_DWORD)result == 0) {
-    v5 = a1[1];
-    if (v5 <= a2) {
-      if (v5 < a2) {
-        v6 = *a1;
-        do {
-          *(_QWORD*)(v6 + 8 * v5) = 0;
-          v5 = a1[1] + 1;
-          a1[1] = v5;
-        } while (v5 < a2);
       }
     }
     else {

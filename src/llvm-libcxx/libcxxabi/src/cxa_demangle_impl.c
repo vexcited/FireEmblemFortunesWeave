@@ -29,8 +29,9 @@ __int64
 anonymous_itanium_demangle_AbstractManglingParser_parseName(unsigned __int8**,
                                                             __int64, __int64);
 __int64
-    anonymous_itanium_demangle_AbstractManglingParser_parseOperatorName(_QWORD,
-                                                                        _QWORD);
+    anonymous_itanium_demangle_AbstractManglingParser_parseOperatorName_alt1(
+        _QWORD, _QWORD) __asm__("anonymous_itanium_demangle_"
+                                "AbstractManglingParser_parseOperatorName");
 __int64 anonymous_itanium_demangle_AbstractManglingParser_parseSimpleId_alt1(
     _QWORD) __asm__("anonymous_itanium_demangle_AbstractManglingParser_"
                     "parseSimpleId");
@@ -325,6 +326,388 @@ __int64 anonymous_itanium_demangle_ArrayType_printLeft(__int64 a1, __int64 a2);
 char* anonymous_itanium_demangle_AbstractManglingParser_make_84a0d0(__int64 a1,
                                                                     __int64 a2,
                                                                     __int64 a3);
+__int64 SdkRoutine_8332c0(__int64);
+__int64 SdkRoutine_837c80_alt1(_QWORD, _QWORD) __asm__("SdkRoutine_837c80");
+__int64 _Unwind_Resume_plt(_QWORD);
+__int64 anonymous_itanium_demangle_AbstractManglingParser_parseType_alt1(
+    unsigned __int8**) __asm__("anonymous_itanium_demangle_"
+                               "AbstractManglingParser_parseType");
+__int64 malloc_plt_alt1(unsigned __int64) __asm__("malloc_plt");
+__int64 memmove_plt_alt1(__int64, __int64,
+                         unsigned __int64) __asm__("memmove_plt");
+__int64 realloc_plt_alt1(__int64, unsigned __int64) __asm__("realloc_plt");
+char* anonymous_itanium_demangle_AbstractManglingParser_make_833dc0_alt1(
+    __int64, const char*,
+    __int64) __asm__("anonymous_itanium_demangle_AbstractManglingParser_make_"
+                     "833dc0");
+extern _UNKNOWN SdkData_e82c40;
+extern __int64 (*SdkData_e82998[])();
+extern __int64 (*SdkData_e84558[])();
+extern __int64 (*SdkData_e845d0[])();
+extern __int64 (*SdkData_e84eb8[])();
+extern __int64 (*SdkData_e85098[])();
+extern __int64 (*SdkData_e85110[])();
+extern __int64 (*SdkData_e85188[])();
+unsigned __int64 strlen_plt_alt1(const char*) __asm__("strlen_plt");
+void __attribute__((noreturn))
+SdkRoutine_84c1f0_alt1(__int64, ...) __asm__("SdkRoutine_84c1f0");
+void abort_plt_alt1() __asm__("abort_plt");
+void free_plt_alt1(__int64) __asm__("free_plt");
+__int64 __cxa_demangle(__int64 a1, __int64 a2, unsigned __int64* a3, int* a4);
+__int64
+anonymous_itanium_demangle_AbstractManglingParser_parseOperatorName(__int64 a1,
+                                                                    _BYTE* a2);
+__int64 anonymous_itanium_demangle_AbstractManglingParser_parseQualifiedType(
+    __int64 a1);
+__int64 anonymous_itanium_demangle_ReferenceType_collapse(__int64 a1,
+                                                          signed int a2,
+                                                          __int64 a3);
+
+__int64 __cxa_demangle(__int64 a1, __int64 a2, unsigned __int64* a3, int* a4)
+{
+  __int64 v7;
+  unsigned __int64 v9;
+  bool v10;
+  __int64 v12;
+  int v13;
+  __int64 v14;
+  unsigned __int64 v15;
+  __int64 v16;
+  unsigned __int64 v17;
+  unsigned __int64 v18;
+  __int64 v19;
+  unsigned __int64 v20;
+  __int64** i;
+  __int64* v22;
+  unsigned __int8* v24;
+  __int64 v25;
+  __int64* v26;
+  __int64 v27;
+  __int64* v28;
+  __int64 v29;
+  __int64 v30;
+  __int64 v31;
+  __int64 v32;
+  unsigned __int8* v33;
+  unsigned __int8* v35;
+  int v36;
+  unsigned __int8* v37;
+  unsigned __int8* v38;
+  int v39;
+  __int64* v40;
+  __int64 v41;
+  struct {
+    __int64 (**v42)();
+    __int64 v43;
+    unsigned __int64 v44;
+    unsigned __int64 v45;
+    __int64 v46;
+    int v47;
+  } v42_;
+  struct {
+    unsigned __int8* v48;
+    unsigned __int8* v49;
+    _QWORD* v50;
+    _QWORD* v51;
+    __int64* v52;
+  } v48_;
+  _QWORD v53[32];
+  __int64 v54[3];
+  _QWORD v55[32];
+  __int64 v56[3];
+  _QWORD v57[8];
+  __int64 v58[3];
+  _QWORD v59[4];
+  struct {
+    _QWORD* v60;
+    _QWORD* v61;
+    __int16* v62;
+  } v60_;
+  _QWORD v63[4];
+  struct {
+    __int16 v64;
+    char v65;
+    char gap859_[5];
+    __int64 v66;
+    __int64 v67;
+    int v68;
+  } v64_;
+  struct {
+    __int64 v69;
+    __int64 v70;
+    char gap912_[4080];
+    __int64* v71;
+  } v69_;
+
+  if (a1 == 0 || a2 != 0 && a3 == nullptr) {
+    v7 = 0;
+    if (a4 != nullptr) {
+      *a4 = -3;
+    }
+    return v7;
+  }
+  v9 = strlen_plt_alt1((const char*)a1);
+  v48_.v48 = (unsigned __int8*)a1;
+  v48_.v49 = (unsigned __int8*)(a1 + v9);
+  v48_.v52 = v54;
+  memset(v53, 0, sizeof(v53));
+  v48_.v50 = v53;
+  v48_.v51 = v53;
+  v54[0] = (__int64)v55;
+  memset(v55, 0, sizeof(v55));
+  v54[1] = (__int64)v55;
+  v54[2] = (__int64)v56;
+  v56[2] = (__int64)v58;
+  v56[0] = (__int64)v57;
+  v58[2] = (__int64)&v60_.v60;
+  v56[1] = (__int64)v57;
+  memset(v57, 0, sizeof(v57));
+  v58[0] = (__int64)v59;
+  v60_.v62 = &v64_.v64;
+  v58[1] = (__int64)v59;
+  memset(v59, 0, sizeof(v59));
+  v60_.v60 = v63;
+  v60_.v61 = v63;
+  v64_.v64 = 1;
+  memset(v63, 0, sizeof(v63));
+  v64_.v65 = 0;
+  v64_.v67 = 0;
+  v64_.v68 = 0;
+  v69_.v69 = 0;
+  v69_.v70 = 0;
+  v69_.v71 = &v69_.v69;
+  v64_.v66 = -1;
+  if (v9 >= 2) {
+    if (*(_WORD*)a1 == 23135) {
+      v16 = 2;
+    }
+    else {
+      if (v9 == 2) {
+        goto LABEL_20;
+      }
+      v10 = *(_WORD*)a1 == 24415 && *(_BYTE*)(a1 + 2) == 90;
+      if (!v10) {
+        if (v9 < 4) {
+          goto LABEL_20;
+        }
+        if (*(_DWORD*)a1 == 1516199775) {
+          v31 = 4;
+        }
+        else {
+          if (v9 == 4) {
+            goto LABEL_20;
+          }
+          if (*(_DWORD*)a1 != 1600085855 || *(_BYTE*)(a1 + 4) != 90) {
+            goto LABEL_20;
+          }
+          v31 = 5;
+        }
+        v48_.v48 = (unsigned __int8*)(a1 + v31);
+        v32 = SdkRoutine_8332c0((__int64)&v48_.v48);
+        if (v32 != 0) {
+          v33 = v48_.v48;
+          if ((unsigned __int64)(v48_.v49 - v48_.v48) >= 0xD &&
+              *(_QWORD*)v48_.v48 == 0x695F6B636F6C625FLL &&
+              *(_QWORD*)(v48_.v48 + 5) == 0x656B6F766E695F6BLL) {
+            v35 = v48_.v48 + 13;
+            v48_.v48 += 13;
+            if (v33 + 13 == v48_.v49 || *v35 != 95) {
+              v36 = 0;
+            }
+            else {
+              v35 = v33 + 14;
+              v36 = 1;
+              v48_.v48 = v35;
+            }
+            if (v48_.v49 == v35 || (unsigned int)*v35 - 48 > 9) {
+              v39 = 1;
+            }
+            else {
+              v37 = v35;
+              while ((unsigned int)*v37 - 48 <= 9) {
+                v48_.v48 = ++v37;
+                if (v37 == v48_.v49) {
+                  v38 = v48_.v49;
+                  goto LABEL_86;
+                }
+              }
+              v38 = v37;
+            LABEL_86:
+              v10 = v38 == v35;
+              v35 = v37;
+              v39 = v10;
+            }
+            if ((v36 & v39 & 1) == 0) {
+              if (v48_.v49 == v35) {
+              LABEL_93:
+                v14 = (__int64)
+                    anonymous_itanium_demangle_AbstractManglingParser_make_833dc0_alt1(
+                        (__int64)&v48_.v48, "invocation function for block in ",
+                        v32);
+                goto LABEL_22;
+              }
+              if (*v35 == 46) {
+                v48_.v48 = v48_.v49;
+                goto LABEL_93;
+              }
+            }
+          }
+        }
+      LABEL_94:
+        v7 = 0;
+        v13 = -2;
+        if (a4 == nullptr) {
+          goto LABEL_41;
+        }
+        goto LABEL_40;
+      }
+      v16 = 3;
+    }
+    v48_.v48 = (unsigned __int8*)(a1 + v16);
+    v14 = SdkRoutine_8332c0((__int64)&v48_.v48);
+    if (v14 != 0) {
+      v24 = v48_.v48;
+      v25 = v48_.v49 - v48_.v48;
+      if (v48_.v49 == v48_.v48) {
+        goto LABEL_22;
+      }
+      if (*v48_.v48 == 46) {
+        v26 = v69_.v71;
+        v27 = v69_.v71[1];
+        if ((unsigned __int64)(v27 - 4032) <= 0xFFFFFFFFFFFFF00FLL) {
+          v40 = v69_.v71;
+          v41 = v48_.v49 - v48_.v48;
+          v28 = (__int64*)malloc_plt_alt1(0x1000u);
+          if (v28 == nullptr) {
+            std_terminate_plt_alt1(0);
+          }
+          v25 = v41;
+          v27 = 0;
+          v26 = v28;
+          v69_.v71 = v28;
+          *v28 = (__int64)v40;
+          v28[1] = 0;
+        }
+        v29 = v27 + 48;
+        v30 = (__int64)v26 + v27;
+        v26[1] = v29;
+        *(_QWORD*)(v30 + 16) = SdkData_e84eb8;
+        v30 += 16;
+        *(_BYTE*)(v30 + 8) = 1;
+        LOWORD(v29) = *(_WORD*)(v30 + 9);
+        *(_QWORD*)(v30 + 16) = v14;
+        *(_QWORD*)(v30 + 24) = v24;
+        *(_QWORD*)(v30 + 32) = v25;
+        v14 = v30;
+        *(_WORD*)(v30 + 9) = v29 & 0xF000 | 0x540;
+        v48_.v48 = v48_.v49;
+      LABEL_22:
+        if (a2 != 0) {
+          v15 = *a3;
+        }
+        else {
+          v15 = 0;
+        }
+        v42_.v44 = 0;
+        v42_.v45 = v15;
+        v42_.v46 = -1;
+        v42_.v42 = SdkData_e82998;
+        v42_.v43 = a2;
+        v42_.v47 = 1;
+        if (v60_.v60 != v60_.v61) {
+          SdkRoutine_84c1f0_alt1((__int64)"libc++abi: ");
+        }
+        (*(void (**)(__int64, __int64 (***)(void)))(*(_QWORD*)v14 + 64LL))(
+            v14, &v42_.v42);
+        if ((*(_WORD*)(v14 + 9) & 0xC0) != 0x40) {
+          ((void (*)(__int64 (***)(void), __int64))v42_.v42[3])(&v42_.v42, v14);
+        }
+        v17 = v42_.v44;
+        if (v42_.v44 + 1 <= v42_.v45) {
+          ++v42_.v44;
+          *(_BYTE*)(v42_.v43 + v17) = 0;
+          if (a3 == nullptr) {
+          LABEL_38:
+            v7 = v42_.v43;
+            v13 = 0;
+            goto LABEL_39;
+          }
+        }
+        else {
+          if (2 * v42_.v45 <= v42_.v44 + 993) {
+            v18 = v42_.v44 + 993;
+          }
+          else {
+            v18 = 2 * v42_.v45;
+          }
+          v42_.v45 = v18;
+          v19 = realloc_plt_alt1(v42_.v43, v18);
+          v42_.v43 = v19;
+          if (v19 == 0) {
+            abort_plt_alt1();
+          }
+          v20 = v42_.v44++;
+          *(_BYTE*)(v19 + v20) = 0;
+          if (a3 == nullptr) {
+            goto LABEL_38;
+          }
+        }
+        *a3 = v42_.v44;
+        goto LABEL_38;
+      }
+    }
+    goto LABEL_94;
+  }
+LABEL_20:
+  v12 = anonymous_itanium_demangle_AbstractManglingParser_parseType_alt1(
+      &v48_.v48);
+  v13 = -2;
+  v14 = v12;
+  v7 = 0;
+  if (v12 != 0 && v48_.v49 == v48_.v48) {
+    goto LABEL_22;
+  }
+LABEL_39:
+  if (a4 != nullptr) {
+  LABEL_40:
+    *a4 = v13;
+  }
+LABEL_41:
+  for (i = (__int64**)v69_.v71; v69_.v71 != nullptr; i = (__int64**)v69_.v71) {
+    while (1) {
+      v22 = *i;
+      v69_.v71 = *i;
+      if (i != (__int64**)&v69_.v69) {
+        break;
+      }
+      i = (__int64**)v22;
+      if (v22 == nullptr) {
+        goto LABEL_46;
+      }
+    }
+    free_plt_alt1((__int64)i);
+  }
+LABEL_46:
+  v69_.v69 = 0;
+  v69_.v70 = 0;
+  v69_.v71 = &v69_.v69;
+  if (v60_.v60 != v63) {
+    free_plt_alt1((__int64)v60_.v60);
+  }
+  if ((_QWORD*)v58[0] != v59) {
+    free_plt_alt1(v58[0]);
+  }
+  if ((_QWORD*)v56[0] != v57) {
+    free_plt_alt1(v56[0]);
+  }
+  if ((_QWORD*)v54[0] != v55) {
+    free_plt_alt1(v54[0]);
+  }
+  if (v48_.v50 != v53) {
+    free_plt_alt1((__int64)v48_.v50);
+  }
+  return v7;
+}
 
 __int64 cxa_demangle_833200(__int64 a1, __int64 a2)
 {
@@ -4033,8 +4416,9 @@ anonymous_itanium_demangle_AbstractManglingParser_parseBaseUnresolvedName(
       }
     }
   }
-  result = anonymous_itanium_demangle_AbstractManglingParser_parseOperatorName(
-      a1, 0);
+  result =
+      anonymous_itanium_demangle_AbstractManglingParser_parseOperatorName_alt1(
+          a1, 0);
   if (result != 0 && *(_QWORD*)(a1 + 8) != *(_QWORD*)a1 &&
       **(_BYTE**)a1 == 73) {
     v13 = result;
@@ -4081,6 +4465,225 @@ __int64 anonymous_itanium_demangle_QualifiedName_getBaseName(__int64 a1)
 {
   return (*(__int64 (**)(_QWORD))(**(_QWORD**)(a1 + 24) + 40LL))(
       *(_QWORD*)(a1 + 24));
+}
+
+__int64
+
+anonymous_itanium_demangle_AbstractManglingParser_parseOperatorName(__int64 a1,
+                                                                    _BYTE* a2)
+{
+  __int64 v2;
+  unsigned __int8* v3;
+  unsigned __int8* v4;
+  unsigned int v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  unsigned __int8* v9;
+  unsigned int v10;
+  unsigned __int8* v11;
+  unsigned int v12;
+  _QWORD* v13;
+  __int64 v14;
+  char v16;
+  __int64 v17;
+  __int64 v18;
+  _QWORD* v19;
+  __int64 v20;
+  _QWORD* v21;
+  __int64 result;
+  __int16 v23;
+  __int64 v24;
+  __int64 v25;
+  char v26;
+  __int64 v27;
+  __int16 v28;
+  __int64 v29;
+  __int64 v30;
+  __int64 v31;
+  __int64 v32;
+
+  v3 = *(unsigned __int8**)a1;
+  v4 = *(unsigned __int8**)(a1 + 8);
+  if ((unsigned __int64)&v4[-*(_QWORD*)a1] < 2) {
+    goto LABEL_23;
+  }
+  v5 = *v3;
+  v6 = 62;
+  v7 = 0;
+  do {
+    v8 = (unsigned __int64)(v7 + v6) >> 1;
+    v9 = (unsigned __int8*)&SdkData_e82c40 + 16 * v8;
+    v10 = *v9;
+    if (v10 < v5 || v10 == v5 && v9[1] < (unsigned int)v3[1]) {
+      v7 = v8 + 1;
+      v8 = v6;
+    }
+    v6 = v8;
+  } while (v8 != v7);
+  v11 = (unsigned __int8*)&SdkData_e82c40 + 16 * v7;
+  if (*v11 == v5 && v11[1] == v3[1]) {
+    *(_QWORD*)a1 = v3 + 2;
+    v12 = v11[2];
+    if (v12 == 8) {
+      LOBYTE(v13) = *(_BYTE*)(a1 + 777);
+      LOBYTE(v14) = *(_BYTE*)(a1 + 776);
+      *(_BYTE*)(a1 + 776) = 0;
+      if (a2 != nullptr) {
+        v16 = 1;
+      }
+      else {
+        v16 = (char)v13;
+      }
+      *(_BYTE*)(a1 + 777) = v16;
+      v2 = a1;
+      v17 = anonymous_itanium_demangle_AbstractManglingParser_parseType(a1);
+      if (v17 == 0) {
+        result = 0;
+        v18 = v2;
+        goto LABEL_50;
+      }
+      v18 = v2;
+      if (a2 != nullptr) {
+        *a2 = 1;
+      }
+      v19 = *(_QWORD**)(v2 + 4912);
+      v20 = v19[1];
+      if ((unsigned __int64)(v20 - 4048) > 0xFFFFFFFFFFFFF00FLL) {
+      LABEL_21:
+        v19[1] = v20 + 32;
+        *(_QWORD*)((char*)v19 + v20 + 16) = SdkData_e84558;
+        result = (__int64)v19 + v20 + 16;
+        *(_BYTE*)(result + 8) = 4;
+        v23 = *(_WORD*)((char*)v19 + v20 + 25);
+        *(_QWORD*)(result + 16) = v17;
+        *(_WORD*)(result + 9) = v23 & 0xF000 | 0x540;
+      LABEL_50:
+        *(_BYTE*)(v18 + 777) = (_BYTE)v13;
+        *(_BYTE*)(v18 + 776) = v14;
+        return result;
+      }
+      v21 = (_QWORD*)malloc_plt(4096);
+      if (v21 != nullptr) {
+        v20 = 0;
+        *v21 = v19;
+        v21[1] = 0;
+        v19 = v21;
+        v18 = v2;
+        *(_QWORD*)(v2 + 4912) = v21;
+        goto LABEL_21;
+      }
+    LABEL_51:
+      v32 = std_terminate_plt(v21);
+      *(_BYTE*)(v2 + 777) = (_BYTE)v13;
+      *(_BYTE*)(v2 + 776) = v14;
+      _Unwind_Resume_plt(v32);
+      __udf(0);
+    }
+    if (v12 <= 0xA && (v12 != 4 || (v11[3] & 1) != 0)) {
+      v29 = *((_QWORD*)v11 + 1);
+      v2 = a1;
+      v30 = strlen_plt(v29);
+      v13 = *(_QWORD**)(v2 + 4912);
+      v14 = v30;
+      v31 = v13[1];
+      if ((unsigned __int64)(v31 - 4048) <= 0xFFFFFFFFFFFFF00FLL) {
+        v21 = (_QWORD*)malloc_plt(4096);
+        if (v21 == nullptr) {
+          goto LABEL_51;
+        }
+        v31 = 0;
+        *v21 = v13;
+        v21[1] = 0;
+        v13 = v21;
+        *(_QWORD*)(v2 + 4912) = v21;
+      }
+      v13[1] = v31 + 32;
+      *(_QWORD*)((char*)v13 + v31 + 16) = SdkData_e82ae8;
+      result = (__int64)v13 + v31 + 16;
+      *(_BYTE*)(result + 8) = 8;
+      v28 = *(_WORD*)((char*)v13 + v31 + 25);
+      *(_QWORD*)(result + 16) = v29;
+      *(_QWORD*)(result + 24) = v14;
+    LABEL_40:
+      *(_WORD*)(result + 9) = v28 & 0xF000 | 0x540;
+      return result;
+    }
+    return 0;
+  }
+  if (*(_WORD*)v3 == 26988) {
+    v14 = a1;
+    *(_QWORD*)a1 = v3 + 2;
+    result = anonymous_itanium_demangle_AbstractManglingParser_parseSourceName(
+        (unsigned __int8**)a1);
+    if (result != 0) {
+      v13 = *(_QWORD**)(v14 + 4912);
+      v24 = result;
+      v27 = v13[1];
+      if ((unsigned __int64)(v27 - 4048) <= 0xFFFFFFFFFFFFF00FLL) {
+        v21 = (_QWORD*)malloc_plt(4096);
+        if (v21 == nullptr) {
+          goto LABEL_51;
+        }
+        v27 = 0;
+        *v21 = v13;
+        v21[1] = 0;
+        v13 = v21;
+        *(_QWORD*)(v14 + 4912) = v21;
+      }
+      v13[1] = v27 + 32;
+      *(_QWORD*)((char*)v13 + v27 + 16) = SdkData_e845d0;
+      result = (__int64)v13 + v27 + 16;
+      v26 = 20;
+      goto LABEL_39;
+    }
+  }
+  else {
+  LABEL_23:
+    if (v3 == v4) {
+      return 0;
+    }
+    else {
+      if (*v3 != 118) {
+        return 0;
+      }
+      *(_QWORD*)a1 = v3 + 1;
+      if (v4 == v3 + 1 || (unsigned int)v3[1] - 48 > 9) {
+        return 0;
+      }
+      v14 = a1;
+      *(_QWORD*)a1 = v3 + 2;
+      result =
+          anonymous_itanium_demangle_AbstractManglingParser_parseSourceName(
+              (unsigned __int8**)a1);
+      if (result != 0) {
+        v13 = *(_QWORD**)(v14 + 4912);
+        v24 = result;
+        v25 = v13[1];
+        if ((unsigned __int64)(v25 - 4048) <= 0xFFFFFFFFFFFFF00FLL) {
+          v21 = (_QWORD*)malloc_plt(4096);
+          if (v21 == nullptr) {
+            goto LABEL_51;
+          }
+          v25 = 0;
+          *v21 = v13;
+          v21[1] = 0;
+          v13 = v21;
+          *(_QWORD*)(v14 + 4912) = v21;
+        }
+        v13[1] = v25 + 32;
+        *(_QWORD*)((char*)v13 + v25 + 16) = SdkData_e84558;
+        result = (__int64)v13 + v25 + 16;
+        v26 = 4;
+      LABEL_39:
+        *(_BYTE*)(result + 8) = v26;
+        v28 = *(_WORD*)(result + 9);
+        *(_QWORD*)(result + 16) = v24;
+        goto LABEL_40;
+      }
+    }
+  }
+  return result;
 }
 
 __int64 anonymous_itanium_demangle_GlobalQualifiedName_getBaseName(__int64 a1)
@@ -4707,6 +5310,255 @@ __int64 anonymous_itanium_demangle_NameWithTemplateArgs_printLeft(__int64 a1,
   return result;
 }
 
+__int64
+
+anonymous_itanium_demangle_AbstractManglingParser_parseQualifiedType(__int64 a1)
+{
+  unsigned __int8* v1;
+  unsigned __int8* v2;
+  __int64 result;
+  int v5;
+  _QWORD* v6;
+  __int64 v7;
+  __int64 v8;
+  _QWORD* v9;
+  __int64 v10;
+  char* v11;
+  __int16 v12;
+  __int64 v13;
+  unsigned __int64 v14;
+  unsigned __int8* v15;
+  __int64 v16;
+  unsigned __int64 v17;
+  unsigned __int8* v18;
+  __int64 v19;
+  unsigned __int8* v20;
+  bool v21;
+  __int64 v22;
+  _QWORD* v23;
+  __int64 v24;
+  __int64 v25;
+  __int16 v26;
+  unsigned __int8* v27;
+  __int64 v28;
+  unsigned __int8* v29;
+  unsigned __int64 v30;
+  __int64 v31;
+  __int64 v32;
+  unsigned __int8* v33;
+  unsigned int v34;
+  _QWORD* v35;
+  __int64 v36;
+  __int64 v37;
+
+  v2 = *(unsigned __int8**)a1;
+  v1 = *(unsigned __int8**)(a1 + 8);
+  if (*(unsigned __int8**)a1 == v1) {
+    goto LABEL_9;
+  }
+  if (*v2 != 85) {
+    if (*v2 == 114) {
+      ++v2;
+      v5 = 4;
+      *(_QWORD*)a1 = v2;
+      if (v2 != v1) {
+      LABEL_10:
+        if (*v2 == 86) {
+          ++v2;
+          v5 |= 2u;
+          *(_QWORD*)a1 = v2;
+        }
+      }
+    LABEL_12:
+      if (v2 != v1 && *v2 == 75) {
+        v5 |= 1u;
+        *(_QWORD*)a1 = v2 + 1;
+      }
+      result = anonymous_itanium_demangle_AbstractManglingParser_parseType_alt1(
+          (unsigned __int8**)a1);
+      if (result != 0 && v5 != 0) {
+        v6 = *(_QWORD**)(a1 + 4912);
+        v7 = v6[1];
+        if ((unsigned __int64)(v7 - 4048) <= 0xFFFFFFFFFFFFF00FLL) {
+          v8 = result;
+          v9 = (_QWORD*)malloc_plt(4096);
+          if (v9 == nullptr) {
+            goto LABEL_58;
+          }
+          v7 = 0;
+          *v9 = v6;
+          v9[1] = 0;
+          v6 = v9;
+          *(_QWORD*)(a1 + 4912) = v9;
+          result = v8;
+        }
+        v10 = v7 + 32;
+        v11 = (char*)v6 + v7;
+        v6[1] = v10;
+        LOWORD(v10) = *(_WORD*)(result + 9);
+        *((_QWORD*)v11 + 2) = SdkData_e85188;
+        v11 += 16;
+        v11[8] = 3;
+        v12 = *(_WORD*)(v11 + 9);
+        *((_DWORD*)v11 + 3) = v5;
+        *((_QWORD*)v11 + 2) = result;
+        *(_WORD*)(v11 + 9) = v12 & 0xF000 | v10 & 0xFC0;
+        return (__int64)v11;
+      }
+      return result;
+    }
+  LABEL_9:
+    v5 = 0;
+    if (v2 == v1) {
+      goto LABEL_12;
+    }
+    goto LABEL_10;
+  }
+  *(_QWORD*)a1 = v2 + 1;
+  if (v1 != v2 + 1) {
+    if ((unsigned int)v2[1] - 58 < 0xFFFFFFF6) {
+      return 0;
+    }
+    v13 = 0;
+    v14 = 0;
+    do {
+      v15 = &v2[v13];
+      v16 = v13;
+      v17 = v14;
+      v18 = &v2[v13 + 2];
+      *(_QWORD*)a1 = v18;
+      v19 = v2[v13 + 1];
+      v14 = v19 + 10 * v14 - 48;
+      if (v18 == v1) {
+        break;
+      }
+      ++v13;
+    } while ((unsigned int)*v18 - 48 <= 9);
+    if (v1 - v2 - v16 - 2 >= v14) {
+      v20 = &v2[10 * v17 - 46 + v16 + v19];
+      *(_QWORD*)a1 = v20;
+      if (v14 != 0) {
+        if (v14 < 9 || (*(_QWORD*)(v15 + 2) == 0x746F7270636A626FLL
+                            ? (v21 = v15[10] == 111)
+                            : (v21 = false),
+                        !v21)) {
+          if (v20 == v1 || *v20 != 73) {
+            v22 = 0;
+          }
+          else {
+            result = SdkRoutine_837c80_alt1(a1, 0);
+            v22 = result;
+            if (result == 0) {
+              return result;
+            }
+          }
+          result =
+              anonymous_itanium_demangle_AbstractManglingParser_parseQualifiedType(
+                  a1);
+          if (result != 0) {
+            v23 = *(_QWORD**)(a1 + 4912);
+            v24 = result;
+            v25 = v23[1];
+            if ((unsigned __int64)(v25 - 4032) > 0xFFFFFFFFFFFFF00FLL) {
+            LABEL_40:
+              v23[1] = v25 + 48;
+              *(_QWORD*)((char*)v23 + v25 + 16) = SdkData_e85110;
+              result = (__int64)v23 + v25 + 16;
+              *(_BYTE*)(result + 8) = 2;
+              v26 = *(_WORD*)((char*)v23 + v25 + 25);
+              *(_QWORD*)(result + 16) = v24;
+              *(_QWORD*)(result + 24) = v18;
+              *(_QWORD*)(result + 32) = v14;
+              *(_QWORD*)(result + 40) = v22;
+            LABEL_41:
+              *(_WORD*)(result + 9) = v26 & 0xF000 | 0x540;
+              return result;
+            }
+            v9 = (_QWORD*)malloc_plt(4096);
+            if (v9 != nullptr) {
+              v25 = 0;
+              *v9 = v23;
+              v9[1] = 0;
+              v23 = v9;
+              *(_QWORD*)(a1 + 4912) = v9;
+              goto LABEL_40;
+            }
+          LABEL_58:
+            std_terminate_plt(v9);
+            __udf(0);
+          }
+          return result;
+        }
+        v27 = &v2[v16 + 11];
+        v28 = (__int64)&v2[10 * v17 - 46 + v16 + v19];
+        *(_QWORD*)a1 = v27;
+        *(_QWORD*)(a1 + 8) = v28;
+        if (v14 == 9 || (unsigned int)*v27 - 58 < 0xFFFFFFF6) {
+          goto LABEL_49;
+        }
+        v29 = v15 + 12;
+        v30 = 0;
+        v31 = 10 * v17;
+        v32 = v19 + v31 - 58;
+        while (1) {
+          *(_QWORD*)a1 = v29;
+          v30 = *(v29 - 1) + 10 * v30 - 48;
+          if (v32 == 0) {
+            break;
+          }
+          v33 = v29 + 1;
+          --v32;
+          v34 = *v29++ - 48;
+          if (v34 > 9) {
+            v28 = (__int64)(v33 - 1);
+            break;
+          }
+        }
+        if ((unsigned __int64)&v2[v16 - 46 + v31 - v28 + v19] < v30) {
+        LABEL_49:
+          *(_QWORD*)a1 = v20;
+          *(_QWORD*)(a1 + 8) = v1;
+          return 0;
+        }
+        *(_QWORD*)a1 = v20;
+        *(_QWORD*)(a1 + 8) = v1;
+        if (v30 != 0) {
+          result =
+              anonymous_itanium_demangle_AbstractManglingParser_parseQualifiedType(
+                  a1);
+          if (result != 0) {
+            v35 = *(_QWORD**)(a1 + 4912);
+            v36 = result;
+            v37 = v35[1];
+            if ((unsigned __int64)(v37 - 4032) <= 0xFFFFFFFFFFFFF00FLL) {
+              v9 = (_QWORD*)malloc_plt(4096);
+              if (v9 == nullptr) {
+                goto LABEL_58;
+              }
+              v37 = 0;
+              *v9 = v35;
+              v9[1] = 0;
+              v35 = v9;
+              *(_QWORD*)(a1 + 4912) = v9;
+            }
+            v35[1] = v37 + 48;
+            *(_QWORD*)((char*)v35 + v37 + 16) = SdkData_e85098;
+            result = (__int64)v35 + v37 + 16;
+            *(_BYTE*)(result + 8) = 11;
+            v26 = *(_WORD*)((char*)v35 + v37 + 25);
+            *(_QWORD*)(result + 16) = v36;
+            *(_QWORD*)(result + 24) = v28;
+            *(_QWORD*)(result + 32) = v30;
+            goto LABEL_41;
+          }
+          return result;
+        }
+      }
+    }
+  }
+  return 0;
+}
+
 __int64 anonymous_itanium_demangle_AbstractManglingParser_make_8477d0(
     __int64 a1, __int64* a2, __int64 a3)
 {
@@ -5242,6 +6094,92 @@ char* anonymous_itanium_demangle_AbstractManglingParser_make_84a0d0(__int64 a1,
   *((_QWORD*)result + 3) = a3;
   *(_WORD*)(result + 9) = v10 & 0xC0 | 0x500 | v12 & 0xF000;
   return result;
+}
+
+__int64 anonymous_itanium_demangle_ReferenceType_collapse(__int64 a1,
+                                                          signed int a2,
+                                                          __int64 a3)
+{
+  __int64 v6;
+  _QWORD* v7;
+  char* v8;
+  unsigned __int64 v9;
+  signed __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  unsigned __int64 v13;
+  _QWORD* v15;
+  char* v16;
+  char* v17;
+  _QWORD v18[8];
+  __int64 v19;
+
+  v15 = v18;
+  v16 = (char*)v18;
+  v17 = (char*)&v19;
+  memset(v18, 0, sizeof(v18));
+  while (1) {
+    v6 = (*(__int64 (**)(__int64, __int64))(*(_QWORD*)a1 + 24LL))(a1, a3);
+    v7 = v15;
+    if (*(_BYTE*)(v6 + 8) != 13) {
+      break;
+    }
+    a1 = *(_QWORD*)(v6 + 16);
+    if ((signed __int32)*(_DWORD*)(v6 + 24) < a2) {
+      a2 = *(_DWORD*)(v6 + 24);
+    }
+    v8 = v16;
+    if (v16 == v17) {
+      v10 = v16 - (char*)v15;
+      if (v15 == v18) {
+        v11 = malloc_plt_alt1(2 * (v16 - (char*)v15));
+        if (v11 == 0) {
+        LABEL_22:
+          abort_plt_alt1();
+        }
+        if (v16 != (char*)v18) {
+          v12 = v11;
+          memmove_plt_alt1(v11, (__int64)v15, v10);
+          v11 = v12;
+        }
+        v15 = (_QWORD*)v11;
+      }
+      else {
+        v11 = realloc_plt_alt1((__int64)v15, 2 * (v16 - (char*)v15));
+        v15 = (_QWORD*)v11;
+        if (v11 == 0) {
+          goto LABEL_22;
+        }
+      }
+      v7 = (_QWORD*)v11;
+      v17 = (char*)(v11 + 8 * (v10 >> 2));
+      *(_QWORD*)(v11 + v10) = a1;
+      v16 = (char*)(v11 + v10 + 8);
+      v9 = (v10 + 8) >> 3;
+      if (v9 >= 2) {
+        goto LABEL_16;
+      }
+    }
+    else {
+      *(_QWORD*)v16 = a1;
+      v16 += 8;
+      v9 = (v8 + 8 - (char*)v15) >> 3;
+      if (v9 >= 2) {
+      LABEL_16:
+        v13 = (v9 - 1) >> 1;
+        if (v13 >= v9) {
+          SdkRoutine_84c1f0_alt1((__int64)"libc++abi: Invalid access!");
+        }
+        if (a1 == v7[v13]) {
+          break;
+        }
+      }
+    }
+  }
+  if (v7 != v18) {
+    free_plt_alt1((__int64)v7);
+  }
+  return (unsigned int)a2;
 }
 
 #pragma GCC visibility pop

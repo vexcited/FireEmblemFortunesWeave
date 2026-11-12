@@ -114,6 +114,12 @@ void __attribute__((noreturn)) llvmlibcxx_libcxx_7e5698(__int64 a1, __int64 a2,
                                                         __int64 a7, __int64 a8,
                                                         __int64 a9);
 void __attribute__((noreturn)) llvmlibcxx_libcxx_7e5e9c(__int64 a1);
+extern __int64 SdkData_e89398;
+extern __int64 SdkData_e893a0;
+void SdkRoutine_8584f0(void*, void*);
+_QWORD* std_logic_error_logic_error(_QWORD* result, __int64 a2);
+__int64 unplaced_7dbdb0(__int64 result, void* a2);
+__int64 std_runtime_error_runtime_error(_QWORD* a1, __int64 a2);
 
 __int64 llvmlibcxx_libcxx_7cd640(__int64 a1, unsigned __int64 a2, __int64 a3,
                                  unsigned __int8 a4)
@@ -4590,6 +4596,62 @@ void __attribute__((noreturn)) llvmlibcxx_libcxx_7dbd60(__int64 a1)
   std_exception_Destroy_exception_plt_87c890();
   _Unwind_Resume_plt(a1);
   __udf(0);
+}
+
+_QWORD* std_logic_error_logic_error(_QWORD* result, __int64 a2)
+{
+  __int64 v2;
+
+  v2 = *(_QWORD*)(a2 + 8);
+  *result = SdkData_e89398 + 16;
+  result[1] = v2;
+  atomic_fetch_add((atomic_uint* volatile)(v2 - 8), 1u);
+  return result;
+}
+
+__int64 unplaced_7dbdb0(__int64 result, void* a2)
+{
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+
+  v2 = *((_QWORD*)a2 + 1);
+  v3 = *(_QWORD*)(result + 8);
+  *(_QWORD*)(result + 8) = v2;
+  atomic_fetch_add((atomic_uint* volatile)(v2 - 8), 1u);
+  if ((int)(atomic_fetch_add((atomic_uint* volatile)(v3 - 8), 0xFFFFFFFF) - 1) <
+      0) {
+    v4 = result;
+    SdkRoutine_8584f0((void*)(v3 - 24), a2);
+    return v4;
+  }
+  return result;
+}
+
+__int64 std_runtime_error_runtime_error(_QWORD* a1, __int64 a2)
+{
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 result;
+
+  *a1 = SdkData_e893a0 + 16;
+  if ((*(_BYTE*)a2 & 1) != 0) {
+    v3 = *(_QWORD*)(a2 + 16);
+  }
+  else {
+    v3 = a2 + 1;
+  }
+  v4 = strlen_plt(v3);
+  v5 = SdkRoutine_85e050(v4 + 25);
+  v6 = v5 + 24;
+  *(_QWORD*)v5 = v4;
+  *(_QWORD*)(v5 + 8) = v4;
+  *(_DWORD*)(v5 + 16) = 0;
+  result = memcpy_plt(v5 + 24, v3, v4 + 1);
+  a1[1] = v6;
+  return result;
 }
 
 __int64 llvmlibcxx_libcxx_7dbe8c(__int64 a1)

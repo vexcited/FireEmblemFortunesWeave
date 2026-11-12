@@ -143,6 +143,103 @@ extern int* NgxData_9536d8;
 extern int* NgxData_9536e8;
 extern int* NgxData_9536f8;
 __int64 cheerful_wasp_00156_99910();
+__int64 memmove_plt(__int64, __int64, unsigned __int64);
+int strcmp_plt(const char*, const char*);
+unsigned __int64 strlen_plt(const char*);
+void __attribute__((noreturn)) NgxRoutine_27cb0();
+__attribute__((swiftcall)) void cheerful_wasp_00156_977c0(PSEUDO_X8 x8_,
+                                                          __int64 a1);
+
+__attribute__((swiftcall)) void cheerful_wasp_00156_977c0(PSEUDO_X8 x8_,
+                                                          __int64 a1)
+{
+  __int64* a2 = (__int64*)PSEUDO_X8_VALUE(x8_);
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  unsigned __int64 v7;
+  int v8;
+  unsigned __int64 result;
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
+
+  v4 = 0;
+  v5 = *(_QWORD*)(a1 + 112) - 4LL;
+  v6 = v5;
+  v7 = -4;
+  v8 = *(unsigned __int8*)(v5 + 4);
+  if (*(_BYTE*)(v5 + 4) != 0) {
+    do {
+      while (v8 != 47 && v8 != 92) {
+        ++v6;
+        ++v7;
+        v8 = *(unsigned __int8*)(v6 + 4);
+        if (*(_BYTE*)(v6 + 4) == 0) {
+          goto LABEL_7;
+        }
+      }
+      v4 += v7 + 5;
+      v6 = v5 + v4;
+      v7 = -4;
+      v8 = *(unsigned __int8*)(v5 + v4 + 4);
+    } while (*(_BYTE*)(v5 + v4 + 4) != 0);
+  }
+LABEL_7:
+  result = strcmp_plt((const char*)v6, ".cpp");
+  v10 = *(_QWORD*)(a1 + 112);
+  if ((_DWORD)result != 0) {
+    result = strlen_plt((const char*)(v10 + v4));
+    if (result < 0xFFFFFFFFFFFFFFF7LL) {
+      v7 = result;
+      if (result >= 0x17) {
+        if ((result | 7) == 0x17) {
+          v11 = 26;
+        }
+        else {
+          v11 = (result | 7) + 1;
+        }
+      LABEL_13:
+        v12 = NgxRoutine_420(v11);
+        a2[1] = v7;
+        a2[2] = v12;
+        *a2 = v11 | 1;
+        v13 = v12;
+      LABEL_17:
+        result = memmove_plt(v13, v10 + v4, v7);
+        goto LABEL_18;
+      }
+      goto LABEL_16;
+    }
+  LABEL_22:
+    NgxRoutine_27cb0();
+  }
+  if (v7 >= 0xFFFFFFFFFFFFFFF7LL) {
+    goto LABEL_22;
+  }
+  if (v7 > 0x16) {
+    if ((v7 | 7) == 0x17) {
+      v11 = 26;
+    }
+    else {
+      v11 = (v7 | 7) + 1;
+    }
+    goto LABEL_13;
+  }
+LABEL_16:
+  *(_BYTE*)a2 = 2 * v7;
+  v13 = (__int64)a2 + 1;
+  if (v7 != 0) {
+    goto LABEL_17;
+  }
+LABEL_18:
+  *(_BYTE*)(v13 + v7) = 0;
+  {
+    result;
+    return;
+  }
+}
 
 __int64 cheerful_wasp_00156_99910()
 {

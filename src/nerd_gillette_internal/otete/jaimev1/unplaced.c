@@ -66,6 +66,7 @@ bool nerd_gillette_internal_otete_jaimev1_DecodeFullSilhouetteROK(
 bool nerd_gillette_internal_otete_jaimev1_DecodeFullSilhouetteImplROK(
     _QWORD* a1, __int64* a2, unsigned __int8* a3,
     __attribute__((swiftcall)) void (*a4)(PSEUDO_X8, __int16*));
+bool unplaced_7441e0(__int64** a1, unsigned int* a2, unsigned __int64 a3);
 _DWORD*
 
 nerd_gillette_internal_otete_jaimev1_GetTanHalfFieldOfView(_DWORD* this_,
@@ -193,6 +194,129 @@ bool nerd_gillette_internal_otete_jaimev1_DecodePacketPrefixROK(
     }
   }
   return v8 >= a2;
+}
+
+bool unplaced_7441e0(__int64** a1, unsigned int* a2, unsigned __int64 a3)
+{
+  __int64* v3;
+  unsigned __int64 v4;
+  unsigned __int64 v5;
+  unsigned __int64 v6;
+  __int64 v7;
+  unsigned __int64 v8;
+  unsigned int v9;
+  unsigned __int64 v10;
+  unsigned __int64 v11;
+  char v12;
+  unsigned __int64 v13;
+  char v14;
+  unsigned int v15;
+  unsigned int v16;
+  unsigned int v17;
+  unsigned __int64 v18;
+  char v19;
+  unsigned __int64 v20;
+  char v21;
+  unsigned __int64 v22;
+  char v23;
+
+  v3 = *a1;
+  v5 = (*a1)[1];
+  v4 = (*a1)[2];
+  v6 = v4 - v5;
+  if (v4 - v5 >= a3) {
+    if (a3 == 0) {
+      v9 = 0;
+    LABEL_22:
+      *a2 = v9;
+      return v6 >= a3;
+    }
+    v7 = *v3;
+    v8 = a3 & 3;
+    if (a3 < 4) {
+      v9 = 0;
+    LABEL_17:
+      if ((a3 & 3) != 0) {
+        do {
+          while (v5 < v4) {
+            v22 = v5 >> 3;
+            v23 = v5++ & 7;
+            LODWORD(v22) = *(unsigned __int8*)(v7 + v22);
+            v3[1] = v5;
+            v9 = ((unsigned int)v22 >> v23) & 1 | (2 * v9);
+            if (--v8 == 0) {
+              goto LABEL_22;
+            }
+          }
+          v9 *= 2;
+          --v8;
+        } while (v8 != 0);
+      }
+      goto LABEL_22;
+    }
+    v10 = a3 & 0xFFFFFFFFFFFFFFFCLL;
+    v9 = 0;
+    while (1) {
+      if (v5 >= v4) {
+        v15 = 0;
+      LABEL_10:
+        v16 = 0;
+        if (v5 >= v4) {
+          goto LABEL_11;
+        }
+      LABEL_15:
+        v20 = v5 >> 3;
+        v21 = v5++ & 7;
+        LODWORD(v20) = *(unsigned __int8*)(v7 + v20);
+        v3[1] = v5;
+        v17 = 2 * (((unsigned int)v20 >> v21) & 1);
+        if (v5 < v4) {
+          goto LABEL_7;
+        }
+      LABEL_16:
+        v10 -= 4LL;
+        v9 = v17 | (4 * (v16 | v15 | (4 * v9)));
+        if (v10 == 0) {
+          goto LABEL_17;
+        }
+      }
+      else {
+        v13 = v5 >> 3;
+        v14 = v5++ & 7;
+        LODWORD(v13) = *(unsigned __int8*)(v7 + v13);
+        v3[1] = v5;
+        v15 = 2 * (((unsigned int)v13 >> v14) & 1);
+        if (v5 >= v4) {
+          goto LABEL_10;
+        }
+        v18 = v5 >> 3;
+        v19 = v5++ & 7;
+        LODWORD(v18) = *(unsigned __int8*)(v7 + v18);
+        v3[1] = v5;
+        v16 = ((unsigned int)v18 >> v19) & 1;
+        if (v5 < v4) {
+          goto LABEL_15;
+        }
+      LABEL_11:
+        v17 = 0;
+        if (v5 >= v4) {
+          goto LABEL_16;
+        }
+      LABEL_7:
+        v11 = v5 >> 3;
+        v12 = v5++ & 7;
+        LODWORD(v11) = *(unsigned __int8*)(v7 + v11);
+        v3[1] = v5;
+        v10 -= 4LL;
+        v9 =
+            ((unsigned int)v11 >> v12) & 1 | v17 | (4 * (v16 | v15 | (4 * v9)));
+        if (v10 == 0) {
+          goto LABEL_17;
+        }
+      }
+    }
+  }
+  return v6 >= a3;
 }
 
 bool nerd_gillette_internal_otete_jaimev1_DecodePacketModeROK(

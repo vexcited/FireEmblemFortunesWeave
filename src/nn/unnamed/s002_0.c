@@ -181,8 +181,6 @@ __int64 SdkRoutine_4d3c80(_QWORD);
 
 __int64 SdkRoutine_4d3e30(_QWORD, _QWORD);
 
-__int64 SdkRoutine_4dfa30(_QWORD, _QWORD, _QWORD);
-
 __int64 SdkRoutine_4e6a40();
 
 __int64 SdkRoutine_4e6a60();
@@ -195,8 +193,6 @@ __int64 SdkRoutine_4e6ca0();
 
 __int64 SdkRoutine_4e6d00();
 
-__int64 SdkRoutine_4f61b0(_QWORD, _QWORD, _QWORD);
-
 __int64 SdkRoutine_57e3a0(_QWORD);
 
 __int64 SdkRoutine_57e660(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
@@ -207,8 +203,6 @@ __int64 SdkRoutine_57f1c0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
                           _QWORD, _QWORD, _DWORD);
 
 __int64 SdkRoutine_856130(_QWORD, _QWORD, _QWORD);
-
-__int64 SdkRoutine_8572f0(_QWORD, _QWORD, _QWORD);
 
 __int64 SdkRoutine_858a50(_QWORD, _QWORD, _QWORD);
 
@@ -261,8 +255,6 @@ __int64 SdkRoutine_86dba0(_QWORD, _QWORD);
 __int64 SdkRoutine_86dca0(_QWORD, _QWORD);
 
 __int64 SdkRoutine_86dcb0(_QWORD);
-
-__int64 SdkRoutine_86efe0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 
 __int64 SdkRoutine_dc120(_QWORD, _QWORD);
 
@@ -1355,133 +1347,6 @@ __int64 SdkHr_4d3f20(__int64* a1, __int64 a2)
   return v13;
 }
 
-__int64* SdkHr_4df880(__int64** a1, unsigned __int8* a2, __int64* a3)
-{
-  __int64* v3;
-  __int64* v4;
-  unsigned __int64 v7;
-  bool v8;
-  unsigned __int64 v9;
-  unsigned __int8* v10;
-  unsigned __int64 v11;
-  __int64* v12;
-  unsigned __int64 v13;
-  bool v14;
-  unsigned __int64 v15;
-  unsigned __int64 v16;
-  __int64 v17;
-  __int64 v18;
-  int v19;
-  int v20;
-  _QWORD* v21;
-  _QWORD* v22;
-  __int64 v23;
-  __int64 v24;
-  __int64 v25;
-  __int64 v26;
-  _QWORD* v27;
-  __int64* v28;
-
-  v4 = (__int64*)(a1 + 1);
-  v3 = a1[1];
-  if (v3 != nullptr) {
-    v7 = *a2;
-    v8 = (v7 & 1) == 0;
-    v9 = v7 >> 1;
-    if (v8) {
-      v10 = a2 + 1;
-    }
-    else {
-      v10 = *((unsigned __int8**)a2 + 2);
-    }
-    if (v8) {
-      v11 = v9;
-    }
-    else {
-      v11 = *((_QWORD*)a2 + 1);
-    }
-    while (1) {
-      while (1) {
-        v12 = v3;
-        v13 = *((unsigned __int8*)v3 + 32);
-        v14 = (v13 & 1) == 0;
-        v15 = v13 >> 1;
-        v16 = v14 ? v15 : v12[5];
-        v17 = v14 ? (__int64)v12 + 33 : v12[6];
-        v18 = v16 >= v11 ? v11 : v16;
-        v19 = SdkRoutine_8572f0(v10, v17, v18);
-        if (v19 != 0) {
-          break;
-        }
-        if (v11 >= v16) {
-          goto LABEL_22;
-        }
-      LABEL_8:
-        v3 = (__int64*)*v12;
-        v4 = v12;
-        if (*v12 == 0) {
-          goto LABEL_29;
-        }
-      }
-      if (v19 < 0) {
-        goto LABEL_8;
-      }
-    LABEL_22:
-      v20 = SdkRoutine_8572f0(v17, v10, v18);
-      if (v20 != 0) {
-        if ((v20 & 0x80000000) == 0) {
-          return v12;
-        }
-      }
-      else if (v16 >= v11) {
-        return v12;
-      }
-      v3 = (__int64*)v12[1];
-      if (v3 == nullptr) {
-        v4 = v12 + 1;
-        goto LABEL_29;
-      }
-    }
-  }
-  v12 = (__int64*)(a1 + 1);
-LABEL_29:
-  v21 = (_QWORD*)SdkRoutine_4c19c0(96);
-  v22 = v21;
-  v21[7] = a3[3];
-  if ((*(_BYTE*)a3 & 1) != 0) {
-    SdkRoutine_4dfa30(v21 + 4, a3[2], a3[1]);
-  }
-  else {
-    v23 = *a3;
-    v24 = a3[2];
-    v21[5] = a3[1];
-    v21[6] = v24;
-    v21[4] = v23;
-  }
-  v25 = a3[4];
-  v26 = a3[6];
-  v27 = v22;
-  v22[9] = a3[5];
-  v22[10] = v26;
-  v22[8] = v25;
-  v22[11] = a3[7];
-  a3[5] = 0;
-  a3[6] = 0;
-  a3[4] = 0;
-  *v22 = 0;
-  v22[1] = 0;
-  v22[2] = v12;
-  *v4 = (__int64)v22;
-  v28 = (__int64*)**a1;
-  if (v28 != nullptr) {
-    *a1 = v28;
-    v27 = (_QWORD*)*v4;
-  }
-  SdkRoutine_dc120(a1[1], v27);
-  a1[3] = (__int64*)((char*)a1[3] + 1);
-  return v22;
-}
-
 _QWORD* SdkHr_4e69c0(__int64 a1)
 {
   _QWORD* result;
@@ -1500,226 +1365,6 @@ _QWORD* SdkHr_4e69c0(__int64 a1)
     result[6] = SdkRoutine_4e6d00;
   }
   return result;
-}
-
-_QWORD* SdkHr_4f5ec0(__int64** a1, __int64 a2, __int64 a3, __int64 a4)
-{
-  _QWORD** v6;
-  _QWORD* v7;
-  _QWORD* v8;
-  __int64 v9;
-  __int64 v10;
-  __int64 v11;
-  __int64 v12;
-  __int64 v13;
-  __int64* v14;
-  __int64 v15;
-  __int64 v16;
-  __int64 v17;
-  __int64 v18;
-  _QWORD* v19;
-  __int64* v20;
-  __int64 v22;
-  __int64 v23;
-
-  v22 = 0;
-  v23 = 0;
-  v6 = (_QWORD**)SdkRoutine_86efe0(a1, a2, &v23, &v22, a3);
-  v7 = *v6;
-  if (*v6 != nullptr) {
-    return v7;
-  }
-  v8 = v6;
-  v9 = SdkRoutine_4c19c0(112);
-  v7 = (_QWORD*)v9;
-  *(_DWORD*)(v9 + 32) = *(_DWORD*)a4;
-  v11 = *(_QWORD*)(a4 + 8);
-  v10 = *(_QWORD*)(a4 + 16);
-  *(_DWORD*)(v9 + 55) = *(_DWORD*)(a4 + 23);
-  *(_QWORD*)(v9 + 40) = v11;
-  *(_QWORD*)(v9 + 48) = v10;
-  if ((*(_BYTE*)(a4 + 32) & 1) != 0) {
-    SdkRoutine_4f61b0(v9 + 64, *(_QWORD*)(a4 + 48), *(_QWORD*)(a4 + 40));
-    v14 = (__int64*)(a4 + 56);
-    if ((*(_BYTE*)(a4 + 56) & 1) != 0) {
-      goto LABEL_4;
-    }
-  LABEL_6:
-    v15 = *v14;
-    v16 = v14[1];
-    v17 = v14[2];
-    v7[12] = v16;
-    v7[13] = v17;
-    v7[11] = v15;
-    goto LABEL_7;
-  }
-  v12 = *(_QWORD*)(a4 + 32);
-  v13 = *(_QWORD*)(a4 + 48);
-  *(_QWORD*)(v9 + 72) = *(_QWORD*)(a4 + 40);
-  *(_QWORD*)(v9 + 80) = v13;
-  *(_QWORD*)(v9 + 64) = v12;
-  v14 = (__int64*)(a4 + 56);
-  if ((*(_BYTE*)(a4 + 56) & 1) == 0) {
-    goto LABEL_6;
-  }
-LABEL_4:
-  SdkRoutine_4f61b0(v7 + 11, *(_QWORD*)(a4 + 72), *(_QWORD*)(a4 + 64));
-LABEL_7:
-  v18 = v23;
-  *v7 = 0;
-  v7[1] = 0;
-  v19 = v7;
-  v7[2] = v18;
-  *v8 = v7;
-  v20 = (__int64*)**a1;
-  if (v20 != nullptr) {
-    *a1 = v20;
-    v19 = (_QWORD*)*v8;
-  }
-  SdkRoutine_dc120(a1[1], v19);
-  a1[3] = (__int64*)((char*)a1[3] + 1);
-  return v7;
-}
-
-__int64* SdkHr_4f6000(_QWORD* a1, __int64* a2, __int64** a3, __int64** a4,
-                      unsigned int* a5)
-{
-  __int64* v5;
-  unsigned int v6;
-  unsigned int v7;
-  __int64* v8;
-  __int64* v9;
-  __int64* v10;
-  __int64 v11;
-  __int64* v12;
-  __int64* v13;
-  __int64* v14;
-  bool v15;
-  unsigned int v16;
-  __int64 v18;
-  __int64* v19;
-  unsigned int v20;
-  __int64* v21;
-  __int64 v22;
-  unsigned int v23;
-
-  v5 = a1 + 1;
-  if (a2 == a1 + 1 || (v6 = *a5, v7 = *((_DWORD*)a2 + 8), *a5 < v7)) {
-    v8 = (__int64*)*a2;
-    v9 = a2;
-    if (a2 != (__int64*)*a1) {
-      if (v8 != nullptr) {
-        v10 = (__int64*)*a2;
-        do {
-          v9 = v10;
-          v10 = (__int64*)v10[1];
-        } while (v10 != nullptr);
-      }
-      else {
-        v14 = a2;
-        do {
-          v9 = (__int64*)v14[2];
-          v15 = v14 == (__int64*)*v9;
-          v14 = v9;
-        } while (v15);
-      }
-      v16 = *a5;
-      if (*((_DWORD*)v9 + 8) >= *a5) {
-        v18 = *v5;
-        if (*v5 != 0) {
-          do {
-            while (1) {
-              v19 = (__int64*)v18;
-              v20 = *(_DWORD*)(v18 + 32);
-              if (v16 >= v20) {
-                break;
-              }
-              v18 = *v19;
-              v5 = v19;
-              if (*v19 == 0) {
-                goto LABEL_20;
-              }
-            }
-            if (v20 >= v16) {
-              break;
-            }
-            v5 = v19 + 1;
-            v18 = v19[1];
-          } while (v18 != 0);
-        }
-        else {
-          v19 = a1 + 1;
-        }
-      LABEL_20:
-        *a3 = v19;
-        return v5;
-      }
-    }
-    if (v8 != nullptr) {
-      *a3 = v9;
-      return v9 + 1;
-    }
-    else {
-      *a3 = a2;
-      return a2;
-    }
-  }
-  if (v7 >= v6) {
-    *a3 = a2;
-    *a4 = a2;
-    return (__int64*)a4;
-  }
-  v11 = a2[1];
-  if (v11 != 0) {
-    v12 = (__int64*)a2[1];
-    do {
-      v13 = v12;
-      v12 = (__int64*)*v12;
-    } while (v12 != nullptr);
-  }
-  else {
-    v21 = a2;
-    do {
-      v13 = (__int64*)v21[2];
-      v15 = v21 == (__int64*)*v13;
-      v21 = v13;
-    } while (!v15);
-  }
-  if (v13 != v5 && v6 >= *((_DWORD*)v13 + 8)) {
-    v22 = *v5;
-    if (*v5 == 0) {
-      *a3 = v5;
-      return a1 + 1;
-    }
-    do {
-      while (1) {
-        v19 = (__int64*)v22;
-        v23 = *(_DWORD*)(v22 + 32);
-        if (v6 >= v23) {
-          break;
-        }
-        v22 = *v19;
-        v5 = v19;
-        if (*v19 == 0) {
-          goto LABEL_20;
-        }
-      }
-      if (v23 >= v6) {
-        break;
-      }
-      v5 = v19 + 1;
-      v22 = v19[1];
-    } while (v22 != 0);
-    goto LABEL_20;
-  }
-  if (v11 != 0) {
-    *a3 = v13;
-    return v13;
-  }
-  else {
-    *a3 = a2;
-    return a2 + 1;
-  }
 }
 
 _QWORD* SdkHr_514450(__int64 a1)

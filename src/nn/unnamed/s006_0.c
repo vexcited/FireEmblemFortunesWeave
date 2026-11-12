@@ -38,12 +38,6 @@ __int64 SdkRoutine_84ade0(_QWORD, _QWORD, _QWORD);
 
 void __attribute__((noreturn)) SdkRoutine_84c1f0(const char*, ...);
 
-__int64 SdkRoutine_853120(_QWORD, _QWORD, _QWORD);
-
-__int64 SdkRoutine_8532c0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
-
-__int64 SdkRoutine_853880(_QWORD);
-
 __int64 SdkRoutine_856130(_QWORD, _QWORD, _QWORD);
 
 __int64 SdkRoutine_857220(_QWORD, _QWORD);
@@ -67,8 +61,6 @@ __int64 SdkRoutine_87c790(_QWORD);
 __int64 SdkRoutine_87c9c0(_QWORD);
 
 __int64 SdkRoutine_87cb10(_QWORD);
-
-void __attribute__((noreturn)) SdkRoutine_aeb60(const char*, ...);
 
 void __attribute__((noreturn)) SdkHr_829060(__int64 a1)
 {
@@ -7284,26 +7276,6 @@ __int64 SdkHr_84ac90(__int64 result, _QWORD* a2)
     goto LABEL_18;
   }
   return result;
-}
-
-void __attribute__((noreturn)) SdkHr_853240(__int64 a1)
-{
-  __int64 v2;
-  _BYTE v3[624];
-  _BYTE v4[528];
-
-  SdkRoutine_853880(v4);
-  v2 = *(_QWORD*)(a1 + 16);
-  if (v2 != 0) {
-    SdkRoutine_8532c0(v4, v3, a1, v2, *(_QWORD*)(a1 + 24));
-  }
-  else {
-    SdkRoutine_853120(v4, v3, a1);
-  }
-  SdkRoutine_aeb60(
-      "libunwind: %s %s:%d - %s\n", "_Unwind_Resume",
-      "D:/bb/ntd/ryn-flt-lto/llvm-project/libunwind/src/UnwindLevel1.c", 502,
-      "_Unwind_Resume() can't return");
 }
 
 #pragma GCC visibility pop

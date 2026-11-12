@@ -101,6 +101,12 @@ __int64 nandroid_convertMetaDataToMessageFromMappings(__int64 a1, _QWORD* a2);
 __int64 nandroid_libstagefright_56eae0(__int64 a1, __int64 a2, __int64 a3,
                                        __int64 a4);
 __int64 nandroid_deserializeAudioPresentations(__int64 a1, __int64* a2);
+__int64 nandroid_libstagefright_4dfa30_alt1(_QWORD, _QWORD, _QWORD) __asm__(
+    "nandroid_libstagefright_4dfa30");
+__int64 nn_fs_dc120(_QWORD, _QWORD);
+__int64* std___1___tree___emplace_unique_key_args_4df880(__int64** a1,
+                                                         unsigned __int8* a2,
+                                                         __int64* a3);
 
 __int64 nandroid_libstagefright_4deaa0(_QWORD* a1)
 {
@@ -197,6 +203,135 @@ __int64 nandroid_libstagefright_4df7e0(__int64 result, __int64 a2)
     return nn_movie_detail_FreeMemory_alt1(a2, *(_QWORD*)(v3 + 16));
   }
   return result;
+}
+
+__int64* std___1___tree___emplace_unique_key_args_4df880(__int64** a1,
+                                                         unsigned __int8* a2,
+                                                         __int64* a3)
+{
+  __int64* v3;
+  __int64* v4;
+  unsigned __int64 v7;
+  bool v8;
+  unsigned __int64 v9;
+  unsigned __int8* v10;
+  unsigned __int64 v11;
+  __int64* v12;
+  unsigned __int64 v13;
+  bool v14;
+  unsigned __int64 v15;
+  unsigned __int64 v16;
+  __int64 v17;
+  __int64 v18;
+  int v19;
+  int v20;
+  _QWORD* v21;
+  _QWORD* v22;
+  __int64 v23;
+  __int64 v24;
+  __int64 v25;
+  __int64 v26;
+  _QWORD* v27;
+  __int64* v28;
+
+  v4 = (__int64*)(a1 + 1);
+  v3 = a1[1];
+  if (v3 != nullptr) {
+    v7 = *a2;
+    v8 = (v7 & 1) == 0;
+    v9 = v7 >> 1;
+    if (v8) {
+      v10 = a2 + 1;
+    }
+    else {
+      v10 = *((unsigned __int8**)a2 + 2);
+    }
+    if (v8) {
+      v11 = v9;
+    }
+    else {
+      v11 = *((_QWORD*)a2 + 1);
+    }
+    while (1) {
+      while (1) {
+        v12 = v3;
+        v13 = *((unsigned __int8*)v3 + 32);
+        v14 = (v13 & 1) == 0;
+        v15 = v13 >> 1;
+        v16 = v14 ? v15 : v12[5];
+        v17 = v14 ? (__int64)v12 + 33 : v12[6];
+        v18 = v16 >= v11 ? v11 : v16;
+        v19 = memcmp_plt(v10, v17, v18);
+        if (v19 != 0) {
+          break;
+        }
+        if (v11 >= v16) {
+          goto LABEL_22;
+        }
+      LABEL_8:
+        v3 = (__int64*)*v12;
+        v4 = v12;
+        if (*v12 == 0) {
+          goto LABEL_29;
+        }
+      }
+      if (v19 < 0) {
+        goto LABEL_8;
+      }
+    LABEL_22:
+      v20 = memcmp_plt(v17, v10, v18);
+      if (v20 != 0) {
+        if ((v20 & 0x80000000) == 0) {
+          return v12;
+        }
+      }
+      else if (v16 >= v11) {
+        return v12;
+      }
+      v3 = (__int64*)v12[1];
+      if (v3 == nullptr) {
+        v4 = v12 + 1;
+        goto LABEL_29;
+      }
+    }
+  }
+  v12 = (__int64*)(a1 + 1);
+LABEL_29:
+  v21 = (_QWORD*)nn_movie_detail_AllocateMemory(96);
+  v22 = v21;
+  v21[7] = a3[3];
+  if ((*(_BYTE*)a3 & 1) != 0) {
+    nandroid_libstagefright_4dfa30_alt1(v21 + 4, a3[2], a3[1]);
+  }
+  else {
+    v23 = *a3;
+    v24 = a3[2];
+    v21[5] = a3[1];
+    v21[6] = v24;
+    v21[4] = v23;
+  }
+  v25 = a3[4];
+  v26 = a3[6];
+  v27 = v22;
+  v22[9] = a3[5];
+  v22[10] = v26;
+  v22[8] = v25;
+  v22[11] = a3[7];
+  a3[5] = 0;
+  a3[6] = 0;
+  a3[4] = 0;
+  *v22 = 0;
+  v22[1] = 0;
+  v22[2] = v12;
+  *v4 = (__int64)v22;
+  v28 = (__int64*)**a1;
+  if (v28 != nullptr) {
+    *a1 = v28;
+    v27 = (_QWORD*)*v4;
+  }
+  nn_fs_dc120(a1[1], v27);
+  a1[3] = (__int64*)((char*)a1[3] + 1);
+  return v22;
 }
 
 __int64 nandroid_libstagefright_4dfa30(__int64* a1, __int64 a2,

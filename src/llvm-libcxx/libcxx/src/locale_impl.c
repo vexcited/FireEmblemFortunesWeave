@@ -1268,6 +1268,48 @@ __int64 locale_8306a0(__int64 a1, __int64 a2, unsigned __int64 a3);
 __int64 locale_830760(unsigned __int64 a1, unsigned int a2);
 void __attribute__((noreturn)) locale_830958(__int64 a1);
 __int64 locale_83095c(__int64 a1);
+__int64 SdkRoutine_810f00_alt1(__int64, __int64, __int64, __int64, __int64,
+                               void*) __asm__("SdkRoutine_810f00");
+__int64 SdkRoutine_857220_alt1(__int64,
+                               unsigned __int64) __asm__("SdkRoutine_857220");
+__int64 SdkRoutine_87d160(__int64, char, __int64, __int64, __int64, __int64,
+                          __int64, __int64, __int64, __int64);
+__int64 SdkRoutine_87d170(__int64, __int64, __int64, __int16, __int64, __int64,
+                          __int64, char, __int64, char, char, __int64, __int64,
+                          __int64, int);
+__int64 SdkRoutine_87d180(__int64, char, __int64, __int64, __int64, __int64,
+                          __int64, __int64, __int64, __int64);
+__int64 SdkRoutine_87d190(__int64, __int64, __int64, __int16, __int64,
+                          unsigned __int64, __int64, char, __int64, int, int,
+                          __int64, __int64, __int64, int);
+__int64 __cxa_begin_catch_plt_alt1(__int64) __asm__("__cxa_begin_catch_plt");
+__int64 malloc_plt_alt1(unsigned __int64) __asm__("malloc_plt");
+__int64 newlocale_plt_alt1(char, __int64, __int64) __asm__("newlocale_plt");
+__int64
+std___1___call_once_plt_alt1(__int64, __int64,
+                             __int64) __asm__("std___1___call_once_plt");
+__int64 std___1___libcpp_asprintf_l(__int64, __int64, __int64, ...);
+int __cxa_guard_acquire_plt_alt1(__int64) __asm__("__cxa_guard_acquire_plt");
+int snprintf_plt(__int64, unsigned __int64, const char*, ...);
+void _Unwind_Resume_plt_alt2(__int64) __asm__("_Unwind_Resume_plt");
+void __cxa_end_catch_plt();
+void __cxa_guard_abort_plt_alt1(__int64) __asm__("__cxa_guard_abort_plt");
+void __cxa_guard_release_plt_alt1(__int64) __asm__("__cxa_guard_release_plt");
+void __cxa_rethrow_plt_alt1() __asm__("__cxa_rethrow_plt");
+void free_plt_alt1(__int64) __asm__("free_plt");
+void std___1_locale_Destroy_locale_plt_alt1(__int64) __asm__(
+    "std___1_locale_Destroy_locale_plt");
+void __attribute__((noreturn)) locale_7d37f8(__int64 a1);
+__int64 std___1_money_put_do_put_810040(long double a1, __int64 a2, __int64 a3,
+                                        char a4, __int64 a5, unsigned int a6);
+__int64 std___1_money_put_do_put_8110a0(__int64 a1, __int64 a2, char a3,
+                                        __int64 a4, unsigned int a5,
+                                        unsigned __int8* a6);
+__int64 std___1_money_put_do_put_811490(long double a1, __int64 a2, __int64 a3,
+                                        char a4, __int64 a5, int a6);
+__int64 std___1_money_put_do_put_812320(__int64 a1, __int64 a2, char a3,
+                                        __int64 a4, int a5,
+                                        unsigned __int8* a6);
 __attribute__((swiftcall)) void
 
 std_exception_ptr___from_native_exception_pointer(PSEUDO_X8 x8_, void* this_)
@@ -1326,6 +1368,31 @@ __int64 locale_7d3740(__int64 a1)
   else {
     return v4;
   }
+}
+
+void __attribute__((noreturn)) locale_7d37f8(__int64 a1)
+{
+  __int64 v1;
+  __int64 v2;
+
+  v1 = COERCE_AS(__typeof__(v1),
+                 PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  __cxa_begin_catch_plt_alt1(a1),
+      v1 = COERCE_AS(__typeof__(v1),
+                     PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  __cxa_rethrow_plt_alt1(),
+      v1 = COERCE_AS(__typeof__(v1),
+                     PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  v2 = v1;
+  __cxa_end_catch_plt(),
+      v1 = COERCE_AS(__typeof__(v1),
+                     PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  _Unwind_Resume_plt_alt2(v2),
+      v1 = COERCE_AS(__typeof__(v1),
+                     PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  SdkRoutine_7cd620(),
+      v1 = COERCE_AS(__typeof__(v1),
+                     PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
 }
 
 __attribute__((swiftcall)) void locale_7d3820(PSEUDO_X8 x8_, __int64 a1,
@@ -12057,6 +12124,336 @@ locale_80fdbc(__int64 a1, __int64 a2, __int64 a3, __int64 a4, __int64 a5,
   __udf(0);
 }
 
+__int64 std___1_money_put_do_put_810040(long double a1, __int64 a2, __int64 a3,
+                                        char a4, __int64 a5, unsigned int a6)
+{
+
+#pragma clang fp contract(off)
+  __int64 v6;
+  unsigned int v11;
+  __int64 v12;
+  int v13;
+  _BYTE* v14;
+  __int64 v15;
+  char* v16;
+  __int64 v17;
+  void(__attribute__((noreturn)) * v18)();
+  __int64 v19;
+  unsigned __int64 v20;
+  __int64 v21;
+  __int64 v22;
+  char v23;
+  int v24;
+  unsigned __int64 v25;
+  unsigned __int64 v26;
+  unsigned __int64 v27;
+  _QWORD* v28;
+  __int64 v29;
+  unsigned __int64 v30;
+  unsigned __int64 v31;
+  unsigned __int64 v32;
+  __int64 v33;
+  __int64 v34;
+  __int64 v36;
+  __int64 v37;
+  __int64 v38;
+  __int64 v39;
+  long double v40;
+  __int64 v41;
+  __int64 v42;
+  _QWORD v43[12];
+  int v44;
+  struct {
+    __int64 v45;
+    unsigned __int64 v46;
+    __int64 v47;
+  } v45_;
+  struct {
+    unsigned __int64 v48;
+    unsigned __int64 v49;
+    __int64 v50;
+  } v48_;
+  struct {
+    _QWORD v51[2];
+    __int64 v52;
+  } v51_;
+  char v53[4];
+  char v54[4];
+  _BYTE v55[4];
+  __int64 v56;
+  char v57;
+  _BYTE* v58;
+  _BYTE v59[108];
+
+  v37 = COERCE_AS(__typeof__(v37),
+                  PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  v40 = a1;
+  v58 = v59;
+  v11 = snprintf_plt((__int64)v59, 0x64u, "%.0Lf", a1),
+  v37 = COERCE_AS(__typeof__(v37),
+                  PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  if (v11 >= 0x64) {
+    if ((atomic_load_explicit((atomic_uchar* volatile)&SdkData_1060b80,
+                              memory_order_acquire) &
+         1) == 0 &&
+        __cxa_guard_acquire_plt_alt1((__int64)&SdkData_1060b80) != 0) {
+      SdkData_1060b78 = newlocale_plt_alt1(255, (__int64)"C", 0),
+      v37 = COERCE_AS(__typeof__(v37),
+                      PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+      __cxa_guard_release_plt_alt1((__int64)&SdkData_1060b80),
+          v37 = COERCE_AS(__typeof__(v37),
+                          PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+    }
+    v12 = std___1___libcpp_asprintf_l((__int64)&v58, SdkData_1060b78,
+                                      (__int64)"%.0Lf", v40),
+    v37 = COERCE_AS(__typeof__(v37),
+                    PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+    v13 = v12;
+    if ((_DWORD)v12 == -1) {
+      v15 = std___throw_bad_alloc_plt(v12),
+      v37 = COERCE_AS(__typeof__(v37),
+                      PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+    }
+    else {
+      v14 = v58;
+      v15 = malloc_plt_alt1((int)v12),
+      v37 = COERCE_AS(__typeof__(v37),
+                      PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+      if (v15 != 0) {
+        v6 = v15;
+        v16 = (char*)v15;
+        goto LABEL_7;
+      }
+    }
+    v33 = std___throw_bad_alloc_plt(v15),
+    v37 = COERCE_AS(__typeof__(v37),
+                    PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+    goto LABEL_50;
+  }
+  v16 = &v57;
+  v13 = v11;
+  v6 = 0;
+  v14 = nullptr;
+LABEL_7:
+  v39 = a3;
+  *(_QWORD*)&v40 = v14;
+  std___1_ios_base_getloc_plt((void*)(&v56), a5),
+      v37 = COERCE_AS(__typeof__(v37),
+                      PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  v17 = v56;
+  v18 = SdkData_e89440[0];
+  v48_.v48 = (unsigned __int64)SdkData_e89440[0];
+  if (atomic_load_explicit((atomic_ullong* volatile)SdkData_e89440[0],
+                           memory_order_acquire) != -1) {
+    v43[0] = &v48_.v48;
+    v51_.v51[0] = v43;
+    std___1___call_once_plt_alt1((__int64)SdkData_e89440[0], (__int64)v51_.v51,
+                                 (__int64)SdkRoutine_82f0b0),
+        v37 = COERCE_AS(__typeof__(v37),
+                        PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  }
+  v19 = *(_QWORD*)(v17 + 16);
+  v20 = *(int*)((char*)((__int64*)0x4LL) + (_QWORD)v18 + 4) - 1LL;
+  if (v20 >= (*(_QWORD*)(v17 + 24) - v19) >> 3 ||
+      (v21 = *(_QWORD*)(v19 + 8 * v20)) == 0) {
+    locale_7f6090(),
+        v37 = COERCE_AS(__typeof__(v37),
+                        PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  }
+  v22 = v13;
+  (*(void (**)(__int64, _BYTE*, _BYTE*, char*))(*(_QWORD*)v21 + 64LL))(
+      v21, v58, &v58[v13], v16),
+      v37 = COERCE_AS(__typeof__(v37),
+                      PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  v23 = v13 >= 1 && *v58 == 45;
+  v51_.v51[1] = 0;
+  v51_.v52 = 0;
+  v48_.v50 = 0;
+  v51_.v51[0] = 0;
+  v48_.v48 = 0;
+  v48_.v49 = 0;
+  v45_.v46 = 0;
+  v45_.v47 = 0;
+  v45_.v45 = 0;
+  SdkRoutine_87d160(a4 & 1, v23, (__int64)&v56, (__int64)v55, (__int64)v54,
+                    (__int64)v53, (__int64)v51_.v51, (__int64)&v48_.v48,
+                    (__int64)&v45_.v45, (__int64)&v44),
+      v37 = COERCE_AS(__typeof__(v37),
+                      PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  v24 = v44;
+  if (v13 <= v44) {
+    if ((v45_.v45 & 1) != 0) {
+      v30 = v45_.v46;
+    }
+    else {
+      v30 = (unsigned __int64)(unsigned __int8)v45_.v45 >> 1;
+    }
+    v31 = v44 + v30;
+    if ((v48_.v48 & 1) != 0) {
+      v32 = v48_.v49;
+    }
+    else {
+      v32 = (unsigned __int64)(unsigned __int8)v48_.v48 >> 1;
+    }
+    v27 = v31 + v32 + 2;
+    if (v27 < 0x65) {
+      goto LABEL_22;
+    }
+  }
+  else {
+    if ((v45_.v45 & 1) != 0) {
+      v25 = v45_.v46;
+    }
+    else {
+      v25 = (unsigned __int64)(unsigned __int8)v45_.v45 >> 1;
+    }
+    if ((v48_.v48 & 1) != 0) {
+      v26 = v48_.v49;
+    }
+    else {
+      v26 = (unsigned __int64)(unsigned __int8)v48_.v48 >> 1;
+    }
+    v27 = v44 + 2 * (v13 - (__int64)v44) + v25 + v26 + 1;
+    if (v27 < 0x65) {
+    LABEL_22:
+      v28 = v43;
+      v29 = 0;
+      goto LABEL_31;
+    }
+  }
+  v33 = malloc_plt_alt1(v27),
+  v37 = COERCE_AS(__typeof__(v37),
+                  PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  v29 = v33;
+  v28 = (_QWORD*)v33;
+  if (v33 == 0) {
+  LABEL_50:
+    v36 = std___throw_bad_alloc_plt(v33),
+    v37 = COERCE_AS(__typeof__(v37),
+                    PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+    __cxa_guard_abort_plt_alt1((__int64)&SdkData_1060b80),
+        v37 = COERCE_AS(__typeof__(v37),
+                        PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+    _Unwind_Resume_plt_alt2(v36),
+        v37 = COERCE_AS(__typeof__(v37),
+                        PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+    v38 = v37;
+    if ((v45_.v45 & 1) != 0) {
+      SdkRoutine_857220_alt1(v45_.v47, v45_.v45 & 0xFFFFFFFFFFFFFFFELL),
+          v37 = COERCE_AS(__typeof__(v37),
+                          PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+      if ((v48_.v48 & 1) == 0) {
+      LABEL_52:
+        if ((v51_.v51[0] & 1) == 0) {
+        LABEL_57:
+          std___1_locale_Destroy_locale_plt_alt1((__int64)&v56),
+              v37 = COERCE_AS(__typeof__(v37),
+                              PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+          if (v6 != 0) {
+            goto LABEL_60;
+          }
+          while (*(_QWORD*)&v40 == 0) {
+            _Unwind_Resume_plt_alt2(v38),
+                v37 =
+                    COERCE_AS(__typeof__(v37),
+                              PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+          LABEL_60:
+            free_plt_alt1(v6),
+                v37 =
+                    COERCE_AS(__typeof__(v37),
+                              PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+          }
+          free_plt_alt1(*(__int64*)&v40),
+              v37 = COERCE_AS(__typeof__(v37),
+                              PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+          _Unwind_Resume_plt_alt2(v38),
+              v37 = COERCE_AS(__typeof__(v37),
+                              PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+          __udf(0);
+        }
+      LABEL_56:
+        SdkRoutine_857220_alt1(v51_.v52, v51_.v51[0] & 0xFFFFFFFFFFFFFFFELL),
+            v37 = COERCE_AS(__typeof__(v37),
+                            PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+        goto LABEL_57;
+      }
+    }
+    else if ((v48_.v48 & 1) == 0) {
+      goto LABEL_52;
+    }
+    SdkRoutine_857220_alt1(v48_.v50, v48_.v48 & 0xFFFFFFFFFFFFFFFELL),
+        v37 = COERCE_AS(__typeof__(v37),
+                        PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+    if ((v51_.v51[0] & 1) == 0) {
+      goto LABEL_57;
+    }
+    goto LABEL_56;
+  }
+LABEL_31:
+  SdkRoutine_87d170((__int64)v28, (__int64)&v42, (__int64)&v41,
+                    *(_DWORD*)(a5 + 8), (__int64)v16, (__int64)&v16[v22], v21,
+                    v23, (__int64)v55, v54[0], v53[0], (__int64)v51_.v51,
+                    (__int64)&v48_.v48, (__int64)&v45_.v45, v24),
+      v37 = COERCE_AS(__typeof__(v37),
+                      PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  v34 = SdkRoutine_810f00_alt1(v39, (__int64)v28, v42, v41, a5, (void*)a6),
+  v37 = COERCE_AS(__typeof__(v37),
+                  PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  if (v29 != 0) {
+    free_plt_alt1(v29),
+        v37 = COERCE_AS(__typeof__(v37),
+                        PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  }
+  if ((v45_.v45 & 1) != 0) {
+    SdkRoutine_857220_alt1(v45_.v47, v45_.v45 & 0xFFFFFFFFFFFFFFFELL),
+        v37 = COERCE_AS(__typeof__(v37),
+                        PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+    if ((v48_.v48 & 1) == 0) {
+    LABEL_35:
+      if ((v51_.v51[0] & 1) == 0) {
+        goto LABEL_36;
+      }
+      goto LABEL_43;
+    }
+  }
+  else if ((v48_.v48 & 1) == 0) {
+    goto LABEL_35;
+  }
+  SdkRoutine_857220_alt1(v48_.v50, v48_.v48 & 0xFFFFFFFFFFFFFFFELL),
+      v37 = COERCE_AS(__typeof__(v37),
+                      PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  if ((v51_.v51[0] & 1) == 0) {
+  LABEL_36:
+    std___1_locale_Destroy_locale_plt_alt1((__int64)&v56),
+        v37 = COERCE_AS(__typeof__(v37),
+                        PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+    if (v6 == 0) {
+      goto LABEL_38;
+    }
+    goto LABEL_37;
+  }
+LABEL_43:
+  SdkRoutine_857220_alt1(v51_.v52, v51_.v51[0] & 0xFFFFFFFFFFFFFFFELL),
+      v37 = COERCE_AS(__typeof__(v37),
+                      PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  std___1_locale_Destroy_locale_plt_alt1((__int64)&v56),
+      v37 = COERCE_AS(__typeof__(v37),
+                      PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  if (v6 != 0) {
+  LABEL_37:
+    free_plt_alt1(v6),
+        v37 = COERCE_AS(__typeof__(v37),
+                        PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  }
+LABEL_38:
+  if (*(_QWORD*)&v40 != 0) {
+    free_plt_alt1(*(__int64*)&v40),
+        v37 = COERCE_AS(__typeof__(v37),
+                        PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  }
+  return v34;
+}
+
 void __attribute__((noreturn)) locale_811078(__int64 a1, __int64 a2, __int64 a3,
                                              __int64 a4, __int64 a5, __int64 a6,
                                              __int64 a7, __int64 a8, __int64 a9,
@@ -12068,6 +12465,624 @@ void __attribute__((noreturn)) locale_811078(__int64 a1, __int64 a2, __int64 a3,
   }
   _Unwind_Resume_plt_alt1(a1);
   __udf(0);
+}
+
+__int64 std___1_money_put_do_put_8110a0(__int64 a1, __int64 a2, char a3,
+                                        __int64 a4, unsigned int a5,
+                                        unsigned __int8* a6)
+{
+  __int64 v11;
+  void(__attribute__((noreturn)) * v12)();
+  __int64 v13;
+  unsigned __int64 v14;
+  __int64 v15;
+  unsigned __int64 v16;
+  unsigned __int64 v17;
+  unsigned __int8* v18;
+  int v19;
+  char v20;
+  unsigned __int64 v21;
+  int v22;
+  unsigned __int64 v23;
+  unsigned __int64 v24;
+  unsigned __int64 v25;
+  unsigned __int64 v26;
+  unsigned int v27;
+  _QWORD* v28;
+  __int64 v29;
+  unsigned __int64 v30;
+  unsigned __int64 v31;
+  unsigned __int64 v32;
+  __int64 v33;
+  __int64 v34;
+  __int64 v36;
+  __int64 v37;
+  __int64 v38;
+  __int64 v39;
+  __int64 v40;
+  __int64 v41;
+  _QWORD v42[12];
+  int v43;
+  struct {
+    __int64 v44;
+    unsigned __int64 v45;
+    __int64 v46;
+  } v44_;
+  struct {
+    unsigned __int64 v47;
+    unsigned __int64 v48;
+    __int64 v49;
+  } v47_;
+  struct {
+    _QWORD v50[2];
+    __int64 v51;
+  } v50_;
+  char v52[4];
+  char v53[4];
+  _BYTE v54[4];
+  _QWORD v55[2];
+
+  v37 = COERCE_AS(__typeof__(v37),
+                  PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  std___1_ios_base_getloc_plt((void*)(v55), a4),
+      v37 = COERCE_AS(__typeof__(v37),
+                      PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  v11 = v55[0];
+  v12 = SdkData_e89440[0];
+  v47_.v47 = (unsigned __int64)SdkData_e89440[0];
+  if (atomic_load_explicit((atomic_ullong* volatile)SdkData_e89440[0],
+                           memory_order_acquire) != -1) {
+    v42[0] = &v47_.v47;
+    v50_.v50[0] = v42;
+    std___1___call_once_plt_alt1((__int64)SdkData_e89440[0], (__int64)v50_.v50,
+                                 (__int64)SdkRoutine_82f0b0),
+        v37 = COERCE_AS(__typeof__(v37),
+                        PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  }
+  v13 = *(_QWORD*)(v11 + 16);
+  v14 = *(int*)((char*)((__int64*)0x4LL) + (_QWORD)v12 + 4) - 1LL;
+  if (v14 >= (*(_QWORD*)(v11 + 24) - v13) >> 3 ||
+      (v15 = *(_QWORD*)(v13 + 8 * v14)) == 0) {
+    locale_7f6090(),
+        v37 = COERCE_AS(__typeof__(v37),
+                        PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  }
+  v16 = *a6;
+  v17 = *((_QWORD*)a6 + 1);
+  if ((v16 & 1) == 0) {
+    v17 = v16 >> 1;
+  }
+  if (v17 != 0) {
+    if ((v16 & 1) != 0) {
+      v18 = *((unsigned __int8**)a6 + 2);
+    }
+    else {
+      v18 = a6 + 1;
+    }
+    v19 = *v18;
+    v20 = v19 == (*(unsigned __int8 (**)(__int64, __int64))(*(_QWORD*)v15 +
+                                                            56LL))(v15, 45),
+    v37 = COERCE_AS(__typeof__(v37),
+                    PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  }
+  else {
+    v20 = 0;
+  }
+  v50_.v50[1] = 0;
+  v50_.v51 = 0;
+  v47_.v49 = 0;
+  v50_.v50[0] = 0;
+  v47_.v47 = 0;
+  v47_.v48 = 0;
+  v44_.v45 = 0;
+  v44_.v46 = 0;
+  v44_.v44 = 0;
+  SdkRoutine_87d160(a3 & 1, v20, (__int64)v55, (__int64)v54, (__int64)v53,
+                    (__int64)v52, (__int64)v50_.v50, (__int64)&v47_.v47,
+                    (__int64)&v44_.v44, (__int64)&v43),
+      v37 = COERCE_AS(__typeof__(v37),
+                      PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  v21 = *a6;
+  v22 = v43;
+  v39 = a2;
+  if ((v21 & 1) != 0) {
+    v23 = *((_QWORD*)a6 + 1);
+  }
+  else {
+    v23 = v21 >> 1;
+  }
+  if (v43 >= (int)v23) {
+    if ((v44_.v44 & 1) != 0) {
+      v30 = v44_.v45;
+    }
+    else {
+      v30 = (unsigned __int64)(unsigned __int8)v44_.v44 >> 1;
+    }
+    v31 = v43 + v30;
+    if ((v47_.v47 & 1) != 0) {
+      v32 = v47_.v48;
+    }
+    else {
+      v32 = (unsigned __int64)(unsigned __int8)v47_.v47 >> 1;
+    }
+    v26 = v31 + v32 + 2;
+    v27 = a5;
+    if (v26 < 0x65) {
+      goto LABEL_24;
+    }
+  }
+  else {
+    if ((v44_.v44 & 1) != 0) {
+      v24 = v44_.v45;
+    }
+    else {
+      v24 = (unsigned __int64)(unsigned __int8)v44_.v44 >> 1;
+    }
+    if ((v47_.v47 & 1) != 0) {
+      v25 = v47_.v48;
+    }
+    else {
+      v25 = (unsigned __int64)(unsigned __int8)v47_.v47 >> 1;
+    }
+    v26 = v43 + 2 * (v23 - v43) + v24 + v25 + 1;
+    v27 = a5;
+    if (v26 < 0x65) {
+    LABEL_24:
+      v28 = v42;
+      v29 = 0;
+      goto LABEL_33;
+    }
+  }
+  v29 = malloc_plt_alt1(v26),
+  v37 = COERCE_AS(__typeof__(v37),
+                  PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  v28 = (_QWORD*)v29;
+  if (v29 == 0) {
+    v36 = std___throw_bad_alloc_plt(0),
+    v37 = COERCE_AS(__typeof__(v37),
+                    PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+    if ((v44_.v44 & 1) != 0) {
+      goto LABEL_51;
+    }
+  LABEL_48:
+    if ((v47_.v47 & 1) != 0) {
+      while (1) {
+        SdkRoutine_857220_alt1(v47_.v49, v47_.v47 & 0xFFFFFFFFFFFFFFFELL),
+            v37 = COERCE_AS(__typeof__(v37),
+                            PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+        if ((v50_.v50[0] & 1) != 0) {
+          break;
+        }
+      LABEL_50:
+        std___1_locale_Destroy_locale_plt_alt1((__int64)v55),
+            v37 = COERCE_AS(__typeof__(v37),
+                            PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+        _Unwind_Resume_plt_alt2(v36),
+            v37 = COERCE_AS(__typeof__(v37),
+                            PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+        free_plt_alt1(0),
+            v37 = COERCE_AS(__typeof__(v37),
+                            PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+        if ((v44_.v44 & 1) == 0) {
+          goto LABEL_48;
+        }
+      LABEL_51:
+        SdkRoutine_857220_alt1(v44_.v46, v44_.v44 & 0xFFFFFFFFFFFFFFFELL),
+            v37 = COERCE_AS(__typeof__(v37),
+                            PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+        if ((v47_.v47 & 1) == 0) {
+          goto LABEL_49;
+        }
+      }
+    }
+    else {
+    LABEL_49:
+      if ((v50_.v50[0] & 1) == 0) {
+        goto LABEL_50;
+      }
+    }
+    SdkRoutine_857220_alt1(v50_.v51, v50_.v50[0] & 0xFFFFFFFFFFFFFFFELL),
+        v37 = COERCE_AS(__typeof__(v37),
+                        PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+    std___1_locale_Destroy_locale_plt_alt1((__int64)v55),
+        v37 = COERCE_AS(__typeof__(v37),
+                        PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+    _Unwind_Resume_plt_alt2(v36),
+        v37 = COERCE_AS(__typeof__(v37),
+                        PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+    v38 = v37;
+    std___1_locale_Destroy_locale_plt_alt1((__int64)v55),
+        v37 = COERCE_AS(__typeof__(v37),
+                        PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+    _Unwind_Resume_plt_alt2(v38),
+        v37 = COERCE_AS(__typeof__(v37),
+                        PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+    __udf(0);
+  }
+LABEL_33:
+  if ((v21 & 1) != 0) {
+    v33 = *((_QWORD*)a6 + 2);
+  }
+  else {
+    v33 = (__int64)(a6 + 1);
+  }
+  SdkRoutine_87d170((__int64)v28, (__int64)&v41, (__int64)&v40,
+                    *(_DWORD*)(a4 + 8), v33, v33 + v23, v15, v20, (__int64)v54,
+                    v53[0], v52[0], (__int64)v50_.v50, (__int64)&v47_.v47,
+                    (__int64)&v44_.v44, v22),
+      v37 = COERCE_AS(__typeof__(v37),
+                      PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  v34 = SdkRoutine_810f00_alt1(v39, (__int64)v28, v41, v40, a4, (void*)v27),
+  v37 = COERCE_AS(__typeof__(v37),
+                  PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  if (v29 != 0) {
+    free_plt_alt1(v29),
+        v37 = COERCE_AS(__typeof__(v37),
+                        PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  }
+  if ((v44_.v44 & 1) == 0) {
+    if ((v47_.v47 & 1) == 0) {
+      goto LABEL_40;
+    }
+  LABEL_44:
+    SdkRoutine_857220_alt1(v47_.v49, v47_.v47 & 0xFFFFFFFFFFFFFFFELL),
+        v37 = COERCE_AS(__typeof__(v37),
+                        PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+    if ((v50_.v50[0] & 1) == 0) {
+      goto LABEL_42;
+    }
+    goto LABEL_41;
+  }
+  SdkRoutine_857220_alt1(v44_.v46, v44_.v44 & 0xFFFFFFFFFFFFFFFELL),
+      v37 = COERCE_AS(__typeof__(v37),
+                      PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  if ((v47_.v47 & 1) != 0) {
+    goto LABEL_44;
+  }
+LABEL_40:
+  if ((v50_.v50[0] & 1) != 0) {
+  LABEL_41:
+    SdkRoutine_857220_alt1(v50_.v51, v50_.v50[0] & 0xFFFFFFFFFFFFFFFELL),
+        v37 = COERCE_AS(__typeof__(v37),
+                        PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  }
+LABEL_42:
+  std___1_locale_Destroy_locale_plt_alt1((__int64)v55),
+      v37 = COERCE_AS(__typeof__(v37),
+                      PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  return v34;
+}
+
+__int64 std___1_money_put_do_put_811490(long double a1, __int64 a2, __int64 a3,
+                                        char a4, __int64 a5, int a6)
+{
+
+#pragma clang fp contract(off)
+  __int64 v6;
+  unsigned int v11;
+  __int64 v12;
+  int v13;
+  _BYTE* v14;
+  __int64 v15;
+  char* v16;
+  __int64 v17;
+  void(__attribute__((noreturn)) * v18)();
+  __int64 v19;
+  unsigned __int64 v20;
+  __int64 v21;
+  __int64 v22;
+  char v23;
+  int v24;
+  unsigned __int64 v25;
+  unsigned __int64 v26;
+  unsigned __int64 v27;
+  _QWORD* v28;
+  __int64 v29;
+  unsigned __int64 v30;
+  unsigned __int64 v31;
+  unsigned __int64 v32;
+  __int64 v33;
+  __int64 v34;
+  __int64 v36;
+  __int64 v37;
+  __int64 v38;
+  __int64 v39;
+  long double v40;
+  __int64 v41;
+  __int64 v42;
+  _QWORD v43[50];
+  int v44;
+  struct {
+    __int64 v45;
+    unsigned __int64 v46;
+    __int64 v47;
+  } v45_;
+  struct {
+    void(__attribute__((noreturn)) * v48)();
+    unsigned __int64 v49;
+    __int64 v50;
+  } v48_;
+  struct {
+    _QWORD v51[2];
+    __int64 v52;
+  } v51_;
+  int v53;
+  int v54;
+  _BYTE v55[4];
+  __int64 v56;
+  char v57;
+  _BYTE* v58;
+  _BYTE v59[108];
+
+  v37 = COERCE_AS(__typeof__(v37),
+                  PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  v40 = a1;
+  v58 = v59;
+  v11 = snprintf_plt((__int64)v59, 0x64u, "%.0Lf", a1),
+  v37 = COERCE_AS(__typeof__(v37),
+                  PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  if (v11 >= 0x64) {
+    if ((atomic_load_explicit((atomic_uchar* volatile)&SdkData_1060b80,
+                              memory_order_acquire) &
+         1) == 0 &&
+        __cxa_guard_acquire_plt_alt1((__int64)&SdkData_1060b80) != 0) {
+      SdkData_1060b78 = newlocale_plt_alt1(255, (__int64)"C", 0),
+      v37 = COERCE_AS(__typeof__(v37),
+                      PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+      __cxa_guard_release_plt_alt1((__int64)&SdkData_1060b80),
+          v37 = COERCE_AS(__typeof__(v37),
+                          PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+    }
+    v12 = std___1___libcpp_asprintf_l((__int64)&v58, SdkData_1060b78,
+                                      (__int64)"%.0Lf", v40),
+    v37 = COERCE_AS(__typeof__(v37),
+                    PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+    v13 = v12;
+    if ((_DWORD)v12 == -1) {
+      v15 = std___throw_bad_alloc_plt(v12),
+      v37 = COERCE_AS(__typeof__(v37),
+                      PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+    }
+    else {
+      v14 = v58;
+      v15 = malloc_plt_alt1(4LL * (int)v12),
+      v37 = COERCE_AS(__typeof__(v37),
+                      PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+      if (v15 != 0) {
+        v6 = v15;
+        v16 = (char*)v15;
+        goto LABEL_7;
+      }
+    }
+    v33 = std___throw_bad_alloc_plt(v15),
+    v37 = COERCE_AS(__typeof__(v37),
+                    PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+    goto LABEL_50;
+  }
+  v16 = &v57;
+  v13 = v11;
+  v6 = 0;
+  v14 = nullptr;
+LABEL_7:
+  v39 = a3;
+  *(_QWORD*)&v40 = v14;
+  std___1_ios_base_getloc_plt((void*)(&v56), a5),
+      v37 = COERCE_AS(__typeof__(v37),
+                      PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  v17 = v56;
+  v18 = SdkData_e89480[0];
+  v48_.v48 = SdkData_e89480[0];
+  if (atomic_load_explicit((atomic_ullong* volatile)SdkData_e89480[0],
+                           memory_order_acquire) != -1) {
+    v43[0] = &v48_.v48;
+    v51_.v51[0] = v43;
+    std___1___call_once_plt_alt1((__int64)SdkData_e89480[0], (__int64)v51_.v51,
+                                 (__int64)SdkRoutine_82f0b0),
+        v37 = COERCE_AS(__typeof__(v37),
+                        PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  }
+  v19 = *(_QWORD*)(v17 + 16);
+  v20 = *(int*)((char*)((__int64*)0x4LL) + (_QWORD)v18 + 4) - 1LL;
+  if (v20 >= (*(_QWORD*)(v17 + 24) - v19) >> 3 ||
+      (v21 = *(_QWORD*)(v19 + 8 * v20)) == 0) {
+    locale_7f6090(),
+        v37 = COERCE_AS(__typeof__(v37),
+                        PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  }
+  v22 = v13;
+  (*(void (**)(__int64, _BYTE*, _BYTE*, char*))(*(_QWORD*)v21 + 96LL))(
+      v21, v58, &v58[v13], v16),
+      v37 = COERCE_AS(__typeof__(v37),
+                      PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  v23 = v13 >= 1 && *v58 == 45;
+  v51_.v52 = 0;
+  v51_.v51[1] = 0;
+  v51_.v51[0] = 0;
+  v48_.v50 = 0;
+  v48_.v49 = 0;
+  v48_.v48 = nullptr;
+  v45_.v47 = 0;
+  v45_.v45 = 0;
+  v45_.v46 = 0;
+  SdkRoutine_87d180(a4 & 1, v23, (__int64)&v56, (__int64)v55, (__int64)&v54,
+                    (__int64)&v53, (__int64)v51_.v51, (__int64)&v48_.v48,
+                    (__int64)&v45_.v45, (__int64)&v44),
+      v37 = COERCE_AS(__typeof__(v37),
+                      PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  v24 = v44;
+  if (v13 <= v44) {
+    if ((v45_.v45 & 1) != 0) {
+      v30 = v45_.v46;
+    }
+    else {
+      v30 = (unsigned __int64)(unsigned __int8)v45_.v45 >> 1;
+    }
+    v31 = v44 + v30;
+    if (((unsigned __int8)v48_.v48 & 1) != 0) {
+      v32 = v48_.v49;
+    }
+    else {
+      v32 = (unsigned __int64)(unsigned __int8)v48_.v48 >> 1;
+    }
+    v27 = v31 + v32 + 2;
+    if (v27 < 0x65) {
+      goto LABEL_22;
+    }
+  }
+  else {
+    if ((v45_.v45 & 1) != 0) {
+      v25 = v45_.v46;
+    }
+    else {
+      v25 = (unsigned __int64)(unsigned __int8)v45_.v45 >> 1;
+    }
+    if (((unsigned __int8)v48_.v48 & 1) != 0) {
+      v26 = v48_.v49;
+    }
+    else {
+      v26 = (unsigned __int64)(unsigned __int8)v48_.v48 >> 1;
+    }
+    v27 = v44 + 2 * (v13 - (__int64)v44) + v25 + v26 + 1;
+    if (v27 < 0x65) {
+    LABEL_22:
+      v28 = v43;
+      v29 = 0;
+      goto LABEL_31;
+    }
+  }
+  v33 = malloc_plt_alt1(4 * v27),
+  v37 = COERCE_AS(__typeof__(v37),
+                  PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  v29 = v33;
+  v28 = (_QWORD*)v33;
+  if (v33 == 0) {
+  LABEL_50:
+    v36 = std___throw_bad_alloc_plt(v33),
+    v37 = COERCE_AS(__typeof__(v37),
+                    PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+    __cxa_guard_abort_plt_alt1((__int64)&SdkData_1060b80),
+        v37 = COERCE_AS(__typeof__(v37),
+                        PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+    _Unwind_Resume_plt_alt2(v36),
+        v37 = COERCE_AS(__typeof__(v37),
+                        PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+    v38 = v37;
+    if ((v45_.v45 & 1) != 0) {
+      SdkRoutine_857220_alt1(v45_.v47, (4 * v45_.v45) & 0xFFFFFFFFFFFFFFF8LL),
+          v37 = COERCE_AS(__typeof__(v37),
+                          PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+      if (((unsigned __int8)v48_.v48 & 1) == 0) {
+      LABEL_52:
+        if ((v51_.v51[0] & 1) == 0) {
+        LABEL_57:
+          std___1_locale_Destroy_locale_plt_alt1((__int64)&v56),
+              v37 = COERCE_AS(__typeof__(v37),
+                              PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+          if (v6 != 0) {
+            goto LABEL_60;
+          }
+          while (*(_QWORD*)&v40 == 0) {
+            _Unwind_Resume_plt_alt2(v38),
+                v37 =
+                    COERCE_AS(__typeof__(v37),
+                              PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+          LABEL_60:
+            free_plt_alt1(v6),
+                v37 =
+                    COERCE_AS(__typeof__(v37),
+                              PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+          }
+          free_plt_alt1(*(__int64*)&v40),
+              v37 = COERCE_AS(__typeof__(v37),
+                              PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+          _Unwind_Resume_plt_alt2(v38),
+              v37 = COERCE_AS(__typeof__(v37),
+                              PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+          __udf(0);
+        }
+      LABEL_56:
+        SdkRoutine_857220_alt1(v51_.v52, v51_.v51[0] & 0xFFFFFFFFFFFFFFFELL),
+            v37 = COERCE_AS(__typeof__(v37),
+                            PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+        goto LABEL_57;
+      }
+    }
+    else if (((unsigned __int8)v48_.v48 & 1) == 0) {
+      goto LABEL_52;
+    }
+    SdkRoutine_857220_alt1(v48_.v50,
+                           (4LL * (_QWORD)v48_.v48) & 0xFFFFFFFFFFFFFFF8LL),
+        v37 = COERCE_AS(__typeof__(v37),
+                        PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+    if ((v51_.v51[0] & 1) == 0) {
+      goto LABEL_57;
+    }
+    goto LABEL_56;
+  }
+LABEL_31:
+  SdkRoutine_87d190(
+      (__int64)v28, (__int64)&v42, (__int64)&v41, *(_DWORD*)(a5 + 8),
+      (__int64)v16, (unsigned __int64)&v16[4 * v22], v21, v23, (__int64)v55,
+      v54, v53, (__int64)v51_.v51, (__int64)&v48_.v48, (__int64)&v45_.v45, v24),
+      v37 = COERCE_AS(__typeof__(v37),
+                      PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  v34 = locale_812100(v39, (__int64)v28, v42, v41, a5, a6),
+  v37 = COERCE_AS(__typeof__(v37),
+                  PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  if (v29 != 0) {
+    free_plt_alt1(v29),
+        v37 = COERCE_AS(__typeof__(v37),
+                        PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  }
+  if ((v45_.v45 & 1) != 0) {
+    SdkRoutine_857220_alt1(v45_.v47, (4 * v45_.v45) & 0xFFFFFFFFFFFFFFF8LL),
+        v37 = COERCE_AS(__typeof__(v37),
+                        PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+    if (((unsigned __int8)v48_.v48 & 1) == 0) {
+    LABEL_35:
+      if ((v51_.v51[0] & 1) == 0) {
+        goto LABEL_36;
+      }
+      goto LABEL_43;
+    }
+  }
+  else if (((unsigned __int8)v48_.v48 & 1) == 0) {
+    goto LABEL_35;
+  }
+  SdkRoutine_857220_alt1(v48_.v50,
+                         (4LL * (_QWORD)v48_.v48) & 0xFFFFFFFFFFFFFFF8LL),
+      v37 = COERCE_AS(__typeof__(v37),
+                      PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  if ((v51_.v51[0] & 1) == 0) {
+  LABEL_36:
+    std___1_locale_Destroy_locale_plt_alt1((__int64)&v56),
+        v37 = COERCE_AS(__typeof__(v37),
+                        PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+    if (v6 == 0) {
+      goto LABEL_38;
+    }
+    goto LABEL_37;
+  }
+LABEL_43:
+  SdkRoutine_857220_alt1(v51_.v52, v51_.v51[0] & 0xFFFFFFFFFFFFFFFELL),
+      v37 = COERCE_AS(__typeof__(v37),
+                      PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  std___1_locale_Destroy_locale_plt_alt1((__int64)&v56),
+      v37 = COERCE_AS(__typeof__(v37),
+                      PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  if (v6 != 0) {
+  LABEL_37:
+    free_plt_alt1(v6),
+        v37 = COERCE_AS(__typeof__(v37),
+                        PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  }
+LABEL_38:
+  if (*(_QWORD*)&v40 != 0) {
+    free_plt_alt1(*(__int64*)&v40),
+        v37 = COERCE_AS(__typeof__(v37),
+                        PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  }
+  return v34;
 }
 
 __int64 locale_812100(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
@@ -12193,6 +13208,293 @@ __int64 std___1_money_put_do_put_8122f8(__int64 a1, __int64 a2, __int64 a3,
   }
   v13 = _Unwind_Resume_plt(a1);
   return SdkRoutine_812320(v13);
+}
+
+__int64 std___1_money_put_do_put_812320(__int64 a1, __int64 a2, char a3,
+                                        __int64 a4, int a5, unsigned __int8* a6)
+{
+  __int64 v11;
+  void(__attribute__((noreturn)) * v12)();
+  __int64 v13;
+  unsigned __int64 v14;
+  __int64 v15;
+  unsigned __int64 v16;
+  unsigned __int64 v17;
+  int* v18;
+  int v19;
+  char v20;
+  unsigned __int64 v21;
+  int v22;
+  unsigned __int64 v23;
+  unsigned __int64 v24;
+  unsigned __int64 v25;
+  unsigned __int64 v26;
+  int v27;
+  _QWORD* v28;
+  __int64 v29;
+  unsigned __int64 v30;
+  unsigned __int64 v31;
+  unsigned __int64 v32;
+  __int64 v33;
+  __int64 v34;
+  __int64 v36;
+  __int64 v37;
+  __int64 v38;
+  __int64 v39;
+  __int64 v40;
+  __int64 v41;
+  _QWORD v42[50];
+  int v43;
+  struct {
+    __int64 v44;
+    unsigned __int64 v45;
+    __int64 v46;
+  } v44_;
+  struct {
+    void(__attribute__((noreturn)) * v47)();
+    unsigned __int64 v48;
+    __int64 v49;
+  } v47_;
+  struct {
+    _QWORD v50[2];
+    __int64 v51;
+  } v50_;
+  int v52;
+  int v53;
+  _BYTE v54[4];
+  _QWORD v55[2];
+
+  v37 = COERCE_AS(__typeof__(v37),
+                  PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  std___1_ios_base_getloc_plt((void*)(v55), a4),
+      v37 = COERCE_AS(__typeof__(v37),
+                      PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  v11 = v55[0];
+  v12 = SdkData_e89480[0];
+  v47_.v47 = SdkData_e89480[0];
+  if (atomic_load_explicit((atomic_ullong* volatile)SdkData_e89480[0],
+                           memory_order_acquire) != -1) {
+    v42[0] = &v47_.v47;
+    v50_.v50[0] = v42;
+    std___1___call_once_plt_alt1((__int64)SdkData_e89480[0], (__int64)v50_.v50,
+                                 (__int64)SdkRoutine_82f0b0),
+        v37 = COERCE_AS(__typeof__(v37),
+                        PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  }
+  v13 = *(_QWORD*)(v11 + 16);
+  v14 = *(int*)((char*)((__int64*)0x4LL) + (_QWORD)v12 + 4) - 1LL;
+  if (v14 >= (*(_QWORD*)(v11 + 24) - v13) >> 3 ||
+      (v15 = *(_QWORD*)(v13 + 8 * v14)) == 0) {
+    locale_7f6090(),
+        v37 = COERCE_AS(__typeof__(v37),
+                        PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  }
+  v16 = *a6;
+  v17 = *((_QWORD*)a6 + 1);
+  if ((v16 & 1) == 0) {
+    v17 = v16 >> 1;
+  }
+  if (v17 != 0) {
+    if ((v16 & 1) != 0) {
+      v18 = *((int**)a6 + 2);
+    }
+    else {
+      v18 = (int*)(a6 + 4);
+    }
+    v19 = *v18;
+    v20 = v19 == (*(unsigned int (**)(__int64, __int64))(*(_QWORD*)v15 + 88LL))(
+                     v15, 45),
+    v37 = COERCE_AS(__typeof__(v37),
+                    PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  }
+  else {
+    v20 = 0;
+  }
+  v50_.v50[1] = 0;
+  v50_.v51 = 0;
+  v47_.v49 = 0;
+  v50_.v50[0] = 0;
+  v47_.v47 = nullptr;
+  v47_.v48 = 0;
+  v44_.v45 = 0;
+  v44_.v46 = 0;
+  v44_.v44 = 0;
+  SdkRoutine_87d180(a3 & 1, v20, (__int64)v55, (__int64)v54, (__int64)&v53,
+                    (__int64)&v52, (__int64)v50_.v50, (__int64)&v47_.v47,
+                    (__int64)&v44_.v44, (__int64)&v43),
+      v37 = COERCE_AS(__typeof__(v37),
+                      PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  v21 = *a6;
+  v22 = v43;
+  v39 = a2;
+  if ((v21 & 1) != 0) {
+    v23 = *((_QWORD*)a6 + 1);
+  }
+  else {
+    v23 = v21 >> 1;
+  }
+  if (v43 >= (int)v23) {
+    if ((v44_.v44 & 1) != 0) {
+      v30 = v44_.v45;
+    }
+    else {
+      v30 = (unsigned __int64)(unsigned __int8)v44_.v44 >> 1;
+    }
+    v31 = v43 + v30;
+    if (((unsigned __int8)v47_.v47 & 1) != 0) {
+      v32 = v47_.v48;
+    }
+    else {
+      v32 = (unsigned __int64)(unsigned __int8)v47_.v47 >> 1;
+    }
+    v26 = v31 + v32 + 2;
+    v27 = a5;
+    if (v26 < 0x65) {
+      goto LABEL_24;
+    }
+  }
+  else {
+    if ((v44_.v44 & 1) != 0) {
+      v24 = v44_.v45;
+    }
+    else {
+      v24 = (unsigned __int64)(unsigned __int8)v44_.v44 >> 1;
+    }
+    if (((unsigned __int8)v47_.v47 & 1) != 0) {
+      v25 = v47_.v48;
+    }
+    else {
+      v25 = (unsigned __int64)(unsigned __int8)v47_.v47 >> 1;
+    }
+    v26 = v43 + 2 * (v23 - v43) + v24 + v25 + 1;
+    v27 = a5;
+    if (v26 < 0x65) {
+    LABEL_24:
+      v28 = v42;
+      v29 = 0;
+      goto LABEL_33;
+    }
+  }
+  v29 = malloc_plt_alt1(4 * v26),
+  v37 = COERCE_AS(__typeof__(v37),
+                  PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  v28 = (_QWORD*)v29;
+  if (v29 == 0) {
+    v36 = std___throw_bad_alloc_plt(0),
+    v37 = COERCE_AS(__typeof__(v37),
+                    PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+    if ((v44_.v44 & 1) != 0) {
+      goto LABEL_51;
+    }
+  LABEL_48:
+    if (((unsigned __int8)v47_.v47 & 1) != 0) {
+      while (1) {
+        SdkRoutine_857220_alt1(v47_.v49,
+                               (4LL * (_QWORD)v47_.v47) & 0xFFFFFFFFFFFFFFF8LL),
+            v37 = COERCE_AS(__typeof__(v37),
+                            PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+        if ((v50_.v50[0] & 1) != 0) {
+          break;
+        }
+      LABEL_50:
+        std___1_locale_Destroy_locale_plt_alt1((__int64)v55),
+            v37 = COERCE_AS(__typeof__(v37),
+                            PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+        _Unwind_Resume_plt_alt2(v36),
+            v37 = COERCE_AS(__typeof__(v37),
+                            PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+        free_plt_alt1(0),
+            v37 = COERCE_AS(__typeof__(v37),
+                            PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+        if ((v44_.v44 & 1) == 0) {
+          goto LABEL_48;
+        }
+      LABEL_51:
+        SdkRoutine_857220_alt1(v44_.v46, (4 * v44_.v44) & 0xFFFFFFFFFFFFFFF8LL),
+            v37 = COERCE_AS(__typeof__(v37),
+                            PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+        if (((unsigned __int8)v47_.v47 & 1) == 0) {
+          goto LABEL_49;
+        }
+      }
+    }
+    else {
+    LABEL_49:
+      if ((v50_.v50[0] & 1) == 0) {
+        goto LABEL_50;
+      }
+    }
+    SdkRoutine_857220_alt1(v50_.v51, v50_.v50[0] & 0xFFFFFFFFFFFFFFFELL),
+        v37 = COERCE_AS(__typeof__(v37),
+                        PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+    std___1_locale_Destroy_locale_plt_alt1((__int64)v55),
+        v37 = COERCE_AS(__typeof__(v37),
+                        PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+    _Unwind_Resume_plt_alt2(v36),
+        v37 = COERCE_AS(__typeof__(v37),
+                        PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+    v38 = v37;
+    std___1_locale_Destroy_locale_plt_alt1((__int64)v55),
+        v37 = COERCE_AS(__typeof__(v37),
+                        PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+    _Unwind_Resume_plt_alt2(v38),
+        v37 = COERCE_AS(__typeof__(v37),
+                        PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+    __udf(0);
+  }
+LABEL_33:
+  if ((v21 & 1) != 0) {
+    v33 = *((_QWORD*)a6 + 2);
+  }
+  else {
+    v33 = (__int64)(a6 + 4);
+  }
+  SdkRoutine_87d190((__int64)v28, (__int64)&v41, (__int64)&v40,
+                    *(_DWORD*)(a4 + 8), v33, v33 + 4 * v23, v15, v20,
+                    (__int64)v54, v53, v52, (__int64)v50_.v50,
+                    (__int64)&v47_.v47, (__int64)&v44_.v44, v22),
+      v37 = COERCE_AS(__typeof__(v37),
+                      PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  v34 = locale_812100(v39, (__int64)v28, v41, v40, a4, v27),
+  v37 = COERCE_AS(__typeof__(v37),
+                  PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  if (v29 != 0) {
+    free_plt_alt1(v29),
+        v37 = COERCE_AS(__typeof__(v37),
+                        PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  }
+  if ((v44_.v44 & 1) == 0) {
+    if (((unsigned __int8)v47_.v47 & 1) == 0) {
+      goto LABEL_40;
+    }
+  LABEL_44:
+    SdkRoutine_857220_alt1(v47_.v49,
+                           (4LL * (_QWORD)v47_.v47) & 0xFFFFFFFFFFFFFFF8LL),
+        v37 = COERCE_AS(__typeof__(v37),
+                        PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+    if ((v50_.v50[0] & 1) == 0) {
+      goto LABEL_42;
+    }
+    goto LABEL_41;
+  }
+  SdkRoutine_857220_alt1(v44_.v46, (4 * v44_.v44) & 0xFFFFFFFFFFFFFFF8LL),
+      v37 = COERCE_AS(__typeof__(v37),
+                      PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  if (((unsigned __int8)v47_.v47 & 1) != 0) {
+    goto LABEL_44;
+  }
+LABEL_40:
+  if ((v50_.v50[0] & 1) != 0) {
+  LABEL_41:
+    SdkRoutine_857220_alt1(v50_.v51, v50_.v50[0] & 0xFFFFFFFFFFFFFFFELL),
+        v37 = COERCE_AS(__typeof__(v37),
+                        PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  }
+LABEL_42:
+  std___1_locale_Destroy_locale_plt_alt1((__int64)v55),
+      v37 = COERCE_AS(__typeof__(v37),
+                      PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  return v34;
 }
 
 __attribute__((swiftcall)) void
