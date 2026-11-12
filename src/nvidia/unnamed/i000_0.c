@@ -2,30 +2,6 @@
 
 #pragma GCC visibility push(hidden)
 
-extern __int128 CudaDriverData_1115260;
-
-extern __int128 CudaDriverData_1115300;
-
-extern __int128 CudaDriverData_1115360;
-
-extern __int128 CudaDriverData_1115450;
-
-extern __int128 CudaDriverData_1115670;
-
-extern __int128 CudaDriverData_11156e0;
-
-extern __int128 CudaDriverData_11157a0;
-
-extern __int128 CudaDriverData_1115a00;
-
-extern __int128 CudaDriverData_1115cc0;
-
-extern __int128 CudaDriverData_1115d10;
-
-extern __int128 CudaDriverData_1116010;
-
-extern __int128 CudaDriverData_11162c0;
-
 extern _UNKNOWN CudaDriverData_1411d90;
 
 extern __int64 (*CudaDriverData_1423158[13])();
@@ -158,8 +134,6 @@ __int64 CudaDriverRoutine_223310(_QWORD, _QWORD);
 __int64 CudaDriverRoutine_223400(_QWORD, _QWORD);
 
 __int64 CudaDriverRoutine_25cf10(_QWORD, _QWORD, _QWORD);
-
-__int64 CudaDriverRoutine_43a0(void);
 
 __int64 CudaDriverRoutine_4f840(_QWORD);
 
@@ -331,46 +305,6 @@ __int64 CudaDriverHr_38360(__int64 result, int a2)
   }
   else {
     *(_BYTE*)(result + 472) &= ~1u;
-  }
-  return result;
-}
-
-long double CudaDriverHr_63b40(int a1, __int64 a2, __int64 a3)
-{
-  long double result;
-
-  if (a1 <= 6) {
-    if (a1 == 5) {
-      *(_OWORD*)(a3 + 32) = CudaDriverData_1115a00;
-      *(_OWORD*)(a3 + 48) = CudaDriverData_1115d10;
-      *(_OWORD*)(a3 + 64) = CudaDriverData_11162c0;
-      *(_OWORD*)(a3 + 80) = CudaDriverData_1116010;
-      *(_OWORD*)a3 = CudaDriverData_1115cc0;
-      *(_OWORD*)(a3 + 16) = CudaDriverData_1115360;
-      return *(long double*)&CudaDriverData_1115cc0;
-    }
-    else if (a1 == 6) {
-      *(_OWORD*)(a3 + 32) = CudaDriverData_1115a00;
-      *(_OWORD*)(a3 + 48) = CudaDriverData_1115450;
-      *(_OWORD*)(a3 + 64) = CudaDriverData_11162c0;
-      *(_OWORD*)(a3 + 80) = CudaDriverData_1116010;
-      *(_OWORD*)a3 = CudaDriverData_1115cc0;
-      *(_OWORD*)(a3 + 16) = CudaDriverData_1115360;
-      return *(long double*)&CudaDriverData_1115cc0;
-    }
-  }
-  else if (a1 == 7 || a1 == 8) {
-    CudaDriverRoutine_43a0();
-  }
-  else if (a1 == 9) {
-    *(_DWORD*)(a3 + 92) = 12;
-    *(_DWORD*)(a3 + 48) = 28;
-    *(_OWORD*)(a3 + 76) = CudaDriverData_1115260;
-    *(_OWORD*)(a3 + 60) = CudaDriverData_1115670;
-    *(_OWORD*)a3 = CudaDriverData_11157a0;
-    *(_OWORD*)(a3 + 16) = CudaDriverData_1115300;
-    *(_OWORD*)(a3 + 32) = CudaDriverData_11156e0;
-    return *(long double*)&CudaDriverData_11157a0;
   }
   return result;
 }
@@ -763,38 +697,6 @@ __int64 CudaDriverHr_92160(__int64 a1)
   *(_QWORD*)(a1 + 1184) = v6;
   *(__int64 (**)())(a1 + 1192) = CudaDriverData_1423188[0];
   return a1 + 1144;
-}
-
-__int64 CudaDriverHr_98130(_OWORD* a1)
-{
-  _OWORD* v1;
-
-  if (*(_DWORD*)a1 == 1) {
-    a1[1] = 0u;
-    a1[2] = 0u;
-    a1[3] = 0u;
-    a1[4] = 0u;
-    *a1 = 0u;
-    a1[5] = 0u;
-    a1[6] = 0u;
-    a1[7] = 0u;
-    a1[8] = 0u;
-    a1[9] = 0u;
-    a1[10] = 0u;
-    a1[11] = 0u;
-    a1[12] = 0u;
-    a1[13] = 0u;
-    a1[14] = 0u;
-    a1[15] = 0u;
-    a1[16] = 0u;
-  }
-  else {
-    v1 = a1;
-    CudaDriverRoutine_108490((char*)a1 + 24);
-    CudaDriverRoutine_25cf10(v1, 0, 17864);
-    a1 = v1;
-  }
-  return CudaDriverRoutine_12e340(a1);
 }
 
 __int64 CudaDriverHr_98870(__int64 result)

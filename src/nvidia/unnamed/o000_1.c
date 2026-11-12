@@ -72,17 +72,9 @@ extern _UNKNOWN CudaDriverData_1133d64;
 
 extern _UNKNOWN CudaDriverData_1133d70;
 
-extern __int64 (*CudaDriverData_14232a0)();
-
 extern __int64 CudaDriverData_1423360;
 
 extern int CudaDriverData_14302f8;
-
-extern char CudaDriverData_1432df0;
-
-extern _UNKNOWN CudaDriverData_1432df4;
-
-extern __int64 (*CudaDriverData_1432df8)(__int64*);
 
 extern __int64 CudaDriverData_14347a0;
 
@@ -96,8 +88,6 @@ __int64 CudaDriverRoutine_11c740(__int64 result, __int64, unsigned int,
                                  int8x16_t*, _BYTE*);
 
 __int64 CudaDriverRoutine_12a4a0(_QWORD);
-
-__int64 CudaDriverRoutine_12df40(_QWORD, _QWORD);
 
 __int64 CudaDriverRoutine_1dbab0(_QWORD);
 
@@ -1357,59 +1347,6 @@ __int64 CudaDriverHr_fd9f0(__int64 a1)
   result = *(_QWORD*)(a1 + 32);
   if (result != 0) {
     return (unsigned __int8)CudaDriverRoutine_1dc880(result) != 0;
-  }
-  return result;
-}
-
-__int64 CudaDriverHr_10a130(_DWORD* a1, _OWORD* a2, __int64 a3, __int64 a4,
-                            _BYTE* a5)
-{
-  __int64 result;
-  __int64 v11;
-  __int128 v12;
-  __int64 v13;
-  char v14;
-  __int128 v15;
-  __int128 v16;
-  _QWORD v17[3];
-  __int64 v18;
-  __int64 v19;
-  __int64* v20;
-
-  v15 = 0u;
-  v16 = 0u;
-  memset(v17, 0, sizeof(v17));
-  CudaDriverRoutine_12df40(&CudaDriverData_1432df4, CudaDriverData_14232a0);
-  if ((CudaDriverData_1432df0 & 1) != 0) {
-    return 999;
-  }
-  result = (*(__int64 (**)(__int64, _QWORD*))(a4 + 21600))(a4, v17);
-  if ((_DWORD)result == 0) {
-    *(_QWORD*)&v15 = a3;
-    v19 = 7;
-    v20 = (__int64*)&v15;
-    v18 = 0x200000001LL;
-    CudaDriverData_1432df8(&v18);
-    if (HIDWORD(v18) != 0) {
-      return 999;
-    }
-    v13 = a3;
-    v18 = 0x200000001LL;
-    v19 = 9;
-    v20 = &v13;
-    CudaDriverData_1432df8(&v18);
-    if (HIDWORD(v18) != 0) {
-      return 999;
-    }
-    v11 = v16;
-    *a5 = v14;
-    result = (*(__int64 (**)(__int64, __int64, __int64*))(a4 + 21592))(a4, v11,
-                                                                       &v18);
-    if ((_DWORD)result == 0) {
-      v12 = *(_OWORD*)&v17[1];
-      *a1 = v18;
-      *a2 = v12;
-    }
   }
   return result;
 }

@@ -489,8 +489,6 @@ __int64 CudaDriverRoutine_8e890(_QWORD, _QWORD);
 
 __int64 CudaDriverRoutine_8e9c0(_QWORD);
 
-__int64 CudaDriverRoutine_8ea00(_QWORD, _QWORD);
-
 __int64 CudaDriverRoutine_8ea30(_QWORD);
 
 __int64 CudaDriverRoutine_8ede0(_QWORD);
@@ -5044,17 +5042,6 @@ __int64 CudaDriverHr_60aa0()
     return CudaDriverRoutine_8e4d0();
   }
   return result;
-}
-
-__int64 CudaDriverHr_60ae0(__int64 a1, int a2, int a3)
-{
-  _DWORD v7[2];
-  __int64 v8;
-
-  CudaDriverRoutine_25cf10(&v8, 0, 2056);
-  v7[0] = a2;
-  v7[1] = a3;
-  return CudaDriverRoutine_8ea00(a1, v7);
 }
 
 __int64 CudaDriverHr_617c0(int a1, _BYTE* a2)
