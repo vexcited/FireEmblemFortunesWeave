@@ -2185,16 +2185,14 @@ float Pane_590430(__int64 a1)
 
 __int64* Pane_GetRuntimeTypeInfo()
 {
-  __int64 v1;
-
   if ((atomic_load_explicit((atomic_uchar* volatile)GameData_212dfe0,
                             memory_order_acquire) &
        1) != 0) {
     return GameData_212dfd8;
   }
-  if ((unsigned int)__cxa_guard_acquire(GameData_212dfe0) != 0) {
+  if (__cxa_guard_acquire_alt1((__int64)GameData_212dfe0) != 0) {
     *GameData_212dfd8 = 0;
-    __cxa_guard_release(GameData_212dfe0, v1);
+    __cxa_guard_release_alt2((__int64)GameData_212dfe0);
   }
   return GameData_212dfd8;
 }

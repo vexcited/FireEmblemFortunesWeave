@@ -8,7 +8,11 @@ extern __int64 GameData_21f3cb0;
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64* GameData_212ed08[13];
 __int64 EventBase_Destructor(__int64 result);
-__int64 EventBase_DeletingDestructor(__int64 a1);
+__int64 EventBase_DeletingDestructor_alt1(__int64 a1) __asm__(
+    "EventBase_DeletingDestructor");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void EventBase_DeletingDestructor(__int64 a1);
 
 __int64 EventBase_Destructor(__int64 result)
 {
@@ -56,7 +60,7 @@ __int64 EventBase_Destructor(__int64 result)
   return result;
 }
 
-__int64 EventBase_DeletingDestructor(__int64 a1)
+void EventBase_DeletingDestructor(__int64 a1)
 {
   __int64 v2;
   int v3;
@@ -100,8 +104,8 @@ __int64 EventBase_DeletingDestructor(__int64 a1)
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
     v9 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v9);
+  nn_mem_StandardAllocator_Free_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v9, a1);
 }
 
 #pragma GCC visibility pop

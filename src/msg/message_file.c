@@ -8,11 +8,18 @@ __int64 nn_mem_StandardAllocator_Free(_QWORD);
 extern __int64 (*GameData_21fdd18)(__int64);
 extern __int64 (*msg_MessageFile_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
-__int64 MessageFile_Destructor(__int64 a1);
-__int64 MessageFile_DeletingDestructor(__int64 a1);
+__int64
+MessageFile_Destructor_alt1(__int64 a1) __asm__("MessageFile_Destructor");
+__int64 MessageFile_DeletingDestructor_alt1(__int64 a1) __asm__(
+    "MessageFile_DeletingDestructor");
 __int64 MessageFile_Unknown2(__int64 a1);
 extern __int64 (*GameData_21fdd10)(__int64);
 __int64 MessageFile_a4a0e0(__int64 a1);
+void fs_6315e0(_QWORD*);
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void MessageFile_Destructor(__int64 a1);
+void MessageFile_DeletingDestructor(__int64 a1);
 
 __int64 MessageFile_a4a0e0(__int64 a1)
 {
@@ -151,11 +158,12 @@ LABEL_16:
   return result;
 }
 
-__int64 MessageFile_Destructor(__int64 a1)
+void MessageFile_Destructor(__int64 a1)
 {
   __int64 v1;
   __int64 v3;
   __int64 v4;
+  __int64 v5;
 
   v1 = *(_QWORD*)(a1 + 800);
   *(_QWORD*)a1 = msg_MessageFile_vtable;
@@ -164,23 +172,28 @@ __int64 MessageFile_Destructor(__int64 a1)
     GameData_21fdd18(v3);
   }
   GameData_21fdd18(v1);
-  if ((*(_BYTE*)(a1 + 808) & 1) != 0 && *(_QWORD*)(a1 + 824) != 0) {
-    v4 = 128;
-    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-      v4 = 56;
+  if ((*(_BYTE*)(a1 + 808) & 1) != 0) {
+    v4 = *(_QWORD*)(a1 + 824);
+    if (v4 != 0) {
+      v5 = 128;
+      if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+        v5 = 56;
+      }
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v5, v4);
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v4);
   }
-  return GameRoutine_6315e0(a1);
+  fs_6315e0((_QWORD*)a1);
 }
 
-__int64 MessageFile_DeletingDestructor(__int64 a1)
+void MessageFile_DeletingDestructor(__int64 a1)
 {
   __int64 v1;
   __int64 v3;
   __int64 v4;
   __int64 v5;
   __int64 v6;
+  __int64 v7;
 
   v1 = *(_QWORD*)(a1 + 800);
   *(_QWORD*)a1 = msg_MessageFile_vtable;
@@ -190,19 +203,23 @@ __int64 MessageFile_DeletingDestructor(__int64 a1)
   }
   GameData_21fdd18(v1);
   v4 = fw_memory_g_heap_manager_ptr;
-  if ((*(_BYTE*)(a1 + 808) & 1) != 0 && *(_QWORD*)(a1 + 824) != 0) {
-    v5 = 128;
-    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-      v5 = 56;
+  if ((*(_BYTE*)(a1 + 808) & 1) != 0) {
+    v5 = *(_QWORD*)(a1 + 824);
+    if (v5 != 0) {
+      v6 = 128;
+      if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+        v6 = 56;
+      }
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v6, v5);
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v5);
   }
-  GameRoutine_6315e0(a1);
-  v6 = 128;
+  fs_6315e0((_QWORD*)a1);
+  v7 = 128;
   if (*(_QWORD*)(*(_QWORD*)v4 + 200LL) == 0) {
-    v6 = 56;
+    v7 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v6);
+  nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v4 + v7, a1);
 }
 
 __int64 MessageFile_Unknown2(__int64 a1)

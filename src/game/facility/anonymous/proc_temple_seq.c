@@ -20,7 +20,22 @@ extern __int64 GameData_2243f70;
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64 ui_Manager_instance_;
 __int64 ProcTempleSeq_Destructor(__int64 a1);
-__int64 ProcTempleSeq_DeletingDestructor(__int64 a1);
+__int64 ProcTempleSeq_DeletingDestructor_alt1(__int64 a1) __asm__(
+    "ProcTempleSeq_DeletingDestructor");
+_QWORD* ArcResourceAccessor_Unknown7_alt1(_QWORD*, __int64) __asm__(
+    "ArcResourceAccessor_Unknown7");
+__int64
+ArcResourceAccessor_573800_alt1(__int64) __asm__("ArcResourceAccessor_573800");
+__int64 ArcResourceAccessor_Unknown4_alt1(__int64, __int64, __int64) __asm__(
+    "ArcResourceAccessor_Unknown4");
+__int64 GameHr_195a5c0();
+__int64 GameRoutine_634d80_alt1(__int64, __int64) __asm__("GameRoutine_634d80");
+__int64 game_ProcInst_Unregister_alt1(__int64 result) __asm__(
+    "game_ProcInst_Unregister");
+void GameRoutine_658c00_alt1(__int64*) __asm__("GameRoutine_658c00");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void ProcTempleSeq_DeletingDestructor(__int64 a1);
 
 __int64 ProcTempleSeq_Destructor(__int64 a1)
 {
@@ -77,7 +92,7 @@ LABEL_13:
   return GameRoutine_658c00(a1 + 88);
 }
 
-__int64 ProcTempleSeq_DeletingDestructor(__int64 a1)
+void ProcTempleSeq_DeletingDestructor(__int64 a1)
 {
   __int64 v2;
   int v3;
@@ -89,7 +104,7 @@ __int64 ProcTempleSeq_DeletingDestructor(__int64 a1)
 
   *(_QWORD*)a1 = game_facility_anonymous_ProcTempleSeq_vtable;
   *(_QWORD*)(a1 + 208) = &GameData_203a720;
-  GameRoutine_195a5c0(a1 + 208);
+  GameHr_195a5c0();
   v2 = ui_Manager_instance_;
   v3 = *(_DWORD*)(ui_Manager_instance_ + 6524);
   v4 = __OFSUB__(v3--, 1);
@@ -100,13 +115,14 @@ __int64 ProcTempleSeq_DeletingDestructor(__int64 a1)
       *(_DWORD*)(v2 + 6524) = 0;
       if (v5 != 0) {
         if (*(_QWORD*)(v2 + 6400) != 0) {
-          ArcResourceAccessor_Unknown4(v2 + 6160, GameRoutine_1369810, 0);
-          ArcResourceAccessor_Unknown7(v2 + 6160,
-                                       *game_g_frame_clock_ptr[0] + 568);
-          ArcResourceAccessor_573800(v2 + 6160);
+          ArcResourceAccessor_Unknown4_alt1(v2 + 6160,
+                                            (__int64)GameRoutine_1369810, 0);
+          ArcResourceAccessor_Unknown7_alt1((_QWORD*)(v2 + 6160),
+                                            *game_g_frame_clock_ptr[0] + 568);
+          ArcResourceAccessor_573800_alt1(v2 + 6160);
           v5 = *(_QWORD*)(v2 + 6152);
         }
-        GameRoutine_634d80(*(_QWORD*)(v5 + 8));
+        GameRoutine_634d80_alt1(*(_QWORD*)(v5 + 8), v5);
         *(_QWORD*)(v2 + 6152) = 0;
       }
     }
@@ -129,14 +145,14 @@ LABEL_13:
   if ((*(_WORD*)(a1 + 136) & 0x100) != 0) {
     *(_WORD*)(a1 + 136) &= ~0x100u;
   }
-  game_ProcInst_Unregister(a1);
-  GameRoutine_658c00(a1 + 88);
+  game_ProcInst_Unregister_alt1(a1);
+  GameRoutine_658c00_alt1((__int64*)(a1 + 88));
   v8 = 128;
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
     v8 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v8);
+  nn_mem_StandardAllocator_Free_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v8, a1);
 }
 
 #pragma GCC visibility pop

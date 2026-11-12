@@ -24,7 +24,8 @@ extern __int64 game_g_game_setting;
 __int64 TelopCalendarRemind_Unknown35(__int64 result);
 __int64 TelopCalendarRemind_Unknown44(__int64 a1);
 __int64 TelopCalendarRemind_Destructor(__int64 a1);
-__int64 TelopCalendarRemind_DeletingDestructor(__int64 a1);
+__int64 TelopCalendarRemind_DeletingDestructor_alt1(__int64 a1) __asm__(
+    "TelopCalendarRemind_DeletingDestructor");
 __attribute__((swiftcall)) void LayoutAccessor_1560070(PSEUDO_X8, _QWORD);
 __int64 GameRoutine_156c5d0(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_1593d90(_QWORD, _QWORD);
@@ -99,6 +100,11 @@ void GameRoutine_1374ee0_alt1(__int64*,
 void GameRoutine_156c5d0_alt1(__int64, __int64,
                               char) __asm__("GameRoutine_156c5d0");
 void __cxa_guard_release_alt1(__int64) __asm__("__cxa_guard_release");
+__int64 LayoutAccessor_155ca60(__int64);
+void TelopReliance_1386f80(__int64);
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void TelopCalendarRemind_DeletingDestructor(__int64 a1);
 
 __int64 TelopCalendarRemind_Unknown33(__int64 a1)
 {
@@ -455,19 +461,19 @@ __int64 TelopCalendarRemind_Destructor(__int64 a1)
   return GameRoutine_1386f80(a1);
 }
 
-__int64 TelopCalendarRemind_DeletingDestructor(__int64 a1)
+void TelopCalendarRemind_DeletingDestructor(__int64 a1)
 {
   __int64 v2;
 
-  GameRoutine_155ca60(a1 + 1008);
-  GameRoutine_155ca60(a1 + 832);
-  GameRoutine_1386f80(a1);
+  LayoutAccessor_155ca60(a1 + 1008);
+  LayoutAccessor_155ca60(a1 + 832);
+  TelopReliance_1386f80(a1);
   v2 = 128;
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
     v2 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v2);
+  nn_mem_StandardAllocator_Free_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v2, a1);
 }
 
 #pragma GCC visibility pop

@@ -17,6 +17,10 @@ extern __int64 fw_memory_g_heap_manager_ptr;
 extern int GameData_224add0;
 void __attribute__((noreturn)) GameRoutine_60a210();
 void PerchQuestionFile_Unknown4();
+__int64
+std___1___next_prime_alt1(unsigned __int64) __asm__("std___1___next_prime");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 void PerchQuestionFile_Unknown4()
 {
@@ -101,7 +105,7 @@ void PerchQuestionFile_Unknown4()
         else {
           v4 = 56;
         }
-        nn_mem_StandardAllocator_Free(*(_QWORD*)v2 + v4);
+        nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v2 + v4, (__int64)v1);
         v1 = v3;
       } while (v3 != nullptr);
     }
@@ -292,7 +296,7 @@ void PerchQuestionFile_Unknown4()
       primeEm = 2;
     }
     else if ((primeEm & (primeEm - 1)) != 0) {
-      primeEm = std___1___next_prime(primeEm);
+      primeEm = std___1___next_prime_alt1(primeEm);
       v16 = GameData_224adb8;
     }
     if (primeEm <= v16) {
@@ -302,7 +306,7 @@ void PerchQuestionFile_Unknown4()
       v37 = vcvtps_u64_f32((float)(unsigned __int64)GameData_224adc8 /
                            *(float*)&GameData_224add0);
       if (v16 < 3 || (v16 & (v16 - 1)) != 0) {
-        v37 = std___1___next_prime(v37);
+        v37 = std___1___next_prime_alt1(v37);
       }
       else {
         v38 = 1LL << -(char)__clz(v37 - 1);
@@ -324,7 +328,7 @@ void PerchQuestionFile_Unknown4()
           if (*(_QWORD*)(*v22 + 200) == 0) {
             v51 = 56;
           }
-          nn_mem_StandardAllocator_Free(*v22 + v51);
+          nn_mem_StandardAllocator_Free_alt1(*v22 + v51, v50);
         }
         GameData_224adb8 = 0;
         goto LABEL_102;
@@ -341,7 +345,7 @@ void PerchQuestionFile_Unknown4()
       if (*(_QWORD*)(*v22 + 200) == 0) {
         v35 = 56;
       }
-      nn_mem_StandardAllocator_Free(*v22 + v35);
+      nn_mem_StandardAllocator_Free_alt1(*v22 + v35, v34);
     }
     GameData_224adb8 = primeEm;
     if (primeEm >= 8) {

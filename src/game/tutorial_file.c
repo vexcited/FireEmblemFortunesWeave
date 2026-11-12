@@ -89,6 +89,7 @@ void __attribute__((noreturn)) String_60a1d0_alt1() __asm__("String_60a1d0");
 void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void TutorialFile_980240(_QWORD* a1, char a2, int a3);
+__int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
 
 void TutorialFile_Unknown4()
 {
@@ -102,7 +103,7 @@ void TutorialFile_Unknown4()
   unsigned __int64 v7;
   _QWORD* v8;
   __int64 v9;
-  __int64 v10;
+  signed __int64 v10;
   unsigned __int64 v11;
   __int64 v12;
   unsigned __int64 v13;
@@ -135,7 +136,7 @@ void TutorialFile_Unknown4()
     }
     else {
       v9 = *v6;
-      v10 = (__int64)v8 - *v6;
+      v10 = (signed __int64)v8 - *v6;
       v11 = (v10 >> 3) + 1;
       if (v11 >> 61 != 0) {
         GameRoutine_9829b0();
@@ -164,7 +165,7 @@ void TutorialFile_Unknown4()
       v16 = v14 + v10 - 8 * (v10 >> 3);
       *(_QWORD*)(v14 + v10) = v3;
       v2 = v14 + v10 + 8;
-      memcpy(v16, v9, v10);
+      memcpy_alt1(v16, v9, v10);
       *v6 = v16;
       v6[1] = v2;
       v6[2] = v15;
@@ -173,8 +174,8 @@ void TutorialFile_Unknown4()
         if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
           v17 = 56;
         }
-        nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                      v17);
+        nn_mem_StandardAllocator_Free_alt2(
+            *(_QWORD*)fw_memory_g_heap_manager_ptr + v17, v9);
       }
     }
     ++v0;

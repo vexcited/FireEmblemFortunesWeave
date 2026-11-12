@@ -8,9 +8,15 @@ _QWORD* game_menu_BasicMenu_Destroy_BasicMenu(__int64);
 __int64 nn_mem_StandardAllocator_Free(_QWORD);
 extern __int64* GameData_212f6c8;
 extern __int64 fw_memory_g_heap_manager_ptr;
-__int64 UnitCommandSubMenu_DeletingDestructor(_QWORD* a1);
+__int64 UnitCommandSubMenu_DeletingDestructor_alt1(_QWORD* a1) __asm__(
+    "UnitCommandSubMenu_DeletingDestructor");
+void game_menu_BasicMenu_Destroy_BasicMenu_alt1(__int64) __asm__(
+    "game_menu_BasicMenu_Destroy_BasicMenu");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void UnitCommandSubMenu_DeletingDestructor(_QWORD* a1);
 
-__int64 UnitCommandSubMenu_DeletingDestructor(_QWORD* a1)
+void UnitCommandSubMenu_DeletingDestructor(_QWORD* a1)
 {
   __int64* v2;
   _QWORD* v3;
@@ -35,13 +41,13 @@ __int64 UnitCommandSubMenu_DeletingDestructor(_QWORD* a1)
   }
   (*(void (**)(__int64))(*v4 + v5))((__int64)v4);
 LABEL_6:
-  game_menu_BasicMenu_Destroy_BasicMenu((__int64)a1);
+  game_menu_BasicMenu_Destroy_BasicMenu_alt1((__int64)a1);
   v6 = 128;
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
     v6 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v6);
+  nn_mem_StandardAllocator_Free_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v6, (__int64)a1);
 }
 
 __int64 UnitCommandSubMenu_Unknown24()

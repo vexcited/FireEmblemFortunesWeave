@@ -68,11 +68,13 @@ void __attribute__((noreturn)) GameRoutine_6f26d0(_QWORD);
 void __attribute__((noreturn)) String_60a1d0(_QWORD);
 __int64 game_ItemSeq_GainBind(__int64 a1, __int64** a2, __int64 a3, __int64* a4,
                               __int64* a5);
-__int64 ItemSeq_8af860(__int64 a1, unsigned __int16* a2, int a3, __int64 a4,
-                       __int64 a5);
+__int64 ItemSeq_8af860_alt1(__int64 a1, unsigned __int16* a2, int a3,
+                            __int64 a4, __int64 a5) __asm__("ItemSeq_8af860");
 __int64 ItemSeq_8af940(__int64 a1, __int64* a2, __int64 a3, char** a4,
                        char** a5, char a6);
-__int64 game_ItemSeq_GainBind_lambda0_Invoke_8b3b10(__int64 a1, __int64* a2);
+__int64 game_ItemSeq_GainBind_lambda0_Invoke_8b3b10_alt1(
+    __int64 a1,
+    __int64* a2) __asm__("game_ItemSeq_GainBind_lambda0_Invoke_8b3b10");
 __int64** game_ItemSeq_GainBind_lambda0_Invoke_8b3c90(__int64** result,
                                                       unsigned __int16* a2);
 _WORD* game_UnitItemList_EachItem(_WORD* result, __int64);
@@ -94,6 +96,14 @@ extern __int64 (*GameData_1fa9348[])();
 extern __int64* game_map_MapRandom_instance__ptr[3];
 extern __int64* game_vstring_kEmpty_ptr[2];
 __int64 game_ItemSeq_GainBind_8afdf0(__int64 a1, __int64 a2, __int64 a3);
+__int64* game_8aef60_alt1(__int64, unsigned __int16*) __asm__("game_8aef60");
+__int64 ItemSeq_8af940_alt2(__int64, unsigned __int16**, __int64, const char**,
+                            const char**, char) __asm__("ItemSeq_8af940");
+void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+__int64 ItemSeq_8af860(__int64 a1, unsigned __int16* a2, int a3,
+                       const char** a4, const char** a5);
+void game_ItemSeq_GainBind_lambda0_Invoke_8b3b10(__int64 a1, __int64* a2);
 
 __int64 game_ItemSeq_GainBind(__int64 a1, __int64** a2, __int64 a3, __int64* a4,
                               __int64* a5)
@@ -164,28 +174,30 @@ __int64 game_ItemSeq_GainBind(__int64 a1, __int64** a2, __int64 a3, __int64* a4,
   return v18;
 }
 
-__int64 ItemSeq_8af860(__int64 a1, unsigned __int16* a2, int a3, __int64 a4,
-                       __int64 a5)
+__int64 ItemSeq_8af860(__int64 a1, unsigned __int16* a2, int a3,
+                       const char** a4, const char** a5)
 {
   int v5;
   int v9;
   __int64 result;
   __int64 v12;
   __int64 v13;
-  __int64 v14;
-  __int64 v15;
-  __int64 v16;
+  struct {
+    unsigned __int16* v14;
+    unsigned __int16* v15;
+    __int64 v16;
+  } v14_;
 
   v5 = a3 - 1;
-  v15 = 0;
-  v16 = 0;
-  v14 = 0;
+  v14_.v15 = nullptr;
+  v14_.v16 = 0;
+  v14_.v14 = nullptr;
   if (a3 >= 1) {
     v9 = *a2;
     if (*a2 != 0) {
       while (1) {
         if (v9 != 0) {
-          GameRoutine_8aef60((__int64)&v14, a2);
+          game_8aef60_alt1((__int64)&v14_.v14, a2);
         }
         if (v5 == 0) {
           break;
@@ -195,15 +207,16 @@ __int64 ItemSeq_8af860(__int64 a1, unsigned __int16* a2, int a3, __int64 a4,
       }
     }
   }
-  result = ItemSeq_8af940_alt1(a1, &v14, 0, a4, a5, 0);
-  if (v14 != 0) {
-    v15 = v14;
+  result = ItemSeq_8af940_alt2(a1, &v14_.v14, 0, a4, a5, 0);
+  if (v14_.v14 != nullptr) {
+    v14_.v15 = v14_.v14;
     v12 = result;
     v13 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v13 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v13);
+    nn_mem_StandardAllocator_Free_alt2(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v13, (__int64)v14_.v14);
     return v12;
   }
   return result;
@@ -615,32 +628,32 @@ __int64 game_ItemSeq_GainBind_8afdf0(__int64 a1, __int64 a2, __int64 a3)
   return result;
 }
 
-__int64 game_ItemSeq_GainBind_lambda0_Invoke_8b3b10(__int64 a1, __int64* a2)
+void game_ItemSeq_GainBind_lambda0_Invoke_8b3b10(__int64 a1, __int64* a2)
 {
   __int64 v2;
-  __int64 result;
-  __int64 v5;
-  __int64 v6;
-  __int64 v7;
-  __int64 v8;
+  __int64 v4;
+  struct {
+    unsigned __int16* v5;
+    unsigned __int16* v6;
+    __int64 v7;
+  } v5_;
 
   v2 = *a2;
-  v7 = 0;
-  v8 = 0;
-  v6 = 0;
-  GameRoutine_8aef60((__int64)&v6, (unsigned __int16*)(a1 + 8));
-  result = ItemSeq_8af940(v2, &v6, *(_QWORD*)(a1 + 16), (char**)(a1 + 24),
-                          (char**)(a1 + 32), 0);
-  if (v6 != 0) {
-    v7 = v6;
-    v5 = 128;
+  v5_.v6 = nullptr;
+  v5_.v7 = 0;
+  v5_.v5 = nullptr;
+  game_8aef60_alt1((__int64)&v5_.v5, (unsigned __int16*)(a1 + 8));
+  ItemSeq_8af940_alt2(v2, &v5_.v5, *(_QWORD*)(a1 + 16), (const char**)(a1 + 24),
+                      (const char**)(a1 + 32), 0);
+  if (v5_.v5 != nullptr) {
+    v5_.v6 = v5_.v5;
+    v4 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-      v5 = 56;
+      v4 = 56;
     }
-    return nn_mem_StandardAllocator_Free(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v5);
+    nn_mem_StandardAllocator_Free_alt2(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v4, (__int64)v5_.v5);
   }
-  return result;
 }
 
 __int64** game_ItemSeq_GainBind_lambda0_Invoke_8b3c90(__int64** result,

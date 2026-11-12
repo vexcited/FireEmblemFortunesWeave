@@ -9,56 +9,51 @@ __int64 nn_mem_StandardAllocator_Free(_QWORD);
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64 game_GameModeData_instance_;
 __attribute__((swiftcall)) void ProcPerchMenu_Unknown66(PSEUDO_X8 x8_);
+void GameRoutine_7a8220_alt1(__int64*, _QWORD*) __asm__("GameRoutine_7a8220");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 __attribute__((swiftcall)) void ProcPerchMenu_Unknown66(PSEUDO_X8 x8_)
 {
-  _QWORD* a1 = (_QWORD*)PSEUDO_X8_VALUE(x8_);
-  _QWORD* result;
+  __int64* a1 = (__int64*)PSEUDO_X8_VALUE(x8_);
+  __int64 v2;
   __int64 v3;
-  __int64 v4;
-  char v5;
-  unsigned __int64 v6;
-  _BYTE v7[15];
+  char v4;
+  unsigned __int64 v5;
+  _BYTE v6[15];
 
   a1[1] = 0;
   a1[2] = 0;
   *a1 = 0;
-  v7[13] = 0;
-  v5 = 42;
-  v6 = 0x81E389B4E9BD99E7LL;
-  *(_QWORD*)v7 = 0xE3BE81E3A2ADE6AELL;
-  *(_QWORD*)&v7[5] = 0xA89CE68A82E3BE81LL;
-  result = GameRoutine_7a8220(a1, &v5);
-  if ((v5 & 1) != 0 && *(_QWORD*)&v7[7] != 0) {
-    v3 = 128;
+  v6[13] = 0;
+  v4 = 42;
+  v5 = 0x81E389B4E9BD99E7LL;
+  *(_QWORD*)v6 = 0xE3BE81E3A2ADE6AELL;
+  *(_QWORD*)&v6[5] = 0xA89CE68A82E3BE81LL;
+  GameRoutine_7a8220_alt1(a1, &v4);
+  if ((v4 & 1) != 0 && *(_QWORD*)&v6[7] != 0) {
+    v2 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-      v3 = 56;
+      v2 = 56;
     }
-    result = (_QWORD*)nn_mem_StandardAllocator_Free(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v3);
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v2, *(__int64*)&v6[7]);
   }
   if (game_GameModeData_instance_ != 0 &&
       *(_DWORD*)(game_GameModeData_instance_ + 60) == 1) {
-    v7[4] = 0;
-    v5 = 24;
-    *(_DWORD*)v7 = -1467488115;
-    v6 = 0x99E9AE81E386B5E7LL;
-    result = GameRoutine_7a8220(a1, &v5);
-    if ((v5 & 1) != 0 && *(_QWORD*)&v7[7] != 0) {
-      v4 = 128;
+    v6[4] = 0;
+    v4 = 24;
+    *(_DWORD*)v6 = -1467488115;
+    v5 = 0x99E9AE81E386B5E7LL;
+    GameRoutine_7a8220_alt1(a1, &v4);
+    if ((v4 & 1) != 0 && *(_QWORD*)&v6[7] != 0) {
+      v3 = 128;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-        v4 = 56;
+        v3 = 56;
       }
-      {
-        (_QWORD*)nn_mem_StandardAllocator_Free(
-            *(_QWORD*)fw_memory_g_heap_manager_ptr + v4);
-        return;
-      }
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v3, *(__int64*)&v6[7]);
     }
-  }
-  {
-    result;
-    return;
   }
 }
 

@@ -9,9 +9,16 @@ extern __int64 (*game_GameSubquestData_ProcRewardForSharedComp_vtable[])();
 extern __int64 (*game_ProcInst_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64 game_ProcGameSkipView_instance_;
-__int64 ProcRewardForSharedComp_Destructor(__int64 a1);
+__int64 ProcRewardForSharedComp_Destructor_alt1(__int64 a1) __asm__(
+    "ProcRewardForSharedComp_Destructor");
+__int64 game_ProcInst_Unregister_alt1(__int64 result) __asm__(
+    "game_ProcInst_Unregister");
+void GameRoutine_658c00_alt1(__int64*) __asm__("GameRoutine_658c00");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void ProcRewardForSharedComp_Destructor(__int64 a1);
 
-__int64 ProcRewardForSharedComp_Destructor(__int64 a1)
+void ProcRewardForSharedComp_Destructor(__int64 a1)
 {
   _QWORD* v2;
   __int64 v3;
@@ -35,6 +42,7 @@ __int64 ProcRewardForSharedComp_Destructor(__int64 a1)
   __int64 v21;
   __int64 v22;
   __int64 v23;
+  __int64 v24;
 
   *(_QWORD*)a1 = game_GameSubquestData_ProcRewardForSharedComp_vtable;
   v2 = (_QWORD*)game_ProcGameSkipView_instance_;
@@ -61,60 +69,65 @@ __int64 ProcRewardForSharedComp_Destructor(__int64 a1)
     v2[27] = v3 - 1;
     v2[20] = v14;
     if ((unsigned __int64)(v11 - (v3 + v4) - 255) <= 0xFFFFFFFFFFFFFEFFLL) {
-      if (*(_QWORD*)(v5 - 8) != 0) {
-        v15 = 128;
+      v15 = *(_QWORD*)(v5 - 8);
+      if (v15 != 0) {
+        v16 = 128;
         if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-          v15 = 56;
+          v16 = 56;
         }
-        nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                      v15);
+        nn_mem_StandardAllocator_Free_alt1(
+            *(_QWORD*)fw_memory_g_heap_manager_ptr + v16, v15);
         v5 = v2[24];
       }
       v2[24] = v5 - 8;
     }
   }
-  v16 = *(_QWORD*)(a1 + 232);
-  if (v16 != 0) {
-    *(_QWORD*)(a1 + 240) = v16;
-    v17 = 128;
+  v17 = *(_QWORD*)(a1 + 232);
+  if (v17 != 0) {
+    *(_QWORD*)(a1 + 240) = v17;
+    v18 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-      v17 = 56;
+      v18 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v17);
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v18, v17);
   }
-  v18 = *(_QWORD*)(a1 + 208);
-  if (v18 != 0) {
-    *(_QWORD*)(a1 + 216) = v18;
-    v19 = 128;
+  v19 = *(_QWORD*)(a1 + 208);
+  if (v19 != 0) {
+    *(_QWORD*)(a1 + 216) = v19;
+    v20 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-      v19 = 56;
+      v20 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v19);
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v20, v19);
   }
-  v20 = *(_QWORD*)(a1 + 184);
-  if (v20 != 0) {
-    *(_QWORD*)(a1 + 192) = v20;
-    v21 = 128;
+  v21 = *(_QWORD*)(a1 + 184);
+  if (v21 != 0) {
+    *(_QWORD*)(a1 + 192) = v21;
+    v22 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-      v21 = 56;
+      v22 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v21);
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v22, v21);
   }
-  v22 = *(_QWORD*)(a1 + 152);
-  if (v22 != 0) {
-    *(_QWORD*)(a1 + 160) = v22;
-    v23 = 128;
+  v23 = *(_QWORD*)(a1 + 152);
+  if (v23 != 0) {
+    *(_QWORD*)(a1 + 160) = v23;
+    v24 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-      v23 = 56;
+      v24 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v23);
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v24, v23);
   }
   *(_QWORD*)a1 = game_ProcInst_vtable;
   if ((*(_WORD*)(a1 + 136) & 0x100) != 0) {
     *(_WORD*)(a1 + 136) &= ~0x100u;
   }
-  game_ProcInst_Unregister(a1);
-  return GameRoutine_658c00(a1 + 88);
+  game_ProcInst_Unregister_alt1(a1);
+  GameRoutine_658c00_alt1((__int64*)(a1 + 88));
 }
 
 #pragma GCC visibility pop

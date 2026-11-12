@@ -13,8 +13,10 @@ extern __int64 GameData_2131cf8[27];
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64* GameData_2130fa0[3];
 __int64 TelopGrowMastery_Unknown56(__int64 a1);
-__int64 TelopGrowMastery_Destructor(__int64 a1);
-__int64 TelopGrowMastery_DeletingDestructor(__int64 a1);
+__int64 TelopGrowMastery_Destructor_alt1(__int64 a1) __asm__(
+    "TelopGrowMastery_Destructor");
+__int64 TelopGrowMastery_DeletingDestructor_alt1(__int64 a1) __asm__(
+    "TelopGrowMastery_DeletingDestructor");
 __int64 LayoutAccessor_1562cf0(__int64 result, const char*);
 __attribute__((swiftcall)) void LayoutAccessor_1560070(PSEUDO_X8, __int64*,
                                                        const char*);
@@ -43,6 +45,12 @@ void* GameHr_67ed20(_QWORD*);
 void* game_97b2f0(__int64);
 void GameRoutine_156c5d0(__int64, __int64, char);
 __int64 TelopGrowMastery_Unknown57(__int64 a1);
+void game_telop_TelopResult_Destroy_TelopResult_alt1(__int64) __asm__(
+    "game_telop_TelopResult_Destroy_TelopResult");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void TelopGrowMastery_Destructor(__int64 a1);
+void TelopGrowMastery_DeletingDestructor(__int64 a1);
 
 __int64 TelopGrowMastery_Unknown56(__int64 a1)
 {
@@ -219,7 +227,7 @@ __int64 TelopGrowMastery_Unknown57(__int64 a1)
   return result;
 }
 
-__int64 TelopGrowMastery_Destructor(__int64 a1)
+void TelopGrowMastery_Destructor(__int64 a1)
 {
   __int64 v2;
   __int64 v3;
@@ -227,50 +235,52 @@ __int64 TelopGrowMastery_Destructor(__int64 a1)
   __int64 v5;
   __int64 v6;
   __int64 v7;
+  __int64 v8;
 
   *(_QWORD*)a1 = game_telop_TelopGrowMastery_vtable;
   *(_QWORD*)(a1 + 1184) = game_gameui_GaugeUtil_MasteryExpChange_vtable;
-  if (*(_QWORD*)(a1 + 1320) != 0) {
-    std___1___shared_weak_count___release_weak();
+  v2 = *(_QWORD*)(a1 + 1320);
+  if (v2 != 0) {
+    std___1___shared_weak_count___release_weak_alt1(v2);
   }
   *(_QWORD*)(a1 + 1184) = game_gameui_GaugeUtil_ExpChange_vtable;
   if ((*(_BYTE*)(a1 + 1288) & 1) != 0) {
-    v2 = *(_QWORD*)(a1 + 1304);
-    if (v2 != 0) {
-      v3 = 128;
+    v3 = *(_QWORD*)(a1 + 1304);
+    if (v3 != 0) {
+      v4 = 128;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-        v3 = 56;
+        v4 = 56;
       }
-      nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v3,
-                                    v2);
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v4, v3);
     }
   }
   if ((*(_BYTE*)(a1 + 1264) & 1) != 0) {
-    v4 = *(_QWORD*)(a1 + 1280);
-    if (v4 != 0) {
-      v5 = 128;
+    v5 = *(_QWORD*)(a1 + 1280);
+    if (v5 != 0) {
+      v6 = 128;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-        v5 = 56;
+        v6 = 56;
       }
-      nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v5,
-                                    v4);
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v6, v5);
     }
   }
   if ((*(_BYTE*)(a1 + 1240) & 1) != 0) {
-    v6 = *(_QWORD*)(a1 + 1256);
-    if (v6 != 0) {
-      v7 = 128;
+    v7 = *(_QWORD*)(a1 + 1256);
+    if (v7 != 0) {
+      v8 = 128;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-        v7 = 56;
+        v8 = 56;
       }
-      nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v7,
-                                    v6);
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v8, v7);
     }
   }
-  return game_telop_TelopResult_Destroy_TelopResult(a1);
+  game_telop_TelopResult_Destroy_TelopResult_alt1(a1);
 }
 
-__int64 TelopGrowMastery_DeletingDestructor(__int64 a1)
+void TelopGrowMastery_DeletingDestructor(__int64 a1)
 {
   __int64 v2;
   __int64 v3;
@@ -280,51 +290,53 @@ __int64 TelopGrowMastery_DeletingDestructor(__int64 a1)
   __int64 v7;
   __int64 v8;
   __int64 v9;
+  __int64 v10;
 
   *(_QWORD*)a1 = game_telop_TelopGrowMastery_vtable;
   *(_QWORD*)(a1 + 1184) = GameData_2131cf8[0] + 16;
-  if (*(_QWORD*)(a1 + 1320) != 0) {
-    std___1___shared_weak_count___release_weak();
+  v2 = *(_QWORD*)(a1 + 1320);
+  if (v2 != 0) {
+    std___1___shared_weak_count___release_weak_alt1(v2);
   }
   *(_QWORD*)(a1 + 1184) = GameData_2130fa0[0] + 2;
-  v2 = fw_memory_g_heap_manager_ptr;
+  v3 = fw_memory_g_heap_manager_ptr;
   if ((*(_BYTE*)(a1 + 1288) & 1) != 0) {
-    v3 = *(_QWORD*)(a1 + 1304);
-    if (v3 != 0) {
-      v4 = 128;
+    v4 = *(_QWORD*)(a1 + 1304);
+    if (v4 != 0) {
+      v5 = 128;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-        v4 = 56;
+        v5 = 56;
       }
-      nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v4,
-                                    v3);
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v5, v4);
     }
   }
   if ((*(_BYTE*)(a1 + 1264) & 1) != 0) {
-    v5 = *(_QWORD*)(a1 + 1280);
-    if (v5 != 0) {
-      v6 = 128;
-      if (*(_QWORD*)(*(_QWORD*)v2 + 200LL) == 0) {
-        v6 = 56;
+    v6 = *(_QWORD*)(a1 + 1280);
+    if (v6 != 0) {
+      v7 = 128;
+      if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
+        v7 = 56;
       }
-      nn_mem_StandardAllocator_Free(*(_QWORD*)v2 + v6, v5);
+      nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v7, v6);
     }
   }
   if ((*(_BYTE*)(a1 + 1240) & 1) != 0) {
-    v7 = *(_QWORD*)(a1 + 1256);
-    if (v7 != 0) {
-      v8 = 128;
-      if (*(_QWORD*)(*(_QWORD*)v2 + 200LL) == 0) {
-        v8 = 56;
+    v8 = *(_QWORD*)(a1 + 1256);
+    if (v8 != 0) {
+      v9 = 128;
+      if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
+        v9 = 56;
       }
-      nn_mem_StandardAllocator_Free(*(_QWORD*)v2 + v8, v7);
+      nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v9, v8);
     }
   }
-  game_telop_TelopResult_Destroy_TelopResult(a1);
-  v9 = 128;
-  if (*(_QWORD*)(*(_QWORD*)v2 + 200LL) == 0) {
-    v9 = 56;
+  game_telop_TelopResult_Destroy_TelopResult_alt1(a1);
+  v10 = 128;
+  if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
+    v10 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)v2 + v9, a1);
+  nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v10, a1);
 }
 
 #pragma GCC visibility pop

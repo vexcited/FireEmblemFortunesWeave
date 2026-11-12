@@ -20,7 +20,8 @@ long double GameRoutine_618640(_QWORD, long double, long double, long double,
                                long double);
 __int64 game_combat_CinematicZoom_CinematicZoom(__int64 a1);
 __int64 CinematicZoom_10e0a60(__int64 result);
-_QWORD* CinematicZoom_Destructor(_QWORD* result);
+_QWORD* CinematicZoom_Destructor_alt1(_QWORD* result) __asm__(
+    "CinematicZoom_Destructor");
 void CinematicZoom_10e0dc0(__int64 a1, long double a2, long double a3,
                            long double a4, long double a5);
 __int64 CinematicZoom_10e0fc0(__int64 result);
@@ -34,6 +35,10 @@ __int64 game_combat_10e0730(__int64, __int64);
 const char* game_HashString32(const char* result);
 __int64 game_combat_CinematicZoom_CinematicZoom_lambda0_Invoke(__int64 a1,
                                                                __int64 a2);
+void GameHr_111eae0(__int64);
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void CinematicZoom_Destructor(_QWORD* a1);
 
 __int64 game_combat_CinematicZoom_CinematicZoom(__int64 a1)
 {
@@ -248,10 +253,9 @@ __int64 CinematicZoom_10e0a60(__int64 result)
   return result;
 }
 
-_QWORD* CinematicZoom_Destructor(_QWORD* result)
+void CinematicZoom_Destructor(_QWORD* a1)
 {
   __int64 v1;
-  _QWORD* v2;
   __int64 v3;
   _QWORD* v4;
   __int64 v5;
@@ -260,16 +264,15 @@ _QWORD* CinematicZoom_Destructor(_QWORD* result)
   __int64 v8;
   __int64 v9;
 
-  v1 = result[122];
-  result[122] = 0;
-  v2 = result;
-  *result = game_combat_CinematicZoom_vtable;
+  v1 = a1[122];
+  a1[122] = 0;
+  *a1 = game_combat_CinematicZoom_vtable;
   v3 = fw_memory_g_heap_manager_ptr;
   if (v1 == 0) {
     goto LABEL_14;
   }
   if (*(_BYTE*)(v1 + 65) == 1) {
-    GameRoutine_111eae0(v1);
+    GameHr_111eae0(v1);
   }
   v4 = *(_QWORD**)(v1 + 48);
   if (v4 == (_QWORD*)(v1 + 16)) {
@@ -290,23 +293,22 @@ _QWORD* CinematicZoom_Destructor(_QWORD* result)
   if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
     v7 = 56;
   }
-  result = (_QWORD*)nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v7);
+  nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v7, v1);
 LABEL_14:
-  v8 = v2[121];
-  v2[121] = 0;
+  v8 = a1[121];
+  a1[121] = 0;
   if (v8 != 0) {
     v9 = 128;
     if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
       v9 = 56;
     }
-    result = (_QWORD*)nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v9);
+    nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v9, v8);
   }
-  *v2 = GameData_200bec8;
-  if ((_QWORD*)GameData_2235738 == v2) {
+  *a1 = GameData_200bec8;
+  if ((_QWORD*)GameData_2235738 == a1) {
     GameData_2235738 = 0;
     GameData_2236510 = 0;
   }
-  return result;
 }
 
 void CinematicZoom_10e0dc0(__int64 a1, long double a2, long double a3,

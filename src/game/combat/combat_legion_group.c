@@ -13,7 +13,9 @@ _QWORD* CombatLegionGroup_Destructor_alt1(_QWORD* result) __asm__(
     "CombatLegionGroup_Destructor");
 __int64 memcmp(_QWORD, _QWORD);
 float CombatLegionGroup_e58940(__int64 a1, __int64 a2);
-__int64 CombatLegionGroup_e58ae0(__int64 a1, __int64 a2, __int64 a3);
+__int64
+CombatLegionGroup_e58ae0_alt1(__int64 a1, __int64 a2,
+                              __int64 a3) __asm__("CombatLegionGroup_e58ae0");
 __int64 GameRoutine_10784f0(_QWORD, _QWORD, _QWORD, long double);
 __int64 GameRoutine_e56ec0(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 fw_memory_HeapManager_Allocate(_QWORD, _QWORD, _QWORD, _QWORD);
@@ -89,6 +91,7 @@ void CombatLegionGroup_Destructor(_QWORD* a1);
 _QWORD* game_combat_CombatLegionGroup_AddCharacter(_QWORD* a1, __int64 a2,
                                                    __int64 a3, __int64 a4,
                                                    unsigned __int64 a5);
+__int64 CombatLegionGroup_e58ae0(__int64 a1, __int64 a2, unsigned __int64 a3);
 __attribute__((swiftcall)) void
 
 CombatLegionGroup_e57320(PSEUDO_X8 x8_, __int64 a1, unsigned __int8* a2,
@@ -698,16 +701,16 @@ float CombatLegionGroup_e58940(__int64 a1, __int64 a2)
   return (float)((float)v22 / (float)(int)v23) * 0x1.3880000000000p+13f;
 }
 
-__int64 CombatLegionGroup_e58ae0(__int64 a1, __int64 a2, __int64 a3)
+__int64 CombatLegionGroup_e58ae0(__int64 a1, __int64 a2, unsigned __int64 a3)
 {
   unsigned __int8* v3;
   unsigned __int8** v4;
   unsigned __int8** v5;
-  unsigned __int8* v8;
+  __int64 v8;
   unsigned __int8* v9;
   unsigned __int64 v10;
   unsigned __int64 v11;
-  unsigned __int8* v12;
+  __int64 v12;
   int v13;
   _BOOL4 v14;
 
@@ -718,8 +721,8 @@ __int64 CombatLegionGroup_e58ae0(__int64 a1, __int64 a2, __int64 a3)
   }
   while (1) {
     v9 = *v4;
-    v8 = v4[1];
-    if (v8 != nullptr) {
+    v8 = (__int64)v4[1];
+    if (v8 != 0) {
       atomic_fetch_add_explicit((atomic_ullong* volatile)(v8 + 8), 1u,
                                 memory_order_relaxed);
     }
@@ -730,29 +733,29 @@ __int64 CombatLegionGroup_e58ae0(__int64 a1, __int64 a2, __int64 a3)
     }
     if (a3 != v11) {
       v14 = false;
-      if (v8 == nullptr) {
+      if (v8 == 0) {
         goto LABEL_17;
       }
     LABEL_15:
       if (atomic_fetch_add((atomic_ullong* volatile)(v8 + 8),
                            0xFFFFFFFFFFFFFFFFLL) == 0) {
-        (*(void (**)(unsigned __int8*))(*(_QWORD*)v8 + 16LL))(v8);
-        std___1___shared_weak_count___release_weak();
+        (*(void (**)(__int64))(*(_QWORD*)v8 + 16LL))(v8);
+        std___1___shared_weak_count___release_weak_alt2(v8);
       }
       goto LABEL_17;
     }
     if ((v10 & 1) != 0) {
-      v12 = *((unsigned __int8**)v9 + 2);
+      v12 = *((_QWORD*)v9 + 2);
     }
     else {
-      v12 = v9 + 1;
+      v12 = (__int64)(v9 + 1);
     }
-    v13 = memcmp(a2, v12);
+    v13 = memcmp_alt1(a2, v12, a3);
     v14 = v13 == 0;
     if (v13 == 0) {
       v3 = v9;
     }
-    if (v8 != nullptr) {
+    if (v8 != 0) {
       goto LABEL_15;
     }
   LABEL_17:

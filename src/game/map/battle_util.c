@@ -1442,6 +1442,8 @@ __int64 BattleUtil_7ac940(__int64 a1, __int64 a2);
 _WORD*
 game_UnitItemList_EachItem_alt1(_WORD* result,
                                 __int64) __asm__("game_UnitItemList_EachItem");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
 
 int* game_map_BattleUtil_GetFactorSkill(__int64 a1)
 {
@@ -2706,7 +2708,7 @@ LABEL_9:
   if (atomic_fetch_add((atomic_ullong* volatile)(v9 + 8),
                        0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v9 + 16LL))(v9);
-    std___1___shared_weak_count___release_weak();
+    std___1___shared_weak_count___release_weak_alt1(v9);
     if (v6 <= 0x0.0p+0f) {
       goto LABEL_20;
     }

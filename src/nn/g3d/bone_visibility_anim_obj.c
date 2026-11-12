@@ -21,6 +21,8 @@ __int64 BoneVisibilityAnimObj_Unknown6(__int64 a1, __int64 a2);
 __int64 GameRoutine_5e53f0_alt1(__int64,
                                 long double) __asm__("GameRoutine_5e53f0");
 __int64 BoneVisibilityAnimObj_Unknown3(__int64 result, long double a2);
+int memcmp_alt1(__int64, __int64, unsigned __int64) __asm__("memcmp");
+unsigned __int64 strlen_alt1(const char*) __asm__("strlen");
 
 __int64 BoneVisibilityAnimObj_5e0360(__int64 a1, __int64 a2)
 {
@@ -32,7 +34,7 @@ __int64 BoneVisibilityAnimObj_5e0360(__int64 a1, __int64 a2)
   __int64 v8;
   unsigned int v9;
   __int64 v10;
-  __int64 v11;
+  const char* v11;
   unsigned __int64 v12;
   __int64 v13;
   _DWORD* v14;
@@ -47,7 +49,7 @@ __int64 BoneVisibilityAnimObj_5e0360(__int64 a1, __int64 a2)
   __int64 v23;
 
   v2 = *(_QWORD*)(a2 + 8);
-  MaterialAnimObj_5dfe60(a1 + 88, *(unsigned __int16*)(a2 + 56));
+  MaterialAnimObj_5dfe60_alt1(a1 + 88, *(_WORD*)(a2 + 56));
   v4 = *(unsigned __int16*)(a1 + 100);
   if (*(_WORD*)(a1 + 100) != 0) {
     v5 = (_DWORD*)(v2 + 8);
@@ -58,28 +60,29 @@ __int64 BoneVisibilityAnimObj_5e0360(__int64 a1, __int64 a2)
     v10 = *(_QWORD*)(*(_QWORD*)(a1 + 104) + 56LL);
     do {
       while (1) {
-        v11 = *(_QWORD*)(v10 + 8 * v8) + 2LL;
-        v12 = strlen(v11);
+        v11 = (const char*)(*(_QWORD*)(v10 + 8 * v8) + 2LL);
+        v12 = strlen_alt1(v11);
         v13 = *v6;
         v14 = &v5[4 * v13];
         v15 = *v14;
-        if (*v5 < *v14) {
+        if ((signed __int32)*v5 < (signed __int32)*v14) {
           do {
             v17 = (__int64)v15 >> 3;
             if (v12 > v17) {
-              v16 = (*(unsigned __int8*)(v11 + v12 + ~v17) >> (v15 & 7)) & 1;
+              v16 = ((unsigned __int8)v11[v12 + ~v17] >> (v15 & 7)) & 1;
             }
             else {
               v16 = 0;
             }
             v13 = v6[8 * v13 + v16];
-            v21 = v15 < v5[4 * v13];
+            v21 = v15 < (signed __int32)v5[4 * v13];
             v15 = v5[4 * v13];
           } while (v21);
           v14 = &v5[4 * v13];
         }
         v18 = *((unsigned __int16**)v14 + 1);
-        if (v12 == *v18 && (unsigned int)memcmp(v18 + 1, v11) == 0) {
+        if (v12 == *v18 &&
+            memcmp_alt1((__int64)(v18 + 1), (__int64)v11, v12) == 0) {
           v19 = ((unsigned __int64)v14 - v7) >> 4;
           if ((v19 & 0x80000000) == 0) {
             break;
@@ -112,7 +115,7 @@ __int64 BoneVisibilityAnimObj_5e0360(__int64 a1, __int64 a2)
 LABEL_20:
   *(_WORD*)(a1 + 96) |= 1u;
   v20 = *(_DWORD*)(a1 + 60);
-  v21 = v20 >= 1 && v20 <= *(_DWORD*)(a1 + 56);
+  v21 = v20 >= 1 && v20 <= (signed __int32)*(_DWORD*)(a1 + 56);
   *(_DWORD*)(a1 + 64) = 2139095040;
   if (v21) {
     v22 = 0;

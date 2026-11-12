@@ -58,6 +58,7 @@ extern __int64 (*snd_fx_FxBase_vtable[])();
 extern __int64* snd_g_memory_ptr[2];
 __int64 GameHr_1678f0(__int64 a1, __int64 a2, __int64 a3, int a4, int a5);
 __int64 GameHr_1694e0(__int64 a1);
+__int64 GameHr_16f740(_QWORD* a1);
 
 __int64 GameHr_164030(__int64 result)
 {
@@ -890,14 +891,11 @@ __int64 GameHr_16e210(__int64 a1)
 __int64 GameHr_16f740(_QWORD* a1)
 {
   _QWORD* v2;
-  __int64 v3;
-  __int64 v4;
-  __int64 v5;
 
   v2 = a1 + 4096;
-  GameRoutine_2af320();
+  GameRoutine_2af320_alt1((__int64)a1);
   *a1 = GameData_2134798[0] + 16;
-  GameRoutine_1a0ba50(a1 + 13, 0, 32772, v3, v4, v5);
+  memset((__int64)(a1 + 13), 0, 0x8004u);
   *((_WORD*)v2 + 60) = 0;
   v2 += 15;
   *((_DWORD*)v2 - 3) = 48000;
@@ -905,7 +903,7 @@ __int64 GameHr_16f740(_QWORD* a1)
   *(_QWORD*)((char*)v2 + 4) = 0;
   v2[2] = 0;
   *((_DWORD*)v2 + 6) = 0;
-  return GameRoutine_1a0a040(v2, 1, 0);
+  return nn_os_InitializeMutex((__int64)v2, true, 0);
 }
 
 __int64 GameHr_1700c0(__int64 a1)

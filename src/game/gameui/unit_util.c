@@ -89,6 +89,9 @@ __int64 game_6c6ec0(__int64);
 __int64 game_Unit_GetUnknown6_alt1(__int64,
                                    char) __asm__("game_Unit_GetUnknown6");
 __int64 UnitUtil_15e04f0(__int64 result);
+__int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
+void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 bool game_gameui_UnitUtil_CheckDangerCritical(__int64 a1, __int64 a2)
 {
@@ -741,21 +744,21 @@ __int64 UnitUtil_15e0640(__int64 a1, __int64 a2, int a3, int a4, char a5)
   int v20;
   int v21;
   __int64 v22;
-  __int64** v23;
+  __int64* v23;
   unsigned __int64 v24;
   __int64* v25;
-  __int64* v26;
-  __int64* v27;
+  _QWORD* v26;
+  __int64 v27;
   __int64 v28;
   __int64 v29;
   unsigned __int64 v30;
   __int64 v31;
   unsigned __int64 v32;
   __int64 v33;
-  __int64 v34;
+  unsigned __int64 v34;
   __int64* v35;
   unsigned __int64 v36;
-  __int64* v37;
+  __int64 v37;
   __int64 v38;
   __int64 v39;
   __int64 v40;
@@ -764,7 +767,7 @@ __int64 UnitUtil_15e0640(__int64 a1, __int64 a2, int a3, int a4, char a5)
   unsigned __int64 v44;
   __int64* v45;
   __int64 v46;
-  __int64 v47;
+  signed __int64 v47;
   unsigned __int64 v48;
   __int64 v49;
   __int64 v50;
@@ -832,21 +835,21 @@ __int64 UnitUtil_15e0640(__int64 a1, __int64 a2, int a3, int a4, char a5)
         }
         v22 = *(_QWORD*)v14;
         if (((a4 | v21) & 1) == 0 || *(unsigned __int8*)(v22 + 49) <= v15) {
-          v23 = (__int64**)(a1 + 24LL * *(unsigned __int8*)(v22 + 536));
-          v25 = v23[1];
-          v24 = (unsigned __int64)v23[2];
+          v23 = (__int64*)(a1 + 24LL * *(unsigned __int8*)(v22 + 536));
+          v25 = (__int64*)v23[1];
+          v24 = v23[2];
           if ((unsigned __int64)v25 >= v24) {
             v58 = v15;
             v59 = a4;
             v27 = *v23;
             v60 = a3;
-            v28 = (char*)v25 - (char*)*v23;
+            v28 = (__int64)v25 - *v23;
             v29 = v28 >> 3;
             v30 = (v28 >> 3) + 1;
             if (v30 >> 61 != 0) {
               goto LABEL_70;
             }
-            v31 = v24 - (_QWORD)v27;
+            v31 = v24 - v27;
             if (v31 >> 2 > v30) {
               v30 = v31 >> 2;
             }
@@ -869,21 +872,21 @@ __int64 UnitUtil_15e0640(__int64 a1, __int64 a2, int a3, int a4, char a5)
             v34 = v28;
             v35 = (__int64*)(v33 + v28);
             v36 = v33 + 8 * v32;
-            v37 = &v35[-v29];
+            v37 = (__int64)&v35[-v29];
             *v35 = v22;
             v26 = v35 + 1;
-            memcpy(v37, v27, v34);
+            memcpy_alt1(v37, v27, v34);
             *v23 = v37;
-            v23[1] = v26;
-            v23[2] = (__int64*)v36;
-            if (v27 != nullptr) {
+            v23[1] = (__int64)v26;
+            v23[2] = v36;
+            if (v27 != 0) {
               v38 = 128;
               if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) ==
                   0) {
                 v38 = 56;
               }
-              nn_mem_StandardAllocator_Free_alt1(
-                  *(_QWORD*)fw_memory_g_heap_manager_ptr + v38);
+              nn_mem_StandardAllocator_Free_alt2(
+                  *(_QWORD*)fw_memory_g_heap_manager_ptr + v38, v27);
             }
             a4 = v59;
             a3 = v60;
@@ -893,7 +896,7 @@ __int64 UnitUtil_15e0640(__int64 a1, __int64 a2, int a3, int a4, char a5)
             *v25 = v22;
             v26 = v25 + 1;
           }
-          v23[1] = v26;
+          v23[1] = (__int64)v26;
           v13 = v62;
         }
       LABEL_8:
@@ -918,7 +921,7 @@ __int64 UnitUtil_15e0640(__int64 a1, __int64 a2, int a3, int a4, char a5)
           }
           else {
             v46 = *v43;
-            v47 = (__int64)v45 - *v43;
+            v47 = (signed __int64)v45 - *v43;
             v48 = (v47 >> 3) + 1;
             if (v48 >> 61 != 0) {
             LABEL_70:
@@ -951,7 +954,7 @@ __int64 UnitUtil_15e0640(__int64 a1, __int64 a2, int a3, int a4, char a5)
             v55 = v53 + v47 - 8 * (v47 >> 3);
             *(_QWORD*)(v53 + v47) = v40;
             v39 = v53 + v47 + 8;
-            memcpy(v55, v46, v47);
+            memcpy_alt1(v55, v46, v47);
             *v43 = v55;
             v43[1] = v39;
             v43[2] = v54;
@@ -961,8 +964,8 @@ __int64 UnitUtil_15e0640(__int64 a1, __int64 a2, int a3, int a4, char a5)
                   0) {
                 v56 = 56;
               }
-              nn_mem_StandardAllocator_Free_alt1(
-                  *(_QWORD*)fw_memory_g_heap_manager_ptr + v56);
+              nn_mem_StandardAllocator_Free_alt2(
+                  *(_QWORD*)fw_memory_g_heap_manager_ptr + v56, v46);
             }
             a3 = v51;
             a1 = v50;

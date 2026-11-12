@@ -8,7 +8,11 @@ extern __int64 (*snd_TargetSound3DEngine_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64* snd_g_memory_ptr[2];
 __int64 TargetSound3DEngine_Destructor(_QWORD* a1);
-__int64 TargetSound3DEngine_DeletingDestructor(_QWORD* a1);
+__int64 TargetSound3DEngine_DeletingDestructor_alt1(_QWORD* a1) __asm__(
+    "TargetSound3DEngine_DeletingDestructor");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void TargetSound3DEngine_DeletingDestructor(_QWORD* a1);
 
 __int64 TargetSound3DEngine_Destructor(_QWORD* a1)
 {
@@ -27,7 +31,7 @@ __int64 TargetSound3DEngine_Destructor(_QWORD* a1)
   return snd_target_SoundVoice_Destroy_SoundVoice(a1);
 }
 
-__int64 TargetSound3DEngine_DeletingDestructor(_QWORD* a1)
+void TargetSound3DEngine_DeletingDestructor(_QWORD* a1)
 {
   void (***v1)(_QWORD);
   __int64 v3;
@@ -44,8 +48,8 @@ __int64 TargetSound3DEngine_DeletingDestructor(_QWORD* a1)
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
     v3 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v3);
+  nn_mem_StandardAllocator_Free_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v3, (__int64)a1);
 }
 
 #pragma GCC visibility pop

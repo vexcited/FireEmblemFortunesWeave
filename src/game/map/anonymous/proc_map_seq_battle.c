@@ -325,6 +325,15 @@ void ProcMapSeqBattle_7b6e80(__int64 a1, __int64 a2, unsigned int a3,
                              unsigned int a4, float32x4_t a5);
 void ProcMapSeqBattle_7b8280(__int64 a1, unsigned __int8 a2, int a3, int a4,
                              int a5);
+_QWORD* GameHr_1090da0(__int64);
+__int64
+CombatHUDWindow_183e450_alt1(__int64 result) __asm__("CombatHUDWindow_183e450");
+__int64 game_10ea6e0(__int64, __int64);
+__int64 game_combat_CombatSequenceImpl_CombatSequenceImpl(__int64, __int64,
+                                                          __int64);
+__int64 memset_alt1(__int64, int, unsigned __int64) __asm__("memset");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
 
 void ProcMapSeqBattle_7b0220(__int64 a1)
 {
@@ -1364,18 +1373,17 @@ __int64 ProcMapSeqBattle_7b68c0(__int64 a1, char a2, char a3)
   bool v11;
   int v12;
   _QWORD* v13;
-  _QWORD* v14;
+  __int64 v14;
   _QWORD* v15;
   __int64 v16;
   __int64 v17;
   __int64 v18;
-  __int64 v19;
-  __int64 v20;
-  __int64 v21;
   __int64 result;
-  _QWORD* v23;
-  _QWORD* v24;
-  _QWORD* v25;
+  __int64 v20;
+  struct {
+    __int64 v21;
+    __int64 v22;
+  } v21_;
 
   v4 = a1 + 176;
   if ((a2 & 1) != 0) {
@@ -1409,16 +1417,16 @@ __int64 ProcMapSeqBattle_7b68c0(__int64 a1, char a2, char a3)
     v12 = *(_DWORD*)(a1 + 11452);
     *(_QWORD*)(v8 + 152) = v9;
     *(_BYTE*)(v8 + 290) = (v12 & 0x800000) != 0;
-    CombatHUDWindow_183e450();
+    CombatHUDWindow_183e450_alt1(v8);
   }
-  v13 = (_QWORD*)fw_memory_HeapManager_Allocate(
+  v13 = (_QWORD*)fw_memory_HeapManager_Allocate_alt1(
       *(_QWORD*)fw_memory_g_heap_manager_ptr, 792, 16, 0);
   v13[2] = 0;
-  v14 = v13 + 3;
+  v14 = (__int64)(v13 + 3);
   v15 = v13;
   *v13 = GameData_212d1e8 + 2;
   v13[1] = 0;
-  memset(v13 + 3, 0, 728, v16, v17, v18);
+  memset_alt1((__int64)(v13 + 3), 0, 0x2D8u);
   v15[32] = 0;
   v15[33] = 0;
   v15[44] = 0;
@@ -1489,34 +1497,35 @@ __int64 ProcMapSeqBattle_7b68c0(__int64 a1, char a2, char a3)
   v15[96] = 0;
   v15[95] = 0;
   v15[94] = 0;
-  v24 = v14;
-  v25 = v15;
+  v21_.v21 = v14;
+  v21_.v22 = (__int64)v15;
   v15[40] = -4294967197LL;
   v15[52] = -4294967197LL;
   v15[64] = -4294967197LL;
   *(_QWORD*)((char*)v15 + 588) = 0x6300000063LL;
   v15[76] = -4294967197LL;
-  GameRoutine_10ea6e0(v14, v4);
-  GameRoutine_1090da0(v14);
+  game_10ea6e0(v14, v4);
+  GameHr_1090da0(v14);
   if ((a2 & 1) != 0) {
-    v19 = 0;
+    v16 = 0;
   }
   else {
-    v19 = a1;
+    v16 = a1;
   }
-  v20 = v19 + 152;
+  v17 = v16 + 152;
   if ((a2 & 1) != 0) {
-    v21 = 0;
+    v18 = 0;
   }
   else {
-    v21 = v20;
+    v18 = v17;
   }
-  result = GameRoutine_10d4da0(a1, &v24, v21);
-  v23 = v25;
-  if (v25 != nullptr && atomic_fetch_add((atomic_ullong* volatile)(v25 + 1),
-                                         0xFFFFFFFFFFFFFFFFLL) == 0) {
-    (*(void (**)(_QWORD*))(*v23 + 16LL))(v23);
-    result = std___1___shared_weak_count___release_weak(v23);
+  result = game_combat_CombatSequenceImpl_CombatSequenceImpl(
+      a1, (__int64)&v21_.v21, v18);
+  v20 = v21_.v22;
+  if (v21_.v22 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v21_.v22 + 8),
+                                        0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v20 + 16LL))(v20);
+    result = std___1___shared_weak_count___release_weak_alt1(v20);
   }
   *(_DWORD*)(a1 + 11452) &= 0xFE7FFFFF;
   return result;

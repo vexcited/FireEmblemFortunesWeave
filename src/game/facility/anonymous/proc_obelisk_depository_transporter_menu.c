@@ -18,8 +18,9 @@ void __attribute__((noreturn)) GameRoutine_60a310(_QWORD);
 void __attribute__((noreturn)) GameRoutine_874520(_QWORD);
 __int64 ProcObeliskDepositoryTransporterMenu_Unknown109(_QWORD* a1);
 _QWORD* ProcObeliskDepositoryTransporterMenu_Unknown128(__int64 a1);
-__int64 ProcObeliskDepositoryTransporterMenu_Unknown163(__int64 a1,
-                                                        __int64* a2);
+__int64 ProcObeliskDepositoryTransporterMenu_Unknown163_alt1(
+    __int64 a1,
+    __int64* a2) __asm__("ProcObeliskDepositoryTransporterMenu_Unknown163");
 __int64 BasicMenuCursor_16e0c00(_QWORD, _QWORD);
 extern __int64 (*GameData_1fb5f90[])();
 extern __int64 (*game_facility_DepositoryMenuItem_vtable[])();
@@ -36,10 +37,12 @@ extern __int64* GameData_212cd68[26];
 extern __int64 GameData_212cf90[3];
 extern __int64 game_GameModeData_instance_;
 extern __int64 game_TransporterConst_List_instance__ptr[6];
-__int64 ProcObeliskDepositoryTransporterMenu_Unknown88(__int64 a1);
+__int64 ProcObeliskDepositoryTransporterMenu_Unknown88_alt1(__int64 a1) __asm__(
+    "ProcObeliskDepositoryTransporterMenu_Unknown88");
 bool ProcObeliskDepositoryTransporterMenu_Unknown153(__int64 a1, __int64 a2,
                                                      __int64 a3);
-__int64 ProcObeliskDepositoryTransporterMenu_9c5c90(__int64 a1);
+__int64 ProcObeliskDepositoryTransporterMenu_9c5c90_alt1(__int64 a1) __asm__(
+    "ProcObeliskDepositoryTransporterMenu_9c5c90");
 __int64 GameRoutine_156c5d0(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_156c910(_QWORD, const char*, ...);
 __int64 GameRoutine_157d1a0(_QWORD, _QWORD, _QWORD);
@@ -61,8 +64,28 @@ extern __int64* msg_MessageManager_instance__ptr[2];
 extern __int64 GameData_212d690;
 extern __int64 ui_Manager_instance_;
 __int64 ProcObeliskDepositoryTransporterMenu_Unknown141(__int64 a1);
+__int64*
+LayoutAccessor_155fbe0_alt2(__int64*,
+                            const char*) __asm__("LayoutAccessor_155fbe0");
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
+void GameRoutine_71fb20_alt1(__int64*) __asm__("GameRoutine_71fb20");
+void LayoutAccessor_1572ac0_alt1(
+    __int64, __int64, unsigned int,
+    unsigned int) __asm__("LayoutAccessor_1572ac0");
+void __attribute__((noreturn))
+GameRoutine_60a210_alt1() __asm__("GameRoutine_60a210");
+void __attribute__((noreturn))
+GameRoutine_874520_alt1() __asm__("GameRoutine_874520");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void ProcObeliskDepositoryTransporterMenu_Unknown88(__int64 a1);
+void ProcObeliskDepositoryTransporterMenu_Unknown163(__int64 a1, __int64* a2);
+void ProcObeliskDepositoryTransporterMenu_9c5c90(__int64 a1);
 
-__int64 ProcObeliskDepositoryTransporterMenu_Unknown88(__int64 a1)
+void ProcObeliskDepositoryTransporterMenu_Unknown88(__int64 a1)
 {
   __int64* v1;
   __int64 v2;
@@ -79,7 +102,7 @@ __int64 ProcObeliskDepositoryTransporterMenu_Unknown88(__int64 a1)
   __int64* v13;
   __int64 v14;
   __int64 v15;
-  __int64 result;
+  __int64 v16;
   __int64 v17;
   __int64 v18;
   __int64 v19;
@@ -106,20 +129,21 @@ __int64 ProcObeliskDepositoryTransporterMenu_Unknown88(__int64 a1)
   *(__int64*)((char*)(*(__int64 (*)[2])0x28LL) + GameData_212cf90[0]) = v2 - 1;
   *v13 = v12;
   if ((unsigned __int64)(v10 - (v2 + v3) + 1) >= 0x400) {
-    if (*(_QWORD*)(v4 - 8) != 0) {
-      v14 = a1;
-      v15 = 128;
+    v14 = *(_QWORD*)(v4 - 8);
+    if (v14 != 0) {
+      v15 = a1;
+      v16 = 128;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-        v15 = 56;
+        v16 = 56;
       }
-      nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                    v15);
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v16, v14);
       v4 = *(_QWORD*)((char*)((__int128*)0x10LL) + (_QWORD)v1);
-      a1 = v14;
+      a1 = v15;
     }
     *(_QWORD*)((char*)((__int128*)0x10LL) + (_QWORD)v1) = v4 - 8;
   }
-  result = ItemShopSelectMenu_1874060(a1);
+  ItemShopSelectMenu_1874060(a1);
   v17 = *(__int64*)((char*)((_UNKNOWN**)0x8LL) + (_QWORD)v1);
   v18 = *(__int64*)((char*)((_UNKNOWN**)0x8LL) + (_QWORD)v1 + 8);
   v19 = *v13;
@@ -131,7 +155,7 @@ __int64 ProcObeliskDepositoryTransporterMenu_Unknown88(__int64 a1)
   v22 = *(_QWORD*)((char*)((char*)0x20LL) + (_QWORD)v1 + 8) +
         *(_QWORD*)((char*)((char*)0x20LL) + (_QWORD)v1);
   if (v20 == v22) {
-    result = GameRoutine_71fb20(v1);
+    GameRoutine_71fb20_alt1(v1);
     v17 = *(__int64*)((char*)((_UNKNOWN**)0x8LL) + (_QWORD)v1);
     v22 = *(_QWORD*)((char*)((char*)0x20LL) + (_QWORD)v1 + 8) +
           *(_QWORD*)((char*)((char*)0x20LL) + (_QWORD)v1);
@@ -139,7 +163,6 @@ __int64 ProcObeliskDepositoryTransporterMenu_Unknown88(__int64 a1)
   *(_QWORD*)(*(_QWORD*)(v17 + 8 * (v22 >> 9)) + 8 * (v22 & 0x1FF)) = v19;
   *v13 = v21 + 2464;
   ++*(__int64*)((char*)(*(__int64 (*)[2])0x28LL) + (_QWORD)v1);
-  return result;
 }
 
 __int64 ProcObeliskDepositoryTransporterMenu_Unknown109(_QWORD* a1)
@@ -556,14 +579,14 @@ bool ProcObeliskDepositoryTransporterMenu_Unknown153(__int64 a1, __int64 a2,
   return GameRoutine_19ef8e0(v20_.v20, v16_.v16);
 }
 
-__int64 ProcObeliskDepositoryTransporterMenu_Unknown163(__int64 a1, __int64* a2)
+void ProcObeliskDepositoryTransporterMenu_Unknown163(__int64 a1, __int64* a2)
 {
-  __int64 result;
+  int v3;
   unsigned __int64 v4;
   unsigned __int64 v5;
   __int64 v6;
   __int64 v7;
-  __int64 v8;
+  signed __int64 v8;
   unsigned __int64 v9;
   __int64 v10;
   unsigned __int64 v11;
@@ -574,7 +597,7 @@ __int64 ProcObeliskDepositoryTransporterMenu_Unknown163(__int64 a1, __int64* a2)
   unsigned __int64 v16;
   __int64 v17;
 
-  result = (*(__int64 (**)(__int64))(*(_QWORD*)a1 + 192LL))(a1);
+  v3 = (*(__int64 (**)(__int64))(*(_QWORD*)a1 + 192LL))(a1);
   v4 = a2[1];
   v5 = a2[2];
   if (v4 >= v5) {
@@ -582,7 +605,7 @@ __int64 ProcObeliskDepositoryTransporterMenu_Unknown163(__int64 a1, __int64* a2)
     v8 = v4 - *a2;
     v9 = 1 - 0x3333333333333333LL * (v8 >> 3);
     if (v9 > 0x666666666666666LL) {
-      GameRoutine_874520(result);
+      GameRoutine_874520_alt1();
     }
     v10 = fw_memory_g_heap_manager_ptr;
     v11 = 0xCCCCCCCCCCCCCCCDLL * ((__int64)(v5 - v7) >> 3);
@@ -597,12 +620,12 @@ __int64 ProcObeliskDepositoryTransporterMenu_Unknown163(__int64 a1, __int64* a2)
     }
     if (v12 != 0) {
       if (v12 > 0x666666666666666LL) {
-        GameRoutine_60a210(result);
+        GameRoutine_60a210_alt1();
       }
-      v13 = result;
-      v14 = fw_memory_HeapManager_Allocate(
+      v13 = v3;
+      v14 = fw_memory_HeapManager_Allocate_alt1(
           *(_QWORD*)fw_memory_g_heap_manager_ptr, 40 * v12, 16, 0);
-      LODWORD(result) = v13;
+      v3 = v13;
     }
     else {
       v14 = 0;
@@ -616,8 +639,8 @@ __int64 ProcObeliskDepositoryTransporterMenu_Unknown163(__int64 a1, __int64* a2)
     v16 = v14 + 40 * v12;
     v6 = v14 + v8 + 40;
     *(_DWORD*)(v15 + 20) = 7;
-    *(_DWORD*)(v15 + 24) = result;
-    result = memcpy(v14, v7, v8);
+    *(_DWORD*)(v15 + 24) = v3;
+    memcpy_alt1(v14, v7, v8);
     *a2 = v14;
     a2[1] = v6;
     a2[2] = v16;
@@ -626,7 +649,7 @@ __int64 ProcObeliskDepositoryTransporterMenu_Unknown163(__int64 a1, __int64* a2)
       if (*(_QWORD*)(*(_QWORD*)v10 + 200LL) == 0) {
         v17 = 56;
       }
-      result = nn_mem_StandardAllocator_Free(*(_QWORD*)v10 + v17);
+      nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v10 + v17, v7);
     }
   }
   else {
@@ -637,13 +660,12 @@ __int64 ProcObeliskDepositoryTransporterMenu_Unknown163(__int64 a1, __int64* a2)
     v6 = v4 + 40;
     *(_BYTE*)(v4 + 16) = 1;
     *(_DWORD*)(v4 + 20) = 7;
-    *(_DWORD*)(v4 + 24) = result;
+    *(_DWORD*)(v4 + 24) = v3;
   }
   a2[1] = v6;
-  return result;
 }
 
-__int64 ProcObeliskDepositoryTransporterMenu_9c5c90(__int64 a1)
+void ProcObeliskDepositoryTransporterMenu_9c5c90(__int64 a1)
 {
   __int64* v1;
   __int64 v2;
@@ -660,8 +682,8 @@ __int64 ProcObeliskDepositoryTransporterMenu_9c5c90(__int64 a1)
   __int64* v13;
   __int64 v14;
   __int64 v15;
-  __int64* v16;
-  __int64 result;
+  __int64 v16;
+  __int64* v17;
   __int64 v18;
   __int64 v19;
   __int64 v20;
@@ -688,21 +710,22 @@ __int64 ProcObeliskDepositoryTransporterMenu_9c5c90(__int64 a1)
   *(__int64*)((char*)(*(__int64 (*)[2])0x28LL) + GameData_212cf90[0]) = v2 - 1;
   *v13 = v12;
   if ((unsigned __int64)(v10 - (v2 + v3) + 1) >= 0x400) {
-    if (*(_QWORD*)(v4 - 8) != 0) {
-      v14 = a1;
-      v15 = 128;
+    v14 = *(_QWORD*)(v4 - 8);
+    if (v14 != 0) {
+      v15 = a1;
+      v16 = 128;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-        v15 = 56;
+        v16 = 56;
       }
-      nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                    v15);
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v16, v14);
       v4 = *(_QWORD*)((char*)((__int128*)0x10LL) + (_QWORD)v1);
-      a1 = v14;
+      a1 = v15;
     }
     *(_QWORD*)((char*)((__int128*)0x10LL) + (_QWORD)v1) = v4 - 8;
   }
-  v16 = LayoutAccessor_155fbe0((__int64*)(a1 + 848), (__int64)"L_UnitInfo");
-  result = LayoutAccessor_1572ac0(v16, 0, 0, 1u);
+  v17 = LayoutAccessor_155fbe0_alt2((__int64*)(a1 + 848), "L_UnitInfo");
+  LayoutAccessor_1572ac0_alt1((__int64)v17, 0, 0, 1u);
   v18 = *(__int64*)((char*)((_UNKNOWN**)0x8LL) + (_QWORD)v1);
   v19 = *(__int64*)((char*)((_UNKNOWN**)0x8LL) + (_QWORD)v1 + 8);
   v20 = *v13;
@@ -714,7 +737,7 @@ __int64 ProcObeliskDepositoryTransporterMenu_9c5c90(__int64 a1)
   v23 = *(_QWORD*)((char*)((char*)0x20LL) + (_QWORD)v1 + 8) +
         *(_QWORD*)((char*)((char*)0x20LL) + (_QWORD)v1);
   if (v21 == v23) {
-    result = GameRoutine_71fb20(v1);
+    GameRoutine_71fb20_alt1(v1);
     v18 = *(__int64*)((char*)((_UNKNOWN**)0x8LL) + (_QWORD)v1);
     v23 = *(_QWORD*)((char*)((char*)0x20LL) + (_QWORD)v1 + 8) +
           *(_QWORD*)((char*)((char*)0x20LL) + (_QWORD)v1);
@@ -722,7 +745,6 @@ __int64 ProcObeliskDepositoryTransporterMenu_9c5c90(__int64 a1)
   *(_QWORD*)(*(_QWORD*)(v18 + 8 * (v23 >> 9)) + 8 * (v23 & 0x1FF)) = v20;
   *v13 = v22 + 2464;
   ++*(__int64*)((char*)(*(__int64 (*)[2])0x28LL) + (_QWORD)v1);
-  return result;
 }
 
 __int64

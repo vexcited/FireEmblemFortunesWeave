@@ -64,9 +64,9 @@ __int64
 game_facility_ShopMenuItem_Buy_OnDialogYes_lambda2_CloneInto(__int64 result,
                                                              __int64 a2);
 __int64 game_facility_ShopMenuItem_Buy_OnDialogYes_lambda3_Invoke(__int64 a1);
-__int64 game_facility_ShopMenuItem_Buy_OnOpenDialog_lambda0_Invoke(__int64 a1,
-                                                                   __int64* a2,
-                                                                   int* a3);
+__int64 game_facility_ShopMenuItem_Buy_OnOpenDialog_lambda0_Invoke_alt1(
+    __int64 a1, __int64* a2, int* a3) __asm__("game_facility_ShopMenuItem_Buy_"
+                                              "OnOpenDialog_lambda0_Invoke");
 __attribute__((swiftcall)) void
     game_UnitUtil_UniqueMap_Commit_89abc0(PSEUDO_X8, _QWORD, _QWORD, _QWORD);
 __attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, _QWORD, _QWORD,
@@ -89,6 +89,15 @@ extern __int64 (*GameData_20f73c0[])();
 extern __int64 (*GameData_20f7440[])();
 __int64 ShopMenuItem_Buy_Unknown2(__int64 a1);
 __int64 ShopMenuItem_Buy_Unknown77(__int64* a1, __int64 a2, __int64 a3);
+_QWORD* ObeliskDestinyMenuItem_1a06060_alt1(_QWORD* result, int*, char) __asm__(
+    "ObeliskDestinyMenuItem_1a06060");
+__int64 GameRoutine_930b90_alt1(__int64, __int64) __asm__("GameRoutine_930b90");
+void GameRoutine_6e3b50_alt1(__int64, _QWORD*) __asm__("GameRoutine_6e3b50");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void game_facility_ShopMenuItem_Buy_OnOpenDialog_lambda0_Invoke(__int64 a1,
+                                                                __int64* a2,
+                                                                int* a3);
 
 __int64 ShopMenuItem_Buy_Unknown17(_QWORD* a1)
 {
@@ -1199,83 +1208,87 @@ __int64 game_facility_ShopMenuItem_Buy_OnDialogYes_lambda3_Invoke(__int64 a1)
   return 3;
 }
 
-__int64 game_facility_ShopMenuItem_Buy_OnOpenDialog_lambda0_Invoke(__int64 a1,
-                                                                   __int64* a2,
-                                                                   int* a3)
+void game_facility_ShopMenuItem_Buy_OnOpenDialog_lambda0_Invoke(__int64 a1,
+                                                                __int64* a2,
+                                                                int* a3)
 {
   int v3;
   __int64 v4;
   __int64 v5;
-  _BYTE* v6;
+  _QWORD* v6;
   __int64 v7;
-  int v9;
+  int v8;
+  __int64 v9;
   __int64 v10;
-  __int64 v11;
-  __int64 v12;
-  int v13;
-  _QWORD* v14;
-  _BYTE* v15;
-  __int64 v16;
-  __int64 v17;
-  __int64 v18;
-  _BYTE* v19;
-  int v20;
-  int v21;
-  int v22;
+  struct {
+    __int64 v11;
+    int v12;
+  } v11_;
+  _QWORD** v13;
+  struct {
+    _QWORD* v14;
+    __int64 v15;
+    __int64 v16;
+    __int64 v17;
+    _BYTE* v18;
+    int v19;
+    int v20;
+    int v21;
+  } v14_;
 
   v3 = *a3;
   v4 = **(_QWORD**)(a1 + 8);
-  v9 = 8;
-  v10 = *a2;
+  v8 = 8;
+  v9 = *a2;
   if ((_BYTE)GameData_21caa2c != 0) {
     v5 = GameData_21caa2c;
   }
   else {
     v5 = 0;
   }
-  v11 = v5;
-  WORD1(v12) = 0;
-  HIDWORD(v12) = 0;
-  v16 = 0;
-  v17 = 0;
-  v18 = 0;
-  v19 = nullptr;
-  v14 = &v15;
-  v15 = nullptr;
-  GameRoutine_930b90(&v12, GameData_212c8b0[0]);
-  v20 = 0;
-  v21 = v3;
-  v22 = -1;
-  ObeliskDestinyMenuItem_1a06060(v4 + 1520, &v9, 0);
-  v13 = 0;
-  v12 = 0;
-  if ((v17 & 1) != 0) {
-    *v19 = 0;
-    v18 = 0;
+  v10 = v5;
+  WORD1(v11_.v11) = 0;
+  HIDWORD(v11_.v11) = 0;
+  v14_.v15 = 0;
+  v14_.v16 = 0;
+  v14_.v17 = 0;
+  v14_.v18 = nullptr;
+  v13 = &v14_.v14;
+  v14_.v14 = nullptr;
+  GameRoutine_930b90_alt1((__int64)&v11_.v11, (__int64)GameData_212c8b0[0]);
+  v14_.v19 = 0;
+  v14_.v20 = v3;
+  v14_.v21 = -1;
+  ObeliskDestinyMenuItem_1a06060_alt1((_QWORD*)(v4 + 1520), &v8, 0);
+  v11_.v12 = 0;
+  v11_.v11 = 0;
+  if ((v14_.v16 & 1) != 0) {
+    *v14_.v18 = 0;
+    v14_.v17 = 0;
   }
   else {
-    LOWORD(v17) = 0;
+    LOWORD(v14_.v16) = 0;
   }
-  GameRoutine_6e3b50(&v14, v15);
-  v15 = nullptr;
-  v16 = 0;
-  v14 = &v15;
-  if ((v17 & 1) != 0) {
-    v6 = v19;
-    if (v19 != nullptr) {
+  GameRoutine_6e3b50_alt1((__int64)&v13, v14_.v14);
+  v14_.v14 = nullptr;
+  v14_.v15 = 0;
+  v13 = &v14_.v14;
+  if ((v14_.v16 & 1) != 0) {
+    v6 = v14_.v18;
+    if (v14_.v18 != nullptr) {
       v7 = 128;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
         v7 = 56;
       }
-      nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                    v7);
-      v6 = v15;
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v7, (__int64)v14_.v18);
+      v6 = v14_.v14;
     }
   }
   else {
     v6 = nullptr;
   }
-  return GameRoutine_6e3b50(&v14, v6);
+  GameRoutine_6e3b50_alt1((__int64)&v13, v6);
 }
 
 #pragma GCC visibility pop

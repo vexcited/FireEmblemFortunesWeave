@@ -5,8 +5,10 @@
 __int64 nn_mem_StandardAllocator_Free(_QWORD);
 extern __int64 (*game_gmap_TroopUnitList_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
-_QWORD* TroopUnitList_Destructor(_QWORD* result);
-__int64 TroopUnitList_DeletingDestructor(_QWORD* a1);
+_QWORD* TroopUnitList_Destructor_alt1(_QWORD* result) __asm__(
+    "TroopUnitList_Destructor");
+__int64 TroopUnitList_DeletingDestructor_alt1(_QWORD* a1) __asm__(
+    "TroopUnitList_DeletingDestructor");
 __int64 GameRoutine_6c2b50(_QWORD);
 __int64 GameRoutine_6c3470(_QWORD, _QWORD);
 __int64 GameRoutine_6d7010(_QWORD, _QWORD, _QWORD);
@@ -33,87 +35,90 @@ extern int GameData_21d9724;
 bool TroopUnitList_995fc0(__int64 a1);
 __int64 game_gmap_TroopUnitList_CreateReinforce(__int64 result, __int64 a2,
                                                 __int64 a3);
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void TroopUnitList_Destructor(_QWORD* a1);
+void TroopUnitList_DeletingDestructor(_QWORD* a1);
 
-_QWORD* TroopUnitList_Destructor(_QWORD* result)
+void TroopUnitList_Destructor(_QWORD* a1)
 {
-  __int64 (***v1)(_QWORD);
-  __int64 (***v2)(_QWORD);
-  _QWORD* v3;
-  __int64 (***v4)(_QWORD);
+  __int64 v1;
+  __int64 v2;
+  void (***v4)(_QWORD);
   bool v5;
   __int64 v6;
   __int64 v7;
 
-  v1 = (__int64 (***)(_QWORD))result[1];
-  *result = game_gmap_TroopUnitList_vtable;
-  if (v1 != nullptr) {
-    v2 = (__int64 (***)(_QWORD))result[2];
-    v3 = result;
+  v1 = a1[1];
+  *a1 = game_gmap_TroopUnitList_vtable;
+  if (v1 != 0) {
+    v2 = a1[2];
     if (v1 == v2) {
       goto LABEL_7;
     }
-    v4 = v2 - 278;
+    v4 = (void (***)(_QWORD))(v2 - 2224);
     do {
-      result = (_QWORD*)(**v4)(v4);
-      v5 = v4 == v1;
+      (**v4)(v4);
+      v5 = v4 == (void (***)(_QWORD))v1;
       v4 -= 278;
     } while (!v5);
-    v6 = v3[1];
-    v3[2] = v1;
+    v6 = a1[1];
+    a1[2] = v1;
+    v1 = v6;
     if (v6 != 0) {
     LABEL_7:
       v7 = 128;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
         v7 = 56;
       }
-      return (_QWORD*)nn_mem_StandardAllocator_Free(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v7);
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v7, v1);
     }
   }
-  return result;
 }
 
-__int64 TroopUnitList_DeletingDestructor(_QWORD* a1)
+void TroopUnitList_DeletingDestructor(_QWORD* a1)
 {
-  void (***v1)(_QWORD);
+  __int64 v1;
   __int64 v3;
-  void (***v4)(_QWORD);
+  __int64 v4;
   void (***v5)(_QWORD);
   bool v6;
   __int64 v7;
   __int64 v8;
   __int64 v9;
 
-  v1 = (void (***)(_QWORD))a1[1];
+  v1 = a1[1];
   *a1 = game_gmap_TroopUnitList_vtable;
   v3 = fw_memory_g_heap_manager_ptr;
-  if (v1 != nullptr) {
-    v4 = (void (***)(_QWORD))a1[2];
+  if (v1 != 0) {
+    v4 = a1[2];
     if (v1 == v4) {
       goto LABEL_7;
     }
-    v5 = v4 - 278;
+    v5 = (void (***)(_QWORD))(v4 - 2224);
     do {
       (**v5)(v5);
-      v6 = v5 == v1;
+      v6 = v5 == (void (***)(_QWORD))v1;
       v5 -= 278;
     } while (!v6);
     v7 = a1[1];
     a1[2] = v1;
+    v1 = v7;
     if (v7 != 0) {
     LABEL_7:
       v8 = 128;
       if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
         v8 = 56;
       }
-      nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v8);
+      nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v8, v1);
     }
   }
   v9 = 128;
   if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
     v9 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v9);
+  nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v9, (__int64)a1);
 }
 
 bool TroopUnitList_995fc0(__int64 a1)

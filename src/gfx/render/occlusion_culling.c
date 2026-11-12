@@ -7,7 +7,8 @@ __int64 std___1___shared_weak_count___release_weak(_QWORD);
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 OcclusionCulling_Unknown5(__int64 result);
 __int64 OcclusionCulling_Unknown6(__int64 result);
-__int64 OcclusionCulling_DeletingDestructor(__int64 a1);
+__int64 OcclusionCulling_DeletingDestructor_alt1(__int64 a1) __asm__(
+    "OcclusionCulling_DeletingDestructor");
 __int64
     OcclusionCulling_1938520_alt1(_QWORD,
                                   _QWORD) __asm__("OcclusionCulling_1938520");
@@ -16,6 +17,11 @@ __int64 OcclusionCulling_Unknown3_alt1(
 extern __int128 GameData_1a830a0;
 bool OcclusionCulling_1938520(__int64 a1, int32x2_t* a2);
 bool OcclusionCulling_Unknown3(float32x4_t* a1, float32x4_t* a2);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void OcclusionCulling_DeletingDestructor(__int64 a1);
 
 bool OcclusionCulling_Unknown3(float32x4_t* a1, float32x4_t* a2)
 {
@@ -211,23 +217,23 @@ __int64 OcclusionCulling_Unknown6(__int64 result)
   return result;
 }
 
-__int64 OcclusionCulling_DeletingDestructor(__int64 a1)
+void OcclusionCulling_DeletingDestructor(__int64 a1)
 {
   __int64 v1;
-  __int64 v2;
+  __int64 v3;
 
   v1 = *(_QWORD*)(a1 + 24);
   if (v1 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v1 + 8),
                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v1 + 16LL))(v1);
-    std___1___shared_weak_count___release_weak(v1);
+    std___1___shared_weak_count___release_weak_alt1(v1);
   }
-  v2 = 128;
+  v3 = 128;
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-    v2 = 56;
+    v3 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v2);
+  nn_mem_StandardAllocator_Free_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v3, a1);
 }
 
 bool OcclusionCulling_1938520(__int64 a1, int32x2_t* a2)

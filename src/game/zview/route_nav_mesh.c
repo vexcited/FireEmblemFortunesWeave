@@ -16,7 +16,7 @@ extern __int64 (*GameData_1ffe6f8[])();
 extern __int64 (*game_zview_RouteNavMesh_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64* GameData_212ee30[4];
-__n128 RouteNavMesh_Unknown5(_QWORD* a1);
+__n128 RouteNavMesh_Unknown5_alt1(_QWORD* a1) __asm__("RouteNavMesh_Unknown5");
 __int64 RouteNavMesh_fe6b60_alt1(_QWORD* a1, __int64 a2,
                                  __n128 a3) __asm__("RouteNavMesh_fe6b60");
 __int64 GameRoutine_268800(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
@@ -53,12 +53,12 @@ unsigned __int64 GameRoutine_6360e0(__int64, __int64, unsigned __int64, char,
 void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
 void __attribute__((noreturn)) GameRoutine_fe74e0(void);
 __int64 RouteNavMesh_Destructor(__int64 a1);
-__attribute__((swiftcall)) void RouteNavMesh_fe7000(PSEUDO_X8 x8_, _QWORD* a1,
-                                                    __int128* a2, __n128 result,
-                                                    float a5);
-__attribute__((swiftcall)) void RouteNavMesh_fe7260(PSEUDO_X8 x8_, _QWORD* a1,
-                                                    __int128* a2, __int128* a3,
-                                                    __n128 result);
+__attribute__((swiftcall)) void
+RouteNavMesh_fe7000_alt1(PSEUDO_X8 x8_, _QWORD* a1, __int128* a2, __n128 result,
+                         float a5) __asm__("RouteNavMesh_fe7000");
+__attribute__((swiftcall)) void
+RouteNavMesh_fe7260_alt1(PSEUDO_X8 x8_, _QWORD* a1, __int128* a2, __int128* a3,
+                         __n128 result) __asm__("RouteNavMesh_fe7260");
 __int64 RouteNavMesh_fe7760(__int64* a1);
 void RouteNavMesh_fe7820(_QWORD* a1, __int64 a2);
 __attribute__((swiftcall)) void
@@ -98,54 +98,69 @@ unsigned __int64 strlen_alt1(const char*) __asm__("strlen");
 _QWORD* RouteNavMesh_fe6920(_QWORD* result);
 __int64 RouteNavMesh_fe6b60(_QWORD* a1, __int64 a2);
 unsigned int* RouteNavMesh_fe6c60(_QWORD* a1, unsigned int** a2);
+__int64
+dtTileCache_addBoxObstacle_alt1(__int64, _DWORD*, _DWORD*, _DWORD*,
+                                float) __asm__("dtTileCache_addBoxObstacle");
+__int64 dtTileCache_addObstacle_alt1(__int64, _DWORD*, _DWORD*, float,
+                                     float) __asm__("dtTileCache_addObstacle");
+__int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
+void __attribute__((noreturn))
+GameRoutine_60a210_alt1() __asm__("GameRoutine_60a210");
+void __attribute__((noreturn))
+GameRoutine_fe74e0_alt1() __asm__("GameRoutine_fe74e0");
+void RouteNavMesh_Unknown5(_QWORD* a1);
+__attribute__((swiftcall)) void RouteNavMesh_fe7000(PSEUDO_X8 x8_, _QWORD* a1,
+                                                    __int128* a2, float a4,
+                                                    float a5);
+__attribute__((swiftcall)) void RouteNavMesh_fe7260(PSEUDO_X8 x8_, _QWORD* a1,
+                                                    __int128* a2, __int128* a3,
+                                                    float a5);
 
-__n128 RouteNavMesh_Unknown5(_QWORD* a1)
+void RouteNavMesh_Unknown5(_QWORD* a1)
 {
-  __n128 result;
+  __int64 v2;
   __int64 v3;
   __int64 v4;
   __int64 v5;
   __int64 v6;
   __int64 v7;
-  __int64 v8;
 
   *a1 = game_zview_RouteNavMesh_vtable;
-  GameRoutine_fe6920();
-  v3 = a1[3];
-  if (v3 != 0) {
-    v4 = a1[4];
-    if (v3 == v4) {
+  RouteNavMesh_fe6920(a1);
+  v2 = a1[3];
+  if (v2 != 0) {
+    v3 = a1[4];
+    if (v2 == v3) {
       goto LABEL_9;
     }
     do {
-      v5 = *(_QWORD*)(v4 - 8);
-      if (v5 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v5 + 8),
+      v4 = *(_QWORD*)(v3 - 8);
+      if (v4 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v4 + 8),
                                       0xFFFFFFFFFFFFFFFFLL) == 0) {
-        (*(void (**)(__int64))(*(_QWORD*)v5 + 16LL))(v5);
-        result = std___1___shared_weak_count___release_weak(v5);
+        (*(void (**)(__int64))(*(_QWORD*)v4 + 16LL))(v4);
+        std___1___shared_weak_count___release_weak_alt1(v4);
       }
-      v4 -= 16;
-    } while (v4 != v3);
-    v6 = a1[3];
-    a1[4] = v3;
-    if (v6 != 0) {
+      v3 -= 16;
+    } while (v3 != v2);
+    v5 = a1[3];
+    a1[4] = v2;
+    v2 = v5;
+    if (v5 != 0) {
     LABEL_9:
-      v7 = 128;
+      v6 = 128;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-        v7 = 56;
+        v6 = 56;
       }
-      result = nn_mem_StandardAllocator_Free(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v7);
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v6, v2);
     }
   }
-  v8 = a1[2];
-  if (v8 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v8 + 8),
+  v7 = a1[2];
+  if (v7 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v7 + 8),
                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
-    (*(void (**)(__int64, long double))(*(_QWORD*)v8 + 16LL))(
-        v8, *(long double*)&result);
-    return std___1___shared_weak_count___release_weak(v8);
+    (*(void (**)(__int64))(*(_QWORD*)v7 + 16LL))(v7);
+    std___1___shared_weak_count___release_weak_alt1(v7);
   }
-  return result;
 }
 
 _QWORD* RouteNavMesh_fe6920(_QWORD* result)
@@ -397,17 +412,18 @@ unsigned int* RouteNavMesh_fe6c60(_QWORD* a1, unsigned int** a2)
   return result;
 }
 
-__attribute__((swiftcall)) void RouteNavMesh_fe7000(PSEUDO_X8 x8_, _QWORD* a1,
-                                                    __int128* a2, __n128 result,
-                                                    float a5)
+__attribute__((swiftcall)) void
+
+RouteNavMesh_fe7000(PSEUDO_X8 x8_, _QWORD* a1, __int128* a2, float a4, float a5)
 {
+
+#pragma clang fp contract(off)
   __int64* a3 = (__int64*)PSEUDO_X8_VALUE(x8_);
   __int64 v5;
-  float v10;
   __int128 v11;
   __int64 v12;
   int v13;
-  _QWORD* v14;
+  __int64* v14;
   __int64 v15;
   __int64 v16;
   __int64 v17;
@@ -415,7 +431,7 @@ __attribute__((swiftcall)) void RouteNavMesh_fe7000(PSEUDO_X8 x8_, _QWORD* a1,
   unsigned __int64 v19;
   __int64 v20;
   __int64 v21;
-  char* v22;
+  unsigned __int64 v22;
   __int64 v23;
   unsigned __int64 v24;
   __int64 v25;
@@ -435,20 +451,19 @@ __attribute__((swiftcall)) void RouteNavMesh_fe7000(PSEUDO_X8 x8_, _QWORD* a1,
   if (*(_QWORD*)(v5 + 24) == 0) {
     goto LABEL_6;
   }
-  v10 = LANES128(result).n128_f32[0];
-  nn_os_LockMutex(v5 + 320);
+  nn_os_LockMutex_alt1(v5 + 320);
   v11 = *a2;
   v12 = *(_QWORD*)(v5 + 24);
   *(_QWORD*)v33 = *(_QWORD*)a2;
   v33[2] = DWORD2(v11);
-  dtTileCache_addObstacle(v12, v33, &v32, v10, a5);
-  dtTileCache_update(*(_QWORD*)(v5 + 24), *(_QWORD*)(v5 + 32), 0, 0.0);
+  dtTileCache_addObstacle_alt1(v12, v33, &v32, a4, a5);
+  dtTileCache_update_alt1(*(_QWORD*)(v5 + 24), *(_QWORD*)(v5 + 32), nullptr);
   v13 = v32;
-  nn_os_UnlockMutex(v5 + 320);
+  nn_os_UnlockMutex_alt1(v5 + 320);
   if (v13 != 0) {
-    v14 = (_QWORD*)fw_memory_g_heap_manager_ptr;
-    v15 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
-                                         32, 16, 0);
+    v14 = (__int64*)fw_memory_g_heap_manager_ptr;
+    v15 = fw_memory_HeapManager_Allocate_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr, 32, 16, 0);
     *(_DWORD*)(v15 + 24) = v13;
     v16 = v15 + 24;
     v17 = v15;
@@ -459,11 +474,11 @@ __attribute__((swiftcall)) void RouteNavMesh_fe7000(PSEUDO_X8 x8_, _QWORD* a1,
     v19 = a1[5];
     if ((unsigned __int64)v18 >= v19) {
       v21 = a1[3];
-      v22 = (char*)v18 - v21;
+      v22 = (unsigned __int64)v18 - v21;
       v23 = ((__int64)v18 - v21) >> 4;
       v24 = v23 + 1;
       if ((unsigned __int64)(v23 + 1) >> 60 != 0) {
-        GameRoutine_fe74e0();
+        GameRoutine_fe74e0_alt1();
       }
       v25 = v19 - v21;
       if (v25 >> 3 > v24) {
@@ -476,27 +491,27 @@ __attribute__((swiftcall)) void RouteNavMesh_fe7000(PSEUDO_X8 x8_, _QWORD* a1,
         v26 = v24;
       }
       if (v26 >> 60 != 0) {
-        GameRoutine_60a210(v15);
+        GameRoutine_60a210_alt1();
       }
-      v27 = fw_memory_HeapManager_Allocate(*v14, 16 * v26, 16, 0);
-      v28 = (__int64*)&v22[v27];
+      v27 = fw_memory_HeapManager_Allocate_alt1(*v14, 16 * v26, 16, 0);
+      v28 = (__int64*)(v27 + v22);
       v29 = v27 + 16 * v26;
       *v28 = v16;
       v28[1] = v17;
-      v30 = (__int64)&v22[v27 + -16 * v23];
-      v20 = (__int64)&v22[v27 + 16];
+      v30 = v27 + v22 - 16 * v23;
+      v20 = v27 + v22 + 16;
       atomic_fetch_add_explicit((atomic_ullong* volatile)(v17 + 8), 1u,
                                 memory_order_relaxed);
-      memcpy(v30, v21, v22);
+      memcpy_alt1(v30, v21, v22);
       a1[3] = v30;
       a1[4] = v20;
       a1[5] = v29;
       if (v21 != 0) {
         v31 = 128;
-        if (*(_QWORD*)(*v14 + 200LL) == 0) {
+        if (*(_QWORD*)(*v14 + 200) == 0) {
           v31 = 56;
         }
-        result = nn_mem_StandardAllocator_Free(*v14 + v31);
+        nn_mem_StandardAllocator_Free_alt1(*v14 + v31, v21);
       }
     }
     else {
@@ -514,12 +529,8 @@ __attribute__((swiftcall)) void RouteNavMesh_fe7000(PSEUDO_X8 x8_, _QWORD* a1,
                               memory_order_relaxed);
     if (atomic_fetch_add((atomic_ullong* volatile)(v17 + 8),
                          0xFFFFFFFFFFFFFFFFLL) == 0) {
-      (*(void (**)(__int64, long double))(*(_QWORD*)v17 + 16LL))(
-          v17, *(long double*)&result);
-      {
-        std___1___shared_weak_count___release_weak(v17);
-        return;
-      }
+      (*(void (**)(__int64))(*(_QWORD*)v17 + 16LL))(v17);
+      std___1___shared_weak_count___release_weak_alt1(v17);
     }
   }
   else {
@@ -527,24 +538,21 @@ __attribute__((swiftcall)) void RouteNavMesh_fe7000(PSEUDO_X8 x8_, _QWORD* a1,
     *a3 = 0;
     a3[1] = 0;
   }
-  {
-    result;
-    return;
-  }
 }
 
 __attribute__((swiftcall)) void RouteNavMesh_fe7260(PSEUDO_X8 x8_, _QWORD* a1,
                                                     __int128* a2, __int128* a3,
-                                                    __n128 result)
+                                                    float a5)
 {
+
+#pragma clang fp contract(off)
   __int64* a4 = (__int64*)PSEUDO_X8_VALUE(x8_);
   __int64 v5;
-  float v8;
   __int128 v11;
   __int64 v12;
   __int128 v13;
   int v14;
-  _QWORD* v15;
+  __int64* v15;
   __int64 v16;
   __int64 v17;
   __int64 v18;
@@ -552,7 +560,7 @@ __attribute__((swiftcall)) void RouteNavMesh_fe7260(PSEUDO_X8 x8_, _QWORD* a1,
   unsigned __int64 v20;
   __int64 v21;
   __int64 v22;
-  char* v23;
+  unsigned __int64 v23;
   __int64 v24;
   unsigned __int64 v25;
   __int64 v26;
@@ -573,8 +581,7 @@ __attribute__((swiftcall)) void RouteNavMesh_fe7260(PSEUDO_X8 x8_, _QWORD* a1,
   if (*(_QWORD*)(v5 + 24) == 0) {
     goto LABEL_6;
   }
-  v8 = LANES128(result).n128_f32[0];
-  nn_os_LockMutex(v5 + 320);
+  nn_os_LockMutex_alt1(v5 + 320);
   v11 = *a2;
   v12 = *(_QWORD*)(v5 + 24);
   *(_QWORD*)v34 = *(_QWORD*)a2;
@@ -582,14 +589,15 @@ __attribute__((swiftcall)) void RouteNavMesh_fe7260(PSEUDO_X8 x8_, _QWORD* a1,
   v13 = *a3;
   v33[2] = *((_QWORD*)a3 + 1);
   *(_QWORD*)v33 = v13;
-  dtTileCache_addBoxObstacle(v12, v34, v33, &v35, v8 * 0x1.1df46a0000000p-6);
-  dtTileCache_update(*(_QWORD*)(v5 + 24), *(_QWORD*)(v5 + 32), 0, 0.0);
+  dtTileCache_addBoxObstacle_alt1(v12, v34, v33, &v35,
+                                  a5 * 0x1.1df46a0000000p-6f);
+  dtTileCache_update_alt1(*(_QWORD*)(v5 + 24), *(_QWORD*)(v5 + 32), nullptr);
   v14 = v35;
-  nn_os_UnlockMutex(v5 + 320);
+  nn_os_UnlockMutex_alt1(v5 + 320);
   if (v14 != 0) {
-    v15 = (_QWORD*)fw_memory_g_heap_manager_ptr;
-    v16 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
-                                         32, 16, 0);
+    v15 = (__int64*)fw_memory_g_heap_manager_ptr;
+    v16 = fw_memory_HeapManager_Allocate_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr, 32, 16, 0);
     *(_DWORD*)(v16 + 24) = v14;
     v17 = v16 + 24;
     v18 = v16;
@@ -600,11 +608,11 @@ __attribute__((swiftcall)) void RouteNavMesh_fe7260(PSEUDO_X8 x8_, _QWORD* a1,
     v20 = a1[5];
     if ((unsigned __int64)v19 >= v20) {
       v22 = a1[3];
-      v23 = (char*)v19 - v22;
+      v23 = (unsigned __int64)v19 - v22;
       v24 = ((__int64)v19 - v22) >> 4;
       v25 = v24 + 1;
       if ((unsigned __int64)(v24 + 1) >> 60 != 0) {
-        GameRoutine_fe74e0();
+        GameRoutine_fe74e0_alt1();
       }
       v26 = v20 - v22;
       if (v26 >> 3 > v25) {
@@ -617,27 +625,27 @@ __attribute__((swiftcall)) void RouteNavMesh_fe7260(PSEUDO_X8 x8_, _QWORD* a1,
         v27 = v25;
       }
       if (v27 >> 60 != 0) {
-        GameRoutine_60a210(v16);
+        GameRoutine_60a210_alt1();
       }
-      v28 = fw_memory_HeapManager_Allocate(*v15, 16 * v27, 16, 0);
-      v29 = (__int64*)&v23[v28];
+      v28 = fw_memory_HeapManager_Allocate_alt1(*v15, 16 * v27, 16, 0);
+      v29 = (__int64*)(v28 + v23);
       v30 = v28 + 16 * v27;
       *v29 = v17;
       v29[1] = v18;
-      v31 = (__int64)&v23[v28 + -16 * v24];
-      v21 = (__int64)&v23[v28 + 16];
+      v31 = v28 + v23 - 16 * v24;
+      v21 = v28 + v23 + 16;
       atomic_fetch_add_explicit((atomic_ullong* volatile)(v18 + 8), 1u,
                                 memory_order_relaxed);
-      memcpy(v31, v22, v23);
+      memcpy_alt1(v31, v22, v23);
       a1[3] = v31;
       a1[4] = v21;
       a1[5] = v30;
       if (v22 != 0) {
         v32 = 128;
-        if (*(_QWORD*)(*v15 + 200LL) == 0) {
+        if (*(_QWORD*)(*v15 + 200) == 0) {
           v32 = 56;
         }
-        result = nn_mem_StandardAllocator_Free(*v15 + v32);
+        nn_mem_StandardAllocator_Free_alt1(*v15 + v32, v22);
       }
     }
     else {
@@ -655,22 +663,14 @@ __attribute__((swiftcall)) void RouteNavMesh_fe7260(PSEUDO_X8 x8_, _QWORD* a1,
                               memory_order_relaxed);
     if (atomic_fetch_add((atomic_ullong* volatile)(v18 + 8),
                          0xFFFFFFFFFFFFFFFFLL) == 0) {
-      (*(void (**)(__int64, long double))(*(_QWORD*)v18 + 16LL))(
-          v18, *(long double*)&result);
-      {
-        std___1___shared_weak_count___release_weak(v18);
-        return;
-      }
+      (*(void (**)(__int64))(*(_QWORD*)v18 + 16LL))(v18);
+      std___1___shared_weak_count___release_weak_alt1(v18);
     }
   }
   else {
   LABEL_6:
     *a4 = 0;
     a4[1] = 0;
-  }
-  {
-    result;
-    return;
   }
 }
 

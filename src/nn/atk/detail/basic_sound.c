@@ -65,6 +65,10 @@ __int64 memset_alt1(__int64, int, unsigned __int64) __asm__("memset");
 __int64 nn_os_ClearEvent_alt1(__int64) __asm__("nn_os_ClearEvent");
 __int64 BasicSound_Unknown3(__int64 a1, unsigned __int64 a2, __int64 a3);
 _DWORD* BasicSound_281a40(_DWORD* result);
+void nn_detail_UnexpectedDefaultImpl_alt1() __asm__(
+    "nn_detail_UnexpectedDefaultImpl");
+void nn_diag_detail_AbortImpl_1a0a590_alt1() __asm__(
+    "nn_diag_detail_AbortImpl_1a0a590");
 
 __int64 BasicSound_27c5a0(__int64 result, __int64 a2)
 {
@@ -1148,6 +1152,8 @@ float BasicSound_281ac0(__int64 a1)
 
 float BasicSound_281ca0(__int64 a1, __int64 a2, _QWORD* a3, int a4)
 {
+
+#pragma clang fp contract(off)
   int v4;
   float* v5;
   __int64 v6;
@@ -1178,33 +1184,29 @@ float BasicSound_281ca0(__int64 a1, __int64 a2, _QWORD* a3, int a4)
   if (a4 > 1) {
     if (a4 == 2) {
       v4 = 1;
+      goto LABEL_10;
     }
-    else {
-      if (a4 != 3) {
-        goto LABEL_14;
-      }
+    if (a4 == 3) {
       v4 = 2;
+      goto LABEL_10;
     }
-  LABEL_10:
-    v6 = *(_QWORD*)(a1 + 160);
-    if (v4 < *(_DWORD*)(v6 + 8)) {
-      v5 = (float*)(*(_QWORD*)v6 + 24LL * (unsigned int)v4);
-      goto LABEL_12;
-    }
-    a1 = nn_diag_detail_AbortImpl_1a0a590(a1);
   LABEL_14:
-    nn_detail_UnexpectedDefaultImpl(a1);
-    __udf(0);
+    nn_detail_UnexpectedDefaultImpl_alt1();
   }
-  if (a4 != 0) {
-    if (a4 != 1) {
-      goto LABEL_14;
-    }
-    v4 = 0;
-    goto LABEL_10;
+  if (a4 == 0) {
+    v5 = (float*)(a1 + 136);
+    goto LABEL_12;
   }
-  v5 = (float*)(a1 + 136);
-
+  if (a4 != 1) {
+    goto LABEL_14;
+  }
+  v4 = 0;
+LABEL_10:
+  v6 = *(_QWORD*)(a1 + 160);
+  if (v4 >= (signed __int32)*(_DWORD*)(v6 + 8)) {
+    nn_diag_detail_AbortImpl_1a0a590_alt1();
+  }
+  v5 = (float*)(*(_QWORD*)v6 + 24LL * (unsigned int)v4);
 LABEL_12:
   v7 = a3[5];
   v9 = a3[2];

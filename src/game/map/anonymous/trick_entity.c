@@ -189,6 +189,9 @@ _BYTE* TrickEntity_7cbc00(_BYTE* result, __int64 a2);
 _BYTE* game_map_anonymous_TrickEntity_GetTargetPoss_closure_Invoke(__int64 a1,
                                                                    _DWORD* a2,
                                                                    _DWORD* a3);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+void TrickEntity_7d1480_alt1(__int64) __asm__("TrickEntity_7d1480");
 
 __int64 game_map_anonymous_TrickEntity_TryBroken(__int64 a1, __int64 a2,
                                                  _WORD* a3)
@@ -749,7 +752,7 @@ bool TrickEntity_Unknown88(_QWORD* a1)
       if (atomic_fetch_add((atomic_ullong* volatile)(v9 + 8),
                            0xFFFFFFFFFFFFFFFFLL) == 0) {
         (*(void (**)(__int64))(*(_QWORD*)v9 + 16LL))(v9);
-        std___1___shared_weak_count___release_weak();
+        std___1___shared_weak_count___release_weak_alt1(v9);
         if (v6 == v10) {
           goto LABEL_13;
         }
@@ -761,7 +764,7 @@ bool TrickEntity_Unknown88(_QWORD* a1)
     }
     if (v6 == v10) {
     LABEL_13:
-      TrickEntity_7d1480((__int64)v12_.v12);
+      TrickEntity_7d1480_alt1((__int64)v12_.v12);
       return v2 == 14;
     }
   LABEL_12:

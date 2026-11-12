@@ -26,7 +26,9 @@ extern __int64 fw_memory_g_heap_manager_ptr;
 float exp2f(float);
 void __attribute__((noreturn)) GameRoutine_60a210();
 void __attribute__((noreturn)) GameRoutine_b32f30();
-__int64 MainPassEffect_b90e00(__int64 a1, __int64* a2);
+__int64
+MainPassEffect_b90e00_alt1(__int64 a1,
+                           __int64* a2) __asm__("MainPassEffect_b90e00");
 __int64 gfxa_MainPassEffect_SetupLightingPass_lambda1_Invoke(__int64 a1,
                                                              __int64* a2);
 __int64 gfxa_MainPassEffect_SetupLightingPass_lambda2_Invoke(__int64 a1,
@@ -43,8 +45,12 @@ __int64 gfxa_MainPassEffect_SetupDecalPass_lambda1_Invoke(__int64 a1,
 __int64 gfxa_MainPassEffect_SetupOffscreenPass_lambda1_Invoke(__int64 a1,
                                                               __int64 a2,
                                                               _QWORD* a3);
+__int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+__int64 MainPassEffect_b90e00(__int64 a1, __int64 a2);
 
-__int64 MainPassEffect_b90e00(__int64 a1, __int64* a2)
+__int64 MainPassEffect_b90e00(__int64 a1, __int64 a2)
 {
   int v2;
   __int64* v4;
@@ -59,7 +65,7 @@ __int64 MainPassEffect_b90e00(__int64 a1, __int64* a2)
   __int64* v13;
   __int64 v14;
   __int64 v15;
-  __int64 v16;
+  signed __int64 v16;
   unsigned __int64 v17;
   __int64 v18;
   unsigned __int64 v19;
@@ -77,7 +83,7 @@ __int64 MainPassEffect_b90e00(__int64 a1, __int64* a2)
     _QWORD* v29;
   } v28_;
 
-  v2 = *((_DWORD*)a2 + 24);
+  v2 = *(_DWORD*)(a2 + 96);
   v4 = (__int64*)fw_memory_g_heap_manager_ptr;
   v5 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
                                       192, 16, 0);
@@ -155,11 +161,11 @@ LABEL_16:
   }
   (*(void (**)(__int64))(*v28_.v29 + v11))((__int64)v28_.v29);
 LABEL_21:
-  v13 = (__int64*)a2[1];
-  v12 = a2[2];
+  v13 = *(__int64**)(a2 + 8);
+  v12 = *(_QWORD*)(a2 + 16);
   if ((unsigned __int64)v13 >= v12) {
-    v15 = *a2;
-    v16 = (__int64)v13 - *a2;
+    v15 = *(_QWORD*)a2;
+    v16 = (signed __int64)v13 - *(_QWORD*)a2;
     v17 = (v16 >> 3) + 1;
     if (v17 >> 61 != 0) {
       GameRoutine_b32f30();
@@ -187,23 +193,23 @@ LABEL_21:
     v22 = v20 + v16 - 8 * (v16 >> 3);
     *(_QWORD*)(v20 + v16) = v5;
     v14 = v20 + v16 + 8;
-    memcpy(v22, v15, v16);
-    *a2 = v22;
-    a2[1] = v14;
-    a2[2] = v21;
+    memcpy_alt1(v22, v15, v16);
+    *(_QWORD*)a2 = v22;
+    *(_QWORD*)(a2 + 8) = v14;
+    *(_QWORD*)(a2 + 16) = v21;
     if (v15 != 0) {
       v23 = 128;
       if (*(_QWORD*)(*v4 + 200) == 0) {
         v23 = 56;
       }
-      nn_mem_StandardAllocator_Free(*v4 + v23);
+      nn_mem_StandardAllocator_Free_alt1(*v4 + v23, v15);
     }
   }
   else {
     *v13 = v5;
     v14 = (__int64)(v13 + 1);
   }
-  a2[1] = v14;
+  *(_QWORD*)(a2 + 8) = v14;
   v24 = *(_QWORD*)(v14 - 8);
   v28_.v28[0] = a2;
   v28_.v28[1] = v24;

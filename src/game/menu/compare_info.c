@@ -18,9 +18,9 @@ extern __int64 fw_memory_g_heap_manager;
 void __attribute__((noreturn)) String_60a1d0(void);
 __int64 CompareInfo_Destructor(_QWORD* a1);
 __int64 CompareInfo_DeletingDestructor_166cbd0(_QWORD* a1);
-unsigned __int64
-game_menu_CompareInfo_Build_lambda0_Invoke(unsigned __int64 result,
-                                           unsigned __int8* a2);
+unsigned __int64 game_menu_CompareInfo_Build_lambda0_Invoke_alt1(
+    unsigned __int64 result,
+    unsigned __int8* a2) __asm__("game_menu_CompareInfo_Build_lambda0_Invoke");
 __int64 GameConst_7f8610(__int64);
 __int64 GameConverge_8ea460(__int64, __int64, unsigned int, __int64);
 __int64 GameConverge_8ea590(__int64, __int64, unsigned int, __int64);
@@ -44,6 +44,9 @@ void __attribute__((noreturn)) String_60a1d0_alt1() __asm__("String_60a1d0");
 void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 float game_menu_CompareInfo_Build(__int64 a1);
+int memcmp_alt1(__int64, __int64, unsigned __int64) __asm__("memcmp");
+void game_menu_CompareInfo_Build_lambda0_Invoke(__int64 a1,
+                                                unsigned __int8* a2);
 
 float game_menu_CompareInfo_Build(__int64 a1)
 {
@@ -276,102 +279,98 @@ __int64 CompareInfo_DeletingDestructor_166cbd0(_QWORD* a1)
       *(_QWORD*)fw_memory_g_heap_manager_ptr + v2, v1);
 }
 
-unsigned __int64
-
-game_menu_CompareInfo_Build_lambda0_Invoke(unsigned __int64 result,
-                                           unsigned __int8* a2)
+void game_menu_CompareInfo_Build_lambda0_Invoke(__int64 a1, unsigned __int8* a2)
 {
   unsigned __int8* v2;
-  unsigned __int64 v3;
-  __int64 v4;
+  const char* v4;
   unsigned __int64 v5;
-  char* v6;
-  __int64 v7;
-  _BOOL4 v8;
-  unsigned __int64 v9;
+  unsigned __int64 v6;
+  char* v7;
+  __int64 v8;
+  _BOOL4 v9;
   unsigned __int64 v10;
   unsigned __int64 v11;
-  unsigned __int8* v12;
-  char* v13;
-  __int64 v14;
+  unsigned __int64 v12;
+  __int64 v13;
+  char* v14;
   __int64 v15;
-  unsigned __int64 v16;
-  char* v17;
+  struct {
+    __int64 v16;
+    unsigned __int64 v17;
+    char* v18;
+  } v16_;
 
-  if ((**(_BYTE**)(result + 8) & 1) != 0) {
-    return result;
+  if ((**(_BYTE**)(a1 + 8) & 1) != 0) {
+    return;
   }
-  v2 = *(unsigned __int8**)(result + 16);
-  v3 = result;
-  v4 = (__int64)*(&game_g_hero_ids + *a2);
-  result = strlen(v4);
-  if (result >= 0xFFFFFFFFFFFFFFF7LL) {
-    String_60a1d0();
+  v2 = *(unsigned __int8**)(a1 + 16);
+  v4 = (const char*)*(&game_g_hero_ids + *a2);
+  v5 = strlen_alt1(v4);
+  if (v5 >= 0xFFFFFFFFFFFFFFF7LL) {
+    String_60a1d0_alt1();
   }
-  v5 = result;
-  if (result >= 0x17) {
-    if ((result | 7) == 0x17) {
-      v7 = 26;
+  v6 = v5;
+  if (v5 >= 0x17) {
+    if ((v5 | 7) == 0x17) {
+      v8 = 26;
     }
     else {
-      v7 = (result | 7) + 1;
+      v8 = (v5 | 7) + 1;
     }
-    v6 = (char*)fw_memory_HeapManager_Allocate(fw_memory_g_heap_manager, v7, 16,
-                                               0);
-    v16 = v5;
-    v17 = v6;
-    v15 = v7 | 1;
+    v7 = (char*)fw_memory_HeapManager_Allocate_alt1(fw_memory_g_heap_manager,
+                                                    v8, 16, 0);
+    v16_.v17 = v6;
+    v16_.v18 = v7;
+    v16_.v16 = v8 | 1;
   }
   else {
-    LOBYTE(v15) = 2 * result;
-    v6 = (char*)&v15 + 1;
-    if (result == 0) {
+    LOBYTE(v16_.v16) = 2 * v5;
+    v7 = (char*)&v16_.v16 + 1;
+    if (v5 == 0) {
       goto LABEL_11;
     }
   }
-  result = memmove(v6, v4, v5);
+  memmove_alt1((__int64)v7, (__int64)v4, v6);
 LABEL_11:
-  v6[v5] = 0;
-  v8 = false;
-  v9 = *v2;
-  if ((v9 & 1) != 0) {
-    v10 = *((_QWORD*)v2 + 1);
+  v7[v6] = 0;
+  v9 = false;
+  v10 = *v2;
+  if ((v10 & 1) != 0) {
+    v11 = *((_QWORD*)v2 + 1);
   }
   else {
-    v10 = v9 >> 1;
+    v11 = v10 >> 1;
   }
-  v11 = v16;
-  if ((v15 & 1) == 0) {
-    v11 = (unsigned __int64)(unsigned __int8)v15 >> 1;
+  v12 = v16_.v17;
+  if ((v16_.v16 & 1) == 0) {
+    v12 = (unsigned __int64)(unsigned __int8)v16_.v16 >> 1;
   }
-  if (v10 == v11) {
-    if ((v9 & 1) != 0) {
-      v12 = *((unsigned __int8**)v2 + 2);
+  if (v11 == v12) {
+    if ((v10 & 1) != 0) {
+      v13 = *((_QWORD*)v2 + 2);
     }
     else {
-      v12 = v2 + 1;
+      v13 = (__int64)(v2 + 1);
     }
-    if ((v15 & 1) != 0) {
-      v13 = v17;
+    if ((v16_.v16 & 1) != 0) {
+      v14 = v16_.v18;
     }
     else {
-      v13 = (char*)&v15 + 1;
+      v14 = (char*)&v16_.v16 + 1;
     }
-    result = memcmp(v12, v13);
-    v8 = result == 0;
+    v9 = memcmp_alt1(v13, (__int64)v14, v11) == 0;
   }
-  if ((v15 & 1) != 0 && v17 != nullptr) {
-    v14 = 128;
+  if ((v16_.v16 & 1) != 0 && v16_.v18 != nullptr) {
+    v15 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-      v14 = 56;
+      v15 = 56;
     }
-    result = nn_mem_StandardAllocator_Free(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v14, v17);
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v15, (__int64)v16_.v18);
   }
-  if (v8) {
-    **(_BYTE**)(v3 + 8) = 1;
+  if (v9) {
+    **(_BYTE**)(a1 + 8) = 1;
   }
-  return result;
 }
 
 #pragma GCC visibility pop

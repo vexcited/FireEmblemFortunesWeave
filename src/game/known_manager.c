@@ -13,6 +13,9 @@ extern __int64 GameData_2131520;
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64 game_GameModeData_instance_;
 void KnownManager_Destructor(_QWORD* a1);
+__int64 GameHr_6c47b0(__int64, _BYTE*, char, char);
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 void KnownManager_Destructor(_QWORD* a1)
 {
@@ -50,7 +53,7 @@ void KnownManager_Destructor(_QWORD* a1)
           v5 = false;
         }
       }
-      GameRoutine_6c47b0(v6, v11, v5, 0);
+      GameHr_6c47b0(v6, v11, v5, 0);
       ++v1;
     } while (v1 != v2);
     v1 = (__int64*)a1[1];
@@ -61,7 +64,8 @@ void KnownManager_Destructor(_QWORD* a1)
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v10 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v10);
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v10, (__int64)v1);
   }
   *a1 = GameData_2044368;
   if (*(_QWORD**)GameData_2131520 == a1) {

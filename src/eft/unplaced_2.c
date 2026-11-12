@@ -9,6 +9,11 @@ __int64 std___1___shared_weak_count___release_weak(_QWORD);
 extern __int64 eft_g_effectSystem;
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 eft_bcb9e0(_QWORD* a1);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+void GameRoutine_18e4620_alt1(__int64, __int64) __asm__("GameRoutine_18e4620");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 __int64 eft_bcb9e0(_QWORD* a1)
 {
@@ -43,14 +48,14 @@ __int64 eft_bcb9e0(_QWORD* a1)
       *j = v8;
     }
     v5 = j - 17;
-    GameRoutine_18e4620(*(_QWORD*)(v6 + 440), (__int64)(j - 17));
+    GameRoutine_18e4620_alt1(*(_QWORD*)(v6 + 440), (__int64)(j - 17));
     (*(void (**)(__int64*))(*v5 + 8))(v5);
   }
   v9 = a1[11];
   if (v9 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v9 + 8),
                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v9 + 16LL))(v9);
-    std___1___shared_weak_count___release_weak(v9);
+    std___1___shared_weak_count___release_weak_alt1(v9);
   }
   v10 = a1[3];
   if (v10 != 0) {
@@ -59,12 +64,12 @@ __int64 eft_bcb9e0(_QWORD* a1)
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v11 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v11,
-                                  v10);
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v11, v10);
   }
   result = a1[2];
   if (result != 0) {
-    return std___1___shared_weak_count___release_weak(result);
+    return std___1___shared_weak_count___release_weak_alt1(result);
   }
   return result;
 }

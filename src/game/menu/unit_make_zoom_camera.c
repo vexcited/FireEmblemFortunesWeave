@@ -10,8 +10,10 @@ extern __int64 (*game_ProcInst_vtable[])();
 extern __int64 (*game_menu_UnitMakeZoomCamera_vtable[])();
 extern __int64 GameData_2264528;
 extern __int64 fw_memory_g_heap_manager_ptr;
-__int64 UnitMakeZoomCamera_Destructor(__int64 a1);
-__int64 UnitMakeZoomCamera_DeletingDestructor(__int64 a1);
+__int64 UnitMakeZoomCamera_Destructor_alt1(__int64 a1) __asm__(
+    "UnitMakeZoomCamera_Destructor");
+__int64 UnitMakeZoomCamera_DeletingDestructor_alt1(__int64 a1) __asm__(
+    "UnitMakeZoomCamera_DeletingDestructor");
 __int64 GameRoutine_b3aee0(_QWORD);
 extern _UNKNOWN* GameData_212c188;
 extern _UNKNOWN* GameData_212c190;
@@ -19,8 +21,17 @@ extern __int128 GameData_1a833b0;
 extern __int128 GameData_1a83920;
 float GameRoutine_618640(_QWORD, float, float, float, float);
 bool UnitMakeZoomCamera_1797ef0(__int64 a1, char a2);
+__int64 game_ProcInst_Unregister_alt1(__int64 result) __asm__(
+    "game_ProcInst_Unregister");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+void GameRoutine_658c00_alt1(__int64*) __asm__("GameRoutine_658c00");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void UnitMakeZoomCamera_Destructor(__int64 a1);
+void UnitMakeZoomCamera_DeletingDestructor(__int64 a1);
 
-__int64 UnitMakeZoomCamera_Destructor(__int64 a1)
+void UnitMakeZoomCamera_Destructor(__int64 a1)
 {
   __int64 v1;
 
@@ -29,18 +40,18 @@ __int64 UnitMakeZoomCamera_Destructor(__int64 a1)
   if (v1 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v1 + 8),
                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v1 + 16LL))(v1);
-    std___1___shared_weak_count___release_weak();
+    std___1___shared_weak_count___release_weak_alt1(v1);
   }
   GameData_2264528 = 0;
   *(_QWORD*)a1 = game_ProcInst_vtable;
   if ((*(_WORD*)(a1 + 136) & 0x100) != 0) {
     *(_WORD*)(a1 + 136) &= ~0x100u;
   }
-  game_ProcInst_Unregister(a1);
-  return GameRoutine_658c00(a1 + 88);
+  game_ProcInst_Unregister_alt1(a1);
+  GameRoutine_658c00_alt1((__int64*)(a1 + 88));
 }
 
-__int64 UnitMakeZoomCamera_DeletingDestructor(__int64 a1)
+void UnitMakeZoomCamera_DeletingDestructor(__int64 a1)
 {
   __int64 v1;
   __int64 v3;
@@ -50,20 +61,20 @@ __int64 UnitMakeZoomCamera_DeletingDestructor(__int64 a1)
   if (v1 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v1 + 8),
                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v1 + 16LL))(v1);
-    std___1___shared_weak_count___release_weak();
+    std___1___shared_weak_count___release_weak_alt1(v1);
   }
   GameData_2264528 = 0;
   *(_QWORD*)a1 = game_ProcInst_vtable;
   if ((*(_WORD*)(a1 + 136) & 0x100) != 0) {
     *(_WORD*)(a1 + 136) &= ~0x100u;
   }
-  game_ProcInst_Unregister(a1);
-  GameRoutine_658c00(a1 + 88);
+  game_ProcInst_Unregister_alt1(a1);
+  GameRoutine_658c00_alt1((__int64*)(a1 + 88));
   v3 = 128;
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
     v3 = 56;
   }
-  return nn_mem_StandardAllocator_Free(
+  nn_mem_StandardAllocator_Free_alt1(
       *(_QWORD*)fw_memory_g_heap_manager_ptr + v3, a1);
 }
 

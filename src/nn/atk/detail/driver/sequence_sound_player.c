@@ -82,7 +82,8 @@ float SequenceSoundPlayer_2906c0(__int64, float*, _QWORD*);
 __int64 SequenceSoundPlayer_28e5c0(__int64 result, unsigned int a2, __int64 a3);
 __attribute__((swiftcall)) void
 SequenceSoundPlayer_28e690(PSEUDO_X8 x8_, __int64 result, int a2);
-float SequenceSoundPlayer_290500(__int64 a1, __int64 a2);
+float SequenceSoundPlayer_290500_alt1(__int64 a1, __int64 a2) __asm__(
+    "SequenceSoundPlayer_290500");
 __int64* GameRoutine_27cab0(__int64);
 __int64 GameRoutine_28fbe0(_QWORD*);
 __int64 GameRoutine_2a2c60(__int64, __int64, unsigned int);
@@ -91,6 +92,9 @@ __int64 SequenceSoundPlayer_290180(__int64 result);
 __int64 nn_os_WaitEvent(_QWORD);
 void* TaskThread_2a2ae0();
 __int64 SequenceSoundPlayer_28fcd0(__int64 result, unsigned int a2);
+void nn_detail_UnexpectedDefaultImpl_alt1() __asm__(
+    "nn_detail_UnexpectedDefaultImpl");
+float SequenceSoundPlayer_290500(__int64 a1, int a2);
 
 __int64 SequenceSoundPlayer_Unknown2(__int64 a1, __int64 a2, __int64 a3)
 {
@@ -1403,7 +1407,7 @@ __int64 SequenceSoundPlayer_28fcd0(__int64 result, unsigned int a2)
             SequenceSoundPlayer_290180(v4);
           }
           else if ((*(_BYTE*)(v4 + 66) & 1) == 0) {
-            SequenceSoundPlayer_290500(v4, a2);
+            SequenceSoundPlayer_290500_alt1(v4, a2);
           }
           return GameRoutine_28fbe0((_QWORD*)v4);
         }
@@ -1557,7 +1561,7 @@ __int64 SequenceSoundPlayer_28fcd0(__int64 result, unsigned int a2)
   return result;
 }
 
-float SequenceSoundPlayer_290500(__int64 a1, __int64 a2)
+float SequenceSoundPlayer_290500(__int64 a1, int a2)
 {
 
 #pragma clang fp contract(off)
@@ -1591,7 +1595,7 @@ float SequenceSoundPlayer_290500(__int64 a1, __int64 a2)
     if (v15 == 0x0.0p+0f) {
       return result;
     }
-    v5 = 327680LL * (int)a2;
+    v5 = 327680LL * a2;
     v14 = (unsigned __int64)(float)((float)(*(float*)(a1 + 264) *
                                             0x1.0000000000000p+16f) /
                                     v15);
@@ -1612,14 +1616,13 @@ float SequenceSoundPlayer_290500(__int64 a1, __int64 a2)
     goto LABEL_20;
   }
   if (v2 != 0) {
-    nn_detail_UnexpectedDefaultImpl(a1, a2),
+    nn_detail_UnexpectedDefaultImpl_alt1(),
         v11 = COERCE_AS(__typeof__(v11),
                         PSEUDO_REGISTER(unsigned long long, "x0", "=r")),
         v13 = COERCE_AS(__typeof__(v13),
                         PSEUDO_REGISTER(unsigned long long, "x0", "=r")),
         v6 = COERCE_AS(__typeof__(v6),
                        PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
-    __udf(0);
   }
   v15 = (float)(*(float*)(a1 + 256) *
                 (float)(*(unsigned __int16*)(a1 + 298) *
@@ -1627,7 +1630,7 @@ float SequenceSoundPlayer_290500(__int64 a1, __int64 a2)
         0x1.d4c0000000000p+15f;
   result = v15;
   if (v15 != 0x0.0p+0f) {
-    v7 = 327680LL * (int)a2;
+    v7 = 327680LL * a2;
     v14 = (unsigned __int64)(float)((float)(*(float*)(a1 + 264) *
                                             0x1.0000000000000p+16f) /
                                     v15);

@@ -16,6 +16,20 @@ __attribute__((swiftcall)) void MindBase_ed77c0(PSEUDO_X8 x8_, _QWORD* result,
                                                 int a2);
 __attribute__((swiftcall)) void MindBase_ed78e0(PSEUDO_X8 x8_, _QWORD* a1,
                                                 int a2);
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
+    "std___1___shared_weak_count_lock");
+void __attribute__((noreturn))
+GameRoutine_60a210_alt1() __asm__("GameRoutine_60a210");
+void __attribute__((noreturn))
+GameRoutine_e66f60_alt1() __asm__("GameRoutine_e66f60");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 __attribute__((swiftcall)) void MindBase_ed77c0(PSEUDO_X8 x8_, _QWORD* result,
                                                 int a2)
@@ -103,42 +117,45 @@ __attribute__((swiftcall)) void MindBase_ed77c0(PSEUDO_X8 x8_, _QWORD* result,
 __attribute__((swiftcall)) void MindBase_ed78e0(PSEUDO_X8 x8_, _QWORD* a1,
                                                 int a2)
 {
-  _QWORD* a3 = (_QWORD*)PSEUDO_X8_VALUE(x8_);
+  __int64* a3 = (__int64*)PSEUDO_X8_VALUE(x8_);
   int v3;
-  _QWORD* v5;
+  __int64* v5;
   int v6;
-  _QWORD* result;
-  _QWORD* v8;
-  _QWORD* v9;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
   __int64 v10;
   __int64 v11;
   __int64 v12;
-  _QWORD* v13;
+  __int64* v13;
   __int64* v14;
   __int64* v15;
   __int64 v16;
   __int64 v17;
-  _QWORD* v18;
+  __int64 v18;
   __int64 v19;
-  bool v20;
-  _QWORD* v21;
-  bool v22;
-  unsigned __int64 v23;
-  _QWORD* v24;
-  _QWORD* v25;
-  __int64 v26;
+  __int64 v20;
+  bool v21;
+  __int64 v22;
+  bool v23;
+  unsigned __int64 v24;
+  __int64 v25;
+  _QWORD* v26;
   __int64 v27;
-  unsigned __int64 v28;
-  __int64 v29;
-  unsigned __int64 v30;
-  __int64 v31;
-  _QWORD* v32;
-  _QWORD* v33;
+  signed __int64 v28;
+  unsigned __int64 v29;
+  __int64 v30;
+  unsigned __int64 v31;
+  __int64 v32;
+  __int64 v33;
   _QWORD* v34;
-  unsigned __int64 v35;
-  __int64 v36;
-  __int64 v39;
-  _QWORD* v40;
+  __int64 v35;
+  unsigned __int64 v36;
+  __int64 v37;
+  struct {
+    __int64 v40;
+    __int64 v41;
+  } v40_;
 
   v3 = a2;
   v5 = a3;
@@ -147,20 +164,20 @@ __attribute__((swiftcall)) void MindBase_ed78e0(PSEUDO_X8 x8_, _QWORD* a1,
   a3[2] = 0;
   *a3 = 0;
   while (2) {
-    result = X8CALL_X0(_QWORD*, MindBase_ed77c0((void*)(&v39), a1, v6));
-    v8 = v40;
-    if (v40 == nullptr) {
+    MindBase_ed77c0((void*)(&v40_.v40), a1, v6);
+    v7 = v40_.v41;
+    if (v40_.v41 == 0) {
       goto LABEL_4;
     }
-    result = (_QWORD*)std___1___shared_weak_count_lock(v40);
-    if (result == nullptr) {
+    v8 = std___1___shared_weak_count_lock_alt1(v40_.v41);
+    if (v8 == 0) {
       goto LABEL_3;
     }
-    v9 = result;
-    if (v39 == 0) {
+    v9 = v8;
+    if (v40_.v40 == 0) {
       goto LABEL_58;
     }
-    v10 = *(_QWORD*)(*(_QWORD*)(v39 + 16) + 440LL);
+    v10 = *(_QWORD*)(*(_QWORD*)(v40_.v40 + 16) + 440LL);
     if (v10 != 0 &&
         (unsigned __int64)(v11 = *(unsigned __int8*)(v10 + 16)) <= 3) {
       v12 = GameData_1b018e8[v11];
@@ -184,20 +201,18 @@ __attribute__((swiftcall)) void MindBase_ed78e0(PSEUDO_X8 x8_, _QWORD* a1,
         atomic_fetch_add_explicit((atomic_ullong* volatile)(v17 + 16), 1u,
                                   memory_order_relaxed);
       }
-      result = v40;
-      if (v40 != nullptr) {
-        result = (_QWORD*)std___1___shared_weak_count_lock(v40);
-        v18 = result;
-        if (result != nullptr) {
-          v19 = v39;
+      if (v40_.v41 != 0) {
+        v18 = std___1___shared_weak_count_lock_alt1(v40_.v41);
+        if (v18 != 0) {
+          v19 = v40_.v40;
         }
         else {
           v19 = 0;
         }
         if (v17 == 0) {
         LABEL_28:
-          v20 = v19 == 0;
-          if (v18 == nullptr) {
+          v21 = v19 == 0;
+          if (v18 == 0) {
             goto LABEL_30;
           }
           goto LABEL_29;
@@ -205,43 +220,43 @@ __attribute__((swiftcall)) void MindBase_ed78e0(PSEUDO_X8 x8_, _QWORD* a1,
       }
       else {
         v19 = 0;
-        v18 = nullptr;
+        v18 = 0;
         if (v17 == 0) {
           goto LABEL_28;
         }
       }
-      result = (_QWORD*)std___1___shared_weak_count_lock(v17);
-      if (result == nullptr) {
+      v20 = std___1___shared_weak_count_lock_alt1(v17);
+      if (v20 == 0) {
         goto LABEL_28;
       }
-      v20 = v19 == v16;
-      if (atomic_fetch_add((atomic_ullong* volatile)(result + 1),
+      v21 = v19 == v16;
+      if (atomic_fetch_add((atomic_ullong* volatile)(v20 + 8),
                            0xFFFFFFFFFFFFFFFFLL) == 0) {
-        v21 = result;
-        (*(void (**)(_QWORD*))(*result + 16LL))(result);
-        result = (_QWORD*)std___1___shared_weak_count___release_weak(v21);
+        v22 = v20;
+        (*(void (**)(__int64))(*(_QWORD*)v20 + 16LL))(v20);
+        std___1___shared_weak_count___release_weak_alt1(v22);
       }
-      if (v18 == nullptr) {
+      if (v18 == 0) {
       LABEL_30:
         if (v17 == 0) {
           goto LABEL_32;
         }
       LABEL_31:
-        result = (_QWORD*)std___1___shared_weak_count___release_weak(v17);
+        std___1___shared_weak_count___release_weak_alt1(v17);
         goto LABEL_32;
       }
     LABEL_29:
-      if (atomic_fetch_add((atomic_ullong* volatile)(v18 + 1),
+      if (atomic_fetch_add((atomic_ullong* volatile)(v18 + 8),
                            0xFFFFFFFFFFFFFFFFLL) != 0) {
         goto LABEL_30;
       }
-      (*(void (**)(_QWORD*))(*v18 + 16LL))(v18);
-      result = (_QWORD*)std___1___shared_weak_count___release_weak(v18);
+      (*(void (**)(__int64))(*(_QWORD*)v18 + 16LL))(v18);
+      std___1___shared_weak_count___release_weak_alt1(v18);
       if (v17 != 0) {
         goto LABEL_31;
       }
     LABEL_32:
-      if (v20) {
+      if (v21) {
         goto LABEL_37;
       }
       v14 += 2;
@@ -251,93 +266,90 @@ __attribute__((swiftcall)) void MindBase_ed78e0(PSEUDO_X8 x8_, _QWORD* a1,
     v3 = a2;
     v15 = (__int64*)a3[1];
   LABEL_38:
-    v22 = v14 == v15;
+    v23 = v14 == v15;
     v5 = a3;
-    if (v22) {
-      v23 = a3[2];
-      if ((unsigned __int64)v15 >= v23) {
-        v26 = *a3;
-        v27 = (__int64)v15 - *a3;
-        v28 = (v27 >> 4) + 1;
-        if (v28 >> 60 != 0) {
-          GameRoutine_e66f60(result);
+    if (v23) {
+      v24 = a3[2];
+      if ((unsigned __int64)v15 >= v24) {
+        v27 = *a3;
+        v28 = (signed __int64)v15 - *a3;
+        v29 = (v28 >> 4) + 1;
+        if (v29 >> 60 != 0) {
+          GameRoutine_e66f60_alt1();
         }
-        v29 = v23 - v26;
-        if (v29 >> 3 > v28) {
-          v28 = v29 >> 3;
+        v30 = v24 - v27;
+        if (v30 >> 3 > v29) {
+          v29 = v30 >> 3;
         }
-        if ((unsigned __int64)v29 >= 0x7FFFFFFFFFFFFFF0LL) {
-          v30 = 0xFFFFFFFFFFFFFFFLL;
+        if ((unsigned __int64)v30 >= 0x7FFFFFFFFFFFFFF0LL) {
+          v31 = 0xFFFFFFFFFFFFFFFLL;
         }
         else {
-          v30 = v28;
+          v31 = v29;
         }
-        if (v30 >> 60 != 0) {
-          GameRoutine_60a210(result);
+        if (v31 >> 60 != 0) {
+          GameRoutine_60a210_alt1();
         }
-        v31 = fw_memory_HeapManager_Allocate(
-            *(_QWORD*)fw_memory_g_heap_manager_ptr, 16 * v30, 16, 0);
-        v32 = v40;
-        v33 = (_QWORD*)(v31 + v27);
-        *v33 = v39;
-        v33[1] = v32;
-        if (v32 != nullptr) {
-          atomic_fetch_add_explicit((atomic_ullong* volatile)(v32 + 2), 1u,
+        v32 = fw_memory_HeapManager_Allocate_alt1(
+            *(_QWORD*)fw_memory_g_heap_manager_ptr, 16 * v31, 16, 0);
+        v33 = v40_.v41;
+        v34 = (_QWORD*)(v32 + v28);
+        *v34 = v40_.v40;
+        v34[1] = v33;
+        if (v33 != 0) {
+          atomic_fetch_add_explicit((atomic_ullong* volatile)(v33 + 16), 1u,
                                     memory_order_relaxed);
         }
-        v34 = &v33[-2 * (v27 >> 4)];
-        v35 = v31 + 16 * v30;
-        v25 = v33 + 2;
-        result = (_QWORD*)memcpy(v34, v26, v27);
+        v35 = (__int64)&v34[-2 * (v28 >> 4)];
+        v36 = v32 + 16 * v31;
+        v26 = v34 + 2;
+        memcpy_alt1(v35, v27, v28);
         v5 = a3;
-        *a3 = v34;
-        a3[2] = v35;
-        if (v26 != 0) {
-          v36 = 128;
+        *a3 = v35;
+        a3[2] = v36;
+        if (v27 != 0) {
+          v37 = 128;
           if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-            v36 = 56;
+            v37 = 56;
           }
-          result = (_QWORD*)nn_mem_StandardAllocator_Free(
-              *(_QWORD*)fw_memory_g_heap_manager_ptr + v36);
+          nn_mem_StandardAllocator_Free_alt1(
+              *(_QWORD*)fw_memory_g_heap_manager_ptr + v37, v27);
         }
       }
       else {
-        v24 = v40;
-        *v15 = v39;
-        v15[1] = (__int64)v24;
-        if (v24 != nullptr) {
-          atomic_fetch_add_explicit((atomic_ullong* volatile)(v24 + 2), 1u,
+        v25 = v40_.v41;
+        *v15 = v40_.v40;
+        v15[1] = v25;
+        if (v25 != 0) {
+          atomic_fetch_add_explicit((atomic_ullong* volatile)(v25 + 16), 1u,
                                     memory_order_relaxed);
         }
-        v25 = v15 + 2;
+        v26 = v15 + 2;
       }
-      v5[1] = v25;
+      v5[1] = (__int64)v26;
       v3 = a2;
     }
   LABEL_58:
-    if (atomic_fetch_add((atomic_ullong* volatile)(v9 + 1),
+    if (atomic_fetch_add((atomic_ullong* volatile)(v9 + 8),
                          0xFFFFFFFFFFFFFFFFLL) == 0) {
-      (*(void (**)(_QWORD*))(*v9 + 16LL))(v9);
-      result = (_QWORD*)std___1___shared_weak_count___release_weak(v9);
-      v8 = v40;
-      if (v40 == nullptr) {
+      (*(void (**)(__int64))(*(_QWORD*)v9 + 16LL))(v9);
+      std___1___shared_weak_count___release_weak_alt1(v9);
+      v7 = v40_.v41;
+      if (v40_.v41 == 0) {
         goto LABEL_4;
       }
       goto LABEL_3;
     }
-    v8 = v40;
-    if (v40 != nullptr) {
+    v7 = v40_.v41;
+    if (v40_.v41 != 0) {
     LABEL_3:
-      result = (_QWORD*)std___1___shared_weak_count___release_weak(v8);
+      std___1___shared_weak_count___release_weak_alt1(v7);
     }
   LABEL_4:
     if (++v6 != 4) {
       continue;
     }
-    {
-      result;
-      return;
-    }
+    break;
   }
 }
 

@@ -1,5 +1,7 @@
 #include "decomp/pseudo_helpers.h"
 
+#include "decomp/pseudo_float.h"
+
 #pragma GCC visibility push(hidden)
 
 __int64 GameRoutine_173a50(_QWORD);
@@ -15,6 +17,10 @@ __int64 FxFinalMix_Unknown5(__int64 result, __int64 a2, int* a3);
 __int64 snd_coef_BiQuadCoef_BiQuadCoef(void);
 extern __int64 GameData_2134728[22];
 _QWORD* FxFinalMix_173a50(_QWORD* a1);
+__int64 nn_os_LockMutex_alt1(__int64) __asm__("nn_os_LockMutex");
+__int64 nn_os_UnlockMutex_alt1(__int64) __asm__("nn_os_UnlockMutex");
+void nn_diag_detail_AbortImpl_1a0a590_alt1() __asm__(
+    "nn_diag_detail_AbortImpl_1a0a590");
 
 __int64 FxFinalMix_Destructor(_QWORD* a1)
 {
@@ -126,19 +132,18 @@ __int64 FxFinalMix_Unknown5(__int64 result, __int64 a2, int* a3)
   float v84;
   float v85;
   float v86;
-  __int64 v87;
 
-  if (*(_BYTE*)(result + 112) != 1) {
-    return result;
-  }
-  v3 = a3[3];
-  v4 = a3[4];
-  v6 = v3 * *a3;
-  v7 = v4 / v6;
-  if (v4 % v6 != 0) {
-    result = ((__int64 (*)(void))nn_diag_detail_AbortImpl_1a0a590)();
-  }
-  else if (v7 <= a3[2]) {
+  if (*(_BYTE*)(result + 112) == 1) {
+    v3 = a3[3];
+    v4 = a3[4];
+    v6 = v3 * *a3;
+    v7 = v4 / v6;
+    if (v4 % v6 != 0) {
+      nn_diag_detail_AbortImpl_1a0a590_alt1();
+    }
+    if (v7 > a3[2]) {
+      nn_diag_detail_AbortImpl_1a0a590_alt1();
+    }
     if (v3 >= 4) {
       v8 = 4;
     }
@@ -162,9 +167,9 @@ __int64 FxFinalMix_Unknown5(__int64 result, __int64 a2, int* a3)
             v20 = (float*)(v19 + 28);
             v24 = v20[2];
             v23 = v20[3];
-            nn_os_LockMutex(v10 + 120);
+            nn_os_LockMutex_alt1(v10 + 120);
             v25 = *(float**)(*(_QWORD*)(v10 + 104) + 8LL);
-            result = nn_os_UnlockMutex(v10 + 120);
+            result = nn_os_UnlockMutex_alt1(v10 + 120);
             if (*a3 <= 0) {
               v35 = v24;
               v33 = v22;
@@ -181,7 +186,8 @@ __int64 FxFinalMix_Unknown5(__int64 result, __int64 a2, int* a3)
                 v33 = v21;
                 ++v29;
                 v21 = (float)*v30;
-                v34 = (float)((float)(v27 * v33) + (float)(v26 * v21)) +
+                v34 = (float)((float)(PSEUDO_UNFUSED(v27 * v33)) +
+                              (float)(v26 * v21)) +
                       (float)(v28 * v22);
                 v22 = v33;
                 v35 = (float)(v34 + (float)(v31 * v24)) + (float)(v32 * v23);
@@ -204,9 +210,9 @@ __int64 FxFinalMix_Unknown5(__int64 result, __int64 a2, int* a3)
             v38 = (float*)(v37 + 28);
             v41 = v38[2];
             v42 = v38[3];
-            nn_os_LockMutex(v10 + 120);
+            nn_os_LockMutex_alt1(v10 + 120);
             v43 = *(float**)(*(_QWORD*)(v10 + 104) + 16LL);
-            result = nn_os_UnlockMutex(v10 + 120);
+            result = nn_os_UnlockMutex_alt1(v10 + 120);
             if (*a3 < 1) {
               v52 = v42;
               v51 = v40;
@@ -224,7 +230,8 @@ __int64 FxFinalMix_Unknown5(__int64 result, __int64 a2, int* a3)
                 v52 = v41;
                 ++v47;
                 v39 = (float)*v48;
-                v53 = (float)((float)(v45 * v51) + (float)(v44 * v39)) +
+                v53 = (float)((float)(PSEUDO_UNFUSED(v45 * v51)) +
+                              (float)(v44 * v39)) +
                       (float)(v46 * v40);
                 v40 = v51;
                 v41 = (float)(v53 + (float)(v49 * v41)) + (float)(v50 * v42);
@@ -246,9 +253,9 @@ __int64 FxFinalMix_Unknown5(__int64 result, __int64 a2, int* a3)
             v56 = (float*)(v55 + 28);
             v59 = v56[2];
             v60 = v56[3];
-            nn_os_LockMutex(v10 + 120);
+            nn_os_LockMutex_alt1(v10 + 120);
             v61 = *(float**)(*(_QWORD*)(v10 + 104) + 24LL);
-            result = nn_os_UnlockMutex(v10 + 120);
+            result = nn_os_UnlockMutex_alt1(v10 + 120);
             if (*a3 < 1) {
               v70 = v60;
               v69 = v58;
@@ -266,7 +273,8 @@ __int64 FxFinalMix_Unknown5(__int64 result, __int64 a2, int* a3)
                 v70 = v59;
                 ++v65;
                 v57 = (float)*v66;
-                v71 = (float)((float)(v63 * v69) + (float)(v62 * v57)) +
+                v71 = (float)((float)(PSEUDO_UNFUSED(v63 * v69)) +
+                              (float)(v62 * v57)) +
                       (float)(v64 * v58);
                 v58 = v69;
                 v59 = (float)(v71 + (float)(v67 * v59)) + (float)(v68 * v60);
@@ -288,9 +296,9 @@ __int64 FxFinalMix_Unknown5(__int64 result, __int64 a2, int* a3)
             v74 = (float*)(v73 + 28);
             v77 = v74[2];
             v78 = v74[3];
-            nn_os_LockMutex(v10 + 120);
+            nn_os_LockMutex_alt1(v10 + 120);
             v79 = *(float**)(*(_QWORD*)(v10 + 104) + 32LL);
-            result = nn_os_UnlockMutex(v10 + 120);
+            result = nn_os_UnlockMutex_alt1(v10 + 120);
             if (*a3 < 1) {
               v14 = v78;
               v15 = v76;
@@ -307,7 +315,8 @@ __int64 FxFinalMix_Unknown5(__int64 result, __int64 a2, int* a3)
                 v14 = v77;
                 ++v83;
                 v75 = (float)*v16;
-                v86 = (float)((float)(v81 * v15) + (float)(v80 * v75)) +
+                v86 = (float)((float)(PSEUDO_UNFUSED(v81 * v15)) +
+                              (float)(v80 * v75)) +
                       (float)(v82 * v76);
                 v76 = v15;
                 v77 = (float)(v86 + (float)(v84 * v77)) + (float)(v85 * v78);
@@ -325,10 +334,8 @@ __int64 FxFinalMix_Unknown5(__int64 result, __int64 a2, int* a3)
         ++v11;
       } while (v11 != v7);
     }
-    return result;
   }
-  v87 = nn_diag_detail_AbortImpl_1a0a590(result);
-  return GameRoutine_173a50(v87);
+  return result;
 }
 
 _QWORD* FxFinalMix_173a50(_QWORD* a1)

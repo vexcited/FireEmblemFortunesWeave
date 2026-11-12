@@ -7,7 +7,8 @@
 __n128 nn_mem_StandardAllocator_Free(_QWORD);
 extern __int64 (*game_map_MeshData_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
-__n128 MeshData_DeletingDestructor(_QWORD* a1);
+__n128 MeshData_DeletingDestructor_alt1(_QWORD* a1) __asm__(
+    "MeshData_DeletingDestructor");
 __int64 fw_memory_HeapManager_Allocate(__int64, __int64, __int64, unsigned int);
 extern __int64* GameData_212f8a8[15];
 void __attribute__((noreturn)) GameRoutine_60a210();
@@ -15,6 +16,9 @@ void __attribute__((noreturn)) GameRoutine_f15920();
 void MeshData_f555a0(float32x4_t* a1, float32x4_t* a2, unsigned __int64* a3,
                      unsigned __int64* a4);
 unsigned __int64 MeshData_f557a0(__int64 a1);
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void MeshData_DeletingDestructor(_QWORD* a1);
 
 void MeshData_f555a0(float32x4_t* a1, float32x4_t* a2, unsigned __int64* a3,
                      unsigned __int64* a4)
@@ -40,7 +44,7 @@ void MeshData_f555a0(float32x4_t* a1, float32x4_t* a2, unsigned __int64* a3,
   __int64 v22;
   float32x4_t* v23;
   unsigned __int64 v24;
-  unsigned __int64 v25;
+  __int64 v25;
   __int64* v26;
   unsigned __int64 v27;
   unsigned __int64 v28;
@@ -50,7 +54,7 @@ void MeshData_f555a0(float32x4_t* a1, float32x4_t* a2, unsigned __int64* a3,
   _QWORD* v32;
   unsigned __int64 v33;
   float32x4_t* v34;
-  void (**v35)(unsigned __int64);
+  void (**v35)(__int64);
   __int64 v36;
   float32x4_t v37;
   unsigned __int64 v38;
@@ -118,12 +122,12 @@ void MeshData_f555a0(float32x4_t* a1, float32x4_t* a2, unsigned __int64* a3,
       } while (v31 != v8);
       v34 = (float32x4_t*)v16;
       do {
-        v35 = (void (**)(unsigned __int64))LANES128(*(v34)).n128_u64[0];
+        v35 = (void (**)(__int64))LANES128(*(v34)).n128_u64[0];
         v34 += 4;
         (*v35)(v25);
-        v25 = (unsigned __int64)v34;
+        v25 = (__int64)v34;
       } while (v34 != v8);
-      v25 = LANES128(a1[6]).n128_u64[0];
+      v25 = LANES128(a1[6]).n128_i64[0];
     }
     LANES128(a1[6]).n128_u64[0] = n128_u64;
     LANES128(a1[6]).n128_u64[1] = v9;
@@ -133,7 +137,7 @@ void MeshData_f555a0(float32x4_t* a1, float32x4_t* a2, unsigned __int64* a3,
       if (*(_QWORD*)(*(_QWORD*)v21 + 200LL) == 0) {
         v36 = 56;
       }
-      nn_mem_StandardAllocator_Free(*(_QWORD*)v21 + v36);
+      nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v21 + v36, v25);
     }
   }
   else {
@@ -218,14 +222,14 @@ unsigned __int64 MeshData_f557a0(__int64 a1)
   return result;
 }
 
-__n128 MeshData_DeletingDestructor(_QWORD* a1)
+void MeshData_DeletingDestructor(_QWORD* a1)
 {
   __int64 v1;
   __int64 v3;
   __int64 v4;
   __int64 v5;
-  void (***v6)(_QWORD);
-  void (***v7)(_QWORD);
+  __int64 v6;
+  __int64 v7;
   void (***v8)(_QWORD);
   void (***v9)(_QWORD);
   void (**v10)(_QWORD);
@@ -244,39 +248,40 @@ __n128 MeshData_DeletingDestructor(_QWORD* a1)
     if (*(_QWORD*)(v4 + 200) == 0) {
       v5 = 56;
     }
-    nn_mem_StandardAllocator_Free(v4 + v5);
+    nn_mem_StandardAllocator_Free_alt1(v4 + v5, v1);
   }
-  v6 = (void (***)(_QWORD))a1[12];
-  if (v6 != nullptr) {
-    v7 = (void (***)(_QWORD))a1[13];
+  v6 = a1[12];
+  if (v6 != 0) {
+    v7 = a1[13];
     if (v6 == v7) {
       goto LABEL_11;
     }
-    v8 = v7 - 8;
-    v9 = v7 - 8;
+    v8 = (void (***)(_QWORD))(v7 - 64);
+    v9 = (void (***)(_QWORD))(v7 - 64);
     do {
       v10 = *v9;
       v9 -= 8;
       (*v10)(v8);
-      v11 = v8 == v6;
+      v11 = v8 == (void (***)(_QWORD))v6;
       v8 = v9;
     } while (!v11);
     v12 = a1[12];
     a1[13] = v6;
+    v6 = v12;
     if (v12 != 0) {
     LABEL_11:
       v13 = 128;
       if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
         v13 = 56;
       }
-      nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v13);
+      nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v13, v6);
     }
   }
   v14 = 128;
   if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
     v14 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v14);
+  nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v14, (__int64)a1);
 }
 
 #pragma GCC visibility pop

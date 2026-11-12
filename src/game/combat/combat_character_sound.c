@@ -24,7 +24,8 @@ struct PseudoSret GameRoutine_1095750(_QWORD, _QWORD, _QWORD, float);
 __int64 CombatCharacterSound_1091900(_QWORD* a1);
 void CombatCharacterSound_1091c00_alt1(__int64 a1, int* a2) __asm__(
     "CombatCharacterSound_1091c00");
-__int64 CombatCharacterSound_DeletingDestructor(_QWORD* a1);
+__int64 CombatCharacterSound_DeletingDestructor_alt1(_QWORD* a1) __asm__(
+    "CombatCharacterSound_DeletingDestructor");
 __attribute__((swiftcall)) void CharacterSound_1095750(PSEUDO_X8, _QWORD,
                                                        _QWORD, _QWORD, float);
 __attribute__((swiftcall)) void
@@ -62,6 +63,11 @@ __int64 GameHr_1091720(__int64, int, int);
 __int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
     "std___1___shared_weak_count___release_weak");
 __int64 CombatCharacterSound_1091c00(__int64 result, int* a2);
+__int64 memmove_alt1(__int64, __int64, unsigned __int64) __asm__("memmove");
+__int64 snd_isActive_100100_alt2(__int64) __asm__("snd_isActive_100100");
+void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void CombatCharacterSound_DeletingDestructor(_QWORD* a1);
 
 __int64 CombatCharacterSound_1091900(_QWORD* a1)
 {
@@ -344,22 +350,22 @@ __int64 CombatCharacterSound_1091c00(__int64 result, int* a2)
   return result;
 }
 
-__int64 CombatCharacterSound_DeletingDestructor(_QWORD* a1)
+void CombatCharacterSound_DeletingDestructor(_QWORD* a1)
 {
-  __int64 v1;
   __int64 v2;
+  __int64 v3;
 
   *a1 = GameData_212fe68 + 16;
-  v1 = a1[3];
-  if (v1 != 0) {
-    std___1___shared_weak_count___release_weak(v1);
+  v2 = a1[3];
+  if (v2 != 0) {
+    std___1___shared_weak_count___release_weak_alt1(v2);
   }
-  v2 = 128;
+  v3 = 128;
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-    v2 = 56;
+    v3 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v2);
+  nn_mem_StandardAllocator_Free_alt2(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v3, (__int64)a1);
 }
 
 void game_combat_CombatCharacterSound_CombatCharacterSound_lambda0_Invoke(
@@ -481,14 +487,14 @@ void game_combat_CombatCharacterSound_CombatCharacterSound_lambda0_Invoke(
             }
             if (v30 != 0 && (v32 = *(_QWORD*)(v30 + 8)) != 0 &&
                     (*(_BYTE*)(v32 + 113) & 0x80) != 0 ||
-                (snd_isActive_100100_alt1((__int64*)(v29 + 104)) & 1) != 0) {
+                (snd_isActive_100100_alt2(v29 + 104) & 1) != 0) {
               v39_.v39 = 0;
               v39_.v40 = 0x2000;
             }
             else {
-              CharacterSound_1095750_alt1((void*)((__int64)&v39_.v39), v29,
-                                          (__int64)"V_AV_<VoiceID>_<Arg>",
-                                          (__int64)v31, v26);
+              CharacterSound_1095750_alt2((void*)((__int64)&v39_.v39), v29,
+                                          "V_AV_<VoiceID>_<Arg>", (__int64)v31,
+                                          v26);
               GameRoutine_112180_alt1(v29 + 104, (__int64)&v39_.v39);
               v39_.v39 = 0;
               v39_.v40 = 0x2000;
@@ -508,13 +514,13 @@ void game_combat_CombatCharacterSound_CombatCharacterSound_lambda0_Invoke(
           if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
             v35 = 56;
           }
-          nn_mem_StandardAllocator_Free_alt1(
-              *(_QWORD*)fw_memory_g_heap_manager_ptr + v35);
+          nn_mem_StandardAllocator_Free_alt2(
+              *(_QWORD*)fw_memory_g_heap_manager_ptr + v35, (__int64)v36_.v38);
         }
         return;
       }
     }
-    memmove(v15, v13, v12);
+    memmove_alt1((__int64)v15, v13, v12);
     goto LABEL_34;
   }
   v16 = v8[10];
@@ -526,13 +532,13 @@ void game_combat_CombatCharacterSound_CombatCharacterSound_lambda0_Invoke(
       v21 = (*(_BYTE*)(v3 + 32) & 1) != 0 ? *(_QWORD*)(v3 + 48) : v3 + 33;
       if (v5 != 0 && (v22 = *(_QWORD*)(v5 + 8)) != 0 &&
               (*(_BYTE*)(v22 + 113) & 0x80) != 0 ||
-          (snd_isActive_100100_alt1((__int64*)(v20 + 104)) & 1) != 0) {
+          (snd_isActive_100100_alt2(v20 + 104) & 1) != 0) {
         v36_.v36 = 0;
         LODWORD(v36_.v37) = 0x2000;
       }
       else {
-        CharacterSound_1095750_alt1((void*)((__int64)&v36_.v36), v20,
-                                    (__int64)"V_AV_<VoiceID>_<Arg>", v21, v17);
+        CharacterSound_1095750_alt2((void*)((__int64)&v36_.v36), v20,
+                                    "V_AV_<VoiceID>_<Arg>", v21, v17);
         GameRoutine_112180_alt1(v20 + 104, (__int64)&v36_.v36);
         v36_.v36 = 0;
         LODWORD(v36_.v37) = 0x2000;

@@ -6,7 +6,8 @@ __int64 nn_mem_StandardAllocator_Free(_QWORD);
 __int64 std___1___shared_weak_count___release_weak(_QWORD);
 extern __int64 (*gfx_light_Actor_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
-__int64 SpotLightActor_DeletingDestructor(_QWORD* a1);
+__int64 SpotLightActor_DeletingDestructor_alt1(_QWORD* a1) __asm__(
+    "SpotLightActor_DeletingDestructor");
 __int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
     "std___1___shared_weak_count___release_weak");
 __int64 std___1___shared_weak_count_lock(__int64);
@@ -15,6 +16,9 @@ extern __int128 GameData_1a82c50;
 extern __int128 GameData_1a82dd0;
 extern __int128 GameData_1a837f0;
 float32x4_t SpotLightActor_Unknown2(_QWORD* a1);
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void SpotLightActor_DeletingDestructor(_QWORD* a1);
 
 float32x4_t SpotLightActor_Unknown2(_QWORD* a1)
 {
@@ -197,7 +201,7 @@ float32x4_t SpotLightActor_Unknown2(_QWORD* a1)
   return *(float32x4_t*)GameData_212c2a0;
 }
 
-__int64 SpotLightActor_DeletingDestructor(_QWORD* a1)
+void SpotLightActor_DeletingDestructor(_QWORD* a1)
 {
   __int64 v2;
   __int64 v3;
@@ -208,19 +212,19 @@ __int64 SpotLightActor_DeletingDestructor(_QWORD* a1)
   v2 = a1[2];
   a1[2] = 0;
   if (v2 != 0) {
-    std___1___shared_weak_count___release_weak(v2);
+    std___1___shared_weak_count___release_weak_alt1(v2);
     v3 = a1[2];
     a1[3] = 0;
     if (v3 != 0) {
-      std___1___shared_weak_count___release_weak(v3);
+      std___1___shared_weak_count___release_weak_alt1(v3);
     }
   }
   v4 = 128;
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
     v4 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v4);
+  nn_mem_StandardAllocator_Free_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v4, (__int64)a1);
 }
 
 #pragma GCC visibility pop

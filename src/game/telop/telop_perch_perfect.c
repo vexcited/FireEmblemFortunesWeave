@@ -52,6 +52,10 @@ __int64
 ui_LayoutAccessor_FindPane_alt1(__int64*,
                                 __int64) __asm__("ui_LayoutAccessor_FindPane");
 __int64 TelopPerchPerfect_Unknown33(__int64* a1);
+__int64 GameHr_14a10d0_alt1(_QWORD*, __int64, __int64,
+                            __int64) __asm__("GameHr_14a10d0");
+__int64 ui_LayoutAccessor_FindPane_alt2(__int64*, const char*) __asm__(
+    "ui_LayoutAccessor_FindPane");
 
 __int64 TelopPerchPerfect_Unknown33(__int64* a1)
 {
@@ -290,7 +294,7 @@ LABEL_45:
                             (__int64)v47_.v47, 0),
   v29 = COERCE_AS(__typeof__(v29),
                   PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-  GameHr_14a10d0(&v43_.v43, (__int64)v28, v29, (__int64)&GameData_1a9f09e),
+  GameHr_14a10d0_alt1(&v43_.v43, (__int64)v28, v29, (__int64)&GameData_1a9f09e),
       v29 = COERCE_AS(__typeof__(v29),
                       PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   v30 = v43_.v43;
@@ -337,7 +341,7 @@ LABEL_45:
         v29 = COERCE_AS(__typeof__(v29),
                         PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   }
-  v34 = ui_LayoutAccessor_FindPane_alt1(a1 + 21, (__int64)"N_Title"),
+  v34 = ui_LayoutAccessor_FindPane_alt2(a1 + 21, "N_Title"),
   v29 = COERCE_AS(__typeof__(v29),
                   PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   if (v34 != 0) {

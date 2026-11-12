@@ -34,30 +34,34 @@ void GameRoutine_658c00_alt1(__int64*) __asm__("GameRoutine_658c00");
 void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void ProcHubSeqTalkSelect_DeletingDestructor(__int64 a1);
+__int64 HubCharacterDisposManager_d5da40(__int64, __int64, __int64);
+__int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
+    "std___1___shared_weak_count_lock");
 
 __int64 ProcHubSeqTalkSelect_10464e0(__int64 a1)
 {
   __int64 result;
   __int64 v3;
   __int64 v4;
+  __int64 v5;
 
   result = *(_QWORD*)(a1 + 160);
   if (result != 0) {
-    result = std___1___shared_weak_count_lock();
+    result = std___1___shared_weak_count_lock_alt1(result);
     if (result != 0) {
-      if (*(_QWORD*)(a1 + 152) != 0 &&
-          (*(_BYTE*)(GameData_21f3d10 + 12) & 1) == 0 &&
+      v3 = *(_QWORD*)(a1 + 152);
+      if (v3 != 0 && (*(_BYTE*)(GameData_21f3d10 + 12) & 1) == 0 &&
           (*(_BYTE*)(GameData_21f3d10 + 11) & 1) == 0 &&
           (*(_BYTE*)(GameData_21f3d10 + 13) & 1) == 0) {
-        v3 = result;
-        GameRoutine_d5da40(*GameData_212ebe0, a1);
-        result = v3;
+        v4 = result;
+        HubCharacterDisposManager_d5da40(*GameData_212ebe0, a1, v3);
+        result = v4;
       }
       if (atomic_fetch_add((atomic_ullong* volatile)(result + 8),
                            0xFFFFFFFFFFFFFFFFLL) == 0) {
-        v4 = result;
+        v5 = result;
         (*(void (**)(__int64))(*(_QWORD*)result + 16LL))(result);
-        return std___1___shared_weak_count___release_weak(v4);
+        return std___1___shared_weak_count___release_weak_alt1(v5);
       }
     }
   }

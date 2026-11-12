@@ -174,6 +174,11 @@ void LayoutAccessor_1562060_alt2(__int64*, const char*,
                                  const char*) __asm__("LayoutAccessor_1562060");
 void ui_LayoutAccessor_SetTextBoxString(__int64*, const char*, __int64);
 __int64 ProcGuideMenu_Unknown88(__int64 result);
+__int64 game_menu_PageTab_SetupLabel_alt2(
+    __int64, __int64*, __int64, unsigned int, unsigned int,
+    unsigned int) __asm__("game_menu_PageTab_SetupLabel");
+unsigned __int64 GameHr_1562680_alt2(unsigned __int64 result, char*,
+                                     float) __asm__("GameHr_1562680");
 
 void ProcGuideMenu_Unknown84(__int64* a1)
 {
@@ -231,8 +236,8 @@ void ProcGuideMenu_Unknown84(__int64* a1)
   __int64* v54;
   __int64 v55;
   __int64 v56;
-  int v57;
-  char* v58;
+  unsigned int v57;
+  const char* v58;
   __int64 v59;
   struct {
     __int64 v60;
@@ -240,7 +245,7 @@ void ProcGuideMenu_Unknown84(__int64* a1)
   } v60_;
   struct {
     _QWORD v62[2];
-    char* v63;
+    const char* v63;
     char gap56_[8];
     __int64 v64;
   } v62_;
@@ -250,7 +255,8 @@ void ProcGuideMenu_Unknown84(__int64* a1)
                       (__int64)"SE_SYS_GuideMenu_Open", (__int64)v62_.v62, 0,
                       0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
   snd_Fade_Destroy_Fade_alt1(v62_.v62);
-  GameHr_1562680((__int64)(a1 + 106), "Wait", 0x1.0000000000000p+0f);
+  GameHr_1562680_alt2((unsigned __int64)(a1 + 106), "Wait",
+                      0x1.0000000000000p+0f);
   v2 = game_GameModeData_instance_;
   if (game_GameModeData_instance_ == 0) {
     v4 = nullptr;
@@ -596,8 +602,8 @@ LABEL_82:
   v56 = *a1;
   v62_.v64 = 0;
   v57 = (*(__int64 (**)(__int64*))(v56 + 192))(a1);
-  game_menu_PageTab_SetupLabel_alt1((__int64)(a1 + 134), &v60_.v60,
-                                    (__int64)v62_.v62, v57, 4, 5);
+  game_menu_PageTab_SetupLabel_alt2((__int64)(a1 + 134), &v60_.v60,
+                                    (__int64)v62_.v62, v57, 4u, 5u);
   if (v60_.v61 != 0) {
     std___1___shared_weak_count___release_weak_alt2(v60_.v61);
   }
@@ -608,8 +614,7 @@ LABEL_82:
   else {
     v58 = (char*)v62_.v62 + 1;
   }
-  LayoutAccessor_1562060_alt1(a1 + 106, (__int64)"L_PageTab/T_Txt",
-                              (__int64)v58);
+  LayoutAccessor_1562060_alt2(a1 + 106, "L_PageTab/T_Txt", v58);
   if ((v62_.v62[0] & 1) != 0 && v62_.v63 != nullptr) {
     v59 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {

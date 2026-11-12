@@ -110,7 +110,8 @@ __int64 snd_Fade_Destroy_Fade(_QWORD);
 __int64 std___1___next_prime(_QWORD);
 __n128 snd_Fade_Fade_10c830(_QWORD, double);
 void __attribute__((noreturn)) GameRoutine_60a210();
-__int64 Dialog_164b120(float* a1, __int64* a2, __int64** a3);
+__int64 Dialog_164b120_alt2(float* a1, __int64* a2,
+                            __int64** a3) __asm__("Dialog_164b120");
 __int64 game_menu_Dialog_SetDecideSe_lambda0_Invoke(__int64 result);
 __int64* GameConverge_8f24c0_alt1(__int64*,
                                   __int64*) __asm__("GameConverge_8f24c0");
@@ -179,6 +180,12 @@ void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void Dialog_1647ee0(__int64 a1);
 __int64 game_menu_Dialog_PostBuild(__int64 a1);
+__int64
+std___1___hash_memory_alt1(__int64,
+                           unsigned __int64) __asm__("std___1___hash_memory");
+__int64
+std___1___next_prime_alt1(unsigned __int64) __asm__("std___1___next_prime");
+__int64 Dialog_164b120(__int64 a1, __int64* a2, __int64** a3);
 
 __int64 game_menu_Dialog__CreateBind_game_menu_Dialog(__int64 a1, __int64 a2)
 {
@@ -2062,7 +2069,7 @@ LABEL_11:
   return 0;
 }
 
-__int64 Dialog_164b120(float* a1, __int64* a2, __int64** a3)
+__int64 Dialog_164b120(__int64 a1, __int64* a2, __int64** a3)
 {
 
 #pragma clang fp contract(off)
@@ -2098,7 +2105,7 @@ __int64 Dialog_164b120(float* a1, __int64* a2, __int64** a3)
   __int64 v34;
   __int64 v35;
   _QWORD* v36;
-  __int64* v37;
+  __int64 v37;
   unsigned __int64 v38;
   unsigned __int64 v39;
   _QWORD* v40;
@@ -2118,8 +2125,8 @@ __int64 Dialog_164b120(float* a1, __int64* a2, __int64** a3)
 
   v4 = *a2;
   v53 = *a2;
-  v7 = std___1___hash_memory(&v53, 8);
-  v8 = *((_QWORD*)a1 + 1);
+  v7 = std___1___hash_memory_alt1((__int64)&v53, 8u);
+  v8 = *(_QWORD*)(a1 + 8);
   v9 = v7;
   if (v8 != 0) {
     v10 = v8 - 1;
@@ -2180,11 +2187,11 @@ LABEL_22:
   v16 = *a3;
   *(_QWORD*)result = 0;
   *(_QWORD*)(result + 8) = v9;
-  v17 = a1[8];
+  v17 = *(float*)(a1 + 32);
   v18 = *v16;
   *(_DWORD*)(result + 24) = 0;
   *(_QWORD*)(result + 16) = v18;
-  v19 = (float)(unsigned __int64)(*((_QWORD*)a1 + 3) + 1LL);
+  v19 = (float)(unsigned __int64)(*(_QWORD*)(a1 + 24) + 1LL);
   if (v8 == 0 || (float)(v17 * (float)v8) < v19) {
     v20 = v19 / v17;
     v21 = true;
@@ -2204,18 +2211,19 @@ LABEL_22:
     }
     else if ((primeEm & (primeEm - 1)) != 0) {
       v25 = result;
-      primeEm = std___1___next_prime(primeEm);
+      primeEm = std___1___next_prime_alt1(primeEm);
       result = v25;
-      v8 = *((_QWORD*)a1 + 1);
+      v8 = *(_QWORD*)(a1 + 8);
     }
     if (primeEm <= v8) {
       if (primeEm >= v8) {
         goto LABEL_83;
       }
-      v32 = vcvtps_u64_f32((float)*((unsigned __int64*)a1 + 3) / a1[8]);
+      v32 = vcvtps_u64_f32((float)*(unsigned __int64*)(a1 + 24) /
+                           *(float*)(a1 + 32));
       if (v8 < 3 || (v8 & (v8 - 1)) != 0) {
         v45 = result;
-        v32 = std___1___next_prime(v32);
+        v32 = std___1___next_prime_alt1(v32);
         result = v45;
       }
       else {
@@ -2239,10 +2247,10 @@ LABEL_22:
           if (*(_QWORD*)(*v15 + 200) == 0) {
             v48 = 56;
           }
-          nn_mem_StandardAllocator_Free(*v15 + v48);
+          nn_mem_StandardAllocator_Free_alt1(*v15 + v48, v46);
           result = v47;
         }
-        *((_QWORD*)a1 + 1) = 0;
+        *(_QWORD*)(a1 + 8) = 0;
         goto LABEL_83;
       }
     }
@@ -2258,10 +2266,10 @@ LABEL_22:
       if (*(_QWORD*)(*v15 + 200) == 0) {
         v29 = 56;
       }
-      nn_mem_StandardAllocator_Free(*v15 + v29);
+      nn_mem_StandardAllocator_Free_alt1(*v15 + v29, v28);
     }
     v30 = primeEm & 7;
-    *((_QWORD*)a1 + 1) = primeEm;
+    *(_QWORD*)(a1 + 8) = primeEm;
     if (primeEm >= 8) {
       v31 = 0;
       result = v26;
@@ -2290,8 +2298,8 @@ LABEL_22:
         v35 += 8;
       } while (v30 != 0);
     }
-    v37 = (__int64*)(a1 + 4);
-    v36 = *((_QWORD**)a1 + 2);
+    v37 = a1 + 16;
+    v36 = *(_QWORD**)(a1 + 16);
     if (v36 != nullptr) {
       v38 = v36[1];
       v39 = primeEm - 1;
@@ -2353,7 +2361,7 @@ LABEL_22:
       }
     }
   LABEL_83:
-    v8 = *((_QWORD*)a1 + 1);
+    v8 = *(_QWORD*)(a1 + 8);
     if ((v8 & (v8 - 1)) != 0) {
       if (v9 >= v8) {
         v3 = v9 % v8;
@@ -2373,10 +2381,10 @@ LABEL_22:
     *v50 = result;
   }
   else {
-    v51 = *((_QWORD*)a1 + 2);
-    *((_QWORD*)a1 + 2) = result;
+    v51 = *(_QWORD*)(a1 + 16);
+    *(_QWORD*)(a1 + 16) = result;
     *(_QWORD*)result = v51;
-    *(_QWORD*)(v49 + 8 * v3) = a1 + 4;
+    *(_QWORD*)(v49 + 8 * v3) = a1 + 16;
     if (*(_QWORD*)result != 0) {
       v52 = *(_QWORD*)(*(_QWORD*)result + 8LL);
       if ((v8 & (v8 - 1)) != 0) {
@@ -2390,7 +2398,7 @@ LABEL_22:
       *(_QWORD*)(*(_QWORD*)a1 + 8 * v52) = result;
     }
   }
-  ++*((_QWORD*)a1 + 3);
+  ++*(_QWORD*)(a1 + 24);
   return result;
 }
 

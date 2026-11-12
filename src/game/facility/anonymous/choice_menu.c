@@ -35,7 +35,8 @@ __int64
 game_facility_anonymous_ChoiceMenu_CheckFirstSelect_closure_Invoke(__int64 a1,
                                                                    __int64 a2);
 __int64 ChoiceMenu_Destructor(_QWORD* a1);
-__int64 ChoiceMenu_DeletingDestructor(_QWORD* a1);
+__int64 ChoiceMenu_DeletingDestructor_alt1(_QWORD* a1) __asm__(
+    "ChoiceMenu_DeletingDestructor");
 __int64 ChoiceMenu_Unknown11(__int64 a1, int a2, char a3);
 __int64 ChoiceMenu_Unknown12(__int64 a1, int a2, char a3);
 _QWORD* GameRoutine_159e2c0_alt1(__int64, char) __asm__("GameRoutine_159e2c0");
@@ -46,6 +47,11 @@ __int64 _ZN4game4menu9BasicMenu13Unknown16dea40Ebbb_alt1(
     unsigned __int8) __asm__("_ZN4game4menu9BasicMenu13Unknown16dea40Ebbb");
 __int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
     "std___1___shared_weak_count___release_weak");
+void game_menu_BasicMenu_Destroy_BasicMenu_alt1(__int64) __asm__(
+    "game_menu_BasicMenu_Destroy_BasicMenu");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void ChoiceMenu_DeletingDestructor(_QWORD* a1);
 
 bool game_facility_anonymous_ChoiceMenu_SetSelectedWorstItem_closure_Invoke(
     __int64 a1, __int64* a2)
@@ -199,7 +205,7 @@ __int64 ChoiceMenu_Destructor(_QWORD* a1)
   return game_menu_BasicMenu_Destroy_BasicMenu(a1);
 }
 
-__int64 ChoiceMenu_DeletingDestructor(_QWORD* a1)
+void ChoiceMenu_DeletingDestructor(_QWORD* a1)
 {
   _QWORD* v2;
   _QWORD* v3;
@@ -224,15 +230,15 @@ __int64 ChoiceMenu_DeletingDestructor(_QWORD* a1)
   if (v5 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v5 + 8),
                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v5 + 16LL))(v5);
-    std___1___shared_weak_count___release_weak(v5);
+    std___1___shared_weak_count___release_weak_alt1(v5);
   }
-  game_menu_BasicMenu_Destroy_BasicMenu(a1);
+  game_menu_BasicMenu_Destroy_BasicMenu_alt1((__int64)a1);
   v6 = 128;
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
     v6 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v6);
+  nn_mem_StandardAllocator_Free_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v6, (__int64)a1);
 }
 
 __int64 ChoiceMenu_Unknown2_1115140(__int64 result)

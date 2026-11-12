@@ -12,7 +12,8 @@ extern __int64 (*game_menu_MaterialMenuItem_Empty_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64 game_TransporterConst_List_instance__ptr[6];
 void __attribute__((noreturn)) GameRoutine_60a310(_QWORD, _QWORD);
-__int64 ProcTalkSelectGiftMenu_Destructor(__int64 a1);
+__int64 ProcTalkSelectGiftMenu_Destructor_alt1(__int64 a1) __asm__(
+    "ProcTalkSelectGiftMenu_Destructor");
 __int64 ProcTalkSelectGiftMenu_Unknown128(_QWORD* a1);
 __int64 BasicMenuCursor_16e0c00(_QWORD, _QWORD);
 __int64 MapSortieMenu_871860(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
@@ -32,8 +33,13 @@ __int64 fw_memory_HeapManager_Allocate_alt1(
     unsigned int) __asm__("fw_memory_HeapManager_Allocate");
 void __attribute__((noreturn))
 GameRoutine_60a310_alt1() __asm__("GameRoutine_60a310");
+void game_menu_BasicMenu_Destroy_BasicMenu_alt1(__int64) __asm__(
+    "game_menu_BasicMenu_Destroy_BasicMenu");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void ProcTalkSelectGiftMenu_Destructor(__int64 a1);
 
-__int64 ProcTalkSelectGiftMenu_Destructor(__int64 a1)
+void ProcTalkSelectGiftMenu_Destructor(__int64 a1)
 {
   __int64 v1;
   __int64 v2;
@@ -47,10 +53,11 @@ __int64 ProcTalkSelectGiftMenu_Destructor(__int64 a1)
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v3 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v3);
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v3, v1);
     a1 = v2;
   }
-  return game_menu_BasicMenu_Destroy_BasicMenu(a1);
+  game_menu_BasicMenu_Destroy_BasicMenu_alt1(a1);
 }
 
 __int64 game_menu_anonymous_ProcTalkSelectGiftMenu_BCall(__int64 a1)

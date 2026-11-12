@@ -10,10 +10,18 @@ extern __int64 (*game_ProcInst_vtable[])();
 extern __int64 GameData_212c608[2];
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64 game_ProcGameSkipView_instance_;
-__int64 ProcAccept_Destructor(__int64 a1);
-__int64 ProcAccept_DeletingDestructor(__int64 a1);
+__int64 ProcAccept_Destructor_alt1(__int64 a1) __asm__("ProcAccept_Destructor");
+__int64 ProcAccept_DeletingDestructor_alt1(__int64 a1) __asm__(
+    "ProcAccept_DeletingDestructor");
+__int64 game_ProcInst_Unregister_alt1(__int64 result) __asm__(
+    "game_ProcInst_Unregister");
+void GameRoutine_658c00_alt1(__int64*) __asm__("GameRoutine_658c00");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void ProcAccept_Destructor(__int64 a1);
+void ProcAccept_DeletingDestructor(__int64 a1);
 
-__int64 ProcAccept_Destructor(__int64 a1)
+void ProcAccept_Destructor(__int64 a1)
 {
   _QWORD* v2;
   __int64 v3;
@@ -33,6 +41,7 @@ __int64 ProcAccept_Destructor(__int64 a1)
   __int64 v17;
   __int64 v18;
   __int64 v19;
+  __int64 v20;
 
   *(_QWORD*)a1 = game_GameSubquestData_ProcAccept_vtable;
   v2 = (_QWORD*)game_ProcGameSkipView_instance_;
@@ -59,45 +68,48 @@ __int64 ProcAccept_Destructor(__int64 a1)
     v2[27] = v3 - 1;
     v2[20] = v14;
     if ((unsigned __int64)(v11 - (v3 + v4) - 255) <= 0xFFFFFFFFFFFFFEFFLL) {
-      if (*(_QWORD*)(v5 - 8) != 0) {
-        v15 = 128;
+      v15 = *(_QWORD*)(v5 - 8);
+      if (v15 != 0) {
+        v16 = 128;
         if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-          v15 = 56;
+          v16 = 56;
         }
-        nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                      v15);
+        nn_mem_StandardAllocator_Free_alt1(
+            *(_QWORD*)fw_memory_g_heap_manager_ptr + v16, v15);
         v5 = v2[24];
       }
       v2[24] = v5 - 8;
     }
   }
-  v16 = *(_QWORD*)(a1 + 176);
-  if (v16 != 0) {
-    *(_QWORD*)(a1 + 184) = v16;
-    v17 = 128;
+  v17 = *(_QWORD*)(a1 + 176);
+  if (v17 != 0) {
+    *(_QWORD*)(a1 + 184) = v17;
+    v18 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-      v17 = 56;
+      v18 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v17);
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v18, v17);
   }
-  v18 = *(_QWORD*)(a1 + 152);
-  if (v18 != 0) {
-    *(_QWORD*)(a1 + 160) = v18;
-    v19 = 128;
+  v19 = *(_QWORD*)(a1 + 152);
+  if (v19 != 0) {
+    *(_QWORD*)(a1 + 160) = v19;
+    v20 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-      v19 = 56;
+      v20 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v19);
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v20, v19);
   }
   *(_QWORD*)a1 = game_ProcInst_vtable;
   if ((*(_WORD*)(a1 + 136) & 0x100) != 0) {
     *(_WORD*)(a1 + 136) &= ~0x100u;
   }
-  game_ProcInst_Unregister(a1);
-  return GameRoutine_658c00(a1 + 88);
+  game_ProcInst_Unregister_alt1(a1);
+  GameRoutine_658c00_alt1((__int64*)(a1 + 88));
 }
 
-__int64 ProcAccept_DeletingDestructor(__int64 a1)
+void ProcAccept_DeletingDestructor(__int64 a1)
 {
   _QWORD* v2;
   __int64 v3;
@@ -121,6 +133,7 @@ __int64 ProcAccept_DeletingDestructor(__int64 a1)
   __int64 v21;
   __int64 v22;
   __int64 v23;
+  __int64 v24;
 
   *(_QWORD*)a1 = game_GameSubquestData_ProcAccept_vtable;
   v2 = (_QWORD*)game_ProcGameSkipView_instance_;
@@ -148,48 +161,49 @@ __int64 ProcAccept_DeletingDestructor(__int64 a1)
     v2[27] = v4 - 1;
     v2[20] = v15;
     if ((unsigned __int64)(v12 - (v4 + v5) - 255) <= 0xFFFFFFFFFFFFFEFFLL) {
-      if (*(_QWORD*)(v6 - 8) != 0) {
-        v16 = 128;
+      v16 = *(_QWORD*)(v6 - 8);
+      if (v16 != 0) {
+        v17 = 128;
         if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
-          v16 = 56;
+          v17 = 56;
         }
-        nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v16);
+        nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v17, v16);
         v6 = v2[24];
       }
       v2[24] = v6 - 8;
     }
   }
-  v17 = *(_QWORD*)(a1 + 176);
-  if (v17 != 0) {
-    v18 = *(_QWORD*)v3;
-    *(_QWORD*)(a1 + 184) = v17;
-    v19 = 128;
-    if (*(_QWORD*)(v18 + 200) == 0) {
-      v19 = 56;
+  v18 = *(_QWORD*)(a1 + 176);
+  if (v18 != 0) {
+    v19 = *(_QWORD*)v3;
+    *(_QWORD*)(a1 + 184) = v18;
+    v20 = 128;
+    if (*(_QWORD*)(v19 + 200) == 0) {
+      v20 = 56;
     }
-    nn_mem_StandardAllocator_Free(v18 + v19);
+    nn_mem_StandardAllocator_Free_alt1(v19 + v20, v18);
   }
-  v20 = *(_QWORD*)(a1 + 152);
-  if (v20 != 0) {
-    v21 = *(_QWORD*)v3;
-    *(_QWORD*)(a1 + 160) = v20;
-    v22 = 128;
-    if (*(_QWORD*)(v21 + 200) == 0) {
-      v22 = 56;
+  v21 = *(_QWORD*)(a1 + 152);
+  if (v21 != 0) {
+    v22 = *(_QWORD*)v3;
+    *(_QWORD*)(a1 + 160) = v21;
+    v23 = 128;
+    if (*(_QWORD*)(v22 + 200) == 0) {
+      v23 = 56;
     }
-    nn_mem_StandardAllocator_Free(v21 + v22);
+    nn_mem_StandardAllocator_Free_alt1(v22 + v23, v21);
   }
   *(_QWORD*)a1 = GameData_212c608[0] + 16;
   if ((*(_WORD*)(a1 + 136) & 0x100) != 0) {
     *(_WORD*)(a1 + 136) &= ~0x100u;
   }
-  game_ProcInst_Unregister(a1);
-  GameRoutine_658c00(a1 + 88);
-  v23 = 128;
+  game_ProcInst_Unregister_alt1(a1);
+  GameRoutine_658c00_alt1((__int64*)(a1 + 88));
+  v24 = 128;
   if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
-    v23 = 56;
+    v24 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v23);
+  nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v24, a1);
 }
 
 #pragma GCC visibility pop

@@ -101,6 +101,7 @@ __int64 nn_os_LockMutex_alt1(__int64) __asm__("nn_os_LockMutex");
 __int64 nn_os_UnlockMutex_alt1(__int64) __asm__("nn_os_UnlockMutex");
 __int64
 snd_fnd_WeakHandle_reset_alt1(__int64) __asm__("snd_fnd_WeakHandle_reset");
+int rand_alt1() __asm__("rand");
 
 __int64 WaveMultiVoice_180fb0(__int64 a1)
 {
@@ -576,7 +577,7 @@ __int64 WaveMultiVoice_Unknown21(__int64 a1)
       if (v4 > 0x0.0p+0f) {
         v6 = v2;
         v7 = v4 - (float)v5;
-        v8 = vcvts_n_f32_s32(rand(v2), 0x1Fu);
+        v8 = vcvts_n_f32_s32(rand_alt1(), 0x1Fu);
         v2 = v6;
         v5 +=
             (int)(float)((float)((float)(int)v7 + 0x1.cccccc0000000p-1f) * v8);

@@ -15,7 +15,8 @@ extern __int64 GameData_21ec7b0;
 extern __int64 fw_memory_g_heap_manager_ptr;
 __n128
 CharacterDie_Destructor_alt1(_QWORD* a1) __asm__("CharacterDie_Destructor");
-__int64 CharacterDie_DeletingDestructor(_QWORD* a1);
+__int64 CharacterDie_DeletingDestructor_alt1(_QWORD* a1) __asm__(
+    "CharacterDie_DeletingDestructor");
 __int64 game_character_CharacterDie_CharacterDie_lambda0_Invoke(__int64 a1,
                                                                 long double a2);
 _QWORD* CharacterBuilder_1084020(_QWORD* result);
@@ -29,6 +30,9 @@ void CharacterDie_10bb840(__int64 a1, _QWORD* a2);
 __int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
     "std___1___shared_weak_count___release_weak");
 __int64 CharacterDie_Destructor(_QWORD* a1);
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void CharacterDie_DeletingDestructor(_QWORD* a1);
 
 __int64 CharacterDie_Unknown5(__int64 a1)
 {
@@ -71,7 +75,7 @@ __int64 CharacterDie_Destructor(_QWORD* a1)
   return result;
 }
 
-__int64 CharacterDie_DeletingDestructor(_QWORD* a1)
+void CharacterDie_DeletingDestructor(_QWORD* a1)
 {
   __int64 v2;
   __int64 v3;
@@ -92,14 +96,14 @@ __int64 CharacterDie_DeletingDestructor(_QWORD* a1)
   v4 = a1[4];
   *a1 = &game_character_CharacterBaseModule_vtable;
   if (v4 != 0) {
-    std___1___shared_weak_count___release_weak(v4);
+    std___1___shared_weak_count___release_weak_alt1(v4);
   }
   v5 = 128;
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
     v5 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v5);
+  nn_mem_StandardAllocator_Free_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v5, (__int64)a1);
 }
 
 __int64 game_character_CharacterDie_CharacterDie_lambda0_Invoke(__int64 a1,

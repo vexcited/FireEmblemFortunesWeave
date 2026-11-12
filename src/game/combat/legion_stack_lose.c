@@ -7,7 +7,8 @@
 __int64 nn_mem_StandardAllocator_Free(_QWORD);
 extern __int64 (*game_combat_LegionStack_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
-__int64 LegionStackLose_Destructor(__int64 result);
+__int64 LegionStackLose_Destructor_alt1(__int64 result) __asm__(
+    "LegionStackLose_Destructor");
 __int64 GameRoutine_e40f80(_QWORD, _QWORD);
 __n128 std___1___shared_weak_count___release_weak(_QWORD);
 extern _UNKNOWN* GameData_212c188;
@@ -17,6 +18,9 @@ __int64 LegionStackLose_Unknown3(__int64 result);
 __int64 GameHr_e40f80(__int64, unsigned int*);
 __int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
     "std___1___shared_weak_count___release_weak");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void LegionStackLose_Destructor(__int64 a1);
 
 float LegionStackLose_Unknown2(__int64 a1)
 {
@@ -203,20 +207,23 @@ LABEL_15:
   return result;
 }
 
-__int64 LegionStackLose_Destructor(__int64 result)
+void LegionStackLose_Destructor(__int64 a1)
 {
   __int64 v1;
+  __int64 v2;
 
-  *(_QWORD*)result = game_combat_LegionStack_vtable;
-  if ((*(_BYTE*)(result + 16) & 1) != 0 && *(_QWORD*)(result + 32) != 0) {
-    v1 = 128;
-    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-      v1 = 56;
+  *(_QWORD*)a1 = game_combat_LegionStack_vtable;
+  if ((*(_BYTE*)(a1 + 16) & 1) != 0) {
+    v1 = *(_QWORD*)(a1 + 32);
+    if (v1 != 0) {
+      v2 = 128;
+      if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+        v2 = 56;
+      }
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v2, v1);
     }
-    return nn_mem_StandardAllocator_Free(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v1);
   }
-  return result;
 }
 
 __int64 LegionStackLose_Unknown3(__int64 result)

@@ -29,9 +29,25 @@ void __attribute__((noreturn)) GameRoutine_60e910();
 void __attribute__((noreturn)) GameRoutine_60f930();
 void __attribute__((noreturn)) GameRoutine_a12eb0();
 void __attribute__((noreturn)) String_60a1d0();
-bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4);
+bool ReplacementFile_a11400_alt1(__int64 a1, __int64 a2, __int64 a3,
+                                 int a4) __asm__("ReplacementFile_a11400");
+__int64 GameRoutine_1a09d20_alt1(unsigned __int64,
+                                 __int64) __asm__("GameRoutine_1a09d20");
+__int64
+hub_AcquireTableResource_alt1(_QWORD*,
+                              const char*) __asm__("hub_AcquireTableResource");
+__int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
+__int64 memmove_alt1(__int64, __int64, unsigned __int64) __asm__("memmove");
+__int64 strchr_alt1(const char*, int) __asm__("strchr");
+unsigned __int64 strlen_alt1(const char*) __asm__("strlen");
+void GameRoutine_a10aa0_alt1(_QWORD*) __asm__("GameRoutine_a10aa0");
+void GameRoutine_a12700_alt1(_QWORD*, unsigned __int64*,
+                             __int64) __asm__("GameRoutine_a12700");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+bool ReplacementFile_a11400(__int64 a1, const char* a2, __int64 a3, int a4);
 
-bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
+bool ReplacementFile_a11400(__int64 a1, const char* a2, __int64 a3, int a4)
 {
 
 #pragma clang fp contract(off)
@@ -45,7 +61,7 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
   __int64* v15;
   int v16;
   __int64 v17;
-  __int64 v18;
+  const char* v18;
   __int64 v19;
   __int64 v20;
   unsigned __int64 v21;
@@ -63,7 +79,7 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
   _QWORD* v34;
   __int64 v35;
   __int64 v36;
-  char* v37;
+  unsigned __int64 v37;
   __int64 v38;
   unsigned __int64 v39;
   __int64 v40;
@@ -97,7 +113,7 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
   __int64* v68;
   __int64 v69;
   __int64 v70;
-  char* v71;
+  unsigned __int64 v71;
   __int64 v72;
   unsigned __int64 v73;
   __int64 v74;
@@ -120,7 +136,7 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
   unsigned __int64 v91;
   __int64 v92;
   unsigned __int64 v93;
-  char* v94;
+  unsigned __int64 v94;
   __int64 v95;
   __int64 v96;
   __int64 v97;
@@ -143,7 +159,7 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
   unsigned __int64 v114;
   const char** v115;
   __int64 v116;
-  char* v117;
+  unsigned __int64 v117;
   __int64 v118;
   unsigned __int64 v119;
   __int64 v120;
@@ -168,7 +184,7 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
   unsigned __int64** v139;
   unsigned __int64** v140;
   _QWORD* v141;
-  _QWORD* v142;
+  __int64 v142;
   unsigned __int64 v143;
   __int64 v144;
   unsigned __int64* v145;
@@ -182,7 +198,7 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
   unsigned __int64 v154;
   __int64 v155;
   __int64 v156;
-  _QWORD* v157;
+  __int64* v157;
   _QWORD* v158;
   unsigned __int64 v159;
   __int64 v160;
@@ -200,90 +216,93 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
   unsigned __int64 v172;
   unsigned __int64 v173;
   __int64 v174;
-  char* v175;
+  unsigned __int64 v175;
   __int64 v176;
   __int64 v177;
   __int64 v178;
   __int64 v179;
-  unsigned __int64 v180;
-  char* v181;
-  __int64 v182;
-  unsigned __int64 v183;
-  __int64 v184;
-  __int64* v185;
-  __int64 v186;
+  __int64 v180;
+  unsigned __int64 v181;
+  char* v182;
+  __int64 v183;
+  unsigned __int64 v184;
+  __int64 v185;
+  __int64* v186;
   __int64 v187;
   __int64 v188;
   __int64 v189;
   __int64 v190;
   __int64 v191;
   __int64 v192;
-  unsigned __int64 v193;
+  __int64 v193;
   __int64 v194;
-  __int64 v195;
-  char* v196;
+  unsigned __int64 v195;
+  __int64 v196;
   __int64 v197;
-  __int64 v198;
+  unsigned __int64 v198;
   __int64 v199;
-  char* v200;
+  unsigned __int64 v200;
   __int64 v201;
-  _QWORD* v202;
-  _QWORD* v203;
-  __int64 v204;
-  __int64 v205;
+  unsigned __int64 v202;
+  __int64 v203;
+  _QWORD* v204;
+  _QWORD* v205;
   __int64 v206;
   __int64 v207;
   __int64 v208;
-  _QWORD* v209;
-  _QWORD* v210;
-  __int64 v211;
-  __int64 v212;
+  __int64 v209;
+  __int64 v210;
+  _QWORD* v211;
+  _QWORD* v212;
   __int64 v213;
   __int64 v214;
   __int64 v215;
   __int64 v216;
-  char v217;
+  __int64 v217;
   __int64 v218;
-  __int64 v219;
+  char v219;
   __int64 v220;
-  int v222;
-  __int64* v223;
-  __int64 v224;
-  __int64 v225;
-  int v226;
+  __int64 v221;
+  __int64 v222;
+  __int64 v223;
+  int v225;
+  __int64* v226;
   __int64 v227;
+  __int64 v228;
+  int v229;
+  __int64 v230;
   struct {
-    _QWORD v228[2];
-    char* v229;
-  } v228_;
+    _QWORD v231[2];
+    char* v232;
+  } v231_;
   struct {
-    __int64 v230;
-    __int64 v231;
-  } v230_;
-  int v232;
-  __int64 v233;
-  struct {
+    __int64 v233;
     __int64 v234;
-    unsigned __int64 v235;
-    _QWORD* v236;
+  } v233_;
+  int v235;
+  __int64 v236;
+  struct {
     __int64 v237;
-    int v238;
-  } v234_;
+    unsigned __int64 v238;
+    _QWORD* v239;
+    __int64 v240;
+    int v241;
+  } v237_;
   struct {
-    __int64 v239;
-    unsigned __int64 v240;
-  } v239_;
-  struct {
-    _QWORD* v241;
     __int64 v242;
-    int v243;
-  } v241_;
+    unsigned __int64 v243;
+  } v242_;
+  struct {
+    _QWORD* v244;
+    __int64 v245;
+    int v246;
+  } v244_;
 
   v108 = COERCE_AS(__typeof__(v108),
                    PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
   v112 = COERCE_AS(__typeof__(v112),
                    PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-  v8 = strlen(a2),
+  v8 = strlen_alt1(a2),
   v108 = COERCE_AS(__typeof__(v108),
                    PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
   v112 = COERCE_AS(__typeof__(v112),
@@ -310,50 +329,50 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
     v112 = COERCE_AS(__typeof__(v112),
                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-    v228_.v228[1] = v9;
-    v228_.v229 = v11;
-    v228_.v228[0] = v12 | 1;
+    v231_.v231[1] = v9;
+    v231_.v232 = v11;
+    v231_.v231[0] = v12 | 1;
     goto LABEL_9;
   }
-  LOBYTE(v228_.v228[0]) = 2 * v8;
-  v11 = (char*)v228_.v228 + 1;
+  LOBYTE(v231_.v231[0]) = 2 * v8;
+  v11 = (char*)v231_.v231 + 1;
   if (v8 != 0) {
   LABEL_9:
-    memcpy(v11, a2, v9),
+    memcpy_alt1((__int64)v11, (__int64)a2, v9),
         v108 = COERCE_AS(__typeof__(v108),
                          PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
         v112 = COERCE_AS(__typeof__(v112),
                          PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   }
   v11[v9] = 0;
-  Manager_66c4e0((void*)((__int64)&v230_.v230), (unsigned __int8*)v228_.v228),
+  Manager_66c4e0((void*)((__int64)&v233_.v233), (unsigned __int8*)v231_.v231),
       v108 = COERCE_AS(__typeof__(v108),
                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
       v112 = COERCE_AS(__typeof__(v112),
                        PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-  GameRoutine_a10aa0((_QWORD*)a1),
+  GameRoutine_a10aa0_alt1((_QWORD*)a1),
       v108 = COERCE_AS(__typeof__(v108),
                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
       v112 = COERCE_AS(__typeof__(v112),
                        PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-  v14 = v230_.v230;
-  v13 = v230_.v231;
-  v234_.v236 = nullptr;
-  v234_.v237 = 0;
-  v234_.v234 = 0;
-  v234_.v235 = 0;
-  v234_.v238 = 1065353216;
-  if (v230_.v230 != v230_.v231) {
+  v14 = v233_.v233;
+  v13 = v233_.v234;
+  v237_.v239 = nullptr;
+  v237_.v240 = 0;
+  v237_.v237 = 0;
+  v237_.v238 = 0;
+  v237_.v241 = 1065353216;
+  if (v233_.v233 != v233_.v234) {
     v15 = (__int64*)(a1 + 176);
     v16 = 0;
     do {
       if ((*(_BYTE*)v14 & 1) != 0) {
-        v18 = *(_QWORD*)(v14 + 16);
+        v18 = *(const char**)(v14 + 16);
       }
       else {
-        v18 = v14 + 1;
+        v18 = (const char*)(v14 + 1);
       }
-      v19 = hub_AcquireTableResource((_QWORD*)a1, v18),
+      v19 = hub_AcquireTableResource_alt1((_QWORD*)a1, v18),
       v108 = COERCE_AS(__typeof__(v108),
                        PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
       v112 = COERCE_AS(__typeof__(v112),
@@ -425,15 +444,15 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
                 if (v31 != 0) {
                   v32 = *(_DWORD**)(v31 + 32);
                   if (v32 != nullptr && *v32 == 539300353 && v32[4] == 40) {
-                    v222 = a4;
+                    v225 = a4;
                     v34 = *(_QWORD**)(a1 + 40);
                     v33 = *(_QWORD*)(a1 + 48);
-                    v223 = v15;
-                    v226 = v16;
-                    v225 = v28[3];
+                    v226 = v15;
+                    v229 = v16;
+                    v228 = v28[3];
                     if ((unsigned __int64)v34 >= v33) {
                       v36 = *(_QWORD*)(a1 + 32);
-                      v37 = (char*)v34 - v36;
+                      v37 = (unsigned __int64)v34 - v36;
                       v38 = ((__int64)v34 - v36) >> 3;
                       v39 = v38 + 1;
                       if ((unsigned __int64)(v38 + 1) >> 61 != 0) {
@@ -472,10 +491,10 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
                         v42 = 0;
                       }
                       v43 = v42 + 8 * v41;
-                      v44 = (__int64)&v37[v42 + -8 * v38];
-                      *(_QWORD*)&v37[v42] = v225;
-                      v35 = (__int64)&v37[v42 + 8];
-                      memcpy(v44, v36, v37),
+                      v44 = v42 + v37 - 8 * v38;
+                      *(_QWORD*)(v42 + v37) = v228;
+                      v35 = v42 + v37 + 8;
+                      memcpy_alt1(v44, v36, v37),
                           v108 = COERCE_AS(
                               __typeof__(v108),
                               PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
@@ -490,7 +509,7 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
                         if (*(_QWORD*)(*v10 + 200) == 0) {
                           v45 = 56;
                         }
-                        nn_mem_StandardAllocator_Free(*v10 + v45),
+                        nn_mem_StandardAllocator_Free_alt1(*v10 + v45, v36),
                             v108 = COERCE_AS(__typeof__(v108),
                                              PSEUDO_REGISTER(unsigned long long,
                                                              "x1", "=r")),
@@ -498,8 +517,8 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
                                              PSEUDO_REGISTER(unsigned long long,
                                                              "x1", "=r"));
                       }
-                      v16 = v226;
-                      v31 = v225;
+                      v16 = v229;
+                      v31 = v228;
                     }
                     else {
                       *v34 = v31;
@@ -510,14 +529,14 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
                       v46 = *(_QWORD*)(v31 + 40);
                       if (v46 != 0) {
                         v47 = 0;
-                        v224 = a3;
+                        v227 = a3;
                         while (1) {
-                          v233 = v46 + 40 * v47;
+                          v236 = v46 + 40 * v47;
                           if (v46 == 0) {
                             goto LABEL_150;
                           }
-                          v227 = v46 + 40 * v47;
-                          v48 = *(unsigned __int16*)(v227 + 22) + 1LL;
+                          v230 = v46 + 40 * v47;
+                          v48 = *(unsigned __int16*)(v230 + 22) + 1LL;
                           v49 = fw_memory_HeapManager_Allocate(*v10, 24, 16, 0),
                           v108 = COERCE_AS(
                               __typeof__(v108),
@@ -535,7 +554,7 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
                             if (*(_QWORD*)(*v10 + 200) == 0) {
                               v50 = 56;
                             }
-                            nn_mem_StandardAllocator_Free(*v10 + v50),
+                            nn_mem_StandardAllocator_Free_alt1(*v10 + v50, v49),
                                 v108 = COERCE_AS(
                                     __typeof__(v108),
                                     PSEUDO_REGISTER(unsigned long long, "x1",
@@ -544,7 +563,7 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
                                     __typeof__(v112),
                                     PSEUDO_REGISTER(unsigned long long, "x1",
                                                     "=r"));
-                            v51 = v227;
+                            v51 = v230;
                             if (v16 < 1) {
                               goto LABEL_111;
                             }
@@ -554,13 +573,13 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
                             v53 = *(_QWORD*)(v49 + 8);
                             v54 = v52 - 1;
                             if ((v52 & (v52 - 1)) != 0) {
-                              v51 = v227;
+                              v51 = v230;
                               if (v53 >= v52) {
                                 v53 %= v52;
                               }
                             }
                             else {
-                              v51 = v227;
+                              v51 = v230;
                               v53 &= v54;
                             }
                             v55 = *(_QWORD*)(a1 + 160);
@@ -570,10 +589,10 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
                               *v56 = v49;
                             }
                             else {
-                              v57 = *v223;
-                              *v223 = v49;
+                              v57 = *v226;
+                              *v226 = v49;
                               *(_QWORD*)v49 = v57;
-                              *(_QWORD*)(v55 + 8 * v53) = v223;
+                              *(_QWORD*)(v55 + 8 * v53) = v226;
                               if (*(_QWORD*)v49 != 0) {
                                 v58 = *(_QWORD*)(*(_QWORD*)v49 + 8LL);
                                 if ((v52 & v54) != 0) {
@@ -591,12 +610,12 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
                             ++*(_QWORD*)(a1 + 184);
                             if (v16 < 1) {
                             LABEL_111:
-                              v232 = *(unsigned __int16*)(v51 + 22) + 1;
-                              v239_.v239 = (__int64)(*(_QWORD*)(a1 + 64) -
+                              v235 = *(unsigned __int16*)(v51 + 22) + 1;
+                              v242_.v242 = (__int64)(*(_QWORD*)(a1 + 64) -
                                                      *(_QWORD*)(a1 + 56)) >>
                                            3;
-                              GameRoutine_60f380((float*)&v234_.v234, &v232,
-                                                 &v232, &v239_.v239),
+                              GameRoutine_60f380((float*)&v237_.v237, &v235,
+                                                 &v235, &v242_.v242),
                                   v108 = COERCE_AS(
                                       __typeof__(v108),
                                       PSEUDO_REGISTER(unsigned long long, "x1",
@@ -613,7 +632,7 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
                                 goto LABEL_128;
                               }
                               v70 = *(_QWORD*)(a1 + 56);
-                              v71 = (char*)v68 - v70;
+                              v71 = (unsigned __int64)v68 - v70;
                               v72 = ((__int64)v68 - v70) >> 3;
                               v73 = v72 + 1;
                               if ((unsigned __int64)(v72 + 1) >> 61 == 0) {
@@ -648,10 +667,10 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
                                                     "=r"));
                               LABEL_123:
                                 v78 = v77 + 8 * v76;
-                                v79 = (__int64)&v71[v77 + -8 * v72];
-                                *(_QWORD*)&v71[v77] = v227;
-                                v69 = (__int64)&v71[v77 + 8];
-                                memcpy(v79, v70, v71),
+                                v79 = v77 + v71 - 8 * v72;
+                                *(_QWORD*)(v77 + v71) = v230;
+                                v69 = v77 + v71 + 8;
+                                memcpy_alt1(v79, v70, v71),
                                     v108 = COERCE_AS(
                                         __typeof__(v108),
                                         PSEUDO_REGISTER(unsigned long long,
@@ -670,8 +689,8 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
                                                  200) == 0) {
                                     v80 = 56;
                                   }
-                                  nn_mem_StandardAllocator_Free(
-                                      fw_memory_g_heap_manager + v80),
+                                  nn_mem_StandardAllocator_Free_alt1(
+                                      fw_memory_g_heap_manager + v80, v70),
                                       v108 = COERCE_AS(
                                           __typeof__(v108),
                                           PSEUDO_REGISTER(unsigned long long,
@@ -682,12 +701,12 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
                                                           "x1", "=r"));
                                 }
                                 v47 = v75;
-                                a3 = v224;
-                                v31 = v225;
-                                v51 = v227;
+                                a3 = v227;
+                                v31 = v228;
+                                v51 = v230;
                               LABEL_128:
                                 *(_QWORD*)(a1 + 64) = v69;
-                                v16 = v226;
+                                v16 = v229;
                                 v81 = *(_QWORD*)(v51 + 8);
                                 if (v81 == 0) {
                                   goto LABEL_150;
@@ -699,8 +718,8 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
                                   v84 = (__int64)(v83 + 1);
                                 LABEL_146:
                                   *(_QWORD*)(a1 + 232) = v84;
-                                  v239_.v240 = v81;
-                                  v239_.v239 = game_HashString(v81),
+                                  v242_.v243 = v81;
+                                  v242_.v242 = game_HashString(v81),
                                   v108 = COERCE_AS(
                                       __typeof__(v108),
                                       PSEUDO_REGISTER(unsigned long long, "x1",
@@ -709,9 +728,9 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
                                       __typeof__(v112),
                                       PSEUDO_REGISTER(unsigned long long, "x1",
                                                       "=r"));
-                                  GameRoutine_a12700(
+                                  GameRoutine_a12700_alt1(
                                       (_QWORD*)a1,
-                                      (unsigned __int64*)&v239_.v239, v51),
+                                      (unsigned __int64*)&v242_.v242, v51),
                                       v108 = COERCE_AS(
                                           __typeof__(v108),
                                           PSEUDO_REGISTER(unsigned long long,
@@ -722,7 +741,8 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
                                                           "x1", "=r"));
                                   v97 = *(_QWORD*)(v51 + 8);
                                   if (v97 != 0) {
-                                    v98 = strchr(*(_QWORD*)(v51 + 8), 95),
+                                    v98 = strchr_alt1(*(const char**)(v51 + 8),
+                                                      95),
                                     v108 = COERCE_AS(
                                         __typeof__(v108),
                                         PSEUDO_REGISTER(unsigned long long,
@@ -735,9 +755,9 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
                                       v97 = v98 + 1;
                                     }
                                   }
-                                  v31 = v225;
-                                  v239_.v240 = v97;
-                                  v239_.v239 = game_HashString(v97),
+                                  v31 = v228;
+                                  v242_.v243 = v97;
+                                  v242_.v242 = game_HashString(v97),
                                   v108 = COERCE_AS(
                                       __typeof__(v108),
                                       PSEUDO_REGISTER(unsigned long long, "x1",
@@ -746,9 +766,9 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
                                       __typeof__(v112),
                                       PSEUDO_REGISTER(unsigned long long, "x1",
                                                       "=r"));
-                                  GameRoutine_a12700(
+                                  GameRoutine_a12700_alt1(
                                       (_QWORD*)a1,
-                                      (unsigned __int64*)&v239_.v239, v51),
+                                      (unsigned __int64*)&v242_.v242, v51),
                                       v108 = COERCE_AS(
                                           __typeof__(v108),
                                           PSEUDO_REGISTER(unsigned long long,
@@ -794,11 +814,11 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
                                                         "x1", "=r"));
                                   LABEL_141:
                                     v93 = v92 + 8 * v91;
-                                    v94 = (char*)v83 - v85;
+                                    v94 = (unsigned __int64)v83 - v85;
                                     v95 = (__int64)&v87[v92 + -8 * v88];
                                     *(_QWORD*)&v87[v92] = v81;
                                     v84 = (__int64)&v87[v92 + 8];
-                                    memcpy(v95, v85, v94),
+                                    memcpy_alt1(v95, v85, v94),
                                         v108 = COERCE_AS(
                                             __typeof__(v108),
                                             PSEUDO_REGISTER(unsigned long long,
@@ -817,8 +837,8 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
                                                      200) == 0) {
                                         v96 = 56;
                                       }
-                                      nn_mem_StandardAllocator_Free(
-                                          fw_memory_g_heap_manager + v96),
+                                      nn_mem_StandardAllocator_Free_alt1(
+                                          fw_memory_g_heap_manager + v96, v85),
                                           v108 =
                                               COERCE_AS(__typeof__(v108),
                                                         PSEUDO_REGISTER(
@@ -830,10 +850,10 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
                                                             unsigned long long,
                                                             "x1", "=r"));
                                     }
-                                    v16 = v226;
+                                    v16 = v229;
                                     v47 = v86;
-                                    a3 = v224;
-                                    v51 = v227;
+                                    a3 = v227;
+                                    v51 = v230;
                                     goto LABEL_146;
                                   }
                                 LABEL_382:
@@ -935,23 +955,23 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
                           }
                         LABEL_110:
                           if (*(_BYTE*)(*(_QWORD*)(v31 + 32) + 4LL) == 2 ||
-                              v234_.v235 == 0 || v234_.v237 == 0) {
+                              v237_.v238 == 0 || v237_.v240 == 0) {
                             goto LABEL_111;
                           }
-                          v99 = v234_.v235 - 1;
+                          v99 = v237_.v238 - 1;
                           v100 = *(unsigned __int16*)(v64[3] + 22LL) + 1LL;
-                          if ((v234_.v235 & (v234_.v235 - 1)) != 0) {
+                          if ((v237_.v238 & (v237_.v238 - 1)) != 0) {
                             v101 = *(unsigned __int16*)(v64[3] + 22LL) + 1LL;
-                            if (v234_.v235 <= v100) {
+                            if (v237_.v238 <= v100) {
                               v101 =
-                                  (unsigned int)v100 % (unsigned int)v234_.v235;
+                                  (unsigned int)v100 % (unsigned int)v237_.v238;
                             }
                           }
                           else {
                             v101 =
-                                ((_DWORD)v234_.v235 - 1) & (unsigned int)v100;
+                                ((_DWORD)v237_.v238 - 1) & (unsigned int)v100;
                           }
-                          v102 = *(__int64***)(v234_.v234 + 8 * v101);
+                          v102 = *(__int64***)(v237_.v237 + 8 * v101);
                           if (v102 == nullptr) {
                             goto LABEL_111;
                           }
@@ -959,7 +979,7 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
                           if (v103 == nullptr) {
                             goto LABEL_111;
                           }
-                          if ((v234_.v235 & v99) == 0) {
+                          if ((v237_.v238 & v99) == 0) {
                             while (1) {
                               v105 = v103[1];
                               if (v105 == v100) {
@@ -979,8 +999,8 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
                           while (2) {
                             v104 = v103[1];
                             if (v104 != v100) {
-                              if (v104 >= v234_.v235) {
-                                v104 %= v234_.v235;
+                              if (v104 >= v237_.v238) {
+                                v104 %= v237_.v238;
                               }
                               if (v104 != v101) {
                                 goto LABEL_111;
@@ -999,7 +1019,7 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
                           *(_QWORD*)(*(_QWORD*)(a1 + 56) + 8 * v103[3]) = v51;
                           v106 = *(_QWORD*)(v51 + 8);
                           if (v106 != 0) {
-                            v239_.v239 = game_HashString(v106),
+                            v242_.v242 = game_HashString(v106),
                             v108 = COERCE_AS(__typeof__(v108),
                                              PSEUDO_REGISTER(unsigned long long,
                                                              "x1", "=r")),
@@ -1008,8 +1028,8 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
                                                              "x1", "=r"));
                             v107 = GameRoutine_a12920(
                                 (float*)(a1 + 80),
-                                (unsigned __int64*)&v239_.v239, &v239_.v239,
-                                &v233),
+                                (unsigned __int64*)&v242_.v242, &v242_.v242,
+                                &v236),
                             v108 = COERCE_AS(__typeof__(v108),
                                              PSEUDO_REGISTER(unsigned long long,
                                                              "x1", "=r")),
@@ -1021,7 +1041,7 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
                             }
                             v109 = *(_QWORD*)(v51 + 8);
                             if (v109 != 0) {
-                              v110 = strchr(*(_QWORD*)(v51 + 8), 95),
+                              v110 = strchr_alt1(*(const char**)(v51 + 8), 95),
                               v108 =
                                   COERCE_AS(__typeof__(v108),
                                             PSEUDO_REGISTER(unsigned long long,
@@ -1034,7 +1054,7 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
                                 v109 = v110 + 1;
                               }
                             }
-                            v239_.v239 = game_HashString(v109),
+                            v242_.v242 = game_HashString(v109),
                             v108 = COERCE_AS(__typeof__(v108),
                                              PSEUDO_REGISTER(unsigned long long,
                                                              "x1", "=r")),
@@ -1043,8 +1063,8 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
                                                              "x1", "=r"));
                             v111 = GameRoutine_a12920(
                                 (float*)(a1 + 80),
-                                (unsigned __int64*)&v239_.v239, &v239_.v239,
-                                &v233),
+                                (unsigned __int64*)&v242_.v242, &v242_.v242,
+                                &v236),
                             v108 = COERCE_AS(__typeof__(v108),
                                              PSEUDO_REGISTER(unsigned long long,
                                                              "x1", "=r")),
@@ -1079,7 +1099,7 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
                     }
                     else {
                       v116 = *(_QWORD*)(a1 + 200);
-                      v117 = (char*)v115 - v116;
+                      v117 = (unsigned __int64)v115 - v116;
                       v118 = ((__int64)v115 - v116) >> 3;
                       v119 = v118 + 1;
                       if ((unsigned __int64)(v118 + 1) >> 61 != 0) {
@@ -1114,10 +1134,10 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
                         v123 = 0;
                       }
                       v124 = v123 + 8 * v121;
-                      v125 = (__int64)&v117[v123 + -8 * v118];
-                      *(_QWORD*)&v117[v123] = v113;
-                      v17 = (__int64)&v117[v123 + 8];
-                      memcpy(v125, v116, v117),
+                      v125 = v123 + v117 - 8 * v118;
+                      *(_QWORD*)(v123 + v117) = v113;
+                      v17 = v123 + v117 + 8;
+                      memcpy_alt1(v125, v116, v117),
                           v108 = COERCE_AS(
                               __typeof__(v108),
                               PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
@@ -1132,7 +1152,7 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
                         if (*(_QWORD*)(*v10 + 200) == 0) {
                           v126 = 56;
                         }
-                        nn_mem_StandardAllocator_Free(*v10 + v126),
+                        nn_mem_StandardAllocator_Free_alt1(*v10 + v126, v116),
                             v108 = COERCE_AS(__typeof__(v108),
                                              PSEUDO_REGISTER(unsigned long long,
                                                              "x1", "=r")),
@@ -1140,11 +1160,11 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
                                              PSEUDO_REGISTER(unsigned long long,
                                                              "x1", "=r"));
                       }
-                      v16 = v226;
+                      v16 = v229;
                     }
-                    v15 = v223;
+                    v15 = v226;
                     *(_QWORD*)(a1 + 208) = v17;
-                    a4 = v222;
+                    a4 = v225;
                     ++v16;
                   }
                 }
@@ -1180,7 +1200,7 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
             v132 = ((__int64)v131 - v130) >> 3;
             v133 = GameData_212c060;
             while (1) {
-              v134 = (__int64*)GameRoutine_1a09d20(8 * v132, v133),
+              v134 = (__int64*)GameRoutine_1a09d20_alt1(8 * v132, v133),
               v108 = COERCE_AS(__typeof__(v108),
                                PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
               v112 = COERCE_AS(__typeof__(v112),
@@ -1195,6 +1215,7 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
                 goto LABEL_259;
               }
             }
+            v178 = (__int64)v134;
             GameRoutine_a130e0(v130, v131, ((__int64)v131 - v130) >> 3, v134,
                                v132),
                 v108 =
@@ -1203,11 +1224,11 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
                 v112 =
                     COERCE_AS(__typeof__(v112),
                               PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-            v178 = 128;
+            v179 = 128;
             if (*(_QWORD*)(*v10 + 200) == 0) {
-              v178 = 56;
+              v179 = 56;
             }
-            nn_mem_StandardAllocator_Free(*v10 + v178),
+            nn_mem_StandardAllocator_Free_alt1(*v10 + v179, v178),
                 v108 =
                     COERCE_AS(__typeof__(v108),
                               PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
@@ -1215,14 +1236,14 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
                     COERCE_AS(__typeof__(v112),
                               PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
           }
-          v179 = *(_QWORD*)(a1 + 56);
-          if (*(_QWORD*)(a1 + 64) != v179) {
-            v180 = 0;
+          v180 = *(_QWORD*)(a1 + 56);
+          if (*(_QWORD*)(a1 + 64) != v180) {
+            v181 = 0;
             do {
-              *(_WORD*)(*(_QWORD*)(v179 + 8 * v180) + 16LL) = v180;
-              ++v180;
-              v179 = *(_QWORD*)(a1 + 56);
-            } while (v180 < (*(_QWORD*)(a1 + 64) - v179) >> 3);
+              *(_WORD*)(*(_QWORD*)(v180 + 8 * v181) + 16LL) = v181;
+              ++v181;
+              v180 = *(_QWORD*)(a1 + 56);
+            } while (v181 < (*(_QWORD*)(a1 + 64) - v180) >> 3);
           }
         }
         else {
@@ -1250,31 +1271,31 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
         if ((a4 & 1) != 0) {
           v139 = *(unsigned __int64***)(a1 + 56);
           v140 = *(unsigned __int64***)(a1 + 64);
-          v241_.v241 = nullptr;
-          v241_.v242 = 0;
-          v239_.v239 = 0;
-          v239_.v240 = 0;
-          v241_.v243 = 1065353216;
+          v244_.v244 = nullptr;
+          v244_.v245 = 0;
+          v242_.v242 = 0;
+          v242_.v243 = 0;
+          v244_.v246 = 1065353216;
           if (v139 != v140) {
             do {
               v145 = *v139;
-              if (v239_.v240 != 0 && v241_.v242 != 0) {
+              if (v242_.v243 != 0 && v244_.v245 != 0) {
                 v147 = *v145;
-                v148 = v239_.v240 - 1;
-                if ((v239_.v240 & (v239_.v240 - 1)) != 0) {
+                v148 = v242_.v243 - 1;
+                if ((v242_.v243 & (v242_.v243 - 1)) != 0) {
                   v149 = *v145;
-                  if (v147 >= v239_.v240) {
-                    v149 = v147 % v239_.v240;
+                  if (v147 >= v242_.v243) {
+                    v149 = v147 % v242_.v243;
                   }
                 }
                 else {
                   v149 = v148 & v147;
                 }
-                v152 = *(_QWORD**)(v239_.v239 + 8 * v149);
+                v152 = *(_QWORD**)(v242_.v242 + 8 * v149);
                 if (v152 != nullptr) {
                   v153 = (_QWORD*)*v152;
                   if (v153 != nullptr) {
-                    if ((v239_.v240 & v148) == 0) {
+                    if ((v242_.v243 & v148) == 0) {
                       while (1) {
                         v155 = v153[1];
                         if (v155 == v147) {
@@ -1299,8 +1320,8 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
                         }
                       }
                       else {
-                        if (v154 >= v239_.v240) {
-                          v154 %= v239_.v240;
+                        if (v154 >= v242_.v243) {
+                          v154 %= v242_.v243;
                         }
                         if (v154 != v149) {
                           break;
@@ -1318,12 +1339,12 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
               v112 = COERCE_AS(__typeof__(v112),
                                PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
               *v141 = 0;
-              v142 = v141;
+              v142 = (__int64)v141;
               v143 = *v145;
               v141[3] = v145;
               v141[2] = v143;
               v141[1] = v143;
-              if (GameRoutine_a12ee0((__int64)&v239_.v239, v143, v141 + 2) !=
+              if (GameRoutine_a12ee0((__int64)&v242_.v242, v143, v141 + 2) !=
                   nullptr) {
                 if (*(_QWORD*)(*v10 + 200) != 0) {
                   v144 = 128;
@@ -1331,7 +1352,7 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
                 else {
                   v144 = 56;
                 }
-                nn_mem_StandardAllocator_Free(*v10 + v144),
+                nn_mem_StandardAllocator_Free_alt1(*v10 + v144, v142),
                     v108 = COERCE_AS(
                         __typeof__(v108),
                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
@@ -1340,29 +1361,29 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
                         PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
               }
               else {
-                v150 = v239_.v240;
-                v151 = v239_.v240 - 1;
+                v150 = v242_.v243;
+                v151 = v242_.v243 - 1;
                 if ((v150 & (v150 - 1)) != 0) {
-                  if (v143 >= v239_.v240) {
-                    v143 %= v239_.v240;
+                  if (v143 >= v242_.v243) {
+                    v143 %= v242_.v243;
                   }
                 }
                 else {
                   v143 &= v151;
                 }
-                v156 = v239_.v239;
-                v157 = *(_QWORD**)(v239_.v239 + 8 * v143);
+                v156 = v242_.v242;
+                v157 = *(__int64**)(v242_.v242 + 8 * v143);
                 if (v157 != nullptr) {
-                  *v142 = *v157;
+                  *(_QWORD*)v142 = *v157;
                   *v157 = v142;
                 }
                 else {
-                  v158 = v241_.v241;
-                  v241_.v241 = v142;
-                  *v142 = v158;
-                  *(_QWORD*)(v156 + 8 * v143) = &v241_.v241;
-                  if (*v142 != 0) {
-                    v159 = *(_QWORD*)(*v142 + 8LL);
+                  v158 = v244_.v244;
+                  v244_.v244 = (_QWORD*)v142;
+                  *(_QWORD*)v142 = v158;
+                  *(_QWORD*)(v156 + 8 * v143) = &v244_.v244;
+                  if (*(_QWORD*)v142 != 0) {
+                    v159 = *(_QWORD*)(*(_QWORD*)v142 + 8LL);
                     if ((v150 & v151) != 0) {
                       if (v159 >= v150) {
                         v159 %= v150;
@@ -1371,10 +1392,10 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
                     else {
                       v159 &= v151;
                     }
-                    *(_QWORD*)(v239_.v239 + 8 * v159) = v142;
+                    *(_QWORD*)(v242_.v242 + 8 * v159) = v142;
                   }
                 }
-                ++v241_.v242;
+                ++v244_.v245;
               }
             LABEL_220:
               ++v139;
@@ -1390,12 +1411,12 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
             while (1) {
               v166 = *v139;
               v167 = **v139;
-              if ((v239_.v240 & (v239_.v240 - 1)) != 0) {
+              if ((v242_.v243 & (v242_.v243 - 1)) != 0) {
                 v168 = **v139;
-                if (v167 >= v239_.v240) {
-                  v168 = v167 % v239_.v240;
+                if (v167 >= v242_.v243) {
+                  v168 = v167 % v242_.v243;
                 }
-                v169 = *(_QWORD**)(v239_.v239 + 8 * v168);
+                v169 = *(_QWORD**)(v242_.v242 + 8 * v168);
                 do {
                   do {
                     v169 = (_QWORD*)*v169;
@@ -1403,7 +1424,7 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
                 } while (v169[2] != v167);
               }
               else {
-                v169 = *(_QWORD**)(v239_.v239 + 8 * ((v239_.v240 - 1) & v167));
+                v169 = *(_QWORD**)(v242_.v242 + 8 * ((v242_.v243 - 1) & v167));
                 do {
                   do {
                     v169 = (_QWORD*)*v169;
@@ -1447,11 +1468,11 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
                     v174 = 0;
                   }
                   v164 = v174 + 8 * v173;
-                  v175 = (char*)v163 - v165;
+                  v175 = (unsigned __int64)v163 - v165;
                   v176 = (__int64)&v170[v174 + -8 * v171];
                   *(_QWORD*)&v170[v174] = v166;
                   v163 = (__int64*)&v170[v174 + 8];
-                  memcpy(v176, v165, v175),
+                  memcpy_alt1(v176, v165, v175),
                       v108 = COERCE_AS(
                           __typeof__(v108),
                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
@@ -1463,7 +1484,7 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
                     if (*(_QWORD*)(*v162 + 200) == 0) {
                       v177 = 56;
                     }
-                    nn_mem_StandardAllocator_Free(*v162 + v177),
+                    nn_mem_StandardAllocator_Free_alt1(*v162 + v177, v165),
                         v108 = COERCE_AS(
                             __typeof__(v108),
                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
@@ -1482,14 +1503,14 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
           v163 = nullptr;
           v165 = 0;
         LABEL_304:
-          v181 = (char*)v163 - v165;
-          v182 = ((__int64)v163 - v165) >> 3;
-          if (v182 < 129) {
-            v186 = 0;
+          v182 = (char*)v163 - v165;
+          v183 = ((__int64)v163 - v165) >> 3;
+          if (v183 < 129) {
+            v187 = 0;
             v10 = v162;
           LABEL_310:
             GameRoutine_a130e0(v165, v163, ((__int64)v163 - v165) >> 3, nullptr,
-                               v186),
+                               v187),
                 v108 =
                     COERCE_AS(__typeof__(v108),
                               PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
@@ -1498,38 +1519,39 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
                               PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
           }
           else {
-            v183 = ((__int64)v163 - v165) >> 3;
+            v184 = ((__int64)v163 - v165) >> 3;
             v10 = v162;
-            v184 = GameData_212c060;
+            v185 = GameData_212c060;
             while (1) {
-              v185 = (__int64*)GameRoutine_1a09d20(8 * v183, v184),
+              v186 = (__int64*)GameRoutine_1a09d20_alt1(8 * v184, v185),
               v108 = COERCE_AS(__typeof__(v108),
                                PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
               v112 = COERCE_AS(__typeof__(v112),
                                PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-              if (v185 != nullptr) {
+              if (v186 != nullptr) {
                 break;
               }
-              v186 = v183 >> 1;
-              v136 = v183 > 1;
-              v183 >>= 1;
+              v187 = v184 >> 1;
+              v136 = v184 > 1;
+              v184 >>= 1;
               if (!v136) {
                 goto LABEL_310;
               }
             }
-            GameRoutine_a130e0(v165, v163, ((__int64)v163 - v165) >> 3, v185,
-                               v183),
+            v188 = (__int64)v186;
+            GameRoutine_a130e0(v165, v163, ((__int64)v163 - v165) >> 3, v186,
+                               v184),
                 v108 =
                     COERCE_AS(__typeof__(v108),
                               PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
                 v112 =
                     COERCE_AS(__typeof__(v112),
                               PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-            v187 = 128;
+            v189 = 128;
             if (*(_QWORD*)(*v162 + 200) == 0) {
-              v187 = 56;
+              v189 = 56;
             }
-            nn_mem_StandardAllocator_Free(*v162 + v187),
+            nn_mem_StandardAllocator_Free_alt1(*v162 + v189, v188),
                 v108 =
                     COERCE_AS(__typeof__(v108),
                               PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
@@ -1537,14 +1559,15 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
                     COERCE_AS(__typeof__(v112),
                               PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
           }
-          v188 = *(_QWORD*)(a1 + 72);
-          v189 = *(_QWORD*)(a1 + 56);
-          if ((unsigned __int64)v181 <= v188 - v189) {
-            v197 = *(_QWORD*)(a1 + 64);
-            v198 = v197 - v189;
-            if ((unsigned __int64)v181 <= v197 - v189) {
+          v190 = *(_QWORD*)(a1 + 72);
+          v191 = *(_QWORD*)(a1 + 56);
+          if ((unsigned __int64)v182 <= v190 - v191) {
+            v199 = *(_QWORD*)(a1 + 64);
+            v200 = v199 - v191;
+            if ((unsigned __int64)v182 <= v199 - v191) {
               if (v163 != (__int64*)v165) {
-                memmove(*(_QWORD*)(a1 + 56), v165, (char*)v163 - v165),
+                memmove_alt1(*(_QWORD*)(a1 + 56), v165,
+                             (unsigned __int64)v163 - v165),
                     v108 = COERCE_AS(
                         __typeof__(v108),
                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
@@ -1552,23 +1575,23 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
                         __typeof__(v112),
                         PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
               }
-              v196 = &v181[v189];
+              v198 = (unsigned __int64)&v182[v191];
             }
             else {
-              v199 = v165 + v198;
-              if (v197 != v189) {
-                memmove(*(_QWORD*)(a1 + 56), v165, v198),
+              v201 = v165 + v200;
+              if (v199 != v191) {
+                memmove_alt1(*(_QWORD*)(a1 + 56), v165, v200),
                     v108 = COERCE_AS(
                         __typeof__(v108),
                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
                     v112 = COERCE_AS(
                         __typeof__(v112),
                         PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-                v197 = *(_QWORD*)(a1 + 64);
+                v199 = *(_QWORD*)(a1 + 64);
               }
-              v200 = (char*)v163 - v199;
-              if (v200 != nullptr) {
-                memmove(v197, v199, v200),
+              v202 = (unsigned __int64)v163 - v201;
+              if (v202 != 0) {
+                memmove_alt1(v199, v201, v202),
                     v108 = COERCE_AS(
                         __typeof__(v108),
                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
@@ -1576,53 +1599,53 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
                         __typeof__(v112),
                         PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
               }
-              v196 = &v200[v197];
+              v198 = v199 + v202;
             }
           }
           else {
-            if (v189 != 0) {
-              v190 = *v10;
-              *(_QWORD*)(a1 + 64) = v189;
-              v191 = 128;
-              if (*(_QWORD*)(v190 + 200) == 0) {
-                v191 = 56;
+            if (v191 != 0) {
+              v192 = *v10;
+              *(_QWORD*)(a1 + 64) = v191;
+              v193 = 128;
+              if (*(_QWORD*)(v192 + 200) == 0) {
+                v193 = 56;
               }
-              nn_mem_StandardAllocator_Free(v190 + v191),
+              nn_mem_StandardAllocator_Free_alt1(v192 + v193, v191),
                   v108 = COERCE_AS(
                       __typeof__(v108),
                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
                   v112 = COERCE_AS(
                       __typeof__(v112),
                       PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-              v188 = 0;
+              v190 = 0;
               *(_QWORD*)(a1 + 64) = 0;
               *(_QWORD*)(a1 + 72) = 0;
               *(_QWORD*)(a1 + 56) = 0;
             }
-            if ((unsigned __int64)v182 >> 61 != 0) {
+            if ((unsigned __int64)v183 >> 61 != 0) {
               goto LABEL_381;
             }
-            v192 = v188 >> 2;
-            if (v188 >> 2 <= (unsigned __int64)v182) {
-              v192 = ((__int64)v163 - v165) >> 3;
+            v194 = v190 >> 2;
+            if (v190 >> 2 <= (unsigned __int64)v183) {
+              v194 = ((__int64)v163 - v165) >> 3;
             }
-            v193 = (unsigned __int64)v188 >= 0x7FFFFFFFFFFFFFF8LL
+            v195 = (unsigned __int64)v190 >= 0x7FFFFFFFFFFFFFF8LL
                        ? 0x1FFFFFFFFFFFFFFFLL
-                       : v192;
-            if (v193 >> 61 != 0) {
+                       : v194;
+            if (v195 >> 61 != 0) {
               goto LABEL_381;
             }
-            v194 = fw_memory_HeapManager_Allocate(*v10, 8 * v193, 16, 0),
+            v196 = fw_memory_HeapManager_Allocate(*v10, 8 * v195, 16, 0),
             v108 = COERCE_AS(__typeof__(v108),
                              PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
             v112 = COERCE_AS(__typeof__(v112),
                              PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-            v195 = v194;
-            *(_QWORD*)(a1 + 56) = v194;
-            *(_QWORD*)(a1 + 64) = v194;
-            *(_QWORD*)(a1 + 72) = v194 + 8 * v193;
+            v197 = v196;
+            *(_QWORD*)(a1 + 56) = v196;
+            *(_QWORD*)(a1 + 64) = v196;
+            *(_QWORD*)(a1 + 72) = v196 + 8 * v195;
             if (v163 != (__int64*)v165) {
-              memcpy(v194, v165, (char*)v163 - v165),
+              memcpy_alt1(v196, v165, (unsigned __int64)v163 - v165),
                   v108 = COERCE_AS(
                       __typeof__(v108),
                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
@@ -1630,15 +1653,15 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
                       __typeof__(v112),
                       PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
             }
-            v196 = &v181[v195];
+            v198 = (unsigned __int64)&v182[v197];
           }
-          *(_QWORD*)(a1 + 64) = v196;
+          *(_QWORD*)(a1 + 64) = v198;
           if (v165 != 0) {
-            v201 = 128;
+            v203 = 128;
             if (*(_QWORD*)(*v10 + 200) == 0) {
-              v201 = 56;
+              v203 = 56;
             }
-            nn_mem_StandardAllocator_Free(*v10 + v201),
+            nn_mem_StandardAllocator_Free_alt1(*v10 + v203, v165),
                 v108 =
                     COERCE_AS(__typeof__(v108),
                               PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
@@ -1646,34 +1669,34 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
                     COERCE_AS(__typeof__(v112),
                               PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
           }
-          v202 = v241_.v241;
-          if (v241_.v241 != nullptr) {
+          v204 = v244_.v244;
+          if (v244_.v244 != nullptr) {
             do {
-              v203 = (_QWORD*)*v202;
+              v205 = (_QWORD*)*v204;
               if (*(_QWORD*)(*v10 + 200) != 0) {
-                v204 = 128;
+                v206 = 128;
               }
               else {
-                v204 = 56;
+                v206 = 56;
               }
-              nn_mem_StandardAllocator_Free(*v10 + v204),
+              nn_mem_StandardAllocator_Free_alt1(*v10 + v206, (__int64)v204),
                   v108 = COERCE_AS(
                       __typeof__(v108),
                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
                   v112 = COERCE_AS(
                       __typeof__(v112),
                       PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-              v202 = v203;
-            } while (v203 != nullptr);
+              v204 = v205;
+            } while (v205 != nullptr);
           }
-          v205 = v239_.v239;
-          v239_.v239 = 0;
-          if (v205 != 0) {
-            v206 = 128;
+          v207 = v242_.v242;
+          v242_.v242 = 0;
+          if (v207 != 0) {
+            v208 = 128;
             if (*(_QWORD*)(*v10 + 200) == 0) {
-              v206 = 56;
+              v208 = 56;
             }
-            nn_mem_StandardAllocator_Free(*v10 + v206),
+            nn_mem_StandardAllocator_Free_alt1(*v10 + v208, v207),
                 v108 =
                     COERCE_AS(__typeof__(v108),
                               PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
@@ -1696,90 +1719,94 @@ bool ReplacementFile_a11400(__int64 a1, __int64 a2, __int64 a3, int a4)
       }
     }
   }
-  v208 = *(_QWORD*)(a1 + 32);
-  v207 = *(_QWORD*)(a1 + 40);
-  v209 = v234_.v236;
-  if (v234_.v236 != nullptr) {
+  v210 = *(_QWORD*)(a1 + 32);
+  v209 = *(_QWORD*)(a1 + 40);
+  v211 = v237_.v239;
+  if (v237_.v239 != nullptr) {
     do {
-      v210 = (_QWORD*)*v209;
+      v212 = (_QWORD*)*v211;
       if (*(_QWORD*)(*v10 + 200) != 0) {
-        v211 = 128;
+        v213 = 128;
       }
       else {
-        v211 = 56;
+        v213 = 56;
       }
-      nn_mem_StandardAllocator_Free(*v10 + v211),
+      nn_mem_StandardAllocator_Free_alt1(*v10 + v213, (__int64)v211),
           v108 = COERCE_AS(__typeof__(v108),
                            PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
           v112 = COERCE_AS(__typeof__(v112),
                            PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-      v209 = v210;
-    } while (v210 != nullptr);
+      v211 = v212;
+    } while (v212 != nullptr);
   }
-  v212 = v234_.v234;
-  v234_.v234 = 0;
-  if (v212 != 0) {
-    v213 = 128;
+  v214 = v237_.v237;
+  v237_.v237 = 0;
+  if (v214 != 0) {
+    v215 = 128;
     if (*(_QWORD*)(*v10 + 200) == 0) {
-      v213 = 56;
+      v215 = 56;
     }
-    nn_mem_StandardAllocator_Free(*v10 + v213),
+    nn_mem_StandardAllocator_Free_alt1(*v10 + v215, v214),
         v108 = COERCE_AS(__typeof__(v108),
                          PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
         v112 = COERCE_AS(__typeof__(v112),
                          PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   }
-  v214 = v230_.v230;
-  if (v230_.v230 != 0) {
-    v215 = v230_.v231;
-    if (v230_.v230 == v230_.v231) {
+  v216 = v233_.v233;
+  if (v233_.v233 != 0) {
+    v217 = v233_.v234;
+    if (v233_.v233 == v233_.v234) {
       goto LABEL_371;
     }
-    v216 = v230_.v231;
+    v218 = v233_.v234;
     do {
-      v217 = *(_BYTE*)(v216 - 24);
-      v216 -= 24;
-      if ((v217 & 1) != 0 && *(_QWORD*)(v215 - 8) != 0) {
-        if (*(_QWORD*)(*v10 + 200) != 0) {
-          v218 = 128;
+      v219 = *(_BYTE*)(v218 - 24);
+      v218 -= 24;
+      if ((v219 & 1) != 0) {
+        v220 = *(_QWORD*)(v217 - 8);
+        if (v220 != 0) {
+          if (*(_QWORD*)(*v10 + 200) != 0) {
+            v221 = 128;
+          }
+          else {
+            v221 = 56;
+          }
+          nn_mem_StandardAllocator_Free_alt1(*v10 + v221, v220),
+              v108 = COERCE_AS(__typeof__(v108),
+                               PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+              v112 = COERCE_AS(__typeof__(v112),
+                               PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
         }
-        else {
-          v218 = 56;
-        }
-        nn_mem_StandardAllocator_Free(*v10 + v218),
-            v108 = COERCE_AS(__typeof__(v108),
-                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
-            v112 = COERCE_AS(__typeof__(v112),
-                             PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
       }
-      v215 = v216;
-    } while (v216 != v214);
-    v230_.v231 = v214;
-    if (v230_.v230 != 0) {
+      v217 = v218;
+    } while (v218 != v216);
+    v233_.v234 = v216;
+    v216 = v233_.v233;
+    if (v233_.v233 != 0) {
     LABEL_371:
-      v219 = 128;
+      v222 = 128;
       if (*(_QWORD*)(*v10 + 200) == 0) {
-        v219 = 56;
+        v222 = 56;
       }
-      nn_mem_StandardAllocator_Free(*v10 + v219),
+      nn_mem_StandardAllocator_Free_alt1(*v10 + v222, v216),
           v108 = COERCE_AS(__typeof__(v108),
                            PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
           v112 = COERCE_AS(__typeof__(v112),
                            PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
     }
   }
-  if ((v228_.v228[0] & 1) != 0 && v228_.v229 != nullptr) {
-    v220 = 128;
+  if ((v231_.v231[0] & 1) != 0 && v231_.v232 != nullptr) {
+    v223 = 128;
     if (*(_QWORD*)(*v10 + 200) == 0) {
-      v220 = 56;
+      v223 = 56;
     }
-    nn_mem_StandardAllocator_Free(*v10 + v220),
+    nn_mem_StandardAllocator_Free_alt1(*v10 + v223, (__int64)v231_.v232),
         v108 = COERCE_AS(__typeof__(v108),
                          PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
         v112 = COERCE_AS(__typeof__(v112),
                          PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   }
-  return v207 != v208;
+  return v209 != v210;
 }
 
 #pragma GCC visibility pop

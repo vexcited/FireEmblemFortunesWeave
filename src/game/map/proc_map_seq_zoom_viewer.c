@@ -139,6 +139,19 @@ void ProcMapSeqZoomViewer_faf660(_QWORD* a1);
 void ProcMapSeqZoomViewer_fafec0(__int64 a1);
 bool ProcMapSeqZoomViewer_fb0ab0(__int64 a1);
 void ProcMapSeqZoomViewer_fb0fc0();
+__int64 game_HasSkill_alt1(_QWORD*, unsigned int*) __asm__("game_HasSkill");
+__int64 game_Unit_GetJob_alt1(__int64) __asm__("game_Unit_GetJob");
+__int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
+__int64 std___1___shared_weak_count___release_weak_alt2(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+bool GameRoutine_175d500_alt1(__int64, __int64, __int64, int,
+                              const char*) __asm__("GameRoutine_175d500");
+int __cxa_guard_acquire_alt1(__int64) __asm__("__cxa_guard_acquire");
+void GameRoutine_1566440_alt1(__int64, char) __asm__("GameRoutine_1566440");
+void __cxa_guard_release_alt1(__int64) __asm__("__cxa_guard_release");
+void game_cfc7c0(__int64, float*, char, float);
+void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 __int64 game_map_ProcMapSeqZoomViewer_ViewerZoomIn(__int64 a1)
 {
@@ -972,13 +985,14 @@ void ProcMapSeqZoomViewer_fafec0(__int64 a1)
   __int64 v15;
   __int64 v16;
   __int64 v17;
-  _QWORD v18[3];
+  __int64 v18;
+  _QWORD v19[3];
 
   v2 = *(_QWORD*)(*(_QWORD*)(a1 + 240) + 168LL);
-  v3 = game_Unit_GetJob(v2);
+  v3 = game_Unit_GetJob_alt1(v2);
   v4 = *(_QWORD*)GameData_2131d28[0];
   if (*(_QWORD*)GameData_2131d28[0] == 0) {
-    GameRoutine_175d500(a1, v3, v2, 2, &GameData_1a9f09e);
+    GameRoutine_175d500_alt1(a1, v3, v2, 2, &GameData_1a9f09e);
   LABEL_6:
     v6 = *(_QWORD*)(v2 + 440);
     if (v6 == 0) {
@@ -1033,58 +1047,61 @@ void ProcMapSeqZoomViewer_fafec0(__int64 a1)
       }
       if (*(_DWORD*)(v8 + 11784) == 7 || (*(_BYTE*)(v2 + 416) & 1) != 0 ||
           (v10 = game_g_shared_system_skills_ptr,
-           LODWORD(v18[0]) = *(_DWORD*)((_BYTE*)((_UNKNOWN*)0x44LL) +
+           LODWORD(v19[0]) = *(_DWORD*)((_BYTE*)((_UNKNOWN*)0x44LL) +
                                         game_g_shared_system_skills_ptr) &
                              0xFFF,
-           (game_HasSkill(v2 + 1744, v18) & 1) != 0) ||
+           (game_HasSkill_alt1((_QWORD*)(v2 + 1744), (unsigned int*)v19) & 1) !=
+               0) ||
           *(_WORD*)(v2 + 492) == 0 && *(_BYTE*)(v2 + 496) == 0 &&
-              (LODWORD(v18[0]) =
+              (LODWORD(v19[0]) =
                    *(_DWORD*)((_BYTE*)((_UNKNOWN*)0x144LL) + v10) & 0xFFF,
-               (game_HasSkill(v2 + 1744, v18) & 1) != 0) ||
+               (game_HasSkill_alt1((_QWORD*)(v2 + 1744), (unsigned int*)v19) &
+                1) != 0) ||
           (*(_BYTE*)(v2 + 416) & 4) != 0) {
         v11 = 0;
       }
       else {
-        LODWORD(v18[0]) = *(_DWORD*)((_BYTE*)((char*)0x40LL) + v10) & 0xFFF;
-        v11 = game_HasSkill(v2 + 1744, v18) ^ 1;
+        LODWORD(v19[0]) = *(_DWORD*)((_BYTE*)((char*)0x40LL) + v10) & 0xFFF;
+        v11 = game_HasSkill_alt1((_QWORD*)(v2 + 1744), (unsigned int*)v19) ^ 1;
       }
       if (v9 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v9 + 8),
                                       0xFFFFFFFFFFFFFFFFLL) == 0) {
         (*(void (**)(__int64))(*(_QWORD*)v9 + 16LL))(v9);
-        std___1___shared_weak_count___release_weak(v9);
+        std___1___shared_weak_count___release_weak_alt2(v9);
       }
       if ((v11 & 1) != 0) {
         if ((atomic_load_explicit((atomic_uchar* volatile)&GameData_2259040,
                                   memory_order_acquire) &
              1) == 0 &&
-            (unsigned int)__cxa_guard_acquire(&GameData_2259040) != 0) {
+            __cxa_guard_acquire_alt1((__int64)&GameData_2259040) != 0) {
           BYTE4(GameData_2259030) = 0;
           GameData_2259038 = 0;
           GameData_2259018 = (__int64)&GameData_1a9f09e;
           GameData_2259020 = (__int64)"MID_KeyHelp_ZoomViewMove";
           LOBYTE(GameData_2259028) = 1;
           *(__int64*)((char*)&GameData_2259028 + 4) = 0xC0000000BLL;
-          __cxa_guard_release(&GameData_2259040);
+          __cxa_guard_release_alt1((__int64)&GameData_2259040);
         }
         v13 = fw_memory_g_heap_manager_ptr;
-        v14 = (_QWORD*)fw_memory_HeapManager_Allocate(
+        v14 = (_QWORD*)fw_memory_HeapManager_Allocate_alt1(
             *(_QWORD*)fw_memory_g_heap_manager_ptr, 40, 16, 0);
         v15 = GameData_2259030;
-        v18[0] = v14;
-        v18[1] = v14 + 5;
-        v18[2] = v14 + 5;
+        v16 = (__int64)v14;
+        v19[0] = v14;
+        v19[1] = v14 + 5;
+        v19[2] = v14 + 5;
         v14[2] = GameData_2259028;
         v14[3] = v15;
         v14[4] = GameData_2259038;
-        v16 = GameData_2259020;
+        v17 = GameData_2259020;
         *v14 = GameData_2259018;
-        v14[1] = v16;
-        GameRoutine_1566440(v18, 0);
-        v17 = 128;
+        v14[1] = v17;
+        GameRoutine_1566440_alt1((__int64)v19, 0);
+        v18 = 128;
         if (*(_QWORD*)(*(_QWORD*)v13 + 200LL) == 0) {
-          v17 = 56;
+          v18 = 56;
         }
-        nn_mem_StandardAllocator_Free(*(_QWORD*)v13 + v17);
+        nn_mem_StandardAllocator_Free_alt2(*(_QWORD*)v13 + v18, v16);
       }
     }
   }
@@ -1151,7 +1168,7 @@ bool ProcMapSeqZoomViewer_fb0ab0(__int64 a1)
     *(_DWORD*)(v5 + 268) = 0;
     *(_WORD*)(v5 + 272) = 256;
     *(_BYTE*)(v5 + 224) = 1;
-    GameRoutine_cfc7c0(v5 + 128, (float*)(v5 + 280), 1, 0x0.0p+0f);
+    game_cfc7c0(v5 + 128, (float*)(v5 + 280), 1, 0x0.0p+0f);
   }
   v8 = *(_DWORD*)(game_g_game_setting + 952);
   if ((v8 & 2) != 0) {
@@ -1167,7 +1184,7 @@ bool ProcMapSeqZoomViewer_fb0ab0(__int64 a1)
     if (*(_QWORD*)(*(_QWORD*)v9 + 200LL) == 0) {
       v11 = 56;
     }
-    nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v9 + v11);
+    nn_mem_StandardAllocator_Free_alt2(*(_QWORD*)v9 + v11, (__int64)v10);
     *(_QWORD*)(a1 + 216) = *(_QWORD*)(*v2 + 56);
     *(_DWORD*)(a1 + 152) = 2;
   }
@@ -1194,17 +1211,17 @@ void ProcMapSeqZoomViewer_fb0fc0()
   unsigned int v3;
   unsigned __int64 v4;
   float* v5;
-  float* v6;
+  __int64 v6;
   float v7;
   char* v8;
   __int64 v9;
   unsigned __int64 v10;
   unsigned __int64 v11;
   __int64 v12;
-  char* v13;
+  unsigned __int64 v13;
   __int64 v14;
   __int64 v15;
-  signed __int64 v16;
+  unsigned __int64 v16;
   float v17;
   float v18;
   __int64 v19;
@@ -1244,23 +1261,23 @@ void ProcMapSeqZoomViewer_fb0fc0()
   v3 = -30;
   v4 = 0;
   v5 = nullptr;
-  v6 = nullptr;
+  v6 = 0;
   do {
     v7 = (float)(v3 + 30);
     if ((unsigned __int64)v5 < v4) {
       *v5++ = v7;
     }
     else {
-      v8 = (char*)((char*)v5 - (char*)v6);
-      v9 = v5 - v6;
+      v8 = (char*)v5 - v6;
+      v9 = ((__int64)v5 - v6) >> 2;
       v10 = v9 + 1;
       if ((unsigned __int64)(v9 + 1) >> 62 != 0) {
         goto LABEL_55;
       }
-      if ((__int64)(v4 - (_QWORD)v6) >> 1 > v10) {
-        v10 = (__int64)(v4 - (_QWORD)v6) >> 1;
+      if ((__int64)(v4 - v6) >> 1 > v10) {
+        v10 = (__int64)(v4 - v6) >> 1;
       }
-      if (v4 - (unsigned __int64)v6 >= 0x7FFFFFFFFFFFFFFCLL) {
+      if (v4 - v6 >= 0x7FFFFFFFFFFFFFFCLL) {
         v11 = 0x3FFFFFFFFFFFFFFFLL;
       }
       else {
@@ -1277,39 +1294,39 @@ void ProcMapSeqZoomViewer_fb0fc0()
         v12 = 0;
       }
       v4 = v12 + 4 * v11;
-      v13 = (char*)((char*)v5 - (char*)v6);
+      v13 = (unsigned __int64)v5 - v6;
       v14 = (__int64)&v8[v12 + -4 * v9];
       *(float*)&v8[v12] = v7;
       v5 = (float*)&v8[v12 + 4];
-      memcpy(v14, v6, v13);
-      if (v6 != nullptr) {
+      memcpy_alt1(v14, v6, v13);
+      if (v6 != 0) {
         if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) != 0) {
           v15 = 128;
         }
         else {
           v15 = 56;
         }
-        nn_mem_StandardAllocator_Free_alt1(
-            *(_QWORD*)fw_memory_g_heap_manager_ptr + v15);
+        nn_mem_StandardAllocator_Free_alt2(
+            *(_QWORD*)fw_memory_g_heap_manager_ptr + v15, v6);
       }
-      v6 = (float*)v14;
+      v6 = v14;
     }
     v3 += 30;
   } while (v3 < 0x14A);
-  v16 = (char*)v5 - (char*)v6;
+  v16 = (unsigned __int64)v5 - v6;
   v17 = *(float*)(*(_QWORD*)GameData_212dc38[0] + 100LL);
   v18 = v17 + 0x1.6800000000000p+7f;
-  if (v5 == v6) {
+  if (v5 == (float*)v6) {
     v20 = v17 + 0x1.6800000000000p+7f;
   }
   else {
-    if (v16 < 0) {
+    if ((v16 & 0x8000000000000000LL) != 0) {
     LABEL_55:
       GameRoutine_a78a90();
     }
     v19 = fw_memory_HeapManager_Allocate_alt1(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr, (char*)v5 - (char*)v6, 16, 0);
-    memcpy(v19, v6, (char*)v5 - (char*)v6);
+        *(_QWORD*)fw_memory_g_heap_manager_ptr, (__int64)v5 - v6, 16, 0);
+    memcpy_alt1(v19, v6, (unsigned __int64)v5 - v6);
     v20 = v18;
     v21 = nullptr;
     v22 = 0x1.fffffe0000000p+127f;
@@ -1336,8 +1353,8 @@ void ProcMapSeqZoomViewer_fb0fc0()
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v27 = 56;
     }
-    nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v27);
+    nn_mem_StandardAllocator_Free_alt2(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v27, v19);
   }
   v28 = *(_QWORD**)(GameData_21cd140 + 432);
   v29 = v28[2];
@@ -1381,13 +1398,13 @@ void ProcMapSeqZoomViewer_fb0fc0()
     goto LABEL_49;
   }
 LABEL_50:
-  if (v6 != nullptr) {
+  if (v6 != 0) {
     v43 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v43 = 56;
     }
-    nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v43);
+    nn_mem_StandardAllocator_Free_alt2(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v43, v6);
   }
 }
 

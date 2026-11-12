@@ -15,10 +15,13 @@ extern __int64 (*eft_res_ModelResource_vtable[])();
 extern __int64 eft_g_effectSystem;
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64* snd_g_fileIndex_ptr[2];
-__int64 ModelResource_Destructor(_QWORD* a1);
-__int64 ModelResource_DeletingDestructor(_QWORD* a1);
+__int64
+ModelResource_Destructor_alt1(_QWORD* a1) __asm__("ModelResource_Destructor");
+__int64 ModelResource_DeletingDestructor_alt1(_QWORD* a1) __asm__(
+    "ModelResource_DeletingDestructor");
 __int64 ModelResource_Unknown2(__int64 a1);
-_QWORD* ModelResource_bce590(_QWORD* result);
+_QWORD*
+ModelResource_bce590_alt2(_QWORD* result) __asm__("ModelResource_bce590");
 __int64 ModelResource_Unknown3(__int64 a1);
 _QWORD**
 ModelResource_bce590_alt1(_QWORD** result) __asm__("ModelResource_bce590");
@@ -33,59 +36,63 @@ unsigned __int64 strlen_alt1(const char*) __asm__("strlen");
 void GameHr_ad69c0(_QWORD*);
 void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
+void ModelResource_Destructor(_QWORD* a1);
+void ModelResource_DeletingDestructor(_QWORD* a1);
+_QWORD** ModelResource_bce590(_QWORD** result);
 
-__int64 ModelResource_Destructor(_QWORD* a1)
+void ModelResource_Destructor(_QWORD* a1)
 {
-  __int64 result;
-  __int64 v3;
+  _QWORD* v2;
+  _QWORD* v3;
   __int64 v4;
 
   *a1 = eft_res_ModelResource_vtable;
-  result = a1[23];
-  if (result != 0) {
-    result = GameRoutine_ad6bb0();
-    v3 = a1[23];
+  v2 = (_QWORD*)a1[23];
+  if (v2 != nullptr) {
+    GameRoutine_ad6bb0_alt1(v2);
+    v3 = (_QWORD*)a1[23];
     a1[23] = 0;
-    if (v3 != 0) {
-      GameRoutine_ad69c0(v3);
+    if (v3 != nullptr) {
+      GameHr_ad69c0(v3);
       v4 = 128;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
         v4 = 56;
       }
-      return nn_mem_StandardAllocator_Free(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v4);
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v4, (__int64)v3);
     }
   }
-  return result;
 }
 
-__int64 ModelResource_DeletingDestructor(_QWORD* a1)
+void ModelResource_DeletingDestructor(_QWORD* a1)
 {
-  __int64 v2;
+  _QWORD* v2;
   __int64 v3;
-  __int64 v4;
+  _QWORD* v4;
   __int64 v5;
+  __int64 v6;
 
   *a1 = eft_res_ModelResource_vtable;
-  v2 = fw_memory_g_heap_manager_ptr;
-  if (a1[23] != 0) {
-    GameRoutine_ad6bb0();
-    v3 = a1[23];
+  v2 = (_QWORD*)a1[23];
+  v3 = fw_memory_g_heap_manager_ptr;
+  if (v2 != nullptr) {
+    GameRoutine_ad6bb0_alt1(v2);
+    v4 = (_QWORD*)a1[23];
     a1[23] = 0;
-    if (v3 != 0) {
-      GameRoutine_ad69c0(v3);
-      v4 = 128;
-      if (*(_QWORD*)(*(_QWORD*)v2 + 200LL) == 0) {
-        v4 = 56;
+    if (v4 != nullptr) {
+      GameHr_ad69c0(v4);
+      v5 = 128;
+      if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
+        v5 = 56;
       }
-      nn_mem_StandardAllocator_Free(*(_QWORD*)v2 + v4);
+      nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v5, (__int64)v4);
     }
   }
-  v5 = 128;
-  if (*(_QWORD*)(*(_QWORD*)v2 + 200LL) == 0) {
-    v5 = 56;
+  v6 = 128;
+  if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
+    v6 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)v2 + v5);
+  nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v6, (__int64)a1);
 }
 
 __int64 ModelResource_Unknown2(__int64 a1)
@@ -187,22 +194,23 @@ LABEL_20:
   return 1;
 }
 
-_QWORD* ModelResource_bce590(_QWORD* result)
+_QWORD** ModelResource_bce590(_QWORD** result)
 {
-  __int64 v1;
-  _QWORD* v2;
+  _QWORD* v1;
+  _QWORD** v2;
   __int64 v3;
 
   v1 = *result;
-  *result = 0;
-  if (v1 != 0) {
+  *result = nullptr;
+  if (v1 != nullptr) {
     v2 = result;
-    GameRoutine_ad69c0(v1);
+    GameHr_ad69c0(v1);
     v3 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v3 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v3);
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v3, (__int64)v1);
     return v2;
   }
   return result;

@@ -337,6 +337,12 @@ __int64 snd_Manager_setLPFSlot(__int64 a1, __int64 a2, float a3);
 __int64 snd_Manager_setSendAuxASlot(__int64 a1, __int64 a2, float a3);
 __int64 snd_Manager__isActive(__int64 a1, __int64* a2);
 __int64 snd_Manager_resetVolumeSlot_lambda0_Invoke(__int64 a1, __int64* a2);
+__int64 Obj_1017b0_alt1(__int64, __int64, __int64, unsigned int,
+                        unsigned int) __asm__("Obj_1017b0");
+__int64 Obj_101910_alt1(__int64, __int64, __int64,
+                        unsigned int) __asm__("Obj_101910");
+void nn_diag_detail_AbortImpl_1a0a590_alt1() __asm__(
+    "nn_diag_detail_AbortImpl_1a0a590");
 
 __int64 Manager_113100(__int64 a1)
 {
@@ -4181,18 +4187,15 @@ __int64 Manager_11e980(__int64 a1, __int64 a2, __int64 a3, unsigned int a4)
   __int64 v11;
   unsigned int v12;
   __int64 v13;
-  long double v14;
-  __int64 v16;
 
-  nn_os_LockMutex(a1 + 40);
-  nn_os_LockMutex(a1 + 40);
+  nn_os_LockMutex_alt1(a1 + 40);
+  nn_os_LockMutex_alt1(a1 + 40);
   v8 = *(unsigned __int16*)(a1 + 32);
   v9 = *(unsigned __int16*)(a1 + 34);
-  nn_os_UnlockMutex_alt1(a1 + 40);
+  nn_os_UnlockMutex_alt2(a1 + 40);
   if (v8 >= v9) {
-    v16 = GameRoutine_a1efd0(a1 + 40);
-    nn_diag_detail_AbortImpl_1a0a590(v16);
-    __udf(0);
+    GameRoutine_a1efd0(a1 + 40);
+    nn_diag_detail_AbortImpl_1a0a590_alt1();
   }
   v10 = *(unsigned __int16*)(a1 + 32);
   v11 = *(_QWORD*)(a1 + 24);
@@ -4200,8 +4203,8 @@ __int64 Manager_11e980(__int64 a1, __int64 a2, __int64 a3, unsigned int a4)
   *(_WORD*)(a1 + 32) = v10 + 1;
   *(_WORD*)(v11 + 2 * v10) = -1;
   v13 = *(_QWORD*)(a1 + 16) + 5768LL * v12;
-  *(__n128*)&v14 = nn_os_UnlockMutex_alt1(a1 + 40);
-  Obj_101910(v13, a2, a3, a4, v14);
+  nn_os_UnlockMutex_alt2(a1 + 40);
+  Obj_101910_alt1(v13, a2, a3, a4);
   return v13;
 }
 
@@ -4267,18 +4270,15 @@ __int64 Manager_11eb50(__int64 a1, __int64 a2, __int64 a3, unsigned int a4,
   __int64 v13;
   unsigned int v14;
   __int64 v15;
-  long double v16;
-  __int64 v18;
 
-  nn_os_LockMutex(a1 + 40);
-  nn_os_LockMutex(a1 + 40);
+  nn_os_LockMutex_alt1(a1 + 40);
+  nn_os_LockMutex_alt1(a1 + 40);
   v10 = *(unsigned __int16*)(a1 + 32);
   v11 = *(unsigned __int16*)(a1 + 34);
-  nn_os_UnlockMutex_alt1(a1 + 40);
+  nn_os_UnlockMutex_alt2(a1 + 40);
   if (v10 >= v11) {
-    v18 = GameRoutine_a1efd0(a1 + 40);
-    nn_diag_detail_AbortImpl_1a0a590(v18);
-    __udf(0);
+    GameRoutine_a1efd0(a1 + 40);
+    nn_diag_detail_AbortImpl_1a0a590_alt1();
   }
   v12 = *(unsigned __int16*)(a1 + 32);
   v13 = *(_QWORD*)(a1 + 24);
@@ -4286,8 +4286,8 @@ __int64 Manager_11eb50(__int64 a1, __int64 a2, __int64 a3, unsigned int a4,
   *(_WORD*)(a1 + 32) = v12 + 1;
   *(_WORD*)(v13 + 2 * v12) = -1;
   v15 = *(_QWORD*)(a1 + 16) + 5768LL * v14;
-  *(__n128*)&v16 = nn_os_UnlockMutex_alt1(a1 + 40);
-  Obj_1017b0(v15, a2, a3, a4, a5, v16);
+  nn_os_UnlockMutex_alt2(a1 + 40);
+  Obj_1017b0_alt1(v15, a2, a3, a4, a5);
   return v15;
 }
 

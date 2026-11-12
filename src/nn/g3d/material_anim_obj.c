@@ -34,11 +34,11 @@ __int64 MaterialAnimObj_Unknown4(__int64 a1, __int64 a2)
 {
   __int64 v4;
   __int64 v5;
-  unsigned int v6;
+  int v6;
   unsigned int v7;
   __int64 v8;
   __int64 v9;
-  __int64 v10;
+  const char* v10;
   unsigned __int64 v11;
   __int64 v12;
   __int64 v13;
@@ -58,7 +58,7 @@ __int64 MaterialAnimObj_Unknown4(__int64 a1, __int64 a2)
   __int64 v27;
   __int64 v28;
 
-  MaterialAnimObj_5dfe60(a1 + 88, *(unsigned __int16*)(a2 + 108));
+  MaterialAnimObj_5dfe60_alt1(a1 + 88, *(_WORD*)(a2 + 108));
   v4 = *(unsigned __int16*)(a1 + 100);
   if (*(_WORD*)(a1 + 100) != 0) {
     if (*(_QWORD*)(a2 + 72) != 0) {
@@ -71,29 +71,31 @@ __int64 MaterialAnimObj_Unknown4(__int64 a1, __int64 a2)
         if (v8 == 0) {
           goto LABEL_14;
         }
-        v10 = *(_QWORD*)v9 + 2LL;
-        v11 = strlen(v10);
+        v10 = (const char*)(*(_QWORD*)v9 + 2LL);
+        v11 = strlen_alt1(v10);
         v12 = v8 + 8;
         v13 = *(unsigned __int16*)(v8 + 12);
         v14 = v8 + 8 + 16 * v13;
         v15 = *(_DWORD*)v14;
-        if (*(_DWORD*)(v8 + 8) < *(_DWORD*)v14) {
+        if ((signed __int32)*(_DWORD*)(v8 + 8) <
+            (signed __int32)*(_DWORD*)v14) {
           do {
             v17 = (__int64)v15 >> 3;
             if (v11 > v17) {
-              v16 = (*(unsigned __int8*)(v10 + v11 + ~v17) >> (v15 & 7)) & 1;
+              v16 = ((unsigned __int8)v10[v11 + ~v17] >> (v15 & 7)) & 1;
             }
             else {
               v16 = 0;
             }
             v13 = *(unsigned __int16*)(v8 + 12 + 16 * v13 + 2 * v16);
-            v26 = v15 < *(_DWORD*)(v12 + 16 * v13);
+            v26 = v15 < (signed __int32)*(_DWORD*)(v12 + 16 * v13);
             v15 = *(_DWORD*)(v12 + 16 * v13);
           } while (v26);
           v14 = v12 + 16 * v13;
         }
         v18 = *(unsigned __int16**)(v14 + 8);
-        if (v11 != *v18 || (unsigned int)memcmp(v18 + 1, v10) != 0 ||
+        if (v11 != *v18 ||
+            memcmp_alt1((__int64)(v18 + 1), (__int64)v10, v11) != 0 ||
             (v19 = v14 - v8 - 24, v20 = v19 >> 4,
              ((v19 >> 4) & 0x80000000) != 0)) {
         LABEL_14:
@@ -103,7 +105,8 @@ __int64 MaterialAnimObj_Unknown4(__int64 a1, __int64 a2)
           v21 = (v19 >> 4) & 0x7FFFFFFF;
           v22 = (unsigned __int16)(*(_WORD*)(v9 + 48) & *(_WORD*)(v9 + 46)) !=
                 0xFFFF;
-          v23 = GameRoutine_5e1080(a1, v9, *(_QWORD*)(a2 + 56) + 168 * v21, v6);
+          v23 = MaterialAnimObj_5e1080(a1, v9, *(_QWORD*)(a2 + 56) + 168 * v21,
+                                       v6);
           if ((v23 & 1) != 0 ||
               (*(__int16*)(v9 + 46) == -1
                    ? (v24 = *(unsigned __int16*)(v9 + 48) == 0xFFFF)
@@ -129,7 +132,7 @@ __int64 MaterialAnimObj_Unknown4(__int64 a1, __int64 a2)
   }
   *(_WORD*)(a1 + 96) |= 1u;
   v25 = *(_DWORD*)(a1 + 60);
-  v26 = v25 >= 1 && v25 <= *(_DWORD*)(a1 + 56);
+  v26 = v25 >= 1 && v25 <= (signed __int32)*(_DWORD*)(a1 + 56);
   *(_DWORD*)(a1 + 64) = 2139095040;
   if (v26) {
     v27 = 0;

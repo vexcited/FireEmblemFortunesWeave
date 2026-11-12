@@ -18,6 +18,7 @@ bool OpusDecoderImpl_Unknown3(_QWORD* a1, __int64* a2);
 __attribute__((swiftcall)) void OpusDecoderImpl_Unknown7(PSEUDO_X8 x8_,
                                                          _QWORD* result);
 bool OpusDecoderImpl_2ba4a0(__int64 a1, __int64 a2, __int64* a3, int a4);
+__int64 nn_os_GetSystemTick_alt1() __asm__("nn_os_GetSystemTick");
 
 __int64 OpusDecoderImpl_Destructor(__int64 a1)
 {
@@ -159,36 +160,33 @@ bool OpusDecoderImpl_Unknown3(_QWORD* a1, __int64* a2)
   __int64 v11;
   __int64 v12;
   __int64 v13;
-  __int64 v14;
-  __int64 v15;
-  int v16;
+  int v14;
   struct {
     char gap8_[4];
-    int v18;
-    __int64 v19;
-  } v18_;
+    int v16;
+    __int64 v17;
+  } v16_;
 
-  v18_.v19 = v2;
-  SystemTickEv = nn_os_GetSystemTick(a1);
+  v16_.v17 = v2;
+  SystemTickEv = nn_os_GetSystemTick_alt1();
   v7 = *a2;
   v8 = (unsigned int*)a1[1];
   v9 = SystemTickEv;
-  v18_.v18 = 0;
-  v10 = (*(__int64 (**)(__int64*, unsigned int*, __int64, int*))(v7 + 32))(
-      a2, v8, 8, &v18_.v18);
-  if (v18_.v18 < 0) {
+  v16_.v16 = 0;
+  (*(void (**)(__int64*, unsigned int*, __int64, int*))(v7 + 32))(a2, v8, 8,
+                                                                  &v16_.v16);
+  if (v16_.v16 < 0) {
     return false;
   }
-  v11 = bswap32(*v8);
-  v12 = nn_os_GetSystemTick(v10);
-  v13 = a1[10];
-  a1[9] += v12 - v9;
-  a1[10] = v13 + 8;
-  v14 = nn_os_GetSystemTick(v12);
-  v15 = (*(__int64 (**)(__int64*, __int64, __int64))(*a2 + 48))(a2, v11, 2);
-  v16 = v15;
-  a1[9] += nn_os_GetSystemTick(v15) - v14;
-  return v16 >= 0;
+  v10 = bswap32(*v8);
+  v11 = nn_os_GetSystemTick_alt1();
+  v12 = a1[10];
+  a1[9] += v11 - v9;
+  a1[10] = v12 + 8;
+  v13 = nn_os_GetSystemTick_alt1();
+  v14 = (*(__int64 (**)(__int64*, __int64, __int64))(*a2 + 48))(a2, v10, 2);
+  a1[9] += nn_os_GetSystemTick_alt1() - v13;
+  return v14 >= 0;
 }
 
 bool OpusDecoderImpl_Unknown4(__int64 a1, __int64 a2, __int64 a3, int a4,
@@ -316,117 +314,115 @@ bool OpusDecoderImpl_2ba4a0(__int64 a1, __int64 a2, __int64* a3, int a4)
   __int64 v21;
   __int64 v22;
   __int64 v23;
-  __int64 v24;
-  __int64 v25;
-  int v26;
+  int v24;
   _BOOL8 result;
+  __int64 v26;
+  __int64 v27;
   __int64 v28;
-  __int64 v29;
+  _QWORD* v29;
   __int64 v30;
-  _QWORD* v31;
-  __int64 v32;
+  __int64 v31;
+  __int64* v32;
   __int64 v33;
-  __int64* v34;
+  __int64 v34;
   __int64 v35;
-  __int64 v36;
+  __int16 v36;
   __int64 v37;
-  __int16 v38;
-  __int64 v39;
-  int v40;
-  int v41;
-  __int64 v42;
+  int v38;
+  int v39;
+  __int64 v40;
 
   v4 = *(unsigned int**)(a1 + 8);
-  SystemTickEv = nn_os_GetSystemTick(a1);
+  SystemTickEv = nn_os_GetSystemTick_alt1();
   v10 = *a3;
   v11 = SystemTickEv;
-  LODWORD(v42) = 0;
-  v12 = (*(__int64 (**)(__int64*, unsigned int*, __int64, __int64*))(v10 + 32))(
-      a3, v4, 8, &v42);
-  if ((v42 & 0x80000000) != 0) {
+  LODWORD(v40) = 0;
+  (*(void (**)(__int64*, unsigned int*, __int64, __int64*))(v10 + 32))(a3, v4,
+                                                                       8, &v40);
+  if ((v40 & 0x80000000) != 0) {
     return false;
   }
-  v13 = bswap32(*v4);
-  v14 = nn_os_GetSystemTick(v12);
-  v15 = *(_QWORD*)(a1 + 80);
-  *(_QWORD*)(a1 + 72) += v14 - v11;
-  *(_QWORD*)(a1 + 80) = v15 + 8;
-  v16 = nn_os_GetSystemTick(v14);
-  v17 = *a3;
-  v18 = v16;
-  LODWORD(v42) = 0;
-  v19 = (*(__int64 (**)(__int64*, unsigned int*, __int64, __int64*))(v17 + 32))(
-      a3, v4 + 2, v13, &v42);
-  if ((v42 & 0x80000000) != 0) {
+  v12 = bswap32(*v4);
+  v13 = nn_os_GetSystemTick_alt1();
+  v14 = *(_QWORD*)(a1 + 80);
+  *(_QWORD*)(a1 + 72) += v13 - v11;
+  *(_QWORD*)(a1 + 80) = v14 + 8;
+  v15 = nn_os_GetSystemTick_alt1();
+  v16 = *a3;
+  v17 = v15;
+  LODWORD(v40) = 0;
+  (*(void (**)(__int64*, unsigned int*, __int64, __int64*))(v16 + 32))(
+      a3, v4 + 2, v12, &v40);
+  if ((v40 & 0x80000000) != 0) {
     return false;
   }
-  v20 = nn_os_GetSystemTick(v19);
-  v21 = *(_QWORD*)(a1 + 80);
-  *(_QWORD*)(a1 + 72) += v20 - v18;
-  *(_QWORD*)(a1 + 80) = v21 + v13;
-  v22 = nn_os_GetSystemTick(v20);
-  v23 = *(_QWORD*)(a1 + 48);
-  v42 = 0;
-  v25 = *(_QWORD*)(a1 + 8);
-  v24 = *(_QWORD*)(a1 + 16);
-  v41 = 0;
-  v26 = (*(__int64 (**)(__int64, __int64*, int*, __int64, __int64, __int64,
-                        __int64))(*(_QWORD*)v23 + 72LL))(v23, &v42, &v41, v24,
-                                                         3840, v25, 4096);
-  result = v26 == 0;
-  if (v26 == 0) {
+  v18 = nn_os_GetSystemTick_alt1();
+  v19 = *(_QWORD*)(a1 + 80);
+  *(_QWORD*)(a1 + 72) += v18 - v17;
+  *(_QWORD*)(a1 + 80) = v19 + v12;
+  v20 = nn_os_GetSystemTick_alt1();
+  v21 = *(_QWORD*)(a1 + 48);
+  v40 = 0;
+  v23 = *(_QWORD*)(a1 + 8);
+  v22 = *(_QWORD*)(a1 + 16);
+  v39 = 0;
+  v24 = (*(__int64 (**)(__int64, __int64*, int*, __int64, __int64, __int64,
+                        __int64))(*(_QWORD*)v21 + 72LL))(v21, &v40, &v39, v22,
+                                                         3840, v23, 4096);
+  result = v24 == 0;
+  if (v24 == 0) {
     if (*(int*)(a1 + 40) >= 1 && a4 >= 1) {
-      v28 = 0;
-      v29 = 0;
+      v26 = 0;
+      v27 = 0;
       do {
         if ((unsigned int)a4 >= 8) {
-          v30 = 0;
-          v31 = (_QWORD*)(a2 + 32);
+          v28 = 0;
+          v29 = (_QWORD*)(a2 + 32);
           do {
-            *(_WORD*)(*(v31 - 4) + 2 * v29) =
-                *(_WORD*)(*(_QWORD*)(a1 + 16) + v28 + 2 * v30);
-            *(_WORD*)(*(v31 - 3) + 2 * v29) =
-                *(_WORD*)(*(_QWORD*)(a1 + 16) + v28 + 2 * v30 + 2);
-            *(_WORD*)(*(v31 - 2) + 2 * v29) =
-                *(_WORD*)(*(_QWORD*)(a1 + 16) + v28 + 2 * v30 + 4);
-            *(_WORD*)(*(v31 - 1) + 2 * v29) =
-                *(_WORD*)(*(_QWORD*)(a1 + 16) + v28 + 2 * v30 + 6);
-            *(_WORD*)(*v31 + 2 * v29) =
-                *(_WORD*)(*(_QWORD*)(a1 + 16) + v28 + 2 * v30 + 8);
-            *(_WORD*)(v31[1] + 2 * v29) =
-                *(_WORD*)(*(_QWORD*)(a1 + 16) + v28 + 2 * v30 + 10);
-            *(_WORD*)(v31[2] + 2 * v29) =
-                *(_WORD*)(*(_QWORD*)(a1 + 16) + v28 + 2 * v30 + 12);
-            v32 = v31[3];
-            v31 += 8;
-            v33 = *(_QWORD*)(a1 + 16) + v28 + 2 * v30;
-            v30 += 8;
-            *(_WORD*)(v32 + 2 * v29) = *(_WORD*)(v33 + 14);
-          } while ((a4 & 0x7FFFFFF8) != v30);
+            *(_WORD*)(*(v29 - 4) + 2 * v27) =
+                *(_WORD*)(*(_QWORD*)(a1 + 16) + v26 + 2 * v28);
+            *(_WORD*)(*(v29 - 3) + 2 * v27) =
+                *(_WORD*)(*(_QWORD*)(a1 + 16) + v26 + 2 * v28 + 2);
+            *(_WORD*)(*(v29 - 2) + 2 * v27) =
+                *(_WORD*)(*(_QWORD*)(a1 + 16) + v26 + 2 * v28 + 4);
+            *(_WORD*)(*(v29 - 1) + 2 * v27) =
+                *(_WORD*)(*(_QWORD*)(a1 + 16) + v26 + 2 * v28 + 6);
+            *(_WORD*)(*v29 + 2 * v27) =
+                *(_WORD*)(*(_QWORD*)(a1 + 16) + v26 + 2 * v28 + 8);
+            *(_WORD*)(v29[1] + 2 * v27) =
+                *(_WORD*)(*(_QWORD*)(a1 + 16) + v26 + 2 * v28 + 10);
+            *(_WORD*)(v29[2] + 2 * v27) =
+                *(_WORD*)(*(_QWORD*)(a1 + 16) + v26 + 2 * v28 + 12);
+            v30 = v29[3];
+            v29 += 8;
+            v31 = *(_QWORD*)(a1 + 16) + v26 + 2 * v28;
+            v28 += 8;
+            *(_WORD*)(v30 + 2 * v27) = *(_WORD*)(v31 + 14);
+          } while ((a4 & 0x7FFFFFF8) != v28);
         }
         else {
-          v30 = 0;
+          v28 = 0;
         }
         if ((a4 & 7) != 0) {
-          v34 = (__int64*)(a2 + 8 * v30);
-          v35 = v28 + 2 * v30;
-          v36 = a4 & 7;
+          v32 = (__int64*)(a2 + 8 * v28);
+          v33 = v26 + 2 * v28;
+          v34 = a4 & 7;
           do {
-            v37 = *v34++;
-            --v36;
-            v38 = *(_WORD*)(*(_QWORD*)(a1 + 16) + v35);
-            v35 += 2;
-            *(_WORD*)(v37 + 2 * v29) = v38;
-          } while (v36 != 0);
+            v35 = *v32++;
+            --v34;
+            v36 = *(_WORD*)(*(_QWORD*)(a1 + 16) + v33);
+            v33 += 2;
+            *(_WORD*)(v35 + 2 * v27) = v36;
+          } while (v34 != 0);
         }
-        ++v29;
-        v28 += 2LL * (unsigned int)a4;
-      } while (v29 < *(int*)(a1 + 40));
+        ++v27;
+        v26 += 2LL * (unsigned int)a4;
+      } while (v27 < *(int*)(a1 + 40));
     }
-    v39 = nn_os_GetSystemTick(result) - v22;
-    v40 = *(_DWORD*)(a1 + 64);
-    *(_QWORD*)(a1 + 56) += v39;
-    *(_DWORD*)(a1 + 64) = v40 + v41;
+    v37 = nn_os_GetSystemTick_alt1() - v20;
+    v38 = *(_DWORD*)(a1 + 64);
+    *(_QWORD*)(a1 + 56) += v37;
+    *(_DWORD*)(a1 + 64) = v38 + v39;
     return true;
   }
   return result;

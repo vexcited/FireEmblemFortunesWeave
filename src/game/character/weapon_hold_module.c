@@ -19,7 +19,8 @@ extern int* GameData_212df08;
 void GameRoutine_109d2e0(__int64, __int64, __int64, __int64, unsigned int);
 __n128 WeaponHoldModule_Destructor_alt1(_QWORD* a1) __asm__(
     "WeaponHoldModule_Destructor");
-__int64 WeaponHoldModule_DeletingDestructor(_QWORD* a1);
+__int64 WeaponHoldModule_DeletingDestructor_alt1(_QWORD* a1) __asm__(
+    "WeaponHoldModule_DeletingDestructor");
 __int64 game_character_WeaponHoldModule_Start(_QWORD* a1, __int64 a2,
                                               __int64 a3);
 __int64 WeaponHoldModule_112aaa0(__int64 a1);
@@ -30,6 +31,11 @@ __int64 GameHr_109d5e0(__int64 result);
 __int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
     "std___1___shared_weak_count___release_weak");
 __int64 WeaponHoldModule_Destructor(_QWORD* a1);
+unsigned int*
+GameHr_109d5e0_alt1(unsigned int* result) __asm__("GameHr_109d5e0");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void WeaponHoldModule_DeletingDestructor(__int64 a1);
 
 __int64 WeaponHoldModule_Destructor(_QWORD* a1)
 {
@@ -44,23 +50,23 @@ __int64 WeaponHoldModule_Destructor(_QWORD* a1)
   return result;
 }
 
-__int64 WeaponHoldModule_DeletingDestructor(_QWORD* a1)
+void WeaponHoldModule_DeletingDestructor(__int64 a1)
 {
   __int64 v2;
   __int64 v3;
 
-  *a1 = game_character_WeaponHoldModule_vtable;
-  GameRoutine_109d5e0(a1 + 3);
-  v2 = a1[6];
+  *(_QWORD*)a1 = game_character_WeaponHoldModule_vtable;
+  GameHr_109d5e0_alt1((unsigned int*)(a1 + 24));
+  v2 = *(_QWORD*)(a1 + 48);
   if (v2 != 0) {
-    std___1___shared_weak_count___release_weak(v2);
+    std___1___shared_weak_count___release_weak_alt1(v2);
   }
   v3 = 128;
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
     v3 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v3);
+  nn_mem_StandardAllocator_Free_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v3, a1);
 }
 
 __int64 game_character_WeaponHoldModule_Start(_QWORD* a1, __int64 a2,

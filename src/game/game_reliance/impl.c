@@ -5,12 +5,15 @@
 __int64 nn_mem_StandardAllocator_Free(_QWORD);
 extern __int64 (*game_GameReliance_Impl_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
-_QWORD* Impl_Destructor_8e2c40(_QWORD* result);
+_QWORD*
+Impl_Destructor_8e2c40_alt1(_QWORD* result) __asm__("Impl_Destructor_8e2c40");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void Impl_Destructor_8e2c40(_QWORD* a1);
 
-_QWORD* Impl_Destructor_8e2c40(_QWORD* result)
+void Impl_Destructor_8e2c40(_QWORD* a1)
 {
   _QWORD* v1;
-  _QWORD* v2;
   __int64 v3;
   __int64 v4;
   _QWORD* v5;
@@ -29,18 +32,17 @@ _QWORD* Impl_Destructor_8e2c40(_QWORD* result)
   __int64 v18;
   __int64 v19;
   __int64 v20;
-  __int64 (***v21)(_QWORD);
-  __int64 (***v22)(_QWORD);
-  __int64 (***v23)(_QWORD);
-  __int64 (***v24)(_QWORD);
-  __int64 (**v25)(_QWORD);
+  __int64 v21;
+  __int64 v22;
+  void (***v23)(_QWORD);
+  void (***v24)(_QWORD);
+  void (**v25)(_QWORD);
   bool v26;
   __int64 v27;
   __int64 v28;
 
-  v1 = (_QWORD*)result[16];
-  v2 = result;
-  *result = game_GameReliance_Impl_vtable;
+  v1 = (_QWORD*)a1[16];
+  *a1 = game_GameReliance_Impl_vtable;
   v3 = fw_memory_g_heap_manager_ptr;
   if (v1 != nullptr) {
     do {
@@ -55,7 +57,7 @@ _QWORD* Impl_Destructor_8e2c40(_QWORD* result)
         else {
           v8 = 56;
         }
-        nn_mem_StandardAllocator_Free(v7 + v8);
+        nn_mem_StandardAllocator_Free_alt1(v7 + v8, v6);
       }
       if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) != 0) {
         v4 = 128;
@@ -63,20 +65,20 @@ _QWORD* Impl_Destructor_8e2c40(_QWORD* result)
       else {
         v4 = 56;
       }
-      result = (_QWORD*)nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v4);
+      nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v4, (__int64)v1);
       v1 = v5;
     } while (v5 != nullptr);
   }
-  v9 = v2[14];
-  v2[14] = 0;
+  v9 = a1[14];
+  a1[14] = 0;
   if (v9 != 0) {
     v10 = 128;
     if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
       v10 = 56;
     }
-    result = (_QWORD*)nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v10);
+    nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v10, v9);
   }
-  v11 = (_QWORD*)v2[11];
+  v11 = (_QWORD*)a1[11];
   if (v11 != nullptr) {
     do {
       v12 = (_QWORD*)*v11;
@@ -86,20 +88,20 @@ _QWORD* Impl_Destructor_8e2c40(_QWORD* result)
       else {
         v13 = 56;
       }
-      result = (_QWORD*)nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v13);
+      nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v13, (__int64)v11);
       v11 = v12;
     } while (v12 != nullptr);
   }
-  v14 = v2[9];
-  v2[9] = 0;
+  v14 = a1[9];
+  a1[9] = 0;
   if (v14 != 0) {
     v15 = 128;
     if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
       v15 = 56;
     }
-    result = (_QWORD*)nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v15);
+    nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v15, v14);
   }
-  v16 = (_QWORD*)v2[6];
+  v16 = (_QWORD*)a1[6];
   if (v16 != nullptr) {
     do {
       v17 = (_QWORD*)*v16;
@@ -109,46 +111,46 @@ _QWORD* Impl_Destructor_8e2c40(_QWORD* result)
       else {
         v18 = 56;
       }
-      result = (_QWORD*)nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v18);
+      nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v18, (__int64)v16);
       v16 = v17;
     } while (v17 != nullptr);
   }
-  v19 = v2[4];
-  v2[4] = 0;
+  v19 = a1[4];
+  a1[4] = 0;
   if (v19 != 0) {
     v20 = 128;
     if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
       v20 = 56;
     }
-    result = (_QWORD*)nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v20);
+    nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v20, v19);
   }
-  v21 = (__int64 (***)(_QWORD))v2[1];
-  if (v21 != nullptr) {
-    v22 = (__int64 (***)(_QWORD))v2[2];
+  v21 = a1[1];
+  if (v21 != 0) {
+    v22 = a1[2];
     if (v21 == v22) {
       goto LABEL_40;
     }
-    v23 = v22 - 7;
-    v24 = v22 - 7;
+    v23 = (void (***)(_QWORD))(v22 - 56);
+    v24 = (void (***)(_QWORD))(v22 - 56);
     do {
       v25 = *v24;
       v24 -= 7;
-      result = (_QWORD*)(*v25)(v23);
-      v26 = v23 == v21;
+      (*v25)(v23);
+      v26 = v23 == (void (***)(_QWORD))v21;
       v23 = v24;
     } while (!v26);
-    v27 = v2[1];
-    v2[2] = v21;
+    v27 = a1[1];
+    a1[2] = v21;
+    v21 = v27;
     if (v27 != 0) {
     LABEL_40:
       v28 = 128;
       if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
         v28 = 56;
       }
-      return (_QWORD*)nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v28);
+      nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v28, v21);
     }
   }
-  return result;
 }
 
 #pragma GCC visibility pop

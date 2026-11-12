@@ -8,8 +8,14 @@ extern __int64 (*game_hub_CharacterBehaviorStack_StackMoveLoop_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 StackMoveLoop_Unknown2(__int64 result);
 __int64 StackMoveLoop_Unknown5(__int64 a1);
-_QWORD* StackMoveLoop_Unknown8(_QWORD* result);
-__int64 StackMoveLoop_Unknown9(_QWORD* a1);
+_QWORD*
+StackMoveLoop_Unknown8_alt1(_QWORD* result) __asm__("StackMoveLoop_Unknown8");
+__int64
+StackMoveLoop_Unknown9_alt1(_QWORD* a1) __asm__("StackMoveLoop_Unknown9");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void StackMoveLoop_Unknown8(_QWORD* a1);
+void StackMoveLoop_Unknown9(_QWORD* a1);
 
 __int64 StackMoveLoop_Unknown2(__int64 result)
 {
@@ -47,10 +53,9 @@ __int64 StackMoveLoop_Unknown5(__int64 a1)
   return BYTE4(v1) & ((v1 & 0x1FFFFFFFFLL) != 0x100000001LL);
 }
 
-_QWORD* StackMoveLoop_Unknown8(_QWORD* result)
+void StackMoveLoop_Unknown8(_QWORD* a1)
 {
   __int64 v1;
-  _QWORD* v2;
   __int64* v3;
   __int64 v4;
   __int64 v5;
@@ -58,33 +63,31 @@ _QWORD* StackMoveLoop_Unknown8(_QWORD* result)
   __int64 v7;
   __int64 v8;
 
-  v1 = result[9];
-  v2 = result;
-  *result = game_hub_CharacterBehaviorStack_StackMoveLoop_vtable;
+  v1 = a1[9];
+  *a1 = game_hub_CharacterBehaviorStack_StackMoveLoop_vtable;
   v3 = (__int64*)fw_memory_g_heap_manager_ptr;
   if (v1 != 0) {
     v4 = *(_QWORD*)fw_memory_g_heap_manager_ptr;
-    result[10] = v1;
+    a1[10] = v1;
     v5 = 128;
     if (*(_QWORD*)(v4 + 200) == 0) {
       v5 = 56;
     }
-    result = (_QWORD*)nn_mem_StandardAllocator_Free(v4 + v5);
+    nn_mem_StandardAllocator_Free_alt1(v4 + v5, v1);
   }
-  v6 = v2[6];
+  v6 = a1[6];
   if (v6 != 0) {
     v7 = *v3;
-    v2[7] = v6;
+    a1[7] = v6;
     v8 = 128;
     if (*(_QWORD*)(v7 + 200) == 0) {
       v8 = 56;
     }
-    return (_QWORD*)nn_mem_StandardAllocator_Free(v7 + v8);
+    nn_mem_StandardAllocator_Free_alt1(v7 + v8, v6);
   }
-  return result;
 }
 
-__int64 StackMoveLoop_Unknown9(_QWORD* a1)
+void StackMoveLoop_Unknown9(_QWORD* a1)
 {
   __int64 v1;
   __int64 v3;
@@ -105,7 +108,7 @@ __int64 StackMoveLoop_Unknown9(_QWORD* a1)
     if (*(_QWORD*)(v4 + 200) == 0) {
       v5 = 56;
     }
-    nn_mem_StandardAllocator_Free(v4 + v5);
+    nn_mem_StandardAllocator_Free_alt1(v4 + v5, v1);
   }
   v6 = a1[6];
   if (v6 != 0) {
@@ -115,13 +118,13 @@ __int64 StackMoveLoop_Unknown9(_QWORD* a1)
     if (*(_QWORD*)(v7 + 200) == 0) {
       v8 = 56;
     }
-    nn_mem_StandardAllocator_Free(v7 + v8);
+    nn_mem_StandardAllocator_Free_alt1(v7 + v8, v6);
   }
   v9 = 128;
   if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
     v9 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v9);
+  nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v9, (__int64)a1);
 }
 
 #pragma GCC visibility pop

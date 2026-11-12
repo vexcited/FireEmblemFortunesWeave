@@ -10,12 +10,15 @@ extern __int64 fw_memory_g_heap_manager;
 extern __int64 fw_memory_g_heap_manager_ptr;
 _QWORD* SceneCharacterBehaviorStack_Destructor_alt1(_QWORD* result) __asm__(
     "SceneCharacterBehaviorStack_Destructor");
-__int64 SceneCharacterBehaviorStack_Unknown3(__int64 result);
+__int64 SceneCharacterBehaviorStack_Unknown3_alt1(__int64 result) __asm__(
+    "SceneCharacterBehaviorStack_Unknown3");
 __int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
     "std___1___shared_weak_count___release_weak");
 void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void SceneCharacterBehaviorStack_Destructor(_QWORD* a1);
+void GameRoutine_1403f60_alt1(__int64*) __asm__("GameRoutine_1403f60");
+void SceneCharacterBehaviorStack_Unknown3(__int64 a1);
 
 void SceneCharacterBehaviorStack_Destructor(_QWORD* a1)
 {
@@ -131,9 +134,8 @@ LABEL_25:
   }
 }
 
-__int64 SceneCharacterBehaviorStack_Unknown3(__int64 result)
+void SceneCharacterBehaviorStack_Unknown3(__int64 a1)
 {
-  __int64 v1;
   int v2;
   __int64 v3;
   __int64 v4;
@@ -143,28 +145,27 @@ __int64 SceneCharacterBehaviorStack_Unknown3(__int64 result)
   __int64 v8;
   __int64 v9;
   unsigned __int64 v10;
-  _QWORD* v11;
+  __int64* v11;
   __int64 v12;
   __int64 v13;
   __int64 v14;
   __int64 v15;
-  unsigned __int64 v16;
-  _QWORD* v17;
-  __int64 v18;
+  __int64 v16;
+  unsigned __int64 v17;
+  _QWORD* v18;
   __int64 v19;
   __int64 v20;
+  __int64 v21;
 
-  if (*(_QWORD*)(result + 56) != 0) {
-    v1 = result;
-    if (*(_BYTE*)(result + 64) != 0) {
-      v2 = *(_QWORD*)(result + 56);
+  if (*(_QWORD*)(a1 + 56) != 0) {
+    if (*(_BYTE*)(a1 + 64) != 0) {
+      v2 = *(_QWORD*)(a1 + 56);
     }
     else {
       v2 = -1;
     }
-    v3 = *(_QWORD*)(*(_QWORD*)(result + 24) +
-                    8LL * (*(_QWORD*)(result + 48) >> 8)) +
-         16LL * (unsigned __int8)*(_QWORD*)(result + 48);
+    v3 = *(_QWORD*)(*(_QWORD*)(a1 + 24) + 8LL * (*(_QWORD*)(a1 + 48) >> 8)) +
+         16LL * (unsigned __int8)*(_QWORD*)(a1 + 48);
     v5 = *(_BYTE**)v3;
     v4 = *(_QWORD*)(v3 + 8);
     if (v4 != 0) {
@@ -182,118 +183,117 @@ __int64 SceneCharacterBehaviorStack_Unknown3(__int64 result)
         if (((*(__int64 (**)(_BYTE*))(*(_QWORD*)v5 + 48LL))(v5) & 1) == 0) {
           (*(void (**)(_BYTE*))(*(_QWORD*)v5 + 32LL))(v5);
         }
-        result = (*(__int64 (**)(_BYTE*))(*(_QWORD*)v5 + 48LL))(v5);
-        if ((result & 1) == 0) {
+        if (((*(__int64 (**)(_BYTE*))(*(_QWORD*)v5 + 48LL))(v5) & 1) == 0) {
           break;
         }
         if (v5[24] == 1) {
-          result = (*(__int64 (**)(_BYTE*))(*(_QWORD*)v5 + 40LL))(v5);
+          (*(void (**)(_BYTE*))(*(_QWORD*)v5 + 40LL))(v5);
         }
-        v8 = *(_QWORD*)(*(_QWORD*)(*(_QWORD*)(v1 + 24) +
-                                   8LL * (*(_QWORD*)(v1 + 48) >> 8)) +
-                        16LL * (unsigned __int8)*(_QWORD*)(v1 + 48) + 8);
+        v8 = *(_QWORD*)(*(_QWORD*)(*(_QWORD*)(a1 + 24) +
+                                   8LL * (*(_QWORD*)(a1 + 48) >> 8)) +
+                        16LL * (unsigned __int8)*(_QWORD*)(a1 + 48) + 8);
         if (v8 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v8 + 8),
                                         0xFFFFFFFFFFFFFFFFLL) == 0) {
           (*(void (**)(__int64))(*(_QWORD*)v8 + 16LL))(v8);
-          result = std___1___shared_weak_count___release_weak(v8);
+          std___1___shared_weak_count___release_weak_alt1(v8);
         }
-        v9 = *(_QWORD*)(v1 + 56) - 1LL;
-        v10 = *(_QWORD*)(v1 + 48) + 1LL;
-        *(_QWORD*)(v1 + 48) = v10;
-        *(_QWORD*)(v1 + 56) = v9;
+        v9 = *(_QWORD*)(a1 + 56) - 1LL;
+        v10 = *(_QWORD*)(a1 + 48) + 1LL;
+        *(_QWORD*)(a1 + 48) = v10;
+        *(_QWORD*)(a1 + 56) = v9;
         if (v10 >= 0x200) {
-          v11 = *(_QWORD**)(v1 + 24);
+          v11 = *(__int64**)(a1 + 24);
+          v12 = *v11;
           if (*v11 != 0) {
             if (*(_QWORD*)(*(_QWORD*)v6 + 200LL) != 0) {
-              v12 = 128;
+              v13 = 128;
             }
             else {
-              v12 = 56;
+              v13 = 56;
             }
-            result = nn_mem_StandardAllocator_Free(*(_QWORD*)v6 + v12);
-            v11 = *(_QWORD**)(v1 + 24);
-            v10 = *(_QWORD*)(v1 + 48);
+            nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v6 + v13, v12);
+            v11 = *(__int64**)(a1 + 24);
+            v10 = *(_QWORD*)(a1 + 48);
           }
-          *(_QWORD*)(v1 + 24) = v11 + 1;
-          *(_QWORD*)(v1 + 48) = v10 - 256;
+          *(_QWORD*)(a1 + 24) = v11 + 1;
+          *(_QWORD*)(a1 + 48) = v10 - 256;
         }
-        if (*(_BYTE*)(v1 + 64) == 1) {
-          result = (*(__int64 (**)(_BYTE*))(*(_QWORD*)v5 + 56LL))(v5);
-          v13 = *(_QWORD*)(v1 + 24);
-          v14 = *(_QWORD*)(v1 + 32);
-          v15 = 32 * (v14 - v13) - 1;
-          if (v14 == v13) {
-            v15 = 0;
+        if (*(_BYTE*)(a1 + 64) == 1) {
+          (*(void (**)(_BYTE*))(*(_QWORD*)v5 + 56LL))(v5);
+          v14 = *(_QWORD*)(a1 + 24);
+          v15 = *(_QWORD*)(a1 + 32);
+          v16 = 32 * (v15 - v14) - 1;
+          if (v15 == v14) {
+            v16 = 0;
           }
-          v16 = *(_QWORD*)(v1 + 56) + *(_QWORD*)(v1 + 48);
-          if (v15 == v16) {
-            result = GameRoutine_1403f60(v1 + 16);
-            v13 = *(_QWORD*)(v1 + 24);
-            v16 = *(_QWORD*)(v1 + 56) + *(_QWORD*)(v1 + 48);
+          v17 = *(_QWORD*)(a1 + 56) + *(_QWORD*)(a1 + 48);
+          if (v16 == v17) {
+            GameRoutine_1403f60_alt1((__int64*)(a1 + 16));
+            v14 = *(_QWORD*)(a1 + 24);
+            v17 = *(_QWORD*)(a1 + 56) + *(_QWORD*)(a1 + 48);
           }
-          v17 = (_QWORD*)(*(_QWORD*)(v13 + 8 * (v16 >> 8)) +
-                          16LL * (unsigned __int8)v16);
-          *v17 = v5;
-          v17[1] = v4;
+          v18 = (_QWORD*)(*(_QWORD*)(v14 + 8 * (v17 >> 8)) +
+                          16LL * (unsigned __int8)v17);
+          *v18 = v5;
+          v18[1] = v4;
           if (v4 != 0) {
             atomic_fetch_add_explicit((atomic_ullong* volatile)(v4 + 8), 1u,
                                       memory_order_relaxed);
           }
           --v2;
-          v18 = *(_QWORD*)(v1 + 56) + 1LL;
-          *(_QWORD*)(v1 + 56) = v18;
-          if (v18 == 0) {
+          v19 = *(_QWORD*)(a1 + 56) + 1LL;
+          *(_QWORD*)(a1 + 56) = v19;
+          if (v19 == 0) {
             goto LABEL_46;
           }
         }
-        else if (*(_QWORD*)(v1 + 56) == 0) {
+        else if (*(_QWORD*)(a1 + 56) == 0) {
           goto LABEL_46;
         }
-        v19 =
-            *(_QWORD*)(*(_QWORD*)(v1 + 24) + 8LL * (*(_QWORD*)(v1 + 48) >> 8)) +
-            16LL * (unsigned __int8)*(_QWORD*)(v1 + 48);
-        v5 = *(_BYTE**)v19;
-        v20 = *(_QWORD*)(v19 + 8);
-        if (v20 != 0) {
-          atomic_fetch_add_explicit((atomic_ullong* volatile)(v20 + 8), 1u,
+        v20 =
+            *(_QWORD*)(*(_QWORD*)(a1 + 24) + 8LL * (*(_QWORD*)(a1 + 48) >> 8)) +
+            16LL * (unsigned __int8)*(_QWORD*)(a1 + 48);
+        v5 = *(_BYTE**)v20;
+        v21 = *(_QWORD*)(v20 + 8);
+        if (v21 != 0) {
+          atomic_fetch_add_explicit((atomic_ullong* volatile)(v21 + 8), 1u,
                                     memory_order_relaxed);
         }
         if (v4 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v4 + 8),
                                         0xFFFFFFFFFFFFFFFFLL) == 0) {
           (*(void (**)(__int64))(*(_QWORD*)v4 + 16LL))(v4);
-          result = std___1___shared_weak_count___release_weak(v4);
+          std___1___shared_weak_count___release_weak_alt1(v4);
         }
         if (v2 != 0) {
-          v4 = v20;
+          v4 = v21;
           if (v5 != nullptr) {
             continue;
           }
         }
-        if (v20 != 0) {
+        if (v21 != 0) {
           goto LABEL_49;
         }
-        return result;
+        return;
       }
-      v20 = v4;
+      v21 = v4;
       if (v4 == 0) {
-        return result;
+        return;
       }
     }
     else {
     LABEL_46:
-      v20 = v4;
+      v21 = v4;
       if (v4 == 0) {
-        return result;
+        return;
       }
     }
   LABEL_49:
-    if (atomic_fetch_add((atomic_ullong* volatile)(v20 + 8),
+    if (atomic_fetch_add((atomic_ullong* volatile)(v21 + 8),
                          0xFFFFFFFFFFFFFFFFLL) == 0) {
-      (*(void (**)(__int64))(*(_QWORD*)v20 + 16LL))(v20);
-      return std___1___shared_weak_count___release_weak(v20);
+      (*(void (**)(__int64))(*(_QWORD*)v21 + 16LL))(v21);
+      std___1___shared_weak_count___release_weak_alt1(v21);
     }
   }
-  return result;
 }
 
 #pragma GCC visibility pop

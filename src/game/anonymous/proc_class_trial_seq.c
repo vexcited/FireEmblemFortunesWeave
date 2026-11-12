@@ -11,8 +11,10 @@ extern __int64 GameData_212c608[2];
 extern __int64 GameData_21f1ee0;
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64 game_ProcGameSkipView_instance_;
-__int64 ProcClassTrialSeq_Destructor(__int64 a1);
-__int64 ProcClassTrialSeq_DeletingDestructor(__int64 a1);
+__int64 ProcClassTrialSeq_Destructor_alt1(__int64 a1) __asm__(
+    "ProcClassTrialSeq_Destructor");
+__int64 ProcClassTrialSeq_DeletingDestructor_alt1(__int64 a1) __asm__(
+    "ProcClassTrialSeq_DeletingDestructor");
 __int64 GameRoutine_1380220(_QWORD, _QWORD);
 __int64 GameRoutine_146bcc0(void);
 __int64 GameRoutine_8679c0(_QWORD);
@@ -117,8 +119,9 @@ __int64 ProcClassTrialSeq_8b8140(__int64 a1, __int64 a2, __int64 a3,
                                  __int64 a4);
 __int64
 game_anonymous_ProcClassTrialSeq_ConfirmChange_closure_Invoke(__int64 a1);
-__int64 game_anonymous_ProcClassTrialSeq_ProcClassTrialSeq_closure_Invoke(
-    __int64 result, _DWORD* a2);
+__int64 game_anonymous_ProcClassTrialSeq_ProcClassTrialSeq_closure_Invoke_alt1(
+    __int64 result, _DWORD* a2) __asm__("game_anonymous_ProcClassTrialSeq_"
+                                        "ProcClassTrialSeq_closure_Invoke");
 _QWORD* GameRoutine_93eed0(_QWORD* result);
 __attribute__((swiftcall)) void TelopLevelUp_1748710(PSEUDO_X8, __int64);
 __attribute__((swiftcall)) void game_Unit_GetParams(PSEUDO_X8, __int64);
@@ -139,6 +142,20 @@ extern __int64 (*GameData_1fa9ce8[])();
 void GameRoutine_8679c0_alt1() __asm__("GameRoutine_8679c0");
 void __attribute__((noreturn)) GameRoutine_60a310();
 __int64 ProcClassTrialSeq_8b8d40(__int64 a1, __int64 a2, __int64 a3);
+__int64 game_ProcInst_Unregister_alt1(__int64 result) __asm__(
+    "game_ProcInst_Unregister");
+__int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
+void GameRoutine_658c00_alt1(__int64*) __asm__("GameRoutine_658c00");
+void __attribute__((noreturn))
+GameRoutine_60a210_alt1() __asm__("GameRoutine_60a210");
+void __attribute__((noreturn))
+GameRoutine_705570_alt1() __asm__("GameRoutine_705570");
+void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void ProcClassTrialSeq_Destructor(__int64 a1);
+void ProcClassTrialSeq_DeletingDestructor(__int64 a1);
+void game_anonymous_ProcClassTrialSeq_ProcClassTrialSeq_closure_Invoke(
+    __int64 a1, _DWORD* a2);
 
 __int64 game_anonymous_ProcClassTrialSeq_ConfirmChange(__int64 a1)
 {
@@ -669,7 +686,7 @@ LABEL_13:
   return game_Unit_Destroy_Unit((__int64)v42_.v42);
 }
 
-__int64 ProcClassTrialSeq_Destructor(__int64 a1)
+void ProcClassTrialSeq_Destructor(__int64 a1)
 {
   _QWORD* v2;
   __int64 v3;
@@ -686,6 +703,7 @@ __int64 ProcClassTrialSeq_Destructor(__int64 a1)
   __int64 v14;
   __int64 v15;
   __int64 v16;
+  __int64 v17;
 
   *(_QWORD*)a1 = game_anonymous_ProcClassTrialSeq_vtable;
   v2 = (_QWORD*)game_ProcGameSkipView_instance_;
@@ -712,33 +730,34 @@ __int64 ProcClassTrialSeq_Destructor(__int64 a1)
     v2[27] = v3 - 1;
     v2[20] = v14;
     if ((unsigned __int64)(v11 - (v3 + v4) - 255) <= 0xFFFFFFFFFFFFFEFFLL) {
-      if (*(_QWORD*)(v5 - 8) != 0) {
-        v15 = 128;
+      v15 = *(_QWORD*)(v5 - 8);
+      if (v15 != 0) {
+        v16 = 128;
         if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-          v15 = 56;
+          v16 = 56;
         }
-        nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                      v15);
+        nn_mem_StandardAllocator_Free_alt2(
+            *(_QWORD*)fw_memory_g_heap_manager_ptr + v16, v15);
         v5 = v2[24];
       }
       v2[24] = v5 - 8;
     }
   }
-  v16 = *(_QWORD*)(a1 + 168);
+  v17 = *(_QWORD*)(a1 + 168);
   *(_QWORD*)(a1 + 168) = 0;
-  if (v16 != 0) {
-    (*(void (**)(__int64))(*(_QWORD*)v16 + 8LL))(v16);
+  if (v17 != 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v17 + 8LL))(v17);
   }
   GameData_21f1ee0 = 0;
   *(_QWORD*)a1 = game_ProcInst_vtable;
   if ((*(_WORD*)(a1 + 136) & 0x100) != 0) {
     *(_WORD*)(a1 + 136) &= ~0x100u;
   }
-  game_ProcInst_Unregister(a1);
-  return GameRoutine_658c00(a1 + 88);
+  game_ProcInst_Unregister_alt1(a1);
+  GameRoutine_658c00_alt1((__int64*)(a1 + 88));
 }
 
-__int64 ProcClassTrialSeq_DeletingDestructor(__int64 a1)
+void ProcClassTrialSeq_DeletingDestructor(__int64 a1)
 {
   _QWORD* v2;
   __int64 v3;
@@ -757,6 +776,7 @@ __int64 ProcClassTrialSeq_DeletingDestructor(__int64 a1)
   __int64 v16;
   __int64 v17;
   __int64 v18;
+  __int64 v19;
 
   *(_QWORD*)a1 = game_anonymous_ProcClassTrialSeq_vtable;
   v2 = (_QWORD*)game_ProcGameSkipView_instance_;
@@ -784,38 +804,39 @@ __int64 ProcClassTrialSeq_DeletingDestructor(__int64 a1)
     v2[27] = v4 - 1;
     v2[20] = v15;
     if ((unsigned __int64)(v12 - (v4 + v5) - 255) <= 0xFFFFFFFFFFFFFEFFLL) {
-      if (*(_QWORD*)(v6 - 8) != 0) {
-        v16 = 128;
+      v16 = *(_QWORD*)(v6 - 8);
+      if (v16 != 0) {
+        v17 = 128;
         if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
-          v16 = 56;
+          v17 = 56;
         }
-        nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v16);
+        nn_mem_StandardAllocator_Free_alt2(*(_QWORD*)v3 + v17, v16);
         v6 = v2[24];
       }
       v2[24] = v6 - 8;
     }
   }
-  v17 = *(_QWORD*)(a1 + 168);
+  v18 = *(_QWORD*)(a1 + 168);
   *(_QWORD*)(a1 + 168) = 0;
-  if (v17 != 0) {
-    (*(void (**)(__int64))(*(_QWORD*)v17 + 8LL))(v17);
+  if (v18 != 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v18 + 8LL))(v18);
   }
   GameData_21f1ee0 = 0;
   *(_QWORD*)a1 = GameData_212c608[0] + 16;
   if ((*(_WORD*)(a1 + 136) & 0x100) != 0) {
     *(_WORD*)(a1 + 136) &= ~0x100u;
   }
-  game_ProcInst_Unregister(a1);
-  GameRoutine_658c00(a1 + 88);
-  v18 = 128;
+  game_ProcInst_Unregister_alt1(a1);
+  GameRoutine_658c00_alt1((__int64*)(a1 + 88));
+  v19 = 128;
   if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
-    v18 = 56;
+    v19 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v18);
+  nn_mem_StandardAllocator_Free_alt2(*(_QWORD*)v3 + v19, a1);
 }
 
-__int64 game_anonymous_ProcClassTrialSeq_ProcClassTrialSeq_closure_Invoke(
-    __int64 result, _DWORD* a2)
+void game_anonymous_ProcClassTrialSeq_ProcClassTrialSeq_closure_Invoke(
+    __int64 a1, _DWORD* a2)
 {
   __int64* v2;
   __int64 v3;
@@ -823,7 +844,7 @@ __int64 game_anonymous_ProcClassTrialSeq_ProcClassTrialSeq_closure_Invoke(
   _QWORD* v5;
   __int64 v6;
   __int64 v7;
-  __int64 v8;
+  signed __int64 v8;
   unsigned __int64 v9;
   __int64 v10;
   __int64 v11;
@@ -833,16 +854,16 @@ __int64 game_anonymous_ProcClassTrialSeq_ProcClassTrialSeq_closure_Invoke(
   __int64 v15;
   __int64 v16;
 
-  v2 = *(__int64**)(result + 8);
+  v2 = *(__int64**)(a1 + 8);
   v3 = *(_QWORD*)(*(_QWORD*)(*GameData_212c880[0] + 64) + 8LL * (*a2 & 0xFFF));
   v5 = (_QWORD*)v2[1];
   v4 = v2[2];
   if ((unsigned __int64)v5 >= v4) {
     v7 = *v2;
-    v8 = (__int64)v5 - *v2;
+    v8 = (signed __int64)v5 - *v2;
     v9 = (v8 >> 3) + 1;
     if (v9 >> 61 != 0) {
-      GameRoutine_705570();
+      GameRoutine_705570_alt1();
     }
     v10 = v4 - v7;
     v11 = fw_memory_g_heap_manager_ptr;
@@ -857,9 +878,9 @@ __int64 game_anonymous_ProcClassTrialSeq_ProcClassTrialSeq_closure_Invoke(
     }
     if (v12 != 0) {
       if (v12 >> 61 != 0) {
-        GameRoutine_60a210(result);
+        GameRoutine_60a210_alt1();
       }
-      v13 = fw_memory_HeapManager_Allocate(
+      v13 = fw_memory_HeapManager_Allocate_alt1(
           *(_QWORD*)fw_memory_g_heap_manager_ptr, 8 * v12, 16, 0);
     }
     else {
@@ -869,7 +890,7 @@ __int64 game_anonymous_ProcClassTrialSeq_ProcClassTrialSeq_closure_Invoke(
     v15 = v13 + v8 - 8 * (v8 >> 3);
     *(_QWORD*)(v13 + v8) = v3;
     v6 = v13 + v8 + 8;
-    result = memcpy(v15, v7, v8);
+    memcpy_alt1(v15, v7, v8);
     *v2 = v15;
     v2[1] = v6;
     v2[2] = v14;
@@ -878,7 +899,7 @@ __int64 game_anonymous_ProcClassTrialSeq_ProcClassTrialSeq_closure_Invoke(
       if (*(_QWORD*)(*(_QWORD*)v11 + 200LL) == 0) {
         v16 = 56;
       }
-      result = nn_mem_StandardAllocator_Free(*(_QWORD*)v11 + v16);
+      nn_mem_StandardAllocator_Free_alt2(*(_QWORD*)v11 + v16, v7);
     }
   }
   else {
@@ -886,7 +907,6 @@ __int64 game_anonymous_ProcClassTrialSeq_ProcClassTrialSeq_closure_Invoke(
     v6 = (__int64)(v5 + 1);
   }
   v2[1] = v6;
-  return result;
 }
 
 #pragma GCC visibility pop

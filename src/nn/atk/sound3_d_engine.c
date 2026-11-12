@@ -1,5 +1,7 @@
 #include "decomp/pseudo_helpers.h"
 
+#include "decomp/pseudo_float.h"
+
 #pragma GCC visibility push(hidden)
 
 __int64 Sound3DEngine_277510(__int64 a1, __int64 a2, __int64 a3,
@@ -21,6 +23,7 @@ float* Sound3DEngine_277730(float* result, __int64 a2, float32x4_t* a3,
                             float32x4_t* a4, float32x4_t* a5, float a6);
 float Sound3DEngine_277870(float32x4_t* a1, float* a2, float* a3, float a4,
                            float a5, float a6, float a7, float a8, float a9);
+float atan2f_alt1(float, float) __asm__("atan2f");
 
 void Sound3DEngine_Unknown4(__int64 a1, float* a2, __int64 a3, float32x4_t* a4,
                             __int64 a5, char a6)
@@ -388,7 +391,7 @@ float Sound3DEngine_277870(float32x4_t* a1, float* a2, float* a3, float a4,
   float32x4_t v39;
 
   v10 = (__typeof__(v10)){0};
-  if (a5 != 0.0f) {
+  if (a5 != 0x0.0p+0f) {
     v17 = *a1;
     v18 = *a1;
     LANES128(v18).n128_u32[1] = 0;
@@ -432,45 +435,47 @@ float Sound3DEngine_277870(float32x4_t* a1, float* a2, float* a3, float a4,
     LANES128(v10).n128_f32[2] = (float)(v22 * v20) / a5;
   }
   v39 = v10;
-  v24 = atan2f();
+  v24 = atan2f_alt1(LANES128(v10).n128_f32[0], -LANES128(v10).n128_f32[2]);
   if (v24 >= (float)-a8) {
     if (v24 >= -0x1.921fb60000000p+0f) {
       if (v24 >= (float)-a7) {
         if (v24 >= a7) {
           if (v24 >= 0x1.921fb60000000p+0f) {
-            v32 = 0.5f;
-            v33 = (float)((float)((float)(a8 * 0.0f) + -0x1.921fb60000000p+1f) /
+            v32 = 0x1.0000000000000p-1f;
+            v33 = (float)((float)((float)(a8 * 0x0.0p+0f) +
+                                  -0x1.921fb60000000p+1f) /
                           (float)(a8 + -0x1.921fb60000000p+1f)) +
                   (float)(v24 / (float)(a8 + -0x1.921fb60000000p+1f));
             if (a8 == 0x1.921fb60000000p+1f) {
-              v33 = 0.5f;
+              v33 = 0x1.0000000000000p-1f;
             }
             if (a8 != 0x1.921fb60000000p+0f) {
-              v32 =
-                  (float)((float)((float)(a8 * -0.0f) + 0x1.921fb60000000p+0f) /
-                          (float)(0x1.921fb60000000p+0f - a8)) -
-                  (float)(v24 / (float)(0x1.921fb60000000p+0f - a8));
+              v32 = (float)((float)((float)(PSEUDO_UNFUSED(a8 * -0x0.0p+0f)) +
+                                    0x1.921fb60000000p+0f) /
+                            (float)(0x1.921fb60000000p+0f - a8)) -
+                    (float)(v24 / (float)(0x1.921fb60000000p+0f - a8));
             }
             if (v24 < a8) {
               v25 = v32;
             }
             else {
-              v25 = 1.0f;
+              v25 = 0x1.0000000000000p+0f;
             }
             if (v24 < a8) {
-              v27 = 1.0f;
+              v27 = 0x1.0000000000000p+0f;
             }
             else {
               v27 = v33;
             }
           }
           else {
-            v27 = 1.0f;
-            v31 = (float)((float)((float)(a7 * 0.0f) + 0x1.921fb60000000p+0f) /
+            v27 = 0x1.0000000000000p+0f;
+            v31 = (float)((float)((float)(a7 * 0x0.0p+0f) +
+                                  0x1.921fb60000000p+0f) /
                           (float)(a7 + -0x1.921fb60000000p+0f)) -
                   (float)(v24 / (float)(a7 + -0x1.921fb60000000p+0f));
             if (a7 == 0x1.921fb60000000p+0f) {
-              v25 = -0.5f;
+              v25 = -0x1.0000000000000p-1f;
             }
             else {
               v25 = v31;
@@ -478,11 +483,11 @@ float Sound3DEngine_277870(float32x4_t* a1, float* a2, float* a3, float a4,
           }
         }
         else {
-          v25 = -1.0f;
+          v25 = -0x1.0000000000000p+0f;
           v30 = (float)((float)(a7 - a7) / (float)((float)-a7 - a7)) -
                 (float)((float)(v24 + v24) / (float)((float)-a7 - a7));
-          if (a7 == 0.0f) {
-            v27 = 0.0f;
+          if (a7 == 0x0.0p+0f) {
+            v27 = 0x0.0p+0f;
           }
           else {
             v27 = v30;
@@ -490,12 +495,13 @@ float Sound3DEngine_277870(float32x4_t* a1, float* a2, float* a3, float a4,
         }
       }
       else {
-        v27 = -1.0f;
-        v29 = (float)((float)((float)(a7 * 0.0f) + 0x1.921fb60000000p+0f) /
+        v27 = -0x1.0000000000000p+0f;
+        v29 = (float)((float)((float)(PSEUDO_UNFUSED(a7 * 0x0.0p+0f)) +
+                              0x1.921fb60000000p+0f) /
                       (float)(a7 + -0x1.921fb60000000p+0f)) +
               (float)(v24 / (float)(a7 + -0x1.921fb60000000p+0f));
         if (a7 == 0x1.921fb60000000p+0f) {
-          v25 = -0.5f;
+          v25 = -0x1.0000000000000p-1f;
         }
         else {
           v25 = v29;
@@ -503,13 +509,13 @@ float Sound3DEngine_277870(float32x4_t* a1, float* a2, float* a3, float a4,
       }
     }
     else {
-      v27 = -1.0f;
-      v28 =
-          (float)((float)((float)((float)-a8 * 0.0f) + 0x1.921fb60000000p+0f) /
-                  (float)(0x1.921fb60000000p+0f - a8)) +
-          (float)(v24 / (float)(0x1.921fb60000000p+0f - a8));
+      v27 = -0x1.0000000000000p+0f;
+      v28 = (float)((float)((float)((float)-a8 * 0x0.0p+0f) +
+                            0x1.921fb60000000p+0f) /
+                    (float)(0x1.921fb60000000p+0f - a8)) +
+            (float)(v24 / (float)(0x1.921fb60000000p+0f - a8));
       if (a8 == 0x1.921fb60000000p+0f) {
-        v25 = 0.5f;
+        v25 = 0x1.0000000000000p-1f;
       }
       else {
         v25 = v28;
@@ -517,12 +523,13 @@ float Sound3DEngine_277870(float32x4_t* a1, float* a2, float* a3, float a4,
     }
   }
   else {
-    v25 = 1.0f;
-    v26 = (float)((float)((float)(a8 * 0.0f) + 0x1.921fb60000000p+1f) /
+    v25 = 0x1.0000000000000p+0f;
+    v26 = (float)((float)((float)(PSEUDO_UNFUSED(a8 * 0x0.0p+0f)) +
+                          0x1.921fb60000000p+1f) /
                   (float)(a8 + -0x1.921fb60000000p+1f)) +
           (float)(v24 / (float)(a8 + -0x1.921fb60000000p+1f));
     if (a8 == 0x1.921fb60000000p+1f) {
-      v27 = -0.5f;
+      v27 = -0x1.0000000000000p-1f;
     }
     else {
       v27 = v26;
@@ -542,15 +549,20 @@ float Sound3DEngine_277870(float32x4_t* a1, float* a2, float* a3, float a4,
         a4;
   v36 = cosf(a7);
   v37 = cosf(a8);
-  *a2 = (float)((float)(1.0f - v35) * 0.0f) + (float)((float)(a6 * v27) * v35);
+  *a2 = (float)(PSEUDO_UNFUSED((float)(0x1.0000000000000p+0f - v35) *
+                               0x0.0p+0f)) +
+        (float)((float)(a6 * v27) * v35);
   result =
-      a9 + (float)((float)((float)((float)(1.0f - v35) *
-                                   (float)((float)((float)(v36 + v37) * 0.5f) /
-                                           (float)((float)((float)(v36 + v37) *
-                                                           0.5f) -
-                                                   v37))) +
+      a9 + (float)((float)((float)(PSEUDO_UNFUSED(
+                               (float)(0x1.0000000000000p+0f - v35) *
+                               (float)((float)((float)(v36 + v37) *
+                                               0x1.0000000000000p-1f) /
+                                       (float)((float)(PSEUDO_UNFUSED(
+                                                   (float)(v36 + v37) *
+                                                   0x1.0000000000000p-1f)) -
+                                               v37)))) +
                            (float)((float)(a6 * v25) * v35)) +
-                   1.0f);
+                   0x1.0000000000000p+0f);
   *a3 = result;
   return result;
 }

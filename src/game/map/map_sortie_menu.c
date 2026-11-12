@@ -101,6 +101,14 @@ __int64 GameRoutine_1593d90_alt1(__int64,
                                  __int64) __asm__("GameRoutine_1593d90");
 void GameRoutine_130dae0_alt1(__int64, __int64) __asm__("GameRoutine_130dae0");
 __int64 MapSortieMenu_872680(__int64 a1);
+__attribute__((swiftcall)) void
+LayoutAccessor_1560070_alt1(PSEUDO_X8, __int64*,
+                            const char*) __asm__("LayoutAccessor_1560070");
+__int64 std___1___shared_weak_count___release_weak_alt2(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 std___1___shared_weak_count_lock_alt2(__int64) __asm__(
+    "std___1___shared_weak_count_lock");
+void GameHr_1a006e0(__int64, __int64, __int64*, __int64*, float);
 
 __int64 game_map_MapSortieMenu_CreateBattleStartDialog(__int64 a1, __int64 a2)
 {
@@ -1075,12 +1083,12 @@ __int64 MapSortieMenu_Unknown3(__int64 a1)
     __int64 v12;
   } v11_;
 
-  LayoutAccessor_1560070((void*)(&v11_.v11), (__int64*)(a1 + 848),
-                         (__int64)"L_Minimap");
+  LayoutAccessor_1560070_alt1((void*)(&v11_.v11), (__int64*)(a1 + 848),
+                              "L_Minimap");
   if (v11_.v12 == 0) {
     goto LABEL_21;
   }
-  v2 = std___1___shared_weak_count_lock(v11_.v12);
+  v2 = std___1___shared_weak_count_lock_alt2(v11_.v12);
   if (v2 != 0) {
     v3 = v11_.v11;
   }
@@ -1088,7 +1096,7 @@ __int64 MapSortieMenu_Unknown3(__int64 a1)
     v3 = 0;
   }
   if (v11_.v12 != 0) {
-    std___1___shared_weak_count___release_weak(v11_.v12);
+    std___1___shared_weak_count___release_weak_alt2(v11_.v12);
   }
   if (v3 != 0) {
     if (v2 != 0) {
@@ -1115,18 +1123,17 @@ __int64 MapSortieMenu_Unknown3(__int64 a1)
       v11_.v11 = v3;
       v11_.v12 = v2;
       if (v2 == 0) {
-        GameRoutine_1a006e0(a1 + 1072, (__int64)&v11_.v11,
-                            (__int64*)(a1 + 1248), (__int64*)(a1 + 1224),
-                            *(float*)(a1 + 1280));
+        GameHr_1a006e0(a1 + 1072, (__int64)&v11_.v11, (__int64*)(a1 + 1248),
+                       (__int64*)(a1 + 1224), *(float*)(a1 + 1280));
         goto LABEL_21;
       }
       atomic_fetch_add_explicit((atomic_ullong* volatile)(v2 + 16), 1u,
                                 memory_order_relaxed);
-      GameRoutine_1a006e0(a1 + 1072, (__int64)&v11_.v11, (__int64*)(a1 + 1248),
-                          (__int64*)(a1 + 1224), *(float*)(a1 + 1280));
-      std___1___shared_weak_count___release_weak(v2);
+      GameHr_1a006e0(a1 + 1072, (__int64)&v11_.v11, (__int64*)(a1 + 1248),
+                     (__int64*)(a1 + 1224), *(float*)(a1 + 1280));
+      std___1___shared_weak_count___release_weak_alt2(v2);
     }
-    std___1___shared_weak_count___release_weak(v2);
+    std___1___shared_weak_count___release_weak_alt2(v2);
   }
   else if (v2 == 0) {
     goto LABEL_21;
@@ -1134,7 +1141,7 @@ __int64 MapSortieMenu_Unknown3(__int64 a1)
   if (atomic_fetch_add((atomic_ullong* volatile)(v2 + 8),
                        0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v2 + 16LL))(v2);
-    std___1___shared_weak_count___release_weak(v2);
+    std___1___shared_weak_count___release_weak_alt2(v2);
   }
 LABEL_21:
   v6 = GameRoutine_16df380(a1);

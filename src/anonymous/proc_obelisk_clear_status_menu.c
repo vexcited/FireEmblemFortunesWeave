@@ -33,7 +33,8 @@ extern __int64* GameData_212e0c8[6];
 extern __int64* GameData_21319b0[6];
 struct PseudoSret GameRoutine_1560070(_QWORD, _QWORD);
 void __attribute__((noreturn)) GameRoutine_60a310(_QWORD, _QWORD);
-__n128 ProcObeliskClearStatusMenu_DeletingDestructor(_QWORD* a1);
+__n128 ProcObeliskClearStatusMenu_DeletingDestructor_alt1(_QWORD* a1) __asm__(
+    "ProcObeliskClearStatusMenu_DeletingDestructor");
 __n128 ProcObeliskClearStatusMenu_Unknown88(__int64 a1);
 _QWORD* anonymous_ProcObeliskClearStatusMenu_CreateBindClear_closure0_Invoke(
     __int64 a1, __int64* a2);
@@ -53,6 +54,12 @@ __attribute__((swiftcall)) void LayoutAccessor_1560070(PSEUDO_X8, __int64*,
 __int64 ProcObeliskUnitMergeRouteSelectMenu_158ca00_alt1(
     _QWORD*, __int64,
     unsigned int) __asm__("ProcObeliskUnitMergeRouteSelectMenu_158ca00");
+__int64 memmove_alt1(__int64, __int64, unsigned __int64) __asm__("memmove");
+void game_menu_BasicMenu_Destroy_BasicMenu_alt1(__int64) __asm__(
+    "game_menu_BasicMenu_Destroy_BasicMenu");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void ProcObeliskClearStatusMenu_DeletingDestructor(_QWORD* a1);
 
 __int64 anonymous_ProcObeliskClearStatusMenu_CreateBindClear(__int64 a1,
                                                              char a2)
@@ -115,7 +122,7 @@ LABEL_11:
   return ((__int64 (*)(__int64))(*v8_.v10)[v7])((__int64)v8_.v10);
 }
 
-__n128 ProcObeliskClearStatusMenu_DeletingDestructor(_QWORD* a1)
+void ProcObeliskClearStatusMenu_DeletingDestructor(_QWORD* a1)
 {
   _QWORD* v1;
   __int64* v3;
@@ -181,7 +188,8 @@ LABEL_17:
   if (v4 != (_QWORD*)GameData_2259500) {
     v8 = GameData_2259500 - (_QWORD)(v4 + 1);
     if ((_QWORD*)GameData_2259500 != v4 + 1) {
-      memmove(v4, v4 + 1, GameData_2259500 - (_QWORD)(v4 + 1));
+      memmove_alt1((__int64)v4, (__int64)(v4 + 1),
+                   GameData_2259500 - (_QWORD)(v4 + 1));
     }
     GameData_2259500 = (__int64)v4 + v8;
   }
@@ -210,13 +218,13 @@ LABEL_26:
   }
   (*(void (**)(__int64))(*v11 + v12))((__int64)v11);
 LABEL_31:
-  game_menu_BasicMenu_Destroy_BasicMenu(a1);
+  game_menu_BasicMenu_Destroy_BasicMenu_alt1((__int64)a1);
   v13 = 128;
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
     v13 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v13);
+  nn_mem_StandardAllocator_Free_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v13, (__int64)a1);
 }
 
 __int64 ProcObeliskClearStatusMenu_Unknown85(__int64 a1)

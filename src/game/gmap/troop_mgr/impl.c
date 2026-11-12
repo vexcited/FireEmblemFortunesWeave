@@ -9,7 +9,12 @@ extern __int64 GameData_21eea40;
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64* GameData_212d6d0;
 __int64 Impl_Destructor_13505f0(_QWORD* a1);
-__int64 Impl_DeletingDestructor_13506b0(_QWORD* a1);
+__int64 Impl_DeletingDestructor_13506b0_alt1(_QWORD* a1) __asm__(
+    "Impl_DeletingDestructor_13506b0");
+__int64 GameHr_876a40(_QWORD*, _QWORD*);
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void Impl_DeletingDestructor_13506b0(_QWORD* a1);
 
 __int64 Impl_Destructor_13505f0(_QWORD* a1)
 {
@@ -32,7 +37,7 @@ __int64 Impl_Destructor_13505f0(_QWORD* a1)
     if (*(_QWORD*)(v4 + 200) == 0) {
       v5 = 56;
     }
-    nn_mem_StandardAllocator_Free(v4 + v5);
+    nn_mem_StandardAllocator_Free_alt1(v4 + v5, v1);
   }
   v6 = a1[1];
   if (v6 != 0) {
@@ -42,14 +47,14 @@ __int64 Impl_Destructor_13505f0(_QWORD* a1)
     if (*(_QWORD*)(v7 + 200) == 0) {
       v8 = 56;
     }
-    nn_mem_StandardAllocator_Free(v7 + v8);
+    nn_mem_StandardAllocator_Free_alt1(v7 + v8, v6);
   }
   v10 = a1;
   *a1 = GameData_212d6d0 + 2;
-  return GameRoutine_876a40(&GameData_21eea40, &v10);
+  return GameHr_876a40(&GameData_21eea40, &v10);
 }
 
-__int64 Impl_DeletingDestructor_13506b0(_QWORD* a1)
+void Impl_DeletingDestructor_13506b0(_QWORD* a1)
 {
   __int64 v1;
   __int64 v3;
@@ -59,7 +64,7 @@ __int64 Impl_DeletingDestructor_13506b0(_QWORD* a1)
   __int64 v7;
   __int64 v8;
   __int64 v9;
-  _QWORD* v11;
+  _QWORD* v10;
 
   v1 = a1[4];
   *a1 = game_gmap_TroopMgr_Impl_vtable;
@@ -71,7 +76,7 @@ __int64 Impl_DeletingDestructor_13506b0(_QWORD* a1)
     if (*(_QWORD*)(v4 + 200) == 0) {
       v5 = 56;
     }
-    nn_mem_StandardAllocator_Free(v4 + v5);
+    nn_mem_StandardAllocator_Free_alt1(v4 + v5, v1);
   }
   v6 = a1[1];
   if (v6 != 0) {
@@ -81,16 +86,16 @@ __int64 Impl_DeletingDestructor_13506b0(_QWORD* a1)
     if (*(_QWORD*)(v7 + 200) == 0) {
       v8 = 56;
     }
-    nn_mem_StandardAllocator_Free(v7 + v8);
+    nn_mem_StandardAllocator_Free_alt1(v7 + v8, v6);
   }
-  v11 = a1;
+  v10 = a1;
   *a1 = GameData_212d6d0 + 2;
-  GameRoutine_876a40(&GameData_21eea40, &v11);
+  GameHr_876a40(&GameData_21eea40, &v10);
   v9 = 128;
   if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
     v9 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v9);
+  nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v9, (__int64)a1);
 }
 
 #pragma GCC visibility pop

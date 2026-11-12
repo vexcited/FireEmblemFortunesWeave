@@ -58,6 +58,7 @@ GameRoutine_60a210_alt1() __asm__("GameRoutine_60a210");
 void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void ModelEmitter_Unknown2(__int64 a1, __int64* a2);
+__int64 GameHr_14a5be0(__int64*);
 
 __int64 ModelEmitter_14a5a10(__int64 a1, long double a2)
 {
@@ -438,7 +439,7 @@ void ModelEmitter_Unknown2(__int64 a1, __int64* a2)
       else {
         v50 = nullptr;
       }
-      GameRoutine_a6e580_alt1((void*)((__int64)v84_.v84), v50,
+      GameRoutine_a6e580_alt1((void*)(v84_.v84), v50,
                               (const char*)v8[v49 + 13]),
           v33 = COERCE_AS(__typeof__(v33),
                           PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
@@ -553,7 +554,7 @@ void ModelEmitter_Unknown2(__int64 a1, __int64* a2)
   v74 = *(__int64**)(v81 + 472);
   *(_QWORD*)(v81 + 472) = v8;
   if (v74 != nullptr) {
-    ModelEmitter_14a5be0(v74),
+    GameHr_14a5be0(v74),
         v33 = COERCE_AS(__typeof__(v33),
                         PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
     v75 = 128;

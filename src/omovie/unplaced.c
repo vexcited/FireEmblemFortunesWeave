@@ -25,17 +25,50 @@ void GameRoutine_18ce260();
 void __attribute__((noreturn)) GameRoutine_18cda20(_QWORD);
 void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
 __int64 omovie_18cd4a0(__int64 a1, __int64 a2);
+__int64 GameHr_18cde80(__int64, unsigned int);
+__int64 GameHr_18cdf40(__int64 result, __int64);
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
+__int64 memmove_alt1(__int64, __int64, unsigned __int64) __asm__("memmove");
+__int64 movie_VideoDecoder_ReleaseVideoFrame_alt1(__int64, __int64) __asm__(
+    "movie_VideoDecoder_ReleaseVideoFrame");
+__int64
+movie_VideoFrame_GetBuffer_alt1(__int64, __int64,
+                                __int64) __asm__("movie_VideoFrame_GetBuffer");
+__int64 movie_VideoFrame_GetEndOfStreamState_alt1(__int64, __int64) __asm__(
+    "movie_VideoFrame_GetEndOfStreamState");
+__int64 movie_VideoFrame_GetNativeImageHandle_alt1(__int64, __int64) __asm__(
+    "movie_VideoFrame_GetNativeImageHandle");
+__int64 movie_VideoFrame_GetTimeStamp_alt1(__int64, __int64) __asm__(
+    "movie_VideoFrame_GetTimeStamp");
+__int64 movie_VideoFrame_SetEndOfStreamState_alt1(__int64, bool) __asm__(
+    "movie_VideoFrame_SetEndOfStreamState");
+__int64 nn_oe_GetProgramTotalActiveTime_alt1() __asm__(
+    "nn_oe_GetProgramTotalActiveTime");
+__int64 nn_os_LockMutex_alt1(__int64) __asm__("nn_os_LockMutex");
+__int64 nn_os_SignalEvent_alt1(__int64) __asm__("nn_os_SignalEvent");
+__int64 nn_os_UnlockMutex_alt1(__int64) __asm__("nn_os_UnlockMutex");
+void __attribute__((noreturn))
+GameRoutine_18cda20_alt1() __asm__("GameRoutine_18cda20");
+void __attribute__((noreturn))
+GameRoutine_60a210_alt1() __asm__("GameRoutine_60a210");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 __int64 omovie_18cd4a0(__int64 a1, __int64 a2)
 {
-  _QWORD* v4;
+
+#pragma clang fp contract(off)
+  __int64* v4;
   __int64 v5;
   __int64 v6;
-  _QWORD* v7;
-  _QWORD* v8;
+  __int64* v7;
+  __int64* v8;
   __int64 v9;
-  _QWORD* v10;
-  __int64 EndOfStreamStateEPb;
+  __int64* v10;
+  unsigned int TimeStampEPN2nn8TimeSpanE;
   __int64* v12;
   __int64 v13;
   __int64 v14;
@@ -47,47 +80,45 @@ __int64 omovie_18cd4a0(__int64 a1, __int64 a2)
   __int64 v20;
   __int64 v21;
   __int64 v22;
-  __int64 v23;
-  int v24;
+  int v23;
+  __int64 v24;
   __int64 v25;
   __int64 v26;
   __int64 v27;
   __int64 v28;
   __int64 v29;
-  __int64 v30;
+  int v30;
   __int64 v31;
-  int v32;
+  __int64 v32;
   __int64 v33;
   __int64 v34;
-  __int64 v35;
+  __int64* v35;
   __int64 v36;
-  _QWORD* v37;
+  unsigned __int64 v37;
   __int64 v38;
-  unsigned __int64 v39;
-  __int64 v40;
+  __int64 v39;
+  unsigned __int64 v40;
   __int64 v41;
-  char* v42;
+  unsigned __int64 v42;
   __int64 v43;
-  unsigned __int64 v44;
-  __int64 v45;
+  __int64 v44;
+  unsigned __int64 v45;
   __int64 v46;
-  unsigned __int64 v47;
-  __int64 v48;
-  char* v49;
-  unsigned __int64 v50;
-  __int64 v51;
-  __int64 v52;
-  int v53;
-  unsigned int v54;
-  char v56[4];
-  unsigned int v57;
+  __int64* v47;
+  unsigned __int64 v48;
+  __int64 v49;
+  __int64 v50;
+  int v51;
+  unsigned int v52;
+  char v54[4];
+  unsigned int v55;
+  __int64 v56;
+  __int64 v57;
   __int64 v58;
-  __int64 v59;
-  __int64 v60;
 
-  nn_os_LockMutex(a1 + 728);
-  v4 = *(_QWORD**)(a1 + 704);
-  if (v4 != *(_QWORD**)(a1 + 712)) {
+  nn_os_LockMutex_alt1(a1 + 728);
+  v4 = *(__int64**)(a1 + 704);
+  if (v4 != *(__int64**)(a1 + 712)) {
     do {
       while (1) {
         v6 = *v4;
@@ -96,13 +127,13 @@ __int64 omovie_18cd4a0(__int64 a1, __int64 a2)
           break;
         }
         v4 += 2;
-        if (v4 == *(_QWORD**)(a1 + 712)) {
+        if (v4 == *(__int64**)(a1 + 712)) {
           goto LABEL_11;
         }
       }
-      movie_VideoFrame_SetEndOfStreamState(v6, 0);
-      movie_VideoDecoder_ReleaseVideoFrame(*(_QWORD*)(a1 + 560), v6);
-      v7 = *(_QWORD**)(a1 + 712);
+      movie_VideoFrame_SetEndOfStreamState_alt1(v6, false);
+      movie_VideoDecoder_ReleaseVideoFrame_alt1(*(_QWORD*)(a1 + 560), v6);
+      v7 = *(__int64**)(a1 + 712);
       v8 = v4 + 2;
       if (v4 + 2 == v7) {
         v10 = v4;
@@ -120,185 +151,186 @@ __int64 omovie_18cd4a0(__int64 a1, __int64 a2)
     } while (v4 != v10);
   }
 LABEL_11:
-  LODWORD(EndOfStreamStateEPb) = 0;
+  TimeStampEPN2nn8TimeSpanE = 0;
   if ((*(_BYTE*)(a1 + 760) & 1) == 0 && (*(_BYTE*)(a1 + 763) & 1) != 0) {
     v12 = *(__int64**)(a1 + 680);
     if (v12 == *(__int64**)(a1 + 688)) {
     LABEL_63:
-      LODWORD(EndOfStreamStateEPb) = 0;
+      TimeStampEPN2nn8TimeSpanE = 0;
     }
     else {
       *(_DWORD*)(a1 + 808) = 0;
       while (1) {
         v13 = *v12;
-        v60 = 0;
-        v59 = 0;
         v58 = 0;
-        LODWORD(EndOfStreamStateEPb) = movie_VideoFrame_GetTimeStamp(v13, &v58);
-        if ((_DWORD)EndOfStreamStateEPb != 0) {
+        v57 = 0;
+        v56 = 0;
+        TimeStampEPN2nn8TimeSpanE =
+            movie_VideoFrame_GetTimeStamp_alt1(v13, (__int64)&v56);
+        if (TimeStampEPN2nn8TimeSpanE != 0) {
           break;
         }
         if (*(_BYTE*)(a1 + 596) == 1) {
-          v14 = v58;
+          v14 = v56;
           v15 = *(_QWORD*)(a1 + 616);
           *(_BYTE*)(a1 + 596) = 0;
           v16 = v14 / 1000;
-          v17 = ((__int64 (*)(void))nn_oe_GetProgramTotalActiveTime)() / 1000;
-          nn_os_LockMutex(v15);
+          v17 = nn_oe_GetProgramTotalActiveTime_alt1() / 1000;
+          nn_os_LockMutex_alt1(v15);
           *(_QWORD*)(v15 + 32) = v16;
           *(_QWORD*)(v15 + 40) = v17;
-          nn_os_UnlockMutex(v15);
+          nn_os_UnlockMutex_alt1(v15);
         }
         v18 = *(_QWORD*)(a1 + 616);
-        v19 = v58 / 1000;
-        nn_os_LockMutex(v18);
+        v19 = v56 / 1000;
+        nn_os_LockMutex_alt1(v18);
         v20 = (__int64)((double)(v19 - *(_QWORD*)(v18 + 32)) /
                             *(double*)(v18 + 48) +
                         (double)*(__int64*)(v18 + 40));
-        v21 = nn_os_UnlockMutex(v18);
-        if (nn_oe_GetProgramTotalActiveTime(v21) / -1000 + v20 > 3999) {
+        nn_os_UnlockMutex_alt1(v18);
+        if (nn_oe_GetProgramTotalActiveTime_alt1() / -1000 + v20 > 3999) {
           goto LABEL_63;
         }
-        EndOfStreamStateEPb =
-            movie_VideoFrame_GetEndOfStreamState(v13, a1 + 760);
-        if ((_DWORD)EndOfStreamStateEPb != 0) {
+        TimeStampEPN2nn8TimeSpanE =
+            movie_VideoFrame_GetEndOfStreamState_alt1(v13, a1 + 760);
+        if (TimeStampEPN2nn8TimeSpanE != 0) {
           break;
         }
-        v22 = *(_QWORD*)(a1 + 616);
-        v23 = v58 / 1000;
-        v24 = *(unsigned __int8*)(a1 + 596);
-        *(_QWORD*)(a1 + 600) = v58 / 1000;
-        if (v24 == 1) {
+        v21 = *(_QWORD*)(a1 + 616);
+        v22 = v56 / 1000;
+        v23 = *(unsigned __int8*)(a1 + 596);
+        *(_QWORD*)(a1 + 600) = v56 / 1000;
+        if (v23 == 1) {
           *(_BYTE*)(a1 + 596) = 0;
-          v25 = nn_oe_GetProgramTotalActiveTime(EndOfStreamStateEPb) / 1000;
-          nn_os_LockMutex(v22);
-          *(_QWORD*)(v22 + 32) = v23;
-          *(_QWORD*)(v22 + 40) = v25;
-          nn_os_UnlockMutex(v22);
-          v23 = *(_QWORD*)(a1 + 600);
+          v24 = nn_oe_GetProgramTotalActiveTime_alt1() / 1000;
+          nn_os_LockMutex_alt1(v21);
+          *(_QWORD*)(v21 + 32) = v22;
+          *(_QWORD*)(v21 + 40) = v24;
+          nn_os_UnlockMutex_alt1(v21);
+          v22 = *(_QWORD*)(a1 + 600);
         }
-        nn_os_LockMutex(v22);
-        v26 = (__int64)((double)(v23 - *(_QWORD*)(v22 + 32)) /
-                            *(double*)(v22 + 48) +
-                        (double)*(__int64*)(v22 + 40));
-        v27 = nn_os_UnlockMutex(v22);
-        v28 = v26 - nn_oe_GetProgramTotalActiveTime(v27) / 1000;
-        if (v28 >= 0) {
-          if (v28 != 0) {
-            nn_os_SleepThread(1000 * v28);
+        nn_os_LockMutex_alt1(v21);
+        v25 = (__int64)((double)(v22 - *(_QWORD*)(v21 + 32)) /
+                            *(double*)(v21 + 48) +
+                        (double)*(__int64*)(v21 + 40));
+        nn_os_UnlockMutex_alt1(v21);
+        v26 = v25 - nn_oe_GetProgramTotalActiveTime_alt1() / 1000;
+        if (v26 >= 0) {
+          if (v26 != 0) {
+            nn_os_SleepThread(1000 * v26);
           }
         LABEL_32:
-          v32 = *(_DWORD*)(a1 + 796);
-          v57 = 0;
-          if (v32 == 2) {
-            LODWORD(EndOfStreamStateEPb) =
-                movie_VideoFrame_GetNativeImageHandle(v13, &v57);
-            if ((_DWORD)EndOfStreamStateEPb != 0) {
+          v30 = *(_DWORD*)(a1 + 796);
+          v55 = 0;
+          if (v30 == 2) {
+            TimeStampEPN2nn8TimeSpanE =
+                movie_VideoFrame_GetNativeImageHandle_alt1(v13, (__int64)&v55);
+            if (TimeStampEPN2nn8TimeSpanE != 0) {
               break;
             }
-            GameRoutine_18cde80(*(_QWORD*)(a1 + 568), v57);
-            v59 = 4;
+            GameHr_18cde80(*(_QWORD*)(a1 + 568), v55);
+            v57 = 4;
           }
-          else if (v32 == 1) {
-            LODWORD(EndOfStreamStateEPb) =
-                movie_VideoFrame_GetBuffer(v13, &v60, &v59);
-            if ((_DWORD)EndOfStreamStateEPb != 0) {
+          else if (v30 == 1) {
+            TimeStampEPN2nn8TimeSpanE = movie_VideoFrame_GetBuffer_alt1(
+                v13, (__int64)&v58, (__int64)&v57);
+            if (TimeStampEPN2nn8TimeSpanE != 0) {
               break;
             }
-            GameRoutine_18cdf40(*(_QWORD*)(a1 + 568), v60);
+            GameHr_18cdf40(*(_QWORD*)(a1 + 568), v58);
           }
-          v33 = *(_QWORD*)(a1 + 680);
-          v34 = *(_QWORD*)(a1 + 688);
-          v35 = v34 - (v33 + 8);
-          if (v34 != v33 + 8) {
-            memmove(*(_QWORD*)(a1 + 680), v33 + 8, v34 - (v33 + 8));
+          v31 = *(_QWORD*)(a1 + 680);
+          v32 = *(_QWORD*)(a1 + 688);
+          v33 = v32 - (v31 + 8);
+          if (v32 != v31 + 8) {
+            memmove_alt1(*(_QWORD*)(a1 + 680), v31 + 8, v32 - (v31 + 8));
           }
-          v56[0] = 0;
-          *(_QWORD*)(a1 + 688) = v33 + v35;
-          LODWORD(EndOfStreamStateEPb) =
-              movie_VideoFrame_GetEndOfStreamState(v13, v56);
-          if ((_DWORD)EndOfStreamStateEPb != 0) {
+          v54[0] = 0;
+          *(_QWORD*)(a1 + 688) = v31 + v33;
+          TimeStampEPN2nn8TimeSpanE =
+              movie_VideoFrame_GetEndOfStreamState_alt1(v13, (__int64)v54);
+          if (TimeStampEPN2nn8TimeSpanE != 0) {
             break;
           }
-          EndOfStreamStateEPb = movie_VideoFrame_SetEndOfStreamState(v13, 0);
-          if ((_DWORD)EndOfStreamStateEPb != 0) {
+          TimeStampEPN2nn8TimeSpanE =
+              movie_VideoFrame_SetEndOfStreamState_alt1(v13, false);
+          if (TimeStampEPN2nn8TimeSpanE != 0) {
             break;
           }
-          if (v59 != 0 && (v56[0] & 1) == 0) {
-            v36 = *(_QWORD*)(a1 + 568);
-            EndOfStreamStateEPb =
-                ((__int64 (*)(__int64, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
-                              __int64))GameRoutine_18ce260)(
-                    v36, *(unsigned int*)(v36 + 16), *(unsigned int*)(v36 + 24),
-                    0, *(unsigned int*)(v36 + 16),
-                    (unsigned int)(*(_DWORD*)(v36 + 24) * *(_DWORD*)(v36 + 16)),
-                    a2);
+          if (v57 != 0 && (v54[0] & 1) == 0) {
+            v34 = *(_QWORD*)(a1 + 568);
+            ((void (*)(__int64, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
+                       __int64))GameRoutine_18ce260)(
+                v34, *(unsigned int*)(v34 + 16), *(unsigned int*)(v34 + 24), 0,
+                *(unsigned int*)(v34 + 16),
+                (unsigned int)(*(_DWORD*)(v34 + 24) * *(_DWORD*)(v34 + 16)),
+                a2);
           }
-          v37 = *(_QWORD**)(a1 + 712);
-          v38 = *(_QWORD*)(*(_QWORD*)(a1 + 568) + 144LL);
-          v39 = *(_QWORD*)(a1 + 720);
-          if ((unsigned __int64)v37 >= v39) {
-            v41 = *(_QWORD*)(a1 + 704);
-            v42 = (char*)v37 - v41;
-            v43 = ((__int64)v37 - v41) >> 4;
-            v44 = v43 + 1;
-            if ((unsigned __int64)(v43 + 1) >> 60 != 0) {
-              GameRoutine_18cda20(EndOfStreamStateEPb);
+          v35 = *(__int64**)(a1 + 712);
+          v36 = *(_QWORD*)(*(_QWORD*)(a1 + 568) + 144LL);
+          v37 = *(_QWORD*)(a1 + 720);
+          if ((unsigned __int64)v35 >= v37) {
+            v39 = *(_QWORD*)(a1 + 704);
+            v40 = (unsigned __int64)v35 - v39;
+            v41 = ((__int64)v35 - v39) >> 4;
+            v42 = v41 + 1;
+            if ((unsigned __int64)(v41 + 1) >> 60 != 0) {
+              GameRoutine_18cda20_alt1();
             }
-            v45 = v39 - v41;
-            v46 = fw_memory_g_heap_manager_ptr;
-            if (v45 >> 3 > v44) {
-              v44 = v45 >> 3;
+            v43 = v37 - v39;
+            v44 = fw_memory_g_heap_manager_ptr;
+            if (v43 >> 3 > v42) {
+              v42 = v43 >> 3;
             }
-            if ((unsigned __int64)v45 >= 0x7FFFFFFFFFFFFFF0LL) {
-              v47 = 0xFFFFFFFFFFFFFFFLL;
-            }
-            else {
-              v47 = v44;
-            }
-            if (v47 != 0) {
-              if (v47 >> 60 != 0) {
-                GameRoutine_60a210(EndOfStreamStateEPb);
-              }
-              v48 = fw_memory_HeapManager_Allocate(
-                  *(_QWORD*)fw_memory_g_heap_manager_ptr, 16 * v47, 16, 0);
+            if ((unsigned __int64)v43 >= 0x7FFFFFFFFFFFFFF0LL) {
+              v45 = 0xFFFFFFFFFFFFFFFLL;
             }
             else {
-              v48 = 0;
+              v45 = v42;
             }
-            v49 = &v42[v48];
-            v50 = v48 + 16 * v47;
-            *(_QWORD*)v49 = v13;
-            *((_QWORD*)v49 + 1) = v38;
-            v51 = (__int64)&v42[v48 + -16 * v43];
-            v40 = (__int64)&v42[v48 + 16];
-            memcpy(v51, v41, v42);
-            *(_QWORD*)(a1 + 704) = v51;
-            *(_QWORD*)(a1 + 712) = v40;
-            *(_QWORD*)(a1 + 720) = v50;
-            if (v41 != 0) {
-              v52 = 128;
-              if (*(_QWORD*)(*(_QWORD*)v46 + 200LL) == 0) {
-                v52 = 56;
+            if (v45 != 0) {
+              if (v45 >> 60 != 0) {
+                GameRoutine_60a210_alt1();
               }
-              nn_mem_StandardAllocator_Free(*(_QWORD*)v46 + v52);
+              v46 = fw_memory_HeapManager_Allocate_alt1(
+                  *(_QWORD*)fw_memory_g_heap_manager_ptr, 16 * v45, 16, 0);
+            }
+            else {
+              v46 = 0;
+            }
+            v47 = (__int64*)(v46 + v40);
+            v48 = v46 + 16 * v45;
+            *v47 = v13;
+            v47[1] = v36;
+            v49 = v46 + v40 - 16 * v41;
+            v38 = v46 + v40 + 16;
+            memcpy_alt1(v49, v39, v40);
+            *(_QWORD*)(a1 + 704) = v49;
+            *(_QWORD*)(a1 + 712) = v38;
+            *(_QWORD*)(a1 + 720) = v48;
+            if (v39 != 0) {
+              v50 = 128;
+              if (*(_QWORD*)(*(_QWORD*)v44 + 200LL) == 0) {
+                v50 = 56;
+              }
+              nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v44 + v50, v39);
             }
           }
           else {
-            *v37 = v13;
-            v37[1] = v38;
-            v40 = (__int64)(v37 + 2);
+            *v35 = v13;
+            v35[1] = v36;
+            v38 = (__int64)(v35 + 2);
           }
-          v53 = *(unsigned __int8*)(a1 + 760);
-          *(_QWORD*)(a1 + 712) = v40;
-          if (v53 == 1) {
+          v51 = *(unsigned __int8*)(a1 + 760);
+          *(_QWORD*)(a1 + 712) = v38;
+          if (v51 == 1) {
           LABEL_62:
-            nn_os_SignalEvent(*(_QWORD*)(a1 + 632));
+            nn_os_SignalEvent_alt1(*(_QWORD*)(a1 + 632));
             goto LABEL_63;
           }
           goto LABEL_63;
         }
-        if ((unsigned __int64)v28 > 0xFFFFFFFFFFFF63BFLL) {
+        if ((unsigned __int64)v26 > 0xFFFFFFFFFFFF63BFLL) {
           goto LABEL_32;
         }
         ++*(_DWORD*)(a1 + 608);
@@ -308,25 +340,25 @@ LABEL_11:
         if (*(_QWORD*)(a1 + 688) - *(_QWORD*)(a1 + 680) == 8) {
           goto LABEL_32;
         }
-        movie_VideoFrame_SetEndOfStreamState(v13, 0);
-        movie_VideoDecoder_ReleaseVideoFrame(*(_QWORD*)(a1 + 560), v13);
-        v29 = *(_QWORD*)(a1 + 680);
-        v30 = *(_QWORD*)(a1 + 688);
-        v31 = v30 - (v29 + 8);
-        if (v30 != v29 + 8) {
-          memmove(*(_QWORD*)(a1 + 680), v29 + 8, v30 - (v29 + 8));
+        movie_VideoFrame_SetEndOfStreamState_alt1(v13, false);
+        movie_VideoDecoder_ReleaseVideoFrame_alt1(*(_QWORD*)(a1 + 560), v13);
+        v27 = *(_QWORD*)(a1 + 680);
+        v28 = *(_QWORD*)(a1 + 688);
+        v29 = v28 - (v27 + 8);
+        if (v28 != v27 + 8) {
+          memmove_alt1(*(_QWORD*)(a1 + 680), v27 + 8, v28 - (v27 + 8));
         }
         v12 = *(__int64**)(a1 + 680);
-        *(_QWORD*)(a1 + 688) = v29 + v31;
-        if (v12 == (__int64*)(v29 + v31)) {
+        *(_QWORD*)(a1 + 688) = v27 + v29;
+        if (v12 == (__int64*)(v27 + v29)) {
           goto LABEL_63;
         }
       }
     }
   }
-  v54 = EndOfStreamStateEPb;
-  nn_os_UnlockMutex(a1 + 728);
-  return v54;
+  v52 = TimeStampEPN2nn8TimeSpanE;
+  nn_os_UnlockMutex_alt1(a1 + 728);
+  return v52;
 }
 
 #pragma GCC visibility pop

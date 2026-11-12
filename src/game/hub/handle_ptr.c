@@ -24,7 +24,8 @@ __int64 HandlePtr_Unknown21_cb39c0(__int64 result, _DWORD* a2, _DWORD* a3);
 __int64 HandlePtr_Unknown22(__int64 result, _QWORD* a2, _QWORD* a3);
 __int64 HandlePtr_Unknown23_cb3ac0(__int64 result, _DWORD* a2, _DWORD* a3);
 float HandlePtr_Unknown24_cb3b40(__int64* a1, _DWORD* a2, float* a3);
-__int64 HandlePtr_Unknown25(__int64 result, __int64 a2, _QWORD* a3);
+__int64 HandlePtr_Unknown25_alt1(__int64 result, __int64 a2,
+                                 _QWORD* a3) __asm__("HandlePtr_Unknown25");
 _QWORD** HandlePtr_Unknown23_d5be90(_QWORD** result, __int64* a2);
 __int64* HandlePtr_Unknown24_d5bee0(__int64* result, __int64 a2);
 _QWORD* HandlePtr_d5bf40(_QWORD* result, __int64 a2, __int64* a3);
@@ -39,6 +40,7 @@ void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 __int64* HandlePtr_cb3600(__int64* result, __int64 a2, __int64 a3,
                           unsigned __int64 a4);
+void HandlePtr_Unknown25(__int64* a1, __int64 a2, _QWORD* a3);
 
 __int64 HandlePtr_Unknown14(__int64 result, _DWORD* a2, _DWORD* a3)
 {
@@ -536,7 +538,7 @@ float HandlePtr_Unknown24_cb3b40(__int64* a1, _DWORD* a2, float* a3)
   return result;
 }
 
-__int64 HandlePtr_Unknown25(__int64 result, __int64 a2, _QWORD* a3)
+void HandlePtr_Unknown25(__int64* a1, __int64 a2, _QWORD* a3)
 {
   __int64 v3;
   int v5;
@@ -546,45 +548,46 @@ __int64 HandlePtr_Unknown25(__int64 result, __int64 a2, _QWORD* a3)
   __int64 v9;
   __int64 v10;
   __int64 v11;
-  char v12;
+  __int64 v12;
+  char v13;
 
-  v3 = *(_QWORD*)result;
-  v5 = *(_DWORD*)(*(_QWORD*)result + 24LL);
+  v3 = *a1;
+  v5 = *(_DWORD*)(*a1 + 24);
   if (v5 == -1) {
     goto LABEL_10;
   }
   if (v5 != 4) {
-    result = ((__int64 (*)(char*, __int64))GameData_1fd3de0[v5])(&v12, v3);
+    ((void (*)(char*, __int64))GameData_1fd3de0[v5])(&v13, v3);
   LABEL_10:
     *(_DWORD*)(v3 + 24) = -1;
-    v10 = a3[1];
-    v11 = a3[2];
+    v11 = a3[1];
+    v12 = a3[2];
     *(_QWORD*)v3 = *a3;
-    *(_QWORD*)(v3 + 8) = v10;
-    *(_QWORD*)(v3 + 16) = v11;
+    *(_QWORD*)(v3 + 8) = v11;
+    *(_QWORD*)(v3 + 16) = v12;
     a3[1] = 0;
     a3[2] = 0;
     *a3 = 0;
     *(_DWORD*)(v3 + 24) = 4;
-    return result;
+    return;
   }
   if ((*(_BYTE*)a2 & 1) != 0 && *(_QWORD*)(a2 + 16) != 0) {
     v6 = a2;
-    v7 = 128;
+    v7 = *(_QWORD*)(a2 + 16);
+    v8 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-      v7 = 56;
+      v8 = 56;
     }
-    result = nn_mem_StandardAllocator_Free(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v7);
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v8, v7);
     a2 = v6;
   }
-  v8 = *a3;
-  v9 = a3[2];
+  v9 = *a3;
+  v10 = a3[2];
   *(_QWORD*)(a2 + 8) = a3[1];
-  *(_QWORD*)(a2 + 16) = v9;
-  *(_QWORD*)a2 = v8;
+  *(_QWORD*)(a2 + 16) = v10;
+  *(_QWORD*)a2 = v9;
   *(_WORD*)a3 = 0;
-  return result;
 }
 
 _QWORD** HandlePtr_Unknown23_d5be90(_QWORD** result, __int64* a2)

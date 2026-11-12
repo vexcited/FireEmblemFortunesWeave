@@ -28,7 +28,8 @@ extern __int64 snd_g_proxy;
 extern __int64* snd_g_fileIndex_ptr[2];
 extern __int64* snd_g_memory_ptr[2];
 __int64 TargetElfFile_Destructor(_QWORD* a1);
-__int64 TargetElfFile_DeletingDestructor(_QWORD* a1);
+__int64 TargetElfFile_DeletingDestructor_alt1(_QWORD* a1) __asm__(
+    "TargetElfFile_DeletingDestructor");
 __int64 TargetElfFile_Unknown5(__int64 a1);
 __int64 TargetElfFile_Unknown6(_QWORD* a1);
 __int64 TargetElfFile_Unknown7(__int64 a1);
@@ -49,6 +50,11 @@ __int64 nn_os_ReleaseWriteLock_alt1(__int64) __asm__("nn_os_ReleaseWriteLock");
 __int64 nn_os_UnlockMutex_alt1(__int64) __asm__("nn_os_UnlockMutex");
 __int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
     "std___1___shared_weak_count___release_weak");
+__int64 GameRoutine_634d80_alt1(__int64, __int64) __asm__("GameRoutine_634d80");
+__int64 ProxySnd_179810(__int64);
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void TargetElfFile_DeletingDestructor(_QWORD* a1);
 
 __int64 TargetElfFile_Destructor(_QWORD* a1)
 {
@@ -75,7 +81,7 @@ __int64 TargetElfFile_Destructor(_QWORD* a1)
   return GameRoutine_179810(a1);
 }
 
-__int64 TargetElfFile_DeletingDestructor(_QWORD* a1)
+void TargetElfFile_DeletingDestructor(_QWORD* a1)
 {
   __int64 v1;
   __int64* v3;
@@ -91,20 +97,20 @@ __int64 TargetElfFile_DeletingDestructor(_QWORD* a1)
   }
   v4 = a1[9];
   if (v4 != 0) {
-    GameRoutine_634d80(*(_QWORD*)(v4 + 8));
+    GameRoutine_634d80_alt1(*(_QWORD*)(v4 + 8), v4);
     a1[9] = 0;
   }
   if (a1[12] != 0) {
     (*(void (**)(__int64))(*(_QWORD*)*v3 + 24LL))(*v3);
     a1[12] = 0;
   }
-  GameRoutine_179810(a1);
+  ProxySnd_179810((__int64)a1);
   v5 = 128;
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
     v5 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v5);
+  nn_mem_StandardAllocator_Free_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v5, (__int64)a1);
 }
 
 __int64 TargetElfFile_Unknown5(__int64 a1)

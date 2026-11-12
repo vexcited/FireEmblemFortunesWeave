@@ -27,6 +27,10 @@ __int64 WorldAOModule_c50450(_QWORD* a1, char a2, __int64 a3,
                              unsigned __int64 a6, __int64 a7,
                              unsigned __int64 a8, __int64 a9,
                              unsigned __int64 a10);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 __int64 WorldAOModule_c50450(_QWORD* a1, char a2, __int64 a3,
                              unsigned __int64 a4, __int64 a5,
@@ -582,29 +586,30 @@ __int64 WorldAOModule_Destructor(_QWORD* a1)
       if (v4 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v4 + 8),
                                       0xFFFFFFFFFFFFFFFFLL) == 0) {
         (*(void (**)(__int64))(*(_QWORD*)v4 + 16LL))(v4);
-        std___1___shared_weak_count___release_weak(v4);
+        std___1___shared_weak_count___release_weak_alt1(v4);
       }
       v3 -= 24;
     } while (v3 != v1);
     v5 = a1[7];
     a1[8] = v1;
+    v1 = v5;
     if (v5 != 0) {
     LABEL_9:
       v6 = 128;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
         v6 = 56;
       }
-      nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                    v6);
+      nn_mem_StandardAllocator_Free_alt2(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v6, v1);
     }
   }
   v7 = a1[6];
   if (v7 != 0) {
-    std___1___shared_weak_count___release_weak(v7);
+    std___1___shared_weak_count___release_weak_alt1(v7);
   }
   result = a1[4];
   if (result != 0) {
-    return std___1___shared_weak_count___release_weak(result);
+    return std___1___shared_weak_count___release_weak_alt1(result);
   }
   return result;
 }

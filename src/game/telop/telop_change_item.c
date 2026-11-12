@@ -71,6 +71,21 @@ void game_gameui_anonymous_15d2280_alt1(
     __int64*, __int64*, _QWORD*,
     __int64) __asm__("game_gameui_anonymous_15d2280");
 __int64 TelopChangeItem_Unknown57(__int64 a1);
+__attribute__((swiftcall)) void
+GameRoutine_9b8fe0_alt2(PSEUDO_X8, __int64*,
+                        _QWORD*) __asm__("GameRoutine_9b8fe0");
+__int64
+LayoutAccessor_1562cf0_alt2(__int64 result,
+                            unsigned int*) __asm__("LayoutAccessor_1562cf0");
+__int64 game_17356e0(__int64*, const char*);
+__int64 ui_LayoutAccessor_FindPane_alt2(__int64*, const char*) __asm__(
+    "ui_LayoutAccessor_FindPane");
+__int64 ui_LayoutAccessor_FindTextBox_alt2(__int64*, const char*) __asm__(
+    "ui_LayoutAccessor_FindTextBox");
+void TextBoxEx_188ab20_alt2(__int64, const char*) __asm__("TextBoxEx_188ab20");
+void game_gameui_anonymous_15d2280_alt2(
+    __int64*, unsigned __int16*, _QWORD*,
+    __int64) __asm__("game_gameui_anonymous_15d2280");
 
 __int64 TelopChangeItem_Unknown56(__int64 a1)
 {
@@ -142,7 +157,7 @@ __int64 TelopChangeItem_Unknown57(__int64 a1)
   int v35;
   __int64 v36;
   __int64 v37;
-  char* v38;
+  const char* v38;
   __int64 v39;
   __int64 v40;
   __int64 v41;
@@ -155,7 +170,7 @@ __int64 TelopChangeItem_Unknown57(__int64 a1)
   _QWORD* v48;
   __int64 v49;
   char v50;
-  __int64 v52[2];
+  _QWORD v52[2];
   struct {
     __int64 v53;
     __int64 v54;
@@ -163,16 +178,16 @@ __int64 TelopChangeItem_Unknown57(__int64 a1)
   float v55;
 
   v2 = GameRoutine_1760e40_alt1(a1, 0x13u);
-  LayoutAccessor_1562cf0_alt1((__int64)v2, "ItemSkill");
+  LayoutAccessor_1562cf0_alt2((__int64)v2, (unsigned int*)"ItemSkill");
   v3 = GameHr_6ed030(*(_QWORD*)(a1 + 1168));
   if (v3 != nullptr) {
     v4 = (__int64)v3;
-    v5 = ui_LayoutAccessor_FindTextBox_alt1(v2, (__int64)"T_Item");
+    v5 = ui_LayoutAccessor_FindTextBox_alt2(v2, "T_Item");
     if (v5 != 0) {
       GameRoutine_156c5d0_alt1(v5, v4, 0);
     }
   }
-  v6 = ui_LayoutAccessor_FindPane_alt1(v2, (__int64)"ItemIcon");
+  v6 = ui_LayoutAccessor_FindPane_alt2(v2, "ItemIcon");
   if (v6 != 0) {
     v7 = __dynamic_cast(v6, GameData_212d670[0], GameData_212d678[0], 0);
     if (v7 != 0) {
@@ -270,10 +285,10 @@ __int64 TelopChangeItem_Unknown57(__int64 a1)
           1;
     }
   }
-  game_gameui_anonymous_15d2280_alt1(v16, &v53_.v53, v52, 0);
-  v52[0] = (__int64)"L_Txt";
+  game_gameui_anonymous_15d2280_alt2(v16, (unsigned __int16*)&v53_.v53, v52, 0);
+  v52[0] = "L_Txt";
   v52[1] = 5;
-  GameRoutine_9b8fe0_alt1((void*)(&v53_.v53), v2, v52);
+  GameRoutine_9b8fe0_alt2((void*)(&v53_.v53), v2, v52);
   if (v53_.v54 != 0) {
     v36 = std___1___shared_weak_count_lock_alt1(v53_.v54);
     v37 = v53_.v53;
@@ -287,7 +302,7 @@ __int64 TelopChangeItem_Unknown57(__int64 a1)
       else {
         v38 = "MID_Sys_Result_Msg_Blacksmith_Change";
       }
-      TextBoxEx_188ab20_alt1(v37, v38);
+      TextBoxEx_188ab20_alt2(v37, v38);
     }
     else if (v36 == 0) {
       goto LABEL_33;
@@ -316,7 +331,7 @@ LABEL_34:
         std___1___shared_weak_count___release_weak_alt1(v53_.v54);
       }
       if (v39 != 0 && v40 != 0) {
-        LayoutAccessor_1562cf0_alt1(v40, "Color0");
+        LayoutAccessor_1562cf0_alt2(v40, (unsigned int*)"Color0");
       }
       else if (v39 == 0) {
         goto LABEL_46;
@@ -329,10 +344,10 @@ LABEL_34:
     }
   }
 LABEL_46:
-  v41 = ui_LayoutAccessor_FindTextBox_alt1(v2, (__int64)"T_Txt");
+  v41 = ui_LayoutAccessor_FindTextBox_alt2(v2, "T_Txt");
   if (v41 != 0) {
     v42 = v41;
-    v43 = (_QWORD*)ui_LayoutAccessor_FindTextBox_alt1(v2, (__int64)"T_Txt");
+    v43 = (_QWORD*)ui_LayoutAccessor_FindTextBox_alt2(v2, "T_Txt");
     if (v43 != nullptr) {
       GameRoutine_190a0c0_alt1((float*)&v53_.v53, (__int64)v52, &v55, v43,
                                v43[27]);
@@ -345,12 +360,12 @@ LABEL_46:
     *(_QWORD*)(v42 + 80) = v44;
     *(_BYTE*)(v42 + 88) = v45 | 0x10;
   }
-  v46 = ui_LayoutAccessor_FindTextBox_alt1(
-      v2, (__int64)"L_InfoDetail/L_InfoTitle/L_InfoTxt/T_Txt");
+  v46 = ui_LayoutAccessor_FindTextBox_alt2(
+      v2, "L_InfoDetail/L_InfoTitle/L_InfoTxt/T_Txt");
   if (v46 != 0) {
     v47 = v46;
-    v48 = (_QWORD*)ui_LayoutAccessor_FindTextBox_alt1(
-        v2, (__int64)"L_InfoDetail/L_InfoTitle/L_InfoTxt/T_Txt");
+    v48 = (_QWORD*)ui_LayoutAccessor_FindTextBox_alt2(
+        v2, "L_InfoDetail/L_InfoTitle/L_InfoTxt/T_Txt");
     if (v48 != nullptr) {
       GameRoutine_190a0c0_alt1((float*)&v53_.v53, (__int64)v52, &v55, v48,
                                v48[27]);
@@ -363,7 +378,7 @@ LABEL_46:
     *(_QWORD*)(v47 + 80) = v49;
     *(_BYTE*)(v47 + 88) = v50 | 0x10;
   }
-  return GameRoutine_17356e0_alt1(v2, (__int64)"A_Contents");
+  return game_17356e0(v2, "A_Contents");
 }
 
 #pragma GCC visibility pop

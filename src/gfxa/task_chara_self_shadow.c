@@ -27,6 +27,10 @@ void __attribute__((noreturn)) GameRoutine_60a210();
 void __attribute__((noreturn)) GameRoutine_a7f560();
 __int64 gfxa_TaskCharaSelfShadow_Impl_draw(__int64 a1, __int64 a2, __int64 a3,
                                            _QWORD* a4, __int64 a5);
+_QWORD* GameHr_a71900(_QWORD* result, __int64, __int64**, int*);
+__int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 __int64 gfxa_TaskCharaSelfShadow_Impl_draw(__int64 a1, __int64 a2, __int64 a3,
                                            _QWORD* a4, __int64 a5)
@@ -54,7 +58,7 @@ __int64 gfxa_TaskCharaSelfShadow_Impl_draw(__int64 a1, __int64 a2, __int64 a3,
   __int64 v27;
   __int64 v28;
   __int64* v29;
-  signed __int64 v30;
+  unsigned __int64 v30;
   __int64 v31;
   unsigned __int64 v32;
   __int64 v33;
@@ -368,7 +372,7 @@ __int64 gfxa_TaskCharaSelfShadow_Impl_draw(__int64 a1, __int64 a2, __int64 a3,
           v37 = (__int64*)(v35 + v30 - 8 * v31);
           *(_QWORD*)(v35 + v30) = *(_QWORD*)(v28 + 8);
           v26 = (__int64*)(v35 + v30 + 8);
-          memcpy(v37, v29, v30),
+          memcpy_alt1((__int64)v37, (__int64)v29, v30),
               v43 = COERCE_AS(__typeof__(v43),
                               PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
               v48 = COERCE_AS(__typeof__(v48),
@@ -390,8 +394,8 @@ __int64 gfxa_TaskCharaSelfShadow_Impl_draw(__int64 a1, __int64 a2, __int64 a3,
                 0) {
               v38 = 56;
             }
-            nn_mem_StandardAllocator_Free(
-                *(_QWORD*)fw_memory_g_heap_manager_ptr + v38),
+            nn_mem_StandardAllocator_Free_alt1(
+                *(_QWORD*)fw_memory_g_heap_manager_ptr + v38, (__int64)v29),
                 v43 =
                     COERCE_AS(__typeof__(v43),
                               PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
@@ -532,7 +536,7 @@ __int64 gfxa_TaskCharaSelfShadow_Impl_draw(__int64 a1, __int64 a2, __int64 a3,
     v67_.v68 = 0;
     v67_.v67 = 0;
     v67_.v69 = 32;
-    GameRoutine_a71900(v61, v54, &v70_.v70, &v67_.v67),
+    GameHr_a71900(v61, v54, &v70_.v70, &v67_.v67),
         v43 = COERCE_AS(__typeof__(v43),
                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
         v48 = COERCE_AS(__typeof__(v48), PSEUDO_REGISTER(__n128, "v1", "=w")),
@@ -593,7 +597,8 @@ __int64 gfxa_TaskCharaSelfShadow_Impl_draw(__int64 a1, __int64 a2, __int64 a3,
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v58 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v58),
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v58, (__int64)v17),
         v43 = COERCE_AS(__typeof__(v43),
                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
         v48 = COERCE_AS(__typeof__(v48), PSEUDO_REGISTER(__n128, "v1", "=w")),

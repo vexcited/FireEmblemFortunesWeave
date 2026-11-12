@@ -48,6 +48,15 @@ __int64 game_zview_d16b40(float a1, double a2, double a3, double a4, double a5,
                           double a6, long double a7, __int64 a8, __int64 a9,
                           __int128* a10, unsigned __int64* a11, __int64 a12);
 __int64 game_zview_dad0a0();
+__int64 fw_text_String_CopyTerminated_alt1(
+    __int64*, __int64,
+    unsigned __int64) __asm__("fw_text_String_CopyTerminated");
+__int64 memchr_alt1(__int64, int, unsigned __int64) __asm__("memchr");
+int memcmp_alt1(__int64, __int64, unsigned __int64) __asm__("memcmp");
+void __attribute__((noreturn))
+String_60a250_alt1(const char*) __asm__("String_60a250");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 float game_zview_ceb570(__int64 a1, float result)
 {
@@ -532,7 +541,7 @@ bool game_zview_d0bdc0(__int64 a1, int a2, __int64 a3)
   __int64 v15;
   __int64 v16;
   bool v17;
-  unsigned __int64 v18;
+  signed __int64 v18;
   __int64 v19;
   signed __int64 v20;
   __int64 v21;
@@ -545,23 +554,25 @@ bool game_zview_d0bdc0(__int64 a1, int a2, __int64 a3)
   __int64 v28;
   int v29;
   __int64 v30;
-  _QWORD* v31;
+  __int64* v31;
   char v32;
-  _QWORD* v33;
-  unsigned __int8* v34;
+  __int64 v33;
+  __int64* v34;
   signed __int64 v35;
   __int64 v36;
   _BOOL4 v37;
   __int64 v38;
-  unsigned int v39;
+  int v39;
   signed __int64 v40;
   __int64 v41;
   __int64 v42;
   __int64 v44;
   __int64 v46;
-  __int64 v47;
-  unsigned __int64 v48;
-  _QWORD* v49;
+  struct {
+    __int64 v47;
+    unsigned __int64 v48;
+    __int64* v49;
+  } v47_;
 
   v3 = *(_QWORD*)(*(_QWORD*)a1 + 11608LL);
   if (GameData_22356f8 != 0 && GameData_2235708 != 0) {
@@ -653,7 +664,7 @@ bool game_zview_d0bdc0(__int64 a1, int a2, __int64 a3)
             if (v24 == 47) {
               if (v20 + 1 != v23) {
                 if (v20 < v23) {
-                  String_60a250("string_view::substr");
+                  String_60a250_alt1("string_view::substr");
                 }
                 v19 = v20 - v21;
                 v20 = v23 - 1;
@@ -670,26 +681,27 @@ bool game_zview_d0bdc0(__int64 a1, int a2, __int64 a3)
           v46 = v28;
           while (1) {
             if ((*(_BYTE*)v26 & 1) != 0) {
-              fw_text_String_CopyTerminated(&v47, v26[2], v26[1]);
+              fw_text_String_CopyTerminated_alt1(&v47_.v47, v26[2], v26[1]);
             }
             else {
               v30 = *v26;
-              v31 = (_QWORD*)v26[2];
-              v48 = v26[1];
-              v49 = v31;
-              v47 = v30;
+              v31 = (__int64*)v26[2];
+              v47_.v48 = v26[1];
+              v47_.v49 = v31;
+              v47_.v47 = v30;
             }
-            v32 = v47;
-            v33 = v49;
-            v34 = (v47 & 1) != 0 ? (unsigned __int8*)v49
-                                 : (unsigned __int8*)&v47 + 1;
-            v35 = (v47 & 1) != 0 ? v48
-                                 : (unsigned __int64)(unsigned __int8)v47 >> 1;
+            v32 = v47_.v47;
+            v33 = (__int64)v47_.v49;
+            v34 = (v47_.v47 & 1) != 0 ? v47_.v49
+                                      : (__int64*)((char*)&v47_.v47 + 1);
+            v35 = (v47_.v47 & 1) != 0
+                      ? v47_.v48
+                      : (unsigned __int64)(unsigned __int8)v47_.v47 >> 1;
             if (v35 != 0) {
               break;
             }
             v37 = true;
-            if ((v47 & 1) != 0) {
+            if ((v47_.v47 & 1) != 0) {
               goto LABEL_73;
             }
           LABEL_42:
@@ -701,16 +713,16 @@ bool game_zview_d0bdc0(__int64 a1, int a2, __int64 a3)
           }
           if (v20 >= v35) {
             v38 = v19;
-            v39 = *v34;
+            v39 = *(unsigned __int8*)v34;
             v40 = v20;
             v41 = v38;
             do {
-              v42 = memchr(v38, v39, v40 - v35 + 1);
+              v42 = memchr_alt1(v38, v39, v40 - v35 + 1);
               if (v42 == 0) {
                 break;
               }
               v36 = v42;
-              if ((unsigned int)memcmp(v42, v34, v35) == 0) {
+              if (memcmp_alt1(v42, (__int64)v34, v35) == 0) {
                 goto LABEL_65;
               }
               v38 = v36 + 1;
@@ -729,13 +741,13 @@ bool game_zview_d0bdc0(__int64 a1, int a2, __int64 a3)
             goto LABEL_42;
           }
         LABEL_73:
-          if (v33 != nullptr) {
+          if (v33 != 0) {
             v44 = 128;
             if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) ==
                 0) {
               v44 = 56;
             }
-            nn_mem_StandardAllocator_Free(
+            nn_mem_StandardAllocator_Free_alt1(
                 *(_QWORD*)fw_memory_g_heap_manager_ptr + v44, v33);
           }
           goto LABEL_42;

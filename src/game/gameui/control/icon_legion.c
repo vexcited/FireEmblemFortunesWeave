@@ -37,6 +37,21 @@ extern __int64 (*game_gameui_control_IconLegion_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 __attribute__((swiftcall)) void IconLegion_19abb70(PSEUDO_X8 x8_, __int64 a1,
                                                    __int64 a2, __int64 a3);
+__int64 GameRoutine_18b26a0_alt1(__int64, __int64, __int64,
+                                 __int64) __asm__("GameRoutine_18b26a0");
+__int64 GameRoutine_576600_alt1(__int64,
+                                const char*) __asm__("GameRoutine_576600");
+__int64 LayoutEx_579160_alt1(__int64, __int64) __asm__("LayoutEx_579160");
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64
+ui_LayoutAccessor_FindPane_alt1(__int64*,
+                                __int64) __asm__("ui_LayoutAccessor_FindPane");
+__int64 ui_control_1888c80(__int64, __int64, __int64);
+unsigned __int64 strlen_alt1(const char*) __asm__("strlen");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 __attribute__((swiftcall)) void IconLegion_19abb70(PSEUDO_X8 x8_, __int64 a1,
                                                    __int64 a2, __int64 a3)
@@ -47,23 +62,24 @@ __attribute__((swiftcall)) void IconLegion_19abb70(PSEUDO_X8 x8_, __int64 a1,
   _QWORD* v10;
   __int64 v11;
   _QWORD* v12;
-  __int64 v13;
+  const char* v13;
   __int64* v14;
   __int64 v15;
   __int64 v16;
   __int64 v17;
   __int64 v18;
-  __int64 result;
-  __int64 v20;
-  __int64 v21;
+  struct {
+    const char* v19;
+    unsigned __int64 v20;
+  } v19_;
 
-  v8 = (_QWORD*)LayoutEx_579160(1144, 8);
+  v8 = (_QWORD*)LayoutEx_579160_alt1(1144, 8);
   v9 = v8 + 3;
   v10 = v8;
   v8[1] = 0;
   v8[2] = 0;
   *v8 = GameData_211fab8;
-  GameRoutine_18b26a0(v8 + 3, a1, a2, a3);
+  GameRoutine_18b26a0_alt1((__int64)(v8 + 3), a1, a2, a3);
   v10[138] = 0;
   v10[139] = 0;
   v10[140] = 0;
@@ -73,20 +89,20 @@ __attribute__((swiftcall)) void IconLegion_19abb70(PSEUDO_X8 x8_, __int64 a1,
   v10[12] = GameData_211fa68;
   v10[132] = GameData_211fa90;
   v11 = fw_memory_g_heap_manager_ptr;
-  v12 = (_QWORD*)fw_memory_HeapManager_Allocate(
+  v12 = (_QWORD*)fw_memory_HeapManager_Allocate_alt1(
       *(_QWORD*)fw_memory_g_heap_manager_ptr, 16, 16, 0);
   *v12 = "Img";
   v12[1] = 3;
-  v13 = GameRoutine_576600(a1, "Img");
-  if (v13 != 0) {
-    v20 = v13;
-    v21 = strlen(v13);
-    if (v21 != 0) {
-      GameRoutine_1888c80(v10 + 29, v12, &v20);
+  v13 = (const char*)GameRoutine_576600_alt1(a1, "Img");
+  if (v13 != nullptr) {
+    v19_.v19 = v13;
+    v19_.v20 = strlen_alt1(v13);
+    if (v19_.v20 != 0) {
+      ui_control_1888c80((__int64)(v10 + 29), (__int64)v12, (__int64)&v19_.v19);
     }
   }
   v14 = v10 + 138;
-  v15 = ui_LayoutAccessor_FindPane(v10 + 14, "Img");
+  v15 = ui_LayoutAccessor_FindPane_alt1(v10 + 14, (__int64)"Img");
   if (v15 != 0) {
     v16 = __dynamic_cast(v15, GameData_212d670[0], GameData_212d678[0], 0);
     *v14 = v16;
@@ -97,7 +113,7 @@ __attribute__((swiftcall)) void IconLegion_19abb70(PSEUDO_X8 x8_, __int64 a1,
   else {
     *v14 = 0;
   }
-  v17 = ui_LayoutAccessor_FindPane(v10 + 14, "Icon");
+  v17 = ui_LayoutAccessor_FindPane_alt1(v10 + 14, (__int64)"Icon");
   if (v17 != 0) {
     v17 = __dynamic_cast(v17, GameData_212d670[0], GameData_212d678[0], 0);
   }
@@ -108,17 +124,13 @@ LABEL_11:
   if (*(_QWORD*)(*(_QWORD*)v11 + 200LL) == 0) {
     v18 = 56;
   }
-  result = nn_mem_StandardAllocator_Free(*(_QWORD*)v11 + v18);
+  nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v11 + v18, (__int64)v12);
   *a4 = v9;
   a4[1] = v10;
   v10[3] =
       game_gameui_control_HelpableElement_Destroy_HelpableElement_18b3360_ptr;
   v10[12] = GameData_211fc90;
   v10[132] = GameData_211fcb8;
-  {
-    result;
-    return;
-  }
 }
 
 bool IconLegion_19abe40(__int64 a1, __int64 a2)

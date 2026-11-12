@@ -47,6 +47,10 @@ __int64 MapCharacter_9da6e0(__int64 a1, char** a2, int a3);
 __int64 MapCharacter_9da8e0(__int64 result, float a2);
 void game_map_MapCharacter_Create_lambda0_Invoke_9dad40(__int64 a1, __int64* a2,
                                                         double a3, double a4);
+__int64 wld_Crc32_alt1(int, unsigned __int8*,
+                       unsigned __int64) __asm__("wld_Crc32");
+int __cxa_guard_acquire_alt1(__int64) __asm__("__cxa_guard_acquire");
+void __cxa_guard_release_alt1(__int64) __asm__("__cxa_guard_release");
 
 __int64 MapCharacter_9da660(__int64 a1)
 {
@@ -748,6 +752,8 @@ __int64 game_map_MapCharacter_Create_lambda0_Invoke(__int64 a1, float* a2)
 __int64 game_map_MapCharacter_SetForce_lambda0_Invoke(__int64 result,
                                                       __int64 a2)
 {
+
+#pragma clang fp contract(off)
   unsigned __int8 explicit;
   int* v3;
   __int64 v4;
@@ -764,9 +770,6 @@ __int64 game_map_MapCharacter_SetForce_lambda0_Invoke(__int64 result,
   __int64 v15;
   int v16;
   int v17;
-  __int64 v18;
-  __int64 v19;
-  __int64 v20;
 
   explicit = atomic_load_explicit((atomic_uchar* volatile)GameData_212d4d8,
                                   memory_order_acquire);
@@ -774,13 +777,13 @@ __int64 game_map_MapCharacter_SetForce_lambda0_Invoke(__int64 result,
   if ((explicit & 1) == 0) {
     v14 = result;
     v15 = a2;
-    v16 = __cxa_guard_acquire(GameData_212d4d8);
+    v16 = __cxa_guard_acquire_alt1((__int64)GameData_212d4d8);
     a2 = v15;
     v17 = v16;
     result = v14;
     if (v17 != 0) {
-      *v3 = wld_Crc32(0, "CharacterMaterial", 17);
-      __cxa_guard_release(GameData_212d4d8, v18, v19, v20);
+      *v3 = wld_Crc32_alt1(0, "CharacterMaterial", 0x11u);
+      __cxa_guard_release_alt1((__int64)GameData_212d4d8);
       a2 = v15;
       result = v14;
     }
@@ -802,23 +805,23 @@ __int64 game_map_MapCharacter_SetForce_lambda0_Invoke(__int64 result,
       v8 = *(unsigned __int8*)(result + 8);
       if (v8 > 1) {
         if (v8 == 3) {
-          v9 = 4.0;
+          v9 = 0x1.0000000000000p+2f;
         }
         else if (v8 == 2) {
-          v9 = 3.0;
+          v9 = 0x1.8000000000000p+1f;
         }
         else {
-          v9 = 0.0;
+          v9 = 0x0.0p+0f;
         }
       LABEL_16:
         v10 = *(_QWORD*)(*(_QWORD*)(v7 + 240) + 24LL);
       }
       else {
         if (*(_BYTE*)(result + 8) != 0) {
-          v9 = 2.0;
+          v9 = 0x1.0000000000000p+1f;
           goto LABEL_16;
         }
-        v9 = 1.0;
+        v9 = 0x1.0000000000000p+0f;
         v10 = *(_QWORD*)(*(_QWORD*)(v7 + 240) + 24LL);
         *(_WORD*)(v7 + 113) = 256;
       }

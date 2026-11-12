@@ -6,7 +6,8 @@ __int64 nn_mem_StandardAllocator_Free(_QWORD);
 extern __int64 (*game_GameSituation_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 GameSituation_Destructor(_QWORD* a1);
-__int64 GameSituation_DeletingDestructor(_QWORD* a1);
+__int64 GameSituation_DeletingDestructor_alt1(_QWORD* a1) __asm__(
+    "GameSituation_DeletingDestructor");
 _QWORD* GameRoutine_9010a0(_QWORD* result);
 _QWORD* game_UnitPool_Find_6ead60(__int64*, _DWORD*);
 __attribute__((swiftcall)) void game_907570(PSEUDO_X8, __int64);
@@ -59,6 +60,9 @@ __int64 GameSituation_906b70(__int64 a1, __int64* a2);
 __int64 GameSituation_906c90(__int64 a1, __int64* a2);
 __attribute__((swiftcall)) void
 GameSituation_906e20(PSEUDO_X8 x8_, __int64 unused_int0, __int64 a1, char a2);
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void GameSituation_DeletingDestructor(_QWORD* a1);
 
 __int64 GameSituation_Destructor(_QWORD* a1)
 {
@@ -73,7 +77,7 @@ __int64 GameSituation_Destructor(_QWORD* a1)
   return result;
 }
 
-__int64 GameSituation_DeletingDestructor(_QWORD* a1)
+void GameSituation_DeletingDestructor(_QWORD* a1)
 {
   __int64 v2;
   __int64 v3;
@@ -88,8 +92,8 @@ __int64 GameSituation_DeletingDestructor(_QWORD* a1)
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
     v3 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v3);
+  nn_mem_StandardAllocator_Free_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v3, (__int64)a1);
 }
 
 __int64 GameSituation_906320(__int64 a1, __int64* a2)

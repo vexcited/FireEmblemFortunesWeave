@@ -24,7 +24,8 @@ __n128 ProcCmdBtlSeqSupportAttack_f9ddf0_alt1(
     __int64 a1, __n128 result) __asm__("ProcCmdBtlSeqSupportAttack_f9ddf0");
 __n128 ProcCmdBtlSeqSupportAttack_f9e060(char a1, __n128 result);
 __int64 ProcCmdBtlSeqSupportAttack_Destructor(__int64 a1);
-__n128 ProcCmdBtlSeqSupportAttack_DeletingDestructor(__int64 a1);
+__n128 ProcCmdBtlSeqSupportAttack_DeletingDestructor_alt1(__int64 a1) __asm__(
+    "ProcCmdBtlSeqSupportAttack_DeletingDestructor");
 __attribute__((swiftcall)) void GameRoutine_1085a10(PSEUDO_X8, _QWORD, _QWORD,
                                                     _QWORD, _QWORD);
 __int64 CmdBtlUnit_e7c6f0(__int64, char, float);
@@ -62,6 +63,12 @@ int __cxa_guard_acquire_alt1(__int64) __asm__("__cxa_guard_acquire");
 void GameRoutine_e7bed0_alt1(__int64, char) __asm__("GameRoutine_e7bed0");
 void __cxa_guard_release_alt1(__int64) __asm__("__cxa_guard_release");
 __int64 ProcCmdBtlSeqSupportAttack_f9ddf0(__int64 result);
+__int64 game_ProcInst_Unregister_alt1(__int64 result) __asm__(
+    "game_ProcInst_Unregister");
+void GameRoutine_658c00_alt1(__int64*) __asm__("GameRoutine_658c00");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void ProcCmdBtlSeqSupportAttack_DeletingDestructor(__int64 a1);
 
 void game_cmdbtl_anonymous_ProcCmdBtlSeqSupportAttack_CharaSetupPos()
 {
@@ -1075,7 +1082,7 @@ __int64 ProcCmdBtlSeqSupportAttack_Destructor(__int64 a1)
   return GameRoutine_658c00(a1 + 88);
 }
 
-__n128 ProcCmdBtlSeqSupportAttack_DeletingDestructor(__int64 a1)
+void ProcCmdBtlSeqSupportAttack_DeletingDestructor(__int64 a1)
 {
   __int64 v1;
   __int64 v3;
@@ -1085,20 +1092,20 @@ __n128 ProcCmdBtlSeqSupportAttack_DeletingDestructor(__int64 a1)
   if (v1 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v1 + 8),
                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v1 + 16LL))(v1);
-    std___1___shared_weak_count___release_weak(v1);
+    std___1___shared_weak_count___release_weak_alt2(v1);
   }
   *(_QWORD*)a1 = game_ProcInst_vtable;
   if ((*(_WORD*)(a1 + 136) & 0x100) != 0) {
     *(_WORD*)(a1 + 136) &= ~0x100u;
   }
-  game_ProcInst_Unregister(a1);
-  GameRoutine_658c00(a1 + 88);
+  game_ProcInst_Unregister_alt1(a1);
+  GameRoutine_658c00_alt1((__int64*)(a1 + 88));
   v3 = 128;
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
     v3 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v3);
+  nn_mem_StandardAllocator_Free_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v3, a1);
 }
 
 #pragma GCC visibility pop

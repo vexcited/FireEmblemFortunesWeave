@@ -116,7 +116,8 @@ void __attribute__((noreturn)) GameRoutine_a78a90(_QWORD);
 void __attribute__((noreturn)) GameRoutine_cdcc10(_QWORD);
 void __attribute__((noreturn)) GameRoutine_e2fbc0(long double);
 float CombatLegionManager_e2c540(__int64 a1);
-__n128 CombatLegionManager_e2ca80(__int64 a1);
+__n128 CombatLegionManager_e2ca80_alt2(__int64 a1) __asm__(
+    "CombatLegionManager_e2ca80");
 __int64 CombatLegionManager_e2d1a0(__int64 a1, int a2);
 float CombatLegionManager_e2d770(__int64 a1, float* a2, float* a3, float* a4,
                                  float* a5);
@@ -157,6 +158,10 @@ void nn_mem_StandardAllocator_Free_alt4(__int64, __int64) __asm__(
 void CombatLegionManager_e2c3e0(__int64 a1);
 __int64 CombatLegionManager_e30080(__int64* a1, int* a2, __int64* a3,
                                    __int64 a4);
+__int64 CombatLegionGroup_e58ae0_alt1(
+    __int64, __int64, unsigned __int64) __asm__("CombatLegionGroup_e58ae0");
+__int64 GameHr_e2d300(__int64 result, __int64*, unsigned int);
+void CombatLegionManager_e2ca80(__int64 a1);
 
 __int64 CombatLegionManager_Destructor(__int64 a1)
 {
@@ -697,7 +702,7 @@ float CombatLegionManager_e2c540(__int64 a1)
 {
   unsigned __int8* v1;
   __int64 v3;
-  char* v4;
+  __int64 v4;
   float v5;
   __int64 v6;
   __int64* v7;
@@ -709,14 +714,14 @@ float CombatLegionManager_e2c540(__int64 a1)
   float v13;
   __int64 v14;
   __int64 v15;
-  char* v16;
+  __int64 v16;
   float v17;
   __int64 v18;
   __int64 v19;
   __int64 v20;
   unsigned __int8** v21;
   unsigned __int8* v22;
-  unsigned __int8* v23;
+  __int64 v23;
   unsigned __int64 v24;
   unsigned __int64 v25;
   int* v26;
@@ -728,7 +733,7 @@ float CombatLegionManager_e2c540(__int64 a1)
   __int64 v32;
   unsigned __int8** v33;
   unsigned __int8* v34;
-  unsigned __int8* v35;
+  __int64 v35;
   unsigned __int64 v36;
   unsigned __int64 v37;
   int* v38;
@@ -740,23 +745,27 @@ float CombatLegionManager_e2c540(__int64 a1)
   __int64 v44;
   unsigned __int8** v45;
   unsigned __int8* v46;
-  unsigned __int8* v47;
+  __int64 v47;
   unsigned __int64 v48;
   unsigned __int64 v49;
   int* v50;
   int v51;
   _BOOL4 v52;
   float result;
-  char* v54[3];
-  char v55[8];
+  __int64 v54[3];
+  _BYTE v55[8];
 
-  v12 = COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(float, "s0", "=w"));
-  v3 = X8CALL_X0(__int64, CombatLegionManager_e2d920((void*)(v54))),
-  v12 = COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(float, "s0", "=w"));
+  v12 = COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(float, "s0", "=w")),
+  v3 = COERCE_AS(__typeof__(v3),
+                 PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+  CombatLegionManager_e2d920((void*)(v54)),
+      v12 = COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(float, "s0", "=w")),
+      v3 = COERCE_AS(__typeof__(v3),
+                     PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
   v4 = v54[0];
   v5 = 0x0.0p+0f;
-  if ((_BYTE*)(v54[1] - v54[0]) >= (_BYTE*)((_UNKNOWN**)0x8LL) + 1) {
-    v6 = *((_QWORD*)v54[0] + 1);
+  if (v54[1] - v54[0] >= 9uLL) {
+    v6 = *(_QWORD*)(v54[0] + 8);
     v5 = sqrtf((float)(PSEUDO_UNFUSED(
                    (float)(*(float*)(v6 + 44) -
                            *(float*)(*(_QWORD*)v54[0] + 44LL)) *
@@ -772,7 +781,7 @@ float CombatLegionManager_e2c540(__int64 a1)
   v8 = *(__int64**)(a1 + 64);
   if (v7 == v8) {
     v9 = 0x1.3333340000000p-1f;
-    if (v54[0] == nullptr) {
+    if (v54[0] == 0) {
       goto LABEL_14;
     }
     goto LABEL_11;
@@ -792,31 +801,35 @@ float CombatLegionManager_e2c540(__int64 a1)
       v9 = v13;
     }
   } while (v7 != v8);
-  if (v4 != nullptr) {
+  if (v4 != 0) {
   LABEL_11:
     v14 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v14 = 56;
     }
-    v3 = nn_mem_StandardAllocator_Free_alt3(
+    nn_mem_StandardAllocator_Free_alt4(
         *(_QWORD*)fw_memory_g_heap_manager_ptr + v14, v4),
-    v12 = COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(float, "s0", "=w"));
+        v12 = COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(float, "s0", "=w")),
+        v3 = COERCE_AS(__typeof__(v3),
+                       PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
   }
 LABEL_14:
-  CombatLegionManager_e2ddb0_alt1(v3, (__int64)v54, (__int64)v55),
-      v12 = COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(float, "s0", "=w"));
+  CombatLegionManager_e2ddb0(v3, (__int64)v54, (__int64)v55),
+      v12 = COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(float, "s0", "=w")),
+      v3 = COERCE_AS(__typeof__(v3),
+                     PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
   v15 = *(_QWORD*)(a1 + 16);
   v16 = v54[0];
   v17 = 0x0.0p+0f;
   if (*(_DWORD*)(v15 + 112) <= 1u &&
-      (int)CombatLegionGroup_e58ae0(v15, (__int64)"Main", 4) >= 1) {
+      (int)CombatLegionGroup_e58ae0_alt1(v15, (__int64)"Main", 4u) >= 1) {
     v18 = 0;
     do {
       v21 = *(unsigned __int8***)(*(_QWORD*)(a1 + 16) + 16LL);
       do {
         v22 = *v21;
-        v23 = v21[1];
-        if (v23 != nullptr) {
+        v23 = (__int64)v21[1];
+        if (v23 != 0) {
           atomic_fetch_add_explicit((atomic_ullong* volatile)(v23 + 8), 1u,
                                     memory_order_relaxed);
         }
@@ -827,18 +840,22 @@ LABEL_14:
         }
         if (v25 != 4) {
           v28 = false;
-          if (v23 == nullptr) {
+          if (v23 == 0) {
             goto LABEL_19;
           }
         LABEL_33:
           if (atomic_fetch_add((atomic_ullong* volatile)(v23 + 8),
                                0xFFFFFFFFFFFFFFFFLL) == 0) {
-            (*(void (**)(unsigned __int8*))(*(_QWORD*)v23 + 16LL))(v23),
+            (*(void (**)(__int64))(*(_QWORD*)v23 + 16LL))(v23),
                 v12 = COERCE_AS(__typeof__(v12),
-                                PSEUDO_REGISTER(float, "s0", "=w"));
-            std___1___shared_weak_count___release_weak(v23),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v3 = COERCE_AS(__typeof__(v3),
+                               PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+            std___1___shared_weak_count___release_weak_alt2(v23),
                 v12 = COERCE_AS(__typeof__(v12),
-                                PSEUDO_REGISTER(float, "s0", "=w"));
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v3 = COERCE_AS(__typeof__(v3),
+                               PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
           }
           goto LABEL_19;
         }
@@ -853,7 +870,7 @@ LABEL_14:
         if (v27 == 1852399949) {
           v1 = v22;
         }
-        if (v23 != nullptr) {
+        if (v23 != 0) {
           goto LABEL_33;
         }
       LABEL_19:
@@ -867,19 +884,19 @@ LABEL_14:
                          (float)(*((float*)&v16 + 1) - *(float*)(v20 + 20)))) +
                      (float)((float)(*(float*)&v16 - *(float*)(v20 + 16)) *
                              (float)(*(float*)&v16 - *(float*)(v20 + 16)))));
-    } while (v18 < (int)CombatLegionGroup_e58ae0(*(_QWORD*)(a1 + 16),
-                                                 (__int64)"Main", 4));
+    } while (v18 < (int)CombatLegionGroup_e58ae0_alt1(*(_QWORD*)(a1 + 16),
+                                                      (__int64)"Main", 4u));
   }
   v29 = *(_QWORD*)(a1 + 24);
   if (*(_DWORD*)(v29 + 112) <= 1u &&
-      (int)CombatLegionGroup_e58ae0(v29, (__int64)"Main", 4) >= 1) {
+      (int)CombatLegionGroup_e58ae0_alt1(v29, (__int64)"Main", 4u) >= 1) {
     v30 = 0;
     do {
       v33 = *(unsigned __int8***)(*(_QWORD*)(a1 + 24) + 16LL);
       do {
         v34 = *v33;
-        v35 = v33[1];
-        if (v35 != nullptr) {
+        v35 = (__int64)v33[1];
+        if (v35 != 0) {
           atomic_fetch_add_explicit((atomic_ullong* volatile)(v35 + 8), 1u,
                                     memory_order_relaxed);
         }
@@ -890,18 +907,22 @@ LABEL_14:
         }
         if (v37 != 4) {
           v40 = false;
-          if (v35 == nullptr) {
+          if (v35 == 0) {
             goto LABEL_40;
           }
         LABEL_54:
           if (atomic_fetch_add((atomic_ullong* volatile)(v35 + 8),
                                0xFFFFFFFFFFFFFFFFLL) == 0) {
-            (*(void (**)(unsigned __int8*))(*(_QWORD*)v35 + 16LL))(v35),
+            (*(void (**)(__int64))(*(_QWORD*)v35 + 16LL))(v35),
                 v12 = COERCE_AS(__typeof__(v12),
-                                PSEUDO_REGISTER(float, "s0", "=w"));
-            std___1___shared_weak_count___release_weak(v35),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v3 = COERCE_AS(__typeof__(v3),
+                               PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+            std___1___shared_weak_count___release_weak_alt2(v35),
                 v12 = COERCE_AS(__typeof__(v12),
-                                PSEUDO_REGISTER(float, "s0", "=w"));
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v3 = COERCE_AS(__typeof__(v3),
+                               PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
           }
           goto LABEL_40;
         }
@@ -916,7 +937,7 @@ LABEL_14:
         if (v39 == 1852399949) {
           v1 = v34;
         }
-        if (v35 != nullptr) {
+        if (v35 != 0) {
           goto LABEL_54;
         }
       LABEL_40:
@@ -930,19 +951,19 @@ LABEL_14:
                          (float)(*((float*)&v16 + 1) - *(float*)(v32 + 20)))) +
                      (float)((float)(*(float*)&v16 - *(float*)(v32 + 16)) *
                              (float)(*(float*)&v16 - *(float*)(v32 + 16)))));
-    } while (v30 < (int)CombatLegionGroup_e58ae0(*(_QWORD*)(a1 + 24),
-                                                 (__int64)"Main", 4));
+    } while (v30 < (int)CombatLegionGroup_e58ae0_alt1(*(_QWORD*)(a1 + 24),
+                                                      (__int64)"Main", 4u));
   }
   v41 = *(_QWORD*)(a1 + 32);
   if (*(_DWORD*)(v41 + 112) <= 1u &&
-      (int)CombatLegionGroup_e58ae0(v41, (__int64)"Main", 4) >= 1) {
+      (int)CombatLegionGroup_e58ae0_alt1(v41, (__int64)"Main", 4u) >= 1) {
     v42 = 0;
     do {
       v45 = *(unsigned __int8***)(*(_QWORD*)(a1 + 32) + 16LL);
       do {
         v46 = *v45;
-        v47 = v45[1];
-        if (v47 != nullptr) {
+        v47 = (__int64)v45[1];
+        if (v47 != 0) {
           atomic_fetch_add_explicit((atomic_ullong* volatile)(v47 + 8), 1u,
                                     memory_order_relaxed);
         }
@@ -953,18 +974,22 @@ LABEL_14:
         }
         if (v49 != 4) {
           v52 = false;
-          if (v47 == nullptr) {
+          if (v47 == 0) {
             goto LABEL_61;
           }
         LABEL_75:
           if (atomic_fetch_add((atomic_ullong* volatile)(v47 + 8),
                                0xFFFFFFFFFFFFFFFFLL) == 0) {
-            (*(void (**)(unsigned __int8*))(*(_QWORD*)v47 + 16LL))(v47),
+            (*(void (**)(__int64))(*(_QWORD*)v47 + 16LL))(v47),
                 v12 = COERCE_AS(__typeof__(v12),
-                                PSEUDO_REGISTER(float, "s0", "=w"));
-            std___1___shared_weak_count___release_weak(v47),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v3 = COERCE_AS(__typeof__(v3),
+                               PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
+            std___1___shared_weak_count___release_weak_alt2(v47),
                 v12 = COERCE_AS(__typeof__(v12),
-                                PSEUDO_REGISTER(float, "s0", "=w"));
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v3 = COERCE_AS(__typeof__(v3),
+                               PSEUDO_REGISTER(unsigned long long, "x0", "=r"));
           }
           goto LABEL_61;
         }
@@ -979,7 +1004,7 @@ LABEL_14:
         if (v51 == 1852399949) {
           v1 = v46;
         }
-        if (v47 != nullptr) {
+        if (v47 != 0) {
           goto LABEL_75;
         }
       LABEL_61:
@@ -993,169 +1018,159 @@ LABEL_14:
                          (float)(*((float*)&v16 + 1) - *(float*)(v44 + 20)))) +
                      (float)((float)(*(float*)&v16 - *(float*)(v44 + 16)) *
                              (float)(*(float*)&v16 - *(float*)(v44 + 16)))));
-    } while (v42 < (int)CombatLegionGroup_e58ae0(*(_QWORD*)(a1 + 32),
-                                                 (__int64)"Main", 4));
+    } while (v42 < (int)CombatLegionGroup_e58ae0_alt1(*(_QWORD*)(a1 + 32),
+                                                      (__int64)"Main", 4u));
   }
   result = fmaxf(fmaxf(fmaxf(v5 + v9, 0x0.0p+0f), v17), 0x1.8000000000000p+1f);
   *(float*)(a1 + 88) = result;
   return result;
 }
 
-__n128 CombatLegionManager_e2ca80(__int64 a1)
+void CombatLegionManager_e2ca80(__int64 a1)
 {
 
 #pragma clang fp contract(off)
-  __n128 result;
-  float* v5;
+  float* v4;
+  __int64 v5;
   __int64 v6;
-  __int64 v7;
-  float* v8;
-  __int64 v9;
-  float v10;
-  __int64 v11;
-  float v12;
-  float* v13;
+  float* v7;
+  __int64 v8;
+  float v9;
+  __int64 v10;
+  float v11;
+  float* v12;
+  float v13;
   float v14;
   float v15;
   float v16;
-  float v17;
-  bool v18;
+  bool v17;
+  __int64 v18;
   __int64 v19;
-  __int64 v20;
-  float v21;
-  __int64 v22;
-  float v23;
-  float* v24;
+  float v20;
+  __int64 v21;
+  float v22;
+  float* v23;
+  float v24;
   float v25;
   float v26;
   float v27;
-  float v28;
+  __int64 v29;
   __int64 v30;
   __int64 v31;
-  __int64 v32;
   struct {
+    float* v32;
     float* v33;
-    float* v34;
-    __int64 v35;
-  } v33_;
+    __int64 v34;
+  } v32_;
   struct {
+    float* v35;
     float* v36;
-    float* v37;
-    __int64 v38;
-  } v36_;
+    __int64 v37;
+  } v35_;
 
-  result = COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
   if (GameData_21ec7b0 == 0 ||
       (*(_DWORD*)(*(_QWORD*)(GameData_21ec7b0 + 8) + 112LL) & 0x4040) != 0x40) {
-    v36_.v37 = nullptr;
-    v36_.v38 = 0;
-    v33_.v35 = 0;
-    v36_.v36 = nullptr;
-    v33_.v33 = nullptr;
-    v33_.v34 = nullptr;
-    CombatLegionManager_e2d300(a1, (__int64*)&v36_.v36, 0),
-        result =
-            COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
-    CombatLegionManager_e2d300(a1, (__int64*)&v33_.v33, 1u),
-        result =
-            COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
-    v6 = (__int64)v36_.v36;
-    v5 = v36_.v37;
-    v7 = (__int64)v33_.v33;
-    if (v36_.v37 != v36_.v36) {
-      v8 = v33_.v34;
-      if (v33_.v34 != v33_.v33) {
-        PSEUDO_LOW_LANE128(result, n128_u32,
-                           COERCE_UNSIGNED_INT((float)(0x1.0000000000000p+0f)));
-        if ((char*)v36_.v37 - (char*)v36_.v36 <=
-            (unsigned __int64)((char*)v33_.v34 - (char*)v33_.v33)) {
-          v20 = (__int64)v36_.v36;
+    v35_.v36 = nullptr;
+    v35_.v37 = 0;
+    v32_.v34 = 0;
+    v35_.v35 = nullptr;
+    v32_.v32 = nullptr;
+    v32_.v33 = nullptr;
+    GameHr_e2d300(a1, (__int64*)&v35_.v35, 0);
+    GameHr_e2d300(a1, (__int64*)&v32_.v32, 1u);
+    v5 = (__int64)v35_.v35;
+    v4 = v35_.v36;
+    v6 = (__int64)v32_.v32;
+    if (v35_.v36 != v35_.v35) {
+      v7 = v32_.v33;
+      if (v32_.v33 != v32_.v32) {
+        if ((char*)v35_.v36 - (char*)v35_.v35 <=
+            (unsigned __int64)((char*)v32_.v33 - (char*)v32_.v32)) {
+          v19 = (__int64)v35_.v35;
           do {
-            v21 = *(float*)(v20 + 32);
-            v22 = 0;
-            v23 = 0x1.fffffe0000000p+127f;
-            v24 = (float*)v7;
-            if (v21 >= 0x0.0p+0f) {
-              v25 = 0x1.0000000000000p+0f;
+            v20 = *(float*)(v19 + 32);
+            v21 = 0;
+            v22 = 0x1.fffffe0000000p+127f;
+            v23 = (float*)v6;
+            if (v20 >= 0x0.0p+0f) {
+              v24 = 0x1.0000000000000p+0f;
             }
             else {
-              v25 = -0x1.0000000000000p+0f;
+              v24 = -0x1.0000000000000p+0f;
             }
             do {
-              if (*(_QWORD*)(*(_QWORD*)v24 + 72LL) == 0) {
-                v26 = v24[8];
-                v18 = v26 < 0x0.0p+0f;
-                v27 = vabds_f32(v21, v26);
-                v28 = v18 ? -0x1.0000000000000p+0f : 0x1.0000000000000p+0f;
-                if (v25 == v28 && v27 < v23) {
-                  v23 = v27;
-                  v22 = *(_QWORD*)v24;
+              if (*(_QWORD*)(*(_QWORD*)v23 + 72LL) == 0) {
+                v25 = v23[8];
+                v17 = v25 < 0x0.0p+0f;
+                v26 = vabds_f32(v20, v25);
+                v27 = v17 ? -0x1.0000000000000p+0f : 0x1.0000000000000p+0f;
+                if (v24 == v27 && v26 < v22) {
+                  v22 = v26;
+                  v21 = *(_QWORD*)v23;
                 }
               }
-              v24 += 12;
-            } while (v24 != v8);
-            if (v22 != 0) {
-              v30 = *(_QWORD*)v20;
-              *(_QWORD*)(v22 + 72) = *(_QWORD*)v20;
-              *(_QWORD*)(v30 + 72) = v22;
+              v23 += 12;
+            } while (v23 != v7);
+            if (v21 != 0) {
+              v29 = *(_QWORD*)v19;
+              *(_QWORD*)(v21 + 72) = *(_QWORD*)v19;
+              *(_QWORD*)(v29 + 72) = v21;
             }
-            v20 += 48;
-          } while ((float*)v20 != v5);
+            v19 += 48;
+          } while ((float*)v19 != v4);
         }
         else {
-          v9 = (__int64)v33_.v33;
+          v8 = (__int64)v32_.v32;
           do {
-            v10 = *(float*)(v9 + 32);
-            v11 = 0;
-            v12 = 0x1.fffffe0000000p+127f;
-            v13 = (float*)v6;
-            if (v10 >= 0x0.0p+0f) {
-              v14 = 0x1.0000000000000p+0f;
+            v9 = *(float*)(v8 + 32);
+            v10 = 0;
+            v11 = 0x1.fffffe0000000p+127f;
+            v12 = (float*)v5;
+            if (v9 >= 0x0.0p+0f) {
+              v13 = 0x1.0000000000000p+0f;
             }
             else {
-              v14 = -0x1.0000000000000p+0f;
+              v13 = -0x1.0000000000000p+0f;
             }
             do {
-              if (*(_QWORD*)(*(_QWORD*)v13 + 72LL) == 0) {
-                v15 = v13[8];
-                v18 = v15 < 0x0.0p+0f;
-                v16 = vabds_f32(v10, v15);
-                v17 = v18 ? -0x1.0000000000000p+0f : 0x1.0000000000000p+0f;
-                v18 = v14 == v17 && v16 < v12;
-                if (v18) {
-                  v12 = v16;
-                  v11 = *(_QWORD*)v13;
+              if (*(_QWORD*)(*(_QWORD*)v12 + 72LL) == 0) {
+                v14 = v12[8];
+                v17 = v14 < 0x0.0p+0f;
+                v15 = vabds_f32(v9, v14);
+                v16 = v17 ? -0x1.0000000000000p+0f : 0x1.0000000000000p+0f;
+                v17 = v13 == v16 && v15 < v11;
+                if (v17) {
+                  v11 = v15;
+                  v10 = *(_QWORD*)v12;
                 }
               }
-              v13 += 12;
-            } while (v13 != v5);
-            if (v11 != 0) {
-              v19 = *(_QWORD*)v9;
-              *(_QWORD*)(v11 + 72) = *(_QWORD*)v9;
-              *(_QWORD*)(v19 + 72) = v11;
+              v12 += 12;
+            } while (v12 != v4);
+            if (v10 != 0) {
+              v18 = *(_QWORD*)v8;
+              *(_QWORD*)(v10 + 72) = *(_QWORD*)v8;
+              *(_QWORD*)(v18 + 72) = v10;
             }
-            v9 += 48;
-          } while ((float*)v9 != v8);
+            v8 += 48;
+          } while ((float*)v8 != v7);
         }
       }
     }
-    if (v7 != 0) {
+    if (v6 != 0) {
+      v30 = 128;
+      if (*(_QWORD*)(fw_memory_g_heap_manager + 200) == 0) {
+        v30 = 56;
+      }
+      nn_mem_StandardAllocator_Free_alt4(fw_memory_g_heap_manager + v30, v6);
+    }
+    if (v5 != 0) {
       v31 = 128;
       if (*(_QWORD*)(fw_memory_g_heap_manager + 200) == 0) {
         v31 = 56;
       }
-      result =
-          nn_mem_StandardAllocator_Free_alt2(fw_memory_g_heap_manager + v31);
-    }
-    if (v6 != 0) {
-      v32 = 128;
-      if (*(_QWORD*)(fw_memory_g_heap_manager + 200) == 0) {
-        v32 = 56;
-      }
-      return nn_mem_StandardAllocator_Free_alt2(fw_memory_g_heap_manager + v32);
+      nn_mem_StandardAllocator_Free_alt4(fw_memory_g_heap_manager + v31, v5);
     }
   }
-  return result;
 }
 
 __int64 CombatLegionManager_e2cca0()
@@ -1956,7 +1971,7 @@ LABEL_65:
 
 void CombatLegionManager_e2ddb0(__int64 a1, __int64 a2, __int64 a3)
 {
-  char* v5;
+  _QWORD* v5;
   __int64 v6;
   float v7;
   __int64 v8;
@@ -1978,12 +1993,12 @@ void CombatLegionManager_e2ddb0(__int64 a1, __int64 a2, __int64 a3)
   float v24;
   float v25;
   __int64 v26;
-  char* v27[3];
+  __int64 v27[3];
 
   CombatLegionManager_e2d920((void*)(v27));
-  v5 = v27[0];
-  if ((_BYTE*)(v27[1] - v27[0]) < (_BYTE*)((_UNKNOWN**)0x8LL) + 1) {
-    if ((char*)(v27[1] - v27[0]) != (char*)((_UNKNOWN**)0x8LL)) {
+  v5 = (_QWORD*)v27[0];
+  if (v27[1] - v27[0] < 9uLL) {
+    if (v27[1] - v27[0] != 8) {
       *(_QWORD*)a2 = 0;
       *(_QWORD*)a3 = 1065353216;
       if (v5 == nullptr) {
@@ -2041,22 +2056,22 @@ void CombatLegionManager_e2ddb0(__int64 a1, __int64 a2, __int64 a3)
                                    0x1.3bd3ce0000000p+1f)) *
                 0x1.3bd3ce0000000p+1f) +
         0x1.0000000000000p+0f;
-    v24 = *(float*)(*(_QWORD*)v5 + 48LL);
-    v25 = *(float*)(*(_QWORD*)v5 + 52LL);
+    v24 = *(float*)(*v5 + 48LL);
+    v25 = *(float*)(*v5 + 52LL);
     v17 = (float)(PSEUDO_UNFUSED(v22 * v25)) + (float)(v24 * v23);
     v18 = (float)(PSEUDO_UNFUSED(v25 * v23)) - (float)(v24 * v22);
   }
   else {
-    v6 = *((_QWORD*)v27[0] + 1);
+    v6 = *(_QWORD*)(v27[0] + 8);
     v7 = (float)(*(float*)(*(_QWORD*)v27[0] + 44LL) + *(float*)(v6 + 44)) *
          0x1.0000000000000p-1f;
     *(float*)a2 =
         (float)(*(float*)(*(_QWORD*)v27[0] + 40LL) + *(float*)(v6 + 40)) *
         0x1.0000000000000p-1f;
     *(float*)(a2 + 4) = v7;
-    v8 = *((_QWORD*)v5 + 1);
-    v9 = *(float*)(v8 + 44) - *(float*)(*(_QWORD*)v5 + 44LL);
-    v10 = *(float*)(v8 + 40) - *(float*)(*(_QWORD*)v5 + 40LL);
+    v8 = v5[1];
+    v9 = *(float*)(v8 + 44) - *(float*)(*v5 + 44LL);
+    v10 = *(float*)(v8 + 40) - *(float*)(*v5 + 40LL);
     v11 = 0x0.0p+0f;
     v12 = (float)(PSEUDO_UNFUSED(v9 * v9)) + (float)(v10 * v10);
     v13 = 0x1.0000000000000p+0f;
@@ -2125,8 +2140,8 @@ LABEL_8:
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
     v26 = 56;
   }
-  nn_mem_StandardAllocator_Free_alt2(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                     v26);
+  nn_mem_StandardAllocator_Free_alt4(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v26, (__int64)v5);
 }
 
 __attribute__((swiftcall)) void CombatLegionManager_e2dfe0(PSEUDO_X8 x8_,
@@ -2545,13 +2560,13 @@ void CombatLegionManager_e2e6a0(__int64 a1)
 
 #pragma clang fp contract(off)
   float v2;
-  char* i;
+  __int64 i;
   int v5;
   __int64 v7;
   float v8;
   int v9;
   bool v11;
-  char* v13[3];
+  __int64 v13[3];
 
   if ((unsigned int)(*(_DWORD*)(a1 + 80) - 3) >= 2) {
     v2 = 0x0.0p+0f;
@@ -2576,13 +2591,13 @@ void CombatLegionManager_e2e6a0(__int64 a1)
       }
     }
   }
-  if (v13[0] != nullptr) {
+  if (v13[0] != 0) {
     v7 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v7 = 56;
     }
-    nn_mem_StandardAllocator_Free_alt2(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v7);
+    nn_mem_StandardAllocator_Free_alt4(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v7, v13[0]);
   }
   v8 = 0x1.0000000000000p+0f;
   v9 = *(_DWORD*)(*(_QWORD*)(*GameData_212d448[0] + 8) + 112LL);

@@ -39,8 +39,8 @@ __int64 Trick_DeletingDestructor(_QWORD* a1);
 __int64 game_map_Trick_Impl_EachDanger_alt1(__int64 a1, __int64 a2) __asm__(
     "game_map_Trick_Impl_EachDanger");
 __int64 Trick_7cb0c0(__int64 a1);
-__int64 Trick_Unknown3(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
-                       __int64 a5, __int64 a6);
+__int64 Trick_Unknown3_alt1(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
+                            __int64 a5, __int64 a6) __asm__("Trick_Unknown3");
 __int64 Trick_Unknown6(__int64 result, __int64 a2);
 __int64 Trick_Unknown2(__int64 result, __int64 a2);
 __int64 game_map_Trick_Impl_CanPut_closure_Invoke(__int64 a1, unsigned int* a2,
@@ -108,6 +108,8 @@ void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void game_map_Trick_Impl_EachDanger(__int64 a1, __int64 a2);
 __int64 Trick_7d2180(__int64 a1, int a2, int a3, __int64 a4);
+__int64 memset_alt1(__int64, int, unsigned __int64) __asm__("memset");
+__int64 Trick_Unknown3(__int64 a1);
 
 __int64 Trick_Destructor(_QWORD* a1)
 {
@@ -948,32 +950,27 @@ LABEL_12:
   }
 }
 
-__int64 Trick_Unknown3(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
-                       __int64 a5, __int64 a6)
+__int64 Trick_Unknown3(__int64 a1)
 {
-  __int64 v6;
-  __int64* v7;
-  __int64* v8;
-  __int64 v9;
-  __int64 v10;
-  __int64 v11;
-  __int64 v12;
+  __int64 v1;
+  __int64* v2;
+  __int64* v3;
+  __int64 v4;
 
-  v6 = *(_QWORD*)(a1 + 16);
-  v7 = *(__int64**)(v6 + 32);
-  v8 = *(__int64**)(v6 + 40);
-  if (v7 != v8) {
+  v1 = *(_QWORD*)(a1 + 16);
+  v2 = *(__int64**)(v1 + 32);
+  v3 = *(__int64**)(v1 + 40);
+  if (v2 != v3) {
     do {
-      v9 = *v7++;
-      (*(void (**)(__int64))(*(_QWORD*)v9 + 720LL))(v9);
-    } while (v7 != v8);
-    v7 = *(__int64**)(v6 + 32);
+      v4 = *v2++;
+      (*(void (**)(__int64))(*(_QWORD*)v4 + 720LL))(v4);
+    } while (v2 != v3);
+    v2 = *(__int64**)(v1 + 32);
   }
-  *(_QWORD*)(v6 + 40) = v7;
-  *(_BYTE*)(v6 + 92848) = 0;
-  memset(v6 + 104, 255, 18432, a4, a5, a6);
-  return memset(*(_QWORD*)(*GameData_212ce98[0] + 48) + 8LL, 0, 2048, v10, v11,
-                v12);
+  *(_QWORD*)(v1 + 40) = v2;
+  *(_BYTE*)(v1 + 92848) = 0;
+  memset_alt1(v1 + 104, 255, 0x4800u);
+  return memset_alt1(*(_QWORD*)(*GameData_212ce98[0] + 48) + 8LL, 0, 0x800u);
 }
 
 __int64 Trick_Unknown6(__int64 result, __int64 a2)

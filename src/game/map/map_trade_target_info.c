@@ -46,17 +46,35 @@ __int64
 ui_LayoutAccessor_FindPane_alt1(__int64*,
                                 __int64) __asm__("ui_LayoutAccessor_FindPane");
 __int64 MapTradeTargetInfo_Unknown84(__int64* a1);
+__int64 ProcTransitionAnim_156af20_alt1(
+    __int64, int, int, __int64*, const char*,
+    const char*) __asm__("ProcTransitionAnim_156af20");
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
+__int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
+__int64 snd_play_ff2d0_alt1(__int64, __int64, __int64, unsigned int,
+                            unsigned int, int, float,
+                            float) __asm__("snd_play_ff2d0");
+int sprintf_alt1(__int64, const char*, ...) __asm__("sprintf");
+void __attribute__((noreturn))
+GameRoutine_60a210_alt1() __asm__("GameRoutine_60a210");
+void __attribute__((noreturn))
+GameRoutine_874500_alt1() __asm__("GameRoutine_874500");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void snd_Fade_Fade_10c830_alt1(__int64, float) __asm__("snd_Fade_Fade_10c830");
 
 __int64 MapTradeTargetInfo_Unknown57(__int64 a1, __int64* a2)
 {
   __int64 v3;
-  __int64 v4;
   __int64 v5;
   unsigned __int64 v6;
   __int64* v7;
   __int64 v8;
   __int64 v9;
-  __int64 v10;
+  signed __int64 v10;
   unsigned __int64 v11;
   __int64 v12;
   __int64 v13;
@@ -65,16 +83,13 @@ __int64 MapTradeTargetInfo_Unknown57(__int64 a1, __int64* a2)
   unsigned __int64 v16;
   __int64 v17;
   __int64 v18;
-  __int64 v20;
-  _BYTE v21[200];
+  _QWORD v20[25];
 
   v3 = game_gameui_MenuAnimator_instance_;
   if (game_gameui_MenuAnimator_instance_ != 0) {
-    v4 = a1;
-    sprintf(v21, "%s%s", "Right", "In");
-    a1 = ProcTransitionAnim_156af20(v3, 3, 0, (__int64*)(v4 + 848),
-                                    (__int64)"Right", (__int64)v21);
-    v5 = a1;
+    sprintf_alt1((__int64)v20, "%s%s", "Right", "In");
+    v5 = ProcTransitionAnim_156af20_alt1(v3, 3, 0, (__int64*)(a1 + 848),
+                                         "Right", (const char*)v20);
   }
   else {
     v5 = -1;
@@ -83,10 +98,10 @@ __int64 MapTradeTargetInfo_Unknown57(__int64 a1, __int64* a2)
   v6 = a2[2];
   if ((unsigned __int64)v7 >= v6) {
     v9 = *a2;
-    v10 = (__int64)v7 - *a2;
+    v10 = (signed __int64)v7 - *a2;
     v11 = (v10 >> 3) + 1;
     if (v11 >> 61 != 0) {
-      GameRoutine_874500();
+      GameRoutine_874500_alt1();
     }
     v12 = v6 - v9;
     v13 = fw_memory_g_heap_manager_ptr;
@@ -101,9 +116,9 @@ __int64 MapTradeTargetInfo_Unknown57(__int64 a1, __int64* a2)
     }
     if (v14 != 0) {
       if (v14 >> 61 != 0) {
-        GameRoutine_60a210(a1);
+        GameRoutine_60a210_alt1();
       }
-      v15 = fw_memory_HeapManager_Allocate(
+      v15 = fw_memory_HeapManager_Allocate_alt1(
           *(_QWORD*)fw_memory_g_heap_manager_ptr, 8 * v14, 16, 0);
     }
     else {
@@ -113,7 +128,7 @@ __int64 MapTradeTargetInfo_Unknown57(__int64 a1, __int64* a2)
     v17 = v15 + v10 - 8 * (v10 >> 3);
     *(_QWORD*)(v15 + v10) = v5;
     v8 = v15 + v10 + 8;
-    memcpy(v17, v9, v10);
+    memcpy_alt1(v17, v9, v10);
     *a2 = v17;
     a2[1] = v8;
     a2[2] = v16;
@@ -122,7 +137,7 @@ __int64 MapTradeTargetInfo_Unknown57(__int64 a1, __int64* a2)
       if (*(_QWORD*)(*(_QWORD*)v13 + 200LL) == 0) {
         v18 = 56;
       }
-      nn_mem_StandardAllocator_Free(*(_QWORD*)v13 + v18);
+      nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v13 + v18, v9);
     }
   }
   else {
@@ -130,10 +145,11 @@ __int64 MapTradeTargetInfo_Unknown57(__int64 a1, __int64* a2)
     v8 = (__int64)(v7 + 1);
   }
   a2[1] = v8;
-  snd_Fade_Fade_10c830(v21, 0.0f);
-  snd_play_ff2d0((void*)(&v20), "SE_SYS_Window_Open", "SE_SYS_Window_Open", v21,
-                 0, 65537, 0, 0.0f, 1.0f);
-  return snd_Fade_Destroy_Fade(v21);
+  snd_Fade_Fade_10c830_alt1((__int64)v20, 0x0.0p+0f);
+  snd_play_ff2d0_alt1((__int64)"SE_SYS_Window_Open",
+                      (__int64)"SE_SYS_Window_Open", (__int64)v20, 0, 0x10001u,
+                      0, 0x0.0p+0f, 0x1.0000000000000p+0f);
+  return snd_Fade_Destroy_Fade_alt1(v20);
 }
 
 __int64 MapTradeTargetInfo_Unknown84(__int64* a1)

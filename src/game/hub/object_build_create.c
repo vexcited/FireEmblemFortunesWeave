@@ -88,6 +88,7 @@ void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void ObjectBuildCreate_Destructor(__int64 a1);
 void game_hub_ObjectBuildCreate_CreateObject(__int64 a1);
+void game_hub_f2c8c0_alt1(__int64) __asm__("game_hub_f2c8c0");
 
 void ObjectBuildCreate_Destructor(__int64 a1)
 {
@@ -337,7 +338,7 @@ void game_hub_ObjectBuildCreate_CreateObject(__int64 a1)
     __int64 (***v101)();
   } v98_;
 
-  game_hub_f2c8c0(a1);
+  game_hub_f2c8c0_alt1(a1);
   v2 = *(_QWORD*)(a1 + 56);
   v4 = *(_BYTE*)(v2 + 128);
   v3 = (__int64*)(v2 + 128);

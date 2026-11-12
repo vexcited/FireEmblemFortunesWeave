@@ -28,6 +28,8 @@ void __attribute__((noreturn)) GameRoutine_60a210();
 void nn_mem_StandardAllocator_Free(__int64, __int64);
 __int64 MovieEventHandler_18cb930(_QWORD* a1, __int64 a2, __int64 a3);
 __int64 MovieEventHandler_18cbd60(_QWORD* a1, __int64 a2, __int64 a3);
+__int64 nn_os_GetSystemTick_alt1() __asm__("nn_os_GetSystemTick");
+__int64 nn_os_StartThread_alt1(__int64) __asm__("nn_os_StartThread");
 
 __int64 MovieEventHandler_18cb930(_QWORD* a1, __int64 a2, __int64 a3)
 {
@@ -501,27 +503,25 @@ LABEL_46:
 
 __int64 MovieEventHandler_18cc080(__int64 a1)
 {
-  __int64 started;
   __int64 SystemTickEv;
-  __int64 v4;
-  unsigned __int8 v5;
-  __int64 v6;
-  __int64 v7;
-  int v8;
+  __int64 v3;
+  unsigned __int8 v4;
+  __int64 v5;
+  int v6;
 
-  started = nn_os_StartThread(a1 + 88);
-  SystemTickEv = nn_os_GetSystemTick(started);
-  v4 = nn_os_ConvertToTimeSpan(SystemTickEv) / -1000000;
+  nn_os_StartThread_alt1(a1 + 88);
+  SystemTickEv = nn_os_GetSystemTick_alt1();
+  v3 = nn_os_ConvertToTimeSpan(SystemTickEv) / -1000000;
   do {
-    v5 = atomic_load((unsigned __int8*)(a1 + 57));
-    if ((v5 & 1) != 0) {
+    v4 = atomic_load((unsigned __int8*)(a1 + 57));
+    if ((v4 & 1) != 0) {
       break;
     }
-    v6 = nn_os_SleepThread(1000000LL * *(int*)(a1 + 60));
-    v7 = nn_os_GetSystemTick(v6);
-  } while (nn_os_ConvertToTimeSpan(v7) / 1000000 + v4 < *(int*)(a1 + 64));
-  v8 = atomic_load((unsigned __int8*)(a1 + 57));
-  if (v8 != 0) {
+    nn_os_SleepThread(1000000LL * *(int*)(a1 + 60));
+    v5 = nn_os_GetSystemTick_alt1();
+  } while (nn_os_ConvertToTimeSpan(v5) / 1000000 + v3 < *(int*)(a1 + 64));
+  v6 = atomic_load((unsigned __int8*)(a1 + 57));
+  if (v6 != 0) {
     return 0;
   }
   else {

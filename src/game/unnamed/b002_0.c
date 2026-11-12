@@ -313,6 +313,8 @@ __int64 GameHr_2ae9a0(__int64 a1, int a2);
 __int64 GameHr_2af890(__int64 result);
 __int64 GameHr_2afaa0(__int64 a1, __int64 a2);
 __int64 GameHr_2afc50(__int64 result);
+__int64 memset(__int64, int, unsigned __int64);
+int* GameHr_2acba0(int* result, _BYTE* a2, _BYTE* a3, unsigned __int8 a4);
 
 __int64 GameHr_2a2a60(_QWORD* a1)
 {
@@ -1388,7 +1390,7 @@ __int64 GameHr_2a5520(__int64 a1, _BYTE* a2, __int64 a3, __int64 a4, __int64 a5)
   _QWORD v20[3];
 
   *(_QWORD*)(a1 + 8) = 0;
-  memset(v20, 0, sizeof(v20));
+  __builtin_memset(v20, 0, sizeof(v20));
   *(_DWORD*)a1 = -1;
   *a2 = 0;
   GameRoutine_28bb40(v20, a3);
@@ -1411,7 +1413,7 @@ __int64 GameHr_2a5520(__int64 a1, _BYTE* a2, __int64 a3, __int64 a4, __int64 a5)
     *(_DWORD*)a1 = v13;
     v14 = BYTE4(v19);
     *a2 = BYTE4(v19);
-    if (v14 == 1 && (v17 = 0, memset(v16, 0, sizeof(v16)),
+    if (v14 == 1 && (v17 = 0, __builtin_memset(v16, 0, sizeof(v16)),
                      GameRoutine_2888d0(v16, v11, 1), *v10 != 0)) {
       v15 = 0;
       while ((_BYTE)v17 != 0 &&
@@ -1442,7 +1444,7 @@ __int64 GameHr_2a5660(__int64 a1, unsigned int a2, __int64 a3, __int64 a4)
   v13[0] = 0;
   v13[1] = 0;
   GameRoutine_2ac830(v13, a1);
-  memset(v12, 0, sizeof(v12));
+  __builtin_memset(v12, 0, sizeof(v12));
   GameRoutine_2ac9a0(v13, v12, a2, 0);
   result = GameRoutine_288010(a4, LODWORD(v12[0]));
   if (result != 0) {
@@ -1450,7 +1452,7 @@ __int64 GameHr_2a5660(__int64 a1, unsigned int a2, __int64 a3, __int64 a4)
     v11 = 0;
     v10 = -1;
     GameRoutine_278e00(a3, LODWORD(v12[0]), &v10);
-    memset(v9, 0, sizeof(v9));
+    __builtin_memset(v9, 0, sizeof(v9));
     GameRoutine_2888d0(v9, v8, BYTE4(v11));
     return GameRoutine_288b50(v9, HIDWORD(v12[0]));
   }
@@ -3222,7 +3224,7 @@ __int64 GameHr_2a9f40(__int64 result, __int64 a2, __int64 a3, __int64 a4)
   } v9_;
 
   v9_.v10 = 0;
-  memset(v9_.v9, 0, sizeof(v9_.v9));
+  __builtin_memset(v9_.v9, 0, sizeof(v9_.v9));
   if (a3 >= 1) {
     v7 = (unsigned __int16*)result;
     for (i = 0; i < a3; i += 14) {
@@ -4770,36 +4772,35 @@ float GameHr_2acb80(_DWORD* a1)
   return result;
 }
 
-int* GameHr_2acba0(int* result, _BYTE* a2, _BYTE* a3, __int64 a4, __int64 a5,
-                   __int64 a6)
+int* GameHr_2acba0(int* result, _BYTE* a2, _BYTE* a3, unsigned __int8 a4)
 {
+  int v4;
+  _BYTE* v5;
   int v6;
-  _BYTE* v7;
-  int v8;
 
   if ((*result & 0x100) != 0) {
-    v6 = *result;
-    v7 = (char*)result +
+    v4 = *result;
+    v5 = (char*)result +
          (unsigned int)
-             result[(v6 & 1) + 1 + ((v6 & 2) != 0) + ((v6 & 4) != 0) +
-                    ((v6 & 8) != 0) + ((v6 & 0x10) != 0) + ((v6 & 0x20) != 0) +
-                    ((v6 & 0x40) != 0) + ((v6 & 0x80) != 0)];
-    *a2 = *v7;
-    v8 = (unsigned __int8)v7[1];
-    if (v7[1] != 0) {
-      *a3 = v7[2];
-      if (v8 != 1) {
-        a3[1] = v7[3];
-        if (v8 != 2) {
-          a3[2] = v7[4];
+             result[(v4 & 1) + 1 + ((v4 & 2) != 0) + ((v4 & 4) != 0) +
+                    ((v4 & 8) != 0) + ((v4 & 0x10) != 0) + ((v4 & 0x20) != 0) +
+                    ((v4 & 0x40) != 0) + ((v4 & 0x80) != 0)];
+    *a2 = *v5;
+    v6 = (unsigned __int8)v5[1];
+    if (v5[1] != 0) {
+      *a3 = v5[2];
+      if (v6 != 1) {
+        a3[1] = v5[3];
+        if (v6 != 2) {
+          a3[2] = v5[4];
         }
       }
     }
   }
   else {
     *a2 = 127;
-    if ((_BYTE)a4 != 0) {
-      return (int*)GameRoutine_1a0ba50(a3, 0, (unsigned __int8)a4, a4, a5, a6);
+    if (a4 != 0) {
+      return (int*)memset((__int64)a3, 0, a4);
     }
   }
   return result;

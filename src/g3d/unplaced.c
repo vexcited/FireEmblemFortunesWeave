@@ -18,6 +18,11 @@ __attribute__((swiftcall)) void g3d_ada070(PSEUDO_X8 x8_, __int64 a1,
                                            unsigned __int64 a2, __int64 a3);
 __attribute__((swiftcall)) void g3d_ada970(PSEUDO_X8 x8_, __int64 a1,
                                            unsigned __int64 a2, __int64 a3);
+__int64 memmove_alt1(__int64, __int64, unsigned __int64) __asm__("memmove");
+int memcmp_alt1(__int64, __int64, unsigned __int64) __asm__("memcmp");
+unsigned __int64 strlen_alt1(const char*) __asm__("strlen");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 __int64 g3d_a6c880(__int64* a1, __int64 a2, unsigned __int64 a3)
 {
@@ -26,9 +31,9 @@ __int64 g3d_a6c880(__int64* a1, __int64 a2, unsigned __int64 a3)
   __int64 v7;
   __int64 v8;
   __int64 v9;
-  char* v10;
+  __int64 v10;
   __int64 v11;
-  char* v12;
+  const char* v12;
   unsigned __int64 v13;
   __int64 v14;
   __int64 v15;
@@ -43,7 +48,7 @@ __int64 g3d_a6c880(__int64* a1, __int64 a2, unsigned __int64 a3)
   __int64 v24;
   struct {
     _QWORD v26[2];
-    char* v27;
+    const char* v27;
   } v26_;
 
   if (a3 >= 0xFFFFFFFFFFFFFFF7LL) {
@@ -61,7 +66,7 @@ __int64 g3d_a6c880(__int64* a1, __int64 a2, unsigned __int64 a3)
     a2 = v6;
     v5 = (char*)v8;
     v26_.v26[1] = a3;
-    v26_.v27 = (char*)v8;
+    v26_.v27 = (const char*)v8;
     v26_.v26[0] = v7 | 1;
     goto LABEL_9;
   }
@@ -69,11 +74,11 @@ __int64 g3d_a6c880(__int64* a1, __int64 a2, unsigned __int64 a3)
   v5 = (char*)v26_.v26 + 1;
   if (a3 != 0) {
   LABEL_9:
-    memmove(v5, a2, a3);
+    memmove_alt1((__int64)v5, a2, a3);
   }
   v5[a3] = 0;
   v9 = *a1;
-  v10 = v26_.v27;
+  v10 = (__int64)v26_.v27;
   v11 = *(_QWORD*)(*a1 + 56);
   if ((v26_.v26[0] & 1) != 0) {
     v12 = v26_.v27;
@@ -82,7 +87,7 @@ __int64 g3d_a6c880(__int64* a1, __int64 a2, unsigned __int64 a3)
     v12 = (char*)v26_.v26 + 1;
   }
   if (v12 != nullptr) {
-    v13 = strlen(v12);
+    v13 = strlen_alt1(v12);
   }
   else {
     v13 = 0;
@@ -91,7 +96,7 @@ __int64 g3d_a6c880(__int64* a1, __int64 a2, unsigned __int64 a3)
   v15 = *(unsigned __int16*)(v11 + 12);
   v16 = v11 + 8 + 16 * v15;
   v17 = *(_DWORD*)v16;
-  if (*(_DWORD*)(v11 + 8) < *(_DWORD*)v16) {
+  if ((signed __int32)*(_DWORD*)(v11 + 8) < (signed __int32)*(_DWORD*)v16) {
     do {
       v20 = (__int64)v17 >> 3;
       if (v13 > v20) {
@@ -101,13 +106,13 @@ __int64 g3d_a6c880(__int64* a1, __int64 a2, unsigned __int64 a3)
         v18 = 0;
       }
       v15 = *(unsigned __int16*)(v11 + 12 + 16 * v15 + 2 * v18);
-      v19 = v17 < *(_DWORD*)(v14 + 16 * v15);
+      v19 = v17 < (signed __int32)*(_DWORD*)(v14 + 16 * v15);
       v17 = *(_DWORD*)(v14 + 16 * v15);
     } while (v19);
     v16 = v14 + 16 * v15;
   }
   v21 = *(unsigned __int16**)(v16 + 8);
-  if (v13 == *v21 && (unsigned int)memcmp(v21 + 1, v12, v13) == 0 &&
+  if (v13 == *v21 && memcmp_alt1((__int64)(v21 + 1), (__int64)v12, v13) == 0 &&
       (~(v22 = v16 - v11 - 24) & 0xFFFFFFFF0LL) != 0) {
     v23 = *(_QWORD*)(*(_QWORD*)(v9 + 40) + 8LL * (int)(v22 >> 4));
     if ((v26_.v26[0] & 1) == 0) {
@@ -120,12 +125,13 @@ __int64 g3d_a6c880(__int64* a1, __int64 a2, unsigned __int64 a3)
       return v23;
     }
   }
-  if (v10 != nullptr) {
+  if (v10 != 0) {
     v24 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v24 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v24);
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v24, v10);
   }
   return v23;
 }

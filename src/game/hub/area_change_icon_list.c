@@ -21,6 +21,7 @@ void LayoutAccessor_1562680(__int64*, __int64, float);
 void AreaChangeIconList_Unknown2(__int64 a1, __int64 a2);
 __int64 fmodf_alt1(float, float) __asm__("fmodf");
 void game_hub_1035650(__int64, __int64, __int64, float*);
+float fmodf_alt2(float, float) __asm__("fmodf");
 
 void AreaChangeIconList_Unknown2(__int64 a1, __int64 a2)
 {
@@ -481,7 +482,6 @@ void AreaChangeIconList_Unknown4(__int64 a1, __int64 a2, int* a3, float* a4,
   char v29;
   int v30;
 
-  v19 = COERCE_AS(__typeof__(v19), PSEUDO_REGISTER(float, "s0", "=w"));
   v5 = *(_QWORD*)(a2 + 184);
   v6 = *(_QWORD*)(a2 + 192);
   if (v5 != v6) {
@@ -509,8 +509,7 @@ void AreaChangeIconList_Unknown4(__int64 a1, __int64 a2, int* a3, float* a4,
     v17 = *(_QWORD*)(v15 + (v16 << 6));
     if (v17 != 0) {
       v18 = *(float*)(v5 + 92);
-      fmodf_alt1(v18, 0x1.6800000000000p+8f),
-          v19 = COERCE_AS(__typeof__(v19), PSEUDO_REGISTER(float, "s0", "=w"));
+      v19 = fmodf_alt2(v18, 0x1.6800000000000p+8f);
       v20 = *a3;
       if (v18 >= 0x0.0p+0f) {
         v21 = v19;
@@ -541,9 +540,7 @@ void AreaChangeIconList_Unknown4(__int64 a1, __int64 a2, int* a3, float* a4,
       *(_BYTE*)(v17 + 88) = v29 | 0x10;
       v30 = *a3;
       if (*a3 == 1) {
-        game_hub_1035650(a1, v17, v5, a4),
-            v19 =
-                COERCE_AS(__typeof__(v19), PSEUDO_REGISTER(float, "s0", "=w"));
+        game_hub_1035650(a1, v17, v5, a4);
         v30 = *a3;
       }
       if (v30 != 0) {
@@ -556,10 +553,8 @@ void AreaChangeIconList_Unknown4(__int64 a1, __int64 a2, int* a3, float* a4,
           v23 = *(float*)(a5 + 12);
           v25 = *(float*)a5;
           if (*(_BYTE*)(a5 + 16) == 1) {
-            fmodf_alt1(*(float*)(*(_QWORD*)GameData_212dc38[0] + 100LL),
-                       0x1.6800000000000p+8f),
-                v19 = COERCE_AS(__typeof__(v19),
-                                PSEUDO_REGISTER(float, "s0", "=w"));
+            fmodf_alt2(*(float*)(*(_QWORD*)GameData_212dc38[0] + 100LL),
+                       0x1.6800000000000p+8f);
             v13 = *(_BYTE*)(v17 + 88);
           }
           v26 = *(_OWORD*)v5;

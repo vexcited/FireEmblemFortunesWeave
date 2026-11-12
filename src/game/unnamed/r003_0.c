@@ -95,6 +95,14 @@ void GameHr_ae1e30(__int64 a1, __int64 a2);
 bool GameHr_ae3d80(__int64 a1);
 void GameHr_c47f40(_QWORD* a1, __int64* a2);
 float GameHr_c4e160(_QWORD* a1, char* a2);
+float powf(float, float);
+int memcmp(__int64, __int64, unsigned __int64);
+__int64 GameHr_bd8300(__int64 result, __int64 a2, unsigned __int64 a3,
+                      _BYTE* a4);
+__int64 GameHr_bd8640(__int64 result, __int64 a2, unsigned __int64 a3,
+                      _BYTE* a4);
+__int64 GameHr_bd9120(__int64 result, __int64 a2, unsigned __int64 a3,
+                      _BYTE* a4);
 
 __int64 GameHr_a2e6f0(__int64 a1, unsigned __int8* a2, char a3, char a4,
                       char a5, __int64 a6)
@@ -2357,6 +2365,8 @@ __int64 GameHr_bd8160(__int64 result, __int64 a2, unsigned __int64 a3,
 __int64 GameHr_bd8300(__int64 result, __int64 a2, unsigned __int64 a3,
                       _BYTE* a4)
 {
+
+#pragma clang fp contract(off)
   unsigned int v4;
   unsigned int v5;
   unsigned int v6;
@@ -2373,7 +2383,7 @@ __int64 GameHr_bd8300(__int64 result, __int64 a2, unsigned __int64 a3,
   __int64 v19;
   float v20;
   float v21;
-  unsigned int v22;
+  float v22;
   long double v23;
   float v24;
   float v25;
@@ -2398,7 +2408,7 @@ __int64 GameHr_bd8300(__int64 result, __int64 a2, unsigned __int64 a3,
         v16 = v13 + 377;
         v17 = *(_QWORD*)(v13 + 392);
         v18 = (v14 & 1) != 0 ? v17 : v16;
-        result = GameRoutine_1a09cf0(v18, a2);
+        result = memcmp(v18, a2, a3);
         if ((_DWORD)result == 0) {
           break;
         }
@@ -2414,12 +2424,12 @@ __int64 GameHr_bd8300(__int64 result, __int64 a2, unsigned __int64 a3,
     if (*v9 != 0) {
       v20 = (float)v6;
       v21 = *(float*)GameData_212ea30;
-      *(float*)&v26 = v20 / 255.0;
-      v25 = GameRoutine_1a0a550((float)v7 / 255.0, *(float*)GameData_212ea30);
-      v24 = GameRoutine_1a0a550((float)v4 / 255.0, v21);
-      *(float*)&v22 = GameRoutine_1a0a550((float)v5 / 255.0, v21);
+      *(float*)&v26 = v20 / 0x1.fe00000000000p+7f;
+      v25 = powf((float)v7 / 0x1.fe00000000000p+7f, *(float*)GameData_212ea30);
+      v24 = powf((float)v4 / 0x1.fe00000000000p+7f, v21);
+      v22 = powf((float)v5 / 0x1.fe00000000000p+7f, v21);
       *(_QWORD*)&v23 = __PAIR64__(LODWORD(v24), LODWORD(v25));
-      *((_QWORD*)&v23 + 1) = __PAIR64__(v26, v22);
+      *((_QWORD*)&v23 + 1) = __PAIR64__(v26, LODWORD(v22));
       return (*(__int64 (**)(__int64, const char*, __int64, long double))(
           *(_QWORD*)v19 + 64LL))(v19, "ChangeColorG0", 13, v23);
     }
@@ -2503,6 +2513,8 @@ __int64 GameHr_bd84a0(__int64 result, __int64 a2, unsigned __int64 a3,
 __int64 GameHr_bd8640(__int64 result, __int64 a2, unsigned __int64 a3,
                       _BYTE* a4)
 {
+
+#pragma clang fp contract(off)
   unsigned int v4;
   unsigned int v5;
   unsigned int v6;
@@ -2519,7 +2531,7 @@ __int64 GameHr_bd8640(__int64 result, __int64 a2, unsigned __int64 a3,
   __int64 v19;
   float v20;
   float v21;
-  unsigned int v22;
+  float v22;
   long double v23;
   float v24;
   float v25;
@@ -2544,7 +2556,7 @@ __int64 GameHr_bd8640(__int64 result, __int64 a2, unsigned __int64 a3,
         v16 = v13 + 377;
         v17 = *(_QWORD*)(v13 + 392);
         v18 = (v14 & 1) != 0 ? v17 : v16;
-        result = GameRoutine_1a09cf0(v18, a2);
+        result = memcmp(v18, a2, a3);
         if ((_DWORD)result == 0) {
           break;
         }
@@ -2560,12 +2572,12 @@ __int64 GameHr_bd8640(__int64 result, __int64 a2, unsigned __int64 a3,
     if (*v9 != 0) {
       v20 = (float)v6;
       v21 = *(float*)GameData_212ea30;
-      *(float*)&v26 = v20 / 255.0;
-      v25 = GameRoutine_1a0a550((float)v7 / 255.0, *(float*)GameData_212ea30);
-      v24 = GameRoutine_1a0a550((float)v4 / 255.0, v21);
-      *(float*)&v22 = GameRoutine_1a0a550((float)v5 / 255.0, v21);
+      *(float*)&v26 = v20 / 0x1.fe00000000000p+7f;
+      v25 = powf((float)v7 / 0x1.fe00000000000p+7f, *(float*)GameData_212ea30);
+      v24 = powf((float)v4 / 0x1.fe00000000000p+7f, v21);
+      v22 = powf((float)v5 / 0x1.fe00000000000p+7f, v21);
       *(_QWORD*)&v23 = __PAIR64__(LODWORD(v24), LODWORD(v25));
-      *((_QWORD*)&v23 + 1) = __PAIR64__(v26, v22);
+      *((_QWORD*)&v23 + 1) = __PAIR64__(v26, LODWORD(v22));
       return (*(__int64 (**)(__int64, const char*, __int64, long double))(
           *(_QWORD*)v19 + 64LL))(v19, "BaseColorMultiplier0", 20, v23);
     }
@@ -2576,6 +2588,8 @@ __int64 GameHr_bd8640(__int64 result, __int64 a2, unsigned __int64 a3,
 __int64 GameHr_bd9120(__int64 result, __int64 a2, unsigned __int64 a3,
                       _BYTE* a4)
 {
+
+#pragma clang fp contract(off)
   unsigned int v4;
   unsigned int v5;
   unsigned int v6;
@@ -2592,7 +2606,7 @@ __int64 GameHr_bd9120(__int64 result, __int64 a2, unsigned __int64 a3,
   __int64 v19;
   float v20;
   float v21;
-  unsigned int v22;
+  float v22;
   long double v23;
   float v24;
   float v25;
@@ -2617,7 +2631,7 @@ __int64 GameHr_bd9120(__int64 result, __int64 a2, unsigned __int64 a3,
         v16 = v13 + 377;
         v17 = *(_QWORD*)(v13 + 392);
         v18 = (v14 & 1) != 0 ? v17 : v16;
-        result = GameRoutine_1a09cf0(v18, a2);
+        result = memcmp(v18, a2, a3);
         if ((_DWORD)result == 0) {
           break;
         }
@@ -2633,12 +2647,12 @@ __int64 GameHr_bd9120(__int64 result, __int64 a2, unsigned __int64 a3,
     if (*v9 != 0) {
       v20 = (float)v6;
       v21 = *(float*)GameData_212ea30;
-      *(float*)&v26 = v20 / 255.0;
-      v25 = GameRoutine_1a0a550((float)v7 / 255.0, *(float*)GameData_212ea30);
-      v24 = GameRoutine_1a0a550((float)v4 / 255.0, v21);
-      *(float*)&v22 = GameRoutine_1a0a550((float)v5 / 255.0, v21);
+      *(float*)&v26 = v20 / 0x1.fe00000000000p+7f;
+      v25 = powf((float)v7 / 0x1.fe00000000000p+7f, *(float*)GameData_212ea30);
+      v24 = powf((float)v4 / 0x1.fe00000000000p+7f, v21);
+      v22 = powf((float)v5 / 0x1.fe00000000000p+7f, v21);
       *(_QWORD*)&v23 = __PAIR64__(LODWORD(v24), LODWORD(v25));
-      *((_QWORD*)&v23 + 1) = __PAIR64__(v26, v22);
+      *((_QWORD*)&v23 + 1) = __PAIR64__(v26, LODWORD(v22));
       return (*(__int64 (**)(__int64, const char*, __int64, long double))(
           *(_QWORD*)v19 + 64LL))(v19, "ScarColor", 9, v23);
     }

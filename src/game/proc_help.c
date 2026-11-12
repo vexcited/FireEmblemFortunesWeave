@@ -10,7 +10,8 @@ __int64 std___1___shared_weak_count___release_weak(_QWORD);
 extern __int64 (*game_ProcInst_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 ProcHelp_Destructor(__int64 a1);
-__int64 ProcHelp_DeletingDestructor(__int64 a1);
+__int64 ProcHelp_DeletingDestructor_alt1(__int64 a1) __asm__(
+    "ProcHelp_DeletingDestructor");
 __attribute__((swiftcall)) void snd_play_ff2d0(PSEUDO_X8, _QWORD, _QWORD,
                                                _QWORD, _QWORD, _QWORD, _QWORD,
                                                double, float);
@@ -31,6 +32,13 @@ __int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
     "std___1___shared_weak_count_lock");
 extern __int64* GameData_212d890[2];
 _QWORD* ProcHelp_Unknown5(_QWORD* a1);
+__int64 GameRoutine_1553220_alt1(__int64 result) __asm__("GameRoutine_1553220");
+__int64 game_ProcInst_Unregister_alt1(__int64 result) __asm__(
+    "game_ProcInst_Unregister");
+void GameRoutine_658c00_alt1(__int64*) __asm__("GameRoutine_658c00");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void ProcHelp_DeletingDestructor(__int64 a1);
 
 __int64 ProcHelp_Destructor(__int64 a1)
 {
@@ -54,33 +62,33 @@ __int64 ProcHelp_Destructor(__int64 a1)
   return GameRoutine_658c00(a1 + 88);
 }
 
-__int64 ProcHelp_DeletingDestructor(__int64 a1)
+void ProcHelp_DeletingDestructor(__int64 a1)
 {
   __int64 v2;
   __int64 v3;
 
   if (*(_BYTE*)(a1 + 196) == 1) {
-    GameRoutine_1553220(*(unsigned int*)(a1 + 192));
+    GameRoutine_1553220_alt1(*(unsigned int*)(a1 + 192));
     if (*(_BYTE*)(a1 + 196) == 1) {
       *(_BYTE*)(a1 + 196) = 0;
     }
   }
   v2 = *(_QWORD*)(a1 + 168);
   if (v2 != 0) {
-    std___1___shared_weak_count___release_weak(v2);
+    std___1___shared_weak_count___release_weak_alt1(v2);
   }
   *(_QWORD*)a1 = game_ProcInst_vtable;
   if ((*(_WORD*)(a1 + 136) & 0x100) != 0) {
     *(_WORD*)(a1 + 136) &= ~0x100u;
   }
-  game_ProcInst_Unregister(a1);
-  GameRoutine_658c00(a1 + 88);
+  game_ProcInst_Unregister_alt1(a1);
+  GameRoutine_658c00_alt1((__int64*)(a1 + 88));
   v3 = 128;
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
     v3 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v3);
+  nn_mem_StandardAllocator_Free_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v3, a1);
 }
 
 _QWORD* ProcHelp_Unknown5(_QWORD* a1)

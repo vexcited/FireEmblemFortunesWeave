@@ -76,6 +76,8 @@ as_c7a950(__attribute__((swift_indirect_result)) void* x8_, __int64 a1,
           __int64 a2);
 bool as_c81590();
 __int64* as_c81b50(__int64* result, __int64* a2, __int64* a3);
+void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 __int64 as_607560(__int64 a1)
 {
@@ -1569,8 +1571,8 @@ bool as_c81590()
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 440LL) == 0) {
       v9 = 56;
     }
-    nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v9);
+    nn_mem_StandardAllocator_Free_alt2(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v9, (__int64)v8);
     goto LABEL_14;
   }
   if (v7 == 7) {

@@ -27,7 +27,9 @@ __int64 RecordSerializer_123d420(__int64 a1);
 __int64
 RecordSerializer_123d650_alt1(__int64 a1,
                               __int64 a2) __asm__("RecordSerializer_123d650");
-__int64* RecordSerializer_123d810(__int64* result, __int64* a2);
+__int64*
+RecordSerializer_123d810_alt2(__int64* result,
+                              __int64* a2) __asm__("RecordSerializer_123d810");
 void RecordSerializer_126ad60(__int64 a1, __int64 a2);
 __int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
 void GameRoutine_660f80_alt1(__int64*) __asm__("GameRoutine_660f80");
@@ -36,6 +38,16 @@ void RecordSerializer_123d810_alt1(__int64*, __int64*) __asm__(
 void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void RecordSerializer_123d650(__int64 a1, __int64 a2);
+__int64 Stream_Destructor_alt1(__int64,
+                               unsigned int*) __asm__("Stream_Destructor");
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+void __attribute__((noreturn))
+GameRoutine_12352b0_alt1() __asm__("GameRoutine_12352b0");
+void __attribute__((noreturn))
+GameRoutine_60a210_alt1() __asm__("GameRoutine_60a210");
+void RecordSerializer_123d810(__int64* a1, __int64* a2);
 
 __int64 RecordSerializer_123cfa0(__int64 a1, __int64 a2)
 {
@@ -237,12 +249,12 @@ __int64 RecordSerializer_123d170(__int64 a1)
 
 __int64 RecordSerializer_123d420(__int64 a1)
 {
-  _QWORD* v2;
+  __int64* v2;
   __int64 v3;
   __int64 v4;
   __int64 v5;
   __int64 v6;
-  __int64 v7;
+  unsigned __int64 v7;
   __int64 v8;
   __int64 v9;
   __int64 result;
@@ -260,39 +272,39 @@ __int64 RecordSerializer_123d420(__int64 a1)
   __int64 v22;
   __int64 v23;
   __int64 v24;
-  int v25;
+  unsigned int v25;
 
-  v2 = (_QWORD*)fw_memory_g_heap_manager_ptr;
-  v3 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
-                                      491520, 16, 0);
+  v2 = (__int64*)fw_memory_g_heap_manager_ptr;
+  v3 = fw_memory_HeapManager_Allocate_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr, 491520, 16, 0);
   v4 = *(_QWORD*)(a1 + 136);
   *(_QWORD*)(a1 + 136) = v3;
   if (v4 != 0) {
     v5 = 128;
-    if (*(_QWORD*)(*v2 + 200LL) == 0) {
+    if (*(_QWORD*)(*v2 + 200) == 0) {
       v5 = 56;
     }
-    nn_mem_StandardAllocator_Free(*v2 + v5);
+    nn_mem_StandardAllocator_Free_alt1(*v2 + v5, v4);
   }
   v6 = *(_QWORD*)(a1 + 152);
   if (0xAAAAAAAAAAAAAAABLL * ((*(_QWORD*)(a1 + 168) - v6) >> 2) <= 0x7F) {
     v7 = *(_QWORD*)(a1 + 160) - v6;
-    v8 = fw_memory_HeapManager_Allocate(*v2, 1536, 16, 0);
-    memcpy(v8, v6, v7);
+    v8 = fw_memory_HeapManager_Allocate_alt1(*v2, 1536, 16, 0);
+    memcpy_alt1(v8, v6, v7);
     *(_QWORD*)(a1 + 152) = v8;
     *(_QWORD*)(a1 + 160) = v8 + v7;
     *(_QWORD*)(a1 + 168) = v8 + 1536;
     if (v6 != 0) {
       v9 = 128;
-      if (*(_QWORD*)(*v2 + 200LL) == 0) {
+      if (*(_QWORD*)(*v2 + 200) == 0) {
         v9 = 56;
       }
-      nn_mem_StandardAllocator_Free(*v2 + v9);
+      nn_mem_StandardAllocator_Free_alt1(*v2 + v9, v6);
     }
   }
   *(_DWORD*)(a1 + 20) = 0;
   v25 = 0;
-  result = Stream_Destructor(a1, &v25);
+  result = Stream_Destructor_alt1(a1, &v25);
   v11 = *(_DWORD*)(a1 + 20);
   v12 = v11;
   if (v11 <= 128) {
@@ -447,15 +459,14 @@ void RecordSerializer_123d650(__int64 a1, __int64 a2)
   }
 }
 
-__int64* RecordSerializer_123d810(__int64* result, __int64* a2)
+void RecordSerializer_123d810(__int64* a1, __int64* a2)
 {
   unsigned __int64 v2;
   unsigned __int64 v3;
-  __int64* v4;
   __int64 v5;
   __int64 v6;
   __int64 v7;
-  __int64 v8;
+  signed __int64 v8;
   unsigned __int64 v9;
   __int64 v10;
   unsigned __int64 v11;
@@ -466,15 +477,14 @@ __int64* RecordSerializer_123d810(__int64* result, __int64* a2)
   unsigned __int64 v16;
   __int64 v17;
 
-  v3 = result[1];
-  v2 = result[2];
-  v4 = result;
+  v3 = a1[1];
+  v2 = a1[2];
   if (v3 >= v2) {
-    v7 = *result;
-    v8 = v3 - *result;
+    v7 = *a1;
+    v8 = v3 - *a1;
     v9 = 1 - 0x5555555555555555LL * (v8 >> 2);
     if (v9 > 0x1555555555555555LL) {
-      GameRoutine_12352b0();
+      GameRoutine_12352b0_alt1();
     }
     v10 = fw_memory_g_heap_manager_ptr;
     v11 = 0xAAAAAAAAAAAAAAABLL * ((__int64)(v2 - v7) >> 2);
@@ -489,10 +499,10 @@ __int64* RecordSerializer_123d810(__int64* result, __int64* a2)
     }
     if (v12 != 0) {
       if (v12 > 0x1555555555555555LL) {
-        GameRoutine_60a210(result);
+        GameRoutine_60a210_alt1();
       }
       v13 = a2;
-      v14 = fw_memory_HeapManager_Allocate(
+      v14 = fw_memory_HeapManager_Allocate_alt1(
           *(_QWORD*)fw_memory_g_heap_manager_ptr, 12 * v12, 16, 0);
       a2 = v13;
     }
@@ -504,16 +514,16 @@ __int64* RecordSerializer_123d810(__int64* result, __int64* a2)
     v6 = v14 + v8 + 12;
     *(_QWORD*)v15 = *a2;
     *(_DWORD*)(v15 + 8) = *((_DWORD*)a2 + 2);
-    result = (__int64*)memcpy(v14, v7, v8);
-    *v4 = v14;
-    v4[1] = v6;
-    v4[2] = v16;
+    memcpy_alt1(v14, v7, v8);
+    *a1 = v14;
+    a1[1] = v6;
+    a1[2] = v16;
     if (v7 != 0) {
       v17 = 128;
       if (*(_QWORD*)(*(_QWORD*)v10 + 200LL) == 0) {
         v17 = 56;
       }
-      result = (__int64*)nn_mem_StandardAllocator_Free(*(_QWORD*)v10 + v17);
+      nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v10 + v17, v7);
     }
   }
   else {
@@ -522,8 +532,7 @@ __int64* RecordSerializer_123d810(__int64* result, __int64* a2)
     *(_DWORD*)(v3 + 8) = *((_DWORD*)a2 + 2);
     *(_QWORD*)v3 = v5;
   }
-  v4[1] = v6;
-  return result;
+  a1[1] = v6;
 }
 
 void RecordSerializer_126ad60(__int64 a1, __int64 a2)
@@ -722,6 +731,7 @@ void RecordSerializer_126ad60(__int64 a1, __int64 a2)
   __int64 v194;
   int v195;
   __int64 v196;
+  __int64 v197;
 
   v3 = (int*)(a2 + 20);
   v2 = *(int*)(a2 + 20);
@@ -1216,7 +1226,7 @@ void RecordSerializer_126ad60(__int64 a1, __int64 a2)
     }
     v182 = *(_QWORD*)(a2 + 64) + *(_QWORD*)(a2 + 56);
     if (v181 == v182) {
-      GameRoutine_660f80(a2 + 24);
+      GameRoutine_660f80_alt1((__int64*)(a2 + 24));
       v178 = *(_QWORD*)(a2 + 32);
       v182 = *(_QWORD*)(a2 + 64) + *(_QWORD*)(a2 + 56);
       v183 = *(_DWORD*)(a2 + 20);
@@ -1249,13 +1259,14 @@ void RecordSerializer_126ad60(__int64 a1, __int64 a2)
     *(_QWORD*)(a2 + 64) = v186 - 1;
     *(_DWORD*)(a2 + 20) = v195;
     if ((unsigned __int64)(v193 - (v186 + v187) + 1) >= 0x800) {
-      if (*(_QWORD*)(v188 - 8) != 0) {
-        v196 = 128;
+      v196 = *(_QWORD*)(v188 - 8);
+      if (v196 != 0) {
+        v197 = 128;
         if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-          v196 = 56;
+          v197 = 56;
         }
-        nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                      v196);
+        nn_mem_StandardAllocator_Free_alt1(
+            *(_QWORD*)fw_memory_g_heap_manager_ptr + v197, v196);
         v188 = *(_QWORD*)(a2 + 40);
       }
       *(_QWORD*)(a2 + 40) = v188 - 8;

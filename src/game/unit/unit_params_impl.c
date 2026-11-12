@@ -18,6 +18,15 @@ extern __int64 GameData_21ca2a8;
 extern __int64 game_GameModeData_instance_;
 extern int GameData_21d98dc;
 __int64 UnitParams_6dd470(__int64 a1, _BYTE* a2, __int64 a3, char a4);
+__int64* game_9a28e0(int);
+__int64 game_GameVariableTable_Find_alt1(_QWORD*, unsigned __int64*) __asm__(
+    "game_GameVariableTable_Find");
+__int64 game_HashString_alt1(__int64 result) __asm__("game_HashString");
+bool game_HasActiveSkill_843420_alt1(_DWORD*, __int64) __asm__(
+    "game_HasActiveSkill_843420");
+bool game_Unit_IsImmobile_alt1(__int64) __asm__("game_Unit_IsImmobile");
+int __cxa_guard_acquire_alt1(__int64) __asm__("__cxa_guard_acquire");
+void __cxa_guard_release_alt1(__int64) __asm__("__cxa_guard_release");
 
 __int64 UnitParams_6dd470(__int64 a1, _BYTE* a2, __int64 a3, char a4)
 {
@@ -37,8 +46,8 @@ __int64 UnitParams_6dd470(__int64 a1, _BYTE* a2, __int64 a3, char a4)
   _BYTE* v17;
   char v18;
   float* v20;
-  __int64 v21;
-  __int64 v22;
+  int v21;
+  __int64* v22;
   int v23;
   __int64 v24;
   float v25;
@@ -51,8 +60,8 @@ __int64 UnitParams_6dd470(__int64 a1, _BYTE* a2, __int64 a3, char a4)
   __int64 v32;
   __int64 v33;
   unsigned __int64 v34;
-  char v35;
-  char v36;
+  bool v35;
+  bool v36;
   int v37;
   unsigned int v38;
   int v39;
@@ -120,11 +129,11 @@ __int64 UnitParams_6dd470(__int64 a1, _BYTE* a2, __int64 a3, char a4)
   else {
     v21 = 62;
   }
-  v22 = GameRoutine_9a28e0(v21);
+  v22 = game_9a28e0(v21);
   v23 = game_GameModeData_instance_;
   if (game_GameModeData_instance_ != 0) {
-    v24 = game_GameVariableTable_Find(
-        *(_QWORD*)(game_GameModeData_instance_ + 48), v22);
+    v24 = game_GameVariableTable_Find_alt1(
+        *(_QWORD**)(game_GameModeData_instance_ + 48), (unsigned __int64*)v22);
     if (v24 != 0) {
       v23 = *(_DWORD*)(v24 + 32);
     }
@@ -136,7 +145,7 @@ __int64 UnitParams_6dd470(__int64 a1, _BYTE* a2, __int64 a3, char a4)
   v26 = v23 + v14;
   a1 = v16;
   a2 = v17;
-  if (v25 <= 1.0) {
+  if (v25 <= 0x1.0000000000000p+0f) {
     v27 = v25 * (float)(v14 + *(__int16*)v20);
   }
   else {
@@ -150,14 +159,14 @@ __int64 UnitParams_6dd470(__int64 a1, _BYTE* a2, __int64 a3, char a4)
     if ((atomic_load_explicit((atomic_uchar* volatile)&GameData_21ca2b0,
                               memory_order_acquire) &
          1) == 0) {
-      v41 = __cxa_guard_acquire(&GameData_21ca2b0, v17);
+      v41 = __cxa_guard_acquire_alt1((__int64)&GameData_21ca2b0);
       a2 = v17;
       v42 = v41;
       a1 = v16;
       if (v42 != 0) {
         GameData_21ca2a8 = (__int64)&GameData_1aa453a;
-        GameData_21ca2a0 = game_HashString(&GameData_1aa453a);
-        __cxa_guard_release(&GameData_21ca2b0);
+        GameData_21ca2a0 = game_HashString_alt1((__int64)&GameData_1aa453a);
+        __cxa_guard_release_alt1((__int64)&GameData_21ca2b0);
         a2 = v17;
         a1 = v16;
       }
@@ -166,8 +175,9 @@ __int64 UnitParams_6dd470(__int64 a1, _BYTE* a2, __int64 a3, char a4)
     if (*(_BYTE*)(a1 + 500) != 0) {
       v29 = game_GameModeData_instance_;
       if (game_GameModeData_instance_ != 0) {
-        v30 = game_GameVariableTable_Find(
-            *(_QWORD*)(game_GameModeData_instance_ + 48), &GameData_21ca2a0);
+        v30 = game_GameVariableTable_Find_alt1(
+            *(_QWORD**)(game_GameModeData_instance_ + 48),
+            (unsigned __int64*)&GameData_21ca2a0);
         if (v30 != 0) {
           v29 = *(_DWORD*)(v30 + 32);
         }
@@ -186,8 +196,8 @@ __int64 UnitParams_6dd470(__int64 a1, _BYTE* a2, __int64 a3, char a4)
         if (v34 + 1 > v33 >> 2 ||
             ((*(_DWORD*)(v32 + 4LL * (unsigned int)v34) >> GameData_21d98dc) &
              1) == 0 ||
-            (v35 = game_HasActiveSkill_843420(&v43), a2 = v17, v36 = v35,
-             a1 = v16, (v36 & 1) == 0)) {
+            (v35 = game_HasActiveSkill_843420_alt1(&v43, v16 + 1744), a2 = v17,
+             v36 = v35, a1 = v16, !v36)) {
           if (v14 >= 1) {
             v37 = 1;
           }
@@ -217,15 +227,13 @@ __int64 UnitParams_6dd470(__int64 a1, _BYTE* a2, __int64 a3, char a4)
     }
     goto LABEL_58;
   }
-
 LABEL_53:
-  if ((game_Unit_IsImmobile(a1, a2) & 1) == 0) {
+  if (!game_Unit_IsImmobile_alt1(a1)) {
     goto LABEL_55;
   }
   v38 = 0;
   v39 = game_g_param_minimums[v5];
   v40 = v39 > 0;
-
 LABEL_58:
   if (v40) {
     return (unsigned int)v39;

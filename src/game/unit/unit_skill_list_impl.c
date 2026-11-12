@@ -332,8 +332,9 @@ extern int GameData_21d994c;
 extern int GameData_21d9950;
 extern int game_g_shared_system_skills;
 __int64 UnitSkillList_67f4a0(__int64 a1, unsigned __int64* a2);
-__int64 UnitSkillList_7c6d00(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
-                             __int64 a5, __int64 a6);
+__int64 UnitSkillList_7c6d00_alt1(__int64 a1, __int64 a2, __int64 a3,
+                                  __int64 a4, __int64 a5,
+                                  __int64 a6) __asm__("UnitSkillList_7c6d00");
 bool UnitSkillList_843ae0(_DWORD* a1, __int64 a2, _WORD* a3);
 __int64 UnitSkillList_843de0(_DWORD* a1, __int64 a2, __int64 a3);
 bool UnitSkillList_844040(_DWORD* a1, __int64 a2);
@@ -361,6 +362,11 @@ void GameRoutine_66dd60_alt1(__int64*, unsigned __int64,
                              _DWORD*) __asm__("GameRoutine_66dd60");
 void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
+__int64
+game_FindSkillOrFirst_alt1(unsigned __int64*) __asm__("game_FindSkillOrFirst");
+__int64 game_HashString_alt1(__int64 result) __asm__("game_HashString");
+__int64 memset_alt1(__int64, int, unsigned __int64) __asm__("memset");
+__int64 UnitSkillList_7c6d00();
 
 __int64 UnitSkillList_67f4a0(__int64 a1, unsigned __int64* a2)
 {
@@ -442,9 +448,14 @@ __int64 UnitSkillList_67f4a0(__int64 a1, unsigned __int64* a2)
   return 0;
 }
 
-__int64 UnitSkillList_7c6d00(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
-                             __int64 a5, __int64 a6)
+__int64 UnitSkillList_7c6d00()
 {
+  __int64 v0;
+  __int64 v1;
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
   __int64 v6;
   __int64 v7;
   __int64 v8;
@@ -595,15 +606,11 @@ __int64 UnitSkillList_7c6d00(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
   __int64 v153;
   __int64 v154;
   __int64 v155;
-  __int64 v156;
-  __int64 v157;
-  __int64 v158;
-  __int64 v159;
-  __int64 v160;
-  __int64 v161;
   __int64 result;
-  __int64 v163;
-  __int64* v164;
+  struct {
+    __int64 v157;
+    __int64* v158;
+  } v157_;
 
   GameData_21d96f0 = 0;
   GameData_21d96f8 = 0;
@@ -613,946 +620,946 @@ __int64 UnitSkillList_7c6d00(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
   GameData_21d96d8 = 0;
   GameData_21d96c0 = 0;
   GameData_21d96c8 = 0;
-  memset(&game_g_shared_system_skills, 0, 596, a4, a5, a6);
-  v164 = (__int64*)&GameData_1ab38eb;
-  v163 = game_HashString(&GameData_1ab38eb);
-  v6 = game_FindSkillOrFirst(&v163);
+  memset_alt1((__int64)&game_g_shared_system_skills, 0, 0x254u);
+  v157_.v158 = (__int64*)&GameData_1ab38eb;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1ab38eb);
+  v0 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
+  if (v0 != 0) {
+    LODWORD(GameData_21d96c0) = *(unsigned __int16*)(v0 + 16);
+  }
+  v157_.v158 = (__int64*)&GameData_1aa077e;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1aa077e);
+  v1 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
+  if (v1 != 0) {
+    HIDWORD(GameData_21d96c0) = *(unsigned __int16*)(v1 + 16);
+  }
+  v157_.v158 = (__int64*)&GameData_1ae1d07;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1ae1d07);
+  v2 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
+  if (v2 != 0) {
+    LODWORD(GameData_21d96c8) = *(unsigned __int16*)(v2 + 16);
+  }
+  v157_.v158 = (__int64*)&GameData_1afcc1f;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1afcc1f);
+  v3 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
+  if (v3 != 0) {
+    HIDWORD(GameData_21d96c8) = *(unsigned __int16*)(v3 + 16);
+  }
+  v157_.v158 = (__int64*)&GameData_1aa0786;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1aa0786);
+  v4 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
+  if (v4 != 0) {
+    LODWORD(GameData_21d96d0) = *(unsigned __int16*)(v4 + 16);
+  }
+  v157_.v158 = (__int64*)&GameData_1a890f2;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1a890f2);
+  v5 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
+  if (v5 != 0) {
+    HIDWORD(GameData_21d96d0) = *(unsigned __int16*)(v5 + 16);
+  }
+  v157_.v158 = (__int64*)&GameData_1ac2f89;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1ac2f89);
+  v6 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v6 != 0) {
-    LODWORD(GameData_21d96c0) = *(unsigned __int16*)(v6 + 16);
+    LODWORD(GameData_21d96d8) = *(unsigned __int16*)(v6 + 16);
   }
-  v164 = (__int64*)&GameData_1aa077e;
-  v163 = game_HashString(&GameData_1aa077e);
-  v7 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1ab38f3;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1ab38f3);
+  v7 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v7 != 0) {
-    HIDWORD(GameData_21d96c0) = *(unsigned __int16*)(v7 + 16);
+    LODWORD(GameData_21d96e0) = *(unsigned __int16*)(v7 + 16);
   }
-  v164 = (__int64*)&GameData_1ae1d07;
-  v163 = game_HashString(&GameData_1ae1d07);
-  v8 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1af4f9e;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1af4f9e);
+  v8 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v8 != 0) {
-    LODWORD(GameData_21d96c8) = *(unsigned __int16*)(v8 + 16);
+    HIDWORD(GameData_21d96e0) = *(unsigned __int16*)(v8 + 16);
   }
-  v164 = (__int64*)&GameData_1afcc1f;
-  v163 = game_HashString(&GameData_1afcc1f);
-  v9 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1a89100;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1a89100);
+  v9 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v9 != 0) {
-    HIDWORD(GameData_21d96c8) = *(unsigned __int16*)(v9 + 16);
+    LODWORD(GameData_21d96e8) = *(unsigned __int16*)(v9 + 16);
   }
-  v164 = (__int64*)&GameData_1aa0786;
-  v163 = game_HashString(&GameData_1aa0786);
-  v10 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1af1215;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1af1215);
+  v10 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v10 != 0) {
-    LODWORD(GameData_21d96d0) = *(unsigned __int16*)(v10 + 16);
+    HIDWORD(GameData_21d96e8) = *(unsigned __int16*)(v10 + 16);
   }
-  v164 = (__int64*)&GameData_1a890f2;
-  v163 = game_HashString(&GameData_1a890f2);
-  v11 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1ad2894;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1ad2894);
+  v11 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v11 != 0) {
-    HIDWORD(GameData_21d96d0) = *(unsigned __int16*)(v11 + 16);
+    LODWORD(GameData_21d96f0) = *(unsigned __int16*)(v11 + 16);
   }
-  v164 = (__int64*)&GameData_1ac2f89;
-  v163 = game_HashString(&GameData_1ac2f89);
-  v12 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1ae5752;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1ae5752);
+  v12 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v12 != 0) {
-    LODWORD(GameData_21d96d8) = *(unsigned __int16*)(v12 + 16);
+    game_g_shared_system_skills = *(unsigned __int16*)(v12 + 16);
   }
-  v164 = (__int64*)&GameData_1ab38f3;
-  v163 = game_HashString(&GameData_1ab38f3);
-  v13 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1acec79;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1acec79);
+  v13 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v13 != 0) {
-    LODWORD(GameData_21d96e0) = *(unsigned __int16*)(v13 + 16);
+    GameData_21d9704 = *(unsigned __int16*)(v13 + 16);
   }
-  v164 = (__int64*)&GameData_1af4f9e;
-  v163 = game_HashString(&GameData_1af4f9e);
-  v14 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1aafd27;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1aafd27);
+  v14 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v14 != 0) {
-    HIDWORD(GameData_21d96e0) = *(unsigned __int16*)(v14 + 16);
+    GameData_21d9708 = *(unsigned __int16*)(v14 + 16);
   }
-  v164 = (__int64*)&GameData_1a89100;
-  v163 = game_HashString(&GameData_1a89100);
-  v15 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1a8910b;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1a8910b);
+  v15 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v15 != 0) {
-    LODWORD(GameData_21d96e8) = *(unsigned __int16*)(v15 + 16);
+    GameData_21d970c = *(unsigned __int16*)(v15 + 16);
   }
-  v164 = (__int64*)&GameData_1af1215;
-  v163 = game_HashString(&GameData_1af1215);
-  v16 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1aa45df;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1aa45df);
+  v16 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v16 != 0) {
-    HIDWORD(GameData_21d96e8) = *(unsigned __int16*)(v16 + 16);
+    GameData_21d9710 = *(unsigned __int16*)(v16 + 16);
   }
-  v164 = (__int64*)&GameData_1ad2894;
-  v163 = game_HashString(&GameData_1ad2894);
-  v17 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1afcc27;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1afcc27);
+  v17 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v17 != 0) {
-    LODWORD(GameData_21d96f0) = *(unsigned __int16*)(v17 + 16);
+    GameData_21d9714 = *(unsigned __int16*)(v17 + 16);
   }
-  v164 = (__int64*)&GameData_1ae5752;
-  v163 = game_HashString(&GameData_1ae5752);
-  v18 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1ae9507;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1ae9507);
+  v18 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v18 != 0) {
-    game_g_shared_system_skills = *(unsigned __int16*)(v18 + 16);
+    GameData_21d9718 = *(unsigned __int16*)(v18 + 16);
   }
-  v164 = (__int64*)&GameData_1acec79;
-  v163 = game_HashString(&GameData_1acec79);
-  v19 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1aed610;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1aed610);
+  v19 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v19 != 0) {
-    GameData_21d9704 = *(unsigned __int16*)(v19 + 16);
+    GameData_21d971c = *(unsigned __int16*)(v19 + 16);
   }
-  v164 = (__int64*)&GameData_1aafd27;
-  v163 = game_HashString(&GameData_1aafd27);
-  v20 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1abf813;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1abf813);
+  v20 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v20 != 0) {
-    GameData_21d9708 = *(unsigned __int16*)(v20 + 16);
+    GameData_21d9720 = *(unsigned __int16*)(v20 + 16);
   }
-  v164 = (__int64*)&GameData_1a8910b;
-  v163 = game_HashString(&GameData_1a8910b);
-  v21 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1a8544b;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1a8544b);
+  v21 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v21 != 0) {
-    GameData_21d970c = *(unsigned __int16*)(v21 + 16);
+    GameData_21d9724 = *(unsigned __int16*)(v21 + 16);
   }
-  v164 = (__int64*)&GameData_1aa45df;
-  v163 = game_HashString(&GameData_1aa45df);
-  v22 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1a85456;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1a85456);
+  v22 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v22 != 0) {
-    GameData_21d9710 = *(unsigned __int16*)(v22 + 16);
+    GameData_21d9728 = *(unsigned __int16*)(v22 + 16);
   }
-  v164 = (__int64*)&GameData_1afcc27;
-  v163 = game_HashString(&GameData_1afcc27);
-  v23 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1af4fa9;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1af4fa9);
+  v23 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v23 != 0) {
-    GameData_21d9714 = *(unsigned __int16*)(v23 + 16);
+    GameData_21d972c = *(unsigned __int16*)(v23 + 16);
   }
-  v164 = (__int64*)&GameData_1ae9507;
-  v163 = game_HashString(&GameData_1ae9507);
-  v24 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1a9c74e;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1a9c74e);
+  v24 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v24 != 0) {
-    GameData_21d9718 = *(unsigned __int16*)(v24 + 16);
+    GameData_21d9730 = *(unsigned __int16*)(v24 + 16);
   }
-  v164 = (__int64*)&GameData_1aed610;
-  v163 = game_HashString(&GameData_1aed610);
-  v25 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1ac69bc;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1ac69bc);
+  v25 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v25 != 0) {
-    GameData_21d971c = *(unsigned __int16*)(v25 + 16);
+    GameData_21d9734 = *(unsigned __int16*)(v25 + 16);
   }
-  v164 = (__int64*)&GameData_1abf813;
-  v163 = game_HashString(&GameData_1abf813);
-  v26 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1aafd38;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1aafd38);
+  v26 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v26 != 0) {
-    GameData_21d9720 = *(unsigned __int16*)(v26 + 16);
+    GameData_21d9738 = *(unsigned __int16*)(v26 + 16);
   }
-  v164 = (__int64*)&GameData_1a8544b;
-  v163 = game_HashString(&GameData_1a8544b);
-  v27 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1acec8a;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1acec8a);
+  v27 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v27 != 0) {
-    GameData_21d9724 = *(unsigned __int16*)(v27 + 16);
+    GameData_21d973c = *(unsigned __int16*)(v27 + 16);
   }
-  v164 = (__int64*)&GameData_1a85456;
-  v163 = game_HashString(&GameData_1a85456);
-  v28 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1acec9b;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1acec9b);
+  v28 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v28 != 0) {
-    GameData_21d9728 = *(unsigned __int16*)(v28 + 16);
+    GameData_21d9740 = *(unsigned __int16*)(v28 + 16);
   }
-  v164 = (__int64*)&GameData_1af4fa9;
-  v163 = game_HashString(&GameData_1af4fa9);
-  v29 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1a98b06;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1a98b06);
+  v29 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v29 != 0) {
-    GameData_21d972c = *(unsigned __int16*)(v29 + 16);
+    GameData_21d9744 = *(unsigned __int16*)(v29 + 16);
   }
-  v164 = (__int64*)&GameData_1a9c74e;
-  v163 = game_HashString(&GameData_1a9c74e);
-  v30 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1aabebb;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1aabebb);
+  v30 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v30 != 0) {
-    GameData_21d9730 = *(unsigned __int16*)(v30 + 16);
+    GameData_21d9748 = *(unsigned __int16*)(v30 + 16);
   }
-  v164 = (__int64*)&GameData_1ac69bc;
-  v163 = game_HashString(&GameData_1ac69bc);
-  v31 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1ac69cd;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1ac69cd);
+  v31 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v31 != 0) {
-    GameData_21d9734 = *(unsigned __int16*)(v31 + 16);
+    GameData_21d974c = *(unsigned __int16*)(v31 + 16);
   }
-  v164 = (__int64*)&GameData_1aafd38;
-  v163 = game_HashString(&GameData_1aafd38);
-  v32 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1ada229;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1ada229);
+  v32 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v32 != 0) {
-    GameData_21d9738 = *(unsigned __int16*)(v32 + 16);
+    GameData_21d9750 = *(unsigned __int16*)(v32 + 16);
   }
-  v164 = (__int64*)&GameData_1acec8a;
-  v163 = game_HashString(&GameData_1acec8a);
-  v33 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1aa0791;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1aa0791);
+  v33 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v33 != 0) {
-    GameData_21d973c = *(unsigned __int16*)(v33 + 16);
+    GameData_21d9754 = *(unsigned __int16*)(v33 + 16);
   }
-  v164 = (__int64*)&GameData_1acec9b;
-  v163 = game_HashString(&GameData_1acec9b);
-  v34 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1af8d33;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1af8d33);
+  v34 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v34 != 0) {
-    GameData_21d9740 = *(unsigned __int16*)(v34 + 16);
+    GameData_21d9758 = *(unsigned __int16*)(v34 + 16);
   }
-  v164 = (__int64*)&GameData_1a98b06;
-  v163 = game_HashString(&GameData_1a98b06);
-  v35 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1ab7bec;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1ab7bec);
+  v35 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v35 != 0) {
-    GameData_21d9744 = *(unsigned __int16*)(v35 + 16);
+    GameData_21d975c = *(unsigned __int16*)(v35 + 16);
   }
-  v164 = (__int64*)&GameData_1aabebb;
-  v163 = game_HashString(&GameData_1aabebb);
-  v36 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1ada240;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1ada240);
+  v36 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v36 != 0) {
-    GameData_21d9748 = *(unsigned __int16*)(v36 + 16);
+    GameData_21d9760 = *(unsigned __int16*)(v36 + 16);
   }
-  v164 = (__int64*)&GameData_1ac69cd;
-  v163 = game_HashString(&GameData_1ac69cd);
-  v37 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1ada257;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1ada257);
+  v37 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v37 != 0) {
-    GameData_21d974c = *(unsigned __int16*)(v37 + 16);
+    GameData_21d9768 = *(unsigned __int16*)(v37 + 16);
   }
-  v164 = (__int64*)&GameData_1ada229;
-  v163 = game_HashString(&GameData_1ada229);
-  v38 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1aa45f3;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1aa45f3);
+  v38 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v38 != 0) {
-    GameData_21d9750 = *(unsigned __int16*)(v38 + 16);
+    GameData_21d976c = *(unsigned __int16*)(v38 + 16);
   }
-  v164 = (__int64*)&GameData_1aa0791;
-  v163 = game_HashString(&GameData_1aa0791);
-  v39 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1a8d183;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1a8d183);
+  v39 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v39 != 0) {
-    GameData_21d9754 = *(unsigned __int16*)(v39 + 16);
+    GameData_21d9770 = *(unsigned __int16*)(v39 + 16);
   }
-  v164 = (__int64*)&GameData_1af8d33;
-  v163 = game_HashString(&GameData_1af8d33);
-  v40 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1afcc3b;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1afcc3b);
+  v40 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v40 != 0) {
-    GameData_21d9758 = *(unsigned __int16*)(v40 + 16);
+    GameData_21d9774 = *(unsigned __int16*)(v40 + 16);
   }
-  v164 = (__int64*)&GameData_1ab7bec;
-  v163 = game_HashString(&GameData_1ab7bec);
-  v41 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1a94b66;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1a94b66);
+  v41 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v41 != 0) {
-    GameData_21d975c = *(unsigned __int16*)(v41 + 16);
+    GameData_21d9778 = *(unsigned __int16*)(v41 + 16);
   }
-  v164 = (__int64*)&GameData_1ada240;
-  v163 = game_HashString(&GameData_1ada240);
-  v42 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1a94b7d;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1a94b7d);
+  v42 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v42 != 0) {
-    GameData_21d9760 = *(unsigned __int16*)(v42 + 16);
+    GameData_21d9780 = *(unsigned __int16*)(v42 + 16);
   }
-  v164 = (__int64*)&GameData_1ada257;
-  v163 = game_HashString(&GameData_1ada257);
-  v43 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1a8d19a;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1a8d19a);
+  v43 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v43 != 0) {
-    GameData_21d9768 = *(unsigned __int16*)(v43 + 16);
+    GameData_21d977c = *(unsigned __int16*)(v43 + 16);
   }
-  v164 = (__int64*)&GameData_1aa45f3;
-  v163 = game_HashString(&GameData_1aa45f3);
-  v44 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1ad289f;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1ad289f);
+  v44 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v44 != 0) {
-    GameData_21d976c = *(unsigned __int16*)(v44 + 16);
+    GameData_21d9788 = *(unsigned __int16*)(v44 + 16);
   }
-  v164 = (__int64*)&GameData_1a8d183;
-  v163 = game_HashString(&GameData_1a8d183);
-  v45 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1abb963;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1abb963);
+  v45 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v45 != 0) {
-    GameData_21d9770 = *(unsigned __int16*)(v45 + 16);
+    GameData_21d978c = *(unsigned __int16*)(v45 + 16);
   }
-  v164 = (__int64*)&GameData_1afcc3b;
-  v163 = game_HashString(&GameData_1afcc3b);
-  v46 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1a9c75f;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1a9c75f);
+  v46 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v46 != 0) {
-    GameData_21d9774 = *(unsigned __int16*)(v46 + 16);
+    GameData_21d9790 = *(unsigned __int16*)(v46 + 16);
   }
-  v164 = (__int64*)&GameData_1a94b66;
-  v163 = game_HashString(&GameData_1a94b66);
-  v47 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1a8d1ab;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1a8d1ab);
+  v47 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v47 != 0) {
-    GameData_21d9778 = *(unsigned __int16*)(v47 + 16);
+    GameData_21d9784 = *(unsigned __int16*)(v47 + 16);
   }
-  v164 = (__int64*)&GameData_1a94b7d;
-  v163 = game_HashString(&GameData_1a94b7d);
-  v48 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1abf824;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1abf824);
+  v48 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v48 != 0) {
-    GameData_21d9780 = *(unsigned __int16*)(v48 + 16);
+    GameData_21d9794 = *(unsigned __int16*)(v48 + 16);
   }
-  v164 = (__int64*)&GameData_1a8d19a;
-  v163 = game_HashString(&GameData_1a8d19a);
-  v49 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1abf835;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1abf835);
+  v49 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v49 != 0) {
-    GameData_21d977c = *(unsigned __int16*)(v49 + 16);
+    GameData_21d9798 = *(unsigned __int16*)(v49 + 16);
   }
-  v164 = (__int64*)&GameData_1ad289f;
-  v163 = game_HashString(&GameData_1ad289f);
-  v50 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1aafd49;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1aafd49);
+  v50 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v50 != 0) {
-    GameData_21d9788 = *(unsigned __int16*)(v50 + 16);
+    GameData_21d979c = *(unsigned __int16*)(v50 + 16);
   }
-  v164 = (__int64*)&GameData_1abb963;
-  v163 = game_HashString(&GameData_1abb963);
-  v51 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1ac2f97;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1ac2f97);
+  v51 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v51 != 0) {
-    GameData_21d978c = *(unsigned __int16*)(v51 + 16);
+    GameData_21d97a0 = *(unsigned __int16*)(v51 + 16);
   }
-  v164 = (__int64*)&GameData_1a9c75f;
-  v163 = game_HashString(&GameData_1a9c75f);
-  v52 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1ab38fe;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1ab38fe);
+  v52 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v52 != 0) {
-    GameData_21d9790 = *(unsigned __int16*)(v52 + 16);
+    GameData_21d98a8 = *(unsigned __int16*)(v52 + 16);
   }
-  v164 = (__int64*)&GameData_1a8d1ab;
-  v163 = game_HashString(&GameData_1a8d1ab);
-  v53 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1afcc52;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1afcc52);
+  v53 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v53 != 0) {
-    GameData_21d9784 = *(unsigned __int16*)(v53 + 16);
+    GameData_21d98ac = *(unsigned __int16*)(v53 + 16);
   }
-  v164 = (__int64*)&GameData_1abf824;
-  v163 = game_HashString(&GameData_1abf824);
-  v54 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1aabed2;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1aabed2);
+  v54 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v54 != 0) {
-    GameData_21d9794 = *(unsigned __int16*)(v54 + 16);
+    GameData_21d98b0 = *(unsigned __int16*)(v54 + 16);
   }
-  v164 = (__int64*)&GameData_1abf835;
-  v163 = game_HashString(&GameData_1abf835);
-  v55 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1afcc63;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1afcc63);
+  v55 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v55 != 0) {
-    GameData_21d9798 = *(unsigned __int16*)(v55 + 16);
+    GameData_21d98b4 = *(unsigned __int16*)(v55 + 16);
   }
-  v164 = (__int64*)&GameData_1aafd49;
-  v163 = game_HashString(&GameData_1aafd49);
-  v56 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1abb96e;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1abb96e);
+  v56 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v56 != 0) {
-    GameData_21d979c = *(unsigned __int16*)(v56 + 16);
+    GameData_21d98b8 = *(unsigned __int16*)(v56 + 16);
   }
-  v164 = (__int64*)&GameData_1ac2f97;
-  v163 = game_HashString(&GameData_1ac2f97);
-  v57 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1a8d1bc;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1a8d1bc);
+  v57 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v57 != 0) {
-    GameData_21d97a0 = *(unsigned __int16*)(v57 + 16);
+    GameData_21d98bc = *(unsigned __int16*)(v57 + 16);
   }
-  v164 = (__int64*)&GameData_1ab38fe;
-  v163 = game_HashString(&GameData_1ab38fe);
-  v58 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1abb985;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1abb985);
+  v58 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v58 != 0) {
-    GameData_21d98a8 = *(unsigned __int16*)(v58 + 16);
+    GameData_21d97a4 = *(unsigned __int16*)(v58 + 16);
   }
-  v164 = (__int64*)&GameData_1afcc52;
-  v163 = game_HashString(&GameData_1afcc52);
-  v59 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1af8d4a;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1af8d4a);
+  v59 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v59 != 0) {
-    GameData_21d98ac = *(unsigned __int16*)(v59 + 16);
+    GameData_21d97a8 = *(unsigned __int16*)(v59 + 16);
   }
-  v164 = (__int64*)&GameData_1aabed2;
-  v163 = game_HashString(&GameData_1aabed2);
-  v60 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1acecb2;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1acecb2);
+  v60 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v60 != 0) {
-    GameData_21d98b0 = *(unsigned __int16*)(v60 + 16);
+    GameData_21d97ac = *(unsigned __int16*)(v60 + 16);
   }
-  v164 = (__int64*)&GameData_1afcc63;
-  v163 = game_HashString(&GameData_1afcc63);
-  v61 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1a98b1d;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1a98b1d);
+  v61 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v61 != 0) {
-    GameData_21d98b4 = *(unsigned __int16*)(v61 + 16);
+    GameData_21d97b0 = *(unsigned __int16*)(v61 + 16);
   }
-  v164 = (__int64*)&GameData_1abb96e;
-  v163 = game_HashString(&GameData_1abb96e);
-  v62 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1a85467;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1a85467);
+  v62 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v62 != 0) {
-    GameData_21d98b8 = *(unsigned __int16*)(v62 + 16);
+    GameData_21d9870 = *(unsigned __int16*)(v62 + 16);
   }
-  v164 = (__int64*)&GameData_1a8d1bc;
-  v163 = game_HashString(&GameData_1a8d1bc);
-  v63 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1a94b94;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1a94b94);
+  v63 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v63 != 0) {
-    GameData_21d98bc = *(unsigned __int16*)(v63 + 16);
+    GameData_21d9874 = *(unsigned __int16*)(v63 + 16);
   }
-  v164 = (__int64*)&GameData_1abb985;
-  v163 = game_HashString(&GameData_1abb985);
-  v64 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1ae1d0f;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1ae1d0f);
+  v64 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v64 != 0) {
-    GameData_21d97a4 = *(unsigned __int16*)(v64 + 16);
+    GameData_21d97b4 = *(unsigned __int16*)(v64 + 16);
   }
-  v164 = (__int64*)&GameData_1af8d4a;
-  v163 = game_HashString(&GameData_1af8d4a);
-  v65 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1aabeec;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1aabeec);
+  v65 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v65 != 0) {
-    GameData_21d97a8 = *(unsigned __int16*)(v65 + 16);
+    GameData_21d97b8 = *(unsigned __int16*)(v65 + 16);
   }
-  v164 = (__int64*)&GameData_1acecb2;
-  v163 = game_HashString(&GameData_1acecb2);
-  v66 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1ac2fab;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1ac2fab);
+  v66 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v66 != 0) {
-    GameData_21d97ac = *(unsigned __int16*)(v66 + 16);
+    GameData_21d97bc = *(unsigned __int16*)(v66 + 16);
   }
-  v164 = (__int64*)&GameData_1a98b1d;
-  v163 = game_HashString(&GameData_1a98b1d);
-  v67 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1afcc74;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1afcc74);
+  v67 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v67 != 0) {
-    GameData_21d97b0 = *(unsigned __int16*)(v67 + 16);
+    GameData_21d97d4 = *(unsigned __int16*)(v67 + 16);
   }
-  v164 = (__int64*)&GameData_1a85467;
-  v163 = game_HashString(&GameData_1a85467);
-  v68 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1abf849;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1abf849);
+  v68 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v68 != 0) {
-    GameData_21d9870 = *(unsigned __int16*)(v68 + 16);
+    GameData_21d97d8 = *(unsigned __int16*)(v68 + 16);
   }
-  v164 = (__int64*)&GameData_1a94b94;
-  v163 = game_HashString(&GameData_1a94b94);
-  v69 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1a94ba5;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1a94ba5);
+  v69 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v69 != 0) {
-    GameData_21d9874 = *(unsigned __int16*)(v69 + 16);
+    GameData_21d97dc = *(unsigned __int16*)(v69 + 16);
   }
-  v164 = (__int64*)&GameData_1ae1d0f;
-  v163 = game_HashString(&GameData_1ae1d0f);
-  v70 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1ab7c03;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1ab7c03);
+  v70 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v70 != 0) {
-    GameData_21d97b4 = *(unsigned __int16*)(v70 + 16);
+    GameData_21d97e0 = *(unsigned __int16*)(v70 + 16);
   }
-  v164 = (__int64*)&GameData_1aabeec;
-  v163 = game_HashString(&GameData_1aabeec);
-  v71 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1addf4f;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1addf4f);
+  v71 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v71 != 0) {
-    GameData_21d97b8 = *(unsigned __int16*)(v71 + 16);
+    GameData_21d97e4 = *(unsigned __int16*)(v71 + 16);
   }
-  v164 = (__int64*)&GameData_1ac2fab;
-  v163 = game_HashString(&GameData_1ac2fab);
-  v72 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1af1220;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1af1220);
+  v72 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v72 != 0) {
-    GameData_21d97bc = *(unsigned __int16*)(v72 + 16);
+    GameData_21d97e8 = *(unsigned __int16*)(v72 + 16);
   }
-  v164 = (__int64*)&GameData_1afcc74;
-  v163 = game_HashString(&GameData_1afcc74);
-  v73 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1a85475;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1a85475);
+  v73 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v73 != 0) {
-    GameData_21d97d4 = *(unsigned __int16*)(v73 + 16);
+    GameData_21d97c0 = *(unsigned __int16*)(v73 + 16);
   }
-  v164 = (__int64*)&GameData_1abf849;
-  v163 = game_HashString(&GameData_1abf849);
-  v74 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1aabf03;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1aabf03);
+  v74 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v74 != 0) {
-    GameData_21d97d8 = *(unsigned __int16*)(v74 + 16);
+    GameData_21d97c4 = *(unsigned __int16*)(v74 + 16);
   }
-  v164 = (__int64*)&GameData_1a94ba5;
-  v163 = game_HashString(&GameData_1a94ba5);
-  v75 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1af1237;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1af1237);
+  v75 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v75 != 0) {
-    GameData_21d97dc = *(unsigned __int16*)(v75 + 16);
+    GameData_21d97c8 = *(unsigned __int16*)(v75 + 16);
   }
-  v164 = (__int64*)&GameData_1ab7c03;
-  v163 = game_HashString(&GameData_1ab7c03);
-  v76 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1ac2fbc;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1ac2fbc);
+  v76 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v76 != 0) {
-    GameData_21d97e0 = *(unsigned __int16*)(v76 + 16);
+    GameData_21d97cc = *(unsigned __int16*)(v76 + 16);
   }
-  v164 = (__int64*)&GameData_1addf4f;
-  v163 = game_HashString(&GameData_1addf4f);
-  v77 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1ad28aa;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1ad28aa);
+  v77 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v77 != 0) {
-    GameData_21d97e4 = *(unsigned __int16*)(v77 + 16);
+    GameData_21d97d0 = *(unsigned __int16*)(v77 + 16);
   }
-  v164 = (__int64*)&GameData_1af1220;
-  v163 = game_HashString(&GameData_1af1220);
-  v78 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1a98b2b;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1a98b2b);
+  v78 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v78 != 0) {
-    GameData_21d97e8 = *(unsigned __int16*)(v78 + 16);
+    GameData_21d97ec = *(unsigned __int16*)(v78 + 16);
   }
-  v164 = (__int64*)&GameData_1a85475;
-  v163 = game_HashString(&GameData_1a85475);
-  v79 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1af1254;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1af1254);
+  v79 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v79 != 0) {
-    GameData_21d97c0 = *(unsigned __int16*)(v79 + 16);
+    GameData_21d97f0 = *(unsigned __int16*)(v79 + 16);
   }
-  v164 = (__int64*)&GameData_1aabf03;
-  v163 = game_HashString(&GameData_1aabf03);
-  v80 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1a98b3c;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1a98b3c);
+  v80 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v80 != 0) {
-    GameData_21d97c4 = *(unsigned __int16*)(v80 + 16);
+    GameData_21d97f4 = *(unsigned __int16*)(v80 + 16);
   }
-  v164 = (__int64*)&GameData_1af1237;
-  v163 = game_HashString(&GameData_1af1237);
-  v81 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1ab7c17;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1ab7c17);
+  v81 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v81 != 0) {
-    GameData_21d97c8 = *(unsigned __int16*)(v81 + 16);
+    GameData_21d97f8 = *(unsigned __int16*)(v81 + 16);
   }
-  v164 = (__int64*)&GameData_1ac2fbc;
-  v163 = game_HashString(&GameData_1ac2fbc);
-  v82 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = &GameData_1ab7c2e;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1ab7c2e);
+  v82 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v82 != 0) {
-    GameData_21d97cc = *(unsigned __int16*)(v82 + 16);
+    GameData_21d97fc = *(unsigned __int16*)(v82 + 16);
   }
-  v164 = (__int64*)&GameData_1ad28aa;
-  v163 = game_HashString(&GameData_1ad28aa);
-  v83 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = &GameData_1aed621;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1aed621);
+  v83 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v83 != 0) {
-    GameData_21d97d0 = *(unsigned __int16*)(v83 + 16);
+    GameData_21d9800 = *(unsigned __int16*)(v83 + 16);
   }
-  v164 = (__int64*)&GameData_1a98b2b;
-  v163 = game_HashString(&GameData_1a98b2b);
-  v84 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = &GameData_1ac2fd3;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1ac2fd3);
+  v84 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v84 != 0) {
-    GameData_21d97ec = *(unsigned __int16*)(v84 + 16);
+    GameData_21d9804 = *(unsigned __int16*)(v84 + 16);
   }
-  v164 = (__int64*)&GameData_1af1254;
-  v163 = game_HashString(&GameData_1af1254);
-  v85 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1a98b4d;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1a98b4d);
+  v85 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v85 != 0) {
-    GameData_21d97f0 = *(unsigned __int16*)(v85 + 16);
+    GameData_21d9808 = *(unsigned __int16*)(v85 + 16);
   }
-  v164 = (__int64*)&GameData_1a98b3c;
-  v163 = game_HashString(&GameData_1a98b3c);
-  v86 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1acecc0;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1acecc0);
+  v86 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v86 != 0) {
-    GameData_21d97f4 = *(unsigned __int16*)(v86 + 16);
+    GameData_21d980c = *(unsigned __int16*)(v86 + 16);
   }
-  v164 = (__int64*)&GameData_1ab7c17;
-  v163 = game_HashString(&GameData_1ab7c17);
-  v87 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1af4fba;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1af4fba);
+  v87 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v87 != 0) {
-    GameData_21d97f8 = *(unsigned __int16*)(v87 + 16);
+    GameData_21d9810 = *(unsigned __int16*)(v87 + 16);
   }
-  v164 = &GameData_1ab7c2e;
-  v163 = game_HashString(&GameData_1ab7c2e);
-  v88 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1aa460a;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1aa460a);
+  v88 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v88 != 0) {
-    GameData_21d97fc = *(unsigned __int16*)(v88 + 16);
+    GameData_21d9814 = *(unsigned __int16*)(v88 + 16);
   }
-  v164 = &GameData_1aed621;
-  v163 = game_HashString(&GameData_1aed621);
-  v89 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1af4fcb;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1af4fcb);
+  v89 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v89 != 0) {
-    GameData_21d9800 = *(unsigned __int16*)(v89 + 16);
+    GameData_21d9818 = *(unsigned __int16*)(v89 + 16);
   }
-  v164 = &GameData_1ac2fd3;
-  v163 = game_HashString(&GameData_1ac2fd3);
-  v90 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1ab7c3c;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1ab7c3c);
+  v90 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v90 != 0) {
-    GameData_21d9804 = *(unsigned __int16*)(v90 + 16);
+    GameData_21d981c = *(unsigned __int16*)(v90 + 16);
   }
-  v164 = (__int64*)&GameData_1a98b4d;
-  v163 = game_HashString(&GameData_1a98b4d);
-  v91 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1aed62f;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1aed62f);
+  v91 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v91 != 0) {
-    GameData_21d9808 = *(unsigned __int16*)(v91 + 16);
+    GameData_21d9820 = *(unsigned __int16*)(v91 + 16);
   }
-  v164 = (__int64*)&GameData_1acecc0;
-  v163 = game_HashString(&GameData_1acecc0);
-  v92 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1acaa83;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1acaa83);
+  v92 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v92 != 0) {
-    GameData_21d980c = *(unsigned __int16*)(v92 + 16);
+    GameData_21d9824 = *(unsigned __int16*)(v92 + 16);
   }
-  v164 = (__int64*)&GameData_1af4fba;
-  v163 = game_HashString(&GameData_1af4fba);
-  v93 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1aa461a;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1aa461a);
+  v93 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v93 != 0) {
-    GameData_21d9810 = *(unsigned __int16*)(v93 + 16);
+    GameData_21d9828 = *(unsigned __int16*)(v93 + 16);
   }
-  v164 = (__int64*)&GameData_1aa460a;
-  v163 = game_HashString(&GameData_1aa460a);
-  v94 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1a9c76a;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1a9c76a);
+  v94 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v94 != 0) {
-    GameData_21d9814 = *(unsigned __int16*)(v94 + 16);
+    GameData_21d982c = *(unsigned __int16*)(v94 + 16);
   }
-  v164 = (__int64*)&GameData_1af4fcb;
-  v163 = game_HashString(&GameData_1af4fcb);
-  v95 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1addf66;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1addf66);
+  v95 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v95 != 0) {
-    GameData_21d9818 = *(unsigned __int16*)(v95 + 16);
+    GameData_21d9830 = *(unsigned __int16*)(v95 + 16);
   }
-  v164 = (__int64*)&GameData_1ab7c3c;
-  v163 = game_HashString(&GameData_1ab7c3c);
-  v96 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1aafd5d;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1aafd5d);
+  v96 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v96 != 0) {
-    GameData_21d981c = *(unsigned __int16*)(v96 + 16);
+    GameData_21d9834 = *(unsigned __int16*)(v96 + 16);
   }
-  v164 = (__int64*)&GameData_1aed62f;
-  v163 = game_HashString(&GameData_1aed62f);
-  v97 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1aafd6e;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1aafd6e);
+  v97 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v97 != 0) {
-    GameData_21d9820 = *(unsigned __int16*)(v97 + 16);
+    GameData_21d9838 = *(unsigned __int16*)(v97 + 16);
   }
-  v164 = (__int64*)&GameData_1acaa83;
-  v163 = game_HashString(&GameData_1acaa83);
-  v98 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1ab7c4a;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1ab7c4a);
+  v98 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v98 != 0) {
-    GameData_21d9824 = *(unsigned __int16*)(v98 + 16);
+    GameData_21d983c = *(unsigned __int16*)(v98 + 16);
   }
-  v164 = (__int64*)&GameData_1aa461a;
-  v163 = game_HashString(&GameData_1aa461a);
-  v99 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1ad6509;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1ad6509);
+  v99 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v99 != 0) {
-    GameData_21d9828 = *(unsigned __int16*)(v99 + 16);
+    GameData_21d9840 = *(unsigned __int16*)(v99 + 16);
   }
-  v164 = (__int64*)&GameData_1a9c76a;
-  v163 = game_HashString(&GameData_1a9c76a);
-  v100 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1a90c32;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1a90c32);
+  v100 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v100 != 0) {
-    GameData_21d982c = *(unsigned __int16*)(v100 + 16);
+    GameData_21d98c0 = *(unsigned __int16*)(v100 + 16);
   }
-  v164 = (__int64*)&GameData_1addf66;
-  v163 = game_HashString(&GameData_1addf66);
-  v101 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1af4fd9;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1af4fd9);
+  v101 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v101 != 0) {
-    GameData_21d9830 = *(unsigned __int16*)(v101 + 16);
+    GameData_21d98c4 = *(unsigned __int16*)(v101 + 16);
   }
-  v164 = (__int64*)&GameData_1aafd5d;
-  v163 = game_HashString(&GameData_1aafd5d);
-  v102 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1addf7a;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1addf7a);
+  v102 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v102 != 0) {
-    GameData_21d9834 = *(unsigned __int16*)(v102 + 16);
+    GameData_21d9844 = *(unsigned __int16*)(v102 + 16);
   }
-  v164 = (__int64*)&GameData_1aafd6e;
-  v163 = game_HashString(&GameData_1aafd6e);
-  v103 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1afcc85;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1afcc85);
+  v103 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v103 != 0) {
-    GameData_21d9838 = *(unsigned __int16*)(v103 + 16);
+    GameData_21d9848 = *(unsigned __int16*)(v103 + 16);
   }
-  v164 = (__int64*)&GameData_1ab7c4a;
-  v163 = game_HashString(&GameData_1ab7c4a);
-  v104 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1aa07a8;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1aa07a8);
+  v104 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v104 != 0) {
-    GameData_21d983c = *(unsigned __int16*)(v104 + 16);
+    GameData_21d984c = *(unsigned __int16*)(v104 + 16);
   }
-  v164 = (__int64*)&GameData_1ad6509;
-  v163 = game_HashString(&GameData_1ad6509);
-  v105 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1af126b;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1af126b);
+  v105 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v105 != 0) {
-    GameData_21d9840 = *(unsigned __int16*)(v105 + 16);
+    GameData_21d9850 = *(unsigned __int16*)(v105 + 16);
   }
-  v164 = (__int64*)&GameData_1a90c32;
-  v163 = game_HashString(&GameData_1a90c32);
-  v106 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1acaa91;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1acaa91);
+  v106 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v106 != 0) {
-    GameData_21d98c0 = *(unsigned __int16*)(v106 + 16);
+    GameData_21d9854 = *(unsigned __int16*)(v106 + 16);
   }
-  v164 = (__int64*)&GameData_1af4fd9;
-  v163 = game_HashString(&GameData_1af4fd9);
-  v107 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1a8d1d3;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1a8d1d3);
+  v107 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v107 != 0) {
-    GameData_21d98c4 = *(unsigned __int16*)(v107 + 16);
+    GameData_21d9858 = *(unsigned __int16*)(v107 + 16);
   }
-  v164 = (__int64*)&GameData_1addf7a;
-  v163 = game_HashString(&GameData_1addf7a);
-  v108 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1ae5760;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1ae5760);
+  v108 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v108 != 0) {
-    GameData_21d9844 = *(unsigned __int16*)(v108 + 16);
+    GameData_21d985c = *(unsigned __int16*)(v108 + 16);
   }
-  v164 = (__int64*)&GameData_1afcc85;
-  v163 = game_HashString(&GameData_1afcc85);
-  v109 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1abb990;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1abb990);
+  v109 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v109 != 0) {
-    GameData_21d9848 = *(unsigned __int16*)(v109 + 16);
+    GameData_21d9860 = *(unsigned __int16*)(v109 + 16);
   }
-  v164 = (__int64*)&GameData_1aa07a8;
-  v163 = game_HashString(&GameData_1aa07a8);
-  v110 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1aed63d;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1aed63d);
+  v110 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v110 != 0) {
-    GameData_21d984c = *(unsigned __int16*)(v110 + 16);
+    GameData_21d9864 = *(unsigned __int16*)(v110 + 16);
   }
-  v164 = (__int64*)&GameData_1af126b;
-  v163 = game_HashString(&GameData_1af126b);
-  v111 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1af4fe4;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1af4fe4);
+  v111 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v111 != 0) {
-    GameData_21d9850 = *(unsigned __int16*)(v111 + 16);
+    GameData_21d986c = *(unsigned __int16*)(v111 + 16);
   }
-  v164 = (__int64*)&GameData_1acaa91;
-  v163 = game_HashString(&GameData_1acaa91);
-  v112 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1ada26e;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1ada26e);
+  v112 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v112 != 0) {
-    GameData_21d9854 = *(unsigned __int16*)(v112 + 16);
+    GameData_21d98c8 = *(unsigned __int16*)(v112 + 16);
   }
-  v164 = (__int64*)&GameData_1a8d1d3;
-  v163 = game_HashString(&GameData_1a8d1d3);
-  v113 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1ac2fe1;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1ac2fe1);
+  v113 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v113 != 0) {
-    GameData_21d9858 = *(unsigned __int16*)(v113 + 16);
+    GameData_21d9878 = *(unsigned __int16*)(v113 + 16);
   }
-  v164 = (__int64*)&GameData_1ae5760;
-  v163 = game_HashString(&GameData_1ae5760);
-  v114 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1ab390f;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1ab390f);
+  v114 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v114 != 0) {
-    GameData_21d985c = *(unsigned __int16*)(v114 + 16);
+    GameData_21d987c = *(unsigned __int16*)(v114 + 16);
   }
-  v164 = (__int64*)&GameData_1abb990;
-  v163 = game_HashString(&GameData_1abb990);
-  v115 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1abb9a1;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1abb9a1);
+  v115 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v115 != 0) {
-    GameData_21d9860 = *(unsigned __int16*)(v115 + 16);
+    GameData_21d9880 = *(unsigned __int16*)(v115 + 16);
   }
-  v164 = (__int64*)&GameData_1aed63d;
-  v163 = game_HashString(&GameData_1aed63d);
-  v116 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1aed64e;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1aed64e);
+  v116 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v116 != 0) {
-    GameData_21d9864 = *(unsigned __int16*)(v116 + 16);
+    GameData_21d9884 = *(unsigned __int16*)(v116 + 16);
   }
-  v164 = (__int64*)&GameData_1af4fe4;
-  v163 = game_HashString(&GameData_1af4fe4);
-  v117 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1aed662;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1aed662);
+  v117 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v117 != 0) {
-    GameData_21d986c = *(unsigned __int16*)(v117 + 16);
+    GameData_21d9888 = *(unsigned __int16*)(v117 + 16);
   }
-  v164 = (__int64*)&GameData_1ada26e;
-  v163 = game_HashString(&GameData_1ada26e);
-  v118 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1ac69e4;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1ac69e4);
+  v118 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v118 != 0) {
-    GameData_21d98c8 = *(unsigned __int16*)(v118 + 16);
+    GameData_21d988c = *(unsigned __int16*)(v118 + 16);
   }
-  v164 = (__int64*)&GameData_1ac2fe1;
-  v163 = game_HashString(&GameData_1ac2fe1);
-  v119 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1a98b58;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1a98b58);
+  v119 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v119 != 0) {
-    GameData_21d9878 = *(unsigned __int16*)(v119 + 16);
+    GameData_21d9890 = *(unsigned __int16*)(v119 + 16);
   }
-  v164 = (__int64*)&GameData_1ab390f;
-  v163 = game_HashString(&GameData_1ab390f);
-  v120 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1ab7c64;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1ab7c64);
+  v120 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v120 != 0) {
-    GameData_21d987c = *(unsigned __int16*)(v120 + 16);
+    GameData_21d9894 = *(unsigned __int16*)(v120 + 16);
   }
-  v164 = (__int64*)&GameData_1abb9a1;
-  v163 = game_HashString(&GameData_1abb9a1);
-  v121 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1a9c77e;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1a9c77e);
+  v121 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v121 != 0) {
-    GameData_21d9880 = *(unsigned __int16*)(v121 + 16);
+    GameData_21d9898 = *(unsigned __int16*)(v121 + 16);
   }
-  v164 = (__int64*)&GameData_1aed64e;
-  v163 = game_HashString(&GameData_1aed64e);
-  v122 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1aafd7f;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1aafd7f);
+  v122 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v122 != 0) {
-    GameData_21d9884 = *(unsigned __int16*)(v122 + 16);
+    GameData_21d98e0 = *(unsigned __int16*)(v122 + 16);
   }
-  v164 = (__int64*)&GameData_1aed662;
-  v163 = game_HashString(&GameData_1aed662);
-  v123 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1af8d58;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1af8d58);
+  v123 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v123 != 0) {
-    GameData_21d9888 = *(unsigned __int16*)(v123 + 16);
+    GameData_21d989c = *(unsigned __int16*)(v123 + 16);
   }
-  v164 = (__int64*)&GameData_1ac69e4;
-  v163 = game_HashString(&GameData_1ac69e4);
-  v124 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1ae5771;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1ae5771);
+  v124 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v124 != 0) {
-    GameData_21d988c = *(unsigned __int16*)(v124 + 16);
+    GameData_21d98a0 = *(unsigned __int16*)(v124 + 16);
   }
-  v164 = (__int64*)&GameData_1a98b58;
-  v163 = game_HashString(&GameData_1a98b58);
-  v125 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1ac69f5;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1ac69f5);
+  v125 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v125 != 0) {
-    GameData_21d9890 = *(unsigned __int16*)(v125 + 16);
+    GameData_21d98a4 = *(unsigned __int16*)(v125 + 16);
   }
-  v164 = (__int64*)&GameData_1ab7c64;
-  v163 = game_HashString(&GameData_1ab7c64);
-  v126 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1a9c78f;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1a9c78f);
+  v126 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v126 != 0) {
-    GameData_21d9894 = *(unsigned __int16*)(v126 + 16);
+    GameData_21d98cc = *(unsigned __int16*)(v126 + 16);
   }
-  v164 = (__int64*)&GameData_1a9c77e;
-  v163 = game_HashString(&GameData_1a9c77e);
-  v127 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1a94bbc;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1a94bbc);
+  v127 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v127 != 0) {
-    GameData_21d9898 = *(unsigned __int16*)(v127 + 16);
+    GameData_21d98d0 = *(unsigned __int16*)(v127 + 16);
   }
-  v164 = (__int64*)&GameData_1aafd7f;
-  v163 = game_HashString(&GameData_1aafd7f);
-  v128 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1afcc90;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1afcc90);
+  v128 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v128 != 0) {
-    GameData_21d98e0 = *(unsigned __int16*)(v128 + 16);
+    GameData_21d98d4 = *(unsigned __int16*)(v128 + 16);
   }
-  v164 = (__int64*)&GameData_1af8d58;
-  v163 = game_HashString(&GameData_1af8d58);
-  v129 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1a98b69;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1a98b69);
+  v129 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v129 != 0) {
-    GameData_21d989c = *(unsigned __int16*)(v129 + 16);
+    GameData_21d98d8 = *(unsigned __int16*)(v129 + 16);
   }
-  v164 = (__int64*)&GameData_1ae5771;
-  v163 = game_HashString(&GameData_1ae5771);
-  v130 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1ae951b;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1ae951b);
+  v130 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v130 != 0) {
-    GameData_21d98a0 = *(unsigned __int16*)(v130 + 16);
+    GameData_21d98dc = *(unsigned __int16*)(v130 + 16);
   }
-  v164 = (__int64*)&GameData_1ac69f5;
-  v163 = game_HashString(&GameData_1ac69f5);
-  v131 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1aed676;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1aed676);
+  v131 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v131 != 0) {
-    GameData_21d98a4 = *(unsigned __int16*)(v131 + 16);
+    GameData_21d98ec = *(unsigned __int16*)(v131 + 16);
   }
-  v164 = (__int64*)&GameData_1a9c78f;
-  v163 = game_HashString(&GameData_1a9c78f);
-  v132 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1ae9539;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1ae9539);
+  v132 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v132 != 0) {
-    GameData_21d98cc = *(unsigned __int16*)(v132 + 16);
+    GameData_21d98f0 = *(unsigned __int16*)(v132 + 16);
   }
-  v164 = (__int64*)&GameData_1a94bbc;
-  v163 = game_HashString(&GameData_1a94bbc);
-  v133 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1a89119;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1a89119);
+  v133 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v133 != 0) {
-    GameData_21d98d0 = *(unsigned __int16*)(v133 + 16);
+    GameData_21d98f4 = *(unsigned __int16*)(v133 + 16);
   }
-  v164 = (__int64*)&GameData_1afcc90;
-  v163 = game_HashString(&GameData_1afcc90);
-  v134 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1ae1d26;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1ae1d26);
+  v134 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v134 != 0) {
-    GameData_21d98d4 = *(unsigned __int16*)(v134 + 16);
+    GameData_21d98f8 = *(unsigned __int16*)(v134 + 16);
   }
-  v164 = (__int64*)&GameData_1a98b69;
-  v163 = game_HashString(&GameData_1a98b69);
-  v135 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1a8548c;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1a8548c);
+  v135 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v135 != 0) {
-    GameData_21d98d8 = *(unsigned __int16*)(v135 + 16);
+    GameData_21d98fc = *(unsigned __int16*)(v135 + 16);
   }
-  v164 = (__int64*)&GameData_1ae951b;
-  v163 = game_HashString(&GameData_1ae951b);
-  v136 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1aafd90;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1aafd90);
+  v136 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v136 != 0) {
-    GameData_21d98dc = *(unsigned __int16*)(v136 + 16);
+    GameData_21d9900 = *(unsigned __int16*)(v136 + 16);
   }
-  v164 = (__int64*)&GameData_1aed676;
-  v163 = game_HashString(&GameData_1aed676);
-  v137 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1aafdbb;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1aafdbb);
+  v137 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v137 != 0) {
-    GameData_21d98ec = *(unsigned __int16*)(v137 + 16);
+    GameData_21d9904 = *(unsigned __int16*)(v137 + 16);
   }
-  v164 = (__int64*)&GameData_1ae9539;
-  v163 = game_HashString(&GameData_1ae9539);
-  v138 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1a98b87;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1a98b87);
+  v138 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v138 != 0) {
-    GameData_21d98f0 = *(unsigned __int16*)(v138 + 16);
+    GameData_21d9908 = *(unsigned __int16*)(v138 + 16);
   }
-  v164 = (__int64*)&GameData_1a89119;
-  v163 = game_HashString(&GameData_1a89119);
-  v139 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1afccab;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1afccab);
+  v139 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v139 != 0) {
-    GameData_21d98f4 = *(unsigned __int16*)(v139 + 16);
+    GameData_21d990c = *(unsigned __int16*)(v139 + 16);
   }
-  v164 = (__int64*)&GameData_1ae1d26;
-  v163 = game_HashString(&GameData_1ae1d26);
-  v140 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1afccc2;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1afccc2);
+  v140 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v140 != 0) {
-    GameData_21d98f8 = *(unsigned __int16*)(v140 + 16);
+    GameData_21d9910 = *(unsigned __int16*)(v140 + 16);
   }
-  v164 = (__int64*)&GameData_1a8548c;
-  v163 = game_HashString(&GameData_1a8548c);
-  v141 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1ada27f;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1ada27f);
+  v141 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v141 != 0) {
-    GameData_21d98fc = *(unsigned __int16*)(v141 + 16);
+    GameData_21d9914 = *(unsigned __int16*)(v141 + 16);
   }
-  v164 = (__int64*)&GameData_1aafd90;
-  v163 = game_HashString(&GameData_1aafd90);
-  v142 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1af127c;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1af127c);
+  v142 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v142 != 0) {
-    GameData_21d9900 = *(unsigned __int16*)(v142 + 16);
+    GameData_21d9918 = *(unsigned __int16*)(v142 + 16);
   }
-  v164 = (__int64*)&GameData_1aafdbb;
-  v163 = game_HashString(&GameData_1aafdbb);
-  v143 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1a90c3d;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1a90c3d);
+  v143 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v143 != 0) {
-    GameData_21d9904 = *(unsigned __int16*)(v143 + 16);
+    GameData_21d991c = *(unsigned __int16*)(v143 + 16);
   }
-  v164 = (__int64*)&GameData_1a98b87;
-  v163 = game_HashString(&GameData_1a98b87);
-  v144 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1aceccb;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1aceccb);
+  v144 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v144 != 0) {
-    GameData_21d9908 = *(unsigned __int16*)(v144 + 16);
+    GameData_21d9920 = *(unsigned __int16*)(v144 + 16);
   }
-  v164 = (__int64*)&GameData_1afccab;
-  v163 = game_HashString(&GameData_1afccab);
-  v145 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1acaaa2;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1acaaa2);
+  v145 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v145 != 0) {
-    GameData_21d990c = *(unsigned __int16*)(v145 + 16);
+    GameData_21d9924 = *(unsigned __int16*)(v145 + 16);
   }
-  v164 = (__int64*)&GameData_1afccc2;
-  v163 = game_HashString(&GameData_1afccc2);
-  v146 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1ae954e;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1ae954e);
+  v146 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v146 != 0) {
-    GameData_21d9910 = *(unsigned __int16*)(v146 + 16);
+    GameData_21d9928 = *(unsigned __int16*)(v146 + 16);
   }
-  v164 = (__int64*)&GameData_1ada27f;
-  v163 = game_HashString(&GameData_1ada27f);
-  v147 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1a8912e;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1a8912e);
+  v147 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v147 != 0) {
-    GameData_21d9914 = *(unsigned __int16*)(v147 + 16);
+    GameData_21d992c = *(unsigned __int16*)(v147 + 16);
   }
-  v164 = (__int64*)&GameData_1af127c;
-  v163 = game_HashString(&GameData_1af127c);
-  v148 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1acaaad;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1acaaad);
+  v148 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v148 != 0) {
-    GameData_21d9918 = *(unsigned __int16*)(v148 + 16);
+    GameData_21d9930 = *(unsigned __int16*)(v148 + 16);
   }
-  v164 = (__int64*)&GameData_1a90c3d;
-  v163 = game_HashString(&GameData_1a90c3d);
-  v149 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1af4ff5;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1af4ff5);
+  v149 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v149 != 0) {
-    GameData_21d991c = *(unsigned __int16*)(v149 + 16);
+    GameData_21d9934 = *(unsigned __int16*)(v149 + 16);
   }
-  v164 = (__int64*)&GameData_1aceccb;
-  v163 = game_HashString(&GameData_1aceccb);
-  v150 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1a8913f;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1a8913f);
+  v150 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v150 != 0) {
-    GameData_21d9920 = *(unsigned __int16*)(v150 + 16);
+    GameData_21d9938 = *(unsigned __int16*)(v150 + 16);
   }
-  v164 = (__int64*)&GameData_1acaaa2;
-  v163 = game_HashString(&GameData_1acaaa2);
-  v151 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1aabf20;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1aabf20);
+  v151 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v151 != 0) {
-    GameData_21d9924 = *(unsigned __int16*)(v151 + 16);
+    GameData_21d993c = *(unsigned __int16*)(v151 + 16);
   }
-  v164 = (__int64*)&GameData_1ae954e;
-  v163 = game_HashString(&GameData_1ae954e);
-  v152 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1af8d69;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1af8d69);
+  v152 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v152 != 0) {
-    GameData_21d9928 = *(unsigned __int16*)(v152 + 16);
+    GameData_21d9940 = *(unsigned __int16*)(v152 + 16);
   }
-  v164 = (__int64*)&GameData_1a8912e;
-  v163 = game_HashString(&GameData_1a8912e);
-  v153 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1af1293;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1af1293);
+  v153 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v153 != 0) {
-    GameData_21d992c = *(unsigned __int16*)(v153 + 16);
+    GameData_21d9944 = *(unsigned __int16*)(v153 + 16);
   }
-  v164 = (__int64*)&GameData_1acaaad;
-  v163 = game_HashString(&GameData_1acaaad);
-  v154 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1a89156;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1a89156);
+  v154 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v154 != 0) {
-    GameData_21d9930 = *(unsigned __int16*)(v154 + 16);
+    GameData_21d9948 = *(unsigned __int16*)(v154 + 16);
   }
-  v164 = (__int64*)&GameData_1af4ff5;
-  v163 = game_HashString(&GameData_1af4ff5);
-  v155 = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1a9c7ad;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1a9c7ad);
+  v155 = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (v155 != 0) {
-    GameData_21d9934 = *(unsigned __int16*)(v155 + 16);
+    GameData_21d994c = *(unsigned __int16*)(v155 + 16);
   }
-  v164 = (__int64*)&GameData_1a8913f;
-  v163 = game_HashString(&GameData_1a8913f);
-  v156 = game_FindSkillOrFirst(&v163);
-  if (v156 != 0) {
-    GameData_21d9938 = *(unsigned __int16*)(v156 + 16);
-  }
-  v164 = (__int64*)&GameData_1aabf20;
-  v163 = game_HashString(&GameData_1aabf20);
-  v157 = game_FindSkillOrFirst(&v163);
-  if (v157 != 0) {
-    GameData_21d993c = *(unsigned __int16*)(v157 + 16);
-  }
-  v164 = (__int64*)&GameData_1af8d69;
-  v163 = game_HashString(&GameData_1af8d69);
-  v158 = game_FindSkillOrFirst(&v163);
-  if (v158 != 0) {
-    GameData_21d9940 = *(unsigned __int16*)(v158 + 16);
-  }
-  v164 = (__int64*)&GameData_1af1293;
-  v163 = game_HashString(&GameData_1af1293);
-  v159 = game_FindSkillOrFirst(&v163);
-  if (v159 != 0) {
-    GameData_21d9944 = *(unsigned __int16*)(v159 + 16);
-  }
-  v164 = (__int64*)&GameData_1a89156;
-  v163 = game_HashString(&GameData_1a89156);
-  v160 = game_FindSkillOrFirst(&v163);
-  if (v160 != 0) {
-    GameData_21d9948 = *(unsigned __int16*)(v160 + 16);
-  }
-  v164 = (__int64*)&GameData_1a9c7ad;
-  v163 = game_HashString(&GameData_1a9c7ad);
-  v161 = game_FindSkillOrFirst(&v163);
-  if (v161 != 0) {
-    GameData_21d994c = *(unsigned __int16*)(v161 + 16);
-  }
-  v164 = (__int64*)&GameData_1ada296;
-  v163 = game_HashString(&GameData_1ada296);
-  result = game_FindSkillOrFirst(&v163);
+  v157_.v158 = (__int64*)&GameData_1ada296;
+  v157_.v157 = game_HashString_alt1((__int64)&GameData_1ada296);
+  result = game_FindSkillOrFirst_alt1((unsigned __int64*)&v157_.v157);
   if (result != 0) {
     GameData_21d9950 = *(unsigned __int16*)(result + 16);
   }

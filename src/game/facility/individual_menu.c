@@ -21,7 +21,9 @@ extern __int64 game_UnitListSet_instance_;
 void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
 void __attribute__((noreturn)) GameRoutine_60a310(_QWORD, _QWORD);
 void __attribute__((noreturn)) GameRoutine_874520(_QWORD);
-__int64 IndividualMenu_Unknown50(__int64 a1, __int64* a2);
+__int64
+IndividualMenu_Unknown50_alt1(__int64 a1,
+                              __int64* a2) __asm__("IndividualMenu_Unknown50");
 __int64 IndividualMenu_Unknown35(__int64 a1);
 __int64 GameRoutine_17b8f40(_QWORD, _QWORD);
 extern __int64 GameData_2243960;
@@ -74,15 +76,21 @@ extern __int64 game_hub_ProgressEventView_instance__ptr[6];
 void game_facility_IndividualMenu_Run_lambda1_Invoke(__int64 a1, __int64 a2,
                                                      int* a3);
 __int64 game_facility_IndividualMenu_Run_lambda0_Invoke(__int64 a1, __int64 a2);
+__int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
+void __attribute__((noreturn))
+GameRoutine_60a210_alt1() __asm__("GameRoutine_60a210");
+void __attribute__((noreturn))
+GameRoutine_874520_alt1() __asm__("GameRoutine_874520");
+void IndividualMenu_Unknown50(__int64 a1, __int64* a2);
 
-__int64 IndividualMenu_Unknown50(__int64 a1, __int64* a2)
+void IndividualMenu_Unknown50(__int64 a1, __int64* a2)
 {
-  __int64 result;
+  int v3;
   unsigned __int64 v4;
   unsigned __int64 v5;
   __int64 v6;
   __int64 v7;
-  __int64 v8;
+  signed __int64 v8;
   unsigned __int64 v9;
   __int64 v10;
   unsigned __int64 v11;
@@ -93,7 +101,7 @@ __int64 IndividualMenu_Unknown50(__int64 a1, __int64* a2)
   unsigned __int64 v16;
   __int64 v17;
 
-  result = (*(__int64 (**)(__int64))(*(_QWORD*)a1 + 192LL))(a1);
+  v3 = (*(__int64 (**)(__int64))(*(_QWORD*)a1 + 192LL))(a1);
   v4 = a2[1];
   v5 = a2[2];
   if (v4 >= v5) {
@@ -101,7 +109,7 @@ __int64 IndividualMenu_Unknown50(__int64 a1, __int64* a2)
     v8 = v4 - *a2;
     v9 = 1 - 0x3333333333333333LL * (v8 >> 3);
     if (v9 > 0x666666666666666LL) {
-      GameRoutine_874520(result);
+      GameRoutine_874520_alt1();
     }
     v10 = fw_memory_g_heap_manager_ptr;
     v11 = 0xCCCCCCCCCCCCCCCDLL * ((__int64)(v5 - v7) >> 3);
@@ -116,12 +124,12 @@ __int64 IndividualMenu_Unknown50(__int64 a1, __int64* a2)
     }
     if (v12 != 0) {
       if (v12 > 0x666666666666666LL) {
-        GameRoutine_60a210(result);
+        GameRoutine_60a210_alt1();
       }
-      v13 = result;
-      v14 = fw_memory_HeapManager_Allocate(
+      v13 = v3;
+      v14 = fw_memory_HeapManager_Allocate_alt1(
           *(_QWORD*)fw_memory_g_heap_manager_ptr, 40 * v12, 16, 0);
-      LODWORD(result) = v13;
+      v3 = v13;
     }
     else {
       v14 = 0;
@@ -130,13 +138,13 @@ __int64 IndividualMenu_Unknown50(__int64 a1, __int64* a2)
     *(_QWORD*)v15 = "ItemChange";
     *(_QWORD*)(v15 + 8) = "MID_KeyHelp_ItemChange";
     *(_DWORD*)(v15 + 20) = 0;
-    *(_DWORD*)(v15 + 24) = result;
+    *(_DWORD*)(v15 + 24) = v3;
     *(_BYTE*)(v15 + 28) = 0;
     *(_QWORD*)(v15 + 32) = 0;
     *(_BYTE*)(v15 + 16) = 1;
     v16 = v14 + 40 * v12;
     v6 = v14 + v8 + 40;
-    result = memcpy(v14, v7, v8);
+    memcpy_alt1(v14, v7, v8);
     *a2 = v14;
     a2[1] = v6;
     a2[2] = v16;
@@ -145,12 +153,12 @@ __int64 IndividualMenu_Unknown50(__int64 a1, __int64* a2)
       if (*(_QWORD*)(*(_QWORD*)v10 + 200LL) == 0) {
         v17 = 56;
       }
-      result = nn_mem_StandardAllocator_Free(*(_QWORD*)v10 + v17);
+      nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v10 + v17, v7);
     }
   }
   else {
     *(_DWORD*)(v4 + 20) = 0;
-    *(_DWORD*)(v4 + 24) = result;
+    *(_DWORD*)(v4 + 24) = v3;
     *(_BYTE*)(v4 + 28) = 0;
     *(_QWORD*)(v4 + 32) = 0;
     v6 = v4 + 40;
@@ -159,7 +167,6 @@ __int64 IndividualMenu_Unknown50(__int64 a1, __int64* a2)
     *(_BYTE*)(v4 + 16) = 1;
   }
   a2[1] = v6;
-  return result;
 }
 
 __int64 IndividualMenu_Unknown35(__int64 a1)

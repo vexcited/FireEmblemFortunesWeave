@@ -12,10 +12,21 @@ extern __int64 (*game_ProcInst_vtable[])();
 extern __int64 (*game_facility_anonymous_ProcProcurementSeq_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 ProcProcurementSeq_DeletingDestructor_10217e0(__int64 a1);
-__n128 ProcProcurementSeq_Unknown2(__int64 a1);
+__n128 ProcProcurementSeq_Unknown2_alt1(__int64 a1) __asm__(
+    "ProcProcurementSeq_Unknown2");
 __int64 GameRoutine_195a5c0_alt1(_QWORD) __asm__("GameRoutine_195a5c0");
 __int64 ProcProcurementSeq_Destructor(__int64 a1);
-__n128 ProcProcurementSeq_DeletingDestructor_1021a00(__int64 a1);
+__n128 ProcProcurementSeq_DeletingDestructor_1021a00_alt1(__int64 a1) __asm__(
+    "ProcProcurementSeq_DeletingDestructor_1021a00");
+__int64 GameHr_195a5c0();
+__int64 game_ProcInst_Unregister_alt1(__int64 result) __asm__(
+    "game_ProcInst_Unregister");
+extern __int64 (*ProcProcurementSeq_Destructor_ptr[])();
+void GameRoutine_658c00_alt1(__int64*) __asm__("GameRoutine_658c00");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void ProcProcurementSeq_Unknown2(__int64 a1);
+void ProcProcurementSeq_DeletingDestructor_1021a00(__int64 a1);
 
 __int64 ProcProcurementSeq_DeletingDestructor_10217e0(__int64 a1)
 {
@@ -48,7 +59,7 @@ LABEL_6:
   return GameRoutine_658c00(a1 + 104);
 }
 
-__n128 ProcProcurementSeq_Unknown2(__int64 a1)
+void ProcProcurementSeq_Unknown2(__int64 a1)
 {
   _QWORD* v2;
   _QWORD* v3;
@@ -56,9 +67,9 @@ __n128 ProcProcurementSeq_Unknown2(__int64 a1)
   __int64 v5;
 
   *(_QWORD*)a1 = game_facility_anonymous_ProcProcurementSeq_vtable;
-  *(_QWORD*)(a1 + 16) = GameData_20023f0;
+  *(_QWORD*)(a1 + 16) = ProcProcurementSeq_Destructor_ptr;
   v2 = (_QWORD*)(a1 + 16);
-  GameRoutine_195a5c0();
+  GameHr_195a5c0();
   v3 = *(_QWORD**)(a1 + 208);
   *v2 = GameData_2002510;
   if (v3 == (_QWORD*)(a1 + 176)) {
@@ -76,14 +87,14 @@ LABEL_6:
   if ((*(_WORD*)(a1 + 152) & 0x100) != 0) {
     *(_WORD*)(a1 + 152) &= ~0x100u;
   }
-  game_ProcInst_Unregister(v2);
-  GameRoutine_658c00(a1 + 104);
+  game_ProcInst_Unregister_alt1((__int64)v2);
+  GameRoutine_658c00_alt1((__int64*)(a1 + 104));
   v5 = 128;
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
     v5 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v5);
+  nn_mem_StandardAllocator_Free_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v5, a1);
 }
 
 __int64 ProcProcurementSeq_Destructor(__int64 a1)
@@ -115,40 +126,42 @@ LABEL_6:
   return GameRoutine_658c00(a1 + 88);
 }
 
-__n128 ProcProcurementSeq_DeletingDestructor_1021a00(__int64 a1)
+void ProcProcurementSeq_DeletingDestructor_1021a00(__int64 a1)
 {
-  _QWORD* v2;
-  __int64 v3;
+  __int64 v2;
+  _QWORD* v3;
   __int64 v4;
+  __int64 v5;
 
   *(_QWORD*)(a1 - 16) = game_facility_anonymous_ProcProcurementSeq_vtable;
-  *(_QWORD*)a1 = GameData_20023f0;
-  GameRoutine_195a5c0_alt1(a1 - 16);
-  v2 = *(_QWORD**)(a1 + 192);
+  v2 = a1 - 16;
+  *(_QWORD*)a1 = ProcProcurementSeq_Destructor_ptr;
+  GameHr_195a5c0();
+  v3 = *(_QWORD**)(a1 + 192);
   *(_QWORD*)a1 = GameData_2002510;
-  if (v2 == (_QWORD*)(a1 + 160)) {
-    v3 = 32;
+  if (v3 == (_QWORD*)(a1 + 160)) {
+    v4 = 32;
   }
   else {
-    if (v2 == nullptr) {
+    if (v3 == nullptr) {
       goto LABEL_6;
     }
-    v3 = 40;
+    v4 = 40;
   }
-  (*(void (**)(__int64))(*v2 + v3))((__int64)v2);
+  (*(void (**)(__int64))(*v3 + v4))((__int64)v3);
 LABEL_6:
   *(_QWORD*)a1 = game_ProcInst_vtable;
   if ((*(_WORD*)(a1 + 136) & 0x100) != 0) {
     *(_WORD*)(a1 + 136) &= ~0x100u;
   }
-  game_ProcInst_Unregister(a1);
-  GameRoutine_658c00(a1 + 88);
-  v4 = 128;
+  game_ProcInst_Unregister_alt1(a1);
+  GameRoutine_658c00_alt1((__int64*)(a1 + 88));
+  v5 = 128;
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-    v4 = 56;
+    v5 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v4);
+  nn_mem_StandardAllocator_Free_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v5, v2);
 }
 
 #pragma GCC visibility pop

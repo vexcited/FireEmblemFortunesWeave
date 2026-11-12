@@ -12,10 +12,28 @@ _QWORD* game_TrainingConst_CalcSortiePlanTrainingGrow_lambda0_Clone(_QWORD* a1);
 _QWORD*
 game_TrainingConst_CalcSortiePlanTrainingGrow_lambda0_CloneInto(_QWORD* result,
                                                                 _QWORD* a2);
-_QWORD* game_TrainingConst_CalcSortiePlanTrainingGrow_lambda0_Invoke(
-    _QWORD* result, unsigned __int8* a2);
-_QWORD* game_TrainingConst_GetSortiePlanTrainingGrowableAttr_lambda0_Invoke(
-    _QWORD* result, unsigned __int8* a2);
+_QWORD* game_TrainingConst_CalcSortiePlanTrainingGrow_lambda0_Invoke_alt1(
+    _QWORD* result,
+    unsigned __int8* a2) __asm__("game_TrainingConst_"
+                                 "CalcSortiePlanTrainingGrow_lambda0_Invoke");
+_QWORD*
+game_TrainingConst_GetSortiePlanTrainingGrowableAttr_lambda0_Invoke_alt1(
+    _QWORD* result,
+    unsigned __int8*
+        a2) __asm__("game_TrainingConst_GetSortiePlanTrainingGrowableAttr_"
+                    "lambda0_Invoke");
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
+void __attribute__((noreturn))
+GameRoutine_9433d0_alt1() __asm__("GameRoutine_9433d0");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void game_TrainingConst_CalcSortiePlanTrainingGrow_lambda0_Invoke(
+    _QWORD* a1, unsigned __int8* a2);
+void game_TrainingConst_GetSortiePlanTrainingGrowableAttr_lambda0_Invoke(
+    _QWORD* a1, unsigned __int8* a2);
 
 _QWORD* game_TrainingConst_CalcSortiePlanTrainingGrow_lambda0_Clone(_QWORD* a1)
 {
@@ -97,8 +115,8 @@ game_TrainingConst_CalcSortiePlanTrainingGrow_lambda0_CloneInto(_QWORD* result,
   return result;
 }
 
-_QWORD* game_TrainingConst_CalcSortiePlanTrainingGrow_lambda0_Invoke(
-    _QWORD* result, unsigned __int8* a2)
+void game_TrainingConst_CalcSortiePlanTrainingGrow_lambda0_Invoke(
+    _QWORD* a1, unsigned __int8* a2)
 {
   __int64 v2;
   unsigned __int8* v3;
@@ -111,7 +129,7 @@ _QWORD* game_TrainingConst_CalcSortiePlanTrainingGrow_lambda0_Invoke(
   __int64 v10;
   unsigned __int8* v11;
   __int64 v12;
-  _BYTE* v13;
+  unsigned __int64 v13;
   unsigned __int64 v14;
   unsigned __int64 v15;
   __int64 v16;
@@ -120,12 +138,11 @@ _QWORD* game_TrainingConst_CalcSortiePlanTrainingGrow_lambda0_Invoke(
   __int64 v19;
 
   v2 = *a2;
-  if ((_DWORD)v2 != 7 &&
-      ((_DWORD)v2 == 12 ||
-       (unsigned int)v2 <= 0xC &&
-           (*(char*)(result[1] + v2 + 398) & 0x80000000) == 0)) {
-    v4 = (unsigned __int8*)result[2];
-    v3 = (unsigned __int8*)result[3];
+  if ((_DWORD)v2 != 7 && ((_DWORD)v2 == 12 ||
+                          (unsigned int)v2 <= 0xC &&
+                              (*(char*)(a1[1] + v2 + 398) & 0x80000000) == 0)) {
+    v4 = (unsigned __int8*)a1[2];
+    v3 = (unsigned __int8*)a1[3];
     if (v4 != v3) {
       v5 = v3 - v4;
       v6 = (v3 - v4) & 3;
@@ -166,21 +183,21 @@ _QWORD* game_TrainingConst_CalcSortiePlanTrainingGrow_lambda0_Invoke(
         }
         else {
         LABEL_10:
-          v4 = (unsigned __int8*)result[3];
+          v4 = (unsigned __int8*)a1[3];
         }
       }
     }
   LABEL_11:
     if (v4 == v3) {
-      v7 = (__int64*)result[5];
+      v7 = (__int64*)a1[5];
       v9 = (_BYTE*)v7[1];
       v8 = v7[2];
       if ((unsigned __int64)v9 >= v8) {
         v12 = *v7;
-        v13 = &v9[-*v7];
-        v14 = (unsigned __int64)(v13 + 1);
+        v13 = (unsigned __int64)&v9[-*v7];
+        v14 = v13 + 1;
         if ((__int64)(v13 + 1) < 0) {
-          GameRoutine_9433d0(result);
+          GameRoutine_9433d0_alt1();
         }
         v15 = v8 - v12;
         v16 = fw_memory_g_heap_manager_ptr;
@@ -194,15 +211,15 @@ _QWORD* game_TrainingConst_CalcSortiePlanTrainingGrow_lambda0_Invoke(
           v17 = v14;
         }
         if (v17 != 0) {
-          v18 = fw_memory_HeapManager_Allocate(
+          v18 = fw_memory_HeapManager_Allocate_alt1(
               *(_QWORD*)fw_memory_g_heap_manager_ptr, v17, 16, 0);
         }
         else {
           v18 = 0;
         }
-        v13[v18] = v2;
-        v10 = (__int64)&v13[v18 + 1];
-        result = (_QWORD*)memcpy(v18, v12, v13);
+        *(_BYTE*)(v18 + v13) = v2;
+        v10 = v18 + v13 + 1;
+        memcpy_alt1(v18, v12, v13);
         *v7 = v18;
         v7[1] = v10;
         v7[2] = v18 + v17;
@@ -211,7 +228,7 @@ _QWORD* game_TrainingConst_CalcSortiePlanTrainingGrow_lambda0_Invoke(
           if (*(_QWORD*)(*(_QWORD*)v16 + 200LL) == 0) {
             v19 = 56;
           }
-          result = (_QWORD*)nn_mem_StandardAllocator_Free(*(_QWORD*)v16 + v19);
+          nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v16 + v19, v12);
         }
       }
       else {
@@ -221,11 +238,10 @@ _QWORD* game_TrainingConst_CalcSortiePlanTrainingGrow_lambda0_Invoke(
       v7[1] = v10;
     }
   }
-  return result;
 }
 
-_QWORD* game_TrainingConst_GetSortiePlanTrainingGrowableAttr_lambda0_Invoke(
-    _QWORD* result, unsigned __int8* a2)
+void game_TrainingConst_GetSortiePlanTrainingGrowableAttr_lambda0_Invoke(
+    _QWORD* a1, unsigned __int8* a2)
 {
   __int64 v2;
   __int64 v3;
@@ -236,7 +252,7 @@ _QWORD* game_TrainingConst_GetSortiePlanTrainingGrowableAttr_lambda0_Invoke(
   _BYTE* v9;
   __int64 v10;
   __int64 v11;
-  _BYTE* v12;
+  unsigned __int64 v12;
   unsigned __int64 v13;
   unsigned __int64 v14;
   __int64 v15;
@@ -246,26 +262,26 @@ _QWORD* game_TrainingConst_GetSortiePlanTrainingGrowableAttr_lambda0_Invoke(
 
   v2 = *a2;
   if ((_DWORD)v2 == 12) {
-    v3 = result[1];
+    v3 = a1[1];
     v4 = 12;
     goto LABEL_3;
   }
   if ((unsigned int)v2 > 0xC) {
-    return result;
+    return;
   }
   if ((_DWORD)v2 == 7) {
-    v3 = result[1];
+    v3 = a1[1];
     v4 = 7;
   LABEL_14:
     if (*(char*)(v3 + v4 + 812) < 0) {
-      return result;
+      return;
     }
     goto LABEL_3;
   }
-  if (*(char*)(result[2] + v2 + 398) < 0) {
-    return result;
+  if (*(char*)(a1[2] + v2 + 398) < 0) {
+    return;
   }
-  v3 = result[1];
+  v3 = a1[1];
   v4 = *a2;
   if ((unsigned int)v2 <= 7) {
     goto LABEL_14;
@@ -273,15 +289,15 @@ _QWORD* game_TrainingConst_GetSortiePlanTrainingGrowableAttr_lambda0_Invoke(
 LABEL_3:
   v5 = *(unsigned __int8*)(v3 + v4 + 540);
   if (v5 != 0 && v5 != 12) {
-    v7 = (__int64*)result[3];
+    v7 = (__int64*)a1[3];
     v9 = (_BYTE*)v7[1];
     v8 = v7[2];
     if ((unsigned __int64)v9 >= v8) {
       v11 = *v7;
-      v12 = &v9[-*v7];
-      v13 = (unsigned __int64)(v12 + 1);
+      v12 = (unsigned __int64)&v9[-*v7];
+      v13 = v12 + 1;
       if ((__int64)(v12 + 1) < 0) {
-        GameRoutine_9433d0(result);
+        GameRoutine_9433d0_alt1();
       }
       v14 = v8 - v11;
       v15 = fw_memory_g_heap_manager_ptr;
@@ -295,15 +311,15 @@ LABEL_3:
         v16 = v13;
       }
       if (v16 != 0) {
-        v17 = fw_memory_HeapManager_Allocate(
+        v17 = fw_memory_HeapManager_Allocate_alt1(
             *(_QWORD*)fw_memory_g_heap_manager_ptr, v16, 16, 0);
       }
       else {
         v17 = 0;
       }
-      v12[v17] = v2;
-      v10 = (__int64)&v12[v17 + 1];
-      result = (_QWORD*)memcpy(v17, v11, v12);
+      *(_BYTE*)(v17 + v12) = v2;
+      v10 = v17 + v12 + 1;
+      memcpy_alt1(v17, v11, v12);
       *v7 = v17;
       v7[1] = v10;
       v7[2] = v17 + v16;
@@ -312,7 +328,7 @@ LABEL_3:
         if (*(_QWORD*)(*(_QWORD*)v15 + 200LL) == 0) {
           v18 = 56;
         }
-        result = (_QWORD*)nn_mem_StandardAllocator_Free(*(_QWORD*)v15 + v18);
+        nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v15 + v18, v11);
       }
     }
     else {
@@ -321,7 +337,6 @@ LABEL_3:
     }
     v7[1] = v10;
   }
-  return result;
 }
 
 #pragma GCC visibility pop

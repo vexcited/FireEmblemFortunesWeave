@@ -13,9 +13,19 @@ extern __int64 (*game_hub_anonymous_ProcHubSeqObeliskPerchPart1_vtable[])();
 extern __int64 GameData_21ec7c0;
 extern __int64 GameData_21f3d08;
 extern __int64 fw_memory_g_heap_manager_ptr;
-__int64 ProcHubSeqObeliskPerchPart1_Destructor(__int64 a1);
+__int64 ProcHubSeqObeliskPerchPart1_Destructor_alt1(__int64 a1) __asm__(
+    "ProcHubSeqObeliskPerchPart1_Destructor");
+__int64 CharacterModel_cf5c00(__int64);
+__int64 game_ProcInst_Unregister_alt1(__int64 result) __asm__(
+    "game_ProcInst_Unregister");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+void GameRoutine_658c00_alt1(__int64*) __asm__("GameRoutine_658c00");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void ProcHubSeqObeliskPerchPart1_Destructor(__int64 a1);
 
-__int64 ProcHubSeqObeliskPerchPart1_Destructor(__int64 a1)
+void ProcHubSeqObeliskPerchPart1_Destructor(__int64 a1)
 {
   __int64 v2;
   __int64 i;
@@ -33,6 +43,7 @@ __int64 ProcHubSeqObeliskPerchPart1_Destructor(__int64 a1)
   __int64 v16;
   __int64 v17;
   __int64 v18;
+  __int64 v19;
 
   *(_QWORD*)a1 = game_hub_anonymous_ProcHubSeqObeliskPerchPart1_vtable;
   v2 = *(_QWORD*)(GameData_21ec7c0 + 24);
@@ -56,41 +67,45 @@ __int64 ProcHubSeqObeliskPerchPart1_Destructor(__int64 a1)
     *(_DWORD*)(v13 + 352) = 0;
     *(_BYTE*)(v13 + 356) = 1;
     *(_BYTE*)(v13 + 369) = 1;
-    GameRoutine_cf5c00(v14);
+    CharacterModel_cf5c00(v14);
   }
   *(_BYTE*)(GameData_21f3d08 + 146) = 0;
   v15 = *(_QWORD*)(a1 + 216);
   if (v15 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v15 + 8),
                                    0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v15 + 16LL))(v15);
-    std___1___shared_weak_count___release_weak(v15);
+    std___1___shared_weak_count___release_weak_alt1(v15);
   }
   v16 = *(_QWORD*)(a1 + 200);
   if (v16 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v16 + 8),
                                    0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v16 + 16LL))(v16);
-    std___1___shared_weak_count___release_weak(v16);
+    std___1___shared_weak_count___release_weak_alt1(v16);
   }
   v17 = *(_QWORD*)(a1 + 184);
   if (v17 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v17 + 8),
                                    0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v17 + 16LL))(v17);
-    std___1___shared_weak_count___release_weak(v17);
+    std___1___shared_weak_count___release_weak_alt1(v17);
   }
   *(_QWORD*)a1 = game_hub_anonymous_ProcHubSeqObeliskPerchBase_vtable;
-  if ((*(_BYTE*)(a1 + 152) & 1) != 0 && *(_QWORD*)(a1 + 168) != 0) {
-    v18 = 128;
-    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-      v18 = 56;
+  if ((*(_BYTE*)(a1 + 152) & 1) != 0) {
+    v18 = *(_QWORD*)(a1 + 168);
+    if (v18 != 0) {
+      v19 = 128;
+      if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+        v19 = 56;
+      }
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v19, v18);
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v18);
   }
   *(_QWORD*)a1 = game_ProcInst_vtable;
   if ((*(_WORD*)(a1 + 136) & 0x100) != 0) {
     *(_WORD*)(a1 + 136) &= ~0x100u;
   }
-  game_ProcInst_Unregister(a1);
-  return GameRoutine_658c00(a1 + 88);
+  game_ProcInst_Unregister_alt1(a1);
+  GameRoutine_658c00_alt1((__int64*)(a1 + 88));
 }
 
 #pragma GCC visibility pop

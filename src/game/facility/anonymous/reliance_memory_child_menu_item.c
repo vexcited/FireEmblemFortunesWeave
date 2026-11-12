@@ -18,7 +18,8 @@ extern __int64 (
 extern __int64 (*game_menu_BasicMenuItem_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64 ui_LayoutAccessor_empty_;
-__int64 RelianceMemoryChildMenuItem_Destructor(__int64 a1);
+__int64 RelianceMemoryChildMenuItem_Destructor_alt1(__int64 a1) __asm__(
+    "RelianceMemoryChildMenuItem_Destructor");
 __int64 RelianceMemoryChildMenuItem_Unknown20(__int64 a1);
 __int64 RelianceMemoryChildMenuItem_Unknown21(__int64 a1);
 __int64 RelianceMemoryChildMenuItem_Unknown55(__int64 a1);
@@ -39,8 +40,11 @@ __int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
 __int64* RelianceMemoryChildMenuItem_19ed040(__int64 a1);
 void GameRoutine_159da00(__int64*, unsigned int, unsigned int);
 __int64 RelianceMemoryChildMenuItem_Unknown16(__int64 a1);
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void RelianceMemoryChildMenuItem_Destructor(__int64 a1);
 
-__int64 RelianceMemoryChildMenuItem_Destructor(__int64 a1)
+void RelianceMemoryChildMenuItem_Destructor(__int64 a1)
 {
   __int64 v1;
   __int64 v3;
@@ -58,8 +62,9 @@ __int64 RelianceMemoryChildMenuItem_Destructor(__int64 a1)
   __int64 v15;
   __int64 v16;
   __int64 v17;
-  __int64 result;
+  __int64 v18;
   __int64 v19;
+  __int64 v20;
 
   v1 = *(_QWORD*)(a1 + 416);
   *(_QWORD*)a1 = game_facility_anonymous_RelianceMemoryChildMenuItem_vtable;
@@ -71,7 +76,7 @@ __int64 RelianceMemoryChildMenuItem_Destructor(__int64 a1)
     if (*(_QWORD*)(v4 + 200) == 0) {
       v5 = 56;
     }
-    nn_mem_StandardAllocator_Free(v4 + v5);
+    nn_mem_StandardAllocator_Free_alt1(v4 + v5, v1);
   }
   v6 = *(_QWORD*)(a1 + 360);
   if (v6 != 0) {
@@ -81,7 +86,7 @@ __int64 RelianceMemoryChildMenuItem_Destructor(__int64 a1)
     if (*(_QWORD*)(v7 + 200) == 0) {
       v8 = 56;
     }
-    nn_mem_StandardAllocator_Free(v7 + v8);
+    nn_mem_StandardAllocator_Free_alt1(v7 + v8, v6);
   }
   v9 = *(_QWORD*)(a1 + 304);
   if (v9 != 0) {
@@ -91,7 +96,7 @@ __int64 RelianceMemoryChildMenuItem_Destructor(__int64 a1)
     if (*(_QWORD*)(v10 + 200) == 0) {
       v11 = 56;
     }
-    nn_mem_StandardAllocator_Free(v10 + v11);
+    nn_mem_StandardAllocator_Free_alt1(v10 + v11, v9);
   }
   v12 = *(_QWORD*)(a1 + 248);
   if (v12 != 0) {
@@ -101,7 +106,7 @@ __int64 RelianceMemoryChildMenuItem_Destructor(__int64 a1)
     if (*(_QWORD*)(v13 + 200) == 0) {
       v14 = 56;
     }
-    nn_mem_StandardAllocator_Free(v13 + v14);
+    nn_mem_StandardAllocator_Free_alt1(v13 + v14, v12);
   }
   v15 = *(_QWORD*)(a1 + 192);
   if (v15 != 0) {
@@ -111,21 +116,23 @@ __int64 RelianceMemoryChildMenuItem_Destructor(__int64 a1)
     if (*(_QWORD*)(v16 + 200) == 0) {
       v17 = 56;
     }
-    nn_mem_StandardAllocator_Free(v16 + v17);
+    nn_mem_StandardAllocator_Free_alt1(v16 + v17, v15);
   }
-  result = *(_QWORD*)(a1 + 56);
+  v18 = *(_QWORD*)(a1 + 56);
   *(_QWORD*)a1 = game_menu_BasicMenuItem_vtable;
-  if (result != 0) {
-    result = std___1___shared_weak_count___release_weak(result);
+  if (v18 != 0) {
+    std___1___shared_weak_count___release_weak_alt1(v18);
   }
-  if ((*(_BYTE*)(a1 + 16) & 1) != 0 && *(_QWORD*)(a1 + 32) != 0) {
-    v19 = 128;
-    if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
-      v19 = 56;
+  if ((*(_BYTE*)(a1 + 16) & 1) != 0) {
+    v19 = *(_QWORD*)(a1 + 32);
+    if (v19 != 0) {
+      v20 = 128;
+      if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
+        v20 = 56;
+      }
+      nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v20, v19);
     }
-    return nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v19);
   }
-  return result;
 }
 
 __int64 RelianceMemoryChildMenuItem_Unknown16(__int64 a1)

@@ -27,6 +27,17 @@ void gxc_NvnStateCache_Destroy_NvnStateCache_alt1(_QWORD*) __asm__(
 void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void WorkerThread_Unknown2(_QWORD* a1);
+_QWORD* gxc_NvnStateCache_NvnStateCache_alt1(_QWORD* result) __asm__(
+    "gxc_NvnStateCache_NvnStateCache");
+__int64 GameHr_a8d980(__int64);
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 nn_os_InitializeLightEvent_alt1(_QWORD, _QWORD, _QWORD) __asm__(
+    "nn_os_InitializeLightEvent");
+__int64 nn_os_StartThread_alt1(__int64) __asm__("nn_os_StartThread");
+void fw_world_InitializeWorker_alt1(__int64, __int64, __int64) __asm__(
+    "fw_world_InitializeWorker");
 
 void WorkerThread_Unknown2(_QWORD* a1)
 {
@@ -88,12 +99,10 @@ __int64 WorkerThread_194daa0(__int64 a1, unsigned int a2, __int64 a3,
   __int64 v7;
   __int64 v9;
   __int64 v10;
-  __int64 v11;
+  _QWORD* v11;
   __int64 v12;
-  __int64 v13;
+  _QWORD* v13;
   __int64 v14;
-  long double v15;
-  long double v16;
 
   v5 = *a4;
   v4 = a4[1];
@@ -108,30 +117,30 @@ __int64 WorkerThread_194daa0(__int64 a1, unsigned int a2, __int64 a3,
   if (v9 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v9 + 8),
                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v9 + 16LL))(v9);
-    std___1___shared_weak_count___release_weak(v9);
+    std___1___shared_weak_count___release_weak_alt1(v9);
   }
   v10 = fw_memory_g_heap_manager_ptr;
-  v11 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
-                                       128, 16, 0);
-  gxc_NvnStateCache_NvnStateCache();
-  v12 = v11;
-  v13 = *(_QWORD*)(a1 + 600);
+  v11 = (_QWORD*)fw_memory_HeapManager_Allocate_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr, 128, 16, 0);
+  gxc_NvnStateCache_NvnStateCache_alt1(v11);
+  v12 = (__int64)v11;
+  v13 = *(_QWORD**)(a1 + 600);
   *(_QWORD*)(a1 + 600) = v12;
-  if (v13 != 0) {
-    gxc_NvnStateCache_Destroy_NvnStateCache(v13);
+  if (v13 != nullptr) {
+    gxc_NvnStateCache_Destroy_NvnStateCache_alt1(v13);
     v14 = 128;
     if (*(_QWORD*)(*(_QWORD*)v10 + 200LL) == 0) {
       v14 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)v10 + v14);
+    nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v10 + v14, (__int64)v13);
     v12 = *(_QWORD*)(a1 + 600);
   }
-  v15 = GameRoutine_a8d980(v12);
-  nn_os_InitializeLightEvent(a1 + 484, 0, 1, v15);
-  nn_os_InitializeLightEvent(a1 + 496, 1, 0, v16);
+  GameHr_a8d980(v12);
+  nn_os_InitializeLightEvent_alt1(a1 + 484, 0, 1);
+  nn_os_InitializeLightEvent_alt1(a1 + 496, 1, 0);
   *(_DWORD*)(a1 + 608) = v7;
-  fw_world_InitializeWorker(a1, (v7 << 32) | 0x20000006, a3);
-  return nn_os_StartThread(a1 + 32);
+  fw_world_InitializeWorker_alt1(a1, (v7 << 32) | 0x20000006, a3);
+  return nn_os_StartThread_alt1(a1 + 32);
 }
 
 __attribute__((swiftcall)) void WorkerThread_194dc70(PSEUDO_X8 x8_, _QWORD* a1)

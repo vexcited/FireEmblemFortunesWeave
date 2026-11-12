@@ -3,57 +3,34 @@
 #pragma GCC visibility push(hidden)
 
 extern __int64 (*GameData_204cb50[])();
-
 extern __int64 (*GameData_2088cf0[])();
-
 extern _UNKNOWN* GameData_212c958;
-
 extern _UNKNOWN* GameData_212c960;
-
 extern int GameData_2167768;
-
 extern __int64 GameData_21f3cb0;
-
 extern __int64 GameData_22190a8;
-
 extern int GameData_221beb0;
-
 extern char GameData_2222318;
-
 extern __int64 GameData_222a058;
-
 extern int GameData_222e468;
-
 extern __int64 GameData_22400f8;
-
 __int64 GameRoutine_1155100(long double);
-
 __int64 GameRoutine_12276a0(void);
-
 __int64 GameRoutine_1340560(_QWORD, _QWORD);
-
 __int64 GameRoutine_14877f0(_QWORD, _QWORD);
-
 __int64 GameRoutine_15f2e30(_QWORD, _QWORD);
-
 __int64 GameRoutine_177ba70(_QWORD, _QWORD, _QWORD);
-
 __int64 GameRoutine_1a09c50(void);
-
 __int64 GameRoutine_1a0a310(void);
-
 __int64 GameRoutine_1a0acd0(float);
-
 __int64 GameRoutine_7c6120(void);
-
 __int64 GameRoutine_947910(void);
-
 __int64 GameRoutine_948fc0(_QWORD, _QWORD, _QWORD);
-
 __int64 GameRoutine_a867a0(_QWORD);
-
 __int64 GameRoutine_f2e5a0(_QWORD, _QWORD, _QWORD);
-
+__int64 std___1___shared_weak_count___release_weak(__int64);
+__int64 GameHr_efda70(__int64 a1);
+__int64 GameHr_ffeec0(__int64 a1);
 double GameHr_d23970() { return 0.0; }
 
 _BYTE** GameHr_d4ae50(_BYTE** result, _BYTE* a2)
@@ -153,7 +130,7 @@ __int64 GameHr_efda70(__int64 a1)
 
   result = *(_QWORD*)(a1 + 32);
   if (result != 0) {
-    return GameRoutine_1a09c50();
+    return std___1___shared_weak_count___release_weak(result);
   }
   return result;
 }
@@ -226,7 +203,7 @@ __int64 GameHr_ffeec0(__int64 a1)
 
   result = *(_QWORD*)(a1 + 72);
   if (result != 0) {
-    return GameRoutine_1a09c50();
+    return std___1___shared_weak_count___release_weak(result);
   }
   return result;
 }

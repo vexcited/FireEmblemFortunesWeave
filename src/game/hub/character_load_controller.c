@@ -5,12 +5,15 @@
 __int64 nn_mem_StandardAllocator_Free(_QWORD);
 extern __int64 (*game_hub_CharacterLoadController_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
-_QWORD* CharacterLoadController_Destructor(_QWORD* result);
+_QWORD* CharacterLoadController_Destructor_alt1(_QWORD* result) __asm__(
+    "CharacterLoadController_Destructor");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void CharacterLoadController_Destructor(_QWORD* a1);
 
-_QWORD* CharacterLoadController_Destructor(_QWORD* result)
+void CharacterLoadController_Destructor(_QWORD* a1)
 {
   __int64 v1;
-  _QWORD* v2;
   __int64 v3;
   __int64 v4;
   __int64 v5;
@@ -26,59 +29,57 @@ _QWORD* CharacterLoadController_Destructor(_QWORD* result)
   __int64 v15;
   __int64 v16;
 
-  v1 = result[46];
-  v2 = result;
-  *result = game_hub_CharacterLoadController_vtable;
+  v1 = a1[46];
+  *a1 = game_hub_CharacterLoadController_vtable;
   v3 = fw_memory_g_heap_manager_ptr;
   if (v1 != 0) {
     v4 = *(_QWORD*)fw_memory_g_heap_manager_ptr;
-    result[47] = v1;
+    a1[47] = v1;
     v5 = 128;
     if (*(_QWORD*)(v4 + 200) == 0) {
       v5 = 56;
     }
-    result = (_QWORD*)nn_mem_StandardAllocator_Free(v4 + v5);
+    nn_mem_StandardAllocator_Free_alt1(v4 + v5, v1);
   }
-  v6 = v2[43];
+  v6 = a1[43];
   if (v6 != 0) {
     v7 = *(_QWORD*)v3;
-    v2[44] = v6;
+    a1[44] = v6;
     v8 = 128;
     if (*(_QWORD*)(v7 + 200) == 0) {
       v8 = 56;
     }
-    result = (_QWORD*)nn_mem_StandardAllocator_Free(v7 + v8);
+    nn_mem_StandardAllocator_Free_alt1(v7 + v8, v6);
   }
-  v9 = v2[38];
+  v9 = a1[38];
   if (v9 != 0) {
     v10 = *(_QWORD*)v3;
-    v2[39] = v9;
+    a1[39] = v9;
     v11 = 128;
     if (*(_QWORD*)(v10 + 200) == 0) {
       v11 = 56;
     }
-    result = (_QWORD*)nn_mem_StandardAllocator_Free(v10 + v11);
+    nn_mem_StandardAllocator_Free_alt1(v10 + v11, v9);
   }
-  v12 = v2[35];
+  v12 = a1[35];
   if (v12 != 0) {
     v13 = *(_QWORD*)v3;
-    v2[36] = v12;
+    a1[36] = v12;
     v14 = 128;
     if (*(_QWORD*)(v13 + 200) == 0) {
       v14 = 56;
     }
-    result = (_QWORD*)nn_mem_StandardAllocator_Free(v13 + v14);
+    nn_mem_StandardAllocator_Free_alt1(v13 + v14, v12);
   }
-  v15 = v2[34];
-  v2[34] = 0;
+  v15 = a1[34];
+  a1[34] = 0;
   if (v15 != 0) {
     v16 = 128;
     if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
       v16 = 56;
     }
-    return (_QWORD*)nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v16);
+    nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v16, v15);
   }
-  return result;
 }
 
 #pragma GCC visibility pop

@@ -5,9 +5,13 @@
 __int64 nn_mem_StandardAllocator_Free(_QWORD);
 extern __int64 fw_memory_g_heap_manager;
 extern __int64* GameData_2130938[2];
-__int64 SpecialAttackAccessor_DeletingDestructor(_QWORD* a1);
+__int64 SpecialAttackAccessor_DeletingDestructor_alt1(_QWORD* a1) __asm__(
+    "SpecialAttackAccessor_DeletingDestructor");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void SpecialAttackAccessor_DeletingDestructor(_QWORD* a1);
 
-__int64 SpecialAttackAccessor_DeletingDestructor(_QWORD* a1)
+void SpecialAttackAccessor_DeletingDestructor(_QWORD* a1)
 {
   __int64 v1;
 
@@ -17,7 +21,8 @@ __int64 SpecialAttackAccessor_DeletingDestructor(_QWORD* a1)
   if (*(_QWORD*)(fw_memory_g_heap_manager + 200) == 0) {
     v1 = 56;
   }
-  return nn_mem_StandardAllocator_Free(fw_memory_g_heap_manager + v1);
+  nn_mem_StandardAllocator_Free_alt1(fw_memory_g_heap_manager + v1,
+                                     (__int64)a1);
 }
 
 #pragma GCC visibility pop

@@ -15,7 +15,8 @@ extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64* GameData_212d670[3];
 extern __int64* GameData_212d678[2];
 extern __int64* GameData_2130190[17];
-__int64 WarpChip_1126c40(__int64 a1, __int64* a2, char a3);
+__int64 WarpChip_1126c40_alt2(__int64 a1, __int64* a2,
+                              char a3) __asm__("WarpChip_1126c40");
 __int64 WarpChip_Unknown2(__int64 a1, __int64* a2, unsigned int a3);
 __int64 WarpChip_DeletingDestructor(__int64 a1);
 __int64 GameRoutine_1126110(__int64, __int64*);
@@ -36,6 +37,10 @@ __int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
 __int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
     "std___1___shared_weak_count_lock");
 __int64* WarpChip_Unknown6(float32x2_t* a1, __int64** a2);
+__int64
+ui_LayoutAccessor_FindPane_alt1(__int64*,
+                                __int64) __asm__("ui_LayoutAccessor_FindPane");
+__int64* WarpChip_1126c40(__int64 a1, __int64** a2, char a3);
 
 __int64 WarpChip_1126960(__int64 result, __int64* a2, int a3, int a4)
 {
@@ -217,63 +222,67 @@ LABEL_25:
   return result;
 }
 
-__int64 WarpChip_1126c40(__int64 a1, __int64* a2, char a3)
+__int64* WarpChip_1126c40(__int64 a1, __int64** a2, char a3)
 {
-  __int64 result;
+  __int64* result;
   __int64 v6;
-  __int64 v7;
+  const char* v7;
   __int64 v8;
-  __int64 v9;
-  __int64 v10;
-  __int64 v11;
-  __int64 v12;
+  __int64* v9;
+  struct {
+    __int64* v10;
+    __int64* v11;
+  } v10_;
 
   *(_BYTE*)(a1 + 152) = a3;
   result = a2[1];
-  if (result != 0) {
-    result = std___1___shared_weak_count_lock(result, a2);
-    if (result != 0) {
-      v6 = result;
+  if (result != nullptr) {
+    result = (__int64*)std___1___shared_weak_count_lock_alt1((__int64)result);
+    if (result != nullptr) {
+      v6 = (__int64)result;
       result = *a2;
-      if (*a2 == 0) {
+      if (*a2 == nullptr) {
         goto LABEL_18;
       }
-      v7 = (*(_BYTE*)(a1 + 8) & 1) != 0 ? *(_QWORD*)(a1 + 24) : a1 + 9;
-      GameRoutine_1560070((void*)&v11, result, v7);
-      result = v12;
-      if (v12 == 0) {
+      v7 = (*(_BYTE*)(a1 + 8) & 1) != 0 ? *(const char**)(a1 + 24)
+                                        : (const char*)(a1 + 9);
+      LayoutAccessor_1560070((void*)(&v10_.v10), result, v7);
+      result = v10_.v11;
+      if (v10_.v11 == nullptr) {
         goto LABEL_18;
       }
-      v9 = std___1___shared_weak_count_lock(v12, v8);
-      v10 = v11;
-      result = v12;
-      if (v12 != 0) {
-        result = std___1___shared_weak_count___release_weak(v12);
+      v8 = std___1___shared_weak_count_lock_alt1((__int64)v10_.v11);
+      v9 = v10_.v10;
+      result = v10_.v11;
+      if (v10_.v11 != nullptr) {
+        result = (__int64*)std___1___shared_weak_count___release_weak_alt1(
+            (__int64)v10_.v11);
       }
-      if (v9 != 0 && v10 != 0) {
-        result = ui_LayoutAccessor_FindPane(v10, "MapChip_Object");
-        if (result != 0) {
-          result = __dynamic_cast(result, GameData_212d670[0],
-                                  GameData_212d678[0], 0);
-          if (result != 0) {
-            result = (*(__int64 (**)(__int64, __int64))(*(_QWORD*)a1 + 32LL))(
-                a1, result);
+      if (v8 != 0 && v9 != nullptr) {
+        result = (__int64*)ui_LayoutAccessor_FindPane_alt1(
+            v9, (__int64)"MapChip_Object");
+        if (result != nullptr) {
+          result = (__int64*)__dynamic_cast(result, GameData_212d670[0],
+                                            GameData_212d678[0], 0);
+          if (result != nullptr) {
+            result = (__int64*)(*(__int64 (**)(__int64, __int64*))(
+                *(_QWORD*)a1 + 32LL))(a1, result);
           }
         }
       }
-      else if (v9 == 0) {
+      else if (v8 == 0) {
       LABEL_18:
         if (atomic_fetch_add((atomic_ullong* volatile)(v6 + 8),
                              0xFFFFFFFFFFFFFFFFLL) == 0) {
           (*(void (**)(__int64))(*(_QWORD*)v6 + 16LL))(v6);
-          return std___1___shared_weak_count___release_weak(v6);
+          return (__int64*)std___1___shared_weak_count___release_weak_alt1(v6);
         }
         return result;
       }
-      if (atomic_fetch_add((atomic_ullong* volatile)(v9 + 8),
+      if (atomic_fetch_add((atomic_ullong* volatile)(v8 + 8),
                            0xFFFFFFFFFFFFFFFFLL) == 0) {
-        (*(void (**)(__int64))(*(_QWORD*)v9 + 16LL))(v9);
-        result = std___1___shared_weak_count___release_weak(v9);
+        (*(void (**)(__int64))(*(_QWORD*)v8 + 16LL))(v8);
+        result = (__int64*)std___1___shared_weak_count___release_weak_alt1(v8);
       }
       goto LABEL_18;
     }

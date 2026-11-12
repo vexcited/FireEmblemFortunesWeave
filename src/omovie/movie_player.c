@@ -42,7 +42,8 @@ extern __int64 fw_memory_g_heap_manager_ptr;
 bool MoviePlayer_18d1b90(__int64 a1);
 __int64 MoviePlayer_18d2310(__int64 a1);
 __int64 omovie_MoviePlayer_PrepareMovie_lambda0_Unknown0(__int64 a1);
-__int64 omovie_MoviePlayer_PrepareMovie_lambda0_Unknown1(__int64 a1);
+__int64 omovie_MoviePlayer_PrepareMovie_lambda0_Unknown1_alt1(
+    __int64 a1) __asm__("omovie_MoviePlayer_PrepareMovie_lambda0_Unknown1");
 __int64 omovie_MoviePlayer_PrepareMovie_lambda0_Unknown2(__int64 a1);
 void __attribute__((noreturn)) MoviePlayer_18d2c80();
 __int64 MoviePlayer_18d2ca0(__int64* a1);
@@ -68,6 +69,7 @@ void __attribute__((noreturn)) String_60a1d0();
 void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 __int64 omovie_MoviePlayer_PrepareMovie(__int64 a1, const char* a2);
+void omovie_MoviePlayer_PrepareMovie_lambda0_Unknown1(__int64 a1);
 
 __int64 omovie_MoviePlayer_PrepareMovie(__int64 a1, const char* a2)
 {
@@ -311,43 +313,53 @@ __int64 MoviePlayer_18d2310(__int64 a1)
 __int64 omovie_MoviePlayer_PrepareMovie_lambda0_Unknown0(__int64 a1)
 {
   __int64 v2;
+  __int64 v3;
 
-  *(_QWORD*)a1 = GameData_2109088;
-  if ((*(_BYTE*)(a1 + 56) & 1) != 0 && *(_QWORD*)(a1 + 72) != 0) {
-    v2 = 128;
-    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-      v2 = 56;
+  *(_QWORD*)a1 = omovie_MoviePlayer_PrepareMovie_lambda0_Unknown0_ptr;
+  if ((*(_BYTE*)(a1 + 56) & 1) != 0) {
+    v2 = *(_QWORD*)(a1 + 72);
+    if (v2 != 0) {
+      v3 = 128;
+      if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+        v3 = 56;
+      }
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v3, v2);
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v2);
   }
   *(_QWORD*)a1 = GameData_2132158 + 16;
   std_exception_ptr_Destroy_exception_ptr(a1 + 16);
   return std___1___shared_count_Destroy___shared_count(a1);
 }
 
-__int64 omovie_MoviePlayer_PrepareMovie_lambda0_Unknown1(__int64 a1)
+void omovie_MoviePlayer_PrepareMovie_lambda0_Unknown1(__int64 a1)
 {
   __int64 v2;
   __int64 v3;
   __int64 v4;
+  __int64 v5;
 
-  *(_QWORD*)a1 = GameData_2109088;
+  *(_QWORD*)a1 = omovie_MoviePlayer_PrepareMovie_lambda0_Unknown0_ptr;
   v2 = fw_memory_g_heap_manager_ptr;
-  if ((*(_BYTE*)(a1 + 56) & 1) != 0 && *(_QWORD*)(a1 + 72) != 0) {
-    v3 = 128;
-    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-      v3 = 56;
+  if ((*(_BYTE*)(a1 + 56) & 1) != 0) {
+    v3 = *(_QWORD*)(a1 + 72);
+    if (v3 != 0) {
+      v4 = 128;
+      if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+        v4 = 56;
+      }
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v4, v3);
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v3);
   }
   *(_QWORD*)a1 = GameData_2132158 + 16;
   std_exception_ptr_Destroy_exception_ptr(a1 + 16);
   std___1___shared_count_Destroy___shared_count(a1);
-  v4 = 128;
+  v5 = 128;
   if (*(_QWORD*)(*(_QWORD*)v2 + 200LL) == 0) {
-    v4 = 56;
+    v5 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)v2 + v4);
+  nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v2 + v5, a1);
 }
 
 __int64 omovie_MoviePlayer_PrepareMovie_lambda0_Unknown2(__int64 a1)
@@ -393,13 +405,14 @@ __int64 MoviePlayer_18d2ca0(__int64* a1)
     if (*(_QWORD*)(fw_memory_g_heap_manager + 200) == 0) {
       v8 = 56;
     }
-    nn_mem_StandardAllocator_Free(fw_memory_g_heap_manager + v8);
+    nn_mem_StandardAllocator_Free_alt1(fw_memory_g_heap_manager + v8, v7);
   }
   v9 = 128;
   if (*(_QWORD*)(fw_memory_g_heap_manager + 200) == 0) {
     v9 = 56;
   }
-  nn_mem_StandardAllocator_Free(fw_memory_g_heap_manager + v9);
+  nn_mem_StandardAllocator_Free_alt1(fw_memory_g_heap_manager + v9,
+                                     (__int64)a1);
   return 0;
 }
 

@@ -279,6 +279,12 @@ float GameHr_5687f0(__int64 a1, unsigned __int64 a2, unsigned int a3, int a4,
 __int64 GameHr_5695b0();
 __int64 GameHr_569610();
 __int64 GameHr_569f50(__int64 a1);
+__int64 nn_os_ConvertToTimeSpan(_QWORD);
+__int64 nn_os_GetSystemTick();
+__int64 nn_os_GetSystemTickFrequency(_QWORD);
+__int64 nn_os_TimedWaitConditionVariable(_QWORD, _QWORD, _QWORD);
+__int64 nn_os_WaitConditionVariable(_QWORD, _QWORD);
+bool GameHr_55bac0(__int64 a1, unsigned int a2);
 
 __int64 GameHr_2b65b0(__int64 a1)
 {
@@ -4139,20 +4145,19 @@ bool GameHr_55bac0(__int64 a1, unsigned int a2)
   __int64 v9;
   bool v10;
   __int64 v11;
-  __int64 v12;
-  _BOOL4 v13;
+  _BOOL4 v12;
 
-  v4 = GameRoutine_1a09b70(a1 + 8);
+  v4 = nn_os_LockMutex(a1 + 8);
   v5 = *(_DWORD*)(a1 + 40);
   if ((*(_BYTE*)(a1 + 44) & 1) == 0) {
     if (a2 == -1) {
       while ((*(_BYTE*)(a1 + 44) & 1) == 0 && v5 == *(_DWORD*)(a1 + 40)) {
-        GameRoutine_1a0af90(a1, a1 + 8);
+        nn_os_WaitConditionVariable(a1, a1 + 8);
       }
     }
     else {
-      SystemTickFrequencyEv = GameRoutine_1a0b010(v4);
-      SystemTickEv = GameRoutine_1a09ba0(SystemTickFrequencyEv);
+      SystemTickFrequencyEv = nn_os_GetSystemTickFrequency(v4);
+      SystemTickEv = nn_os_GetSystemTick();
       if ((*(_BYTE*)(a1 + 44) & 1) == 0) {
         v8 = SystemTickFrequencyEv * a2 / 1000;
         v9 = v8 + SystemTickEv - ((v8 + SystemTickEv) >> 4) + 1;
@@ -4164,16 +4169,16 @@ bool GameHr_55bac0(__int64 a1, unsigned int a2)
           if (!v10) {
             break;
           }
-          v11 = GameRoutine_1a09bb0(v8);
-          v12 = GameRoutine_1a0afa0(a1, a1 + 8, v11);
-          v10 = GameRoutine_1a09ba0(v12) <= v9;
+          v11 = nn_os_ConvertToTimeSpan(v8);
+          nn_os_TimedWaitConditionVariable(a1, a1 + 8, v11);
+          v10 = nn_os_GetSystemTick() <= v9;
         } while (*(_BYTE*)(a1 + 44) != 1);
       }
     }
   }
-  v13 = (*(_BYTE*)(a1 + 44) & 1) != 0 || v5 != *(_DWORD*)(a1 + 40);
-  GameRoutine_1a09b80(a1 + 8);
-  return v13;
+  v12 = (*(_BYTE*)(a1 + 44) & 1) != 0 || v5 != *(_DWORD*)(a1 + 40);
+  nn_os_UnlockMutex(a1 + 8);
+  return v12;
 }
 
 void GameHr_55bc00(__int64 a1)

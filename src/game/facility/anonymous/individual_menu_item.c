@@ -14,8 +14,10 @@ extern __int64 (*game_menu_BasicMenuItem_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64* GameData_212dcd0;
 extern int game_script_hub_ui_g_talk_result;
-__int64 IndividualMenuItem_Destructor_1935f60(__int64 a1);
-__int64 IndividualMenuItem_DeletingDestructor(__int64 a1);
+__int64 IndividualMenuItem_Destructor_1935f60_alt1(__int64 a1) __asm__(
+    "IndividualMenuItem_Destructor_1935f60");
+__int64 IndividualMenuItem_DeletingDestructor_alt1(__int64 a1) __asm__(
+    "IndividualMenuItem_DeletingDestructor");
 __int64 IndividualMenuItem_Unknown25(__int64 a1);
 __int64 IndividualMenuItem_UpCall(__int64 a1, char a2);
 __int64 BasicMenuCursor_16ddaa0(_QWORD, _QWORD);
@@ -67,6 +69,8 @@ void IndividualMenuItem_OnSelect(__int64 a1);
 void IndividualMenuItem_OnDeselect(__int64 a1);
 __int64 IndividualMenuItem_DownCall(__int64 a1, char a2);
 void IndividualMenuItem_DrawText(__int64 a1);
+void IndividualMenuItem_Destructor_1935f60(__int64 a1);
+void IndividualMenuItem_DeletingDestructor(__int64 a1);
 
 bool IndividualMenuItem_IsDecidable()
 {
@@ -211,64 +215,72 @@ __int64 IndividualMenuItem_ACall(_QWORD* a1)
   return 9;
 }
 
-__int64 IndividualMenuItem_Destructor_1935f60(__int64 a1)
+void IndividualMenuItem_Destructor_1935f60(__int64 a1)
 {
   __int64 v2;
-  __int64 result;
+  __int64 v3;
   __int64 v4;
+  __int64 v5;
 
   *(_QWORD*)a1 = game_facility_anonymous_IndividualMenuItem_vtable;
   v2 = *(_QWORD*)(a1 + 104);
   if (v2 != 0) {
-    std___1___shared_weak_count___release_weak(v2);
+    std___1___shared_weak_count___release_weak_alt1(v2);
   }
-  result = *(_QWORD*)(a1 + 56);
+  v3 = *(_QWORD*)(a1 + 56);
   *(_QWORD*)a1 = game_menu_BasicMenuItem_vtable;
-  if (result != 0) {
-    result = std___1___shared_weak_count___release_weak(result);
+  if (v3 != 0) {
+    std___1___shared_weak_count___release_weak_alt1(v3);
   }
-  if ((*(_BYTE*)(a1 + 16) & 1) != 0 && *(_QWORD*)(a1 + 32) != 0) {
-    v4 = 128;
-    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-      v4 = 56;
+  if ((*(_BYTE*)(a1 + 16) & 1) != 0) {
+    v4 = *(_QWORD*)(a1 + 32);
+    if (v4 != 0) {
+      v5 = 128;
+      if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+        v5 = 56;
+      }
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v5, v4);
     }
-    return nn_mem_StandardAllocator_Free(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v4);
   }
-  return result;
 }
 
-__int64 IndividualMenuItem_DeletingDestructor(__int64 a1)
+void IndividualMenuItem_DeletingDestructor(__int64 a1)
 {
   __int64 v2;
   __int64 v3;
   __int64 v4;
   __int64 v5;
   __int64 v6;
+  __int64 v7;
 
   *(_QWORD*)a1 = game_facility_anonymous_IndividualMenuItem_vtable;
   v2 = *(_QWORD*)(a1 + 104);
   if (v2 != 0) {
-    std___1___shared_weak_count___release_weak(v2);
+    std___1___shared_weak_count___release_weak_alt1(v2);
   }
   v3 = *(_QWORD*)(a1 + 56);
   *(_QWORD*)a1 = game_menu_BasicMenuItem_vtable;
   if (v3 != 0) {
-    std___1___shared_weak_count___release_weak(v3);
+    std___1___shared_weak_count___release_weak_alt1(v3);
   }
   v4 = fw_memory_g_heap_manager_ptr;
-  if ((*(_BYTE*)(a1 + 16) & 1) != 0 && *(_QWORD*)(a1 + 32) != 0) {
-    v5 = 128;
-    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-      v5 = 56;
+  if ((*(_BYTE*)(a1 + 16) & 1) != 0) {
+    v5 = *(_QWORD*)(a1 + 32);
+    if (v5 != 0) {
+      v6 = 128;
+      if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+        v6 = 56;
+      }
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v6, v5);
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v5);
   }
-  v6 = 128;
+  v7 = 128;
   if (*(_QWORD*)(*(_QWORD*)v4 + 200LL) == 0) {
-    v6 = 56;
+    v7 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v6);
+  nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v4 + v7, a1);
 }
 
 __int64* IndividualMenuItem_Unknown16(_QWORD* a1)

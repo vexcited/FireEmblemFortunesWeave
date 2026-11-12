@@ -18,7 +18,7 @@ __attribute__((swiftcall)) void GameRoutine_1366bd0(PSEUDO_X8, __int64, __int64,
                                                     __int64);
 __int64 nn_mem_StandardAllocator_Free_alt1(_QWORD) __asm__(
     "nn_mem_StandardAllocator_Free");
-__int64 ProcHubUI_1635300(__int64 a1);
+__int64 ProcHubUI_1635300_alt1(__int64 a1) __asm__("ProcHubUI_1635300");
 __int64 memmove(_QWORD, _QWORD, _QWORD);
 char* ProcHubUI_1635cc0(char* result, char* a2, char* a3, __int64 a4,
                         __int64 a5, __int64 a6, __int64 a7);
@@ -43,6 +43,13 @@ extern _UNKNOWN* GameData_212da30;
 extern __int64* GameData_212e348;
 extern __int64* msg_MessageManager_instance__ptr[2];
 __int64 ProcHubUI_16340d0(__int64 result);
+__attribute__((swiftcall)) void game_1366bd0(PSEUDO_X8, __int64, __int64,
+                                             __int64);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void ProcHubUI_1635300(__int64 a1);
 
 __int64 ProcHubUI_16340d0(__int64 result)
 {
@@ -282,9 +289,9 @@ __int64 ProcHubUI_16340d0(__int64 result)
   return result;
 }
 
-__int64 ProcHubUI_1635300(__int64 a1)
+void ProcHubUI_1635300(__int64 a1)
 {
-  __int64 result;
+  __int64 v2;
   __int64 v3;
   __int64 v4;
   __int64 v5;
@@ -292,8 +299,8 @@ __int64 ProcHubUI_1635300(__int64 a1)
   __int64 v7;
   __int64 v8;
   __int64 v9;
-  __int64 v10;
-  char v11;
+  char v10;
+  __int64 v11;
   __int64 v12;
   __int64 v13;
   struct {
@@ -317,60 +324,62 @@ __int64 ProcHubUI_1635300(__int64 a1)
   v16_.v16[1] = 0x500000050LL;
   v16_.v16[2] = 0x10000000100000LL;
   memset(&v16_.v16[3], 0, 24);
-  result = X8CALL_X0(__int64, GameRoutine_1366bd0(
-                                  (void*)(&v14_.v14), (__int64)"Layout/Hub.arc",
-                                  (__int64)"Hub_UI", (__int64)v16_.v16));
-  v3 = v14_.v14;
-  v4 = v14_.v15;
-  v5 = *(_QWORD*)(a1 + 160);
+  game_1366bd0((void*)(&v14_.v14), (__int64)"Layout/Hub.arc", (__int64)"Hub_UI",
+               (__int64)v16_.v16);
+  v2 = v14_.v14;
+  v3 = v14_.v15;
+  v4 = *(_QWORD*)(a1 + 160);
   v14_.v14 = 0;
   v14_.v15 = 0;
-  *(_QWORD*)(a1 + 152) = v3;
-  *(_QWORD*)(a1 + 160) = v4;
-  if (v5 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v5 + 8),
+  *(_QWORD*)(a1 + 152) = v2;
+  *(_QWORD*)(a1 + 160) = v3;
+  if (v4 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v4 + 8),
                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
-    (*(void (**)(__int64))(*(_QWORD*)v5 + 16LL))(v5);
-    result = std___1___shared_weak_count___release_weak(v5);
+    (*(void (**)(__int64))(*(_QWORD*)v4 + 16LL))(v4);
+    std___1___shared_weak_count___release_weak_alt1(v4);
   }
-  v6 = v14_.v15;
+  v5 = v14_.v15;
   if (v14_.v15 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v14_.v15 + 8),
                                         0xFFFFFFFFFFFFFFFFLL) == 0) {
-    (*(void (**)(__int64))(*(_QWORD*)v6 + 16LL))(v6);
-    result = std___1___shared_weak_count___release_weak(v6);
+    (*(void (**)(__int64))(*(_QWORD*)v5 + 16LL))(v5);
+    std___1___shared_weak_count___release_weak_alt1(v5);
   }
-  v7 = v16_.v18;
+  v6 = v16_.v18;
   if (v16_.v18 != 0) {
-    v8 = v16_.v19;
-    v9 = fw_memory_g_heap_manager_ptr;
+    v7 = v16_.v19;
+    v8 = fw_memory_g_heap_manager_ptr;
     if (v16_.v18 == v16_.v19) {
       goto LABEL_18;
     }
-    v10 = v16_.v19;
+    v9 = v16_.v19;
     do {
-      v11 = *(_BYTE*)(v10 - 24);
-      v10 -= 24;
-      if ((v11 & 1) != 0 && *(_QWORD*)(v8 - 8) != 0) {
-        if (*(_QWORD*)(*(_QWORD*)v9 + 200LL) != 0) {
-          v12 = 128;
+      v10 = *(_BYTE*)(v9 - 24);
+      v9 -= 24;
+      if ((v10 & 1) != 0) {
+        v11 = *(_QWORD*)(v7 - 8);
+        if (v11 != 0) {
+          if (*(_QWORD*)(*(_QWORD*)v8 + 200LL) != 0) {
+            v12 = 128;
+          }
+          else {
+            v12 = 56;
+          }
+          nn_mem_StandardAllocator_Free_alt2(*(_QWORD*)v8 + v12, v11);
         }
-        else {
-          v12 = 56;
-        }
-        result = nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v9 + v12);
       }
-      v8 = v10;
-    } while (v10 != v7);
-    v16_.v19 = v7;
+      v7 = v9;
+    } while (v9 != v6);
+    v16_.v19 = v6;
+    v6 = v16_.v18;
     if (v16_.v18 != 0) {
     LABEL_18:
       v13 = 128;
-      if (*(_QWORD*)(*(_QWORD*)v9 + 200LL) == 0) {
+      if (*(_QWORD*)(*(_QWORD*)v8 + 200LL) == 0) {
         v13 = 56;
       }
-      return nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v9 + v13);
+      nn_mem_StandardAllocator_Free_alt2(*(_QWORD*)v8 + v13, v6);
     }
   }
-  return result;
 }
 
 __int64 ProcHubUI_Destructor(__int64 a1)

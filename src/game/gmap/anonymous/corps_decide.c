@@ -25,6 +25,8 @@ __int64 MapSortieMenu_871860(__int64, __int64, __int64, __int64, __int64);
 extern __int64 (*GameData_20b6268[])();
 extern __int64 (*GameData_20b62e8[])();
 __int64 CorpsDecide_Unknown141(__int64 a1);
+__int64 MultiMenuSequence_1787b80(__int64);
+__int64 memset_alt1(__int64, int, unsigned __int64) __asm__("memset");
 
 __int64 CorpsDecide_Unknown30(__int64 a1, char a2)
 {
@@ -244,24 +246,21 @@ __int64 CorpsDecide_Unknown158(__int64 a1)
   __int64 v4;
   __int64 v5;
   __int64 v6;
-  __int64 v7;
-  __int64 v8;
-  __int64 v9;
 
   v1 = *(_QWORD*)(a1 + 1056);
-  v6 =
+  v3 =
       *(_QWORD*)(__dynamic_cast(v1, GameData_21319e8[0], &GameData_20b3420, 0) +
                  304);
-  if (v6 != 0) {
-    v7 = *(_QWORD*)(v6 + 808);
-    v8 = *(_QWORD*)(v6 + 816);
-    if (v7 != v8) {
-      memset(v7, 0, v8 - v7, v3, v4, v5);
+  if (v3 != 0) {
+    v4 = *(_QWORD*)(v3 + 808);
+    v5 = *(_QWORD*)(v3 + 816);
+    if (v4 != v5) {
+      memset_alt1(v4, 0, v5 - v4);
       v1 = *(_QWORD*)(a1 + 1056);
     }
   }
-  v9 = __dynamic_cast(v1, GameData_21319e8[0], &GameData_20b3420, 0);
-  return GameRoutine_1787b80(v9);
+  v6 = __dynamic_cast(v1, GameData_21319e8[0], &GameData_20b3420, 0);
+  return MultiMenuSequence_1787b80(v6);
 }
 
 #pragma GCC visibility pop

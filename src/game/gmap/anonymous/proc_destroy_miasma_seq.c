@@ -63,11 +63,15 @@ extern __int64 (*game_gmap_anonymous_ProcDestroyMiasmaSeq_vtable[])();
 extern __int64* GameData_212c790;
 extern __int64 GameData_21c96e8;
 extern __int64 GameData_22416b0;
-__n128 game_gmap_anonymous_ProcDestroyMiasmaSeq_ShowExpResult(__int64 a1);
+__n128
+game_gmap_anonymous_ProcDestroyMiasmaSeq_ShowExpResult_alt1(__int64 a1) __asm__(
+    "game_gmap_anonymous_ProcDestroyMiasmaSeq_ShowExpResult");
 __int64 ProcDestroyMiasmaSeq_14abea0(__int64 result);
 __int64 ProcDestroyMiasmaSeq_14ac160(__int64 result);
-__n128 ProcDestroyMiasmaSeq_Destructor(__int64 a1);
-__n128 ProcDestroyMiasmaSeq_DeletingDestructor(__int64 a1);
+__n128 ProcDestroyMiasmaSeq_Destructor_alt1(__int64 a1) __asm__(
+    "ProcDestroyMiasmaSeq_Destructor");
+__n128 ProcDestroyMiasmaSeq_DeletingDestructor_alt1(__int64 a1) __asm__(
+    "ProcDestroyMiasmaSeq_DeletingDestructor");
 __int64 GameRoutine_9b11a0_alt1(_QWORD*, unsigned __int64*,
                                 int) __asm__("GameRoutine_9b11a0");
 __int64 GameVariable_828dc0_alt1(__int64, unsigned __int64*,
@@ -96,8 +100,14 @@ void* Unit_6c82e0(__int64);
 void* game_97b2f0(__int64);
 void MiasmaManager_14a9bc0(__int64);
 __int64 ProcDestroyMiasmaSeq_14ac310(__int64 a1);
+__int64 game_telop_17549a0_alt1(__int64, __int64**, unsigned int,
+                                __int64) __asm__("game_telop_17549a0");
+void GameRoutine_658c00_alt1(__int64*) __asm__("GameRoutine_658c00");
+void game_gmap_anonymous_ProcDestroyMiasmaSeq_ShowExpResult(__int64 a1);
+void ProcDestroyMiasmaSeq_Destructor(__int64 a1);
+void ProcDestroyMiasmaSeq_DeletingDestructor(__int64 a1);
 
-__n128 game_gmap_anonymous_ProcDestroyMiasmaSeq_ShowExpResult(__int64 a1)
+void game_gmap_anonymous_ProcDestroyMiasmaSeq_ShowExpResult(__int64 a1)
 {
   __int64 v1;
   int v2;
@@ -109,29 +119,27 @@ __n128 game_gmap_anonymous_ProcDestroyMiasmaSeq_ShowExpResult(__int64 a1)
   __int64 v8;
   _QWORD* i;
   __int64 v10;
-  __n128 result;
-  __int64 v13;
-  __int64* v14;
+  __int64 v12;
+  __int64* v13;
+  __int64 v14;
   __int64 v15;
-  __int64 v16;
   struct {
-    _BYTE v17[32];
-    _BYTE* v18;
-  } v17_;
+    _BYTE v16[32];
+    _BYTE* v17;
+  } v16_;
   struct {
-    _QWORD v19[4];
-    _QWORD* v20;
-  } v19_;
+    _QWORD v18[4];
+    _QWORD* v19;
+  } v18_;
   struct {
+    __int64* v20;
     __int64* v21;
-    __int64* v22;
-    __int64 v23;
-  } v21_;
+    __int64 v22;
+  } v20_;
 
-  result = COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
-  v21_.v22 = nullptr;
-  v21_.v23 = 0;
-  v21_.v21 = nullptr;
+  v20_.v21 = nullptr;
+  v20_.v22 = 0;
+  v20_.v20 = nullptr;
   v1 = *(_QWORD*)(GameData_21c96e8 + 8);
   v2 = *(_DWORD*)(v1 + 56);
   v4 = *(__int64**)(v1 + 8);
@@ -169,53 +177,44 @@ __n128 game_gmap_anonymous_ProcDestroyMiasmaSeq_ShowExpResult(__int64 a1)
       } while (*(_DWORD*)(v8 + 84) != v2);
     }
   }
-  v19_.v19[0] = GameData_2044a20;
-  v19_.v19[1] = &v21_.v21;
-  v19_.v20 = v19_.v19;
-  Troop_133ed80(v5, (__int64)v19_.v19),
-      result =
-          COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
-  if (v19_.v20 == v19_.v19) {
-    v13 = 32;
+  v18_.v18[0] = GameData_2044a20;
+  v18_.v18[1] = &v20_.v20;
+  v18_.v19 = v18_.v18;
+  Troop_133ed80(v5, (__int64)v18_.v18);
+  if (v18_.v19 == v18_.v18) {
+    v12 = 32;
     goto LABEL_18;
   }
-  if (v19_.v20 != nullptr) {
-    v13 = 40;
+  if (v18_.v19 != nullptr) {
+    v12 = 40;
   LABEL_18:
-    (*(void (**)(__int64))(*v19_.v20 + v13))((__int64)v19_.v20),
-        result =
-            COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
+    (*(void (**)(__int64))(*v18_.v19 + v12))((__int64)v18_.v19);
   }
-  v14 = v21_.v21;
-  if (v21_.v22 != v21_.v21) {
-    v17_.v18 = nullptr;
-    game_telop_17549a0(a1, &v21_.v21, 1, (__int64)v17_.v17),
-        result =
-            COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
-    if (v17_.v18 == v17_.v17) {
-      v15 = 32;
+  v13 = v20_.v20;
+  if (v20_.v21 != v20_.v20) {
+    v16_.v17 = nullptr;
+    game_telop_17549a0_alt1(a1, &v20_.v20, 1u, (__int64)v16_.v16);
+    if (v16_.v17 == v16_.v16) {
+      v14 = 32;
       goto LABEL_24;
     }
-    if (v17_.v18 != nullptr) {
-      v15 = 40;
+    if (v16_.v17 != nullptr) {
+      v14 = 40;
     LABEL_24:
-      (*(void (**)(__int64))(*(_QWORD*)v17_.v18 + v15))((__int64)v17_.v18),
-          result = COERCE_AS(__typeof__(result),
-                             PSEUDO_REGISTER(__n128, "v0", "=w"));
+      (*(void (**)(__int64))(*(_QWORD*)v16_.v17 + v14))((__int64)v16_.v17);
     }
   LABEL_25:
-    v14 = v21_.v21;
+    v13 = v20_.v20;
   }
-  if (v14 != nullptr) {
-    v21_.v22 = v14;
-    v16 = 128;
+  if (v13 != nullptr) {
+    v20_.v21 = v13;
+    v15 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-      v16 = 56;
+      v15 = 56;
     }
-    return nn_mem_StandardAllocator_Free_alt1(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v16);
+    nn_mem_StandardAllocator_Free_alt2(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v15, (__int64)v13);
   }
-  return result;
 }
 
 __int64 ProcDestroyMiasmaSeq_14abea0(__int64 result)
@@ -924,7 +923,7 @@ LABEL_59:
   return result;
 }
 
-__n128 ProcDestroyMiasmaSeq_Destructor(__int64 a1)
+void ProcDestroyMiasmaSeq_Destructor(__int64 a1)
 {
   __int64 v1;
   _QWORD* v3;
@@ -935,7 +934,7 @@ __n128 ProcDestroyMiasmaSeq_Destructor(__int64 a1)
   if (v1 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v1 + 8),
                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v1 + 16LL))(v1);
-    std___1___shared_weak_count___release_weak();
+    std___1___shared_weak_count___release_weak_alt1(v1);
   }
   v3 = *(_QWORD**)(a1 + 192);
   *(_QWORD*)a1 = GameData_2044b88;
@@ -955,10 +954,10 @@ LABEL_9:
     *(_WORD*)(a1 + 136) &= ~0x100u;
   }
   game_ProcInst_Unregister(a1);
-  return GameRoutine_658c00((_QWORD*)(a1 + 88));
+  GameRoutine_658c00_alt1((__int64*)(a1 + 88));
 }
 
-__n128 ProcDestroyMiasmaSeq_DeletingDestructor(__int64 a1)
+void ProcDestroyMiasmaSeq_DeletingDestructor(__int64 a1)
 {
   __int64 v1;
   _QWORD* v3;
@@ -970,7 +969,7 @@ __n128 ProcDestroyMiasmaSeq_DeletingDestructor(__int64 a1)
   if (v1 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v1 + 8),
                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v1 + 16LL))(v1);
-    std___1___shared_weak_count___release_weak();
+    std___1___shared_weak_count___release_weak_alt1(v1);
   }
   v3 = *(_QWORD**)(a1 + 192);
   *(_QWORD*)a1 = GameData_2044b88;
@@ -990,13 +989,13 @@ LABEL_9:
     *(_WORD*)(a1 + 136) &= ~0x100u;
   }
   game_ProcInst_Unregister(a1);
-  GameRoutine_658c00((_QWORD*)(a1 + 88));
+  GameRoutine_658c00_alt1((__int64*)(a1 + 88));
   v5 = 128;
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
     v5 = 56;
   }
-  return nn_mem_StandardAllocator_Free_alt1(
-      *(_QWORD*)fw_memory_g_heap_manager_ptr + v5);
+  nn_mem_StandardAllocator_Free_alt2(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v5, a1);
 }
 
 #pragma GCC visibility pop

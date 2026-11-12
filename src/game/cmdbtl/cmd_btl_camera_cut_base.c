@@ -46,6 +46,10 @@ __attribute__((swiftcall)) void CmdBtlCameraCutBase_e82a10(PSEUDO_X8 x8_,
                                                            char a2);
 int __cxa_guard_acquire_alt1(__int64) __asm__("__cxa_guard_acquire");
 void __cxa_guard_release_alt1(__int64) __asm__("__cxa_guard_release");
+__int64 std___1___shared_weak_count___release_weak_alt2(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
+    "std___1___shared_weak_count_lock");
 
 void CmdBtlCameraCutBase_e822b0(__int64 a1)
 {
@@ -632,11 +636,12 @@ float CmdBtlCameraCutBase_e82b40(__int64 a1, _QWORD* a2)
   __int64 v7;
   __int64 v8;
   __int64 v9;
+  __int64 v10;
 
   v2 = a2[1];
-  v3 = 0.5;
+  v3 = 0x1.0000000000000p-1f;
   if (v2 != 0) {
-    v5 = std___1___shared_weak_count_lock(v2);
+    v5 = std___1___shared_weak_count_lock_alt1(v2);
     if (v5 != 0) {
       if (*a2 != 0) {
         v6 = *(_QWORD*)(*a2 + 208LL);
@@ -651,22 +656,24 @@ float CmdBtlCameraCutBase_e82b40(__int64 a1, _QWORD* a2)
             v3 = *(float*)(*(_QWORD*)(v7 + 11792) + 40LL) *
                  (float)(*(float*)(v7 + 32) *
                          (float)(*(float*)(v7 + 40) +
-                                 (float)((float)(1.0 - *(float*)(v7 + 40)) *
+                                 (float)((float)(0x1.0000000000000p+0f -
+                                                 *(float*)(v7 + 40)) *
                                          *(float*)(v6 + 336))));
           }
           if (v8 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v8 + 8),
                                           0xFFFFFFFFFFFFFFFFLL) == 0) {
             v9 = v5;
             (*(void (**)(__int64))(*(_QWORD*)v8 + 16LL))(v8);
-            std___1___shared_weak_count___release_weak();
+            std___1___shared_weak_count___release_weak_alt2(v8);
             v5 = v9;
           }
         }
       }
       if (atomic_fetch_add((atomic_ullong* volatile)(v5 + 8),
                            0xFFFFFFFFFFFFFFFFLL) == 0) {
+        v10 = v5;
         (*(void (**)(__int64))(*(_QWORD*)v5 + 16LL))(v5);
-        std___1___shared_weak_count___release_weak();
+        std___1___shared_weak_count___release_weak_alt2(v10);
       }
     }
   }

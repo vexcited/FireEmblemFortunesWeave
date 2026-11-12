@@ -4,14 +4,19 @@
 
 __int64 nn_mem_StandardAllocator_Free(_QWORD);
 extern __int64 (*game_ISortiePlanResult_vtable)();
-
 extern __int64 (
     *game_cmdbtl_anonymous_ProcCmdBtlSeqPostGrow_PostGrowArgs_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 _QWORD* PostGrowArgs_Unknown2(_QWORD* result);
-_QWORD* PostGrowArgs_Destructor(_QWORD* result);
-__int64 PostGrowArgs_DeletingDestructor(_QWORD* a1);
+_QWORD*
+PostGrowArgs_Destructor_alt1(_QWORD* result) __asm__("PostGrowArgs_Destructor");
+__int64 PostGrowArgs_DeletingDestructor_alt1(_QWORD* a1) __asm__(
+    "PostGrowArgs_DeletingDestructor");
 __int64 PostGrowArgs_Unknown5(__int64 result, __int64 a2, __int64 a3);
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void PostGrowArgs_Destructor(_QWORD* a1);
+void PostGrowArgs_DeletingDestructor(_QWORD* a1);
 
 _QWORD* PostGrowArgs_Unknown2(_QWORD* result)
 {
@@ -37,78 +42,7 @@ _QWORD* PostGrowArgs_Unknown2(_QWORD* result)
   return result;
 }
 
-_QWORD* PostGrowArgs_Destructor(_QWORD* result)
-{
-  __int64 v1;
-  _QWORD* v2;
-  __int64 v3;
-  __int64 v4;
-  __int64 v5;
-  _QWORD** v6;
-  _QWORD** v7;
-  __int64 v8;
-  __int64 v9;
-  __int64 v10;
-  __int64 v11;
-  __int64 v12;
-
-  v1 = result[7];
-  v2 = result;
-  *result = game_cmdbtl_anonymous_ProcCmdBtlSeqPostGrow_PostGrowArgs_vtable;
-  v3 = fw_memory_g_heap_manager_ptr;
-  if (v1 != 0) {
-    v4 = *(_QWORD*)fw_memory_g_heap_manager_ptr;
-    result[8] = v1;
-    v5 = 128;
-    if (*(_QWORD*)(v4 + 200) == 0) {
-      v5 = 56;
-    }
-    result = (_QWORD*)nn_mem_StandardAllocator_Free(v4 + v5);
-  }
-  v6 = (_QWORD**)v2[4];
-  v7 = (_QWORD**)v2[5];
-  *v2 = &game_ISortiePlanResult_vtable;
-  v2[2] = v2[1];
-  if (v6 == v7) {
-    v2[5] = v6;
-    if (v6 == nullptr) {
-      goto LABEL_10;
-    }
-    goto LABEL_7;
-  }
-  do {
-    result = *v6;
-    if (*v6 != nullptr) {
-      result = (_QWORD*)(*(__int64 (**)(_QWORD*))(*result + 8LL))(result);
-    }
-    ++v6;
-  } while (v6 != v7);
-  v12 = v2[4];
-  v2[5] = v12;
-  if (v12 != 0) {
-  LABEL_7:
-    v8 = 128;
-    if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
-      v8 = 56;
-    }
-    result = (_QWORD*)nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v8);
-  }
-
-LABEL_10:
-  v9 = v2[1];
-  if (v9 != 0) {
-    v10 = *(_QWORD*)v3;
-    v2[2] = v9;
-    v11 = 128;
-    if (*(_QWORD*)(v10 + 200) == 0) {
-      v11 = 56;
-    }
-    return (_QWORD*)nn_mem_StandardAllocator_Free(v10 + v11);
-  }
-  return result;
-}
-
-__int64 PostGrowArgs_DeletingDestructor(_QWORD* a1)
+void PostGrowArgs_Destructor(_QWORD* a1)
 {
   __int64 v1;
   __int64 v3;
@@ -120,8 +54,6 @@ __int64 PostGrowArgs_DeletingDestructor(_QWORD* a1)
   __int64 v9;
   __int64 v10;
   __int64 v11;
-  __int64 v12;
-  __int64 v14;
 
   v1 = a1[7];
   *a1 = game_cmdbtl_anonymous_ProcCmdBtlSeqPostGrow_PostGrowArgs_vtable;
@@ -133,7 +65,7 @@ __int64 PostGrowArgs_DeletingDestructor(_QWORD* a1)
     if (*(_QWORD*)(v4 + 200) == 0) {
       v5 = 56;
     }
-    nn_mem_StandardAllocator_Free(v4 + v5);
+    nn_mem_StandardAllocator_Free_alt1(v4 + v5, v1);
   }
   v6 = (_QWORD*)a1[4];
   v7 = (_QWORD*)a1[5];
@@ -152,17 +84,16 @@ __int64 PostGrowArgs_DeletingDestructor(_QWORD* a1)
     }
     ++v6;
   } while (v6 != v7);
-  v14 = a1[4];
-  a1[5] = v14;
-  if (v14 != 0) {
+  v6 = (_QWORD*)a1[4];
+  a1[5] = v6;
+  if (v6 != nullptr) {
   LABEL_7:
     v8 = 128;
     if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
       v8 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v8);
+    nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v8, (__int64)v6);
   }
-
 LABEL_10:
   v9 = a1[1];
   if (v9 != 0) {
@@ -172,13 +103,79 @@ LABEL_10:
     if (*(_QWORD*)(v10 + 200) == 0) {
       v11 = 56;
     }
-    nn_mem_StandardAllocator_Free(v10 + v11);
+    nn_mem_StandardAllocator_Free_alt1(v10 + v11, v9);
+  }
+}
+
+void PostGrowArgs_DeletingDestructor(_QWORD* a1)
+{
+  __int64 v1;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  _QWORD* v6;
+  _QWORD* v7;
+  __int64 v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+
+  v1 = a1[7];
+  *a1 = game_cmdbtl_anonymous_ProcCmdBtlSeqPostGrow_PostGrowArgs_vtable;
+  v3 = fw_memory_g_heap_manager_ptr;
+  if (v1 != 0) {
+    v4 = *(_QWORD*)fw_memory_g_heap_manager_ptr;
+    a1[8] = v1;
+    v5 = 128;
+    if (*(_QWORD*)(v4 + 200) == 0) {
+      v5 = 56;
+    }
+    nn_mem_StandardAllocator_Free_alt1(v4 + v5, v1);
+  }
+  v6 = (_QWORD*)a1[4];
+  v7 = (_QWORD*)a1[5];
+  *a1 = &game_ISortiePlanResult_vtable;
+  a1[2] = a1[1];
+  if (v6 == v7) {
+    a1[5] = v6;
+    if (v6 == nullptr) {
+      goto LABEL_10;
+    }
+    goto LABEL_7;
+  }
+  do {
+    if (*v6 != 0) {
+      (*(void (**)(_QWORD))(*(_QWORD*)*v6 + 8LL))(*v6);
+    }
+    ++v6;
+  } while (v6 != v7);
+  v6 = (_QWORD*)a1[4];
+  a1[5] = v6;
+  if (v6 != nullptr) {
+  LABEL_7:
+    v8 = 128;
+    if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
+      v8 = 56;
+    }
+    nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v8, (__int64)v6);
+  }
+LABEL_10:
+  v9 = a1[1];
+  if (v9 != 0) {
+    v10 = *(_QWORD*)v3;
+    a1[2] = v9;
+    v11 = 128;
+    if (*(_QWORD*)(v10 + 200) == 0) {
+      v11 = 56;
+    }
+    nn_mem_StandardAllocator_Free_alt1(v10 + v11, v9);
   }
   v12 = 128;
   if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
     v12 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v12);
+  nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v12, (__int64)a1);
 }
 
 __int64 PostGrowArgs_Unknown5(__int64 result, __int64 a2, __int64 a3)

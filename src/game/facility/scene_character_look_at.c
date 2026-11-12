@@ -17,7 +17,8 @@ extern __int64 fw_memory_g_heap_manager_ptr;
 void __attribute__((noreturn)) GameRoutine_60a1d0(_QWORD);
 _QWORD* SceneCharacterLookAt_Destructor_alt1(__int64 a1) __asm__(
     "SceneCharacterLookAt_Destructor");
-__int64 SceneCharacterLookAt_1416860(__int64 a1, _QWORD* a2);
+__int64 SceneCharacterLookAt_1416860_alt2(__int64 a1, _QWORD* a2) __asm__(
+    "SceneCharacterLookAt_1416860");
 __int64 SceneCharacterLookAt_1416a00(__int64 a1, __int64 a2, float a3,
                                      float a4);
 __int64 GameRoutine_14172a0(_QWORD, _QWORD);
@@ -80,6 +81,11 @@ __int64 game_facility_SceneCharacterLookAt_ReserveResetOnRelocate(_QWORD* a1,
                                                                   float a3);
 const char* game_facility_SceneCharacterLookAt_ReserveSetStareCharacter(
     __int64 a1, unsigned __int8* a2, float a3);
+__int64 GameHr_7a88a0(__int64*);
+__int64 game_HashString_alt1(__int64 result) __asm__("game_HashString");
+unsigned __int64 strlen_alt1(const char*) __asm__("strlen");
+void __attribute__((noreturn)) String_60a1d0();
+__int64 SceneCharacterLookAt_1416860(__int64 a1, const char** a2);
 
 __int64 SceneCharacterLookAt_1400060(__int64 a1, float32x4_t* a2)
 {
@@ -968,9 +974,9 @@ __attribute__((swiftcall)) void SceneCharacterLookAt_14164a0(PSEUDO_X8 x8_,
   }
 }
 
-__int64 SceneCharacterLookAt_1416860(__int64 a1, _QWORD* a2)
+__int64 SceneCharacterLookAt_1416860(__int64 a1, const char** a2)
 {
-  __int64 v3;
+  const char* v3;
   __int64 v4;
   unsigned __int64 v5;
   unsigned __int64 v6;
@@ -987,16 +993,18 @@ __int64 SceneCharacterLookAt_1416860(__int64 a1, _QWORD* a2)
   unsigned __int64 v17;
   __int64 v18;
   __int64 v19;
-  __int64 v22;
-  unsigned __int64 v23;
-  char* v24;
-  _QWORD v25[2];
+  struct {
+    __int64 v22;
+    unsigned __int64 v23;
+    char* v24;
+  } v22_;
+  __int64 v25[2];
 
   v3 = *a2;
   v4 = *(_QWORD*)GameData_212dce8;
-  v5 = strlen(*a2);
+  v5 = strlen_alt1(*a2);
   if (v5 >= 0xFFFFFFFFFFFFFFF7LL) {
-    GameRoutine_60a1d0(v5);
+    String_60a1d0();
   }
   v6 = v5;
   if (v5 >= 0x17) {
@@ -1006,25 +1014,25 @@ __int64 SceneCharacterLookAt_1416860(__int64 a1, _QWORD* a2)
     else {
       v8 = (v5 | 7) + 1;
     }
-    v7 = (char*)fw_memory_HeapManager_Allocate(fw_memory_g_heap_manager, v8, 16,
-                                               0);
-    v23 = v6;
-    v24 = v7;
-    v22 = v8 | 1;
+    v7 = (char*)fw_memory_HeapManager_Allocate_alt1(fw_memory_g_heap_manager,
+                                                    v8, 16, 0);
+    v22_.v23 = v6;
+    v22_.v24 = v7;
+    v22_.v22 = v8 | 1;
     goto LABEL_9;
   }
-  LOBYTE(v22) = 2 * v5;
-  v7 = (char*)&v22 + 1;
+  LOBYTE(v22_.v22) = 2 * v5;
+  v7 = (char*)&v22_.v22 + 1;
   if (v5 != 0) {
   LABEL_9:
-    memmove(v7, v3, v6);
+    memmove_alt1((__int64)v7, (__int64)v3, v6);
   }
   v7[v6] = 0;
   v9 = *(__int64**)(v4 + 160);
   v10 = *(__int64**)(v4 + 168);
   if (v9 == v10) {
     v11 = 0;
-    if ((v22 & 1) == 0) {
+    if ((v22_.v22 & 1) == 0) {
       goto LABEL_27;
     }
     goto LABEL_23;
@@ -1035,18 +1043,18 @@ __int64 SceneCharacterLookAt_1416860(__int64 a1, _QWORD* a2)
     v13 = *(_QWORD*)(v12 + 40);
     v14 = v12 + 25;
     v15 = (*(_BYTE*)(v12 + 24) & 1) != 0 ? v13 : v14;
-    v16 = v24;
-    v17 = (unsigned __int64)(unsigned __int8)v22 >> 1;
-    if ((v22 & 1) != 0) {
-      v17 = v23;
+    v16 = v22_.v24;
+    v17 = (unsigned __int64)(unsigned __int8)v22_.v22 >> 1;
+    if ((v22_.v22 & 1) != 0) {
+      v17 = v22_.v23;
     }
     else {
-      v16 = (char*)&v22 + 1;
+      v16 = (char*)&v22_.v22 + 1;
     }
-    v25[0] = v16;
+    v25[0] = (__int64)v16;
     v25[1] = v17;
-    v18 = game_HashString(v15);
-    if (v18 == GameRoutine_7a88a0(v25)) {
+    v18 = game_HashString_alt1(v15);
+    if (v18 == GameHr_7a88a0(v25)) {
       break;
     }
     if (v9 == v10) {
@@ -1054,18 +1062,17 @@ __int64 SceneCharacterLookAt_1416860(__int64 a1, _QWORD* a2)
       break;
     }
   }
-  if ((v22 & 1) != 0) {
+  if ((v22_.v22 & 1) != 0) {
   LABEL_23:
-    if (v24 != nullptr) {
+    if (v22_.v24 != nullptr) {
       v19 = 128;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
         v19 = 56;
       }
-      nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                    v19);
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v19, (__int64)v22_.v24);
     }
   }
-
 LABEL_27:
   if (v11 == *(_QWORD*)(a1 + 8) || v11 == 0) {
     return 0;

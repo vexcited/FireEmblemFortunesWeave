@@ -150,6 +150,15 @@ void GameRoutine_156c910(__int64 result, const char*, int, ...);
 __int64 GmapUIDef_16537e0(__int64* a1, __int64 a2);
 __int64 GmapUIDef_1653cd0(__int64 a1, __int64 a2, char a3);
 void GmapUIDef_1653f50(_DWORD* a1, __int64 a2);
+__int64 GameRoutine_9db9e0_alt1(unsigned int,
+                                unsigned int) __asm__("GameRoutine_9db9e0");
+__int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
+bool GameRoutine_ae2330_alt1(__int64) __asm__("GameRoutine_ae2330");
+bool Impl_13287c0_alt1(__int64) __asm__("Impl_13287c0");
+void __attribute__((noreturn))
+GameRoutine_1654c60_alt1() __asm__("GameRoutine_1654c60");
+void __attribute__((noreturn))
+GameRoutine_1655af0_alt1() __asm__("GameRoutine_1655af0");
 
 bool game_gmap_GmapUIDef_SetQuestIcon(__int64 a1, __int64 a2, char a3)
 {
@@ -2349,7 +2358,7 @@ __attribute__((swiftcall)) void GmapUIDef_1654700(PSEUDO_X8 x8_, __int64 a1)
 {
   __int64* a2 = (__int64*)PSEUDO_X8_VALUE(x8_);
   __int64 v3;
-  unsigned __int64 result;
+  unsigned __int64 v4;
   unsigned __int64 v5;
   unsigned __int64 v7;
   unsigned __int64 v8;
@@ -2366,20 +2375,21 @@ __attribute__((swiftcall)) void GmapUIDef_1654700(PSEUDO_X8 x8_, __int64 a1)
   __int64 v19;
   __int64 v20;
   __int64 v21;
-  unsigned __int64 v22;
-  int v23;
+  unsigned int* v22;
+  __int64 v23;
   int v24;
-  unsigned __int64 v25;
+  int v25;
   unsigned __int64 v26;
-  __int64 v27;
-  unsigned __int64 v28;
-  __int64 v29;
-  unsigned __int64 v30;
-  __int64 v31;
-  unsigned __int64 v32;
+  unsigned __int64 v27;
+  __int64 v28;
+  unsigned __int64 v29;
+  __int64 v30;
+  unsigned __int64 v31;
+  __int64 v32;
   unsigned __int64 v33;
-  __int64 v34;
+  unsigned __int64 v34;
   __int64 v35;
+  __int64 v36;
 
   a2[1] = 0;
   a2[2] = 0;
@@ -2390,19 +2400,19 @@ __attribute__((swiftcall)) void GmapUIDef_1654700(PSEUDO_X8 x8_, __int64 a1)
   else {
     v3 = a1 + 1;
   }
-  result = game_HashString_alt2(v3);
-  if (result != 0) {
+  v4 = game_HashString_alt3(v3);
+  if (v4 != 0) {
     v5 = *(_QWORD*)(GameData_21c9e48 + 96);
     if (v5 != 0 && *(_QWORD*)(GameData_21c9e48 + 112) != 0) {
       v7 = v5 - 1;
       if ((v5 & (v5 - 1)) != 0) {
-        v8 = result;
-        if (result >= v5) {
-          v8 = result % v5;
+        v8 = v4;
+        if (v4 >= v5) {
+          v8 = v4 % v5;
         }
       }
       else {
-        v8 = v7 & result;
+        v8 = v7 & v4;
       }
       v9 = *(_QWORD**)(*(_QWORD*)(GameData_21c9e48 + 88) + 8 * v8);
       if (v9 != nullptr) {
@@ -2411,44 +2421,38 @@ __attribute__((swiftcall)) void GmapUIDef_1654700(PSEUDO_X8 x8_, __int64 a1)
           if ((v5 & v7) == 0) {
             while (1) {
               v12 = v10[1];
-              if (v12 == result) {
-                if (v10[2] == result) {
+              if (v12 == v4) {
+                if (v10[2] == v4) {
                   goto LABEL_29;
                 }
               }
               else if ((v12 & v7) != v8) {
-                {
-                  result;
-                  return;
-                }
+                return;
               }
               v10 = (_QWORD*)*v10;
               if (v10 == nullptr) {
-                result;
                 return;
               }
             }
           }
           while (1) {
             v11 = v10[1];
-            if (v11 == result) {
+            if (v11 == v4) {
               break;
             }
             if (v11 >= v5) {
               v11 %= v5;
             }
             if (v11 != v8) {
-              result;
               return;
             }
           LABEL_18:
             v10 = (_QWORD*)*v10;
             if (v10 == nullptr) {
-              result;
               return;
             }
           }
-          if (v10[2] != result) {
+          if (v10[2] != v4) {
             goto LABEL_18;
           }
         LABEL_29:
@@ -2464,46 +2468,43 @@ __attribute__((swiftcall)) void GmapUIDef_1654700(PSEUDO_X8 x8_, __int64 a1)
               while (1) {
                 if (v18 >= v16 >> 3) {
                   *a2 = v19;
-                  GameRoutine_1655af0();
+                  GameRoutine_1655af0_alt1();
                 }
                 v21 = *(_QWORD*)(v15 + 8 * v18);
-                result = game_gmap_SpotMgr_FindSpot_alt1(*(_QWORD*)(v21 + 40));
-                v22 = result;
+                v22 = game_gmap_SpotMgr_FindSpot_alt2(
+                    *(unsigned int**)(v21 + 40));
+                v23 = (__int64)v22;
                 if (game_GameModeData_instance_ != 0 &&
                     *(_BYTE*)(game_GameModeData_instance_ + 15) == 1 &&
                     (*(_BYTE*)(v21 + 67) & 1) != 0) {
-                  v23 = 5;
+                  v24 = 5;
                 }
                 else {
-                  v23 = 4;
-                  if (*(_BYTE*)(result + 176) != 3 ||
-                      (*(_BYTE*)(result + 112) & 1) != 0) {
+                  v24 = 4;
+                  if (*((_BYTE*)v22 + 176) != 3 || (v22[28] & 1) != 0) {
                     goto LABEL_56;
                   }
-                  result = GameRoutine_ae2330(v21);
-                  if ((result & 1) != 0) {
-                    if ((*(_BYTE*)(v22 + 178) & 4) == 0) {
+                  if (GameRoutine_ae2330_alt1(v21)) {
+                    if ((*(_BYTE*)(v23 + 178) & 4) == 0) {
                       if (game_GameModeData_instance_ != 0) {
                       LABEL_49:
-                        v24 = *(_DWORD*)(game_GameModeData_instance_ + 72);
+                        v25 = *(_DWORD*)(game_GameModeData_instance_ + 72);
                       }
                       else {
                       LABEL_50:
-                        v24 = 0;
+                        v25 = 0;
                       }
-                      result = GameRoutine_9db9e0(
-                          23, *(unsigned __int16*)(v21 + 64));
-                      if (v24 >= (int)result) {
-                        result = Impl_13287c0(v22);
-                        if ((result & 1) != 0) {
-                          v23 = 0;
+                      if (v25 >= (int)GameRoutine_9db9e0_alt1(
+                                     0x17u, *(unsigned __int16*)(v21 + 64))) {
+                        if (Impl_13287c0_alt1(v23)) {
+                          v24 = 0;
                         }
                         else {
-                          v23 = 6;
+                          v24 = 6;
                         }
                       }
                       else {
-                        v23 = 1;
+                        v24 = 1;
                       }
                       goto LABEL_56;
                     }
@@ -2513,68 +2514,68 @@ __attribute__((swiftcall)) void GmapUIDef_1654700(PSEUDO_X8 x8_, __int64 a1)
                     if (*(_DWORD*)(game_GameModeData_instance_ + 60) != 3) {
                       goto LABEL_49;
                     }
-                    v23 = 2;
+                    v24 = 2;
                   }
                   else {
-                    v23 = 3;
+                    v24 = 3;
                   }
                 }
               LABEL_56:
-                v25 = a2[2];
-                if (v17 < v25) {
+                v26 = a2[2];
+                if (v17 < v26) {
                   *(_QWORD*)v17 = v21;
-                  *(_DWORD*)(v17 + 8) = v23;
+                  *(_DWORD*)(v17 + 8) = v24;
                   v17 += 16LL;
                 }
                 else {
-                  v26 = v17 - v19;
-                  v27 = (__int64)(v17 - v19) >> 4;
-                  v28 = v27 + 1;
-                  if ((unsigned __int64)(v27 + 1) >> 60 != 0) {
+                  v27 = v17 - v19;
+                  v28 = (__int64)(v17 - v19) >> 4;
+                  v29 = v28 + 1;
+                  if ((unsigned __int64)(v28 + 1) >> 60 != 0) {
                     *a2 = v19;
-                    GameRoutine_1654c60();
+                    GameRoutine_1654c60_alt1();
                   }
-                  v29 = v25 - v19;
-                  if (v29 >> 3 > v28) {
-                    v28 = v29 >> 3;
+                  v30 = v26 - v19;
+                  if (v30 >> 3 > v29) {
+                    v29 = v30 >> 3;
                   }
-                  if ((unsigned __int64)v29 >= 0x7FFFFFFFFFFFFFF0LL) {
-                    v30 = 0xFFFFFFFFFFFFFFFLL;
+                  if ((unsigned __int64)v30 >= 0x7FFFFFFFFFFFFFF0LL) {
+                    v31 = 0xFFFFFFFFFFFFFFFLL;
                   }
                   else {
-                    v30 = v28;
+                    v31 = v29;
                   }
-                  if (v30 != 0) {
-                    if (v30 >> 60 != 0) {
+                  if (v31 != 0) {
+                    if (v31 >> 60 != 0) {
                       *a2 = v19;
-                      GameRoutine_60a210(result);
+                      GameRoutine_60a210_alt1();
                     }
-                    v31 = fw_memory_HeapManager_Allocate(
-                        *(_QWORD*)fw_memory_g_heap_manager_ptr, 16 * v30, 16,
+                    v32 = fw_memory_HeapManager_Allocate_alt1(
+                        *(_QWORD*)fw_memory_g_heap_manager_ptr, 16 * v31, 16,
                         0);
                   }
                   else {
-                    v31 = 0;
+                    v32 = 0;
                   }
-                  v32 = v31 + v26;
-                  v33 = v31 + 16 * v30;
-                  *(_QWORD*)v32 = v21;
-                  v34 = v31 + v26 - 16 * v27;
-                  *(_DWORD*)(v32 + 8) = v23;
-                  v17 = v31 + v26 + 16;
-                  result = memcpy(v34, v19, v26);
+                  v33 = v32 + v27;
+                  v34 = v32 + 16 * v31;
+                  *(_QWORD*)v33 = v21;
+                  v35 = v32 + v27 - 16 * v28;
+                  *(_DWORD*)(v33 + 8) = v24;
+                  v17 = v32 + v27 + 16;
+                  memcpy_alt1(v35, v19, v27);
                   a2[1] = v17;
-                  a2[2] = v33;
+                  a2[2] = v34;
                   if (v19 != 0) {
-                    v35 = 128;
+                    v36 = 128;
                     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr +
                                    200LL) == 0) {
-                      v35 = 56;
+                      v36 = 56;
                     }
-                    result = nn_mem_StandardAllocator_Free(
-                        *(_QWORD*)fw_memory_g_heap_manager_ptr + v35);
+                    nn_mem_StandardAllocator_Free_alt1(
+                        *(_QWORD*)fw_memory_g_heap_manager_ptr + v36, v19);
                   }
-                  v19 = v34;
+                  v19 = v35;
                 }
                 v15 = *v14;
                 v20 = v14[1];
@@ -2593,10 +2594,6 @@ __attribute__((swiftcall)) void GmapUIDef_1654700(PSEUDO_X8 x8_, __int64 a1)
         }
       }
     }
-  }
-  {
-    result;
-    return;
   }
 }
 

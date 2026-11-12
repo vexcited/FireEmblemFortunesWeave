@@ -54,7 +54,8 @@ __int64 CombatSequenceImpl_10d6360(__int64 a1);
 __int64 CombatSequenceImpl_10d64b0(__int64 result);
 void game_combat_CombatSequenceImpl_DieTalkOrNothing_closure_Invoke(
     __int64 a1, __int64* a2);
-__int64 CombatSequenceImpl_Destructor(__int64 a1);
+__int64 CombatSequenceImpl_Destructor_alt1(__int64 a1) __asm__(
+    "CombatSequenceImpl_Destructor");
 __int64 MapInfo_825790_alt1(_QWORD) __asm__("MapInfo_825790");
 extern __int64 GameData_22365a0;
 __int64 CombatSequenceImpl_10d6630(__int64 result);
@@ -121,6 +122,15 @@ __int64* GameRoutine_112bf60_alt1(__int64* result,
 __int64 GameRoutine_1069b50_alt1(__int64, __int64,
                                  int) __asm__("GameRoutine_1069b50");
 __int64 GameRoutine_106d080_alt1(__int64 result) __asm__("GameRoutine_106d080");
+__int64 game_ProcInst_Unregister_alt1(__int64 result) __asm__(
+    "game_ProcInst_Unregister");
+__int64 std___1___shared_weak_count___release_weak_alt2(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+void GameRoutine_658c00_alt1(__int64*) __asm__("GameRoutine_658c00");
+void GameRoutine_8234c0_alt1() __asm__("GameRoutine_8234c0");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void CombatSequenceImpl_Destructor(__int64 a1);
 
 __int64 CombatSequenceImpl_10d5500(__int64 a1)
 {
@@ -1109,7 +1119,7 @@ void game_combat_CombatSequenceImpl_DieTalkOrNothing_closure_Invoke(__int64 a1,
   *(_BYTE*)(v2 + 424) = v3;
 }
 
-__int64 CombatSequenceImpl_Destructor(__int64 a1)
+void CombatSequenceImpl_Destructor(__int64 a1)
 {
   _QWORD* v2;
   __int64 v3;
@@ -1126,10 +1136,11 @@ __int64 CombatSequenceImpl_Destructor(__int64 a1)
   __int64 v14;
   __int64 v15;
   __int64 v16;
+  __int64 v17;
 
   *(_QWORD*)a1 = game_combat_CombatSequenceImpl_vtable;
   *(_QWORD*)(a1 + 152) = GameData_200ba78;
-  GameRoutine_8234c0();
+  GameRoutine_8234c0_alt1();
   (*(void (**)(__int64))(*(_QWORD*)GameData_21ec7b0 + 24LL))(GameData_21ec7b0);
   if (GameData_21ec7b0 != 0) {
     (*(void (**)(__int64))(*(_QWORD*)GameData_21ec7b0 + 8LL))(GameData_21ec7b0);
@@ -1159,31 +1170,32 @@ __int64 CombatSequenceImpl_Destructor(__int64 a1)
     v2[27] = v3 - 1;
     v2[20] = v14;
     if ((unsigned __int64)(v11 - (v3 + v4) - 255) <= 0xFFFFFFFFFFFFFEFFLL) {
-      if (*(_QWORD*)(v5 - 8) != 0) {
-        v15 = 128;
+      v15 = *(_QWORD*)(v5 - 8);
+      if (v15 != 0) {
+        v16 = 128;
         if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-          v15 = 56;
+          v16 = 56;
         }
-        nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                      v15);
+        nn_mem_StandardAllocator_Free_alt1(
+            *(_QWORD*)fw_memory_g_heap_manager_ptr + v16, v15);
         v5 = v2[24];
       }
       v2[24] = v5 - 8;
     }
   }
-  v16 = *(_QWORD*)(a1 + 184);
-  if (v16 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v16 + 8),
+  v17 = *(_QWORD*)(a1 + 184);
+  if (v17 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v17 + 8),
                                    0xFFFFFFFFFFFFFFFFLL) == 0) {
-    (*(void (**)(__int64))(*(_QWORD*)v16 + 16LL))(v16);
-    std___1___shared_weak_count___release_weak(v16);
+    (*(void (**)(__int64))(*(_QWORD*)v17 + 16LL))(v17);
+    std___1___shared_weak_count___release_weak_alt2(v17);
   }
   GameData_2235e20 = 0;
   *(_QWORD*)a1 = game_ProcInst_vtable;
   if ((*(_WORD*)(a1 + 136) & 0x100) != 0) {
     *(_WORD*)(a1 + 136) &= ~0x100u;
   }
-  game_ProcInst_Unregister(a1);
-  return GameRoutine_658c00(a1 + 88);
+  game_ProcInst_Unregister_alt1(a1);
+  GameRoutine_658c00_alt1((__int64*)(a1 + 88));
 }
 
 #pragma GCC visibility pop

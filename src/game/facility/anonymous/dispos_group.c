@@ -26,11 +26,23 @@ extern __int64* GameData_21310a8;
 extern __int64* GameData_21310b8;
 extern __int64* GameData_21310c8[2];
 extern __int64* GameData_21310d0;
-__int64 DisposGroup_Unknown4();
+__int64 DisposGroup_Unknown4_alt1() __asm__("DisposGroup_Unknown4");
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+bool GameRoutine_13a3300_alt1(_QWORD*, const char*, __int64,
+                              int) __asm__("GameRoutine_13a3300");
+bool GameRoutine_13a6320_alt1(_QWORD*, const char*, __int64,
+                              char) __asm__("GameRoutine_13a6320");
+bool GameRoutine_13aa540_alt1(_QWORD*, const char*, __int64,
+                              int) __asm__("GameRoutine_13aa540");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void DisposGroup_Unknown4();
 
-__int64 DisposGroup_Unknown4()
+void DisposGroup_Unknown4()
 {
-  _QWORD* v0;
+  __int64* v0;
   __int64 v1;
   _QWORD* v2;
   __int64* v3;
@@ -43,23 +55,23 @@ __int64 DisposGroup_Unknown4()
   __int64* v10;
   __int64* v11;
   __int64 v12;
-  __int64* v13;
+  _QWORD* v13;
   __int64 v14;
   _QWORD* v15;
   __int64* v16;
   __int64* v17;
   __int64* v18;
   __int64 v19;
-  __int64* v20;
+  _QWORD* v20;
   __int64 v21;
-  __int64* v22;
+  _QWORD* v22;
   __int64 v23;
   __int64 v24;
   __int64 v25;
 
-  v0 = (_QWORD*)fw_memory_g_heap_manager_ptr;
-  v1 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
-                                      264, 16, 0);
+  v0 = (__int64*)fw_memory_g_heap_manager_ptr;
+  v1 = fw_memory_HeapManager_Allocate_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr, 264, 16, 0);
   v2 = (_QWORD*)v1;
   v3 = GameData_212de10[0];
   if (*GameData_212de10[0] == 0) {
@@ -100,8 +112,8 @@ __int64 DisposGroup_Unknown4()
   v4 = GameData_21310a8 + 2;
   *(_QWORD*)(v1 + 8) = GameData_21310a8 + 8;
   *(_QWORD*)v1 = v4;
-  GameRoutine_13a3300(v1 + 8, "GameData/FacilityScene.bin", &GameData_1aeb1d6,
-                      1);
+  GameRoutine_13a3300_alt1((_QWORD*)(v1 + 8), "GameData/FacilityScene.bin",
+                           (__int64)&GameData_1aeb1d6, 1);
   v5 = GameData_2130fe0[0];
   *v3 = (__int64)v2;
   *v2 = v5 + 2;
@@ -113,7 +125,7 @@ __int64 DisposGroup_Unknown4()
   else {
     v6 = 0;
   }
-  v7 = fw_memory_HeapManager_Allocate(*v0, 264, 16, 0);
+  v7 = fw_memory_HeapManager_Allocate_alt1(*v0, 264, 16, 0);
   v8 = (_QWORD*)v7;
   v9 = GameData_21310a0[0];
   if (*GameData_21310a0[0] == 0) {
@@ -154,8 +166,8 @@ __int64 DisposGroup_Unknown4()
   v10 = GameData_21310b8 + 2;
   *(_QWORD*)(v7 + 8) = GameData_21310b8 + 8;
   *(_QWORD*)v7 = v10;
-  GameRoutine_13a6320(v7 + 8, "GameData/FacilityScene.bin", &GameData_1aeb1e7,
-                      1);
+  GameRoutine_13a6320_alt1((_QWORD*)(v7 + 8), "GameData/FacilityScene.bin",
+                           (__int64)&GameData_1aeb1e7, 1);
   v11 = GameData_2130fe8[0];
   *v9 = (__int64)v8;
   *v8 = v11 + 2;
@@ -167,10 +179,10 @@ __int64 DisposGroup_Unknown4()
   else {
     v12 = 0;
   }
-  v13 = (__int64*)fw_memory_HeapManager_Allocate(*v0, 16, 16, 0);
+  v13 = (_QWORD*)fw_memory_HeapManager_Allocate_alt1(*v0, 16, 16, 0);
   *v13 = v6;
   v13[1] = v12;
-  v14 = fw_memory_HeapManager_Allocate(*v0, 264, 16, 0);
+  v14 = fw_memory_HeapManager_Allocate_alt1(*v0, 264, 16, 0);
   v15 = (_QWORD*)v14;
   v16 = GameData_21310c8[0];
   if (*GameData_21310c8[0] == 0) {
@@ -211,8 +223,8 @@ __int64 DisposGroup_Unknown4()
   v17 = GameData_21310d0 + 2;
   *(_QWORD*)(v14 + 8) = GameData_21310d0 + 8;
   *(_QWORD*)v14 = v17;
-  GameRoutine_13aa540(v14 + 8, "GameData/FacilityScene.bin", &GameData_1a86e0d,
-                      1);
+  GameRoutine_13aa540_alt1((_QWORD*)(v14 + 8), "GameData/FacilityScene.bin",
+                           (__int64)&GameData_1a86e0d, 1);
   v18 = GameData_2130ff0[0];
   *v16 = (__int64)v15;
   *v15 = v18 + 2;
@@ -224,7 +236,7 @@ __int64 DisposGroup_Unknown4()
   else {
     v19 = 0;
   }
-  v20 = (__int64*)fw_memory_HeapManager_Allocate(*v0, 32, 16, 0);
+  v20 = (_QWORD*)fw_memory_HeapManager_Allocate_alt1(*v0, 32, 16, 0);
   v21 = v13[1];
   v22 = v20;
   *v20 = *v13;
@@ -237,17 +249,17 @@ __int64 DisposGroup_Unknown4()
   else {
     v24 = 56;
   }
-  nn_mem_StandardAllocator_Free(v23 + v24);
-  (*(void (**)(__int64))(*(_QWORD*)*v22 + 16LL))(*v22);
-  (*(void (**)(__int64))(*(_QWORD*)v22[1] + 16LL))(v22[1]);
-  (*(void (**)(__int64))(*(_QWORD*)v22[2] + 16LL))(v22[2]);
-  if (*(_QWORD*)(*v0 + 200LL) != 0) {
+  nn_mem_StandardAllocator_Free_alt1(v23 + v24, (__int64)v13);
+  (*(void (**)(_QWORD))(*(_QWORD*)*v22 + 16LL))(*v22);
+  (*(void (**)(_QWORD))(*(_QWORD*)v22[1] + 16LL))(v22[1]);
+  (*(void (**)(_QWORD))(*(_QWORD*)v22[2] + 16LL))(v22[2]);
+  if (*(_QWORD*)(*v0 + 200) != 0) {
     v25 = 128;
   }
   else {
     v25 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*v0 + v25);
+  nn_mem_StandardAllocator_Free_alt1(*v0 + v25, (__int64)v22);
 }
 
 #pragma GCC visibility pop

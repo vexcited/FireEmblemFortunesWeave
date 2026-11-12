@@ -48,6 +48,11 @@ void GameRoutine_6e3b50_alt1(__int64, _QWORD*) __asm__("GameRoutine_6e3b50");
 void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void BlacksmithMenuItem_Repair_Unknown82(__int64 a1, __int64 a2);
+__int64 ObeliskDestinyMenuItem_1a06cc0(__int64, char*, char*);
+__int64 game_120d600(unsigned __int16*, __int64);
+__int64
+game_Unit_Unknown6c4610_alt1(__int64) __asm__("game_Unit_Unknown6c4610");
+void Se_80e330(__int64, const char*);
 
 __int64 BlacksmithMenuItem_Repair_Unknown55(__int64 a1)
 {
@@ -171,41 +176,46 @@ __int64 BlacksmithMenuItem_Repair_Unknown81(__int64 a1)
   int v14;
   int v15;
   __int64 v16;
-  _BYTE* v17;
+  _QWORD* v17;
   __int64 v18;
   __int64 v19;
   __int64 v20;
   int v22;
   __int64 v23;
   __int64 v24;
-  __int64 v25;
-  int v26;
-  _QWORD* v27;
-  _BYTE* v28;
-  __int64 v29;
-  __int64 v30;
-  __int64 v31;
-  _BYTE* v32;
-  int v33;
-  int v34;
-  int v35;
+  struct {
+    __int64 v25;
+    int v26;
+  } v25_;
+  _QWORD** v27;
+  struct {
+    _QWORD* v28;
+    __int64 v29;
+    __int64 v30;
+    __int64 v31;
+    _BYTE* v32;
+    int v33;
+    int v34;
+    int v35;
+  } v28_;
 
   v2 = *(_QWORD*)(a1 + 104);
   *GameData_2132020 = 1;
   v3 = *(int*)(a1 + 40);
   if (v2 != 0) {
-    if ((GameRoutine_120d600(v2 + 8 * v3 + 828, v2) & 1) != 0) {
-      game_Unit_Unknown6c4610(v2);
+    if ((game_120d600((unsigned __int16*)(v2 + 8 * v3 + 828), v2) & 1) != 0) {
+      game_Unit_Unknown6c4610_alt1(v2);
       *(_WORD*)(v2 + 20) |= 1u;
     }
   }
   else {
-    GameRoutine_120d600(
-        *(_QWORD*)(*(_QWORD*)(*(_QWORD*)
-                                  game_TransporterConst_List_instance__ptr[0] +
-                              8LL) +
-                   8LL) +
-            12LL * (int)v3 + 4,
+    game_120d600(
+        (unsigned __int16*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)
+                                                      game_TransporterConst_List_instance__ptr
+                                                          [0] +
+                                                  8LL) +
+                                       8LL) +
+                            12LL * (int)v3 + 4),
         0);
   }
   v4 = *(_QWORD*)(a1 + 8);
@@ -215,7 +225,7 @@ __int64 BlacksmithMenuItem_Repair_Unknown81(__int64 a1)
   else {
     v5 = *(_QWORD*)(a1 + 8);
   }
-  v6 = GameRoutine_1a06cc0(v5, "MID_RepairMenu_Result", 0);
+  v6 = ObeliskDestinyMenuItem_1a06cc0(v5, "MID_RepairMenu_Result", nullptr);
   v7 = v6;
   if (v6 != 0) {
     *(_WORD*)(v6 + 897) = 0;
@@ -262,49 +272,49 @@ __int64 BlacksmithMenuItem_Repair_Unknown81(__int64 a1)
     v16 = 0;
   }
   v24 = v16;
-  WORD1(v25) = 0;
-  HIDWORD(v25) = 0;
-  v29 = 0;
-  v30 = 0;
-  v31 = 0;
-  v32 = nullptr;
-  v27 = &v28;
-  v28 = nullptr;
-  GameRoutine_930b90(&v25, GameData_212c8b0[0]);
-  v33 = 0;
-  v34 = v14;
-  v35 = v15;
-  GameRoutine_1a06060(v7 + 824, &v22, 0);
-  v26 = 0;
-  v25 = 0;
-  if ((v30 & 1) != 0) {
-    *v32 = 0;
-    v31 = 0;
+  WORD1(v25_.v25) = 0;
+  HIDWORD(v25_.v25) = 0;
+  v28_.v29 = 0;
+  v28_.v30 = 0;
+  v28_.v31 = 0;
+  v28_.v32 = nullptr;
+  v27 = &v28_.v28;
+  v28_.v28 = nullptr;
+  GameRoutine_930b90_alt1((__int64)&v25_.v25, (__int64)GameData_212c8b0[0]);
+  v28_.v33 = 0;
+  v28_.v34 = v14;
+  v28_.v35 = v15;
+  ObeliskDestinyMenuItem_1a06060_alt1((_QWORD*)(v7 + 824), &v22, 0);
+  v25_.v26 = 0;
+  v25_.v25 = 0;
+  if ((v28_.v30 & 1) != 0) {
+    *v28_.v32 = 0;
+    v28_.v31 = 0;
   }
   else {
-    LOWORD(v30) = 0;
+    LOWORD(v28_.v30) = 0;
   }
-  GameRoutine_6e3b50(&v27, v28);
-  v28 = nullptr;
-  v29 = 0;
-  v27 = &v28;
-  if ((v30 & 1) != 0) {
-    v17 = v32;
-    if (v32 != nullptr) {
+  GameRoutine_6e3b50_alt1((__int64)&v27, v28_.v28);
+  v28_.v28 = nullptr;
+  v28_.v29 = 0;
+  v27 = &v28_.v28;
+  if ((v28_.v30 & 1) != 0) {
+    v17 = v28_.v32;
+    if (v28_.v32 != nullptr) {
       v18 = 128;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
         v18 = 56;
       }
-      nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                    v18);
-      v17 = v28;
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v18, (__int64)v28_.v32);
+      v17 = v28_.v28;
     }
   }
   else {
     v17 = nullptr;
   }
-  GameRoutine_6e3b50(&v27, v17);
-  GameRoutine_80e330(v7, "FF_Blacksmith_Repair");
+  GameRoutine_6e3b50_alt1((__int64)&v27, v17);
+  Se_80e330(v7, "FF_Blacksmith_Repair");
   v19 = (*(__int64 (**)(__int64))(*(_QWORD*)(a1 + 96) + 80LL))(a1 + 96);
   if (v19 != 0) {
     v20 = v19;

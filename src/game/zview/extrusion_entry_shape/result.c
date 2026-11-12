@@ -5,9 +5,13 @@
 __int64 nn_mem_StandardAllocator_Free(_QWORD);
 extern __int64 (*game_zview_ExtrusionEntryShape_Result_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
-__int64 Result_DeletingDestructor(_QWORD* a1);
+__int64
+Result_DeletingDestructor_alt1(_QWORD* a1) __asm__("Result_DeletingDestructor");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void Result_DeletingDestructor(_QWORD* a1);
 
-__int64 Result_DeletingDestructor(_QWORD* a1)
+void Result_DeletingDestructor(_QWORD* a1)
 {
   void (***v2)(_QWORD);
   void (***v3)(_QWORD);
@@ -27,8 +31,8 @@ __int64 Result_DeletingDestructor(_QWORD* a1)
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
     v4 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v4);
+  nn_mem_StandardAllocator_Free_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v4, (__int64)a1);
 }
 
 #pragma GCC visibility pop

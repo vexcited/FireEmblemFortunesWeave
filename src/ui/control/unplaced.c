@@ -60,6 +60,10 @@ void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
 void ui_control_1887780_alt2(const char**, __int64, const char*,
                              __int64) __asm__("ui_control_1887780");
 __int64 ui_control_1886bc0(_QWORD* a1, int a2);
+void Element_1887de0_alt2(_QWORD*, __int64*, const char*,
+                          __int64) __asm__("Element_1887de0");
+void ui_control_1887780_alt3(__int64*, __int64**, const char*,
+                             __int64) __asm__("ui_control_1887780");
 
 __attribute__((swiftcall)) void ui_control_18868e0(PSEUDO_X8 x8_,
                                                    __int64 result, int a2)
@@ -544,16 +548,16 @@ __attribute__((swiftcall)) void ui_control_1886f20(PSEUDO_X8 x8_, _QWORD* a1,
   __int64 v19;
   _QWORD* v20;
   const char* v21;
-  const char* v22;
+  __int64 v22;
   __int64 v23;
-  const char* v24;
-  const char* v25;
+  __int64* v24;
+  __int64* v25;
   const char* v26;
   __int64 v27;
   __int64 v28;
   const char* v29;
   unsigned __int64 v30;
-  const char* v31;
+  __int64 v31;
   _QWORD* v32;
   unsigned __int64 v33;
   __int64 v34;
@@ -565,13 +569,13 @@ __attribute__((swiftcall)) void ui_control_1886f20(PSEUDO_X8 x8_, _QWORD* a1,
   unsigned __int64 v40;
   const char* v41;
   __int64 v42;
-  const char** v43;
+  __int64* v43;
   __int64 v44;
   unsigned __int64 v45;
   __int64 v46;
   __int64 v47;
-  const char* v48;
-  const char* v49;
+  __int64* v48;
+  __int64* v49;
   __int64 v50;
   char v51;
   __int64 v52;
@@ -580,13 +584,13 @@ __attribute__((swiftcall)) void ui_control_1886f20(PSEUDO_X8 x8_, _QWORD* a1,
   __int64 v55;
   _QWORD* v56;
   __int64 v57;
-  const char* v58;
+  __int64* v58;
   __int64* v59;
   __int64 v60;
   __int64 v61;
   const char* v62;
   unsigned __int64 v63;
-  const char* v64;
+  __int64 v64;
   _QWORD* v65;
   unsigned __int64 v66;
   __int64 v67;
@@ -597,13 +601,13 @@ __attribute__((swiftcall)) void ui_control_1886f20(PSEUDO_X8 x8_, _QWORD* a1,
   __int64 v72;
   unsigned __int64 v73;
   __int64 v74;
-  const char** v75;
+  __int64* v75;
   __int64 v76;
   unsigned __int64 v77;
   __int64 v78;
   __int64 v79;
-  const char* v80;
-  const char* v81;
+  __int64* v80;
+  __int64* v81;
   __int64 v82;
   char v83;
   __int64 v84;
@@ -612,7 +616,7 @@ __attribute__((swiftcall)) void ui_control_1886f20(PSEUDO_X8 x8_, _QWORD* a1,
   __int64 v87;
   __int64 v88;
   struct {
-    const char* v90;
+    __int64 v90;
     __int64 v91;
   } v90_;
   struct {
@@ -621,8 +625,8 @@ __attribute__((swiftcall)) void ui_control_1886f20(PSEUDO_X8 x8_, _QWORD* a1,
     const char* v94;
   } v92_;
   struct {
-    const char* v95;
-    const char* v96;
+    __int64* v95;
+    __int64* v96;
   } v95_;
   struct {
     _QWORD v97[2];
@@ -692,14 +696,14 @@ __attribute__((swiftcall)) void ui_control_1886f20(PSEUDO_X8 x8_, _QWORD* a1,
     else {
       v21 = nullptr;
     }
-    Element_1887de0_alt1(&v95_.v95, (__int64)v97_.v97, v21, v19);
-    v22 = v95_.v95;
+    Element_1887de0_alt2(&v95_.v95, v97_.v97, v21, v19);
+    v22 = (__int64)v95_.v95;
     if (v95_.v95 != nullptr) {
       goto LABEL_86;
     }
     v23 = (__int64)v95_.v96;
     if (v95_.v96 != nullptr &&
-        atomic_fetch_add((atomic_ullong* volatile)(v95_.v96 + 8),
+        atomic_fetch_add((atomic_ullong* volatile)(v95_.v96 + 1),
                          0xFFFFFFFFFFFFFFFFLL) == 0) {
       (*(void (**)(__int64))(*(_QWORD*)v23 + 16LL))(v23);
       std___1___shared_weak_count___release_weak_alt1(v23);
@@ -719,10 +723,10 @@ __attribute__((swiftcall)) void ui_control_1886f20(PSEUDO_X8 x8_, _QWORD* a1,
       v49 = v95_.v96;
       v50 = fw_memory_g_heap_manager_ptr;
       do {
-        v51 = *(v49 - 24);
-        v49 -= 24;
+        v51 = *((_BYTE*)v49 - 24);
+        v49 -= 3;
         if ((v51 & 1) != 0) {
-          v52 = *((_QWORD*)v48 - 1);
+          v52 = *(v48 - 1);
           if (v52 != 0) {
             if (*(_QWORD*)(*(_QWORD*)v50 + 200LL) != 0) {
               v53 = 128;
@@ -739,14 +743,13 @@ __attribute__((swiftcall)) void ui_control_1886f20(PSEUDO_X8 x8_, _QWORD* a1,
     }
     v26 = (char*)&v92_.v92 + 1;
     while (1) {
-      if ((*v24 & 1) != 0) {
-        fw_text_String_CopyTerminated_alt1(&v92_.v92, *((_QWORD*)v24 + 2),
-                                           *((_QWORD*)v24 + 1));
+      if ((*(_BYTE*)v24 & 1) != 0) {
+        fw_text_String_CopyTerminated_alt1(&v92_.v92, v24[2], v24[1]);
       }
       else {
-        v27 = *(_QWORD*)v24;
-        v28 = *((_QWORD*)v24 + 2);
-        v92_.v93 = *((_QWORD*)v24 + 1);
+        v27 = *v24;
+        v28 = v24[2];
+        v92_.v93 = v24[1];
         v92_.v94 = (const char*)v28;
         v92_.v92 = v27;
       }
@@ -762,9 +765,9 @@ __attribute__((swiftcall)) void ui_control_1886f20(PSEUDO_X8 x8_, _QWORD* a1,
       else {
         v30 = (unsigned __int64)(unsigned __int8)v92_.v92 >> 1;
       }
-      Element_1887de0_alt1(&v90_.v90, (__int64)v97_.v97, v29, v30);
+      Element_1887de0_alt2(&v90_.v90, v97_.v97, v29, v30);
       v31 = v90_.v90;
-      if (v90_.v90 != nullptr) {
+      if (v90_.v90 != 0) {
         v32 = (_QWORD*)v8[1];
         v33 = v8[2];
         if ((unsigned __int64)v32 >= v33) {
@@ -793,9 +796,9 @@ __attribute__((swiftcall)) void ui_control_1886f20(PSEUDO_X8 x8_, _QWORD* a1,
           v42 = fw_memory_HeapManager_Allocate_alt1(
               *(_QWORD*)fw_memory_g_heap_manager_ptr, 16 * v40, 16, 0);
           v34 = v90_.v91;
-          v43 = (const char**)(v42 + v37);
+          v43 = (__int64*)(v42 + v37);
           *v43 = v31;
-          v43[1] = (const char*)v34;
+          v43[1] = v34;
           if (v34 != 0) {
             atomic_fetch_add_explicit((atomic_ullong* volatile)(v34 + 8), 1u,
                                       memory_order_relaxed);
@@ -861,7 +864,7 @@ __attribute__((swiftcall)) void ui_control_1886f20(PSEUDO_X8 x8_, _QWORD* a1,
         }
       }
     LABEL_33:
-      v24 += 24;
+      v24 += 3;
       if (v24 == v25) {
         v24 = v95_.v95;
         goto LABEL_74;
@@ -907,8 +910,8 @@ __attribute__((swiftcall)) void ui_control_1886f20(PSEUDO_X8 x8_, _QWORD* a1,
   else {
     v15 = nullptr;
   }
-  ui_control_1887780_alt2(&v95_.v95, (__int64)v97_.v97, v15, v13);
-  v22 = v95_.v95;
+  ui_control_1887780_alt3((__int64*)&v95_.v95, (__int64**)v97_.v97, v15, v13);
+  v22 = (__int64)v95_.v95;
   if (v95_.v95 != nullptr) {
   LABEL_86:
     v54 = (_QWORD*)fw_memory_HeapManager_Allocate_alt1(
@@ -938,7 +941,7 @@ __attribute__((swiftcall)) void ui_control_1886f20(PSEUDO_X8 x8_, _QWORD* a1,
   }
   v57 = (__int64)v95_.v96;
   if (v95_.v96 != nullptr &&
-      atomic_fetch_add((atomic_ullong* volatile)(v95_.v96 + 8),
+      atomic_fetch_add((atomic_ullong* volatile)(v95_.v96 + 1),
                        0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v57 + 16LL))(v57);
     std___1___shared_weak_count___release_weak_alt1(v57);
@@ -949,14 +952,13 @@ __attribute__((swiftcall)) void ui_control_1886f20(PSEUDO_X8 x8_, _QWORD* a1,
   if (v95_.v95 != v95_.v96) {
     v59 = (__int64*)fw_memory_g_heap_manager_ptr;
     while (1) {
-      if ((*v24 & 1) != 0) {
-        fw_text_String_CopyTerminated_alt1(&v92_.v92, *((_QWORD*)v24 + 2),
-                                           *((_QWORD*)v24 + 1));
+      if ((*(_BYTE*)v24 & 1) != 0) {
+        fw_text_String_CopyTerminated_alt1(&v92_.v92, v24[2], v24[1]);
       }
       else {
-        v60 = *(_QWORD*)v24;
-        v61 = *((_QWORD*)v24 + 2);
-        v92_.v93 = *((_QWORD*)v24 + 1);
+        v60 = *v24;
+        v61 = v24[2];
+        v92_.v93 = v24[1];
         v92_.v94 = (const char*)v61;
         v92_.v92 = v60;
       }
@@ -972,9 +974,9 @@ __attribute__((swiftcall)) void ui_control_1886f20(PSEUDO_X8 x8_, _QWORD* a1,
       else {
         v63 = (unsigned __int64)(unsigned __int8)v92_.v92 >> 1;
       }
-      ui_control_1887780_alt2(&v90_.v90, (__int64)v97_.v97, v62, v63);
+      ui_control_1887780_alt3(&v90_.v90, (__int64**)v97_.v97, v62, v63);
       v64 = v90_.v90;
-      if (v90_.v90 != nullptr) {
+      if (v90_.v90 != 0) {
         v65 = (_QWORD*)v8[1];
         v66 = v8[2];
         if ((unsigned __int64)v65 >= v66) {
@@ -999,9 +1001,9 @@ __attribute__((swiftcall)) void ui_control_1886f20(PSEUDO_X8 x8_, _QWORD* a1,
           }
           v74 = fw_memory_HeapManager_Allocate_alt1(*v59, 16 * v73, 16, 0);
           v67 = v90_.v91;
-          v75 = (const char**)(v74 + v70);
+          v75 = (__int64*)(v74 + v70);
           *v75 = v64;
-          v75[1] = (const char*)v67;
+          v75[1] = v67;
           if (v67 != 0) {
             atomic_fetch_add_explicit((atomic_ullong* volatile)(v67 + 8), 1u,
                                       memory_order_relaxed);
@@ -1063,7 +1065,7 @@ __attribute__((swiftcall)) void ui_control_1886f20(PSEUDO_X8 x8_, _QWORD* a1,
         }
       }
     LABEL_95:
-      v24 += 24;
+      v24 += 3;
       if (v24 == v58) {
         v24 = v95_.v95;
         break;
@@ -1078,10 +1080,10 @@ __attribute__((swiftcall)) void ui_control_1886f20(PSEUDO_X8 x8_, _QWORD* a1,
     v81 = v95_.v96;
     v82 = fw_memory_g_heap_manager_ptr;
     do {
-      v83 = *(v81 - 24);
-      v81 -= 24;
+      v83 = *((_BYTE*)v81 - 24);
+      v81 -= 3;
       if ((v83 & 1) != 0) {
-        v84 = *((_QWORD*)v80 - 1);
+        v84 = *(v80 - 1);
         if (v84 != 0) {
           if (*(_QWORD*)(*(_QWORD*)v82 + 200LL) != 0) {
             v85 = 128;
@@ -1608,89 +1610,82 @@ __attribute__((swiftcall)) void ui_control_1888120(PSEUDO_X8 x8_, _QWORD* a1,
   __int64 v5;
   _QWORD* v7;
   int v8;
-  __int64 result;
+  __int64 v9;
   __int64 v10;
   __int64 v11;
   __int64 v12;
   __int64 v13;
   __int64 v14;
-  __int64 v15;
-  _BYTE v16[32];
-  _BYTE* v17;
-  __int64 v18[3];
+  struct {
+    _BYTE v15[32];
+    _BYTE* v16;
+  } v15_;
+  __int64 v17[3];
 
   v5 = *(_QWORD*)(a3 + 32);
   if (v5 != 0) {
     v7 = a1;
     v8 = a2;
     if (v5 == a3) {
-      v17 = v16;
-      (*(void (**)(__int64, _BYTE*))(*(_QWORD*)v5 + 24LL))(v5, v16);
+      v15_.v16 = v15_.v15;
+      (*(void (**)(__int64, _BYTE*))(*(_QWORD*)v5 + 24LL))(v5, v15_.v15);
     }
     else {
-      v17 = (_BYTE*)(*(__int64 (**)(__int64))(*(_QWORD*)v5 + 16LL))(v5);
+      v15_.v16 = (_BYTE*)(*(__int64 (**)(__int64))(*(_QWORD*)v5 + 16LL))(v5);
     }
     a2 = v8;
     a1 = v7;
   }
   else {
-    v17 = nullptr;
+    v15_.v16 = nullptr;
   }
-  ui_control_1886f20((void*)(v18), a1, a2, (__int64)v16);
-  result = (__int64)v17;
-  if (v17 == v16) {
-    v10 = 32;
+  ui_control_1886f20((void*)(v17), a1, a2, (__int64)v15_.v15);
+  if (v15_.v16 == v15_.v15) {
+    v9 = 32;
   }
   else {
-    if (v17 == nullptr) {
+    if (v15_.v16 == nullptr) {
       goto LABEL_12;
     }
-    v10 = 40;
+    v9 = 40;
   }
-  result = (*(__int64 (**)(__int64))(*(_QWORD*)v17 + v10))((__int64)v17);
+  (*(void (**)(__int64))(*(_QWORD*)v15_.v16 + v9))((__int64)v15_.v16);
 LABEL_12:
-  v11 = v18[0];
-  v12 = v18[1];
-  if (v18[0] == v18[1]) {
+  v10 = v17[0];
+  v11 = v17[1];
+  if (v17[0] == v17[1]) {
     *a4 = 0;
     a4[1] = 0;
-    if (v11 == 0) {
-      result;
+    if (v10 == 0) {
       return;
     }
     goto LABEL_20;
   }
-  v13 = *(_QWORD*)(v18[0] + 8);
-  *a4 = *(_QWORD*)v18[0];
-  a4[1] = v13;
-  if (v13 != 0) {
-    atomic_fetch_add_explicit((atomic_ullong* volatile)(v13 + 8), 1u,
+  v12 = *(_QWORD*)(v17[0] + 8);
+  *a4 = *(_QWORD*)v17[0];
+  a4[1] = v12;
+  if (v12 != 0) {
+    atomic_fetch_add_explicit((atomic_ullong* volatile)(v12 + 8), 1u,
                               memory_order_relaxed);
   }
   do {
-    v14 = *(_QWORD*)(v12 - 8);
-    if (v14 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v14 + 8),
+    v13 = *(_QWORD*)(v11 - 8);
+    if (v13 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v13 + 8),
                                      0xFFFFFFFFFFFFFFFFLL) == 0) {
-      (*(void (**)(__int64))(*(_QWORD*)v14 + 16LL))(v14);
-      result = std___1___shared_weak_count___release_weak(v14);
+      (*(void (**)(__int64))(*(_QWORD*)v13 + 16LL))(v13);
+      std___1___shared_weak_count___release_weak_alt1(v13);
     }
-    v12 -= 16;
-  } while (v12 != v11);
-  if (v18[0] != 0) {
+    v11 -= 16;
+  } while (v11 != v10);
+  v10 = v17[0];
+  if (v17[0] != 0) {
   LABEL_20:
-    v15 = 128;
+    v14 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-      v15 = 56;
+      v14 = 56;
     }
-    {
-      nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                    v15);
-      return;
-    }
-  }
-  {
-    result;
-    return;
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v14, v10);
   }
 }
 

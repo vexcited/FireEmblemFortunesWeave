@@ -7,18 +7,25 @@ __int64 game_menu_BasicMenu_Destroy_BasicMenu(_QWORD);
 __int64 memcpy(_QWORD, _QWORD, _QWORD);
 __int64 nn_mem_StandardAllocator_Free(_QWORD);
 extern __int64 (*game_hub_anonymous_SystemMenuItem_Info_Hub_vtable[])();
-
 extern __int64 (
     *game_hub_anonymous_SystemMenuItem_Inventory_Dungeon_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern char game_facility_g_unknown_2174af0;
 void __attribute__((noreturn)) GameRoutine_688200(_QWORD);
-__int64 DungeonSystemMenu_Destructor(__int64 a1);
-__int64 DungeonSystemMenu_DeletingDestructor(__int64 a1);
+__int64 DungeonSystemMenu_Destructor_alt1(__int64 a1) __asm__(
+    "DungeonSystemMenu_Destructor");
+__int64 DungeonSystemMenu_DeletingDestructor_alt1(__int64 a1) __asm__(
+    "DungeonSystemMenu_DeletingDestructor");
 _QWORD* DungeonSystemMenu_Unknown143(__int64 a1);
 _QWORD* DungeonSystemMenu_Unknown144(__int64 a1);
+void game_menu_BasicMenu_Destroy_BasicMenu_alt1(__int64) __asm__(
+    "game_menu_BasicMenu_Destroy_BasicMenu");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void DungeonSystemMenu_Destructor(__int64 a1);
+void DungeonSystemMenu_DeletingDestructor(__int64 a1);
 
-__int64 DungeonSystemMenu_Destructor(__int64 a1)
+void DungeonSystemMenu_Destructor(__int64 a1)
 {
   __int64 v1;
   __int64 v2;
@@ -33,13 +40,14 @@ __int64 DungeonSystemMenu_Destructor(__int64 a1)
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v3 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v3);
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v3, v1);
     a1 = v2;
   }
-  return game_menu_BasicMenu_Destroy_BasicMenu(a1);
+  game_menu_BasicMenu_Destroy_BasicMenu_alt1(a1);
 }
 
-__int64 DungeonSystemMenu_DeletingDestructor(__int64 a1)
+void DungeonSystemMenu_DeletingDestructor(__int64 a1)
 {
   __int64 v1;
   __int64 v3;
@@ -57,14 +65,14 @@ __int64 DungeonSystemMenu_DeletingDestructor(__int64 a1)
     if (*(_QWORD*)(v4 + 200) == 0) {
       v5 = 56;
     }
-    nn_mem_StandardAllocator_Free(v4 + v5);
+    nn_mem_StandardAllocator_Free_alt1(v4 + v5, v1);
   }
-  game_menu_BasicMenu_Destroy_BasicMenu(a1);
+  game_menu_BasicMenu_Destroy_BasicMenu_alt1(a1);
   v6 = 128;
   if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
     v6 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v6);
+  nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v6, a1);
 }
 
 _QWORD* DungeonSystemMenu_Unknown143(__int64 a1)

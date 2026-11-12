@@ -59,6 +59,8 @@ void SkeletalBlendCallback_ce3be0(_QWORD* a1, const char** a2, __int64 a3,
                                   unsigned int a4, int a5, float a6);
 __attribute__((swiftcall)) void BlendLayer_d2b700(PSEUDO_X8, _QWORD* result);
 void SkeletalBlendCallback_ce4aa0(__int64 a1, int a2, float a3);
+__attribute__((swiftcall)) void
+BlendLayer_d2b700_alt1(PSEUDO_X8, __int64*) __asm__("BlendLayer_d2b700");
 
 __int64 SkeletalBlendCallback_Unknown2(__int64 result, __int64 a2)
 {
@@ -690,8 +692,9 @@ void SkeletalBlendCallback_ce4aa0(__int64 a1, int a2, float a3)
 
   v3 = *(_QWORD*)(a1 + 32) + 72LL * a2;
   if (*(_BYTE*)(v3 + 52) == 1) {
-    BlendLayer_d2b700((void*)(&v10_.v10),
-                      (_QWORD*)(*(_QWORD*)(v3 + 24) + 56LL * *(int*)(v3 + 48)));
+    BlendLayer_d2b700_alt1(
+        (void*)((__int64*)&v10_.v10),
+        (__int64*)(*(_QWORD*)(v3 + 24) + 56LL * *(int*)(v3 + 48)));
     v6 = v10_.v10;
     v7 = v10_.v11;
     if (v10_.v10 != v10_.v11) {

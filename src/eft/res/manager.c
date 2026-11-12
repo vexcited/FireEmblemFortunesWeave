@@ -26,7 +26,7 @@ eft_res_Manager_Manager_alt1(__int64 a1,
                              __int64 a2) __asm__("eft_res_Manager_Manager");
 __int64 Manager_bcd400(__int64 result, __int64 a2);
 __int64 Manager_bcd4e0(__int64 result, __int64 a2);
-__int64 Manager_bcd5c0(__int64 a1, __int64 a2);
+__int64 Manager_bcd5c0_alt1(__int64 a1, __int64 a2) __asm__("Manager_bcd5c0");
 __int64 eft_res_Manager_Manager_lambda0_Invoke(__int64 a1, __int64 a2,
                                                __int64* a3);
 __int64 GameRoutine_18e5d80(_QWORD);
@@ -69,6 +69,10 @@ void eft_res_Manager_Manager(__int64 a1, __int64 a2);
 __attribute__((swiftcall)) void Manager_bccf60(PSEUDO_X8 x8_, _QWORD* a1,
                                                int a2, const char* a3,
                                                const char* a4);
+__int64 ResFile_5e5f00_alt1(__int64) __asm__("ResFile_5e5f00");
+bool GameRoutine_ad7390_alt1(_QWORD*) __asm__("GameRoutine_ad7390");
+int memcmp_alt1(__int64, __int64, unsigned __int64) __asm__("memcmp");
+__int64 Manager_bcd5c0(__int64 a1, const char* a2);
 
 void eft_res_Manager_Manager(__int64 a1, __int64 a2)
 {
@@ -922,11 +926,11 @@ LABEL_6:
   return result;
 }
 
-__int64 Manager_bcd5c0(__int64 a1, __int64 a2)
+__int64 Manager_bcd5c0(__int64 a1, const char* a2)
 {
   __int64 v2;
   __int64 v3;
-  __int64 v5;
+  _QWORD* v5;
   __int64 v6;
   __int64 v7;
   __int64 v8;
@@ -946,14 +950,14 @@ __int64 Manager_bcd5c0(__int64 a1, __int64 a2)
     return 0;
   }
   while (1) {
-    v5 = *(_QWORD*)(v2 + 168);
-    GameRoutine_ad7390(v5);
-    v6 = ResFile_5e5f00(*(_QWORD*)(*(_QWORD*)(v5 + 8) + 592LL));
+    v5 = *(_QWORD**)(v2 + 168);
+    GameRoutine_ad7390_alt1(v5);
+    v6 = ResFile_5e5f00_alt1(*(_QWORD*)(v5[1] + 592LL));
     v7 = *(_QWORD*)(v6 + 48);
     if (v7 != 0) {
       v8 = v6;
-      if (a2 != 0) {
-        v9 = strlen(a2);
+      if (a2 != nullptr) {
+        v9 = strlen_alt1(a2);
       }
       else {
         v9 = 0;
@@ -962,23 +966,23 @@ __int64 Manager_bcd5c0(__int64 a1, __int64 a2)
       v11 = *(unsigned __int16*)(v7 + 12);
       v12 = v7 + 8 + 16 * v11;
       v13 = *(_DWORD*)v12;
-      if (*(_DWORD*)(v7 + 8) < *(_DWORD*)v12) {
+      if ((signed __int32)*(_DWORD*)(v7 + 8) < (signed __int32)*(_DWORD*)v12) {
         do {
           v16 = (__int64)v13 >> 3;
           if (v9 > v16) {
-            v14 = (*(unsigned __int8*)(a2 + v9 + ~v16) >> (v13 & 7)) & 1;
+            v14 = ((unsigned __int8)a2[v9 + ~v16] >> (v13 & 7)) & 1;
           }
           else {
             v14 = 0;
           }
           v11 = *(unsigned __int16*)(v7 + 12 + 16 * v11 + 2 * v14);
-          v15 = v13 < *(_DWORD*)(v10 + 16 * v11);
+          v15 = v13 < (signed __int32)*(_DWORD*)(v10 + 16 * v11);
           v13 = *(_DWORD*)(v10 + 16 * v11);
         } while (v15);
         v12 = v10 + 16 * v11;
       }
       v17 = *(unsigned __int16**)(v12 + 8);
-      if (v9 == *v17 && (unsigned int)memcmp(v17 + 1, a2) == 0 &&
+      if (v9 == *v17 && memcmp_alt1((__int64)(v17 + 1), (__int64)a2, v9) == 0 &&
           (~(v12 - v7 - 24) & 0xFFFFFFFF0LL) != 0 && *(_QWORD*)(v8 + 40) != 0) {
         break;
       }

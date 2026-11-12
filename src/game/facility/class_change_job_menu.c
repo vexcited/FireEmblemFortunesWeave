@@ -87,9 +87,10 @@ struct PseudoSret snd_play_ff2d0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
                                  double, float);
 void LayoutAccessor_1566d90(__int64, char);
 void LayoutAccessor_1567000(__int64, char);
-__int64 game_facility_ClassChangeJobMenu_CopyUnitAndPergeSkill(__int64 a1,
-                                                               __int64 a2,
-                                                               long double a3);
+__int64 game_facility_ClassChangeJobMenu_CopyUnitAndPergeSkill_alt1(
+    __int64 a1, __int64 a2,
+    long double
+        a3) __asm__("game_facility_ClassChangeJobMenu_CopyUnitAndPergeSkill");
 __int64 game_facility_ClassChangeJobMenu_SortAndFilter(__int64 a1);
 void ClassChangeJobMenu_16b5580(__int64 a1);
 __int64 ClassChangeJobMenu_16b5650(__int64 result);
@@ -172,78 +173,76 @@ void GameRoutine_16b5120(__int64);
 void GameRoutine_18ae960(_QWORD*, char);
 __int64 ClassChangeJobMenu_16b4cc0(__int64* a1);
 __int64 ClassChangeJobMenu_16b6cc0(_QWORD* a1);
+__int64 GameRoutine_6c3980_alt1(__int64 result,
+                                __int64) __asm__("GameRoutine_6c3980");
+void game_facility_ClassChangeJobMenu_CopyUnitAndPergeSkill(__int64 a1,
+                                                            __int64 a2);
 
-__int64 game_facility_ClassChangeJobMenu_CopyUnitAndPergeSkill(__int64 a1,
-                                                               __int64 a2,
-                                                               long double a3)
+void game_facility_ClassChangeJobMenu_CopyUnitAndPergeSkill(__int64 a1,
+                                                            __int64 a2)
 {
-
-#pragma clang fp contract(off)
-  __int64 result;
-  __int64 v5;
-  _QWORD* v6;
-  _QWORD* v7;
-  __int64 v8;
-  __int64 v9;
+  __int64 v3;
+  _QWORD* v4;
+  _QWORD* v5;
+  __int64 v6;
+  __int64 v7;
   struct {
-    _QWORD v10[4];
+    _QWORD v8[4];
+    _QWORD* v9;
+  } v8_;
+  struct {
+    _QWORD* v10;
     _QWORD* v11;
+    __int64 v12;
   } v10_;
-  struct {
-    _QWORD* v12;
-    _QWORD* v13;
-    __int64 v14;
-  } v12_;
 
-  GameRoutine_6c3980(a1 + 1072, a2, a3);
-  v12_.v13 = nullptr;
-  v12_.v14 = 0;
-  v12_.v12 = nullptr;
-  v10_.v10[0] = GameData_208c5b8;
-  v10_.v10[1] = &v12_.v12;
-  v10_.v11 = v10_.v10;
-  GameRoutine_6d7e80(a1 + 1072, 1, (__int64)v10_.v10);
-  result = (__int64)v10_.v11;
-  if (v10_.v11 == v10_.v10) {
-    v5 = 32;
+  GameRoutine_6c3980_alt1(a1 + 1072, a2);
+  v10_.v11 = nullptr;
+  v10_.v12 = 0;
+  v10_.v10 = nullptr;
+  v8_.v8[0] = GameData_208c5b8;
+  v8_.v8[1] = &v10_.v10;
+  v8_.v9 = v8_.v8;
+  GameRoutine_6d7e80(a1 + 1072, 1, (__int64)v8_.v8);
+  if (v8_.v9 == v8_.v8) {
+    v3 = 32;
   }
   else {
-    if (v10_.v11 == nullptr) {
+    if (v8_.v9 == nullptr) {
       goto LABEL_6;
     }
-    v5 = 40;
+    v3 = 40;
   }
-  result = (*(__int64 (**)(__int64))(*v10_.v11 + v5))((__int64)v10_.v11);
+  (*(void (**)(__int64))(*v8_.v9 + v3))((__int64)v8_.v9);
 LABEL_6:
-  v6 = v12_.v12;
-  v7 = v12_.v13;
-  if (v12_.v12 == v12_.v13) {
-    if (v12_.v12 == nullptr) {
-      return result;
+  v4 = v10_.v10;
+  v5 = v10_.v11;
+  if (v10_.v10 == v10_.v11) {
+    if (v10_.v10 == nullptr) {
+      return;
     }
     goto LABEL_8;
   }
   do {
-    v9 = *v6;
-    if (*v6 != 0) {
-      LODWORD(v9) = *(_WORD*)(v9 + 16) & 0xFFF;
+    v7 = *v4;
+    if (*v4 != 0) {
+      LODWORD(v7) = *(_WORD*)(v7 + 16) & 0xFFF;
     }
-    LODWORD(v10_.v10[0]) = v9;
-    result = Unit_6ccca0(a1 + 1072, (__int64)v10_.v10);
-    ++v6;
-  } while (v6 != v7);
-  v6 = v12_.v12;
-  if (v12_.v12 != nullptr) {
+    LODWORD(v8_.v8[0]) = v7;
+    Unit_6ccca0(a1 + 1072, (__int64)v8_.v8);
+    ++v4;
+  } while (v4 != v5);
+  v4 = v10_.v10;
+  if (v10_.v10 != nullptr) {
   LABEL_8:
-    v12_.v13 = v6;
-    v8 = 128;
+    v10_.v11 = v4;
+    v6 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-      v8 = 56;
+      v6 = 56;
     }
-    return nn_mem_StandardAllocator_Free_alt1(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v8);
+    nn_mem_StandardAllocator_Free_alt2(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v6, (__int64)v4);
   }
-  return result;
 }
 
 __int64 ClassChangeJobMenu_16b44a0(__int64 a1, __int64* a2)

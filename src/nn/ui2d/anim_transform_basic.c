@@ -70,6 +70,8 @@ __int64 AnimTransformBasic_56f080(__int64 result, __int64 a2);
 void AnimTransformBasic_56f760(__int64 a1, float* a2, __int64 a3, __int64 a4,
                                __int64 a5, __int64 a6, __int64 a7, __int64 a8);
 __int64 LayoutEx_57b5c0_alt1(__int64) __asm__("LayoutEx_57b5c0");
+__int64 LayoutEx_579180(__int64);
+__int64 memset_alt1(__int64, int, unsigned __int64) __asm__("memset");
 
 bool AnimTransformBasic_56e6a0(__int64 a1)
 {
@@ -138,19 +140,13 @@ __int64 AnimTransformBasic_56e800(__int64 a1, __int64 a2, __int64 a3,
                                   __int64 a4, unsigned __int16 a5)
 {
   __int64 v7;
-  __int64 v8;
+  unsigned __int64 v8;
   __int64 v12;
   __int64 v13;
-  __int64 v14;
+  unsigned __int64 v14;
   __int64 v15;
-  __int64 v16;
-  unsigned __int64 v17;
-  __int64 v18;
   __int64 result;
-  __int64 v20;
-  __int64 v21;
-  __int64 v22;
-  __int64 v23;
+  __int64 v17;
 
   *(_QWORD*)(a1 + 24) = a4;
   *(_QWORD*)(a1 + 40) = 0;
@@ -159,31 +155,31 @@ __int64 AnimTransformBasic_56e800(__int64 a1, __int64 a2, __int64 a3,
     goto LABEL_6;
   }
   v8 = 8 * v7;
-  v12 = GameRoutine_579180(8 * v7);
+  v12 = LayoutEx_579180(8 * v7);
   if (v12 != 0) {
-    v16 = v12;
-    memset(v12, 0, v8, v13, v14, v15);
-    *(_QWORD*)(a1 + 40) = v16;
+    v13 = v12;
+    memset_alt1(v12, 0, v8);
+    *(_QWORD*)(a1 + 40) = v13;
     if (*(_WORD*)(a4 + 12) != 0) {
-      v17 = 0;
+      v14 = 0;
       do {
-        *(_QWORD*)(*(_QWORD*)(a1 + 40) + 8 * v17) =
+        *(_QWORD*)(*(_QWORD*)(a1 + 40) + 8 * v14) =
             (*(__int64 (**)(__int64, __int64, __int64))(*(_QWORD*)a3 + 112LL))(
-                a3, a2, a4 + 20 + *(unsigned int*)(a4 + 20 + 4 * v17));
-        ++v17;
-      } while (v17 < *(unsigned __int16*)(a4 + 12));
+                a3, a2, a4 + 20 + *(unsigned int*)(a4 + 20 + 4 * v14));
+        ++v14;
+      } while (v14 < *(unsigned __int16*)(a4 + 12));
     }
   LABEL_6:
-    v18 = 16LL * a5;
-    result = GameRoutine_579180(v18);
+    v15 = 16LL * a5;
+    result = LayoutEx_579180(v15);
     if (a5 == 0) {
       goto LABEL_10;
     }
     goto LABEL_7;
   }
   *(_QWORD*)(a1 + 40) = 0;
-  v18 = 16LL * a5;
-  result = GameRoutine_579180(v18);
+  v15 = 16LL * a5;
+  result = LayoutEx_579180(v15);
   if (a5 == 0) {
   LABEL_10:
     *(_QWORD*)(a1 + 48) = result;
@@ -192,15 +188,13 @@ __int64 AnimTransformBasic_56e800(__int64 a1, __int64 a2, __int64 a3,
     }
     goto LABEL_11;
   }
-
 LABEL_7:
   if (result == 0) {
     goto LABEL_10;
   }
-  v23 = result;
-  result = memset(result, 0, v18, v20, v21, v22);
-  *(_QWORD*)(a1 + 48) = v23;
-
+  v17 = result;
+  result = memset_alt1(result, 0, v15);
+  *(_QWORD*)(a1 + 48) = v17;
 LABEL_11:
   *(_WORD*)(a1 + 58) = a5;
   return result;

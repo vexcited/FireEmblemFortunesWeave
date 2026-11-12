@@ -90,6 +90,14 @@ void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
 void CmdBtlSystemTroopMenu_Destructor(_QWORD* a1);
 void CmdBtlSystemTroopMenu_DeletingDestructor(_QWORD* a1);
 void game_cmdbtl_anonymous_CmdBtlSystemTroopMenu_SetupCmdBtlForce(__int64 a1);
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
+void __attribute__((noreturn))
+GameRoutine_163b3a0_alt1() __asm__("GameRoutine_163b3a0");
+void __attribute__((noreturn))
+GameRoutine_60a210_alt1() __asm__("GameRoutine_60a210");
 
 void CmdBtlSystemTroopMenu_Destructor(_QWORD* a1)
 {
@@ -990,7 +998,7 @@ game_cmdbtl_anonymous_CmdBtlSystemTroopMenu_SetupCmdBtlForce_closure_Invoke(
   _QWORD* v5;
   __int64 v6;
   __int64 v7;
-  __int64 v8;
+  signed __int64 v8;
   unsigned __int64 v9;
   __int64 v10;
   __int64 v11;
@@ -1006,10 +1014,10 @@ game_cmdbtl_anonymous_CmdBtlSystemTroopMenu_SetupCmdBtlForce_closure_Invoke(
   v4 = v2[2];
   if ((unsigned __int64)v5 >= v4) {
     v7 = *v2;
-    v8 = (__int64)v5 - *v2;
+    v8 = (signed __int64)v5 - *v2;
     v9 = (v8 >> 3) + 1;
     if (v9 >> 61 != 0) {
-      GameRoutine_163b3a0();
+      GameRoutine_163b3a0_alt1();
     }
     v10 = v4 - v7;
     v11 = fw_memory_g_heap_manager_ptr;
@@ -1024,9 +1032,9 @@ game_cmdbtl_anonymous_CmdBtlSystemTroopMenu_SetupCmdBtlForce_closure_Invoke(
     }
     if (v12 != 0) {
       if (v12 >> 61 != 0) {
-        GameRoutine_60a210(a1);
+        GameRoutine_60a210_alt1();
       }
-      v13 = fw_memory_HeapManager_Allocate(
+      v13 = fw_memory_HeapManager_Allocate_alt1(
           *(_QWORD*)fw_memory_g_heap_manager_ptr, 8 * v12, 16, 0);
     }
     else {
@@ -1036,7 +1044,7 @@ game_cmdbtl_anonymous_CmdBtlSystemTroopMenu_SetupCmdBtlForce_closure_Invoke(
     v15 = v13 + v8 - 8 * (v8 >> 3);
     *(_QWORD*)(v13 + v8) = v3;
     v6 = v13 + v8 + 8;
-    memcpy(v15, v7, v8);
+    memcpy_alt1(v15, v7, v8);
     *v2 = v15;
     v2[1] = v6;
     v2[2] = v14;
@@ -1045,7 +1053,7 @@ game_cmdbtl_anonymous_CmdBtlSystemTroopMenu_SetupCmdBtlForce_closure_Invoke(
       if (*(_QWORD*)(*(_QWORD*)v11 + 200LL) == 0) {
         v16 = 56;
       }
-      nn_mem_StandardAllocator_Free(*(_QWORD*)v11 + v16);
+      nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v11 + v16, v7);
     }
   }
   else {

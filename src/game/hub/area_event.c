@@ -62,6 +62,7 @@ void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void GameRoutine_d9bc80_alt1(__int64, __int64,
                              __int64*) __asm__("GameRoutine_d9bc80");
+__int64 GameHr_cb3e60(__int64*, __int64);
 
 __int64 AreaEvent_Destructor(__int64 a1)
 {
@@ -848,8 +849,7 @@ __attribute__((swiftcall)) void AreaEvent_d59720(PSEUDO_X8 x8_, __int64 a1,
       else {
         v59 = *(_QWORD*)(a1 + 1408);
         if (v59 >= *(_QWORD*)(a1 + 1416)) {
-          v64 = HubCharacterNatives_cb3e60((__int64*)(a1 + 1400),
-                                           (__int64)&v77_.v77);
+          v64 = GameHr_cb3e60((__int64*)(a1 + 1400), (__int64)&v77_.v77);
         }
         else if (v83_.v84 != 0x2000 &&
                  (v60 =
@@ -887,7 +887,7 @@ __attribute__((swiftcall)) void AreaEvent_d59720(PSEUDO_X8 x8_, __int64 a1,
     LABEL_121:
       v69 = v3[1];
       if (v69 >= v3[2]) {
-        v3[1] = HubCharacterNatives_cb3e60(v3, (__int64)&v77_.v77);
+        v3[1] = GameHr_cb3e60(v3, (__int64)&v77_.v77);
       }
       else {
         if (v77_.v78 != 0x2000 &&

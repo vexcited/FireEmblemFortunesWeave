@@ -113,6 +113,10 @@ int* GameRoutine_74df60_alt1(int* result,
                              __int64) __asm__("GameRoutine_74df60");
 void __attribute__((noreturn))
 GameRoutine_60a310_alt1() __asm__("GameRoutine_60a310");
+__int64 std___1___shared_weak_count___release_weak_alt2(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+int __cxa_guard_acquire_alt1(__int64) __asm__("__cxa_guard_acquire");
+void __cxa_guard_release_alt1(__int64) __asm__("__cxa_guard_release");
 
 __int64 EntityObject_Unknown24(__int64 a1, __int64 a2)
 {
@@ -533,12 +537,12 @@ _QWORD* EntityObject_816820(_QWORD* result, __int64 a2)
     if ((explicit & 1) == 0) {
       v11 = a2;
       v12 = result;
-      v10 = __cxa_guard_acquire(GameData_212d498);
+      v10 = __cxa_guard_acquire_alt1((__int64)GameData_212d498);
       a2 = v11;
       result = v12;
       if (v10 != 0) {
         *v3 = wld_Crc32(0, "MapObjectModule", 0xFu);
-        __cxa_guard_release(GameData_212d498);
+        __cxa_guard_release_alt1((__int64)GameData_212d498);
         a2 = v11;
         result = v12;
       }
@@ -568,7 +572,7 @@ _QWORD* EntityObject_816820(_QWORD* result, __int64 a2)
           if (atomic_fetch_add((atomic_ullong* volatile)(v9 + 8),
                                0xFFFFFFFFFFFFFFFFLL) == 0) {
             (*(void (**)(__int64))(*(_QWORD*)v9 + 16LL))(v9);
-            return (_QWORD*)std___1___shared_weak_count___release_weak_alt1();
+            return (_QWORD*)std___1___shared_weak_count___release_weak_alt2(v9);
           }
         }
         return result;

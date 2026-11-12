@@ -8,7 +8,8 @@ _QWORD* DungeonRouteReport_f604e0(_QWORD* result);
 __n128 nn_mem_StandardAllocator_Free(_QWORD);
 extern __int64 (*game_hub_DungeonRouteReport_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
-__n128 DungeonRouteReport_f60360(_QWORD* a1);
+__n128
+DungeonRouteReport_f60360_alt1(_QWORD* a1) __asm__("DungeonRouteReport_f60360");
 __int64 GameRoutine_14a1390(_QWORD, _QWORD);
 __int64 Manager_d55430(_QWORD);
 __int64 __cxa_guard_acquire(_QWORD);
@@ -52,14 +53,21 @@ __int64 game_GameVariableTable_Find_alt1(_QWORD*, unsigned __int64*) __asm__(
 __int64 game_HashString_alt1(__int64 result) __asm__("game_HashString");
 int __cxa_guard_acquire_alt1(__int64) __asm__("__cxa_guard_acquire");
 void __cxa_guard_release_alt1(__int64) __asm__("__cxa_guard_release");
+__int64* DungeonRouteReport_f604e0_alt1(__int64* result) __asm__(
+    "DungeonRouteReport_f604e0");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void DungeonRouteReport_f60360(__int64* a1);
 
-__n128 DungeonRouteReport_f60360(_QWORD* a1)
+void DungeonRouteReport_f60360(__int64* a1)
 {
   __int64 v2;
   __int64 v3;
   unsigned __int64 v4;
   __int64 v5;
-  __n128 result;
+  __int64 v6;
   __int64 v7;
   __int64 v8;
   __int64 v9;
@@ -68,9 +76,8 @@ __n128 DungeonRouteReport_f60360(_QWORD* a1)
   __int64 v12;
   __int64 v13;
   __int64 v14;
-  __int64 v15;
 
-  *a1 = game_hub_DungeonRouteReport_vtable;
+  *a1 = (__int64)game_hub_DungeonRouteReport_vtable;
   v3 = a1[1];
   v2 = a1[2];
   if (v2 != v3) {
@@ -87,45 +94,45 @@ __n128 DungeonRouteReport_f60360(_QWORD* a1)
     } while (v4 < (v2 - v3) >> 3);
   }
   a1[2] = v3;
-  DungeonRouteReport_f604e0(a1);
-  v7 = a1[4];
-  v8 = fw_memory_g_heap_manager_ptr;
-  if (v7 != 0) {
-    v9 = a1[5];
-    if (v7 == v9) {
+  DungeonRouteReport_f604e0_alt1(a1);
+  v6 = a1[4];
+  v7 = fw_memory_g_heap_manager_ptr;
+  if (v6 != 0) {
+    v8 = a1[5];
+    if (v6 == v8) {
       goto LABEL_14;
     }
     do {
-      v10 = *(_QWORD*)(v9 - 8);
-      if (v10 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v10 + 8),
-                                       0xFFFFFFFFFFFFFFFFLL) == 0) {
-        (*(void (**)(__int64))(*(_QWORD*)v10 + 16LL))(v10);
-        std___1___shared_weak_count___release_weak(v10);
+      v9 = *(_QWORD*)(v8 - 8);
+      if (v9 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v9 + 8),
+                                      0xFFFFFFFFFFFFFFFFLL) == 0) {
+        (*(void (**)(__int64))(*(_QWORD*)v9 + 16LL))(v9);
+        std___1___shared_weak_count___release_weak_alt1(v9);
       }
-      v9 -= 16;
-    } while (v9 != v7);
-    v11 = a1[4];
-    a1[5] = v7;
-    if (v11 != 0) {
+      v8 -= 16;
+    } while (v8 != v6);
+    v10 = a1[4];
+    a1[5] = v6;
+    v6 = v10;
+    if (v10 != 0) {
     LABEL_14:
-      v12 = 128;
-      if (*(_QWORD*)(*(_QWORD*)v8 + 200LL) == 0) {
-        v12 = 56;
+      v11 = 128;
+      if (*(_QWORD*)(*(_QWORD*)v7 + 200LL) == 0) {
+        v11 = 56;
       }
-      result = nn_mem_StandardAllocator_Free(*(_QWORD*)v8 + v12);
+      nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v7 + v11, v6);
     }
   }
-  v13 = a1[1];
-  if (v13 != 0) {
-    v14 = *(_QWORD*)v8;
-    a1[2] = v13;
-    v15 = 128;
-    if (*(_QWORD*)(v14 + 200) == 0) {
-      v15 = 56;
+  v12 = a1[1];
+  if (v12 != 0) {
+    v13 = *(_QWORD*)v7;
+    a1[2] = v12;
+    v14 = 128;
+    if (*(_QWORD*)(v13 + 200) == 0) {
+      v14 = 56;
     }
-    return nn_mem_StandardAllocator_Free(v14 + v15);
+    nn_mem_StandardAllocator_Free_alt1(v13 + v14, v12);
   }
-  return result;
 }
 
 _QWORD* DungeonRouteReport_f604e0(_QWORD* result)

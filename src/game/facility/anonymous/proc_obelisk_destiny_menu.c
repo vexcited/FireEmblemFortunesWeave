@@ -17,7 +17,8 @@ void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
 void __attribute__((noreturn)) GameRoutine_874520(_QWORD);
 __int64 ProcObeliskDestinyMenu_Unknown91(_QWORD* a1, int a2);
 __int64 ProcObeliskDestinyMenu_Unknown128(__int64 a1);
-__int64 ProcObeliskDestinyMenu_Unknown143(_BYTE* a1, __int64* a2);
+__int64 ProcObeliskDestinyMenu_Unknown143_alt1(_BYTE* a1, __int64* a2) __asm__(
+    "ProcObeliskDestinyMenu_Unknown143");
 __int64 GameRoutine_990c70(_QWORD);
 __int64 ObeliskDestinyMenuItem_1a06510(_QWORD, _QWORD);
 __int64 ObeliskDestinyMenuItem_1a06cc0(_QWORD, _QWORD, _QWORD);
@@ -42,6 +43,17 @@ __n128 snd_Fade_Fade_10c830(_QWORD, double);
 extern __int64 (*GameData_2116200[])();
 extern __int64 (*GameData_2116280[])();
 __int64 game_facility_anonymous_ProcObeliskDestinyMenu_ZLCall(__int64 a1);
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
+void __attribute__((noreturn))
+GameRoutine_60a210_alt1() __asm__("GameRoutine_60a210");
+void __attribute__((noreturn))
+GameRoutine_874520_alt1() __asm__("GameRoutine_874520");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void ProcObeliskDestinyMenu_Unknown143(_BYTE* a1, __int64* a2);
 
 __int64 ProcObeliskDestinyMenu_Unknown91(_QWORD* a1, int a2)
 {
@@ -269,15 +281,15 @@ __int64 ProcObeliskDestinyMenu_Unknown128(__int64 a1)
   return result;
 }
 
-__int64 ProcObeliskDestinyMenu_Unknown143(_BYTE* a1, __int64* a2)
+void ProcObeliskDestinyMenu_Unknown143(_BYTE* a1, __int64* a2)
 {
-  __int64 result;
+  int v4;
   char v5;
   unsigned __int64 v6;
   unsigned __int64 v7;
   __int64 v8;
   __int64 v9;
-  __int64 v10;
+  signed __int64 v10;
   unsigned __int64 v11;
   __int64 v12;
   unsigned __int64 v13;
@@ -287,7 +299,7 @@ __int64 ProcObeliskDestinyMenu_Unknown143(_BYTE* a1, __int64* a2)
   __int64 v17;
   __int64 v18;
 
-  result = (*(__int64 (**)(_BYTE*))(*(_QWORD*)a1 + 192LL))(a1);
+  v4 = (*(__int64 (**)(_BYTE*))(*(_QWORD*)a1 + 192LL))(a1);
   if (a1[1064] != 0) {
     v5 = 3;
   }
@@ -301,7 +313,7 @@ __int64 ProcObeliskDestinyMenu_Unknown143(_BYTE* a1, __int64* a2)
     v10 = v6 - *a2;
     v11 = 1 - 0x3333333333333333LL * (v10 >> 3);
     if (v11 > 0x666666666666666LL) {
-      GameRoutine_874520(result);
+      GameRoutine_874520_alt1();
     }
     v12 = fw_memory_g_heap_manager_ptr;
     v13 = 0xCCCCCCCCCCCCCCCDLL * ((__int64)(v7 - v9) >> 3);
@@ -316,12 +328,12 @@ __int64 ProcObeliskDestinyMenu_Unknown143(_BYTE* a1, __int64* a2)
     }
     if (v14 != 0) {
       if (v14 > 0x666666666666666LL) {
-        GameRoutine_60a210(result);
+        GameRoutine_60a210_alt1();
       }
-      v15 = result;
-      v16 = fw_memory_HeapManager_Allocate(
+      v15 = v4;
+      v16 = fw_memory_HeapManager_Allocate_alt1(
           *(_QWORD*)fw_memory_g_heap_manager_ptr, 40 * v14, 16, 0);
-      LODWORD(result) = v15;
+      v4 = v15;
     }
     else {
       v16 = 0;
@@ -334,8 +346,8 @@ __int64 ProcObeliskDestinyMenu_Unknown143(_BYTE* a1, __int64* a2)
     *(_QWORD*)(v17 + 32) = 0;
     *(_BYTE*)(v17 + 16) = 1;
     *(_DWORD*)(v17 + 20) = 6;
-    *(_DWORD*)(v17 + 24) = result;
-    result = memcpy(v16, v9, v10);
+    *(_DWORD*)(v17 + 24) = v4;
+    memcpy_alt1(v16, v9, v10);
     *a2 = v16;
     a2[1] = v8;
     a2[2] = v16 + 40 * v14;
@@ -344,7 +356,7 @@ __int64 ProcObeliskDestinyMenu_Unknown143(_BYTE* a1, __int64* a2)
       if (*(_QWORD*)(*(_QWORD*)v12 + 200LL) == 0) {
         v18 = 56;
       }
-      result = nn_mem_StandardAllocator_Free(*(_QWORD*)v12 + v18);
+      nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v12 + v18, v9);
     }
   }
   else {
@@ -355,10 +367,9 @@ __int64 ProcObeliskDestinyMenu_Unknown143(_BYTE* a1, __int64* a2)
     v8 = v6 + 40;
     *(_BYTE*)(v6 + 16) = 1;
     *(_DWORD*)(v6 + 20) = 6;
-    *(_DWORD*)(v6 + 24) = result;
+    *(_DWORD*)(v6 + 24) = v4;
   }
   a2[1] = v8;
-  return result;
 }
 
 __int64 ProcObeliskDestinyMenu_Unknown12(__int64 a1, __int64 a2, char a3)

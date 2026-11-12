@@ -7,31 +7,32 @@ extern __int64 (*GameData_201a658[])();
 extern __int64 GameData_2240070;
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern int GameData_22400f0;
-__int64 AIValueFlags_Destructor(__int64 result);
+__int64
+AIValueFlags_Destructor_alt1(__int64 result) __asm__("AIValueFlags_Destructor");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void AIValueFlags_Destructor(_QWORD* a1);
 
-__int64 AIValueFlags_Destructor(__int64 result)
+void AIValueFlags_Destructor(_QWORD* a1)
 {
   __int64 v1;
-  _QWORD* v2;
   __int64 v3;
 
-  v1 = *(_QWORD*)(result + 8);
-  v2 = (_QWORD*)result;
+  v1 = a1[1];
   if (v1 != 0) {
-    *(_QWORD*)(result + 16) = v1;
+    a1[2] = v1;
     v3 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v3 = 56;
     }
-    result = nn_mem_StandardAllocator_Free(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v3);
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v3, v1);
   }
-  *v2 = GameData_201a658;
-  if ((_QWORD*)GameData_2240070 == v2) {
+  *a1 = GameData_201a658;
+  if ((_QWORD*)GameData_2240070 == a1) {
     GameData_2240070 = 0;
     GameData_22400f0 = 0;
   }
-  return result;
 }
 
 #pragma GCC visibility pop

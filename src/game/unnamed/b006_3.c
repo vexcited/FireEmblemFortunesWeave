@@ -394,6 +394,8 @@ __int64 GameHr_86c6a0(__int64 a1);
 void GameHr_86e660(_QWORD* a1);
 __int64 GameHr_86eab0(__int64 a1);
 __int64 GameHr_872100(__int64 a1);
+__int64 memset(__int64, int, unsigned __int64);
+__int64 GameHr_86f320();
 
 __int64 GameHr_7f3520(__int64* a1, __int64 a2)
 {
@@ -1825,30 +1827,26 @@ __int64 GameHr_86f080(__int64 a1)
   return result;
 }
 
-__int64 GameHr_86f320(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
-                      __int64 a5, __int64 a6)
+__int64 GameHr_86f320()
 {
-  __int64 v6;
-  __int64 v7;
-  __int64 v8;
-  __int64 v9;
+  __int64 v0;
   __int64 result;
-  __int64 v11;
+  __int64 v2;
 
-  v6 = *(_QWORD*)(*GameData_212ce88[0] + 8);
-  *(_WORD*)(v6 + 4) = 9;
-  *(_DWORD*)v6 = 0;
-  *(_DWORD*)(v6 + 16) = 0;
-  *(_DWORD*)(v6 + 48) = 0;
-  *(_QWORD*)(v6 + 8) = 0x100000000LL;
-  *(_QWORD*)(v6 + 32) = *(_QWORD*)(v6 + 24);
-  GameRoutine_1a0ba50(v6 + 64, 255, 1024, a4, a5, a6);
-  result = GameRoutine_1a0ba50(v6 + 1096, 0, 1536, v7, v8, v9);
-  v11 = *(_QWORD*)(v6 + 2640);
-  *(_DWORD*)(v6 + 2632) = 0;
-  *(_QWORD*)(v6 + 2664) = 0;
-  *(_QWORD*)(v6 + 2672) = 0;
-  *(_QWORD*)(v6 + 2648) = v11;
+  v0 = *(_QWORD*)(*GameData_212ce88[0] + 8);
+  *(_WORD*)(v0 + 4) = 9;
+  *(_DWORD*)v0 = 0;
+  *(_DWORD*)(v0 + 16) = 0;
+  *(_DWORD*)(v0 + 48) = 0;
+  *(_QWORD*)(v0 + 8) = 0x100000000LL;
+  *(_QWORD*)(v0 + 32) = *(_QWORD*)(v0 + 24);
+  memset(v0 + 64, 255, 0x400u);
+  result = memset(v0 + 1096, 0, 0x600u);
+  v2 = *(_QWORD*)(v0 + 2640);
+  *(_DWORD*)(v0 + 2632) = 0;
+  *(_QWORD*)(v0 + 2664) = 0;
+  *(_QWORD*)(v0 + 2672) = 0;
+  *(_QWORD*)(v0 + 2648) = v2;
   return result;
 }
 

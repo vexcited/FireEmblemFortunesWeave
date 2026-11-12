@@ -772,6 +772,8 @@ game_HashString32_alt1(const char* result) __asm__("game_HashString32");
 int __cxa_guard_acquire_alt1(__int64) __asm__("__cxa_guard_acquire");
 void Impl_1229960_alt1(__int64) __asm__("Impl_1229960");
 void __cxa_guard_release_alt1(__int64) __asm__("__cxa_guard_release");
+void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 __int64 game_ProcManager_FindByDesc_lambda0_Invoke(__int64 result, _QWORD* a2)
 {
@@ -2548,10 +2550,11 @@ void ProcManager_126d640()
   int v6;
   unsigned __int64 v7;
   __int64 v8;
-  __int128 v9;
+  __int64 v9;
+  __int128 v10;
 
-  v9 = (__typeof__(v9)){0};
-  Camera_7c04c0(*(_QWORD*)(*GameData_212cfc8[0] + 432), &v9);
+  v10 = (__typeof__(v10)){0};
+  Camera_7c04c0(*(_QWORD*)(*GameData_212cfc8[0] + 432), &v10);
   v0 = GameData_21d87e0;
   v1 = GameData_21d87c8;
   v2 = GameData_21d87e0 - 1 + GameData_21d87d8;
@@ -2566,13 +2569,14 @@ void ProcManager_126d640()
   v7 = v5 - (v0 + GameData_21d87d8) + 1;
   *(_DWORD*)(game_script_hub_g_frame_counter + 260) = v6;
   if (v7 >= 0x800) {
-    if (*(_QWORD*)(v1 - 8) != 0) {
-      v8 = 128;
+    v8 = *(_QWORD*)(v1 - 8);
+    if (v8 != 0) {
+      v9 = 128;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-        v8 = 56;
+        v9 = 56;
       }
-      nn_mem_StandardAllocator_Free_alt1(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v8);
+      nn_mem_StandardAllocator_Free_alt2(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v9, v8);
       v1 = GameData_21d87c8;
     }
     GameData_21d87c8 = v1 - 8;

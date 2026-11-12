@@ -17,7 +17,7 @@ void __attribute__((noreturn)) GameRoutine_9cc3b0(_QWORD);
 __int64 NoticeFile_Unknown4_alt1(__int64 result, __int64 a2, __int64 a3,
                                  __int64 a4, __int64 a5,
                                  __int64 a6) __asm__("NoticeFile_Unknown4");
-__int64 NoticeFile_Unknown5();
+__int64 NoticeFile_Unknown5_alt1() __asm__("NoticeFile_Unknown5");
 __int64 NoticeFile_9cb420_alt1() __asm__("NoticeFile_9cb420");
 __int64 GameRoutine_2b0();
 __int64 __cxa_guard_acquire(_QWORD);
@@ -47,6 +47,7 @@ void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void NoticeFile_Unknown4();
 void NoticeFile_9cb420();
+void NoticeFile_Unknown5();
 
 __int64* NoticeFile_9ca9c0()
 {
@@ -570,7 +571,7 @@ void NoticeFile_Unknown4()
   }
 }
 
-__int64 NoticeFile_Unknown5()
+void NoticeFile_Unknown5()
 {
   __int64 v0;
   __int64 v1;
@@ -579,7 +580,6 @@ __int64 NoticeFile_Unknown5()
   __int64 v4;
   __int64 v5;
   __int64 v6;
-  __int64 result;
 
   v1 = GameData_21f8158;
   v0 = GameData_21f8160;
@@ -598,13 +598,12 @@ __int64 NoticeFile_Unknown5()
         else {
           v6 = 56;
         }
-        result = nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v6);
+        nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v6, v4);
       }
       v0 = v2;
     } while (v2 != v1);
   }
   GameData_21f8160 = v1;
-  return result;
 }
 
 void NoticeFile_9cb420()

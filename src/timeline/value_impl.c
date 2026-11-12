@@ -28,6 +28,8 @@ __int64 Value_7f50(__int64* a1);
 unsigned __int64 Value_b210(__int64 a1, __int64 a2, unsigned __int64 a3);
 __int64 Value_b320(_QWORD** a1, __int64 a2, unsigned __int64 a3, __int64 a4,
                    unsigned __int64 a5, unsigned __int64 a6);
+__int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
+__int64 memset_alt1(__int64, int, unsigned __int64) __asm__("memset");
 
 __int64 Value_c30(__int64* a1, int* a2, unsigned __int8* a3, __int64 a4)
 {
@@ -1046,7 +1048,7 @@ __int64 Value_b320(_QWORD** a1, __int64 a2, unsigned __int64 a3, __int64 a4,
   unsigned __int64 v14;
 
   if (a3 >= a5) {
-    memcpy(a2, a4, a5);
+    memcpy_alt1(a2, a4, a5);
     v10 = a6 > a5;
     v11 = a6 - a5;
     if (!v10) {
@@ -1054,7 +1056,7 @@ __int64 Value_b320(_QWORD** a1, __int64 a2, unsigned __int64 a3, __int64 a4,
     }
   }
   else {
-    memset(a2, 0, a3, a4, a5, a6);
+    memset_alt1(a2, 0, a3);
     v10 = a6 > a5;
     v11 = a6 - a5;
     if (!v10) {
@@ -1064,7 +1066,7 @@ __int64 Value_b320(_QWORD** a1, __int64 a2, unsigned __int64 a3, __int64 a4,
   v12 = (__int64)*a1;
   v13 = (*a1)[2];
   if (v13 + v11 <= (*a1)[3]) {
-    memcpy(a2 + a5, *(_QWORD*)(v12 + 40) + v13, v11);
+    memcpy_alt1(a2 + a5, *(_QWORD*)(v12 + 40) + v13, v11);
     *(_QWORD*)(v12 + 16) += v11;
     return 0;
   }

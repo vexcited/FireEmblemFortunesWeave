@@ -12,7 +12,8 @@ extern __int64 (*game_cmdbtl_anonymous_ProcCmdBtlSeqEscape_vtable[])();
 extern __int64 GameData_225ca88;
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 ProcCmdBtlSeqEscape_Destructor(__int64 a1);
-__int64 ProcCmdBtlSeqEscape_DeletingDestructor(__int64 a1);
+__int64 ProcCmdBtlSeqEscape_DeletingDestructor_alt1(__int64 a1) __asm__(
+    "ProcCmdBtlSeqEscape_DeletingDestructor");
 __attribute__((swiftcall)) void GameRoutine_1085a10(PSEUDO_X8, _QWORD, _QWORD,
                                                     _QWORD, _QWORD);
 __attribute__((swiftcall)) void math_Quat_FromYawPitchRoll(PSEUDO_X8, float,
@@ -38,6 +39,12 @@ extern __int64* GameData_212f2e0;
 extern __int64* game_map_MapRandom_instance__ptr[3];
 int8x16_t* GameRoutine_e7bed0(int8x16_t* result, char);
 __int64 ProcCmdBtlSeqEscape_f8f900();
+__int64 game_ProcInst_Unregister_alt1(__int64 result) __asm__(
+    "game_ProcInst_Unregister");
+void GameRoutine_658c00_alt1(__int64*) __asm__("GameRoutine_658c00");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void ProcCmdBtlSeqEscape_DeletingDestructor(__int64 a1);
 
 __int64 ProcCmdBtlSeqEscape_f8f900()
 {
@@ -567,7 +574,7 @@ LABEL_7:
   return GameRoutine_658c00(a1 + 88);
 }
 
-__int64 ProcCmdBtlSeqEscape_DeletingDestructor(__int64 a1)
+void ProcCmdBtlSeqEscape_DeletingDestructor(__int64 a1)
 {
   __int64 v2;
   int v3;
@@ -588,20 +595,19 @@ __int64 ProcCmdBtlSeqEscape_DeletingDestructor(__int64 a1)
       goto LABEL_5;
     }
   }
-
 LABEL_7:
   *(_QWORD*)a1 = game_ProcInst_vtable;
   if ((*(_WORD*)(a1 + 136) & 0x100) != 0) {
     *(_WORD*)(a1 + 136) &= ~0x100u;
   }
-  game_ProcInst_Unregister(a1);
-  GameRoutine_658c00(a1 + 88);
+  game_ProcInst_Unregister_alt1(a1);
+  GameRoutine_658c00_alt1((__int64*)(a1 + 88));
   v4 = 128;
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
     v4 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v4);
+  nn_mem_StandardAllocator_Free_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v4, a1);
 }
 
 #pragma GCC visibility pop

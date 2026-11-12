@@ -27,7 +27,8 @@ extern __int64* GameData_212ceb0;
 extern __int64* GameData_212e008[9];
 extern char* GameData_211e868[14];
 void __attribute__((noreturn)) GameRoutine_60a310(_QWORD, _QWORD);
-__int64 ProcObeliskDepositoryLegionMenu_Destructor(__int64 a1);
+__int64 ProcObeliskDepositoryLegionMenu_Destructor_alt1(__int64 a1) __asm__(
+    "ProcObeliskDepositoryLegionMenu_Destructor");
 const char* ProcObeliskDepositoryLegionMenu_Unknown43(__int64 a1, char a2);
 __int64 ProcObeliskDepositoryLegionMenu_Unknown88(__int64 a1);
 __int64 game_facility_anonymous_ProcObeliskDepositoryLegionMenu_OnUnbindImpl(
@@ -43,7 +44,8 @@ bool game_facility_anonymous_ProcObeliskDepositoryLegionMenu_SortAndFilter_closu
     __int64 a1, _QWORD* a2);
 __int64 GameRoutine_20();
 extern __int64 GameData_212cf98[2];
-__int64 ProcObeliskDepositoryLegionMenu_DeletingDestructor(__int64 a1);
+__int64 ProcObeliskDepositoryLegionMenu_DeletingDestructor_alt1(
+    __int64 a1) __asm__("ProcObeliskDepositoryLegionMenu_DeletingDestructor");
 __int64 fw_memory_HeapManager_Allocate_alt1(
     __int64, __int64, __int64,
     unsigned int) __asm__("fw_memory_HeapManager_Allocate");
@@ -53,8 +55,14 @@ extern __int64 (
     *game_facility_anonymous_ObeliskDepositoryLegionMenuItem_Empty_vtable[])();
 __int64
 game_facility_anonymous_ProcObeliskDepositoryLegionMenu_AddItemList(__int64 a1);
+void game_menu_BasicMenu_Destroy_BasicMenu_alt1(__int64) __asm__(
+    "game_menu_BasicMenu_Destroy_BasicMenu");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void ProcObeliskDepositoryLegionMenu_Destructor(__int64 a1);
+void ProcObeliskDepositoryLegionMenu_DeletingDestructor(__int64 a1);
 
-__int64 ProcObeliskDepositoryLegionMenu_Destructor(__int64 a1)
+void ProcObeliskDepositoryLegionMenu_Destructor(__int64 a1)
 {
   __int64 v1;
   __int64 v2;
@@ -65,6 +73,7 @@ __int64 ProcObeliskDepositoryLegionMenu_Destructor(__int64 a1)
   __int64 v7;
   __int64 v8;
   __int64 v9;
+  __int64 v10;
 
   v1 = GameData_21f42b0;
   v2 = GameData_21f4298;
@@ -79,23 +88,24 @@ __int64 ProcObeliskDepositoryLegionMenu_Destructor(__int64 a1)
   --GameData_21f42b0;
   GameData_21f4280 = v7;
   if ((unsigned __int64)(v6 - (v1 + GameData_21f42a8) + 1) >= 0x400) {
-    if (*(_QWORD*)(GameData_21f4298 - 8) != 0) {
-      v8 = a1;
-      v9 = 128;
+    v8 = *(_QWORD*)(GameData_21f4298 - 8);
+    if (v8 != 0) {
+      v9 = a1;
+      v10 = 128;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-        v9 = 56;
+        v10 = 56;
       }
-      nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                    v9);
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v10, v8);
       v2 = GameData_21f4298;
-      a1 = v8;
+      a1 = v9;
     }
     GameData_21f4298 = v2 - 8;
   }
-  return game_menu_BasicMenu_Destroy_BasicMenu(a1);
+  game_menu_BasicMenu_Destroy_BasicMenu_alt1(a1);
 }
 
-__int64 ProcObeliskDepositoryLegionMenu_DeletingDestructor(__int64 a1)
+void ProcObeliskDepositoryLegionMenu_DeletingDestructor(__int64 a1)
 {
   __int64 v2;
   __int64 v3;
@@ -113,10 +123,11 @@ __int64 ProcObeliskDepositoryLegionMenu_DeletingDestructor(__int64 a1)
   __int64 v15;
   __int64 v16;
   __int64 v17;
+  __int64 v18;
 
   v2 = GameData_212cf98[0];
-  v4 = *(_QWORD*)((char*)GameRoutine_20 + GameData_212cf98[0]);
-  v3 = *(_QWORD*)((char*)GameRoutine_20 + GameData_212cf98[0] + 8);
+  v4 = *(_QWORD*)((char*)((char*)0x20LL) + GameData_212cf98[0]);
+  v3 = *(_QWORD*)((char*)((char*)0x20LL) + GameData_212cf98[0] + 8);
   v6 = *(__int64*)((char*)((_UNKNOWN**)0x8LL) + GameData_212cf98[0]);
   v5 = *(__int64*)((char*)((_UNKNOWN**)0x8LL) + GameData_212cf98[0] + 8);
   v7 = v5 == v6;
@@ -134,23 +145,24 @@ __int64 ProcObeliskDepositoryLegionMenu_DeletingDestructor(__int64 a1)
   *v14 = v13;
   v15 = fw_memory_g_heap_manager_ptr;
   if ((unsigned __int64)(v11 - (v3 + v4) + 1) >= 0x400) {
-    if (*(_QWORD*)(v5 - 8) != 0) {
-      v16 = 128;
+    v16 = *(_QWORD*)(v5 - 8);
+    if (v16 != 0) {
+      v17 = 128;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-        v16 = 56;
+        v17 = 56;
       }
-      nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                    v16);
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v17, v16);
       v5 = *(_QWORD*)((char*)((__int128*)0x10LL) + v2);
     }
     *(_QWORD*)((char*)((__int128*)0x10LL) + v2) = v5 - 8;
   }
-  game_menu_BasicMenu_Destroy_BasicMenu(a1);
-  v17 = 128;
+  game_menu_BasicMenu_Destroy_BasicMenu_alt1(a1);
+  v18 = 128;
   if (*(_QWORD*)(*(_QWORD*)v15 + 200LL) == 0) {
-    v17 = 56;
+    v18 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)v15 + v17);
+  nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v15 + v18, a1);
 }
 
 const char* ProcObeliskDepositoryLegionMenu_Unknown43(__int64 a1, char a2)

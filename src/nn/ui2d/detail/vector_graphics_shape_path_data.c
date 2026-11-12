@@ -6,9 +6,9 @@
 
 __int64 memset(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 float GameRoutine_5a3700(unsigned __int16*, float);
-__int64 VectorGraphicsShapePathData_Unknown2(__int64 result, __int64 a2,
-                                             __int64 a3, __int64 a4, __int64 a5,
-                                             __int64 a6);
+__int64 VectorGraphicsShapePathData_Unknown2_alt1(
+    __int64 result, __int64 a2, __int64 a3, __int64 a4, __int64 a5,
+    __int64 a6) __asm__("VectorGraphicsShapePathData_Unknown2");
 __int64 VectorGraphicsShapePathData_Unknown3(__int64 result);
 void VectorGraphicsShapePathData_Unknown5(__int64 a1, float a2);
 __int64 VectorGraphicsShapePathData_Unknown9(_QWORD* a1);
@@ -19,6 +19,8 @@ __int64 VectorGraphicsShapePathData_Unknown10(__int64 a1);
 __int64 VectorGraphicsShapePathData_5a3ca0(float* a1, float32x2_t* a2,
                                            unsigned int* a3, __int64 a4,
                                            _DWORD* a5);
+__int64 memset_alt1(__int64, int, unsigned __int64) __asm__("memset");
+__int64 VectorGraphicsShapePathData_Unknown2(__int64 result);
 
 __int64 VectorGraphicsShapePathData_5a3ca0(float* a1, float32x2_t* a2,
                                            unsigned int* a3, __int64 a4,
@@ -243,26 +245,24 @@ LABEL_13:
   return result;
 }
 
-__int64 VectorGraphicsShapePathData_Unknown2(__int64 result, __int64 a2,
-                                             __int64 a3, __int64 a4, __int64 a5,
-                                             __int64 a6)
+__int64 VectorGraphicsShapePathData_Unknown2(__int64 result)
 {
-  __int64 v6;
-  __int64 v7;
-  __int64 v8;
-  __int64 v9;
-  bool v10;
+  __int64 v1;
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  bool v5;
 
-  v6 = *(_QWORD*)(result + 24);
-  v7 = result;
-  v8 = *(int*)(*(_QWORD*)(result + 32) + 24LL);
-  v9 = *(_QWORD*)(v6 + 16);
-  v10 = (int)v8 < 1 || v9 == 0;
-  *(_QWORD*)(v6 + 16) = v9 + 24LL * (int)v8;
-  if (!v10) {
-    result = memset(v9, 0, 24 * v8, a4, a5, a6);
+  v1 = *(_QWORD*)(result + 24);
+  v2 = result;
+  v3 = *(int*)(*(_QWORD*)(result + 32) + 24LL);
+  v4 = *(_QWORD*)(v1 + 16);
+  v5 = (int)v3 < 1 || v4 == 0;
+  *(_QWORD*)(v1 + 16) = v4 + 24LL * (int)v3;
+  if (!v5) {
+    result = memset_alt1(v4, 0, 24 * v3);
   }
-  *(_QWORD*)(v7 + 40) = v9;
+  *(_QWORD*)(v2 + 40) = v4;
   return result;
 }
 

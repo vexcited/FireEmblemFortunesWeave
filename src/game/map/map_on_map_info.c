@@ -138,7 +138,7 @@ extern __int64 GameData_2131678;
 extern __int64 game_GameModeData_instance_;
 __int64 MapOnMapInfo_15fbc40(__int64 a1, __int64 a2);
 __int64 MapOnMapInfo_15fee80(__int64 a1, _QWORD* a2);
-__int64 MapOnMapInfo_15ff4a0(__int64 a1);
+__int64 MapOnMapInfo_15ff4a0_alt1(__int64 a1) __asm__("MapOnMapInfo_15ff4a0");
 __attribute__((swiftcall)) void MapOnMapInfo_1600600(PSEUDO_X8 x8_, __int64 a1,
                                                      _QWORD** a2, _QWORD* a3,
                                                      _QWORD* a4);
@@ -180,6 +180,12 @@ float LayoutAccessor_15638b0(__int64*, char*, char);
 float ui_LayoutAccessor_SetPaneTranslate(__int64*, const char*, __int64);
 int sprintf_alt1(__int64, const char*, ...) __asm__("sprintf");
 __int64 MapOnMapInfo_1600a80(__int64 result);
+__attribute__((swiftcall)) void game_1366bd0(PSEUDO_X8, __int64, __int64,
+                                             __int64);
+__int64 GameHr_6c2b50(__int64);
+void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void MapOnMapInfo_15ff4a0(__int64 a1);
 
 _QWORD* MapOnMapInfo_15fbb90(_QWORD* a1, unsigned int a2)
 {
@@ -635,7 +641,7 @@ LABEL_18:
   return (unsigned __int8)a2 & 1;
 }
 
-__int64 MapOnMapInfo_15ff4a0(__int64 a1)
+void MapOnMapInfo_15ff4a0(__int64 a1)
 {
   __int64 v2;
   __int64 v3;
@@ -649,11 +655,11 @@ __int64 MapOnMapInfo_15ff4a0(__int64 a1)
   __int64 v11;
   __int64 v12;
   __int64 v13;
-  __int64 result;
+  __int64 v14;
   __int64 v15;
   __int64 v16;
-  __int64 v17;
-  char v18;
+  char v17;
+  __int64 v18;
   __int64 v19;
   __int64 v20;
   __int64 v21;
@@ -717,7 +723,7 @@ __int64 MapOnMapInfo_15ff4a0(__int64 a1)
     *(_QWORD*)(v5 + 272) = 0;
     *(_QWORD*)(v5 + 280) = 0;
     *(_QWORD*)(v5 + 288) = 0;
-    GameRoutine_6c2b50(a1 + v2 + 304);
+    GameHr_6c2b50(a1 + v2 + 304);
     *(_DWORD*)(v5 + 2528) = 0;
     *(_BYTE*)(v5 + 2532) = 0;
     *(_QWORD*)(v5 + 2536) = 0;
@@ -789,8 +795,8 @@ __int64 MapOnMapInfo_15ff4a0(__int64 a1)
   v25_.v25[1] = 0x500000040LL;
   v25_.v25[2] = 0x10000000100000LL;
   v25_.v25[3] = 0;
-  GameRoutine_1366bd0((void*)(&v23_.v23), (__int64)"Layout/Battle.arc",
-                      (__int64)"Battle_UnitInfoOnMap", (__int64)v25_.v25);
+  game_1366bd0((void*)(&v23_.v23), (__int64)"Layout/Battle.arc",
+               (__int64)"Battle_UnitInfoOnMap", (__int64)v25_.v25);
   v9 = v23_.v23;
   v10 = v23_.v24;
   v11 = *(_QWORD*)(a1 + 32);
@@ -801,13 +807,13 @@ __int64 MapOnMapInfo_15ff4a0(__int64 a1)
   if (v11 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v11 + 8),
                                    0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v11 + 16LL))(v11);
-    std___1___shared_weak_count___release_weak(v11);
+    std___1___shared_weak_count___release_weak_alt1(v11);
   }
   v12 = v23_.v24;
   if (v23_.v24 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v23_.v24 + 8),
                                         0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v12 + 16LL))(v12);
-    std___1___shared_weak_count___release_weak(v12);
+    std___1___shared_weak_count___release_weak_alt1(v12);
   }
   v13 = *(_QWORD*)(a1 + 32);
   v22[0] = *(_QWORD*)(a1 + 24);
@@ -819,7 +825,7 @@ __int64 MapOnMapInfo_15ff4a0(__int64 a1)
     if (atomic_fetch_add((atomic_ullong* volatile)(v13 + 8),
                          0xFFFFFFFFFFFFFFFFLL) == 0) {
       (*(void (**)(__int64))(*(_QWORD*)v13 + 16LL))(v13);
-      std___1___shared_weak_count___release_weak(v13);
+      std___1___shared_weak_count___release_weak_alt1(v13);
     }
   }
   else {
@@ -830,41 +836,43 @@ __int64 MapOnMapInfo_15ff4a0(__int64 a1)
   if (*GameData_212d568[0] != 0) {
     LayoutAccessor_155e830(*GameData_212d568[0] + 40, 0);
   }
-  ui_LayoutAccessor_SetPaneVisible_alt1(a1 + 40, (__int64)"L_UnitInfo00", 0);
-  result = ui_LayoutAccessor_SetPaneVisible_alt1(a1 + 40,
-                                                 (__int64)"L_SubInfoNum", 0);
-  v15 = v25_.v27;
+  ui_LayoutAccessor_SetPaneVisible_alt2(a1 + 40, "L_UnitInfo00", 0);
+  ui_LayoutAccessor_SetPaneVisible_alt2(a1 + 40, "L_SubInfoNum", 0);
+  v14 = v25_.v27;
   if (v25_.v27 != 0) {
-    v16 = v25_.v28;
+    v15 = v25_.v28;
     if (v25_.v27 == v25_.v28) {
       goto LABEL_28;
     }
-    v17 = v25_.v28;
+    v16 = v25_.v28;
     do {
-      v18 = *(_BYTE*)(v17 - 24);
-      v17 -= 24;
-      if ((v18 & 1) != 0 && *(_QWORD*)(v16 - 8) != 0) {
-        if (*(_QWORD*)(*(_QWORD*)v7 + 200LL) != 0) {
-          v19 = 128;
+      v17 = *(_BYTE*)(v16 - 24);
+      v16 -= 24;
+      if ((v17 & 1) != 0) {
+        v18 = *(_QWORD*)(v15 - 8);
+        if (v18 != 0) {
+          if (*(_QWORD*)(*(_QWORD*)v7 + 200LL) != 0) {
+            v19 = 128;
+          }
+          else {
+            v19 = 56;
+          }
+          nn_mem_StandardAllocator_Free_alt2(*(_QWORD*)v7 + v19, v18);
         }
-        else {
-          v19 = 56;
-        }
-        result = nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v7 + v19);
       }
-      v16 = v17;
-    } while (v17 != v15);
-    v25_.v28 = v15;
+      v15 = v16;
+    } while (v16 != v14);
+    v25_.v28 = v14;
+    v14 = v25_.v27;
     if (v25_.v27 != 0) {
     LABEL_28:
       v20 = 128;
       if (*(_QWORD*)(*(_QWORD*)v7 + 200LL) == 0) {
         v20 = 56;
       }
-      return nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v7 + v20);
+      nn_mem_StandardAllocator_Free_alt2(*(_QWORD*)v7 + v20, v14);
     }
   }
-  return result;
 }
 
 __int64 MapOnMapInfo_Destructor(_QWORD* a1)

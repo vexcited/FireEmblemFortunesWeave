@@ -9,6 +9,11 @@ __int64 nn_mem_StandardAllocator_Free(_QWORD);
 extern __int64 (*game_HubDisposFileLoaderMap_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 HubDisposFileLoaderMap_Destructor(_QWORD* a1);
+void GameRoutine_c8d600_alt1(_QWORD*) __asm__("GameRoutine_c8d600");
+void GameRoutine_c8d8a0_alt1(_QWORD*) __asm__("GameRoutine_c8d8a0");
+void GameRoutine_c8db40_alt1(_QWORD*) __asm__("GameRoutine_c8db40");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 __int64 HubDisposFileLoaderMap_Destructor(_QWORD* a1)
 {
@@ -34,11 +39,12 @@ __int64 HubDisposFileLoaderMap_Destructor(_QWORD* a1)
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v3 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v3);
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v3, v1);
   }
-  GameRoutine_c8d600(a1 + 76);
-  GameRoutine_c8d8a0(a1 + 44);
-  GameRoutine_c8db40(a1 + 12);
+  GameRoutine_c8d600_alt1(a1 + 76);
+  GameRoutine_c8d8a0_alt1(a1 + 44);
+  GameRoutine_c8db40_alt1(a1 + 12);
   v4 = a1[11];
   a1[11] = 0;
   if (v4 != 0) {

@@ -57,6 +57,11 @@ __int64 FinalMix_2af880(_QWORD, _QWORD, _QWORD);
 __int64 nn_os_LockMutex_alt1(__int64) __asm__("nn_os_LockMutex");
 __int64 nn_os_UnlockMutex_alt1(__int64) __asm__("nn_os_UnlockMutex");
 void* SoundVoiceNX_14e360_alt1() __asm__("SoundVoiceNX_14e360");
+__int64 BaseNx_2a0820(__int64, __int64, __int64);
+__int64 BaseNx_2a0e80(__int64, _QWORD*);
+void* BaseNx_2a1860();
+void nn_detail_UnexpectedDefaultImpl_alt1() __asm__(
+    "nn_detail_UnexpectedDefaultImpl");
 
 __int64 FinalMix_DeletingDestructor(__int64 a1)
 {
@@ -519,25 +524,21 @@ bool FinalMix_2b55d0(__int64 a1, int a2)
 
 __int64 FinalMix_2b5680(__int64 a1, __int64 a2, int a3, __int64 a4, __int64 a5)
 {
-  __int64 v10;
+  void* v10;
   __int64 v11;
-  __int64 v12;
-  __int64 v13;
 
-  v10 = GameRoutine_2afdd0(a2);
-  if ((unsigned int)v10 >= 2) {
-    nn_detail_UnexpectedDefaultImpl(v10, v11);
-    __udf(0);
+  if ((unsigned int)GameRoutine_2afdd0(a2) >= 2) {
+    nn_detail_UnexpectedDefaultImpl_alt1();
   }
-  v12 = GameRoutine_2a1860();
-  v13 = GameRoutine_2a0820(v12, 64, 8, 1);
-  *(_DWORD*)(v13 + 24) = a3;
-  *(_QWORD*)(v13 + 32) = a2;
-  *(_QWORD*)(v13 + 40) = a4;
-  *(_QWORD*)(v13 + 48) = a5;
-  *(_QWORD*)(v13 + 56) = a1;
-  *(_DWORD*)(v13 + 8) = 70;
-  GameRoutine_2a0e80(v12, v13);
+  v10 = BaseNx_2a1860();
+  v11 = BaseNx_2a0820((__int64)v10, 64, 8);
+  *(_DWORD*)(v11 + 24) = a3;
+  *(_QWORD*)(v11 + 32) = a2;
+  *(_QWORD*)(v11 + 40) = a4;
+  *(_QWORD*)(v11 + 48) = a5;
+  *(_QWORD*)(v11 + 56) = a1;
+  *(_DWORD*)(v11 + 8) = 70;
+  BaseNx_2a0e80((__int64)v10, (_QWORD*)v11);
   (*(void (**)(__int64, __int64))(*(_QWORD*)a1 + 24LL))(a1, 1);
   return 1;
 }

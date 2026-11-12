@@ -11,7 +11,8 @@ extern __int64 GameData_22124c8;
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64* GameData_212fb18[3];
 extern int GameData_222b910;
-__n128 AreaBarrier_DeletingDestructor(_QWORD* a1);
+__n128 AreaBarrier_DeletingDestructor_alt1(_QWORD* a1) __asm__(
+    "AreaBarrier_DeletingDestructor");
 __int64 GameRoutine_fbb080(__int64, _QWORD*, float*);
 __int64 game_fbb5a0(__int64, __int128*, float);
 __int64 std___1___shared_weak_count_lock(_QWORD);
@@ -27,8 +28,13 @@ extern __int128 GameData_1a83460;
 extern __int128 GameData_1a836e0;
 extern __int128 GameData_1a83800;
 __int64 AreaBarrier_fbb080(__int64 a1, _QWORD* a2, float* a3);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void AreaBarrier_DeletingDestructor(_QWORD* a1);
 
-__n128 AreaBarrier_DeletingDestructor(_QWORD* a1)
+void AreaBarrier_DeletingDestructor(_QWORD* a1)
 {
   _QWORD* v1;
   __int64 v2;
@@ -42,7 +48,7 @@ __n128 AreaBarrier_DeletingDestructor(_QWORD* a1)
                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
     v3 = a1 - 1;
     (*(void (**)(__int64))(*(_QWORD*)v2 + 16LL))(v2);
-    std___1___shared_weak_count___release_weak(v2);
+    std___1___shared_weak_count___release_weak_alt1(v2);
     v1 = v3;
   }
   *v1 = GameData_1ffcb78;
@@ -54,8 +60,8 @@ __n128 AreaBarrier_DeletingDestructor(_QWORD* a1)
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
     v4 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v4);
+  nn_mem_StandardAllocator_Free_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v4, (__int64)v1);
 }
 
 void AreaBarrier_fbae90(__int64 a1)

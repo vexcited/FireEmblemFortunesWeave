@@ -7,7 +7,12 @@ extern __int64 (*game_hub_DungeonRouteParts_vtable[])();
 __int64 DungeonRouteParts_Destructor(__int64 result);
 __n128 nn_mem_StandardAllocator_Free(_QWORD);
 extern __int64 fw_memory_g_heap_manager_ptr;
-__n128 DungeonRouteParts_DeletingDestructor(_QWORD* a1);
+__n128 DungeonRouteParts_DeletingDestructor_alt1(_QWORD* a1) __asm__(
+    "DungeonRouteParts_DeletingDestructor");
+__int64 game_14a1b00(__int64*, float);
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void DungeonRouteParts_DeletingDestructor(_QWORD* a1);
 
 __int64 DungeonRouteParts_Destructor(__int64 result)
 {
@@ -38,29 +43,29 @@ __int64 DungeonRouteParts_Destructor(__int64 result)
   return result;
 }
 
-__n128 DungeonRouteParts_DeletingDestructor(_QWORD* a1)
+void DungeonRouteParts_DeletingDestructor(_QWORD* a1)
 {
   __int64 v2;
-  __int64* v3;
+  __int64 v3;
   __int64 v4;
   __int64 v5;
 
   *a1 = game_hub_DungeonRouteParts_vtable;
   v2 = a1[10];
   if (v2 != 0) {
-    v3 = *(__int64**)(v2 + 8);
+    v3 = *(_QWORD*)(v2 + 8);
     *(_BYTE*)v2 = 0;
-    v4 = *v3;
-    if (*v3 != 0 && *(_DWORD*)(v4 + 16) == *((_DWORD*)v3 + 2)) {
+    v4 = *(_QWORD*)v3;
+    if (*(_QWORD*)v3 != 0 && *(_DWORD*)(v4 + 16) == *(_DWORD*)(v3 + 8)) {
       *(_BYTE*)(v4 + 33) = 0;
       if (*(_BYTE*)v2 != 0) {
       LABEL_7:
         a1[10] = 0;
         goto LABEL_8;
       }
-      v3 = *(__int64**)(v2 + 8);
+      v3 = *(_QWORD*)(v2 + 8);
     }
-    GameRoutine_14a1b00(v3, 0.0f);
+    game_14a1b00((__int64*)v3, 0x0.0p+0f);
     goto LABEL_7;
   }
 LABEL_8:
@@ -68,8 +73,8 @@ LABEL_8:
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
     v5 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v5);
+  nn_mem_StandardAllocator_Free_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v5, (__int64)a1);
 }
 
 #pragma GCC visibility pop

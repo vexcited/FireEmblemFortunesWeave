@@ -54,11 +54,15 @@ __int64 game_ConvergeConst_Part3ItemAdjuster_CheckAndAdjustAfterCommit_alt1(
     __int64 result,
     unsigned int a2) __asm__("game_ConvergeConst_Part3ItemAdjuster_"
                              "CheckAndAdjustAfterCommit");
-__int64 game_ConvergeConst_Part3ItemAdjuster_CheckBeforeCommit_lambda0_Invoke(
-    __int64 result, __int64* a2);
 __int64
-game_ConvergeConst_Part3ItemAdjuster_CheckAndAdjustAfterCommit_lambda0_Invoke(
-    __int64 result, __int64* a2);
+game_ConvergeConst_Part3ItemAdjuster_CheckBeforeCommit_lambda0_Invoke_alt1(
+    __int64 result, __int64* a2) __asm__("game_ConvergeConst_Part3ItemAdjuster_"
+                                         "CheckBeforeCommit_lambda0_Invoke");
+__int64
+game_ConvergeConst_Part3ItemAdjuster_CheckAndAdjustAfterCommit_lambda0_Invoke_alt1(
+    __int64 result,
+    __int64* a2) __asm__("game_ConvergeConst_Part3ItemAdjuster_"
+                         "CheckAndAdjustAfterCommit_lambda0_Invoke");
 __int64
 game_ConvergeConst_Part3ItemAdjuster_CheckAndAdjustAfterCommit_lambda1_Invoke(
     __int64 result, __int64* a2, int* a3);
@@ -123,6 +127,15 @@ void __attribute__((noreturn))
 GameRoutine_60a310_alt1() __asm__("GameRoutine_60a310");
 __int64 ConvergeConst_8e68e0(unsigned __int8 a1, __int64 a2, __int64 a3);
 void game_ConvergeConst_Depository_Merge_lambda0_Invoke(__int64 a1, __int64 a2);
+__int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
+void __attribute__((noreturn))
+GameRoutine_60a210_alt1() __asm__("GameRoutine_60a210");
+void __attribute__((noreturn))
+GameRoutine_8f6950_alt1() __asm__("GameRoutine_8f6950");
+void game_ConvergeConst_Part3ItemAdjuster_CheckBeforeCommit_lambda0_Invoke(
+    __int64 a1, __int64* a2);
+void game_ConvergeConst_Part3ItemAdjuster_CheckAndAdjustAfterCommit_lambda0_Invoke(
+    __int64 a1, __int64* a2);
 
 __int64 (**game_ConvergeConst_Part3ItemAdjuster_CheckBeforeCommit(
     __int64 a1, unsigned __int8 a2))()
@@ -768,12 +781,11 @@ void game_ConvergeConst_Depository_Merge_lambda2_Invoke(__int64 a1,
   }
 }
 
-__int64 game_ConvergeConst_Part3ItemAdjuster_CheckBeforeCommit_lambda0_Invoke(
-    __int64 result, __int64* a2)
+void game_ConvergeConst_Part3ItemAdjuster_CheckBeforeCommit_lambda0_Invoke(
+    __int64 a1, __int64* a2)
 {
   __int64* v2;
   __int64 v3;
-  __int64 v4;
   unsigned __int64 v5;
   unsigned __int64 v6;
   __int64 v7;
@@ -789,9 +801,8 @@ __int64 game_ConvergeConst_Part3ItemAdjuster_CheckBeforeCommit_lambda0_Invoke(
   __int64 v17;
   __int64 v18;
 
-  v2 = *(__int64**)(result + 8);
+  v2 = *(__int64**)(a1 + 8);
   v3 = *a2;
-  v4 = result;
   v5 = v2[1];
   v6 = v2[2];
   if (v5 >= v6) {
@@ -799,7 +810,7 @@ __int64 game_ConvergeConst_Part3ItemAdjuster_CheckBeforeCommit_lambda0_Invoke(
     v9 = v5 - *v2;
     v10 = 1 - 0x3333333333333333LL * (v9 >> 3);
     if (v10 > 0x666666666666666LL) {
-      GameRoutine_8f6950();
+      GameRoutine_8f6950_alt1();
     }
     v11 = fw_memory_g_heap_manager_ptr;
     v12 = 0xCCCCCCCCCCCCCCCDLL * ((__int64)(v6 - v8) >> 3);
@@ -814,9 +825,9 @@ __int64 game_ConvergeConst_Part3ItemAdjuster_CheckBeforeCommit_lambda0_Invoke(
     }
     if (v13 != 0) {
       if (v13 > 0x666666666666666LL) {
-        GameRoutine_60a210(result);
+        GameRoutine_60a210_alt1();
       }
-      v14 = fw_memory_HeapManager_Allocate(
+      v14 = fw_memory_HeapManager_Allocate_alt1(
           *(_QWORD*)fw_memory_g_heap_manager_ptr, 40 * v13, 16, 0);
       v8 = *v2;
       v5 = v2[1];
@@ -833,7 +844,7 @@ __int64 game_ConvergeConst_Part3ItemAdjuster_CheckBeforeCommit_lambda0_Invoke(
     v7 = v14 + v9 + 40;
     *(_DWORD*)(v15 + 24) = -1;
     *(_DWORD*)(v15 + 32) = -1;
-    result = memcpy(v17, v8, v5 - v8);
+    memcpy_alt1(v17, v8, v5 - v8);
     *v2 = v17;
     v2[1] = v7;
     v2[2] = v16;
@@ -842,7 +853,7 @@ __int64 game_ConvergeConst_Part3ItemAdjuster_CheckBeforeCommit_lambda0_Invoke(
       if (*(_QWORD*)(*(_QWORD*)v11 + 200LL) == 0) {
         v18 = 56;
       }
-      result = nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v11 + v18);
+      nn_mem_StandardAllocator_Free_alt2(*(_QWORD*)v11 + v18, v8);
     }
   }
   else {
@@ -854,8 +865,7 @@ __int64 game_ConvergeConst_Part3ItemAdjuster_CheckBeforeCommit_lambda0_Invoke(
     *(_DWORD*)(v5 + 32) = -1;
   }
   v2[1] = v7;
-  **(_QWORD**)(v4 + 16) = v7 - 40;
-  return result;
+  **(_QWORD**)(a1 + 16) = v7 - 40;
 }
 
 __int64 game_ConvergeConst_Part3ItemAdjuster_CheckBeforeCommit_lambda1_Invoke(
@@ -865,25 +875,22 @@ __int64 game_ConvergeConst_Part3ItemAdjuster_CheckBeforeCommit_lambda1_Invoke(
   return result;
 }
 
-__int64
-
-game_ConvergeConst_Part3ItemAdjuster_CheckAndAdjustAfterCommit_lambda0_Invoke(
-    __int64 result, __int64* a2)
+void game_ConvergeConst_Part3ItemAdjuster_CheckAndAdjustAfterCommit_lambda0_Invoke(
+    __int64 a1, __int64* a2)
 {
   _QWORD* v2;
   __int64 v3;
-  __int64 v4;
   unsigned __int64 v5;
   unsigned __int64 v6;
   __int64 v7;
   __int64 v8;
-  __int64 v9;
+  unsigned __int64 v9;
   unsigned __int64 v10;
   __int64 v11;
   unsigned __int64 v12;
   unsigned __int64 v13;
   __int64 v14;
-  __int64 v15;
+  unsigned __int64 v15;
   unsigned __int64 v16;
   __int64 v17;
   __int64 v18;
@@ -896,15 +903,17 @@ game_ConvergeConst_Part3ItemAdjuster_CheckAndAdjustAfterCommit_lambda0_Invoke(
   __int64 v25;
   __int64 v26;
   __int64 v27;
-  __int64 v29;
+  __int64 v28;
+  bool v29;
   __int64 v30;
-  __int64 v32;
+  __int64 v31;
+  bool v32;
   __int64 v33;
-  unsigned __int64 v34;
+  __int64 v34;
+  unsigned __int64 v35;
 
-  v2 = *(_QWORD**)(result + 8);
+  v2 = *(_QWORD**)(a1 + 8);
   v3 = *a2;
-  v4 = result;
   v5 = v2[4];
   v6 = v2[5];
   if (v5 >= v6) {
@@ -912,7 +921,7 @@ game_ConvergeConst_Part3ItemAdjuster_CheckAndAdjustAfterCommit_lambda0_Invoke(
     v9 = v5 - v8;
     v10 = 1 - 0x3333333333333333LL * ((__int64)(v5 - v8) >> 3);
     if (v10 > 0x666666666666666LL) {
-      GameRoutine_8f6950();
+      GameRoutine_8f6950_alt1();
     }
     v11 = fw_memory_g_heap_manager_ptr;
     v12 = 0xCCCCCCCCCCCCCCCDLL * ((__int64)(v6 - v8) >> 3);
@@ -927,9 +936,9 @@ game_ConvergeConst_Part3ItemAdjuster_CheckAndAdjustAfterCommit_lambda0_Invoke(
     }
     if (v13 != 0) {
       if (v13 > 0x666666666666666LL) {
-        GameRoutine_60a210(result);
+        GameRoutine_60a210_alt1();
       }
-      v14 = fw_memory_HeapManager_Allocate(
+      v14 = fw_memory_HeapManager_Allocate_alt1(
           *(_QWORD*)fw_memory_g_heap_manager_ptr, 40 * v13, 16, 0);
       v8 = v2[3];
       v5 = v2[4];
@@ -946,7 +955,7 @@ game_ConvergeConst_Part3ItemAdjuster_CheckAndAdjustAfterCommit_lambda0_Invoke(
     v7 = v14 + v9 + 40;
     *(_DWORD*)(v15 + 24) = -1;
     *(_DWORD*)(v15 + 32) = -1;
-    result = memcpy(v17, v8, v5 - v8);
+    memcpy_alt1(v17, v8, v5 - v8);
     v2[3] = v17;
     v2[4] = v7;
     v2[5] = v16;
@@ -955,7 +964,7 @@ game_ConvergeConst_Part3ItemAdjuster_CheckAndAdjustAfterCommit_lambda0_Invoke(
       if (*(_QWORD*)(*(_QWORD*)v11 + 200LL) == 0) {
         v18 = 56;
       }
-      result = nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v11 + v18);
+      nn_mem_StandardAllocator_Free_alt2(*(_QWORD*)v11 + v18, v8);
     }
   }
   else {
@@ -967,14 +976,14 @@ game_ConvergeConst_Part3ItemAdjuster_CheckAndAdjustAfterCommit_lambda0_Invoke(
     *(_DWORD*)(v5 + 32) = -1;
   }
   v2[4] = v7;
-  **(_QWORD**)(v4 + 16) = v7 - 40;
+  **(_QWORD**)(a1 + 16) = v7 - 40;
   v19 = *(_QWORD*)(*(_QWORD*)(game_GameModeData_instance_ + 176) +
-                   216LL * **(unsigned __int8**)(v4 + 32) + 336);
+                   216LL * **(unsigned __int8**)(a1 + 32) + 336);
   v20 = *(unsigned int*)(v19 + 72);
   if ((int)v20 >= 1) {
     v21 = *(_QWORD*)(v19 + 8);
     v22 = 0;
-    v23 = ***(_QWORD***)(v4 + 16);
+    v23 = ***(_QWORD***)(a1 + 16);
     v24 = (__int64*)(v21 + 4);
     while (1) {
       if (*(_WORD*)v24 != 0 && v23 != 0) {
@@ -982,38 +991,27 @@ game_ConvergeConst_Part3ItemAdjuster_CheckAndAdjustAfterCommit_lambda0_Invoke(
                          8LL * *(unsigned __int16*)v24);
         if (v25 != 0 &&
             *(unsigned __int8*)(v23 + 72) == *(unsigned __int8*)(v25 + 72)) {
-          if (v23 == v25) {
-            goto LABEL_40;
-          }
-          v26 = *(_QWORD*)(v23 + 24);
-          v27 = *(_QWORD*)(v26 + 600);
-          if (v27 != 0) {
-            result = *(_QWORD*)(v27 + 296);
-            if (result != 0) {
-              result = *(_QWORD*)(*(_QWORD*)(v25 + 24) + 600LL);
-              if (result != 0 && v27 == result &&
-                  *(_QWORD*)(result + 296) != 0) {
-                goto LABEL_40;
-              }
+          if (v23 == v25 ||
+              (v26 = *(_QWORD*)(v23 + 24),
+               (v27 = *(_QWORD*)(v26 + 600)) != 0) &&
+                  *(_QWORD*)(v27 + 296) != 0 &&
+                  (v28 = *(_QWORD*)(*(_QWORD*)(v25 + 24) + 600LL)) != 0 &&
+                  (v27 == v28 ? (v29 = *(_QWORD*)(v28 + 296) == 0)
+                              : (v29 = true),
+                   !v29) ||
+              (v30 = *(_QWORD*)(v26 + 592)) != 0 &&
+                  *(_QWORD*)(v30 + 352) != 0 &&
+                  (v31 = *(_QWORD*)(*(_QWORD*)(v25 + 24) + 592LL)) != 0 &&
+                  (v30 == v31 ? (v32 = *(_QWORD*)(v31 + 352) == 0)
+                              : (v32 = true),
+                   !v32)) {
+            if ((*((_DWORD*)v24 + 1) & 0xF) * *(unsigned __int8*)(v25 + 87) ==
+                0) {
+              v24 = (__int64*)(v21 + 12 * v22 + 4);
+              goto LABEL_45;
             }
-          }
-          v29 = *(_QWORD*)(v26 + 592);
-          if (v29 != 0 && *(_QWORD*)(v29 + 352) != 0) {
-            v30 = *(_QWORD*)(*(_QWORD*)(v25 + 24) + 592LL);
-            if (v30 != 0) {
-              result = *(_QWORD*)(v30 + 352);
-              if (v29 == v30 && result != 0) {
-              LABEL_40:
-                if ((*((_DWORD*)v24 + 1) & 0xF) *
-                        *(unsigned __int8*)(v25 + 87) ==
-                    0) {
-                  v24 = (__int64*)(v21 + 12 * v22 + 4);
-                  goto LABEL_45;
-                }
-                if (*((_BYTE*)v24 + 2) == 0) {
-                  goto LABEL_45;
-                }
-              }
+            if (*((_BYTE*)v24 + 2) == 0) {
+              goto LABEL_45;
             }
           }
         }
@@ -1029,14 +1027,13 @@ game_ConvergeConst_Part3ItemAdjuster_CheckAndAdjustAfterCommit_lambda0_Invoke(
   }
   v24 = game_g_empty_item_ptr;
 LABEL_45:
-  v32 = *v24;
-  v33 = *(_QWORD*)(v4 + 24);
-  v34 = (unsigned __int64)*v24 >> 24;
-  *(_WORD*)v33 = v32;
-  *(_BYTE*)(v33 + 2) = BYTE2(v32);
-  *(_BYTE*)(v33 + 3) = v34;
-  *(_DWORD*)(v33 + 4) = HIDWORD(v32);
-  return result;
+  v33 = *v24;
+  v34 = *(_QWORD*)(a1 + 24);
+  v35 = (unsigned __int64)*v24 >> 24;
+  *(_WORD*)v34 = v33;
+  *(_BYTE*)(v34 + 2) = BYTE2(v33);
+  *(_BYTE*)(v34 + 3) = v35;
+  *(_DWORD*)(v34 + 4) = HIDWORD(v33);
 }
 
 __int64

@@ -31,8 +31,10 @@ void __attribute__((noreturn)) GameRoutine_bc84c0(_QWORD);
 __int64 Config_bc4f00(__int64 a1, unsigned int a2, unsigned int a3);
 __int64 Config_bc5290(__int64 result);
 __int64 Config_bc5620(__int64 a1, __int64 a2);
-__int64 Config_bc56a0(__int64 a1, unsigned int a2, __int64* a3);
-__int64 Config_bc5b80(__int64 result, __int64* a2, unsigned int a3);
+__int64 Config_bc56a0_alt1(__int64 a1, unsigned int a2,
+                           __int64* a3) __asm__("Config_bc56a0");
+__int64 Config_bc5b80_alt1(__int64 result, __int64* a2,
+                           unsigned int a3) __asm__("Config_bc5b80");
 __int64 Config_bc7060_alt1(__int64 result, int a2) __asm__("Config_bc7060");
 __int64 Config_bc72a0_alt1(__int64 result,
                            unsigned int a2) __asm__("Config_bc72a0");
@@ -49,6 +51,22 @@ void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void Config_bc7060(__int64 a1, int a2);
 void Config_bc72a0(__int64 a1, int a2);
+__int64 Config_bcb8e0(__int64, int, _QWORD*, __int64);
+__int64 eft_bcb9e0(_QWORD*);
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
+    "std___1___shared_weak_count_lock");
+void __attribute__((noreturn))
+GameRoutine_60a210_alt1() __asm__("GameRoutine_60a210");
+void __attribute__((noreturn))
+GameRoutine_bc84c0_alt1() __asm__("GameRoutine_bc84c0");
+void Config_bc56a0(__int64 a1, int a2, __int64* a3);
+void Config_bc5b80(__int64 a1, __int64* a2, unsigned int a3);
 
 __int64 Config_bc4f00(__int64 a1, unsigned int a2, unsigned int a3)
 {
@@ -294,51 +312,49 @@ __int64 Config_bc5620(__int64 a1, __int64 a2)
   return (*(__int64 (**)(__int64))(*(_QWORD*)a2 + 8LL))(a2);
 }
 
-__int64 Config_bc56a0(__int64 a1, unsigned int a2, __int64* a3)
+void Config_bc56a0(__int64 a1, int a2, __int64* a3)
 {
   __int64 v6;
   __int64 v7;
   __int64 v8;
   __int64 v9;
   __int64 v10;
-  __int64 result;
-  __int64 v12;
+  __int64 v11;
+  _QWORD* v12;
   __int64 v13;
-  __int64 v14;
-  _QWORD v15[2];
+  _QWORD v14[2];
 
   v6 = fw_memory_g_heap_manager_ptr;
-  v7 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
-                                      104, 16, 0);
+  v7 = fw_memory_HeapManager_Allocate_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr, 104, 16, 0);
   v8 = *a3;
   v9 = a3[1];
   v10 = v7;
-  v15[0] = v8;
-  v15[1] = v9;
+  v14[0] = v8;
+  v14[1] = v9;
   if (v9 != 0) {
     atomic_fetch_add_explicit((atomic_ullong* volatile)(v9 + 16), 1u,
                               memory_order_relaxed);
-    GameRoutine_bcb8e0(v7, a2, v15, *(_QWORD*)(a1 + 136));
-    result = std___1___shared_weak_count___release_weak(v9);
+    Config_bcb8e0(v7, a2, v14, *(_QWORD*)(a1 + 136));
+    std___1___shared_weak_count___release_weak_alt1(v9);
   }
   else {
-    result = GameRoutine_bcb8e0(v7, a2, v15, *(_QWORD*)(a1 + 136));
+    Config_bcb8e0(v7, a2, v14, *(_QWORD*)(a1 + 136));
   }
-  v12 = *(_QWORD*)(*(_QWORD*)(a1 + 296) - 24LL);
-  v13 = *(_QWORD*)(v12 + 8LL * (int)a2);
-  *(_QWORD*)(v12 + 8LL * (int)a2) = v10;
-  if (v13 != 0) {
-    GameRoutine_bcb9e0(v13);
-    v14 = 128;
+  v11 = *(_QWORD*)(*(_QWORD*)(a1 + 296) - 24LL);
+  v12 = *(_QWORD**)(v11 + 8LL * a2);
+  *(_QWORD*)(v11 + 8LL * a2) = v10;
+  if (v12 != nullptr) {
+    eft_bcb9e0(v12);
+    v13 = 128;
     if (*(_QWORD*)(*(_QWORD*)v6 + 200LL) == 0) {
-      v14 = 56;
+      v13 = 56;
     }
-    return nn_mem_StandardAllocator_Free(*(_QWORD*)v6 + v14);
+    nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v6 + v13, (__int64)v12);
   }
-  return result;
 }
 
-__int64 Config_bc5b80(__int64 result, __int64* a2, unsigned int a3)
+void Config_bc5b80(__int64 a1, __int64* a2, unsigned int a3)
 {
   _QWORD* v3;
   __int64 v4;
@@ -350,7 +366,7 @@ __int64 Config_bc5b80(__int64 result, __int64* a2, unsigned int a3)
   __int64 v11;
   __int64 v12;
   unsigned __int64 v13;
-  __int64 v14;
+  unsigned __int64 v14;
   __int64 v15;
   __int64 v16;
   __int64 v17;
@@ -364,19 +380,19 @@ __int64 Config_bc5b80(__int64 result, __int64* a2, unsigned int a3)
   _QWORD* v25;
   __int64 v26;
   __int64 v27;
-  __int64 v28;
+  signed __int64 v28;
   unsigned __int64 v29;
   __int64 v30;
   unsigned __int64 v31;
   __int64 v32;
-  unsigned __int64 v33;
+  __int64 v33;
   __int64 v34;
   __int64 v35;
   __int64 v36;
   __int64 v37;
 
   a2[1] = *a2;
-  v3 = *(_QWORD**)(*(_QWORD*)(*(_QWORD*)(result + 296) - 24LL) + 8LL * a3);
+  v3 = *(_QWORD**)(*(_QWORD*)(*(_QWORD*)(a1 + 296) - 24LL) + 8LL * a3);
   if (v3 != nullptr) {
     v5 = v3[3];
     v4 = v3[4];
@@ -388,8 +404,8 @@ __int64 Config_bc5b80(__int64 result, __int64* a2, unsigned int a3)
         v10 = v3[2];
         atomic_fetch_add_explicit((atomic_ullong* volatile)(v7 + 16), 1u,
                                   memory_order_relaxed);
-        v11 = std___1___shared_weak_count_lock(v10);
-        result = std___1___shared_weak_count___release_weak(v7);
+        v11 = std___1___shared_weak_count_lock_alt1(v10);
+        std___1___shared_weak_count___release_weak_alt1(v7);
         if (v11 != 0) {
           v36 = v11;
           if (v8 != 0) {
@@ -399,13 +415,13 @@ __int64 Config_bc5b80(__int64 result, __int64* a2, unsigned int a3)
             if (v6 >> 2 > (unsigned __int64)((a2[2] - *a2) >> 3)) {
               if (v13 >> 61 != 0) {
               LABEL_44:
-                GameRoutine_bc84c0(result);
+                GameRoutine_bc84c0_alt1();
               }
               v14 = a2[1] - v12;
-              v15 = fw_memory_HeapManager_Allocate(fw_memory_g_heap_manager,
-                                                   2 * v6, 16, 0);
+              v15 = fw_memory_HeapManager_Allocate_alt1(
+                  fw_memory_g_heap_manager, 2 * v6, 16, 0);
               v16 = v15 + v14;
-              result = memcpy(v15, v12, v14);
+              memcpy_alt1(v15, v12, v14);
               v8 = v37;
               *a2 = v15;
               a2[1] = v16;
@@ -416,14 +432,15 @@ __int64 Config_bc5b80(__int64 result, __int64* a2, unsigned int a3)
                                200LL) == 0) {
                   v17 = 56;
                 }
-                result = nn_mem_StandardAllocator_Free(
-                    *(_QWORD*)fw_memory_g_heap_manager_ptr + v17);
+                nn_mem_StandardAllocator_Free_alt1(
+                    *(_QWORD*)fw_memory_g_heap_manager_ptr + v17, v12);
               }
             }
             v18 = (unsigned int*)v3[3];
             for (i = (unsigned int*)v3[4]; v18 != i; ++v18) {
               v20 = *v18;
-              if ((*v18 & 0x80000000) == 0 && (signed int)v20 < *(_DWORD*)v8) {
+              if ((*v18 & 0x80000000) == 0 &&
+                  (signed int)v20 < (signed __int32)*(_DWORD*)v8) {
                 v21 = (__int64*)(*(_QWORD*)(v8 + 112) + 48LL * v20);
                 v23 = *v21;
                 v22 = v21[1];
@@ -436,7 +453,7 @@ __int64 Config_bc5b80(__int64 result, __int64* a2, unsigned int a3)
                   v24 = a2[2];
                   if ((unsigned __int64)v25 >= v24) {
                     v27 = *a2;
-                    v28 = (__int64)v25 - *a2;
+                    v28 = (signed __int64)v25 - *a2;
                     v29 = (v28 >> 3) + 1;
                     if (v29 >> 61 != 0) {
                       goto LABEL_44;
@@ -453,9 +470,9 @@ __int64 Config_bc5b80(__int64 result, __int64* a2, unsigned int a3)
                     }
                     if (v31 != 0) {
                       if (v31 >> 61 != 0) {
-                        GameRoutine_60a210(result);
+                        GameRoutine_60a210_alt1();
                       }
-                      v32 = fw_memory_HeapManager_Allocate(
+                      v32 = fw_memory_HeapManager_Allocate_alt1(
                           *(_QWORD*)fw_memory_g_heap_manager_ptr, 8 * v31, 16,
                           0);
                     }
@@ -466,7 +483,7 @@ __int64 Config_bc5b80(__int64 result, __int64* a2, unsigned int a3)
                     v34 = v32 + v28 - 8 * (v28 >> 3);
                     *(_QWORD*)(v32 + v28) = v23;
                     v26 = v32 + v28 + 8;
-                    result = memcpy(v34, v27, v28);
+                    memcpy_alt1(v34, v27, v28);
                     *a2 = v34;
                     a2[1] = v26;
                     a2[2] = v33;
@@ -476,8 +493,8 @@ __int64 Config_bc5b80(__int64 result, __int64* a2, unsigned int a3)
                                      200LL) == 0) {
                         v35 = 56;
                       }
-                      result = nn_mem_StandardAllocator_Free(
-                          *(_QWORD*)fw_memory_g_heap_manager_ptr + v35);
+                      nn_mem_StandardAllocator_Free_alt1(
+                          *(_QWORD*)fw_memory_g_heap_manager_ptr + v35, v27);
                     }
                     v8 = v37;
                   }
@@ -491,7 +508,7 @@ __int64 Config_bc5b80(__int64 result, __int64* a2, unsigned int a3)
                     atomic_fetch_add((atomic_ullong* volatile)(v22 + 8),
                                      0xFFFFFFFFFFFFFFFFLL) == 0) {
                   (*(void (**)(__int64))(*(_QWORD*)v22 + 16LL))(v22);
-                  result = std___1___shared_weak_count___release_weak(v22);
+                  std___1___shared_weak_count___release_weak_alt1(v22);
                 }
               }
             }
@@ -499,13 +516,12 @@ __int64 Config_bc5b80(__int64 result, __int64* a2, unsigned int a3)
           if (atomic_fetch_add((atomic_ullong* volatile)(v36 + 8),
                                0xFFFFFFFFFFFFFFFFLL) == 0) {
             (*(void (**)(__int64))(*(_QWORD*)v36 + 16LL))(v36);
-            return std___1___shared_weak_count___release_weak(v36);
+            std___1___shared_weak_count___release_weak_alt1(v36);
           }
         }
       }
     }
   }
-  return result;
 }
 
 void Config_bc7060(__int64 a1, int a2)

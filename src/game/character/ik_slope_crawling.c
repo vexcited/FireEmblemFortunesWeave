@@ -8,7 +8,8 @@ __n128 std___1___shared_weak_count___release_weak(_QWORD);
 extern __int64 (*game_character_IKSlopeCrawling_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 __n128 IKSlopeCrawling_Destructor(__int64 a1);
-__int64 IKSlopeCrawling_DeletingDestructor(__int64 a1);
+__int64 IKSlopeCrawling_DeletingDestructor_alt1(__int64 a1) __asm__(
+    "IKSlopeCrawling_DeletingDestructor");
 __int64 __cxa_guard_acquire(_QWORD);
 __int64 __cxa_guard_release(_QWORD);
 extern _UNKNOWN* GameData_212c558;
@@ -16,6 +17,12 @@ extern _UNKNOWN GameData_21a6190;
 extern __int128 GameData_21a6180;
 __attribute__((swiftcall)) void IKSlopeCrawling_10fd7d0(PSEUDO_X8 x8_,
                                                         float32x4_t* result);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+unsigned int* GameHr_109d5e0(unsigned int* result);
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void IKSlopeCrawling_DeletingDestructor(__int64 a1);
 
 __attribute__((swiftcall)) void IKSlopeCrawling_10fd7d0(PSEUDO_X8 x8_,
                                                         float32x4_t* result)
@@ -96,28 +103,28 @@ __n128 IKSlopeCrawling_Destructor(__int64 a1)
   return result;
 }
 
-__int64 IKSlopeCrawling_DeletingDestructor(__int64 a1)
+void IKSlopeCrawling_DeletingDestructor(__int64 a1)
 {
   __int64 v2;
   __int64 v3;
   __int64 v4;
 
   *(_QWORD*)a1 = game_character_IKSlopeCrawling_vtable;
-  GameRoutine_109d5e0((unsigned int*)(a1 + 72));
+  GameHr_109d5e0((unsigned int*)(a1 + 72));
   v2 = *(_QWORD*)(a1 + 96);
   if (v2 != 0) {
-    std___1___shared_weak_count___release_weak(v2);
+    std___1___shared_weak_count___release_weak_alt1(v2);
   }
   v3 = *(_QWORD*)(a1 + 48);
   if (v3 != 0) {
-    std___1___shared_weak_count___release_weak(v3);
+    std___1___shared_weak_count___release_weak_alt1(v3);
   }
   v4 = 128;
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
     v4 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v4);
+  nn_mem_StandardAllocator_Free_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v4, a1);
 }
 
 #pragma GCC visibility pop

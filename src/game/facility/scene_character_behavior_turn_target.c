@@ -4,9 +4,15 @@
 
 __n128 std___1___shared_weak_count___release_weak();
 void SceneCharacterBehaviorTurn_Unknown3(__int64);
-void SceneCharacterBehaviorTurnTarget_Unknown3(__int64 a1);
+void SceneCharacterBehaviorTurnTarget_Unknown3_alt1(__int64 a1) __asm__(
+    "SceneCharacterBehaviorTurnTarget_Unknown3");
+__int64 SceneCharacterBehaviorTurn_Unknown3_alt1(__int64 result) __asm__(
+    "SceneCharacterBehaviorTurn_Unknown3");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 SceneCharacterBehaviorTurnTarget_Unknown3(__int64 a1);
 
-void SceneCharacterBehaviorTurnTarget_Unknown3(__int64 a1)
+__int64 SceneCharacterBehaviorTurnTarget_Unknown3(__int64 a1)
 {
 
 #pragma clang fp contract(off)
@@ -30,7 +36,7 @@ void SceneCharacterBehaviorTurnTarget_Unknown3(__int64 a1)
                          0xFFFFFFFFFFFFFFFFLL) == 0) {
       v5 = a1;
       (*(void (**)(__int64))(*(_QWORD*)v3 + 16LL))(v3);
-      std___1___shared_weak_count___release_weak();
+      std___1___shared_weak_count___release_weak_alt1(v3);
       a1 = v5;
     }
   }
@@ -87,7 +93,7 @@ void SceneCharacterBehaviorTurnTarget_Unknown3(__int64 a1)
     }
   }
   *(float*)(a1 + 28) = v7;
-  SceneCharacterBehaviorTurn_Unknown3(a1);
+  return SceneCharacterBehaviorTurn_Unknown3_alt1(a1);
 }
 
 #pragma GCC visibility pop

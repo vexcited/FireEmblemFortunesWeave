@@ -13,7 +13,11 @@ extern _UNKNOWN* GameData_212eda0;
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern int* GameData_212ed98;
 __int64 LegionStateNone_Unknown3(__int64 result);
-__int64 LegionStateNone_DeletingDestructor();
+__int64 LegionStateNone_DeletingDestructor_alt1() __asm__(
+    "LegionStateNone_DeletingDestructor");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void LegionStateNone_DeletingDestructor(__int64 a1);
 
 __int64 LegionStateNone_Unknown3(__int64 result)
 {
@@ -213,16 +217,16 @@ __int64 LegionStateNone_Unknown3(__int64 result)
   return result;
 }
 
-__int64 LegionStateNone_DeletingDestructor()
+void LegionStateNone_DeletingDestructor(__int64 a1)
 {
-  __int64 v0;
+  __int64 v1;
 
-  v0 = 128;
+  v1 = 128;
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-    v0 = 56;
+    v1 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v0);
+  nn_mem_StandardAllocator_Free_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v1, a1);
 }
 
 #pragma GCC visibility pop

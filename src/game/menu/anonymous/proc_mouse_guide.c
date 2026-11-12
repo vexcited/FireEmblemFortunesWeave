@@ -134,6 +134,18 @@ void game_menu_PageTab_SetupText(int*, __int64, __int64, int, unsigned int,
                                  unsigned int);
 void game_menu_anonymous_ProcMouseGuide_OnInit(__int64 a1);
 __int64 game_menu_anonymous_ProcMouseGuide_StickRCall(__int64 a1);
+__int64
+LayoutAccessor_1562cf0_alt2(__int64 result,
+                            unsigned int*) __asm__("LayoutAccessor_1562cf0");
+__int64 ui_LayoutAccessor_FindPane_alt2(__int64*, const char*) __asm__(
+    "ui_LayoutAccessor_FindPane");
+__int64 ui_LayoutAccessor_SetPaneVisible_alt2(
+    __int64 result, const char*,
+    char) __asm__("ui_LayoutAccessor_SetPaneVisible");
+unsigned __int64 GameHr_1562680_alt1(unsigned __int64 result, char*,
+                                     float) __asm__("GameHr_1562680");
+void LayoutAccessor_1562060_alt2(__int64*, const char*,
+                                 const char*) __asm__("LayoutAccessor_1562060");
 
 void game_menu_anonymous_ProcMouseGuide_OnInit(__int64 a1)
 {
@@ -685,8 +697,8 @@ __int64 ProcMouseGuide_Unknown141(__int64 a1)
 {
   __int64 v2;
   __int64* v3;
-  __int64 v4;
-  __int64 v5;
+  const char* v4;
+  const char* v5;
   __int64 v6;
   __int64* v7;
   __int64 v8;
@@ -712,8 +724,8 @@ __int64 ProcMouseGuide_Unknown141(__int64 a1)
   } v19_;
 
   if (*(_BYTE*)(a1 + 1065) == 1) {
-    ui_LayoutAccessor_SetPaneVisible_alt1(a1 + 848, (__int64)"L_Header", 0);
-    ui_LayoutAccessor_SetPaneVisible_alt1(a1 + 848, (__int64)"L_Footer", 0);
+    ui_LayoutAccessor_SetPaneVisible_alt2(a1 + 848, "L_Header", 0);
+    ui_LayoutAccessor_SetPaneVisible_alt2(a1 + 848, "L_Footer", 0);
     GameHr_16e8d70((__int64*)(a1 + 1056));
     return ProcMouseGuide_17a7290(a1);
   }
@@ -726,13 +738,14 @@ __int64 ProcMouseGuide_Unknown141(__int64 a1)
       std___1___shared_weak_count___release_weak_alt2((__int64)v19_.v20);
     }
     if (v2 != 0 && v3 != nullptr) {
-      LayoutAccessor_1562cf0_alt1((__int64)v3, "TitleOn");
-      LayoutAccessor_1562cf0_alt1((__int64)v3, "Default");
-      ui_LayoutAccessor_SetPaneVisible_alt1((__int64)v3, (__int64)"A_Stock", 0);
-      v4 = (*(__int64 (**)(__int64))(*(_QWORD*)a1 + 1112LL))(a1);
-      LayoutAccessor_1562060_alt1(v3, (__int64)"T_Title", v4);
-      v5 = (*(__int64 (**)(__int64))(*(_QWORD*)(a1 + 1056) + 40LL))(a1 + 1056);
-      LayoutAccessor_1562060_alt1(v3, (__int64)"T_Help", v5);
+      LayoutAccessor_1562cf0_alt2((__int64)v3, (unsigned int*)"TitleOn");
+      LayoutAccessor_1562cf0_alt2((__int64)v3, (unsigned int*)"Default");
+      ui_LayoutAccessor_SetPaneVisible_alt2((__int64)v3, "A_Stock", 0);
+      v4 = (const char*)(*(__int64 (**)(__int64))(*(_QWORD*)a1 + 1112LL))(a1);
+      LayoutAccessor_1562060_alt2(v3, "T_Title", v4);
+      v5 = (const char*)(*(__int64 (**)(__int64))(*(_QWORD*)(a1 + 1056) +
+                                                  40LL))(a1 + 1056);
+      LayoutAccessor_1562060_alt2(v3, "T_Help", v5);
     }
     else if (v2 == 0) {
       goto LABEL_12;
@@ -753,7 +766,7 @@ LABEL_12:
       std___1___shared_weak_count___release_weak_alt2((__int64)v19_.v20);
     }
     if (v6 != 0 && v7 != nullptr) {
-      v8 = ui_LayoutAccessor_FindPane_alt1(v7, (__int64)"A_KeyHelp");
+      v8 = ui_LayoutAccessor_FindPane_alt2(v7, "A_KeyHelp");
       if (v8 != 0) {
         v9 = __dynamic_cast(v8, GameData_212d670[0], GameData_21318d0[0], 0);
         if (v9 != 0) {
@@ -841,7 +854,7 @@ __int64 ProcMouseGuide_17a7290(__int64 a1)
   __int64 result;
   __int64 v3;
   __int64* v4;
-  const char* v5;
+  char* v5;
   __int64* v6;
   __int64* v7;
   struct {
@@ -889,9 +902,10 @@ LABEL_10:
     if (v3 != 0 && v4 != nullptr) {
       v5 = GameData_204d1d8[v1 & 1];
       v6 = LayoutAccessor_155fbe0_alt1(v4, "L_KeyHelp00");
-      GameHr_1562680((__int64)v6, v5, 0x1.0000000000000p+0f);
+      GameHr_1562680_alt1((unsigned __int64)v6, v5, 0x1.0000000000000p+0f);
       v7 = LayoutAccessor_155fbe0_alt1(v4, "L_KeyHelp02");
-      result = GameHr_1562680((__int64)v7, v5, 0x1.0000000000000p+0f);
+      result =
+          GameHr_1562680_alt1((unsigned __int64)v7, v5, 0x1.0000000000000p+0f);
     }
     else if (v3 == 0) {
       return result;

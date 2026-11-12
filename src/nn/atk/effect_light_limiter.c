@@ -20,7 +20,8 @@ __int64 nn_audio_SetLightLimiterThreshold(_QWORD, float);
 __int64 nn_detail_UnexpectedDefaultImpl(_QWORD, _QWORD);
 __int64 nn_os_LockMutex(_QWORD);
 __int64 nn_os_UnlockMutex(_QWORD);
-__int64 EffectLightLimiter_Unknown2(__int64 a1, __int64 a2);
+__int64 EffectLightLimiter_Unknown2_alt1(__int64 a1, __int64 a2) __asm__(
+    "EffectLightLimiter_Unknown2");
 __int64 EffectLightLimiter_Unknown3(__int64 a1, __int64 a2,
                                     __int64 (***a3)(_QWORD));
 bool EffectLightLimiter_2b1b40(__int64 a1, __int64 a2);
@@ -30,90 +31,92 @@ __int64 nn_audio_SetLightLimiterInputOutput(_QWORD, _QWORD, _QWORD, _QWORD);
 __n128 nn_os_UnlockMutex_alt1(_QWORD) __asm__("nn_os_UnlockMutex");
 void* SoundVoiceNX_14e360_alt1() __asm__("SoundVoiceNX_14e360");
 __n128 EffectLightLimiter_Unknown4(__int64 a1, __int64 a2);
+__int64 GameHr_2afd90(unsigned int);
+__int64 nn_os_LockMutex_alt1(__int64) __asm__("nn_os_LockMutex");
+__int64 nn_os_UnlockMutex_alt2(__int64) __asm__("nn_os_UnlockMutex");
+void nn_detail_UnexpectedDefaultImpl_alt1() __asm__(
+    "nn_detail_UnexpectedDefaultImpl");
+__int64 EffectLightLimiter_Unknown2(__int64 a1);
 
-__int64 EffectLightLimiter_Unknown2(__int64 a1, __int64 a2)
+__int64 EffectLightLimiter_Unknown2(__int64 a1)
 {
-  __int64 v3;
+  unsigned int v2;
+  int v3;
   __int64 v4;
-  int v5;
+  __int64 v5;
   __int64 v6;
-  __int64 v7;
-  __int64 v8;
 
-  v3 = GameRoutine_2afd90(*(unsigned int*)(a1 + 112), a2);
-  v5 = *(_DWORD*)(a1 + 28);
-  v6 = (unsigned int)v3;
-  if (v5 != 0) {
-    if (v5 != 1) {
-      nn_detail_UnexpectedDefaultImpl(v3, v4);
-      __udf(0);
+  v2 = GameHr_2afd90(*(_DWORD*)(a1 + 112));
+  v3 = *(_DWORD*)(a1 + 28);
+  v4 = v2;
+  if (v3 != 0) {
+    if (v3 != 1) {
+      nn_detail_UnexpectedDefaultImpl_alt1();
     }
-    v7 = 48000;
-    v8 = *(_QWORD*)(a1 + 64);
+    v5 = 48000;
+    v6 = *(_QWORD*)(a1 + 64);
   }
   else {
-    v7 = 32000;
-    v8 = *(_QWORD*)(a1 + 64);
+    v5 = 32000;
+    v6 = *(_QWORD*)(a1 + 64);
   }
-  return nn_audio_GetRequiredBufferSizeForLightLimiter(v8, v7, v6);
+  return nn_audio_GetRequiredBufferSizeForLightLimiter(v6, v5, v4);
 }
 
 __int64 EffectLightLimiter_Unknown3(__int64 a1, __int64 a2,
                                     __int64 (***a3)(_QWORD))
 {
-  __int64 v7;
-  __int64 v8;
-  unsigned int v9;
-  unsigned __int64 v10;
-  __int64 v11;
-  __int64 v12;
-  __int64 v13;
-  __int64 v14;
+
+#pragma clang fp contract(off)
+  unsigned int v7;
+  unsigned int v8;
+  unsigned __int64 v9;
+  int v10;
+  void* v11;
+  void* v12;
 
   if ((*(_BYTE*)(a1 + 24) & 1) != 0) {
     return 0;
   }
-  v7 = GameRoutine_2afd90(*(unsigned int*)(a1 + 112), a2);
-  if (*(_DWORD*)(a1 + 28) < 2u) {
-    v9 = v7;
-    v10 = atomic_load((unsigned __int64*)(SoundVoiceNX_14e360(v7) + 200));
-    atomic_store(v10, (unsigned __int64*)(a1 + 96));
-    v7 = (**a3)(a3);
-    if ((_DWORD)v7 == 1) {
-      v11 = nn_audio_AddLightLimiter_1a0ca70(a2, a1 + 104, *(_QWORD*)(a1 + 32),
-                                             *(_QWORD*)(a1 + 40), a3 + 9,
-                                             *(_QWORD*)(a1 + 64), v9);
-      if ((_DWORD)v11 == 0) {
-        goto LABEL_7;
-      }
-      return 0;
-    }
-    if ((_DWORD)v7 == 0) {
-      v11 = nn_audio_AddLightLimiter_1a0c9f0(a2, a1 + 104, *(_QWORD*)(a1 + 32),
-                                             *(_QWORD*)(a1 + 40), a3 + 11,
-                                             *(_QWORD*)(a1 + 64), v9);
-      if ((_DWORD)v11 == 0) {
-      LABEL_7:
-        *(_BYTE*)(a1 + 24) = 1;
-        v12 = SoundVoiceNX_14e360(v11);
-        nn_os_LockMutex(v12 + 1720);
-        nn_audio_SetLightLimiterAttackTime(a1 + 104, *(_QWORD*)(a1 + 48));
-        nn_audio_SetLightLimiterReleaseTime(a1 + 104, *(_QWORD*)(a1 + 56));
-        nn_audio_SetLightLimiterLookAheadTime(a1 + 104, *(_QWORD*)(a1 + 72));
-        nn_audio_SetLightLimiterThreshold(a1 + 104, *(float*)(a1 + 80));
-        nn_audio_SetLightLimiterInputGain(a1 + 104, *(float*)(a1 + 84));
-        nn_audio_SetLightLimiterOutputGain(a1 + 104, *(float*)(a1 + 88));
-        v13 = nn_audio_SetLightLimiterEnabled(a1 + 104,
-                                              *(unsigned __int8*)(a1 + 92));
-        v14 = SoundVoiceNX_14e360(v13);
-        nn_os_UnlockMutex(v14 + 1720);
-        return 1;
-      }
-      return 0;
-    }
+  v7 = GameHr_2afd90(*(_DWORD*)(a1 + 112));
+  if (*(_DWORD*)(a1 + 28) >= 2u) {
+    goto LABEL_10;
   }
-  nn_detail_UnexpectedDefaultImpl(v7, v8);
-  __udf(0);
+  v8 = v7;
+  v9 = atomic_load((unsigned __int64*)SoundVoiceNX_14e360_alt1() + 25);
+  atomic_store(v9, (unsigned __int64*)(a1 + 96));
+  v10 = (**a3)(a3);
+  if (v10 == 1) {
+    if ((unsigned int)nn_audio_AddLightLimiter_1a0ca70(
+            a2, a1 + 104, *(_QWORD*)(a1 + 32), *(_QWORD*)(a1 + 40), a3 + 9,
+            *(_QWORD*)(a1 + 64), v8) == 0) {
+      goto LABEL_7;
+    }
+    return 0;
+  }
+  if (v10 != 0) {
+  LABEL_10:
+    nn_detail_UnexpectedDefaultImpl_alt1();
+  }
+  if ((unsigned int)nn_audio_AddLightLimiter_1a0c9f0(
+          a2, a1 + 104, *(_QWORD*)(a1 + 32), *(_QWORD*)(a1 + 40), a3 + 11,
+          *(_QWORD*)(a1 + 64), v8) == 0) {
+  LABEL_7:
+    *(_BYTE*)(a1 + 24) = 1;
+    v11 = SoundVoiceNX_14e360_alt1();
+    nn_os_LockMutex_alt1((__int64)v11 + 1720);
+    nn_audio_SetLightLimiterAttackTime(a1 + 104, *(_QWORD*)(a1 + 48));
+    nn_audio_SetLightLimiterReleaseTime(a1 + 104, *(_QWORD*)(a1 + 56));
+    nn_audio_SetLightLimiterLookAheadTime(a1 + 104, *(_QWORD*)(a1 + 72));
+    nn_audio_SetLightLimiterThreshold(a1 + 104, *(float*)(a1 + 80));
+    nn_audio_SetLightLimiterInputGain(a1 + 104, *(float*)(a1 + 84));
+    nn_audio_SetLightLimiterOutputGain(a1 + 104, *(float*)(a1 + 88));
+    nn_audio_SetLightLimiterEnabled(a1 + 104, *(unsigned __int8*)(a1 + 92));
+    v12 = SoundVoiceNX_14e360_alt1();
+    nn_os_UnlockMutex_alt2((__int64)v12 + 1720);
+    return 1;
+  }
+  return 0;
 }
 
 __n128 EffectLightLimiter_Unknown4(__int64 a1, __int64 a2)

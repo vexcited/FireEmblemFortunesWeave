@@ -10,7 +10,8 @@ extern _UNKNOWN* game_g_hero_ids;
 extern __int64 GameData_21c99c8;
 extern __int64 GameData_21ca020;
 extern __int64 fw_memory_g_heap_manager_ptr;
-__int64 SideStoryFile_Unknown4(__int64 a1);
+__int64
+SideStoryFile_Unknown4_alt1(__int64 a1) __asm__("SideStoryFile_Unknown4");
 __int64 SideStoryFile_12ae4c0(unsigned __int8 a1);
 __int64 GameRoutine_66cf00(_QWORD);
 __int64 GameRoutine_66d660(_QWORD);
@@ -36,10 +37,16 @@ extern __int64 GameData_21c97d0;
 extern __int64 GameData_21c97e0;
 extern __int64 GameData_21c97e8;
 __int64 SideStoryFile_12ae7e0(__int64 result);
+__int64 Resources_66bfc0(unsigned __int64*);
+void GameRoutine_12b2c20_alt1(__int64, unsigned int,
+                              __int64) __asm__("GameRoutine_12b2c20");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void SideStoryFile_Unknown4(__int64 a1);
 
-__int64 SideStoryFile_Unknown4(__int64 a1)
+void SideStoryFile_Unknown4(__int64 a1)
 {
-  __int64 result;
+  _QWORD* v1;
   _QWORD* v2;
   _QWORD* v3;
   __int64 v4;
@@ -54,12 +61,13 @@ __int64 SideStoryFile_Unknown4(__int64 a1)
   unsigned int** v13;
   unsigned int** v14;
   unsigned int* v15;
-  __int64 v16;
+  unsigned int v16;
+  unsigned int v17;
 
-  result = a1 + 8;
-  v2 = (_QWORD*)result;
-  if (*(_QWORD*)(result + 144) != 0) {
-    v3 = *(_QWORD**)(result + 136);
+  v1 = (_QWORD*)(a1 + 8);
+  v2 = v1;
+  if (v1[18] != 0) {
+    v3 = (_QWORD*)v1[17];
     if (v3 != nullptr) {
       v4 = fw_memory_g_heap_manager_ptr;
       do {
@@ -70,7 +78,7 @@ __int64 SideStoryFile_Unknown4(__int64 a1)
         else {
           v6 = 56;
         }
-        result = nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v6);
+        nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v4 + v6, (__int64)v3);
         v3 = v5;
       } while (v5 != nullptr);
     }
@@ -113,16 +121,15 @@ __int64 SideStoryFile_Unknown4(__int64 a1)
   while (v13 != v14) {
     v15 = *v13;
     v16 = **v13;
-    if ((_DWORD)v16 != 0) {
-      GameRoutine_12b2c20(v2, v16, *v13);
+    if (v16 != 0) {
+      GameRoutine_12b2c20_alt1((__int64)v2, v16, (__int64)*v13);
     }
-    result = GameRoutine_66bfc0(v15);
-    if ((_DWORD)result != 0) {
-      result = GameRoutine_12b2c20(v2, (unsigned int)result, v15);
+    v17 = Resources_66bfc0((unsigned __int64*)v15);
+    if (v17 != 0) {
+      GameRoutine_12b2c20_alt1((__int64)v2, v17, (__int64)v15);
     }
     ++v13;
   }
-  return result;
 }
 
 __int64 SideStoryFile_12ae4c0(unsigned __int8 a1)

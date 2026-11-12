@@ -9,17 +9,24 @@ _QWORD* MixBuffer_Destructor(_QWORD* result);
 void MixBuffer_DeletingDestructor(_QWORD* a1);
 __int64 memset(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 extern __int64 snd_g_proxy_ptr[2];
-__int64 MixBuffer_17d5c0(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
-                         __int64 a5, __int64 a6);
-__int64 MixBuffer_17d780(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
-                         __int64 a5, __int64 a6);
-__int64 MixBuffer_17d940(__int64 a1, int a2, int a3, __int64 a4, __int64 a5,
-                         __int64 a6);
+__int64 MixBuffer_17d5c0_alt1(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
+                              __int64 a5,
+                              __int64 a6) __asm__("MixBuffer_17d5c0");
+__int64 MixBuffer_17d780_alt1(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
+                              __int64 a5,
+                              __int64 a6) __asm__("MixBuffer_17d780");
+__int64 MixBuffer_17d940_alt1(__int64 a1, int a2, int a3, __int64 a4,
+                              __int64 a5,
+                              __int64 a6) __asm__("MixBuffer_17d940");
 __int64 MixBuffer_17da60(__int64 a1, __int64 a2, unsigned int a3,
                          unsigned int a4, unsigned int a5);
 __int64 MixBuffer_17e320(__int64 result, int a2);
 bool MixBuffer_17e680(__int64 a1, __int64 a2, int a3, int a4, int a5);
 __int64 MixBuffer_17e7e0(__int64 a1, __int64 a2, int a3, int a4);
+__int64 memset_alt1(__int64, int, unsigned __int64) __asm__("memset");
+__int64 MixBuffer_17d5c0(__int64 a1);
+__int64 MixBuffer_17d780(__int64 a1);
+__int64 MixBuffer_17d940(__int64 a1, int a2, int a3);
 
 _QWORD* MixBuffer_Destructor(_QWORD* result)
 {
@@ -58,237 +65,131 @@ _QWORD* MixBuffer_Destructor(_QWORD* result)
   return result;
 }
 
-__int64 MixBuffer_17d5c0(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
-                         __int64 a5, __int64 a6)
+__int64 MixBuffer_17d5c0(__int64 a1)
 {
-  __int64 v7;
-  __int64 v8;
-  __int64 v9;
-  __int64 v10;
-  __int64 v11;
-  __int64 v12;
-  __int64 v13;
-  __int64 v14;
-  __int64 v15;
-  __int64 v16;
-  __int64 v17;
-  __int64 v18;
-  __int64 v19;
-  __int64 v20;
-  __int64 v21;
-  __int64 v22;
-  __int64 v23;
-  __int64 v24;
-  __int64 v25;
-  __int64 v26;
-  __int64 v27;
-  __int64 v28;
-  __int64 v29;
-  __int64 v30;
-  __int64 v31;
-  __int64 v32;
-  __int64 v33;
-  __int64 v34;
-  __int64 v35;
-  __int64 v36;
-  __int64 v37;
-  __int64 v38;
-  __int64 v39;
-  __int64 v40;
-  __int64 v41;
-  __int64 v42;
-  __int64 v43;
-  __int64 v44;
-  __int64 v45;
-  __int64 v46;
-  __int64 v47;
-  __int64 v48;
-  __int64 v49;
-  __int64 v50;
-  __int64 v51;
-  __int64 v52;
-  __int64 v53;
-  __int64 v54;
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
   __int64 result;
 
-  memset(*(_QWORD*)(a1 + 5568), 0, 115200, a4, a5, a6);
-  memset(*(_QWORD*)(a1 + 5576), 0, 115200, v7, v8, v9);
-  memset(*(_QWORD*)(a1 + 5584), 0, 115200, v10, v11, v12);
-  memset(*(_QWORD*)(a1 + 5592), 0, 115200, v13, v14, v15);
-  v16 = *(_QWORD*)(a1 + 5624);
+  memset_alt1(*(_QWORD*)(a1 + 5568), 0, 0x1C200u);
+  memset_alt1(*(_QWORD*)(a1 + 5576), 0, 0x1C200u);
+  memset_alt1(*(_QWORD*)(a1 + 5584), 0, 0x1C200u);
+  memset_alt1(*(_QWORD*)(a1 + 5592), 0, 0x1C200u);
+  v2 = *(_QWORD*)(a1 + 5624);
   *(_QWORD*)(a1 + 5600) = 0;
   *(_DWORD*)(a1 + 5608) = -1;
-  memset(v16, 0, 115200, v17, v18, v19);
-  memset(*(_QWORD*)(a1 + 5632), 0, 115200, v20, v21, v22);
-  memset(*(_QWORD*)(a1 + 5640), 0, 115200, v23, v24, v25);
-  memset(*(_QWORD*)(a1 + 5648), 0, 115200, v26, v27, v28);
-  v29 = *(_QWORD*)(a1 + 5680);
+  memset_alt1(v2, 0, 0x1C200u);
+  memset_alt1(*(_QWORD*)(a1 + 5632), 0, 0x1C200u);
+  memset_alt1(*(_QWORD*)(a1 + 5640), 0, 0x1C200u);
+  memset_alt1(*(_QWORD*)(a1 + 5648), 0, 0x1C200u);
+  v3 = *(_QWORD*)(a1 + 5680);
   *(_QWORD*)(a1 + 5656) = 0;
   *(_DWORD*)(a1 + 5664) = -1;
-  memset(v29, 0, 115200, v30, v31, v32);
-  memset(*(_QWORD*)(a1 + 5688), 0, 115200, v33, v34, v35);
-  memset(*(_QWORD*)(a1 + 5696), 0, 115200, v36, v37, v38);
-  memset(*(_QWORD*)(a1 + 5704), 0, 115200, v39, v40, v41);
-  v42 = *(_QWORD*)(a1 + 5768);
+  memset_alt1(v3, 0, 0x1C200u);
+  memset_alt1(*(_QWORD*)(a1 + 5688), 0, 0x1C200u);
+  memset_alt1(*(_QWORD*)(a1 + 5696), 0, 0x1C200u);
+  memset_alt1(*(_QWORD*)(a1 + 5704), 0, 0x1C200u);
+  v4 = *(_QWORD*)(a1 + 5768);
   *(_QWORD*)(a1 + 5712) = 0;
   *(_DWORD*)(a1 + 5720) = -1;
-  memset(v42, 0, 57600, v43, v44, v45);
+  memset_alt1(v4, 0, 0xE100u);
   *(_DWORD*)(*(_QWORD*)(a1 + 5768) + 57600LL) = 0;
   *(_DWORD*)(*(_QWORD*)(a1 + 5768) + 57604LL) = 0;
-  memset(*(_QWORD*)(a1 + 5776), 0, 57600, v46, v47, v48);
+  memset_alt1(*(_QWORD*)(a1 + 5776), 0, 0xE100u);
   *(_DWORD*)(*(_QWORD*)(a1 + 5776) + 57600LL) = 0;
   *(_DWORD*)(*(_QWORD*)(a1 + 5776) + 57604LL) = 0;
-  memset(*(_QWORD*)(a1 + 5784), 0, 57600, v49, v50, v51);
+  memset_alt1(*(_QWORD*)(a1 + 5784), 0, 0xE100u);
   *(_DWORD*)(*(_QWORD*)(a1 + 5784) + 57600LL) = 0;
   *(_DWORD*)(*(_QWORD*)(a1 + 5784) + 57604LL) = 0;
-  result = memset(*(_QWORD*)(a1 + 5792), 0, 57600, v52, v53, v54);
+  result = memset_alt1(*(_QWORD*)(a1 + 5792), 0, 0xE100u);
   *(_DWORD*)(*(_QWORD*)(a1 + 5792) + 57600LL) = 0;
   *(_DWORD*)(*(_QWORD*)(a1 + 5792) + 57604LL) = 0;
   return result;
 }
 
-__int64 MixBuffer_17d780(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
-                         __int64 a5, __int64 a6)
+__int64 MixBuffer_17d780(__int64 a1)
 {
-  __int64 v7;
-  __int64 v8;
-  __int64 v9;
-  __int64 v10;
-  __int64 v11;
-  __int64 v12;
-  __int64 v13;
-  __int64 v14;
-  __int64 v15;
-  __int64 v16;
-  __int64 v17;
-  __int64 v18;
-  __int64 v19;
-  __int64 v20;
-  __int64 v21;
-  __int64 v22;
-  __int64 v23;
-  __int64 v24;
-  __int64 v25;
-  __int64 v26;
-  __int64 v27;
-  __int64 v28;
-  __int64 v29;
-  __int64 v30;
-  __int64 v31;
-  __int64 v32;
-  __int64 v33;
-  __int64 v34;
-  __int64 v35;
-  __int64 v36;
-  __int64 v37;
-  __int64 v38;
-  __int64 v39;
-  __int64 v40;
-  __int64 v41;
-  __int64 v42;
-  __int64 v43;
-  __int64 v44;
-  __int64 v45;
-  __int64 v46;
-  __int64 v47;
-  __int64 v48;
-  __int64 v49;
-  __int64 v50;
-  __int64 v51;
-  __int64 v52;
-  __int64 v53;
-  __int64 v54;
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
   __int64 result;
 
-  memset(*(_QWORD*)(a1 + 5568), 0, 115200, a4, a5, a6);
-  memset(*(_QWORD*)(a1 + 5576), 0, 115200, v7, v8, v9);
-  memset(*(_QWORD*)(a1 + 5584), 0, 115200, v10, v11, v12);
-  memset(*(_QWORD*)(a1 + 5592), 0, 115200, v13, v14, v15);
-  v16 = *(_QWORD*)(a1 + 5624);
+  memset_alt1(*(_QWORD*)(a1 + 5568), 0, 0x1C200u);
+  memset_alt1(*(_QWORD*)(a1 + 5576), 0, 0x1C200u);
+  memset_alt1(*(_QWORD*)(a1 + 5584), 0, 0x1C200u);
+  memset_alt1(*(_QWORD*)(a1 + 5592), 0, 0x1C200u);
+  v2 = *(_QWORD*)(a1 + 5624);
   *(_QWORD*)(a1 + 5600) = 0;
   *(_DWORD*)(a1 + 5608) = -1;
-  memset(v16, 0, 115200, v17, v18, v19);
-  memset(*(_QWORD*)(a1 + 5632), 0, 115200, v20, v21, v22);
-  memset(*(_QWORD*)(a1 + 5640), 0, 115200, v23, v24, v25);
-  memset(*(_QWORD*)(a1 + 5648), 0, 115200, v26, v27, v28);
-  v29 = *(_QWORD*)(a1 + 5680);
+  memset_alt1(v2, 0, 0x1C200u);
+  memset_alt1(*(_QWORD*)(a1 + 5632), 0, 0x1C200u);
+  memset_alt1(*(_QWORD*)(a1 + 5640), 0, 0x1C200u);
+  memset_alt1(*(_QWORD*)(a1 + 5648), 0, 0x1C200u);
+  v3 = *(_QWORD*)(a1 + 5680);
   *(_QWORD*)(a1 + 5656) = 0;
   *(_DWORD*)(a1 + 5664) = -1;
-  memset(v29, 0, 115200, v30, v31, v32);
-  memset(*(_QWORD*)(a1 + 5688), 0, 115200, v33, v34, v35);
-  memset(*(_QWORD*)(a1 + 5696), 0, 115200, v36, v37, v38);
-  memset(*(_QWORD*)(a1 + 5704), 0, 115200, v39, v40, v41);
-  v42 = *(_QWORD*)(a1 + 5768);
+  memset_alt1(v3, 0, 0x1C200u);
+  memset_alt1(*(_QWORD*)(a1 + 5688), 0, 0x1C200u);
+  memset_alt1(*(_QWORD*)(a1 + 5696), 0, 0x1C200u);
+  memset_alt1(*(_QWORD*)(a1 + 5704), 0, 0x1C200u);
+  v4 = *(_QWORD*)(a1 + 5768);
   *(_QWORD*)(a1 + 5712) = 0;
   *(_DWORD*)(a1 + 5720) = -1;
-  memset(v42, 0, 57600, v43, v44, v45);
+  memset_alt1(v4, 0, 0xE100u);
   *(_DWORD*)(*(_QWORD*)(a1 + 5768) + 57600LL) = 0;
   *(_DWORD*)(*(_QWORD*)(a1 + 5768) + 57604LL) = 0;
-  memset(*(_QWORD*)(a1 + 5776), 0, 57600, v46, v47, v48);
+  memset_alt1(*(_QWORD*)(a1 + 5776), 0, 0xE100u);
   *(_DWORD*)(*(_QWORD*)(a1 + 5776) + 57600LL) = 0;
   *(_DWORD*)(*(_QWORD*)(a1 + 5776) + 57604LL) = 0;
-  memset(*(_QWORD*)(a1 + 5784), 0, 57600, v49, v50, v51);
+  memset_alt1(*(_QWORD*)(a1 + 5784), 0, 0xE100u);
   *(_DWORD*)(*(_QWORD*)(a1 + 5784) + 57600LL) = 0;
   *(_DWORD*)(*(_QWORD*)(a1 + 5784) + 57604LL) = 0;
-  result = memset(*(_QWORD*)(a1 + 5792), 0, 57600, v52, v53, v54);
+  result = memset_alt1(*(_QWORD*)(a1 + 5792), 0, 0xE100u);
   *(_DWORD*)(*(_QWORD*)(a1 + 5792) + 57600LL) = 0;
   *(_DWORD*)(*(_QWORD*)(a1 + 5792) + 57604LL) = 0;
   return result;
 }
 
-__int64 MixBuffer_17d940(__int64 a1, int a2, int a3, __int64 a4, __int64 a5,
-                         __int64 a6)
+__int64 MixBuffer_17d940(__int64 a1, int a2, int a3)
 {
-  __int64 v6;
-  __int64 v7;
-  unsigned int v8;
-  __int64 v9;
-  int v11;
-  int v12;
-  __int64 v13;
-  __int64 v14;
-  __int64 v15;
-  __int64 v16;
-  __int64 v17;
-  __int64 v18;
-  __int64 v19;
-  __int64 v20;
-  __int64 v21;
-  __int64 v22;
-  _DWORD* v23;
+  __int64 v3;
+  __int64 v4;
+  unsigned int v5;
+  unsigned __int64 v6;
+  int v8;
+  int v9;
+  __int64 v10;
+  _DWORD* v11;
 
-  v6 = a1 + 5560;
-  v7 = 56LL * *(int*)(a1 + 5728);
-  v8 = *(_DWORD*)(a1 + 5560 + v7 + 48);
-  if ((v8 & 0x80000000) != 0) {
+  v3 = a1 + 5560;
+  v4 = 56LL * *(int*)(a1 + 5728);
+  v5 = *(_DWORD*)(a1 + 5560 + v4 + 48);
+  if ((v5 & 0x80000000) != 0) {
     if (a3 * a2 >= 1) {
-      v9 = 4LL * (unsigned int)(a3 * a2);
-      v11 = a2;
-      v12 = a3;
-      v13 = a1 + 5568;
-      memset(*(_QWORD*)(a1 + 5568 + 56LL * *(int*)(a1 + 5728)), 0, v9, a4, a5,
-             a6);
-      memset(*(_QWORD*)(v13 + 56LL * *(int*)(a1 + 5728) + 8), 0, v9, v14, v15,
-             v16);
-      memset(*(_QWORD*)(v13 + 56LL * *(int*)(a1 + 5728) + 16), 0, v9, v17, v18,
-             v19);
-      memset(*(_QWORD*)(v13 + 56LL * *(int*)(a1 + 5728) + 24), 0, v9, v20, v21,
-             v22);
-      a2 = v11;
-      a3 = v12;
-      v7 = 56LL * *(int*)(a1 + 5728);
+      v6 = 4LL * (unsigned int)(a3 * a2);
+      v8 = a2;
+      v9 = a3;
+      v10 = a1 + 5568;
+      memset_alt1(*(_QWORD*)(a1 + 5568 + 56LL * *(int*)(a1 + 5728)), 0, v6);
+      memset_alt1(*(_QWORD*)(v10 + 56LL * *(int*)(a1 + 5728) + 8), 0, v6);
+      memset_alt1(*(_QWORD*)(v10 + 56LL * *(int*)(a1 + 5728) + 16), 0, v6);
+      memset_alt1(*(_QWORD*)(v10 + 56LL * *(int*)(a1 + 5728) + 24), 0, v6);
+      a2 = v8;
+      a3 = v9;
+      v4 = 56LL * *(int*)(a1 + 5728);
     }
-    v23 = (_DWORD*)(v6 + v7);
-    v23[10] = a2;
-    v23[11] = a3;
-    v23[12] = 0;
+    v11 = (_DWORD*)(v3 + v4);
+    v11[10] = a2;
+    v11[11] = a3;
+    v11[12] = 0;
   }
   else {
     (*(void (**)(_QWORD, const char*))(**(_QWORD**)snd_g_proxy_ptr[0] + 392LL))(
         *(_QWORD*)snd_g_proxy_ptr[0],
         "#SoundLibrary : WaveMixer can not start mixising !!\n");
   }
-  return v8 >> 31;
+  return v5 >> 31;
 }
 
 __int64 MixBuffer_17da60(__int64 a1, __int64 a2, unsigned int a3,

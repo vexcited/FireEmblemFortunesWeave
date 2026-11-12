@@ -34,7 +34,8 @@ __int64 MenuItemMorph_18bccc0(__int64 a1);
 __int64
 MenuItemMorph_18bd000_alt1(__int64 result,
                            __int64* a2) __asm__("MenuItemMorph_18bd000");
-__int64 MenuItemMorph_DeletingDestructor(__int64* a1);
+__int64 MenuItemMorph_DeletingDestructor_alt1(__int64* a1) __asm__(
+    "MenuItemMorph_DeletingDestructor");
 __attribute__((swiftcall)) void
 GameRoutine_15d4100_alt1(PSEUDO_X8, __int64*,
                          __int64*) __asm__("GameRoutine_15d4100");
@@ -54,6 +55,10 @@ extern __int64 (*ui_Event_vtable[])();
 void GameRoutine_157f4e0(__int64*, __int64, __int64);
 void MenuItemSkill_1899480(__int64, unsigned int, char, char);
 __int64 MenuItemMorph_18bc9c0(__int64 a1, _DWORD* a2);
+void Element_1888840_alt1(__int64) __asm__("Element_1888840");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void MenuItemMorph_DeletingDestructor(__int64* a1);
 
 __int64 MenuItemMorph_18bc7d0(__int64 a1, __int64 a2)
 {
@@ -861,7 +866,7 @@ void MenuItemMorph_18bd000(__int64 a1, _QWORD** a2)
   }
 }
 
-__int64 MenuItemMorph_DeletingDestructor(__int64* a1)
+void MenuItemMorph_DeletingDestructor(__int64* a1)
 {
   __int64 v2;
   __int64 v3;
@@ -918,17 +923,17 @@ __int64 MenuItemMorph_DeletingDestructor(__int64* a1)
         else {
           v12 = 56;
         }
-        nn_mem_StandardAllocator_Free(*(_QWORD*)v8 + v12);
+        nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v8 + v12, (__int64)v9);
         v9 = v11;
       } while (v11 != a1 + 121);
     }
   }
-  Element_1888840(v2);
+  Element_1888840_alt1(v2);
   v13 = 128;
   if (*(_QWORD*)(*(_QWORD*)v8 + 200LL) == 0) {
     v13 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)v8 + v13);
+  nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v8 + v13, v2);
 }
 
 #pragma GCC visibility pop

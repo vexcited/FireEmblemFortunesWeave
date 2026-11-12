@@ -42,7 +42,9 @@ __int64 ProcObeliskDepositoryRideMenu_Unknown85_alt1(__int64 a1) __asm__(
     "ProcObeliskDepositoryRideMenu_Unknown85");
 __int64 ProcObeliskDepositoryRideMenu_Unknown109(__int64 a1);
 __int64 ProcObeliskDepositoryRideMenu_Unknown139(_QWORD* a1);
-__int64 ProcObeliskDepositoryRideMenu_Unknown141(__int64 a1, __int64* a2);
+__int64 ProcObeliskDepositoryRideMenu_Unknown141_alt1(
+    __int64 a1,
+    __int64* a2) __asm__("ProcObeliskDepositoryRideMenu_Unknown141");
 __int64 ProcObeliskDepositoryRideMenu_Unknown148(__int64 a1, __int64 a2);
 __int64 ProcObeliskDepositoryRideMenu_Unknown149(__int64 a1, __int64 a2,
                                                  __int64 a3, __int64 a4, int a5,
@@ -87,6 +89,20 @@ void GameRoutine_156c5d0_alt1(__int64, __int64,
                               char) __asm__("GameRoutine_156c5d0");
 void LayoutAccessor_1562060(__int64*, __int64, _BYTE*);
 void ProcObeliskDepositoryRideMenu_Unknown85(__int64 a1);
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
+bool GameHr_19efcc0(_QWORD*, _QWORD*);
+void GameHr_185c7a0(__int64, __int64*);
+void GameRoutine_6e3b50_alt1(__int64, _QWORD*) __asm__("GameRoutine_6e3b50");
+void __attribute__((noreturn))
+GameRoutine_60a210_alt1() __asm__("GameRoutine_60a210");
+void __attribute__((noreturn))
+GameRoutine_874520_alt1() __asm__("GameRoutine_874520");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void ProcObeliskDepositoryRideMenu_Unknown141(__int64 a1, __int64* a2);
 
 const char* ProcObeliskDepositoryRideMenu_Unknown43(__int64 a1, char a2)
 {
@@ -305,14 +321,14 @@ LABEL_14:
   return GameRoutine_1567590("Release", v14);
 }
 
-__int64 ProcObeliskDepositoryRideMenu_Unknown141(__int64 a1, __int64* a2)
+void ProcObeliskDepositoryRideMenu_Unknown141(__int64 a1, __int64* a2)
 {
-  __int64 result;
+  int v4;
   unsigned __int64 v5;
   unsigned __int64 v6;
   __int64 v7;
   __int64 v8;
-  __int64 v9;
+  signed __int64 v9;
   unsigned __int64 v10;
   __int64 v11;
   unsigned __int64 v12;
@@ -323,8 +339,8 @@ __int64 ProcObeliskDepositoryRideMenu_Unknown141(__int64 a1, __int64* a2)
   unsigned __int64 v17;
   __int64 v18;
 
-  GameRoutine_185c7a0();
-  result = (*(__int64 (**)(__int64))(*(_QWORD*)a1 + 192LL))(a1);
+  GameHr_185c7a0(a1, a2);
+  v4 = (*(__int64 (**)(__int64))(*(_QWORD*)a1 + 192LL))(a1);
   v5 = a2[1];
   v6 = a2[2];
   if (v5 >= v6) {
@@ -332,7 +348,7 @@ __int64 ProcObeliskDepositoryRideMenu_Unknown141(__int64 a1, __int64* a2)
     v9 = v5 - *a2;
     v10 = 1 - 0x3333333333333333LL * (v9 >> 3);
     if (v10 > 0x666666666666666LL) {
-      GameRoutine_874520(result);
+      GameRoutine_874520_alt1();
     }
     v11 = fw_memory_g_heap_manager_ptr;
     v12 = 0xCCCCCCCCCCCCCCCDLL * ((__int64)(v6 - v8) >> 3);
@@ -347,12 +363,12 @@ __int64 ProcObeliskDepositoryRideMenu_Unknown141(__int64 a1, __int64* a2)
     }
     if (v13 != 0) {
       if (v13 > 0x666666666666666LL) {
-        GameRoutine_60a210(result);
+        GameRoutine_60a210_alt1();
       }
-      v14 = result;
-      v15 = fw_memory_HeapManager_Allocate(
+      v14 = v4;
+      v15 = fw_memory_HeapManager_Allocate_alt1(
           *(_QWORD*)fw_memory_g_heap_manager_ptr, 40 * v13, 16, 0);
-      LODWORD(result) = v14;
+      v4 = v14;
     }
     else {
       v15 = 0;
@@ -366,8 +382,8 @@ __int64 ProcObeliskDepositoryRideMenu_Unknown141(__int64 a1, __int64* a2)
     v17 = v15 + 40 * v13;
     v7 = v15 + v9 + 40;
     *(_DWORD*)(v16 + 20) = 7;
-    *(_DWORD*)(v16 + 24) = result;
-    result = memcpy(v15, v8, v9);
+    *(_DWORD*)(v16 + 24) = v4;
+    memcpy_alt1(v15, v8, v9);
     *a2 = v15;
     a2[1] = v7;
     a2[2] = v17;
@@ -376,7 +392,7 @@ __int64 ProcObeliskDepositoryRideMenu_Unknown141(__int64 a1, __int64* a2)
       if (*(_QWORD*)(*(_QWORD*)v11 + 200LL) == 0) {
         v18 = 56;
       }
-      result = nn_mem_StandardAllocator_Free(*(_QWORD*)v11 + v18);
+      nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v11 + v18, v8);
     }
   }
   else {
@@ -387,10 +403,9 @@ __int64 ProcObeliskDepositoryRideMenu_Unknown141(__int64 a1, __int64* a2)
     v7 = v5 + 40;
     *(_BYTE*)(v5 + 16) = 1;
     *(_DWORD*)(v5 + 20) = 7;
-    *(_DWORD*)(v5 + 24) = result;
+    *(_DWORD*)(v5 + 24) = v4;
   }
   a2[1] = v7;
-  return result;
 }
 
 __int64 ProcObeliskDepositoryRideMenu_Unknown148(__int64 a1, __int64 a2)
@@ -572,7 +587,7 @@ LABEL_6:
   v28_.v32 = v21;
   v33_.v33[0] = &v46_.v46;
   v33_.v33[1] = v10;
-  v22 = GameRoutine_19efcc0(v33_.v33, v28_.v28);
+  v22 = GameHr_19efcc0(v33_.v33, v28_.v28);
   v38_.v38 = 0;
   v38_.v39 = 0;
   if ((v41_.v43 & 1) != 0) {
@@ -582,7 +597,7 @@ LABEL_6:
   else {
     LOWORD(v41_.v43) = 0;
   }
-  GameRoutine_6e3b50((__int64)&v40, v41_.v41);
+  GameRoutine_6e3b50_alt1((__int64)&v40, v41_.v41);
   v41_.v41 = nullptr;
   v41_.v42 = 0;
   v40 = &v41_.v41;
@@ -593,15 +608,15 @@ LABEL_6:
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
         v24 = 56;
       }
-      nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                    v24);
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v24, (__int64)v41_.v45);
       v23 = v41_.v41;
     }
   }
   else {
     v23 = nullptr;
   }
-  GameRoutine_6e3b50((__int64)&v40, v23);
+  GameRoutine_6e3b50_alt1((__int64)&v40, v23);
   v46_.v46 = 0;
   v46_.v47 = 0;
   if ((v49_.v51 & 1) != 0) {
@@ -611,7 +626,7 @@ LABEL_6:
   else {
     LOWORD(v49_.v51) = 0;
   }
-  GameRoutine_6e3b50((__int64)&v48, v49_.v49);
+  GameRoutine_6e3b50_alt1((__int64)&v48, v49_.v49);
   v49_.v49 = nullptr;
   v49_.v50 = 0;
   v48 = &v49_.v49;
@@ -622,15 +637,15 @@ LABEL_6:
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
         v26 = 56;
       }
-      nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                    v26);
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v26, (__int64)v49_.v53);
       v25 = v49_.v49;
     }
   }
   else {
     v25 = nullptr;
   }
-  GameRoutine_6e3b50((__int64)&v48, v25);
+  GameRoutine_6e3b50_alt1((__int64)&v48, v25);
   return v22;
 }
 

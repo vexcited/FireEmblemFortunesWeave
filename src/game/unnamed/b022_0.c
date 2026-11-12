@@ -676,18 +676,26 @@ __int64 GameHr_169ff70(__int64* a1);
 bool GameHr_16a4f40();
 __int64 GameHr_16ae780(__int64 a1, const char* a2, __int16* a3);
 __int64 GameHr_16aec40(__int64 a1, const char* a2, __int64* a3);
+__attribute__((swiftcall)) void LayoutAccessor_1560070(PSEUDO_X8, __int64*,
+                                                       const char*);
+__int64 std___1___shared_weak_count___release_weak(__int64);
+void game_gameui_159b580(__int64, _BYTE*, __int64, _DWORD*);
+__int64 GameHr_167e3c0(__int64 a1, _BYTE* a2, __int64 a3, _DWORD* a4);
 
-__int64 GameHr_167e3c0(__int64 a1, __int64 a2, __int64 a3, __int64 a4)
+__int64 GameHr_167e3c0(__int64 a1, _BYTE* a2, __int64 a3, _DWORD* a4)
 {
   __int64 result;
-  __int64 v8;
-  __int64 v9;
+  struct {
+    __int64 v8;
+    __int64 v9;
+  } v8_;
 
-  GameRoutine_1560070((void*)&v8, *(_QWORD*)(a1 + 8) + 848LL, "L_Img");
-  GameRoutine_159b580(&v8, a2, a3, a4);
-  result = v9;
-  if (v9 != 0) {
-    return GameRoutine_1a09c50();
+  LayoutAccessor_1560070((void*)(&v8_.v8),
+                         (__int64*)(*(_QWORD*)(a1 + 8) + 848LL), "L_Img");
+  game_gameui_159b580((__int64)&v8_.v8, a2, a3, a4);
+  result = v8_.v9;
+  if (v8_.v9 != 0) {
+    return std___1___shared_weak_count___release_weak(v8_.v9);
   }
   return result;
 }

@@ -52,11 +52,15 @@ extern int GameData_21c6808;
 extern int GameData_21c6818;
 extern int GameData_21c6848;
 extern int GameData_21c6858;
-__int64 ProcLoadWait_9a4300(__int64 result);
+__int64 ProcLoadWait_9a4300_alt1(__int64 result) __asm__("ProcLoadWait_9a4300");
 __int64 ProcLoadWait_9a4d20(int a1, _QWORD* a2);
 void ProcLoadWait_9a5560(__int64 a1, __int64 a2);
+void Config_bc72a0_alt1(__int64, unsigned int) __asm__("Config_bc72a0");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void ProcLoadWait_9a4300(int a1);
 
-__int64 ProcLoadWait_9a4300(__int64 result)
+void ProcLoadWait_9a4300(int a1)
 {
   __int64* v1;
   __int64 i;
@@ -72,12 +76,12 @@ __int64 ProcLoadWait_9a4300(__int64 result)
   __int64 v12;
   __int64 v13;
 
-  v1 = &GameData_21f5250[5 * (int)result];
+  v1 = &GameData_21f5250[5 * a1];
   for (i = v1[2]; i != 0; i = *(_QWORD*)i) {
     if (*(__int16*)(i + 26) >= 1) {
       v3 = *(__int16*)(i + 24);
       if ((v3 & 0x80000000) == 0) {
-        result = Config_bc72a0(eft_g_effectSystem, v3);
+        Config_bc72a0_alt1(eft_g_effectSystem, v3);
       }
       *(_WORD*)(i + 26) = 0;
     }
@@ -94,7 +98,7 @@ __int64 ProcLoadWait_9a4300(__int64 result)
         else {
           v7 = 56;
         }
-        result = nn_mem_StandardAllocator_Free(*(_QWORD*)v5 + v7);
+        nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v5 + v7, (__int64)v4);
         v4 = v6;
       } while (v6 != nullptr);
     }
@@ -132,7 +136,6 @@ __int64 ProcLoadWait_9a4300(__int64 result)
     }
     v1[3] = 0;
   }
-  return result;
 }
 
 __int64 ProcLoadWait_9a4d20(int a1, _QWORD* a2)
@@ -221,7 +224,8 @@ __int64 ProcLoadWait_9a4d20(int a1, _QWORD* a2)
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v11 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v11);
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v11, v13_.v14);
   }
   return 1;
 }

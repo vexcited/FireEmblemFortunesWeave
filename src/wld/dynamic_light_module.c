@@ -7,8 +7,10 @@
 __int64 nn_mem_StandardAllocator_Free(_QWORD);
 extern __int64 (*wld_DynamicLightModule_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
-_QWORD* DynamicLightModule_Destructor(_QWORD* result);
-__int64 DynamicLightModule_DeletingDestructor(_QWORD* a1);
+_QWORD* DynamicLightModule_Destructor_alt1(_QWORD* result) __asm__(
+    "DynamicLightModule_Destructor");
+__int64 DynamicLightModule_DeletingDestructor_alt1(_QWORD* a1) __asm__(
+    "DynamicLightModule_DeletingDestructor");
 __int64 __cxa_guard_acquire(_QWORD);
 __int64 __cxa_guard_release(_QWORD);
 __int64 std___1___shared_weak_count___release_weak(_QWORD);
@@ -19,6 +21,10 @@ extern _UNKNOWN* GameData_212df10;
 extern int* GameData_212df08;
 __int64 DynamicLightModule_c36de0(__int64 result, _QWORD* a2);
 __int64 DynamicLightModule_Unknown7(__int64 result);
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void DynamicLightModule_Destructor(_QWORD* a1);
+void DynamicLightModule_DeletingDestructor(_QWORD* a1);
 
 __int64 DynamicLightModule_c36de0(__int64 result, _QWORD* a2)
 {
@@ -246,50 +252,49 @@ LABEL_8:
   return result;
 }
 
-_QWORD* DynamicLightModule_Destructor(_QWORD* result)
+void DynamicLightModule_Destructor(_QWORD* a1)
 {
-  _QWORD* v1;
+  __int64 v1;
   _QWORD* v2;
-  _QWORD* v3;
-  _QWORD* v4;
+  __int64 v4;
   __int64 v5;
   __int64 v6;
+  __int64 v7;
 
-  v1 = (_QWORD*)result[22];
-  *result = wld_DynamicLightModule_vtable;
-  if (v1 != nullptr) {
-    v2 = (_QWORD*)result[23];
-    v3 = result;
-    if (v1 == v2) {
+  v1 = a1[22];
+  *a1 = wld_DynamicLightModule_vtable;
+  if (v1 != 0) {
+    v2 = (_QWORD*)a1[23];
+    if ((_QWORD*)v1 == v2) {
       goto LABEL_8;
     }
     do {
-      v4 = (_QWORD*)*(v2 - 12);
+      v5 = *(v2 - 12);
       v2 -= 12;
-      result = v4;
+      v4 = v5;
       *v2 = 0;
-      if (v4 != nullptr) {
-        result = (_QWORD*)(*(__int64 (**)(_QWORD*))(*result + 8LL))(result);
+      if (v5 != 0) {
+        (*(void (**)(__int64))(*(_QWORD*)v4 + 8LL))(v4);
       }
-    } while (v2 != v1);
-    v5 = v3[22];
-    v3[23] = v1;
-    if (v5 != 0) {
+    } while (v2 != (_QWORD*)v1);
+    v6 = a1[22];
+    a1[23] = v1;
+    v1 = v6;
+    if (v6 != 0) {
     LABEL_8:
-      v6 = 128;
+      v7 = 128;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-        v6 = 56;
+        v7 = 56;
       }
-      return (_QWORD*)nn_mem_StandardAllocator_Free(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v6);
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v7, v1);
     }
   }
-  return result;
 }
 
-__int64 DynamicLightModule_DeletingDestructor(_QWORD* a1)
+void DynamicLightModule_DeletingDestructor(_QWORD* a1)
 {
-  _QWORD* v1;
+  __int64 v1;
   __int64 v3;
   _QWORD* v4;
   __int64 v5;
@@ -298,12 +303,12 @@ __int64 DynamicLightModule_DeletingDestructor(_QWORD* a1)
   __int64 v8;
   __int64 v9;
 
-  v1 = (_QWORD*)a1[22];
+  v1 = a1[22];
   *a1 = wld_DynamicLightModule_vtable;
   v3 = fw_memory_g_heap_manager_ptr;
-  if (v1 != nullptr) {
+  if (v1 != 0) {
     v4 = (_QWORD*)a1[23];
-    if (v1 == v4) {
+    if ((_QWORD*)v1 == v4) {
       goto LABEL_8;
     }
     do {
@@ -314,23 +319,24 @@ __int64 DynamicLightModule_DeletingDestructor(_QWORD* a1)
       if (v6 != 0) {
         (*(void (**)(__int64))(*(_QWORD*)v5 + 8LL))(v5);
       }
-    } while (v4 != v1);
+    } while (v4 != (_QWORD*)v1);
     v7 = a1[22];
     a1[23] = v1;
+    v1 = v7;
     if (v7 != 0) {
     LABEL_8:
       v8 = 128;
       if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
         v8 = 56;
       }
-      nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v8);
+      nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v8, v1);
     }
   }
   v9 = 128;
   if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
     v9 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v9);
+  nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v9, (__int64)a1);
 }
 
 __int64 DynamicLightModule_Unknown7(__int64 result)

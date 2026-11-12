@@ -25,7 +25,7 @@ extern int* GameData_212ff10;
 struct PseudoSret GameRoutine_108d740(_QWORD, _QWORD);
 void CharacterSelfie_10a6ac0(__int64);
 float ActionArts_Unknown7(__int64 a1);
-__int64 ActionArts_Unknown2(_QWORD* a1);
+__int64 ActionArts_Unknown2_alt1(_QWORD* a1) __asm__("ActionArts_Unknown2");
 __n128 game_combat_ActionArts_OnEnter_lambda0_Invoke(__int64 a1);
 _DWORD* GameRoutine_10de8e0(_DWORD* result);
 __int64 CharacterModel_1071880(__int64, int);
@@ -42,6 +42,10 @@ extern char GameData_1a9f09e;
 float CharacterAnimator_1079580(__int64, int, float, float, float);
 void snd_Fade_Fade_10c830(__int64, float);
 _DWORD* game_combat_ActionArts_OnEnter(__int64 a1);
+__int64 GameHr_1098db0(__int64);
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void ActionArts_Unknown2(_QWORD* a1);
 
 _DWORD* game_combat_ActionArts_OnEnter(__int64 a1)
 {
@@ -466,18 +470,18 @@ __int64 ActionArts_DeletingDestructor(_QWORD* a1)
   return GameRoutine_1098db0(a1 + 4);
 }
 
-__int64 ActionArts_Unknown2(_QWORD* a1)
+void ActionArts_Unknown2(_QWORD* a1)
 {
-  __int64 v1;
+  __int64 v2;
 
   *a1 = game_combat_ActionArts_vtable;
-  GameRoutine_1098db0((__int64)(a1 + 4));
-  v1 = 128;
+  GameHr_1098db0((__int64)(a1 + 4));
+  v2 = 128;
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-    v1 = 56;
+    v2 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v1);
+  nn_mem_StandardAllocator_Free_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v2, (__int64)a1);
 }
 
 __n128 game_combat_ActionArts_OnEnter_lambda0_Invoke(__int64 a1)

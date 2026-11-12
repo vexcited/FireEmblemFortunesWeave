@@ -10,6 +10,10 @@ extern __int64 GameData_21c9710;
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern int GameData_2227e00;
 void GameObserveInstant_Destructor(_QWORD* a1);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 void GameObserveInstant_Destructor(_QWORD* a1)
 {
@@ -35,7 +39,7 @@ void GameObserveInstant_Destructor(_QWORD* a1)
     do {
       v5 = *(_QWORD*)(v2 - 8);
       if (v5 != 0) {
-        std___1___shared_weak_count___release_weak(v5);
+        std___1___shared_weak_count___release_weak_alt1(v5);
       }
       v2 -= 16;
     } while (v2 != v1);
@@ -52,18 +56,20 @@ void GameObserveInstant_Destructor(_QWORD* a1)
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v8 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v8);
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v8, v4);
     goto LABEL_17;
   }
   do {
     v6 = *(_QWORD*)(v1 - 8);
     if (v6 != 0) {
-      std___1___shared_weak_count___release_weak(v6);
+      std___1___shared_weak_count___release_weak_alt1(v6);
     }
     v1 -= 16;
   } while (v1 != v4);
   v7 = a1[2];
   a1[3] = v4;
+  v4 = v7;
   if (v7 != 0) {
     goto LABEL_14;
   }

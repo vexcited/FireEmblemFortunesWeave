@@ -13,7 +13,8 @@ extern __int64 (*game_character_CharacterSelfie_vtable[])();
 extern __int64 GameData_21ec7b0;
 extern __int64 fw_memory_g_heap_manager_ptr;
 __n128 CharacterSelfie_Destructor(_QWORD* a1);
-__int64 CharacterSelfie_DeletingDestructor(_QWORD* a1);
+__int64 CharacterSelfie_DeletingDestructor_alt1(_QWORD* a1) __asm__(
+    "CharacterSelfie_DeletingDestructor");
 void CharacterSelfie_10a6ac0(__int64 a1);
 _QWORD* GameRoutine_654050(_QWORD* result, _QWORD*);
 _QWORD* GameRoutine_66b000(__int64*, _QWORD*);
@@ -40,6 +41,9 @@ __int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
     "std___1___shared_weak_count___release_weak");
 void CharacterBuilder_1084400_alt2(__int64,
                                    int) __asm__("CharacterBuilder_1084400");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void CharacterSelfie_DeletingDestructor(_QWORD* a1);
 
 __n128 CharacterSelfie_Destructor(_QWORD* a1)
 {
@@ -69,7 +73,7 @@ __n128 CharacterSelfie_Destructor(_QWORD* a1)
   return result;
 }
 
-__int64 CharacterSelfie_DeletingDestructor(_QWORD* a1)
+void CharacterSelfie_DeletingDestructor(_QWORD* a1)
 {
   __int64 v1;
   __int64 v3;
@@ -81,25 +85,25 @@ __int64 CharacterSelfie_DeletingDestructor(_QWORD* a1)
   if (v1 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v1 + 8),
                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v1 + 16LL))(v1);
-    std___1___shared_weak_count___release_weak(v1);
+    std___1___shared_weak_count___release_weak_alt1(v1);
   }
   v3 = a1[20];
   if (v3 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v3 + 8),
                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v3 + 16LL))(v3);
-    std___1___shared_weak_count___release_weak(v3);
+    std___1___shared_weak_count___release_weak_alt1(v3);
   }
   v4 = a1[4];
   *a1 = &game_character_CharacterBaseModule_vtable;
   if (v4 != 0) {
-    std___1___shared_weak_count___release_weak(v4);
+    std___1___shared_weak_count___release_weak_alt1(v4);
   }
   v5 = 128;
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
     v5 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v5);
+  nn_mem_StandardAllocator_Free_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v5, (__int64)a1);
 }
 
 __n128 game_character_CharacterSelfie_Start(__int64 a1, char a2, __int64* a3)

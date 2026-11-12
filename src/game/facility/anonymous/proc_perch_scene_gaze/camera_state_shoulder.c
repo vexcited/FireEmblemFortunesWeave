@@ -8,7 +8,6 @@ __int64 GameRoutine_143b060();
 __int64 SceneCharacter_1401ce0(_QWORD, _QWORD);
 __int64 fw_memory_HeapManager_Allocate(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 std___1___shared_weak_count___release_weak();
-
 extern __int64 (
     *game_facility_anonymous_ProcPerchSceneGaze_CameraStateToQuestion_vtable
         [])();
@@ -18,7 +17,20 @@ extern __int64 fw_memory_g_heap_manager_ptr;
 extern char GameData_22469e0;
 void GameRoutine_143a390();
 _QWORD* CameraStateShoulder_Unknown5();
-__int64 CameraStateShoulder_Unknown8();
+__int64
+CameraStateShoulder_Unknown8_alt1() __asm__("CameraStateShoulder_Unknown8");
+__int64 SceneManager_138e5e0(__int64);
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+void GameHr_1405080(__int64);
+void ProcPerchSceneGaze_143a390();
+void SceneCharacter_1401ce0_alt1(__int64,
+                                 _QWORD*) __asm__("SceneCharacter_1401ce0");
+void game_facility_anonymous_143b060();
+void CameraStateShoulder_Unknown8();
 
 _QWORD* CameraStateShoulder_Unknown5()
 {
@@ -32,7 +44,7 @@ _QWORD* CameraStateShoulder_Unknown5()
   _QWORD* result;
 
   v0 = (__int64*)GameData_212dce8;
-  v1 = GameRoutine_138e5e0(*(_QWORD*)GameData_212dce8, 0);
+  v1 = SceneManager_138e5e0(*(_QWORD*)GameData_212dce8);
   if (v1 != 0) {
     v2 = v1;
     v3 = *(_QWORD*)(v1 + 128);
@@ -40,39 +52,39 @@ _QWORD* CameraStateShoulder_Unknown5()
     if (v4 != 0) {
       atomic_fetch_add_explicit((atomic_ullong* volatile)(v4 + 8), 1u,
                                 memory_order_relaxed);
-      GameRoutine_1405080(v3);
+      GameHr_1405080(v3);
       if (atomic_fetch_add((atomic_ullong* volatile)(v4 + 8),
                            0xFFFFFFFFFFFFFFFFLL) == 0) {
         (*(void (**)(__int64))(*(_QWORD*)v4 + 16LL))(v4);
-        std___1___shared_weak_count___release_weak();
+        std___1___shared_weak_count___release_weak_alt1(v4);
       }
     }
     else {
-      GameRoutine_1405080(v3);
+      GameHr_1405080(v3);
     }
   }
-  GameRoutine_143a390();
+  ProcPerchSceneGaze_143a390();
   v5 = *v0;
   GameData_22469e0 = 2;
-  v6 = GameRoutine_138e5e0(v5, 0);
+  v6 = SceneManager_138e5e0(v5);
   if (v6 != 0) {
-    SceneCharacter_1401ce0(v6, &GameData_2242748);
+    SceneCharacter_1401ce0_alt1(v6, &GameData_2242748);
   }
-  result = (_QWORD*)fw_memory_HeapManager_Allocate(
+  result = (_QWORD*)fw_memory_HeapManager_Allocate_alt1(
       *(_QWORD*)fw_memory_g_heap_manager_ptr, 8, 16, 0);
   *result =
       game_facility_anonymous_ProcPerchSceneGaze_CameraStateToQuestion_vtable;
   return result;
 }
 
-__int64 CameraStateShoulder_Unknown8()
+void CameraStateShoulder_Unknown8()
 {
   __int64 v0;
   __int64 v1;
   __int64 v2;
   __int64 v3;
 
-  v0 = GameRoutine_138e5e0(*(_QWORD*)GameData_212dce8, 0);
+  v0 = SceneManager_138e5e0(*(_QWORD*)GameData_212dce8);
   if (v0 != 0) {
     v1 = v0;
     v2 = *(_QWORD*)(v0 + 128);
@@ -80,18 +92,18 @@ __int64 CameraStateShoulder_Unknown8()
     if (v3 != 0) {
       atomic_fetch_add_explicit((atomic_ullong* volatile)(v3 + 8), 1u,
                                 memory_order_relaxed);
-      GameRoutine_1405080(v2);
+      GameHr_1405080(v2);
       if (atomic_fetch_add((atomic_ullong* volatile)(v3 + 8),
                            0xFFFFFFFFFFFFFFFFLL) == 0) {
         (*(void (**)(__int64))(*(_QWORD*)v3 + 16LL))(v3);
-        std___1___shared_weak_count___release_weak();
+        std___1___shared_weak_count___release_weak_alt1(v3);
       }
     }
     else {
-      GameRoutine_1405080(v2);
+      GameHr_1405080(v2);
     }
   }
-  return GameRoutine_143b060();
+  game_facility_anonymous_143b060();
 }
 
 #pragma GCC visibility pop

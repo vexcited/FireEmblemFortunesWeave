@@ -22,7 +22,9 @@ __int64 fw_text_String_CopyTerminated(_QWORD, _QWORD, _QWORD);
 __int64 memset(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 __int64 nn_mem_StandardAllocator_Free(_QWORD);
 extern __int64 fw_memory_g_heap_manager_ptr;
-__int64 GameStringReads_c05cc0(_QWORD* a1, __int64 a2);
+__int64
+GameStringReads_c05cc0_alt1(_QWORD* a1,
+                            __int64 a2) __asm__("GameStringReads_c05cc0");
 float GameStringReads_c3cd70_alt1(__int64 a1,
                                   char* a2) __asm__("GameStringReads_c3cd70");
 __int64
@@ -77,41 +79,46 @@ void GameStringReads_c3dc40(unsigned int** a1, __int64 a2);
 void GameStringReads_c3e3b0(unsigned int* a1, unsigned int** a2);
 void GameStringReads_c3ec70(__int64 a1, __int64** a2);
 void GameStringReads_c3f080(__int64 a1, __int64** a2);
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 memset_alt1(__int64, int, unsigned __int64) __asm__("memset");
+__int64 timeline_2020(unsigned __int16*, _WORD*);
+bool GameRoutine_c05d90_alt1(_QWORD*, __int64) __asm__("GameRoutine_c05d90");
+char* GameRoutine_60a060_alt1(char*, __int64,
+                              unsigned __int64) __asm__("GameRoutine_60a060");
+unsigned __int64 Value_2500_alt1(__int64*, __int64,
+                                 unsigned __int64) __asm__("Value_2500");
+void GameStringReads_c05cc0(__int64** a1, __int64 a2);
 
-__int64 GameStringReads_c05cc0(_QWORD* a1, __int64 a2)
+void GameStringReads_c05cc0(__int64** a1, __int64 a2)
 {
-  __int64 result;
-  __int64 v5;
-  __int64 v6;
+  __int64* v4;
+  char* v5;
+  unsigned __int64 v6;
   __int64 v7;
   __int64 v8;
   __int64 v9;
-  __int64 v10;
-  __int64 v11;
-  __int64 v12;
-  __int64 v13;
-  __int16 v14;
+  __int16 v10;
 
-  result = GameRoutine_c05d90();
-  if ((result & 1) != 0) {
-    v5 = *a1;
-    v6 = *(_QWORD*)(a2 + 24);
-    v14 = 0;
-    GameRoutine_2020(v5, &v14);
-    v7 = v14;
-    v8 = fw_memory_g_heap_manager_ptr;
-    v9 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
-                                        v14, 16, 0);
-    memset(v9, 0, v7, v10, v11, v12);
-    Value_2500(*a1, v9, v7);
-    GameRoutine_60a060(v6, v9, v14);
-    v13 = 128;
-    if (*(_QWORD*)(*(_QWORD*)v8 + 200LL) == 0) {
-      v13 = 56;
+  if (GameRoutine_c05d90_alt1(a1, a2)) {
+    v4 = *a1;
+    v5 = *(char**)(a2 + 24);
+    v10 = 0;
+    timeline_2020((unsigned __int16*)v4, &v10);
+    v6 = v10;
+    v7 = fw_memory_g_heap_manager_ptr;
+    v8 = fw_memory_HeapManager_Allocate_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr, v10, 16, 0);
+    memset_alt1(v8, 0, v6);
+    Value_2500_alt1(*a1, v8, v6);
+    GameRoutine_60a060_alt1(v5, v8, v10);
+    v9 = 128;
+    if (*(_QWORD*)(*(_QWORD*)v7 + 200LL) == 0) {
+      v9 = 56;
     }
-    return nn_mem_StandardAllocator_Free(*(_QWORD*)v8 + v13);
+    nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v7 + v9, v8);
   }
-  return result;
 }
 
 float GameStringReads_c3cd70(_QWORD* a1, char* a2)

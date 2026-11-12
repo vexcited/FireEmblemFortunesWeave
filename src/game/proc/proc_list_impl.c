@@ -36,6 +36,13 @@ extern int GameData_21c6818;
 extern int GameData_21c6848;
 extern int GameData_21c6858;
 __int64 ProcList_9bd480(__int64 a1);
+__int64 ProcInst_657850(__int64, __int64, __int64, char, __int64);
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 game_ProcInst_Register_alt1(__int64) __asm__("game_ProcInst_Register");
+int __cxa_guard_acquire_alt1(__int64) __asm__("__cxa_guard_acquire");
+void __cxa_guard_release_alt1(__int64) __asm__("__cxa_guard_release");
 
 __int64 ProcList_9bd480(__int64 a1)
 {
@@ -45,14 +52,11 @@ __int64 ProcList_9bd480(__int64 a1)
   __int64 v5;
   _QWORD* v6;
   __int64 v7;
-  __int64 v9;
-  __int64 v10;
-  __int64 v11;
-  int v12;
+  int v9;
 
   v2 = (__int64*)fw_memory_g_heap_manager_ptr;
-  v3 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
-                                      160, 16, 0);
+  v3 = fw_memory_HeapManager_Allocate_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr, 160, 16, 0);
   v4 = GameData_212c608[0];
   *(_QWORD*)(v3 + 96) = 0;
   *(_QWORD*)(v3 + 104) = 0;
@@ -74,10 +78,10 @@ __int64 ProcList_9bd480(__int64 a1)
   *(_QWORD*)(v3 + 88) = 0;
   *(_QWORD*)v3 = v4 + 16;
   *(_QWORD*)(v3 + 8) = 0;
-  game_ProcInst_Register(v3);
+  game_ProcInst_Register_alt1(v3);
   v5 = *v2;
   *(_QWORD*)v3 = game_ProcList_vtable;
-  v6 = (_QWORD*)fw_memory_HeapManager_Allocate(v5, 32, 16, 0);
+  v6 = (_QWORD*)fw_memory_HeapManager_Allocate_alt1(v5, 32, 16, 0);
   *v6 = 0;
   v6[1] = 0;
   v6[2] = 0;
@@ -87,9 +91,9 @@ __int64 ProcList_9bd480(__int64 a1)
   if ((atomic_load_explicit((atomic_uchar* volatile)&GameData_21c6868,
                             memory_order_acquire) &
        1) == 0) {
-    v12 = __cxa_guard_acquire(&GameData_21c6868);
+    v9 = __cxa_guard_acquire_alt1((__int64)&GameData_21c6868);
     v7 = v3;
-    if (v12 != 0) {
+    if (v9 != 0) {
       GameData_21c67a8 = 3;
       GameData_21c67d0 = 0;
       GameData_21c67d8 = 0;
@@ -114,11 +118,12 @@ __int64 ProcList_9bd480(__int64 a1)
       GameData_21c67f0 = 0;
       GameData_21c67f8 = 16;
       GameData_21c6800 = 1;
-      __cxa_guard_release(&GameData_21c6868, v9, v10, v11);
+      __cxa_guard_release_alt1((__int64)&GameData_21c6868);
       v7 = v3;
     }
   }
-  return GameRoutine_657850(v7, &GameData_21c67a8, "ProcList", 1, a1);
+  return ProcInst_657850(v7, (__int64)&GameData_21c67a8, (__int64)"ProcList", 1,
+                         a1);
 }
 
 #pragma GCC visibility pop

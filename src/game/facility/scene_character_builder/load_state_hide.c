@@ -10,6 +10,13 @@ extern __int64 (*game_facility_SceneCharacterBuilder_LoadStateIdle_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 bool LoadStateHide_DeletingDestructor(__int64 a1, __int64 a2);
 __int64 LoadStateHide_Unknown2(__int64 a1, _QWORD* a2);
+_QWORD* SceneCharacterBuilder_1469730(__int64, __int64);
+__int64 GameHr_1984a30(__int64 result, float);
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
 
 bool LoadStateHide_DeletingDestructor(__int64 a1, __int64 a2)
 {
@@ -52,8 +59,7 @@ __int64 LoadStateHide_Unknown2(__int64 a1, _QWORD* a2)
     }
     v5 = 40;
   }
-  (*(void (**)(void*))(*v4 + v5))(v4);
-
+  (*(void (**)(__int64))(*v4 + v5))((__int64)v4);
 LABEL_7:
   v6 = *(_QWORD*)(v2 + 112);
   for (i = *(_QWORD*)(v2 + 120); i != v6; i -= 64) {
@@ -68,7 +74,7 @@ LABEL_7:
       }
       v13 = 40;
     }
-    (*(void (**)(void*))(*v12 + v13))(v12);
+    (*(void (**)(__int64))(*v12 + v13))((__int64)v12);
     v14 = *(_QWORD**)(i - 16);
     if ((_QWORD*)(i - 48) == v14) {
       v11 = 32;
@@ -79,19 +85,18 @@ LABEL_7:
       }
       v11 = 40;
     }
-    (*(void (**)(void*))(*v14 + v11))(v14);
+    (*(void (**)(__int64))(*v14 + v11))((__int64)v14);
   }
   *(_QWORD*)(v2 + 120) = v6;
-
 LABEL_9:
   v8 = *(_QWORD*)fw_memory_g_heap_manager_ptr;
   if (a2[5] != 0) {
-    v9 = fw_memory_HeapManager_Allocate(v8, 16, 16, 0);
-    result = GameRoutine_1469730(v9, a2);
+    v9 = fw_memory_HeapManager_Allocate_alt1(v8, 16, 16, 0);
+    result = (__int64)SceneCharacterBuilder_1469730(v9, (__int64)a2);
     a2[2] = v9;
   }
   else {
-    v15 = (_QWORD*)fw_memory_HeapManager_Allocate(v8, 8, 16, 0);
+    v15 = (_QWORD*)fw_memory_HeapManager_Allocate_alt1(v8, 8, 16, 0);
     a2[2] = v15;
     *v15 = game_facility_SceneCharacterBuilder_LoadStateIdle_vtable;
     v16 = a2[1];
@@ -100,15 +105,15 @@ LABEL_9:
     if (v18 != 0) {
       atomic_fetch_add_explicit((atomic_ullong* volatile)(v18 + 8), 1u,
                                 memory_order_relaxed);
-      result = GameRoutine_1984a30(v17, 0.3);
+      result = GameHr_1984a30(v17, 0x1.3333340000000p-2f);
       if (atomic_fetch_add((atomic_ullong* volatile)(v18 + 8),
                            0xFFFFFFFFFFFFFFFFLL) == 0) {
         (*(void (**)(__int64))(*(_QWORD*)v18 + 16LL))(v18);
-        return std___1___shared_weak_count___release_weak();
+        return std___1___shared_weak_count___release_weak_alt1(v18);
       }
     }
     else {
-      return GameRoutine_1984a30(v17, 0.3);
+      return GameHr_1984a30(v17, 0x1.3333340000000p-2f);
     }
   }
   return result;

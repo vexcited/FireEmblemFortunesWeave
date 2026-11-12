@@ -52,6 +52,8 @@ char** GameRoutine_f155c0(char** result, char*, char*, unsigned __int64);
 extern __int64* GameData_212f8d8[9];
 void __attribute__((noreturn)) String_60a250(const char*);
 __int64 MapPanelRage_f1a220(__int64** a1, __int64 a2);
+void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 __int64 MapPanelRage_Unknown3(__int64 result)
 {
@@ -473,8 +475,8 @@ void MapPanelRage_f191c0(float a1, __int64 a2, _QWORD* a3, __int64 a4)
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v34 = 56;
     }
-    nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v34);
+    nn_mem_StandardAllocator_Free_alt2(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v34, v51_.v53);
     v33 = *v21;
   }
   v35 = *(_QWORD*)(v33 + 24);

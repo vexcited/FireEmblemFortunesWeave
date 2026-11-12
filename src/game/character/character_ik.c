@@ -18,7 +18,14 @@ extern __int64 GameData_21d8778;
 extern __int64 fw_memory_g_heap_manager_ptr;
 float powf(long double, float);
 void CharacterIK_Unknown6(int8x16_t* a1, long double a2);
-__n128 CharacterIK_Destructor(__int64 a1);
+__n128
+CharacterIK_Destructor_alt1(__int64 a1) __asm__("CharacterIK_Destructor");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+unsigned int* GameHr_109d900(unsigned int* result);
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+__int64 CharacterIK_Destructor(__int64 a1);
 
 void CharacterIK_Unknown6(int8x16_t* a1, long double a2)
 {
@@ -326,58 +333,55 @@ void CharacterIK_Unknown6(int8x16_t* a1, long double a2)
   }
 }
 
-__n128 CharacterIK_Destructor(__int64 a1)
+__int64 CharacterIK_Destructor(__int64 a1)
 {
-
-#pragma clang fp contract(off)
-  __n128 result;
+  __int64 v2;
   __int64 v3;
   _QWORD* v4;
-  _QWORD* v5;
+  __int64 v5;
   __int64 v6;
   __int64 v7;
   __int64 v8;
-  __int64 v9;
-  __int64 v10;
+  __int64 result;
 
   *(_QWORD*)a1 = game_character_CharacterIK_vtable;
   GameRoutine_10e26e0(a1);
-  result = GameRoutine_109d900((unsigned int*)(a1 + 104));
-  v3 = *(_QWORD*)(a1 + 128);
-  if (v3 != 0) {
-    result = std___1___shared_weak_count___release_weak(v3);
+  GameHr_109d900((unsigned int*)(a1 + 104));
+  v2 = *(_QWORD*)(a1 + 128);
+  if (v2 != 0) {
+    std___1___shared_weak_count___release_weak_alt1(v2);
   }
-  v4 = *(_QWORD**)(a1 + 80);
-  if (v4 != nullptr) {
-    v5 = *(_QWORD**)(a1 + 88);
-    if (v4 == v5) {
+  v3 = *(_QWORD*)(a1 + 80);
+  if (v3 != 0) {
+    v4 = *(_QWORD**)(a1 + 88);
+    if ((_QWORD*)v3 == v4) {
       goto LABEL_10;
     }
     do {
-      v7 = *--v5;
-      v6 = v7;
-      *v5 = 0;
-      if (v7 != 0) {
-        (*(void (**)(__int64, long double))(*(_QWORD*)v6 + 8LL))(
-            v6, *(long double*)&result);
+      v6 = *--v4;
+      v5 = v6;
+      *v4 = 0;
+      if (v6 != 0) {
+        (*(void (**)(__int64))(*(_QWORD*)v5 + 8LL))(v5);
       }
-    } while (v5 != v4);
-    v8 = *(_QWORD*)(a1 + 80);
-    *(_QWORD*)(a1 + 88) = v4;
-    if (v8 != 0) {
+    } while (v4 != (_QWORD*)v3);
+    v7 = *(_QWORD*)(a1 + 80);
+    *(_QWORD*)(a1 + 88) = v3;
+    v3 = v7;
+    if (v7 != 0) {
     LABEL_10:
-      v9 = 128;
+      v8 = 128;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-        v9 = 56;
+        v8 = 56;
       }
-      result = nn_mem_StandardAllocator_Free(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v9);
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v8, v3);
     }
   }
-  v10 = *(_QWORD*)(a1 + 32);
+  result = *(_QWORD*)(a1 + 32);
   *(_QWORD*)a1 = &game_character_CharacterBaseModule_vtable;
-  if (v10 != 0) {
-    return std___1___shared_weak_count___release_weak(v10);
+  if (result != 0) {
+    return std___1___shared_weak_count___release_weak_alt1(result);
   }
   return result;
 }

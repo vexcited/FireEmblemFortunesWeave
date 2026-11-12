@@ -10,33 +10,47 @@ extern __int64 (*game_gameui_GaugeUtil_MiracleExpChange_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 MiracleExpChange_Destructor(__int64 a1);
 unsigned __int64 MiracleExpChange_Unknown5(__int64 a1);
-__int64 MiracleExpChange_Unknown3(__int64 a1);
-__int64 MiracleExpChange_Unknown4(__int64 a1);
+__int64
+MiracleExpChange_Unknown3_alt1(__int64 a1) __asm__("MiracleExpChange_Unknown3");
+__int64
+MiracleExpChange_Unknown4_alt1(__int64 a1) __asm__("MiracleExpChange_Unknown4");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
+    "std___1___shared_weak_count_lock");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void MiracleExpChange_Unknown3(__int64 a1);
+void MiracleExpChange_Unknown4(__int64 a1);
 
 __int64 MiracleExpChange_Destructor(__int64 a1)
 {
+
+#pragma clang fp contract(off)
   __int64 result;
   __int64 v3;
+  __int64 v4;
 
   if (*(_QWORD*)(a1 + 144) == 0) {
     return 0;
   }
   result = *(_QWORD*)(a1 + 136);
   if (result != 0) {
-    result = std___1___shared_weak_count_lock(result);
+    result = std___1___shared_weak_count_lock_alt1(result);
     if (result != 0) {
       v3 = *(_QWORD*)(a1 + 128);
       if (atomic_fetch_add((atomic_ullong* volatile)(result + 8),
                            0xFFFFFFFFFFFFFFFFLL) != 0) {
         if (v3 != 0) {
-          return *(float*)(a1 + 16) != 0.0;
+          return *(float*)(a1 + 16) != 0x0.0p+0f;
         }
       }
       else {
+        v4 = result;
         (*(void (**)(__int64))(*(_QWORD*)result + 16LL))(result);
-        std___1___shared_weak_count___release_weak();
+        std___1___shared_weak_count___release_weak_alt1(v4);
         if (v3 != 0) {
-          return *(float*)(a1 + 16) != 0.0;
+          return *(float*)(a1 + 16) != 0x0.0p+0f;
         }
       }
       return 0;
@@ -161,9 +175,9 @@ unsigned __int64 MiracleExpChange_Unknown5(__int64 a1)
   return (unsigned int)v7 / 5uLL;
 }
 
-__int64 MiracleExpChange_Unknown3(__int64 a1)
+void MiracleExpChange_Unknown3(__int64 a1)
 {
-  __int64 result;
+  __int64 v2;
   __int64 v3;
   __int64 v4;
   __int64 v5;
@@ -172,9 +186,9 @@ __int64 MiracleExpChange_Unknown3(__int64 a1)
   __int64 v8;
 
   *(_QWORD*)a1 = game_gameui_GaugeUtil_MiracleExpChange_vtable;
-  result = *(_QWORD*)(a1 + 136);
-  if (result != 0) {
-    result = std___1___shared_weak_count___release_weak();
+  v2 = *(_QWORD*)(a1 + 136);
+  if (v2 != 0) {
+    std___1___shared_weak_count___release_weak_alt1(v2);
   }
   *(_QWORD*)a1 = game_gameui_GaugeUtil_ExpChange_vtable;
   if ((*(_BYTE*)(a1 + 104) & 1) != 0) {
@@ -184,7 +198,7 @@ __int64 MiracleExpChange_Unknown3(__int64 a1)
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
         v4 = 56;
       }
-      result = nn_mem_StandardAllocator_Free(
+      nn_mem_StandardAllocator_Free_alt1(
           *(_QWORD*)fw_memory_g_heap_manager_ptr + v4, v3);
     }
   }
@@ -195,7 +209,7 @@ __int64 MiracleExpChange_Unknown3(__int64 a1)
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
         v6 = 56;
       }
-      result = nn_mem_StandardAllocator_Free(
+      nn_mem_StandardAllocator_Free_alt1(
           *(_QWORD*)fw_memory_g_heap_manager_ptr + v6, v5);
     }
   }
@@ -206,14 +220,13 @@ __int64 MiracleExpChange_Unknown3(__int64 a1)
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
         v8 = 56;
       }
-      return nn_mem_StandardAllocator_Free(
+      nn_mem_StandardAllocator_Free_alt1(
           *(_QWORD*)fw_memory_g_heap_manager_ptr + v8, v7);
     }
   }
-  return result;
 }
 
-__int64 MiracleExpChange_Unknown4(__int64 a1)
+void MiracleExpChange_Unknown4(__int64 a1)
 {
   __int64 v2;
   __int64 v3;
@@ -223,49 +236,51 @@ __int64 MiracleExpChange_Unknown4(__int64 a1)
   __int64 v7;
   __int64 v8;
   __int64 v9;
+  __int64 v10;
 
   *(_QWORD*)a1 = game_gameui_GaugeUtil_MiracleExpChange_vtable;
-  if (*(_QWORD*)(a1 + 136) != 0) {
-    std___1___shared_weak_count___release_weak();
+  v2 = *(_QWORD*)(a1 + 136);
+  if (v2 != 0) {
+    std___1___shared_weak_count___release_weak_alt1(v2);
   }
   *(_QWORD*)a1 = game_gameui_GaugeUtil_ExpChange_vtable;
-  v2 = fw_memory_g_heap_manager_ptr;
+  v3 = fw_memory_g_heap_manager_ptr;
   if ((*(_BYTE*)(a1 + 104) & 1) != 0) {
-    v3 = *(_QWORD*)(a1 + 120);
-    if (v3 != 0) {
-      v4 = 128;
+    v4 = *(_QWORD*)(a1 + 120);
+    if (v4 != 0) {
+      v5 = 128;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-        v4 = 56;
+        v5 = 56;
       }
-      nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v4,
-                                    v3);
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v5, v4);
     }
   }
   if ((*(_BYTE*)(a1 + 80) & 1) != 0) {
-    v5 = *(_QWORD*)(a1 + 96);
-    if (v5 != 0) {
-      v6 = 128;
-      if (*(_QWORD*)(*(_QWORD*)v2 + 200LL) == 0) {
-        v6 = 56;
+    v6 = *(_QWORD*)(a1 + 96);
+    if (v6 != 0) {
+      v7 = 128;
+      if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
+        v7 = 56;
       }
-      nn_mem_StandardAllocator_Free(*(_QWORD*)v2 + v6, v5);
+      nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v7, v6);
     }
   }
   if ((*(_BYTE*)(a1 + 56) & 1) != 0) {
-    v7 = *(_QWORD*)(a1 + 72);
-    if (v7 != 0) {
-      v8 = 128;
-      if (*(_QWORD*)(*(_QWORD*)v2 + 200LL) == 0) {
-        v8 = 56;
+    v8 = *(_QWORD*)(a1 + 72);
+    if (v8 != 0) {
+      v9 = 128;
+      if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
+        v9 = 56;
       }
-      nn_mem_StandardAllocator_Free(*(_QWORD*)v2 + v8, v7);
+      nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v9, v8);
     }
   }
-  v9 = 128;
-  if (*(_QWORD*)(*(_QWORD*)v2 + 200LL) == 0) {
-    v9 = 56;
+  v10 = 128;
+  if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
+    v10 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)v2 + v9, a1);
+  nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v10, a1);
 }
 
 #pragma GCC visibility pop

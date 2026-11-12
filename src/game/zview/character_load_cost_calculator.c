@@ -12,14 +12,24 @@ extern _UNKNOWN* GameData_212df10;
 extern int* GameData_212df08;
 __int64 CharacterLoadCostCalculator_170f460(__int64 result);
 _QWORD*
-game_zview_CharacterLoadCostCalculator_collectCharaPolygon_lambda0_Invoke(
-    _QWORD* result, __int64 a2);
+game_zview_CharacterLoadCostCalculator_collectCharaPolygon_lambda0_Invoke_alt1(
+    _QWORD* result,
+    __int64 a2) __asm__("game_zview_CharacterLoadCostCalculator_"
+                        "collectCharaPolygon_lambda0_Invoke");
 __int64 CharacterBuilder_1083e90(_QWORD, _QWORD, long double);
 extern __int128 GameData_1a82ea0;
 extern __int128 GameData_1a82f20;
 extern __int64 (*GameData_20ab5c0[])();
 __int64 game_zview_CharacterLoadCostCalculator_collectCharaPolygon(
     __int64 result, __int64 a2, long double a3);
+__int64 memset_alt1(__int64, int, unsigned __int64) __asm__("memset");
+__int64 wld_Crc32_alt1(int, unsigned __int8*,
+                       unsigned __int64) __asm__("wld_Crc32");
+int __cxa_guard_acquire_alt1(__int64) __asm__("__cxa_guard_acquire");
+void Model_a65960_alt1(__int64, __int64*) __asm__("Model_a65960");
+void __cxa_guard_release_alt1(__int64) __asm__("__cxa_guard_release");
+void game_zview_CharacterLoadCostCalculator_collectCharaPolygon_lambda0_Invoke(
+    __int64 a1, __int64 a2);
 
 __int64 game_zview_CharacterLoadCostCalculator_collectCharaPolygon(
     __int64 result, __int64 a2, long double a3)
@@ -385,53 +395,48 @@ LABEL_12:
   return result;
 }
 
-_QWORD*
-
-game_zview_CharacterLoadCostCalculator_collectCharaPolygon_lambda0_Invoke(
-    _QWORD* result, __int64 a2)
+void game_zview_CharacterLoadCostCalculator_collectCharaPolygon_lambda0_Invoke(
+    __int64 a1, __int64 a2)
 {
   unsigned __int8 explicit;
   int* v3;
   __int64 v4;
   __int64 i;
   int v6;
-  __int64 v7;
-  _QWORD* v8;
-  __int64 v9;
-  __int64 v10;
-  __int64 v11;
-  int v12;
-  unsigned int v13;
-  unsigned __int64 v14;
+  __int64* v7;
+  __int64 v8;
+  unsigned int v9;
+  int v10;
+  unsigned int v11;
+  unsigned __int64 v12;
+  __int64 v13;
+  __int64 v14;
   __int64 v15;
-  _QWORD* v16;
+  int v16;
   __int64 v17;
-  int v18;
+  __int64 v18;
   __int64 v19;
   __int64 v20;
   __int64 v21;
   __int64 v22;
-  _QWORD* v23;
-  __int64 v24;
-  int v25;
-  double v26;
-  int v27;
+  int v23;
+  int v24;
 
   explicit = atomic_load_explicit((atomic_uchar* volatile)GameData_212df10,
                                   memory_order_acquire);
   v3 = GameData_212df08;
   if ((explicit & 1) == 0) {
-    v23 = result;
-    v24 = a2;
-    v25 = __cxa_guard_acquire(GameData_212df10);
-    a2 = v24;
-    v27 = v25;
-    result = v23;
-    if (v27 != 0) {
-      *v3 = wld_Crc32(0, "ModelModule", 11, v26);
-      __cxa_guard_release(GameData_212df10);
-      a2 = v24;
-      result = v23;
+    v21 = a1;
+    v22 = a2;
+    v23 = __cxa_guard_acquire_alt1((__int64)GameData_212df10);
+    a2 = v22;
+    v24 = v23;
+    a1 = v21;
+    if (v24 != 0) {
+      *v3 = wld_Crc32_alt1(0, "ModelModule", 0xBu);
+      __cxa_guard_release_alt1((__int64)GameData_212df10);
+      a2 = v22;
+      a1 = v21;
     }
   }
   v4 = *(_QWORD*)(a2 + 512);
@@ -440,63 +445,59 @@ game_zview_CharacterLoadCostCalculator_collectCharaPolygon_lambda0_Invoke(
     v4 -= 16;
     if (v6 == *v3) {
       if (*(_QWORD*)(a2 + 512) != v4) {
-        v7 = *(_QWORD*)(v4 + 8);
-        if (v7 != 0) {
-          v8 = result;
-          result = X8CALL_X0(
-              _QWORD*, (*(__attribute__((swiftcall)) void (**)(
-                           PSEUDO_X8, _QWORD))(**(_QWORD**)(v7 + 24) + 56LL))(
-                           (void*)*(_QWORD**)(v7 + 24), *(_QWORD*)(v7 + 24)));
-          v12 = *((_DWORD*)v8 + 4);
-          v13 = (_DWORD)result - 1;
-          if (v12 < (int)result - 1) {
-            v13 = *((_DWORD*)v8 + 4);
+        v7 = *(__int64**)(v4 + 8);
+        if (v7 != nullptr) {
+          v8 = a1;
+          v9 = (unsigned int)X8CALL_X0(
+              _QWORD*,
+              (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64))(
+                  *(_QWORD*)v7[3] + 56LL))((void*)v7[3], v7[3]));
+          v10 = *(_DWORD*)(v8 + 16);
+          v11 = v9 - 1;
+          if (v10 < (int)(v9 - 1)) {
+            v11 = *(_DWORD*)(v8 + 16);
           }
-          if (v12 >= 0) {
-            v14 = v13;
+          if (v10 >= 0) {
+            v12 = v11;
           }
           else {
-            v14 = 0;
+            v12 = 0;
           }
-          if ((v14 & 0x80000000) != 0 ||
-              (v15 = *((unsigned int*)v8 + 5), v16 = v8,
-               (unsigned int)v15 > 5) ||
-              (v17 = *(_QWORD*)(v7 + 88),
-               0xAAAAAAAAAAAAAAABLL * ((*(_QWORD*)(v7 + 96) - v17) >> 3) <=
-                   v14)) {
-            v19 = *(_QWORD*)(v7 + 88);
-            v20 = *(_QWORD*)(v7 + 96);
-            if (v19 != v20) {
-              memset(v19, 0, 24 * ((v20 - v19 - 24) / 0x18uLL) + 24, v9, v10,
-                     v11);
+          if ((v12 & 0x80000000) != 0 ||
+              (v13 = *(unsigned int*)(v8 + 20), v14 = v8,
+               (unsigned int)v13 > 5) ||
+              (v15 = v7[11],
+               0xAAAAAAAAAAAAAAABLL * ((v7[12] - v15) >> 3) <= v12)) {
+            v17 = v7[11];
+            v18 = v7[12];
+            if (v17 != v18) {
+              memset_alt1(v17, 0, 24 * ((v18 - v17 - 24) / 0x18uLL) + 24);
             }
-            result = (_QWORD*)Model_a65960(*(_QWORD*)(v7 + 24), v7 + 88);
-            v18 = 0;
-            if ((v14 & 0x80000000) != 0) {
-              v16 = v8;
+            Model_a65960_alt1(v7[3], v7 + 11);
+            v16 = 0;
+            if ((v12 & 0x80000000) != 0) {
+              v14 = v8;
             }
             else {
-              v21 = *((unsigned int*)v8 + 5);
-              v16 = v8;
-              if ((unsigned int)v21 <= 5) {
-                v22 = *(_QWORD*)(v7 + 88);
-                if (0xAAAAAAAAAAAAAAABLL * ((*(_QWORD*)(v7 + 96) - v22) >> 3) >
-                    v14) {
-                  v18 = *(_DWORD*)(v22 + 24LL * (unsigned int)v14 + 4 * v21);
+              v19 = *(unsigned int*)(v8 + 20);
+              v14 = v8;
+              if ((unsigned int)v19 <= 5) {
+                v20 = v7[11];
+                if (0xAAAAAAAAAAAAAAABLL * ((v7[12] - v20) >> 3) > v12) {
+                  v16 = *(_DWORD*)(v20 + 24LL * (unsigned int)v12 + 4 * v19);
                 }
               }
             }
           }
           else {
-            v18 = *(_DWORD*)(v17 + 24LL * (unsigned int)v14 + 4 * v15);
+            v16 = *(_DWORD*)(v15 + 24LL * (unsigned int)v12 + 4 * v13);
           }
-          *(_DWORD*)v16[1] += v18;
+          **(_DWORD**)(v14 + 8) += v16;
         }
       }
-      return result;
+      return;
     }
   }
-  return result;
 }
 
 #pragma GCC visibility pop

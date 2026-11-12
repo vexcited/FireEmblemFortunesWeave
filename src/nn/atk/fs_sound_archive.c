@@ -40,6 +40,18 @@ __int64 FsSoundArchive_Unknown5(__int64 result);
 extern __int64 (*nn_atk_detail_fnd_FileStreamProxy_vtable[])();
 _QWORD* FsSoundArchive_2b3d00(_QWORD* result, __int64 a2, __int64 a3,
                               __int64 a4);
+_QWORD* GameRoutine_285210_alt1(_QWORD* result,
+                                __int64*) __asm__("GameRoutine_285210");
+__int64 FileStreamImpl_Unknown12_alt1(__int64, const char*,
+                                      int) __asm__("FileStreamImpl_Unknown12");
+__int64
+FileStreamImpl_Unknown4_alt1(_QWORD*, __int64, __int64,
+                             __int64) __asm__("FileStreamImpl_Unknown4");
+__int64 GameRoutine_2785d0_alt1(__int64, __int64) __asm__("GameRoutine_2785d0");
+__int64 memset_alt1(__int64, int, unsigned __int64) __asm__("memset");
+unsigned __int64
+GameRoutine_279360_alt1(__int64, const char*) __asm__("GameRoutine_279360");
+unsigned __int64 strlen_alt1(const char*) __asm__("strlen");
 
 __int64 FsSoundArchive_Destructor(__int64 a1)
 {
@@ -77,88 +89,84 @@ __int64 FsSoundArchive_2760a0(_BYTE* a1)
 
 bool FsSoundArchive_276120(__int64 a1, const char* a2)
 {
-  __int64 v4;
-  __int64 v5;
-  __int64 v6;
-  int v7;
-  __int64 v8;
-  __int64 v9;
-  __int64 v10;
-  int v11;
+  int v4;
+  int v5;
   _BOOL8 result;
-  _BOOL4 v13;
-  __int64 v14;
+  _BOOL4 v7;
+  __int64 v8;
+  int v10;
+  int v11;
+  int v12;
+  char* v13;
+  const char* v14;
+  char v15;
   int v16;
-  int v17;
-  int v18;
-  _BYTE* v19;
-  const char* v20;
-  char v21;
-  int v22;
-  _BYTE v23[255];
-  _BYTE v24[384];
+  char v17[255];
+  _BYTE v18[384];
 
-  if ((FileStreamImpl_Unknown12(a1 + 744, a2, 1) & 0x80000000) != 0) {
+  if ((FileStreamImpl_Unknown12_alt1(a1 + 744, a2, 1) & 0x80000000) != 0) {
     return false;
   }
-  v7 = *(_DWORD*)(a1 + 876);
+  v4 = *(_DWORD*)(a1 + 876);
   *(_BYTE*)(a1 + 872) = 1;
-  *(_DWORD*)(a1 + 876) = v7 + 1;
-  memset(v23, 0, 568, v4, v5, v6);
-  if (FileStreamImpl_Unknown4(a1 + 744,
-                              (unsigned __int64)v24 & 0xFFFFFFFFFFFFFF00LL, 256,
-                              0) != 256) {
+  *(_DWORD*)(a1 + 876) = v4 + 1;
+  memset_alt1((__int64)v17, 0, 0x238u);
+  if (FileStreamImpl_Unknown4_alt1((_QWORD*)(a1 + 744),
+                                   (unsigned __int64)v18 & 0xFFFFFFFFFFFFFF00LL,
+                                   256, 0) != 256) {
     return false;
   }
-  GameRoutine_285210(a1 + 672, (unsigned __int64)v24 & 0xFFFFFFFFFFFFFF00LL);
-  GameRoutine_2785d0(a1, a1 + 672);
+  GameRoutine_285210_alt1(
+      (_QWORD*)(a1 + 672),
+      (__int64*)((unsigned __int64)v18 & 0xFFFFFFFFFFFFFF00LL));
+  GameRoutine_2785d0_alt1(a1, a1 + 672);
   (*(void (**)(__int64))(*(_QWORD*)a1 + 40LL))(a1);
-  memset(v23, 0, 639, v8, v9, v10);
-  v11 = strlen(a2);
-  result = v11 < 639;
-  if (v11 <= 638) {
-    v13 = v11 < 639;
-    if (v11 >= 1) {
-      v14 = v11 & 0x7FFFFFFF;
+  memset_alt1((__int64)v17, 0, 0x27Fu);
+  v5 = strlen_alt1(a2);
+  result = v5 < 639;
+  if (v5 <= 638) {
+    v7 = v5 < 639;
+    if (v5 >= 1) {
+      v8 = v5 & 0x7FFFFFFF;
       while (1) {
-        v16 = (unsigned __int8)a2[v14 - 1];
-        if (v16 == 92 || v16 == 47) {
+        v10 = (unsigned __int8)a2[v8 - 1];
+        if (v10 == 92 || v10 == 47) {
           break;
         }
-        if (v14-- <= 1) {
+        if (v8-- <= 1) {
           goto LABEL_19;
         }
       }
-      if ((unsigned int)v14 >= 0x27F) {
-        v17 = 639;
+      if ((unsigned int)v8 >= 0x27F) {
+        v11 = 639;
       }
       else {
-        v17 = v14;
+        v11 = v8;
       }
-      v18 = v17 - 1;
-      if (v17 == 1) {
-        v19 = v23;
+      v12 = v11 - 1;
+      if (v11 == 1) {
+        v13 = v17;
       }
       else {
-        v19 = v23;
-        v20 = a2;
+        v13 = v17;
+        v14 = a2;
         do {
-          v22 = *(unsigned __int8*)v20++;
-          v21 = v22;
-          if (v22 == 0) {
+          v16 = *(unsigned __int8*)v14++;
+          v15 = v16;
+          if (v16 == 0) {
             break;
           }
-          *v19++ = v21;
-          --v18;
-        } while (v18 != 0);
+          *v13++ = v15;
+          --v12;
+        } while (v12 != 0);
       }
-      *v19 = 0;
-      v23[v14 - 1] = 0;
+      *v13 = 0;
+      v17[v8 - 1] = 0;
     }
   LABEL_19:
-    GameRoutine_279360(a1, v23);
+    GameRoutine_279360_alt1(a1, v17);
     nn_util_SNPrintf(a1 + 880, 639, "%s", a2);
-    return v13;
+    return v7;
   }
   return result;
 }

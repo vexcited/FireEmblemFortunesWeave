@@ -20,7 +20,8 @@ extern __int64 msg_MessageManager_instance_;
 void __attribute__((noreturn)) GameRoutine_60a1d0(_QWORD);
 __int64 FuncUnitMenuItem_Unknown3(__int64 a1);
 __int64 FuncUnitMenuItem_Unknown25(_DWORD* a1);
-unsigned __int64 FuncUnitMenuItem_Unknown70(__int64 a1, __int64 a2);
+unsigned __int64 FuncUnitMenuItem_Unknown70_alt1(
+    __int64 a1, __int64 a2) __asm__("FuncUnitMenuItem_Unknown70");
 __int64 GameRoutine_112180(_QWORD, _QWORD);
 __int64 game_sound_PlayCursorLeftSe(void);
 __int64 game_sound_PlayCursorRightSe(void);
@@ -41,6 +42,19 @@ __int64 snd_play_ff2d0_alt1(__int64, __int64, __int64, unsigned int,
                             unsigned int, int, float,
                             float) __asm__("snd_play_ff2d0");
 void snd_Fade_Fade_10c830_alt1(__int64, float) __asm__("snd_Fade_Fade_10c830");
+__int64 GameRoutine_60a020_alt1(__int64,
+                                const char*) __asm__("GameRoutine_60a020");
+__int64 Registration_a4da40(__int64, __int64);
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 memmove_alt1(__int64, __int64, unsigned __int64) __asm__("memmove");
+char* game_util_Format_alt1(const char*, ...) __asm__("game_util_Format");
+unsigned __int64 strlen_alt1(const char*) __asm__("strlen");
+void __attribute__((noreturn)) String_60a1d0();
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void FuncUnitMenuItem_Unknown70(__int64 a1, __int64 a2);
 
 __int64 FuncUnitMenuItem_Unknown3(__int64 a1)
 {
@@ -142,75 +156,75 @@ __int64 FuncUnitMenuItem_e96c50(__int64 a1)
   return result;
 }
 
-unsigned __int64 FuncUnitMenuItem_Unknown70(__int64 a1, __int64 a2)
+void FuncUnitMenuItem_Unknown70(__int64 a1, __int64 a2)
 {
   const char* v3;
-  __int64 v4;
-  unsigned __int64 result;
+  char* v4;
+  unsigned __int64 v5;
   unsigned __int64 v6;
   char* v7;
   __int64 v8;
   _BYTE* v9;
-  char* v10;
+  const char* v10;
   __int64 v11;
-  _QWORD v12[2];
-  _BYTE* v13;
+  struct {
+    _QWORD v12[2];
+    _BYTE* v13;
+  } v12_;
 
   v3 = (const char*)(*(__int64 (**)(__int64))(*(_QWORD*)a1 + 24LL))(a1);
-  v4 = game_util_Format("%s_Help", v3);
-  result = strlen(v4);
-  if (result >= 0xFFFFFFFFFFFFFFF7LL) {
-    GameRoutine_60a1d0(result);
+  v4 = game_util_Format_alt1("%s_Help", v3);
+  v5 = strlen_alt1(v4);
+  if (v5 >= 0xFFFFFFFFFFFFFFF7LL) {
+    String_60a1d0();
   }
-  v6 = result;
-  if (result >= 0x17) {
-    if ((result | 7) == 0x17) {
+  v6 = v5;
+  if (v5 >= 0x17) {
+    if ((v5 | 7) == 0x17) {
       v8 = 26;
     }
     else {
-      v8 = (result | 7) + 1;
+      v8 = (v5 | 7) + 1;
     }
-    v7 = (char*)fw_memory_HeapManager_Allocate(fw_memory_g_heap_manager, v8, 16,
-                                               0);
-    v12[1] = v6;
-    v13 = v7;
-    v12[0] = v8 | 1;
+    v7 = (char*)fw_memory_HeapManager_Allocate_alt1(fw_memory_g_heap_manager,
+                                                    v8, 16, 0);
+    v12_.v12[1] = v6;
+    v12_.v13 = v7;
+    v12_.v12[0] = v8 | 1;
     goto LABEL_9;
   }
-  LOBYTE(v12[0]) = 2 * result;
-  v7 = (char*)v12 + 1;
-  if (result != 0) {
+  LOBYTE(v12_.v12[0]) = 2 * v5;
+  v7 = (char*)v12_.v12 + 1;
+  if (v5 != 0) {
   LABEL_9:
-    result = memmove(v7, v4, v6);
+    memmove_alt1((__int64)v7, (__int64)v4, v6);
   }
   v7[v6] = 0;
-  if ((v12[0] & 1) != 0) {
-    v9 = v13;
+  if ((v12_.v12[0] & 1) != 0) {
+    v9 = v12_.v13;
   }
   else {
-    v9 = (char*)v12 + 1;
+    v9 = (char*)v12_.v12 + 1;
   }
-  if (v9 != nullptr && *v9 != 0) {
-    result = GameRoutine_a4da40(msg_MessageManager_instance_);
-    if ((result & 1) != 0) {
-      if ((v12[0] & 1) != 0) {
-        v10 = v13;
-      }
-      else {
-        v10 = (char*)v12 + 1;
-      }
-      result = GameRoutine_60a020(a2 + 8, v10);
+  if (v9 != nullptr && *v9 != 0 &&
+      (Registration_a4da40(msg_MessageManager_instance_, (__int64)v9) & 1) !=
+          0) {
+    if ((v12_.v12[0] & 1) != 0) {
+      v10 = v12_.v13;
     }
+    else {
+      v10 = (char*)v12_.v12 + 1;
+    }
+    GameRoutine_60a020_alt1(a2 + 8, v10);
   }
-  if ((v12[0] & 1) != 0 && v13 != nullptr) {
+  if ((v12_.v12[0] & 1) != 0 && v12_.v13 != nullptr) {
     v11 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v11 = 56;
     }
-    return nn_mem_StandardAllocator_Free(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v11);
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v11, (__int64)v12_.v13);
   }
-  return result;
 }
 
 #pragma GCC visibility pop

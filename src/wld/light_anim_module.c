@@ -16,7 +16,8 @@ extern __int64 GameData_212c638;
 extern __int64 fw_memory_g_heap_manager_ptr;
 float GameRoutine_c51ba0(__int64, float);
 __int64 LightAnimModule_Destructor(_QWORD* a1);
-__int64 LightAnimModule_DeletingDestructor(_QWORD* a1);
+__int64 LightAnimModule_DeletingDestructor_alt1(_QWORD* a1) __asm__(
+    "LightAnimModule_DeletingDestructor");
 __int64 LightAnimModule_c5f890(unsigned __int64 a1, __int64* a2);
 __int64 LightAnimModule_Unknown5(__int64 result);
 void LightAnimModule_c5fca0(__int64 a1, float*** a2, int a3, float a4);
@@ -25,7 +26,8 @@ LightAnimModule_c51a60_alt2(__int64 result, int a2,
                             long double a3) __asm__("LightAnimModule_c51a60");
 __int64
 LightAnimModule_c60000_alt1(__int64 result) __asm__("LightAnimModule_c60000");
-__int64** LightAnimModule_c60200(__int64** result);
+__int64**
+LightAnimModule_c60200_alt1(__int64** result) __asm__("LightAnimModule_c60200");
 __int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
     "std___1___shared_weak_count___release_weak");
 __int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
@@ -37,6 +39,8 @@ void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void LightAnimModule_c51a60(__int64 a1, int a2, float a3);
 void LightAnimModule_c60000(_QWORD* a1);
+void LightAnimModule_DeletingDestructor(_QWORD* a1);
+void LightAnimModule_c60200(__int64** a1);
 
 void LightAnimModule_c51a60(__int64 a1, int a2, float a3)
 {
@@ -112,29 +116,29 @@ __int64 LightAnimModule_Destructor(_QWORD* a1)
   return result;
 }
 
-__int64 LightAnimModule_DeletingDestructor(_QWORD* a1)
+void LightAnimModule_DeletingDestructor(_QWORD* a1)
 {
   __int64 v2;
   __int64 v3;
-  _QWORD* v5;
+  __int64* v4;
 
   *a1 = wld_LightAnimModule_vtable;
-  v5 = a1 + 9;
-  GameRoutine_c60200(&v5);
-  v5 = a1 + 6;
-  GameRoutine_c60200(&v5);
+  v4 = a1 + 9;
+  LightAnimModule_c60200(&v4);
+  v4 = a1 + 6;
+  LightAnimModule_c60200(&v4);
   v2 = a1[4];
   if (v2 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v2 + 8),
                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v2 + 16LL))(v2);
-    std___1___shared_weak_count___release_weak(v2);
+    std___1___shared_weak_count___release_weak_alt1(v2);
   }
   v3 = 128;
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
     v3 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v3);
+  nn_mem_StandardAllocator_Free_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v3, (__int64)a1);
 }
 
 __int64 LightAnimModule_c5f890(unsigned __int64 a1, __int64* a2)
@@ -606,7 +610,7 @@ void LightAnimModule_c60000(_QWORD* a1)
   }
 }
 
-__int64** LightAnimModule_c60200(__int64** result)
+void LightAnimModule_c60200(__int64** a1)
 {
   __int64* v1;
   __int64 v2;
@@ -618,12 +622,12 @@ __int64** LightAnimModule_c60200(__int64** result)
   __int64 v8;
   __int64 v9;
   __int64 v10;
-  __int64** v11;
+  __int64 v11;
+  __int64 v12;
 
-  v1 = *result;
-  v2 = **result;
+  v1 = *a1;
+  v2 = **a1;
   if (v2 != 0) {
-    v11 = result;
     v3 = v1[1];
     for (i = fw_memory_g_heap_manager_ptr; v2 != v3; v3 -= 48) {
       v5 = *(_QWORD*)(v3 - 32);
@@ -637,12 +641,13 @@ __int64** LightAnimModule_c60200(__int64** result)
           if (v7 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v7 + 8),
                                           0xFFFFFFFFFFFFFFFFLL) == 0) {
             (*(void (**)(__int64))(*(_QWORD*)v7 + 16LL))(v7);
-            std___1___shared_weak_count___release_weak(v7);
+            std___1___shared_weak_count___release_weak_alt1(v7);
           }
           v6 -= 16;
         } while (v6 != v5);
         v8 = *(_QWORD*)(v3 - 32);
         *(_QWORD*)(v3 - 24) = v5;
+        v5 = v8;
         if (v8 != 0) {
         LABEL_13:
           if (*(_QWORD*)(*(_QWORD*)i + 200LL) != 0) {
@@ -651,24 +656,24 @@ __int64** LightAnimModule_c60200(__int64** result)
           else {
             v9 = 56;
           }
-          nn_mem_StandardAllocator_Free(*(_QWORD*)i + v9);
+          nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)i + v9, v5);
         }
       }
-      result = *(__int64***)(v3 - 40);
-      if (result != nullptr) {
-        result = (__int64**)std___1___shared_weak_count___release_weak(result);
+      v10 = *(_QWORD*)(v3 - 40);
+      if (v10 != 0) {
+        std___1___shared_weak_count___release_weak_alt1(v10);
       }
     }
     v1[1] = v2;
-    if (**v11 != 0) {
-      v10 = 128;
+    v11 = **a1;
+    if (v11 != 0) {
+      v12 = 128;
       if (*(_QWORD*)(*(_QWORD*)i + 200LL) == 0) {
-        v10 = 56;
+        v12 = 56;
       }
-      return (__int64**)nn_mem_StandardAllocator_Free(*(_QWORD*)i + v10);
+      nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)i + v12, v11);
     }
   }
-  return result;
 }
 
 #pragma GCC visibility pop

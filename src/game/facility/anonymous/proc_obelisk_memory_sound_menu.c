@@ -118,7 +118,8 @@ __attribute__((swiftcall)) void
 ProcObeliskMemorySoundMenu_Unknown47(PSEUDO_X8 x8_, __int64 a1);
 void ProcObeliskMemorySoundMenu_Unknown84_alt1(__int64 a1) __asm__(
     "ProcObeliskMemorySoundMenu_Unknown84");
-__int64 ProcObeliskMemorySoundMenu_Unknown128(_QWORD* a1);
+__int64 ProcObeliskMemorySoundMenu_Unknown128_alt1(_QWORD* a1) __asm__(
+    "ProcObeliskMemorySoundMenu_Unknown128");
 __int64 ProcObeliskMemorySoundMenu_Unknown146();
 __int64 ProcObeliskMemorySoundMenu_Unknown147();
 __int64 ProcObeliskMemorySoundMenu_Unknown148();
@@ -181,6 +182,11 @@ const char* Pane_58fac0_alt1(__int64, const char*) __asm__("Pane_58fac0");
 void GameRoutine_190a0c0_alt1(float*, __int64, float*, _QWORD*,
                               __int64) __asm__("GameRoutine_190a0c0");
 __int64 ProcObeliskMemorySoundMenu_Unknown84(__int64 a1);
+void BasicMenuCursor_16e0c00_alt1(_QWORD*,
+                                  __int64) __asm__("BasicMenuCursor_16e0c00");
+void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void ProcObeliskMemorySoundMenu_Unknown128(_QWORD* a1);
 
 __int64 ProcObeliskMemorySoundMenu_Unknown2(__int64 a1)
 {
@@ -913,108 +919,105 @@ __int64 ProcObeliskMemorySoundMenu_Unknown101(__int64 a1)
   return result;
 }
 
-__int64 ProcObeliskMemorySoundMenu_Unknown128(_QWORD* a1)
+void ProcObeliskMemorySoundMenu_Unknown128(_QWORD* a1)
 {
-  __int64 result;
+  __int64 v2;
   __int64 v3;
-  __int64 v4;
-  __int64* v5;
-  __int64 v6;
+  __int64* v4;
+  __int64 v5;
+  int v6;
   int v7;
-  int v8;
-  int* v9;
-  int v10;
-  bool v11;
+  int* v8;
+  int v9;
+  bool v10;
+  __int64 v11;
   __int64 v12;
-  __int64 v13;
-  unsigned __int64 v14;
+  unsigned __int64 v13;
+  __int64 v14;
   __int64 v15;
-  __int64 v16;
   struct {
+    __int64 v16;
     __int64 v17;
-    __int64 v18;
-  } v17_;
+  } v16_;
 
-  result = X8CALL_X0(
-      __int64, snd_a35e20((void*)(&v17_.v17), *game_sound_g_game_sound_ptr[0]));
-  v3 = v17_.v17;
-  v4 = v17_.v18;
-  if (v17_.v17 != v17_.v18) {
-    v5 = (__int64*)fw_memory_g_heap_manager_ptr;
+  snd_a35e20((void*)(&v16_.v16), *game_sound_g_game_sound_ptr[0]);
+  v2 = v16_.v16;
+  v3 = v16_.v17;
+  if (v16_.v16 != v16_.v17) {
+    v4 = (__int64*)fw_memory_g_heap_manager_ptr;
     do {
-      v6 = fw_memory_HeapManager_Allocate_alt1(*v5, 128, 16, 0);
-      *(_WORD*)(v6 + 16) = 0;
-      *(_DWORD*)(v6 + 40) = 0;
-      v7 = GameData_2260e88;
-      *(_QWORD*)(v6 + 48) = 0;
-      *(_QWORD*)(v6 + 56) = 0;
-      *(_QWORD*)(v6 + 64) = 0;
-      *(_QWORD*)(v6 + 72) = 0;
-      *(_WORD*)(v6 + 80) = 257;
-      *(_BYTE*)(v6 + 82) = 1;
-      *(_QWORD*)v6 = game_facility_anonymous_SoundMenuItem_vtable;
-      *(_QWORD*)(v6 + 8) = 0;
-      *(_DWORD*)(v6 + 120) = 16842752;
-      *(_QWORD*)(v6 + 88) = *(_QWORD*)v3;
-      *(_DWORD*)(v6 + 96) = *(_DWORD*)(v3 + 8);
-      *(_DWORD*)(v6 + 100) = *(_DWORD*)(v3 + 12);
-      *(_QWORD*)(v6 + 104) = *(_QWORD*)(v3 + 16);
-      v8 = *(_DWORD*)(v3 + 24);
-      *(_DWORD*)(v6 + 112) = v8;
-      *(_WORD*)(v6 + 116) = *(_WORD*)(v3 + 28);
-      v9 = &GameData_2260e88;
-      if (v7 != v8) {
-        v9 = &GameData_2260e90;
-        if (GameData_2260e90 != v8) {
-          v9 = &GameData_2260e98;
-          if (GameData_2260e98 != v8) {
-            v9 = &GameData_2260ea0;
-            if (GameData_2260ea0 != v8) {
-              v9 = &GameData_2260ea8;
-              if (GameData_2260ea8 != v8) {
-                v9 = &GameData_2260eb0;
-                if (GameData_2260eb0 != v8) {
-                  v9 = &GameData_2260e88;
+      v5 = fw_memory_HeapManager_Allocate_alt1(*v4, 128, 16, 0);
+      *(_WORD*)(v5 + 16) = 0;
+      *(_DWORD*)(v5 + 40) = 0;
+      v6 = GameData_2260e88;
+      *(_QWORD*)(v5 + 48) = 0;
+      *(_QWORD*)(v5 + 56) = 0;
+      *(_QWORD*)(v5 + 64) = 0;
+      *(_QWORD*)(v5 + 72) = 0;
+      *(_WORD*)(v5 + 80) = 257;
+      *(_BYTE*)(v5 + 82) = 1;
+      *(_QWORD*)v5 = game_facility_anonymous_SoundMenuItem_vtable;
+      *(_QWORD*)(v5 + 8) = 0;
+      *(_DWORD*)(v5 + 120) = 16842752;
+      *(_QWORD*)(v5 + 88) = *(_QWORD*)v2;
+      *(_DWORD*)(v5 + 96) = *(_DWORD*)(v2 + 8);
+      *(_DWORD*)(v5 + 100) = *(_DWORD*)(v2 + 12);
+      *(_QWORD*)(v5 + 104) = *(_QWORD*)(v2 + 16);
+      v7 = *(_DWORD*)(v2 + 24);
+      *(_DWORD*)(v5 + 112) = v7;
+      *(_WORD*)(v5 + 116) = *(_WORD*)(v2 + 28);
+      v8 = &GameData_2260e88;
+      if (v6 != v7) {
+        v8 = &GameData_2260e90;
+        if (GameData_2260e90 != v7) {
+          v8 = &GameData_2260e98;
+          if (GameData_2260e98 != v7) {
+            v8 = &GameData_2260ea0;
+            if (GameData_2260ea0 != v7) {
+              v8 = &GameData_2260ea8;
+              if (GameData_2260ea8 != v7) {
+                v8 = &GameData_2260eb0;
+                if (GameData_2260eb0 != v7) {
+                  v8 = &GameData_2260e88;
                 }
               }
             }
           }
         }
       }
-      v10 = v9[1];
-      if (v10 != 1) {
-        v11 = v10 < 2;
-        *(_BYTE*)(v6 + 122) = v11;
-        *(_BYTE*)(v6 + 123) = v11;
+      v9 = v8[1];
+      if (v9 != 1) {
+        v10 = v9 < 2;
+        *(_BYTE*)(v5 + 122) = v10;
+        *(_BYTE*)(v5 + 123) = v10;
       }
-      result = (__int64)BasicMenuCursor_16e0c00(a1, v6);
-      v3 += 32;
-    } while (v3 != v4);
+      BasicMenuCursor_16e0c00_alt1(a1, v5);
+      v2 += 32;
+    } while (v2 != v3);
   }
-  v13 = a1[32];
-  v12 = a1[33];
-  if (v12 != v13) {
-    v14 = 0;
+  v12 = a1[32];
+  v11 = a1[33];
+  if (v11 != v12) {
+    v13 = 0;
     do {
-      v15 = *(_QWORD*)(v13 + 8 * v14);
-      if (v15 != 0) {
-        *(_DWORD*)(v15 + 40) = v14;
-        v13 = a1[32];
-        v12 = a1[33];
+      v14 = *(_QWORD*)(v12 + 8 * v13);
+      if (v14 != 0) {
+        *(_DWORD*)(v14 + 40) = v13;
+        v12 = a1[32];
+        v11 = a1[33];
       }
-      ++v14;
-    } while (v14 < (v12 - v13) >> 3);
+      ++v13;
+    } while (v13 < (v11 - v12) >> 3);
   }
-  if (v17_.v17 != 0) {
-    v17_.v18 = v17_.v17;
-    v16 = 128;
+  if (v16_.v16 != 0) {
+    v16_.v17 = v16_.v16;
+    v15 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-      v16 = 56;
+      v15 = 56;
     }
-    return nn_mem_StandardAllocator_Free_alt1(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v16);
+    nn_mem_StandardAllocator_Free_alt2(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v15, v16_.v16);
   }
-  return result;
 }
 
 __int64 ProcObeliskMemorySoundMenu_Unknown129(__int64 a1)

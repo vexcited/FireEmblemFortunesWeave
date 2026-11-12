@@ -29,15 +29,18 @@ __int64 WaveStreamReader_18b6d0(__int64 a1);
 __int64 WaveStreamReader_Unknown6(__int64 a1, __int64 a2, char a3, char a4,
                                   char a5);
 __int64 WaveStreamReader_Unknown8(__int64 a1, int a2, int a3);
-__int64 WaveStreamReader_Unknown9(__int64 a1, __int64 a2, int a3, __int64 a4,
-                                  __int64 a5, __int64 a6);
+__int64
+WaveStreamReader_Unknown9_alt1(__int64 a1, __int64 a2, int a3, __int64 a4,
+                               __int64 a5,
+                               __int64 a6) __asm__("WaveStreamReader_Unknown9");
 bool WaveStreamReader_Unknown11(__int64 a1, int a2);
 __int64 WaveStreamReader_Unknown13(__int64 a1);
 __int64 WaveStreamReader_Unknown14(__int64 a1, int a2);
 bool WaveStreamReader_GetSubTypeCount(__int64 a1, int a2, int a3, int a4);
 __int64 WaveStreamReader_18d1e0(__int64 a1);
-__int64 WaveStreamReader_Unknown10(__int64 a1, __int64 a2, int a3, __int64 a4,
-                                   __int64 a5, __int64 a6);
+__int64 WaveStreamReader_Unknown10_alt1(
+    __int64 a1, __int64 a2, int a3, __int64 a4, __int64 a5,
+    __int64 a6) __asm__("WaveStreamReader_Unknown10");
 __attribute__((swiftcall)) void FileManager_10df70(PSEUDO_X8, __int64, __int64,
                                                    unsigned int);
 __int64 Crc32List_1163b0();
@@ -56,6 +59,10 @@ void WaveStreamReader_18c820_alt1(__int64 a1) __asm__(
 __int64 nn_os_LockMutex_alt1(__int64) __asm__("nn_os_LockMutex");
 __int64 nn_os_UnlockMutex_alt2(__int64) __asm__("nn_os_UnlockMutex");
 __int64 WaveStreamReader_18c820(__int64 a1);
+__int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
+__int64 memset_alt1(__int64, int, unsigned __int64) __asm__("memset");
+__int64 WaveStreamReader_Unknown9(__int64 a1, __int64 a2, int a3);
+__int64 WaveStreamReader_Unknown10(__int64 a1, __int64 a2, int a3);
 
 __int64 WaveStreamReader_Destructor(_QWORD* a1)
 {
@@ -108,15 +115,6 @@ __int64 WaveStreamReader_Unknown2(__int64 a1)
   __int64 v5;
   __int64 v6;
   __int64 v7;
-  __int64 v8;
-  __int64 v9;
-  __int64 v10;
-  __int64 v11;
-  __int64 v12;
-  __int64 v13;
-  __int64 v14;
-  __int64 v15;
-  __int64 v16;
   __int64 result;
 
   GameRoutine_1889a0();
@@ -125,22 +123,22 @@ __int64 WaveStreamReader_Unknown2(__int64 a1)
   *(_DWORD*)(v2 + 24) = 0;
   *(_QWORD*)(v2 + 8) = 0;
   *(_QWORD*)(v2 + 16) = 0;
-  memset(v3, 0, 0x20000, v4, v5, v6);
+  memset_alt1(v3, 0, 0x20000u);
   *(_BYTE*)(v2 + 40) = 0;
-  v7 = *(_QWORD*)(a1 + 432);
-  v8 = *(_QWORD*)(v7 + 32);
-  *(_QWORD*)(v7 + 8) = 0;
-  *(_QWORD*)(v7 + 16) = 0;
-  *(_DWORD*)(v7 + 24) = 0;
-  memset(v8, 0, 0x20000, v9, v10, v11);
-  *(_BYTE*)(v7 + 40) = 0;
-  v12 = *(_QWORD*)(a1 + 440);
-  v13 = *(_QWORD*)(v12 + 32);
-  *(_QWORD*)(v12 + 8) = 0;
-  *(_QWORD*)(v12 + 16) = 0;
-  *(_DWORD*)(v12 + 24) = 0;
-  result = memset(v13, 0, 0x20000, v14, v15, v16);
-  *(_BYTE*)(v12 + 40) = 0;
+  v4 = *(_QWORD*)(a1 + 432);
+  v5 = *(_QWORD*)(v4 + 32);
+  *(_QWORD*)(v4 + 8) = 0;
+  *(_QWORD*)(v4 + 16) = 0;
+  *(_DWORD*)(v4 + 24) = 0;
+  memset_alt1(v5, 0, 0x20000u);
+  *(_BYTE*)(v4 + 40) = 0;
+  v6 = *(_QWORD*)(a1 + 440);
+  v7 = *(_QWORD*)(v6 + 32);
+  *(_QWORD*)(v6 + 8) = 0;
+  *(_QWORD*)(v6 + 16) = 0;
+  *(_DWORD*)(v6 + 24) = 0;
+  result = memset_alt1(v7, 0, 0x20000u);
+  *(_BYTE*)(v6 + 40) = 0;
   *(_DWORD*)(a1 + 448) = 0;
   return result;
 }
@@ -353,89 +351,88 @@ __int64 WaveStreamReader_Unknown8(__int64 a1, int a2, int a3)
   return result;
 }
 
-__int64 WaveStreamReader_Unknown9(__int64 a1, __int64 a2, int a3, __int64 a4,
-                                  __int64 a5, __int64 a6)
+__int64 WaveStreamReader_Unknown9(__int64 a1, __int64 a2, int a3)
 {
-  int v8;
-  __int64 v9;
-  __int64 v10;
-  __int64 v11;
-  int v12;
+  int v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  int v9;
   __int64 result;
-  __int64 v14;
-  __int64 v15;
-  __int64 v16;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
+  int v14;
+  _DWORD* v15;
+  int v16;
   int v17;
-  _DWORD* v18;
+  __int64 v18;
   int v19;
-  int v20;
+  __int64 v20;
   __int64 v21;
-  int v22;
+  __int64 v22;
   __int64 v23;
   __int64 v24;
   __int64 v25;
-  __int64 v26;
-  __int64 v27;
-  __int64 v28;
 
   if (*(_DWORD*)(a1 + 72) == 7) {
-    memset(a2, 0, a3, a4, a5, a6);
-    v8 = (*(_DWORD*)(a1 + 76) + a3) & ~((*(_DWORD*)(a1 + 76) + a3) >> 31);
-    v9 = *(_QWORD*)(a1 + 48);
-    *(_DWORD*)(a1 + 76) = v8;
-    if (v9 != 0) {
-      v10 = v9 + 24;
+    memset_alt1(a2, 0, a3);
+    v5 = (*(_DWORD*)(a1 + 76) + a3) & ~((*(_DWORD*)(a1 + 76) + a3) >> 31);
+    v6 = *(_QWORD*)(a1 + 48);
+    *(_DWORD*)(a1 + 76) = v5;
+    if (v6 != 0) {
+      v7 = v6 + 24;
     }
     else {
-      v10 = a1 + 56;
+      v7 = a1 + 56;
     }
-    v11 = snd_fnd_WeakHandle_get(v10);
-    v12 = (*(__int64 (**)(__int64))(*(_QWORD*)v11 + 80LL))(v11);
+    v8 = snd_fnd_WeakHandle_get_alt1(v7);
+    v9 = (*(__int64 (**)(__int64))(*(_QWORD*)v8 + 80LL))(v8);
     result = 0;
-    if (v8 > v12) {
-      v14 = *(_QWORD*)(a1 + 48);
-      if (v14 != 0) {
-        v15 = v14 + 24;
+    if (v5 > v9) {
+      v11 = *(_QWORD*)(a1 + 48);
+      if (v11 != 0) {
+        v12 = v11 + 24;
       }
       else {
-        v15 = a1 + 56;
+        v12 = a1 + 56;
       }
-      v16 = snd_fnd_WeakHandle_get(v15);
-      v17 = (*(__int64 (**)(__int64))(*(_QWORD*)v16 + 80LL))(v16);
+      v13 = snd_fnd_WeakHandle_get_alt1(v12);
+      v14 = (*(__int64 (**)(__int64))(*(_QWORD*)v13 + 80LL))(v13);
       result = 0;
-      *(_DWORD*)(a1 + 76) = v17;
+      *(_DWORD*)(a1 + 76) = v14;
     }
   }
   else {
-    v18 = *(_DWORD**)(a1 + 168);
-    v19 = *(_DWORD*)(a1 + 76) - *v18;
-    if (v19 >= 0 && (v20 = v18[1], v19 + a3 <= v20)) {
-      v21 = (__int64)v18 + (unsigned int)v19 + 12;
-      if (v19 >= v20) {
-        v21 = 0;
+    v15 = *(_DWORD**)(a1 + 168);
+    v16 = *(_DWORD*)(a1 + 76) - *v15;
+    if (v16 >= 0 && (v17 = v15[1], v16 + a3 <= v17)) {
+      v18 = (__int64)v15 + (unsigned int)v16 + 12;
+      if (v16 >= v17) {
+        v18 = 0;
       }
-      memcpy(a2, v21, a3);
-      v22 = (*(_DWORD*)(a1 + 76) + a3) & ~((*(_DWORD*)(a1 + 76) + a3) >> 31);
-      v23 = *(_QWORD*)(a1 + 48);
-      *(_DWORD*)(a1 + 76) = v22;
-      if (v23 != 0) {
-        v24 = v23 + 24;
+      memcpy_alt1(a2, v18, a3);
+      v19 = (*(_DWORD*)(a1 + 76) + a3) & ~((*(_DWORD*)(a1 + 76) + a3) >> 31);
+      v20 = *(_QWORD*)(a1 + 48);
+      *(_DWORD*)(a1 + 76) = v19;
+      if (v20 != 0) {
+        v21 = v20 + 24;
       }
       else {
-        v24 = a1 + 56;
+        v21 = a1 + 56;
       }
-      v25 = snd_fnd_WeakHandle_get(v24);
-      if (v22 > (*(int (**)(__int64))(*(_QWORD*)v25 + 80LL))(v25)) {
-        v26 = *(_QWORD*)(a1 + 48);
-        if (v26 != 0) {
-          v27 = v26 + 24;
+      v22 = snd_fnd_WeakHandle_get_alt1(v21);
+      if (v19 > (*(int (**)(__int64))(*(_QWORD*)v22 + 80LL))(v22)) {
+        v23 = *(_QWORD*)(a1 + 48);
+        if (v23 != 0) {
+          v24 = v23 + 24;
         }
         else {
-          v27 = a1 + 56;
+          v24 = a1 + 56;
         }
-        v28 = snd_fnd_WeakHandle_get(v27);
+        v25 = snd_fnd_WeakHandle_get_alt1(v24);
         *(_DWORD*)(a1 + 76) =
-            (*(__int64 (**)(__int64))(*(_QWORD*)v28 + 80LL))(v28);
+            (*(__int64 (**)(__int64))(*(_QWORD*)v25 + 80LL))(v25);
       }
       return 1;
     }
@@ -447,19 +444,18 @@ __int64 WaveStreamReader_Unknown9(__int64 a1, __int64 a2, int a3, __int64 a4,
   return result;
 }
 
-__int64 WaveStreamReader_Unknown10(__int64 a1, __int64 a2, int a3, __int64 a4,
-                                   __int64 a5, __int64 a6)
+__int64 WaveStreamReader_Unknown10(__int64 a1, __int64 a2, int a3)
 {
-  __int64 v7;
+  __int64 v4;
 
   if (*(_DWORD*)(a1 + 72) == 7) {
-    memset(a2, 0, a3, a4, a5, a6);
+    memset_alt1(a2, 0, a3);
     return 0;
   }
   else {
-    v7 = *(_QWORD*)(a1 + 168);
-    if (a3 <= *(_DWORD*)(v7 + 4)) {
-      memcpy(a2, v7 + 12, a3);
+    v4 = *(_QWORD*)(a1 + 168);
+    if (a3 <= (signed __int32)*(_DWORD*)(v4 + 4)) {
+      memcpy_alt1(a2, v4 + 12, a3);
       return 1;
     }
     else {
@@ -679,18 +675,9 @@ __int64 WaveStreamReader_Unknown13(__int64 a1)
   __int64 v6;
   __int64 v7;
   __int64 v8;
-  __int64 v9;
-  __int64 v10;
-  __int64 v11;
-  __int64 v12;
-  __int64 v13;
-  __int64 v14;
-  __int64 v15;
-  __int64 v16;
-  __int64 v17;
 
-  nn_os_LockMutex(a1 + 88);
-  nn_os_LockMutex(a1 + 120);
+  nn_os_LockMutex_alt1(a1 + 88);
+  nn_os_LockMutex_alt1(a1 + 120);
   v2 = *(_QWORD*)(a1 + 424);
   *(_DWORD*)(a1 + 420) = 0;
   *(_QWORD*)(a1 + 272) = 0;
@@ -700,31 +687,31 @@ __int64 WaveStreamReader_Unknown13(__int64 a1)
   *(_QWORD*)(v2 + 8) = 0;
   *(_QWORD*)(v2 + 16) = 0;
   *(_DWORD*)(v2 + 24) = 0;
-  memset(v3, 0, 0x20000, v4, v5, v6);
+  memset_alt1(v3, 0, 0x20000u);
   *(_BYTE*)(v2 + 40) = 0;
-  v7 = *(_QWORD*)(a1 + 432);
-  v8 = *(_QWORD*)(v7 + 32);
-  *(_QWORD*)(v7 + 8) = 0;
-  *(_QWORD*)(v7 + 16) = 0;
-  *(_DWORD*)(v7 + 24) = 0;
-  memset(v8, 0, 0x20000, v9, v10, v11);
-  *(_BYTE*)(v7 + 40) = 0;
-  v12 = *(_QWORD*)(a1 + 440);
-  v13 = *(_QWORD*)(v12 + 32);
-  *(_QWORD*)(v12 + 8) = 0;
-  *(_QWORD*)(v12 + 16) = 0;
-  *(_DWORD*)(v12 + 24) = 0;
-  memset(v13, 0, 0x20000, v14, v15, v16);
-  *(_BYTE*)(v12 + 40) = 0;
+  v4 = *(_QWORD*)(a1 + 432);
+  v5 = *(_QWORD*)(v4 + 32);
+  *(_QWORD*)(v4 + 8) = 0;
+  *(_QWORD*)(v4 + 16) = 0;
+  *(_DWORD*)(v4 + 24) = 0;
+  memset_alt1(v5, 0, 0x20000u);
+  *(_BYTE*)(v4 + 40) = 0;
+  v6 = *(_QWORD*)(a1 + 440);
+  v7 = *(_QWORD*)(v6 + 32);
+  *(_QWORD*)(v6 + 8) = 0;
+  *(_QWORD*)(v6 + 16) = 0;
+  *(_DWORD*)(v6 + 24) = 0;
+  memset_alt1(v7, 0, 0x20000u);
+  *(_BYTE*)(v6 + 40) = 0;
   *(_DWORD*)(a1 + 448) = 0;
-  v17 = *(_QWORD*)(a1 + 160);
+  v8 = *(_QWORD*)(a1 + 160);
   *(_DWORD*)(a1 + 76) = 0;
-  if (v17 != 0) {
-    *(_DWORD*)(v17 + 68) = 0;
+  if (v8 != 0) {
+    *(_DWORD*)(v8 + 68) = 0;
   }
   *(_DWORD*)(a1 + 72) = 0;
-  nn_os_UnlockMutex(a1 + 120);
-  return nn_os_UnlockMutex(a1 + 88);
+  nn_os_UnlockMutex_alt2(a1 + 120);
+  return nn_os_UnlockMutex_alt2(a1 + 88);
 }
 
 __int64 WaveStreamReader_Unknown14(__int64 a1, int a2)

@@ -27,6 +27,14 @@ unsigned __int16* BlacksmithMenuUtil_187cca0(unsigned __int16* result,
                                              __int64 a2);
 __int64 game_facility_BlacksmithMenuUtil_EachItem_lambda0_Invoke(__int64 a1,
                                                                  int* a2);
+__int64 GameRoutine_2b0_alt1() __asm__("GameRoutine_2b0");
+__int64 game_GameVariableTable_Find_alt1(_QWORD*, unsigned __int64*) __asm__(
+    "game_GameVariableTable_Find");
+__int64 game_HashString_alt1(__int64 result) __asm__("game_HashString");
+int __cxa_guard_acquire_alt1(__int64) __asm__("__cxa_guard_acquire");
+void __attribute__((noreturn))
+GameRoutine_60a310_alt1() __asm__("GameRoutine_60a310");
+void __cxa_guard_release_alt1(__int64) __asm__("__cxa_guard_release");
 
 __int64 game_facility_BlacksmithMenuUtil_CanRefine(unsigned __int16* a1,
                                                    __int64 a2)
@@ -48,10 +56,12 @@ __int64 game_facility_BlacksmithMenuUtil_CanRefine(unsigned __int16* a1,
   __int64 v17;
   __int64 v18;
   __int64 v19;
-  _QWORD v21[4];
-  _QWORD* v22;
+  struct {
+    _QWORD v21[4];
+    _QWORD* v22;
+  } v21_;
   char v23;
-  _QWORD v24[2];
+  unsigned __int64 v24[2];
 
   if ((*((_BYTE*)a1 + 3) & 8) != 0) {
     v2 = 0;
@@ -66,10 +76,10 @@ __int64 game_facility_BlacksmithMenuUtil_CanRefine(unsigned __int16* a1,
       v8 = *(_QWORD*)(v7 + 536) - *(_QWORD*)(v7 + 528);
       if (v8 != 0) {
         v23 = 0;
-        v21[0] = GameData_20fa4c0;
-        v21[1] = &v23;
-        v9 = v21;
-        v22 = v21;
+        v21_.v21[0] = GameData_20fa4c0;
+        v21_.v21[1] = &v23;
+        v9 = v21_.v21;
+        v21_.v22 = v21_.v21;
         if ((int)(-1227133513 * (v8 >> 3)) < 1) {
           goto LABEL_22;
         }
@@ -79,15 +89,16 @@ __int64 game_facility_BlacksmithMenuUtil_CanRefine(unsigned __int16* a1,
           if ((atomic_load_explicit((atomic_uchar* volatile)&GameData_21ca350,
                                     memory_order_acquire) &
                1) == 0 &&
-              (unsigned int)__cxa_guard_acquire(&GameData_21ca350, a2) != 0) {
+              __cxa_guard_acquire_alt1((__int64)&GameData_21ca350) != 0) {
             GameData_21ca340 = 0;
             GameData_21ca348 = 0;
-            *(_OWORD*)&GameData_21ca330 = 0u;
+            *(_OWORD*)&GameData_21ca330 =
+                (__typeof__(*(_OWORD*)&GameData_21ca330)){0};
             GameData_21ca320 = 0;
             GameData_21ca328 = 0;
             GameData_21ca318 = 0;
-            GameRoutine_2b0(GameRoutine_6ed500);
-            __cxa_guard_release(&GameData_21ca350);
+            GameRoutine_2b0_alt1();
+            __cxa_guard_release_alt1((__int64)&GameData_21ca350);
           }
           v14 = *(_QWORD*)(*(_QWORD*)v6 + 528LL);
           v15 = *(_QWORD*)(*(_QWORD*)v6 + 536LL) - v14;
@@ -96,17 +107,19 @@ __int64 game_facility_BlacksmithMenuUtil_CanRefine(unsigned __int16* a1,
             v16 = &GameData_21ca318;
           }
           v17 = v16[6];
-          if (v17 == 0 || (v24[1] = v16[6], v24[0] = game_HashString(v17),
-                           game_GameModeData_instance_ != 0) &&
-                              (v18 = game_GameVariableTable_Find(
-                                   *(_QWORD*)(game_GameModeData_instance_ + 48),
-                                   v24)) != 0 &&
-                              *(_DWORD*)(v18 + 32) != 0) {
+          if (v17 == 0 ||
+              (v24[1] = v16[6], v24[0] = game_HashString_alt1(v17),
+               game_GameModeData_instance_ != 0) &&
+                  (v18 = game_GameVariableTable_Find_alt1(
+                       *(_QWORD**)(game_GameModeData_instance_ + 48), v24)) !=
+                      0 &&
+                  *(_DWORD*)(v18 + 32) != 0) {
             LODWORD(v24[0]) = v11;
-            if (v22 == nullptr) {
-              GameRoutine_60a310(0);
+            if (v21_.v22 == nullptr) {
+              GameRoutine_60a310_alt1();
             }
-            (*(void (**)(_QWORD*, _QWORD*))(*v22 + 48LL))(v22, v24);
+            (*(void (**)(_QWORD*, unsigned __int64*))(*v21_.v22 + 48LL))(
+                v21_.v22, v24);
           }
           ++v11;
           v10 += 56;
@@ -116,13 +129,13 @@ __int64 game_facility_BlacksmithMenuUtil_CanRefine(unsigned __int16* a1,
         } while (v11 <
                  (int)(-1227133513 *
                        ((*(_QWORD*)(v13 + 536) - *(_QWORD*)(v13 + 528)) >> 3)));
-        v9 = v22;
-        if (v22 == v21) {
+        v9 = v21_.v22;
+        if (v21_.v22 == v21_.v21) {
         LABEL_22:
           v19 = 32;
         }
         else {
-          if (v22 == nullptr) {
+          if (v21_.v22 == nullptr) {
           LABEL_24:
             v2 = v23;
             return v2 & 1;
@@ -154,7 +167,7 @@ unsigned __int16* BlacksmithMenuUtil_187cca0(unsigned __int16* result,
   unsigned __int64 v14;
   __int64* v15;
   __int64 v16;
-  _QWORD v17[2];
+  unsigned __int64 v17[2];
 
   v2 = GameData_212c878[0];
   v3 = *(_QWORD*)(*(_QWORD*)(*GameData_212c878[0] + 64) + 8LL * *result);
@@ -169,15 +182,16 @@ unsigned __int16* BlacksmithMenuUtil_187cca0(unsigned __int16* result,
       if ((atomic_load_explicit((atomic_uchar* volatile)&GameData_21ca350,
                                 memory_order_acquire) &
            1) == 0 &&
-          (unsigned int)__cxa_guard_acquire(&GameData_21ca350, a2) != 0) {
+          __cxa_guard_acquire_alt1((__int64)&GameData_21ca350) != 0) {
         GameData_21ca340 = 0;
         GameData_21ca348 = 0;
-        *(_OWORD*)&GameData_21ca330 = 0u;
+        *(_OWORD*)&GameData_21ca330 =
+            (__typeof__(*(_OWORD*)&GameData_21ca330)){0};
         GameData_21ca320 = 0;
         GameData_21ca328 = 0;
         GameData_21ca318 = 0;
-        GameRoutine_2b0(GameRoutine_6ed500);
-        __cxa_guard_release(&GameData_21ca350);
+        GameRoutine_2b0_alt1();
+        __cxa_guard_release_alt1((__int64)&GameData_21ca350);
       }
       v13 = *(_QWORD*)(*(_QWORD*)v4 + 528LL);
       v14 = *(_QWORD*)(*(_QWORD*)v4 + 536LL) - v13;
@@ -187,19 +201,21 @@ unsigned __int16* BlacksmithMenuUtil_187cca0(unsigned __int16* result,
       }
       v16 = v15[6];
       if (v16 == 0 ||
-          (v17[1] = v15[6], result = (unsigned __int16*)game_HashString(v16),
-           v17[0] = result, game_GameModeData_instance_ != 0) &&
-              (result = (unsigned __int16*)game_GameVariableTable_Find(
-                   *(_QWORD*)(game_GameModeData_instance_ + 48), v17)) !=
+          (v17[1] = v15[6],
+           result = (unsigned __int16*)game_HashString_alt1(v16),
+           v17[0] = (unsigned __int64)result,
+           game_GameModeData_instance_ != 0) &&
+              (result = (unsigned __int16*)game_GameVariableTable_Find_alt1(
+                   *(_QWORD**)(game_GameModeData_instance_ + 48), v17)) !=
                   nullptr &&
               *((_DWORD*)result + 8) != 0) {
         v10 = *(_QWORD*)(a2 + 32);
         LODWORD(v17[0]) = v9;
         if (v10 == 0) {
-          GameRoutine_60a310(0);
+          GameRoutine_60a310_alt1();
         }
-        result = (unsigned __int16*)(*(__int64 (**)(__int64, _QWORD*))(
-            *(_QWORD*)v10 + 48LL))(v10, v17);
+        result = (unsigned __int16*)(*(__int64 (**)(
+            __int64, unsigned __int64*))(*(_QWORD*)v10 + 48LL))(v10, v17);
       }
       ++v9;
       v8 += 56;

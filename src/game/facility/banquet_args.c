@@ -8,8 +8,10 @@ __int64 nn_mem_StandardAllocator_Free(_QWORD);
 extern __int64 fw_memory_g_heap_manager_ptr;
 void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
 void __attribute__((noreturn)) GameRoutine_6c1f60(void);
-_QWORD* game_facility_BanquetArgs_CalcJoinUnits_lambda0_Invoke(_QWORD* result,
-                                                               __int64* a2);
+_QWORD* game_facility_BanquetArgs_CalcJoinUnits_lambda0_Invoke_alt1(
+    _QWORD* result,
+    __int64*
+        a2) __asm__("game_facility_BanquetArgs_CalcJoinUnits_lambda0_Invoke");
 __int64 Troop_133ed80(__int64 result, __int64);
 __int64 fw_memory_HeapManager_Allocate_alt1(
     __int64, __int64, __int64,
@@ -27,6 +29,8 @@ void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
 __int64
 game_facility_BanquetArgs_CalcJoinUnits_lambda0_Invoke_194fcb0(_QWORD* a1,
                                                                __int64* a2);
+void game_facility_BanquetArgs_CalcJoinUnits_lambda0_Invoke(_QWORD* a1,
+                                                            __int64* a2);
 __int64
 
 game_facility_BanquetArgs_CalcJoinUnits_lambda0_Invoke_194fcb0(_QWORD* a1,
@@ -160,8 +164,8 @@ LABEL_28:
   return (*(__int64 (**)(__int64))(*v25_.v26 + v24))((__int64)v25_.v26);
 }
 
-_QWORD* game_facility_BanquetArgs_CalcJoinUnits_lambda0_Invoke(_QWORD* result,
-                                                               __int64* a2)
+void game_facility_BanquetArgs_CalcJoinUnits_lambda0_Invoke(_QWORD* a1,
+                                                            __int64* a2)
 {
   __int64 v2;
   __int64* v5;
@@ -169,7 +173,7 @@ _QWORD* game_facility_BanquetArgs_CalcJoinUnits_lambda0_Invoke(_QWORD* result,
   _QWORD* v7;
   __int64 v8;
   __int64 v9;
-  __int64 v10;
+  signed __int64 v10;
   unsigned __int64 v11;
   __int64 v12;
   __int64 v13;
@@ -180,16 +184,16 @@ _QWORD* game_facility_BanquetArgs_CalcJoinUnits_lambda0_Invoke(_QWORD* result,
   __int64 v18;
 
   v2 = *a2;
-  if (*a2 != 0 && v2 != result[2] && v2 != result[3]) {
-    v5 = (__int64*)result[1];
+  if (*a2 != 0 && v2 != a1[2] && v2 != a1[3]) {
+    v5 = (__int64*)a1[1];
     v7 = (_QWORD*)v5[1];
     v6 = v5[2];
     if ((unsigned __int64)v7 >= v6) {
       v9 = *v5;
-      v10 = (__int64)v7 - *v5;
+      v10 = (signed __int64)v7 - *v5;
       v11 = (v10 >> 3) + 1;
       if (v11 >> 61 != 0) {
-        GameRoutine_6c1f60();
+        GameRoutine_6c1f60_alt1();
       }
       v12 = v6 - v9;
       v13 = fw_memory_g_heap_manager_ptr;
@@ -204,9 +208,9 @@ _QWORD* game_facility_BanquetArgs_CalcJoinUnits_lambda0_Invoke(_QWORD* result,
       }
       if (v14 != 0) {
         if (v14 >> 61 != 0) {
-          GameRoutine_60a210(result);
+          GameRoutine_60a210_alt1();
         }
-        v15 = fw_memory_HeapManager_Allocate(
+        v15 = fw_memory_HeapManager_Allocate_alt1(
             *(_QWORD*)fw_memory_g_heap_manager_ptr, 8 * v14, 16, 0);
       }
       else {
@@ -216,7 +220,7 @@ _QWORD* game_facility_BanquetArgs_CalcJoinUnits_lambda0_Invoke(_QWORD* result,
       v17 = v15 + v10 - 8 * (v10 >> 3);
       *(_QWORD*)(v15 + v10) = v2;
       v8 = v15 + v10 + 8;
-      result = (_QWORD*)memcpy(v17, v9, v10);
+      memcpy_alt1(v17, v9, v10);
       *v5 = v17;
       v5[1] = v8;
       v5[2] = v16;
@@ -225,7 +229,7 @@ _QWORD* game_facility_BanquetArgs_CalcJoinUnits_lambda0_Invoke(_QWORD* result,
         if (*(_QWORD*)(*(_QWORD*)v13 + 200LL) == 0) {
           v18 = 56;
         }
-        result = (_QWORD*)nn_mem_StandardAllocator_Free(*(_QWORD*)v13 + v18);
+        nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v13 + v18, v9);
       }
     }
     else {
@@ -234,7 +238,6 @@ _QWORD* game_facility_BanquetArgs_CalcJoinUnits_lambda0_Invoke(_QWORD* result,
     }
     v5[1] = v8;
   }
-  return result;
 }
 
 #pragma GCC visibility pop

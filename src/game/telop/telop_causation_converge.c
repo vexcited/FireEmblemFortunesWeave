@@ -56,7 +56,8 @@ __int64 TelopCausationConverge_Unknown39(__int64 a1);
 bool TelopCausationConverge_Unknown37(_QWORD* a1);
 bool TelopCausationConverge_Unknown41(_QWORD* a1);
 __int64 TelopCausationConverge_Destructor(_QWORD* a1);
-__int64 TelopCausationConverge_DeletingDestructor(_QWORD* a1);
+__int64 TelopCausationConverge_DeletingDestructor_alt1(_QWORD* a1) __asm__(
+    "TelopCausationConverge_DeletingDestructor");
 _QWORD* GameHr_14a10d0(_QWORD*, __int64, __int64, __int64);
 __attribute__((swiftcall)) void LayoutAccessor_1560070(PSEUDO_X8, __int64*,
                                                        const char*);
@@ -87,7 +88,16 @@ void GameRoutine_156c5d0_alt1(__int64, __int64,
 void __attribute__((noreturn)) String_60a1d0();
 void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
-_QWORD* TelopCausationConverge_Unknown33(__int64 a1);
+_QWORD* TelopCausationConverge_Unknown33_alt2(__int64 a1) __asm__(
+    "TelopCausationConverge_Unknown33");
+__int64 GameHr_14a10d0_alt1(_QWORD*, __int64, __int64,
+                            __int64) __asm__("GameHr_14a10d0");
+__int64 GameHr_173f310(__int64, __int64*, char, __int64, __int64, float);
+__int64 GameRoutine_60a020_alt2(__int64,
+                                const char*) __asm__("GameRoutine_60a020");
+void TelopReliance_1386f80(__int64);
+__int64 TelopCausationConverge_Unknown33(__int64 a1);
+void TelopCausationConverge_DeletingDestructor(_QWORD* a1);
 
 __int64 TelopCausationConverge_Unknown30(__int64 a1)
 {
@@ -151,7 +161,7 @@ __int64 TelopCausationConverge_Unknown31(__int64 result)
   return result;
 }
 
-_QWORD* TelopCausationConverge_Unknown33(__int64 a1)
+__int64 TelopCausationConverge_Unknown33(__int64 a1)
 {
   __int64 v1;
   __int64 v3;
@@ -184,7 +194,7 @@ _QWORD* TelopCausationConverge_Unknown33(__int64 a1)
   __int64 v31;
   __int64* v32;
   unsigned int v33;
-  _QWORD* result;
+  __int64 result;
   __int64 v35;
   struct {
     __int64 v36;
@@ -344,7 +354,7 @@ _QWORD* TelopCausationConverge_Unknown33(__int64 a1)
   else {
     v23 = *v19;
   }
-  GameRoutine_60a020_alt1((char*)(*v17 + 14704), v23),
+  GameRoutine_60a020_alt2(*v17 + 14704, v23),
       v33 = COERCE_AS(__typeof__(v33),
                       PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   v24 = *v17;
@@ -400,9 +410,8 @@ _QWORD* TelopCausationConverge_Unknown33(__int64 a1)
   v40_.v40 = (__int64)"Out";
   v40_.v41 = 3;
   *(_QWORD*)(a1 +
-             832) =
-      GameRoutine_173f310_alt1(a1, &v38_.v38, 0, (__int64)v43_.v43,
-                               (__int64)&v40_.v40, -0x1.0000000000000p+0f),
+             832) = GameHr_173f310(a1, &v38_.v38, 0, (__int64)v43_.v43,
+                                   (__int64)&v40_.v40, -0x1.0000000000000p+0f),
              v33 = COERCE_AS(__typeof__(v33),
                              PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   if (v38_.v39 != 0) {
@@ -427,8 +436,8 @@ _QWORD* TelopCausationConverge_Unknown33(__int64 a1)
                        0),
   v33 = COERCE_AS(__typeof__(v33),
                   PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-  result =
-      GameHr_14a10d0(&v36_.v36, (__int64)v32, v33, (__int64)&GameData_1a9f09e),
+  result = GameHr_14a10d0_alt1(&v36_.v36, (__int64)v32, v33,
+                               (__int64)&GameData_1a9f09e),
   v33 = COERCE_AS(__typeof__(v33),
                   PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   v35 = v36_.v37;
@@ -437,7 +446,7 @@ _QWORD* TelopCausationConverge_Unknown33(__int64 a1)
     (*(void (**)(__int64))(*(_QWORD*)v35 + 16LL))(v35),
         v33 = COERCE_AS(__typeof__(v33),
                         PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-    return (_QWORD*)std___1___shared_weak_count___release_weak_alt1(v35);
+    return std___1___shared_weak_count___release_weak_alt1(v35);
   }
   return result;
 }
@@ -551,7 +560,7 @@ __int64 TelopCausationConverge_Destructor(_QWORD* a1)
   return GameRoutine_1386f80((__int64)a1);
 }
 
-__int64 TelopCausationConverge_DeletingDestructor(_QWORD* a1)
+void TelopCausationConverge_DeletingDestructor(_QWORD* a1)
 {
   __int64 v2;
   __int64 v3;
@@ -562,13 +571,13 @@ __int64 TelopCausationConverge_DeletingDestructor(_QWORD* a1)
   if (v2 != 0) {
     (*(void (**)(__int64))(*(_QWORD*)v2 + 8LL))(v2);
   }
-  GameRoutine_1386f80((__int64)a1);
+  TelopReliance_1386f80((__int64)a1);
   v3 = 128;
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
     v3 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v3);
+  nn_mem_StandardAllocator_Free_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v3, (__int64)a1);
 }
 
 #pragma GCC visibility pop

@@ -8,7 +8,8 @@ __int64 nn_mem_StandardAllocator_Free(_QWORD);
 extern __int64 fw_memory_g_heap_manager_ptr;
 void __attribute__((noreturn)) GameRoutine_194adf0(void);
 void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
-__int64 ObjectCullingJob_Unknown3(__int64 result);
+__int64 ObjectCullingJob_Unknown3_alt1(__int64 result) __asm__(
+    "ObjectCullingJob_Unknown3");
 __int64 Scene_a70560(_QWORD, _QWORD, _QWORD, long double);
 __n128 memset(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
 extern int GameData_2167538;
@@ -20,6 +21,15 @@ __int64 memset_alt1(__int64, int, unsigned __int64) __asm__("memset");
 void GameRoutine_19433b0_alt1(_QWORD*, int) __asm__("GameRoutine_19433b0");
 void __attribute__((noreturn))
 GameRoutine_60a210_alt1() __asm__("GameRoutine_60a210");
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
+void __attribute__((noreturn))
+GameRoutine_194adf0_alt1() __asm__("GameRoutine_194adf0");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void ObjectCullingJob_Unknown3(_QWORD* a1);
 
 void ObjectCullingJob_Unknown2(__int64 a1, int a2)
 {
@@ -116,7 +126,7 @@ void ObjectCullingJob_Unknown2(__int64 a1, int a2)
   }
 }
 
-__int64 ObjectCullingJob_Unknown3(__int64 result)
+void ObjectCullingJob_Unknown3(_QWORD* a1)
 {
   __int64 v1;
   int v2;
@@ -136,7 +146,7 @@ __int64 ObjectCullingJob_Unknown3(__int64 result)
   __int64 v16;
   __int64 v17;
   unsigned int v18;
-  __int64 v19;
+  signed __int64 v19;
   unsigned __int64 v20;
   __int64 v21;
   int v22;
@@ -144,7 +154,7 @@ __int64 ObjectCullingJob_Unknown3(__int64 result)
   __int64 v24;
   __int64 v25;
   unsigned int v26;
-  __int64 v27;
+  signed __int64 v27;
   unsigned __int64 v28;
   __int64 v29;
   unsigned __int64 v30;
@@ -165,7 +175,7 @@ __int64 ObjectCullingJob_Unknown3(__int64 result)
   _DWORD* v45;
   unsigned __int64 v46;
   __int64 v47;
-  __int64 v48;
+  signed __int64 v48;
   unsigned __int64 v49;
   __int64 v50;
   unsigned __int64 v51;
@@ -180,7 +190,7 @@ __int64 ObjectCullingJob_Unknown3(__int64 result)
   unsigned __int64 v60;
   __int64 v61;
   __int64 v62;
-  __int64 v63;
+  signed __int64 v63;
   unsigned __int64 v64;
   __int64 v65;
   unsigned __int64 v66;
@@ -194,7 +204,7 @@ __int64 ObjectCullingJob_Unknown3(__int64 result)
   unsigned __int64 v74;
   __int64 v75;
   __int64 v76;
-  __int64 v77;
+  signed __int64 v77;
   unsigned __int64 v78;
   __int64 v79;
   unsigned __int64 v80;
@@ -211,18 +221,16 @@ __int64 ObjectCullingJob_Unknown3(__int64 result)
   int v91;
   int v92;
   int v93;
-  _QWORD* v94;
 
-  if ((int)*(_QWORD*)(result + 40) < 1) {
-    return result;
+  if ((int)a1[5] < 1) {
+    return;
   }
-  v1 = *(_QWORD*)(result + 40) & 0x7FFFFFFFLL;
+  v1 = a1[5] & 0x7FFFFFFFLL;
   v2 = -1;
   v3 = -1;
-  v4 = (_QWORD*)result;
+  v4 = a1;
   v5 = 0;
   v6 = 0;
-  v94 = (_QWORD*)result;
   v91 = -1;
   v92 = -1;
   v86 = v1;
@@ -272,7 +280,7 @@ __int64 ObjectCullingJob_Unknown3(__int64 result)
           if ((unsigned __int64)v14 >= v15) {
             v17 = *v13;
             v18 = v8;
-            v19 = (__int64)v14 - *v13;
+            v19 = (signed __int64)v14 - *v13;
             v20 = (v19 >> 4) + 1;
             if (v20 >> 60 != 0) {
               goto LABEL_118;
@@ -292,7 +300,7 @@ __int64 ObjectCullingJob_Unknown3(__int64 result)
               if (v23 >> 60 != 0) {
                 goto LABEL_119;
               }
-              v24 = fw_memory_HeapManager_Allocate(
+              v24 = fw_memory_HeapManager_Allocate_alt1(
                   *(_QWORD*)fw_memory_g_heap_manager_ptr, 16 * v23, 16, 0);
             }
             else {
@@ -306,7 +314,7 @@ __int64 ObjectCullingJob_Unknown3(__int64 result)
             v32[2] = v5;
             v32[3] = v18;
             v16 = v24 + v19 + 16;
-            result = memcpy(v34, v17, v19);
+            memcpy_alt1(v34, v17, v19);
             *v13 = v34;
             v13[1] = v16;
             v13[2] = v33;
@@ -316,10 +324,10 @@ __int64 ObjectCullingJob_Unknown3(__int64 result)
                   0) {
                 v35 = 56;
               }
-              result = nn_mem_StandardAllocator_Free(
-                  *(_QWORD*)fw_memory_g_heap_manager_ptr + v35);
+              nn_mem_StandardAllocator_Free_alt1(
+                  *(_QWORD*)fw_memory_g_heap_manager_ptr + v35, v17);
             }
-            v4 = v94;
+            v4 = a1;
           }
           else {
             *v14 = v3;
@@ -349,7 +357,7 @@ __int64 ObjectCullingJob_Unknown3(__int64 result)
           if ((unsigned __int64)v10 >= v11) {
             v25 = *v9;
             v26 = v8;
-            v27 = (__int64)v10 - *v9;
+            v27 = (signed __int64)v10 - *v9;
             v28 = (v27 >> 4) + 1;
             if (v28 >> 60 != 0) {
               goto LABEL_118;
@@ -368,7 +376,7 @@ __int64 ObjectCullingJob_Unknown3(__int64 result)
               if (v30 >> 60 != 0) {
                 goto LABEL_119;
               }
-              v31 = fw_memory_HeapManager_Allocate(
+              v31 = fw_memory_HeapManager_Allocate_alt1(
                   *(_QWORD*)fw_memory_g_heap_manager_ptr, 16 * v30, 16, 0);
             }
             else {
@@ -382,7 +390,7 @@ __int64 ObjectCullingJob_Unknown3(__int64 result)
             v12 = v31 + v27 + 16;
             v36[2] = v91;
             v36[3] = v92;
-            result = memcpy(v38, v25, v27);
+            memcpy_alt1(v38, v25, v27);
             *v9 = v38;
             v9[1] = v12;
             v9[2] = v37;
@@ -392,8 +400,8 @@ __int64 ObjectCullingJob_Unknown3(__int64 result)
                   0) {
                 v39 = 56;
               }
-              result = nn_mem_StandardAllocator_Free(
-                  *(_QWORD*)fw_memory_g_heap_manager_ptr + v39);
+              nn_mem_StandardAllocator_Free_alt1(
+                  *(_QWORD*)fw_memory_g_heap_manager_ptr + v39, v25);
             }
             v8 = v26;
           }
@@ -430,7 +438,7 @@ __int64 ObjectCullingJob_Unknown3(__int64 result)
             }
             else {
               v47 = *v43;
-              v48 = (__int64)v45 - *v43;
+              v48 = (signed __int64)v45 - *v43;
               v49 = (v48 >> 4) + 1;
               if (v49 >> 60 != 0) {
                 goto LABEL_118;
@@ -449,7 +457,7 @@ __int64 ObjectCullingJob_Unknown3(__int64 result)
                 if (v51 >> 60 != 0) {
                   goto LABEL_119;
                 }
-                v52 = fw_memory_HeapManager_Allocate(
+                v52 = fw_memory_HeapManager_Allocate_alt1(
                     *(_QWORD*)fw_memory_g_heap_manager_ptr, 16 * v51, 16, 0);
               }
               else {
@@ -463,7 +471,7 @@ __int64 ObjectCullingJob_Unknown3(__int64 result)
               v53[2] = v5;
               v53[3] = v41;
               v42 = v52 + v48 + 16;
-              result = memcpy(v55, v47, v48);
+              memcpy_alt1(v55, v47, v48);
               *v43 = v55;
               v43[1] = v42;
               v43[2] = v54;
@@ -473,10 +481,10 @@ __int64 ObjectCullingJob_Unknown3(__int64 result)
                                200LL) == 0) {
                   v56 = 56;
                 }
-                result = nn_mem_StandardAllocator_Free(
-                    *(_QWORD*)fw_memory_g_heap_manager_ptr + v56);
+                nn_mem_StandardAllocator_Free_alt1(
+                    *(_QWORD*)fw_memory_g_heap_manager_ptr + v56, v47);
               }
-              v4 = v94;
+              v4 = a1;
             }
             --v40;
             v41 += 64;
@@ -489,7 +497,7 @@ __int64 ObjectCullingJob_Unknown3(__int64 result)
         v60 = v57[2];
         if ((unsigned __int64)v59 >= v60) {
           v62 = *v57;
-          v63 = (__int64)v59 - *v57;
+          v63 = (signed __int64)v59 - *v57;
           v64 = (v63 >> 4) + 1;
           if (v64 >> 60 != 0) {
             goto LABEL_118;
@@ -509,7 +517,7 @@ __int64 ObjectCullingJob_Unknown3(__int64 result)
             if (v66 >> 60 != 0) {
               goto LABEL_119;
             }
-            v67 = fw_memory_HeapManager_Allocate(
+            v67 = fw_memory_HeapManager_Allocate_alt1(
                 *(_QWORD*)fw_memory_g_heap_manager_ptr, 16 * v66, 16, 0);
           }
           else {
@@ -523,7 +531,7 @@ __int64 ObjectCullingJob_Unknown3(__int64 result)
           v61 = v67 + v63 + 16;
           v68[2] = v5;
           v68[3] = v89;
-          result = memcpy(v70, v62, v63);
+          memcpy_alt1(v70, v62, v63);
           *v57 = v70;
           v57[1] = v61;
           v57[2] = v69;
@@ -533,8 +541,8 @@ __int64 ObjectCullingJob_Unknown3(__int64 result)
                 0) {
               v71 = 56;
             }
-            result = nn_mem_StandardAllocator_Free(
-                *(_QWORD*)fw_memory_g_heap_manager_ptr + v71);
+            nn_mem_StandardAllocator_Free_alt1(
+                *(_QWORD*)fw_memory_g_heap_manager_ptr + v71, v62);
           }
         }
         else {
@@ -559,11 +567,11 @@ __int64 ObjectCullingJob_Unknown3(__int64 result)
     v74 = v72[2];
     if ((unsigned __int64)v73 >= v74) {
       v76 = *v72;
-      v77 = (__int64)v73 - *v72;
+      v77 = (signed __int64)v73 - *v72;
       v78 = (v77 >> 4) + 1;
       if (v78 >> 60 != 0) {
       LABEL_118:
-        GameRoutine_194adf0();
+        GameRoutine_194adf0_alt1();
       }
       v79 = v74 - v76;
       if (v79 >> 3 > v78) {
@@ -578,9 +586,9 @@ __int64 ObjectCullingJob_Unknown3(__int64 result)
       if (v80 != 0) {
         if (v80 >> 60 != 0) {
         LABEL_119:
-          GameRoutine_60a210(result);
+          GameRoutine_60a210_alt1();
         }
-        v81 = fw_memory_HeapManager_Allocate(
+        v81 = fw_memory_HeapManager_Allocate_alt1(
             *(_QWORD*)fw_memory_g_heap_manager_ptr, 16 * v80, 16, 0);
       }
       else {
@@ -594,7 +602,7 @@ __int64 ObjectCullingJob_Unknown3(__int64 result)
       v75 = v81 + v77 + 16;
       v82[2] = v91;
       v82[3] = v92;
-      result = memcpy(v84, v76, v77);
+      memcpy_alt1(v84, v76, v77);
       *v72 = v84;
       v72[1] = v75;
       v72[2] = v83;
@@ -603,8 +611,8 @@ __int64 ObjectCullingJob_Unknown3(__int64 result)
         if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
           v85 = 56;
         }
-        result = nn_mem_StandardAllocator_Free(
-            *(_QWORD*)fw_memory_g_heap_manager_ptr + v85);
+        nn_mem_StandardAllocator_Free_alt1(
+            *(_QWORD*)fw_memory_g_heap_manager_ptr + v85, v76);
       }
     }
     else {
@@ -616,7 +624,6 @@ __int64 ObjectCullingJob_Unknown3(__int64 result)
     }
     v72[1] = v75;
   }
-  return result;
 }
 
 #pragma GCC visibility pop

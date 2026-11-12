@@ -63,6 +63,9 @@ __int64
 snd_fnd_WeakHandle_isValid_alt1(__int64*) __asm__("snd_fnd_WeakHandle_isValid");
 __int64 snd_fnd_WeakHandle_set_alt1(__int64,
                                     __int64) __asm__("snd_fnd_WeakHandle_set");
+__int64 memset_alt1(__int64, int, unsigned __int64) __asm__("memset");
+__int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
+void snd_Fade_Fade_10c830_alt1(__int64, float) __asm__("snd_Fade_Fade_10c830");
 
 __int64 WaveMultiStreamPlayer_Destructor(__int64** a1)
 {
@@ -694,102 +697,98 @@ __int64 WaveMultiStreamPlayer_18a920(__int64 a1)
 
 __int64 WaveMultiStreamPlayer_Unknown201(__int64 a1)
 {
-  __int64 v2;
-  __int64 v3;
-  __int64 v4;
-  int v5;
-  int v6;
-  int v7;
-  __int64 v8;
-  _WORD* v9;
-  _WORD* v10;
-  signed int v11;
-  int v12;
+
+#pragma clang fp contract(off)
+  int v2;
+  int v3;
+  int v4;
+  __int64 v5;
+  _WORD* v6;
+  _WORD* v7;
+  signed int v8;
+  int v9;
+  int v10;
+  int v11;
+  unsigned int v12;
   int v13;
-  int v14;
-  unsigned int v15;
-  __int64 v16;
+  __int64 v14;
+  int v15;
+  int v16;
   __int64 v17;
   __int64 v18;
-  int v19;
-  __int64 v20;
+  unsigned int AdpcmSampleCountEm;
+  int v20;
   int v21;
   int v22;
-  __int64 v23;
-  __int64 v24;
-  unsigned int AdpcmSampleCountEm;
-  int v26;
-  int v27;
-  int v28;
-  int v29;
-  _BYTE v31[200];
+  int v23;
+  _QWORD v25[25];
 
-  nn_os_LockMutex(a1 + 11128);
-  v5 = *(_DWORD*)(a1 + 10768);
-  v6 = *(_DWORD*)(a1 + 10736);
-  if (v5 > v6) {
+  nn_os_LockMutex_alt1(a1 + 11128);
+  v2 = *(_DWORD*)(a1 + 10768);
+  v3 = *(_DWORD*)(a1 + 10736);
+  if (v2 > v3) {
     if (*(_BYTE*)(a1 + 10728) != 1) {
-      v22 = *(_DWORD*)(a1 + 10716);
-      v23 = *(_QWORD*)(a1 + 5696);
+      v16 = *(_DWORD*)(a1 + 10716);
+      v17 = *(_QWORD*)(a1 + 5696);
       *(_DWORD*)(a1 + 10776) = 0;
-      *(_DWORD*)(a1 + 10784) = v22;
-      memset(v23, 0, 0x10000, v2, v3, v4);
+      *(_DWORD*)(a1 + 10784) = v16;
+      memset_alt1(v17, 0, 0x10000u);
       if (((*(__int64 (**)(_QWORD))(**(_QWORD**)(a1 + 5664) + 176LL))(
                *(_QWORD*)(a1 + 5664)) &
            1) == 0) {
-        snd_Fade_Fade_10c830(v31);
-        (*(void (**)(__int64, _BYTE*))(*(_QWORD*)a1 + 1312LL))(a1, v31);
-        snd_Fade_Destroy_Fade(v31);
+        snd_Fade_Fade_10c830_alt1((__int64)v25, 0x0.0p+0f);
+        (*(void (**)(__int64, _QWORD*))(*(_QWORD*)a1 + 1312LL))(a1, v25);
+        snd_Fade_Destroy_Fade_alt1(v25);
       }
-      return nn_os_UnlockMutex(a1 + 11128);
+      return nn_os_UnlockMutex_alt1(a1 + 11128);
     }
-    v5 = *(_DWORD*)(a1 + 10748);
-    v7 = *(_DWORD*)(a1 + 10716);
+    v2 = *(_DWORD*)(a1 + 10748);
+    v4 = *(_DWORD*)(a1 + 10716);
     *(_DWORD*)(a1 + 5600) = 0;
-    *(_DWORD*)(a1 + 10768) = v5;
-    *(_DWORD*)(a1 + 5592) = v7 * v5;
+    *(_DWORD*)(a1 + 10768) = v2;
+    *(_DWORD*)(a1 + 5592) = v4 * v2;
     if (*(_DWORD*)(a1 + 10700) == 2 && *(int*)(a1 + 10696) >= 1) {
-      v8 = 0;
-      v9 = (_WORD*)(a1 + 10848);
-      v10 = (_WORD*)(a1 + 10352);
+      v5 = 0;
+      v6 = (_WORD*)(a1 + 10848);
+      v7 = (_WORD*)(a1 + 10352);
       do {
-        WavePlayer_188660(a1, v9, v10);
-        ++v8;
-        v10 += 22;
-        v9 += 19;
-      } while (v8 < *(int*)(a1 + 10696));
-      v5 = *(_DWORD*)(a1 + 10768);
-      v6 = *(_DWORD*)(a1 + 10736);
+        WavePlayer_188660(a1, v6, v7);
+        ++v5;
+        v7 += 22;
+        v6 += 19;
+      } while (v5 < *(int*)(a1 + 10696));
+      v2 = *(_DWORD*)(a1 + 10768);
+      v3 = *(_DWORD*)(a1 + 10736);
     }
     ++*(_DWORD*)(a1 + 5604);
   }
-  v11 = *(_DWORD*)(a1 + 10720);
-  v12 = *(_DWORD*)(a1 + 10696);
-  v13 = *(_DWORD*)(a1 + 10708);
-  v14 = v12 * v11;
+  v8 = *(_DWORD*)(a1 + 10720);
+  v9 = *(_DWORD*)(a1 + 10696);
+  v10 = *(_DWORD*)(a1 + 10708);
+  v11 = v9 * v8;
   *(_DWORD*)(a1 + 10784) = *(_DWORD*)(a1 + 10716);
-  if (v5 >= v6) {
+  if (v2 >= v3) {
     *(_DWORD*)(a1 + 10784) = *(_DWORD*)(a1 + 10744);
-    v11 = (*(_DWORD*)(a1 + 10740) + 7) & 0xFFFFFFF8;
-    v15 = v11 * v12;
+    v8 = (*(_DWORD*)(a1 + 10740) + 7) & 0xFFFFFFF8;
+    v12 = v8 * v9;
     if (((*(__int64 (**)(_QWORD))(**(_QWORD**)(a1 + 5664) + 96LL))(
              *(_QWORD*)(a1 + 5664)) &
          1) == 0) {
     LABEL_11:
-      v19 = *(_DWORD*)(a1 + 10716);
-      v20 = *(_QWORD*)(a1 + 5696);
+      v13 = *(_DWORD*)(a1 + 10716);
+      v14 = *(_QWORD*)(a1 + 5696);
       *(_QWORD*)(a1 + 10776) = 0;
-      *(_DWORD*)(a1 + 10784) = v19;
-      memset(v20, 0, 0x10000, v16, v17, v18);
+      *(_DWORD*)(a1 + 10784) = v13;
+      memset_alt1(v14, 0, 0x10000u);
       if ((*(unsigned int (**)(_QWORD))(**(_QWORD**)(a1 + 5664) + 136LL))(
               *(_QWORD*)(a1 + 5664)) > 6) {
-        return nn_os_UnlockMutex(a1 + 11128);
+        return nn_os_UnlockMutex_alt1(a1 + 11128);
       }
       goto LABEL_21;
     }
   }
   else {
-    v15 = v12 * v11;
+    v12 = v9 * v8;
     if (((*(__int64 (**)(_QWORD))(**(_QWORD**)(a1 + 5664) + 96LL))(
              *(_QWORD*)(a1 + 5664)) &
          1) == 0) {
@@ -797,30 +796,30 @@ __int64 WaveMultiStreamPlayer_Unknown201(__int64 a1)
     }
   }
   (*(void (**)(_QWORD, _QWORD, _QWORD))(**(_QWORD**)(a1 + 5664) + 64LL))(
-      *(_QWORD*)(a1 + 5664), (unsigned int)(v13 + v14 * v5), 0);
-  v21 = *(_DWORD*)(a1 + 10700);
-  if (v21 == 2) {
+      *(_QWORD*)(a1 + 5664), (unsigned int)(v10 + v11 * v2), 0);
+  v15 = *(_DWORD*)(a1 + 10700);
+  if (v15 == 2) {
     (*(void (**)(_QWORD, _QWORD, _QWORD))(**(_QWORD**)(a1 + 5664) + 72LL))(
-        *(_QWORD*)(a1 + 5664), *(_QWORD*)(a1 + 5688), v15);
-    v24 = v11;
-    AdpcmSampleCountEm = nn_codec_GetAdpcmSampleCount(v11);
-    v26 = *(_DWORD*)(a1 + 10716);
-    v27 = *(_DWORD*)(a1 + 10704);
+        *(_QWORD*)(a1 + 5664), *(_QWORD*)(a1 + 5688), v12);
+    v18 = v8;
+    AdpcmSampleCountEm = nn_codec_GetAdpcmSampleCount(v8);
+    v20 = *(_DWORD*)(a1 + 10716);
+    v21 = *(_DWORD*)(a1 + 10704);
     nn_codec_DecodeAdpcm(*(_QWORD*)(a1 + 5696), a1 + 10848, a1 + 10854,
-                         *(_QWORD*)(a1 + 5688), v24, AdpcmSampleCountEm);
-    nn_codec_DecodeAdpcm(*(_QWORD*)(a1 + 5696) + v27 * (__int64)v26, a1 + 10886,
-                         a1 + 10892, *(_QWORD*)(a1 + 5688) + v24, v24,
+                         *(_QWORD*)(a1 + 5688), v18, AdpcmSampleCountEm);
+    nn_codec_DecodeAdpcm(*(_QWORD*)(a1 + 5696) + v21 * (__int64)v20, a1 + 10886,
+                         a1 + 10892, *(_QWORD*)(a1 + 5688) + v18, v18,
                          AdpcmSampleCountEm);
   }
-  else if (v21 == 1) {
+  else if (v15 == 1) {
     (*(void (**)(_QWORD, _QWORD, _QWORD))(**(_QWORD**)(a1 + 5664) + 72LL))(
-        *(_QWORD*)(a1 + 5664), *(_QWORD*)(a1 + 5696), v15);
+        *(_QWORD*)(a1 + 5664), *(_QWORD*)(a1 + 5696), v12);
   }
-  v28 = *(_DWORD*)(a1 + 10780);
-  v29 = *(_DWORD*)(a1 + 10768);
+  v22 = *(_DWORD*)(a1 + 10780);
+  v23 = *(_DWORD*)(a1 + 10768);
   *(_DWORD*)(a1 + 10780) = 0;
-  *(_DWORD*)(a1 + 10768) = v29 + 1;
-  *(float*)(a1 + 10776) = (float)v28;
+  *(_DWORD*)(a1 + 10768) = v23 + 1;
+  *(float*)(a1 + 10776) = (float)v22;
   if ((*(unsigned int (**)(_QWORD))(**(_QWORD**)(a1 + 5664) + 136LL))(
           *(_QWORD*)(a1 + 5664)) <= 6) {
   LABEL_21:
@@ -851,103 +850,98 @@ __int64 WaveMultiStreamPlayer_Unknown201(__int64 a1)
       }
     }
   }
-  return nn_os_UnlockMutex(a1 + 11128);
+  return nn_os_UnlockMutex_alt1(a1 + 11128);
 }
 
 __int64 WaveMultiStreamPlayer_Unknown202(__int64 a1)
 {
-  __int64 v2;
-  __int64 v3;
-  __int64 v4;
+
+#pragma clang fp contract(off)
+  int v2;
+  int v3;
+  int v4;
   int v5;
   int v6;
-  int v7;
-  int v8;
+  __int64 v7;
+  float v8;
   int v9;
-  __int64 v10;
-  float v11;
+  int v10;
+  int v11;
   int v12;
   int v13;
   __int64 v14;
-  __int64 v15;
-  __int64 v16;
-  int v17;
-  int v18;
-  int v19;
-  __int64 v20;
-  _BYTE v22[200];
+  _QWORD v16[25];
 
-  nn_os_LockMutex(a1 + 11128);
+  nn_os_LockMutex_alt1(a1 + 11128);
   if ((*(_BYTE*)(a1 + 10728) & 1) != 0) {
-    v5 = *(_DWORD*)(a1 + 10768);
-    v6 = *(_DWORD*)(a1 + 10736);
-    if (v5 > v6) {
-      v7 = *(_DWORD*)(a1 + 10756);
-      v5 = *(_DWORD*)(a1 + 10748);
-      v8 = v7 + *(_DWORD*)(a1 + 10752);
-      *(_DWORD*)(a1 + 10768) = v5;
+    v2 = *(_DWORD*)(a1 + 10768);
+    v3 = *(_DWORD*)(a1 + 10736);
+    if (v2 > v3) {
+      v4 = *(_DWORD*)(a1 + 10756);
+      v2 = *(_DWORD*)(a1 + 10748);
+      v5 = v4 + *(_DWORD*)(a1 + 10752);
+      *(_DWORD*)(a1 + 10768) = v2;
       *(_DWORD*)(a1 + 5600) = 0;
-      *(_DWORD*)(a1 + 5592) = v8;
-      *(_DWORD*)(a1 + 10780) += v7;
+      *(_DWORD*)(a1 + 5592) = v5;
+      *(_DWORD*)(a1 + 10780) += v4;
       ++*(_DWORD*)(a1 + 5604);
     }
   }
   else {
-    v6 = *(_DWORD*)(a1 + 10736);
-    if (v6 == 99999) {
-      v6 = *(_DWORD*)(*(_QWORD*)(*(_QWORD*)(a1 + 5664) + 160LL) + 88LL);
-      *(_DWORD*)(a1 + 10736) = v6;
+    v3 = *(_DWORD*)(a1 + 10736);
+    if (v3 == 99999) {
+      v3 = *(_DWORD*)(*(_QWORD*)(*(_QWORD*)(a1 + 5664) + 160LL) + 88LL);
+      *(_DWORD*)(a1 + 10736) = v3;
     }
-    v5 = *(_DWORD*)(a1 + 10768);
-    if (v5 > v6) {
-      v9 = *(_DWORD*)(a1 + 10716);
-      v10 = *(_QWORD*)(a1 + 5696);
-      v11 = (float)*(int*)(a1 + 10780);
+    v2 = *(_DWORD*)(a1 + 10768);
+    if (v2 > v3) {
+      v6 = *(_DWORD*)(a1 + 10716);
+      v7 = *(_QWORD*)(a1 + 5696);
+      v8 = (float)*(int*)(a1 + 10780);
       *(_DWORD*)(a1 + 10780) = 0;
-      *(_DWORD*)(a1 + 10784) = v9;
-      *(float*)(a1 + 10776) = v11;
-      memset(v10, 0, 0x10000, v2, v3, v4);
+      *(_DWORD*)(a1 + 10784) = v6;
+      *(float*)(a1 + 10776) = v8;
+      memset_alt1(v7, 0, 0x10000u);
       if (((*(__int64 (**)(_QWORD))(**(_QWORD**)(a1 + 5664) + 176LL))(
                *(_QWORD*)(a1 + 5664)) &
            1) == 0) {
-        snd_Fade_Fade_10c830(v22);
-        (*(void (**)(__int64, _BYTE*))(*(_QWORD*)a1 + 1312LL))(a1, v22);
-        snd_Fade_Destroy_Fade(v22);
+        snd_Fade_Fade_10c830_alt1((__int64)v16, 0x0.0p+0f);
+        (*(void (**)(__int64, _QWORD*))(*(_QWORD*)a1 + 1312LL))(a1, v16);
+        snd_Fade_Destroy_Fade_alt1(v16);
       }
-      return nn_os_UnlockMutex(a1 + 11128);
+      return nn_os_UnlockMutex_alt1(a1 + 11128);
     }
   }
-  v12 = *(_DWORD*)(a1 + 10720);
-  v13 = *(_DWORD*)(a1 + 10696);
+  v9 = *(_DWORD*)(a1 + 10720);
+  v10 = *(_DWORD*)(a1 + 10696);
   *(_DWORD*)(a1 + 10784) = *(_DWORD*)(a1 + 10716);
-  if (v5 >= v6) {
+  if (v2 >= v3) {
     *(_DWORD*)(a1 + 10784) = *(_DWORD*)(a1 + 10744);
   }
   if (((*(__int64 (**)(_QWORD))(**(_QWORD**)(a1 + 5664) + 128LL))(
            *(_QWORD*)(a1 + 5664)) &
        1) != 0) {
     (*(void (**)(_QWORD, _QWORD, _QWORD))(**(_QWORD**)(a1 + 5664) + 80LL))(
-        *(_QWORD*)(a1 + 5664), *(_QWORD*)(a1 + 5696),
-        (unsigned int)(v13 * v12));
-    v17 = *(_DWORD*)(a1 + 10780);
-    v18 = *(_DWORD*)(a1 + 10768);
+        *(_QWORD*)(a1 + 5664), *(_QWORD*)(a1 + 5696), (unsigned int)(v10 * v9));
+    v11 = *(_DWORD*)(a1 + 10780);
+    v12 = *(_DWORD*)(a1 + 10768);
     *(_DWORD*)(a1 + 10780) = 0;
-    *(_DWORD*)(a1 + 10768) = v18 + 1;
-    *(float*)(a1 + 10776) = (float)v17;
+    *(_DWORD*)(a1 + 10768) = v12 + 1;
+    *(float*)(a1 + 10776) = (float)v11;
     if ((*(unsigned int (**)(_QWORD))(**(_QWORD**)(a1 + 5664) + 136LL))(
             *(_QWORD*)(a1 + 5664)) > 6) {
-      return nn_os_UnlockMutex(a1 + 11128);
+      return nn_os_UnlockMutex_alt1(a1 + 11128);
     }
   }
   else {
-    v19 = *(_DWORD*)(a1 + 10716);
-    v20 = *(_QWORD*)(a1 + 5696);
+    v13 = *(_DWORD*)(a1 + 10716);
+    v14 = *(_QWORD*)(a1 + 5696);
     *(_QWORD*)(a1 + 10776) = 0;
-    *(_DWORD*)(a1 + 10784) = v19;
-    memset(v20, 0, 0x10000, v14, v15, v16);
+    *(_DWORD*)(a1 + 10784) = v13;
+    memset_alt1(v14, 0, 0x10000u);
     if ((*(unsigned int (**)(_QWORD))(**(_QWORD**)(a1 + 5664) + 136LL))(
             *(_QWORD*)(a1 + 5664)) > 6) {
-      return nn_os_UnlockMutex(a1 + 11128);
+      return nn_os_UnlockMutex_alt1(a1 + 11128);
     }
   }
   WaveMultiStreamPlayer_18a920(a1);
@@ -975,7 +969,7 @@ __int64 WaveMultiStreamPlayer_Unknown202(__int64 a1)
       }
     }
   }
-  return nn_os_UnlockMutex(a1 + 11128);
+  return nn_os_UnlockMutex_alt1(a1 + 11128);
 }
 
 #pragma GCC visibility pop

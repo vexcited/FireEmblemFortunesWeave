@@ -1,5 +1,7 @@
 #include "decomp/pseudo_helpers.h"
 
+#include "decomp/pseudo_float.h"
+
 #pragma GCC visibility push(hidden)
 
 struct PseudoSret {
@@ -37,6 +39,7 @@ __attribute__((swiftcall)) void
 CameraStateCircleHub_d31ee0(PSEUDO_X8 x8_, __int64 a1, unsigned int a2);
 float CameraStateCircleHub_Unknown5(float* a1);
 float CameraStateCircleHub_Unknown6(float* a1);
+float powf_alt1(float, float) __asm__("powf");
 
 _QWORD* CameraStateCircleHub_Unknown2(__int64 a1)
 {
@@ -491,17 +494,17 @@ float CameraStateCircleHub_Unknown5(float* a1)
   float result;
 
   v1 = a1[276];
-  v2 = 1.0f;
-  if (v1 > 0.0f) {
+  v2 = 0x1.0000000000000p+0f;
+  if (v1 > 0x0.0p+0f) {
     v2 = a1[275] / v1;
   }
   v4 = a1[280];
-  v5 = (float)(v2 * 0x1.921fb60000000p+1f) +
+  v5 = (float)(PSEUDO_UNFUSED(v2 * 0x1.921fb60000000p+1f)) +
        (float)(roundf((float)(v2 * 0x1.921fb60000000p+1f) *
                       0x1.45f3060000000p-3f) *
                -0x1.921fb60000000p+2f);
   if (v5 <= 0x1.921fb60000000p+0f) {
-    v7 = 1.0f;
+    v7 = 0x1.0000000000000p+0f;
     if (v5 >= -0x1.921fb60000000p+0f) {
       goto LABEL_8;
     }
@@ -511,7 +514,7 @@ float CameraStateCircleHub_Unknown5(float* a1)
     v6 = 0x1.921fb60000000p+1f;
   }
   v5 = v6 - v5;
-  v7 = -1.0f;
+  v7 = -0x1.0000000000000p+0f;
 LABEL_8:
   v8 = v5 * v5;
   v9 =
@@ -539,24 +542,26 @@ LABEL_8:
                                                          v8)) *
                                          v8)) *
                       v8) +
-              1.0f);
-  v10 = 1.0f / v4;
+              0x1.0000000000000p+0f);
+  v10 = 0x1.0000000000000p+0f / v4;
   v11 = fabsf(v9);
-  if (v4 < 1.0f) {
-    v10 = 1.0f;
+  if (v4 < 0x1.0000000000000p+0f) {
+    v10 = 0x1.0000000000000p+0f;
   }
-  v12 = powf(a1, v11, v10);
-  v13 = -1.0f;
-  v14 = v12 * 0.5f;
-  if (v9 < 0.0f) {
-    v13 = 1.0f;
+  v12 = powf_alt1(v11, v10);
+  v13 = -0x1.0000000000000p+0f;
+  v14 = v12 * 0x1.0000000000000p-1f;
+  if (v9 < 0x0.0p+0f) {
+    v13 = 0x1.0000000000000p+0f;
   }
-  v15 = (float)(v14 * v13) + 0.5f;
-  if (v4 < 1.0f) {
-    v15 = (float)(v4 * v15) + (float)(v2 * (float)(1.0f - v4));
+  v15 = (float)(v14 * v13) + 0x1.0000000000000p-1f;
+  if (v4 < 0x1.0000000000000p+0f) {
+    v15 = (float)(PSEUDO_UNFUSED(v4 * v15)) +
+          (float)(v2 * (float)(0x1.0000000000000p+0f - v4));
   }
-  result = a1[255] +
-           (float)(fminf(fmaxf(v15, 0.0f), 1.0f) * (float)(a1[268] - a1[255]));
+  result =
+      a1[255] + (float)(fminf(fmaxf(v15, 0x0.0p+0f), 0x1.0000000000000p+0f) *
+                        (float)(a1[268] - a1[255]));
   a1[281] = result;
   return result;
 }
@@ -579,17 +584,17 @@ float CameraStateCircleHub_Unknown6(float* a1)
   float v15;
 
   v1 = a1[276];
-  v2 = 1.0f;
-  if (v1 > 0.0f) {
+  v2 = 0x1.0000000000000p+0f;
+  if (v1 > 0x0.0p+0f) {
     v2 = a1[275] / v1;
   }
   v4 = a1[280];
-  v5 = (float)(v2 * 0x1.921fb60000000p+1f) +
+  v5 = (float)(PSEUDO_UNFUSED(v2 * 0x1.921fb60000000p+1f)) +
        (float)(roundf((float)(v2 * 0x1.921fb60000000p+1f) *
                       0x1.45f3060000000p-3f) *
                -0x1.921fb60000000p+2f);
   if (v5 <= 0x1.921fb60000000p+0f) {
-    v7 = 1.0f;
+    v7 = 0x1.0000000000000p+0f;
     if (v5 >= -0x1.921fb60000000p+0f) {
       goto LABEL_8;
     }
@@ -599,7 +604,7 @@ float CameraStateCircleHub_Unknown6(float* a1)
     v6 = 0x1.921fb60000000p+1f;
   }
   v5 = v6 - v5;
-  v7 = -1.0f;
+  v7 = -0x1.0000000000000p+0f;
 LABEL_8:
   v8 = v5 * v5;
   v9 =
@@ -627,24 +632,25 @@ LABEL_8:
                                                          v8)) *
                                          v8)) *
                       v8) +
-              1.0f);
-  v10 = 1.0f / v4;
+              0x1.0000000000000p+0f);
+  v10 = 0x1.0000000000000p+0f / v4;
   v11 = fabsf(v9);
-  if (v4 < 1.0f) {
-    v10 = 1.0f;
+  if (v4 < 0x1.0000000000000p+0f) {
+    v10 = 0x1.0000000000000p+0f;
   }
-  v12 = powf(a1, v11, v10);
-  v13 = -1.0f;
-  v14 = v12 * 0.5f;
-  if (v9 < 0.0f) {
-    v13 = 1.0f;
+  v12 = powf_alt1(v11, v10);
+  v13 = -0x1.0000000000000p+0f;
+  v14 = v12 * 0x1.0000000000000p-1f;
+  if (v9 < 0x0.0p+0f) {
+    v13 = 0x1.0000000000000p+0f;
   }
-  v15 = (float)(v14 * v13) + 0.5f;
-  if (v4 < 1.0f) {
-    v15 = (float)(v4 * v15) + (float)(v2 * (float)(1.0f - v4));
+  v15 = (float)(v14 * v13) + 0x1.0000000000000p-1f;
+  if (v4 < 0x1.0000000000000p+0f) {
+    v15 = (float)(PSEUDO_UNFUSED(v4 * v15)) +
+          (float)(v2 * (float)(0x1.0000000000000p+0f - v4));
   }
-  return a1[255] +
-         (float)(fminf(fmaxf(v15, 0.0f), 1.0f) * (float)(a1[268] - a1[255]));
+  return a1[255] + (float)(fminf(fmaxf(v15, 0x0.0p+0f), 0x1.0000000000000p+0f) *
+                           (float)(a1[268] - a1[255]));
 }
 
 #pragma GCC visibility pop

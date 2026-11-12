@@ -6,7 +6,8 @@ __int64 nn_mem_StandardAllocator_Free(_QWORD);
 extern __int64 (*game_GameReliance_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 GameReliance_Destructor(_QWORD* a1);
-__int64 GameReliance_DeletingDestructor(_QWORD* a1);
+__int64 GameReliance_DeletingDestructor_alt1(_QWORD* a1) __asm__(
+    "GameReliance_DeletingDestructor");
 _QWORD* GameRoutine_89d820(float*, unsigned __int64*, __int64, __int64**);
 __int64 GameRoutine_1a09ce0(_QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_1a09d20(_QWORD, _QWORD);
@@ -135,6 +136,7 @@ __int64 game_GameVariableTable_Find_alt1(_QWORD*, unsigned __int64*) __asm__(
 bool game_HasSkill(_QWORD*, _DWORD*);
 extern _QWORD game_g_shared_system_skills_ptr;
 __int64 GameReliance_8e18b0(_QWORD* a1, _QWORD* a2, _QWORD* a3);
+void GameReliance_DeletingDestructor(_QWORD* a1);
 
 void __attribute__((noreturn)) GameReliance_IData_DeletingDestructor()
 {
@@ -287,7 +289,7 @@ __int64 GameReliance_Destructor(_QWORD* a1)
   return result;
 }
 
-__int64 GameReliance_DeletingDestructor(_QWORD* a1)
+void GameReliance_DeletingDestructor(_QWORD* a1)
 {
   __int64 v2;
   __int64 v3;
@@ -302,8 +304,8 @@ __int64 GameReliance_DeletingDestructor(_QWORD* a1)
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
     v3 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v3);
+  nn_mem_StandardAllocator_Free_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v3, (__int64)a1);
 }
 
 void GameReliance_8e0880(float* a1)

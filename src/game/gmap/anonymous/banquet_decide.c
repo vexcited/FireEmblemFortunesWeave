@@ -39,6 +39,14 @@ _DWORD* BanquetDecide_Unknown149(__int64 a1);
 __int64 BanquetDecide_Unknown157(__int64 a1);
 __int64 BanquetDecide_Unknown158(__int64 a1);
 __int64 BanquetDecide_Unknown150(__int64 a1);
+__int64 MultiMenuSequence_1787b80(__int64);
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 game_ProcInst_Register_alt1(__int64) __asm__("game_ProcInst_Register");
+__int64 memset_alt1(__int64, int, unsigned __int64) __asm__("memset");
+const char*
+game_HashString32_alt1(const char* result) __asm__("game_HashString32");
 
 __int64 BanquetDecide_Unknown30(__int64 a1, char a2)
 {
@@ -117,15 +125,12 @@ __int64 BanquetDecide_Unknown109(__int64 a1)
   __int64 v1;
   __int64 v2;
   __int64 v3;
-  __int64 v4;
+  __int64* v4;
   __int64 v5;
   __int64 v6;
-  __int64* v7;
-  __int64 v8;
-  __int64 v9;
-  void* v10;
-  _BYTE* v11;
-  char v12;
+  void* v7;
+  _BYTE* v8;
+  char v9;
 
   if ((*(_BYTE*)(*(_QWORD*)(a1 + 1056) + 356LL) & 1) != 0) {
     return 0;
@@ -136,10 +141,10 @@ __int64 BanquetDecide_Unknown109(__int64 a1)
   else {
     v1 = a1;
   }
-  v2 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
-                                      512, 16, 0);
-  memset(v2 + 144, 0, 368, v3, v4, v5);
-  v6 = GameData_212c608[0];
+  v2 = fw_memory_HeapManager_Allocate_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr, 512, 16, 0);
+  memset_alt1(v2 + 144, 0, 0x170u);
+  v3 = GameData_212c608[0];
   *(_QWORD*)(v2 + 88) = 0;
   *(_QWORD*)(v2 + 96) = 0;
   *(_QWORD*)(v2 + 104) = 0;
@@ -158,10 +163,10 @@ __int64 BanquetDecide_Unknown109(__int64 a1)
   *(_QWORD*)(v2 + 64) = 0;
   *(_QWORD*)(v2 + 72) = 0;
   *(_QWORD*)(v2 + 80) = 0;
-  *(_QWORD*)v2 = v6 + 16;
+  *(_QWORD*)v2 = v3 + 16;
   *(_QWORD*)(v2 + 8) = 0;
-  game_ProcInst_Register(v2);
-  v7 = GameData_2130240[0];
+  game_ProcInst_Register_alt1(v2);
+  v4 = GameData_2130240[0];
   *(_BYTE*)(v2 + 168) = 0;
   *(_BYTE*)(v2 + 172) = 0;
   *(_QWORD*)(v2 + 192) = 0;
@@ -191,44 +196,45 @@ __int64 BanquetDecide_Unknown109(__int64 a1)
   *(_BYTE*)(v2 + 480) = 0;
   *(_QWORD*)(v2 + 496) = 0;
   *(_QWORD*)(v2 + 152) = 0;
-  *(_QWORD*)(v2 + 160) = v7 + 2;
+  *(_QWORD*)(v2 + 160) = v4 + 2;
   *(_QWORD*)(v2 + 232) = 0;
   *(_QWORD*)(v2 + 224) = v2 + 232;
   *(_DWORD*)(v2 + 280) = 1065353216;
   *(_QWORD*)(v2 + 352) = 1;
   *(_QWORD*)(v2 + 368) = 0xFFFFFFFFLL;
   *(_DWORD*)(v2 + 408) = 2;
-  v8 = GameData_2131d78[0] + 440;
+  v5 = GameData_2131d78[0] + 440;
   *(_QWORD*)v2 = GameData_2131d78[0] + 16;
-  *(_QWORD*)(v2 + 176) = v8;
+  *(_QWORD*)(v2 + 176) = v5;
   *(_QWORD*)(v2 + 184) = 0;
-  v9 = *(_QWORD*)(v1 + 40);
-  if (v9 != 0) {
-    *(_QWORD*)(v9 + 48) = v2;
+  v6 = *(_QWORD*)(v1 + 40);
+  if (v6 != 0) {
+    *(_QWORD*)(v6 + 48) = v2;
     *(_QWORD*)(v2 + 56) = *(_QWORD*)(v1 + 40);
   }
   *(_QWORD*)(v1 + 40) = v2;
   *(_QWORD*)(v2 + 24) = "InfoUnitTroopSequence";
   *(_QWORD*)(v2 + 32) = v1;
-  *(_DWORD*)(v2 + 140) = game_HashString32();
+  *(_DWORD*)(v2 + 140) =
+      (unsigned int)game_HashString32_alt1("InfoUnitTroopSequence");
   *(_QWORD*)(v2 + 64) = 0;
   *(_QWORD*)(v2 + 72) = 24;
   *(_QWORD*)(v2 + 80) = 1;
-  v10 = GameData_21319e0;
+  v7 = GameData_21319e0;
   *(_QWORD*)(v2 + 8) = GameData_21319e0;
-  *(_QWORD*)(v2 + 16) = v10;
+  *(_QWORD*)(v2 + 16) = v7;
   (*(void (**)(__int64))(*(_QWORD*)v2 + 32LL))(v2);
   if (((*(__int64 (**)(__int64))(*(_QWORD*)v2 + 136LL))(v2) & 1) != 0 &&
       (*(_WORD*)(v2 + 136) & 0x100) == 0) {
     *(_WORD*)(v2 + 136) |= 0x100u;
   }
-  v11 = *(_BYTE**)(v2 + 32);
-  v12 = v11[138];
-  if (v12 == 0) {
-    (*(void (**)(_QWORD))(*(_QWORD*)v11 + 64LL))(*(_QWORD*)(v2 + 32));
-    v12 = v11[138];
+  v8 = *(_BYTE**)(v2 + 32);
+  v9 = v8[138];
+  if (v9 == 0) {
+    (*(void (**)(_QWORD))(*(_QWORD*)v8 + 64LL))(*(_QWORD*)(v2 + 32));
+    v9 = v8[138];
   }
-  v11[138] = v12 + 1;
+  v8[138] = v9 + 1;
   *(_WORD*)(v2 + 136) |= 2u;
   return 9;
 }
@@ -411,24 +417,21 @@ __int64 BanquetDecide_Unknown158(__int64 a1)
   __int64 v4;
   __int64 v5;
   __int64 v6;
-  __int64 v7;
-  __int64 v8;
-  __int64 v9;
 
   v1 = *(_QWORD*)(a1 + 1056);
-  v6 =
+  v3 =
       *(_QWORD*)(__dynamic_cast(v1, GameData_21319e8[0], &GameData_20702e8, 0) +
                  304);
-  if (v6 != 0) {
-    v7 = *(_QWORD*)(v6 + 808);
-    v8 = *(_QWORD*)(v6 + 816);
-    if (v7 != v8) {
-      memset(v7, 0, v8 - v7, v3, v4, v5);
+  if (v3 != 0) {
+    v4 = *(_QWORD*)(v3 + 808);
+    v5 = *(_QWORD*)(v3 + 816);
+    if (v4 != v5) {
+      memset_alt1(v4, 0, v5 - v4);
       v1 = *(_QWORD*)(a1 + 1056);
     }
   }
-  v9 = __dynamic_cast(v1, GameData_21319e8[0], &GameData_20702e8, 0);
-  return GameRoutine_1787b80(v9);
+  v6 = __dynamic_cast(v1, GameData_21319e8[0], &GameData_20702e8, 0);
+  return MultiMenuSequence_1787b80(v6);
 }
 
 #pragma GCC visibility pop

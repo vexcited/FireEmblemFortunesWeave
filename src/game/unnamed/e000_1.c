@@ -5,24 +5,18 @@
 struct PseudoSret {
   _QWORD words[3];
 };
-
 extern __int64* GameData_212d480[2];
-
 extern __int64* GameData_2134208[5];
-
 __int64 GameRoutine_1a0ba50(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
-
 __int64 GameRoutine_1a0bae0(_QWORD);
-
 __n128 GameRoutine_599ea0(_QWORD);
-
 void __attribute__((noreturn)) GameRoutine_ee1b0(void);
-
 __int64 GameRoutine_f35a0(__int64, __int64, __int64, __int64, __int64, __int64);
-
 __int64 GameRoutine_f77e0(void);
-
 __int64 GameRoutine_f8300(_QWORD, _QWORD, _QWORD);
+__int16* LayoutPaneFactory_599ea0(__int16* result);
+__int64 memset(__int64, int, unsigned __int64);
+__int64 GameHr_590940(__int64 a1);
 
 __int64 GameHr_f35a0(__int64 a1, __int64 a2, __int64 a3, __int64 a4, __int64 a5,
                      __int64 a6)
@@ -309,17 +303,13 @@ __int64 GameHr_f5940(__int64 a1, __int64 a2, __int64 a3, __int64 a4, __int64 a5,
   return result;
 }
 
-__int64 GameHr_590940(_QWORD* a1)
+__int64 GameHr_590940(__int64 a1)
 {
-  __int64 v3;
-  __int64 v4;
-  __int64 v5;
-
-  *a1 = 0;
-  GameRoutine_599ea0(a1 + 2);
-  GameRoutine_599ea0(a1 + 4);
-  GameRoutine_599ea0(a1 + 12);
-  return GameRoutine_1a0ba50(a1 + 1, 0, 545, v3, v4, v5);
+  *(_QWORD*)a1 = 0;
+  LayoutPaneFactory_599ea0((__int16*)(a1 + 16));
+  LayoutPaneFactory_599ea0((__int16*)(a1 + 32));
+  LayoutPaneFactory_599ea0((__int16*)(a1 + 96));
+  return memset(a1 + 8, 0, 0x221u);
 }
 
 #pragma GCC visibility pop

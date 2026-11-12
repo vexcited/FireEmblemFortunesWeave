@@ -8,7 +8,14 @@ extern __int64 (*game_hub_HubReload_vtable[])();
 __int64 HubReload_Destructor(_QWORD* a1);
 __n128 nn_mem_StandardAllocator_Free(_QWORD);
 extern __int64 fw_memory_g_heap_manager_ptr;
-__n128 HubReload_DeletingDestructor(_QWORD* a1);
+__n128 HubReload_DeletingDestructor_alt1(_QWORD* a1) __asm__(
+    "HubReload_DeletingDestructor");
+__int64 HubDisposFileReader_Destructor_alt1(_QWORD*) __asm__(
+    "HubDisposFileReader_Destructor");
+void GameHr_f499b0(__int64);
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void HubReload_DeletingDestructor(_QWORD* a1);
 
 __int64 HubReload_Destructor(_QWORD* a1)
 {
@@ -17,19 +24,19 @@ __int64 HubReload_Destructor(_QWORD* a1)
   return HubDisposFileReader_Destructor(a1 + 1);
 }
 
-__n128 HubReload_DeletingDestructor(_QWORD* a1)
+void HubReload_DeletingDestructor(_QWORD* a1)
 {
   __int64 v2;
 
   *a1 = game_hub_HubReload_vtable;
-  GameRoutine_f499b0(a1[27]);
-  HubDisposFileReader_Destructor(a1 + 1);
+  GameHr_f499b0(a1[27]);
+  HubDisposFileReader_Destructor_alt1(a1 + 1);
   v2 = 128;
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
     v2 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v2);
+  nn_mem_StandardAllocator_Free_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v2, (__int64)a1);
 }
 
 #pragma GCC visibility pop

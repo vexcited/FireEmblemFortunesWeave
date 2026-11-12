@@ -9,7 +9,8 @@ extern __int64 GameData_21c9708;
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64 game_RelianceCheck_unknown_;
 extern int GameData_2272240;
-_QWORD* RelianceCheck_Destructor(_QWORD* result);
+_QWORD* RelianceCheck_Destructor_alt1(_QWORD* result) __asm__(
+    "RelianceCheck_Destructor");
 __int64 fw_memory_HeapManager_Allocate(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 memcpy(_QWORD, _QWORD, _QWORD);
 void __attribute__((noreturn)) GameRoutine_19a85a0(void);
@@ -47,42 +48,47 @@ GameRoutine_60a210_alt1() __asm__("GameRoutine_60a210");
 void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void RelianceCheck_19a7f00(__int64 a1, __int64 a2, int a3);
+__int64 ProcInst_657850_alt1(__int64, __int64, const char*, char,
+                             __int64) __asm__("ProcInst_657850");
+__int64 game_ProcInst_Register_alt1(__int64) __asm__("game_ProcInst_Register");
+__int64 memmove_alt1(__int64, __int64, unsigned __int64) __asm__("memmove");
+void RelianceCheck_Destructor(_QWORD* a1);
 
-_QWORD* RelianceCheck_Destructor(_QWORD* result)
+void RelianceCheck_Destructor(_QWORD* a1)
 {
-  _QWORD* v1;
   __int64 v2;
   __int64 v3;
   __int64 v4;
   __int64 v5;
+  __int64 v6;
+  __int64 v7;
 
-  v1 = result;
-  *result = game_RelianceCheck_vtable;
+  *a1 = game_RelianceCheck_vtable;
+  v2 = game_RelianceCheck_unknown_;
   if (game_RelianceCheck_unknown_ != 0) {
-    v2 = fw_memory_g_heap_manager_ptr;
+    v3 = *(_QWORD*)game_RelianceCheck_unknown_;
+    v4 = fw_memory_g_heap_manager_ptr;
     if (*(_QWORD*)game_RelianceCheck_unknown_ != 0) {
-      v3 = *(_QWORD*)fw_memory_g_heap_manager_ptr;
-      *(_QWORD*)(game_RelianceCheck_unknown_ + 8) =
-          *(_QWORD*)game_RelianceCheck_unknown_;
-      v4 = 128;
-      if (*(_QWORD*)(v3 + 200) == 0) {
-        v4 = 56;
+      v5 = *(_QWORD*)fw_memory_g_heap_manager_ptr;
+      *(_QWORD*)(game_RelianceCheck_unknown_ + 8) = v3;
+      v6 = 128;
+      if (*(_QWORD*)(v5 + 200) == 0) {
+        v6 = 56;
       }
-      nn_mem_StandardAllocator_Free(v3 + v4);
+      nn_mem_StandardAllocator_Free_alt1(v5 + v6, v3);
     }
-    v5 = 128;
-    if (*(_QWORD*)(*(_QWORD*)v2 + 200LL) == 0) {
-      v5 = 56;
+    v7 = 128;
+    if (*(_QWORD*)(*(_QWORD*)v4 + 200LL) == 0) {
+      v7 = 56;
     }
-    result = (_QWORD*)nn_mem_StandardAllocator_Free(*(_QWORD*)v2 + v5);
+    nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v4 + v7, v2);
     game_RelianceCheck_unknown_ = 0;
   }
-  *v1 = GameData_211eeb8;
-  if ((_QWORD*)GameData_21c9708 == v1) {
+  *a1 = GameData_211eeb8;
+  if ((_QWORD*)GameData_21c9708 == a1) {
     GameData_21c9708 = 0;
     GameData_2272240 = 0;
   }
-  return result;
 }
 
 void RelianceCheck_19a7f00(__int64 a1, __int64 a2, int a3)
@@ -172,7 +178,7 @@ void RelianceCheck_19a7f00(__int64 a1, __int64 a2, int a3)
 __int64 RelianceCheck_19a8080(__int64 a1)
 {
   __int64 v2;
-  _QWORD* v3;
+  __int64* v3;
   __int64 v4;
   __int64 v5;
   __int64 v6;
@@ -184,7 +190,7 @@ __int64 RelianceCheck_19a8080(__int64 a1)
   __int64 v12;
   __int64 v13;
   __int64 v14;
-  __int64 v15;
+  signed __int64 v15;
   __int64 v16;
   unsigned __int64 v17;
   __int64 v18;
@@ -194,14 +200,14 @@ __int64 RelianceCheck_19a8080(__int64 a1)
   unsigned __int64 v22;
   __int64 v23;
   __int64 v24;
-  __int64 v25;
+  unsigned __int64 v25;
   __int64 v26;
   __int64 v27;
 
   v2 = game_RelianceCheck_unknown_;
-  v3 = (_QWORD*)fw_memory_g_heap_manager_ptr;
-  v4 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
-                                      184, 16, 0);
+  v3 = (__int64*)fw_memory_g_heap_manager_ptr;
+  v4 = fw_memory_HeapManager_Allocate_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr, 184, 16, 0);
   *(_QWORD*)(v4 + 144) = 0;
   v5 = v4;
   v6 = GameData_212c608[0];
@@ -229,14 +235,14 @@ __int64 RelianceCheck_19a8080(__int64 a1)
   *(_QWORD*)(v4 + 40) = 0;
   *(_QWORD*)v4 = v6 + 16;
   *(_QWORD*)(v4 + 8) = 0;
-  game_ProcInst_Register();
+  game_ProcInst_Register_alt1(v4);
   *v7 = 0;
   *(_QWORD*)(v5 + 160) = 0;
   *(_QWORD*)(v5 + 168) = 0;
   *(_DWORD*)(v5 + 176) = 0;
   *(_QWORD*)v5 = game_RelianceCheck_CheckSeq_vtable;
-  result =
-      ProcInst_657850(v5, &GameData_2176168, "RelianceCheck::CheckSeq", 1, a1);
+  result = ProcInst_657850_alt1(v5, (__int64)&GameData_2176168,
+                                "RelianceCheck::CheckSeq", 1, a1);
   v9 = *(_DWORD*)(v2 + 24);
   if (v9 >= 1) {
     v10 = *(_QWORD*)v2;
@@ -260,17 +266,17 @@ __int64 RelianceCheck_19a8080(__int64 a1)
       if (v15 > (unsigned __int64)(v24 - v16)) {
         v26 = v12 + v25;
         if (v24 != v16) {
-          result = memmove(*(_QWORD*)(v5 + 152), v12, v25);
+          result = memmove_alt1(*(_QWORD*)(v5 + 152), v12, v25);
           v24 = *(_QWORD*)(v5 + 160);
         }
         if (v13 != v26) {
-          result = memmove(v24, v26, v13 - v26);
+          result = memmove_alt1(v24, v26, v13 - v26);
         }
         v27 = v24 + v13 - v26;
         goto LABEL_28;
       }
       if (v13 != v12) {
-        result = memmove(*(_QWORD*)(v5 + 152), v12, v15);
+        result = memmove_alt1(*(_QWORD*)(v5 + 152), v12, v15);
       }
     }
     else {
@@ -282,7 +288,7 @@ __int64 RelianceCheck_19a8080(__int64 a1)
         if (*(_QWORD*)(v18 + 200) == 0) {
           v19 = 56;
         }
-        result = nn_mem_StandardAllocator_Free(v18 + v19);
+        nn_mem_StandardAllocator_Free_alt1(v18 + v19, v16);
         v14 = 0;
         v7[1] = 0;
         v7[2] = 0;
@@ -299,16 +305,16 @@ __int64 RelianceCheck_19a8080(__int64 a1)
       v22 = v20 >= 0x555555555555555LL ? 0xAAAAAAAAAAAAAAALL : v21;
       if (v22 > 0xAAAAAAAAAAAAAAALL) {
       LABEL_30:
-        GameRoutine_19a85a0_alt1(result);
+        GameRoutine_19a85a0_alt2();
       }
       v23 = 3 * v22;
-      result = fw_memory_HeapManager_Allocate(*v3, 24 * v22, 16, 0);
+      result = fw_memory_HeapManager_Allocate_alt1(*v3, 24 * v22, 16, 0);
       v16 = result;
       *(_QWORD*)(v5 + 152) = result;
       *(_QWORD*)(v5 + 160) = result;
       *(_QWORD*)(v5 + 168) = result + 8 * v23;
       if (v13 != v12) {
-        result = memcpy(result, v12, v15);
+        result = memcpy_alt1(result, v12, v15);
       }
     }
     v27 = v16 + v15;

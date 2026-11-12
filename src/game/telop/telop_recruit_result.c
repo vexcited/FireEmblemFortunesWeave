@@ -28,7 +28,8 @@ extern __int64* eft_g_effectSystem_ptr[3];
 extern char GameData_1a9f09e;
 void TelopRecruitResult_Unknown36_alt1(_QWORD* a1) __asm__(
     "TelopRecruitResult_Unknown36");
-void TelopRecruitResult_Unknown53(__int64 a1);
+void TelopRecruitResult_Unknown53_alt1(__int64 a1) __asm__(
+    "TelopRecruitResult_Unknown53");
 _QWORD* GameHr_14a10d0(_QWORD*, __int64, __int64, __int64);
 __int64*
 LayoutAccessor_155fbe0_alt1(__int64*,
@@ -55,6 +56,11 @@ void GameRoutine_1761b30(__int64, int, char, __int64, __int64, __int64,
                          unsigned int**);
 void Se_80e330(__int64, const char*);
 void TelopRecruitResult_Unknown56(__int64 a1);
+__int64 GameHr_14a10d0_alt1(_QWORD*, __int64, __int64,
+                            __int64) __asm__("GameHr_14a10d0");
+__int64 ui_LayoutAccessor_FindPane_alt2(__int64*, const char*) __asm__(
+    "ui_LayoutAccessor_FindPane");
+__int64 TelopRecruitResult_Unknown53(__int64 a1);
 
 void TelopRecruitResult_Unknown56(__int64 a1)
 {
@@ -276,7 +282,7 @@ __int64 TelopRecruitResult_Unknown36(__int64* a1)
                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
   v67 = COERCE_AS(__typeof__(v67),
                   PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-  GameHr_14a10d0(&v83_.v83, (__int64)v15, v16, (__int64)&GameData_1a9f09e),
+  GameHr_14a10d0_alt1(&v83_.v83, (__int64)v15, v16, (__int64)&GameData_1a9f09e),
       v16 = COERCE_AS(__typeof__(v16),
                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
       v41 = COERCE_AS(__typeof__(v41),
@@ -325,7 +331,7 @@ __int64 TelopRecruitResult_Unknown36(__int64* a1)
       }
     }
     v79 = *(_OWORD*)v5;
-    v20 = (int32x2_t*)ui_LayoutAccessor_FindPane_alt1(v11, (__int64)"N_Eff01"),
+    v20 = (int32x2_t*)ui_LayoutAccessor_FindPane_alt2(v11, "N_Eff01"),
     v16 = COERCE_AS(__typeof__(v16),
                     PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
     v41 = COERCE_AS(__typeof__(v41),
@@ -442,8 +448,8 @@ LABEL_36:
                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
   v67 = COERCE_AS(__typeof__(v67),
                   PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-  result = (__int64)GameHr_14a10d0(&v81_.v81, (__int64)v40, v41,
-                                   (__int64)&GameData_1a9f09e),
+  result = GameHr_14a10d0_alt1(&v81_.v81, (__int64)v40, v41,
+                               (__int64)&GameData_1a9f09e),
   v16 = COERCE_AS(__typeof__(v16),
                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
   v41 = COERCE_AS(__typeof__(v41),
@@ -523,7 +529,7 @@ LABEL_36:
     goto LABEL_77;
   }
   v80 = *(_OWORD*)v5;
-  v47 = (int32x2_t*)ui_LayoutAccessor_FindPane_alt1(v11, (__int64)"N_Eff00"),
+  v47 = (int32x2_t*)ui_LayoutAccessor_FindPane_alt2(v11, "N_Eff00"),
   v16 = COERCE_AS(__typeof__(v16),
                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
   v41 = COERCE_AS(__typeof__(v41),
@@ -663,8 +669,8 @@ LABEL_81:
                     PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
     v67 = COERCE_AS(__typeof__(v67),
                     PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-    result = (__int64)GameHr_14a10d0(&v83_.v83, (__int64)v66, v67,
-                                     (__int64)&GameData_1a9f09e),
+    result = GameHr_14a10d0_alt1(&v83_.v83, (__int64)v66, v67,
+                                 (__int64)&GameData_1a9f09e),
     v16 = COERCE_AS(__typeof__(v16),
                     PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
     v41 = COERCE_AS(__typeof__(v41),
@@ -928,35 +934,50 @@ __int64 TelopRecruitResult_Unknown39(__int64* a1)
   return result;
 }
 
-void TelopRecruitResult_Unknown53(__int64 a1)
+__int64 TelopRecruitResult_Unknown53(__int64 a1)
 {
   __int64 v1;
-  long double v2;
-  __int64 v3;
+  __int64 result;
+  __int64* v3;
   __int64 v5;
-  __int64 v6;
+  struct {
+    __int64* v6;
+    __int64 v7;
+  } v6_;
 
-  TelopResult_17619f0((void*)(&v5), a1, 10);
-  if (v6 != 0) {
-    v1 = std___1___shared_weak_count_lock(v6);
-    v3 = v5;
-    if (v6 != 0) {
-      *(__n128*)&v2 = std___1___shared_weak_count___release_weak_alt1();
-    }
-    if (v1 == 0 || v3 == 0) {
-      if (v1 == 0) {
-        return;
-      }
-    }
-    else {
-      ui_LayoutAccessor_FindPane(v3, "L_Bg/Bg");
-    }
-    if (atomic_fetch_add((atomic_ullong* volatile)(v1 + 8),
-                         0xFFFFFFFFFFFFFFFFLL) == 0) {
-      (*(void (**)(__int64, long double))(*(_QWORD*)v1 + 16LL))(v1, v2);
-      std___1___shared_weak_count___release_weak_alt1();
+  TelopResult_17619f0((void*)(&v6_.v6), a1, 10);
+  if (v6_.v7 == 0) {
+    return 0;
+  }
+  v1 = std___1___shared_weak_count_lock_alt1(v6_.v7);
+  v3 = v6_.v6;
+  result = v6_.v7;
+  if (v6_.v7 != 0) {
+    result = std___1___shared_weak_count___release_weak_alt2(v6_.v7);
+  }
+  if (v1 == 0 || v3 == nullptr) {
+    if (v1 == 0) {
+      return 0;
     }
   }
+  else {
+    result = ui_LayoutAccessor_FindPane_alt2(v3, "L_Bg/Bg");
+  }
+  if (atomic_fetch_add((atomic_ullong* volatile)(v1 + 8),
+                       0xFFFFFFFFFFFFFFFFLL) != 0) {
+    if (v3 != nullptr) {
+      return result;
+    }
+    return 0;
+  }
+  v5 = result;
+  (*(void (**)(__int64))(*(_QWORD*)v1 + 16LL))(v1);
+  std___1___shared_weak_count___release_weak_alt2(v1);
+  result = v5;
+  if (v3 == nullptr) {
+    return 0;
+  }
+  return result;
 }
 
 #pragma GCC visibility pop

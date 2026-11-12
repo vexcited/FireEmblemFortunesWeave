@@ -42,6 +42,13 @@ void Impl_717b40();
 void game_menu_BasicMenu_Destroy_BasicMenu(__int64);
 void nn_mem_StandardAllocator_Free(__int64, __int64);
 void RelianceMemoryMenu_DeletingDestructor(_QWORD* a1);
+__attribute__((swiftcall)) void
+LayoutAccessor_1560070_alt1(PSEUDO_X8, __int64*,
+                            const char*) __asm__("LayoutAccessor_1560070");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
+    "std___1___shared_weak_count_lock");
 
 void RelianceMemoryMenu_DeletingDestructor(_QWORD* a1)
 {
@@ -194,13 +201,12 @@ __int64 RelianceMemoryMenu_Unknown88(_QWORD* a1)
     UnitUtil_15e0200((__int64)v10);
   }
   game_menu_UnitGridSelectMenu_Unknown88(a1);
-  LayoutAccessor_1560070((void*)(&v8_.v8), a1 + 106,
-                         (__int64)"L_UnitInfoDetail");
+  LayoutAccessor_1560070_alt1((void*)(&v8_.v8), a1 + 106, "L_UnitInfoDetail");
   if (v8_.v9 != 0) {
-    v5 = std___1___shared_weak_count_lock(v8_.v9);
+    v5 = std___1___shared_weak_count_lock_alt1(v8_.v9);
     v6 = v8_.v8;
     if (v8_.v9 != 0) {
-      std___1___shared_weak_count___release_weak(v8_.v9);
+      std___1___shared_weak_count___release_weak_alt1(v8_.v9);
     }
     if (v5 != 0 && v6 != 0) {
       game_gameui_15997d0(v6, *(_QWORD*)(v3 + 88), 0);
@@ -211,7 +217,7 @@ __int64 RelianceMemoryMenu_Unknown88(_QWORD* a1)
     if (atomic_fetch_add((atomic_ullong* volatile)(v5 + 8),
                          0xFFFFFFFFFFFFFFFFLL) == 0) {
       (*(void (**)(__int64))(*(_QWORD*)v5 + 16LL))(v5);
-      std___1___shared_weak_count___release_weak(v5);
+      std___1___shared_weak_count___release_weak_alt1(v5);
     }
   }
   return UnitUtil_15e04f0((__int64)v10);

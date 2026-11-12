@@ -75,7 +75,8 @@ extern _UNKNOWN GameData_1a95bfa;
 extern __int64 GameData_21c9dc8;
 extern __int64 GameData_21f61c0;
 __int64 hub_unique_GetExHistoryHeaderCount(__int64 a1);
-__int64 hub_unique_OpenCrownDoorAchievement();
+__int64 hub_unique_OpenCrownDoorAchievement_alt1() __asm__(
+    "hub_unique_OpenCrownDoorAchievement");
 __int64* GameVariable_82e7c0(unsigned __int8, int);
 __int64 GameRoutine_17b8f40(__int64, char);
 __int64 GameRoutine_25eca0(_QWORD, _QWORD);
@@ -119,6 +120,19 @@ void GameSubquestData_125b0c0_alt1(__int64, __int64*) __asm__(
 void nn_mem_StandardAllocator_Free_alt3(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void HubUniqueNatives_ec6600();
+__int64 GameRoutine_9b11a0_alt1(_QWORD*, unsigned __int64*,
+                                int) __asm__("GameRoutine_9b11a0");
+__int64 GameVariable_828dc0_alt1(__int64, unsigned __int64*,
+                                 int) __asm__("GameVariable_828dc0");
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 game_HashString_alt1(__int64 result) __asm__("game_HashString");
+unsigned __int64
+GameRoutine_25eca0_alt1(__int64*, const char*) __asm__("GameRoutine_25eca0");
+void GameSubquestData_125a860_alt1(__int64, __int64*) __asm__(
+    "GameSubquestData_125a860");
+void hub_unique_OpenCrownDoorAchievement();
 
 __int64 HubUniqueNatives_949240()
 {
@@ -930,7 +944,7 @@ LABEL_9:
 
 __attribute__((swiftcall)) void hub_unique_GetDitChallengeSQID(PSEUDO_X8 x8_)
 {
-  __int64 a1 = (__int64)PSEUDO_X8_VALUE(x8_);
+  __int64* a1 = (__int64*)PSEUDO_X8_VALUE(x8_);
   __int64 v2;
   __int64 v3;
   __int64 v4;
@@ -938,10 +952,12 @@ __attribute__((swiftcall)) void hub_unique_GetDitChallengeSQID(PSEUDO_X8 x8_)
   __int64 v6;
   __int64 v7;
   __int64 v8;
-  char* v9;
-  _QWORD* v11;
-  _QWORD* v12;
-  __int64 v13;
+  const char* v9;
+  struct {
+    _QWORD* v11;
+    _QWORD* v12;
+    __int64 v13;
+  } v11_;
 
   v2 = as_g_script_manager;
   v3 = *(
@@ -970,37 +986,38 @@ __attribute__((swiftcall)) void hub_unique_GetDitChallengeSQID(PSEUDO_X8 x8_)
   }
   (*(void (**)(__int64))(*v5 + v6))((__int64)v5);
 LABEL_9:
-  v12 = nullptr;
-  v13 = 0;
-  v11 = nullptr;
-  GameSubquestData_125a860(*(_QWORD*)GameData_212c7b0[0], &v11);
-  if (v12 == v11) {
-    if (v12 == nullptr) {
+  v11_.v12 = nullptr;
+  v11_.v13 = 0;
+  v11_.v11 = nullptr;
+  GameSubquestData_125a860_alt1(*(_QWORD*)GameData_212c7b0[0],
+                                (__int64*)&v11_.v11);
+  if (v11_.v12 == v11_.v11) {
+    if (v11_.v12 == nullptr) {
     LABEL_17:
       v9 = &GameData_1a9f09e;
       {
-        GameRoutine_25eca0(a1, v9);
+        GameRoutine_25eca0_alt1(a1, v9);
         return;
       }
     }
     v7 = 0;
   }
   else {
-    v7 = *v11;
+    v7 = *v11_.v11;
   }
-  v12 = v11;
+  v11_.v12 = v11_.v11;
   v8 = 128;
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
     v8 = 56;
   }
-  nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                     v8);
+  nn_mem_StandardAllocator_Free_alt3(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v8, (__int64)v11_.v11);
   if (v7 == 0) {
     goto LABEL_17;
   }
-  v9 = *(char**)(*(_QWORD*)v7 + 8LL);
+  v9 = *(const char**)(*(_QWORD*)v7 + 8LL);
   {
-    GameRoutine_25eca0(a1, v9);
+    GameRoutine_25eca0_alt1(a1, v9);
     return;
   }
 }
@@ -2153,7 +2170,7 @@ LABEL_37:
   return 0;
 }
 
-__int64 hub_unique_OpenCrownDoorAchievement()
+void hub_unique_OpenCrownDoorAchievement()
 {
   __int64 v0;
   __int64 v1;
@@ -2164,13 +2181,16 @@ __int64 hub_unique_OpenCrownDoorAchievement()
   __int64 v6;
   char* v7;
   __int64 v8;
-  unsigned int v9;
-  __int64 result;
-  __int64 v11;
-  __int64 v12;
-  void* v13;
-  _QWORD v14[2];
-  char* v15;
+  int v9;
+  __int64 v10;
+  struct {
+    __int64 v11;
+    void* v12;
+  } v11_;
+  struct {
+    _QWORD v13[2];
+    char* v14;
+  } v13_;
 
   v0 = as_g_script_manager;
   v1 = *(
@@ -2197,52 +2217,53 @@ __int64 hub_unique_OpenCrownDoorAchievement()
     }
     v4 = 40;
   }
-  (*(void (**)(void*))(*v3 + v4))(v3);
+  (*(void (**)(__int64))(*v3 + v4))((__int64)v3);
 LABEL_9:
   v5 = fw_memory_g_heap_manager_ptr;
-  v6 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
-                                      40, 16, 0);
+  v6 = fw_memory_HeapManager_Allocate_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr, 40, 16, 0);
   *(_BYTE*)(v6 + 39) = 0;
-  v13 = (void*)v6;
-  v14[0] = 41;
-  v14[1] = 39;
-  v15 = (char*)v6;
+  v11_.v12 = (void*)v6;
+  v13_.v13[0] = 41;
+  v13_.v13[1] = 39;
+  v13_.v14 = (char*)v6;
   *(_QWORD*)(v6 + 16) = 0xE9AE81E3A086E5A9LL;
   *(_QWORD*)(v6 + 24) = 0x94E7A988E55FB58DLL;
   *(_QWORD*)(v6 + 31) = 0xB095E69E9BE5A894LL;
   *(_QWORD*)v6 = 0xE55FB982E7A08BE6LL;
   *(_QWORD*)(v6 + 8) = 0xA4E55FBEB8E79FAELL;
-  v12 = game_HashString(v6);
+  v11_.v11 = game_HashString_alt1(v6);
   if (game_GameModeData_instance_ != 0) {
-    GameVariable_828dc0(*(_QWORD*)(game_GameModeData_instance_ + 48), &v12, 1);
+    GameVariable_828dc0_alt1(*(_QWORD*)(game_GameModeData_instance_ + 48),
+                             (unsigned __int64*)&v11_.v11, 1);
   }
-  if ((v14[0] & 1) != 0) {
-    v7 = v15;
+  if ((v13_.v13[0] & 1) != 0) {
+    v7 = v13_.v14;
   }
   else {
-    v7 = (char*)v14 + 1;
+    v7 = (char*)v13_.v13 + 1;
   }
-  v13 = v7;
-  v12 = game_HashString(v7);
+  v11_.v12 = v7;
+  v11_.v11 = game_HashString_alt1((__int64)v7);
   if (game_GameModeData_instance_ != 0 &&
-      (v8 = game_GameVariableTable_Find(
-           *(_QWORD*)(game_GameModeData_instance_ + 48), &v12)) != 0) {
+      (v8 = game_GameVariableTable_Find_alt1(
+           *(_QWORD**)(game_GameModeData_instance_ + 48),
+           (unsigned __int64*)&v11_.v11)) != 0) {
     v9 = *(_DWORD*)(v8 + 32);
   }
   else {
     v9 = 0;
   }
-  v13 = &GameData_1a95bfa;
-  v12 = game_HashString(&GameData_1a95bfa);
-  result = GameRoutine_9b11a0(&GameData_21f61c0, &v12, v9);
-  if ((v14[0] & 1) != 0 && v15 != nullptr) {
-    v11 = 128;
+  v11_.v12 = &GameData_1a95bfa;
+  v11_.v11 = game_HashString_alt1((__int64)&GameData_1a95bfa);
+  GameRoutine_9b11a0_alt1(&GameData_21f61c0, (unsigned __int64*)&v11_.v11, v9);
+  if ((v13_.v13[0] & 1) != 0 && v13_.v14 != nullptr) {
+    v10 = 128;
     if (*(_QWORD*)(*(_QWORD*)v5 + 200LL) == 0) {
-      v11 = 56;
+      v10 = 56;
     }
-    return nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v5 + v11);
+    nn_mem_StandardAllocator_Free_alt3(*(_QWORD*)v5 + v10, (__int64)v13_.v14);
   }
-  return result;
 }
 
 __int64 HubUniqueNatives_1028b30(unsigned int a1)

@@ -11,7 +11,8 @@ extern __int64 (*game_hub_CharacterControllerMob_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 __n128 CharacterControllerMob_Destructor_alt1(_QWORD* a1) __asm__(
     "CharacterControllerMob_Destructor");
-__int64 CharacterControllerMob_DeletingDestructor(_QWORD* a1);
+__int64 CharacterControllerMob_DeletingDestructor_alt1(_QWORD* a1) __asm__(
+    "CharacterControllerMob_DeletingDestructor");
 __int64 std___1___shared_weak_count_lock(_QWORD);
 extern __int64 GameData_21ec7c0;
 void CharacterControllerMob_Unknown2(float32x4_t* a1);
@@ -23,6 +24,9 @@ __int64 HubCharacterNatives_cea6b0_alt1(__int64 result) __asm__(
 __int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
     "std___1___shared_weak_count___release_weak");
 __int64 CharacterControllerMob_Destructor(_QWORD* a1);
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void CharacterControllerMob_DeletingDestructor(_QWORD* a1);
 
 __int64 CharacterControllerMob_Destructor(_QWORD* a1)
 {
@@ -46,7 +50,7 @@ __int64 CharacterControllerMob_Destructor(_QWORD* a1)
   return result;
 }
 
-__int64 CharacterControllerMob_DeletingDestructor(_QWORD* a1)
+void CharacterControllerMob_DeletingDestructor(_QWORD* a1)
 {
   __int64 v2;
   __int64 v3;
@@ -54,24 +58,24 @@ __int64 CharacterControllerMob_DeletingDestructor(_QWORD* a1)
   __int64 v5;
 
   *a1 = game_hub_CharacterControllerMob_vtable;
-  HubCharacterNatives_ceca80(*(_QWORD*)(a1[1] + 24LL), 128, 0);
+  HubCharacterNatives_ceca80_alt1(*(_QWORD**)(a1[1] + 24LL), 128, 0);
   v2 = *(_QWORD*)(a1[1] + 24LL);
   v3 = *(_QWORD*)(v2 + 352);
   if (v3 != *(_QWORD*)(v2 + 344)) {
     *(_QWORD*)(v2 + 352) = v3 - 4;
   }
-  HubCharacterNatives_cea6b0(v2);
+  HubCharacterNatives_cea6b0_alt1(v2);
   v4 = a1[3];
   *a1 = &game_hub_CharacterControllerBase_vtable;
   if (v4 != 0) {
-    std___1___shared_weak_count___release_weak(v4);
+    std___1___shared_weak_count___release_weak_alt1(v4);
   }
   v5 = 128;
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
     v5 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v5);
+  nn_mem_StandardAllocator_Free_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v5, (__int64)a1);
 }
 
 void CharacterControllerMob_Unknown2(float32x4_t* a1)

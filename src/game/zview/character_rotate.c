@@ -1108,23 +1108,24 @@ float CharacterRotate_d52080(__int64 a1)
   float* v10;
   float v11;
 
+  result = COERCE_AS(__typeof__(result), PSEUDO_REGISTER(float, "s0", "=w"));
   v1 = *(_QWORD*)(a1 + 184);
   if (v1 != 0) {
     return *(float*)v1;
   }
-  if (*(_BYTE*)(a1 + 320) == 1 && *(float*)(a1 + 312) > 0.0f) {
+  if (*(_BYTE*)(a1 + 320) == 1 && *(float*)(a1 + 312) > 0x0.0p+0f) {
     v3 = *(_QWORD*)(*(_QWORD*)(*(_QWORD*)(a1 + 8) + 8LL) + 16LL);
     v4 = COERCE_FLOAT(*(_OWORD*)(a1 + 256)) - *(float*)(v3 + 292);
     v5 = COERCE_FLOAT(*(_QWORD*)(a1 + 264)) - *(float*)(v3 + 296);
-    v6 = (float)(v5 * v5) + (float)(v4 * v4);
-    result = 0.0f;
-    if (v6 > 0.0f) {
-      if (v4 != 0.0f || v5 != 0.0f) {
+    v6 = (float)(PSEUDO_UNFUSED(v5 * v5)) + (float)(v4 * v4);
+    result = 0x0.0p+0f;
+    if (v6 > 0x0.0p+0f) {
+      if (v4 != 0x0.0p+0f || v5 != 0x0.0p+0f) {
         v7 = sqrtf(v6);
         v4 = v4 / v7;
         v5 = v5 / v7;
       }
-      return atan2f(a1, v4, v5);
+      return atan2f_alt1(v4, v5);
     }
   }
   else {
@@ -1132,7 +1133,8 @@ float CharacterRotate_d52080(__int64 a1)
       return *(float*)(a1 + 36);
     }
     v8 = a1;
-    v9 = std___1___shared_weak_count_lock(*(_QWORD*)(a1 + 208));
+    v9 = std___1___shared_weak_count_lock_alt1(*(_QWORD*)(a1 + 208)),
+    result = COERCE_AS(__typeof__(result), PSEUDO_REGISTER(float, "s0", "=w"));
     a1 = v8;
     if (v9 == 0) {
       return *(float*)(a1 + 36);
@@ -1144,8 +1146,12 @@ float CharacterRotate_d52080(__int64 a1)
     if (atomic_fetch_add((atomic_ullong* volatile)(v9 + 8),
                          0xFFFFFFFFFFFFFFFFLL) == 0) {
       v11 = result;
-      (*(void (**)(__int64))(*(_QWORD*)v9 + 16LL))(v9);
-      std___1___shared_weak_count___release_weak(v9);
+      (*(void (**)(__int64))(*(_QWORD*)v9 + 16LL))(v9),
+          result =
+              COERCE_AS(__typeof__(result), PSEUDO_REGISTER(float, "s0", "=w"));
+      std___1___shared_weak_count___release_weak_alt1(v9),
+          result =
+              COERCE_AS(__typeof__(result), PSEUDO_REGISTER(float, "s0", "=w"));
       result = v11;
       a1 = v8;
     }

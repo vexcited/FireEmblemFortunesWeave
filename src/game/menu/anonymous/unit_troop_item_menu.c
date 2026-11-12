@@ -77,6 +77,9 @@ void UnitTroopItemMenu_Unknown134(__int64 a1);
 __int64 UnitTroopItemMenu_Unknown144(__int64 a1, char a2);
 void game_menu_anonymous_UnitTroopItemMenu_UpdatePage(__int64 a1, int a2);
 __int64 UnitTroopItemMenu_Unknown7(__int64 a1, char a2);
+__int64 Alignment_56b600_alt1(__int64 result) __asm__("Alignment_56b600");
+__int64 ui_LayoutAccessor_FindAlignment_alt1(__int64*, const char*) __asm__(
+    "ui_LayoutAccessor_FindAlignment");
 
 __int64 UnitTroopItemMenu_Unknown100(__int64 a1)
 {
@@ -754,17 +757,18 @@ void UnitTroopItemMenu_Unknown162(__int64 a1)
   int i;
   __int64 v6;
   __int64 v7;
-  __int64 v8;
+  __int64* v8;
   __int64 v9;
-  __int64 v10;
+  char* v10;
   __int64 v11;
-  long double v12;
-  __int64 v13;
+  __int64* v12;
+  char* v13;
   const char* v14;
-  const char* v15;
-  __int64 v16;
-  __int64 v17;
-  __int64 v18;
+  __int64 v15;
+  struct {
+    __int64* v16;
+    __int64 v17;
+  } v16_;
 
   if (GameData_2263c3c != 0 && GameData_2263c3c != 35) {
     if (GameData_2263c3c > 6) {
@@ -794,70 +798,69 @@ void UnitTroopItemMenu_Unknown162(__int64 a1)
   }
 LABEL_12:
   if (*(int*)(a1 + 1092) >= 1) {
-    for (i = 0; i < *(_DWORD*)(a1 + 1092); ++i) {
+    for (i = 0; i < (signed __int32)*(_DWORD*)(a1 + 1092); ++i) {
       v6 = *(_QWORD*)(a1 + 1080);
       if (v6 == 0) {
         continue;
       }
-      v7 = std___1___shared_weak_count_lock(v6);
+      v7 = std___1___shared_weak_count_lock_alt1(v6);
       if (v7 == 0) {
         continue;
       }
-      v8 = *(_QWORD*)(a1 + 1072);
+      v8 = *(__int64**)(a1 + 1072);
       v9 = v7;
-      if (v8 != 0) {
-        v10 = game_util_Format("L_ItemName%02d", i);
-        LayoutAccessor_1560070((void*)(&v17), v8, v10);
+      if (v8 != nullptr) {
+        v10 = game_util_Format_alt1("L_ItemName%02d", i);
+        LayoutAccessor_1560070_alt1((void*)(&v16_.v16), v8, v10);
       }
       if (atomic_fetch_add((atomic_ullong* volatile)(v9 + 8),
                            0xFFFFFFFFFFFFFFFFLL) != 0) {
-        if (v8 == 0) {
+        if (v8 == nullptr) {
           continue;
         }
       }
       else {
         (*(void (**)(__int64))(*(_QWORD*)v9 + 16LL))(v9);
-        std___1___shared_weak_count___release_weak();
-        if (v8 == 0) {
+        std___1___shared_weak_count___release_weak_alt1(v9);
+        if (v8 == nullptr) {
           continue;
         }
       }
-      if (v18 != 0) {
-        v11 = std___1___shared_weak_count_lock(v18);
-        v13 = v17;
-        if (v18 != 0) {
-          *(__n128*)&v12 = std___1___shared_weak_count___release_weak();
+      if (v16_.v17 != 0) {
+        v11 = std___1___shared_weak_count_lock_alt1(v16_.v17);
+        v12 = v16_.v16;
+        if (v16_.v17 != 0) {
+          std___1___shared_weak_count___release_weak_alt1(v16_.v17);
         }
-        if (v11 != 0 && v13 != 0) {
+        if (v11 != 0 && v12 != nullptr) {
           if (v2 == i) {
-            v14 = "SortOff";
+            v13 = "SortOff";
             if (v1 == GameData_2263c38) {
-              v15 = "Asc";
+              v14 = "Asc";
               if (GameData_2263c40 != 2) {
-                v15 = "SortOff";
+                v14 = "SortOff";
               }
               if (GameData_2263c40 == 1) {
-                v14 = "Desc";
+                v13 = "Desc";
               }
               else {
-                v14 = v15;
+                v13 = (char*)v14;
               }
             }
           }
           else {
-            v14 = "SortOff";
+            v13 = "SortOff";
           }
-          LayoutAccessor_1562cf0(v13, v14);
-          v16 = ui_LayoutAccessor_FindAlignment(v13, "A_Txt");
-          if (v16 != 0) {
-            Alignment_56b600(v16);
+          LayoutAccessor_1562cf0_alt2((__int64)v12, (unsigned int*)v13);
+          v15 = ui_LayoutAccessor_FindAlignment_alt1(v12, "A_Txt");
+          if (v15 != 0) {
+            Alignment_56b600_alt1(v15);
           }
         LABEL_40:
           if (atomic_fetch_add((atomic_ullong* volatile)(v11 + 8),
                                0xFFFFFFFFFFFFFFFFLL) == 0) {
-            (*(void (**)(__int64, long double))(*(_QWORD*)v11 + 16LL))(v11,
-                                                                       v12);
-            std___1___shared_weak_count___release_weak();
+            (*(void (**)(__int64))(*(_QWORD*)v11 + 16LL))(v11);
+            std___1___shared_weak_count___release_weak_alt1(v11);
           }
           continue;
         }

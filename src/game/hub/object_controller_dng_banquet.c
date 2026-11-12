@@ -8,11 +8,18 @@ __int64 std___1___shared_weak_count___release_weak(_QWORD);
 extern __int64 (*game_hub_ObjectControllerDngBanquet_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 _QWORD* ObjectControllerDngBanquet_Destructor(_QWORD* result);
-__int64 ObjectControllerDngBanquet_DeletingDestructor(_QWORD* a1);
+__int64 ObjectControllerDngBanquet_DeletingDestructor_alt1(_QWORD* a1) __asm__(
+    "ObjectControllerDngBanquet_DeletingDestructor");
 __attribute__((swiftcall)) void Manager_d9ae80(PSEUDO_X8, __int64, __int64,
                                                __int64, unsigned int);
 extern __int64 GameData_212dbb8[9];
 __int64 game_hub_ObjectControllerDngBanquet_InitializeImpl_lambda0_Invoke();
+__int64 GameHr_14a1520(__int64*, char);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void ObjectControllerDngBanquet_DeletingDestructor(_QWORD* a1);
 
 _QWORD* ObjectControllerDngBanquet_Destructor(_QWORD* result)
 {
@@ -36,9 +43,9 @@ _QWORD* ObjectControllerDngBanquet_Destructor(_QWORD* result)
   return result;
 }
 
-__int64 ObjectControllerDngBanquet_DeletingDestructor(_QWORD* a1)
+void ObjectControllerDngBanquet_DeletingDestructor(_QWORD* a1)
 {
-  _QWORD* v2;
+  __int64* v2;
   _QWORD* v3;
   _QWORD* v4;
   __int64 v5;
@@ -51,20 +58,20 @@ __int64 ObjectControllerDngBanquet_DeletingDestructor(_QWORD* a1)
   v3 = v4;
   v5 = *v4;
   if (*v4 != 0 && *(_DWORD*)(v5 + 16) == *((_DWORD*)v3 + 2)) {
-    GameRoutine_14a1520(v2, 1);
+    GameHr_14a1520(v2, 1);
   }
   v6 = a1[4];
   if (v6 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v6 + 8),
                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v6 + 16LL))(v6);
-    std___1___shared_weak_count___release_weak(v6);
+    std___1___shared_weak_count___release_weak_alt1(v6);
   }
   v7 = 128;
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
     v7 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v7);
+  nn_mem_StandardAllocator_Free_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v7, (__int64)a1);
 }
 
 __int64 game_hub_ObjectControllerDngBanquet_InitializeImpl_lambda0_Invoke()

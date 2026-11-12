@@ -101,6 +101,8 @@ extern int GameData_2212740;
 extern int GameData_2212770;
 extern int GameData_2212780;
 __int64 game_hub_anonymous_d8bc80(__int64 a1);
+int __cxa_guard_acquire_alt1(__int64) __asm__("__cxa_guard_acquire");
+void __cxa_guard_release_alt1(__int64) __asm__("__cxa_guard_release");
 
 __int64 game_hub_anonymous_d8bc80(__int64 a1)
 {
@@ -114,7 +116,7 @@ __int64 game_hub_anonymous_d8bc80(__int64 a1)
   if ((atomic_load_explicit((atomic_uchar* volatile)&GameData_2212790,
                             memory_order_acquire) &
        1) == 0 &&
-      (unsigned int)__cxa_guard_acquire(&GameData_2212790) != 0) {
+      __cxa_guard_acquire_alt1((__int64)&GameData_2212790) != 0) {
     GameData_2212558 = 0;
     GameData_2212560 = (__int64)GameRoutine_d8bf80;
     GameData_2212510 = 2;
@@ -195,7 +197,7 @@ __int64 game_hub_anonymous_d8bc80(__int64 a1)
     GameData_2212768 = 0;
     GameData_2212760 = 0;
     GameData_2212758 = 0;
-    __cxa_guard_release(&GameData_2212790);
+    __cxa_guard_release_alt1((__int64)&GameData_2212790);
   }
   v2 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
                                       224, 16, 0);

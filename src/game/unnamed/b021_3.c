@@ -161,6 +161,12 @@ void LayoutAccessor_1562060(__int64*, __int64, _BYTE*);
 __int64 GameHr_1627bf0(__int64 a1);
 void GameHr_1650120(__int64 a1, __int64 a2);
 void GameHr_1650630(__int64 a1, int a2);
+__int64* game_8224a0(unsigned __int8);
+__int64 game_GameVariableTable_Find(_QWORD*, unsigned __int64*);
+int memcmp(__int64, __int64, unsigned __int64);
+unsigned __int64 strlen(const char*);
+void __attribute__((noreturn)) fs_60a230();
+unsigned __int64 GameHr_1674ba0(__int64 a1);
 
 __int64 GameHr_1627bf0(__int64 a1)
 {
@@ -2112,15 +2118,15 @@ __int64 GameHr_16716e0(__int64 result)
   return result;
 }
 
-__int64 GameHr_1674ba0(__int64 a1)
+unsigned __int64 GameHr_1674ba0(__int64 a1)
 {
-  __int64 result;
+  unsigned __int64 result;
   unsigned int v3;
   __int64 v4;
   __int64 v5;
-  char* v6;
+  const char* v6;
   unsigned __int64 v7;
-  __int64 v8;
+  unsigned __int64 v8;
   __int64 v9;
   unsigned int v10;
   __int64 v11;
@@ -2130,9 +2136,11 @@ __int64 GameHr_1674ba0(__int64 a1)
   if (*(_BYTE*)(a1 + 184) == 1) {
     *(_BYTE*)(a1 + 184) = 0;
   }
-  result = GameRoutine_8224a0(21);
-  if (GameData_21caab0 != 0) {
-    result = GameRoutine_65c580(*(_QWORD*)(GameData_21caab0 + 48), result);
+  result = (unsigned __int64)game_8224a0(0x15u);
+  if (game_GameModeData_instance_ != 0) {
+    result = game_GameVariableTable_Find(
+        *(_QWORD**)(game_GameModeData_instance_ + 48),
+        (unsigned __int64*)result);
     if (result != 0) {
       v3 = *(_DWORD*)(result + 32) - 1;
       if (v3 <= 0x14) {
@@ -2141,7 +2149,7 @@ __int64 GameHr_1674ba0(__int64 a1)
         if (v5 != 0) {
           v6 = GameData_207f428[v3];
           v7 = 0xAAAAAAAAAAAAAAABLL * (v5 >> 3);
-          result = GameRoutine_1a09c70(v6);
+          result = strlen(v6);
           v8 = result;
           v9 = 0;
           v10 = 0;
@@ -2153,10 +2161,10 @@ __int64 GameHr_1674ba0(__int64 a1)
             }
             if (v8 == v12) {
               if (v8 == -1) {
-                GameRoutine_60a230(result);
+                fs_60a230();
               }
               v13 = (*(_BYTE*)v11 & 1) != 0 ? *(_QWORD*)(v11 + 16) : v11 + 1;
-              result = GameRoutine_1a09cf0(v13, v6);
+              result = memcmp(v13, (__int64)v6, v8);
               if ((_DWORD)result == 0) {
                 break;
               }

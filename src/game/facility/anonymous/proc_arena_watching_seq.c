@@ -11,7 +11,15 @@ extern __int64 (*game_ProcInst_vtable[])();
 extern __int64 (*game_facility_anonymous_ProcArenaWatchingSeq_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 ProcArenaWatchingSeq_Destructor(__int64 a1);
-__n128 ProcArenaWatchingSeq_DeletingDestructor(__int64 a1);
+__n128 ProcArenaWatchingSeq_DeletingDestructor_alt1(__int64 a1) __asm__(
+    "ProcArenaWatchingSeq_DeletingDestructor");
+__int64 ProcRegistry_65a640_alt1(_QWORD*) __asm__("ProcRegistry_65a640");
+__int64 game_ProcInst_Unregister_alt1(__int64 result) __asm__(
+    "game_ProcInst_Unregister");
+void GameRoutine_658c00_alt1(__int64*) __asm__("GameRoutine_658c00");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void ProcArenaWatchingSeq_DeletingDestructor(__int64 a1);
 
 __int64 ProcArenaWatchingSeq_Destructor(__int64 a1)
 {
@@ -44,7 +52,7 @@ LABEL_8:
   return GameRoutine_658c00(a1 + 88);
 }
 
-__n128 ProcArenaWatchingSeq_DeletingDestructor(__int64 a1)
+void ProcArenaWatchingSeq_DeletingDestructor(__int64 a1)
 {
   _QWORD* v2;
   __int64 v3;
@@ -52,7 +60,7 @@ __n128 ProcArenaWatchingSeq_DeletingDestructor(__int64 a1)
 
   *(_QWORD*)a1 = game_facility_anonymous_ProcArenaWatchingSeq_vtable;
   if (*(_BYTE*)(a1 + 208) == 1) {
-    ProcRegistry_65a640(a1);
+    ProcRegistry_65a640_alt1((_QWORD*)a1);
     *(_BYTE*)(a1 + 208) = 0;
   }
   v2 = *(_QWORD**)(a1 + 192);
@@ -72,14 +80,14 @@ LABEL_8:
   if ((*(_WORD*)(a1 + 136) & 0x100) != 0) {
     *(_WORD*)(a1 + 136) &= ~0x100u;
   }
-  game_ProcInst_Unregister(a1);
-  GameRoutine_658c00(a1 + 88);
+  game_ProcInst_Unregister_alt1(a1);
+  GameRoutine_658c00_alt1((__int64*)(a1 + 88));
   v4 = 128;
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
     v4 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v4);
+  nn_mem_StandardAllocator_Free_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v4, a1);
 }
 
 #pragma GCC visibility pop

@@ -15,7 +15,9 @@ extern __int64 fw_memory_g_heap_manager;
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64* game_g_frame_clock_ptr[3];
 __int64 SpineExtensionEx_Unknown4(__int64 a1, __int64 a2, __int64 a3);
-__int64 SpineExtensionEx_Unknown5(__int64 a1, __int64 a2);
+__int64
+SpineExtensionEx_Unknown5_alt1(__int64 a1,
+                               __int64 a2) __asm__("SpineExtensionEx_Unknown5");
 __int64 SpineExtensionEx_Unknown6(__int64 a1, __int64 a2, _DWORD* a3);
 _QWORD* SpineExtensionEx_190d360();
 __n128 memset(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
@@ -27,6 +29,9 @@ __int64 fw_memory_HeapManager_Allocate_alt1(
     unsigned int) __asm__("fw_memory_HeapManager_Allocate");
 __int64 memset_alt1(__int64, int, unsigned __int64) __asm__("memset");
 __int64 SpineExtensionEx_Unknown3(__int64 a1, unsigned __int64 a2);
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void SpineExtensionEx_Unknown5(__int64 a1, __int64 a2);
 
 __int64 SpineExtensionEx_Unknown3(__int64 a1, unsigned __int64 a2)
 {
@@ -51,20 +56,18 @@ __int64 SpineExtensionEx_Unknown4(__int64 a1, __int64 a2, __int64 a3)
   return nn_mem_StandardAllocator_Reallocate(fw_memory_g_heap_manager + v3);
 }
 
-__int64 SpineExtensionEx_Unknown5(__int64 a1, __int64 a2)
+void SpineExtensionEx_Unknown5(__int64 a1, __int64 a2)
 {
   __int64 v2;
-  __int64 result;
 
   if (a2 != 0) {
     v2 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v2 = 56;
     }
-    return nn_mem_StandardAllocator_Free(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v2);
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v2, a2);
   }
-  return result;
 }
 
 __int64 SpineExtensionEx_Unknown6(__int64 a1, __int64 a2, _DWORD* a3)

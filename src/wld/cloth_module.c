@@ -15,7 +15,8 @@ extern int* GameData_212df08;
 void __attribute__((noreturn)) GameRoutine_8123d0(void);
 __int64
 ClothModule_Destructor_alt1(__int64 result) __asm__("ClothModule_Destructor");
-__int64 ClothModule_DeletingDestructor(__int64 a1);
+__int64 ClothModule_DeletingDestructor_alt1(__int64 a1) __asm__(
+    "ClothModule_DeletingDestructor");
 __int64 CharacterBuilder_a577c0(__int64 result, __int64, int, __int64, __int64,
                                 __int64);
 __int64 Model_a66980(_QWORD, _QWORD, _QWORD);
@@ -47,6 +48,7 @@ void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
 void wld_ClothModule_ClothModule(__int64 a1, __int64 a2, __int64 a3,
                                  __int64 a4);
 void ClothModule_Destructor(__int64 a1);
+void ClothModule_DeletingDestructor(__int64 a1);
 
 void wld_ClothModule_ClothModule(__int64 a1, __int64 a2, __int64 a3, __int64 a4)
 {
@@ -207,17 +209,17 @@ void ClothModule_Destructor(__int64 a1)
   }
 }
 
-__int64 ClothModule_DeletingDestructor(__int64 a1)
+void ClothModule_DeletingDestructor(__int64 a1)
 {
-  __int64 v1;
+  __int64 v2;
 
-  ClothModule_Destructor_alt1(a1);
-  v1 = 128;
+  ClothModule_Destructor(a1);
+  v2 = 128;
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-    v1 = 56;
+    v2 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v1);
+  nn_mem_StandardAllocator_Free_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v2, a1);
 }
 
 void wld_ClothModule_ClothModule_lambda0_Invoke(__int64 a1, float32x4_t a2,

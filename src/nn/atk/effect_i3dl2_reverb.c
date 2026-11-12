@@ -33,7 +33,8 @@ __n128 nn_os_UnlockMutex(_QWORD);
 extern _DWORD GameData_1a83730_alt1[4] __asm__("GameData_1a83730");
 extern _QWORD GameData_1b01548[4];
 extern unsigned int GameData_1a83730[4];
-__int64 EffectI3dl2Reverb_Unknown2(__int64 a1, __int64 a2);
+__int64 EffectI3dl2Reverb_Unknown2_alt1(__int64 a1, __int64 a2) __asm__(
+    "EffectI3dl2Reverb_Unknown2");
 __int64 EffectI3dl2Reverb_Unknown3(__int64 a1, __int64 a2,
                                    __int64 (***a3)(_QWORD));
 __int64 EffectI3dl2Reverb_Unknown4(__int64 a1, __int64 a2);
@@ -49,96 +50,104 @@ __int64 EffectI3dl2Reverb_2b1360(__int64 result, float a2);
 __int64 EffectI3dl2Reverb_2b13e0(__int64 result, float a2);
 __int64 EffectI3dl2Reverb_2b1460(__int64 result, float a2);
 __int64 EffectI3dl2Reverb_2b15c0(__int64 result);
+__int64 nn_audio_SetI3dl2ReverbDryGain_alt1(__int64, float) __asm__(
+    "nn_audio_SetI3dl2ReverbDryGain");
+__int64 nn_os_LockMutex_alt1(__int64) __asm__("nn_os_LockMutex");
+__int64 nn_os_UnlockMutex_alt2(__int64) __asm__("nn_os_UnlockMutex");
+void* SoundVoiceNX_14e360_alt1() __asm__("SoundVoiceNX_14e360");
+void nn_detail_UnexpectedDefaultImpl_alt2() __asm__(
+    "nn_detail_UnexpectedDefaultImpl");
+__int64 EffectI3dl2Reverb_Unknown2(__int64 a1);
 
-__int64 EffectI3dl2Reverb_Unknown2(__int64 a1, __int64 a2)
+__int64 EffectI3dl2Reverb_Unknown2(__int64 a1)
 {
+  __int64 v1;
   __int64 v2;
   int v3;
   __int64 v4;
 
-  v2 = *(unsigned int*)(a1 + 136);
-  if ((unsigned int)v2 < 4) {
-    a2 = GameData_1a83730[v2];
-    v3 = *(_DWORD*)(a1 + 28);
-    if (v3 == 0) {
-      v4 = 32000;
-      return nn_audio_GetRequiredBufferSizeForI3dl2Reverb(v4, a2);
-    }
-    if (v3 == 1) {
-      v4 = 48000;
-      return nn_audio_GetRequiredBufferSizeForI3dl2Reverb(v4, a2);
-    }
+  v2 = COERCE_AS(__typeof__(v2),
+                 PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  v1 = *(unsigned int*)(a1 + 136);
+  if ((unsigned int)v1 >= 4) {
+    goto LABEL_7;
   }
-  nn_detail_UnexpectedDefaultImpl(a1, a2);
-  __udf(0);
+  v2 = GameData_1a83730[v1];
+  v3 = *(_DWORD*)(a1 + 28);
+  if (v3 == 0) {
+    v4 = 32000;
+    return nn_audio_GetRequiredBufferSizeForI3dl2Reverb(v4, v2);
+  }
+  if (v3 != 1) {
+  LABEL_7:
+    nn_detail_UnexpectedDefaultImpl_alt2(),
+        v2 = COERCE_AS(__typeof__(v2),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  }
+  v4 = 48000;
+  return nn_audio_GetRequiredBufferSizeForI3dl2Reverb(v4, v2);
 }
 
 __int64 EffectI3dl2Reverb_Unknown3(__int64 a1, __int64 a2,
                                    __int64 (***a3)(_QWORD))
 {
+
+#pragma clang fp contract(off)
   __int64 v4;
-  __int64 v5;
   unsigned int v8;
   unsigned __int64 v9;
-  __int64 v10;
-  __int64 v11;
-  __int64 v12;
-  __int64 v13;
+  int v10;
+  void* v11;
+  void* v12;
 
   if ((*(_BYTE*)(a1 + 24) & 1) != 0) {
     return 0;
   }
   v4 = *(unsigned int*)(a1 + 136);
-  v5 = a1;
-  if ((unsigned int)v4 < 4 && *(_DWORD*)(a1 + 28) < 2u) {
-    v8 = GameData_1a83730_alt1[v4];
-    v9 = atomic_load((unsigned __int64*)(SoundVoiceNX_14e360(a1) + 200));
-    atomic_store(v9, (unsigned __int64*)(v5 + 120));
-    a1 = (**a3)(a3);
-    if ((_DWORD)a1 == 1) {
-      v10 = nn_audio_AddI3dl2Reverb_1a0c990(a2, v5 + 128, *(_QWORD*)(v5 + 32),
-                                            *(_QWORD*)(v5 + 40), a3 + 9, v8);
-      if ((_DWORD)v10 == 0) {
-        goto LABEL_8;
-      }
-      return 0;
-    }
-    if ((_DWORD)a1 == 0) {
-      v10 = nn_audio_AddI3dl2Reverb_1a0c8b0(a2, v5 + 128, *(_QWORD*)(v5 + 32),
-                                            *(_QWORD*)(v5 + 40), a3 + 11, v8);
-      if ((_DWORD)v10 == 0) {
-      LABEL_8:
-        *(_BYTE*)(v5 + 24) = 1;
-        v11 = SoundVoiceNX_14e360(v10);
-        nn_os_LockMutex(v11 + 1720);
-        nn_audio_SetI3dl2ReverbRoomGain(v5 + 128, *(float*)(v5 + 48));
-        nn_audio_SetI3dl2ReverbRoomHfGain(v5 + 128, *(float*)(v5 + 52));
-        nn_audio_SetI3dl2ReverbLateReverbDecayTime(v5 + 128,
-                                                   *(_QWORD*)(v5 + 56));
-        nn_audio_SetI3dl2ReverbLateReverbHfDecayRatio(v5 + 128,
-                                                      *(float*)(v5 + 64));
-        nn_audio_SetI3dl2ReverbReflectionsGain(v5 + 128, *(float*)(v5 + 68));
-        nn_audio_SetI3dl2ReverbReflectionDelayTime(v5 + 128,
-                                                   *(_QWORD*)(v5 + 72));
-        nn_audio_SetI3dl2ReverbReverbGain(v5 + 128, *(float*)(v5 + 80));
-        nn_audio_SetI3dl2ReverbLateReverbDelayTime(v5 + 128,
-                                                   *(_QWORD*)(v5 + 88));
-        nn_audio_SetI3dl2ReverbLateReverbDiffusion(v5 + 128,
-                                                   *(float*)(v5 + 96));
-        nn_audio_SetI3dl2ReverbLateReverbDensity(v5 + 128, *(float*)(v5 + 100));
-        nn_audio_SetI3dl2ReverbHfReference(v5 + 128, *(float*)(v5 + 104));
-        nn_audio_SetI3dl2ReverbDryGain(v5 + 128, *(float*)(v5 + 108));
-        v12 = nn_audio_SetI3dl2ReverbEnabled(v5 + 128,
-                                             *(unsigned __int8*)(v5 + 112));
-        v13 = SoundVoiceNX_14e360(v12);
-        nn_os_UnlockMutex(v13 + 1720);
-        return 1;
-      }
-      return 0;
-    }
+  if ((unsigned int)v4 >= 4 || *(_DWORD*)(a1 + 28) >= 2u) {
+    goto LABEL_11;
   }
-  nn_detail_UnexpectedDefaultImpl_alt1(a1);
-  __udf(0);
+  v8 = GameData_1a83730[v4];
+  v9 = atomic_load((unsigned __int64*)SoundVoiceNX_14e360_alt1() + 25);
+  atomic_store(v9, (unsigned __int64*)(a1 + 120));
+  v10 = (**a3)(a3);
+  if (v10 == 1) {
+    if ((unsigned int)nn_audio_AddI3dl2Reverb_1a0c990(
+            a2, a1 + 128, *(_QWORD*)(a1 + 32), *(_QWORD*)(a1 + 40), a3 + 9,
+            v8) == 0) {
+      goto LABEL_8;
+    }
+    return 0;
+  }
+  if (v10 != 0) {
+  LABEL_11:
+    nn_detail_UnexpectedDefaultImpl_alt2();
+  }
+  if ((unsigned int)nn_audio_AddI3dl2Reverb_1a0c8b0(
+          a2, a1 + 128, *(_QWORD*)(a1 + 32), *(_QWORD*)(a1 + 40), a3 + 11,
+          v8) == 0) {
+  LABEL_8:
+    *(_BYTE*)(a1 + 24) = 1;
+    v11 = SoundVoiceNX_14e360_alt1();
+    nn_os_LockMutex_alt1((__int64)v11 + 1720);
+    nn_audio_SetI3dl2ReverbRoomGain(a1 + 128, *(float*)(a1 + 48));
+    nn_audio_SetI3dl2ReverbRoomHfGain(a1 + 128, *(float*)(a1 + 52));
+    nn_audio_SetI3dl2ReverbLateReverbDecayTime(a1 + 128, *(_QWORD*)(a1 + 56));
+    nn_audio_SetI3dl2ReverbLateReverbHfDecayRatio(a1 + 128, *(float*)(a1 + 64));
+    nn_audio_SetI3dl2ReverbReflectionsGain(a1 + 128, *(float*)(a1 + 68));
+    nn_audio_SetI3dl2ReverbReflectionDelayTime(a1 + 128, *(_QWORD*)(a1 + 72));
+    nn_audio_SetI3dl2ReverbReverbGain(a1 + 128, *(float*)(a1 + 80));
+    nn_audio_SetI3dl2ReverbLateReverbDelayTime(a1 + 128, *(_QWORD*)(a1 + 88));
+    nn_audio_SetI3dl2ReverbLateReverbDiffusion(a1 + 128, *(float*)(a1 + 96));
+    nn_audio_SetI3dl2ReverbLateReverbDensity(a1 + 128, *(float*)(a1 + 100));
+    nn_audio_SetI3dl2ReverbHfReference(a1 + 128, *(float*)(a1 + 104));
+    nn_audio_SetI3dl2ReverbDryGain_alt1(a1 + 128, *(float*)(a1 + 108));
+    nn_audio_SetI3dl2ReverbEnabled(a1 + 128, *(unsigned __int8*)(a1 + 112));
+    v12 = SoundVoiceNX_14e360_alt1();
+    nn_os_UnlockMutex_alt2((__int64)v12 + 1720);
+    return 1;
+  }
+  return 0;
 }
 
 __int64 EffectI3dl2Reverb_Unknown4(__int64 a1, __int64 a2)
@@ -157,19 +166,19 @@ __int64 EffectI3dl2Reverb_Unknown4(__int64 a1, __int64 a2)
   char* v14;
   unsigned int* v15;
   unsigned int v16;
-  __int64 v17;
-  __int64 v18;
-  __int64 v19;
-  int v21;
-  __int16 v22;
+  void* v17;
+  void* v18;
+  struct {
+    int v20;
+    __int16 v21;
+  } v20_;
 
   v2 = *(unsigned int*)(a1 + 136);
   if ((unsigned int)v2 >= 4) {
-    nn_detail_UnexpectedDefaultImpl(a1, a2);
-    __udf(0);
+    nn_detail_UnexpectedDefaultImpl_alt2();
   }
-  v22 = 0;
-  v21 = 0;
+  v20_.v21 = 0;
+  v20_.v20 = 0;
   v4 = GameData_1a83730[v2];
   v5 = v4 & 7;
   if (v4 - 1 < 7) {
@@ -181,7 +190,7 @@ __int64 EffectI3dl2Reverb_Unknown4(__int64 a1, __int64 a2)
   }
   v7 = (unsigned int*)(a1 + 168);
   v8 = 0;
-  v9 = (char*)&v21 + 3;
+  v9 = (char*)&v20_.v20 + 3;
   do {
     v8 -= 8;
     v10 = *(_BYTE*)(a2 + *(v7 - 6));
@@ -202,7 +211,7 @@ __int64 EffectI3dl2Reverb_Unknown4(__int64 a1, __int64 a2)
   v6 = -v8;
   if ((v4 & 7) != 0) {
   LABEL_8:
-    v14 = (char*)&v21 + v6;
+    v14 = (char*)&v20_.v20 + v6;
     v15 = (unsigned int*)(a1 + 4 * v6 + 140);
     do {
       v16 = *v15++;
@@ -211,11 +220,11 @@ __int64 EffectI3dl2Reverb_Unknown4(__int64 a1, __int64 a2)
     } while (v5 != 0);
   }
 LABEL_10:
-  v17 = SoundVoiceNX_14e360(a1);
-  nn_os_LockMutex(v17 + 1720);
-  v18 = nn_audio_SetI3dl2ReverbInputOutput(a1 + 128, &v21, &v21, v4);
-  v19 = SoundVoiceNX_14e360(v18);
-  return nn_os_UnlockMutex_alt1(v19 + 1720);
+  v17 = SoundVoiceNX_14e360_alt1();
+  nn_os_LockMutex_alt1((__int64)v17 + 1720);
+  nn_audio_SetI3dl2ReverbInputOutput(a1 + 128, &v20_.v20, &v20_.v20, v4);
+  v18 = SoundVoiceNX_14e360_alt1();
+  return nn_os_UnlockMutex_alt2((__int64)v18 + 1720);
 }
 
 __int64 EffectI3dl2Reverb_2b0dc0(__int64 a1, __int64 a2)
@@ -272,8 +281,7 @@ __int64 EffectI3dl2Reverb_Unknown8(__int64 result, __int64 a2)
 
   v2 = *(unsigned int*)(result + 136);
   if ((unsigned int)v2 >= 4) {
-    nn_detail_UnexpectedDefaultImpl(result, a2);
-    __udf(0);
+    nn_detail_UnexpectedDefaultImpl_alt2();
   }
   v3 = GameData_1b01548[v2];
   v4 = v3 & 7;

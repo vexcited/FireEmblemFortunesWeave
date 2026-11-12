@@ -9,7 +9,7 @@ extern __int64 GameData_21cd150;
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern int GameData_220b694;
 __int64 MapScript_c8ccf0(__int64 a1);
-__int64 MapScript_c8cdc0(__int64 a1);
+__int64 MapScript_c8cdc0_alt1(__int64 a1) __asm__("MapScript_c8cdc0");
 __int64 GameRoutine_1a09ce0(_QWORD, _QWORD, _QWORD);
 __int64 strlen(_QWORD);
 __attribute__((swiftcall)) void MapScript_Unknown4_c8ce40(PSEUDO_X8 x8_);
@@ -21,6 +21,10 @@ __attribute__((swiftcall)) void MapScript_Unknown3(PSEUDO_X8 x8_, __int64 a1,
 __attribute__((swiftcall)) void MapScript_Unknown6(PSEUDO_X8 x8_, __int64 a1);
 __attribute__((swiftcall)) void MapScript_Unknown4_c8cfb0(PSEUDO_X8 x8_,
                                                           __int64 a1);
+void ScriptBase_Destructor_alt1(_QWORD*) __asm__("ScriptBase_Destructor");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void MapScript_c8cdc0(_QWORD* a1);
 
 __int64 MapScript_c8ccf0(__int64 a1)
 {
@@ -35,22 +39,24 @@ __int64 MapScript_c8ccf0(__int64 a1)
   return result;
 }
 
-__int64 MapScript_c8cdc0(__int64 a1)
+void MapScript_c8cdc0(_QWORD* a1)
 {
   __int64 v2;
+  __int64 v3;
 
-  ScriptBase_Destructor();
-  *(_QWORD*)(a1 - 8) = GameData_1fd3478;
-  if (GameData_21cd150 == a1 - 8) {
+  ScriptBase_Destructor_alt1(a1);
+  *(a1 - 1) = GameData_1fd3478;
+  v2 = (__int64)(a1 - 1);
+  if (GameData_21cd150 == v2) {
     GameData_21cd150 = 0;
     GameData_220b694 = 0;
   }
-  v2 = 128;
+  v3 = 128;
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-    v2 = 56;
+    v3 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v2);
+  nn_mem_StandardAllocator_Free_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v3, v2);
 }
 
 __attribute__((swiftcall)) void MapScript_Unknown4_c8ce40(PSEUDO_X8 x8_)

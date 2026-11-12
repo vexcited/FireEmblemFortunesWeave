@@ -6,7 +6,8 @@ __int64 GameRoutine_1888840(__int64);
 __int64 nn_mem_StandardAllocator_Free(_QWORD);
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64* GameData_2132080[6];
-__int64 InfoItemSkill_DeletingDestructor(__int64 a1);
+__int64 InfoItemSkill_DeletingDestructor_alt1(__int64 a1) __asm__(
+    "InfoItemSkill_DeletingDestructor");
 __int64 Element_1888840(__int64);
 __int64 GameRoutine_18a7ae0(__int64, unsigned int*, __int64, char, int, __int64,
                             char);
@@ -14,8 +15,16 @@ __int64 std___1___shared_weak_count___release_weak(_QWORD);
 __int64 std___1___shared_weak_count_lock(_QWORD);
 bool InfoItemSkill_18b3800(_QWORD* a1);
 __int64 InfoItemSkill_18b3910(__int64 result, __int64* a2);
-__int64 InfoItemSkill_Destructor(__int64 a1);
-__int64 InfoItemSkill_DeletingDestructor_18b3b00(__int64 a1);
+__int64
+InfoItemSkill_Destructor_alt1(__int64 a1) __asm__("InfoItemSkill_Destructor");
+__int64 InfoItemSkill_DeletingDestructor_18b3b00_alt1(__int64 a1) __asm__(
+    "InfoItemSkill_DeletingDestructor_18b3b00");
+void Element_1888840_alt1(__int64) __asm__("Element_1888840");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void InfoItemSkill_DeletingDestructor(__int64 a1);
+void InfoItemSkill_Destructor(__int64 a1);
+void InfoItemSkill_DeletingDestructor_18b3b00(__int64 a1);
 
 bool InfoItemSkill_18b3800(_QWORD* a1)
 {
@@ -98,40 +107,46 @@ __int64 InfoItemSkill_18b3910(__int64 result, __int64* a2)
   return result;
 }
 
-__int64 InfoItemSkill_DeletingDestructor(__int64 a1)
+void InfoItemSkill_DeletingDestructor(__int64 a1)
 {
   __int64* v2;
   __int64 v3;
   __int64 v4;
   __int64 v5;
+  __int64 v6;
 
   v2 = GameData_2132080[0];
   *(_QWORD*)a1 = GameData_2132080[0] + 2;
   *(_QWORD*)(a1 + 72) = v2 + 51;
   *(_QWORD*)(a1 + 1032) = v2 + 56;
   v3 = fw_memory_g_heap_manager_ptr;
-  if ((*(_BYTE*)(a1 + 1048) & 1) != 0 && *(_QWORD*)(a1 + 1064) != 0) {
-    v4 = 128;
-    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-      v4 = 56;
+  if ((*(_BYTE*)(a1 + 1048) & 1) != 0) {
+    v4 = *(_QWORD*)(a1 + 1064);
+    if (v4 != 0) {
+      v5 = 128;
+      if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+        v5 = 56;
+      }
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v5, v4);
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v4);
   }
-  GameRoutine_1888840(a1);
-  v5 = 128;
+  Element_1888840_alt1(a1);
+  v6 = 128;
   if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
-    v5 = 56;
+    v6 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v5);
+  nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v6, a1);
 }
 
-__int64 InfoItemSkill_Destructor(__int64 a1)
+void InfoItemSkill_Destructor(__int64 a1)
 {
   __int64* v2;
   __int64 v3;
   __int64* v4;
   __int64 v5;
   __int64 v6;
+  __int64 v7;
 
   v2 = GameData_2132080[0];
   *(_QWORD*)(a1 - 72) = GameData_2132080[0] + 2;
@@ -140,25 +155,30 @@ __int64 InfoItemSkill_Destructor(__int64 a1)
   *(_QWORD*)(a1 + 960) = v2 + 56;
   LOBYTE(v2) = *(_BYTE*)(a1 + 976);
   *(_QWORD*)a1 = v4;
-  if (((unsigned __int8)v2 & 1) != 0 && *(_QWORD*)(a1 + 992) != 0) {
-    v5 = v3;
-    v6 = 128;
-    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-      v6 = 56;
+  if (((unsigned __int8)v2 & 1) != 0) {
+    v5 = *(_QWORD*)(a1 + 992);
+    if (v5 != 0) {
+      v6 = v3;
+      v7 = 128;
+      if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+        v7 = 56;
+      }
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v7, v5);
+      v3 = v6;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v6);
-    v3 = v5;
   }
-  return Element_1888840(v3);
+  Element_1888840_alt1(v3);
 }
 
-__int64 InfoItemSkill_DeletingDestructor_18b3b00(__int64 a1)
+void InfoItemSkill_DeletingDestructor_18b3b00(__int64 a1)
 {
   __int64* v1;
   __int64 v2;
   __int64 v3;
   __int64 v4;
   __int64 v5;
+  __int64 v6;
 
   v1 = GameData_2132080[0];
   *(_QWORD*)(a1 - 72) = GameData_2132080[0] + 2;
@@ -166,19 +186,23 @@ __int64 InfoItemSkill_DeletingDestructor_18b3b00(__int64 a1)
   *(_QWORD*)a1 = v1 + 51;
   *(_QWORD*)(a1 + 960) = v1 + 56;
   v3 = fw_memory_g_heap_manager_ptr;
-  if ((*(_BYTE*)(a1 + 976) & 1) != 0 && *(_QWORD*)(a1 + 992) != 0) {
-    v4 = 128;
-    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-      v4 = 56;
+  if ((*(_BYTE*)(a1 + 976) & 1) != 0) {
+    v4 = *(_QWORD*)(a1 + 992);
+    if (v4 != 0) {
+      v5 = 128;
+      if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+        v5 = 56;
+      }
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v5, v4);
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v4);
   }
-  Element_1888840(v2);
-  v5 = 128;
+  Element_1888840_alt1(v2);
+  v6 = 128;
   if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
-    v5 = 56;
+    v6 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v5);
+  nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v6, v2);
 }
 
 #pragma GCC visibility pop

@@ -10,6 +10,12 @@ extern __int64 (*game_facility_SceneCameraWorkUpdater_StateFadeIn_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64 game_ProcFadeView_instance_;
 _QWORD* StateRunFront_Unknown4(__int64 a1, __int64 a2);
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 game_809ba0(__int64, float);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
 
 _QWORD* StateRunFront_Unknown4(__int64 a1, __int64 a2)
 {
@@ -18,7 +24,7 @@ _QWORD* StateRunFront_Unknown4(__int64 a1, __int64 a2)
   _QWORD* v5;
   __int64 v6;
 
-  result = (_QWORD*)fw_memory_HeapManager_Allocate(
+  result = (_QWORD*)fw_memory_HeapManager_Allocate_alt1(
       *(_QWORD*)fw_memory_g_heap_manager_ptr, 32, 16, 0);
   result[1] = 0;
   result[2] = 0;
@@ -27,7 +33,7 @@ _QWORD* StateRunFront_Unknown4(__int64 a1, __int64 a2)
   v4 = result + 3;
   if (*(_BYTE*)(a2 + 120) == 1 && game_ProcFadeView_instance_ != 0) {
     v5 = result;
-    GameRoutine_809ba0(game_ProcFadeView_instance_, 0.5);
+    game_809ba0(game_ProcFadeView_instance_, 0x1.0000000000000p-1f);
     result = v5;
   }
   v6 = *(_QWORD*)(a2 + 136);
@@ -36,7 +42,7 @@ _QWORD* StateRunFront_Unknown4(__int64 a1, __int64 a2)
   if (v6 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v6 + 8),
                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v6 + 16LL))(v6);
-    return (_QWORD*)std___1___shared_weak_count___release_weak();
+    return (_QWORD*)std___1___shared_weak_count___release_weak_alt1(v6);
   }
   return result;
 }

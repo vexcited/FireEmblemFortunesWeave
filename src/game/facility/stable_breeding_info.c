@@ -138,6 +138,13 @@ void LayoutAccessor_1562060_alt1(__int64*, __int64,
 void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void StableBreedingInfo_Unknown28(__int64 a1);
+__int64 game_1843470(__int64, unsigned __int8);
+__int64 ui_LayoutAccessor_FindPane_alt2(__int64*, const char*) __asm__(
+    "ui_LayoutAccessor_FindPane");
+__int64 ui_LayoutAccessor_FindTextBox_alt2(__int64*, const char*) __asm__(
+    "ui_LayoutAccessor_FindTextBox");
+void LayoutAccessor_1562060_alt2(__int64*, const char*,
+                                 const char*) __asm__("LayoutAccessor_1562060");
 
 __int64 StableBreedingInfo_16be4a0(__int64 a1, __int64 a2)
 {
@@ -229,7 +236,7 @@ void StableBreedingInfo_Unknown28(__int64 a1)
   void* v26;
   __int64* v27;
   __int64 v28;
-  char* v29;
+  const char* v29;
   int v30;
   __int64* v31;
   __int64 v32;
@@ -299,7 +306,7 @@ void StableBreedingInfo_Unknown28(__int64 a1)
   if (v5 != nullptr) {
     v7 = (__int64)v5;
     v8 = v4 != nullptr ? v4 : ui_LayoutAccessor_empty__ptr[0];
-    v9 = ui_LayoutAccessor_FindTextBox_alt1(v8, (__int64)"T_AnimalName");
+    v9 = ui_LayoutAccessor_FindTextBox_alt2(v8, "T_AnimalName");
     if (v9 != 0) {
       GameRoutine_156c5d0_alt1(v9, v7, 0);
     }
@@ -310,7 +317,7 @@ void StableBreedingInfo_Unknown28(__int64 a1)
   else {
     v10 = v6;
   }
-  v11 = ui_LayoutAccessor_FindPane_alt1(v10, (__int64)"IconAnimal");
+  v11 = ui_LayoutAccessor_FindPane_alt2(v10, "IconAnimal");
   if (v11 != 0) {
     v12 = __dynamic_cast(v11, GameData_212d670[0], GameData_212d678[0], 0);
   }
@@ -362,7 +369,7 @@ void StableBreedingInfo_Unknown28(__int64 a1)
   else {
     v19 = v6;
   }
-  v20 = ui_LayoutAccessor_FindPane_alt1(v19, (__int64)"FoodIcon");
+  v20 = ui_LayoutAccessor_FindPane_alt2(v19, "FoodIcon");
   if (v20 != 0) {
     v21 = __dynamic_cast(v20, GameData_212d670[0], GameData_212d678[0], 0);
   }
@@ -383,7 +390,7 @@ void StableBreedingInfo_Unknown28(__int64 a1)
   else {
     v25 = v24;
   }
-  GameRoutine_1843470_alt1(v21, v25);
+  game_1843470(v21, v25);
   v26 = GameData_212da30;
   if (v21 != 0) {
     LODWORD(v61_.v61) = *(_DWORD*)((char*)(*(__int64 (*)[2])0x28LL) +
@@ -412,7 +419,7 @@ void StableBreedingInfo_Unknown28(__int64 a1)
   else {
     v29 = GameData_1fafc88[v28];
   }
-  LayoutAccessor_1562060_alt1(v27, (__int64)"T_Taste", (__int64)v29);
+  LayoutAccessor_1562060_alt2(v27, "T_Taste", v29);
   v30 = *(_DWORD*)((char*)(*(__int64 (*)[2])0x28LL) + (_QWORD)v26 + 4);
   if (*(_QWORD*)(a1 + 168) != 0) {
     v31 = *(__int64**)(a1 + 168);
@@ -420,7 +427,7 @@ void StableBreedingInfo_Unknown28(__int64 a1)
   else {
     v31 = v6;
   }
-  v32 = ui_LayoutAccessor_FindTextBox_alt1(v31, (__int64)"T_Taste");
+  v32 = ui_LayoutAccessor_FindTextBox_alt2(v31, "T_Taste");
   if (v32 != 0) {
     v33 = Pane_58f8a0_alt1(v32);
     if (v33 != 0) {
@@ -535,7 +542,7 @@ void StableBreedingInfo_Unknown28(__int64 a1)
       }
       std___1___shared_weak_count___release_weak_alt2(v45);
       v56 = *(_DWORD*)((char*)(*(__int64 (*)[2])0x28LL) + (_QWORD)v26 + 4);
-      v57 = ui_LayoutAccessor_FindTextBox_alt1(v46, (__int64)"T_Txt");
+      v57 = ui_LayoutAccessor_FindTextBox_alt2(v46, "T_Txt");
       if (v57 != 0) {
         v58 = Pane_58f8a0_alt1(v57);
         if (v58 != 0) {

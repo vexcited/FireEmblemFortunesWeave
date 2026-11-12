@@ -49,8 +49,9 @@ void GameRoutine_15e1b80(__int64, unsigned int, unsigned int, unsigned int,
                          __int64);
 void LayoutAccessor_1562680(__int64*, __int64, float);
 void snd_Fade_Fade_10c830(__int64, float);
-__int64 TelopSequence_1374920(__int64* a1);
-__n128 TelopSequence_1375430(__int64* a1);
+__int64
+TelopSequence_1374920_alt1(__int64* a1) __asm__("TelopSequence_1374920");
+__n128 TelopSequence_1375430_alt1(__int64* a1) __asm__("TelopSequence_1375430");
 __int64
 TelopSequence_13755a0_alt1(__int64* a1) __asm__("TelopSequence_13755a0");
 __int64
@@ -103,10 +104,20 @@ extern _UNKNOWN GameData_1ac6c8b;
 float ui_LayoutAccessor_GetPaneSize(__int64*, __int64);
 void GameRoutine_190a0c0(float*, __int64, float*, _QWORD*, __int64);
 __int64 TelopSequence_1374ee0(__int64* a1, const char* a2);
+__int64 GameHr_1562680(__int64 result, const char*, float);
+__int64 GameHr_173f310(__int64, __int64*, char, __int64, __int64, float);
+__int64 GameHr_173ff00(__int64, __int64);
+__int64
+LayoutAccessor_1562cf0_alt1(__int64 result,
+                            const char*) __asm__("LayoutAccessor_1562cf0");
+__int64 ProcGameUIFade_15e1b80(__int64 result, unsigned int, unsigned int,
+                               unsigned int, __int64);
+__int64 TelopSequence_1374920(_QWORD* a1);
+const char* TelopSequence_1375430(__int64* a1);
 
-__int64 TelopSequence_1374920(__int64* a1)
+__int64 TelopSequence_1374920(_QWORD* a1)
 {
-  __int64 v2;
+  const char* v2;
   __int64 v3;
   __int64 v4;
   __int64 v5;
@@ -115,10 +126,11 @@ __int64 TelopSequence_1374920(__int64* a1)
   __int64 v8;
   unsigned int v9;
   __int64 result;
-  _QWORD v11[25];
+  __int64 v11;
+  _QWORD v12[25];
 
-  v2 = (*(__int64 (**)(__int64*))(*a1 + 216))(a1);
-  LayoutAccessor_1562680(a1 + 21, v2, 0x1.0000000000000p+0f);
+  v2 = (const char*)(*(__int64 (**)(_QWORD*))(*a1 + 216LL))(a1);
+  GameHr_1562680((__int64)(a1 + 21), v2, 0x1.0000000000000p+0f);
   v4 = a1[46];
   v3 = a1[47];
   while (v4 != v3) {
@@ -129,10 +141,10 @@ __int64 TelopSequence_1374920(__int64* a1)
       v5 = v4 + 1;
     }
     if (v5 != 0) {
-      snd_Fade_Fade_10c830((__int64)v11, 0x0.0p+0f);
-      snd_play_ff2d0(v5, v5, (__int64)v11, 0, 0x10001u, 0, 0x0.0p+0f,
+      snd_Fade_Fade_10c830((__int64)v12, 0x0.0p+0f);
+      snd_play_ff2d0(v5, v5, (__int64)v12, 0, 0x10001u, 0, 0x0.0p+0f,
                      0x1.0000000000000p+0f);
-      snd_Fade_Destroy_Fade(v11);
+      snd_Fade_Destroy_Fade(v12);
     }
     v4 += 24;
   }
@@ -140,7 +152,7 @@ __int64 TelopSequence_1374920(__int64* a1)
   if (v6 == 0) {
     goto LABEL_15;
   }
-  v7 = std___1___shared_weak_count_lock(v6);
+  v7 = std___1___shared_weak_count_lock_alt1(v6);
   if (v7 == 0) {
     goto LABEL_15;
   }
@@ -150,8 +162,9 @@ __int64 TelopSequence_1374920(__int64* a1)
   }
   if (atomic_fetch_add((atomic_ullong* volatile)(v7 + 8),
                        0xFFFFFFFFFFFFFFFFLL) == 0) {
+    v11 = v7;
     (*(void (**)(__int64))(*(_QWORD*)v7 + 16LL))(v7);
-    std___1___shared_weak_count___release_weak_alt1();
+    std___1___shared_weak_count___release_weak_alt2(v11);
     if (v8 != 0) {
       goto LABEL_16;
     }
@@ -162,12 +175,12 @@ __int64 TelopSequence_1374920(__int64* a1)
     LODWORD(v3) = 0;
   }
 LABEL_16:
-  v9 = (*(__int64 (**)(__int64*))(*a1 + 144))(a1);
+  v9 = (*(__int64 (**)(_QWORD*))(*a1 + 144LL))(a1);
   if (v9 != 5 && GameData_2259540 != 0) {
-    GameRoutine_15e1b80(GameData_2259540, v3 - 1, v9, 1u, 0);
+    ProcGameUIFade_15e1b80(GameData_2259540, v3 - 1, v9, 1u, 0);
   }
-  (*(void (**)(__int64*))(*a1 + 336))(a1);
-  result = (*(__int64 (**)(__int64*))(*a1 + 312))(a1);
+  (*(void (**)(_QWORD*))(*a1 + 336LL))(a1);
+  result = (*(__int64 (**)(_QWORD*))(*a1 + 312LL))(a1);
   if (*((_BYTE*)a1 + 820) == 1) {
     result = GameRoutine_1553220(*((unsigned int*)a1 + 204));
     if (*((_BYTE*)a1 + 820) == 1) {
@@ -649,90 +662,75 @@ LABEL_59:
   return result;
 }
 
-__n128 TelopSequence_1375430(__int64* a1)
+const char* TelopSequence_1375430(__int64* a1)
 {
-
-#pragma clang fp contract(off)
-  __int64 v2;
-  __n128 result;
+  const char* result;
+  __int64 v3;
   __int64 v4;
   __int64 v5;
   __int64 v6;
   __int64 v7;
-  __int64 v8;
-  char* v9;
-  _QWORD v10[2];
-  __int64 v11[2];
+  char* v8;
+  _QWORD v9[2];
+  __int64 v10[2];
   struct {
+    const char* v11;
     const char* v12;
-    __int64 v13;
-  } v12_;
+  } v11_;
 
-  result = COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
-  v2 = (*(__int64 (**)(__int64*))(*a1 + 432))(a1),
-  result = COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
-  if (v2 != 0) {
-    LayoutAccessor_1560070((void*)(&v12_.v12), a1 + 21, v2),
-        result =
-            COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
-    if (v12_.v13 != 0) {
-      v4 = std___1___shared_weak_count_lock(v12_.v13),
-      result =
-          COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
-      v5 = (__int64)v12_.v12;
-      if (v4 != 0) {
-        v6 = (__int64)v12_.v12;
+  result = (const char*)(*(__int64 (**)(__int64*))(*a1 + 432))(a1);
+  if (result != nullptr) {
+    LayoutAccessor_1560070_alt2((void*)(&v11_.v11), a1 + 21, result);
+    result = v11_.v12;
+    if (v11_.v12 != nullptr) {
+      v3 = std___1___shared_weak_count_lock_alt1((__int64)v11_.v12);
+      v4 = (__int64)v11_.v11;
+      result = v11_.v12;
+      if (v3 != 0) {
+        v5 = (__int64)v11_.v11;
       }
       else {
-        v6 = 0;
+        v5 = 0;
       }
-      if (v12_.v13 != 0) {
-        result = std___1___shared_weak_count___release_weak_alt1();
+      if (v11_.v12 != nullptr) {
+        result = (const char*)std___1___shared_weak_count___release_weak_alt2(
+            (__int64)v11_.v12);
       }
-      if (v6 != 0) {
-        LayoutAccessor_1562cf0(v5, (__int64)"Title_System"),
-            result = COERCE_AS(__typeof__(result),
-                               PSEUDO_REGISTER(__n128, "v0", "=w"));
-        v11[0] = v6;
-        v11[1] = v4;
-        if (v4 != 0) {
-          atomic_fetch_add_explicit((atomic_ullong* volatile)(v4 + 16), 1u,
+      if (v5 != 0) {
+        LayoutAccessor_1562cf0_alt1(v4, "Title_System");
+        v10[0] = v5;
+        v10[1] = v3;
+        if (v3 != 0) {
+          atomic_fetch_add_explicit((atomic_ullong* volatile)(v3 + 16), 1u,
                                     memory_order_relaxed);
         }
-        v12_.v12 = "In_Judege01";
-        v12_.v13 = 11;
-        v10[0] = "Out";
-        v10[1] = 3;
-        v7 = GameRoutine_173f310((__int64)a1, v11, 0, (__int64)&v12_.v12,
-                                 (__int64)v10, -0x1.0000000000000p+0f),
-        result =
-            COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
-        a1[99] = v7;
-        if (v4 != 0) {
-          std___1___shared_weak_count___release_weak_alt1(),
-              result = COERCE_AS(__typeof__(result),
-                                 PSEUDO_REGISTER(__n128, "v0", "=w"));
-          v7 = a1[99];
+        v11_.v11 = "In_Judege01";
+        v11_.v12 = (_BYTE*)(((_UNKNOWN**)0x8LL) + 3);
+        v9[0] = "Out";
+        v9[1] = 3;
+        v6 = GameHr_173f310((__int64)a1, v10, 0, (__int64)&v11_.v11,
+                            (__int64)v9, -0x1.0000000000000p+0f);
+        a1[99] = v6;
+        if (v3 != 0) {
+          std___1___shared_weak_count___release_weak_alt2(v3);
+          v6 = a1[99];
         }
-        result = GameRoutine_173ff00(v7, (__int64)"TitleTxt_Judege01");
-        v8 = a1[99];
-        if ((*(_BYTE*)(v8 + 248) & 1) != 0) {
-          *(_QWORD*)(v8 + 256) = 12;
-          v9 = *(char**)(v8 + 264);
+        result = (const char*)GameHr_173ff00(v6, (__int64)"TitleTxt_Judege01");
+        v7 = a1[99];
+        if ((*(_BYTE*)(v7 + 248) & 1) != 0) {
+          *(_QWORD*)(v7 + 256) = 12;
+          v8 = *(char**)(v7 + 264);
         }
         else {
-          *(_BYTE*)(v8 + 248) = 24;
-          v9 = (char*)(v8 + 249);
+          *(_BYTE*)(v7 + 248) = 24;
+          v8 = (char*)(v7 + 249);
         }
-        strcpy(v9, "TitleTxt_Out");
+        strcpy(v8, "TitleTxt_Out");
       }
-      if (v4 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v4 + 8),
+      if (v3 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v3 + 8),
                                       0xFFFFFFFFFFFFFFFFLL) == 0) {
-        (*(void (**)(__int64, long double))(*(_QWORD*)v4 + 16LL))(
-            v4, *(long double*)&result),
-            result = COERCE_AS(__typeof__(result),
-                               PSEUDO_REGISTER(__n128, "v0", "=w"));
-        return std___1___shared_weak_count___release_weak_alt1();
+        (*(void (**)(__int64))(*(_QWORD*)v3 + 16LL))(v3);
+        return (const char*)std___1___shared_weak_count___release_weak_alt2(v3);
       }
     }
   }

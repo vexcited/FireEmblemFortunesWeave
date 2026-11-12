@@ -18,7 +18,7 @@ extern char GameData_1a9f09e;
 __int64 TextBoxEx_188ab20_alt1(__int64 result,
                                __int64 a2) __asm__("TextBoxEx_188ab20");
 __int64 TextBoxEx_188ac20(__int64 result, __int64 a2, unsigned __int16* a3);
-__int64 TextBoxEx_188aec0(__int64 result);
+__int64 TextBoxEx_188aec0_alt1(__int64 result) __asm__("TextBoxEx_188aec0");
 __int64 GameRoutine_188a3a0(_QWORD);
 __int64 GameRoutine_188a480(_QWORD, _QWORD);
 __int64 GameRoutine_576600(_QWORD, _QWORD);
@@ -52,6 +52,9 @@ char* GameRoutine_a4dbe0_alt1(__int64, _BYTE*,
 void GameRoutine_156c5d0_alt1(__int64, __int64,
                               char) __asm__("GameRoutine_156c5d0");
 void TextBoxEx_188ab20(__int64 a1, _BYTE* a2);
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void TextBoxEx_188aec0(__int64 a1);
 
 __attribute__((swiftcall)) void TextBoxEx_188a640(PSEUDO_X8 x8_, __int64 a1,
                                                   __int64 a2, __int64 a3)
@@ -422,20 +425,23 @@ __int64 TextBoxEx_188ac20(__int64 result, __int64 a2, unsigned __int16* a3)
   return result;
 }
 
-__int64 TextBoxEx_188aec0(__int64 result)
+void TextBoxEx_188aec0(__int64 a1)
 {
   __int64 v1;
+  __int64 v2;
 
-  *(_QWORD*)result = &ui_ILayoutControl_vtable;
-  if ((*(_BYTE*)(result + 48) & 1) != 0 && *(_QWORD*)(result + 64) != 0) {
-    v1 = 128;
-    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-      v1 = 56;
+  *(_QWORD*)a1 = &ui_ILayoutControl_vtable;
+  if ((*(_BYTE*)(a1 + 48) & 1) != 0) {
+    v1 = *(_QWORD*)(a1 + 64);
+    if (v1 != 0) {
+      v2 = 128;
+      if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+        v2 = 56;
+      }
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v2, v1);
     }
-    return nn_mem_StandardAllocator_Free(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v1);
   }
-  return result;
 }
 
 #pragma GCC visibility pop

@@ -12,10 +12,13 @@ extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64* GameData_212f3c0[7];
 __int64 LegionStackAttack_Unknown4(_QWORD* a1);
 __int64 LegionStackAttack_Unknown5(__int64 a1);
-__int64 LegionStackAttack_Destructor(__int64 a1);
-__int64 LegionStackAttack_DeletingDestructor(__int64 a1);
+__int64 LegionStackAttack_Destructor_alt1(__int64 a1) __asm__(
+    "LegionStackAttack_Destructor");
+__int64 LegionStackAttack_DeletingDestructor_alt1(__int64 a1) __asm__(
+    "LegionStackAttack_DeletingDestructor");
 __int64 Signal_d30dc0(_QWORD, _QWORD, _QWORD, _QWORD);
-__int64 LegionStackAttack_e35470(__int64 result);
+__int64 LegionStackAttack_e35470_alt1(__int64 result) __asm__(
+    "LegionStackAttack_e35470");
 __int64 CharacterAnimator_107a7e0(void);
 __int64 GameRoutine_e3f8b0(_QWORD);
 __int64 GameRoutine_e41bc0(_QWORD);
@@ -45,6 +48,11 @@ extern __int64* game_map_MapRandom_instance__ptr[3];
 void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 __int64 (***LegionStackAttack_Unknown2(__int64 a1))();
+_QWORD* Signal_d30dc0_alt1(__int64, const char*, __int64,
+                           int) __asm__("Signal_d30dc0");
+void LegionStackAttack_Destructor(__int64 a1);
+void LegionStackAttack_DeletingDestructor(__int64 a1);
+void LegionStackAttack_e35470(__int64* a1);
 
 __int64 (***LegionStackAttack_Unknown2(__int64 a1))()
 {
@@ -688,10 +696,10 @@ __int64 LegionStackAttack_Unknown5(__int64 a1)
   return v2 & 1;
 }
 
-__int64 LegionStackAttack_Destructor(__int64 a1)
+void LegionStackAttack_Destructor(__int64 a1)
 {
   __int64 v1;
-  __int64 result;
+  __int64 v3;
   __int64 v4;
 
   v1 = *(_QWORD*)(a1 + 224);
@@ -699,108 +707,117 @@ __int64 LegionStackAttack_Destructor(__int64 a1)
   if (v1 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v1 + 8),
                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v1 + 16LL))(v1);
-    std___1___shared_weak_count___release_weak(v1);
+    std___1___shared_weak_count___release_weak_alt1(v1);
   }
-  GameRoutine_e35470(a1 + 176);
-  GameRoutine_e35470(a1 + 136);
-  GameRoutine_e35470(a1 + 96);
-  result = GameRoutine_e35470(a1 + 56);
+  LegionStackAttack_e35470((__int64*)(a1 + 176));
+  LegionStackAttack_e35470((__int64*)(a1 + 136));
+  LegionStackAttack_e35470((__int64*)(a1 + 96));
+  LegionStackAttack_e35470((__int64*)(a1 + 56));
   *(_QWORD*)a1 = game_combat_LegionStack_vtable;
-  if ((*(_BYTE*)(a1 + 16) & 1) != 0 && *(_QWORD*)(a1 + 32) != 0) {
-    v4 = 128;
-    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-      v4 = 56;
+  if ((*(_BYTE*)(a1 + 16) & 1) != 0) {
+    v3 = *(_QWORD*)(a1 + 32);
+    if (v3 != 0) {
+      v4 = 128;
+      if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+        v4 = 56;
+      }
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v4, v3);
     }
-    return nn_mem_StandardAllocator_Free(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v4);
   }
-  return result;
 }
 
-__int64 LegionStackAttack_DeletingDestructor(__int64 a1)
+void LegionStackAttack_DeletingDestructor(__int64 a1)
 {
   __int64 v1;
   __int64 v3;
   __int64 v4;
   __int64 v5;
+  __int64 v6;
 
   v1 = *(_QWORD*)(a1 + 224);
   *(_QWORD*)a1 = game_combat_LegionStackAttack_vtable;
   if (v1 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v1 + 8),
                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v1 + 16LL))(v1);
-    std___1___shared_weak_count___release_weak(v1);
+    std___1___shared_weak_count___release_weak_alt1(v1);
   }
-  GameRoutine_e35470(a1 + 176);
-  GameRoutine_e35470(a1 + 136);
-  GameRoutine_e35470(a1 + 96);
-  GameRoutine_e35470(a1 + 56);
+  LegionStackAttack_e35470((__int64*)(a1 + 176));
+  LegionStackAttack_e35470((__int64*)(a1 + 136));
+  LegionStackAttack_e35470((__int64*)(a1 + 96));
+  LegionStackAttack_e35470((__int64*)(a1 + 56));
   *(_QWORD*)a1 = GameData_212f3c0[0] + 2;
   v3 = fw_memory_g_heap_manager_ptr;
-  if ((*(_BYTE*)(a1 + 16) & 1) != 0 && *(_QWORD*)(a1 + 32) != 0) {
-    v4 = 128;
-    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-      v4 = 56;
+  if ((*(_BYTE*)(a1 + 16) & 1) != 0) {
+    v4 = *(_QWORD*)(a1 + 32);
+    if (v4 != 0) {
+      v5 = 128;
+      if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+        v5 = 56;
+      }
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v5, v4);
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v4);
   }
-  v5 = 128;
+  v6 = 128;
   if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
-    v5 = 56;
+    v6 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v5);
+  nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v6, a1);
 }
 
-__int64 LegionStackAttack_e35470(__int64 result)
+void LegionStackAttack_e35470(__int64* a1)
 {
   __int64 v1;
   __int64 v2;
   __int64 v3;
   unsigned __int64 v5;
-  __int64 v6;
+  __int64* v6;
   bool v7;
-  unsigned __int64 v8;
-  __int64 v9;
-  unsigned __int64 v10;
+  __int64 v8;
+  const char* v9;
+  __int64 v10;
   __int64 v11;
+  __int64 v12;
 
-  v1 = *(_QWORD*)result;
-  if (*(_QWORD*)result != 0 && *(_BYTE*)(result + 12) == 1) {
+  v1 = *a1;
+  if (*a1 != 0 && *((_BYTE*)a1 + 12) == 1) {
     v2 = *(_QWORD*)(v1 + 48);
     if (v2 != 0) {
       v3 = *(_QWORD*)(v1 + 56);
       if (*(_QWORD*)(v2 + 8) != -1 && v3 != 0) {
-        v5 = *(unsigned __int8*)(result + 16);
-        v6 = result;
+        v5 = *((unsigned __int8*)a1 + 16);
+        v6 = a1;
         v7 = (v5 & 1) == 0;
         v8 = v5 >> 1;
         if (v7) {
-          v9 = result + 17;
+          v9 = (char*)a1 + 17;
         }
         else {
-          v9 = *(_QWORD*)(result + 32);
+          v9 = (const char*)a1[4];
         }
         if (v7) {
           v10 = v8;
         }
         else {
-          v10 = *(_QWORD*)(result + 24);
+          v10 = a1[3];
         }
-        Signal_d30dc0(*(_QWORD*)(v3 + 320), v9, v10,
-                      *(unsigned int*)(result + 8));
-        result = v6;
+        Signal_d30dc0_alt1(*(_QWORD*)(v3 + 320), v9, v10, *((_DWORD*)a1 + 2));
+        a1 = v6;
       }
     }
   }
-  if ((*(_BYTE*)(result + 16) & 1) != 0 && *(_QWORD*)(result + 32) != 0) {
-    v11 = 128;
-    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-      v11 = 56;
+  if ((a1[2] & 1) != 0) {
+    v11 = a1[4];
+    if (v11 != 0) {
+      v12 = 128;
+      if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+        v12 = 56;
+      }
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v12, v11);
     }
-    return nn_mem_StandardAllocator_Free(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v11);
   }
-  return result;
 }
 
 __int64 game_combat_LegionStackAttack_OnEnter_lambda2_Invoke(__int64 result,

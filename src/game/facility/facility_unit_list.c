@@ -41,16 +41,18 @@ void __attribute__((noreturn)) GameRoutine_60a310(_QWORD);
 __int64
 game_facility_FacilityUnitList_GetEnableCount_closure_Invoke(__int64 result,
                                                              _QWORD* a2);
-__int64 FacilityUnitList_145e2c0(__int64 result, __int64 a2, char a3);
+__int64
+FacilityUnitList_145e2c0_alt2(__int64 result, __int64 a2,
+                              char a3) __asm__("FacilityUnitList_145e2c0");
 __int64 FacilityUnitList_145e440(__int64 result, __int64 a2, char a3);
 __int64 FacilityUnitList_145e5c0(__int64*** a1, __int64 a2, char a3);
 __int64 FacilityUnitList_145e820(__int64*** a1, __int64 a2, char a3);
 __int64
 game_facility_FacilityUnitList_BuildClassExaminer_lambda0_Invoke(__int64 a1,
                                                                  __int64 a2);
-__int64 FacilityUnitList_1460900(__int64 result, __int64* a2,
-                                 unsigned __int64 a3, __int64* a4,
-                                 signed __int64 a5);
+__int64 FacilityUnitList_1460900_alt1(
+    __int64 result, __int64* a2, unsigned __int64 a3, __int64* a4,
+    signed __int64 a5) __asm__("FacilityUnitList_1460900");
 _QWORD* GameRoutine_145f5d0(_QWORD* result, _QWORD*);
 __int64 GameReliance_8e17a0(_QWORD*, __int64, __int64);
 __int64 GameRoutine_145d8a0(__int64*);
@@ -106,6 +108,23 @@ void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void FacilityUnitList_145d420(__int64 a1, __int64 a2);
 __int64 game_facility_FacilityUnitList_RebuildLink(__int64** a1);
+__int64
+FacilityUnitList_1460e60_alt1(__int64 result, __int64*, unsigned __int64,
+                              __int64*) __asm__("FacilityUnitList_1460e60");
+__int64
+FacilityUnitList_1461340_alt1(__int64 result, __int64*, __int64*, __int64,
+                              __int64, _QWORD*,
+                              __int64) __asm__("FacilityUnitList_1461340");
+__int64 GameRoutine_15b7370_alt1() __asm__("GameRoutine_15b7370");
+__int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
+    "std___1___shared_weak_count_lock");
+bool game_145c270(__int64, __int64);
+bool game_19f0540(_QWORD*, _QWORD*);
+void __attribute__((noreturn))
+GameRoutine_60a310_alt1() __asm__("GameRoutine_60a310");
+__int64** FacilityUnitList_145e2c0(__int64** result, __int64 a2, char a3);
+__int64 FacilityUnitList_1460900(__int64 result, __int64* a2,
+                                 unsigned __int64 a3, __int64* a4, __int64 a5);
 __int64
 
 game_facility_FacilityUnitList_GetEnableCount_closure_Invoke(__int64 result,
@@ -240,7 +259,7 @@ LABEL_22:
   v23_.v23[0] = GameData_203fbb0;
   v23_.v23[1] = a1;
   v23_.v24 = v23_.v23;
-  FacilityUnitList_145e2c0(a1, (__int64)v23_.v23, 0);
+  FacilityUnitList_145e2c0_alt2(a1, (__int64)v23_.v23, 0);
   if (v23_.v24 == v23_.v23) {
     v20 = 32;
   }
@@ -432,7 +451,7 @@ __int64 FacilityUnitList_145dfc0(__int64* a1)
   return result;
 }
 
-__int64 FacilityUnitList_145e2c0(__int64 result, __int64 a2, char a3)
+__int64** FacilityUnitList_145e2c0(__int64** result, __int64 a2, char a3)
 {
   __int64* v3;
   __int64* v4;
@@ -442,13 +461,15 @@ __int64 FacilityUnitList_145e2c0(__int64 result, __int64 a2, char a3)
   __int64 v10;
   __int64 v11;
   __int64 v12;
-  __int64 v13;
-  __int64 v14;
+  struct {
+    __int64 v13;
+    __int64 v14;
+  } v13_;
 
   if (*(_QWORD*)(a2 + 32) != 0) {
-    v3 = *(__int64**)result;
-    v4 = *(__int64**)(result + 8);
-    if (*(__int64**)result != v4) {
+    v3 = *result;
+    v4 = result[1];
+    if (*result != v4) {
       do {
         v7 = *v3;
         v8 = v3[1];
@@ -496,27 +517,29 @@ __int64 FacilityUnitList_145e2c0(__int64 result, __int64 a2, char a3)
           goto LABEL_4;
         }
         (*(void (**)(__int64))(*(_QWORD*)v8 + 16LL))(v8);
-        result = std___1___shared_weak_count___release_weak_alt1();
+        result = (__int64**)std___1___shared_weak_count___release_weak_alt3(v8);
         if (v9) {
         LABEL_20:
-          v13 = *v3;
+          v13_.v13 = *v3;
           v10 = v3[1];
-          v14 = v10;
+          v13_.v14 = v10;
           if (v10 != 0) {
             atomic_fetch_add_explicit((atomic_ullong* volatile)(v10 + 8), 1u,
                                       memory_order_relaxed);
           }
           v11 = *(_QWORD*)(a2 + 32);
           if (v11 == 0) {
-            GameRoutine_60a310(0);
+            GameRoutine_60a310_alt1();
           }
-          result = (*(__int64 (**)(__int64, __int64*))(*(_QWORD*)v11 + 48LL))(
-              v11, &v13);
-          v12 = v14;
-          if (v14 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v14 + 8),
-                                           0xFFFFFFFFFFFFFFFFLL) == 0) {
+          result = (__int64**)(*(__int64 (**)(__int64, __int64*))(
+              *(_QWORD*)v11 + 48LL))(v11, &v13_.v13);
+          v12 = v13_.v14;
+          if (v13_.v14 != 0 &&
+              atomic_fetch_add((atomic_ullong* volatile)(v13_.v14 + 8),
+                               0xFFFFFFFFFFFFFFFFLL) == 0) {
             (*(void (**)(__int64))(*(_QWORD*)v12 + 16LL))(v12);
-            result = std___1___shared_weak_count___release_weak_alt1();
+            result =
+                (__int64**)std___1___shared_weak_count___release_weak_alt3(v12);
           }
         }
       LABEL_4:
@@ -537,8 +560,10 @@ __int64 FacilityUnitList_145e440(__int64 result, __int64 a2, char a3)
   __int64 v10;
   __int64 v11;
   __int64 v12;
-  __int64 v13;
-  __int64 v14;
+  struct {
+    __int64 v13;
+    __int64 v14;
+  } v13_;
 
   if (*(_QWORD*)(a2 + 32) != 0) {
     v3 = *(__int64**)result;
@@ -591,27 +616,28 @@ __int64 FacilityUnitList_145e440(__int64 result, __int64 a2, char a3)
           goto LABEL_4;
         }
         (*(void (**)(__int64))(*(_QWORD*)v8 + 16LL))(v8);
-        result = std___1___shared_weak_count___release_weak_alt1();
+        result = std___1___shared_weak_count___release_weak_alt3(v8);
         if (v9) {
         LABEL_20:
-          v13 = *v3;
+          v13_.v13 = *v3;
           v10 = v3[1];
-          v14 = v10;
+          v13_.v14 = v10;
           if (v10 != 0) {
             atomic_fetch_add_explicit((atomic_ullong* volatile)(v10 + 8), 1u,
                                       memory_order_relaxed);
           }
           v11 = *(_QWORD*)(a2 + 32);
           if (v11 == 0) {
-            GameRoutine_60a310(0);
+            GameRoutine_60a310_alt1();
           }
           result = (*(__int64 (**)(__int64, __int64*))(*(_QWORD*)v11 + 48LL))(
-              v11, &v13);
-          v12 = v14;
-          if (v14 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v14 + 8),
-                                           0xFFFFFFFFFFFFFFFFLL) == 0) {
+              v11, &v13_.v13);
+          v12 = v13_.v14;
+          if (v13_.v14 != 0 &&
+              atomic_fetch_add((atomic_ullong* volatile)(v13_.v14 + 8),
+                               0xFFFFFFFFFFFFFFFFLL) == 0) {
             (*(void (**)(__int64))(*(_QWORD*)v12 + 16LL))(v12);
-            result = std___1___shared_weak_count___release_weak_alt1();
+            result = std___1___shared_weak_count___release_weak_alt3(v12);
           }
         }
       LABEL_4:
@@ -627,7 +653,7 @@ __int64 FacilityUnitList_145e5c0(__int64*** a1, __int64 a2, char a3)
   __int64** v3;
   __int64** v4;
   __int64* v7;
-  __int64* v8;
+  __int64 v8;
   __int64 result;
   __int64* v10;
   __int64 v11;
@@ -653,13 +679,14 @@ __int64 FacilityUnitList_145e5c0(__int64*** a1, __int64 a2, char a3)
       return a2;
     }
   }
-  v8 = v3[1];
-  if (v8 != nullptr) {
-    atomic_fetch_add_explicit((atomic_ullong* volatile)(v8 + 1), 1u,
+  v8 = (__int64)v3[1];
+  if (v8 != 0) {
+    atomic_fetch_add_explicit((atomic_ullong* volatile)(v8 + 8), 1u,
                               memory_order_relaxed);
   }
   result = v7[3];
-  if (result == 0 || (result = std___1___shared_weak_count_lock(result)) == 0) {
+  if (result == 0 ||
+      (result = std___1___shared_weak_count_lock_alt1(result)) == 0) {
     v13 = 1;
     goto LABEL_49;
   }
@@ -703,7 +730,7 @@ __int64 FacilityUnitList_145e5c0(__int64*** a1, __int64 a2, char a3)
     if (atomic_fetch_add((atomic_ullong* volatile)(v11 + 8),
                          0xFFFFFFFFFFFFFFFFLL) == 0) {
       (*(void (**)(__int64))(*(_QWORD*)v11 + 16LL))(v11);
-      std___1___shared_weak_count___release_weak_alt1();
+      std___1___shared_weak_count___release_weak_alt3(v11);
     }
   LABEL_32:
     if (v14) {
@@ -711,7 +738,7 @@ __int64 FacilityUnitList_145e5c0(__int64*** a1, __int64 a2, char a3)
     }
     result = v10[3];
     if (result != 0) {
-      result = std___1___shared_weak_count_lock(result);
+      result = std___1___shared_weak_count_lock_alt1(result);
       v15 = result;
       if (result != 0) {
         v10 = (__int64*)v10[2];
@@ -726,7 +753,7 @@ __int64 FacilityUnitList_145e5c0(__int64*** a1, __int64 a2, char a3)
           if (atomic_fetch_add((atomic_ullong* volatile)(v11 + 8),
                                0xFFFFFFFFFFFFFFFFLL) == 0) {
             (*(void (**)(__int64))(*(_QWORD*)v11 + 16LL))(v11);
-            result = std___1___shared_weak_count___release_weak_alt1();
+            result = std___1___shared_weak_count___release_weak_alt3(v11);
           }
         }
       }
@@ -757,16 +784,16 @@ LABEL_46:
                          0xFFFFFFFFFFFFFFFFLL) == 0) {
       v16 = result;
       (*(void (**)(__int64))(*(_QWORD*)v11 + 16LL))(v11);
-      std___1___shared_weak_count___release_weak_alt1();
+      std___1___shared_weak_count___release_weak_alt3(v11);
       result = v16;
     }
   }
 LABEL_49:
-  if (v8 != nullptr && atomic_fetch_add((atomic_ullong* volatile)(v8 + 1),
-                                        0xFFFFFFFFFFFFFFFFLL) == 0) {
+  if (v8 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v8 + 8),
+                                  0xFFFFFFFFFFFFFFFFLL) == 0) {
     v17 = result;
-    (*(void (**)(__int64*))(*v8 + 16))(v8);
-    std___1___shared_weak_count___release_weak_alt1();
+    (*(void (**)(__int64))(*(_QWORD*)v8 + 16LL))(v8);
+    std___1___shared_weak_count___release_weak_alt3(v8);
     result = v17;
   }
   if (v13 != 0) {
@@ -780,7 +807,7 @@ __int64 FacilityUnitList_145e820(__int64*** a1, __int64 a2, char a3)
   __int64** v3;
   __int64** v4;
   __int64* v7;
-  __int64* v8;
+  __int64 v8;
   __int64 result;
   __int64* v10;
   __int64 v11;
@@ -806,13 +833,14 @@ __int64 FacilityUnitList_145e820(__int64*** a1, __int64 a2, char a3)
       return a2;
     }
   }
-  v8 = v3[1];
-  if (v8 != nullptr) {
-    atomic_fetch_add_explicit((atomic_ullong* volatile)(v8 + 1), 1u,
+  v8 = (__int64)v3[1];
+  if (v8 != 0) {
+    atomic_fetch_add_explicit((atomic_ullong* volatile)(v8 + 8), 1u,
                               memory_order_relaxed);
   }
   result = v7[5];
-  if (result == 0 || (result = std___1___shared_weak_count_lock(result)) == 0) {
+  if (result == 0 ||
+      (result = std___1___shared_weak_count_lock_alt1(result)) == 0) {
     v13 = 1;
     goto LABEL_49;
   }
@@ -856,7 +884,7 @@ __int64 FacilityUnitList_145e820(__int64*** a1, __int64 a2, char a3)
     if (atomic_fetch_add((atomic_ullong* volatile)(v11 + 8),
                          0xFFFFFFFFFFFFFFFFLL) == 0) {
       (*(void (**)(__int64))(*(_QWORD*)v11 + 16LL))(v11);
-      std___1___shared_weak_count___release_weak_alt1();
+      std___1___shared_weak_count___release_weak_alt3(v11);
     }
   LABEL_32:
     if (v14) {
@@ -864,7 +892,7 @@ __int64 FacilityUnitList_145e820(__int64*** a1, __int64 a2, char a3)
     }
     result = v10[5];
     if (result != 0) {
-      result = std___1___shared_weak_count_lock(result);
+      result = std___1___shared_weak_count_lock_alt1(result);
       v15 = result;
       if (result != 0) {
         v10 = (__int64*)v10[4];
@@ -879,7 +907,7 @@ __int64 FacilityUnitList_145e820(__int64*** a1, __int64 a2, char a3)
           if (atomic_fetch_add((atomic_ullong* volatile)(v11 + 8),
                                0xFFFFFFFFFFFFFFFFLL) == 0) {
             (*(void (**)(__int64))(*(_QWORD*)v11 + 16LL))(v11);
-            result = std___1___shared_weak_count___release_weak_alt1();
+            result = std___1___shared_weak_count___release_weak_alt3(v11);
           }
         }
       }
@@ -910,16 +938,16 @@ LABEL_46:
                          0xFFFFFFFFFFFFFFFFLL) == 0) {
       v16 = result;
       (*(void (**)(__int64))(*(_QWORD*)v11 + 16LL))(v11);
-      std___1___shared_weak_count___release_weak_alt1();
+      std___1___shared_weak_count___release_weak_alt3(v11);
       result = v16;
     }
   }
 LABEL_49:
-  if (v8 != nullptr && atomic_fetch_add((atomic_ullong* volatile)(v8 + 1),
-                                        0xFFFFFFFFFFFFFFFFLL) == 0) {
+  if (v8 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v8 + 8),
+                                  0xFFFFFFFFFFFFFFFFLL) == 0) {
     v17 = result;
-    (*(void (**)(__int64*))(*v8 + 16))(v8);
-    std___1___shared_weak_count___release_weak_alt1();
+    (*(void (**)(__int64))(*(_QWORD*)v8 + 16LL))(v8);
+    std___1___shared_weak_count___release_weak_alt3(v8);
     result = v17;
   }
   if (v13 != 0) {
@@ -953,7 +981,7 @@ __int64 game_facility_FacilityUnitList_RebuildLink(__int64** a1)
 
   v18_.v18[0] = GameData_203fc80;
   v18_.v19 = v18_.v18;
-  FacilityUnitList_145e2c0((__int64)a1, (__int64)v18_.v18, 0);
+  FacilityUnitList_145e2c0_alt2((__int64)a1, (__int64)v18_.v18, 0);
   result = (__int64)v18_.v19;
   if (v18_.v19 == v18_.v18) {
     v3 = 32;
@@ -1457,8 +1485,7 @@ __int64 FacilityUnitList_1460260(__int64 a1, __int64 a2)
 }
 
 __int64 FacilityUnitList_1460900(__int64 result, __int64* a2,
-                                 unsigned __int64 a3, __int64* a4,
-                                 signed __int64 a5)
+                                 unsigned __int64 a3, __int64* a4, __int64 a5)
 {
   __int64* v6;
   __int64 v7;
@@ -1517,23 +1544,29 @@ __int64 FacilityUnitList_1460900(__int64 result, __int64* a2,
   __int64* v62;
   __int64 v63;
   __int64 v64;
-  __int64 v65;
-  char v66;
-  bool v67;
-  bool v68;
-  int v69;
-  char v70;
-  __int64 v71;
-  char v72;
-  bool v73;
-  bool v74;
-  int v75;
-  char v76;
+  struct {
+    __int64 v65;
+    char v66;
+    bool v67;
+    bool v68;
+    char gap11_[1];
+    int v69;
+    char v70;
+  } v65_;
+  struct {
+    __int64 v71;
+    char v72;
+    bool v73;
+    bool v74;
+    char gap35_[1];
+    int v75;
+    char v76;
+  } v71_;
 
   if (a3 >= 2) {
     v6 = (__int64*)result;
     if (a3 == 2) {
-      result = GameRoutine_145c270(*(a2 - 2), *(_QWORD*)result);
+      result = game_145c270(*(a2 - 2), *(_QWORD*)result);
       if ((result & 1) != 0) {
         v7 = *v6;
         *v6 = *(a2 - 2);
@@ -1556,7 +1589,7 @@ __int64 FacilityUnitList_1460900(__int64 result, __int64* a2,
               v18 = v16[2];
               v19 = *v16;
               v16 = v14;
-              result = GameRoutine_145c270(v18, v19);
+              result = game_145c270(v18, v19);
               if ((result & 1) != 0) {
                 v20 = *v16;
                 v21 = v17[3];
@@ -1576,7 +1609,8 @@ __int64 FacilityUnitList_1460900(__int64 result, __int64* a2,
                       atomic_fetch_add((atomic_ullong* volatile)(v26 + 8),
                                        0xFFFFFFFFFFFFFFFFLL) == 0) {
                     (*(void (**)(__int64))(*(_QWORD*)v26 + 16LL))(v26);
-                    result = std___1___shared_weak_count___release_weak_alt1();
+                    result =
+                        std___1___shared_weak_count___release_weak_alt3(v26);
                   }
                   if (v22 == 0) {
                     break;
@@ -1596,7 +1630,7 @@ __int64 FacilityUnitList_1460900(__int64 result, __int64* a2,
                   else if ((v29 & 1) == (v30 & 1)) {
                     if (game_GameModeData_instance_ != 0 &&
                         *(_DWORD*)(game_GameModeData_instance_ + 60) == 3) {
-                      if ((GameRoutine_15b7370(result) & 1) != 0) {
+                      if ((GameRoutine_15b7370_alt1() & 1) != 0) {
                         v31 = (*(_WORD*)(v20 + 48) & 0x100) != 0;
                         v32 = (v28[6] & 0x100) != 0;
                       }
@@ -1605,7 +1639,7 @@ __int64 FacilityUnitList_1460900(__int64 result, __int64* a2,
                         v32 = false;
                       }
                       v33 = *(_QWORD*)v20;
-                      v71 = v33;
+                      v71_.v71 = v33;
                       if (v33 != 0) {
                         v34 = *(_DWORD*)(v33 + 416);
                         LOBYTE(v33) = (v34 & 0x80) != 0;
@@ -1614,13 +1648,13 @@ __int64 FacilityUnitList_1460900(__int64 result, __int64* a2,
                       else {
                         v35 = false;
                       }
-                      v74 = v31;
+                      v71_.v74 = v31;
                       v36 = *v28;
-                      v72 = v33;
-                      v73 = v35;
-                      v75 = 0;
-                      v76 = 0;
-                      v65 = v36;
+                      v71_.v72 = v33;
+                      v71_.v73 = v35;
+                      v71_.v75 = 0;
+                      v71_.v76 = 0;
+                      v65_.v65 = v36;
                       if (v36 != 0) {
                         v37 = *(_DWORD*)(v36 + 416);
                         LOBYTE(v36) = (v37 & 0x80) != 0;
@@ -1629,19 +1663,20 @@ __int64 FacilityUnitList_1460900(__int64 result, __int64* a2,
                       else {
                         v38 = false;
                       }
-                      v66 = v36;
-                      v67 = v38;
-                      v68 = v32;
-                      v69 = 0;
-                      v70 = 0;
-                      result = GameRoutine_19f0540(&v71, &v65);
+                      v65_.v66 = v36;
+                      v65_.v67 = v38;
+                      v65_.v68 = v32;
+                      v65_.v69 = 0;
+                      v65_.v70 = 0;
+                      result = game_19f0540(&v71_.v71, &v65_.v65);
                       if ((result & 1) == 0) {
                       LABEL_41:
                         v27 = (__int64*)((char*)v6 + v22);
                         goto LABEL_43;
                       }
                     }
-                    else if (*(_DWORD*)(v20 + 8) >= *((_DWORD*)v28 + 2)) {
+                    else if ((signed __int32)*(_DWORD*)(v20 + 8) >=
+                             (signed __int32)*((_DWORD*)v28 + 2)) {
                       goto LABEL_41;
                     }
                   }
@@ -1659,7 +1694,7 @@ __int64 FacilityUnitList_1460900(__int64 result, __int64* a2,
                     atomic_fetch_add((atomic_ullong* volatile)(v39 + 8),
                                      0xFFFFFFFFFFFFFFFFLL) == 0) {
                   (*(void (**)(__int64))(*(_QWORD*)v39 + 16LL))(v39);
-                  result = std___1___shared_weak_count___release_weak_alt1();
+                  result = std___1___shared_weak_count___release_weak_alt3(v39);
                 }
               }
               v14 = v16 + 2;
@@ -1672,15 +1707,16 @@ __int64 FacilityUnitList_1460900(__int64 result, __int64* a2,
         v10 = a3 >> 1;
         v12 = a3 - (a3 >> 1);
         if ((__int64)a3 <= a5) {
-          FacilityUnitList_1460e60(result, result + 16 * v10, a3 >> 1, a4);
+          FacilityUnitList_1460e60_alt1(result, (__int64*)(result + 16 * v10),
+                                        a3 >> 1, a4);
           v40 = &a4[2 * v10];
-          result =
-              FacilityUnitList_1460e60(&v6[2 * v10], a2, v9 - (v9 >> 1), v40);
+          result = FacilityUnitList_1460e60_alt1((__int64)&v6[2 * v10], a2,
+                                                 v9 - (v9 >> 1), v40);
           v41 = &a4[2 * v9];
           v42 = v40;
           v43 = a4;
           while (v42 != v41) {
-            result = GameRoutine_145c270(*v42, *v43);
+            result = game_145c270(*v42, *v43);
             if ((result & 1) != 0) {
               v44 = *v42;
               v45 = v42[1];
@@ -1693,7 +1729,7 @@ __int64 FacilityUnitList_1460900(__int64 result, __int64* a2,
                   atomic_fetch_add((atomic_ullong* volatile)(v46 + 8),
                                    0xFFFFFFFFFFFFFFFFLL) == 0) {
                 (*(void (**)(__int64))(*(_QWORD*)v46 + 16LL))(v46);
-                result = std___1___shared_weak_count___release_weak_alt1();
+                result = std___1___shared_weak_count___release_weak_alt3(v46);
               }
               v42 += 2;
             }
@@ -1709,7 +1745,7 @@ __int64 FacilityUnitList_1460900(__int64 result, __int64* a2,
                   atomic_fetch_add((atomic_ullong* volatile)(v49 + 8),
                                    0xFFFFFFFFFFFFFFFFLL) == 0) {
                 (*(void (**)(__int64))(*(_QWORD*)v49 + 16LL))(v49);
-                result = std___1___shared_weak_count___release_weak_alt1();
+                result = std___1___shared_weak_count___release_weak_alt3(v49);
               }
               v43 += 2;
             }
@@ -1731,7 +1767,8 @@ __int64 FacilityUnitList_1460900(__int64 result, __int64* a2,
                       atomic_fetch_add((atomic_ullong* volatile)(v61 + 8),
                                        0xFFFFFFFFFFFFFFFFLL) == 0) {
                     (*(void (**)(__int64))(*(_QWORD*)v61 + 16LL))(v61);
-                    result = std___1___shared_weak_count___release_weak_alt1();
+                    result =
+                        std___1___shared_weak_count___release_weak_alt3(v61);
                   }
                   v56 += 2;
                 } while (v57 + 2 != v41);
@@ -1755,7 +1792,7 @@ __int64 FacilityUnitList_1460900(__int64 result, __int64* a2,
                   atomic_fetch_add((atomic_ullong* volatile)(v55 + 8),
                                    0xFFFFFFFFFFFFFFFFLL) == 0) {
                 (*(void (**)(__int64))(*(_QWORD*)v55 + 16LL))(v55);
-                result = std___1___shared_weak_count___release_weak_alt1();
+                result = std___1___shared_weak_count___release_weak_alt3(v55);
               }
               v50 += 2;
             } while (v51 + 2 != v40);
@@ -1771,16 +1808,18 @@ __int64 FacilityUnitList_1460900(__int64 result, __int64* a2,
                   atomic_fetch_add((atomic_ullong* volatile)(v63 + 8),
                                    0xFFFFFFFFFFFFFFFFLL) == 0) {
                 (*(void (**)(__int64))(*(_QWORD*)v63 + 16LL))(v63);
-                result = std___1___shared_weak_count___release_weak_alt1();
+                result = std___1___shared_weak_count___release_weak_alt3(v63);
               }
               --v9;
             } while (v9 != 0);
           }
         }
         else {
-          FacilityUnitList_1460900(result, result + 16 * v10, a3 >> 1, a4, a5);
-          FacilityUnitList_1460900(&v6[2 * v10], a2, v12, a4, a5);
-          return GameRoutine_1461340(v6, &v6[2 * v10], a2, v10, v12, a4, a5);
+          FacilityUnitList_1460900(result, (__int64*)(result + 16 * v10),
+                                   a3 >> 1, a4, a5);
+          FacilityUnitList_1460900((__int64)&v6[2 * v10], a2, v12, a4, a5);
+          return FacilityUnitList_1461340_alt1((__int64)v6, &v6[2 * v10], a2,
+                                               v10, v12, a4, a5);
         }
       }
     }

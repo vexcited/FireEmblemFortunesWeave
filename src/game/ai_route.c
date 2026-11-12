@@ -9,8 +9,14 @@ extern __int64 fw_memory_g_heap_manager_ptr;
 extern int GameData_22408e4;
 __int64 AIRoute_Destructor(__int64 result);
 _QWORD* AIRoute_12ad9b0(_QWORD* a1);
-__int64 AIRoute_DeletingDestructor(__int64 a1);
-__int64 AIRoute_DeletingDestructor_12ada50(_QWORD* a1);
+__int64 AIRoute_DeletingDestructor_alt1(__int64 a1) __asm__(
+    "AIRoute_DeletingDestructor");
+__int64 AIRoute_DeletingDestructor_12ada50_alt1(_QWORD* a1) __asm__(
+    "AIRoute_DeletingDestructor_12ada50");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void AIRoute_DeletingDestructor(__int64 a1);
+void AIRoute_DeletingDestructor_12ada50(_QWORD* a1);
 
 __int64 AIRoute_Destructor(__int64 result)
 {
@@ -35,7 +41,7 @@ _QWORD* AIRoute_12ad9b0(_QWORD* a1)
   return result;
 }
 
-__int64 AIRoute_DeletingDestructor(__int64 a1)
+void AIRoute_DeletingDestructor(__int64 a1)
 {
   __int64 v1;
 
@@ -48,11 +54,11 @@ __int64 AIRoute_DeletingDestructor(__int64 a1)
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
     v1 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v1);
+  nn_mem_StandardAllocator_Free_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v1, a1);
 }
 
-__int64 AIRoute_DeletingDestructor_12ada50(_QWORD* a1)
+void AIRoute_DeletingDestructor_12ada50(_QWORD* a1)
 {
   __int64 v1;
 
@@ -65,8 +71,8 @@ __int64 AIRoute_DeletingDestructor_12ada50(_QWORD* a1)
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
     v1 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v1);
+  nn_mem_StandardAllocator_Free_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v1, (__int64)(a1 - 24));
 }
 
 #pragma GCC visibility pop

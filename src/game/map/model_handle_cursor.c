@@ -6,9 +6,15 @@ __n128 nn_mem_StandardAllocator_Free(_QWORD);
 __n128 std___1___shared_weak_count___release_weak(_QWORD);
 extern __int64 (*game_map_ModelHandleCursor_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
-__n128 ModelHandleCursor_Destructor(_QWORD* a1);
+__n128 ModelHandleCursor_Destructor_alt1(_QWORD* a1) __asm__(
+    "ModelHandleCursor_Destructor");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void ModelHandleCursor_Destructor(_QWORD* a1);
 
-__n128 ModelHandleCursor_Destructor(_QWORD* a1)
+void ModelHandleCursor_Destructor(_QWORD* a1)
 {
   __int64 v1;
   __int64 v2;
@@ -16,7 +22,7 @@ __n128 ModelHandleCursor_Destructor(_QWORD* a1)
   __int64 v5;
   __int64 v6;
   __int64 v7;
-  __n128 result;
+  __int64 v8;
   __int64 v9;
   __int64 v10;
   __int64 v11;
@@ -27,6 +33,7 @@ __n128 ModelHandleCursor_Destructor(_QWORD* a1)
   __int64 v16;
   __int64 v17;
   __int64 v18;
+  __int64 v19;
 
   v1 = a1[11];
   v2 = a1[12];
@@ -40,17 +47,20 @@ __n128 ModelHandleCursor_Destructor(_QWORD* a1)
       if (v6 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v6 + 8),
                                       0xFFFFFFFFFFFFFFFFLL) == 0) {
         (*(void (**)(__int64))(*(_QWORD*)v6 + 16LL))(v6);
-        result = std___1___shared_weak_count___release_weak(v6);
+        std___1___shared_weak_count___release_weak_alt1(v6);
       }
       v2 -= 40;
-      if ((*(_BYTE*)(v7 - 40) & 1) != 0 && *(_QWORD*)(v7 - 24) != 0) {
-        if (*(_QWORD*)(*(_QWORD*)v4 + 200LL) != 0) {
-          v9 = 128;
+      if ((*(_BYTE*)(v7 - 40) & 1) != 0) {
+        v8 = *(_QWORD*)(v7 - 24);
+        if (v8 != 0) {
+          if (*(_QWORD*)(*(_QWORD*)v4 + 200LL) != 0) {
+            v9 = 128;
+          }
+          else {
+            v9 = 56;
+          }
+          nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v4 + v9, v8);
         }
-        else {
-          v9 = 56;
-        }
-        result = nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v9);
       }
     } while (v2 != v1);
     v5 = a1[11];
@@ -67,66 +77,69 @@ __n128 ModelHandleCursor_Destructor(_QWORD* a1)
         if (v11 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v11 + 8),
                                          0xFFFFFFFFFFFFFFFFLL) == 0) {
           (*(void (**)(__int64))(*(_QWORD*)v11 + 16LL))(v11);
-          result = std___1___shared_weak_count___release_weak(v11);
+          std___1___shared_weak_count___release_weak_alt1(v11);
         }
         v1 = v10 - 40;
-        if ((*(_BYTE*)(v10 - 40) & 1) != 0 && *(_QWORD*)(v10 - 24) != 0) {
-          if (*(_QWORD*)(*(_QWORD*)v4 + 200LL) != 0) {
-            v12 = 128;
+        if ((*(_BYTE*)(v10 - 40) & 1) != 0) {
+          v12 = *(_QWORD*)(v10 - 24);
+          if (v12 != 0) {
+            if (*(_QWORD*)(*(_QWORD*)v4 + 200LL) != 0) {
+              v13 = 128;
+            }
+            else {
+              v13 = 56;
+            }
+            nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v4 + v13, v12);
           }
-          else {
-            v12 = 56;
-          }
-          result = nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v12);
         }
       } while (v1 != v5);
-      v13 = a1[11];
+      v14 = a1[11];
       a1[12] = v5;
-      if (v13 == 0) {
+      v5 = v14;
+      if (v14 == 0) {
         goto LABEL_33;
       }
     }
-    v14 = 128;
+    v15 = 128;
     if (*(_QWORD*)(*(_QWORD*)v4 + 200LL) == 0) {
-      v14 = 56;
+      v15 = 56;
     }
-    result = nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v14);
+    nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v4 + v15, v5);
   }
 LABEL_33:
-  v15 = a1[10];
-  if (v15 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v15 + 8),
-                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
-    (*(void (**)(__int64))(*(_QWORD*)v15 + 16LL))(v15);
-    result = std___1___shared_weak_count___release_weak(v15);
-  }
-  v16 = a1[8];
+  v16 = a1[10];
   if (v16 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v16 + 8),
                                    0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v16 + 16LL))(v16);
-    result = std___1___shared_weak_count___release_weak(v16);
+    std___1___shared_weak_count___release_weak_alt1(v16);
   }
-  v17 = a1[6];
+  v17 = a1[8];
   if (v17 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v17 + 8),
                                    0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v17 + 16LL))(v17);
-    result = std___1___shared_weak_count___release_weak(v17);
-    v18 = a1[4];
-    if (v18 == 0) {
-      return result;
+    std___1___shared_weak_count___release_weak_alt1(v17);
+  }
+  v18 = a1[6];
+  if (v18 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v18 + 8),
+                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v18 + 16LL))(v18);
+    std___1___shared_weak_count___release_weak_alt1(v18);
+    v19 = a1[4];
+    if (v19 == 0) {
+      return;
     }
   }
   else {
-    v18 = a1[4];
-    if (v18 == 0) {
-      return result;
+    v19 = a1[4];
+    if (v19 == 0) {
+      return;
     }
   }
-  if (atomic_fetch_add((atomic_ullong* volatile)(v18 + 8),
+  if (atomic_fetch_add((atomic_ullong* volatile)(v19 + 8),
                        0xFFFFFFFFFFFFFFFFLL) == 0) {
-    (*(void (**)(__int64))(*(_QWORD*)v18 + 16LL))(v18);
-    return std___1___shared_weak_count___release_weak(v18);
+    (*(void (**)(__int64))(*(_QWORD*)v19 + 16LL))(v19);
+    std___1___shared_weak_count___release_weak_alt1(v19);
   }
-  return result;
 }
 
 #pragma GCC visibility pop

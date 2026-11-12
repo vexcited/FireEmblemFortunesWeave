@@ -71,6 +71,17 @@ __int64 std___1___shared_weak_count_lock_alt2(__int64) __asm__(
 bool game_1552980_alt1() __asm__("game_1552980");
 void snd_Fade_Fade_10c830_alt1(__int64, float) __asm__("snd_Fade_Fade_10c830");
 __int64 game_menu_anonymous_CalibrationDialog_Tick(__int64 result);
+__int64 BasicMenu_16df7a0(__int64 result);
+__int64 game_menu_BasicMenu_Unknown96_alt1(__int64 result) __asm__(
+    "game_menu_BasicMenu_Unknown96");
+__int64 game_menu_Dialog__CreateBind_game_menu_Dialog_alt2(
+    __int64,
+    const char**) __asm__("game_menu_Dialog__CreateBind_game_menu_Dialog");
+__int64 ui_LayoutAccessor_SetPaneVisible_alt1(
+    __int64 result, const char*,
+    char) __asm__("ui_LayoutAccessor_SetPaneVisible");
+unsigned __int64 GameHr_1562680_alt1(unsigned __int64 result, char*,
+                                     float) __asm__("GameHr_1562680");
 
 __int64 game_menu_anonymous_CalibrationDialog_Tick(__int64 result)
 {
@@ -98,7 +109,7 @@ __int64 game_menu_anonymous_CalibrationDialog_Tick(__int64 result)
   __int64 v20;
   __int64 v21;
   __int64 v22;
-  __int64 v23;
+  unsigned __int64 v23;
   __int64 v24;
   __int64 v25;
   struct {
@@ -106,10 +117,10 @@ __int64 game_menu_anonymous_CalibrationDialog_Tick(__int64 result)
     _QWORD* v27;
   } v26_;
   struct {
-    __int64 v28;
+    unsigned __int64 v28;
     __int64 v29;
     char gap64_[16];
-    __int64* v30;
+    unsigned __int64* v30;
   } v28_;
   const char* v31;
 
@@ -211,12 +222,12 @@ __int64 game_menu_anonymous_CalibrationDialog_Tick(__int64 result)
     }
   LABEL_37:
     if (GameData_2258178 == 0) {
-      return GameRoutine_16df7a0(v3);
+      return BasicMenu_16df7a0(v3);
     }
     v17 = *(float*)(GameData_2258178 + 536);
     if (v17 <= 0x0.0p+0f || (float)(*(float*)(GameData_2258178 + 548) / v17) <
                                 0x1.0000000000000p+0f) {
-      return GameRoutine_16df7a0(v3);
+      return BasicMenu_16df7a0(v3);
     }
     if (fabsf(*(float*)(GameData_2258178 + 552)) > 0x1.6800000000000p+6f) {
       *(_BYTE*)(v3 + 1300) = 1;
@@ -236,8 +247,7 @@ __int64 game_menu_anonymous_CalibrationDialog_Tick(__int64 result)
       }
       v31 = "MID_MouseCalibration_Failure";
       v26_.v26[0] = GameData_20d14a0;
-      v20 = game_menu_Dialog__CreateBind_game_menu_Dialog_alt1(v19,
-                                                               (__int64)&v31);
+      v20 = game_menu_Dialog__CreateBind_game_menu_Dialog_alt2(v19, &v31);
       if (v20 != 0) {
         v21 = v20;
         if (v26_.v27 != nullptr) {
@@ -246,8 +256,8 @@ __int64 game_menu_anonymous_CalibrationDialog_Tick(__int64 result)
             (*(void (**)(__int64))(*v26_.v27 + 24LL))((__int64)v26_.v27);
           }
           else {
-            v28_.v30 = (__int64*)(*(__int64 (**)(__int64))(*v26_.v27 + 16LL))(
-                (__int64)v26_.v27);
+            v28_.v30 = (unsigned __int64*)(*(__int64 (**)(__int64))(
+                *v26_.v27 + 16LL))((__int64)v26_.v27);
           }
         }
         else {
@@ -284,7 +294,7 @@ __int64 game_menu_anonymous_CalibrationDialog_Tick(__int64 result)
                         (__int64)&v28_.v28, 0, 0x10001u, 0, 0x0.0p+0f,
                         0x1.0000000000000p+0f);
     snd_Fade_Destroy_Fade_alt1(&v28_.v28);
-    GameHr_1562680(v3 + 848, "Success", 0x1.0000000000000p+0f);
+    GameHr_1562680_alt1(v3 + 848, "Success", 0x1.0000000000000p+0f);
     LayoutAccessor_1560070_alt1((void*)(&v28_.v28), (__int64*)(v3 + 848),
                                 "L_NextCursor");
     result = v28_.v29;
@@ -296,7 +306,7 @@ __int64 game_menu_anonymous_CalibrationDialog_Tick(__int64 result)
         result = std___1___shared_weak_count___release_weak_alt2(v28_.v29);
       }
       if (v22 != 0 && v23 != 0) {
-        result = GameHr_1562680(v23, "Out", 0x1.0000000000000p+0f);
+        result = GameHr_1562680_alt1(v23, "Out", 0x1.0000000000000p+0f);
         goto LABEL_57;
       }
       if (v22 != 0) {
@@ -330,9 +340,9 @@ __int64 CalibrationDialog_Unknown96(__int64 a1)
   __int64 v8;
   __int64 v9;
 
-  game_menu_BasicMenu_Unknown96();
+  game_menu_BasicMenu_Unknown96_alt1(a1);
   *(_BYTE*)(a1 + 1300) = 0;
-  result = ui_LayoutAccessor_SetPaneVisible(a1 + 848, "L_NextCursor", 0);
+  result = ui_LayoutAccessor_SetPaneVisible_alt1(a1 + 848, "L_NextCursor", 0);
   if (*(_QWORD*)(a1 + 1520) == 0) {
     goto LABEL_18;
   }
@@ -340,7 +350,7 @@ __int64 CalibrationDialog_Unknown96(__int64 a1)
   if (result == 0) {
     goto LABEL_18;
   }
-  result = std___1___shared_weak_count_lock();
+  result = std___1___shared_weak_count_lock_alt2(result);
   if (result == 0) {
     goto LABEL_11;
   }
@@ -370,7 +380,7 @@ __int64 CalibrationDialog_Unknown96(__int64 a1)
   else {
     v8 = result;
     (*(void (**)(__int64))(*(_QWORD*)result + 16LL))(result);
-    result = std___1___shared_weak_count___release_weak(v8);
+    result = std___1___shared_weak_count___release_weak_alt2(v8);
     if (v6) {
       goto LABEL_11;
     }
@@ -382,7 +392,6 @@ __int64 CalibrationDialog_Unknown96(__int64 a1)
       *(_DWORD*)(v9 + 32) = 0;
     }
   }
-
 LABEL_18:
   *(_DWORD*)(a1 + 1492) = 0;
   return result;

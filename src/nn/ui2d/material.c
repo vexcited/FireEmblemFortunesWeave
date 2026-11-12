@@ -40,6 +40,11 @@ _QWORD* GameRoutine_58a150_alt1(_QWORD* result, __int64, float32x4_t*, float*,
                                 unsigned int) __asm__("GameRoutine_58a150");
 __int64 memset_alt1(__int64, int, unsigned __int64) __asm__("memset");
 __int64 Material_5892e0(__int64 result, __int64 a2, float32x4_t* a3, float* a4);
+__int64* nn_ui2d_TextureInfo_GetRuntimeTypeInfoStatic_alt1() __asm__(
+    "nn_ui2d_TextureInfo_GetRuntimeTypeInfoStatic");
+__int64 LayoutEx_5791a0(__int64);
+int __cxa_guard_acquire_alt1(__int64) __asm__("__cxa_guard_acquire");
+void __cxa_guard_release_alt1(__int64) __asm__("__cxa_guard_release");
 
 bool Material_586ee0(__int64 a1, __int64 a2, __int64 a3)
 {
@@ -198,9 +203,6 @@ __int64 Material_587f80(__int64 result, __int64 a2)
   __int64 v12;
   __int64 v13;
   __int64* v14;
-  __int64 v16;
-  __int64 v17;
-  __int64 v18;
 
   if ((*(_BYTE*)(result + 16) & 3) == 0) {
     return result;
@@ -222,9 +224,10 @@ __int64 Material_587f80(__int64 result, __int64 a2)
     if ((atomic_load_explicit((atomic_uchar* volatile)&GameData_21a3998,
                               memory_order_acquire) &
          1) == 0 &&
-        (unsigned int)__cxa_guard_acquire(&GameData_21a3998) != 0) {
-      GameData_21a3990 = nn_ui2d_TextureInfo_GetRuntimeTypeInfoStatic();
-      __cxa_guard_release(&GameData_21a3998, v16);
+        __cxa_guard_acquire_alt1((__int64)&GameData_21a3998) != 0) {
+      GameData_21a3990 =
+          (__int64)nn_ui2d_TextureInfo_GetRuntimeTypeInfoStatic_alt1();
+      __cxa_guard_release_alt1((__int64)&GameData_21a3998);
     }
     if (v5 == 0) {
       goto LABEL_16;
@@ -257,9 +260,10 @@ __int64 Material_587f80(__int64 result, __int64 a2)
           if ((atomic_load_explicit((atomic_uchar* volatile)&GameData_21a3998,
                                     memory_order_acquire) &
                1) == 0 &&
-              (unsigned int)__cxa_guard_acquire(&GameData_21a3998) != 0) {
-            GameData_21a3990 = nn_ui2d_TextureInfo_GetRuntimeTypeInfoStatic();
-            __cxa_guard_release(&GameData_21a3998, v17);
+              __cxa_guard_acquire_alt1((__int64)&GameData_21a3998) != 0) {
+            GameData_21a3990 =
+                (__int64)nn_ui2d_TextureInfo_GetRuntimeTypeInfoStatic_alt1();
+            __cxa_guard_release_alt1((__int64)&GameData_21a3998);
           }
           if (v9 == 0) {
             goto LABEL_31;
@@ -293,11 +297,11 @@ __int64 Material_587f80(__int64 result, __int64 a2)
                            (atomic_uchar* volatile)&GameData_21a3998,
                            memory_order_acquire) &
                        1) == 0 &&
-                      (unsigned int)__cxa_guard_acquire(&GameData_21a3998) !=
+                      __cxa_guard_acquire_alt1((__int64)&GameData_21a3998) !=
                           0) {
-                    GameData_21a3990 =
-                        nn_ui2d_TextureInfo_GetRuntimeTypeInfoStatic();
-                    __cxa_guard_release(&GameData_21a3998, v18);
+                    GameData_21a3990 = (__int64)
+                        nn_ui2d_TextureInfo_GetRuntimeTypeInfoStatic_alt1();
+                    __cxa_guard_release_alt1((__int64)&GameData_21a3998);
                   }
                   if (v13 == 0) {
                     goto LABEL_47;
@@ -314,7 +318,7 @@ __int64 Material_587f80(__int64 result, __int64 a2)
                 }
                 (*(void (**)(__int64, __int64))(*(_QWORD*)v13 + 24LL))(v13, a2);
                 (*(void (**)(__int64))(*(_QWORD*)v13 + 8LL))(v13);
-                GameRoutine_5791a0(v13);
+                LayoutEx_5791a0(v13);
                 goto LABEL_47;
               }
               return result;
@@ -323,14 +327,14 @@ __int64 Material_587f80(__int64 result, __int64 a2)
         }
         (*(void (**)(__int64, __int64))(*(_QWORD*)v9 + 24LL))(v9, a2);
         (*(void (**)(__int64))(*(_QWORD*)v9 + 8LL))(v9);
-        GameRoutine_5791a0(v9);
+        LayoutEx_5791a0(v9);
         goto LABEL_31;
       }
     }
   }
   (*(void (**)(__int64, __int64))(*(_QWORD*)v5 + 24LL))(v5, a2);
   (*(void (**)(__int64))(*(_QWORD*)v5 + 8LL))(v5);
-  GameRoutine_5791a0(v5);
+  LayoutEx_5791a0(v5);
   goto LABEL_16;
 }
 

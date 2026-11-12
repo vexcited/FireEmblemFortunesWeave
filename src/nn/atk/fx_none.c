@@ -3,9 +3,13 @@
 #pragma GCC visibility push(hidden)
 
 __int64 nn_diag_detail_AbortImpl_1a0a590(_QWORD);
-__int64 FxNone_Unknown5(__int64 result, __int64 a2, int* a3);
+__int64 FxNone_Unknown5_alt1(__int64 result, __int64 a2,
+                             int* a3) __asm__("FxNone_Unknown5");
+void nn_diag_detail_AbortImpl_1a0a590_alt1() __asm__(
+    "nn_diag_detail_AbortImpl_1a0a590");
+void FxNone_Unknown5(__int64 a1, __int64 a2, int* a3);
 
-__int64 FxNone_Unknown5(__int64 result, __int64 a2, int* a3)
+void FxNone_Unknown5(__int64 a1, __int64 a2, int* a3)
 {
   __int64 v3;
   int v4;
@@ -36,13 +40,10 @@ __int64 FxNone_Unknown5(__int64 result, __int64 a2, int* a3)
   v6 = v4 * *a3;
   v7 = v5 / v6;
   if (v5 % v6 != 0) {
-    result = nn_diag_detail_AbortImpl_1a0a590(result);
-  LABEL_41:
-    nn_diag_detail_AbortImpl_1a0a590(result);
-    __udf(0);
+    nn_diag_detail_AbortImpl_1a0a590_alt1();
   }
   if (v7 > a3[2]) {
-    goto LABEL_41;
+    nn_diag_detail_AbortImpl_1a0a590_alt1();
   }
   if (v7 >= 1 && v4 >= 1) {
     if (v7 == 1) {
@@ -128,7 +129,6 @@ __int64 FxNone_Unknown5(__int64 result, __int64 a2, int* a3)
       } while (v22 < v4);
     }
   }
-  return result;
 }
 
 #pragma GCC visibility pop

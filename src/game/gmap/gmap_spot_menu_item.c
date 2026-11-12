@@ -9,7 +9,13 @@ extern __int64 (*game_gmap_GmapSpotMenuItem_vtable[])();
 extern __int64* GameData_212d630[11];
 extern __int64* GameData_2131b00[8];
 extern __int64 fw_memory_g_heap_manager_ptr;
-__int64 GmapSpotMenuItem_DeletingDestructor(__int64 a1);
+__int64 GmapSpotMenuItem_DeletingDestructor_alt1(__int64 a1) __asm__(
+    "GmapSpotMenuItem_DeletingDestructor");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void GmapSpotMenuItem_DeletingDestructor(__int64 a1);
 
 bool GmapSpotMenuItem_IsActive(__int64 a1)
 {
@@ -19,7 +25,7 @@ bool GmapSpotMenuItem_IsActive(__int64 a1)
   return v1 != 0 && *(_BYTE*)(v1 + 176) != 1;
 }
 
-__int64 GmapSpotMenuItem_DeletingDestructor(__int64 a1)
+void GmapSpotMenuItem_DeletingDestructor(__int64 a1)
 {
   __int64 v2;
   __int64 v3;
@@ -33,6 +39,7 @@ __int64 GmapSpotMenuItem_DeletingDestructor(__int64 a1)
   __int64 v11;
   __int64 v12;
   __int64 v13;
+  __int64 v14;
 
   *(_QWORD*)a1 = game_gmap_GmapSpotMenuItem_vtable;
   v2 = *(_QWORD*)(a1 + 136);
@@ -48,7 +55,7 @@ __int64 GmapSpotMenuItem_DeletingDestructor(__int64 a1)
     if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
       v9 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v9);
+    nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v9, v2);
     goto LABEL_14;
   }
   do {
@@ -69,31 +76,35 @@ __int64 GmapSpotMenuItem_DeletingDestructor(__int64 a1)
   } while (v7 != v2);
   v8 = *(_QWORD*)(a1 + 136);
   *(_QWORD*)(a1 + 144) = v2;
+  v2 = v8;
   if (v8 != 0) {
     goto LABEL_11;
   }
 LABEL_14:
   v10 = *(_QWORD*)(a1 + 120);
   if (v10 != 0) {
-    std___1___shared_weak_count___release_weak(v10);
+    std___1___shared_weak_count___release_weak_alt1(v10);
   }
   v11 = *(_QWORD*)(a1 + 56);
   *(_QWORD*)a1 = GameData_212d630[0] + 2;
   if (v11 != 0) {
-    std___1___shared_weak_count___release_weak(v11);
+    std___1___shared_weak_count___release_weak_alt1(v11);
   }
-  if ((*(_BYTE*)(a1 + 16) & 1) != 0 && *(_QWORD*)(a1 + 32) != 0) {
-    v12 = 128;
-    if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
-      v12 = 56;
+  if ((*(_BYTE*)(a1 + 16) & 1) != 0) {
+    v12 = *(_QWORD*)(a1 + 32);
+    if (v12 != 0) {
+      v13 = 128;
+      if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
+        v13 = 56;
+      }
+      nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v13, v12);
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v12);
   }
-  v13 = 128;
+  v14 = 128;
   if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
-    v13 = 56;
+    v14 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v13);
+  nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v14, a1);
 }
 
 #pragma GCC visibility pop

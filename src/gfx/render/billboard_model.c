@@ -14,7 +14,8 @@ extern __int64 (*gfx_render_Object_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64 game_g_frame_clock;
 extern __int64* game_g_frame_clock_ptr[3];
-__int64 BillboardModel_Destructor(__int64 a1);
+__int64
+BillboardModel_Destructor_alt1(__int64 a1) __asm__("BillboardModel_Destructor");
 __int64 BillboardModel_Unknown11(__int64 a1, __int64* a2);
 __int64 BillboardModel_Unknown12(__int64 a1, _QWORD* a2, __int64 a3, __int64 a4,
                                  unsigned int a5, unsigned int a6);
@@ -59,6 +60,10 @@ __int64 fw_memory_HeapManager_Allocate_alt1(
 __int64 game_615760(__int64, __int64);
 __int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
     "std___1___shared_weak_count___release_weak");
+__int64 GameRoutine_6040f0_alt1(__int64) __asm__("GameRoutine_6040f0");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void BillboardModel_Destructor(__int64 a1);
 
 __int64 gfx_render_BillboardModel_BillboardModel(__int64 a1, __int64 a2,
                                                  unsigned __int64 a3,
@@ -209,24 +214,25 @@ __int64 gfx_render_BillboardModel_BillboardModel(__int64 a1, __int64 a2,
   return (*(__int64 (**)(__int64*))(*v32_.v33 + v31))(v32_.v33);
 }
 
-__int64 BillboardModel_Destructor(__int64 a1)
+void BillboardModel_Destructor(__int64 a1)
 {
   __int64 v2;
   __int64 v3;
   __int64 v4;
-  __int64 result;
+  __int64 v5;
   __int64 v6;
   __int64 v7;
   __int64 v8;
+  __int64 v9;
 
   *(_QWORD*)a1 = gfx_render_BillboardModel_vtable;
-  GameRoutine_6040f0(a1 + 248, game_g_frame_clock + 568);
+  GameRoutine_6040f0_alt1(a1 + 248);
   GameRoutine_604050(a1 + 248);
   v2 = *(_QWORD*)(a1 + 192);
   if (v2 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v2 + 8),
                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v2 + 16LL))(v2);
-    std___1___shared_weak_count___release_weak(v2);
+    std___1___shared_weak_count___release_weak_alt1(v2);
   }
   v3 = *(_QWORD*)(a1 + 136);
   *(_QWORD*)(a1 + 136) = 0;
@@ -238,9 +244,9 @@ __int64 BillboardModel_Destructor(__int64 a1)
   if (v4 != 0) {
     (*(void (**)(__int64))(*(_QWORD*)v4 + 8LL))(v4);
   }
-  result = *(_QWORD*)(a1 + 120);
-  if (result != 0) {
-    result = std___1___shared_weak_count___release_weak(result);
+  v5 = *(_QWORD*)(a1 + 120);
+  if (v5 != 0) {
+    std___1___shared_weak_count___release_weak_alt1(v5);
   }
   v6 = *(_QWORD*)(a1 + 80);
   *(_QWORD*)a1 = gfx_render_Object_vtable;
@@ -250,18 +256,20 @@ __int64 BillboardModel_Destructor(__int64 a1)
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v7 = 56;
     }
-    result = nn_mem_StandardAllocator_Free(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v7);
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v7, v6);
   }
-  if ((*(_BYTE*)(a1 + 8) & 1) != 0 && *(_QWORD*)(a1 + 24) != 0) {
-    v8 = 128;
-    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-      v8 = 56;
+  if ((*(_BYTE*)(a1 + 8) & 1) != 0) {
+    v8 = *(_QWORD*)(a1 + 24);
+    if (v8 != 0) {
+      v9 = 128;
+      if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+        v9 = 56;
+      }
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v9, v8);
     }
-    return nn_mem_StandardAllocator_Free(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v8);
   }
-  return result;
 }
 
 __int64 BillboardModel_Unknown2(__int64 a1)

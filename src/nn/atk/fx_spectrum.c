@@ -9,7 +9,13 @@ __int64 nn_os_LockMutex(_QWORD);
 __n128 nn_os_UnlockMutex(_QWORD);
 extern __int64 GameData_2134798[8];
 __int64 FxSpectrum_Destructor_16f7c0(_QWORD* a1);
-__n128 FxSpectrum_Unknown5(__int64 a1, __int64 a2, int* a3);
+__n128 FxSpectrum_Unknown5_alt1(__int64 a1, __int64 a2,
+                                int* a3) __asm__("FxSpectrum_Unknown5");
+__int64 nn_os_LockMutex_alt1(__int64) __asm__("nn_os_LockMutex");
+__int64 nn_os_UnlockMutex_alt1(__int64) __asm__("nn_os_UnlockMutex");
+void nn_diag_detail_AbortImpl_1a0a590_alt1() __asm__(
+    "nn_diag_detail_AbortImpl_1a0a590");
+__int64 FxSpectrum_Unknown5(__int64 a1, __int64 a2, int* a3);
 
 __int64 FxSpectrum_Destructor_16f7c0(_QWORD* a1)
 {
@@ -18,12 +24,13 @@ __int64 FxSpectrum_Destructor_16f7c0(_QWORD* a1)
   return GameRoutine_2af380(a1);
 }
 
-__n128 FxSpectrum_Unknown5(__int64 a1, __int64 a2, int* a3)
+__int64 FxSpectrum_Unknown5(__int64 a1, __int64 a2, int* a3)
 {
+
+#pragma clang fp contract(off)
   int v3;
   int v4;
   int v5;
-  __int64 v7;
   __int64 v8;
   int v10;
   __int64 v11;
@@ -90,23 +97,19 @@ __n128 FxSpectrum_Unknown5(__int64 a1, __int64 a2, int* a3)
   v4 = a3[3] * *a3;
   v5 = v3 / v4;
   if (v3 % v4 != 0) {
-    a1 = nn_diag_detail_AbortImpl_1a0a590(a1);
-  LABEL_76:
-    nn_diag_detail_AbortImpl_1a0a590(a1);
-    __udf(0);
+    nn_diag_detail_AbortImpl_1a0a590_alt1();
   }
   if (v5 > a3[2]) {
-    goto LABEL_76;
+    nn_diag_detail_AbortImpl_1a0a590_alt1();
   }
-  v7 = a1;
   v8 = a1 + 0x8000;
-  nn_os_LockMutex(a1 + 32888);
+  nn_os_LockMutex_alt1(a1 + 32888);
   if ((a3[3] | 2) != 6) {
     if (v5 < 1) {
-      return nn_os_UnlockMutex(v7 + 32888);
+      return nn_os_UnlockMutex_alt1(a1 + 32888);
     }
     v40 = *(_DWORD*)(v8 + 104);
-    v41 = v7 + 104;
+    v41 = a1 + 104;
     v42 = 0;
     while (1) {
       v43 = *a3;
@@ -201,7 +204,7 @@ __n128 FxSpectrum_Unknown5(__int64 a1, __int64 a2, int* a3)
             }
           }
         }
-        return nn_os_UnlockMutex(v7 + 32888);
+        return nn_os_UnlockMutex_alt1(a1 + 32888);
       }
       if ((int)v43 >= 1) {
         break;
@@ -242,7 +245,7 @@ __n128 FxSpectrum_Unknown5(__int64 a1, __int64 a2, int* a3)
   }
   if (v5 >= 1) {
     v10 = *(_DWORD*)(v8 + 104);
-    v11 = v7 + 104;
+    v11 = a1 + 104;
     v12 = 0;
     while (1) {
       v13 = *a3;
@@ -272,9 +275,12 @@ __n128 FxSpectrum_Unknown5(__int64 a1, __int64 a2, int* a3)
         while (2) {
           *(_DWORD*)(v11 + 4 * (v18 + *(int*)(v8 + 104))) =
               *(_DWORD*)(v27 + 4 * v18) + *(_DWORD*)(v25 + 4 * v18) +
-              (int)(float)((float)*(int*)(v29 + 4 * v18) * 0.70795f) +
-              2 * (int)(float)((float)*(int*)(v28 + 4 * v18) * 0.70795f) +
-              (int)(float)((float)*(int*)(v26 + 4 * v18) * 0.70795f);
+              (int)(float)((float)*(int*)(v29 + 4 * v18) *
+                           0x1.6a77de0000000p-1f) +
+              2 * (int)(float)((float)*(int*)(v28 + 4 * v18) *
+                               0x1.6a77de0000000p-1f) +
+              (int)(float)((float)*(int*)(v26 + 4 * v18) *
+                           0x1.6a77de0000000p-1f);
           v30 = v18 + *(int*)(v8 + 104);
           if (*(int*)(v11 + 4 * v30) >= 0x8000) {
             *(_DWORD*)(v11 + 4 * v30) = 0x7FFF;
@@ -308,8 +314,9 @@ __n128 FxSpectrum_Unknown5(__int64 a1, __int64 a2, int* a3)
       do {
         *(_DWORD*)(v11 + 4 * (v31 + *(int*)(v8 + 104))) =
             *(_DWORD*)(v37 + 4 * v31) + *(_DWORD*)(v35 + 4 * v31) +
-            (int)(float)((float)*(int*)(v38 + 4 * v31) * 0.70795f) +
-            (int)(float)((float)*(int*)(v36 + 4 * v31) * 0.70795f);
+            (int)(float)((float)*(int*)(v38 + 4 * v31) *
+                         0x1.6a77de0000000p-1f) +
+            (int)(float)((float)*(int*)(v36 + 4 * v31) * 0x1.6a77de0000000p-1f);
         v39 = v31 + *(int*)(v8 + 104);
         if (*(int*)(v11 + 4 * v39) >= 0x8000) {
           *(_DWORD*)(v11 + 4 * v39) = 0x7FFF;
@@ -335,7 +342,7 @@ __n128 FxSpectrum_Unknown5(__int64 a1, __int64 a2, int* a3)
       }
     }
   }
-  return nn_os_UnlockMutex(v7 + 32888);
+  return nn_os_UnlockMutex_alt1(a1 + 32888);
 }
 
 #pragma GCC visibility pop

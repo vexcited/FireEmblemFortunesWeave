@@ -35,6 +35,16 @@ extern __int64* GameData_212c838;
 __int64 Shape_DeletingDestructor(_QWORD* a1);
 __attribute__((swiftcall)) void Shape_f63ef0(PSEUDO_X8 x8_, __int128* a1,
                                              __int64 a2, int a3, float a5);
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
+void __attribute__((noreturn))
+GameRoutine_60a210_alt1() __asm__("GameRoutine_60a210");
+void __attribute__((noreturn))
+GameRoutine_9baea0_alt1() __asm__("GameRoutine_9baea0");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 __int64 Shape_DeletingDestructor(_QWORD* a1)
 {
@@ -209,7 +219,7 @@ void Shape_f64270(__int64* a1, _QWORD* a2)
   __int64 v6;
   _QWORD* v7;
   __int64 v8;
-  __int64 v9;
+  signed __int64 v9;
   __int64 v10;
   unsigned __int64 v11;
   __int64 v12;
@@ -219,18 +229,18 @@ void Shape_f64270(__int64* a1, _QWORD* a2)
   __int64 v16;
   _QWORD* v17;
   unsigned __int64 v18;
-  _QWORD* v19;
+  __int64 v19;
   __int64 v20;
 
   v2 = (_QWORD*)a1[1];
   v3 = a1[2];
   if ((unsigned __int64)v2 >= v3) {
     v8 = *a1;
-    v9 = (__int64)v2 - *a1;
+    v9 = (signed __int64)v2 - *a1;
     v10 = v9 >> 4;
     v11 = (v9 >> 4) + 1;
     if (v11 >> 60 != 0) {
-      GameRoutine_9baea0();
+      GameRoutine_9baea0_alt1();
     }
     v12 = v3 - v8;
     if (v12 >> 3 > v11) {
@@ -243,11 +253,11 @@ void Shape_f64270(__int64* a1, _QWORD* a2)
       v13 = v11;
     }
     if (v13 >> 60 != 0) {
-      GameRoutine_60a210(a1);
+      GameRoutine_60a210_alt1();
     }
     v14 = fw_memory_g_heap_manager_ptr;
-    v15 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
-                                         16 * v13, 16, 0);
+    v15 = fw_memory_HeapManager_Allocate_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr, 16 * v13, 16, 0);
     v16 = a2[1];
     v17 = (_QWORD*)(v15 + v9);
     v18 = v15 + 16 * v13;
@@ -260,10 +270,10 @@ void Shape_f64270(__int64* a1, _QWORD* a2)
       v9 = a1[1] - *a1;
       v10 = v9 >> 4;
     }
-    v19 = &v17[-2 * v10];
+    v19 = (__int64)&v17[-2 * v10];
     v7 = v17 + 2;
-    memcpy(v19, v8, v9);
-    *a1 = (__int64)v19;
+    memcpy_alt1(v19, v8, v9);
+    *a1 = v19;
     a1[1] = (__int64)v7;
     a1[2] = v18;
     if (v8 != 0) {
@@ -271,7 +281,7 @@ void Shape_f64270(__int64* a1, _QWORD* a2)
       if (*(_QWORD*)(*(_QWORD*)v14 + 200LL) == 0) {
         v20 = 56;
       }
-      nn_mem_StandardAllocator_Free(*(_QWORD*)v14 + v20);
+      nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v14 + v20, v8);
     }
   }
   else {

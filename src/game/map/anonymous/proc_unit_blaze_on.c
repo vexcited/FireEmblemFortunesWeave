@@ -74,6 +74,18 @@ extern __int64 game_g_game_setting_ptr;
 const char* ProcUnitBlazeOn_Unknown18(__int64 a1);
 void ProcUnitBlazeOn_7710d0(__int64 a1);
 void game_map_anonymous_ProcUnitBlazeOn_TryCombat(__int64 a1);
+_QWORD* GameHr_1090da0(__int64);
+__int64
+CombatHUDWindow_183e450_alt1(__int64 result) __asm__("CombatHUDWindow_183e450");
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 game_10ea6e0(__int64, __int64);
+__int64 game_combat_CombatSequenceImpl_CombatSequenceImpl(__int64, __int64,
+                                                          __int64);
+__int64 memset_alt1(__int64, int, unsigned __int64) __asm__("memset");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
 
 __int64 ProcUnitBlazeOn_Destructor_770db0(__int64 a1)
 {
@@ -495,30 +507,29 @@ game_map_anonymous_ProcUnitBlazeOn_TryCombat_closure0_Invoke(__int64 a1,
   __int64 v2;
   __int64 v3;
   _QWORD* v4;
-  _QWORD* v5;
+  __int64 v5;
   _QWORD* v6;
   __int64 v7;
-  __int64 v8;
-  __int64 v9;
-  __int64 v10;
-  bool v11;
-  bool v12;
-  int v13;
+  bool v8;
+  bool v9;
+  int v10;
   __int64 result;
-  _QWORD* v15;
-  _QWORD* v16;
-  _QWORD* v17;
+  __int64 v12;
+  struct {
+    __int64 v13;
+    __int64 v14;
+  } v13_;
 
   v2 = *(_QWORD*)(a1 + 8);
   v3 = *a2;
-  v4 = (_QWORD*)fw_memory_HeapManager_Allocate(
+  v4 = (_QWORD*)fw_memory_HeapManager_Allocate_alt1(
       *(_QWORD*)fw_memory_g_heap_manager_ptr, 792, 16, 0);
-  v5 = v4 + 3;
+  v5 = (__int64)(v4 + 3);
   v6 = v4;
   v4[1] = 0;
   v4[2] = 0;
   *v4 = GameData_1f96c98;
-  memset(v4 + 3, 0, 728, v7, v8, v9);
+  memset_alt1((__int64)(v4 + 3), 0, 0x2D8u);
   v6[32] = 0;
   v6[33] = 0;
   v6[44] = 0;
@@ -589,35 +600,36 @@ game_map_anonymous_ProcUnitBlazeOn_TryCombat_closure0_Invoke(__int64 a1,
   v6[96] = 0;
   v6[95] = 0;
   v6[94] = 0;
-  v16 = v5;
-  v17 = v6;
+  v13_.v13 = v5;
+  v13_.v14 = (__int64)v6;
   v6[40] = -4294967197LL;
   v6[52] = -4294967197LL;
   v6[64] = -4294967197LL;
   *(_QWORD*)((char*)v6 + 588) = 0x6300000063LL;
   v6[76] = -4294967197LL;
-  GameRoutine_10ea6e0(v5, v2 + 160);
-  GameRoutine_1090da0(v5);
-  v10 = GameData_21d1e38;
+  game_10ea6e0(v5, v2 + 160);
+  GameHr_1090da0(v5);
+  v7 = GameData_21d1e38;
   if (GameData_21d1e38 != 0) {
-    v11 = *(_QWORD*)(GameData_21d1e38 + 152) == 0;
-    *(_BYTE*)(GameData_21d1e38 + 289) = v11;
-    v12 = (*(_DWORD*)(v2 + 11436) & 0x4000) != 0;
-    if (v11) {
-      v12 = true;
+    v8 = *(_QWORD*)(GameData_21d1e38 + 152) == 0;
+    *(_BYTE*)(GameData_21d1e38 + 289) = v8;
+    v9 = (*(_DWORD*)(v2 + 11436) & 0x4000) != 0;
+    if (v8) {
+      v9 = true;
     }
-    *(_BYTE*)(v10 + 289) = v12;
-    v13 = *(_DWORD*)(v2 + 11436);
-    *(_QWORD*)(v10 + 152) = v2 + 160;
-    *(_BYTE*)(v10 + 290) = (v13 & 0x800000) != 0;
-    CombatHUDWindow_183e450(v10);
+    *(_BYTE*)(v7 + 289) = v9;
+    v10 = *(_DWORD*)(v2 + 11436);
+    *(_QWORD*)(v7 + 152) = v2 + 160;
+    *(_BYTE*)(v7 + 290) = (v10 & 0x800000) != 0;
+    CombatHUDWindow_183e450_alt1(v7);
   }
-  result = GameRoutine_10d4da0(v3, &v16, 0);
-  v15 = v17;
-  if (v17 != nullptr && atomic_fetch_add((atomic_ullong* volatile)(v17 + 1),
-                                         0xFFFFFFFFFFFFFFFFLL) == 0) {
-    (*(void (**)(_QWORD*))(*v15 + 16LL))(v15);
-    return std___1___shared_weak_count___release_weak(v15);
+  result = game_combat_CombatSequenceImpl_CombatSequenceImpl(
+      v3, (__int64)&v13_.v13, 0);
+  v12 = v13_.v14;
+  if (v13_.v14 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v13_.v14 + 8),
+                                        0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v12 + 16LL))(v12);
+    return std___1___shared_weak_count___release_weak_alt1(v12);
   }
   return result;
 }

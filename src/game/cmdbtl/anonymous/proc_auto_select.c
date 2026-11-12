@@ -7,10 +7,19 @@ __int64 nn_mem_StandardAllocator_Free(_QWORD);
 __int64 std___1___shared_weak_count___release_weak(_QWORD);
 extern __int64 (*game_cmdbtl_anonymous_ProcAutoSelect_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
-_QWORD* ProcAutoSelect_Destructor(_QWORD* a1);
-__int64 ProcAutoSelect_DeletingDestructor(_QWORD* a1);
+_QWORD*
+ProcAutoSelect_Destructor_alt1(_QWORD* a1) __asm__("ProcAutoSelect_Destructor");
+__int64 ProcAutoSelect_DeletingDestructor_alt1(_QWORD* a1) __asm__(
+    "ProcAutoSelect_DeletingDestructor");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+void GameRoutine_15e5e00_alt1(__int64) __asm__("GameRoutine_15e5e00");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void ProcAutoSelect_Destructor(_QWORD* a1);
+void ProcAutoSelect_DeletingDestructor(_QWORD* a1);
 
-_QWORD* ProcAutoSelect_Destructor(_QWORD* a1)
+void ProcAutoSelect_Destructor(_QWORD* a1)
 {
   __int64 v2;
   _QWORD* v3;
@@ -22,7 +31,7 @@ _QWORD* ProcAutoSelect_Destructor(_QWORD* a1)
   *a1 = game_cmdbtl_anonymous_ProcAutoSelect_vtable;
   v2 = a1[45];
   if (v2 != 0) {
-    std___1___shared_weak_count___release_weak(v2);
+    std___1___shared_weak_count___release_weak_alt1(v2);
   }
   v3 = (_QWORD*)a1[42];
   if (v3 == a1 + 38) {
@@ -43,18 +52,19 @@ LABEL_8:
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v6 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v6);
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v6, v5);
   }
   v7 = a1[29];
   if (v7 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v7 + 8),
                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v7 + 16LL))(v7);
-    std___1___shared_weak_count___release_weak(v7);
+    std___1___shared_weak_count___release_weak_alt1(v7);
   }
-  return GameRoutine_15e5e00((__int64)a1);
+  GameRoutine_15e5e00_alt1((__int64)a1);
 }
 
-__int64 ProcAutoSelect_DeletingDestructor(_QWORD* a1)
+void ProcAutoSelect_DeletingDestructor(_QWORD* a1)
 {
   __int64 v2;
   _QWORD* v3;
@@ -69,7 +79,7 @@ __int64 ProcAutoSelect_DeletingDestructor(_QWORD* a1)
   *a1 = game_cmdbtl_anonymous_ProcAutoSelect_vtable;
   v2 = a1[45];
   if (v2 != 0) {
-    std___1___shared_weak_count___release_weak(v2);
+    std___1___shared_weak_count___release_weak_alt1(v2);
   }
   v3 = (_QWORD*)a1[42];
   if (v3 == a1 + 38) {
@@ -92,20 +102,20 @@ LABEL_8:
     if (*(_QWORD*)(v7 + 200) == 0) {
       v8 = 56;
     }
-    nn_mem_StandardAllocator_Free(v7 + v8);
+    nn_mem_StandardAllocator_Free_alt1(v7 + v8, v5);
   }
   v9 = a1[29];
   if (v9 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v9 + 8),
                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v9 + 16LL))(v9);
-    std___1___shared_weak_count___release_weak(v9);
+    std___1___shared_weak_count___release_weak_alt1(v9);
   }
-  GameRoutine_15e5e00((__int64)a1);
+  GameRoutine_15e5e00_alt1((__int64)a1);
   v10 = 128;
   if (*(_QWORD*)(*(_QWORD*)v6 + 200LL) == 0) {
     v10 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)v6 + v10);
+  nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v6 + v10, (__int64)a1);
 }
 
 #pragma GCC visibility pop

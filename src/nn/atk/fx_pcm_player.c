@@ -12,6 +12,10 @@ extern __int64 snd_g_proxy_ptr[2];
 extern __int64* snd_g_memory_ptr[2];
 __int64 FxPCMPlayer_Destructor(_QWORD* a1);
 __int64 FxPCMPlayer_Unknown5(__int64 result, __int64 a2, int* a3);
+__int64 nn_os_LockMutex_alt1(__int64) __asm__("nn_os_LockMutex");
+__int64 nn_os_UnlockMutex_alt1(__int64) __asm__("nn_os_UnlockMutex");
+void nn_diag_detail_AbortImpl_1a0a590_alt1() __asm__(
+    "nn_diag_detail_AbortImpl_1a0a590");
 
 __int64 FxPCMPlayer_Destructor(_QWORD* a1)
 {
@@ -63,6 +67,8 @@ __int64 FxPCMPlayer_Destructor(_QWORD* a1)
 
 __int64 FxPCMPlayer_Unknown5(__int64 result, __int64 a2, int* a3)
 {
+
+#pragma clang fp contract(off)
   int v3;
   int v4;
   int v5;
@@ -145,21 +151,18 @@ __int64 FxPCMPlayer_Unknown5(__int64 result, __int64 a2, int* a3)
   v4 = a3[3] * *a3;
   v5 = v3 / v4;
   if (v3 % v4 != 0) {
-    result = nn_diag_detail_AbortImpl_1a0a590(result);
-  LABEL_127:
-    nn_diag_detail_AbortImpl_1a0a590(result);
-    __udf(0);
+    nn_diag_detail_AbortImpl_1a0a590_alt1();
   }
   if (v5 > a3[2]) {
-    goto LABEL_127;
+    nn_diag_detail_AbortImpl_1a0a590_alt1();
   }
   *(_QWORD*)(result + 192) += v5 * *a3;
   if ((*(_BYTE*)(result + 165) & 1) == 0 && *(_BYTE*)(result + 164) == 1 &&
       *(_DWORD*)(result + 152) != 0) {
     v6 = result;
-    nn_os_LockMutex(result + 200);
+    nn_os_LockMutex_alt1(result + 200);
     v9 = *(_DWORD*)(v6 + 160);
-    nn_os_UnlockMutex(v6 + 200);
+    nn_os_UnlockMutex_alt1(v6 + 200);
     v10 = *(_DWORD*)(v6 + 156);
     v11 = v6;
     if (v5 < 1) {
@@ -173,7 +176,7 @@ __int64 FxPCMPlayer_Unknown5(__int64 result, __int64 a2, int* a3)
     do {
       v14 = *a3;
       do {
-        if (v13 + 1 < *(_DWORD*)(v6 + 152)) {
+        if (v13 + 1 < (signed __int32)*(_DWORD*)(v6 + 152)) {
           ++v13;
         }
         else {
@@ -214,7 +217,8 @@ __int64 FxPCMPlayer_Unknown5(__int64 result, __int64 a2, int* a3)
                         v63 = result + 4LL * (int)v60 * (int)v61;
                         do {
                           v64 = *(float*)(v50 + 4 * v61) +
-                                (float)(*(float*)(v50 + 4 * v61) * -0.03125);
+                                (float)(*(float*)(v50 + 4 * v61) *
+                                        -0x1.0000000000000p-5f);
                           *(float*)(v50 + 4 * v61) = v64;
                           *(_DWORD*)(v63 + 4 * v62++) += (int)v64;
                           v60 = *a3;
@@ -244,7 +248,8 @@ __int64 FxPCMPlayer_Unknown5(__int64 result, __int64 a2, int* a3)
                       v67 = v65 + 4LL * (int)v49 * (int)result;
                       do {
                         v68 = *(float*)(v50 + 4 * result) +
-                              (float)(*(float*)(v50 + 4 * result) * -0.03125);
+                              (float)(*(float*)(v50 + 4 * result) *
+                                      -0x1.0000000000000p-5f);
                         *(float*)(v50 + 4 * result) = v68;
                         *(_DWORD*)(v67 + 4 * v66++) += (int)v68;
                         v49 = *a3;
@@ -270,7 +275,8 @@ __int64 FxPCMPlayer_Unknown5(__int64 result, __int64 a2, int* a3)
                   v57 = v55 + 4LL * (int)v49 * (int)v54;
                   do {
                     v58 = *(float*)(v50 + 4 * v54) +
-                          (float)(*(float*)(v50 + 4 * v54) * -0.03125);
+                          (float)(*(float*)(v50 + 4 * v54) *
+                                  -0x1.0000000000000p-5f);
                     *(float*)(v50 + 4 * v54) = v58;
                     *(_DWORD*)(v57 + 4 * v56++) += (int)v58;
                     v49 = *a3;
@@ -306,7 +312,7 @@ __int64 FxPCMPlayer_Unknown5(__int64 result, __int64 a2, int* a3)
                 *(_DWORD*)(v29 + 4 * v27++) += v30;
                 *(float*)(v11 + 168 + 4 * v25) = (float)v30;
                 v16 = *a3;
-                if (v28 + 1 < *(_DWORD*)(v11 + 152)) {
+                if (v28 + 1 < (signed __int32)*(_DWORD*)(v11 + 152)) {
                   ++v28;
                 }
                 else {
@@ -432,9 +438,9 @@ __int64 FxPCMPlayer_Unknown5(__int64 result, __int64 a2, int* a3)
     }
   LABEL_125:
     v81 = v11;
-    nn_os_LockMutex(v11 + 200);
+    nn_os_LockMutex_alt1(v11 + 200);
     *(_DWORD*)(v81 + 156) = v10;
-    return nn_os_UnlockMutex(v81 + 200);
+    return nn_os_UnlockMutex_alt1(v81 + 200);
   }
   else if (v5 >= 1) {
     v18 = a3[3];
@@ -466,7 +472,8 @@ __int64 FxPCMPlayer_Unknown5(__int64 result, __int64 a2, int* a3)
                   v36 = v34 + 4LL * (int)v32 * (int)v33;
                   do {
                     v37 = *(float*)(v20 + 4 * v33) +
-                          (float)(*(float*)(v20 + 4 * v33) * -0.03125);
+                          (float)(*(float*)(v20 + 4 * v33) *
+                                  -0x1.0000000000000p-5f);
                     *(float*)(v20 + 4 * v33) = v37;
                     *(_DWORD*)(v36 + 4 * v35++) += (int)v37;
                     v32 = *a3;
@@ -496,7 +503,8 @@ __int64 FxPCMPlayer_Unknown5(__int64 result, __int64 a2, int* a3)
                 v41 = v39 + 4LL * (int)v19 * (int)v38;
                 do {
                   v42 = *(float*)(v20 + 4 * v38) +
-                        (float)(*(float*)(v20 + 4 * v38) * -0.03125);
+                        (float)(*(float*)(v20 + 4 * v38) *
+                                -0x1.0000000000000p-5f);
                   *(float*)(v20 + 4 * v38) = v42;
                   *(_DWORD*)(v41 + 4 * v40++) += (int)v42;
                   v19 = *a3;
@@ -522,7 +530,7 @@ __int64 FxPCMPlayer_Unknown5(__int64 result, __int64 a2, int* a3)
             v46 = v44 + 4LL * (int)v19 * (int)v43;
             do {
               v47 = *(float*)(v20 + 4 * v43) +
-                    (float)(*(float*)(v20 + 4 * v43) * -0.03125);
+                    (float)(*(float*)(v20 + 4 * v43) * -0x1.0000000000000p-5f);
               *(float*)(v20 + 4 * v43) = v47;
               *(_DWORD*)(v46 + 4 * v45++) += (int)v47;
               v19 = *a3;

@@ -13,8 +13,17 @@ extern __int64 GameData_21eef18;
 extern __int64 GameData_21ef1b8;
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 ProcGameSaveIcon_Destructor(__int64 a1);
-__int64 ProcGameSaveIcon_DeletingDestructor(__int64 a1);
+__int64 ProcGameSaveIcon_DeletingDestructor_alt1(__int64 a1) __asm__(
+    "ProcGameSaveIcon_DeletingDestructor");
 __int64 ProcGameSaveIcon_Unknown2(__int64 result);
+__int64 LayoutAccessor_155e830(__int64 result, char);
+__int64 LayoutAccessor_1563030(__int64 result, __int64, char);
+__int64 game_ProcInst_Unregister_alt1(__int64 result) __asm__(
+    "game_ProcInst_Unregister");
+void GameRoutine_658c00_alt1(__int64*) __asm__("GameRoutine_658c00");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void ProcGameSaveIcon_DeletingDestructor(__int64 a1);
 
 __int64 ProcGameSaveIcon_Destructor(__int64 a1)
 {
@@ -35,7 +44,7 @@ __int64 ProcGameSaveIcon_Destructor(__int64 a1)
   return GameRoutine_658c00(a1 + 88);
 }
 
-__int64 ProcGameSaveIcon_DeletingDestructor(__int64 a1)
+void ProcGameSaveIcon_DeletingDestructor(__int64 a1)
 {
   __int64 v2;
   __int64 v3;
@@ -43,22 +52,22 @@ __int64 ProcGameSaveIcon_DeletingDestructor(__int64 a1)
   *(_QWORD*)a1 = game_anonymous_ProcGameSaveIcon_vtable;
   v2 = GameData_21ef1b8;
   if (GameData_21ef1b8 != 0) {
-    GameRoutine_155e830(GameData_21ef1b8 + 24, 0);
-    GameRoutine_1563030(v2 + 24, 0, 0);
+    LayoutAccessor_155e830(GameData_21ef1b8 + 24, 0);
+    LayoutAccessor_1563030(v2 + 24, 0, 0);
   }
   GameData_21eef18 = 0;
   *(_QWORD*)a1 = game_ProcInst_vtable;
   if ((*(_WORD*)(a1 + 136) & 0x100) != 0) {
     *(_WORD*)(a1 + 136) &= ~0x100u;
   }
-  game_ProcInst_Unregister(a1);
-  GameRoutine_658c00(a1 + 88);
+  game_ProcInst_Unregister_alt1(a1);
+  GameRoutine_658c00_alt1((__int64*)(a1 + 88));
   v3 = 128;
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
     v3 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v3);
+  nn_mem_StandardAllocator_Free_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v3, a1);
 }
 
 __int64 ProcGameSaveIcon_Unknown2(__int64 result)

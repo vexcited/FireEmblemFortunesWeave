@@ -23,10 +23,15 @@ _QWORD* game_UnitConst_BattleInternal_Commit(_QWORD* result, __int64 a2,
                                              __int64 a3);
 _QWORD* game_UnitConst_CapabilityEnhance_Commit(_QWORD* result, __int64 a2,
                                                 __int64 a3);
-_QWORD* game_UnitConst_TalentList_Commit_lambda0_Destructor(_QWORD* result);
-__int64 game_UnitConst_TalentList_Commit_lambda0_DeletingDestructor(_QWORD* a1);
+_QWORD* game_UnitConst_TalentList_Commit_lambda0_Destructor_alt1(
+    _QWORD*
+        result) __asm__("game_UnitConst_TalentList_Commit_lambda0_Destructor");
+__int64 game_UnitConst_TalentList_Commit_lambda0_DeletingDestructor_alt1(
+    _QWORD* a1) __asm__("game_UnitConst_TalentList_Commit_lambda0_"
+                        "DeletingDestructor");
 __int64 game_UnitConst_TalentList_Commit_lambda0_Clone(__int64 a1);
-__int64 game_UnitConst_TalentList_Commit_lambda0_Destroy(__int64 result);
+__int64 game_UnitConst_TalentList_Commit_lambda0_Destroy_alt1(
+    __int64 result) __asm__("game_UnitConst_TalentList_Commit_lambda0_Destroy");
 __int64 game_UnitConst_TalentList_Commit_lambda0_Invoke(__int64 a1, _DWORD* a2);
 __int64 UnitConst_8f8560(__int64 a1, __int64* a2);
 _QWORD* game_UnitConst_RageTarget_EachTarget_lambda0_Clone(__int64 a1);
@@ -53,6 +58,11 @@ __int64*
 GameRoutine_7fb7c0_alt2(__int64* result, __int64, __int64,
                         unsigned __int64) __asm__("GameRoutine_7fb7c0");
 __int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
+void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void game_UnitConst_TalentList_Commit_lambda0_Destructor(_QWORD* a1);
+void game_UnitConst_TalentList_Commit_lambda0_DeletingDestructor(_QWORD* a1);
+void game_UnitConst_TalentList_Commit_lambda0_Destroy(_QWORD* a1);
 
 __int64 UnitConst_8f7920(__int64 a1, __int64 a2)
 {
@@ -478,10 +488,9 @@ _QWORD* game_UnitConst_CapabilityEnhance_Commit(_QWORD* result, __int64 a2,
   return result;
 }
 
-_QWORD* game_UnitConst_TalentList_Commit_lambda0_Destructor(_QWORD* result)
+void game_UnitConst_TalentList_Commit_lambda0_Destructor(_QWORD* a1)
 {
   __int64 v1;
-  _QWORD* v2;
   __int64* v3;
   __int64 v4;
   __int64 v5;
@@ -492,43 +501,41 @@ _QWORD* game_UnitConst_TalentList_Commit_lambda0_Destructor(_QWORD* result)
   __int64 v10;
   __int64 v11;
 
-  v1 = result[9];
-  v2 = result;
-  *result = GameData_1fac9e0;
+  v1 = a1[9];
+  *a1 = GameData_1fac9e0;
   v3 = (__int64*)fw_memory_g_heap_manager_ptr;
   if (v1 != 0) {
     v4 = *(_QWORD*)fw_memory_g_heap_manager_ptr;
-    result[10] = v1;
+    a1[10] = v1;
     v5 = 128;
     if (*(_QWORD*)(v4 + 200) == 0) {
       v5 = 56;
     }
-    result = (_QWORD*)nn_mem_StandardAllocator_Free(v4 + v5);
+    nn_mem_StandardAllocator_Free_alt2(v4 + v5, v1);
   }
-  v6 = v2[6];
+  v6 = a1[6];
   if (v6 != 0) {
     v7 = *v3;
-    v2[7] = v6;
+    a1[7] = v6;
     v8 = 128;
     if (*(_QWORD*)(v7 + 200) == 0) {
       v8 = 56;
     }
-    result = (_QWORD*)nn_mem_StandardAllocator_Free(v7 + v8);
+    nn_mem_StandardAllocator_Free_alt2(v7 + v8, v6);
   }
-  v9 = v2[2];
+  v9 = a1[2];
   if (v9 != 0) {
     v10 = *v3;
-    v2[3] = v9;
+    a1[3] = v9;
     v11 = 128;
     if (*(_QWORD*)(v10 + 200) == 0) {
       v11 = 56;
     }
-    return (_QWORD*)nn_mem_StandardAllocator_Free(v10 + v11);
+    nn_mem_StandardAllocator_Free_alt2(v10 + v11, v9);
   }
-  return result;
 }
 
-__int64 game_UnitConst_TalentList_Commit_lambda0_DeletingDestructor(_QWORD* a1)
+void game_UnitConst_TalentList_Commit_lambda0_DeletingDestructor(_QWORD* a1)
 {
   __int64 v1;
   __int64 v3;
@@ -552,7 +559,7 @@ __int64 game_UnitConst_TalentList_Commit_lambda0_DeletingDestructor(_QWORD* a1)
     if (*(_QWORD*)(v4 + 200) == 0) {
       v5 = 56;
     }
-    nn_mem_StandardAllocator_Free(v4 + v5);
+    nn_mem_StandardAllocator_Free_alt2(v4 + v5, v1);
   }
   v6 = a1[6];
   if (v6 != 0) {
@@ -562,7 +569,7 @@ __int64 game_UnitConst_TalentList_Commit_lambda0_DeletingDestructor(_QWORD* a1)
     if (*(_QWORD*)(v7 + 200) == 0) {
       v8 = 56;
     }
-    nn_mem_StandardAllocator_Free(v7 + v8);
+    nn_mem_StandardAllocator_Free_alt2(v7 + v8, v6);
   }
   v9 = a1[2];
   if (v9 != 0) {
@@ -572,13 +579,13 @@ __int64 game_UnitConst_TalentList_Commit_lambda0_DeletingDestructor(_QWORD* a1)
     if (*(_QWORD*)(v10 + 200) == 0) {
       v11 = 56;
     }
-    nn_mem_StandardAllocator_Free(v10 + v11);
+    nn_mem_StandardAllocator_Free_alt2(v10 + v11, v9);
   }
   v12 = 128;
   if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
     v12 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v12);
+  nn_mem_StandardAllocator_Free_alt2(*(_QWORD*)v3 + v12, (__int64)a1);
 }
 
 __int64 game_UnitConst_TalentList_Commit_lambda0_Clone(__int64 a1)
@@ -591,10 +598,9 @@ __int64 game_UnitConst_TalentList_Commit_lambda0_Clone(__int64 a1)
   return v2;
 }
 
-__int64 game_UnitConst_TalentList_Commit_lambda0_Destroy(__int64 result)
+void game_UnitConst_TalentList_Commit_lambda0_Destroy(_QWORD* a1)
 {
   __int64 v1;
-  _QWORD* v2;
   __int64* v3;
   __int64 v4;
   __int64 v5;
@@ -605,39 +611,37 @@ __int64 game_UnitConst_TalentList_Commit_lambda0_Destroy(__int64 result)
   __int64 v10;
   __int64 v11;
 
-  v1 = *(_QWORD*)(result + 72);
-  v2 = (_QWORD*)result;
+  v1 = a1[9];
   v3 = (__int64*)fw_memory_g_heap_manager_ptr;
   if (v1 != 0) {
     v4 = *(_QWORD*)fw_memory_g_heap_manager_ptr;
-    *(_QWORD*)(result + 80) = v1;
+    a1[10] = v1;
     v5 = 128;
     if (*(_QWORD*)(v4 + 200) == 0) {
       v5 = 56;
     }
-    result = nn_mem_StandardAllocator_Free(v4 + v5);
+    nn_mem_StandardAllocator_Free_alt2(v4 + v5, v1);
   }
-  v6 = v2[6];
+  v6 = a1[6];
   if (v6 != 0) {
     v7 = *v3;
-    v2[7] = v6;
+    a1[7] = v6;
     v8 = 128;
     if (*(_QWORD*)(v7 + 200) == 0) {
       v8 = 56;
     }
-    result = nn_mem_StandardAllocator_Free(v7 + v8);
+    nn_mem_StandardAllocator_Free_alt2(v7 + v8, v6);
   }
-  v9 = v2[2];
+  v9 = a1[2];
   if (v9 != 0) {
     v10 = *v3;
-    v2[3] = v9;
+    a1[3] = v9;
     v11 = 128;
     if (*(_QWORD*)(v10 + 200) == 0) {
       v11 = 56;
     }
-    return nn_mem_StandardAllocator_Free(v10 + v11);
+    nn_mem_StandardAllocator_Free_alt2(v10 + v11, v9);
   }
-  return result;
 }
 
 __int64 game_UnitConst_TalentList_Commit_lambda0_Invoke(__int64 a1, _DWORD* a2)

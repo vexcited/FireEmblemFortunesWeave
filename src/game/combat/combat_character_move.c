@@ -9,10 +9,14 @@ extern __int64 (*game_combat_CombatCharacterSubsystem_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 __n128 CombatCharacterMove_Destructor_alt1(_QWORD* a1) __asm__(
     "CombatCharacterMove_Destructor");
-__int64 CombatCharacterMove_DeletingDestructor(_QWORD* a1);
+__int64 CombatCharacterMove_DeletingDestructor_alt1(_QWORD* a1) __asm__(
+    "CombatCharacterMove_DeletingDestructor");
 __int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
     "std___1___shared_weak_count___release_weak");
 __int64 CombatCharacterMove_Destructor(_QWORD* a1);
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void CombatCharacterMove_DeletingDestructor(_QWORD* a1);
 
 __int64 CombatCharacterMove_Destructor(_QWORD* a1)
 {
@@ -43,7 +47,7 @@ LABEL_6:
   return result;
 }
 
-__int64 CombatCharacterMove_DeletingDestructor(_QWORD* a1)
+void CombatCharacterMove_DeletingDestructor(_QWORD* a1)
 {
   _QWORD* v2;
   _QWORD* v3;
@@ -68,14 +72,14 @@ LABEL_6:
   v5 = a1[3];
   *a1 = game_combat_CombatCharacterSubsystem_vtable;
   if (v5 != 0) {
-    std___1___shared_weak_count___release_weak(v5);
+    std___1___shared_weak_count___release_weak_alt1(v5);
   }
   v6 = 128;
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
     v6 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v6);
+  nn_mem_StandardAllocator_Free_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v6, (__int64)a1);
 }
 
 #pragma GCC visibility pop

@@ -12,7 +12,8 @@ void GameRoutine_1035650(__int64, __int64, __int64, float*);
 __int64 CondTalkIconList_Unknown3(__int64 result, __int64 a2);
 void CondTalkIconList_Unknown4(__int64 a1, __int64 a2, int* a3, float* a4,
                                __int64 a5);
-__int64 CondTalkIconList_DeletingDestructor(_QWORD* a1);
+__int64 CondTalkIconList_DeletingDestructor_alt1(_QWORD* a1) __asm__(
+    "CondTalkIconList_DeletingDestructor");
 _QWORD* LayoutAccessor_1560520(__int64*, __int64, __int64, __int64);
 __attribute__((swiftcall)) void LayoutAccessor_1560070(PSEUDO_X8, __int64*,
                                                        __int64);
@@ -24,6 +25,13 @@ __n128 std___1___shared_weak_count___release_weak_alt1(_QWORD) __asm__(
 char* GameRoutine_1038880(char**, _QWORD*);
 void LayoutAccessor_1562680(__int64*, __int64, float);
 void CondTalkIconList_Unknown2(__int64 a1, __int64 a2);
+__int64 std___1___shared_weak_count___release_weak_alt2(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+float fmodf_alt1(float, float) __asm__("fmodf");
+void game_hub_1035650(__int64, __int64, __int64, float*);
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void CondTalkIconList_DeletingDestructor(_QWORD* a1);
 
 void CondTalkIconList_Unknown2(__int64 a1, __int64 a2)
 {
@@ -267,6 +275,8 @@ __int64 CondTalkIconList_Unknown3(__int64 result, __int64 a2)
 void CondTalkIconList_Unknown4(__int64 a1, __int64 a2, int* a3, float* a4,
                                __int64 a5)
 {
+
+#pragma clang fp contract(off)
   __int128* v5;
   __int128* v6;
   __int64 v11;
@@ -290,8 +300,8 @@ void CondTalkIconList_Unknown4(__int64 a1, __int64 a2, int* a3, float* a4,
       v13 = *(_QWORD*)(*(_QWORD*)(a1 + 24) + v11);
       v14 = *a3;
       if (*a3 == 1) {
-        GameRoutine_1035650(a1, *(_QWORD*)(*(_QWORD*)(a1 + 24) + v11),
-                            (__int64)v5, a4);
+        game_hub_1035650(a1, *(_QWORD*)(*(_QWORD*)(a1 + 24) + v11), (__int64)v5,
+                         a4);
         v14 = *a3;
       }
       if (v14 == 0 && (*(_BYTE*)(v13 + 88) & 1) != 0) {
@@ -300,9 +310,9 @@ void CondTalkIconList_Unknown4(__int64 a1, __int64 a2, int* a3, float* a4,
         v17 = *(float*)a5;
         if (*(_BYTE*)(a5 + 16) == 1) {
           v18 = *(float*)(*(_QWORD*)v12 + 100LL);
-          v19 = fmodf(a1, v18, 360.0);
-          if (v18 < 0.0) {
-            v19 = v19 + 360.0;
+          v19 = fmodf_alt1(v18, 0x1.6800000000000p+8f);
+          if (v18 < 0x0.0p+0f) {
+            v19 = v19 + 0x1.6800000000000p+8f;
           }
         }
         else {
@@ -324,7 +334,7 @@ void CondTalkIconList_Unknown4(__int64 a1, __int64 a2, int* a3, float* a4,
   }
 }
 
-__int64 CondTalkIconList_DeletingDestructor(_QWORD* a1)
+void CondTalkIconList_DeletingDestructor(_QWORD* a1)
 {
   __int64 v1;
   __int64 v3;
@@ -346,30 +356,31 @@ __int64 CondTalkIconList_DeletingDestructor(_QWORD* a1)
     do {
       v5 = *(_QWORD*)(v4 - 40);
       if (v5 != 0) {
-        std___1___shared_weak_count___release_weak(v5);
+        std___1___shared_weak_count___release_weak_alt2(v5);
       }
       v4 -= 64;
     } while (v4 != v1);
     v6 = a1[3];
     a1[4] = v1;
+    v1 = v6;
     if (v6 != 0) {
     LABEL_8:
       v7 = 128;
       if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
         v7 = 56;
       }
-      nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v7);
+      nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v7, v1);
     }
   }
   v8 = a1[2];
   if (v8 != 0) {
-    std___1___shared_weak_count___release_weak(v8);
+    std___1___shared_weak_count___release_weak_alt2(v8);
   }
   v9 = 128;
   if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
     v9 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v9);
+  nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v9, (__int64)a1);
 }
 
 #pragma GCC visibility pop

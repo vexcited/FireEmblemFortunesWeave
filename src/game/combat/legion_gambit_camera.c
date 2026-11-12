@@ -12,7 +12,8 @@ extern __int64 GameData_220f8c8;
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64* GameData_212d448[9];
 void __attribute__((noreturn)) GameRoutine_d38e30(_QWORD);
-__int64 LegionGambitCamera_e59e90(__int64 result);
+__int64 LegionGambitCamera_e59e90_alt1(__int64 result) __asm__(
+    "LegionGambitCamera_e59e90");
 float* LegionGambitCamera_e5a880(float* result, _BYTE* a2);
 __int64 LegionGambitCamera_e5ab60(__int64 a1);
 __attribute__((swiftcall)) void GameRoutine_109da60(PSEUDO_X8, _QWORD);
@@ -36,65 +37,80 @@ void __attribute__((noreturn)) GameRoutine_8123d0(_QWORD, long double);
 void __attribute__((noreturn))
 GameRoutine_d38e30_alt1() __asm__("GameRoutine_d38e30");
 void LegionGambitCamera_e5a1c0(float32x4_t* a1);
-__n128 LegionGambitCamera_e5a4a0(__int64 a1, __int64 a2, __int64 a3,
-                                 __int64 a4);
+__n128
+LegionGambitCamera_e5a4a0_alt1(__int64 a1, __int64 a2, __int64 a3,
+                               __int64 a4) __asm__("LegionGambitCamera_e5a4a0");
 void LegionGambitCamera_e5a5e0(float32x4_t* result, unsigned __int8* a2,
                                __int64 a3);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+void LegionGambitCamera_e5a5e0_alt2(
+    float32x4_t*, float32x4_t*, __int64) __asm__("LegionGambitCamera_e5a5e0");
+void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void LegionGambitCamera_e59e90(__int64 a1);
+void LegionGambitCamera_e5a4a0(float32x4_t* a1, __int64 a2, __int64 a3,
+                               __int64 a4);
 
-__int64 LegionGambitCamera_e59e90(__int64 result)
+void LegionGambitCamera_e59e90(__int64 a1)
 {
-  __int64 v1;
   __int64 v2;
   __int64 v3;
   __int64 v4;
   __int64 v5;
   __int64 v6;
+  __int64 v7;
+  __int64 v8;
 
-  v1 = result;
-  if ((*(_BYTE*)(result + 200) & 1) != 0 && *(_QWORD*)(result + 216) != 0) {
-    v2 = 128;
-    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-      v2 = 56;
+  if ((*(_BYTE*)(a1 + 200) & 1) != 0) {
+    v2 = *(_QWORD*)(a1 + 216);
+    if (v2 != 0) {
+      v3 = 128;
+      if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+        v3 = 56;
+      }
+      nn_mem_StandardAllocator_Free_alt2(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v3, v2);
     }
-    result = nn_mem_StandardAllocator_Free(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v2);
   }
-  if ((*(_BYTE*)(v1 + 168) & 1) != 0 && *(_QWORD*)(v1 + 184) != 0) {
-    v3 = 128;
-    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-      v3 = 56;
+  if ((*(_BYTE*)(a1 + 168) & 1) != 0) {
+    v4 = *(_QWORD*)(a1 + 184);
+    if (v4 != 0) {
+      v5 = 128;
+      if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+        v5 = 56;
+      }
+      nn_mem_StandardAllocator_Free_alt2(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v5, v4);
     }
-    result = nn_mem_StandardAllocator_Free(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v3);
   }
-  v4 = *(_QWORD*)(v1 + 48);
-  if (v4 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v4 + 8),
+  v6 = *(_QWORD*)(a1 + 48);
+  if (v6 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v6 + 8),
                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
-    (*(void (**)(__int64))(*(_QWORD*)v4 + 16LL))(v4);
-    result = std___1___shared_weak_count___release_weak();
+    (*(void (**)(__int64))(*(_QWORD*)v6 + 16LL))(v6);
+    std___1___shared_weak_count___release_weak_alt1(v6);
   }
-  v5 = *(_QWORD*)(v1 + 32);
-  if (v5 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v5 + 8),
+  v7 = *(_QWORD*)(a1 + 32);
+  if (v7 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v7 + 8),
                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
-    (*(void (**)(__int64))(*(_QWORD*)v5 + 16LL))(v5);
-    result = std___1___shared_weak_count___release_weak();
-    v6 = *(_QWORD*)(v1 + 16);
-    if (v6 == 0) {
-      return result;
+    (*(void (**)(__int64))(*(_QWORD*)v7 + 16LL))(v7);
+    std___1___shared_weak_count___release_weak_alt1(v7);
+    v8 = *(_QWORD*)(a1 + 16);
+    if (v8 == 0) {
+      return;
     }
   }
   else {
-    v6 = *(_QWORD*)(v1 + 16);
-    if (v6 == 0) {
-      return result;
+    v8 = *(_QWORD*)(a1 + 16);
+    if (v8 == 0) {
+      return;
     }
   }
-  if (atomic_fetch_add((atomic_ullong* volatile)(v6 + 8),
+  if (atomic_fetch_add((atomic_ullong* volatile)(v8 + 8),
                        0xFFFFFFFFFFFFFFFFLL) == 0) {
-    (*(void (**)(__int64))(*(_QWORD*)v6 + 16LL))(v6);
-    return std___1___shared_weak_count___release_weak();
+    (*(void (**)(__int64))(*(_QWORD*)v8 + 16LL))(v8);
+    std___1___shared_weak_count___release_weak_alt1(v8);
   }
-  return result;
 }
 
 void LegionGambitCamera_e5a1c0(float32x4_t* a1)
@@ -285,10 +301,13 @@ void LegionGambitCamera_e5a1c0(float32x4_t* a1)
   }
 }
 
-__n128 LegionGambitCamera_e5a4a0(__int64 a1, __int64 a2, __int64 a3, __int64 a4)
+void LegionGambitCamera_e5a4a0(float32x4_t* a1, __int64 a2, __int64 a3,
+                               __int64 a4)
 {
+
+#pragma clang fp contract(off)
   char v6;
-  unsigned __int8* v7;
+  __int64 v7;
   unsigned __int8* v8;
   int v9;
   unsigned __int8* v10;
@@ -302,25 +321,22 @@ __n128 LegionGambitCamera_e5a4a0(__int64 a1, __int64 a2, __int64 a3, __int64 a4)
   unsigned __int64 v18;
   int* v19;
   int v20;
-  __int64 v21;
-  __n128 result;
-  __int64 v23;
+  float32x4_t* v21;
+  __int64 v22;
   struct {
-    _QWORD v24[2];
-    unsigned __int8* v25;
-  } v24_;
+    _QWORD v23[2];
+    unsigned __int8* v24;
+  } v23_;
 
-  result = COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
-  GameRoutine_e59fd0((void*)(v24_.v24), a1, a2, a3, *(unsigned int*)(a1 + 144)),
-      result =
-          COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
-  v6 = v24_.v24[0];
-  v7 = v24_.v25;
-  if ((v24_.v24[0] & 1) != 0) {
-    v8 = v24_.v25;
+  GameRoutine_e59fd0((void*)(v23_.v23), a1, a2, a3,
+                     LANES128(a1[9]).n128_u32[0]);
+  v6 = v23_.v23[0];
+  v7 = (__int64)v23_.v24;
+  if ((v23_.v23[0] & 1) != 0) {
+    v8 = v23_.v24;
   }
   else {
-    v8 = (unsigned __int8*)v24_.v24 + 1;
+    v8 = (unsigned __int8*)v23_.v23 + 1;
   }
   if (v8 == nullptr) {
     goto LABEL_18;
@@ -360,28 +376,23 @@ __n128 LegionGambitCamera_e5a4a0(__int64 a1, __int64 a2, __int64 a3, __int64 a4)
   }
   if (v17 < 1) {
   LABEL_18:
-    v21 = 0;
+    v21 = nullptr;
   }
   else {
     if (v18 <= (unsigned int)v17) {
-      GameRoutine_d38e30_alt1(),
-          result = COERCE_AS(__typeof__(result),
-                             PSEUDO_REGISTER(__n128, "v0", "=w"));
+      GameRoutine_d38e30_alt1();
     }
-    v21 = v14 + 104LL * (unsigned int)v17;
+    v21 = (float32x4_t*)(v14 + 104LL * (unsigned int)v17);
   }
-  LegionGambitCamera_e5a5e0_alt1(a1, v21, a4),
-      result =
-          COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
-  if ((v6 & 1) != 0 && v7 != nullptr) {
-    v23 = 128;
+  LegionGambitCamera_e5a5e0_alt2(a1, v21, a4);
+  if ((v6 & 1) != 0 && v7 != 0) {
+    v22 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-      v23 = 56;
+      v22 = 56;
     }
-    return nn_mem_StandardAllocator_Free_alt1(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v23);
+    nn_mem_StandardAllocator_Free_alt2(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v22, v7);
   }
-  return result;
 }
 
 void LegionGambitCamera_e5a5e0(float32x4_t* result, unsigned __int8* a2,

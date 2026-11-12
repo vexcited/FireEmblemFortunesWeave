@@ -7,9 +7,15 @@ __int64 nn_mem_StandardAllocator_Free(_QWORD);
 __n128 std___1___shared_weak_count___release_weak(_QWORD);
 extern __int64 (*game_character_AuraModule_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
-__int64 AuraModule_Destructor(_QWORD* a1);
+__int64 AuraModule_Destructor_alt1(_QWORD* a1) __asm__("AuraModule_Destructor");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+void GameRoutine_10f5f80_alt1(__int64*) __asm__("GameRoutine_10f5f80");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void AuraModule_Destructor(_QWORD* a1);
 
-__int64 AuraModule_Destructor(_QWORD* a1)
+void AuraModule_Destructor(_QWORD* a1)
 {
   __int64 v1;
   __int64 v3;
@@ -29,24 +35,25 @@ __int64 AuraModule_Destructor(_QWORD* a1)
       if (v4 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v4 + 8),
                                       0xFFFFFFFFFFFFFFFFLL) == 0) {
         (*(void (**)(__int64))(*(_QWORD*)v4 + 16LL))(v4);
-        std___1___shared_weak_count___release_weak(v4);
+        std___1___shared_weak_count___release_weak_alt1(v4);
       }
       v3 -= 16;
     } while (v3 != v1);
     v5 = a1[14];
     a1[15] = v1;
+    v1 = v5;
     if (v5 != 0) {
     LABEL_9:
       v6 = 128;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
         v6 = 56;
       }
-      nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                    v6);
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v6, v1);
     }
   }
-  GameRoutine_10f5f80(a1 + 9);
-  return GameRoutine_10f5f80(a1 + 4);
+  GameRoutine_10f5f80_alt1(a1 + 9);
+  GameRoutine_10f5f80_alt1(a1 + 4);
 }
 
 #pragma GCC visibility pop

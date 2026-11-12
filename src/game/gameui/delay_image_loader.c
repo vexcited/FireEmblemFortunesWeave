@@ -9,7 +9,8 @@ extern __int64 (*game_gameui_DelayImageLoader_vtable[])();
 extern __int64 (*game_gameui_ImageLoader_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 DelayImageLoader_Destructor(_QWORD* a1);
-__int64 DelayImageLoader_DeletingDestructor(_QWORD* a1);
+__int64 DelayImageLoader_DeletingDestructor_alt1(_QWORD* a1) __asm__(
+    "DelayImageLoader_DeletingDestructor");
 __int64 GameRoutine_19a35b0(__int64, __int64);
 __int64 GameRoutine_19a3910(_QWORD, _QWORD);
 __int64 GameRoutine_5fc1f0(_QWORD);
@@ -41,6 +42,11 @@ extern __int64 GameData_212c608[2];
 __int64 DelayImageLoader_19a3910(__int64 a1, int a2);
 __attribute__((swiftcall)) void DelayImageLoader_19a3b20(PSEUDO_X8 x8_,
                                                          __int64 result);
+_BYTE* ProcInst_657a50_alt1(__int64, char) __asm__("ProcInst_657a50");
+__int64 GameRoutine_634d80_alt1(__int64, __int64) __asm__("GameRoutine_634d80");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void DelayImageLoader_DeletingDestructor(_QWORD* a1);
 
 __int64 DelayImageLoader_Destructor(_QWORD* a1)
 {
@@ -64,7 +70,7 @@ __int64 DelayImageLoader_Destructor(_QWORD* a1)
   return result;
 }
 
-__int64 DelayImageLoader_DeletingDestructor(_QWORD* a1)
+void DelayImageLoader_DeletingDestructor(_QWORD* a1)
 {
   __int64 v2;
   __int64 v3;
@@ -74,22 +80,22 @@ __int64 DelayImageLoader_DeletingDestructor(_QWORD* a1)
   v2 = a1[8];
   if (v2 != 0) {
     if ((*(_WORD*)(v2 + 136) & 1) == 0) {
-      GameRoutine_657a50(v2, 1);
+      ProcInst_657a50_alt1(v2, 1);
     }
     a1[8] = 0;
   }
   v3 = a1[2];
   a1[1] = game_gameui_ImageLoader_vtable;
   if (v3 != 0) {
-    GameRoutine_634d80(*(_QWORD*)(v3 + 8), v3);
+    GameRoutine_634d80_alt1(*(_QWORD*)(v3 + 8), v3);
     a1[2] = 0;
   }
   v4 = 128;
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
     v4 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v4);
+  nn_mem_StandardAllocator_Free_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v4, (__int64)a1);
 }
 
 __int64 DelayImageLoader_19a37d0(__int64 a1, __int64 a2, unsigned int a3)

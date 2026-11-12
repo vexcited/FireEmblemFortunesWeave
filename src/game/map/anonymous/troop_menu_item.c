@@ -16,6 +16,14 @@ extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64 game_GameModeData_instance_;
 extern __int64* GameData_2130240[8];
 __int64 TroopMenuItem_Unknown25_86e1a0(__int64 a1);
+__int64 GameVariable_828dc0(__int64, unsigned __int64*, int);
+__int64 ProcInst_657850(__int64, __int64, __int64, char, __int64);
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 game_HashString_alt1(__int64 result) __asm__("game_HashString");
+__int64 game_ProcInst_Register_alt1(__int64) __asm__("game_ProcInst_Register");
+__int64 memset_alt1(__int64, int, unsigned __int64) __asm__("memset");
 
 __int64 TroopMenuItem_Unknown25_86e1a0(__int64 a1)
 {
@@ -23,14 +31,9 @@ __int64 TroopMenuItem_Unknown25_86e1a0(__int64 a1)
   __int64 v2;
   __int64 v3;
   __int64 v4;
-  __int64 v5;
+  __int64* v5;
   __int64 v6;
-  __int64 v7;
-  __int64 v8;
-  __int64* v9;
-  __int64 v10;
-  __int64 v11;
-  _QWORD v13[2];
+  unsigned __int64 v8[2];
 
   v1 = *(_QWORD*)(a1 + 8);
   if (*(_QWORD*)(v1 + 152) != 0) {
@@ -39,10 +42,10 @@ __int64 TroopMenuItem_Unknown25_86e1a0(__int64 a1)
   else {
     v2 = *(_QWORD*)(a1 + 8);
   }
-  v3 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
-                                      512, 16, 0);
-  memset(v3 + 144, 0, 368, v4, v5, v6);
-  v7 = GameData_212c608[0];
+  v3 = fw_memory_HeapManager_Allocate_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr, 512, 16, 0);
+  memset_alt1(v3 + 144, 0, 0x170u);
+  v4 = GameData_212c608[0];
   *(_QWORD*)(v3 + 96) = 0;
   *(_QWORD*)(v3 + 104) = 0;
   *(_QWORD*)(v3 + 112) = 0;
@@ -61,11 +64,11 @@ __int64 TroopMenuItem_Unknown25_86e1a0(__int64 a1)
   *(_QWORD*)(v3 + 72) = 0;
   *(_QWORD*)(v3 + 80) = 0;
   *(_QWORD*)(v3 + 88) = 0;
-  *(_QWORD*)v3 = v7 + 16;
+  *(_QWORD*)v3 = v4 + 16;
   *(_QWORD*)(v3 + 8) = 0;
-  game_ProcInst_Register(v3, v8);
+  game_ProcInst_Register_alt1(v3);
   *(_BYTE*)(v3 + 168) = 0;
-  v9 = GameData_2130240[0];
+  v5 = GameData_2130240[0];
   *(_QWORD*)(v3 + 232) = 0;
   *(_BYTE*)(v3 + 172) = 0;
   *(_QWORD*)(v3 + 192) = 0;
@@ -96,21 +99,21 @@ __int64 TroopMenuItem_Unknown25_86e1a0(__int64 a1)
   *(_BYTE*)(v3 + 480) = 0;
   *(_QWORD*)(v3 + 496) = 0;
   *(_QWORD*)(v3 + 152) = 0;
-  *(_QWORD*)(v3 + 160) = v9 + 2;
+  *(_QWORD*)(v3 + 160) = v5 + 2;
   *(_DWORD*)(v3 + 280) = 1065353216;
   *(_QWORD*)(v3 + 352) = 1;
   *(_QWORD*)(v3 + 368) = 0xFFFFFFFFLL;
   *(_DWORD*)(v3 + 408) = 2;
-  v10 = GameData_2131d68[0] + 440;
+  v6 = GameData_2131d68[0] + 440;
   *(_QWORD*)v3 = GameData_2131d68[0] + 16;
-  *(_QWORD*)(v3 + 176) = v10;
+  *(_QWORD*)(v3 + 176) = v6;
   *(_QWORD*)(v3 + 184) = 0;
-  GameRoutine_657850(v3, GameData_21319e0, "MapTroopSequence", 1, v2);
-  v13[1] = &GameData_1a8d3f0;
-  v13[0] = game_HashString(&GameData_1a8d3f0, v11);
+  ProcInst_657850(v3, (__int64)GameData_21319e0, (__int64)"MapTroopSequence", 1,
+                  v2);
+  v8[1] = (unsigned __int64)&GameData_1a8d3f0;
+  v8[0] = game_HashString_alt1((__int64)&GameData_1a8d3f0);
   if (game_GameModeData_instance_ != 0) {
-    GameRoutine_828dc0(*(_QWORD*)(game_GameModeData_instance_ + 48),
-                       (__int64)v13, 1);
+    GameVariable_828dc0(*(_QWORD*)(game_GameModeData_instance_ + 48), v8, 1);
   }
   return 9;
 }

@@ -13,59 +13,62 @@ __int64 nn_os_WaitThread(_QWORD);
 extern __int64 (*base_thread_ExecutorBase_vtable[])();
 extern __int64 GameData_226b920;
 extern __int64 fw_memory_g_heap_manager_ptr;
-__int64 BuildWorker_Unknown2(__int64 a1);
+__int64 BuildWorker_Unknown2_alt1(__int64 a1) __asm__("BuildWorker_Unknown2");
 __int64 BuildWorker_Unknown4(__int64 result);
 __int64 GameRoutine_193d0e0(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
                             _QWORD, _QWORD, _DWORD, _DWORD, _DWORD);
 __int64 GameRoutine_193e500(_QWORD, _QWORD, _QWORD);
 __int64 BuildWorker_1942920(__int64 a1, int a2, char* a3);
+__int64 Executor_19449a0(_QWORD*, __int64);
+__int64 nn_os_SignalLightEvent_alt1(__int64) __asm__("nn_os_SignalLightEvent");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void BuildWorker_Unknown2(__int64 a1);
 
-__int64 BuildWorker_Unknown2(__int64 a1)
+void BuildWorker_Unknown2(__int64 a1)
 {
-  __int64 result;
+  __int64 v2;
   __int64 v3;
   __int64 v4;
   __int64 v5;
   __int64 v6;
-  __int64 v7;
 
   if ((atomic_exchange((atomic_uchar* volatile)(a1 + 720), 1u) & 1) == 0) {
-    nn_os_SignalLightEvent(a1 + 484);
+    nn_os_SignalLightEvent_alt1(a1 + 484);
   }
   nn_os_WaitThread(a1 + 32);
   nn_os_FinalizeLightEvent(a1 + 484);
   nn_os_FinalizeLightEvent(a1 + 496);
   *(_BYTE*)(a1 + 480) = 0;
-  GameRoutine_19449a0(GameData_226b920, *(_QWORD*)(a1 + 8));
+  Executor_19449a0((_QWORD*)GameData_226b920, *(_QWORD*)(a1 + 8));
   *(_QWORD*)(a1 + 8) = 0;
-  result = nn_os_DestroyThread(a1 + 32);
-  v3 = *(_QWORD*)(a1 + 24);
+  nn_os_DestroyThread(a1 + 32);
+  v2 = *(_QWORD*)(a1 + 24);
   *(_QWORD*)(a1 + 24) = 0;
-  if (v3 != 0) {
-    v4 = fw_memory_g_heap_manager_ptr;
-    v5 = 128;
+  if (v2 != 0) {
+    v3 = fw_memory_g_heap_manager_ptr;
+    v4 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-      v5 = 56;
+      v4 = 56;
     }
-    result = nn_mem_StandardAllocator_Free(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v5);
-    v6 = *(_QWORD*)(a1 + 24);
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v4, v2);
+    v5 = *(_QWORD*)(a1 + 24);
     *(_QWORD*)(a1 + 16) = 0;
     *(_QWORD*)(a1 + 24) = 0;
     *(_QWORD*)a1 = base_thread_ExecutorBase_vtable;
-    if (v6 != 0) {
-      v7 = 128;
-      if (*(_QWORD*)(*(_QWORD*)v4 + 200LL) == 0) {
-        v7 = 56;
+    if (v5 != 0) {
+      v6 = 128;
+      if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
+        v6 = 56;
       }
-      return nn_mem_StandardAllocator_Free(*(_QWORD*)v4 + v7);
+      nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v6, v5);
     }
   }
   else {
     *(_QWORD*)(a1 + 16) = 0;
     *(_QWORD*)a1 = base_thread_ExecutorBase_vtable;
   }
-  return result;
 }
 
 __int64 BuildWorker_Unknown4(__int64 result)

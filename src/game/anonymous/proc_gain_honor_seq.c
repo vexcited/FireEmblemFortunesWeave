@@ -19,8 +19,9 @@ __int64 ProcGainHonorSeq_8b2d70(__int64 result);
 _QWORD* game_anonymous_ProcGainHonorSeq_Lv_closure0_Clone(__int64 a1);
 __int64 game_anonymous_ProcGainHonorSeq_Lv_closure0_CloneInto(__int64 result,
                                                               _QWORD* a2);
-__int64 game_anonymous_ProcGainHonorSeq_Lv_closure0_Invoke(__int64 a1,
-                                                           __int64* a2);
+__int64 game_anonymous_ProcGainHonorSeq_Lv_closure0_Invoke_alt1(
+    __int64 a1,
+    __int64* a2) __asm__("game_anonymous_ProcGainHonorSeq_Lv_closure0_Invoke");
 __attribute__((swiftcall)) void game_9c5fd0(PSEUDO_X8, __int64 result, int);
 __int64 GameHr_1382760(__int64, int, int);
 __int64 GameRoutine_715440();
@@ -40,6 +41,11 @@ GameRoutine_6e5c60_alt1() __asm__("GameRoutine_6e5c60");
 void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void game_anonymous_ProcGainHonorSeq_Lv(__int64 a1);
+_QWORD* game_8af240(_QWORD* result, __int64**);
+__int64 ItemSeq_8af940_alt1(__int64, unsigned __int16**, __int64, const char**,
+                            const char**, char) __asm__("ItemSeq_8af940");
+void game_anonymous_ProcGainHonorSeq_Lv_closure0_Invoke(__int64 a1,
+                                                        __int64* a2);
 
 void game_anonymous_ProcGainHonorSeq_Lv(__int64 a1)
 {
@@ -285,29 +291,25 @@ __int64 game_anonymous_ProcGainHonorSeq_Lv_closure0_CloneInto(__int64 result,
   return result;
 }
 
-__int64 game_anonymous_ProcGainHonorSeq_Lv_closure0_Invoke(__int64 a1,
-                                                           __int64* a2)
+void game_anonymous_ProcGainHonorSeq_Lv_closure0_Invoke(__int64 a1, __int64* a2)
 {
   __int64 v2;
-  __int64 result;
-  __int64 v4;
-  __int64* v5[3];
+  __int64 v3;
+  unsigned __int16* v4[3];
 
   v2 = *a2;
-  GameRoutine_8af240(v5, (__int64**)(a1 + 8));
-  result =
-      ItemSeq_8af940(v2, (__int64*)v5, 0, (char**)game_vstring_kEmpty_ptr[0],
-                     (char**)game_vstring_kEmpty_ptr[0], 0);
-  if (v5[0] != nullptr) {
-    v5[1] = v5[0];
-    v4 = 128;
+  game_8af240(v4, (__int64**)(a1 + 8));
+  ItemSeq_8af940_alt1(v2, v4, 0, (const char**)game_vstring_kEmpty_ptr[0],
+                      (const char**)game_vstring_kEmpty_ptr[0], 0);
+  if (v4[0] != nullptr) {
+    v4[1] = v4[0];
+    v3 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-      v4 = 56;
+      v3 = 56;
     }
-    return nn_mem_StandardAllocator_Free(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v4);
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v3, (__int64)v4[0]);
   }
-  return result;
 }
 
 #pragma GCC visibility pop

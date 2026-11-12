@@ -214,7 +214,7 @@ __int64 SoundThread_2a1da0(__int64* a1)
 {
   __int64 result;
 
-  result = nn_os_GetSystemTick(a1);
+  result = nn_os_GetSystemTick_alt1();
   *a1 = result;
   return result;
 }

@@ -19,8 +19,9 @@ extern __int64 GameData_2203490;
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64* GameData_212ea58;
 void __attribute__((noreturn)) GameRoutine_60a310(_QWORD, _QWORD, _QWORD);
-__n128 Target_Destructor(_QWORD* a1);
-__n128 Target_DeletingDestructor(_QWORD* a1);
+__n128 Target_Destructor_alt1(_QWORD* a1) __asm__("Target_Destructor");
+__n128
+Target_DeletingDestructor_alt1(_QWORD* a1) __asm__("Target_DeletingDestructor");
 unsigned __int8* game_cmdbtl_Target_CalcLink(__int64 a1);
 __int64 Target_f47270(__int64 a1);
 __int64 Target_f476f0(__int64 a1, __int64 a2);
@@ -30,17 +31,20 @@ __int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
     "std___1___shared_weak_count___release_weak");
 void __attribute__((noreturn))
 GameRoutine_60a310_alt1() __asm__("GameRoutine_60a310");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void Target_Destructor(_QWORD* a1);
+void Target_DeletingDestructor(_QWORD* a1);
 
-__n128 Target_Destructor(_QWORD* a1)
+void Target_Destructor(_QWORD* a1)
 {
   __int64 v1;
   __int64* v3;
   __int64 v4;
   __int64 v5;
-  __n128 result;
+  __int64 v6;
   __int64 v7;
   __int64 v8;
-  __int64 v9;
 
   v1 = a1[5];
   *a1 = game_cmdbtl_Target_vtable;
@@ -52,22 +56,21 @@ __n128 Target_Destructor(_QWORD* a1)
     if (*(_QWORD*)(v4 + 200) == 0) {
       v5 = 56;
     }
-    result = nn_mem_StandardAllocator_Free(v4 + v5);
+    nn_mem_StandardAllocator_Free_alt1(v4 + v5, v1);
   }
-  v7 = a1[2];
-  if (v7 != 0) {
-    v8 = *v3;
-    a1[3] = v7;
-    v9 = 128;
-    if (*(_QWORD*)(v8 + 200) == 0) {
-      v9 = 56;
+  v6 = a1[2];
+  if (v6 != 0) {
+    v7 = *v3;
+    a1[3] = v6;
+    v8 = 128;
+    if (*(_QWORD*)(v7 + 200) == 0) {
+      v8 = 56;
     }
-    return nn_mem_StandardAllocator_Free(v8 + v9);
+    nn_mem_StandardAllocator_Free_alt1(v7 + v8, v6);
   }
-  return result;
 }
 
-__n128 Target_DeletingDestructor(_QWORD* a1)
+void Target_DeletingDestructor(_QWORD* a1)
 {
   __int64 v1;
   __int64 v3;
@@ -88,7 +91,7 @@ __n128 Target_DeletingDestructor(_QWORD* a1)
     if (*(_QWORD*)(v4 + 200) == 0) {
       v5 = 56;
     }
-    nn_mem_StandardAllocator_Free(v4 + v5);
+    nn_mem_StandardAllocator_Free_alt1(v4 + v5, v1);
   }
   v6 = a1[2];
   if (v6 != 0) {
@@ -98,13 +101,13 @@ __n128 Target_DeletingDestructor(_QWORD* a1)
     if (*(_QWORD*)(v7 + 200) == 0) {
       v8 = 56;
     }
-    nn_mem_StandardAllocator_Free(v7 + v8);
+    nn_mem_StandardAllocator_Free_alt1(v7 + v8, v6);
   }
   v9 = 128;
   if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
     v9 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v9);
+  nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v9, (__int64)a1);
 }
 
 unsigned __int8* game_cmdbtl_Target_CalcLink(__int64 a1)

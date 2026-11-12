@@ -13,8 +13,10 @@ extern __int64 (*ui_control_MenuItem_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
 void __attribute__((noreturn)) GameRoutine_6e5c60(_QWORD);
-__int64* MenuItemAnimal_18952e0(__int64* result);
-__int64 MenuItemAnimal_Destructor(_QWORD* a1);
+__int64*
+MenuItemAnimal_18952e0_alt2(__int64* result) __asm__("MenuItemAnimal_18952e0");
+__int64
+MenuItemAnimal_Destructor_alt1(_QWORD* a1) __asm__("MenuItemAnimal_Destructor");
 __attribute__((swiftcall)) void Element_1885a60(PSEUDO_X8, _QWORD* result);
 __attribute__((swiftcall)) void GameRoutine_15d4100(PSEUDO_X8, _QWORD, _QWORD);
 __int64 Element_1885bc0(_QWORD, _QWORD);
@@ -84,6 +86,10 @@ void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 __int64 MenuItemAnimal_1894780(_QWORD* a1);
 _QWORD* MenuItemAnimal_18953f0(__int64 a1);
+extern __int64 (*MenuItemAnimal_Destructor_ptr[])();
+void Element_1888840_alt1(__int64) __asm__("Element_1888840");
+void MenuItemAnimal_18952e0(__int64* a1);
+void MenuItemAnimal_Destructor(_QWORD* a1);
 
 __int64 MenuItemAnimal_1894780(_QWORD* a1)
 {
@@ -948,14 +954,13 @@ LABEL_150:
   return result;
 }
 
-__int64* MenuItemAnimal_18952e0(__int64* result)
+void MenuItemAnimal_18952e0(__int64* a1)
 {
   unsigned __int64 v1;
   _QWORD* v2;
-  __int64* v3;
   __int64 v4;
   __int64 v5;
-  __int64 v6;
+  signed __int64 v6;
   unsigned __int64 v7;
   __int64 v8;
   __int64 v9;
@@ -965,15 +970,14 @@ __int64* MenuItemAnimal_18952e0(__int64* result)
   __int64 v13;
   __int64 v14;
 
-  v2 = (_QWORD*)result[1];
-  v1 = result[2];
-  v3 = result;
+  v2 = (_QWORD*)a1[1];
+  v1 = a1[2];
   if ((unsigned __int64)v2 >= v1) {
-    v5 = *result;
-    v6 = (__int64)v2 - *result;
+    v5 = *a1;
+    v6 = (signed __int64)v2 - *a1;
     v7 = (v6 >> 3) + 1;
     if (v7 >> 61 != 0) {
-      GameRoutine_6e5c60(result);
+      GameRoutine_6e5c60_alt1();
     }
     v8 = v1 - v5;
     v9 = fw_memory_g_heap_manager_ptr;
@@ -988,9 +992,9 @@ __int64* MenuItemAnimal_18952e0(__int64* result)
     }
     if (v10 != 0) {
       if (v10 >> 61 != 0) {
-        GameRoutine_60a210(result);
+        GameRoutine_60a210_alt1();
       }
-      v11 = fw_memory_HeapManager_Allocate(
+      v11 = fw_memory_HeapManager_Allocate_alt1(
           *(_QWORD*)fw_memory_g_heap_manager_ptr, 8 * v10, 16, 0);
     }
     else {
@@ -1000,24 +1004,23 @@ __int64* MenuItemAnimal_18952e0(__int64* result)
     v13 = v11 + v6 - 8 * (v6 >> 3);
     *(_QWORD*)(v11 + v6) = 0;
     v4 = v11 + v6 + 8;
-    result = (__int64*)memcpy(v13, v5, v6);
-    *v3 = v13;
-    v3[1] = v4;
-    v3[2] = v12;
+    memcpy_alt1(v13, v5, v6);
+    *a1 = v13;
+    a1[1] = v4;
+    a1[2] = v12;
     if (v5 != 0) {
       v14 = 128;
       if (*(_QWORD*)(*(_QWORD*)v9 + 200LL) == 0) {
         v14 = 56;
       }
-      result = (__int64*)nn_mem_StandardAllocator_Free(*(_QWORD*)v9 + v14);
+      nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v9 + v14, v5);
     }
   }
   else {
     *v2 = 0;
     v4 = (__int64)(v2 + 1);
   }
-  v3[1] = v4;
-  return result;
+  a1[1] = v4;
 }
 
 _QWORD* MenuItemAnimal_18953f0(__int64 a1)
@@ -1699,7 +1702,7 @@ LABEL_43:
   }
 }
 
-__int64 MenuItemAnimal_Destructor(_QWORD* a1)
+void MenuItemAnimal_Destructor(_QWORD* a1)
 {
   __int64 v2;
   __int64 v3;
@@ -1717,7 +1720,7 @@ __int64 MenuItemAnimal_Destructor(_QWORD* a1)
 
   *(a1 - 9) = game_gameui_control_MenuItemAnimal_vtable;
   v2 = (__int64)(a1 - 9);
-  *a1 = GameData_2101d50;
+  *a1 = MenuItemAnimal_Destructor_ptr;
   v3 = a1[130];
   a1[130] = 0;
   if (v3 != 0) {
@@ -1763,12 +1766,12 @@ __int64 MenuItemAnimal_Destructor(_QWORD* a1)
         else {
           v14 = 56;
         }
-        nn_mem_StandardAllocator_Free(*(_QWORD*)v12 + v14);
+        nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v12 + v14, (__int64)v9);
         v9 = v13;
       } while (v13 != v10);
     }
   }
-  return Element_1888840(v2);
+  Element_1888840_alt1(v2);
 }
 
 #pragma GCC visibility pop

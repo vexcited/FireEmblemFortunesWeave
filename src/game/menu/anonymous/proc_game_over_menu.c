@@ -19,7 +19,8 @@ __int64 std___1___shared_weak_count___release_weak();
 __int64 std___1___shared_weak_count_lock(_QWORD);
 __int64 ui_LayoutAccessor_SetPaneVisible(_QWORD, _QWORD, _QWORD);
 extern __int64 game_g_game_setting_ptr;
-__int64 ProcGameOverMenu_Unknown2(__int64 a1, long double a2);
+__int64 ProcGameOverMenu_Unknown2_alt1(__int64 a1, long double a2) __asm__(
+    "ProcGameOverMenu_Unknown2");
 __int64 ProcGameOverMenu_Unknown57(__int64 result, long double a2);
 __int64 ProcGameOverMenu_Unknown84(__int64 a1, long double a2);
 bool ProcGameOverMenu_Unknown124(__int64 a1, long double a2);
@@ -109,7 +110,8 @@ void LayoutAccessor_1562060(__int64*, __int64, _BYTE*);
 __int64 ProcGameOverMenu_1738fa0(__int64 a1);
 __int64 ProcGameOverMenu_1738fd0(__int64 a1);
 __int64 ProcGameOverMenu_Unknown85(__int64 a1);
-__int64 ProcGameOverMenu_Unknown88(__int64 a1);
+__int64 ProcGameOverMenu_Unknown88_alt1(__int64 a1) __asm__(
+    "ProcGameOverMenu_Unknown88");
 __int64 game_menu_anonymous_ProcGameOverMenu_AddItemList(__int64 a1);
 __int64 game_menu_anonymous_ProcGameOverMenu_SortAndFilter(__int64 a1);
 _QWORD* GameHr_14a10d0(_QWORD*, __int64, __int64, __int64);
@@ -151,6 +153,31 @@ unsigned __int8* snd_fnd_calcCrc32_alt1(unsigned __int8* result,
 void GameRoutine_156c5d0_alt1(__int64, __int64,
                               char) __asm__("GameRoutine_156c5d0");
 void snd_Fade_Fade_10c830_alt1(__int64, float) __asm__("snd_Fade_Fade_10c830");
+__int64 BasicMenu_16dea40(__int64 result, char, unsigned __int8,
+                          unsigned __int8);
+__int64 BasicMenu_16df7a0(__int64 result);
+__int64 GameHr_14a10d0_alt1(_QWORD*, __int64, __int64,
+                            __int64) __asm__("GameHr_14a10d0");
+__int64 LayoutAccessor_1563280(__int64*, __int64, char);
+__int64 ui_LayoutAccessor_FindAlignment_alt2(__int64*, const char*) __asm__(
+    "ui_LayoutAccessor_FindAlignment");
+__int64 ui_LayoutAccessor_FindTextBox_alt2(__int64*, const char*) __asm__(
+    "ui_LayoutAccessor_FindTextBox");
+__int64 ui_LayoutAccessor_SetPaneVisible_alt2(
+    __int64 result, const char*,
+    char) __asm__("ui_LayoutAccessor_SetPaneVisible");
+char* GameRoutine_a4dbe0_alt2(__int64, const char*,
+                              char) __asm__("GameRoutine_a4dbe0");
+float LayoutAccessor_15638b0_alt2(__int64*, char*,
+                                  char) __asm__("LayoutAccessor_15638b0");
+unsigned __int64 GameHr_1562680_alt1(unsigned __int64 result, char*,
+                                     float) __asm__("GameHr_1562680");
+void LayoutAccessor_1562060_alt1(__int64*, const char*,
+                                 const char*) __asm__("LayoutAccessor_1562060");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+__int64 ProcGameOverMenu_Unknown2(__int64 a1);
+void ProcGameOverMenu_Unknown88(__int64 a1);
 
 __int64 ProcGameOverMenu_1738fa0(__int64 a1)
 {
@@ -221,41 +248,42 @@ __int64 ProcGameOverMenu_1738fd0(__int64 a1)
   return result;
 }
 
-__int64 ProcGameOverMenu_Unknown2(__int64 a1, long double a2)
+__int64 ProcGameOverMenu_Unknown2(__int64 a1)
 {
-  _QWORD* v3;
+  __int64* v2;
+  __int64 v3;
   __int64 v4;
   __int64 v5;
-  __int64 v6;
-  int v7;
+  int v6;
 
   if (*(_BYTE*)(a1 + 1128) == 1) {
-    v3 = (_QWORD*)(a1 + 952);
-    if ((GameRoutine_1563280(a1 + 952, "In", 0, a2) & 1) == 0) {
-      v4 = *(_QWORD*)(a1 + 960);
-      if (v4 != 0) {
-        v5 = std___1___shared_weak_count_lock(v4);
-        if (v5 != 0) {
-          v6 = v5;
-          if (*v3 != 0) {
-            ControlCreator_13633c0();
+    v2 = (__int64*)(a1 + 952);
+    if ((LayoutAccessor_1563280((__int64*)(a1 + 952), (__int64)"In", 0) & 1) ==
+        0) {
+      v3 = *(_QWORD*)(a1 + 960);
+      if (v3 != 0) {
+        v4 = std___1___shared_weak_count_lock_alt1(v3);
+        if (v4 != 0) {
+          v5 = v4;
+          if (*v2 != 0) {
+            ControlCreator_13633c0_alt2(*v2);
           }
-          if (atomic_fetch_add((atomic_ullong* volatile)(v6 + 8),
+          if (atomic_fetch_add((atomic_ullong* volatile)(v5 + 8),
                                0xFFFFFFFFFFFFFFFFLL) == 0) {
-            (*(void (**)(__int64))(*(_QWORD*)v6 + 16LL))(v6);
-            std___1___shared_weak_count___release_weak();
+            (*(void (**)(__int64))(*(_QWORD*)v5 + 16LL))(v5);
+            std___1___shared_weak_count___release_weak_alt2(v5);
           }
         }
       }
       *(_BYTE*)(a1 + 1128) = 0;
-      _ZN4game4menu9BasicMenu13Unknown16dea40Ebbb(a1, 1, 0, 0);
-      ui_LayoutAccessor_SetPaneVisible(a1 + 848, "A_Help", 1);
-      v7 = *(_DWORD*)(a1 + 356);
+      BasicMenu_16dea40(a1, 1, 0, 0);
+      ui_LayoutAccessor_SetPaneVisible_alt2(a1 + 848, "A_Help", 1);
+      v6 = *(_DWORD*)(a1 + 356);
       *(_BYTE*)(a1 + 648) = 1;
-      *(_DWORD*)(a1 + 356) = v7 & 0xFFFFFFF9;
+      *(_DWORD*)(a1 + 356) = v6 & 0xFFFFFFF9;
     }
   }
-  return GameRoutine_16df7a0(a1);
+  return BasicMenu_16df7a0(a1);
 }
 
 __int64 ProcGameOverMenu_Unknown57(__int64 result, long double a2)
@@ -279,7 +307,7 @@ __int64 ProcGameOverMenu_Unknown85(__int64 a1)
 {
 
 #pragma clang fp contract(off)
-  char* v2;
+  const char* v2;
   __int64 v3;
   char* v4;
   __int64 v5;
@@ -358,13 +386,12 @@ __int64 ProcGameOverMenu_Unknown85(__int64 a1)
   v33_.v35 = 0xFFFF0006FFFF0005LL;
   v33_.v49 = 8;
   v33_.v36 = 0xFFFF0008FFFF0007LL;
-  v4 = GameRoutine_a4dbe0_alt1(v3, v2, 0),
+  v4 = GameRoutine_a4dbe0_alt2(v3, v2, 0),
   v25 = COERCE_AS(__typeof__(v25),
                   PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   if (v4 != nullptr) {
     v5 = (__int64)v4;
-    v6 = ui_LayoutAccessor_FindTextBox_alt1((__int64*)(a1 + 848),
-                                            (__int64)"T_Title"),
+    v6 = ui_LayoutAccessor_FindTextBox_alt2((__int64*)(a1 + 848), "T_Title"),
     v25 = COERCE_AS(__typeof__(v25),
                     PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
     if (v6 != 0) {
@@ -397,8 +424,8 @@ __int64 ProcGameOverMenu_Unknown85(__int64 a1)
       v25 = COERCE_AS(__typeof__(v25),
                       PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   v11 = (__int64*)(a1 + 952);
-  v12 = ui_LayoutAccessor_FindAlignment_alt1((__int64*)(a1 + 952),
-                                             (__int64)"MenuItemList"),
+  v12 = ui_LayoutAccessor_FindAlignment_alt2((__int64*)(a1 + 952),
+                                             "MenuItemList"),
   v25 = COERCE_AS(__typeof__(v25),
                   PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   if (v12 != 0) {
@@ -439,10 +466,10 @@ __int64 ProcGameOverMenu_Unknown85(__int64 a1)
     LayoutAccessor_155e830_alt1(a1 + 848, 1),
         v25 = COERCE_AS(__typeof__(v25),
                         PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-    GameHr_1562680(a1 + 848, "In", 0x1.0000000000000p+0f),
+    GameHr_1562680_alt1(a1 + 848, "In", 0x1.0000000000000p+0f),
         v25 = COERCE_AS(__typeof__(v25),
                         PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-    v16 = LayoutAccessor_15638b0_alt1((__int64*)(a1 + 848), "In", 0),
+    v16 = LayoutAccessor_15638b0_alt2((__int64*)(a1 + 848), "In", 0),
     v25 = COERCE_AS(__typeof__(v25),
                     PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
     LayoutAccessor_15636c0_alt1(a1 + 848, (__int64)"In", 0, v16),
@@ -491,7 +518,7 @@ __int64 ProcGameOverMenu_Unknown85(__int64 a1)
                             (__int64)v33_.v33, 0),
   v25 = COERCE_AS(__typeof__(v25),
                   PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
-  GameHr_14a10d0(&v31_.v31, (__int64)v24, v25, (__int64)&GameData_1a9f09e),
+  GameHr_14a10d0_alt1(&v31_.v31, (__int64)v24, v25, (__int64)&GameData_1a9f09e),
       v25 = COERCE_AS(__typeof__(v25),
                       PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   v26 = v31_.v31;
@@ -550,82 +577,79 @@ __int64 ProcGameOverMenu_Unknown85(__int64 a1)
   return snd_Fade_Destroy_Fade_alt1(v33_.v33);
 }
 
-__int64 ProcGameOverMenu_Unknown88(__int64 a1)
+void ProcGameOverMenu_Unknown88(__int64 a1)
 {
-  __int64 result;
+  __int64 v2;
   __int64 v3;
-  _BYTE* v4;
-  __int64 v5;
-  unsigned __int64 v6;
-  _BYTE* v7;
-  __int64 v8;
+  __int64 v4;
+  const char* v5;
+  __int64 v6;
+  unsigned __int64 v7;
+  const char* v8;
+  __int64 v9;
+  __int64 v10;
   struct {
-    _QWORD v9[2];
-    _BYTE* v10;
-  } v9_;
+    _QWORD v11[2];
+    const char* v12;
+  } v11_;
 
-  result = *(_QWORD*)(a1 + 336);
-  if (result != 0) {
-    result = __dynamic_cast(result, GameData_212e008[0], &GameData_20b6bd0, 0);
-    if (result != 0) {
-      v3 = result;
+  v2 = *(_QWORD*)(a1 + 336);
+  if (v2 != 0) {
+    v3 = __dynamic_cast(v2, GameData_212e008[0], &GameData_20b6bd0, 0);
+    if (v3 != 0) {
+      v4 = v3;
       (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64))(
-          *(_QWORD*)result + 560LL))((void*)(v9_.v9), (__int64)result);
-      if ((v9_.v9[0] & 1) != 0) {
-        v4 = v9_.v10;
+          *(_QWORD*)v3 + 560LL))((void*)(v11_.v11), (__int64)v3);
+      if ((v11_.v11[0] & 1) != 0) {
+        v5 = v11_.v12;
       }
       else {
-        v4 = (char*)v9_.v9 + 1;
+        v5 = (char*)v11_.v11 + 1;
       }
-      LayoutAccessor_1562060((__int64*)(a1 + 848), (__int64)"T_Message", v4);
-      if ((v9_.v9[0] & 1) != 0 && v9_.v10 != nullptr) {
-        v5 = 128;
+      LayoutAccessor_1562060_alt1((__int64*)(a1 + 848), "T_Message", v5);
+      if ((v11_.v11[0] & 1) != 0 && v11_.v12 != nullptr) {
+        v6 = 128;
         if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-          v5 = 56;
+          v6 = 56;
         }
-        nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                      v5);
+        nn_mem_StandardAllocator_Free_alt1(
+            *(_QWORD*)fw_memory_g_heap_manager_ptr + v6, (__int64)v11_.v12);
       }
       (*(__attribute__((swiftcall)) void (**)(PSEUDO_X8, __int64))(
-          *(_QWORD*)v3 + 568LL))((void*)(v9_.v9), v3);
-      if ((v9_.v9[0] & 1) != 0) {
-        v6 = v9_.v9[1];
+          *(_QWORD*)v4 + 568LL))((void*)(v11_.v11), v4);
+      if ((v11_.v11[0] & 1) != 0) {
+        v7 = v11_.v11[1];
       }
       else {
-        v6 = (unsigned __int64)LOBYTE(v9_.v9[0]) >> 1;
+        v7 = (unsigned __int64)LOBYTE(v11_.v11[0]) >> 1;
       }
-      if (v6 != 0) {
-        ui_LayoutAccessor_SetPaneVisible_alt1(a1 + 848, (__int64)"T_Annotation",
-                                              1);
-        if ((v9_.v9[0] & 1) != 0) {
-          v7 = v9_.v10;
+      if (v7 != 0) {
+        ui_LayoutAccessor_SetPaneVisible_alt2(a1 + 848, "T_Annotation", 1);
+        if ((v11_.v11[0] & 1) != 0) {
+          v8 = v11_.v12;
         }
         else {
-          v7 = (char*)v9_.v9 + 1;
+          v8 = (char*)v11_.v11 + 1;
         }
-        LayoutAccessor_1562060((__int64*)(a1 + 848), (__int64)"T_Annotation",
-                               v7);
+        LayoutAccessor_1562060_alt1((__int64*)(a1 + 848), "T_Annotation", v8);
       }
       else {
-        ui_LayoutAccessor_SetPaneVisible_alt1(a1 + 848, (__int64)"T_Annotation",
-                                              0);
+        ui_LayoutAccessor_SetPaneVisible_alt2(a1 + 848, "T_Annotation", 0);
       }
-      result = ui_LayoutAccessor_FindAlignment_alt1((__int64*)(a1 + 848),
-                                                    (__int64)"A_Help");
-      if (result != 0) {
-        result = Alignment_56b600_alt1(result);
+      v9 = ui_LayoutAccessor_FindAlignment_alt2((__int64*)(a1 + 848), "A_Help");
+      if (v9 != 0) {
+        Alignment_56b600_alt1(v9);
       }
-      if ((v9_.v9[0] & 1) != 0 && v9_.v10 != nullptr) {
-        v8 = 128;
+      if ((v11_.v11[0] & 1) != 0 && v11_.v12 != nullptr) {
+        v10 = 128;
         if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-          v8 = 56;
+          v10 = 56;
         }
-        return nn_mem_StandardAllocator_Free(
-            *(_QWORD*)fw_memory_g_heap_manager_ptr + v8);
+        nn_mem_StandardAllocator_Free_alt1(
+            *(_QWORD*)fw_memory_g_heap_manager_ptr + v10, (__int64)v11_.v12);
       }
     }
   }
-  return result;
 }
 
 bool ProcGameOverMenu_Unknown124(__int64 a1, long double a2)

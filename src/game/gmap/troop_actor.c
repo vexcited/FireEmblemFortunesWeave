@@ -76,6 +76,12 @@ float Camera_1315570_alt1(__int64, double,
                           long double) __asm__("Camera_1315570");
 __attribute__((swiftcall)) void TroopActor_Unknown4(PSEUDO_X8 x8_, __int64 a1,
                                                     double a3, long double a4);
+__int64 GameRoutine_bd7f40_alt1(__int64 result,
+                                char) __asm__("GameRoutine_bd7f40");
+__int64 wld_Crc32_alt1(int, unsigned __int8*,
+                       unsigned __int64) __asm__("wld_Crc32");
+int __cxa_guard_acquire_alt1(__int64) __asm__("__cxa_guard_acquire");
+void __cxa_guard_release_alt2(__int64) __asm__("__cxa_guard_release");
 
 __int64 TroopActor_Unknown2(__int64 a1)
 {
@@ -577,26 +583,23 @@ __int64 game_gmap_TroopActor_SetIsSilhouette_lambda0_Invoke(__int64 result,
   int v8;
   __int64 v9;
   __int64 v10;
-  __int64 v11;
-  __int64 v12;
-  __int64 v13;
 
   explicit = atomic_load_explicit((atomic_uchar* volatile)GameData_212d4d8,
                                   memory_order_acquire);
   v3 = GameData_212d4d0;
   if ((explicit & 1) == 0) {
-    v12 = a2;
-    v13 = result;
-    v8 = __cxa_guard_acquire(GameData_212d4d8);
+    v9 = a2;
+    v10 = result;
+    v8 = __cxa_guard_acquire_alt1((__int64)GameData_212d4d8);
     v3 = GameData_212d4d0;
-    a2 = v12;
-    result = v13;
+    a2 = v9;
+    result = v10;
     if (v8 != 0) {
-      *GameData_212d4d0 = wld_Crc32(0, "CharacterMaterial", 17);
-      __cxa_guard_release(GameData_212d4d8, v9, v10, v11);
+      *GameData_212d4d0 = wld_Crc32_alt1(0, "CharacterMaterial", 0x11u);
+      __cxa_guard_release_alt2((__int64)GameData_212d4d8);
       v3 = GameData_212d4d0;
-      a2 = v12;
-      result = v13;
+      a2 = v9;
+      result = v10;
     }
   }
   v4 = *v3;
@@ -606,8 +609,8 @@ __int64 game_gmap_TroopActor_SetIsSilhouette_lambda0_Invoke(__int64 result,
     v5 -= 16;
     if (v7 == v4) {
       if (*(_QWORD*)(a2 + 512) != v5 && *(_QWORD*)(v5 + 8) != 0) {
-        return GameRoutine_bd7f40(*(_QWORD*)(v5 + 8),
-                                  *(unsigned __int8*)(result + 8));
+        return GameRoutine_bd7f40_alt1(*(_QWORD*)(v5 + 8),
+                                       *(_BYTE*)(result + 8));
       }
       return result;
     }

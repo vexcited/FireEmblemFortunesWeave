@@ -38,6 +38,8 @@ void UIBase_da1870_alt1(float*) __asm__("UIBase_da1870");
 void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void UIDungeonGauge_Unknown2(float* a1);
+char* GameRoutine_a4dbe0_alt2(__int64, const char*,
+                              char) __asm__("GameRoutine_a4dbe0");
 
 _QWORD* UIDungeonGauge_Destructor(_QWORD* result)
 {
@@ -214,7 +216,7 @@ void UIDungeonGauge_Unknown2(float* a1)
   int v5;
   __int64 v6;
   __int64 v7;
-  _BYTE* v8;
+  const char* v8;
   __int64 v9;
   char* v10;
   __int64 v11;
@@ -292,7 +294,7 @@ LABEL_11:
   }
   else {
     v7 = *v12_.v13;
-    v8 = *(_BYTE**)(Unit_6c8300_alt1((_QWORD*)*v12_.v13, 0) + 32);
+    v8 = *(const char**)(Unit_6c8300_alt1((_QWORD*)*v12_.v13, 0) + 32);
     if (v8 != nullptr) {
       v12_.v25 = -1;
       v12_.v26 = -1;
@@ -314,7 +316,7 @@ LABEL_11:
       v12_.v37 = 8;
       v12_.v23 = -65529;
       v12_.v24 = -65528;
-      v10 = GameRoutine_a4dbe0_alt1(v9, v8, 0);
+      v10 = GameRoutine_a4dbe0_alt2(v9, v8, 0);
     }
     else {
       v10 = &GameData_1a9f09e;

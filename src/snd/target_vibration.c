@@ -14,7 +14,8 @@ __int64 nn_mem_StandardAllocator_Free(_QWORD);
 extern __int64 (*snd_TargetVibration_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 __int64 TargetVibration_Destructor(_QWORD* a1);
-__int64 TargetVibration_DeletingDestructor(_QWORD* a1);
+__int64 TargetVibration_DeletingDestructor_alt1(_QWORD* a1) __asm__(
+    "TargetVibration_DeletingDestructor");
 __int64 TargetVibration_Unknown3(__int64 a1);
 __int64 TargetVibration_Unknown8(__int64 result, __int64 a2, int a3, __int64 a4,
                                  int a5);
@@ -29,6 +30,10 @@ __int64 TargetVibration_Unknown19(__int64 a1);
 __int64 TargetVibration_Unknown20(__int64 a1, __int64 a2);
 __int64 TargetVibration_Unknown21(__int64 a1, __int64 a2, unsigned int a3);
 __int64 TargetVibration_Unknown15(__int64 result);
+__int64 TargetVibration_6171e0(_QWORD*);
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void TargetVibration_DeletingDestructor(_QWORD* a1);
 
 __int64 TargetVibration_Destructor(_QWORD* a1)
 {
@@ -47,25 +52,29 @@ __int64 TargetVibration_Destructor(_QWORD* a1)
   return result;
 }
 
-__int64 TargetVibration_DeletingDestructor(_QWORD* a1)
+void TargetVibration_DeletingDestructor(_QWORD* a1)
 {
-  __int64 v2;
+  _QWORD* v2;
+  _QWORD* v3;
+  __int64 v4;
 
   *a1 = snd_TargetVibration_vtable;
-  if (a1[4] != 0) {
-    GameRoutine_6171e0();
+  v2 = (_QWORD*)a1[4];
+  if (v2 != nullptr) {
+    TargetVibration_6171e0(v2);
     a1[4] = 0;
   }
-  if (a1[5] != 0) {
-    GameRoutine_6171e0();
+  v3 = (_QWORD*)a1[5];
+  if (v3 != nullptr) {
+    TargetVibration_6171e0(v3);
     a1[5] = 0;
   }
-  v2 = 128;
+  v4 = 128;
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-    v2 = 56;
+    v4 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v2);
+  nn_mem_StandardAllocator_Free_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v4, (__int64)a1);
 }
 
 __int64 TargetVibration_Unknown3(__int64 a1)

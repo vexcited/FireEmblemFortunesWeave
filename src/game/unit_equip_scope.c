@@ -8,9 +8,16 @@ __int64 GameRoutine_6c6ec0(_QWORD);
 __int64 nn_mem_StandardAllocator_Free(_QWORD);
 extern __int64 (*game_UnitEquipScope_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
-__int64 UnitEquipScope_DeletingDestructor(_QWORD* a1);
+__int64 UnitEquipScope_DeletingDestructor_alt1(_QWORD* a1) __asm__(
+    "UnitEquipScope_DeletingDestructor");
+__int64 GameRoutine_6c6da0_alt1(__int64) __asm__("GameRoutine_6c6da0");
+__int64 game_6c51e0(__int64 result);
+__int64 game_6c6ec0(__int64);
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void UnitEquipScope_DeletingDestructor(_QWORD* a1);
 
-__int64 UnitEquipScope_DeletingDestructor(_QWORD* a1)
+void UnitEquipScope_DeletingDestructor(_QWORD* a1)
 {
   __int64 v2;
   __int64 v3;
@@ -27,9 +34,9 @@ __int64 UnitEquipScope_DeletingDestructor(_QWORD* a1)
     if ((v4 & 0x10000000) == 0) {
       v5 = a1[1];
       *(_DWORD*)(v3 + 416) = v4 | 0x10000000;
-      GameRoutine_6c51e0(v5);
-      GameRoutine_6c6da0(v3);
-      GameRoutine_6c6ec0(v3);
+      game_6c51e0(v5);
+      GameRoutine_6c6da0_alt1(v3);
+      game_6c6ec0(v3);
       *(_DWORD*)(v3 + 416) &= ~0x10000000u;
     }
     a1[1] = 0;
@@ -38,8 +45,8 @@ __int64 UnitEquipScope_DeletingDestructor(_QWORD* a1)
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
     v6 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v6);
+  nn_mem_StandardAllocator_Free_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v6, (__int64)a1);
 }
 
 #pragma GCC visibility pop

@@ -41,6 +41,8 @@ __int64* game_facility_1498ce0(__int64 a1, unsigned __int64 a2,
                                unsigned __int8* a3);
 _QWORD* game_facility_15e7650(_QWORD* result, int a2, __int64 a3);
 __int64 game_facility_16b3920(__int64 a1, char a2);
+__int64 GameRoutine_9b11a0_alt1(_QWORD*, unsigned __int64*,
+                                int) __asm__("GameRoutine_9b11a0");
 
 __int64 game_facility_94ad40(__int64 a1)
 {
@@ -142,7 +144,7 @@ __int64 game_facility_94ad40(__int64 a1)
   }
   v21_.v22 = &GameData_1ac3209;
   v21_.v21 = game_HashString((__int64)&GameData_1ac3209);
-  GameRoutine_9b11a0(&GameData_21f61c0, (unsigned __int64*)&v21_.v21, 1u);
+  GameRoutine_9b11a0_alt1(&GameData_21f61c0, (unsigned __int64*)&v21_.v21, 1);
   return FacilityVariable_1472420((unsigned __int64*)&GameData_2249208,
                                   (unsigned __int64*)&GameData_2249218,
                                   *(_WORD*)(a1 + 16));

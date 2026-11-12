@@ -31,6 +31,14 @@ __int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
     "std___1___shared_weak_count___release_weak");
 float CombatLegionManager_e2d770(__int64, float*, float*, float*, float*);
 void CombatLegionManager_e2ddb0(__int64, __int64, __int64);
+__int64 game_combat_e326e0(__int64, __int64*);
+__int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
+void __attribute__((noreturn))
+GameRoutine_60a210_alt1() __asm__("GameRoutine_60a210");
+void __attribute__((noreturn))
+GameRoutine_e334b0_alt1() __asm__("GameRoutine_e334b0");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 void StateMachines_e31cc0(__int64 a1)
 {
@@ -452,37 +460,37 @@ __int64 StateMachines_e32520(__int64 a1, __int64 a2)
   unsigned __int64 v4;
   char* v5;
   __int64 v6;
-  _QWORD* v7;
+  __int64* v7;
   char* v8;
   __int64 v9;
   unsigned __int64 v10;
   unsigned __int64 v11;
   __int64 v12;
   char* v13;
-  char* v14;
+  unsigned __int64 v14;
   __int64 v15;
   __int64 v16;
   __int64 result;
   unsigned int v18;
   __int64 v19;
-  __int64 v20;
-  __int64 v21;
-  char* v22;
-  unsigned __int64 v23;
+  struct {
+    __int64 v21;
+    char* v22;
+    unsigned __int64 v23;
+  } v21_;
 
   v2 = *(_DWORD**)a2;
   v3 = *(_DWORD**)(a2 + 8);
-  v22 = nullptr;
-  v23 = 0;
-  v21 = 0;
+  v21_.v22 = nullptr;
+  v21_.v23 = 0;
+  v21_.v21 = 0;
   if (v2 == v3) {
-    return GameRoutine_e326e0(a1, &v21);
+    return game_combat_e326e0(a1, &v21_.v21);
   }
-  v20 = a1;
   v4 = 0;
   v5 = nullptr;
   v6 = 0;
-  v7 = (_QWORD*)fw_memory_g_heap_manager_ptr;
+  v7 = (__int64*)fw_memory_g_heap_manager_ptr;
   do {
     if ((unsigned __int64)v5 < v4) {
       *(_DWORD*)v5 = *v2;
@@ -494,7 +502,7 @@ __int64 StateMachines_e32520(__int64 a1, __int64 a2)
       v9 = (__int64)&v5[-v6] >> 3;
       v10 = v9 + 1;
       if ((unsigned __int64)(v9 + 1) >> 61 != 0) {
-        GameRoutine_e334b0();
+        GameRoutine_e334b0_alt1();
       }
       if ((__int64)(v4 - v6) >> 2 > v10) {
         v10 = (__int64)(v4 - v6) >> 2;
@@ -507,43 +515,43 @@ __int64 StateMachines_e32520(__int64 a1, __int64 a2)
       }
       if (v11 != 0) {
         if (v11 >> 61 != 0) {
-          GameRoutine_60a210(a1);
+          GameRoutine_60a210_alt1();
         }
-        v12 = fw_memory_HeapManager_Allocate(*v7, 8 * v11, 16, 0);
+        v12 = fw_memory_HeapManager_Allocate_alt1(*v7, 8 * v11, 16, 0);
       }
       else {
         v12 = 0;
       }
       v13 = &v8[v12];
       v4 = v12 + 8 * v11;
-      v14 = &v5[-v6];
+      v14 = (unsigned __int64)&v5[-v6];
       v15 = (__int64)&v8[v12 + -8 * v9];
       v5 = &v8[v12 + 8];
       *(_DWORD*)v13 = *v2;
       *((_DWORD*)v13 + 1) = 1;
-      a1 = memcpy(v15, v6, v14);
+      memcpy_alt1(v15, v6, v14);
       if (v6 != 0) {
         v16 = 128;
-        if (*(_QWORD*)(*v7 + 200LL) == 0) {
+        if (*(_QWORD*)(*v7 + 200) == 0) {
           v16 = 56;
         }
-        a1 = nn_mem_StandardAllocator_Free(*v7 + v16);
+        nn_mem_StandardAllocator_Free_alt1(*v7 + v16, v6);
       }
       v6 = v15;
     }
     ++v2;
   } while (v2 != v3);
-  v22 = v5;
-  v23 = v4;
-  v21 = v6;
-  result = GameRoutine_e326e0(v20, &v21);
+  v21_.v22 = v5;
+  v21_.v23 = v4;
+  v21_.v21 = v6;
+  result = game_combat_e326e0(a1, &v21_.v21);
   if (v6 != 0) {
     v18 = result;
     v19 = 128;
-    if (*(_QWORD*)(*v7 + 200LL) == 0) {
+    if (*(_QWORD*)(*v7 + 200) == 0) {
       v19 = 56;
     }
-    nn_mem_StandardAllocator_Free(*v7 + v19);
+    nn_mem_StandardAllocator_Free_alt1(*v7 + v19, v6);
     return v18;
   }
   return result;

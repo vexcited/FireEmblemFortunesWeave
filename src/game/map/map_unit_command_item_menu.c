@@ -63,6 +63,11 @@ __int64 game_menu_BasicMenu_Unknown16defa0_alt1(float*) __asm__(
     "game_menu_BasicMenu_Unknown16defa0");
 void __attribute__((noreturn))
 GameRoutine_60a310_alt1() __asm__("GameRoutine_60a310");
+__int64 fw_text_String_CopyTerminated_alt1(
+    __int64*, __int64,
+    unsigned __int64) __asm__("fw_text_String_CopyTerminated");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 __int64 MapUnitCommandItemMenu_15c09e0(__int64 a1)
 {
@@ -415,7 +420,7 @@ __int64 game_map_MapUnitCommandItemMenu_OnBuild_lambda0_Invoke(__int64 a1,
                                                                __int64 a2)
 {
   __int64 v2;
-  __int64* v3;
+  __int64 v3;
   __int64 v4;
   __int64* v5;
   __int64 v6;
@@ -423,48 +428,52 @@ __int64 game_map_MapUnitCommandItemMenu_OnBuild_lambda0_Invoke(__int64 a1,
   __int64 result;
   unsigned int v10;
   __int64 v11;
-  __int64 v12;
-  __int64 v13;
-  __int64* v14;
+  struct {
+    __int64 v12;
+    __int64 v13;
+    __int64* v14;
+  } v12_;
 
   if ((*(_BYTE*)(*(_QWORD*)a2 + 96LL) & 1) != 0) {
-    fw_text_String_CopyTerminated(&v12, *(_QWORD*)(*(_QWORD*)a2 + 112LL));
+    fw_text_String_CopyTerminated_alt1(&v12_.v12,
+                                       *(_QWORD*)(*(_QWORD*)a2 + 112LL),
+                                       *(_QWORD*)(*(_QWORD*)a2 + 104LL));
   }
   else {
     v2 = *(_QWORD*)(*(_QWORD*)a2 + 104LL);
-    v3 = *(__int64**)(*(_QWORD*)a2 + 112LL);
-    v12 = *(_QWORD*)(*(_QWORD*)a2 + 96LL);
-    v13 = v2;
-    v14 = v3;
+    v3 = *(_QWORD*)(*(_QWORD*)a2 + 112LL);
+    v12_.v12 = *(_QWORD*)(*(_QWORD*)a2 + 96LL);
+    v12_.v13 = v2;
+    v12_.v14 = (__int64*)v3;
   }
-  v4 = v13;
-  if ((v12 & 1) == 0) {
-    v4 = (unsigned __int8)v12 >> 1;
+  v4 = v12_.v13;
+  if ((v12_.v12 & 1) == 0) {
+    v4 = (unsigned __int8)v12_.v12 >> 1;
   }
   if (v4 != 16) {
     result = 0;
-    if ((v12 & 1) == 0) {
+    if ((v12_.v12 & 1) == 0) {
       return result;
     }
     goto LABEL_18;
   }
-  v5 = v14;
-  if ((v12 & 1) == 0) {
-    v5 = (__int64*)((char*)&v12 + 1);
+  v5 = v12_.v14;
+  if ((v12_.v12 & 1) == 0) {
+    v5 = (__int64*)((char*)&v12_.v12 + 1);
   }
   v7 = *v5;
   v6 = v5[1];
   result = v7 == 0x4D7379535F44494DLL && v6 == 0x6D6574495F756E65LL;
-  if ((v12 & 1) != 0) {
+  if ((v12_.v12 & 1) != 0) {
   LABEL_18:
-    if (v14 != nullptr) {
+    if (v12_.v14 != nullptr) {
       v10 = result;
       v11 = 128;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
         v11 = 56;
       }
-      nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                    v11);
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v11, (__int64)v12_.v14);
       return v10;
     }
   }

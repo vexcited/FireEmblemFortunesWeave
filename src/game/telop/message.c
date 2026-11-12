@@ -64,6 +64,8 @@ struct PseudoSret TextBoxEx_188aa00(_QWORD, _QWORD, long double);
 __int64 Message_16f9b50(__int64 a1, __int64* a2, __int64* a3);
 __int64 Message_16f9d60(__int64 a1, __int64* a2, __int64* a3);
 void Message_Unknown33(__int64 a1);
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 __int64 game_telop_Message_SetCommon(__int64 a1, unsigned __int8* a2)
 {
@@ -641,7 +643,8 @@ __int64 Message_16f9b50(__int64 a1, __int64* a2, __int64* a3)
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v6 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v6);
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v6, v9_.v12);
     result = v5;
   }
   if ((v9_.v9[0] & 1) != 0 && v9_.v10 != 0) {
@@ -650,7 +653,8 @@ __int64 Message_16f9b50(__int64 a1, __int64* a2, __int64* a3)
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v8 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v8);
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v8, v9_.v10);
     return v7;
   }
   return result;
@@ -755,7 +759,8 @@ __int64 Message_16f9d60(__int64 a1, __int64* a2, __int64* a3)
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v6 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v6);
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v6, v9_.v12);
     result = v5;
   }
   if ((v9_.v9[0] & 1) != 0 && v9_.v10 != 0) {
@@ -764,7 +769,8 @@ __int64 Message_16f9d60(__int64 a1, __int64* a2, __int64* a3)
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v8 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v8);
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v8, v9_.v10);
     return v7;
   }
   return result;

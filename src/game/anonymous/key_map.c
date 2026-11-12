@@ -46,11 +46,13 @@ void __attribute__((noreturn))
 GameRoutine_60a210_alt1() __asm__("GameRoutine_60a210");
 void __attribute__((noreturn)) String_60a250(_QWORD);
 __int64 KeyMap_1557b10_alt1(__int64 a1, int a2) __asm__("KeyMap_1557b10");
-_QWORD* KeyMap_1559360(_QWORD* result, int a2, int a3);
+_QWORD* KeyMap_1559360_alt3(_QWORD* result, int a2,
+                            int a3) __asm__("KeyMap_1559360");
 void KeyMap_15596e0(__int64 a1, int* a2);
 void KeyMap_1559920_alt2(float* a1,
                          unsigned __int64 a2) __asm__("KeyMap_1559920");
-_QWORD* KeyMap_1559e20(_QWORD* result, unsigned int a2, int a3, int a4);
+_QWORD* KeyMap_1559e20_alt3(_QWORD* result, unsigned int a2, int a3,
+                            int a4) __asm__("KeyMap_1559e20");
 _QWORD* KeyMap_155a1a0(_QWORD* result);
 _QWORD* KeyMap_155a380(_QWORD* result);
 _QWORD* KeyMap_155a560(_QWORD* result);
@@ -59,7 +61,8 @@ _QWORD* KeyMap_155a920(_QWORD* a1);
 _QWORD* KeyMap_155ab00(_QWORD* a1);
 _QWORD* KeyMap_155ace0(_QWORD* a1);
 _QWORD* KeyMap_155b060(_QWORD* a1);
-_QWORD* KeyMap_155b220(_QWORD* result, unsigned int a2, int a3);
+_QWORD* KeyMap_155b220_alt3(_QWORD* result, unsigned int a2,
+                            int a3) __asm__("KeyMap_155b220");
 _QWORD* KeyMap_155b5a0(_QWORD* result);
 _QWORD* KeyMap_155b860(_QWORD* result);
 _QWORD* KeyMap_155ba40(_QWORD* result);
@@ -90,6 +93,12 @@ std___1___next_prime_alt1(unsigned __int64) __asm__("std___1___next_prime");
 void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void KeyMap_1559920(__int64 a1, unsigned __int64 a2);
+__int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
+void __attribute__((noreturn))
+GameRoutine_1559c60_alt1() __asm__("GameRoutine_1559c60");
+void KeyMap_1559360(_QWORD* a1, int a2, int a3);
+void KeyMap_1559e20(_QWORD* a1, unsigned int a2, int a3, int a4);
+void KeyMap_155b220(_QWORD* a1, unsigned int a2, int a3);
 
 void KeyMap_1557b10(__int64 a1, int a2)
 {
@@ -961,12 +970,11 @@ void KeyMap_1557b10(__int64 a1, int a2)
   }
 }
 
-_QWORD* KeyMap_1559360(_QWORD* result, int a2, int a3)
+void KeyMap_1559360(_QWORD* a1, int a2, int a3)
 {
   unsigned __int64 v3;
   __int64 v4;
-  _QWORD* v7;
-  _QWORD* v8;
+  __int64* v8;
   unsigned __int64 v10;
   unsigned __int64 v11;
   __int64** v12;
@@ -984,22 +992,24 @@ _QWORD* KeyMap_1559360(_QWORD* result, int a2, int a3)
   unsigned __int64 v24;
   __int64 v25;
   __int64 v26;
-  __int64 v27;
+  unsigned __int64 v27;
   unsigned __int64 v28;
   unsigned __int64 v29;
   unsigned __int64 v30;
   __int64 v31;
-  __int64 v32;
+  unsigned __int64 v32;
   __int64 v33;
-  int v34;
-  __int64 v35;
-  __int64 v36;
-  __int64 v37;
+  struct {
+    int v34;
+    char gap4_[4];
+    __int64 v35;
+    __int64 v36;
+    __int64 v37;
+  } v34_;
 
-  v3 = result[1];
-  v4 = result[3];
-  v7 = result;
-  v8 = (_QWORD*)fw_memory_g_heap_manager_ptr;
+  v3 = a1[1];
+  v4 = a1[3];
+  v8 = (__int64*)fw_memory_g_heap_manager_ptr;
   if (v3 != 0 && v4 != 0) {
     v10 = v3 - 1;
     if ((v3 & (v3 - 1)) != 0) {
@@ -1011,7 +1021,7 @@ _QWORD* KeyMap_1559360(_QWORD* result, int a2, int a3)
     else {
       v11 = v10 & a2;
     }
-    v12 = *(__int64***)(*result + 8 * v11);
+    v12 = *(__int64***)(*a1 + 8 * v11);
     if (v12 != nullptr) {
       v13 = *v12;
       if (v13 != nullptr) {
@@ -1053,20 +1063,20 @@ _QWORD* KeyMap_1559360(_QWORD* result, int a2, int a3)
     }
   }
 LABEL_24:
-  v34 = a2;
-  v35 = 0;
-  v36 = 0;
-  v37 = 0;
-  result = (_QWORD*)KeyMap_15596e0_alt1(result, &v34);
-  if (v35 != 0) {
+  v34_.v34 = a2;
+  v34_.v35 = 0;
+  v34_.v36 = 0;
+  v34_.v37 = 0;
+  KeyMap_15596e0_alt2((__int64)a1, &v34_.v34);
+  if (v34_.v35 != 0) {
     v16 = 128;
-    if (*(_QWORD*)(*v8 + 200LL) == 0) {
+    if (*(_QWORD*)(*v8 + 200) == 0) {
       v16 = 56;
     }
-    result = (_QWORD*)nn_mem_StandardAllocator_Free(*v8 + v16);
+    nn_mem_StandardAllocator_Free_alt2(*v8 + v16, v34_.v35);
   }
-  v3 = v7[1];
-  v4 = v7[3];
+  v3 = a1[1];
+  v4 = a1[3];
 LABEL_29:
   if (v3 == 0 || v4 == 0) {
     goto LABEL_67;
@@ -1081,10 +1091,10 @@ LABEL_29:
   else {
     v18 = v17 & a2;
   }
-  v19 = *(__int64***)(*v7 + 8 * v18);
+  v19 = *(__int64***)(*a1 + 8 * v18);
   if (v19 == nullptr || (v20 = *v19, *v19 == nullptr)) {
   LABEL_67:
-    String_60a250("unordered_map::at: key not found");
+    String_60a250_alt1("unordered_map::at: key not found");
   }
   if ((v3 & v17) == 0) {
     while (1) {
@@ -1131,7 +1141,7 @@ LABEL_50:
     v27 = v23 - v26;
     v28 = 1 - 0x5555555555555555LL * ((__int64)(v23 - v26) >> 3);
     if (v28 > 0xAAAAAAAAAAAAAAALL) {
-      GameRoutine_1559c60(result);
+      GameRoutine_1559c60_alt1();
     }
     v29 = 0xAAAAAAAAAAAAAAABLL * ((__int64)(v24 - v26) >> 3);
     if (2 * v29 > v28) {
@@ -1145,9 +1155,9 @@ LABEL_50:
     }
     if (v30 != 0) {
       if (v30 > 0xAAAAAAAAAAAAAAALL) {
-        GameRoutine_60a210(result);
+        GameRoutine_60a210_alt1();
       }
-      v31 = fw_memory_HeapManager_Allocate(*v8, 24 * v30, 16, 0);
+      v31 = fw_memory_HeapManager_Allocate_alt1(*v8, 24 * v30, 16, 0);
     }
     else {
       v31 = 0;
@@ -1159,16 +1169,16 @@ LABEL_50:
     v25 = v31 + v27 + 24;
     *(_BYTE*)(v32 + 20) = 0;
     *(_QWORD*)(v32 + 4) = 0xFFFFFFFFLL;
-    result = (_QWORD*)memcpy(v31, v26, v27);
+    memcpy_alt1(v31, v26, v27);
     v20[3] = v31;
     v20[4] = v25;
     v20[5] = v31 + 24 * v30;
     if (v26 != 0) {
       v33 = 128;
-      if (*(_QWORD*)(*v8 + 200LL) == 0) {
+      if (*(_QWORD*)(*v8 + 200) == 0) {
         v33 = 56;
       }
-      result = (_QWORD*)nn_mem_StandardAllocator_Free(*v8 + v33);
+      nn_mem_StandardAllocator_Free_alt2(*v8 + v33, v26);
     }
   }
   else {
@@ -1180,7 +1190,6 @@ LABEL_50:
     *(_QWORD*)(v23 + 4) = 0xFFFFFFFFLL;
   }
   v20[4] = v25;
-  return result;
 }
 
 void KeyMap_15596e0(__int64 a1, int* a2)
@@ -1514,12 +1523,11 @@ void KeyMap_1559920(__int64 a1, unsigned __int64 a2)
   }
 }
 
-_QWORD* KeyMap_1559e20(_QWORD* result, unsigned int a2, int a3, int a4)
+void KeyMap_1559e20(_QWORD* a1, unsigned int a2, int a3, int a4)
 {
   unsigned __int64 v4;
   __int64 v5;
-  _QWORD* v9;
-  _QWORD* v10;
+  __int64* v10;
   unsigned __int64 v12;
   __int64 v13;
   __int64** v14;
@@ -1537,34 +1545,36 @@ _QWORD* KeyMap_1559e20(_QWORD* result, unsigned int a2, int a3, int a4)
   unsigned __int64 v26;
   __int64 v27;
   __int64 v28;
-  __int64 v29;
+  unsigned __int64 v29;
   unsigned __int64 v30;
   unsigned __int64 v31;
   unsigned __int64 v32;
   __int64 v33;
-  __int64 v34;
+  unsigned __int64 v34;
   __int64 v35;
-  unsigned int v36;
-  __int64 v37;
-  __int64 v38;
-  __int64 v39;
+  struct {
+    unsigned int v36;
+    char gap4_[4];
+    __int64 v37;
+    __int64 v38;
+    __int64 v39;
+  } v36_;
 
-  v4 = result[1];
-  v5 = result[3];
-  v9 = result;
-  v10 = (_QWORD*)fw_memory_g_heap_manager_ptr;
+  v4 = a1[1];
+  v5 = a1[3];
+  v10 = (__int64*)fw_memory_g_heap_manager_ptr;
   if (v4 != 0 && v5 != 0) {
     v12 = v4 - 1;
     if ((v4 & (v4 - 1)) != 0) {
       v13 = a2;
       if (v4 <= a2) {
-        v13 = (unsigned __int8)a2 % (unsigned int)(unsigned __int8)result[1];
+        v13 = (unsigned __int8)a2 % (unsigned int)(unsigned __int8)a1[1];
       }
     }
     else {
       v13 = ((_DWORD)v4 + 15) & a2;
     }
-    v14 = *(__int64***)(*result + 8 * v13);
+    v14 = *(__int64***)(*a1 + 8 * v13);
     if (v14 != nullptr) {
       v15 = *v14;
       if (v15 != nullptr) {
@@ -1606,20 +1616,20 @@ _QWORD* KeyMap_1559e20(_QWORD* result, unsigned int a2, int a3, int a4)
     }
   }
 LABEL_24:
-  v36 = a2;
-  v37 = 0;
-  v38 = 0;
-  v39 = 0;
-  result = (_QWORD*)KeyMap_15596e0_alt2((__int64)result, (int*)&v36);
-  if (v37 != 0) {
+  v36_.v36 = a2;
+  v36_.v37 = 0;
+  v36_.v38 = 0;
+  v36_.v39 = 0;
+  KeyMap_15596e0_alt2((__int64)a1, (int*)&v36_.v36);
+  if (v36_.v37 != 0) {
     v18 = 128;
-    if (*(_QWORD*)(*v10 + 200LL) == 0) {
+    if (*(_QWORD*)(*v10 + 200) == 0) {
       v18 = 56;
     }
-    result = (_QWORD*)nn_mem_StandardAllocator_Free(*v10 + v18);
+    nn_mem_StandardAllocator_Free_alt2(*v10 + v18, v36_.v37);
   }
-  v4 = v9[1];
-  v5 = v9[3];
+  v4 = a1[1];
+  v5 = a1[3];
 LABEL_29:
   if (v4 == 0 || v5 == 0) {
     goto LABEL_67;
@@ -1634,10 +1644,10 @@ LABEL_29:
   else {
     v20 = ((_DWORD)v4 + 15) & a2;
   }
-  v21 = *(__int64***)(*v9 + 8 * v20);
+  v21 = *(__int64***)(*a1 + 8 * v20);
   if (v21 == nullptr || (v22 = *v21, *v21 == nullptr)) {
   LABEL_67:
-    String_60a250("unordered_map::at: key not found");
+    String_60a250_alt1("unordered_map::at: key not found");
   }
   if ((v4 & v19) == 0) {
     while (1) {
@@ -1684,7 +1694,7 @@ LABEL_50:
     v29 = v25 - v28;
     v30 = 1 - 0x5555555555555555LL * ((__int64)(v25 - v28) >> 3);
     if (v30 > 0xAAAAAAAAAAAAAAALL) {
-      GameRoutine_1559c60(result);
+      GameRoutine_1559c60_alt1();
     }
     v31 = 0xAAAAAAAAAAAAAAABLL * ((__int64)(v26 - v28) >> 3);
     if (2 * v31 > v30) {
@@ -1698,9 +1708,9 @@ LABEL_50:
     }
     if (v32 != 0) {
       if (v32 > 0xAAAAAAAAAAAAAAALL) {
-        GameRoutine_60a210(result);
+        GameRoutine_60a210_alt1();
       }
-      v33 = fw_memory_HeapManager_Allocate(*v10, 24 * v32, 16, 0);
+      v33 = fw_memory_HeapManager_Allocate_alt1(*v10, 24 * v32, 16, 0);
     }
     else {
       v33 = 0;
@@ -1713,16 +1723,16 @@ LABEL_50:
     *(_BYTE*)(v34 + 20) = 0;
     *(_DWORD*)v34 = -1;
     *(_DWORD*)(v34 + 4) = a3;
-    result = (_QWORD*)memcpy(v33, v28, v29);
+    memcpy_alt1(v33, v28, v29);
     v22[3] = v33;
     v22[4] = v27;
     v22[5] = v33 + 24 * v32;
     if (v28 != 0) {
       v35 = 128;
-      if (*(_QWORD*)(*v10 + 200LL) == 0) {
+      if (*(_QWORD*)(*v10 + 200) == 0) {
         v35 = 56;
       }
-      result = (_QWORD*)nn_mem_StandardAllocator_Free(*v10 + v35);
+      nn_mem_StandardAllocator_Free_alt2(*v10 + v35, v28);
     }
   }
   else {
@@ -1735,7 +1745,6 @@ LABEL_50:
     *(_DWORD*)(v25 + 4) = a3;
   }
   v22[4] = v27;
-  return result;
 }
 
 _QWORD* KeyMap_155a1a0(_QWORD* result)
@@ -2184,7 +2193,7 @@ _QWORD* KeyMap_155a740(_QWORD* a1)
                     if (*((_DWORD*)v11 + 4) == 23) {
                     LABEL_44:
                       v11[4] = v11[3];
-                      return KeyMap_1559360(a1, 23, 23);
+                      return KeyMap_1559360_alt3(a1, 23, 23);
                     }
                   }
                   else {
@@ -2207,12 +2216,12 @@ _QWORD* KeyMap_155a740(_QWORD* a1)
                 v7 %= v1;
               }
               if (v7 != v4) {
-                return KeyMap_1559360(a1, 23, 23);
+                return KeyMap_1559360_alt3(a1, 23, 23);
               }
             }
             v6 = (__int64*)*v6;
             if (v6 == nullptr) {
-              return KeyMap_1559360(a1, 23, 23);
+              return KeyMap_1559360_alt3(a1, 23, 23);
             }
           }
         }
@@ -2224,14 +2233,14 @@ _QWORD* KeyMap_155a740(_QWORD* a1)
             }
           }
           else if ((v8 & v3) != v4) {
-            return KeyMap_1559360(a1, 23, 23);
+            return KeyMap_1559360_alt3(a1, 23, 23);
           }
           v6 = (__int64*)*v6;
         } while (v6 != nullptr);
       }
     }
   }
-  return KeyMap_1559360(a1, 23, 23);
+  return KeyMap_1559360_alt3(a1, 23, 23);
 }
 
 _QWORD* KeyMap_155a920(_QWORD* a1)
@@ -2308,7 +2317,7 @@ _QWORD* KeyMap_155a920(_QWORD* a1)
                     if (*((_DWORD*)v11 + 4) == 24) {
                     LABEL_44:
                       v11[4] = v11[3];
-                      return KeyMap_1559360(a1, 24, 24);
+                      return KeyMap_1559360_alt3(a1, 24, 24);
                     }
                   }
                   else {
@@ -2331,12 +2340,12 @@ _QWORD* KeyMap_155a920(_QWORD* a1)
                 v7 %= v1;
               }
               if (v7 != v4) {
-                return KeyMap_1559360(a1, 24, 24);
+                return KeyMap_1559360_alt3(a1, 24, 24);
               }
             }
             v6 = (__int64*)*v6;
             if (v6 == nullptr) {
-              return KeyMap_1559360(a1, 24, 24);
+              return KeyMap_1559360_alt3(a1, 24, 24);
             }
           }
         }
@@ -2348,14 +2357,14 @@ _QWORD* KeyMap_155a920(_QWORD* a1)
             }
           }
           else if ((v8 & v3) != v4) {
-            return KeyMap_1559360(a1, 24, 24);
+            return KeyMap_1559360_alt3(a1, 24, 24);
           }
           v6 = (__int64*)*v6;
         } while (v6 != nullptr);
       }
     }
   }
-  return KeyMap_1559360(a1, 24, 24);
+  return KeyMap_1559360_alt3(a1, 24, 24);
 }
 
 _QWORD* KeyMap_155ab00(_QWORD* a1)
@@ -2432,7 +2441,7 @@ _QWORD* KeyMap_155ab00(_QWORD* a1)
                     if (*((_DWORD*)v11 + 4) == 17) {
                     LABEL_44:
                       v11[4] = v11[3];
-                      return KeyMap_1559360(a1, 17, 17);
+                      return KeyMap_1559360_alt3(a1, 17, 17);
                     }
                   }
                   else {
@@ -2455,12 +2464,12 @@ _QWORD* KeyMap_155ab00(_QWORD* a1)
                 v7 %= v1;
               }
               if (v7 != v4) {
-                return KeyMap_1559360(a1, 17, 17);
+                return KeyMap_1559360_alt3(a1, 17, 17);
               }
             }
             v6 = (__int64*)*v6;
             if (v6 == nullptr) {
-              return KeyMap_1559360(a1, 17, 17);
+              return KeyMap_1559360_alt3(a1, 17, 17);
             }
           }
         }
@@ -2472,14 +2481,14 @@ _QWORD* KeyMap_155ab00(_QWORD* a1)
             }
           }
           else if ((v8 & v3) != v4) {
-            return KeyMap_1559360(a1, 17, 17);
+            return KeyMap_1559360_alt3(a1, 17, 17);
           }
           v6 = (__int64*)*v6;
         } while (v6 != nullptr);
       }
     }
   }
-  return KeyMap_1559360(a1, 17, 17);
+  return KeyMap_1559360_alt3(a1, 17, 17);
 }
 
 _QWORD* KeyMap_155ace0(_QWORD* a1)
@@ -2556,7 +2565,7 @@ _QWORD* KeyMap_155ace0(_QWORD* a1)
                     if (*((_DWORD*)v11 + 4) == 18) {
                     LABEL_44:
                       v11[4] = v11[3];
-                      return KeyMap_1559360(a1, 18, 18);
+                      return KeyMap_1559360_alt3(a1, 18, 18);
                     }
                   }
                   else {
@@ -2579,12 +2588,12 @@ _QWORD* KeyMap_155ace0(_QWORD* a1)
                 v7 %= v1;
               }
               if (v7 != v4) {
-                return KeyMap_1559360(a1, 18, 18);
+                return KeyMap_1559360_alt3(a1, 18, 18);
               }
             }
             v6 = (__int64*)*v6;
             if (v6 == nullptr) {
-              return KeyMap_1559360(a1, 18, 18);
+              return KeyMap_1559360_alt3(a1, 18, 18);
             }
           }
         }
@@ -2596,14 +2605,14 @@ _QWORD* KeyMap_155ace0(_QWORD* a1)
             }
           }
           else if ((v8 & v3) != v4) {
-            return KeyMap_1559360(a1, 18, 18);
+            return KeyMap_1559360_alt3(a1, 18, 18);
           }
           v6 = (__int64*)*v6;
         } while (v6 != nullptr);
       }
     }
   }
-  return KeyMap_1559360(a1, 18, 18);
+  return KeyMap_1559360_alt3(a1, 18, 18);
 }
 
 _QWORD* KeyMap_155b060(_QWORD* a1)
@@ -2678,7 +2687,7 @@ _QWORD* KeyMap_155b060(_QWORD* a1)
                     if (*((_DWORD*)v12 + 4) == 4) {
                     LABEL_44:
                       v12[4] = v12[3];
-                      return KeyMap_1559360(a1, 4, 4);
+                      return KeyMap_1559360_alt3(a1, 4, 4);
                     }
                   }
                   else {
@@ -2701,12 +2710,12 @@ _QWORD* KeyMap_155b060(_QWORD* a1)
                 v8 %= v1;
               }
               if (v8 != v5) {
-                return KeyMap_1559360(a1, 4, 4);
+                return KeyMap_1559360_alt3(a1, 4, 4);
               }
             }
             v7 = (__int64*)*v7;
             if (v7 == nullptr) {
-              return KeyMap_1559360(a1, 4, 4);
+              return KeyMap_1559360_alt3(a1, 4, 4);
             }
           }
         }
@@ -2718,22 +2727,21 @@ _QWORD* KeyMap_155b060(_QWORD* a1)
             }
           }
           else if ((v9 & v4) != v5) {
-            return KeyMap_1559360(a1, 4, 4);
+            return KeyMap_1559360_alt3(a1, 4, 4);
           }
           v7 = (__int64*)*v7;
         } while (v7 != nullptr);
       }
     }
   }
-  return KeyMap_1559360(a1, 4, 4);
+  return KeyMap_1559360_alt3(a1, 4, 4);
 }
 
-_QWORD* KeyMap_155b220(_QWORD* result, unsigned int a2, int a3)
+void KeyMap_155b220(_QWORD* a1, unsigned int a2, int a3)
 {
   unsigned __int64 v3;
   __int64 v4;
-  _QWORD* v7;
-  _QWORD* v8;
+  __int64* v8;
   unsigned __int64 v10;
   __int64 v11;
   __int64** v12;
@@ -2751,34 +2759,36 @@ _QWORD* KeyMap_155b220(_QWORD* result, unsigned int a2, int a3)
   unsigned __int64 v24;
   __int64 v25;
   __int64 v26;
-  __int64 v27;
+  unsigned __int64 v27;
   unsigned __int64 v28;
   unsigned __int64 v29;
   unsigned __int64 v30;
   __int64 v31;
-  __int64 v32;
+  unsigned __int64 v32;
   __int64 v33;
-  unsigned int v34;
-  __int64 v35;
-  __int64 v36;
-  __int64 v37;
+  struct {
+    unsigned int v34;
+    char gap4_[4];
+    __int64 v35;
+    __int64 v36;
+    __int64 v37;
+  } v34_;
 
-  v3 = result[1];
-  v4 = result[3];
-  v7 = result;
-  v8 = (_QWORD*)fw_memory_g_heap_manager_ptr;
+  v3 = a1[1];
+  v4 = a1[3];
+  v8 = (__int64*)fw_memory_g_heap_manager_ptr;
   if (v3 != 0 && v4 != 0) {
     v10 = v3 - 1;
     if ((v3 & (v3 - 1)) != 0) {
       v11 = a2;
       if (v3 <= a2) {
-        v11 = (unsigned __int8)a2 % (unsigned int)(unsigned __int8)result[1];
+        v11 = (unsigned __int8)a2 % (unsigned int)(unsigned __int8)a1[1];
       }
     }
     else {
       v11 = ((_DWORD)v3 + 31) & a2;
     }
-    v12 = *(__int64***)(*result + 8 * v11);
+    v12 = *(__int64***)(*a1 + 8 * v11);
     if (v12 != nullptr) {
       v13 = *v12;
       if (v13 != nullptr) {
@@ -2820,20 +2830,20 @@ _QWORD* KeyMap_155b220(_QWORD* result, unsigned int a2, int a3)
     }
   }
 LABEL_24:
-  v34 = a2;
-  v35 = 0;
-  v36 = 0;
-  v37 = 0;
-  result = (_QWORD*)KeyMap_15596e0_alt2((__int64)result, (int*)&v34);
-  if (v35 != 0) {
+  v34_.v34 = a2;
+  v34_.v35 = 0;
+  v34_.v36 = 0;
+  v34_.v37 = 0;
+  KeyMap_15596e0_alt2((__int64)a1, (int*)&v34_.v34);
+  if (v34_.v35 != 0) {
     v16 = 128;
-    if (*(_QWORD*)(*v8 + 200LL) == 0) {
+    if (*(_QWORD*)(*v8 + 200) == 0) {
       v16 = 56;
     }
-    result = (_QWORD*)nn_mem_StandardAllocator_Free(*v8 + v16);
+    nn_mem_StandardAllocator_Free_alt2(*v8 + v16, v34_.v35);
   }
-  v3 = v7[1];
-  v4 = v7[3];
+  v3 = a1[1];
+  v4 = a1[3];
 LABEL_29:
   if (v3 == 0 || v4 == 0) {
     goto LABEL_67;
@@ -2848,10 +2858,10 @@ LABEL_29:
   else {
     v18 = ((_DWORD)v3 + 31) & a2;
   }
-  v19 = *(__int64***)(*v7 + 8 * v18);
+  v19 = *(__int64***)(*a1 + 8 * v18);
   if (v19 == nullptr || (v20 = *v19, *v19 == nullptr)) {
   LABEL_67:
-    String_60a250("unordered_map::at: key not found");
+    String_60a250_alt1("unordered_map::at: key not found");
   }
   if ((v3 & v17) == 0) {
     while (1) {
@@ -2898,7 +2908,7 @@ LABEL_50:
     v27 = v23 - v26;
     v28 = 1 - 0x5555555555555555LL * ((__int64)(v23 - v26) >> 3);
     if (v28 > 0xAAAAAAAAAAAAAAALL) {
-      GameRoutine_1559c60(result);
+      GameRoutine_1559c60_alt1();
     }
     v29 = 0xAAAAAAAAAAAAAAABLL * ((__int64)(v24 - v26) >> 3);
     if (2 * v29 > v28) {
@@ -2912,9 +2922,9 @@ LABEL_50:
     }
     if (v30 != 0) {
       if (v30 > 0xAAAAAAAAAAAAAAALL) {
-        GameRoutine_60a210(result);
+        GameRoutine_60a210_alt1();
       }
-      v31 = fw_memory_HeapManager_Allocate(*v8, 24 * v30, 16, 0);
+      v31 = fw_memory_HeapManager_Allocate_alt1(*v8, 24 * v30, 16, 0);
     }
     else {
       v31 = 0;
@@ -2926,16 +2936,16 @@ LABEL_50:
     *(_DWORD*)(v32 + 16) = 0;
     v25 = v31 + v27 + 24;
     *(_BYTE*)(v32 + 20) = 0;
-    result = (_QWORD*)memcpy(v31, v26, v27);
+    memcpy_alt1(v31, v26, v27);
     v20[3] = v31;
     v20[4] = v25;
     v20[5] = v31 + 24 * v30;
     if (v26 != 0) {
       v33 = 128;
-      if (*(_QWORD*)(*v8 + 200LL) == 0) {
+      if (*(_QWORD*)(*v8 + 200) == 0) {
         v33 = 56;
       }
-      result = (_QWORD*)nn_mem_StandardAllocator_Free(*v8 + v33);
+      nn_mem_StandardAllocator_Free_alt2(*v8 + v33, v26);
     }
   }
   else {
@@ -2947,7 +2957,6 @@ LABEL_50:
     *(_QWORD*)v23 = -1;
   }
   v20[4] = v25;
-  return result;
 }
 
 _QWORD* KeyMap_155b5a0(_QWORD* result)
@@ -3394,7 +3403,7 @@ _QWORD* KeyMap_155be20(_QWORD* a1)
                     if (*((_DWORD*)v11 + 4) == 21) {
                     LABEL_44:
                       v11[4] = v11[3];
-                      return KeyMap_1559360(a1, 21, 21);
+                      return KeyMap_1559360_alt3(a1, 21, 21);
                     }
                   }
                   else {
@@ -3417,12 +3426,12 @@ _QWORD* KeyMap_155be20(_QWORD* a1)
                 v7 %= v1;
               }
               if (v7 != v4) {
-                return KeyMap_1559360(a1, 21, 21);
+                return KeyMap_1559360_alt3(a1, 21, 21);
               }
             }
             v6 = (__int64*)*v6;
             if (v6 == nullptr) {
-              return KeyMap_1559360(a1, 21, 21);
+              return KeyMap_1559360_alt3(a1, 21, 21);
             }
           }
         }
@@ -3434,14 +3443,14 @@ _QWORD* KeyMap_155be20(_QWORD* a1)
             }
           }
           else if ((v8 & v3) != v4) {
-            return KeyMap_1559360(a1, 21, 21);
+            return KeyMap_1559360_alt3(a1, 21, 21);
           }
           v6 = (__int64*)*v6;
         } while (v6 != nullptr);
       }
     }
   }
-  return KeyMap_1559360(a1, 21, 21);
+  return KeyMap_1559360_alt3(a1, 21, 21);
 }
 
 _QWORD* KeyMap_155c000(_QWORD* a1)
@@ -3518,7 +3527,7 @@ _QWORD* KeyMap_155c000(_QWORD* a1)
                     if (*((_DWORD*)v11 + 4) == 22) {
                     LABEL_44:
                       v11[4] = v11[3];
-                      return KeyMap_1559360(a1, 22, 22);
+                      return KeyMap_1559360_alt3(a1, 22, 22);
                     }
                   }
                   else {
@@ -3541,12 +3550,12 @@ _QWORD* KeyMap_155c000(_QWORD* a1)
                 v7 %= v1;
               }
               if (v7 != v4) {
-                return KeyMap_1559360(a1, 22, 22);
+                return KeyMap_1559360_alt3(a1, 22, 22);
               }
             }
             v6 = (__int64*)*v6;
             if (v6 == nullptr) {
-              return KeyMap_1559360(a1, 22, 22);
+              return KeyMap_1559360_alt3(a1, 22, 22);
             }
           }
         }
@@ -3558,14 +3567,14 @@ _QWORD* KeyMap_155c000(_QWORD* a1)
             }
           }
           else if ((v8 & v3) != v4) {
-            return KeyMap_1559360(a1, 22, 22);
+            return KeyMap_1559360_alt3(a1, 22, 22);
           }
           v6 = (__int64*)*v6;
         } while (v6 != nullptr);
       }
     }
   }
-  return KeyMap_1559360(a1, 22, 22);
+  return KeyMap_1559360_alt3(a1, 22, 22);
 }
 
 _QWORD* KeyMap_155c1e0(_QWORD* result)

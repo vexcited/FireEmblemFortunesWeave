@@ -43,10 +43,11 @@ float32x2_t nn_g3d_5f5c70(__int64 a1, __int64 a2, float32x2_t* a3, double a4,
                           long double a5);
 float32x2_t nn_g3d_5f5e30(__int64 a1, __int64 a2, float32x2_t* a3, double a4,
                           long double a5);
+__int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
 
 __int64 nn_g3d_5ed6f0(__int64 result, int a2, int32x4_t* a3, int a4)
 {
-  _QWORD* v5;
+  __int64* v5;
   __int64 v6;
   __int64 v7;
   __int64 v8;
@@ -59,7 +60,7 @@ __int64 nn_g3d_5ed6f0(__int64 result, int a2, int32x4_t* a3, int a4)
   int32x4_t v15;
 
   if (*(_BYTE*)(result + 14) != 0) {
-    v5 = (_QWORD*)result;
+    v5 = (__int64*)result;
     if ((*(_BYTE*)(result + 8) & 1) != 0) {
       v7 = *(_QWORD*)(result + 32);
       if (*(_BYTE*)(result + 13) != 0) {
@@ -85,12 +86,12 @@ __int64 nn_g3d_5ed6f0(__int64 result, int a2, int32x4_t* a3, int a4)
     v13 = vzip1q_s32(*a3, v11);
     v14 = vzip2q_s32(*a3, v11);
     v15 = vzip1q_s32(v10, v12);
-    LANES128(v9[3]).n128_u32[0] = *(unsigned __int8*)(*v5 + 90LL);
+    LANES128(v9[3]).n128_u32[0] = *(unsigned __int8*)(*v5 + 90);
     *v9 = vzip1q_s32(v13, v15);
     v9[1] = vzip2q_s32(v13, v15);
     v9[2] = vzip1q_s32(v14, vzip2q_s32(v10, v12));
-    memcpy(&v9[4], v5[10],
-           ((__int64)(v5[11] << 30) >> 30) & 0xFFFFFFFFFFFFFFFCLL);
+    memcpy_alt1((__int64)&v9[4], v5[10],
+                (v5[11] << 30 >> 30) & 0xFFFFFFFFFFFFFFFCLL);
     GameRoutine_5fcb80(v6);
     return GameRoutine_5fcb70(v6);
   }

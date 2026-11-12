@@ -58,6 +58,14 @@ extern __int64 (*GameData_20b09f0[])();
 extern __int64* GameData_212e008[9];
 extern __int64 GameData_20b0948;
 __int64 game_menu_anonymous_ProcDeliveryTransportMenu_ACall(__int64* a1);
+__int64 GameRoutine_171fd50_alt1(__int64) __asm__("GameRoutine_171fd50");
+__int64 game_gameui_15999a0_alt1(__int64*, int, int,
+                                 __int64**) __asm__("game_gameui_15999a0");
+__int64 ui_LayoutAccessor_SetPaneVisible_alt1(
+    __int64 result, const char*,
+    char) __asm__("ui_LayoutAccessor_SetPaneVisible");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 __int64 ProcDeliveryTransportMenu_Unknown85(__int64* a1)
 {
@@ -67,32 +75,32 @@ __int64 ProcDeliveryTransportMenu_Unknown85(__int64* a1)
   __int64 v5;
   int v6;
   int v7;
-  int v8;
-  __int64 v9;
+  __int64* v8;
+  int v9;
   __int64 v10;
-  __int64* v11;
-  __int64 v12;
-  __int64* v14[3];
+  __int64 v11;
+  __int64* v12;
+  __int64 v13;
+  __int64* v15[3];
   struct {
-    __int64* v15;
     __int64* v16;
     __int64* v17;
-  } v15_;
+    __int64* v18;
+  } v16_;
 
   TransportMenu_170b4c0((__int64)a1);
-  ui_LayoutAccessor_SetPaneVisible((__int64)(a1 + 106), (__int64)"A_Condition",
-                                   1);
+  ui_LayoutAccessor_SetPaneVisible_alt1((__int64)(a1 + 106), "A_Condition", 1);
   v2 = a1[133];
   v3 = fw_memory_g_heap_manager_ptr;
   if (v2 == 0) {
-    v10 = a1[134];
-    if (v10 != 0) {
-      v9 = *(_QWORD*)(v10 + 88);
-      v8 = *(unsigned __int16*)(v10 + 96);
+    v11 = a1[134];
+    if (v11 != 0) {
+      v10 = *(_QWORD*)(v11 + 88);
+      v9 = *(unsigned __int16*)(v11 + 96);
     }
     else {
+      v10 = 0;
       v9 = 0;
-      v8 = 0;
     }
     goto LABEL_12;
   }
@@ -100,43 +108,45 @@ __int64 ProcDeliveryTransportMenu_Unknown85(__int64* a1)
   v5 = *(_QWORD*)(*(_QWORD*)v2 + 344LL);
   if (v5 == 0 ||
       (v6 = *(unsigned __int16*)(v5 + 40), *(_WORD*)(v5 + 40) == 0)) {
-    v8 = *(unsigned __int8*)(v4 + 368);
+    v9 = *(unsigned __int8*)(v4 + 368);
     if (*(_WORD*)(v4 + 320) != 0) {
-      v9 = *(_QWORD*)(*(_QWORD*)(v4 + 328) + 8LL);
+      v10 = *(_QWORD*)(*(_QWORD*)(v4 + 328) + 8LL);
     }
     else {
-      v9 = 0;
+      v10 = 0;
     }
   LABEL_12:
-    v11 = (__int64*)fw_memory_HeapManager_Allocate_alt1(
+    v12 = (__int64*)fw_memory_HeapManager_Allocate_alt1(
         *(_QWORD*)fw_memory_g_heap_manager_ptr, 8, 16, 0);
-    v15_.v15 = v11;
-    *v11 = v9;
-    v15_.v16 = v11 + 1;
-    v15_.v17 = v11 + 1;
-    game_gameui_15999a0(a1 + 106, 1, v8, &v15_.v15);
-    if (v15_.v15 == nullptr) {
+    v16_.v16 = v12;
+    *v12 = v10;
+    v16_.v17 = v12 + 1;
+    v16_.v18 = v12 + 1;
+    game_gameui_15999a0_alt1(a1 + 106, 1, v9, &v16_.v16);
+    v8 = v16_.v16;
+    if (v16_.v16 == nullptr) {
       goto LABEL_17;
     }
-    v15_.v16 = v15_.v15;
+    v16_.v17 = v16_.v16;
     goto LABEL_14;
   }
   v7 = *(unsigned __int8*)(v4 + 368);
-  GameSubquestData_1256d00((void*)((__int64*)v14), v2);
-  game_gameui_15999a0(a1 + 106, v6, v7, v14);
-  if (v14[0] != nullptr) {
-    v14[1] = v14[0];
+  GameSubquestData_1256d00((void*)((__int64*)v15), v2);
+  game_gameui_15999a0_alt1(a1 + 106, v6, v7, v15);
+  v8 = v15[0];
+  if (v15[0] != nullptr) {
+    v15[1] = v15[0];
   LABEL_14:
-    v12 = 128;
+    v13 = 128;
     if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
-      v12 = 56;
+      v13 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v12);
+    nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v13, (__int64)v8);
   }
 LABEL_17:
-  GameRoutine_171fd50((__int64)a1);
-  return ui_LayoutAccessor_SetPaneVisible((__int64)(a1 + 106),
-                                          (__int64)"L_EquipPool/L_Num", 0);
+  GameRoutine_171fd50_alt1((__int64)a1);
+  return ui_LayoutAccessor_SetPaneVisible_alt1((__int64)(a1 + 106),
+                                               "L_EquipPool/L_Num", 0);
 }
 
 __int64 game_menu_anonymous_ProcDeliveryTransportMenu_ACall(__int64* a1)

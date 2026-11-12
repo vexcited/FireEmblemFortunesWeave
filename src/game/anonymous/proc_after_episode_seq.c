@@ -20,8 +20,9 @@ extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64 game_GameModeData_instance_;
 void __attribute__((noreturn)) String_60a1d0(_QWORD);
 bool ProcAfterEpisodeSeq_19bcbf0(__int64 a1);
-__int64 ProcAfterEpisodeSeq_19bd810(__int64 result, int a2, __int64 a3,
-                                    __int64 a4);
+__int64 ProcAfterEpisodeSeq_19bd810_alt1(
+    __int64 result, int a2, __int64 a3,
+    __int64 a4) __asm__("ProcAfterEpisodeSeq_19bd810");
 __int64 game_anonymous_ProcAfterEpisodeSeq_Face_SetGrayScale_closure_Invoke(
     __int64 a1, __int64 a2, __int64 a3);
 __int64 GameRoutine_19bb850(_QWORD);
@@ -90,6 +91,18 @@ __int64 game_anonymous_ProcAfterEpisodeSeq_Face_SetGrayScale(__int64 result,
                                                              unsigned int a2,
                                                              __int64* a3);
 void ProcAfterEpisodeSeq_Destructor(__int64 a1);
+__int64
+GameRoutine_1a09ce0_alt1(__int64, const char*,
+                         unsigned __int64) __asm__("GameRoutine_1a09ce0");
+__int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
+__int64 ui_LayoutAccessor_FindTextBox_alt1(__int64*, __int64) __asm__(
+    "ui_LayoutAccessor_FindTextBox");
+unsigned __int64 strlen_alt1(const char*) __asm__("strlen");
+void GameRoutine_156c5d0_alt1(__int64, __int64,
+                              char) __asm__("GameRoutine_156c5d0");
+void __attribute__((noreturn)) String_60a1d0_alt1() __asm__("String_60a1d0");
+void ProcAfterEpisodeSeq_19bd810(__int64 a1, int a2, const char* a3,
+                                 __int64 a4);
 
 __int64 ProcAfterEpisodeSeq_19b8ac0(__int64 a1)
 {
@@ -1281,10 +1294,8 @@ bool ProcAfterEpisodeSeq_19bcbf0(__int64 a1)
   }
 }
 
-__int64 ProcAfterEpisodeSeq_19bd810(__int64 result, int a2, __int64 a3,
-                                    __int64 a4)
+void ProcAfterEpisodeSeq_19bd810(__int64 a1, int a2, const char* a3, __int64 a4)
 {
-  __int64 v6;
   unsigned __int64 v8;
   unsigned __int64 v9;
   char* v10;
@@ -1292,16 +1303,18 @@ __int64 ProcAfterEpisodeSeq_19bd810(__int64 result, int a2, __int64 a3,
   const char* v12;
   char* v13;
   __int64 v14;
-  _QWORD v15[2];
-  char* v16;
+  __int64 v15;
+  struct {
+    _QWORD v16[2];
+    char* v17;
+  } v16_;
 
-  if (a3 == 0 || a4 == 0) {
-    return result;
+  if (a3 == nullptr || a4 == 0) {
+    return;
   }
-  v6 = result;
-  v8 = strlen(a3);
+  v8 = strlen_alt1(a3);
   if (v8 >= 0xFFFFFFFFFFFFFFF7LL) {
-    String_60a1d0(v8);
+    String_60a1d0_alt1();
   }
   v9 = v8;
   if (v8 >= 0x17) {
@@ -1311,20 +1324,20 @@ __int64 ProcAfterEpisodeSeq_19bd810(__int64 result, int a2, __int64 a3,
     else {
       v11 = (v8 | 7) + 1;
     }
-    v10 = (char*)fw_memory_HeapManager_Allocate(fw_memory_g_heap_manager, v11,
-                                                16, 0);
-    v15[1] = v9;
-    v16 = v10;
-    v15[0] = v11 | 1;
+    v10 = (char*)fw_memory_HeapManager_Allocate_alt1(fw_memory_g_heap_manager,
+                                                     v11, 16, 0);
+    v16_.v16[1] = v9;
+    v16_.v17 = v10;
+    v16_.v16[0] = v11 | 1;
   }
   else {
-    LOBYTE(v15[0]) = 2 * v8;
-    v10 = (char*)v15 + 1;
+    LOBYTE(v16_.v16[0]) = 2 * v8;
+    v10 = (char*)v16_.v16 + 1;
     if (v8 == 0) {
       goto LABEL_12;
     }
   }
-  memcpy(v10, a3, v9);
+  memcpy_alt1((__int64)v10, (__int64)a3, v9);
 LABEL_12:
   v10[v9] = 0;
   if (a2 != 0) {
@@ -1333,28 +1346,28 @@ LABEL_12:
   else {
     v12 = (const char*)&GameData_1abfafc;
   }
-  result = GameRoutine_1a09ce0(v15, v12, 2);
-  if ((v15[0] & 1) != 0) {
-    v13 = v16;
+  GameRoutine_1a09ce0_alt1((__int64)v16_.v16, v12, 2u);
+  if ((v16_.v16[0] & 1) != 0) {
+    v13 = v16_.v17;
   }
   else {
-    v13 = (char*)v15 + 1;
+    v13 = (char*)v16_.v16 + 1;
   }
   if (v13 != nullptr) {
-    result = ui_LayoutAccessor_FindTextBox(v6 + 256, v13);
-    if (result != 0) {
-      result = GameRoutine_156c5d0(result, a4, 0);
+    v14 =
+        ui_LayoutAccessor_FindTextBox_alt1((__int64*)(a1 + 256), (__int64)v13);
+    if (v14 != 0) {
+      GameRoutine_156c5d0_alt1(v14, a4, 0);
     }
   }
-  if ((v15[0] & 1) != 0 && v16 != nullptr) {
-    v14 = 128;
+  if ((v16_.v16[0] & 1) != 0 && v16_.v17 != nullptr) {
+    v15 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-      v14 = 56;
+      v15 = 56;
     }
-    return nn_mem_StandardAllocator_Free(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v14);
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v15, (__int64)v16_.v17);
   }
-  return result;
 }
 
 __int64 game_anonymous_ProcAfterEpisodeSeq_Face_SetGrayScale(__int64 result,

@@ -27,7 +27,8 @@ extern __int64* GameData_21319f8[8];
 __int64 GmapTalkMenu_Unknown84(__int64 a1);
 __int64 GmapTalkMenu_Unknown96(_QWORD* a1);
 __int64 GmapTalkMenu_Unknown85(__int64 a1);
-__int64 GmapTalkMenu_DeletingDestructor(_QWORD* a1);
+__int64 GmapTalkMenu_DeletingDestructor_alt1(_QWORD* a1) __asm__(
+    "GmapTalkMenu_DeletingDestructor");
 __attribute__((swiftcall)) void game_gmap_Troop_GetAmong(PSEUDO_X8,
                                                          _QWORD* result);
 __int64 Impl_13262e0(__int64);
@@ -41,6 +42,14 @@ void BasicMenuCursor_16e0c00(_QWORD*, __int64);
 void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void GmapTalkMenu_Unknown128(_QWORD* a1);
+__int64 LayoutAccessor_155e140(__int64*);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+void GameRoutine_1563f90_alt1(__int64, __int64) __asm__("GameRoutine_1563f90");
+void GameRoutine_1564060_alt1(__int64*) __asm__("GameRoutine_1564060");
+void game_menu_BasicMenu_Destroy_BasicMenu_alt1(__int64) __asm__(
+    "game_menu_BasicMenu_Destroy_BasicMenu");
+void GmapTalkMenu_DeletingDestructor(_QWORD* a1);
 
 void GmapTalkMenu_Unknown128(_QWORD* a1)
 {
@@ -243,7 +252,7 @@ __int64 GmapTalkMenu_Unknown85(__int64 a1)
   return result;
 }
 
-__int64 GmapTalkMenu_DeletingDestructor(_QWORD* a1)
+void GmapTalkMenu_DeletingDestructor(_QWORD* a1)
 {
   __int64* v2;
   __int64 v3;
@@ -254,26 +263,26 @@ __int64 GmapTalkMenu_DeletingDestructor(_QWORD* a1)
   *a1 = GameData_21319f8[0] + 2;
   a1[22] = v2 + 149;
   a1[132] = v2 + 175;
-  GameRoutine_155e140(a1 + 133);
+  LayoutAccessor_155e140(a1 + 133);
   v3 = a1[145];
   if (v3 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v3 + 8),
                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v3 + 16LL))(v3);
-    std___1___shared_weak_count___release_weak(v3);
+    std___1___shared_weak_count___release_weak_alt1(v3);
   }
-  GameRoutine_1564060(a1 + 139);
-  GameRoutine_1563f90(a1 + 136, a1[137]);
+  GameRoutine_1564060_alt1(a1 + 139);
+  GameRoutine_1563f90_alt1((__int64)(a1 + 136), a1[137]);
   v4 = a1[134];
   if (v4 != 0) {
-    std___1___shared_weak_count___release_weak(v4);
+    std___1___shared_weak_count___release_weak_alt1(v4);
   }
-  game_menu_BasicMenu_Destroy_BasicMenu(a1);
+  game_menu_BasicMenu_Destroy_BasicMenu_alt1((__int64)a1);
   v5 = 128;
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
     v5 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v5);
+  nn_mem_StandardAllocator_Free_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v5, (__int64)a1);
 }
 
 #pragma GCC visibility pop

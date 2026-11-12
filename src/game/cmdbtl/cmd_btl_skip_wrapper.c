@@ -10,6 +10,8 @@ extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64 game_ProcGameSkipView_instance_;
 extern int GameData_22336e8;
 _QWORD* CmdBtlSkipWrapper_Destructor(_QWORD* result);
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 _QWORD* CmdBtlSkipWrapper_Destructor(_QWORD* result)
 {
@@ -26,8 +28,9 @@ _QWORD* CmdBtlSkipWrapper_Destructor(_QWORD* result)
   __int64 v11;
   __int64 v12;
   __int64 v13;
-  _QWORD* v14;
-  __int64 v15;
+  __int64 v14;
+  _QWORD* v15;
+  __int64 v16;
 
   *result = game_cmdbtl_CmdBtlSkipWrapper_vtable;
   v1 = (_QWORD*)game_ProcGameSkipView_instance_;
@@ -54,16 +57,17 @@ _QWORD* CmdBtlSkipWrapper_Destructor(_QWORD* result)
     v1[27] = v2 - 1;
     v1[20] = v13;
     if ((unsigned __int64)(v10 - (v2 + v3) - 255) <= 0xFFFFFFFFFFFFFEFFLL) {
-      if (*(_QWORD*)(v4 - 8) != 0) {
-        v14 = result;
-        v15 = 128;
+      v14 = *(_QWORD*)(v4 - 8);
+      if (v14 != 0) {
+        v15 = result;
+        v16 = 128;
         if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-          v15 = 56;
+          v16 = 56;
         }
-        nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                      v15);
+        nn_mem_StandardAllocator_Free_alt1(
+            *(_QWORD*)fw_memory_g_heap_manager_ptr + v16, v14);
         v4 = v1[24];
-        result = v14;
+        result = v15;
       }
       v1[24] = v4 - 8;
     }

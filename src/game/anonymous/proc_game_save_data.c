@@ -51,7 +51,9 @@ __int64 game_anonymous_ProcGameSaveData_DisposeTask(__int64 result, __int64 a2);
 __int64 game_anonymous_ProcGameSaveData_SkippedTask(__int64 result, __int64 a2);
 __int64 ProcGameSaveData_87b030(__int64 result);
 __int64 ProcGameSaveData_87b460(__int64 result);
-__int64 ProcGameSaveData_87b6b0(__int64 a1, __int64 a2);
+__int64
+ProcGameSaveData_87b6b0_alt2(__int64 a1,
+                             __int64 a2) __asm__("ProcGameSaveData_87b6b0");
 __int64 game_anonymous_ProcGameSaveData_SaveTask_closure_Invoke(__int64 a1,
                                                                 __int64 a2);
 __int64 game_anonymous_ProcGameSaveData_StatusTask_closure_Clone(__int64 a1);
@@ -107,6 +109,19 @@ void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void nn_os_YieldThread_alt1() __asm__("nn_os_YieldThread");
 void ProcGameSaveData_Destructor(__int64 a1);
+__int64 GameRoutine_66aae0_alt1() __asm__("GameRoutine_66aae0");
+__int64 GameRoutine_715780_alt1(__int64 result,
+                                __int64) __asm__("GameRoutine_715780");
+__int64 TimelineFile_890160_alt1(const char*) __asm__("TimelineFile_890160");
+__int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
+__int64 nn_oe_GetProgramTotalActiveTime_alt1() __asm__(
+    "nn_oe_GetProgramTotalActiveTime");
+bool GameHr_8789c0(const char**);
+extern char GameData_1abf89f_alt1[] __asm__("GameData_1abf89f");
+unsigned __int64 strlen_alt1(const char*) __asm__("strlen");
+void __attribute__((noreturn)) String_60a1d0_alt1() __asm__("String_60a1d0");
+void save_Task_Open(__int64, __int64*, char);
+void ProcGameSaveData_87b6b0(__int64 a1, const char* a2);
 
 __int64 game_anonymous_ProcGameSaveData_SaveTask(__int64 result)
 {
@@ -403,13 +418,13 @@ __int64 ProcGameSaveData_87b460(__int64 result)
   unsigned __int8* v2;
   __int64 v3;
   unsigned __int64 v4;
-  __int64 v5;
-  unsigned __int64 v6;
-  __int64 v7;
+  const char* v5;
+  const char* v6;
+  const char* v7;
   __int64 v8;
   __int64 v9;
   bool v10;
-  unsigned __int64 v11;
+  const char* v11;
   int v12;
   __int64 v13;
   char v14;
@@ -417,15 +432,13 @@ __int64 ProcGameSaveData_87b460(__int64 result)
   bool v16;
   unsigned int v17;
   unsigned int v18;
-  int* v19;
-  _QWORD* v20;
-  __int64 v21;
-  int v22;
-  char v23;
+  __int64 v19;
+  int v20;
+  char v21;
   __int64 ProgramTotalActiveTimeEv;
-  __int64 v25;
-  __int64 v26;
-  _QWORD v27[2];
+  __int64 v23;
+  __int64 v24;
+  const char* v25[2];
 
   v1 = *(unsigned __int8**)(result + 160);
   v2 = *(unsigned __int8**)(result + 168);
@@ -438,20 +451,20 @@ __int64 ProcGameSaveData_87b460(__int64 result)
       }
     }
     v4 = *(unsigned __int8*)(v3 + 8);
-    v5 = v3 + 9;
+    v5 = (const char*)(v3 + 9);
     v8 = v3 + 16;
-    v6 = *(_QWORD*)(v3 + 16);
-    v7 = *(_QWORD*)(v8 + 8);
+    v6 = *(const char**)(v3 + 16);
+    v7 = *(const char**)(v8 + 8);
     v9 = result;
     v10 = (v4 & 1) == 0;
-    v11 = v4 >> 1;
+    v11 = (const char*)(v4 >> 1);
     if (!v10) {
       v5 = v7;
       v11 = v6;
     }
-    v27[0] = v5;
-    v27[1] = v11;
-    result = GameRoutine_8789c0(v27);
+    v25[0] = v5;
+    v25[1] = v11;
+    result = GameHr_8789c0(v25);
     v1 = *(unsigned __int8**)(v9 + 160);
     v2 = *(unsigned __int8**)(v9 + 168);
   }
@@ -460,7 +473,7 @@ LABEL_10:
     v12 = *v1;
     v1 += 32;
     if (v12 == 4) {
-      result = TimelineFile_890160(&GameData_1abf89f);
+      result = TimelineFile_890160_alt1(GameData_1abf89f_alt1);
       if (result != 0) {
         v13 = result;
         if (game_GameModeData_instance_ != 0) {
@@ -475,35 +488,35 @@ LABEL_10:
         }
         v17 = GameData_21d87f8;
         v18 = GameData_21d8828;
-        v19 = GameRoutine_8767a0((int*)(GameData_21eea58 + 592));
-        GameRoutine_66aae0(v19);
+        GameRoutine_8767a0((int*)(GameData_21eea58 + 592));
+        GameRoutine_66aae0_alt1();
         if (game_GameModeData_instance_ != 0) {
-          GameRoutine_715780(game_GameModeData_instance_, v13);
+          GameRoutine_715780_alt1(game_GameModeData_instance_, v13);
         }
-        v20 = GameRoutine_8768e0((_QWORD*)(GameData_21eea58 + 592));
-        v21 = game_GameModeData_instance_;
+        GameRoutine_8768e0((_QWORD*)(GameData_21eea58 + 592));
+        v19 = game_GameModeData_instance_;
         if (game_GameModeData_instance_ != 0) {
-          v22 = *(unsigned __int8*)(game_GameModeData_instance_ + 15);
+          v20 = *(unsigned __int8*)(game_GameModeData_instance_ + 15);
           *(_DWORD*)(game_GameModeData_instance_ + 8) = v15;
-          v10 = v22 == 9;
-          v23 = !v16;
+          v10 = v20 == 9;
+          v21 = !v16;
           if (!v10) {
-            v23 = 1;
+            v21 = 1;
           }
-          if ((v23 & 1) == 0) {
-            *(_BYTE*)(v21 + 14) = v14;
+          if ((v21 & 1) == 0) {
+            *(_BYTE*)(v19 + 14) = v14;
           }
         }
-        ProgramTotalActiveTimeEv = nn_oe_GetProgramTotalActiveTime(v20);
-        v25 = nn_os_ConvertToTick(ProgramTotalActiveTimeEv);
+        ProgramTotalActiveTimeEv = nn_oe_GetProgramTotalActiveTime_alt1();
+        v23 = nn_os_ConvertToTick(ProgramTotalActiveTimeEv);
         GameData_21d87f8 = v17;
-        GameData_21d8800 = v25;
+        GameData_21d8800 = v23;
         GameData_21d8808 = 0;
         GameData_21d8808 = nn_os_ConvertToTick(
             1000000000LL *
             (HIBYTE(v17) + 3600 * (unsigned __int16)v17 + 60 * BYTE2(v17)));
-        v26 = nn_oe_GetProgramTotalActiveTime(GameData_21d8808);
-        GameData_21d8830 = nn_os_ConvertToTick(v26);
+        v24 = nn_oe_GetProgramTotalActiveTime_alt1();
+        GameData_21d8830 = nn_os_ConvertToTick(v24);
         GameData_21d8838 = 0;
         GameData_21d8828 = v18;
         result = nn_os_ConvertToTick(
@@ -517,22 +530,23 @@ LABEL_10:
   return result;
 }
 
-__int64 ProcGameSaveData_87b6b0(__int64 a1, __int64 a2)
+void ProcGameSaveData_87b6b0(__int64 a1, const char* a2)
 {
   __int64 v2;
   unsigned __int64 v5;
   unsigned __int64 v6;
   char* v7;
   __int64 v8;
-  __int64 result;
-  __int64 v10;
-  _QWORD v11[2];
-  char* v12;
+  __int64 v9;
+  struct {
+    __int64 v10[2];
+    char* v11;
+  } v10_;
 
   v2 = *(_QWORD*)(a1 + 304);
-  v5 = strlen(a2);
+  v5 = strlen_alt1(a2);
   if (v5 >= 0xFFFFFFFFFFFFFFF7LL) {
-    String_60a1d0(v5);
+    String_60a1d0_alt1();
   }
   v6 = v5;
   if (v5 >= 0x17) {
@@ -542,33 +556,32 @@ __int64 ProcGameSaveData_87b6b0(__int64 a1, __int64 a2)
     else {
       v8 = (v5 | 7) + 1;
     }
-    v7 = (char*)fw_memory_HeapManager_Allocate(fw_memory_g_heap_manager, v8, 16,
-                                               0);
-    v11[1] = v6;
-    v12 = v7;
-    v11[0] = v8 | 1;
+    v7 = (char*)fw_memory_HeapManager_Allocate_alt1(fw_memory_g_heap_manager,
+                                                    v8, 16, 0);
+    v10_.v10[1] = v6;
+    v10_.v11 = v7;
+    v10_.v10[0] = v8 | 1;
   }
   else {
-    LOBYTE(v11[0]) = 2 * v5;
-    v7 = (char*)v11 + 1;
+    LOBYTE(v10_.v10[0]) = 2 * v5;
+    v7 = (char*)v10_.v10 + 1;
     if (v5 == 0) {
       goto LABEL_10;
     }
   }
-  memcpy(v7, a2, v6);
+  memcpy_alt1((__int64)v7, (__int64)a2, v6);
 LABEL_10:
   v7[v6] = 0;
-  result = GameRoutine_18d3b00(v2, v11, 1);
-  if ((v11[0] & 1) != 0 && v12 != nullptr) {
-    v10 = 128;
+  save_Task_Open(v2, v10_.v10, 1);
+  if ((v10_.v10[0] & 1) != 0 && v10_.v11 != nullptr) {
+    v9 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-      v10 = 56;
+      v9 = 56;
     }
-    result = nn_mem_StandardAllocator_Free(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v10);
+    nn_mem_StandardAllocator_Free_alt2(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v9, (__int64)v10_.v11);
   }
   *(_DWORD*)(a1 + 320) = 0;
-  return result;
 }
 
 __int64 game_anonymous_ProcGameSaveData_SaveTask_closure_Invoke(__int64 a1,
@@ -594,7 +607,7 @@ __int64 game_anonymous_ProcGameSaveData_SaveTask_closure_Invoke(__int64 a1,
   else {
     v4 = a2 + 9;
   }
-  ProcGameSaveData_87b6b0(v2, v4);
+  ProcGameSaveData_87b6b0_alt2(v2, v4);
   GameRoutine_18d4350(*(_QWORD*)(v2 + 304), *(_QWORD*)(v3 + 216),
                       *(int*)(v2 + 320), 256);
   v5 = *(int*)(v2 + 320);

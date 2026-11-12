@@ -29,6 +29,8 @@ __n128 game_facility_FacilityUnit_CalcCause_alt1(
 __int64 std___1___shared_weak_count___release_weak_alt1(_QWORD) __asm__(
     "std___1___shared_weak_count___release_weak");
 __int64 game_facility_FacilityUnit_CalcCause(__int64 a1, __int64* a2);
+__int64 std___1___shared_weak_count___release_weak_alt2(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
 unsigned __int64
 
 game_facility_FacilityUnit_CalcCause_lambda0_Invoke(__int64 a1,
@@ -383,7 +385,7 @@ LABEL_36:
       if (v2 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v2 + 8),
                                       0xFFFFFFFFFFFFFFFFLL) == 0) {
         (*(void (**)(__int64))(*(_QWORD*)v2 + 16LL))(v2);
-        return std___1___shared_weak_count___release_weak_alt1(v2);
+        return std___1___shared_weak_count___release_weak_alt2(v2);
       }
       return result;
     }

@@ -19,6 +19,10 @@ void GameRoutine_e9f200(__int64);
 void LegionStateBattleNonTarget_Unknown3(__int64 a1);
 __attribute__((swiftcall)) void
 LegionStateBattleNonTarget_Unknown6(PSEUDO_X8 x8_, __int64 a1);
+__int64 nn_os_LockMutex_alt1(__int64) __asm__("nn_os_LockMutex");
+__int64 nn_os_UnlockMutex_alt1(__int64) __asm__("nn_os_UnlockMutex");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 void LegionStateBattleNonTarget_Unknown3(__int64 a1)
 {
@@ -43,7 +47,7 @@ void LegionStateBattleNonTarget_Unknown3(__int64 a1)
   *(_QWORD*)v3 = 0x6400000003LL;
   *(_QWORD*)(v3 + 8) = 0x1400000009LL;
   *(_QWORD*)(v3 + 16) = 0x140000000ALL;
-  nn_os_LockMutex(&game_g_random_mutex);
+  nn_os_LockMutex_alt1((__int64)&game_g_random_mutex);
   v4 = game_map_MapRandom_instance__ptr[0];
   v5 = *(_DWORD*)((char*)game_map_MapRandom_instance__ptr[0] +
                   (unsigned __int64)((_UNKNOWN**)0x8LL));
@@ -58,7 +62,7 @@ void LegionStateBattleNonTarget_Unknown3(__int64 a1)
   *(_DWORD*)((char*)((_UNKNOWN**)0x8LL) + (_QWORD)v4) = v6;
   *(_DWORD*)((char*)((_UNKNOWN**)0x8LL) + (_QWORD)v4 + 4) = v8;
   v9 = v8 & 0x7FFFFFFF;
-  nn_os_UnlockMutex(&game_g_random_mutex);
+  nn_os_UnlockMutex_alt1((__int64)&game_g_random_mutex);
   v10 = *(_DWORD*)(v3 + 4);
   v11 = v9 -
         140 * ((unsigned int)((3926827243u * (unsigned __int64)v9) >> 32) >> 7);
@@ -80,7 +84,7 @@ void LegionStateBattleNonTarget_Unknown3(__int64 a1)
   if (*(_QWORD*)(*(_QWORD*)v2 + 200LL) == 0) {
     v15 = 56;
   }
-  nn_mem_StandardAllocator_Free(*(_QWORD*)v2 + v15);
+  nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v2 + v15, v3);
   if (*(_BYTE*)(a1 + 32) == 1) {
     *(_WORD*)(a1 + 28) = 0;
     *(_DWORD*)(a1 + 24) = v14;

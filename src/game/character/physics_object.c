@@ -10,7 +10,8 @@ extern __int64 (*game_character_PhysicsObject_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 __n128
 PhysicsObject_Destructor_alt1(_QWORD* a1) __asm__("PhysicsObject_Destructor");
-__int64 PhysicsObject_DeletingDestructor(_QWORD* a1);
+__int64 PhysicsObject_DeletingDestructor_alt1(_QWORD* a1) __asm__(
+    "PhysicsObject_DeletingDestructor");
 __attribute__((swiftcall)) void GameRoutine_1096110(PSEUDO_X8, __int64 result,
                                                     unsigned __int8*,
                                                     const char*, __int64,
@@ -61,6 +62,9 @@ __int64 PhysicsObject_Destructor(_QWORD* a1);
 __n128 game_character_PhysicsObject_PhysicsObject_lambda0_Invoke(__int64 a1,
                                                                  __int64* a2,
                                                                  __n128 result);
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void PhysicsObject_DeletingDestructor(_QWORD* a1);
 
 __int64 PhysicsObject_10f9fe0(__int64 result, _OWORD* a2)
 {
@@ -518,22 +522,22 @@ __int64 PhysicsObject_Destructor(_QWORD* a1)
   return result;
 }
 
-__int64 PhysicsObject_DeletingDestructor(_QWORD* a1)
+void PhysicsObject_DeletingDestructor(_QWORD* a1)
 {
-  __int64 v1;
   __int64 v2;
+  __int64 v3;
 
   *a1 = game_character_PhysicsObject_vtable;
-  v1 = a1[4];
-  if (v1 != 0) {
-    std___1___shared_weak_count___release_weak(v1);
+  v2 = a1[4];
+  if (v2 != 0) {
+    std___1___shared_weak_count___release_weak_alt1(v2);
   }
-  v2 = 128;
+  v3 = 128;
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-    v2 = 56;
+    v3 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v2);
+  nn_mem_StandardAllocator_Free_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v3, (__int64)a1);
 }
 
 __n128 game_character_PhysicsObject_PhysicsObject_lambda0_Invoke(__int64 a1,

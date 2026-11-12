@@ -49,6 +49,9 @@ void TelopReliance_1386f80(__int64);
 void nn_mem_StandardAllocator_Free(__int64, __int64);
 void snd_Fade_Fade_10c830_alt1(__int64, float) __asm__("snd_Fade_Fade_10c830");
 void TelopTitle_Destructor(__int64 a1);
+_QWORD* ui_LayoutAccessor_Setup_155dda0_alt1(_QWORD*, _QWORD*) __asm__(
+    "ui_LayoutAccessor_Setup_155dda0");
+__int64 LayoutAccessor_155e830(__int64 result, char);
 
 void TelopTitle_Destructor(__int64 a1)
 {
@@ -218,17 +221,17 @@ __int64 TelopTitle_Unknown31(__int64 a1)
   if (v1 != 0) {
     atomic_fetch_add_explicit((atomic_ullong* volatile)(v1 + 8), 1u,
                               memory_order_relaxed);
-    ui_LayoutAccessor_Setup_155dda0(a1 + 168, v9);
+    ui_LayoutAccessor_Setup_155dda0_alt1((_QWORD*)(a1 + 168), v9);
     if (atomic_fetch_add((atomic_ullong* volatile)(v1 + 8),
                          0xFFFFFFFFFFFFFFFFLL) == 0) {
       (*(void (**)(__int64))(*(_QWORD*)v1 + 16LL))(v1);
-      std___1___shared_weak_count___release_weak();
+      std___1___shared_weak_count___release_weak_alt1(v1);
     }
   }
   else {
-    ui_LayoutAccessor_Setup_155dda0(a1 + 168, v9);
+    ui_LayoutAccessor_Setup_155dda0_alt1((_QWORD*)(a1 + 168), v9);
   }
-  GameRoutine_155e830(a1 + 168, 1);
+  LayoutAccessor_155e830(a1 + 168, 1);
   result = (*(__int64 (**)(__int64))(*(_QWORD*)a1 + 264LL))(a1);
   v4 = *(unsigned __int8**)(a1 + 16);
   if (v4 != nullptr) {

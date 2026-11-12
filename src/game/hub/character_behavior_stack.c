@@ -13,7 +13,8 @@ extern __int64 (*GameData_1fe17e8[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
 void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
 void __attribute__((noreturn)) GameRoutine_df5ca0(_QWORD);
-__int64 CharacterBehaviorStack_Destructor(_QWORD* a1);
+__int64 CharacterBehaviorStack_Destructor_alt1(_QWORD* a1) __asm__(
+    "CharacterBehaviorStack_Destructor");
 char* CharacterBehaviorStack_df5660_alt1(
     signed __int64* a1, char* a2,
     _QWORD* a3) __asm__("CharacterBehaviorStack_df5660");
@@ -47,7 +48,8 @@ __attribute__((swiftcall)) void
 CharacterBehaviorStack_StackMove_Unknown6(PSEUDO_X8 x8_, __int64 result);
 __attribute__((swiftcall)) void
 CharacterBehaviorStack_StackEvasion_Unknown6(PSEUDO_X8 x8_);
-__int64* CharacterBehaviorStack_df6260(__int64* result, __int64* a2);
+__int64* CharacterBehaviorStack_df6260_alt2(
+    __int64* result, __int64* a2) __asm__("CharacterBehaviorStack_df6260");
 void CharacterBehaviorStack_StackEvasion_Destructor(float32x4_t* a1);
 bool CharacterBehaviorStack_StackMoveLoop_Destructor(__int64 a1);
 __attribute__((swiftcall)) void
@@ -63,21 +65,27 @@ GameRoutine_df5ca0_alt1() __asm__("GameRoutine_df5ca0");
 void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 char* CharacterBehaviorStack_df5660(__int64* a1, char* a2, _QWORD* a3);
+__int64
+HubCharacterNatives_df4cc0_alt1(_QWORD*) __asm__("HubCharacterNatives_df4cc0");
+extern __int64 (*CharacterBehaviorStack_Destructor_ptr[])();
+void StateMoveTo_d42860_alt1(__int64*, __int64*) __asm__("StateMoveTo_d42860");
+void CharacterBehaviorStack_Destructor(_QWORD* a1);
+void CharacterBehaviorStack_df6260(__int64* result, __int64* a2);
 
-__int64 CharacterBehaviorStack_Destructor(_QWORD* a1)
+void CharacterBehaviorStack_Destructor(_QWORD* a1)
 {
-  __int64 result;
+  __int64 v2;
   __int64 v3;
   __int64 v4;
   __int64 v5;
   __int64 v6;
   __int64 v7;
 
-  *a1 = GameData_1fe17e8;
-  HubCharacterNatives_df4cc0();
-  result = a1[7];
-  if (result != 0) {
-    result = std___1___shared_weak_count___release_weak(result);
+  *a1 = CharacterBehaviorStack_Destructor_ptr;
+  HubCharacterNatives_df4cc0_alt1(a1);
+  v2 = a1[7];
+  if (v2 != 0) {
+    std___1___shared_weak_count___release_weak_alt2(v2);
   }
   v3 = a1[3];
   if (v3 != 0) {
@@ -90,23 +98,23 @@ __int64 CharacterBehaviorStack_Destructor(_QWORD* a1)
       if (v5 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v5 + 8),
                                       0xFFFFFFFFFFFFFFFFLL) == 0) {
         (*(void (**)(__int64))(*(_QWORD*)v5 + 16LL))(v5);
-        result = std___1___shared_weak_count___release_weak(v5);
+        std___1___shared_weak_count___release_weak_alt2(v5);
       }
       v4 -= 16;
     } while (v4 != v3);
     v6 = a1[3];
     a1[4] = v3;
+    v3 = v6;
     if (v6 != 0) {
     LABEL_11:
       v7 = 128;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
         v7 = 56;
       }
-      return nn_mem_StandardAllocator_Free(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v7);
+      nn_mem_StandardAllocator_Free_alt2(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v7, v3);
     }
   }
-  return result;
 }
 
 char* CharacterBehaviorStack_df5660(__int64* a1, char* a2, _QWORD* a3)
@@ -471,14 +479,13 @@ CharacterBehaviorStack_StackEvasion_Unknown6(PSEUDO_X8 x8_)
   a1[16] = 0;
 }
 
-__int64* CharacterBehaviorStack_df6260(__int64* result, __int64* a2)
+void CharacterBehaviorStack_df6260(__int64* result, __int64* a2)
 {
 
 #pragma clang fp contract(off)
   __int64 v2;
   __int64 v3;
   __int64 v4;
-  __int64* v5;
   __int64* v7;
   __int64 v8;
   __int128 v9;
@@ -495,7 +502,7 @@ __int64* CharacterBehaviorStack_df6260(__int64* result, __int64* a2)
   int8x16_t v20;
   unsigned __int64 v21;
   float32x4_t v22;
-  float32x4_t* v23;
+  __int64 v23;
   __int64 v24;
   __int64 v25;
   unsigned __int64 v26;
@@ -503,10 +510,10 @@ __int64* CharacterBehaviorStack_df6260(__int64* result, __int64* a2)
   unsigned __int64 v28;
   __int64 v29;
   float32x4_t* v30;
-  float32x4_t* v31;
+  __int64 v31;
   float32x4_t* v32;
   float32x4_t* v33;
-  float32x4_t* v34;
+  _QWORD* v34;
   unsigned __int64 v35;
   __int64 v36;
   int8x16_t v37;
@@ -525,13 +532,12 @@ __int64* CharacterBehaviorStack_df6260(__int64* result, __int64* a2)
     LABEL_30:
       GameRoutine_cdcc10();
     }
-    v5 = result;
     v7 = (__int64*)fw_memory_g_heap_manager_ptr;
     v8 = fw_memory_HeapManager_Allocate_alt1(
         *(_QWORD*)fw_memory_g_heap_manager_ptr, v3 - v2, 16, 0);
-    *v5 = v8;
-    v5[1] = v8;
-    v5[2] = v8 + v4;
+    *result = v8;
+    result[1] = v8;
+    result[2] = v8 + v4;
     if (v4 == 16) {
       v10 = 0;
     }
@@ -568,21 +574,21 @@ __int64* CharacterBehaviorStack_df6260(__int64* result, __int64* a2)
           v37 = v20;
           v38 = v9;
           do {
-            v21 = v5[2];
+            v21 = result[2];
             v22 = vaddq_f32(*(float32x4_t*)(*a2 + 16 * v12),
                             vmulq_n_f32(v20, LANES128(v19).n128_f32[0]));
             if ((unsigned __int64)v11 < v21) {
               *v11++ = v22;
             }
             else {
-              v23 = (float32x4_t*)*v5;
-              v24 = (__int64)v11 - *v5;
+              v23 = *result;
+              v24 = (__int64)v11 - *result;
               v25 = v24 >> 4;
               v26 = (v24 >> 4) + 1;
               if (v26 >> 60 != 0) {
                 goto LABEL_30;
               }
-              v27 = v21 - (_QWORD)v23;
+              v27 = v21 - v23;
               v39 = v22;
               v40 = v19;
               if (v27 >> 3 > v26) {
@@ -599,28 +605,28 @@ __int64* CharacterBehaviorStack_df6260(__int64* result, __int64* a2)
               }
               v29 = fw_memory_HeapManager_Allocate_alt1(*v7, 16 * v28, 16, 0);
               v30 = (float32x4_t*)(v29 + v24);
-              v31 = &v30[-v25];
+              v31 = (__int64)&v30[-v25];
               *v30 = v39;
               v32 = v30 + 1;
-              if (v23 != v11) {
-                v33 = v23;
-                v34 = v31;
+              if ((float32x4_t*)v23 != v11) {
+                v33 = (float32x4_t*)v23;
+                v34 = (_QWORD*)v31;
                 do {
-                  LANES128(*(v34)).n128_u64[1] = LANES128(*(v33)).n128_u64[1];
+                  v34[1] = LANES128(*(v33)).n128_u64[1];
                   v35 = LANES128(*(v33)).n128_u64[0];
                   ++v33;
-                  LANES128(*(v34)).n128_u64[0] = v35;
-                  ++v34;
+                  *v34 = v35;
+                  v34 += 2;
                 } while (v33 != v11);
               }
-              *v5 = (__int64)v31;
-              v5[2] = v29 + 16 * v28;
-              if (v23 != nullptr) {
+              *result = v31;
+              result[2] = v29 + 16 * v28;
+              if (v23 != 0) {
                 v36 = 128;
                 if (*(_QWORD*)(*v7 + 200) == 0) {
                   v36 = 56;
                 }
-                nn_mem_StandardAllocator_Free(*v7 + v36);
+                nn_mem_StandardAllocator_Free_alt2(*v7 + v36, v23);
               }
               v20 = v37;
               v9 = v38;
@@ -630,7 +636,7 @@ __int64* CharacterBehaviorStack_df6260(__int64* result, __int64* a2)
             PSEUDO_LOW_LANE128(v19, n128_f32,
                                LANES128(v19).n128_f32[0] +
                                    0x1.4000000000000p+3f);
-            v5[1] = (__int64)v11;
+            result[1] = (__int64)v11;
           } while (LANES128(v19).n128_f32[0] < *(float*)&v9);
           v2 = *a2;
           v3 = a2[1];
@@ -639,9 +645,8 @@ __int64* CharacterBehaviorStack_df6260(__int64* result, __int64* a2)
         v10 = ((v3 - v2) >> 4) - 1;
       } while (v10 > v13);
     }
-    return StateMoveTo_d42860(v5, (__int64*)(v2 + 16 * v10));
+    StateMoveTo_d42860_alt1(result, (__int64*)(v2 + 16 * v10));
   }
-  return result;
 }
 
 void CharacterBehaviorStack_StackEvasion_Destructor(float32x4_t* a1)
@@ -1095,7 +1100,7 @@ LABEL_97:
     nn_mem_StandardAllocator_Free_alt2(
         *(_QWORD*)fw_memory_g_heap_manager_ptr + v57, v69);
   }
-  CharacterBehaviorStack_df6260((__int64*)&v75_.v75, v2);
+  CharacterBehaviorStack_df6260_alt2((__int64*)&v75_.v75, v2);
   v58 = *(_QWORD*)(v1 + 72);
   if (v58 != 0) {
     *(_QWORD*)(v1 + 80) = v58;

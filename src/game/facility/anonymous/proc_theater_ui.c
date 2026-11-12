@@ -83,7 +83,8 @@ void* game_97b2f0(__int64);
 void GameRoutine_156c5d0(__int64, __int64, char);
 void LayoutAccessor_155cda0_alt1(__int64*, __int64,
                                  char*) __asm__("LayoutAccessor_155cda0");
-void ProcTheaterUI_1113400(char a1, __int64 a2);
+void ProcTheaterUI_1113400_alt1(char a1,
+                                __int64 a2) __asm__("ProcTheaterUI_1113400");
 _QWORD* ui_LayoutAccessor_Setup_155dda0_alt1(_QWORD*, _QWORD*) __asm__(
     "ui_LayoutAccessor_Setup_155dda0");
 __attribute__((swiftcall)) void
@@ -132,34 +133,38 @@ void game_facility_anonymous_ProcTheaterUI_CreateBindChoice(__int64 a1,
                                                             __int64* a2,
                                                             char a3,
                                                             __int64* a4);
+__int64 GameHr_1840740(__int64, unsigned int, __int64, unsigned __int8, char);
+char* GameHr_67ed20(_QWORD*);
+char* GameRoutine_60a020_alt1(char*, const char*) __asm__("GameRoutine_60a020");
+char* GameRoutine_a4dbe0_alt1(__int64, const char*,
+                              char) __asm__("GameRoutine_a4dbe0");
+__int64 ProcTheaterUI_1113400(__int64 result, __int64 a2);
 
-void ProcTheaterUI_1113400(char a1, __int64 a2)
+__int64 ProcTheaterUI_1113400(__int64 result, __int64 a2)
 {
-
-#pragma clang fp contract(off)
   __int64 v2;
   __int64 v4;
-  long double v5;
-  __int64* v6;
-  __int64 v7;
-  __int64* v8;
+  __int64* v5;
+  const char* v6;
+  __int64* v7;
+  const char* v8;
   __int64 v9;
-  __int64 v10;
-  char* v11;
+  char* v10;
+  __int64 v11;
   __int64 v12;
   __int64 v13;
   __int64 v14;
-  __int64 v15;
-  long double v16;
-  __int64* v17;
-  _QWORD v18[2];
+  __int64* v15;
+  _QWORD v16[2];
   struct {
-    __int64* v19;
+    __int64* v17;
+    __int64 v18;
+    unsigned __int64 v19;
     unsigned __int64 v20;
-    unsigned __int64 v21;
-    unsigned __int64 v22;
-    int v23;
-    int v24;
+    int v21;
+    int v22;
+    __int64 v23;
+    __int64 v24;
     __int64 v25;
     __int64 v26;
     __int64 v27;
@@ -171,165 +176,110 @@ void ProcTheaterUI_1113400(char a1, __int64 a2)
     __int64 v33;
     __int64 v34;
     __int64 v35;
-    __int64 v36;
-    __int64 v37;
-  } v19_;
+  } v17_;
 
-  v16 = COERCE_AS(__typeof__(v16), PSEUDO_REGISTER(__n128, "v0", "=w")),
-  v5 = COERCE_AS(__typeof__(v5), PSEUDO_REGISTER(__n128, "v0", "=w"));
-  if ((a1 & 1) != 0) {
+  if ((result & 1) != 0) {
     v2 = GameData_2236778;
     if (GameData_2236778 != 0) {
-      LayoutAccessor_1560070((void*)(&v19_.v19),
-                             (__int64*)(GameData_2236778 + 168),
-                             (__int64)"L_Tlp"),
-          v16 = COERCE_AS(__typeof__(v16), PSEUDO_REGISTER(__n128, "v0", "=w")),
-          v5 = COERCE_AS(__typeof__(v5), PSEUDO_REGISTER(__n128, "v0", "=w"));
-      if (v19_.v20 == 0) {
+      LayoutAccessor_1560070_alt1((void*)(&v17_.v17),
+                                  (__int64*)(GameData_2236778 + 168), "L_Tlp");
+      if (v17_.v18 == 0) {
         goto LABEL_24;
       }
-      v4 = std___1___shared_weak_count_lock(v19_.v20),
-      v16 = COERCE_AS(__typeof__(v16), PSEUDO_REGISTER(__n128, "v0", "=w")),
-      v5 = COERCE_AS(__typeof__(v5), PSEUDO_REGISTER(__n128, "v0", "=w"));
-      v6 = v19_.v19;
-      if (v19_.v20 != 0) {
-        *(__n128*)&v5 = std___1___shared_weak_count___release_weak_alt2(),
-        v16 = COERCE_AS(__typeof__(v16), PSEUDO_REGISTER(__n128, "v0", "=w")),
-        v5 = COERCE_AS(__typeof__(v5), PSEUDO_REGISTER(__n128, "v0", "=w"));
+      v4 = std___1___shared_weak_count_lock_alt2(v17_.v18);
+      v5 = v17_.v17;
+      if (v17_.v18 != 0) {
+        std___1___shared_weak_count___release_weak_alt3(v17_.v18);
       }
-      if (v4 != 0 && v6 != nullptr) {
+      if (v4 != 0 && v5 != nullptr) {
         if (*(_BYTE*)(a2 + 2136) != 0) {
-          v7 = (__int64)game_97b2f0(a2 + 2104),
-          v16 = COERCE_AS(__typeof__(v16), PSEUDO_REGISTER(__n128, "v0", "=w")),
-          v5 = COERCE_AS(__typeof__(v5), PSEUDO_REGISTER(__n128, "v0", "=w"));
+          v6 = (const char*)game_97b2f0(a2 + 2104);
         }
         else {
-          v7 = GameRoutine_67ed20(*(_QWORD**)(a2 + 392)),
-          v16 = COERCE_AS(__typeof__(v16), PSEUDO_REGISTER(__n128, "v0", "=w")),
-          v5 = COERCE_AS(__typeof__(v5), PSEUDO_REGISTER(__n128, "v0", "=w"));
+          v6 = GameHr_67ed20(*(_QWORD**)(a2 + 392));
         }
-        v8 = msg_MessageManager_instance__ptr[0];
-        if (v7 != 0) {
-          v9 = v7;
+        v7 = msg_MessageManager_instance__ptr[0];
+        if (v6 != nullptr) {
+          v8 = v6;
         }
         else {
-          v9 = (__int64)*msg_MessageManager_empty_text__ptr;
+          v8 = *msg_MessageManager_empty_text__ptr;
         }
-        GameRoutine_60a020(*msg_MessageManager_instance__ptr[0] + 14704, v9),
-            v16 =
-                COERCE_AS(__typeof__(v16), PSEUDO_REGISTER(__n128, "v0", "=w")),
-            v5 = COERCE_AS(__typeof__(v5), PSEUDO_REGISTER(__n128, "v0", "=w"));
-        v10 = *v8;
-        v19_.v25 = -1;
-        v19_.v26 = -1;
-        v19_.v27 = -1;
-        v19_.v28 = -1;
-        v19_.v29 = -1;
-        v19_.v30 = -1;
-        v19_.v31 = -1;
-        v19_.v32 = -1;
-        v19_.v33 = -1;
-        v19_.v34 = -1;
-        v19_.v35 = -1;
-        v19_.v36 = -1;
-        v19_.v19 = GameData_212e348 + 2;
-        v19_.v20 = 0xFFFF0001FFFF0000LL;
-        v19_.v21 = 0xFFFF0004FFFF0002LL;
-        v19_.v22 = 0xFFFF0006FFFF0005LL;
-        v19_.v37 = 8;
-        v19_.v23 = -65529;
-        v19_.v24 = -65528;
-        v11 = GameRoutine_a4dbe0(v10, "MID_TheaterAct_Recovery_Message", 0),
-        v16 = COERCE_AS(__typeof__(v16), PSEUDO_REGISTER(__n128, "v0", "=w")),
-        v5 = COERCE_AS(__typeof__(v5), PSEUDO_REGISTER(__n128, "v0", "=w"));
-        if (v11 != nullptr) {
-          v12 = (__int64)v11;
-          v13 = ui_LayoutAccessor_FindTextBox(v6, (__int64)"T_Txt"),
-          v16 = COERCE_AS(__typeof__(v16), PSEUDO_REGISTER(__n128, "v0", "=w")),
-          v5 = COERCE_AS(__typeof__(v5), PSEUDO_REGISTER(__n128, "v0", "=w"));
-          if (v13 != 0) {
-            GameRoutine_156c5d0(v13, v12, 0),
-                v16 = COERCE_AS(__typeof__(v16),
-                                PSEUDO_REGISTER(__n128, "v0", "=w")),
-                v5 = COERCE_AS(__typeof__(v5),
-                               PSEUDO_REGISTER(__n128, "v0", "=w"));
+        GameRoutine_60a020_alt1(
+            (char*)(*msg_MessageManager_instance__ptr[0] + 14704), v8);
+        v9 = *v7;
+        v17_.v23 = -1;
+        v17_.v24 = -1;
+        v17_.v25 = -1;
+        v17_.v26 = -1;
+        v17_.v27 = -1;
+        v17_.v28 = -1;
+        v17_.v29 = -1;
+        v17_.v30 = -1;
+        v17_.v31 = -1;
+        v17_.v32 = -1;
+        v17_.v33 = -1;
+        v17_.v34 = -1;
+        v17_.v17 = GameData_212e348 + 2;
+        v17_.v18 = 0xFFFF0001FFFF0000LL;
+        v17_.v19 = 0xFFFF0004FFFF0002LL;
+        v17_.v20 = 0xFFFF0006FFFF0005LL;
+        v17_.v35 = 8;
+        v17_.v21 = -65529;
+        v17_.v22 = -65528;
+        v10 = GameRoutine_a4dbe0_alt1(v9, "MID_TheaterAct_Recovery_Message", 0);
+        if (v10 != nullptr) {
+          v11 = (__int64)v10;
+          v12 = ui_LayoutAccessor_FindTextBox(v5, (__int64)"T_Txt");
+          if (v12 != 0) {
+            GameRoutine_156c5d0(v12, v11, 0);
           }
         }
-        v14 = ui_LayoutAccessor_FindPane(v6, (__int64)"Face"),
-        v16 = COERCE_AS(__typeof__(v16), PSEUDO_REGISTER(__n128, "v0", "=w")),
-        v5 = COERCE_AS(__typeof__(v5), PSEUDO_REGISTER(__n128, "v0", "=w"));
-        if (v14 != 0) {
-          v14 =
-              __dynamic_cast(v14, GameData_212d670[0], GameData_212d678[0], 0),
-          v16 = COERCE_AS(__typeof__(v16), PSEUDO_REGISTER(__n128, "v0", "=w")),
-          v5 = COERCE_AS(__typeof__(v5), PSEUDO_REGISTER(__n128, "v0", "=w"));
+        v13 = ui_LayoutAccessor_FindPane(v5, (__int64)"Face");
+        if (v13 != 0) {
+          v13 =
+              __dynamic_cast(v13, GameData_212d670[0], GameData_212d678[0], 0);
         }
-        GameRoutine_1840740(v14, 0, a2, 6u, 1),
-            v16 =
-                COERCE_AS(__typeof__(v16), PSEUDO_REGISTER(__n128, "v0", "=w")),
-            v5 = COERCE_AS(__typeof__(v5), PSEUDO_REGISTER(__n128, "v0", "=w"));
+        GameHr_1840740(v13, 0, a2, 6u, 1);
       }
       else if (v4 == 0) {
         goto LABEL_24;
       }
       if (atomic_fetch_add((atomic_ullong* volatile)(v4 + 8),
                            0xFFFFFFFFFFFFFFFFLL) == 0) {
-        (*(void (**)(__int64, long double))(*(_QWORD*)v4 + 16LL))(v4, v5),
-            v16 =
-                COERCE_AS(__typeof__(v16), PSEUDO_REGISTER(__n128, "v0", "=w")),
-            v5 = COERCE_AS(__typeof__(v5), PSEUDO_REGISTER(__n128, "v0", "=w"));
-        std___1___shared_weak_count___release_weak_alt2(),
-            v16 =
-                COERCE_AS(__typeof__(v16), PSEUDO_REGISTER(__n128, "v0", "=w")),
-            v5 = COERCE_AS(__typeof__(v5), PSEUDO_REGISTER(__n128, "v0", "=w"));
+        (*(void (**)(__int64))(*(_QWORD*)v4 + 16LL))(v4);
+        std___1___shared_weak_count___release_weak_alt3(v4);
       }
     LABEL_24:
-      LayoutAccessor_155cda0_alt1((__int64*)(v2 + 624), (__int64)"In", nullptr),
-          v16 = COERCE_AS(__typeof__(v16), PSEUDO_REGISTER(__n128, "v0", "=w")),
-          v5 = COERCE_AS(__typeof__(v5), PSEUDO_REGISTER(__n128, "v0", "=w"));
-      v18[0] = "L_Tlp/L_PopUp";
-      v18[1] = 13;
-      GameRoutine_1114920((void*)(&v19_.v19), (__int64*)(v2 + 168), v18),
-          v16 = COERCE_AS(__typeof__(v16), PSEUDO_REGISTER(__n128, "v0", "=w")),
-          v5 = COERCE_AS(__typeof__(v5), PSEUDO_REGISTER(__n128, "v0", "=w"));
-      if (v19_.v20 != 0) {
-        v15 = std___1___shared_weak_count_lock(v19_.v20),
-        v16 = COERCE_AS(__typeof__(v16), PSEUDO_REGISTER(__n128, "v0", "=w")),
-        v5 = COERCE_AS(__typeof__(v5), PSEUDO_REGISTER(__n128, "v0", "=w"));
-        v17 = v19_.v19;
-        if (v19_.v20 != 0) {
-          *(__n128*)&v16 = std___1___shared_weak_count___release_weak_alt2(),
-          v16 = COERCE_AS(__typeof__(v16), PSEUDO_REGISTER(__n128, "v0", "=w")),
-          v5 = COERCE_AS(__typeof__(v5), PSEUDO_REGISTER(__n128, "v0", "=w"));
+      LayoutAccessor_155cda0_alt2(v2 + 624, "In", nullptr);
+      v16[0] = "L_Tlp/L_PopUp";
+      v16[1] = 13;
+      GameRoutine_1114920((void*)(&v17_.v17), (__int64*)(v2 + 168), v16);
+      result = v17_.v18;
+      if (v17_.v18 != 0) {
+        v14 = std___1___shared_weak_count_lock_alt2(v17_.v18);
+        v15 = v17_.v17;
+        result = v17_.v18;
+        if (v17_.v18 != 0) {
+          result = std___1___shared_weak_count___release_weak_alt3(v17_.v18);
         }
-        if (v15 != 0 && v17 != nullptr) {
-          (*(void (**)(__int64*, _QWORD, long double))(*v17 + 40))(v17, 0, v16),
-              v16 = COERCE_AS(__typeof__(v16),
-                              PSEUDO_REGISTER(__n128, "v0", "=w")),
-              v5 = COERCE_AS(__typeof__(v5),
-                             PSEUDO_REGISTER(__n128, "v0", "=w"));
+        if (v14 != 0 && v15 != nullptr) {
+          result = (*(__int64 (**)(__int64*, _QWORD))(*v15 + 40))(v15, 0);
           goto LABEL_31;
         }
-        if (v15 != 0) {
+        if (v14 != 0) {
         LABEL_31:
-          if (atomic_fetch_add((atomic_ullong* volatile)(v15 + 8),
+          if (atomic_fetch_add((atomic_ullong* volatile)(v14 + 8),
                                0xFFFFFFFFFFFFFFFFLL) == 0) {
-            (*(void (**)(__int64))(*(_QWORD*)v15 + 16LL))(v15),
-                v16 = COERCE_AS(__typeof__(v16),
-                                PSEUDO_REGISTER(__n128, "v0", "=w")),
-                v5 = COERCE_AS(__typeof__(v5),
-                               PSEUDO_REGISTER(__n128, "v0", "=w"));
-            std___1___shared_weak_count___release_weak_alt2(),
-                v16 = COERCE_AS(__typeof__(v16),
-                                PSEUDO_REGISTER(__n128, "v0", "=w")),
-                v5 = COERCE_AS(__typeof__(v5),
-                               PSEUDO_REGISTER(__n128, "v0", "=w"));
+            (*(void (**)(__int64))(*(_QWORD*)v14 + 16LL))(v14);
+            result = std___1___shared_weak_count___release_weak_alt3(v14);
           }
         }
       }
       *(_DWORD*)(v2 + 816) = 1;
     }
   }
+  return result;
 }
 
 void game_facility_anonymous_ProcTheaterUI_CreateBindChoice(__int64 a1,

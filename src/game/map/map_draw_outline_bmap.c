@@ -7,12 +7,17 @@ extern __int64 (*game_map_MapDrawOutlineBmap_vtable[])();
 __int64 MapDrawOutlineBmap_Destructor(_QWORD* a1);
 __n128 nn_mem_StandardAllocator_Free(_QWORD);
 extern __int64 fw_memory_g_heap_manager_ptr;
-__n128 MapDrawOutlineBmap_DeletingDestructor(_QWORD* a1);
+__n128 MapDrawOutlineBmap_DeletingDestructor_alt1(_QWORD* a1) __asm__(
+    "MapDrawOutlineBmap_DeletingDestructor");
 __int64 CharacterController_d42d20(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_f155c0(_QWORD);
 __int64 GameRoutine_f59e80(_QWORD, _QWORD, _QWORD);
 void __attribute__((noreturn)) String_60a250(_QWORD);
 __int64 MapDrawOutlineBmap_f59960(__int64 a1, __int64 a2);
+void GameRoutine_f59d40_alt1(_QWORD*) __asm__("GameRoutine_f59d40");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void MapDrawOutlineBmap_DeletingDestructor(__int64 a1);
 
 __int64 MapDrawOutlineBmap_f59960(__int64 a1, __int64 a2)
 {
@@ -149,18 +154,18 @@ __int64 MapDrawOutlineBmap_Destructor(_QWORD* a1)
   return GameRoutine_f59d40(a1[3]);
 }
 
-__n128 MapDrawOutlineBmap_DeletingDestructor(_QWORD* a1)
+void MapDrawOutlineBmap_DeletingDestructor(__int64 a1)
 {
-  __int64 v1;
+  __int64 v2;
 
-  *a1 = game_map_MapDrawOutlineBmap_vtable;
-  GameRoutine_f59d40(a1[3]);
-  v1 = 128;
+  *(_QWORD*)a1 = game_map_MapDrawOutlineBmap_vtable;
+  GameRoutine_f59d40_alt1(*(_QWORD**)(a1 + 24));
+  v2 = 128;
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-    v1 = 56;
+    v2 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v1);
+  nn_mem_StandardAllocator_Free_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v2, a1);
 }
 
 #pragma GCC visibility pop

@@ -12,7 +12,8 @@ __int64 game_menu_BasicMenu_Unknown96(_QWORD);
 __int64 nn_mem_StandardAllocator_Free(_QWORD);
 extern __int64 fw_memory_g_heap_manager_ptr;
 _QWORD* TalkCommandMenu_Destructor(__int64 a1);
-__int64 TalkCommandMenu_DeletingDestructor(__int64 a1);
+__int64 TalkCommandMenu_DeletingDestructor_alt1(__int64 a1) __asm__(
+    "TalkCommandMenu_DeletingDestructor");
 __int64 TalkCommandMenu_Unknown96(_QWORD* a1);
 __int64 game_menu_BasicMenu_Unknown69(void);
 __int64 game_menu_BasicMenu_Unknown72(void);
@@ -33,7 +34,8 @@ __int64 TalkCommandMenu_Unknown144(__int64 a1);
 __int64 TalkCommandMenu_Unknown18(__int64 a1);
 __int64 TalkCommandMenu_Unknown23(__int64 a1);
 _QWORD* TalkCommandMenu_Destructor_e97ff0(__int64 a1);
-__int64 TalkCommandMenu_DeletingDestructor_e98020(__int64 a1);
+__int64 TalkCommandMenu_DeletingDestructor_e98020_alt1(__int64 a1) __asm__(
+    "TalkCommandMenu_DeletingDestructor_e98020");
 _QWORD* game_menu_BasicMenu_Unknown69_alt1(_QWORD*) __asm__(
     "game_menu_BasicMenu_Unknown69");
 _QWORD* game_menu_BasicMenu_Unknown72_alt1(_QWORD*) __asm__(
@@ -48,6 +50,14 @@ __int64 snd_play_ff2d0_alt1(__int64, __int64, __int64, unsigned int,
 void snd_Fade_Fade_10c830_alt1(__int64, float) __asm__("snd_Fade_Fade_10c830");
 _QWORD* TalkCommandMenu_e97b90(__int64 a1);
 _QWORD* TalkCommandMenu_e97c00(__int64 a1);
+void GmapTalkCommandMenu_e95140_alt1(_QWORD*) __asm__(
+    "GmapTalkCommandMenu_e95140");
+void game_menu_BasicMenu_Destroy_BasicMenu_alt1(__int64) __asm__(
+    "game_menu_BasicMenu_Destroy_BasicMenu");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void TalkCommandMenu_DeletingDestructor(__int64 a1);
+void TalkCommandMenu_DeletingDestructor_e98020(__int64 a1);
 
 _QWORD* TalkCommandMenu_Destructor(__int64 a1)
 {
@@ -55,18 +65,18 @@ _QWORD* TalkCommandMenu_Destructor(__int64 a1)
   return GameRoutine_e95140((_QWORD*)(a1 + 1072));
 }
 
-__int64 TalkCommandMenu_DeletingDestructor(__int64 a1)
+void TalkCommandMenu_DeletingDestructor(__int64 a1)
 {
   __int64 v2;
 
-  game_menu_BasicMenu_Destroy_BasicMenu(a1);
-  GameRoutine_e95140((_QWORD*)(a1 + 1072));
+  game_menu_BasicMenu_Destroy_BasicMenu_alt1(a1);
+  GmapTalkCommandMenu_e95140_alt1((_QWORD*)(a1 + 1072));
   v2 = 128;
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
     v2 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v2);
+  nn_mem_StandardAllocator_Free_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v2, a1);
 }
 
 _QWORD* TalkCommandMenu_e97b90(__int64 a1)
@@ -229,18 +239,20 @@ _QWORD* TalkCommandMenu_Destructor_e97ff0(__int64 a1)
   return GmapTalkCommandMenu_e95140((_QWORD*)(a1 - 192));
 }
 
-__int64 TalkCommandMenu_DeletingDestructor_e98020(__int64 a1)
+void TalkCommandMenu_DeletingDestructor_e98020(__int64 a1)
 {
-  __int64 v2;
+  __int64 v1;
+  __int64 v3;
 
-  game_menu_BasicMenu_Destroy_BasicMenu(a1 - 1264);
-  GmapTalkCommandMenu_e95140((_QWORD*)(a1 - 192));
-  v2 = 128;
+  v1 = a1 - 1264;
+  game_menu_BasicMenu_Destroy_BasicMenu_alt1(a1 - 1264);
+  GmapTalkCommandMenu_e95140_alt1((_QWORD*)(a1 - 192));
+  v3 = 128;
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-    v2 = 56;
+    v3 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v2);
+  nn_mem_StandardAllocator_Free_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v3, v1);
 }
 
 #pragma GCC visibility pop

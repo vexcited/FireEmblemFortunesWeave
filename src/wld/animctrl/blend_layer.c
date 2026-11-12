@@ -48,6 +48,7 @@ GameRoutine_8123d0_alt1() __asm__("GameRoutine_8123d0");
 void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void BlendLayer_d2ae40(__int64 a1);
+__int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
 
 __int64 BlendLayer_Destructor(__int64 result)
 {
@@ -349,7 +350,7 @@ void BlendLayer_d2ae40(__int64 a1)
     int* v12;
   } v11_;
 
-  BlendLayer_d2b700((void*)(&v11_.v11), (_QWORD*)a1);
+  BlendLayer_d2b700_alt1((void*)((__int64*)&v11_.v11), (__int64*)a1);
   v2 = v11_.v11;
   v3 = v11_.v12;
   if (v11_.v11 == v11_.v12) {
@@ -886,7 +887,7 @@ __attribute__((swiftcall)) void BlendLayer_d2b700(PSEUDO_X8 x8_, _QWORD* result)
   }
 }
 
-__attribute__((swiftcall)) void BlendLayer_d2b820(PSEUDO_X8 x8_, __int64 result)
+__attribute__((swiftcall)) void BlendLayer_d2b820(PSEUDO_X8 x8_, __int64 a1)
 {
   __int64* a2 = (__int64*)PSEUDO_X8_VALUE(x8_);
   __int64* v3;
@@ -896,7 +897,7 @@ __attribute__((swiftcall)) void BlendLayer_d2b820(PSEUDO_X8 x8_, __int64 result)
   __int64 v7;
   __int64 v8;
   unsigned __int64 v9;
-  __int64 v10;
+  unsigned __int64 v10;
   __int64 v11;
   __int64 v12;
   __int64 v13;
@@ -907,7 +908,7 @@ __attribute__((swiftcall)) void BlendLayer_d2b820(PSEUDO_X8 x8_, __int64 result)
   int v18;
   unsigned __int64 v19;
   __int64 v20;
-  __int64 v21;
+  signed __int64 v21;
   unsigned __int64 v22;
   __int64 v23;
   unsigned __int64 v24;
@@ -919,7 +920,7 @@ __attribute__((swiftcall)) void BlendLayer_d2b820(PSEUDO_X8 x8_, __int64 result)
   unsigned __int64 v30;
   _DWORD* v31;
   __int64 v32;
-  __int64 v33;
+  signed __int64 v33;
   unsigned __int64 v34;
   __int64 v35;
   unsigned __int64 v36;
@@ -933,8 +934,8 @@ __attribute__((swiftcall)) void BlendLayer_d2b820(PSEUDO_X8 x8_, __int64 result)
   a2[1] = 0;
   a2[2] = 0;
   *a2 = 0;
-  v4 = *(__int64**)(result + 24);
-  v3 = *(__int64**)(result + 32);
+  v4 = *(__int64**)(a1 + 24);
+  v3 = *(__int64**)(a1 + 32);
   v41 = v3;
   while (v4 != v3) {
     v6 = *v4;
@@ -953,7 +954,7 @@ __attribute__((swiftcall)) void BlendLayer_d2b820(PSEUDO_X8 x8_, __int64 result)
         v10 = a2[1] - v8;
         v11 = fw_memory_HeapManager_Allocate_alt1(fw_memory_g_heap_manager,
                                                   4 * v9, 16, 0);
-        result = memcpy(v11, v8, v10);
+        memcpy_alt1(v11, v8, v10);
         *a2 = v11;
         a2[1] = v11 + v10;
         a2[2] = v11 + 4 * v9;
@@ -962,15 +963,15 @@ __attribute__((swiftcall)) void BlendLayer_d2b820(PSEUDO_X8 x8_, __int64 result)
           if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
             v12 = 56;
           }
-          result = nn_mem_StandardAllocator_Free_alt1(
-              *(_QWORD*)fw_memory_g_heap_manager_ptr + v12);
+          nn_mem_StandardAllocator_Free_alt2(
+              *(_QWORD*)fw_memory_g_heap_manager_ptr + v12, v8);
         }
       }
     }
     if (v7 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v7 + 8),
                                     0xFFFFFFFFFFFFFFFFLL) == 0) {
       (*(void (**)(__int64))(*(_QWORD*)v7 + 16LL))(v7);
-      result = std___1___shared_weak_count___release_weak(v7);
+      std___1___shared_weak_count___release_weak_alt1(v7);
       v13 = *v4;
       v14 = v4[1];
       if (v14 == 0) {
@@ -1001,7 +1002,7 @@ __attribute__((swiftcall)) void BlendLayer_d2b820(PSEUDO_X8 x8_, __int64 result)
           }
           else {
             v20 = *a2;
-            v21 = (__int64)v17 - *a2;
+            v21 = (signed __int64)v17 - *a2;
             v22 = (v21 >> 2) + 1;
             if (v22 >> 62 != 0) {
               goto LABEL_61;
@@ -1030,7 +1031,7 @@ __attribute__((swiftcall)) void BlendLayer_d2b820(PSEUDO_X8 x8_, __int64 result)
             v27 = v25 + v21 - 4 * (v21 >> 2);
             *(_DWORD*)(v25 + v21) = v18;
             v17 = (_DWORD*)(v25 + v21 + 4);
-            result = memcpy(v27, v20, v21);
+            memcpy_alt1(v27, v20, v21);
             *a2 = v27;
             a2[2] = v26;
             if (v20 != 0) {
@@ -1039,8 +1040,8 @@ __attribute__((swiftcall)) void BlendLayer_d2b820(PSEUDO_X8 x8_, __int64 result)
                   0) {
                 v28 = 56;
               }
-              result = nn_mem_StandardAllocator_Free_alt1(
-                  *(_QWORD*)fw_memory_g_heap_manager_ptr + v28);
+              nn_mem_StandardAllocator_Free_alt2(
+                  *(_QWORD*)fw_memory_g_heap_manager_ptr + v28, v20);
             }
           }
           ++v15;
@@ -1051,7 +1052,7 @@ __attribute__((swiftcall)) void BlendLayer_d2b820(PSEUDO_X8 x8_, __int64 result)
     if (v42 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v42 + 8),
                                      0xFFFFFFFFFFFFFFFFLL) == 0) {
       (*(void (**)(__int64))(*(_QWORD*)v42 + 16LL))(v42);
-      result = std___1___shared_weak_count___release_weak(v42);
+      std___1___shared_weak_count___release_weak_alt1(v42);
     }
     if (*((_BYTE*)v4 + 20) == 1) {
       v29 = *((_DWORD*)v4 + 4);
@@ -1063,7 +1064,7 @@ __attribute__((swiftcall)) void BlendLayer_d2b820(PSEUDO_X8 x8_, __int64 result)
       }
       else {
         v32 = *a2;
-        v33 = (__int64)v31 - *a2;
+        v33 = (signed __int64)v31 - *a2;
         v34 = (v33 >> 2) + 1;
         if (v34 >> 62 != 0) {
         LABEL_61:
@@ -1094,7 +1095,7 @@ __attribute__((swiftcall)) void BlendLayer_d2b820(PSEUDO_X8 x8_, __int64 result)
         v39 = v37 + v33 - 4 * (v33 >> 2);
         *(_DWORD*)(v37 + v33) = v29;
         v5 = v37 + v33 + 4;
-        result = memcpy(v39, v32, v33);
+        memcpy_alt1(v39, v32, v33);
         *a2 = v39;
         a2[2] = v38;
         if (v32 != 0) {
@@ -1102,18 +1103,14 @@ __attribute__((swiftcall)) void BlendLayer_d2b820(PSEUDO_X8 x8_, __int64 result)
           if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
             v40 = 56;
           }
-          result = nn_mem_StandardAllocator_Free_alt1(
-              *(_QWORD*)fw_memory_g_heap_manager_ptr + v40);
+          nn_mem_StandardAllocator_Free_alt2(
+              *(_QWORD*)fw_memory_g_heap_manager_ptr + v40, v32);
         }
       }
       a2[1] = v5;
     }
     v3 = v41;
     v4 += 7;
-  }
-  {
-    result;
-    return;
   }
 }
 

@@ -14,7 +14,8 @@ extern __int64 (*ui_control_EmbeddedImage_vtable[])();
 extern __int64 GameData_21f8020;
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64 ui_Manager_instance_;
-__int64 EmbeddedImage_188a200(__int64 a1, __int64 a2);
+__int64 EmbeddedImage_188a200_alt1(__int64 a1,
+                                   __int64 a2) __asm__("EmbeddedImage_188a200");
 __int64 AsyncLoadImage_17e48a0(_QWORD, _QWORD, _QWORD, _QWORD);
 __int64 GameRoutine_576740(_QWORD, _QWORD);
 __int64 LayoutEx_579160(_QWORD, _QWORD);
@@ -25,6 +26,18 @@ extern __int64 (*EmbeddedImage_188a200_ptr[])();
 extern __int64 (*GameData_20ff378[])();
 __attribute__((swiftcall)) void EmbeddedImage_18895c0(PSEUDO_X8 x8_, __int64 a1,
                                                       __int64 a2, __int64 a3);
+__int64* nn_ui2d_Pane_GetRuntimeTypeInfoStatic_alt1() __asm__(
+    "nn_ui2d_Pane_GetRuntimeTypeInfoStatic");
+__int64
+std___1___hash_memory_alt1(__int64,
+                           unsigned __int64) __asm__("std___1___hash_memory");
+int __cxa_guard_acquire_alt1(__int64) __asm__("__cxa_guard_acquire");
+void GameRoutine_13681c0_alt1(_QWORD*,
+                              unsigned __int64) __asm__("GameRoutine_13681c0");
+void __cxa_guard_release_alt1(__int64) __asm__("__cxa_guard_release");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void EmbeddedImage_188a200(__int64 a1);
 
 __attribute__((swiftcall)) void EmbeddedImage_18895c0(PSEUDO_X8 x8_, __int64 a1,
                                                       __int64 a2, __int64 a3)
@@ -98,63 +111,65 @@ __attribute__((swiftcall)) void EmbeddedImage_18895c0(PSEUDO_X8 x8_, __int64 a1,
   }
 }
 
-__int64 EmbeddedImage_188a200(__int64 a1, __int64 a2)
+void EmbeddedImage_188a200(__int64 a1)
 {
-  __int64 v2;
-  __int64 v4;
-  __int64 v5;
-  __int64* v6;
+  __int64 v1;
+  __int64 v3;
+  _QWORD* v4;
+  __int64* v5;
+  unsigned __int64 v7;
   __int64 v8;
-  __int64 result;
+  __int64 v9;
   __int64 v10;
-  __int64 v11;
 
-  v2 = *(_QWORD*)(a1 + 8);
+  v1 = *(_QWORD*)(a1 + 8);
   *(_QWORD*)a1 = ui_control_EmbeddedImage_vtable;
-  if (v2 != 0) {
-    v4 = *(_QWORD*)(v2 + 24);
+  if (v1 != 0) {
+    v3 = *(_QWORD*)(v1 + 24);
   }
   else {
-    v4 = 0;
+    v3 = 0;
   }
-  v5 = ui_Manager_instance_;
+  v4 = (_QWORD*)ui_Manager_instance_;
   if ((atomic_load_explicit((atomic_uchar* volatile)&GameData_21f8028,
                             memory_order_acquire) &
        1) == 0 &&
-      (unsigned int)__cxa_guard_acquire(&GameData_21f8028, a2) != 0) {
-    GameData_21f8020 = nn_ui2d_Pane_GetRuntimeTypeInfoStatic();
-    __cxa_guard_release(&GameData_21f8028);
+      __cxa_guard_acquire_alt1((__int64)&GameData_21f8028) != 0) {
+    GameData_21f8020 = (__int64)nn_ui2d_Pane_GetRuntimeTypeInfoStatic_alt1();
+    __cxa_guard_release_alt1((__int64)&GameData_21f8028);
   }
-  if (v4 == 0) {
+  if (v3 == 0) {
     goto LABEL_14;
   }
-  v6 = (__int64*)(*(__int64 (**)(__int64))(*(_QWORD*)v4 + 16LL))(v4);
-  if (v6 == &GameData_21f8020) {
+  v5 = (__int64*)(*(__int64 (**)(__int64))(*(_QWORD*)v3 + 16LL))(v3);
+  if (v5 == &GameData_21f8020) {
     goto LABEL_13;
   }
   do {
-    v6 = (__int64*)*v6;
-  } while (v6 != &GameData_21f8020 && v6 != nullptr);
-  if (v6 != nullptr) {
+    v5 = (__int64*)*v5;
+  } while (v5 != &GameData_21f8020 && v5 != nullptr);
+  if (v5 != nullptr) {
   LABEL_13:
-    v11 = v4;
-    v8 = std___1___hash_memory(&v11, 8);
+    v10 = v3;
+    v7 = std___1___hash_memory_alt1((__int64)&v10, 8u);
   }
   else {
   LABEL_14:
-    v8 = 0;
+    v7 = 0;
   }
-  result = GameRoutine_13681c0(v5, v8);
+  GameRoutine_13681c0_alt1(v4, v7);
   *(_QWORD*)a1 = &ui_ILayoutControl_vtable;
-  if ((*(_BYTE*)(a1 + 48) & 1) != 0 && *(_QWORD*)(a1 + 64) != 0) {
-    v10 = 128;
-    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-      v10 = 56;
+  if ((*(_BYTE*)(a1 + 48) & 1) != 0) {
+    v8 = *(_QWORD*)(a1 + 64);
+    if (v8 != 0) {
+      v9 = 128;
+      if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+        v9 = 56;
+      }
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v9, v8);
     }
-    return nn_mem_StandardAllocator_Free(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v10);
   }
-  return result;
 }
 
 #pragma GCC visibility pop

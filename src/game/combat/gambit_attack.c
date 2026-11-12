@@ -19,10 +19,20 @@ extern __int64* GameData_212f3e0[3];
 __int64 game_combat_GambitAttack_Run(__int64 a1);
 __n128 GambitAttack_Destructor(__int64 a1);
 __n128 GambitAttack_DeletingDestructor(__int64 a1);
-__int64 game_combat_GambitAttack_Run_lambda0_Invoke(__int64 a1, __int64* a2,
-                                                    _DWORD* a3, long double a4,
-                                                    long double a5);
+__int64 game_combat_GambitAttack_Run_lambda0_Invoke_alt1(
+    __int64 a1, __int64* a2, _DWORD* a3, long double a4,
+    long double a5) __asm__("game_combat_GambitAttack_Run_lambda0_Invoke");
 __attribute__((swiftcall)) void GambitAttack_Unknown3(PSEUDO_X8 x8_);
+__int64 GameHr_e41cc0(__int64);
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+char* GameRoutine_e37f80_alt1(__int64*, char*,
+                              char*) __asm__("GameRoutine_e37f80");
+__int64 game_combat_GambitAttack_Run_lambda0_Invoke(__int64 a1, __int64* a2,
+                                                    _DWORD* a3);
 
 __int64 game_combat_GambitAttack_Run(__int64 a1)
 {
@@ -162,133 +172,134 @@ __attribute__((swiftcall)) void GambitAttack_Unknown3(PSEUDO_X8 x8_)
 }
 
 __int64 game_combat_GambitAttack_Run_lambda0_Invoke(__int64 a1, __int64* a2,
-                                                    _DWORD* a3, long double a4,
-                                                    long double a5)
+                                                    _DWORD* a3)
 {
-  __int64 v5;
-  __int64 v6;
-  float v7;
-  int v8;
-  _QWORD* v9;
-  __int64 v10;
-  atomic_ullong* v11;
-  __int64 v12;
-  __int64* v13;
-  __int64 v14;
-  __int64 v15;
-  __int64 result;
-  __int64 v17;
-  __int64 v18;
-  atomic_ullong* v19;
-  __int64 v20;
-  __int64* v21;
-  __int64 v22;
-  __int64 v23;
-  __int64 v24;
-  __int64 v25;
-  __int64 v26;
 
-  v5 = *a2;
-  v6 = *(_QWORD*)(*(_QWORD*)(a1 + 8) + 112LL);
-  if (v6 != 0) {
-    LODWORD(v25) = *a3;
-    *(float*)&a4 =
-        (*(float (**)(__int64, __int64*))(*(_QWORD*)v6 + 48LL))(v6, &v25);
-    v7 = *(float*)&a4;
+#pragma clang fp contract(off)
+  __int64 v3;
+  __int64 v4;
+  float v5;
+  int v6;
+  __int64* v7;
+  __int64 v8;
+  atomic_ullong* v9;
+  __int64 v10;
+  __int64* v11;
+  __int64 v12;
+  __int64 v13;
+  __int64 result;
+  __int64 v15;
+  __int64 v16;
+  atomic_ullong* v17;
+  __int64 v18;
+  __int64* v19;
+  __int64 v20;
+  __int64 v21;
+  __int64 v22;
+  struct {
+    __int64 v23;
+    __int64 v24;
+  } v23_;
+
+  v3 = *a2;
+  v4 = *(_QWORD*)(*(_QWORD*)(a1 + 8) + 112LL);
+  if (v4 != 0) {
+    LODWORD(v23_.v23) = *a3;
+    v5 = (*(float (**)(__int64, __int64*))(*(_QWORD*)v4 + 48LL))(v4, &v23_.v23);
   }
   else {
-    v7 = 0.0;
+    v5 = 0x0.0p+0f;
   }
-  v8 = GameRoutine_e41cc0(*(_QWORD*)(v5 + 104), a4, a5);
-  v9 = (_QWORD*)fw_memory_g_heap_manager_ptr;
-  v10 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
-                                       264, 16, 0);
-  *(_QWORD*)(v10 + 8) = 0;
-  v11 = (atomic_ullong*)(v10 + 8);
-  *(_QWORD*)(v10 + 16) = 0;
-  v12 = v10;
-  v13 = GameData_212f3e0[0];
-  *(_WORD*)(v10 + 32) = 0;
-  *(_QWORD*)(v10 + 64) = v5;
-  *(_QWORD*)v10 = v13 + 2;
-  *(_BYTE*)(v10 + 40) = 12;
-  strcpy((char*)(v10 + 41), "Attack");
-  *(_DWORD*)(v10 + 72) = 0;
-  *(_DWORD*)(v10 + 76) = v8;
-  *(_QWORD*)(v10 + 80) = 0;
-  *(_BYTE*)(v10 + 88) = 0;
-  *(_BYTE*)(v10 + 92) = 0;
-  *(_WORD*)(v10 + 96) = 0;
-  *(_QWORD*)(v10 + 120) = 0;
-  *(_BYTE*)(v10 + 128) = 0;
-  *(_BYTE*)(v10 + 132) = 0;
-  *(_WORD*)(v10 + 136) = 0;
-  *(_QWORD*)(v10 + 160) = 0;
-  *(_BYTE*)(v10 + 168) = 0;
-  *(_BYTE*)(v10 + 172) = 0;
-  *(_WORD*)(v10 + 176) = 0;
-  *(_QWORD*)(v10 + 200) = 0;
-  *(_BYTE*)(v10 + 208) = 0;
-  *(_BYTE*)(v10 + 212) = 0;
-  *(_WORD*)(v10 + 216) = 0;
-  *(_QWORD*)(v10 + 240) = 0;
-  *(_QWORD*)(v10 + 248) = 0;
-  *(_QWORD*)(v10 + 24) = game_combat_LegionStackAttack_vtable;
-  v14 = v10 + 24;
-  *(_WORD*)(v10 + 256) = 256;
-  v15 = *(_QWORD*)(v5 + 112);
-  v25 = v14;
-  v26 = v12;
-  atomic_fetch_add_explicit(v11, 1u, memory_order_relaxed);
-  result = (__int64)GameRoutine_e37f80((signed __int64*)(v15 + 136),
-                                       *(char**)(v15 + 136), (char*)&v25);
-  v17 = v26;
-  if (v26 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v26 + 8),
-                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
-    (*(void (**)(__int64))(*(_QWORD*)v17 + 16LL))(v17);
-    result = std___1___shared_weak_count___release_weak();
+  v6 = GameHr_e41cc0(*(_QWORD*)(v3 + 104));
+  v7 = (__int64*)fw_memory_g_heap_manager_ptr;
+  v8 = fw_memory_HeapManager_Allocate_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr, 264, 16, 0);
+  *(_QWORD*)(v8 + 8) = 0;
+  v9 = (atomic_ullong*)(v8 + 8);
+  *(_QWORD*)(v8 + 16) = 0;
+  v10 = v8;
+  v11 = GameData_212f3e0[0];
+  *(_WORD*)(v8 + 32) = 0;
+  *(_QWORD*)(v8 + 64) = v3;
+  *(_QWORD*)v8 = v11 + 2;
+  *(_BYTE*)(v8 + 40) = 12;
+  strcpy((char*)(v8 + 41), "Attack");
+  *(_DWORD*)(v8 + 72) = 0;
+  *(_DWORD*)(v8 + 76) = v6;
+  *(_QWORD*)(v8 + 80) = 0;
+  *(_BYTE*)(v8 + 88) = 0;
+  *(_BYTE*)(v8 + 92) = 0;
+  *(_WORD*)(v8 + 96) = 0;
+  *(_QWORD*)(v8 + 120) = 0;
+  *(_BYTE*)(v8 + 128) = 0;
+  *(_BYTE*)(v8 + 132) = 0;
+  *(_WORD*)(v8 + 136) = 0;
+  *(_QWORD*)(v8 + 160) = 0;
+  *(_BYTE*)(v8 + 168) = 0;
+  *(_BYTE*)(v8 + 172) = 0;
+  *(_WORD*)(v8 + 176) = 0;
+  *(_QWORD*)(v8 + 200) = 0;
+  *(_BYTE*)(v8 + 208) = 0;
+  *(_BYTE*)(v8 + 212) = 0;
+  *(_WORD*)(v8 + 216) = 0;
+  *(_QWORD*)(v8 + 240) = 0;
+  *(_QWORD*)(v8 + 248) = 0;
+  *(_QWORD*)(v8 + 24) = game_combat_LegionStackAttack_vtable;
+  v12 = v8 + 24;
+  *(_WORD*)(v8 + 256) = 256;
+  v13 = *(_QWORD*)(v3 + 112);
+  v23_.v23 = v12;
+  v23_.v24 = v10;
+  atomic_fetch_add_explicit(v9, 1u, memory_order_relaxed);
+  result = (__int64)GameRoutine_e37f80_alt1(
+      (__int64*)(v13 + 136), *(char**)(v13 + 136), (char*)&v23_.v23);
+  v15 = v23_.v24;
+  if (v23_.v24 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v23_.v24 + 8),
+                                        0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v15 + 16LL))(v15);
+    result = std___1___shared_weak_count___release_weak_alt1(v15);
   }
-  if (atomic_fetch_add(v11, 0xFFFFFFFFFFFFFFFFLL) != 0) {
-    if (v7 <= 0.0) {
+  if (atomic_fetch_add(v9, 0xFFFFFFFFFFFFFFFFLL) != 0) {
+    if (v5 <= 0x0.0p+0f) {
       return result;
     }
   }
   else {
-    (*(void (**)(__int64))(*(_QWORD*)v12 + 16LL))(v12);
-    result = std___1___shared_weak_count___release_weak();
-    if (v7 <= 0.0) {
+    (*(void (**)(__int64))(*(_QWORD*)v10 + 16LL))(v10);
+    result = std___1___shared_weak_count___release_weak_alt1(v10);
+    if (v5 <= 0x0.0p+0f) {
       return result;
     }
   }
-  v18 = fw_memory_HeapManager_Allocate(*v9, 80, 16, 0);
-  *(_QWORD*)(v18 + 8) = 0;
-  v19 = (atomic_ullong*)(v18 + 8);
-  *(_QWORD*)(v18 + 16) = 0;
-  v20 = v18;
-  v21 = GameData_212f3d8[0];
-  *(_WORD*)(v18 + 32) = 0;
-  *(_QWORD*)(v18 + 64) = v5;
-  *(_DWORD*)(v18 + 72) = 0;
-  *(_QWORD*)v18 = v21 + 2;
-  strcpy((char*)(v18 + 40), "\nDelay");
-  *(float*)(v18 + 76) = v7;
-  *(_QWORD*)(v18 + 24) = game_combat_LegionStackDelay_vtable;
-  v22 = v18 + 24;
-  v23 = *(_QWORD*)(v5 + 112);
-  v25 = v22;
-  v26 = v20;
-  atomic_fetch_add_explicit(v19, 1u, memory_order_relaxed);
-  result = (__int64)GameRoutine_e37f80((signed __int64*)(v23 + 136),
-                                       *(char**)(v23 + 136), (char*)&v25);
-  v24 = v26;
-  if (v26 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v26 + 8),
-                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
-    (*(void (**)(__int64))(*(_QWORD*)v24 + 16LL))(v24);
-    result = std___1___shared_weak_count___release_weak();
+  v16 = fw_memory_HeapManager_Allocate_alt1(*v7, 80, 16, 0);
+  *(_QWORD*)(v16 + 8) = 0;
+  v17 = (atomic_ullong*)(v16 + 8);
+  *(_QWORD*)(v16 + 16) = 0;
+  v18 = v16;
+  v19 = GameData_212f3d8[0];
+  *(_WORD*)(v16 + 32) = 0;
+  *(_QWORD*)(v16 + 64) = v3;
+  *(_DWORD*)(v16 + 72) = 0;
+  *(_QWORD*)v16 = v19 + 2;
+  strcpy((char*)(v16 + 40), "\nDelay");
+  *(float*)(v16 + 76) = v5;
+  *(_QWORD*)(v16 + 24) = game_combat_LegionStackDelay_vtable;
+  v20 = v16 + 24;
+  v21 = *(_QWORD*)(v3 + 112);
+  v23_.v23 = v20;
+  v23_.v24 = v18;
+  atomic_fetch_add_explicit(v17, 1u, memory_order_relaxed);
+  result = (__int64)GameRoutine_e37f80_alt1(
+      (__int64*)(v21 + 136), *(char**)(v21 + 136), (char*)&v23_.v23);
+  v22 = v23_.v24;
+  if (v23_.v24 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v23_.v24 + 8),
+                                        0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v22 + 16LL))(v22);
+    result = std___1___shared_weak_count___release_weak_alt1(v22);
   }
-  if (atomic_fetch_add(v19, 0xFFFFFFFFFFFFFFFFLL) == 0) {
-    (*(void (**)(__int64))(*(_QWORD*)v20 + 16LL))(v20);
-    return std___1___shared_weak_count___release_weak();
+  if (atomic_fetch_add(v17, 0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v18 + 16LL))(v18);
+    return std___1___shared_weak_count___release_weak_alt1(v18);
   }
   return result;
 }

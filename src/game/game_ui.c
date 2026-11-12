@@ -93,6 +93,17 @@ __int64 GameUI_8b51d0();
 __attribute__((swiftcall)) void
 game_GameUI_Setup_lambda0_Invoke(PSEUDO_X8 x8_, __int64 unused_int0,
                                  unsigned __int64* a1);
+__attribute__((swiftcall)) void TextTagProcessor_1908c60(PSEUDO_X8, __int64,
+                                                         __int64);
+__attribute__((swiftcall)) void TextTagProcessor_1908f00(PSEUDO_X8, __int64,
+                                                         __int64);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+const char*
+GameRoutine_1366820_alt1(const char* result) __asm__("GameRoutine_1366820");
+extern __int64 (*game_1905b70_ptr[2])();
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 _QWORD* game_GameUI_Setup()
 {
@@ -432,7 +443,7 @@ __int64 GameUI_8b51d0()
   if (v0 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v0 + 8),
                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v0 + 16LL))(v0);
-    std___1___shared_weak_count___release_weak();
+    std___1___shared_weak_count___release_weak_alt1(v0);
   }
   LayoutAccessor_155e140(&GameData_21f7fb0);
   v1 = GameData_2130250[0];
@@ -445,7 +456,7 @@ __int64 GameUI_8b51d0()
   if (v2 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v2 + 8),
                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v2 + 16LL))(v2);
-    std___1___shared_weak_count___release_weak();
+    std___1___shared_weak_count___release_weak_alt1(v2);
   }
   LayoutAccessor_155e140(game_talk_g_window_layout_ptr[0]);
   if (*(_QWORD*)GameData_2131dc8 != 0) {
@@ -469,7 +480,7 @@ __int64 GameUI_8b51d0()
     if (*(_QWORD*)(*(_QWORD*)v6 + 200LL) == 0) {
       v7 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)v6 + v7, v5);
+    nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v6 + v7, v5);
   }
   *v4 = 0;
   v8 = (_QWORD*)GameData_212d8a8[0];
@@ -480,7 +491,7 @@ __int64 GameUI_8b51d0()
     if (*(_QWORD*)(*(_QWORD*)v6 + 200LL) == 0) {
       v10 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)v6 + v10, v9);
+    nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v6 + v10, v9);
   }
   *v8 = 0;
   v11 = (_QWORD*)GameData_212d8b0[0];
@@ -491,7 +502,7 @@ __int64 GameUI_8b51d0()
     if (*(_QWORD*)(*(_QWORD*)v6 + 200LL) == 0) {
       v13 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)v6 + v13, v12);
+    nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v6 + v13, v12);
   }
   *v11 = 0;
   v14 = (_QWORD*)GameData_212d6e0[0];
@@ -502,19 +513,19 @@ __int64 GameUI_8b51d0()
     if (*(_QWORD*)(*(_QWORD*)v6 + 200LL) == 0) {
       v16 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)v6 + v16, v15);
+    nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v6 + v16, v15);
   }
   *v14 = 0;
-  GameRoutine_1366820((__int64)"Layout/Common.arc");
+  GameRoutine_1366820_alt1("Layout/Common.arc");
   GameData_21f1dd8[0] = 0;
-  GameRoutine_1366820((__int64)"Layout/CommonMenu.arc");
+  GameRoutine_1366820_alt1("Layout/CommonMenu.arc");
   GameData_21f1dd9 = 0;
-  GameRoutine_1366820((__int64)"Layout/Hub.arc");
+  GameRoutine_1366820_alt1("Layout/Hub.arc");
   GameData_21f1ddc = 0;
   v28_.v29 = v28_.v28;
   v28_.v28[0] = (__int64 (*)())((char*)GameData_2132280 + 16);
   v28_.v28[1] = GameData_2132240[0];
-  GameRoutine_1908c60_alt1((void*)((__int64)v26_.v26),
+  TextTagProcessor_1908c60((void*)((__int64)v26_.v26),
                            ui_Manager_instance_ + 6528, (__int64)v28_.v28);
   if (v28_.v29 == v28_.v28) {
     v17 = 32;
@@ -540,8 +551,8 @@ LABEL_38:
 LABEL_43:
   v28_.v29 = v28_.v28;
   v28_.v28[0] = (__int64 (*)())((char*)GameData_2132288 + 16);
-  v28_.v28[1] = GameData_2132248[0];
-  GameRoutine_1908f00_alt1((void*)((__int64)v24_.v24),
+  v28_.v28[1] = game_1905b70_ptr[0];
+  TextTagProcessor_1908f00((void*)((__int64)v24_.v24),
                            ui_Manager_instance_ + 6528, (__int64)v28_.v28);
   if (v28_.v29 == v28_.v28) {
     v19 = 32;

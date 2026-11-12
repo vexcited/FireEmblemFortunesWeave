@@ -11,7 +11,8 @@ extern __int64 GameData_220b6e0;
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64* GameData_212f0b8[5];
 __int64 Popup2D_Destructor(_QWORD* a1);
-__int64 Popup2D_DeletingDestructor(_QWORD* a1);
+__int64 Popup2D_DeletingDestructor_alt1(_QWORD* a1) __asm__(
+    "Popup2D_DeletingDestructor");
 __int64 Popup2D_f7f870(__int64 a1);
 bool Popup2D_Unknown8(__int64 a1);
 __int64 std___1___shared_weak_count___release_weak(_QWORD);
@@ -58,6 +59,9 @@ __int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
 int __cxa_guard_acquire_alt1(__int64) __asm__("__cxa_guard_acquire");
 void __cxa_guard_release_alt1(__int64) __asm__("__cxa_guard_release");
 __int64 Popup2D_Unknown2(__int64 a1);
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void Popup2D_DeletingDestructor(_QWORD* a1);
 
 __int64 Popup2D_d7a520(__int64 result, __int64 a2)
 {
@@ -139,18 +143,18 @@ __int64 Popup2D_Destructor(_QWORD* a1)
   return GameRoutine_d7a520(GameData_220b6e0, a1);
 }
 
-__int64 Popup2D_DeletingDestructor(_QWORD* a1)
+void Popup2D_DeletingDestructor(_QWORD* a1)
 {
-  __int64 v1;
+  __int64 v2;
 
   *a1 = GameData_212f0b8[0] + 2;
-  GameRoutine_d7a520(GameData_220b6e0, a1);
-  v1 = 128;
+  Popup2D_d7a520(GameData_220b6e0, (__int64)a1);
+  v2 = 128;
   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-    v1 = 56;
+    v2 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                       v1);
+  nn_mem_StandardAllocator_Free_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v2, (__int64)a1);
 }
 
 __int64 Popup2D_Unknown2(__int64 a1)

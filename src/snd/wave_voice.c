@@ -48,6 +48,7 @@ __int64 WaveVoice_18e630(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
 __int64 GameHr_18d540(__int64, __int64);
 __int64 Voice_1449c0_alt1(_QWORD*, __int64, __int64, __int64,
                           __int64) __asm__("Voice_1449c0");
+int rand_alt1() __asm__("rand");
 
 __int64 WaveVoice_18d880(__int64 a1, __int64 a2)
 {
@@ -381,7 +382,7 @@ LABEL_23:
   switch (v49) {
   case 1:
     v59 = v50 - 1;
-    result = rand(result);
+    result = rand_alt1();
     v60 = *(int**)(a1 + 5656);
     v61 = *v60;
     if ((int)(float)((float)((float)v59 + 0x1.cccccc0000000p-1f) *
@@ -408,7 +409,7 @@ LABEL_23:
     }
     *v58 = 0;
     v62 = v50 - 1;
-    result = rand(result);
+    result = rand_alt1();
     *(_DWORD*)(*(_QWORD*)(a1 + 5656) + 4LL) =
         (int)(float)((float)((float)v62 + 0x1.cccccc0000000p-1f) *
                      vcvts_n_f32_s32(result, 0x1Fu));

@@ -2649,7 +2649,7 @@ void game_e146a0();
 void game_e196a0();
 void game_e5c8f0();
 __n128 game_e5f420_alt1(_DWORD* a1, char* a2) __asm__("game_e5f420");
-__int64 game_e803d0(__int64 a1, __int64 a2);
+__int64 game_e803d0_alt1(__int64 a1, __int64 a2) __asm__("game_e803d0");
 void game_eae830();
 void game_eb4fd0();
 __attribute__((swiftcall)) void
@@ -2679,6 +2679,7 @@ void GameHr_a5aca0(__int64);
 void GameRoutine_f56340_alt1(__int64, int) __asm__("GameRoutine_f56340");
 void __cxa_guard_release_alt1(__int64) __asm__("__cxa_guard_release");
 __int64 game_e5f420(_DWORD* a1, char* a2);
+_QWORD* game_e803d0(__int64 a1, __int64 a2);
 
 __int64 game_80ef70()
 {
@@ -11615,12 +11616,12 @@ LABEL_28:
   return GameHr_d1fb60(v19, v18 == nullptr);
 }
 
-__int64 game_e803d0(__int64 a1, __int64 a2)
+_QWORD* game_e803d0(__int64 a1, __int64 a2)
 {
   __int64 v4;
   __int64 v5;
   __int64 v6;
-  __int64 result;
+  _QWORD* result;
   __int64 v8;
   struct {
     _QWORD v9[4];
@@ -11630,7 +11631,7 @@ __int64 game_e803d0(__int64 a1, __int64 a2)
   if ((atomic_load_explicit((atomic_uchar* volatile)&GameData_221b3f0,
                             memory_order_acquire) &
        1) == 0 &&
-      (unsigned int)__cxa_guard_acquire(&GameData_221b3f0) != 0) {
+      __cxa_guard_acquire_alt1((__int64)&GameData_221b3f0) != 0) {
     GameData_221b2f0 = 13;
     GameData_221b2f8 = 0;
     GameData_221b300 = (__int64)game_e81a10;
@@ -11663,7 +11664,7 @@ __int64 game_e803d0(__int64 a1, __int64 a2)
     GameData_221b3c0 = 0;
     GameData_221b3c8 = 0;
     GameData_221b3b8 = 0;
-    __cxa_guard_release(&GameData_221b3f0);
+    __cxa_guard_release_alt1((__int64)&GameData_221b3f0);
   }
   v4 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
                                       240, 16, 0);
@@ -11710,7 +11711,7 @@ __int64 game_e803d0(__int64 a1, __int64 a2)
     v9_.v10 = nullptr;
   }
   GameRoutine_654050(v9_.v9, (_QWORD*)(v4 + 176));
-  result = (__int64)v9_.v10;
+  result = v9_.v10;
   if (v9_.v10 == v9_.v9) {
     v8 = 32;
   }
@@ -11720,7 +11721,7 @@ __int64 game_e803d0(__int64 a1, __int64 a2)
     }
     v8 = 40;
   }
-  return (*(__int64 (**)(__int64))(*v9_.v10 + v8))((__int64)v9_.v10);
+  return (_QWORD*)(*(__int64 (**)(__int64))(*v9_.v10 + v8))((__int64)v9_.v10);
 }
 
 void game_eae830()

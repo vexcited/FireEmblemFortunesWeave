@@ -20,6 +20,15 @@ extern __int64 GameData_21f3d10;
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern char* GameData_212ec08;
 __int64 BgmManager_10c0870(__int64 result);
+__attribute__((swiftcall)) void
+LocatorDispos_db1f30_alt1(PSEUDO_X8, __int64*) __asm__("LocatorDispos_db1f30");
+__int64* GameManager_a2c820_alt1(__int64, __int64,
+                                 char) __asm__("GameManager_a2c820");
+__int64* GameManager_a2d8b0_alt1(__int64* result, __int64, char,
+                                 char) __asm__("GameManager_a2d8b0");
+int strcmp_alt1(const char*, const char*) __asm__("strcmp");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 __int64 BgmManager_10c0870(__int64 result)
 {
@@ -27,15 +36,15 @@ __int64 BgmManager_10c0870(__int64 result)
   unsigned __int64 v2;
   unsigned __int64 v3;
   char v4;
-  const char* v5;
+  __int64 v5;
   __int64* v6;
   const char* v7;
   __int64 v8;
   bool v9;
-  __int64 v10;
+  const char* v10;
   const char* v11;
   __int64 v12;
-  __int64 v13;
+  const char* v13;
   char v14;
   unsigned __int64 v15;
   unsigned __int64 v16;
@@ -58,7 +67,7 @@ __int64 BgmManager_10c0870(__int64 result)
   _BYTE v32[200];
   struct {
     __int64 v33[2];
-    const char* v34;
+    __int64 v34;
   } v33_;
 
   if (*(_BYTE*)(result + 13) == 0) {
@@ -81,8 +90,8 @@ __int64 BgmManager_10c0870(__int64 result)
   LABEL_57:
     snd_Fade_Fade_10cb00((__int64)v32, (__int64)GameData_212ec08);
     if ((unsigned int)(*(_DWORD*)(v1 + 8) - 3) <= 1) {
-      GameManager_a2d8b0(*(_QWORD**)game_sound_g_game_sound_ptr[0],
-                         (__int64)v32, 1, v14);
+      GameManager_a2d8b0_alt1(*(__int64**)game_sound_g_game_sound_ptr[0],
+                              (__int64)v32, 1, v14);
       *(_BYTE*)(v1 + 64) = 0;
       *(_DWORD*)(v1 + 8) = 0;
     }
@@ -90,7 +99,7 @@ __int64 BgmManager_10c0870(__int64 result)
     goto LABEL_60;
   }
   LocatorDispos_db1e20((void*)(v30_.v30), (__int64*)(result + 16));
-  LocatorDispos_db1f30((void*)(v33_.v33), (unsigned __int8*)(v1 + 16));
+  LocatorDispos_db1f30_alt1((void*)(v33_.v33), (__int64*)(v1 + 16));
   v4 = v33_.v33[0];
   v5 = v33_.v34;
   v6 = game_sound_g_game_sound_ptr[0];
@@ -103,16 +112,16 @@ __int64 BgmManager_10c0870(__int64 result)
   v8 = snd_BGM_getFirstName(*(_QWORD*)(*game_sound_g_game_sound_ptr[0] + 8));
   v9 = false;
   if (v7 != nullptr && v8 != 0) {
-    v10 = v8;
+    v10 = (const char*)v8;
     if ((v4 & 1) != 0) {
-      v11 = v5;
+      v11 = (const char*)v5;
     }
     else {
       v11 = (char*)v33_.v33 + 1;
     }
     v12 = GameRoutine_610540(v7, v11);
-    v9 = v12 != 0 && (v13 = *(_QWORD*)(v12 + 40)) != 0 &&
-         (unsigned int)strcmp(v10, v13) == 0;
+    v9 = v12 != 0 && (v13 = *(const char**)(v12 + 40)) != nullptr &&
+         strcmp_alt1(v10, v13) == 0;
   }
   v15 = *(unsigned __int8*)(GameData_21c9608 + 256);
   v16 = *(_QWORD*)(GameData_21c9608 + 264);
@@ -150,19 +159,21 @@ __int64 BgmManager_10c0870(__int64 result)
   LABEL_42:
     v14 = 0;
   }
-  if ((v33_.v33[0] & 1) != 0 && v33_.v34 != nullptr) {
+  if ((v33_.v33[0] & 1) != 0 && v33_.v34 != 0) {
     v25 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v25 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v25);
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v25, v33_.v34);
   }
   if ((v30_.v30[0] & 1) != 0 && v30_.v31 != nullptr) {
     v26 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v26 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v26);
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v26, (__int64)v30_.v31);
   }
   if ((v17 & 1) == 0) {
     goto LABEL_57;
@@ -172,7 +183,7 @@ __int64 BgmManager_10c0870(__int64 result)
   v28 = *(_DWORD*)(*v6 + 628);
   if (v28 != 0) {
     *(_DWORD*)(v27 + 628) = v28 - 1;
-    GameManager_a2c820(v27, (__int64)v30_.v30, 0);
+    GameManager_a2c820_alt1(v27, (__int64)v30_.v30, 0);
   }
   v29 = v30_.v30;
 LABEL_60:

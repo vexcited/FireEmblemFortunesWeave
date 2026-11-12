@@ -70,67 +70,102 @@ extern __int64 GameData_2259540;
 extern __int64 fw_memory_g_heap_manager;
 extern __int64 game_gameui_MenuAnimator_instance_;
 void __attribute__((noreturn)) String_60a1d0(_QWORD);
-void MultiMenuSequence_1786b20(_QWORD* a1);
+void MultiMenuSequence_1786b20_alt1(_QWORD* a1) __asm__(
+    "MultiMenuSequence_1786b20");
 __attribute__((swiftcall)) void MultiMenuSequence_1786e90(PSEUDO_X8 x8_,
                                                           __int64 a1);
 void __attribute__((noreturn))
 GameRoutine_60a310_alt1() __asm__("GameRoutine_60a310");
+__int64 GameRoutine_1553130_alt1(__int64 result) __asm__("GameRoutine_1553130");
+__int64 LayoutAccessor_155e830_alt1(__int64 result,
+                                    char) __asm__("LayoutAccessor_155e830");
+__int64 ProcTransitionAnim_156af20_alt1(
+    __int64, int, int, __int64*, const char*,
+    const char*) __asm__("ProcTransitionAnim_156af20");
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 game_gameui_anonymous_ProcGameUIFade_In_alt1(
+    __int64 result, int, __int64, int, int,
+    __int64) __asm__("game_gameui_anonymous_ProcGameUIFade_In");
+__int64 memmove_alt1(__int64, __int64, unsigned __int64) __asm__("memmove");
+__int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
+__int64 snd_play_ff2d0_alt1(__int64, __int64, __int64, unsigned int,
+                            unsigned int, int, float,
+                            float) __asm__("snd_play_ff2d0");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
+    "std___1___shared_weak_count_lock");
+int sprintf_alt1(__int64, const char*, ...) __asm__("sprintf");
+unsigned __int64 strlen_alt1(const char*) __asm__("strlen");
+void GameRoutine_7a8220_alt1(__int64*, _QWORD*) __asm__("GameRoutine_7a8220");
+void __attribute__((noreturn)) String_60a1d0_alt1() __asm__("String_60a1d0");
+void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void snd_Fade_Fade_10c830_alt1(__int64, float) __asm__("snd_Fade_Fade_10c830");
+__int64 MultiMenuSequence_1786b20(__int64* a1);
 
 void __attribute__((noreturn)) MultiMenuSequence_DeletingDestructor()
 {
   __udf(0x8002u);
 }
 
-void MultiMenuSequence_1786b20(_QWORD* a1)
+__int64 MultiMenuSequence_1786b20(__int64* a1)
 {
-  _QWORD* v1;
+  __int64* v1;
   __int64 v3;
   __int64 v4;
   __int64 v5;
   __int64 v6;
-  __int64 v7;
-  long double v8;
+  int v7;
+  __int64 result;
   __int64 v9;
-  __int64 v10;
-  int v11;
-  _QWORD v12[2];
-  _BYTE v13[200];
+  int v10;
+  __int64 v11;
+  _QWORD v12[25];
 
   v1 = a1 + 22;
-  (*(void (**)(_QWORD*))(a1[22] + 96LL))(a1 + 22);
-  LayoutAccessor_155e830(v1 + 3, 1);
+  (*(void (**)(__int64*))(a1[22] + 96))(a1 + 22);
+  LayoutAccessor_155e830_alt1((__int64)(v1 + 3), 1);
   v3 = game_gameui_MenuAnimator_instance_;
   if (game_gameui_MenuAnimator_instance_ != 0) {
-    sprintf(v13, "%s%s", "Alpha", "In");
-    ProcTransitionAnim_156af20(v3, 4, 0, v1 + 3, "Alpha", v13);
+    sprintf_alt1((__int64)v12, "%s%s", "Alpha", "In");
+    ProcTransitionAnim_156af20_alt1(v3, 4, 0, v1 + 3, "Alpha",
+                                    (const char*)v12);
     v3 = game_gameui_MenuAnimator_instance_;
     if (game_gameui_MenuAnimator_instance_ != 0) {
-      sprintf(v13, "%s%s", "Up", "In");
-      ProcTransitionAnim_156af20(v3, 0, 0, v1 + 3, "Up", v13);
+      sprintf_alt1((__int64)v12, "%s%s", "Up", "In");
+      ProcTransitionAnim_156af20_alt1(v3, 0, 0, v1 + 3, "Up", (const char*)v12);
       v3 = game_gameui_MenuAnimator_instance_;
       if (game_gameui_MenuAnimator_instance_ != 0) {
-        sprintf(v13, "%s%s", "Down", "In");
-        ProcTransitionAnim_156af20(v3, 1, 0, v1 + 3, "Down", v13);
+        sprintf_alt1((__int64)v12, "%s%s", "Down", "In");
+        ProcTransitionAnim_156af20_alt1(v3, 1, 0, v1 + 3, "Down",
+                                        (const char*)v12);
         v3 = game_gameui_MenuAnimator_instance_;
         if (game_gameui_MenuAnimator_instance_ != 0) {
-          sprintf(v13, "%s%s", "Left", "In");
-          if (ProcTransitionAnim_156af20(v3, 2, 0, v1 + 3, "Left", v13) != -1 &&
-              ((*(__int64 (**)(_QWORD*))(*v1 + 120LL))(v1) & 1) == 0) {
-            snd_Fade_Fade_10c830(v13, 0.0);
-            snd_play_ff2d0((void*)(v12), "SE_SYS_Window_Open",
-                           "SE_SYS_Window_Open", v13, 0, 65537, 0, 0.0, 1.0);
-            snd_Fade_Destroy_Fade(v13);
+          sprintf_alt1((__int64)v12, "%s%s", "Left", "In");
+          if (ProcTransitionAnim_156af20_alt1(v3, 2, 0, v1 + 3, "Left",
+                                              (const char*)v12) != -1 &&
+              ((*(__int64 (**)(__int64*))(*v1 + 120))(v1) & 1) == 0) {
+            snd_Fade_Fade_10c830_alt1((__int64)v12, 0x0.0p+0f);
+            snd_play_ff2d0_alt1((__int64)"SE_SYS_Window_Open",
+                                (__int64)"SE_SYS_Window_Open", (__int64)v12, 0,
+                                0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
+            snd_Fade_Destroy_Fade_alt1(v12);
           }
           v3 = game_gameui_MenuAnimator_instance_;
           if (game_gameui_MenuAnimator_instance_ != 0) {
-            sprintf(v13, "%s%s", "Right", "In");
-            if (ProcTransitionAnim_156af20(v3, 3, 0, v1 + 3, "Right", v13) !=
-                    -1 &&
-                ((*(__int64 (**)(_QWORD*))(*v1 + 120LL))(v1) & 1) == 0) {
-              snd_Fade_Fade_10c830(v13, 0.0);
-              snd_play_ff2d0((void*)(v12), "SE_SYS_Window_Open",
-                             "SE_SYS_Window_Open", v13, 0, 65537, 0, 0.0, 1.0);
-              snd_Fade_Destroy_Fade(v13);
+            sprintf_alt1((__int64)v12, "%s%s", "Right", "In");
+            if (ProcTransitionAnim_156af20_alt1(v3, 3, 0, v1 + 3, "Right",
+                                                (const char*)v12) != -1 &&
+                ((*(__int64 (**)(__int64*))(*v1 + 120))(v1) & 1) == 0) {
+              snd_Fade_Fade_10c830_alt1((__int64)v12, 0x0.0p+0f);
+              snd_play_ff2d0_alt1((__int64)"SE_SYS_Window_Open",
+                                  (__int64)"SE_SYS_Window_Open", (__int64)v12,
+                                  0, 0x10001u, 0, 0x0.0p+0f,
+                                  0x1.0000000000000p+0f);
+              snd_Fade_Destroy_Fade_alt1(v12);
             }
           }
         }
@@ -141,7 +176,7 @@ void MultiMenuSequence_1786b20(_QWORD* a1)
   if (v4 == 0) {
     goto LABEL_18;
   }
-  v5 = std___1___shared_weak_count_lock(v4);
+  v5 = std___1___shared_weak_count_lock_alt1(v4);
   if (v5 == 0) {
     goto LABEL_18;
   }
@@ -156,59 +191,63 @@ void MultiMenuSequence_1786b20(_QWORD* a1)
     }
     goto LABEL_18;
   }
+  v11 = v5;
   (*(void (**)(__int64))(*(_QWORD*)v5 + 16LL))(v5);
-  std___1___shared_weak_count___release_weak();
+  std___1___shared_weak_count___release_weak_alt1(v11);
   if (v6 == 0) {
   LABEL_18:
     LODWORD(v3) = 0;
   }
 LABEL_19:
-  v7 = (*(unsigned int (**)(_QWORD*))(*a1 + 352LL))(a1);
+  v7 = (*(__int64 (**)(__int64*))(*a1 + 352))(a1);
+  result = GameData_2259540;
   if (GameData_2259540 != 0) {
-    *(__n128*)&v8 = game_gameui_anonymous_ProcGameUIFade_In(
-        GameData_2259540, (unsigned int)(v3 - 1), 2, 1, v7, 0);
+    result = game_gameui_anonymous_ProcGameUIFade_In_alt1(
+        GameData_2259540, (int)v3 - 1, 2, 1, v7, 0);
   }
   if (*((_BYTE*)a1 + 138) == 0) {
     v9 = a1[19];
-    if (v9 == 0 ||
-        __dynamic_cast(v9, GameData_2131c18[0], &GameData_20c57c0, 0) == 0) {
-      v10 = (*(__int64 (**)(_QWORD*, long double))(*a1 + 192LL))(a1, v8);
+    if (v9 == 0 || (result = __dynamic_cast(v9, GameData_2131c18[0],
+                                            &GameData_20c57c0, 0)) == 0) {
+      result = (*(__int64 (**)(__int64*))(*a1 + 192))(a1);
       if ((*((_BYTE*)a1 + 172) & 1) == 0) {
-        v11 = v10;
-        GameRoutine_1553130(v10);
-        *((_DWORD*)a1 + 42) = v11;
+        v10 = result;
+        result = GameRoutine_1553130_alt1(result);
+        *((_DWORD*)a1 + 42) = v10;
         *((_BYTE*)a1 + 172) = 1;
       }
     }
   }
+  return result;
 }
 
 __attribute__((swiftcall)) void MultiMenuSequence_1786e90(PSEUDO_X8 x8_,
                                                           __int64 a1)
 {
-  _QWORD* a2 = (_QWORD*)PSEUDO_X8_VALUE(x8_);
-  __int64 result;
+  __int64* a2 = (__int64*)PSEUDO_X8_VALUE(x8_);
+  const char* v3;
   __int64 v4;
   unsigned __int64 v5;
   unsigned __int64 v6;
   char* v7;
   __int64 v8;
   __int64 v9;
-  _QWORD v10[2];
-  char* v11;
+  struct {
+    _QWORD v10[2];
+    char* v11;
+  } v10_;
 
   a2[1] = 0;
   a2[2] = 0;
   *a2 = 0;
-  result = (*(__int64 (**)(__int64))(*(_QWORD*)a1 + 256LL))(a1);
-  if (result == 0) {
-    result;
+  v3 = (const char*)(*(__int64 (**)(__int64))(*(_QWORD*)a1 + 256LL))(a1);
+  if (v3 == nullptr) {
     return;
   }
-  v4 = result;
-  v5 = strlen(result);
+  v4 = (__int64)v3;
+  v5 = strlen_alt1(v3);
   if (v5 >= 0xFFFFFFFFFFFFFFF7LL) {
-    String_60a1d0(v5);
+    String_60a1d0_alt1();
   }
   v6 = v5;
   if (v5 >= 0x17) {
@@ -218,37 +257,30 @@ __attribute__((swiftcall)) void MultiMenuSequence_1786e90(PSEUDO_X8 x8_,
     else {
       v8 = (v5 | 7) + 1;
     }
-    v7 = (char*)fw_memory_HeapManager_Allocate(fw_memory_g_heap_manager, v8, 16,
-                                               0);
-    v10[1] = v6;
-    v11 = v7;
-    v10[0] = v8 | 1;
+    v7 = (char*)fw_memory_HeapManager_Allocate_alt1(fw_memory_g_heap_manager,
+                                                    v8, 16, 0);
+    v10_.v10[1] = v6;
+    v10_.v11 = v7;
+    v10_.v10[0] = v8 | 1;
   }
   else {
-    LOBYTE(v10[0]) = 2 * v5;
-    v7 = (char*)v10 + 1;
+    LOBYTE(v10_.v10[0]) = 2 * v5;
+    v7 = (char*)v10_.v10 + 1;
     if (v5 == 0) {
       goto LABEL_11;
     }
   }
-  memmove(v7, v4, v6);
+  memmove_alt1((__int64)v7, v4, v6);
 LABEL_11:
   v7[v6] = 0;
-  result = GameRoutine_7a8220(a2, v10);
-  if ((v10[0] & 1) != 0 && v11 != nullptr) {
+  GameRoutine_7a8220_alt1(a2, v10_.v10);
+  if ((v10_.v10[0] & 1) != 0 && v10_.v11 != nullptr) {
     v9 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v9 = 56;
     }
-    {
-      nn_mem_StandardAllocator_Free_alt1(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v9);
-      return;
-    }
-  }
-  {
-    result;
-    return;
+    nn_mem_StandardAllocator_Free_alt2(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v9, (__int64)v10_.v11);
   }
 }
 

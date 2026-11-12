@@ -11,7 +11,13 @@ __int64 CharacterAssetCache_Destructor(_QWORD* a1);
 __int64 nn_mem_StandardAllocator_Free(_QWORD);
 __n128 std___1___shared_weak_count___release_weak(_QWORD);
 extern __int64 fw_memory_g_heap_manager_ptr;
-__int64 CharacterAssetCache_109b560(__int64 result);
+__int64 CharacterAssetCache_109b560_alt1(__int64 result) __asm__(
+    "CharacterAssetCache_109b560");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void CharacterAssetCache_109b560(__int64* a1);
 
 __int64 CharacterAssetCache_Destructor(_QWORD* a1)
 {
@@ -27,43 +33,43 @@ __int64 CharacterAssetCache_Destructor(_QWORD* a1)
   return result;
 }
 
-__int64 CharacterAssetCache_109b560(__int64 result)
+void CharacterAssetCache_109b560(__int64* a1)
 {
   _QWORD* v1;
-  __int64* v2;
   __int64 v3;
   __int64 v4;
-  _QWORD* v5;
+  __int64 v5;
   __int64 v6;
   __int64 v7;
   __int64 v8;
   __int64 v9;
+  __int64 v10;
 
-  v1 = *(_QWORD**)(result + 16);
-  v2 = (__int64*)result;
+  v1 = (_QWORD*)a1[2];
   v3 = fw_memory_g_heap_manager_ptr;
   while (v1 != nullptr) {
-    v5 = v1;
+    v5 = (__int64)v1;
     v1 = (_QWORD*)*v1;
-    v6 = v5[6];
+    v6 = *(_QWORD*)(v5 + 48);
     if (v6 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v6 + 8),
                                     0xFFFFFFFFFFFFFFFFLL) == 0) {
       (*(void (**)(__int64))(*(_QWORD*)v6 + 16LL))(v6);
-      std___1___shared_weak_count___release_weak(v6);
-      if ((v5[2] & 1) != 0) {
+      std___1___shared_weak_count___release_weak_alt1(v6);
+      if ((*(_BYTE*)(v5 + 16) & 1) != 0) {
       LABEL_10:
-        if (v5[4] != 0) {
+        v7 = *(_QWORD*)(v5 + 32);
+        if (v7 != 0) {
           if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) != 0) {
-            v7 = 128;
+            v8 = 128;
           }
           else {
-            v7 = 56;
+            v8 = 56;
           }
-          nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v7);
+          nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v8, v7);
         }
       }
     }
-    else if ((v5[2] & 1) != 0) {
+    else if ((*(_BYTE*)(v5 + 16) & 1) != 0) {
       goto LABEL_10;
     }
     if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) != 0) {
@@ -72,18 +78,17 @@ __int64 CharacterAssetCache_109b560(__int64 result)
     else {
       v4 = 56;
     }
-    result = nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v4);
+    nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v4, v5);
   }
-  v8 = *v2;
-  *v2 = 0;
-  if (v8 != 0) {
-    v9 = 128;
+  v9 = *a1;
+  *a1 = 0;
+  if (v9 != 0) {
+    v10 = 128;
     if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
-      v9 = 56;
+      v10 = 56;
     }
-    return nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v9);
+    nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v3 + v10, v9);
   }
-  return result;
 }
 
 #pragma GCC visibility pop

@@ -11,7 +11,15 @@ __n128 nn_mem_StandardAllocator_Free(_QWORD);
 __n128 std___1___shared_weak_count___release_weak();
 extern __int64 fw_memory_g_heap_manager_ptr;
 float game_facility_14107c0(__int64, __int64);
-__n128 game_talk_Facility_TickBefore_lambda0_Invoke(__int64 a1, __int64* a2);
+__n128 game_talk_Facility_TickBefore_lambda0_Invoke_alt1(
+    __int64 a1,
+    __int64* a2) __asm__("game_talk_Facility_TickBefore_lambda0_Invoke");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+void GameHr_14127e0(__int64, unsigned __int8*);
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void game_talk_Facility_TickBefore_lambda0_Invoke(__int64 a1, __int64* a2);
 
 __int64 game_talk_Facility_TickBefore(__int64 result)
 {
@@ -80,7 +88,7 @@ LABEL_13:
   return result;
 }
 
-__n128 game_talk_Facility_TickBefore_lambda0_Invoke(__int64 a1, __int64* a2)
+void game_talk_Facility_TickBefore_lambda0_Invoke(__int64 a1, __int64* a2)
 {
   unsigned __int8* v3;
   __int64 v4;
@@ -92,14 +100,12 @@ __n128 game_talk_Facility_TickBefore_lambda0_Invoke(__int64 a1, __int64* a2)
   __int64 v11;
   __int64 v12;
   __int64 v13;
-  __n128 result;
-  __int64 v15;
+  __int64 v14;
   struct {
-    unsigned __int8 v16[16];
-    __int64 v17;
-  } v16_;
+    unsigned __int8 v15[16];
+    __int64 v16;
+  } v15_;
 
-  result = COERCE_AS(__typeof__(result), PSEUDO_REGISTER(__n128, "v0", "=w"));
   v3 = *(unsigned __int8**)(a1 + 8);
   v4 = *a2;
   v5 = *v3;
@@ -115,41 +121,32 @@ __n128 game_talk_Facility_TickBefore_lambda0_Invoke(__int64 a1, __int64* a2)
     v10 = (unsigned __int64)v9 >> 1;
     v11 = (v9 & 1) != 0 ? *(_QWORD*)(v8 + 8) : v10;
     if (v11 != 0) {
-      game_facility_14107c0((__int64)v16_.v16, v8),
-          result = COERCE_AS(__typeof__(result),
-                             PSEUDO_REGISTER(__n128, "v0", "=w"));
+      game_facility_14107c0((__int64)v15_.v15, v8);
       v12 = *(_QWORD*)(v4 + 112);
       v13 = *(_QWORD*)(v4 + 120);
       if (v13 != 0) {
         atomic_fetch_add_explicit((atomic_ullong* volatile)(v13 + 8), 1u,
                                   memory_order_relaxed);
-        GameRoutine_14127e0(v12, v16_.v16),
-            result = COERCE_AS(__typeof__(result),
-                               PSEUDO_REGISTER(__n128, "v0", "=w"));
+        GameHr_14127e0(v12, v15_.v15);
         if (atomic_fetch_add((atomic_ullong* volatile)(v13 + 8),
                              0xFFFFFFFFFFFFFFFFLL) == 0) {
-          (*(void (**)(__int64))(*(_QWORD*)v13 + 16LL))(v13),
-              result = COERCE_AS(__typeof__(result),
-                                 PSEUDO_REGISTER(__n128, "v0", "=w"));
-          result = std___1___shared_weak_count___release_weak();
+          (*(void (**)(__int64))(*(_QWORD*)v13 + 16LL))(v13);
+          std___1___shared_weak_count___release_weak_alt1(v13);
         }
       }
       else {
-        GameRoutine_14127e0(v12, v16_.v16),
-            result = COERCE_AS(__typeof__(result),
-                               PSEUDO_REGISTER(__n128, "v0", "=w"));
+        GameHr_14127e0(v12, v15_.v15);
       }
-      if ((v16_.v16[0] & 1) != 0 && v16_.v17 != 0) {
-        v15 = 128;
+      if ((v15_.v15[0] & 1) != 0 && v15_.v16 != 0) {
+        v14 = 128;
         if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-          v15 = 56;
+          v14 = 56;
         }
-        return nn_mem_StandardAllocator_Free(
-            *(_QWORD*)fw_memory_g_heap_manager_ptr + v15);
+        nn_mem_StandardAllocator_Free_alt1(
+            *(_QWORD*)fw_memory_g_heap_manager_ptr + v14, v15_.v16);
       }
     }
   }
-  return result;
 }
 
 #pragma GCC visibility pop

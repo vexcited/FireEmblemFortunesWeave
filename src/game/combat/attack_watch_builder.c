@@ -6,23 +6,27 @@ __int64 nn_mem_StandardAllocator_Free(_QWORD);
 __int64 std___1___shared_weak_count___release_weak(_QWORD);
 extern __int64 (*game_combat_AttackWatchBuilder_vtable[])();
 extern __int64 fw_memory_g_heap_manager_ptr;
-_QWORD* AttackWatchBuilder_Destructor(_QWORD* result);
+_QWORD* AttackWatchBuilder_Destructor_alt1(_QWORD* result) __asm__(
+    "AttackWatchBuilder_Destructor");
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void AttackWatchBuilder_Destructor(_QWORD* a1);
 
-_QWORD* AttackWatchBuilder_Destructor(_QWORD* result)
+void AttackWatchBuilder_Destructor(_QWORD* a1)
 {
   __int64 v1;
   __int64 v2;
-  _QWORD* v3;
   __int64 v4;
   __int64 v5;
   __int64 v6;
   __int64 v7;
   __int64 v8;
 
-  v2 = result[2];
-  v1 = result[3];
-  v3 = result;
-  *result = game_combat_AttackWatchBuilder_vtable;
+  v2 = a1[2];
+  v1 = a1[3];
+  *a1 = game_combat_AttackWatchBuilder_vtable;
   v4 = v2;
   if (v2 != v1) {
     do {
@@ -30,16 +34,16 @@ _QWORD* AttackWatchBuilder_Destructor(_QWORD* result)
       if (v5 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v5 + 8),
                                       0xFFFFFFFFFFFFFFFFLL) == 0) {
         (*(void (**)(__int64))(*(_QWORD*)v5 + 16LL))(v5);
-        result = (_QWORD*)std___1___shared_weak_count___release_weak(v5);
+        std___1___shared_weak_count___release_weak_alt1(v5);
       }
       v1 -= 16;
     } while (v1 != v2);
-    v4 = v3[2];
+    v4 = a1[2];
   }
-  v3[3] = v2;
+  a1[3] = v2;
   if (v4 != 0) {
     if (v4 == v2) {
-      v3[3] = v4;
+      a1[3] = v4;
     }
     else {
       do {
@@ -47,24 +51,24 @@ _QWORD* AttackWatchBuilder_Destructor(_QWORD* result)
         if (v6 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v6 + 8),
                                         0xFFFFFFFFFFFFFFFFLL) == 0) {
           (*(void (**)(__int64))(*(_QWORD*)v6 + 16LL))(v6);
-          result = (_QWORD*)std___1___shared_weak_count___release_weak(v6);
+          std___1___shared_weak_count___release_weak_alt1(v6);
         }
         v2 -= 16;
       } while (v2 != v4);
-      v7 = v3[2];
-      v3[3] = v4;
+      v7 = a1[2];
+      a1[3] = v4;
+      v4 = v7;
       if (v7 == 0) {
-        return result;
+        return;
       }
     }
     v8 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v8 = 56;
     }
-    return (_QWORD*)nn_mem_StandardAllocator_Free(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v8);
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v8, v4);
   }
-  return result;
 }
 
 #pragma GCC visibility pop

@@ -58,6 +58,25 @@ void DungeonController_f5e9c0(__int64 a1);
 __int64 DungeonController_f5ec20();
 bool DungeonController_f5ee40();
 __attribute__((swiftcall)) void DungeonController_f5f960(PSEUDO_X8 x8_);
+__attribute__((swiftcall)) void
+game_gameui_Util_GetCorpsStatusUnitList(PSEUDO_X8, char, char, int);
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 game_GameVariableTable_Find_alt1(_QWORD*, unsigned __int64*) __asm__(
+    "game_GameVariableTable_Find");
+__int64 game_HasSkill_alt1(_QWORD*, unsigned int*) __asm__("game_HasSkill");
+__int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
+__int64 std___1___shared_weak_count___release_weak_alt2(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+void __attribute__((noreturn))
+GameRoutine_60a210_alt1() __asm__("GameRoutine_60a210");
+void __attribute__((noreturn))
+GameRoutine_8123d0_alt1() __asm__("GameRoutine_8123d0");
+void __attribute__((noreturn))
+GameRoutine_da89a0_alt1() __asm__("GameRoutine_da89a0");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
 
 __int64 DungeonController_f5e870(__int64 a1)
 {
@@ -237,7 +256,7 @@ LABEL_34:
 __int64 DungeonController_f5ec20()
 {
   __int64 v0;
-  char* v1;
+  __int64 v1;
   char* v2;
   unsigned __int64 v3;
   unsigned __int64 v4;
@@ -267,10 +286,10 @@ __int64 DungeonController_f5ec20()
   }
   else {
     v0 = *(_QWORD*)(GameData_21f3d10 + 48);
-    v1 = *(char**)(GameData_21f3d10 + 56);
+    v1 = *(_QWORD*)(GameData_21f3d10 + 56);
     v22_.v22[0] = *(_QWORD*)(GameData_21f3d10 + 40);
     v22_.v22[1] = v0;
-    v22_.v23 = v1;
+    v22_.v23 = (char*)v1;
   }
   if ((v22_.v22[0] & 1) != 0) {
     v2 = v22_.v23;
@@ -380,7 +399,8 @@ LABEL_37:
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v19 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v19);
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v19, (__int64)v22_.v23);
   }
   return v12 | v11 | v13;
 }
@@ -388,7 +408,7 @@ LABEL_37:
 bool DungeonController_f5ee40()
 {
   __int64 v0;
-  char* v1;
+  __int64 v1;
   char* v2;
   unsigned __int64 v3;
   unsigned __int64 v4;
@@ -415,10 +435,10 @@ bool DungeonController_f5ee40()
   }
   else {
     v0 = *(_QWORD*)(GameData_21f3d10 + 48);
-    v1 = *(char**)(GameData_21f3d10 + 56);
+    v1 = *(_QWORD*)(GameData_21f3d10 + 56);
     v19_.v19[0] = *(_QWORD*)(GameData_21f3d10 + 40);
     v19_.v19[1] = v0;
-    v19_.v20 = v1;
+    v19_.v20 = (char*)v1;
   }
   if ((v19_.v19[0] & 1) != 0) {
     v2 = v19_.v20;
@@ -519,8 +539,8 @@ LABEL_36:
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
         v17 = 56;
       }
-      nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr +
-                                    v17);
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v17, (__int64)v19_.v20);
     }
   }
   return v11;
@@ -709,53 +729,57 @@ __int64 DungeonController_f5f480()
 bool DungeonController_f5f760()
 {
   __int64 v0;
-  __int64* v2;
-  __int64* v3;
+  _QWORD* v2;
+  _QWORD* v3;
   int v4;
   int v5;
   _DWORD* v6;
   __int64 v7;
-  __int64 v8;
+  _QWORD* v8;
   __int64 v9;
   char v10;
-  __int64* v11;
+  __int64 v11;
   __int64 v12;
   unsigned __int64 v13;
   int v14;
   __int64 v15;
   int v16;
   __int64 v17;
-  __int64 v18;
-  __int64* v19;
+  struct {
+    _QWORD* v18;
+    _QWORD* v19;
+  } v18_;
   int v20;
 
-  if (GameRoutine_f5ee40()) {
+  if (DungeonController_f5ee40()) {
     return false;
   }
-  v19 = (__int64*)&GameData_1a9d987;
-  v18 = game_HashString(&GameData_1a9d987);
+  v18_.v19 = &GameData_1a9d987;
+  v18_.v18 = (_QWORD*)game_HashString_alt1((__int64)&GameData_1a9d987);
   if (game_GameModeData_instance_ != 0) {
-    v0 = game_GameVariableTable_Find(
-        *(_QWORD*)(game_GameModeData_instance_ + 48), &v18);
+    v0 = game_GameVariableTable_Find_alt1(
+        *(_QWORD**)(game_GameModeData_instance_ + 48),
+        (unsigned __int64*)&v18_.v18);
     if (v0 != 0 && *(_DWORD*)(v0 + 32) != 0) {
       return false;
     }
   }
-  if ((unsigned __int64)GameRoutine_f5ec20() >> 32 == 0) {
+  if ((unsigned __int64)DungeonController_f5ec20() >> 32 == 0) {
     return false;
   }
-  GameRoutine_158fb60(*GameData_212ea58 == 0, 0, 0xFFFFFFFFLL);
-  v2 = (__int64*)v18;
-  v3 = v19;
-  if ((__int64*)v18 != v19) {
+  game_gameui_Util_GetCorpsStatusUnitList((void*)((__int64*)&v18_.v18),
+                                          *GameData_212ea58 == 0, 0, -1);
+  v2 = v18_.v18;
+  v3 = v18_.v19;
+  if (v18_.v18 != v18_.v19) {
     v4 = 0;
     v5 = 0;
     v6 = (_DWORD*)game_g_shared_system_skills_ptr;
     do {
       v7 = *v2;
-      v8 = *v2 + 1744;
+      v8 = (_QWORD*)(*v2 + 1744LL);
       v20 = *v6 & 0xFFF;
-      if ((game_HasSkill(v8, &v20) & 1) == 0 ||
+      if ((game_HasSkill_alt1(v8, (unsigned int*)&v20) & 1) == 0 ||
           ((v9 = *(_QWORD*)(v7 + 440)) == 0 ? (v10 = 9)
                                             : (v10 = *(_BYTE*)(v9 + 16)),
            ((1 << v10) & 0xF1) == 0)) {
@@ -767,36 +791,38 @@ bool DungeonController_f5f760()
     if (v5 > 0) {
       v4 /= v5;
     }
-    v11 = (__int64*)v18;
-    if (v18 == 0) {
+    v11 = (__int64)v18_.v18;
+    if (v18_.v18 == nullptr) {
       goto LABEL_23;
     }
     goto LABEL_20;
   }
   v4 = 0;
-  v11 = (__int64*)v18;
-  if (v18 != 0) {
+  v11 = (__int64)v18_.v18;
+  if (v18_.v18 != nullptr) {
   LABEL_20:
-    v19 = v11;
+    v18_.v19 = (_QWORD*)v11;
     v12 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v12 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v12);
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v12, v11);
   }
 LABEL_23:
-  v13 = GameRoutine_f5ec20();
+  v13 = DungeonController_f5ec20();
   if (HIDWORD(v13) == 0) {
-    GameRoutine_8123d0(v13);
+    GameRoutine_8123d0_alt1();
   }
   v14 = v13;
-  v19 = (__int64*)&GameData_1ad725f;
-  v15 = game_HashString(&GameData_1ad725f);
+  v18_.v19 = &GameData_1ad725f;
+  v15 = game_HashString_alt1((__int64)&GameData_1ad725f);
   v16 = game_GameModeData_instance_;
-  v18 = v15;
+  v18_.v18 = (_QWORD*)v15;
   if (game_GameModeData_instance_ != 0) {
-    v17 = game_GameVariableTable_Find(
-        *(_QWORD*)(game_GameModeData_instance_ + 48), &v18);
+    v17 = game_GameVariableTable_Find_alt1(
+        *(_QWORD**)(game_GameModeData_instance_ + 48),
+        (unsigned __int64*)&v18_.v18);
     if (v17 != 0) {
       v16 = *(_DWORD*)(v17 + 32);
     }
@@ -820,18 +846,17 @@ __attribute__((swiftcall)) void DungeonController_f5f960(PSEUDO_X8 x8_)
   __int64 v10;
   __int64 v11;
   __int64 v12;
-  __int64 v13;
-  unsigned __int64 v14;
-  char* v15;
-  __int64 v16;
-  unsigned __int64 v17;
-  __int64 v18;
-  unsigned __int64 v19;
-  __int64 v20;
+  unsigned __int64 v13;
+  char* v14;
+  __int64 v15;
+  unsigned __int64 v16;
+  __int64 v17;
+  unsigned __int64 v18;
+  __int64 v19;
+  unsigned __int64 v20;
   unsigned __int64 v21;
-  char* v22;
+  __int64 v22;
   __int64 v23;
-  __int64 v24;
 
   a1[1] = 0;
   a1[2] = 0;
@@ -852,69 +877,69 @@ __attribute__((swiftcall)) void DungeonController_f5f960(PSEUDO_X8 x8_)
           atomic_fetch_add_explicit((atomic_ullong* volatile)(v8 + 16), 1u,
                                     memory_order_relaxed);
           v9 = *(_QWORD*)(v8 + 8);
-          v10 = std___1___shared_weak_count___release_weak(v8);
+          std___1___shared_weak_count___release_weak_alt2(v8);
           if (v9 != -1) {
-            v11 = *(_QWORD*)(v6 + 72);
-            if ((v11 & 0x100000000LL) == 0) {
-              LODWORD(v11) = 0;
+            v10 = *(_QWORD*)(v6 + 72);
+            if ((v10 & 0x100000000LL) == 0) {
+              LODWORD(v10) = 0;
             }
-            if ((_DWORD)v11 == 4 ||
-                (_DWORD)v11 == 3 &&
-                    (v12 = *(_QWORD*)(*(_QWORD*)(v6 + 88) + 24LL)) != 0 &&
-                    *(_BYTE*)(v12 + 33) == 1) {
-              v13 = *v2;
-              v14 = a1[2];
-              if ((unsigned __int64)v4 < v14) {
-                *(_QWORD*)v4 = v13;
+            if ((_DWORD)v10 == 4 ||
+                (_DWORD)v10 == 3 &&
+                    (v11 = *(_QWORD*)(*(_QWORD*)(v6 + 88) + 24LL)) != 0 &&
+                    *(_BYTE*)(v11 + 33) == 1) {
+              v12 = *v2;
+              v13 = a1[2];
+              if ((unsigned __int64)v4 < v13) {
+                *(_QWORD*)v4 = v12;
                 v4 += 8;
               }
               else {
-                v15 = &v4[-v5];
-                v16 = (__int64)&v4[-v5] >> 3;
-                v17 = v16 + 1;
-                if ((unsigned __int64)(v16 + 1) >> 61 != 0) {
+                v14 = &v4[-v5];
+                v15 = (__int64)&v4[-v5] >> 3;
+                v16 = v15 + 1;
+                if ((unsigned __int64)(v15 + 1) >> 61 != 0) {
                   *a1 = v5;
-                  GameRoutine_da89a0(v10);
+                  GameRoutine_da89a0_alt1();
                 }
-                v18 = v14 - v5;
-                if (v18 >> 2 > v17) {
-                  v17 = v18 >> 2;
+                v17 = v13 - v5;
+                if (v17 >> 2 > v16) {
+                  v16 = v17 >> 2;
                 }
-                if ((unsigned __int64)v18 >= 0x7FFFFFFFFFFFFFF8LL) {
-                  v19 = 0x1FFFFFFFFFFFFFFFLL;
+                if ((unsigned __int64)v17 >= 0x7FFFFFFFFFFFFFF8LL) {
+                  v18 = 0x1FFFFFFFFFFFFFFFLL;
                 }
                 else {
-                  v19 = v17;
+                  v18 = v16;
                 }
-                if (v19 != 0) {
-                  if (v19 >> 61 != 0) {
+                if (v18 != 0) {
+                  if (v18 >> 61 != 0) {
                     *a1 = v5;
-                    GameRoutine_60a210(v10);
+                    GameRoutine_60a210_alt1();
                   }
-                  v20 = fw_memory_HeapManager_Allocate(
-                      *(_QWORD*)fw_memory_g_heap_manager_ptr, 8 * v19, 16, 0);
+                  v19 = fw_memory_HeapManager_Allocate_alt1(
+                      *(_QWORD*)fw_memory_g_heap_manager_ptr, 8 * v18, 16, 0);
                 }
                 else {
-                  v20 = 0;
+                  v19 = 0;
                 }
-                v21 = v20 + 8 * v19;
-                v22 = &v4[-v5];
-                v23 = (__int64)&v15[v20 + -8 * v16];
-                *(_QWORD*)&v15[v20] = v13;
-                v4 = &v15[v20 + 8];
-                memcpy(v23, v5, v22);
+                v20 = v19 + 8 * v18;
+                v21 = (unsigned __int64)&v4[-v5];
+                v22 = (__int64)&v14[v19 + -8 * v15];
+                *(_QWORD*)&v14[v19] = v12;
+                v4 = &v14[v19 + 8];
+                memcpy_alt1(v22, v5, v21);
                 a1[1] = (__int64)v4;
-                a1[2] = v21;
+                a1[2] = v20;
                 if (v5 != 0) {
-                  v24 = 128;
+                  v23 = 128;
                   if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr +
                                  200LL) == 0) {
-                    v24 = 56;
+                    v23 = 56;
                   }
-                  nn_mem_StandardAllocator_Free(
-                      *(_QWORD*)fw_memory_g_heap_manager_ptr + v24);
+                  nn_mem_StandardAllocator_Free_alt1(
+                      *(_QWORD*)fw_memory_g_heap_manager_ptr + v23, v5);
                 }
-                v5 = v23;
+                v5 = v22;
               }
               a1[1] = (__int64)v4;
             }
