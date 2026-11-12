@@ -1,33 +1,37 @@
 #include "decomp/pseudo_helpers.h"
+
 #pragma GCC visibility push(hidden)
 
-extern _QWORD CudaDriverData_1134160[10];
 extern _UNKNOWN** CudaDriverData_1423090;
+
 extern __int64 CudaDriverData_14230e0;
+
 __int64 CudaDriverRoutine_10d1b0(__int64, unsigned int**);
+
 __int64 CudaDriverRoutine_10da00(__int64 result, char);
+
 __int64 CudaDriverRoutine_127eb0(_QWORD, _QWORD);
+
 __int64 CudaDriverRoutine_129b40(__int64, _QWORD*, int,
                                  __int64 (*)(_QWORD*, __int64), __int64);
+
 __int64 CudaDriverRoutine_12a5e0(__int64);
+
 __int64 CudaDriverRoutine_12a640(__int64, __int64*);
+
 __int64 CudaDriverRoutine_12e340(_QWORD);
+
 __int64 CudaDriverRoutine_12e510(__int64, __int64);
-__int64 CudaDriverRoutine_1d9f90(_QWORD);
-__int64 CudaDriverRoutine_1da1b0(_QWORD, _QWORD, _QWORD, _QWORD);
-__int64 CudaDriverRoutine_1db1b0(_QWORD);
-__int64 CudaDriverRoutine_1db1c0(_QWORD, _QWORD);
-__int64 CudaDriverRoutine_1dbf90(_QWORD);
-__int64 CudaDriverRoutine_1dc000(_QWORD);
-__int64 CudaDriverRoutine_1dc020(_QWORD);
-__int64 CudaDriverRoutine_1dc6e0(_QWORD);
+
 __int64 CudaDriverRoutine_1dc9c0(_QWORD);
+
 __int64 CudaDriverRoutine_1fc4a0(_QWORD, _QWORD, _QWORD, _QWORD);
+
 __int64 CudaDriverRoutine_1fc5a0(_QWORD, _QWORD, _QWORD, _QWORD);
+
 __int64 CudaDriverRoutine_b4720(_QWORD);
+
 __int64 CudaDriverRoutine_ed630(__int64, __int64, const char*, ...);
-__int64 CudaDriverRoutine_ee120(__int64);
-__int64 CudaDriverRoutine_eec70(__int64, __int64);
 
 __int64 CudaDriverHr_10dda0(__int64 a1)
 {
@@ -185,104 +189,6 @@ __int64 CudaDriverHr_10dda0(__int64 a1)
       return 0;
     }
   }
-}
-
-__int64 CudaDriverHr_10ebf0(__int64* a1, __int64 a2, _BYTE* a3)
-{
-  __int64 v6;
-  unsigned __int64 v7;
-  unsigned __int64 v8;
-  unsigned int v9;
-  __int64 v10;
-  __int64 v11;
-  __int64 v12;
-  unsigned int v13;
-  __int64 v14;
-  const char* v15;
-  __int64 result;
-  __int64 v17;
-  unsigned int v18;
-  unsigned __int64 v19;
-  unsigned __int64 v20;
-  __int64 v21;
-  _BYTE v22[4];
-
-  v21 = 0;
-  CudaDriverRoutine_1db1c0(a2, &v19);
-  v6 = 201326592;
-  if (*a3 == 0) {
-    v6 = 0x4000000;
-  }
-  v7 = v19 & 0xFFFFFFFF83FDFFFFLL | v6 & 0xFFFFFFFFFFFDFFFFLL |
-       ((unsigned __int64)(a3[4] & 1) << 17);
-  v8 = v20 & 0xFFFFFFFFFFFDFFFDLL | (2LL * (a3[3] & 1)) |
-       ((unsigned __int64)(a3[2] & 1) << 17);
-  v9 = ((v19 >> 54) & 0x1F) - 2;
-  v19 = v7;
-  v20 = v8;
-  if (v9 <= 9 && ((0x20Fu >> v9) & 1) != 0) {
-    v7 = v7 & 0xF83FFFFF8FFFFFFFLL | CudaDriverData_1134160[v9];
-    v19 = v7;
-  }
-  if (a3[1] != 0) {
-    v19 = v7 | 0x10000000000LL;
-    if ((unsigned __int8)CudaDriverRoutine_1d9f90(a1) == 0 ||
-        (unsigned __int8)CudaDriverRoutine_1dc9c0(a2) == 0 ||
-        (v10 = CudaDriverRoutine_1dc020(a2),
-         (unsigned __int8)CudaDriverRoutine_eec70(v10, *a1) != 0)) {
-      if ((CudaDriverRoutine_1db1b0(a2) & 7) == 2 &&
-          *(_QWORD*)CudaDriverRoutine_1dc000(a2) != *a1) {
-        v11 = CudaDriverRoutine_1dc000(a2);
-        if ((unsigned int)CudaDriverRoutine_1fc4a0(v11 + 184, a1, 1, v22) ==
-            0) {
-          return 2;
-        }
-        if (v22[0] != 0) {
-          v12 = (*(__int64 (**)(void*))(*a1 + 21048))(*(void**)a1);
-          if ((_DWORD)v12 != 0) {
-            v13 = v12;
-            v14 = CudaDriverRoutine_b4720(v12);
-            if (v14 != 0) {
-              v15 = *(const char**)(v14 + 8);
-            }
-            else {
-              v15 = "UNRECOGNIZED_ERROR";
-            }
-            CudaDriverRoutine_ed630((__int64)"CUDA", 0,
-                                    "Failed to enable peer mapping in the OS "
-                                    "abstraction layer: %s\n",
-                                    v15);
-            CudaDriverRoutine_1fc5a0(v11 + 184, a1, 1, 0);
-            result = v13;
-            if (v13 != 711) {
-              return result;
-            }
-            if ((unsigned __int8)CudaDriverRoutine_1dc9c0(a2) == 0) {
-              return 711;
-            }
-          }
-        }
-      }
-    }
-  }
-  v17 = CudaDriverRoutine_1dbf90(a2);
-  result = CudaDriverRoutine_1da1b0(a1, &v19, v17, &v21);
-  if ((_DWORD)result != 0) {
-    if (a3[1] == 0 && (v19 & 0x7C0000000000000LL) != 0) {
-      v18 = result;
-      CudaDriverRoutine_ed630((__int64)"CUDA", 0,
-                              "Failed to auto-map memory from/to peer context");
-      return v18;
-    }
-  }
-  else {
-    if (a3[1] != 0) {
-      CudaDriverRoutine_1dc6e0(v21);
-    }
-    CudaDriverRoutine_ee120(v21);
-    return 0;
-  }
-  return result;
 }
 
 void CudaDriverHr_12a820(__int64 a1, __int64 a2, __int64 a3)

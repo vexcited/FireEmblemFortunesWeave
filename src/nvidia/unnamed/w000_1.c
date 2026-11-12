@@ -1,27 +1,49 @@
 #include "decomp/pseudo_helpers.h"
+
 #pragma GCC visibility push(hidden)
 
 extern int CudaDriverData_1435898;
+
 extern int CudaDriverData_143589c;
+
 extern int CudaDriverData_14359b4;
+
 extern int CudaDriverData_1435ff8;
+
 extern _UNKNOWN* CudaDriverData_14364e0;
+
 extern _UNKNOWN* CudaDriverData_14364f8;
+
 __int64 CudaDriverRoutine_107880(void);
+
 __int64 CudaDriverRoutine_107e20(void);
+
 __int64 CudaDriverRoutine_10c480(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
+
 __int64 CudaDriverRoutine_10c5b0(void);
+
 __int64 CudaDriverRoutine_114a00(_QWORD);
+
 __int64 CudaDriverRoutine_1175a0(void);
+
 __int64 CudaDriverRoutine_12e340(__int64 result);
+
 __int64 CudaDriverRoutine_42ee0(void);
+
 __int64 CudaDriverRoutine_980c0(_QWORD, _QWORD);
+
 __int64 CudaDriverRoutine_988f0(void);
+
 __int64 CudaDriverRoutine_b9360(void);
+
 __int64 CudaDriverRoutine_bae20(void);
+
 __int64 CudaDriverRoutine_bb120(_QWORD, _QWORD, _QWORD, _QWORD);
+
 __int64 CudaDriverRoutine_bb530(void);
+
 __int64 CudaDriverRoutine_d9180(void);
+
 __int64 CudaDriverRoutine_f2040(_QWORD, _QWORD);
 
 __int64 CudaDriverHr_1bf720(__int64 a1, _DWORD* a2)
@@ -244,36 +266,6 @@ bool CudaDriverHr_1da030(__int64 a1) { return *(_BYTE*)(a1 + 80) == 0; }
 __int64 CudaDriverHr_1db1b0(__int64 a1)
 {
   return *(_QWORD*)(*(_QWORD*)(a1 + 72) + 240LL);
-}
-
-__int64 CudaDriverHr_1db770(__int64 result, _QWORD* a2)
-{
-  *a2 = *(_QWORD*)(result + 72) + 240LL;
-  return result;
-}
-
-__int64 CudaDriverHr_1db780(__int64 result, _QWORD* a2)
-{
-  *a2 = *(_QWORD*)(*(_QWORD*)(result + 72) + 168LL) + 240LL;
-  return result;
-}
-
-bool CudaDriverHr_1db830(__int64 a1) { return (*(_BYTE*)(a1 + 472) & 2) != 0; }
-
-bool CudaDriverHr_1dc790(char a1) { return (a1 & 7) == 2; }
-
-bool CudaDriverHr_1dc7d0(__int64 a1, unsigned int a2)
-{
-  return ((a2 >> 6) & 7) - 1 < 2;
-}
-
-bool CudaDriverHr_1dc7f0(__int64 a1, __int16 a2) { return (a2 & 0x1C0) == 64; }
-
-bool CudaDriverHr_1dc800(__int16 a1) { return (a1 & 0x7E00) == 7680; }
-
-bool CudaDriverHr_1dca20(__int64 a1)
-{
-  return (*(_DWORD*)(*(_QWORD*)(a1 + 72) + 240LL) & 0x800000) != 0;
 }
 
 __int64 CudaDriverHr_1dd030(__int64 a1) { return *(_BYTE*)(a1 + 472) & 1; }

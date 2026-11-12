@@ -1,45 +1,79 @@
 #include "decomp/pseudo_helpers.h"
+
 #pragma GCC visibility push(hidden)
 
 extern _UNKNOWN* CudaDriverData_1432498;
+
 extern char CudaDriverData_14325d2;
+
 extern char CudaDriverData_14325d3;
+
 extern char CudaDriverData_1432e38;
+
 extern char CudaDriverData_1432e80;
+
 extern __int64 CudaDriverData_1432e84;
+
 extern __int64 (*CudaDriverData_143ba40)(void);
-extern _UNKNOWN CudaDriverData_143bd10;
+
 extern __int64 CudaDriverData_143bda8;
+
 extern __int128 CudaDriverData_14403f8;
+
 extern __int64 CudaDriverData_1440428;
+
 extern __int64 CudaDriverData_1440430;
+
 __int64 CudaDriverRoutine_108070(void);
+
 __int64 CudaDriverRoutine_12c960(_QWORD, _QWORD);
+
 __int64 CudaDriverRoutine_12db40(void);
+
 __int64 CudaDriverRoutine_12dbb0(_QWORD);
-__int64 CudaDriverRoutine_12df40(_QWORD, _QWORD);
+
 __int64 CudaDriverRoutine_12e1e0(_QWORD);
+
 __int64 CudaDriverRoutine_12e340(void);
+
 __int64 CudaDriverRoutine_12e4f0(_QWORD);
+
 __int64 CudaDriverRoutine_1a16e0(_QWORD, _QWORD);
+
 __int64 CudaDriverRoutine_1d9c30(_QWORD);
+
 __int64 CudaDriverRoutine_1dbf90(void);
+
 __int64 CudaDriverRoutine_222b80(_QWORD, _QWORD);
+
 __int64 CudaDriverRoutine_25da90(void);
+
 __int64 CudaDriverRoutine_25dd40(const char*, ...);
+
 __int64 CudaDriverRoutine_76d10();
+
 __int64 CudaDriverRoutine_770a0(_QWORD);
+
 __int64 CudaDriverRoutine_935f0(void);
+
 __int64 CudaDriverRoutine_a3b60(void);
+
 __int64 CudaDriverRoutine_a4120(void);
+
 __int64 CudaDriverRoutine_a81a0(void);
+
 __int64 CudaDriverRoutine_a8520(void);
+
 __int64 CudaDriverRoutine_ab0e0(void);
+
 __int64 CudaDriverRoutine_b3020(void);
+
 __int64 CudaDriverRoutine_bb120(_QWORD, _QWORD, _QWORD, _QWORD);
+
 __int64 CudaDriverRoutine_da4e0(void);
+
 __int64 CudaDriverRoutine_dabc0(void);
-__int64 CudaDriverRoutine_de8d0();
+
 __int64 CudaDriverRoutine_deeb0(_QWORD);
 
 void __attribute__((noreturn)) CudaDriverHr_0() { __udf(1u); }
@@ -83,43 +117,6 @@ __int64 CudaDriverHr_3930(__int64 a1, _DWORD* a2)
   v2 = *(_QWORD*)(a1 + 16104);
   *a2 = *(_DWORD*)(v2 + 3112);
   return 0;
-}
-
-_QWORD* CudaDriverHr_4b10(_QWORD* a1)
-{
-  *a1 = 0x700000002001000DLL;
-  return a1 + 1;
-}
-
-_QWORD* CudaDriverHr_4b20(_QWORD* a1)
-{
-  *a1 = 0x800000002001000DLL;
-  return a1 + 1;
-}
-
-_DWORD* CudaDriverHr_4ba0(_DWORD* result, int a2)
-{
-  *result = a2;
-  result[1] = 3;
-  return result;
-}
-
-_QWORD* CudaDriverHr_4c10(_QWORD* a1)
-{
-  *a1 = 536936478;
-  return a1 + 1;
-}
-
-_DWORD* CudaDriverHr_4c20(_DWORD* a1)
-{
-  *a1 = -536870912;
-  return a1 + 1;
-}
-
-_DWORD* CudaDriverHr_4c30(_DWORD* a1)
-{
-  *a1 = 0;
-  return a1 + 1;
 }
 
 __int64 CudaDriverHr_73f0(__int64 result, unsigned __int16 a2)
@@ -251,49 +248,6 @@ __int64 CudaDriverHr_16150(__int64 a1, _DWORD* a2)
   v2 = *(_QWORD*)(a1 + 16104);
   *a2 = *(_DWORD*)(v2 + 3112);
   return 0;
-}
-
-_QWORD* CudaDriverHr_17f20(_QWORD* a1)
-{
-  *a1 = 0x700000002001000DLL;
-  return a1 + 1;
-}
-
-_QWORD* CudaDriverHr_17f30(_QWORD* a1)
-{
-  *a1 = 0x800000002001000DLL;
-  return a1 + 1;
-}
-
-_DWORD* CudaDriverHr_17fb0(_DWORD* result, int a2)
-{
-  *result = a2;
-  result[1] = 3;
-  return result;
-}
-
-_QWORD* CudaDriverHr_17ff0(_QWORD* a1)
-{
-  *a1 = 536936478;
-  return a1 + 1;
-}
-
-_DWORD* CudaDriverHr_18000(_DWORD* a1)
-{
-  *a1 = -536870912;
-  return a1 + 1;
-}
-
-_DWORD* CudaDriverHr_18010(_DWORD* a1)
-{
-  *a1 = 0;
-  return a1 + 1;
-}
-
-_QWORD* CudaDriverHr_18bc0(_QWORD* a1)
-{
-  *a1 = 0x30000200100C1LL;
-  return a1 + 1;
 }
 
 __int64 CudaDriverHr_1b6e0(__int64 result, char a2)
@@ -468,39 +422,6 @@ void CudaDriverHr_5e800(__int64 a1, unsigned int a2)
 
 __int64 CudaDriverHr_5e970(__int64 a1) { return *(_QWORD*)(a1 + 34328); }
 
-__int64 CudaDriverHr_61470(__int64 a1, char a2)
-{
-  *(_BYTE*)(a1 + 464) = a2;
-  return 0;
-}
-
-__int64 CudaDriverHr_615b0(__int64 a1, _DWORD* a2)
-{
-  int v2;
-
-  v2 = *(_DWORD*)(a1 + 460);
-  *a2 = v2;
-  return 0;
-}
-
-__int64 CudaDriverHr_615c0(__int64 a1, _DWORD* a2)
-{
-  int v2;
-
-  v2 = *(unsigned __int8*)(a1 + 464);
-  *a2 = v2;
-  return 0;
-}
-
-__int64 CudaDriverHr_61760(__int64 a1, _DWORD* a2)
-{
-  int v2;
-
-  v2 = *(unsigned __int8*)(a1 + 441);
-  *a2 = v2;
-  return 0;
-}
-
 __int64 CudaDriverHr_617b0(_DWORD* a1)
 {
   *a1 = 1;
@@ -533,16 +454,6 @@ __int64 CudaDriverHr_65470(void* a1)
 {
   CudaDriverData_1432498 = a1;
   return 0;
-}
-
-__int64 CudaDriverHr_65a20(_DWORD* a1)
-{
-  if (*a1 >= 0xCu) {
-    return 0;
-  }
-  else {
-    return 2;
-  }
 }
 
 __int64 CudaDriverHr_76d00(__int64 a1, __int64 a2)
@@ -694,11 +605,6 @@ __int64 CudaDriverHr_98850(__int64 a1)
   return 0;
 }
 
-__int64 CudaDriverHr_99750(__int64 a1)
-{
-  return *(unsigned __int8*)(a1 + 16162);
-}
-
 __int64 CudaDriverHr_99c50(__int64 a1, _DWORD* a2)
 {
   int v2;
@@ -740,11 +646,7 @@ bool CudaDriverHr_9ab40(__int64 a1) { return (*(_BYTE*)(a1 + 3360) & 2) != 0; }
 
 bool CudaDriverHr_9ab50(__int64 a1) { return *(_DWORD*)(a1 + 21864) == 1; }
 
-bool CudaDriverHr_9ac80(__int64 a1) { return *(_DWORD*)(a1 + 3152) > 5u; }
-
 bool CudaDriverHr_9ad80(__int64 a1) { return *(_DWORD*)(a1 + 3152) > 7u; }
-
-bool CudaDriverHr_9ae50(__int64 a1) { return *(_DWORD*)(a1 + 3152) > 8u; }
 
 __int64 CudaDriverHr_9ea90(__int64 a1)
 {
@@ -830,12 +732,6 @@ __int64 CudaDriverHr_b0ce0(_DWORD* a1, _DWORD* a2)
   return (unsigned int)(*a1 - *a2);
 }
 
-__int64 CudaDriverHr_b9080(__int64 a1, __int64 a2, unsigned int a3, __int64 a4)
-{
-  *(_QWORD*)(a2 + 8LL * a3 + 168) = a4;
-  return 0;
-}
-
 __int64 CudaDriverHr_bbd70(__int64 result, _QWORD* a2)
 {
   *a2 = *(_QWORD*)(result + 104);
@@ -888,12 +784,6 @@ __int64 CudaDriverHr_dabb0(__int64 a1, __int64 a2, __int64 a3, int a4)
   else {
     return CudaDriverRoutine_dabc0();
   }
-}
-
-__int64 CudaDriverHr_de8b0()
-{
-  return CudaDriverRoutine_12df40(&CudaDriverData_143bd10,
-                                  CudaDriverRoutine_de8d0);
 }
 
 __int64 CudaDriverHr_e7e40(__int64 a1)
@@ -957,21 +847,6 @@ __int64 CudaDriverHr_101ed0(__int64 a1, __int64 a2)
   }
 }
 
-__int64 CudaDriverHr_103390(__int64 a1, char a2)
-{
-  return (*(_QWORD*)(a1 + 48) >> a2) & 1LL;
-}
-
-__int64 CudaDriverHr_1033a0(__int64 a1, unsigned int a2)
-{
-  return a2 / (0x20000000u / *(_DWORD*)(a1 + 44));
-}
-
-__int64 CudaDriverHr_1033c0(__int64 a1, int a2)
-{
-  return (*(_DWORD*)(a1 + 44) * a2) & 0x1FFFFFFF;
-}
-
 __int64 CudaDriverHr_107f40(_QWORD* a1, __int64 a2, char a3)
 {
   *a1 = 0;
@@ -986,11 +861,6 @@ __int64 CudaDriverHr_109050(__int64 a1)
 {
   *(_QWORD*)(a1 + 16336) = 0;
   return 0;
-}
-
-bool CudaDriverHr_10e830(__int64 a1)
-{
-  return *(_DWORD*)(*(_QWORD*)(a1 + 80) + 192LL) != 0;
 }
 
 __int64 CudaDriverHr_117020(__int64 a1)
