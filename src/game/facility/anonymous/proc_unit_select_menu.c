@@ -126,6 +126,15 @@ void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 __int64 ProcUnitSelectMenu_Unknown57(__int64* a1, __int64* a2);
 void ProcUnitSelectMenu_Unknown58(__int64* a1, __int64* a2);
+__int64 GameHr_14a1390(__int64*, char);
+__int64 LayoutAccessor_155e830(__int64 result, char);
+__int64 snd_findVoice(__int64);
+__int64 snd_fnd_WeakHandle_isValid(__int64*);
+__int64 snd_stop_ffc40(__int64*, __int64);
+extern __int64 GameData_212c610;
+extern __int64 GameData_2131c18[55];
+void snd_Fade_Fade_10c910(__int64, int);
+__int64 ProcUnitSelectMenu_Unknown92(_QWORD* a1);
 
 __int64 ProcUnitSelectMenu_Unknown57(__int64* a1, __int64* a2)
 {
@@ -907,6 +916,78 @@ __int64 ProcUnitSelectMenu_Unknown84(__int64 a1)
       v16 = COERCE_AS(__typeof__(v16),
                       PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   return snd_Fade_Destroy_Fade_alt1(v27_.v27);
+}
+
+__int64 ProcUnitSelectMenu_Unknown92(_QWORD* a1)
+{
+  _QWORD* v2;
+  _QWORD* v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  _DWORD* v7;
+  __int64 v8;
+  __int64 v9;
+  struct {
+    _DWORD* v11;
+    __int64 v12;
+  } v11_;
+  __int64 v13[2];
+
+  LayoutAccessor_155e830((__int64)(a1 + 106), 0);
+  v2 = a1;
+  v3 = a1;
+  v4 = GameData_212c610;
+  v5 = GameData_2131c18[0];
+  do {
+    v6 = __dynamic_cast(v3, v4, v5, 0);
+    v3 = (_QWORD*)v3[4];
+    if (v6 != 0) {
+      v2 = (_QWORD*)v6;
+    }
+  } while (v3 != nullptr);
+  if (v2 == a1) {
+    (*(void (**)(_QWORD*))(a1[132] + 104LL))(a1 + 132);
+  }
+  v7 = (_DWORD*)a1[135];
+  if (*(_QWORD*)v7 != 0 && *(_DWORD*)(*(_QWORD*)v7 + 16LL) == v7[2]) {
+    v8 = a1[136];
+    if (v8 != 0) {
+      atomic_fetch_add_explicit((atomic_ullong* volatile)(v8 + 8), 1u,
+                                memory_order_relaxed);
+      v11_.v12 = v8;
+      atomic_fetch_add_explicit((atomic_ullong* volatile)(v8 + 8), 1u,
+                                memory_order_relaxed);
+    }
+    else {
+      v11_.v12 = 0;
+    }
+    v11_.v11 = v7;
+    GameHr_14a1390((__int64*)&v11_.v11, 1);
+    v9 = v11_.v12;
+    if (v11_.v12 != 0 &&
+        atomic_fetch_add((atomic_ullong* volatile)(v11_.v12 + 8),
+                         0xFFFFFFFFFFFFFFFFLL) == 0) {
+      (*(void (**)(__int64))(*(_QWORD*)v9 + 16LL))(v9);
+      std___1___shared_weak_count___release_weak_alt2(v9);
+    }
+    if (v8 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v8 + 8),
+                                    0xFFFFFFFFFFFFFFFFLL) == 0) {
+      (*(void (**)(__int64))(*(_QWORD*)v8 + 16LL))(v8);
+      std___1___shared_weak_count___release_weak_alt2(v8);
+    }
+  }
+  snd_Fade_Fade_10c910((__int64)&v11_.v11, 500);
+  snd_findVoice((__int64)"SE_SYS_Select_Obelisk_Second");
+  if ((snd_fnd_WeakHandle_isValid(v13) & 1) != 0) {
+    snd_stop_ffc40(v13, (__int64)&v11_.v11);
+  }
+  snd_Fade_Destroy_Fade_alt1(&v11_.v11);
+  LODWORD(v13[0]) = (unsigned int)snd_fnd_calcCrc32_alt1("SE_Fade", 0);
+  snd_Fade_Fade_10c830_alt1((__int64)&v11_.v11, 0x1.f400000000000p+8f);
+  snd_startSlotVolume_100b50_alt1((int*)v13, (__int64)&v11_.v11,
+                                  0x1.0000000000000p+0f);
+  return snd_Fade_Destroy_Fade_alt1(&v11_.v11);
 }
 
 __int64 ProcUnitSelectMenu_Unknown93(__int64 result)

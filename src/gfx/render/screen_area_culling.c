@@ -3,6 +3,88 @@
 #pragma GCC visibility push(hidden)
 
 bool ScreenAreaCulling_Unknown3(float32x4_t* a1, float32x2_t* a2);
+float32x4_t ScreenAreaCulling_Unknown2(__int64 a1, __int64 a2);
+
+float32x4_t ScreenAreaCulling_Unknown2(__int64 a1, __int64 a2)
+{
+  __int128 v4;
+  __int128 v5;
+  __int128 v6;
+  long double v7;
+  float32x4_t v8;
+  float32x4_t v9;
+  float32x4_t v10;
+  float32x4_t v11;
+  float32x4_t v12;
+  float32x4_t v13;
+  float32x4_t v14;
+  float32x4_t v15;
+  float32x4_t v16;
+  float32x4_t v17;
+  float32x4_t result;
+
+  v12 = COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v13 = COERCE_AS(__typeof__(v13), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v14 = COERCE_AS(__typeof__(v14), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v4 = COERCE_AS(__typeof__(v4), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v5 = COERCE_AS(__typeof__(v5), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v6 = COERCE_AS(__typeof__(v6), PSEUDO_REGISTER(__n128, "v3", "=w"));
+  *(long double*)(a1 + 16) =
+      ((long double (*)(__int64)) * (_QWORD*)(*(_QWORD*)a2 + 16LL))(a2),
+                       v12 = COERCE_AS(__typeof__(v12),
+                                       PSEUDO_REGISTER(__n128, "v1", "=w")),
+                       v13 = COERCE_AS(__typeof__(v13),
+                                       PSEUDO_REGISTER(__n128, "v2", "=w")),
+                       v14 = COERCE_AS(__typeof__(v14),
+                                       PSEUDO_REGISTER(__n128, "v3", "=w")),
+                       v4 = COERCE_AS(__typeof__(v4),
+                                      PSEUDO_REGISTER(__n128, "v1", "=w")),
+                       v5 = COERCE_AS(__typeof__(v5),
+                                      PSEUDO_REGISTER(__n128, "v2", "=w")),
+                       v6 = COERCE_AS(__typeof__(v6),
+                                      PSEUDO_REGISTER(__n128, "v3", "=w"));
+  *(_OWORD*)(a1 + 32) = v4;
+  *(_OWORD*)(a1 + 48) = v5;
+  *(_OWORD*)(a1 + 64) = v6;
+  v7 = ((long double (*)(__int64)) * (_QWORD*)(*(_QWORD*)a2 + 24LL))(a2),
+  v12 = COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v13 = COERCE_AS(__typeof__(v13), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v14 = COERCE_AS(__typeof__(v14), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v4 = COERCE_AS(__typeof__(v4), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v5 = COERCE_AS(__typeof__(v5), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v6 = COERCE_AS(__typeof__(v6), PSEUDO_REGISTER(__n128, "v3", "=w"));
+  v8 = *(float32x4_t*)(a1 + 16);
+  v9 = *(float32x4_t*)(a1 + 32);
+  v10 = *(float32x4_t*)(a1 + 48);
+  v11 = *(float32x4_t*)(a1 + 64);
+  *(long double*)(a1 + 80) = v7;
+  *(float32x4_t*)(a1 + 96) = v12;
+  *(float32x4_t*)(a1 + 112) = v13;
+  *(float32x4_t*)(a1 + 128) = v14;
+  v15 = vmlaq_laneq_f32(
+      vmlaq_lane_f32(vmulq_n_f32(*(float32x4_t*)&v7, LANES128(v8).n128_f32[0]),
+                     v12, COERCE_AS(float32x2_t, LANES128(v8).n128_u64[0]), 1),
+      v13, v8, 2);
+  v16 = vmlaq_laneq_f32(
+      vmlaq_lane_f32(vmulq_n_f32(*(float32x4_t*)&v7, LANES128(v9).n128_f32[0]),
+                     v12, COERCE_AS(float32x2_t, LANES128(v9).n128_u64[0]), 1),
+      v13, v9, 2);
+  v17 = vmulq_n_f32(*(float32x4_t*)&v7, LANES128(v10).n128_f32[0]);
+  *(float32x4_t*)(a1 + 144) = v15;
+  *(float32x4_t*)(a1 + 160) = v16;
+  result = vaddq_f32(
+      v14, vmlaq_laneq_f32(
+               vmlaq_lane_f32(
+                   vmulq_n_f32(*(float32x4_t*)&v7, LANES128(v11).n128_f32[0]),
+                   v12, COERCE_AS(float32x2_t, LANES128(v11).n128_u64[0]), 1),
+               v13, v11, 2));
+  *(float32x4_t*)(a1 + 176) = vmlaq_laneq_f32(
+      vmlaq_lane_f32(v17, v12,
+                     COERCE_AS(float32x2_t, LANES128(v10).n128_u64[0]), 1),
+      v13, v10, 2);
+  *(float32x4_t*)(a1 + 192) = result;
+  return result;
+}
 
 bool ScreenAreaCulling_Unknown3(float32x4_t* a1, float32x2_t* a2)
 {

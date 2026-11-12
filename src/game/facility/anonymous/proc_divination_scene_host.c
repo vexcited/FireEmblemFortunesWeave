@@ -212,6 +212,7 @@ __int64 GameHr_14127e0(__int64, unsigned __int8*);
 extern __int64 GameData_1aae698;
 extern __int64 GameData_1aba4b2;
 extern __int64 GameData_1ac1d2a;
+void ProcDivinationSceneHost_1967000();
 
 void game_facility_anonymous_ProcDivinationSceneHost_PrepareScene()
 {
@@ -731,6 +732,81 @@ __int64 ProcDivinationSceneHost_1966fa0(__int64 result)
     }
   }
   return result;
+}
+
+void ProcDivinationSceneHost_1967000()
+{
+  __int64 v0;
+  __int64 v1;
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  struct {
+    _QWORD v8[2];
+    __int64 v9;
+  } v8_;
+  struct {
+    unsigned __int8 v10[16];
+    __int64 v11;
+  } v10_;
+
+  v0 = ProcDivinationSceneHost_1967da0();
+  if (v0 == 0) {
+    return;
+  }
+  v1 = v0;
+  v2 = fw_memory_g_heap_manager_ptr;
+  v3 = fw_memory_HeapManager_Allocate_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr, 48, 16, 0);
+  *(_BYTE*)(v3 + 47) = 0;
+  v8_.v8[0] = 49;
+  v8_.v8[1] = 47;
+  v8_.v9 = v3;
+  *(_QWORD*)(v3 + 16) = 0xB383E3A783E3B782LL;
+  *(_QWORD*)(v3 + 24) = 0x5F8481E3A08DE55FLL;
+  *(_QWORD*)(v3 + 32) = 0xB8E58481E3A08DE5LL;
+  *(_QWORD*)(v3 + 39) = 0x8E98E6ACAAE8ABB8LL;
+  *(_QWORD*)v3 = 0x83E3A383E3AD82E3LL;
+  *(_QWORD*)(v3 + 8) = 0xE3BC83E3A283E3A9LL;
+  game_facility_14107c0((__int64)v10_.v10, (__int64)v8_.v8);
+  v4 = *(_QWORD*)(v1 + 112);
+  v5 = *(_QWORD*)(v1 + 120);
+  if (v5 != 0) {
+    atomic_fetch_add_explicit((atomic_ullong* volatile)(v5 + 8), 1u,
+                              memory_order_relaxed);
+    GameHr_14127e0(v4, v10_.v10);
+    if (atomic_fetch_add((atomic_ullong* volatile)(v5 + 8),
+                         0xFFFFFFFFFFFFFFFFLL) == 0) {
+      (*(void (**)(__int64))(*(_QWORD*)v5 + 16LL))(v5);
+      std___1___shared_weak_count___release_weak_alt2(v5);
+    }
+    if ((v10_.v10[0] & 1) == 0) {
+      goto LABEL_12;
+    }
+    goto LABEL_8;
+  }
+  GameHr_14127e0(v4, v10_.v10);
+  if ((v10_.v10[0] & 1) != 0) {
+  LABEL_8:
+    if (v10_.v11 != 0) {
+      v6 = 128;
+      if (*(_QWORD*)(*(_QWORD*)v2 + 200LL) == 0) {
+        v6 = 56;
+      }
+      nn_mem_StandardAllocator_Free_alt2(*(_QWORD*)v2 + v6, v10_.v11);
+    }
+  }
+LABEL_12:
+  if ((v8_.v8[0] & 1) != 0 && v8_.v9 != 0) {
+    v7 = 128;
+    if (*(_QWORD*)(*(_QWORD*)v2 + 200LL) == 0) {
+      v7 = 56;
+    }
+    nn_mem_StandardAllocator_Free_alt2(*(_QWORD*)v2 + v7, v8_.v9);
+  }
 }
 
 __int64 ProcDivinationSceneHost_1967150(__int64 a1)

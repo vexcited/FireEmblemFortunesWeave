@@ -207,7 +207,8 @@ __int64 hub_character_AddTalkSelectItem(__int64 a1, __int64 a2, __int64 a3);
 __int64 hub_character_PreTalkEvent(__int64 result);
 _QWORD* hub_character_BeginEncounter_alt1(__int64 a1) __asm__(
     "hub_character_BeginEncounter");
-__int64* hub_character_RegisterWarpLocalCallback(__int64 a1, __int64 a2);
+__int64* hub_character_RegisterWarpLocalCallback_alt1(
+    __int64 a1, __int64 a2) __asm__("hub_character_RegisterWarpLocalCallback");
 _QWORD*
 hub_character_PlayFacial_alt1(__int64 a1, __int64 a2,
                               float a3) __asm__("hub_character_PlayFacial");
@@ -343,6 +344,8 @@ void __attribute__((noreturn)) fs_60a230();
 void game_hub_cad680_alt2(__int64, __int64, __int64) __asm__("game_hub_cad680");
 void hub_character_AddAccessEvent_cd6100(__int64 a1, char* a2);
 void hub_character_AddAccessEvent_cd63a0(__int64 a1, __int64 a2, char* a3);
+_QWORD* Manager_66cc20_alt1(__int64*, _QWORD*) __asm__("Manager_66cc20");
+void hub_character_RegisterWarpLocalCallback(__int64 a1, __int64 a2);
 
 void HubCharacterNatives_ca8f80(_QWORD* a1)
 {
@@ -4984,29 +4987,32 @@ void hub_character_BeginEncounter(__int64 a1)
   }
 }
 
-__int64* hub_character_RegisterWarpLocalCallback(__int64 a1, __int64 a2)
+void hub_character_RegisterWarpLocalCallback(__int64 a1, __int64 a2)
 {
   __int64 v4;
   __int64 v5;
   __int64 v6;
-  __int64* result;
+  _QWORD* v7;
   __int64 v8;
   __int64 v9;
   _QWORD* v10;
   __int64 v11;
-  __int64 v12;
+  const char* v12;
   unsigned __int64 v13;
   unsigned __int64 v14;
   char* v15;
   __int64 v16;
   __int64* v17;
   __int64 v18;
-  char* v19;
-  int v20;
-  __int64 v21;
+  __int64 v19;
+  _QWORD* v20;
+  int v21;
   __int64 v22;
-  unsigned __int64 v23;
-  char* v24;
+  struct {
+    __int64 v23;
+    __int64 v24;
+    char* v25;
+  } v23_;
 
   v4 = *as_g_script_manager_ptr;
   v5 = *(
@@ -5022,37 +5028,36 @@ __int64* hub_character_RegisterWarpLocalCallback(__int64 a1, __int64 a2)
   }
   (*(void (**)(_QWORD, __int64))(**(_QWORD**)(v6 + 24) + 448LL))(
       *(_QWORD*)(v6 + 24), 1);
-  result = *(__int64**)(v6 + 2240);
+  v7 = *(_QWORD**)(v6 + 2240);
   *(_QWORD*)(v6 + 2240) = 0;
-  if (result == (__int64*)(v6 + 2208)) {
+  if (v7 == (_QWORD*)(v6 + 2208)) {
     v8 = 32;
     goto LABEL_8;
   }
-  if (result != nullptr) {
+  if (v7 != nullptr) {
     v8 = 40;
   LABEL_8:
-    result =
-        (__int64*)(*(__int64 (**)(__int64))(*result + v8))((__int64)result);
+    (*(void (**)(__int64))(*v7 + v8))((__int64)v7);
   }
   v9 = *(unsigned int*)(a1 + 16);
   if ((_DWORD)v9 == 0x4000) {
-    return result;
+    return;
   }
   v10 = (_QWORD*)(util_g_handle_slots_ptr[0][*(unsigned int*)(a1 + 20)] +
                   16 * v9);
   v11 = v10[1];
   if (v11 == 0 || *v10 != *(_QWORD*)(a1 + 8)) {
-    return result;
+    return;
   }
   if ((*(_BYTE*)a2 & 1) != 0) {
-    v12 = *(_QWORD*)(a2 + 16);
+    v12 = *(const char**)(a2 + 16);
   }
   else {
-    v12 = a2 + 1;
+    v12 = (const char*)(a2 + 1);
   }
-  v13 = strlen(v12);
+  v13 = strlen_alt1(v12);
   if (v13 >= 0xFFFFFFFFFFFFFFF7LL) {
-    String_60a1d0();
+    String_60a1d0_alt1();
   }
   v14 = v13;
   if (v13 >= 0x17) {
@@ -5062,54 +5067,53 @@ __int64* hub_character_RegisterWarpLocalCallback(__int64 a1, __int64 a2)
     else {
       v16 = (v13 | 7) + 1;
     }
-    v15 = (char*)fw_memory_HeapManager_Allocate(fw_memory_g_heap_manager, v16,
-                                                16, 0);
-    v23 = v14;
-    v24 = v15;
-    v22 = v16 | 1;
+    v15 = (char*)fw_memory_HeapManager_Allocate_alt1(fw_memory_g_heap_manager,
+                                                     v16, 16, 0);
+    v23_.v24 = v14;
+    v23_.v25 = v15;
+    v23_.v23 = v16 | 1;
   }
   else {
-    LOBYTE(v22) = 2 * v13;
-    v15 = (char*)&v22 + 1;
+    LOBYTE(v23_.v23) = 2 * v13;
+    v15 = (char*)&v23_.v23 + 1;
     if (v13 == 0) {
       goto LABEL_24;
     }
   }
-  memmove(v15, v12, v14);
+  memmove_alt1((__int64)v15, (__int64)v12, v14);
 LABEL_24:
   v15[v14] = 0;
   v17 = *(__int64**)(v11 + 144);
   if ((unsigned __int64)v17 >= *(_QWORD*)(v11 + 152)) {
-    result = (__int64*)Manager_66cc20(v11 + 136, &v22);
-    v20 = v22 & 1;
-    *(_QWORD*)(v11 + 144) = result;
-    if (v20 == 0) {
-      return result;
+    v20 = Manager_66cc20_alt1((__int64*)(v11 + 136), &v23_.v23);
+    v21 = v23_.v23 & 1;
+    *(_QWORD*)(v11 + 144) = v20;
+    if (v21 == 0) {
+      return;
     }
   }
   else {
-    if ((v22 & 1) == 0) {
-      v18 = v22;
-      v19 = v24;
-      v17[1] = v23;
-      v17[2] = (__int64)v19;
+    if ((v23_.v23 & 1) == 0) {
+      v18 = v23_.v23;
+      v19 = (__int64)v23_.v25;
+      v17[1] = v23_.v24;
+      v17[2] = v19;
       *v17 = v18;
       *(_QWORD*)(v11 + 144) = v17 + 3;
-      return v17 + 3;
+      return;
     }
-    fw_text_String_CopyTerminated(*(_QWORD*)(v11 + 144), v24, v23);
-    result = v17 + 3;
+    fw_text_String_CopyTerminated_alt1(*(__int64**)(v11 + 144),
+                                       (__int64)v23_.v25, v23_.v24);
     *(_QWORD*)(v11 + 144) = v17 + 3;
   }
-  if (v24 != nullptr) {
-    v21 = 128;
+  if (v23_.v25 != nullptr) {
+    v22 = 128;
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-      v21 = 56;
+      v22 = 56;
     }
-    return (__int64*)nn_mem_StandardAllocator_Free_alt1(
-        *(_QWORD*)fw_memory_g_heap_manager_ptr + v21, v24);
+    nn_mem_StandardAllocator_Free_alt3(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v22, (__int64)v23_.v25);
   }
-  return result;
 }
 
 _QWORD* hub_character_IsDirectTalkCameraFacility(__int64 a1, __int64 a2)

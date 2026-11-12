@@ -28,8 +28,11 @@ void __attribute__((noreturn)) GameRoutine_8f2260(void);
 __int64 game_anonymous_ConvergeImpl_TryRunConverge_closure_Destructor_alt1(
     _QWORD* a1) __asm__("game_anonymous_ConvergeImpl_TryRunConverge_closure_"
                         "Destructor");
-__int64 game_anonymous_ConvergeImpl_TryRunConverge_closure_DeletingDestructor(
-    _QWORD* a1, long double a2);
+__int64
+game_anonymous_ConvergeImpl_TryRunConverge_closure_DeletingDestructor_alt1(
+    _QWORD* a1,
+    long double a2) __asm__("game_anonymous_ConvergeImpl_TryRunConverge_"
+                            "closure_DeletingDestructor");
 _QWORD* game_anonymous_ConvergeImpl_TryRunConverge_closure_Clone(_QWORD* a1);
 _QWORD* game_anonymous_ConvergeImpl_TryRunConverge_closure_CloneInto_alt1(
     _QWORD* result, _QWORD* a2) __asm__("game_anonymous_ConvergeImpl_"
@@ -40,8 +43,11 @@ __int64 game_anonymous_ConvergeImpl_TryRunConverge_closure_Destroy_alt1(
 __int64 game_anonymous_ConvergeImpl_TryRunConverge_closure0_Destructor_alt1(
     _QWORD* a1) __asm__("game_anonymous_ConvergeImpl_TryRunConverge_closure0_"
                         "Destructor");
-__int64 game_anonymous_ConvergeImpl_TryRunConverge_closure0_DeletingDestructor(
-    _QWORD* a1, long double a2);
+__int64
+game_anonymous_ConvergeImpl_TryRunConverge_closure0_DeletingDestructor_alt1(
+    _QWORD* a1,
+    long double a2) __asm__("game_anonymous_ConvergeImpl_TryRunConverge_"
+                            "closure0_DeletingDestructor");
 _QWORD* game_anonymous_ConvergeImpl_TryRunConverge_closure0_Clone(_QWORD* a1);
 _QWORD*
 game_anonymous_ConvergeImpl_TryRunConverge_closure0_CloneInto(_QWORD* result,
@@ -53,8 +59,10 @@ __int64 game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure_Destructor_alt1(
     _QWORD* a1) __asm__("game_anonymous_ConvergeImpl_RunAutoGrowthDialog_"
                         "closure_Destructor");
 __int64
-game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure_DeletingDestructor(
-    _QWORD* a1, long double a2);
+game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure_DeletingDestructor_alt1(
+    _QWORD* a1,
+    long double a2) __asm__("game_anonymous_ConvergeImpl_RunAutoGrowthDialog_"
+                            "closure_DeletingDestructor");
 _QWORD*
 game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure_Clone(_QWORD* a1);
 _QWORD* game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure_CloneInto_alt1(
@@ -72,8 +80,10 @@ game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure0_Destructor_alt1(
     _QWORD* a1) __asm__("game_anonymous_ConvergeImpl_RunAutoGrowthDialog_"
                         "closure0_Destructor");
 __int64
-game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure0_DeletingDestructor(
-    _QWORD* a1, long double a2);
+game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure0_DeletingDestructor_alt1(
+    _QWORD* a1,
+    long double a2) __asm__("game_anonymous_ConvergeImpl_RunAutoGrowthDialog_"
+                            "closure0_DeletingDestructor");
 _QWORD*
 game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure0_Clone(_QWORD* a1);
 _QWORD* game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure0_CloneInto(
@@ -86,8 +96,11 @@ game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure0_Invoke(__int64 a1);
 __int64 game_anonymous_ConvergeImpl_TryRunConverge_closure1_Destructor_alt1(
     _QWORD* a1) __asm__("game_anonymous_ConvergeImpl_TryRunConverge_closure1_"
                         "Destructor");
-__int64 game_anonymous_ConvergeImpl_TryRunConverge_closure1_DeletingDestructor(
-    _QWORD* a1, long double a2);
+__int64
+game_anonymous_ConvergeImpl_TryRunConverge_closure1_DeletingDestructor_alt1(
+    _QWORD* a1,
+    long double a2) __asm__("game_anonymous_ConvergeImpl_TryRunConverge_"
+                            "closure1_DeletingDestructor");
 _QWORD* game_anonymous_ConvergeImpl_TryRunConverge_closure1_Clone(_QWORD* a1);
 _QWORD*
 game_anonymous_ConvergeImpl_TryRunConverge_closure1_CloneInto(_QWORD* result,
@@ -194,6 +207,16 @@ void game_anonymous_ConvergeImpl_SetupConvergeResult_closure_Invoke(
     __int64 a1, unsigned __int8* a2);
 void GameRoutine_6b7aa0_alt1(__int64, __int64*, __int64*,
                              unsigned __int64) __asm__("GameRoutine_6b7aa0");
+void game_anonymous_ConvergeImpl_TryRunConverge_closure_DeletingDestructor(
+    _QWORD* a1);
+void game_anonymous_ConvergeImpl_TryRunConverge_closure0_DeletingDestructor(
+    _QWORD* a1);
+void game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure_DeletingDestructor(
+    _QWORD* a1);
+void game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure0_DeletingDestructor(
+    _QWORD* a1);
+void game_anonymous_ConvergeImpl_TryRunConverge_closure1_DeletingDestructor(
+    _QWORD* a1);
 
 bool ConvergeImpl_104f0e0(__int64 a1, __int64 a2)
 {
@@ -1539,32 +1562,32 @@ void game_anonymous_ConvergeImpl_TryRunConverge_closure_Destructor(_QWORD* a1)
   }
 }
 
-__int64 game_anonymous_ConvergeImpl_TryRunConverge_closure_DeletingDestructor(
-    _QWORD* a1, long double a2)
+void game_anonymous_ConvergeImpl_TryRunConverge_closure_DeletingDestructor(
+    _QWORD* a1)
 {
-  _QWORD* v2;
+  __int64* v2;
   __int64 v3;
   __int64 v4;
   __int64 v5;
 
-  *a1 = GameData_2004e18;
+  *a1 = game_anonymous_ConvergeImpl_TryRunConverge_closure_Destructor_ptr;
   v2 = a1 + 3;
   v3 = fw_memory_g_heap_manager_ptr;
   if (a1[3] != 0) {
-    GameConverge_8f23a0(a1 + 3);
+    GameConverge_8f23a0_alt1(a1 + 3);
     if (*v2 != 0) {
       v4 = 128;
       if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
         v4 = 56;
       }
-      nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v4, a2);
+      nn_mem_StandardAllocator_Free_alt2(*(_QWORD*)v3 + v4, *v2);
     }
   }
   v5 = 128;
   if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
     v5 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v5, a2);
+  nn_mem_StandardAllocator_Free_alt2(*(_QWORD*)v3 + v5, (__int64)a1);
 }
 
 _QWORD* game_anonymous_ConvergeImpl_TryRunConverge_closure_Clone(_QWORD* a1)
@@ -1701,32 +1724,32 @@ void game_anonymous_ConvergeImpl_TryRunConverge_closure0_Destructor(_QWORD* a1)
   }
 }
 
-__int64 game_anonymous_ConvergeImpl_TryRunConverge_closure0_DeletingDestructor(
-    _QWORD* a1, long double a2)
+void game_anonymous_ConvergeImpl_TryRunConverge_closure0_DeletingDestructor(
+    _QWORD* a1)
 {
-  _QWORD* v2;
+  __int64* v2;
   __int64 v3;
   __int64 v4;
   __int64 v5;
 
-  *a1 = GameData_2004e98;
+  *a1 = game_anonymous_ConvergeImpl_TryRunConverge_closure0_Destructor_ptr;
   v2 = a1 + 3;
   v3 = fw_memory_g_heap_manager_ptr;
   if (a1[3] != 0) {
-    GameConverge_8f23a0(a1 + 3);
+    GameConverge_8f23a0_alt1(a1 + 3);
     if (*v2 != 0) {
       v4 = 128;
       if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
         v4 = 56;
       }
-      nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v4, a2);
+      nn_mem_StandardAllocator_Free_alt2(*(_QWORD*)v3 + v4, *v2);
     }
   }
   v5 = 128;
   if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
     v5 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v5, a2);
+  nn_mem_StandardAllocator_Free_alt2(*(_QWORD*)v3 + v5, (__int64)a1);
 }
 
 _QWORD* game_anonymous_ConvergeImpl_TryRunConverge_closure0_Clone(_QWORD* a1)
@@ -1867,34 +1890,32 @@ void game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure_Destructor(
   }
 }
 
-__int64
-
-game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure_DeletingDestructor(
-    _QWORD* a1, long double a2)
+void game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure_DeletingDestructor(
+    _QWORD* a1)
 {
-  _QWORD* v2;
+  __int64* v2;
   __int64 v3;
   __int64 v4;
   __int64 v5;
 
-  *a1 = GameData_2004f08;
+  *a1 = game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure_Destructor_ptr;
   v2 = a1 + 3;
   v3 = fw_memory_g_heap_manager_ptr;
   if (a1[3] != 0) {
-    GameConverge_8f23a0(a1 + 3);
+    GameConverge_8f23a0_alt1(a1 + 3);
     if (*v2 != 0) {
       v4 = 128;
       if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
         v4 = 56;
       }
-      nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v4, a2);
+      nn_mem_StandardAllocator_Free_alt2(*(_QWORD*)v3 + v4, *v2);
     }
   }
   v5 = 128;
   if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
     v5 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v5, a2);
+  nn_mem_StandardAllocator_Free_alt2(*(_QWORD*)v3 + v5, (__int64)a1);
 }
 
 _QWORD*
@@ -2058,34 +2079,32 @@ void game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure0_Destructor(
   }
 }
 
-__int64
-
-game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure0_DeletingDestructor(
-    _QWORD* a1, long double a2)
+void game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure0_DeletingDestructor(
+    _QWORD* a1)
 {
-  _QWORD* v2;
+  __int64* v2;
   __int64 v3;
   __int64 v4;
   __int64 v5;
 
-  *a1 = GameData_2004f88;
+  *a1 = game_anonymous_ConvergeImpl_RunAutoGrowthDialog_closure0_Destructor_ptr;
   v2 = a1 + 3;
   v3 = fw_memory_g_heap_manager_ptr;
   if (a1[3] != 0) {
-    GameConverge_8f23a0(a1 + 3);
+    GameConverge_8f23a0_alt1(a1 + 3);
     if (*v2 != 0) {
       v4 = 128;
       if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
         v4 = 56;
       }
-      nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v4, a2);
+      nn_mem_StandardAllocator_Free_alt2(*(_QWORD*)v3 + v4, *v2);
     }
   }
   v5 = 128;
   if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
     v5 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v5, a2);
+  nn_mem_StandardAllocator_Free_alt2(*(_QWORD*)v3 + v5, (__int64)a1);
 }
 
 _QWORD*
@@ -2234,32 +2253,32 @@ void game_anonymous_ConvergeImpl_TryRunConverge_closure1_Destructor(_QWORD* a1)
   }
 }
 
-__int64 game_anonymous_ConvergeImpl_TryRunConverge_closure1_DeletingDestructor(
-    _QWORD* a1, long double a2)
+void game_anonymous_ConvergeImpl_TryRunConverge_closure1_DeletingDestructor(
+    _QWORD* a1)
 {
-  _QWORD* v2;
+  __int64* v2;
   __int64 v3;
   __int64 v4;
   __int64 v5;
 
-  *a1 = GameData_2005098;
+  *a1 = game_anonymous_ConvergeImpl_TryRunConverge_closure1_Destructor_ptr;
   v2 = a1 + 3;
   v3 = fw_memory_g_heap_manager_ptr;
   if (a1[3] != 0) {
-    GameConverge_8f23a0(a1 + 3);
+    GameConverge_8f23a0_alt1(a1 + 3);
     if (*v2 != 0) {
       v4 = 128;
       if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
         v4 = 56;
       }
-      nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v4, a2);
+      nn_mem_StandardAllocator_Free_alt2(*(_QWORD*)v3 + v4, *v2);
     }
   }
   v5 = 128;
   if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
     v5 = 56;
   }
-  return nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v5, a2);
+  nn_mem_StandardAllocator_Free_alt2(*(_QWORD*)v3 + v5, (__int64)a1);
 }
 
 _QWORD* game_anonymous_ConvergeImpl_TryRunConverge_closure1_Clone(_QWORD* a1)

@@ -197,6 +197,15 @@ __int64 LayoutAccessor_1563280_alt1(__int64*, __int64,
                                     char) __asm__("LayoutAccessor_1563280");
 float LayoutAccessor_15637c0(__int64*, __int64, char);
 __int64 CmdBtlCombatWindow_17c3690(__int64 a1, int a2);
+__int64* Manager_bc6460(_QWORD*, __int64, char);
+__int64 GameHr_14a10d0(_QWORD*, __int64, __int64, __int64);
+__int64 GameRoutine_155f760(__int64, __int64, const char*);
+char* game_util_Format(const char*, ...);
+extern _UNKNOWN* GameData_212c540;
+extern __int128 GameData_1a837f0;
+extern __int64* eft_g_effectSystem_ptr[3];
+extern char GameData_1a9f09e;
+__int64 CmdBtlCombatWindow_17c2c40(__int64 a1, unsigned int a2);
 
 __int64 CmdBtlCombatWindow_DeletingDestructor(_QWORD* a1)
 {
@@ -1029,6 +1038,183 @@ LABEL_32:
   BattleInfoWindow_18337f0(a1, 0, v55, v56, 1);
   LayoutAccessor_1562cf0(a1 + 24, (unsigned int*)"Info_Combat_CmdBtl");
   return ui_LayoutAccessor_SetPaneVisible_alt2(a1 + 24, "N_KeyA", 0);
+}
+
+__int64 CmdBtlCombatWindow_17c2c40(__int64 a1, unsigned int a2)
+{
+
+#pragma clang fp contract(off)
+  int v2;
+  __int64 result;
+  __int64 v6;
+  __int64* v7;
+  char v9;
+  char* v10;
+  unsigned __int64 v11;
+  const char* v12;
+  __int64 v13;
+  __int64 v14;
+  __int64 v15;
+  _BOOL4 v16;
+  __int64 v17;
+  __int64 v18;
+  __int64 v19;
+  int32x4_t* v20;
+  unsigned __int64 v21;
+  _QWORD* v22;
+  __int64 v23;
+  __int64* v24;
+  unsigned int v25;
+  __int64 v26;
+  struct {
+    __int64* v27;
+    __int64 v28;
+    const char* v29;
+    int v30;
+    char gap28_[4];
+    __int128 v31;
+    __int128 v32;
+    __int64 v33;
+    __int64 v34;
+  } v27_;
+
+  v25 = COERCE_AS(__typeof__(v25),
+                  PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  LayoutAccessor_1560070((void*)(&v27_.v27), (__int64*)(a1 + 24),
+                         "L_TargetHP_Gauge/L_GaugeR_HPStock"),
+      v25 = COERCE_AS(__typeof__(v25),
+                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+  result = v27_.v28;
+  if (v27_.v28 != 0) {
+    v6 = std___1___shared_weak_count_lock_alt1(v27_.v28),
+    v25 = COERCE_AS(__typeof__(v25),
+                    PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v7 = v27_.v27;
+    result = v27_.v28;
+    if (v27_.v28 != 0) {
+      result = std___1___shared_weak_count___release_weak_alt1(v27_.v28),
+      v25 = COERCE_AS(__typeof__(v25),
+                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    }
+    if (v6 == 0 || v7 == nullptr) {
+      if (v6 == 0) {
+        return result;
+      }
+      goto LABEL_34;
+    }
+    v9 = LayoutAccessor_1563280_alt1(v7, (__int64)"Num", 0),
+    v25 = COERCE_AS(__typeof__(v25),
+                    PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    if ((v9 & 1) != 0) {
+      GameHr_1562680((__int64)v7, "Num", 0x1.0000000000000p+0f),
+          v25 = COERCE_AS(__typeof__(v25),
+                          PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    }
+    LayoutAccessor_15636c0_alt2((__int64)v7, 0, 0, (float)a2),
+        v25 = COERCE_AS(__typeof__(v25),
+                        PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v10 = game_util_Format("IconHPStock%02d", a2),
+    v25 = COERCE_AS(__typeof__(v25),
+                    PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v11 = 0;
+    if (v7[2] != 0 && v7[1] != 0) {
+      v12 = v10;
+      v13 = std___1___shared_weak_count_lock_alt1(v7[1]),
+      v25 = COERCE_AS(__typeof__(v25),
+                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+      if (v13 == 0) {
+        goto LABEL_24;
+      }
+      v14 = *v7;
+      if (*v7 != 0) {
+        v2 = *(unsigned __int8*)(v14 + 24);
+        v15 = v14 + 152;
+        if (v2 == 0) {
+          v15 = 0;
+        }
+        v16 = v15 != v7[2];
+      }
+      else {
+        v16 = true;
+      }
+      if (atomic_fetch_add((atomic_ullong* volatile)(v13 + 8),
+                           0xFFFFFFFFFFFFFFFFLL) == 0) {
+        v17 = v13;
+        (*(void (**)(__int64))(*(_QWORD*)v13 + 16LL))(v13),
+            v25 = COERCE_AS(__typeof__(v25),
+                            PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        std___1___shared_weak_count___release_weak_alt1(v17),
+            v25 = COERCE_AS(__typeof__(v25),
+                            PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+      }
+      if (!v16) {
+        v11 = 0;
+        if ((v2 & 1) == 0) {
+          goto LABEL_31;
+        }
+      }
+      else {
+      LABEL_24:
+        v18 = v7[1];
+        v11 = 0;
+        if (v18 == 0 || *(_QWORD*)(v18 + 8) == -1) {
+          goto LABEL_31;
+        }
+      }
+      v19 = v7[2];
+      if (v19 != 0) {
+        v20 = (int32x4_t*)GameRoutine_155f760((__int64)v7, v19, v12),
+        v25 = COERCE_AS(__typeof__(v25),
+                        PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+        v11 = 0;
+        if (v20 != nullptr) {
+          LODWORD(v21) = LANES128_OF(vdupq_laneq_s32(v20[7], 3)).n128_u32[0];
+          HIDWORD(v21) = HIDWORD(LANES128(v20[8]).n128_u64[1]);
+          v11 = v21;
+        }
+      }
+    }
+  LABEL_31:
+    v27_.v27 = nullptr;
+    v27_.v28 = 0;
+    v22 = (_QWORD*)*eft_g_effectSystem_ptr[0];
+    v27_.v30 = 9;
+    v27_.v31 = v11;
+    v27_.v32 = GameData_1a837f0;
+    v23 = *((_QWORD*)GameData_212c540 + 1);
+    v27_.v33 = *(_QWORD*)GameData_212c540;
+    v27_.v34 = v23;
+    v27_.v29 = "UI_Deco_HPStock_Erase";
+    v24 = Manager_bc6460(v22, (__int64)&v27_.v27, 1),
+    v25 = COERCE_AS(__typeof__(v25),
+                    PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    GameHr_14a10d0(&v27_.v27, (__int64)v24, v25, (__int64)&GameData_1a9f09e),
+        v25 = COERCE_AS(__typeof__(v25),
+                        PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    result = CmdBtlCombatWindow_17c3690(a1, a2),
+    v25 = COERCE_AS(__typeof__(v25),
+                    PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    v26 = v27_.v28;
+    if (v27_.v28 != 0 &&
+        atomic_fetch_add((atomic_ullong* volatile)(v27_.v28 + 8),
+                         0xFFFFFFFFFFFFFFFFLL) == 0) {
+      (*(void (**)(__int64))(*(_QWORD*)v26 + 16LL))(v26),
+          v25 = COERCE_AS(__typeof__(v25),
+                          PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+      result = std___1___shared_weak_count___release_weak_alt1(v26),
+      v25 = COERCE_AS(__typeof__(v25),
+                      PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+    }
+  LABEL_34:
+    if (atomic_fetch_add((atomic_ullong* volatile)(v6 + 8),
+                         0xFFFFFFFFFFFFFFFFLL) == 0) {
+      (*(void (**)(__int64))(*(_QWORD*)v6 + 16LL))(v6),
+          v25 = COERCE_AS(__typeof__(v25),
+                          PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
+      return std___1___shared_weak_count___release_weak_alt1(v6);
+    }
+  }
+  return result;
 }
 
 void CmdBtlCombatWindow_17c2ec0(__int64 a1, char a2)

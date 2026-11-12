@@ -22,6 +22,195 @@ __int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
 void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void OcclusionCulling_DeletingDestructor(__int64 a1);
+int8x16_t OcclusionCulling_Unknown2(__int64 a1, __int64 a2);
+
+int8x16_t OcclusionCulling_Unknown2(__int64 a1, __int64 a2)
+{
+  __int128 v4;
+  __int128 v5;
+  __int128 v6;
+  long double v7;
+  float32x4_t v8;
+  float32x4_t v9;
+  float32x4_t v10;
+  float32x4_t v11;
+  float32x4_t v12;
+  float32x4_t v13;
+  float32x4_t v14;
+  float v15;
+  int32x4_t v16;
+  int8x16_t v17;
+  int8x16_t v18;
+  float32x4_t v19;
+  float32x4_t v20;
+  float32x4_t v21;
+  float32x4_t v22;
+  int32x4_t v23;
+  float32x4_t v24;
+  int32x4_t v25;
+  int32x4_t v26;
+  float32x4_t v27;
+  int8x16_t v28;
+  int8x16_t v29;
+  float32x4_t v30;
+  float32x4_t v31;
+  unsigned __int64 v32;
+  float32x4_t v33;
+  float32x4_t v34;
+  int8x16_t v35;
+  float32x4_t v36;
+  float32x4_t v37;
+  float32x4_t v38;
+  int8x16_t result;
+
+  v12 = COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v13 = COERCE_AS(__typeof__(v13), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v14 = COERCE_AS(__typeof__(v14), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v4 = COERCE_AS(__typeof__(v4), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v5 = COERCE_AS(__typeof__(v5), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v6 = COERCE_AS(__typeof__(v6), PSEUDO_REGISTER(__n128, "v3", "=w"));
+  *(long double*)(a1 + 48) =
+      ((long double (*)(__int64)) * (_QWORD*)(*(_QWORD*)a2 + 16LL))(a2),
+                       v12 = COERCE_AS(__typeof__(v12),
+                                       PSEUDO_REGISTER(__n128, "v1", "=w")),
+                       v13 = COERCE_AS(__typeof__(v13),
+                                       PSEUDO_REGISTER(__n128, "v2", "=w")),
+                       v14 = COERCE_AS(__typeof__(v14),
+                                       PSEUDO_REGISTER(__n128, "v3", "=w")),
+                       v4 = COERCE_AS(__typeof__(v4),
+                                      PSEUDO_REGISTER(__n128, "v1", "=w")),
+                       v5 = COERCE_AS(__typeof__(v5),
+                                      PSEUDO_REGISTER(__n128, "v2", "=w")),
+                       v6 = COERCE_AS(__typeof__(v6),
+                                      PSEUDO_REGISTER(__n128, "v3", "=w"));
+  *(_OWORD*)(a1 + 64) = v4;
+  *(_OWORD*)(a1 + 80) = v5;
+  *(_OWORD*)(a1 + 96) = v6;
+  v7 = ((long double (*)(__int64)) * (_QWORD*)(*(_QWORD*)a2 + 24LL))(a2),
+  v12 = COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v13 = COERCE_AS(__typeof__(v13), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v14 = COERCE_AS(__typeof__(v14), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v4 = COERCE_AS(__typeof__(v4), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v5 = COERCE_AS(__typeof__(v5), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v6 = COERCE_AS(__typeof__(v6), PSEUDO_REGISTER(__n128, "v3", "=w"));
+  v8 = *(float32x4_t*)(a1 + 48);
+  v9 = *(float32x4_t*)(a1 + 64);
+  v10 = *(float32x4_t*)(a1 + 80);
+  v11 = *(float32x4_t*)(a1 + 96);
+  *(long double*)(a1 + 112) = v7;
+  *(float32x4_t*)(a1 + 128) = v12;
+  *(float32x4_t*)(a1 + 144) = v13;
+  *(float32x4_t*)(a1 + 160) = v14;
+  *(float32x4_t*)(a1 + 176) = vmlaq_laneq_f32(
+      vmlaq_lane_f32(vmulq_n_f32(*(float32x4_t*)&v7, LANES128(v8).n128_f32[0]),
+                     v12, COERCE_AS(float32x2_t, LANES128(v8).n128_u64[0]), 1),
+      v13, v8, 2);
+  *(float32x4_t*)(a1 + 192) = vmlaq_laneq_f32(
+      vmlaq_lane_f32(vmulq_n_f32(*(float32x4_t*)&v7, LANES128(v9).n128_f32[0]),
+                     v12, COERCE_AS(float32x2_t, LANES128(v9).n128_u64[0]), 1),
+      v13, v9, 2);
+  *(float32x4_t*)(a1 + 208) = vmlaq_laneq_f32(
+      vmlaq_lane_f32(vmulq_n_f32(*(float32x4_t*)&v7, LANES128(v10).n128_f32[0]),
+                     v12, COERCE_AS(float32x2_t, LANES128(v10).n128_u64[0]), 1),
+      v13, v10, 2);
+  *(float32x4_t*)(a1 + 224) = vaddq_f32(
+      v14, vmlaq_laneq_f32(
+               vmlaq_lane_f32(
+                   vmulq_n_f32(*(float32x4_t*)&v7, LANES128(v11).n128_f32[0]),
+                   v12, COERCE_AS(float32x2_t, LANES128(v11).n128_u64[0]), 1),
+               v13, v11, 2));
+  v15 = (*(float (**)(__int64))(*(_QWORD*)a2 + 56LL))(a2),
+  v12 = COERCE_AS(__typeof__(v12), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v13 = COERCE_AS(__typeof__(v13), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v14 = COERCE_AS(__typeof__(v14), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v4 = COERCE_AS(__typeof__(v4), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v5 = COERCE_AS(__typeof__(v5), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v6 = COERCE_AS(__typeof__(v6), PSEUDO_REGISTER(__n128, "v3", "=w"));
+  v16 = *(int32x4_t*)(a1 + 48);
+  v17 = *(int8x16_t*)(a1 + 64);
+  *(float*)(a1 + 240) = v15;
+  v18 = *(int8x16_t*)(a1 + 80);
+  LANES128(v19).n128_u64[0] =
+      LANES64_OF(vqtbl1_s8(v17, COERCE_AS(int8x8_t, 0xB0A090807060504LL)))
+          .n64_u64[0];
+  *(int8x8_t*)&LANES128(v19).n128_i8[8] =
+      vqtbl1_s8(v17, COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL));
+  LANES128(v20).n128_u64[0] =
+      LANES64_OF(vqtbl1_s8(v18, COERCE_AS(int8x8_t, 0x30201000B0A0908LL)))
+          .n64_u64[0];
+  *(int8x8_t*)&LANES128(v20).n128_i8[8] =
+      vqtbl1_s8(v18, COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL));
+  v21 = vmulq_f32(vmulq_f32(v16, v19), v20);
+  LANES128(v20).n128_u64[0] =
+      LANES64_OF(vqtbl1_s8(v17, COERCE_AS(int8x8_t, 0x30201000B0A0908LL)))
+          .n64_u64[0];
+  *(int8x8_t*)&LANES128(v20).n128_i8[8] =
+      vqtbl1_s8(v17, COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL));
+  LANES128(v22).n128_u64[0] =
+      LANES64_OF(vqtbl1_s8(v18, COERCE_AS(int8x8_t, 0xB0A090807060504LL)))
+          .n64_u64[0];
+  *(int8x8_t*)&LANES128(v22).n128_i8[8] =
+      vqtbl1_s8(v18, COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL));
+  v23 = vzip1q_s32(v16, v18);
+  v24 = vmulq_f32(v16, v20);
+  v25 = vzip2q_s32(v16, v18);
+  v26 = vzip1q_s32(v17, COERCE_AS(int32x4_t, 0));
+  v27 = vsubq_f32(v21, vmulq_f32(v24, v22));
+  v28 = vzip2q_s32(v23, v26);
+  v29 = vzip1q_s32(v25, vzip2q_s32(v17, COERCE_AS(int32x4_t, 0)));
+  LANES128(v27).n128_u64[0] = LANES128_OF(vpaddq_f32(v27, v27)).n128_u64[0];
+  LANES128(v30).n128_u64[0] =
+      LANES64_OF(vqtbl1_s8(v28, COERCE_AS(int8x8_t, 0xB0A090807060504LL)))
+          .n64_u64[0];
+  LANES128(v17).n128_u64[0] =
+      LANES64_OF(vqtbl1_s8(v29, COERCE_AS(int8x8_t, 0x30201000B0A0908LL)))
+          .n64_u64[0];
+  LANES128(v31).n128_u64[0] =
+      LANES64_OF(vqtbl1_s8(v29, COERCE_AS(int8x8_t, 0xB0A090807060504LL)))
+          .n64_u64[0];
+  *(int8x8_t*)&LANES128(v30).n128_i8[8] =
+      vqtbl1_s8(v28, COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL));
+  v32 = LANES64_OF(vqtbl1_s8(v29, COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL)))
+            .n64_u64[0];
+  v33 = vaddq_f32(
+      vdupq_lane_s32(COERCE_AS(int32x2_t, LANES128(v27).n128_u64[0]), 0),
+      vdupq_lane_s32(COERCE_AS(int32x2_t, LANES128(v27).n128_u64[0]), 1));
+  *(int8x8_t*)&LANES128(v31).n128_i8[8] =
+      vqtbl1_s8(v29, COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL));
+  LANES128(v29).n128_u64[0] =
+      LANES64_OF(vqtbl1_s8(v28, COERCE_AS(int8x8_t, 0x30201000B0A0908LL)))
+          .n64_u64[0];
+  LANES128(v17).n128_u64[1] = v32;
+  v34 = vrecpeq_f32(v33);
+  *(int8x8_t*)&LANES128(v29).n128_i8[8] =
+      vqtbl1_s8(v28, COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL));
+  v35 = vzip1q_s32(v23, v26);
+  LANES128(v19).n128_u64[0] =
+      LANES64_OF(vqtbl1_s8(v35, COERCE_AS(int8x8_t, 0x30201000B0A0908LL)))
+          .n64_u64[0];
+  LANES128(v36).n128_u64[0] =
+      LANES64_OF(vqtbl1_s8(v35, COERCE_AS(int8x8_t, 0xB0A090807060504LL)))
+          .n64_u64[0];
+  v37 = vmulq_f32(v34, vrecpsq_f32(v34, v33));
+  *(int8x8_t*)&LANES128(v19).n128_i8[8] =
+      vqtbl1_s8(v35, COERCE_AS(int8x8_t, 0xF0E0D0C07060504LL));
+  *(int8x8_t*)&LANES128(v36).n128_i8[8] =
+      vqtbl1_s8(v35, COERCE_AS(int8x8_t, 0xF0E0D0C03020100LL));
+  v38 = vmulq_f32(v37, vnegq_f32(vrecpsq_f32(v37, v33)));
+  result =
+      vbicq_s8(vmlaq_laneq_f32(
+                   vmlaq_lane_f32(
+                       vmulq_n_f32(vmulq_f32(v38, vmlsq_f32(vmulq_f32(v30, v17),
+                                                            v29, v31)),
+                                   COERCE_FLOAT(*(_OWORD*)(a1 + 96))),
+                       vmulq_f32(v38, vmlsq_f32(vmulq_f32(v31, v19), v17, v36)),
+                       *(float32x2_t*)(a1 + 96), 1),
+                   vmulq_f32(v38, vmlsq_f32(vmulq_f32(v29, v36), v19, v30)),
+                   *(float32x4_t*)(a1 + 96), 2),
+               vceqzq_f32(v33));
+  *(int8x16_t*)(a1 + 32) = result;
+  return result;
+}
 
 bool OcclusionCulling_Unknown3(float32x4_t* a1, float32x4_t* a2)
 {

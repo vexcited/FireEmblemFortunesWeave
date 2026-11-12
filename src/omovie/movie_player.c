@@ -70,6 +70,51 @@ void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 __int64 omovie_MoviePlayer_PrepareMovie(__int64 a1, const char* a2);
 void omovie_MoviePlayer_PrepareMovie_lambda0_Unknown1(__int64 a1);
+__int64* MovieVideoRenderer_18cf080(__int64, int, int, int);
+__int64 GameHr_18cd1a0(__int64);
+__int64 GameHr_18cddf0(__int64, _QWORD*, __int64*, __int64);
+__int64 GameRoutine_18cc7c0(__int64, __int64, __int64, int, int, __int64,
+                            __int64, __int64, int, int, int);
+__int64 MovieEventHandler_18cb930(_QWORD*, __int64, __int64);
+__int64 MovieEventHandler_18cbd60(_QWORD*, __int64, __int64);
+__int64 MovieEventHandler_18cc080(__int64);
+__int64 MovieVideoRenderer_18cf220(__int64, unsigned __int64, unsigned __int64);
+__int64 movie_VideoDecoder_Configure(__int64, __int64, __int64,
+                                     unsigned __int64);
+__int64 movie_VideoDecoder_GetInputReadyEvent(__int64, __int64);
+__int64 movie_VideoDecoder_GetOutputReadyEvent(__int64, __int64);
+__int64 movie_VideoDecoder_GetVideoFrameRequirements(__int64, __int64);
+__int64 movie_VideoDecoder_Initialize(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD,
+                                      _QWORD);
+__int64 movie_VideoDecoder_RegisterVideoFrame(__int64, __int64, int);
+__int64 movie_VideoFrame_Clear(__int64);
+__int64 movie_VideoFrame_SetBuffer(__int64, __int64, unsigned __int64);
+__int64 movie_VideoFrame_SetPixelStorageType(_QWORD, _QWORD);
+__int64 nn_movie_MediaExtractor_GetSampleAvailableEvent(__int64, __int64, int);
+__int64 nn_movie_MediaExtractor_GetTrackConfiguration(__int64, __int64,
+                                                      unsigned __int64, int);
+__int64 nn_movie_MediaExtractor_GetTrackConfigurationSize(__int64, __int64,
+                                                          int);
+__int64 nn_movie_MediaExtractor_SelectTrack(_QWORD);
+__int64 nn_movie_MediaExtractor_Start(__int64);
+__int64 nn_movie_MediaProperty_GetInt32(__int64, __int64, const char*);
+__int64 nn_movie_MediaProperty_GetSize(__int64, __int64, const char*);
+__int64 nn_movie_MediaProperty_MediaProperty(__int64);
+__int64 nn_movie_MediaProperty_SetInt32(__int64, const char*, int);
+__int64 nn_os_ClearLightEvent(__int64);
+__int64 nn_os_InitializeEvent(_QWORD, _QWORD, _QWORD);
+__int64 nn_os_LockMutex(__int64);
+__int64
+nn_os_SendMessageQueue_alt1(__int64,
+                            unsigned __int64) __asm__("nn_os_SendMessageQueue");
+__int64 nn_os_UnlockMutex(__int64);
+__int64 omovie_MovieVideoRenderer_Initialize(__int64, __int64, unsigned int);
+extern __int64 (*GameData_21090e8[])();
+extern __int64 (*GameData_2109168[])();
+extern __int64 (*GameData_21091e8[])();
+extern __int64 (*GameData_2109268[])();
+void nn_diag_detail_AbortImpl_1a0a590();
+__int64 MoviePlayer_18d1c50(__int64 a1);
 
 __int64 omovie_MoviePlayer_PrepareMovie(__int64 a1, const char* a2)
 {
@@ -270,6 +315,381 @@ bool MoviePlayer_18d1b90(__int64 a1)
   }
   return (nn_os_TryWaitLightEvent(a1 + 684) & 1) != 0 ||
          *(_DWORD*)(a1 + 4892) > 0;
+}
+
+__int64 MoviePlayer_18d1c50(__int64 a1)
+{
+  char v2;
+  __int64* v3;
+  __int64 v4;
+  int v5;
+  int v6;
+  int v7;
+  int v8;
+  __int64 result;
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  unsigned int v13;
+  int v14;
+  int v15;
+  int v16;
+  int v17;
+  __int64 v18;
+  unsigned int v19;
+  __int64 v20;
+  __int64 v21;
+  int v22;
+  __int64 v23;
+  unsigned int v24;
+  __int64 v25;
+  __int64 v26;
+  unsigned int v27;
+  struct {
+    _QWORD v28[4];
+    _QWORD* v29;
+  } v28_;
+  struct {
+    _QWORD v30[4];
+    _QWORD* v31;
+  } v30_;
+  struct {
+    _QWORD v32[4];
+    _QWORD* v33;
+  } v32_;
+  struct {
+    _QWORD v34[4];
+    _QWORD* v35;
+  } v34_;
+  __int64 v36;
+  unsigned __int64 v37;
+  __int64 v38;
+  __int64 v39[193];
+
+  if (*(_DWORD*)(a1 + 4892) != 1) {
+    return 0;
+  }
+  if ((*(_DWORD*)(a1 + 3928) & 0x80000000) != 0) {
+    goto LABEL_55;
+  }
+  v2 = *(_BYTE*)(a1 + 4888);
+  if ((unsigned int)nn_movie_MediaExtractor_SelectTrack(a1 + 3968) != 0 ||
+      (unsigned int)nn_movie_MediaExtractor_GetTrackConfigurationSize(
+          a1 + 3968, a1 + 3912, *(_DWORD*)(a1 + 3928)) != 0) {
+    return 15;
+  }
+  v3 = (__int64*)fw_memory_g_heap_manager_ptr;
+  v4 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
+                                      *(_QWORD*)(a1 + 3912), 4096, 0);
+  *(_QWORD*)(a1 + 808) = v4;
+  if (v4 != 0) {
+    if ((unsigned int)nn_movie_MediaExtractor_GetTrackConfiguration(
+            a1 + 3968, v4, *(_QWORD*)(a1 + 3912), *(_DWORD*)(a1 + 3928)) != 0) {
+      return 15;
+    }
+    if ((v2 & 1) != 0) {
+      v5 = 0;
+      v6 = 3;
+      v7 = 1;
+      v8 = 1;
+    }
+    else {
+      v5 = 1;
+      v8 = 2;
+      v7 = 3;
+      v6 = 2;
+    }
+    v10 = *v3;
+    *(_DWORD*)(a1 + 3088) = v7;
+    *(_DWORD*)(a1 + 2388) = v8;
+    *(_DWORD*)(a1 + 2392) = v6;
+    *(_DWORD*)(a1 + 4728) = v5;
+    v11 = fw_memory_HeapManager_Allocate(v10, 209715200, 4096, 0);
+    *(_QWORD*)(a1 + 816) = v11;
+    if (v11 != 0) {
+      result = movie_VideoDecoder_Initialize(
+          a1 + 2400, v11, 209715200, *(unsigned int*)(a1 + 824),
+          *(unsigned int*)(a1 + 2392), *(unsigned int*)(a1 + 2388));
+      if ((_DWORD)result != 0) {
+        return result;
+      }
+      omovie_MovieVideoRenderer_Initialize(a1 + 4048, 0, *(_DWORD*)(a1 + 4728));
+      MovieVideoRenderer_18cf220(a1 + 4048, *(int*)(a1 + 3920),
+                                 *(int*)(a1 + 3924));
+      v12 = *(int*)(a1 + 3932);
+      v13 = atomic_load((unsigned int*)(a1 + 4060));
+      if (v13 != 1) {
+        nn_diag_detail_AbortImpl_1a0a590();
+      }
+      v14 = *(_DWORD*)(a1 + 2376);
+      v15 = *(_DWORD*)(a1 + 2380);
+      v16 = *(_DWORD*)(a1 + 2384);
+      *(_QWORD*)(a1 + 4080) = v12;
+      MovieVideoRenderer_18cf080(a1 + 4048, v14, v15, v16);
+      v17 = *(_DWORD*)(a1 + 3088);
+      if (v17 == 1) {
+        v18 = 4088;
+      }
+      else {
+        if (v17 != 3) {
+          goto LABEL_20;
+        }
+        v18 = 4096;
+      }
+      *(_QWORD*)(a1 + v18) = 4;
+    LABEL_20:
+      nn_movie_MediaProperty_SetInt32(a1 + 832, "video-frame-count", 4);
+      result = movie_VideoDecoder_Configure(
+          a1 + 2400, a1 + 832, *(_QWORD*)(a1 + 808), *(_QWORD*)(a1 + 3912));
+      if ((_DWORD)result != 0) {
+        return result;
+      }
+      nn_movie_MediaProperty_MediaProperty((__int64)v39);
+      result =
+          movie_VideoDecoder_GetVideoFrameRequirements(a1 + 2400, (__int64)v39);
+      if ((_DWORD)result != 0) {
+        return result;
+      }
+      if ((nn_movie_MediaProperty_GetSize((__int64)v39, a1 + 3936,
+                                          "output-buf-size") &
+           1) == 0) {
+        nn_diag_detail_AbortImpl_1a0a590();
+      }
+      *(_QWORD*)(a1 + 3056) = a1 + 2480;
+      *(_QWORD*)(a1 + 3064) = a1 + 2624;
+      *(_QWORD*)(a1 + 3072) = a1 + 2768;
+      *(_QWORD*)(a1 + 3080) = a1 + 2912;
+      movie_VideoFrame_Clear(a1 + 2480);
+      result = movie_VideoFrame_SetPixelStorageType(
+          a1 + 2480, *(unsigned int*)(a1 + 3088));
+      if ((_DWORD)result != 0) {
+        return result;
+      }
+      if (*(_DWORD*)(a1 + 3088) == 1) {
+        v37 = 0;
+        v38 = 0;
+        GameHr_18cddf0(a1 + 4048, &v38, (__int64*)&v37, 0);
+        result = movie_VideoFrame_SetBuffer(a1 + 2480, v38, v37);
+        if ((_DWORD)result != 0) {
+          return result;
+        }
+      }
+      movie_VideoFrame_Clear(a1 + 2624);
+      result = movie_VideoFrame_SetPixelStorageType(
+          a1 + 2624, *(unsigned int*)(a1 + 3088));
+      if ((_DWORD)result != 0) {
+        return result;
+      }
+      if (*(_DWORD*)(a1 + 3088) == 1) {
+        v37 = 0;
+        v38 = 0;
+        GameHr_18cddf0(a1 + 4048, &v38, (__int64*)&v37, 1);
+        result = movie_VideoFrame_SetBuffer(a1 + 2624, v38, v37);
+        if ((_DWORD)result != 0) {
+          return result;
+        }
+      }
+      movie_VideoFrame_Clear(a1 + 2768);
+      result = movie_VideoFrame_SetPixelStorageType(
+          a1 + 2768, *(unsigned int*)(a1 + 3088));
+      if ((_DWORD)result != 0) {
+        return result;
+      }
+      if (*(_DWORD*)(a1 + 3088) == 1) {
+        v37 = 0;
+        v38 = 0;
+        GameHr_18cddf0(a1 + 4048, &v38, (__int64*)&v37, 2);
+        result = movie_VideoFrame_SetBuffer(a1 + 2768, v38, v37);
+        if ((_DWORD)result != 0) {
+          return result;
+        }
+      }
+      movie_VideoFrame_Clear(a1 + 2912);
+      result = movie_VideoFrame_SetPixelStorageType(
+          a1 + 2912, *(unsigned int*)(a1 + 3088));
+      if ((_DWORD)result != 0) {
+        return result;
+      }
+      if (*(_DWORD*)(a1 + 3088) == 1) {
+        v37 = 0;
+        v38 = 0;
+        GameHr_18cddf0(a1 + 4048, &v38, (__int64*)&v37, 3);
+        result = movie_VideoFrame_SetBuffer(a1 + 2912, v38, v37);
+        if ((_DWORD)result != 0) {
+          return result;
+        }
+      }
+      result = movie_VideoDecoder_RegisterVideoFrame(a1 + 2400, a1 + 3056, 4);
+      if ((_DWORD)result != 0) {
+        return result;
+      }
+      v36 = 0;
+      if ((nn_movie_MediaProperty_GetInt32(a1 + 832, (__int64)&v36 + 4,
+                                           "width") &
+           1) == 0) {
+        nn_diag_detail_AbortImpl_1a0a590();
+      }
+      if ((nn_movie_MediaProperty_GetInt32(a1 + 832, (__int64)&v36, "height") &
+           1) == 0) {
+        nn_diag_detail_AbortImpl_1a0a590();
+      }
+      result =
+          GameRoutine_18cc7c0(a1 + 3096, a1 + 3968, a1 + 2400,
+                              *(_DWORD*)(a1 + 3928), *(_DWORD*)(a1 + 2388),
+                              a1 + 4048, a1 + 4736, a1, SHIDWORD(v36), v36, 4);
+      if ((_DWORD)result != 0) {
+        return result;
+      }
+      v38 = 0;
+      v19 = movie_VideoDecoder_GetInputReadyEvent(a1 + 2400, (__int64)&v38);
+      if (v19 != 0) {
+        return v19;
+      }
+      v34_.v34[0] = GameData_21091e8;
+      v34_.v34[1] = a1;
+      v34_.v35 = v34_.v34;
+      v19 = MovieEventHandler_18cbd60((_QWORD*)a1, v38, (__int64)v34_.v34);
+      if (v34_.v35 == v34_.v34) {
+        v20 = 32;
+        goto LABEL_44;
+      }
+      if (v34_.v35 != nullptr) {
+        v20 = 40;
+      LABEL_44:
+        (*(void (**)(__int64))(*v34_.v35 + v20))((__int64)v34_.v35);
+      }
+      if (v19 != 0) {
+        return v19;
+      }
+      v37 = 0;
+      v19 = movie_VideoDecoder_GetOutputReadyEvent(a1 + 2400, (__int64)&v37);
+      if (v19 != 0) {
+        return v19;
+      }
+      v32_.v32[0] = GameData_2109268;
+      v32_.v32[1] = a1;
+      v32_.v33 = v32_.v32;
+      v19 = MovieEventHandler_18cbd60((_QWORD*)a1, v37, (__int64)v32_.v32);
+      if (v32_.v33 == v32_.v32) {
+        v21 = 32;
+        goto LABEL_51;
+      }
+      if (v32_.v33 != nullptr) {
+        v21 = 40;
+      LABEL_51:
+        (*(void (**)(__int64))(*v32_.v33 + v21))((__int64)v32_.v33);
+      }
+      if (v19 != 0) {
+        return v19;
+      }
+      *(_BYTE*)(a1 + 680) = 1;
+    LABEL_55:
+      nn_os_ClearLightEvent(a1 + 684);
+      if (*(_BYTE*)(a1 + 680) == 1) {
+        v22 = *(_DWORD*)(a1 + 3928);
+        v39[0] = 0;
+        if ((unsigned int)nn_movie_MediaExtractor_GetSampleAvailableEvent(
+                a1 + 3968, (__int64)v39, v22) == 0) {
+          v30_.v30[0] = GameData_21090e8;
+          v30_.v30[1] = a1;
+          v30_.v31 = v30_.v30;
+          result =
+              MovieEventHandler_18cbd60((_QWORD*)a1, v39[0], (__int64)v30_.v30);
+          if (v30_.v31 == v30_.v30) {
+            v24 = result;
+            v23 = 32;
+          }
+          else {
+            if (v30_.v31 == nullptr) {
+              goto LABEL_62;
+            }
+            v23 = 40;
+            v24 = result;
+          }
+          (*(void (**)(_QWORD*))(*v30_.v31 + v23))(v30_.v31);
+          result = v24;
+        LABEL_62:
+          if ((_DWORD)result != 0) {
+            return result;
+          }
+          nn_os_LockMutex(a1 + 736);
+          if (*(_DWORD*)(a1 + 800) == 4) {
+            nn_os_UnlockMutex(a1 + 736);
+            return 22;
+          }
+          nn_os_InitializeEvent(a1 + 696, 0, 1);
+          v25 = *(_QWORD*)(a1 + 768);
+          if (v25 != 0) {
+            if (*(_QWORD*)(a1 + 776) != 0) {
+              if (*(_QWORD*)(a1 + 784) != 0) {
+                if (*(_QWORD*)(a1 + 792) != 0) {
+                  goto LABEL_73;
+                }
+                v25 = 3;
+              }
+              else {
+                v25 = 2;
+              }
+            }
+            else {
+              v25 = 1;
+            }
+          }
+          *(_QWORD*)(a1 + 768 + 8 * v25) = a1 + 696;
+          ++*(_DWORD*)(a1 + 800);
+        LABEL_73:
+          nn_os_UnlockMutex(a1 + 736);
+          v28_.v28[0] = GameData_2109168;
+          v28_.v28[1] = a1;
+          v28_.v29 = v28_.v28;
+          result = MovieEventHandler_18cb930((_QWORD*)a1, a1 + 696,
+                                             (__int64)v28_.v28);
+          if (v28_.v29 == v28_.v28) {
+            v27 = result;
+            v26 = 32;
+          }
+          else {
+            if (v28_.v29 == nullptr) {
+              goto LABEL_78;
+            }
+            v26 = 40;
+            v27 = result;
+          }
+          (*(void (**)(_QWORD*))(*v28_.v29 + v26))(v28_.v29);
+          result = v27;
+        LABEL_78:
+          if ((_DWORD)result != 0) {
+            return result;
+          }
+          goto LABEL_79;
+        }
+        return 15;
+      }
+    LABEL_79:
+      result = MovieEventHandler_18cc080(a1);
+      if ((_DWORD)result != 0) {
+        return result;
+      }
+      if (*(_BYTE*)(a1 + 680) == 1) {
+        *(_BYTE*)(a1 + 681) = 0;
+        *(_QWORD*)(a1 + 3728) = a1 + 696;
+        result = GameHr_18cd1a0(a1 + 3096);
+        if ((_DWORD)result != 0) {
+          return result;
+        }
+        nn_os_SendMessageQueue_alt1(a1 + 3584, 3u);
+      }
+      if ((unsigned int)nn_movie_MediaExtractor_Start(a1 + 3968) != 0) {
+        return 15;
+      }
+      if (*(_BYTE*)(a1 + 680) == 1) {
+        nn_os_SendMessageQueue_alt1(a1 + 3584, 8u);
+      }
+      *(_DWORD*)(a1 + 4892) = 2;
+      return 0;
+    }
+  }
+  return 17;
 }
 
 __int64 MoviePlayer_18d2310(__int64 a1)

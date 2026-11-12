@@ -31,8 +31,10 @@ bool game_hub_Character_BuildSubquestCommand_lambda1_Invoke(__int64 a1);
 __int64 nn_mem_StandardAllocator_Free_alt1(_QWORD, long double) __asm__(
     "nn_mem_StandardAllocator_Free");
 struct PseudoSret GameRoutine_e99570(_QWORD);
-bool game_hub_Character_BuildSideStoryCommand_lambda1_Invoke(__int64 a1,
-                                                             long double a2);
+bool game_hub_Character_BuildSideStoryCommand_lambda1_Invoke_alt1(
+    __int64 a1,
+    long double
+        a2) __asm__("game_hub_Character_BuildSideStoryCommand_lambda1_Invoke");
 _QWORD* GameRoutine_cf1840(_QWORD* result, _QWORD*);
 _QWORD* HubCharacterNatives_ca8f80(_QWORD*);
 _QWORD* HubCharacterNatives_ceca80(_QWORD* result, __int64, char);
@@ -302,6 +304,7 @@ extern __int64 GameData_21f3cb8;
 extern __int64 game_ProcGameSkipView_instance_;
 extern __int64 game_hub_ProcHubSeqView_instance_;
 __int64 Character_caf760(__int64 a1);
+bool game_hub_Character_BuildSideStoryCommand_lambda1_Invoke(__int64 a1);
 
 void Character_Destructor_ca8b40(__int64 a1)
 {
@@ -4787,68 +4790,71 @@ LABEL_52:
   }
 }
 
-bool game_hub_Character_BuildSideStoryCommand_lambda1_Invoke(__int64 a1,
-                                                             long double a2)
+bool game_hub_Character_BuildSideStoryCommand_lambda1_Invoke(__int64 a1)
 {
+  __int64 v1;
   __int64 v2;
   __int64 v3;
-  __int64 v4;
-  char v5;
-  unsigned __int64 v6;
-  __int64 v7;
-  _QWORD v9[3];
+  char v4;
+  unsigned __int64 v5;
+  __int64 v6;
+  struct {
+    _BYTE v8[8];
+    unsigned __int64 v9;
+    __int64 v10;
+  } v8_;
 
-  v2 = *(_QWORD*)(a1 + 8);
-  v3 = *(_QWORD*)(v2 + 760);
-  v4 = *(_QWORD*)(v2 + 768);
-  if (v4 != 0) {
-    atomic_fetch_add_explicit((atomic_ullong* volatile)(v4 + 8), 1u,
+  v1 = *(_QWORD*)(a1 + 8);
+  v2 = *(_QWORD*)(v1 + 760);
+  v3 = *(_QWORD*)(v1 + 768);
+  if (v3 != 0) {
+    atomic_fetch_add_explicit((atomic_ullong* volatile)(v3 + 8), 1u,
                               memory_order_relaxed);
   }
-  if (v3 != 0 && *(_BYTE*)(v3 + 288) == 1) {
-    *(struct PseudoSret*)(v9) = GameRoutine_e99570(v3 + 280);
-    v5 = 0;
-    if (v4 == 0) {
+  if (v2 != 0 && *(_BYTE*)(v2 + 288) == 1) {
+    game_e99570_alt1((void*)((__int64)v8_.v8), (__int64***)(v2 + 280));
+    v4 = 0;
+    if (v3 == 0) {
       goto LABEL_9;
     }
   }
   else {
-    v5 = 1;
-    if (v4 == 0) {
+    v4 = 1;
+    if (v3 == 0) {
       goto LABEL_9;
     }
   }
-  if (atomic_fetch_add((atomic_ullong* volatile)(v4 + 8),
+  if (atomic_fetch_add((atomic_ullong* volatile)(v3 + 8),
                        0xFFFFFFFFFFFFFFFFLL) == 0) {
-    (*(void (**)(__int64))(*(_QWORD*)v4 + 16LL))(v4);
-    std___1___shared_weak_count___release_weak(v4);
-    if ((v5 & 1) != 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v3 + 16LL))(v3);
+    std___1___shared_weak_count___release_weak_alt1(v3);
+    if ((v4 & 1) != 0) {
       goto LABEL_10;
     }
     goto LABEL_12;
   }
 LABEL_9:
-  if ((v5 & 1) != 0) {
+  if ((v4 & 1) != 0) {
   LABEL_10:
-    v6 = 0;
-    return v6 != 0;
+    v5 = 0;
+    return v5 != 0;
   }
 LABEL_12:
-  if ((v9[0] & 1) != 0) {
-    v6 = v9[1];
-    if (v9[2] != 0) {
-      v7 = 128;
+  if ((v8_.v8[0] & 1) != 0) {
+    v5 = v8_.v9;
+    if (v8_.v10 != 0) {
+      v6 = 128;
       if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
-        v7 = 56;
+        v6 = 56;
       }
-      nn_mem_StandardAllocator_Free_alt1(
-          *(_QWORD*)fw_memory_g_heap_manager_ptr + v7, a2);
+      nn_mem_StandardAllocator_Free_alt2(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v6, v8_.v10);
     }
   }
   else {
-    v6 = (unsigned __int64)LOBYTE(v9[0]) >> 1;
+    v5 = (unsigned __int64)v8_.v8[0] >> 1;
   }
-  return v6 != 0;
+  return v5 != 0;
 }
 
 void game_hub_Character_BuildSubquestCommand_lambda0_Invoke(__int64 a1,

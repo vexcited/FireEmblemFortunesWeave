@@ -52,6 +52,19 @@ __int64 ui_control_1888c80(__int64, __int64, __int64);
 unsigned __int64 strlen_alt1(const char*) __asm__("strlen");
 void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
+__int64 LayoutAccessor_155e830_alt1(__int64 result,
+                                    char) __asm__("LayoutAccessor_155e830");
+__int64
+LayoutAccessor_1562cf0_alt1(__int64 result,
+                            const char*) __asm__("LayoutAccessor_1562cf0");
+__int64 Manager_136a920(__int64, __int64, int, unsigned int, _BYTE*);
+extern _UNKNOWN* GameData_211fd00;
+extern __int64* GameData_212c8a0;
+extern __int64* GameData_212c8b0[11];
+extern __int64 GameData_21f4018[];
+extern __int64 ui_Manager_instance_;
+extern char GameData_1a9f09e;
+bool IconLegion_19abf80(__int64 a1, __int64 a2);
 
 __attribute__((swiftcall)) void IconLegion_19abb70(PSEUDO_X8 x8_, __int64 a1,
                                                    __int64 a2, __int64 a3)
@@ -191,6 +204,112 @@ LABEL_4:
                  64LL),
       0);
   return v2 == 1;
+}
+
+bool IconLegion_19abf80(__int64 a1, __int64 a2)
+{
+  int v2;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  unsigned int v8;
+  __int64* v10;
+  __int64 v11;
+  __int64* v12;
+  int v13;
+  __int64 v14;
+  int v15;
+  const char* v17;
+  __int64 v18;
+  char* v19;
+  __int64 v20;
+  unsigned int v21;
+  __int64 v22;
+  __int64 v23;
+
+  v2 = *(unsigned __int8*)(*(_QWORD*)(a2 + 400) + 96LL);
+  if (v2 != 2) {
+    return v2 == 2;
+  }
+  v5 = ui_LayoutAccessor_FindPane_alt1((__int64*)(a1 + 88), (__int64)"Img");
+  if (v5 != 0) {
+    v6 = __dynamic_cast(v5, GameData_212d670[0], GameData_212d678[0], 0);
+  }
+  else {
+    v6 = 0;
+  }
+  LayoutAccessor_155e830_alt1(a1 + 88, 1);
+  LayoutAccessor_1562cf0_alt1(a1 + 88, "BgAnimal");
+  v7 = *(_QWORD*)(a2 + 400);
+  v8 = *(unsigned __int8*)(a2 + 1880);
+  if (*(_BYTE*)(v7 + 96) != 2 || v8 != 0) {
+    v10 = (__int64*)(a2 + 1880);
+    if (*(_BYTE*)(a2 + 1880) != 0) {
+      goto LABEL_10;
+    }
+  LABEL_27:
+    LayoutAccessor_1562cf0_alt1(a1 + 88, "Enable");
+    if (v6 == 0) {
+      return v2 == 2;
+    }
+  LABEL_28:
+    v19 = "IconEmpty";
+    v21 = 7;
+    v22 = v6;
+    v23 = ui_Manager_instance_ + 1264;
+  LABEL_31:
+    Manager_136a920(v23, v22, 0, v21, v19);
+    return v2 == 2;
+  }
+  v20 = *(_QWORD*)(v7 + 112);
+  if (v20 != 0) {
+    v10 =
+        &GameData_21f4018[8 * (unsigned __int64)*(unsigned __int8*)(v20 + 32)];
+  }
+  else {
+    v10 = GameData_212c8b0[0];
+  }
+  v8 = *(unsigned __int8*)v10;
+  if (*(_BYTE*)v10 == 0) {
+    goto LABEL_27;
+  }
+LABEL_10:
+  v11 = *(_QWORD*)(a2 + 408);
+  v12 = GameData_212c8a0;
+  v13 = *(_DWORD*)(a2 + 416);
+  v14 = *(_QWORD*)(*(_QWORD*)(*GameData_212c8a0 + 64) + 8LL * v8);
+  v15 = *(unsigned __int8*)(v14 + 109);
+  *(_QWORD*)(a1 + 1096) = v14;
+  if (v15 != 0 && v11 == 0) {
+    v17 = "Enable";
+  }
+  else {
+    v17 = "Disable";
+  }
+  LayoutAccessor_1562cf0_alt1(a1 + 88, v17);
+  if ((v13 & 0x40000) != 0) {
+    if (v6 == 0) {
+      return v2 == 2;
+    }
+    goto LABEL_28;
+  }
+  if (v6 != 0) {
+    v18 = *(_QWORD*)(*(_QWORD*)(*v12 + 64) + 8LL * *(unsigned __int8*)v10);
+    if (v18 != 0) {
+      if ((unsigned int)*(unsigned __int8*)(v18 + 32) - 1 > 4) {
+        v19 = &GameData_1a9f09e;
+      }
+      else {
+        v19 = (char*)*(&GameData_211fd00 +
+                       (unsigned __int8)(*(_BYTE*)(v18 + 32) - 1));
+      }
+      v23 = ui_Manager_instance_ + 1264;
+      v22 = v6;
+      v21 = 2;
+      goto LABEL_31;
+    }
+  }
+  return v2 == 2;
 }
 
 bool IconLegion_19ac160(__int64 a1)

@@ -101,6 +101,16 @@ void __attribute__((noreturn))
 GameRoutine_f52820_alt1() __asm__("GameRoutine_f52820");
 void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
+_QWORD* fw_world_SwapCallables_alt1(_QWORD* result,
+                                    _QWORD*) __asm__("fw_world_SwapCallables");
+__int64 fw_world_JobContext_Drain_alt1(unsigned int*) __asm__(
+    "fw_world_JobContext_Drain");
+__int64
+fw_world_JobContext_Wait_alt1(__int64 result,
+                              unsigned int) __asm__("fw_world_JobContext_Wait");
+__int64 fw_world_JobQueue_Submit_alt1(__int64,
+                                      int) __asm__("fw_world_JobQueue_Submit");
+__int64 nn_os_ClearLightEvent_alt1(__int64) __asm__("nn_os_ClearLightEvent");
 
 void PrimitiveDrawStack_Destructor(_QWORD* a1)
 {
@@ -305,10 +315,10 @@ void PrimitiveDrawStack_f51430(__int64 a1, __int64 a2)
 __int64 game_map_PrimitiveDrawStack_EachDrawElementsMultiThread(_QWORD* a1,
                                                                 __int64 a2)
 {
-  _QWORD* v4;
+  __int64* v4;
   __int64 v5;
   __int64 v6;
-  __int64 v7;
+  unsigned int* v7;
   __int64 v8;
   __int64 v9;
   int v10;
@@ -326,22 +336,24 @@ __int64 game_map_PrimitiveDrawStack_EachDrawElementsMultiThread(_QWORD* a1,
   __int64 v22;
   int v24;
   int v25;
-  _BYTE v26[32];
-  _BYTE* v27;
+  struct {
+    _QWORD v26[4];
+    _QWORD* v27;
+  } v26_;
 
-  v4 = (_QWORD*)GameData_21323e8[0];
+  v4 = (__int64*)GameData_21323e8[0];
   v6 = a1[8];
   v5 = a1[9];
-  v7 = *(_QWORD*)GameData_21323e8[0];
+  v7 = *(unsigned int**)GameData_21323e8[0];
   v25 = ((*(_QWORD*)(*(_QWORD*)GameData_21323e8[0] + 2088LL) -
           *(_QWORD*)(*(_QWORD*)GameData_21323e8[0] + 2080LL)) >>
          3) +
         1;
   v24 = -1431655765 * ((a1[6] - a1[5]) >> 4) -
         1431655765 * ((unsigned __int64)(v5 - v6) >> 4);
-  fw_world_JobContext_Drain(v7);
+  fw_world_JobContext_Drain_alt1(v7);
   v8 = *v4;
-  v9 = *v4 + 32LL;
+  v9 = *v4 + 32;
   do {
     v10 = *(_DWORD*)(v8 + 8);
     v11 = (v10 + 1) & 0xFFFFFF;
@@ -356,9 +368,9 @@ __int64 game_map_PrimitiveDrawStack_EachDrawElementsMultiThread(_QWORD* a1,
   } while (v10 < 0);
   v13 = v10 | 0xC0000000;
   v14 = (unsigned __int64*)(v9 + 32LL * (v10 & 0x3F));
-  nn_os_ClearLightEvent(v14 + 1);
+  nn_os_ClearLightEvent_alt1((__int64)(v14 + 1));
   v15 = (__int64*)fw_memory_g_heap_manager_ptr;
-  v16 = (_QWORD*)fw_memory_HeapManager_Allocate(
+  v16 = (_QWORD*)fw_memory_HeapManager_Allocate_alt1(
       *(_QWORD*)fw_memory_g_heap_manager_ptr, 80, 16, 0);
   v16[2] = 0;
   v17 = v16;
@@ -375,25 +387,25 @@ __int64 game_map_PrimitiveDrawStack_EachDrawElementsMultiThread(_QWORD* a1,
   v17[1] = v8;
   v20 = *v15;
   *((_DWORD*)v17 + 4) = v13;
-  v21 = (_QWORD*)fw_memory_HeapManager_Allocate(v20, 40, 16, 0);
+  v21 = (_QWORD*)fw_memory_HeapManager_Allocate_alt1(v20, 40, 16, 0);
   v21[4] = a2;
-  v27 = v21;
+  v26_.v27 = v21;
   *v21 = GameData_1ff5a70;
   v21[1] = &v24;
   v21[2] = &v25;
   v21[3] = a1;
-  fw_world_SwapCallables(v26, v17 + 4);
-  if (v27 == v26) {
+  fw_world_SwapCallables_alt1(v26_.v26, v17 + 4);
+  if (v26_.v27 == v26_.v26) {
     v22 = 32;
     goto LABEL_13;
   }
-  if (v27 != nullptr) {
+  if (v26_.v27 != nullptr) {
     v22 = 40;
   LABEL_13:
-    (*(void (**)(__int64))(*(_QWORD*)v27 + v22))((__int64)v27);
+    (*(void (**)(__int64))(*v26_.v27 + v22))((__int64)v26_.v27);
   }
-  fw_world_JobQueue_Submit(*(_QWORD*)(v8 + 16), v13);
-  return fw_world_JobContext_Wait(*v4, v13);
+  fw_world_JobQueue_Submit_alt1(*(_QWORD*)(v8 + 16), v13);
+  return fw_world_JobContext_Wait_alt1(*v4, v13);
 }
 
 __int64* PrimitiveDrawStack_f51fa0(__int64* result, __int64 a2, __int64 a3)

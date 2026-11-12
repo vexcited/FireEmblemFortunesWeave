@@ -161,6 +161,7 @@ __int64 Actor_101c40(__int64 result, float);
 __int64 Crc32List_11ed40(__int64, int*);
 __int64 snd_FadeRandom_start(__int64 result, double, float, float, float);
 extern __int64 snd_g_frameCount_ptr;
+bool Voice_1471b0(__int64 a1);
 
 __int64 Voice_1434a0(__int64 a1, __int64 a2, __int64 a3, char a4, int a5,
                      __int64 a6)
@@ -2474,6 +2475,15 @@ LABEL_30:
   }
   v1[1806] = 1;
   return result;
+}
+
+bool Voice_1471b0(__int64 a1)
+{
+  return (((*(__int64 (**)(_QWORD))(**(_QWORD**)snd_g_proxy_ptr[0] + 400LL))(
+               *(_QWORD*)snd_g_proxy_ptr[0]) &
+           1) == 0 ||
+          (snd_fnd_WeakHandle_isValid_alt1((__int64*)(a1 + 5848)) & 1) == 0) &&
+         (signed __int32)*(_DWORD*)(*(_QWORD*)(a1 + 5648) + 548LL) > 0;
 }
 
 float Voice_1482c0(__int64 a1)

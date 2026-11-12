@@ -61,6 +61,10 @@ float ui_LayoutAccessor_SetTranslate_alt1(__int64*, __int64) __asm__(
 void GameRoutine_17ca960_alt1(__int64, __int64) __asm__("GameRoutine_17ca960");
 void TelopParts_17cbd60_alt2(__int64) __asm__("TelopParts_17cbd60");
 void snd_Fade_Fade_10c830_alt1(__int64, float) __asm__("snd_Fade_Fade_10c830");
+__attribute__((swiftcall)) void GameHr_1366ac0(PSEUDO_X8, __int64, __int64);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+void SimpleTelopImpl_17c9870(__int64 a1);
 
 __int64 SimpleTelopImpl_Destructor(__int64 a1)
 {
@@ -189,6 +193,39 @@ __int64 SimpleTelopImpl_17c9460(__int64 a1)
     return std___1___shared_weak_count___release_weak(v4);
   }
   return result;
+}
+
+void SimpleTelopImpl_17c9870(__int64 a1)
+{
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  struct {
+    __int64 v6;
+    __int64 v7;
+  } v6_;
+
+  GameHr_1366ac0((void*)(&v6_.v6), (__int64)"Layout/Common.arc",
+                 (__int64)"Common_TlpResultSimple");
+  v2 = v6_.v6;
+  v3 = v6_.v7;
+  v4 = *(_QWORD*)(a1 + 160);
+  v6_.v6 = 0;
+  v6_.v7 = 0;
+  *(_QWORD*)(a1 + 152) = v2;
+  *(_QWORD*)(a1 + 160) = v3;
+  if (v4 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v4 + 8),
+                                  0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v4 + 16LL))(v4);
+    std___1___shared_weak_count___release_weak_alt1(v4);
+  }
+  v5 = v6_.v7;
+  if (v6_.v7 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v6_.v7 + 8),
+                                      0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v5 + 16LL))(v5);
+    std___1___shared_weak_count___release_weak_alt1(v5);
+  }
 }
 
 __int64 SimpleTelopImpl_17c9920(__int64 result)

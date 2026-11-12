@@ -118,6 +118,11 @@ __int64 ProcStaffRollSeq_StaffDrawObj_Unknown6(__int64 a1);
 __int64 ProcStaffRollSeq_BigDrawObj_Unknown6(__int64 a1);
 __int64 ProcStaffRollSeq_MiddleDrawObj_Unknown6(__int64 a1);
 __int64 ProcStaffRollSeq_ActorDrawObj_Unknown6(__int64 a1);
+_QWORD* LayoutAccessor_1560520(__int64*, const char*, const char*, const char*);
+__int64 GameRoutine_155f760(__int64, __int64, const char*);
+__int64 ui_LayoutAccessor_SetPaneVisible(__int64 result, __int64, char);
+float ui_LayoutAccessor_GetPaneSize(__int64*, const char*);
+__int64 ProcStaffRollSeq_19c1aa0(__int64 a1);
 
 void ProcStaffRollSeq_Destructor(__int64 a1)
 {
@@ -2179,6 +2184,139 @@ __attribute__((swiftcall)) void ProcStaffRollSeq_19c1860(PSEUDO_X8 x8_,
     }
   }
   *(_WORD*)a2 = 0;
+}
+
+__int64 ProcStaffRollSeq_19c1aa0(__int64 a1)
+{
+
+#pragma clang fp contract(off)
+  int v1;
+  __int64* v2;
+  const char* v4;
+  const char* v5;
+  const char* v6;
+  const char* v7;
+  float v8;
+  __int64* v9;
+  char v10;
+  int v11;
+  unsigned __int32 v12;
+  const char* v13;
+  __int64 v14;
+  __int64 v15;
+  __int64 v16;
+  __int64 v17;
+  _BOOL4 v18;
+  __int64 v19;
+  __int64 v20;
+  __int64 v21;
+  int32x4_t* v22;
+  __int64 v23;
+
+  v11 = COERCE_AS(__typeof__(v11), PSEUDO_REGISTER(float, "s1", "=w"));
+  v2 = *(__int64**)(a1 + 112);
+  v4 = (const char*)(*(__int64 (**)(__int64))(*(_QWORD*)a1 + 16LL))(a1),
+  v11 = COERCE_AS(__typeof__(v11), PSEUDO_REGISTER(float, "s1", "=w"));
+  v5 = (const char*)(*(__int64 (**)(__int64))(*(_QWORD*)a1 + 24LL))(a1),
+  v11 = COERCE_AS(__typeof__(v11), PSEUDO_REGISTER(float, "s1", "=w"));
+  if ((*(_BYTE*)(a1 + 120) & 1) != 0) {
+    v6 = *(const char**)(a1 + 136);
+  }
+  else {
+    v6 = (const char*)(a1 + 121);
+  }
+  LayoutAccessor_1560520(v2, v4, v5, v6),
+      v11 = COERCE_AS(__typeof__(v11), PSEUDO_REGISTER(float, "s1", "=w"));
+  if ((*(_BYTE*)(a1 + 120) & 1) != 0) {
+    v7 = *(const char**)(a1 + 136);
+  }
+  else {
+    v7 = (const char*)(a1 + 121);
+  }
+  v8 = ui_LayoutAccessor_GetPaneSize(*(__int64**)(a1 + 112), v7),
+  v11 = COERCE_AS(__typeof__(v11), PSEUDO_REGISTER(float, "s1", "=w"));
+  v9 = *(__int64**)(a1 + 112);
+  v10 = *(_BYTE*)(a1 + 120);
+  *(float*)(a1 + 96) = v8;
+  *(_DWORD*)(a1 + 100) = v11;
+  v12 = 0;
+  if ((v10 & 1) != 0) {
+    v13 = *(const char**)(a1 + 136);
+  }
+  else {
+    v13 = (const char*)(a1 + 121);
+  }
+  if (v9[2] == 0) {
+    goto LABEL_28;
+  }
+  v14 = v9[1];
+  if (v14 == 0) {
+    goto LABEL_28;
+  }
+  v15 = std___1___shared_weak_count_lock(v14),
+  v11 = COERCE_AS(__typeof__(v11), PSEUDO_REGISTER(float, "s1", "=w"));
+  if (v15 != 0) {
+    v16 = *v9;
+    if (*v9 != 0) {
+      v1 = *(unsigned __int8*)(v16 + 24);
+      v17 = v16 + 152;
+      if (v1 == 0) {
+        v17 = 0;
+      }
+      v18 = v17 != v9[2];
+    }
+    else {
+      v18 = true;
+    }
+    if (atomic_fetch_add((atomic_ullong* volatile)(v15 + 8),
+                         0xFFFFFFFFFFFFFFFFLL) != 0) {
+      if (v18) {
+        goto LABEL_20;
+      }
+    }
+    else {
+      v20 = v15;
+      (*(void (**)(__int64))(*(_QWORD*)v15 + 16LL))(v15),
+          v11 = COERCE_AS(__typeof__(v11), PSEUDO_REGISTER(float, "s1", "=w"));
+      std___1___shared_weak_count___release_weak_alt1(v20),
+          v11 = COERCE_AS(__typeof__(v11), PSEUDO_REGISTER(float, "s1", "=w"));
+      if (v18) {
+        goto LABEL_20;
+      }
+    }
+    v12 = 0;
+    if ((v1 & 1) == 0) {
+      goto LABEL_28;
+    }
+    goto LABEL_25;
+  }
+LABEL_20:
+  v19 = v9[1];
+  v12 = 0;
+  if (v19 != 0 && *(_QWORD*)(v19 + 8) != -1) {
+  LABEL_25:
+    v21 = v9[2];
+    if (v21 != 0) {
+      v22 = (int32x4_t*)GameRoutine_155f760((__int64)v9, v21, v13),
+      v11 = COERCE_AS(__typeof__(v11), PSEUDO_REGISTER(float, "s1", "=w"));
+      v12 = 0;
+      if (v22 != nullptr) {
+        v12 = LANES128_OF(vdupq_laneq_s32(v22[7], 3)).n128_u32[0];
+      }
+    }
+  }
+LABEL_28:
+  *(_DWORD*)(a1 + 88) = v12;
+  *(_DWORD*)(a1 + 108) = 1143767040;
+  (*(void (**)(__int64))(*(_QWORD*)a1 + 48LL))(a1),
+      v11 = COERCE_AS(__typeof__(v11), PSEUDO_REGISTER(float, "s1", "=w"));
+  if ((*(_BYTE*)(a1 + 120) & 1) != 0) {
+    v23 = *(_QWORD*)(a1 + 136);
+  }
+  else {
+    v23 = a1 + 121;
+  }
+  return ui_LayoutAccessor_SetPaneVisible(*(_QWORD*)(a1 + 112), v23, 1);
 }
 
 __int64 ProcStaffRollSeq_StaffDrawObj_Unknown6(__int64 a1)

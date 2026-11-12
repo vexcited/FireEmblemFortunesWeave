@@ -171,6 +171,24 @@ void game_gameui_1592340_alt1(__int64*, __int64,
 __int64 TelopResult_1762890(__int64 a1, int a2);
 __int64 TelopResult_1762ce0(__int64 a1, __int64 a2, int a3, const char* a4);
 __int64 TelopResult_17630f0(__int64 a1, unsigned __int8* a2, const char* a3);
+__attribute__((swiftcall)) void
+LayoutAccessor_1560070_alt1(PSEUDO_X8, __int64*,
+                            const char*) __asm__("LayoutAccessor_1560070");
+__int64 GameHr_173f310(__int64, __int64*, char, __int64*, __int64*, float);
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 snd_Fade_Destroy_Fade_alt1(_QWORD*) __asm__("snd_Fade_Destroy_Fade");
+__int64 snd_play_ff2d0_alt1(__int64, __int64, __int64, unsigned int,
+                            unsigned int, int, float,
+                            float) __asm__("snd_play_ff2d0");
+const char* game_HashString32(const char* result);
+extern _UNKNOWN GameData_216de68;
+extern __int64* GameData_212d460[6];
+unsigned __int64 GameRoutine_1130770(__int64, const char*, __int64*);
+void snd_Fade_Fade_10c830_alt1(__int64, float) __asm__("snd_Fade_Fade_10c830");
+__int64 TelopResult_1760100(__int64 a1);
+__int64 TelopResult_1760c40(__int64 a1);
 
 void TelopResult_175ff40(__int64 a1)
 {
@@ -318,6 +336,72 @@ void TelopResult_175ff40(__int64 a1)
     }
     ++v11;
   } while (v11 != 20);
+}
+
+__int64 TelopResult_1760100(__int64 a1)
+{
+  const char* v2;
+  __int64 result;
+  int v4;
+  __int64 v5;
+  const char* v6;
+  __int64 v7[2];
+  __int64 v8[2];
+  struct {
+    const char* v9;
+    __int64 v10;
+  } v9_;
+
+  v2 = (const char*)(*(__int64 (**)(__int64))(*(_QWORD*)a1 + 224LL))(a1);
+  result = GameHr_1562680(a1 + 168, v2, 0x1.0000000000000p+0f);
+  v4 = *(unsigned __int8*)(a1 + 1152);
+  *(_DWORD*)(a1 + 420) = 0;
+  if (v4 == 1) {
+    LayoutAccessor_1560070_alt1((void*)(&v9_.v9), (__int64*)(a1 + 168),
+                                "L_Stamp");
+    result = v9_.v10;
+    if (v9_.v10 != 0) {
+      v5 = std___1___shared_weak_count_lock_alt1(v9_.v10);
+      result = v9_.v10;
+      if (v5 != 0) {
+        v6 = v9_.v9;
+      }
+      else {
+        v6 = nullptr;
+      }
+      if (v9_.v10 != 0) {
+        result = std___1___shared_weak_count___release_weak_alt1(v9_.v10);
+      }
+      if (v6 != nullptr) {
+        v7[0] = (__int64)v6;
+        v7[1] = v5;
+        if (v5 != 0) {
+          atomic_fetch_add_explicit((atomic_ullong* volatile)(v5 + 16), 1u,
+                                    memory_order_relaxed);
+        }
+        v9_.v9 = "In";
+        v9_.v10 = 2;
+        v8[0] = (__int64)"Out";
+        v8[1] = 3;
+        *(_QWORD*)(a1 + 1160) = GameHr_173f310(a1, v7, 0, (__int64*)&v9_.v9, v8,
+                                               -0x1.0000000000000p+0f);
+        if (v5 != 0) {
+          std___1___shared_weak_count___release_weak_alt1(v5);
+        }
+        snd_Fade_Fade_10c830_alt1((__int64)&v9_.v9, 0x0.0p+0f);
+        snd_play_ff2d0_alt1((__int64)"SE_SYS_Stamp", (__int64)"SE_SYS_Stamp",
+                            (__int64)&v9_.v9, 0, 0x10001u, 0, 0x0.0p+0f,
+                            0x1.0000000000000p+0f);
+        result = snd_Fade_Destroy_Fade_alt1(&v9_.v9);
+      }
+      if (v5 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v5 + 8),
+                                      0xFFFFFFFFFFFFFFFFLL) == 0) {
+        (*(void (**)(__int64))(*(_QWORD*)v5 + 16LL))(v5);
+        return std___1___shared_weak_count___release_weak_alt1(v5);
+      }
+    }
+  }
+  return result;
 }
 
 __int64 TelopResult_1760380(_QWORD* a1)
@@ -697,6 +781,62 @@ __int64 TelopResult_1760aa0(__int64 a1)
     }
   }
   return (*(__int64 (**)(__int64))(*(_QWORD*)a1 + 400LL))(a1);
+}
+
+__int64 TelopResult_1760c40(__int64 a1)
+{
+  __int64 result;
+  unsigned __int64 v3;
+  unsigned __int64 v4;
+  const char* v5;
+  __int64 v7;
+  __int64 v8;
+  _BYTE* v9;
+  char v10;
+
+  result = TelopSequence_1374cc0_alt1(a1, 0);
+  v3 = *(unsigned __int8*)(a1 + 824);
+  v4 = *(_QWORD*)(a1 + 832);
+  if ((v3 & 1) == 0) {
+    v4 = v3 >> 1;
+  }
+  if (v4 != 0) {
+    v5 = (v3 & 1) != 0 ? *(const char**)(a1 + 840) : (const char*)(a1 + 825);
+    if (*GameData_212d460[0] == 0 && v5 != nullptr) {
+      v7 = fw_memory_HeapManager_Allocate_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr, 1376, 16, 0);
+      GameRoutine_1130770(v7, v5, nullptr);
+      v8 = *(_QWORD*)(a1 + 40);
+      if (v8 != 0) {
+        *(_QWORD*)(v8 + 48) = v7;
+        *(_QWORD*)(v7 + 56) = *(_QWORD*)(a1 + 40);
+      }
+      *(_QWORD*)(a1 + 40) = v7;
+      *(_QWORD*)(v7 + 24) = "talk::Seq";
+      *(_QWORD*)(v7 + 32) = a1;
+      *(_DWORD*)(v7 + 140) = (unsigned int)game_HashString32("talk::Seq");
+      *(_QWORD*)(v7 + 64) = 0;
+      *(_QWORD*)(v7 + 72) = 24;
+      *(_QWORD*)(v7 + 80) = 1;
+      *(_QWORD*)(v7 + 8) = &GameData_216de68;
+      *(_QWORD*)(v7 + 16) = &GameData_216de68;
+      (*(void (**)(__int64))(*(_QWORD*)v7 + 32LL))(v7);
+      result = (*(__int64 (**)(__int64))(*(_QWORD*)v7 + 136LL))(v7);
+      if ((result & 1) != 0 && (*(_WORD*)(v7 + 136) & 0x100) == 0) {
+        *(_WORD*)(v7 + 136) |= 0x100u;
+      }
+      v9 = *(_BYTE**)(v7 + 32);
+      v10 = v9[138];
+      if (v10 == 0) {
+        result =
+            (*(__int64 (**)(_QWORD))(*(_QWORD*)v9 + 64LL))(*(_QWORD*)(v7 + 32));
+        v10 = v9[138];
+      }
+      v9[138] = v10 + 1;
+      *(_WORD*)(v7 + 136) |= 2u;
+    }
+  }
+  return result;
 }
 
 __attribute__((swiftcall)) void TelopResult_17619f0(PSEUDO_X8 x8_, __int64 a1,

@@ -69,6 +69,13 @@ __int64 std___1___shared_weak_count___release_weak(__int64);
 extern __int64 (*GameData_211dfc0[])();
 __int64
 game_facility_anonymous_ProcObeliskDepositoryLegionMenu_OnInit(__int64 a1);
+__int64* game_UnitPool_Get(_BYTE*);
+bool GameHr_19eff60(_QWORD*, _QWORD*);
+extern _QWORD GameData_1c23608[7];
+extern __int64 GameData_212c998[148];
+extern __int64 GameData_212cd68[26];
+bool game_facility_anonymous_ProcObeliskDepositoryLegionMenu_SortAndFilter_closure_Invoke_199ce50(
+    __int64 a1, __int64* a2, __int64* a3);
 
 void ProcObeliskDepositoryLegionMenu_Destructor(__int64 a1)
 {
@@ -445,6 +452,233 @@ game_facility_anonymous_ProcObeliskDepositoryLegionMenu_AddItemList_closure_Invo
     ++**(_DWORD**)(v5 + 16);
   }
   return result;
+}
+
+bool game_facility_anonymous_ProcObeliskDepositoryLegionMenu_SortAndFilter_closure_Invoke_199ce50(
+    __int64 a1, __int64* a2, __int64* a3)
+{
+  __int64 v3;
+  __int64 v4;
+  __int64 v6;
+  bool v7;
+  __int64 v8;
+  __int64* v9;
+  __int64 v10;
+  __int64* v11;
+  __int64* v12;
+  __int64* v13;
+  __int64* v14;
+  __int64* v15;
+  int v16;
+  int v17;
+  int v18;
+  int v19;
+  __int64 v20;
+  __int64 v21;
+  __int64 v22;
+  __int64 v23;
+  __int64 v24;
+  char v25;
+  __int64 v26;
+  bool v27;
+  char v28;
+  bool v29;
+  char v30;
+  struct {
+    __int64* v32;
+    char v33;
+    char gap9_[7];
+    __int64* v34;
+    int v35;
+    int v36;
+    char v37;
+  } v32_;
+  struct {
+    __int64* v38;
+    char v39;
+    char gap49_[7];
+    __int64* v40;
+    int v41;
+    int v42;
+    char v43;
+  } v38_;
+
+  v3 = *a2;
+  v4 = *a3;
+  v6 = *(unsigned int*)(*a2 + 40);
+  v7 = (int)v6 < 0;
+  v8 = *(_QWORD*)(*(_QWORD*)(*(_QWORD*)GameData_212cf80[0] + 8LL) + 48LL);
+  v9 = (__int64*)(v8 + 8 * v6);
+  v10 = *(unsigned int*)(*a3 + 40);
+  if (v7) {
+    v11 = GameData_212ceb0;
+  }
+  else {
+    v11 = v9;
+  }
+  v12 = (__int64*)(v8 + 8 * v10);
+  if ((int)v10 >= 0) {
+    v13 = v12;
+  }
+  else {
+    v13 = GameData_212ceb0;
+  }
+  if (*((_BYTE*)v11 + 1) != 0) {
+    v14 = game_UnitPool_Get((_BYTE*)v11 + 1);
+  }
+  else {
+    v14 = nullptr;
+  }
+  if (*((_BYTE*)v13 + 1) != 0) {
+    v15 = game_UnitPool_Get((_BYTE*)v13 + 1);
+  }
+  else {
+    v15 = nullptr;
+  }
+  v16 = *((_DWORD*)v11 + 1);
+  v17 = *((_DWORD*)v13 + 1);
+  v18 = *(_DWORD*)(v3 + 104);
+  v19 = *(_DWORD*)(v4 + 104);
+  v20 = 1;
+  switch (*(_BYTE*)(a1 + 8)) {
+  case 1:
+    v21 = *(_QWORD*)(*(_QWORD*)GameData_212c998[0] + 64LL);
+    LODWORD(v20) =
+        *(unsigned __int8*)(*(_QWORD*)(v21 + 8LL * *(unsigned __int8*)v11) +
+                            50LL);
+    LODWORD(v21) =
+        *(unsigned __int8*)(*(_QWORD*)(v21 + 8LL * *(unsigned __int8*)v13) +
+                            50LL);
+    goto LABEL_40;
+  case 2:
+    goto LABEL_30;
+  case 3:
+    v20 = 2;
+    v22 = *(unsigned __int8*)v11;
+    if (*(_BYTE*)v11 == 0) {
+      goto LABEL_34;
+    }
+    goto LABEL_31;
+  case 4:
+    v20 = 4;
+    v22 = *(unsigned __int8*)v11;
+    if (*(_BYTE*)v11 == 0) {
+      goto LABEL_34;
+    }
+    goto LABEL_31;
+  case 5:
+    v20 = 5;
+    v22 = *(unsigned __int8*)v11;
+    if (*(_BYTE*)v11 == 0) {
+      goto LABEL_34;
+    }
+    goto LABEL_31;
+  case 6:
+    v20 = 6;
+    v22 = *(unsigned __int8*)v11;
+    if (*(_BYTE*)v11 == 0) {
+      goto LABEL_34;
+    }
+    goto LABEL_31;
+  case 7:
+    v20 = 7;
+  LABEL_30:
+    v22 = *(unsigned __int8*)v11;
+    if (*(_BYTE*)v11 != 0) {
+      goto LABEL_31;
+    }
+    goto LABEL_34;
+  case 8:
+    v20 = 3;
+    v22 = *(unsigned __int8*)v11;
+    if (*(_BYTE*)v11 == 0) {
+      goto LABEL_34;
+    }
+    goto LABEL_31;
+  case 9:
+    v20 = 8;
+    v22 = *(unsigned __int8*)v11;
+    if (*(_BYTE*)v11 != 0) {
+    LABEL_31:
+      LODWORD(v20) =
+          *(__int16*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)GameData_212c998[0] +
+                                            64LL) +
+                                 8 * v22) +
+                      2 * v20 + 112);
+    }
+    else {
+    LABEL_34:
+      LODWORD(v20) = 0;
+    }
+    if ((unsigned int)*(unsigned __int8*)(a1 + 8) - 3 > 6) {
+      v21 = 1;
+      v26 = *(unsigned __int8*)v13;
+      if (*(_BYTE*)v13 != 0) {
+        goto LABEL_37;
+      }
+    }
+    else {
+      v21 = GameData_1c23608[(unsigned __int8)(*(_BYTE*)(a1 + 8) - 3)];
+      v26 = *(unsigned __int8*)v13;
+      if (*(_BYTE*)v13 != 0) {
+      LABEL_37:
+        LODWORD(v21) =
+            *(__int16*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)GameData_212c998[0] +
+                                              64LL) +
+                                   8 * v26) +
+                        2 * v21 + 112);
+        goto LABEL_40;
+      }
+    }
+    LODWORD(v21) = 0;
+  LABEL_40:
+    v25 = 1;
+  LABEL_41:
+    v32_.v34 = v15;
+    v38_.v38 = v11;
+    v27 = v15 == nullptr && v17 == 0;
+    v38_.v40 = v14;
+    v38_.v41 = v18;
+    v38_.v42 = v20;
+    v28 = !v27;
+    v38_.v43 = v25;
+    v32_.v32 = v13;
+    v29 = v14 == nullptr && v16 == 0;
+    v32_.v33 = v28;
+    v32_.v35 = v19;
+    v32_.v36 = v21;
+    v30 = !v29;
+    v32_.v37 = v25;
+    v38_.v39 = v30;
+    return GameHr_19eff60(&v38_.v38, &v32_.v32);
+  case 0xA:
+    v23 = *(_QWORD*)(*(_QWORD*)GameData_212c998[0] + 64LL);
+    v24 = *(_QWORD*)(*(_QWORD*)GameData_212cd68[0] + 64LL);
+    v20 = *(
+        _QWORD*)(v24 +
+                 8LL * *(unsigned __int8*)(*(_QWORD*)(v23 +
+                                                      8LL * *(unsigned __int8*)
+                                                                v11) +
+                                           51LL));
+    if (v20 != 0) {
+      LODWORD(v20) = *(unsigned __int16*)(v20 + 32);
+    }
+    v21 = *(
+        _QWORD*)(v24 +
+                 8LL * *(unsigned __int8*)(*(_QWORD*)(v23 +
+                                                      8LL * *(unsigned __int8*)
+                                                                v13) +
+                                           51LL));
+    if (v21 != 0) {
+      LODWORD(v21) = *(unsigned __int16*)(v21 + 32);
+    }
+    goto LABEL_40;
+  default:
+    LODWORD(v21) = 0;
+    v25 = 0;
+    LODWORD(v20) = 0;
+    goto LABEL_41;
+  }
 }
 
 bool game_facility_anonymous_ProcObeliskDepositoryLegionMenu_SortAndFilter_closure_Invoke(

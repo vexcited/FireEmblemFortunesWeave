@@ -33,7 +33,9 @@ extern __int64* GameData_212d678[2];
 __int64
 ExpMenuItem_Destructor_alt1(__int64 a1) __asm__("ExpMenuItem_Destructor");
 __int64 ExpMenuItem_Unknown55(__int64 a1);
-__int64 ExpMenuItem_Unknown72(__int64 result, long double a2);
+__int64
+ExpMenuItem_Unknown72_alt1(__int64 result,
+                           long double a2) __asm__("ExpMenuItem_Unknown72");
 bool ExpMenuItem_Unknown73(__int64 a1);
 __int64 ExpMenuItem_1756170(_QWORD, _QWORD);
 __int64 GameRoutine_1756280_alt1(_QWORD) __asm__("GameRoutine_1756280");
@@ -129,6 +131,7 @@ void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void ExpMenuItem_Destructor(__int64 a1);
 void ExpMenuItem_17565c0(__int64 a1, int a2);
+void ExpMenuItem_Unknown72(__int64 a1, long double a2);
 
 void ExpMenuItem_Destructor(__int64 a1)
 {
@@ -755,8 +758,10 @@ LABEL_33:
   goto LABEL_67;
 }
 
-__int64 ExpMenuItem_Unknown72(__int64 result, long double a2)
+void ExpMenuItem_Unknown72(__int64 a1, long double a2)
 {
+
+#pragma clang fp contract(off)
   int v2;
   __int64 v3;
   _DWORD* v5;
@@ -764,28 +769,28 @@ __int64 ExpMenuItem_Unknown72(__int64 result, long double a2)
   __int64 v7;
   __int64 v8;
 
-  v2 = *(_DWORD*)(result + 108);
+  v2 = *(_DWORD*)(a1 + 108);
   switch (v2) {
   case 2:
-    LODWORD(a2) = *(_DWORD*)(result + 88);
-    if (*(_DWORD*)(result + 84) != 2 && *(float*)&a2 >= 8.0) {
-      v5 = (_DWORD*)result;
-      result = (*(__int64 (**)(__int64, long double))(*(_QWORD*)result +
-                                                      584LL))(result, a2);
-      if ((result & 1) != 0) {
+    LODWORD(a2) = *(_DWORD*)(a1 + 88);
+    if (*(_DWORD*)(a1 + 84) != 2 && *(float*)&a2 >= 0x1.0000000000000p+3f) {
+      v5 = (_DWORD*)a1;
+      if (((*(__int64 (**)(__int64, long double))(*(_QWORD*)a1 + 584LL))(a1,
+                                                                         a2) &
+           1) != 0) {
         v5[21] = 2;
-        return (*(__int64 (**)(_DWORD*))(*(_QWORD*)v5 + 592LL))(v5);
+        (*(void (**)(_DWORD*))(*(_QWORD*)v5 + 592LL))(v5);
       }
     }
     break;
   case 1:
-    if (*(float*)(result + 136) == 0.0) {
-      if (*(_QWORD*)(result + 384) == 0) {
+    if (*(float*)(a1 + 136) == 0x0.0p+0f) {
+      if (*(_QWORD*)(a1 + 384) == 0) {
         goto LABEL_20;
       }
-      v6 = result;
-      v7 = std___1___shared_weak_count_lock(*(_QWORD*)(result + 384));
-      result = v6;
+      v6 = a1;
+      v7 = std___1___shared_weak_count_lock_alt1(*(_QWORD*)(a1 + 384));
+      a1 = v6;
       if (v7 == 0) {
         goto LABEL_20;
       }
@@ -793,30 +798,29 @@ __int64 ExpMenuItem_Unknown72(__int64 result, long double a2)
       if (atomic_fetch_add((atomic_ullong* volatile)(v7 + 8),
                            0xFFFFFFFFFFFFFFFFLL) == 0) {
         (*(void (**)(__int64))(*(_QWORD*)v7 + 16LL))(v7);
-        std___1___shared_weak_count___release_weak();
-        result = v6;
+        std___1___shared_weak_count___release_weak_alt2(v7);
+        a1 = v6;
       }
-      if (v8 != 0 && *(float*)(result + 264) != 0.0) {
-        return GameRoutine_1756170(result, 1);
+      if (v8 != 0 && *(float*)(a1 + 264) != 0x0.0p+0f) {
+        GameHr_1756170(a1, 1);
       }
       else {
       LABEL_20:
-        ++*(_DWORD*)(result + 108);
+        ++*(_DWORD*)(a1 + 108);
       }
     }
     else {
-      return GameRoutine_17565c0();
+      ExpMenuItem_17565c0(a1, 1);
     }
     break;
   case 0:
-    v3 = result;
-    result = GameRoutine_1756280();
+    v3 = a1;
+    ExpMenuItem_1756280(a1);
     ++*(_DWORD*)(v3 + 108);
     break;
   default:
     break;
   }
-  return result;
 }
 
 bool ExpMenuItem_Unknown73(__int64 a1)

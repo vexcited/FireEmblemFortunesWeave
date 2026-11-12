@@ -102,6 +102,15 @@ void __attribute__((noreturn)) String_60a1d0_alt1() __asm__("String_60a1d0");
 void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void ProcClassTrialJobMenu_Unknown128(_QWORD* a1);
+__attribute__((swiftcall)) void GameRoutine_1587740(PSEUDO_X8, __int64*,
+                                                    _QWORD*);
+__int64 JobIcon_19a9be0(__int64, __int64, __int64);
+__int64 LayoutAccessor_1562cf0(__int64 result, const char*);
+__int64 std___1___shared_weak_count___release_weak(__int64);
+__int64 std___1___shared_weak_count_lock(__int64);
+__int64
+game_facility_anonymous_ProcClassTrialJobMenu_ACall_closure_Invoke_16b9fc0(
+    __int64 a1, __int64* a2);
 
 __int64 ProcClassTrialJobMenu_Unknown88(__int64* a1)
 {
@@ -844,6 +853,50 @@ __int64 game_facility_anonymous_ProcClassTrialJobMenu_ACall_closure_Invoke()
     LayoutAccessor_1567000(game_gameui_Footer_instance_, 0);
   }
   return 6;
+}
+
+__int64
+
+game_facility_anonymous_ProcClassTrialJobMenu_ACall_closure_Invoke_16b9fc0(
+    __int64 a1, __int64* a2)
+{
+  __int64 result;
+  __int64 v5;
+  __int64 v6;
+  _QWORD v7[2];
+  struct {
+    __int64 v8;
+    __int64 v9;
+  } v8_;
+
+  LayoutAccessor_1562cf0((__int64)a2, "JobTrial");
+  v7[0] = "L_Job";
+  v7[1] = 5;
+  GameRoutine_1587740((void*)(&v8_.v8), a2, v7);
+  result = v8_.v9;
+  if (v8_.v9 != 0) {
+    v5 = std___1___shared_weak_count_lock(v8_.v9);
+    v6 = v8_.v8;
+    result = v8_.v9;
+    if (v8_.v9 != 0) {
+      result = std___1___shared_weak_count___release_weak(v8_.v9);
+    }
+    if (v5 != 0 && v6 != 0) {
+      *(_BYTE*)(v6 + 1106) = 1;
+      JobIcon_19a9be0(v6, *(_QWORD*)(a1 + 8), *(_QWORD*)(a1 + 16));
+      result =
+          ui_LayoutAccessor_SetPaneVisible((__int64)a2, (__int64)"L_Job", 1);
+    }
+    else if (v5 == 0) {
+      return result;
+    }
+    if (atomic_fetch_add((atomic_ullong* volatile)(v5 + 8),
+                         0xFFFFFFFFFFFFFFFFLL) == 0) {
+      (*(void (**)(__int64))(*(_QWORD*)v5 + 16LL))(v5);
+      return std___1___shared_weak_count___release_weak(v5);
+    }
+  }
+  return result;
 }
 
 bool game_facility_anonymous_ProcClassTrialJobMenu_SortAndFilter_closure_Invoke(

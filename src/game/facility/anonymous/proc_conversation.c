@@ -62,6 +62,15 @@ float game_facility_14107c0(__int64, __int64);
 unsigned __int64 strlen(const char*);
 void __attribute__((noreturn)) String_60a1d0();
 void game_facility_anonymous_ProcConversation_PlaySpecialTelop();
+_QWORD* SceneCharacter_14020c0(__int64);
+__attribute__((swiftcall)) void
+SceneTalk_1497520(PSEUDO_X8, __int64, __int64, __int64, __int64, __int64, int);
+const char* game_HashString32(const char* result);
+extern _UNKNOWN GameData_216de68;
+extern __int16 GameData_224ae48;
+extern __int64 GameData_21ec7b8;
+unsigned __int64 GameRoutine_1130770(__int64, const char*, __int64*);
+void ProcConversation_1496100(__int64 a1);
 
 void game_facility_anonymous_ProcConversation_PlaySpecialTelop()
 {
@@ -366,6 +375,84 @@ _QWORD* ProcConversation_1495fa0(_QWORD* result)
     }
   }
   return result;
+}
+
+void ProcConversation_1496100(__int64 a1)
+{
+  __int64 v2;
+  _QWORD* v3;
+  char v4;
+  const char* v5;
+  __int64 v7;
+  __int64 v8;
+  _BYTE* v9;
+  char v10;
+  __int64 v11;
+  struct {
+    __int64 v12[2];
+    const char* v13;
+  } v12_;
+
+  v2 = SceneManager_138e5e0(*(_QWORD*)GameData_212dce8);
+  if (v2 != 0) {
+    v3 = SceneCharacter_14020c0(v2);
+    SceneTalk_1497520((void*)(v12_.v12), (__int64)"Thermae", 7, (__int64)v3,
+                      (__int64)"m01", 3, 3);
+    v4 = v12_.v12[0] & 1;
+    if ((v12_.v12[0] & 1) != 0) {
+      v5 = v12_.v13;
+    }
+    else {
+      v5 = (char*)v12_.v12 + 1;
+    }
+  }
+  else {
+    v4 = 0;
+    LOWORD(v12_.v12[0]) = 0;
+    v5 = (char*)v12_.v12 + 1;
+  }
+  if (GameData_21ec7b8 == 0 && v5 != nullptr) {
+    v7 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
+                                        1376, 16, 0);
+    GameRoutine_1130770(v7, v5, nullptr);
+    v8 = *(_QWORD*)(a1 + 40);
+    if (v8 != 0) {
+      *(_QWORD*)(v8 + 48) = v7;
+      *(_QWORD*)(v7 + 56) = *(_QWORD*)(a1 + 40);
+    }
+    *(_QWORD*)(a1 + 40) = v7;
+    *(_QWORD*)(v7 + 24) = "talk::Seq";
+    *(_QWORD*)(v7 + 32) = a1;
+    *(_DWORD*)(v7 + 140) = (unsigned int)game_HashString32("talk::Seq");
+    *(_QWORD*)(v7 + 64) = 0;
+    *(_QWORD*)(v7 + 72) = 24;
+    *(_QWORD*)(v7 + 80) = 1;
+    *(_QWORD*)(v7 + 8) = &GameData_216de68;
+    *(_QWORD*)(v7 + 16) = &GameData_216de68;
+    (*(void (**)(__int64))(*(_QWORD*)v7 + 32LL))(v7);
+    if (((*(__int64 (**)(__int64))(*(_QWORD*)v7 + 136LL))(v7) & 1) != 0 &&
+        (*(_WORD*)(v7 + 136) & 0x100) == 0) {
+      *(_WORD*)(v7 + 136) |= 0x100u;
+    }
+    v9 = *(_BYTE**)(v7 + 32);
+    v10 = v9[138];
+    if (v10 == 0) {
+      (*(void (**)(_QWORD))(*(_QWORD*)v9 + 64LL))(*(_QWORD*)(v7 + 32));
+      v10 = v9[138];
+    }
+    v9[138] = v10 + 1;
+    *(_WORD*)(v7 + 136) |= 2u;
+    v4 = v12_.v12[0] & 1;
+  }
+  GameData_224ae48 = 258;
+  if (v4 != 0 && v12_.v13 != nullptr) {
+    v11 = 128;
+    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+      v11 = 56;
+    }
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v11, (__int64)v12_.v13);
+  }
 }
 
 void ProcConversation_1496480()

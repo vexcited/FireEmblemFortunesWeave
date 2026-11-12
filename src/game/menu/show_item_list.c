@@ -56,6 +56,10 @@ void game_menu_ShowItemList_CreateBindResult_lambda1_Destructor(__int64 a1);
 void game_menu_ShowItemList_CreateBindResult_lambda1_DeletingDestructor(
     __int64 a1);
 void game_menu_ShowItemList_CreateBindResult_lambda1_Destroy(__int64 a1);
+extern __int64* GameData_212c878[6];
+void Se_80e330_alt1(__int64, const char*) __asm__("Se_80e330");
+void game_menu_ShowItemList_CreateBindResult_lambda1_Invoke(__int64 a1,
+                                                            __int64* a2);
 
 void game_menu_ShowItemList_CreateBindResult_lambda0_Destructor(__int64 a1)
 {
@@ -761,6 +765,74 @@ void game_menu_ShowItemList_CreateBindResult_lambda1_Destroy(__int64 a1)
           *(_QWORD*)fw_memory_g_heap_manager_ptr + v16, v15);
     }
   }
+}
+
+void game_menu_ShowItemList_CreateBindResult_lambda1_Invoke(__int64 a1,
+                                                            __int64* a2)
+{
+  char v3;
+  char* v4;
+  char* v5;
+  __int64 v6;
+  char* v7;
+  char* v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  int v13;
+  __int64* v14;
+  int v15;
+  const char* v16;
+
+  v3 = *(_BYTE*)(a1 + 8);
+  v4 = *(char**)(a1 + 24);
+  v5 = (char*)(a1 + 9);
+  v6 = *a2;
+  if ((v3 & 1) != 0) {
+    v7 = v4;
+  }
+  else {
+    v7 = v5;
+  }
+  if ((*(_BYTE*)(a1 + 32) & 1) != 0) {
+    v8 = *(char**)(a1 + 48);
+  }
+  else {
+    v8 = (char*)(a1 + 33);
+  }
+  v9 = ObeliskDestinyMenuItem_1a06cc0(v6, v7, v8);
+  v10 = *(_QWORD*)(a1 + 56);
+  v11 = *(_QWORD*)(a1 + 64);
+  v12 = v9;
+  if (v10 == v11) {
+    goto LABEL_14;
+  }
+  v13 = 0;
+  v14 = GameData_212c878[0];
+  do {
+    ObeliskDestinyMenuItem_1a06060((_QWORD*)(v12 + 824), (int*)v10, 0);
+    if (*(_WORD*)(v10 + 4) != 0) {
+      v13 |= (*(_BYTE*)(*(_QWORD*)(*(_QWORD*)(*v14 + 64) +
+                                   8LL * *(unsigned __int16*)(v10 + 4)) +
+                        337LL) &
+              0x20) != 0;
+    }
+    v10 += 112;
+  } while (v10 != v11);
+  v15 = *(unsigned __int8*)(a1 + 80);
+  if ((v13 & ~v15 & 1) != 0) {
+    Se_80e330_alt1(v12, "SE_SYS_ItemGet_Quest");
+  LABEL_14:
+    LOBYTE(v15) = *(_BYTE*)(a1 + 80);
+  }
+  if ((v15 & 1) != 0) {
+    v16 = "FF_Negative1";
+  }
+  else {
+    v16 = "FF_Positive1";
+  }
+  Se_80e330_alt1(v12, v16);
 }
 
 #pragma GCC visibility pop

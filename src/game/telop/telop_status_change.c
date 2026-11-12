@@ -58,6 +58,15 @@ void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
 unsigned __int64 TelopStatusChange_Unknown39(unsigned __int64 result);
 void TelopStatusChange_Destructor(__int64 a1);
 void TelopStatusChange_DeletingDestructor(__int64 a1);
+__int64 LayoutAccessor_155cda0(__int64 result, const char*, const char*);
+__int64 LayoutAccessor_155e830(__int64 result, char);
+__int64 LayoutAccessor_155ea30(__int64*);
+const char* game_HashString32(const char* result);
+extern _UNKNOWN GameData_216de68;
+extern __int64 GameData_21ec7b8;
+float LayoutAccessor_155d940(__int64*);
+unsigned __int64 GameRoutine_1130770(__int64, const char*, __int64*);
+__int64 TelopStatusChange_Unknown46(__int64 result);
 
 __int64 TelopStatusChange_17484f0(_QWORD* a1)
 {
@@ -1032,6 +1041,87 @@ LABEL_21:
     (*(void (**)(__int64))(*(_QWORD*)a1 + 360LL))(a1);
   }
   return (*(__int64 (**)(__int64))(*(_QWORD*)a1 + 400LL))(a1);
+}
+
+__int64 TelopStatusChange_Unknown46(__int64 result)
+{
+  unsigned __int64 v1;
+  unsigned __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  int v5;
+  const char* v6;
+  __int64 v8;
+  __int64 v9;
+  _BYTE* v10;
+  char v11;
+
+  v1 = *(unsigned __int8*)(result + 1304);
+  if ((v1 & 1) != 0) {
+    v2 = *(_QWORD*)(result + 1312);
+  }
+  else {
+    v2 = v1 >> 1;
+  }
+  if (v2 != 0) {
+    v3 = result;
+    v4 = GameData_22736d0;
+    if (GameData_22736d0 != 0 && *(_DWORD*)(GameData_22736d0 + 624) != 2) {
+      result = LayoutAccessor_155ea30((__int64*)(GameData_22736d0 + 168));
+      if ((result & 1) != 0 || *(_DWORD*)(v4 + 624) != 1) {
+        result = LayoutAccessor_155cda0(v4 + 272, "Out", nullptr);
+        if (*(_DWORD*)(v4 + 624) == 1) {
+          v5 = 2;
+        }
+        else {
+          LayoutAccessor_155d940((__int64*)(v4 + 272));
+          result = LayoutAccessor_155e830(v4 + 168, 0);
+          v5 = 1;
+        }
+        *(_DWORD*)(v4 + 624) = v5;
+      }
+    }
+    if ((*(_BYTE*)(v3 + 1304) & 1) != 0) {
+      v6 = *(const char**)(v3 + 1320);
+    }
+    else {
+      v6 = (const char*)(v3 + 1305);
+    }
+    if (GameData_21ec7b8 == 0 && v6 != nullptr) {
+      v8 = fw_memory_HeapManager_Allocate_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr, 1376, 16, 0);
+      GameRoutine_1130770(v8, v6, nullptr);
+      v9 = *(_QWORD*)(v3 + 40);
+      if (v9 != 0) {
+        *(_QWORD*)(v9 + 48) = v8;
+        *(_QWORD*)(v8 + 56) = *(_QWORD*)(v3 + 40);
+      }
+      *(_QWORD*)(v3 + 40) = v8;
+      *(_QWORD*)(v8 + 24) = "talk::Seq";
+      *(_QWORD*)(v8 + 32) = v3;
+      *(_DWORD*)(v8 + 140) = (unsigned int)game_HashString32("talk::Seq");
+      *(_QWORD*)(v8 + 64) = 0;
+      *(_QWORD*)(v8 + 72) = 24;
+      *(_QWORD*)(v8 + 80) = 1;
+      *(_QWORD*)(v8 + 8) = &GameData_216de68;
+      *(_QWORD*)(v8 + 16) = &GameData_216de68;
+      (*(void (**)(__int64))(*(_QWORD*)v8 + 32LL))(v8);
+      result = (*(__int64 (**)(__int64))(*(_QWORD*)v8 + 136LL))(v8);
+      if ((result & 1) != 0 && (*(_WORD*)(v8 + 136) & 0x100) == 0) {
+        *(_WORD*)(v8 + 136) |= 0x100u;
+      }
+      v10 = *(_BYTE**)(v8 + 32);
+      v11 = v10[138];
+      if (v11 == 0) {
+        result = (*(__int64 (**)(_QWORD))(*(_QWORD*)v10 + 64LL))(
+            *(_QWORD*)(v8 + 32));
+        v11 = v10[138];
+      }
+      v10[138] = v11 + 1;
+      *(_WORD*)(v8 + 136) |= 2u;
+    }
+  }
+  return result;
 }
 
 void TelopStatusChange_Destructor(__int64 a1)

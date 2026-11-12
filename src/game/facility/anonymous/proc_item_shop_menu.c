@@ -183,6 +183,11 @@ void __attribute__((noreturn))
 GameRoutine_874500_alt1() __asm__("GameRoutine_874500");
 void snd_Fade_Fade_10c830_alt1(__int64, float) __asm__("snd_Fade_Fade_10c830");
 void ProcItemShopMenu_Unknown154(__int64 a1, __int64 a2, char a3);
+_QWORD* ProcItemShopMenu_186e140(_QWORD* result);
+_QWORD* Util_1575c70(__int64, __int64, int, const char*, char, __int64);
+bool game_159ea20(__int64, __int64, char);
+extern __int64 (*GameData_20f2d60[])();
+_QWORD* game_facility_anonymous_ProcItemShopMenu_UpdateInfo(_QWORD* a1);
 
 void* ProcItemShopMenu_Unknown67(__int64 a1)
 {
@@ -1460,6 +1465,50 @@ void ProcItemShopMenu_Unknown162(_BYTE* a1, __int64* a2)
     }
     a2[1] = v4;
     ItemShopSelectMenu_1874560(a1, a2, 0);
+  }
+}
+
+_QWORD* game_facility_anonymous_ProcItemShopMenu_UpdateInfo(_QWORD* a1)
+{
+  __int64 v1;
+  bool v3;
+  __int64 v4;
+  __int64* v5;
+  __int64* v6;
+  __int64* v8;
+  struct {
+    _QWORD v9[4];
+    _QWORD* v10;
+  } v9_;
+
+  v1 = a1[133];
+  v9_.v9[0] = GameData_20f2d60;
+  v9_.v9[1] = a1;
+  v9_.v10 = v9_.v9;
+  v3 = game_159ea20(v1, (__int64)v9_.v9, 1);
+  if (v9_.v10 == v9_.v9) {
+    v4 = 32;
+  }
+  else {
+    if (v9_.v10 == nullptr) {
+      goto LABEL_6;
+    }
+    v4 = 40;
+  }
+  (*(void (**)(__int64))(*v9_.v10 + v4))((__int64)v9_.v10);
+LABEL_6:
+  if (v1 != 0) {
+    LayoutAccessor_1562cf0_alt1((__int64)(a1 + 106), "UnitInfo_On");
+    v5 = LayoutAccessor_155fbe0_alt1(a1 + 106, "L_UnitInfo");
+    LayoutAccessor_1571860(v5, v1, 1, 0, 0, v3);
+    v6 = LayoutAccessor_155fbe0_alt1(a1 + 106, "L_MasteryInfo");
+    Util_1575c70((__int64)v6, v1, 0, nullptr, 0, 0);
+    return ProcItemShopMenu_186e140(a1);
+  }
+  else {
+    LayoutAccessor_1562cf0_alt1((__int64)(a1 + 106), "Stock_On");
+    v8 = LayoutAccessor_155fbe0_alt1(a1 + 106, "L_UnitInfo");
+    return (_QWORD*)LayoutAccessor_1571860(v8, 0, 1, 0, 0, v3);
   }
 }
 

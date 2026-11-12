@@ -115,6 +115,10 @@ void GameHr_138a920(__int64, __int64);
 void GameRoutine_a0d9a0_alt1(__int64) __asm__("GameRoutine_a0d9a0");
 void game_facility_BanquetSceneDiff_Initialize_lambda0_Invoke(__int64 a1);
 void game_facility_BanquetSceneDiff_StartCameraWork(__int64 a1);
+__int64 SceneCharacterLookAt_1400060(__int64, float32x4_t*);
+extern char GameData_1a86e98[];
+void game_195ab40(__int64, __int64);
+void game_facility_BanquetSceneDiff_Initialize_lambda1_Invoke(__int64 a1);
 
 __n128 game_facility_BanquetSceneDiff_Initialize(unsigned __int64 a1,
                                                  __int64 a2)
@@ -971,6 +975,139 @@ LABEL_6:
     memmove_alt1((__int64)v18, (__int64)v15, v17);
     goto LABEL_26;
   }
+}
+
+void game_facility_BanquetSceneDiff_Initialize_lambda1_Invoke(__int64 a1)
+{
+
+#pragma clang fp contract(off)
+  __int64 v1;
+  unsigned int v2;
+  __int64* v3;
+  __int64* v4;
+  __int64 v5;
+  __int64 v6;
+  __int8* v7;
+  char* v8;
+  __int64 v9;
+  unsigned __int64 v10;
+  unsigned __int64 v11;
+  char* v12;
+  __int64* v13;
+  __int64 v14;
+  __int64 v15;
+  __int64 v16;
+  __int64 v17;
+  __int64 v18;
+  __int64 v19;
+  __int64 v20;
+  struct {
+    _QWORD v21[2];
+    __int64 v22;
+  } v21_;
+  struct {
+    float32x4_t v23;
+    __int8* v24;
+    char gap56_[16];
+    char v25;
+    char gap73_[15];
+    __int64 v26;
+    char v27;
+    char gap97_[15];
+    __int64 v28;
+    char v29;
+    char gap121_[15];
+    __int64 v30;
+  } v23_;
+
+  v1 = *(_QWORD*)(a1 + 8);
+  v2 = 0;
+  v3 = (__int64*)GameData_212dce8;
+  v4 = (__int64*)fw_memory_g_heap_manager_ptr;
+  do {
+    v5 = SceneManager_138e5e0_alt1(*v3);
+    if (v5 == 0) {
+      break;
+    }
+    v6 = v5;
+    BanquetSceneDiff_142bfb0((void*)((__int64*)&v23_.v23), v1);
+    if ((LANES128(v23_.v23).n128_u8[0] & 1) != 0) {
+      v7 = v23_.v24;
+    }
+    else {
+      v7 = &LANES128(v23_.v23).n128_i8[1];
+    }
+    v8 = game_util_Format_alt1(GameData_1a86e98, v7, v2);
+    if ((LANES128(v23_.v23).n128_u8[0] & 1) != 0 && v23_.v24 != nullptr) {
+      v9 = 56;
+      if (*(_QWORD*)(*v4 + 200) != 0) {
+        v9 = 128;
+      }
+      nn_mem_StandardAllocator_Free_alt2(*v4 + v9, (__int64)v23_.v24);
+    }
+    v10 = strlen_alt1(v8);
+    if (v10 >= 0xFFFFFFFFFFFFFFF7LL) {
+      String_60a1d0();
+    }
+    v11 = v10;
+    if (v10 >= 0x17) {
+      v13 = v3;
+      if ((v10 | 7) == 0x17) {
+        v14 = 26;
+      }
+      else {
+        v14 = (v10 | 7) + 1;
+      }
+      v15 = fw_memory_HeapManager_Allocate(*v4, v14, 16, 0);
+      v16 = v14 | 1;
+      v12 = (char*)v15;
+      v21_.v21[1] = v11;
+      v21_.v22 = v15;
+      v3 = v13;
+      v21_.v21[0] = v16;
+    LABEL_20:
+      memmove_alt1((__int64)v12, (__int64)v8, v11);
+      goto LABEL_21;
+    }
+    v12 = (char*)v21_.v21 + 1;
+    LOBYTE(v21_.v21[0]) = 2 * v10;
+    if (v10 != 0) {
+      goto LABEL_20;
+    }
+  LABEL_21:
+    v12[v11] = 0;
+    game_195ab40((__int64)&v23_.v23, (__int64)v21_.v21);
+    SceneCharacterLookAt_1400060(v6, &v23_.v23);
+    if ((v23_.v29 & 1) != 0 && v23_.v30 != 0) {
+      v17 = 56;
+      if (*(_QWORD*)(*v4 + 200) != 0) {
+        v17 = 128;
+      }
+      nn_mem_StandardAllocator_Free_alt2(*v4 + v17, v23_.v30);
+    }
+    if ((v23_.v27 & 1) != 0 && v23_.v28 != 0) {
+      v18 = 56;
+      if (*(_QWORD*)(*v4 + 200) != 0) {
+        v18 = 128;
+      }
+      nn_mem_StandardAllocator_Free_alt2(*v4 + v18, v23_.v28);
+    }
+    if ((v23_.v25 & 1) != 0 && v23_.v26 != 0) {
+      v19 = 56;
+      if (*(_QWORD*)(*v4 + 200) != 0) {
+        v19 = 128;
+      }
+      nn_mem_StandardAllocator_Free_alt2(*v4 + v19, v23_.v26);
+    }
+    if ((v21_.v21[0] & 1) != 0 && v21_.v22 != 0) {
+      v20 = 56;
+      if (*(_QWORD*)(*v4 + 200) != 0) {
+        v20 = 128;
+      }
+      nn_mem_StandardAllocator_Free_alt2(*v4 + v20, v21_.v22);
+    }
+    ++v2;
+  } while (v2 != 8);
 }
 
 void game_facility_BanquetSceneDiff_Initialize_lambda2_Invoke(__int64 a1)

@@ -85,6 +85,8 @@ __int64 Executor_19449a0(_QWORD*, __int64);
 void __attribute__((noreturn))
 GameRoutine_60a310_alt1() __asm__("GameRoutine_60a310");
 void Task_Unknown2(__int64 a1);
+extern __int64 (*GameData_2109638[])();
+__int64 save_Task_SetSize(__int64 a1, __int64 a2);
 
 void Task_Unknown2(__int64 a1)
 {
@@ -595,6 +597,73 @@ LABEL_6:
     v5 = 40;
   }
   return (*(__int64 (**)(__int64))(*v6_.v7 + v5))((__int64)v6_.v7);
+}
+
+__int64 save_Task_SetSize(__int64 a1, __int64 a2)
+{
+  _QWORD* v3;
+  __int64 v4;
+  __int64 v5;
+  unsigned __int64 v6;
+  __int64 v7;
+  __int64 result;
+  __int64 v9;
+  struct {
+    __int64 (**v10)();
+    __int64 v11;
+    __int64 v12;
+    char gap24_[8];
+    __int64 (***v13)();
+  } v10_;
+  struct {
+    _QWORD v14[4];
+    _QWORD* v15;
+  } v14_;
+
+  v10_.v12 = a2;
+  v10_.v10 = GameData_2109638;
+  v10_.v11 = a1;
+  v10_.v13 = &v10_.v10;
+  v3 = (_QWORD*)fw_memory_HeapManager_Allocate_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr, 48, 16, 0);
+  v4 = v10_.v11;
+  v5 = v10_.v12;
+  v6 = (unsigned __int64)v3;
+  *v3 = 0;
+  v3[1] = 0;
+  v3[2] = 0;
+  v3[3] = 0;
+  v3[4] = 0;
+  v3[5] = 0;
+  v14_.v15 = v14_.v14;
+  v14_.v14[0] = GameData_2109638;
+  v14_.v14[1] = v4;
+  v14_.v14[2] = v5;
+  GameRoutine_654050(v14_.v14, v3);
+  if (v14_.v15 == v14_.v14) {
+    v7 = 32;
+  }
+  else {
+    if (v14_.v15 == nullptr) {
+      goto LABEL_6;
+    }
+    v7 = 40;
+  }
+  (*(void (**)(__int64))(*v14_.v15 + v7))((__int64)v14_.v15);
+LABEL_6:
+  atomic_fetch_add((atomic_uint* volatile)(a1 + 804), 1u);
+  nn_os_SendLightMessageQueue_alt1(a1 + 488, v6);
+  result = (__int64)v10_.v13;
+  if (v10_.v13 == &v10_.v10) {
+    v9 = 4;
+  }
+  else {
+    if (v10_.v13 == nullptr) {
+      return result;
+    }
+    v9 = 5;
+  }
+  return ((__int64 (*)(__int64))(*v10_.v13)[v9])((__int64)v10_.v13);
 }
 
 __int64 save_Task_GetSize(__int64 a1, __int64 a2)

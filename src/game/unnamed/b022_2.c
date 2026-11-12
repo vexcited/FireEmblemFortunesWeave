@@ -180,13 +180,9 @@ extern __int64 GameData_22587e8;
 
 __int64 GameRoutine_1560ec0(_QWORD, _QWORD, _QWORD);
 
-__int64 GameRoutine_1562cf0(_QWORD, _QWORD);
-
 __int64 GameRoutine_1567590(_QWORD, _QWORD);
 
 __int64 GameRoutine_157af40(_QWORD, _QWORD);
-
-__attribute__((swiftcall)) void GameRoutine_1587740(PSEUDO_X8, _QWORD, _QWORD);
 
 __attribute__((swiftcall)) void GameRoutine_1611100(PSEUDO_X8, _QWORD, _QWORD);
 
@@ -223,8 +219,6 @@ __int64 GameRoutine_1706020(_QWORD, _QWORD);
 __int64 GameRoutine_170b1f0(_QWORD, _QWORD);
 
 __int64 GameRoutine_1789cf0(_QWORD, _QWORD);
-
-__int64 GameRoutine_19a9be0(_QWORD, _QWORD, _QWORD);
 
 __int64 GameRoutine_1a06650(_QWORD, _QWORD, _QWORD);
 
@@ -1189,44 +1183,6 @@ LABEL_23:
   v23 = 32;
   return (_QWORD*)(*(__int64 (**)(_QWORD*, __int64))(*result + v23))(result,
                                                                      v13);
-}
-
-__int64 GameHr_16b9fc0(__int64 a1, __int64 a2)
-{
-  __int64 result;
-  __int64 v5;
-  __int64 v6;
-  _QWORD v7[2];
-  __int64 v8;
-  __int64 v9;
-
-  GameRoutine_1562cf0(a2, "JobTrial");
-  v7[0] = "L_Job";
-  v7[1] = 5;
-  GameRoutine_1587740((void*)&v8, a2, v7);
-  result = v9;
-  if (v9 != 0) {
-    v5 = GameRoutine_1a0a0c0(v9);
-    v6 = v8;
-    result = v9;
-    if (v9 != 0) {
-      result = GameRoutine_1a09c50(v9);
-    }
-    if (v5 != 0 && v6 != 0) {
-      *(_BYTE*)(v6 + 1106) = 1;
-      GameRoutine_19a9be0(v6, *(_QWORD*)(a1 + 8), *(_QWORD*)(a1 + 16));
-      result = GameRoutine_1560ec0(a2, "L_Job", 1);
-    }
-    else if (v5 == 0) {
-      return result;
-    }
-    if (atomic_fetch_add((atomic_ullong* volatile)(v5 + 8),
-                         0xFFFFFFFFFFFFFFFFLL) == 0) {
-      (*(void (**)(__int64))(*(_QWORD*)v5 + 16LL))(v5);
-      return GameRoutine_1a09c50(v5);
-    }
-  }
-  return result;
 }
 
 __int64 GameHr_16c3890(__int64 a1)

@@ -300,6 +300,9 @@ _QWORD* LayoutAccessor_1560520(__int64* a1, const char* a2, const char* a3,
                                char* a4);
 float LayoutAccessor_15638b0(__int64* a1, char* a2, char a3);
 void LayoutAccessor_1573860(__int64* a1, __int64 a2);
+__int64 game_1841930(__int64, __int64);
+int sprintf(__int64, const char*, ...);
+__int64 LayoutAccessor_15735c0(__int64** a1, int a2, int* a3);
 
 __attribute__((swiftcall)) void LayoutAccessor_155ed40(PSEUDO_X8 x8_,
                                                        __int64* a1, __int64* a2,
@@ -3232,6 +3235,66 @@ __int64 LayoutAccessor_1573500(__int64 a1, char a2, char a3)
     }
     return UnitParams_6dd470(a1, v11, v10, (a3 & 1) == 0);
   }
+}
+
+__int64 LayoutAccessor_15735c0(__int64** a1, int a2, int* a3)
+{
+  __int64* v5;
+  __int64 result;
+  __int64 v7;
+  __int64 v8;
+  int v9;
+  __int64 v10;
+  __int64 v11;
+  _QWORD v12[2];
+  struct {
+    __int64 v13;
+    __int64 v14;
+  } v13_;
+  char v15[32];
+
+  sprintf((__int64)v15, "L_IconBlood%02d", a2);
+  v5 = *a1;
+  v12[0] = v15;
+  v12[1] = strlen_alt1(v15);
+  GameRoutine_1573f80((void*)(&v13_.v13), v5, v12);
+  result = v13_.v14;
+  if (v13_.v14 != 0) {
+    v7 = std___1___shared_weak_count_lock_alt1(v13_.v14);
+    v8 = v13_.v13;
+    result = v13_.v14;
+    if (v13_.v14 != 0) {
+      result = std___1___shared_weak_count___release_weak_alt2(v13_.v14);
+    }
+    if (v7 != 0 && v8 != 0) {
+      v9 = *a3;
+      v10 = *a3 & 0xFFFLL;
+      if ((v9 & 0xFFF) != 0) {
+        v11 = *(_QWORD*)(v8 + 1080);
+        *(_DWORD*)(v8 + 1096) = v9;
+        *(_QWORD*)(v8 + 1088) = 0;
+        if (v11 != 0) {
+          game_1841930(
+              v11, *(_QWORD*)(*(_QWORD*)(*GameData_212c880[0] + 64) + 8 * v10));
+        }
+      }
+      else {
+        *(_QWORD*)(v8 + 1088) = 0;
+        *(_DWORD*)(v8 + 1096) = 0;
+      }
+      result = (*(__int64 (**)(__int64, bool))(*(_QWORD*)v8 + 40LL))(
+          v8, (_DWORD)v10 != 0);
+    }
+    else if (v7 == 0) {
+      return result;
+    }
+    if (atomic_fetch_add((atomic_ullong* volatile)(v7 + 8),
+                         0xFFFFFFFFFFFFFFFFLL) == 0) {
+      (*(void (**)(__int64))(*(_QWORD*)v7 + 16LL))(v7);
+      return std___1___shared_weak_count___release_weak_alt2(v7);
+    }
+  }
+  return result;
 }
 
 void LayoutAccessor_1573860(__int64* a1, __int64 a2)
