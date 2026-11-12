@@ -344,7 +344,8 @@ __int64 TaskPassNodes_b99230_alt1(__int64 a1, __int64 a2,
                                   _QWORD* a3) __asm__("TaskPassNodes_b99230");
 __int64 TaskPassNodes_b995b0(__int64 a1, _QWORD** a2, __int64 a3);
 __int64 TaskPassNodes_b99960(__int64 a1, __int64** a2, __int64 a3);
-__int64 TaskPassNodes_b9a290(__int64 a1, __int64** a2, __int64 a3);
+__int64 TaskPassNodes_b9a290_alt1(__int64 a1, __int64** a2,
+                                  __int64 a3) __asm__("TaskPassNodes_b9a290");
 __int64 TaskPassNodes_b9a480(__int64 a1, __int64 a2, _QWORD* a3);
 __int64 TaskPassNodes_b9aa80_alt1(_QWORD* a1, __int64 a2,
                                   _QWORD* a3) __asm__("TaskPassNodes_b9aa80");
@@ -705,6 +706,9 @@ __int64 TaskPassNodes_bbdfa0(__int64 a1, __int64** a2, __int64 a3);
 __int64 TaskPassNodes_bbe570(__int64 a1, __int64** a2, __int64 a3);
 unsigned __int64 TaskPassNodes_bc32f0(__int64 a1, __int64* a2, __int64 a3);
 __int64 TaskPassNodes_bc3990(__int64 a1, __int64 a2, __int64* a3);
+__int64 GameRoutine_b66510_alt1(__int64*, const char*,
+                                __int64) __asm__("GameRoutine_b66510");
+__int64 TaskPassNodes_b9a290(__int64 a1, __int64** a2, __int64* a3);
 
 __int64 TaskPassNodes_b88c20(__int64 a1, __int64 a2, __int64 a3)
 {
@@ -4623,7 +4627,7 @@ __int64 TaskPassNodes_b99960(__int64 a1, __int64** a2, __int64 a3)
   return result;
 }
 
-__int64 TaskPassNodes_b9a290(__int64 a1, __int64** a2, __int64 a3)
+__int64 TaskPassNodes_b9a290(__int64 a1, __int64** a2, __int64* a3)
 {
   __int64* v4;
   _QWORD* v6;
@@ -4639,12 +4643,15 @@ __int64 TaskPassNodes_b9a290(__int64 a1, __int64** a2, __int64 a3)
   unsigned __int64 v16;
   __int64* v17;
   __int64 result;
-  __int64 v19;
-  int v20;
-  int v21;
-  __int64 v22;
-  char v23;
-  int v24;
+  struct {
+    __int64 v19;
+    int v20;
+    int v21;
+    __int64 v22;
+    char v23;
+    char gap25_[3];
+    int v24;
+  } v19_;
 
   v4 = *a2;
   v6 = **(_QWORD***)(a1 + 8);
@@ -4664,17 +4671,17 @@ __int64 TaskPassNodes_b9a290(__int64 a1, __int64** a2, __int64 a3)
   }
   v15 = *v14;
   v16 = HIDWORD(*v14);
-  v4[1] = GameRoutine_b4a3f0(a3, v8);
-  v4[2] = GameRoutine_b4a3f0(a3, v9);
-  *v4 = ResourceBuilder_b5a4b0(a3, v10);
-  v24 = 0;
-  v20 = v15;
-  v21 = v16;
+  v4[1] = GameRoutine_b4a3f0_alt1((__int64)a3, v8);
+  v4[2] = GameRoutine_b4a3f0_alt1((__int64)a3, v9);
+  *v4 = ResourceBuilder_b5a4b0((__int64)a3, v10);
+  v19_.v24 = 0;
+  v19_.v20 = v15;
+  v19_.v21 = v16;
   v17 = a2[1];
-  v22 = 0x100000001LL;
-  v23 = 1;
-  v19 = 0x1500000000LL;
-  result = GameRoutine_b66510(a3, "TransDepth", &v19);
+  v19_.v22 = 0x100000001LL;
+  v19_.v23 = 1;
+  v19_.v19 = 0x1500000000LL;
+  result = GameRoutine_b66510_alt1(a3, "TransDepth", (__int64)&v19_.v19);
   *v17 = result;
   return result;
 }

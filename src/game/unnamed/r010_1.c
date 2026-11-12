@@ -109,6 +109,8 @@ void GameHr_1954c90();
 void GameHr_1954e30();
 void GameHr_196b6c0();
 __int16* GameHr_197f580(_QWORD* a1);
+__int64* GameHr_194cb90(__int64* result, __int64* a2, __int64* a3, __int64* a4,
+                        __int64* a5, __int64 a6);
 
 void GameHr_18af120(_QWORD* a1, __int64* a2)
 {
@@ -663,6 +665,8 @@ LABEL_67:
 __int64* GameHr_194cb90(__int64* result, __int64* a2, __int64* a3, __int64* a4,
                         __int64* a5, __int64 a6)
 {
+
+#pragma clang fp contract(off)
   __int64 v6;
   float v7;
   float v8;

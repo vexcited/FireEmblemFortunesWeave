@@ -267,6 +267,7 @@ __int64 GameHr_127e30(__int64 a1, __int64 a2, __int64 a3, __int64 a4,
                       unsigned __int8* a5, __int64 a6, __int64 a7, __int64 a8);
 __int64 GameHr_561e20(__int64 result, __int64* a2, __int64 a3, _QWORD* a4,
                       __int64 a5, __int64 a6);
+__int64 GameHr_55b6e0(atomic_uint* a1, signed int a2);
 
 bool GameHr_3510(__int64 a1)
 {
@@ -4067,7 +4068,7 @@ __int64 GameHr_55b6e0(atomic_uint* a1, signed int a2)
 
   do {
     v2 = *(_DWORD*)a1;
-    if (*(_DWORD*)a1 <= a2) {
+    if ((signed __int32)*(_DWORD*)a1 <= a2) {
       v4 = a2;
     }
     else {

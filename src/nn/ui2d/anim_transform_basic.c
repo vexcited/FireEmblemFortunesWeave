@@ -67,11 +67,27 @@ extern _UNKNOWN* GameData_212dfd0;
 extern __int64* GameData_212dfc8;
 long double TextBox_59d920(_QWORD, _QWORD);
 __int64 AnimTransformBasic_56f080(__int64 result, __int64 a2);
-void AnimTransformBasic_56f760(__int64 a1, float* a2, __int64 a3, __int64 a4,
-                               __int64 a5, __int64 a6, __int64 a7, __int64 a8);
+void AnimTransformBasic_56f760_alt1(
+    __int64 a1, float* a2, __int64 a3, __int64 a4, __int64 a5, __int64 a6,
+    __int64 a7, __int64 a8) __asm__("AnimTransformBasic_56f760");
 __int64 LayoutEx_57b5c0_alt1(__int64) __asm__("LayoutEx_57b5c0");
 __int64 LayoutEx_579180(__int64);
 __int64 memset_alt1(__int64, int, unsigned __int64) __asm__("memset");
+__int64* nn_ui2d_Pane_GetRuntimeTypeInfoStatic_alt1() __asm__(
+    "nn_ui2d_Pane_GetRuntimeTypeInfoStatic");
+__int64 LayoutEx_58d5b0_alt1(__int64, int) __asm__("LayoutEx_58d5b0");
+__int64 LayoutEx_58d820_alt1(__int64, int) __asm__("LayoutEx_58d820");
+__int64 TextBox_59d8e0_alt1(__int64 result, int,
+                            float) __asm__("TextBox_59d8e0");
+float TextBox_59d920_alt1(__int64, int) __asm__("TextBox_59d920");
+float nn_ui2d_59f160(float*, int, float);
+int __cxa_guard_acquire_alt1(__int64) __asm__("__cxa_guard_acquire");
+int strcmp_alt1(const char*, const char*) __asm__("strcmp");
+void __cxa_guard_release_alt1(__int64) __asm__("__cxa_guard_release");
+void nn_detail_UnexpectedDefaultImpl_alt1() __asm__(
+    "nn_detail_UnexpectedDefaultImpl");
+void nn_ui2d_59f2e0(_WORD*, float);
+void AnimTransformBasic_56f760(__int64 a1, float* a2, __int64 a3);
 
 bool AnimTransformBasic_56e6a0(__int64 a1)
 {
@@ -854,388 +870,539 @@ __int64 AnimTransformBasic_56f700(__int64 result, __int64 a2)
   return result;
 }
 
-void AnimTransformBasic_56f760(__int64 a1, float* a2, __int64 a3, __int64 a4,
-                               __int64 a5, __int64 a6, __int64 a7, __int64 a8)
+void AnimTransformBasic_56f760(__int64 a1, float* a2, __int64 a3)
 {
-  int v8;
-  bool v10;
+
+#pragma clang fp contract(off)
+  int v3;
+  bool v5;
+  __int64 v6;
+  float* v7;
+  __int64 v8;
+  atomic_uchar* v9;
+  __int64* v10;
   __int64 v11;
-  float* v12;
+  int v12;
   __int64 v13;
-  atomic_uchar* v14;
-  __int64* v15;
+  __int64 v14;
+  float v15;
   __int64 v16;
-  int v17;
+  __int64 v17;
   __int64 v18;
-  __int64 v19;
+  float v19;
   float v20;
   __int64 v21;
-  __int64 v22;
-  __int64 v23;
-  __int64 v24;
-  __int64 v25;
-  float v26;
-  float v27;
-  __int64 v28;
+  float v22;
+  unsigned __int64 v23;
+  float v24;
+  float v25;
+  __int64 v26;
+  __int64 v27;
+  unsigned __int64 v28;
   float v29;
-  unsigned __int64 v30;
-  float v31;
-  float v32;
-  __int64 v33;
-  __int64 v34;
-  unsigned __int64 v35;
-  float v36;
-  float* v37;
-  char v38;
-  __int64 v39;
+  float* v30;
+  char v31;
+  __int64 v32;
+  int v33;
+  float* v34;
+  int v35;
+  float* v36;
+  __int64 v37;
+  int v39;
   int v40;
-  float* v41;
-  int v42;
+  float* v42;
   float* v43;
-  __int64 v44;
-  int v46;
-  int v47;
-  float* v49;
-  float* v50;
-  float v51;
-  unsigned __int64 v52;
-  float v53;
-  __int64 v54;
-  float v55;
-  __int64 v56;
-  float v57;
+  float v44;
+  unsigned __int64 v45;
+  float v46;
+  __int64 v47;
+  float v48;
+  __int64 v49;
+  float v50;
+  __int64 v51;
+  unsigned __int8 v52;
+  __int64 v53;
+  float v54;
+  __int64 v55;
+  _WORD* v56;
+  __int64 v57;
   __int64 v58;
-  unsigned __int8 v59;
-  __int64 v60;
-  float v61;
+  float* v59;
+  float v60;
   __int64 v62;
-  _WORD* v63;
-  __int64 v64;
+  __int64* v63;
   __int64 v65;
-  float* v66;
-  float v67;
-  _QWORD* v69;
+  __int64 v66;
+  unsigned int v67;
+  __int64** v68;
+  __int64* v69;
   __int64* v70;
-  __int64 v72;
-  __int64 v73;
-  unsigned int v74;
-  __int64** v75;
+  __int64* v71;
+  __int64* v72;
+  __int64* v73;
+  __int64* v74;
+  __int64 v75;
   __int64* v76;
-  __int64* v77;
-  __int64* v78;
+  __int64 v77;
+  __int64 v78;
   __int64* v79;
-  __int64* v80;
-  __int64* v81;
-  __int64 v82;
-  __int64* v83;
-  float* v84;
-  __int64 v85;
-  __int64* v86;
+  __int64 v81;
+  unsigned __int64 v82;
+  float v83;
+  float v84;
+  float v85;
+  __int64 v86;
+  __int64 v87;
   __int64 v88;
   float v89;
-  long double v90;
-  long double v91;
-  long double v92;
-  long double v93;
-  float v94;
-  long double v95;
-  long double v96;
-  long double v97;
-  long double v98;
-  unsigned __int64 v99;
-  float v100;
-  float v101;
+  __int64 v90;
+  __int64 v91;
+  float v92;
+  __int64 v93;
+  __int64 v94;
+  float v95;
+  unsigned __int64 v96;
+  float v97;
+  __int64 v98;
+  float v99;
+  unsigned __int64 v100;
+  unsigned __int64 v101;
   float v102;
-  __int64 v103;
+  float v103;
   __int64 v104;
-  unsigned __int8 v105;
-  __int64 v106;
-  float v107;
+  __int64 v105;
+  __int64 v107;
   __int64 v108;
-  __int64 v109;
+  float* v109;
   __int64 v110;
   __int64 v111;
-  float v112;
-  float v113;
-  __int64 v114;
-  __int64 v115;
-  float v116;
-  unsigned __int64 v117;
-  float v118;
-  __int64 v119;
-  float v120;
-  unsigned __int64 v121;
-  unsigned __int64 v122;
-  float v123;
-  long double v124;
-  __int64 v125;
-  __int64 v126;
-  long double v127;
-  __int64 v128;
-  __int64 v129;
-  __int64 v130;
-  __int64 v131;
-  float* v132;
-  __int64 v133;
-  __int64 v134;
-  __int64 v135;
-  __int64 v136;
-  __int64 v137;
+  __int64 v112;
 
-  v8 = *(unsigned __int8*)(a3 + 29);
-  v129 = a1;
-  v10 = v8 == 4 || v8 == 2;
-  if (v10) {
-    v11 = *(unsigned int*)(a3 + 32);
+  v103 = COERCE_AS(__typeof__(v103), PSEUDO_REGISTER(float, "s0", "=w")),
+  v19 = COERCE_AS(__typeof__(v19), PSEUDO_REGISTER(float, "s0", "=w")),
+  v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(float, "s0", "=w")),
+  v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s0", "=w")),
+  v95 = COERCE_AS(__typeof__(v95), PSEUDO_REGISTER(float, "s0", "=w"));
+  v3 = *(unsigned __int8*)(a3 + 29);
+  v5 = v3 == 4 || v3 == 2;
+  if (v5) {
+    v6 = *(unsigned int*)(a3 + 32);
     if (*(_BYTE*)(a3 + 28) != 0) {
     LABEL_9:
-      v12 = a2 + 12;
-      v13 = 0;
-      v131 = a3 + v11;
-      v14 = (atomic_uchar*)GameData_212dfd0;
-      v15 = GameData_212dfc8;
-      v130 = a3;
-      v132 = a2 + 12;
+      v7 = a2 + 12;
+      v8 = 0;
+      v108 = a3 + v6;
+      v9 = (atomic_uchar*)GameData_212dfd0;
+      v10 = GameData_212dfc8;
+      v107 = a3;
+      v109 = a2 + 12;
       do {
-        v133 = v13;
-        v16 = a3 + *(unsigned int*)(v131 + 4 * v13);
-        v18 = v16 + 8;
-        v17 = *(_DWORD*)v16;
-        v135 = v16 + 8;
-        if (*(int*)v16 <= 1314344005) {
-          if (v17 > 1129729093) {
-            if (v17 == 1129729094) {
-              if (*(_BYTE*)(v16 + 4) != 0) {
-                v99 = 0;
-                v100 = *(float*)(v129 + 32);
+        v110 = v8;
+        v11 = a3 + *(unsigned int*)(v108 + 4 * v8);
+        v13 = v11 + 8;
+        v12 = *(_DWORD*)v11;
+        v112 = v11 + 8;
+        if (*(int*)v11 <= 1314344005) {
+          if (v12 > 1129729093) {
+            if (v12 == 1129729094) {
+              if (*(_BYTE*)(v11 + 4) != 0) {
+                v82 = 0;
+                v83 = *(float*)(a1 + 32);
                 do {
-                  v103 = v16 + *(unsigned int*)(v18 + 4 * v99);
-                  v104 = *(unsigned int*)(v103 + 8);
-                  if (*(_BYTE*)(v103 + 2) == 3) {
+                  v86 = v11 + *(unsigned int*)(v13 + 4 * v82);
+                  v87 = *(unsigned int*)(v86 + 8);
+                  if (*(_BYTE*)(v86 + 2) == 3) {
                     (*(void (**)(float*, _QWORD))(*(_QWORD*)a2 + 48LL))(
-                        a2, *(unsigned __int8*)(v103 + 1));
-                    GameRoutine_59f2e0(v103 + v104, v100, (float)v105);
+                        a2, *(unsigned __int8*)(v86 + 1)),
+                        v103 = COERCE_AS(__typeof__(v103),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v19 = COERCE_AS(__typeof__(v19),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v25 = COERCE_AS(__typeof__(v25),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v84 = COERCE_AS(__typeof__(v84),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v95 = COERCE_AS(__typeof__(v95),
+                                        PSEUDO_REGISTER(float, "s0", "=w"));
+                    nn_ui2d_59f2e0((_WORD*)(v86 + v87), v83),
+                        v103 = COERCE_AS(__typeof__(v103),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v19 = COERCE_AS(__typeof__(v19),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v25 = COERCE_AS(__typeof__(v25),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v84 = COERCE_AS(__typeof__(v84),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v95 = COERCE_AS(__typeof__(v95),
+                                        PSEUDO_REGISTER(float, "s0", "=w"));
                   }
                   else {
-                    v101 = GameRoutine_59f160(
-                        v103 + v104, *(unsigned __int16*)(v103 + 4), v100);
+                    v84 = nn_ui2d_59f160((float*)(v86 + v87),
+                                         *(unsigned __int16*)(v86 + 4), v83),
+                    v103 = COERCE_AS(__typeof__(v103),
+                                     PSEUDO_REGISTER(float, "s0", "=w")),
+                    v19 = COERCE_AS(__typeof__(v19),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v25 = COERCE_AS(__typeof__(v25),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v95 = COERCE_AS(__typeof__(v95),
+                                    PSEUDO_REGISTER(float, "s0", "=w"));
                   }
-                  v102 = v101 + 0.5;
-                  if (v102 < 0.0) {
-                    v102 = 0.0;
+                  v85 = v84 + 0x1.0000000000000p-1f;
+                  if (v85 < 0x0.0p+0f) {
+                    v85 = 0x0.0p+0f;
                   }
-                  if (v102 > 255.0) {
-                    v102 = 255.0;
+                  if (v85 > 0x1.fe00000000000p+7f) {
+                    v85 = 0x1.fe00000000000p+7f;
                   }
                   (*(void (**)(float*, _QWORD, _QWORD))(*(_QWORD*)a2 + 56LL))(
-                      a2, *(unsigned __int8*)(v103 + 1),
-                      (unsigned int)(int)v102);
-                  ++v99;
-                } while (v99 < *(unsigned __int8*)(v16 + 4));
+                      a2, *(unsigned __int8*)(v86 + 1), (unsigned int)(int)v85),
+                      v103 = COERCE_AS(__typeof__(v103),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v19 = COERCE_AS(__typeof__(v19),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v25 = COERCE_AS(__typeof__(v25),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v84 = COERCE_AS(__typeof__(v84),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v95 = COERCE_AS(__typeof__(v95),
+                                      PSEUDO_REGISTER(float, "s0", "=w"));
+                  ++v82;
+                } while (v82 < *(unsigned __int8*)(v11 + 4));
               }
             }
-            else if (v17 == 1230392390 && *(_BYTE*)(v16 + 4) != 0) {
-              v35 = 0;
-              v36 = *(float*)(v129 + 32);
+            else if (v12 == 1230392390 && *(_BYTE*)(v11 + 4) != 0) {
+              v28 = 0;
+              v29 = *(float*)(a1 + 32);
               do {
-                v39 = v16 + *(unsigned int*)(v18 + 4 * v35);
-                v40 = *(unsigned __int16*)(v39 + 4);
-                v41 = (float*)(v39 + *(unsigned int*)(v39 + 8));
-                v42 = v40 - 1;
-                if (v40 == 1 || v36 <= *v41) {
-                  v37 = v41 + 1;
+                v32 = v11 + *(unsigned int*)(v13 + 4 * v28);
+                v33 = *(unsigned __int16*)(v32 + 4);
+                v34 = (float*)(v32 + *(unsigned int*)(v32 + 8));
+                v35 = v33 - 1;
+                if (v33 == 1 || v29 <= *v34) {
+                  v30 = v34 + 1;
                 }
                 else {
-                  v43 = &v41[2 * v42];
-                  if (v36 >= *v43) {
-                    v37 = v43 + 1;
+                  v36 = &v34[2 * v35];
+                  if (v29 >= *v36) {
+                    v30 = v36 + 1;
                   }
                   else {
-                    if ((unsigned int)(v40 - 3) > 0xFFFFFFFD) {
-                      v44 = 0;
+                    if ((unsigned int)(v33 - 3) > 0xFFFFFFFD) {
+                      v37 = 0;
                     }
                     else {
-                      LODWORD(v44) = 0;
+                      LODWORD(v37) = 0;
                       do {
                         while (1) {
-                          v46 = (v42 + (int)v44) / 2;
-                          if (v36 >= v41[2 * v46]) {
+                          v39 = (v35 + (int)v37) / 2;
+                          if (v29 >= v34[2 * v39]) {
                             break;
                           }
-                          v42 = (v42 + (int)v44) / 2;
-                          v47 = v46 - 1;
-                          if ((_DWORD)v44 == v42 || (_DWORD)v44 == v47) {
+                          v35 = (v35 + (int)v37) / 2;
+                          v40 = v39 - 1;
+                          if ((_DWORD)v37 == v35 || (_DWORD)v37 == v40) {
                             goto LABEL_56;
                           }
                         }
-                        LODWORD(v44) = (v42 + (int)v44) / 2;
-                      } while (v46 != v42 && v46 != v42 - 1);
+                        LODWORD(v37) = (v35 + (int)v37) / 2;
+                      } while (v39 != v35 && v39 != v35 - 1);
                     LABEL_56:
-                      v44 = (int)v44;
+                      v37 = (int)v37;
                     }
-                    v49 = &v41[2 * v42];
-                    v37 = &v41[2 * v44 + 1];
-                    v51 = *v49;
-                    v50 = v49 + 1;
-                    if (vabds_f32(v36, v51) < 0.001) {
-                      v37 = v50;
+                    v42 = &v34[2 * v35];
+                    v30 = &v34[2 * v37 + 1];
+                    v44 = *v42;
+                    v43 = v42 + 1;
+                    if (vabds_f32(v29, v44) < 0x1.0624de0000000p-10f) {
+                      v30 = v43;
                     }
                   }
                 }
-                ++v35;
-                v10 = *(unsigned __int16*)v37 == 0;
-                v38 = (_BYTE)a2[22] & 0xFE;
-                if (!v10) {
-                  ++v38;
+                ++v28;
+                v5 = *(unsigned __int16*)v30 == 0;
+                v31 = (_BYTE)a2[22] & 0xFE;
+                if (!v5) {
+                  ++v31;
                 }
-                *((_BYTE*)a2 + 88) = v38;
-              } while (v35 < *(unsigned __int8*)(v16 + 4));
+                *((_BYTE*)a2 + 88) = v31;
+              } while (v28 < *(unsigned __int8*)(v11 + 4));
             }
             goto LABEL_10;
           }
-          if (v17 != 1095586630) {
-            if (v17 == 1095781446 && *(_BYTE*)(v16 + 4) != 0) {
-              v30 = 0;
-              v31 = *(float*)(v129 + 32);
+          if (v12 != 1095586630) {
+            if (v12 == 1095781446 && *(_BYTE*)(v11 + 4) != 0) {
+              v23 = 0;
+              v24 = *(float*)(a1 + 32);
               do {
-                v33 = v16 + *(unsigned int*)(v18 + 4 * v30);
-                v34 = *(unsigned int*)(v33 + 8);
-                if (*(_BYTE*)(v33 + 2) == 3) {
-                  GameRoutine_59f2e0(v33 + v34, v31,
-                                     v12[*(unsigned __int8*)(v33 + 1)]);
+                v26 = v11 + *(unsigned int*)(v13 + 4 * v23);
+                v27 = *(unsigned int*)(v26 + 8);
+                if (*(_BYTE*)(v26 + 2) == 3) {
+                  nn_ui2d_59f2e0((_WORD*)(v26 + v27), v24),
+                      v103 = COERCE_AS(__typeof__(v103),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v19 = COERCE_AS(__typeof__(v19),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v25 = COERCE_AS(__typeof__(v25),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v84 = COERCE_AS(__typeof__(v84),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v95 = COERCE_AS(__typeof__(v95),
+                                      PSEUDO_REGISTER(float, "s0", "=w"));
                 }
                 else {
-                  v32 = GameRoutine_59f160(v33 + v34,
-                                           *(unsigned __int16*)(v33 + 4), v31);
+                  v25 = nn_ui2d_59f160((float*)(v26 + v27),
+                                       *(unsigned __int16*)(v26 + 4), v24),
+                  v103 = COERCE_AS(__typeof__(v103),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v19 = COERCE_AS(__typeof__(v19),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v84 = COERCE_AS(__typeof__(v84),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v95 = COERCE_AS(__typeof__(v95),
+                                  PSEUDO_REGISTER(float, "s0", "=w"));
                 }
-                ++v30;
-                v12[*(unsigned __int8*)(v33 + 1)] = v32;
+                ++v23;
+                v7[*(unsigned __int8*)(v26 + 1)] = v25;
                 *((_BYTE*)a2 + 88) |= 0x10u;
-              } while (v30 < *(unsigned __int8*)(v16 + 4));
+              } while (v23 < *(unsigned __int8*)(v11 + 4));
             }
             goto LABEL_10;
           }
-          v59 = *(_BYTE*)(v16 + 4);
-          if (v59 != 0) {
-            v60 = 0;
-            v134 = a3 + *(unsigned int*)(v131 + 4 * v13);
-            v61 = *(float*)(v129 + 32);
+          v52 = *(_BYTE*)(v11 + 4);
+          if (v52 != 0) {
+            v53 = 0;
+            v111 = a3 + *(unsigned int*)(v108 + 4 * v8);
+            v54 = *(float*)(a1 + 32);
             while (1) {
-              v62 = v16 + *(unsigned int*)(v18 + 4 * v60);
-              v63 = (_WORD*)(v62 + *(unsigned int*)(v62 + 8));
-              v64 = (unsigned __int16)*v63;
-              if (*v63 != 0) {
+              v55 = v11 + *(unsigned int*)(v13 + 4 * v53);
+              v56 = (_WORD*)(v55 + *(unsigned int*)(v55 + 8));
+              v57 = (unsigned __int16)*v56;
+              if (*v56 != 0) {
                 break;
               }
             LABEL_72:
-              v16 = v134;
-              if (++v60 >= (unsigned __int64)v59) {
+              v11 = v111;
+              if (++v53 >= (unsigned __int64)v52) {
                 goto LABEL_10;
               }
             }
-            v65 = 0;
+            v58 = 0;
             while (2) {
-              v66 = (float*)((char*)v63 + *(unsigned int*)&v63[2 * v65 + 2]);
-              v67 = v66[4];
-              if (v61 >= v67 && (float)(v67 + 0.1) >= v61) {
-                v69 = *((_QWORD**)v66 + 1);
-                if (*v69 != 0 || v69[1] != 0 || v69[2] != 0) {
-                  if ((unsigned int)strcmp(*v69, "body", a3, a4, a5, a6, a7, a8,
-                                           v128, v129, v130, v131, v132, v133,
-                                           v134, v135, v136, v137) != 0) {
-                    if ((atomic_load_explicit(v14, memory_order_acquire) & 1) ==
+              v59 = (float*)((char*)v56 + *(unsigned int*)&v56[2 * v58 + 2]);
+              v60 = v59[4];
+              if (v54 >= v60 && (float)(v60 + 0x1.99999a0000000p-4f) >= v54) {
+                v62 = *((_QWORD*)v59 + 1);
+                if (*(_QWORD*)v62 != 0 || *(_QWORD*)(v62 + 8) != 0 ||
+                    *(_QWORD*)(v62 + 16) != 0) {
+                  if (strcmp_alt1(*(const char**)v62, "body") != 0) {
+                    if ((atomic_load_explicit(v9, memory_order_acquire) & 1) ==
                             0 &&
-                        (unsigned int)__cxa_guard_acquire(v14) != 0) {
-                      *v15 = nn_ui2d_Pane_GetRuntimeTypeInfoStatic(
-                          v94, v95, v96, v97, v98);
-                      __cxa_guard_release(v14);
+                        __cxa_guard_acquire_alt1((__int64)v9) != 0) {
+                      *v10 =
+                          (__int64)nn_ui2d_Pane_GetRuntimeTypeInfoStatic_alt1(),
+                      v103 = COERCE_AS(__typeof__(v103),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v19 = COERCE_AS(__typeof__(v19),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v25 = COERCE_AS(__typeof__(v25),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v84 = COERCE_AS(__typeof__(v84),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v95 = COERCE_AS(__typeof__(v95),
+                                      PSEUDO_REGISTER(float, "s0", "=w"));
+                      __cxa_guard_release_alt1((__int64)v9),
+                          v103 = COERCE_AS(__typeof__(v103),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                          v19 = COERCE_AS(__typeof__(v19),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v25 = COERCE_AS(__typeof__(v25),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v84 = COERCE_AS(__typeof__(v84),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                          v95 = COERCE_AS(__typeof__(v95),
+                                          PSEUDO_REGISTER(float, "s0", "=w"));
                     }
-                    v70 = (__int64*)(*(__int64 (**)(float*))(*(_QWORD*)a2 +
-                                                             16LL))(a2);
-                    if (v70 != v15) {
+                    v63 = (__int64*)(*(__int64 (**)(float*))(*(_QWORD*)a2 +
+                                                             16LL))(a2),
+                    v103 = COERCE_AS(__typeof__(v103),
+                                     PSEUDO_REGISTER(float, "s0", "=w")),
+                    v19 = COERCE_AS(__typeof__(v19),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v25 = COERCE_AS(__typeof__(v25),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v84 = COERCE_AS(__typeof__(v84),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v95 = COERCE_AS(__typeof__(v95),
+                                    PSEUDO_REGISTER(float, "s0", "=w"));
+                    if (v63 != v10) {
                       do {
-                        v70 = (__int64*)*v70;
-                      } while (v70 != v15 && v70 != nullptr);
+                        v63 = (__int64*)*v63;
+                      } while (v63 != v10 && v63 != nullptr);
                     }
-                    v72 = LayoutEx_58d5b0(
-                        *(_QWORD*)(*((_QWORD*)a2 + 29) + 24LL), 19);
-                    if (v72 != 0) {
+                    v65 = LayoutEx_58d5b0_alt1(
+                        *(_QWORD*)(*((_QWORD*)a2 + 29) + 24LL), 19),
+                    v103 = COERCE_AS(__typeof__(v103),
+                                     PSEUDO_REGISTER(float, "s0", "=w")),
+                    v19 = COERCE_AS(__typeof__(v19),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v25 = COERCE_AS(__typeof__(v25),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v84 = COERCE_AS(__typeof__(v84),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v95 = COERCE_AS(__typeof__(v95),
+                                    PSEUDO_REGISTER(float, "s0", "=w"));
+                    if (v65 != 0) {
                       goto LABEL_92;
                     }
                   }
                   else if (a2 != nullptr) {
-                    v84 = a2;
+                    v77 = (__int64)a2;
                     while (1) {
-                      if ((unsigned int)strcmp(v84 + 44, "RootPane", a3, a4, a5,
-                                               a6, a7, a8, v128, v129, v130,
-                                               v131, v132, v133, v134, v135,
-                                               v136, v137) == 0) {
-                        v85 = LayoutEx_58d5b0(v84, 19);
-                        if (v85 != 0 && *(_QWORD*)(v85 + 8) != 0) {
+                      if (strcmp_alt1((const char*)(v77 + 176), "RootPane") ==
+                          0) {
+                        v78 = LayoutEx_58d5b0_alt1(v77, 19),
+                        v103 = COERCE_AS(__typeof__(v103),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v19 = COERCE_AS(__typeof__(v19),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v25 = COERCE_AS(__typeof__(v25),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v84 = COERCE_AS(__typeof__(v84),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v95 = COERCE_AS(__typeof__(v95),
+                                        PSEUDO_REGISTER(float, "s0", "=w"));
+                        if (v78 != 0 && *(_QWORD*)(v78 + 8) != 0) {
                           break;
                         }
                       }
-                      if ((atomic_load_explicit(v14, memory_order_acquire) &
+                      if ((atomic_load_explicit(v9, memory_order_acquire) &
                            1) == 0 &&
-                          (unsigned int)__cxa_guard_acquire(v14) != 0) {
-                        *v15 = nn_ui2d_Pane_GetRuntimeTypeInfoStatic(
-                            v89, v90, v91, v92, v93);
-                        __cxa_guard_release(v14);
+                          __cxa_guard_acquire_alt1((__int64)v9) != 0) {
+                        *v10 = (__int64)
+                            nn_ui2d_Pane_GetRuntimeTypeInfoStatic_alt1(),
+                        v103 = COERCE_AS(__typeof__(v103),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v19 = COERCE_AS(__typeof__(v19),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v25 = COERCE_AS(__typeof__(v25),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v84 = COERCE_AS(__typeof__(v84),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v95 = COERCE_AS(__typeof__(v95),
+                                        PSEUDO_REGISTER(float, "s0", "=w"));
+                        __cxa_guard_release_alt1((__int64)v9),
+                            v103 =
+                                COERCE_AS(__typeof__(v103),
+                                          PSEUDO_REGISTER(float, "s0", "=w")),
+                            v19 = COERCE_AS(__typeof__(v19),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v25 = COERCE_AS(__typeof__(v25),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v84 = COERCE_AS(__typeof__(v84),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                            v95 = COERCE_AS(__typeof__(v95),
+                                            PSEUDO_REGISTER(float, "s0", "=w"));
                       }
-                      v86 = (__int64*)(*(__int64 (**)(float*))(*(_QWORD*)v84 +
-                                                               16LL))(v84);
-                      if (v86 == v15) {
+                      v79 = (__int64*)(*(__int64 (**)(__int64))(*(_QWORD*)v77 +
+                                                                16LL))(v77),
+                      v103 = COERCE_AS(__typeof__(v103),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v19 = COERCE_AS(__typeof__(v19),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v25 = COERCE_AS(__typeof__(v25),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v84 = COERCE_AS(__typeof__(v84),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v95 = COERCE_AS(__typeof__(v95),
+                                      PSEUDO_REGISTER(float, "s0", "=w"));
+                      if (v79 == v10) {
                         goto LABEL_111;
                       }
                       do {
-                        v86 = (__int64*)*v86;
-                      } while (v86 != v15 && v86 != nullptr);
-                      if (v86 != nullptr) {
+                        v79 = (__int64*)*v79;
+                      } while (v79 != v10 && v79 != nullptr);
+                      if (v79 != nullptr) {
                       LABEL_111:
-                        v88 = LayoutEx_58d5b0(
-                            *(_QWORD*)(*((_QWORD*)v84 + 29) + 24LL), 19);
-                        if (v88 != 0 && *(_QWORD*)(v88 + 8) != 0) {
+                        v81 = LayoutEx_58d5b0_alt1(
+                            *(_QWORD*)(*(_QWORD*)(v77 + 232) + 24LL), 19),
+                        v103 = COERCE_AS(__typeof__(v103),
+                                         PSEUDO_REGISTER(float, "s0", "=w")),
+                        v19 = COERCE_AS(__typeof__(v19),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v25 = COERCE_AS(__typeof__(v25),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v84 = COERCE_AS(__typeof__(v84),
+                                        PSEUDO_REGISTER(float, "s0", "=w")),
+                        v95 = COERCE_AS(__typeof__(v95),
+                                        PSEUDO_REGISTER(float, "s0", "=w"));
+                        if (v81 != 0 && *(_QWORD*)(v81 + 8) != 0) {
                           break;
                         }
                       }
-                      v84 = *((float**)v84 + 3);
-                      if (v84 == nullptr) {
+                      v77 = *(_QWORD*)(v77 + 24);
+                      if (v77 == 0) {
                         goto LABEL_75;
                       }
                     }
-                    v72 = LayoutEx_58d5b0(v84, 19);
-                    if (v72 != 0) {
+                    v65 = LayoutEx_58d5b0_alt1(v77, 19),
+                    v103 = COERCE_AS(__typeof__(v103),
+                                     PSEUDO_REGISTER(float, "s0", "=w")),
+                    v19 = COERCE_AS(__typeof__(v19),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v25 = COERCE_AS(__typeof__(v25),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v84 = COERCE_AS(__typeof__(v84),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v95 = COERCE_AS(__typeof__(v95),
+                                    PSEUDO_REGISTER(float, "s0", "=w"));
+                    if (v65 != 0) {
                     LABEL_92:
-                      v73 = *(_QWORD*)(v72 + 8);
-                      if (v73 != 0) {
-                        v74 = *(unsigned __int8*)v66 - 16;
-                        if (v74 >= 3) {
-                          nn_detail_UnexpectedDefaultImpl(v72);
+                      v66 = *(_QWORD*)(v65 + 8);
+                      if (v66 != 0) {
+                        v67 = *(unsigned __int8*)v59 - 16;
+                        if (v67 >= 3) {
+                          nn_detail_UnexpectedDefaultImpl_alt1(),
+                              v103 =
+                                  COERCE_AS(__typeof__(v103),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                              v19 =
+                                  COERCE_AS(__typeof__(v19),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                              v25 =
+                                  COERCE_AS(__typeof__(v25),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                              v84 =
+                                  COERCE_AS(__typeof__(v84),
+                                            PSEUDO_REGISTER(float, "s0", "=w")),
+                              v95 =
+                                  COERCE_AS(__typeof__(v95),
+                                            PSEUDO_REGISTER(float, "s0", "=w"));
                           __udf(0);
                         }
-                        v75 = *(__int64***)(v73 + 152);
-                        if (v75 != (__int64**)(v73 + 144)) {
-                          v76 = *((__int64**)v66 + 1);
-                          v77 = v75[1];
-                          v79 = (__int64*)v76[1];
-                          v78 = (__int64*)v76[2];
-                          v80 = (__int64*)*v76;
-                          v81 = (__int64*)*v77;
-                          (*v75)[1] = (__int64)v77;
-                          *v77 = (__int64)*v75;
-                          v81[1] = (__int64)v75;
-                          *v75 = v81;
-                          *((_DWORD*)v75 + 4) = (unsigned __int8)v74 | 8;
-                          v75[3] = v80;
-                          v75[4] = v79;
-                          v75[5] = v78;
-                          *((_DWORD*)v75 + 12) = 0;
-                          v83 = *(__int64**)(v73 + 128);
-                          v82 = v73 + 128;
-                          *v75 = v83;
-                          v81[1] = v82;
-                          *(_QWORD*)(*(_QWORD*)v82 + 8LL) = v75;
-                          *(_QWORD*)v82 = v81;
+                        v68 = *(__int64***)(v66 + 152);
+                        if (v68 != (__int64**)(v66 + 144)) {
+                          v69 = *((__int64**)v59 + 1);
+                          v70 = v68[1];
+                          v72 = (__int64*)v69[1];
+                          v71 = (__int64*)v69[2];
+                          v73 = (__int64*)*v69;
+                          v74 = (__int64*)*v70;
+                          (*v68)[1] = (__int64)v70;
+                          *v70 = (__int64)*v68;
+                          v74[1] = (__int64)v68;
+                          *v68 = v74;
+                          *((_DWORD*)v68 + 4) = (unsigned __int8)v67 | 8;
+                          v68[3] = v73;
+                          v68[4] = v72;
+                          v68[5] = v71;
+                          *((_DWORD*)v68 + 12) = 0;
+                          v76 = *(__int64**)(v66 + 128);
+                          v75 = v66 + 128;
+                          *v68 = v76;
+                          v74[1] = v75;
+                          *(_QWORD*)(*(_QWORD*)v75 + 8LL) = v68;
+                          *(_QWORD*)v75 = v74;
                         }
                       }
                     }
@@ -1243,10 +1410,10 @@ void AnimTransformBasic_56f760(__int64 a1, float* a2, __int64 a3, __int64 a4,
                 }
               }
             LABEL_75:
-              if (++v65 == v64) {
-                v12 = v132;
-                v18 = v135;
-                v59 = *(_BYTE*)(v134 + 4);
+              if (++v58 == v57) {
+                v7 = v109;
+                v13 = v112;
+                v52 = *(_BYTE*)(v111 + 4);
                 goto LABEL_72;
               }
               continue;
@@ -1254,151 +1421,313 @@ void AnimTransformBasic_56f760(__int64 a1, float* a2, __int64 a3, __int64 a4,
           }
         }
         else {
-          if (v17 <= 1397771333) {
-            if (v17 == 1314344006) {
-              if (*(_BYTE*)(v16 + 4) != 0) {
-                v117 = 0;
-                v118 = *(float*)(v129 + 32);
+          if (v12 <= 1397771333) {
+            if (v12 == 1314344006) {
+              if (*(_BYTE*)(v11 + 4) != 0) {
+                v96 = 0;
+                v97 = *(float*)(a1 + 32);
                 do {
-                  v119 = v16 + *(unsigned int*)(v18 + 4 * v117);
-                  v120 =
-                      GameRoutine_59f160(v119 + *(unsigned int*)(v119 + 8),
-                                         *(unsigned __int16*)(v119 + 4), v118);
-                  v121 = *(unsigned __int8*)(v119 + 1);
-                  if (v121 <= 3) {
-                    *(_WORD*)((char*)a2 + GameData_1b01688[v121]) =
-                        (int)v120 & ~(unsigned __int16)((int)v120 >> 31);
+                  v98 = v11 + *(unsigned int*)(v13 + 4 * v96);
+                  v99 =
+                      nn_ui2d_59f160((float*)(v98 + *(unsigned int*)(v98 + 8)),
+                                     *(unsigned __int16*)(v98 + 4), v97),
+                  v103 = COERCE_AS(__typeof__(v103),
+                                   PSEUDO_REGISTER(float, "s0", "=w")),
+                  v19 = COERCE_AS(__typeof__(v19),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v25 = COERCE_AS(__typeof__(v25),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v84 = COERCE_AS(__typeof__(v84),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v95 = COERCE_AS(__typeof__(v95),
+                                  PSEUDO_REGISTER(float, "s0", "=w"));
+                  v100 = *(unsigned __int8*)(v98 + 1);
+                  if (v100 <= 3) {
+                    *(_WORD*)((char*)a2 + GameData_1b01688[v100]) =
+                        (int)v99 & ~(unsigned __int16)((int)v99 >> 31);
                   }
-                  ++v117;
-                } while (v117 < *(unsigned __int8*)(v16 + 4));
+                  ++v96;
+                } while (v96 < *(unsigned __int8*)(v11 + 4));
               }
             }
-            else if (v17 == 1396984902 && *(_BYTE*)(v16 + 4) != 0) {
-              v52 = 0;
-              v53 = *(float*)(v129 + 32);
+            else if (v12 == 1396984902 && *(_BYTE*)(v11 + 4) != 0) {
+              v45 = 0;
+              v46 = *(float*)(a1 + 32);
               do {
-                v54 = v16 + *(unsigned int*)(v18 + 4 * v52);
-                v55 = GameRoutine_59f160(v54 + *(unsigned int*)(v54 + 8),
-                                         *(unsigned __int16*)(v54 + 4), v53);
-                v56 = *(unsigned __int8*)(v54 + 1);
-                v57 = v55;
-                v58 = LayoutEx_58d820(a2, 4);
-                if (v58 != 0) {
-                  *(float*)(v58 + 4 * v56 + 32) = v57;
+                v47 = v11 + *(unsigned int*)(v13 + 4 * v45);
+                v48 = nn_ui2d_59f160((float*)(v47 + *(unsigned int*)(v47 + 8)),
+                                     *(unsigned __int16*)(v47 + 4), v46),
+                v103 = COERCE_AS(__typeof__(v103),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v19 = COERCE_AS(__typeof__(v19),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v25 = COERCE_AS(__typeof__(v25),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v84 = COERCE_AS(__typeof__(v84),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v95 = COERCE_AS(__typeof__(v95),
+                                PSEUDO_REGISTER(float, "s0", "=w"));
+                v49 = *(unsigned __int8*)(v47 + 1);
+                v50 = v48;
+                v51 = LayoutEx_58d820_alt1((__int64)a2, 4),
+                v103 = COERCE_AS(__typeof__(v103),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v19 = COERCE_AS(__typeof__(v19),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v25 = COERCE_AS(__typeof__(v25),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v84 = COERCE_AS(__typeof__(v84),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v95 = COERCE_AS(__typeof__(v95),
+                                PSEUDO_REGISTER(float, "s0", "=w"));
+                if (v51 != 0) {
+                  *(float*)(v51 + 4 * v49 + 32) = v50;
                 }
-                ++v52;
-              } while (v52 < *(unsigned __int8*)(v16 + 4));
+                ++v45;
+              } while (v45 < *(unsigned __int8*)(v11 + 4));
             }
             goto LABEL_10;
           }
-          if (v17 == 1397771334) {
-            if (*(_BYTE*)(v16 + 4) == 0) {
+          if (v12 == 1397771334) {
+            if (*(_BYTE*)(v11 + 4) == 0) {
               goto LABEL_10;
             }
-            v106 = 0;
-            v107 = *(float*)(v129 + 32);
+            v88 = 0;
+            v89 = *(float*)(a1 + 32);
             while (2) {
-              v108 = v16 + *(unsigned int*)(v18 + 4 * v106);
-              v109 = *(unsigned int*)(v108 + 8);
-              if (*(_BYTE*)(v108 + 2) == 3) {
-                v110 = *(unsigned __int8*)(v108 + 1);
-                v111 = LayoutEx_58d5b0(a2, 6);
-                if (v111 != 0) {
-                  v112 = *(float*)(v111 + 4 * v110 + 28);
-                }
-                else {
-                  v112 = 0.0;
-                }
-                GameRoutine_59f2e0(v108 + v109, v107, v112);
-                v18 = v16 + 8;
-                v113 = v116;
-                v114 = *(unsigned __int8*)(v108 + 1);
-                v115 = LayoutEx_58d820(a2, 6);
-                if (v115 != 0) {
-                LABEL_139:
-                  *(float*)(v115 + 4 * v114 + 28) = v113;
+              v90 = v11 + *(unsigned int*)(v13 + 4 * v88);
+              v91 = *(unsigned int*)(v90 + 8);
+              if (*(_BYTE*)(v90 + 2) == 3) {
+                LayoutEx_58d5b0_alt1((__int64)a2, 6),
+                    v103 = COERCE_AS(__typeof__(v103),
+                                     PSEUDO_REGISTER(float, "s0", "=w")),
+                    v19 = COERCE_AS(__typeof__(v19),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v25 = COERCE_AS(__typeof__(v25),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v84 = COERCE_AS(__typeof__(v84),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v95 = COERCE_AS(__typeof__(v95),
+                                    PSEUDO_REGISTER(float, "s0", "=w"));
+                nn_ui2d_59f2e0((_WORD*)(v90 + v91), v89),
+                    v103 = COERCE_AS(__typeof__(v103),
+                                     PSEUDO_REGISTER(float, "s0", "=w")),
+                    v19 = COERCE_AS(__typeof__(v19),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v25 = COERCE_AS(__typeof__(v25),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v84 = COERCE_AS(__typeof__(v84),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v95 = COERCE_AS(__typeof__(v95),
+                                    PSEUDO_REGISTER(float, "s0", "=w"));
+                v13 = v11 + 8;
+                v92 = v95;
+                v93 = *(unsigned __int8*)(v90 + 1);
+                v94 = LayoutEx_58d820_alt1((__int64)a2, 6),
+                v103 = COERCE_AS(__typeof__(v103),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v19 = COERCE_AS(__typeof__(v19),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v25 = COERCE_AS(__typeof__(v25),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v84 = COERCE_AS(__typeof__(v84),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v95 = COERCE_AS(__typeof__(v95),
+                                PSEUDO_REGISTER(float, "s0", "=w"));
+                if (v94 != 0) {
+                LABEL_137:
+                  *(float*)(v94 + 4 * v93 + 28) = v92;
                 }
               }
               else {
-                v113 = GameRoutine_59f160(v108 + v109,
-                                          *(unsigned __int16*)(v108 + 4), v107);
-                v114 = *(unsigned __int8*)(v108 + 1);
-                v115 = LayoutEx_58d820(a2, 6);
-                if (v115 != 0) {
-                  goto LABEL_139;
+                v92 = nn_ui2d_59f160((float*)(v90 + v91),
+                                     *(unsigned __int16*)(v90 + 4), v89),
+                v103 = COERCE_AS(__typeof__(v103),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v19 = COERCE_AS(__typeof__(v19),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v25 = COERCE_AS(__typeof__(v25),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v84 = COERCE_AS(__typeof__(v84),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v95 = COERCE_AS(__typeof__(v95),
+                                PSEUDO_REGISTER(float, "s0", "=w"));
+                v93 = *(unsigned __int8*)(v90 + 1);
+                v94 = LayoutEx_58d820_alt1((__int64)a2, 6),
+                v103 = COERCE_AS(__typeof__(v103),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v19 = COERCE_AS(__typeof__(v19),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v25 = COERCE_AS(__typeof__(v25),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v84 = COERCE_AS(__typeof__(v84),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v95 = COERCE_AS(__typeof__(v95),
+                                PSEUDO_REGISTER(float, "s0", "=w"));
+                if (v94 != 0) {
+                  goto LABEL_137;
                 }
               }
-              if (++v106 >= (unsigned __int64)*(unsigned __int8*)(v16 + 4)) {
+              if (++v88 >= (unsigned __int64)*(unsigned __int8*)(v11 + 4)) {
                 goto LABEL_10;
               }
               continue;
             }
           }
-          if (v17 == 1413696582) {
-            if (*(_BYTE*)(v16 + 4) != 0) {
-              v122 = 0;
-              v123 = *(float*)(v129 + 32);
+          if (v12 == 1413696582) {
+            if (*(_BYTE*)(v11 + 4) != 0) {
+              v101 = 0;
+              v102 = *(float*)(a1 + 32);
               do {
-                v125 = v16 + *(unsigned int*)(v18 + 4 * v122);
-                v126 = *(unsigned int*)(v125 + 8);
-                if (*(_BYTE*)(v125 + 2) == 3) {
-                  v127 = TextBox_59d920(a2, *(unsigned __int8*)(v125 + 1));
-                  GameRoutine_59f2e0(v125 + v126, v123, *(float*)&v127);
+                v104 = v11 + *(unsigned int*)(v13 + 4 * v101);
+                v105 = *(unsigned int*)(v104 + 8);
+                if (*(_BYTE*)(v104 + 2) == 3) {
+                  TextBox_59d920_alt1((__int64)a2,
+                                      *(unsigned __int8*)(v104 + 1)),
+                      v103 = COERCE_AS(__typeof__(v103),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v19 = COERCE_AS(__typeof__(v19),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v25 = COERCE_AS(__typeof__(v25),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v84 = COERCE_AS(__typeof__(v84),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v95 = COERCE_AS(__typeof__(v95),
+                                      PSEUDO_REGISTER(float, "s0", "=w"));
+                  nn_ui2d_59f2e0((_WORD*)(v104 + v105), v102),
+                      v103 = COERCE_AS(__typeof__(v103),
+                                       PSEUDO_REGISTER(float, "s0", "=w")),
+                      v19 = COERCE_AS(__typeof__(v19),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v25 = COERCE_AS(__typeof__(v25),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v84 = COERCE_AS(__typeof__(v84),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v95 = COERCE_AS(__typeof__(v95),
+                                      PSEUDO_REGISTER(float, "s0", "=w"));
                 }
                 else {
-                  *(float*)&v124 = GameRoutine_59f160(
-                      v125 + v126, *(unsigned __int16*)(v125 + 4), v123);
+                  v103 = nn_ui2d_59f160((float*)(v104 + v105),
+                                        *(unsigned __int16*)(v104 + 4), v102),
+                  v19 = COERCE_AS(__typeof__(v19),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v25 = COERCE_AS(__typeof__(v25),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v84 = COERCE_AS(__typeof__(v84),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v95 = COERCE_AS(__typeof__(v95),
+                                  PSEUDO_REGISTER(float, "s0", "=w"));
                 }
-                TextBox_59d8e0(a2, *(unsigned __int8*)(v125 + 1), v124);
-                ++v122;
-              } while (v122 < *(unsigned __int8*)(v16 + 4));
+                TextBox_59d8e0_alt1((__int64)a2, *(unsigned __int8*)(v104 + 1),
+                                    v103),
+                    v103 = COERCE_AS(__typeof__(v103),
+                                     PSEUDO_REGISTER(float, "s0", "=w")),
+                    v19 = COERCE_AS(__typeof__(v19),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v25 = COERCE_AS(__typeof__(v25),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v84 = COERCE_AS(__typeof__(v84),
+                                    PSEUDO_REGISTER(float, "s0", "=w")),
+                    v95 = COERCE_AS(__typeof__(v95),
+                                    PSEUDO_REGISTER(float, "s0", "=w"));
+                ++v101;
+              } while (v101 < *(unsigned __int8*)(v11 + 4));
             }
           }
-          else if (v17 == 1414351942 && *(_BYTE*)(v16 + 4) != 0) {
-            v19 = 0;
-            v20 = *(float*)(v129 + 32);
+          else if (v12 == 1414351942 && *(_BYTE*)(v11 + 4) != 0) {
+            v14 = 0;
+            v15 = *(float*)(a1 + 32);
             while (1) {
-              v21 = v16 + *(unsigned int*)(v18 + 4 * v19);
-              v22 = *(unsigned int*)(v21 + 8);
-              if (*(_BYTE*)(v21 + 2) == 3) {
+              v16 = v11 + *(unsigned int*)(v13 + 4 * v14);
+              v17 = *(unsigned int*)(v16 + 8);
+              if (*(_BYTE*)(v16 + 2) == 3) {
                 break;
               }
-              v29 = GameRoutine_59f160(v21 + v22, *(unsigned __int16*)(v21 + 4),
-                                       v20);
-              v25 = *(unsigned __int8*)(v21 + 1);
-              v27 = v29;
-              v28 = LayoutEx_58d820(a2, 3);
-              if (v28 != 0) {
+              v22 = nn_ui2d_59f160((float*)(v16 + v17),
+                                   *(unsigned __int16*)(v16 + 4), v15),
+              v103 = COERCE_AS(__typeof__(v103),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v19 = COERCE_AS(__typeof__(v19),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v25 = COERCE_AS(__typeof__(v25),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v84 = COERCE_AS(__typeof__(v84),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v95 = COERCE_AS(__typeof__(v95),
+                              PSEUDO_REGISTER(float, "s0", "=w"));
+              v18 = *(unsigned __int8*)(v16 + 1);
+              v20 = v22;
+              v21 = LayoutEx_58d820_alt1((__int64)a2, 3),
+              v103 = COERCE_AS(__typeof__(v103),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+              v19 = COERCE_AS(__typeof__(v19),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v25 = COERCE_AS(__typeof__(v25),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v84 = COERCE_AS(__typeof__(v84),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v95 = COERCE_AS(__typeof__(v95),
+                              PSEUDO_REGISTER(float, "s0", "=w"));
+              if (v21 != 0) {
                 goto LABEL_23;
               }
             LABEL_18:
-              if (++v19 >= (unsigned __int64)*(unsigned __int8*)(v16 + 4)) {
+              if (++v14 >= (unsigned __int64)*(unsigned __int8*)(v11 + 4)) {
                 goto LABEL_10;
               }
             }
-            v23 = *(unsigned __int8*)(v21 + 1);
-            v24 = LayoutEx_58d5b0(a2, 3) + 4 * v23;
-            v18 = v16 + 8;
-            GameRoutine_59f2e0(v21 + v22, v20, *(float*)(v24 + 24));
-            v25 = *(unsigned __int8*)(v21 + 1);
-            v27 = v26;
-            v28 = LayoutEx_58d820(a2, 3);
-            if (v28 == 0) {
+            LayoutEx_58d5b0_alt1((__int64)a2, 3),
+                v103 = COERCE_AS(__typeof__(v103),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v19 = COERCE_AS(__typeof__(v19),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v25 = COERCE_AS(__typeof__(v25),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v84 = COERCE_AS(__typeof__(v84),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v95 = COERCE_AS(__typeof__(v95),
+                                PSEUDO_REGISTER(float, "s0", "=w"));
+            v13 = v11 + 8;
+            nn_ui2d_59f2e0((_WORD*)(v16 + v17), v15),
+                v103 = COERCE_AS(__typeof__(v103),
+                                 PSEUDO_REGISTER(float, "s0", "=w")),
+                v19 = COERCE_AS(__typeof__(v19),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v25 = COERCE_AS(__typeof__(v25),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v84 = COERCE_AS(__typeof__(v84),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v95 = COERCE_AS(__typeof__(v95),
+                                PSEUDO_REGISTER(float, "s0", "=w"));
+            v18 = *(unsigned __int8*)(v16 + 1);
+            v20 = v19;
+            v21 = LayoutEx_58d820_alt1((__int64)a2, 3),
+            v103 =
+                COERCE_AS(__typeof__(v103), PSEUDO_REGISTER(float, "s0", "=w")),
+            v19 =
+                COERCE_AS(__typeof__(v19), PSEUDO_REGISTER(float, "s0", "=w")),
+            v25 =
+                COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(float, "s0", "=w")),
+            v84 =
+                COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s0", "=w")),
+            v95 =
+                COERCE_AS(__typeof__(v95), PSEUDO_REGISTER(float, "s0", "=w"));
+            if (v21 == 0) {
               goto LABEL_18;
             }
           LABEL_23:
-            *(float*)(v28 + 4 * v25 + 24) = v27;
+            *(float*)(v21 + 4 * v18 + 24) = v20;
             goto LABEL_18;
           }
         }
       LABEL_10:
-        a3 = v130;
-        v13 = v133 + 1;
-      } while (v133 + 1 < (unsigned __int64)*(unsigned __int8*)(v130 + 28));
+        a3 = v107;
+        v8 = v110 + 1;
+      } while (v110 + 1 < (unsigned __int64)*(unsigned __int8*)(v107 + 28));
     }
   }
   else {
-    v11 = 32;
+    v6 = 32;
     if (*(_BYTE*)(a3 + 28) != 0) {
       goto LABEL_9;
     }

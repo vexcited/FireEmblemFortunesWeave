@@ -274,6 +274,7 @@ void gfx_ad57c0(__int64*, unsigned __int64, _QWORD*);
 __int64 GameHr_2837a0(__int64* a1);
 void GameHr_716e40();
 __int64 GameHr_a939e0(__int64 result, _QWORD* a2, __int64** a3);
+void GameHr_32cc60(__int64 a1, __int64 a2);
 void GameHr_320() { ; }
 
 float GameHr_145f60(__int64 a1, __int64 a2, char a3, float a4)
@@ -1782,9 +1783,9 @@ void GameHr_32cc60(__int64 a1, __int64 a2)
       v39 = v37[6] - v38[6];
       v40 = v37[4] - v38[4];
       v41 = v37[5] - v38[5];
-      v42 = (float)(v28 * v39) - (float)(v41 * v30);
-      v43 = (float)(v30 * v40) - (float)(v39 * v29);
-      v44 = (float)(v29 * v41) - (float)(v40 * v28);
+      v42 = (float)(PSEUDO_UNFUSED(v28 * v39)) - (float)(v41 * v30);
+      v43 = (float)(PSEUDO_UNFUSED(v30 * v40)) - (float)(v39 * v29);
+      v44 = (float)(PSEUDO_UNFUSED(v29 * v41)) - (float)(v40 * v28);
       v32 = v38[16] + v42;
       v33 = v38[17] + v43;
       v34 = v38[18] + v44;
@@ -1794,14 +1795,14 @@ void GameHr_32cc60(__int64 a1, __int64 a2)
         if (*((_BYTE*)v45 + 4) != 0) {
           v47 = *v45;
           if (v46 >= 4) {
-            v16 = 0.0;
-            v15 = 0.0;
+            v16 = 0x0.0p+0f;
+            v15 = 0x0.0p+0f;
             v49 = (float*)(v5 + 8 + 4 * v47);
             v48 = 0;
-            v14 = 0.0;
-            v13 = 0.0;
-            v12 = 0.0;
-            v11 = 0.0;
+            v14 = 0x0.0p+0f;
+            v13 = 0x0.0p+0f;
+            v12 = 0x0.0p+0f;
+            v11 = 0x0.0p+0f;
             do {
               v50 = v47 + v48;
               v51 = *(v49 - 2);
@@ -1815,51 +1816,51 @@ void GameHr_32cc60(__int64 a1, __int64 a2)
               v58 = v53[4];
               v59 = v53[5];
               v60 = (float*)(v9 + 24LL * (v50 + 1));
-              v61 = v11 + (float)(v51 * v54);
-              v62 = v12 + (float)(v51 * v55);
-              v63 = v13 + (float)(v51 * v56);
-              v64 = v14 + (float)(v51 * v57);
-              v65 = v15 + (float)(v51 * v58);
+              v61 = v11 + (float)(PSEUDO_UNFUSED(v51 * v54));
+              v62 = v12 + (float)(PSEUDO_UNFUSED(v51 * v55));
+              v63 = v13 + (float)(PSEUDO_UNFUSED(v51 * v56));
+              v64 = v14 + (float)(PSEUDO_UNFUSED(v51 * v57));
+              v65 = v15 + (float)(PSEUDO_UNFUSED(v51 * v58));
               v66 = *v60;
               v67 = v60[1];
-              v68 = v16 + (float)(v51 * v59);
+              v68 = v16 + (float)(PSEUDO_UNFUSED(v51 * v59));
               v69 = v60[2];
               v70 = v60[3];
               v71 = v60[4];
               v72 = v60[5];
               v73 = (float*)(v9 + 24LL * (v50 + 2));
               v74 = (float*)(v9 + 24LL * (v50 + 3));
-              v75 = v63 + (float)(v52 * v69);
-              v76 = v64 + (float)(v52 * v70);
+              v75 = v63 + (float)(PSEUDO_UNFUSED(v52 * v69));
+              v76 = v64 + (float)(PSEUDO_UNFUSED(v52 * v70));
               v77 = *v49;
               v78 = v49[1];
               v49 += 4;
-              v11 = (float)((float)(v61 + (float)(v52 * v66)) +
-                            (float)(v77 * *v73)) +
-                    (float)(v78 * *v74);
-              v12 = (float)((float)(v62 + (float)(v52 * v67)) +
-                            (float)(v77 * v73[1])) +
-                    (float)(v78 * v74[1]);
-              v13 =
-                  (float)(v75 + (float)(v77 * v73[2])) + (float)(v78 * v74[2]);
-              v14 =
-                  (float)(v76 + (float)(v77 * v73[3])) + (float)(v78 * v74[3]);
-              v15 = (float)((float)(v65 + (float)(v52 * v71)) +
-                            (float)(v77 * v73[4])) +
-                    (float)(v78 * v74[4]);
-              v16 = (float)((float)(v68 + (float)(v52 * v72)) +
-                            (float)(v77 * v73[5])) +
-                    (float)(v78 * v74[5]);
+              v11 = (float)((float)(v61 + (float)(PSEUDO_UNFUSED(v52 * v66))) +
+                            (float)(PSEUDO_UNFUSED(v77 * *v73))) +
+                    (float)(PSEUDO_UNFUSED(v78 * *v74));
+              v12 = (float)((float)(v62 + (float)(PSEUDO_UNFUSED(v52 * v67))) +
+                            (float)(PSEUDO_UNFUSED(v77 * v73[1]))) +
+                    (float)(PSEUDO_UNFUSED(v78 * v74[1]));
+              v13 = (float)(v75 + (float)(PSEUDO_UNFUSED(v77 * v73[2]))) +
+                    (float)(PSEUDO_UNFUSED(v78 * v74[2]));
+              v14 = (float)(v76 + (float)(PSEUDO_UNFUSED(v77 * v73[3]))) +
+                    (float)(PSEUDO_UNFUSED(v78 * v74[3]));
+              v15 = (float)((float)(v65 + (float)(PSEUDO_UNFUSED(v52 * v71))) +
+                            (float)(PSEUDO_UNFUSED(v77 * v73[4]))) +
+                    (float)(PSEUDO_UNFUSED(v78 * v74[4]));
+              v16 = (float)((float)(v68 + (float)(PSEUDO_UNFUSED(v52 * v72))) +
+                            (float)(PSEUDO_UNFUSED(v77 * v73[5]))) +
+                    (float)(PSEUDO_UNFUSED(v78 * v74[5]));
             } while ((v46 & 0xFC) != v48);
           }
           else {
-            v16 = 0.0;
-            v15 = 0.0;
+            v16 = 0x0.0p+0f;
+            v15 = 0x0.0p+0f;
             v48 = 0;
-            v14 = 0.0;
-            v13 = 0.0;
-            v12 = 0.0;
-            v11 = 0.0;
+            v14 = 0x0.0p+0f;
+            v13 = 0x0.0p+0f;
+            v12 = 0x0.0p+0f;
+            v11 = 0x0.0p+0f;
           }
           v79 = v46 & 3;
           if (v79 != 0) {
@@ -1871,22 +1872,22 @@ void GameHr_32cc60(__int64 a1, __int64 a2)
               v84 = *v82++;
               ++v81;
               --v79;
-              v11 = v11 + (float)(v84 * *v83);
-              v12 = v12 + (float)(v84 * v83[1]);
-              v13 = v13 + (float)(v84 * v83[2]);
-              v14 = v14 + (float)(v84 * v83[3]);
-              v15 = v15 + (float)(v84 * v83[4]);
-              v16 = v16 + (float)(v84 * v83[5]);
+              v11 = v11 + (float)(PSEUDO_UNFUSED(v84 * *v83));
+              v12 = v12 + (float)(PSEUDO_UNFUSED(v84 * v83[1]));
+              v13 = v13 + (float)(PSEUDO_UNFUSED(v84 * v83[2]));
+              v14 = v14 + (float)(PSEUDO_UNFUSED(v84 * v83[3]));
+              v15 = v15 + (float)(PSEUDO_UNFUSED(v84 * v83[4]));
+              v16 = v16 + (float)(PSEUDO_UNFUSED(v84 * v83[5]));
             } while (v79 != 0);
           }
         }
         else {
-          v11 = 0.0;
-          v12 = 0.0;
-          v13 = 0.0;
-          v14 = 0.0;
-          v15 = 0.0;
-          v16 = 0.0;
+          v11 = 0x0.0p+0f;
+          v12 = 0x0.0p+0f;
+          v13 = 0x0.0p+0f;
+          v14 = 0x0.0p+0f;
+          v15 = 0x0.0p+0f;
+          v16 = 0x0.0p+0f;
         }
         v17 = v37[2];
         v18 = v37[3];
@@ -1897,35 +1898,47 @@ void GameHr_32cc60(__int64 a1, __int64 a2)
         v23 = v15 + v15;
         v24 = v16 + v16;
         v25 = v14 + v14;
-        v26 = (float)(v18 * v18) + -0.5;
-        v27 = (float)((float)(v19 * v20) + (float)(*v37 * v22)) +
-              (float)(v17 * v21);
-        v28 =
-            v28 + (float)((float)((float)(v18 * (float)((float)(v17 * v22) -
-                                                        (float)(*v37 * v21))) +
-                                  (float)(v20 * v26)) +
-                          (float)(v19 * v27));
-        v29 = v29 + (float)((float)((float)(v18 * (float)((float)(v19 * v21) -
-                                                          (float)(v17 * v20))) +
+        v26 = (float)(v18 * v18) + -0x1.0000000000000p-1f;
+        v27 =
+            (float)((float)(PSEUDO_UNFUSED(v19 * v20)) + (float)(*v37 * v22)) +
+            (float)(v17 * v21);
+        v28 = v28 + (float)((float)((float)(PSEUDO_UNFUSED(
+                                        v18 * (float)((float)(v17 * v22) -
+                                                      (float)(PSEUDO_UNFUSED(
+                                                          *v37 * v21))))) +
+                                    (float)(v20 * v26)) +
+                            (float)(v19 * v27));
+        v29 = v29 + (float)((float)((float)(PSEUDO_UNFUSED(
+                                        v18 * (float)((float)(v19 * v21) -
+                                                      (float)(PSEUDO_UNFUSED(
+                                                          v17 * v20))))) +
                                     (float)(v22 * v26)) +
                             (float)(*v37 * v27));
-        v30 = v30 + (float)((float)((float)(v18 * (float)((float)(*v37 * v20) -
-                                                          (float)(v19 * v22))) +
+        v30 = v30 + (float)((float)((float)(PSEUDO_UNFUSED(
+                                        v18 * (float)((float)(*v37 * v20) -
+                                                      (float)(PSEUDO_UNFUSED(
+                                                          v19 * v22))))) +
                                     (float)(v21 * v26)) +
                             (float)(v17 * v27));
-        v31 = (float)((float)(v19 * v23) + (float)(*v37 * v25)) +
-              (float)(v17 * v24);
-        v32 = v32 + (float)((float)((float)(v18 * (float)((float)(v19 * v24) -
-                                                          (float)(v17 * v23))) +
+        v31 =
+            (float)((float)(PSEUDO_UNFUSED(v19 * v23)) + (float)(*v37 * v25)) +
+            (float)(v17 * v24);
+        v32 = v32 + (float)((float)((float)(PSEUDO_UNFUSED(
+                                        v18 * (float)((float)(v19 * v24) -
+                                                      (float)(PSEUDO_UNFUSED(
+                                                          v17 * v23))))) +
                                     (float)(v25 * v26)) +
                             (float)(*v37 * v31));
-        v33 =
-            v33 + (float)((float)((float)(v18 * (float)((float)(v17 * v25) -
-                                                        (float)(*v37 * v24))) +
-                                  (float)(v23 * v26)) +
-                          (float)(v19 * v31));
-        v34 = v34 + (float)((float)((float)(v18 * (float)((float)(*v37 * v23) -
-                                                          (float)(v19 * v25))) +
+        v33 = v33 + (float)((float)((float)(PSEUDO_UNFUSED(
+                                        v18 * (float)((float)(v17 * v25) -
+                                                      (float)(PSEUDO_UNFUSED(
+                                                          *v37 * v24))))) +
+                                    (float)(v23 * v26)) +
+                            (float)(v19 * v31));
+        v34 = v34 + (float)((float)((float)(PSEUDO_UNFUSED(
+                                        v18 * (float)((float)(*v37 * v23) -
+                                                      (float)(PSEUDO_UNFUSED(
+                                                          v19 * v25))))) +
                                     (float)(v24 * v26)) +
                             (float)(v17 * v31));
       }

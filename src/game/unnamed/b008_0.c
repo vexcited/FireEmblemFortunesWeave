@@ -784,6 +784,7 @@ unsigned __int64 GameHr_9ad560();
 void GameHr_9ad960();
 void GameHr_9af940(_QWORD* a1);
 void GameHr_9b0da0();
+__int64 GameHr_9575c0(__int64 a1);
 
 _QWORD* GameHr_9573e0(_QWORD* a1, __int64 a2)
 {
@@ -946,11 +947,11 @@ __int64 GameHr_9575c0(__int64 a1)
   v4 = *(_QWORD*)(v1 + 40);
   v5 = v1 + 25;
   v6 = (v2 & 1) != 0 ? v4 : v5;
-  v7 = GameRoutine_7a86e0(v6);
-  if (v7 == 0 || GameData_21caab0 == 0) {
+  v7 = game_HashString(v6);
+  if (v7 == 0 || game_GameModeData_instance_ == 0) {
     goto LABEL_16;
   }
-  v9 = *(_QWORD**)(GameData_21caab0 + 48);
+  v9 = *(_QWORD**)(game_GameModeData_instance_ + 48);
   v10 = v9[2];
   if (v10 == 0 || v9[4] == 0) {
     goto LABEL_16;
@@ -994,7 +995,7 @@ __int64 GameHr_9575c0(__int64 a1)
           LABEL_38:
             v12 = v16[3];
             if (v12 != 0) {
-              LODWORD(v12) = *(_DWORD*)(v12 + 32) > 0;
+              LODWORD(v12) = (signed __int32)*(_DWORD*)(v12 + 32) > 0;
             }
             return (unsigned int)v12;
           }

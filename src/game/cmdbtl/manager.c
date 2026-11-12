@@ -2302,8 +2302,8 @@ __int64 Manager_e9c780(__int64 a1, int a2)
   __int64 v16;
 
   v4 = (__int64*)fw_memory_g_heap_manager_ptr;
-  v5 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
-                                      128, 16, 0);
+  v5 = fw_memory_HeapManager_Allocate_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr, 128, 16, 0);
   *(_QWORD*)(v5 + 8) = 0;
   *(_QWORD*)(v5 + 16) = 0;
   *(_BYTE*)(v5 + 32) = 0;
@@ -2323,7 +2323,7 @@ __int64 Manager_e9c780(__int64 a1, int a2)
   v8 = *v4;
   *(_QWORD*)(v7 + 24) = game_cmdbtl_MindBtlInfo_vtable;
   v7 += 24;
-  v9 = (_QWORD*)fw_memory_HeapManager_Allocate(v8, 88, 16, 0);
+  v9 = (_QWORD*)fw_memory_HeapManager_Allocate_alt1(v8, 88, 16, 0);
   v9[2] = 0;
   *v9 = GameData_1fef2b8;
   v9[1] = 0;
@@ -2343,7 +2343,7 @@ __int64 Manager_e9c780(__int64 a1, int a2)
   if (v10 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v10 + 8),
                                    0xFFFFFFFFFFFFFFFFLL) == 0) {
     (*(void (**)(__int64))(*(_QWORD*)v10 + 16LL))(v10);
-    std___1___shared_weak_count___release_weak();
+    std___1___shared_weak_count___release_weak_alt3(v10);
   }
   v11 = *(_QWORD*)(a1 + 640);
   v12 = *(_QWORD*)(v11 + 40);
@@ -2354,7 +2354,7 @@ __int64 Manager_e9c780(__int64 a1, int a2)
   *(_QWORD*)(v11 + 32) = 0;
   *(_QWORD*)(v11 + 40) = 0;
   if (v12 != 0) {
-    std___1___shared_weak_count___release_weak();
+    std___1___shared_weak_count___release_weak_alt3(v12);
   }
   *(_DWORD*)(v11 + 56) = 0;
   *(_QWORD*)(v11 + 48) = 0xFFFFFFFFLL;
@@ -2373,7 +2373,7 @@ __int64 Manager_e9c780(__int64 a1, int a2)
     return result;
   }
   (*(void (**)(__int64))(*(_QWORD*)v15 + 16LL))(v15);
-  result = std___1___shared_weak_count___release_weak();
+  result = std___1___shared_weak_count___release_weak_alt3(v15);
   if (v14 != 0) {
     goto LABEL_15;
   }
@@ -2386,7 +2386,7 @@ LABEL_9:
     if (atomic_fetch_add((atomic_ullong* volatile)(v16 + 8),
                          0xFFFFFFFFFFFFFFFFLL) == 0) {
       (*(void (**)(__int64))(*(_QWORD*)v16 + 16LL))(v16);
-      result = std___1___shared_weak_count___release_weak();
+      result = std___1___shared_weak_count___release_weak_alt3(v16);
     }
   }
   if (v14 != 0) {

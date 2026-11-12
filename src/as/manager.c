@@ -99,10 +99,10 @@ __attribute__((swiftcall)) void Manager_62b060(PSEUDO_X8 x8_, __int64 a1,
                                                const char* a2, __int64 a3,
                                                __int64 a4, int a5, int a6,
                                                char a7);
-__attribute__((swiftcall)) void Manager_62b880(PSEUDO_X8 x8_, __int64 a1,
-                                               const char* a2, __int64 a3,
-                                               __int64 a4, __int64 a5, int a6,
-                                               int a7, char a8);
+__attribute__((swiftcall)) void
+Manager_62b880_alt1(PSEUDO_X8 x8_, __int64 a1, const char* a2, __int64 a3,
+                    __int64 a4, __int64 a5, int a6, int a7,
+                    char a8) __asm__("Manager_62b880");
 __int64 Manager_62c360(__int64 result, __int64 a2);
 void Manager_d9a760(__int64 a1);
 void Manager_d9a9c0(__int64 a1);
@@ -169,6 +169,15 @@ GameRoutine_25eca0_alt1(__int64*, const char*) __asm__("GameRoutine_25eca0");
 __attribute__((swiftcall)) void
 as_Manager_executeContext_d9d220(PSEUDO_X8 x8_, __int64 a1, __int64 a2,
                                  __int64 a3, _QWORD* a4, unsigned int a5);
+__attribute__((swiftcall)) void
+Manager_62b060_alt1(__attribute__((swift_indirect_result)) void*,
+                    __int64 result, const char*, __int64, __int64, int, int,
+                    char) __asm__("Manager_62b060");
+__int64 GameHr_62ec90_alt1(_QWORD, _QWORD) __asm__("GameHr_62ec90");
+__attribute__((swiftcall)) void
+Manager_62b880(__attribute__((swift_indirect_result)) void* x8_, __int64 a1,
+               const char* a2, __int64 a3, __int64 a4, __int64 a5, int a6,
+               int a7, char a8);
 
 __int64 Manager_626d20(__int64 a1, __int64 a2)
 {
@@ -2035,75 +2044,77 @@ LABEL_44:
   *(_QWORD*)(a8 + 16) = v92;
 }
 
-__attribute__((swiftcall)) void Manager_62b880(PSEUDO_X8 x8_, __int64 a1,
-                                               const char* a2, __int64 a3,
-                                               __int64 a4, __int64 a5, int a6,
-                                               int a7, char a8)
+__attribute__((swiftcall)) void
+
+Manager_62b880(__attribute__((swift_indirect_result)) void* x8_, __int64 a1,
+               const char* a2, __int64 a3, __int64 a4, __int64 a5, int a6,
+               int a7, char a8)
 {
-  __int64 a9 = (__int64)PSEUDO_X8_VALUE(x8_);
+  __int64 a9 = (__int64)(unsigned __int64)x8_;
   __int64 v16;
   __int64 v17;
   int v18;
   __int64 v19;
-  __int64 v24;
-  __int64* v25;
+  __int64 v20;
+  __int64* v21;
+  __int64 v22;
+  char v23;
+  unsigned int v24;
+  unsigned __int64 v25;
   __int64 v26;
-  char v27;
-  unsigned int v28;
-  unsigned __int64 v29;
-  __int64 v30;
-  unsigned __int64 v31;
+  unsigned __int64 v27;
+  __int64 v28;
+  __int64 result;
+  unsigned __int64 v30;
+  __int64 v31;
   __int64 v32;
-  unsigned __int64 v33;
-  __int64 v34;
-  __int64 v35;
-  __int64 v36;
-  __int16 v37;
-  _QWORD* v38;
-  _QWORD* v39;
-  __int64 v40;
-  unsigned int v41;
-  unsigned __int64 v42;
+  __int64 v33;
+  __int16 v34;
+  _QWORD* v35;
+  _QWORD* v36;
+  __int64 v37;
+  unsigned __int64 v38;
+  __int64 v39;
+  unsigned __int64 v40;
+  __int64 v41;
+  __int64 v42;
   __int64 v43;
-  unsigned __int64 v44;
+  _QWORD* v44;
   __int64 v45;
   __int64 v46;
   __int64 v47;
   _QWORD* v48;
   __int64 v49;
-  __int64 v50;
-  __int64 v51;
-  _QWORD* v52;
-  __int64 v53;
-  unsigned int v54;
+  unsigned int v50;
+  unsigned __int64 v51;
+  __int64 v52;
+  unsigned __int64 v53;
+  __int64 v54;
   unsigned __int64 v55;
   __int64 v56;
-  unsigned __int64 v57;
+  __int64 v57;
   __int64 v58;
-  unsigned __int64 v59;
-  __int64 v60;
+  unsigned int v59;
+  unsigned __int64 v60;
   __int64 v61;
-  __int64 v62;
-  unsigned int v63;
-  unsigned __int64 v64;
+  unsigned __int64 v62;
+  __int64 v63;
+  __int64 v64;
   __int64 v65;
-  unsigned __int64 v66;
+  __int64 v66;
   __int64 v67;
-  __int64 v68;
+  _QWORD* v68;
   __int64 v69;
   __int64 v70;
-  __int64 v71;
-  _QWORD* v72;
-  __int64 v73;
-  __int64 v74;
-  _QWORD* v75;
-  __int64 v76;
-  unsigned int v78;
-  __int64 v79;
-  _BYTE v81[136];
+  _QWORD* v71;
+  __int64 v72;
+  unsigned int v74;
+  __int64 v75;
+  _BYTE v77[136];
 
   if (a5 == 0) {
-    Manager_62b060((void*)(a9), a1, a2, a3, a4, a6, a7, a8);
+    X8CALL_X0(__int64,
+              Manager_62b060_alt1((void*)(a9), a1, a2, a3, a4, a6, a7, a8));
     return;
   }
   nn_os_LockMutex(a1 + 5096);
@@ -2112,62 +2123,62 @@ __attribute__((swiftcall)) void Manager_62b880(PSEUDO_X8 x8_, __int64 a1,
   v18 = *(_DWORD*)(v16 + 4 * v17);
   *(_DWORD*)(a1 + 5088) = v17 + 1;
   *(_DWORD*)(v16 + 4 * v17) = -1;
-  nn_os_UnlockMutex(a1 + 5096);
+  nn_os_UnlockMutex_alt1(a1 + 5096);
   v19 = *(_QWORD*)(a1 + 5072) + 2272LL * v18;
-  GameRoutine_62ec90(v19, a1);
-  v24 = *(unsigned int*)(v19 + 8);
-  if ((_DWORD)v24 != 0x2000 &&
-      (v25 = &as_g_context_slots_alt1[2 * v24])[1] == v19) {
-    v76 = *v25;
-    v78 = *(_DWORD*)(v19 + 8);
-    sprintf(v81, "%s_%16zx", a2, v19);
-    v79 = v76;
-    v27 = 0;
-    if (v25[1] != 0) {
-      if (*v25 == v76) {
-        v26 = v25[1];
+  GameHr_62ec90_alt1(v19, a1);
+  v20 = *(unsigned int*)(v19 + 8);
+  if ((_DWORD)v20 != 0x2000 &&
+      (v21 = &as_g_context_slots_alt1[2 * v20])[1] == v19) {
+    v72 = *v21;
+    v74 = *(_DWORD*)(v19 + 8);
+    sprintf(v77, "%s_%16zx", a2, v19);
+    v75 = v72;
+    v23 = 0;
+    if (v21[1] != 0) {
+      if (*v21 == v72) {
+        v22 = v21[1];
       }
       else {
-        v26 = 0;
+        v22 = 0;
       }
     }
     else {
-      v26 = 0;
+      v22 = 0;
     }
   }
   else {
-    sprintf(v81, "%s_%16zx", a2, v19);
-    v26 = 0;
-    v27 = 1;
-    v78 = 0x2000;
-    v79 = 0;
+    sprintf(v77, "%s_%16zx", a2, v19);
+    v22 = 0;
+    v23 = 1;
+    v74 = 0x2000;
+    v75 = 0;
   }
-  v28 = (*(__int64 (**)(__int64))(*(_QWORD*)as_g_thread_info + 72LL))(
+  v24 = (*(__int64 (**)(__int64))(*(_QWORD*)as_g_thread_info + 72LL))(
       as_g_thread_info);
-  if (v26 != 0) {
-    v29 = (unsigned __int64)v28 << 7;
-    v30 = 4LL * v28;
-    v31 = as_g_script_manager + v29;
-    v32 = *(int*)(as_g_script_manager + v30 + 4640) + 1LL;
-    *(_DWORD*)(as_g_script_manager + v30 + 4640) = v32;
-    *(_QWORD*)(v31 + 8 * v32 + 288) = *(_QWORD*)(v26 + 24);
-    *(_QWORD*)(as_g_script_manager + 8LL * v28 + 4384) =
-        *(_QWORD*)(as_g_script_manager + v29 +
-                   8LL * *(int*)(as_g_script_manager + v30 + 4640) + 288);
+  if (v22 != 0) {
+    v25 = (unsigned __int64)v24 << 7;
+    v26 = 4LL * v24;
+    v27 = as_g_script_manager + v25;
+    v28 = *(int*)(as_g_script_manager + v26 + 4640) + 1LL;
+    *(_DWORD*)(as_g_script_manager + v26 + 4640) = v28;
+    *(_QWORD*)(v27 + 8 * v28 + 288) = *(_QWORD*)(v22 + 24);
+    *(_QWORD*)(as_g_script_manager + 8LL * v24 + 4384) =
+        *(_QWORD*)(as_g_script_manager + v25 +
+                   8LL * *(int*)(as_g_script_manager + v26 + 4640) + 288);
   }
   else {
-    v33 = as_g_script_manager + ((unsigned __int64)v28 << 7);
-    v34 = as_g_script_manager + 4LL * v28;
-    v35 = *(int*)(v34 + 4640) + 1LL;
-    *(_DWORD*)(v34 + 4640) = v35;
-    *(_QWORD*)(v33 + 8 * v35 + 288) = 0;
-    *(_QWORD*)(as_g_script_manager + 8LL * v28 + 4384) = 0;
+    v30 = as_g_script_manager + ((unsigned __int64)v24 << 7);
+    v31 = as_g_script_manager + 4LL * v24;
+    v32 = *(int*)(v31 + 4640) + 1LL;
+    *(_DWORD*)(v31 + 4640) = v32;
+    *(_QWORD*)(v30 + 8 * v32 + 288) = 0;
+    *(_QWORD*)(as_g_script_manager + 8LL * v24 + 4384) = 0;
   }
-  v36 = (*(__int64 (**)(__int64))(*(_QWORD*)as_g_engine + 464LL))(as_g_engine);
+  v33 = (*(__int64 (**)(__int64))(*(_QWORD*)as_g_engine + 464LL))(as_g_engine);
   *(_BYTE*)(v19 + 336) = 0;
-  strcpy(v19 + 80, v81);
+  strcpy(v19 + 80, v77);
   *(_BYTE*)(v19 + 208) = 0;
-  *(_QWORD*)(v19 + 24) = v36;
+  *(_QWORD*)(v19 + 24) = v33;
   *(_QWORD*)(v19 + 32) = 0;
   *(_QWORD*)(v19 + 40) = 0;
   *(_DWORD*)(v19 + 48) = a6;
@@ -2181,156 +2192,163 @@ __attribute__((swiftcall)) void Manager_62b880(PSEUDO_X8 x8_, __int64 a1,
   *(_QWORD*)(v19 + 2112) = 0;
   *(_QWORD*)(v19 + 2192) = 0;
   *(_QWORD*)(v19 + 2200) = 0;
-  (*(void (**)(__int64, __int64))(*(_QWORD*)v36 + 480LL))(v36, v19);
-  v37 = *(_WORD*)(v19 + 2144);
-  v38 = *(_QWORD**)(v19 + 2240);
+  (*(void (**)(__int64, __int64))(*(_QWORD*)v33 + 480LL))(v33, v19);
+  v34 = *(_WORD*)(v19 + 2144);
+  v35 = *(_QWORD**)(v19 + 2240);
   *(_QWORD*)(v19 + 2240) = 0;
-  *(_WORD*)(v19 + 2144) = v37 & 0xFE78 | 0x100;
-  if (v38 == (_QWORD*)(v19 + 2208)) {
-    v40 = 32;
-    v39 = as_g_context_slots_ptr;
+  *(_WORD*)(v19 + 2144) = v34 & 0xFE78 | 0x100;
+  if (v35 == (_QWORD*)(v19 + 2208)) {
+    v37 = 32;
+    v36 = as_g_context_slots_ptr;
     goto LABEL_13;
   }
-  v39 = as_g_context_slots_alt1;
-  if (v38 != nullptr) {
-    v40 = 40;
+  v36 = as_g_context_slots_alt1;
+  if (v35 != nullptr) {
+    v37 = 40;
   LABEL_13:
-    (*(void (**)(_QWORD*))(*v38 + v40))(v38);
+    (*(void (**)(_QWORD*))(*v35 + v37))(v35);
   }
   (*(void (**)(_QWORD, _QWORD))(**(_QWORD**)(v19 + 24) + 464LL))(
       *(_QWORD*)(v19 + 24), 0);
   (*(void (**)(_QWORD, __int64))(**(_QWORD**)(v19 + 24) + 448LL))(
       *(_QWORD*)(v19 + 24), 1);
-  v41 = (*(__int64 (**)(__int64))(*(_QWORD*)as_g_thread_info + 72LL))(
+  result = (*(__int64 (**)(__int64))(*(_QWORD*)as_g_thread_info + 72LL))(
       as_g_thread_info);
-  v42 = (unsigned __int64)v41 << 7;
-  v43 = 4LL * v41;
-  v44 = as_g_script_manager + v42;
-  v45 = *(int*)(as_g_script_manager + v43 + 4640);
-  *(_DWORD*)(as_g_script_manager + v43 + 4640) = v45 - 1;
-  *(_QWORD*)(v44 + 8 * v45 + 288) = 0;
-  *(_QWORD*)(as_g_script_manager + 8LL * v41 + 4384) =
-      *(_QWORD*)(as_g_script_manager + v42 +
-                 8LL * *(int*)(as_g_script_manager + v43 + 4640) + 288);
-  v46 = *(_QWORD*)a3;
+  v38 = (unsigned __int64)(unsigned int)result << 7;
+  v39 = 4LL * (unsigned int)result;
+  v40 = as_g_script_manager + v38;
+  v41 = *(int*)(as_g_script_manager + v39 + 4640);
+  *(_DWORD*)(as_g_script_manager + v39 + 4640) = v41 - 1;
+  *(_QWORD*)(v40 + 8 * v41 + 288) = 0;
+  *(_QWORD*)(as_g_script_manager + 8LL * (unsigned int)result + 4384) =
+      *(_QWORD*)(as_g_script_manager + v38 +
+                 8LL * *(int*)(as_g_script_manager + v39 + 4640) + 288);
+  v42 = *(_QWORD*)a3;
   *(_QWORD*)(v19 + 56) = *(_QWORD*)a3;
-  v47 = *(unsigned int*)(a3 + 8);
-  *(_DWORD*)(v19 + 64) = v47;
-  if ((_DWORD)v47 == 0x2000 || (v48 = &v39[2 * v47])[1] == 0) {
-    v49 = 0;
+  v43 = *(unsigned int*)(a3 + 8);
+  *(_DWORD*)(v19 + 64) = v43;
+  if ((_DWORD)v43 == 0x2000 || (v44 = &v36[2 * v43])[1] == 0) {
+    v45 = 0;
   }
-  else if (*v48 == v46) {
-    v49 = v48[1];
+  else if (*v44 == v42) {
+    v45 = v44[1];
   }
   else {
-    v49 = 0;
+    v45 = 0;
   }
-  *(_QWORD*)(v19 + 72) = v49;
-  v50 = *(_QWORD*)(v39[2 * *(unsigned int*)(a3 + 8) + 1] + 40LL);
-  *(_QWORD*)(v19 + 32) = v50;
-  if (v50 == 0) {
+  *(_QWORD*)(v19 + 72) = v45;
+  v46 = *(_QWORD*)(v36[2 * *(unsigned int*)(a3 + 8) + 1] + 40LL);
+  *(_QWORD*)(v19 + 32) = v46;
+  if (v46 == 0) {
   LABEL_46:
     *(_QWORD*)a9 = 0;
     *(_QWORD*)(a9 + 16) = 0;
     *(_DWORD*)(a9 + 8) = 0x2000;
-    return;
+    {
+      result;
+      return;
+    }
   }
   strcpy(v19 + 208, a4);
-  if ((v27 & 1) != 0) {
-    v51 = v79;
+  if ((v23 & 1) != 0) {
+    v47 = v75;
   }
   else {
-    v51 = v79;
-    v52 = &v39[2 * v78];
-    if (v52[1] != 0) {
-      if (*v52 == v79) {
-        v53 = v52[1];
+    v47 = v75;
+    v48 = &v36[2 * v74];
+    if (v48[1] != 0) {
+      if (*v48 == v75) {
+        v49 = v48[1];
       }
       else {
-        v53 = 0;
+        v49 = 0;
       }
       goto LABEL_28;
     }
   }
-  v53 = 0;
+  v49 = 0;
 LABEL_28:
-  v54 = (*(__int64 (**)(__int64))(*(_QWORD*)as_g_thread_info + 72LL))(
+  v50 = (*(__int64 (**)(__int64))(*(_QWORD*)as_g_thread_info + 72LL))(
       as_g_thread_info);
-  if (v53 != 0) {
-    v55 = (unsigned __int64)v54 << 7;
-    v56 = 4LL * v54;
-    v57 = as_g_script_manager + v55;
-    v58 = *(int*)(as_g_script_manager + v56 + 4640) + 1LL;
-    *(_DWORD*)(as_g_script_manager + v56 + 4640) = v58;
-    *(_QWORD*)(v57 + 8 * v58 + 288) = *(_QWORD*)(v53 + 24);
-    *(_QWORD*)(as_g_script_manager + 8LL * v54 + 4384) =
-        *(_QWORD*)(as_g_script_manager + v55 +
-                   8LL * *(int*)(as_g_script_manager + v56 + 4640) + 288);
+  if (v49 != 0) {
+    v51 = (unsigned __int64)v50 << 7;
+    v52 = 4LL * v50;
+    v53 = as_g_script_manager + v51;
+    v54 = *(int*)(as_g_script_manager + v52 + 4640) + 1LL;
+    *(_DWORD*)(as_g_script_manager + v52 + 4640) = v54;
+    *(_QWORD*)(v53 + 8 * v54 + 288) = *(_QWORD*)(v49 + 24);
+    *(_QWORD*)(as_g_script_manager + 8LL * v50 + 4384) =
+        *(_QWORD*)(as_g_script_manager + v51 +
+                   8LL * *(int*)(as_g_script_manager + v52 + 4640) + 288);
   }
   else {
-    v59 = as_g_script_manager + ((unsigned __int64)v54 << 7);
-    v60 = as_g_script_manager + 4LL * v54;
-    v61 = *(int*)(v60 + 4640) + 1LL;
-    *(_DWORD*)(v60 + 4640) = v61;
-    *(_QWORD*)(v59 + 8 * v61 + 288) = 0;
-    *(_QWORD*)(as_g_script_manager + 8LL * v54 + 4384) = 0;
+    v55 = as_g_script_manager + ((unsigned __int64)v50 << 7);
+    v56 = as_g_script_manager + 4LL * v50;
+    v57 = *(int*)(v56 + 4640) + 1LL;
+    *(_DWORD*)(v56 + 4640) = v57;
+    *(_QWORD*)(v55 + 8 * v57 + 288) = 0;
+    *(_QWORD*)(as_g_script_manager + 8LL * v50 + 4384) = 0;
   }
-  v62 = *(_QWORD*)(v19 + 24);
+  v58 = *(_QWORD*)(v19 + 24);
   *(_QWORD*)(v19 + 40) = a5;
-  (*(void (**)(__int64, __int64))(*(_QWORD*)v62 + 24LL))(v62, a5);
-  v63 = (*(__int64 (**)(__int64))(*(_QWORD*)as_g_thread_info + 72LL))(
+  (*(void (**)(__int64, __int64))(*(_QWORD*)v58 + 24LL))(v58, a5);
+  v59 = (*(__int64 (**)(__int64))(*(_QWORD*)as_g_thread_info + 72LL))(
       as_g_thread_info);
-  v64 = (unsigned __int64)v63 << 7;
-  v65 = 4LL * v63;
-  v66 = as_g_script_manager + v64;
-  v67 = *(int*)(as_g_script_manager + v65 + 4640);
-  *(_DWORD*)(as_g_script_manager + v65 + 4640) = v67 - 1;
-  *(_QWORD*)(v66 + 8 * v67 + 288) = 0;
-  *(_QWORD*)(as_g_script_manager + 8LL * v63 + 4384) =
-      *(_QWORD*)(as_g_script_manager + v64 +
-                 8LL * *(int*)(as_g_script_manager + v65 + 4640) + 288);
-  v68 = *(_QWORD*)(v19 + 24);
+  v60 = (unsigned __int64)v59 << 7;
+  v61 = 4LL * v59;
+  v62 = as_g_script_manager + v60;
+  v63 = *(int*)(as_g_script_manager + v61 + 4640);
+  *(_DWORD*)(as_g_script_manager + v61 + 4640) = v63 - 1;
+  *(_QWORD*)(v62 + 8 * v63 + 288) = 0;
+  *(_QWORD*)(as_g_script_manager + 8LL * v59 + 4384) =
+      *(_QWORD*)(as_g_script_manager + v60 +
+                 8LL * *(int*)(as_g_script_manager + v61 + 4640) + 288);
+  v64 = *(_QWORD*)(v19 + 24);
   *(_DWORD*)(v19 + 52) = 1;
-  (*(void (**)(__int64, __int64))(*(_QWORD*)v68 + 464LL))(v68, 1);
+  result = (*(__int64 (**)(__int64, __int64))(*(_QWORD*)v64 + 464LL))(v64, 1);
   *(_DWORD*)(v19 + 2116) = a7;
   *(_WORD*)(v19 + 2144) = *(_WORD*)(v19 + 2144) & 0xFFBF | ((a8 & 1) << 6);
   if (*(_BYTE*)(a1 + 4785) == 1) {
-    nn_os_LockMutex(a1 + 4792);
+    result = nn_os_LockMutex(a1 + 4792);
   }
-  v69 = *(int*)(v19 + 48);
-  v70 = *(_QWORD*)(a1 + 24 + 8 * v69);
-  if (v70 != 0) {
+  v65 = *(int*)(v19 + 48);
+  v66 = *(_QWORD*)(a1 + 24 + 8 * v65);
+  if (v66 != 0) {
     do {
-      v71 = v70;
-      v70 = *(_QWORD*)(v70 + 2200);
-    } while (v70 != 0);
-    *(_QWORD*)(v71 + 2200) = v19;
+      v67 = v66;
+      v66 = *(_QWORD*)(v66 + 2200);
+    } while (v66 != 0);
+    *(_QWORD*)(v67 + 2200) = v19;
   }
   else {
-    *(_QWORD*)(a1 + 24 + 8 * v69) = v19;
+    *(_QWORD*)(a1 + 24 + 8 * v65) = v19;
   }
   if (*(_BYTE*)(a1 + 4785) == 1) {
-    nn_os_UnlockMutex(a1 + 4792);
+    result = nn_os_UnlockMutex_alt1(a1 + 4792);
   }
-  if ((v27 & 1) != 0) {
+  if ((v23 & 1) != 0) {
     goto LABEL_46;
   }
-  v72 = &v39[2 * v78];
-  v73 = v72[1];
-  if (v73 == 0 || *v72 != v51) {
+  v68 = &v36[2 * v74];
+  v69 = v68[1];
+  if (v69 == 0 || *v68 != v47) {
     goto LABEL_46;
   }
   *(_QWORD*)a9 = 0;
   *(_DWORD*)(a9 + 8) = 0x2000;
-  v74 = *(unsigned int*)(v73 + 8);
-  if ((_DWORD)v74 != 0x2000) {
-    v75 = &v39[2 * v74];
-    if (v75[1] == v73) {
-      *(_DWORD*)(a9 + 8) = v74;
-      *(_QWORD*)a9 = *v75;
+  v70 = *(unsigned int*)(v69 + 8);
+  if ((_DWORD)v70 != 0x2000) {
+    v71 = &v36[2 * v70];
+    if (v71[1] == v69) {
+      *(_DWORD*)(a9 + 8) = v70;
+      *(_QWORD*)a9 = *v71;
     }
   }
-  *(_QWORD*)(a9 + 16) = v73;
+  *(_QWORD*)(a9 + 16) = v69;
+  {
+    result;
+    return;
+  }
 }
 
 __int64 Manager_62c360(__int64 result, __int64 a2)

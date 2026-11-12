@@ -351,6 +351,10 @@ extern __int64 (*GameData_202f580[])();
 __int64 fs_Manager_createFileAsync_ui_IconManager_Ui2dIconArcFile(__int64 a1,
                                                                   __int64 a2);
 __int64 fs_Manager_createFileAsync_fs_BntxFile(__int64 a1, __int64 a2);
+__int64 llvm_libcxx_21_libcxx_include___functional_a53bc0(__int64, __int64);
+__int64
+std___1___hash_memory_alt1(__int64,
+                           unsigned __int64) __asm__("std___1___hash_memory");
 
 unsigned __int64 Manager_6326c0(__int64* a1, __int64 a2)
 {
@@ -4691,8 +4695,6 @@ __attribute__((swiftcall)) void Manager_a50e90(PSEUDO_X8 x8_, __int64 a1,
 
 __int64 fs_Manager_createFileSync_msg_ProjectFile(__int64 a1)
 {
-  __int64 v1;
-  __int64 v2;
   __int64 v4;
   __int64 v5;
   __int64 v6;
@@ -4707,7 +4709,7 @@ __int64 fs_Manager_createFileSync_msg_ProjectFile(__int64 a1)
   unsigned int v15;
   unsigned int v16;
   _BYTE* v17;
-  __int64 v18;
+  unsigned __int64 v18;
   __int64 v19;
   _QWORD* v20;
   unsigned __int64 v21;
@@ -4717,18 +4719,14 @@ __int64 fs_Manager_createFileSync_msg_ProjectFile(__int64 a1)
   unsigned __int64 v25;
   bool v26;
   unsigned __int64 v27;
-  char* v28;
+  __int64 v28;
   unsigned __int64 v29;
-  long double v30;
+  __int64 v30;
   __int64 v31;
   __int64 v32;
-  _BYTE v34[48];
-  __int64 v35;
-  __int64 v36;
+  char v34[48];
 
   v4 = *msg_MessageManager_instance__ptr[0] + 14600;
-  v35 = v1;
-  v36 = v2;
   v5 = *(_QWORD*)(a1 + 800);
   v6 = a1;
   v7 = *(_DWORD*)(v5 + 36);
@@ -4764,16 +4762,16 @@ __int64 fs_Manager_createFileSync_msg_ProjectFile(__int64 a1)
         }
       }
       if (*v17 != 0) {
-        memcpy(v34, (char*)v14 + v16 + 1, v18);
+        memcpy_alt1((__int64)v34, (__int64)v14 + v16 + 1, v18);
       }
       v19 = *v11;
       v34[v18] = 0;
-      v20 = (_QWORD*)fw_memory_HeapManager_Allocate(v19, 48, 16, 0);
+      v20 = (_QWORD*)fw_memory_HeapManager_Allocate_alt1(v19, 48, 16, 0);
       *v20 = 0;
       v20[1] = 0;
-      v21 = strlen(v34);
+      v21 = strlen_alt1(v34);
       if (v21 >= 0xFFFFFFFFFFFFFFF7LL) {
-        String_60a1d0(v21);
+        String_60a1d0();
       }
       v22 = v21;
       if (v21 >= 0x17) {
@@ -4783,7 +4781,7 @@ __int64 fs_Manager_createFileSync_msg_ProjectFile(__int64 a1)
         else {
           v24 = (v21 | 7) + 1;
         }
-        v23 = fw_memory_HeapManager_Allocate(*v11, v24, 16, 0);
+        v23 = fw_memory_HeapManager_Allocate_alt1(*v11, v24, 16, 0);
         v20[3] = v22;
         v20[4] = v23;
         v20[2] = v24 | 1;
@@ -4799,10 +4797,10 @@ __int64 fs_Manager_createFileSync_msg_ProjectFile(__int64 a1)
           v26 = (v25 & 1) == 0;
           v27 = v25 >> 1;
           if (v26) {
-            v28 = (char*)v20 + 17;
+            v28 = (__int64)v20 + 17;
           }
           else {
-            v28 = (char*)v20[4];
+            v28 = v20[4];
           }
           if (v26) {
             v29 = v27;
@@ -4810,37 +4808,43 @@ __int64 fs_Manager_createFileSync_msg_ProjectFile(__int64 a1)
           else {
             v29 = v20[3];
           }
-          v20[1] = std___1___hash_memory(v28, v29);
+          v20[1] = std___1___hash_memory_alt1(v28, v29);
           v11 = &fw_memory_g_heap_manager;
-          if ((GameRoutine_a53bc0(v9 + 48, v20) & 1) == 0) {
-            if ((v20[2] & 1) != 0 && v20[4] != 0) {
-              v31 = 128;
-              if (*(_QWORD*)(fw_memory_g_heap_manager + 200) == 0) {
-                v31 = 56;
+          if ((llvm_libcxx_21_libcxx_include___functional_a53bc0(v9 + 48,
+                                                                 (__int64)v20) &
+               1) == 0) {
+            if ((v20[2] & 1) != 0) {
+              v30 = v20[4];
+              if (v30 != 0) {
+                v31 = 128;
+                if (*(_QWORD*)(fw_memory_g_heap_manager + 200) == 0) {
+                  v31 = 56;
+                }
+                nn_mem_StandardAllocator_Free_alt4(
+                    fw_memory_g_heap_manager + v31, v30);
               }
-              nn_mem_StandardAllocator_Free(fw_memory_g_heap_manager + v31,
-                                            v30);
             }
             v12 = 128;
             if (*(_QWORD*)(fw_memory_g_heap_manager + 200) == 0) {
               v12 = 56;
             }
-            nn_mem_StandardAllocator_Free(fw_memory_g_heap_manager + v12, v30);
+            nn_mem_StandardAllocator_Free_alt4(fw_memory_g_heap_manager + v12,
+                                               (__int64)v20);
           }
           goto LABEL_7;
         }
       }
-      memcpy(v23, v34, v22);
+      memcpy_alt1(v23, (__int64)v34, v22);
       goto LABEL_23;
     }
   }
 LABEL_35:
   v32 = *(_QWORD*)(v6 + 8);
-  nn_os_LockMutex(v32 + 4456);
-  nn_os_AcquireWriteLock(v6 + 696);
+  nn_os_LockMutex_alt1(v32 + 4456);
+  nn_os_AcquireWriteLock_alt1(v6 + 696);
   *(_DWORD*)(v6 + 656) |= 4u;
-  nn_os_ReleaseWriteLock(v6 + 696);
-  return nn_os_UnlockMutex(v32 + 4456);
+  nn_os_ReleaseWriteLock_alt1(v6 + 696);
+  return nn_os_UnlockMutex_alt2(v32 + 4456);
 }
 
 __int64 Manager_a527c0(__int64 result, __int64 a2)

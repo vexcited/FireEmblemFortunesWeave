@@ -49,7 +49,8 @@ extern _UNKNOWN GameData_1abf8e3;
 extern __int64 (*GameData_1f9ce78[])();
 extern __int64 GameData_21f61c0[];
 void game_Unit_LevelUp(__int64, char);
-__int64 game_anonymous_ProcGrowSeq_LevelUp(__int64 result);
+__int64 game_anonymous_ProcGrowSeq_LevelUp_alt1(__int64 result) __asm__(
+    "game_anonymous_ProcGrowSeq_LevelUp");
 __int64* ProcGrowSeq_7fa8f0(__int64* result);
 __int64*
 GameRoutine_7fb7c0_alt1(__int64* result, __int64, __int64,
@@ -76,10 +77,14 @@ GameRoutine_6e3e20_alt1() __asm__("GameRoutine_6e3e20");
 void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void game_anonymous_ProcGrowSeq_UpdateLearn(__int64* a1);
+__int64 game_Unit_LevelUp_alt1(__int64, char) __asm__("game_Unit_LevelUp");
+const char*
+game_HashString32_alt1(const char* result) __asm__("game_HashString32");
+const char* game_anonymous_ProcGrowSeq_LevelUp(const char* result);
 
-__int64 game_anonymous_ProcGrowSeq_LevelUp(__int64 result)
+const char* game_anonymous_ProcGrowSeq_LevelUp(const char* result)
 {
-  __int64 v1;
+  const char* v1;
   __int64 v2;
   int v3;
   char v4;
@@ -95,11 +100,10 @@ __int64 game_anonymous_ProcGrowSeq_LevelUp(__int64 result)
   } v11_;
 
   v1 = result;
-  if ((*(_BYTE*)(result + 250) & 2) != 0 ||
-      (*(_BYTE*)(result + 474) & 1) != 0) {
-    result = *(_QWORD*)(result + 152);
-    v6 = *(unsigned __int8*)(result + 498);
-    if (*(_DWORD*)(v1 + 256) < (signed int)v6) {
+  if ((result[250] & 2) != 0 || (result[474] & 1) != 0) {
+    result = *((const char**)result + 19);
+    v6 = *((unsigned __int8*)result + 498);
+    if ((signed __int32)*((_DWORD*)v1 + 64) < (signed int)v6) {
       do {
         v7 = v6 - 1;
         if (v6 > 0x64) {
@@ -111,25 +115,25 @@ __int64 game_anonymous_ProcGrowSeq_LevelUp(__int64 result)
         else {
           v8 = v7;
         }
-        game_Unit_LevelUp(result, v8);
-        result = *(_QWORD*)(v1 + 152);
-        v9 = *(_DWORD*)(v1 + 256) + 1;
-        *(_DWORD*)(v1 + 256) = v9;
-        v6 = *(unsigned __int8*)(result + 498);
+        game_Unit_LevelUp_alt1((__int64)result, v8);
+        result = *((const char**)v1 + 19);
+        v9 = *((_DWORD*)v1 + 64) + 1;
+        *((_DWORD*)v1 + 64) = v9;
+        v6 = *((unsigned __int8*)result + 498);
       } while (v9 < (int)v6);
     }
     return result;
   }
-  v2 = *(_QWORD*)(result + 152);
-  v3 = *(_DWORD*)(result + 256);
+  v2 = *((_QWORD*)result + 19);
+  v3 = *((_DWORD*)result + 64);
   if (v3 >= *(unsigned __int8*)(v2 + 498)) {
     return result;
   }
-  v4 = *(_BYTE*)(result + 473);
+  v4 = result[473];
   v11_.v11[0] = GameData_1f9ce78;
   v11_.v11[1] = result;
   v11_.v12 = v11_.v11;
-  game_telop_1745d80(result, v2, v3, v4, (__int64)v11_.v11);
+  game_telop_1745d80((__int64)result, v2, v3, v4, (__int64)v11_.v11);
   if (v11_.v12 == v11_.v11) {
     v5 = 32;
   }
@@ -141,15 +145,15 @@ __int64 game_anonymous_ProcGrowSeq_LevelUp(__int64 result)
   }
   (*(void (**)(__int64))(*v11_.v12 + v5))((__int64)v11_.v12);
 LABEL_17:
-  ++*(_DWORD*)(v1 + 256);
-  result = game_HashString32((__int64)"LevelUp");
-  v10 = *(_QWORD*)(v1 + 8);
+  ++*((_DWORD*)v1 + 64);
+  result = game_HashString32_alt1("LevelUp");
+  v10 = *((_QWORD*)v1 + 1);
   if (v10 != 0) {
     while (1) {
       if (*(_BYTE*)v10 == 2) {
         if (*(_DWORD*)(v10 + 32) == (_DWORD)result) {
-          *(_QWORD*)(v1 + 16) = v10;
-          *(_WORD*)(v1 + 136) &= ~0x80u;
+          *((_QWORD*)v1 + 2) = v10;
+          *((_WORD*)v1 + 68) &= ~0x80u;
           return result;
         }
       }

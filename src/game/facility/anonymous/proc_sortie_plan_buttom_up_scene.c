@@ -17,12 +17,23 @@ extern __int64 GameData_212dd18[3];
 extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64* GameData_212ddc0[3];
 extern __int64* GameData_2132488;
-__int64 ProcSortiePlanButtomUpScene_Destructor(__int64 a1);
+__int64 ProcSortiePlanButtomUpScene_Destructor_alt1(__int64 a1) __asm__(
+    "ProcSortiePlanButtomUpScene_Destructor");
 __int64 ProcSortiePlanButtomUpScene_DeletingDestructor(__int64 a1);
 __int64 ProcSortiePlanButtomUpScene_Destructor_1466a40(__int64* a1);
 __int64 ProcSortiePlanButtomUpScene_DeletingDestructor_1466c00(__int64* a1);
+__int64 game_ProcInst_Unregister_alt1(__int64 result) __asm__(
+    "game_ProcInst_Unregister");
+__int64
+game_facility_ReleaseGroups_alt1() __asm__("game_facility_ReleaseGroups");
+extern __int64 (*ProcSortiePlanButtomUpScene_Destructor_1466a40_ptr[])();
+void FacilitySceneBase_1958ed0(__int64, __int64);
+void GameRoutine_658c00_alt1(__int64*) __asm__("GameRoutine_658c00");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void ProcSortiePlanButtomUpScene_Destructor(__int64 a1);
 
-__int64 ProcSortiePlanButtomUpScene_Destructor(__int64 a1)
+void ProcSortiePlanButtomUpScene_Destructor(__int64 a1)
 {
   __int64 v2;
   _QWORD* v3;
@@ -37,7 +48,7 @@ __int64 ProcSortiePlanButtomUpScene_Destructor(__int64 a1)
   __int64 v12;
 
   *(_QWORD*)a1 = game_facility_anonymous_ProcSortiePlanButtomUpScene_vtable;
-  *(_QWORD*)(a1 + 152) = GameData_20409a8;
+  *(_QWORD*)(a1 + 152) = ProcSortiePlanButtomUpScene_Destructor_1466a40_ptr;
   v2 = a1 + 152;
   v3 = *(_QWORD**)(a1 + 224);
   v4 = *(_QWORD**)(a1 + 232);
@@ -59,8 +70,8 @@ __int64 ProcSortiePlanButtomUpScene_Destructor(__int64 a1)
     if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
       v6 = 56;
     }
-    nn_mem_StandardAllocator_Free(*(_QWORD*)fw_memory_g_heap_manager_ptr + v6,
-                                  v3);
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v6, (__int64)v3);
   }
   v7 = *(_QWORD*)(a1 + 200);
   if (v7 != 0) {
@@ -70,29 +81,30 @@ __int64 ProcSortiePlanButtomUpScene_Destructor(__int64 a1)
     if (*(_QWORD*)(v8 + 200) == 0) {
       v9 = 56;
     }
-    nn_mem_StandardAllocator_Free(v8 + v9, v7);
+    nn_mem_StandardAllocator_Free_alt1(v8 + v9, v7);
   }
   v10 = GameData_212dd18[0] + 192;
   *(_QWORD*)a1 = GameData_212dd18[0] + 16;
   *(_QWORD*)(a1 + 152) = v10;
-  GameRoutine_1958ed0(v2, a1);
+  FacilitySceneBase_1958ed0(v2, a1);
   *(_QWORD*)(a1 + 152) = GameData_2132488 + 2;
   v11 = (_QWORD*)GameData_212dce8;
   v12 = *(_QWORD*)GameData_212dce8;
-  if (*(_QWORD*)GameData_212dce8 != 0 && (*GameData_2130fb8)-- <= 1) {
+  if (*(_QWORD*)GameData_212dce8 != 0 &&
+      (signed __int32)(*GameData_2130fb8)-- <= 1) {
     (*(void (**)(__int64))(*(_QWORD*)v12 + 24LL))(v12);
     if (*v11 != 0) {
       (*(void (**)(_QWORD))(*(_QWORD*)*v11 + 8LL))(*v11);
     }
     *v11 = 0;
   }
-  game_facility_ReleaseGroups();
+  game_facility_ReleaseGroups_alt1();
   *(_QWORD*)a1 = GameData_212c608[0] + 16;
   if ((*(_WORD*)(a1 + 136) & 0x100) != 0) {
     *(_WORD*)(a1 + 136) &= ~0x100u;
   }
-  game_ProcInst_Unregister(a1);
-  return GameRoutine_658c00(a1 + 88);
+  game_ProcInst_Unregister_alt1(a1);
+  GameRoutine_658c00_alt1((__int64*)(a1 + 88));
 }
 
 __int64 ProcSortiePlanButtomUpScene_DeletingDestructor(__int64 a1)

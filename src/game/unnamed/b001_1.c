@@ -298,6 +298,7 @@ __int64 GameHr_279120(const char* a1, __int64 a2, __int64 a3, const char* a4,
                       __int64 a5, __int64 a6);
 __int64 GameHr_283a20(__int64 result, int a2, _QWORD* a3);
 __int64 GameHr_283b60(__int64 result, __int64 a2);
+__int64 GameHr_27c920(__int64 result, int a2);
 
 __int64 GameHr_17b410(__int64 result)
 {
@@ -2741,7 +2742,7 @@ __int64 GameHr_27c920(__int64 result, int a2)
       v4 = *(_QWORD*)(v4 + 8);
       ++v5;
     } while (v4 != v3);
-    if (v5 <= *(_DWORD*)(v3 + 64)) {
+    if (v5 <= (signed __int32)*(_DWORD*)(v3 + 64)) {
       break;
     }
     while (1) {

@@ -462,6 +462,12 @@ void GameHr_ebe560(__int64 a1, __int64 a2);
 unsigned __int64 GameHr_ec6be0(__int64 a1);
 __int64 GameHr_ec7750(__int64 a1);
 __int64 GameHr_ef94c0(__int64* a1, __int64 a2);
+__attribute__((swiftcall)) void
+game_hub_f724a0(PSEUDO_X8, __int64 result, unsigned __int8*, unsigned __int8*);
+__int64 GameRoutine_f72140_alt1(__int64, unsigned __int8*,
+                                unsigned __int8*) __asm__("GameRoutine_f72140");
+__int64 std___1___shared_weak_count___release_weak(__int64);
+__int64 GameHr_f722c0(__int64 a1, int a2, __int64 a3, unsigned __int8* a4);
 
 void GameHr_eb7780(__int64 a1, int a2, __int64 a3)
 {
@@ -2912,8 +2918,10 @@ __int64 GameHr_f72090(__int64 a1)
   return v2 & 1;
 }
 
-__int64 GameHr_f722c0(__int64 a1, int a2, __int64 a3, __int64 a4)
+__int64 GameHr_f722c0(__int64 a1, int a2, __int64 a3, unsigned __int8* a4)
 {
+
+#pragma clang fp contract(off)
   __int64 result;
   float v9;
   __int64 v10;
@@ -2922,14 +2930,14 @@ __int64 GameHr_f722c0(__int64 a1, int a2, __int64 a3, __int64 a4)
   unsigned int v13;
   _QWORD v14[2];
   _QWORD v15[3];
-  char v16[24];
+  _BYTE v16[24];
 
   v16[0] = 26;
   strcpy(&v16[1], "HierarchyHigh");
-  if ((GameRoutine_f72140(a1, v16) & 1) == 0) {
+  if ((GameRoutine_f72140_alt1(a1, v16, a4) & 1) == 0) {
     LOBYTE(v15[0]) = 30;
     strcpy((char*)v15 + 1, "HierarchyMiddle");
-    if ((GameRoutine_f72140(a1, v15) & 1) == 0) {
+    if ((GameRoutine_f72140_alt1(a1, (unsigned __int8*)v15, a4) & 1) == 0) {
       return 0;
     }
   }
@@ -2944,10 +2952,10 @@ __int64 GameHr_f722c0(__int64 a1, int a2, __int64 a3, __int64 a4)
   }
   strcpy(&v16[1], "HierarchyHigh");
   v16[0] = 26;
-  *(struct PseudoSret*)(v15) = GameRoutine_f724a0(a1, v16, a4);
+  game_hub_f724a0((void*)(v15), a1, v16, a4);
   v16[0] = 30;
   strcpy(&v16[1], "HierarchyMiddle");
-  *(struct PseudoSret*)(v14) = GameRoutine_f724a0(a1, v16, a4);
+  game_hub_f724a0((void*)(v14), a1, v16, a4);
   v9 = *(float*)(a3 + 4);
   v10 = v14[1];
   if (vabds_f32(*(float*)(v15[0] + 248LL), v9) >
@@ -2961,7 +2969,7 @@ __int64 GameHr_f722c0(__int64 a1, int a2, __int64 a3, __int64 a4)
                                       0xFFFFFFFFFFFFFFFFLL) == 0) {
     v11 = result;
     (*(void (**)(__int64))(*(_QWORD*)v10 + 16LL))(v10);
-    GameRoutine_1a09c50(v10);
+    std___1___shared_weak_count___release_weak(v10);
     result = v11;
   }
   v12 = v15[1];
@@ -2969,7 +2977,7 @@ __int64 GameHr_f722c0(__int64 a1, int a2, __int64 a3, __int64 a4)
                                       0xFFFFFFFFFFFFFFFFLL) == 0) {
     v13 = result;
     (*(void (**)(__int64))(*(_QWORD*)v12 + 16LL))(v12);
-    GameRoutine_1a09c50(v12);
+    std___1___shared_weak_count___release_weak(v12);
     return v13;
   }
   return result;

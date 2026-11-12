@@ -96,6 +96,12 @@ __int64 GameHr_603a60(__int64 a1, float* a2);
 __int64 GameHr_604e40(__int64 a1, unsigned int a2, unsigned int a3,
                       const char* a4);
 void GameHr_72b080(__int64 a1);
+__int64 GameRoutine_59ed60_alt1(int*, int, __int64,
+                                __int64) __asm__("GameRoutine_59ed60");
+__int64 VectorGraphicsTexture_598160(__int64, int);
+__int64 VectorGraphicsTexture_5981c0(__int64, int);
+__int64 VectorGraphicsTexture_5987a0(__int64);
+__int64 GameHr_5a6e40(__int64 a1, __int64 a2);
 
 __int64 GameHr_597240(__int64 a1, __int64 a2, int a3, __int64 a4, __int64 a5,
                       char* a6)
@@ -154,24 +160,24 @@ __int64 GameHr_597240(__int64 a1, __int64 a2, int a3, __int64 a4, __int64 a5,
 
 __int64 GameHr_5a6e40(__int64 a1, __int64 a2)
 {
-  unsigned int v3;
+  int v3;
   __int64 v4;
   __int64 v5;
-  int v6;
-  __int64 v7;
-  int v8;
-  __int64 v9;
-  int v10;
-  __int64 v11;
-  int v12;
-  __int64 v13;
-  int v14;
-  __int64 v15;
+  __int64 v6;
+  int v7;
+  __int64 v8;
+  int v9;
+  __int64 v10;
+  int v11;
+  __int64 v12;
+  int v13;
+  __int64 v14;
+  int v15;
   __int64 v16;
-  unsigned int v17;
-  __int64 v18;
+  __int64 v17;
+  int v18;
   __int64 v19;
-  int v20;
+  __int64 v20;
   __int64 v21;
   int v22;
   __int64 v23;
@@ -181,25 +187,25 @@ __int64 GameHr_5a6e40(__int64 a1, __int64 a2)
   __int64 v27;
   int v28;
   __int64 v29;
-  unsigned int v30;
+  int v30;
   __int64 v31;
-  __int64 v32;
-  int v33;
+  int v32;
+  __int64 v33;
   __int64 v34;
-  int v35;
-  __int64 v36;
-  int v37;
-  __int64 v38;
-  int v39;
-  __int64 v40;
-  int v41;
-  __int64 v42;
-  __int64 result;
-  __int64 v44;
+  __int64 v35;
+  int v36;
+  __int64 v37;
+  int v38;
+  __int64 v39;
+  int v40;
+  __int64 v41;
+  int v42;
+  __int64 v43;
+  int v44;
   __int64 v45;
-  int v46;
+  __int64 result;
   __int64 v47;
-  int v48;
+  __int64 v48;
   __int64 v49;
   int v50;
   __int64 v51;
@@ -208,102 +214,117 @@ __int64 GameHr_5a6e40(__int64 a1, __int64 a2)
   int v54;
   __int64 v55;
   int v56;
+  __int64 v57;
+  int v58;
+  __int64 v59;
+  int v60;
 
   *(_QWORD*)(a1 + 64) = a2;
-  v56 = 0;
-  v3 = GameRoutine_59ed60(*(_QWORD*)(a2 + 56), 1380406358, 1, &v56);
+  v60 = 0;
+  v3 = GameRoutine_59ed60_alt1(*(int**)(a2 + 56), 1380406358, 1, (__int64)&v60);
   *(_DWORD*)(a1 + 88) = v3;
   if ((v3 & 0x80000000) == 0) {
-    v4 = GameRoutine_598160(*(_QWORD*)(a1 + 64), v3);
-    *(_DWORD*)(a1 + 92) = GameRoutine_604e40(v4, 0, 3, "uVgConstantBufferVS");
-    v5 = GameRoutine_5981c0(*(_QWORD*)(a1 + 64), *(unsigned int*)(a1 + 88));
-    *(_DWORD*)(a1 + 96) = GameRoutine_604e40(v5, 4, 3, "uVgConstantBufferPS");
-    v6 = *(_DWORD*)(a1 + 88);
-    v7 = *(_QWORD*)(*(_QWORD*)(a1 + 64) + 48LL);
-    v8 = GameRoutine_5987a0() * v6;
-    v9 = *(_QWORD*)(a1 + 64);
-    v10 = *(_DWORD*)(a1 + 88);
-    *(_DWORD*)(a1 + 100) = *(_DWORD*)(v7 + 4LL * v8);
-    v11 = *(_QWORD*)(v9 + 48);
-    v12 = GameRoutine_5987a0() * v10;
-    v13 = *(_QWORD*)(a1 + 64);
-    v14 = *(_DWORD*)(a1 + 88);
-    *(_DWORD*)(a1 + 104) = *(_DWORD*)(v11 + 4LL * v12 + 4);
-    v15 = *(_QWORD*)(v13 + 48);
+    v4 = VectorGraphicsTexture_598160(*(_QWORD*)(a1 + 64), v3);
+    *(_DWORD*)(a1 + 92) = GameHr_604e40(v4, 0, 3u, "uVgConstantBufferVS");
+    v5 = VectorGraphicsTexture_5981c0(*(_QWORD*)(a1 + 64), *(_DWORD*)(a1 + 88));
+    *(_DWORD*)(a1 + 96) = GameHr_604e40(v5, 4u, 3u, "uVgConstantBufferPS");
+    v6 = *(_QWORD*)(a1 + 64);
+    v7 = *(_DWORD*)(a1 + 88);
+    v8 = *(_QWORD*)(v6 + 48);
+    v9 = VectorGraphicsTexture_5987a0(v6) * v7;
+    v10 = *(_QWORD*)(a1 + 64);
+    v11 = *(_DWORD*)(a1 + 88);
+    *(_DWORD*)(a1 + 100) = *(_DWORD*)(v8 + 4LL * v9);
+    v12 = *(_QWORD*)(v10 + 48);
+    v13 = VectorGraphicsTexture_5987a0(v10) * v11;
+    v14 = *(_QWORD*)(a1 + 64);
+    v15 = *(_DWORD*)(a1 + 88);
+    *(_DWORD*)(a1 + 104) = *(_DWORD*)(v12 + 4LL * v13 + 4);
+    v16 = *(_QWORD*)(v14 + 48);
     *(_DWORD*)(a1 + 108) =
-        *(_DWORD*)(v15 + 4LL * (int)(GameRoutine_5987a0() * v14) + 8);
+        *(_DWORD*)(v16 + 4LL * (int)(VectorGraphicsTexture_5987a0(v14) * v15) +
+                   8);
   }
-  v16 = *(_QWORD*)(a1 + 64);
-  v56 = 1;
-  v17 = GameRoutine_59ed60(*(_QWORD*)(v16 + 56), 1380406358, 1, &v56);
-  *(_DWORD*)(a1 + 112) = v17;
-  if ((v17 & 0x80000000) == 0) {
-    v18 = GameRoutine_598160(*(_QWORD*)(a1 + 64), v17);
-    *(_DWORD*)(a1 + 116) = GameRoutine_604e40(v18, 0, 3, "uVgConstantBufferVS");
-    v19 = GameRoutine_5981c0(*(_QWORD*)(a1 + 64), *(unsigned int*)(a1 + 112));
-    *(_DWORD*)(a1 + 120) = GameRoutine_604e40(v19, 4, 3, "uVgConstantBufferPS");
-    v20 = *(_DWORD*)(a1 + 112);
-    v21 = *(_QWORD*)(*(_QWORD*)(a1 + 64) + 48LL);
-    v22 = GameRoutine_5987a0() * v20;
-    v23 = *(_QWORD*)(a1 + 64);
-    v24 = *(_DWORD*)(a1 + 112);
-    *(_DWORD*)(a1 + 124) = *(_DWORD*)(v21 + 4LL * v22);
-    v25 = *(_QWORD*)(v23 + 48);
-    v26 = GameRoutine_5987a0() * v24;
-    v27 = *(_QWORD*)(a1 + 64);
-    v28 = *(_DWORD*)(a1 + 112);
-    *(_DWORD*)(a1 + 128) = *(_DWORD*)(v25 + 4LL * v26 + 4);
-    v29 = *(_QWORD*)(v27 + 48);
+  v17 = *(_QWORD*)(a1 + 64);
+  v60 = 1;
+  v18 =
+      GameRoutine_59ed60_alt1(*(int**)(v17 + 56), 1380406358, 1, (__int64)&v60);
+  *(_DWORD*)(a1 + 112) = v18;
+  if ((v18 & 0x80000000) == 0) {
+    v19 = VectorGraphicsTexture_598160(*(_QWORD*)(a1 + 64), v18);
+    *(_DWORD*)(a1 + 116) = GameHr_604e40(v19, 0, 3u, "uVgConstantBufferVS");
+    v20 =
+        VectorGraphicsTexture_5981c0(*(_QWORD*)(a1 + 64), *(_DWORD*)(a1 + 112));
+    *(_DWORD*)(a1 + 120) = GameHr_604e40(v20, 4u, 3u, "uVgConstantBufferPS");
+    v21 = *(_QWORD*)(a1 + 64);
+    v22 = *(_DWORD*)(a1 + 112);
+    v23 = *(_QWORD*)(v21 + 48);
+    v24 = VectorGraphicsTexture_5987a0(v21) * v22;
+    v25 = *(_QWORD*)(a1 + 64);
+    v26 = *(_DWORD*)(a1 + 112);
+    *(_DWORD*)(a1 + 124) = *(_DWORD*)(v23 + 4LL * v24);
+    v27 = *(_QWORD*)(v25 + 48);
+    v28 = VectorGraphicsTexture_5987a0(v25) * v26;
+    v29 = *(_QWORD*)(a1 + 64);
+    v30 = *(_DWORD*)(a1 + 112);
+    *(_DWORD*)(a1 + 128) = *(_DWORD*)(v27 + 4LL * v28 + 4);
+    v31 = *(_QWORD*)(v29 + 48);
     *(_DWORD*)(a1 + 132) =
-        *(_DWORD*)(v29 + 4LL * (int)(GameRoutine_5987a0() * v28) + 8);
+        *(_DWORD*)(v31 + 4LL * (int)(VectorGraphicsTexture_5987a0(v29) * v30) +
+                   8);
   }
-  v56 = 2;
-  v30 = GameRoutine_59ed60(*(_QWORD*)(*(_QWORD*)(a1 + 64) + 56LL), 1380406358,
-                           1, &v56);
-  *(_DWORD*)(a1 + 136) = v30;
-  if ((v30 & 0x80000000) == 0) {
-    v31 = GameRoutine_598160(*(_QWORD*)(a1 + 64), v30);
-    *(_DWORD*)(a1 + 140) = GameRoutine_604e40(v31, 0, 3, "uVgConstantBufferVS");
-    v32 = GameRoutine_5981c0(*(_QWORD*)(a1 + 64), *(unsigned int*)(a1 + 136));
-    *(_DWORD*)(a1 + 144) = GameRoutine_604e40(v32, 4, 3, "uVgConstantBufferPS");
-    v33 = *(_DWORD*)(a1 + 136);
-    v34 = *(_QWORD*)(*(_QWORD*)(a1 + 64) + 48LL);
-    v35 = GameRoutine_5987a0() * v33;
-    v36 = *(_QWORD*)(a1 + 64);
-    v37 = *(_DWORD*)(a1 + 136);
-    *(_DWORD*)(a1 + 148) = *(_DWORD*)(v34 + 4LL * v35);
-    v38 = *(_QWORD*)(v36 + 48);
-    v39 = GameRoutine_5987a0() * v37;
-    v40 = *(_QWORD*)(a1 + 64);
-    v41 = *(_DWORD*)(a1 + 136);
-    *(_DWORD*)(a1 + 152) = *(_DWORD*)(v38 + 4LL * v39 + 4);
-    v42 = *(_QWORD*)(v40 + 48);
+  v60 = 2;
+  v32 = GameRoutine_59ed60_alt1(*(int**)(*(_QWORD*)(a1 + 64) + 56LL),
+                                1380406358, 1, (__int64)&v60);
+  *(_DWORD*)(a1 + 136) = v32;
+  if ((v32 & 0x80000000) == 0) {
+    v33 = VectorGraphicsTexture_598160(*(_QWORD*)(a1 + 64), v32);
+    *(_DWORD*)(a1 + 140) = GameHr_604e40(v33, 0, 3u, "uVgConstantBufferVS");
+    v34 =
+        VectorGraphicsTexture_5981c0(*(_QWORD*)(a1 + 64), *(_DWORD*)(a1 + 136));
+    *(_DWORD*)(a1 + 144) = GameHr_604e40(v34, 4u, 3u, "uVgConstantBufferPS");
+    v35 = *(_QWORD*)(a1 + 64);
+    v36 = *(_DWORD*)(a1 + 136);
+    v37 = *(_QWORD*)(v35 + 48);
+    v38 = VectorGraphicsTexture_5987a0(v35) * v36;
+    v39 = *(_QWORD*)(a1 + 64);
+    v40 = *(_DWORD*)(a1 + 136);
+    *(_DWORD*)(a1 + 148) = *(_DWORD*)(v37 + 4LL * v38);
+    v41 = *(_QWORD*)(v39 + 48);
+    v42 = VectorGraphicsTexture_5987a0(v39) * v40;
+    v43 = *(_QWORD*)(a1 + 64);
+    v44 = *(_DWORD*)(a1 + 136);
+    *(_DWORD*)(a1 + 152) = *(_DWORD*)(v41 + 4LL * v42 + 4);
+    v45 = *(_QWORD*)(v43 + 48);
     *(_DWORD*)(a1 + 156) =
-        *(_DWORD*)(v42 + 4LL * (int)(GameRoutine_5987a0() * v41) + 8);
+        *(_DWORD*)(v45 + 4LL * (int)(VectorGraphicsTexture_5987a0(v43) * v44) +
+                   8);
   }
-  v56 = 3;
-  result = GameRoutine_59ed60(*(_QWORD*)(*(_QWORD*)(a1 + 64) + 56LL),
-                              1380406358, 1, &v56);
+  v60 = 3;
+  result = GameRoutine_59ed60_alt1(*(int**)(*(_QWORD*)(a1 + 64) + 56LL),
+                                   1380406358, 1, (__int64)&v60);
   *(_DWORD*)(a1 + 160) = result;
   if ((result & 0x80000000) == 0) {
-    v44 = GameRoutine_598160(*(_QWORD*)(a1 + 64), (unsigned int)result);
-    *(_DWORD*)(a1 + 164) = GameRoutine_604e40(v44, 0, 3, "uVgConstantBufferVS");
-    v45 = GameRoutine_5981c0(*(_QWORD*)(a1 + 64), *(unsigned int*)(a1 + 160));
-    *(_DWORD*)(a1 + 168) = GameRoutine_604e40(v45, 4, 3, "uVgConstantBufferPS");
-    v46 = *(_DWORD*)(a1 + 160);
-    v47 = *(_QWORD*)(*(_QWORD*)(a1 + 64) + 48LL);
-    v48 = GameRoutine_5987a0() * v46;
+    v47 = VectorGraphicsTexture_598160(*(_QWORD*)(a1 + 64), result);
+    *(_DWORD*)(a1 + 164) = GameHr_604e40(v47, 0, 3u, "uVgConstantBufferVS");
+    v48 =
+        VectorGraphicsTexture_5981c0(*(_QWORD*)(a1 + 64), *(_DWORD*)(a1 + 160));
+    *(_DWORD*)(a1 + 168) = GameHr_604e40(v48, 4u, 3u, "uVgConstantBufferPS");
     v49 = *(_QWORD*)(a1 + 64);
     v50 = *(_DWORD*)(a1 + 160);
-    *(_DWORD*)(a1 + 172) = *(_DWORD*)(v47 + 4LL * v48);
     v51 = *(_QWORD*)(v49 + 48);
-    v52 = GameRoutine_5987a0() * v50;
+    v52 = VectorGraphicsTexture_5987a0(v49) * v50;
     v53 = *(_QWORD*)(a1 + 64);
     v54 = *(_DWORD*)(a1 + 160);
-    *(_DWORD*)(a1 + 176) = *(_DWORD*)(v51 + 4LL * v52 + 4);
+    *(_DWORD*)(a1 + 172) = *(_DWORD*)(v51 + 4LL * v52);
     v55 = *(_QWORD*)(v53 + 48);
-    result = GameRoutine_5987a0();
-    *(_DWORD*)(a1 + 180) = *(_DWORD*)(v55 + 4LL * (int)result * v54 + 8);
+    v56 = VectorGraphicsTexture_5987a0(v53) * v54;
+    v57 = *(_QWORD*)(a1 + 64);
+    v58 = *(_DWORD*)(a1 + 160);
+    *(_DWORD*)(a1 + 176) = *(_DWORD*)(v55 + 4LL * v56 + 4);
+    v59 = *(_QWORD*)(v57 + 48);
+    result = VectorGraphicsTexture_5987a0(v57);
+    *(_DWORD*)(a1 + 180) = *(_DWORD*)(v59 + 4LL * (int)result * v58 + 8);
   }
   return result;
 }

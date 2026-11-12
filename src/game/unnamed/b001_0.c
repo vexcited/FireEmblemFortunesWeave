@@ -277,6 +277,7 @@ __int64 GameHr_17a790(__int64 result);
 __int64 GameHr_17cd20(__int64 a1, __int64 a2);
 __int64 GameHr_18b120(_QWORD* a1, __int64 a2);
 _QWORD* GameHr_261820(__int64 a1);
+__int64 GameHr_191900(__int64 a1, __int16* a2, int a3, unsigned int a4);
 
 __int64 GameHr_173100(__int64 a1, int a2, unsigned int a3, float a4)
 {
@@ -3090,10 +3091,10 @@ __int64 GameHr_191900(__int64 a1, __int16* a2, int a3, unsigned int a4)
   __int64 v35;
   int v36;
 
-  GameRoutine_1a09b70(a1 + 200);
+  nn_os_LockMutex(a1 + 200);
   v9 = *(_DWORD*)(a1 + 156);
   v8 = *(_DWORD*)(a1 + 160);
-  GameRoutine_1a09b80(a1 + 200);
+  nn_os_UnlockMutex(a1 + 200);
   if ((int)a4 >= 1) {
     if (a4 < 6) {
       v10 = 0;
@@ -3133,7 +3134,7 @@ __int64 GameHr_191900(__int64 a1, __int16* a2, int a3, unsigned int a4)
           v15 = (_DWORD)v12++ == 6;
         } while (!v15);
         ++v10;
-        if (v8 + 1 < *(_DWORD*)(a1 + 152)) {
+        if (v8 + 1 < (signed __int32)*(_DWORD*)(a1 + 152)) {
           ++v8;
         }
         else {
@@ -3178,7 +3179,7 @@ __int64 GameHr_191900(__int64 a1, __int16* a2, int a3, unsigned int a4)
       }
     LABEL_42:
       ++v23;
-      if (v8 + 1 < *(_DWORD*)(a1 + 152)) {
+      if (v8 + 1 < (signed __int32)*(_DWORD*)(a1 + 152)) {
         ++v8;
       }
       else {
@@ -3209,7 +3210,7 @@ __int64 GameHr_191900(__int64 a1, __int16* a2, int a3, unsigned int a4)
     v36 = 1;
     while (v17 != 0) {
       --v17;
-      if (v8 + 1 < *(_DWORD*)(a1 + 152)) {
+      if (v8 + 1 < (signed __int32)*(_DWORD*)(a1 + 152)) {
         ++v8;
       }
       else {
@@ -3217,9 +3218,9 @@ __int64 GameHr_191900(__int64 a1, __int16* a2, int a3, unsigned int a4)
       }
       if (v8 == v9 && v36++ < a3) {
       LABEL_69:
-        (*(void (**)(_QWORD, const char*))(**(_QWORD**)GameData_212e2d0[0] +
+        (*(void (**)(_QWORD, const char*))(**(_QWORD**)snd_g_proxy_ptr[0] +
                                            392LL))(
-            *(_QWORD*)GameData_212e2d0[0],
+            *(_QWORD*)snd_g_proxy_ptr[0],
             "#SoundLibrary : FxPCMPlayer's write buffer over flow !!\n");
         *(_BYTE*)(a1 + 164) = 0;
         v8 = v9;
@@ -3238,7 +3239,7 @@ __int64 GameHr_191900(__int64 a1, __int16* a2, int a3, unsigned int a4)
         v15 = (_DWORD)v19++ == 6;
       } while (!v15);
       ++v18;
-      if (v8 + 1 < *(_DWORD*)(a1 + 152)) {
+      if (v8 + 1 < (signed __int32)*(_DWORD*)(a1 + 152)) {
         ++v8;
       }
       else {
@@ -3250,10 +3251,10 @@ __int64 GameHr_191900(__int64 a1, __int16* a2, int a3, unsigned int a4)
     }
   }
 LABEL_70:
-  GameRoutine_1a09b70(a1 + 200);
+  nn_os_LockMutex(a1 + 200);
   *(_DWORD*)(a1 + 160) = v8;
   *(_BYTE*)(a1 + 164) = 1;
-  return GameRoutine_1a09b80(a1 + 200);
+  return nn_os_UnlockMutex(a1 + 200);
 }
 
 __int64 GameHr_191c60(_DWORD* a1)

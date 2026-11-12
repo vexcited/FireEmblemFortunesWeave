@@ -22,8 +22,9 @@ __int64 game_combat_CinematicZoom_CinematicZoom(__int64 a1);
 __int64 CinematicZoom_10e0a60(__int64 result);
 _QWORD* CinematicZoom_Destructor_alt1(_QWORD* result) __asm__(
     "CinematicZoom_Destructor");
-void CinematicZoom_10e0dc0(__int64 a1, long double a2, long double a3,
-                           long double a4, long double a5);
+void CinematicZoom_10e0dc0_alt1(
+    __int64 a1, long double a2, long double a3, long double a4,
+    long double a5) __asm__("CinematicZoom_10e0dc0");
 __int64 CinematicZoom_10e0fc0(__int64 result);
 float GameRoutine_618640_alt1(int, float result, float, float,
                               float) __asm__("GameRoutine_618640");
@@ -39,6 +40,9 @@ void GameHr_111eae0(__int64);
 void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void CinematicZoom_Destructor(_QWORD* a1);
+float task_618640(int, float result, float, float, float);
+void CinematicZoom_10e0dc0(__int64 a1, float a2, long double a3, long double a4,
+                           long double a5);
 
 __int64 game_combat_CinematicZoom_CinematicZoom(__int64 a1)
 {
@@ -311,125 +315,129 @@ LABEL_14:
   }
 }
 
-void CinematicZoom_10e0dc0(__int64 a1, long double a2, long double a3,
-                           long double a4, long double a5)
+void CinematicZoom_10e0dc0(__int64 a1, float a2, long double a3, long double a4,
+                           long double a5)
 {
-  float v5;
+
+#pragma clang fp contract(off)
   int v6;
-  float* v7;
+  __int64 v7;
   __int64 v8;
   float v10;
   float v11;
   float v12;
+  float v13;
   float v14;
-  float v15;
   float v16;
   float v17;
-  __int64 v18;
+  float v18;
   float v19;
   float v20;
+  float v21;
+  float v22;
+  float v23;
+  int v24;
+  float v25;
+  float v26;
+  float v27;
+  float v28;
+  float v29;
 
-  v5 = *(float*)&a2;
   v6 = *(_DWORD*)(a1 + 988);
-  v7 = (float*)(a1 + 36);
+  v7 = a1 + 36;
   v8 = 960;
   *(_QWORD*)(a1 + 984) = 0;
   *(_DWORD*)(a1 + 992) = v6;
   do {
-    *(float*)&a4 = v7[5];
-    if (*(float*)&a4 >= 0.0) {
-      v11 = v7[1];
-      if (*((_BYTE*)v7 + 16) == 1) {
-        v12 = v11 - v5;
-        if (v11 != 0.0 &&
-            (v11 >= (float)(v5 + *(float*)&a4) || *(float*)&a4 > v11)) {
-          v12 = v7[5];
+    v12 = *(float*)(v7 + 20);
+    if (v12 >= 0x0.0p+0f) {
+      v13 = *(float*)(v7 + 4);
+      if (*(_BYTE*)(v7 + 16) == 1) {
+        v14 = v13 - a2;
+        if (v13 != 0x0.0p+0f && (v13 >= (float)(a2 + v12) || v12 > v13)) {
+          v14 = *(float*)(v7 + 20);
         }
       }
       else {
-        v12 = v7[5];
+        v14 = *(float*)(v7 + 20);
       }
-      *(float*)&a4 = v5 + v12;
-      v14 = v7[2];
-      v15 = v7[3];
-      v7[5] = *(float*)&a4;
-      if (*(float*)&a4 > (float)(v15 + (float)(v11 + fmaxf(v14, 0.0)))) {
-        v16 = v7[6];
-        *(float*)&a2 = *(v7 - 3);
-        v7[5] = -1.0;
+      v12 = a2 + v14;
+      v16 = *(float*)(v7 + 8);
+      v17 = *(float*)(v7 + 12);
+      *(float*)(v7 + 20) = v12;
+      if (v12 > (float)(v17 + (float)(v13 + fmaxf(v16, 0x0.0p+0f)))) {
+        v18 = *(float*)(v7 + 24);
+        v19 = *(float*)(v7 - 12);
+        *(_DWORD*)(v7 + 20) = -1082130432;
         goto LABEL_28;
       }
     }
-    v16 = v7[6];
-    if (*(float*)&a4 < 0.0) {
-      *(float*)&a2 = *(v7 - 3);
+    v18 = *(float*)(v7 + 24);
+    if (v12 < 0x0.0p+0f) {
+      v19 = *(float*)(v7 - 12);
       goto LABEL_28;
     }
-    *(float*)&a5 = v7[1];
-    if (*(float*)&a4 == 0.0 && *(float*)&a5 == 0.0) {
+    v20 = *(float*)(v7 + 4);
+    if (v12 == 0x0.0p+0f && v20 == 0x0.0p+0f) {
     LABEL_22:
-      *(float*)&a2 = *(v7 - 2);
+      v19 = *(float*)(v7 - 8);
       goto LABEL_28;
     }
-    if (*(float*)&a4 <= *(float*)&a5) {
-      *(float*)&a2 = *(v7 - 3);
-      *(float*)&a3 = *(v7 - 2);
-      v18 = *((unsigned int*)v7 - 1);
+    if (v12 <= v20) {
+      v22 = *(float*)(v7 - 12);
+      v23 = *(float*)(v7 - 8);
+      v24 = *(_DWORD*)(v7 - 4);
     }
     else {
-      v17 = *(float*)&a5 + fmaxf(v7[2], 0.0);
-      if (v17 >= *(float*)&a4) {
+      v21 = v20 + fmaxf(*(float*)(v7 + 8), 0x0.0p+0f);
+      if (v21 >= v12) {
         goto LABEL_22;
       }
-      *(float*)&a3 = *(v7 - 3);
-      *(float*)&a2 = *(v7 - 2);
-      *(float*)&a4 = *(float*)&a4 - v17;
-      *(float*)&a5 = v7[3];
-      v18 = *(unsigned int*)v7;
+      v23 = *(float*)(v7 - 12);
+      v22 = *(float*)(v7 - 8);
+      v12 = v12 - v21;
+      v20 = *(float*)(v7 + 12);
+      v24 = *(_DWORD*)v7;
     }
-    a2 = GameRoutine_618640(v18, a2, a3, a4, a5);
+    v19 = task_618640(v24, v22, v23, v12, v20);
   LABEL_28:
-    v19 = v16 * *(float*)&a2;
-    if (v19 >= *(float*)(a1 + 984)) {
-      v19 = *(float*)(a1 + 984);
+    v25 = v18 * v19;
+    if (v25 >= *(float*)(a1 + 984)) {
+      v25 = *(float*)(a1 + 984);
     }
-    *(float*)(a1 + 984) = v19;
-    *(float*)&a4 = v7[5];
-    v20 = v7[8];
-    if (*(float*)&a4 < 0.0) {
-      *(float*)&a2 = *(v7 - 3);
+    *(float*)(a1 + 984) = v25;
+    v26 = *(float*)(v7 + 20);
+    v27 = *(float*)(v7 + 32);
+    if (v26 < 0x0.0p+0f) {
+      v10 = *(float*)(v7 - 12);
       goto LABEL_3;
     }
-    *(float*)&a5 = v7[1];
-    if (*(float*)&a4 == 0.0 && *(float*)&a5 == 0.0) {
+    v28 = *(float*)(v7 + 4);
+    if (v26 == 0x0.0p+0f && v28 == 0x0.0p+0f) {
     LABEL_33:
-      *(float*)&a2 = *(v7 - 2);
+      v10 = *(float*)(v7 - 8);
       goto LABEL_3;
     }
-    if (*(float*)&a4 <= *(float*)&a5) {
-      *(float*)&a2 = *(v7 - 3);
-      *(float*)&a3 = *(v7 - 2);
-      a2 = GameRoutine_618640(*((unsigned int*)v7 - 1), a2, a3, a4, a5);
+    if (v26 <= v28) {
+      v10 = task_618640(*(_DWORD*)(v7 - 4), *(float*)(v7 - 12),
+                        *(float*)(v7 - 8), v26, v28);
     }
     else {
-      *(float*)&a5 = *(float*)&a5 + fmaxf(v7[2], 0.0);
-      if (*(float*)&a5 >= *(float*)&a4) {
+      v29 = v28 + fmaxf(*(float*)(v7 + 8), 0x0.0p+0f);
+      if (v29 >= v26) {
         goto LABEL_33;
       }
-      *(float*)&a3 = *(v7 - 3);
-      *(float*)&a2 = *(v7 - 2);
-      *(float*)&a4 = *(float*)&a4 - *(float*)&a5;
-      *(float*)&a5 = v7[3];
-      a2 = GameRoutine_618640(*(unsigned int*)v7, a2, a3, a4, a5);
+      v10 = task_618640(*(_DWORD*)v7, *(float*)(v7 - 8), *(float*)(v7 - 12),
+                        v26 - v29, *(float*)(v7 + 12));
     }
   LABEL_3:
-    v10 = v20 * *(float*)&a2;
-    v7 += 16;
-    if (*(float*)(a1 + 988) >= v10) {
-      v10 = *(float*)(a1 + 988);
+    v11 = v27 * v10;
+    v7 += 64;
+    if (*(float*)(a1 + 988) >= v11) {
+      v11 = *(float*)(a1 + 988);
     }
     v8 -= 64;
-    *(float*)(a1 + 988) = v10;
+    *(float*)(a1 + 988) = v11;
   } while (v8 != 0);
 }
 

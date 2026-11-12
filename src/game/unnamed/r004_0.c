@@ -134,6 +134,10 @@ void nn_mem_StandardAllocator_Free(__int64, __int64);
 void GameHr_d1aa20(float* a1, unsigned int a2, __int64 a3, __int64 a4);
 __int64 GameHr_d56710();
 __int64 GameHr_d86750(__int64 a1);
+__int64* GameRoutine_d4d300_alt1(__int64* result, __int64*, __int64*, __int64*,
+                                 __int64*) __asm__("GameRoutine_d4d300");
+__int64 GameHr_d4a880(__int64 result, _DWORD* a2, _DWORD* a3);
+bool GameHr_d4d480(__int64* a1, __int64* a2);
 
 __int64 GameHr_ce8cc0(__int64 result, _QWORD* a2, __int64 a3,
                       unsigned __int64 a4, __int64* a5, signed __int64 a6)
@@ -1368,6 +1372,8 @@ __int64 GameHr_d4a880(__int64 result, _DWORD* a2, _DWORD* a3)
 
 bool GameHr_d4d480(__int64* a1, __int64* a2)
 {
+
+#pragma clang fp contract(off)
   __int64 v2;
   __int64 v3;
   __int64 v4;
@@ -1444,7 +1450,7 @@ bool GameHr_d4d480(__int64* a1, __int64* a2)
       if (v2 != 5) {
         goto LABEL_13;
       }
-      GameRoutine_d4d300(a1, a1 + 1, a1 + 2, a1 + 3, a2 - 1);
+      GameRoutine_d4d300_alt1(a1, a1 + 1, a1 + 2, a1 + 3, a2 - 1);
       return true;
     }
     v17 = *a1;

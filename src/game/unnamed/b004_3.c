@@ -83,6 +83,7 @@ extern int game_g_shared_system_skills;
 void GameHr_6c3050(__int64);
 void nn_mem_StandardAllocator_Free(__int64, __int64);
 __int64 GameHr_6c47b0(__int64 a1, unsigned __int8* a2, char a3, char a4);
+bool GameHr_674d00(__int64* a1, __int64* a2);
 
 bool GameHr_6390c0(__int64 a1, unsigned __int8** a2, unsigned __int8* a3,
                    __int64 a4)
@@ -504,6 +505,8 @@ __int64 GameHr_66b160(__int64 result)
 
 bool GameHr_674d00(__int64* a1, __int64* a2)
 {
+
+#pragma clang fp contract(off)
   __int64 v2;
   __int64 v3;
   __int64 v4;

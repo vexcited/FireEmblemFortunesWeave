@@ -195,6 +195,10 @@ GameRoutine_60a210_alt1() __asm__("GameRoutine_60a210");
 void __cxa_guard_release_alt1(__int64) __asm__("__cxa_guard_release");
 void FloatingHelp_18ae010(__int64* a1, _QWORD* a2);
 void FloatingHelp_18aee60(_QWORD* a1, __int64* a2);
+__int64 FloatingHelp_18ac620_alt2(_QWORD,
+                                  _QWORD) __asm__("FloatingHelp_18ac620");
+__int64 GameHr_18b0920();
+__int64 game_18b0d00();
 
 __int64 FloatingHelp_Destructor(_QWORD* a1)
 {
@@ -408,7 +412,7 @@ FloatingHelp_Unknown4(PSEUDO_X8 x8_, __int64 result, __int64 a2)
             if (v13 != 0) {
               atomic_fetch_add_explicit((atomic_ullong* volatile)(v11 + 8), 1u,
                                         memory_order_relaxed);
-              GameRoutine_18ac620_alt1(v10, &v32);
+              FloatingHelp_18ac620_alt2(v10, &v32);
               v14 = *(_QWORD*)(v10 + 240);
               v15 = v10;
               *(_QWORD*)(v10 + 232) = 0;
@@ -500,12 +504,12 @@ FloatingHelp_Unknown4(PSEUDO_X8 x8_, __int64 result, __int64 a2)
         GameData_226b508 = 0;
         GameData_226b510 = 0;
         GameData_226b520 = 0;
-        GameData_226b528 = (__int64)GameRoutine_18b0d00;
+        GameData_226b528 = (__int64)game_18b0d00;
         GameData_226b530 = 0;
         GameData_226b538 = 0;
         GameData_226b540 = 0;
         GameData_226b4a0 = 0;
-        GameData_226b4a8 = (__int64)GameRoutine_18b0920;
+        GameData_226b4a8 = (__int64)GameHr_18b0920;
         GameData_226b548 = 0;
         GameData_226b550 = 0;
         GameData_226b558 = 0;

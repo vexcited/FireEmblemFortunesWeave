@@ -53,6 +53,9 @@ __int64 GameRoutine_168c0a0_alt1(__int64 result, _QWORD*, __int64, __int64,
                                  __int64) __asm__("GameRoutine_168c0a0");
 __int64 GameHr_168c360(__int64 result, _QWORD* a2, unsigned __int64 a3,
                        _QWORD* a4);
+__int64 __dynamic_cast(_QWORD, _QWORD, _QWORD, _QWORD);
+__int64 ui_1567590(__int64 result, char);
+__int64 GameHr_178b5c0(unsigned int* a1);
 
 __int64 GameHr_168c360(__int64 result, _QWORD* a2, unsigned __int64 a3,
                        _QWORD* a4)
@@ -1931,19 +1934,19 @@ __int64 GameHr_178b5c0(unsigned int* a1)
   __int64 v4;
   __int64 v5;
   __int64 v6;
-  _BOOL8 v7;
+  char v7;
 
   result = (*(__int64 (**)(unsigned int*))(*(_QWORD*)a1 + 368LL))(a1);
   if ((result & 1) != 0) {
     v3 = *(_QWORD*)&a1[2 * a1[88] + 76];
     v7 = v3 == 0 ||
-         (v4 = GameRoutine_1a0a6c0(v3, GameData_21319f0[0], &GameData_20c9670,
-                                   0)) == 0 ||
+         (v4 = __dynamic_cast(v3, GameData_21319f0[0], &GameData_20c9670, 0)) ==
+             0 ||
          (v5 = *(_QWORD*)(v4 + 336)) == 0 ||
-         (v6 = GameRoutine_1a0a6c0(v5, GameData_212e008[0], GameData_212e0c8[0],
-                                   0)) == 0 ||
+         (v6 = __dynamic_cast(v5, GameData_212e008[0], GameData_212e0c8[0],
+                              0)) == 0 ||
          *(_QWORD*)(v6 + 88) == 0;
-    return GameRoutine_1567590("OpenStatus", v7);
+    return ui_1567590((__int64)"OpenStatus", v7);
   }
   return result;
 }

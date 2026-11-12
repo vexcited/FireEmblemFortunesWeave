@@ -103,6 +103,16 @@ __int64 GameHr_bd8640(__int64 result, __int64 a2, unsigned __int64 a3,
                       _BYTE* a4);
 __int64 GameHr_bd9120(__int64 result, __int64 a2, unsigned __int64 a3,
                       _BYTE* a4);
+_QWORD* TaskPassNodes_b91200(_QWORD* result, __int64, _QWORD*);
+__int64 GameRoutine_b4a510_alt1(__int64, __int64) __asm__("GameRoutine_b4a510");
+__int64 GameRoutine_b50c60_alt1(__int64*, const char*,
+                                __int64) __asm__("GameRoutine_b50c60");
+__int64 GameRoutine_b5a720_alt1(__int64*, const char*,
+                                __int64) __asm__("GameRoutine_b5a720");
+__int64 ResourceBuilder_b538b0(__int64, __int64, __int64, _QWORD*, __int64);
+__int64 memcpy(__int64, __int64, unsigned __int64);
+__int64 GameHr_b94170(__int64 a1, __int64* a2, __int64* a3);
+__int64 GameHr_bb5480(__int64 a1, __int64* a2, _QWORD* a3);
 
 __int64 GameHr_a2e6f0(__int64 a1, unsigned __int8* a2, char a3, char a4,
                       char a5, __int64 a6)
@@ -2139,8 +2149,10 @@ bool GameHr_ae3d80(__int64 a1)
   return v3 != 0;
 }
 
-__int64 GameHr_b94170(__int64 a1, _QWORD* a2, __int64 a3)
+__int64 GameHr_b94170(__int64 a1, __int64* a2, __int64* a3)
 {
+
+#pragma clang fp contract(off)
   _QWORD* v3;
   int* v7;
   float v8;
@@ -2154,12 +2166,15 @@ __int64 GameHr_b94170(__int64 a1, _QWORD* a2, __int64 a3)
   __int64 v16;
   __int64 result;
   __int64* v18;
-  __int64 v19;
-  int v20;
-  signed int v21;
-  __int64 v22;
-  char v23;
-  int v24;
+  struct {
+    __int64 v19;
+    int v20;
+    signed int v21;
+    __int64 v22;
+    char v23;
+    char gap25_[3];
+    int v24;
+  } v19_;
 
   v3 = *(_QWORD**)(a1 + 8);
   v7 = (int*)(*(_QWORD*)(*v3 + 16672LL) + 24LL);
@@ -2167,32 +2182,32 @@ __int64 GameHr_b94170(__int64 a1, _QWORD* a2, __int64 a3)
     v7 = (int*)(*v3 + 13304LL);
   }
   v8 = (float)v7[1];
-  v9 = ((int)(float)(v8 * 0.7) + 1) & 0xFFFFFFFE;
+  v9 = ((int)(float)(v8 * 0x1.6666660000000p-1f) + 1) & 0xFFFFFFFE;
   v10 = (int)(float)((float)((float)*v7 / v8) * (float)v9);
-  GameRoutine_b91200(&v19, a3, **(_QWORD**)(a1 + 16));
-  GameRoutine_1a0b950(*a2, &v19, 144);
+  TaskPassNodes_b91200(&v19_.v19, (__int64)a3, **(_QWORD***)(a1 + 16));
+  memcpy(*a2, (__int64)&v19_.v19, 0x90u);
   v11 = **(_QWORD**)(a1 + 16);
   v12 = *(_DWORD*)(v3[9] + 4LL);
-  v22 = 0x100000001LL;
-  v23 = 1;
-  v24 = 0;
-  v20 = v10;
-  v21 = v9;
-  v19 = 0xD00000000LL;
-  v13 = GameRoutine_b50c60(a3, "EftOffscreen", &v19);
+  v19_.v22 = 0x100000001LL;
+  v19_.v23 = 1;
+  v19_.v24 = 0;
+  v19_.v20 = v10;
+  v19_.v21 = v9;
+  v19_.v19 = 0xD00000000LL;
+  v13 = GameRoutine_b50c60_alt1(a3, "EftOffscreen", (__int64)&v19_.v19);
   v14 = 8;
   v15 = v13;
   if (v12 == 1) {
     v14 = 24;
   }
-  v16 = GameRoutine_b4a510(a3, *(_QWORD*)(v11 + v14));
-  v22 = 0x100000001LL;
-  v23 = 1;
-  v24 = 0;
-  v20 = v10;
-  v21 = v9;
-  v19 = 0x1500000000LL;
-  result = GameRoutine_b5a720(a3, "OffscreenDepth", &v19);
+  v16 = GameRoutine_b4a510_alt1((__int64)a3, *(_QWORD*)(v11 + v14));
+  v19_.v22 = 0x100000001LL;
+  v19_.v23 = 1;
+  v19_.v24 = 0;
+  v19_.v20 = v10;
+  v19_.v21 = v9;
+  v19_.v19 = 0x1500000000LL;
+  result = GameRoutine_b5a720_alt1(a3, "OffscreenDepth", (__int64)&v19_.v19);
   v18 = (__int64*)a2[1];
   *v18 = v15;
   v18[1] = 0;
@@ -2224,14 +2239,16 @@ __int64 GameHr_bb5480(__int64 a1, __int64* a2, _QWORD* a3)
   __int64 v21;
   __int64 v22;
   _QWORD v24[5];
-  _QWORD v25[2];
-  int v26;
-  char v27;
+  struct {
+    _QWORD v25[2];
+    int v26;
+    char v27;
+  } v25_;
 
   v3 = *(_QWORD*)(a1 + 8);
   v4 = a2[3];
-  v25[0] = 0;
-  v25[1] = 0;
+  v25_.v25[0] = 0;
+  v25_.v25[1] = 0;
   memset(&v24[2], 0, 24);
   v6 = *(_DWORD*)(v4 + 104);
   v24[0] = *(_QWORD*)v3;
@@ -2248,7 +2265,7 @@ __int64 GameHr_bb5480(__int64 a1, __int64* a2, _QWORD* a3)
     v10 = (_QWORD*)(v7 + 64);
     v11 = 0;
     v12 = -(__int64)(v6 & 0x7FFFFFF8);
-    v13 = v25;
+    v13 = v25_.v25;
     do {
       v11 -= 8;
       *(v13 - 3) = *(v10 - 8);
@@ -2284,9 +2301,9 @@ LABEL_10:
   LODWORD(v18) = *(_DWORD*)(v3 + 140);
   v22 = *a2;
   v21 = a2[1];
-  v27 = v19;
-  v26 = v18;
-  return GameRoutine_b538b0(v20, v22, v21, a3, (__int64)v24);
+  v25_.v27 = v19;
+  v25_.v26 = v18;
+  return ResourceBuilder_b538b0(v20, v22, v21, a3, (__int64)v24);
 }
 
 __int64 GameHr_bd8160(__int64 result, __int64 a2, unsigned __int64 a3,

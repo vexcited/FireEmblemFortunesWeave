@@ -78,7 +78,8 @@ __int64 CharacterController_StateStay_ToStayPos_Unknown4(__int64 result,
 void CharacterController_d449c0(__int64 a1);
 __int64 CharacterController_d468c0(__int64 result);
 __int64 CharacterController_StateGuard_Unknown3(__int64 a1);
-float CharacterController_StateGuard_Start_Unknown4(__int64 a1);
+float CharacterController_StateGuard_Start_Unknown4_alt1(__int64 a1) __asm__(
+    "CharacterController_StateGuard_Start_Unknown4");
 _QWORD* GameRoutine_d47980(__int64*, _QWORD*);
 _QWORD* GameRoutine_d4e4e0(__int64*, _QWORD*);
 _QWORD* GameRoutine_d78b40(__int64*, _QWORD*);
@@ -267,6 +268,7 @@ bool GameRoutine_d2d4e0();
 extern __int64 (*eft_ClampCurve_ptr)();
 unsigned __int64 GameRoutine_d2b5f0(__int64);
 void CharacterController_d48660(__int64 a1, unsigned __int32 a2, int* a3);
+float CharacterController_StateGuard_Start_Unknown4(__int64 a1, long double a2);
 
 void CharacterController_StateWarpTo_Unknown3(__int64 a1)
 {
@@ -8231,29 +8233,28 @@ LABEL_29:
   }
 }
 
-float CharacterController_StateGuard_Start_Unknown4(__int64 a1)
+float CharacterController_StateGuard_Start_Unknown4(__int64 a1, long double a2)
 {
-  long double v2;
-  __int64 v3;
+
+#pragma clang fp contract(off)
+  double v3;
+  __int64 v4;
   float result;
 
-  *(float*)&v2 =
-      GameRoutine_d1cbc0(
-          *(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(a1 + 8) +
-                                                      8LL) +
-                                           8LL) +
-                                8LL) +
-                     344LL),
-          501870813) /
-      60.0;
-  if (*(float*)(a1 + 16) >= *(float*)&v2) {
-    v3 = *(_QWORD*)(*(_QWORD*)(a1 + 8) + 120LL);
-    if (*(_BYTE*)(v3 + 12) != 1 || *(_DWORD*)(v3 + 8) != 2) {
-      *(_DWORD*)(v3 + 16) = 2;
-      *(_BYTE*)(v3 + 20) = 1;
+  v3 = GameHr_d1cbc0(
+      *(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(a1 + 8) + 8LL) +
+                                       8LL) +
+                            8LL) +
+                 344LL),
+      501870813, a2);
+  if (*(float*)(a1 + 16) >= (float)(*(float*)&v3 / 0x1.e000000000000p+5f)) {
+    v4 = *(_QWORD*)(*(_QWORD*)(a1 + 8) + 120LL);
+    if (*(_BYTE*)(v4 + 12) != 1 || *(_DWORD*)(v4 + 8) != 2) {
+      *(_DWORD*)(v4 + 16) = 2;
+      *(_BYTE*)(v4 + 20) = 1;
     }
-    if ((*(_BYTE*)(v3 + 96) & 1) == 0 && (*(_BYTE*)(v3 + 97) & 1) != 0) {
-      WaitRelease_cfa2a0(v2);
+    if ((*(_BYTE*)(v4 + 96) & 1) == 0 && (*(_BYTE*)(v4 + 97) & 1) != 0) {
+      WaitRelease_cfa2a0_alt1(v4);
     }
   }
   result =

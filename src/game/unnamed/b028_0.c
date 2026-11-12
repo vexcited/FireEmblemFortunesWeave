@@ -4463,6 +4463,12 @@ void GameRoutine_844ee0_alt1(__int64) __asm__("GameRoutine_844ee0");
 void __cxa_guard_release(__int64);
 __int64 GameHr_662560(__int64 a1);
 void GameHr_1046e40(__int64 a1);
+bool GameRoutine_1119be0_alt1(int*, int*,
+                              __int64**) __asm__("GameRoutine_1119be0");
+int* GameRoutine_11199f0_alt1(int* result, int*, int*, int*,
+                              __int64**) __asm__("GameRoutine_11199f0");
+__int64 GameHr_11188c0(__int64 result, int* a2, __int64** a3, __int64 a4,
+                       char a5);
 
 __int64 GameHr_f0a40(__int64 result, __int64 a2)
 {
@@ -41914,6 +41920,8 @@ LABEL_58:
 __int64 GameHr_11188c0(__int64 result, int* a2, __int64** a3, __int64 a4,
                        char a5)
 {
+
+#pragma clang fp contract(off)
   int* v9;
   int* v10;
   __int64 v11;
@@ -42042,14 +42050,14 @@ __int64 GameHr_11188c0(__int64 result, int* a2, __int64** a3, __int64 a4,
   __int64 v134;
   __int64 v135;
   int* v136;
-  char v137;
-  char v138;
+  bool v137;
+  bool v138;
   __int64 v139;
   __int64 v140;
   __int64 v141;
   __int64 v142;
   __int64 v143;
-  int* v144;
+  unsigned __int64 v144;
   __int64 v145;
   __int64 v146;
   int* v147;
@@ -42249,10 +42257,12 @@ LABEL_2:
       break;
     }
     if (v11 == 4) {
-      return GameRoutine_11199f0(v10, v10 + 1, v10 + 2, a2 - 1, a3);
+      return (__int64)GameRoutine_11199f0_alt1(v10, v10 + 1, v10 + 2, a2 - 1,
+                                               a3);
     }
     if (v11 == 5) {
-      result = GameRoutine_11199f0(v10, v10 + 1, v10 + 2, v10 + 3, a3);
+      result =
+          (__int64)GameRoutine_11199f0_alt1(v10, v10 + 1, v10 + 2, v10 + 3, a3);
       v161 = *(a2 - 1);
       v162 = v10[3];
       v163 = (*a3)[1];
@@ -43033,13 +43043,13 @@ LABEL_2:
         v140 = v106 + 32 * v139;
       }
       if (v111 <= *(float*)(v140 + 4)) {
-        v144 = v10 + 1;
+        v144 = (unsigned __int64)(v10 + 1);
         do {
-          v10 = v144;
-          if (v144 >= a2) {
+          v10 = (int*)v144;
+          if (v144 >= (unsigned __int64)a2) {
             break;
           }
-          ++v144;
+          v144 += 4LL;
           v145 = *v10;
           v146 = (_DWORD)v145 == 16 ? **a3 : v106 + 32 * v145;
         } while (v111 <= *(float*)(v146 + 4));
@@ -43198,20 +43208,20 @@ LABEL_2:
       if (v118 < v119) {
         goto LABEL_173;
       }
-      v137 = GameRoutine_1119be0(v10, v136, a3);
+      v137 = GameRoutine_1119be0_alt1(v10, v136, a3);
       v10 = v136 + 1;
       v138 = v137;
-      result = GameRoutine_1119be0(v136 + 1, a2, a3);
+      result = GameRoutine_1119be0_alt1(v136 + 1, a2, a3);
       if ((result & 1) != 0) {
         a2 = v136;
-        if ((v138 & 1) == 0) {
+        if (!v138) {
           goto LABEL_2;
         }
         return result;
       }
-      if ((v138 & 1) == 0) {
+      if (!v138) {
       LABEL_173:
-        result = GameHr_11188c0(v9, v136, a3, a4, a5 & 1);
+        result = GameHr_11188c0((__int64)v9, v136, a3, a4, a5 & 1);
         a5 = 0;
         v10 = v136 + 1;
       }

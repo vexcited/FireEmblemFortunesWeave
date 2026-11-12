@@ -149,6 +149,13 @@ __int64* GameHr_d4a900(__int64* result, __int64* a2, __int64* a3);
 __int64 GameHr_d71020(__int64 a1, __int64 a2, int a3);
 _QWORD* GameHr_daa020(_QWORD* result, __int64 a2);
 void GameHr_e1d870(__int64 a1);
+__int64* game_deb450(__int64* result, __int64*, __int64*, __int64*, __int64*);
+bool GameRoutine_deb620_alt1(__int64*, __int64*) __asm__("GameRoutine_deb620");
+extern __int64 game_ProcGameSkipView_instance_;
+extern __int64 game_hub_ProcHubSeqView_instance_;
+__int64 GameHr_d8d080(__int64 result);
+unsigned __int64 GameHr_dea880(unsigned __int64 result, __int64* a2, __int64 a3,
+                               char a4);
 
 __int64 GameHr_cd7e00(__int64 a1, __int64 a2, __int64 a3, __int64 a4)
 {
@@ -4327,16 +4334,21 @@ __int64 GameHr_d8d080(__int64 result)
     result = (**(__int64 (***)(__int64))(result + 40))(result + 40);
   }
   v3 = GameData_21d96b8;
-  v4 = (int)v2[8] <= 0 && v2[4] <= 0;
+  v4 = (int)v2[8] <= 0 && (signed __int32)v2[4] <= 0;
   if (!v4 ||
-      GameData_21ee240 != 0 &&
-          (unsigned int)*(unsigned __int8*)(GameData_21ee240 + 152) - 1 <= 2 &&
-          (((v5 = *(_DWORD*)(GameData_21ee240 + 156)) & 8) != 0 ? (v6 = 2)
-                                                                : (v6 = 3),
+      game_ProcGameSkipView_instance_ != 0 &&
+          (unsigned int)*(unsigned __int8*)(game_ProcGameSkipView_instance_ +
+                                            152) -
+                  1 <=
+              2 &&
+          (((v5 = *(_DWORD*)(game_ProcGameSkipView_instance_ + 156)) & 8) != 0
+               ? (v6 = 2)
+               : (v6 = 3),
            (v6 & v5) == 0) ||
-      GameData_2212270 != 0 && (v7 = *(_QWORD*)(GameData_2212270 + 408)) != 0 &&
+      game_hub_ProcHubSeqView_instance_ != 0 &&
+          (v7 = *(_QWORD*)(game_hub_ProcHubSeqView_instance_ + 408)) != 0 &&
           *(_QWORD*)(v7 + 40) != 0 ||
-      (v8 = *(_QWORD*)(GameData_2212270 + 416)) != 0 &&
+      (v8 = *(_QWORD*)(game_hub_ProcHubSeqView_instance_ + 416)) != 0 &&
           *(_QWORD*)(v8 + 40) != 0) {
     v9 = 0;
   }
@@ -4345,9 +4357,9 @@ __int64 GameHr_d8d080(__int64 result)
   }
   v10 = *(unsigned __int8*)(GameData_21d96b8 + 14);
   *(_BYTE*)(GameData_21d96b8 + 12) = v9 & 1;
-  v12 = (int)v2[8] < 1 && v2[12] < 1;
+  v12 = (int)v2[8] < 1 && (signed __int32)v2[12] < 1;
   *(_BYTE*)(v3 + 13) = v12;
-  v13 = v2[8] < 1;
+  v13 = (signed __int32)v2[8] < 1;
   if (v10 != v13) {
     *(_BYTE*)(v3 + 14) = v13;
   }
@@ -4996,7 +5008,8 @@ __int64 GameHr_dac4e0(__int64* a1, _QWORD* a2, __int64 a3)
   return v20;
 }
 
-__int64 GameHr_dea880(__int64 result, __int64* a2, __int64 a3, char a4)
+unsigned __int64 GameHr_dea880(unsigned __int64 result, __int64* a2, __int64 a3,
+                               char a4)
 {
   __int64* v7;
   __int64* v8;
@@ -5052,10 +5065,10 @@ __int64 GameHr_dea880(__int64 result, __int64* a2, __int64 a3, char a4)
   __int64 v58;
   __int64 v59;
   __int64* v60;
-  char v61;
-  char v62;
+  bool v61;
+  bool v62;
   __int64 v63;
-  __int64* v64;
+  unsigned __int64 v64;
   __int64* v65;
   __int64 v66;
   __int64 v67;
@@ -5136,13 +5149,14 @@ __int64 GameHr_dea880(__int64 result, __int64* a2, __int64 a3, char a4)
             v77 = *(_DWORD*)(*(_QWORD*)(v76 + 24) + 608LL);
             v78 = *(a2 - 1);
             v79 = *(_DWORD*)(*(_QWORD*)(v78 + 24) + 608LL);
-            if (v77 < *(_DWORD*)(*(_QWORD*)(*v8 + 24) + 608LL)) {
+            if (v77 <
+                (signed __int32)*(_DWORD*)(*(_QWORD*)(*v8 + 24) + 608LL)) {
               if (v79 >= v77) {
                 *v8 = v76;
                 v8[1] = v75;
                 v127 = *(a2 - 1);
-                if (*(_DWORD*)(*(_QWORD*)(v127 + 24) + 608LL) <
-                    *(_DWORD*)(*(_QWORD*)(v75 + 24) + 608LL)) {
+                if ((signed __int32)*(_DWORD*)(*(_QWORD*)(v127 + 24) + 608LL) <
+                    (signed __int32)*(_DWORD*)(*(_QWORD*)(v75 + 24) + 608LL)) {
                   v8[1] = v127;
                   *(a2 - 1) = v75;
                 }
@@ -5161,8 +5175,8 @@ __int64 GameHr_dea880(__int64 result, __int64* a2, __int64 a3, char a4)
             v124 = v8[1];
           LABEL_182:
             v130 = *v8;
-            if (*(_DWORD*)(*(_QWORD*)(v124 + 24) + 608LL) <
-                *(_DWORD*)(*(_QWORD*)(*v8 + 24) + 608LL)) {
+            if ((signed __int32)*(_DWORD*)(*(_QWORD*)(v124 + 24) + 608LL) <
+                (signed __int32)*(_DWORD*)(*(_QWORD*)(*v8 + 24) + 608LL)) {
               *v8 = v124;
               v8[1] = v130;
             }
@@ -5170,7 +5184,8 @@ __int64 GameHr_dea880(__int64 result, __int64* a2, __int64 a3, char a4)
           }
           if (v9 != 4) {
             if (v9 == 5) {
-              return GameRoutine_deb450(v8, v8 + 1, v8 + 2, v8 + 3, a2 - 1);
+              return (unsigned __int64)game_deb450(v8, v8 + 1, v8 + 2, v8 + 3,
+                                                   a2 - 1);
             }
             goto LABEL_10;
           }
@@ -5179,12 +5194,12 @@ __int64 GameHr_dea880(__int64 result, __int64* a2, __int64 a3, char a4)
           v82 = *(_DWORD*)(*(_QWORD*)(v80 + 24) + 608LL);
           v83 = v8[2];
           v84 = *(_DWORD*)(*(_QWORD*)(v83 + 24) + 608LL);
-          if (v82 >= *(_DWORD*)(*(_QWORD*)(*v8 + 24) + 608LL)) {
+          if (v82 >= (signed __int32)*(_DWORD*)(*(_QWORD*)(*v8 + 24) + 608LL)) {
             if (v84 < v82) {
               v8[1] = v83;
               v8[2] = v80;
-              if (*(_DWORD*)(*(_QWORD*)(v83 + 24) + 608LL) <
-                  *(_DWORD*)(*(_QWORD*)(v81 + 24) + 608LL)) {
+              if ((signed __int32)*(_DWORD*)(*(_QWORD*)(v83 + 24) + 608LL) <
+                  (signed __int32)*(_DWORD*)(*(_QWORD*)(v81 + 24) + 608LL)) {
                 *v8 = v83;
                 v8[1] = v81;
               }
@@ -5201,8 +5216,8 @@ __int64 GameHr_dea880(__int64 result, __int64* a2, __int64 a3, char a4)
             }
             *v8 = v80;
             v8[1] = v81;
-            if (*(_DWORD*)(*(_QWORD*)(v83 + 24) + 608LL) <
-                *(_DWORD*)(*(_QWORD*)(v81 + 24) + 608LL)) {
+            if ((signed __int32)*(_DWORD*)(*(_QWORD*)(v83 + 24) + 608LL) <
+                (signed __int32)*(_DWORD*)(*(_QWORD*)(v81 + 24) + 608LL)) {
               v8[1] = v83;
               goto LABEL_177;
             }
@@ -5210,16 +5225,16 @@ __int64 GameHr_dea880(__int64 result, __int64* a2, __int64 a3, char a4)
           v80 = v83;
         LABEL_179:
           v128 = *(a2 - 1);
-          if (*(_DWORD*)(*(_QWORD*)(v128 + 24) + 608LL) >=
-              *(_DWORD*)(*(_QWORD*)(v80 + 24) + 608LL)) {
+          if ((signed __int32)*(_DWORD*)(*(_QWORD*)(v128 + 24) + 608LL) >=
+              (signed __int32)*(_DWORD*)(*(_QWORD*)(v80 + 24) + 608LL)) {
             return result;
           }
           v8[2] = v128;
           *(a2 - 1) = v80;
           v129 = v8[1];
           v124 = v8[2];
-          if (*(_DWORD*)(*(_QWORD*)(v124 + 24) + 608LL) >=
-              *(_DWORD*)(*(_QWORD*)(v129 + 24) + 608LL)) {
+          if ((signed __int32)*(_DWORD*)(*(_QWORD*)(v124 + 24) + 608LL) >=
+              (signed __int32)*(_DWORD*)(*(_QWORD*)(v129 + 24) + 608LL)) {
             return result;
           }
           v8[1] = v124;
@@ -5232,8 +5247,8 @@ __int64 GameHr_dea880(__int64 result, __int64* a2, __int64 a3, char a4)
         if (v9 == 2) {
           v73 = *(a2 - 1);
           v74 = *v8;
-          if (*(_DWORD*)(*(_QWORD*)(v73 + 24) + 608LL) <
-              *(_DWORD*)(*(_QWORD*)(*v8 + 24) + 608LL)) {
+          if ((signed __int32)*(_DWORD*)(*(_QWORD*)(v73 + 24) + 608LL) <
+              (signed __int32)*(_DWORD*)(*(_QWORD*)(*v8 + 24) + 608LL)) {
             *v8 = v73;
             *(a2 - 1) = v74;
           }
@@ -5251,8 +5266,8 @@ __int64 GameHr_dea880(__int64 result, __int64* a2, __int64 a3, char a4)
                 v92 = *v89;
                 v91 = v89[1];
                 v89 = v85;
-                if (*(_DWORD*)(*(_QWORD*)(v91 + 24) + 608LL) <
-                    *(_DWORD*)(*(_QWORD*)(v92 + 24) + 608LL)) {
+                if ((signed __int32)*(_DWORD*)(*(_QWORD*)(v91 + 24) + 608LL) <
+                    (signed __int32)*(_DWORD*)(*(_QWORD*)(v92 + 24) + 608LL)) {
                   v93 = v88;
                   do {
                     *(__int64*)((char*)v8 + v93 + 8) = v92;
@@ -5262,8 +5277,9 @@ __int64 GameHr_dea880(__int64 result, __int64* a2, __int64 a3, char a4)
                     }
                     v92 = *(__int64*)((char*)v8 + v93 - 8);
                     v93 -= 8;
-                  } while (*(_DWORD*)(*(_QWORD*)(v91 + 24) + 608LL) <
-                           *(_DWORD*)(*(_QWORD*)(v92 + 24) + 608LL));
+                  } while (
+                      (signed __int32)*(_DWORD*)(*(_QWORD*)(v91 + 24) + 608LL) <
+                      (signed __int32)*(_DWORD*)(*(_QWORD*)(v92 + 24) + 608LL));
                   v90 = (__int64*)((char*)v8 + v93 + 8);
                 LABEL_124:
                   *v90 = v91;
@@ -5278,14 +5294,15 @@ __int64 GameHr_dea880(__int64 result, __int64* a2, __int64 a3, char a4)
               v126 = *v7;
               v125 = v7[1];
               v7 = v85;
-              if (*(_DWORD*)(*(_QWORD*)(v125 + 24) + 608LL) <
-                  *(_DWORD*)(*(_QWORD*)(v126 + 24) + 608LL)) {
+              if ((signed __int32)*(_DWORD*)(*(_QWORD*)(v125 + 24) + 608LL) <
+                  (signed __int32)*(_DWORD*)(*(_QWORD*)(v126 + 24) + 608LL)) {
                 do {
                   *v85 = v126;
                   v126 = *(v85 - 2);
                   --v85;
-                } while (*(_DWORD*)(*(_QWORD*)(v125 + 24) + 608LL) <
-                         *(_DWORD*)(*(_QWORD*)(v126 + 24) + 608LL));
+                } while (
+                    (signed __int32)*(_DWORD*)(*(_QWORD*)(v125 + 24) + 608LL) <
+                    (signed __int32)*(_DWORD*)(*(_QWORD*)(v126 + 24) + 608LL));
                 *v85 = v125;
               }
               v85 = v7 + 1;
@@ -5305,16 +5322,18 @@ __int64 GameHr_dea880(__int64 result, __int64* a2, __int64 a3, char a4)
                 v99 = &v8[v97];
                 v100 = *v99;
                 if (v98 < v9 &&
-                    *(_DWORD*)(*(_QWORD*)(v100 + 24) + 608LL) <
-                        *(_DWORD*)(*(_QWORD*)(v99[1] + 24) + 608LL)) {
+                    (signed __int32)*(_DWORD*)(*(_QWORD*)(v100 + 24) + 608LL) <
+                        (signed __int32)*(_DWORD*)(*(_QWORD*)(v99[1] + 24) +
+                                                   608LL)) {
                   v100 = v99[1];
                   ++v99;
                   v97 = 2 * v96 + 2;
                 }
                 v101 = &v8[v96];
                 v102 = *v101;
-                if (*(_DWORD*)(*(_QWORD*)(v100 + 24) + 608LL) >=
-                    *(_DWORD*)(*(_QWORD*)(*v101 + 24) + 608LL)) {
+                if ((signed __int32)*(_DWORD*)(*(_QWORD*)(v100 + 24) + 608LL) >=
+                    (signed __int32)*(_DWORD*)(*(_QWORD*)(*v101 + 24) +
+                                               608LL)) {
                   do {
                     v103 = v99;
                     *v101 = v100;
@@ -5326,8 +5345,10 @@ __int64 GameHr_dea880(__int64 result, __int64* a2, __int64 a3, char a4)
                     v99 = &v8[v104];
                     v100 = *v99;
                     if (v105 < v9 &&
-                        *(_DWORD*)(*(_QWORD*)(v100 + 24) + 608LL) <
-                            *(_DWORD*)(*(_QWORD*)(v99[1] + 24) + 608LL)) {
+                        (signed __int32)*(_DWORD*)(*(_QWORD*)(v100 + 24) +
+                                                   608LL) <
+                            (signed __int32)*(_DWORD*)(*(_QWORD*)(v99[1] + 24) +
+                                                       608LL)) {
                       v100 = v99[1];
                       ++v99;
                       v104 = v105;
@@ -5335,8 +5356,8 @@ __int64 GameHr_dea880(__int64 result, __int64* a2, __int64 a3, char a4)
                     v101 = v103;
                     result = *(unsigned int*)(*(_QWORD*)(v102 + 24) + 608LL);
                     v97 = v104;
-                  } while (*(_DWORD*)(*(_QWORD*)(v100 + 24) + 608LL) >=
-                           (int)result);
+                  } while ((signed __int32)*(_DWORD*)(*(_QWORD*)(v100 + 24) +
+                                                      608LL) >= (int)result);
                   *v103 = v102;
                 }
               }
@@ -5357,8 +5378,8 @@ __int64 GameHr_dea880(__int64 result, __int64* a2, __int64 a3, char a4)
                   v110 = v115 + 2;
                   v111 = v112;
                   result = *(unsigned int*)(*(_QWORD*)(v112 + 24) + 608LL);
-                  if (*(_DWORD*)(*(_QWORD*)(v113 + 24) + 608LL) >=
-                      (int)result) {
+                  if ((signed __int32)*(_DWORD*)(*(_QWORD*)(v113 + 24) +
+                                                 608LL) >= (int)result) {
                     v108 = v116;
                   }
                   else {
@@ -5386,8 +5407,10 @@ __int64 GameHr_dea880(__int64 result, __int64* a2, __int64 a3, char a4)
                   v120 = *v114;
                   v121 = &v8[v119];
                   v122 = *v121;
-                  if (*(_DWORD*)(*(_QWORD*)(*v121 + 24) + 608LL) <
-                      *(_DWORD*)(*(_QWORD*)(*v114 + 24) + 608LL)) {
+                  if ((signed __int32)*(_DWORD*)(*(_QWORD*)(*v121 + 24) +
+                                                 608LL) <
+                      (signed __int32)*(_DWORD*)(*(_QWORD*)(*v114 + 24) +
+                                                 608LL)) {
                     do {
                       v123 = v121;
                       *v114 = v122;
@@ -5398,8 +5421,10 @@ __int64 GameHr_dea880(__int64 result, __int64* a2, __int64 a3, char a4)
                       v121 = &v8[v119];
                       v122 = *v121;
                       v114 = v123;
-                    } while (*(_DWORD*)(*(_QWORD*)(*v121 + 24) + 608LL) <
-                             *(_DWORD*)(*(_QWORD*)(v120 + 24) + 608LL));
+                    } while ((signed __int32)*(_DWORD*)(*(_QWORD*)(*v121 + 24) +
+                                                        608LL) <
+                             (signed __int32)*(_DWORD*)(*(_QWORD*)(v120 + 24) +
+                                                        608LL));
                     *v123 = v120;
                   }
                 }
@@ -5416,13 +5441,13 @@ __int64 GameHr_dea880(__int64 result, __int64* a2, __int64 a3, char a4)
           v13 = *v11;
           v14 = *v8;
           v15 = *(_DWORD*)(*(_QWORD*)(*v11 + 24) + 608LL);
-          if (v15 >= *(_DWORD*)(*(_QWORD*)(*v8 + 24) + 608LL)) {
+          if (v15 >= (signed __int32)*(_DWORD*)(*(_QWORD*)(*v8 + 24) + 608LL)) {
             if (v12 < v15) {
               *v11 = v10;
               *(a2 - 1) = v13;
               v19 = *v8;
-              if (*(_DWORD*)(*(_QWORD*)(*v11 + 24) + 608LL) <
-                  *(_DWORD*)(*(_QWORD*)(*v8 + 24) + 608LL)) {
+              if ((signed __int32)*(_DWORD*)(*(_QWORD*)(*v11 + 24) + 608LL) <
+                  (signed __int32)*(_DWORD*)(*(_QWORD*)(*v8 + 24) + 608LL)) {
                 *v8 = *v11;
                 *v11 = v19;
               }
@@ -5433,8 +5458,8 @@ __int64 GameHr_dea880(__int64 result, __int64* a2, __int64 a3, char a4)
               *v8 = v13;
               *v11 = v14;
               v21 = *(a2 - 1);
-              if (*(_DWORD*)(*(_QWORD*)(v21 + 24) + 608LL) >=
-                  *(_DWORD*)(*(_QWORD*)(v14 + 24) + 608LL)) {
+              if ((signed __int32)*(_DWORD*)(*(_QWORD*)(v21 + 24) + 608LL) >=
+                  (signed __int32)*(_DWORD*)(*(_QWORD*)(v14 + 24) + 608LL)) {
                 goto LABEL_28;
               }
               *v11 = v21;
@@ -5450,14 +5475,14 @@ __int64 GameHr_dea880(__int64 result, __int64* a2, __int64 a3, char a4)
           v24 = *(_DWORD*)(*(_QWORD*)(v22 + 24) + 608LL);
           v25 = *(a2 - 2);
           v26 = *(_DWORD*)(*(_QWORD*)(v25 + 24) + 608LL);
-          if (v24 >= *(_DWORD*)(*(_QWORD*)(v23 + 24) + 608LL)) {
+          if (v24 >= (signed __int32)*(_DWORD*)(*(_QWORD*)(v23 + 24) + 608LL)) {
             if (v26 < v24) {
               *(v11 - 1) = v25;
               *(a2 - 2) = v22;
               v27 = *(v11 - 1);
               v28 = v8[1];
-              if (*(_DWORD*)(*(_QWORD*)(v27 + 24) + 608LL) <
-                  *(_DWORD*)(*(_QWORD*)(v28 + 24) + 608LL)) {
+              if ((signed __int32)*(_DWORD*)(*(_QWORD*)(v27 + 24) + 608LL) <
+                  (signed __int32)*(_DWORD*)(*(_QWORD*)(v28 + 24) + 608LL)) {
                 v8[1] = v27;
                 *(v11 - 1) = v28;
               }
@@ -5468,8 +5493,8 @@ __int64 GameHr_dea880(__int64 result, __int64* a2, __int64 a3, char a4)
               v8[1] = v22;
               *(v11 - 1) = v23;
               v30 = *(a2 - 2);
-              if (*(_DWORD*)(*(_QWORD*)(v30 + 24) + 608LL) >=
-                  *(_DWORD*)(*(_QWORD*)(v23 + 24) + 608LL)) {
+              if ((signed __int32)*(_DWORD*)(*(_QWORD*)(v30 + 24) + 608LL) >=
+                  (signed __int32)*(_DWORD*)(*(_QWORD*)(v23 + 24) + 608LL)) {
                 goto LABEL_40;
               }
               *(v11 - 1) = v30;
@@ -5485,14 +5510,14 @@ __int64 GameHr_dea880(__int64 result, __int64* a2, __int64 a3, char a4)
           v33 = *(_DWORD*)(*(_QWORD*)(v31 + 24) + 608LL);
           v34 = *(a2 - 3);
           v35 = *(_DWORD*)(*(_QWORD*)(v34 + 24) + 608LL);
-          if (v33 >= *(_DWORD*)(*(_QWORD*)(v32 + 24) + 608LL)) {
+          if (v33 >= (signed __int32)*(_DWORD*)(*(_QWORD*)(v32 + 24) + 608LL)) {
             if (v35 < v33) {
               v11[1] = v34;
               *(a2 - 3) = v31;
               v36 = v11[1];
               v37 = v8[2];
-              if (*(_DWORD*)(*(_QWORD*)(v36 + 24) + 608LL) <
-                  *(_DWORD*)(*(_QWORD*)(v37 + 24) + 608LL)) {
+              if ((signed __int32)*(_DWORD*)(*(_QWORD*)(v36 + 24) + 608LL) <
+                  (signed __int32)*(_DWORD*)(*(_QWORD*)(v37 + 24) + 608LL)) {
                 v8[2] = v36;
                 v11[1] = v37;
               }
@@ -5503,8 +5528,8 @@ __int64 GameHr_dea880(__int64 result, __int64* a2, __int64 a3, char a4)
               v8[2] = v31;
               v11[1] = v32;
               v38 = *(a2 - 3);
-              if (*(_DWORD*)(*(_QWORD*)(v38 + 24) + 608LL) >=
-                  *(_DWORD*)(*(_QWORD*)(v32 + 24) + 608LL)) {
+              if ((signed __int32)*(_DWORD*)(*(_QWORD*)(v38 + 24) + 608LL) >=
+                  (signed __int32)*(_DWORD*)(*(_QWORD*)(v32 + 24) + 608LL)) {
                 goto LABEL_49;
               }
               v11[1] = v38;
@@ -5520,14 +5545,14 @@ __int64 GameHr_dea880(__int64 result, __int64* a2, __int64 a3, char a4)
           v41 = *(_DWORD*)(*(_QWORD*)(*v11 + 24) + 608LL);
           v42 = v11[1];
           v43 = *(_DWORD*)(*(_QWORD*)(v42 + 24) + 608LL);
-          if (v41 >= *(_DWORD*)(*(_QWORD*)(v39 + 24) + 608LL)) {
+          if (v41 >= (signed __int32)*(_DWORD*)(*(_QWORD*)(v39 + 24) + 608LL)) {
             if (v43 >= v41) {
               goto LABEL_55;
             }
             *v11 = v42;
             v11[1] = v40;
-            if (*(_DWORD*)(*(_QWORD*)(v42 + 24) + 608LL) <
-                *(_DWORD*)(*(_QWORD*)(v39 + 24) + 608LL)) {
+            if ((signed __int32)*(_DWORD*)(*(_QWORD*)(v42 + 24) + 608LL) <
+                (signed __int32)*(_DWORD*)(*(_QWORD*)(v39 + 24) + 608LL)) {
               *(v11 - 1) = v42;
               *v11 = v39;
             LABEL_59:
@@ -5547,8 +5572,8 @@ __int64 GameHr_dea880(__int64 result, __int64* a2, __int64 a3, char a4)
             }
             *(v11 - 1) = v40;
             *v11 = v39;
-            if (*(_DWORD*)(*(_QWORD*)(v42 + 24) + 608LL) >=
-                *(_DWORD*)(*(_QWORD*)(v39 + 24) + 608LL)) {
+            if ((signed __int32)*(_DWORD*)(*(_QWORD*)(v42 + 24) + 608LL) >=
+                (signed __int32)*(_DWORD*)(*(_QWORD*)(v39 + 24) + 608LL)) {
               goto LABEL_59;
             }
             *v11 = v42;
@@ -5560,13 +5585,13 @@ __int64 GameHr_dea880(__int64 result, __int64* a2, __int64 a3, char a4)
         v16 = *v8;
         v17 = *v11;
         v18 = *(_DWORD*)(*(_QWORD*)(*v8 + 24) + 608LL);
-        if (v18 >= *(_DWORD*)(*(_QWORD*)(*v11 + 24) + 608LL)) {
+        if (v18 >= (signed __int32)*(_DWORD*)(*(_QWORD*)(*v11 + 24) + 608LL)) {
           if (v12 < v18) {
             *v8 = v10;
             *(a2 - 1) = v16;
             v20 = *v11;
-            if (*(_DWORD*)(*(_QWORD*)(*v8 + 24) + 608LL) <
-                *(_DWORD*)(*(_QWORD*)(*v11 + 24) + 608LL)) {
+            if ((signed __int32)*(_DWORD*)(*(_QWORD*)(*v8 + 24) + 608LL) <
+                (signed __int32)*(_DWORD*)(*(_QWORD*)(*v11 + 24) + 608LL)) {
               *v11 = *v8;
               *v8 = v20;
             }
@@ -5577,8 +5602,8 @@ __int64 GameHr_dea880(__int64 result, __int64* a2, __int64 a3, char a4)
             *v11 = v16;
             *v8 = v17;
             v29 = *(a2 - 1);
-            if (*(_DWORD*)(*(_QWORD*)(v29 + 24) + 608LL) >=
-                *(_DWORD*)(*(_QWORD*)(v17 + 24) + 608LL)) {
+            if ((signed __int32)*(_DWORD*)(*(_QWORD*)(v29 + 24) + 608LL) >=
+                (signed __int32)*(_DWORD*)(*(_QWORD*)(v17 + 24) + 608LL)) {
               goto LABEL_60;
             }
             *v8 = v29;
@@ -5595,31 +5620,36 @@ __int64 GameHr_dea880(__int64 result, __int64* a2, __int64 a3, char a4)
           break;
         }
         v46 = *(_DWORD*)(*(_QWORD*)(v45 + 24) + 608LL);
-        if (*(_DWORD*)(*(_QWORD*)(*(v8 - 1) + 24) + 608LL) < v46) {
+        if ((signed __int32)*(_DWORD*)(*(_QWORD*)(*(v8 - 1) + 24) + 608LL) <
+            v46) {
           goto LABEL_63;
         }
-        if (v46 >= *(_DWORD*)(*(_QWORD*)(*(a2 - 1) + 24) + 608LL)) {
-          v64 = v8 + 1;
+        if (v46 >=
+            (signed __int32)*(_DWORD*)(*(_QWORD*)(*(a2 - 1) + 24) + 608LL)) {
+          v64 = (unsigned __int64)(v8 + 1);
           do {
-            v8 = v64;
-            if (v64 >= a2) {
+            v8 = (__int64*)v64;
+            if (v64 >= (unsigned __int64)a2) {
               break;
             }
-            ++v64;
-          } while (v46 >= *(_DWORD*)(*(_QWORD*)(*v8 + 24) + 608LL));
+            v64 += 8LL;
+          } while (v46 >=
+                   (signed __int32)*(_DWORD*)(*(_QWORD*)(*v8 + 24) + 608LL));
         }
         else {
           do {
             v63 = v8[1];
             ++v8;
-          } while (v46 >= *(_DWORD*)(*(_QWORD*)(v63 + 24) + 608LL));
+          } while (v46 >=
+                   (signed __int32)*(_DWORD*)(*(_QWORD*)(v63 + 24) + 608LL));
         }
         v65 = a2;
         if (v8 < a2) {
           v65 = a2;
           do {
             v66 = *--v65;
-          } while (v46 < *(_DWORD*)(*(_QWORD*)(v66 + 24) + 608LL));
+          } while (v46 <
+                   (signed __int32)*(_DWORD*)(*(_QWORD*)(v66 + 24) + 608LL));
         }
         if (v8 < v65) {
           v67 = *v8;
@@ -5632,11 +5662,13 @@ __int64 GameHr_dea880(__int64 result, __int64* a2, __int64 a3, char a4)
               v70 = v8[1];
               ++v8;
               v67 = v70;
-            } while (v69 >= *(_DWORD*)(*(_QWORD*)(v70 + 24) + 608LL));
+            } while (v69 >=
+                     (signed __int32)*(_DWORD*)(*(_QWORD*)(v70 + 24) + 608LL));
             do {
               v71 = *--v65;
               v68 = v71;
-            } while (v69 < *(_DWORD*)(*(_QWORD*)(v71 + 24) + 608LL));
+            } while (v69 <
+                     (signed __int32)*(_DWORD*)(*(_QWORD*)(v71 + 24) + 608LL));
           } while (v8 < v65);
         }
         v72 = v8 - 1;
@@ -5652,7 +5684,7 @@ __int64 GameHr_dea880(__int64 result, __int64* a2, __int64 a3, char a4)
       do {
         v48 = &v8[v47++];
         v49 = v48[1];
-      } while (*(_DWORD*)(*(_QWORD*)(v49 + 24) + 608LL) < v46);
+      } while ((signed __int32)*(_DWORD*)(*(_QWORD*)(v49 + 24) + 608LL) < v46);
       v50 = &v8[v47];
       v51 = a2;
       if (v47 == 1) {
@@ -5662,12 +5694,14 @@ __int64 GameHr_dea880(__int64 result, __int64* a2, __int64 a3, char a4)
             break;
           }
           v53 = *--v51;
-        } while (*(_DWORD*)(*(_QWORD*)(v53 + 24) + 608LL) >= v46);
+        } while ((signed __int32)*(_DWORD*)(*(_QWORD*)(v53 + 24) + 608LL) >=
+                 v46);
       }
       else {
         do {
           v52 = *--v51;
-        } while (*(_DWORD*)(*(_QWORD*)(v52 + 24) + 608LL) >= v46);
+        } while ((signed __int32)*(_DWORD*)(*(_QWORD*)(v52 + 24) + 608LL) >=
+                 v46);
       }
       if (v50 >= v51) {
         v60 = v50 - 1;
@@ -5689,11 +5723,13 @@ __int64 GameHr_dea880(__int64 result, __int64* a2, __int64 a3, char a4)
           v58 = v55[1];
           ++v55;
           v49 = v58;
-        } while (*(_DWORD*)(*(_QWORD*)(v58 + 24) + 608LL) < v57);
+        } while ((signed __int32)*(_DWORD*)(*(_QWORD*)(v58 + 24) + 608LL) <
+                 v57);
         do {
           v59 = *--v56;
           v54 = v59;
-        } while (*(_DWORD*)(*(_QWORD*)(v59 + 24) + 608LL) >= v57);
+        } while ((signed __int32)*(_DWORD*)(*(_QWORD*)(v59 + 24) + 608LL) >=
+                 v57);
       } while (v55 < v56);
       v60 = v55 - 1;
       if (v8 != v55 - 1) {
@@ -5704,22 +5740,22 @@ __int64 GameHr_dea880(__int64 result, __int64* a2, __int64 a3, char a4)
       if (v50 < v51) {
         goto LABEL_84;
       }
-      v61 = GameRoutine_deb620(v8, v60);
+      v61 = GameRoutine_deb620_alt1(v8, v60);
       v8 = v60 + 1;
       v62 = v61;
-      result = GameRoutine_deb620(v60 + 1, a2);
+      result = GameRoutine_deb620_alt1(v60 + 1, a2);
       if ((result & 1) != 0) {
         break;
       }
-      if ((v62 & 1) == 0) {
+      if (!v62) {
       LABEL_84:
-        result = GameHr_dea880(v7, v60, a3, a4 & 1);
+        result = GameHr_dea880((unsigned __int64)v7, v60, a3, a4 & 1);
         a4 = 0;
         v8 = v60 + 1;
       }
     }
     a2 = v60;
-    if ((v62 & 1) == 0) {
+    if (!v62) {
       continue;
     }
     return result;

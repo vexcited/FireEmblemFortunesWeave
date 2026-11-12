@@ -355,6 +355,11 @@ void GameRoutine_7f3400_alt1(__int64*, _QWORD*) __asm__("GameRoutine_7f3400");
 void __attribute__((noreturn))
 GameRoutine_6b5390_alt1() __asm__("GameRoutine_6b5390");
 __int64 GameHr_7e8000(__int64 a1);
+__int64* GameRoutine_8573a0_alt1(__int64* result, __int64*, __int64*,
+                                 __int64*) __asm__("GameRoutine_8573a0");
+bool game_857500(__int64*, __int64*);
+unsigned __int64 GameHr_8566e0(unsigned __int64 result, __int64* a2, __int64 a3,
+                               char a4);
 
 _BYTE* GameHr_7aa770(_BYTE* result, __int128* a2)
 {
@@ -5333,7 +5338,8 @@ LABEL_19:
   return result;
 }
 
-__int64 GameHr_8566e0(__int64 result, __int64* a2, __int64 a3, char a4)
+unsigned __int64 GameHr_8566e0(unsigned __int64 result, __int64* a2, __int64 a3,
+                               char a4)
 {
   __int64* v7;
   __int64* v8;
@@ -5389,10 +5395,10 @@ __int64 GameHr_8566e0(__int64 result, __int64* a2, __int64 a3, char a4)
   __int64 v58;
   __int64 v59;
   __int64* v60;
-  char v61;
-  char v62;
+  bool v61;
+  bool v62;
   __int64 v63;
-  __int64* v64;
+  unsigned __int64 v64;
   __int64* v65;
   __int64 v66;
   __int64 v67;
@@ -5486,10 +5492,12 @@ LABEL_2:
       break;
     }
     if (v9 == 4) {
-      return GameRoutine_8573a0(v8, v8 + 1, v8 + 2, a2 - 1);
+      return (unsigned __int64)GameRoutine_8573a0_alt1(v8, v8 + 1, v8 + 2,
+                                                       a2 - 1);
     }
     if (v9 == 5) {
-      result = GameRoutine_8573a0(v8, v8 + 1, v8 + 2, v8 + 3);
+      result =
+          (unsigned __int64)GameRoutine_8573a0_alt1(v8, v8 + 1, v8 + 2, v8 + 3);
       v73 = *(a2 - 1);
       v74 = v8[3];
       if ((*(unsigned __int16*)(v73 + 16) |
@@ -5994,20 +6002,20 @@ LABEL_2:
       if (v50 < v51) {
         goto LABEL_84;
       }
-      v61 = GameRoutine_857500(v8, v60);
+      v61 = game_857500(v8, v60);
       v8 = v60 + 1;
       v62 = v61;
-      result = GameRoutine_857500(v60 + 1, a2);
+      result = game_857500(v60 + 1, a2);
       if ((result & 1) != 0) {
         a2 = v60;
-        if ((v62 & 1) == 0) {
+        if (!v62) {
           goto LABEL_2;
         }
         return result;
       }
-      if ((v62 & 1) == 0) {
+      if (!v62) {
       LABEL_84:
-        result = GameHr_8566e0(v7, v60, a3, a4 & 1);
+        result = GameHr_8566e0((unsigned __int64)v7, v60, a3, a4 & 1);
         a4 = 0;
         v8 = v60 + 1;
       }
@@ -6021,13 +6029,13 @@ LABEL_2:
       }
       if (v46 >= (*(unsigned __int16*)(*(a2 - 1) + 16) |
                   (*(unsigned __int8*)(*(a2 - 1) + 112) << 16))) {
-        v64 = v8 + 1;
+        v64 = (unsigned __int64)(v8 + 1);
         do {
-          v8 = v64;
-          if (v64 >= a2) {
+          v8 = (__int64*)v64;
+          if (v64 >= (unsigned __int64)a2) {
             break;
           }
-          ++v64;
+          v64 += 8LL;
         } while (v46 >= (*(unsigned __int16*)(*v8 + 16) |
                          (*(unsigned __int8*)(*v8 + 112) << 16)));
       }

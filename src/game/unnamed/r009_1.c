@@ -21,6 +21,10 @@ float GameRoutine_618640_alt1(int, float result, float, float,
 int __cxa_guard_acquire(__int64);
 void __cxa_guard_release(__int64);
 __int64 GameHr_179af60(__int64 a1, char a2, char a3);
+__int64 memcpy(__int64, __int64, unsigned __int64);
+void GameHr_17c4f00(__int64*, unsigned __int64);
+void GameHr_17c4d00(__int64* result, _QWORD* a2, __int64 a3,
+                    unsigned __int64 a4);
 
 __int64 GameHr_179af60(__int64 a1, char a2, char a3)
 {
@@ -169,12 +173,11 @@ __int64 GameHr_17bbf00()
   return result;
 }
 
-_QWORD* GameHr_17c4d00(_QWORD* result, _QWORD* a2, __int64 a3,
-                       unsigned __int64 a4)
+void GameHr_17c4d00(__int64* result, _QWORD* a2, __int64 a3,
+                    unsigned __int64 a4)
 {
   __int64 v4;
   __int64 v5;
-  _QWORD* v9;
   __int64 v10;
   __int64 v11;
   unsigned __int64 v12;
@@ -192,7 +195,6 @@ _QWORD* GameHr_17c4d00(_QWORD* result, _QWORD* a2, __int64 a3,
 
   v4 = result[1];
   v5 = result[2];
-  v9 = result;
   if (v5 == v4) {
     v10 = 0;
   }
@@ -203,11 +205,11 @@ _QWORD* GameHr_17c4d00(_QWORD* result, _QWORD* a2, __int64 a3,
   v12 = v11 + result[4];
   v13 = v10 - v12;
   if (a4 > v13) {
-    result = (_QWORD*)GameRoutine_17c4f00(result, a4 - v13);
-    v11 = v9[5];
-    v4 = v9[1];
-    v5 = v9[2];
-    v12 = v9[4] + v11;
+    GameHr_17c4f00(result, a4 - v13);
+    v11 = result[5];
+    v4 = result[1];
+    v5 = result[2];
+    v12 = result[4] + v11;
   }
   v14 = (_QWORD*)(v4 + 8 * (v12 >> 4));
   if (v5 != v4) {
@@ -219,7 +221,7 @@ _QWORD* GameHr_17c4d00(_QWORD* result, _QWORD* a2, __int64 a3,
   LABEL_12:
     v18 = (_QWORD*)(v4 + 8 * (v12 >> 4));
     if (v15 == v16) {
-      return result;
+      return;
     }
     goto LABEL_15;
   }
@@ -235,14 +237,14 @@ LABEL_8:
     v18 = &v14[-(v19 >> 4)];
     v16 = *v18 + 244LL * (~(_BYTE)v19 & 0xF);
     if (v15 == v16) {
-      return result;
+      return;
     }
   }
   else {
     v18 = &v14[(unsigned __int64)v17 >> 4];
     v16 = *v18 + 244 * (v17 & 0xF);
     if (v15 == v16) {
-      return result;
+      return;
     }
   }
   do {
@@ -257,7 +259,7 @@ LABEL_8:
     else {
       v21 = v15;
       do {
-        result = (_QWORD*)GameRoutine_1a0b950(v21, a3, 244);
+        memcpy(v21, a3, 0xF4u);
         a3 += 244;
         if (a3 - *a2 == 3904) {
           v22 = a2[1];
@@ -266,10 +268,10 @@ LABEL_8:
         }
         v21 += 244;
       } while (v21 != v20);
-      v11 = v9[5];
+      v11 = result[5];
     }
     v11 += 0x4FBCDA3AC10C9715LL * ((v20 - v15) >> 2);
-    v9[5] = v11;
+    result[5] = v11;
     if (v14 == v18) {
       break;
     }
@@ -277,7 +279,6 @@ LABEL_8:
     ++v14;
     v15 = v23;
   } while (v23 != v16);
-  return result;
 }
 
 #pragma GCC visibility pop

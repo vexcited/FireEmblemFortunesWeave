@@ -122,6 +122,8 @@ void GameRoutine_156c5d0_alt1(__int64, __int64,
 void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void CorpsUserMenu_172bca0(__int64 a1);
+_QWORD* MapSortieMenu_871860_alt1(__int64, __int64, __int64, __int64,
+                                  __int64) __asm__("MapSortieMenu_871860");
 
 __int64 CorpsUserMenu_Unknown161(__int64 a1)
 {
@@ -384,7 +386,7 @@ __int64 CorpsUserMenu_172c0c0(_QWORD* a1)
 
 __int64 CorpsUserMenu_172c1a0(__int64 a1)
 {
-  __int64 v1;
+  _QWORD* v1;
   __int64 v2;
   __int64 v3;
   __int64 v4;
@@ -431,8 +433,8 @@ __int64 CorpsUserMenu_172c1a0(__int64 a1)
   v12_.v13 = v12_.v12;
   v12_.v12[0] = (__int64 (*)())GameData_20b61e8;
   v10_.v10[0] = GameData_20b61e8;
-  v1 = MapSortieMenu_871860(v8, (__int64)&v14, (__int64)&v15_.v15,
-                            (__int64)v12_.v12, (__int64)v10_.v10);
+  v1 = MapSortieMenu_871860_alt1(v8, (__int64)&v14, (__int64)&v15_.v15,
+                                 (__int64)v12_.v12, (__int64)v10_.v10);
   if (v10_.v11 == v10_.v10) {
     v2 = 32;
   }
@@ -472,7 +474,7 @@ LABEL_21:
   v12_.v12[1] = game_sound_PlayDecideSe_ptr[0];
   v15_.v15 = GameData_212d2b8 + 2;
   v15_.v16 = game_sound_PlayDecideSe_ptr[0];
-  GameRoutine_654050(&v15_.v15, (_QWORD*)(v1 + 1152));
+  GameRoutine_654050(&v15_.v15, v1 + 144);
   if (v15_.v17 == &v15_.v15) {
     v5 = 4;
   }
