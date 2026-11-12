@@ -23,8 +23,9 @@ extern char* GameData_211d798[4];
 void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
 void __attribute__((noreturn)) GameRoutine_b32f30(_QWORD);
 void __attribute__((noreturn)) String_60a1d0(_QWORD);
-__int64 gfxa_MainPass3DUI_SetupPrimitivePass(__int64 a1, __int64* a2,
-                                             __int64 a3, unsigned int a4);
+__int64 gfxa_MainPass3DUI_SetupPrimitivePass_alt1(
+    __int64 a1, __int64* a2, __int64 a3,
+    unsigned int a4) __asm__("gfxa_MainPass3DUI_SetupPrimitivePass");
 __int64 gfxa_MainPass3DUI_Setup3DUIPass_lambda0_Invoke(__int64 a1, __int64 a2,
                                                        __int64 a3);
 __int64 gfxa_MainPass3DUI_Setup3DUIPass_lambda1_Invoke_alt1(
@@ -49,6 +50,11 @@ GameRoutine_b32f30_alt1() __asm__("GameRoutine_b32f30");
 void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 __int64 gfxa_MainPass3DUI_Setup3DUIPass(__int64 a1, __int64 a2, __int64 a3);
+__int64 memmove_alt1(__int64, __int64, unsigned __int64) __asm__("memmove");
+unsigned __int64 strlen_alt1(const char*) __asm__("strlen");
+void __attribute__((noreturn)) String_60a1d0_alt1() __asm__("String_60a1d0");
+__int64 gfxa_MainPass3DUI_SetupPrimitivePass(__int64 a1, __int64 a2, __int64 a3,
+                                             unsigned int a4);
 
 __int64 gfxa_MainPass3DUI_Setup3DUIPass(__int64 a1, __int64 a2, __int64 a3)
 {
@@ -159,13 +165,13 @@ __int64 gfxa_MainPass3DUI_Setup3DUIPass(__int64 a1, __int64 a2, __int64 a3)
   return (*(__int64 (**)(__int64, _QWORD*))(*(_QWORD*)v21 + 16LL))(v21, v23);
 }
 
-__int64 gfxa_MainPass3DUI_SetupPrimitivePass(__int64 a1, __int64* a2,
-                                             __int64 a3, unsigned int a4)
+__int64 gfxa_MainPass3DUI_SetupPrimitivePass(__int64 a1, __int64 a2, __int64 a3,
+                                             unsigned int a4)
 {
   int v4;
   __int64 v6;
-  char* v7;
-  _QWORD* v8;
+  const char* v7;
+  __int64* v8;
   __int64 v9;
   unsigned __int64 v10;
   unsigned __int64 v11;
@@ -175,44 +181,46 @@ __int64 gfxa_MainPass3DUI_SetupPrimitivePass(__int64 a1, __int64* a2,
   _QWORD* v15;
   __int64 v16;
   __int64 v17;
-  __int64 v18;
-  unsigned __int64 v19;
-  __int64* v20;
+  unsigned __int64 v18;
+  __int64* v19;
+  __int64 v20;
   __int64 v21;
-  __int64 v22;
-  __int64 v23;
-  unsigned __int64 v24;
-  __int64 v25;
-  unsigned __int64 v26;
-  __int64 v27;
-  unsigned __int64 v28;
+  signed __int64 v22;
+  unsigned __int64 v23;
+  __int64 v24;
+  unsigned __int64 v25;
+  __int64 v26;
+  unsigned __int64 v27;
+  __int64 v28;
   __int64 v29;
-  long double v30;
-  __int64 v31;
+  __int64 v30;
   __int64 v32;
-  __int64 v34;
-  _QWORD v35[4];
-  _QWORD* v36;
-  _QWORD v37[4];
-  _QWORD* v38;
+  struct {
+    _QWORD v33[4];
+    _QWORD* v34;
+  } v33_;
+  struct {
+    _QWORD v35[4];
+    _QWORD* v36;
+  } v35_;
 
-  v34 = a3;
-  v4 = *((_DWORD*)a2 + 24);
+  v32 = a3;
+  v4 = *(_DWORD*)(a2 + 96);
   v6 = a4;
   v7 = GameData_211d798[a4];
-  v8 = (_QWORD*)fw_memory_g_heap_manager_ptr;
-  v9 = fw_memory_HeapManager_Allocate(*(_QWORD*)fw_memory_g_heap_manager_ptr,
-                                      224, 16, 0);
-  v10 = strlen(v7);
-  v35[2] = v7;
-  v37[0] = GameData_1fc8480;
-  v37[1] = &v34;
-  v38 = v37;
-  v35[0] = GameData_1fc8510;
-  v35[1] = v6;
-  v36 = v35;
+  v8 = (__int64*)fw_memory_g_heap_manager_ptr;
+  v9 = fw_memory_HeapManager_Allocate_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr, 224, 16, 0);
+  v10 = strlen_alt1(v7);
+  v33_.v33[2] = v7;
+  v35_.v35[0] = GameData_1fc8480;
+  v35_.v35[1] = &v32;
+  v35_.v36 = v35_.v35;
+  v33_.v33[0] = GameData_1fc8510;
+  v33_.v33[1] = v6;
+  v33_.v34 = v33_.v33;
   if (v10 >= 0xFFFFFFFFFFFFFFF7LL) {
-    String_60a1d0(v10);
+    String_60a1d0_alt1();
   }
   v11 = v10;
   if (v10 >= 0x17) {
@@ -222,7 +230,7 @@ __int64 gfxa_MainPass3DUI_SetupPrimitivePass(__int64 a1, __int64* a2,
     else {
       v13 = (v10 | 7) + 1;
     }
-    v12 = fw_memory_HeapManager_Allocate(*v8, v13, 16, 0);
+    v12 = fw_memory_HeapManager_Allocate_alt1(*v8, v13, 16, 0);
     *(_QWORD*)(v9 + 16) = v11;
     *(_QWORD*)(v9 + 24) = v12;
     *(_QWORD*)(v9 + 8) = v13 | 1;
@@ -232,9 +240,9 @@ __int64 gfxa_MainPass3DUI_SetupPrimitivePass(__int64 a1, __int64* a2,
   *(_BYTE*)(v9 + 8) = 2 * v10;
   if (v10 != 0) {
   LABEL_9:
-    memmove(v12, v7, v11);
+    memmove_alt1(v12, (__int64)v7, v11);
   }
-  v14 = v38;
+  v14 = v35_.v36;
   *(_BYTE*)(v12 + v11) = 0;
   *(_QWORD*)(v9 + 64) = 0;
   *(_QWORD*)(v9 + 72) = 0;
@@ -252,17 +260,17 @@ __int64 gfxa_MainPass3DUI_SetupPrimitivePass(__int64 a1, __int64* a2,
   *(_QWORD*)v9 = GameData_1fc85a0;
   if (v14 == nullptr) {
     *(_QWORD*)(v9 + 160) = 0;
-    v15 = v36;
-    if (v36 != nullptr) {
+    v15 = v33_.v34;
+    if (v33_.v34 != nullptr) {
       goto LABEL_15;
     }
     goto LABEL_18;
   }
-  if (v14 == v37) {
+  if (v14 == v35_.v35) {
     *(_QWORD*)(v9 + 160) = v9 + 128;
     (*(void (**)(_QWORD*))(*v14 + 24LL))(v14);
-    v15 = v36;
-    if (v36 != nullptr) {
+    v15 = v33_.v34;
+    if (v33_.v34 != nullptr) {
       goto LABEL_15;
     }
   LABEL_18:
@@ -270,94 +278,94 @@ __int64 gfxa_MainPass3DUI_SetupPrimitivePass(__int64 a1, __int64* a2,
     goto LABEL_25;
   }
   *(_QWORD*)(v9 + 160) = (*(__int64 (**)(_QWORD*))(*v14 + 16LL))(v14);
-  v15 = v36;
-  if (v36 == nullptr) {
+  v15 = v33_.v34;
+  if (v33_.v34 == nullptr) {
     goto LABEL_18;
   }
 LABEL_15:
-  if (v15 == v35) {
+  if (v15 == v33_.v33) {
     *(_QWORD*)(v9 + 208) = v9 + 176;
     (*(void (**)(_QWORD*))(*v15 + 24LL))(v15);
   }
   else {
     *(_QWORD*)(v9 + 208) = (*(__int64 (**)(_QWORD*))(*v15 + 16LL))(v15);
   }
-  if (v36 == v35) {
+  if (v33_.v34 == v33_.v33) {
     v16 = 32;
   }
   else {
-    if (v36 == nullptr) {
+    if (v33_.v34 == nullptr) {
       goto LABEL_25;
     }
     v16 = 40;
   }
-  (*(void (**)(__int64))(*v36 + v16))((__int64)v36);
+  (*(void (**)(__int64))(*v33_.v34 + v16))((__int64)v33_.v34);
 LABEL_25:
-  v17 = (__int64)v38;
-  if (v38 == v37) {
-    v18 = 32;
+  if (v35_.v36 == v35_.v35) {
+    v17 = 32;
   }
   else {
-    if (v38 == nullptr) {
+    if (v35_.v36 == nullptr) {
       goto LABEL_30;
     }
-    v18 = 40;
+    v17 = 40;
   }
-  v17 = (*(__int64 (**)(__int64))(*v38 + v18))((__int64)v38);
+  (*(void (**)(__int64))(*v35_.v36 + v17))((__int64)v35_.v36);
 LABEL_30:
-  v20 = (__int64*)a2[1];
-  v19 = a2[2];
-  if ((unsigned __int64)v20 >= v19) {
-    v22 = *a2;
-    v23 = (__int64)v20 - *a2;
-    v24 = (v23 >> 3) + 1;
-    if (v24 >> 61 != 0) {
-      GameRoutine_b32f30(v17);
+  v19 = *(__int64**)(a2 + 8);
+  v18 = *(_QWORD*)(a2 + 16);
+  if ((unsigned __int64)v19 >= v18) {
+    v21 = *(_QWORD*)a2;
+    v22 = (signed __int64)v19 - *(_QWORD*)a2;
+    v23 = (v22 >> 3) + 1;
+    if (v23 >> 61 != 0) {
+      GameRoutine_b32f30_alt1();
     }
-    v25 = v19 - v22;
-    if (v25 >> 2 > v24) {
-      v24 = v25 >> 2;
+    v24 = v18 - v21;
+    if (v24 >> 2 > v23) {
+      v23 = v24 >> 2;
     }
-    if ((unsigned __int64)v25 >= 0x7FFFFFFFFFFFFFF8LL) {
-      v26 = 0x1FFFFFFFFFFFFFFFLL;
-    }
-    else {
-      v26 = v24;
-    }
-    if (v26 != 0) {
-      if (v26 >> 61 != 0) {
-        GameRoutine_60a210(v17);
-      }
-      v27 = fw_memory_HeapManager_Allocate(*v8, 8 * v26, 16, 0);
+    if ((unsigned __int64)v24 >= 0x7FFFFFFFFFFFFFF8LL) {
+      v25 = 0x1FFFFFFFFFFFFFFFLL;
     }
     else {
-      v27 = 0;
+      v25 = v23;
     }
-    v28 = v27 + 8 * v26;
-    v29 = v27 + v23 - 8 * (v23 >> 3);
-    *(_QWORD*)(v27 + v23) = v9;
-    v21 = v27 + v23 + 8;
-    memcpy(v29, v22, v23);
-    *a2 = v29;
-    a2[1] = v21;
-    a2[2] = v28;
-    if (v22 != 0) {
-      v31 = 128;
-      if (*(_QWORD*)(*v8 + 200LL) == 0) {
-        v31 = 56;
+    if (v25 != 0) {
+      if (v25 >> 61 != 0) {
+        GameRoutine_60a210_alt1();
       }
-      nn_mem_StandardAllocator_Free(*v8 + v31, v30);
+      v26 = fw_memory_HeapManager_Allocate_alt1(*v8, 8 * v25, 16, 0);
+    }
+    else {
+      v26 = 0;
+    }
+    v27 = v26 + 8 * v25;
+    v28 = v26 + v22 - 8 * (v22 >> 3);
+    *(_QWORD*)(v26 + v22) = v9;
+    v20 = v26 + v22 + 8;
+    memcpy_alt1(v28, v21, v22);
+    *(_QWORD*)a2 = v28;
+    *(_QWORD*)(a2 + 8) = v20;
+    *(_QWORD*)(a2 + 16) = v27;
+    if (v21 != 0) {
+      v29 = 128;
+      if (*(_QWORD*)(*v8 + 200) == 0) {
+        v29 = 56;
+      }
+      nn_mem_StandardAllocator_Free_alt1(*v8 + v29, v21);
     }
   }
   else {
-    *v20 = v9;
-    v21 = (__int64)(v20 + 1);
+    *v19 = v9;
+    v20 = (__int64)(v19 + 1);
   }
-  a2[1] = v21;
-  v32 = *(_QWORD*)(v21 - 8);
-  v37[0] = a2;
-  v37[1] = v32;
-  return (*(__int64 (**)(__int64, _QWORD*))(*(_QWORD*)v32 + 16LL))(v32, v37);
+  *(_QWORD*)(a2 + 8) = v20;
+  v30 = *(_QWORD*)(v20 - 8);
+  v35_.v35[0] = a2;
+  v35_.v35[1] = v30;
+  return (*(__int64 (**)(__int64, _QWORD*))(*(_QWORD*)v30 + 16LL))(v30,
+                                                                   v35_.v35);
 }
 
 __int64 gfxa_MainPass3DUI_Setup3DUIPass_lambda0_Invoke(__int64 a1, __int64 a2,
