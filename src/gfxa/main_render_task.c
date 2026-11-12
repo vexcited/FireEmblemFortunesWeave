@@ -128,6 +128,131 @@ void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void gfxa_MainRenderTask_initialize1(__int64 a1, __int64 a2, __int64 a3,
                                      __int64* a4);
+__attribute__((swiftcall)) void std___1_to_string_1a0a790(PSEUDO_X8, _QWORD);
+__int64 GameHr_a939e0(__int64 result, __int64, __int64**);
+__int64 GameHr_b32240(__int64, const char*, int);
+__int64 GameHr_bbc730(_QWORD*, __int64, unsigned __int64, __int64*);
+__int64 GameHr_bbc900(_QWORD*, __int64, unsigned __int64, __int64*);
+__int64 GameHr_bbcad0(_QWORD*, __int64, unsigned __int64, __int64*);
+__int64 GameRoutine_1a09ce0(__int64, const char*, unsigned __int64);
+__int64 GameRoutine_2b0();
+__int64 GameRoutine_b869a0(__int64 result);
+__int64 MainPassChara_b8ac30(__int64, __int64, _QWORD*);
+__int64 MainPassEffect_b90e00(__int64, __int64);
+__int64 MainPassGeneral_b96ec0(__int64 result, __int64, __int64, __int64);
+__int64 TaskPassNodes_b89ce0(__int64, __int64, __int64, __int64, __int64);
+__int64 TaskPassNodes_b8a560(__int64, __int64, __int64);
+__int64 TaskPassNodes_b909a0(__int64, __int64, __int64);
+__int64 TaskPassNodes_b94fe0(__int64, __int64, _QWORD*);
+__int64 TaskPassNodes_b954b0(__int64 result, __int64, __int64, __int64);
+__int64 TaskPassNodes_b9b500(_QWORD*, __int64, unsigned __int64, __int64*);
+__int64 TaskPassNodes_b9fd30(__int64, __int64, _QWORD*);
+__int64 TaskPassNodes_b9ff60(__int64 result, __int64, _QWORD*, _QWORD*);
+__int64 TaskPassNodes_ba01d0(__int64 result, __int64, _QWORD*, __int64*);
+__int64 TaskPassNodes_ba09c0(__int64 result, __int64, _QWORD*, __int64*);
+__int64 TaskPassNodes_baf760(__int64 result, __int64, __int64, __int64);
+__int64 TaskPassNodes_baf9c0(__int64, __int64, _QWORD*);
+__int64 TaskPassNodes_bb0230(__int64, __int64, __int64);
+__int64 game_templates_a93ea0(float*, unsigned __int8*, __int64, __int64**);
+__int64 gfx_flow_RenderGraph_Execute(__int64 result, __int64, __int64, __int64);
+__int64 gfx_render_Scene_BuildRenderer(__int64, __int64 (**)(), int*);
+__int64 gfxa_18e0a40(__int64*, float*);
+__int64 gfxa_MainPass2D_SetupCapturePass(__int64, __int64);
+__int64 gfxa_MainPass2D_SetupEffectPass(__int64, __int64, __int64);
+__int64 gfxa_MainPass2D_SetupFinalPass(__int64, __int64, _QWORD*);
+__int64 gfxa_MainPass2D_SetupPrimivePass(__int64, __int64);
+__int64 gfxa_MainPass2D_SetupSpinePass(__int64, __int64);
+__int64 gfxa_MainPass3DUI_Setup3DUIPass(__int64, __int64, __int64);
+__int64 gfxa_MainPass3DUI_SetupPrimitivePass(__int64, __int64, __int64,
+                                             unsigned int);
+__int64 gfxa_MainPassChara_SetupDiffusionPass(__int64 result, __int64, _QWORD*,
+                                              __int64*);
+__int64 gfxa_MainPassChara_SetupOutlinePass(__int64, __int64, __int64);
+__int64 gfxa_MainPassChara_SetupPostOutlinePass(__int64 result, __int64,
+                                                _QWORD*, __int64*);
+__int64 gfxa_MainPassChara_SetupSceneBuffersPass(__int64, __int64, __int64,
+                                                 __int64, __int64);
+__int64 gfxa_MainPassChara_SetupSilhouettePass(__int64 result, __int64, _QWORD*,
+                                               __int64*);
+__int64 gfxa_MainPassChara_SetupTransparentPass(__int64, __int64, __int64);
+__int64 gfxa_MainPassEffect_Setup3DPass(__int64, __int64, _QWORD*);
+__int64 gfxa_MainPassEffect_SetupCursorUIPass(__int64, __int64, __int64);
+__int64 gfxa_MainPassEffect_SetupLightingPass(__int64, __int64, __int64);
+__int64 gfxa_MainPassEffect_SetupOffscreenPass(__int64, __int64, __int64);
+__int64 gfxa_MainPassGeneral_SetupForwardPass(_QWORD*, __int64, _QWORD*,
+                                              __int64);
+__int64 gfxa_MainPassGeneral_SetupGeometryPass(__int64, __int64, __int64);
+__int64 gfxa_MainPassGeneral_SetupLightCullingPass(__int64, __int64, __int64);
+__int64 gfxa_MainPassGeneral_SetupSkyPass(__int64, __int64, _QWORD*);
+__int64 gfxa_MainPassImageProcess_SetupDLSSPass(__int64 result, __int64,
+                                                _QWORD*, __int64, __int64);
+__int64 gfxa_MainPassImageProcess_SetupDepthUpscalePass(__int64 result, __int64,
+                                                        __int64);
+__int64 gfxa_MainPassImageProcess_SetupExposureCalcPass(__int64 result, __int64,
+                                                        __int64, __int64, char);
+__int64 gfxa_MainPassImageProcess_SetupExposureCompPass(__int64, __int64,
+                                                        _QWORD*, __int64);
+__int64 gfxa_MainPassImageProcess_SetupFogPass(__int64, __int64, _QWORD*,
+                                               __int64*);
+__int64 gfxa_MainPassImageProcess_SetupHeightFogPass(__int64 result, __int64,
+                                                     _QWORD*, _QWORD*);
+__int64 gfxa_MainPassImageProcess_SetupLensFlareSystemPass(__int64 result,
+                                                           __int64, __int64,
+                                                           __int64,
+                                                           unsigned int);
+__int64 gfxa_MainPassImageProcess_SetupOffscreenPostProcessPass(__int64 result,
+                                                                __int64,
+                                                                __int64,
+                                                                __int64);
+__int64 gfxa_MainPassImageProcess_SetupPostProcessPass2(__int64 result, __int64,
+                                                        _QWORD*, __int64*,
+                                                        __int64);
+__int64 gfxa_MainPassImageProcess_SetupPostProcessPass4(__int64 result, __int64,
+                                                        _QWORD*, _QWORD*);
+__int64 gfxa_MainPassImageProcess_SetupPreDoFPass(__int64 result, __int64,
+                                                  __int64, __int64*);
+__int64 gfxa_MainPassLighting_SetupAOPass1(__int64*, __int64, __int64,
+                                           __int64*);
+__int64 gfxa_MainPassLighting_SetupCharaShadowPass(__int64 result, __int64,
+                                                   _QWORD*, _QWORD*, __int64);
+__int64 gfxa_MainPassLighting_SetupMainShadowPass(__int64, __int64, _QWORD*,
+                                                  _QWORD*);
+__int64 gfxa_a9d8c0(_DWORD*, __int64, __int64, __int64, __int64, __int64,
+                    __int64, char, float);
+__int64 gfxa_anonymous_bbc200(__int64, __int64);
+__int64 memcpy(__int64, __int64, unsigned __int64);
+extern _UNKNOWN* std___1_piecewise_construct_ptr;
+extern _UNKNOWN** GameData_212e4d8[2];
+extern _UNKNOWN GameData_22030f0;
+extern __int128 GameData_1a83670;
+extern __int64 (*GameData_1fcefa8[])();
+extern __int64 (*GameData_1fcf038[])();
+extern __int64 (*GameData_1fcf0c8[])();
+extern __int64 (*GameData_1fcf110[])();
+extern __int64 (*GameData_1fcf1a0[])();
+extern __int64 (*GameData_1fcf230[])();
+extern __int64 (*GameData_1fcf278[])();
+extern __int64 (*GameData_1fcf308[])();
+extern __int64 (*GameData_1fcf398[])();
+extern __int64* GameData_212e788[2];
+extern char GameData_22030e8;
+int __cxa_guard_acquire(__int64);
+void GameHr_b325c0(__int64, const char*, __int64);
+void GameHr_bbf8a0(_QWORD*);
+void GameRoutine_b327c0(_QWORD*, __int64);
+void GameRoutine_b32ac0(_QWORD*);
+void GameRoutine_b3a750(__int64, _BYTE*, _BYTE*, _BYTE*, __int64, float);
+void GameRoutine_c557e0(float32x4_t*, __int64*);
+void __attribute__((noreturn)) GameRoutine_60a210();
+void __attribute__((noreturn)) GameRoutine_8123d0();
+void __attribute__((noreturn)) GameRoutine_b32f30();
+void __attribute__((noreturn)) GameRoutine_b32fb0();
+void __attribute__((noreturn)) GameRoutine_bbd670();
+void __cxa_guard_release(__int64);
+void gfxa_MainPassImageProcess_SetupPostProcessPass5(_QWORD**, __int64, _QWORD*,
+                                                     _QWORD*);
+__int64 MainRenderTask_Destructor(_QWORD* a1);
+__int64 MainRenderTask_Unknown2(__int64 a1, __int64 a2, __int64 a3);
 
 void gfxa_MainRenderTask_initialize1(__int64 a1, __int64 a2, __int64 a3,
                                      __int64* a4)
@@ -2883,6 +3008,629 @@ LABEL_187:
   }
 }
 
+__int64 MainRenderTask_Destructor(_QWORD* a1)
+{
+
+#pragma clang fp contract(off)
+  __int64 v2;
+  __int64 v3;
+  __int64* v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  char v9;
+  __int64 v10;
+  __int64 v11;
+  char* v12;
+  __int64 v13;
+  char v14;
+  __int64 v15;
+  __int64 v16;
+  __int64 v17;
+  char* v18;
+  __int64 v19;
+  char v20;
+  __int64 v21;
+  __int64 v22;
+  __int64 v23;
+  __int64 v24;
+  __int64 v25;
+  __int64 v26;
+  _QWORD* v27;
+  __int64 v28;
+  __int64 v29;
+  __int64 v30;
+  _QWORD* v31;
+  __int64 v32;
+  _QWORD* v33;
+  __int64 v34;
+  _QWORD* v35;
+  __int64 v36;
+  _QWORD* v37;
+  __int64 v38;
+  _QWORD* v39;
+  __int64 v40;
+  _QWORD* v41;
+  __int64 v42;
+  __int64 v43;
+  __int64 v44;
+  __int64 v45;
+  _QWORD* v46;
+  __int64 v47;
+  __int64 v48;
+  __int64 v49;
+  __int64 v50;
+  _QWORD* v51;
+  __int64 v52;
+  __int64 v53;
+  __int64 v54;
+  __int64 v55;
+  __int64 v56;
+  __int64 v57;
+  __int64 v58;
+  __int64 v59;
+  __int64 v60;
+  __int64 v61;
+  __int64 v62;
+  __int64 v63;
+  __int64 v64;
+  __int64 v65;
+  __int64 v66;
+  __int64 v67;
+  __int64 v68;
+  __int64 v69;
+  __int64 v70;
+  __int64 v71;
+  __int64 v72;
+  __int64 v73;
+  __int64 v74;
+  __int64 v75;
+  __int64 v76;
+  __int64 v77;
+  __int64 v78;
+  __int64 v79;
+  __int64 v80;
+  __int64 v81;
+  __int64 v82;
+  __int64 v83;
+  __int64 v84;
+  __int64 v85;
+  __int64 v86;
+  __int64 v87;
+  __int64 v88;
+  __int64 v89;
+  __int64 v90;
+  __int64 v91;
+  __int64 result;
+  __int64 v93;
+  __int64 v94;
+  __int64 v95;
+  __int64 v96;
+  __int64 v97;
+  __int64 v98;
+  __int64 v99;
+  __int64 v100;
+  __int64 v101;
+  __int64 v102[3];
+  __int64* v103;
+
+  *a1 = gfxa_MainRenderTask_vtable;
+  GameRoutine_6040f0_alt1((__int64)(a1 + 114));
+  GameRoutine_6040f0_alt1((__int64)(a1 + 130));
+  GameRoutine_6040f0_alt1((__int64)(a1 + 146));
+  v2 = a1[1];
+  strcpy((char*)v102, " co_hades_shading");
+  v103 = v102;
+  v3 = *(_QWORD*)(v2 + 13232);
+  *(_DWORD*)(game_templates_a93ea0((float*)v3, (unsigned __int8*)v102,
+                                   (__int64)std___1_piecewise_construct_ptr,
+                                   &v103) +
+             40) = 0;
+  v4 = (__int64*)fw_memory_g_heap_manager_ptr;
+  if ((v102[0] & 1) != 0 && v102[2] != 0) {
+    v5 = 128;
+    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+      v5 = 56;
+    }
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v5, v102[2]);
+  }
+  LOBYTE(v102[0]) = 32;
+  BYTE1(v102[2]) = 0;
+  v103 = v102;
+  *(_BYTE*)(v3 + 40) = 1;
+  v6 = a1[1];
+  qmemcpy((char*)v102 + 1, "co_chara_outside", 16);
+  v7 = *(_QWORD*)(v6 + 13232);
+  v8 = game_templates_a93ea0((float*)v7, (unsigned __int8*)v102,
+                             (__int64)std___1_piecewise_construct_ptr, &v103);
+  v9 = v102[0];
+  *(_DWORD*)(v8 + 40) = 0;
+  if ((v9 & 1) != 0 && v102[2] != 0) {
+    v10 = 128;
+    if (*(_QWORD*)(*v4 + 200) == 0) {
+      v10 = 56;
+    }
+    nn_mem_StandardAllocator_Free_alt1(*v4 + v10, v102[2]);
+  }
+  *(_BYTE*)(v7 + 40) = 1;
+  v11 = *(_QWORD*)(a1[1] + 13232LL);
+  v12 = (char*)fw_memory_HeapManager_Allocate_alt1(*v4, 32, 16, 0);
+  v102[0] = 33;
+  v102[1] = 24;
+  v102[2] = (__int64)v12;
+  v103 = v102;
+  strcpy(v12, "co_disable_depth_prepass");
+  v13 = game_templates_a93ea0((float*)v11, (unsigned __int8*)v102,
+                              (__int64)std___1_piecewise_construct_ptr, &v103);
+  v14 = v102[0];
+  *(_DWORD*)(v13 + 40) = 0;
+  if ((v14 & 1) != 0 && v102[2] != 0) {
+    v15 = 128;
+    if (*(_QWORD*)(*v4 + 200) == 0) {
+      v15 = 56;
+    }
+    nn_mem_StandardAllocator_Free_alt1(*v4 + v15, v102[2]);
+  }
+  v16 = *v4;
+  *(_BYTE*)(v11 + 40) = 1;
+  v17 = *(_QWORD*)(a1[1] + 13232LL);
+  v18 = (char*)fw_memory_HeapManager_Allocate_alt1(v16, 26, 16, 0);
+  v103 = v102;
+  v102[0] = 27;
+  v102[1] = 23;
+  v102[2] = (__int64)v18;
+  strcpy(v18, "co_disable_prev_buffers");
+  v19 = game_templates_a93ea0((float*)v17, (unsigned __int8*)v102,
+                              (__int64)std___1_piecewise_construct_ptr, &v103);
+  v20 = v102[0];
+  *(_DWORD*)(v19 + 40) = 0;
+  if ((v20 & 1) != 0 && v102[2] != 0) {
+    v21 = 128;
+    if (*(_QWORD*)(*v4 + 200) == 0) {
+      v21 = 56;
+    }
+    nn_mem_StandardAllocator_Free_alt1(*v4 + v21, v102[2]);
+  }
+  *(_BYTE*)(v17 + 40) = 1;
+  v22 = a1[207];
+  if (v22 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v22 + 8),
+                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v22 + 16LL))(v22);
+    std___1___shared_weak_count___release_weak_alt1(v22);
+  }
+  v23 = a1[204];
+  if (v23 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v23 + 8),
+                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v23 + 16LL))(v23);
+    std___1___shared_weak_count___release_weak_alt1(v23);
+  }
+  v24 = a1[202];
+  if (v24 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v24 + 8),
+                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v24 + 16LL))(v24);
+    std___1___shared_weak_count___release_weak_alt1(v24);
+  }
+  v25 = a1[200];
+  if (v25 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v25 + 8),
+                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v25 + 16LL))(v25);
+    std___1___shared_weak_count___release_weak_alt1(v25);
+  }
+  v26 = a1[198];
+  if (v26 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v26 + 8),
+                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v26 + 16LL))(v26);
+    std___1___shared_weak_count___release_weak_alt1(v26);
+  }
+  v27 = (_QWORD*)a1[196];
+  a1[196] = 0;
+  if (v27 != nullptr) {
+    GameHr_bbf8a0(v27);
+    v28 = 128;
+    if (*(_QWORD*)(*v4 + 200) == 0) {
+      v28 = 56;
+    }
+    nn_mem_StandardAllocator_Free_alt1(*v4 + v28, (__int64)v27);
+  }
+  v29 = a1[195];
+  a1[195] = 0;
+  if (v29 != 0) {
+    GameRoutine_b87ec0_alt1(v29);
+    v30 = 128;
+    if (*(_QWORD*)(*v4 + 200) == 0) {
+      v30 = 56;
+    }
+    nn_mem_StandardAllocator_Free_alt1(*v4 + v30, v29);
+  }
+  v31 = (_QWORD*)a1[194];
+  a1[194] = 0;
+  if (v31 != nullptr) {
+    TaskPassNodes_b9d3a0_alt1(v31);
+    v32 = 128;
+    if (*(_QWORD*)(*v4 + 200) == 0) {
+      v32 = 56;
+    }
+    nn_mem_StandardAllocator_Free_alt1(*v4 + v32, (__int64)v31);
+  }
+  v33 = (_QWORD*)a1[193];
+  a1[193] = 0;
+  if (v33 != nullptr) {
+    TaskPassNodes_b8f8a0_alt1(v33);
+    v34 = 128;
+    if (*(_QWORD*)(*v4 + 200) == 0) {
+      v34 = 56;
+    }
+    nn_mem_StandardAllocator_Free_alt1(*v4 + v34, (__int64)v33);
+  }
+  v35 = (_QWORD*)a1[192];
+  a1[192] = 0;
+  if (v35 != nullptr) {
+    TaskPassNodes_b896c0_alt1(v35);
+    v36 = 128;
+    if (*(_QWORD*)(*v4 + 200) == 0) {
+      v36 = 56;
+    }
+    nn_mem_StandardAllocator_Free_alt1(*v4 + v36, (__int64)v35);
+  }
+  v37 = (_QWORD*)a1[191];
+  a1[191] = 0;
+  if (v37 != nullptr) {
+    TaskPassNodes_baecd0_alt1(v37);
+    v38 = 128;
+    if (*(_QWORD*)(*v4 + 200) == 0) {
+      v38 = 56;
+    }
+    nn_mem_StandardAllocator_Free_alt1(*v4 + v38, (__int64)v37);
+  }
+  v39 = (_QWORD*)a1[190];
+  a1[190] = 0;
+  if (v39 != nullptr) {
+    TaskPassNodes_b94cd0_alt1(v39);
+    v40 = 128;
+    if (*(_QWORD*)(*v4 + 200) == 0) {
+      v40 = 56;
+    }
+    nn_mem_StandardAllocator_Free_alt1(*v4 + v40, (__int64)v39);
+  }
+  v41 = (_QWORD*)a1[189];
+  a1[189] = 0;
+  if (v41 != nullptr) {
+    GameRoutine_6040f0_alt1((__int64)(v41 + 1));
+    v42 = v41[20];
+    v41[20] = 0;
+    if (v42 != 0) {
+      (*(void (**)(__int64))(*(_QWORD*)v42 + 8LL))(v42);
+    }
+    v43 = v41[19];
+    v41[19] = 0;
+    if (v43 != 0) {
+      (*(void (**)(__int64))(*(_QWORD*)v43 + 8LL))(v43);
+    }
+    v44 = v41[18];
+    if (v44 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v44 + 8),
+                                     0xFFFFFFFFFFFFFFFFLL) == 0) {
+      (*(void (**)(__int64))(*(_QWORD*)v44 + 16LL))(v44);
+      std___1___shared_weak_count___release_weak_alt1(v44);
+    }
+    GameRoutine_604050(v41 + 1);
+    v45 = 128;
+    if (*(_QWORD*)(*v4 + 200) == 0) {
+      v45 = 56;
+    }
+    nn_mem_StandardAllocator_Free_alt1(*v4 + v45, (__int64)v41);
+  }
+  v46 = (_QWORD*)a1[188];
+  a1[188] = 0;
+  if (v46 != nullptr) {
+    GameRoutine_6040f0_alt1((__int64)(v46 + 3));
+    v47 = v46[20];
+    v46[20] = 0;
+    if (v47 != 0) {
+      (*(void (**)(__int64))(*(_QWORD*)v47 + 8LL))(v47);
+    }
+    v48 = v46[19];
+    v46[19] = 0;
+    if (v48 != 0) {
+      (*(void (**)(__int64))(*(_QWORD*)v48 + 8LL))(v48);
+    }
+    GameRoutine_604050(v46 + 3);
+    v49 = v46[2];
+    if (v49 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v49 + 8),
+                                     0xFFFFFFFFFFFFFFFFLL) == 0) {
+      (*(void (**)(__int64))(*(_QWORD*)v49 + 16LL))(v49);
+      std___1___shared_weak_count___release_weak_alt1(v49);
+    }
+    v50 = 128;
+    if (*(_QWORD*)(*v4 + 200) == 0) {
+      v50 = 56;
+    }
+    nn_mem_StandardAllocator_Free_alt1(*v4 + v50, (__int64)v46);
+  }
+  v51 = (_QWORD*)a1[187];
+  a1[187] = 0;
+  if (v51 != nullptr) {
+    ResourceBuilder_b49a80_alt1(v51);
+    v52 = 128;
+    if (*(_QWORD*)(*v4 + 200) == 0) {
+      v52 = 56;
+    }
+    nn_mem_StandardAllocator_Free_alt1(*v4 + v52, (__int64)v51);
+  }
+  v53 = a1[186];
+  a1[186] = 0;
+  if (v53 != 0) {
+    v54 = 128;
+    if (*(_QWORD*)(*v4 + 200) == 0) {
+      v54 = 56;
+    }
+    nn_mem_StandardAllocator_Free_alt1(*v4 + v54, v53);
+  }
+  v55 = a1[185];
+  a1[185] = 0;
+  if (v55 != 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v55 + 8LL))(v55);
+  }
+  v56 = a1[184];
+  a1[184] = 0;
+  if (v56 != 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v56 + 8LL))(v56);
+  }
+  v57 = a1[180];
+  if (v57 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v57 + 8),
+                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v57 + 16LL))(v57);
+    std___1___shared_weak_count___release_weak_alt1(v57);
+  }
+  v58 = a1[178];
+  if (v58 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v58 + 8),
+                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v58 + 16LL))(v58);
+    std___1___shared_weak_count___release_weak_alt1(v58);
+  }
+  v59 = a1[176];
+  if (v59 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v59 + 8),
+                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v59 + 16LL))(v59);
+    std___1___shared_weak_count___release_weak_alt1(v59);
+  }
+  GameRoutine_b869a0((__int64)(a1 + 165));
+  v60 = a1[162];
+  if (v60 != 0) {
+    v61 = *v4;
+    a1[163] = v60;
+    v62 = 128;
+    if (*(_QWORD*)(v61 + 200) == 0) {
+      v62 = 56;
+    }
+    nn_mem_StandardAllocator_Free_alt1(v61 + v62, v60);
+  }
+  GameRoutine_604050(a1 + 146);
+  GameRoutine_604050(a1 + 130);
+  GameRoutine_604050(a1 + 114);
+  v63 = a1[110];
+  a1[110] = 0;
+  if (v63 != 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v63 + 8LL))(v63);
+  }
+  v64 = a1[106];
+  a1[106] = 0;
+  if (v64 != 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v64 + 8LL))(v64);
+  }
+  v65 = a1[100];
+  a1[100] = 0;
+  if (v65 != 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v65 + 8LL))(v65);
+  }
+  v66 = a1[99];
+  a1[99] = 0;
+  if (v66 != 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v66 + 8LL))(v66);
+  }
+  v67 = a1[93];
+  a1[93] = 0;
+  if (v67 != 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v67 + 8LL))(v67);
+  }
+  v68 = a1[92];
+  a1[92] = 0;
+  if (v68 != 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v68 + 8LL))(v68);
+  }
+  v69 = a1[86];
+  a1[86] = 0;
+  if (v69 != 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v69 + 8LL))(v69);
+  }
+  v70 = a1[85];
+  a1[85] = 0;
+  if (v70 != 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v70 + 8LL))(v70);
+  }
+  v71 = a1[84];
+  if (v71 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v71 + 8),
+                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v71 + 16LL))(v71);
+    std___1___shared_weak_count___release_weak_alt1(v71);
+  }
+  v72 = a1[82];
+  if (v72 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v72 + 8),
+                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v72 + 16LL))(v72);
+    std___1___shared_weak_count___release_weak_alt1(v72);
+  }
+  v73 = a1[78];
+  if (v73 != 0) {
+    v74 = a1[79];
+    if (v73 == v74) {
+      goto LABEL_141;
+    }
+    do {
+      v75 = *(_QWORD*)(v74 - 8);
+      if (v75 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v75 + 8),
+                                       0xFFFFFFFFFFFFFFFFLL) == 0) {
+        (*(void (**)(__int64))(*(_QWORD*)v75 + 16LL))(v75);
+        std___1___shared_weak_count___release_weak_alt1(v75);
+      }
+      v74 -= 16;
+    } while (v74 != v73);
+    v76 = a1[78];
+    a1[79] = v73;
+    v73 = v76;
+    if (v76 != 0) {
+    LABEL_141:
+      v77 = 128;
+      if (*(_QWORD*)(*v4 + 200) == 0) {
+        v77 = 56;
+      }
+      nn_mem_StandardAllocator_Free_alt1(*v4 + v77, v73);
+    }
+  }
+  v78 = a1[75];
+  if (v78 != 0) {
+    v79 = a1[76];
+    if (v78 == v79) {
+      goto LABEL_152;
+    }
+    do {
+      v80 = *(_QWORD*)(v79 - 8);
+      if (v80 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v80 + 8),
+                                       0xFFFFFFFFFFFFFFFFLL) == 0) {
+        (*(void (**)(__int64))(*(_QWORD*)v80 + 16LL))(v80);
+        std___1___shared_weak_count___release_weak_alt1(v80);
+      }
+      v79 -= 16;
+    } while (v79 != v78);
+    v81 = a1[75];
+    a1[76] = v78;
+    v78 = v81;
+    if (v81 != 0) {
+    LABEL_152:
+      v82 = 128;
+      if (*(_QWORD*)(*v4 + 200) == 0) {
+        v82 = 56;
+      }
+      nn_mem_StandardAllocator_Free_alt1(*v4 + v82, v78);
+    }
+  }
+  v83 = a1[69];
+  a1[69] = 0;
+  if (v83 != 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v83 + 8LL))(v83);
+  }
+  v84 = a1[68];
+  a1[68] = 0;
+  if (v84 != 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v84 + 8LL))(v84);
+  }
+  v85 = a1[62];
+  a1[62] = 0;
+  if (v85 != 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v85 + 8LL))(v85);
+  }
+  v86 = a1[61];
+  a1[61] = 0;
+  if (v86 != 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v86 + 8LL))(v86);
+  }
+  v87 = a1[55];
+  a1[55] = 0;
+  if (v87 != 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v87 + 8LL))(v87);
+  }
+  v88 = a1[54];
+  a1[54] = 0;
+  if (v88 != 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v88 + 8LL))(v88);
+  }
+  v89 = a1[48];
+  a1[48] = 0;
+  if (v89 != 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v89 + 8LL))(v89);
+  }
+  v90 = a1[47];
+  a1[47] = 0;
+  if (v90 != 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v90 + 8LL))(v90);
+  }
+  v91 = a1[41];
+  a1[41] = 0;
+  if (v91 != 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v91 + 8LL))(v91);
+  }
+  result = a1[40];
+  a1[40] = 0;
+  if (result != 0) {
+    result = (*(__int64 (**)(__int64))(*(_QWORD*)result + 8LL))(result);
+  }
+  v93 = a1[24];
+  if (v93 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v93 + 8),
+                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v93 + 16LL))(v93);
+    result = std___1___shared_weak_count___release_weak_alt1(v93);
+  }
+  v94 = a1[22];
+  if (v94 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v94 + 8),
+                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v94 + 16LL))(v94);
+    result = std___1___shared_weak_count___release_weak_alt1(v94);
+  }
+  v95 = a1[20];
+  if (v95 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v95 + 8),
+                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v95 + 16LL))(v95);
+    result = std___1___shared_weak_count___release_weak_alt1(v95);
+  }
+  v96 = a1[18];
+  if (v96 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v96 + 8),
+                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v96 + 16LL))(v96);
+    result = std___1___shared_weak_count___release_weak_alt1(v96);
+  }
+  v97 = a1[16];
+  if (v97 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v97 + 8),
+                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v97 + 16LL))(v97);
+    result = std___1___shared_weak_count___release_weak_alt1(v97);
+  }
+  v98 = a1[13];
+  if (v98 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v98 + 8),
+                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v98 + 16LL))(v98);
+    result = std___1___shared_weak_count___release_weak_alt1(v98);
+  }
+  v99 = a1[11];
+  if (v99 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v99 + 8),
+                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v99 + 16LL))(v99);
+    result = std___1___shared_weak_count___release_weak_alt1(v99);
+  }
+  v100 = a1[9];
+  if (v100 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v100 + 8),
+                                    0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v100 + 16LL))(v100);
+    result = std___1___shared_weak_count___release_weak_alt1(v100);
+    v101 = a1[4];
+    if (v101 == 0) {
+      return result;
+    }
+  }
+  else {
+    v101 = a1[4];
+    if (v101 == 0) {
+      return result;
+    }
+  }
+  if (atomic_fetch_add((atomic_ullong* volatile)(v101 + 8),
+                       0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v101 + 16LL))(v101);
+    return std___1___shared_weak_count___release_weak_alt1(v101);
+  }
+  return result;
+}
+
 __int64 MainRenderTask_bb8650(__int64 result, __int64* a2)
 {
   __int64 v2;
@@ -3233,6 +3981,14559 @@ __int64 MainRenderTask_bb8af0(__int64 a1, int* a2)
     v18 = 0;
     if (result != 0) {
       return (*(__int64 (**)(__int64))(*(_QWORD*)result + 8LL))(result);
+    }
+  }
+  return result;
+}
+
+__int64 MainRenderTask_Unknown2(__int64 a1, __int64 a2, __int64 a3)
+{
+  __int64 v4;
+  int v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
+  __int64 v14;
+  __int64 v15;
+  __int64 v16;
+  __int64 v17;
+  __int64 v18;
+  __int64 v19;
+  int v20;
+  __int64 v21;
+  __int64 v22;
+  int32x4_t v23;
+  int32x4_t v24;
+  int32x4_t v25;
+  int32x4_t v26;
+  __int64 v27;
+  int v28;
+  int v29;
+  __int64 v30;
+  __int64 (**v31)();
+  __int64 (***v32)();
+  unsigned int v33;
+  __int64 v34;
+  __int64 (**v35)();
+  __int64 (*v36)();
+  __int64 v37;
+  __int64 (**v38)();
+  int32x4_t v39;
+  int32x4_t v40;
+  int32x4_t v41;
+  int32x4_t v42;
+  __int64 (*v43)();
+  int v44;
+  int v45;
+  unsigned int v46;
+  __int64 v47;
+  __int64* v48;
+  __int64 v49;
+  __int64 v50;
+  __int64 v51;
+  int32x4_t v52;
+  int32x4_t v53;
+  int32x4_t v54;
+  int32x4_t v55;
+  __int64 v56;
+  int v57;
+  int v58;
+  unsigned int v59;
+  __int64 v60;
+  __int64* v61;
+  __int64 v62;
+  __int64 v63;
+  __int64 v64;
+  int32x4_t v65;
+  int32x4_t v66;
+  int32x4_t v67;
+  int32x4_t v68;
+  __int64 v69;
+  int v70;
+  int v71;
+  unsigned int v72;
+  __int64 v73;
+  __int64* v74;
+  __int64 v75;
+  __int64 v76;
+  __int64 v77;
+  int32x4_t v78;
+  int32x4_t v79;
+  int32x4_t v80;
+  int32x4_t v81;
+  __int64 v82;
+  int v83;
+  int v84;
+  unsigned int v85;
+  __int64 v86;
+  __int64* v87;
+  __int64 v88;
+  __int64 v89;
+  __int64 v90;
+  int32x4_t v91;
+  int32x4_t v92;
+  int32x4_t v93;
+  int32x4_t v94;
+  __int64 v95;
+  int v96;
+  int v97;
+  __int64 v98;
+  unsigned __int32 v99;
+  __int64 v100;
+  __int64 (**v101)();
+  __int64 v102;
+  __int64 v103;
+  __int64 v104;
+  __int64 v105;
+  int* v106;
+  __int64 v107;
+  __int64 v108;
+  __int64 v109;
+  __int64 v110;
+  int32x2_t* v111;
+  __int64 v112;
+  int32x2_t* v113;
+  unsigned __int64 v114;
+  unsigned __int64 v115;
+  float v116;
+  unsigned __int64 v117;
+  __int64 v118;
+  _BYTE* v119;
+  int v120;
+  __int64 v121;
+  float32x4_t* v122;
+  __int64 v123;
+  unsigned int v124;
+  __int64 v125;
+  __int64 v126;
+  __int64 v127;
+  __int64* v128;
+  float32x4_t v129;
+  float32x4_t v130;
+  float32x4_t v131;
+  float32x4_t v132;
+  float32x4_t v133;
+  float32x4_t v134;
+  float32x4_t v135;
+  __int64 v136;
+  float32x4x4_t* v137;
+  unsigned __int64 v138;
+  unsigned __int64 v139;
+  unsigned __int64 v140;
+  unsigned __int64 v141;
+  __int64 v143;
+  __int64 v144;
+  float32x4_t* v145;
+  int v146;
+  int v147;
+  __int64 v148;
+  __int64 v149;
+  __int64 v150;
+  __int64 v151;
+  __int64 v152;
+  float v153;
+  float v154;
+  __int64 v155;
+  __int64 v156;
+  __int64 v157;
+  __int64 v158;
+  __int64 v159;
+  __int64 v160;
+  __int64 v161;
+  __int64 v162;
+  __int64 v163;
+  __int64 v164;
+  __int64 v165;
+  __int64 v166;
+  __int64 v167;
+  __int64 v168;
+  __int64 v169;
+  __int64 v170;
+  __int64 v171;
+  __int64 v172;
+  __int64 v173;
+  __int64 v174;
+  int8x16_t v175;
+  int8x16_t v176;
+  int8x16_t v177;
+  int8x16_t v178;
+  __int64 v179;
+  __int64 v180;
+  __int64 v181;
+  float v182;
+  float v183;
+  __int64 v184;
+  __int64 v185;
+  __int64 v186;
+  __int64 v187;
+  __int64 v188;
+  __int64 v189;
+  __int64 v190;
+  __int64 v191;
+  __int64 v192;
+  __int64 v193;
+  __int64 v194;
+  __int64 v195;
+  __int64 v196;
+  __int64 v197;
+  __int64 v198;
+  __int64 v199;
+  __int64 v200;
+  __int64 v201;
+  __int64 v202;
+  __int64 v203;
+  int8x16_t v204;
+  int8x16_t v205;
+  int8x16_t v206;
+  int8x16_t v207;
+  __int64 v208;
+  int v209;
+  int v210;
+  __int64 v211;
+  __int64 v212;
+  __int64 v213;
+  __int64 v214;
+  __int64 v215;
+  __int64 v216;
+  __int64* v217;
+  int v218;
+  __int64 v219;
+  __int64 v220;
+  int v221;
+  bool v222;
+  __int64 v223;
+  __int64 v224;
+  __int64 v225;
+  __int64 v226;
+  int v227;
+  bool v228;
+  __int64 v229;
+  int v230;
+  __int64 v231;
+  __int64 v232;
+  __int64 v233;
+  float32x4_t v234;
+  _QWORD* v235;
+  int v236;
+  float32x4_t v237;
+  float32x4_t v238;
+  float v239;
+  float32x4_t v240;
+  float* v241;
+  float32x4_t v242;
+  float32x4_t v243;
+  float32x4_t v244;
+  __int64 v245;
+  int v246;
+  __int64 v247;
+  int v248;
+  __int64 v249;
+  __int64 (**v250)(__int64);
+  __int64 v251;
+  __int64 v252;
+  __int64 v253;
+  unsigned __int64 v254;
+  unsigned __int64 v255;
+  unsigned __int64 v256;
+  unsigned __int64 v257;
+  __int64 v258;
+  unsigned __int64 v259;
+  __int64 v260;
+  __int64 v261;
+  unsigned __int64 v262;
+  __int64 v263;
+  __int64 v264;
+  __int64 v265;
+  __int64 v266;
+  float32x4_t v267;
+  __int64 v268;
+  int v269;
+  __int64 v270;
+  __int64 v271;
+  int v272;
+  bool v273;
+  __int64 v274;
+  __int64 v275;
+  __int64 v276;
+  float32x4_t v277;
+  float32x4_t v278;
+  __int64 v279;
+  float32x4_t v280;
+  float32x4_t v281;
+  __int64 v282;
+  float32x4_t v283;
+  float32x4_t v284;
+  unsigned __int64 v285;
+  __int64 v286;
+  unsigned __int32 v287;
+  __int64* v288;
+  int v289;
+  int v290;
+  __int64 v291;
+  __int64 v292;
+  _QWORD* v293;
+  unsigned int v294;
+  unsigned __int64 v295;
+  __int64 v296;
+  int v297;
+  _QWORD* v298;
+  __int64 v299;
+  __int64 v300;
+  __int64 v301;
+  _DWORD* v302;
+  int v303;
+  int v304;
+  __int64 v305;
+  __int64 v306;
+  int* v307;
+  int v308;
+  int v309;
+  int* v310;
+  int v311;
+  int v312;
+  int v313;
+  int v314;
+  __int64 v315;
+  int v316;
+  int v317;
+  __int64 v318;
+  __int64 v319;
+  __int64 v320;
+  __int64 v321;
+  __int64 v322;
+  __int64* v323;
+  __int64 v324;
+  __int64 v325;
+  __int64 (**v326)(__int64);
+  int v327;
+  __int64 v328;
+  __int64 v329;
+  int v330;
+  bool v331;
+  __int64 v332;
+  __int64 v333;
+  __int64 v334;
+  __int64 v335;
+  int v336;
+  bool v337;
+  __int64 v338;
+  int v339;
+  __int64 v340;
+  __int64 v341;
+  __int64 v342;
+  float32x4_t v343;
+  _QWORD* v344;
+  int v345;
+  float32x4_t v346;
+  float32x4_t v347;
+  float v348;
+  float32x4_t v349;
+  float* v350;
+  float32x4_t v351;
+  float32x4_t v352;
+  float32x4_t v353;
+  __int64 v354;
+  int v355;
+  __int64 v356;
+  int v357;
+  __int64 v358;
+  __int64 v359;
+  __int64 v360;
+  __int64 v361;
+  __int64 v362;
+  int v363;
+  int v364;
+  bool v365;
+  __int64 v366;
+  __int64 v367;
+  _QWORD* v368;
+  int v369;
+  __int64 v370;
+  int v371;
+  __int64 v372;
+  char* v373;
+  __int64 v374;
+  unsigned __int8 v375;
+  __int64 v376;
+  __int64 v377;
+  __int64 v378;
+  __int64 v379;
+  __int64 v380;
+  __int64 v381;
+  int v382;
+  __int64 v383;
+  __int64 v384;
+  __int64 v385;
+  unsigned int v386;
+  unsigned int v387;
+  int v388;
+  __int64 v389;
+  __int64* v390;
+  int v391;
+  __int64 v392;
+  __int64 v393;
+  __int64 v394;
+  unsigned __int8 v395;
+  __int64 v396;
+  __int64 v397;
+  __int64 v398;
+  float v399;
+  int v400;
+  __int64 v401;
+  __int64 v402;
+  __int64 v403;
+  unsigned __int8 v404;
+  __int64 v405;
+  int v406;
+  char v407;
+  __int64 v408;
+  _QWORD* v409;
+  _QWORD* v410;
+  _QWORD* v411;
+  _QWORD* v412;
+  __int64 v413;
+  _QWORD* v414;
+  __int64 v415;
+  __int64 v416;
+  __int64 v417;
+  __int64 v418;
+  __int64 v419;
+  __int64 v420;
+  __int64 v421;
+  __int64 v422;
+  __int64 v423;
+  __int64 v424;
+  __int64 v425;
+  __int64 v426;
+  __int64 v427;
+  __int64 v428;
+  __int64 v429;
+  __int64 v430;
+  __int64 v431;
+  __int64 v432;
+  const char* v433;
+  unsigned __int64 v434;
+  __int64 v435;
+  char* v436;
+  __int64 v437;
+  __int64 v438;
+  __int64 v439;
+  __int64 v440;
+  __int64 v441;
+  unsigned __int64 v442;
+  int v443;
+  __int64 v444;
+  unsigned __int64 v445;
+  __int64* v446;
+  __int64 v447;
+  __int64 v448;
+  __int64 v449;
+  __int64 v450;
+  __int64 v451;
+  __int64 v452;
+  __int64 v453;
+  __int64 v454;
+  __int64 v455;
+  __int64 v456;
+  __int64 v457;
+  __int64 v458;
+  signed __int64 v459;
+  unsigned __int64 v460;
+  __int64 v461;
+  unsigned __int64 v462;
+  __int64 v463;
+  __int64 v464;
+  __int64 v465;
+  __int64 v466;
+  __int64* v467;
+  unsigned __int64 v468;
+  __int64* v469;
+  __int64 v470;
+  __int64 v471;
+  unsigned __int64 v472;
+  __int64 v473;
+  unsigned __int64 v474;
+  __int64 v475;
+  unsigned __int64 v476;
+  __int64 v477;
+  __int64 v478;
+  unsigned __int64 v479;
+  __int64 v480;
+  __int64 v481;
+  unsigned __int64 v482;
+  __int64 v483;
+  __int64 v484;
+  __int64* v485;
+  __int64 result;
+  int v487;
+  bool v488;
+  int v489;
+  unsigned __int64 v490;
+  __int64 v491;
+  __int64 v492;
+  __int64 v493;
+  __int64 v494;
+  __int64 v495;
+  int v496;
+  __int64 v497;
+  __int64 v498;
+  _BYTE* v499;
+  __int64 v500;
+  __int64 v501;
+  int v502;
+  __int64 v503;
+  __int64 v504;
+  int v505;
+  int v506;
+  __int64 v507;
+  __int64 v508;
+  __int64 v509;
+  int v510;
+  int v511;
+  __int64 v512;
+  __int64 v513;
+  __int64 v514;
+  __int64 v515;
+  __int64 v516;
+  unsigned int v517;
+  __int64 v518;
+  __int64 v519;
+  int v520;
+  __int64 v521;
+  __int64 v522;
+  const char* v523;
+  unsigned __int64 v524;
+  __int64* v525;
+  __int64 v526;
+  __int64 v527;
+  signed __int64 v528;
+  unsigned __int64 v529;
+  __int64 v530;
+  unsigned __int64 v531;
+  __int64 v532;
+  __int64 v533;
+  unsigned __int64 v534;
+  __int64 v535;
+  __int64 v536;
+  __int64 v537;
+  int v538;
+  __int64 v539;
+  __int64 v540;
+  unsigned __int64 v541;
+  __int64* v542;
+  __int64 v543;
+  __int64 v544;
+  signed __int64 v545;
+  unsigned __int64 v546;
+  __int64 v547;
+  unsigned __int64 v548;
+  __int64 v549;
+  __int64 v550;
+  unsigned __int64 v551;
+  __int64 v552;
+  __int64 v553;
+  __int64 v554;
+  __int64 v555;
+  __int64 v556;
+  __int64 v557;
+  __int64 v558;
+  __int64 v559;
+  __int64 v560;
+  __int64 v561;
+  __int64 v562;
+  float32x4_t v564;
+  __int64 v565;
+  __int64 v566;
+  float32x4_t v567;
+  __int64 v568;
+  __int64 v569;
+  float32x4_t v570;
+  __int64 v571;
+  __int64 v572;
+  int v573;
+  float32x4_t v574;
+  __int64 v575;
+  __int64 v576;
+  char v577;
+  __int64 v578;
+  struct {
+    __int64 v579;
+    __int64 v580;
+    __int64 v581;
+    __int64 v582;
+    __int64 v583;
+    __int64 v584;
+    __int64 v585;
+    int v586;
+    char gap388_[4];
+    __int64 v587;
+    int v588;
+    char gap404_[4];
+    __int64 v589;
+    unsigned __int64 v590;
+    __int64 v591;
+    unsigned __int64 v592;
+  } v579_;
+  struct {
+    _BYTE v593[14];
+    bool v594;
+    char gap455_[1];
+    __int64 v595;
+  } v593_;
+  struct {
+    __int64 v596;
+    unsigned __int64 v597;
+    const char* v598;
+    const char* v599;
+  } v596_;
+  struct {
+    float32x4x4_t v600;
+    float32x4x4_t v601;
+    float32x4x4_t v602;
+    float32x4x4_t v603;
+    float32x4x4_t v604;
+    char gap816_[64];
+    __int64 v605;
+    __int64 v606;
+    char gap896_[8];
+    __int64 v607;
+    __int64 v608;
+    char gap920_[48];
+    __int64 v609;
+    __int64 v610;
+    char gap984_[16];
+    __int64 v611;
+    __int64 v612;
+    __int64 v613;
+    __int64 v614;
+    __int64 v615;
+    __int64 v616;
+    __int64 v617;
+    _QWORD v618[14];
+  } v600_;
+  __int64* v619[13];
+  float32x4x4_t* v620;
+  struct {
+    __int64 v621[2];
+    char* v622;
+    const char* v623;
+    __int64* v624;
+  } v621_;
+  float32x4x4_t v625;
+  float32x4x4_t v626;
+  float32x4x4_t v627;
+  float32x4x4_t v628;
+  float32x4x4_t v629;
+  float32x4x4_t v630;
+  float32x4x4_t v631;
+  float32x4x4_t v632;
+
+  v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+  v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+  v382 = COERCE_AS(__typeof__(v382),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v388 = COERCE_AS(__typeof__(v388),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+  v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+  v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+  v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+  v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+  v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+  v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+  v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+  v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+  v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  v4 = a1;
+  v5 = *(_DWORD*)(*(_QWORD*)(a1 + 24) + 304LL);
+  v6 = *(_QWORD*)(*(_QWORD*)(a1 + 8) + 13224LL);
+  if (v5 == -1) {
+    v9 = 0;
+    v8 = *(_QWORD*)(v6 + 48);
+    v10 = *(_QWORD*)(v6 + 56);
+    if (v10 == 0) {
+      goto LABEL_7;
+    }
+    goto LABEL_6;
+  }
+  v7 = v6 + 1560LL * v5;
+  v8 = *(_QWORD*)(v7 + 1752);
+  v9 = *(_QWORD*)(v7 + 1760);
+  if (v9 != 0) {
+    atomic_fetch_add_explicit((atomic_ullong* volatile)(v9 + 8), 1u,
+                              memory_order_relaxed);
+  }
+  v10 = v9;
+  if (v8 == 0) {
+    v8 = *(_QWORD*)(v6 + 48);
+    v10 = *(_QWORD*)(v6 + 56);
+    if (v10 == 0) {
+    LABEL_7:
+      if (v9 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v9 + 8),
+                                      0xFFFFFFFFFFFFFFFFLL) == 0) {
+        (*(void (**)(__int64))(*(_QWORD*)v9 + 16LL))(v9),
+            v129 = COERCE_AS(__typeof__(v129),
+                             PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v130 = COERCE_AS(__typeof__(v130),
+                             PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v131 = COERCE_AS(__typeof__(v131),
+                             PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v133 = COERCE_AS(__typeof__(v133),
+                             PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v134 = COERCE_AS(__typeof__(v134),
+                             PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v135 = COERCE_AS(__typeof__(v135),
+                             PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v24 =
+                COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v25 =
+                COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v26 =
+                COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v28 =
+                COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+            v29 =
+                COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+            v382 = COERCE_AS(__typeof__(v382),
+                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v388 = COERCE_AS(__typeof__(v388),
+                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v40 =
+                COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v41 =
+                COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v42 =
+                COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v44 =
+                COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+            v45 =
+                COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+            v53 =
+                COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v54 =
+                COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v55 =
+                COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v57 =
+                COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+            v58 =
+                COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+            v66 =
+                COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v67 =
+                COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v68 =
+                COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v70 =
+                COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+            v71 =
+                COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+            v79 =
+                COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v80 =
+                COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v81 =
+                COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v83 =
+                COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+            v84 =
+                COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+            v92 =
+                COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v93 =
+                COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v94 =
+                COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v96 =
+                COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+            v97 =
+                COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+        std___1___shared_weak_count___release_weak_alt1(v9),
+            v129 = COERCE_AS(__typeof__(v129),
+                             PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v130 = COERCE_AS(__typeof__(v130),
+                             PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v131 = COERCE_AS(__typeof__(v131),
+                             PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v133 = COERCE_AS(__typeof__(v133),
+                             PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v134 = COERCE_AS(__typeof__(v134),
+                             PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v135 = COERCE_AS(__typeof__(v135),
+                             PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v24 =
+                COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v25 =
+                COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v26 =
+                COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v28 =
+                COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+            v29 =
+                COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+            v382 = COERCE_AS(__typeof__(v382),
+                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v388 = COERCE_AS(__typeof__(v388),
+                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v40 =
+                COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v41 =
+                COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v42 =
+                COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v44 =
+                COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+            v45 =
+                COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+            v53 =
+                COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v54 =
+                COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v55 =
+                COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v57 =
+                COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+            v58 =
+                COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+            v66 =
+                COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v67 =
+                COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v68 =
+                COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v70 =
+                COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+            v71 =
+                COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+            v79 =
+                COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v80 =
+                COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v81 =
+                COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v83 =
+                COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+            v84 =
+                COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+            v92 =
+                COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v93 =
+                COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v94 =
+                COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v96 =
+                COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+            v97 =
+                COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+      }
+      goto LABEL_10;
+    }
+  LABEL_6:
+    atomic_fetch_add_explicit((atomic_ullong* volatile)(v10 + 8), 1u,
+                              memory_order_relaxed);
+    goto LABEL_7;
+  }
+LABEL_10:
+  v11 = *(_QWORD*)(v4 + 88);
+  *(_QWORD*)(v4 + 80) = v8;
+  *(_QWORD*)(v4 + 88) = v10;
+  if (v11 != 0) {
+    if (atomic_fetch_add((atomic_ullong* volatile)(v11 + 8),
+                         0xFFFFFFFFFFFFFFFFLL) == 0) {
+      (*(void (**)(__int64))(*(_QWORD*)v11 + 16LL))(v11),
+          v129 =
+              COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v130 =
+              COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v131 =
+              COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v133 =
+              COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v134 =
+              COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v135 =
+              COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+          v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+          v382 = COERCE_AS(__typeof__(v382),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v388 = COERCE_AS(__typeof__(v388),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+          v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+          v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+          v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+          v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+          v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+          v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+          v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+          v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+          v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+      std___1___shared_weak_count___release_weak_alt1(v11),
+          v129 =
+              COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v130 =
+              COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v131 =
+              COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v133 =
+              COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v134 =
+              COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v135 =
+              COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+          v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+          v382 = COERCE_AS(__typeof__(v382),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v388 = COERCE_AS(__typeof__(v388),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+          v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+          v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+          v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+          v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+          v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+          v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+          v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+          v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+          v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    }
+    v8 = *(_QWORD*)(v4 + 80);
+    v10 = *(_QWORD*)(v4 + 88);
+  }
+  v12 = *(_QWORD*)(v4 + 648);
+  if (v10 != 0) {
+    atomic_fetch_add_explicit((atomic_ullong* volatile)(v10 + 8), 1u,
+                              memory_order_relaxed);
+  }
+  v13 = *(_QWORD*)(v12 + 32);
+  *(_QWORD*)(v12 + 24) = v8;
+  *(_QWORD*)(v12 + 32) = v10;
+  if (v13 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v13 + 8),
+                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v13 + 16LL))(v13),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    std___1___shared_weak_count___release_weak_alt1(v13),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  }
+  v14 = *(_QWORD*)(v4 + 24);
+  v578 = v4;
+  if (*(_BYTE*)(v14 + 48) != 1) {
+    goto LABEL_322;
+  }
+  v15 = *(_QWORD*)(*(_QWORD*)(*(_QWORD*)(v4 + 80) + 8LL) + 160LL);
+  v16 = 128;
+  if (*(_BYTE*)(v15 + 96) != 0) {
+    v16 = 92;
+  }
+  v17 = *(unsigned int*)(v15 + v16);
+  v18 = *(_QWORD*)(v4 + 1648);
+  if (*(_BYTE*)(v18 + 8) == 1) {
+    if (*(_DWORD*)v18 == -1 && *(_DWORD*)(v18 + 4) == (_DWORD)v17) {
+      goto LABEL_34;
+    }
+  }
+  else {
+    *(_BYTE*)(v18 + 8) = 1;
+  }
+  *(_QWORD*)v18 = (v17 << 32) | 0xFFFFFFFFLL;
+  v19 = *(_QWORD*)(v4 + 1648);
+  if ((*(_BYTE*)(v19 + 8) & 1) == 0) {
+    GameRoutine_8123d0(),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  }
+  v20 = *(_DWORD*)(v19 + 4);
+  if (v20 == 1) {
+    *(_BYTE*)(v4 + 1664) = 1;
+  }
+  else {
+    LOBYTE(v20) = 0;
+  }
+  *(_BYTE*)(*(_QWORD*)(*(_QWORD*)(v4 + 8) + 16672LL) + 2132LL) = v20;
+  LODWORD(v17) = *(_DWORD*)(v19 + 4);
+  v14 = *(_QWORD*)(v4 + 24);
+LABEL_34:
+  *(_BYTE*)(v4 + 1692) = (_DWORD)v17 != 1;
+  if (*(_BYTE*)(v14 + 48) != 1) {
+    goto LABEL_322;
+  }
+  v21 = *(_QWORD*)(v4 + 96);
+  v22 = *(_QWORD*)(v4 + 64);
+  *(_QWORD*)(v21 + 80) = v22;
+  if (v22 != 0) {
+    *(long double*)&v23 =
+        ((long double (*)(__int64)) * (_QWORD*)(*(_QWORD*)v22 + 16LL))(v22),
+           v129 =
+               COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+           v130 =
+               COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+           v131 =
+               COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+           v133 =
+               COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+           v134 =
+               COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+           v135 =
+               COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+           v24 =
+               COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+           v25 =
+               COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+           v26 =
+               COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+           v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+           v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+           v382 = COERCE_AS(__typeof__(v382),
+                            PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+           v388 = COERCE_AS(__typeof__(v388),
+                            PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+           v40 =
+               COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+           v41 =
+               COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+           v42 =
+               COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+           v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+           v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+           v53 =
+               COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+           v54 =
+               COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+           v55 =
+               COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+           v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+           v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+           v66 =
+               COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+           v67 =
+               COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+           v68 =
+               COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+           v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+           v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+           v79 =
+               COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+           v80 =
+               COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+           v81 =
+               COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+           v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+           v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+           v92 =
+               COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+           v93 =
+               COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+           v94 =
+               COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+           v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+           v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    v27 = *(_QWORD*)(v21 + 80);
+    *(_QWORD*)(v21 + 88) = LANES128_OF(vzip2q_s32(v23, v24)).n128_u64[0];
+    *(_QWORD*)(v21 + 96) = LANES128_OF(vzip2q_s32(v25, v26)).n128_u64[0];
+    (*(void (**)(__int64))(*(_QWORD*)v27 + 32LL))(v27),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  }
+  else {
+    v28 = 0;
+    v29 = 0;
+    *(_QWORD*)(v21 + 88) = 0;
+    *(_QWORD*)(v21 + 96) = 0;
+  }
+  *(_DWORD*)(v21 + 104) = v28;
+  *(_DWORD*)(v21 + 108) = v29;
+  v30 = *(_QWORD*)(v4 + 24);
+  v31 = *(__int64 (***)(void))(v4 + 96),
+  v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+  v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+  v382 = COERCE_AS(__typeof__(v382),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v388 = COERCE_AS(__typeof__(v388),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+  v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+  v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+  v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+  v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+  v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+  v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+  v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+  v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+  v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  LANES128(v600_.v600.val[0]).n128_u32[0] = *(_DWORD*)(v4 + 40);
+  LANES128(v600_.v600.val[0]).n128_u8[4] = 1;
+  LANES128(v600_.v600.val[0]).n128_u64[1] = 7;
+  gfx_render_Scene_BuildRenderer(v30, v31, (int*)&v600_.v600),
+      v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+      v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+      v382 = COERCE_AS(__typeof__(v382),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v388 = COERCE_AS(__typeof__(v388),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+      v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+      v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+      v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+      v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+      v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+      v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+      v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+      v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+      v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  v32 = (__int64 (***)(void))(v4 + 120),
+  v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+  v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+  v382 = COERCE_AS(__typeof__(v382),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v388 = COERCE_AS(__typeof__(v388),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+  v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+  v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+  v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+  v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+  v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+  v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+  v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+  v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+  v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  if ((*(_BYTE*)(v4 + 1680) & 1) != 0 || (*(_BYTE*)(v4 + 1681) & 1) != 0) {
+    v33 = *(_DWORD*)(v4 + 44);
+    if ((v33 & 0x80000000) != 0 ||
+        (v34 = *(_QWORD*)(v4 + 24),
+         (signed int)v33 >= (signed __int32)*(_DWORD*)v34)) {
+      v38 = *v32;
+      v37 = 0;
+      (*v32)[10] = nullptr;
+    }
+    else {
+      v35 = (__int64 (**)(void))(*(_QWORD*)(v34 + 112) + 48LL * v33),
+      v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+      v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+      v382 = COERCE_AS(__typeof__(v382),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v388 = COERCE_AS(__typeof__(v388),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+      v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+      v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+      v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+      v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+      v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+      v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+      v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+      v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+      v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+      v36 = *v35;
+      v37 = (__int64)v35[1];
+      if (v37 != 0) {
+        atomic_fetch_add_explicit((atomic_ullong* volatile)(v37 + 8), 1u,
+                                  memory_order_relaxed);
+      }
+      v38 = *v32;
+      (*v32)[10] = v36;
+      if (v36 != nullptr) {
+        *(long double*)&v39 = ((long double (*)(__int64 (*)())) *
+                               (_QWORD*)(*(_QWORD*)v36 + 16LL))(v36),
+               v129 = COERCE_AS(__typeof__(v129),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+               v130 = COERCE_AS(__typeof__(v130),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+               v131 = COERCE_AS(__typeof__(v131),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+               v133 = COERCE_AS(__typeof__(v133),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+               v134 = COERCE_AS(__typeof__(v134),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+               v135 = COERCE_AS(__typeof__(v135),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+               v24 = COERCE_AS(__typeof__(v24),
+                               PSEUDO_REGISTER(__n128, "v1", "=w")),
+               v25 = COERCE_AS(__typeof__(v25),
+                               PSEUDO_REGISTER(__n128, "v2", "=w")),
+               v26 = COERCE_AS(__typeof__(v26),
+                               PSEUDO_REGISTER(__n128, "v3", "=w")),
+               v28 = COERCE_AS(__typeof__(v28),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+               v29 = COERCE_AS(__typeof__(v29),
+                               PSEUDO_REGISTER(float, "s1", "=w")),
+               v382 =
+                   COERCE_AS(__typeof__(v382),
+                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+               v388 =
+                   COERCE_AS(__typeof__(v388),
+                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+               v40 = COERCE_AS(__typeof__(v40),
+                               PSEUDO_REGISTER(__n128, "v1", "=w")),
+               v41 = COERCE_AS(__typeof__(v41),
+                               PSEUDO_REGISTER(__n128, "v2", "=w")),
+               v42 = COERCE_AS(__typeof__(v42),
+                               PSEUDO_REGISTER(__n128, "v3", "=w")),
+               v44 = COERCE_AS(__typeof__(v44),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+               v45 = COERCE_AS(__typeof__(v45),
+                               PSEUDO_REGISTER(float, "s1", "=w")),
+               v53 = COERCE_AS(__typeof__(v53),
+                               PSEUDO_REGISTER(__n128, "v1", "=w")),
+               v54 = COERCE_AS(__typeof__(v54),
+                               PSEUDO_REGISTER(__n128, "v2", "=w")),
+               v55 = COERCE_AS(__typeof__(v55),
+                               PSEUDO_REGISTER(__n128, "v3", "=w")),
+               v57 = COERCE_AS(__typeof__(v57),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+               v58 = COERCE_AS(__typeof__(v58),
+                               PSEUDO_REGISTER(float, "s1", "=w")),
+               v66 = COERCE_AS(__typeof__(v66),
+                               PSEUDO_REGISTER(__n128, "v1", "=w")),
+               v67 = COERCE_AS(__typeof__(v67),
+                               PSEUDO_REGISTER(__n128, "v2", "=w")),
+               v68 = COERCE_AS(__typeof__(v68),
+                               PSEUDO_REGISTER(__n128, "v3", "=w")),
+               v70 = COERCE_AS(__typeof__(v70),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+               v71 = COERCE_AS(__typeof__(v71),
+                               PSEUDO_REGISTER(float, "s1", "=w")),
+               v79 = COERCE_AS(__typeof__(v79),
+                               PSEUDO_REGISTER(__n128, "v1", "=w")),
+               v80 = COERCE_AS(__typeof__(v80),
+                               PSEUDO_REGISTER(__n128, "v2", "=w")),
+               v81 = COERCE_AS(__typeof__(v81),
+                               PSEUDO_REGISTER(__n128, "v3", "=w")),
+               v83 = COERCE_AS(__typeof__(v83),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+               v84 = COERCE_AS(__typeof__(v84),
+                               PSEUDO_REGISTER(float, "s1", "=w")),
+               v92 = COERCE_AS(__typeof__(v92),
+                               PSEUDO_REGISTER(__n128, "v1", "=w")),
+               v93 = COERCE_AS(__typeof__(v93),
+                               PSEUDO_REGISTER(__n128, "v2", "=w")),
+               v94 = COERCE_AS(__typeof__(v94),
+                               PSEUDO_REGISTER(__n128, "v3", "=w")),
+               v96 = COERCE_AS(__typeof__(v96),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+               v97 = COERCE_AS(__typeof__(v97),
+                               PSEUDO_REGISTER(float, "s1", "=w"));
+        v43 = v38[10];
+        v38[11] = (__int64 (*)())LANES128_OF(vzip2q_s32(v39, v40)).n128_u64[0],
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+        v38[12] = (__int64 (*)())LANES128_OF(vzip2q_s32(v41, v42)).n128_u64[0],
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+        (*(void (**)(__int64 (*)()))(*(_QWORD*)v43 + 32LL))(v43),
+            v129 = COERCE_AS(__typeof__(v129),
+                             PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v130 = COERCE_AS(__typeof__(v130),
+                             PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v131 = COERCE_AS(__typeof__(v131),
+                             PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v133 = COERCE_AS(__typeof__(v133),
+                             PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v134 = COERCE_AS(__typeof__(v134),
+                             PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v135 = COERCE_AS(__typeof__(v135),
+                             PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v24 =
+                COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v25 =
+                COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v26 =
+                COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v28 =
+                COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+            v29 =
+                COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+            v382 = COERCE_AS(__typeof__(v382),
+                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v388 = COERCE_AS(__typeof__(v388),
+                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v40 =
+                COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v41 =
+                COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v42 =
+                COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v44 =
+                COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+            v45 =
+                COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+            v53 =
+                COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v54 =
+                COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v55 =
+                COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v57 =
+                COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+            v58 =
+                COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+            v66 =
+                COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v67 =
+                COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v68 =
+                COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v70 =
+                COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+            v71 =
+                COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+            v79 =
+                COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v80 =
+                COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v81 =
+                COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v83 =
+                COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+            v84 =
+                COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+            v92 =
+                COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v93 =
+                COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v94 =
+                COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v96 =
+                COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+            v97 =
+                COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+      LABEL_48:
+        *((_DWORD*)v38 + 26) = v44;
+        *((_DWORD*)v38 + 27) = v45;
+        if (v37 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v37 + 8),
+                                         0xFFFFFFFFFFFFFFFFLL) == 0) {
+          (*(void (**)(__int64))(*(_QWORD*)v37 + 16LL))(v37),
+              v129 = COERCE_AS(__typeof__(v129),
+                               PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v130 = COERCE_AS(__typeof__(v130),
+                               PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v131 = COERCE_AS(__typeof__(v131),
+                               PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v133 = COERCE_AS(__typeof__(v133),
+                               PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v134 = COERCE_AS(__typeof__(v134),
+                               PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v135 = COERCE_AS(__typeof__(v135),
+                               PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v24 = COERCE_AS(__typeof__(v24),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v25 = COERCE_AS(__typeof__(v25),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v26 = COERCE_AS(__typeof__(v26),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v28 = COERCE_AS(__typeof__(v28),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v29 = COERCE_AS(__typeof__(v29),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v382 = COERCE_AS(__typeof__(v382),
+                               PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+              v388 = COERCE_AS(__typeof__(v388),
+                               PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+              v40 = COERCE_AS(__typeof__(v40),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v41 = COERCE_AS(__typeof__(v41),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v42 = COERCE_AS(__typeof__(v42),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v44 = COERCE_AS(__typeof__(v44),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v45 = COERCE_AS(__typeof__(v45),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v53 = COERCE_AS(__typeof__(v53),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v54 = COERCE_AS(__typeof__(v54),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v55 = COERCE_AS(__typeof__(v55),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v57 = COERCE_AS(__typeof__(v57),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v58 = COERCE_AS(__typeof__(v58),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v66 = COERCE_AS(__typeof__(v66),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v67 = COERCE_AS(__typeof__(v67),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v68 = COERCE_AS(__typeof__(v68),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v70 = COERCE_AS(__typeof__(v70),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v71 = COERCE_AS(__typeof__(v71),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v79 = COERCE_AS(__typeof__(v79),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v80 = COERCE_AS(__typeof__(v80),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v81 = COERCE_AS(__typeof__(v81),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v83 = COERCE_AS(__typeof__(v83),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v84 = COERCE_AS(__typeof__(v84),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v92 = COERCE_AS(__typeof__(v92),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v93 = COERCE_AS(__typeof__(v93),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v94 = COERCE_AS(__typeof__(v94),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v96 = COERCE_AS(__typeof__(v96),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v97 = COERCE_AS(__typeof__(v97),
+                              PSEUDO_REGISTER(float, "s1", "=w"));
+          std___1___shared_weak_count___release_weak_alt1(v37),
+              v129 = COERCE_AS(__typeof__(v129),
+                               PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v130 = COERCE_AS(__typeof__(v130),
+                               PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v131 = COERCE_AS(__typeof__(v131),
+                               PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v133 = COERCE_AS(__typeof__(v133),
+                               PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v134 = COERCE_AS(__typeof__(v134),
+                               PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v135 = COERCE_AS(__typeof__(v135),
+                               PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v24 = COERCE_AS(__typeof__(v24),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v25 = COERCE_AS(__typeof__(v25),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v26 = COERCE_AS(__typeof__(v26),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v28 = COERCE_AS(__typeof__(v28),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v29 = COERCE_AS(__typeof__(v29),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v382 = COERCE_AS(__typeof__(v382),
+                               PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+              v388 = COERCE_AS(__typeof__(v388),
+                               PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+              v40 = COERCE_AS(__typeof__(v40),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v41 = COERCE_AS(__typeof__(v41),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v42 = COERCE_AS(__typeof__(v42),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v44 = COERCE_AS(__typeof__(v44),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v45 = COERCE_AS(__typeof__(v45),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v53 = COERCE_AS(__typeof__(v53),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v54 = COERCE_AS(__typeof__(v54),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v55 = COERCE_AS(__typeof__(v55),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v57 = COERCE_AS(__typeof__(v57),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v58 = COERCE_AS(__typeof__(v58),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v66 = COERCE_AS(__typeof__(v66),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v67 = COERCE_AS(__typeof__(v67),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v68 = COERCE_AS(__typeof__(v68),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v70 = COERCE_AS(__typeof__(v70),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v71 = COERCE_AS(__typeof__(v71),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v79 = COERCE_AS(__typeof__(v79),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v80 = COERCE_AS(__typeof__(v80),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v81 = COERCE_AS(__typeof__(v81),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v83 = COERCE_AS(__typeof__(v83),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v84 = COERCE_AS(__typeof__(v84),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v92 = COERCE_AS(__typeof__(v92),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v93 = COERCE_AS(__typeof__(v93),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v94 = COERCE_AS(__typeof__(v94),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v96 = COERCE_AS(__typeof__(v96),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v97 = COERCE_AS(__typeof__(v97),
+                              PSEUDO_REGISTER(float, "s1", "=w"));
+        }
+        goto LABEL_51;
+      }
+    }
+    v38[11] = nullptr;
+    v38[12] = nullptr;
+    v44 = 0;
+    v45 = 0;
+    goto LABEL_48;
+  }
+LABEL_51:
+  if ((*(_BYTE*)(v4 + 1680) & 1) == 0 && (*(_BYTE*)(v4 + 1681) & 1) == 0) {
+    goto LABEL_64;
+  }
+  v46 = *(_DWORD*)(v4 + 48);
+  if ((v46 & 0x80000000) != 0 ||
+      (v47 = *(_QWORD*)(v4 + 24),
+       (signed int)v46 >= (signed __int32)*(_DWORD*)v47)) {
+    v51 = *(_QWORD*)(v4 + 136);
+    v50 = 0;
+    *(_QWORD*)(v51 + 80) = 0;
+  LABEL_60:
+    *(_QWORD*)(v51 + 88) = 0;
+    *(_QWORD*)(v51 + 96) = 0;
+    v57 = 0;
+    v58 = 0;
+    goto LABEL_61;
+  }
+  v48 = (__int64*)(*(_QWORD*)(v47 + 112) + 48LL * v46);
+  v49 = *v48;
+  v50 = v48[1];
+  if (v50 != 0) {
+    atomic_fetch_add_explicit((atomic_ullong* volatile)(v50 + 8), 1u,
+                              memory_order_relaxed);
+  }
+  v51 = *(_QWORD*)(v4 + 136);
+  *(_QWORD*)(v51 + 80) = v49;
+  if (v49 == 0) {
+    goto LABEL_60;
+  }
+  *(long double*)&v52 =
+      ((long double (*)(__int64)) * (_QWORD*)(*(_QWORD*)v49 + 16LL))(v49),
+         v129 =
+             COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+         v130 =
+             COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+         v131 =
+             COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+         v133 =
+             COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+         v134 =
+             COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+         v135 =
+             COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+         v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+         v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+         v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+         v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+         v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+         v382 = COERCE_AS(__typeof__(v382),
+                          PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+         v388 = COERCE_AS(__typeof__(v388),
+                          PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+         v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+         v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+         v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+         v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+         v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+         v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+         v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+         v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+         v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+         v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+         v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+         v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+         v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+         v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+         v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+         v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+         v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+         v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+         v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+         v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+         v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+         v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+         v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+         v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+         v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  v56 = *(_QWORD*)(v51 + 80);
+  *(_QWORD*)(v51 + 88) = LANES128_OF(vzip2q_s32(v52, v53)).n128_u64[0];
+  *(_QWORD*)(v51 + 96) = LANES128_OF(vzip2q_s32(v54, v55)).n128_u64[0];
+  (*(void (**)(__int64))(*(_QWORD*)v56 + 32LL))(v56),
+      v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+      v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+      v382 = COERCE_AS(__typeof__(v382),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v388 = COERCE_AS(__typeof__(v388),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+      v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+      v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+      v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+      v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+      v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+      v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+      v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+      v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+      v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+LABEL_61:
+  *(_DWORD*)(v51 + 104) = v57;
+  *(_DWORD*)(v51 + 108) = v58;
+  if (v50 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v50 + 8),
+                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v50 + 16LL))(v50),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    std___1___shared_weak_count___release_weak_alt1(v50),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  }
+LABEL_64:
+  if ((*(_BYTE*)(v4 + 1680) & 1) == 0 && (*(_BYTE*)(v4 + 1681) & 1) == 0) {
+    goto LABEL_77;
+  }
+  v59 = *(_DWORD*)(v4 + 52);
+  if ((v59 & 0x80000000) != 0 ||
+      (v60 = *(_QWORD*)(v4 + 24),
+       (signed int)v59 >= (signed __int32)*(_DWORD*)v60)) {
+    v64 = *(_QWORD*)(v4 + 152);
+    v63 = 0;
+    *(_QWORD*)(v64 + 80) = 0;
+  LABEL_73:
+    *(_QWORD*)(v64 + 88) = 0;
+    *(_QWORD*)(v64 + 96) = 0;
+    v70 = 0;
+    v71 = 0;
+    goto LABEL_74;
+  }
+  v61 = (__int64*)(*(_QWORD*)(v60 + 112) + 48LL * v59);
+  v62 = *v61;
+  v63 = v61[1];
+  if (v63 != 0) {
+    atomic_fetch_add_explicit((atomic_ullong* volatile)(v63 + 8), 1u,
+                              memory_order_relaxed);
+  }
+  v64 = *(_QWORD*)(v4 + 152);
+  *(_QWORD*)(v64 + 80) = v62;
+  if (v62 == 0) {
+    goto LABEL_73;
+  }
+  *(long double*)&v65 =
+      ((long double (*)(__int64)) * (_QWORD*)(*(_QWORD*)v62 + 16LL))(v62),
+         v129 =
+             COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+         v130 =
+             COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+         v131 =
+             COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+         v133 =
+             COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+         v134 =
+             COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+         v135 =
+             COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+         v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+         v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+         v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+         v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+         v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+         v382 = COERCE_AS(__typeof__(v382),
+                          PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+         v388 = COERCE_AS(__typeof__(v388),
+                          PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+         v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+         v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+         v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+         v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+         v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+         v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+         v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+         v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+         v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+         v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+         v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+         v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+         v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+         v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+         v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+         v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+         v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+         v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+         v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+         v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+         v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+         v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+         v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+         v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+         v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  v69 = *(_QWORD*)(v64 + 80);
+  *(_QWORD*)(v64 + 88) = LANES128_OF(vzip2q_s32(v65, v66)).n128_u64[0];
+  *(_QWORD*)(v64 + 96) = LANES128_OF(vzip2q_s32(v67, v68)).n128_u64[0];
+  (*(void (**)(__int64))(*(_QWORD*)v69 + 32LL))(v69),
+      v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+      v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+      v382 = COERCE_AS(__typeof__(v382),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v388 = COERCE_AS(__typeof__(v388),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+      v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+      v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+      v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+      v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+      v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+      v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+      v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+      v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+      v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+LABEL_74:
+  *(_DWORD*)(v64 + 104) = v70;
+  *(_DWORD*)(v64 + 108) = v71;
+  if (v63 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v63 + 8),
+                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v63 + 16LL))(v63),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    std___1___shared_weak_count___release_weak_alt1(v63),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  }
+LABEL_77:
+  if ((*(_BYTE*)(v4 + 1680) & 1) == 0 && (*(_BYTE*)(v4 + 1681) & 1) == 0) {
+    goto LABEL_90;
+  }
+  v72 = *(_DWORD*)(v4 + 56);
+  if ((v72 & 0x80000000) != 0 ||
+      (v73 = *(_QWORD*)(v4 + 24),
+       (signed int)v72 >= (signed __int32)*(_DWORD*)v73)) {
+    v77 = *(_QWORD*)(v4 + 168);
+    v76 = 0;
+    *(_QWORD*)(v77 + 80) = 0;
+  LABEL_86:
+    *(_QWORD*)(v77 + 88) = 0;
+    *(_QWORD*)(v77 + 96) = 0;
+    v83 = 0;
+    v84 = 0;
+    goto LABEL_87;
+  }
+  v74 = (__int64*)(*(_QWORD*)(v73 + 112) + 48LL * v72);
+  v75 = *v74;
+  v76 = v74[1];
+  if (v76 != 0) {
+    atomic_fetch_add_explicit((atomic_ullong* volatile)(v76 + 8), 1u,
+                              memory_order_relaxed);
+  }
+  v77 = *(_QWORD*)(v4 + 168);
+  *(_QWORD*)(v77 + 80) = v75;
+  if (v75 == 0) {
+    goto LABEL_86;
+  }
+  *(long double*)&v78 =
+      ((long double (*)(__int64)) * (_QWORD*)(*(_QWORD*)v75 + 16LL))(v75),
+         v129 =
+             COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+         v130 =
+             COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+         v131 =
+             COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+         v133 =
+             COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+         v134 =
+             COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+         v135 =
+             COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+         v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+         v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+         v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+         v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+         v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+         v382 = COERCE_AS(__typeof__(v382),
+                          PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+         v388 = COERCE_AS(__typeof__(v388),
+                          PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+         v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+         v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+         v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+         v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+         v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+         v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+         v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+         v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+         v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+         v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+         v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+         v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+         v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+         v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+         v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+         v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+         v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+         v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+         v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+         v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+         v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+         v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+         v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+         v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+         v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  v82 = *(_QWORD*)(v77 + 80);
+  *(_QWORD*)(v77 + 88) = LANES128_OF(vzip2q_s32(v78, v79)).n128_u64[0];
+  *(_QWORD*)(v77 + 96) = LANES128_OF(vzip2q_s32(v80, v81)).n128_u64[0];
+  (*(void (**)(__int64))(*(_QWORD*)v82 + 32LL))(v82),
+      v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+      v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+      v382 = COERCE_AS(__typeof__(v382),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v388 = COERCE_AS(__typeof__(v388),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+      v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+      v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+      v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+      v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+      v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+      v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+      v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+      v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+      v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+LABEL_87:
+  *(_DWORD*)(v77 + 104) = v83;
+  *(_DWORD*)(v77 + 108) = v84;
+  if (v76 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v76 + 8),
+                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v76 + 16LL))(v76),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    std___1___shared_weak_count___release_weak_alt1(v76),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  }
+LABEL_90:
+  if ((*(_BYTE*)(v4 + 1680) & 1) == 0 && (*(_BYTE*)(v4 + 1681) & 1) == 0) {
+    goto LABEL_103;
+  }
+  v85 = *(_DWORD*)(v4 + 60);
+  if ((v85 & 0x80000000) != 0 ||
+      (v86 = *(_QWORD*)(v4 + 24),
+       (signed int)v85 >= (signed __int32)*(_DWORD*)v86)) {
+    v90 = *(_QWORD*)(v4 + 184);
+    v89 = 0;
+    *(_QWORD*)(v90 + 80) = 0;
+  LABEL_99:
+    *(_QWORD*)(v90 + 88) = 0;
+    *(_QWORD*)(v90 + 96) = 0;
+    v96 = 0;
+    v97 = 0;
+    goto LABEL_100;
+  }
+  v87 = (__int64*)(*(_QWORD*)(v86 + 112) + 48LL * v85);
+  v88 = *v87;
+  v89 = v87[1];
+  if (v89 != 0) {
+    atomic_fetch_add_explicit((atomic_ullong* volatile)(v89 + 8), 1u,
+                              memory_order_relaxed);
+  }
+  v90 = *(_QWORD*)(v4 + 184);
+  *(_QWORD*)(v90 + 80) = v88;
+  if (v88 == 0) {
+    goto LABEL_99;
+  }
+  *(long double*)&v91 =
+      ((long double (*)(__int64)) * (_QWORD*)(*(_QWORD*)v88 + 16LL))(v88),
+         v129 =
+             COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+         v130 =
+             COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+         v131 =
+             COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+         v133 =
+             COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+         v134 =
+             COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+         v135 =
+             COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+         v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+         v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+         v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+         v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+         v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+         v382 = COERCE_AS(__typeof__(v382),
+                          PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+         v388 = COERCE_AS(__typeof__(v388),
+                          PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+         v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+         v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+         v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+         v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+         v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+         v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+         v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+         v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+         v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+         v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+         v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+         v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+         v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+         v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+         v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+         v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+         v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+         v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+         v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+         v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+         v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+         v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+         v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+         v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+         v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  v95 = *(_QWORD*)(v90 + 80);
+  *(_QWORD*)(v90 + 88) = LANES128_OF(vzip2q_s32(v91, v92)).n128_u64[0];
+  *(_QWORD*)(v90 + 96) = LANES128_OF(vzip2q_s32(v93, v94)).n128_u64[0];
+  (*(void (**)(__int64))(*(_QWORD*)v95 + 32LL))(v95),
+      v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+      v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+      v382 = COERCE_AS(__typeof__(v382),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v388 = COERCE_AS(__typeof__(v388),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+      v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+      v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+      v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+      v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+      v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+      v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+      v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+      v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+      v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+LABEL_100:
+  *(_DWORD*)(v90 + 104) = v96;
+  *(_DWORD*)(v90 + 108) = v97;
+  if (v89 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v89 + 8),
+                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v89 + 16LL))(v89),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    std___1___shared_weak_count___release_weak_alt1(v89),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  }
+LABEL_103:
+  if (*(int*)(v4 + 232) > 0) {
+    v98 = 0;
+    do {
+      v99 = *(_DWORD*)(v4 + 44 + 4 * v98);
+      v100 = *(_QWORD*)(v4 + 24);
+      v101 = *v32;
+      v32 += 2;
+      LANES128(v600_.v600.val[0]).n128_u8[4] = 1;
+      LANES128(v600_.v600.val[0]).n128_u64[1] = 8;
+      LANES128(v600_.v600.val[0]).n128_u32[0] = v99;
+      gfx_render_Scene_BuildRenderer(v100, v101, (int*)&v600_.v600),
+          v129 =
+              COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v130 =
+              COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v131 =
+              COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v133 =
+              COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v134 =
+              COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v135 =
+              COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+          v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+          v382 = COERCE_AS(__typeof__(v382),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v388 = COERCE_AS(__typeof__(v388),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+          v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+          v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+          v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+          v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+          v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+          v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+          v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+          v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+          v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+      ++v98;
+    } while (v98 < *(int*)(v4 + 232));
+  }
+  GameRoutine_c557e0(
+      (float32x4_t*)(*(_QWORD*)(*(_QWORD*)(v4 + 24) + 288LL) + 864LL),
+      *(__int64**)(v4 + 64)),
+      v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+      v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+      v382 = COERCE_AS(__typeof__(v382),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v388 = COERCE_AS(__typeof__(v388),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+      v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+      v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+      v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+      v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+      v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+      v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+      v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+      v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+      v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  v14 = *(_QWORD*)(v4 + 24);
+  if (*(_BYTE*)(v14 + 48) == 1) {
+    v102 = *(_QWORD*)(v4 + 64);
+    GameRoutine_b3a750(*(_QWORD*)(v4 + 1488),
+                       *(_BYTE**)(*(_QWORD*)(*(_QWORD*)(v4 + 80) + 8LL) + 80LL),
+                       *(_BYTE**)(*(_QWORD*)(*(_QWORD*)(v4 + 80) + 8LL) + 88LL),
+                       *(_BYTE**)(*(_QWORD*)(*(_QWORD*)(v4 + 80) + 8LL) + 96LL),
+                       *(_QWORD*)(v14 + 288) + 640LL, *(float*)(v4 + 116)),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    v103 = *(_QWORD*)(*(_QWORD*)(*(_QWORD*)(v4 + 1552) + 176LL) + 280LL);
+    *(_BYTE*)(v4 + 1672) = v103 != 0;
+    if (v103 != 0) {
+      v104 = *(_QWORD*)(*(_QWORD*)(*(_QWORD*)(v4 + 80) + 8LL) + 304LL);
+      v105 = 280;
+      if (*(_BYTE*)(v104 + 250) != 0) {
+        v105 = 249;
+      }
+      if ((*(_BYTE*)(v104 + v105) & 1) != 0) {
+        if ((atomic_load_explicit((atomic_uchar* volatile)&GameData_22030f0,
+                                  memory_order_acquire) &
+             1) == 0 &&
+            __cxa_guard_acquire((__int64)&GameData_22030f0) != 0) {
+          GameRoutine_2b0(),
+              v129 = COERCE_AS(__typeof__(v129),
+                               PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v130 = COERCE_AS(__typeof__(v130),
+                               PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v131 = COERCE_AS(__typeof__(v131),
+                               PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v133 = COERCE_AS(__typeof__(v133),
+                               PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v134 = COERCE_AS(__typeof__(v134),
+                               PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v135 = COERCE_AS(__typeof__(v135),
+                               PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v24 = COERCE_AS(__typeof__(v24),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v25 = COERCE_AS(__typeof__(v25),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v26 = COERCE_AS(__typeof__(v26),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v28 = COERCE_AS(__typeof__(v28),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v29 = COERCE_AS(__typeof__(v29),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v382 = COERCE_AS(__typeof__(v382),
+                               PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+              v388 = COERCE_AS(__typeof__(v388),
+                               PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+              v40 = COERCE_AS(__typeof__(v40),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v41 = COERCE_AS(__typeof__(v41),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v42 = COERCE_AS(__typeof__(v42),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v44 = COERCE_AS(__typeof__(v44),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v45 = COERCE_AS(__typeof__(v45),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v53 = COERCE_AS(__typeof__(v53),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v54 = COERCE_AS(__typeof__(v54),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v55 = COERCE_AS(__typeof__(v55),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v57 = COERCE_AS(__typeof__(v57),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v58 = COERCE_AS(__typeof__(v58),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v66 = COERCE_AS(__typeof__(v66),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v67 = COERCE_AS(__typeof__(v67),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v68 = COERCE_AS(__typeof__(v68),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v70 = COERCE_AS(__typeof__(v70),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v71 = COERCE_AS(__typeof__(v71),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v79 = COERCE_AS(__typeof__(v79),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v80 = COERCE_AS(__typeof__(v80),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v81 = COERCE_AS(__typeof__(v81),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v83 = COERCE_AS(__typeof__(v83),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v84 = COERCE_AS(__typeof__(v84),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v92 = COERCE_AS(__typeof__(v92),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v93 = COERCE_AS(__typeof__(v93),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v94 = COERCE_AS(__typeof__(v94),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v96 = COERCE_AS(__typeof__(v96),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v97 = COERCE_AS(__typeof__(v97),
+                              PSEUDO_REGISTER(float, "s1", "=w"));
+          __cxa_guard_release((__int64)&GameData_22030f0),
+              v129 = COERCE_AS(__typeof__(v129),
+                               PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v130 = COERCE_AS(__typeof__(v130),
+                               PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v131 = COERCE_AS(__typeof__(v131),
+                               PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v133 = COERCE_AS(__typeof__(v133),
+                               PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v134 = COERCE_AS(__typeof__(v134),
+                               PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v135 = COERCE_AS(__typeof__(v135),
+                               PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v24 = COERCE_AS(__typeof__(v24),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v25 = COERCE_AS(__typeof__(v25),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v26 = COERCE_AS(__typeof__(v26),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v28 = COERCE_AS(__typeof__(v28),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v29 = COERCE_AS(__typeof__(v29),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v382 = COERCE_AS(__typeof__(v382),
+                               PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+              v388 = COERCE_AS(__typeof__(v388),
+                               PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+              v40 = COERCE_AS(__typeof__(v40),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v41 = COERCE_AS(__typeof__(v41),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v42 = COERCE_AS(__typeof__(v42),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v44 = COERCE_AS(__typeof__(v44),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v45 = COERCE_AS(__typeof__(v45),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v53 = COERCE_AS(__typeof__(v53),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v54 = COERCE_AS(__typeof__(v54),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v55 = COERCE_AS(__typeof__(v55),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v57 = COERCE_AS(__typeof__(v57),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v58 = COERCE_AS(__typeof__(v58),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v66 = COERCE_AS(__typeof__(v66),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v67 = COERCE_AS(__typeof__(v67),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v68 = COERCE_AS(__typeof__(v68),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v70 = COERCE_AS(__typeof__(v70),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v71 = COERCE_AS(__typeof__(v71),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v79 = COERCE_AS(__typeof__(v79),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v80 = COERCE_AS(__typeof__(v80),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v81 = COERCE_AS(__typeof__(v81),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v83 = COERCE_AS(__typeof__(v83),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v84 = COERCE_AS(__typeof__(v84),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v92 = COERCE_AS(__typeof__(v92),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v93 = COERCE_AS(__typeof__(v93),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v94 = COERCE_AS(__typeof__(v94),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v96 = COERCE_AS(__typeof__(v96),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v97 = COERCE_AS(__typeof__(v97),
+                              PSEUDO_REGISTER(float, "s1", "=w"));
+        }
+        GameData_22030e8 = 1;
+        LOBYTE(v103) = *(_BYTE*)(v4 + 1672);
+      }
+      else {
+        LOBYTE(v103) = 0;
+        *(_BYTE*)(v4 + 1672) = 0;
+      }
+    }
+    gfxa_a9d8c0(*(_DWORD**)(v4 + 648), *(_QWORD*)(v4 + 24), *(_QWORD*)(v4 + 64),
+                v102, *(_QWORD*)(v4 + 1352), *(_QWORD*)(v4 + 1400),
+                *(_QWORD*)(v4 + 1488), v103 & 1, *(float*)(v4 + 112)),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    v106 = *(int**)(v4 + 648);
+    v107 = *(_QWORD*)(v4 + 24);
+    v108 = *(_QWORD*)(v4 + 1384);
+    v109 = *(_QWORD*)(v4 + 1432);
+    v110 = *(_QWORD*)&v106[2 * v106[98] + 94];
+    v111 = (int32x2_t*)(*(__int64 (**)(__int64))(*(_QWORD*)v110 + 56LL))(v110),
+    v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+    v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+    v382 = COERCE_AS(__typeof__(v382),
+                     PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+    v388 = COERCE_AS(__typeof__(v388),
+                     PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+    v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+    v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+    v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+    v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+    v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+    v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+    v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+    v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+    v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+    v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    v112 = *(_QWORD*)(v107 + 288);
+    v113 = v111;
+    v114 = *(_QWORD*)(v112 + 464);
+    v115 = *(unsigned int*)(v112 + 472) |
+           ((unsigned __int64)*(unsigned int*)(v112 + 480) << 32);
+    LANES64(*(v111)).n64_u64[0] = v114;
+    LANES64(v111[1]).n64_u64[0] = v115;
+    if (*(_BYTE*)v109 == 1) {
+      v116 = 0x1.0000000000000p+0f / *(float*)(v109 + 32);
+      LANES64(v111[2]).n64_u64[0] =
+          LANES64_OF(
+              vzip1_s32(
+                  *(int32x2_t*)(v109 + 16),
+                  COERCE_AS(int32x2_t,
+                            LANES128_OF(vextq_s8(*(int8x16_t*)(v109 + 16),
+                                                 *(int8x16_t*)(v109 + 16), 8u))
+                                .n128_u64[0])))
+              .n64_u64[0];
+      LANES64(v111[3]).n64_f32[0] = v116;
+      LANES64(v111[3]).n64_f32[1] = v116;
+      v117 = *(_QWORD*)(v109 + 44);
+      LANES64(v111[4]).n64_u64[0] = *(unsigned __int64*)(v109 + 36);
+      LANES64(v111[5]).n64_u64[0] = v117;
+    }
+    else {
+      LANES64(v111[4]).n64_u64[0] = 0;
+      LANES64(v111[5]).n64_u64[0] = 0;
+      LANES64(v111[2]).n64_u64[0] = 0;
+      LANES64(v111[3]).n64_u64[0] = 0;
+    }
+    v118 = *(_QWORD*)(v108 + 8LL * *(int*)(v108 + 24) + 8);
+    (*(void (**)(__int64))(*(_QWORD*)v118 + 40LL))(v118),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    LANES64(v113[6]).n64_u64[0] = (*(__int64 (**)(__int64))GameData_212e4d8[0])(
+        *(_QWORD*)(*(_QWORD*)v106 + 256LL) + 8LL),
+    v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+    v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+    v382 = COERCE_AS(__typeof__(v382),
+                     PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+    v388 = COERCE_AS(__typeof__(v388),
+                     PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+    v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+    v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+    v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+    v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+    v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+    v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+    v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+    v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+    v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+    v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    (*(void (**)(__int64))(*(_QWORD*)v110 + 64LL))(v110),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    v119 = *(_BYTE**)(*(_QWORD*)(*(_QWORD*)(v4 + 80) + 8LL) + 24LL);
+    v120 = *(_DWORD*)(v4 + 232);
+    if (v120 <= 0) {
+      v123 = v120;
+    }
+    else {
+      v121 = 0;
+      v122 = &v600_.v600.val[2];
+      do {
+        v124 = *(_DWORD*)(v4 + 44 + 4 * v121);
+        v125 = 0;
+        if ((v124 & 0x80000000) != 0) {
+          v126 = 0;
+        }
+        else {
+          v126 = 0;
+          v127 = *(_QWORD*)(v4 + 24);
+          if ((signed int)v124 < (signed __int32)*(_DWORD*)v127) {
+            v128 = (__int64*)(*(_QWORD*)(v127 + 112) + 48LL * v124);
+            v125 = *v128;
+            v126 = v128[1];
+            if (v126 != 0) {
+              atomic_fetch_add_explicit((atomic_ullong* volatile)(v126 + 8), 1u,
+                                        memory_order_relaxed);
+            }
+          }
+        }
+        v564 = COERCE_FLOAT32X4_T(((long double (*)(__int64)) *
+                                   (_QWORD*)(*(_QWORD*)v125 + 16LL))(v125)),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+        v567 = v129;
+        v570 = v130;
+        v574 = v131;
+        *(long double*)&v132 = ((long double (*)(__int64)) *
+                                (_QWORD*)(*(_QWORD*)v125 + 24LL))(v125),
+               v129 = COERCE_AS(__typeof__(v129),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+               v130 = COERCE_AS(__typeof__(v130),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+               v131 = COERCE_AS(__typeof__(v131),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+               v133 = COERCE_AS(__typeof__(v133),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+               v134 = COERCE_AS(__typeof__(v134),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+               v135 = COERCE_AS(__typeof__(v135),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+               v24 = COERCE_AS(__typeof__(v24),
+                               PSEUDO_REGISTER(__n128, "v1", "=w")),
+               v25 = COERCE_AS(__typeof__(v25),
+                               PSEUDO_REGISTER(__n128, "v2", "=w")),
+               v26 = COERCE_AS(__typeof__(v26),
+                               PSEUDO_REGISTER(__n128, "v3", "=w")),
+               v28 = COERCE_AS(__typeof__(v28),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+               v29 = COERCE_AS(__typeof__(v29),
+                               PSEUDO_REGISTER(float, "s1", "=w")),
+               v382 =
+                   COERCE_AS(__typeof__(v382),
+                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+               v388 =
+                   COERCE_AS(__typeof__(v388),
+                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+               v40 = COERCE_AS(__typeof__(v40),
+                               PSEUDO_REGISTER(__n128, "v1", "=w")),
+               v41 = COERCE_AS(__typeof__(v41),
+                               PSEUDO_REGISTER(__n128, "v2", "=w")),
+               v42 = COERCE_AS(__typeof__(v42),
+                               PSEUDO_REGISTER(__n128, "v3", "=w")),
+               v44 = COERCE_AS(__typeof__(v44),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+               v45 = COERCE_AS(__typeof__(v45),
+                               PSEUDO_REGISTER(float, "s1", "=w")),
+               v53 = COERCE_AS(__typeof__(v53),
+                               PSEUDO_REGISTER(__n128, "v1", "=w")),
+               v54 = COERCE_AS(__typeof__(v54),
+                               PSEUDO_REGISTER(__n128, "v2", "=w")),
+               v55 = COERCE_AS(__typeof__(v55),
+                               PSEUDO_REGISTER(__n128, "v3", "=w")),
+               v57 = COERCE_AS(__typeof__(v57),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+               v58 = COERCE_AS(__typeof__(v58),
+                               PSEUDO_REGISTER(float, "s1", "=w")),
+               v66 = COERCE_AS(__typeof__(v66),
+                               PSEUDO_REGISTER(__n128, "v1", "=w")),
+               v67 = COERCE_AS(__typeof__(v67),
+                               PSEUDO_REGISTER(__n128, "v2", "=w")),
+               v68 = COERCE_AS(__typeof__(v68),
+                               PSEUDO_REGISTER(__n128, "v3", "=w")),
+               v70 = COERCE_AS(__typeof__(v70),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+               v71 = COERCE_AS(__typeof__(v71),
+                               PSEUDO_REGISTER(float, "s1", "=w")),
+               v79 = COERCE_AS(__typeof__(v79),
+                               PSEUDO_REGISTER(__n128, "v1", "=w")),
+               v80 = COERCE_AS(__typeof__(v80),
+                               PSEUDO_REGISTER(__n128, "v2", "=w")),
+               v81 = COERCE_AS(__typeof__(v81),
+                               PSEUDO_REGISTER(__n128, "v3", "=w")),
+               v83 = COERCE_AS(__typeof__(v83),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+               v84 = COERCE_AS(__typeof__(v84),
+                               PSEUDO_REGISTER(float, "s1", "=w")),
+               v92 = COERCE_AS(__typeof__(v92),
+                               PSEUDO_REGISTER(__n128, "v1", "=w")),
+               v93 = COERCE_AS(__typeof__(v93),
+                               PSEUDO_REGISTER(__n128, "v2", "=w")),
+               v94 = COERCE_AS(__typeof__(v94),
+                               PSEUDO_REGISTER(__n128, "v3", "=w")),
+               v96 = COERCE_AS(__typeof__(v96),
+                               PSEUDO_REGISTER(float, "s0", "=w")),
+               v97 = COERCE_AS(__typeof__(v97),
+                               PSEUDO_REGISTER(float, "s1", "=w"));
+        v122[-2] = vmlaq_laneq_f32(
+            vmlaq_lane_f32(vmulq_n_f32(v132, LANES128(v564).n128_f32[0]), v133,
+                           COERCE_AS(float32x2_t, LANES128(v564).n128_u64[0]),
+                           1),
+            v134, v564, 2);
+        v122[-1] = vmlaq_laneq_f32(
+            vmlaq_lane_f32(vmulq_n_f32(v132, LANES128(v567).n128_f32[0]), v133,
+                           COERCE_AS(float32x2_t, LANES128(v567).n128_u64[0]),
+                           1),
+            v134, v567, 2);
+        *v122 = vmlaq_laneq_f32(
+            vmlaq_lane_f32(vmulq_n_f32(v132, LANES128(v570).n128_f32[0]), v133,
+                           COERCE_AS(float32x2_t, LANES128(v570).n128_u64[0]),
+                           1),
+            v134, v570, 2);
+        v122[1] = vaddq_f32(
+            v135,
+            vmlaq_laneq_f32(
+                vmlaq_lane_f32(
+                    vmulq_n_f32(v132, LANES128(v574).n128_f32[0]), v133,
+                    COERCE_AS(float32x2_t, LANES128(v574).n128_u64[0]), 1),
+                v134, v574, 2));
+        if (v126 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v126 + 8),
+                                          0xFFFFFFFFFFFFFFFFLL) == 0) {
+          (*(void (**)(__int64))(*(_QWORD*)v126 + 16LL))(v126),
+              v129 = COERCE_AS(__typeof__(v129),
+                               PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v130 = COERCE_AS(__typeof__(v130),
+                               PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v131 = COERCE_AS(__typeof__(v131),
+                               PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v133 = COERCE_AS(__typeof__(v133),
+                               PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v134 = COERCE_AS(__typeof__(v134),
+                               PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v135 = COERCE_AS(__typeof__(v135),
+                               PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v24 = COERCE_AS(__typeof__(v24),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v25 = COERCE_AS(__typeof__(v25),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v26 = COERCE_AS(__typeof__(v26),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v28 = COERCE_AS(__typeof__(v28),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v29 = COERCE_AS(__typeof__(v29),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v382 = COERCE_AS(__typeof__(v382),
+                               PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+              v388 = COERCE_AS(__typeof__(v388),
+                               PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+              v40 = COERCE_AS(__typeof__(v40),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v41 = COERCE_AS(__typeof__(v41),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v42 = COERCE_AS(__typeof__(v42),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v44 = COERCE_AS(__typeof__(v44),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v45 = COERCE_AS(__typeof__(v45),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v53 = COERCE_AS(__typeof__(v53),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v54 = COERCE_AS(__typeof__(v54),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v55 = COERCE_AS(__typeof__(v55),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v57 = COERCE_AS(__typeof__(v57),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v58 = COERCE_AS(__typeof__(v58),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v66 = COERCE_AS(__typeof__(v66),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v67 = COERCE_AS(__typeof__(v67),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v68 = COERCE_AS(__typeof__(v68),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v70 = COERCE_AS(__typeof__(v70),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v71 = COERCE_AS(__typeof__(v71),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v79 = COERCE_AS(__typeof__(v79),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v80 = COERCE_AS(__typeof__(v80),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v81 = COERCE_AS(__typeof__(v81),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v83 = COERCE_AS(__typeof__(v83),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v84 = COERCE_AS(__typeof__(v84),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v92 = COERCE_AS(__typeof__(v92),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v93 = COERCE_AS(__typeof__(v93),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v94 = COERCE_AS(__typeof__(v94),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v96 = COERCE_AS(__typeof__(v96),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v97 = COERCE_AS(__typeof__(v97),
+                              PSEUDO_REGISTER(float, "s1", "=w"));
+          std___1___shared_weak_count___release_weak_alt1(v126),
+              v129 = COERCE_AS(__typeof__(v129),
+                               PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v130 = COERCE_AS(__typeof__(v130),
+                               PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v131 = COERCE_AS(__typeof__(v131),
+                               PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v133 = COERCE_AS(__typeof__(v133),
+                               PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v134 = COERCE_AS(__typeof__(v134),
+                               PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v135 = COERCE_AS(__typeof__(v135),
+                               PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v24 = COERCE_AS(__typeof__(v24),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v25 = COERCE_AS(__typeof__(v25),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v26 = COERCE_AS(__typeof__(v26),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v28 = COERCE_AS(__typeof__(v28),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v29 = COERCE_AS(__typeof__(v29),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v382 = COERCE_AS(__typeof__(v382),
+                               PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+              v388 = COERCE_AS(__typeof__(v388),
+                               PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+              v40 = COERCE_AS(__typeof__(v40),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v41 = COERCE_AS(__typeof__(v41),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v42 = COERCE_AS(__typeof__(v42),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v44 = COERCE_AS(__typeof__(v44),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v45 = COERCE_AS(__typeof__(v45),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v53 = COERCE_AS(__typeof__(v53),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v54 = COERCE_AS(__typeof__(v54),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v55 = COERCE_AS(__typeof__(v55),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v57 = COERCE_AS(__typeof__(v57),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v58 = COERCE_AS(__typeof__(v58),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v66 = COERCE_AS(__typeof__(v66),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v67 = COERCE_AS(__typeof__(v67),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v68 = COERCE_AS(__typeof__(v68),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v70 = COERCE_AS(__typeof__(v70),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v71 = COERCE_AS(__typeof__(v71),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v79 = COERCE_AS(__typeof__(v79),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v80 = COERCE_AS(__typeof__(v80),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v81 = COERCE_AS(__typeof__(v81),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v83 = COERCE_AS(__typeof__(v83),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v84 = COERCE_AS(__typeof__(v84),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v92 = COERCE_AS(__typeof__(v92),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v93 = COERCE_AS(__typeof__(v93),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v94 = COERCE_AS(__typeof__(v94),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v96 = COERCE_AS(__typeof__(v96),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v97 = COERCE_AS(__typeof__(v97),
+                              PSEUDO_REGISTER(float, "s1", "=w"));
+        }
+        ++v121;
+        v122 += 4;
+        v120 = *(_DWORD*)(v4 + 232);
+        v123 = v120;
+      } while (v121 < v120);
+      if (v120 > 4) {
+      LABEL_135:
+        v143 = v4 + 320;
+        v144 = 0;
+        v145 = &v600_.v600.val[2];
+        do {
+          v146 = *(_DWORD*)(v143 + 16);
+          v222 = v146 < -1;
+          v147 = ((_BYTE)v146 + 1) & 1;
+          if (v222) {
+            v147 = -v147;
+          }
+          v148 = *(_QWORD*)(v143 + 8LL * v147);
+          *(_DWORD*)(v143 + 16) = v147;
+          v149 = (*(__int64 (**)(__int64))(*(_QWORD*)v148 + 56LL))(v148),
+          v129 =
+              COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v130 =
+              COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v131 =
+              COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v133 =
+              COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v134 =
+              COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v135 =
+              COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+          v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+          v382 = COERCE_AS(__typeof__(v382),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v388 = COERCE_AS(__typeof__(v388),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+          v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+          v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+          v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+          v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+          v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+          v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+          v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+          v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+          v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+          v629 = *(float32x4x4_t*)LANES128(v145[-2]).n128_u8;
+          v145 += 4;
+          vst4q_f32((float*)(v149 + 112), v629);
+          (*(void (**)(__int64))(*(_QWORD*)v148 + 64LL))(v148),
+              v129 = COERCE_AS(__typeof__(v129),
+                               PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v130 = COERCE_AS(__typeof__(v130),
+                               PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v131 = COERCE_AS(__typeof__(v131),
+                               PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v133 = COERCE_AS(__typeof__(v133),
+                               PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v134 = COERCE_AS(__typeof__(v134),
+                               PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v135 = COERCE_AS(__typeof__(v135),
+                               PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v24 = COERCE_AS(__typeof__(v24),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v25 = COERCE_AS(__typeof__(v25),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v26 = COERCE_AS(__typeof__(v26),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v28 = COERCE_AS(__typeof__(v28),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v29 = COERCE_AS(__typeof__(v29),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v382 = COERCE_AS(__typeof__(v382),
+                               PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+              v388 = COERCE_AS(__typeof__(v388),
+                               PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+              v40 = COERCE_AS(__typeof__(v40),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v41 = COERCE_AS(__typeof__(v41),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v42 = COERCE_AS(__typeof__(v42),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v44 = COERCE_AS(__typeof__(v44),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v45 = COERCE_AS(__typeof__(v45),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v53 = COERCE_AS(__typeof__(v53),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v54 = COERCE_AS(__typeof__(v54),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v55 = COERCE_AS(__typeof__(v55),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v57 = COERCE_AS(__typeof__(v57),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v58 = COERCE_AS(__typeof__(v58),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v66 = COERCE_AS(__typeof__(v66),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v67 = COERCE_AS(__typeof__(v67),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v68 = COERCE_AS(__typeof__(v68),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v70 = COERCE_AS(__typeof__(v70),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v71 = COERCE_AS(__typeof__(v71),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v79 = COERCE_AS(__typeof__(v79),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v80 = COERCE_AS(__typeof__(v80),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v81 = COERCE_AS(__typeof__(v81),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v83 = COERCE_AS(__typeof__(v83),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v84 = COERCE_AS(__typeof__(v84),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v92 = COERCE_AS(__typeof__(v92),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v93 = COERCE_AS(__typeof__(v93),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v94 = COERCE_AS(__typeof__(v94),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v96 = COERCE_AS(__typeof__(v96),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v97 = COERCE_AS(__typeof__(v97),
+                              PSEUDO_REGISTER(float, "s1", "=w"));
+          ++v144;
+          v143 += 56;
+        } while (v144 < *(int*)(v4 + 232));
+      LABEL_139:
+        v150 = *(_QWORD*)(*(_QWORD*)(v4 + 648) +
+                          8LL * *(int*)(*(_QWORD*)(v4 + 648) + 224LL) + 208);
+        v151 = (*(__int64 (**)(__int64))(*(_QWORD*)v150 + 56LL))(v150),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+        v628 = v600_.v600;
+        vst4q_f32((float*)v151, v600_.v600);
+        v630 = v600_.v601;
+        vst4q_f32((float*)(v151 + 64), v600_.v601);
+        v627 = v630;
+        v631 = v600_.v602;
+        vst4q_f32((float*)(v151 + 128), v600_.v602);
+        v626 = v631;
+        v632 = v600_.v603;
+        vst4q_f32((float*)(v151 + 192), v600_.v603);
+        v625 = v632;
+        vst4q_f32((float*)(v151 + 256), v600_.v604);
+        v152 = 280;
+        if (v119[248] != 0) {
+          v152 = 244;
+        }
+        v153 = *(float*)&v119[v152];
+        if (v153 <= 0x0.0p+0f) {
+          v154 = 0x1.3880000000000p+13f;
+        }
+        else {
+          v154 = 0x1.0000000000000p+0f / v153;
+        }
+        *(float*)(v151 + 320) = v154;
+        *(_DWORD*)(v151 + 332) = 0;
+        *(_QWORD*)(v151 + 324) = 0;
+        v155 = *(_QWORD*)(v4 + 8);
+        v156 = *(_QWORD*)(v155 + 16616);
+        v157 = *(_QWORD*)(v155 + 16632);
+        if (v156 != 0) {
+          v157 = v156;
+        }
+        *(float*)(v151 + 336) =
+            0x1.0000000000000p+0f /
+            floorf(*(float*)(v157 + 20) * (float)*(int*)(v157 + 16));
+        v158 = *(_QWORD*)(v4 + 8);
+        v159 = *(_QWORD*)(v158 + 16616);
+        v160 = *(_QWORD*)(v158 + 16632);
+        if (v159 != 0) {
+          v160 = v159;
+        }
+        *(float*)(v151 + 340) =
+            0x1.0000000000000p+0f /
+            floorf(*(float*)(v160 + 24) * (float)*(int*)(v160 + 16));
+        v161 = *(_QWORD*)(v4 + 8);
+        v162 = *(_QWORD*)(v161 + 16616);
+        v163 = *(_QWORD*)(v161 + 16632);
+        if (v162 != 0) {
+          v163 = v162;
+        }
+        *(float*)(v151 + 344) =
+            0x1.0000000000000p+0f /
+            floorf(*(float*)(v163 + 28) * (float)*(int*)(v163 + 16));
+        v164 = *(_QWORD*)(v4 + 8);
+        v165 = *(_QWORD*)(v164 + 16616);
+        v166 = *(_QWORD*)(v164 + 16632);
+        if (v165 != 0) {
+          v166 = v165;
+        }
+        *(float*)(v151 + 348) =
+            0x1.0000000000000p+0f /
+            floorf(*(float*)(v166 + 32) * (float)*(int*)(v166 + 16));
+        v167 = 360;
+        if (v119[328] != 0) {
+          v167 = 324;
+        }
+        *(float*)(v151 + 352) = -*(float*)&v119[v167];
+        v168 = 440;
+        if (v119[408] != 0) {
+          v168 = 404;
+        }
+        *(float*)(v151 + 356) = -*(float*)&v119[v168];
+        v169 = 520;
+        if (v119[488] != 0) {
+          v169 = 484;
+        }
+        *(float*)(v151 + 360) = -*(float*)&v119[v169];
+        v170 = 600;
+        if (v119[568] != 0) {
+          v170 = 564;
+        }
+        *(float*)(v151 + 364) = -*(float*)&v119[v170];
+        v171 = 840;
+        if (v119[808] != 0) {
+          v171 = 804;
+        }
+        *(_DWORD*)(v151 + 368) = *(_DWORD*)&v119[v171];
+        v172 = 920;
+        if (v119[888] != 0) {
+          v172 = 884;
+        }
+        *(_DWORD*)(v151 + 372) = *(_DWORD*)&v119[v172];
+        v173 = 1000;
+        if (v119[968] != 0) {
+          v173 = 964;
+        }
+        *(_DWORD*)(v151 + 376) = *(_DWORD*)&v119[v173];
+        v174 = 1080;
+        if (v119[1048] != 0) {
+          v174 = 1044;
+        }
+        *(_DWORD*)(v151 + 380) = *(_DWORD*)&v119[v174];
+        v175 = *(int8x16_t*)(v4 + 240);
+        *(_QWORD*)(v151 + 384) = LANES128(v175).n128_u64[0];
+        *(_QWORD*)(v151 + 392) =
+            LANES128_OF(vextq_s8(v175, v175, 8u)).n128_u64[0];
+        v176 = *(int8x16_t*)(v4 + 256);
+        *(_QWORD*)(v151 + 400) = LANES128(v176).n128_u64[0];
+        *(_QWORD*)(v151 + 408) =
+            LANES128_OF(vextq_s8(v176, v176, 8u)).n128_u64[0];
+        v177 = *(int8x16_t*)(v4 + 272);
+        *(_QWORD*)(v151 + 416) = LANES128(v177).n128_u64[0];
+        *(_QWORD*)(v151 + 424) =
+            LANES128_OF(vextq_s8(v177, v177, 8u)).n128_u64[0];
+        v178 = *(int8x16_t*)(v4 + 288);
+        *(float*)(v151 + 448) =
+            vmuls_lane_f32(LANES128(v175).n128_f32[3], v175, 3);
+        *(float*)(v151 + 452) =
+            vmuls_lane_f32(LANES128(v176).n128_f32[3], v176, 3);
+        *(float*)(v151 + 456) =
+            vmuls_lane_f32(LANES128(v177).n128_f32[3], v177, 3);
+        *(_QWORD*)(v151 + 432) = LANES128(v178).n128_u64[0];
+        *(_QWORD*)(v151 + 440) =
+            LANES128_OF(vextq_s8(v178, v178, 8u)).n128_u64[0];
+        *(float*)(v151 + 460) =
+            vmuls_lane_f32(LANES128(v178).n128_f32[3], v178, 3);
+        (*(void (**)(__int64))(*(_QWORD*)v150 + 64LL))(v150),
+            v129 = COERCE_AS(__typeof__(v129),
+                             PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v130 = COERCE_AS(__typeof__(v130),
+                             PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v131 = COERCE_AS(__typeof__(v131),
+                             PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v133 = COERCE_AS(__typeof__(v133),
+                             PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v134 = COERCE_AS(__typeof__(v134),
+                             PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v135 = COERCE_AS(__typeof__(v135),
+                             PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v24 =
+                COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v25 =
+                COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v26 =
+                COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v28 =
+                COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+            v29 =
+                COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+            v382 = COERCE_AS(__typeof__(v382),
+                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v388 = COERCE_AS(__typeof__(v388),
+                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v40 =
+                COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v41 =
+                COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v42 =
+                COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v44 =
+                COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+            v45 =
+                COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+            v53 =
+                COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v54 =
+                COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v55 =
+                COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v57 =
+                COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+            v58 =
+                COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+            v66 =
+                COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v67 =
+                COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v68 =
+                COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v70 =
+                COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+            v71 =
+                COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+            v79 =
+                COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v80 =
+                COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v81 =
+                COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v83 =
+                COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+            v84 =
+                COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+            v92 =
+                COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v93 =
+                COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v94 =
+                COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v96 =
+                COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+            v97 =
+                COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+        v179 = *(_QWORD*)(*(_QWORD*)(v4 + 648) +
+                          8LL * *(int*)(*(_QWORD*)(v4 + 648) + 280LL) + 264);
+        v180 = (*(__int64 (**)(__int64))(*(_QWORD*)v179 + 56LL))(v179),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+        vst4q_f32((float*)v180, v628);
+        vst4q_f32((float*)(v180 + 64), v627);
+        vst4q_f32((float*)(v180 + 128), v626);
+        vst4q_f32((float*)(v180 + 192), v625);
+        v181 = 280;
+        if (v119[248] != 0) {
+          v181 = 244;
+        }
+        v182 = *(float*)&v119[v181];
+        if (v182 <= 0x0.0p+0f) {
+          v183 = 0x1.3880000000000p+13f;
+        }
+        else {
+          v183 = 0x1.0000000000000p+0f / v182;
+        }
+        *(float*)(v180 + 320) = v183;
+        *(_DWORD*)(v180 + 332) = 0;
+        *(_QWORD*)(v180 + 324) = 0;
+        v184 = *(_QWORD*)(v4 + 8);
+        v185 = *(_QWORD*)(v184 + 16616);
+        v186 = *(_QWORD*)(v184 + 16632);
+        if (v185 != 0) {
+          v186 = v185;
+        }
+        *(float*)(v180 + 336) =
+            0x1.0000000000000p+0f /
+            floorf(*(float*)(v186 + 20) * (float)*(int*)(v186 + 16));
+        v187 = *(_QWORD*)(v4 + 8);
+        v188 = *(_QWORD*)(v187 + 16616);
+        v189 = *(_QWORD*)(v187 + 16632);
+        if (v188 != 0) {
+          v189 = v188;
+        }
+        *(float*)(v180 + 340) =
+            0x1.0000000000000p+0f /
+            floorf(*(float*)(v189 + 24) * (float)*(int*)(v189 + 16));
+        v190 = *(_QWORD*)(v4 + 8);
+        v191 = *(_QWORD*)(v190 + 16616);
+        v192 = *(_QWORD*)(v190 + 16632);
+        if (v191 != 0) {
+          v192 = v191;
+        }
+        *(float*)(v180 + 344) =
+            0x1.0000000000000p+0f /
+            floorf(*(float*)(v192 + 28) * (float)*(int*)(v192 + 16));
+        v193 = *(_QWORD*)(v4 + 8);
+        v194 = *(_QWORD*)(v193 + 16616);
+        v195 = *(_QWORD*)(v193 + 16632);
+        if (v194 != 0) {
+          v195 = v194;
+        }
+        *(float*)(v180 + 348) =
+            0x1.0000000000000p+0f /
+            floorf(*(float*)(v195 + 32) * (float)*(int*)(v195 + 16));
+        v196 = 360;
+        if (v119[328] != 0) {
+          v196 = 324;
+        }
+        *(float*)(v180 + 352) = -*(float*)&v119[v196];
+        v197 = 440;
+        if (v119[408] != 0) {
+          v197 = 404;
+        }
+        *(float*)(v180 + 356) = -*(float*)&v119[v197];
+        v198 = 680;
+        if (v119[648] != 0) {
+          v198 = 644;
+        }
+        *(float*)(v180 + 360) = -*(float*)&v119[v198];
+        v199 = 760;
+        if (v119[728] != 0) {
+          v199 = 724;
+        }
+        *(float*)(v180 + 364) = -*(float*)&v119[v199];
+        v200 = 840;
+        if (v119[808] != 0) {
+          v200 = 804;
+        }
+        *(_DWORD*)(v180 + 368) = *(_DWORD*)&v119[v200];
+        v201 = 920;
+        if (v119[888] != 0) {
+          v201 = 884;
+        }
+        *(_DWORD*)(v180 + 372) = *(_DWORD*)&v119[v201];
+        v202 = 1000;
+        if (v119[968] != 0) {
+          v202 = 964;
+        }
+        *(_DWORD*)(v180 + 376) = *(_DWORD*)&v119[v202];
+        v203 = 1080;
+        if (v119[1048] != 0) {
+          v203 = 1044;
+        }
+        *(_DWORD*)(v180 + 380) = *(_DWORD*)&v119[v203];
+        v204 = *(int8x16_t*)(v4 + 240);
+        *(_QWORD*)(v180 + 384) = LANES128(v204).n128_u64[0];
+        *(_QWORD*)(v180 + 392) =
+            LANES128_OF(vextq_s8(v204, v204, 8u)).n128_u64[0];
+        v205 = *(int8x16_t*)(v4 + 256);
+        *(_QWORD*)(v180 + 400) = LANES128(v205).n128_u64[0];
+        *(_QWORD*)(v180 + 408) =
+            LANES128_OF(vextq_s8(v205, v205, 8u)).n128_u64[0];
+        v206 = *(int8x16_t*)(v4 + 272);
+        *(_QWORD*)(v180 + 416) = LANES128(v206).n128_u64[0];
+        *(_QWORD*)(v180 + 424) =
+            LANES128_OF(vextq_s8(v206, v206, 8u)).n128_u64[0];
+        v207 = *(int8x16_t*)(v4 + 288);
+        *(float*)(v180 + 448) =
+            vmuls_lane_f32(LANES128(v204).n128_f32[3], v204, 3);
+        *(float*)(v180 + 452) =
+            vmuls_lane_f32(LANES128(v205).n128_f32[3], v205, 3);
+        *(float*)(v180 + 456) =
+            vmuls_lane_f32(LANES128(v206).n128_f32[3], v206, 3);
+        *(_QWORD*)(v180 + 432) = LANES128(v207).n128_u64[0];
+        *(_QWORD*)(v180 + 440) =
+            LANES128_OF(vextq_s8(v207, v207, 8u)).n128_u64[0];
+        *(float*)(v180 + 460) =
+            vmuls_lane_f32(LANES128(v207).n128_f32[3], v207, 3);
+        (*(void (**)(__int64))(*(_QWORD*)v179 + 64LL))(v179),
+            v129 = COERCE_AS(__typeof__(v129),
+                             PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v130 = COERCE_AS(__typeof__(v130),
+                             PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v131 = COERCE_AS(__typeof__(v131),
+                             PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v133 = COERCE_AS(__typeof__(v133),
+                             PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v134 = COERCE_AS(__typeof__(v134),
+                             PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v135 = COERCE_AS(__typeof__(v135),
+                             PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v24 =
+                COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v25 =
+                COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v26 =
+                COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v28 =
+                COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+            v29 =
+                COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+            v382 = COERCE_AS(__typeof__(v382),
+                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v388 = COERCE_AS(__typeof__(v388),
+                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v40 =
+                COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v41 =
+                COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v42 =
+                COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v44 =
+                COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+            v45 =
+                COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+            v53 =
+                COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v54 =
+                COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v55 =
+                COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v57 =
+                COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+            v58 =
+                COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+            v66 =
+                COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v67 =
+                COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v68 =
+                COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v70 =
+                COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+            v71 =
+                COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+            v79 =
+                COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v80 =
+                COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v81 =
+                COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v83 =
+                COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+            v84 =
+                COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+            v92 =
+                COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v93 =
+                COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v94 =
+                COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v96 =
+                COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+            v97 =
+                COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+        v208 = *(_QWORD*)(*(_QWORD*)(v4 + 24) + 288LL);
+        v209 = *(_DWORD*)(v4 + 696);
+        v222 = v209 < -1;
+        v210 = ((_BYTE)v209 + 1) & 1;
+        if (v222) {
+          v210 = -v210;
+        }
+        *(_DWORD*)(v4 + 696) = v210;
+        v557 = *(_QWORD*)(v4 + 8LL * v210 + 680);
+        v558 = v208;
+        v211 = (*(__int64 (**)(__int64))(*(_QWORD*)v557 + 56LL))(v557),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+        v212 = *(_QWORD*)(v4 + 1400);
+        if (*(int*)(v212 + 32) >= 1) {
+          v213 = v211 + 768;
+          v214 = v211 + 832;
+          v215 = v211;
+          v216 = 0;
+          v575 = v211 + 128;
+          v571 = v211 + 256;
+          v568 = v211 + 384;
+          v565 = v211 + 512;
+          v561 = v211 + 640;
+          v217 = (__int64*)(v558 + 760);
+          do {
+            v218 = *(_DWORD*)(v212 + 4 * v216);
+            if (v218 == -1) {
+              break;
+            }
+            v219 = *v217;
+            if (*v217 == 0) {
+              goto LABEL_212;
+            }
+            v220 = v558 + 760;
+            do {
+              v221 = *(_DWORD*)(v219 + 32);
+              v222 = v221 < v218;
+              if (v221 >= v218) {
+                v223 = 0;
+              }
+              else {
+                v223 = 8;
+              }
+              if (!v222) {
+                v220 = v219;
+              }
+              v219 = *(_QWORD*)(v219 + v223);
+            } while (v219 != 0);
+            if ((__int64*)v220 != v217 &&
+                v218 >= (signed __int32)*(_DWORD*)(v220 + 32)) {
+              v224 = *(_QWORD*)(v220 + 40);
+            }
+            else {
+            LABEL_212:
+              v224 = 0;
+            }
+            v225 = *(_QWORD*)(v558 + 792);
+            v226 = v558 + 792;
+            do {
+              v227 = *(_DWORD*)(v225 + 32);
+              v228 = v227 < v218;
+              if (v227 >= v218) {
+                v229 = 0;
+              }
+              else {
+                v229 = 8;
+              }
+              if (!v228) {
+                v226 = v225;
+              }
+              v225 = *(_QWORD*)(v225 + v229);
+            } while (v225 != 0);
+            v230 = *(_DWORD*)(v224 + 8);
+            v231 = *(_QWORD*)(v226 + 40);
+            v232 = v215 + 16 * v216;
+            v233 = 0x3F80000000000000LL;
+            *(_QWORD*)v232 = *(_QWORD*)v224;
+            *(_DWORD*)(v232 + 8) = v230;
+            *(float*)(v232 + 12) = (float)v218;
+            LANES128(v234).n128_u64[0] = *(_QWORD*)(v224 + 24);
+            v235 = (_QWORD*)(v575 + 16 * v216);
+            LANES128(v234).n128_u64[1] = *(unsigned int*)(v224 + 32);
+            v236 = *(_DWORD*)(v224 + 76);
+            v238 = vmaxq_f32(v234, COERCE_AS(float32x4_t, GameData_1a83670));
+            if (v236 == 2) {
+              v233 = 0;
+            }
+            v239 = v236 == 1 ? 0x0.0p+0f : 0x1.0000000000000p+0f;
+            LANES128(v237).n128_u64[1] = *(unsigned int*)(v224 + 44);
+            LANES128(v237).n128_u64[0] = *(_QWORD*)(v224 + 36);
+            v240 = vmaxq_f32(v237, COERCE_AS(float32x4_t, GameData_1a83670));
+            v241 = (float*)(v571 + 16 * v216);
+            LANES128(v242).n128_u64[1] = *(unsigned int*)(v224 + 20);
+            LANES128(v243).n128_u64[0] = 0x3F0000003F000000LL;
+            LANES128(v243).n128_u64[1] = 0x3F0000003F000000LL;
+            LANES128(v242).n128_u64[0] = *(_QWORD*)(v224 + 12);
+            v244 = vmulq_f32(v242, v243);
+            *v235 = LANES128(v244).n128_u64[0];
+            v235[1] = v233 | LANES128(v244).n128_u32[2];
+            *v241 = 0x1.0000000000000p+0f / LANES128(v238).n128_f32[0];
+            v241[1] = 0x1.0000000000000p+0f / LANES128(v238).n128_f32[1];
+            v241[2] = 0x1.0000000000000p+0f / LANES128(v238).n128_f32[2];
+            v241[3] = v239;
+            v245 = v568 + 16 * v216;
+            *(_DWORD*)(v245 + 12) = 0;
+            *(float*)v245 = 0x1.0000000000000p+0f / LANES128(v240).n128_f32[0];
+            *(float*)(v245 + 4) =
+                0x1.0000000000000p+0f / LANES128(v240).n128_f32[1];
+            *(float*)(v245 + 8) =
+                0x1.0000000000000p+0f / LANES128(v240).n128_f32[2];
+            LANES128(v240).n128_u32[0] = *(_DWORD*)(v224 + 48);
+            v246 = *(_DWORD*)(v224 + 60);
+            v247 = v565 + 16 * v216;
+            *(_QWORD*)v247 = *(_QWORD*)(v224 + 52);
+            *(_DWORD*)(v247 + 8) = v246;
+            *(float*)(v247 + 12) = (float)LANES128(v240).n128_i32[0];
+            v248 = *(_DWORD*)(v224 + 72);
+            v249 = v561 + 16 * v216;
+            *(_QWORD*)v249 = *(_QWORD*)(v224 + 64);
+            *(_DWORD*)(v249 + 12) = 0;
+            *(_DWORD*)(v249 + 8) = v248;
+            (*(void (**)(_QWORD))(**(_QWORD**)(v231 + 816) + 40LL))(
+                *(_QWORD*)(v231 + 816)),
+                v129 = COERCE_AS(__typeof__(v129),
+                                 PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v130 = COERCE_AS(__typeof__(v130),
+                                 PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v131 = COERCE_AS(__typeof__(v131),
+                                 PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v133 = COERCE_AS(__typeof__(v133),
+                                 PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v134 = COERCE_AS(__typeof__(v134),
+                                 PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v135 = COERCE_AS(__typeof__(v135),
+                                 PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v24 = COERCE_AS(__typeof__(v24),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v25 = COERCE_AS(__typeof__(v25),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v26 = COERCE_AS(__typeof__(v26),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v28 = COERCE_AS(__typeof__(v28),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v29 = COERCE_AS(__typeof__(v29),
+                                PSEUDO_REGISTER(float, "s1", "=w")),
+                v382 =
+                    COERCE_AS(__typeof__(v382),
+                              PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+                v388 =
+                    COERCE_AS(__typeof__(v388),
+                              PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+                v40 = COERCE_AS(__typeof__(v40),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v41 = COERCE_AS(__typeof__(v41),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v42 = COERCE_AS(__typeof__(v42),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v44 = COERCE_AS(__typeof__(v44),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v45 = COERCE_AS(__typeof__(v45),
+                                PSEUDO_REGISTER(float, "s1", "=w")),
+                v53 = COERCE_AS(__typeof__(v53),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v54 = COERCE_AS(__typeof__(v54),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v55 = COERCE_AS(__typeof__(v55),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v57 = COERCE_AS(__typeof__(v57),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v58 = COERCE_AS(__typeof__(v58),
+                                PSEUDO_REGISTER(float, "s1", "=w")),
+                v66 = COERCE_AS(__typeof__(v66),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v67 = COERCE_AS(__typeof__(v67),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v68 = COERCE_AS(__typeof__(v68),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v70 = COERCE_AS(__typeof__(v70),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v71 = COERCE_AS(__typeof__(v71),
+                                PSEUDO_REGISTER(float, "s1", "=w")),
+                v79 = COERCE_AS(__typeof__(v79),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v80 = COERCE_AS(__typeof__(v80),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v81 = COERCE_AS(__typeof__(v81),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v83 = COERCE_AS(__typeof__(v83),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v84 = COERCE_AS(__typeof__(v84),
+                                PSEUDO_REGISTER(float, "s1", "=w")),
+                v92 = COERCE_AS(__typeof__(v92),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v93 = COERCE_AS(__typeof__(v93),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v94 = COERCE_AS(__typeof__(v94),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v96 = COERCE_AS(__typeof__(v96),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v97 = COERCE_AS(__typeof__(v97),
+                                PSEUDO_REGISTER(float, "s1", "=w"));
+            v250 = (__int64 (**)(__int64))GameData_212e4d8[0],
+            v129 = COERCE_AS(__typeof__(v129),
+                             PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v130 = COERCE_AS(__typeof__(v130),
+                             PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v131 = COERCE_AS(__typeof__(v131),
+                             PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v133 = COERCE_AS(__typeof__(v133),
+                             PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v134 = COERCE_AS(__typeof__(v134),
+                             PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v135 = COERCE_AS(__typeof__(v135),
+                             PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v24 =
+                COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v25 =
+                COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v26 =
+                COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v28 =
+                COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+            v29 =
+                COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+            v382 = COERCE_AS(__typeof__(v382),
+                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v388 = COERCE_AS(__typeof__(v388),
+                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v40 =
+                COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v41 =
+                COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v42 =
+                COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v44 =
+                COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+            v45 =
+                COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+            v53 =
+                COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v54 =
+                COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v55 =
+                COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v57 =
+                COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+            v58 =
+                COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+            v66 =
+                COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v67 =
+                COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v68 =
+                COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v70 =
+                COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+            v71 =
+                COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+            v79 =
+                COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v80 =
+                COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v81 =
+                COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v83 =
+                COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+            v84 =
+                COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+            v92 =
+                COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v93 =
+                COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v94 =
+                COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v96 =
+                COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+            v97 =
+                COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+            *(_QWORD*)(v213 +
+                       8 * v216) =
+                (*(__int64 (**)(__int64))GameData_212e4d8[0])(
+                    *(_QWORD*)(*(_QWORD*)(v4 + 8) + 256LL) + 8LL),
+                           v129 =
+                               COERCE_AS(__typeof__(v129),
+                                         PSEUDO_REGISTER(__n128, "v1", "=w")),
+                           v130 =
+                               COERCE_AS(__typeof__(v130),
+                                         PSEUDO_REGISTER(__n128, "v2", "=w")),
+                           v131 =
+                               COERCE_AS(__typeof__(v131),
+                                         PSEUDO_REGISTER(__n128, "v3", "=w")),
+                           v133 =
+                               COERCE_AS(__typeof__(v133),
+                                         PSEUDO_REGISTER(__n128, "v1", "=w")),
+                           v134 =
+                               COERCE_AS(__typeof__(v134),
+                                         PSEUDO_REGISTER(__n128, "v2", "=w")),
+                           v135 =
+                               COERCE_AS(__typeof__(v135),
+                                         PSEUDO_REGISTER(__n128, "v3", "=w")),
+                           v24 = COERCE_AS(__typeof__(v24),
+                                           PSEUDO_REGISTER(__n128, "v1", "=w")),
+                           v25 = COERCE_AS(__typeof__(v25),
+                                           PSEUDO_REGISTER(__n128, "v2", "=w")),
+                           v26 = COERCE_AS(__typeof__(v26),
+                                           PSEUDO_REGISTER(__n128, "v3", "=w")),
+                           v28 = COERCE_AS(__typeof__(v28),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                           v29 = COERCE_AS(__typeof__(v29),
+                                           PSEUDO_REGISTER(float, "s1", "=w")),
+                           v382 = COERCE_AS(
+                               __typeof__(v382),
+                               PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+                           v388 = COERCE_AS(
+                               __typeof__(v388),
+                               PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+                           v40 = COERCE_AS(__typeof__(v40),
+                                           PSEUDO_REGISTER(__n128, "v1", "=w")),
+                           v41 = COERCE_AS(__typeof__(v41),
+                                           PSEUDO_REGISTER(__n128, "v2", "=w")),
+                           v42 = COERCE_AS(__typeof__(v42),
+                                           PSEUDO_REGISTER(__n128, "v3", "=w")),
+                           v44 = COERCE_AS(__typeof__(v44),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                           v45 = COERCE_AS(__typeof__(v45),
+                                           PSEUDO_REGISTER(float, "s1", "=w")),
+                           v53 = COERCE_AS(__typeof__(v53),
+                                           PSEUDO_REGISTER(__n128, "v1", "=w")),
+                           v54 = COERCE_AS(__typeof__(v54),
+                                           PSEUDO_REGISTER(__n128, "v2", "=w")),
+                           v55 = COERCE_AS(__typeof__(v55),
+                                           PSEUDO_REGISTER(__n128, "v3", "=w")),
+                           v57 = COERCE_AS(__typeof__(v57),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                           v58 = COERCE_AS(__typeof__(v58),
+                                           PSEUDO_REGISTER(float, "s1", "=w")),
+                           v66 = COERCE_AS(__typeof__(v66),
+                                           PSEUDO_REGISTER(__n128, "v1", "=w")),
+                           v67 = COERCE_AS(__typeof__(v67),
+                                           PSEUDO_REGISTER(__n128, "v2", "=w")),
+                           v68 = COERCE_AS(__typeof__(v68),
+                                           PSEUDO_REGISTER(__n128, "v3", "=w")),
+                           v70 = COERCE_AS(__typeof__(v70),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                           v71 = COERCE_AS(__typeof__(v71),
+                                           PSEUDO_REGISTER(float, "s1", "=w")),
+                           v79 = COERCE_AS(__typeof__(v79),
+                                           PSEUDO_REGISTER(__n128, "v1", "=w")),
+                           v80 = COERCE_AS(__typeof__(v80),
+                                           PSEUDO_REGISTER(__n128, "v2", "=w")),
+                           v81 = COERCE_AS(__typeof__(v81),
+                                           PSEUDO_REGISTER(__n128, "v3", "=w")),
+                           v83 = COERCE_AS(__typeof__(v83),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                           v84 = COERCE_AS(__typeof__(v84),
+                                           PSEUDO_REGISTER(float, "s1", "=w")),
+                           v92 = COERCE_AS(__typeof__(v92),
+                                           PSEUDO_REGISTER(__n128, "v1", "=w")),
+                           v93 = COERCE_AS(__typeof__(v93),
+                                           PSEUDO_REGISTER(__n128, "v2", "=w")),
+                           v94 = COERCE_AS(__typeof__(v94),
+                                           PSEUDO_REGISTER(__n128, "v3", "=w")),
+                           v96 = COERCE_AS(__typeof__(v96),
+                                           PSEUDO_REGISTER(float, "s0", "=w")),
+                           v97 = COERCE_AS(__typeof__(v97),
+                                           PSEUDO_REGISTER(float, "s1", "=w"));
+            (*(void (**)(_QWORD))(**(_QWORD**)(v231 + 808) + 40LL))(
+                *(_QWORD*)(v231 + 808)),
+                v129 = COERCE_AS(__typeof__(v129),
+                                 PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v130 = COERCE_AS(__typeof__(v130),
+                                 PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v131 = COERCE_AS(__typeof__(v131),
+                                 PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v133 = COERCE_AS(__typeof__(v133),
+                                 PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v134 = COERCE_AS(__typeof__(v134),
+                                 PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v135 = COERCE_AS(__typeof__(v135),
+                                 PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v24 = COERCE_AS(__typeof__(v24),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v25 = COERCE_AS(__typeof__(v25),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v26 = COERCE_AS(__typeof__(v26),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v28 = COERCE_AS(__typeof__(v28),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v29 = COERCE_AS(__typeof__(v29),
+                                PSEUDO_REGISTER(float, "s1", "=w")),
+                v382 =
+                    COERCE_AS(__typeof__(v382),
+                              PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+                v388 =
+                    COERCE_AS(__typeof__(v388),
+                              PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+                v40 = COERCE_AS(__typeof__(v40),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v41 = COERCE_AS(__typeof__(v41),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v42 = COERCE_AS(__typeof__(v42),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v44 = COERCE_AS(__typeof__(v44),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v45 = COERCE_AS(__typeof__(v45),
+                                PSEUDO_REGISTER(float, "s1", "=w")),
+                v53 = COERCE_AS(__typeof__(v53),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v54 = COERCE_AS(__typeof__(v54),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v55 = COERCE_AS(__typeof__(v55),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v57 = COERCE_AS(__typeof__(v57),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v58 = COERCE_AS(__typeof__(v58),
+                                PSEUDO_REGISTER(float, "s1", "=w")),
+                v66 = COERCE_AS(__typeof__(v66),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v67 = COERCE_AS(__typeof__(v67),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v68 = COERCE_AS(__typeof__(v68),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v70 = COERCE_AS(__typeof__(v70),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v71 = COERCE_AS(__typeof__(v71),
+                                PSEUDO_REGISTER(float, "s1", "=w")),
+                v79 = COERCE_AS(__typeof__(v79),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v80 = COERCE_AS(__typeof__(v80),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v81 = COERCE_AS(__typeof__(v81),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v83 = COERCE_AS(__typeof__(v83),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v84 = COERCE_AS(__typeof__(v84),
+                                PSEUDO_REGISTER(float, "s1", "=w")),
+                v92 = COERCE_AS(__typeof__(v92),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v93 = COERCE_AS(__typeof__(v93),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v94 = COERCE_AS(__typeof__(v94),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v96 = COERCE_AS(__typeof__(v96),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v97 = COERCE_AS(__typeof__(v97),
+                                PSEUDO_REGISTER(float, "s1", "=w"));
+            *(_QWORD*)(v214 + 8 * v216++) =
+                (*v250)(*(_QWORD*)(*(_QWORD*)(v4 + 8) + 256LL) + 8LL);
+            v212 = *(_QWORD*)(v4 + 1400);
+          } while (v216 < *(int*)(v212 + 32));
+        }
+        (*(void (**)(__int64))(*(_QWORD*)v557 + 64LL))(v557),
+            v129 = COERCE_AS(__typeof__(v129),
+                             PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v130 = COERCE_AS(__typeof__(v130),
+                             PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v131 = COERCE_AS(__typeof__(v131),
+                             PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v133 = COERCE_AS(__typeof__(v133),
+                             PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v134 = COERCE_AS(__typeof__(v134),
+                             PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v135 = COERCE_AS(__typeof__(v135),
+                             PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v24 =
+                COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v25 =
+                COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v26 =
+                COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v28 =
+                COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+            v29 =
+                COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+            v382 = COERCE_AS(__typeof__(v382),
+                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v388 = COERCE_AS(__typeof__(v388),
+                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v40 =
+                COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v41 =
+                COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v42 =
+                COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v44 =
+                COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+            v45 =
+                COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+            v53 =
+                COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v54 =
+                COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v55 =
+                COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v57 =
+                COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+            v58 =
+                COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+            v66 =
+                COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v67 =
+                COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v68 =
+                COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v70 =
+                COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+            v71 =
+                COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+            v79 =
+                COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v80 =
+                COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v81 =
+                COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v83 =
+                COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+            v84 =
+                COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+            v92 =
+                COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v93 =
+                COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v94 =
+                COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v96 =
+                COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+            v97 =
+                COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+        v251 = *(_QWORD*)(v4 + 1400);
+        v252 = *(_QWORD*)(v4 + 1304);
+        v253 = *(_QWORD*)(v4 + 1296);
+        v254 = *(int*)(v251 + 32);
+        v255 = v252 - v253;
+        v256 = 0xAAAAAAAAAAAAAAABLL * ((v252 - v253) >> 3);
+        v257 = v254 - v256;
+        if (v254 <= v256) {
+          if (v254 >= v256) {
+            goto LABEL_245;
+          }
+          v266 = v253 + 24LL * (int)v254;
+        }
+        else {
+          v258 = *(_QWORD*)(v4 + 1312);
+          if (0xAAAAAAAAAAAAAAABLL * ((v258 - v252) >> 3) < v257) {
+            if ((v254 & 0x80000000) != 0) {
+              GameRoutine_bbd670(),
+                  v129 = COERCE_AS(__typeof__(v129),
+                                   PSEUDO_REGISTER(__n128, "v1", "=w")),
+                  v130 = COERCE_AS(__typeof__(v130),
+                                   PSEUDO_REGISTER(__n128, "v2", "=w")),
+                  v131 = COERCE_AS(__typeof__(v131),
+                                   PSEUDO_REGISTER(__n128, "v3", "=w")),
+                  v133 = COERCE_AS(__typeof__(v133),
+                                   PSEUDO_REGISTER(__n128, "v1", "=w")),
+                  v134 = COERCE_AS(__typeof__(v134),
+                                   PSEUDO_REGISTER(__n128, "v2", "=w")),
+                  v135 = COERCE_AS(__typeof__(v135),
+                                   PSEUDO_REGISTER(__n128, "v3", "=w")),
+                  v24 = COERCE_AS(__typeof__(v24),
+                                  PSEUDO_REGISTER(__n128, "v1", "=w")),
+                  v25 = COERCE_AS(__typeof__(v25),
+                                  PSEUDO_REGISTER(__n128, "v2", "=w")),
+                  v26 = COERCE_AS(__typeof__(v26),
+                                  PSEUDO_REGISTER(__n128, "v3", "=w")),
+                  v28 = COERCE_AS(__typeof__(v28),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v29 = COERCE_AS(__typeof__(v29),
+                                  PSEUDO_REGISTER(float, "s1", "=w")),
+                  v382 = COERCE_AS(
+                      __typeof__(v382),
+                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+                  v388 = COERCE_AS(
+                      __typeof__(v388),
+                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+                  v40 = COERCE_AS(__typeof__(v40),
+                                  PSEUDO_REGISTER(__n128, "v1", "=w")),
+                  v41 = COERCE_AS(__typeof__(v41),
+                                  PSEUDO_REGISTER(__n128, "v2", "=w")),
+                  v42 = COERCE_AS(__typeof__(v42),
+                                  PSEUDO_REGISTER(__n128, "v3", "=w")),
+                  v44 = COERCE_AS(__typeof__(v44),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v45 = COERCE_AS(__typeof__(v45),
+                                  PSEUDO_REGISTER(float, "s1", "=w")),
+                  v53 = COERCE_AS(__typeof__(v53),
+                                  PSEUDO_REGISTER(__n128, "v1", "=w")),
+                  v54 = COERCE_AS(__typeof__(v54),
+                                  PSEUDO_REGISTER(__n128, "v2", "=w")),
+                  v55 = COERCE_AS(__typeof__(v55),
+                                  PSEUDO_REGISTER(__n128, "v3", "=w")),
+                  v57 = COERCE_AS(__typeof__(v57),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v58 = COERCE_AS(__typeof__(v58),
+                                  PSEUDO_REGISTER(float, "s1", "=w")),
+                  v66 = COERCE_AS(__typeof__(v66),
+                                  PSEUDO_REGISTER(__n128, "v1", "=w")),
+                  v67 = COERCE_AS(__typeof__(v67),
+                                  PSEUDO_REGISTER(__n128, "v2", "=w")),
+                  v68 = COERCE_AS(__typeof__(v68),
+                                  PSEUDO_REGISTER(__n128, "v3", "=w")),
+                  v70 = COERCE_AS(__typeof__(v70),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v71 = COERCE_AS(__typeof__(v71),
+                                  PSEUDO_REGISTER(float, "s1", "=w")),
+                  v79 = COERCE_AS(__typeof__(v79),
+                                  PSEUDO_REGISTER(__n128, "v1", "=w")),
+                  v80 = COERCE_AS(__typeof__(v80),
+                                  PSEUDO_REGISTER(__n128, "v2", "=w")),
+                  v81 = COERCE_AS(__typeof__(v81),
+                                  PSEUDO_REGISTER(__n128, "v3", "=w")),
+                  v83 = COERCE_AS(__typeof__(v83),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v84 = COERCE_AS(__typeof__(v84),
+                                  PSEUDO_REGISTER(float, "s1", "=w")),
+                  v92 = COERCE_AS(__typeof__(v92),
+                                  PSEUDO_REGISTER(__n128, "v1", "=w")),
+                  v93 = COERCE_AS(__typeof__(v93),
+                                  PSEUDO_REGISTER(__n128, "v2", "=w")),
+                  v94 = COERCE_AS(__typeof__(v94),
+                                  PSEUDO_REGISTER(__n128, "v3", "=w")),
+                  v96 = COERCE_AS(__typeof__(v96),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v97 = COERCE_AS(__typeof__(v97),
+                                  PSEUDO_REGISTER(float, "s1", "=w"));
+            }
+            v259 = 0xAAAAAAAAAAAAAAABLL * ((v258 - v253) >> 3);
+            if (2 * v259 > v254) {
+              v254 = 2 * v259;
+            }
+            if (v259 >= 0x555555555555555LL) {
+              v254 = 0xAAAAAAAAAAAAAAALL;
+            }
+            if (v254 > 0xAAAAAAAAAAAAAAALL) {
+              goto LABEL_528;
+            }
+            v260 = 3 * v254;
+            v261 = fw_memory_HeapManager_Allocate_alt1(
+                *(_QWORD*)fw_memory_g_heap_manager_ptr, 24 * v254, 16, 0),
+            v129 = COERCE_AS(__typeof__(v129),
+                             PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v130 = COERCE_AS(__typeof__(v130),
+                             PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v131 = COERCE_AS(__typeof__(v131),
+                             PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v133 = COERCE_AS(__typeof__(v133),
+                             PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v134 = COERCE_AS(__typeof__(v134),
+                             PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v135 = COERCE_AS(__typeof__(v135),
+                             PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v24 =
+                COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v25 =
+                COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v26 =
+                COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v28 =
+                COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+            v29 =
+                COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+            v382 = COERCE_AS(__typeof__(v382),
+                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v388 = COERCE_AS(__typeof__(v388),
+                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v40 =
+                COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v41 =
+                COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v42 =
+                COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v44 =
+                COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+            v45 =
+                COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+            v53 =
+                COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v54 =
+                COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v55 =
+                COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v57 =
+                COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+            v58 =
+                COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+            v66 =
+                COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v67 =
+                COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v68 =
+                COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v70 =
+                COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+            v71 =
+                COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+            v79 =
+                COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v80 =
+                COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v81 =
+                COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v83 =
+                COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+            v84 =
+                COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+            v92 =
+                COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v93 =
+                COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v94 =
+                COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v96 =
+                COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+            v97 =
+                COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+            v262 = v261 + v255;
+            v263 = v261;
+            v264 = v261 + 8 * v260;
+            memset_alt1(v261 + v255, 0, 24 * ((24 * v257 - 24) / 0x18) + 24),
+                v129 = COERCE_AS(__typeof__(v129),
+                                 PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v130 = COERCE_AS(__typeof__(v130),
+                                 PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v131 = COERCE_AS(__typeof__(v131),
+                                 PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v133 = COERCE_AS(__typeof__(v133),
+                                 PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v134 = COERCE_AS(__typeof__(v134),
+                                 PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v135 = COERCE_AS(__typeof__(v135),
+                                 PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v24 = COERCE_AS(__typeof__(v24),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v25 = COERCE_AS(__typeof__(v25),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v26 = COERCE_AS(__typeof__(v26),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v28 = COERCE_AS(__typeof__(v28),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v29 = COERCE_AS(__typeof__(v29),
+                                PSEUDO_REGISTER(float, "s1", "=w")),
+                v382 =
+                    COERCE_AS(__typeof__(v382),
+                              PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+                v388 =
+                    COERCE_AS(__typeof__(v388),
+                              PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+                v40 = COERCE_AS(__typeof__(v40),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v41 = COERCE_AS(__typeof__(v41),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v42 = COERCE_AS(__typeof__(v42),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v44 = COERCE_AS(__typeof__(v44),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v45 = COERCE_AS(__typeof__(v45),
+                                PSEUDO_REGISTER(float, "s1", "=w")),
+                v53 = COERCE_AS(__typeof__(v53),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v54 = COERCE_AS(__typeof__(v54),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v55 = COERCE_AS(__typeof__(v55),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v57 = COERCE_AS(__typeof__(v57),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v58 = COERCE_AS(__typeof__(v58),
+                                PSEUDO_REGISTER(float, "s1", "=w")),
+                v66 = COERCE_AS(__typeof__(v66),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v67 = COERCE_AS(__typeof__(v67),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v68 = COERCE_AS(__typeof__(v68),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v70 = COERCE_AS(__typeof__(v70),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v71 = COERCE_AS(__typeof__(v71),
+                                PSEUDO_REGISTER(float, "s1", "=w")),
+                v79 = COERCE_AS(__typeof__(v79),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v80 = COERCE_AS(__typeof__(v80),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v81 = COERCE_AS(__typeof__(v81),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v83 = COERCE_AS(__typeof__(v83),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v84 = COERCE_AS(__typeof__(v84),
+                                PSEUDO_REGISTER(float, "s1", "=w")),
+                v92 = COERCE_AS(__typeof__(v92),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v93 = COERCE_AS(__typeof__(v93),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v94 = COERCE_AS(__typeof__(v94),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v96 = COERCE_AS(__typeof__(v96),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v97 = COERCE_AS(__typeof__(v97),
+                                PSEUDO_REGISTER(float, "s1", "=w"));
+            memcpy(v263, v253, v255),
+                v129 = COERCE_AS(__typeof__(v129),
+                                 PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v130 = COERCE_AS(__typeof__(v130),
+                                 PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v131 = COERCE_AS(__typeof__(v131),
+                                 PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v133 = COERCE_AS(__typeof__(v133),
+                                 PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v134 = COERCE_AS(__typeof__(v134),
+                                 PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v135 = COERCE_AS(__typeof__(v135),
+                                 PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v24 = COERCE_AS(__typeof__(v24),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v25 = COERCE_AS(__typeof__(v25),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v26 = COERCE_AS(__typeof__(v26),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v28 = COERCE_AS(__typeof__(v28),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v29 = COERCE_AS(__typeof__(v29),
+                                PSEUDO_REGISTER(float, "s1", "=w")),
+                v382 =
+                    COERCE_AS(__typeof__(v382),
+                              PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+                v388 =
+                    COERCE_AS(__typeof__(v388),
+                              PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+                v40 = COERCE_AS(__typeof__(v40),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v41 = COERCE_AS(__typeof__(v41),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v42 = COERCE_AS(__typeof__(v42),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v44 = COERCE_AS(__typeof__(v44),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v45 = COERCE_AS(__typeof__(v45),
+                                PSEUDO_REGISTER(float, "s1", "=w")),
+                v53 = COERCE_AS(__typeof__(v53),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v54 = COERCE_AS(__typeof__(v54),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v55 = COERCE_AS(__typeof__(v55),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v57 = COERCE_AS(__typeof__(v57),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v58 = COERCE_AS(__typeof__(v58),
+                                PSEUDO_REGISTER(float, "s1", "=w")),
+                v66 = COERCE_AS(__typeof__(v66),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v67 = COERCE_AS(__typeof__(v67),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v68 = COERCE_AS(__typeof__(v68),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v70 = COERCE_AS(__typeof__(v70),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v71 = COERCE_AS(__typeof__(v71),
+                                PSEUDO_REGISTER(float, "s1", "=w")),
+                v79 = COERCE_AS(__typeof__(v79),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v80 = COERCE_AS(__typeof__(v80),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v81 = COERCE_AS(__typeof__(v81),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v83 = COERCE_AS(__typeof__(v83),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v84 = COERCE_AS(__typeof__(v84),
+                                PSEUDO_REGISTER(float, "s1", "=w")),
+                v92 = COERCE_AS(__typeof__(v92),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v93 = COERCE_AS(__typeof__(v93),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v94 = COERCE_AS(__typeof__(v94),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v96 = COERCE_AS(__typeof__(v96),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v97 = COERCE_AS(__typeof__(v97),
+                                PSEUDO_REGISTER(float, "s1", "=w"));
+            *(_QWORD*)(v4 + 1296) = v263;
+            *(_QWORD*)(v4 + 1304) = v262 + 24 * ((24 * v257 - 24) / 0x18) + 24;
+            *(_QWORD*)(v4 + 1312) = v264;
+            if (v253 != 0) {
+              v265 = 128;
+              if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) ==
+                  0) {
+                v265 = 56;
+              }
+              nn_mem_StandardAllocator_Free_alt1(
+                  *(_QWORD*)fw_memory_g_heap_manager_ptr + v265, v253),
+                  v129 = COERCE_AS(__typeof__(v129),
+                                   PSEUDO_REGISTER(__n128, "v1", "=w")),
+                  v130 = COERCE_AS(__typeof__(v130),
+                                   PSEUDO_REGISTER(__n128, "v2", "=w")),
+                  v131 = COERCE_AS(__typeof__(v131),
+                                   PSEUDO_REGISTER(__n128, "v3", "=w")),
+                  v133 = COERCE_AS(__typeof__(v133),
+                                   PSEUDO_REGISTER(__n128, "v1", "=w")),
+                  v134 = COERCE_AS(__typeof__(v134),
+                                   PSEUDO_REGISTER(__n128, "v2", "=w")),
+                  v135 = COERCE_AS(__typeof__(v135),
+                                   PSEUDO_REGISTER(__n128, "v3", "=w")),
+                  v24 = COERCE_AS(__typeof__(v24),
+                                  PSEUDO_REGISTER(__n128, "v1", "=w")),
+                  v25 = COERCE_AS(__typeof__(v25),
+                                  PSEUDO_REGISTER(__n128, "v2", "=w")),
+                  v26 = COERCE_AS(__typeof__(v26),
+                                  PSEUDO_REGISTER(__n128, "v3", "=w")),
+                  v28 = COERCE_AS(__typeof__(v28),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v29 = COERCE_AS(__typeof__(v29),
+                                  PSEUDO_REGISTER(float, "s1", "=w")),
+                  v382 = COERCE_AS(
+                      __typeof__(v382),
+                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+                  v388 = COERCE_AS(
+                      __typeof__(v388),
+                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+                  v40 = COERCE_AS(__typeof__(v40),
+                                  PSEUDO_REGISTER(__n128, "v1", "=w")),
+                  v41 = COERCE_AS(__typeof__(v41),
+                                  PSEUDO_REGISTER(__n128, "v2", "=w")),
+                  v42 = COERCE_AS(__typeof__(v42),
+                                  PSEUDO_REGISTER(__n128, "v3", "=w")),
+                  v44 = COERCE_AS(__typeof__(v44),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v45 = COERCE_AS(__typeof__(v45),
+                                  PSEUDO_REGISTER(float, "s1", "=w")),
+                  v53 = COERCE_AS(__typeof__(v53),
+                                  PSEUDO_REGISTER(__n128, "v1", "=w")),
+                  v54 = COERCE_AS(__typeof__(v54),
+                                  PSEUDO_REGISTER(__n128, "v2", "=w")),
+                  v55 = COERCE_AS(__typeof__(v55),
+                                  PSEUDO_REGISTER(__n128, "v3", "=w")),
+                  v57 = COERCE_AS(__typeof__(v57),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v58 = COERCE_AS(__typeof__(v58),
+                                  PSEUDO_REGISTER(float, "s1", "=w")),
+                  v66 = COERCE_AS(__typeof__(v66),
+                                  PSEUDO_REGISTER(__n128, "v1", "=w")),
+                  v67 = COERCE_AS(__typeof__(v67),
+                                  PSEUDO_REGISTER(__n128, "v2", "=w")),
+                  v68 = COERCE_AS(__typeof__(v68),
+                                  PSEUDO_REGISTER(__n128, "v3", "=w")),
+                  v70 = COERCE_AS(__typeof__(v70),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v71 = COERCE_AS(__typeof__(v71),
+                                  PSEUDO_REGISTER(float, "s1", "=w")),
+                  v79 = COERCE_AS(__typeof__(v79),
+                                  PSEUDO_REGISTER(__n128, "v1", "=w")),
+                  v80 = COERCE_AS(__typeof__(v80),
+                                  PSEUDO_REGISTER(__n128, "v2", "=w")),
+                  v81 = COERCE_AS(__typeof__(v81),
+                                  PSEUDO_REGISTER(__n128, "v3", "=w")),
+                  v83 = COERCE_AS(__typeof__(v83),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v84 = COERCE_AS(__typeof__(v84),
+                                  PSEUDO_REGISTER(float, "s1", "=w")),
+                  v92 = COERCE_AS(__typeof__(v92),
+                                  PSEUDO_REGISTER(__n128, "v1", "=w")),
+                  v93 = COERCE_AS(__typeof__(v93),
+                                  PSEUDO_REGISTER(__n128, "v2", "=w")),
+                  v94 = COERCE_AS(__typeof__(v94),
+                                  PSEUDO_REGISTER(__n128, "v3", "=w")),
+                  v96 = COERCE_AS(__typeof__(v96),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v97 = COERCE_AS(__typeof__(v97),
+                                  PSEUDO_REGISTER(float, "s1", "=w"));
+            }
+            v251 = *(_QWORD*)(v4 + 1400);
+          LABEL_245:
+            if (*(int*)(v251 + 32) >= 1) {
+              LANES128(v267).n128_u64[0] = 0x3F0000003F000000LL;
+              LANES128(v267).n128_u64[1] = 0x3F0000003F000000LL;
+              v268 = 0;
+              do {
+                v269 = *(_DWORD*)(v251 + 4 * v268);
+                if (v269 == -1) {
+                  break;
+                }
+                v270 = *(_QWORD*)(v558 + 760);
+                v271 = v558 + 760;
+                do {
+                  v272 = *(_DWORD*)(v270 + 32);
+                  v273 = v272 < v269;
+                  if (v272 >= v269) {
+                    v274 = 0;
+                  }
+                  else {
+                    v274 = 8;
+                  }
+                  if (!v273) {
+                    v271 = v270;
+                  }
+                  v270 = *(_QWORD*)(v270 + v274);
+                } while (v270 != 0);
+                v275 = *(_QWORD*)(v271 + 40);
+                v276 = 3 * v268++;
+                LANES128(v277).n128_u64[0] = *(_QWORD*)v275;
+                LANES128(v277).n128_u64[1] = *(unsigned int*)(v275 + 8);
+                LANES128(v278).n128_u64[0] = *(_QWORD*)(v275 + 12);
+                v279 = *(_QWORD*)(v4 + 1296) + 8 * v276;
+                LANES128(v278).n128_u64[1] = *(unsigned int*)(v275 + 20);
+                LANES128(v280).n128_u64[0] = *(_QWORD*)(v275 + 24);
+                LANES128(v280).n128_u64[1] = *(unsigned int*)(v275 + 32);
+                v281 = vsubq_f32(vsubq_f32(v277, vmulq_f32(v278, v267)), v280);
+                *(_QWORD*)v279 = LANES128(v281).n128_u64[0];
+                *(_DWORD*)(v279 + 8) = LANES128(v281).n128_u32[2];
+                LANES128(v281).n128_u64[0] = *(_QWORD*)(v275 + 12);
+                v282 = *(_QWORD*)(v4 + 1296) + 8 * v276;
+                LANES128(v281).n128_u64[1] = *(unsigned int*)(v275 + 20);
+                v283 = vaddq_f32(v277, vmulq_f32(v281, v267));
+                LANES128(v281).n128_u64[0] = *(_QWORD*)(v275 + 36);
+                LANES128(v281).n128_u64[1] = *(unsigned int*)(v275 + 44);
+                v284 = vaddq_f32(v283, v281);
+                *(_QWORD*)(v282 + 12) = LANES128(v284).n128_u64[0];
+                *(_DWORD*)(v282 + 20) = LANES128(v284).n128_u32[2];
+                v251 = *(_QWORD*)(v4 + 1400);
+              } while (v268 < *(int*)(v251 + 32));
+            }
+            v285 = *(_QWORD*)(v4 + 64);
+            v286 = *(_QWORD*)(v4 + 72);
+            if (v286 != 0) {
+              atomic_fetch_add_explicit((atomic_ullong* volatile)(v286 + 8), 1u,
+                                        memory_order_relaxed);
+            }
+            v287 = *(_DWORD*)(v4 + 204);
+            v288 = *(__int64**)(v4 + 1624);
+            LANES128(v600_.v600.val[0]).n128_u64[0] =
+                *(_QWORD*)(v4 + 24) + 264LL;
+            LANES128(v600_.v600.val[0]).n128_u64[1] = v285;
+            LANES128(v600_.v600.val[1]).n128_u32[1] = v287;
+            LANES128(v600_.v600.val[1]).n128_u32[0] = 256;
+            gfxa_18e0a40(v288, (float*)&v600_.v600),
+                v129 = COERCE_AS(__typeof__(v129),
+                                 PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v130 = COERCE_AS(__typeof__(v130),
+                                 PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v131 = COERCE_AS(__typeof__(v131),
+                                 PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v133 = COERCE_AS(__typeof__(v133),
+                                 PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v134 = COERCE_AS(__typeof__(v134),
+                                 PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v135 = COERCE_AS(__typeof__(v135),
+                                 PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v24 = COERCE_AS(__typeof__(v24),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v25 = COERCE_AS(__typeof__(v25),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v26 = COERCE_AS(__typeof__(v26),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v28 = COERCE_AS(__typeof__(v28),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v29 = COERCE_AS(__typeof__(v29),
+                                PSEUDO_REGISTER(float, "s1", "=w")),
+                v382 =
+                    COERCE_AS(__typeof__(v382),
+                              PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+                v388 =
+                    COERCE_AS(__typeof__(v388),
+                              PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+                v40 = COERCE_AS(__typeof__(v40),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v41 = COERCE_AS(__typeof__(v41),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v42 = COERCE_AS(__typeof__(v42),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v44 = COERCE_AS(__typeof__(v44),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v45 = COERCE_AS(__typeof__(v45),
+                                PSEUDO_REGISTER(float, "s1", "=w")),
+                v53 = COERCE_AS(__typeof__(v53),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v54 = COERCE_AS(__typeof__(v54),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v55 = COERCE_AS(__typeof__(v55),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v57 = COERCE_AS(__typeof__(v57),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v58 = COERCE_AS(__typeof__(v58),
+                                PSEUDO_REGISTER(float, "s1", "=w")),
+                v66 = COERCE_AS(__typeof__(v66),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v67 = COERCE_AS(__typeof__(v67),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v68 = COERCE_AS(__typeof__(v68),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v70 = COERCE_AS(__typeof__(v70),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v71 = COERCE_AS(__typeof__(v71),
+                                PSEUDO_REGISTER(float, "s1", "=w")),
+                v79 = COERCE_AS(__typeof__(v79),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v80 = COERCE_AS(__typeof__(v80),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v81 = COERCE_AS(__typeof__(v81),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v83 = COERCE_AS(__typeof__(v83),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v84 = COERCE_AS(__typeof__(v84),
+                                PSEUDO_REGISTER(float, "s1", "=w")),
+                v92 = COERCE_AS(__typeof__(v92),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v93 = COERCE_AS(__typeof__(v93),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v94 = COERCE_AS(__typeof__(v94),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v96 = COERCE_AS(__typeof__(v96),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v97 = COERCE_AS(__typeof__(v97),
+                                PSEUDO_REGISTER(float, "s1", "=w"));
+            if (v286 != 0 &&
+                atomic_fetch_add((atomic_ullong* volatile)(v286 + 8),
+                                 0xFFFFFFFFFFFFFFFFLL) == 0) {
+              (*(void (**)(__int64))(*(_QWORD*)v286 + 16LL))(v286),
+                  v129 = COERCE_AS(__typeof__(v129),
+                                   PSEUDO_REGISTER(__n128, "v1", "=w")),
+                  v130 = COERCE_AS(__typeof__(v130),
+                                   PSEUDO_REGISTER(__n128, "v2", "=w")),
+                  v131 = COERCE_AS(__typeof__(v131),
+                                   PSEUDO_REGISTER(__n128, "v3", "=w")),
+                  v133 = COERCE_AS(__typeof__(v133),
+                                   PSEUDO_REGISTER(__n128, "v1", "=w")),
+                  v134 = COERCE_AS(__typeof__(v134),
+                                   PSEUDO_REGISTER(__n128, "v2", "=w")),
+                  v135 = COERCE_AS(__typeof__(v135),
+                                   PSEUDO_REGISTER(__n128, "v3", "=w")),
+                  v24 = COERCE_AS(__typeof__(v24),
+                                  PSEUDO_REGISTER(__n128, "v1", "=w")),
+                  v25 = COERCE_AS(__typeof__(v25),
+                                  PSEUDO_REGISTER(__n128, "v2", "=w")),
+                  v26 = COERCE_AS(__typeof__(v26),
+                                  PSEUDO_REGISTER(__n128, "v3", "=w")),
+                  v28 = COERCE_AS(__typeof__(v28),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v29 = COERCE_AS(__typeof__(v29),
+                                  PSEUDO_REGISTER(float, "s1", "=w")),
+                  v382 = COERCE_AS(
+                      __typeof__(v382),
+                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+                  v388 = COERCE_AS(
+                      __typeof__(v388),
+                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+                  v40 = COERCE_AS(__typeof__(v40),
+                                  PSEUDO_REGISTER(__n128, "v1", "=w")),
+                  v41 = COERCE_AS(__typeof__(v41),
+                                  PSEUDO_REGISTER(__n128, "v2", "=w")),
+                  v42 = COERCE_AS(__typeof__(v42),
+                                  PSEUDO_REGISTER(__n128, "v3", "=w")),
+                  v44 = COERCE_AS(__typeof__(v44),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v45 = COERCE_AS(__typeof__(v45),
+                                  PSEUDO_REGISTER(float, "s1", "=w")),
+                  v53 = COERCE_AS(__typeof__(v53),
+                                  PSEUDO_REGISTER(__n128, "v1", "=w")),
+                  v54 = COERCE_AS(__typeof__(v54),
+                                  PSEUDO_REGISTER(__n128, "v2", "=w")),
+                  v55 = COERCE_AS(__typeof__(v55),
+                                  PSEUDO_REGISTER(__n128, "v3", "=w")),
+                  v57 = COERCE_AS(__typeof__(v57),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v58 = COERCE_AS(__typeof__(v58),
+                                  PSEUDO_REGISTER(float, "s1", "=w")),
+                  v66 = COERCE_AS(__typeof__(v66),
+                                  PSEUDO_REGISTER(__n128, "v1", "=w")),
+                  v67 = COERCE_AS(__typeof__(v67),
+                                  PSEUDO_REGISTER(__n128, "v2", "=w")),
+                  v68 = COERCE_AS(__typeof__(v68),
+                                  PSEUDO_REGISTER(__n128, "v3", "=w")),
+                  v70 = COERCE_AS(__typeof__(v70),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v71 = COERCE_AS(__typeof__(v71),
+                                  PSEUDO_REGISTER(float, "s1", "=w")),
+                  v79 = COERCE_AS(__typeof__(v79),
+                                  PSEUDO_REGISTER(__n128, "v1", "=w")),
+                  v80 = COERCE_AS(__typeof__(v80),
+                                  PSEUDO_REGISTER(__n128, "v2", "=w")),
+                  v81 = COERCE_AS(__typeof__(v81),
+                                  PSEUDO_REGISTER(__n128, "v3", "=w")),
+                  v83 = COERCE_AS(__typeof__(v83),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v84 = COERCE_AS(__typeof__(v84),
+                                  PSEUDO_REGISTER(float, "s1", "=w")),
+                  v92 = COERCE_AS(__typeof__(v92),
+                                  PSEUDO_REGISTER(__n128, "v1", "=w")),
+                  v93 = COERCE_AS(__typeof__(v93),
+                                  PSEUDO_REGISTER(__n128, "v2", "=w")),
+                  v94 = COERCE_AS(__typeof__(v94),
+                                  PSEUDO_REGISTER(__n128, "v3", "=w")),
+                  v96 = COERCE_AS(__typeof__(v96),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v97 = COERCE_AS(__typeof__(v97),
+                                  PSEUDO_REGISTER(float, "s1", "=w"));
+              std___1___shared_weak_count___release_weak_alt1(v286),
+                  v129 = COERCE_AS(__typeof__(v129),
+                                   PSEUDO_REGISTER(__n128, "v1", "=w")),
+                  v130 = COERCE_AS(__typeof__(v130),
+                                   PSEUDO_REGISTER(__n128, "v2", "=w")),
+                  v131 = COERCE_AS(__typeof__(v131),
+                                   PSEUDO_REGISTER(__n128, "v3", "=w")),
+                  v133 = COERCE_AS(__typeof__(v133),
+                                   PSEUDO_REGISTER(__n128, "v1", "=w")),
+                  v134 = COERCE_AS(__typeof__(v134),
+                                   PSEUDO_REGISTER(__n128, "v2", "=w")),
+                  v135 = COERCE_AS(__typeof__(v135),
+                                   PSEUDO_REGISTER(__n128, "v3", "=w")),
+                  v24 = COERCE_AS(__typeof__(v24),
+                                  PSEUDO_REGISTER(__n128, "v1", "=w")),
+                  v25 = COERCE_AS(__typeof__(v25),
+                                  PSEUDO_REGISTER(__n128, "v2", "=w")),
+                  v26 = COERCE_AS(__typeof__(v26),
+                                  PSEUDO_REGISTER(__n128, "v3", "=w")),
+                  v28 = COERCE_AS(__typeof__(v28),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v29 = COERCE_AS(__typeof__(v29),
+                                  PSEUDO_REGISTER(float, "s1", "=w")),
+                  v382 = COERCE_AS(
+                      __typeof__(v382),
+                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+                  v388 = COERCE_AS(
+                      __typeof__(v388),
+                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+                  v40 = COERCE_AS(__typeof__(v40),
+                                  PSEUDO_REGISTER(__n128, "v1", "=w")),
+                  v41 = COERCE_AS(__typeof__(v41),
+                                  PSEUDO_REGISTER(__n128, "v2", "=w")),
+                  v42 = COERCE_AS(__typeof__(v42),
+                                  PSEUDO_REGISTER(__n128, "v3", "=w")),
+                  v44 = COERCE_AS(__typeof__(v44),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v45 = COERCE_AS(__typeof__(v45),
+                                  PSEUDO_REGISTER(float, "s1", "=w")),
+                  v53 = COERCE_AS(__typeof__(v53),
+                                  PSEUDO_REGISTER(__n128, "v1", "=w")),
+                  v54 = COERCE_AS(__typeof__(v54),
+                                  PSEUDO_REGISTER(__n128, "v2", "=w")),
+                  v55 = COERCE_AS(__typeof__(v55),
+                                  PSEUDO_REGISTER(__n128, "v3", "=w")),
+                  v57 = COERCE_AS(__typeof__(v57),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v58 = COERCE_AS(__typeof__(v58),
+                                  PSEUDO_REGISTER(float, "s1", "=w")),
+                  v66 = COERCE_AS(__typeof__(v66),
+                                  PSEUDO_REGISTER(__n128, "v1", "=w")),
+                  v67 = COERCE_AS(__typeof__(v67),
+                                  PSEUDO_REGISTER(__n128, "v2", "=w")),
+                  v68 = COERCE_AS(__typeof__(v68),
+                                  PSEUDO_REGISTER(__n128, "v3", "=w")),
+                  v70 = COERCE_AS(__typeof__(v70),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v71 = COERCE_AS(__typeof__(v71),
+                                  PSEUDO_REGISTER(float, "s1", "=w")),
+                  v79 = COERCE_AS(__typeof__(v79),
+                                  PSEUDO_REGISTER(__n128, "v1", "=w")),
+                  v80 = COERCE_AS(__typeof__(v80),
+                                  PSEUDO_REGISTER(__n128, "v2", "=w")),
+                  v81 = COERCE_AS(__typeof__(v81),
+                                  PSEUDO_REGISTER(__n128, "v3", "=w")),
+                  v83 = COERCE_AS(__typeof__(v83),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v84 = COERCE_AS(__typeof__(v84),
+                                  PSEUDO_REGISTER(float, "s1", "=w")),
+                  v92 = COERCE_AS(__typeof__(v92),
+                                  PSEUDO_REGISTER(__n128, "v1", "=w")),
+                  v93 = COERCE_AS(__typeof__(v93),
+                                  PSEUDO_REGISTER(__n128, "v2", "=w")),
+                  v94 = COERCE_AS(__typeof__(v94),
+                                  PSEUDO_REGISTER(__n128, "v3", "=w")),
+                  v96 = COERCE_AS(__typeof__(v96),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v97 = COERCE_AS(__typeof__(v97),
+                                  PSEUDO_REGISTER(float, "s1", "=w"));
+            }
+            v289 = *(_DWORD*)(v4 + 808);
+            v222 = v289 < -1;
+            v290 = ((_BYTE)v289 + 1) & 1;
+            if (v222) {
+              v290 = -v290;
+            }
+            *(_DWORD*)(v4 + 808) = v290;
+            v291 = *(_QWORD*)(v4 + 8LL * v290 + 792);
+            v292 = (*(__int64 (**)(__int64))(*(_QWORD*)v291 + 56LL))(v291),
+            v129 = COERCE_AS(__typeof__(v129),
+                             PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v130 = COERCE_AS(__typeof__(v130),
+                             PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v131 = COERCE_AS(__typeof__(v131),
+                             PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v133 = COERCE_AS(__typeof__(v133),
+                             PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v134 = COERCE_AS(__typeof__(v134),
+                             PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v135 = COERCE_AS(__typeof__(v135),
+                             PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v24 =
+                COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v25 =
+                COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v26 =
+                COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v28 =
+                COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+            v29 =
+                COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+            v382 = COERCE_AS(__typeof__(v382),
+                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v388 = COERCE_AS(__typeof__(v388),
+                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v40 =
+                COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v41 =
+                COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v42 =
+                COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v44 =
+                COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+            v45 =
+                COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+            v53 =
+                COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v54 =
+                COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v55 =
+                COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v57 =
+                COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+            v58 =
+                COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+            v66 =
+                COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v67 =
+                COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v68 =
+                COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v70 =
+                COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+            v71 =
+                COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+            v79 =
+                COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v80 =
+                COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v81 =
+                COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v83 =
+                COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+            v84 =
+                COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+            v92 =
+                COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v93 =
+                COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v94 =
+                COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v96 =
+                COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+            v97 =
+                COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+            v293 = *(_QWORD**)(v4 + 1624);
+            *(_DWORD*)(v4 + 1640) = 0;
+            if (v293[1] != *v293) {
+              v294 = 1;
+              v295 = 0;
+              do {
+                v296 = *(int*)(v4 + 1640);
+                if ((_DWORD)v296 == 256) {
+                  break;
+                }
+                v297 = v296 + 1;
+                v298 = (_QWORD*)(v292 + 16 * v296);
+                *(_DWORD*)(v4 + 1640) = v297;
+                v299 = *v293 + 80 * v295;
+                v301 = *(_QWORD*)(v299 + 16);
+                v300 = *(_QWORD*)(v299 + 24);
+                *v298 = v301;
+                v298[1] = v300;
+                v295 = v294++;
+              } while (0xCCCCCCCCCCCCCCCDLL *
+                           ((__int64)(v293[1] - *v293) >> 4) >
+                       v295);
+            }
+            (*(void (**)(__int64))(*(_QWORD*)v291 + 64LL))(v291),
+                v129 = COERCE_AS(__typeof__(v129),
+                                 PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v130 = COERCE_AS(__typeof__(v130),
+                                 PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v131 = COERCE_AS(__typeof__(v131),
+                                 PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v133 = COERCE_AS(__typeof__(v133),
+                                 PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v134 = COERCE_AS(__typeof__(v134),
+                                 PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v135 = COERCE_AS(__typeof__(v135),
+                                 PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v24 = COERCE_AS(__typeof__(v24),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v25 = COERCE_AS(__typeof__(v25),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v26 = COERCE_AS(__typeof__(v26),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v28 = COERCE_AS(__typeof__(v28),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v29 = COERCE_AS(__typeof__(v29),
+                                PSEUDO_REGISTER(float, "s1", "=w")),
+                v382 =
+                    COERCE_AS(__typeof__(v382),
+                              PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+                v388 =
+                    COERCE_AS(__typeof__(v388),
+                              PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+                v40 = COERCE_AS(__typeof__(v40),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v41 = COERCE_AS(__typeof__(v41),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v42 = COERCE_AS(__typeof__(v42),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v44 = COERCE_AS(__typeof__(v44),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v45 = COERCE_AS(__typeof__(v45),
+                                PSEUDO_REGISTER(float, "s1", "=w")),
+                v53 = COERCE_AS(__typeof__(v53),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v54 = COERCE_AS(__typeof__(v54),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v55 = COERCE_AS(__typeof__(v55),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v57 = COERCE_AS(__typeof__(v57),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v58 = COERCE_AS(__typeof__(v58),
+                                PSEUDO_REGISTER(float, "s1", "=w")),
+                v66 = COERCE_AS(__typeof__(v66),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v67 = COERCE_AS(__typeof__(v67),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v68 = COERCE_AS(__typeof__(v68),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v70 = COERCE_AS(__typeof__(v70),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v71 = COERCE_AS(__typeof__(v71),
+                                PSEUDO_REGISTER(float, "s1", "=w")),
+                v79 = COERCE_AS(__typeof__(v79),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v80 = COERCE_AS(__typeof__(v80),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v81 = COERCE_AS(__typeof__(v81),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v83 = COERCE_AS(__typeof__(v83),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v84 = COERCE_AS(__typeof__(v84),
+                                PSEUDO_REGISTER(float, "s1", "=w")),
+                v92 = COERCE_AS(__typeof__(v92),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v93 = COERCE_AS(__typeof__(v93),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v94 = COERCE_AS(__typeof__(v94),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v96 = COERCE_AS(__typeof__(v96),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v97 = COERCE_AS(__typeof__(v97),
+                                PSEUDO_REGISTER(float, "s1", "=w"));
+            v302 = *(_DWORD**)(v4 + 1520);
+            v303 = v302[30];
+            v222 = v303 < -1;
+            v304 = ((_BYTE)v303 + 1) & 1;
+            if (v222) {
+              v304 = -v304;
+            }
+            v302[30] = v304;
+            v305 = *(_QWORD*)&v302[2 * v304 + 26];
+            v306 = (*(__int64 (**)(__int64))(*(_QWORD*)v305 + 56LL))(v305),
+            v129 = COERCE_AS(__typeof__(v129),
+                             PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v130 = COERCE_AS(__typeof__(v130),
+                             PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v131 = COERCE_AS(__typeof__(v131),
+                             PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v133 = COERCE_AS(__typeof__(v133),
+                             PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v134 = COERCE_AS(__typeof__(v134),
+                             PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v135 = COERCE_AS(__typeof__(v135),
+                             PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v24 =
+                COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v25 =
+                COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v26 =
+                COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v28 =
+                COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+            v29 =
+                COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+            v382 = COERCE_AS(__typeof__(v382),
+                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v388 = COERCE_AS(__typeof__(v388),
+                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v40 =
+                COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v41 =
+                COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v42 =
+                COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v44 =
+                COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+            v45 =
+                COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+            v53 =
+                COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v54 =
+                COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v55 =
+                COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v57 =
+                COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+            v58 =
+                COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+            v66 =
+                COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v67 =
+                COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v68 =
+                COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v70 =
+                COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+            v71 =
+                COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+            v79 =
+                COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v80 =
+                COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v81 =
+                COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v83 =
+                COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+            v84 =
+                COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+            v92 =
+                COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v93 =
+                COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v94 =
+                COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v96 =
+                COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+            v97 =
+                COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+            *(_QWORD*)v306 = 0x3FD625C13A83126FLL;
+            *(_QWORD*)(v306 + 8) = 1098907648;
+            v307 = (int*)(*(_QWORD*)v302 + 13304LL);
+            if (*(_BYTE*)(*(_QWORD*)v302 + 16700LL) != 0) {
+              v307 = (int*)(*(_QWORD*)(*(_QWORD*)v302 + 16672LL) + 24LL);
+            }
+            v310 = v307;
+            v308 = *v307;
+            v309 = v310[1];
+            v311 = v308 + 31;
+            v222 = v308 < -31;
+            v312 = v308 + 62;
+            if (!v222) {
+              v312 = v311;
+            }
+            v313 = v309 + 31;
+            v222 = v309 < -31;
+            v314 = v309 + 62;
+            if (!v222) {
+              v314 = v313;
+            }
+            *(_DWORD*)(v306 + 16) = v312 >> 5;
+            *(_DWORD*)(v306 + 20) = v314 >> 5;
+            *(_QWORD*)(v306 + 24) = 16;
+            (*(void (**)(__int64))(*(_QWORD*)v305 + 64LL))(v305),
+                v129 = COERCE_AS(__typeof__(v129),
+                                 PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v130 = COERCE_AS(__typeof__(v130),
+                                 PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v131 = COERCE_AS(__typeof__(v131),
+                                 PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v133 = COERCE_AS(__typeof__(v133),
+                                 PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v134 = COERCE_AS(__typeof__(v134),
+                                 PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v135 = COERCE_AS(__typeof__(v135),
+                                 PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v24 = COERCE_AS(__typeof__(v24),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v25 = COERCE_AS(__typeof__(v25),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v26 = COERCE_AS(__typeof__(v26),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v28 = COERCE_AS(__typeof__(v28),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v29 = COERCE_AS(__typeof__(v29),
+                                PSEUDO_REGISTER(float, "s1", "=w")),
+                v382 =
+                    COERCE_AS(__typeof__(v382),
+                              PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+                v388 =
+                    COERCE_AS(__typeof__(v388),
+                              PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+                v40 = COERCE_AS(__typeof__(v40),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v41 = COERCE_AS(__typeof__(v41),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v42 = COERCE_AS(__typeof__(v42),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v44 = COERCE_AS(__typeof__(v44),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v45 = COERCE_AS(__typeof__(v45),
+                                PSEUDO_REGISTER(float, "s1", "=w")),
+                v53 = COERCE_AS(__typeof__(v53),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v54 = COERCE_AS(__typeof__(v54),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v55 = COERCE_AS(__typeof__(v55),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v57 = COERCE_AS(__typeof__(v57),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v58 = COERCE_AS(__typeof__(v58),
+                                PSEUDO_REGISTER(float, "s1", "=w")),
+                v66 = COERCE_AS(__typeof__(v66),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v67 = COERCE_AS(__typeof__(v67),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v68 = COERCE_AS(__typeof__(v68),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v70 = COERCE_AS(__typeof__(v70),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v71 = COERCE_AS(__typeof__(v71),
+                                PSEUDO_REGISTER(float, "s1", "=w")),
+                v79 = COERCE_AS(__typeof__(v79),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v80 = COERCE_AS(__typeof__(v80),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v81 = COERCE_AS(__typeof__(v81),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v83 = COERCE_AS(__typeof__(v83),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v84 = COERCE_AS(__typeof__(v84),
+                                PSEUDO_REGISTER(float, "s1", "=w")),
+                v92 = COERCE_AS(__typeof__(v92),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v93 = COERCE_AS(__typeof__(v93),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v94 = COERCE_AS(__typeof__(v94),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v96 = COERCE_AS(__typeof__(v96),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v97 = COERCE_AS(__typeof__(v97),
+                                PSEUDO_REGISTER(float, "s1", "=w"));
+            v315 = *(_QWORD*)(v4 + 1488);
+            if (*(_BYTE*)(v315 + 112) == 1 && *(_BYTE*)(v315 + 113) == 1) {
+              v316 = *(_DWORD*)(v4 + 752);
+              v222 = v316 < -1;
+              v317 = ((_BYTE)v316 + 1) & 1;
+              if (v222) {
+                v317 = -v317;
+              }
+              *(_DWORD*)(v4 + 752) = v317;
+              v318 = *(_QWORD*)(*(_QWORD*)(v4 + 24) + 288LL);
+              v559 = *(_QWORD*)(v4 + 8LL * v317 + 736);
+              v319 = (*(__int64 (**)(__int64))(*(_QWORD*)v559 + 56LL))(v559),
+              v129 = COERCE_AS(__typeof__(v129),
+                               PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v130 = COERCE_AS(__typeof__(v130),
+                               PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v131 = COERCE_AS(__typeof__(v131),
+                               PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v133 = COERCE_AS(__typeof__(v133),
+                               PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v134 = COERCE_AS(__typeof__(v134),
+                               PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v135 = COERCE_AS(__typeof__(v135),
+                               PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v24 = COERCE_AS(__typeof__(v24),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v25 = COERCE_AS(__typeof__(v25),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v26 = COERCE_AS(__typeof__(v26),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v28 = COERCE_AS(__typeof__(v28),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v29 = COERCE_AS(__typeof__(v29),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v382 = COERCE_AS(__typeof__(v382),
+                               PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+              v388 = COERCE_AS(__typeof__(v388),
+                               PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+              v40 = COERCE_AS(__typeof__(v40),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v41 = COERCE_AS(__typeof__(v41),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v42 = COERCE_AS(__typeof__(v42),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v44 = COERCE_AS(__typeof__(v44),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v45 = COERCE_AS(__typeof__(v45),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v53 = COERCE_AS(__typeof__(v53),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v54 = COERCE_AS(__typeof__(v54),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v55 = COERCE_AS(__typeof__(v55),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v57 = COERCE_AS(__typeof__(v57),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v58 = COERCE_AS(__typeof__(v58),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v66 = COERCE_AS(__typeof__(v66),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v67 = COERCE_AS(__typeof__(v67),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v68 = COERCE_AS(__typeof__(v68),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v70 = COERCE_AS(__typeof__(v70),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v71 = COERCE_AS(__typeof__(v71),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v79 = COERCE_AS(__typeof__(v79),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v80 = COERCE_AS(__typeof__(v80),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v81 = COERCE_AS(__typeof__(v81),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v83 = COERCE_AS(__typeof__(v83),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v84 = COERCE_AS(__typeof__(v84),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v92 = COERCE_AS(__typeof__(v92),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v93 = COERCE_AS(__typeof__(v93),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v94 = COERCE_AS(__typeof__(v94),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v96 = COERCE_AS(__typeof__(v96),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v97 = COERCE_AS(__typeof__(v97),
+                              PSEUDO_REGISTER(float, "s1", "=w"));
+              v320 = *(_QWORD*)(v4 + 1416);
+              if (*(int*)(v320 + 32) >= 1) {
+                v321 = v319 + 768;
+                v322 = v319 + 832;
+                v323 = (__int64*)(v318 + 760);
+                v324 = v319;
+                v325 = 0;
+                v576 = v319 + 128;
+                v572 = v319 + 256;
+                v569 = v319 + 384;
+                v566 = v319 + 512;
+                v562 = v319 + 640;
+                v326 = (__int64 (**)(__int64))GameData_212e4d8[0],
+                v129 = COERCE_AS(__typeof__(v129),
+                                 PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v130 = COERCE_AS(__typeof__(v130),
+                                 PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v131 = COERCE_AS(__typeof__(v131),
+                                 PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v133 = COERCE_AS(__typeof__(v133),
+                                 PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v134 = COERCE_AS(__typeof__(v134),
+                                 PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v135 = COERCE_AS(__typeof__(v135),
+                                 PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v24 = COERCE_AS(__typeof__(v24),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v25 = COERCE_AS(__typeof__(v25),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v26 = COERCE_AS(__typeof__(v26),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v28 = COERCE_AS(__typeof__(v28),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v29 = COERCE_AS(__typeof__(v29),
+                                PSEUDO_REGISTER(float, "s1", "=w")),
+                v382 =
+                    COERCE_AS(__typeof__(v382),
+                              PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+                v388 =
+                    COERCE_AS(__typeof__(v388),
+                              PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+                v40 = COERCE_AS(__typeof__(v40),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v41 = COERCE_AS(__typeof__(v41),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v42 = COERCE_AS(__typeof__(v42),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v44 = COERCE_AS(__typeof__(v44),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v45 = COERCE_AS(__typeof__(v45),
+                                PSEUDO_REGISTER(float, "s1", "=w")),
+                v53 = COERCE_AS(__typeof__(v53),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v54 = COERCE_AS(__typeof__(v54),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v55 = COERCE_AS(__typeof__(v55),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v57 = COERCE_AS(__typeof__(v57),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v58 = COERCE_AS(__typeof__(v58),
+                                PSEUDO_REGISTER(float, "s1", "=w")),
+                v66 = COERCE_AS(__typeof__(v66),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v67 = COERCE_AS(__typeof__(v67),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v68 = COERCE_AS(__typeof__(v68),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v70 = COERCE_AS(__typeof__(v70),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v71 = COERCE_AS(__typeof__(v71),
+                                PSEUDO_REGISTER(float, "s1", "=w")),
+                v79 = COERCE_AS(__typeof__(v79),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v80 = COERCE_AS(__typeof__(v80),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v81 = COERCE_AS(__typeof__(v81),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v83 = COERCE_AS(__typeof__(v83),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v84 = COERCE_AS(__typeof__(v84),
+                                PSEUDO_REGISTER(float, "s1", "=w")),
+                v92 = COERCE_AS(__typeof__(v92),
+                                PSEUDO_REGISTER(__n128, "v1", "=w")),
+                v93 = COERCE_AS(__typeof__(v93),
+                                PSEUDO_REGISTER(__n128, "v2", "=w")),
+                v94 = COERCE_AS(__typeof__(v94),
+                                PSEUDO_REGISTER(__n128, "v3", "=w")),
+                v96 = COERCE_AS(__typeof__(v96),
+                                PSEUDO_REGISTER(float, "s0", "=w")),
+                v97 = COERCE_AS(__typeof__(v97),
+                                PSEUDO_REGISTER(float, "s1", "=w"));
+                do {
+                  v327 = *(_DWORD*)(v320 + 4 * v325);
+                  if (v327 == -1) {
+                    break;
+                  }
+                  v328 = *v323;
+                  if (*v323 == 0) {
+                    goto LABEL_292;
+                  }
+                  v329 = v318 + 760;
+                  do {
+                    v330 = *(_DWORD*)(v328 + 32);
+                    v331 = v330 < v327;
+                    if (v330 >= v327) {
+                      v332 = 0;
+                    }
+                    else {
+                      v332 = 8;
+                    }
+                    if (!v331) {
+                      v329 = v328;
+                    }
+                    v328 = *(_QWORD*)(v328 + v332);
+                  } while (v328 != 0);
+                  if ((__int64*)v329 != v323 &&
+                      v327 >= (signed __int32)*(_DWORD*)(v329 + 32)) {
+                    v333 = *(_QWORD*)(v329 + 40);
+                  }
+                  else {
+                  LABEL_292:
+                    v333 = 0;
+                  }
+                  v334 = *(_QWORD*)(v318 + 792);
+                  v335 = v318 + 792;
+                  do {
+                    v336 = *(_DWORD*)(v334 + 32);
+                    v337 = v336 < v327;
+                    if (v336 >= v327) {
+                      v338 = 0;
+                    }
+                    else {
+                      v338 = 8;
+                    }
+                    if (!v337) {
+                      v335 = v334;
+                    }
+                    v334 = *(_QWORD*)(v334 + v338);
+                  } while (v334 != 0);
+                  v339 = *(_DWORD*)(v333 + 8);
+                  v340 = *(_QWORD*)(v335 + 40);
+                  v341 = v324 + 16 * v325;
+                  v342 = 0x3F80000000000000LL;
+                  *(_QWORD*)v341 = *(_QWORD*)v333;
+                  *(_DWORD*)(v341 + 8) = v339;
+                  *(float*)(v341 + 12) = (float)v327;
+                  LANES128(v343).n128_u64[0] = *(_QWORD*)(v333 + 24);
+                  v344 = (_QWORD*)(v576 + 16 * v325);
+                  LANES128(v343).n128_u64[1] = *(unsigned int*)(v333 + 32);
+                  v345 = *(_DWORD*)(v333 + 76);
+                  v347 =
+                      vmaxq_f32(v343, COERCE_AS(float32x4_t, GameData_1a83670));
+                  if (v345 == 2) {
+                    v342 = 0;
+                  }
+                  v348 = v345 == 1 ? 0x0.0p+0f : 0x1.0000000000000p+0f;
+                  LANES128(v346).n128_u64[1] = *(unsigned int*)(v333 + 44);
+                  LANES128(v346).n128_u64[0] = *(_QWORD*)(v333 + 36);
+                  v349 =
+                      vmaxq_f32(v346, COERCE_AS(float32x4_t, GameData_1a83670));
+                  v350 = (float*)(v572 + 16 * v325);
+                  LANES128(v351).n128_u64[1] = *(unsigned int*)(v333 + 20);
+                  LANES128(v352).n128_u64[0] = 0x3F0000003F000000LL;
+                  LANES128(v352).n128_u64[1] = 0x3F0000003F000000LL;
+                  LANES128(v351).n128_u64[0] = *(_QWORD*)(v333 + 12);
+                  v353 = vmulq_f32(v351, v352);
+                  *v344 = LANES128(v353).n128_u64[0];
+                  v344[1] = v342 | LANES128(v353).n128_u32[2];
+                  *v350 = 0x1.0000000000000p+0f / LANES128(v347).n128_f32[0];
+                  v350[1] = 0x1.0000000000000p+0f / LANES128(v347).n128_f32[1];
+                  v350[2] = 0x1.0000000000000p+0f / LANES128(v347).n128_f32[2];
+                  v350[3] = v348;
+                  v354 = v569 + 16 * v325;
+                  *(_DWORD*)(v354 + 12) = 0;
+                  *(float*)v354 =
+                      0x1.0000000000000p+0f / LANES128(v349).n128_f32[0];
+                  *(float*)(v354 + 4) =
+                      0x1.0000000000000p+0f / LANES128(v349).n128_f32[1];
+                  *(float*)(v354 + 8) =
+                      0x1.0000000000000p+0f / LANES128(v349).n128_f32[2];
+                  LANES128(v349).n128_u32[0] = *(_DWORD*)(v333 + 48);
+                  v355 = *(_DWORD*)(v333 + 60);
+                  v356 = v566 + 16 * v325;
+                  *(_QWORD*)v356 = *(_QWORD*)(v333 + 52);
+                  *(_DWORD*)(v356 + 8) = v355;
+                  *(float*)(v356 + 12) = (float)LANES128(v349).n128_i32[0];
+                  v357 = *(_DWORD*)(v333 + 72);
+                  v358 = v562 + 16 * v325;
+                  *(_QWORD*)v358 = *(_QWORD*)(v333 + 64);
+                  *(_DWORD*)(v358 + 12) = 0;
+                  *(_DWORD*)(v358 + 8) = v357;
+                  (*(void (**)(_QWORD))(**(_QWORD**)(v340 + 816) + 40LL))(
+                      *(_QWORD*)(v340 + 816)),
+                      v129 = COERCE_AS(__typeof__(v129),
+                                       PSEUDO_REGISTER(__n128, "v1", "=w")),
+                      v130 = COERCE_AS(__typeof__(v130),
+                                       PSEUDO_REGISTER(__n128, "v2", "=w")),
+                      v131 = COERCE_AS(__typeof__(v131),
+                                       PSEUDO_REGISTER(__n128, "v3", "=w")),
+                      v133 = COERCE_AS(__typeof__(v133),
+                                       PSEUDO_REGISTER(__n128, "v1", "=w")),
+                      v134 = COERCE_AS(__typeof__(v134),
+                                       PSEUDO_REGISTER(__n128, "v2", "=w")),
+                      v135 = COERCE_AS(__typeof__(v135),
+                                       PSEUDO_REGISTER(__n128, "v3", "=w")),
+                      v24 = COERCE_AS(__typeof__(v24),
+                                      PSEUDO_REGISTER(__n128, "v1", "=w")),
+                      v25 = COERCE_AS(__typeof__(v25),
+                                      PSEUDO_REGISTER(__n128, "v2", "=w")),
+                      v26 = COERCE_AS(__typeof__(v26),
+                                      PSEUDO_REGISTER(__n128, "v3", "=w")),
+                      v28 = COERCE_AS(__typeof__(v28),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v29 = COERCE_AS(__typeof__(v29),
+                                      PSEUDO_REGISTER(float, "s1", "=w")),
+                      v382 = COERCE_AS(
+                          __typeof__(v382),
+                          PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+                      v388 = COERCE_AS(
+                          __typeof__(v388),
+                          PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+                      v40 = COERCE_AS(__typeof__(v40),
+                                      PSEUDO_REGISTER(__n128, "v1", "=w")),
+                      v41 = COERCE_AS(__typeof__(v41),
+                                      PSEUDO_REGISTER(__n128, "v2", "=w")),
+                      v42 = COERCE_AS(__typeof__(v42),
+                                      PSEUDO_REGISTER(__n128, "v3", "=w")),
+                      v44 = COERCE_AS(__typeof__(v44),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v45 = COERCE_AS(__typeof__(v45),
+                                      PSEUDO_REGISTER(float, "s1", "=w")),
+                      v53 = COERCE_AS(__typeof__(v53),
+                                      PSEUDO_REGISTER(__n128, "v1", "=w")),
+                      v54 = COERCE_AS(__typeof__(v54),
+                                      PSEUDO_REGISTER(__n128, "v2", "=w")),
+                      v55 = COERCE_AS(__typeof__(v55),
+                                      PSEUDO_REGISTER(__n128, "v3", "=w")),
+                      v57 = COERCE_AS(__typeof__(v57),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v58 = COERCE_AS(__typeof__(v58),
+                                      PSEUDO_REGISTER(float, "s1", "=w")),
+                      v66 = COERCE_AS(__typeof__(v66),
+                                      PSEUDO_REGISTER(__n128, "v1", "=w")),
+                      v67 = COERCE_AS(__typeof__(v67),
+                                      PSEUDO_REGISTER(__n128, "v2", "=w")),
+                      v68 = COERCE_AS(__typeof__(v68),
+                                      PSEUDO_REGISTER(__n128, "v3", "=w")),
+                      v70 = COERCE_AS(__typeof__(v70),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v71 = COERCE_AS(__typeof__(v71),
+                                      PSEUDO_REGISTER(float, "s1", "=w")),
+                      v79 = COERCE_AS(__typeof__(v79),
+                                      PSEUDO_REGISTER(__n128, "v1", "=w")),
+                      v80 = COERCE_AS(__typeof__(v80),
+                                      PSEUDO_REGISTER(__n128, "v2", "=w")),
+                      v81 = COERCE_AS(__typeof__(v81),
+                                      PSEUDO_REGISTER(__n128, "v3", "=w")),
+                      v83 = COERCE_AS(__typeof__(v83),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v84 = COERCE_AS(__typeof__(v84),
+                                      PSEUDO_REGISTER(float, "s1", "=w")),
+                      v92 = COERCE_AS(__typeof__(v92),
+                                      PSEUDO_REGISTER(__n128, "v1", "=w")),
+                      v93 = COERCE_AS(__typeof__(v93),
+                                      PSEUDO_REGISTER(__n128, "v2", "=w")),
+                      v94 = COERCE_AS(__typeof__(v94),
+                                      PSEUDO_REGISTER(__n128, "v3", "=w")),
+                      v96 = COERCE_AS(__typeof__(v96),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v97 = COERCE_AS(__typeof__(v97),
+                                      PSEUDO_REGISTER(float, "s1", "=w"));
+                  *(_QWORD*)(v321 + 8 * v325) =
+                      (*v326)(*(_QWORD*)(*(_QWORD*)(v578 + 8) + 256LL) + 8LL);
+                  (*(void (**)(_QWORD))(**(_QWORD**)(v340 + 808) + 40LL))(
+                      *(_QWORD*)(v340 + 808)),
+                      v129 = COERCE_AS(__typeof__(v129),
+                                       PSEUDO_REGISTER(__n128, "v1", "=w")),
+                      v130 = COERCE_AS(__typeof__(v130),
+                                       PSEUDO_REGISTER(__n128, "v2", "=w")),
+                      v131 = COERCE_AS(__typeof__(v131),
+                                       PSEUDO_REGISTER(__n128, "v3", "=w")),
+                      v133 = COERCE_AS(__typeof__(v133),
+                                       PSEUDO_REGISTER(__n128, "v1", "=w")),
+                      v134 = COERCE_AS(__typeof__(v134),
+                                       PSEUDO_REGISTER(__n128, "v2", "=w")),
+                      v135 = COERCE_AS(__typeof__(v135),
+                                       PSEUDO_REGISTER(__n128, "v3", "=w")),
+                      v24 = COERCE_AS(__typeof__(v24),
+                                      PSEUDO_REGISTER(__n128, "v1", "=w")),
+                      v25 = COERCE_AS(__typeof__(v25),
+                                      PSEUDO_REGISTER(__n128, "v2", "=w")),
+                      v26 = COERCE_AS(__typeof__(v26),
+                                      PSEUDO_REGISTER(__n128, "v3", "=w")),
+                      v28 = COERCE_AS(__typeof__(v28),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v29 = COERCE_AS(__typeof__(v29),
+                                      PSEUDO_REGISTER(float, "s1", "=w")),
+                      v382 = COERCE_AS(
+                          __typeof__(v382),
+                          PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+                      v388 = COERCE_AS(
+                          __typeof__(v388),
+                          PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+                      v40 = COERCE_AS(__typeof__(v40),
+                                      PSEUDO_REGISTER(__n128, "v1", "=w")),
+                      v41 = COERCE_AS(__typeof__(v41),
+                                      PSEUDO_REGISTER(__n128, "v2", "=w")),
+                      v42 = COERCE_AS(__typeof__(v42),
+                                      PSEUDO_REGISTER(__n128, "v3", "=w")),
+                      v44 = COERCE_AS(__typeof__(v44),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v45 = COERCE_AS(__typeof__(v45),
+                                      PSEUDO_REGISTER(float, "s1", "=w")),
+                      v53 = COERCE_AS(__typeof__(v53),
+                                      PSEUDO_REGISTER(__n128, "v1", "=w")),
+                      v54 = COERCE_AS(__typeof__(v54),
+                                      PSEUDO_REGISTER(__n128, "v2", "=w")),
+                      v55 = COERCE_AS(__typeof__(v55),
+                                      PSEUDO_REGISTER(__n128, "v3", "=w")),
+                      v57 = COERCE_AS(__typeof__(v57),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v58 = COERCE_AS(__typeof__(v58),
+                                      PSEUDO_REGISTER(float, "s1", "=w")),
+                      v66 = COERCE_AS(__typeof__(v66),
+                                      PSEUDO_REGISTER(__n128, "v1", "=w")),
+                      v67 = COERCE_AS(__typeof__(v67),
+                                      PSEUDO_REGISTER(__n128, "v2", "=w")),
+                      v68 = COERCE_AS(__typeof__(v68),
+                                      PSEUDO_REGISTER(__n128, "v3", "=w")),
+                      v70 = COERCE_AS(__typeof__(v70),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v71 = COERCE_AS(__typeof__(v71),
+                                      PSEUDO_REGISTER(float, "s1", "=w")),
+                      v79 = COERCE_AS(__typeof__(v79),
+                                      PSEUDO_REGISTER(__n128, "v1", "=w")),
+                      v80 = COERCE_AS(__typeof__(v80),
+                                      PSEUDO_REGISTER(__n128, "v2", "=w")),
+                      v81 = COERCE_AS(__typeof__(v81),
+                                      PSEUDO_REGISTER(__n128, "v3", "=w")),
+                      v83 = COERCE_AS(__typeof__(v83),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v84 = COERCE_AS(__typeof__(v84),
+                                      PSEUDO_REGISTER(float, "s1", "=w")),
+                      v92 = COERCE_AS(__typeof__(v92),
+                                      PSEUDO_REGISTER(__n128, "v1", "=w")),
+                      v93 = COERCE_AS(__typeof__(v93),
+                                      PSEUDO_REGISTER(__n128, "v2", "=w")),
+                      v94 = COERCE_AS(__typeof__(v94),
+                                      PSEUDO_REGISTER(__n128, "v3", "=w")),
+                      v96 = COERCE_AS(__typeof__(v96),
+                                      PSEUDO_REGISTER(float, "s0", "=w")),
+                      v97 = COERCE_AS(__typeof__(v97),
+                                      PSEUDO_REGISTER(float, "s1", "=w"));
+                  *(_QWORD*)(v322 + 8 * v325++) =
+                      (*v326)(*(_QWORD*)(*(_QWORD*)(v578 + 8) + 256LL) + 8LL);
+                  v320 = *(_QWORD*)(v578 + 1416);
+                } while (v325 < *(int*)(v320 + 32));
+              }
+              (*(void (**)(__int64))(*(_QWORD*)v559 + 64LL))(v559),
+                  v129 = COERCE_AS(__typeof__(v129),
+                                   PSEUDO_REGISTER(__n128, "v1", "=w")),
+                  v130 = COERCE_AS(__typeof__(v130),
+                                   PSEUDO_REGISTER(__n128, "v2", "=w")),
+                  v131 = COERCE_AS(__typeof__(v131),
+                                   PSEUDO_REGISTER(__n128, "v3", "=w")),
+                  v133 = COERCE_AS(__typeof__(v133),
+                                   PSEUDO_REGISTER(__n128, "v1", "=w")),
+                  v134 = COERCE_AS(__typeof__(v134),
+                                   PSEUDO_REGISTER(__n128, "v2", "=w")),
+                  v135 = COERCE_AS(__typeof__(v135),
+                                   PSEUDO_REGISTER(__n128, "v3", "=w")),
+                  v24 = COERCE_AS(__typeof__(v24),
+                                  PSEUDO_REGISTER(__n128, "v1", "=w")),
+                  v25 = COERCE_AS(__typeof__(v25),
+                                  PSEUDO_REGISTER(__n128, "v2", "=w")),
+                  v26 = COERCE_AS(__typeof__(v26),
+                                  PSEUDO_REGISTER(__n128, "v3", "=w")),
+                  v28 = COERCE_AS(__typeof__(v28),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v29 = COERCE_AS(__typeof__(v29),
+                                  PSEUDO_REGISTER(float, "s1", "=w")),
+                  v382 = COERCE_AS(
+                      __typeof__(v382),
+                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+                  v388 = COERCE_AS(
+                      __typeof__(v388),
+                      PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+                  v40 = COERCE_AS(__typeof__(v40),
+                                  PSEUDO_REGISTER(__n128, "v1", "=w")),
+                  v41 = COERCE_AS(__typeof__(v41),
+                                  PSEUDO_REGISTER(__n128, "v2", "=w")),
+                  v42 = COERCE_AS(__typeof__(v42),
+                                  PSEUDO_REGISTER(__n128, "v3", "=w")),
+                  v44 = COERCE_AS(__typeof__(v44),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v45 = COERCE_AS(__typeof__(v45),
+                                  PSEUDO_REGISTER(float, "s1", "=w")),
+                  v53 = COERCE_AS(__typeof__(v53),
+                                  PSEUDO_REGISTER(__n128, "v1", "=w")),
+                  v54 = COERCE_AS(__typeof__(v54),
+                                  PSEUDO_REGISTER(__n128, "v2", "=w")),
+                  v55 = COERCE_AS(__typeof__(v55),
+                                  PSEUDO_REGISTER(__n128, "v3", "=w")),
+                  v57 = COERCE_AS(__typeof__(v57),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v58 = COERCE_AS(__typeof__(v58),
+                                  PSEUDO_REGISTER(float, "s1", "=w")),
+                  v66 = COERCE_AS(__typeof__(v66),
+                                  PSEUDO_REGISTER(__n128, "v1", "=w")),
+                  v67 = COERCE_AS(__typeof__(v67),
+                                  PSEUDO_REGISTER(__n128, "v2", "=w")),
+                  v68 = COERCE_AS(__typeof__(v68),
+                                  PSEUDO_REGISTER(__n128, "v3", "=w")),
+                  v70 = COERCE_AS(__typeof__(v70),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v71 = COERCE_AS(__typeof__(v71),
+                                  PSEUDO_REGISTER(float, "s1", "=w")),
+                  v79 = COERCE_AS(__typeof__(v79),
+                                  PSEUDO_REGISTER(__n128, "v1", "=w")),
+                  v80 = COERCE_AS(__typeof__(v80),
+                                  PSEUDO_REGISTER(__n128, "v2", "=w")),
+                  v81 = COERCE_AS(__typeof__(v81),
+                                  PSEUDO_REGISTER(__n128, "v3", "=w")),
+                  v83 = COERCE_AS(__typeof__(v83),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v84 = COERCE_AS(__typeof__(v84),
+                                  PSEUDO_REGISTER(float, "s1", "=w")),
+                  v92 = COERCE_AS(__typeof__(v92),
+                                  PSEUDO_REGISTER(__n128, "v1", "=w")),
+                  v93 = COERCE_AS(__typeof__(v93),
+                                  PSEUDO_REGISTER(__n128, "v2", "=w")),
+                  v94 = COERCE_AS(__typeof__(v94),
+                                  PSEUDO_REGISTER(__n128, "v3", "=w")),
+                  v96 = COERCE_AS(__typeof__(v96),
+                                  PSEUDO_REGISTER(float, "s0", "=w")),
+                  v97 = COERCE_AS(__typeof__(v97),
+                                  PSEUDO_REGISTER(float, "s1", "=w"));
+              v4 = v578;
+            }
+            v14 = *(_QWORD*)(v4 + 24);
+            v359 = *(_QWORD*)(v14 + 288);
+            v360 = *(_QWORD*)(v359 + 792);
+            if (v360 == 0) {
+              goto LABEL_319;
+            }
+            v361 = v359 + 792;
+            v362 = v359 + 792;
+            v363 = *(_DWORD*)(*(_QWORD*)(v4 + 1400) + 36LL);
+            do {
+              v364 = *(_DWORD*)(v360 + 32);
+              v365 = v364 < v363;
+              if (v364 >= v363) {
+                v366 = 0;
+              }
+              else {
+                v366 = 8;
+              }
+              if (!v365) {
+                v362 = v360;
+              }
+              v360 = *(_QWORD*)(v360 + v366);
+            } while (v360 != 0);
+            if (v362 != v361 && v363 >= (signed __int32)*(_DWORD*)(v362 + 32)) {
+              v367 = *(_QWORD*)(v4 + 1320);
+              v556 = *(_QWORD*)(v362 + 40);
+              *(_QWORD*)(v4 + 1464) =
+                  *(_QWORD*)(*(_QWORD*)(v367 + 32) + 8LL * *(int*)(v367 + 128));
+              if (v556 != 0) {
+                *(_QWORD*)(v4 + 1456) = *(_QWORD*)(v556 + 808);
+                v368 = (_QWORD*)(v556 + 816);
+                goto LABEL_321;
+              }
+            }
+            else {
+            LABEL_319:
+              v367 = *(_QWORD*)(v4 + 1320);
+              *(_QWORD*)(v4 + 1464) =
+                  *(_QWORD*)(*(_QWORD*)(v367 + 32) + 8LL * *(int*)(v367 + 128));
+            }
+            *(_QWORD*)(v4 + 1456) =
+                *(_QWORD*)(*(_QWORD*)(v367 + 32) + 8LL * *(int*)(v367 + 128));
+            v368 = (_QWORD*)(*(_QWORD*)(v367 + 56) + 8LL * *(int*)(v367 + 128));
+          LABEL_321:
+            *(_QWORD*)(v4 + 1448) = *v368;
+            goto LABEL_322;
+          }
+          memset_alt1(*(_QWORD*)(v4 + 1304), 0,
+                      24 * ((24 * v257 - 24) / 0x18) + 24),
+              v129 = COERCE_AS(__typeof__(v129),
+                               PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v130 = COERCE_AS(__typeof__(v130),
+                               PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v131 = COERCE_AS(__typeof__(v131),
+                               PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v133 = COERCE_AS(__typeof__(v133),
+                               PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v134 = COERCE_AS(__typeof__(v134),
+                               PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v135 = COERCE_AS(__typeof__(v135),
+                               PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v24 = COERCE_AS(__typeof__(v24),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v25 = COERCE_AS(__typeof__(v25),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v26 = COERCE_AS(__typeof__(v26),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v28 = COERCE_AS(__typeof__(v28),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v29 = COERCE_AS(__typeof__(v29),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v382 = COERCE_AS(__typeof__(v382),
+                               PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+              v388 = COERCE_AS(__typeof__(v388),
+                               PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+              v40 = COERCE_AS(__typeof__(v40),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v41 = COERCE_AS(__typeof__(v41),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v42 = COERCE_AS(__typeof__(v42),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v44 = COERCE_AS(__typeof__(v44),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v45 = COERCE_AS(__typeof__(v45),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v53 = COERCE_AS(__typeof__(v53),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v54 = COERCE_AS(__typeof__(v54),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v55 = COERCE_AS(__typeof__(v55),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v57 = COERCE_AS(__typeof__(v57),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v58 = COERCE_AS(__typeof__(v58),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v66 = COERCE_AS(__typeof__(v66),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v67 = COERCE_AS(__typeof__(v67),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v68 = COERCE_AS(__typeof__(v68),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v70 = COERCE_AS(__typeof__(v70),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v71 = COERCE_AS(__typeof__(v71),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v79 = COERCE_AS(__typeof__(v79),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v80 = COERCE_AS(__typeof__(v80),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v81 = COERCE_AS(__typeof__(v81),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v83 = COERCE_AS(__typeof__(v83),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v84 = COERCE_AS(__typeof__(v84),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v92 = COERCE_AS(__typeof__(v92),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v93 = COERCE_AS(__typeof__(v93),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v94 = COERCE_AS(__typeof__(v94),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v96 = COERCE_AS(__typeof__(v96),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v97 = COERCE_AS(__typeof__(v97),
+                              PSEUDO_REGISTER(float, "s1", "=w"));
+          v251 = *(_QWORD*)(v4 + 1400);
+          v266 = v252 + 24 * ((24 * v257 - 24) / 0x18) + 24;
+        }
+        *(_QWORD*)(v4 + 1304) = v266;
+        goto LABEL_245;
+      }
+    }
+    v136 = v123 + 1;
+    v137 = &v600_.v600 + v123;
+    do {
+      v138 = LANES128(v600_.v600.val[4 * (__int64)v120 - 1]).n128_u64[1];
+      LANES128(v137->val[2]).n128_u64[1] =
+          *((_QWORD*)&v600_.v600.val[4 * (__int64)v120 - 1] - 1);
+      LANES128(v137->val[3]).n128_u64[1] = v138;
+      v139 = *((_QWORD*)&v600_.v600.val[4 * (__int64)v120 - 2] - 1);
+      LANES128(v137->val[0]).n128_u64[1] =
+          *((_QWORD*)&v600_.v600.val[4 * (__int64)v120 - 3] - 1);
+      LANES128(v137->val[1]).n128_u64[1] = v139;
+      v140 = LANES128(v600_.v600.val[4 * (__int64)v120 - 4]).n128_u64[0];
+      LANES128(v137->val[1]).n128_u64[0] =
+          LANES128(v600_.v600.val[4 * (__int64)v120 - 3]).n128_u64[0];
+      LANES128(v137->val[0]).n128_u64[0] = v140;
+      v141 = LANES128(v600_.v600.val[4 * (__int64)v120 - 2]).n128_u64[0];
+      LANES128(v137->val[3]).n128_u64[0] =
+          LANES128(v600_.v600.val[4 * (__int64)v120 - 1]).n128_u64[0];
+      LANES128(v137->val[2]).n128_u64[0] = v141;
+      ++v137;
+    } while ((_DWORD)v136++ != 5);
+    if (v120 < 1) {
+      goto LABEL_139;
+    }
+    goto LABEL_135;
+  }
+LABEL_322:
+  __builtin_memset(v593_.v593, 0, sizeof(v593_.v593));
+  v579_.v584 = 0;
+  v579_.v585 = 0;
+  v579_.v587 = 0;
+  v579_.v589 = 0;
+  v579_.v590 = 0;
+  v579_.v591 = 0;
+  v579_.v592 = 0;
+  v593_.v595 = 0;
+  v579_.v582 = 0;
+  v579_.v583 = 0;
+  v579_.v580 = 0;
+  v579_.v581 = 0;
+  v579_.v579 = 0;
+  v579_.v586 = -1;
+  v579_.v588 = -1;
+  v593_.v594 = true;
+  if (*(_BYTE*)(v14 + 48) != 1) {
+    goto LABEL_355;
+  }
+  v369 = *(unsigned __int8*)(v4 + 1667);
+  if (*(unsigned __int8*)(v4 + 1666) != v369) {
+    v370 = *(_QWORD*)(v4 + 8);
+    *(_BYTE*)(v4 + 1666) = v369;
+    v371 = v369 ^ 1;
+    v372 = *(_QWORD*)(v370 + 13232);
+    v373 = (char*)fw_memory_HeapManager_Allocate_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr, 26, 16, 0),
+    v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+    v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+    v382 = COERCE_AS(__typeof__(v382),
+                     PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+    v388 = COERCE_AS(__typeof__(v388),
+                     PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+    v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+    v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+    v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+    v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+    v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+    v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+    v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+    v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+    v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+    v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    LANES128(v600_.v600.val[0]).n128_u64[0] = 27;
+    LANES128(v600_.v600.val[0]).n128_u64[1] = 23;
+    LANES128(v600_.v600.val[1]).n128_u64[0] = (unsigned __int64)v373;
+    strcpy(v373, "co_disable_prev_buffers");
+    v619[0] = (__int64*)&v600_.v600;
+    v374 =
+        game_templates_a93ea0((float*)v372, (unsigned __int8*)&v600_.v600,
+                              (__int64)std___1_piecewise_construct_ptr, v619),
+    v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+    v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+    v382 = COERCE_AS(__typeof__(v382),
+                     PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+    v388 = COERCE_AS(__typeof__(v388),
+                     PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+    v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+    v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+    v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+    v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+    v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+    v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+    v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+    v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+    v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+    v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    v375 = LANES128(v600_.v600.val[0]).n128_u8[0];
+    *(_DWORD*)(v374 + 40) = v371;
+    if ((v375 & 1) != 0 && LANES128(v600_.v600.val[1]).n128_u64[0] != 0) {
+      v376 = 128;
+      if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+        v376 = 56;
+      }
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v376,
+          LANES128(v600_.v600.val[1]).n128_i64[0]),
+          v129 =
+              COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v130 =
+              COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v131 =
+              COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v133 =
+              COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v134 =
+              COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v135 =
+              COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+          v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+          v382 = COERCE_AS(__typeof__(v382),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v388 = COERCE_AS(__typeof__(v388),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+          v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+          v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+          v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+          v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+          v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+          v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+          v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+          v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+          v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    }
+    *(_BYTE*)(v372 + 40) = 1;
+  }
+  v377 = *(_QWORD*)(v4 + 1488);
+  v378 = *(_QWORD*)(v4 + 1456);
+  v579_.v579 = *(_QWORD*)(v4 + 80);
+  v579_.v580 = v377;
+  v379 = *(_QWORD*)(v4 + 1400);
+  v579_.v581 = v4 + 1320;
+  v579_.v582 = v379;
+  v380 = *(_QWORD*)(v4 + 1608);
+  v579_.v583 = *(_QWORD*)(v4 + 1416);
+  v579_.v584 = v380;
+  v579_.v585 = (*(__int64 (**)(__int64))(*(_QWORD*)v378 + 40LL))(v378),
+  v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+  v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+  v382 = COERCE_AS(__typeof__(v382),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v388 = COERCE_AS(__typeof__(v388),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+  v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+  v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+  v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+  v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+  v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+  v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+  v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+  v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+  v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  v381 = *(_QWORD*)(v4 + 1448);
+  v579_.v586 = v382;
+  v383 = (*(__int64 (**)(__int64))(*(_QWORD*)v381 + 40LL))(v381),
+  v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+  v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+  v382 = COERCE_AS(__typeof__(v382),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v388 = COERCE_AS(__typeof__(v388),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+  v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+  v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+  v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+  v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+  v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+  v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+  v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+  v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+  v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  v384 = *(_QWORD*)(v4 + 1296);
+  v385 = *(_QWORD*)(v4 + 1304) - v384;
+  v579_.v591 = *(_QWORD*)(v4 + 224);
+  v386 = *(_DWORD*)(v4 + 1640);
+  v387 = *(_DWORD*)(v4 + 232);
+  v579_.v587 = v383;
+  v579_.v588 = v388;
+  v579_.v592 = __PAIR64__(v386, v387);
+  *(_DWORD*)v593_.v593 = *(_DWORD*)(v4 + 1688);
+  v593_.v593[4] = *(_BYTE*)(v4 + 1692);
+  *(_WORD*)&v593_.v593[5] = *(_WORD*)(v4 + 1668);
+  v593_.v593[7] = *(_BYTE*)(v4 + 1666);
+  v593_.v593[8] = *(_BYTE*)(v4 + 1664);
+  v593_.v593[9] = *(_BYTE*)(v4 + 1670);
+  LOBYTE(v386) = *(_BYTE*)(v4 + 1665);
+  v579_.v589 = v384;
+  v579_.v590 = 0xAAAAAAAAAAAAAAABLL * (v385 >> 3);
+  LOWORD(v384) = *(_WORD*)(v4 + 1680);
+  v593_.v593[10] = v386;
+  *(_WORD*)&v593_.v593[11] = v384;
+  LOBYTE(v385) = *(_BYTE*)(v4 + 1671);
+  v593_.v593[13] = *(_BYTE*)(v4 + 1672);
+  v593_.v594 = (signed __int32)*(_DWORD*)(v4 + 1676) < 1;
+  v593_.v595 = *(_QWORD*)(v4 + 64);
+  v389 = *(_QWORD*)(v4 + 1608);
+  v390 = game_g_frame_clock_ptr[0];
+  if ((v385 & 1) != 0) {
+    if (v389 == 0) {
+      v391 = 0;
+      goto LABEL_335;
+    }
+  }
+  else if (v389 != 0) {
+    v391 = 1;
+  LABEL_335:
+    v392 = *game_g_frame_clock_ptr[0];
+    *(_BYTE*)(v4 + 1671) = v391;
+    v393 = *(_QWORD*)(v392 + 13232);
+    strcpy((char*)&v600_.v600, " co_hades_shading");
+    v619[0] = (__int64*)&v600_.v600;
+    v394 =
+        game_templates_a93ea0((float*)v393, (unsigned __int8*)&v600_.v600,
+                              (__int64)std___1_piecewise_construct_ptr, v619),
+    v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+    v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+    v382 = COERCE_AS(__typeof__(v382),
+                     PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+    v388 = COERCE_AS(__typeof__(v388),
+                     PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+    v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+    v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+    v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+    v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+    v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+    v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+    v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+    v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+    v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+    v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    v395 = LANES128(v600_.v600.val[0]).n128_u8[0];
+    *(_DWORD*)(v394 + 40) = v391;
+    if ((v395 & 1) != 0 && LANES128(v600_.v600.val[1]).n128_u64[0] != 0) {
+      v396 = 128;
+      if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+        v396 = 56;
+      }
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v396,
+          LANES128(v600_.v600.val[1]).n128_i64[0]),
+          v129 =
+              COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v130 =
+              COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v131 =
+              COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v133 =
+              COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v134 =
+              COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v135 =
+              COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+          v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+          v382 = COERCE_AS(__typeof__(v382),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v388 = COERCE_AS(__typeof__(v388),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+          v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+          v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+          v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+          v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+          v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+          v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+          v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+          v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+          v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    }
+    *(_BYTE*)(v393 + 40) = 1;
+  }
+  v397 = **(_QWORD**)(*(_QWORD*)(v4 + 80) + 8LL);
+  v398 = 368;
+  if (*(_BYTE*)(v397 + 336) != 0) {
+    v398 = 332;
+  }
+  v399 = *(float*)(v397 + v398);
+  if (*(_BYTE*)(v4 + 1682) != 0 || v399 < 0x1.0000000000000p+0f) {
+    if (*(_BYTE*)(v4 + 1682) == 0 || v399 >= 0x1.0000000000000p+0f) {
+      goto LABEL_355;
+    }
+    v400 = 0;
+  }
+  else {
+    v400 = 1;
+  }
+  v401 = *v390;
+  *(_BYTE*)(v4 + 1682) = v400;
+  v402 = *(_QWORD*)(v401 + 13232);
+  strcpy((char*)&v600_.v600, " co_chara_outside");
+  v619[0] = (__int64*)&v600_.v600;
+  v403 = game_templates_a93ea0((float*)v402, (unsigned __int8*)&v600_.v600,
+                               (__int64)std___1_piecewise_construct_ptr, v619),
+  v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+  v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+  v382 = COERCE_AS(__typeof__(v382),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v388 = COERCE_AS(__typeof__(v388),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+  v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+  v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+  v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+  v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+  v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+  v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+  v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+  v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+  v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  v404 = LANES128(v600_.v600.val[0]).n128_u8[0];
+  *(_DWORD*)(v403 + 40) = v400;
+  if ((v404 & 1) != 0 && LANES128(v600_.v600.val[1]).n128_u64[0] != 0) {
+    v405 = 128;
+    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+      v405 = 56;
+    }
+    nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)fw_memory_g_heap_manager_ptr +
+                                           v405,
+                                       LANES128(v600_.v600.val[1]).n128_i64[0]),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  }
+  *(_BYTE*)(v402 + 40) = 1;
+LABEL_355:
+  GameHr_a939e0(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(v4 + 8) + 13408LL) + 8LL),
+                *(_QWORD*)(*(_QWORD*)(v4 + 8) + 13408LL) + 136LL,
+                (__int64**)(*(_QWORD*)(*(_QWORD*)(v4 + 8) + 13408LL) + 176LL)),
+      v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+      v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+      v382 = COERCE_AS(__typeof__(v382),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v388 = COERCE_AS(__typeof__(v388),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+      v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+      v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+      v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+      v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+      v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+      v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+      v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+      v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+      v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  v406 = *(unsigned __int8*)(*(_QWORD*)(v4 + 24) + 48LL);
+  if (v406 == 1) {
+    v407 = *(_BYTE*)(*(_QWORD*)(v4 + 8) + 304LL);
+  }
+  else {
+    v407 = 0;
+  }
+  v408 = *(_QWORD*)(v4 + 16);
+  __builtin_memset(v619, 0, sizeof(v619));
+  v409 = *(_QWORD**)v408;
+  v410 = *(_QWORD**)(v408 + 8);
+  if (*(_QWORD**)v408 != v410) {
+    do {
+      v430 = *--v410;
+      v429 = v430;
+      *v410 = 0;
+      if (v430 != 0) {
+        (*(void (**)(__int64))(*(_QWORD*)v429 + 8LL))(v429),
+            v129 = COERCE_AS(__typeof__(v129),
+                             PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v130 = COERCE_AS(__typeof__(v130),
+                             PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v131 = COERCE_AS(__typeof__(v131),
+                             PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v133 = COERCE_AS(__typeof__(v133),
+                             PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v134 = COERCE_AS(__typeof__(v134),
+                             PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v135 = COERCE_AS(__typeof__(v135),
+                             PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v24 =
+                COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v25 =
+                COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v26 =
+                COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v28 =
+                COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+            v29 =
+                COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+            v382 = COERCE_AS(__typeof__(v382),
+                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v388 = COERCE_AS(__typeof__(v388),
+                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v40 =
+                COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v41 =
+                COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v42 =
+                COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v44 =
+                COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+            v45 =
+                COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+            v53 =
+                COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v54 =
+                COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v55 =
+                COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v57 =
+                COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+            v58 =
+                COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+            v66 =
+                COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v67 =
+                COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v68 =
+                COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v70 =
+                COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+            v71 =
+                COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+            v79 =
+                COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v80 =
+                COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v81 =
+                COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v83 =
+                COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+            v84 =
+                COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+            v92 =
+                COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v93 =
+                COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v94 =
+                COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v96 =
+                COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+            v97 =
+                COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+      }
+    } while (v410 != v409);
+  }
+  *(_QWORD*)(v408 + 8) = v409;
+  v411 = *(_QWORD**)(v408 + 24);
+  v412 = *(_QWORD**)(v408 + 32);
+  while (v412 != v411) {
+    v432 = *--v412;
+    v431 = v432;
+    *v412 = 0;
+    if (v432 != 0) {
+      (*(void (**)(__int64))(*(_QWORD*)v431 + 8LL))(v431),
+          v129 =
+              COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v130 =
+              COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v131 =
+              COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v133 =
+              COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v134 =
+              COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v135 =
+              COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+          v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+          v382 = COERCE_AS(__typeof__(v382),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v388 = COERCE_AS(__typeof__(v388),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+          v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+          v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+          v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+          v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+          v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+          v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+          v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+          v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+          v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    }
+  }
+  v413 = *(_QWORD*)(v408 + 48);
+  *(_QWORD*)(v408 + 32) = v411;
+  *(_DWORD*)(v408 + 96) = 0;
+  *(_QWORD*)(v408 + 56) = v413;
+  *(_QWORD*)(v408 + 80) = *(_QWORD*)(v408 + 72);
+  LODWORD(v413) = *(_DWORD*)(v408 + 108) + 1;
+  *(_DWORD*)(v408 + 104) = 0;
+  *(_DWORD*)(v408 + 108) = v413;
+  if (*(_BYTE*)(*(_QWORD*)(v4 + 24) + 48LL) != 1) {
+    memset_alt1((__int64)&v600_.v600, 0, 0x2A0u),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    MainPassEffect_b90e00(*(_QWORD*)(v4 + 1544), *(_QWORD*)(v4 + 16)),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    if (v600_.v607 != 0) {
+      v600_.v608 = v600_.v607;
+      v439 = 128;
+      if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+        v439 = 56;
+      }
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v439, v600_.v607),
+          v129 =
+              COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v130 =
+              COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v131 =
+              COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v133 =
+              COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v134 =
+              COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v135 =
+              COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+          v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+          v382 = COERCE_AS(__typeof__(v382),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v388 = COERCE_AS(__typeof__(v388),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+          v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+          v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+          v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+          v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+          v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+          v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+          v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+          v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+          v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    }
+    v440 = v600_.v605;
+    if (v600_.v605 == 0) {
+      goto LABEL_401;
+    }
+  LABEL_398:
+    v600_.v606 = v440;
+    v441 = 128;
+    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+      v441 = 56;
+    }
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v441, v440),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    goto LABEL_401;
+  }
+  v573 = v406;
+  v577 = v407;
+  v560 = a3;
+  memset_alt1((__int64)&v600_.v600, 0, 0x2A0u),
+      v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+      v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+      v382 = COERCE_AS(__typeof__(v382),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v388 = COERCE_AS(__typeof__(v388),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+      v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+      v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+      v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+      v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+      v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+      v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+      v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+      v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+      v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  *(_BYTE*)(*(_QWORD*)(v4 + 8) + 16700LL) = 0;
+  *(_DWORD*)(*(_QWORD*)(v4 + 16) + 96LL) = 0;
+  v414 = *(_QWORD**)(v4 + 16);
+  v621_.v621[0] = *(_QWORD*)(v4 + 648) + 40LL;
+  v415 = TaskPassNodes_b9b500(v414, (__int64)"CBCamera", 8u, v621_.v621),
+  v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+  v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+  v382 = COERCE_AS(__typeof__(v382),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v388 = COERCE_AS(__typeof__(v388),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+  v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+  v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+  v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+  v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+  v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+  v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+  v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+  v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+  v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  v416 = *(_QWORD*)(v4 + 648);
+  v600_.v611 = v415;
+  v621_.v621[0] = v416 + 96;
+  v417 = TaskPassNodes_b9b500(v414, (__int64)"CBNonJitteredCamera", 0x13u,
+                              v621_.v621),
+  v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+  v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+  v382 = COERCE_AS(__typeof__(v382),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v388 = COERCE_AS(__typeof__(v388),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+  v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+  v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+  v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+  v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+  v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+  v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+  v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+  v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+  v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  v418 = *(_QWORD*)(v4 + 648);
+  v600_.v612 = v417;
+  v621_.v621[0] = v418 + 152;
+  v419 = TaskPassNodes_b9b500(v414, (__int64)"CBEnv", 5u, v621_.v621),
+  v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+  v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+  v382 = COERCE_AS(__typeof__(v382),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v388 = COERCE_AS(__typeof__(v388),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+  v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+  v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+  v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+  v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+  v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+  v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+  v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+  v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+  v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  v420 = *(_QWORD*)(v4 + 648);
+  v600_.v613 = v419;
+  v621_.v621[0] = v420 + 320;
+  v421 = TaskPassNodes_b9b500(v414, (__int64)"CBGlobalVar", 0xBu, v621_.v621),
+  v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+  v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+  v382 = COERCE_AS(__typeof__(v382),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v388 = COERCE_AS(__typeof__(v388),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+  v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+  v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+  v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+  v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+  v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+  v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+  v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+  v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+  v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  v422 = *(_QWORD*)(v4 + 648);
+  v600_.v614 = v421;
+  v621_.v621[0] = v422 + 208;
+  v423 = TaskPassNodes_b9b500(v414, (__int64)"CBShadowReceiver", 0x10u,
+                              v621_.v621),
+  v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+  v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+  v382 = COERCE_AS(__typeof__(v382),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v388 = COERCE_AS(__typeof__(v388),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+  v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+  v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+  v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+  v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+  v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+  v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+  v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+  v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+  v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  v424 = *(_QWORD*)(v4 + 648);
+  v600_.v616 = v423;
+  v621_.v621[0] = v424 + 264;
+  v425 = TaskPassNodes_b9b500(v414, (__int64)"CBShadowReceiverForChara", 0x18u,
+                              v621_.v621),
+  v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+  v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+  v382 = COERCE_AS(__typeof__(v382),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v388 = COERCE_AS(__typeof__(v388),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+  v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+  v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+  v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+  v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+  v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+  v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+  v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+  v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+  v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  v426 = *(_QWORD*)(v4 + 648);
+  v600_.v617 = v425;
+  v621_.v621[0] = v426 + 376;
+  v427 = v4 + 320;
+  v428 = 0;
+  v600_.v615 = TaskPassNodes_b9b500(v414, (__int64)"CBMapEnv", 8u, v621_.v621),
+  v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+  v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+  v382 = COERCE_AS(__typeof__(v382),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v388 = COERCE_AS(__typeof__(v388),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+  v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+  v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+  v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+  v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+  v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+  v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+  v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+  v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+  v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  do {
+    LOBYTE(v621_.v621[0]) = 28;
+    strcpy((char*)v621_.v621 + 1, "CBShadowCaster");
+    std___1_to_string_1a0a790((void*)(&v596_.v596), (unsigned int)v428),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    if ((v596_.v596 & 1) != 0) {
+      v433 = v596_.v598;
+    }
+    else {
+      v433 = (char*)&v596_.v596 + 1;
+    }
+    if ((v596_.v596 & 1) != 0) {
+      v434 = v596_.v597;
+    }
+    else {
+      v434 = (unsigned __int64)(unsigned __int8)v596_.v596 >> 1;
+    }
+    GameRoutine_1a09ce0((__int64)v621_.v621, v433, v434),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    if ((v596_.v596 & 1) != 0 && v596_.v598 != nullptr) {
+      if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) != 0) {
+        v435 = 128;
+      }
+      else {
+        v435 = 56;
+      }
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v435, (__int64)v596_.v598),
+          v129 =
+              COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v130 =
+              COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v131 =
+              COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v133 =
+              COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v134 =
+              COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v135 =
+              COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+          v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+          v382 = COERCE_AS(__typeof__(v382),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v388 = COERCE_AS(__typeof__(v388),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+          v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+          v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+          v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+          v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+          v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+          v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+          v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+          v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+          v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    }
+    v596_.v596 = v427;
+    if ((v621_.v621[0] & 1) != 0) {
+      v436 = v621_.v622;
+    }
+    else {
+      v436 = (char*)v621_.v621 + 1;
+    }
+    if ((v621_.v621[0] & 1) != 0) {
+      v437 = v621_.v621[1];
+    }
+    else {
+      v437 = (unsigned __int64)LOBYTE(v621_.v621[0]) >> 1;
+    }
+    v600_.v618[v428] =
+        TaskPassNodes_b9b500(v414, (__int64)v436, v437, &v596_.v596),
+    v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+    v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+    v382 = COERCE_AS(__typeof__(v382),
+                     PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+    v388 = COERCE_AS(__typeof__(v388),
+                     PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+    v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+    v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+    v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+    v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+    v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+    v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+    v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+    v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+    v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+    v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    if ((v621_.v621[0] & 1) != 0 && v621_.v622 != nullptr) {
+      if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) != 0) {
+        v438 = 128;
+      }
+      else {
+        v438 = 56;
+      }
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v438, (__int64)v621_.v622),
+          v129 =
+              COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v130 =
+              COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v131 =
+              COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v133 =
+              COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v134 =
+              COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v135 =
+              COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+          v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+          v382 = COERCE_AS(__typeof__(v382),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v388 = COERCE_AS(__typeof__(v388),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+          v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+          v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+          v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+          v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+          v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+          v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+          v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+          v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+          v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    }
+    ++v428;
+    v427 += 56;
+  } while (v428 != 5);
+  v4 = v578;
+  v621_.v621[0] = *(_QWORD*)(v578 + 664) + 8LL;
+  v448 = GameHr_bbc730(v414, (__int64)"UALightList", 0xBu, v621_.v621),
+  v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+  v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+  v382 = COERCE_AS(__typeof__(v382),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v388 = COERCE_AS(__typeof__(v388),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+  v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+  v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+  v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+  v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+  v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+  v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+  v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+  v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+  v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  v449 = *(_QWORD*)(v578 + 664);
+  v600_.v618[5] = v448;
+  v621_.v621[0] = v449 + 64;
+  v450 = GameHr_bbc730(v414, (__int64)"UALightBoundingList", 0x13u, v621_.v621),
+  v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+  v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+  v382 = COERCE_AS(__typeof__(v382),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v388 = COERCE_AS(__typeof__(v388),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+  v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+  v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+  v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+  v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+  v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+  v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+  v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+  v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+  v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  v451 = *(_QWORD*)(v578 + 664);
+  v600_.v618[6] = v450;
+  v621_.v621[0] = v451 + 120;
+  v452 = GameHr_bbc730(v414, (__int64)"UALightVisibleBits", 0x12u, v621_.v621),
+  v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+  v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+  v382 = COERCE_AS(__typeof__(v382),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v388 = COERCE_AS(__typeof__(v388),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+  v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+  v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+  v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+  v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+  v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+  v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+  v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+  v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+  v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  v453 = *(_QWORD*)(v578 + 648);
+  v600_.v618[7] = v452;
+  v621_.v621[0] = v453 + 432;
+  v600_.v618[8] =
+      GameHr_bbc730(v414, (__int64)"UAExposureHistogram", 0x13u, v621_.v621),
+  v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+  v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+  v382 = COERCE_AS(__typeof__(v382),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v388 = COERCE_AS(__typeof__(v388),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+  v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+  v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+  v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+  v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+  v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+  v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+  v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+  v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+  v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  v621_.v621[0] = v578 + 848;
+  v600_.v618[9] =
+      GameHr_bbc900(v414, (__int64)"UAProbeVisibleBits", 0x12u, v621_.v621),
+  v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+  v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+  v382 = COERCE_AS(__typeof__(v382),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v388 = COERCE_AS(__typeof__(v388),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+  v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+  v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+  v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+  v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+  v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+  v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+  v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+  v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+  v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  v621_.v621[0] = v578 + 680;
+  v600_.v618[10] =
+      TaskPassNodes_b9b500(v414, (__int64)"CBProbe2Info", 0xCu, v621_.v621),
+  v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+  v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+  v382 = COERCE_AS(__typeof__(v382),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v388 = COERCE_AS(__typeof__(v388),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+  v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+  v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+  v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+  v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+  v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+  v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+  v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+  v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+  v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  v621_.v621[0] = v578 + 736;
+  v600_.v618[11] = TaskPassNodes_b9b500(
+      v414, (__int64)"CBProbe2InfoForExposure", 0x17u, v621_.v621),
+  v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+  v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+  v382 = COERCE_AS(__typeof__(v382),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v388 = COERCE_AS(__typeof__(v388),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+  v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+  v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+  v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+  v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+  v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+  v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+  v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+  v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+  v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  v621_.v621[0] = v578 + 880;
+  v600_.v618[12] =
+      GameHr_bbc900(v414, (__int64)"UAFieldVisibleBits", 0x12u, v621_.v621),
+  v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+  v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+  v382 = COERCE_AS(__typeof__(v382),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v388 = COERCE_AS(__typeof__(v388),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+  v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+  v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+  v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+  v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+  v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+  v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+  v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+  v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+  v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  v621_.v621[0] = v578 + 792;
+  v454 = GameHr_bbc730(v414, (__int64)"UAFieldList", 0xBu, v621_.v621),
+  v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+  v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+  v382 = COERCE_AS(__typeof__(v382),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v388 = COERCE_AS(__typeof__(v388),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+  v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+  v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+  v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+  v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+  v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+  v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+  v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+  v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+  v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  v455 = *(_QWORD*)(v578 + 648);
+  v600_.v618[13] = v454;
+  v456 = *(_QWORD*)(v455 + 1240);
+  v457 = *(_QWORD*)(v455 + 1248);
+  if (v457 != 0) {
+    atomic_fetch_add_explicit((atomic_ullong* volatile)(v457 + 8), 1u,
+                              memory_order_relaxed);
+    v621_.v621[0] = v456;
+    LANES128(v600_.v602.val[0]).n128_u64[0] =
+        GameHr_bbcad0(v414, (__int64)"AdaptedLogLum", 0xDu, v621_.v621),
+    v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+    v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+    v382 = COERCE_AS(__typeof__(v382),
+                     PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+    v388 = COERCE_AS(__typeof__(v388),
+                     PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+    v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+    v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+    v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+    v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+    v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+    v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+    v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+    v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+    v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+    v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    v407 = v577;
+    if (atomic_fetch_add((atomic_ullong* volatile)(v457 + 8),
+                         0xFFFFFFFFFFFFFFFFLL) == 0) {
+      (*(void (**)(__int64))(*(_QWORD*)v457 + 16LL))(v457),
+          v129 =
+              COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v130 =
+              COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v131 =
+              COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v133 =
+              COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v134 =
+              COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v135 =
+              COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+          v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+          v382 = COERCE_AS(__typeof__(v382),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v388 = COERCE_AS(__typeof__(v388),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+          v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+          v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+          v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+          v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+          v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+          v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+          v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+          v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+          v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+      std___1___shared_weak_count___release_weak_alt1(v457),
+          v129 =
+              COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v130 =
+              COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v131 =
+              COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v133 =
+              COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v134 =
+              COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v135 =
+              COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+          v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+          v382 = COERCE_AS(__typeof__(v382),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v388 = COERCE_AS(__typeof__(v388),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+          v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+          v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+          v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+          v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+          v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+          v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+          v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+          v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+          v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    }
+  }
+  else {
+    v621_.v621[0] = *(_QWORD*)(v455 + 1240);
+    v407 = v577;
+    LANES128(v600_.v602.val[0]).n128_u64[0] =
+        GameHr_bbcad0(v414, (__int64)"AdaptedLogLum", 0xDu, v621_.v621),
+    v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+    v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+    v382 = COERCE_AS(__typeof__(v382),
+                     PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+    v388 = COERCE_AS(__typeof__(v388),
+                     PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+    v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+    v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+    v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+    v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+    v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+    v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+    v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+    v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+    v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+    v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  }
+  v621_.v621[0] = *(_QWORD*)(v578 + 1472);
+  v600_.v609 = GameHr_bbcad0(v414, (__int64)"PrevColor", 9u, v621_.v621),
+  v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+  v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+  v382 = COERCE_AS(__typeof__(v382),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v388 = COERCE_AS(__typeof__(v388),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+  v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+  v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+  v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+  v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+  v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+  v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+  v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+  v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+  v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  v465 = *(_QWORD*)(v578 + 1480);
+  v466 = fw_memory_HeapManager_Allocate_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr, 80, 16, 0),
+  v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+  v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+  v382 = COERCE_AS(__typeof__(v382),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v388 = COERCE_AS(__typeof__(v388),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+  v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+  v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+  v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+  v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+  v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+  v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+  v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+  v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+  v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  *(_BYTE*)(v466 + 8) = 18;
+  strcpy((char*)(v466 + 9), "PrevDepth");
+  *(_BYTE*)(v466 + 32) = 1;
+  v467 = GameData_212e788[0];
+  *(_QWORD*)(v466 + 40) = v465;
+  *(_QWORD*)(v466 + 48) = 0;
+  *(_BYTE*)(v466 + 72) = 1;
+  *(_DWORD*)(v466 + 76) = 0;
+  *(_QWORD*)v466 = v467 + 2;
+  *(_QWORD*)(v466 + 56) = 0x100000001LL;
+  *(_QWORD*)(v466 + 64) = 0x100000001LL;
+  v469 = (__int64*)v414[4];
+  v468 = v414[5];
+  if ((unsigned __int64)v469 >= v468) {
+    v471 = v414[3];
+    v472 = (unsigned __int64)v469 - v471;
+    v473 = ((__int64)v469 - v471) >> 3;
+    v474 = v473 + 1;
+    if ((unsigned __int64)(v473 + 1) >> 61 != 0) {
+      GameRoutine_b32fb0(),
+          v129 =
+              COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v130 =
+              COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v131 =
+              COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v133 =
+              COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v134 =
+              COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v135 =
+              COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+          v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+          v382 = COERCE_AS(__typeof__(v382),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v388 = COERCE_AS(__typeof__(v388),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+          v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+          v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+          v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+          v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+          v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+          v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+          v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+          v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+          v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    }
+    v475 = v468 - v471;
+    if (v475 >> 2 > v474) {
+      v474 = v475 >> 2;
+    }
+    if ((unsigned __int64)v475 >= 0x7FFFFFFFFFFFFFF8LL) {
+      v476 = 0x1FFFFFFFFFFFFFFFLL;
+    }
+    else {
+      v476 = v474;
+    }
+    if (v476 != 0) {
+      if (v476 >> 61 != 0) {
+        goto LABEL_528;
+      }
+      v477 = v466;
+      v478 = fw_memory_HeapManager_Allocate_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr, 8 * v476, 16, 0),
+      v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+      v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+      v382 = COERCE_AS(__typeof__(v382),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v388 = COERCE_AS(__typeof__(v388),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+      v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+      v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+      v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+      v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+      v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+      v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+      v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+      v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+      v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+      v466 = v477;
+    }
+    else {
+      v478 = 0;
+    }
+    v490 = v478 + 8 * v476;
+    v491 = v478 + v472 - 8 * v473;
+    *(_QWORD*)(v478 + v472) = v466;
+    v470 = v478 + v472 + 8;
+    memcpy(v491, v471, v472),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    v414[3] = v491;
+    v414[4] = v470;
+    v414[5] = v490;
+    if (v471 != 0) {
+      v492 = 128;
+      if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+        v492 = 56;
+      }
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v492, v471),
+          v129 =
+              COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v130 =
+              COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v131 =
+              COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v133 =
+              COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v134 =
+              COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v135 =
+              COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+          v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+          v382 = COERCE_AS(__typeof__(v382),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v388 = COERCE_AS(__typeof__(v388),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+          v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+          v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+          v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+          v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+          v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+          v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+          v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+          v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+          v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    }
+  }
+  else {
+    *v469 = v466;
+    v470 = (__int64)(v469 + 1);
+  }
+  v414[4] = v470;
+  v493 = *(_QWORD*)(v578 + 1520);
+  v494 = *(_QWORD*)(v578 + 16);
+  v600_.v610 = *(_QWORD*)(v470 - 8);
+  TaskPassNodes_b94fe0(v493, v494, &v600_.v600),
+      v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+      v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+      v382 = COERCE_AS(__typeof__(v382),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v388 = COERCE_AS(__typeof__(v388),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+      v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+      v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+      v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+      v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+      v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+      v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+      v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+      v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+      v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  v495 = *(_QWORD*)(v578 + 16);
+  v596_.v598 = nullptr;
+  v596_.v599 = nullptr;
+  LODWORD(v596_.v596) = 0;
+  v496 = *(_DWORD*)(v495 + 100);
+  HIDWORD(v596_.v596) = *(_DWORD*)(v495 + 96);
+  LODWORD(v596_.v597) = (*(_QWORD*)(v495 + 8) - *(_QWORD*)v495) >> 3;
+  *(_DWORD*)(v495 + 96) = 1;
+  *(_DWORD*)(v495 + 100) = v496 + 1;
+  gfxa_MainPassGeneral_SetupLightCullingPass(
+      *(_QWORD*)(v578 + 1520), *(_QWORD*)(v578 + 16), (__int64)&v600_.v600),
+      v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+      v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+      v382 = COERCE_AS(__typeof__(v382),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v388 = COERCE_AS(__typeof__(v388),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+      v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+      v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+      v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+      v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+      v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+      v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+      v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+      v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+      v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  MainPassEffect_b90e00(*(_QWORD*)(v578 + 1544), *(_QWORD*)(v578 + 16)),
+      v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+      v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+      v382 = COERCE_AS(__typeof__(v382),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v388 = COERCE_AS(__typeof__(v388),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+      v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+      v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+      v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+      v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+      v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+      v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+      v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+      v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+      v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  v497 = *(_QWORD*)(v578 + 16);
+  v498 = GameHr_b32240(v497, "LightCulling-Fence", *(_DWORD*)(v497 + 104)),
+  v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+  v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+  v382 = COERCE_AS(__typeof__(v382),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v388 = COERCE_AS(__typeof__(v388),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+  v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+  v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+  v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+  v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+  v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+  v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+  v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+  v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+  v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  LODWORD(v596_.v596) = 1;
+  v596_.v598 = (const char*)v498;
+  v596_.v599 = "LightCulling-Fence-Wait";
+  ++*(_DWORD*)(v497 + 104);
+  *(_DWORD*)(v497 + 96) = HIDWORD(v596_.v596);
+  v499 = &v593_.v593[13];
+  if (v573 == 0) {
+    v499 = (_BYTE*)(((_UNKNOWN*)0x7CLL) + 1);
+  }
+  if ((*v499 & 1) != 0) {
+    if ((v407 & 1) != 0) {
+      gfxa_MainPass2D_SetupPrimivePass(*(_QWORD*)(v578 + 1568),
+                                       *(_QWORD*)(v578 + 16)),
+          v129 =
+              COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v130 =
+              COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v131 =
+              COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v133 =
+              COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v134 =
+              COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v135 =
+              COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+          v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+          v382 = COERCE_AS(__typeof__(v382),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v388 = COERCE_AS(__typeof__(v388),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+          v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+          v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+          v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+          v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+          v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+          v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+          v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+          v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+          v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+      gfxa_MainPass2D_SetupEffectPass(*(_QWORD*)(v578 + 1568),
+                                      *(_QWORD*)(v578 + 16), (__int64)v619),
+          v129 =
+              COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v130 =
+              COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v131 =
+              COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v133 =
+              COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v134 =
+              COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v135 =
+              COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+          v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+          v382 = COERCE_AS(__typeof__(v382),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v388 = COERCE_AS(__typeof__(v388),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+          v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+          v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+          v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+          v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+          v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+          v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+          v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+          v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+          v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+      gfxa_MainPass2D_SetupSpinePass(*(_QWORD*)(v578 + 1568),
+                                     *(_QWORD*)(v578 + 16)),
+          v129 =
+              COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v130 =
+              COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v131 =
+              COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v133 =
+              COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v134 =
+              COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v135 =
+              COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+          v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+          v382 = COERCE_AS(__typeof__(v382),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v388 = COERCE_AS(__typeof__(v388),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+          v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+          v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+          v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+          v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+          v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+          v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+          v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+          v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+          v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+      gfxa_MainPass2D_SetupFinalPass(*(_QWORD*)(v578 + 1568),
+                                     *(_QWORD*)(v578 + 16), v619),
+          v129 =
+              COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v130 =
+              COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v131 =
+              COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v133 =
+              COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v134 =
+              COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v135 =
+              COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+          v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+          v382 = COERCE_AS(__typeof__(v382),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v388 = COERCE_AS(__typeof__(v388),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+          v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+          v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+          v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+          v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+          v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+          v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+          v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+          v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+          v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    }
+    GameRoutine_b327c0(*(_QWORD**)(v578 + 16), (__int64)&v596_.v596),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  }
+  else {
+    gfxa_MainPassLighting_SetupMainShadowPass(*(_QWORD*)(v578 + 1528),
+                                              *(_QWORD*)(v578 + 16),
+                                              &v600_.v600, &v579_.v579),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    TaskPassNodes_bb0230(*(_QWORD*)(v578 + 1528), *(_QWORD*)(v578 + 16),
+                         (__int64)&v600_.v600),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    gfxa_MainPassLighting_SetupCharaShadowPass(
+        *(_QWORD*)(v578 + 1528), *(_QWORD*)(v578 + 16), &v600_.v600,
+        &v579_.v579, *(_QWORD*)(v578 + 1592)),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    TaskPassNodes_b954b0(*(_QWORD*)(v578 + 1520), *(_QWORD*)(v578 + 16),
+                         (__int64)&v600_.v600, (__int64)&v579_.v579),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    gfxa_MainPassGeneral_SetupGeometryPass(
+        *(_QWORD*)(v578 + 1520), *(_QWORD*)(v578 + 16), (__int64)&v600_.v600),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    TaskPassNodes_b909a0(*(_QWORD*)(v578 + 1544), *(_QWORD*)(v578 + 16),
+                         (__int64)&v600_.v600),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    gfxa_MainPassLighting_SetupAOPass1(*(__int64**)(v578 + 1528),
+                                       *(_QWORD*)(v578 + 16),
+                                       (__int64)&v600_.v600, &v579_.v579),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    GameRoutine_b327c0(*(_QWORD**)(v578 + 16), (__int64)&v596_.v596),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    gfxa_MainPassImageProcess_SetupExposureCalcPass(
+        *(_QWORD*)(v578 + 1552), *(_QWORD*)(v578 + 16), (__int64)&v600_.v600,
+        (__int64)&v579_.v579, 1),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    TaskPassNodes_baf760(*(_QWORD*)(v578 + 1528), *(_QWORD*)(v578 + 16),
+                         (__int64)&v600_.v600, (__int64)&v579_.v579),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    gfxa_MainPassChara_SetupSceneBuffersPass(
+        *(_QWORD*)(v578 + 1536), *(_QWORD*)(v578 + 16), (__int64)&v600_.v600,
+        (__int64)&v579_.v579, *(_QWORD*)(v578 + 1592)),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    if (*(_BYTE*)(v578 + 1670) == 1) {
+      TaskPassNodes_b89ce0(*(_QWORD*)(v578 + 1536), *(_QWORD*)(v578 + 16),
+                           (__int64)&v600_.v600, (__int64)&v579_.v579,
+                           *(_QWORD*)(v578 + 1592)),
+          v129 =
+              COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v130 =
+              COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v131 =
+              COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v133 =
+              COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v134 =
+              COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v135 =
+              COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+          v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+          v382 = COERCE_AS(__typeof__(v382),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v388 = COERCE_AS(__typeof__(v388),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+          v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+          v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+          v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+          v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+          v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+          v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+          v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+          v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+          v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+      gfxa_MainPassChara_SetupOutlinePass(
+          *(_QWORD*)(v578 + 1536), *(_QWORD*)(v578 + 16), (__int64)&v600_.v600),
+          v129 =
+              COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v130 =
+              COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v131 =
+              COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v133 =
+              COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v134 =
+              COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v135 =
+              COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+          v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+          v382 = COERCE_AS(__typeof__(v382),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v388 = COERCE_AS(__typeof__(v388),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+          v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+          v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+          v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+          v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+          v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+          v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+          v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+          v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+          v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+      TaskPassNodes_b8a560(*(_QWORD*)(v578 + 1536), *(_QWORD*)(v578 + 16),
+                           (__int64)&v600_.v600),
+          v129 =
+              COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v130 =
+              COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v131 =
+              COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v133 =
+              COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v134 =
+              COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v135 =
+              COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+          v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+          v382 = COERCE_AS(__typeof__(v382),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v388 = COERCE_AS(__typeof__(v388),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+          v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+          v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+          v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+          v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+          v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+          v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+          v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+          v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+          v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+      gfxa_MainPassChara_SetupPostOutlinePass(*(_QWORD*)(v578 + 1536),
+                                              *(_QWORD*)(v578 + 16),
+                                              &v600_.v600, &v579_.v579),
+          v129 =
+              COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v130 =
+              COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v131 =
+              COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v133 =
+              COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v134 =
+              COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v135 =
+              COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+          v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+          v382 = COERCE_AS(__typeof__(v382),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v388 = COERCE_AS(__typeof__(v388),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+          v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+          v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+          v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+          v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+          v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+          v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+          v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+          v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+          v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    }
+    TaskPassNodes_baf9c0(*(_QWORD*)(v578 + 1528), *(_QWORD*)(v578 + 16),
+                         &v600_.v600),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    gfxa_MainPassGeneral_SetupSkyPass(*(_QWORD*)(v578 + 1520),
+                                      *(_QWORD*)(v578 + 16), &v600_.v600),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    gfxa_MainPassImageProcess_SetupExposureCalcPass(
+        *(_QWORD*)(v578 + 1552), *(_QWORD*)(v578 + 16), (__int64)&v600_.v600,
+        (__int64)&v579_.v579, 0),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    if ((*(_BYTE*)(v578 + 1670) & 1) == 0) {
+      TaskPassNodes_b89ce0(*(_QWORD*)(v578 + 1536), *(_QWORD*)(v578 + 16),
+                           (__int64)&v600_.v600, (__int64)&v579_.v579,
+                           *(_QWORD*)(v578 + 1592)),
+          v129 =
+              COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v130 =
+              COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v131 =
+              COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v133 =
+              COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v134 =
+              COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v135 =
+              COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+          v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+          v382 = COERCE_AS(__typeof__(v382),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v388 = COERCE_AS(__typeof__(v388),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+          v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+          v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+          v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+          v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+          v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+          v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+          v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+          v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+          v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+      gfxa_MainPassChara_SetupOutlinePass(
+          *(_QWORD*)(v578 + 1536), *(_QWORD*)(v578 + 16), (__int64)&v600_.v600),
+          v129 =
+              COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v130 =
+              COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v131 =
+              COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v133 =
+              COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v134 =
+              COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v135 =
+              COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+          v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+          v382 = COERCE_AS(__typeof__(v382),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v388 = COERCE_AS(__typeof__(v388),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+          v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+          v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+          v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+          v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+          v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+          v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+          v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+          v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+          v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+      TaskPassNodes_b8a560(*(_QWORD*)(v578 + 1536), *(_QWORD*)(v578 + 16),
+                           (__int64)&v600_.v600),
+          v129 =
+              COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v130 =
+              COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v131 =
+              COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v133 =
+              COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v134 =
+              COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v135 =
+              COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+          v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+          v382 = COERCE_AS(__typeof__(v382),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v388 = COERCE_AS(__typeof__(v388),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+          v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+          v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+          v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+          v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+          v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+          v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+          v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+          v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+          v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+      gfxa_MainPassChara_SetupPostOutlinePass(*(_QWORD*)(v578 + 1536),
+                                              *(_QWORD*)(v578 + 16),
+                                              &v600_.v600, &v579_.v579),
+          v129 =
+              COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v130 =
+              COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v131 =
+              COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v133 =
+              COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v134 =
+              COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v135 =
+              COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+          v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+          v382 = COERCE_AS(__typeof__(v382),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v388 = COERCE_AS(__typeof__(v388),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+          v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+          v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+          v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+          v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+          v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+          v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+          v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+          v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+          v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    }
+    gfxa_MainPassChara_SetupDiffusionPass(*(_QWORD*)(v578 + 1536),
+                                          *(_QWORD*)(v578 + 16), &v600_.v600,
+                                          &v579_.v579),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    gfxa_MainPassImageProcess_SetupFogPass(*(_QWORD*)(v578 + 1552),
+                                           *(_QWORD*)(v578 + 16), &v600_.v600,
+                                           &v579_.v579),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    gfxa_MainPassGeneral_SetupForwardPass(*(_QWORD**)(v578 + 1520),
+                                          *(_QWORD*)(v578 + 16), &v600_.v600,
+                                          (__int64)&v579_.v579),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    gfxa_MainPassImageProcess_SetupExposureCompPass(
+        *(_QWORD*)(v578 + 1552), *(_QWORD*)(v578 + 16), &v600_.v600,
+        (__int64)&v579_.v579),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    TaskPassNodes_b9fd30(*(_QWORD*)(v578 + 1552), *(_QWORD*)(v578 + 16),
+                         &v600_.v600),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    gfxa_MainPassChara_SetupTransparentPass(
+        *(_QWORD*)(v578 + 1536), *(_QWORD*)(v578 + 16), (__int64)&v600_.v600),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    gfxa_MainPassImageProcess_SetupLensFlareSystemPass(
+        *(_QWORD*)(v578 + 1552), *(_QWORD*)(v578 + 16), (__int64)&v600_.v600,
+        (__int64)&v579_.v579, *(_DWORD*)(v578 + 1684)),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    TaskPassNodes_b9ff60(*(_QWORD*)(v578 + 1552), *(_QWORD*)(v578 + 16),
+                         &v600_.v600, &v579_.v579),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    gfxa_MainPassImageProcess_SetupHeightFogPass(*(_QWORD*)(v578 + 1552),
+                                                 *(_QWORD*)(v578 + 16),
+                                                 &v600_.v600, &v579_.v579),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    gfxa_MainPassEffect_SetupLightingPass(
+        *(_QWORD*)(v578 + 1544), *(_QWORD*)(v578 + 16), (__int64)&v600_.v600),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    TaskPassNodes_ba01d0(*(_QWORD*)(v578 + 1552), *(_QWORD*)(v578 + 16),
+                         &v600_.v600, &v579_.v579),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    MainPassChara_b8ac30(*(_QWORD*)(v578 + 1536), *(_QWORD*)(v578 + 16),
+                         &v600_.v600),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    gfxa_MainPassImageProcess_SetupPostProcessPass2(
+        *(_QWORD*)(v578 + 1552), *(_QWORD*)(v578 + 16), &v600_.v600,
+        &v579_.v579, *(_QWORD*)(v578 + 1576)),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    v500 = *(_QWORD*)(*(_QWORD*)(*(_QWORD*)(v578 + 80) + 8LL) + 232LL);
+    v501 = 2376;
+    if (*(_BYTE*)(v500 + 2344) != 0) {
+      v501 = 2340;
+    }
+    v502 = *(_DWORD*)(v500 + v501);
+    if (v502 != 2) {
+      gfxa_MainPassChara_SetupSilhouettePass(*(_QWORD*)(v578 + 1536),
+                                             *(_QWORD*)(v578 + 16), &v600_.v600,
+                                             &v579_.v579),
+          v129 =
+              COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v130 =
+              COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v131 =
+              COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v133 =
+              COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v134 =
+              COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v135 =
+              COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+          v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+          v382 = COERCE_AS(__typeof__(v382),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v388 = COERCE_AS(__typeof__(v388),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+          v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+          v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+          v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+          v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+          v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+          v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+          v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+          v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+          v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+      MainPassGeneral_b96ec0(*(_QWORD*)(v578 + 1520), *(_QWORD*)(v578 + 16),
+                             (__int64)&v600_.v600, (__int64)&v579_.v579),
+          v129 =
+              COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v130 =
+              COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v131 =
+              COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v133 =
+              COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v134 =
+              COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v135 =
+              COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+          v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+          v382 = COERCE_AS(__typeof__(v382),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v388 = COERCE_AS(__typeof__(v388),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+          v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+          v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+          v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+          v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+          v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+          v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+          v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+          v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+          v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    }
+    gfxa_MainPass3DUI_SetupPrimitivePass(*(_QWORD*)(v578 + 1560),
+                                         *(_QWORD*)(v578 + 16),
+                                         (__int64)&v600_.v600, 0),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    gfxa_MainPass3DUI_SetupPrimitivePass(*(_QWORD*)(v578 + 1560),
+                                         *(_QWORD*)(v578 + 16),
+                                         (__int64)&v600_.v600, 1u),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    gfxa_MainPass3DUI_Setup3DUIPass(
+        *(_QWORD*)(v578 + 1560), *(_QWORD*)(v578 + 16), (__int64)&v600_.v600),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    if (v502 == 2) {
+      gfxa_MainPassChara_SetupSilhouettePass(*(_QWORD*)(v578 + 1536),
+                                             *(_QWORD*)(v578 + 16), &v600_.v600,
+                                             &v579_.v579),
+          v129 =
+              COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v130 =
+              COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v131 =
+              COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v133 =
+              COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v134 =
+              COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v135 =
+              COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+          v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+          v382 = COERCE_AS(__typeof__(v382),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v388 = COERCE_AS(__typeof__(v388),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+          v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+          v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+          v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+          v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+          v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+          v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+          v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+          v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+          v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    }
+    gfxa_MainPassEffect_Setup3DPass(*(_QWORD*)(v578 + 1544),
+                                    *(_QWORD*)(v578 + 16), &v600_.v600),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    gfxa_MainPass3DUI_SetupPrimitivePass(*(_QWORD*)(v578 + 1560),
+                                         *(_QWORD*)(v578 + 16),
+                                         (__int64)&v600_.v600, 2u),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    TaskPassNodes_ba09c0(*(_QWORD*)(v578 + 1552), *(_QWORD*)(v578 + 16),
+                         &v600_.v600, &v579_.v579),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    gfxa_MainPassEffect_SetupCursorUIPass(
+        *(_QWORD*)(v578 + 1544), *(_QWORD*)(v578 + 16), (__int64)&v600_.v600),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    if (*(_BYTE*)(*(_QWORD*)(v578 + 8) + 304LL) == 1) {
+      v503 = *(_QWORD*)(v578 + 16);
+      v504 = GameHr_b32240(v503, "PreUpscaler-Fence", *(_DWORD*)(v503 + 104)),
+      v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+      v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+      v382 = COERCE_AS(__typeof__(v382),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v388 = COERCE_AS(__typeof__(v388),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+      v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+      v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+      v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+      v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+      v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+      v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+      v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+      v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+      v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+      v505 = *(_DWORD*)(v503 + 104);
+      v506 = *(_DWORD*)(v503 + 96);
+      v621_.v622 = nullptr;
+      v621_.v623 = nullptr;
+      *(_DWORD*)(v503 + 96) = 2;
+      *(_DWORD*)(v503 + 104) = v505 + 1;
+      if (v504 != 0) {
+        GameHr_b325c0(v503, "PreUpscaler-Fence-Wait", v504),
+            v129 = COERCE_AS(__typeof__(v129),
+                             PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v130 = COERCE_AS(__typeof__(v130),
+                             PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v131 = COERCE_AS(__typeof__(v131),
+                             PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v133 = COERCE_AS(__typeof__(v133),
+                             PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v134 = COERCE_AS(__typeof__(v134),
+                             PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v135 = COERCE_AS(__typeof__(v135),
+                             PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v24 =
+                COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v25 =
+                COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v26 =
+                COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v28 =
+                COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+            v29 =
+                COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+            v382 = COERCE_AS(__typeof__(v382),
+                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v388 = COERCE_AS(__typeof__(v388),
+                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v40 =
+                COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v41 =
+                COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v42 =
+                COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v44 =
+                COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+            v45 =
+                COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+            v53 =
+                COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v54 =
+                COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v55 =
+                COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v57 =
+                COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+            v58 =
+                COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+            v66 =
+                COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v67 =
+                COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v68 =
+                COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v70 =
+                COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+            v71 =
+                COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+            v79 =
+                COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v80 =
+                COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v81 =
+                COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v83 =
+                COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+            v84 =
+                COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+            v92 =
+                COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v93 =
+                COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v94 =
+                COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v96 =
+                COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+            v97 =
+                COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+      }
+      LODWORD(v621_.v621[0]) = 0;
+      HIDWORD(v621_.v621[0]) = v506;
+      LODWORD(v621_.v621[1]) = (*(_QWORD*)(v503 + 8) - *(_QWORD*)v503) >> 3;
+      ++*(_DWORD*)(v503 + 100);
+      gfxa_MainPassImageProcess_SetupDLSSPass(
+          *(_QWORD*)(v578 + 1552), *(_QWORD*)(v578 + 16), &v600_.v600,
+          (__int64)&v579_.v579, v578 + 1692),
+          v129 =
+              COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v130 =
+              COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v131 =
+              COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v133 =
+              COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v134 =
+              COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v135 =
+              COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+          v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+          v382 = COERCE_AS(__typeof__(v382),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v388 = COERCE_AS(__typeof__(v388),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+          v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+          v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+          v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+          v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+          v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+          v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+          v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+          v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+          v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+      v507 = *(_QWORD*)(v578 + 16);
+      v621_.v622 =
+          (char*)GameHr_b32240(v507, "DLSS-Fence", *(_DWORD*)(v507 + 104)),
+      v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+      v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+      v382 = COERCE_AS(__typeof__(v382),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v388 = COERCE_AS(__typeof__(v388),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+      v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+      v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+      v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+      v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+      v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+      v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+      v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+      v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+      v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+      v621_.v623 = "DLSS-Fence-Wait";
+      ++*(_DWORD*)(v507 + 104);
+      LODWORD(v621_.v621[0]) = 1;
+      *(_DWORD*)(v507 + 96) = 3;
+      gfxa_anonymous_bbc200(*(_QWORD*)(v578 + 16), 1),
+          v129 =
+              COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v130 =
+              COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v131 =
+              COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v133 =
+              COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v134 =
+              COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v135 =
+              COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+          v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+          v382 = COERCE_AS(__typeof__(v382),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v388 = COERCE_AS(__typeof__(v388),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+          v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+          v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+          v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+          v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+          v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+          v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+          v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+          v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+          v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+      gfxa_MainPassImageProcess_SetupPreDoFPass(
+          *(_QWORD*)(v578 + 1552), *(_QWORD*)(v578 + 16), (__int64)&v600_.v600,
+          &v579_.v579),
+          v129 =
+              COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v130 =
+              COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v131 =
+              COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v133 =
+              COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v134 =
+              COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v135 =
+              COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+          v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+          v382 = COERCE_AS(__typeof__(v382),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v388 = COERCE_AS(__typeof__(v388),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+          v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+          v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+          v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+          v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+          v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+          v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+          v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+          v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+          v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+      gfxa_MainPassImageProcess_SetupDepthUpscalePass(
+          *(_QWORD*)(v578 + 1552), *(_QWORD*)(v578 + 16), (__int64)&v600_.v600),
+          v129 =
+              COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v130 =
+              COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v131 =
+              COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v133 =
+              COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v134 =
+              COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v135 =
+              COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+          v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+          v382 = COERCE_AS(__typeof__(v382),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v388 = COERCE_AS(__typeof__(v388),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+          v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+          v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+          v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+          v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+          v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+          v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+          v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+          v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+          v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+      gfxa_MainPassEffect_SetupOffscreenPass(
+          *(_QWORD*)(v578 + 1544), *(_QWORD*)(v578 + 16), (__int64)&v600_.v600),
+          v129 =
+              COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v130 =
+              COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v131 =
+              COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v133 =
+              COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v134 =
+              COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v135 =
+              COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+          v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+          v382 = COERCE_AS(__typeof__(v382),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v388 = COERCE_AS(__typeof__(v388),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+          v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+          v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+          v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+          v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+          v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+          v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+          v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+          v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+          v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+      gfxa_MainPassImageProcess_SetupOffscreenPostProcessPass(
+          *(_QWORD*)(v578 + 1552), *(_QWORD*)(v578 + 16), (__int64)&v600_.v600,
+          (__int64)&v579_.v579),
+          v129 =
+              COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v130 =
+              COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v131 =
+              COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v133 =
+              COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v134 =
+              COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v135 =
+              COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+          v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+          v382 = COERCE_AS(__typeof__(v382),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v388 = COERCE_AS(__typeof__(v388),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+          v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+          v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+          v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+          v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+          v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+          v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+          v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+          v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+          v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+      if ((v407 & 1) != 0) {
+        gfxa_MainPass2D_SetupPrimivePass(*(_QWORD*)(v578 + 1568),
+                                         *(_QWORD*)(v578 + 16)),
+            v129 = COERCE_AS(__typeof__(v129),
+                             PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v130 = COERCE_AS(__typeof__(v130),
+                             PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v131 = COERCE_AS(__typeof__(v131),
+                             PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v133 = COERCE_AS(__typeof__(v133),
+                             PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v134 = COERCE_AS(__typeof__(v134),
+                             PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v135 = COERCE_AS(__typeof__(v135),
+                             PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v24 =
+                COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v25 =
+                COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v26 =
+                COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v28 =
+                COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+            v29 =
+                COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+            v382 = COERCE_AS(__typeof__(v382),
+                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v388 = COERCE_AS(__typeof__(v388),
+                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v40 =
+                COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v41 =
+                COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v42 =
+                COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v44 =
+                COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+            v45 =
+                COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+            v53 =
+                COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v54 =
+                COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v55 =
+                COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v57 =
+                COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+            v58 =
+                COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+            v66 =
+                COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v67 =
+                COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v68 =
+                COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v70 =
+                COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+            v71 =
+                COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+            v79 =
+                COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v80 =
+                COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v81 =
+                COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v83 =
+                COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+            v84 =
+                COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+            v92 =
+                COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v93 =
+                COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v94 =
+                COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v96 =
+                COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+            v97 =
+                COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+        gfxa_MainPass2D_SetupEffectPass(*(_QWORD*)(v578 + 1568),
+                                        *(_QWORD*)(v578 + 16), (__int64)v619),
+            v129 = COERCE_AS(__typeof__(v129),
+                             PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v130 = COERCE_AS(__typeof__(v130),
+                             PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v131 = COERCE_AS(__typeof__(v131),
+                             PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v133 = COERCE_AS(__typeof__(v133),
+                             PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v134 = COERCE_AS(__typeof__(v134),
+                             PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v135 = COERCE_AS(__typeof__(v135),
+                             PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v24 =
+                COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v25 =
+                COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v26 =
+                COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v28 =
+                COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+            v29 =
+                COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+            v382 = COERCE_AS(__typeof__(v382),
+                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v388 = COERCE_AS(__typeof__(v388),
+                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v40 =
+                COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v41 =
+                COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v42 =
+                COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v44 =
+                COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+            v45 =
+                COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+            v53 =
+                COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v54 =
+                COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v55 =
+                COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v57 =
+                COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+            v58 =
+                COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+            v66 =
+                COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v67 =
+                COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v68 =
+                COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v70 =
+                COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+            v71 =
+                COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+            v79 =
+                COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v80 =
+                COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v81 =
+                COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v83 =
+                COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+            v84 =
+                COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+            v92 =
+                COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v93 =
+                COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v94 =
+                COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v96 =
+                COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+            v97 =
+                COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+        gfxa_MainPass2D_SetupSpinePass(*(_QWORD*)(v578 + 1568),
+                                       *(_QWORD*)(v578 + 16)),
+            v129 = COERCE_AS(__typeof__(v129),
+                             PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v130 = COERCE_AS(__typeof__(v130),
+                             PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v131 = COERCE_AS(__typeof__(v131),
+                             PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v133 = COERCE_AS(__typeof__(v133),
+                             PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v134 = COERCE_AS(__typeof__(v134),
+                             PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v135 = COERCE_AS(__typeof__(v135),
+                             PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v24 =
+                COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v25 =
+                COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v26 =
+                COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v28 =
+                COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+            v29 =
+                COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+            v382 = COERCE_AS(__typeof__(v382),
+                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v388 = COERCE_AS(__typeof__(v388),
+                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v40 =
+                COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v41 =
+                COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v42 =
+                COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v44 =
+                COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+            v45 =
+                COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+            v53 =
+                COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v54 =
+                COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v55 =
+                COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v57 =
+                COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+            v58 =
+                COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+            v66 =
+                COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v67 =
+                COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v68 =
+                COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v70 =
+                COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+            v71 =
+                COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+            v79 =
+                COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v80 =
+                COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v81 =
+                COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v83 =
+                COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+            v84 =
+                COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+            v92 =
+                COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v93 =
+                COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v94 =
+                COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v96 =
+                COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+            v97 =
+                COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+        gfxa_MainPass2D_SetupFinalPass(*(_QWORD*)(v578 + 1568),
+                                       *(_QWORD*)(v578 + 16), v619),
+            v129 = COERCE_AS(__typeof__(v129),
+                             PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v130 = COERCE_AS(__typeof__(v130),
+                             PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v131 = COERCE_AS(__typeof__(v131),
+                             PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v133 = COERCE_AS(__typeof__(v133),
+                             PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v134 = COERCE_AS(__typeof__(v134),
+                             PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v135 = COERCE_AS(__typeof__(v135),
+                             PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v24 =
+                COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v25 =
+                COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v26 =
+                COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v28 =
+                COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+            v29 =
+                COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+            v382 = COERCE_AS(__typeof__(v382),
+                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v388 = COERCE_AS(__typeof__(v388),
+                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v40 =
+                COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v41 =
+                COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v42 =
+                COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v44 =
+                COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+            v45 =
+                COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+            v53 =
+                COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v54 =
+                COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v55 =
+                COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v57 =
+                COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+            v58 =
+                COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+            v66 =
+                COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v67 =
+                COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v68 =
+                COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v70 =
+                COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+            v71 =
+                COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+            v79 =
+                COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v80 =
+                COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v81 =
+                COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v83 =
+                COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+            v84 =
+                COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+            v92 =
+                COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v93 =
+                COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v94 =
+                COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v96 =
+                COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+            v97 =
+                COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+      }
+      GameRoutine_b327c0(*(_QWORD**)(v578 + 16), (__int64)v621_.v621),
+          v129 =
+              COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v130 =
+              COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v131 =
+              COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v133 =
+              COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v134 =
+              COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v135 =
+              COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+          v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+          v382 = COERCE_AS(__typeof__(v382),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v388 = COERCE_AS(__typeof__(v388),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+          v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+          v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+          v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+          v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+          v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+          v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+          v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+          v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+          v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+      gfxa_anonymous_bbc200(*(_QWORD*)(v578 + 16), 0),
+          v129 =
+              COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v130 =
+              COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v131 =
+              COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v133 =
+              COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v134 =
+              COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v135 =
+              COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+          v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+          v382 = COERCE_AS(__typeof__(v382),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v388 = COERCE_AS(__typeof__(v388),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+          v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+          v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+          v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+          v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+          v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+          v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+          v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+          v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+          v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    }
+    else {
+      gfxa_MainPassImageProcess_SetupPreDoFPass(
+          *(_QWORD*)(v578 + 1552), *(_QWORD*)(v578 + 16), (__int64)&v600_.v600,
+          &v579_.v579),
+          v129 =
+              COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v130 =
+              COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v131 =
+              COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v133 =
+              COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v134 =
+              COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v135 =
+              COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+          v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+          v382 = COERCE_AS(__typeof__(v382),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v388 = COERCE_AS(__typeof__(v388),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+          v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+          v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+          v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+          v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+          v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+          v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+          v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+          v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+          v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+      gfxa_anonymous_bbc200(*(_QWORD*)(v578 + 16), 1),
+          v129 =
+              COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v130 =
+              COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v131 =
+              COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v133 =
+              COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v134 =
+              COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v135 =
+              COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+          v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+          v382 = COERCE_AS(__typeof__(v382),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v388 = COERCE_AS(__typeof__(v388),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+          v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+          v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+          v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+          v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+          v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+          v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+          v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+          v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+          v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+      if (*(_BYTE*)(*(_QWORD*)(v578 + 8) + 304LL) == 1) {
+        v508 = *(_QWORD*)(v578 + 16);
+        v509 = GameHr_b32240(v508, "PreUpscaler-Fence", *(_DWORD*)(v508 + 104)),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+        v510 = *(_DWORD*)(v508 + 104);
+        v511 = *(_DWORD*)(v508 + 96);
+        v621_.v622 = nullptr;
+        v621_.v623 = nullptr;
+        *(_DWORD*)(v508 + 104) = v510 + 1;
+        *(_DWORD*)(v508 + 96) = 2;
+        if (v509 != 0) {
+          GameHr_b325c0(v508, "PreUpscaler-Fence-Wait", v509),
+              v129 = COERCE_AS(__typeof__(v129),
+                               PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v130 = COERCE_AS(__typeof__(v130),
+                               PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v131 = COERCE_AS(__typeof__(v131),
+                               PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v133 = COERCE_AS(__typeof__(v133),
+                               PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v134 = COERCE_AS(__typeof__(v134),
+                               PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v135 = COERCE_AS(__typeof__(v135),
+                               PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v24 = COERCE_AS(__typeof__(v24),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v25 = COERCE_AS(__typeof__(v25),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v26 = COERCE_AS(__typeof__(v26),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v28 = COERCE_AS(__typeof__(v28),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v29 = COERCE_AS(__typeof__(v29),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v382 = COERCE_AS(__typeof__(v382),
+                               PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+              v388 = COERCE_AS(__typeof__(v388),
+                               PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+              v40 = COERCE_AS(__typeof__(v40),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v41 = COERCE_AS(__typeof__(v41),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v42 = COERCE_AS(__typeof__(v42),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v44 = COERCE_AS(__typeof__(v44),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v45 = COERCE_AS(__typeof__(v45),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v53 = COERCE_AS(__typeof__(v53),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v54 = COERCE_AS(__typeof__(v54),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v55 = COERCE_AS(__typeof__(v55),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v57 = COERCE_AS(__typeof__(v57),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v58 = COERCE_AS(__typeof__(v58),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v66 = COERCE_AS(__typeof__(v66),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v67 = COERCE_AS(__typeof__(v67),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v68 = COERCE_AS(__typeof__(v68),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v70 = COERCE_AS(__typeof__(v70),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v71 = COERCE_AS(__typeof__(v71),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v79 = COERCE_AS(__typeof__(v79),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v80 = COERCE_AS(__typeof__(v80),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v81 = COERCE_AS(__typeof__(v81),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v83 = COERCE_AS(__typeof__(v83),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v84 = COERCE_AS(__typeof__(v84),
+                              PSEUDO_REGISTER(float, "s1", "=w")),
+              v92 = COERCE_AS(__typeof__(v92),
+                              PSEUDO_REGISTER(__n128, "v1", "=w")),
+              v93 = COERCE_AS(__typeof__(v93),
+                              PSEUDO_REGISTER(__n128, "v2", "=w")),
+              v94 = COERCE_AS(__typeof__(v94),
+                              PSEUDO_REGISTER(__n128, "v3", "=w")),
+              v96 = COERCE_AS(__typeof__(v96),
+                              PSEUDO_REGISTER(float, "s0", "=w")),
+              v97 = COERCE_AS(__typeof__(v97),
+                              PSEUDO_REGISTER(float, "s1", "=w"));
+        }
+        LODWORD(v621_.v621[0]) = 0;
+        HIDWORD(v621_.v621[0]) = v511;
+        LODWORD(v621_.v621[1]) = (*(_QWORD*)(v508 + 8) - *(_QWORD*)v508) >> 3;
+        ++*(_DWORD*)(v508 + 100);
+        gfxa_MainPassImageProcess_SetupDLSSPass(
+            *(_QWORD*)(v578 + 1552), *(_QWORD*)(v578 + 16), &v600_.v600,
+            (__int64)&v579_.v579, v578 + 1692),
+            v129 = COERCE_AS(__typeof__(v129),
+                             PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v130 = COERCE_AS(__typeof__(v130),
+                             PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v131 = COERCE_AS(__typeof__(v131),
+                             PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v133 = COERCE_AS(__typeof__(v133),
+                             PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v134 = COERCE_AS(__typeof__(v134),
+                             PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v135 = COERCE_AS(__typeof__(v135),
+                             PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v24 =
+                COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v25 =
+                COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v26 =
+                COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v28 =
+                COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+            v29 =
+                COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+            v382 = COERCE_AS(__typeof__(v382),
+                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v388 = COERCE_AS(__typeof__(v388),
+                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v40 =
+                COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v41 =
+                COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v42 =
+                COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v44 =
+                COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+            v45 =
+                COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+            v53 =
+                COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v54 =
+                COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v55 =
+                COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v57 =
+                COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+            v58 =
+                COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+            v66 =
+                COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v67 =
+                COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v68 =
+                COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v70 =
+                COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+            v71 =
+                COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+            v79 =
+                COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v80 =
+                COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v81 =
+                COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v83 =
+                COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+            v84 =
+                COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+            v92 =
+                COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v93 =
+                COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v94 =
+                COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v96 =
+                COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+            v97 =
+                COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+        v512 = *(_QWORD*)(v578 + 16);
+        v621_.v622 =
+            (char*)GameHr_b32240(v512, "DLSS-Fence", *(_DWORD*)(v512 + 104)),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+        v621_.v623 = "DLSS-Fence-Wait";
+        ++*(_DWORD*)(v512 + 104);
+        LODWORD(v621_.v621[0]) = 1;
+        *(_DWORD*)(v512 + 96) = 3;
+        GameRoutine_b327c0(*(_QWORD**)(v578 + 16), (__int64)v621_.v621),
+            v129 = COERCE_AS(__typeof__(v129),
+                             PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v130 = COERCE_AS(__typeof__(v130),
+                             PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v131 = COERCE_AS(__typeof__(v131),
+                             PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v133 = COERCE_AS(__typeof__(v133),
+                             PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v134 = COERCE_AS(__typeof__(v134),
+                             PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v135 = COERCE_AS(__typeof__(v135),
+                             PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v24 =
+                COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v25 =
+                COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v26 =
+                COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v28 =
+                COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+            v29 =
+                COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+            v382 = COERCE_AS(__typeof__(v382),
+                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v388 = COERCE_AS(__typeof__(v388),
+                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v40 =
+                COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v41 =
+                COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v42 =
+                COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v44 =
+                COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+            v45 =
+                COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+            v53 =
+                COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v54 =
+                COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v55 =
+                COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v57 =
+                COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+            v58 =
+                COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+            v66 =
+                COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v67 =
+                COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v68 =
+                COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v70 =
+                COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+            v71 =
+                COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+            v79 =
+                COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v80 =
+                COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v81 =
+                COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v83 =
+                COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+            v84 =
+                COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+            v92 =
+                COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v93 =
+                COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v94 =
+                COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v96 =
+                COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+            v97 =
+                COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+      }
+      else {
+        gfxa_MainPassImageProcess_SetupDLSSPass(
+            *(_QWORD*)(v578 + 1552), *(_QWORD*)(v578 + 16), &v600_.v600,
+            (__int64)&v579_.v579, v578 + 1692),
+            v129 = COERCE_AS(__typeof__(v129),
+                             PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v130 = COERCE_AS(__typeof__(v130),
+                             PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v131 = COERCE_AS(__typeof__(v131),
+                             PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v133 = COERCE_AS(__typeof__(v133),
+                             PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v134 = COERCE_AS(__typeof__(v134),
+                             PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v135 = COERCE_AS(__typeof__(v135),
+                             PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v24 =
+                COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v25 =
+                COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v26 =
+                COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v28 =
+                COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+            v29 =
+                COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+            v382 = COERCE_AS(__typeof__(v382),
+                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v388 = COERCE_AS(__typeof__(v388),
+                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v40 =
+                COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v41 =
+                COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v42 =
+                COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v44 =
+                COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+            v45 =
+                COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+            v53 =
+                COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v54 =
+                COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v55 =
+                COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v57 =
+                COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+            v58 =
+                COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+            v66 =
+                COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v67 =
+                COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v68 =
+                COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v70 =
+                COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+            v71 =
+                COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+            v79 =
+                COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v80 =
+                COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v81 =
+                COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v83 =
+                COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+            v84 =
+                COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+            v92 =
+                COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v93 =
+                COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v94 =
+                COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v96 =
+                COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+            v97 =
+                COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+      }
+      gfxa_anonymous_bbc200(*(_QWORD*)(v578 + 16), 0),
+          v129 =
+              COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v130 =
+              COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v131 =
+              COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v133 =
+              COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v134 =
+              COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v135 =
+              COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+          v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+          v382 = COERCE_AS(__typeof__(v382),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v388 = COERCE_AS(__typeof__(v388),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+          v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+          v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+          v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+          v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+          v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+          v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+          v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+          v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+          v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+      gfxa_MainPassImageProcess_SetupDepthUpscalePass(
+          *(_QWORD*)(v578 + 1552), *(_QWORD*)(v578 + 16), (__int64)&v600_.v600),
+          v129 =
+              COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v130 =
+              COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v131 =
+              COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v133 =
+              COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v134 =
+              COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v135 =
+              COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+          v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+          v382 = COERCE_AS(__typeof__(v382),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v388 = COERCE_AS(__typeof__(v388),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+          v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+          v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+          v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+          v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+          v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+          v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+          v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+          v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+          v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+      gfxa_MainPassEffect_SetupOffscreenPass(
+          *(_QWORD*)(v578 + 1544), *(_QWORD*)(v578 + 16), (__int64)&v600_.v600),
+          v129 =
+              COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v130 =
+              COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v131 =
+              COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v133 =
+              COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v134 =
+              COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v135 =
+              COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+          v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+          v382 = COERCE_AS(__typeof__(v382),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v388 = COERCE_AS(__typeof__(v388),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+          v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+          v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+          v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+          v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+          v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+          v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+          v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+          v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+          v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+      gfxa_MainPassImageProcess_SetupOffscreenPostProcessPass(
+          *(_QWORD*)(v578 + 1552), *(_QWORD*)(v578 + 16), (__int64)&v600_.v600,
+          (__int64)&v579_.v579),
+          v129 =
+              COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v130 =
+              COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v131 =
+              COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v133 =
+              COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v134 =
+              COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v135 =
+              COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+          v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+          v382 = COERCE_AS(__typeof__(v382),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v388 = COERCE_AS(__typeof__(v388),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+          v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+          v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+          v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+          v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+          v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+          v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+          v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+          v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+          v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    }
+    gfxa_MainPassImageProcess_SetupPostProcessPass4(*(_QWORD*)(v578 + 1552),
+                                                    *(_QWORD*)(v578 + 16),
+                                                    &v600_.v600, &v579_.v579),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  }
+  gfxa_MainPassImageProcess_SetupPostProcessPass5(*(_QWORD***)(v578 + 1552),
+                                                  *(_QWORD*)(v578 + 16),
+                                                  &v600_.v600, &v579_.v579),
+      v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+      v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+      v382 = COERCE_AS(__typeof__(v382),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v388 = COERCE_AS(__typeof__(v388),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+      v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+      v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+      v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+      v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+      v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+      v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+      v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+      v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+      v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  v513 = *(_QWORD*)(v578 + 1648);
+  v620 = &v600_.v600;
+  v514 = *(_QWORD*)(v578 + 16);
+  if (*(_DWORD*)(v513 + 4) != 1) {
+    goto LABEL_483;
+  }
+  v515 = *(_QWORD*)(*(_QWORD*)(*(_QWORD*)(v578 + 80) + 8LL) + 160LL);
+  v516 = 368;
+  if (*(_BYTE*)(v515 + 336) != 0) {
+    v516 = 332;
+  }
+  if (*(float*)(v515 + v516) > 0x0.0p+0f) {
+    v517 = 1;
+  }
+  else {
+  LABEL_483:
+    v517 = 0;
+  }
+  v519 = *(_QWORD*)v514;
+  v518 = *(_QWORD*)(v514 + 8);
+  v520 = *(_DWORD*)(v514 + 96);
+  v521 = fw_memory_HeapManager_Allocate_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr, 208, 16, 0),
+  v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+  v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+  v382 = COERCE_AS(__typeof__(v382),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v388 = COERCE_AS(__typeof__(v388),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+  v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+  v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+  v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+  v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+  v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+  v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+  v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+  v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+  v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  LOBYTE(v621_.v621[1]) = v517;
+  *(_QWORD*)(v521 + 32) = 0;
+  *(_QWORD*)(v521 + 40) = 0;
+  *(_QWORD*)(v521 + 48) = 0;
+  *(_QWORD*)(v521 + 56) = 0;
+  *(_QWORD*)(v521 + 64) = 0;
+  *(_QWORD*)(v521 + 72) = 0;
+  *(_DWORD*)(v521 + 80) = v520;
+  *(_QWORD*)(v521 + 96) = 0;
+  *(_QWORD*)(v521 + 104) = 0;
+  *(_QWORD*)(v521 + 88) = 0;
+  *(_QWORD*)(v521 + 168) = v578;
+  *(_QWORD*)(v521 + 176) = v517;
+  v621_.v622 = (char*)v578;
+  v621_.v623 = (const char*)&v620;
+  v522 = v621_.v621[1];
+  v621_.v624 = v621_.v621;
+  v621_.v621[0] = (__int64)GameData_1fcefa8;
+  *(_BYTE*)(v521 + 8) = 22;
+  *(_QWORD*)(v521 + 120) = v522;
+  *(_QWORD*)(v521 + 128) = v578;
+  v523 = v621_.v623;
+  strcpy((char*)(v521 + 9), "3DFinalPass");
+  *(_BYTE*)(v521 + 84) = 1;
+  *(_QWORD*)v521 = GameData_1fcf0c8;
+  *(_QWORD*)(v521 + 112) = GameData_1fcefa8;
+  *(_QWORD*)(v521 + 136) = v523;
+  *(_QWORD*)(v521 + 144) = v521 + 112;
+  *(_QWORD*)(v521 + 160) = GameData_1fcf038;
+  *(_QWORD*)(v521 + 192) = v521 + 160;
+  v525 = *(__int64**)(v514 + 8);
+  v524 = *(_QWORD*)(v514 + 16);
+  if ((unsigned __int64)v525 >= v524) {
+    v527 = *(_QWORD*)v514;
+    v528 = (signed __int64)v525 - *(_QWORD*)v514;
+    v529 = (v528 >> 3) + 1;
+    if (v529 >> 61 != 0) {
+      goto LABEL_527;
+    }
+    v530 = v524 - v527;
+    if (v530 >> 2 > v529) {
+      v529 = v530 >> 2;
+    }
+    if ((unsigned __int64)v530 >= 0x7FFFFFFFFFFFFFF8LL) {
+      v531 = 0x1FFFFFFFFFFFFFFFLL;
+    }
+    else {
+      v531 = v529;
+    }
+    if (v531 != 0) {
+      if (v531 >> 61 != 0) {
+        goto LABEL_528;
+      }
+      v532 = v521;
+      v533 = fw_memory_HeapManager_Allocate_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr, 8 * v531, 16, 0),
+      v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+      v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+      v382 = COERCE_AS(__typeof__(v382),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v388 = COERCE_AS(__typeof__(v388),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+      v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+      v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+      v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+      v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+      v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+      v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+      v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+      v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+      v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+      v521 = v532;
+    }
+    else {
+      v533 = 0;
+    }
+    v534 = v533 + 8 * v531;
+    v535 = v533 + v528 - 8 * (v528 >> 3);
+    *(_QWORD*)(v533 + v528) = v521;
+    v526 = v533 + v528 + 8;
+    memcpy(v535, v527, v528),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    *(_QWORD*)v514 = v535;
+    *(_QWORD*)(v514 + 8) = v526;
+    *(_QWORD*)(v514 + 16) = v534;
+    if (v527 != 0) {
+      v536 = 128;
+      if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+        v536 = 56;
+      }
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v536, v527),
+          v129 =
+              COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v130 =
+              COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v131 =
+              COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v133 =
+              COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v134 =
+              COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v135 =
+              COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+          v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+          v382 = COERCE_AS(__typeof__(v382),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v388 = COERCE_AS(__typeof__(v388),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+          v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+          v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+          v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+          v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+          v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+          v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+          v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+          v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+          v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    }
+    v407 = v577;
+  }
+  else {
+    *v525 = v521;
+    v526 = (__int64)(v525 + 1);
+  }
+  *(_QWORD*)(v514 + 8) = v526;
+  v537 = *(_QWORD*)(v526 - 8);
+  v621_.v621[0] = v514;
+  v621_.v621[1] = v537;
+  (*(void (**)(__int64, __int64*))(*(_QWORD*)v537 + 16LL))(v537, v621_.v621),
+      v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+      v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+      v382 = COERCE_AS(__typeof__(v382),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v388 = COERCE_AS(__typeof__(v388),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+      v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+      v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+      v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+      v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+      v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+      v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+      v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+      v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+      v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  if (v517 != 0) {
+    LANES128(v620->val[0]).n128_u64[0] = *(
+        _QWORD*)(*(_QWORD*)(*(_QWORD*)v514 + ((v518 - v519) & 0x7FFFFFFF8LL)) +
+                 104LL);
+    v538 = *(_DWORD*)(v514 + 96);
+    v539 = fw_memory_HeapManager_Allocate_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr, 224, 16, 0),
+    v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+    v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+    v382 = COERCE_AS(__typeof__(v382),
+                     PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+    v388 = COERCE_AS(__typeof__(v388),
+                     PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+    v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+    v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+    v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+    v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+    v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+    v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+    v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+    v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+    v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+    v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+    v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+    v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+    v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    v621_.v622 = (char*)v578;
+    v621_.v624 = v621_.v621;
+    *(_QWORD*)(v539 + 32) = 0;
+    *(_QWORD*)(v539 + 40) = 0;
+    *(_QWORD*)(v539 + 48) = 0;
+    *(_QWORD*)(v539 + 56) = 0;
+    *(_QWORD*)(v539 + 64) = 0;
+    *(_QWORD*)(v539 + 72) = 0;
+    *(_DWORD*)(v539 + 80) = v538;
+    *(_QWORD*)(v539 + 96) = 0;
+    *(_QWORD*)(v539 + 104) = 0;
+    *(_QWORD*)(v539 + 88) = 0;
+    v621_.v621[0] = (__int64)GameData_1fcf110;
+    v621_.v621[1] = (__int64)&v620;
+    *(_QWORD*)(v539 + 184) = v578;
+    *(_BYTE*)(v539 + 8) = 26;
+    strcpy((char*)(v539 + 9), "SharpnessPass");
+    *(_BYTE*)(v539 + 84) = 1;
+    *(_QWORD*)v539 = GameData_1fcf230;
+    *(_QWORD*)(v539 + 128) = GameData_1fcf110;
+    *(_QWORD*)(v539 + 160) = v539 + 128;
+    v540 = (__int64)v621_.v622;
+    *(_QWORD*)(v539 + 136) = v621_.v621[1];
+    *(_QWORD*)(v539 + 144) = v540;
+    *(_QWORD*)(v539 + 176) = GameData_1fcf1a0;
+    *(_QWORD*)(v539 + 208) = v539 + 176;
+    v542 = *(__int64**)(v514 + 8);
+    v541 = *(_QWORD*)(v514 + 16);
+    if ((unsigned __int64)v542 >= v541) {
+      v544 = *(_QWORD*)v514;
+      v545 = (signed __int64)v542 - *(_QWORD*)v514;
+      v546 = (v545 >> 3) + 1;
+      if (v546 >> 61 != 0) {
+        goto LABEL_527;
+      }
+      v547 = v541 - v544;
+      if (v547 >> 2 > v546) {
+        v546 = v547 >> 2;
+      }
+      if ((unsigned __int64)v547 >= 0x7FFFFFFFFFFFFFF8LL) {
+        v548 = 0x1FFFFFFFFFFFFFFFLL;
+      }
+      else {
+        v548 = v546;
+      }
+      if (v548 != 0) {
+        if (v548 >> 61 != 0) {
+          goto LABEL_528;
+        }
+        v549 = v539;
+        v550 = fw_memory_HeapManager_Allocate_alt1(
+            *(_QWORD*)fw_memory_g_heap_manager_ptr, 8 * v548, 16, 0),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+        v539 = v549;
+      }
+      else {
+        v550 = 0;
+      }
+      v551 = v550 + 8 * v548;
+      v552 = v550 + v545 - 8 * (v545 >> 3);
+      *(_QWORD*)(v550 + v545) = v539;
+      v543 = v550 + v545 + 8;
+      memcpy(v552, v544, v545),
+          v129 =
+              COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v130 =
+              COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v131 =
+              COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v133 =
+              COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v134 =
+              COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v135 =
+              COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+          v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+          v382 = COERCE_AS(__typeof__(v382),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v388 = COERCE_AS(__typeof__(v388),
+                           PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+          v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+          v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+          v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+          v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+          v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+          v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+          v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+          v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+          v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+          v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+          v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+          v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+          v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+      *(_QWORD*)v514 = v552;
+      *(_QWORD*)(v514 + 8) = v543;
+      *(_QWORD*)(v514 + 16) = v551;
+      if (v544 != 0) {
+        v553 = 128;
+        if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+          v553 = 56;
+        }
+        nn_mem_StandardAllocator_Free_alt1(
+            *(_QWORD*)fw_memory_g_heap_manager_ptr + v553, v544),
+            v129 = COERCE_AS(__typeof__(v129),
+                             PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v130 = COERCE_AS(__typeof__(v130),
+                             PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v131 = COERCE_AS(__typeof__(v131),
+                             PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v133 = COERCE_AS(__typeof__(v133),
+                             PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v134 = COERCE_AS(__typeof__(v134),
+                             PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v135 = COERCE_AS(__typeof__(v135),
+                             PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v24 =
+                COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v25 =
+                COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v26 =
+                COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v28 =
+                COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+            v29 =
+                COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+            v382 = COERCE_AS(__typeof__(v382),
+                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v388 = COERCE_AS(__typeof__(v388),
+                             PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+            v40 =
+                COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v41 =
+                COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v42 =
+                COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v44 =
+                COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+            v45 =
+                COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+            v53 =
+                COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v54 =
+                COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v55 =
+                COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v57 =
+                COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+            v58 =
+                COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+            v66 =
+                COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v67 =
+                COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v68 =
+                COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v70 =
+                COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+            v71 =
+                COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+            v79 =
+                COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v80 =
+                COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v81 =
+                COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v83 =
+                COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+            v84 =
+                COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+            v92 =
+                COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+            v93 =
+                COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+            v94 =
+                COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+            v96 =
+                COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+            v97 =
+                COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+      }
+    }
+    else {
+      *v542 = v539;
+      v543 = (__int64)(v542 + 1);
+    }
+    *(_QWORD*)(v514 + 8) = v543;
+    v554 = *(_QWORD*)(v543 - 8);
+    v621_.v621[0] = v514;
+    v621_.v621[1] = v554;
+    (*(void (**)(__int64, __int64*))(*(_QWORD*)v554 + 16LL))(v554, v621_.v621),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  }
+  if (v600_.v607 != 0) {
+    v600_.v608 = v600_.v607;
+    v555 = 128;
+    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+      v555 = 56;
+    }
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v555, v600_.v607),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  }
+  v440 = v600_.v605;
+  a3 = v560;
+  if (v600_.v605 != 0) {
+    goto LABEL_398;
+  }
+LABEL_401:
+  gfxa_MainPass2D_SetupCapturePass(*(_QWORD*)(v4 + 1568), *(_QWORD*)(v4 + 16)),
+      v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+      v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+      v382 = COERCE_AS(__typeof__(v382),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v388 = COERCE_AS(__typeof__(v388),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+      v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+      v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+      v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+      v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+      v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+      v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+      v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+      v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+      v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  if ((v407 & 1) == 0) {
+    gfxa_MainPass2D_SetupPrimivePass(*(_QWORD*)(v4 + 1568),
+                                     *(_QWORD*)(v4 + 16)),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    gfxa_MainPass2D_SetupEffectPass(*(_QWORD*)(v4 + 1568), *(_QWORD*)(v4 + 16),
+                                    (__int64)v619),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    gfxa_MainPass2D_SetupSpinePass(*(_QWORD*)(v4 + 1568), *(_QWORD*)(v4 + 16)),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+    gfxa_MainPass2D_SetupFinalPass(*(_QWORD*)(v4 + 1568), *(_QWORD*)(v4 + 16),
+                                   v619),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  }
+  v442 = *(_QWORD*)(v4 + 16);
+  v621_.v621[0] = (__int64)v619;
+  v443 = *(_DWORD*)(v442 + 96);
+  v444 = fw_memory_HeapManager_Allocate_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr, 208, 16, 0),
+  v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+  v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+  v382 = COERCE_AS(__typeof__(v382),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v388 = COERCE_AS(__typeof__(v388),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+  v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+  v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+  v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+  v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+  v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+  v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+  v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+  v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+  v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  *(_QWORD*)(v444 + 32) = 0;
+  *(_QWORD*)(v444 + 40) = 0;
+  *(_QWORD*)(v444 + 48) = 0;
+  *(_QWORD*)(v444 + 56) = 0;
+  *(_QWORD*)(v444 + 64) = 0;
+  *(_QWORD*)(v444 + 72) = 0;
+  *(_DWORD*)(v444 + 80) = v443;
+  *(_QWORD*)(v444 + 88) = 0;
+  *(_BYTE*)(v444 + 8) = 22;
+  strcpy((char*)(v444 + 9), "2DFinalPass");
+  *(_BYTE*)(v444 + 84) = 1;
+  *(_QWORD*)v444 = GameData_1fcf398;
+  *(_QWORD*)(v444 + 112) = GameData_1fcf278;
+  *(_QWORD*)(v444 + 120) = v621_.v621;
+  *(_QWORD*)(v444 + 144) = v444 + 112;
+  *(_QWORD*)(v444 + 192) = v444 + 160;
+  *(_QWORD*)(v444 + 160) = GameData_1fcf308;
+  *(_QWORD*)(v444 + 168) = v4;
+  v446 = *(__int64**)(v442 + 8);
+  v445 = *(_QWORD*)(v442 + 16);
+  if ((unsigned __int64)v446 < v445) {
+    *v446 = v444;
+    v447 = (__int64)(v446 + 1);
+    goto LABEL_434;
+  }
+  v458 = *(_QWORD*)v442;
+  v459 = (signed __int64)v446 - *(_QWORD*)v442;
+  v460 = (v459 >> 3) + 1;
+  if (v460 >> 61 != 0) {
+  LABEL_527:
+    GameRoutine_b32f30(),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  }
+  v461 = v445 - v458;
+  if (v461 >> 2 > v460) {
+    v460 = v461 >> 2;
+  }
+  if ((unsigned __int64)v461 >= 0x7FFFFFFFFFFFFFF8LL) {
+    v462 = 0x1FFFFFFFFFFFFFFFLL;
+  }
+  else {
+    v462 = v460;
+  }
+  if (v462 != 0) {
+    if (v462 >> 61 == 0) {
+      v463 = v444;
+      v464 = fw_memory_HeapManager_Allocate_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr, 8 * v462, 16, 0),
+      v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+      v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+      v382 = COERCE_AS(__typeof__(v382),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v388 = COERCE_AS(__typeof__(v388),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+      v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+      v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+      v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+      v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+      v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+      v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+      v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+      v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+      v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+      v444 = v463;
+      goto LABEL_430;
+    }
+  LABEL_528:
+    GameRoutine_60a210(),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  }
+  v464 = 0;
+LABEL_430:
+  v479 = v464 + 8 * v462;
+  v480 = v464 + v459 - 8 * (v459 >> 3);
+  *(_QWORD*)(v464 + v459) = v444;
+  v447 = v464 + v459 + 8;
+  memcpy(v480, v458, v459),
+      v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+      v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+      v382 = COERCE_AS(__typeof__(v382),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v388 = COERCE_AS(__typeof__(v388),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+      v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+      v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+      v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+      v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+      v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+      v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+      v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+      v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+      v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  *(_QWORD*)v442 = v480;
+  *(_QWORD*)(v442 + 8) = v447;
+  *(_QWORD*)(v442 + 16) = v479;
+  if (v458 != 0) {
+    v481 = 128;
+    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+      v481 = 56;
+    }
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v481, v458),
+        v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+        v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+        v382 = COERCE_AS(__typeof__(v382),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v388 = COERCE_AS(__typeof__(v388),
+                         PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+        v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+        v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+        v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+        v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+        v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+        v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+        v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+        v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+        v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+        v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+        v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+        v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+        v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  }
+LABEL_434:
+  *(_QWORD*)(v442 + 8) = v447;
+  v482 = *(_QWORD*)(v447 - 8);
+  LANES128(v600_.v600.val[0]).n128_u64[0] = v442;
+  LANES128(v600_.v600.val[0]).n128_u64[1] = v482;
+  (*(void (**)(unsigned __int64, float32x4x4_t*))(*(_QWORD*)v482 + 16LL))(
+      v482, &v600_.v600),
+      v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+      v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+      v382 = COERCE_AS(__typeof__(v382),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v388 = COERCE_AS(__typeof__(v388),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+      v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+      v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+      v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+      v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+      v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+      v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+      v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+      v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+      v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  GameRoutine_b32ac0(*(_QWORD**)(v4 + 16)),
+      v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+      v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+      v382 = COERCE_AS(__typeof__(v382),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v388 = COERCE_AS(__typeof__(v388),
+                       PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+      v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+      v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+      v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+      v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+      v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+      v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+      v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+      v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+      v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+      v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+      v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+      v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+      v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  v483 = *(_QWORD*)(*(_QWORD*)(*(_QWORD*)(v4 + 80) + 8LL) + 48LL);
+  v484 = 200;
+  if (*(_BYTE*)(v483 + 168) != 0) {
+    v484 = 164;
+  }
+  *(_DWORD*)(v4 + 1688) = *(_DWORD*)(v483 + v484);
+  *(_BYTE*)(*(_QWORD*)(v4 + 8) + 16700LL) = 0;
+  if (*(_BYTE*)(*(_QWORD*)(v4 + 24) + 48LL) != 0) {
+    v485 = &v579_.v579;
+  }
+  else {
+    v485 = nullptr;
+  }
+  result =
+      gfx_flow_RenderGraph_Execute(*(_QWORD*)(v4 + 16), a2, a3, (__int64)v485),
+  v129 = COERCE_AS(__typeof__(v129), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v130 = COERCE_AS(__typeof__(v130), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v131 = COERCE_AS(__typeof__(v131), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v133 = COERCE_AS(__typeof__(v133), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v134 = COERCE_AS(__typeof__(v134), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v135 = COERCE_AS(__typeof__(v135), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v24 = COERCE_AS(__typeof__(v24), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v25 = COERCE_AS(__typeof__(v25), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v26 = COERCE_AS(__typeof__(v26), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v28 = COERCE_AS(__typeof__(v28), PSEUDO_REGISTER(float, "s0", "=w")),
+  v29 = COERCE_AS(__typeof__(v29), PSEUDO_REGISTER(float, "s1", "=w")),
+  v382 = COERCE_AS(__typeof__(v382),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v388 = COERCE_AS(__typeof__(v388),
+                   PSEUDO_REGISTER(unsigned long long, "x1", "=r")),
+  v40 = COERCE_AS(__typeof__(v40), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v41 = COERCE_AS(__typeof__(v41), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v42 = COERCE_AS(__typeof__(v42), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v44 = COERCE_AS(__typeof__(v44), PSEUDO_REGISTER(float, "s0", "=w")),
+  v45 = COERCE_AS(__typeof__(v45), PSEUDO_REGISTER(float, "s1", "=w")),
+  v53 = COERCE_AS(__typeof__(v53), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v54 = COERCE_AS(__typeof__(v54), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v55 = COERCE_AS(__typeof__(v55), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v57 = COERCE_AS(__typeof__(v57), PSEUDO_REGISTER(float, "s0", "=w")),
+  v58 = COERCE_AS(__typeof__(v58), PSEUDO_REGISTER(float, "s1", "=w")),
+  v66 = COERCE_AS(__typeof__(v66), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v67 = COERCE_AS(__typeof__(v67), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v68 = COERCE_AS(__typeof__(v68), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v70 = COERCE_AS(__typeof__(v70), PSEUDO_REGISTER(float, "s0", "=w")),
+  v71 = COERCE_AS(__typeof__(v71), PSEUDO_REGISTER(float, "s1", "=w")),
+  v79 = COERCE_AS(__typeof__(v79), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v80 = COERCE_AS(__typeof__(v80), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v81 = COERCE_AS(__typeof__(v81), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v83 = COERCE_AS(__typeof__(v83), PSEUDO_REGISTER(float, "s0", "=w")),
+  v84 = COERCE_AS(__typeof__(v84), PSEUDO_REGISTER(float, "s1", "=w")),
+  v92 = COERCE_AS(__typeof__(v92), PSEUDO_REGISTER(__n128, "v1", "=w")),
+  v93 = COERCE_AS(__typeof__(v93), PSEUDO_REGISTER(__n128, "v2", "=w")),
+  v94 = COERCE_AS(__typeof__(v94), PSEUDO_REGISTER(__n128, "v3", "=w")),
+  v96 = COERCE_AS(__typeof__(v96), PSEUDO_REGISTER(float, "s0", "=w")),
+  v97 = COERCE_AS(__typeof__(v97), PSEUDO_REGISTER(float, "s1", "=w"));
+  *(_BYTE*)(*(_QWORD*)(v4 + 8) + 16700LL) = 0;
+  if (*(_BYTE*)(*(_QWORD*)(v4 + 24) + 48LL) == 1 &&
+      (*(_BYTE*)(v4 + 1672) & 1) == 0) {
+    *(_BYTE*)(v4 + 1664) = 0;
+    *(_BYTE*)(v4 + 1667) = 1;
+    v487 = *(_DWORD*)(v4 + 1676);
+    v488 = __OFSUB__(v487, 1);
+    v489 = v487 - 1;
+    if (v489 < 0 == v488) {
+      *(_DWORD*)(v4 + 1676) = v489;
     }
   }
   return result;

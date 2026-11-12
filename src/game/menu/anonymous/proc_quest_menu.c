@@ -76,6 +76,26 @@ unsigned int* game_gmap_SpotMgr_FindSpot_alt1(unsigned int* result) __asm__(
     "game_gmap_SpotMgr_FindSpot");
 void GameRoutine_1845b60_alt1(char*) __asm__("GameRoutine_1845b60");
 __int64 ProcQuestMenu_Unknown88(__int64 a1);
+__int64 game_gameui_1593d90(__int64*, __int64);
+__int64 game_menu_PageTab_SetupLabel(__int64, __int64*, __int64, unsigned int,
+                                     unsigned int, unsigned int);
+__int64 ui_LayoutAccessor_SetPaneVisible(__int64 result, __int64, char);
+extern __int64 (*GameData_20e3eb8[])();
+void game_gameui_159b580(__int64, _BYTE*, __int64, _DWORD*);
+__int64 game_menu_anonymous_ProcQuestMenu_OnInit(__int64 a1);
+__int64 ProcQuestMenu_Unknown85(__int64 a1);
+__int64 game_menu_anonymous_ProcQuestMenu_ShowMap_closure_Invoke(__int64 a1,
+                                                                 _BYTE* a2,
+                                                                 __int64 a3,
+                                                                 _DWORD* a4);
+__int64 game_menu_anonymous_ProcQuestMenu_ShowMap_closure0_Invoke(__int64 a1,
+                                                                  _BYTE* a2,
+                                                                  __int64 a3,
+                                                                  _DWORD* a4);
+__int64 game_menu_anonymous_ProcQuestMenu_ShowMap_closure1_Invoke(__int64 a1,
+                                                                  _BYTE* a2,
+                                                                  __int64 a3,
+                                                                  _DWORD* a4);
 
 __int64 ProcQuestMenu_Destructor(__int64 a1)
 {
@@ -96,6 +116,156 @@ __int64 ProcQuestMenu_Destructor(__int64 a1)
     a1 = v2;
   }
   return game_menu_BasicMenu_Destroy_BasicMenu(a1);
+}
+
+__int64 game_menu_anonymous_ProcQuestMenu_OnInit(__int64 a1)
+{
+  __int64 v2;
+  __int64 v3;
+  __int64 v4;
+  __int64* v5;
+  __int64 v6;
+  __int64* v7;
+  __int64 result;
+  char* v9;
+  const char* v10;
+  char v11;
+  __int64 v12;
+  char v13;
+  char** v14;
+  __int64 v15[2];
+  struct {
+    __int64 v16;
+    __int64 v17;
+  } v16_;
+
+  LayoutAccessor_1560070((void*)(&v16_.v16), (__int64*)(a1 + 848), "L_PageTab");
+  v2 = v16_.v17;
+  v15[0] = v16_.v16;
+  v15[1] = v16_.v17;
+  if (v16_.v17 != 0) {
+    atomic_fetch_add_explicit((atomic_ullong* volatile)(v16_.v17 + 16), 1u,
+                              memory_order_relaxed);
+  }
+  v9 = (char*)GameData_20e3eb8;
+  v14 = &v9;
+  game_menu_PageTab_SetupLabel(a1 + 656, v15, (__int64)&v9, 3u, 0xEu, 0xFu);
+  if (v14 == &v9) {
+    v3 = 32;
+  }
+  else {
+    if (v14 == nullptr) {
+      goto LABEL_8;
+    }
+    v3 = 40;
+  }
+  (*(void (**)(void)) & (*v14)[v3])();
+LABEL_8:
+  if (v2 != 0) {
+    std___1___shared_weak_count___release_weak_alt1(v2);
+  }
+  LayoutAccessor_1560070((void*)(&v9), (__int64*)(a1 + 848),
+                         "L_Info/L_KeyHelp00");
+  if (v10 != nullptr) {
+    v4 = std___1___shared_weak_count_lock((__int64)v10);
+    v5 = (__int64*)v9;
+    if (v10 != nullptr) {
+      std___1___shared_weak_count___release_weak_alt1((__int64)v10);
+    }
+    if (v4 != 0 && v5 != nullptr) {
+      v13 = 0;
+      v14 = nullptr;
+      v9 = &GameData_1a9f09e;
+      v10 = "MID_KeyHelp_FastTravel";
+      v11 = 1;
+      v12 = 0x300000000LL;
+      game_gameui_1593d90(v5, (__int64)&v9);
+      LayoutAccessor_1562cf0((__int64)v5, "Disable");
+      LayoutAccessor_155e830((__int64)v5, 0);
+    }
+    else if (v4 == 0) {
+      goto LABEL_19;
+    }
+    if (atomic_fetch_add((atomic_ullong* volatile)(v4 + 8),
+                         0xFFFFFFFFFFFFFFFFLL) == 0) {
+      (*(void (**)(__int64))(*(_QWORD*)v4 + 16LL))(v4);
+      std___1___shared_weak_count___release_weak_alt1(v4);
+    }
+  }
+LABEL_19:
+  LayoutAccessor_1560070((void*)(&v9), (__int64*)(a1 + 848),
+                         "L_Info/L_KeyHelp01");
+  if (v10 == nullptr) {
+    goto LABEL_28;
+  }
+  v6 = std___1___shared_weak_count_lock((__int64)v10);
+  v7 = (__int64*)v9;
+  if (v10 != nullptr) {
+    std___1___shared_weak_count___release_weak_alt1((__int64)v10);
+  }
+  if (v6 != 0 && v7 != nullptr) {
+    v13 = 0;
+    v14 = nullptr;
+    v9 = "StatusChange";
+    v10 = "MID_KeyHelp_StatusChange";
+    v11 = 1;
+    v12 = 0x300000002LL;
+    game_gameui_1593d90(v7, (__int64)&v9);
+    LayoutAccessor_1562cf0((__int64)v7, "Disable");
+    LayoutAccessor_155e830((__int64)v7, 0);
+  }
+  else if (v6 == 0) {
+    goto LABEL_28;
+  }
+  if (atomic_fetch_add((atomic_ullong* volatile)(v6 + 8),
+                       0xFFFFFFFFFFFFFFFFLL) == 0) {
+    (*(void (**)(__int64))(*(_QWORD*)v6 + 16LL))(v6);
+    std___1___shared_weak_count___release_weak_alt1(v6);
+  }
+LABEL_28:
+  result = v16_.v17;
+  if (v16_.v17 != 0) {
+    return std___1___shared_weak_count___release_weak_alt1(v16_.v17);
+  }
+  return result;
+}
+
+__int64 ProcQuestMenu_Unknown85(__int64 a1)
+{
+  __int64 result;
+  __int64 v2;
+  __int64 v3;
+  struct {
+    __int64 v5;
+    __int64 v6;
+  } v5_;
+
+  LayoutAccessor_1560070((void*)(&v5_.v5), (__int64*)(a1 + 848),
+                         "L_Info/L_Img");
+  result = v5_.v6;
+  if (v5_.v6 != 0) {
+    v2 = std___1___shared_weak_count_lock(v5_.v6);
+    v3 = v5_.v5;
+    result = v5_.v6;
+    if (v5_.v6 != 0) {
+      result = std___1___shared_weak_count___release_weak_alt1(v5_.v6);
+    }
+    if (v2 == 0 || v3 == 0) {
+      if (v2 == 0) {
+        return result;
+      }
+    }
+    else {
+      ui_LayoutAccessor_SetPaneVisible(v3, (__int64)"N_State", 0);
+      result = LayoutAccessor_1562cf0(v3, "Img01");
+    }
+    if (atomic_fetch_add((atomic_ullong* volatile)(v2 + 8),
+                         0xFFFFFFFFFFFFFFFFLL) == 0) {
+      (*(void (**)(__int64))(*(_QWORD*)v2 + 16LL))(v2);
+      return std___1___shared_weak_count___release_weak_alt1(v2);
+    }
+  }
+  return result;
 }
 
 __int64 ProcQuestMenu_Unknown88(__int64 a1)
@@ -1043,6 +1213,69 @@ LABEL_19:
     result;
     return;
   }
+}
+
+__int64 game_menu_anonymous_ProcQuestMenu_ShowMap_closure_Invoke(__int64 a1,
+                                                                 _BYTE* a2,
+                                                                 __int64 a3,
+                                                                 _DWORD* a4)
+{
+  __int64 result;
+  struct {
+    __int64 v8;
+    __int64 v9;
+  } v8_;
+
+  LayoutAccessor_1560070(
+      (void*)(&v8_.v8), (__int64*)(*(_QWORD*)(a1 + 8) + 848LL), "L_Info/L_Img");
+  game_gameui_159b580((__int64)&v8_.v8, a2, a3, a4);
+  result = v8_.v9;
+  if (v8_.v9 != 0) {
+    return std___1___shared_weak_count___release_weak_alt1(v8_.v9);
+  }
+  return result;
+}
+
+__int64 game_menu_anonymous_ProcQuestMenu_ShowMap_closure0_Invoke(__int64 a1,
+                                                                  _BYTE* a2,
+                                                                  __int64 a3,
+                                                                  _DWORD* a4)
+{
+  __int64 result;
+  struct {
+    __int64 v8;
+    __int64 v9;
+  } v8_;
+
+  LayoutAccessor_1560070(
+      (void*)(&v8_.v8), (__int64*)(*(_QWORD*)(a1 + 8) + 848LL), "L_Info/L_Img");
+  game_gameui_159b580((__int64)&v8_.v8, a2, a3, a4);
+  result = v8_.v9;
+  if (v8_.v9 != 0) {
+    return std___1___shared_weak_count___release_weak_alt1(v8_.v9);
+  }
+  return result;
+}
+
+__int64 game_menu_anonymous_ProcQuestMenu_ShowMap_closure1_Invoke(__int64 a1,
+                                                                  _BYTE* a2,
+                                                                  __int64 a3,
+                                                                  _DWORD* a4)
+{
+  __int64 result;
+  struct {
+    __int64 v8;
+    __int64 v9;
+  } v8_;
+
+  LayoutAccessor_1560070(
+      (void*)(&v8_.v8), (__int64*)(*(_QWORD*)(a1 + 8) + 848LL), "L_Info/L_Img");
+  game_gameui_159b580((__int64)&v8_.v8, a2, a3, a4);
+  result = v8_.v9;
+  if (v8_.v9 != 0) {
+    return std___1___shared_weak_count___release_weak_alt1(v8_.v9);
+  }
+  return result;
 }
 
 bool game_menu_anonymous_ProcQuestMenu_SortAndFilter_closure_Invoke(__int64 a1,

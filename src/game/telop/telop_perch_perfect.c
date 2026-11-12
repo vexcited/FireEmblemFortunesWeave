@@ -56,6 +56,50 @@ __int64 GameHr_14a10d0_alt1(_QWORD*, __int64, __int64,
                             __int64) __asm__("GameHr_14a10d0");
 __int64 ui_LayoutAccessor_FindPane_alt2(__int64*, const char*) __asm__(
     "ui_LayoutAccessor_FindPane");
+__int64 GameHr_1562680(__int64 result, const char*, float);
+__int64 GameHr_173fe30(__int64);
+__int64 LayoutAccessor_1563280(__int64*, __int64, char);
+__int64 TelopSequence_1375be0(__int64*);
+__int64 TelopPerchPerfect_Unknown21(__int64 a1);
+__int64 TelopPerchPerfect_Unknown42(__int64 a1);
+__int64 TelopPerchPerfect_Unknown37(__int64* a1);
+__int64 TelopPerchPerfect_Unknown41(__int64* a1);
+
+__int64 TelopPerchPerfect_Unknown21(__int64 a1)
+{
+  __int64 result;
+  __int64 v3;
+  __int64 v4;
+  struct {
+    __int64 v5;
+    __int64 v6;
+  } v5_;
+
+  GameHr_1562680(a1 + 168, "TitleTxt_Perfect", 0x1.0000000000000p+0f);
+  LayoutAccessor_1560070_alt1((void*)(&v5_.v5), (__int64*)(a1 + 168),
+                              "L_RelianceExpGet_00");
+  result = v5_.v6;
+  if (v5_.v6 != 0) {
+    v3 = std___1___shared_weak_count_lock_alt1(v5_.v6);
+    v4 = v5_.v5;
+    result = v5_.v6;
+    if (v5_.v6 != 0) {
+      result = std___1___shared_weak_count___release_weak_alt1(v5_.v6);
+    }
+    if (v3 != 0 && v4 != 0) {
+      result = GameHr_1562680(v4, "In", 0x1.0000000000000p+0f);
+    }
+    else if (v3 == 0) {
+      return result;
+    }
+    if (atomic_fetch_add((atomic_ullong* volatile)(v3 + 8),
+                         0xFFFFFFFFFFFFFFFFLL) == 0) {
+      (*(void (**)(__int64))(*(_QWORD*)v3 + 16LL))(v3);
+      return std___1___shared_weak_count___release_weak_alt1(v3);
+    }
+  }
+  return result;
+}
 
 __int64 TelopPerchPerfect_Unknown33(__int64* a1)
 {
@@ -373,6 +417,154 @@ LABEL_45:
     }
   }
   return game_14a3920(v36);
+}
+
+__int64 TelopPerchPerfect_Unknown42(__int64 a1)
+{
+  __int64 result;
+  __int64 v3;
+  __int64 v4;
+  struct {
+    __int64 v5;
+    __int64 v6;
+  } v5_;
+
+  GameHr_1562680(a1 + 168, "TitleTxt_Out", 0x1.0000000000000p+0f);
+  LayoutAccessor_1560070_alt1((void*)(&v5_.v5), (__int64*)(a1 + 168),
+                              "L_RelianceExpGet_00");
+  result = v5_.v6;
+  if (v5_.v6 != 0) {
+    v3 = std___1___shared_weak_count_lock_alt1(v5_.v6);
+    v4 = v5_.v5;
+    result = v5_.v6;
+    if (v5_.v6 != 0) {
+      result = std___1___shared_weak_count___release_weak_alt1(v5_.v6);
+    }
+    if (v3 != 0 && v4 != 0) {
+      result = GameHr_1562680(v4, "Out", 0x1.0000000000000p+0f);
+    }
+    else if (v3 == 0) {
+      return result;
+    }
+    if (atomic_fetch_add((atomic_ullong* volatile)(v3 + 8),
+                         0xFFFFFFFFFFFFFFFFLL) == 0) {
+      (*(void (**)(__int64))(*(_QWORD*)v3 + 16LL))(v3);
+      return std___1___shared_weak_count___release_weak_alt1(v3);
+    }
+  }
+  return result;
+}
+
+__int64 TelopPerchPerfect_Unknown37(__int64* a1)
+{
+  __int64 v2;
+  __int64* v3;
+  char v5;
+  char v6;
+  __int64 v7;
+  __int64 v8;
+  char v9;
+  struct {
+    __int64* v11;
+    __int64 v12;
+  } v11_;
+
+  LayoutAccessor_1560070_alt1((void*)(&v11_.v11), a1 + 21,
+                              "L_RelianceExpGet_00");
+  if (v11_.v12 != 0) {
+    v2 = std___1___shared_weak_count_lock_alt1(v11_.v12);
+    v3 = v11_.v11;
+    if (v11_.v12 != 0) {
+      std___1___shared_weak_count___release_weak_alt1(v11_.v12);
+    }
+    if (v2 == 0 || v3 == nullptr) {
+      if (v2 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v2 + 8),
+                                      0xFFFFFFFFFFFFFFFFLL) == 0) {
+        (*(void (**)(__int64))(*(_QWORD*)v2 + 16LL))(v2);
+        std___1___shared_weak_count___release_weak_alt1(v2);
+      }
+    }
+    else {
+      v5 = LayoutAccessor_1563280(v3, (__int64)"In", 0);
+      v6 = v5;
+      if (atomic_fetch_add((atomic_ullong* volatile)(v2 + 8),
+                           0xFFFFFFFFFFFFFFFFLL) != 0) {
+        if ((v5 & 1) != 0) {
+          goto LABEL_19;
+        }
+      }
+      else {
+        (*(void (**)(__int64))(*(_QWORD*)v2 + 16LL))(v2);
+        std___1___shared_weak_count___release_weak_alt1(v2);
+        if ((v6 & 1) != 0) {
+          goto LABEL_19;
+        }
+      }
+    }
+  }
+  v7 = (*(__int64 (**)(__int64*))(*a1 + 208))(a1);
+  v8 = a1[99];
+  if ((v8 == 0 || (GameHr_173fe30(v8) & 1) == 0) &&
+      (LayoutAccessor_1563280(a1 + 21, v7, 0) & 1) == 0) {
+    v9 = LayoutAccessor_1563280(a1 + 21, (__int64)"TitleTxt_Perfect", 0) ^ 1;
+    return v9 & 1;
+  }
+LABEL_19:
+  v9 = 0;
+  return v9 & 1;
+}
+
+__int64 TelopPerchPerfect_Unknown41(__int64* a1)
+{
+  __int64 v2;
+  __int64* v3;
+  char v5;
+  char v6;
+  char v7;
+  struct {
+    __int64* v9;
+    __int64 v10;
+  } v9_;
+
+  LayoutAccessor_1560070_alt1((void*)(&v9_.v9), a1 + 21, "L_RelianceExpGet_00");
+  if (v9_.v10 != 0) {
+    v2 = std___1___shared_weak_count_lock_alt1(v9_.v10);
+    v3 = v9_.v9;
+    if (v9_.v10 != 0) {
+      std___1___shared_weak_count___release_weak_alt1(v9_.v10);
+    }
+    if (v2 == 0 || v3 == nullptr) {
+      if (v2 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v2 + 8),
+                                      0xFFFFFFFFFFFFFFFFLL) == 0) {
+        (*(void (**)(__int64))(*(_QWORD*)v2 + 16LL))(v2);
+        std___1___shared_weak_count___release_weak_alt1(v2);
+      }
+    }
+    else {
+      v5 = LayoutAccessor_1563280(v3, (__int64)"Out", 0);
+      v6 = v5;
+      if (atomic_fetch_add((atomic_ullong* volatile)(v2 + 8),
+                           0xFFFFFFFFFFFFFFFFLL) != 0) {
+        if ((v5 & 1) != 0) {
+          goto LABEL_18;
+        }
+      }
+      else {
+        (*(void (**)(__int64))(*(_QWORD*)v2 + 16LL))(v2);
+        std___1___shared_weak_count___release_weak_alt1(v2);
+        if ((v6 & 1) != 0) {
+        LABEL_18:
+          v7 = 0;
+          return v7 & 1;
+        }
+      }
+    }
+  }
+  if ((TelopSequence_1375be0(a1) & 1) == 0) {
+    goto LABEL_18;
+  }
+  v7 = LayoutAccessor_1563280(a1 + 21, (__int64)"TitleTxt_Out", 0) ^ 1;
+  return v7 & 1;
 }
 
 __int64 TelopPerchPerfect_Unknown43(__int64 a1)

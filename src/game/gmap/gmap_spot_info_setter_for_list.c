@@ -31,6 +31,15 @@ __int64 ui_LayoutAccessor_SetPaneVisible_alt1(
     char) __asm__("ui_LayoutAccessor_SetPaneVisible");
 float32x4_t* GameRoutine_156c240(float32x4_t* result);
 __int64 GmapSpotInfoSetterForList_Unknown9(__int64 a1, __int64* a2, int a3);
+__attribute__((swiftcall)) void LayoutAccessor_1560070(PSEUDO_X8, __int64*,
+                                                       const char*);
+__int64 LayoutAccessor_155e830(__int64 result, char);
+__int64 ui_LayoutAccessor_FindAlignment_alt1(__int64*, __int64) __asm__(
+    "ui_LayoutAccessor_FindAlignment");
+__int64 ui_LayoutAccessor_FindTextBox(__int64*, __int64);
+void GameHr_165bbf0(__int64);
+void ui_text_190a0c0(float*, __int64, float*, _QWORD*, __int64);
+void GmapSpotInfoSetterForList_Unknown10(__int64 a1, char a2);
 
 void GmapSpotInfoSetterForList_Unknown6(__int64 a1, long double a2)
 {
@@ -436,6 +445,107 @@ __int64 GmapSpotInfoSetterForList_Unknown9(__int64 a1, __int64* a2, int a3)
     }
   }
   return result;
+}
+
+void GmapSpotInfoSetterForList_Unknown10(__int64 a1, char a2)
+{
+
+#pragma clang fp contract(off)
+  __int64 v4;
+  __int64* v5;
+  __int64* v6;
+  __int64 v7;
+  __int64 v8;
+  _QWORD* v9;
+  int v10;
+  int v11;
+  char v12;
+  __int64 v13;
+  __int64 v14;
+  __int64 v15;
+  __int64 v16;
+  _QWORD v17[2];
+  struct {
+    __int64* v18;
+    __int64 v19;
+  } v18_;
+  float v20;
+  _DWORD v21[2];
+
+  LayoutAccessor_1560070((void*)(&v18_.v18), *(__int64**)(a1 + 8),
+                         "L_Festival");
+  if (v18_.v19 != 0) {
+    v4 = std___1___shared_weak_count_lock_alt1(v18_.v19);
+    v5 = v18_.v18;
+    if (v4 != 0) {
+      v6 = v18_.v18;
+    }
+    else {
+      v6 = nullptr;
+    }
+    if (v18_.v19 != 0) {
+      std___1___shared_weak_count___release_weak_alt1(v18_.v19);
+    }
+    if (v6 != nullptr) {
+      LayoutAccessor_155e830((__int64)v5, a2 & 1);
+      if ((a2 & 1) != 0 && (*(_BYTE*)(a1 + 80) & 1) == 0) {
+        v7 = ui_LayoutAccessor_FindTextBox(v5, (__int64)"T_Txt");
+        if (v7 != 0) {
+          v8 = v7;
+          v9 = (_QWORD*)ui_LayoutAccessor_FindTextBox(v5, (__int64)"T_Txt");
+          if (v9 != nullptr) {
+            ui_text_190a0c0((float*)&v18_.v18, (__int64)v21, &v20, v9, v9[27]);
+            v10 = v21[0];
+            v11 = v21[1];
+          }
+          else {
+            v10 = 0;
+            v11 = 0;
+          }
+          v12 = *(_BYTE*)(v8 + 88);
+          *(_DWORD*)(v8 + 80) = v10;
+          *(_DWORD*)(v8 + 84) = v11;
+          *(_BYTE*)(v8 + 88) = v12 | 0x10;
+        }
+        v13 = ui_LayoutAccessor_FindAlignment_alt1(v5, (__int64)"A_Txt");
+        if (v13 != 0) {
+          Alignment_56b600(v13);
+          v14 = v5[1];
+          if (v14 != 0) {
+            v15 = std___1___shared_weak_count_lock_alt1(v14);
+            if (v15 != 0) {
+              v16 = v15;
+              if (*v5 != 0) {
+                ControlCreator_13633c0(*v5);
+              }
+              if (atomic_fetch_add((atomic_ullong* volatile)(v16 + 8),
+                                   0xFFFFFFFFFFFFFFFFLL) == 0) {
+                (*(void (**)(__int64))(*(_QWORD*)v16 + 16LL))(v16);
+                std___1___shared_weak_count___release_weak_alt1(v16);
+              }
+            }
+          }
+        }
+        v17[0] = v6;
+        v17[1] = v4;
+        if (v4 != 0) {
+          atomic_fetch_add_explicit((atomic_ullong* volatile)(v4 + 16), 1u,
+                                    memory_order_relaxed);
+          GameHr_165bbf0((__int64)v17);
+          std___1___shared_weak_count___release_weak_alt1(v4);
+        }
+        else {
+          GameHr_165bbf0((__int64)v17);
+        }
+        *(_BYTE*)(a1 + 80) = 1;
+      }
+    }
+    if (v4 != 0 && atomic_fetch_add((atomic_ullong* volatile)(v4 + 8),
+                                    0xFFFFFFFFFFFFFFFFLL) == 0) {
+      (*(void (**)(__int64))(*(_QWORD*)v4 + 16LL))(v4);
+      std___1___shared_weak_count___release_weak_alt1(v4);
+    }
+  }
 }
 
 __int64 GmapSpotInfoSetterForList_DeletingDestructor(_QWORD* a1)

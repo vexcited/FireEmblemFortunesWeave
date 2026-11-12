@@ -140,6 +140,10 @@ __int64 game_menu_anonymous_QuestBoardMenuItem_ACall_closure1_Invoke_184a290(
     __int64 a1, __int64* a2);
 __int64 game_menu_anonymous_QuestBoardMenuItem_ACall_184aae0(__int64 result,
                                                              __int64* a2);
+__int64 ui_LayoutAccessor_FindTextBox(__int64*, __int64);
+char* HelpQuestInfo_12568a0(__int64*);
+void GameRoutine_156c5d0(__int64, __int64, char);
+void QuestBoardMenuItem_1849a70(__int64 a1);
 
 __int64 QuestBoardMenuItem_DeletingDestructor(__int64 a1)
 {
@@ -456,6 +460,49 @@ LABEL_22:
                  0.0f, 1.0f);
   snd_Fade_Destroy_Fade(v10);
   return 2;
+}
+
+void QuestBoardMenuItem_1849a70(__int64 a1)
+{
+  __int64 v2;
+  __int64* v3;
+  char* v5;
+  __int64 v6;
+  __int64 v7;
+  struct {
+    __int64* v8;
+    __int64 v9;
+  } v8_;
+
+  LayoutAccessor_1560070_alt1((void*)(&v8_.v8),
+                              (__int64*)(*(_QWORD*)(a1 + 8) + 848LL), "L_Info");
+  if (v8_.v9 != 0) {
+    v2 = std___1___shared_weak_count_lock_alt1(v8_.v9);
+    v3 = v8_.v8;
+    if (v8_.v9 != 0) {
+      std___1___shared_weak_count___release_weak_alt1(v8_.v9);
+    }
+    if (v2 == 0 || v3 == nullptr) {
+      if (v2 == 0) {
+        return;
+      }
+    }
+    else {
+      v5 = HelpQuestInfo_12568a0(*(__int64**)(a1 + 152));
+      if (v5 != nullptr) {
+        v6 = (__int64)v5;
+        v7 = ui_LayoutAccessor_FindTextBox(v3, (__int64)"T_Help");
+        if (v7 != 0) {
+          GameRoutine_156c5d0(v7, v6, 0);
+        }
+      }
+    }
+    if (atomic_fetch_add((atomic_ullong* volatile)(v2 + 8),
+                         0xFFFFFFFFFFFFFFFFLL) == 0) {
+      (*(void (**)(__int64))(*(_QWORD*)v2 + 16LL))(v2);
+      std___1___shared_weak_count___release_weak_alt1(v2);
+    }
+  }
 }
 
 __int64

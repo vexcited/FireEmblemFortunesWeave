@@ -42,6 +42,12 @@ __int64* ProcGmapCarriageList_168c5c0(__int64* result, __int64* a2, __int64* a3,
                                       __int64 a7);
 __int64 BasicMenu_16dd280(_QWORD*);
 void GameHr_167f810(__int64, int, char**, __int64, int, __int64);
+__attribute__((swiftcall)) void LayoutAccessor_1560070(PSEUDO_X8, __int64*,
+                                                       const char*);
+__int64 std___1___shared_weak_count___release_weak(__int64);
+void game_gameui_159b580(__int64, _BYTE*, __int64, _DWORD*);
+__int64 game_gmap_anonymous_ProcGmapCarriageList_CreateMap_closure_Invoke(
+    __int64 a1, _BYTE* a2, __int64 a3, _DWORD* a4);
 
 __int64 ProcGmapCarriageList_168b1e0(__int64 a1)
 {
@@ -368,6 +374,25 @@ _QWORD* ProcGmapCarriageList_Unknown145(__int64 a1)
     v5 = 40;
     return (_QWORD*)(*(__int64 (**)(_QWORD*, __int64))(*result + v5))(result,
                                                                       v4);
+  }
+  return result;
+}
+
+__int64 game_gmap_anonymous_ProcGmapCarriageList_CreateMap_closure_Invoke(
+    __int64 a1, _BYTE* a2, __int64 a3, _DWORD* a4)
+{
+  __int64 result;
+  struct {
+    __int64 v8;
+    __int64 v9;
+  } v8_;
+
+  LayoutAccessor_1560070((void*)(&v8_.v8),
+                         (__int64*)(*(_QWORD*)(a1 + 8) + 848LL), "L_Img");
+  game_gameui_159b580((__int64)&v8_.v8, a2, a3, a4);
+  result = v8_.v9;
+  if (v8_.v9 != 0) {
+    return std___1___shared_weak_count___release_weak(v8_.v9);
   }
   return result;
 }

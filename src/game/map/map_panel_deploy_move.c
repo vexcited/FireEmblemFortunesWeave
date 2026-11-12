@@ -95,6 +95,14 @@ void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
 void game_map_MapPanelDeployMove_UpdateMesh(__int64 a1);
 void MapPanelDeployMove_DeletingDestructor(__int64 a1);
 __int64* MapPanelDeployMove_1045c00(__int64** a1, __int64* a2);
+__int64 GameRoutine_60a020(__int64, const char*);
+__int64 PrimitiveDrawStack_f525a0(__int64*, __int64);
+__int64 game_f313e0(__int64, unsigned int, float32x4_t*, float32x4_t*);
+extern __int64* GameData_212f878;
+extern __int64 GameData_212d018[6];
+void PrimitiveDrawStack_f51430(__int64, __int64);
+void game_map_1044ea0(_QWORD*, __int64);
+void MapPanelDeployMove_Unknown4(_QWORD* a1);
 
 void game_map_MapPanelDeployMove_UpdateMesh(__int64 a1)
 {
@@ -1055,6 +1063,232 @@ void game_map_MapPanelDeployMove_UpdateMesh(__int64 a1)
       }
       v117 = v131;
     } while (v131 != v118);
+  }
+}
+
+void MapPanelDeployMove_Unknown4(_QWORD* a1)
+{
+
+#pragma clang fp contract(off)
+  float32x4_t* v1;
+  float32x4_t* v2;
+  __int64 v4;
+  float32x4_t* v5;
+  __int64* v6;
+  float32x4_t* v7;
+  float32x4_t v8;
+  float32x4_t v9;
+  float32x4_t v10;
+  int8x16_t v11;
+  int8x16_t v12;
+  unsigned __int64 v13;
+  __int64 v14;
+  float32x4_t* v15;
+  float32x4_t v16;
+  int8x16_t v17;
+  int8x16_t v18;
+  unsigned __int64 v19;
+  unsigned __int64 v20;
+  __int64 v21;
+  float32x4_t* v22;
+  float32x4_t v23;
+  float32x4_t v24;
+  float32x4_t v25;
+  int8x16_t v26;
+  int8x16_t v27;
+  unsigned __int64 v28;
+  __int64* v29;
+  _QWORD* v30;
+  unsigned __int64 v31;
+  __int64 v32;
+  __int64 v33;
+  __int64 v34;
+  __int64 v35;
+  unsigned __int64 v36;
+  unsigned __int64 v37;
+  __int64 v38;
+  __int64 v39;
+  _QWORD* v40;
+  _QWORD* v41;
+  __int64 v42;
+  _QWORD* v43;
+  _QWORD* v44;
+  bool v45;
+  struct {
+    __int64 v46[4];
+    int8x16_t v47;
+    int8x16_t v48;
+    __int64 v49;
+    int v50;
+    char gap76_[4];
+    __int64 v51;
+    __int64 v52;
+    __int64 v53;
+    char v54;
+  } v46_;
+
+  v1 = (float32x4_t*)a1[11];
+  v2 = (float32x4_t*)a1[12];
+  if (v1 != v2) {
+    v4 = *(_QWORD*)(*(_QWORD*)GameData_212d020[0] + 40LL);
+    do {
+      game_f313e0(v4, LANES128(*(v1)).n128_u32[0], v1 + 1, v1 + 2);
+      v1 += 3;
+    } while (v1 != v2);
+  }
+  v5 = (float32x4_t*)GameData_212c958;
+  v6 = GameData_212f878;
+  BYTE1(v46_.v46[2]) = 0;
+  WORD1(v46_.v46[2]) = 0;
+  HIDWORD(v46_.v46[2]) = 0;
+  BYTE4(v46_.v53) = 0;
+  v46_.v54 = 0;
+  v46_.v51 = 0;
+  v46_.v52 = 0;
+  v7 = (float32x4_t*)*GameData_212f878;
+  v8 = *(float32x4_t*)GameData_212c958;
+  LOWORD(v46_.v53) = 0;
+  v46_.v49 = 0x700000000LL;
+  v46_.v50 = 1;
+  v10 = v7[39];
+  v9 = v7[40];
+  strcpy((char*)v46_.v46, "$MapPanelDeployM");
+  v11 = vmulq_f32(v8, v9);
+  v12 = vmulq_f32(v8, v10);
+  LODWORD(v13) = LANES128_OF(vextq_s8(v11, v11, 8u)).n128_u32[0];
+  LANES128(v10).n128_u32[0] = LANES128_OF(vextq_s8(v12, v12, 8u)).n128_u32[0];
+  HIDWORD(v13) = LANES64_OF(vdup_laneq_s32(v11, 3)).n64_u32[0];
+  LANES128(v11).n128_u64[1] = v13;
+  LANES128(v10).n128_u32[1] = LANES64_OF(vdup_laneq_s32(v12, 3)).n64_u32[0];
+  LANES128(v12).n128_u64[1] = LANES128(v10).n128_u64[0];
+  v46_.v47 = v12;
+  v46_.v48 = v11;
+  game_map_1044ea0(a1 + 2, (__int64)v46_.v46);
+  if ((v46_.v46[0] & 1) != 0 && v46_.v46[2] != 0) {
+    v14 = 128;
+    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+      v14 = 56;
+    }
+    nn_mem_StandardAllocator_Free_alt2(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v14, v46_.v46[2]);
+  }
+  memset(v46_.v46, 0, 24);
+  v46_.v49 = 0x700000000LL;
+  v46_.v50 = 0;
+  BYTE4(v46_.v53) = 0;
+  v46_.v54 = 0;
+  v46_.v51 = 0;
+  v46_.v52 = 0;
+  LOWORD(v46_.v53) = 0;
+  GameRoutine_60a020((__int64)v46_.v46, "MapPanelDeployMoveSelect");
+  v15 = (float32x4_t*)*v6;
+  v16 = *v5;
+  v46_.v49 = 0x700000000LL;
+  v46_.v50 = 1;
+  v17 = vmulq_f32(v16, v15[42]);
+  v18 = vmulq_f32(v16, v15[41]);
+  LODWORD(v19) = LANES128_OF(vextq_s8(v17, v17, 8u)).n128_u32[0];
+  LODWORD(v20) = LANES128_OF(vextq_s8(v18, v18, 8u)).n128_u32[0];
+  HIDWORD(v19) = LANES64_OF(vdup_laneq_s32(v17, 3)).n64_u32[0];
+  LANES128(v17).n128_u64[1] = v19;
+  HIDWORD(v20) = LANES64_OF(vdup_laneq_s32(v18, 3)).n64_u32[0];
+  LANES128(v18).n128_u64[1] = v20;
+  v46_.v47 = v18;
+  v46_.v48 = v17;
+  game_map_1044ea0(a1 + 5, (__int64)v46_.v46);
+  if ((v46_.v46[0] & 1) != 0 && v46_.v46[2] != 0) {
+    v21 = 128;
+    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+      v21 = 56;
+    }
+    nn_mem_StandardAllocator_Free_alt2(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v21, v46_.v46[2]);
+  }
+  v22 = (float32x4_t*)*v6;
+  v23 = *v5;
+  memset(v46_.v46, 0, 24);
+  BYTE4(v46_.v53) = 0;
+  v46_.v54 = 0;
+  v25 = v22[37];
+  v24 = v22[38];
+  LOWORD(v46_.v53) = 0;
+  v46_.v51 = 0;
+  v46_.v52 = 0;
+  v46_.v50 = 0;
+  LOBYTE(v46_.v46[0]) = 12;
+  qmemcpy((char*)v46_.v46 + 1, "Deploy", 6);
+  v26 = vmulq_f32(v23, v24);
+  v27 = vmulq_f32(v23, v25);
+  v46_.v49 = 0x800000000LL;
+  LODWORD(v28) = LANES128_OF(vextq_s8(v26, v26, 8u)).n128_u32[0];
+  LANES128(v25).n128_u32[0] = LANES128_OF(vextq_s8(v27, v27, 8u)).n128_u32[0];
+  HIDWORD(v28) = LANES64_OF(vdup_laneq_s32(v26, 3)).n64_u32[0];
+  LANES128(v26).n128_u64[1] = v28;
+  LANES128(v25).n128_u32[1] = LANES64_OF(vdup_laneq_s32(v27, 3)).n64_u32[0];
+  LANES128(v27).n128_u64[1] = LANES128(v25).n128_u64[0];
+  v46_.v47 = v27;
+  v46_.v48 = v26;
+  v29 = (__int64*)GameData_212d018[0];
+  v30 = *(_QWORD**)GameData_212d018[0];
+  v31 = *(_QWORD*)(*(_QWORD*)GameData_212d018[0] + 24LL);
+  if (v31 >= *(_QWORD*)(*(_QWORD*)GameData_212d018[0] + 32LL)) {
+    v33 = PrimitiveDrawStack_f525a0(v30 + 2, (__int64)v46_.v46);
+  }
+  else {
+    v32 = v46_.v46[1];
+    *(_QWORD*)(v31 + 80) = 0;
+    *(_QWORD*)(v31 + 88) = 0;
+    v33 = v31 + 112;
+    *(_QWORD*)(v31 + 8) = v32;
+    v34 = v46_.v46[0];
+    *(_QWORD*)(v31 + 16) = v46_.v46[2];
+    *(_QWORD*)v31 = v34;
+    *(_QWORD*)(v31 + 40) = LANES128(v46_.v47).n128_u64[1];
+    v36 = LANES128(v46_.v48).n128_u64[1];
+    v35 = v46_.v49;
+    v37 = LANES128(v46_.v48).n128_u64[0];
+    *(_DWORD*)(v31 + 72) = v46_.v50;
+    *(_QWORD*)(v31 + 56) = v36;
+    *(_QWORD*)(v31 + 64) = v35;
+    *(_QWORD*)(v31 + 48) = v37;
+    *(_QWORD*)(v31 + 32) = LANES128(v46_.v47).n128_u64[0];
+    v38 = v46_.v53;
+    *(_BYTE*)(v31 + 104) = v46_.v54;
+    *(_QWORD*)(v31 + 96) = v38;
+  }
+  v39 = v30[2];
+  v30[3] = v33;
+  v30[1] = 0x6DB6DB6DB6DB6DB7LL * ((v33 - v39) >> 4) - 1;
+  v40 = (_QWORD*)a1[8];
+  v41 = a1 + 9;
+  if (v40 != v41) {
+    do {
+      PrimitiveDrawStack_f51430(*v29, (__int64)(v40 + 6));
+      v43 = (_QWORD*)v40[1];
+      if (v43 != nullptr) {
+        do {
+          v44 = v43;
+          v43 = (_QWORD*)*v43;
+        } while (v43 != nullptr);
+      }
+      else {
+        do {
+          v44 = (_QWORD*)v40[2];
+          v45 = v40 == (_QWORD*)*v44;
+          v40 = v44;
+        } while (!v45);
+      }
+      v40 = v44;
+    } while (v44 != v41);
+  }
+  *(_QWORD*)(*v29 + 8) = 1024;
+  if ((v46_.v46[0] & 1) != 0 && v46_.v46[2] != 0) {
+    v42 = 128;
+    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+      v42 = 56;
+    }
+    nn_mem_StandardAllocator_Free_alt2(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v42, v46_.v46[2]);
   }
 }
 

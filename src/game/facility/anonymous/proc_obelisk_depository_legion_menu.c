@@ -61,6 +61,14 @@ void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void ProcObeliskDepositoryLegionMenu_Destructor(__int64 a1);
 void ProcObeliskDepositoryLegionMenu_DeletingDestructor(__int64 a1);
+__attribute__((swiftcall)) void LayoutAccessor_1560070(PSEUDO_X8, __int64*,
+                                                       const char*);
+__int64 game_menu_PageTab_SetupImage(int*, __int64, __int64, unsigned int,
+                                     unsigned int, unsigned int);
+__int64 std___1___shared_weak_count___release_weak(__int64);
+extern __int64 (*GameData_211dfc0[])();
+__int64
+game_facility_anonymous_ProcObeliskDepositoryLegionMenu_OnInit(__int64 a1);
 
 void ProcObeliskDepositoryLegionMenu_Destructor(__int64 a1)
 {
@@ -173,6 +181,45 @@ const char* ProcObeliskDepositoryLegionMenu_Unknown43(__int64 a1, char a2)
   else {
     return GameData_211e868[(unsigned __int8)(a2 - 1)];
   }
+}
+
+__int64
+
+game_facility_anonymous_ProcObeliskDepositoryLegionMenu_OnInit(__int64 a1)
+{
+  __int64 v2;
+  __int64 result;
+  struct {
+    _QWORD v4[4];
+    _QWORD* v5;
+  } v4_;
+  struct {
+    __int64 v6;
+    __int64 v7;
+  } v6_;
+
+  LayoutAccessor_1560070((void*)(&v6_.v6), (__int64*)(a1 + 952), "L_PageTab");
+  v4_.v4[0] = GameData_211dfc0;
+  v4_.v4[1] = a1;
+  v4_.v5 = v4_.v4;
+  game_menu_PageTab_SetupImage((int*)(a1 + 656), (__int64)&v6_.v6,
+                               (__int64)v4_.v4, 2u, 0xEu, 0xFu);
+  if (v4_.v5 == v4_.v4) {
+    v2 = 32;
+  }
+  else {
+    if (v4_.v5 == nullptr) {
+      goto LABEL_6;
+    }
+    v2 = 40;
+  }
+  (*(void (**)(__int64))(*v4_.v5 + v2))((__int64)v4_.v5);
+LABEL_6:
+  result = v6_.v7;
+  if (v6_.v7 != 0) {
+    return std___1___shared_weak_count___release_weak(v6_.v7);
+  }
+  return result;
 }
 
 __int64 ProcObeliskDepositoryLegionMenu_Unknown88(__int64 a1)

@@ -3,702 +3,1297 @@
 #pragma GCC visibility push(hidden)
 
 extern __int128 GameData_1a82a20;
+
 extern __int128 GameData_1a82c10;
+
 extern __int128 GameData_1a82fd0;
+
 extern __int128 GameData_1a83130;
+
 extern __int128 GameData_1a83310;
+
 extern __int128 GameData_1a83600;
+
 extern __int128 GameData_1a83710;
+
 extern __int128 GameData_1a837b0;
+
 extern __int128 GameData_1a83890;
-extern _UNKNOWN GameData_1a89034;
+
 extern _UNKNOWN GameData_1a8d4b3;
+
 extern _UNKNOWN GameData_1abbc6b;
+
 extern _UNKNOWN GameData_1ae592b;
+
 extern unsigned __int8 GameData_1bee1cc[80];
+
 extern __int64 (*GameData_2080600[])();
-extern __int64 (*GameData_2080830[])();
+
 extern __int64 (*GameData_2081260[])();
+
 extern __int64 (*GameData_2081728[])();
+
 extern __int64 (*GameData_20817f8[])();
+
 extern __int64 (*GameData_20818a8[])();
+
 extern __int64 (*GameData_20824d8[])();
+
 extern __int64 (*GameData_2082970[])();
+
 extern __int64 (*GameData_2082a40[])();
+
 extern __int64 GameData_2084398;
+
 extern __int64 (*GameData_2088c70[])();
-extern __int64 (*GameData_208b390[])();
+
 extern __int64 (*GameData_208d208[])();
+
 extern __int64 (*GameData_208d690[])();
+
 extern __int64 (*GameData_208d760[])();
+
 extern __int64 (*GameData_208d8b8[])();
+
 extern __int64 (*GameData_208dc38[])();
+
 extern __int64 GameData_212bf68;
+
 extern __int64 GameData_212c060;
+
 extern __int64 GameData_212c608[2];
+
 extern _UNKNOWN* GameData_212c730;
+
 extern __int64 GameData_212c7b0[11];
+
 extern __int64* GameData_212cc78[56];
+
 extern __int64 GameData_212cf60;
+
 extern __int64* GameData_212e008[9];
+
 extern __int64 GameData_2130e20;
+
 extern __int64 GameData_2131520;
+
 extern __int64* GameData_2131b38;
+
 extern __int64 GameData_21c96e8;
+
 extern __int64 GameData_21c9718;
+
 extern __int64 GameData_21caab0;
+
 extern __int64 GameData_21ee260;
+
 extern __int64 GameData_21f17e0;
+
 extern __int64 GameData_21f42d0;
+
 extern int GameData_2246ca8;
+
 extern __int64 GameData_22491f0;
+
 extern __int64 GameData_2258a58;
+
 extern __int64 GameData_2258ba8;
+
 extern char GameData_225e558;
+
 extern __int64 GameData_225e560;
+
 extern __int64 GameData_225e568;
+
 extern __int64 GameData_225e570;
+
 extern int GameData_225e578;
+
 extern __int64 GameData_225e580;
+
 extern int GameData_225e588;
+
 extern __int64 GameData_225e590;
+
 extern char GameData_225e598;
+
 extern __int64 GameData_225e5a0;
+
 extern __int64 GameData_225e5a8;
+
 extern __int64 GameData_225e5b0;
+
 extern int GameData_225e5b8;
+
 extern __int64 GameData_225e5c0;
+
 extern int GameData_225e5c8;
+
 extern __int64 GameData_225e5d0;
+
 extern char GameData_225e5d8;
+
 extern __int64 GameData_225e5e0;
+
 extern __int64 GameData_225e5e8;
+
 extern __int64 GameData_225e5f0;
+
 extern int GameData_225e5f8;
+
 extern __int64 GameData_225e600;
+
 extern int GameData_225e608;
+
 extern __int64 GameData_225e610;
+
 extern char GameData_225e618;
+
 extern __int64 GameData_225e620;
+
 extern __int64 GameData_225e628;
+
 extern __int64 GameData_225e630;
+
 extern int GameData_225e638;
+
 extern __int64 GameData_225e640;
+
 extern int GameData_225e648;
+
 extern __int64 GameData_225e650;
+
 extern char GameData_225e658;
+
 extern __int64 GameData_225e660;
+
 extern __int64 GameData_225e668;
+
 extern __int64 GameData_225e670;
+
 extern int GameData_225e678;
+
 extern __int64 GameData_225e680;
+
 extern int GameData_225e688;
+
 extern __int64 GameData_225e690;
+
 extern char GameData_225e698;
+
 extern __int64 GameData_225e6a0;
+
 extern __int64 GameData_225e6a8;
+
 extern __int64 GameData_225e6b0;
+
 extern int GameData_225e6b8;
+
 extern __int64 GameData_225e6c0;
+
 extern int GameData_225e6c8;
+
 extern __int64 GameData_225e6d0;
+
 extern char GameData_225e6d8;
+
 extern __int64 GameData_225e6e0;
+
 extern __int64 GameData_225e6e8;
+
 extern __int64 GameData_225e6f0;
+
 extern int GameData_225e6f8;
+
 extern __int64 GameData_225e700;
+
 extern int GameData_225e708;
+
 extern __int64 GameData_225e710;
+
 extern char GameData_225e718;
+
 extern __int64 GameData_225e720;
+
 extern __int64 GameData_225e728;
+
 extern __int64 GameData_225e730;
+
 extern int GameData_225e738;
+
 extern __int64 GameData_225e740;
+
 extern int GameData_225e748;
+
 extern __int64 GameData_225e750;
+
 extern char GameData_225e758;
+
 extern __int64 GameData_225e760;
+
 extern __int64 GameData_225e768;
+
 extern __int64 GameData_225e770;
+
 extern int GameData_225e778;
+
 extern __int64 GameData_225e780;
+
 extern int GameData_225e788;
+
 extern __int64 GameData_225e790;
+
 extern _UNKNOWN GameData_225e798;
+
 extern __int64 GameData_225e7a0;
+
 extern __int64 GameData_2260e70;
+
 extern __int64 GameData_2260e80;
-extern int GameData_2260ebc;
+
 extern char GameData_2260ec0;
+
 extern __int64 GameData_2260ec8;
+
 extern __int64 GameData_2260ed0;
+
 extern __int64 GameData_2260ed8;
+
 extern int GameData_2260ee0;
+
 extern __int64 GameData_2260ee8;
+
 extern int GameData_2260ef0;
+
 extern __int64 GameData_2260ef8;
+
 extern char GameData_2260f00;
+
 extern __int64 GameData_2260f08;
+
 extern __int64 GameData_2260f10;
+
 extern __int64 GameData_2260f18;
+
 extern int GameData_2260f20;
+
 extern __int64 GameData_2260f28;
+
 extern int GameData_2260f30;
+
 extern __int64 GameData_2260f38;
+
 extern char GameData_2260f40;
+
 extern __int64 GameData_2260f48;
+
 extern __int64 GameData_2260f50;
+
 extern __int64 GameData_2260f58;
+
 extern int GameData_2260f60;
+
 extern __int64 GameData_2260f68;
+
 extern int GameData_2260f70;
+
 extern __int64 GameData_2260f78;
+
 extern char GameData_2260f80;
+
 extern __int64 GameData_2260f88;
+
 extern __int64 GameData_2260f90;
+
 extern __int64 GameData_2260f98;
+
 extern int GameData_2260fa0;
+
 extern __int64 GameData_2260fa8;
+
 extern int GameData_2260fb0;
+
 extern __int64 GameData_2260fb8;
+
 extern char GameData_2260fc0;
+
 extern __int64 GameData_2260fc8;
+
 extern __int64 GameData_2260fd0;
+
 extern __int64 GameData_2260fd8;
+
 extern int GameData_2260fe0;
+
 extern __int64 GameData_2260fe8;
+
 extern int GameData_2260ff0;
+
 extern __int64 GameData_2260ff8;
+
 extern char GameData_2261000;
+
 extern __int64 GameData_2261008;
+
 extern __int64 GameData_2261010;
+
 extern __int64 GameData_2261018;
+
 extern int GameData_2261020;
+
 extern __int64 GameData_2261028;
+
 extern int GameData_2261030;
+
 extern __int64 GameData_2261038;
+
 extern char GameData_2261040;
+
 extern __int64 GameData_2261048;
+
 extern __int64 GameData_2261050;
+
 extern __int64 GameData_2261058;
+
 extern int GameData_2261060;
+
 extern __int64 GameData_2261068;
+
 extern int GameData_2261070;
+
 extern __int64 GameData_2261078;
+
 extern char GameData_2261080;
+
 extern __int64 GameData_2261088;
+
 extern __int64 GameData_2261090;
+
 extern __int64 GameData_2261098;
+
 extern int GameData_22610a0;
+
 extern __int64 GameData_22610a8;
+
 extern int GameData_22610b0;
+
 extern __int64 GameData_22610b8;
+
 extern char GameData_22610c0;
+
 extern __int64 GameData_22610c8;
+
 extern __int64 GameData_22610d0;
+
 extern __int64 GameData_22610d8;
+
 extern int GameData_22610e0;
+
 extern __int64 GameData_22610e8;
+
 extern int GameData_22610f0;
+
 extern __int64 GameData_22610f8;
+
 extern char GameData_2261100;
+
 extern __int64 GameData_2261108;
+
 extern __int64 GameData_2261110;
+
 extern __int64 GameData_2261118;
+
 extern int GameData_2261120;
+
 extern __int64 GameData_2261128;
+
 extern int GameData_2261130;
+
 extern __int64 GameData_2261138;
+
 extern char GameData_2261140;
+
 extern __int64 GameData_2261148;
+
 extern __int64 GameData_2261150;
+
 extern __int64 GameData_2261158;
+
 extern int GameData_2261160;
+
 extern __int64 GameData_2261168;
+
 extern int GameData_2261170;
+
 extern __int64 GameData_2261178;
+
 extern char GameData_2261180;
+
 extern __int64 GameData_2261188;
+
 extern __int64 GameData_2261190;
+
 extern __int64 GameData_2261198;
+
 extern int GameData_22611a0;
+
 extern __int64 GameData_22611a8;
+
 extern int GameData_22611b0;
+
 extern __int64 GameData_22611b8;
+
 extern char GameData_22611c0;
+
 extern __int64 GameData_22611c8;
+
 extern __int64 GameData_22611d0;
+
 extern __int64 GameData_22611d8;
+
 extern int GameData_22611e0;
+
 extern __int64 GameData_22611e8;
+
 extern int GameData_22611f0;
+
 extern __int64 GameData_22611f8;
+
 extern char GameData_2261200;
+
 extern __int64 GameData_2261208;
+
 extern __int64 GameData_2261210;
+
 extern __int64 GameData_2261218;
+
 extern int GameData_2261220;
+
 extern __int64 GameData_2261228;
+
 extern int GameData_2261230;
+
 extern __int64 GameData_2261238;
+
 extern char GameData_2261240;
+
 extern __int64 GameData_2261248;
+
 extern __int64 GameData_2261250;
+
 extern __int64 GameData_2261258;
+
 extern int GameData_2261260;
+
 extern __int64 GameData_2261268;
+
 extern int GameData_2261270;
+
 extern __int64 GameData_2261278;
+
 extern char GameData_2261280;
+
 extern __int64 GameData_2261288;
+
 extern __int64 GameData_2261290;
+
 extern __int64 GameData_2261298;
+
 extern int GameData_22612a0;
+
 extern __int64 GameData_22612a8;
+
 extern int GameData_22612b0;
+
 extern __int64 GameData_22612b8;
+
 extern char GameData_22612c0;
+
 extern __int64 GameData_22612c8;
+
 extern __int64 GameData_22612d0;
+
 extern __int64 GameData_22612d8;
+
 extern int GameData_22612e0;
+
 extern __int64 GameData_22612e8;
+
 extern int GameData_22612f0;
+
 extern __int64 GameData_22612f8;
+
 extern char GameData_2261300;
+
 extern __int64 GameData_2261308;
+
 extern __int64 GameData_2261310;
+
 extern __int64 GameData_2261318;
+
 extern int GameData_2261320;
+
 extern __int64 GameData_2261328;
+
 extern int GameData_2261330;
+
 extern __int64 GameData_2261338;
+
 extern char GameData_2261340;
+
 extern __int64 GameData_2261348;
+
 extern __int64 GameData_2261350;
+
 extern __int64 GameData_2261358;
+
 extern int GameData_2261360;
+
 extern __int64 GameData_2261368;
+
 extern int GameData_2261370;
+
 extern __int64 GameData_2261378;
+
 extern char GameData_2261380;
+
 extern __int64 GameData_2261388;
+
 extern __int64 GameData_2261390;
+
 extern __int64 GameData_2261398;
+
 extern int GameData_22613a0;
+
 extern __int64 GameData_22613a8;
+
 extern int GameData_22613b0;
+
 extern __int64 GameData_22613b8;
+
 extern char GameData_22613c0;
+
 extern __int64 GameData_22613c8;
+
 extern __int64 GameData_22613d0;
+
 extern __int64 GameData_22613d8;
+
 extern int GameData_22613e0;
+
 extern __int64 GameData_22613e8;
+
 extern int GameData_22613f0;
+
 extern __int64 GameData_22613f8;
+
 extern char GameData_2261400;
+
 extern __int64 GameData_2261408;
+
 extern __int64 GameData_2261410;
+
 extern __int64 GameData_2261418;
+
 extern int GameData_2261420;
+
 extern __int64 GameData_2261428;
+
 extern int GameData_2261430;
+
 extern __int64 GameData_2261438;
+
 extern char GameData_2261440;
+
 extern __int64 GameData_2261448;
+
 extern __int64 GameData_2261450;
+
 extern __int64 GameData_2261458;
+
 extern int GameData_2261460;
+
 extern __int64 GameData_2261468;
+
 extern int GameData_2261470;
+
 extern __int64 GameData_2261478;
+
 extern char GameData_2261480;
+
 extern __int64 GameData_2261488;
+
 extern __int64 GameData_2261490;
+
 extern __int64 GameData_2261498;
+
 extern int GameData_22614a0;
+
 extern __int64 GameData_22614a8;
+
 extern int GameData_22614b0;
+
 extern __int64 GameData_22614b8;
+
 extern char GameData_22614c0;
+
 extern __int64 GameData_22614c8;
+
 extern __int64 GameData_22614d0;
+
 extern __int64 GameData_22614d8;
+
 extern int GameData_22614e0;
+
 extern __int64 GameData_22614e8;
+
 extern int GameData_22614f0;
+
 extern __int64 GameData_22614f8;
+
 extern _UNKNOWN GameData_2261500;
+
 extern char GameData_2261510;
+
 extern __int64 GameData_2261518;
+
 extern __int64 GameData_2261520;
+
 extern __int64 GameData_2261528;
+
 extern int GameData_2261530;
+
 extern __int64 GameData_2261538;
+
 extern int GameData_2261540;
+
 extern __int64 GameData_2261548;
+
 extern char GameData_2261550;
+
 extern __int64 GameData_2261558;
+
 extern __int64 GameData_2261560;
+
 extern __int64 GameData_2261568;
+
 extern int GameData_2261570;
+
 extern __int64 GameData_2261578;
+
 extern int GameData_2261580;
+
 extern __int64 GameData_2261588;
+
 extern char GameData_2261590;
+
 extern __int64 GameData_2261598;
+
 extern __int64 GameData_22615a0;
+
 extern __int64 GameData_22615a8;
+
 extern int GameData_22615b0;
+
 extern __int64 GameData_22615b8;
+
 extern int GameData_22615c0;
+
 extern __int64 GameData_22615c8;
+
 extern char GameData_22615d0;
+
 extern __int64 GameData_22615d8;
+
 extern __int64 GameData_22615e0;
+
 extern __int64 GameData_22615e8;
+
 extern int GameData_22615f0;
+
 extern __int64 GameData_22615f8;
+
 extern int GameData_2261600;
+
 extern __int64 GameData_2261608;
+
 extern char GameData_2261610;
+
 extern __int64 GameData_2261618;
+
 extern __int64 GameData_2261620;
+
 extern __int64 GameData_2261628;
+
 extern int GameData_2261630;
+
 extern __int64 GameData_2261638;
+
 extern int GameData_2261640;
+
 extern __int64 GameData_2261648;
+
 extern char GameData_2261650;
+
 extern __int64 GameData_2261658;
+
 extern __int64 GameData_2261660;
+
 extern __int64 GameData_2261668;
+
 extern int GameData_2261670;
+
 extern __int64 GameData_2261678;
+
 extern int GameData_2261680;
+
 extern __int64 GameData_2261688;
+
 extern char GameData_2261690;
+
 extern __int64 GameData_2261698;
+
 extern __int64 GameData_22616a0;
+
 extern __int64 GameData_22616a8;
+
 extern int GameData_22616b0;
+
 extern __int64 GameData_22616b8;
+
 extern int GameData_22616c0;
+
 extern __int64 GameData_22616c8;
+
 extern char GameData_22616d0;
+
 extern __int64 GameData_22616d8;
+
 extern __int64 GameData_22616e0;
+
 extern __int64 GameData_22616e8;
+
 extern int GameData_22616f0;
+
 extern __int64 GameData_22616f8;
+
 extern int GameData_2261700;
+
 extern __int64 GameData_2261708;
+
 extern char GameData_2261710;
+
 extern __int64 GameData_2261718;
+
 extern __int64 GameData_2261720;
+
 extern __int64 GameData_2261728;
+
 extern int GameData_2261730;
+
 extern __int64 GameData_2261738;
+
 extern int GameData_2261740;
+
 extern __int64 GameData_2261748;
+
 extern char GameData_2261750;
+
 extern __int64 GameData_2261758;
+
 extern __int64 GameData_2261760;
+
 extern __int64 GameData_2261768;
+
 extern int GameData_2261770;
+
 extern __int64 GameData_2261778;
+
 extern int GameData_2261780;
+
 extern __int64 GameData_2261788;
+
 extern char GameData_2261790;
+
 extern __int64 GameData_2261798;
+
 extern __int64 GameData_22617a0;
+
 extern __int64 GameData_22617a8;
+
 extern int GameData_22617b0;
+
 extern __int64 GameData_22617b8;
+
 extern int GameData_22617c0;
+
 extern __int64 GameData_22617c8;
+
 extern char GameData_22617d0;
+
 extern __int64 GameData_22617d8;
+
 extern __int64 GameData_22617e0;
+
 extern __int64 GameData_22617e8;
+
 extern int GameData_22617f0;
+
 extern __int64 GameData_22617f8;
+
 extern int GameData_2261800;
+
 extern __int64 GameData_2261808;
+
 extern char GameData_2261810;
+
 extern __int64 GameData_2261818;
+
 extern __int64 GameData_2261820;
+
 extern __int64 GameData_2261828;
+
 extern int GameData_2261830;
+
 extern __int64 GameData_2261838;
+
 extern int GameData_2261840;
+
 extern __int64 GameData_2261848;
+
 extern char GameData_2261850;
+
 extern __int64 GameData_2261858;
+
 extern __int64 GameData_2261860;
+
 extern __int64 GameData_2261868;
+
 extern int GameData_2261870;
+
 extern __int64 GameData_2261878;
+
 extern int GameData_2261880;
+
 extern __int64 GameData_2261888;
+
 extern char GameData_2261890;
+
 extern __int64 GameData_2261898;
+
 extern __int64 GameData_22618a0;
+
 extern __int64 GameData_22618a8;
+
 extern int GameData_22618b0;
+
 extern __int64 GameData_22618b8;
+
 extern int GameData_22618c0;
+
 extern __int64 GameData_22618c8;
+
 extern char GameData_22618d0;
+
 extern __int64 GameData_22618d8;
+
 extern __int64 GameData_22618e0;
+
 extern __int64 GameData_22618e8;
+
 extern int GameData_22618f0;
+
 extern __int64 GameData_22618f8;
+
 extern int GameData_2261900;
+
 extern __int64 GameData_2261908;
+
 extern char GameData_2261910;
+
 extern __int64 GameData_2261918;
+
 extern __int64 GameData_2261920;
+
 extern __int64 GameData_2261928;
+
 extern int GameData_2261930;
+
 extern __int64 GameData_2261938;
+
 extern int GameData_2261940;
+
 extern __int64 GameData_2261948;
+
 extern char GameData_2261950;
+
 extern __int64 GameData_2261958;
+
 extern __int64 GameData_2261960;
+
 extern __int64 GameData_2261968;
+
 extern int GameData_2261970;
+
 extern __int64 GameData_2261978;
+
 extern int GameData_2261980;
+
 extern __int64 GameData_2261988;
+
 extern char GameData_2261990;
+
 extern __int64 GameData_2261998;
+
 extern __int64 GameData_22619a0;
+
 extern __int64 GameData_22619a8;
+
 extern int GameData_22619b0;
+
 extern __int64 GameData_22619b8;
+
 extern int GameData_22619c0;
+
 extern __int64 GameData_22619c8;
+
 extern char GameData_22619d0;
+
 extern __int64 GameData_22619d8;
+
 extern __int64 GameData_22619e0;
+
 extern __int64 GameData_22619e8;
+
 extern int GameData_22619f0;
+
 extern __int64 GameData_22619f8;
+
 extern int GameData_2261a00;
+
 extern __int64 GameData_2261a08;
+
 extern char GameData_2261a10;
+
 extern __int64 GameData_2261a18;
+
 extern __int64 GameData_2261a20;
+
 extern __int64 GameData_2261a28;
+
 extern int GameData_2261a30;
+
 extern __int64 GameData_2261a38;
+
 extern int GameData_2261a40;
+
 extern __int64 GameData_2261a48;
+
 extern char GameData_2261a50;
+
 extern __int64 GameData_2261a58;
+
 extern __int64 GameData_2261a60;
+
 extern __int64 GameData_2261a68;
+
 extern int GameData_2261a70;
+
 extern __int64 GameData_2261a78;
+
 extern int GameData_2261a80;
+
 extern __int64 GameData_2261a88;
+
 extern char GameData_2261a90;
+
 extern __int64 GameData_2261a98;
+
 extern __int64 GameData_2261aa0;
+
 extern __int64 GameData_2261aa8;
+
 extern int GameData_2261ab0;
+
 extern __int64 GameData_2261ab8;
+
 extern int GameData_2261ac0;
+
 extern __int64 GameData_2261ac8;
+
 extern char GameData_2261ad0;
+
 extern __int64 GameData_2261ad8;
+
 extern __int64 GameData_2261ae0;
+
 extern __int64 GameData_2261ae8;
+
 extern int GameData_2261af0;
+
 extern __int64 GameData_2261af8;
+
 extern int GameData_2261b00;
+
 extern __int64 GameData_2261b08;
+
 extern char GameData_2261b10;
+
 extern __int64 GameData_2261b18;
+
 extern __int64 GameData_2261b20;
+
 extern __int64 GameData_2261b28;
+
 extern int GameData_2261b30;
+
 extern __int64 GameData_2261b38;
+
 extern int GameData_2261b40;
+
 extern __int64 GameData_2261b48;
+
 extern _UNKNOWN GameData_2261b50;
+
 extern __int64 GameData_2265ee0;
-extern __int64 GameData_2272140;
-__int64 GameRoutine_125a000(_QWORD, _QWORD, _QWORD);
+
 __int64 GameRoutine_125bbc0(_QWORD);
+
 void __attribute__((noreturn)) GameRoutine_12680d0(_QWORD);
+
 __int64 GameRoutine_13300a0(_QWORD);
+
 __int64 GameRoutine_13305c0(void);
+
 __int64 GameRoutine_13e5820(_QWORD);
+
 __int64 GameRoutine_143d0a0(_QWORD, _QWORD);
+
 __int64 GameRoutine_155f480(_QWORD, _QWORD);
-__int64 GameRoutine_155fbe0(_QWORD, _QWORD);
-__attribute__((swiftcall)) void GameRoutine_1560070(PSEUDO_X8, _QWORD, _QWORD);
+
 __int64 GameRoutine_1566d90(_QWORD, _QWORD);
+
 __int64 GameRoutine_1567000(_QWORD, _QWORD);
-__int64 GameRoutine_1593d90(_QWORD, _QWORD);
+
 __int64 GameRoutine_159a4a0(void);
-__int64 GameRoutine_159a5c0(_QWORD, _QWORD);
-__int64 GameRoutine_159b580(_QWORD, _QWORD, _QWORD, _QWORD);
+
 __int64 GameRoutine_15e5fa0(void);
+
 void __attribute__((noreturn)) GameRoutine_1601ed0(void);
+
 void __attribute__((noreturn)) GameRoutine_16176e0(void);
+
 void __attribute__((noreturn)) GameRoutine_1654e20(void);
+
 __int64 GameRoutine_1678f00(_QWORD, _QWORD);
+
 __int64 GameRoutine_167b0c0(_QWORD, _QWORD, _QWORD);
+
 __int64 GameRoutine_1680240();
-__int64 GameRoutine_16803d0();
+
 __int64 GameRoutine_1680560();
-__int64 GameRoutine_1682110();
-__int64 GameRoutine_16821c0(_QWORD);
+
 __int64 GameRoutine_1686d40(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
-__int64 GameRoutine_1687d40(_QWORD, _QWORD);
+
 void __attribute__((noreturn)) GameRoutine_168a320(void);
+
 void __attribute__((noreturn)) GameRoutine_168d7e0(_QWORD);
+
 __int64 GameRoutine_16964a0(void);
+
 __int64 GameRoutine_16965c0(void);
+
 __int64 GameRoutine_16966e0(void);
+
 __int64 GameRoutine_169e7d0(_QWORD*);
+
 void __attribute__((noreturn)) GameRoutine_16ae320(void);
-__int64 GameRoutine_16aec40(_QWORD, _QWORD, _QWORD);
+
 __int64 GameRoutine_16afa80();
+
 __int64 GameRoutine_16afaa0();
+
 __int64 GameRoutine_16afc20();
+
 __int64 GameRoutine_16afdf0();
-__int64 GameRoutine_16affc0();
-__int64 GameRoutine_16b0100();
-__int64 GameRoutine_16b0340();
-__int64 GameRoutine_16b0370();
-__int64 GameRoutine_16b0680();
+
 __int64 GameRoutine_16b06e0();
-__int64 GameRoutine_16b0800(_QWORD, _QWORD, _QWORD);
+
 __int64 GameRoutine_16bc520(_QWORD, _QWORD, _QWORD);
+
 __int64 GameRoutine_16dd440(_QWORD);
+
 __int64 GameRoutine_16e0c00(_QWORD, _QWORD);
+
 __int64 GameRoutine_16e94f0(void);
+
 __int64 GameRoutine_173fac0(_QWORD, _QWORD);
-__int64 GameRoutine_1992be0(_QWORD, _QWORD, _QWORD);
-__int64 GameRoutine_19a4250(_QWORD, _QWORD);
-__int64 GameRoutine_1a09c50(void);
+
 __int64 GameRoutine_1a09c70(_QWORD);
+
 __int64 GameRoutine_1a09d20(_QWORD, _QWORD);
-__int64 GameRoutine_1a09fd0(_QWORD);
-__int64 GameRoutine_1a09fe0(_QWORD);
+
 __int64 GameRoutine_1a0a4e0(_QWORD, _QWORD);
+
 __int64 GameRoutine_1a0a6c0(_QWORD, _QWORD, _QWORD, _QWORD);
+
 __int64 GameRoutine_1a0b950(_QWORD, _QWORD, _QWORD);
+
 __int64 GameRoutine_58dee0(_QWORD, _QWORD);
+
 __int64 GameRoutine_58df60(_QWORD, _QWORD);
+
 void __attribute__((noreturn)) GameRoutine_60a1d0(void);
+
 void __attribute__((noreturn)) GameRoutine_60a210(_QWORD);
+
 __int64 GameRoutine_60a270(_QWORD, _QWORD, _QWORD);
+
 void __attribute__((noreturn)) GameRoutine_60a310(void);
+
 __int64 GameRoutine_651b90(_QWORD, _QWORD, _QWORD, _QWORD);
+
 __int64 GameRoutine_657850(_QWORD, _QWORD, _QWORD, _QWORD, _QWORD);
-__int64 GameRoutine_657a50(_QWORD, _QWORD);
-__int64 GameRoutine_65a7c0(void);
+
 __int64 GameRoutine_65c580(_QWORD, _QWORD);
+
 __int64 GameRoutine_6e3b50(_QWORD, _QWORD);
-__int64 GameRoutine_7a8520(void);
+
 __int64 GameRoutine_7a86e0(void);
+
 __int64 GameRoutine_820d50(_QWORD);
+
 __int64 GameRoutine_821090(_QWORD);
+
 __int64 GameRoutine_930b90(_QWORD, _QWORD);
+
 __int64 GameRoutine_947910(_QWORD);
+
 __int64 GameRoutine_947cc0(_QWORD);
+
 __int64 GameRoutine_948b80(void);
+
 __int64 GameRoutine_948d00(_QWORD);
+
 __int64 GameRoutine_949130(_QWORD);
+
 __int64 GameRoutine_9495e0(void);
+
 __int64 GameRoutine_949930(void);
+
 __int64 GameRoutine_949fe0(_QWORD);
+
 __int64 GameRoutine_94bac0(void);
+
 __int64 GameRoutine_94cc30(_QWORD);
+
 __int64 GameRoutine_94cff0(_QWORD);
+
 __int64 GameRoutine_959290(_QWORD, _QWORD);
+
 __int64 GameRoutine_9db9e0(_QWORD, _QWORD);
+
 void __attribute__((noreturn)) GameRoutine_e66f80(void);
+
 __int64 GameRoutine_efdf40(_QWORD, _QWORD);
+
 __int64 GameRoutine_fa6720(_QWORD, _QWORD);
+
 __int64 GameRoutine_fbc550(_QWORD);
+
 __int64 GameRoutine_fbc6b0(void);
+
 __int64 GameRoutine_ffd760(_QWORD, _QWORD, _QWORD, _QWORD);
+
 _BYTE* ProcInst_657a50(__int64, char);
+
 __int64* LayoutAccessor_155fbe0(__int64*, const char*);
+
 __int64 GameHr_16aec40_alt1(__int64, __int64,
                             __int64*) __asm__("GameHr_16aec40");
+
 __int64 GameRoutine_1593d90_alt1(__int64*,
                                  __int64) __asm__("GameRoutine_1593d90");
+
 __int64 GameRoutine_19a4250_alt1(__int64*, char) __asm__("GameRoutine_19a4250");
+
 __int64 ProcGmapCarriageList_16803d0();
+
 __int64 ProcGmapCarriageList_1682110();
+
 __int64 ProcGmapCarriageList_16821c0(__int64 result);
+
 __int64 ProcInst_657850(__int64, __int64, const char*, char, __int64);
+
 __int64 ProcNextSeq_16b0340();
+
 __int64 ProcNextSeq_16b0370();
+
 __int64 ProcNextSeq_16b0680();
+
 __int64 ProcNextSeq_16b0800(__int64, const char*, __int16*);
+
 __int64 fw_memory_HeapManager_Allocate(__int64, __int64, __int64, unsigned int);
+
 __int64 game_ProcInst_Register(__int64);
+
 __int64 game_menu_anonymous_ProcNextSeq_CheckFree_16b0100();
+
 __int64 game_menu_anonymous_ProcNextSeq_CheckNextFree();
+
 const char* game_HashString32(const char* result);
+
 extern __int64 (*game_gmap_anonymous_ProcGmapMap_vtable[])();
+
 extern __int64 (*game_menu_anonymous_ProcMainQuestPart3Seq_vtable[])();
+
 extern __int64 fw_memory_g_heap_manager;
+
 extern __int64 fw_memory_g_heap_manager_ptr;
+
 extern __int64 game_GameModeData_instance_;
+
 extern __int64 game_map_MapColorPalette_g_texture_archives;
+
 extern int game_script_hub_ui_g_talk_result;
+
 int __cxa_guard_acquire(__int64);
+
 void GameSubquestData_125a000(__int64, __int64*, char);
+
 void ProcGmapMap_1687d40(__int64, char**);
+
 void __cxa_guard_release(__int64);
+
 void game_gameui_159a5c0(__int64, char);
+
 void gfxa_PrimitiveDrawManager_Impl_LoadTextureBntx(_QWORD*, __int64,
                                                     unsigned __int64);
+
 void nn_mem_StandardAllocator_Free(__int64, __int64);
+
 void GameHr_167f810(__int64 a1, int a2, char** a3, __int64 a4, int a5,
                     __int64 a6);
+
 __int64 GameHr_1696020();
+
 __int64 GameHr_169ff70(__int64* a1);
+
 bool GameHr_16a4f40();
+
 __int64 GameHr_16ae780(__int64 a1, const char* a2, __int16* a3);
+
 __int64 GameHr_16aec40(__int64 a1, const char* a2, __int64* a3);
+
 __attribute__((swiftcall)) void LayoutAccessor_1560070(PSEUDO_X8, __int64*,
                                                        const char*);
+
 __int64 std___1___shared_weak_count___release_weak(__int64);
+
 void game_gameui_159b580(__int64, _BYTE*, __int64, _DWORD*);
+
 __int64 GameHr_167e3c0(__int64 a1, _BYTE* a2, __int64 a3, _DWORD* a4);
-
-__int64 GameHr_167e3c0(__int64 a1, _BYTE* a2, __int64 a3, _DWORD* a4)
-{
-  __int64 result;
-  struct {
-    __int64 v8;
-    __int64 v9;
-  } v8_;
-
-  LayoutAccessor_1560070((void*)(&v8_.v8),
-                         (__int64*)(*(_QWORD*)(a1 + 8) + 848LL), "L_Img");
-  game_gameui_159b580((__int64)&v8_.v8, a2, a3, a4);
-  result = v8_.v9;
-  if (v8_.v9 != 0) {
-    return std___1___shared_weak_count___release_weak(v8_.v9);
-  }
-  return result;
-}
 
 void GameHr_167f810(__int64 a1, int a2, char** a3, __int64 a4, int a5,
                     __int64 a6)

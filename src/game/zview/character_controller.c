@@ -97,7 +97,9 @@ __int64* GameRoutine_d74b60(__int64* result, float*, float);
 __int64* GameRoutine_d78de0();
 __int64 CharacterController_d3f410_alt1(
     __int64 result, int, long double) __asm__("CharacterController_d3f410");
-__int64 CharacterController_d48660(__int64, unsigned __int32, int*);
+__int64
+CharacterController_d48660_alt2(__int64, unsigned __int32,
+                                int*) __asm__("CharacterController_d48660");
 __int64 CharacterModel_cf4c10(__int64);
 __int64 CharacterModel_d198c0(float32x2_t*, float32x2_t*, char, char);
 __int64 GameRoutine_112180(__int64, __int64);
@@ -259,6 +261,12 @@ void game_zview_d56e60_alt1(__int64, char,
                             unsigned __int8*) __asm__("game_zview_d56e60");
 void CharacterController_d45840(__int64 a1, float32x2_t* a2);
 void CharacterController_StateDamage_Unknown3(__int64 a1);
+__attribute__((swiftcall)) void GameRoutine_d2caa0(PSEUDO_X8, __int64 result);
+__int64 game_zview_d198c0(float32x2_t*, float32x2_t*, char, char);
+bool GameRoutine_d2d4e0();
+extern __int64 (*eft_ClampCurve_ptr)();
+unsigned __int64 GameRoutine_d2b5f0(__int64);
+void CharacterController_d48660(__int64 a1, unsigned __int32 a2, int* a3);
 
 void CharacterController_StateWarpTo_Unknown3(__int64 a1)
 {
@@ -6978,6 +6986,166 @@ __attribute__((swiftcall)) void CharacterController_d47af0(PSEUDO_X8 x8_,
   }
 }
 
+void CharacterController_d48660(__int64 a1, unsigned __int32 a2, int* a3)
+{
+
+#pragma clang fp contract(off)
+  __int64 v6;
+  __int64 v7;
+  unsigned __int64 v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 v11;
+  __int64 v12;
+  __int64 v13;
+  int v14;
+  int v15;
+  int v16;
+  float v17;
+  __int64 v18;
+  __int64 v19;
+  int v20;
+  __int64 v21;
+  struct {
+    float32x2_t v22[2];
+    int v23;
+    char v24;
+    char gap29_[3];
+    float v25;
+    char v26;
+    char gap37_[3];
+    char v27;
+    char gap41_[3];
+    char v28;
+    char gap45_[3];
+    __int64 v29;
+    _BYTE v30[7];
+    char gap63_[1];
+    __int64 v31;
+  } v22_;
+  struct {
+    _BYTE v32[16];
+    __int64 v33;
+  } v32_;
+
+  v6 = *(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(a1 + 8) + 8LL) + 8LL) +
+                  344LL);
+  if (*(_QWORD*)(v6 + 352) == *(_QWORD*)(a1 + 24)) {
+    if ((*(_BYTE*)(v6 + 368) & 1) == 0 && (v7 = *(_QWORD*)(v6 + 168)) != 0 &&
+        ((v8 = GameRoutine_d2b5f0(*(_QWORD*)(v7 + 32) + 72LL)) &
+         0x100000000LL) != 0 &&
+        (v9 = *(_QWORD*)(*(_QWORD*)(*(_QWORD*)(v7 + 24) + 72LL) +
+                         104LL * (int)v8)) != 0 &&
+        (v10 = *(_QWORD*)(v9 + 16)) != 0 &&
+        *(__int64 (**)(void))(v10 + 16) == eft_ClampCurve_ptr) {
+      LODWORD(v13) = -1511520286;
+    }
+    else {
+      v11 = *(_QWORD*)(*(_QWORD*)(*(_QWORD*)(a1 + 8) + 8LL) + 8LL);
+      v12 = *(_QWORD*)(v11 + 16);
+      if ((*(_BYTE*)(v12 + 385) & 0x40) != 0) {
+        v13 = 0;
+      }
+      else {
+        v13 = *(_QWORD*)(v12 + 468);
+      }
+      if ((v13 & 0x100000000LL) == 0) {
+        if (GameRoutine_d2d4e0()) {
+          LODWORD(v13) = 1257611790;
+        }
+        else if ((*(_BYTE*)(*(_QWORD*)(v11 + 16) + 384LL) & 0x10) != 0) {
+          LODWORD(v13) = -1101902990;
+        }
+        else if ((*(_BYTE*)(v11 + 216) & 2) != 0) {
+          LODWORD(v13) = 1669996436;
+        }
+        else {
+          LODWORD(v13) = -574916402;
+        }
+      }
+    }
+    v14 = GameRoutine_d2cec0_alt1(v13);
+    *(_BYTE*)(v6 + 345) = 0;
+    *(_DWORD*)(v6 + 328) = v14 - 1;
+    *(_BYTE*)(v6 + 332) = 1;
+  }
+  *(_DWORD*)(a1 + 36) = a2;
+  GameRoutine_d2caa0((void*)((__int64)v32_.v32), a2);
+  if (*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(a1 + 8) + 8LL) + 8LL) +
+                 232LL) != 0) {
+    if ((atomic_load_explicit((atomic_uchar* volatile)&GameData_21a60e8,
+                              memory_order_acquire) &
+         1) == 0 &&
+        __cxa_guard_acquire_alt1((__int64)&GameData_21a60e8) != 0) {
+      GameData_21a60e0 = 0;
+      __cxa_guard_release_alt1((__int64)&GameData_21a60e8);
+    }
+    v15 = *((unsigned __int8*)a3 + 28);
+    LOBYTE(v22_.v23) = 0;
+    v22_.v24 = 0;
+    LOBYTE(v22_.v25) = 0;
+    v22_.v26 = 0;
+    v22_.v27 = 0;
+    v22_.v28 = 0;
+    v22_.v31 = 0;
+    *(_DWORD*)&v22_.v30[3] = 0;
+    *(_DWORD*)v22_.v30 = 16777472;
+    LANES64(v22_.v22[0]).n64_u32[0] = a2;
+    LANES64(v22_.v22[1]).n64_u64[0] = GameData_21a60e0;
+    v22_.v29 = 0x3F8000003F800000LL;
+    if (v15 == 1) {
+      HIDWORD(v22_.v29) = a3[6];
+    }
+    if (*((_BYTE*)a3 + 4) == 1) {
+      v16 = *a3;
+      v22_.v24 = 1;
+      v22_.v23 = v16;
+    }
+    if (*((_BYTE*)a3 + 20) == 1) {
+      LODWORD(v22_.v29) = a3[4];
+    }
+    if (*((_BYTE*)a3 + 12) == 1) {
+      v17 = *((float*)a3 + 2);
+    }
+    else {
+      v18 = GameHr_d1cf60(
+          *(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(a1 + 8) + 8LL) + 8LL) +
+                     344LL),
+          *(_DWORD*)(a1 + 36));
+      v17 = 0x0.0p+0f;
+      if (v18 != 0 && *(_DWORD*)(v18 + 8) != 0) {
+        v17 = *(float*)(v18 + 24);
+        if (v17 < *(float*)(v18 + 92)) {
+          v17 = *(float*)(v18 + 92);
+        }
+      }
+    }
+    v22_.v25 = v17;
+    v22_.v26 = 1;
+    v19 = game_zview_d198c0(
+        *(float32x2_t**)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(a1 + 8) + 8LL) +
+                                    8LL) +
+                         344LL),
+        v22_.v22, 1, 0);
+    if (*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)(a1 + 8) + 8LL) +
+                                         8LL) +
+                              344LL) +
+                   352LL) == v19) {
+      v20 = v22_.v29;
+      *(_QWORD*)(a1 + 24) = v19;
+      *(_DWORD*)(a1 + 32) = v20;
+    }
+  }
+  if ((v32_.v32[0] & 1) != 0 && v32_.v33 != 0) {
+    v21 = 128;
+    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+      v21 = 56;
+    }
+    nn_mem_StandardAllocator_Free_alt3(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v21, v32_.v33);
+  }
+}
+
 _QWORD* CharacterController_d48b40(_QWORD* a1, __int64 a2, long double a3,
                                    float a4, float a5)
 {
@@ -8286,7 +8454,7 @@ void CharacterController_StateRepelled_Unknown3(__int64 a1)
   v56_.v61 = 0;
   v56_.v62 = 1036831949;
   v56_.v63 = 1;
-  CharacterController_d48660(a1, 0xE9D685A7, &v56_.v56);
+  CharacterController_d48660_alt2(a1, 0xE9D685A7, &v56_.v56);
   v2 = *(_QWORD*)(a1 + 8);
   v3 = 0x0.0p+0f;
   LODWORD(v4) = *(_DWORD*)(v2 + 820);

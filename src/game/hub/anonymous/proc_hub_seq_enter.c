@@ -251,6 +251,9 @@ int sprintf_alt1(__int64, const char*, ...) __asm__("sprintf");
 void GameHr_913ca0(__int64, __int64);
 void ProcHubSeqEnter_915440(__int64 a1);
 void ProcHubSeqEnter_916440(__int64 a1);
+__int64 Message_16f9b50(__int64);
+extern _UNKNOWN GameData_1ae979a;
+const char* ProcHubSeqEnter_917b00(__int64 a1);
 
 __int64 game_hub_anonymous_ProcHubSeqEnter_RunNextTimeline(__int64 result)
 {
@@ -2358,6 +2361,110 @@ void game_hub_anonymous_ProcHubSeqEnter_RunRecallData(__int64 a1)
     }
     nn_mem_StandardAllocator_Free_alt2(*v8 + v47, (__int64)v5);
   }
+}
+
+const char* ProcHubSeqEnter_917b00(__int64 a1)
+{
+  __int64* v2;
+  __int64* v3;
+  char v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  char v8;
+  int v9;
+  const char* result;
+  int v11;
+  struct {
+    const char* v12;
+    void* v13;
+  } v12_;
+
+  v2 = *(__int64**)(*GameData_212d458[0] + 24);
+  v3 = *(__int64**)(*GameData_212d458[0] + 32);
+  if (v2 != v3) {
+    v4 = 0;
+    while (1) {
+      v5 = *v2;
+      if (*(_QWORD*)(*v2 + 800) == 0) {
+        break;
+      }
+    LABEL_3:
+      v4 |= *(_BYTE*)(v5 + 1060) ^ 1;
+    LABEL_4:
+      v2 += 2;
+      if (v2 == v3) {
+        goto LABEL_20;
+      }
+    }
+    v6 = *(_QWORD*)(v5 + 760);
+    v7 = *(_QWORD*)(v5 + 768);
+    if (v7 != 0) {
+      atomic_fetch_add_explicit((atomic_ullong* volatile)(v7 + 8), 1u,
+                                memory_order_relaxed);
+    }
+    if (v6 != 0 && *(_BYTE*)(v6 + 224) == 1 && *(_DWORD*)(v6 + 144) == 31) {
+      v8 = 0;
+      if (v7 == 0) {
+        goto LABEL_15;
+      }
+    }
+    else {
+      v8 = 1;
+      if (v7 == 0) {
+        goto LABEL_15;
+      }
+    }
+    if (atomic_fetch_add((atomic_ullong* volatile)(v7 + 8),
+                         0xFFFFFFFFFFFFFFFFLL) == 0) {
+      (*(void (**)(__int64))(*(_QWORD*)v7 + 16LL))(v7);
+      std___1___shared_weak_count___release_weak_alt1(v7);
+      if ((v8 & 1) != 0) {
+        goto LABEL_4;
+      }
+    LABEL_16:
+      v5 = *v2;
+      goto LABEL_3;
+    }
+  LABEL_15:
+    if ((v8 & 1) != 0) {
+      goto LABEL_4;
+    }
+    goto LABEL_16;
+  }
+  v4 = 0;
+LABEL_20:
+  v9 = v4 & 1;
+  v12_.v13 = &GameData_1ae979a;
+  result = (const char*)game_HashString_alt2((__int64)&GameData_1ae979a);
+  v12_.v12 = result;
+  v11 = game_GameModeData_instance_;
+  if (game_GameModeData_instance_ == 0) {
+  LABEL_23:
+    if (v11 == v9) {
+      return result;
+    }
+    goto LABEL_24;
+  }
+  result = (const char*)game_GameVariableTable_Find_alt1(
+      *(_QWORD**)(game_GameModeData_instance_ + 48),
+      (unsigned __int64*)&v12_.v12);
+  if (result != nullptr) {
+    v11 = *((_DWORD*)result + 8);
+    goto LABEL_23;
+  }
+  if ((v4 & 1) == 0) {
+    return result;
+  }
+LABEL_24:
+  if ((v4 & 1) == 0 && *(_DWORD*)(GameData_21f3d10 + 136) == 1) {
+    v12_.v12 = "MID_Dungeon_Enemy_Destroy";
+    v12_.v13 = ((__int128*)0x10LL) + 9;
+    Message_16f9b50(a1);
+  }
+  v12_.v13 = &GameData_1ae979a;
+  v12_.v12 = (const char*)game_HashString_alt2((__int64)&GameData_1ae979a);
+  return (const char*)game_VariableManager_SetFlag_alt1((__int64)&v12_.v12, v9);
 }
 
 __int64 ProcHubSeqEnter_917cd0()

@@ -24,6 +24,49 @@ void GameRoutine_6e3b50_alt1(__int64, _QWORD*) __asm__("GameRoutine_6e3b50");
 void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 bool ProcStableReleaseRideMenu_Unknown150(__int64 a1, _DWORD* a2, _DWORD* a3);
+__attribute__((swiftcall)) void LayoutAccessor_1560070(PSEUDO_X8, __int64*,
+                                                       const char*);
+__int64 GameRoutine_1595490(__int64*);
+__int64 game_menu_BasicMenu_Unknown16de4d0(__int64);
+__int64 std___1___shared_weak_count___release_weak(__int64);
+__int64 std___1___shared_weak_count_lock(__int64);
+__int64 ProcStableReleaseRideMenu_Unknown139(__int64 a1);
+
+__int64 ProcStableReleaseRideMenu_Unknown139(__int64 a1)
+{
+  __int64 result;
+  __int64 v3;
+  __int64* v4;
+  struct {
+    __int64* v5;
+    __int64 v6;
+  } v5_;
+
+  game_menu_BasicMenu_Unknown16de4d0(a1);
+  LayoutAccessor_1560070((void*)(&v5_.v5), (__int64*)(a1 + 848),
+                         "L_EquipPool/L_Num");
+  result = v5_.v6;
+  if (v5_.v6 != 0) {
+    v3 = std___1___shared_weak_count_lock(v5_.v6);
+    v4 = v5_.v5;
+    result = v5_.v6;
+    if (v5_.v6 != 0) {
+      result = std___1___shared_weak_count___release_weak(v5_.v6);
+    }
+    if (v3 != 0 && v4 != nullptr) {
+      result = GameRoutine_1595490(v4);
+    }
+    else if (v3 == 0) {
+      return result;
+    }
+    if (atomic_fetch_add((atomic_ullong* volatile)(v3 + 8),
+                         0xFFFFFFFFFFFFFFFFLL) == 0) {
+      (*(void (**)(__int64))(*(_QWORD*)v3 + 16LL))(v3);
+      return std___1___shared_weak_count___release_weak(v3);
+    }
+  }
+  return result;
+}
 
 __int64 ProcStableReleaseRideMenu_Unknown149(__int64 a1, __int64 a2, __int64 a3,
                                              __int64 a4, int a5, int a6)

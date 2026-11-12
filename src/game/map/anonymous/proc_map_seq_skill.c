@@ -52,6 +52,12 @@ void Camera_7c0e80(__int64, __int64, char);
 void ProcMapSeqSkill_91a4d0(__int64 a1);
 __int64 Cursor_730ff0_alt1(__int64, __int128*) __asm__("Cursor_730ff0");
 float Unit_6c7fa0_alt1(__int64, __int64) __asm__("Unit_6c7fa0");
+__int64 nn_os_LockMutex(__int64);
+__int64 nn_os_UnlockMutex(__int64);
+extern _UNKNOWN game_g_random_mutex;
+extern __int64* game_map_MapRandom_instance__ptr[3];
+void __attribute__((noreturn)) GameRoutine_60a310();
+__int64 ProcMapSeqSkill_91b020(__int16 a1, __int64 a2);
 
 void ProcMapSeqSkill_91a4d0(__int64 a1)
 {
@@ -576,6 +582,124 @@ __int64 ProcMapSeqSkill_91af10(__int64 result)
 bool ProcMapSeqSkill_91aff0()
 {
   return GameData_21ed098 != 0 && *(_QWORD*)(GameData_21ed098 + 144) != 0;
+}
+
+__int64 ProcMapSeqSkill_91b020(__int16 a1, __int64 a2)
+{
+  __int64 v2;
+  __int64 v3;
+  int v4;
+  __int64 v6;
+  int v7;
+  __int64 v8;
+  __int64 v9;
+  __int64* v10;
+  int v11;
+  unsigned int v12;
+  unsigned int v13;
+  int v14;
+  unsigned int v15;
+  __int64 v16;
+  __int64 v17;
+  __int64 v18;
+  __int64 v19;
+  __int64 v20;
+  int v22;
+  int v23;
+
+  v2 = *(_QWORD*)(*(_QWORD*)(*GameData_212c880[0] + 64) + 8LL * (a1 & 0xFFF));
+  v3 = *(unsigned __int16*)(v2 + 512);
+  if (*(_WORD*)(v2 + 512) != 0) {
+    v4 = *(unsigned __int8*)(v2 + 250);
+    if (v4 != 19) {
+      if (v4 == 31) {
+        v6 = 8;
+        v7 = 0;
+        while (1) {
+          v8 = *(_QWORD*)(*(_QWORD*)(v2 + 520) + v6);
+          if (v8 != 0) {
+            LODWORD(v8) = *(_WORD*)(v8 + 16) & 0xFFF;
+          }
+          v9 = *(_QWORD*)(a2 + 32);
+          v22 = v8;
+          v23 = 1;
+          if (v9 == 0) {
+            break;
+          }
+          --v3;
+          v6 += 16;
+          v7 |= (*(__int64 (**)(__int64, int*, int*))(*(_QWORD*)v9 + 48LL))(
+              v9, &v23, &v22);
+          if (v3 == 0) {
+            return v7 & 1;
+          }
+        }
+      }
+      else {
+        v18 = 8;
+        v7 = 0;
+        while (1) {
+          v19 = *(_QWORD*)(*(_QWORD*)(v2 + 520) + v18);
+          if (v19 != 0) {
+            LODWORD(v19) = *(_WORD*)(v19 + 16) & 0xFFF;
+          }
+          v20 = *(_QWORD*)(a2 + 32);
+          v22 = v19;
+          v23 = 0;
+          if (v20 == 0) {
+            break;
+          }
+          --v3;
+          v18 += 16;
+          v7 |= (*(__int64 (**)(__int64, int*, int*))(*(_QWORD*)v20 + 48LL))(
+              v20, &v23, &v22);
+          if (v3 == 0) {
+            return v7 & 1;
+          }
+        }
+      }
+    LABEL_21:
+      GameRoutine_60a310();
+    }
+    nn_os_LockMutex((__int64)&game_g_random_mutex);
+    v10 = game_map_MapRandom_instance__ptr[0];
+    v11 = *(_DWORD*)((char*)game_map_MapRandom_instance__ptr[0] +
+                     (unsigned __int64)((__int128*)0x10LL) + 8);
+    v12 = *(_DWORD*)((char*)game_map_MapRandom_instance__ptr[0] +
+                     (unsigned __int64)((__int128*)0x10LL) + 8 + 4);
+    v13 = *(_DWORD*)((char*)game_map_MapRandom_instance__ptr[0] +
+                     (unsigned __int64)((__int128*)0x10LL)) ^
+          (*(_DWORD*)((char*)game_map_MapRandom_instance__ptr[0] +
+                      (unsigned __int64)((__int128*)0x10LL))
+           << 11);
+    *(_DWORD*)((char*)game_map_MapRandom_instance__ptr[0] +
+               (unsigned __int64)((__int128*)0x10LL)) =
+        *(_DWORD*)((char*)game_map_MapRandom_instance__ptr[0] +
+                   (unsigned __int64)((__int128*)0x10LL) + 4);
+    *(_DWORD*)((char*)((__int128*)0x10LL) + (_QWORD)v10 + 4) = v11;
+    v14 = (v13 >> 8) ^ (v12 >> 19) ^ v13 ^ v12;
+    *(_DWORD*)((char*)((__int128*)0x10LL) + (_QWORD)v10 + 8) = v12;
+    *(_DWORD*)((char*)((__int128*)0x10LL) + (_QWORD)v10 + 12) = v14;
+    v15 = v14 & 0x7FFFFFFF;
+    nn_os_UnlockMutex((__int64)&game_g_random_mutex);
+    v16 =
+        *(_QWORD*)(*(_QWORD*)(v2 + 520) + 16LL * (v15 % (unsigned int)v3) + 8);
+    if (v16 != 0) {
+      LODWORD(v16) = *(_WORD*)(v16 + 16) & 0xFFF;
+    }
+    v17 = *(_QWORD*)(a2 + 32);
+    v22 = v16;
+    v23 = 0;
+    if (v17 == 0) {
+      goto LABEL_21;
+    }
+    LOBYTE(v7) = (*(__int64 (**)(__int64, int*, int*))(*(_QWORD*)v17 + 48LL))(
+        v17, &v23, &v22);
+  }
+  else {
+    LOBYTE(v7) = 0;
+  }
+  return v7 & 1;
 }
 
 __int64

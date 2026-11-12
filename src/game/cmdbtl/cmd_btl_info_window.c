@@ -140,6 +140,8 @@ void CmdBtlInfoWindow_17c6640(__int64* a1, unsigned int a2);
 void CmdBtlInfoWindow_17c68c0(__int64* a1, int a2, char a3);
 __int64 CmdBtlInfoWindow_Unknown16(__int64 a1, __int64* a2);
 __int64 CmdBtlInfoWindow_Unknown18(__int64 a1, __int64* a2);
+__int64 game_159e7c0(__int64*, char);
+__int64 CmdBtlInfoWindow_17c6540(__int64 a1, char a2);
 
 __int64 CmdBtlInfoWindow_DeletingDestructor(_QWORD* a1)
 {
@@ -728,6 +730,57 @@ __int64 CmdBtlInfoWindow_Destructor()
       return 0;
     }
     goto LABEL_8;
+  }
+  return result;
+}
+
+__int64 CmdBtlInfoWindow_17c6540(__int64 a1, char a2)
+{
+  __int64 result;
+  __int64 v4;
+  __int64* v5;
+  __int64 v7;
+  __int64 v8;
+  struct {
+    __int64* v9;
+    __int64 v10;
+  } v9_;
+
+  LayoutAccessor_1560070((void*)(&v9_.v9), (__int64*)(a1 + 24),
+                         "L_Link_Equip00");
+  result = v9_.v10;
+  if (v9_.v10 != 0) {
+    v4 = std___1___shared_weak_count_lock(v9_.v10);
+    v5 = v9_.v9;
+    result = v9_.v10;
+    if (v9_.v10 != 0) {
+      result = std___1___shared_weak_count___release_weak_alt1(v9_.v10);
+    }
+    if (v4 == 0 || v5 == nullptr) {
+      if (v4 == 0) {
+        return result;
+      }
+    }
+    else {
+      atomic_fetch_add_explicit((atomic_ullong* volatile)(v4 + 16), 1u,
+                                memory_order_relaxed);
+      v7 = std___1___shared_weak_count_lock(v4);
+      if (v7 != 0) {
+        v8 = v7;
+        game_159e7c0(v5, a2 & 1);
+        if (atomic_fetch_add((atomic_ullong* volatile)(v8 + 8),
+                             0xFFFFFFFFFFFFFFFFLL) == 0) {
+          (*(void (**)(__int64))(*(_QWORD*)v8 + 16LL))(v8);
+          std___1___shared_weak_count___release_weak_alt1(v8);
+        }
+      }
+      result = std___1___shared_weak_count___release_weak_alt1(v4);
+    }
+    if (atomic_fetch_add((atomic_ullong* volatile)(v4 + 8),
+                         0xFFFFFFFFFFFFFFFFLL) == 0) {
+      (*(void (**)(__int64))(*(_QWORD*)v4 + 16LL))(v4);
+      return std___1___shared_weak_count___release_weak_alt1(v4);
+    }
   }
   return result;
 }

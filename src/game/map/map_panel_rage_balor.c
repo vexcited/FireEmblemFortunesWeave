@@ -56,6 +56,10 @@ void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void MapPanelRageBalor_Destructor(__int64 a1);
 void MapPanelRageBalor_DeletingDestructor(__int64 a1);
+__int64 game_f313e0(__int64, unsigned int, float32x4_t*, float32x4_t*);
+extern __int64* GameData_212f878;
+void MapPanelRage_f191c0(float, __int64, _QWORD*, __int64);
+void MapPanelRageBalor_Unknown4(_QWORD* a1);
 
 __int64 MapPanelRageBalor_Unknown3(__int64 result)
 {
@@ -422,6 +426,83 @@ LABEL_68:
     } while ((_QWORD*)result != v40 + 1);
   }
   return result;
+}
+
+void MapPanelRageBalor_Unknown4(_QWORD* a1)
+{
+
+#pragma clang fp contract(off)
+  float32x4_t* v1;
+  float32x4_t* v2;
+  __int64 v4;
+  float32x4_t v5;
+  float32x4_t* v6;
+  float32x4_t v7;
+  float32x4_t v8;
+  int8x16_t v9;
+  int8x16_t v10;
+  unsigned __int64 v11;
+  __int64 v12;
+  struct {
+    __int64 v13[4];
+    int8x16_t v14;
+    int8x16_t v15;
+    __int64 v16;
+    int v17;
+    char gap76_[4];
+    __int64 v18;
+    __int64 v19;
+    __int16 v20;
+    char gap98_[2];
+    char v21;
+    char gap101_[3];
+    char v22;
+  } v13_;
+
+  v1 = (float32x4_t*)a1[5];
+  v2 = (float32x4_t*)a1[6];
+  if (v1 != v2) {
+    v4 = *(_QWORD*)(*(_QWORD*)GameData_212d020[0] + 40LL);
+    do {
+      game_f313e0(v4, LANES128(*(v1)).n128_u32[0], v1 + 1, v1 + 2);
+      v1 += 3;
+    } while (v1 != v2);
+  }
+  BYTE1(v13_.v13[2]) = 0;
+  WORD1(v13_.v13[2]) = 0;
+  HIDWORD(v13_.v13[2]) = 0;
+  v13_.v21 = 0;
+  v13_.v22 = 0;
+  v13_.v18 = 0;
+  v13_.v19 = 0;
+  v5 = *(float32x4_t*)GameData_212c958;
+  v6 = (float32x4_t*)*GameData_212f878;
+  v13_.v20 = 0;
+  v8 = v6[57];
+  v7 = v6[58];
+  strcpy((char*)v13_.v13, "$MapPanelDeployR");
+  v9 = vmulq_f32(v5, v7);
+  v10 = vmulq_f32(v5, v8);
+  LODWORD(v11) = LANES128_OF(vextq_s8(v9, v9, 8u)).n128_u32[0];
+  LANES128(v8).n128_u32[0] = LANES128_OF(vextq_s8(v10, v10, 8u)).n128_u32[0];
+  v13_.v16 = 0x400000000LL;
+  v13_.v17 = 1;
+  HIDWORD(v11) = LANES64_OF(vdup_laneq_s32(v9, 3)).n64_u32[0];
+  LANES128(v9).n128_u64[1] = v11;
+  LANES128(v8).n128_u32[1] = LANES64_OF(vdup_laneq_s32(v10, 3)).n64_u32[0];
+  LANES128(v10).n128_u64[1] = LANES128(v8).n128_u64[0];
+  v13_.v14 = v10;
+  v13_.v15 = v9;
+  MapPanelRage_f191c0(0x1.0000000000000p+0f, (__int64)a1, a1 + 2,
+                      (__int64)v13_.v13);
+  if ((v13_.v13[0] & 1) != 0 && v13_.v13[2] != 0) {
+    v12 = 128;
+    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+      v12 = 56;
+    }
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v12, v13_.v13[2]);
+  }
 }
 
 void MapPanelRageBalor_Destructor(__int64 a1)

@@ -87,6 +87,13 @@ void __attribute__((noreturn))
 GameRoutine_60a210_alt1() __asm__("GameRoutine_60a210");
 void game_gmap_anonymous_ProcGmapCycleExp_CalcExp_closure_Invoke(__int64 a1,
                                                                  __int64* a2);
+__int64 game_ProcInst_Unregister(__int64 result);
+extern __int64 (*GameData_204b028[])();
+extern __int64 (*game_ProcInst_vtable[])();
+extern __int64 (*game_gmap_anonymous_ProcGmapCycleExp_vtable[])();
+void GameRoutine_658c00(__int64*);
+void ProcGmapCycleExp_Destructor(__int64 a1);
+void ProcGmapCycleExp_DeletingDestructor(__int64 a1);
 
 _QWORD* game_gmap_anonymous_ProcGmapCycleExp_CalcExp(__int64 a1)
 {
@@ -886,6 +893,93 @@ LABEL_53:
     *(_BYTE*)(v51 + 17) = v50;
   }
   *(_QWORD*)(v3 + 216) = v53;
+}
+
+void ProcGmapCycleExp_Destructor(__int64 a1)
+{
+  __int64 v1;
+  __int64 v3;
+  _QWORD* v4;
+  __int64 v5;
+
+  v1 = *(_QWORD*)(a1 + 208);
+  *(_QWORD*)a1 = game_gmap_anonymous_ProcGmapCycleExp_vtable;
+  if (v1 != 0) {
+    *(_QWORD*)(a1 + 216) = v1;
+    v3 = 128;
+    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+      v3 = 56;
+    }
+    nn_mem_StandardAllocator_Free_alt2(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v3, v1);
+  }
+  v4 = *(_QWORD**)(a1 + 192);
+  *(_QWORD*)a1 = GameData_204b028;
+  if (v4 == (_QWORD*)(a1 + 160)) {
+    v5 = 32;
+  }
+  else {
+    if (v4 == nullptr) {
+      goto LABEL_10;
+    }
+    v5 = 40;
+  }
+  (*(void (**)(__int64))(*v4 + v5))((__int64)v4);
+LABEL_10:
+  *(_QWORD*)a1 = game_ProcInst_vtable;
+  if ((*(_WORD*)(a1 + 136) & 0x100) != 0) {
+    *(_WORD*)(a1 + 136) &= ~0x100u;
+  }
+  game_ProcInst_Unregister(a1);
+  GameRoutine_658c00((__int64*)(a1 + 88));
+}
+
+void ProcGmapCycleExp_DeletingDestructor(__int64 a1)
+{
+  __int64 v1;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  _QWORD* v6;
+  __int64 v7;
+  __int64 v8;
+
+  v1 = *(_QWORD*)(a1 + 208);
+  *(_QWORD*)a1 = game_gmap_anonymous_ProcGmapCycleExp_vtable;
+  v3 = fw_memory_g_heap_manager_ptr;
+  if (v1 != 0) {
+    v4 = *(_QWORD*)fw_memory_g_heap_manager_ptr;
+    *(_QWORD*)(a1 + 216) = v1;
+    v5 = 128;
+    if (*(_QWORD*)(v4 + 200) == 0) {
+      v5 = 56;
+    }
+    nn_mem_StandardAllocator_Free_alt2(v4 + v5, v1);
+  }
+  v6 = *(_QWORD**)(a1 + 192);
+  *(_QWORD*)a1 = GameData_204b028;
+  if (v6 == (_QWORD*)(a1 + 160)) {
+    v7 = 32;
+  }
+  else {
+    if (v6 == nullptr) {
+      goto LABEL_10;
+    }
+    v7 = 40;
+  }
+  (*(void (**)(__int64))(*v6 + v7))((__int64)v6);
+LABEL_10:
+  *(_QWORD*)a1 = game_ProcInst_vtable;
+  if ((*(_WORD*)(a1 + 136) & 0x100) != 0) {
+    *(_WORD*)(a1 + 136) &= ~0x100u;
+  }
+  game_ProcInst_Unregister(a1);
+  GameRoutine_658c00((__int64*)(a1 + 88));
+  v8 = 128;
+  if (*(_QWORD*)(*(_QWORD*)v3 + 200LL) == 0) {
+    v8 = 56;
+  }
+  nn_mem_StandardAllocator_Free_alt2(*(_QWORD*)v3 + v8, a1);
 }
 
 #pragma GCC visibility pop

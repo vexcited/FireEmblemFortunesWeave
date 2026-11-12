@@ -83,6 +83,16 @@ void LayoutAccessor_1562060_alt1(__int64*, const char*,
 void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void CorpsSelectDialog_Unknown88(__int64 a1);
+__int64 ControlCreator_13633c0(__int64 result);
+__int64 std___1___shared_weak_count___release_weak(__int64);
+__int64 std___1___shared_weak_count_lock(__int64);
+const char* GameRoutine_156bee0(const char* result, __int64, __int64, __int64,
+                                char, float, float);
+const char* Pane_58fac0(__int64, const char*);
+extern __int64* GameData_212fc70[2];
+extern __int64* GameData_21318d0[2];
+void Dialog_1648c60(__int64);
+__int64 CorpsSelectDialog_Unknown85(__int64 a1);
 
 __int64 CorpsSelectDialog_Unknown128(__int64 result)
 {
@@ -186,6 +196,144 @@ __int64 CorpsSelectDialog_Unknown100(__int64 a1)
     }
   }
   return 2;
+}
+
+__int64 CorpsSelectDialog_Unknown85(__int64 a1)
+{
+  __int64* v2;
+  __int64 v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  __int64 v10;
+  __int64 result;
+  __int64 v12;
+  __int64 v13;
+  __int64 v14;
+  float v15;
+  unsigned __int64 v16;
+  float v17;
+  const char* v18;
+  float v19;
+  float v20;
+  float v21;
+  float v22;
+  float v23;
+  float v24;
+  __int64 v25;
+  unsigned __int64 v26;
+  _BYTE v27[4];
+
+  Dialog_1648c60(a1);
+  v2 = (__int64*)(a1 + 952);
+  v3 = ui_LayoutAccessor_FindAlignment((__int64*)(a1 + 952), (__int64)"A_Menu");
+  if (v3 != 0) {
+    Alignment_56b600(v3);
+    v4 = *(_QWORD*)(a1 + 960);
+    if (v4 != 0) {
+      v5 = std___1___shared_weak_count_lock(v4);
+      if (v5 != 0) {
+        v6 = v5;
+        if (*v2 != 0) {
+          ControlCreator_13633c0(*v2);
+        }
+        if (atomic_fetch_add((atomic_ullong* volatile)(v6 + 8),
+                             0xFFFFFFFFFFFFFFFFLL) == 0) {
+          (*(void (**)(__int64))(*(_QWORD*)v6 + 16LL))(v6);
+          std___1___shared_weak_count___release_weak(v6);
+        }
+      }
+    }
+  }
+  v7 = ui_LayoutAccessor_FindAlignment((__int64*)(a1 + 952),
+                                       (__int64)"A_Contents");
+  if (v7 != 0) {
+    Alignment_56b600(v7);
+    v8 = *(_QWORD*)(a1 + 960);
+    if (v8 != 0) {
+      v9 = std___1___shared_weak_count_lock(v8);
+      if (v9 != 0) {
+        v10 = v9;
+        if (*v2 != 0) {
+          ControlCreator_13633c0(*v2);
+        }
+        if (atomic_fetch_add((atomic_ullong* volatile)(v10 + 8),
+                             0xFFFFFFFFFFFFFFFFLL) == 0) {
+          (*(void (**)(__int64))(*(_QWORD*)v10 + 16LL))(v10);
+          std___1___shared_weak_count___release_weak(v10);
+        }
+      }
+    }
+  }
+  result = ui_LayoutAccessor_FindPane(v2, (__int64)"Wdw");
+  if (result != 0) {
+    result =
+        __dynamic_cast(result, GameData_212d670[0], GameData_212fc70[0], 0);
+    if (result != 0) {
+      v12 = result;
+      v13 = ui_LayoutAccessor_FindPane(v2, (__int64)"A_Contents");
+      if (v13 != 0) {
+        v14 = __dynamic_cast(v13, GameData_212d670[0], GameData_21318d0[0], 0);
+        v15 = 0x0.0p+0f;
+        v27[0] = 0;
+        v26 = 0xFF7FFFFF7F7FFFFFLL;
+        v25 = 0x7F7FFFFFFF7FFFFFLL;
+        if (v14 != 0) {
+          v16 = LANES128_OF(vmulq_f32(*(float32x4_t*)(v14 + 128),
+                                      *(float32x4_t*)(v14 + 128)))
+                    .n128_u64[0];
+          GameRoutine_156bee0(
+              (const char*)v14, (__int64)&v26, (__int64)&v25, (__int64)v27, 0,
+              sqrtf((float)(*(float*)&v16 +
+                            (float)(COERCE_FLOAT(*(_OWORD*)(v14 + 112)) *
+                                    COERCE_FLOAT(*(_OWORD*)(v14 + 112)))) +
+                    (float)(COERCE_FLOAT(*(_OWORD*)(v14 + 144)) *
+                            COERCE_FLOAT(*(_OWORD*)(v14 + 144)))) /
+                  *(float*)(v14 + 72),
+              sqrtf(
+                  (float)(*((float*)&v16 + 1) +
+                          (float)(COERCE_FLOAT(HIDWORD(*(_QWORD*)(v14 + 112))) *
+                                  COERCE_FLOAT(
+                                      HIDWORD(*(_QWORD*)(v14 + 112))))) +
+                  (float)(COERCE_FLOAT(HIDWORD(*(_QWORD*)(v14 + 144))) *
+                          COERCE_FLOAT(HIDWORD(*(_QWORD*)(v14 + 144))))) /
+                  *(float*)(v14 + 76));
+          v17 = 0x0.0p+0f;
+          if (v27[0] == 1) {
+            v15 = vabds_f32(*(float*)&v25, *(float*)&v26);
+            v17 = vabds_f32(*((float*)&v25 + 1), *((float*)&v26 + 1));
+          }
+          goto LABEL_23;
+        }
+      }
+      else {
+        v15 = 0x0.0p+0f;
+      }
+      v17 = 0x0.0p+0f;
+    LABEL_23:
+      v18 = Pane_58fac0(v12, "Margin_Width");
+      v19 = 0x0.0p+0f;
+      v20 = 0x0.0p+0f;
+      if (v18 != nullptr) {
+        v21 = (float)*(int*)&v18[*((unsigned int*)v18 + 1)];
+        v20 = v21 + v21;
+      }
+      result = (__int64)Pane_58fac0(v12, "Margin_Height");
+      if (result != 0) {
+        v22 = (float)*(int*)(result + *(unsigned int*)(result + 4));
+        v19 = v22 + v22;
+      }
+      v23 = *(float*)(v12 + 84);
+      v24 = fmaxf(*(float*)(v12 + 80), v15 + v20);
+      *(_BYTE*)(v12 + 88) |= 0x10u;
+      *(float*)(v12 + 80) = v24;
+      *(float*)(v12 + 84) = fmaxf(v23, v17 + v19);
+    }
+  }
+  return result;
 }
 
 void CorpsSelectDialog_Unknown88(__int64 a1)

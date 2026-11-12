@@ -26,6 +26,14 @@ __attribute__((swiftcall)) void hub_schedule_GameRouteToRouteMsg(PSEUDO_X8 x8_,
                                                                  char a1);
 __attribute__((swiftcall)) void hub_schedule_StringToDate(PSEUDO_X8 x8_,
                                                           __int64 a1);
+__attribute__((swiftcall)) void ScheduleManager_d9f100(PSEUDO_X8, _QWORD*,
+                                                       __int16*);
+__int64 std___1___shared_weak_count___release_weak(__int64);
+char* GameRoutine_60a060(char*, __int64, unsigned __int64);
+extern __int64 GameData_212dc30[8];
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+void hub_schedule_AddDateEventTiny(int* a1, unsigned __int8* a2);
 
 __attribute__((swiftcall)) void hub_schedule_GameRouteToRouteMsg(PSEUDO_X8 x8_,
                                                                  char a1)
@@ -129,6 +137,124 @@ LABEL_9:
   {
     result;
     return;
+  }
+}
+
+void hub_schedule_AddDateEventTiny(int* a1, unsigned __int8* a2)
+{
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  _QWORD* v7;
+  __int64 v8;
+  int v9;
+  int v10;
+  int v11;
+  int v12;
+  unsigned __int64 v13;
+  unsigned __int64 v14;
+  int v15;
+  __int64 v16;
+  __int64 v17;
+  __int64 v18;
+  struct {
+    __int64 v19;
+    __int64 v20;
+  } v19_;
+  __int16 v21[8];
+  struct {
+    _QWORD v22[2];
+    __int64 v23;
+  } v22_;
+  struct {
+    __int64 v24;
+    char gap72_[24];
+    __int64* v25;
+    char gap104_[8];
+    int v26;
+    char v27;
+  } v24_;
+
+  v4 = *as_g_script_manager_ptr;
+  v5 = *(
+      _QWORD*)(v4 +
+               8LL * (*(unsigned int (**)(__int64))(*(_QWORD*)as_g_thread_info +
+                                                    72LL))(as_g_thread_info) +
+               4384);
+  if (v5 != 0) {
+    v6 = (*(__int64 (**)(__int64))(*(_QWORD*)v5 + 472LL))(v5);
+  }
+  else {
+    v6 = 0;
+  }
+  (*(void (**)(_QWORD, __int64))(**(_QWORD**)(v6 + 24) + 448LL))(
+      *(_QWORD*)(v6 + 24), 1);
+  v7 = *(_QWORD**)(v6 + 2240);
+  *(_QWORD*)(v6 + 2240) = 0;
+  if (v7 == (_QWORD*)(v6 + 2208)) {
+    v8 = 32;
+  }
+  else {
+    if (v7 == nullptr) {
+      goto LABEL_9;
+    }
+    v8 = 40;
+  }
+  (*(void (**)(__int64))(*v7 + v8))((__int64)v7);
+LABEL_9:
+  v9 = *a1;
+  v10 = a1[1];
+  v11 = a1[2];
+  v12 = a1[3];
+  v22_.v22[0] = 0;
+  v22_.v22[1] = 0;
+  v22_.v23 = 0;
+  v24_.v25 = nullptr;
+  v24_.v26 = 0;
+  v24_.v27 = 0;
+  v21[0] = v9;
+  v13 = *a2;
+  v21[1] = v10;
+  v21[2] = v11;
+  v21[3] = v12;
+  if ((v13 & 1) != 0) {
+    v14 = *((_QWORD*)a2 + 1);
+  }
+  else {
+    v14 = v13 >> 1;
+  }
+  v15 = a1[5];
+  if ((v13 & 1) != 0) {
+    v16 = *((_QWORD*)a2 + 2);
+  }
+  else {
+    v16 = (__int64)(a2 + 1);
+  }
+  v21[4] = a1[4];
+  v21[5] = v15;
+  GameRoutine_60a060((char*)v22_.v22, v16, v14);
+  v24_.v26 = 0;
+  ScheduleManager_d9f100((void*)(&v19_.v19), *(_QWORD**)GameData_212dc30[0],
+                         v21);
+  if (v19_.v20 != 0) {
+    std___1___shared_weak_count___release_weak(v19_.v20);
+  }
+  if (v24_.v25 == &v24_.v24) {
+    v17 = 32;
+    goto LABEL_21;
+  }
+  if (v24_.v25 != nullptr) {
+    v17 = 40;
+  LABEL_21:
+    (*(void (**)(__int64))(*v24_.v25 + v17))((__int64)v24_.v25);
+  }
+  if ((v22_.v22[0] & 1) != 0 && v22_.v23 != 0) {
+    v18 = 128;
+    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+      v18 = 56;
+    }
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v18, v22_.v23);
   }
 }
 

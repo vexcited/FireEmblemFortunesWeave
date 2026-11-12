@@ -152,6 +152,11 @@ void __cxa_guard_release_alt1(__int64) __asm__("__cxa_guard_release");
 void game_cfc7c0(__int64, float*, char, float);
 void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
+_QWORD* HubCharacterNatives_ceca80(_QWORD* result, __int64, char);
+__int64 game_zview_CharacterModel_SetActiveSignal(__int64 result, char);
+__int64 wld_AnimCtrlModule_SetRootMotionBone(__int64 result, __int64, __int64,
+                                             int);
+bool GameRoutine_108cb20(int);
 
 __int64 game_map_ProcMapSeqZoomViewer_ViewerZoomIn(__int64 a1)
 {
@@ -1406,6 +1411,145 @@ LABEL_50:
     nn_mem_StandardAllocator_Free_alt2(
         *(_QWORD*)fw_memory_g_heap_manager_ptr + v43, v6);
   }
+}
+
+__int64 ProcMapSeqZoomViewer_fb13e0(__int64 result, char a2)
+{
+  int v2;
+  __int64 v3;
+  __int64 v5;
+  __int64* v6;
+  char v7;
+  char v8;
+  _BYTE* v9;
+  __int64 v10;
+  _BYTE* v11;
+  bool v12;
+  __int64 v13;
+  __int64 v14;
+  __int64 v15;
+  __int64 v16;
+  __int64 v17;
+  int v18;
+  int v19;
+  __int64 v20;
+  __int64 v21;
+  __int64 v22;
+  __int64 v23;
+  int v24;
+
+  v2 = a2 & 1;
+  if (v2 == *(unsigned __int8*)(result + 284)) {
+    return result;
+  }
+  v3 = result;
+  HubCharacterNatives_ceca80(*(_QWORD**)(result + 240), 2048, v2);
+  v5 = *(_QWORD*)(*(_QWORD*)(v3 + 240) + 8LL);
+  v6 = *(__int64**)(*(_QWORD*)(v5 + 232) + 72LL);
+  result = game_zview_CharacterModel_SetActiveSignal(v5, v2);
+  if (*((unsigned __int8*)v6 + 16) != v2) {
+    v7 = *((_BYTE*)v6 + 17);
+    *((_BYTE*)v6 + 16) = v2;
+    if ((a2 & 1) != 0) {
+      v8 = 0;
+    }
+    else {
+      v8 = 2;
+    }
+    *((_BYTE*)v6 + 17) = v7 & 0xFD | v8;
+    *((_BYTE*)v6 + 18) = *((_BYTE*)v6 + 18) & 0xFD | v8;
+    *((_BYTE*)v6 + 19) = *((_BYTE*)v6 + 19) & 0xFD | v8;
+    *((_BYTE*)v6 + 20) = *((_BYTE*)v6 + 20) & 0xFD | v8;
+    v9 = (_BYTE*)v6[1];
+    v9[632] = 0;
+    v9[664] = 0;
+    v9[696] = 0;
+    v9[728] = 0;
+    v10 = *v6;
+    if ((a2 & 1) != 0) {
+      result = (*(__int64 (**)(__int64*))(v10 + 64))(v6);
+      v11 = (_BYTE*)v6[1];
+      v12 = v11[300] == 3 && v11[301] == 3;
+      if (!v12 && v11[302] != 1) {
+        goto LABEL_15;
+      }
+      v10 = *v6;
+    }
+    result = (*(__int64 (**)(__int64*))(v10 + 72))(v6);
+  }
+  if ((a2 & 1) != 0) {
+  LABEL_15:
+    v13 = *(_QWORD*)(*(_QWORD*)(v3 + 240) + 168LL);
+    if (v13 != 0) {
+      v24 = *(_DWORD*)((_BYTE*)((_UNKNOWN*)0x1C4LL) +
+                       game_g_shared_system_skills_ptr) &
+            0xFFF;
+      result = game_HasSkill_alt1((_QWORD*)(v13 + 1744), (unsigned int*)&v24);
+      *((_BYTE*)v6 + 88) = result & 1;
+    }
+    *(_DWORD*)(v3 + 280) = *((_DWORD*)v6 + 28);
+    *(_BYTE*)(v3 + 284) = 1;
+    if (*((_DWORD*)v6 + 28) != 0) {
+      *((_DWORD*)v6 + 28) = 0;
+    }
+    if (*((_BYTE*)v6 + 158) != 0) {
+      v14 = v6[12];
+      if (v14 != 0) {
+        v15 = v6[13];
+        result = wld_AnimCtrlModule_SetRootMotionBone(
+            *(_QWORD*)(v14 + 24), (__int64)"Loc_C_Trans", 11, 7);
+        *(_BYTE*)(*(_QWORD*)(v14 + 24) + 232LL) = 1;
+        *(_DWORD*)(*(_QWORD*)(v14 + 24) + 236LL) = 0;
+        if (v15 != 0) {
+          result = wld_AnimCtrlModule_SetRootMotionBone(
+              *(_QWORD*)(v15 + 24), (__int64)"Loc_C_Trans", 11, 7);
+          *(_BYTE*)(*(_QWORD*)(v15 + 24) + 232LL) = 1;
+          *(_DWORD*)(*(_QWORD*)(v15 + 24) + 236LL) = 0;
+          v16 = v6[1];
+          v17 = *(_QWORD*)(v15 + 24);
+        }
+        else {
+          v16 = v6[1];
+          v17 = *(_QWORD*)(v14 + 24);
+        }
+        *(_QWORD*)(v17 + 304) = v16;
+      }
+    }
+    return result;
+  }
+  if (*(_BYTE*)(v3 + 284) == 1) {
+    v18 = *(_DWORD*)(v3 + 280);
+    if (v18 == 0 || ((result = GameRoutine_108cb20(v18)) & 1) != 0) {
+      v19 = v18 == 119788728 ? 0 : v18;
+      if (*((_DWORD*)v6 + 28) != v19) {
+        *((_DWORD*)v6 + 28) = v19;
+      }
+    }
+  }
+  if (*((_BYTE*)v6 + 158) != 0) {
+    v20 = v6[12];
+    if (v20 != 0) {
+      v22 = *(_QWORD*)(v20 + 24);
+      v21 = v20 + 24;
+      v23 = v6[13];
+      result = wld_AnimCtrlModule_SetRootMotionBone(v22, (__int64)"Loc_C_Trans",
+                                                    11, 7);
+      *(_BYTE*)(*(_QWORD*)v21 + 232LL) = 1;
+      *(_DWORD*)(*(_QWORD*)v21 + 236LL) = 1065353216;
+      if (v23 != 0) {
+        result = wld_AnimCtrlModule_SetRootMotionBone(
+            *(_QWORD*)(v23 + 24), (__int64)"Loc_C_Trans", 11, 7);
+        v21 = v23 + 24;
+        *(_BYTE*)(*(_QWORD*)v21 + 232LL) = 1;
+        *(_DWORD*)(*(_QWORD*)v21 + 236LL) = 1065353216;
+      }
+      *(_QWORD*)(*(_QWORD*)v21 + 304LL) = v6[1];
+    }
+  }
+  if (*(_BYTE*)(v3 + 284) == 1) {
+    *(_BYTE*)(v3 + 284) = 0;
+  }
+  return result;
 }
 
 #pragma GCC visibility pop

@@ -131,6 +131,9 @@ __int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
 char* game_util_Format_alt1(const char*, ...) __asm__("game_util_Format");
 void game_gameui_15d2910(__int64*, unsigned __int16*);
 void ProcDeliveryMaterialMenu_Unknown88(__int64 a1);
+__int64 ui_LayoutAccessor_FindTextBox_alt2(__int64*, __int64) __asm__(
+    "ui_LayoutAccessor_FindTextBox");
+__int64 ProcDeliveryMaterialMenu_17a1df0(__int64 a1);
 
 __int64 ProcDeliveryMaterialMenu_Unknown85(__int64 a1)
 {
@@ -1042,6 +1045,74 @@ _QWORD* ProcDeliveryMaterialMenu_17a1ca0(_QWORD* result)
     }
     return (_QWORD*)nn_mem_StandardAllocator_Free(
         *(_QWORD*)fw_memory_g_heap_manager_ptr + v2, v1);
+  }
+  return result;
+}
+
+__int64 ProcDeliveryMaterialMenu_17a1df0(__int64 a1)
+{
+  __int64 result;
+  __int64 v3;
+  __int64* v4;
+  char* v6;
+  __int64 v7;
+  __int64 v8;
+  int v9;
+  char* v10;
+  int v11;
+  struct {
+    __int64* v12;
+    __int64 v13;
+  } v12_;
+
+  LayoutAccessor_1560070((void*)(&v12_.v12), (__int64*)(a1 + 848),
+                         "L_Condition");
+  result = v12_.v13;
+  if (v12_.v13 != 0) {
+    v3 = std___1___shared_weak_count_lock_alt1(v12_.v13);
+    v4 = v12_.v12;
+    result = v12_.v13;
+    if (v12_.v13 != 0) {
+      result = std___1___shared_weak_count___release_weak_alt1(v12_.v13);
+    }
+    if (v3 == 0 || v4 == nullptr) {
+      if (v3 == 0) {
+        return result;
+      }
+    }
+    else {
+      v6 = game_util_Format_alt1("%d", *(_DWORD*)(a1 + 1128));
+      v7 = ui_LayoutAccessor_FindTextBox_alt2(v4, (__int64)"T_TotalNum");
+      if (v7 != 0) {
+        GameRoutine_156c5d0_alt1(v7, (__int64)v6, 0);
+      }
+      v8 = *(_QWORD*)(a1 + 1064);
+      if (v8 != 0) {
+        v9 = *(unsigned __int8*)(*(_QWORD*)v8 + 368LL);
+      }
+      else {
+        v9 = *(unsigned __int16*)(*(_QWORD*)(a1 + 1072) + 96LL);
+      }
+      if ((signed __int32)*(_DWORD*)(a1 + 1128) >= v9) {
+        v10 = (char*)GameData_212da30 + 36;
+      }
+      else {
+        v10 = (char*)GameData_212da30 + 60;
+      }
+      v11 = *(_DWORD*)v10;
+      result = ui_LayoutAccessor_FindTextBox_alt2(v4, (__int64)"T_TotalNum");
+      if (result != 0) {
+        result = Pane_58f8a0_alt1(result);
+        if (result != 0) {
+          *(_DWORD*)(result + 12) = v11;
+        }
+      }
+    }
+    if (atomic_fetch_add((atomic_ullong* volatile)(v3 + 8),
+                         0xFFFFFFFFFFFFFFFFLL) == 0) {
+      (*(void (**)(__int64))(*(_QWORD*)v3 + 16LL))(v3);
+      return std___1___shared_weak_count___release_weak_alt1(v3);
+    }
   }
   return result;
 }

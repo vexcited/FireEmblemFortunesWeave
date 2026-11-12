@@ -116,6 +116,265 @@ void GameRoutine_1541940_alt1(__int64***, __int64, float32x4_t*,
 void GameRoutine_155c5d0_alt1(__int64) __asm__("GameRoutine_155c5d0");
 void GmapDrawer_153aa40_alt2(__int64****, char) __asm__("GmapDrawer_153aa40");
 __int64 GmapDrawer_1538c80(__int64* a1, char a2);
+__int64 Components_a870e0(__int64*, char);
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 memcpy(__int64, __int64, unsigned __int64);
+extern _DWORD* GameData_2131848;
+extern __int64* GameData_212ca80[119];
+extern __int64* GameData_2130df0[3];
+extern __int64* GameData_2131840;
+extern __int64* GameData_21318a8[3];
+extern __int64* GameData_21318b0[2];
+extern __int64* GameData_2132588[10];
+extern __int64 GameData_2131678;
+extern __int64 game_map_MapColorPalette_g_texture_archives;
+unsigned __int64 GameHr_151d2b0(float*);
+void GameRoutine_151d100(__int64*, _QWORD*);
+void __attribute__((noreturn)) GameRoutine_153aa20();
+void __attribute__((noreturn))
+GameRoutine_60a210_alt1() __asm__("GameRoutine_60a210");
+void gfxa_PrimitiveDrawManager_Impl_LoadTextureBntx(_QWORD*, __int64,
+                                                    unsigned __int64);
+void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+__int64 GmapDrawer_Unknown2(__int64 a1);
+
+__int64 GmapDrawer_Unknown2(__int64 a1)
+{
+
+#pragma clang fp contract(off)
+  __int64* v2;
+  __int64 v3;
+  _QWORD** v4;
+  __int64* v5;
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  __int64* v10;
+  __int64* v11;
+  __int64* v12;
+  __int64* v13;
+  __int64 v14;
+  __int64 v15;
+  _QWORD* v16;
+  __int64 v17;
+  __int64* v18;
+  __int64* v19;
+  __int64 v20;
+  _QWORD* v21;
+  _QWORD* v22;
+  _QWORD* v23;
+  __int64 v24;
+  _QWORD* v25;
+  _QWORD* v26;
+  __int64 v27;
+  _QWORD* v28;
+  unsigned __int64 v29;
+  __int64 v30;
+  __int64 v31;
+  signed __int64 v32;
+  unsigned __int64 v33;
+  __int64 v34;
+  unsigned __int64 v35;
+  _QWORD* v36;
+  __int64 v37;
+  unsigned __int64 v38;
+  __int64 v39;
+  __int64 v40;
+  __int64 result;
+  _QWORD v42[6];
+
+  v2 = (__int64*)fw_memory_g_heap_manager_ptr;
+  v3 = fw_memory_HeapManager_Allocate_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr, 112, 16, 0);
+  *(_QWORD*)(v3 + 16) = 0;
+  *(_QWORD*)(v3 + 24) = 0;
+  *(_QWORD*)(v3 + 32) = 0;
+  *(_QWORD*)(v3 + 40) = 0;
+  v4 = (_QWORD**)game_map_MapColorPalette_g_texture_archives;
+  *(_WORD*)(v3 + 57) = 0;
+  *(_QWORD*)(v3 + 60) = 0;
+  *(_QWORD*)(v3 + 72) = 0;
+  *(_QWORD*)(v3 + 80) = 0;
+  *(_QWORD*)(v3 + 88) = 0;
+  *(_QWORD*)(v3 + 8) = 0;
+  v5 = (__int64*)(v3 + 8);
+  *(_QWORD*)(v3 + 48) = 0x3F8000003F800000LL;
+  *(_QWORD*)v3 = v4;
+  v6 = fw_memory_HeapManager_Allocate_alt1(*v2, 296, 16, 0);
+  *(_QWORD*)(v6 + 16) = 0;
+  v7 = GameData_2131678;
+  *(_DWORD*)(v6 + 32) = 0;
+  *(_QWORD*)(v6 + 40) = 0;
+  *(_DWORD*)(v6 + 104) = 0;
+  *(_QWORD*)(v6 + 56) = 0;
+  *(_QWORD*)(v6 + 64) = 0;
+  *(_QWORD*)(v6 + 72) = 0;
+  *(_WORD*)(v6 + 80) = 0;
+  *(_WORD*)(v6 + 116) = 0;
+  *(_WORD*)(v6 + 136) = 0;
+  *(_BYTE*)(v6 + 160) = 0;
+  *(_BYTE*)(v6 + 288) = 0;
+  *(_QWORD*)(v6 + 272) = 0;
+  *(_QWORD*)(v6 + 280) = 0;
+  *(_QWORD*)(v6 + 256) = 0;
+  *(_QWORD*)(v6 + 264) = 0;
+  *(_QWORD*)(v6 + 240) = 0;
+  *(_QWORD*)(v6 + 248) = 0;
+  *(_QWORD*)(v6 + 224) = 0;
+  *(_QWORD*)(v6 + 232) = 0;
+  *(_QWORD*)(v6 + 208) = 0;
+  *(_QWORD*)(v6 + 216) = 0;
+  *(_QWORD*)(v6 + 192) = 0;
+  *(_QWORD*)(v6 + 200) = 0;
+  *(_QWORD*)(v6 + 176) = 0;
+  *(_QWORD*)(v6 + 184) = 0;
+  *(_QWORD*)(v6 + 168) = 0;
+  *(_QWORD*)(v6 + 120) = 0;
+  *(_DWORD*)(v6 + 127) = 0;
+  *(_DWORD*)(v6 + 292) = 2;
+  *(_QWORD*)(v3 + 104) = v6;
+  *(_BYTE*)(v3 + 56) = 0;
+  *(_QWORD*)v6 = v7 + 16;
+  *(_QWORD*)(v6 + 8) = 0;
+  *(_DWORD*)(v6 + 48) = 0x2000;
+  *(_WORD*)(v6 + 108) = 256;
+  *(_DWORD*)(v6 + 112) = -1082130432;
+  *(_QWORD*)(v6 + 24) = 0;
+  *(_QWORD*)(v3 + 96) = v6 + 24;
+  gfxa_PrimitiveDrawManager_Impl_LoadTextureBntx(
+      *v4, (__int64)"UI/Gmap/gmap_textures.bntx", 0x1Au);
+  gfxa_PrimitiveDrawManager_Impl_LoadTextureBntx(
+      *v4, (__int64)"UI/Common/common_textures.bntx", 0x1Eu);
+  v8 = fw_memory_HeapManager_Allocate_alt1(*v2, 672, 16, 0);
+  v9 = v8;
+  v10 = GameData_2130e00;
+  if (*GameData_2130e00 == 0) {
+    *GameData_2130e00 = v8;
+    *GameData_2131848 = 1;
+  }
+  v11 = GameData_2131840;
+  *(_QWORD*)(v8 + 312) = 0;
+  *(_QWORD*)(v8 + 320) = 0;
+  *(_QWORD*)(v8 + 328) = 0;
+  *(_DWORD*)(v8 + 656) = 2;
+  *(_DWORD*)(v8 + 668) = 0;
+  *(_QWORD*)v8 = v11 + 2;
+  *(_QWORD*)(v8 + 660) = 0;
+  v12 = *(__int64**)(*GameData_212ca80[0] + 64);
+  v13 = *(__int64**)(*GameData_212ca80[0] + 72);
+  while (v12 != v13) {
+    v14 = *v12++;
+    __builtin_memset(&v42[2], 0, 32);
+    v42[0] = v14;
+    GameRoutine_151d100((__int64*)(v9 + 312), v42);
+  }
+  GameHr_151d2b0((float*)v9);
+  v15 = *(_QWORD*)v9;
+  *v10 = v9;
+  (*(void (**)(__int64))(v15 + 16))(v9);
+  v16 = (_QWORD*)fw_memory_HeapManager_Allocate_alt1(*v2, 16, 16, 0);
+  *v16 = GameData_21318b0[0] + 2;
+  v17 = fw_memory_HeapManager_Allocate_alt1(*v2, 56, 16, 0);
+  *(_DWORD*)v17 = 0;
+  *(_QWORD*)(v17 + 24) = 2;
+  *(_BYTE*)(v17 + 52) = 1;
+  v18 = GameData_2130df0[0];
+  *(_DWORD*)(v17 + 48) = 0;
+  *(_QWORD*)(v17 + 36) = 0;
+  v16[1] = v17;
+  *(_QWORD*)(v17 + 8) = v18 + 2;
+  *(_QWORD*)(v17 + 16) = 0;
+  *(_WORD*)(v17 + 32) = 256;
+  v19 = (__int64*)fw_memory_HeapManager_Allocate_alt1(*v2, 8, 16, 0);
+  *v19 = (__int64)v16;
+  v20 = *v2;
+  *(_QWORD*)(v3 + 16) = v19 + 1;
+  v21 = (_QWORD*)fw_memory_HeapManager_Allocate_alt1(v20, 16, 16, 0);
+  *v21 = GameData_2132588[0] + 2;
+  v22 = (_QWORD*)fw_memory_HeapManager_Allocate_alt1(*v2, 24, 16, 0);
+  *v22 = 0;
+  v22[1] = 0;
+  v22[2] = 0;
+  v21[1] = v22;
+  v23 = (_QWORD*)fw_memory_HeapManager_Allocate_alt1(*v2, 16, 16, 0);
+  v24 = *v19;
+  v25 = v23 + 2;
+  *(_QWORD*)(v3 + 8) = v23;
+  v26 = v23;
+  *(_QWORD*)(v3 + 24) = v23 + 2;
+  *v23 = v24;
+  v23[1] = v21;
+  v27 = 128;
+  if (*(_QWORD*)(*v2 + 200) == 0) {
+    v27 = 56;
+  }
+  nn_mem_StandardAllocator_Free_alt2(*v2 + v27, (__int64)v19);
+  v28 = (_QWORD*)fw_memory_HeapManager_Allocate_alt1(*v2, 8, 16, 0);
+  *v28 = GameData_21318a8[0] + 2;
+  v29 = *(_QWORD*)(v3 + 24);
+  if ((unsigned __int64)v25 >= v29) {
+    v31 = *v5;
+    v32 = (signed __int64)v25 - *v5;
+    v33 = (v32 >> 3) + 1;
+    if (v33 >> 61 != 0) {
+      GameRoutine_153aa20();
+    }
+    v34 = v29 - v31;
+    if (v34 >> 2 > v33) {
+      v33 = v34 >> 2;
+    }
+    if ((unsigned __int64)v34 >= 0x7FFFFFFFFFFFFFF8LL) {
+      v35 = 0x1FFFFFFFFFFFFFFFLL;
+    }
+    else {
+      v35 = v33;
+    }
+    if (v35 != 0) {
+      if (v35 >> 61 != 0) {
+        GameRoutine_60a210_alt1();
+      }
+      v36 = v28;
+      v37 = fw_memory_HeapManager_Allocate_alt1(*v2, 8 * v35, 16, 0);
+      v28 = v36;
+    }
+    else {
+      v37 = 0;
+    }
+    v38 = v37 + 8 * v35;
+    v39 = v37 + v32 - 8 * (v32 >> 3);
+    *(_QWORD*)(v37 + v32) = v28;
+    v30 = v37 + v32 + 8;
+    memcpy(v39, v31, v32);
+    *(_QWORD*)(v3 + 8) = v39;
+    *(_QWORD*)(v3 + 24) = v38;
+    if (v31 != 0) {
+      v40 = 128;
+      if (*(_QWORD*)(*v2 + 200) == 0) {
+        v40 = 56;
+      }
+      nn_mem_StandardAllocator_Free_alt2(*v2 + v40, v31);
+    }
+  }
+  else {
+    v26[2] = v28;
+    v30 = (__int64)(v26 + 3);
+  }
+  *(_QWORD*)(v3 + 16) = v30;
+  result = Components_a870e0(
+      *(__int64**)(*(_QWORD*)(*(_QWORD*)(*(_QWORD*)GameData_212c638 + 32LL) -
+                              8LL) +
+                   48LL),
+      0);
+  *(_QWORD*)(v3 + 32) = result;
+  strcpy((char*)(result + 16), "GmapDrawObj");
+  *(_QWORD*)(result + 272) = 11;
+  *(_QWORD*)(a1 + 8) = v3;
+  return result;
+}
 
 __int64 GmapDrawer_Unknown3(__int64 result)
 {

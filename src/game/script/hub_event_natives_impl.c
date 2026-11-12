@@ -151,6 +151,7 @@ void hub_event_AddEventAccess(__int64 a1, unsigned __int8* a2);
 void hub_event_RestoreExecuteDelete(__int64 a1);
 void hub_event_PushArrangementCharaAnim(__int64 a1, __int64 a2);
 void hub_event_SetGayaLabel(__int64 a1, __int64 a2);
+void hub_event_AddEventExecute(__int64 a1, unsigned __int8* a2, __int64 a3);
 
 _QWORD* HubEventNatives_d5b9c0(_QWORD* result)
 {
@@ -2028,6 +2029,180 @@ void HubEventNatives_d63b00(__int64 a1, unsigned __int8* a2, __int64** a3)
         v10 = COERCE_AS(__typeof__(v10),
                         PSEUDO_REGISTER(unsigned long long, "x1", "=r"));
   }
+}
+
+void hub_event_AddEventExecute(__int64 a1, unsigned __int8* a2, __int64 a3)
+{
+  __int64 v6;
+  __int64 v7;
+  __int64 v8;
+  _QWORD* v9;
+  __int64 v10;
+  __int64 v11;
+  __int64* v12;
+  _QWORD* v13;
+  const char* v14;
+  unsigned __int64 v15;
+  unsigned __int64 v16;
+  __int64* v17;
+  char* v18;
+  __int64 v19;
+  __int64 v20;
+  _QWORD* v21;
+  unsigned __int64 v22;
+  __int64 v23;
+  __int64 v24;
+  __int64 v25;
+  __int64* v26;
+  char v27;
+  __int64* v28;
+  __int64 v29;
+  __int64 v30;
+  __int64 v31;
+  __int64 v32;
+  __int64 v33;
+  __int64 v34;
+  __int64 v35;
+  __int64 v36;
+  __int64* v37[3];
+  struct {
+    __int64 v38;
+    unsigned __int64 v39;
+    char* v40;
+  } v38_;
+
+  v6 = *as_g_script_manager_ptr;
+  v7 = *(
+      _QWORD*)(v6 +
+               8LL * (*(unsigned int (**)(__int64))(*(_QWORD*)as_g_thread_info +
+                                                    72LL))(as_g_thread_info) +
+               4384);
+  if (v7 != 0) {
+    v8 = (*(__int64 (**)(__int64))(*(_QWORD*)v7 + 472LL))(v7);
+  }
+  else {
+    v8 = 0;
+  }
+  (*(void (**)(_QWORD, __int64))(**(_QWORD**)(v8 + 24) + 448LL))(
+      *(_QWORD*)(v8 + 24), 1);
+  v9 = *(_QWORD**)(v8 + 2240);
+  *(_QWORD*)(v8 + 2240) = 0;
+  if (v9 == (_QWORD*)(v8 + 2208)) {
+    v10 = 32;
+    goto LABEL_8;
+  }
+  if (v9 != nullptr) {
+    v10 = 40;
+  LABEL_8:
+    (*(void (**)(__int64))(*v9 + v10))((__int64)v9);
+  }
+  v11 = *(unsigned int*)(a1 + 16);
+  if ((_DWORD)v11 == 0x4000) {
+    return;
+  }
+  v12 = util_g_handle_slots_ptr[0];
+  v13 = (_QWORD*)(util_g_handle_slots_ptr[0][*(unsigned int*)(a1 + 20)] +
+                  16 * v11);
+  if (v13[1] == 0 || *v13 != *(_QWORD*)(a1 + 8)) {
+    return;
+  }
+  if ((*(_BYTE*)a3 & 1) != 0) {
+    v14 = *(const char**)(a3 + 16);
+  }
+  else {
+    v14 = (const char*)(a3 + 1);
+  }
+  v15 = strlen_alt1(v14);
+  if (v15 >= 0xFFFFFFFFFFFFFFF7LL) {
+    String_60a1d0_alt1();
+  }
+  v16 = v15;
+  v17 = (__int64*)fw_memory_g_heap_manager_ptr;
+  if (v15 >= 0x17) {
+    if ((v15 | 7) == 0x17) {
+      v19 = 26;
+    }
+    else {
+      v19 = (v15 | 7) + 1;
+    }
+    v18 = (char*)fw_memory_HeapManager_Allocate_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr, v19, 16, 0);
+    v38_.v39 = v16;
+    v38_.v40 = v18;
+    v38_.v38 = v19 | 1;
+  }
+  else {
+    LOBYTE(v38_.v38) = 2 * v15;
+    v18 = (char*)&v38_.v38 + 1;
+    if (v15 == 0) {
+      goto LABEL_24;
+    }
+  }
+  memmove_alt1((__int64)v18, (__int64)v14, v16);
+LABEL_24:
+  v20 = *v17;
+  v18[v16] = 0;
+  v21 = (_QWORD*)fw_memory_HeapManager_Allocate_alt1(v20, 24, 16, 0);
+  v22 = v38_.v39;
+  v23 = (__int64)v21;
+  *v21 = v38_.v38;
+  v21[1] = v22;
+  v21[2] = v38_.v40;
+  v24 = *(unsigned int*)(a1 + 16);
+  if ((_DWORD)v24 == 0x4000) {
+    v25 = 0;
+  }
+  else {
+    v25 = *(_QWORD*)(v12[*(unsigned int*)(a1 + 20)] + 16 * v24 + 8);
+  }
+  v26 = (__int64*)fw_memory_HeapManager_Allocate_alt1(*v17, 24, 16, 0);
+  v27 = *(_BYTE*)v23;
+  v28 = v26 + 3;
+  v29 = (__int64)v26;
+  v37[0] = v26;
+  v37[2] = v26 + 3;
+  if ((v27 & 1) != 0) {
+    fw_text_String_CopyTerminated_alt1(v26, *(_QWORD*)(v23 + 16),
+                                       *(_QWORD*)(v23 + 8));
+  }
+  else {
+    v30 = *(_QWORD*)(v23 + 8);
+    *v26 = *(_QWORD*)v23;
+    v26[1] = v30;
+    v26[2] = *(_QWORD*)(v23 + 16);
+  }
+  v37[1] = v28;
+  HubEventNatives_d63b00(v25, a2, v37);
+  if ((*(_BYTE*)v29 & 1) != 0) {
+    v31 = *(_QWORD*)(v29 + 16);
+    if (v31 != 0) {
+      v32 = 128;
+      if (*(_QWORD*)(*v17 + 200) == 0) {
+        v32 = 56;
+      }
+      nn_mem_StandardAllocator_Free_alt2(*v17 + v32, v31);
+    }
+  }
+  v33 = 128;
+  if (*(_QWORD*)(*v17 + 200) == 0) {
+    v33 = 56;
+  }
+  nn_mem_StandardAllocator_Free_alt2(*v17 + v33, v29);
+  if ((v27 & 1) != 0) {
+    v34 = *(_QWORD*)(v23 + 16);
+    if (v34 != 0) {
+      v35 = 128;
+      if (*(_QWORD*)(*v17 + 200) == 0) {
+        v35 = 56;
+      }
+      nn_mem_StandardAllocator_Free_alt2(*v17 + v35, v34);
+    }
+  }
+  v36 = 128;
+  if (*(_QWORD*)(*v17 + 200) == 0) {
+    v36 = 56;
+  }
+  nn_mem_StandardAllocator_Free_alt2(*v17 + v36, v23);
 }
 
 void hub_event_RestoreExecuteDelete(__int64 a1)

@@ -43,6 +43,10 @@ void __cxa_guard_release(__int64);
 void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void game_map_MapPanelTargetSelect_UpdateTarget(__int64 a1);
+extern _UNKNOWN* GameData_212c958;
+extern __int64 GameData_221fdd8;
+void GameRoutine_f172c0(float, __int64, _QWORD*, __int64);
+void MapPanelTargetSelect_Unknown4(__int64 a1);
 
 void game_map_MapPanelTargetSelect_UpdateTarget(__int64 a1)
 {
@@ -413,6 +417,75 @@ LABEL_78:
       }
       v46 = v49;
     } while (v49 != (float32x4_t*)(v45 + 1));
+  }
+}
+
+void MapPanelTargetSelect_Unknown4(__int64 a1)
+{
+
+#pragma clang fp contract(off)
+  __int64 v1;
+  float32x4_t v2;
+  __int64 v3;
+  float32x4_t v4;
+  float32x4_t v5;
+  int8x16_t v6;
+  int8x16_t v7;
+  unsigned __int64 v8;
+  __int64 v9;
+  struct {
+    __int64 v10[4];
+    int8x16_t v11;
+    int8x16_t v12;
+    __int64 v13;
+    int v14;
+    char gap76_[4];
+    __int64 v15;
+    __int64 v16;
+    __int16 v17;
+    char gap98_[2];
+    char v18;
+    char gap101_[3];
+    char v19;
+  } v10_;
+
+  strcpy((char*)&v10_.v10[2] + 1, "ts");
+  HIDWORD(v10_.v10[2]) = 0;
+  v10_.v18 = 0;
+  v10_.v19 = 0;
+  v10_.v15 = 0;
+  v10_.v16 = 0;
+  v10_.v17 = 0;
+  strcpy((char*)v10_.v10, "$MapPanelDeployA");
+  v1 = *(unsigned int*)(a1 + 40);
+  if ((unsigned int)v1 >= 0x2C) {
+    String_60a250("array::at");
+  }
+  v2 = *(float32x4_t*)GameData_212c958;
+  v3 = GameData_221fdd8 + 32 * v1;
+  v5 = *(float32x4_t*)(v3 + 16);
+  v4 = *(float32x4_t*)(v3 + 32);
+  v10_.v13 = 0xD00000000LL;
+  v10_.v14 = 1;
+  v6 = vmulq_f32(v2, v4);
+  v7 = vmulq_f32(v2, v5);
+  LODWORD(v8) = LANES128_OF(vextq_s8(v6, v6, 8u)).n128_u32[0];
+  LANES128(v5).n128_u32[0] = LANES128_OF(vextq_s8(v7, v7, 8u)).n128_u32[0];
+  HIDWORD(v8) = LANES64_OF(vdup_laneq_s32(v6, 3)).n64_u32[0];
+  LANES128(v6).n128_u64[1] = v8;
+  LANES128(v5).n128_u32[1] = LANES64_OF(vdup_laneq_s32(v7, 3)).n64_u32[0];
+  LANES128(v7).n128_u64[1] = LANES128(v5).n128_u64[0];
+  v10_.v11 = v7;
+  v10_.v12 = v6;
+  GameRoutine_f172c0(0x1.0000000000000p+0f, a1, (_QWORD*)(a1 + 16),
+                     (__int64)v10_.v10);
+  if ((v10_.v10[0] & 1) != 0 && v10_.v10[2] != 0) {
+    v9 = 128;
+    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+      v9 = 56;
+    }
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v9, v10_.v10[2]);
   }
 }
 

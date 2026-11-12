@@ -35,6 +35,12 @@ extern _UNKNOWN* GameData_212c2a0;
 extern __int128 GameData_1a82fb0;
 extern __int64 (*GameData_1fc0e68[])();
 __int64 gfx_render_DecalObject_DecalObject(__int64 a1);
+__int64 ElementRenderer_a74470(__int64 result, __int64, __int64*);
+__int64 fw_text_String_CopyTerminated(__int64*, __int64, unsigned __int64);
+extern __int64 (*GameData_1fc0ef8[])();
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+__int64 gfx_render_DecalObject_CollectElements(__int64 a1, __int64 a2);
 
 __int64 gfx_render_DecalObject_DecalObject(__int64 a1)
 {
@@ -494,6 +500,76 @@ __int64 DecalObject_Unknown2(__int64 a1)
   *(int32x4_t*)(v6 + 112) = v60;
   *(int32x4_t*)(v6 + 128) = v61;
   return (*(__int64 (**)(__int64))(*(_QWORD*)v5 + 64LL))(v5);
+}
+
+__int64 gfx_render_DecalObject_CollectElements(__int64 a1, __int64 a2)
+{
+
+#pragma clang fp contract(off)
+  int v2;
+  __int64 v5;
+  __int64 v6;
+  float v7;
+  __int64 v8;
+  __int64 result;
+  __int64 v10;
+  struct {
+    __int64 v11[2];
+    __int64 v12;
+  } v11_;
+  __int64 v13;
+  int v14;
+  int v15;
+  int v16;
+  struct {
+    _QWORD v17[4];
+    _QWORD* v18;
+  } v17_;
+
+  v2 = *(_DWORD*)(a1 + 424);
+  v16 = 0;
+  v14 = 0;
+  v17_.v17[0] = GameData_1fc0ef8;
+  v17_.v17[1] = a1;
+  v17_.v18 = v17_.v17;
+  LODWORD(v13) = *(_DWORD*)(a1 + 36);
+  if ((*(_BYTE*)(a1 + 8) & 1) != 0) {
+    fw_text_String_CopyTerminated(v11_.v11, *(_QWORD*)(a1 + 24),
+                                  *(_QWORD*)(a1 + 16));
+  }
+  else {
+    v5 = *(_QWORD*)(a1 + 16);
+    v6 = *(_QWORD*)(a1 + 24);
+    v11_.v11[0] = *(_QWORD*)(a1 + 8);
+    v11_.v11[1] = v5;
+    v11_.v12 = v6;
+  }
+  v7 = 0x0.0p+0f;
+  v15 = *(_DWORD*)(a1 + 244);
+  if (v2 == 0) {
+    v7 = 0x1.0000000000000p+0f;
+  }
+  *((float*)&v13 + 1) = v7;
+  ElementRenderer_a74470(a2, (__int64)v17_.v17, &v13);
+  if ((v11_.v11[0] & 1) != 0 && v11_.v12 != 0) {
+    v8 = 128;
+    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+      v8 = 56;
+    }
+    nn_mem_StandardAllocator_Free_alt1(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v8, v11_.v12);
+  }
+  result = (__int64)v17_.v18;
+  if (v17_.v18 == v17_.v17) {
+    v10 = 32;
+  }
+  else {
+    if (v17_.v18 == nullptr) {
+      return result;
+    }
+    v10 = 40;
+  }
+  return (*(__int64 (**)(__int64))(*v17_.v18 + v10))((__int64)v17_.v18);
 }
 
 void gfx_render_DecalObject_DecalObject_lambda0_Invoke(__int64 a1, _WORD* a2)

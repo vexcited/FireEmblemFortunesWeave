@@ -19,6 +19,19 @@ extern __int64 fw_memory_g_heap_manager_ptr;
 extern __int64* GameData_212e008[9];
 __int64 ProcCmdBtlEquipUnitSelectMenu_Unknown128(__int64 a1);
 __int64 ProcCmdBtlEquipUnitSelectMenu_Unknown155(__int64 a1);
+__attribute__((swiftcall)) void game_eb68e0(PSEUDO_X8, int);
+__int64 GameRoutine_1590b40(__int64 result, char, __int64**, char);
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 game_gameui_1590740(__int64*, int, int);
+__int64 memcpy(__int64, __int64, unsigned __int64);
+extern __int64 GameData_21c9608;
+void __attribute__((noreturn)) GameRoutine_60a210();
+void __attribute__((noreturn)) GameRoutine_740050();
+void nn_mem_StandardAllocator_Free(__int64, __int64);
+void game_menu_anonymous_ProcCmdBtlEquipUnitSelectMenu_CreateBind_closure_Invoke(
+    __int64 a1, __int64* a2);
 
 __int64 ProcCmdBtlEquipUnitSelectMenu_Unknown128(__int64 a1)
 {
@@ -177,6 +190,127 @@ __int64 ProcCmdBtlEquipUnitSelectMenu_Unknown155(__int64 a1)
     }
   }
   return result;
+}
+
+void game_menu_anonymous_ProcCmdBtlEquipUnitSelectMenu_CreateBind_closure_Invoke(
+    __int64 a1, __int64* a2)
+{
+  int v2;
+  _QWORD* v3;
+  _QWORD* v4;
+  __int64* v5;
+  char* v6;
+  __int64* v7;
+  unsigned __int64 v8;
+  __int64 v9;
+  unsigned __int64 v10;
+  __int64 v11;
+  unsigned __int64 v12;
+  __int64 v13;
+  unsigned __int64 v14;
+  __int64* v15;
+  __int64 v16;
+  __int64 v17;
+  __int64 v18;
+  __int64 v19;
+  struct {
+    __int64* v21;
+    __int64* v22;
+    unsigned __int64 v23;
+  } v21_;
+  struct {
+    char v24[8];
+    _QWORD* v25;
+    _QWORD* v26;
+    char gap56_[8];
+    int v27;
+    int v28;
+  } v24_;
+
+  if ((*(_QWORD*)(GameData_21c9608 + 328) & 4LL) != 0) {
+    v2 = 1;
+  }
+  else {
+    v2 = *(_DWORD*)(GameData_21c9608 + 308);
+  }
+  game_eb68e0((void*)((__int64)v24_.v24), v2);
+  v21_.v22 = nullptr;
+  v21_.v23 = 0;
+  v21_.v21 = nullptr;
+  v3 = v24_.v25;
+  v4 = v24_.v26;
+  v5 = (__int64*)fw_memory_g_heap_manager_ptr;
+  if (v24_.v25 != v24_.v26) {
+    v6 = nullptr;
+    do {
+      if ((unsigned __int64)v6 < v21_.v23) {
+        *(_QWORD*)v6 = *v3;
+        v6 += 8;
+      }
+      else {
+        v7 = v21_.v21;
+        v8 = v6 - (char*)v21_.v21;
+        v9 = (v6 - (char*)v21_.v21) >> 3;
+        v10 = v9 + 1;
+        if ((unsigned __int64)(v9 + 1) >> 61 != 0) {
+          GameRoutine_740050();
+        }
+        v11 = v21_.v23 - (_QWORD)v21_.v21;
+        if ((__int64)(v21_.v23 - (_QWORD)v21_.v21) >> 2 > v10) {
+          v10 = v11 >> 2;
+        }
+        if ((unsigned __int64)v11 >= 0x7FFFFFFFFFFFFFF8LL) {
+          v12 = 0x1FFFFFFFFFFFFFFFLL;
+        }
+        else {
+          v12 = v10;
+        }
+        if (v12 != 0) {
+          if (v12 >> 61 != 0) {
+            GameRoutine_60a210();
+          }
+          v13 = fw_memory_HeapManager_Allocate_alt1(*v5, 8 * v12, 16, 0);
+        }
+        else {
+          v13 = 0;
+        }
+        v14 = v13 + 8 * v12;
+        v15 = (__int64*)(v13 + v8 - 8 * v9);
+        *(_QWORD*)(v13 + v8) = *v3;
+        v6 = (char*)(v13 + v8 + 8);
+        memcpy((__int64)v15, (__int64)v7, v8);
+        v21_.v21 = v15;
+        v21_.v23 = v14;
+        if (v7 != nullptr) {
+          v16 = 128;
+          if (*(_QWORD*)(*v5 + 200) == 0) {
+            v16 = 56;
+          }
+          nn_mem_StandardAllocator_Free(*v5 + v16, (__int64)v7);
+        }
+      }
+      ++v3;
+      v21_.v22 = (__int64*)v6;
+    } while (v3 != v4);
+  }
+  GameRoutine_1590b40((__int64)a2, 0, &v21_.v21, 0);
+  game_gameui_1590740(a2, v24_.v27, v24_.v28);
+  if (v21_.v21 != nullptr) {
+    v17 = *v5;
+    v21_.v22 = v21_.v21;
+    v18 = 128;
+    if (*(_QWORD*)(v17 + 200) == 0) {
+      v18 = 56;
+    }
+    nn_mem_StandardAllocator_Free(v17 + v18, (__int64)v21_.v21);
+  }
+  if (v24_.v25 != nullptr) {
+    v19 = 128;
+    if (*(_QWORD*)(*v5 + 200) == 0) {
+      v19 = 56;
+    }
+    nn_mem_StandardAllocator_Free(*v5 + v19, (__int64)v24_.v25);
+  }
 }
 
 #pragma GCC visibility pop

@@ -96,6 +96,8 @@ void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void TimelineFile_Unknown5();
 __int64* TimelineFile_890160(const char* a1);
+int strcmp(const char*, const char*);
+__attribute__((swiftcall)) void TimelineFile_8903a0(PSEUDO_X8 x8_, __int64 a1);
 
 unsigned __int64 TimelineFile_Unknown4()
 {
@@ -1227,6 +1229,110 @@ __int64 TimelineFile_890280(__int64 a1, __int64 a2)
     (*(void (**)(_QWORD*, __int64))(*v3 + v9))(v3, a2);
   }
   return v13;
+}
+
+__attribute__((swiftcall)) void TimelineFile_8903a0(PSEUDO_X8 x8_, __int64 a1)
+{
+  __int64* a2 = (__int64*)PSEUDO_X8_VALUE(x8_);
+  _QWORD* v4;
+  __int64 v5;
+  __int64 v6;
+  unsigned __int64 v7;
+  __int64 v8;
+  char* v9;
+  const char* v10;
+  bool v11;
+  __int64 v12;
+  const char* v13;
+  char* v14;
+  __int64 v15;
+  unsigned __int64 v16;
+  unsigned __int64 v17;
+  __int64 v18;
+  unsigned __int64 v19;
+  __int64 v20;
+  __int64 v21;
+
+  a2[1] = 0;
+  a2[2] = 0;
+  *a2 = 0;
+  if (a1 != 0) {
+    v4 = *(_QWORD**)(**(_QWORD**)(a1 + 24) + 40LL);
+    v5 = v4[1];
+    if (*v4 != v5) {
+      v6 = *v4 + 8LL;
+      v7 = 0;
+      v8 = 0;
+      v9 = nullptr;
+      v10 = nullptr;
+      do {
+        v12 = *(_QWORD*)(v6 - 8);
+        v13 = *(const char**)(v12 + 144);
+        if (v13 != nullptr) {
+          if (v10 != nullptr && strcmp(v13, v10) == 0) {
+            if (v9 != (char*)v8) {
+              *((_QWORD*)v9 - 1) = v12;
+            }
+          }
+          else {
+            if ((unsigned __int64)v9 < v7) {
+              *(_QWORD*)v9 = v12;
+              v9 += 8;
+            }
+            else {
+              v14 = &v9[-v8];
+              v15 = (__int64)&v9[-v8] >> 3;
+              v16 = v15 + 1;
+              if ((unsigned __int64)(v15 + 1) >> 61 != 0) {
+                GameRoutine_892b20();
+              }
+              if ((__int64)(v7 - v8) >> 2 > v16) {
+                v16 = (__int64)(v7 - v8) >> 2;
+              }
+              if (v7 - v8 >= 0x7FFFFFFFFFFFFFF8LL) {
+                v17 = 0x1FFFFFFFFFFFFFFFLL;
+              }
+              else {
+                v17 = v16;
+              }
+              if (v17 != 0) {
+                if (v17 >> 61 != 0) {
+                  GameRoutine_60a210();
+                }
+                v18 = fw_memory_HeapManager_Allocate_alt1(
+                    *(_QWORD*)fw_memory_g_heap_manager_ptr, 8 * v17, 16, 0);
+              }
+              else {
+                v18 = 0;
+              }
+              v7 = v18 + 8 * v17;
+              v19 = (unsigned __int64)&v9[-v8];
+              v20 = (__int64)&v14[v18 + -8 * v15];
+              *(_QWORD*)&v14[v18] = v12;
+              v9 = &v14[v18 + 8];
+              memcpy_alt1(v20, v8, v19);
+              *a2 = v20;
+              a2[2] = v7;
+              if (v8 != 0) {
+                v21 = 128;
+                if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr +
+                               200LL) == 0) {
+                  v21 = 56;
+                }
+                nn_mem_StandardAllocator_Free_alt2(
+                    *(_QWORD*)fw_memory_g_heap_manager_ptr + v21, v8);
+              }
+              v8 = v20;
+            }
+            v10 = *(const char**)(v12 + 144);
+            a2[1] = (__int64)v9;
+          }
+        }
+        v11 = v12 == a1 || v6 == v5;
+        v6 += 8;
+      } while (!v11);
+    }
+  }
 }
 
 __attribute__((swiftcall)) void TimelineFile_890540(PSEUDO_X8 x8_,

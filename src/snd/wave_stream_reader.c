@@ -63,6 +63,8 @@ __int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
 __int64 memset_alt1(__int64, int, unsigned __int64) __asm__("memset");
 __int64 WaveStreamReader_Unknown9(__int64 a1, __int64 a2, int a3);
 __int64 WaveStreamReader_Unknown10(__int64 a1, __int64 a2, int a3);
+__int64 memset_alt2(_QWORD, _QWORD, _QWORD) __asm__("memset");
+__int64 WaveStreamReader_GetInterfaceCount(__int64 a1);
 
 __int64 WaveStreamReader_Destructor(_QWORD* a1)
 {
@@ -959,6 +961,90 @@ LABEL_59:
 LABEL_62:
   nn_os_UnlockMutex(a1 + 120);
   return v39 < 8;
+}
+
+__int64 WaveStreamReader_GetInterfaceCount(__int64 a1)
+{
+  __int64 v5;
+  _DWORD* v6;
+  int v7;
+  int v8;
+  __int64 v9;
+  unsigned __int64 v10;
+  __int64 v11;
+  _DWORD* v12;
+  int v13;
+  int v14;
+  const char* v15;
+  unsigned int v16;
+  _DWORD* v18;
+  __int64 v19;
+  __int64 v20;
+
+  nn_os_LockMutex(a1 + 120);
+  if (*(int*)(a1 + 272) < 1) {
+    v15 = "#SoundLibrary : WaveStreamReader request buffer underflow !!\n";
+    goto LABEL_10;
+  }
+  **(_DWORD**)(a1 + 168) = *(_DWORD*)(a1 + 176 + 12LL * *(int*)(a1 + 276));
+  *(_DWORD*)(*(_QWORD*)(a1 + 168) + 4LL) =
+      *(_DWORD*)(a1 + 176 + 12LL * *(int*)(a1 + 276) + 4);
+  *(_DWORD*)(*(_QWORD*)(a1 + 168) + 8LL) =
+      *(_DWORD*)(a1 + 176 + 12LL * *(int*)(a1 + 276) + 8);
+  v5 = *(_QWORD*)(a1 + 424 + 8LL * *(int*)(a1 + 448));
+  if (*(_BYTE*)(v5 + 40) == 1) {
+    v6 = *(_DWORD**)(a1 + 168);
+    v7 = *(_DWORD*)(v5 + 20);
+    v8 = v6[2];
+    if (v7 <= v8 && *(_DWORD*)(v5 + 24) >= v8) {
+      v18 = v6 + 3;
+      v19 = (int)v6[1];
+      v20 = *(_QWORD*)(v5 + 32) + *v6 -
+            (*(_DWORD*)(*(_QWORD*)(a1 + 160) + 64LL) +
+             v7 * *(_DWORD*)(*(_QWORD*)(a1 + 160) + 48LL) *
+                 *(_DWORD*)(*(_QWORD*)(a1 + 160) + 32LL));
+    }
+    else {
+      v9 = *(_QWORD*)(v5 + 32);
+      *(_DWORD*)(v5 + 24) = 0;
+      *(_QWORD*)(v5 + 8) = 0;
+      *(_QWORD*)(v5 + 16) = 0;
+      memset_alt2(v9, 0, 0x20000);
+      *(_BYTE*)(v5 + 40) = 0;
+      v10 = (*(int*)(a1 + 448) + 1LL) % 3uLL;
+      *(_DWORD*)(a1 + 448) = v10;
+      v11 = *(_QWORD*)(a1 + 424 + 8 * v10);
+      if (*(_BYTE*)(v11 + 40) != 1) {
+        goto LABEL_8;
+      }
+      v12 = *(_DWORD**)(a1 + 168);
+      v13 = *(_DWORD*)(v11 + 20);
+      v14 = v12[2];
+      if (v13 > v14 || *(_DWORD*)(v11 + 24) < v14) {
+        goto LABEL_8;
+      }
+      v18 = v12 + 3;
+      v19 = (int)v12[1];
+      v20 = *(_QWORD*)(v11 + 32) + *v12 -
+            (*(_DWORD*)(*(_QWORD*)(a1 + 160) + 64LL) +
+             v13 * *(_DWORD*)(*(_QWORD*)(a1 + 160) + 48LL) *
+                 *(_DWORD*)(*(_QWORD*)(a1 + 160) + 32LL));
+    }
+    memcpy(v18, v20, v19);
+    v16 = 1;
+    *(_DWORD*)(a1 + 276) = ((unsigned __int8)*(_DWORD*)(a1 + 276) + 1) & 7;
+    --*(_DWORD*)(a1 + 272);
+    goto LABEL_11;
+  }
+LABEL_8:
+  v15 = "#SoundLibrary : WaveStreamReader exchange buffer no hit cache !!\n";
+LABEL_10:
+  (*(void (**)(_QWORD, const char*))(**(_QWORD**)snd_g_proxy_ptr[0] + 392LL))(
+      *(_QWORD*)snd_g_proxy_ptr[0], v15);
+  v16 = 0;
+LABEL_11:
+  nn_os_UnlockMutex_alt1(a1 + 120);
+  return v16;
 }
 
 __int64 WaveStreamReader_18c820(__int64 a1)

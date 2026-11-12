@@ -53,6 +53,51 @@ unsigned int* game_gmap_SpotMgr_FindSpot_alt1(unsigned int* result) __asm__(
 void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 __int64 game_menu_anonymous_ProcQuestBoard_ShowMap(__int64 a1);
+__int64 ui_LayoutAccessor_SetPaneVisible(__int64 result, __int64, char);
+void game_gameui_159b580(__int64, _BYTE*, __int64, _DWORD*);
+__int64 ProcQuestBoard_1848520(__int64 a1);
+__int64 game_menu_anonymous_ProcQuestBoard_ShowMap_closure_Invoke(__int64 a1,
+                                                                  _BYTE* a2,
+                                                                  __int64 a3,
+                                                                  _DWORD* a4);
+
+__int64 ProcQuestBoard_1848520(__int64 a1)
+{
+  __int64 result;
+  __int64 v2;
+  __int64 v3;
+  struct {
+    __int64 v5;
+    __int64 v6;
+  } v5_;
+
+  LayoutAccessor_1560070((void*)(&v5_.v5), (__int64*)(a1 + 848),
+                         "L_Info/L_Img");
+  result = v5_.v6;
+  if (v5_.v6 != 0) {
+    v2 = std___1___shared_weak_count_lock(v5_.v6);
+    v3 = v5_.v5;
+    result = v5_.v6;
+    if (v5_.v6 != 0) {
+      result = std___1___shared_weak_count___release_weak(v5_.v6);
+    }
+    if (v2 == 0 || v3 == 0) {
+      if (v2 == 0) {
+        return result;
+      }
+    }
+    else {
+      ui_LayoutAccessor_SetPaneVisible(v3, (__int64)"N_State", 0);
+      result = LayoutAccessor_1562cf0(v3, "Img01");
+    }
+    if (atomic_fetch_add((atomic_ullong* volatile)(v2 + 8),
+                         0xFFFFFFFFFFFFFFFFLL) == 0) {
+      (*(void (**)(__int64))(*(_QWORD*)v2 + 16LL))(v2);
+      return std___1___shared_weak_count___release_weak(v2);
+    }
+  }
+  return result;
+}
 
 void ProcQuestBoard_18485e0()
 {
@@ -387,6 +432,27 @@ LABEL_14:
     result;
     return;
   }
+}
+
+__int64 game_menu_anonymous_ProcQuestBoard_ShowMap_closure_Invoke(__int64 a1,
+                                                                  _BYTE* a2,
+                                                                  __int64 a3,
+                                                                  _DWORD* a4)
+{
+  __int64 result;
+  struct {
+    __int64 v8;
+    __int64 v9;
+  } v8_;
+
+  LayoutAccessor_1560070(
+      (void*)(&v8_.v8), (__int64*)(*(_QWORD*)(a1 + 8) + 848LL), "L_Info/L_Img");
+  game_gameui_159b580((__int64)&v8_.v8, a2, a3, a4);
+  result = v8_.v9;
+  if (v8_.v9 != 0) {
+    return std___1___shared_weak_count___release_weak(v8_.v9);
+  }
+  return result;
 }
 
 #pragma GCC visibility pop

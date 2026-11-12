@@ -191,6 +191,12 @@ __int64 CmdBtlCombatWindow_Unknown16(__int64 a1, __int64* a2);
 __int64 CmdBtlCombatWindow_Unknown18(__int64 a1, __int64* a2);
 __int64 CmdBtlCombatWindow_Unknown30(__int64* a1);
 __int64 CmdBtlCombatWindow_DeletingDestructor_17c4c70(__int64 a1);
+__attribute__((swiftcall)) void LayoutAccessor_1560070(PSEUDO_X8, __int64*,
+                                                       const char*);
+__int64 LayoutAccessor_1563280_alt1(__int64*, __int64,
+                                    char) __asm__("LayoutAccessor_1563280");
+float LayoutAccessor_15637c0(__int64*, __int64, char);
+__int64 CmdBtlCombatWindow_17c3690(__int64 a1, int a2);
 
 __int64 CmdBtlCombatWindow_DeletingDestructor(_QWORD* a1)
 {
@@ -1417,6 +1423,75 @@ void CmdBtlCombatWindow_17c34b0(__int64 a1, char a2, int a3, int a4, int a5)
     nn_mem_StandardAllocator_Free_alt1(
         *(_QWORD*)fw_memory_g_heap_manager_ptr + v23, v24_.v25);
   }
+}
+
+__int64 CmdBtlCombatWindow_17c3690(__int64 a1, int a2)
+{
+
+#pragma clang fp contract(off)
+  __int64 result;
+  __int64 v4;
+  __int64* v5;
+  __int64 v7;
+  __int64 v8;
+  __int64 v9;
+  struct {
+    __int64* v10;
+    __int64 v11;
+  } v10_;
+
+  LayoutAccessor_1560070((void*)(&v10_.v10), (__int64*)(a1 + 24),
+                         "L_TargetHP_Gauge/L_GaugeR_HPStock");
+  result = v10_.v11;
+  if (v10_.v11 != 0) {
+    v4 = std___1___shared_weak_count_lock_alt1(v10_.v11);
+    v5 = v10_.v10;
+    result = v10_.v11;
+    if (v10_.v11 != 0) {
+      result = std___1___shared_weak_count___release_weak_alt1(v10_.v11);
+    }
+    if (v4 == 0 || v5 == nullptr) {
+      if (v4 == 0) {
+        return result;
+      }
+    }
+    else if (a2 < 1) {
+      result = LayoutAccessor_155e830((__int64)v5, 0);
+    }
+    else {
+      v7 = v5[1];
+      if (v7 != 0) {
+        v8 = std___1___shared_weak_count_lock_alt1(v7);
+        if (v8 != 0) {
+          v9 = v8;
+          if (*v5 != 0) {
+            ControlCreator_13633c0_alt1(*v5);
+          }
+          if (atomic_fetch_add((atomic_ullong* volatile)(v9 + 8),
+                               0xFFFFFFFFFFFFFFFFLL) == 0) {
+            (*(void (**)(__int64))(*(_QWORD*)v9 + 16LL))(v9);
+            std___1___shared_weak_count___release_weak_alt1(v9);
+          }
+        }
+      }
+      LayoutAccessor_155e830((__int64)v5, 1);
+      if ((LayoutAccessor_1563280_alt1(v5, (__int64)"Num", 0) & 1) == 0) {
+        GameHr_1562680((__int64)v5, "Num", 0x0.0p+0f);
+      }
+      if (LayoutAccessor_15637c0(v5, (__int64)"Num", 0) !=
+          (float)(unsigned int)a2) {
+        LayoutAccessor_15636c0_alt2((__int64)v5, (__int64)"Num", 0,
+                                    (float)(unsigned int)a2);
+      }
+      result = GameHr_1562680((__int64)v5, "Wait", 0x1.0000000000000p+0f);
+    }
+    if (atomic_fetch_add((atomic_ullong* volatile)(v4 + 8),
+                         0xFFFFFFFFFFFFFFFFLL) == 0) {
+      (*(void (**)(__int64))(*(_QWORD*)v4 + 16LL))(v4);
+      return std___1___shared_weak_count___release_weak_alt1(v4);
+    }
+  }
+  return result;
 }
 
 __int64 CmdBtlCombatWindow_Unknown5(__int64 a1, _BYTE* a2)

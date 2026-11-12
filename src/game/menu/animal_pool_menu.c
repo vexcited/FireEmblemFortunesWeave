@@ -111,6 +111,251 @@ void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
 void game_menu_AnimalPoolMenu_GetSumReliance_lambda0_Invoke(__int64 a1,
                                                             __int64* a2);
+__int64 ProcTransitionAnim_156af20(__int64, int, int, __int64*, const char*,
+                                   const char*);
+extern __int64 game_gameui_MenuAnimator_instance_;
+int sprintf(__int64, const char*, ...);
+void __attribute__((noreturn)) GameRoutine_874500();
+void AnimalPoolMenu_1861030(__int64* a1, __int64* a2);
+
+void AnimalPoolMenu_1861030(__int64* a1, __int64* a2)
+{
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  unsigned __int64 v7;
+  __int64* v8;
+  __int64* v9;
+  __int64 v10;
+  signed __int64 v11;
+  unsigned __int64 v12;
+  __int64 v13;
+  __int64 v14;
+  unsigned __int64 v15;
+  __int64 v16;
+  unsigned __int64 v17;
+  __int64* v18;
+  __int64 v19;
+  __int64 v20;
+  signed __int64 v21;
+  unsigned __int64 v22;
+  __int64 v23;
+  unsigned __int64 v24;
+  __int64 v25;
+  unsigned __int64 v26;
+  __int64 v27;
+  __int64 v28;
+  __int64 v29;
+  __int64 v30;
+  __int64 v31;
+  unsigned __int64 v32;
+  __int64 v33;
+  __int64 v34;
+  signed __int64 v35;
+  unsigned __int64 v36;
+  __int64 v37;
+  unsigned __int64 v38;
+  __int64 v39;
+  unsigned __int64 v40;
+  __int64 v41;
+  __int64 v42;
+  unsigned __int64 v43;
+  __int64 v44;
+  __int64 v45;
+  _QWORD v46[26];
+
+  (*(void (**)(__int64*))(a1[132] + 96))(a1 + 132);
+  v4 = game_gameui_MenuAnimator_instance_;
+  if (a1[133] != 0) {
+    if (game_gameui_MenuAnimator_instance_ != 0) {
+      sprintf((__int64)v46, "%s%s", "Left", "In");
+      v5 = ProcTransitionAnim_156af20(v4, 2, 0, a1 + 106, "Left",
+                                      (const char*)v46);
+    }
+    else {
+      v5 = -1;
+    }
+    v8 = (__int64*)a2[1];
+    v7 = a2[2];
+    if ((unsigned __int64)v8 >= v7) {
+      v10 = *a2;
+      v11 = (signed __int64)v8 - *a2;
+      v12 = (v11 >> 3) + 1;
+      if (v12 >> 61 != 0) {
+        goto LABEL_62;
+      }
+      v13 = v7 - v10;
+      v14 = fw_memory_g_heap_manager_ptr;
+      if (v13 >> 2 > v12) {
+        v12 = v13 >> 2;
+      }
+      if ((unsigned __int64)v13 >= 0x7FFFFFFFFFFFFFF8LL) {
+        v15 = 0x1FFFFFFFFFFFFFFFLL;
+      }
+      else {
+        v15 = v12;
+      }
+      if (v15 != 0) {
+        if (v15 >> 61 != 0) {
+          goto LABEL_63;
+        }
+        v16 = fw_memory_HeapManager_Allocate_alt1(
+            *(_QWORD*)fw_memory_g_heap_manager_ptr, 8 * v15, 16, 0);
+      }
+      else {
+        v16 = 0;
+      }
+      v26 = v16 + 8 * v15;
+      v27 = v16 + v11 - 8 * (v11 >> 3);
+      *(_QWORD*)(v16 + v11) = v5;
+      v9 = (__int64*)(v16 + v11 + 8);
+      memcpy_alt1(v27, v10, v11);
+      *a2 = v27;
+      a2[1] = (__int64)v9;
+      a2[2] = v26;
+      if (v10 != 0) {
+        v28 = 128;
+        if (*(_QWORD*)(*(_QWORD*)v14 + 200LL) == 0) {
+          v28 = 56;
+        }
+        nn_mem_StandardAllocator_Free_alt1(*(_QWORD*)v14 + v28, v10);
+      }
+    }
+    else {
+      *v8 = v5;
+      v9 = v8 + 1;
+    }
+    v29 = game_gameui_MenuAnimator_instance_;
+    a2[1] = (__int64)v9;
+    if (v29 != 0) {
+      sprintf((__int64)v46, "%s%s", "Right", "In");
+      v30 = ProcTransitionAnim_156af20(v29, 3, 0, a1 + 106, "Right",
+                                       (const char*)v46);
+      v9 = (__int64*)a2[1];
+      v31 = v30;
+    }
+    else {
+      v31 = -1;
+    }
+    v32 = a2[2];
+    if ((unsigned __int64)v9 < v32) {
+      *v9 = v31;
+      v33 = (__int64)(v9 + 1);
+    LABEL_54:
+      a2[1] = v33;
+      snd_Fade_Fade_10c830_alt1((__int64)v46, 0x0.0p+0f);
+      snd_play_ff2d0_alt1((__int64)"SE_SYS_Window_Open",
+                          (__int64)"SE_SYS_Window_Open", (__int64)v46, 0,
+                          0x10001u, 0, 0x0.0p+0f, 0x1.0000000000000p+0f);
+      snd_Fade_Destroy_Fade_alt1(v46);
+      return;
+    }
+    v34 = *a2;
+    v35 = (signed __int64)v9 - *a2;
+    v36 = (v35 >> 3) + 1;
+    if (v36 >> 61 == 0) {
+      v37 = v32 - v34;
+      if (v37 >> 2 > v36) {
+        v36 = v37 >> 2;
+      }
+      if ((unsigned __int64)v37 >= 0x7FFFFFFFFFFFFFF8LL) {
+        v38 = 0x1FFFFFFFFFFFFFFFLL;
+      }
+      else {
+        v38 = v36;
+      }
+      if (v38 == 0) {
+        v39 = 0;
+      LABEL_50:
+        v40 = v39 + 8 * v38;
+        v41 = v39 + v35 - 8 * (v35 >> 3);
+        *(_QWORD*)(v39 + v35) = v31;
+        v33 = v39 + v35 + 8;
+        memcpy_alt1(v41, v34, v35);
+        *a2 = v41;
+        a2[1] = v33;
+        a2[2] = v40;
+        if (v34 != 0) {
+          v42 = 128;
+          if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+            v42 = 56;
+          }
+          nn_mem_StandardAllocator_Free_alt1(
+              *(_QWORD*)fw_memory_g_heap_manager_ptr + v42, v34);
+        }
+        goto LABEL_54;
+      }
+      if (v38 >> 61 == 0) {
+        v39 = fw_memory_HeapManager_Allocate_alt1(
+            *(_QWORD*)fw_memory_g_heap_manager_ptr, 8 * v38, 16, 0);
+        goto LABEL_50;
+      }
+    LABEL_63:
+      GameRoutine_60a210_alt1();
+    }
+  LABEL_62:
+    GameRoutine_874500();
+  }
+  if (game_gameui_MenuAnimator_instance_ != 0) {
+    sprintf((__int64)v46, "%s%s", "Alpha", "In");
+    v6 = ProcTransitionAnim_156af20(v4, 4, 0, a1 + 106, nullptr,
+                                    (const char*)v46);
+  }
+  else {
+    v6 = -1;
+  }
+  v18 = (__int64*)a2[1];
+  v17 = a2[2];
+  if ((unsigned __int64)v18 >= v17) {
+    v20 = *a2;
+    v21 = (signed __int64)v18 - *a2;
+    v22 = (v21 >> 3) + 1;
+    if (v22 >> 61 != 0) {
+      goto LABEL_62;
+    }
+    v23 = v17 - v20;
+    if (v23 >> 2 > v22) {
+      v22 = v23 >> 2;
+    }
+    if ((unsigned __int64)v23 >= 0x7FFFFFFFFFFFFFF8LL) {
+      v24 = 0x1FFFFFFFFFFFFFFFLL;
+    }
+    else {
+      v24 = v22;
+    }
+    if (v24 != 0) {
+      if (v24 >> 61 != 0) {
+        goto LABEL_63;
+      }
+      v25 = fw_memory_HeapManager_Allocate_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr, 8 * v24, 16, 0);
+    }
+    else {
+      v25 = 0;
+    }
+    v43 = v25 + 8 * v24;
+    v44 = v25 + v21 - 8 * (v21 >> 3);
+    *(_QWORD*)(v25 + v21) = v6;
+    v19 = v25 + v21 + 8;
+    memcpy_alt1(v44, v20, v21);
+    *a2 = v44;
+    a2[1] = v19;
+    a2[2] = v43;
+    if (v20 != 0) {
+      v45 = 128;
+      if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+        v45 = 56;
+      }
+      nn_mem_StandardAllocator_Free_alt1(
+          *(_QWORD*)fw_memory_g_heap_manager_ptr + v45, v20);
+    }
+  }
+  else {
+    *v18 = v6;
+    v19 = (__int64)(v18 + 1);
+  }
+  a2[1] = v19;
+}
 
 __int64 game_menu_AnimalPoolMenu_OnInit(__int64* a1)
 {

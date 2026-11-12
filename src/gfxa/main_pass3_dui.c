@@ -35,6 +35,129 @@ gfxa_Task3DUI_Impl_draw_alt1(__int64, _QWORD*, _QWORD*, __int64*,
                              unsigned int*) __asm__("gfxa_Task3DUI_Impl_draw");
 __int64 gfxa_MainPass3DUI_Setup3DUIPass_lambda1_Invoke(__int64 a1, __int64 a2,
                                                        __int64* a3);
+__int64 fw_memory_HeapManager_Allocate_alt1(
+    __int64, __int64, __int64,
+    unsigned int) __asm__("fw_memory_HeapManager_Allocate");
+__int64 memcpy_alt1(__int64, __int64, unsigned __int64) __asm__("memcpy");
+extern __int64 (*GameData_1fc8318[])();
+extern __int64 (*GameData_1fc83a8[])();
+extern __int64 (*GameData_1fc8438[])();
+void __attribute__((noreturn))
+GameRoutine_60a210_alt1() __asm__("GameRoutine_60a210");
+void __attribute__((noreturn))
+GameRoutine_b32f30_alt1() __asm__("GameRoutine_b32f30");
+void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
+    "nn_mem_StandardAllocator_Free");
+__int64 gfxa_MainPass3DUI_Setup3DUIPass(__int64 a1, __int64 a2, __int64 a3);
+
+__int64 gfxa_MainPass3DUI_Setup3DUIPass(__int64 a1, __int64 a2, __int64 a3)
+{
+  int v3;
+  __int64* v6;
+  __int64 v7;
+  unsigned __int64 v8;
+  __int64* v9;
+  __int64 v10;
+  __int64 v11;
+  signed __int64 v12;
+  unsigned __int64 v13;
+  __int64 v14;
+  unsigned __int64 v15;
+  __int64 v16;
+  __int64 v17;
+  unsigned __int64 v18;
+  __int64 v19;
+  __int64 v20;
+  __int64 v21;
+  _QWORD v23[2];
+  __int64 v24;
+
+  v24 = a3;
+  v3 = *(_DWORD*)(a2 + 96);
+  v6 = (__int64*)fw_memory_g_heap_manager_ptr;
+  v7 = fw_memory_HeapManager_Allocate_alt1(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr, 256, 16, 0);
+  *(_BYTE*)(v7 + 8) = 16;
+  *(_QWORD*)(v7 + 32) = 0;
+  *(_QWORD*)(v7 + 40) = 0;
+  *(_QWORD*)(v7 + 48) = 0;
+  *(_QWORD*)(v7 + 56) = 0;
+  *(_QWORD*)(v7 + 64) = 0;
+  *(_QWORD*)(v7 + 72) = 0;
+  *(_DWORD*)(v7 + 80) = v3;
+  *(_QWORD*)(v7 + 88) = 0;
+  *(_QWORD*)(v7 + 96) = 0;
+  *(_QWORD*)(v7 + 104) = 0;
+  *(_QWORD*)(v7 + 112) = 0;
+  *(_QWORD*)(v7 + 120) = 0;
+  *(_QWORD*)(v7 + 128) = 0;
+  *(_QWORD*)(v7 + 136) = 0;
+  *(_QWORD*)(v7 + 144) = 0;
+  *(_QWORD*)(v7 + 216) = a1;
+  strcpy((char*)(v7 + 9), "3DUIPass");
+  *(_BYTE*)(v7 + 84) = 1;
+  *(_QWORD*)v7 = GameData_1fc8438;
+  *(_QWORD*)(v7 + 160) = GameData_1fc8318;
+  *(_QWORD*)(v7 + 168) = &v24;
+  *(_QWORD*)(v7 + 192) = v7 + 160;
+  *(_QWORD*)(v7 + 208) = GameData_1fc83a8;
+  v9 = *(__int64**)(a2 + 8);
+  v8 = *(_QWORD*)(a2 + 16);
+  *(_QWORD*)(v7 + 240) = v7 + 208;
+  if ((unsigned __int64)v9 >= v8) {
+    v11 = *(_QWORD*)a2;
+    v12 = (signed __int64)v9 - *(_QWORD*)a2;
+    v13 = (v12 >> 3) + 1;
+    if (v13 >> 61 != 0) {
+      GameRoutine_b32f30_alt1();
+    }
+    v14 = v8 - v11;
+    if (v14 >> 2 > v13) {
+      v13 = v14 >> 2;
+    }
+    if ((unsigned __int64)v14 >= 0x7FFFFFFFFFFFFFF8LL) {
+      v15 = 0x1FFFFFFFFFFFFFFFLL;
+    }
+    else {
+      v15 = v13;
+    }
+    if (v15 != 0) {
+      if (v15 >> 61 != 0) {
+        GameRoutine_60a210_alt1();
+      }
+      v16 = v7;
+      v17 = fw_memory_HeapManager_Allocate_alt1(*v6, 8 * v15, 16, 0);
+      v7 = v16;
+    }
+    else {
+      v17 = 0;
+    }
+    v18 = v17 + 8 * v15;
+    v19 = v17 + v12 - 8 * (v12 >> 3);
+    *(_QWORD*)(v17 + v12) = v7;
+    v10 = v17 + v12 + 8;
+    memcpy_alt1(v19, v11, v12);
+    *(_QWORD*)a2 = v19;
+    *(_QWORD*)(a2 + 8) = v10;
+    *(_QWORD*)(a2 + 16) = v18;
+    if (v11 != 0) {
+      v20 = 128;
+      if (*(_QWORD*)(*v6 + 200) == 0) {
+        v20 = 56;
+      }
+      nn_mem_StandardAllocator_Free_alt1(*v6 + v20, v11);
+    }
+  }
+  else {
+    *v9 = v7;
+    v10 = (__int64)(v9 + 1);
+  }
+  *(_QWORD*)(a2 + 8) = v10;
+  v21 = *(_QWORD*)(v10 - 8);
+  v23[0] = a2;
+  v23[1] = v21;
+  return (*(__int64 (**)(__int64, _QWORD*))(*(_QWORD*)v21 + 16LL))(v21, v23);
+}
 
 __int64 gfxa_MainPass3DUI_SetupPrimitivePass(__int64 a1, __int64* a2,
                                              __int64 a3, unsigned int a4)

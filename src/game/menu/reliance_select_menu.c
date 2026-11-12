@@ -201,6 +201,14 @@ __int64 snd_play_ff2d0_alt1(__int64, __int64, __int64, unsigned int,
 void GameRoutine_184d360_alt3(__int64*,
                               __int64*) __asm__("GameRoutine_184d360");
 void snd_Fade_Fade_10c830_alt1(__int64, float) __asm__("snd_Fade_Fade_10c830");
+__int64* LayoutAccessor_155fbe0(__int64*, const char*);
+__int64 LayoutAccessor_1562f00(__int64 result, __int64, float);
+__int64 LayoutAccessor_1563030(__int64 result, __int64, char);
+__int64 LayoutAccessor_15740c0(__int64*, __int64, char, const char*, char);
+__int64 game_gameui_1593d90(__int64*, __int64);
+bool game_159e890(__int64, char, __int64);
+float LayoutAccessor_15638b0(__int64*, char*, char);
+__int64 RelianceSelectMenu_Unknown84(__int64 a1);
 
 __int64 RelianceSelectMenu_Unknown96(__int64 a1)
 {
@@ -744,6 +752,104 @@ __int64 RelianceSelectMenu_Unknown142(__int64 result, __int64* a2)
       *(_QWORD*)(v2 + 20) = 0x200000006LL;
     }
     a2[1] = v5;
+  }
+  return result;
+}
+
+__int64 RelianceSelectMenu_Unknown84(__int64 a1)
+{
+
+#pragma clang fp contract(off)
+  __int64 v2;
+  bool v3;
+  __int64 v4;
+  __int64 v5;
+  __int64* v6;
+  __int64* v7;
+  float v8;
+  __int64 result;
+  __int64 v10;
+  __int64 v11;
+  __int64* v12;
+  __int64 v13;
+  __int64 v14;
+  _QWORD v15[2];
+  char v16;
+  __int64 v17;
+  char v18;
+  __int64 v19;
+  struct {
+    _BYTE v20[32];
+    __int64 v21;
+  } v20_;
+  struct {
+    __int64* v22;
+    __int64 v23;
+  } v22_;
+
+  LayoutAccessor_1560070((void*)(&v22_.v22), (__int64*)(a1 + 848),
+                         "L_UnitInfo");
+  v2 = *(_QWORD*)(a1 + 1072);
+  v20_.v21 = 0;
+  v3 = game_159e890(v2, 0, (__int64)v20_.v20);
+  if (v22_.v23 != 0) {
+    v4 = std___1___shared_weak_count_lock_alt1(v22_.v23);
+    if (v4 != 0) {
+      v5 = v4;
+      if (v22_.v22 != nullptr) {
+        LayoutAccessor_15740c0(v22_.v22, v2, 0, nullptr, v3);
+      }
+      if (atomic_fetch_add((atomic_ullong* volatile)(v5 + 8),
+                           0xFFFFFFFFFFFFFFFFLL) == 0) {
+        (*(void (**)(__int64))(*(_QWORD*)v5 + 16LL))(v5);
+        std___1___shared_weak_count___release_weak_alt1(v5);
+      }
+    }
+    if (v22_.v23 != 0) {
+      std___1___shared_weak_count___release_weak_alt1(v22_.v23);
+    }
+  }
+  v6 = LayoutAccessor_155fbe0((__int64*)(a1 + 848), "L_KeyHelp00");
+  v18 = 0;
+  v19 = 0;
+  v15[0] = &GameData_1a9f09e;
+  v15[1] = "MID_KeyHelp_Watch";
+  v16 = 1;
+  v17 = 0x200000000LL;
+  game_gameui_1593d90(v6, (__int64)v15);
+  v7 = LayoutAccessor_155fbe0((__int64*)(a1 + 848), "L_KeyHelp01");
+  v16 = 1;
+  v18 = 0;
+  v19 = 0;
+  v15[0] = &GameData_1a9f09e;
+  v15[1] = "MID_KeyHelp_Read";
+  v17 = 0x20000000BLL;
+  game_gameui_1593d90(v7, (__int64)v15);
+  GameHr_1562680(a1 + 848, "Help_Off", 0x1.0000000000000p+0f);
+  v8 = LayoutAccessor_15638b0((__int64*)(a1 + 848), "Help_Off", 0);
+  LayoutAccessor_1562f00(a1 + 848, (__int64)"Help_Off", v8);
+  result = LayoutAccessor_1563030(a1 + 848, (__int64)"Help_Off", 0);
+  v10 = *(_QWORD*)(a1 + 1072);
+  *(_BYTE*)(a1 + 1080) = 0;
+  if (v10 != 0) {
+    v11 = *(_QWORD*)(v10 + 392);
+    if (v11 != 0) {
+      v12 = (__int64*)GameData_21c9ac0;
+      v13 = GameData_21c9ac8;
+      if (GameData_21c9ac0 != GameData_21c9ac8) {
+        while (1) {
+          v14 = *v12++;
+          result = RelianceSelectMenu_184d1f0(v11, v14);
+          if ((_DWORD)result == 1) {
+            break;
+          }
+          if (v12 == (__int64*)v13) {
+            return result;
+          }
+        }
+        *(_BYTE*)(a1 + 1080) = 1;
+      }
+    }
   }
   return result;
 }

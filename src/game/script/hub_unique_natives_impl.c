@@ -133,6 +133,7 @@ GameRoutine_25eca0_alt1(__int64*, const char*) __asm__("GameRoutine_25eca0");
 void GameSubquestData_125a860_alt1(__int64, __int64*) __asm__(
     "GameSubquestData_125a860");
 void hub_unique_OpenCrownDoorAchievement();
+__int64 hub_unique_GetDitChallengeMidIndex();
 
 __int64 HubUniqueNatives_949240()
 {
@@ -1020,6 +1021,83 @@ LABEL_9:
     GameRoutine_25eca0_alt1(a1, v9);
     return;
   }
+}
+
+__int64 hub_unique_GetDitChallengeMidIndex()
+{
+  __int64 v0;
+  __int64 v1;
+  __int64 v2;
+  _QWORD* v3;
+  __int64 v4;
+  __int64 v5;
+  __int64 v6;
+  int v7;
+  struct {
+    _QWORD* v9;
+    _QWORD* v10;
+    __int64 v11;
+  } v9_;
+
+  v0 = as_g_script_manager;
+  v1 = *(
+      _QWORD*)(v0 +
+               8LL * (*(unsigned int (**)(__int64))(*(_QWORD*)as_g_thread_info +
+                                                    72LL))(as_g_thread_info) +
+               4384);
+  if (v1 != 0) {
+    v2 = (*(__int64 (**)(__int64))(*(_QWORD*)v1 + 472LL))(v1);
+  }
+  else {
+    v2 = 0;
+  }
+  (*(void (**)(_QWORD, __int64))(**(_QWORD**)(v2 + 24) + 448LL))(
+      *(_QWORD*)(v2 + 24), 1);
+  v3 = *(_QWORD**)(v2 + 2240);
+  *(_QWORD*)(v2 + 2240) = 0;
+  if (v3 == (_QWORD*)(v2 + 2208)) {
+    v4 = 32;
+  }
+  else {
+    if (v3 == nullptr) {
+      goto LABEL_9;
+    }
+    v4 = 40;
+  }
+  (*(void (**)(__int64))(*v3 + v4))((__int64)v3);
+LABEL_9:
+  v9_.v10 = nullptr;
+  v9_.v11 = 0;
+  v9_.v9 = nullptr;
+  GameSubquestData_125a860_alt1(*(_QWORD*)GameData_212c7b0[0],
+                                (__int64*)&v9_.v9);
+  if (v9_.v10 == v9_.v9) {
+    if (v9_.v10 == nullptr) {
+      return 3;
+    }
+    v5 = 0;
+  }
+  else {
+    v5 = *v9_.v9;
+  }
+  v9_.v10 = v9_.v9;
+  v6 = 128;
+  if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+    v6 = 56;
+  }
+  nn_mem_StandardAllocator_Free_alt3(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v6, (__int64)v9_.v9);
+  if (v5 == 0) {
+    return 3;
+  }
+  v7 = *(unsigned __int8*)(v5 + 9);
+  if (v7 == 3) {
+    return 4;
+  }
+  if (v7 == 1) {
+    return 1;
+  }
+  return 2;
 }
 
 __int64 HubUniqueNatives_ec8880()

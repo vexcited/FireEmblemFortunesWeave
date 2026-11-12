@@ -110,7 +110,9 @@ __int64 game_gmap_GmapSpotList_OnInit_alt1(_QWORD* a1) __asm__(
 __int64 GmapSpotList_167bd90_alt1(_QWORD* a1) __asm__("GmapSpotList_167bd90");
 __int64 GmapSpotList_167bf80(_QWORD* a1);
 __int64 game_gmap_GmapSpotList_BCall(__int64 a1);
-__n128 GmapSpotList_167d280(__int64 a1, unsigned int a2);
+__n128
+GmapSpotList_167d280_alt1(__int64 a1,
+                          unsigned int a2) __asm__("GmapSpotList_167d280");
 __int64 GmapSpotList_167e820(__int64 result, __int64* a2, unsigned __int64 a3,
                              __int64* a4, __int64 a5);
 __attribute__((swiftcall)) void
@@ -172,6 +174,14 @@ __int64 Manager_136a920(__int64, __int64, int, unsigned int, _BYTE*);
 __int64 memmove(__int64, __int64, unsigned __int64);
 bool game_gmap_GmapSpotList_SortAndFilter_lambda1_Invoke(__int64 a1, __int64 a2,
                                                          __int64 a3);
+__int64 GameRoutine_159dda0_alt1(__int64, char,
+                                 char) __asm__("GameRoutine_159dda0");
+__int64 game_menu_BasicMenu_Unknown31_alt1(__int64*, unsigned int) __asm__(
+    "game_menu_BasicMenu_Unknown31");
+void game_gameui_159b580(__int64, _BYTE*, __int64, _DWORD*);
+__int64 GmapSpotList_167d280(__int64* a1, unsigned int a2);
+__int64 game_gmap_GmapSpotList_CreateMap_lambda0_Invoke(__int64 a1, _BYTE* a2,
+                                                        __int64 a3, _DWORD* a4);
 
 __int64 game_gmap_GmapSpotList_OnInit(__int64 a1)
 {
@@ -1383,18 +1393,23 @@ LABEL_28:
   return 0;
 }
 
-__n128 GmapSpotList_167d280(__int64 a1, unsigned int a2)
+__int64 GmapSpotList_167d280(__int64* a1, unsigned int a2)
 {
-  __n128 result;
-  __int64 v5;
-  __int64 v6;
+  char v2;
+  __int64 result;
+  struct {
+    __int64 v5;
+    __int64 v6;
+  } v5_;
 
-  game_menu_BasicMenu_Unknown31();
-  *(struct PseudoSret*)(&v5) =
-      LayoutAccessor_1560070(a1 + 848, "L_SpotDetail/L_KeyHelp");
-  GameRoutine_159dda0(&v5, a2, 0);
-  if (v6 != 0) {
-    return std___1___shared_weak_count___release_weak(v6);
+  v2 = a2;
+  game_menu_BasicMenu_Unknown31_alt1(a1, a2);
+  LayoutAccessor_1560070_alt1((void*)(&v5_.v5), a1 + 106,
+                              "L_SpotDetail/L_KeyHelp");
+  GameRoutine_159dda0_alt1((__int64)&v5_.v5, v2, 0);
+  result = v5_.v6;
+  if (v5_.v6 != 0) {
+    return std___1___shared_weak_count___release_weak_alt1(v5_.v6);
   }
   return result;
 }
@@ -1662,6 +1677,25 @@ __int64 game_gmap_GmapSpotList_OnInit_lambda1_Invoke(__int64 a1, __int64* a2,
   if (v5 != 0) {
     return Manager_136a920(ui_Manager_instance_ + 1264, v5, 0, 7u,
                            "IconPageTab_GmapSight");
+  }
+  return result;
+}
+
+__int64 game_gmap_GmapSpotList_CreateMap_lambda0_Invoke(__int64 a1, _BYTE* a2,
+                                                        __int64 a3, _DWORD* a4)
+{
+  __int64 result;
+  struct {
+    __int64 v8;
+    __int64 v9;
+  } v8_;
+
+  LayoutAccessor_1560070_alt1((void*)(&v8_.v8),
+                              (__int64*)(*(_QWORD*)(a1 + 8) + 848LL), "L_Img");
+  game_gameui_159b580((__int64)&v8_.v8, a2, a3, a4);
+  result = v8_.v9;
+  if (v8_.v9 != 0) {
+    return std___1___shared_weak_count___release_weak_alt1(v8_.v9);
   }
   return result;
 }

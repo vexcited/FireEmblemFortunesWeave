@@ -54,6 +54,9 @@ void __attribute__((noreturn)) String_60a250(const char*);
 __int64 MapPanelRage_f1a220(__int64** a1, __int64 a2);
 void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
     "nn_mem_StandardAllocator_Free");
+__int64 game_f313e0(__int64, unsigned int, float32x4_t*, float32x4_t*);
+extern __int64 GameData_212d020[5];
+void MapPanelRage_Unknown4(_QWORD* a1);
 
 __int64 MapPanelRage_Unknown3(__int64 result)
 {
@@ -295,6 +298,127 @@ LABEL_31:
     } while ((_QWORD*)result != v24 + 1);
   }
   return result;
+}
+
+void MapPanelRage_Unknown4(_QWORD* a1)
+{
+
+#pragma clang fp contract(off)
+  float32x4_t* v1;
+  float32x4_t* v2;
+  __int64 v4;
+  float32x4_t* v5;
+  __int64* v6;
+  float32x4_t* v7;
+  float32x4_t v8;
+  int8x16_t v9;
+  int8x16_t v10;
+  unsigned __int64 v11;
+  unsigned __int64 v12;
+  __int64 v13;
+  float32x4_t* v14;
+  float32x4_t v15;
+  float32x4_t v16;
+  float32x4_t v17;
+  int8x16_t v18;
+  int8x16_t v19;
+  unsigned __int64 v20;
+  __int64 v21;
+  struct {
+    __int64 v22[4];
+    int8x16_t v23;
+    int8x16_t v24;
+    __int64 v25;
+    int v26;
+    char gap76_[4];
+    __int64 v27;
+    __int64 v28;
+    __int16 v29;
+    char gap98_[2];
+    char v30;
+    char gap101_[3];
+    char v31;
+  } v22_;
+
+  v1 = (float32x4_t*)a1[8];
+  v2 = (float32x4_t*)a1[9];
+  if (v1 != v2) {
+    v4 = *(_QWORD*)(*(_QWORD*)GameData_212d020[0] + 40LL);
+    do {
+      game_f313e0(v4, LANES128(*(v1)).n128_u32[0], v1 + 1, v1 + 2);
+      v1 += 3;
+    } while (v1 != v2);
+  }
+  v5 = (float32x4_t*)GameData_212c958;
+  v6 = GameData_212f878;
+  BYTE1(v22_.v22[2]) = 0;
+  WORD1(v22_.v22[2]) = 0;
+  HIDWORD(v22_.v22[2]) = 0;
+  v22_.v30 = 0;
+  v22_.v31 = 0;
+  v22_.v27 = 0;
+  v22_.v28 = 0;
+  v22_.v29 = 0;
+  v7 = (float32x4_t*)*GameData_212f878;
+  v8 = *(float32x4_t*)GameData_212c958;
+  strcpy((char*)v22_.v22, "$MapPanelDeployR");
+  v22_.v25 = 0x400000000LL;
+  v22_.v26 = 1;
+  v9 = vmulq_f32(v8, v7[58]);
+  v10 = vmulq_f32(v8, v7[57]);
+  LODWORD(v11) = LANES128_OF(vextq_s8(v9, v9, 8u)).n128_u32[0];
+  LODWORD(v12) = LANES128_OF(vextq_s8(v10, v10, 8u)).n128_u32[0];
+  HIDWORD(v11) = LANES64_OF(vdup_laneq_s32(v9, 3)).n64_u32[0];
+  LANES128(v9).n128_u64[1] = v11;
+  HIDWORD(v12) = LANES64_OF(vdup_laneq_s32(v10, 3)).n64_u32[0];
+  LANES128(v10).n128_u64[1] = v12;
+  v22_.v23 = v10;
+  v22_.v24 = v9;
+  MapPanelRage_f191c0(0x1.0000000000000p+0f, (__int64)a1, a1 + 2,
+                      (__int64)v22_.v22);
+  if ((v22_.v22[0] & 1) != 0 && v22_.v22[2] != 0) {
+    v13 = 128;
+    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+      v13 = 56;
+    }
+    nn_mem_StandardAllocator_Free_alt2(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v13, v22_.v22[2]);
+  }
+  v14 = (float32x4_t*)*v6;
+  v15 = *v5;
+  BYTE1(v22_.v22[2]) = 0;
+  WORD1(v22_.v22[2]) = 0;
+  HIDWORD(v22_.v22[2]) = 0;
+  v22_.v30 = 0;
+  v22_.v31 = 0;
+  v22_.v27 = 0;
+  v22_.v28 = 0;
+  v17 = v14[59];
+  v16 = v14[60];
+  v22_.v29 = 0;
+  strcpy((char*)v22_.v22, "$MapPanelDeployR");
+  v22_.v25 = 0x400000000LL;
+  v18 = vmulq_f32(v15, v16);
+  v19 = vmulq_f32(v15, v17);
+  v22_.v26 = 1;
+  LODWORD(v20) = LANES128_OF(vextq_s8(v18, v18, 8u)).n128_u32[0];
+  LANES128(v17).n128_u32[0] = LANES128_OF(vextq_s8(v19, v19, 8u)).n128_u32[0];
+  HIDWORD(v20) = LANES64_OF(vdup_laneq_s32(v18, 3)).n64_u32[0];
+  LANES128(v18).n128_u64[1] = v20;
+  LANES128(v17).n128_u32[1] = LANES64_OF(vdup_laneq_s32(v19, 3)).n64_u32[0];
+  LANES128(v19).n128_u64[1] = LANES128(v17).n128_u64[0];
+  v22_.v23 = v19;
+  v22_.v24 = v18;
+  MapPanelRage_f191c0(0x1.0000000000000p+0f, (__int64)a1, a1 + 5,
+                      (__int64)v22_.v22);
+  if ((v22_.v22[0] & 1) != 0 && v22_.v22[2] != 0) {
+    v21 = 128;
+    if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+      v21 = 56;
+    }
+    nn_mem_StandardAllocator_Free_alt2(
+        *(_QWORD*)fw_memory_g_heap_manager_ptr + v21, v22_.v22[2]);
+  }
 }
 
 void MapPanelRage_f191c0(float a1, __int64 a2, _QWORD* a3, __int64 a4)

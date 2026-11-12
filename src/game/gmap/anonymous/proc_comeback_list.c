@@ -65,6 +65,15 @@ void nn_mem_StandardAllocator_Free_alt1(__int64, __int64) __asm__(
 __int64 (***game_gmap_anonymous_ProcComebackList_OnBuild(_QWORD* a1))();
 char* ProcComebackList_Unknown88(_QWORD* a1);
 __int64 game_gmap_anonymous_ProcComebackList_SortAndFilter(__int64 a1);
+__int64 game_menu_PageTab_SetupImage(int*, __int64, __int64, unsigned int,
+                                     unsigned int, unsigned int);
+extern __int64 (*GameData_20a21e8[])();
+void game_gameui_159b580(__int64, _BYTE*, __int64, _DWORD*);
+__int64 game_gmap_anonymous_ProcComebackList_OnInit(__int64 a1);
+__int64 game_gmap_anonymous_ProcComebackList_OnBuild_closure_Invoke(__int64 a1,
+                                                                    _BYTE* a2,
+                                                                    __int64 a3,
+                                                                    _DWORD* a4);
 
 __int64 ProcComebackList_Destructor(_QWORD* a1)
 {
@@ -139,6 +148,44 @@ __int64 ProcComebackList_DeletingDestructor(_QWORD* a1)
     v7 = 56;
   }
   return nn_mem_StandardAllocator_Free(*(_QWORD*)v3 + v7, a1);
+}
+
+__int64 game_gmap_anonymous_ProcComebackList_OnInit(__int64 a1)
+{
+  __int64 v2;
+  __int64 result;
+  struct {
+    _QWORD v4[4];
+    _QWORD* v5;
+  } v4_;
+  struct {
+    __int64 v6;
+    __int64 v7;
+  } v6_;
+
+  LayoutAccessor_1560070((void*)(&v6_.v6), (__int64*)(a1 + 952),
+                         "L_PageTabIcon");
+  v4_.v4[0] = GameData_20a21e8;
+  v4_.v5 = v4_.v4;
+  game_menu_PageTab_SetupImage((int*)(a1 + 656), (__int64)&v6_.v6,
+                               (__int64)v4_.v4, 2u, 0xEu, 0xFu);
+  if (v4_.v5 == v4_.v4) {
+    v2 = 32;
+  }
+  else {
+    if (v4_.v5 == nullptr) {
+      goto LABEL_6;
+    }
+    v2 = 40;
+  }
+  (*(void (**)(__int64))(*v4_.v5 + v2))((__int64)v4_.v5);
+LABEL_6:
+  result = v6_.v7;
+  if (v6_.v7 != 0) {
+    result = std___1___shared_weak_count___release_weak_alt1(v6_.v7);
+  }
+  *(_BYTE*)(a1 + 1144) = 1;
+  return result;
 }
 
 __int64 (***game_gmap_anonymous_ProcComebackList_OnBuild(_QWORD* a1))()
@@ -672,6 +719,27 @@ LABEL_43:
     v25 = 40;
   }
   return (*(__int64 (**)(__int64))(*v28_.v29 + v25))((__int64)v28_.v29);
+}
+
+__int64 game_gmap_anonymous_ProcComebackList_OnBuild_closure_Invoke(__int64 a1,
+                                                                    _BYTE* a2,
+                                                                    __int64 a3,
+                                                                    _DWORD* a4)
+{
+  __int64 result;
+  struct {
+    __int64 v8;
+    __int64 v9;
+  } v8_;
+
+  LayoutAccessor_1560070((void*)(&v8_.v8),
+                         (__int64*)(*(_QWORD*)(a1 + 8) + 848LL), "L_Img");
+  game_gameui_159b580((__int64)&v8_.v8, a2, a3, a4);
+  result = v8_.v9;
+  if (v8_.v9 != 0) {
+    return std___1___shared_weak_count___release_weak_alt1(v8_.v9);
+  }
+  return result;
 }
 
 void game_gmap_anonymous_ProcComebackList_AddItemList_closure_Invoke(

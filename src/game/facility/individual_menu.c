@@ -82,6 +82,21 @@ GameRoutine_60a210_alt1() __asm__("GameRoutine_60a210");
 void __attribute__((noreturn))
 GameRoutine_874520_alt1() __asm__("GameRoutine_874520");
 void IndividualMenu_Unknown50(__int64 a1, __int64* a2);
+__attribute__((swiftcall)) void LayoutAccessor_1560070(PSEUDO_X8, __int64*,
+                                                       const char*);
+__int64 GameRoutine_1842430(__int64, int);
+__int64 std___1___shared_weak_count___release_weak_alt1(__int64) __asm__(
+    "std___1___shared_weak_count___release_weak");
+__int64 std___1___shared_weak_count_lock_alt1(__int64) __asm__(
+    "std___1___shared_weak_count_lock");
+__int64 ui_LayoutAccessor_FindPane(__int64*, __int64);
+char* game_util_Format(const char*, ...);
+double ui_LayoutAccessor_GetPaneTranslate(__int64*, const char*);
+extern __int64* GameData_212cce0[43];
+extern __int64* GameData_212d670[3];
+extern __int64* GameData_212d678[2];
+__int64 IndividualMenu_Unknown39(__int64 a1);
+__int64 IndividualMenu_19353a0(__int64 a1, unsigned __int8 a2, int a3, int a4);
 
 void IndividualMenu_Unknown50(__int64 a1, __int64* a2)
 {
@@ -358,6 +373,307 @@ LABEL_35:
   return v2;
 }
 
+__int64 IndividualMenu_Unknown39(__int64 a1)
+{
+
+#pragma clang fp contract(off)
+  __int64 v2;
+  __int64* v3;
+  double v5;
+  float v6;
+  float v7;
+  float v8;
+  float v9;
+  char* v10;
+  __int64 v11;
+  char v12;
+  char* v13;
+  __int64 v14;
+  char v15;
+  char* v16;
+  __int64 v17;
+  char v18;
+  char* v19;
+  __int64 v20;
+  char v21;
+  char* v22;
+  __int64 v23;
+  char v24;
+  char* v25;
+  __int64 v26;
+  char v27;
+  char* v28;
+  __int64 v29;
+  char v30;
+  char* v31;
+  __int64 v32;
+  char v33;
+  char* v34;
+  __int64 v35;
+  char v36;
+  char* v37;
+  __int64 v38;
+  char v39;
+  float v40;
+  char* v41;
+  __int64 v42;
+  char v43;
+  char* v44;
+  __int64 v45;
+  char v46;
+  char* v47;
+  __int64 v48;
+  char v49;
+  char* v50;
+  __int64 v51;
+  char v52;
+  char* v53;
+  __int64 v54;
+  char v55;
+  __int64* v56;
+  unsigned __int8* v57;
+  unsigned __int8* v58;
+  unsigned __int8* v59;
+  struct {
+    __int64* v61;
+    __int64 v62;
+  } v61_;
+
+  v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+  LayoutAccessor_1560070((void*)(&v61_.v61), (__int64*)(a1 + 200), "L_Table"),
+      v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+  if (v61_.v62 != 0) {
+    v2 = std___1___shared_weak_count_lock_alt1(v61_.v62),
+    v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+    v3 = v61_.v61;
+    if (v61_.v62 != 0) {
+      std___1___shared_weak_count___release_weak_alt1(v61_.v62),
+          v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+    }
+    if (v2 == 0 || v3 == nullptr) {
+      if (v2 == 0) {
+        goto LABEL_43;
+      }
+    }
+    else {
+      v5 = ui_LayoutAccessor_GetPaneTranslate(v3, "N_Icon00_W"),
+      v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+      v6 = *(float*)&v5;
+      ui_LayoutAccessor_GetPaneTranslate(v3, "N_Icon00_H"),
+          v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+      v8 = v7;
+      v9 = v6 * 0x0.0p+0f;
+      v10 = game_util_Format("Icon%02d_%02d", 0, 0),
+      v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+      v11 = ui_LayoutAccessor_FindPane(v3, (__int64)v10),
+      v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+      if (v11 != 0) {
+        v12 = *(_BYTE*)(v11 + 88);
+        *(_DWORD*)(v11 + 56) = 0;
+        *(float*)(v11 + 48) = v9;
+        *(float*)(v11 + 52) = v8 * 0x0.0p+0f;
+        *(_BYTE*)(v11 + 88) = v12 | 0x10;
+      }
+      v13 = game_util_Format("Icon%02d_%02d", 0, 1),
+      v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+      v14 = ui_LayoutAccessor_FindPane(v3, (__int64)v13),
+      v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+      if (v14 != 0) {
+        v15 = *(_BYTE*)(v14 + 88);
+        *(float*)(v14 + 48) = v9;
+        *(float*)(v14 + 52) = v8;
+        *(_DWORD*)(v14 + 56) = 0;
+        *(_BYTE*)(v14 + 88) = v15 | 0x10;
+      }
+      v16 = game_util_Format("Icon%02d_%02d", 0, 2),
+      v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+      v17 = ui_LayoutAccessor_FindPane(v3, (__int64)v16),
+      v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+      if (v17 != 0) {
+        v18 = *(_BYTE*)(v17 + 88);
+        *(_DWORD*)(v17 + 56) = 0;
+        *(float*)(v17 + 48) = v9;
+        *(float*)(v17 + 52) = v8 + v8;
+        *(_BYTE*)(v17 + 88) = v18 | 0x10;
+      }
+      v19 = game_util_Format("Icon%02d_%02d", 0, 3),
+      v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+      v20 = ui_LayoutAccessor_FindPane(v3, (__int64)v19),
+      v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+      if (v20 != 0) {
+        v21 = *(_BYTE*)(v20 + 88);
+        *(_DWORD*)(v20 + 56) = 0;
+        *(float*)(v20 + 48) = v9;
+        *(float*)(v20 + 52) = v8 * 0x1.8000000000000p+1f;
+        *(_BYTE*)(v20 + 88) = v21 | 0x10;
+      }
+      v22 = game_util_Format("Icon%02d_%02d", 0, 4),
+      v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+      v23 = ui_LayoutAccessor_FindPane(v3, (__int64)v22),
+      v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+      if (v23 != 0) {
+        v24 = *(_BYTE*)(v23 + 88);
+        *(_DWORD*)(v23 + 56) = 0;
+        *(float*)(v23 + 48) = v9;
+        *(float*)(v23 + 52) = v8 * 0x1.0000000000000p+2f;
+        *(_BYTE*)(v23 + 88) = v24 | 0x10;
+      }
+      v25 = game_util_Format("Icon%02d_%02d", 1, 0),
+      v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+      v26 = ui_LayoutAccessor_FindPane(v3, (__int64)v25),
+      v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+      if (v26 != 0) {
+        v27 = *(_BYTE*)(v26 + 88);
+        *(_DWORD*)(v26 + 56) = 0;
+        *(float*)(v26 + 48) = v6;
+        *(float*)(v26 + 52) = v8 * 0x0.0p+0f;
+        *(_BYTE*)(v26 + 88) = v27 | 0x10;
+      }
+      v28 = game_util_Format("Icon%02d_%02d", 1, 1),
+      v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+      v29 = ui_LayoutAccessor_FindPane(v3, (__int64)v28),
+      v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+      if (v29 != 0) {
+        v30 = *(_BYTE*)(v29 + 88);
+        *(float*)(v29 + 48) = v6;
+        *(float*)(v29 + 52) = v8;
+        *(_DWORD*)(v29 + 56) = 0;
+        *(_BYTE*)(v29 + 88) = v30 | 0x10;
+      }
+      v31 = game_util_Format("Icon%02d_%02d", 1, 2),
+      v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+      v32 = ui_LayoutAccessor_FindPane(v3, (__int64)v31),
+      v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+      if (v32 != 0) {
+        v33 = *(_BYTE*)(v32 + 88);
+        *(_DWORD*)(v32 + 56) = 0;
+        *(float*)(v32 + 48) = v6;
+        *(float*)(v32 + 52) = v8 + v8;
+        *(_BYTE*)(v32 + 88) = v33 | 0x10;
+      }
+      v34 = game_util_Format("Icon%02d_%02d", 1, 3),
+      v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+      v35 = ui_LayoutAccessor_FindPane(v3, (__int64)v34),
+      v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+      if (v35 != 0) {
+        v36 = *(_BYTE*)(v35 + 88);
+        *(_DWORD*)(v35 + 56) = 0;
+        *(float*)(v35 + 48) = v6;
+        *(float*)(v35 + 52) = v8 * 0x1.8000000000000p+1f;
+        *(_BYTE*)(v35 + 88) = v36 | 0x10;
+      }
+      v37 = game_util_Format("Icon%02d_%02d", 1, 4),
+      v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+      v38 = ui_LayoutAccessor_FindPane(v3, (__int64)v37),
+      v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+      if (v38 != 0) {
+        v39 = *(_BYTE*)(v38 + 88);
+        *(_DWORD*)(v38 + 56) = 0;
+        *(float*)(v38 + 48) = v6;
+        *(float*)(v38 + 52) = v8 * 0x1.0000000000000p+2f;
+        *(_BYTE*)(v38 + 88) = v39 | 0x10;
+      }
+      v40 = v6 + v6;
+      v41 = game_util_Format("Icon%02d_%02d", 2, 0),
+      v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+      v42 = ui_LayoutAccessor_FindPane(v3, (__int64)v41),
+      v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+      if (v42 != 0) {
+        v43 = *(_BYTE*)(v42 + 88);
+        *(_DWORD*)(v42 + 56) = 0;
+        *(float*)(v42 + 48) = v40;
+        *(float*)(v42 + 52) = v8 * 0x0.0p+0f;
+        *(_BYTE*)(v42 + 88) = v43 | 0x10;
+      }
+      v44 = game_util_Format("Icon%02d_%02d", 2, 1),
+      v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+      v45 = ui_LayoutAccessor_FindPane(v3, (__int64)v44),
+      v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+      if (v45 != 0) {
+        v46 = *(_BYTE*)(v45 + 88);
+        *(float*)(v45 + 48) = v40;
+        *(float*)(v45 + 52) = v8;
+        *(_DWORD*)(v45 + 56) = 0;
+        *(_BYTE*)(v45 + 88) = v46 | 0x10;
+      }
+      v47 = game_util_Format("Icon%02d_%02d", 2, 2),
+      v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+      v48 = ui_LayoutAccessor_FindPane(v3, (__int64)v47),
+      v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+      if (v48 != 0) {
+        v49 = *(_BYTE*)(v48 + 88);
+        *(_DWORD*)(v48 + 56) = 0;
+        *(float*)(v48 + 48) = v40;
+        *(float*)(v48 + 52) = v8 + v8;
+        *(_BYTE*)(v48 + 88) = v49 | 0x10;
+      }
+      v50 = game_util_Format("Icon%02d_%02d", 2, 3),
+      v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+      v51 = ui_LayoutAccessor_FindPane(v3, (__int64)v50),
+      v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+      if (v51 != 0) {
+        v52 = *(_BYTE*)(v51 + 88);
+        *(_DWORD*)(v51 + 56) = 0;
+        *(float*)(v51 + 48) = v40;
+        *(float*)(v51 + 52) = v8 * 0x1.8000000000000p+1f;
+        *(_BYTE*)(v51 + 88) = v52 | 0x10;
+      }
+      v53 = game_util_Format("Icon%02d_%02d", 2, 4),
+      v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+      v54 = ui_LayoutAccessor_FindPane(v3, (__int64)v53),
+      v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+      if (v54 != 0) {
+        v55 = *(_BYTE*)(v54 + 88);
+        *(_DWORD*)(v54 + 56) = 0;
+        *(float*)(v54 + 48) = v40;
+        *(float*)(v54 + 52) = v8 * 0x1.0000000000000p+2f;
+        *(_BYTE*)(v54 + 88) = v55 | 0x10;
+      }
+    }
+    if (atomic_fetch_add((atomic_ullong* volatile)(v2 + 8),
+                         0xFFFFFFFFFFFFFFFFLL) == 0) {
+      (*(void (**)(__int64))(*(_QWORD*)v2 + 16LL))(v2),
+          v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+      std___1___shared_weak_count___release_weak_alt1(v2),
+          v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+    }
+  }
+LABEL_43:
+  v56 = GameData_212cce0[0];
+  v57 = *(unsigned __int8**)(*(_QWORD*)(*GameData_212cce0[0] + 64) + 8LL);
+  IndividualMenu_19353a0(a1, v57[42], 0, 0),
+      v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+  IndividualMenu_19353a0(a1, v57[44], 0, 1),
+      v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+  IndividualMenu_19353a0(a1, v57[46], 0, 2),
+      v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+  IndividualMenu_19353a0(a1, v57[48], 0, 3),
+      v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+  IndividualMenu_19353a0(a1, v57[72], 0, 4),
+      v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+  v58 = *(unsigned __int8**)(*(_QWORD*)(*v56 + 64) + 16LL);
+  IndividualMenu_19353a0(a1, v58[42], 1, 0),
+      v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+  IndividualMenu_19353a0(a1, v58[44], 1, 1),
+      v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+  IndividualMenu_19353a0(a1, v58[46], 1, 2),
+      v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+  IndividualMenu_19353a0(a1, v58[48], 1, 3),
+      v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+  IndividualMenu_19353a0(a1, v58[72], 1, 4),
+      v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+  v59 = *(unsigned __int8**)(*(_QWORD*)(*v56 + 64) + 24LL);
+  IndividualMenu_19353a0(a1, v59[42], 2, 0),
+      v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+  IndividualMenu_19353a0(a1, v59[44], 2, 1),
+      v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+  IndividualMenu_19353a0(a1, v59[46], 2, 2),
+      v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+  IndividualMenu_19353a0(a1, v59[48], 2, 3),
+      v7 = COERCE_AS(__typeof__(v7), PSEUDO_REGISTER(float, "s1", "=w"));
+  return IndividualMenu_19353a0(a1, v59[72], 2, 4);
+}
+
 __attribute__((swiftcall)) void IndividualMenu_Unknown33(PSEUDO_X8 x8_)
 {
   __int64* a1 = (__int64*)PSEUDO_X8_VALUE(x8_);
@@ -431,6 +747,54 @@ __attribute__((swiftcall)) void IndividualMenu_Unknown33(PSEUDO_X8 x8_)
       }
     }
   }
+}
+
+__int64 IndividualMenu_19353a0(__int64 a1, unsigned __int8 a2, int a3, int a4)
+{
+  __int64 result;
+  __int64 v8;
+  __int64* v9;
+  char* v11;
+  __int64 v12;
+  __int64 v13;
+  struct {
+    __int64* v14;
+    __int64 v15;
+  } v14_;
+
+  LayoutAccessor_1560070((void*)(&v14_.v14), (__int64*)(a1 + 200), "L_Table");
+  result = v14_.v15;
+  if (v14_.v15 != 0) {
+    v8 = std___1___shared_weak_count_lock_alt1(v14_.v15);
+    v9 = v14_.v14;
+    result = v14_.v15;
+    if (v14_.v15 != 0) {
+      result = std___1___shared_weak_count___release_weak_alt1(v14_.v15);
+    }
+    if (v8 == 0 || v9 == nullptr) {
+      if (v8 == 0) {
+        return result;
+      }
+    }
+    else {
+      v11 = game_util_Format("Icon%02d_%02d", a3, a4);
+      v12 = ui_LayoutAccessor_FindPane(v9, (__int64)v11);
+      if (v12 != 0) {
+        v13 = __dynamic_cast(v12, GameData_212d670[0], GameData_212d678[0], 0);
+      }
+      else {
+        v13 = 0;
+      }
+      result = GameRoutine_1842430(v13, a2);
+      *(_BYTE*)(v13 + 88) = *(_BYTE*)(v13 + 88) & 0xFE | result & 1;
+    }
+    if (atomic_fetch_add((atomic_ullong* volatile)(v8 + 8),
+                         0xFFFFFFFFFFFFFFFFLL) == 0) {
+      (*(void (**)(__int64))(*(_QWORD*)v8 + 16LL))(v8);
+      return std___1___shared_weak_count___release_weak_alt1(v8);
+    }
+  }
+  return result;
 }
 
 __int64 game_facility_IndividualMenu_CreateFirstReminderDialog_lambda1_Invoke(

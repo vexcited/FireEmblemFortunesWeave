@@ -126,6 +126,9 @@ void nn_mem_StandardAllocator_Free_alt2(__int64, __int64) __asm__(
 __int64 UnitTroopListMenu_1792540(_BYTE* a1, __int64* a2, __int64 a3,
                                   __int64 a4, __int64 a5, __int64 a6);
 void UnitTroopListMenu_1792940(_QWORD* a1, __int64 a2);
+__attribute__((swiftcall)) void game_gameui_1594d10(PSEUDO_X8, _WORD* result,
+                                                    int, __int64);
+__int64 UnitTroopListMenu_1792ee0(__int64 a1);
 
 __int64 UnitTroopListMenu_178c8d0(__int64 a1, char a2)
 {
@@ -1343,6 +1346,59 @@ __int64 UnitTroopListMenu_1792da0(__int64 a1, unsigned __int8 a2)
     }
   }
   return v11 & 1;
+}
+
+__int64 UnitTroopListMenu_1792ee0(__int64 a1)
+{
+  _WORD* v2;
+  unsigned int v3;
+  __int64 v4;
+  __int64 v5;
+  struct {
+    int v7;
+    char v8;
+    char gap5_[11];
+    int v9;
+    int v10;
+    char gap24_[8];
+    __int64 v11;
+    __int64 v12;
+  } v7_;
+
+  if (*(_WORD*)(a1 + 1952) != 0) {
+    v2 = (_WORD*)(a1 + 1952);
+  }
+  else {
+    v2 = nullptr;
+  }
+  game_gameui_1594d10((void*)((__int64)&v7_.v7), v2, 17, a1);
+  if (v7_.v8 == 1) {
+    if (v7_.v7 == 17) {
+      v3 = v7_.v9 + 1000 * v7_.v10;
+    }
+    else {
+      v3 = 0;
+    }
+    v4 = v7_.v11;
+    if (v7_.v11 == 0) {
+      return v3;
+    }
+  }
+  else {
+    v3 = 0;
+    v4 = v7_.v11;
+    if (v7_.v11 == 0) {
+      return v3;
+    }
+  }
+  v7_.v12 = v4;
+  v5 = 128;
+  if (*(_QWORD*)(*(_QWORD*)fw_memory_g_heap_manager_ptr + 200LL) == 0) {
+    v5 = 56;
+  }
+  nn_mem_StandardAllocator_Free_alt2(
+      *(_QWORD*)fw_memory_g_heap_manager_ptr + v5, v4);
+  return v3;
 }
 
 __int64 UnitTroopListMenu_1792f90(__int64 a1)
