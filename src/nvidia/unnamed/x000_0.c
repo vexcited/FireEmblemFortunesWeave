@@ -24,8 +24,6 @@ __int64 NgxRoutine_db240(_QWORD);
 
 __int64 NgxRoutine_dfc20(_QWORD);
 
-__int64 NgxRoutine_e1af0(_QWORD);
-
 __int64 NgxRoutine_e36d0(_QWORD);
 
 __int64 NgxRoutine_e3720(_QWORD);
@@ -510,16 +508,6 @@ void __attribute__((noreturn)) NgxHr_dc8ec(__int64 a1, __int64 a2, __int64 a3,
 {
   NgxRoutine_dfc20(&a10);
   NgxRoutine_baf40(a1);
-}
-
-__int64 NgxHr_e1adc(__int64 a1, __int64 a2, __int64 a3, __int64 a4, __int64 a5,
-                    __int64 a6, __int64 a7, __int64 a8, __int64 a9, char a10)
-{
-  __int64 v11;
-
-  NgxRoutine_db240(&a10);
-  v11 = NgxRoutine_e3720(a1);
-  return NgxRoutine_e1af0(v11);
 }
 
 void __attribute__((noreturn)) NgxHr_e21b8(__int64 a1) { NgxRoutine_baf40(a1); }

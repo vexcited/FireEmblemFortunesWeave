@@ -12,8 +12,6 @@ __int64 SdkRoutine_82dd20(_QWORD);
 
 __int64 SdkRoutine_857220(_QWORD, _QWORD);
 
-__int64 SdkRoutine_8605f0(_QWORD, _QWORD);
-
 __int64 SdkRoutine_86ee60(_QWORD);
 
 __int64 SdkRoutine_86ee80(_QWORD);
@@ -26,52 +24,11 @@ __int64 SdkRoutine_87c9c0(_QWORD);
 
 __int64 SdkRoutine_87cb10(_QWORD);
 
-__attribute__((swiftcall)) void SdkRoutine_87cb90(PSEUDO_X8, _QWORD);
-
 __int64 SdkRoutine_87cd30(_QWORD);
 
 __int64 SdkRoutine_87cef0(_QWORD);
 
 __int64 SdkRoutine_87d320(double);
-
-void SdkHr_7e8090(__int64 a1, __int64 a2)
-{
-  __int64 v2;
-  __int64* v3;
-  __int64 v4;
-  int v5;
-  bool v6;
-  char* v7;
-  __int64 v8;
-  _QWORD v9[2];
-  char* v10;
-
-  v2 = *(_QWORD*)(a2 + 8);
-  if ((*(_BYTE*)a2 & 1) == 0) {
-    v2 = *(_BYTE*)a2 >> 1;
-  }
-  if (v2 != 12 ||
-      ((*(_BYTE*)a2 & 1) == 0 ? (v3 = (__int64*)(a2 + 1))
-                              : (v3 = *(__int64**)(a2 + 16)),
-       (v4 = *v3, v5 = *((_DWORD*)v3 + 2), v4 == 0x6172752F7665642FLL)
-           ? (v6 = v5 == 1836016750)
-           : (v6 = false),
-       !v6)) {
-    SdkRoutine_87cb90((void*)v9, "random device not supported ");
-    if ((v9[0] & 1) != 0) {
-      v7 = v10;
-    }
-    else {
-      v7 = (char*)v9 + 1;
-    }
-    v8 = SdkRoutine_8605f0(2, v7);
-    if ((v9[0] & 1) != 0) {
-      SdkRoutine_857220(v10, v9[0] & 0xFFFFFFFFFFFFFFFELL);
-    }
-    SdkRoutine_87c790(v8);
-    __udf(0);
-  }
-}
 
 void __attribute__((noreturn)) SdkHr_7e8458(__int64 a1)
 {

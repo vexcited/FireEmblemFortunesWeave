@@ -85,8 +85,6 @@ __int64 NgxRoutine_bb400();
 
 void NgxRoutine_bb9a0();
 
-__int64 NgxRoutine_bc9e0(_QWORD);
-
 __int64 NgxRoutine_bcd70(_QWORD);
 
 __int64 NgxRoutine_bcf20(_QWORD, _QWORD);
@@ -1124,34 +1122,6 @@ __int64 NgxHr_baf70(__int64 a1, __int64 a2)
   return NgxRoutine_bafa0(&v3, a1, a2);
 }
 
-void __attribute__((noreturn)) NgxHr_bb690(__int64 a1)
-{
-  __int64 v1;
-  __int64 v2;
-  __int64 v3;
-  __int64 v4;
-  __int64 v5;
-  __int64 v7;
-  __int64 v8;
-  __int64 v9;
-  __int64 v10;
-  __int64 v11;
-
-  NgxRoutine_bc9e0(v4 + 8);
-  v7 = NgxRoutine_e3720(a1);
-  NgxRoutine_bc9e0(v1 + 8);
-  v8 = NgxRoutine_e3720(v7);
-  NgxRoutine_bc9e0(v2 + 8);
-  v9 = NgxRoutine_e3720(v8);
-  NgxRoutine_bc9e0(v5 + 8);
-  v10 = NgxRoutine_e3720(v9);
-  NgxRoutine_bc9e0(v4 + 8);
-  v11 = NgxRoutine_e3720(v10);
-  NgxRoutine_bc9e0(v3 + 8);
-  NgxRoutine_e3720(v11);
-  __udf(0);
-}
-
 __int64 NgxHr_bb710(__int64 a1, __int64 a2)
 {
   __int64 v4;
@@ -1188,23 +1158,6 @@ __int64 NgxHr_bb710(__int64 a1, __int64 a2)
   return result;
 }
 
-void __attribute__((noreturn)) NgxHr_bb7f4(__int64 a1)
-{
-  _QWORD* v1;
-  __int64 v2;
-  __int64 v3;
-  __int64 v4;
-  __int64 v6;
-
-  NgxRoutine_bc9e0(v2);
-  v6 = NgxRoutine_e3720(a1);
-  NgxRoutine_db240(v4 + 24);
-  *v1 = v3;
-  NgxRoutine_db240(v1 + 1);
-  NgxRoutine_e3720(v6);
-  __udf(0);
-}
-
 __int64 NgxHr_bb830(__int64 a1, __int64 a2)
 {
   __int64 v4;
@@ -1239,23 +1192,6 @@ __int64 NgxHr_bb830(__int64 a1, __int64 a2)
   *(_QWORD*)(a1 + 152) = 0;
   *(_DWORD*)(a1 + 160) = -1;
   return result;
-}
-
-void __attribute__((noreturn)) NgxHr_bb914(__int64 a1)
-{
-  _QWORD* v1;
-  __int64 v2;
-  __int64 v3;
-  __int64 v4;
-  __int64 v6;
-
-  NgxRoutine_bc9e0(v2);
-  v6 = NgxRoutine_e3720(a1);
-  NgxRoutine_db240(v4 + 24);
-  *v1 = v3;
-  NgxRoutine_db240(v1 + 1);
-  NgxRoutine_e3720(v6);
-  __udf(0);
 }
 
 __int64 NgxHr_bb950()

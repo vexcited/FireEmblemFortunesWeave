@@ -110,8 +110,6 @@ __int64 SdkHr_1e96e0(__int64 a1, __int64 a2, _QWORD* a3)
   return SdkRoutine_134d30(a1 + 8, a2, *a3, a3[1], 1);
 }
 
-__int64 SdkHr_402cf0(__int64 a1, __int64 a2) { return (a2 << 32) | 0xA3D; }
-
 __int64 SdkHr_4d9c90(_QWORD* a1)
 {
   *a1 = SdkData_e88540 + 16;
